@@ -1,133 +1,178 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3841759njk;
-        Wed, 29 Jan 2025 07:30:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVHcPnggkDKg3b7d6cZpxzc/dytmOh8SFbfDLWlGN0hcQuJkRbzYESF6QONAc1nMT9oWb4JJ5M8Z4Oidw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHu7WqyEVjxcR3GfmXRCsAmk/PuM65ghkXlihfJ0VR14Tsf8hECalas/Jj2K46oEbL4dIFs
-X-Received: by 2002:a05:622a:148c:b0:46c:769c:53ab with SMTP id d75a77b69052e-46fd0b94ea0mr58099131cf.47.1738164613098;
-        Wed, 29 Jan 2025 07:30:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738164613; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3881168njk;
+        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVrLELn+yt3r3mou8rF5O0Y/U1PrvGwSGfhIcdNQnwkxJart9u6Mx+nHZmpK/uiD/1vd+z3H6djF5oVeA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEcNROsWttZAzd4DtmfNP392Fqc24LzKzSRvMiXlxHQ9UMbyWQj2kx1kR+wCuzVDMzrcG25
+X-Received: by 2002:a05:6214:242f:b0:6e1:6c94:b5c5 with SMTP id 6a1803df08f44-6e243b8f708mr59178906d6.4.1738168138048;
+        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738168138; cv=none;
         d=google.com; s=arc-20240605;
-        b=BuPTyQkf5C6fR5qD7wmCrnJc8BM19vmU0tqvUKK6r/fAgplhFTai/GP0mC80qQcBI3
-         H0E2otDH4wFNoBUPpaSlWHttWi856s/TQtzOFZQtNfVB59/9z0NtmbL/tWQGyDg5YseB
-         r8KnExusLp99o39KA6VwnCcUJZ0q46dP5gkXfUndliOjnvJTKG0AmGvvUfJYDpeWpBw8
-         sT25AUXXKY+g8OVwuotY8P3YxlX9yQw5me59XB/uO+VYj7hAzLzeNKtqMrKmYWWKn7Wl
-         aTLFaYq0CB+cCIhBFckZfwVHLexm74AEzFRr9sV8H1ny2Jo1b0z7Kg+CNssDk0Cy47WD
-         k6RA==
+        b=WOnzVBYCe5PJA2XJG1FEB6vcuiJ5Qz+jSi6A1PiQwKVNeJCFScJ2iVcJINYoAqzxAb
+         VDZvire1bapU6wZB3Ldb9ZrbNv6w407mY4YWLaE3mhj/F7D49N4Xy7j9AjZ+lXtZHFUe
+         PSHB/2rCgUWGaJfBnb24MjQyzkkOjNg7QycA7/UzsiRqO+5fLlq0apMFGrOdS4hPoLau
+         xQLZ3BjHGAF6XDOHSjKkwrDF3zQWx7cdxTSnTUhPrEQgdUqIKA/LNCZqLOwOm3MHh7JC
+         9R1/j6KpSnhvQgHHqUNoSAZkPK7KnmCxa8Nozcahaj8MzTCjq4BpyxOURyqH7eZNm9Ef
+         m/0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=fAg9KjAwzM5VjIcz7EJWDI1WHKsxi4+8gpXVO56gv1E=;
-        fh=KoOib92H+2n85Ji5OnwrJnlH2sdk+SlY/JhLp02/j2A=;
-        b=XlY42cjDm2jY5ptvmLkzFQUMW8PVNqNf7A8IO9L3CdVR2K/LWNpGVH43Pa0x+9/s7B
-         tn/2GYRXaOwIZEAxBbTEP1kJI69FtQiW2DIQ0ktEvMsKiYOy/hyAmkbteHAIRCpHDQWV
-         uysv23+Y69774fmAA6Vjv6Qyj1RjtAP2xd8iGFtcOtnzG/y2S/EATFS5msLpIISc8qI0
-         rvlWYuk+vRUsRZqiAdq3LVODaDGgYrqOHpkZ1fNtDjHC/jyM2XWRXNORG90zxP2IY6nY
-         U1flgWG39JSww+W/imWz9H/58UIHyJ8eTD/DoUnpezHjvoEekPhkVw5Tcf2qAaWzPwl/
-         5yOQ==;
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
+        fh=0OF7NMNMsvI22ff+e85Zdisgl2xDZgzyvXc2tIue6Jo=;
+        b=QvgM0erPWXehzb9Ues7scFqNSS2EHWnaqp4BK/jOjymLUr82Emork+/68q4+ENXUQr
+         NRMwKnXo8pPA7Z/oWVZTpMqF6CWP0pUGum9VzA/gH17C4gWn97ndZ1Aka1zBYTg3uM8Z
+         GQf00dzmkhCOXl5cbYTS/iIjGfVdNAhu9pXXEzbjE/Efyh4D4E1AFQ34iiqMowAyp/F9
+         xiQ7QAfXk4IrkRtei5+MF8oDPHxvcLWqzWmnToAhb/jF8/EODu47XwXUYG5b9trQwXJu
+         e+U0IhtGIEc88TSsxTOVTANzS2BpHMdFEfT9xfHJBF7JQpOkHYQ7KntV0Lq3x7Q9om3w
+         rZoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eiz6vM5z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFbT19l9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e66b8a982si165023331cf.452.2025.01.29.07.30.12
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e20601fc1fsi155477896d6.395.2025.01.29.08.28.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 07:30:13 -0800 (PST)
+        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eiz6vM5z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFbT19l9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdA11-0005VH-Dv; Wed, 29 Jan 2025 10:30:07 -0500
+	id 1tdAvZ-0006Ba-DV; Wed, 29 Jan 2025 11:28:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tdA0y-0005T6-SK
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 10:30:05 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tdAvK-00067p-Ma
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2025 11:28:22 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tdA0w-0007tp-7j
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 10:30:04 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tdAvH-0000lN-J2
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2025 11:28:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738164598;
+ s=mimecast20190719; t=1738168093;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fAg9KjAwzM5VjIcz7EJWDI1WHKsxi4+8gpXVO56gv1E=;
- b=Eiz6vM5zbNmRey5T8an7OnFnc4jpaaNK3IfN5WzqbPwkjNH/Cak2rTpoZrsu+E7uXUBsX6
- t+D5mZ1O9oIqg9+ofrvLrryvuQdDFVWI3TyW8TnnpduYYuYvlKIwBpXs0XH/TL4EmhygbG
- OFfPhuWMoooqczj4EQT3fKrQ4cb0Nns=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
+ b=NFbT19l9UImD4hQ3luyo9StLwkMR7vp+pL792/N6Klpr9XmuM4+TmWSjiLskngbXM5wjwK
+ Dbj05BIgRZMgXid4WvTweWcfIyY4bydFM9jQYzTUWxVjDO5TqggPCISAOoynXuVmxVtTYs
+ JvbcLr4A2YrmmzP67TWJco5DuUpEB/c=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-362-4TwiXYucOQOFVOJJQdH5uw-1; Wed, 29 Jan 2025 10:29:57 -0500
-X-MC-Unique: 4TwiXYucOQOFVOJJQdH5uw-1
-X-Mimecast-MFC-AGG-ID: 4TwiXYucOQOFVOJJQdH5uw
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3862b364578so434127f8f.1
- for <qemu-arm@nongnu.org>; Wed, 29 Jan 2025 07:29:57 -0800 (PST)
+ us-mta-512-LnrBGo7jNcSgGe6cQSCdhA-1; Wed, 29 Jan 2025 11:28:11 -0500
+X-MC-Unique: LnrBGo7jNcSgGe6cQSCdhA-1
+X-Mimecast-MFC-AGG-ID: LnrBGo7jNcSgGe6cQSCdhA
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-438da39bb69so11670375e9.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Jan 2025 08:28:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738164595; x=1738769395;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fAg9KjAwzM5VjIcz7EJWDI1WHKsxi4+8gpXVO56gv1E=;
- b=GdKuIiu1Vqldb0xlLGMMbVeSKwEdWNrcKquO2wW84a1DOML+MUQf1IikIFjDP62b6K
- ILN3njvO6osq8ghh0r3Zjmusxqp9qRbjJAzl6ejhLRBGMfMu/eNP9TRb8Rar6YeifW12
- x43NNjfHFDtmuFZMTpBNZeKDDOweDDQCIvZZT95Zmm7HbdqGoA/pftl/wZxUGkao2C+b
- hhlFY0MwMzKtN+FuXukZf8ZjGBy39BqUcT/B0hqCWIEDaaXe13KNrJx9Hf6PdqkwIDeW
- SdLOXJ9/I3P5IVDgiSk43KRkFBeXMLDSPl25ppPpbcMcGblQ+L/84u9U2CqDOSOPQBYC
- kFDw==
+ d=1e100.net; s=20230601; t=1738168090; x=1738772890;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
+ b=fLmwHvTqvsOQp3hC9sjtcU49jcZuAHfLQB685DS7unIxpVCL6LZRRAi1sB7uKCgOIk
+ OmPgUp8yESuO4dQn1y2V/kdDfcQdE2sdcCrjI7wNjq+KpZPPRwAlWk1NP2x6TlVbanlI
+ QJa9zI7cR2A3+teZTCzJthJ3lfbgfDa0R8rOIR/RWYvTikH9zkpBo+z6blnn9Qi53vlR
+ 65ZNCEc7ZyqcbXgiBNTb9QjWq1hWv6Q7pqIlDQ2J6zfHPTYhIpfh0eTb3DGNkqsJtTJu
+ NOwCRwhm9zOP8odB5sAWB6d2/IOchq5yUfMkrTIj/xTf8x0f6wRX7q/q9KqUkrE8FrSy
+ 0svA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWF/ohJHLuLmBcfvR0SNOJysGuQF67ztIosGQwYf2nIyBNBYSPhSrei4C6mD7/oMpTsziLp1yQdMQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzcO8Zbxf2YVoauPKw8UTpjqvjjIurwq3j/B/YB812pIEh4AwrP
- ayJGCru4uF+YoN6KNj2rBoVmfwYKoyguczU2YkA/CybRoKfIk+RvbhgzgVhBZVFgK0h0TBJRS75
- RZObjXlMNNuysO3r3G92MBs6dtpVDaoZiNG9ixdh8PiHliTDbPBMUALQsCw==
-X-Gm-Gg: ASbGncsOThEXgVGzk3vSLwtSCsTupuUbPnTFido7j1I1Cbs+VAQgWDlRRUlJrc2boul
- /2xdCXvw2y4yhDKjSULn+WwjVWHYA2yhO/xbvnKk2BrPWJSkqgVIS7v/51uhI3rgqIf9yjwxdxD
- 9g51kodFHHfFZnahyxkFYG2NULsG0WCNb0AGF5BHyU9xniP9jrh0APrZmPSfoYQIlbhEHqQreJY
- qajCE/+mIypiF/kfjsE8rNfwpPRRtR/aREfAnDZMlnwPpbc8+NCl6TN/yE+zOaHohw5Z0xK6gTu
- IHdCzTUzMa/wRU777UIJBCo5GuHqkIopSZAc7gMonzoDHYEfJSVu
-X-Received: by 2002:a5d:6d08:0:b0:386:3bde:9849 with SMTP id
- ffacd0b85a97d-38c49a37ddcmr6510933f8f.12.1738164595458; 
- Wed, 29 Jan 2025 07:29:55 -0800 (PST)
-X-Received: by 2002:a5d:6d08:0:b0:386:3bde:9849 with SMTP id
- ffacd0b85a97d-38c49a37ddcmr6510915f8f.12.1738164595065; 
- Wed, 29 Jan 2025 07:29:55 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c2a188fe8sm17620797f8f.56.2025.01.29.07.29.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jan 2025 07:29:54 -0800 (PST)
-Date: Wed, 29 Jan 2025 16:29:53 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 12/13] tests/acpi: virt: add a HEST table to aarch64
- virt and update DSDT
-Message-ID: <20250129162953.5c525555@imammedo.users.ipa.redhat.com>
-In-Reply-To: <7036f18f9c25852aeae6526d424e259211a0c9cd.1738137123.git.mchehab+huawei@kernel.org>
-References: <cover.1738137123.git.mchehab+huawei@kernel.org>
- <7036f18f9c25852aeae6526d424e259211a0c9cd.1738137123.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ AJvYcCUXFxgzkEh2Ml1e7bnEjUwQcvT+KiEm5D1Z0QNIcI8W9maIV0HF70kH8+5UTl8icnnD1flWE85mfw==@nongnu.org
+X-Gm-Message-State: AOJu0YzOTV7CGzUoVnCWLC0z/yaZvGwtDIwTRJ8OnJPzCRnvXG6htsg1
+ LFtxdzsjAvIpT0j8vsINuYXGTfySYnktttKq0NVknGBz1RFsu1r+TV2/FhSmV8xqziaiP2pQA2L
+ an8EMUocmRhQL7B35LGR3m67HETe1u2wRq8Fbv+UcWY14mKq7Lw==
+X-Gm-Gg: ASbGnct3opG6PNSI1bQaCP+o0r0iWxFQySW0QGB4ebGyQHsfLiDyyXD6coqiAmxHJz2
+ NlBJ14GW0K4skE1SYI8DIR2PTqn7cV0hrcuQy3rrPTcV0/1MCD5GVQ06imtcXmTWDUSHCzMDrI0
+ RlxiwQRl0CB0CVGGmj5J3aJV9Zk/ZwqsnmZmcvEHQ5fUFTWVS8IJdYyxvC5uIVZZ17Xzt4IoCtI
+ +GyWtqZXCDK84VHTU/yv3kGqDpwj6dlxvH6zjWxv/EzP1wDtjxG2n89BW1wi2bf6gyBfxTtdiQj
+ SWImUniWwraUzrWPtyIPGzgeVMq1HnLXI2xCZWyBktE=
+X-Received: by 2002:a05:600c:5252:b0:431:44f6:566f with SMTP id
+ 5b1f17b1804b1-438dc3ca9cfmr33225535e9.13.1738168090550; 
+ Wed, 29 Jan 2025 08:28:10 -0800 (PST)
+X-Received: by 2002:a05:600c:5252:b0:431:44f6:566f with SMTP id
+ 5b1f17b1804b1-438dc3ca9cfmr33225305e9.13.1738168090049; 
+ Wed, 29 Jan 2025 08:28:10 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38c2a188a61sm17728283f8f.52.2025.01.29.08.28.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Jan 2025 08:28:09 -0800 (PST)
+Message-ID: <815ec281-f4b0-43e4-ba56-1400d16dfe21@redhat.com>
+Date: Wed, 29 Jan 2025 17:28:08 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] tests/functional: Introduce a new test routine for
+ OpenBMC images
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>
+References: <20250129071820.1258133-1-clg@redhat.com>
+ <20250129071820.1258133-2-clg@redhat.com>
+ <98b2cdec-dcd2-44bf-a81e-91521e2bd446@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <98b2cdec-dcd2-44bf-a81e-91521e2bd446@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EU2pwH4ZM4b7_2N93J1zcjsLmAwLdWdqQ-LSdjsF11w_1738164596
+X-Mimecast-MFC-PROC-ID: yrMH_I5tGAPT5WmxNpfJLquQOIfBU7ey-lqx9bBJcw0_1738168091
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -33
 X-Spam_score: -3.4
@@ -136,7 +181,7 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,244 +196,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0FMdbfEL8sWC
+X-TUID: u7Fzg1oHRDFS
 
-On Wed, 29 Jan 2025 09:04:18 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-
-> DSDT has gained a GED device to notify errors:
+On 1/29/25 08:58, Thomas Huth wrote:
+> On 29/01/2025 08.18, Cédric Le Goater wrote:
+>> The OpenBMC images currently used by QEMU to test the Aspeed machines
+>> are rather old. To prepare an update to the latest builds, we need to
+>> adjust the console patterns. Introduce a new routine to preserve the
+>> current tests.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> ---
+>>   tests/functional/aspeed.py | 18 ++++++++++++++++++
+>>   1 file changed, 18 insertions(+)
+>>
+>> diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+>> index b52358bb8c61..51c821944842 100644
+>> --- a/tests/functional/aspeed.py
+>> +++ b/tests/functional/aspeed.py
+>> @@ -23,6 +23,24 @@ def do_test_arm_aspeed(self, machine, image):
+>>           self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+>>           self.wait_for_console_pattern("systemd[1]: Set hostname to")
+>> +    def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+>> +                                   cpu_id='0x0', soc='AST2500 rev A1'):
+>> +        hostname = machine.removesuffix('-bmc')
+>> +
+>> +        self.set_machine(machine)
+>> +        self.vm.set_console()
+>> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+>> +                         '-net', 'nic', '-snapshot')
 > 
-> --- a/DSDT.dsl        2025-01-28 09:38:15.155347858 +0100
-> +++ b/DSDT.dsl        2025-01-28 09:39:01.684836954 +0100
-> @@ -9,9 +9,9 @@
->   *
->   * Original Table Header:
->   *     Signature        "DSDT"
-> - *     Length           0x00001516 (5398)
-> + *     Length           0x00001542 (5442)
->   *     Revision         0x02
-> - *     Checksum         0x0F
-> + *     Checksum         0xE9
->   *     OEM ID           "BOCHS "
->   *     OEM Table ID     "BXPC    "
->   *     OEM Revision     0x00000001 (1)
-> @@ -1931,6 +1931,11 @@
->                  {
->                      Notify (PWRB, 0x80) // Status Change
->                  }
-> +
-> +                If (((Local0 & 0x10) == 0x10))
-> +                {
-> +                    Notify (GEDD, 0x80) // Status Change
-> +                }
->              }
->          }
-> 
-> @@ -1939,6 +1944,12 @@
->              Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
->              Name (_UID, Zero)  // _UID: Unique ID
->          }
-> +
-> +        Device (GEDD)
-> +        {
-> +            Name (_HID, "PNP0C33" /* Error Device */)  // _HID: Hardware ID
-> +            Name (_UID, Zero)  // _UID: Unique ID
-> +        }
->      }
->  }
-> 
-> New HEST table:
+> "-net nic" is the default anyway, so unless you also use "-nodefaults", I think you can simply drop that?
 
-diff might be a better here,
-you can have it during make check when expected tables haven't been update yet.
-prereq for that is to have 'iasl' installed (usually part of acpica-tools package)
-and adding V=1 to env vars, something like this:
+OK. Will do.
 
- V=1 QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/bios-tables-test
+Do you want a resend for that ? Unless you prefer this series
+to go through you tree, I will amend before sending PR.
+
 
 > 
-> /*
->  * Intel ACPI Component Architecture
->  * AML/ASL+ Disassembler version 20240927 (64-bit version)
->  * Copyright (c) 2000 - 2023 Intel Corporation
->  *
->  * Disassembly of hest.dat
->  *
->  * ACPI Data Table [HEST]
->  *
->  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
->  */
+>> +        self.vm.launch()
+>> +
+>> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
+>> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+>> +        self.wait_for_console_pattern('Starting kernel ...')
+>> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+>> +        self.wait_for_console_pattern(f'ASPEED {soc}')
+>> +        self.wait_for_console_pattern('/init as init process')
+>> +        self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
+>> +
+>>       def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+>>           self.require_netdev('user')
+>>           self.vm.set_console()
 > 
-> [000h 0000 004h]                   Signature : "HEST"    [Hardware Error Source Table]
-> [004h 0004 004h]                Table Length : 000000E0
-> [008h 0008 001h]                    Revision : 01
-> [009h 0009 001h]                    Checksum : 68
-> [00Ah 0010 006h]                      Oem ID : "BOCHS "
-> [010h 0016 008h]                Oem Table ID : "BXPC    "
-> [018h 0024 004h]                Oem Revision : 00000001
-> [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
-> [020h 0032 004h]       Asl Compiler Revision : 00000001
-> 
-> [024h 0036 004h]          Error Source Count : 00000002
-> 
-> [028h 0040 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
-> [02Ah 0042 002h]                   Source Id : 0000
-> [02Ch 0044 002h]           Related Source Id : FFFF
-> [02Eh 0046 001h]                    Reserved : 00
-> [02Fh 0047 001h]                     Enabled : 01
-> [030h 0048 004h]      Records To Preallocate : 00000001
-> [034h 0052 004h]     Max Sections Per Record : 00000001
-> [038h 0056 004h]         Max Raw Data Length : 00000400
-> 
-> [03Ch 0060 00Ch]        Error Status Address : [Generic Address Structure]
-> [03Ch 0060 001h]                    Space ID : 00 [SystemMemory]
-> [03Dh 0061 001h]                   Bit Width : 40
-> [03Eh 0062 001h]                  Bit Offset : 00
-> [03Fh 0063 001h]        Encoded Access Width : 04 [QWord Access:64]
-> [040h 0064 008h]                     Address : 0000000139E40000
-> 
-> [048h 0072 01Ch]                      Notify : [Hardware Error Notification Structure]
-> [048h 0072 001h]                 Notify Type : 08 [SEA]
-> [049h 0073 001h]               Notify Length : 1C
-> [04Ah 0074 002h]  Configuration Write Enable : 0000
-> [04Ch 0076 004h]                PollInterval : 00000000
-> [050h 0080 004h]                      Vector : 00000000
-> [054h 0084 004h]     Polling Threshold Value : 00000000
-> [058h 0088 004h]    Polling Threshold Window : 00000000
-> [05Ch 0092 004h]       Error Threshold Value : 00000000
-> [060h 0096 004h]      Error Threshold Window : 00000000
-> 
-> [064h 0100 004h]   Error Status Block Length : 00000400
-> [068h 0104 00Ch]           Read Ack Register : [Generic Address Structure]
-> [068h 0104 001h]                    Space ID : 00 [SystemMemory]
-> [069h 0105 001h]                   Bit Width : 40
-> [06Ah 0106 001h]                  Bit Offset : 00
-> [06Bh 0107 001h]        Encoded Access Width : 04 [QWord Access:64]
-> [06Ch 0108 008h]                     Address : 0000000139E40010
-> 
-> [074h 0116 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
-> [07Ch 0124 008h]              Read Ack Write : 0000000000000001
-> 
-> [084h 0132 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
-> [086h 0134 002h]                   Source Id : 0001
-> [088h 0136 002h]           Related Source Id : FFFF
-> [08Ah 0138 001h]                    Reserved : 00
-> [08Bh 0139 001h]                     Enabled : 01
-> [08Ch 0140 004h]      Records To Preallocate : 00000001
-> [090h 0144 004h]     Max Sections Per Record : 00000001
-> [094h 0148 004h]         Max Raw Data Length : 00000400
-> 
-> [098h 0152 00Ch]        Error Status Address : [Generic Address Structure]
-> [098h 0152 001h]                    Space ID : 00 [SystemMemory]
-> [099h 0153 001h]                   Bit Width : 40
-> [09Ah 0154 001h]                  Bit Offset : 00
-> [09Bh 0155 001h]        Encoded Access Width : 04 [QWord Access:64]
-> [09Ch 0156 008h]                     Address : 0000000139E40008
-> 
-> [0A4h 0164 01Ch]                      Notify : [Hardware Error Notification Structure]
-> [0A4h 0164 001h]                 Notify Type : 07 [GPIO]
-> [0A5h 0165 001h]               Notify Length : 1C
-> [0A6h 0166 002h]  Configuration Write Enable : 0000
-> [0A8h 0168 004h]                PollInterval : 00000000
-> [0ACh 0172 004h]                      Vector : 00000000
-> [0B0h 0176 004h]     Polling Threshold Value : 00000000
-> [0B4h 0180 004h]    Polling Threshold Window : 00000000
-> [0B8h 0184 004h]       Error Threshold Value : 00000000
-> [0BCh 0188 004h]      Error Threshold Window : 00000000
-> 
-> [0C0h 0192 004h]   Error Status Block Length : 00000400
-> [0C4h 0196 00Ch]           Read Ack Register : [Generic Address Structure]
-> [0C4h 0196 001h]                    Space ID : 00 [SystemMemory]
-> [0C5h 0197 001h]                   Bit Width : 40
-> [0C6h 0198 001h]                  Bit Offset : 00
-> [0C7h 0199 001h]        Encoded Access Width : 04 [QWord Access:64]
-> [0C8h 0200 008h]                     Address : 0000000139E40018
-> 
-> [0D0h 0208 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
-> [0D8h 0216 008h]              Read Ack Write : 0000000000000001
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
->  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
->  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
->  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
->  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
->  tests/data/acpi/aarch64/virt/HEST             | Bin 0 -> 224 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h   |   2 --
->  7 files changed, 2 deletions(-)
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
-> index 36d3e5d5a5e47359b6dcb3706f98b4f225677591..a182bd9d7182dccdf63c650d048c58f18505d001 100644
-> GIT binary patch
-> delta 109
-> zcmX@3@k4{lCD<jTLWF^ViDe>}G*h$dM)euOOwJsW4+;nC=*7E+g>V+Q2D|zsED)Gn
-> zoxsJ!z{S)S5FX^j)c_F?VBivHb9Z%dnXE4&D;?b=31V}^dw9C=2KWUSI2#)?aKwjt
-> Hx-b9$X;vI^
-> 
-> delta 64
-> zcmeyNaYlp7CD<jzM}&caNqQoeG*i3NM)euOOit{R4+;lM%f`Egg>V+Q2D|zsED)Gn
-> UoxsJ!z{S)S5FX?-*+E1W06%jPR{#J2
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
-> index e6154d0355f84fdcc51387b4db8f9ee63acae4e9..af1f2b0eb0b77a80c5bd74f201d24f71e486627f 100644
-> GIT binary patch
-> delta 110
-> zcmZ3ac}|ndCD<k8oCpI0)4_>c(oCIR8`a+lGdXii78eO-)SH|wBICY5U~+W=mjDBo
-> yK%2X(iwjpnbdzL2c#soEyoaX?Z-8HbfwO@#14n$Qrwc=LlO#wDl9aJAR0;r(tsHj%
-> 
-> delta 66
-> zcmX@7xk!`CCD<iokq83=(~XH-(oDVX8`a+lGdZzO78eO-l%1R{A|oB$BpDDM<irv0
-> W;pxH~;1^)vY~akm5g+R5!T<noi4jWx
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
-> index 33f011d6b635035a04c0b39ce9b4e219f7ae74b7..10436ec87c4859fb84b3ecb7bba5788f38112e59 100644
-> GIT binary patch
-> delta 88
-> zcmbPheA1Z9CD<k8q$C3algUIbX{MH08`WnBGdXcjJ}4Z_<jXo)OvH<SfxzVI1TFyv
-> qE`c_8R~MJfaU%At($P(lAPz^oho=i~fM0-tv#~J)M|`NK3j+W#;TF9B
-> 
-> delta 44
-> zcmX?UJlB}ZCD<iot|S8klg&gfX{L_p8`WnBGdXfiJ}4Z_<ij#qOvGz*p@=Oj039?8
-> AE&u=k
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
-> index c0fdc6e9c1396cc2259dc4bc665ba023adcf4c9b..0524b3cbe00bfe552de824dd1090bd00a208c527 100644
-> GIT binary patch
-> delta 110
-> zcmexwz1oJ$CD<iITaJN&sbC_PG*jDyjq2XAOwJsWOJsu?^(LQ?m2qDnFu6K`OMrn(
-> ypv~RY#f7UOx=Au1JjjV7-ow*{H^48zz}di=fg?WD(}f|rNfM+6Ny^w5Dg^+WYaFrw
-> 
-> delta 66
-> zcmZ2&^WU1wCD<k8zbpd-Q^!OuX{N5b8`ZsKnVi@sm&gV)%1%BZD<d7<BpDDM<irv0
-> W;pxH~;1^)vY~akm5g+R5!T<oNArgiF
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
-> index 029d03eecc4efddc001e5377e85ac8e831294362..8c0423fe62d6950f9098983d86bfee256d7d003a 100644
-> GIT binary patch
-> delta 86
-> zcmbQHbx4cLCD<jzNtA(s>E%Q&X{O%5jp|7vOwJsWyG4Q-^(NmJk>Ot;Fu6K`OMrn(
-> opv~RY#bxqO5n1WzCP@&RBi_T)g*U)2z`)tqn1Lfc)YF9l01l28<p2Nx
-> 
-> delta 42
-> ycmX@4HBF1lCD<iIOq79viGL!OG*hGhM)f2SCMWjE-6Fw^vXk$N$V}!Dl?DLb(h64q
-> 
-> diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..8b0cf87700fa1799c0f8e48610ce4b7ff751dd1f 100644
-> GIT binary patch
-> literal 224
-> zcmeZp4Gww0z`($m;pFe^5v<@85#X$#prF9Wz`y`vgJ>oO1_mw$28RFt85lu)5N2Ru
-> tU|?_nkxwi^d=43qAPxXkD*#pd?>_{9%>kRuh}CQksCsrH%$C4mHUOJBAprmY  
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index 46298e38e7b8..dfb8523c8bf4 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1,3 +1 @@
->  /* List of comma-separated changed AML files to ignore */
-> -"tests/data/acpi/aarch64/virt/HEST",
-> -"tests/data/acpi/aarch64/virt/DSDT",
+> Anyway,
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Thanks,
+
+C.
+
 

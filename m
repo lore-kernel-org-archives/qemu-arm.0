@@ -1,329 +1,202 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3617134njk;
-        Wed, 29 Jan 2025 00:05:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWv7WyeZsKceV+TP0Mci3x3Kv6ouESrfwudXdGQnr1FP/tpi9mmOy33xinp8h1F4B0EGf8fVqogZHyU0A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHukLP6W0cLhhwk/3WtYwNK5Bm3VuL+wCr/HhJR4UO12AfcKs8nT52xVe7BXL2Y2S5tYS4a
-X-Received: by 2002:a05:620a:1727:b0:7b6:c90e:e227 with SMTP id af79cd13be357-7bffccdfa77mr307873585a.20.1738137928694;
-        Wed, 29 Jan 2025 00:05:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738137928; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3617219njk;
+        Wed, 29 Jan 2025 00:05:40 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCURoR88PHQM3732edcafZsf0pgDnpA6ki2GDI8/+19TX1VBWwm9toEbDPxR8BxB6gc1dwLkXoAXWJ3k8w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGYz2TJfNS1l99pJi+djA4VcFi3snTSf9iTHcmyUJLbXFhSnFZg871UFCuoF1s6v4klk4RP
+X-Received: by 2002:a05:622a:289:b0:46e:25ed:1601 with SMTP id d75a77b69052e-46fd0a9dbcbmr37699401cf.14.1738137940700;
+        Wed, 29 Jan 2025 00:05:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738137940; cv=pass;
         d=google.com; s=arc-20240605;
-        b=THd47fd8djrAv6oohrM6PBw0Gqyza9ZLSeRnEmv6m0lAT9ijR0hx9ddT5G1i+DbdfZ
-         9sd9Ib2BGkdB2uc0WCYmTfhbiY4VvKnLcL81lodpi1ISLmXLCC2jvgkD3oQcOGkwbaDW
-         OdT/1PPxk/dibpaOMYlHTZsjtEQFwOpF/Wf6S4MrlIPMX4LXnGxDiHTvNvdxunvKwVhd
-         ec/VGQVOMANl0UORPeLfr1/9ie1rmOoJvt8V3rIFQB4wE6l9+IxDBb58IDL1spg47iWG
-         2BAZY7A3pDWY+/QWUq2YjPWsR7Z2mPTZ6wQWjUIjmg97nxA/FokYdhwCJZw48e5k1eSO
-         V0mA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=1AhQgxwFcwLyWRZgSVmiNAH19/NJbsP6bw52K+2MwxE=;
-        fh=M7BIFN6MARWKkWyrZnacp989sIldlEKVCOu1j14z3wo=;
-        b=ZOHRr1tzh0dGPj26h/IuFbLCuBPpbRMEU8zSv6KoFA+Sqnp0V6a8JDZTCWJv+wsVfn
-         gu0LM5/gtcJQAVbVP8wSVbIoG57YEasaAJH+FSYe55JsRn6XdK0HxUE3LtxZ2okuzRxM
-         0VEDMD/+p9guVUoq6zE3y2sNBVw1rLCvccycjtTKvdX2o+gVlWErWIZqijy118WbL79u
-         MjtPEK8HwPTWxjtAoesvg47ckuaJfUQvOcuCW6ynSkAef43X8dhmCvqdG4Fvltx2UiOB
-         cB3v+/kM+juAWduMYKxU/n+kN45zTqPVog686ZkT4VzCjdpdLSrjiD7HWrptxYU17hdb
-         4p6A==;
+        b=AykzycWppCYqthZNhxoBibb7rAe2iOGxw7Z49P6XqPkskbBrlpvPp21L5nRRo9xTsS
+         GBKE/sjOb2qWPqAt3rSaIxZzpWP3X1Llt/5DkdubN4vL9NtT9JFeFXmlGiZelXiPPaED
+         1etcC9PbnCsDwNIb3zsstPZWCxTbX9XPmwRsOkZrj16ELBs5vHCEXrlziscrfa5sS0PU
+         dm4eRlclgUsBONql+XcehKZTmTnZFXFX3ZPoAr09hfEb8od5dp3f8mu/tpKWUXTkyyRa
+         b3BZhWilf+UT0QV/EvrAc7IAdznqI5diM9kvnnoW68V1Lf4DsvKSgVcLCPHinyFMm7Ci
+         7SRw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=3fSp+gz3cU/dmNYZPYhvU3CSOfdQpQACG8vc3Sfduss=;
+        fh=wyBY0joL2rFkghWGWNuqy9C8j0XMPMxVS1FMK51a+qA=;
+        b=UaGi8fvydwXQ3QsuuQ/SvqRhHwGlJPLDy+GwwfMVUBzn+9ztOKoHQple72AKm/wcKQ
+         F2YYBPhdKwEBiUJUqMjbOWWiedYYvmRHr7CAr3N57qu8kw+mPTiCG0o7p8UjHaDxqXFu
+         ip4gKSzR7Wn0WD5xF37GJb+jzHnl8QWiAv4PD9ru+ZpeFZx0sasV8DojTfBM59QVKhrF
+         cbWD/JJerxcMq8za5KCMYIQnbxXh24PDG1ucX+YXDKywo+/gVpjx2GOJnaU/e5Z01CBQ
+         ozFmJG5Mg4/l7uVumb5LVMfjyiEcdosvTE7NwyyTLahA4zCFhEQA7ybCITp2ISywukJX
+         WRDQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ct4NyPOU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="U7O/YoAl";
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be9aee1737si1408940285a.281.2025.01.29.00.05.28
+Return-Path: <linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e66b690c5si137481371cf.296.2025.01.29.00.05.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 00:05:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Jan 2025 00:05:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ct4NyPOU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="U7O/YoAl";
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-492175-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1td34B-0008Bz-Kl; Wed, 29 Jan 2025 03:04:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1td33s-00087D-NC; Wed, 29 Jan 2025 03:04:37 -0500
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1td33p-00016F-E7; Wed, 29 Jan 2025 03:04:36 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 9932D5C5912;
- Wed, 29 Jan 2025 08:03:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4681C4CEE2;
- Wed, 29 Jan 2025 08:04:26 +0000 (UTC)
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A072916702D
+	for <alex.bennee@linaro.org>; Wed, 29 Jan 2025 08:05:39 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 750561ABEDF;
+	Wed, 29 Jan 2025 08:04:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="U7O/YoAl"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 643161990D9
+	for <linux-kernel@vger.kernel.org>; Wed, 29 Jan 2025 08:04:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738137867; cv=none; b=Pi+M/kC+30H1U2AmfXqOlk/e2SIOzShnRVIHfVyXrOAjLS7gE5bzzaU7VXXI2sAI38sUuUucWr2tM/pMK0bgS5ZwQfVfefYyo2OqjFC2vurTOVxohjzKIlcVpewRcHx90oKH64jXB3ZjH7EHnPYFu8x3YUR6nF0fp9oZmCWGJMw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738137867; c=relaxed/simple;
+	bh=KClVuwy0IQaUTb+SNKkMoDTWWkneqfRohVCkFRVwUCk=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=YyzaSH6x0rkVZxZ5EKzVKFNSepz10dl1mYyLnFrdjhDRrWwNazsKHC4n/xRkfE3x6wIXH9xyepWarXoumkZTPYHRJb/e65dITbzG64cwYuQLgUWmldk7zXv6+0m6S2+ZdO5IkLJTqUE6I0Fs9xzSUY0FgHPCFkshRBwOKUYfPes=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=U7O/YoAl; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0D8DC4AF0B;
+	Wed, 29 Jan 2025 08:04:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1738137866;
- bh=k1VpvVmMs2O0NmnSjp1mj9DbMWbmXeTNO+7+zD91/CI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ct4NyPOUkpfInm6rHmD2wCd2pzECBWeIRCsR1enwMsv34zbpeHPeYC/wFuAL7NSO2
- IAWC7arc4af/rdRcEu+WmcH9Nm3LzwGv3+Lav1S1h1RvmZaUGSF/VVPDmfDBpRPgO7
- 3W3kdj0CKFOc1g+DLKmsy1fczLkEJ9waJ/qemvPwGFZDqVHRlB/ydtfWaA08kH68Xw
- l/QUB+h//dAho/bM8R9xQMWJNdGzouissBc2qPbaOUu4aJ6SJj9tzKXIIHMZAidD4Z
- tsAJDlDn7GVVgWHBAcFoc1hZaPHezvvNLN7h3+hIsJwVVifv2vqbE0t1zlbFW2Cvzy
- mCLQ0S0qtDTdA==
+	s=k20201202; t=1738137866;
+	bh=KClVuwy0IQaUTb+SNKkMoDTWWkneqfRohVCkFRVwUCk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=U7O/YoAlkAOAy2n7M9vn5twJqaRsQDiTByIa0x/q5slQ9lsyNDl6Oq2uX5MMN1THz
+	 OynIE2OVHZmdaTtwxSAuemQ6zUWtehgXqHkJ2QSaUqxvQr+M9KzZKo6hOV5elZyhfN
+	 Sid+o/djYS0Xtrfotjl4brOHbk5uZDigTkr12Y7GhSECCLvZV6oIexFwIYTBA0yhVe
+	 eiCexdoO3ZBO/zTc2jk5JHDGoR4JN/bliMfCGDZmlqJkXBoA9oulUqu/Z39qXZHna8
+	 EmDUPPSMxkLI2RRBN2COxCB8quQajBQ7lrJNeaqyBHhFagi+V+gbkuy2heWnUx9YiV
+	 BEWD9y05cQ6XA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1td33g-00000004DPa-2nhm; Wed, 29 Jan 2025 09:04:24 +0100
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1td33g-00000004DQA-3pkG;
+	Wed, 29 Jan 2025 09:04:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 01/13] acpi/ghes: Prepare to support multiple sources on
- ghes
-Date: Wed, 29 Jan 2025 09:04:07 +0100
-Message-ID: <b1ae283c63e66c128387ffcad37fc91744f56981.1738137123.git.mchehab+huawei@kernel.org>
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 10/13] arm/virt: Wire up a GED error device for ACPI / GHES
+Date: Wed, 29 Jan 2025 09:04:16 +0100
+Message-ID: <9927237264e6cd4bbfd3fd01546551653f3f4161.1738137123.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <cover.1738137123.git.mchehab+huawei@kernel.org>
 References: <cover.1738137123.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2fMNeVTzTaav
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: 2qVOIAnb7U3q
 
-The current code is actually dependent on having just one error
-structure with a single source.
+Adds support to ARM virtualization to allow handling
+generic error ACPI Event via GED & error source device.
 
-As the number of sources should be arch-dependent, as it will depend on
-what kind of notifications will exist, change the logic to dynamically
-build the table.
+It is aligned with Linux Kernel patch:
+https://lore.kernel.org/lkml/1272350481-27951-8-git-send-email-ying.huang@intel.com/
 
-Yet, for a proper support, we need to get the number of sources by
-reading the number from the HEST table. However, bios currently doesn't
-store a pointer to it.
+Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-For now just change the logic at table build time, while enforcing that
-it will behave like before with a single source ID.
+---
 
-A future patch will add a HEST table bios pointer and change the logic
-at acpi_ghes_record_errors() to dynamically use the new size.
+Changes from v8:
+
+- Added a call to the function that produces GHES generic
+  records, as this is now added earlier in this series.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/ghes.c           | 47 +++++++++++++++++++++++++---------------
- hw/arm/virt-acpi-build.c |  5 +++++
- include/hw/acpi/ghes.h   | 21 ++++++++++++------
- 3 files changed, 49 insertions(+), 24 deletions(-)
+ hw/arm/virt-acpi-build.c |  1 +
+ hw/arm/virt.c            | 12 +++++++++++-
+ include/hw/arm/virt.h    |  1 +
+ 3 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index b709c177cdea..4cabb177ad47 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -206,17 +206,26 @@ ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
-  * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
-  * See docs/specs/acpi_hest_ghes.rst for blobs format.
-  */
--static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-+static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker,
-+                                   int num_sources)
- {
-     int i, error_status_block_offset;
- 
-+    /*
-+     * TODO: Current version supports only one source.
-+     * A further patch will drop this check, after adding a proper migration
-+     * code, as, for the code to work, we need to store a bios pointer to the
-+     * HEST table.
-+     */
-+    assert(num_sources == 1);
-+
-     /* Build error_block_address */
--    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-+    for (i = 0; i < num_sources; i++) {
-         build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
-     }
- 
-     /* Build read_ack_register */
--    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-+    for (i = 0; i < num_sources; i++) {
-         /*
-          * Initialize the value of read_ack_register to 1, so GHES can be
-          * writable after (re)boot.
-@@ -231,13 +240,13 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
- 
-     /* Reserve space for Error Status Data Block */
-     acpi_data_push(hardware_errors,
--        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
-+        ACPI_GHES_MAX_RAW_DATA_LENGTH * num_sources);
- 
-     /* Tell guest firmware to place hardware_errors blob into RAM */
-     bios_linker_loader_alloc(linker, ACPI_HW_ERROR_FW_CFG_FILE,
-                              hardware_errors, sizeof(uint64_t), false);
- 
--    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-+    for (i = 0; i < num_sources; i++) {
-         /*
-          * Tell firmware to patch error_block_address entries to point to
-          * corresponding "Generic Error Status Block"
-@@ -261,12 +270,14 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
- }
- 
- /* Build Generic Hardware Error Source version 2 (GHESv2) */
--static void build_ghes_v2(GArray *table_data,
--                          BIOSLinker *linker,
--                          enum AcpiGhesNotifyType notify,
--                          uint16_t source_id)
-+static void build_ghes_v2_entry(GArray *table_data,
-+                                BIOSLinker *linker,
-+                                const AcpiNotificationSourceId *notif_src,
-+                                uint16_t index, int num_sources)
- {
-     uint64_t address_offset;
-+    const uint16_t notify = notif_src->notify;
-+    const uint16_t source_id = notif_src->source_id;
- 
-     /*
-      * Type:
-@@ -297,7 +308,7 @@ static void build_ghes_v2(GArray *table_data,
-                                    address_offset + GAS_ADDR_OFFSET,
-                                    sizeof(uint64_t),
-                                    ACPI_HW_ERROR_FW_CFG_FILE,
--                                   source_id * sizeof(uint64_t));
-+                                   index * sizeof(uint64_t));
- 
-     /* Notification Structure */
-     build_ghes_hw_error_notification(table_data, notify);
-@@ -317,8 +328,7 @@ static void build_ghes_v2(GArray *table_data,
-                                    address_offset + GAS_ADDR_OFFSET,
-                                    sizeof(uint64_t),
-                                    ACPI_HW_ERROR_FW_CFG_FILE,
--                                   (ACPI_GHES_ERROR_SOURCE_COUNT + source_id)
--                                   * sizeof(uint64_t));
-+                                   (num_sources + index) * sizeof(uint64_t));
- 
-     /*
-      * Read Ack Preserve field
-@@ -333,19 +343,23 @@ static void build_ghes_v2(GArray *table_data,
- /* Build Hardware Error Source Table */
- void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-                      BIOSLinker *linker,
-+                     const AcpiNotificationSourceId *notif_source,
-+                     int num_sources,
-                      const char *oem_id, const char *oem_table_id)
- {
-     AcpiTable table = { .sig = "HEST", .rev = 1,
-                         .oem_id = oem_id, .oem_table_id = oem_table_id };
-+    int i;
- 
--    build_ghes_error_table(hardware_errors, linker);
-+    build_ghes_error_table(hardware_errors, linker, num_sources);
- 
-     acpi_table_begin(&table, table_data);
- 
-     /* Error Source Count */
--    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
--    build_ghes_v2(table_data, linker,
--                  ACPI_GHES_NOTIFY_SEA, ACPI_HEST_SRC_ID_SEA);
-+    build_append_int_noprefix(table_data, num_sources, 4);
-+    for (i = 0; i < num_sources; i++) {
-+        build_ghes_v2_entry(table_data, linker, &notif_source[i], i, num_sources);
-+    }
- 
-     acpi_table_end(linker, &table);
- }
-@@ -410,7 +424,6 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     }
-     ags = &acpi_ged_state->ghes_state;
- 
--    assert(ACPI_GHES_ERROR_SOURCE_COUNT == 1);
-     get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-                          &cper_addr, &read_ack_register_addr);
- 
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 3ac8f8e17861..3d411787fc37 100644
+index be1e51e0bb29..af8588330103 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -893,6 +893,10 @@ static void acpi_align_size(GArray *blob, unsigned align)
-     g_array_set_size(blob, ROUND_UP(acpi_data_len(blob), align));
- }
- 
-+static const AcpiNotificationSourceId hest_ghes_notify[] = {
-+    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-+};
-+
- static
- void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- {
-@@ -948,6 +952,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     if (vms->ras) {
-         acpi_add_table(table_offsets, tables_blob);
-         acpi_build_hest(tables_blob, tables->hardware_errors, tables->linker,
-+                        hest_ghes_notify, ARRAY_SIZE(hest_ghes_notify),
-                         vms->oem_id, vms->oem_table_id);
+@@ -861,6 +861,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
      }
  
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 39619a2457cb..9f0120d0d596 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -57,20 +57,27 @@ enum AcpiGhesNotifyType {
-     ACPI_GHES_NOTIFY_RESERVED = 12
- };
+     acpi_dsdt_add_power_button(scope);
++    aml_append(scope, aml_error_device());
+ #ifdef CONFIG_TPM
+     acpi_dsdt_add_tpm(scope, vms);
+ #endif
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 99e0a68b6c55..e272b35ea114 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -678,7 +678,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+     DeviceState *dev;
+     MachineState *ms = MACHINE(vms);
+     int irq = vms->irqmap[VIRT_ACPI_GED];
+-    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
++    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_ERROR_EVT;
  
--enum {
--    ACPI_HEST_SRC_ID_SEA = 0,
--    /* future ids go here */
--
--    ACPI_GHES_ERROR_SOURCE_COUNT
--};
--
- typedef struct AcpiGhesState {
-     uint64_t hw_error_le;
-     bool present; /* True if GHES is present at all on this board */
- } AcpiGhesState;
+     if (ms->ram_slots) {
+         event |= ACPI_GED_MEM_HOTPLUG_EVT;
+@@ -1010,6 +1010,13 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+     }
+ }
  
-+/*
-+ * ID numbers used to fill HEST source ID field
-+ */
-+enum AcpiGhesSourceID {
-+    ACPI_HEST_SRC_ID_SYNC,
-+};
++static void virt_generic_error_req(Notifier *n, void *opaque)
++{
++    VirtMachineState *s = container_of(n, VirtMachineState, generic_error_notifier);
 +
-+typedef struct AcpiNotificationSourceId {
-+    enum AcpiGhesSourceID source_id;
-+    enum AcpiGhesNotifyType notify;
-+} AcpiNotificationSourceId;
++    acpi_send_event(s->acpi_dev, ACPI_GENERIC_ERROR);
++}
 +
- void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-                      BIOSLinker *linker,
-+                     const AcpiNotificationSourceId * const notif_source,
-+                     int num_sources,
-                      const char *oem_id, const char *oem_table_id);
- void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-                           GArray *hardware_errors);
+ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+                              uint32_t phandle)
+ {
+@@ -2404,6 +2411,9 @@ static void machvirt_init(MachineState *machine)
+ 
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
++        vms->generic_error_notifier.notify = virt_generic_error_req;
++        notifier_list_add(&acpi_generic_error_notifiers,
++                          &vms->generic_error_notifier);
+     } else {
+         create_gpio_devices(vms, VIRT_GPIO, sysmem);
+     }
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c8e94e6aedc9..f3cf28436770 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -176,6 +176,7 @@ struct VirtMachineState {
+     DeviceState *gic;
+     DeviceState *acpi_dev;
+     Notifier powerdown_notifier;
++    Notifier generic_error_notifier;
+     PCIBus *bus;
+     char *oem_id;
+     char *oem_table_id;
 -- 
 2.48.1
 

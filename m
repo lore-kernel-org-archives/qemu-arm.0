@@ -1,133 +1,94 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3903441njk;
-        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV2/w3U44G2h6hGtt6HdM3eAIix3CWMBdKDKNkJipEEeXlnsvYajya6hQXsRe+OGBauXPjFPpWoJXPfeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH2/K63liXhoy3AqtJI1YG1LGQbEtYR5qJnRS3dGjCOtdz1XS4Pdgjv+43vFq1OmiSrsbFY
-X-Received: by 2002:a5d:47a4:0:b0:386:3e48:f732 with SMTP id ffacd0b85a97d-38c5195f307mr3631460f8f.16.1738170274142;
-        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738170274; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3935111njk;
+        Wed, 29 Jan 2025 09:55:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUzTUXdKEz+SPXuA4NeIu0e404IhKjb/MZGDNHWLGVJ8x/AKjwxxboFwov0AreW1e9zrUtgtzvX9u6KGQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFIRLkHNNOfiDlW05GgksMZyJNN9CU5avz+iryHOPNB7Xyx7khKTKWXmJ5iQIYwMOdMRRgw
+X-Received: by 2002:a05:6102:fa4:b0:4af:c5c8:bb4c with SMTP id ada2fe7eead31-4b9a5272b50mr3902496137.16.1738173335238;
+        Wed, 29 Jan 2025 09:55:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738173335; cv=none;
         d=google.com; s=arc-20240605;
-        b=Dz1+QMU8BRlWC/7UwqC25vqgCbuX38seVFJGxa5pH3MBW4ZqEJ0V/UJSDm2fNXSLwO
-         SMPJPqOOJa+wCEwZ0eu+w16oSdsopHbmXDRO5nmj0eg2Dj7zWoXfFVSiHI3KQNymVJdq
-         Wv5dAj5EdVL64nJvGpfYy7gRGqHBxvq80dDWRVxZ23bwagALeTPyz6wU90FW1HDcV+o/
-         /rLazCA1FMYOBBhxOBgUElX7j81HBYr8Kb4mmaZP/p6Awv0cwuXBKfBuce+Hf2iW3Vyp
-         RhZAcLxXOJed+O/oZoJDwvowuE4rTufmU5TB92s+uPbxAB57N/k/5rof+tCmbswqz21s
-         HjnA==
+        b=DWLEz/9Kh8iB06eGhUH49WyloVFCg/iCBIDdJDyUpx3tnZoXvFseXA8rNp0pGfkRuJ
+         SMVoRKPrSPgAx5DvCIjjDsF0+B+OR0PWSfeCoyr+az+WcafxW2J5y/8OVM6ZBUPHm+qA
+         qSV2keRuRb9svWSyGBF6oVx/pHtZlKBLVIKDcm3OHn9hyHwJ3Wqk09ppo60bEcnBEmES
+         dywsph6NphuQUykUrbr9wLM3wfE3kLt59BjJDrkPZG60cc4eh7jk34UcFyp/GxLWyxtV
+         anrBab0UA983STDciv7CKt2ae2UjY7U/nYKcqfUowcSWxwRovCFV7Gfjb26OtAtkvWts
+         IY4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=RPsDEebZ8Q2lHoaOucrQvil31SHr5Xd1Hg4iBNarVNs=;
-        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
-        b=fD2egVIG4/Nl+q05MS9STxn2eeL2kIaeIunCvL1ejdwGdFknRTDhKp1dE/fph+Be8M
-         Kdakr0x6TOhK7bLhQmiyIW0uPR6QItAUTA0XQl2928cI7SBIZztC4Jr3ndRT7bYdh8fs
-         2jtJ2NrRJ6qQ11hkyK1eTyUnPLBPTopUpEnc1Gz3Q+t+5+LISCZKOFZghbYleEyIyK64
-         kiC3q7g9WrwBvgzSA8MGXvkiKX+FN7bVLYuGz2jeVZ6EhUZIxGiv1dvWAWEav6JD5wuL
-         i/ViQAljv9PufLlJ1sKRZT2KmQAljXL5pzV5LxtdoQL5unRqwT6De1zSWxsyqjFd0fpc
-         US4g==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=4N5FAUM8Ca+sG1njUGdBzUIccLeUzGXBii7clp0dWBE=;
+        fh=if0Ke6TknvgYgABzFhYLOe92SFm81IMISIMQW1LWb8g=;
+        b=RKwPZ6IAUemuFZ3B3LZlDUYK8pKT1l0GOnO3Lk5aKRfybxS9G4dOBmi4+y40rSZtCe
+         AE5rvUOCvmswqcP1m7BJ9mDLnYT8hoGnzPp1ZUOb8+3NZe+8LxCCToq56vENvE6dGqKI
+         7/qvhmEc7wv5bMa1JEi7q03tww8OUntcHQ0DUyDgXO6VbsxfEWAvtWOcruRtF+H74WyM
+         nw1EEbrUNvTS7UGxR9FdUt+akv3Rms6JpLG6RM+34aKzReP7sQHGPtoScinIqQiNGXgv
+         IMhU+m6NbrR6R39UjIYn4UVUeaFp9m3BtK2keu39kZRfiqntBwUOD7UjATi2c7WoHGfv
+         uR+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-38c2a1734f1si9500001f8f.145.2025.01.29.09.04.33
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b709754ab4si4064780137.108.2025.01.29.09.55.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
+        Wed, 29 Jan 2025 09:55:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdBU6-0000Ay-Oc; Wed, 29 Jan 2025 12:04:14 -0500
+	id 1tdCHD-0004l4-Bk; Wed, 29 Jan 2025 12:54:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=PAS2=UV=kaod.org=clg@ozlabs.org>)
- id 1tdBU5-0000AK-8b; Wed, 29 Jan 2025 12:04:13 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tdCH8-0004ke-Pz; Wed, 29 Jan 2025 12:54:55 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=PAS2=UV=kaod.org=clg@ozlabs.org>)
- id 1tdBTy-0006Ox-Vf; Wed, 29 Jan 2025 12:04:12 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YjpQY5BHcz4x4t;
- Thu, 30 Jan 2025 04:03:49 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YjpQT6pxFz4wxm;
- Thu, 30 Jan 2025 04:03:44 +1100 (AEDT)
-Message-ID: <2d9247ab-34dd-4dde-a9c0-c04c2d8a1a18@kaod.org>
-Date: Wed, 29 Jan 2025 18:03:50 +0100
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tdCH5-0005ys-Tv; Wed, 29 Jan 2025 12:54:54 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 7A3114E6027;
+ Wed, 29 Jan 2025 18:54:48 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id T1c9ff6ZTSRK; Wed, 29 Jan 2025 18:54:46 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 6C4F14E6014; Wed, 29 Jan 2025 18:54:46 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 6A41A74577C;
+ Wed, 29 Jan 2025 18:54:46 +0100 (CET)
+Date: Wed, 29 Jan 2025 18:54:46 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH 09/21] hw/arm/fsl-imx8mp: Add PCIe support
+In-Reply-To: <137C0579-19AB-4D92-82DC-6CBE2422AD6A@gmail.com>
+Message-ID: <f2172469-5935-414e-b4a9-bf61055b6fff@eik.bme.hu>
+References: <20250120203748.4687-1-shentey@gmail.com>
+ <20250120203748.4687-10-shentey@gmail.com>
+ <CAFEAcA9efWMDxaTCfa6t8MiCgFUEU+nsyurNOqVDxAa9=KS=-Q@mail.gmail.com>
+ <137C0579-19AB-4D92-82DC-6CBE2422AD6A@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 01/18] hw/intc/aspeed: Rename INTC to INTC0
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
- <20250121070424.2465942-2-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250121070424.2465942-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=PAS2=UV=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.037, RCVD_IN_DNSWL_LOW=-0.7,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,228 +103,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8jUQ7DR/DAfG
+X-TUID: mIamqEwUUEqw
 
-On 1/21/25 08:04, Jamin Lin wrote:
-> The design of the INTC has significant changes in the AST2700 A1. In the
-> AST2700 A0, there was one INTC controller, whereas in the AST2700 A1,
-> there were two INTC controllers: INTC0 (CPU DIE) and INTC1 (I/O DIE).
-> 
-> The previous INTC model only supported the AST2700 A0 and was implemented for
-> the INTC0 (CPU DIE). To support the future INTC1 (I/O DIE) model, rename INTC
-> to INTC0.
+On Tue, 28 Jan 2025, Bernhard Beschow wrote:
+> Am 28. Januar 2025 14:33:14 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
+>> On Mon, 20 Jan 2025 at 20:38, Bernhard Beschow <shentey@gmail.com> wrote:
+>>>
+>>> Linux checks for the PLLs in the PHY to be locked, so implement a model
+>>> emulating that.
+>>>
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>>
+>>> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+>>> index 1514bc5864..8d48580cb4 100644
+>>> --- a/docs/system/arm/imx8mp-evk.rst
+>>> +++ b/docs/system/arm/imx8mp-evk.rst
+>>> @@ -14,6 +14,7 @@ The ``imx8mp-evk`` machine implements the following devices:
+>>>   * Generic Interrupt Controller (GICv3)
+>>>   * 4 UARTs
+>>>   * 3 USDHC Storage Controllers
+>>> + * 1 Designware PCI Express Controller
+>>>   * Secure Non-Volatile Storage (SNVS) including an RTC
+>>>   * Clock Tree
+>>>
+>>> @@ -62,3 +63,15 @@ Now that everything is prepared the newly built image can be run in the QEMU
+>>>        -dtb imx8mp-evk-patched.dtb \
+>>>        -append "root=/dev/mmcblk2p2" \
+>>>        -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
+>>> +
+>>> +Using PCI Devices
+>>> +-----------------
+>>> +
+>>> +The PCI Express controller spawns two PCI buses, of which only one can be used.
+>>> +By default QEMU assigns the wrong bus, so the correct one has to be specified
+>>> +manually by adding ``bus=dw-pcie``. For example, when adding an Intel e1000
+>>> +network card, the command line looks like:
+>>> +
+>>> +.. code-block:: bash
+>>> +
+>>> +  $ qemu-system-aarch64 -M imximp-evk ... -device virtio-net-pci,bus=dw-pcie
+>>
+>> Why does this happen? Isn't there some way to make QEMU default to
+>> using the right bus? Otherwise there's likely to be a lot of
+>> user confusion because PCI "doesn't work"...
+>
+> Yeah, this is really confusing and I forget about it myself. I'd appreciate any hints here.
 
+I'm not sure but I think the PCI bus created last will be used by default 
+so maybe swapping the order these are created may help.
 
-Why not introduce definitions with _INTC_IO_ and leave alone the current
-instead ? Do we expect to have more than 2 INTC controllers ?
+Regards,
+BALATON Zoltan
 
-
-Thanks,
-
-C.
-
-
-
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast27x0.c       |  6 +--
->   hw/intc/aspeed_intc.c         | 90 +++++++++++++++++------------------
->   include/hw/arm/aspeed_soc.h   |  2 +-
->   include/hw/intc/aspeed_intc.h |  2 +-
->   4 files changed, 50 insertions(+), 50 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 4114e15ddd..ba461fcd3c 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -56,7 +56,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_ETH2]      =  0x14060000,
->       [ASPEED_DEV_ETH3]      =  0x14070000,
->       [ASPEED_DEV_EMMC]      =  0x12090000,
-> -    [ASPEED_DEV_INTC]      =  0x12100000,
-> +    [ASPEED_DEV_INTC0]     =  0x12100000,
->       [ASPEED_DEV_SLI]       =  0x12C17000,
->       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
->       [ASPEED_GIC_DIST]      =  0x12200000,
-> @@ -372,7 +372,7 @@ static void aspeed_soc_ast2700_init(Object *obj)
->   
->       object_initialize_child(obj, "sli", &s->sli, TYPE_ASPEED_2700_SLI);
->       object_initialize_child(obj, "sliio", &s->sliio, TYPE_ASPEED_2700_SLIIO);
-> -    object_initialize_child(obj, "intc", &a->intc, TYPE_ASPEED_2700_INTC);
-> +    object_initialize_child(obj, "intc", &a->intc, TYPE_ASPEED_2700_INTC0);
->   
->       snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
->       object_initialize_child(obj, "adc", &s->adc, typename);
-> @@ -517,7 +517,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       }
->   
->       aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->intc), 0,
-> -                    sc->memmap[ASPEED_DEV_INTC]);
-> +                    sc->memmap[ASPEED_DEV_INTC0]);
->   
->       /* GICINT orgates -> INTC -> GIC */
->       for (i = 0; i < ic->num_ints; i++) {
-> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-> index 126b711b94..df4da759e1 100644
-> --- a/hw/intc/aspeed_intc.c
-> +++ b/hw/intc/aspeed_intc.c
-> @@ -14,27 +14,27 @@
->   #include "hw/registerfields.h"
->   #include "qapi/error.h"
->   
-> -/* INTC Registers */
-> -REG32(GICINT128_EN,         0x1000)
-> -REG32(GICINT128_STATUS,     0x1004)
-> -REG32(GICINT129_EN,         0x1100)
-> -REG32(GICINT129_STATUS,     0x1104)
-> -REG32(GICINT130_EN,         0x1200)
-> -REG32(GICINT130_STATUS,     0x1204)
-> -REG32(GICINT131_EN,         0x1300)
-> -REG32(GICINT131_STATUS,     0x1304)
-> -REG32(GICINT132_EN,         0x1400)
-> -REG32(GICINT132_STATUS,     0x1404)
-> -REG32(GICINT133_EN,         0x1500)
-> -REG32(GICINT133_STATUS,     0x1504)
-> -REG32(GICINT134_EN,         0x1600)
-> -REG32(GICINT134_STATUS,     0x1604)
-> -REG32(GICINT135_EN,         0x1700)
-> -REG32(GICINT135_STATUS,     0x1704)
-> -REG32(GICINT136_EN,         0x1800)
-> -REG32(GICINT136_STATUS,     0x1804)
-> -
-> -#define GICINT_STATUS_BASE     R_GICINT128_STATUS
-> +/* AST2700 INTC0 Registers */
-> +REG32(INTC0_GICINT128_EN,         0x1000)
-> +REG32(INTC0_GICINT128_STATUS,     0x1004)
-> +REG32(INTC0_GICINT129_EN,         0x1100)
-> +REG32(INTC0_GICINT129_STATUS,     0x1104)
-> +REG32(INTC0_GICINT130_EN,         0x1200)
-> +REG32(INTC0_GICINT130_STATUS,     0x1204)
-> +REG32(INTC0_GICINT131_EN,         0x1300)
-> +REG32(INTC0_GICINT131_STATUS,     0x1304)
-> +REG32(INTC0_GICINT132_EN,         0x1400)
-> +REG32(INTC0_GICINT132_STATUS,     0x1404)
-> +REG32(INTC0_GICINT133_EN,         0x1500)
-> +REG32(INTC0_GICINT133_STATUS,     0x1504)
-> +REG32(INTC0_GICINT134_EN,         0x1600)
-> +REG32(INTC0_GICINT134_STATUS,     0x1604)
-> +REG32(INTC0_GICINT135_EN,         0x1700)
-> +REG32(INTC0_GICINT135_STATUS,     0x1704)
-> +REG32(INTC0_GICINT136_EN,         0x1800)
-> +REG32(INTC0_GICINT136_STATUS,     0x1804)
-> +
-> +#define GICINT_STATUS_BASE     R_INTC0_GICINT128_STATUS
->   
->   static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
->   {
-> @@ -153,15 +153,15 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
->       trace_aspeed_intc_write(offset, size, data);
->   
->       switch (addr) {
-> -    case R_GICINT128_EN:
-> -    case R_GICINT129_EN:
-> -    case R_GICINT130_EN:
-> -    case R_GICINT131_EN:
-> -    case R_GICINT132_EN:
-> -    case R_GICINT133_EN:
-> -    case R_GICINT134_EN:
-> -    case R_GICINT135_EN:
-> -    case R_GICINT136_EN:
-> +    case R_INTC0_GICINT128_EN:
-> +    case R_INTC0_GICINT129_EN:
-> +    case R_INTC0_GICINT130_EN:
-> +    case R_INTC0_GICINT131_EN:
-> +    case R_INTC0_GICINT132_EN:
-> +    case R_INTC0_GICINT133_EN:
-> +    case R_INTC0_GICINT134_EN:
-> +    case R_INTC0_GICINT135_EN:
-> +    case R_INTC0_GICINT136_EN:
->           irq = (offset & 0x0f00) >> 8;
->   
->           if (irq >= aic->num_ints) {
-> @@ -202,15 +202,15 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
->           }
->           s->regs[addr] = data;
->           break;
-> -    case R_GICINT128_STATUS:
-> -    case R_GICINT129_STATUS:
-> -    case R_GICINT130_STATUS:
-> -    case R_GICINT131_STATUS:
-> -    case R_GICINT132_STATUS:
-> -    case R_GICINT133_STATUS:
-> -    case R_GICINT134_STATUS:
-> -    case R_GICINT135_STATUS:
-> -    case R_GICINT136_STATUS:
-> +    case R_INTC0_GICINT128_STATUS:
-> +    case R_INTC0_GICINT129_STATUS:
-> +    case R_INTC0_GICINT130_STATUS:
-> +    case R_INTC0_GICINT131_STATUS:
-> +    case R_INTC0_GICINT132_STATUS:
-> +    case R_INTC0_GICINT133_STATUS:
-> +    case R_INTC0_GICINT134_STATUS:
-> +    case R_INTC0_GICINT135_STATUS:
-> +    case R_INTC0_GICINT136_STATUS:
->           irq = (offset & 0x0f00) >> 8;
->   
->           if (irq >= aic->num_ints) {
-> @@ -336,26 +336,26 @@ static const TypeInfo aspeed_intc_info = {
->       .abstract = true,
->   };
->   
-> -static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
-> +static void aspeed_2700_intc0_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
->   
-> -    dc->desc = "ASPEED 2700 INTC Controller";
-> +    dc->desc = "ASPEED 2700 INTC 0 Controller";
->       aic->num_lines = 32;
->       aic->num_ints = 9;
->   }
->   
-> -static const TypeInfo aspeed_2700_intc_info = {
-> -    .name = TYPE_ASPEED_2700_INTC,
-> +static const TypeInfo aspeed_2700_intc0_info = {
-> +    .name = TYPE_ASPEED_2700_INTC0,
->       .parent = TYPE_ASPEED_INTC,
-> -    .class_init = aspeed_2700_intc_class_init,
-> +    .class_init = aspeed_2700_intc0_class_init,
->   };
->   
->   static void aspeed_intc_register_types(void)
->   {
->       type_register_static(&aspeed_intc_info);
-> -    type_register_static(&aspeed_2700_intc_info);
-> +    type_register_static(&aspeed_2700_intc0_info);
->   }
->   
->   type_init(aspeed_intc_register_types);
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 689f52dae8..51e585e3e4 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -194,7 +194,7 @@ enum {
->       ASPEED_DEV_EHCI1,
->       ASPEED_DEV_EHCI2,
->       ASPEED_DEV_VIC,
-> -    ASPEED_DEV_INTC,
-> +    ASPEED_DEV_INTC0,
->       ASPEED_DEV_SDMC,
->       ASPEED_DEV_SCU,
->       ASPEED_DEV_ADC,
-> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-> index 18cb43476c..10718ed4a1 100644
-> --- a/include/hw/intc/aspeed_intc.h
-> +++ b/include/hw/intc/aspeed_intc.h
-> @@ -13,7 +13,7 @@
->   #include "hw/or-irq.h"
->   
->   #define TYPE_ASPEED_INTC "aspeed.intc"
-> -#define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
-> +#define TYPE_ASPEED_2700_INTC0 TYPE_ASPEED_INTC "0" "-ast2700"
->   OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
->   
->   #define ASPEED_INTC_NR_REGS (0x2000 >> 2)
-
+> Best regards,
+> Bernhard
+>
+>>
+>> thanks
+>> -- PMM
+>
+>

@@ -1,136 +1,113 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3133399njk;
-        Tue, 28 Jan 2025 06:34:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXEEw25vnkvqvjJqaFf5X9ffuCiB/BI1jiVWUF/T7uqpbT6h8BzIQdIkwKP9rmx3kAs0TY6zwYtUE+XqQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE+stYQicJL0Bjm9ZLyemEF5nRT4PiIkVrGcD/+ielQwx8Oa+WyySvbK5OlSRrXkltY5Vpc
-X-Received: by 2002:a05:620a:2686:b0:7b6:6ffc:e972 with SMTP id af79cd13be357-7be63219967mr7854366885a.5.1738074839845;
-        Tue, 28 Jan 2025 06:33:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738074839; cv=none;
+Received: by 2002:a05:7022:6a3:b0:92:a90b:6588 with SMTP id y35csp3709298dly;
+        Tue, 28 Jan 2025 23:20:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX30KOPRKQyWDcnQrl+ia/mxfeTykZbXkxg0j0dfgeatAZeVNAnopWd2+JhI3T2bWP8U8u85F5jG6Hrzg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHF840vt6JvhD1hU1uzAEpZf74FlrYXD0Weq0ayQ0yG7AYBAoylmOxEDnNPvTjG9F6CZ9a3
+X-Received: by 2002:ac8:7f4b:0:b0:46e:2a18:93ab with SMTP id d75a77b69052e-46fd0b99574mr41472021cf.52.1738135247668;
+        Tue, 28 Jan 2025 23:20:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738135247; cv=none;
         d=google.com; s=arc-20240605;
-        b=K1Q9KLh0lyMxBwOtoJ+q5HCzhALfUGqE4dLpLNd1J8z5jy6ErzqCM+a0zczjQdcURR
-         iUbWtabQwxKF/plKRQ9c4RFq7XrBDngUV7XMpT+HpOHl7XDEQj3vusNq/zRbxkcB9rDQ
-         4l87VZxZ/fTw73sCJjTthjpS7k7GUfQ+hE7nEZ2TC5iDawvEQcjglxcYgUOA+4JRiodZ
-         phnhMKGGUJjzR78NHU8U2Nw3zf2JW29dY4FzTM9zeniMMTPqB4LmiBmemwVzGKVnCw63
-         03HOR/wcxzb9uH6q/gbLI7PHwsS1zFtDQpOLog73SzmfZ7AI60E86VrYXg8g5T8NyRSw
-         pmsw==
+        b=PD9I7CJw/zyY+qIxjcGi8p6gjdsH9DOP8H6K1h5zSZOsD8LpTD1UewoIzHcoTAOP8L
+         VQPOSQqV7ZG5476g4HsgXllwQXrLkMOgXLjOCSUhwal37JN/TjFbUyRhip8Ld5uOxDvv
+         GtwrBram4nYw5bXorVxc1fi4S/fl90p63yKKBbrbtx4uOjz/DkkxcewcwWtqxf5Bccm/
+         rlc8BcLgHBbUPiiqFmESHj6J600Hlx4ew6ng0heoBMO45tLm0XymBzOXbRrubulcIzGG
+         7vKCBAJKbIbhUuXUoHP3suRLT8A1UXWa2cC9ZbfzHTkpyIBpixqqMEt/LE5sgAeXbUQa
+         e+cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=+7zR+WOlWPVsc5sCsvLuqT4FX/5nFZMkjKWuY6UE8Uo=;
-        fh=TpDzHiQ6BFlBW55HvcXSR/Bpq4dlqxr2avKA6GrMOro=;
-        b=Xu0kCnPaPedNueufVUi0H8NHvFWiX+2H6UCrjSiv0AFemjnUGzOdf50S34ejXJsa7Y
-         fwK8WhMOY/lmOzEuaw9qGScsSb9mpQxMQBGgR6iKFl011rJk7AIXsWCUyfVwredBq+wl
-         OPnaTBym4pcn8eSiKQ0iZjsTKcX849eN2TDVW5N2s27S+p24XnxeWTy1I4vj9h0Gepr7
-         RjITRZGmv7M+LmeQ01NGodYgE5XySzNnkjoWBcY5dk+97uDMHlijl5we6mxGRPCi+eaG
-         txffP85PedArShysaM6QGDP0cBz7ix41gUTrAsN7LKQHVPSHauFkbmEoSFgMbQO21wrE
-         HwvQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=IyI/sKmGzp9iUQiTh9HHoh1vQN0kavvwKghUO7Fad1E=;
+        fh=XEUWnmNUzgDVltOtMw+UmOaRtoK2L8C0I2oKK3mImI4=;
+        b=iauT2U7Do7usyu91Mf479lurV9PFKZHZezuEGafdL7OCnYvLYclGT56kVrtJZknPrt
+         2/MUgvLpvrGgtaYHZwfayJwv9QDKE9Z6MA8rZ3E+hcFBccIlvGioIPef/1FWrHQ7cGNE
+         TS+4Zjl8htBFYX5iobfzlpeIBLAF7tdB6QYBbKi2+JnT/y1yrKGz5x8Se4EG5uVCWNxB
+         XiolZ1ro5pvICfRLi/gRXYQ6k147hgipisUCc8fwTd9Cg/H41v+1rYrhjeFUykvKMOxo
+         pZX4gbbaPtabzjoyurSFAMXW+ctANxvPlAy6BdctoCJWiWJtVcip+A9FdtfEl1vWzfUb
+         VIbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cetn5fOC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SmsxNDrb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be9af10f41si1223646585a.469.2025.01.28.06.33.59
+        by mx.google.com with ESMTPS id d75a77b69052e-46e66b87b92si139835851cf.396.2025.01.28.23.20.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2025 06:33:59 -0800 (PST)
+        Tue, 28 Jan 2025 23:20:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cetn5fOC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SmsxNDrb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcmen-0001ln-SP; Tue, 28 Jan 2025 09:33:37 -0500
+	id 1td2Lr-00027s-PH; Wed, 29 Jan 2025 02:19:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1tcmem-0001kd-ED
- for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:33:36 -0500
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1tcmek-0004LN-RX
- for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:33:36 -0500
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-21661be2c2dso97944305ad.1
- for <qemu-devel@nongnu.org>; Tue, 28 Jan 2025 06:33:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738074813; x=1738679613; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=+7zR+WOlWPVsc5sCsvLuqT4FX/5nFZMkjKWuY6UE8Uo=;
- b=cetn5fOCUUqCGszh7oRpSpaIewXE6FFHppFoLBj3GviFbXxtQWECS0MciPCf8reBJ2
- c6G7PFoWQFo/J+BFbHmUIRgV64JtymRG+xVRtVV9/Eoqy6QwBy4ifsrd+H285QLgKsxm
- kL+WGYxYXL6jQ4TCUr+MPimVRRjFm/hpGKaKl6L5vLMQo4qLgPfOfJoBF7xj0nQj490p
- 1E5cui3tdj/T3yZ4OjAiX3ejLt1cHRkyIh3Af35s8vMGg7ko03L0kydeTnySeQ05naZh
- nqD3h9IMnDkboIvzNJJYTrbG5Ziv/Yd3qtXTd1X+Rj5u0X4uxBkUIlsgEvEspyXgK6TB
- hv2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738074813; x=1738679613;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+7zR+WOlWPVsc5sCsvLuqT4FX/5nFZMkjKWuY6UE8Uo=;
- b=fkkzUV9wzRkrnN6fyEw9QUMXCXF8k+InzpwfrNsFYX9PoQgwHiPt6ffDJbU3a/p1C2
- vkXNZVPYmItVIq2dUTjlIrKcUhf1+IDZG+HmJI0utCUwVLOWnnKm+Sn6uzJiiMVn0jnu
- LhuiTFO/M+Nc3wLzKbjns/+iAyp/kQXZVSNxRQk/WBcisD22tl/7QhM0p6A41CUDqNkZ
- d7ZWAQvAXaAm637j5wILDWmkwEobU3ic2O3U6EwGVUxOo5FpYWUDS4Pqy+3rTuryLYk/
- buf/nMsAFH9Ay+qkDXBcgj6kzWqIFMEacln0QFsXzqd7yfEItSz+r5IxdTWCBF/hlcTq
- Yt5Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWyoeUhQBTyrSLMwjEPZkzXREdTpZTeG3YH18iJPylku+GX9Ck0f7klJYKEGRmpyWKfEg4Nhxi1/yu7@nongnu.org
-X-Gm-Message-State: AOJu0YwKUrgAUHL8udCa7W/GlDRhKjFoNiQGC2uEoVxziMq3GHmGhGxj
- D2q4xWMg3dTkVJx8wQrgAt4xUANLkP07ZsEh4s7Blobs79CdLbLvAE4qr/lcd4E=
-X-Gm-Gg: ASbGncsJ0+eUa4TsmBy8GyIq3u33zRjQcv94ml9p/PEIGDB2NsknEtsfeB70v+QfSC5
- 2rD7B3KcPx084P1g14m96lZxiU95bBixHRf8omyJVQHsxCMWgqb9W0UrPIXVPPHgW84OweWStE/
- BFq3ojQ2/d44Gqz4jCrS4GptBFNSBL6hdVnOJbgMoXleIc5wiz55H4hh2teKUu5Y16nTowVCkpd
- i2PGeR59dYwiiz4/enItbm63Tgl3KTF04medPN9L9iI61Si1CQefxXcJER4wd9V5bB2l3saWVe6
- fBxzZXDykd4NimyjEEYeGYfr6SA=
-X-Received: by 2002:a17:903:2381:b0:21a:8dec:e596 with SMTP id
- d9443c01a7336-21c355b54e7mr765127045ad.35.1738074813118; 
- Tue, 28 Jan 2025 06:33:33 -0800 (PST)
-Received: from [192.168.0.102] ([187.75.36.205])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21da424aee6sm81655205ad.215.2025.01.28.06.33.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Jan 2025 06:33:32 -0800 (PST)
-Message-ID: <bd929bd7-88d7-4808-b801-26a2858ef620@linaro.org>
-Date: Tue, 28 Jan 2025 11:33:27 -0300
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1td2Ln-00021e-FT
+ for qemu-devel@nongnu.org; Wed, 29 Jan 2025 02:19:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1td2Ll-0003gd-3G
+ for qemu-devel@nongnu.org; Wed, 29 Jan 2025 02:19:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1738135140;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IyI/sKmGzp9iUQiTh9HHoh1vQN0kavvwKghUO7Fad1E=;
+ b=SmsxNDrbGXvtMYtqI8LV3BaaBAyn0twlCq5VXxEy5fLoo76FJTF7mbfOdS1/k9HJvvNURo
+ GliQuyTwhIvg+4GBZwwYiv6LIe0AEGfH5He4oSxRFahpAPjpRWowGjc3AQF845OfytkhnO
+ 4lWvEQgq7smvTwSevtbdFPl7IjttnEU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-443-EkCsDZoHPjWJBXf_JG9Ukw-1; Wed,
+ 29 Jan 2025 02:18:55 -0500
+X-MC-Unique: EkCsDZoHPjWJBXf_JG9Ukw-1
+X-Mimecast-MFC-AGG-ID: EkCsDZoHPjWJBXf_JG9Ukw
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8E71F1956083; Wed, 29 Jan 2025 07:18:54 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.105])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id BEADC19560AA; Wed, 29 Jan 2025 07:18:50 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 5/5] tests/functional: Introduce a bletchley machine test
+Date: Wed, 29 Jan 2025 08:18:20 +0100
+Message-ID: <20250129071820.1258133-6-clg@redhat.com>
+In-Reply-To: <20250129071820.1258133-1-clg@redhat.com>
+References: <20250129071820.1258133-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 21/21] hw/gpio/imx_gpio: Don't clear input GPIO values
- upon reset
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-22-shentey@gmail.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250120203748.4687-22-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,38 +122,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WiLGHiSB3HJi
+X-TUID: pp2J6TqDUcLp
 
-Hi,
+Use do_test_arm_aspeed_openbmc() to run the latest OpenBMC firmware
+build of the bletchley BMC.
 
-On 1/20/25 17:37, Bernhard Beschow wrote:
-> Input GPIO values such as a present SD card may get notified before the GPIO
-> controller itself gets reset. Claring the input values thus loses data. Assuming
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/functional/meson.build                  |  2 ++
+ tests/functional/test_arm_aspeed_bletchley.py | 24 +++++++++++++++++++
+ 2 files changed, 26 insertions(+)
+ create mode 100755 tests/functional/test_arm_aspeed_bletchley.py
 
-                                 ^- nit: Clearing
-
-
-Cheers,
-Gustavo
-
-> that input GPIO events are only fired when the state changes, the input values
-> shouldn't be reset.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/gpio/imx_gpio.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/gpio/imx_gpio.c b/hw/gpio/imx_gpio.c
-> index 549a281ed7..25546221e0 100644
-> --- a/hw/gpio/imx_gpio.c
-> +++ b/hw/gpio/imx_gpio.c
-> @@ -298,7 +298,6 @@ static void imx_gpio_reset(DeviceState *dev)
->   
->       s->dr       = 0;
->       s->gdir     = 0;
-> -    s->psr      = 0;
->       s->icr      = 0;
->       s->imr      = 0;
->       s->isr      = 0;
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 5c782ceb0a98..a8eb9c9a7af5 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -25,6 +25,7 @@ test_timeouts = {
+   'arm_aspeed_witherspoon' : 120,
+   'arm_aspeed_ast2500' : 480,
+   'arm_aspeed_ast2600' : 720,
++  'arm_aspeed_bletchley' : 120,
+   'arm_aspeed_rainier' : 240,
+   'arm_bpim2u' : 500,
+   'arm_collie' : 180,
+@@ -86,6 +87,7 @@ tests_arm_system_thorough = [
+   'arm_aspeed_witherspoon',
+   'arm_aspeed_ast2500',
+   'arm_aspeed_ast2600',
++  'arm_aspeed_bletchley',
+   'arm_aspeed_rainier',
+   'arm_bpim2u',
+   'arm_canona1100',
+diff --git a/tests/functional/test_arm_aspeed_bletchley.py b/tests/functional/test_arm_aspeed_bletchley.py
+new file mode 100755
+index 000000000000..10e6703b53cb
+--- /dev/null
++++ b/tests/functional/test_arm_aspeed_bletchley.py
+@@ -0,0 +1,24 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from aspeed import AspeedTest
++
++class BletchleyMachine(AspeedTest):
++
++    ASSET_BLETCHLEY_FLASH = Asset(
++        'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/bletchley-bmc/openbmc-20250128071329/obmc-phosphor-image-bletchley-20250128071329.static.mtd.xz',
++        'db21d04d47d7bb2a276f59d308614b4dfb70b9c7c81facbbca40a3977a2d8844');
++
++    def test_arm_ast2600_bletchley_openbmc(self):
++        image_path = self.uncompress(self.ASSET_BLETCHLEY_FLASH)
++
++        self.do_test_arm_aspeed_openbmc('bletchley-bmc', image=image_path,
++                                        uboot='2019.04', cpu_id='0xf00',
++                                        soc='AST2600 rev A3');
++
++if __name__ == '__main__':
++    AspeedTest.main()
+-- 
+2.48.1
 

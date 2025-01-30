@@ -1,240 +1,163 @@
-Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp236216njl;
-        Thu, 30 Jan 2025 04:02:20 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXsjpX9Mk5vl8rvugfasmBo1dzpcateR6LPhscgLhrKt4XQTPAT7h2jAsfHLRXqgYabhOG+WD7D+BC+eg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVRTik2sTy4xoPssvQv1lNc+yQVD/Dr9iEbeRVMskZusv82CQkLFZbHiyrkM8xcfc/o8Sq
-X-Received: by 2002:a05:6a00:2fd1:b0:727:39a4:30cc with SMTP id d2e1a72fcca58-72fe2cccccdmr3931506b3a.1.1738238540077;
-        Thu, 30 Jan 2025 04:02:20 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738238540; cv=pass;
+Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp271564njl;
+        Thu, 30 Jan 2025 05:03:35 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUMAhOOhUvvd4QFoIPnTVQff0kEcR9LrZpx0vQZdcP+XGma29m0Bnkpm1oo/l987fOT6+4WyQwEPShJ8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHmQ8HmxEcuQbVcET/9FwGclgZpZXCFX2ZLve1peSeyW2vFQp8c1L57DLqOdywtEeH6Wn07
+X-Received: by 2002:a05:6402:414c:b0:5dc:1ec6:12bc with SMTP id 4fb4d7f45d1cf-5dc5effc2ecmr7611493a12.28.1738242215386;
+        Thu, 30 Jan 2025 05:03:35 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738242215; cv=pass;
         d=google.com; s=arc-20240605;
-        b=WXV7BCO4Cy39+HM2NoiO6/mOQbNf9i9a2nWbBBVyV+GEVoX4gnOjEzjCRmp1oM+vTV
-         HdmWtUNDTGTQoy5JLnsGOVoPk+3LsQ86QhjSjC75NGt6Xj0DiSEAKvjf8KoLiOM2uuv7
-         LEdjtLxs39UqlShmVP+nN/ie2/T7hxAbuQIOn1HCGk9XPnj74/WNNLE4DPEO0nc8Flu8
-         s3lUzM729lo4Z2XnBoW/dGZWGvZAAfpW2XrFNKEUgptE/VIn+XnmGAS+L5OdKUSAW+/X
-         Miv+xfHhr84yLzeGKinZDaQCJ6xEeNJMr/ZzRUbbfD2DP4TQsgPih6JK+jFZTMIeNdu9
-         pn0A==
+        b=CGWPQxMp3Y0aieCgGMV61GiORrIwKlX+WOniP4hjfZlwmNudjq2XHQNYrStsw44OFK
+         oq9lE0D13dmp0q9KP+gKYhBLAuJSNDe4YiIgl4fzdp4ZID25YwP1qlS3pyL+CPgImNJ7
+         bOPEGomUi8JU2dPGQ3vV3Go3aIoVJYeRlG19nx16muTfN78piamQgVuOXmBZfCxNifab
+         bgBzFUnHClOhS+ggtN/j+4wUv8dDzz/6aSaT5n/aO6v/WhTdroNQphcklkN+Y/CC7PZw
+         JQz3Ds364bdPP5ar1Slv4HTWGBK4SU5oa4SVsQl2HXfmCZszA4FT4HKhWDDmoPU5kk4c
+         KG9w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=tthXxwJ9fuw9xyqBmp8bg2z2kCO9zZkxXy5p5fv+zVY=;
-        fh=vhMxJS6/zEMWmNbwBUcJ9ZyzYpIf4y7LizJxKTHVDLY=;
-        b=goAVHXppr5cE7Ya5IXq8AGj51GErA8X8e0YT6sRWypTyrp5b00sm05h7DQWLLojtY6
-         d9l21tQjPP/WPPlL59Ebt5AoPFvw4vZ5sufcrx+9ThKeE3KrMOjfnbCEDus9MAOcnUpJ
-         ymKyp+4n4Xm6xVXdAnmvjLktF2IM5XGzucyxhnw7kA11h7z/cxWDL1sEE5wgWpoPTaR+
-         8RFenlXJ6l6/Lnem2piW8S2oBi3at/dV5e0ayHMV/JA+L9goIPBpL8eq3H6I/Fp7ILgy
-         Q+tVo7VmKXad4OhvSB4bDUfkPd7fQktHOTJRwJpyTXwWgUNFmt7OpC/POigqi0Eqp4PZ
-         6q4w==;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=N9XnGHXlGiYuBFvuGEpZBKTX7f5kuRY5+8Rnx0tmroA=;
+        fh=Qe1Z/MD0vjI9Zl9s5p7E7+jjEbdm3kdir/Riz6VYbdE=;
+        b=Xl3mOtq/P8aDGD5dMQl4ivfj3uEBGwurBrynN2hZOHXWF8bYGhyUlUKpgLNE4EPexn
+         u32W3iecVQ2r+MsUnw8N0tPxBKiHqRsMxp5fXAfcUaqe+euF+/t9iwx8iRyILeuFOujp
+         Uqouan/OcwuVvjDR+TJz72azcIaY8hWXJkVTaBi9a7o272La2+F/Up+KO5JMWl1KCHsZ
+         UDJKMxLwSvklTTGneWLwOys5fJHrvMeUNmVoC57PquXLJ++cMZpnra7OsbD2UMm8pxlb
+         QkqcBQOJkkqWE+/S5Avkp3ptDHw85t92nI7miWBGKa9woWlMq6Wqhl2wQRF9TaQhmaSl
+         LKbg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HI23s8ww;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-acec0e8ef41si1493742a12.543.2025.01.30.04.02.19
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ldiUcwj7;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5dc725600edsi962273a12.562.2025.01.30.05.03.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jan 2025 04:02:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Thu, 30 Jan 2025 05:03:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HI23s8ww;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-36922-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ldiUcwj7;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-493567-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id E7D4B3A5A8D
-	for <alex.bennee@linaro.org>; Thu, 30 Jan 2025 12:02:12 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id CBD8A18899A0
+	for <alex.bennee@linaro.org>; Thu, 30 Jan 2025 13:03:39 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7D7E91AF0DC;
-	Thu, 30 Jan 2025 12:02:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5F24F1DED4B;
+	Thu, 30 Jan 2025 13:03:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HI23s8ww"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ldiUcwj7"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98D37135A53
-	for <kvm@vger.kernel.org>; Thu, 30 Jan 2025 12:02:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1629B1D88DB
+	for <linux-kernel@vger.kernel.org>; Thu, 30 Jan 2025 13:03:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738238536; cv=none; b=f3XQ197s5ntaBWnjSThyEfB5gYSXwWzp0FkxkrT6Di2MzTf210PSSMCHvgmPnXlImyne5oDtBePo9Sz9kMQdy+SxKd7S52ssihm0VoyOlv/Yt4xNipGKAkOOaP8BkYzWrAjLAsTbu2KD1cfZO5VYsUKULgWp9OPWC+d5kTfCAag=
+	t=1738242210; cv=none; b=c6ykvaAkd+odfhAJorVoQt/o6vRtzJdLQYIPggqfbikwTgY5HwacM1QSYZqgVp1CPt8sxr/HnfTeov1harJeYM4/uaPfo4YXht1iXsviOworVvc3SWOz/VhG62H5vP2P/kR9LwO1u6EsRrgH/wLvL3IIybx59qapzTA0EiTVwik=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738238536; c=relaxed/simple;
-	bh=FvsUTUpT78Yr+OXOaCM87kqW6xyaSmU2x1POulx/S7E=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=UJ9PZsgcXqFj8e6iQH/iXdMf/AqqjWvaHy3s47NYMrMUnTw5qnVUlmrhwllAaNsL+xZX+P795rxHEuPwN4pGNA5wC0MFSupI5iU24BciPfMwvdWNYhPAF7LjWa73j9Tm9df7zbpxn2TdF5jctBcaUrlDy2YB8DrUyhQIZ5+LZD8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=HI23s8ww; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738238533;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=tthXxwJ9fuw9xyqBmp8bg2z2kCO9zZkxXy5p5fv+zVY=;
-	b=HI23s8wwI8+QSLFZ6vXlrlskVL1xls5Q6KReIa/zVWtuM1SFpza7nWF/PpkgQhAG/eG81f
-	S1+Bn70r/jIuubQbzrtDihl2Lw0ZMutbTc3hZT2JsgLs0gc7jAjT8zB/BMZrgRx1hGMaB4
-	9lpPK3qSdRYB5HdizsFyvXaU8AO9u4Y=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-271-KQPC60vpMrWxscWvEizsUQ-1; Thu, 30 Jan 2025 07:02:11 -0500
-X-MC-Unique: KQPC60vpMrWxscWvEizsUQ-1
-X-Mimecast-MFC-AGG-ID: KQPC60vpMrWxscWvEizsUQ
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-386333ea577so329538f8f.1
-        for <kvm@vger.kernel.org>; Thu, 30 Jan 2025 04:02:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738238531; x=1738843331;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=tthXxwJ9fuw9xyqBmp8bg2z2kCO9zZkxXy5p5fv+zVY=;
-        b=cXscUXdTPxK74u7InKD/qicF0qaTSD5w/XsQyq6SoI5Gji+Q9pcoDys7QnBy/yYtgx
-         5p8vhT9WcLkLty0lUdymD4rR7kFBiMho4CWZkyPUJmki0NCj2E3AZkRF/kbmm+J3XFGx
-         dI2CfH5WbIURngNzr8J0CXMbr9CCL7yg5DpbTOq03UUC9wavAgcrHGLMQX8XIHRQ6Wtz
-         8GRnaN0DiFw/Ci+lWxjYBa2HyQlmVnZIbCdt2JrOiZ7oDCMFqf1voNHRfQu4Iu0qeb1H
-         s934+TVKL5XazzBxVjybD715swC4nEEM8Si6yul5Gv5PHL5MOFw+IzhDKcmnXNfe9am0
-         AjBw==
-X-Forwarded-Encrypted: i=1; AJvYcCUPOR/6CNNZA7juQ9AuhJ+9GGoHGmaJsaH++nArUTqkhL2xo9DcJVgS1rqHzbC0zfmbuX0=@vger.kernel.org
-X-Gm-Message-State: AOJu0YyJPMC6ddBfVygMV4pCD7H9tl0Qo+Wo5rKt07rPF7eqGnW1hrTg
-	5QW8vNyTOkZHOYk+FMw0aQI7GWYIygzn5FJOX2tPzr87jKTl/hsm5PVUJe60esZJtMFru7GInwN
-	iKnCWlkA5KV5JUAZOp2IhiYnrFwrUX415M1TmHTNmM78cuYJusg==
-X-Gm-Gg: ASbGnctpWVDUOyRlk9UwwF7o1ysD++SLOIuJRAG5ypLJwdbwuRMwPWa84kM7zFWu8EY
-	7NOxaiIMC9yvs34J1IUN0zN520ZAiG/Ty7NCDyvTiI3Snrd9xC4rpuCYLnSmQIBrZ1wGC7MC9hr
-	tG0oe68FJFAY0p4s3lTCsC+TeZ1KBY081+XvWxOrXZNF7nMD5nHRqyObhwIUWKRKTdrLGgU+z2h
-	IKDCzhL5Nq+5vVZeIO1G6U+67JdLEAR/C/gJtdpnM15tSm3eIftnuidkO1yYIaSzPqEEhGgds20
-	ZszepDhZTgCrShd+9IKt0jUvoy4CpcMb7ybvzga9mViKeAkiF8ri1Nw/pHhS9PFlECc5AQc00nV
-	Zs9UR2pR7Z9jvGTdFVNXFFaIquowJavpR
-X-Received: by 2002:adf:cc92:0:b0:386:366d:5d0b with SMTP id ffacd0b85a97d-38c520c2edbmr4784179f8f.55.1738238530777;
-        Thu, 30 Jan 2025 04:02:10 -0800 (PST)
-X-Received: by 2002:adf:cc92:0:b0:386:366d:5d0b with SMTP id ffacd0b85a97d-38c520c2edbmr4784143f8f.55.1738238530407;
-        Thu, 30 Jan 2025 04:02:10 -0800 (PST)
-Received: from ?IPV6:2003:cb:c713:3b00:16ce:8f1c:dd50:90fb? (p200300cbc7133b0016ce8f1cdd5090fb.dip0.t-ipconnect.de. [2003:cb:c713:3b00:16ce:8f1c:dd50:90fb])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c1cf560sm1738223f8f.89.2025.01.30.04.02.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Jan 2025 04:02:09 -0800 (PST)
-Message-ID: <f6254a03-1bf2-4027-8e1d-ba400984807a@redhat.com>
-Date: Thu, 30 Jan 2025 13:02:07 +0100
+	s=arc-20240116; t=1738242210; c=relaxed/simple;
+	bh=+Up349YLSg8MuPlubCkn8JkyDzqkqi4ZAU9amDg1JZY=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=hHNwwSOtZs5nBiT9oMuYB2rToBoRXFK7aeuN691fFnal8dptHI6Zpr8VcykNxPBYZ0T+Es5q4dv62qEC9e7nIBIh41sJB5iB7jRwc6LKEzsStQnCcOwSkFQ5QZb5e9dvs3lT22Hf5A9ibkqEQ1rzz0iMr6WadRZFxSF0Z3wCGIA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ldiUcwj7; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8C7FC4CED2;
+	Thu, 30 Jan 2025 13:03:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738242209;
+	bh=+Up349YLSg8MuPlubCkn8JkyDzqkqi4ZAU9amDg1JZY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=ldiUcwj7+mlSryfXQ8CyCeNyv/WKDJecIQgOcj4+6JQ8JSDmf9ZfDCprPA08mxtps
+	 FwIu5eu4yozoAuxHIC8Jd7Mnnj5UZak3eJInHEfb7bh73AT1fYR3YLI/0txrgrH3Kx
+	 V/M4cuVl9XJoNwXaQ9DoXPvDmyKEICL8fh7E6t5BtizTcaZxpC+o+seRccoDWjgiUz
+	 uf1DqVtPBPNchEc9r6wjZhGd/MqYfKKBwxG5eDd2KHOhdYQs+qVDjn+EX0EPw0HaRf
+	 4bYjvApIwjR7bF7LzDN8/qWt56reYpajnBKV10GV8tIHIHhQFRE6f+zXcdJXntdFle
+	 baumsAwstZNEg==
+Date: Thu, 30 Jan 2025 14:03:24 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
+ <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 02/13] tests/acpi: virt: allow acpi table changes for
+ a new table: HEST
+Message-ID: <20250130140324.06cdd4bf@foz.lan>
+In-Reply-To: <20250129160328.2f66584c@imammedo.users.ipa.redhat.com>
+References: <cover.1738137123.git.mchehab+huawei@kernel.org>
+	<1390b46682f2bac3587239d03a0ba22d18a9a044.1738137123.git.mchehab+huawei@kernel.org>
+	<20250129160328.2f66584c@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/6] accel/kvm: Report the loss of a large memory page
-To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
- kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-References: <20250127213107.3454680-1-william.roche@oracle.com>
- <20250127213107.3454680-4-william.roche@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <20250127213107.3454680-4-william.roche@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: gXZAu2xfdc6j
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: H7kgkng3yZOL
 
-On 27.01.25 22:31, “William Roche wrote:
-> From: William Roche <william.roche@oracle.com>
+Em Wed, 29 Jan 2025 16:03:28 +0100
+Igor Mammedov <imammedo@redhat.com> escreveu:
+
+> On Wed, 29 Jan 2025 09:04:08 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> In case of a large page impacted by a memory error, provide an
-> information about the impacted large page before the memory
-> error injection message.
+> > The DSDT table will also be affected by such change.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
 > 
-> This message would also appear on ras enabled ARM platforms, with
-> the introduction of an x86 similar error injection message.
+> move it right before the patch that would actually make changes to tables (10/13)
+
+Table changes happens on two patches:
+
+- patch 03/13: acpi/ghes: add a firmware file with HEST address
+
+	HEST table was added here
+
+- patch 10/13: arm/virt: Wire up a GED error device for ACPI / GHES 
+
+	DSDT changes happen here.
+
+If the idea is to avoid make check to fail between those two patches,
+we need either to split them on 4 patches (one before/one after each
+change) or do like I did on this series: whitelist before patch 3,
+update after patch 10.
+
+Regards,
+Mauro
+
 > 
-> In the case of a large page impacted, we now report:
-> Memory Error on large page from <backend>:<address>+<fd_offset> +<page_size>
 > 
-> Signed-off-by: William Roche <william.roche@oracle.com>
-> ---
->   accel/kvm/kvm-all.c       | 11 +++++++++++
->   include/exec/cpu-common.h |  9 +++++++++
->   system/physmem.c          | 21 +++++++++++++++++++++
->   target/arm/kvm.c          |  3 +++
->   4 files changed, 44 insertions(+)
+> > ---
+> >  tests/data/acpi/aarch64/virt/HEST           | 0
+> >  tests/qtest/bios-tables-test-allowed-diff.h | 2 ++
+> >  2 files changed, 2 insertions(+)
+> >  create mode 100644 tests/data/acpi/aarch64/virt/HEST
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
+> > new file mode 100644
+> > index 000000000000..e69de29bb2d1
+> > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> > index dfb8523c8bf4..46298e38e7b8 100644
+> > --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> > @@ -1 +1,3 @@
+> >  /* List of comma-separated changed AML files to ignore */
+> > +"tests/data/acpi/aarch64/virt/HEST",
+> > +"tests/data/acpi/aarch64/virt/DSDT",  
 > 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index f89568bfa3..08e14f8960 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -1296,6 +1296,17 @@ static void kvm_unpoison_all(void *param)
->   void kvm_hwpoison_page_add(ram_addr_t ram_addr)
->   {
->       HWPoisonPage *page;
-> +    struct RAMBlockInfo rb_info;
-> +
-> +    if (qemu_ram_block_location_info_from_addr(ram_addr, &rb_info)) {
-> +        size_t ps = rb_info.page_size;
+> the list in not complete so 'make check-qtest' still fails
+> [12/13] has complete list of changed files
+> 
 
-Empty line missing.
 
-> +        if (ps > TARGET_PAGE_SIZE) {
-> +            uint64_t offset = ram_addr - rb_info.offset;
 
-Empty line missing.
-
-Don't you have to align the fd_offset also down?
-
-I suggest doing the alignment already when calculating "uint64_t offset"
-
--- 
-Cheers,
-
-David / dhildenb
-
+Thanks,
+Mauro

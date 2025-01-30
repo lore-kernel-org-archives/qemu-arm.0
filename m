@@ -1,292 +1,302 @@
-Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp187352njl;
-        Thu, 30 Jan 2025 02:08:43 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWMv6kXL5SoaC/wVv+dzonCYTnYcrlJP6menya68jV2psHlqj9kYwUDd+ymgSsQR8QvyY7G1WSRp1VG7Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgXXsvEzNt/2g9n7FpMtJZ2QwS3RLWZg6I804Vtg4i2uju5zU6mme3ocARhFDxJKC+iKlo
-X-Received: by 2002:a05:6a00:2e14:b0:72f:590f:2853 with SMTP id d2e1a72fcca58-72fd0bf3e81mr8380562b3a.9.1738231723277;
-        Thu, 30 Jan 2025 02:08:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738231723; cv=pass;
+Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp220107njl;
+        Thu, 30 Jan 2025 03:26:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVFD8x059fMGI0axdlHihvDBvXq2Thw6aDwkIRUNfNgQVQCtedeziPNEyYIgYbb35TpDRmmO8KeoTCatA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4xyIR17kLHXiOP2Nf5X7gb9L9+/8Zj8sWLUlKK7STccdB1uI8ABIvXdKQi0g7uMBWoCNX
+X-Received: by 2002:a05:6214:242d:b0:6d8:a0c8:e467 with SMTP id 6a1803df08f44-6e243bb85femr118808246d6.13.1738236411285;
+        Thu, 30 Jan 2025 03:26:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738236411; cv=none;
         d=google.com; s=arc-20240605;
-        b=UEQlKZEnWsH4a9KvJRIqABx8vhpTV09k7H+vtKolW0EaCwG85w9HvT3PQKHetVePsD
-         hni/0+M4ZAPVpWDGWWOgzD0KCjM5z6SpaAbJUMUkGVM3Gp1FUiAphWkRXT1p0GlxSJ5o
-         e2QO4tiAm+ydp7gtHVJcFdJGgCC/uogubgJU0jmbwVqIgb/+e6SrY0lLPIuCZG0s8Bd2
-         /idSvQeUkrJ5nEfSHaSf5W+w6Q4VWcIjSYVizJUI3CSWtnbV346iMh5smmORNzIH7VtI
-         i09vOBJnPdfCODWZyWW58ajdrfurqpFtYmWKuQdabFaMohQ8myWSTnypi9yaT5OHxwky
-         p8fw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=GxtuEqLCldMCiqHlL9qdk33s4rX5+fECbKiC+L8VbpM=;
-        fh=uiEk7Hk1p5v21prHZLHIKa06ZluHiBD2yGjTfl5lsH0=;
-        b=HegCE8Wwv5EqKyOBYeSUJzy2BqO8UitdaYAOyp/4xu/uCbLiPAMD9pUBiYMGvdQn0d
-         xDYSkNwRx70jDViLiIFnBa1kL/jVdfdLPfcYbMSPbcKFpGvdO+TXKGDJAGtbEynjOlO5
-         Yl5yS6GNfZIUS5rjDPJXamK7DEj6qfLKcLg6FMfNnBEWUcM7yaVljXiRCetAYNw6pVRI
-         JvlBTdBpV8bfkjJbBiXUWImL4SBRTPN8YEyIC6/12zzqWyM9ZSF1//zVHVx3yse5OuFl
-         RLLSASWBpUhoOuoU43H2jBInzvn/dyaEn4WJV03xNTBcKnI0AOnToW7Q6DOkFrESEBSg
-         nPDg==;
+        b=bjvN9Jcs73kFvYwu81vzMop/knUb6yf9MjeOocFeeUBTcVgTE+WEWIIIJeh/9k24lu
+         ekWDtNK5xD9i9AI/jDbt+3ayL9yFVfrKex4ytU6XJCEtR5js4X8FuwevI2xVg/u5recC
+         MVBTiorRt/z5jmiHEzPCCuXjAEW11A8ovySNGWipaBUTCQADg1BdjtR9RcMauJwyzCoC
+         DBIiTRevvj7HUvtj35w/3JaV34ywURVBgZohfDzsjFQRW1IeZXGhhfWHLH2qcAWBw6lx
+         hGyA79+o7+Xqy634+auQ5Lp7FUaO2tL9E/795YONRQJfz5lC2VHdNQbKz+L5N9dSb9DM
+         JqOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=FhRlD77beLPzJcSw02NRGa4doYLPI9EP5dBJ40nCc7c=;
+        fh=wXYnM2Xe6CLi/jjNhqKsBwYc7XquNHKu73845APGzhA=;
+        b=e6w3QiVEcecvMsG63fwGBuxb/xObefwgUjWJvootdFc7MEN9FRkQRBdp6gWrDfg2HI
+         oDYvRxT91rZSrN/d9nvjqoFuG0TKotcofLV3cvccAHj98zQSEOWxb9WzMKJLzQ+dw/sw
+         /4iCV4Ra/JP0StOreDMumw5e2ZivxwOqPFSt3b7QdtgWgPi6BnMFs1fCuhyh8e9uYwfg
+         Iax7XBVbutZ8hNaDIMv4U0MxUBKoWQPj0bnCTRV7Wf2XcYH8piMsVGjckZsCBhE2N7Eg
+         V9x/HRIoEwsIorF/CnI8EWP4xI5fwK+wd6xpZfaFU/dL4Okc4PR5DikBrPeX1jokTfIV
+         iDDw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VxGGWKE1;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-72fe696513dsi1235585b3a.253.2025.01.30.02.08.42
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N1FprsRi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e2549d01f6si12232646d6.436.2025.01.30.03.26.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jan 2025 02:08:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jan 2025 03:26:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VxGGWKE1;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-36920-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 349787A2024
-	for <alex.bennee@linaro.org>; Thu, 30 Jan 2025 10:07:49 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 06BE01B4137;
-	Thu, 30 Jan 2025 10:08:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="VxGGWKE1"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08AE415382E
-	for <kvm@vger.kernel.org>; Thu, 30 Jan 2025 10:08:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738231716; cv=none; b=aNCLGMQ/raOSoLBKMonphQnVaUbGWaSQjRHTqpFdpbLIZ5d8S5R69lKnZB+aNJXROekLkC4hTYmyNTRpcUQ9tMQyvvxN9Kci3OSaTFROHCCI2YznTqwfraWu6+ncSucEog/F9ZYcWGZ0i8Thz4a4b8gq81/umNobiiMstsLbIys=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738231716; c=relaxed/simple;
-	bh=KKk7k+HJ6w80lPjeTb2TdUg4YNUzhG9xolmvryWdUmg=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=hb1MbaNjoNnzFx5TsMfJCXq0okBSEFsamoTRQdmQas7PxIBV/53lOKSMRCLeQFvD+pZsh9RHW2MaggAGV94HiMUp7w7doxq6cv+p4UnPPdL+Cw4WRZagA2hjogx+AUU20m+0vCk1tp8uN26KzHfaQ439n0ha8IBvspGAGsfbFG0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=VxGGWKE1; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738231714;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=GxtuEqLCldMCiqHlL9qdk33s4rX5+fECbKiC+L8VbpM=;
-	b=VxGGWKE1vzx2Zg9Y63GwV7mXywsxzvgDfI2Zh8Cya1zcHxqPXFMyQx9NUsC9/VfSPLRcnf
-	CL6UMnwW2zcGWHs4qmLPAIoesvbTwxFJZxCplcnALJ+rhKJVV1LiwK5FJln3xve76XkloZ
-	3I3UgjHMedij5SJOvn/nByCkM1eN8yU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-669-QIIxQDTiM62q-TqayuchcA-1; Thu, 30 Jan 2025 05:08:32 -0500
-X-MC-Unique: QIIxQDTiM62q-TqayuchcA-1
-X-Mimecast-MFC-AGG-ID: QIIxQDTiM62q-TqayuchcA
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-38634103b0dso363383f8f.2
-        for <kvm@vger.kernel.org>; Thu, 30 Jan 2025 02:08:32 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=N1FprsRi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tdSgv-0001Ux-Lv; Thu, 30 Jan 2025 06:26:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSgr-0001Sr-19
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2025 06:26:34 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSgn-0001hy-MP
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2025 06:26:32 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4361b0ec57aso7004225e9.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Jan 2025 03:26:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738236387; x=1738841187; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FhRlD77beLPzJcSw02NRGa4doYLPI9EP5dBJ40nCc7c=;
+ b=N1FprsRioc9MNh6574cdcMnLgdauVDlNc3gUfn9U6WhmlX4Dva1CkKwxfmNLqYcX3u
+ xJmq6u7977SgpExOetltkuhOcu1RbbTOx8CHw765Z5M97VHgbq59gmZKO8OfXaR1upru
+ 5bALRbbwW6BasizcQMxjO+qNh0poWivRuPVgwZW4Opl+Xds2mLcr49k8w7kJWP9JhUWf
+ AQPhhSVGtqPHV0sfGR+291B1M9YVXTS0u2Zr9zb3pbnJecDlIOTbMrmg44VhBq8ebrKN
+ 8kGQIP3CnaZDvXnBGIdSAL6XExC/hYANhmzxjXTc0uGpTdheF4y1tKU8EgUzzedDPN04
+ xMJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738231711; x=1738836511;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=GxtuEqLCldMCiqHlL9qdk33s4rX5+fECbKiC+L8VbpM=;
-        b=ePJ8uiMyEieM4KvT1d+jZY/wnWaU7uLczm8ylCz5cyMUJHUv5gVGbKFoUfKb6LYIxR
-         +9dnay6/I65hVO3RjJrsIBFW6mmuljvJGoNzqx1Gnu40MB46+Qzj+5RqnsnKsfUQ0r14
-         FG7rz32GAjBGPrL6ZNqMHviI8HE72BVCHZlq52h2U5SASKP50XicCO5RN556CEU6/NAx
-         Cv2snHt2n0rvmwD3IkORyhr+75vomFG03RA7g+Y1xSoJElBSKG1B4lpljKQxn/DxIbPc
-         GiBfSSWO/3mmRuVNXzYAh6Dt2rF/88Vse8UdjJttFOcCB3uFe1zTPbgv6sPF69uLansZ
-         /uOA==
-X-Forwarded-Encrypted: i=1; AJvYcCUwAvkh+evo/Oe6MEYlugR2JYG8Q3L/LbqFzviwrNINycNnKlFq1KB9rlXX6BNz73tWD1o=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yyz1wmWuogiEXqlcP3nS70ptvnHn7BvtpsTmoLHV2lSTIYmHr2u
-	xSy5wkAi7CJ/liFbzk9wS9G+OezzKnFi//+vVtcIgSQbqsJhl54j98omgji6s2WTiWrj7xU6ctg
-	XOiNvKBODXICMqLnq6yL70v2ZKP4LkfJU9CQCRhP+7uMv++4bAg==
-X-Gm-Gg: ASbGncs8iUA4xfc24MR1poMuGwIJ1CMZXvTRa1oe6+3m8oOrBCcaDoAlXOCUZw2etyL
-	QMCT+F3dzmwPmdyMZXeB5mmmA7zFwKq5hG/qufTIUeo4kymBF5gI7dSRlbxgy/fnbKOGq7N0eX3
-	kEEnICf0ZuvXP7TvBztaGZvG2R9eWx8pvU+VeJPYmQqzR1aKLXq/6LRSdlEDeimwyV1VilCA6e5
-	5+zfqsyCUoLk+B6GB5gcRBvEQUG3gzjTq6ingjSR+WQqk+i/ComvdMk2NMfJoQTpnzMMsduYoZh
-	YytJw6KVLTc8Wmjj7CSEwxrKBYW3b+uCH8TlEmvKdEir
-X-Received: by 2002:a05:6000:1fac:b0:386:3329:6a04 with SMTP id ffacd0b85a97d-38c51e8de63mr6292567f8f.39.1738231711171;
-        Thu, 30 Jan 2025 02:08:31 -0800 (PST)
-X-Received: by 2002:a05:6000:1fac:b0:386:3329:6a04 with SMTP id ffacd0b85a97d-38c51e8de63mr6292513f8f.39.1738231710443;
-        Thu, 30 Jan 2025 02:08:30 -0800 (PST)
-Received: from ?IPV6:2a01:599:904:96e0:a245:aa9f:6c57:eb41? ([2a01:599:904:96e0:a245:aa9f:6c57:eb41])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c1cf555sm1508408f8f.97.2025.01.30.02.08.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Jan 2025 02:08:29 -0800 (PST)
-Message-ID: <6943198a-4d3b-4e3c-a206-d031e8f943b9@redhat.com>
-Date: Thu, 30 Jan 2025 11:08:27 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1738236387; x=1738841187;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FhRlD77beLPzJcSw02NRGa4doYLPI9EP5dBJ40nCc7c=;
+ b=p4LEh02S3artjCUHBu7zQZx/Tb7oj7TU1usIbL0VdAG1/fa2GyXVrG1qD5hWBnXkF4
+ VQxK+il8w4iXOlRUSkFECkyo/+++D8hRqJaXLq/r5JmN2d+mP2LhVJemG9tOTSyYzuG+
+ 5Fr9xwIU1Xa/U3TcEqJYBVyKIDrPxo370haC2rZmkey80CND6kdSX1v3EvW27bYTUH7j
+ NP1V6VmB51r2R3Xjrr6jij7Pw9zNDWCbAL/5qPuGNaZXIkd62yUc0/psb0GndqfLYokz
+ dThZzUz+v4D//eDsmrsTV8bV3OlmimoowDsQhtiO35D3Q/tdH+sXr6spxq8N4U/sU61P
+ 6GgA==
+X-Gm-Message-State: AOJu0YwfLF/rImxz56v62OReIyNr69WmvZ65kG/f0z0cWAKas1l2oIAt
+ MuW4U7bhM5FsbDdBNIdW4t7LrOOvTvJwxyGMOA38Mhik/06YPUcrqToYffQ9bg3+1wwNmkrAkU5
+ kEuo=
+X-Gm-Gg: ASbGncu8IpWIQIAO2fatK1zciAAYTjrsURofNGvrsy6CayW5dDuspawc07cGj5xjVIA
+ o8zvO3bV3e9IBVjIzKiftEJ/53BU3eQ9PV+FnIUbXEa+Ibbm4NJSu3oFIPGjamnz2mF0PMB311Q
+ 0GlC6ydGrJP+k39ZZbHpYmpBr8u1pMbO6yzv3Z/NBbFn1qNOL8gtrGg5Yl1xSvs7N9NKRsC8MKT
+ vIfmUnMBOKkZXxIzrAozXaXQeV25leA05UwWCLgf5jEQ5DYIUO5MTa9mV+TQot3ZRngZxQHr0W/
+ UlVs0Gy+xCCT1G26J29yn9cHTSh5WluhUnxXEvlV2uJYLmtPSyYE71CAoh96exSQWQ==
+X-Received: by 2002:a05:600c:450c:b0:434:ff25:199f with SMTP id
+ 5b1f17b1804b1-438dc4213fbmr50596475e9.26.1738236387288; 
+ Thu, 30 Jan 2025 03:26:27 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438e244ef41sm20089185e9.32.2025.01.30.03.26.26
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 30 Jan 2025 03:26:26 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v2 2/6] hw/arm/fsl-imx6: Add local 'mpcore/gic' variables
+Date: Thu, 30 Jan 2025 12:26:11 +0100
+Message-ID: <20250130112615.3219-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250130112615.3219-1-philmd@linaro.org>
+References: <20250130112615.3219-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/6] system/physmem: poisoned memory discard on reboot
-To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
- kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-References: <20250127213107.3454680-1-william.roche@oracle.com>
- <20250127213107.3454680-3-william.roche@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <20250127213107.3454680-3-william.roche@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9GEtBjhjchNk
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mNJaa6Dd+Z+i
 
-On 27.01.25 22:31, “William Roche wrote:
-> From: William Roche <william.roche@oracle.com>
-> 
-> Repair poisoned memory location(s), calling ram_block_discard_range():
-> punching a hole in the backend file when necessary and regenerating
-> a usable memory.
-> If the kernel doesn't support the madvise calls used by this function
-> and we are dealing with anonymous memory, fall back to remapping the
-> location(s).
-> 
-> Signed-off-by: William Roche <william.roche@oracle.com>
-> ---
->   system/physmem.c | 54 ++++++++++++++++++++++++++++--------------------
->   1 file changed, 32 insertions(+), 22 deletions(-)
-> 
-> diff --git a/system/physmem.c b/system/physmem.c
-> index 3dd2adde73..3dc10ae27b 100644
-> --- a/system/physmem.c
-> +++ b/system/physmem.c
-> @@ -2167,6 +2167,23 @@ void qemu_ram_free(RAMBlock *block)
->   }
->   
->   #ifndef _WIN32
-> +/* Simply remap the given VM memory location from start to start+length */
-> +static int qemu_ram_remap_mmap(RAMBlock *block, uint64_t start, size_t length)
-> +{
-> +    int flags, prot;
-> +    void *area;
-> +    void *host_startaddr = block->host + start;
-> +
-> +    assert(block->fd < 0);
-> +    flags = MAP_FIXED | MAP_ANONYMOUS;
-> +    flags |= block->flags & RAM_SHARED ? MAP_SHARED : MAP_PRIVATE;
-> +    flags |= block->flags & RAM_NORESERVE ? MAP_NORESERVE : 0;
-> +    prot = PROT_READ;
-> +    prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
-> +    area = mmap(host_startaddr, length, prot, flags, -1, 0);
-> +    return area != host_startaddr ? -errno : 0;
-> +}
-> +
->   /*
->    * qemu_ram_remap - remap a single RAM page
->    *
-> @@ -2184,9 +2201,7 @@ void qemu_ram_remap(ram_addr_t addr)
->   {
->       RAMBlock *block;
->       uint64_t offset;
-> -    int flags;
-> -    void *area, *vaddr;
-> -    int prot;
-> +    void *vaddr;
->       size_t page_size;
->   
->       RAMBLOCK_FOREACH(block) {
-> @@ -2201,25 +2216,20 @@ void qemu_ram_remap(ram_addr_t addr)
->                   ;
->               } else if (xen_enabled()) {
->                   abort();
-> -            } else {
-> -                flags = MAP_FIXED;
-> -                flags |= block->flags & RAM_SHARED ?
-> -                         MAP_SHARED : MAP_PRIVATE;
-> -                flags |= block->flags & RAM_NORESERVE ? MAP_NORESERVE : 0;
-> -                prot = PROT_READ;
-> -                prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
-> -                if (block->fd >= 0) {
-> -                    area = mmap(vaddr, page_size, prot, flags, block->fd,
-> -                                offset + block->fd_offset);
-> -                } else {
-> -                    flags |= MAP_ANONYMOUS;
-> -                    area = mmap(vaddr, page_size, prot, flags, -1, 0);
-> -                }
-> -                if (area != vaddr) {
-> -                    error_report("Could not remap RAM %s:%" PRIx64 "+%" PRIx64
-> -                                 " +%zx", block->idstr, offset,
-> -                                 block->fd_offset, page_size);
-> -                    exit(1);
-> +                if (ram_block_discard_range(block, offset, page_size) != 0) {
-> +                    /*
-> +                     * Fall back to using mmap() only for anonymous mapping,
-> +                     * as if a backing file is associated we may not be able
-> +                     * to recover the memory in all cases.
-> +                     * So don't take the risk of using only mmap and fail now.
-> +                     */
-> +                    if (block->fd >= 0 ||
-> +                        qemu_ram_remap_mmap(block, offset, page_size) != 0) {
-> +                        error_report("Could not remap RAM %s:%" PRIx64 "+%"
-> +                                     PRIx64 " +%zx", block->idstr, offset,
-> +                                     block->fd_offset, page_size);
-> +                        exit(1);
-> +                    }
->                   }
->                   memory_try_enable_merging(vaddr, page_size);
->                   qemu_ram_setup_dump(vaddr, page_size);
+The A9MPCore forward the IRQs from its internal GIC.
+To make the code clearer, add the 'mpcore' and 'gic'
+variables.
 
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/fsl-imx6.c | 52 +++++++++++++++++++----------------------------
+ 1 file changed, 21 insertions(+), 31 deletions(-)
 
-Acked-by: David Hildenbrand <david@redhat.com>
-
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 88b9ccff493..dc86338b3a5 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -117,6 +117,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     uint16_t i;
+     qemu_irq irq;
+     unsigned int smp_cpus = ms->smp.cpus;
++    DeviceState *mpcore = DEVICE(&s->a9mpcore);
++    DeviceState *gic;
+ 
+     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
+         error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
+@@ -143,21 +145,21 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+         }
+     }
+ 
+-    object_property_set_int(OBJECT(&s->a9mpcore), "num-cpu", smp_cpus,
+-                            &error_abort);
++    object_property_set_int(OBJECT(mpcore), "num-cpu", smp_cpus, &error_abort);
+ 
+-    object_property_set_int(OBJECT(&s->a9mpcore), "num-irq",
++    object_property_set_int(OBJECT(mpcore), "num-irq",
+                             FSL_IMX6_MAX_IRQ + GIC_INTERNAL, &error_abort);
+ 
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), errp)) {
++    if (!sysbus_realize(SYS_BUS_DEVICE(mpcore), errp)) {
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, FSL_IMX6_A9MPCORE_ADDR);
++    sysbus_mmio_map(SYS_BUS_DEVICE(mpcore), 0, FSL_IMX6_A9MPCORE_ADDR);
+ 
++    gic = mpcore;
+     for (i = 0; i < smp_cpus; i++) {
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
++        sysbus_connect_irq(SYS_BUS_DEVICE(gic), i,
+                            qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IRQ));
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + smp_cpus,
++        sysbus_connect_irq(SYS_BUS_DEVICE(gic), i + smp_cpus,
+                            qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
+     }
+ 
+@@ -195,8 +197,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, serial_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            serial_table[i].irq));
++                           qdev_get_gpio_in(gic, serial_table[i].irq));
+     }
+ 
+     s->gpt.ccm = IMX_CCM(&s->ccm);
+@@ -207,8 +208,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpt), 0, FSL_IMX6_GPT_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpt), 0,
+-                       qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                        FSL_IMX6_GPT_IRQ));
++                       qdev_get_gpio_in(gic, FSL_IMX6_GPT_IRQ));
+ 
+     /* Initialize all EPIT timers */
+     for (i = 0; i < FSL_IMX6_NUM_EPITS; i++) {
+@@ -228,8 +228,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->epit[i]), 0, epit_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->epit[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            epit_table[i].irq));
++                           qdev_get_gpio_in(gic, epit_table[i].irq));
+     }
+ 
+     /* Initialize all I2C */
+@@ -249,8 +248,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c[i]), 0, i2c_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            i2c_table[i].irq));
++                           qdev_get_gpio_in(gic, i2c_table[i].irq));
+     }
+ 
+     /* Initialize all GPIOs */
+@@ -307,11 +305,9 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio[i]), 0, gpio_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            gpio_table[i].irq_low));
++                           qdev_get_gpio_in(gic, gpio_table[i].irq_low));
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio[i]), 1,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            gpio_table[i].irq_high));
++                           qdev_get_gpio_in(gic, gpio_table[i].irq_high));
+     }
+ 
+     /* Initialize all SDHC */
+@@ -338,8 +334,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->esdhc[i]), 0, esdhc_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->esdhc[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            esdhc_table[i].irq));
++                           qdev_get_gpio_in(gic, esdhc_table[i].irq));
+     }
+ 
+     /* USB */
+@@ -360,8 +355,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0,
+                         FSL_IMX6_USBOH3_USB_ADDR + i * 0x200);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            FSL_IMX6_USBn_IRQ[i]));
++                           qdev_get_gpio_in(gic, FSL_IMX6_USBn_IRQ[i]));
+     }
+ 
+     /* Initialize all ECSPI */
+@@ -384,8 +378,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_table[i].addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            spi_table[i].irq));
++                           qdev_get_gpio_in(gic, spi_table[i].irq));
+     }
+ 
+     object_property_set_uint(OBJECT(&s->eth), "phy-num", s->phy_num,
+@@ -396,11 +389,9 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->eth), 0, FSL_IMX6_ENET_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth), 0,
+-                       qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                        FSL_IMX6_ENET_MAC_IRQ));
++                       qdev_get_gpio_in(gic, FSL_IMX6_ENET_MAC_IRQ));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth), 1,
+-                       qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                        FSL_IMX6_ENET_MAC_1588_IRQ));
++                       qdev_get_gpio_in(gic, FSL_IMX6_ENET_MAC_1588_IRQ));
+ 
+     /*
+      * SNVS
+@@ -427,8 +418,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX6_WDOGn_ADDR[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->wdt[i]), 0,
+-                           qdev_get_gpio_in(DEVICE(&s->a9mpcore),
+-                                            FSL_IMX6_WDOGn_IRQ[i]));
++                           qdev_get_gpio_in(gic, FSL_IMX6_WDOGn_IRQ[i]));
+     }
+ 
+     /*
 -- 
-Cheers,
-
-David / dhildenb
+2.47.1
 

@@ -1,134 +1,123 @@
-Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181763njb;
-        Thu, 30 Jan 2025 10:23:13 -0800 (PST)
-X-Received: by 2002:a05:6000:1445:b0:385:f573:1f78 with SMTP id ffacd0b85a97d-38c519744e1mr7268118f8f.24.1738261393077;
-        Thu, 30 Jan 2025 10:23:13 -0800 (PST)
+Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181770njb;
+        Thu, 30 Jan 2025 10:23:14 -0800 (PST)
+X-Received: by 2002:a05:600c:22d9:b0:435:1a2:2633 with SMTP id 5b1f17b1804b1-438dc48a91amr78729005e9.15.1738261394004;
+        Thu, 30 Jan 2025 10:23:14 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1738261393; cv=none;
         d=google.com; s=arc-20240605;
-        b=Bfs2duz/LCCbvsPRVG5D3RoiMl56H6wi0009gHCm8CZouu2gl53dnJhq1nh6uB3TyO
-         /5/PSmhWUI7FddCC/JqWtCAWGfjCaNBAVy4YRt628aq5ay8lNlfJ+gH/jU3KFO+C5jne
-         ftUTFDEEfpOBfOr+Cjq1BtncDp/OOADjMg+cma2uJdSzEh6bFU31Gjl+g86mBk5YbteL
-         +xSfFf/zBzglej99d+0M0vHsmflZZnqhlM/qTr594Zfc7X1t/dABwdHa/POXMCgt4I2/
-         nrQYKk652/DAkJV13WwPZCW7ozYEjGcsfQOV3NfYB2c3mYKV4NX0bpsgw7IwRt9rPb5g
-         p5TQ==
+        b=I15Ff9UqT7cpyKRUd/XxABM8wBGtccdhcyWgDGtANNi9DnGCxR3p4HS9tlmnQnZhCe
+         DZRcXIsg+XVqrT7Zca1kH//r5kCQWrVwskeNkL44OF6zhiPJPwMHyxBtCq323lEqzOxS
+         tHG831xwwyGUjSJZezPoZ22uljN4S2+DbZdWkIjAcnETr9oLcsxI5YZbDVweH3AG3sFe
+         UxejVVgjt71QOcqpkc91xJ+ktY0GUNes7LbX40sCLneG/uWOgNRjHPJRZnm0s/WoUUs9
+         ORkwDb0c5/uwJ+60cXUju/JXxXc+wNjW/Io36WPBRGMAGLc8DHT4eO97fVk9m1YCj0s6
+         IkUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LMfouiukZplViqTOnGPtuKQ5CD0lpwbbbWd2NrRj/nk=;
+        bh=Wlns9GOwYM2bjd4U7krW4vEiipIfGOqidyiNeaIvOXs=;
         fh=RiJSNyFv98ecbYckNQx9NKP2dJchb+KjtIrNazRBKjc=;
-        b=E5gQ95RCgICkpeYVDndFWOklbg+q1EdjsZsqsDNge/78+eH9P0x75Jhuf18VQ7ii09
-         iqrlUdC4oSbQ6yL4PoSBFLxvPr+oubO11sEXfWaKMnXpqL0UtUL0kBCdUtXHLOWDAa4/
-         /O60m2OXQed02qy3feoYcSshEQJUICrovJsUnHcBLHIkzQ/R3Hf+yRVzvQZ6HAzjBnDX
-         ejJXlCcyMwASLQW/mWaotvdkSjVBrjvAoIQbOcIgfOMlkN2DR1fjAUU3NrfvI5SFCTta
-         jaMKzUddSNbt5RkxCtAPSQrFsaDbREjRehKghjoW/IJtskMCjmpCXqKSR64V/H74JpB/
-         xPKg==;
+        b=REkyWuB1WCJTAoC774cQ+Xc9JAs41wvAKnzpInL0TkTo/z6k7v/SYl4u5VwO4MyDpK
+         8Dr8rbc3FLTwUq69voFW0yxIctp9CbnRb0w1tUAUIAA3UAA/XN29QnxQbMqEbnXsjKjj
+         /C7tW0ndKGohPUNa6XHLBSMV6wuYo7AMF0WCR+edSDdxdU2YW9mbWMWbgvIVg872C26o
+         zfFVgqZGbhiYdoTlGVMsSe36revlSHmkB5DwD7ReMzRx8FKFrix+NNV6l6vTytqjLdg0
+         QuGxU7EIjlZ5YzNAxawcRpsk5gLrpKMuc8Wher8/00iHPFyzDb41dWw+TcWWVfrc5FeQ
+         dyxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uC7FBqyZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HCpNV8dU;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c1018d6sor707548f8f.3.2025.01.30.10.23.12
+        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c1f81cesor693498f8f.8.2025.01.30.10.23.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
         Thu, 30 Jan 2025 10:23:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uC7FBqyZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HCpNV8dU;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738261392; x=1738866192; darn=linaro.org;
+        d=linaro.org; s=google; t=1738261393; x=1738866193; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LMfouiukZplViqTOnGPtuKQ5CD0lpwbbbWd2NrRj/nk=;
-        b=uC7FBqyZsAIOllPPxVN8ErAFjmQ+xOXVv+E8nw6P5fvn25PdpkqZq2q/jkf7QU391v
-         WTqU2jn2SaqW3cQwb+3b1egUtm4jLGZx5kny1kRF4tJfFSlC1ZzGgevblKejFmny00Ko
-         aUa3cRzxjd8aqol7bzqOzSjzqGRf6vTtitzZ0zwijIeNVgDM5xM3gNjO8fZuuBtSNI4f
-         pZP8qof3JfM3H+UHbqAWFOQgHBH0fIlu+qmSvojRRB/6sVY6G4uP6isduphOxa3+r/TN
-         jkbN905ra1HmRTUqmrfuROL31Zy2lavtyvDjQEwuu0c+byywvVHLPdCRSH/khUDPffBi
-         pXkA==
+        bh=Wlns9GOwYM2bjd4U7krW4vEiipIfGOqidyiNeaIvOXs=;
+        b=HCpNV8dU4nn573IKJqTuXw/SFz33UyAi0LVA7qVo7jVpnmxMURWGG3oly2Z/KpWawS
+         uyGgC/L9Uy9kVado2ym/otXfv6KfuaK6YOxdRKSWPKaS2NYpGqIoqwB2r/xIZHw64xU1
+         sYD1Ih/SegxucD830VF9frUcmtJ8HOdY5+Md72gtUG93RliCowf6RigVDh8pXb+u87b+
+         ptkj9eYsRoApr4u3m6KKcVWXD44EXD6GMNwqd7jlgkre3mCxGTQYGg0/Hx2dRYz06zYD
+         hSOGT1QapIhhwZ0RG2L9q+HnImxSrKzk2PYoBABtqsuLsDI2MSrExHNAzugco/IIGOhe
+         oEYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738261392; x=1738866192;
+        d=1e100.net; s=20230601; t=1738261393; x=1738866193;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LMfouiukZplViqTOnGPtuKQ5CD0lpwbbbWd2NrRj/nk=;
-        b=FoW+7drxEgNp5j6welfsApJ9ElXk9NgaEPZbxiR3RBNc5DwcaOuKsizaFh37mincFQ
-         UnwJXHk//pP0WcS0vbG/BvWxDZgHXIEzu8VVGCll6SMtTtYvJkYYZ5T3joveL31KxX4W
-         9ykvC0IwODjvRFY/vNC12IOIduiBZqs3jXfQWzfRKkylHt+R7kT+FZzEGztivRAB9bG1
-         chmpg/WLAXVPmmirawf4X69x782l2OFRXqjaDCQRFfSdVvX6LVQ2Fj5994avr9y9nEG+
-         z/2V0qwas9+JZtoinuJ0EKpCtzjpeFgrzhUZbx/Wb9MGoFdgQxMyMo+wlYD09NL1pOum
-         HqPw==
-X-Gm-Message-State: AOJu0Yw/iBDT6PlUj8QHa9dS26jMQ9S2LIz/FEBGFUd0/eY0baA4HJv7
-	dM07T9AMSTxKxy0Ja6JX/fnXIcHill9Z4AI/xaKaGJNNdFQpTzBacOgmWnWZitiqvA==
-X-Gm-Gg: ASbGncsuZtny+g5rCyP2HQmhaNai7NmgPo6g4OrwqUAo6pXQrztHqEubftj+SvbPKcB
-	KZFAxVfvJyYUMg49B4GiCCZM1jYgaPd5JDJsCtWQ1KDzOITpksyuBr9u3GSwlWIWBEizRe8Nqiz
-	NjBtOOSqoWma7jsR+0Y99YLixLcAN17Wv3n4mBnQTjwdmFwhBzhmDoVEJxdLJj5KFs3x+H8nWjw
-	ahUkOvj10l8FeSiYHskhPEdZWILk2mabXLSqFIEVNYGOBEBTnDJOnK18Dn4cBX5cvNorK4SVjPP
-	ScbiZw+smpgAZQiuL/WGxg==
-X-Google-Smtp-Source: AGHT+IE0Ntzqkcvpi0/rtd9RUCq1vjf0A6C7yblnPNWB4Ert1+7WzMmsG13LS2EqDenr5fnRIuTw3g==
-X-Received: by 2002:a5d:6c6f:0:b0:38a:418e:1177 with SMTP id ffacd0b85a97d-38c51949ebemr6862874f8f.11.1738261392535;
-        Thu, 30 Jan 2025 10:23:12 -0800 (PST)
+        bh=Wlns9GOwYM2bjd4U7krW4vEiipIfGOqidyiNeaIvOXs=;
+        b=EeoxLaG1ybhZeRWYqPRXUzL9/xbEoCrK4O37zJcUzhX8E5ww6cX655PTvUsFBGClQx
+         5JIvS836W+OzTm4ryHL3smn4SuHHCKOTq+namOLCraZwu8947fwrWWj9ArB6ADZEgsai
+         ELj+d34oriyhUFaTe8AmhSIvfwGJimozNdEJ1C6DCS6FR2Ithj7DcmQHAfv+YOxH3gv5
+         2sF4PFsl7FjqMezwHNfNZYD0LsMSjy6WHgFVetqvNwky8PS7LOqHuXB3LIzYfs+lFUms
+         eqdbcS7Db4BbXAK58UgALSFCJY3ym0dqJz0I+1vT5np4neaMdDUHe5d2oZj46LEEvqjR
+         Xvbw==
+X-Gm-Message-State: AOJu0YxDmGG+AplaU7/1apCvzjgd18jx7sOpHKaFUuRsyUqPfvVhHfEI
+	1TJUqawy7ijJ6dXgJ3pmWdm+kXTl+iygmw4oOJM5unaYIwml8FNCp8DC7TVovqayFreXUeSE603
+	oR90=
+X-Gm-Gg: ASbGncsLYMtoNSarQX6HwhblWSTBfrFCLX1ytZRM+KGEodKJ+Y6SgVcJcF1w+RVBqcl
+	6Z+uliU3skAqQyVn2cvFVH0/LwvmEMX2XzXF0G9KYeHd68txjcZsI8JUScuc1rHmPAE9repFWP9
+	wdNB5XmCzk9/N2dhdjbTs8/HxzpZKOtOEEjVECqvztHbrygZVp25AFLwDJpZTo1HH95S+oSwNMU
+	xjWK6iv3ybnQbfGa0OvRPro3Rl5d9N1s5oAwSJkhq6M7/NN+7ccjoAIhyJ6ciTXswNkh4aFax8H
+	FYmWyhFaSpQuMzEdb0KNPQ==
+X-Google-Smtp-Source: AGHT+IE2UbAKKT+ZDLAy0oJBJeXaNOHA7u6S1jdHO0APO9zbbJCdTYWh7roiFyRaiIozYNmO+XvbdQ==
+X-Received: by 2002:a05:6000:4023:b0:385:fa26:f0d9 with SMTP id ffacd0b85a97d-38c516583aamr7804506f8f.0.1738261393493;
+        Thu, 30 Jan 2025 10:23:13 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.11
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jan 2025 10:23:11 -0800 (PST)
+        Thu, 30 Jan 2025 10:23:12 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 01/14] target/arm: Report correct syndrome for UNDEFINED CNTPS_*_EL1 from EL2 and NS EL1
-Date: Thu, 30 Jan 2025 18:22:56 +0000
-Message-Id: <20250130182309.717346-2-peter.maydell@linaro.org>
+Subject: [PATCH 02/14] target/arm: Report correct syndrome for UNDEFINED AT ops with wrong NSE,NS
+Date: Thu, 30 Jan 2025 18:22:57 +0000
+Message-Id: <20250130182309.717346-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250130182309.717346-1-peter.maydell@linaro.org>
 References: <20250130182309.717346-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: lYsa0AlaPoyV
+X-TUID: 6xP0cdotnDre
 
-The access pseudocode for the CNTPS_TVAL_EL1, CNTPS_CTL_EL1 and
-CNTPS_CVAL_EL1 secure timer registers says that they are UNDEFINED
-from EL2 or NS EL1.  We incorrectly return CP_ACCESS_TRAP from the
-access function in these cases, which means that we report the wrong
-syndrome value to the target EL.
-
-Use CP_ACCESS_TRAP_UNCATEGORIZED, which reports the correct syndrome
-value for an UNDEFINED instruction.
+R_NYXTL says that these AT insns should be UNDEFINED if they
+would operate on an EL lower than EL3 and SCR_EL3.{NSE,NS} is
+set to the Reserved {1, 0}. We were incorrectly reporting
+them with the wrong syndrome; use CP_ACCESS_TRAP_UNCATEGORIZED
+so they are reported as UNDEFINED.
 
 Cc: qemu-stable@nongnu.org
-Fixes: b4d3978c2fd ("target-arm: Add the AArch64 view of the Secure physical timer")
+Fixes: 1acd00ef1410 ("target/arm/helper: Check SCR_EL3.{NSE, NS} encoding for AT instructions")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 40bdfc851a5..c5245a20aaf 100644
+index c5245a20aaf..7ddeed0283f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -2385,7 +2385,7 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
-     switch (arm_current_el(env)) {
-     case 1:
-         if (!arm_is_secure(env)) {
--            return CP_ACCESS_TRAP;
-+            return CP_ACCESS_TRAP_UNCATEGORIZED;
-         }
-         if (!(env->cp15.scr_el3 & SCR_ST)) {
-             return CP_ACCESS_TRAP_EL3;
-@@ -2393,7 +2393,7 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
-         return CP_ACCESS_OK;
-     case 0:
-     case 2:
+@@ -3601,7 +3601,7 @@ static CPAccessResult at_e012_access(CPUARMState *env, const ARMCPRegInfo *ri,
+      * scr_write() ensures that the NSE bit is not set otherwise.
+      */
+     if ((env->cp15.scr_el3 & (SCR_NSE | SCR_NS)) == SCR_NSE) {
 -        return CP_ACCESS_TRAP;
 +        return CP_ACCESS_TRAP_UNCATEGORIZED;
-     case 3:
-         return CP_ACCESS_OK;
-     default:
+     }
+     return CP_ACCESS_OK;
+ }
 -- 
 2.34.1

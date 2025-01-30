@@ -1,120 +1,120 @@
-Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp220432njl;
-        Thu, 30 Jan 2025 03:27:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWEXnIAbKNgGiyHTzzrwTZkGPApd95hnzLRwldfCiSWc90R9GYE8xpRbqecJKmftHe44gZmlLPm2Hxglw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9TIHSmGOKeALbBYhAmNyiJKZiB54+TRzhLCq3mAgbvUvfHXPb4zsMeLoSi305tM4WXjuL
-X-Received: by 2002:ac8:5fc5:0:b0:466:9018:c92f with SMTP id d75a77b69052e-46fd09e232cmr102961011cf.4.1738236455449;
-        Thu, 30 Jan 2025 03:27:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738236455; cv=none;
+Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp220458njl;
+        Thu, 30 Jan 2025 03:27:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVIJQz9hyrHHAJs8ujfM61NPQyOr1DiaLPMQ1nAhlzcrG0bTHREin1niRNklLHteONOmfUe+eGMv1Lz4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHW5PuZseiyBxDgpI+dvk/S774o066Sgyz9yw9ICl9GCuzkeRx6QcpoPLhteG1jCfWf2sMo
+X-Received: by 2002:a05:620a:8016:b0:7be:7313:5e4c with SMTP id af79cd13be357-7bffccdfa94mr891533185a.19.1738236459625;
+        Thu, 30 Jan 2025 03:27:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738236459; cv=none;
         d=google.com; s=arc-20240605;
-        b=FlP7ocSbpON19klN8HUhq34BGOeO8YWztCoKoTlJV0zwUQFELgCXnP3Lnzhhvqf8i8
-         0HNY3CEYE96FUcrXMOch+EVE45M0vpiP8hYl+V1GBcCEC1yqGm/ubGRGFK+IGNCicAgY
-         YEBpAgav1Jmy+Yc3epEQH7ObIwL1scbEg+5gXSo5Mvv0AifupK74Ll3U6L1QYic476oM
-         AZxC+vKZQADnkgZp0bIPn3UMjs393UxCJDP8Rsr7hNLqm+UaOlqiXoKVmXPxaEVXULAn
-         6zOntjxYUbBwzEPpbnPDavkMvv2OXnLqDn6hu3WWltcNGJWV/vEhCEI6wXee1VPSozgF
-         H7OA==
+        b=jhPZj0b40UicL/ACKgAVYDwWsUp9PisipA76xeDDo+K6sYcdynuVqGYq0D2kb0Zcvj
+         Rts3lmGYr/HLERiCOMuJ9P0ZULfFG74h1J8ME36DjJSDu9kxVNP7/ekD6dOMJ6K3WjBe
+         JEqwpq8WVnyr4Lz8GAV+UA1RpfLmekH5b14evIIDB0KE3HQazaSamcpYLHISPka0qowU
+         2IZvNtS7ouc6nIFY6+WR2Fed7VluP6E4XGWVyYkW8rZqLlHczD40u2j7Mdw9O1BRBJbU
+         PvXJEND+6egwHxrJ+ShS13jF0oaVn5KNhizuQv7ZnzTpQuFbKOZVfhbIQEEuier9H/QF
+         8YqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=XcpsoFiZt7o4Z3fuq5o/PTGW+Fo8AYRQuzdt+DGDkWg=;
+        bh=xSaUbuyfnLvYbO/DID0qsOMcuNsSrGpZQtfLQrK9hjI=;
         fh=wXYnM2Xe6CLi/jjNhqKsBwYc7XquNHKu73845APGzhA=;
-        b=lYzfT3OPlRGBRf+mYogFHYLaU8dUtp0H4aUyRB9JZnrsb99xiL1Uiq72I+kyhbjKXB
-         W9VmgOlN4LMS63Fq3ReNcMyIwSxiKYXuUvnt8U0agkZUljKMqkSudh5RhgUNNhwt7OhM
-         ZqzI5Zh6DJb5hiVEtsj5H4EnnBPN91zvaBKpfvTmyVscZ6RkSnCxarO+iZBCu6Hjglg6
-         8WMnvAWkOK7Ar2CHMDG7SHf5FKLcgsJb/SUhb3tSbiKw6759AxH5p1XpxGdbJm65BZp3
-         QvglHH/q2ll2dF1JycdFumkFXiLARMjdGUdhiBG3yDe4od66xgwPMYhK5Sq21jSrOVPJ
-         jt9w==;
+        b=ZyyrnduhSlLp5rTAMT5c0Da1gfu4bKjYVuJEdmYoMer0imtia/rHBjOth5dO/SsNYx
+         5UkeH3b50fhr8rDEjaSJ1llSH1Gr/G89Kx+/Vhcms5nYLJoaG0fNWLFP9Lky4f+GkXV8
+         lqV6ZOm1jRYplx/39qMpP1RTIQ5fDwfNyRzowK1CJjgvGeDQ2+dTcKGlm89XjhbYlG0h
+         dIj9ItwsaK4qM15zV57W+Dseg0kt5Q5BlWVcBv4ICviGWGbaesjmCogl+uZ53bAei7eP
+         GGV2XDPZPo5bT03+OwyottpW6GTxwF41H3xwhoaPRMI5UF9KxiPYmFNVHwL/hFJadpaC
+         4NDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JxijC/iG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GNjXzhqS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf0ab8bfsi14895321cf.60.2025.01.30.03.27.35
+        by mx.google.com with ESMTPS id af79cd13be357-7c00a9040d1si145228685a.210.2025.01.30.03.27.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jan 2025 03:27:35 -0800 (PST)
+        Thu, 30 Jan 2025 03:27:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JxijC/iG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GNjXzhqS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tdSh4-0001Y0-Tb; Thu, 30 Jan 2025 06:26:47 -0500
+	id 1tdSh9-0001ZA-4L; Thu, 30 Jan 2025 06:26:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSh4-0001Xh-0U
- for qemu-devel@nongnu.org; Thu, 30 Jan 2025 06:26:46 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSh7-0001Yh-Dj
+ for qemu-devel@nongnu.org; Thu, 30 Jan 2025 06:26:49 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSh0-0001k0-NW
- for qemu-devel@nongnu.org; Thu, 30 Jan 2025 06:26:45 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-43625c4a50dso4552585e9.0
- for <qemu-devel@nongnu.org>; Thu, 30 Jan 2025 03:26:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSh5-0001kz-NX
+ for qemu-devel@nongnu.org; Thu, 30 Jan 2025 06:26:49 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4361f664af5so7699745e9.1
+ for <qemu-devel@nongnu.org>; Thu, 30 Jan 2025 03:26:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738236401; x=1738841201; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738236406; x=1738841206; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XcpsoFiZt7o4Z3fuq5o/PTGW+Fo8AYRQuzdt+DGDkWg=;
- b=JxijC/iGjB3Cmm4BL4M0KF9eHYdSAvlNRztrYJmrZLdjC5WI+dhArWMLSDTC77yfiR
- uYw7kVDj/mY6LovB1w1O8CLSn0jNi2gC+YZB38fKDjlv+ym6nJy2jaqwPSpukbQMODEI
- 2mSWvbzosG5TsXhNh8w/xAvNWqP/aDdI9LaVPwqaU50q263QC3b9oL/3Meg+faINaGgQ
- RlF9isa7y6IrmeW/l1chrgSoaigGhYh4J9q8oN85dU3pb3dBDPZgNG49zWY2ztYvD1VF
- 5GPWAkGcA0czxyFoHryBG//R0j8T5+Kb5Xerpt0Z/iFMc0Vj2ncq/7OSYOb7FFMHSv3b
- LRBA==
+ bh=xSaUbuyfnLvYbO/DID0qsOMcuNsSrGpZQtfLQrK9hjI=;
+ b=GNjXzhqS6ZHMXEjVLrHGwoKsGY2QVYa5c+KZwACyCMuO+dLMkENBlEl0ts7HkkqneE
+ JTaFA10JniLOGOBD3/0uuhE9h1ZTL+cIYgErh+3JQ9q/ybRh2lxlWoccZQDlQU6OCUBH
+ H+gjRoIzi53a7Qy5UvYASVP+/K63faVu9IXTKWAxwKc5j/cz1kHUbaOsS07SPU1AoleH
+ c4cvC6yUNQb+0HKf3KG9NJF7Ijhivxbp7a3V37FbU4/pY+NqDr6jYfFZuNRgDwIO49Dn
+ f8GbxfEIIksa351W7ygTCTBKsuWfI9pvr6tqJZCEIvSLR1idZmfB4reFQSpH/6OpKvta
+ 10+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738236401; x=1738841201;
+ d=1e100.net; s=20230601; t=1738236406; x=1738841206;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XcpsoFiZt7o4Z3fuq5o/PTGW+Fo8AYRQuzdt+DGDkWg=;
- b=lHcU6g9XozTrUAHi+MpALBCraZvC482AwlYil9EQ8YDdk2sa/DyPi9Fp+4xPcAtr2y
- kPfJriqI7tUmfgqTaKGzzy8Qx8BQW+7I1wkek2+NTyWr9gLIptFOljc0PUw5634sMovz
- 2u2z3pdG9EFed+EiyIzgxgichisGzWItDbWR7lfz2Pbs6uBvuObnRYPdWYic9lX8DAyk
- klBGwiD9B+ZsMqb4sLNAQ+Fm4/6tqEp7VD4i+M17+2aKWXmPGbuLOsYkOr8NYsyc40p+
- NA1L9FAzn9u8igC0WquRH9bBrz7paQVkmCaqjqnXnTq2d45rHFWGJl9SOdailLZc8/V3
- 3kmA==
-X-Gm-Message-State: AOJu0YwJXi/Vou2qWxAlnoBZsgU+K0VL0buifTR2cOuH2N6ZqEubifgY
- WBatg7GjP7X+2dJbiQYOjGrxMRWzSBjtCS4eb0eKWUfQ2LJtBPT5Lj+/PWk8pgYSnZV2ng3hiAq
- c60g=
-X-Gm-Gg: ASbGncujKJ7RXR09IYwdhgsrNHmA1Rj4DXlkxe+U9IF9L4qrAg6XeUHbWwi5jTRspMv
- 0+FgMR/NSD2YBdSxGwbJ6+MDnpSCd38VTPb5mv99AfqRHs47+SbQ2ekxdbLWOMvA/XY5JJ4N3SZ
- WT/pKZo4dZbSXOp/coG81NbrMtpiVqeYdiL08B5m9Ow3CAuJSxiMh6ENmQMljgfhU/bkOI7wQIN
- fjfVpkA9dbgE+cnDX/znX5PcQfDvKWvP3FxHbopLgG2Iu9FYETIicPpoNXBx/UgSavJRIjM7m7a
- m/GvrKN8cSHCI07YoPfW4Zoxu40UVwanQ/dqHHiCuK0s9fDTq6l3CbqFOjHrF/jpVA==
-X-Received: by 2002:a05:600c:3d9b:b0:434:ff08:202b with SMTP id
- 5b1f17b1804b1-438dc3c360dmr59558885e9.12.1738236401059; 
- Thu, 30 Jan 2025 03:26:41 -0800 (PST)
+ bh=xSaUbuyfnLvYbO/DID0qsOMcuNsSrGpZQtfLQrK9hjI=;
+ b=DQZNfOmz/GzY+ly1ig4r2Sk05aXlbNrZ8VCwt+DxLBx4FevAj2IihsKUKWASbU5ggW
+ OUPKLB+oQGkZAkkGr1nEfHHv7VFVIuHPYiTPnIv0b1zt4dO/KRH6zX2yL78m9tuQsaO/
+ gULM04E19F4/WokN70pVmh4y7Uc1M4juVlGaPM+iRX/TqsCoGHXUzsmYrHiCCO9rr4ZH
+ PGjGVzxj1DRz6OFRI0d+3J8/gjD/Q0zt2oCedQAzsoNWtjD6HHuqozx4LKzCJQ46goMi
+ L2ehRepze7Ym4nRykrI60qsHnzY0CVuZS/9Lfnyix9l+sCYy6tinwKDurH5wHh2zT0dI
+ Sd+g==
+X-Gm-Message-State: AOJu0Yx+bGQP3rCLdqjZ5lw4DDxERiU5NboMHSB9WDq7krT0EVnVq5gr
+ hSeG328mYdVlwu8ZkobOPsA9xwpkvZLJ78CtwlQ56qJwi20DPSKj2OdLa5NfcrT53srw0Gq/sE3
+ 5Xxs=
+X-Gm-Gg: ASbGncvendZYRg4SqW9zldjMjOeCCAyi7Lucpa2KeQlnpALJaobMtpc5BCk7wEpHTzf
+ be2Pw5d3ZgZGjXrWW7V4NFrMGdDfIX3aupPDsg0GrZL+ejpcRivuCFq+3lTutZY4vVZBrJxTcV5
+ 67p9A9QJnZk5L3amqs15vIQOaHpuWETcnNZSinYV6QWSLjb6b/SS0Ma2HTR9UWQXNxJyu4IgA81
+ h9sUvNRONZgbUvAoAitJ1m5PXAiNT+PRjriiGqzRPZWB5VlWDYza+Mjg967k98K6t0K8231l3+B
+ yDqMRVyUOSgAq/5WgxmXGqGygzkw3ze907UEiENqTW/bcT0E/+gmW6l9uUglmnuX5w==
+X-Received: by 2002:a05:6000:1788:b0:386:459f:67e0 with SMTP id
+ ffacd0b85a97d-38c5194d438mr6926474f8f.21.1738236405652; 
+ Thu, 30 Jan 2025 03:26:45 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c5c1cfccasm1697788f8f.92.2025.01.30.03.26.40
+ ffacd0b85a97d-38c5c1b57c1sm1694529f8f.75.2025.01.30.03.26.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 30 Jan 2025 03:26:40 -0800 (PST)
+ Thu, 30 Jan 2025 03:26:45 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 5/6] hw/cpu/arm: Alias 'num-cpu' property on
- TYPE_REALVIEW_MPCORE
-Date: Thu, 30 Jan 2025 12:26:14 +0100
-Message-ID: <20250130112615.3219-6-philmd@linaro.org>
+Subject: [PATCH v2 6/6] hw/cpu/arm: Declare CPU QOM types using DEFINE_TYPES()
+ macro
+Date: Thu, 30 Jan 2025 12:26:15 +0100
+Message-ID: <20250130112615.3219-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250130112615.3219-1-philmd@linaro.org>
 References: <20250130112615.3219-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,63 +136,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6nPuZYkb5Kyy
+X-TUID: B+sraxyVFmpc
 
-No need to duplicate and forward the 'num-cpu' property from
-TYPE_ARM11MPCORE_PRIV to TYPE_REALVIEW_MPCORE, alias it with
-QOM object_property_add_alias().
+When multiple QOM types are registered in the same file,
+it is simpler to use the the DEFINE_TYPES() macro. In
+particular because type array declared with such macro
+are easier to review.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/cpu/realview_mpcore.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ hw/cpu/a15mpcore.c       | 21 +++++++++------------
+ hw/cpu/a9mpcore.c        | 21 +++++++++------------
+ hw/cpu/arm11mpcore.c     | 21 +++++++++------------
+ hw/cpu/realview_mpcore.c | 21 +++++++++------------
+ 4 files changed, 36 insertions(+), 48 deletions(-)
 
+diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+index 3b0897e54ee..d24ab0a6ab2 100644
+--- a/hw/cpu/a15mpcore.c
++++ b/hw/cpu/a15mpcore.c
+@@ -164,17 +164,14 @@ static void a15mp_priv_class_init(ObjectClass *klass, void *data)
+     /* We currently have no saveable state */
+ }
+ 
+-static const TypeInfo a15mp_priv_info = {
+-    .name  = TYPE_A15MPCORE_PRIV,
+-    .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size  = sizeof(A15MPPrivState),
+-    .instance_init = a15mp_priv_initfn,
+-    .class_init = a15mp_priv_class_init,
++static const TypeInfo a15mp_types[] = {
++    {
++        .name           = TYPE_A15MPCORE_PRIV,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  = sizeof(A15MPPrivState),
++        .instance_init  = a15mp_priv_initfn,
++        .class_init     = a15mp_priv_class_init,
++    },
+ };
+ 
+-static void a15mp_register_types(void)
+-{
+-    type_register_static(&a15mp_priv_info);
+-}
+-
+-type_init(a15mp_register_types)
++DEFINE_TYPES(a15mp_types)
+diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
+index 9671585b5f9..25416c5032b 100644
+--- a/hw/cpu/a9mpcore.c
++++ b/hw/cpu/a9mpcore.c
+@@ -177,17 +177,14 @@ static void a9mp_priv_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, a9mp_priv_properties);
+ }
+ 
+-static const TypeInfo a9mp_priv_info = {
+-    .name          = TYPE_A9MPCORE_PRIV,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(A9MPPrivState),
+-    .instance_init = a9mp_priv_initfn,
+-    .class_init    = a9mp_priv_class_init,
++static const TypeInfo a9mp_types[] = {
++    {
++        .name           = TYPE_A9MPCORE_PRIV,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  =  sizeof(A9MPPrivState),
++        .instance_init  = a9mp_priv_initfn,
++        .class_init     = a9mp_priv_class_init,
++    },
+ };
+ 
+-static void a9mp_register_types(void)
+-{
+-    type_register_static(&a9mp_priv_info);
+-}
+-
+-type_init(a9mp_register_types)
++DEFINE_TYPES(a9mp_types)
+diff --git a/hw/cpu/arm11mpcore.c b/hw/cpu/arm11mpcore.c
+index 94861a06d94..b56bee6d543 100644
+--- a/hw/cpu/arm11mpcore.c
++++ b/hw/cpu/arm11mpcore.c
+@@ -152,17 +152,14 @@ static void mpcore_priv_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, mpcore_priv_properties);
+ }
+ 
+-static const TypeInfo mpcore_priv_info = {
+-    .name          = TYPE_ARM11MPCORE_PRIV,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(ARM11MPCorePriveState),
+-    .instance_init = mpcore_priv_initfn,
+-    .class_init    = mpcore_priv_class_init,
++static const TypeInfo arm11mp_types[] = {
++    {
++        .name           = TYPE_ARM11MPCORE_PRIV,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  = sizeof(ARM11MPCorePriveState),
++        .instance_init  = mpcore_priv_initfn,
++        .class_init     = mpcore_priv_class_init,
++    },
+ };
+ 
+-static void arm11mpcore_register_types(void)
+-{
+-    type_register_static(&mpcore_priv_info);
+-}
+-
+-type_init(arm11mpcore_register_types)
++DEFINE_TYPES(arm11mp_types)
 diff --git a/hw/cpu/realview_mpcore.c b/hw/cpu/realview_mpcore.c
-index 4268735e3a5..7480b38d1ab 100644
+index 7480b38d1ab..b1408886184 100644
 --- a/hw/cpu/realview_mpcore.c
 +++ b/hw/cpu/realview_mpcore.c
-@@ -14,7 +14,6 @@
- #include "hw/cpu/arm11mpcore.h"
- #include "hw/intc/realview_gic.h"
- #include "hw/irq.h"
--#include "hw/qdev-properties.h"
- #include "qom/object.h"
- 
- #define TYPE_REALVIEW_MPCORE_RIRQ "realview_mpcore"
-@@ -68,7 +67,6 @@ static void realview_mpcore_realize(DeviceState *dev, Error **errp)
-     int n;
-     int i;
- 
--    qdev_prop_set_uint32(priv, "num-cpu", s->num_cpu);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->priv), errp)) {
-         return;
-     }
-@@ -100,6 +98,7 @@ static void mpcore_rirq_init(Object *obj)
-     int i;
- 
-     object_initialize_child(obj, "a11priv", &s->priv, TYPE_ARM11MPCORE_PRIV);
-+    object_property_add_alias(obj, "num-cpu", OBJECT(&s->priv), "num-cpu");
-     privbusdev = SYS_BUS_DEVICE(&s->priv);
-     sysbus_init_mmio(sbd, sysbus_mmio_get_region(privbusdev, 0));
- 
-@@ -108,16 +107,11 @@ static void mpcore_rirq_init(Object *obj)
-     }
- }
- 
--static const Property mpcore_rirq_properties[] = {
--    DEFINE_PROP_UINT32("num-cpu", mpcore_rirq_state, num_cpu, 1),
--};
--
- static void mpcore_rirq_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
+@@ -114,17 +114,14 @@ static void mpcore_rirq_class_init(ObjectClass *klass, void *data)
      dc->realize = realview_mpcore_realize;
--    device_class_set_props(dc, mpcore_rirq_properties);
  }
  
- static const TypeInfo mpcore_rirq_info = {
+-static const TypeInfo mpcore_rirq_info = {
+-    .name          = TYPE_REALVIEW_MPCORE_RIRQ,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(mpcore_rirq_state),
+-    .instance_init = mpcore_rirq_init,
+-    .class_init    = mpcore_rirq_class_init,
++static const TypeInfo realview_mpcore_types[] = {
++    {
++        .name           = TYPE_REALVIEW_MPCORE_RIRQ,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  = sizeof(mpcore_rirq_state),
++        .instance_init  = mpcore_rirq_init,
++        .class_init     = mpcore_rirq_class_init,
++    },
+ };
+ 
+-static void realview_mpcore_register_types(void)
+-{
+-    type_register_static(&mpcore_rirq_info);
+-}
+-
+-type_init(realview_mpcore_register_types)
++DEFINE_TYPES(realview_mpcore_types)
 -- 
 2.47.1
 

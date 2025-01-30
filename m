@@ -1,124 +1,98 @@
-Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp8648njl;
-        Wed, 29 Jan 2025 17:15:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVhR4HIwyB7Y1lOPYAXnCmJmruHG0Y581Htnf2fs6sOaOesVdp8fiugvmYWhP1KdMpFeI01SnEAv6wamg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMLhaxlcc7AxXgb6URqufChqfqeEzXQWT0sNxvYTW1wFLp56ixC0WyoRl6fNaFdDzuLoQW
-X-Received: by 2002:a05:622a:14f:b0:467:83f1:71d9 with SMTP id d75a77b69052e-46fd08dfba4mr79629041cf.0.1738199708537;
-        Wed, 29 Jan 2025 17:15:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738199708; cv=none;
+Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp44734njl;
+        Wed, 29 Jan 2025 19:03:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXFycMFuj81WtKpVwduvUyeWQLs8w5HoHMKVy2URptadRKcRXZDxMnLyGXKubcGebcCz2lMO9dN+zQNHQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IERVyAPVdcnifQ7xESbO9YZoaSEG0nhtAhID7rHydLSOWPUSR1yvZfOIvT+EiNQMYsITEiv
+X-Received: by 2002:a05:620a:6609:b0:7b6:d736:55c1 with SMTP id af79cd13be357-7bffcda796emr1062652985a.48.1738206225411;
+        Wed, 29 Jan 2025 19:03:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738206225; cv=none;
         d=google.com; s=arc-20240605;
-        b=GLTiG34fkUSASLi70BdggnDdMOy/de0KhdH308YawCMzvnbKHL83hDL3YQ+fV1o80v
-         ltV1GodRjdaKgx1hozAiwjcLLitERz3kAYpIMfUze064mP0AUWuaEPRc4NPcMiHCP0Fh
-         vWZV0yLGQNPaPee6i/JXgVfZOVqIY5dJahck5merEoNozJEZbXn8fa8aAWzIN/PY+3Pm
-         RxNeaOeurdlAdMgQpw1KWtvNJmKNEoeNyGoEVbG6PJA9HfDoe/5S1fQwBBDedeelgP0x
-         14Z45uPxJI2/Vi3UKw9e+hmUnEkjr8GTsLK1FpyOIIwT5T/88+hEzfFN5iFSrD8SwZRj
-         oNyg==
+        b=TmI6AmtQMUASzGVEXkG9ut7tt/SvvFX6dVO9Zs66PUpSDCsLvcOpwww83r0Pa9I27p
+         xmaLVJj4nYin31oAXqpVOs6yb8/XROQf7wR596TILhh4HuAlfG0dRT6aCknGOs8+g/5E
+         BfYX3e+LF25xuFcNYzF8OMG30hF1Ava71h9qq5TtMtBsyit1xt8yEKoVmPGi02FvGZDb
+         gjcsz1vaFIQlpTt4IyBp5HmaSjb2UedtZCGH+4VO+FKHHSA+ZGrMdxPXeOXVfbh02E74
+         Vjmtg9FLsO4Uwq60pKPucx+cleflx6v+mbECcnP754X9HQamj+FuJEP49fcCqC11tuNK
+         MqEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fH4OIUNdVWfzUHgy/iybx/I5U4iA6wYbbqktoccN824=;
-        fh=GJdmG7aA8JDIQYNP3NudA9OCTAwmmsAd2NUE4Is4Auw=;
-        b=EoQV7cv4rG4IfuTxmKRrp35ERDeWSqMFGGJcqZqESlHCpjq5JNv+XL5YxANRi1Sm4j
-         uYvIpXzChl6SaZIBg80P57aXak96GBq5Uxr82bCJcsPSI0OG9AM5NhMvGnAERXZ+hzq7
-         6RkUM5rH5nkkAuCVHcOGvPCvfBE5qvpIp6JSg/+cDz5vnvjTeqUJ7S8y1+3x0Y7PkY9L
-         43PdsZsi9byrD3kvopkOZ5MqXi1nBKwNbtB/nJ5V7nglxLX+70ei6GSs2eyKCWcEC2j5
-         eJNceeSS+S4b9NuXr7vLwprOvcWGmZOgL7i2dKyzKm8daonldsDvummy2V4bNfI+TU62
-         E+5w==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=S5OrvSekYACv8+1dLNThyw1SZ+vG+x19oDy43O1blGs=;
+        fh=4ubiFxNUfpRvcKAYgMhH+gyfBqh/MsXOhDxn6vUYmHU=;
+        b=OD3YvtPf3N+po6Oo8+E2v7/iaOWbAqanEtRHn1n0px3WxtBmLJvX+TnJLllVBvvAjA
+         neLEPz+xK1Hbj2z/JgOn/qalpNuks6RMLVhtWRrJuIXFakwkr2M5lK9a+rt0v4XtHQJ2
+         1exHj31w2bn/4jGahVXbSgV00KpBurDhtunOmnKpTf8dxR7KQSUVFN/UpUf+B9V0UikS
+         zf7wTxvNBY39WWbTUiZJKm1aeJEpHpxWDe4orXksTsjph5p4Ccr1Ewh4C9lzl5f7mdLC
+         CQsnFDhp21duog9Nh+qEf7jBfBKULpPey7qPi/c5cSEXVEIbieADyd1tvZNSOwhn0L9R
+         D3xQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@minyard-net.20230601.gappssmtp.com header.s=20230601 header.b=R3981UPQ;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=DP+QfC5b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf1b9f6dsi5607581cf.219.2025.01.29.17.15.08
+        by mx.google.com with ESMTPS id af79cd13be357-7c00a903d78si88478585a.306.2025.01.29.19.03.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 17:15:08 -0800 (PST)
+        Wed, 29 Jan 2025 19:03:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@minyard-net.20230601.gappssmtp.com header.s=20230601 header.b=R3981UPQ;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=DP+QfC5b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdJ8l-000145-8u; Wed, 29 Jan 2025 20:14:43 -0500
+	id 1tdKpz-0003yF-UU; Wed, 29 Jan 2025 22:03:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <corey@minyard.net>) id 1tdJ8j-00013q-Fv
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 20:14:41 -0500
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <corey@minyard.net>) id 1tdJ8g-0000eA-FR
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 20:14:40 -0500
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-540201cfedbso211277e87.3
- for <qemu-arm@nongnu.org>; Wed, 29 Jan 2025 17:14:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1tdKpx-0003xf-Ks; Wed, 29 Jan 2025 22:03:25 -0500
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1tdKpu-0004zV-EU; Wed, 29 Jan 2025 22:03:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=minyard-net.20230601.gappssmtp.com; s=20230601; t=1738199676; x=1738804476;
- darn=nongnu.org; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fH4OIUNdVWfzUHgy/iybx/I5U4iA6wYbbqktoccN824=;
- b=R3981UPQYF3HcyDJNob0ngSuYwzqXcaPXrCMT5+fJwIov9MiKeF5NNVuenAXJnVnWU
- NF3R9jqjaJmK9aN0zwiFEhCZQpyhzG9Xyc5Qb6LH2UKuYRRKTs2wZrwF+5SPp61xKKUq
- eK9aHpcdYxm/5blK/3d/AlzUCPpavKNpwl5hwcJiBVXlv1bUN9vblr8OnCQwmpsMuFm8
- v+s7dgvnrPB0OQdat37YYu7S6xodPeME+EcwF1GDD1BgHJhhfFxO/xqJ/REYWCeiWzFW
- MRE2ttSFmaiOnmhb6yTAj/K4hLiUp5udNCk4EUefPGf4HS76PESSp7ycSYWApZLss1A2
- 2TFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738199676; x=1738804476;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fH4OIUNdVWfzUHgy/iybx/I5U4iA6wYbbqktoccN824=;
- b=MHSJJXUFqpKzutSnlUw7ZuaNvdNvU9NKY8Iiw9fkj4Alo6Tr/TAxzZ8ovjquM/9QVY
- iBvhYVXY51o9ujEGdhc4AAMiKbn++fl9Y28CCUQEVeMdC27yXclY0OEfNr/CYcpH+aTK
- WA9+3spZbZBOmy5Q8MlGMqAkD6ifHSjJ+8/izGvnAZXnUcSjXoRX61ekn8flPPDgy+Yt
- A9/sLCLBBb5PST1je66UDKx28MN8Lqa9QqULTUvIzWsJnRmjQHaXeqbw4SZqRxaQ33zq
- o9uPpwNgxPn1r2WP0K/EMAOdzl1DTJ919a7UGZBNZWTuOrgbmuEXDHpo5FTyMhJnWXUr
- TSXg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVmgEb3R7SRdg8ri7a69B/L1PzCmy0gUK3KoRC1wm9umMvzKR6xmnvPRStVxw5PHhaHekYGZ1U3dQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxnrc+aMf130DHSaOk3hrzWxfXzr6sciJPXq7uFiVcPsO5XdEe4
- RzGjpLForyjcY8XUzujP6zNQLJ0WXzfJX+pzs3AhaSz6DQwzv98ESHxEhEhDE6+pe+G5OWWrhm7
- 3RypbdSQvu0BFScgdXWPas8m2s23ld01P2jpI/A==
-X-Gm-Gg: ASbGncvpwn1NmLjZlCeMGCzNReZ8xG58+YfeEy/rMoX4w5lsbfknjBK6ZdUx8Uyqayn
- AZfx6beGq0mDSWEe8COfzOO4/e4n+f0L1+UrZ8Oa8RLTTGg38C3yKbrIqVJeaSNtc/zF/OKhpFg
- ==
-X-Received: by 2002:a05:6512:3094:b0:542:8da7:242f with SMTP id
- 2adb3069b0e04-543e4bdffb1mr1481346e87.10.1738199675793; Wed, 29 Jan 2025
- 17:14:35 -0800 (PST)
-MIME-Version: 1.0
-References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-21-shentey@gmail.com>
-In-Reply-To: <20250120203748.4687-21-shentey@gmail.com>
-From: Corey Minyard <corey@minyard.net>
-Date: Wed, 29 Jan 2025 17:14:23 -0800
-X-Gm-Features: AWEUYZnxI3pCn05rO_lH0h3KTRYmbDBjY9XbFtcrSvD7GUQeIWTQMcW_XqZFUYI
-Message-ID: <CAB9gMfo-85-nWdLaEH0KD+uBy7LWobi+EQFZ5HiS_hWZfGJ4SA@mail.gmail.com>
-Subject: Re: [PATCH 20/21] hw/i2c: Import TCA6416 emulation from Xilinx
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ d=codeconstruct.com.au; s=2022a; t=1738206190;
+ bh=S5OrvSekYACv8+1dLNThyw1SZ+vG+x19oDy43O1blGs=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=DP+QfC5bxb1c7eMBGhMH44KxM8zMJuol1ilhTDL2G7OqMfLKfAB56EMF+Ambtd/Tu
+ 7Ap2iK0yhkwrjNFTU1MZeIVkiU2eCpDuTtZeuuruDuj4edtk+8zQshZRipjXDj1rL1
+ oL2AB00rfG25LLgoMjyU2jH99BO7WOL/bLaEJde1Gh1QxGRFCPNWcPiM/HbimLNCsy
+ emDpimU68Rh0zaj4TOxkBuHowrnQ9CR19os7CQcBBPJDPz3wevu6IIRzC3QWouP4z6
+ rIsIgT6Nf7F9DyJTC9EQ7uxSZE2HC/L4tVA/wq7QPBZgTJsojz0un2O7SXN6V3drz4
+ wVe1G+RYUQ2ow==
+Received: from [192.168.68.112] (58-7-158-64.dyn.iinet.net.au [58.7.158.64])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 8825173803;
+ Thu, 30 Jan 2025 11:03:08 +0800 (AWST)
+Message-ID: <4c7dc177de0e36a6f3e6ee444357f572affc30ca.camel@codeconstruct.com.au>
+Subject: Re: [PATCH 0/5] tests/functional: Update Aspeed OpenBMC images
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ qemu-arm@nongnu.org,  qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>, Jamin
+ Lin <jamin_lin@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Thomas Huth <thuth@redhat.com>
+Date: Thu, 30 Jan 2025 13:33:07 +1030
+In-Reply-To: <78e6b6ad-0422-4b43-95f5-f377ea101f09@redhat.com>
+References: <20250128214100.1196243-1-clg@redhat.com>
+ <bee99a3ef4821f69f6f1a2f6cfc77c3e247e5d87.camel@codeconstruct.com.au>
+ <78e6b6ad-0422-4b43-95f5-f377ea101f09@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2a00:1450:4864:20::12f;
- envelope-from=corey@minyard.net; helo=mail-lf1-x12f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+User-Agent: Evolution 3.46.4-2 
+MIME-Version: 1.0
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,243 +107,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lsjRa5K10iAW
+X-TUID: QmfyZWlsAyKR
 
-I'm not sure about ownership here, but from an I2C point of view this
-all looks ok.
+On Wed, 2025-01-29 at 08:19 +0100, C=C3=A9dric Le Goater wrote:
+> On 1/29/25 00:29, Andrew Jeffery wrote:
+> > Hi C=C3=A9dric,
+> >=20
+> > On Tue, 2025-01-28 at 22:41 +0100, C=C3=A9dric Le Goater wrote:
+> > > Hello,
+> > >=20
+> > > This series updates the OpenBMC firmware images to the latest
+> > > version
+> > > for existing tests and also adds 2 new tests for Aspeed machines
+> > > which
+> > > were not tested before : witherspoon and bletchley.
+> > >=20
+> > > Thanks,
+> > >=20
+> > > C.
+> > >=20
+> > > C=C3=A9dric Le Goater (5):
+> > > =C2=A0=C2=A0 tests/functional: Introduce a new test routine for OpenB=
+MC
+> > > images
+> > > =C2=A0=C2=A0 tests/functional: Update OpenBMC image of palmetto machi=
+ne
+> > > =C2=A0=C2=A0 tests/functional: Update OpenBMC image of romulus machin=
+e
+> > > =C2=A0=C2=A0 tests/functional: Introduce a witherspoon machine test
+> > > =C2=A0=C2=A0 tests/functional: Introduce a bletchley machine test
+> >=20
+> > The rest of the patches haven't reached my inbox. Did you send
+> > them? It
+> > also seems they're missing on lore :)
+> >=20
+> > https://lore.kernel.org/all/20250128214100.1196243-1-clg@redhat.com/
+> I shouldn't send series too late in the evening ...Sorry for the
+> noise.
+>=20
 
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Hah, no worries. I see Thomas has already reviewed the resend.
 
-On Mon, Jan 20, 2025 at 12:43=E2=80=AFPM Bernhard Beschow <shentey@gmail.co=
-m> wrote:
->
-> Xilinx QEMU implements a TCA6416 device model which may be useful for the
-> broader QEMU community, so upstream it. In the Xilinx fork, the device mo=
-del
-> gets compiled whenever CONFIG_CADENCE is true, so have it maintained by t=
-he
-> "hw/*/cadence_*" maintainers.
->
-> The code is based on Xilinx QEMU version xilinx_v2024.2 plus the followin=
-g
-> modifications:
-> * Use OBJECT_DECLARE_SIMPLE_TYPE()
-> * Port from DPRINTF() to trace events
-> * Follow QEMU conventions for naming of state struct
-> * Rename type to not contain a ','
-> * Use DEFINE_TYPES() macro
-> * Implement under hw/gpio since device is i2c client and gpio provider
-> * Have dedicated Kconfig switch
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->
-> --
-> I have a use for TCA6416 emulation. Question: Are Xilinx Zynq maintainers
-> willing to maintain this device model?
-> ---
->  MAINTAINERS          |   1 +
->  hw/gpio/tca6416.c    | 122 +++++++++++++++++++++++++++++++++++++++++++
->  hw/gpio/Kconfig      |   5 ++
->  hw/gpio/meson.build  |   1 +
->  hw/gpio/trace-events |   4 ++
->  5 files changed, 133 insertions(+)
->  create mode 100644 hw/gpio/tca6416.c
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7531d65429..0cac9c90bc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1030,6 +1030,7 @@ S: Maintained
->  F: hw/*/xilinx_*
->  F: hw/*/cadence_*
->  F: hw/misc/zynq_slcr.c
-> +F: hw/gpio/tca6416.c
->  F: hw/adc/zynq-xadc.c
->  F: include/hw/misc/zynq_slcr.h
->  F: include/hw/adc/zynq-xadc.h
-> diff --git a/hw/gpio/tca6416.c b/hw/gpio/tca6416.c
-> new file mode 100644
-> index 0000000000..81ed7a654d
-> --- /dev/null
-> +++ b/hw/gpio/tca6416.c
-> @@ -0,0 +1,122 @@
-> +/*
-> + * QEMU model of TCA6416 16-Bit I/O Expander
-> + *
-> + * Copyright (c) 2018 Xilinx Inc.
-> + *
-> + * Written by Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-> + * of this software and associated documentation files (the "Software"),=
- to deal
-> + * in the Software without restriction, including without limitation the=
- rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
-sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be includ=
-ed in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
-SS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
-TY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
-LL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
-OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
-NG FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
-S IN
-> + * THE SOFTWARE.
-> + */
-> +#include "qemu/osdep.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "trace.h"
-> +
-> +#define TYPE_TCA6416 "tca6416"
-> +OBJECT_DECLARE_SIMPLE_TYPE(Tca6416State, TCA6416)
-> +
-> +#define IN_PORT0    0
-> +#define IN_PORT1    1
-> +#define OUT_PORT0   2
-> +#define OUT_PORT1   3
-> +#define POL_INV0    4
-> +#define POL_INV1    5
-> +#define CONF_PORT0  6
-> +#define CONF_PORT1  7
-> +#define RMAX (CONF_PORT1 + 1)
-> +
-> +enum tca6416_events {
-> +     ADDR_DONE,
-> +     ADDRESSING,
-> +};
-> +
-> +struct Tca6416State {
-> +     I2CSlave i2c;
-> +
-> +     uint8_t addr;
-> +     uint8_t state;
-> +     uint8_t regs[RMAX];
-> +};
-> +
-> +static uint8_t tca6416_read(I2CSlave *i2c)
-> +{
-> +    Tca6416State *s =3D TCA6416(i2c);
-> +    uint8_t ret;
-> +
-> +    ret =3D s->regs[s->addr];
-> +    trace_tca6416_read(ret);
-> +    return ret;
-> +}
-> +
-> +static int tca6416_write(I2CSlave *i2c, uint8_t data)
-> +{
-> +    Tca6416State *s =3D TCA6416(i2c);
-> +
-> +    trace_tca6416_write(data);
-> +    if (s->state =3D=3D ADDRESSING) {
-> +        s->addr =3D data;
-> +    } else {
-> +        s->regs[s->addr] =3D data;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void tca6416_realize(DeviceState *dev, Error **errp)
-> +{
-> +    Tca6416State *s =3D TCA6416(dev);
-> +
-> +    s->regs[CONF_PORT0] =3D 0xFF;
-> +    s->regs[CONF_PORT1] =3D 0xFF;
-> +}
-> +
-> +static int tca6416_event(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    Tca6416State *s =3D TCA6416(i2c);
-> +
-> +    switch (event) {
-> +    case I2C_START_SEND:
-> +        s->state =3D ADDRESSING;
-> +        break;
-> +    default:
-> +         s->state =3D ADDR_DONE;
-> +    };
-> +    return 0;
-> +}
-> +
-> +static void tca6416_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-> +
-> +    dc->realize =3D tca6416_realize;
-> +    k->recv =3D tca6416_read;
-> +    k->send =3D tca6416_write;
-> +    k->event =3D tca6416_event;
-> +}
-> +
-> +static const TypeInfo tca6416_types[] =3D {
-> +    {
-> +        .name =3D TYPE_TCA6416,
-> +        .parent =3D TYPE_I2C_SLAVE,
-> +        .class_init =3D tca6416_class_init,
-> +        .instance_size =3D sizeof(Tca6416State),
-> +    }
-> +};
-> +
-> +DEFINE_TYPES(tca6416_types)
-> diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-> index c423e10f59..a240cf2de2 100644
-> --- a/hw/gpio/Kconfig
-> +++ b/hw/gpio/Kconfig
-> @@ -20,5 +20,10 @@ config PCF8574
->      bool
->      depends on I2C
->
-> +config TCA6416
-> +    bool
-> +    depends on I2C
-> +    default y if I2C_DEVICES
-> +
->  config ZAURUS_SCOOP
->      bool
-> diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-> index 74840619c0..b3ff7c7460 100644
-> --- a/hw/gpio/meson.build
-> +++ b/hw/gpio/meson.build
-> @@ -18,3 +18,4 @@ system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: fi=
-les('stm32l4x5_gpio.c'))
->  system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c')=
-)
->  system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'=
-))
->  system_ss.add(when: 'CONFIG_PCF8574', if_true: files('pcf8574.c'))
-> +system_ss.add(when: 'CONFIG_TCA6416', if_true: files('tca6416.c'))
-> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-> index cea896b28f..6724f2efb8 100644
-> --- a/hw/gpio/trace-events
-> +++ b/hw/gpio/trace-events
-> @@ -46,3 +46,7 @@ stm32l4x5_gpio_read(char *gpio, uint64_t addr) "GPIO%s =
-addr: 0x%" PRIx64 " "
->  stm32l4x5_gpio_write(char *gpio, uint64_t addr, uint64_t data) "GPIO%s a=
-ddr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
->  stm32l4x5_gpio_update_idr(char *gpio, uint32_t old_idr, uint32_t new_idr=
-) "GPIO%s from: 0x%x to: 0x%x"
->  stm32l4x5_gpio_pins(char *gpio, uint16_t disconnected, uint16_t high) "G=
-PIO%s disconnected pins: 0x%x levels: 0x%x"
-> +
-> +# tca6416.c
-> +tca6416_write(uint8_t value) "0x%02x"
-> +tca6416_read(uint8_t value) "0x%02x"
-> --
-> 2.48.1
->
->
+Thanks,
+
+Andrew

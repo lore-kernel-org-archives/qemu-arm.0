@@ -1,99 +1,190 @@
-Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp73205njl;
-        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWdLh9fSwIm4HLetROi0Kay4eo1hZnrvAZyboAlCuL2VlgthZcjZjNk9ENVu11gEM0sesG8qACYzsDxqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpVZcmroVJx9Nwi5rukANTyraAb9xahRrwZmrgTOqc4Agct65+b7XJoCHXjNPIA0PcpQ43
-X-Received: by 2002:ac8:574d:0:b0:46f:c222:a5c8 with SMTP id d75a77b69052e-46fd0ae2183mr109549441cf.41.1738211563605;
-        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738211563; cv=none;
+Received: by 2002:a17:504:3e04:b0:1be9:327d:8ee3 with SMTP id i4csp186117njl;
+        Thu, 30 Jan 2025 02:06:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVWuVyzX+yJN1D4zSO0UliMmm1TFqzngymxf02Y/7tp/lByY7jsisoYM2YNuLHqVYwB8jBWqiZ9PlGRmw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH58olnUCvEQTdbS7H5pUlbMzJxrh1hm59QLyl1AyR71v+CscdFF5NBznfHWx0qzrEUWuh3
+X-Received: by 2002:a05:6214:1c4a:b0:6da:dc79:a3c3 with SMTP id 6a1803df08f44-6e243bf3c91mr106677706d6.5.1738231561455;
+        Thu, 30 Jan 2025 02:06:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738231561; cv=none;
         d=google.com; s=arc-20240605;
-        b=UDhwN3QPEvhoivqDU62PNh93euHR9C8W6cSAIB8Muxt6rd7ff8mJzOWQkRJU6iT/Sv
-         3fT3TKV3StxSH4nn2MUOVZvYszJ7tMZnKDlBfgKjprFONhgsGDfNq0R+ah4gEA6wivWR
-         XmdG55y9xUQzpwb5eVj/+JaK1tPr1sNFdfwPtct3VF93Uu9SGzjgD10imVcOO0OBJ5vs
-         9+BPcklAh4/XgZOyw3NVAAdc+jTMUNRvvB1jh7v3jbFPy2mFeV5JvgrLx7l7m0xf8d7b
-         n8zRSSHNChfDM2uYsWFXp/KsjbkIxb6s6HwJxXsFhOL5w6F25pgXJE4I+2ElwGyA7yig
-         AxTQ==
+        b=jFTwdbqLM3XuZgLOJnEuJQdE8MNaysOeO8m/zvXrb5FCvd9Y0nhdy3Yo1k+pohKvhF
+         t1y97tsg8nOvXH6Umy52bU4VwAi2b/ScilBb2MJG6zCGOV+mLUQMz8gdcLNvg9PyQBZL
+         3Z9wlf2rTczkHmFuLqGGE0VSOWs83m6E/YIDfq97POzzO36Nza3nPBgZuQirWk9CeNkw
+         g2s7+UN0ogIhPry39kCBp4DGDxrDXVRhyGVI3cKyAsMdzu11XHQMJFO3ZBUzZxWUH1Hk
+         319LVrOVBkYKzPoASn4KmpfAFgj4cLMy6fp5VC1glOAImjzIeaMMLrhO1eqHwXB08w2T
+         mTvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=q3sizWaYByj5QvcJfTrqw4nboFnX1qsPVfisTxY2FT4=;
-        fh=ZOisryR2Mb28fNxWQse9qjy5qBOClWtToxOZdGTojXg=;
-        b=eaDmJXSMemMFqjHXXFFeSKhGbNnjPGe/EaL7vWis0h4rEzozVu+NFGcs0m7EOiV9uC
-         0BI/kR0mqpkqnkzrXs2Cui4vAqGL6+jla72CVwTLLjhjMrI4yaYOD7BdY/W2wdGUotep
-         8AiMa9VWbvTkW4vw34/LF1vUsDfQCcr16+cYtGen+/9qvsi6OWFeSsaXFdsLfm1bGNH3
-         yx94yvNj1qy6IZ32mSxJXN6kVxvb20xBTSoH6CKFJIArU6cI8Rclm0RrWzT1vyJBD7Z9
-         kQlmIZnfJHZRRos5Bt0Jj5aUxO4z9GV/yyc6bG2rN1ppgrKmQA/uYHWbMe1+ogGAMMMX
-         Ywrw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:organization:autocrypt:from:references
+         :cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ej34TRKzCk3u66g7ZUBbMIDJC/Cfgozb+JXmH9zPuFY=;
+        fh=z8VETSNjbcCjbNr/UBxLsi81K1vi3ocLnnviLeU5rEk=;
+        b=gkosggvewy+bH90JCuYrOXqJZJ+SEncjFOn3NqTs7DkwvbFIGq1iAJbPD4/EWLoHS8
+         CzwwLbIy4mwk6940DBlW4eAezNiDeU3H2K/dquM+szaOEFGnqKbkQ9bPZ0UeTNSwdujy
+         nqZbTsn0XMxKVTjWHertrPGkWPYq0WYjTUDd6frBP9+jo7nOWyxbPoDZwRo5/WS7CZYe
+         IYKrlqKizeqic1j/gMalrpNsCEolCDPRQgFPvl2a4Nc8woke7ode/ZUqnhSHOGWiegfT
+         2RoUXYmwFRmrg0FiuWbgGhacWVEd47M2AiKzQu/wniQUm6GywnUglkdosvor1Clq5Ar1
+         BlpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=Wg23bQL3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V3hyByea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf1ba6dfsi9213621cf.307.2025.01.29.20.32.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e2549a1fcbsi10686686d6.321.2025.01.30.02.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
+        Thu, 30 Jan 2025 02:06:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=Wg23bQL3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V3hyByea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdME4-0008PJ-2g; Wed, 29 Jan 2025 23:32:24 -0500
+	id 1tdRQe-0007j8-Pb; Thu, 30 Jan 2025 05:05:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tdME2-0008OI-Lo; Wed, 29 Jan 2025 23:32:22 -0500
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tdRQd-0007dc-1c
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2025 05:05:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tdME1-00074H-1k; Wed, 29 Jan 2025 23:32:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1738211537;
- bh=q3sizWaYByj5QvcJfTrqw4nboFnX1qsPVfisTxY2FT4=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=Wg23bQL334/FADe3XsNZGIMjPesj75BSVRDwWIt0vu/r8Bgdorx7Y8odJUtrxuyeG
- Jtxw7PKm2Q/RaoPReqIMbihluT9V5MYV5nBv1nTPSzD973b52FUsOhFBhShVzowXu+
- AcRq+mOu4gXNdEiAC6JJf9a9vmzwlO2ikuAzxxHLDIhXylpfgg7Dx661lamYLGa5lx
- iWy9KQhv3Yd8y8CHz54RJkulb2aArS0OMwh9yoMeHfPSRDTlemxbjPHgcJA1eKvkDH
- uB0hXuj5BMb240jKy0ON95l6YMMOUuu1YqiswMWSNzu/NRt66Bzvf0uHcrDkYcmmwY
- nYcf1mo/Ad4uQ==
-Received: from [192.168.68.112] (58-7-158-64.dyn.iinet.net.au [58.7.158.64])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 995247383B;
- Thu, 30 Jan 2025 12:32:16 +0800 (AWST)
-Message-ID: <26ca7f05245eab805d876c08ffef95ca9bc97b14.camel@codeconstruct.com.au>
-Subject: Re: [PATCH v1 17/18] hw/arm/aspeed_ast27x0: Add HACE support for
- AST2700
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?ISO-8859-1?Q?C=E9dric?= Le
- Goater <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-Date: Thu, 30 Jan 2025 15:02:16 +1030
-In-Reply-To: <20250121070424.2465942-18-jamin_lin@aspeedtech.com>
-References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
- <20250121070424.2465942-18-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tdRQb-0006SG-4Q
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2025 05:05:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1738231538;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ej34TRKzCk3u66g7ZUBbMIDJC/Cfgozb+JXmH9zPuFY=;
+ b=V3hyByeaUEcUYQtbTepP+/KVmDjpm0gpbfb2yuRzabLXhpVn5aM7g8go4XZrBxtJJCOOho
+ 1emTjldytYJDXQBO54ze/JCNMo2fcT0kyHqACd6eDp//G/fy5cCgVlW34R0oIuIJqAwJpK
+ yasshRuV3/MLraisJFAayFodo2byN2M=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-362-eXfIWKlHMj2-L5o4BMH96w-1; Thu, 30 Jan 2025 05:05:36 -0500
+X-MC-Unique: eXfIWKlHMj2-L5o4BMH96w-1
+X-Mimecast-MFC-AGG-ID: eXfIWKlHMj2-L5o4BMH96w
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-43582d49dacso3808075e9.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Jan 2025 02:05:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738231535; x=1738836335;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=ej34TRKzCk3u66g7ZUBbMIDJC/Cfgozb+JXmH9zPuFY=;
+ b=fAhF3s/dysb/vfUeLSC3YnK+Qz0HUtMS9cJvwOJLXjkfPVWyCVwNGfB5nQ+Gebd+8U
+ 06SRXfl9nwC4eDR6mxbcsTE09YXrdLLO01eJ94up0A2I90YvLPcSy9fJZcDl7gTtxAXh
+ o5NZWyFtkqbt7zHh+exrNL+Yw5c59eGN/gxtGEwJQZwldk3xFVOcw4q0eST+hFJuuahV
+ wgeME7E8bcLCAWagD/+chPnXwBxhc/6BMfPKLscY7Czxy6AK6iwwu0G7fCH/k5LwIFIm
+ Sdw1EXgWrSEnDJBUYomaIRRRd/Hhiht2pUyzjQBOnTePI/CBtT7vYOZALdfsttjcY748
+ Us8g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWvLKQBWG9z8lOPW/4GJhBB59uZGIQZ4Q4PeJvRIZWTkZ/6qK2Lx5LU1FVGI/cGdf1RDoRScjmgOw==@nongnu.org
+X-Gm-Message-State: AOJu0YxvLy7i3uq8feW6YajOq+aaVz2NBaLglibMxqBro2A8ob0hNnJd
+ 6NXhvvv/O5J+Sb/G/x/Kco0bRD4uLmYDfN1Rup7wqxnJ3cjMD3QGgtzw/Zr6OCTZdMEsEqJT1nO
+ dLmFld8/X1BuLk51vICtRIOvGXBdFaJSZ1HlAX4kGXVi/bPNbEA==
+X-Gm-Gg: ASbGncu70JmCj54avMeCjih6Hx8GIdy80htJaifDeizodv3vEA4cj5uV6RB8oCo2CRj
+ hb1nPCv60BYJjtf3t8YPk+WKK+QCm2jbilTp/hKpCU+Jke1ZEQ2aY/kA61ZOGKTdO07ukYHdNoF
+ bpFF22tq25GME+Z9TdL/9WdOv/lBXm8qSYLUIl5wYi5wYxrJiodd3zql28jzsqm1cHIWU78aYs7
+ +DriRX4q9NOSmwh79DGYwC6Vx7i/bB/jdZgQygbSP2w27PFLNgrs1UPsb1Qe+2Kha4z9MblKTYa
+ kGZIeduWLwVXu9FDeT2bQKk2b8pKm8D3pLb/kjsMVsc4
+X-Received: by 2002:a05:600c:3306:b0:435:294:f1c8 with SMTP id
+ 5b1f17b1804b1-438e018288dmr30450505e9.28.1738231535589; 
+ Thu, 30 Jan 2025 02:05:35 -0800 (PST)
+X-Received: by 2002:a05:600c:3306:b0:435:294:f1c8 with SMTP id
+ 5b1f17b1804b1-438e018288dmr30450285e9.28.1738231535217; 
+ Thu, 30 Jan 2025 02:05:35 -0800 (PST)
+Received: from ?IPV6:2a01:599:904:96e0:a245:aa9f:6c57:eb41?
+ ([2a01:599:904:96e0:a245:aa9f:6c57:eb41])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438e245f49dsm17378355e9.35.2025.01.30.02.05.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Jan 2025 02:05:34 -0800 (PST)
+Message-ID: <05295422-6baf-4f7e-9f02-d2bd9344b7e7@redhat.com>
+Date: Thu, 30 Jan 2025 11:05:33 +0100
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/6] system/physmem: handle hugetlb correctly in
+ qemu_ram_remap()
+To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+ imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <20250127213107.3454680-1-william.roche@oracle.com>
+ <20250127213107.3454680-2-william.roche@oracle.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <20250127213107.3454680-2-william.roche@oracle.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: yKf0JDm9cwNEOyXNCr6DGzbNERwu8dQzB1ww2Ke7CGg_1738231536
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,13 +199,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Sh5Gr0AAcUDN
+X-TUID: i2gJhbLZK9zT
 
-On Tue, 2025-01-21 at 15:04 +0800, Jamin Lin wrote:
-> The HACE controller between AST2600 and AST2700 are almost identical.
-> The HACE controller registers base address starts at 0x1207_0000 and
-> its alarm interrupt is connected to GICINT4.
->=20
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+On 27.01.25 22:31, “William Roche wrote:
+> From: William Roche <william.roche@oracle.com>
+> 
+> The list of hwpoison pages used to remap the memory on reset
+> is based on the backend real page size.
+> To correctly handle hugetlb, we must mmap(MAP_FIXED) a complete
+> hugetlb page; hugetlb pages cannot be partially mapped.
+> 
+> Co-developed-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: William Roche <william.roche@oracle.com>
+> ---
 
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+Acked-by: David Hildenbrand <david@redhat.com>
+
+-- 
+Cheers,
+
+David / dhildenb
+

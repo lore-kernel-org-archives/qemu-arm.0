@@ -1,152 +1,144 @@
-Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181829njb;
-        Thu, 30 Jan 2025 10:23:18 -0800 (PST)
-X-Received: by 2002:a05:6000:1fad:b0:38b:ed88:f045 with SMTP id ffacd0b85a97d-38c51b61164mr8307480f8f.33.1738261398199;
-        Thu, 30 Jan 2025 10:23:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738261398; cv=none;
+Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181859njb;
+        Thu, 30 Jan 2025 10:23:20 -0800 (PST)
+X-Received: by 2002:a05:600c:3c98:b0:434:fb65:ebbb with SMTP id 5b1f17b1804b1-438dc3c38dcmr78632555e9.17.1738261400401;
+        Thu, 30 Jan 2025 10:23:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738261400; cv=none;
         d=google.com; s=arc-20240605;
-        b=OzUzt9yqjfW5dYAgfP+e3nBxL0Jh+8k1uFhFm+o4AK8LNDxGY9Y2VoD/OygZ+n5hf2
-         m0BqX9Ux7vrEIN3Uh86kCX0EapLGqBIxhYYUBXeAXLs4xXLEmtFlCCkQZ3TbynyZFBDx
-         QGQ1+mLTbjDq+1SpzvbSJxRfXMHCz4/R/yb+t9FMbeDahEK3U0tIVRTuFHtePeDX8ylj
-         y8PENo85Ap4Bnm8ahVJn4ZAOTmmaQgH8HwLGiABeIx8UhIhXJnpn6YXqydyacxOtd4ud
-         plWUYeRCMR00EwEK3I7f17sMWFv/eu3TLmtMvhI8eACT9RVg47N1iOQ/iMVjO/0YV6V8
-         XOtQ==
+        b=Ik2oCSFm07zc+tZlQ/JvPvtLiAlGa2Aqrwi08SnFio8s6KKSyezb/i/Ho/fbEXtn1H
+         ac1B7DU5L50WdqRtQn3SXa2RntRG2yR3rC1ThX/BqgDM16SPj36KHS00n5BmouvdlTwE
+         LUA504vlTgcGIQsTOqngE2YryBM/yreMuS4SuGU9p5gkyQ12mDhgG/bbx/ep15dJM4ym
+         GQWh8E2i3Lqmikm1ZC9rd0i0vArySWlU+uKQfdnwjVjSwRZOXg4pJLocpOdgT6nOFzLT
+         UFNQyGJmBxi5yhgk3nh42TbK7OS3dfDKKH52RhP49fv3QpXpIL7Zdr2ZZyqgWujFUkV4
+         JMuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=g/yslxnxwmm+HysZz/dpCshf9VmwSsaLGb2pE27kvDY=;
+        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
         fh=RiJSNyFv98ecbYckNQx9NKP2dJchb+KjtIrNazRBKjc=;
-        b=fokrg0c+u/rUsT6cdCBTHRF1T+iLHYuauE/WsLvfdTquxGcqu8wjCPn6W6gFS2JFaj
-         ialpVwlw4MUmr5r77fFVjomsUv9P01N1K4rtIgtwDTDJi2BM0jjYx5SRn01eKvqz8wfO
-         yLvJDwvN5DbOaS36vrFNfXNXcdgPVh1K6d/wooQRAKEkv7ocRhiUGjK0HXmwrgIe2LAF
-         iu2fGROtov3urQ223T7JCqtm5QPnrAov5oEzFZ+UOSN0am4GH07d2syqccDnutYQ+lr7
-         Y0ukEsAAEI/eK0k8TAEGx3t6qytkWK9eTv0O0FgeladO413EnqvcSJ8HnG5qqG4dK77W
-         3g3w==;
+        b=Sm6wzwXqtVLbjmSgN/fWSln4/1YNFoP63yaQCQAz2Igo4MKYy3wHWGpJo7+mk0cUiu
+         aaxfjMaHlgvEA5iN2G8K8p9Xui/0N3OhuBN6pqcf6VPIeH/XbwH8I0LCrg0YcFQ/qJSi
+         YfMtMyb9e0FP6zAzK4An5dBGV/uu7rBMpANPu3wawHR55avlwgTi5JcgjngLvqI/yVpj
+         jle+2QsRSNcF88qWIrgL63GcHhJ5oohyWQV8BIs6xWmTRjN5Fyt/6l9LEXSM5196924L
+         AGt14PP/nNs2NmvjBWqfcpuZDAaF1kf1BlOS5uIEE0zTlSx4wwpOS9qX0Y81bRQA4s+x
+         hT7g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OauJ9aCX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ss7qpKoz;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c0ff052sor641541f8f.3.2025.01.30.10.23.18
+        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c0ebb65sor637573f8f.1.2025.01.30.10.23.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Jan 2025 10:23:18 -0800 (PST)
+        Thu, 30 Jan 2025 10:23:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OauJ9aCX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ss7qpKoz;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738261398; x=1738866198; darn=linaro.org;
+        d=linaro.org; s=google; t=1738261400; x=1738866200; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=g/yslxnxwmm+HysZz/dpCshf9VmwSsaLGb2pE27kvDY=;
-        b=OauJ9aCXo1DRC8YOn17BRSf7gU74MYnvgHC/oKZthomQ38PeO/cykcRqUXOvYPG0TS
-         pQ657TfULMINvM8aXVxOAxeFDleqBn36kY0tKsRn4O0cdoXsscoqppw8Qjn0tjawKKNp
-         ozbS5XjmEXE3fAuOrqb9DQfZ5t8rYKxV16coDsfx9izpCHLneaD/exzISOsRQT0Nly4m
-         v8VC9zs78unmrfDu7MoQb3k4yLNbyKAM/52R9cnJOexw9RYEZALTXz/E/HPNDVcCdoRC
-         z2fgIsxrKF+YPgwzTlm6aqIn9CJIjIyJ/LaMxkYyB2atpLQpFk4/k+3z9PoaTmCB7Lhe
-         UOpA==
+        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
+        b=Ss7qpKozar8LY+yEYV7vNNU/KEYzm4LI/F1F7kntamFqFPuWyDceuXhulkq79ClVJT
+         /XNzR6Levvevx764HGwbKA8UCGQ4dgm/amtpq3Uqx+sSvfSi1tVRio3bmyV3CUjOk2a2
+         5C23mcEu2C5U5zAfg5qGvj3I3pydDmLrOs/JifPWVNUB3JTOOemHc2NikAEx/M/tGwVq
+         gH1inoZ7OGvMgwD2lpeXL5UdVJPdTeJ7ClAzppnu5wOMASkPki7bBHttCb+J6mfdgESV
+         mvthk6SAD4LKZ/kw3KmBJdPJ/N6bROjB7LxkuVQNWSkMLLYSj+PZpspkRpM4dfLXQRxK
+         RCLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738261398; x=1738866198;
+        d=1e100.net; s=20230601; t=1738261400; x=1738866200;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=g/yslxnxwmm+HysZz/dpCshf9VmwSsaLGb2pE27kvDY=;
-        b=H2pDumTN1ZOReHFViEglo2oXOHEWvcztTQf7qLpUIZ0l/jXznD4aZKbjm6FEGwCOPo
-         Q85jbJHXp+A/nRxWmeb0xUycBdG0qZ1etehfCSombGd2AJoakVVURSABWY/6WOFmfZ07
-         xoMz39OVNv9+2wUZg6gW8tzcaKrDcnHeDAm1TQs2AXO1laD565EK6jl0IQUwvJwp5Kck
-         xHAz3hsjirbWR3gT9DxXBhAfzqmRRdIgnoAQFLgW2Rxvcsn4MHlf63W1PyQNj4eAEGo3
-         jXbZd3KISbzr3DhCmaCOiNOOa4U4B8DO3cRa4RwoyDj2vbuVnBGcQC/aTy7L9ylJirQu
-         eekg==
-X-Gm-Message-State: AOJu0YxrMomsVqjd80tkQSvW+jk02n9KiEL2IRIuh9tqnwYWxbYp6N41
-	NeMFiDSKOSCOSS8pBqHlFSGB91diisfTpA9pElaY8XowD7H787U0Vakc2H9poejADA==
-X-Gm-Gg: ASbGnct2PN+1khyHXqiaUZmoPQ5XG4RanTxu/jOFa+tUpa1+BL2MDBir97mKNwsKpma
-	EIj8Tsy4PKJ3xjzh//qoapko8r0heQ4mXMLnDOy3a817gjEzVfBHFplip0tmwuGNHMbIVXy3dZp
-	4ZbdaUrvR56Wg+6r767FUjEBMRYKYHTuU85f1cTmvwtEinOJl4ltGDoY5EMTifEnQ7TsuULCoFx
-	pKm0GUVN8zhFBMsUCSBFYoQPQLkmHXPI8+fiE8IaQqw/KTgFKKA+LRYFEOtJAQ/mg0m7MoVzGox
-	wJsLROrkg5ruwNBYJJa72A==
-X-Google-Smtp-Source: AGHT+IH+I7yo4Js2hImL1H05KRHZE/gUC0mEnMK4BeWT4jXxKMiariAVI/m730Pzby6oKJBa9crVaA==
-X-Received: by 2002:a5d:5846:0:b0:385:f4db:e33b with SMTP id ffacd0b85a97d-38c51966b85mr8153358f8f.21.1738261397654;
-        Thu, 30 Jan 2025 10:23:17 -0800 (PST)
+        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
+        b=RtwiaY7zmagEr+tP/iMpcBP+wGK5XUa8cacmXK9NSaCA/xd2Cfkt4SHIQ1axUOAb80
+         pUykQ6kO5QajirjCx3olbt0bylHbEbBl7IK/tx1mV6kOY7rrgZF8ylRUbl74TEahjpRe
+         K0wX2Yfy+bcbAcnXYBAzwi2ng+RpUPPD4J7GGOLT2e3YpovJPQUZ4IjCzbG+9oaZojX5
+         e1eYCCEYt9iZKBb4EUq24iHz0OgrNaVXz16oB6lKlfXA4vcZVk4M9IuOimwpGLofThJ9
+         mhs2yX/oDkk+cMvL58PT6Py7kWtO1rgUlxJxhtiddfPqbYe4/OOWPUhY1jGefB6WEJ/m
+         JNdw==
+X-Gm-Message-State: AOJu0Yw4NVk2Kpzm/mMUqA7DgJv0+8vUxOT5OmzUWGArtRciu6WyreFz
+	gvutai7Tj6wqCeUPBAXxTei27GwA85vtKxehJ+kSCkXPo3EWc19Vm5vrH50lcDLn9A==
+X-Gm-Gg: ASbGncvDwBiZ5ntouv1hf1GoWXNgOAW9FNNJvxLZ8A+0GUHMZ6kCcxJ4mWu7oQ9SeTp
+	xlta42/BERkhzdulp5RfoawFunQ5+rfMeMPFmK0obsQBnF7FEjP4lb4yQRdgEBv8t2U97579Ftk
+	0YrvBaF/Q9PUxKRGEiGzSE7R/Z8+G2S1aLmrZ28uAqa+lmURi+GvV/s1uvbDLPYtcd3LMuWaIxn
+	22kA4V0Cn78Gf8mDuukXzDua1tJ8ehXoqdTftssliLb2Lwq4RobKFff8dn0/nneP48fesQ+aSSW
+	1V8rOXHhsESSaRHQ14M+wQ==
+X-Google-Smtp-Source: AGHT+IGiuiMHrThD+uWTll5N2DRzacpqO1X8j2qlN8vV9ZDCgL/ut6vM/QMSQvs3Geru69+PmJUeug==
+X-Received: by 2002:a05:6000:1866:b0:385:fdc2:1808 with SMTP id ffacd0b85a97d-38c52094219mr7873930f8f.40.1738261399765;
+        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.16
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jan 2025 10:23:17 -0800 (PST)
+        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 06/14] hw/intc/arm_gicv3_cpuif: Don't downgrade monitor traps for AArch32 EL3
-Date: Thu, 30 Jan 2025 18:23:01 +0000
-Message-Id: <20250130182309.717346-7-peter.maydell@linaro.org>
+Subject: [PATCH 08/14] hw/intc/arm_gicv3_cpuif(): Remove redundant tests of is_a64()
+Date: Thu, 30 Jan 2025 18:23:03 +0000
+Message-Id: <20250130182309.717346-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250130182309.717346-1-peter.maydell@linaro.org>
 References: <20250130182309.717346-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: erGKbHqE3x+y
+X-TUID: PhjyxT8QauvO
 
-In the gicv3_{irq,fiq,irqfiq}_access() functions, there is a check
-which downgrades a CP_ACCESS_TRAP_EL3 to CP_ACCESS_TRAP if EL3 is not
-AArch64.  This has been there since the GIC was first implemented,
-but it isn't right: if we are trapping because of SCR.IRQ or SCR.FIQ
-then we definitely want to be going to EL3 (doing
-AArch32.TakeMonitorTrapException() in pseudocode terms).  We might
-want to not take a trap at all, but we don't ever want to go to the
-default target EL, because that would mean, for instance, taking a
-trap to Hyp mode if the trapped access was made from Hyp mode.
+In the gicv3_{irq,fiq,irqfiq}_access() functions, in the
+arm_current_el(env) == 3 case we do the following test:
+    if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
+        r = CP_ACCESS_TRAP_EL3;
+    }
 
-(This might have been an attempt to work around our failure to
-properly implement Monitor Traps.)
+In this check, the "!is_a64(env)" is redundant, because if
+we are at EL3 and in AArch64 then arm_is_el3_or_mon() will
+return true and we will skip the if() body anyway.
 
-Remove the bogus check.
+Remove the unnecessary tests.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 359fbe65e01e ("hw/intc/arm_gicv3: Implement GICv3 CPU interface registers")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c | 9 ---------
- 1 file changed, 9 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 9cad8313a3a..8a715b3510b 100644
+index 8a715b3510b..7f1d071c198 100644
 --- a/hw/intc/arm_gicv3_cpuif.c
 +++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -2300,9 +2300,6 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
-         }
-     }
- 
--    if (r == CP_ACCESS_TRAP_EL3 && !arm_el_is_aa64(env, 3)) {
--        r = CP_ACCESS_TRAP;
--    }
-     return r;
- }
- 
-@@ -2365,9 +2362,6 @@ static CPAccessResult gicv3_fiq_access(CPUARMState *env,
-         }
-     }
- 
--    if (r == CP_ACCESS_TRAP_EL3 && !arm_el_is_aa64(env, 3)) {
--        r = CP_ACCESS_TRAP;
--    }
-     return r;
- }
- 
-@@ -2404,9 +2398,6 @@ static CPAccessResult gicv3_irq_access(CPUARMState *env,
-         }
-     }
- 
--    if (r == CP_ACCESS_TRAP_EL3 && !arm_el_is_aa64(env, 3)) {
--        r = CP_ACCESS_TRAP;
--    }
-     return r;
- }
- 
+@@ -2291,7 +2291,7 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
+             r = CP_ACCESS_TRAP_EL3;
+             break;
+         case 3:
+-            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
++            if (!arm_is_el3_or_mon(env)) {
+                 r = CP_ACCESS_TRAP_EL3;
+             }
+             break;
+@@ -2353,7 +2353,7 @@ static CPAccessResult gicv3_fiq_access(CPUARMState *env,
+             r = CP_ACCESS_TRAP_EL3;
+             break;
+         case 3:
+-            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
++            if (!arm_is_el3_or_mon(env)) {
+                 r = CP_ACCESS_TRAP_EL3;
+             }
+             break;
+@@ -2389,7 +2389,7 @@ static CPAccessResult gicv3_irq_access(CPUARMState *env,
+             r = CP_ACCESS_TRAP_EL3;
+             break;
+         case 3:
+-            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
++            if (!arm_is_el3_or_mon(env)) {
+                 r = CP_ACCESS_TRAP_EL3;
+             }
+             break;
 -- 
 2.34.1

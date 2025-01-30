@@ -1,144 +1,191 @@
-Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181859njb;
+Received: by 2002:a17:504:5a03:b0:1be9:327d:8ee3 with SMTP id iw3csp181849njb;
         Thu, 30 Jan 2025 10:23:20 -0800 (PST)
-X-Received: by 2002:a05:600c:3c98:b0:434:fb65:ebbb with SMTP id 5b1f17b1804b1-438dc3c38dcmr78632555e9.17.1738261400401;
-        Thu, 30 Jan 2025 10:23:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738261400; cv=none;
+X-Received: by 2002:a05:600c:a45:b0:436:1baa:de1c with SMTP id 5b1f17b1804b1-438dc3ca7aamr85279425e9.13.1738261399348;
+        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738261399; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ik2oCSFm07zc+tZlQ/JvPvtLiAlGa2Aqrwi08SnFio8s6KKSyezb/i/Ho/fbEXtn1H
-         ac1B7DU5L50WdqRtQn3SXa2RntRG2yR3rC1ThX/BqgDM16SPj36KHS00n5BmouvdlTwE
-         LUA504vlTgcGIQsTOqngE2YryBM/yreMuS4SuGU9p5gkyQ12mDhgG/bbx/ep15dJM4ym
-         GQWh8E2i3Lqmikm1ZC9rd0i0vArySWlU+uKQfdnwjVjSwRZOXg4pJLocpOdgT6nOFzLT
-         UFNQyGJmBxi5yhgk3nh42TbK7OS3dfDKKH52RhP49fv3QpXpIL7Zdr2ZZyqgWujFUkV4
-         JMuA==
+        b=NQVaYZis7ROaYj6R4ZuXru7paGZqC3llMeC02yUqWBSe3P2+aORlkzGyKpqU20u5EC
+         4y3q+ajQF+l41zxylXB++QuhzelGyQcJ56JAB4CeDt4Ejz4k8xqZerZoJnkU3k1cbwgx
+         UKNWLUenscZgPuwcAWQ5MTzLREpl0WjN0XLglgwpzC6XhDNAbp+8W8WuHxdOSpl7SKHZ
+         PmhD3rZ8zq+ky8q7VOn5UG+2Qz3q+mcqztnl90UplWQ0bdTlGIH1IXJdFOti7RDlIGqJ
+         1dkCMTJ8+BQIYcwm69JsyJj5nY+0Y1udXZpq5Y9btr/L6/Sj5N4hYu4lLsnY55wiCRex
+         W8Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
+        bh=fMa5YuSy0NDTUYP5ui6N/RSQpdjoNfs7F2yE5YfgTb4=;
         fh=RiJSNyFv98ecbYckNQx9NKP2dJchb+KjtIrNazRBKjc=;
-        b=Sm6wzwXqtVLbjmSgN/fWSln4/1YNFoP63yaQCQAz2Igo4MKYy3wHWGpJo7+mk0cUiu
-         aaxfjMaHlgvEA5iN2G8K8p9Xui/0N3OhuBN6pqcf6VPIeH/XbwH8I0LCrg0YcFQ/qJSi
-         YfMtMyb9e0FP6zAzK4An5dBGV/uu7rBMpANPu3wawHR55avlwgTi5JcgjngLvqI/yVpj
-         jle+2QsRSNcF88qWIrgL63GcHhJ5oohyWQV8BIs6xWmTRjN5Fyt/6l9LEXSM5196924L
-         AGt14PP/nNs2NmvjBWqfcpuZDAaF1kf1BlOS5uIEE0zTlSx4wwpOS9qX0Y81bRQA4s+x
-         hT7g==;
+        b=i3PhRypLRjVYhzRpbWHEobOFzTsh9uZUqdgUl4ZlsDKjB8qV6AuwB0CcTFIHaqDX09
+         oMIuMnqh+hHd2M8YfgxouiWIARKChX2xn1C8/M2y+oyPuTNwySWt4ceVeETcP/OQIYlF
+         z+TShWgexMfXALXKLM3vUmu133on91KkgCkExfiPNjmw3/QO7QG/nOQLvezVHxy2XoTc
+         KwykauvtPT+QQRECa8UKF9pW/ByisZ1wXMaKBL6n/UN4Ycm5JMGBbQwr0GUPAO6P0Mem
+         yvrfSCmYSTskAhDLX2C7+W2LvWQloz7XfvqPtCdEzCM+RGs0cYZx9WmXxaUBe7eo2Pi4
+         hUQQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ss7qpKoz;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Pq8Sl4/z";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c0ebb65sor637573f8f.1.2025.01.30.10.23.20
+        by mx.google.com with SMTPS id ffacd0b85a97d-38c5c1d484dsor958187f8f.6.2025.01.30.10.23.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Jan 2025 10:23:20 -0800 (PST)
+        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ss7qpKoz;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Pq8Sl4/z";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738261400; x=1738866200; darn=linaro.org;
+        d=linaro.org; s=google; t=1738261399; x=1738866199; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
-        b=Ss7qpKozar8LY+yEYV7vNNU/KEYzm4LI/F1F7kntamFqFPuWyDceuXhulkq79ClVJT
-         /XNzR6Levvevx764HGwbKA8UCGQ4dgm/amtpq3Uqx+sSvfSi1tVRio3bmyV3CUjOk2a2
-         5C23mcEu2C5U5zAfg5qGvj3I3pydDmLrOs/JifPWVNUB3JTOOemHc2NikAEx/M/tGwVq
-         gH1inoZ7OGvMgwD2lpeXL5UdVJPdTeJ7ClAzppnu5wOMASkPki7bBHttCb+J6mfdgESV
-         mvthk6SAD4LKZ/kw3KmBJdPJ/N6bROjB7LxkuVQNWSkMLLYSj+PZpspkRpM4dfLXQRxK
-         RCLQ==
+        bh=fMa5YuSy0NDTUYP5ui6N/RSQpdjoNfs7F2yE5YfgTb4=;
+        b=Pq8Sl4/zQoInqll34zPm+Rd0CmhmLIcNp1YPUfAA5g/EVaM6/79ACtJcg97qGvPJxz
+         qXbgwV6QcO1b4xbqbSv5vJlgwybA5dyjR0ME7TQajEojPj5egOpniPao2Ok6QZC8VXmu
+         p+NVJhe2FleKsdkYNAb0D18t1Z+Hb6iQ1Bd0O1OaiD/Bua3sFDWGv7jXOnKUsae095GF
+         0JxEWTu1etBZ4VskiH2KKsIPDe8EYPamSJmE4kujWJNpnFTjsv00I7WbqWdJqCavikdQ
+         Ybe8etM6pYmSFUzI9qtc+jF5CwFh/+r9u/m0pjQleGRja7besz1hysWXx0fOz78DNpyk
+         PHPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738261400; x=1738866200;
+        d=1e100.net; s=20230601; t=1738261399; x=1738866199;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FfOY/642ADAin6VFxYNR1rJN6MAtVOu/6BLcp/293aA=;
-        b=RtwiaY7zmagEr+tP/iMpcBP+wGK5XUa8cacmXK9NSaCA/xd2Cfkt4SHIQ1axUOAb80
-         pUykQ6kO5QajirjCx3olbt0bylHbEbBl7IK/tx1mV6kOY7rrgZF8ylRUbl74TEahjpRe
-         K0wX2Yfy+bcbAcnXYBAzwi2ng+RpUPPD4J7GGOLT2e3YpovJPQUZ4IjCzbG+9oaZojX5
-         e1eYCCEYt9iZKBb4EUq24iHz0OgrNaVXz16oB6lKlfXA4vcZVk4M9IuOimwpGLofThJ9
-         mhs2yX/oDkk+cMvL58PT6Py7kWtO1rgUlxJxhtiddfPqbYe4/OOWPUhY1jGefB6WEJ/m
-         JNdw==
-X-Gm-Message-State: AOJu0Yw4NVk2Kpzm/mMUqA7DgJv0+8vUxOT5OmzUWGArtRciu6WyreFz
-	gvutai7Tj6wqCeUPBAXxTei27GwA85vtKxehJ+kSCkXPo3EWc19Vm5vrH50lcDLn9A==
-X-Gm-Gg: ASbGncvDwBiZ5ntouv1hf1GoWXNgOAW9FNNJvxLZ8A+0GUHMZ6kCcxJ4mWu7oQ9SeTp
-	xlta42/BERkhzdulp5RfoawFunQ5+rfMeMPFmK0obsQBnF7FEjP4lb4yQRdgEBv8t2U97579Ftk
-	0YrvBaF/Q9PUxKRGEiGzSE7R/Z8+G2S1aLmrZ28uAqa+lmURi+GvV/s1uvbDLPYtcd3LMuWaIxn
-	22kA4V0Cn78Gf8mDuukXzDua1tJ8ehXoqdTftssliLb2Lwq4RobKFff8dn0/nneP48fesQ+aSSW
-	1V8rOXHhsESSaRHQ14M+wQ==
-X-Google-Smtp-Source: AGHT+IGiuiMHrThD+uWTll5N2DRzacpqO1X8j2qlN8vV9ZDCgL/ut6vM/QMSQvs3Geru69+PmJUeug==
-X-Received: by 2002:a05:6000:1866:b0:385:fdc2:1808 with SMTP id ffacd0b85a97d-38c52094219mr7873930f8f.40.1738261399765;
-        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
+        bh=fMa5YuSy0NDTUYP5ui6N/RSQpdjoNfs7F2yE5YfgTb4=;
+        b=KG+W/J7WR4O8mx+qjV7059IvEBt5QQ/+UWPpWN26KQUhFvqee3QeBqf1k1jbOYLaIk
+         34CMrKolwc8dSo5St781kz9Fvt/CxPMsIaTThnYn8uZpSpx1R7ElTQwFqQIATFaljF0S
+         n5vMtpuQwhZjlCwxDhMiwDdLJBBfmzmZbwhOKHxQZM1fphrsc1yH20TBeop6xjX3WFTY
+         hHE4/KS4W/pz0xo+MNTthCj8FCHuhqe51t+6AylZjgomeaAu95bus46UOmiXkmShi9fj
+         kxPjDM3uP6gASbK4PoDVd4zvqay+oaPjJJpH2Du1rt6Zm+QelD8XXndMVfjGOdrCv3rT
+         HEIQ==
+X-Gm-Message-State: AOJu0YzsGqleaCp2v1Is3JdCg4NUZ1871HSrfxbJeQJa5+udjtWWa+E1
+	dlh6IQvr2Qma8l/j5+j99YpIwkhoztMBqWqqL9ogobbDJjCiW52vkq+bnAoNnUEtFA==
+X-Gm-Gg: ASbGncv0NfdAcQwM6iPtXz1D2EUP+s1bIz/CpdzQnrgL+htD3kWaOBuR5igwsCpFTQ8
+	kLULdFFMGS2p61bsBhEXZXRfxREDiaggYVX9rLqw95syuzG4strp5VmSjx9lDrSNBEr+z3SSBhF
+	AtK99AkhWpjUUXYuMtTJzdy6g30lFguzikQZihiTrUP982ewdLbdk20dRVZ67S7nkZ2j34WSKHn
+	bop5L0IPip2sDvn4Q+xIjqu92yKbr9TgffBIahf9IVTyqVa15OPCGrEFSdcmd4aAiISTZn52AC8
+	Zsgdy2/5O156Lhz5pdOQCA==
+X-Google-Smtp-Source: AGHT+IFxjIh48WU/dSlOaoPrzaGSoSizC3MFT5Mm3SI1EOiyMrYEpqnqyWB8Fb2376SJHBAQgkzR3Q==
+X-Received: by 2002:a05:6000:1548:b0:38c:3f12:64be with SMTP id ffacd0b85a97d-38c51f8a3camr10044992f8f.35.1738261398740;
+        Thu, 30 Jan 2025 10:23:18 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.18
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c101599sm2634426f8f.23.2025.01.30.10.23.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jan 2025 10:23:19 -0800 (PST)
+        Thu, 30 Jan 2025 10:23:18 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 08/14] hw/intc/arm_gicv3_cpuif(): Remove redundant tests of is_a64()
-Date: Thu, 30 Jan 2025 18:23:03 +0000
-Message-Id: <20250130182309.717346-9-peter.maydell@linaro.org>
+Subject: [PATCH 07/14] target/arm: Honour SDCR.TDCC and SCR.TERR in AArch32 EL3 non-Monitor modes
+Date: Thu, 30 Jan 2025 18:23:02 +0000
+Message-Id: <20250130182309.717346-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250130182309.717346-1-peter.maydell@linaro.org>
 References: <20250130182309.717346-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: PhjyxT8QauvO
+X-TUID: isiBuWUfQ/SC
 
-In the gicv3_{irq,fiq,irqfiq}_access() functions, in the
-arm_current_el(env) == 3 case we do the following test:
-    if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
-        r = CP_ACCESS_TRAP_EL3;
-    }
+There are not many traps in AArch32 which should trap to Monitor
+mode, but these trap bits should trap not just lower ELs to Monitor
+mode but also the non-Monitor modes running at EL3 (i.e.  Secure
+System, Secure Undef, etc).
 
-In this check, the "!is_a64(env)" is redundant, because if
-we are at EL3 and in AArch64 then arm_is_el3_or_mon() will
-return true and we will skip the if() body anyway.
+We get this wrong because the relevant access functions implement the
+AArch64-style logic of
+   if (el < 3 && trap_bit_set) {
+       return CP_ACCESS_TRAP_EL3;
+   }
+which won't trap the non-Monitor modes at EL3.
 
-Remove the unnecessary tests.
+Correct this error by using arm_is_el3_or_mon() instead, which
+returns true when the CPU is at AArch64 EL3 or AArch32 Monitor mode.
+(Since the new callsites are compiled also for the linux-user mode,
+we need to provide a dummy implementation for CONFIG_USER_ONLY.)
 
+This affects only:
+ * trapping of ERRIDR via SCR.TERR
+ * trapping of the debug channel registers via SDCR.TDCC
+ * trapping of GICv3 registers via SCR.IRQ and SCR.FIQ
+   (which we already used arm_is_el3_or_mon() for)
+
+This patch changes the handling of SCR.TERR and SDCR.TDCC. This
+patch only changes guest-visible behaviour for "-cpu max" on
+the qemu-system-arm binary, because SCR.TERR
+and SDCR.TDCC (and indeed the entire SDCR register) only arrived
+in Armv8, and the only guest CPU we support which has any v8
+features and also starts in AArch32 EL3 is the 32-bit 'max'.
+
+Other uses of CP_ACCESS_TRAP_EL3 don't need changing:
+
+ * uses in code paths that can't happen when EL3 is AArch32:
+   access_trap_aa32s_el1, cpacr_access, cptr_access, nsacr_access
+ * uses which are in accessfns for AArch64-only registers:
+   gt_stimer_access, gt_cntpoff_access, access_hxen, access_tpidr2,
+   access_smpri, access_smprimap, access_lor_ns, access_pauth,
+   access_mte, access_tfsr_el2, access_scxtnum, access_fgt
+ * trap bits which exist only in the AArch64 version of the
+   trap register, not the AArch32 one:
+   access_tpm, pmreg_access, access_dbgvcr32, access_tdra,
+   access_tda, access_tdosa (TPM, TDA and TDOSA exist only in
+   MDCR_EL3, not in SDCR, and we enforce this in sdcr_write())
+
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/arm/cpu.h          | 5 +++++
+ target/arm/debug_helper.c | 3 ++-
+ target/arm/helper.c       | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 8a715b3510b..7f1d071c198 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -2291,7 +2291,7 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
-             r = CP_ACCESS_TRAP_EL3;
-             break;
-         case 3:
--            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
-+            if (!arm_is_el3_or_mon(env)) {
-                 r = CP_ACCESS_TRAP_EL3;
-             }
-             break;
-@@ -2353,7 +2353,7 @@ static CPAccessResult gicv3_fiq_access(CPUARMState *env,
-             r = CP_ACCESS_TRAP_EL3;
-             break;
-         case 3:
--            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
-+            if (!arm_is_el3_or_mon(env)) {
-                 r = CP_ACCESS_TRAP_EL3;
-             }
-             break;
-@@ -2389,7 +2389,7 @@ static CPAccessResult gicv3_irq_access(CPUARMState *env,
-             r = CP_ACCESS_TRAP_EL3;
-             break;
-         case 3:
--            if (!is_a64(env) && !arm_is_el3_or_mon(env)) {
-+            if (!arm_is_el3_or_mon(env)) {
-                 r = CP_ACCESS_TRAP_EL3;
-             }
-             break;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 4cb672c120b..ae1e8b1c779 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2570,6 +2570,11 @@ static inline bool arm_is_secure_below_el3(CPUARMState *env)
+     return false;
+ }
+ 
++static inline bool arm_is_el3_or_mon(CPUARMState *env)
++{
++    return false;
++}
++
+ static inline ARMSecuritySpace arm_security_space(CPUARMState *env)
+ {
+     return ARMSS_NonSecure;
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 2212ef4a3b9..c3c1eb5f628 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -880,7 +880,8 @@ static CPAccessResult access_tdcc(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (el < 2 && (mdcr_el2_tda || mdcr_el2_tdcc)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+-    if (el < 3 && ((env->cp15.mdcr_el3 & MDCR_TDA) || mdcr_el3_tdcc)) {
++    if (!arm_is_el3_or_mon(env) &&
++        ((env->cp15.mdcr_el3 & MDCR_TDA) || mdcr_el3_tdcc)) {
+         return CP_ACCESS_TRAP_EL3;
+     }
+     return CP_ACCESS_OK;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c5cd27b249f..058a5af3aaf 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6103,7 +6103,7 @@ static CPAccessResult access_terr(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (el < 2 && (arm_hcr_el2_eff(env) & HCR_TERR)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+-    if (el < 3 && (env->cp15.scr_el3 & SCR_TERR)) {
++    if (!arm_is_el3_or_mon(env) && (env->cp15.scr_el3 & SCR_TERR)) {
+         return CP_ACCESS_TRAP_EL3;
+     }
+     return CP_ACCESS_OK;
 -- 
 2.34.1

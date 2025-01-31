@@ -1,134 +1,113 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp252677njb;
-        Thu, 30 Jan 2025 23:35:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUBxjoMnamtO5OTaz+BpXE5IJMO+mT1/HqT3OtsPlhOlly79zhfzDlizIDYU+9iaRcNztdY4qIbEJKY9Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGt4GFQFb56oEtN4BMhku3TjXmLPdcKWZnEKsPYf0bnb84tbxO2JnFaP5VGxcJ8xy5EFOBb
-X-Received: by 2002:a05:622a:8b:b0:46c:7646:4a3a with SMTP id d75a77b69052e-46fd09e25e2mr131592481cf.7.1738308954180;
-        Thu, 30 Jan 2025 23:35:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738308954; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp257856njb;
+        Thu, 30 Jan 2025 23:53:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVYGyhoJ6AjbMVvC2sd+5uh+StS+Wi1ajZwKd1/Cw7mFPe/GJaHdAaeQWJTpbKGgl2JqIj6DanSVQpRCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEosUhnEWJ3FpqZkxAe8OLWwXLS7WTgNdWfFWPAQzVvFXb0XwFhmCr7R/xeJgP9Tkv1FSgI
+X-Received: by 2002:ad4:5de2:0:b0:6d4:27fd:a99d with SMTP id 6a1803df08f44-6e243bf643amr175655846d6.19.1738310013930;
+        Thu, 30 Jan 2025 23:53:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738310013; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ueq+KbuaJDszyKMpMJp62+SrHh7KH/u11PBYEXpxfzQE7RgmF2+wFqJSNaKuKhvQpO
-         OPTxJya33Jv3mAoXyfqEl7dKjaZse65nGuih+rhcnXVQ+X3W97YmWd9pcgj/bYt35a1a
-         DUd4KfbJ+0VoQ8v3FpAW88MvUfEudVcsJd0E+YAwjMyyHPZXDuBzfWQq+cCjGIxmc5a3
-         kFhEwJi1Fu/N5YRaECi6nbOfoz9cBC/5n4BsqQA/BpYYRdy52ZqwAKv5xtDFkJnHaiqu
-         4WhoNjRrLUkbC/G7xJmGMSRq8kYqHeW5OaHX8Pv95N7WyvqHqvVLA/Ikc+uhBRl6qiTE
-         cpog==
+        b=XSGhugPKDl3M4blHZYebUD5ovbVzP9s4MQMf1hw2cIVLSzo5U8FDGfCjquaKmN7haH
+         7GLB3a287CJHfCTj8ahMTTHRiquUlc/9EmtWatDsqw6u4dMXaTi5pWsRyWupej6Lte5i
+         Y0vKtZNobUylA5nKdITKlwYqYzWNiOCdhwS/qVrwN/oBo+uGjaX6n3DTXBlsAdndEjzc
+         Bblh27d5qzRNFW0MEYXSw4r++Ff0XsJLP8zeEstHHrmtWyM6GGK7vozwgVS6w8au/5Aa
+         gqUwPSaqUfKQixDSWZfl1n5LmnYrX2bFG8kqW1d7vU+y7YscHibj0YZEyqpznU9+XFZT
+         hBAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=max2uEenb1iRpaF4BdIt/FWMr+bWlTBifX6R8sMx+yM=;
-        fh=XO19m6VQrQta/lNPxYpV2slcM1mGJ189RKXDIz+Ofio=;
-        b=aGGIOuFbJOs3ZVEtYwd/q/taeAtRkWdEsviIXEf+v6ikp2w9f8bkoA+SMNbWOIyZ8A
-         hr1a/jkUtzVpZJzhuC4BCRYHZQiiim6Gd1hYj5gR8k9obgHdoFvJnlL27bJQwbg1mDas
-         b1aeAddZIeuJC4mz/qA7et3j5h0K/X2ASVt0sRpSKqP1vDX9fc5v1eQ5iWdmztuCZxiZ
-         HtD+SqYEu1bUxKdSX27F/SpWou/FqjFa84vXxbpm3VGsXGSQUKtka7S73kiX117RrnVd
-         qPQfnNdr608qX89o6agAI79CivuEdiTmAeYlu34uQW3FFk1cdlJKKJ0HNmwOdLpblWKE
-         uHSw==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:date:references:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=krdwjaNue0HJycpy6WgVdfmNnHErZC38/M4PNTarUVA=;
+        fh=MjgLkUpaUgk/7jm77rFcFJWPWAjY5UEOak1IpzHk5uI=;
+        b=k/nleVA8Fm4fQpm/yh27D9fg8LSiWHOG/zyNx101KUCBa/p3admOomoko2JzatORj+
+         meOmuKaUVNe/gfUIIiBLvm2Y642MwJcjTFaBEmocmXHDEt3K7eydkEtbbqGpQJlV1bSW
+         NH23861+WEOpoCEW9BuYHvijC6oOe0fkYOw9l17nMX09/cud7pkAFiYgWAKnfxOt6Aru
+         hIaBjp2sw2chFpObdvEZB8KTHAalu9ht8P/T1XJt2vfMyweHBEdUybhYXTBgvAvd8uvI
+         0jl2pX5ZYq2JH4pDG/LSqpOBrzinfyeJLq6P+rfegDWsPCGq+PvWTBRcZUg6V/osrC8W
+         WXpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gxIbbyOA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf0abc1fsi33571661cf.85.2025.01.30.23.35.54
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e2549e2848si31487906d6.488.2025.01.30.23.53.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jan 2025 23:35:54 -0800 (PST)
+        Thu, 30 Jan 2025 23:53:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gxIbbyOA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdlZ3-0007We-Dz; Fri, 31 Jan 2025 02:35:45 -0500
+	id 1tdlpc-0003De-T6; Fri, 31 Jan 2025 02:52:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=GenN=UX=kaod.org=clg@ozlabs.org>)
- id 1tdlYq-0007Rd-JU; Fri, 31 Jan 2025 02:35:42 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tdlpa-0003Cv-Uv
+ for qemu-arm@nongnu.org; Fri, 31 Jan 2025 02:52:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=GenN=UX=kaod.org=clg@ozlabs.org>)
- id 1tdlYo-0005hJ-Pf; Fri, 31 Jan 2025 02:35:32 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Yknjg4hbpz4x5k;
- Fri, 31 Jan 2025 18:35:19 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tdlpZ-00036r-HE
+ for qemu-arm@nongnu.org; Fri, 31 Jan 2025 02:52:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1738309968;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=krdwjaNue0HJycpy6WgVdfmNnHErZC38/M4PNTarUVA=;
+ b=gxIbbyOAd/YsoddS2aMPxvYS+/xJzxH4xsaADc7XvTK2Cbpukw6QxPjIoncj4xuaWF4ntF
+ 5lPPM5bFl4+Hs2JOVNLNTbLST2s/tj4f36sOYcttet3SOwdXtuwewHAgXYFGs2vKG0BXmo
+ iGbhyUNAPPLqikBrYbd7Ieq7vG7bSUA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-J_Hce5COPL-rnYEP9WxWGw-1; Fri,
+ 31 Jan 2025 02:52:39 -0500
+X-MC-Unique: J_Hce5COPL-rnYEP9WxWGw-1
+X-Mimecast-MFC-AGG-ID: J_Hce5COPL-rnYEP9WxWGw
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Yknjc04ddz4wgp;
- Fri, 31 Jan 2025 18:35:15 +1100 (AEDT)
-Message-ID: <86f4256f-2ed9-4615-ad3d-e048cbf10b71@kaod.org>
-Date: Fri, 31 Jan 2025 08:35:22 +0100
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E776A180035E; Fri, 31 Jan 2025 07:52:37 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.71])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 557B51800975; Fri, 31 Jan 2025 07:52:36 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5781421E6A28; Fri, 31 Jan 2025 08:52:34 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-block@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Bin Meng
+ <bmeng.cn@gmail.com>,  Bernhard Beschow <shentey@gmail.com>
+Subject: Re: [PATCH 10/11] hw/sd: Remove unused legacy functions, stop
+ killing mammoths
+In-Reply-To: <20250128104519.3981448-11-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Tue, 28 Jan 2025 10:45:18 +0000")
+References: <20250128104519.3981448-1-peter.maydell@linaro.org>
+ <20250128104519.3981448-11-peter.maydell@linaro.org>
+Date: Fri, 31 Jan 2025 08:52:34 +0100
+Message-ID: <87o6zno1x9.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] Introduce AST27x0 multi-SoC machine
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
- <8f36b753-660d-4902-be5b-b6569c93aeb5@kaod.org>
- <KL1PR0601MB41802A8867D91C2B8B21637085122@KL1PR0601MB4180.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <KL1PR0601MB41802A8867D91C2B8B21637085122@KL1PR0601MB4180.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=GenN=UX=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.03, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,39 +122,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rztgqHsSM9B3
+X-TUID: /pYTup6FHkfK
 
-Hello Steven,
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-On 1/8/25 04:51, Steven Lee wrote:
-> Hi Cédric,
-> 
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Tuesday, January 7, 2025 11:51 PM
->> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->> <jamin_lin@aspeedtech.com>; Andrew Jeffery
->> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->> <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH 0/5] Introduce AST27x0 multi-SoC machine
->>
->> Steven,
->>
->> When you resend, could you please rebase on top of :
->>
->>
->> https://lore.kernel.org/qemu-devel/20241216075353.1308043-1-jamin_lin@as
->> peedtech.com/
->>
-> 
-> I will rebase my V2 patch series on top of the requested patch:
+> The sdcard_legacy.h header defines function prototypes for the "legacy"
+> SD card API, which was used by non-qdevified SD controller models.
+> We've now converted the only remaining non-qdev SD controller, so
+> we can drop the legacy API.
+>
+> Entirely unused functions:
+>   sd_init(), sd_set_cb(), sd_enable()
+>
+> Functions which now become static inside sd.c (they are the
+> underlying implementations of methods on SDCardClass):
+>   sd_do_command(), sd_write_byte(), sd_read_byte()
+>
+> Removal of sd_init() means that we can also remove the
+> me_no_qdev_me_kill_mammoth_with_rocks flag, the codepaths that were
+> only reachable when it was set, and the inserted_cb and readonly_cb
+> qemu_irq lines that went with that.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-It is now merged upstream.
+Very much appreciated!
 
-Thanks,
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-C.

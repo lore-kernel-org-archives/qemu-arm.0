@@ -1,156 +1,128 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp552142njb;
-        Fri, 31 Jan 2025 08:55:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV0K9K1YRoNafgX028+kBGskpOs4HrIrWZgg8pQKtCeVtGYx7YL0DhbM9sBF9R9FBd2u+5h+ZTj+k9acw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEUxs+kz2uz7Lp50ndiV+utQOVBZyjMRNa5x89+RbzKKqPDYwv6RTLnkMpNA6t9OXni+4Cv
-X-Received: by 2002:a05:620a:1904:b0:7be:8343:df20 with SMTP id af79cd13be357-7bffccc7f43mr1747649385a.3.1738342534605;
-        Fri, 31 Jan 2025 08:55:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738342534; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp556949njb;
+        Fri, 31 Jan 2025 09:02:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUojsroasCVOMg/xpYPq9UITN5DIOZ/ZcGnMWtHa3nbqxUPtwfcBgwCo0SnfrWC1fdE8J7rjqml4Mjd/g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFYpjkEgx/H2C1Oq/1DuATbuOCaeEolsd73r+RJcsSfFTOUXLqA9iqIj3mGtPYcfegMyK8
+X-Received: by 2002:ac8:7f12:0:b0:467:5016:57fa with SMTP id d75a77b69052e-46fd0b90fe8mr187334121cf.44.1738342946134;
+        Fri, 31 Jan 2025 09:02:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738342946; cv=none;
         d=google.com; s=arc-20240605;
-        b=lHBTv2tKGFzgfYHEVL+yz+EWw99HlSksY7/3XVDgpDdlphRkpZ/Y4pUa/EqxZtG+/A
-         KPeglib+q2Rbug30v0q8TzbLLdsC8wJSLfrtiVBFNwFsRixwXwJ2Tpqrm6bh48IZCFFr
-         e88wWRgESW5/vzfk7FuNUXjfBWhbuVTJo0KGN/R5hsQH533dmVtxN5KN0gyR/09kkMJg
-         irv30+SAzMzo4cWkXRsVeG5fuzR/Q0HJuUJiKxHCahxpW5k5nNf62XxxQxp2OhO/4bIM
-         6/BkEpadaAVecPN8NW8XbVLJE4tvkAL5WU3Zsa5hzn2D6t+Ajao+wMa9rIVUeFWQFJyg
-         91Zg==
+        b=GiJayMwWsyLxuRNRMmaeqkR45iQKXJt9BEJGVCALJim+iasxNCE7YmVD9wq5N9ch0m
+         ryzSs2TDkpTCEDnuyuW8zyqILuU/spo50huI5H02c+J7nduryj215WD4Q+DI/H5FF8p9
+         xB90LHlgCDoGFg0oTlXShnHzwXzOEBdo2jb/zHV9svFe6p7yTk3b51LfbMIacKbmR0hu
+         9WkftVeCMYDVjQTM3MgjiB5VGVlaH8gK6DGYZ5atwwj+/3vat/LbMnf9REu4znbH//xf
+         t+dZyN/Jv1aerSRVNP963eh/BWma+I0BmVCAUm1GLYiE3UYlMOVxoUxidPWyFz9V1GCl
+         Y/hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=NIfRarS1wPOBfQNP8FB1B01Y/eiHGZOK3fB01qQjEp0=;
-        fh=go7GH5iAMjWzjtXtfwH/mQg6jQzw0IRL80eNLpNd6Tg=;
-        b=UDTgHglOGlhtleonDGqx2K/It0YowXurISgjMwdTXIrkrbvXoV3kt8phcsn59ZDNp4
-         98jlX+tBRtaWJZuImELFTxsgFGG86LKOMmXOOt3urbXpqTkEqLjGGM/FBKmEpCX2fugc
-         GbdrstVMdPt6T/lPRSYjVAVcrD+FbMPnPPWsVj+naWPHuyYu3TL62q/a6+kLayP9SuM4
-         7NVBiH3yO2fnXocyfzIWBLNd6nHUSW17WBvKq1tSmdssKjewC0pImXOW/Rqav0qsFJSs
-         BewAsSArdmsBZv/1D54tmmICvED8JaDgykwSxgB/YW+vNrNHvp4Jb0DLK9Rl4R0xP6b8
-         jmFQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lWSvsMYuQBKZpDDyRMNVEYMjFioDTfag2YV+tpjd9iE=;
+        fh=O9gTYH5LgbivK4eTi/fe2vNjcdrxporwWQhhbIxtuV8=;
+        b=ji61ViukfXUG7HzUDXOy7ClN0wvumEWH+8iceQVxvXq9SjT1IW8OM85n9flTFGjBLm
+         Xvz91k0INNXN/dSBjvy3jxPfSXS0YeLZaMMJLUd7KcJjF3njGRo9lQBYXjZqDn5oJvQG
+         RlvslxABoqO4VxJpPh/FaCkXUqb7k+yBT8M/ZcCraz14J0aSAvWkt8d/Fwrh+FFEb+2l
+         v6dWfgMRXYDqygtbNAMfDnPxP0lnp4+3QiE0n5mPO2AwV443/P8r+w7ihnXVjYSnEPFA
+         Svz9ojlL0cStp7bwz96J9CdCYjupIpHSZ5sDF2ZPjyksqISwYAVjHwys9q6AT/t+Rn9Z
+         kYgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LZ3da6tc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jbu2u4Fn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c00a903c01si417563585a.271.2025.01.31.08.55.34
+        by mx.google.com with ESMTPS id d75a77b69052e-46fdf1b9fb1si43837441cf.216.2025.01.31.09.02.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 Jan 2025 08:55:34 -0800 (PST)
+        Fri, 31 Jan 2025 09:02:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LZ3da6tc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jbu2u4Fn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tduIQ-00009z-Hu; Fri, 31 Jan 2025 11:55:12 -0500
+	id 1tduOp-0002Nf-Fa; Fri, 31 Jan 2025 12:01:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tduIN-000082-Ed
- for qemu-arm@nongnu.org; Fri, 31 Jan 2025 11:55:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tduIL-0002fS-Pl
- for qemu-arm@nongnu.org; Fri, 31 Jan 2025 11:55:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738342503;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NIfRarS1wPOBfQNP8FB1B01Y/eiHGZOK3fB01qQjEp0=;
- b=LZ3da6tcHSyPEaBrr9nO+TSZnMxpgih/lOl1TOWAiBauJi9s7OmJMFS1iGEEpDXloMUPHo
- nJVnriZrlUt1R+9+5sDr5v5J0GhLwBEqKQD/dqPvFHSkLCP4QdAKFGMJQRZX4hDdbBmthF
- OjDAVNOL/Cz6jZ77Ip4EV2by2o/QAGg=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-627-tzmo0QmYO6Gb59Vljd6b_g-1; Fri, 31 Jan 2025 11:55:01 -0500
-X-MC-Unique: tzmo0QmYO6Gb59Vljd6b_g-1
-X-Mimecast-MFC-AGG-ID: tzmo0QmYO6Gb59Vljd6b_g
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-7bb849aa5fbso436052485a.0
- for <qemu-arm@nongnu.org>; Fri, 31 Jan 2025 08:55:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738342501; x=1738947301;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tduOn-0002I8-N4
+ for qemu-arm@nongnu.org; Fri, 31 Jan 2025 12:01:45 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tduOl-0003UC-U0
+ for qemu-arm@nongnu.org; Fri, 31 Jan 2025 12:01:45 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-38a88ba968aso2049389f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 31 Jan 2025 09:01:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738342902; x=1738947702; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=NIfRarS1wPOBfQNP8FB1B01Y/eiHGZOK3fB01qQjEp0=;
- b=HEviHubesHW0jSxJdZA2SMdLOpWL5O/vL7KG9U7xWQWQU4YwYHjfGJmBmdalIH6wQJ
- XpvcCZZcuOxOXMyd9IcYqHazlRPKOUNWOmjOuJtJPpgRYPiEulVu+62cX/KtXXK+sX3d
- VpwOL1yFNbTabl6pxliu9sPd0aNx1y5/ksr0WGwOwu7HxbMaZDlXkxhkccZAMoynaNXN
- d5Talq7oJ1RwtCyyiPT6evltp7sFEBWeeZePPyOveb5XAI3A297MFTuan2QPD/PLlVFz
- L8o1e8wVVKb3B28PqZfPGYlD8MWcGYk/KjsnZ65e7cgxjVa1pIuyo5sz3lgJZbiJNYj8
- Og9Q==
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lWSvsMYuQBKZpDDyRMNVEYMjFioDTfag2YV+tpjd9iE=;
+ b=jbu2u4Fn0pV8VAJOgr5E3NfyrbN0cDBNzbzMRmxM8HsNaTz8kKKwzCPAaSVCE3hIdw
+ oCrf5oTO5lrSBLJSDAehSJmmTDh087ywBlM0bnaccclC1oitJGoehVnJC7oWj4mnRSpW
+ fMsRTq4Lk/rWVtCiZYAy9x1II6uBtgIYLy3lg77qkK01TTlnaCzvFnjBZiD+pdZkntVj
+ vZ/jNk7FXLMLStCMJp0Mh8MfG5tQndCv6V8Qm1mEhyK2iI4cOD6Lei1YC0n5hG9ro1/9
+ z48w078LO1BA9LfK/GkEOCfy9RJhr2B+8jhHX41efdhJCjzXO1c2jpzo6gJ7MGmnQGfr
+ lYcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738342902; x=1738947702;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lWSvsMYuQBKZpDDyRMNVEYMjFioDTfag2YV+tpjd9iE=;
+ b=WcbgAo+sK/4D/YKu6lbk7Svpq5r2vEJ0eX7KICLDh5cfCfSqYJrIgBIRDx82BTXMph
+ wRBdixDVgSwM2x3uuv1casQUrH6qRGb+o0O57kFMeZAkoHqlavOn6IKVhvdX7YhTM2q3
+ Tg4RDxxu7jcHnkd6Ee+yajDgW00+9CKhQjRkjGWc5pHLIe9PHX3skHvXGDPGnfOexkGU
+ Rurwe9x48D1WqYCn+wJX+JLrvlVDngksOa4PWRMfyhkK1aUHsM91dHfyIcW3pEj5Es+J
+ xtTchmgwKHb09FRUnPTxJrY3TIGye7L9JAXgmRKC5S2p6VpmFfXexKV0Mxr8Va2Lduvv
+ HCsg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXqJF12fKrlnvKZoikTpyifWeTseHPjxmYKNbjAnmHpqAQG5JWwOxWF8fQ6DzseNECJwNvfuWrXAQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxM4wcFOYqHMVcI4jcHF6RcNPfDrjrxDTn8g4z9VI3X2+WV+p4b
- SU2CGdHUyDu7bcnXed+yEUAqwC6WLRoHLRpiRN9y/Ac0I1leCWB3RnyeFyFyV+SspJarPmjJOOR
- ysMSJ+HVMiuludOfdNnkyhhSeJMlpHqGl4iROS/0Z3GryXo2A3Q==
-X-Gm-Gg: ASbGncsU5cBIWiFyWo8wo4RstrVg1vrTFszZ5psmnpjyOixvD32azrYkXRhEF9WvumN
- 7ycvPdiEdWngHl3uAsSbeFP/xHpecGP14SlBhjDwlVxd2WohIOnV26X766aHGvANt8wYZj7U9Un
- q03KRBzvWoVJIxl0l8MWast+O9/zO3KX7fa30KFRLbouEbPBekdxPisaYuHWugM3Hb0Zts7IBYK
- TB28GdSbibEK/f2NUo9IrdSxJmLJF6f68fY4g07aqLshkDWWEqiG2IohGtym1u4OV40suh0O/yb
- U5taoBy3nCXCGrWDSvwpilr/MAwdwk+SmzqM7ZAO3mVdzCo25Rxl
-X-Received: by 2002:a05:620a:371b:b0:7b6:d237:abe5 with SMTP id
- af79cd13be357-7bffcce5880mr1694512285a.20.1738342501140; 
- Fri, 31 Jan 2025 08:55:01 -0800 (PST)
-X-Received: by 2002:a05:620a:371b:b0:7b6:d237:abe5 with SMTP id
- af79cd13be357-7bffcce5880mr1694510485a.20.1738342500867; 
- Fri, 31 Jan 2025 08:55:00 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7c00a90d3c4sm211636985a.111.2025.01.31.08.54.57
+ AJvYcCVC8hchH8Bh4+UbL7O9AxsXxv6uXz7tYLB1RrLwC3cukX2RY6SA7qlT9AsMRAtt87FzkJw9MbFV1A==@nongnu.org
+X-Gm-Message-State: AOJu0Yz1zEEqBECCHtBcpoNYSNSAwxeX+6zcstap7rO9PXZScfxljuZ6
+ wupgdpoULAGEDS10HTZp4qW/VRDYNw2OAYERh5rXKJm5vBP95DcbL+JAdzJUcR8=
+X-Gm-Gg: ASbGncsI785GmlwUU9iC5fEHzwRxFzQCQd4VnH3DKny3FW+ITBumfVE8Pg2L6N9juQv
+ O7zMxRjWezkY8D8t0+cldfhjG0kj3rS/m68jJJbWA0vJrs41O6HRRATez9TR3Grx4GaFPzQh79Z
+ v3hRuRG1wnxM6XRVYUoy/cX59E5UFyaOrT872YMsrfH1JZFPJfX2oLWkf7GicO3DC3SEbIkl+/I
+ PcK1VwL4sqABty3p6kD4MefsGXMgYeYqMsAFdAeSe0kXGoiWqi5t5fDxfVUuVG1H5vUKA397mNs
+ fTKYLj8OmtiKkTprVBoERX/VhDEaWkd664o4TclGv9MvDT+bYmbr6jrCcvs=
+X-Received: by 2002:a5d:64ae:0:b0:38c:5bc1:1f03 with SMTP id
+ ffacd0b85a97d-38c5bc12134mr7269906f8f.7.1738342900563; 
+ Fri, 31 Jan 2025 09:01:40 -0800 (PST)
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438e23de35csm60496715e9.10.2025.01.31.09.01.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Jan 2025 08:54:59 -0800 (PST)
-Message-ID: <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
-Date: Fri, 31 Jan 2025 17:54:56 +0100
+ Fri, 31 Jan 2025 09:01:39 -0800 (PST)
+Message-ID: <cca5ed6b-1066-46c4-9640-0db8e1cc4b63@linaro.org>
+Date: Fri, 31 Jan 2025 18:01:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-To: Nicolin Chen <nicolinc@nvidia.com>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Gunthorpe
- <jgg@nvidia.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
- <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
- <329445b2f68a47269292aefb34584375@huawei.com>
- <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BbRwfQLfyIgf56DV-_O7y9BLAJVUVQ2lkFO5GNORK9s_1738342501
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 00/11] hw/sd: QOMify omap-mmc, remove legacy APIs
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Bin Meng <bmeng.cn@gmail.com>,
+ Bernhard Beschow <shentey@gmail.com>
+References: <20250128104519.3981448-1-peter.maydell@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250128104519.3981448-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,42 +135,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cN0wOAqszcbr
+X-TUID: GX0bGvAau4+F
 
-Hi Nicolin,
+On 28/1/25 11:45, Peter Maydell wrote:
+> This series QOMifies the omap-mmc device. The main reason for
+> this is that this device is now the only remaining in-tree
+> user of the legacy SD APIs defined in sdcard_legacy.h.
+> The first 8 patches QOMify the device and do some minor
+> cleanup on it. Patches 9 to 11 then remove the unused
+> legacy APIs, deleting sdcard_legacy.h entirely. This includes
+> letting us get rid of the me_no_qdev_me_kill_mammoth_with_rocks
+> codepaths in sd.c.
 
+Thanks for this long due cleanup!
 
-On 1/9/25 5:45 AM, Nicolin Chen wrote:
-> On Mon, Dec 16, 2024 at 10:01:29AM +0000, Shameerali Kolothum Thodi wrote:
->> And patches prior to this commit adds that support: 
->> 4ccdbe3: ("cover-letter: Add HW accelerated nesting support for arm
->> SMMUv3")
->>
->> Nicolin is soon going to send out those for review. Or I can include
->> those in this series so that it gives a complete picture. Nicolin?
-> Just found that I forgot to reply this one...sorry
->
-> I asked Don/Eric to take over that vSMMU series:
-> https://lore.kernel.org/qemu-devel/Zy0jiPItu8A3wNTL@Asurada-Nvidia/
-> (The majority of my effort has been still on the kernel side:
->  previously vIOMMU/vDEVICE, and now vEVENTQ/MSI/vCMDQ..)
->
-> Don/Eric, is there any update from your side?
-To be honest we have not much progressed so far. On my end I can
-dedicate some cycles now. I currently try to understand how and what
-subset I can respin and which test setup can be used. I will come back
-to you next week.
+Series queued squashing:
 
-Eric
+-- >8 --
+diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+index d31456ad236..bbe7b971bbe 100644
+--- a/hw/sd/omap_mmc.c
++++ b/hw/sd/omap_mmc.c
+@@ -71,3 +71,2 @@ typedef struct OMAPMMCState {
+      int cdet_enable;
+-    int cdet_state;
+      qemu_irq cdet;
+@@ -611,9 +610,4 @@ static void omap_mmc_initfn(Object *obj)
+      qdev_init_gpio_out_named(DEVICE(obj), &s->dma_rx_gpio, "dma-rx", 1);
+-}
 
->
-> I think it's also a good time to align with each other so we
-> can take our next step in the new year :)
->
-> Thanks
-> Nicolin
->
-
+-static void omap_mmc_realize(DeviceState *dev, Error **errp)
+-{
+-    OMAPMMCState *s = OMAP_MMC(dev);
+-
+-    qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS, dev, "sd-bus");
++    qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS, DEVICE(obj), 
+"sd-bus");
+  }
+@@ -622,3 +616,2 @@ static void omap_mmc_class_init(ObjectClass *oc, 
+void *data)
+  {
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+      ResettableClass *rc = RESETTABLE_CLASS(oc);
+@@ -626,3 +619,2 @@ static void omap_mmc_class_init(ObjectClass *oc, 
+void *data)
+      rc->phases.hold = omap_mmc_reset_hold;
+-    dc->realize = omap_mmc_realize;
+  }
+---

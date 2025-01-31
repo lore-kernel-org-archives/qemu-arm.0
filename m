@@ -1,248 +1,362 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp522112njb;
-        Fri, 31 Jan 2025 08:09:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJGunJfTQ0H4OcTpZuJFLrgpCmPh1BUZxiwryu6Bn1CqTjCLNxc0CxTRVMQiuDSkdQXVPS9ST+69qYdQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF8cbbUFn4FN77wazty3K/jr0b7xxGO+Mnt6FU0xjSc7CnpL2QE/q9+RTEsan/GKcnmgwlc
-X-Received: by 2002:a05:620a:1904:b0:7be:8343:df20 with SMTP id af79cd13be357-7bffccc7f43mr1723091485a.3.1738339753811;
-        Fri, 31 Jan 2025 08:09:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738339753; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp507245njb;
+        Fri, 31 Jan 2025 07:49:31 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXVhi07Gd6AV95qLkVVltsyNKC61e9g19GwCKVMsouV0HfdoUW8LecQsfL36hXR2W07gTq8VSnqtRc+JA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE756yeKzxHgWq6jRJZYLLIglLepSDPn1/G4AEAocCrxYniOsbUlCVordylcJn3xReU5bOJ
+X-Received: by 2002:a05:6a20:c78d:b0:1e1:ad7:3282 with SMTP id adf61e73a8af0-1ed8730a904mr11682015637.7.1738338570841;
+        Fri, 31 Jan 2025 07:49:30 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738338570; cv=pass;
         d=google.com; s=arc-20240605;
-        b=cDrUjpdZwp68nCZXxXz6RK5oAZMXpiR2vhlUt8DEIo2V4nVxMomAHw+e3pM3nB16qy
-         /iEWT/1Xjw9hIkREAzlkbTQzrDiQHirrQozCDsp4wfKIccglt+TTwPDMema9RxPCBT3R
-         YxJBk/j0OixVaap/8CWAGFNDms/e2K4GG8Rd/tHK94zzaoI40idOcb4YgOfhqekUNRyQ
-         aTQzqTLjiC2SB0qmtrRgvN1GmSRFgFecXtMD370urnTtaldmn43ayKVEO6EZM2hGsjnN
-         4Gab77ZX6FbwLSqMLBSjRtHv3s7ZAjz3vYeXenx6rbxr4aqhGrEK1FWUR6g6ytrWHN6i
-         T5cA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6aajYEpX8wIlISw9r5i3wytkU3PBeq2yQPEpeWE9yXw=;
-        fh=qjIQ5/l4PgrIMj4PFT2eXpxjHZtrT+8/TXoAFsCdnE8=;
-        b=GXJID6PcfDZao4yilXEIRg7sjGMKkQoFbMbUThlhivDx6NmlT3vhX+n+nC8e+++yVV
-         8IKWNonce0zOcFshtzWa2qeZyGlr5bYrYfztZnO8Xawspw0MnJOoI1FlW8rTVA20K611
-         ocCB1wF3DqK7ZWplVXdtIUVM4GuNLZfWSSj44z/0FmS1jVC4JTW0OGwlw8seNGdQCWWo
-         kWV6qfcaH6QvNHInWsH9noazuRk+T2n9Dq0k4GgzETUCjpBEyYCPJ+QhMBEecI6WZJq9
-         e/Dhtq+HU7cAdIspux0lJSbfdodtPEWSGJ/sGmpoUBOfZ7XRNn72G1eBjIWwxdS9+Wy0
-         SmEw==;
+        b=JNGArBGF9kJFr/rc8ZKL1kyKNPW81BvB5nrsP81U7rAa0PPoouFAwLwkudjGfnw2ad
+         hLEGVVnMnUmqhvArUZB1b/pRzRQGtZfjbcvNSeeYTCNd07dBoy3DX0DUu0x3wZ2qDNqQ
+         8qdO4WYNKTk8IkVNvQ4xpIvFqI1mT1lNew8NX6bMixlSOkCQUcVvcAGvvd93AH0EOpIs
+         BZfjonXwhxlR+sj+yPai+3sCirUm8lRIN6XTRdmOFF5e6fChxn2c8ipkQlTBR55x/3B8
+         cUYUL00w4pBqIrMM+RRR7irE8HRrFTiN5KCNZxg3OLXBm8fF5JKafN3pBiIwEPHPa1Lj
+         L6ZA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=L5uylx3qtP9mkHfP0joMRaNkPXRmz8TpJZ7u49+YjTA=;
+        fh=Qe1Z/MD0vjI9Zl9s5p7E7+jjEbdm3kdir/Riz6VYbdE=;
+        b=bMXNAy3vCHMvOwXR+K00zwD3AKriZuPuU3e3v+NJulRIjvUpe29EEywyugvOKhTr9S
+         OqoYFAXar3voovTRJc3n19EjVaox7V11tS5ieYj8w4SuVJyq6kRUQSBjGy6Si8AxjXfi
+         wl4Bcja+tukENo466ISmzK7MRhZpbD5bi6lW+7N0VToXi6hVri3/cVOyM22rX0xGuK/5
+         cv+tCQ3MH0RKP5fUyemJOevhoJVgboSHmFFzA/f4BAqRUxEK4+qOL+8rNONy4Dsw1zaV
+         r9mx680O2phqCv5Mek5gUuwm0j3GXRSpWiuUhvksk02s2DC2fEBoyh9xbtsrXEeVlhRo
+         ZG3g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QB5OB8kY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c00a93b9f2si421609385a.601.2025.01.31.08.09.13
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=FQN6redE;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-acec086f360si4650529a12.487.2025.01.31.07.49.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 Jan 2025 08:09:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 31 Jan 2025 07:49:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QB5OB8kY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdtZR-0005QA-So; Fri, 31 Jan 2025 11:08:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tdtZP-0005PS-Nf
- for qemu-arm@nongnu.org; Fri, 31 Jan 2025 11:08:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tdtZN-0007AU-UC
- for qemu-arm@nongnu.org; Fri, 31 Jan 2025 11:08:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738339717;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6aajYEpX8wIlISw9r5i3wytkU3PBeq2yQPEpeWE9yXw=;
- b=QB5OB8kYw6g9875WPJZVfmYtpZAE1M2Y2OWfEZBP4tjNDfDMafA36xwnT0tFO5Blstt0uX
- 3LIJHvNiiKZ/qXXssdYzntZSoLb0au9EkOen6dCELo5IAXuCsU9PqqbFujMhReS5Yxq8C4
- dnaVf9xqxr4CS+oJADYAwxlH7hzJh0k=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-44-qYc8nr5iPT-PJfxLfpj-kw-1; Fri, 31 Jan 2025 11:08:33 -0500
-X-MC-Unique: qYc8nr5iPT-PJfxLfpj-kw-1
-X-Mimecast-MFC-AGG-ID: qYc8nr5iPT-PJfxLfpj-kw
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4361eb83f46so16515145e9.3
- for <qemu-arm@nongnu.org>; Fri, 31 Jan 2025 08:08:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738339712; x=1738944512;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6aajYEpX8wIlISw9r5i3wytkU3PBeq2yQPEpeWE9yXw=;
- b=rf5t9HpGdG0ep4yWvavwHLT1tebvb+J0R91258sn7M/9/hmW85UsLr5P818GGAaK7H
- z9eqfbYv0+Ra2vLgg9Ze+uzV5uyxxSxWpdMzIaQ6R8/R0zRc9qocY4dlUMi4/9eVkO0I
- xr+C4dLWe645ER4wCbmUpwke04Xqlah4tEAGXzhE7rKZ0xzWLLmgWYiKZHZFe2hZYOqY
- m9fMAud3Zheue+oO1b9VR5Oc2kWs54i/R7smTVN9CVcpmzrHGF+Lixp0pEXmVF0Qe9Ct
- ROntBr/jaU4PAX4D0lNlaHZZuTFrwSa4Z/DknlilwVs4hTTLUhfctojtCYnBlQ3rcfED
- ZDiA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXerzjA2zXzQ9teCEb/b0UvPnbZZdqgItvkQuYifLzDNS93v0M/1a4qOq8k6cTWyl1NSWOkA89F3w==@nongnu.org
-X-Gm-Message-State: AOJu0Yyo/MwpnmD+nGQuQu/elwwtNe08sNAWdbmn9HASOMeBvFHlfQ7j
- Aw1xxfG9v834RzVFSx/10/n3WU9YPSd7SiSyZMC4RydogjACxgFrao+wArqBghgPVbulIwVO9gQ
- x9/wAFCYDlMAS7VVbUIRiIXk79GxyqHA7edaGlp801Ej+5fWWdA==
-X-Gm-Gg: ASbGncvdPzg21oVVprYY3OugGRD3kpZ8v5GKdh4BNKU1UMw3glGkMBc+Nu2iNxAmxhJ
- SpMuuO2JZ9a7cC1ZI40OghIGysP7DMdk+1lM+r++3DV5t3zBtwSTm+6+EEAYlYMZ4C+NZGjQWOd
- UFNHh4MkpSEhhRCD+KGGYAVSu5Jy7bdRAULC/DLi48KN/Rms7b4HIDSWgW44YF2j7krnbzej47e
- tREfqR64d0Hja6sDC1YoIbNgI6UizRvU/gYUJXhq40ffVlw90FjvYr2Q1f/MCqXTOE4INCYVzgt
- BUUQz2KbbUS/h2qHOQ0cDm1XQWDf3cTZxC3gWDbmTwtboRPYPsNQ
-X-Received: by 2002:a05:600c:1c93:b0:435:9ed3:5698 with SMTP id
- 5b1f17b1804b1-438dc41d1cbmr98456265e9.24.1738339712013; 
- Fri, 31 Jan 2025 08:08:32 -0800 (PST)
-X-Received: by 2002:a05:600c:1c93:b0:435:9ed3:5698 with SMTP id
- 5b1f17b1804b1-438dc41d1cbmr98455845e9.24.1738339711596; 
- Fri, 31 Jan 2025 08:08:31 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438d755387fsm80315405e9.0.2025.01.31.08.08.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Jan 2025 08:08:30 -0800 (PST)
-Message-ID: <c292ab40-3620-4e72-b043-4e3cbd7fd297@redhat.com>
-Date: Fri, 31 Jan 2025 17:08:28 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=FQN6redE;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494677-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 8D0443A2CEB
+	for <alex.bennee@linaro.org>; Fri, 31 Jan 2025 15:49:23 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 881A41CCB4B;
+	Fri, 31 Jan 2025 15:49:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="FQN6redE"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 350DF14F9F9
+	for <linux-kernel@vger.kernel.org>; Fri, 31 Jan 2025 15:49:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738338565; cv=none; b=iLa0nBuTbdhUiMUwUrS8A/kj15ePzJoGhciGhHOah/urosl2rftidxpkudVWmt8siaMTOvXJuVM5xzq3AYRLgxIsmiz1TazKyxKlG/FjIg0ep3CiN4DpW/7vdG7UEqlWjkd6lhcmKTG6D//L8jWvVpXCb2AWR5RYQWTD2DDVaz8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738338565; c=relaxed/simple;
+	bh=RbMCFC4kj1p2vETBTgZba30OM5dDvX6E78WaAC7BfE8=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=S18cUuzWoShWWDRc66UcoNvqs19tYXlCWX7k5zBRYXlg4/ZA26P6DnlxHQxLs4o/EKaSWeR6XukEiRKkMhLB086nBvlDBAqFipNb5xJO50UP7th4qsceKT9p2j6Z02Pvpxj3X/6fSsaIRV465Kr2N5jWQZMZp8uDDJqmjlt87ZA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=FQN6redE; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5821C4CED1;
+	Fri, 31 Jan 2025 15:49:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738338564;
+	bh=RbMCFC4kj1p2vETBTgZba30OM5dDvX6E78WaAC7BfE8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=FQN6redEPBDKEN78pcz8zirLmWdfdYxSKtUdK0H/12g1M/ny/na0zAVx7tpVKK35w
+	 pNi5oeY9rcZ3us3ZLUcNpgSbKuxAAdhCnqSrtRbo4EKsh0DTyPsZpNDe9Ke7cAn6pT
+	 uR0Z6P7xNyxm9/OdFLI4UnLz0e607ucyRKODyRk7VK/DJ58WYhz0g5dm0cnryap9Lb
+	 kIz8n55alDxVweHXNn8+C+W3wUCDLkxcGilFNiXOFgVQzApTc9QJsqZ++AWtPayDOG
+	 wdsMgjm51ubKHPc4BeJSB6xFoFLphh7h0qZPQEL2Iy+4NdvIIPEpqnOjJ8BrJ7BTIo
+	 DlmJMbKphaTTA==
+Date: Fri, 31 Jan 2025 16:49:19 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
+ <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 12/13] tests/acpi: virt: add a HEST table to aarch64
+ virt and update DSDT
+Message-ID: <20250131164919.7955a110@foz.lan>
+In-Reply-To: <20250129162953.5c525555@imammedo.users.ipa.redhat.com>
+References: <cover.1738137123.git.mchehab+huawei@kernel.org>
+	<7036f18f9c25852aeae6526d424e259211a0c9cd.1738137123.git.mchehab+huawei@kernel.org>
+	<20250129162953.5c525555@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Jason Gunthorpe <jgg@nvidia.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- Nathan Chen <nathanc@nvidia.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z5uiGnAxUf4jXTEI@redhat.com> <7ecabe74e0514367baf28d67675e5db8@huawei.com>
- <fc91e1a798324390b2a556fae5d40f46@huawei.com>
- <20250131142404.GP5556@nvidia.com>
- <3efcea1171af4b2f81be842f2c55fe51@huawei.com>
- <20250131145411.GR5556@nvidia.com>
- <20039bbc40df453a8a41a863d74b9ff9@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20039bbc40df453a8a41a863d74b9ff9@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 7OhmT2KP5xfMxLPHpvTDPHVMFsfRRuUgURJkwyQ82VM_1738339712
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sA8kym3+0nCB
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 108ZBhjlKAcI
 
-Hi,
+Em Wed, 29 Jan 2025 16:29:53 +0100
+Igor Mammedov <imammedo@redhat.com> escreveu:
+
+> On Wed, 29 Jan 2025 09:04:18 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > DSDT has gained a GED device to notify errors:
+> > 
+> > --- a/DSDT.dsl        2025-01-28 09:38:15.155347858 +0100
+> > +++ b/DSDT.dsl        2025-01-28 09:39:01.684836954 +0100
+> > @@ -9,9 +9,9 @@
+> >   *
+> >   * Original Table Header:
+> >   *     Signature        "DSDT"
+> > - *     Length           0x00001516 (5398)
+> > + *     Length           0x00001542 (5442)
+> >   *     Revision         0x02
+> > - *     Checksum         0x0F
+> > + *     Checksum         0xE9
+> >   *     OEM ID           "BOCHS "
+> >   *     OEM Table ID     "BXPC    "
+> >   *     OEM Revision     0x00000001 (1)
+> > @@ -1931,6 +1931,11 @@
+> >                  {
+> >                      Notify (PWRB, 0x80) // Status Change
+> >                  }
+> > +
+> > +                If (((Local0 & 0x10) == 0x10))
+> > +                {
+> > +                    Notify (GEDD, 0x80) // Status Change
+> > +                }
+> >              }
+> >          }
+> > 
+> > @@ -1939,6 +1944,12 @@
+> >              Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
+> >              Name (_UID, Zero)  // _UID: Unique ID
+> >          }
+> > +
+> > +        Device (GEDD)
+> > +        {
+> > +            Name (_HID, "PNP0C33" /* Error Device */)  // _HID: Hardware ID
+> > +            Name (_UID, Zero)  // _UID: Unique ID
+> > +        }
+> >      }
+> >  }
+> > 
+> > New HEST table:  
+> 
+> diff might be a better here,
+> you can have it during make check when expected tables haven't been update yet.
+> prereq for that is to have 'iasl' installed (usually part of acpica-tools package)
+> and adding V=1 to env vars, something like this:
+> 
+>  V=1 QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/bios-tables-test
+
+Hmm... didn't produce any diff here. I added a diff generated by
+hand (calling iasl before/after the GED wire up patch and manually
+running diff).
+
+Anyway, as HEST table is not checked, I dropped it file from the tests[1],
+and placed on patch 12/13 just the DSDT diff.
+
+[1] tests/data/acpi/aarch64/virt/HEST
+
+> 
+> > 
+> > /*
+> >  * Intel ACPI Component Architecture
+> >  * AML/ASL+ Disassembler version 20240927 (64-bit version)
+> >  * Copyright (c) 2000 - 2023 Intel Corporation
+> >  *
+> >  * Disassembly of hest.dat
+> >  *
+> >  * ACPI Data Table [HEST]
+> >  *
+> >  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+> >  */
+> > 
+> > [000h 0000 004h]                   Signature : "HEST"    [Hardware Error Source Table]
+> > [004h 0004 004h]                Table Length : 000000E0
+> > [008h 0008 001h]                    Revision : 01
+> > [009h 0009 001h]                    Checksum : 68
+> > [00Ah 0010 006h]                      Oem ID : "BOCHS "
+> > [010h 0016 008h]                Oem Table ID : "BXPC    "
+> > [018h 0024 004h]                Oem Revision : 00000001
+> > [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+> > [020h 0032 004h]       Asl Compiler Revision : 00000001
+> > 
+> > [024h 0036 004h]          Error Source Count : 00000002
+> > 
+> > [028h 0040 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
+> > [02Ah 0042 002h]                   Source Id : 0000
+> > [02Ch 0044 002h]           Related Source Id : FFFF
+> > [02Eh 0046 001h]                    Reserved : 00
+> > [02Fh 0047 001h]                     Enabled : 01
+> > [030h 0048 004h]      Records To Preallocate : 00000001
+> > [034h 0052 004h]     Max Sections Per Record : 00000001
+> > [038h 0056 004h]         Max Raw Data Length : 00000400
+> > 
+> > [03Ch 0060 00Ch]        Error Status Address : [Generic Address Structure]
+> > [03Ch 0060 001h]                    Space ID : 00 [SystemMemory]
+> > [03Dh 0061 001h]                   Bit Width : 40
+> > [03Eh 0062 001h]                  Bit Offset : 00
+> > [03Fh 0063 001h]        Encoded Access Width : 04 [QWord Access:64]
+> > [040h 0064 008h]                     Address : 0000000139E40000
+> > 
+> > [048h 0072 01Ch]                      Notify : [Hardware Error Notification Structure]
+> > [048h 0072 001h]                 Notify Type : 08 [SEA]
+> > [049h 0073 001h]               Notify Length : 1C
+> > [04Ah 0074 002h]  Configuration Write Enable : 0000
+> > [04Ch 0076 004h]                PollInterval : 00000000
+> > [050h 0080 004h]                      Vector : 00000000
+> > [054h 0084 004h]     Polling Threshold Value : 00000000
+> > [058h 0088 004h]    Polling Threshold Window : 00000000
+> > [05Ch 0092 004h]       Error Threshold Value : 00000000
+> > [060h 0096 004h]      Error Threshold Window : 00000000
+> > 
+> > [064h 0100 004h]   Error Status Block Length : 00000400
+> > [068h 0104 00Ch]           Read Ack Register : [Generic Address Structure]
+> > [068h 0104 001h]                    Space ID : 00 [SystemMemory]
+> > [069h 0105 001h]                   Bit Width : 40
+> > [06Ah 0106 001h]                  Bit Offset : 00
+> > [06Bh 0107 001h]        Encoded Access Width : 04 [QWord Access:64]
+> > [06Ch 0108 008h]                     Address : 0000000139E40010
+> > 
+> > [074h 0116 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
+> > [07Ch 0124 008h]              Read Ack Write : 0000000000000001
+> > 
+> > [084h 0132 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
+> > [086h 0134 002h]                   Source Id : 0001
+> > [088h 0136 002h]           Related Source Id : FFFF
+> > [08Ah 0138 001h]                    Reserved : 00
+> > [08Bh 0139 001h]                     Enabled : 01
+> > [08Ch 0140 004h]      Records To Preallocate : 00000001
+> > [090h 0144 004h]     Max Sections Per Record : 00000001
+> > [094h 0148 004h]         Max Raw Data Length : 00000400
+> > 
+> > [098h 0152 00Ch]        Error Status Address : [Generic Address Structure]
+> > [098h 0152 001h]                    Space ID : 00 [SystemMemory]
+> > [099h 0153 001h]                   Bit Width : 40
+> > [09Ah 0154 001h]                  Bit Offset : 00
+> > [09Bh 0155 001h]        Encoded Access Width : 04 [QWord Access:64]
+> > [09Ch 0156 008h]                     Address : 0000000139E40008
+> > 
+> > [0A4h 0164 01Ch]                      Notify : [Hardware Error Notification Structure]
+> > [0A4h 0164 001h]                 Notify Type : 07 [GPIO]
+> > [0A5h 0165 001h]               Notify Length : 1C
+> > [0A6h 0166 002h]  Configuration Write Enable : 0000
+> > [0A8h 0168 004h]                PollInterval : 00000000
+> > [0ACh 0172 004h]                      Vector : 00000000
+> > [0B0h 0176 004h]     Polling Threshold Value : 00000000
+> > [0B4h 0180 004h]    Polling Threshold Window : 00000000
+> > [0B8h 0184 004h]       Error Threshold Value : 00000000
+> > [0BCh 0188 004h]      Error Threshold Window : 00000000
+> > 
+> > [0C0h 0192 004h]   Error Status Block Length : 00000400
+> > [0C4h 0196 00Ch]           Read Ack Register : [Generic Address Structure]
+> > [0C4h 0196 001h]                    Space ID : 00 [SystemMemory]
+> > [0C5h 0197 001h]                   Bit Width : 40
+> > [0C6h 0198 001h]                  Bit Offset : 00
+> > [0C7h 0199 001h]        Encoded Access Width : 04 [QWord Access:64]
+> > [0C8h 0200 008h]                     Address : 0000000139E40018
+> > 
+> > [0D0h 0208 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
+> > [0D8h 0216 008h]              Read Ack Write : 0000000000000001
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > ---
+> >  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
+> >  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
+> >  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
+> >  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
+> >  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
+> >  tests/data/acpi/aarch64/virt/HEST             | Bin 0 -> 224 bytes
+> >  tests/qtest/bios-tables-test-allowed-diff.h   |   2 --
+> >  7 files changed, 2 deletions(-)
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
+> > index 36d3e5d5a5e47359b6dcb3706f98b4f225677591..a182bd9d7182dccdf63c650d048c58f18505d001 100644
+> > GIT binary patch
+> > delta 109
+> > zcmX@3@k4{lCD<jTLWF^ViDe>}G*h$dM)euOOwJsW4+;nC=*7E+g>V+Q2D|zsED)Gn
+> > zoxsJ!z{S)S5FX^j)c_F?VBivHb9Z%dnXE4&D;?b=31V}^dw9C=2KWUSI2#)?aKwjt
+> > Hx-b9$X;vI^
+> > 
+> > delta 64
+> > zcmeyNaYlp7CD<jzM}&caNqQoeG*i3NM)euOOit{R4+;lM%f`Egg>V+Q2D|zsED)Gn
+> > UoxsJ!z{S)S5FX?-*+E1W06%jPR{#J2
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
+> > index e6154d0355f84fdcc51387b4db8f9ee63acae4e9..af1f2b0eb0b77a80c5bd74f201d24f71e486627f 100644
+> > GIT binary patch
+> > delta 110
+> > zcmZ3ac}|ndCD<k8oCpI0)4_>c(oCIR8`a+lGdXii78eO-)SH|wBICY5U~+W=mjDBo
+> > yK%2X(iwjpnbdzL2c#soEyoaX?Z-8HbfwO@#14n$Qrwc=LlO#wDl9aJAR0;r(tsHj%
+> > 
+> > delta 66
+> > zcmX@7xk!`CCD<iokq83=(~XH-(oDVX8`a+lGdZzO78eO-l%1R{A|oB$BpDDM<irv0
+> > W;pxH~;1^)vY~akm5g+R5!T<noi4jWx
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
+> > index 33f011d6b635035a04c0b39ce9b4e219f7ae74b7..10436ec87c4859fb84b3ecb7bba5788f38112e59 100644
+> > GIT binary patch
+> > delta 88
+> > zcmbPheA1Z9CD<k8q$C3algUIbX{MH08`WnBGdXcjJ}4Z_<jXo)OvH<SfxzVI1TFyv
+> > qE`c_8R~MJfaU%At($P(lAPz^oho=i~fM0-tv#~J)M|`NK3j+W#;TF9B
+> > 
+> > delta 44
+> > zcmX?UJlB}ZCD<iot|S8klg&gfX{L_p8`WnBGdXfiJ}4Z_<ij#qOvGz*p@=Oj039?8
+> > AE&u=k
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
+> > index c0fdc6e9c1396cc2259dc4bc665ba023adcf4c9b..0524b3cbe00bfe552de824dd1090bd00a208c527 100644
+> > GIT binary patch
+> > delta 110
+> > zcmexwz1oJ$CD<iITaJN&sbC_PG*jDyjq2XAOwJsWOJsu?^(LQ?m2qDnFu6K`OMrn(
+> > ypv~RY#f7UOx=Au1JjjV7-ow*{H^48zz}di=fg?WD(}f|rNfM+6Ny^w5Dg^+WYaFrw
+> > 
+> > delta 66
+> > zcmZ2&^WU1wCD<k8zbpd-Q^!OuX{N5b8`ZsKnVi@sm&gV)%1%BZD<d7<BpDDM<irv0
+> > W;pxH~;1^)vY~akm5g+R5!T<oNArgiF
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
+> > index 029d03eecc4efddc001e5377e85ac8e831294362..8c0423fe62d6950f9098983d86bfee256d7d003a 100644
+> > GIT binary patch
+> > delta 86
+> > zcmbQHbx4cLCD<jzNtA(s>E%Q&X{O%5jp|7vOwJsWyG4Q-^(NmJk>Ot;Fu6K`OMrn(
+> > opv~RY#bxqO5n1WzCP@&RBi_T)g*U)2z`)tqn1Lfc)YF9l01l28<p2Nx
+> > 
+> > delta 42
+> > ycmX@4HBF1lCD<iIOq79viGL!OG*hGhM)f2SCMWjE-6Fw^vXk$N$V}!Dl?DLb(h64q
+> > 
+> > diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
+> > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..8b0cf87700fa1799c0f8e48610ce4b7ff751dd1f 100644
+> > GIT binary patch
+> > literal 224
+> > zcmeZp4Gww0z`($m;pFe^5v<@85#X$#prF9Wz`y`vgJ>oO1_mw$28RFt85lu)5N2Ru  
+> > tU|?_nkxwi^d=43qAPxXkD*#pd?>_{9%>kRuh}CQksCsrH%$C4mHUOJBAprmY    
+> > 
+> > literal 0
+> > HcmV?d00001
+> > 
+> > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> > index 46298e38e7b8..dfb8523c8bf4 100644
+> > --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> > @@ -1,3 +1 @@
+> >  /* List of comma-separated changed AML files to ignore */
+> > -"tests/data/acpi/aarch64/virt/HEST",
+> > -"tests/data/acpi/aarch64/virt/DSDT",  
+> 
 
 
-On 1/31/25 4:23 PM, Shameerali Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Jason Gunthorpe <jgg@nvidia.com>
->> Sent: Friday, January 31, 2025 2:54 PM
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
->> Cc: Daniel P. Berrangé <berrange@redhat.com>; qemu-arm@nongnu.org;
->> qemu-devel@nongnu.org; eric.auger@redhat.com;
->> peter.maydell@linaro.org; nicolinc@nvidia.com; ddutile@redhat.com;
->> Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
->> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
->> Jonathan Cameron <jonathan.cameron@huawei.com>;
->> zhangfei.gao@linaro.org; Nathan Chen <nathanc@nvidia.com>
->> Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
->> nested SMMUv3
->>
->> On Fri, Jan 31, 2025 at 02:39:53PM +0000, Shameerali Kolothum Thodi
->> wrote:
->>
->>>>> And Qemu does some checking to make sure that the device is indeed
->>>> associated
->>>>> with the specified phys-smmuv3.  This can be done going through the
->>>> sysfs path checking
->>>>> which is what I guess libvirt is currently doing to populate the
->> topology.
->>>> So basically
->>>>> Qemu is just replicating that to validate again.
->>>> I would prefer that iommufd users not have to go out to sysfs..
->>>>
->>>>> Or another option is extending the IOMMU_GET_HW_INFO IOCTL to
->>>> return the phys
->>>>> smmuv3 base address which can avoid going through the sysfs.
->>>> It also doesn't seem great to expose a physical address. But we could
->>>> have an 'iommu instance id' that was a unique small integer?
->>> Ok. But how the user space can map that to the device?
->> Why does it need to?
->>
->> libvirt picks some label for the vsmmu instance, it doesn't matter
->> what the string is.
->>
->> qemu validates that all of the vsmmu instances are only linked to PCI
->> device that have the same iommu ID. This is already happening in the
->> kernel, it will fail attaches to mismatched instances.
->>
->> Nothing further is needed?
-> -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \
-> -device arm-smmuv3-accel,bus=pcie.1,id=smmuv1 \
-I don't get what is the point of adding such an id if it is not
-referenced anywhere?
 
-Eric
-> -device vfio-pci,host=0000:7d:02.1,bus=pcie.port1,iommufd=iommufd0 \
->
-> -device pxb-pcie,id=pcie.2,bus_nr=16,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2 \
-> -device arm-smmuv3-accel,pci-bus=pcie.2,id=smmuv2 \
-> -device vfio-pci,host=0000:75:00.1,bus=pcie.port2,iommufd=iommufd0 \
->
-> I think it works from a functionality point of view. A  particular
-> instance of arm-smmuv3-accel(say id=smmuv1) can only have devices attached
-> to the same phys smmuv3 "iommu instance id"
->
-> But not sure from a libvirt/Qemu interface point of view[0] the concerns
-> are addressed. Daniel/Nathan?
->
-> Thanks,
-> Shameer
-> https://lists.libvirt.org/archives/list/devel@lists.libvirt.org/message/X6R52JRBYDFZ5PSJFR534A655UZ3RHKN/
->
-
+Thanks,
+Mauro

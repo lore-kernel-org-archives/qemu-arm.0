@@ -1,98 +1,99 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp526082njb;
-        Fri, 31 Jan 2025 08:14:04 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVpCzKMr5klClsQJ8NH9+nTG830oq18fXgTCLm576OlYvtzmlQMJ0rLPkO3QudsI3T0+NR/IpfZVva09Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSTqS3GI0AO3CbP2fp9QuyVcGMeIKSjG4IAvZSRy1+YfgBR/JQVK/6GWRZ95N/TwjtRWjk
-X-Received: by 2002:a05:6214:506:b0:6e2:43d1:5fe5 with SMTP id 6a1803df08f44-6e243d16526mr143992366d6.34.1738340044449;
-        Fri, 31 Jan 2025 08:14:04 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738340044; cv=pass;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp529424njb;
+        Fri, 31 Jan 2025 08:18:22 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVDbxAqtvBdCzJU9706qQ01BFkHRzoxqXtE7vqENXOIb17mahPrnCqgGCtSIf/BBt52PBvsXi/f3wqXww==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMUpCchtOPQYmt3rCifkPXBhe1ZvO3Gwj3NFguITWld2cyoT0v0ABWEkid/Zuh6fEYeM1A
+X-Received: by 2002:a17:902:ea06:b0:216:7175:41bd with SMTP id d9443c01a7336-21dd7dde0e0mr149701805ad.39.1738340302537;
+        Fri, 31 Jan 2025 08:18:22 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738340302; cv=pass;
         d=google.com; s=arc-20240605;
-        b=dA6U4s9Y9XRcjGs6KIIR6d1OJeftGdbLEP9dO0U0f4Z5Cce7lZtX3dajsRs/fw6in1
-         i2qsslGM/23tYgKvZ8mUEjN9kvoAzxHsB67A83GF2poVz4Pf8ajNiSarL3kz+u71FKPL
-         whzEWa3TROEkk7xPbtUFm9oAWAzS/OA7neDIOcih677uhH1uLStq7n01XzbsilS6xzJ/
-         J2AF0rV0GcVI79fyBYcgwxEGigidH/hr0u8U+z6HEtVc4TJNljt7TOWMIX8Hs1OofTSn
-         eW5kQPf+SMeJ+2QlJ5VaO7H0U/aRajMwT5fqvXWlarwq4sj3DX9Dn85z+55K/juwm7UJ
-         fflw==
+        b=i5D4v41ULX7bnplD+KpJoHS8D2MtN88KWP1CE5ky7USvAH3DGGndi2kb2eicd4hgx5
+         /948b7xbjCO8x26oqy0givq4WV4OabAyUlWIOI74yuB4eqYBhGkOdBqRSNqfDbB7Yn/R
+         UkeRAJkKGjiInvSNpdT7pukf9GruNLGZ+JzHONsTDsOlNQTOF3RN84V5VjkOuT0j0X8O
+         Yxc0AKE/2plQbGFN4AZzpCF5vzzqv/65hUzHhr5YoZkb+nEm67aTwHSdjHfVOxZlsoSz
+         Cfkjwwpyj9X0W64CGx+6TOYC51N5Tkwc/9yJQNVbburAMU3NulvNvaB5lI5gY3NYw9C0
+         7vVg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=mbb0CbTx8SINIaFK2ZNY8dW4+brhQIys5eaiC4Zk3KQ=;
-        fh=+IIZYibM3VqPU5vc5LSAgrCj2PY9BY2dnDrMb9YCvSE=;
-        b=UoexNj3Y8FREHMLeKhwL0i+cQBsyqsVMucbPVkMl6shzXmpZrK6KtfT2KLy0AX+FMc
-         bVcFbEk2CyBSt/ysv8dH33j2fKxejqrLhohjTLpZ8v8fPJ0BVYE8tN0RwEt/poaA0Q5e
-         RAnfGT7mN7TFgxjXiSqq80aIE6YPY0fwGpb9f5GqP/Xihzvlo16XygLRXQAPvYm5Piaf
-         pKZxdA7yf/KBiWebMku6+NjDis48KoGjEzUqY415aPN1waPbI6LXl5UtzQ/B0l4iAxBC
-         86fQh9UdbUU7wg6gLiJsgiZZnXpp3g7zU702gTy92NHNBoOdVDa/5joqW4q24xM4mdF9
-         zlmA==;
+        bh=xN4tlJAeXpTbN5CTSH52hCag/ETwSiaLiFtxtnXgRB0=;
+        fh=Qe1Z/MD0vjI9Zl9s5p7E7+jjEbdm3kdir/Riz6VYbdE=;
+        b=jVWUAy2GczDnSRJ4fy3re8xC2+Fll5HTFE9aO2qTXR+UW+ALdxUFbXMhVXOcp0RPXn
+         DgIE/UE9gBqZFmp89Y9qRQPt5be7iwEks+QG0oYIAv0DU8fMDglpwHxO3sy7wrlpZMed
+         /1QVImbVEfRWitsiRrdnKR/CZkOSHLUHSjZlBhwr9aF/fOXf6rhHEnPAr2pw2sqThfBD
+         oBuEtN8qCBM6cmsngT9H29cFuYXZVAnm7ToNvslFNA3Zsu8LW4dB8XN4bQJRknVkN8Uz
+         yWCEl9PzM7cmOT80zEfbPz4YxZRbc3Q8Ltc1ynp8i3zJua8DEKUgi6zU0sztO1qZj334
+         a7sg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OjKzNgUA;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lnLB8DrX;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf1e06fesi39203791cf.539.2025.01.31.08.14.04
+Return-Path: <linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-21de5f71d4esi38146065ad.597.2025.01.31.08.18.22
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 Jan 2025 08:14:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Fri, 31 Jan 2025 08:18:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OjKzNgUA;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lnLB8DrX;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494704-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-494710-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 6DE44163302
-	for <alex.bennee@linaro.org>; Fri, 31 Jan 2025 16:14:03 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 6B5293A62F1
+	for <alex.bennee@linaro.org>; Fri, 31 Jan 2025 16:18:14 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C70441E47A6;
-	Fri, 31 Jan 2025 16:14:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 09B011E1C3A;
+	Fri, 31 Jan 2025 16:18:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="OjKzNgUA"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="lnLB8DrX"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88CB31C75F2
-	for <linux-kernel@vger.kernel.org>; Fri, 31 Jan 2025 16:14:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB6528467
+	for <linux-kernel@vger.kernel.org>; Fri, 31 Jan 2025 16:18:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738340040; cv=none; b=P12Nngi7PmIb+FJdmzg4hVeqXe62aQAxQrxhpUVp3zUgh9jIYaP3CsimGsM/Jd4xEkjFebLZPnR5WaY7eJVTqS1rYSoyMlzWiAU0dR+tRcsHIkcU07MZtqIVNegyao/u71p1rASGk1RUTYWw0exjgu6eqpjkEEE1NAz87aQoivI=
+	t=1738340297; cv=none; b=l+HYWs/oZnfFtqWx6+1VQbcdxDrs3R36vwxd0znFpdX15QjUGpXUoaEZTeeZnIOowAXGyD01kktHwBJKwlfKgme6VZdJhtXbW787+Y3FJm0QE0ARTQK7+lrIF5JIti1PlQbVZFqBhzGQZU//cOGb4iRuh5Li77nEpKzka28kGIQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738340040; c=relaxed/simple;
-	bh=4jipEBrnBk0sRaw7d+8DvwEvKyP+4wnYazk96RKoz1E=;
+	s=arc-20240116; t=1738340297; c=relaxed/simple;
+	bh=+DKv5p5gtr/qhVvWh4VwKvw+q8ap1xODp8LMl0FjSLA=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=D0FzmNqflXe7JgD1z88ef/gr0q7CQ6tgQ7XCAYyWUBVrJKsnB6tn6QR6uBNXuKER47DN5Nc5lGQ/r33/76LM+v5ktThdsHZDEN/a7XSkxC9aQe4clXPBl2a0Dfl3jGlaAN6EIsf3wRfSaLnutSowOkC09I226eBVxS9Bntq35+c=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=OjKzNgUA; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB8DAC4CEDF;
-	Fri, 31 Jan 2025 16:13:57 +0000 (UTC)
+	 MIME-Version:Content-Type; b=RU6kilr+BUwXn5wincYGrO+UKrEKGiIj2eesjuvcUSxRqoIEYNiL4cldoh1j5r2HpVoERj9GYbZbVKSqC0IsvB8BejJ6O5LTJWlaf80SJ5Dm8WiYyVWdLfrkqHD2H4DQ81WAYMVFHjEAgPkbEC0jjDomClHB2cNda41ok/OxWs4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=lnLB8DrX; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 597E5C4CED1;
+	Fri, 31 Jan 2025 16:18:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738340039;
-	bh=4jipEBrnBk0sRaw7d+8DvwEvKyP+4wnYazk96RKoz1E=;
+	s=k20201202; t=1738340297;
+	bh=+DKv5p5gtr/qhVvWh4VwKvw+q8ap1xODp8LMl0FjSLA=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=OjKzNgUAesKydg1HFCVNNmt70nfppJDyKSgAWVIljHZqVeNSAYrEYDqX3mIgYSUMZ
-	 i5XB3O14Hoc1FFmX5/v6kVeh4J6b1er95H1N3H8nFA+H/dxdALv2iKS1cD3s+q2Ktu
-	 uiA/ksCcAyffHL5472uXkb7iRDkPmsMAOeRAOipuCBhIhEC7UvefRbpAxwYQc0Utm/
-	 o5rebXPnjMMVV1eEBUc0eHplgbkVvjlgWKU9UlYBAFvTpnkK1aVNJ/4UGfHy6fiw8k
-	 CHJQ7/d1e+e8sNIfKMFVbO33lEAeSYj0Ae9XvYV4jvW23NdS6MXtcw44OspMcVRl9y
-	 CsajEfYHQ8exg==
-Date: Fri, 31 Jan 2025 17:13:54 +0100
+	b=lnLB8DrXKJwyzfLcdlDTYUyTZB+XsYmVs1/BWFMCFkQCBUaYmMTPG3LorYW97DY8q
+	 x9VtBYrXOMeVPxAs/U/lkP268bqg6WFUr79FymjuCk0u6k79iPxxWeuPakJ7CeBFmt
+	 MXhuSMmI5/WpddygbxZlEoqKO0xyiTRb0UZ9fFY4Khz2ubCwGYe7w6yMMDN+WQCXb7
+	 uMbx13/O6F9Zs+g7SUV1Spsu3kuxBmbZ5ofnscv0hXADi0wFkPfppa0CgHFiVVz+IL
+	 HtefOVT1j9EM49Ee9UAkLdVM/H9BcCfC+l7GN5yft12vwYoyjQYV2B6qW21ktzkM7G
+	 0THzba+BGbLoA==
+Date: Fri, 31 Jan 2025 17:18:12 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>
 Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
  <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 03/13] acpi/ghes: add a firmware file with HEST
- address
-Message-ID: <20250131171354.36fc5844@foz.lan>
-In-Reply-To: <20250129162328.17680ee7@imammedo.users.ipa.redhat.com>
+ <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 02/13] tests/acpi: virt: allow acpi table changes for
+ a new table: HEST
+Message-ID: <20250131171812.2ad9b1fd@foz.lan>
+In-Reply-To: <20250130153830.2e4e081d@imammedo.users.ipa.redhat.com>
 References: <cover.1738137123.git.mchehab+huawei@kernel.org>
-	<294577300217e4f7a606f3cb17382fd108c8c021.1738137123.git.mchehab+huawei@kernel.org>
-	<20250129162328.17680ee7@imammedo.users.ipa.redhat.com>
+	<1390b46682f2bac3587239d03a0ba22d18a9a044.1738137123.git.mchehab+huawei@kernel.org>
+	<20250129160328.2f66584c@imammedo.users.ipa.redhat.com>
+	<20250130140324.06cdd4bf@foz.lan>
+	<20250130153830.2e4e081d@imammedo.users.ipa.redhat.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -102,56 +103,70 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: lelTbRJuHosv
+X-TUID: FJGChKZE4FlR
 
-Em Wed, 29 Jan 2025 16:23:28 +0100
+Em Thu, 30 Jan 2025 15:38:30 +0100
 Igor Mammedov <imammedo@redhat.com> escreveu:
 
-> > +
-> > +    /*
-> > +     * Tell firmware to write into GPA the address of HEST via fw_cfg,
-> > +     * once initialized.
-> > +     */
-> > +    bios_linker_loader_write_pointer(linker,
-> > +                                     ACPI_HEST_ADDR_FW_CFG_FILE, 0,
-> > +                                     sizeof(uint64_t),
-> > +                                     ACPI_BUILD_TABLE_FILE, hest_offset);  
+> On Thu, 30 Jan 2025 14:03:24 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> it's not safe to add this without compat logic, as it changes size of linker
-> table and possibly layout.
+> > Em Wed, 29 Jan 2025 16:03:28 +0100
+> > Igor Mammedov <imammedo@redhat.com> escreveu:
+> >   
+> > > On Wed, 29 Jan 2025 09:04:08 +0100
+> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > >     
+> > > > The DSDT table will also be affected by such change.
+> > > > 
+> > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>      
+> > > 
+> > > move it right before the patch that would actually make changes to tables (10/13)    
+> > 
+> > Table changes happens on two patches:
+> > 
+> > - patch 03/13: acpi/ghes: add a firmware file with HEST address  
 > 
-> I'd suggest to  partially combine this with use_hest_addr patch.
-> One way to do it cleanly would be to move part introducing
-> use_hest_addr here and set it to false to start with,
-> and flip default to true one all hest_addr_le code in place.
-> see related comment 6/13 
+> this one shouldn't affect bios tables test as it only checks ACPI and SMBIOS tables,
+> and hest addr file is not either.
 
-Ok. It also means I need to temporarily get ags there, e. g.:
+Heh, true.
 
+> Do you really see test failing on this patch?
 
-+    AcpiGedState *acpi_ged_state;
-+    AcpiGhesState *ags = NULL;
-+
-+    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-+                                                       NULL));
-+    if (acpi_ged_state) {
-+        ags = &acpi_ged_state->ghes_state;
-+    }
-...
-+    if (ags->use_hest_addr) {
-+        bios_linker_loader_write_pointer(linker,
-+                                         ACPI_HEST_ADDR_FW_CFG_FILE, 0,
-+                                         sizeof(uint64_t),
-+                                         ACPI_BUILD_TABLE_FILE, hest_offset);
-+    }
+No. I just misunderstood the instructions, as it was not clear to me there 
+that I shouldn't be adding there the HEST table.
 
+> > 	HEST table was added here
+> > 
+> > - patch 10/13: arm/virt: Wire up a GED error device for ACPI / GHES 
+> > 
+> > 	DSDT changes happen here.
+> > 
+> > If the idea is to avoid make check to fail between those two patches,
+> > we need either to split them on 4 patches (one before/one after each
+> > change) or do like I did on this series: whitelist before patch 3,
+> > update after patch 10.  
+> 
+> It would be better to group patches that should change ACPI tables
+> close together so that a pair of whitelist/update could cover it.
+> However it depends on how many changes are there, i.e. acpi diff
+> should be digestible for a reader. So there is no hard border here,
+> just use common sense.
+> 
+> However when the whitelist is covers all series where only few patches
+> actually result in tables change, that miss-leads the reader since
+> whitelist patch basically tells 'watch out for changes since this moment'
+> and 'update' patch declares no more changes should happen.
+> The same applies to bisection, where closer the gap between
+> whitelist/update the better if the test case is the trigger.
+> No need to be fanatical and do it around each patch,
+> just make it observable (i.e. some small range of commits). 
 
-The part which gets ags will be dropped on this patch:
+Got it. Yeah, there was just one patch affecting DSDT table: the one
+adding an AML representation for the GED notification device.
 
-	ad2dc8716d1f acpi/generic_event_device: add logic to detect if HEST addr is available
-
-which will set use_hest_addr to false, until we have everything in
-place.
+I fixed it for the next (hopefully the final) version.
 
 Thanks,
 Mauro

@@ -1,183 +1,147 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp942837njb;
-        Sat, 1 Feb 2025 01:17:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWbxYYpqimPIC5nL3XDwioQcecFSsfkP9hRWMeoGXgL6QSbPxffbyVzLE2lyZdc6Ekxrno26KA3kyibUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpfaDlB/kMFSKy7azjkwkxraOCRO0FpTky/Yu580s8KgO832X7GJCRx8KrFBzocrEZ9jOO
-X-Received: by 2002:a05:622a:6110:b0:467:770f:70a0 with SMTP id d75a77b69052e-46fd0a10e78mr158975661cf.10.1738401443851;
-        Sat, 01 Feb 2025 01:17:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738401443; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp1023366njb;
+        Sat, 1 Feb 2025 04:58:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVvAxUPxZvN63rxfc2kySpC6T8gtv10j1qO8uM5QbM8whBxQ2QZOOsgYgCMjpe3v9UQ67lHhod2zaU6bQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZYRVstxtRjn9LniPvZIS4KtccYm/46OseKTiStOZRLGF0TargJd6jqkIbPWzePYmJgTgi
+X-Received: by 2002:a05:6214:250e:b0:6d8:8cb0:b40d with SMTP id 6a1803df08f44-6e243cac7c6mr234287396d6.39.1738414718080;
+        Sat, 01 Feb 2025 04:58:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738414718; cv=none;
         d=google.com; s=arc-20240605;
-        b=cxolFS2zErTE/LFxAu4vM+T0ktxaOspDEDeVdyTRra/w92iXXv5Uz2wJXfmKQrwxHI
-         KMIJbxbBwSPjy2s5lwkjg3nC8OCZMRgZ9bxYCM6d9a/wk3Gk8v13CB9hpdrMDCeESHWB
-         QcLYCe92vaxAdlrVNvNdb5QA2ysyUyPB2NY2Ek9tupjDrmGXbET+9Ocry40KJng8HEfk
-         9VTZnOzTyaZSsIsQFhY4KVRbkoAtZ9DNPAVq7i7YnhabsYChmKsTnMxLnjj02ACeTds8
-         UkzDFQ5Z30qEb84k4KdxzM/BuJj50jxcMM7QC8IczatX8HSh5M47gg5GdACuUzn1+SRq
-         ug+A==
+        b=Dehjc6aJfgrP3nFi4NrEps1O8kq1HYs2t2F5mnn4C3k75niL+LhR3AErULT0yQVF75
+         MKeIDfOWPledJPNqG8+jFIMWgcTAxbwlaE9qUxU05RhiONrB46phTd90VflPDg0+ue99
+         e+NmpHbpFVBmqSSr0mhlbV7RwHT8JJS85z2SpuXjDSCn1uHfgPWBUqL2sTb9rDpSWu45
+         iWviIWpQ0sGXDE9wbWRAMrjalXofSJv161BfhPXgMamq9bZD1UgkZLChJG8R1OYpqanE
+         kH/CQ3FO8N7jE2sTpqVrDuCELdb1dNAX069LXt6FcE0keOKhFTJb5ct2WrssV0mpkJto
+         cVPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=qyqWIFSMh+oTSqypjVXjebXLGHkmeLQM4JJ2rEUUT8A=;
-        fh=H4GbwdQ/2oIyPNlbjSTr+s+fsGzXnEOR03aP94txBto=;
-        b=OtmBirlxmmaF+0idxbfTO72lq0hpCp1Tq8MpZrXsYqi+yE8A2AMbXbCQLBFTZfp0w9
-         1pJcOkznvGMU4YHd1+qcto+LYGJxJAfM2kjTxrqvQQF7/oAGH9oIIg261bp4OoL2odzg
-         qmEdi9zxVXuKeUFmmkWG3VQa1N4k8je/2hjwjfd472zJfuQ/YkfmCK9VH7WHjQk4yXO7
-         OqL8roFU+GUrX+B14dOSCe5M9MeaSaTULmYAG5BWoY7DzWfnDynqeYylk0D6YisS4VAa
-         ctYPEx5CWU82VUoseGpueKl2BzSYhW4Nu99nTRJNQ9fcgT7Z9PAffwrm2Y8HmCjGCMh6
-         pAaQ==;
+         :list-unsubscribe:list-id:precedence:content-id:mime-version
+         :references:message-id:in-reply-to:subject:cc:to:from:date;
+        bh=6U39Yl34OxlQ86geUS0Vyj6MIvzWF5A6E+SJ1n+dlEc=;
+        fh=do9Ci31rNF9xCKtObuiDvrCpE2VYNtnQUH3S5OJelHE=;
+        b=JXWv6nqX0GXZmZ4JLQmRbvqCsHDeWO2Ui1tPttltkGtcL/a15HuioTvfOCl26QwMQg
+         B9UAqSNTFvRokvH8mAJp3WYt6pznzdEUsxtpjhUjC3d9YEbCKUnBaIMpDKZ6ncbqdaNH
+         z3DqivdLrh4lkroHOG315GfENn1ToiylJKHuTQ4GXAWNdNZ/DKMupR1W37GbAz/jZobz
+         3Sg/oFAKozLfQSxxD6Ffr8KnrNjUdVckkyN1+nLkBP3QU9xAxUAKxd0aWGsSfYMH7Zdc
+         X2rS5YQWq2da8RrkWoG5J7Ev1DWAfy2Djzcw+A1Wmf9vQzKQy3DqOWYeSA9X0mu0oKyp
+         v8iA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CjDKko0H;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46fdf1d186fsi58830311cf.411.2025.02.01.01.17.23
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e2549a1faesi55354966d6.323.2025.02.01.04.58.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Feb 2025 01:17:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 01 Feb 2025 04:58:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CjDKko0H;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1te9bK-0000zb-On; Sat, 01 Feb 2025 04:15:42 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1teD4Y-0006td-Vi; Sat, 01 Feb 2025 07:58:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1te9bJ-0000yd-60
- for qemu-devel@nongnu.org; Sat, 01 Feb 2025 04:15:41 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1te9bH-0000P1-KZ
- for qemu-devel@nongnu.org; Sat, 01 Feb 2025 04:15:40 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-385e27c75f4so2339216f8f.2
- for <qemu-devel@nongnu.org>; Sat, 01 Feb 2025 01:15:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738401337; x=1739006137; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qyqWIFSMh+oTSqypjVXjebXLGHkmeLQM4JJ2rEUUT8A=;
- b=CjDKko0HgNkFx5zto03ObMoh7zsOr8RTy1NDEgL6hx2aqmM4fz+40c2uf4E2tIMN7D
- Rf/Aq06lAKuDgmJ81d2tpeltPhCT6CtdethGxnvh6eoI0+AkxYsyeFjw5LlrwlwEdrLP
- ER+6VHvVnXgMq1d1rMe0rqjMGE0+7yU0xUCc/La0ZkceFNhdrt5BZTpsQ0bJW4DlM3lX
- IldW9slGWhMaTgFJFj5bCXG2thj6eUwDdL9heJFU8VLmjhUVulqiF6FH8uGYf5va9MPX
- jC3AWdvgDuiZchsT04j5l/CrL2LHPkGNXLJSdPrkrwUrpt3lVsuWtHGrlA3ERdUOkw2k
- CjNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738401337; x=1739006137;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qyqWIFSMh+oTSqypjVXjebXLGHkmeLQM4JJ2rEUUT8A=;
- b=iNcq6A36WASboSMMdiiZ3kIJwHIpOxDttgW9S9Blgh4EOYUGJzUKYTeoDRHYViWdfD
- oy2vy1A43+ofUHuYNUOO7lRA7EtIL2v9tRCJ43+yiD1Ftgfc0yqzsaCl3mry5fktjsbq
- zzY8l/e4Dp9danxBwzKMxUhyeYuekWdBRrgMSuqF6E6ufxMIUYjQ1MuyWYlibyi+Eo9N
- eOmLJpsOC54eIRWqVzWxaiiGpa6kP4BQ6HCg4cXeyvyt8UKwUU50pStnihyJ/mS4gqcX
- rurtMTioPHSr4l7R4DhdTL+s4FcpfXR00HFqVPvANIk3TUF7NIll2sZ0K456iKwobfKE
- DoZg==
-X-Gm-Message-State: AOJu0Yx/XzaHjES41PC/4GltPmzQ3kn5dscBTZZxMOepvcUNwc/d+TrP
- rnyqltZzBvDHgY5osDfQcrZ1AJurIC7PdknRg+7wL/J6sK8gmkNP4i5LFlVpYP/5+fqNejO1MMB
- U9Mg=
-X-Gm-Gg: ASbGncvLknSH/Xep4qAcFDVN1ax2YsqdgGh7eS8iYOarwOsDvl2q13aDN8qJtkAiwPF
- GQYx+1SScJRlrq+ZlJUNq3O/y0JCPLQVft1cfZKag9OzBE1FUARGJPgOKsEYiSb8WMsZv24AQXX
- 5cWo2AB36Mi37YZqAP8YqLIskKNxxIdEkOboG3W1AzgNgTTJpFMmUTB2flli7i16uhswx8CFssL
- U86agwnP0VTzHH6mpzNg8z5jeJiwxT5G0W8RmvR/jqkMNqbjmgZMtyln+4/LUPL5D+U8y17ywn3
- IOmrSApEC0HAUGOML+v4iZYc5VifCBxTQwPsO4CHYnLpp0/ZS12a5UVevNKJ/XDmTA==
-X-Received: by 2002:a5d:6d86:0:b0:385:df43:2179 with SMTP id
- ffacd0b85a97d-38c51967fd9mr10269078f8f.17.1738401337027; 
- Sat, 01 Feb 2025 01:15:37 -0800 (PST)
-Received: from localhost.localdomain (232.170.88.92.rev.sfr.net.
- [92.88.170.232]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438dcc1317fsm118446185e9.8.2025.02.01.01.15.36
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 01 Feb 2025 01:15:36 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Jared Mauch <jared+home@puck.nether.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- devel@lists.libvirt.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/7] hw/arm/raspi4b: Declare machine types using
- DEFINE_TYPES() macro
-Date: Sat,  1 Feb 2025 10:15:22 +0100
-Message-ID: <20250201091528.1177-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1teD4X-0006tN-Vy; Sat, 01 Feb 2025 07:58:06 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1teD4W-0006jl-7U; Sat, 01 Feb 2025 07:58:05 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 1CB194E6005;
+ Sat, 01 Feb 2025 13:57:58 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id NbOq-EX56cOw; Sat,  1 Feb 2025 13:57:56 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 2CC544E6019; Sat, 01 Feb 2025 13:57:56 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 2ABEA74577C;
+ Sat, 01 Feb 2025 13:57:56 +0100 (CET)
+Date: Sat, 1 Feb 2025 13:57:56 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, Jared Mauch <jared+home@puck.nether.net>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ devel@lists.libvirt.org
+Subject: Re: [PATCH 0/7] hw/arm/raspi4b: Add models with 4GB and 8GB of
+ DRAM
 In-Reply-To: <20250201091528.1177-1-philmd@linaro.org>
+Message-ID: <90d87f0e-56a3-8966-614c-364f3e726d61@eik.bme.hu>
 References: <20250201091528.1177-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ BOUNDARY="3866299591-595375333-1738414184=:33237"
+Content-ID: <41e0dd69-157e-7e24-7b0f-bec2d0eef23c@eik.bme.hu>
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MM8zYUyxuDVe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9bn9uEBjvixN
 
-When multiple QOM types are registered in the same file,
-it is simpler to use the the DEFINE_TYPES() macro. Since
-we are going to add more machines, convert type_init()
-by DEFINE_TYPES().
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
----
- hw/arm/raspi4b.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+--3866299591-595375333-1738414184=:33237
+Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 8BIT
+Content-ID: <1d22ae7b-5e8f-9543-38b8-cba62d89b36e@eik.bme.hu>
 
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 1264e0d6eed..5c78d26f957 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -121,16 +121,13 @@ static void raspi4b_machine_class_init(ObjectClass *oc, void *data)
-     mc->init = raspi4b_machine_init;
- }
- 
--static const TypeInfo raspi4b_machine_type = {
--    .name           = TYPE_RASPI4B_MACHINE,
--    .parent         = TYPE_RASPI_BASE_MACHINE,
--    .instance_size  = sizeof(Raspi4bMachineState),
--    .class_init     = raspi4b_machine_class_init,
-+static const TypeInfo raspi4_machine_types[] = {
-+    {
-+        .name           = TYPE_RASPI4B_MACHINE,
-+        .parent         = TYPE_RASPI_BASE_MACHINE,
-+        .instance_size  = sizeof(Raspi4bMachineState),
-+        .class_init     = raspi4b_machine_class_init,
-+    },
- };
- 
--static void raspi4b_machine_register_type(void)
--{
--    type_register_static(&raspi4b_machine_type);
--}
--
--type_init(raspi4b_machine_register_type)
-+DEFINE_TYPES(raspi4_machine_types)
--- 
-2.47.1
+On Sat, 1 Feb 2025, Philippe Mathieu-DaudÈ wrote:
+> - Deprecate the 'raspi4b' machine name, renaming it as
+>  'raspi4b-1g' on 32-bit hosts, 'raspi4b-2g' otherwise.
+> - Add the 'raspi4b-4g' and 'raspi4b-8g' machines, with
+>  respectively 4GB and 8GB of DRAM.
 
+IMHO (meaning you can ignore it, just my opinion) if the only difference 
+is the memory size -machine raspi4b -memory 4g would be better user 
+experience than having a lot of different machines. Or if you want to 
+emphasize these are tied to revisions maybe -machine raspi4b,revision=1.4 
+could be used. You can say that -machine help listing different versions 
+is easier to find but if it's the same machine with different options then 
+this should be a machine option, then you can use -machine raspi4b,help to 
+find the options specific to the machine. Memory size is normally set with 
+-memory so that could also select the revision as a convenience if this 
+is tied to a specific revision.
+
+Regards,
+BALATON Zoltan
+
+> Philippe Mathieu-DaudÈ (7):
+>  hw/arm/raspi4b: Declare machine types using DEFINE_TYPES() macro
+>  hw/arm/raspi4b: Introduce abstract raspi4-base machine type
+>  hw/arm/raspi4b: Split raspi4b_machine_class_init() in two (1g and 2g)
+>  hw/arm/raspi4b: Rename as raspi4b-1g / raspi4b-2g, deprecating old
+>    name
+>  hw/arm/raspi4b: Expose the raspi4b-1g machine on 64-bit hosts
+>  hw/arm/raspi4b: Add the raspi4b-4g machine
+>  hw/arm/raspi4b: Add the raspi4b-8g machine
+>
+> docs/about/deprecated.rst |  6 +++
+> hw/arm/raspi4b.c          | 91 +++++++++++++++++++++++++++++++--------
+> 2 files changed, 79 insertions(+), 18 deletions(-)
+>
+>
+--3866299591-595375333-1738414184=:33237--

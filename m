@@ -1,118 +1,119 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp1143978njb;
-        Sat, 1 Feb 2025 08:45:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUIiI/DMFjnv0jyPqaMLvt1dBKV0ptIOEFa+kTQUhNqT/snpXNm2eQA+TK0m5a025CfmTZMAjdx686CDw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH48Spx7F8qoIarQ0NrCnGjyKKa4c0zT4mQomqESoMZsZ5xuCLvJFzEvMWAGewuEHAGKLqp
-X-Received: by 2002:a05:620a:d8d:b0:7be:3d06:9a02 with SMTP id af79cd13be357-7bffcd12612mr1918809285a.28.1738428315102;
-        Sat, 01 Feb 2025 08:45:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738428315; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp1143994njb;
+        Sat, 1 Feb 2025 08:45:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXJ4CENdho3LKT36Wj4VF6XACNf8SO/V+t+Cd5I6KXKbO3xSmFJC+U7KwenHe7ZLj3pWhgzeJ8l4mpZng==@linaro.org
+X-Google-Smtp-Source: AGHT+IFcoFy5DnhexBesGYYsK1b8tdWGHryM9rWFHheJdazyniJTyzrPAP9Pian6dSFDbSIW2JeN
+X-Received: by 2002:a05:620a:40d2:b0:7b6:d273:9b44 with SMTP id af79cd13be357-7bffcce5810mr2439223285a.18.1738428317368;
+        Sat, 01 Feb 2025 08:45:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738428317; cv=none;
         d=google.com; s=arc-20240605;
-        b=LbcxQ16Lofz8p/+18kN8yWT6A2IkiuywS0tBqa60aUGdzW1qiSVKQ0y5XQznF1UHSm
-         ILutHqE4tSA/C78xBqv6nsDzI4e+VYkYQE3Qa8Z15jkYSjxDHwWpMOLVg8IGtXr/NARz
-         drtPscz+vDIHft7jPbqZb0b8w5Hs2e4QZEjg5WRy9d5W0WBdqbse7htflNSGu8/JTpLG
-         UaXiQQUMcIp6Myp0PaXf925sGBYHHk2dJlvUziWEBntGYwVNfUQcthKpPLgXpI0BRX83
-         fw6lcAEgOLqt7IFfoC1FYP6ohev1t3u2EMyRTftvQJMIHKs7NCrXGEnI7pk2BEqd4Q73
-         bjmw==
+        b=FaVS/xWneFtNfO3ChNGKfnuQcn9zk+a6VODsL9xuLyaIS6g8Fb0hijwpGkX16nbSZM
+         UuqHLO4Vc9EEjal1Df4DLLijefLchld2+9i2fVO1alkQHnkXonG4ZqlyquV+3FEUm55s
+         7g0BeJA9CBw/SHj/nnHjq+btnbj6c3UT1fciSYmwPrHYNidDtSKetfpV+75NeWCaglSx
+         8mLzX5OI2l6sWRGhn7s0+H1Bxfp2dsIFKP9hR+NrTtDgEbl2m+CpBe2eSknOUeOaIGnA
+         PJKv0KPM6orQrFwRSReyiiH34vacQIvlfcl4AkmLIkmsqpjxXdPvKqt13qfgcQGJl4Dl
+         aygg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QOw8scFPjKUk+oXyJ2xWsNA86wdi8W/z0T/XnJFQXpg=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=eQwHpvBtbQDCmYffu65nuQuM3oXQYKpOKRWEXPaI0UL8z/GTSg7jBezNolc4vL2ua3
-         uo5X1e44ZQYOtwr2b5DAf5lmrnjPnNc5raMYNOv1u/6FxSOtlTjhtrFrY7eZhwByUvd0
-         U1cEGDsXW9WqaMAWL2c+Dk3nIP1S6zythiIEDOm+RlXZArxU0EzmkrBUAitsSrtS8MLc
-         c/yFyZAgz1ag7tnLz1/jIqOQPbJn0ayFB3mK3p4y4RIFXpYaxTYSCMg5Xpfx1xDEBMt7
-         9vU2lgoOz9DRQwzemAaNOkU0IebK38iu7dOoWWe0fPX5yDQMRkJpCchRZZBEiTOMEprz
-         YVYg==;
+        bh=aqkV0xjCTajJ3P+rZ10ePbD+Oe29v/TIuU4/7Qb75WM=;
+        fh=Kh3vjMfkr7zJjrUk4hpPWk4hEtdy73ZRgDa/fBMXDBE=;
+        b=QBxv1FiVCkzioqUG4A7FE5RD7x9vmjxHRW70XJhKEMHfrsJp6RSjCyF9MoZQ8FQlYI
+         jQFGspIajVhkjPU5QNW4AL94Cdv1bIdTzOCVsPoBsYkTw6J8yYWKq/IrKOG5kpO+7NkF
+         ElP/BxCOg++U3xPp9ssHMcp2B+AA3YtL4hMxzpAxqX9NCgIH6GBTt9ydsjjoIJkdW28B
+         IrT0mVY5ogxWCc1pseLkJYRqiqIxEyfBEAEhXNGP1PuHE1C4cCJve8iZDXTDzYpFfFyI
+         HorekBAO3jrruht6K1GHhPuttc0FAZ8XPL32L/dZP7KGkMQ3xr/WyRMlM0BF87Qa3Nor
+         MiUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=whg65OAt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BZ5SYvci;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c00a90d3ffsi624364885a.453.2025.02.01.08.45.15
+        by mx.google.com with ESMTPS id af79cd13be357-7c00a904102si626705085a.232.2025.02.01.08.45.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Feb 2025 08:45:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 01 Feb 2025 08:45:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=whg65OAt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BZ5SYvci;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1teGYJ-0006Y0-Or; Sat, 01 Feb 2025 11:41:03 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1teGZ2-0008FP-1V; Sat, 01 Feb 2025 11:41:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1teGYH-0006Tq-Ew
- for qemu-arm@nongnu.org; Sat, 01 Feb 2025 11:41:01 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1teGYe-0007Jp-0p
+ for qemu-devel@nongnu.org; Sat, 01 Feb 2025 11:41:27 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1teGYF-0001Cf-HH
- for qemu-arm@nongnu.org; Sat, 01 Feb 2025 11:41:01 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4361dc6322fso20562485e9.3
- for <qemu-arm@nongnu.org>; Sat, 01 Feb 2025 08:40:59 -0800 (PST)
+ id 1teGYc-0001Jd-B3
+ for qemu-devel@nongnu.org; Sat, 01 Feb 2025 11:41:23 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4361b0ec57aso31080375e9.0
+ for <qemu-devel@nongnu.org>; Sat, 01 Feb 2025 08:41:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738428058; x=1739032858; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738428081; x=1739032881; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=QOw8scFPjKUk+oXyJ2xWsNA86wdi8W/z0T/XnJFQXpg=;
- b=whg65OAteAuo7b9/0EJT2T0VVCtvjmNUhrv1KaMeDaOPSCMEyIFBhFp+F6eGsRHDgT
- nqE+nuuLJQ8mCTo64CzkGMDBWkuACeoEK4qYkQ2jclKlgrmgb3olqq0+NJy8oTr+huQU
- 6uJrmjmoxam2PkKcYV9crYFSgVB71WsFUpUPxNDGqWttM5MXSQ2cv+Jn4RvaJ/+NlUdk
- oWQMNHBM66zGD/JcckkyUq3FUX1v2LMlzK2ygxdt0pdHAYUVWYKS0SjfWvAwZTJweaVi
- HZcQqTWo5b/Dsieh/sohivZwTG/L513A2PGKqfAv6WdzKMWw/VXW2ABum3IhXe+5lzFT
- hDug==
+ :reply-to; bh=aqkV0xjCTajJ3P+rZ10ePbD+Oe29v/TIuU4/7Qb75WM=;
+ b=BZ5SYvciqMuQPkO8a4hpzExq39fYlqtWpOsTwNtVuKBjVSM+H1qobA5LubYeW19tqd
+ SmlQ/R3+Cmr6qWuRQ6OjQbm2hxoMiOI0sXBUkiMg5FIBFzS7jhWYidp/4cOXhKoXv0+d
+ vxFf9iuy2n5G4BqkaYMM6yo9Fa1CF1mXp6UqI3r50lNEvu4NtktgTL0RvVmLArPCO2jT
+ N5B+LBp4FQRVvaaIqe8iaB83ju4YXmSrgR/re74YsKAR48wRzM2pXwd3pKrnsDHjm4JE
+ WqxQ8xItl05KzOBl/8FfXmTLltsEwI7xmIzkaQzUYomuvON1ztVbRLLa4KGgsw1UwNPW
+ oGhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738428058; x=1739032858;
+ d=1e100.net; s=20230601; t=1738428081; x=1739032881;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=QOw8scFPjKUk+oXyJ2xWsNA86wdi8W/z0T/XnJFQXpg=;
- b=X80OwXjfkf5QfZJewbMpef5TSIpqWuzdMwSrIQP1gtEXCVlBu/C5M9wUAakcoc5Ihz
- 1SbunbeJRoGD/6HrSq2/Z8n+JGzjpfIZIt6OnhUxYSaY6cL6MWBoKGAIPu3biSZZgdHI
- 4q6cGinyAOk5hYI7UhL1zTPfn+Af5H4qkKYOmI52As1/L00nduF1tNBxsdO8a2TNPiVy
- l2+FTlnW/mOcxCiLeiuGdUcXWGEYBK5Vs+81v+nTOFOxoJQGi0zJzUEj/Mvod0kuxnyX
- 54qZXa3ajbjH0IcQnmElMjPy61gZb4DC6xYCFfnL2G3OxlkLXQFr2bWmhdMW8Ze5q08D
- RTUA==
-X-Gm-Message-State: AOJu0Yy3hBFjgtfyCOFsaQpkOvOzsEs3MEMCS9gY8KjbJoGfgffqshNP
- Wewr8B0JYeWgP2tIvfPh3NQh5xE28C0XXj/FFYMr1iyacKvAEviIKSCfvrrA814AgPRbBkGb6DV
- 1
-X-Gm-Gg: ASbGncufS5+4CX4WUTVbbZx0DfpAq5AXA8dBZwogAERWBtcAIhYi/3mc86V0/UBx17z
- klpq/a1bzNYlEQOJ980eDV+jjTjPa3Pmp+2Fw6es1sY2k9UVzy6ZZyhkGMLqiXb7MGsrCoflsWo
- 80wF9CL0V50SLeb65nB/HHObWZXSH4l25g03XIjFLNV4btu+an5JNy6v4yacDAW9Xq8lixTcJRT
- edDVuz2OWswKuixtSlxxmunnl5jXc2fB4+Nku57O1xxCA7o2MSylSgBFEY/oUK+CHTtl9ui+91y
- B0k8haL8/V94F40hiVxx
-X-Received: by 2002:adf:f5cd:0:b0:386:32cb:4aa with SMTP id
- ffacd0b85a97d-38c520bd981mr11323347f8f.45.1738428058072; 
- Sat, 01 Feb 2025 08:40:58 -0800 (PST)
+ bh=aqkV0xjCTajJ3P+rZ10ePbD+Oe29v/TIuU4/7Qb75WM=;
+ b=Z5xbpkVkTO1Yc5NawMoypyB2hxhPNfZwra5cwWc34mYpi+L3OAE92kLFwoAg3H+l22
+ 0WAhEZ0K8pqPHdW9BcELw32wG1G8pRvvCWRZPJ+n+TOVb3UnJ3AbI9525cQl16zaJBel
+ IDKLXgcJ59ERH3INzm166yYQnLI2lIQdCPAujbu0ciRtANrqCXqTM8iyokXp1sFDyX50
+ GrtLrJ4YsfvJhPsTGWhTLpPkLk1CoNFGm8q/rvXsQNRo4qCxjhXZ+fB9VbxdBmpDSBB6
+ 2VYLQAcEEoNMwvkREYd5en0HmIg5MMh0Y6uVjdEqQ8NipBN/OpBp7BuxtBTbbScwALsd
+ EbzQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVWJYh+6Kpjc5iF61szoZpD9xTNeG1PVeBNVGkODgMkOg2VaBTxgX31fosJZYIb1uYhiscrstlyRDpf@nongnu.org
+X-Gm-Message-State: AOJu0YxegBxORVIeOCdSsWt8QATlnkSSMCHPbvqajaYpzjOemVhV3W0X
+ jIOSH/PVSt06oVuKiY7/tsQduDhseX95OHGbwXRG9B4B/AzzJqD3m0J4ls+abAE=
+X-Gm-Gg: ASbGncv3Ln98umfTwxaLnrT9fRTA5GuvSmMG+I5Baha7f37ow31F3Paq9hyE5WukZbS
+ NdrGN99brreu6mRhrsgDTMMY97v2ygBcNy0dQ07vzOOywiPqKhcVMYepOqBHOd3dwvTP/Y7fvaW
+ 2FN9l4I9ajZyH2YzoV/VzOfX4MvmiQuIPVEf0m/nt457w6ViVxcFXMZRcM8uarjw0+R5zKnc85u
+ 30tJn+581zIYbuJu+duZfuh0EZwUrlA/tJ34mxOjtr8I6MXbUcYj20DH34kV+QjXvdVfDNcXmmW
+ jg6A9eqsplEwKEzHd5Br
+X-Received: by 2002:a05:600c:35c3:b0:436:9227:915 with SMTP id
+ 5b1f17b1804b1-438dc3c22ebmr122865355e9.9.1738428080872; 
+ Sat, 01 Feb 2025 08:41:20 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438dcc81d74sm127401525e9.37.2025.02.01.08.40.56
+ 5b1f17b1804b1-438dcc81d74sm127401525e9.37.2025.02.01.08.41.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Feb 2025 08:40:56 -0800 (PST)
+ Sat, 01 Feb 2025 08:41:20 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 32/69] target/arm: Implement FPCR.AH handling for scalar
- FABS and FABD
-Date: Sat,  1 Feb 2025 16:39:35 +0000
-Message-Id: <20250201164012.1660228-33-peter.maydell@linaro.org>
+Subject: [PATCH v2 51/69] target/arm: Handle FPCR.AH in SVE FMLSLB,
+ FMLSLT (vectors)
+Date: Sat,  1 Feb 2025 16:39:54 +0000
+Message-Id: <20250201164012.1660228-52-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250201164012.1660228-1-peter.maydell@linaro.org>
 References: <20250201164012.1660228-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,135 +122,76 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IYoy354zAstl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uW911qgGX15A
 
-FPCR.AH == 1 mandates that taking the absolute value of a NaN should
-not change its sign bit.  This means we can no longer use
-gen_vfp_abs*() everywhere but must instead generate slightly more
-complex code when FPCR.AH is set.
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Implement these semantics for scalar FABS and FABD.  This change also
-affects all other instructions whose psuedocode calls FPAbs(); we
-will extend the change to those instructions in following commits.
+Handle FPCR.AH's requirement to not negate the sign of a NaN in SVE
+FMLSL (indexed), using the usual trick of negating by XOR when AH=0
+and by muladd flags when AH=1.
 
+Since we have the CPUARMState* in the helper anyway, we can
+look directly at env->vfp.fpcr and don't need toa pass in the
+FPCR.AH value via the SIMD data word.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20250129013857.135256-33-richard.henderson@linaro.org
+[PMM: tweaked commit message]
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 69 +++++++++++++++++++++++++++++++++-
- 1 file changed, 67 insertions(+), 2 deletions(-)
+ target/arm/tcg/vec_helper.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index aee2e1307e4..862f7333982 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -880,6 +880,43 @@ static void gen_vfp_ah_negd(TCGv_i64 d, TCGv_i64 s)
-                         s, chs_s);
- }
- 
-+/*
-+ * These functions implement
-+ *  d = floatN_is_any_nan(s) ? s : floatN_abs(s)
-+ * which for float32 is
-+ *  d = (s & ~(1 << 31)) > 0x7f800000UL) ? s : (s & ~(1 << 31))
-+ * and similarly for the other float sizes.
-+ */
-+static void gen_vfp_ah_absh(TCGv_i32 d, TCGv_i32 s)
-+{
-+    TCGv_i32 abs_s = tcg_temp_new_i32();
-+
-+    gen_vfp_absh(abs_s, s);
-+    tcg_gen_movcond_i32(TCG_COND_GTU, d,
-+                        abs_s, tcg_constant_i32(0x7c00),
-+                        s, abs_s);
-+}
-+
-+static void gen_vfp_ah_abss(TCGv_i32 d, TCGv_i32 s)
-+{
-+    TCGv_i32 abs_s = tcg_temp_new_i32();
-+
-+    gen_vfp_abss(abs_s, s);
-+    tcg_gen_movcond_i32(TCG_COND_GTU, d,
-+                        abs_s, tcg_constant_i32(0x7f800000UL),
-+                        s, abs_s);
-+}
-+
-+static void gen_vfp_ah_absd(TCGv_i64 d, TCGv_i64 s)
-+{
-+    TCGv_i64 abs_s = tcg_temp_new_i64();
-+
-+    gen_vfp_absd(abs_s, s);
-+    tcg_gen_movcond_i64(TCG_COND_GTU, d,
-+                        abs_s, tcg_constant_i64(0x7ff0000000000000ULL),
-+                        s, abs_s);
-+}
-+
- static void gen_vfp_maybe_ah_negh(DisasContext *dc, TCGv_i32 d, TCGv_i32 s)
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 42bb43acd78..aefcd07ef00 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -2178,19 +2178,28 @@ void HELPER(sve2_fmlal_zzzw_s)(void *vd, void *vn, void *vm, void *va,
+                                CPUARMState *env, uint32_t desc)
  {
-     if (dc->fpcr_ah) {
-@@ -5403,12 +5440,35 @@ static void gen_fabd_d(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_ptr s)
-     gen_vfp_absd(d, d);
+     intptr_t i, oprsz = simd_oprsz(desc);
+-    uint16_t negn = extract32(desc, SIMD_DATA_SHIFT, 1) << 15;
++    bool is_s = extract32(desc, SIMD_DATA_SHIFT, 1);
+     intptr_t sel = extract32(desc, SIMD_DATA_SHIFT + 1, 1) * sizeof(float16);
+     float_status *status = &env->vfp.fp_status_a64;
+     bool fz16 = get_flush_inputs_to_zero(&env->vfp.fp_status_f16_a64);
++    int negx = 0, negf = 0;
++
++    if (is_s) {
++        if (env->vfp.fpcr & FPCR_AH) {
++            negf = float_muladd_negate_product;
++        } else {
++            negx = 0x8000;
++        }
++    }
+ 
+     for (i = 0; i < oprsz; i += sizeof(float32)) {
+-        float16 nn_16 = *(float16 *)(vn + H1_2(i + sel)) ^ negn;
++        float16 nn_16 = *(float16 *)(vn + H1_2(i + sel)) ^ negx;
+         float16 mm_16 = *(float16 *)(vm + H1_2(i + sel));
+         float32 nn = float16_to_float32_by_bits(nn_16, fz16);
+         float32 mm = float16_to_float32_by_bits(mm_16, fz16);
+         float32 aa = *(float32 *)(va + H1_4(i));
+ 
+-        *(float32 *)(vd + H1_4(i)) = float32_muladd(nn, mm, aa, 0, status);
++        *(float32 *)(vd + H1_4(i)) = float32_muladd(nn, mm, aa, negf, status);
+     }
  }
  
-+static void gen_fabd_ah_h(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, TCGv_ptr s)
-+{
-+    gen_helper_vfp_subh(d, n, m, s);
-+    gen_vfp_ah_absh(d, d);
-+}
-+
-+static void gen_fabd_ah_s(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, TCGv_ptr s)
-+{
-+    gen_helper_vfp_subs(d, n, m, s);
-+    gen_vfp_ah_abss(d, d);
-+}
-+
-+static void gen_fabd_ah_d(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_ptr s)
-+{
-+    gen_helper_vfp_subd(d, n, m, s);
-+    gen_vfp_ah_absd(d, d);
-+}
-+
- static const FPScalar f_scalar_fabd = {
-     gen_fabd_h,
-     gen_fabd_s,
-     gen_fabd_d,
- };
--TRANS(FABD_s, do_fp3_scalar, a, &f_scalar_fabd, a->rn)
-+static const FPScalar f_scalar_ah_fabd = {
-+    gen_fabd_ah_h,
-+    gen_fabd_ah_s,
-+    gen_fabd_ah_d,
-+};
-+TRANS(FABD_s, do_fp3_scalar_2fn, a, &f_scalar_fabd, &f_scalar_ah_fabd, a->rn)
- 
- static const FPScalar f_scalar_frecps = {
-     gen_helper_recpsf_f16,
-@@ -8654,7 +8714,12 @@ static const FPScalar1Int f_scalar_fabs = {
-     gen_vfp_abss,
-     gen_vfp_absd,
- };
--TRANS(FABS_s, do_fp1_scalar_int, a, &f_scalar_fabs, true)
-+static const FPScalar1Int f_scalar_ah_fabs = {
-+    gen_vfp_ah_absh,
-+    gen_vfp_ah_abss,
-+    gen_vfp_ah_absd,
-+};
-+TRANS(FABS_s, do_fp1_scalar_int_2fn, a, &f_scalar_fabs, &f_scalar_ah_fabs)
- 
- static const FPScalar1Int f_scalar_fneg = {
-     gen_vfp_negh,
 -- 
 2.34.1
 

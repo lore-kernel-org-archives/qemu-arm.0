@@ -1,93 +1,194 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2270480njb;
-        Mon, 3 Feb 2025 09:32:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVWqC95bfnhsFuG4N7ZxWyndyC0l+JV4PW1XmJNNQw5gp3kc4WQUR01lnc4r6M3nyA/nqm4KaLosA/gjw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG5g0AML/jV1rxyJ6M7fQuWcCGr184OzMNHYDPLyyAlCajUJlHJi9asfgBUcU1z76sk9nnx
-X-Received: by 2002:a05:6214:daf:b0:6d8:9b20:64e8 with SMTP id 6a1803df08f44-6e243c19ecamr392128976d6.10.1738603922030;
-        Mon, 03 Feb 2025 09:32:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738603922; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2318158njb;
+        Mon, 3 Feb 2025 10:52:03 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUYc/T66EbsUCa7oeBQXvb97u1vogcfkNu+NBtd/u0QOtWyssesCe1I2CwflijmX9D5PQ7Sd+wgDdF/nA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9E3+3xd3/rLwPGmZx00FB/upCKzBYQhZGR6EKu/E90w1scFfosl8wdjAQK9IBlubCaZOV
+X-Received: by 2002:a05:6214:4a83:b0:6d4:1e43:f395 with SMTP id 6a1803df08f44-6e243bf6762mr299626536d6.24.1738608723427;
+        Mon, 03 Feb 2025 10:52:03 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738608723; cv=pass;
         d=google.com; s=arc-20240605;
-        b=VRvp2hNCBSNeXC8Im7qeu8TLodccyoDPdCfnIZjKr5ZvTA64ce3r8Ws/hPkp6wbSpi
-         7aHiTmKAPp3Wgts3D/iU3jIg1H7mp6wVUbyQywDRbQ2f7zZwA/OGzU9W2BXt86zUgUId
-         ZQ869iNpNpXNa+v8l53Iu6c3HorJtSc4587HjUt94w2uuegvY4TX+r0pMcjkiK90Nz+f
-         48C0Tuf5dRVibloQpKce2CvDXIPSXJkuDFbrZ6A3AJf5Py3qiwHH5sW/Cp6LzUDvS9ns
-         iZvVgq18aYa61iRd9WnZIB55CZUzUenOQByJ53N6Keqx88x/xkUD3AzcrINVsF21OGo2
-         M62A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=PN04N/zKAUBMJf/NKZlz2Aed5lfqNonF0oqmJuq3AxQ=;
-        fh=HwnTF6OvZwhTwFNjBwwoNqXNCwhlqMndCVMzZKm4whg=;
-        b=VXlmecTHO0tQKGN43M1dksO1LbsGmoCKROK20H632CohyiJFsudFc9lduk6PnfTq88
-         +ouUCJ3hLyEkQsQ34ecwJMcFGKLbe2X9Kx8T0tgVJmFl3KqD0P5YQS1xcaF2s82/rjs9
-         WG+kN8SnPdws2IcFPaswlp/8iqRZWwzTrOzx+ONn6Cu7TpJ7sI+E5auR2CKTGXAQhYQD
-         ISiLXajvnWWb+twG5syyo+LWoIPl8MgH3Mr7LNHz5hmvXe9joZSj1rq/EAeLve9MudnB
-         jOb4AztQHP5HAtRt12ldB6XhP6mOunOIwv/U2y6HIc5wldwLcvyKuFH2p6tYZ3weWdz3
-         EZLw==;
+        b=blH/I71prqaAr8TI4S3wcYq3FlzSgAuwewf2gjeYeA7yLwmvQX0vJ+CvaOwfqVLOT2
+         d5SpRTp6gkHLBTiJ2UEKFJJqPMFlqQ27RwB/LKfg4FfjxBwSgh2jhs2uXlFD9dhLsnm0
+         wB5sGxbVgH0Y0ThLj5M88m0knzXdGE23IwF9bs63RwsQfW6V6HTdh4ABMGmCLk3UiWRa
+         cuahEtyz0FPYivFC4VX3o+RhgqSmooDnWQMNfnt9F4laYXipTQzhKSVonAEdlBu/WdSV
+         x3EljlzSr6q6Pkj9rMBpJokyySGlqqLzLQcXSHTKMQ81gPVt09b4HOMxr7MeCgWOcw56
+         y4Yw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=8/ngzArC4zKkAI5Q1qrYK7AeyPjdluw1/8pEOarWZ/A=;
+        fh=CBClLfxw0y6B+RXs42ligALHxj2e1whyK/lX6Tz5a44=;
+        b=WjcgX0vxvQWH5TOEHq+i+Pwr5z/3hnmb73VBvKAqBQqAE85ZpA8CaIJu3u/rqTyh6C
+         QZCL+9jB8BfJLvNBnF9F+33HBN3YvB3awiYXNugIVobnGHAECmGdESPXThvWO31lGJzn
+         5kxzo/FYAJV67YHG/oqpo77tAIFG4bCCsm+sGSpXnXjSW3ImReZMaD/dUjeKOi+JWm38
+         oFcz0VEyUtu5mNpYyBMFsunfq0ahC/zTYaGVbSG1sOVfRJTxzPgptqjtgBT2VXmMWp5U
+         a8VLClbVmRpLDnmpcZgzWN65gQjBTe1/qx7J0sUT1yCDgrFMj0dV8Tz0xIGuVi6ADXC2
+         4nfw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=NfOyIOhn;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fdf8d68si5955436d6.114.2025.02.03.09.32.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fecdd9csi7914446d6.362.2025.02.03.10.52.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2025 09:32:02 -0800 (PST)
+        Mon, 03 Feb 2025 10:52:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=NfOyIOhn;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tf0Ib-0000Xl-Ga; Mon, 03 Feb 2025 12:31:53 -0500
+	id 1tf1Xz-0001jB-Fl; Mon, 03 Feb 2025 13:51:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tf0IY-0000QK-RO; Mon, 03 Feb 2025 12:31:51 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tf1Xg-0001Xg-Kw; Mon, 03 Feb 2025 13:51:35 -0500
+Received: from mail-mw2nam04on20620.outbound.protection.outlook.com
+ ([2a01:111:f403:240a::620]
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tf0IX-0005he-0w; Mon, 03 Feb 2025 12:31:50 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ymtly1SD5z6D9Bf;
- Tue,  4 Feb 2025 01:29:34 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 3AA641406AC;
- Tue,  4 Feb 2025 01:31:47 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 3 Feb 2025 18:31:43 +0100
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>
-CC: <mst@redhat.com>, <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>,
- <qemu-arm@nongnu.org>, Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru
- Kitayama <itaru.kitayama@linux.dev>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH v12 qemu 2/2] qtest/cxl: Add aarch64 virt test for CXL
-Date: Mon, 3 Feb 2025 17:30:40 +0000
-Message-ID: <20250203173040.145763-3-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
-References: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tf1Xe-0005Vr-AE; Mon, 03 Feb 2025 13:51:32 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iKiPLbMKO1Ce1Tt0U7tiZ8fxWkfGfVcDhAuFIzXjKksmUBfQOIahnR410NMYafHrMXVSK+SXXjgXReuftbMUyJ7uMj9AxWSwXSUaWNfEnRMC75fu+cJG9Cz4ve8U4IRipdFo+mvxd4IjGbXbWiRnGz5SqlvbB+WUjVYzd6auO+SVXvvKn/4+MuVLuJNo9bzdbUfJ4r4mLmuwTVwSZjkV9MSyjiVsLpdbPoFHyKKnTNJsRNozl4RJsgu7fch+QpbE1R7ifYrTon9T4hbn6wO+goMw8oa2d0M7mPGG9RDzWXqDx1iPLowsieMEND4j4ZlM+Q+kkC5HgJ+bmXDW92fGJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8/ngzArC4zKkAI5Q1qrYK7AeyPjdluw1/8pEOarWZ/A=;
+ b=bdv7wBw9BaxjC/6MD7hj9sojbWl+c+LYe+qHi+W1gczNVHCN+FUaFv8NttTwJ1xssCQx1cmmYnr6P7uWbxnR/UVJ9HieAK1k7+ySKIVXsruC5WTbY7jo6PdvEvL6rblOeKzWb2FgesE1BaFZef47IuTrJNj5dhPM4i4rvs/zPtzoETAUaw7Rq/i2/mMYrZf2TEdJraoRZ/DjOczNRO2XH4jQKWQMHj5b5aRHm5kWC2HmHlambprEIM8h3HYK9FCIyGGpDQi8vIDVCZEhYx2dWo6QS2k7gmCqUyY/JEY74L3BDxDgwAKZA80EH1hJfC17z9HzfWt4P5sYSY2ASnF3rA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8/ngzArC4zKkAI5Q1qrYK7AeyPjdluw1/8pEOarWZ/A=;
+ b=NfOyIOhnskNmaLBbvvM3IJLT7WZY5W91G0wyRNzwW2tH7nxdl7Js3kGGmB0p7M4Lzs69SOCLRMlStwQXufEkL1WTXjuDsDVd4vBo2wz9qaKiT22ZdaaN8IcizGJJOAKklQGQcB9crwo/YMdah1EFw7P/nwOi/7lgS7jZlEawT/StbxrPmb6L0ecI0xtaVTzX3nMZs3yHp3WzyWjwoCvCaW5gTyA4WojX7/bGjK9qRJkUXvMY9nNMtJap3zLrkW++Xh0JPsrkuZhjWC5uhUNs9DtT6T8G5gPHHb2SJLBX+Nuldm5AnIg014nmou6HQ7h55DrmedqO4R6dewC3T2tVTA==
+Received: from BY5PR20CA0034.namprd20.prod.outlook.com (2603:10b6:a03:1f4::47)
+ by CH0PR12MB8485.namprd12.prod.outlook.com (2603:10b6:610:193::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.24; Mon, 3 Feb
+ 2025 18:51:19 +0000
+Received: from MWH0EPF000971E6.namprd02.prod.outlook.com
+ (2603:10b6:a03:1f4:cafe::e5) by BY5PR20CA0034.outlook.office365.com
+ (2603:10b6:a03:1f4::47) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8398.24 via Frontend Transport; Mon,
+ 3 Feb 2025 18:51:18 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ MWH0EPF000971E6.mail.protection.outlook.com (10.167.243.74) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8398.14 via Frontend Transport; Mon, 3 Feb 2025 18:51:18 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 3 Feb 2025
+ 10:50:59 -0800
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 3 Feb
+ 2025 10:50:59 -0800
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Mon, 3 Feb 2025 10:50:58 -0800
+Date: Mon, 3 Feb 2025 10:50:56 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>, Daniel
+ =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Message-ID: <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
+ <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWH0EPF000971E6:EE_|CH0PR12MB8485:EE_
+X-MS-Office365-Filtering-Correlation-Id: 49a012b4-0063-4e3f-be7e-08dd4483beb0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|7416014|82310400026|36860700013|1800799024|13003099007; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/WYAR3L3pkesdPw3LgIdR0mNk/pKVZea/N1rGd0QGeKT0+K+3YtNJkMBSlHw?=
+ =?us-ascii?Q?5fCpXPEAaOuw+pM7GTP4YNu8wwkMImFI64rhBOBSh5zvzVISWdqVEjRyL/3P?=
+ =?us-ascii?Q?H/52A0vz0Xe2kQwySUiqn/Tw1cZ1DJENcwOL5pSoF4Wl7cs86npVZ6ODxg6X?=
+ =?us-ascii?Q?JB4GCglvkvoZIEQcymgqlUZl/A8u8XZJ1CJE1hu6SHLA/PN+jrfysqSJx5qh?=
+ =?us-ascii?Q?t6jzqd72nRv9eVvyaT1nnLG5aUxscwUANpQxsoSErX4yVgM3egLGTJpRdBpq?=
+ =?us-ascii?Q?wu56CPT00eq5UTeHaBOQ7FO7+82gNlhFeEB7uMXU5GKTmjdLhHpLnC247ZQ5?=
+ =?us-ascii?Q?9nHhl0n1YRT1EGhmOmnfhWhHsc4Nk+YrV+OF+mg1vnxYsSrqhSZt81jLXrn3?=
+ =?us-ascii?Q?oi22xQBjgwxJKvQJ9a9ng+Q5RX76QsKrOwn2brjbKNEy9juJn8JHVzmEgHjv?=
+ =?us-ascii?Q?FR6I3hgiU+JZbhy8l6/4Od8aOU0u3YP66iHfealssWEK6L18vzMJ24PIXk1g?=
+ =?us-ascii?Q?7SZuVs5ebqiMCsQ0GzS4RMmZE3DEM6+MSHJl09IMXfDYlLbtG891XZWizJPp?=
+ =?us-ascii?Q?Gvl+OQebXAHqUC81PrfjYLtKdY99UrNwc7ZaoDNWKYoeEfc18Y1sNBHwJoZr?=
+ =?us-ascii?Q?aiXQjEHKTbPrrLLN3GaV1cwsaSNcAhjvxyg8PvlKZV9taVIAGiD5hs6VdGtQ?=
+ =?us-ascii?Q?CKvw57w3BtD0o070JwwD/ipdP+X7B3mVKa/iTjCx5OCCpR18riGH/3clgU05?=
+ =?us-ascii?Q?x5Q0+/kyO7yDvLLkL2+tijK9K+AyxvNAEP8AQ9IedizgTl0uXVjZqDXl/JJR?=
+ =?us-ascii?Q?GDDQCDiPNEt/cheNBdYDR8o5Ey78/OD0MlSumzefSlmWFADhIw56wilyMWJx?=
+ =?us-ascii?Q?I4Sn7cpt8hKvDmXmVe9YsvOA0+CzbNDx/QgfgP1ILkSlh9bOIoAAzqTZuTPF?=
+ =?us-ascii?Q?nh5u79iKPLdrehQyjC1aroEBvnq0BsgYEuWrUhV6F8joZytb5cnIrI7GM4qL?=
+ =?us-ascii?Q?0cZ5dCyqNP9r0mHplvBHeTBuMUrO5Lk0Cv4gvxsGQkqzaw47SBxbEOiRvKzc?=
+ =?us-ascii?Q?YwWPRiS+Y5MkM/99p8vZcI6XNNePe7vaFStozWMbHAGR81IfctKj4tuYDqFW?=
+ =?us-ascii?Q?3hyZYBUxtT3mp2QB8PEVl+hsQB40eabk57wbRDSha00YBtmXbCjFCcWnhTCK?=
+ =?us-ascii?Q?D3lxta38Ttc4N5L1RX99yE+DM7MhV1EDQfR2ddE+68s6fnskRpK2As2V10K8?=
+ =?us-ascii?Q?a04fnXi2G7b2EPHwNP1Gs8O/ANmOQTZdXqnRr4izAwnWTFyT5F+FEMCrrBvj?=
+ =?us-ascii?Q?B8tD8oYFvHq84VhuF8g/PPPnGmxZwsSNMQxSNW28G+VaVc1IqQcSNvNd56kC?=
+ =?us-ascii?Q?dWhVb4fw8AkSCBlGEggKHY/Lib5SjPBzU69QBbtqpv3D1ewClFmyYrxoKGzI?=
+ =?us-ascii?Q?Y58+nEWwXPizWdYYrpUbNQllj3RUTdt0qINOpFwhQ3mEv+04uWyWTSRCaq0z?=
+ =?us-ascii?Q?yUE13wzW/Vnstpw=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(82310400026)(36860700013)(1800799024)(13003099007);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2025 18:51:18.5574 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49a012b4-0063-4e3f-be7e-08dd4483beb0
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000971E6.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB8485
+Received-SPF: softfail client-ip=2a01:111:f403:240a::620;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,118 +201,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lts+ENbcsRAb
+X-TUID: dXNpwwpK+Bop
 
-Add a single complex case for aarch64 virt machine.
-Given existing much more comprehensive tests for x86 cover the
-common functionality, a single test should be enough to verify
-that the aarch64 part continue to work.
+On Fri, Jan 31, 2025 at 05:54:56PM +0100, Eric Auger wrote:
+> On 1/9/25 5:45 AM, Nicolin Chen wrote:
+> > On Mon, Dec 16, 2024 at 10:01:29AM +0000, Shameerali Kolothum Thodi wrote:
+> >> And patches prior to this commit adds that support: 
+> >> 4ccdbe3: ("cover-letter: Add HW accelerated nesting support for arm
+> >> SMMUv3")
+> >>
+> >> Nicolin is soon going to send out those for review. Or I can include
+> >> those in this series so that it gives a complete picture. Nicolin?
+> > Just found that I forgot to reply this one...sorry
+> >
+> > I asked Don/Eric to take over that vSMMU series:
+> > https://lore.kernel.org/qemu-devel/Zy0jiPItu8A3wNTL@Asurada-Nvidia/
+> > (The majority of my effort has been still on the kernel side:
+> >  previously vIOMMU/vDEVICE, and now vEVENTQ/MSI/vCMDQ..)
+> >
+> > Don/Eric, is there any update from your side?
+> To be honest we have not much progressed so far. On my end I can
+> dedicate some cycles now. I currently try to understand how and what
+> subset I can respin and which test setup can be used. I will come back
+> to you next week.
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- tests/qtest/cxl-test.c  | 59 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 47 insertions(+), 13 deletions(-)
+In summary, we will have the following series:
+1) HWPT uAPI patches in backends/iommufd.c (Zhenzhong or Shameer)
+   https://lore.kernel.org/qemu-devel/SJ0PR11MB6744943702EB5798EC9B3B9992E02@SJ0PR11MB6744.namprd11.prod.outlook.com/
+2) vIOMMU uAPI patches in backends/iommufd.c (I will rebase/send)
+3) vSMMUv3 patches for HW-acc/nesting (Hoping Don/you could take over)
+4) Shameer's work on "-device" in ARM virt.c
+5) vEVENTQ for fault injection (if time is right, squash into 2/3)
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..c7189d6222 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
- 
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    char template[] = "/tmp/cxl-test-XXXXXX";
-+    const char *tmpfs;
-+
-+    tmpfs = mkdtemp(template);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
- #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
-+
-     return g_test_run();
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index e60e92fe9d..f5e7fb060e 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -257,6 +257,7 @@ qtests_aarch64 = \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
--- 
-2.43.0
+Perhaps, 3/4 would come in a different order, or maybe 4 could split
+into a few patches changing "-device" (sending before 3) and then a
+few other patches adding multi-vSMMU support (sending after 3).
 
+My latest QEMU branch for reference:
+https://github.com/nicolinc/qemu/commits/wip/for_iommufd_veventq-v6
+It hasn't integrated Shameer's and Nathan's work though..
+For testing, use this kernel branch:
+https://github.com/nicolinc/iommufd/commits/iommufd_veventq-v6-with-rmr
+
+I think we'd need to build a shared branch by integrating the latest
+series in the list above.
+
+Thanks
+Nicolin

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab71166a8e0sm404508566b.158.2025.02.03.06.49.06
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab7106178ccsm412435466b.9.2025.02.03.06.49.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 03 Feb 2025 06:49:06 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4D79B60C3D;
+	by draig.lan (Postfix) with ESMTP id 8209F60F1B;
 	Mon,  3 Feb 2025 14:40:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,61 +36,47 @@ Cc: qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Alexandre Iooss <erdnaxe@crans.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 16/18] docs/user: Document the %d placeholder and suspend=n QEMU_GDB features
-Date: Mon,  3 Feb 2025 14:40:46 +0000
-Message-Id: <20250203144048.2131117-17-alex.bennee@linaro.org>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH 18/18] plugins: fix -Werror=maybe-uninitialized false-positive
+Date: Mon,  3 Feb 2025 14:40:48 +0000
+Message-Id: <20250203144048.2131117-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
 References: <20250203144048.2131117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: p3KJoVimbQ/f
+X-TUID: RrvuJluqalXW
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-8-iii@linux.ibm.com>
+../contrib/plugins/cache.c:638:9: error: ‘l2_cache’ may be used uninitialized [-Werror=maybe-uninitialized]
+  638 |         append_stats_line(rep, l1_dmem_accesses, l1_dmisses,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Is a false-positive, since cores > 1, so the variable is set in the
+above loop.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20250114104820.2613099-1-marcandre.lureau@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/user/main.rst | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+ contrib/plugins/cache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/user/main.rst b/docs/user/main.rst
-index 80a77f0a0c..9a1c60448c 100644
---- a/docs/user/main.rst
-+++ b/docs/user/main.rst
-@@ -54,7 +54,7 @@ Command line options
+diff --git a/contrib/plugins/cache.c b/contrib/plugins/cache.c
+index 7baff86860..7cfd3df249 100644
+--- a/contrib/plugins/cache.c
++++ b/contrib/plugins/cache.c
+@@ -603,7 +603,7 @@ static int l2_cmp(gconstpointer a, gconstpointer b)
+ static void log_stats(void)
+ {
+     int i;
+-    Cache *icache, *dcache, *l2_cache;
++    Cache *icache, *dcache, *l2_cache = NULL;
  
- ::
- 
--   qemu-i386 [-h] [-d] [-L path] [-s size] [-cpu model] [-g port] [-B offset] [-R size] program [arguments...]
-+   qemu-i386 [-h] [-d] [-L path] [-s size] [-cpu model] [-g endpoint] [-B offset] [-R size] program [arguments...]
- 
- ``-h``
-    Print the help
-@@ -91,8 +91,18 @@ Debug options:
-    Activate logging of the specified items (use '-d help' for a list of
-    log items)
- 
--``-g port``
--   Wait gdb connection to port
-+``-g endpoint``
-+   Wait gdb connection to a port (e.g., ``1234``) or a unix socket (e.g.,
-+   ``/tmp/qemu.sock``).
-+
-+   If a unix socket path contains single ``%d`` placeholder (e.g.,
-+   ``/tmp/qemu-%d.sock``), it is replaced by the emulator PID, which is useful
-+   when passing this option via the ``QEMU_GDB`` environment variable to a
-+   multi-process application.
-+
-+   If the endpoint address is followed by ``,suspend=n`` (e.g.,
-+   ``1234,suspend=n``), then the emulated program starts without waiting for a
-+   connection, which can be established at any later point in time.
- 
- ``-one-insn-per-tb``
-    Run the emulation with one guest instruction per translation block.
+     g_autoptr(GString) rep = g_string_new("core #, data accesses, data misses,"
+                                           " dmiss rate, insn accesses,"
 -- 
 2.39.5

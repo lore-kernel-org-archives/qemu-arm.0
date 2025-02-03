@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e47d070bsm757877366b.48.2025.02.03.06.40.51
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a314casm762664466b.127.2025.02.03.06.40.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 03 Feb 2025 06:40:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9F6B260870;
+	by draig.lan (Postfix) with ESMTP id 89A145FB91;
 	Mon,  3 Feb 2025 14:40:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,60 +35,295 @@ Cc: qemu-ppc@nongnu.org,
 	Tyrone Ting <kfting@nuvoton.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 10/18] gdbstub: Allow the %d placeholder in the socket path
-Date: Mon,  3 Feb 2025 14:40:40 +0000
-Message-Id: <20250203144048.2131117-11-alex.bennee@linaro.org>
+	Alexandre Iooss <erdnaxe@crans.org>
+Subject: [PATCH 09/18] tests/qtest/migration: Pick smoke tests
+Date: Mon,  3 Feb 2025 14:40:39 +0000
+Message-Id: <20250203144048.2131117-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
 References: <20250203144048.2131117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OukHABHKm4jg
+X-TUID: exGitLQvfoOE
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+From: Fabiano Rosas <farosas@suse.de>
 
-Just like for QEMU_LOG_FILENAME, replace %d with PID in the GDB socket
-path. This allows running multi-process applications with, e.g.,
-export QEMU_GDB=/tmp/qemu-%d.sock. Currently this is not possible,
-since the first process will cause the subsequent ones to fail due to
-not being able to bind() the GDB socket.
+Choose a few tests per group and move them from the full set to the
+smoke set.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-2-iii@linux.ibm.com>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Message-Id: <20250130184012.5711-3-farosas@suse.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/user.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ tests/qtest/migration-test.c              |  1 -
+ tests/qtest/migration/compression-tests.c | 11 ++++++---
+ tests/qtest/migration/cpr-tests.c         |  2 ++
+ tests/qtest/migration/file-tests.c        | 17 +++++++++-----
+ tests/qtest/migration/misc-tests.c        | 12 +++++++---
+ tests/qtest/migration/postcopy-tests.c    | 18 ++++++++++-----
+ tests/qtest/migration/precopy-tests.c     | 27 ++++++++++++++---------
+ tests/qtest/migration/tls-tests.c         | 10 +++++++--
+ 8 files changed, 67 insertions(+), 31 deletions(-)
 
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index c2bdfc3d49..fd29d595f4 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -317,9 +317,19 @@ static bool gdb_accept_socket(int gdb_fd)
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index 61180fcbd5..0893687174 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -46,7 +46,6 @@ int main(int argc, char **argv)
+     g_test_init(&argc, &argv, NULL);
+     env = migration_get_env();
+     env->full_set = full_set;
+-    env->full_set = true; /* temporary */
+     module_call_init(MODULE_INIT_QOM);
  
- static int gdbserver_open_socket(const char *path)
+     migration_test_add_tls(env);
+diff --git a/tests/qtest/migration/compression-tests.c b/tests/qtest/migration/compression-tests.c
+index 9d0a258d51..8b58401b84 100644
+--- a/tests/qtest/migration/compression-tests.c
++++ b/tests/qtest/migration/compression-tests.c
+@@ -151,10 +151,18 @@ static void test_multifd_tcp_zlib(void)
+     test_precopy_common(&args);
+ }
+ 
++static void migration_test_add_compression_smoke(MigrationTestEnv *env)
++{
++    migration_test_add("/migration/multifd/tcp/plain/zlib",
++                       test_multifd_tcp_zlib);
++}
++
+ void migration_test_add_compression(MigrationTestEnv *env)
  {
-+    g_autoptr(GString) buf = g_string_new("");
-     struct sockaddr_un sockaddr = {};
-+    char *pid_placeholder;
-     int fd, ret;
+     tmpfs = env->tmpfs;
  
-+    pid_placeholder = strstr(path, "%d");
-+    if (pid_placeholder != NULL) {
-+        g_string_append_len(buf, path, pid_placeholder - path);
-+        g_string_append_printf(buf, "%d", qemu_get_thread_id());
-+        g_string_append(buf, pid_placeholder + 2);
-+        path = buf->str;
++    migration_test_add_compression_smoke(env);
++
+     if (!env->full_set) {
+         return;
+     }
+@@ -183,7 +191,4 @@ void migration_test_add_compression(MigrationTestEnv *env)
+         migration_test_add("/migration/precopy/unix/xbzrle",
+                            test_precopy_unix_xbzrle);
+     }
+-
+-    migration_test_add("/migration/multifd/tcp/plain/zlib",
+-                       test_multifd_tcp_zlib);
+ }
+diff --git a/tests/qtest/migration/cpr-tests.c b/tests/qtest/migration/cpr-tests.c
+index b1651fe48c..4758841824 100644
+--- a/tests/qtest/migration/cpr-tests.c
++++ b/tests/qtest/migration/cpr-tests.c
+@@ -104,6 +104,8 @@ void migration_test_add_cpr(MigrationTestEnv *env)
+ {
+     tmpfs = env->tmpfs;
+ 
++    /* no tests in the smoke set for now */
++
+     if (!env->full_set) {
+         return;
+     }
+diff --git a/tests/qtest/migration/file-tests.c b/tests/qtest/migration/file-tests.c
+index 5b190853a5..f474b3590a 100644
+--- a/tests/qtest/migration/file-tests.c
++++ b/tests/qtest/migration/file-tests.c
+@@ -300,17 +300,25 @@ static void test_multifd_file_mapped_ram_fdset_dio(void)
+ }
+ #endif /* !_WIN32 */
+ 
++static void migration_test_add_file_smoke(MigrationTestEnv *env)
++{
++    migration_test_add("/migration/precopy/file",
++                       test_precopy_file);
++
++    migration_test_add("/migration/multifd/file/mapped-ram/dio",
++                       test_multifd_file_mapped_ram_dio);
++}
++
+ void migration_test_add_file(MigrationTestEnv *env)
+ {
+     tmpfs = env->tmpfs;
+ 
++    migration_test_add_file_smoke(env);
++
+     if (!env->full_set) {
+         return;
+     }
+ 
+-    migration_test_add("/migration/precopy/file",
+-                       test_precopy_file);
+-
+     migration_test_add("/migration/precopy/file/offset",
+                        test_precopy_file_offset);
+ #ifndef _WIN32
+@@ -330,9 +338,6 @@ void migration_test_add_file(MigrationTestEnv *env)
+     migration_test_add("/migration/multifd/file/mapped-ram/live",
+                        test_multifd_file_mapped_ram_live);
+ 
+-    migration_test_add("/migration/multifd/file/mapped-ram/dio",
+-                       test_multifd_file_mapped_ram_dio);
+-
+ #ifndef _WIN32
+     migration_test_add("/migration/multifd/file/mapped-ram/fdset",
+                        test_multifd_file_mapped_ram_fdset);
+diff --git a/tests/qtest/migration/misc-tests.c b/tests/qtest/migration/misc-tests.c
+index 996256ef87..d03199f3c5 100644
+--- a/tests/qtest/migration/misc-tests.c
++++ b/tests/qtest/migration/misc-tests.c
+@@ -258,18 +258,24 @@ static void test_validate_uri_channels_none_set(void)
+     do_test_validate_uri_channel(&args);
+ }
+ 
++static void migration_test_add_misc_smoke(MigrationTestEnv *env)
++{
++#ifndef _WIN32
++    migration_test_add("/migration/analyze-script", test_analyze_script);
++#endif
++}
++
+ void migration_test_add_misc(MigrationTestEnv *env)
+ {
+     tmpfs = env->tmpfs;
+ 
++    migration_test_add_misc_smoke(env);
++
+     if (!env->full_set) {
+         return;
+     }
+ 
+     migration_test_add("/migration/bad_dest", test_baddest);
+-#ifndef _WIN32
+-    migration_test_add("/migration/analyze-script", test_analyze_script);
+-#endif
+ 
+     /*
+      * Our CI system has problems with shared memory.
+diff --git a/tests/qtest/migration/postcopy-tests.c b/tests/qtest/migration/postcopy-tests.c
+index b08cde3270..7e84e60fea 100644
+--- a/tests/qtest/migration/postcopy-tests.c
++++ b/tests/qtest/migration/postcopy-tests.c
+@@ -79,18 +79,26 @@ static void test_postcopy_preempt_recovery(void)
+     test_postcopy_recovery_common(&args);
+ }
+ 
+-void migration_test_add_postcopy(MigrationTestEnv *env)
++static void migration_test_add_postcopy_smoke(MigrationTestEnv *env)
+ {
+-    if (!env->full_set) {
+-        return;
+-    }
+-
+     if (env->has_uffd) {
+         migration_test_add("/migration/postcopy/plain", test_postcopy);
+         migration_test_add("/migration/postcopy/recovery/plain",
+                            test_postcopy_recovery);
+         migration_test_add("/migration/postcopy/preempt/plain",
+                            test_postcopy_preempt);
++    }
++}
++
++void migration_test_add_postcopy(MigrationTestEnv *env)
++{
++    migration_test_add_postcopy_smoke(env);
++
++    if (!env->full_set) {
++        return;
 +    }
 +
-     fd = socket(AF_UNIX, SOCK_STREAM, 0);
-     if (fd < 0) {
-         perror("create socket");
++    if (env->has_uffd) {
+         migration_test_add("/migration/postcopy/preempt/recovery/plain",
+                            test_postcopy_preempt_recovery);
+ 
+diff --git a/tests/qtest/migration/precopy-tests.c b/tests/qtest/migration/precopy-tests.c
+index c99a487bf1..b16f10e908 100644
+--- a/tests/qtest/migration/precopy-tests.c
++++ b/tests/qtest/migration/precopy-tests.c
+@@ -951,14 +951,8 @@ static void test_dirty_limit(void)
+     migrate_end(from, to, true);
+ }
+ 
+-void migration_test_add_precopy(MigrationTestEnv *env)
++static void migration_test_add_precopy_smoke(MigrationTestEnv *env)
+ {
+-    tmpfs = env->tmpfs;
+-
+-    if (!env->full_set) {
+-        return;
+-    }
+-
+     if (env->is_x86) {
+         migration_test_add("/migration/precopy/unix/suspend/live",
+                            test_precopy_unix_suspend_live);
+@@ -970,6 +964,21 @@ void migration_test_add_precopy(MigrationTestEnv *env)
+                        test_precopy_unix_plain);
+ 
+     migration_test_add("/migration/precopy/tcp/plain", test_precopy_tcp_plain);
++    migration_test_add("/migration/multifd/tcp/uri/plain/none",
++                       test_multifd_tcp_uri_none);
++    migration_test_add("/migration/multifd/tcp/plain/cancel",
++                       test_multifd_tcp_cancel);
++}
++
++void migration_test_add_precopy(MigrationTestEnv *env)
++{
++    tmpfs = env->tmpfs;
++
++    migration_test_add_precopy_smoke(env);
++
++    if (!env->full_set) {
++        return;
++    }
+ 
+     migration_test_add("/migration/precopy/tcp/plain/switchover-ack",
+                        test_precopy_tcp_switchover_ack);
+@@ -993,16 +1002,12 @@ void migration_test_add_precopy(MigrationTestEnv *env)
+                                test_dirty_limit);
+         }
+     }
+-    migration_test_add("/migration/multifd/tcp/uri/plain/none",
+-                       test_multifd_tcp_uri_none);
+     migration_test_add("/migration/multifd/tcp/channels/plain/none",
+                        test_multifd_tcp_channels_none);
+     migration_test_add("/migration/multifd/tcp/plain/zero-page/legacy",
+                        test_multifd_tcp_zero_page_legacy);
+     migration_test_add("/migration/multifd/tcp/plain/zero-page/none",
+                        test_multifd_tcp_no_zero_page);
+-    migration_test_add("/migration/multifd/tcp/plain/cancel",
+-                       test_multifd_tcp_cancel);
+     if (g_str_equal(env->arch, "x86_64")
+         && env->has_kvm && env->has_dirty_ring) {
+ 
+diff --git a/tests/qtest/migration/tls-tests.c b/tests/qtest/migration/tls-tests.c
+index aee56930ac..2cb4a44bcd 100644
+--- a/tests/qtest/migration/tls-tests.c
++++ b/tests/qtest/migration/tls-tests.c
+@@ -722,10 +722,18 @@ static void test_multifd_tcp_tls_x509_reject_anon_client(void)
+ }
+ #endif /* CONFIG_TASN1 */
+ 
++static void migration_test_add_tls_smoke(MigrationTestEnv *env)
++{
++    migration_test_add("/migration/precopy/tcp/tls/psk/match",
++                       test_precopy_tcp_tls_psk_match);
++}
++
+ void migration_test_add_tls(MigrationTestEnv *env)
+ {
+     tmpfs = env->tmpfs;
+ 
++    migration_test_add_tls_smoke(env);
++
+     if (!env->full_set) {
+         return;
+     }
+@@ -755,8 +763,6 @@ void migration_test_add_tls(MigrationTestEnv *env)
+                        test_precopy_unix_tls_x509_override_host);
+ #endif /* CONFIG_TASN1 */
+ 
+-    migration_test_add("/migration/precopy/tcp/tls/psk/match",
+-                       test_precopy_tcp_tls_psk_match);
+     migration_test_add("/migration/precopy/tcp/tls/psk/mismatch",
+                        test_precopy_tcp_tls_psk_mismatch);
+ #ifdef CONFIG_TASN1
 -- 
 2.39.5

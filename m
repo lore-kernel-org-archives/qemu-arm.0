@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a56fbdsm775529966b.179.2025.02.03.06.40.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e47a827esm773718766b.15.2025.02.03.06.40.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 03 Feb 2025 06:40:49 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DA0415FA5E;
+	by draig.lan (Postfix) with ESMTP id AAED45F906;
 	Mon,  3 Feb 2025 14:40:48 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,38 +36,82 @@ Cc: qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH 03/18] tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
-Date: Mon,  3 Feb 2025 14:40:33 +0000
-Message-Id: <20250203144048.2131117-4-alex.bennee@linaro.org>
+Subject: [PATCH 01/18] tests/docker: replicate the check-rust-tools-nightly CI job
+Date: Mon,  3 Feb 2025 14:40:31 +0000
+Message-Id: <20250203144048.2131117-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
 References: <20250203144048.2131117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gTcts8bCdYTW
+X-TUID: 65DQ59sR1hAj
 
-Until there are timers enabled the semantics of clock_step_next() will
-fail. Since d524441a36 (system/qtest: properly feedback results of
-clock_[step|set]) we will signal a FAIL if time doesn't advance.
+This allows people to run the test locally:
+
+  make docker-test-rust@fedora-rust-nightly
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
----
- tests/qtest/npcm7xx_timer-test.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
-index 58f58c2f71..43711049ca 100644
---- a/tests/qtest/npcm7xx_timer-test.c
-+++ b/tests/qtest/npcm7xx_timer-test.c
-@@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer test_data)
-     int i;
+---
+v2
+  - update MAINTAINERS
+---
+ MAINTAINERS                   |  1 +
+ tests/docker/Makefile.include |  3 +++
+ tests/docker/test-rust        | 21 +++++++++++++++++++++
+ 3 files changed, 25 insertions(+)
+ create mode 100755 tests/docker/test-rust
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bf737eb6db..8008db18ab 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3384,6 +3384,7 @@ F: rust/rustfmt.toml
  
-     tim_reset(td);
--    clock_step_next();
+ Rust-related patches CC here
+ L: qemu-rust@nongnu.org
++F: tests/docker/test-rust
+ F: rust/
  
-     tim_write_ticr(td, count);
-     tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
+ SLIRP
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index fead7d3abe..fa1cbb6726 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -236,3 +236,6 @@ docker-image: ${DOCKER_IMAGES:%=docker-image-%}
+ 
+ docker-clean:
+ 	$(call quiet-command, $(DOCKER_SCRIPT) clean)
++
++# Overrides
++docker-test-rust%: NETWORK=1
+diff --git a/tests/docker/test-rust b/tests/docker/test-rust
+new file mode 100755
+index 0000000000..e7e3e94a55
+--- /dev/null
++++ b/tests/docker/test-rust
+@@ -0,0 +1,21 @@
++#!/bin/bash -e
++#
++# Run the rust code checks (a.k.a. check-rust-tools-nightly)
++#
++# Copyright (c) 2025 Linaro Ltd
++#
++# Authors:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# This work is licensed under the terms of the GNU GPL, version 2
++# or (at your option) any later version. See the COPYING file in
++# the top-level directory.
++
++. common.rc
++
++cd "$BUILD_DIR"
++
++configure_qemu --disable-user --disable-docs --enable-rust
++pyvenv/bin/meson devenv -w $QEMU_SRC/rust ${CARGO-cargo} fmt --check
++make clippy
++make rustdoc
 -- 
 2.39.5

@@ -1,129 +1,131 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2437821njb;
-        Mon, 3 Feb 2025 15:01:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW9E6b0+PKh/P8YFAw76yZc2TeOBkAzLKxeMUzkm/GYcRLUm3to6zw/h5/4rx+mMvFKH/QQdiwIM/tvyQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFLiP36NnGjCtmewGrcBWHj7WMRMllFKAy9krTdakE5/5gtzf2u5F4LBXWyv4zNeI9f7jqX
-X-Received: by 2002:a05:620a:438f:b0:7b6:d632:37cf with SMTP id af79cd13be357-7bffccbfd2fmr3130437185a.3.1738623697814;
-        Mon, 03 Feb 2025 15:01:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738623697; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2440788njb;
+        Mon, 3 Feb 2025 15:06:55 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWuyGpnl0sMEWS3iQ6VU5c/FDGQ9T5qIkEng++bGhxVapdHqGZ7m7BNjFIdlc5AbOhc7Qx2b2vg1zHOPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFGY9ZGAmaPTZR5tbY4FkDhale4ADQpaxWQvjsR3Y7tK4TE5WfJy/5KZqUZqZf8nyordu0L
+X-Received: by 2002:a05:6122:2107:b0:518:8915:89ec with SMTP id 71dfb90a1353d-51ef9663f9amr1362178e0c.1.1738624015244;
+        Mon, 03 Feb 2025 15:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738624015; cv=none;
         d=google.com; s=arc-20240605;
-        b=OfVinJK7cdu7avjhfvZWMoSCj3Xf0fZPrj5liGzPzkv5xNcDyKxsIzyTC1NtJFdDgT
-         UDYegGC1Hg9CxFqYJSxh5IwvZbjbr2nJWKZh5N1j+aiTsNFv81MvKXIb9ftTpg1pS851
-         D0sgvh0RNYjgSIGAxHUejO1239Qk9OnS7TAWsgdaJwHLjfh5FAovtaFkgx2QnmwfrWEw
-         4eKu2ROMFxRLLN32/R+k+cPLr9wfRXTe1R5NYxBkRUPgSb7JSe1zSpPAPB/9Ec/xKTC4
-         vJXgNGV+aR+E92lF8bGAnql1W94FXRz7s9ljLNkknKm6ouUtUpK23gMn8378dMzrIhlg
-         pHpg==
+        b=fU2vHGYM/M8UKNEpoiL9mf2G8DeEFOOIrCcUlVIQup8sHf478ZzrJYojyMFCW0QLda
+         SejwkM6p9OEsTmIHmCLOwTNsgfGi9ApTTpuhdsk44AZSkCd17P2iUOS8SzNmjHXrAaOS
+         GTRHJb/JFj6KJ+dZOREm+R5UpKHLRzJ/fer2vo+Uo+D0zK2xzCeWyIabCl2KoVJsMP+Q
+         FXahd+tB2ewXAUdaQbmXbdkAQYV0iqiGVGKXi3fyhJ/xQIfv15rMGta71hTYDf5nz0Cn
+         RM5QPfSV4r8DfSkHDB5eKoWl5/AK5cr54HZLQFOMAgM5d585ajzlG0LrL7UelMofcR+9
+         GlOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:references:in-reply-to:subject:cc:to:from
          :date:dkim-signature;
-        bh=1X9lkwxCyiyn6VPTkPmA0Do69DyfvnR1bI4eu9PquFQ=;
-        fh=4fC6Hb7hrNXn5d09LrEbUlYF0E2cb0zYSbGDEm9uPGM=;
-        b=eK+Ahj8ZUnPRNODRup5VufcpBUZDpp5tpYxGpiquYp05J4149O0vFAz7M+IFIfaQ/e
-         98px9I9kNXu3Qtfsfx9Y7eHBd/oMAYrRKKDRHQ/7bjyJI0zWWmakHcOevpvB4sJv9GMB
-         rXiKrscXVttFxi/ZB455T4C7z5ZGdcmyKTyQ80t7pgkaVov3jxxluxK7o/xAhkShOl8z
-         8BJSllSGzLWT2R2iz6C2FaZxri0eXy+Qcl1cijco7Wlm4zV4SX7Jur/4ZCc+eOBaHMDI
-         RhBmZhNqGBwzFKwJgNY2giEoK6Br2u8Z8f2gGbnypGz7fNz4ZwQ12PtmQskoWdsMYjYx
-         AC9A==;
+        bh=Oh+kcSLzxagOppa0kg/pXmqP4HkISRplGCNJdaZ+ec0=;
+        fh=20xCWx+R8oTIPtuXR1qOhSCzBhvaGPQiZt6TBM+8pyw=;
+        b=AtRU0LWDJJNlYFAKRTuOC/9gvGSjCKbbNv2DdLpBD7SNWf4ziZJwBvIDwV/Xg4GO5E
+         O+hLILH61RUrOBMdVF4BTysunxVgKMIIagNw7iVC9LRH2H2emZtYPYxfFbTWfQtB6ORK
+         NCqfb98na7P/otl6NcRMLVuEgxkJRQ+qgICOrSlkZvdzgUSJt0zmpJdyauLuG4U8N8H2
+         m5iYDYtbABiQs3lL/TDRMyEC6z859HHs7FiVvasBbEUYHBNg4LT+FR7NWqZjanpfzk9A
+         PSUv/T3hIHrPeKmTiXd/9lyoJdgc3hutQdy2Za2V2zvUf1dRNxm2065Y995lXCS8Q+OB
+         mf7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TZA5MCsK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=N4CeTe9s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c02dbdda76si117772285a.205.2025.02.03.15.01.37
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-866940632c6si2250477241.18.2025.02.03.15.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2025 15:01:37 -0800 (PST)
+        Mon, 03 Feb 2025 15:06:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TZA5MCsK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=N4CeTe9s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tf5RJ-00037i-HO; Mon, 03 Feb 2025 18:01:13 -0500
+	id 1tf5WQ-0004qK-Jr; Mon, 03 Feb 2025 18:06:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tf5RG-00036k-SK; Mon, 03 Feb 2025 18:01:11 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1tf5WO-0004pg-Pf; Mon, 03 Feb 2025 18:06:28 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tf5RE-00088j-C9; Mon, 03 Feb 2025 18:01:10 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4363dc916ceso37144135e9.0; 
- Mon, 03 Feb 2025 15:01:07 -0800 (PST)
+ id 1tf5WM-00019V-JH; Mon, 03 Feb 2025 18:06:28 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-385ddcfc97bso3923043f8f.1; 
+ Mon, 03 Feb 2025 15:06:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738623666; x=1739228466; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1738623984; x=1739228784; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1X9lkwxCyiyn6VPTkPmA0Do69DyfvnR1bI4eu9PquFQ=;
- b=TZA5MCsKQYnHLu6eUgMGVNtaLTo3dLcYHfdyR4DAZ0ARXm1DfMqwt2/D56rSrf/1/Z
- XBR+UhF0j8crypXY0LkDsjr5QCmgcJUPgQ9BGThYPUGubPRpFNpUlogmsCr4koyMxx41
- tdzAkpaxxMyz/zit9qeDculioRmj9pse/O2Zv9vH+L3lxN4bPoFrfiTpclqgysPjNjaS
- 21/g/JcAgRvC5zPu1IRJvM05YnG72ZNsK4mBuygQUMsGcz+aJIIz66PyI5gOYwJTBJqY
- RSgDiGE2EmBDPKOdScwP6GKMKWFmFSVGmeXOMDUnNkFxj6K3Ojp01LBsDCxD2WeH+Qjf
- DIqw==
+ bh=Oh+kcSLzxagOppa0kg/pXmqP4HkISRplGCNJdaZ+ec0=;
+ b=N4CeTe9s0HXBVfTG9Vi4zhL3Tw4h6E1hF6cqJpyaPoJDJ6qzKEcTI8ezd9QkVRp/tC
+ u8TBnTSJ5kpqe8HSqiHkLIEPVtFxLM6Pd3GrUXe79Th5yWrehwgjcFpdlr7tAnSWGTeo
+ jjB0IvAfZN8hZxmgXJxGCBq+Jdp0zpzl/JjZsh68Jjp4Gp9PrhBMRVYi0AGMZT1X6MDj
+ +CL84CgVMMncRD8pH4gpoSE8/wwxTAXF8IQRo6Xy+mg8wjXvDN1+IS+wfGQdKuH0HlpM
+ DffPLNaJUIXA4jk5yiyZIpZrjrKsgX6sd9iVkEUHmJsq2yUq9L0ZoTPdS+5pLLqYKJx0
+ bBcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738623666; x=1739228466;
+ d=1e100.net; s=20230601; t=1738623984; x=1739228784;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1X9lkwxCyiyn6VPTkPmA0Do69DyfvnR1bI4eu9PquFQ=;
- b=YYKbSnXNpsUpvICGAYLdXLz9F5FmKW6m4po2ndBYF8iAjuyYH3vtiH3ZF5/BV1DFFA
- vjmUDzxxFF/MHfU0S+HtLsK8dnbBTvMviOwXrA72g6+vbTVWeXdarcFv/kgd4tgWIofM
- MVT5fNjFnVd+eWSF+U7i5g4n+4xfJh8IKFNJ60odI6wJU1lrGat0HgL+xPnPraR7pmaB
- uN10Yw67T0BiOYB9wCT2DvU6VM8EE2QskoIxolSj+VaHYowLZiIelLD7R4mv+xJErmdH
- diWxhF4lrIM8tOmroeJpH9qefctkoyiG3eskcyHICJHc5DNDxV5/MSFfYvr5Qxv7EpPb
- zlQw==
+ bh=Oh+kcSLzxagOppa0kg/pXmqP4HkISRplGCNJdaZ+ec0=;
+ b=Ys7TGq47KK8Qe+5646LjDvldcJGGfCEbWMi3xBL+wuaAW6y+x2Y8T39qUt5tojL36B
+ Dsht700NlFdwRstsMQPb0ahduqKd6zwp8fXk7IsrVT1/9xJLnC/3acrbQ2t2QNY9mTYS
+ iI0r097SOpeNzfmgznv5aiDWeZjdsJ3U+gXdpm+g8MUBjDh5Tmo0/P9ZutExEt0vYKA+
+ rd4Jc4cS7/Yn8EYs+QlQaJWtrinaaAkqOsGpltViOGe9cIdbKhLlKW9Nz09UG3k9aDBO
+ 9Mg9kPeNwiYYtfK56Xl0TthVUq6ehBiyJavGhEdGP6Uz9whEj6KwOP8MwSusrW+V9v6L
+ cO3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU9UAV+ONBCmDh9zAhFavcgHFD3cbY877IyK1g1WzWPYvmoktC+NmerqWdQQjq1GKTdQH8wr19Xxg==@nongnu.org
-X-Gm-Message-State: AOJu0YwmxyC5V9diJY0OAyeSxoZpEoXq/3QJ4GdUaSdN474CIK6RY9wF
- y5k29eh3cWGBB93/6L6POzcDdkKYunVaWCPH6eftmzxf3L7OhyKN
-X-Gm-Gg: ASbGncvh+bVch00axxbI89UYZamTyvZ6FyGT7gldqmvwJPvSKTZJlxTUinnKrWVr0es
- RusHhJw+NRfBnTov27Rm+qA/GmxfwMoYzOhbJAgXH/apC/ji83zYtt2H2+STmPtnPSgw1CC5Tu/
- OvFNlYfiGZXGAIOhFn2bMavU2W0fn9ZzLxvMfuE0BFrsx+ec958N+T2Zt3EsMMJo0R4F++RZe0q
- 4fU9C0BTslbdYJaNQhLu0qNGIO4RPRIEoOoFN72v5yh07pavvoIpIIPr/HbXYXn7AgifGfrd+2M
- PRUCFRMsarvzlvD82xwcmfHgYEok4U/sJh1Pv11vDQlX0Hj5kQpxkw8VmQMNwj14A0nFA8mc2g=
+ AJvYcCVuAaYQY0azBVU7Fn1zlEep3wT16LlIiD6t4gz1hYh7u4sIrjiOcmSloowlSHUk5wQ4DfhTzlyHiQ==@nongnu.org,
+ AJvYcCW8NgLW1MGGJX3L0cszYl4XPGFo0oZA2a4FievsJrl12BJVMmdAq1/LzXK/Rvy/Pb0AEPULy9Sc29iTyA==@nongnu.org
+X-Gm-Message-State: AOJu0YyBGTfCZ0erMUw6atE2BAVzmq9tGllwLksBgk3ynmsUIJSqWkc/
+ BJs0AjIrwMuW/ia1k2HV5RegoKTAoltDDMNLlNM5nBgVJ0VysrSQ
+X-Gm-Gg: ASbGnctXBa6tn9EqdSL7rqYkKL2IGH3f7KodlDYKYIXzetZCgOWRP9HY45p+wfn0Ro0
+ /aJRAsKhXhhcyWIExM/Lso4ourxPIybAsMmgA3pyjV0d6842z8Jg3UkpPO62uCKhb6Jk8EjAdlZ
+ o95bWyRoPS7hoHphNiFPOKmxY4G1Heqo4xGDojybZ8YLKvjtz2bR+RHGiHwXjZq9kUdEn8xzOjY
+ J/5/0waf6q6tgoekaHpYPIuBwU608tq/Gi2hBIkpdSfYviBU5sMnCLs9P0J69t1Dd5gEWDXbgXY
+ tKKZqBtjAtcCPXDtmJRKVPqRo3/OzFnhDl9fLN8hu5XTLSn9cIeS1xMoU1Q2u8xLe53SPiv63g=
  =
-X-Received: by 2002:a05:600c:1e09:b0:434:f1bd:1e40 with SMTP id
- 5b1f17b1804b1-43905f71556mr6443065e9.6.1738623665874; 
- Mon, 03 Feb 2025 15:01:05 -0800 (PST)
+X-Received: by 2002:a5d:5f50:0:b0:386:3918:16b1 with SMTP id
+ ffacd0b85a97d-38c520906e8mr21962545f8f.39.1738623984281; 
+ Mon, 03 Feb 2025 15:06:24 -0800 (PST)
 Received: from ?IPv6:::1?
  (p200300faaf00430048cf2359cf0b0456.dip0.t-ipconnect.de.
  [2003:fa:af00:4300:48cf:2359:cf0b:456])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e23d4f9esm176110465e9.2.2025.02.03.15.01.04
+ ffacd0b85a97d-38c5c1cf560sm13791709f8f.89.2025.02.03.15.06.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Feb 2025 15:01:05 -0800 (PST)
-Date: Mon, 03 Feb 2025 23:01:03 +0000
+ Mon, 03 Feb 2025 15:06:23 -0800 (PST)
+Date: Mon, 03 Feb 2025 23:06:22 +0000
 From: Bernhard Beschow <shentey@gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-CC: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
+CC: Paolo Bonzini <pbonzini@redhat.com>,
  =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH 08/21] hw/arm/fsl-imx8mp: Add USDHC storage controllers
-In-Reply-To: <3e6208b1-7d70-5205-a92f-549d7d2fff13@eik.bme.hu>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_21/21=5D_hw/gpio/imx=5Fgpio=3A_Do?=
+ =?US-ASCII?Q?n=27t_clear_input_GPIO_values_upon_reset?=
+In-Reply-To: <bd929bd7-88d7-4808-b801-26a2858ef620@linaro.org>
 References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-9-shentey@gmail.com>
- <3e6208b1-7d70-5205-a92f-549d7d2fff13@eik.bme.hu>
-Message-ID: <FA8D7DA4-2CD8-4310-A210-A147EE385103@gmail.com>
+ <20250120203748.4687-22-shentey@gmail.com>
+ <bd929bd7-88d7-4808-b801-26a2858ef620@linaro.org>
+Message-ID: <03E738D0-1978-4497-AA12-6C38E3112517@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,274 +147,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I/SC63SicMPx
+X-TUID: XJzBLTyOCBvp
 
 
 
-Am 21=2E Januar 2025 02:52:58 UTC schrieb BALATON Zoltan <balaton@eik=2Ebm=
-e=2Ehu>:
->On Mon, 20 Jan 2025, Bernhard Beschow wrote:
->> The USDHC emulation allows for running real-world images such as those =
-generated
->> by Buildroot=2E Convert the board documentation accordingly instead of =
-running a
->> Linux kernel with ephemeral storage=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->> docs/system/arm/imx8mp-evk=2Erst | 39 +++++++++++++++++++++++----------=
--
->> include/hw/arm/fsl-imx8mp=2Eh    |  7 ++++++
->> hw/arm/fsl-imx8mp=2Ec            | 28 ++++++++++++++++++++++++
->> hw/arm/imx8mp-evk=2Ec            | 18 ++++++++++++++++
->> hw/arm/Kconfig                 |  1 +
->> 5 files changed, 81 insertions(+), 12 deletions(-)
->>=20
->> diff --git a/docs/system/arm/imx8mp-evk=2Erst b/docs/system/arm/imx8mp-=
-evk=2Erst
->> index d7d08cc198=2E=2E1514bc5864 100644
->> --- a/docs/system/arm/imx8mp-evk=2Erst
->> +++ b/docs/system/arm/imx8mp-evk=2Erst
->> @@ -13,6 +13,7 @@ The ``imx8mp-evk`` machine implements the following d=
-evices:
->>  * Up to 4 Cortex-A53 Cores
->>  * Generic Interrupt Controller (GICv3)
->>  * 4 UARTs
->> + * 3 USDHC Storage Controllers
->>  * Secure Non-Volatile Storage (SNVS) including an RTC
->>  * Clock Tree
->>=20
->> @@ -25,25 +26,39 @@ for loading a Linux kernel=2E
->> Direct Linux Kernel Boot
->> ''''''''''''''''''''''''
->>=20
->> -Linux mainline v6=2E12 release is tested at the time of writing=2E To =
-build a Linux
->> -mainline kernel that can be booted by the ``imx8mp-evk`` machine, simp=
-ly
->> -configure the kernel using the defconfig configuration:
->> +Probably the easiest way to get started with a whole Linux system on t=
-he machine
->> +is to generate an image with Buildroot=2E Version 2024=2E11=2E1 is tes=
-ted at the time
->> +of writing and involves three steps=2E First run the following command=
- in the
->> +toplevel directory of the Buildroot source tree:
->>=20
->> =2E=2E code-block:: bash
->>=20
->> -  $ export ARCH=3Darm64
->> -  $ export CROSS_COMPILE=3Daarch64-linux-gnu-
->> -  $ make defconfig
->> +  $ make freescale_imx8mpevk_defconfig
->>   $ make
+Am 28=2E Januar 2025 14:33:27 UTC schrieb Gustavo Romero <gustavo=2Eromero=
+@linaro=2Eorg>:
+>Hi,
 >
->Adding documentation that is removed a few patches later seems unnecessar=
-y=2E Maybe you could keep the bare kernel docs as that could also be useful=
- or not add it in the first place? But if this is already written keeping i=
-t may make more sense than dropping it=2E
+>On 1/20/25 17:37, Bernhard Beschow wrote:
+>> Input GPIO values such as a present SD card may get notified before the=
+ GPIO
+>> controller itself gets reset=2E Claring the input values thus loses dat=
+a=2E Assuming
+>
+>                                ^- nit: Clearing
+>
+>
 
-I'd like the documentation to be complete and easy to follow at the same t=
-ime=2E Buildroot achieves both, and allows for generating a cpio initrd ins=
-tead=2E So I'd start with that which just requires minor adjustments here=
-=2E
+Peter asked for a three-way reset in inbound devices while keeping the log=
+ic here as is=2E I'd drop this patch then=2E
 
 Best regards,
 Bernhard
 
+>Cheers,
+>Gustavo
 >
->Regards,
->BALATON Zoltan
+>> that input GPIO events are only fired when the state changes, the input=
+ values
+>> shouldn't be reset=2E
+>>=20
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   hw/gpio/imx_gpio=2Ec | 1 -
+>>   1 file changed, 1 deletion(-)
+>>=20
+>> diff --git a/hw/gpio/imx_gpio=2Ec b/hw/gpio/imx_gpio=2Ec
+>> index 549a281ed7=2E=2E25546221e0 100644
+>> --- a/hw/gpio/imx_gpio=2Ec
+>> +++ b/hw/gpio/imx_gpio=2Ec
+>> @@ -298,7 +298,6 @@ static void imx_gpio_reset(DeviceState *dev)
+>>         s->dr       =3D 0;
+>>       s->gdir     =3D 0;
+>> -    s->psr      =3D 0;
+>>       s->icr      =3D 0;
+>>       s->imr      =3D 0;
+>>       s->isr      =3D 0;
 >
->>=20
->> -To boot the newly built Linux kernel in QEMU with the ``imx8mp-evk`` m=
-achine,
->> -run:
->> +Once finished successfully there is an ``output/image`` subfolder=2E N=
-avigate into
->> +it and resize the SD card image to a power of two:
->> +
->> +=2E=2E code-block:: bash
->> +
->> +  $ qemu-img resize sdcard=2Eimg 256M
->> +
->> +Finally, the device tree needs to be patched with the following comman=
-ds which
->> +will remove the ``cpu-idle-states`` properties from CPU nodes:
->> +
->> +=2E=2E code-block:: bash
->> +
->> +  $ dtc imx8mp-evk=2Edtb | sed '/cpu-idle-states/d' > imx8mp-evk-patch=
-ed=2Edts
->> +  $ dtc imx8mp-evk-patched=2Edts -o imx8mp-evk-patched=2Edtb
->> +
->> +Now that everything is prepared the newly built image can be run in th=
-e QEMU
->> +``imx8mp-evk`` machine:
->>=20
->> =2E=2E code-block:: bash
->>=20
->>   $ qemu-system-aarch64 -M imx8mp-evk -smp 4 -m 3G \
->>       -display none -serial null -serial stdio \
->> -      -kernel arch/arm64/boot/Image \
->> -      -dtb arch/arm64/boot/dts/freescale/imx8mp-evk=2Edtb \
->> -      -initrd /path/to/rootfs=2Eext4 \
->> -      -append "root=3D/dev/ram"
->> +      -kernel Image \
->> +      -dtb imx8mp-evk-patched=2Edtb \
->> +      -append "root=3D/dev/mmcblk2p2" \
->> +      -drive file=3Dsdcard=2Eimg,if=3Dsd,bus=3D2,format=3Draw,id=3Dmmc=
-blk2
->> diff --git a/include/hw/arm/fsl-imx8mp=2Eh b/include/hw/arm/fsl-imx8mp=
-=2Eh
->> index 9d2a757c2a=2E=2E9832c05e8c 100644
->> --- a/include/hw/arm/fsl-imx8mp=2Eh
->> +++ b/include/hw/arm/fsl-imx8mp=2Eh
->> @@ -14,6 +14,7 @@
->> #include "hw/intc/arm_gicv3_common=2Eh"
->> #include "hw/misc/imx7_snvs=2Eh"
->> #include "hw/misc/imx8mp_ccm=2Eh"
->> +#include "hw/sd/sdhci=2Eh"
->> #include "qom/object=2Eh"
->> #include "qemu/units=2Eh"
->>=20
->> @@ -27,6 +28,7 @@ enum FslImx8mpConfiguration {
->>     FSL_IMX8MP_NUM_CPUS         =3D 4,
->>     FSL_IMX8MP_NUM_IRQS         =3D 160,
->>     FSL_IMX8MP_NUM_UARTS        =3D 4,
->> +    FSL_IMX8MP_NUM_USDHCS       =3D 3,
->> };
->>=20
->> struct FslImx8mpState {
->> @@ -38,6 +40,7 @@ struct FslImx8mpState {
->>     IMX8MPAnalogState  analog;
->>     IMX7SNVSState      snvs;
->>     IMXSerialState     uart[FSL_IMX8MP_NUM_UARTS];
->> +    SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
->> };
->>=20
->> enum FslImx8mpMemoryRegions {
->> @@ -183,6 +186,10 @@ enum FslImx8mpMemoryRegions {
->> };
->>=20
->> enum FslImx8mpIrqs {
->> +    FSL_IMX8MP_USDHC1_IRQ   =3D 22,
->> +    FSL_IMX8MP_USDHC2_IRQ   =3D 23,
->> +    FSL_IMX8MP_USDHC3_IRQ   =3D 24,
->> +
->>     FSL_IMX8MP_UART1_IRQ    =3D 26,
->>     FSL_IMX8MP_UART2_IRQ    =3D 27,
->>     FSL_IMX8MP_UART3_IRQ    =3D 28,
->> diff --git a/hw/arm/fsl-imx8mp=2Ec b/hw/arm/fsl-imx8mp=2Ec
->> index 0abde2b1fc=2E=2E612ea7bf93 100644
->> --- a/hw/arm/fsl-imx8mp=2Ec
->> +++ b/hw/arm/fsl-imx8mp=2Ec
->> @@ -210,6 +210,11 @@ static void fsl_imx8mp_init(Object *obj)
->>         snprintf(name, NAME_SIZE, "uart%d", i + 1);
->>         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL=
-);
->>     }
->> +
->> +    for (i =3D 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
->> +        snprintf(name, NAME_SIZE, "usdhc%d", i + 1);
->> +        object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDH=
-C);
->> +    }
->> }
->>=20
->> static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
->> @@ -350,6 +355,28 @@ static void fsl_imx8mp_realize(DeviceState *dev, E=
-rror **errp)
->>                            qdev_get_gpio_in(gicdev, serial_table[i]=2Ei=
-rq));
->>     }
->>=20
->> +    /* USDHCs */
->> +    for (i =3D 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
->> +        static const struct {
->> +            hwaddr addr;
->> +            unsigned int irq;
->> +        } usdhc_table[FSL_IMX8MP_NUM_USDHCS] =3D {
->> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC1]=2Eaddr, FSL_IMX8MP_=
-USDHC1_IRQ },
->> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC2]=2Eaddr, FSL_IMX8MP_=
-USDHC2_IRQ },
->> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3]=2Eaddr, FSL_IMX8MP_=
-USDHC3_IRQ },
->> +        };
->> +
->> +        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
->> +                                 SDHCI_VENDOR_IMX, &error_abort);
->> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
->> +            return;
->> +        }
->> +
->> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0, usdhc_table[i=
-]=2Eaddr);
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
->> +                           qdev_get_gpio_in(gicdev, usdhc_table[i]=2Ei=
-rq));
->> +    }
->> +
->>     /* SNVS */
->>     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
->>         return;
->> @@ -367,6 +394,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Er=
-ror **errp)
->>         case FSL_IMX8MP_RAM:
->>         case FSL_IMX8MP_SNVS_HP:
->>         case FSL_IMX8MP_UART1 =2E=2E=2E FSL_IMX8MP_UART4:
->> +        case FSL_IMX8MP_USDHC1 =2E=2E=2E FSL_IMX8MP_USDHC3:
->>             /* device implemented and treated above */
->>             break;
->>=20
->> diff --git a/hw/arm/imx8mp-evk=2Ec b/hw/arm/imx8mp-evk=2Ec
->> index 2756d4c21c=2E=2E27d9e9e8ee 100644
->> --- a/hw/arm/imx8mp-evk=2Ec
->> +++ b/hw/arm/imx8mp-evk=2Ec
->> @@ -11,6 +11,7 @@
->> #include "hw/arm/boot=2Eh"
->> #include "hw/arm/fsl-imx8mp=2Eh"
->> #include "hw/boards=2Eh"
->> +#include "hw/qdev-properties=2Eh"
->> #include "system/qtest=2Eh"
->> #include "qemu/error-report=2Eh"
->> #include "qapi/error=2Eh"
->> @@ -40,6 +41,23 @@ static void imx8mp_evk_init(MachineState *machine)
->>     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_STA=
-RT,
->>                                 machine->ram);
->>=20
->> +    for (int i =3D 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
->> +        BusState *bus;
->> +        DeviceState *carddev;
->> +        BlockBackend *blk;
->> +        DriveInfo *di =3D drive_get(IF_SD, i, 0);
->> +
->> +        if (!di) {
->> +            continue;
->> +        }
->> +
->> +        blk =3D blk_by_legacy_dinfo(di);
->> +        bus =3D qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
->> +        carddev =3D qdev_new(TYPE_SD_CARD);
->> +        qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
->> +        qdev_realize_and_unref(carddev, bus, &error_fatal);
->> +    }
->> +
->>     if (!qtest_enabled()) {
->>         arm_load_kernel(&s->cpu[0], machine, &boot_info);
->>     }
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index adb4ed8076=2E=2Ef880c03d35 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -582,6 +582,7 @@ config FSL_IMX8MP
->>     imply TEST_DEVICES
->>     select ARM_GIC
->>     select IMX
->> +    select SDHCI
->>     select UNIMP
->>=20
->> config FSL_IMX8MP_EVK
->>=20

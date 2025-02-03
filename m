@@ -1,213 +1,151 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a318fasm764533766b.134.2025.02.03.06.49.06
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2159230njb;
+        Mon, 3 Feb 2025 06:50:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG/kkYH/Nno0KU0OKPx4giKbErucRHuLa5SZksOyMJZuBGZ/Sezs0usm66cURLy6wZmDq05
+X-Received: by 2002:a05:620a:2586:b0:7b6:c4c7:ece5 with SMTP id af79cd13be357-7bffcd91fc9mr3209335485a.43.1738594215890;
+        Mon, 03 Feb 2025 06:50:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738594215; cv=none;
+        d=google.com; s=arc-20240605;
+        b=BouDm+rrZSyKbwEBx3bVKM/5nuBvlS5PChPdhgHN8TYLJr6dI2WazJ207jsOjq67hG
+         sI4KSWZxS8t/B5IKeUs5s2XsQsKwmd5ceok3Tf+vR+APaPOcpPJ8/8wunknMc1jh1DjI
+         H/mQ7zVc4oJ/YOaHQgLmuQ60+tcLEzl8LgleGY+GQ4XOwSzta8j7ldHz70J8Skz8CTk9
+         3nD4wZOb7g1L4BTXT2ryS3/Lv5TxFIRWScAf/S8gRNi2GQggwtcnkE4wufDxV+LSX1t5
+         2wkMkgkNeC+4m44PlzKOkmRQo6TQanXkZFvSvQYYuAZx/R6O3NKxoufvbdiGiqshd1pY
+         Eq/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=mRdVTiz2dg/Lm02eYt2/LxZKD8DauGBX6v2e41VDF4o=;
+        fh=4mdCusmU7KXX9aeICkTohodhVJVdGFcvxmHPToAtZsw=;
+        b=Pk8LsjluL0WP5Z96cXybVRzVeMym8Y1FJPe2TkqxpK48Uhgj3j3QdpxHR6POEgf7uE
+         3Jnz31uoSWDUJ8q9GNdZiflo0kJYGB2TUBiMXaedVQp2SOgEkla33RGsQ+4VQtAgmtCT
+         TabXhZRGgQojHuqlOEauBd1p+idxbqQF1DEDMvCVbSRUJV5QiGSLF5zaDpj2pa20zRVM
+         QFoc9+S55yBvkakP1HJXKALEuySCVg8b27wmYFS8SFvFpo54wj4Q88LGyceqZzl0Q7pp
+         pw0fpp/xUbRf/Wpl9pDNRv/b34IxJTWw6w7aqrGWYpwbbZm2VlF6xwdTXVoMlQgVk617
+         KmRA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Ky4/YOJF";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c02db4dcbdsi30450585a.36.2025.02.03.06.50.15
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Feb 2025 06:49:06 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6901060E67;
-	Mon,  3 Feb 2025 14:40:50 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Hao Wu <wuhaotsh@google.com>,
-	Peter Xu <peterx@redhat.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-arm@nongnu.org,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Kyle Evans <kevans@freebsd.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Bin Meng <bmeng.cn@gmail.com>,
-	qemu-rust@nongnu.org,
-	Laurent Vivier <lvivier@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	qemu-riscv@nongnu.org,
-	Fabiano Rosas <farosas@suse.de>,
-	Tyrone Ting <kfting@nuvoton.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 17/18] tests/tcg: Add late gdbstub attach test
-Date: Mon,  3 Feb 2025 14:40:47 +0000
-Message-Id: <20250203144048.2131117-18-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
-References: <20250203144048.2131117-1-alex.bennee@linaro.org>
+        Mon, 03 Feb 2025 06:50:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Ky4/YOJF";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1738594215;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mRdVTiz2dg/Lm02eYt2/LxZKD8DauGBX6v2e41VDF4o=;
+	b=Ky4/YOJFqYejw9vuhxgnKcHHQg3Hg11CMIfsRNZkR2C3wcTh/ufQae0LFMxiWuepjYGDBR
+	6zUFUaSf7e+Ql9sbavflovySdklXOx6sgOh67/tpwmQpIVKxCXTlsRb7H1f20/5ZSXtwux
+	SJoJnVcHEB/+Hp1af3JuCtrMgQPYtNs=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-197-s-B3xsWRP3K4OiVP8404KA-1; Mon,
+ 03 Feb 2025 09:50:11 -0500
+X-MC-Unique: s-B3xsWRP3K4OiVP8404KA-1
+X-Mimecast-MFC-AGG-ID: s-B3xsWRP3K4OiVP8404KA
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id ADFD818009B7;
+	Mon,  3 Feb 2025 14:50:07 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.64])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A655E180035E;
+	Mon,  3 Feb 2025 14:50:03 +0000 (UTC)
+Date: Mon, 3 Feb 2025 14:50:00 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-devel@nongnu.org, Jared Mauch <jared+home@puck.nether.net>,
+	qemu-arm@nongnu.org, devel@lists.libvirt.org
+Subject: Re: [PATCH 0/7] hw/arm/raspi4b: Add models with 4GB and 8GB of DRAM
+Message-ID: <Z6DXmN-ROswsaDAi@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20250201091528.1177-1-philmd@linaro.org>
+ <90d87f0e-56a3-8966-614c-364f3e726d61@eik.bme.hu>
+ <CAFEAcA_mBXO20NhYRHJCgkB0h8uYQQhBMdwVW376R4u-qh51nA@mail.gmail.com>
+ <87ed0fayoy.fsf@draig.linaro.org>
+ <Z6DTsdf35ApQ0qLU@redhat.com>
+ <CAFEAcA8Qigt1EBVgz1D4hon0x4ukLZbZ-jS_KB+ZBH0yi+QCXw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: Eh6t9/rxIL13
+In-Reply-To: <CAFEAcA8Qigt1EBVgz1D4hon0x4ukLZbZ-jS_KB+ZBH0yi+QCXw@mail.gmail.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-TUID: D1OxBbtz2xrg
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+On Mon, Feb 03, 2025 at 02:45:06PM +0000, Peter Maydell wrote:
+> On Mon, 3 Feb 2025 at 14:33, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> >
+> > On Mon, Feb 03, 2025 at 02:29:49PM +0000, Alex Bennée wrote:
+> > > Peter Maydell <peter.maydell@linaro.org> writes:
+> > >
+> > > > On Sat, 1 Feb 2025 at 12:57, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> > > >>
+> > > >> On Sat, 1 Feb 2025, Philippe Mathieu-Daudé wrote:
+> > > >> > - Deprecate the 'raspi4b' machine name, renaming it as
+> > > >> >  'raspi4b-1g' on 32-bit hosts, 'raspi4b-2g' otherwise.
+> > > >> > - Add the 'raspi4b-4g' and 'raspi4b-8g' machines, with
+> > > >> >  respectively 4GB and 8GB of DRAM.
+> > > >>
+> > > >> IMHO (meaning you can ignore it, just my opinion) if the only difference
+> > > >> is the memory size -machine raspi4b -memory 4g would be better user
+> > > >> experience than having a lot of different machines.
+> > > >
+> > > > Yes, I think I agree. We have a way for users to specify
+> > > > how much memory they want, and I think it makes more sense
+> > > > to use that than to have lots of different machine types.
+> > >
+> > > I guess for the Pi we should validate the -memory supplied is on of the
+> > > supported grid of devices rather than an arbitrary value?
+> >
+> > If the user wants to create a rpi4 with 6 GB RAM why should we stop
+> > them ? It is their choice if they want to precisely replicate RAM
+> > size from a physical model, or use something different when virtualized.
+> 
+> The board revision code (reported to the guest via the emulated
+> firmware interface) only supports reporting 256MB, 512MB,
+> 1GB, 2GB, 4GB or 8GB:
+> 
+> https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes
 
-Add a small test to prevent regressions.
-Make sure that host_interrupt_signal is not visible to the guest.
+I think it would be valid to report the revision code for the memory
+size that doesn't exceed what QEMU has configured. eg if configured
+with 6 GB, then report code for 4 GB. 
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-9-iii@linux.ibm.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/multiarch/late-attach.c          | 41 ++++++++++++++++++++++
- tests/guest-debug/run-test.py              | 15 ++++++--
- tests/tcg/multiarch/Makefile.target        |  9 ++++-
- tests/tcg/multiarch/gdbstub/late-attach.py | 28 +++++++++++++++
- 4 files changed, 90 insertions(+), 3 deletions(-)
- create mode 100644 tests/tcg/multiarch/late-attach.c
- create mode 100644 tests/tcg/multiarch/gdbstub/late-attach.py
+> For Arm embedded boards we mostly tend to "restrict the user
+> to what you can actually do", except for older boards where
+> we tended not to write any kind of sanity checking on CPU
+> type, memory size, etc.
 
-diff --git a/tests/tcg/multiarch/late-attach.c b/tests/tcg/multiarch/late-attach.c
-new file mode 100644
-index 0000000000..20a364034b
---- /dev/null
-+++ b/tests/tcg/multiarch/late-attach.c
-@@ -0,0 +1,41 @@
-+/*
-+ * Test attaching GDB to a running process.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <assert.h>
-+#include <signal.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+
-+static const char *phase = "start";
-+
-+int main(void)
-+{
-+    sigset_t set;
-+    int sig;
-+
-+    assert(sigfillset(&set) == 0);
-+    assert(sigprocmask(SIG_BLOCK, &set, NULL) == 0);
-+
-+    /* Let GDB know it can send SIGUSR1. */
-+    phase = "sigwait";
-+    if (getenv("LATE_ATTACH_PY")) {
-+        assert(sigwait(&set, &sig) == 0);
-+        if (sig != SIGUSR1) {
-+            fprintf(stderr, "Unexpected signal %d\n", sig);
-+            return EXIT_FAILURE;
-+        }
-+    }
-+
-+    /* Check that the guest does not see host_interrupt_signal. */
-+    assert(sigpending(&set) == 0);
-+    for (sig = 1; sig < NSIG; sig++) {
-+        if (sigismember(&set, sig)) {
-+            fprintf(stderr, "Unexpected signal %d\n", sig);
-+            return EXIT_FAILURE;
-+        }
-+    }
-+
-+    return EXIT_SUCCESS;
-+}
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index 5a091db8be..75e9c92e03 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -36,6 +36,8 @@ def get_args():
-     parser.add_argument("--gdb-args", help="Additional gdb arguments")
-     parser.add_argument("--output", help="A file to redirect output to")
-     parser.add_argument("--stderr", help="A file to redirect stderr to")
-+    parser.add_argument("--no-suspend", action="store_true",
-+                        help="Ask the binary to not wait for GDB connection")
- 
-     return parser.parse_args()
- 
-@@ -73,10 +75,19 @@ def log(output, msg):
- 
-     # Launch QEMU with binary
-     if "system" in args.qemu:
-+        if args.no_suspend:
-+            suspend = ''
-+        else:
-+            suspend = ' -S'
-         cmd = f'{args.qemu} {args.qargs} {args.binary}' \
--            f' -S -gdb unix:path={socket_name},server=on'
-+            f'{suspend} -gdb unix:path={socket_name},server=on'
-     else:
--        cmd = f'{args.qemu} {args.qargs} -g {socket_name} {args.binary}'
-+        if args.no_suspend:
-+            suspend = ',suspend=n'
-+        else:
-+            suspend = ''
-+        cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
-+            f' {args.binary}'
- 
-     log(output, "QEMU CMD: %s" % (cmd))
-     inferior = subprocess.Popen(shlex.split(cmd))
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index 18d3cf4ae0..688a6be203 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -130,6 +130,13 @@ run-gdbstub-follow-fork-mode-parent: follow-fork-mode
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-parent.py, \
- 	following parents on fork)
- 
-+run-gdbstub-late-attach: late-attach
-+	$(call run-test, $@, env LATE_ATTACH_PY=1 $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" --no-suspend \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/late-attach.py, \
-+	attaching to a running process)
-+
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
-@@ -139,7 +146,7 @@ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
- 	      run-gdbstub-registers run-gdbstub-prot-none \
- 	      run-gdbstub-catch-syscalls run-gdbstub-follow-fork-mode-child \
- 	      run-gdbstub-follow-fork-mode-parent \
--	      run-gdbstub-qxfer-siginfo-read
-+	      run-gdbstub-qxfer-siginfo-read run-gdbstub-late-attach
- 
- # ARM Compatible Semi Hosting Tests
- #
-diff --git a/tests/tcg/multiarch/gdbstub/late-attach.py b/tests/tcg/multiarch/gdbstub/late-attach.py
-new file mode 100644
-index 0000000000..1d40efb5ec
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/late-attach.py
-@@ -0,0 +1,28 @@
-+"""Test attaching GDB to a running process.
-+
-+SPDX-License-Identifier: GPL-2.0-or-later
-+"""
-+from test_gdbstub import main, report
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    try:
-+        phase = gdb.parse_and_eval("phase").string()
-+    except gdb.error:
-+        # Assume the guest did not reach main().
-+        phase = "start"
-+
-+    if phase == "start":
-+        gdb.execute("break sigwait")
-+        gdb.execute("continue")
-+        phase = gdb.parse_and_eval("phase").string()
-+    report(phase == "sigwait", "{} == \"sigwait\"".format(phase))
-+
-+    gdb.execute("signal SIGUSR1")
-+
-+    exitcode = int(gdb.parse_and_eval("$_exitcode"))
-+    report(exitcode == 0, "{} == 0".format(exitcode))
-+
-+
-+main(run_test)
+If we're going to strictly limit memory size that's accepted I wonder
+how we could information users/mgmt apps about what's permitted ?
+
+Expressing valid combinations of configs across different args gets
+pretty complicated quickly :-(
+
+
+With regards,
+Daniel
 -- 
-2.39.5
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

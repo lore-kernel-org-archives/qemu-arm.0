@@ -1,214 +1,201 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2184430njb;
-        Mon, 3 Feb 2025 07:23:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXcIexdjb6rtTa5JjMptWgXQQ0bnD4/cm394AYmHhP9yEq6WRcXUTwvC89iE9vor6l3G9bE8Cb9Cux6/Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGIQzIz6puFSqpR6b8xNBTM4UF6Go6MV22gIVoKyWEyh2QZoUU2g2u5jgABYNcvZ5Urbe/V
-X-Received: by 2002:a05:622a:190a:b0:467:64ef:9da6 with SMTP id d75a77b69052e-46fd0a817b9mr258358341cf.10.1738596205137;
-        Mon, 03 Feb 2025 07:23:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738596205; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2269992njb;
+        Mon, 3 Feb 2025 09:31:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXUxI4Dozi6rM6tON4/+3CyI71WGdb9iV5LalOB4ArFoqSojvKqpgaTG1Yg3ZgmRAGG2qDqlnOwDgE5Pg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGAdCo7HP+iRsEWcwujYwrkDos9aUtH4ys98yIIZ1oe5AKHBPPnfsXN8EQkJQUsMD74F0PH
+X-Received: by 2002:a05:6102:304e:b0:4b2:5d65:6f0 with SMTP id ada2fe7eead31-4b9a51dde4dmr16936379137.19.1738603883390;
+        Mon, 03 Feb 2025 09:31:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738603883; cv=none;
         d=google.com; s=arc-20240605;
-        b=G6zfPsop8qdrB3qIuCNYsSg2nFCIS2/KqJjh4pDBzdWEfRFRVHkNqg6NhEksk30SkL
-         zLcbNzI44jWsfbi36C0cTfk2lm/uVKfCrJYIL40Etl3LnVUzlb4vJaeqLp1dtoGkBX7e
-         R1kE3lMqr813f2Jk0BKIXi6CH38JmrD6Jghz1j/tgXg0r0Z8utAD9brdq/3j0OdG3hgJ
-         9jcMDNvq6G/OQSA1LSbGQ+bQhptFseuo4dTTTGQzDxSRtxmN9OnaG2C82cgB56t9VdIn
-         gxoRdke3Im3XSX08PnTji+S69LSHvCHDJ8c4FlqBvnkN9rhNOCq5M9OrbT4AiT9uXSdA
-         Mb/Q==
+        b=Kzy4f4lC5g+UQ7GnLA2RhNFQfCwPgi94zn+sBLmyaXbPeS6LqSTFi3tj6D5YLAQqPN
+         okvNMnONPx+uO0fgKUh+MKfyqioD4IVJOXYLrrTIyUTNzExVe419BMKRbsvWfhggWKg0
+         13tgKsmZkfra7DrVpSmtIplk01gvbFW993xfNvHpN4tyHOpDf1Oyx0nJDDkolG7PZxvA
+         bDpOq18yG153UVhK5B/J52XxtgUiDgmgAhJNz1IWxYJLDhUgQVgKQNYk1sXGSSfLB5jS
+         T3LzpWfUWdWUL5wTxjLQnKnzIdwgBWl+dljZ2PRO9ruS4MR8zlQxgtt7+0HMGqDWgTPk
+         VLEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=IPyZM1t4JHDpUYVyrdVFxb2Um0jbsvrzJI4R8XaR9uA=;
-        fh=dPhNBwdzWJpXsduSXi07HRsbr725VRP7CO2uEv+C09Y=;
-        b=XSUu8MGoAgNy8iKj1V9yzDPN6mb9EyfFkAXW/LjBi8hJSRavAkJTiWUXooUdZ8jb56
-         4U+BeGuuMIuhfe7V5ZO7KQoPJ8v4SXKm9x6k3Mp5PM20jgtUEzIRefg2w0h+Npuj4ac+
-         0mW3PRdysC5cAchXW1C+I9CKIv92tdUEBxlHD6gk0CSK++yVAYACw0xPyuAVNgjYLQuB
-         be+pwOktzOVJs42R6W822qPPS34GKZ0K2L8lC5FYgAtfz4aydZfYuqaTwCzpQ2I8C9Sr
-         itTrJFyfr1EzhDvgNBRt2OQ0RlKhrafMxh1Z64SnHcG2Y2T98wG8bJFWBXTCoX+TXqnP
-         LN9A==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=fs2/YtuUkMTNUHhadv59WBCqZszBl4ju6IsvR5h7TRg=;
+        fh=HwnTF6OvZwhTwFNjBwwoNqXNCwhlqMndCVMzZKm4whg=;
+        b=PDmOlAWpd8flCHACIrQ/Z+TjUqdHx0XaexXzWKPtg0WqA2xk1sq/GhDFEMwYn3DIoT
+         /s9seqlStUH+L67gknPU6gh5H6lxSLoK4zoC9YEBMQjvpvGJOAyATzYOlyeBTMOiP9yf
+         hnjYzomJpOTyPRQcSIhcS+2r0EgO50AqcXCtc5MRet4RdC37GsWxYb9rdDQFGPNIkq1G
+         wuhCd6YVBNrQpktBpg29AHXbLCVbIvl6iUgSGpnAnjYQxD2zrRfT8D343By6+K9lXSnh
+         O1mw3m9fpBoKDtf+jmL44C2tFbkDTV6QoqLtmOD6lNPrezjJcnQMrjqCUfnBQkrNxKux
+         Z/Ig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BT5Y9aKd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016b7702dsi3525391cf.231.2025.02.03.07.23.25
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b9baea3bebsi2105188137.621.2025.02.03.09.31.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2025 07:23:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2025 09:31:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BT5Y9aKd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1teyHe-0001Xm-AH; Mon, 03 Feb 2025 10:22:47 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tf0Ht-00086M-Sa; Mon, 03 Feb 2025 12:31:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1teyHc-0001XX-D9
- for qemu-devel@nongnu.org; Mon, 03 Feb 2025 10:22:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tf0HZ-00080G-NW; Mon, 03 Feb 2025 12:31:01 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1teyHa-0006zf-UC
- for qemu-devel@nongnu.org; Mon, 03 Feb 2025 10:22:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738596161;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IPyZM1t4JHDpUYVyrdVFxb2Um0jbsvrzJI4R8XaR9uA=;
- b=BT5Y9aKd5DWb2pC8XWGDqUqZcDCFkDqeyyNWbi2szaMBLAarQ7JfOHcl7Ae6KNgpkvewt+
- ixqmLO/73wibcK8JONloz+d3KEA/th3S9gDrrSu1ObaUQlBsgmIHSas4udb3xZRR7I1jRP
- Lme1R+peTPvPdQnYSYwMCQV8JBawZP4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-695-EAkSJ1kKNbKewWzzT0Tvsw-1; Mon, 03 Feb 2025 10:22:39 -0500
-X-MC-Unique: EAkSJ1kKNbKewWzzT0Tvsw-1
-X-Mimecast-MFC-AGG-ID: EAkSJ1kKNbKewWzzT0Tvsw
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3862a49fbdaso1763172f8f.1
- for <qemu-devel@nongnu.org>; Mon, 03 Feb 2025 07:22:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738596158; x=1739200958;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IPyZM1t4JHDpUYVyrdVFxb2Um0jbsvrzJI4R8XaR9uA=;
- b=gwx8UrJ/Wtc1FowFDSA+PE77DAQTi1R2dQm1GJBT2YKftpc2HUTTdUMkJaPky7Weoe
- ggRCmUW0CihegcxHI9MQAzmEGrIifr/dJnUKrtnMaKCazgvWoYass/92HCFH2k24HC0t
- hWkkd0G4dZ7ZXKTJkfRMFIjflQHCM2Xd1YnTsyUM2yrtdAh7tjYZmnmcFMJTZE8nu2w1
- gnhZdvvQgWEUcmIoeRVtBVUIu1J2WZNSaP/PjNx344NimdPkh2/51ycINllNMYcITmis
- iaHZunCfJJ+jq/Xz0M8HwLhi1UxAdCJ1guVfI8ptp1bY1FZrYCWZOoiXkbEECCXu5Ifm
- XNXA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVnz5/vnG88bj15Fc+NbSpNFTu7WuHfuxi8Qafmcxyhj3oOjJoZEnC+f2jcNt7SoxzZ7eHelnr2rH39@nongnu.org
-X-Gm-Message-State: AOJu0YxaxN/Ox5mK1/Vh/GPJqEhw8V1xoUVyqL/tbnh9PoqfR6IZ3e+R
- xm9x5u2V+kX+GButT9ymhhHoUnE4MuJTFEC0sH5E/Jaz6PD2U4SO67PxX61gRw8PM9+KMkpmTzy
- s4T4ICayv2FWfwjIfGYT+q+8shUdVVMKxXKB9RmfVkJr/7zahwaiu
-X-Gm-Gg: ASbGncsJYR7e+TwHse/Stq9CAf3R/UgoSzcXWaI2+dVXOw30USFokTOaMV0IXdMVByp
- 8BSi3GjUnK1gMFrlpv1jirOX9yfUTmApLRN2+PJlF6Pr3k80756cWd/glu2je7iTlohfWfK2VTz
- bLhCZTd2hhPAYIoklw6ZJPDpQbCwkIHILewks4+rjxOT89gGzgYNJW6/DD7nJ5Cwbrkv0+oHhbN
- i17Nu/sJDZQ9Wh4uKDFGhsvAbL0K8XKkA21tu3FWlPwTaZIipDTyu+27KIi+XjkoWF1dOwWuS0R
- vrLysNIWcWOKHPuPb0WfHnLx+wouD1RK1H+CM8ToBpwoFoRW17ex
-X-Received: by 2002:a05:6000:4011:b0:385:e8b0:df13 with SMTP id
- ffacd0b85a97d-38c52095e20mr20768475f8f.40.1738596158367; 
- Mon, 03 Feb 2025 07:22:38 -0800 (PST)
-X-Received: by 2002:a05:6000:4011:b0:385:e8b0:df13 with SMTP id
- ffacd0b85a97d-38c52095e20mr20768432f8f.40.1738596157876; 
- Mon, 03 Feb 2025 07:22:37 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e23de772sm157161035e9.13.2025.02.03.07.22.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2025 07:22:37 -0800 (PST)
-Date: Mon, 3 Feb 2025 16:22:36 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
- =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
- support for error inject
-Message-ID: <20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250203110934.000038d8@huawei.com>
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
- <20250203110934.000038d8@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tf0HX-0005UB-5L; Mon, 03 Feb 2025 12:30:49 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YmtmH40d6z6K97v;
+ Tue,  4 Feb 2025 01:29:51 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id D18A01400CA;
+ Tue,  4 Feb 2025 01:30:41 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 3 Feb 2025 18:30:41 +0100
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+CC: <mst@redhat.com>, <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>,
+ <qemu-arm@nongnu.org>, Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru
+ Kitayama <itaru.kitayama@linux.dev>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH v12 qemu 0/2] arm/virt: CXL support via pxb_cxl
+Date: Mon, 3 Feb 2025 17:30:38 +0000
+Message-ID: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eJLBvRZZOsqx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qndPbrRbSMhT
 
-On Mon, 3 Feb 2025 11:09:34 +0000
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+Back in 2022, this series stalled on the absence of a solution to device
+tree support for PCI Expander Bridges (PXB) and we ended up only having
+x86 support upstream. I've been carrying the arm64 support out of tree
+since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+a few weeks ago) and a fair number of fiddly rebases.
+gitlab.com/jic23/qemu cxl-<latest date>
 
-> On Fri, 31 Jan 2025 18:42:41 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > Now that the ghes preparation patches were merged, let's add support
-> > for error injection.
-> > 
-> > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
-> > table and hardware_error firmware file, together with its migration code. Migration tested
-> > with both latest QEMU released kernel and upstream, on both directions.
-> > 
-> > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
-> >    to inject ARM Processor Error records.
-> > 
-> > If I'm counting well, this is the 19th submission of my error inject patches.  
-> 
-> Looks good to me. All remaining trivial things are in the category
-> of things to consider only if you are doing another spin.  The code
-> ends up how I'd like it at the end of the series anyway, just
-> a question of the precise path to that state!
+A recent discussion with Peter Maydell indicated that there are various
+other ACPI only features now, so in general he might be more relaxed
+about DT support being necessary. The upcoming vSMMUv3 support would
+run into this problem as well.
 
-if you look at series as a whole it's more or less fine (I guess you
-and me got used to it)
+I presented the background to the PXB issue at Linaro connect 2022. In
+short the issue is that PXBs steal MMIO space from the main PCI root
+bridge. The challenge is knowing how much to steal.
 
-however if you take it patch by patch (as if you've never seen it)
-ordering is messed up (the same would apply to everyone after a while
-when it's forgotten)
+On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+configuration of the PCI topology and QEMU can update the ACPI tables
+after EDK2 has done this when it can simply read the space used by the
+root ports. On device tree, there is no entity to figure out that
+enumeration so we don't know how to size the stolen region.
 
-So I'd strongly suggest to restructure the series (especially 2-6/14).
-re sum up my comments wrt ordering:
+Three approaches were discussed:
+1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+   3rd enumeration implementation that ends up out of sync with EDK2 and
+   the kernel (there are frequent issues because of how those existing
+   implementations differ.
+2) Figure out how to enumerate in kernel. I never put a huge amount of work
+   into this, but it seemed likely to involve a nasty dance with similar
+   very specific code to that EDK2 is carrying and would very challenging
+   to upstream (given the lack of clarity on real use cases for PXBs and
+   DT).
+3) Hack it based on the control we have which is bus numbers.
+   No one liked this but it worked :)
 
-0  add testcase for HEST table with current HEST as expected blob
-   (currently missing), so that we can be sure that we haven't messed
-   existing tables during refactoring.
-1. Introduce use_hest_addr (disabled) for now so we could place all
-   legacy code to !use_hest_addr branch
-2. then patches that do the part of switching to HEST addr lookup,
-    * ged lookup (preferably at the place it should end up eventually)
-    * legacy bios_linker/fwcfg fencing patches
-    * on top of that new hest bios_linker/fwcfg ones
-    * and then the rest 
-    (everything that belongs to the 2nd error source should _not_ be a part of that)
-3. add 2nd error source incl. necessary tests procedures introduce
-   and update DSDT/HEST
+The other little wrinkle would be the need to define full bindings for CXL
+on DT + implement a fairly complex kernel stack as equivalent in ACPI
+involves a static table, CEDT, new runtime queries via _DSM and a description
+of various components. Doable, but so far there is no interest on physical
+platforms. Worth noting that for now, the QEMU CXL emulation is all about
+testing and developing the OS stack, not about virtualization (performance
+is terrible except in some very contrived situations!)
 
+Back to posting as an RFC because there was some discussion of approach to
+modelling the devices that may need a bit of redesign.
+The discussion kind of died out on the back of DT issue and I doubt anyone
+can remember the details.
 
+https://lore.kernel.org/qemu-devel/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
 
-> 
-> Jonathan
-> 
+There is only a very simple test in here, because my intent is not to
+duplicate what we have on x86, but just to do a smoke test that everything
+is hooked up.  In general we need much more comprehensive end to end CXL
+tests but that requires a reaonsably stable guest software stack. A few
+people have expressed interest in working on that, but we aren't there yet.
+
+Note that this series has a very different use case to that in the proposed
+SBSA-ref support:
+https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
+
+SBSA-ref is a good choice if you want a relatively simple mostly fixed
+configuration.  That works well with the limited host system
+discoverability etc as EDK2 can be build against a known configuration.
+
+My interest with this support in arm/virt is support host software stack
+development (we have a wide range of contributors, most of whom are working
+on emulation + the kernel support). I care about the weird corners. As such
+I need to be able to bring up variable numbers of host bridges, multiple CXL
+Fixed Memory Windows with varying characteristics (interleave etc), complex
+NUMA topologies with wierd performance characteristics etc. We can do that
+on x86 upstream today, or my gitlab tree. Note that we need arm support
+for some arch specific features in the near future (cache flushing).
+Doing kernel development with this need for flexibility on SBSA-ref is not
+currently practical. SBSA-ref CXL support is an excellent thing, just
+not much use to me for this work.
+
+Thanks,
+
+Jonathan
+
+Jonathan Cameron (2):
+  hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+    pxb-cxl
+  qtest/cxl: Add aarch64 virt test for CXL
+
+ include/hw/arm/virt.h    |  4 +++
+ hw/arm/virt-acpi-build.c | 34 +++++++++++++++++++++++
+ hw/arm/virt.c            | 54 ++++++++++++++++++++++++++++++++++++
+ tests/qtest/cxl-test.c   | 59 +++++++++++++++++++++++++++++++---------
+ tests/qtest/meson.build  |  1 +
+ 5 files changed, 139 insertions(+), 13 deletions(-)
+
+-- 
+2.43.0
 

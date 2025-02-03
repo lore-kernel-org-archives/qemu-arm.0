@@ -1,155 +1,147 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2019287njb;
-        Mon, 3 Feb 2025 02:53:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbG0fcqqXSo/5A8gQxvZKuTCbEXd2wYK7AseeNPIdTgwkGnJi1+qQ4qXTIpBQi4oIWPlHD1MnfRgUFZQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5AxlkQct6YLxDUx3wXeNDN1LWt231h73a0K2jcdzcboAYUZGqoDq7KCk0NJAqA/ZqnoEA
-X-Received: by 2002:a05:6214:1c4c:b0:6d4:22d4:f5b0 with SMTP id 6a1803df08f44-6e243c678b8mr305745386d6.33.1738580032368;
-        Mon, 03 Feb 2025 02:53:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738580032; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2020233njb;
+        Mon, 3 Feb 2025 02:57:03 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXPHoakpzppumSzp4Nh1fVaPWfL3pksP1O+C1hC6jekCCFqf8OHXBOCiSeUY8uXYQ6aTXKz/cIj9RFRKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFF+SrbM1LEdrIzcNM/TsN3cQs/f2YAqu7nQkVius7micmtzHUniVPoZGSKcU4JDkX2Drp2
+X-Received: by 2002:a17:907:9452:b0:ab6:f997:216f with SMTP id a640c23a62f3a-ab6f9972265mr1665999566b.38.1738580223167;
+        Mon, 03 Feb 2025 02:57:03 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738580223; cv=pass;
         d=google.com; s=arc-20240605;
-        b=SUZkePwyHlxB3xngxein/blkB1klcyCeWuLw19ZcGtnncqDRMMbFCrHuK9AotrWFLF
-         T0jo3tN59Q9vanu+0pIBgIKsLHUu8/5+vzmxVmgqScs3SuRDQpsWuZOknq8t9mN1lEXx
-         wq6H3Fj+3JL1xFmWMsjBJP0MSPC3X+Z3GugepaF7a5Wt4+03pkEsIMjWirWaH0qsy5mr
-         AWxPA2Q2LWmMjoXHtujv0CNnBHTODW3JDcUuMVR/qTSzTzz/iyC/OaWeQywZey5Rb6OF
-         kA9ifwaagzd1315CeEatNG5rjAv+xTEjwI+WuePhSsHfzVNcJoNV95A1dUqIswtz9pg3
-         0/3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=CWKwx0X5Bg1LqBJDXJHxBqc38Cb7t5iKZ1DHNAwUcTQ=;
-        fh=t/xybFWV2B884dK2bO1HGz5LnOWlFKzKgenI2zgFzYc=;
-        b=HGj0uxOn/15ufbgoOF273oTZU5lItqY09zEU9QFNrh4oce8OGWNRtxFtyYc5Ph6wdK
-         QdOSecZ9ijruR2xyDmuLxvAO/A3Yrklo2g3jsE4VhyqpU6DbTB+IEGT6wiBdUU8SfEKp
-         khG4ctoEc4u96XPGitwo3SKCzSZOVDj30P1Vne/1nXDL1FwnVR1z8va6QwGALeal0NXN
-         wkZeXsF9BeZvQER32Y9MkSxefXj85zRA/KQNCcBEpZFYuYbKqEJUm9DjYYQYcffgb5lH
-         zso3YEvQyBDvH/dgOKVUf6PYpwciemCc/Q4WDbcML75J+CLgSXrMX+LDs7EjKJ3Rv4J6
-         qC+Q==;
+        b=RCIhrFUtq3Zr/RBYKX9hqnG8aNWGkAc+qdL4D3qOgL6ZFJtiiNwIAOMiNqLwaqB0Bt
+         s3IU2bfq/VO9pszn6ICQJjyDsD6bExvdD7bpkHhVqY6jOmsXDzGui5TDeK3GQLYv6KQb
+         5HWXWtfqtA3HDZShmDUPevIhmqgYhkLdIIi2RLYmTS4UiskM8MYqiD7dR8Lf/K7TVOJ8
+         LyP0w70haTNcQic0eB+XK8KJF1l098lj5GPLnKcvOxqtnTTIrxBgj3e6ygHMQ8MjQ3K6
+         rvbwtiNGrU3SiwCkruhipvh8EpYK2qHybmyynMVgJEOozYeSciKGXDlUWuYfBBUlpQxX
+         20kQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=ZelkZYbmIeiDYu+lhC9THFE79bDxr1zcuB01eRzo0pE=;
+        fh=bTxaO08wtvbJXRrHkcGdgejP+oTHP3V5Nlsfit6+Mc8=;
+        b=QdAvSvrRG+O/iqlExqxlVc4azg+Uv76NPJtHvpApEReG+4WuAu1J4eL+mQ3jjNidUT
+         sQKtsL6VsQshX7E+zjymY1EE7pg0ObeKXTJQ57CzwJzWGpGwVn1TWT9H78f8WVBPfgW2
+         iIWG+DgDiHJZtmInnHOL0dGD14jO068eLTS7k6VObwJP1Ve8QWOHVUYkFtFKqZLfCtKx
+         7t7rLDTUmz6Y1M2Uhhpf56mWIbksfyXpTaKum1apc25iDlu25/EUiAfX1LdZO4hgizAq
+         /mKSS7+Omk7j92Bd+8iI8+ZjNbjW3A00AFwjfOFThbibWwmes/u5HhkTnZkgxhWfh628
+         4v7w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e25481357fsi91883586d6.97.2025.02.03.02.53.52
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ab6e49feab4si815034566b.400.2025.02.03.02.57.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2025 02:53:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Feb 2025 02:57:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1teu5E-0002rs-IY; Mon, 03 Feb 2025 05:53:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1teu5C-0002r5-4r; Mon, 03 Feb 2025 05:53:38 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1teu59-0001oP-3u; Mon, 03 Feb 2025 05:53:37 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ymjy24lQrz67CtD;
- Mon,  3 Feb 2025 18:52:42 +0800 (CST)
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 306801881EE8
+	for <alex.bennee@linaro.org>; Mon,  3 Feb 2025 10:57:06 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id AC40E20125F;
+	Mon,  3 Feb 2025 10:56:56 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E4C5200BA9
+	for <linux-kernel@vger.kernel.org>; Mon,  3 Feb 2025 10:56:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738580216; cv=none; b=f4LWEaHMbgEes3QOP8CnJZcOb8Z3OALr3n1ER4/ral9G1ercEJ7ytWXKX9gJGOfaTJEg006odorKeL+hgMl8c7xPNi3yxN6rzvkGmRFL75xiUWUYxVlumk1JvdJ2zIpdgDmzVZjqJQ2UGp1h70FhHhCTaNFS/nuRjuo34Ev55GA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738580216; c=relaxed/simple;
+	bh=6Gku+OxZtx1iIVCtDG2FF9RHz0J4dQ/SCQFGW64ivY0=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=tEIPQBbDiXzeG2AlyCrNqAbze60r317wf5MzbQ+WImm3Rz0B8m4nWTFav9goNMhwuGK8Avn5nbR6JMd5sJrNDIw/rdJX1LvSaKpjI7njy6yO2jp7zr3oWMMMQ2UrJIKVVqBKScyb3o+8wy9MiV8KiqBO4E796Z8IZpl/kW5/vqg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ymjzx2xtgz6L4xr;
+	Mon,  3 Feb 2025 18:54:21 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 30758140155;
- Mon,  3 Feb 2025 18:53:32 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 1F2FB140B73;
+	Mon,  3 Feb 2025 18:56:53 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 3 Feb
- 2025 11:53:31 +0100
-Date: Mon, 3 Feb 2025 10:53:30 +0000
+ 2025 11:56:52 +0100
+Date: Mon, 3 Feb 2025 10:56:51 +0000
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, Ani Sinha <anisinha@redhat.com>,
- <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3 12/14] tests/acpi: virt: add a HEST table to aarch64
- virt and update DSDT
-Message-ID: <20250203105330.00002c99@huawei.com>
-In-Reply-To: <343a2a84c1cf4a3998d40a188658bd42bc689602.1738345063.git.mchehab+huawei@kernel.org>
+	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, John Snow
+	<jsnow@redhat.com>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3 14/14] scripts/ghes_inject: add a script to generate
+ GHES error inject
+Message-ID: <20250203105651.00001a4e@huawei.com>
+In-Reply-To: <80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
 References: <cover.1738345063.git.mchehab+huawei@kernel.org>
- <343a2a84c1cf4a3998d40a188658bd42bc689602.1738345063.git.mchehab+huawei@kernel.org>
+	<80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
 X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
  frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ndmd1IjU6AKT
+X-TUID: 9APJ8kEsBiHS
 
-On Fri, 31 Jan 2025 18:42:53 +0100
+On Fri, 31 Jan 2025 18:42:55 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> --- a/DSDT.dsl        2025-01-28 09:38:15.155347858 +0100
-> +++ b/DSDT.dsl        2025-01-28 09:39:01.684836954 +0100
-> @@ -9,9 +9,9 @@
->   *
->   * Original Table Header:
->   *     Signature        "DSDT"
-> - *     Length           0x00001516 (5398)
-> + *     Length           0x00001542 (5442)
->   *     Revision         0x02
-> - *     Checksum         0x0F
-> + *     Checksum         0xE9
->   *     OEM ID           "BOCHS "
->   *     OEM Table ID     "BXPC    "
->   *     OEM Revision     0x00000001 (1)
-> @@ -1931,6 +1931,11 @@
->                  {
->                      Notify (PWRB, 0x80) // Status Change
->                  }
-> +
-> +                If (((Local0 & 0x10) == 0x10))
-> +                {
-> +                    Notify (GEDD, 0x80) // Status Change
-> +                }
->              }
->          }
+> Using the QMP GHESv2 API requires preparing a raw data array
+> containing a CPER record.
 > 
-> @@ -1939,6 +1944,12 @@
->              Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
->              Name (_UID, Zero)  // _UID: Unique ID
->          }
-> +
-> +        Device (GEDD)
-> +        {
-> +            Name (_HID, "PNP0C33" /* Error Device */)  // _HID: Hardware ID
-> +            Name (_UID, Zero)  // _UID: Unique ID
-> +        }
->      }
->  }
+> Add a helper script with subcommands to prepare such data.
+> 
+> Currently, only ARM Processor error CPER record is supported, by
+> using:
+> 	$ ghes_inject.py arm
+> 
+> which produces those warnings on Linux:
+> 
+> [  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
+> [  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
+> [  774.866583] {4}[Hardware Error]: event severity: recoverable
+> [  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
+> [  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
+> [  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
+> [  774.867189] {4}[Hardware Error]:   running state: 0x0
+> [  774.867321] {4}[Hardware Error]:   Power State Coordination Interface state: 0
+> [  774.867511] {4}[Hardware Error]:   Error info structure 0:
+> [  774.867679] {4}[Hardware Error]:   num errors: 2
+> [  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
+> [  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
+> [  774.868124] {4}[Hardware Error]:     transaction type: Data Access
+> [  774.868280] {4}[Hardware Error]:     cache error, operation type: Data write
+> [  774.868465] {4}[Hardware Error]:     cache level: 2
+> [  774.868592] {4}[Hardware Error]:     processor context not corrupted
+> [  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
+> 
+> Such script allows customizing the error data, allowing to change
+> all fields at the record. Please use:
+> 
+> 	$ ghes_inject.py arm -h
+> 
+> For more details about its usage.
 > 
 > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Diff looks good.
+
+Thanks for examples.  Given my poor python skills take this one with
+a pinch of salt.
 
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>

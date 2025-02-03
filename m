@@ -1,92 +1,99 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2020233njb;
-        Mon, 3 Feb 2025 02:57:03 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXPHoakpzppumSzp4Nh1fVaPWfL3pksP1O+C1hC6jekCCFqf8OHXBOCiSeUY8uXYQ6aTXKz/cIj9RFRKw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFF+SrbM1LEdrIzcNM/TsN3cQs/f2YAqu7nQkVius7micmtzHUniVPoZGSKcU4JDkX2Drp2
-X-Received: by 2002:a17:907:9452:b0:ab6:f997:216f with SMTP id a640c23a62f3a-ab6f9972265mr1665999566b.38.1738580223167;
-        Mon, 03 Feb 2025 02:57:03 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738580223; cv=pass;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2027568njb;
+        Mon, 3 Feb 2025 03:09:48 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUAMmR3xLPDI5RCf4pKhIATT3gDh+RGEzzoxdDUX9ooJ43DxaCRk39oPHucL3VAFtHluSS+QHSBEyfAsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IERSetb5uU18Lt8NxG711Ex1UmZa5sksRHarNpfOlrf0EacMfjfqeA8nTN7op6CxCo6tdoj
+X-Received: by 2002:a05:620a:2848:b0:7b1:12f5:7af5 with SMTP id af79cd13be357-7bffccca567mr2920021885a.3.1738580987809;
+        Mon, 03 Feb 2025 03:09:47 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738580987; cv=pass;
         d=google.com; s=arc-20240605;
-        b=RCIhrFUtq3Zr/RBYKX9hqnG8aNWGkAc+qdL4D3qOgL6ZFJtiiNwIAOMiNqLwaqB0Bt
-         s3IU2bfq/VO9pszn6ICQJjyDsD6bExvdD7bpkHhVqY6jOmsXDzGui5TDeK3GQLYv6KQb
-         5HWXWtfqtA3HDZShmDUPevIhmqgYhkLdIIi2RLYmTS4UiskM8MYqiD7dR8Lf/K7TVOJ8
-         LyP0w70haTNcQic0eB+XK8KJF1l098lj5GPLnKcvOxqtnTTIrxBgj3e6ygHMQ8MjQ3K6
-         rvbwtiNGrU3SiwCkruhipvh8EpYK2qHybmyynMVgJEOozYeSciKGXDlUWuYfBBUlpQxX
-         20kQ==
+        b=Z3AJCyjcZRL/RgMzGHefsfEXKo0UXZu4AxmSGSaAxXcA30DzKn5sxGM1wwgAsXDtSv
+         xakQ1+x9cmoKlxZrMH6skBUsZ+NzAFC1E0IVpvletfoJ/JBt1JYdiepUONM6wOW067CB
+         bCxW9IgvwX+rEpo4TLMlE4baT4eyWCY7mkkSEXzyr78XxDqOZKgtaYN7yo/P/QDymizO
+         PYRWuRa0IgNDJVcIYMPGACru7sT8kCdy+s8nz33GX+RkYuLPnVVmL3/qULoy+2KuNsAF
+         3F5YW73LmGetg9Q49/c0kp8n8FSM8mBxAdao3XMYCtPJYG5vb8Q7RTPHmPMLwYUmyy2o
+         lJMQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date;
-        bh=ZelkZYbmIeiDYu+lhC9THFE79bDxr1zcuB01eRzo0pE=;
-        fh=bTxaO08wtvbJXRrHkcGdgejP+oTHP3V5Nlsfit6+Mc8=;
-        b=QdAvSvrRG+O/iqlExqxlVc4azg+Uv76NPJtHvpApEReG+4WuAu1J4eL+mQ3jjNidUT
-         sQKtsL6VsQshX7E+zjymY1EE7pg0ObeKXTJQ57CzwJzWGpGwVn1TWT9H78f8WVBPfgW2
-         iIWG+DgDiHJZtmInnHOL0dGD14jO068eLTS7k6VObwJP1Ve8QWOHVUYkFtFKqZLfCtKx
-         7t7rLDTUmz6Y1M2Uhhpf56mWIbksfyXpTaKum1apc25iDlu25/EUiAfX1LdZO4hgizAq
-         /mKSS7+Omk7j92Bd+8iI8+ZjNbjW3A00AFwjfOFThbibWwmes/u5HhkTnZkgxhWfh628
-         4v7w==;
+        bh=C7zM+8af4T99S8fqUcVv6ljtkBg2KiZlM5j15XT7qwc=;
+        fh=eZCBP7L04dt+2kko+/C3/mgY8GtACAxKJoLY00aUXqo=;
+        b=D9DQrCR7dNvlqSkWCMl8ajXsCtPr4abBPvj/oorxoYN23e1R62cuoyMlie/LUJmR//
+         1vLhOwUxlQlAMGELnCUG62+BtWRfnZHJrATar3pzaGTDxOj0JgHgVsDySIVGFDl36YUo
+         oJH3FwTlyuwuILzbwD/KgwkY9eUROUF1LaaLvOq6CZaUSjMLwDBZHUdSC0lWmoBygAah
+         apE+YtllCGznmCS830Wgcs5vaP3+kee5ChDQze4iOUaLYYJOWcALihcdwrEbi9vsIXB2
+         lst29LldiolZE1/VnmjZW3Lp/ft6HyfuTeSyIM8zqn9MnNSq+G0+sbfsQpm7msoMalXI
+         HAFA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
        arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ab6e49feab4si815034566b.400.2025.02.03.02.57.02
+       spf=pass (google.com: domain of linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7c02d3a76f6si7356485a.25.2025.02.03.03.09.47
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Feb 2025 02:57:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Mon, 03 Feb 2025 03:09:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
        arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496365-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+       spf=pass (google.com: domain of linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-496389-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 306801881EE8
-	for <alex.bennee@linaro.org>; Mon,  3 Feb 2025 10:57:06 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D4C48166E9A
+	for <alex.bennee@linaro.org>; Mon,  3 Feb 2025 11:09:46 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AC40E20125F;
-	Mon,  3 Feb 2025 10:56:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id CD4ED202C2A;
+	Mon,  3 Feb 2025 11:09:41 +0000 (UTC)
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E4C5200BA9
-	for <linux-kernel@vger.kernel.org>; Mon,  3 Feb 2025 10:56:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8BD17200BA9;
+	Mon,  3 Feb 2025 11:09:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738580216; cv=none; b=f4LWEaHMbgEes3QOP8CnJZcOb8Z3OALr3n1ER4/ral9G1ercEJ7ytWXKX9gJGOfaTJEg006odorKeL+hgMl8c7xPNi3yxN6rzvkGmRFL75xiUWUYxVlumk1JvdJ2zIpdgDmzVZjqJQ2UGp1h70FhHhCTaNFS/nuRjuo34Ev55GA=
+	t=1738580981; cv=none; b=OHW7M/3AQha2gDSP7Ll6Crmmc7CJs7WEv2vVeG+DRnzdUbJ8XNObArailei1mprxHkYEK5gxOR68p9yEHyfNkg2FujQ+LyGHxPZdUAvIYySSXVxN0WaRfjC3Yg8bouFsJPfv3hflDZETFVlMLOg5m/fF42rhqNPouxfwsjVMRh8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738580216; c=relaxed/simple;
-	bh=6Gku+OxZtx1iIVCtDG2FF9RHz0J4dQ/SCQFGW64ivY0=;
+	s=arc-20240116; t=1738580981; c=relaxed/simple;
+	bh=Soq1uLZt3ko9Dff3dPj50jjbJTQ3V9DCd0zHsJThs3U=;
 	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=tEIPQBbDiXzeG2AlyCrNqAbze60r317wf5MzbQ+WImm3Rz0B8m4nWTFav9goNMhwuGK8Avn5nbR6JMd5sJrNDIw/rdJX1LvSaKpjI7njy6yO2jp7zr3oWMMMQ2UrJIKVVqBKScyb3o+8wy9MiV8KiqBO4E796Z8IZpl/kW5/vqg=
+	 MIME-Version:Content-Type; b=agL4dvVpFdeN+jR5FSq/sNJbYIUY7xtc0YL8FMUTLy+M+KsgP3FMP2juo7eK8TH57ufCDPy9kaC79fzG6d/9VEgZiECriR8CQ/cYTlDu9j1yX81uqcBvi+GWSsuI9zCIKbHqmI1OIBGb4Yrno+gwoH5A4aQebrK+wyDgtAnMjWw=
 ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ymjzx2xtgz6L4xr;
-	Mon,  3 Feb 2025 18:54:21 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YmkH01cnbz6M4S4;
+	Mon,  3 Feb 2025 19:07:24 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1F2FB140B73;
-	Mon,  3 Feb 2025 18:56:53 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id D421A140A34;
+	Mon,  3 Feb 2025 19:09:36 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 3 Feb
- 2025 11:56:52 +0100
-Date: Mon, 3 Feb 2025 10:56:51 +0000
+ 2025 12:09:35 +0100
+Date: Mon, 3 Feb 2025 11:09:34 +0000
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
 	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, John Snow
-	<jsnow@redhat.com>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3 14/14] scripts/ghes_inject: add a script to generate
- GHES error inject
-Message-ID: <20250203105651.00001a4e@huawei.com>
-In-Reply-To: <80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
+	<qemu-devel@nongnu.org>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	<philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>, Cleber Rosa
+	<crosa@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eduardo Habkost
+	<eduardo@habkost.net>, Eric Blake <eblake@redhat.com>, John Snow
+	<jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, "Markus
+ Armbruster" <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
+	Zhao Liu <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250203110934.000038d8@huawei.com>
+In-Reply-To: <cover.1738345063.git.mchehab+huawei@kernel.org>
 References: <cover.1738345063.git.mchehab+huawei@kernel.org>
-	<80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -98,50 +105,26 @@ Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
  frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: 9APJ8kEsBiHS
+X-TUID: GHNfIP9ynBX1
 
-On Fri, 31 Jan 2025 18:42:55 +0100
+On Fri, 31 Jan 2025 18:42:41 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Using the QMP GHESv2 API requires preparing a raw data array
-> containing a CPER record.
+> Now that the ghes preparation patches were merged, let's add support
+> for error injection.
 > 
-> Add a helper script with subcommands to prepare such data.
+> On this series, the first 6 patches chang to the math used to calculate offsets at HEST
+> table and hardware_error firmware file, together with its migration code. Migration tested
+> with both latest QEMU released kernel and upstream, on both directions.
 > 
-> Currently, only ARM Processor error CPER record is supported, by
-> using:
-> 	$ ghes_inject.py arm
+> The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+>    to inject ARM Processor Error records.
 > 
-> which produces those warnings on Linux:
-> 
-> [  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-> [  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-> [  774.866583] {4}[Hardware Error]: event severity: recoverable
-> [  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
-> [  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
-> [  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
-> [  774.867189] {4}[Hardware Error]:   running state: 0x0
-> [  774.867321] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-> [  774.867511] {4}[Hardware Error]:   Error info structure 0:
-> [  774.867679] {4}[Hardware Error]:   num errors: 2
-> [  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
-> [  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
-> [  774.868124] {4}[Hardware Error]:     transaction type: Data Access
-> [  774.868280] {4}[Hardware Error]:     cache error, operation type: Data write
-> [  774.868465] {4}[Hardware Error]:     cache level: 2
-> [  774.868592] {4}[Hardware Error]:     processor context not corrupted
-> [  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-> 
-> Such script allows customizing the error data, allowing to change
-> all fields at the record. Please use:
-> 
-> 	$ ghes_inject.py arm -h
-> 
-> For more details about its usage.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> If I'm counting well, this is the 19th submission of my error inject patches.
 
-Thanks for examples.  Given my poor python skills take this one with
-a pinch of salt.
+Looks good to me. All remaining trivial things are in the category
+of things to consider only if you are doing another spin.  The code
+ends up how I'd like it at the end of the series anyway, just
+a question of the precise path to that state!
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Jonathan

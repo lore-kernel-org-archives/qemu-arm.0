@@ -1,314 +1,367 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2237010njb;
-        Mon, 3 Feb 2025 08:41:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXKKxcIwUP9XpQ/AJpxNDK94IHAZkw4PkxgCHGSYJi8fUXYvVAljrjxx0R80CmU9HHCx5n8/4yjNYKz7g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHo1WNUJs/HOFTvorzqXVnBqZAz73BI1BGUDeQkNiyb0O4+oDfy3HSl+EcTycAtTNND/vRp
-X-Received: by 2002:a05:6102:1609:b0:4b2:9e5d:baf with SMTP id ada2fe7eead31-4b9b7225816mr10812340137.11.1738600899087;
-        Mon, 03 Feb 2025 08:41:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738600899; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2270193njb;
+        Mon, 3 Feb 2025 09:31:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCViIUYIzzv3jjGgdQdYN2ySE9lLbzghtFXWnyyXJWgkGUO6VHCA4JV0/aisWKTJ/UM+BIzj90NszVax8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdZAse1hkSUkvbrdpcMUupVmPS2gSnH7JEsEMMAvmxiu5Oyp6h1BYhtdPCaksZoLIcoagk
+X-Received: by 2002:a05:6102:161e:b0:4af:e643:e1e5 with SMTP id ada2fe7eead31-4b9a4ec8ba6mr17324217137.2.1738603898979;
+        Mon, 03 Feb 2025 09:31:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738603898; cv=none;
         d=google.com; s=arc-20240605;
-        b=TOkjVmyX78fbcenYMMuWLAavvYyb/p8JgmiWmTd9sIqbTBF7AzFIt1KVs6Humt2Hhu
-         Ym3/ntp02pfjVuTEwQPdC2aY6OOAqRoIacGtnCuqbRbOMUxZ/BrI7iDPvv10C3kbuh2C
-         HMkfDTwRq4Z97ZN8wBtH7WWJ6sU1V2iLvsMTNZTc1Xtu6BJWn1KItgC+w9ZaXSz2BQiA
-         2NuMVofNKTv8hKfDflOckQEhXxZSVTIpPRO3qrhIhIEh2PJmv8Ek0TKIrxmmPceMxKic
-         aNrYZUBXQXy8OnS+kdm7Bt7QpO0W8DHXz02WY+iIK27ev2MJzcQhzRYnXZPWP1tF1iAu
-         fnBg==
+        b=fQp54D8UbNf/ozh5Oh3sc6C9nQAQ9iVeIMYMrdcnq/NN1FkSQxwpEXeTPxYqF2wIkH
+         ijrTmKhKkDTPy2/ainH8IfM66wDUMdsV6csPxoixjZc6wk8Sk2YA4VrAXNeft4onWN9h
+         gIHZFp38/fxKShQal5BB9iwg2VDjAmag+8ktu3JW7IrvsKGtwcwQqbZF1kH3lHRycv1o
+         x5KDrSPe7guzG8u/3bNa1sUFFy3dpOYuyx8cBJj3K7iEVLGu8YXpCEGikG6mZ1L/mAcC
+         pTFrvStTOs49rW723e5p9CvzD0BHabqxkL5y0u/gH80SZ6XgytLcZ8kaSi5VpEcd5dLc
+         shOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=deP0TVM+Uq6KcTITWVx+Nfx0o4bPFnV/VRl8WWgRPGY=;
-        fh=ezDvWzhoazIIb9TwNYuNwEnM2zYTVzoQPnPbf/YpIEU=;
-        b=U4hXhdiwIKJ4b2RLZDcIaXfNazVUzaJ3EGncyhLLZKY5LR4c98iMSjPKCfnZXi/qqo
-         kMAlNEloTxxlo7a0nYSNzYwqD3EAjp8elXncagZLmLSqlRv0HtAA7G9MKA58dMtuOvTx
-         NVC83bDgTD785LeW94q8QYmOtAYupbDyGM4l2bXV5MrmjWSOEayMI92UloMHKB0a5bEB
-         bMHn+nWi3XIfA9iEk5aMBH0T3YqLkPYd3V5ZCb69xgeEDOjRzrvHuo1lBMZUQVTbd0MC
-         O5Zw40jEVhsXXoL3ErYqB5up7XkGCLKrsyvn6YNT3IlVazXoeKd4qeJKESoITMb97k3Z
-         dsBQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=VOMcHwxHzo8e4jvXhaECTZv8xB1fqFEGqUtWeYzGiSs=;
+        fh=HwnTF6OvZwhTwFNjBwwoNqXNCwhlqMndCVMzZKm4whg=;
+        b=b4AhcAhh9+vnLDSNHauHw/4OPmFhInsduBS3YJbmY0rvpI5EXHzU51WqhQZNQmBxlx
+         DtYmliXXmOhjDaknVWXT2bCeJpBRz4gSxjuLeBgkBUKmcOmewucNCuChjgW4ON9JPIjN
+         2BfxFryizKlXTTrYfDkmGSI1I3Jcqr3sI99eOm7MdHwQzVI/pmPUEUryfb7kLnyaSMmV
+         raTk3hgbPKzldhCiK0Y8Mwd4mxBAsyl85+BDap74I7HygDF5krocBYAlwCcccX/8Aoo6
+         cB8qWHl1bdM5YlTJBGPF658vk8AgL52UElajA9kSmeLBUxRzsFp8JQ6dk0OrpajvSkwB
+         wWrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GjRjcujm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b9baa65074si2339741137.133.2025.02.03.08.41.38
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b9baab0f9fsi1940476137.181.2025.02.03.09.31.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2025 08:41:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2025 09:31:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GjRjcujm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tezVW-0006DC-RQ; Mon, 03 Feb 2025 11:41:10 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tf0IF-0008NJ-KA; Mon, 03 Feb 2025 12:31:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tezVQ-0006C9-PY
- for qemu-devel@nongnu.org; Mon, 03 Feb 2025 11:41:04 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tezVO-0007iq-Gq
- for qemu-devel@nongnu.org; Mon, 03 Feb 2025 11:41:04 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4361c705434so34462425e9.3
- for <qemu-devel@nongnu.org>; Mon, 03 Feb 2025 08:41:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738600861; x=1739205661; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=deP0TVM+Uq6KcTITWVx+Nfx0o4bPFnV/VRl8WWgRPGY=;
- b=GjRjcujm1Vv07EiivoKCPJsJouVrmrA8WjuWnDD/SzJEHCDEFZVbzr6TuTzMeZ53tN
- QEFzabeGiUDTe3cvl19DPSnm6DzVL0xwIdnB3mLwzVUL/K1BSYznZH/mv/0N9yQqB5K6
- nMCzxtxH6pXBzo46ELW0lD9sR83DrRktELyauJl+i+cBa2CJxij+KJZC9RfMey4aVoEG
- jdjdemcwatvlxV+y/S+//P56k7yn3fFzTVVDaX7b2IH7knjcQ7Nyr4a6NDPpG1nY5mKw
- Tce/CRvRhsIYW9jKhT7V9gty7Yrk67AC5rE/ZeFZAwNBq7csqX/y/YZ1mbE0eBB5hq0D
- M3+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738600861; x=1739205661;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=deP0TVM+Uq6KcTITWVx+Nfx0o4bPFnV/VRl8WWgRPGY=;
- b=gCLWja+TxWCFXgPQ0BSOv0UKG+qs0QO8uqkVO+/CkgAKyx9yBpiFS46T6+MCbdI46U
- 4PYfs/I1Gago+6b8eEDGeA2ZKqLJwuO1DIDQdeGyOM1dk2PDZoP/URPzY8Qw1rXJckvy
- q45u6sV5OV7Q99Z67h+Uk6jSl6rZkI/rxOG3/8Kg/nZQh6pOY6Di4X23Fhk+Iludb9Io
- joftn40N0Ee71q5Xt8SVnSwvyN8dJ7WfwXD47UShBiMF6Dg+AFie7Wa+X/EPdH1A0o2T
- YWoK4i2EMx//B4RwjZGM5ljWatfMKfH7B1N9zYbMlO1MGPH9lXCBRWuL8WCN1pYbDVZk
- Awxw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWL+Fg7anBUyAIAITT7/KunCNF86tlpEimbIhvb6bX+5z6X3IE0+34Ufn17v3niRLWdiZqS9VtrACjk@nongnu.org
-X-Gm-Message-State: AOJu0YxHOvzwnr/rBEgVGPtP7IY+7HDKdezE/zvIw6Kf36dx0DykLBwo
- 69vpzUTUaWB627eWJQsB0l1zWzUyhUlb8RgHOFzylhviMaZZHM8aE+dkF991bLE=
-X-Gm-Gg: ASbGncvDXYY9AKva29SYmHtJDpKfYFDvEYD27HmHnZkLa1YtMI7RXpoTURJ7gSREs5o
- PF7xt80y/hZejY1SQDpKKfUAoZBSaz6GFmLB/7QtGACFsA1SMUtQ9JzTiYuVym7w8ei3mKOFffO
- omKpgYKl2iGHNItkcrN0/r1mDX5dqlClra1+oPeAESXopeyNwbhsmXrAyX9suv2b+0nSbAy5/lN
- LlRK8l5KmbNMPDZQMv6rW/msYn+wimNa8jHr0+epVZPA23f7swG6YKG628efEO+UoNwIqWaYpuY
- s23Bh6DHg/EVk2KkLsdTGR1dX+bPca6EFyFq633OrbcSUMVFYqF/7FExj/c=
-X-Received: by 2002:a05:600c:4e01:b0:435:136:75f6 with SMTP id
- 5b1f17b1804b1-438dc34b179mr224375625e9.0.1738600860883; 
- Mon, 03 Feb 2025 08:41:00 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c5c1cf2eesm13074468f8f.85.2025.02.03.08.40.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Feb 2025 08:41:00 -0800 (PST)
-Message-ID: <1e8f3190-cf23-4eeb-a5fd-189f61a834b6@linaro.org>
-Date: Mon, 3 Feb 2025 17:40:59 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tf0I2-0008EU-Pz; Mon, 03 Feb 2025 12:31:24 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tf0Hz-0005ZP-Kf; Mon, 03 Feb 2025 12:31:17 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ymtkw1zCCz6L4yq;
+ Tue,  4 Feb 2025 01:28:40 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id D32F61400CA;
+ Tue,  4 Feb 2025 01:31:12 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 3 Feb 2025 18:31:12 +0100
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+CC: <mst@redhat.com>, <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>,
+ <qemu-arm@nongnu.org>, Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru
+ Kitayama <itaru.kitayama@linux.dev>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH v12 qemu 1/2] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Date: Mon, 3 Feb 2025 17:30:39 +0000
+Message-ID: <20250203173040.145763-2-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
+References: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/17] aspeed/soc: Add AST2700 support
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240604054438.3424349-1-jamin_lin@aspeedtech.com>
- <20240604054438.3424349-14-jamin_lin@aspeedtech.com>
- <ffafbec0-db25-478b-8eba-39162f9bce0d@linaro.org>
- <SI2PR06MB5041F84077718CE5A58B8F54FCF52@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <SI2PR06MB50417A6E45521504224146A9FCF52@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <SI2PR06MB50417A6E45521504224146A9FCF52@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MSMOYesqkQll
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2/bMcDLAxJby
 
-On 3/2/25 08:43, Jamin Lin wrote:
-> Hi Philippe,
-> 
->> From: Jamin Lin
->> Sent: Monday, February 3, 2025 3:29 PM
->> To: Philippe Mathieu-Daudé <philmd@linaro.org>; Cédric Le Goater
->> <clg@kaod.org>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery
->> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; Alistair
->> Francis <alistair@alistair23.me>; Cleber Rosa <crosa@redhat.com>; Wainer
->> dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal
->> <bleal@redhat.com>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open
->> list:All patches CC here <qemu-devel@nongnu.org>; Jinjie Ruan
->> <ruanjinjie@huawei.com>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->> <yunlin.tang@aspeedtech.com>
->> Subject: RE: [PATCH v5 13/17] aspeed/soc: Add AST2700 support
->>
->> Hi Philippe,
->>
->>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> Sent: Thursday, January 30, 2025 11:14 PM
->>> To: Jamin Lin <jamin_lin@aspeedtech.com>; Cédric Le Goater
->>> <clg@kaod.org>; Peter Maydell <peter.maydell@linaro.org>; Andrew
->>> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>;
->>> Alistair Francis <alistair@alistair23.me>; Cleber Rosa
->>> <crosa@redhat.com>; Wainer dos Santos Moschetta
->> <wainersm@redhat.com>;
->>> Beraldo Leal <bleal@redhat.com>; open list:ASPEED BMCs
->>> <qemu-arm@nongnu.org>; open list:All patches CC here
->>> <qemu-devel@nongnu.org>; Jinjie Ruan <ruanjinjie@huawei.com>
->>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->>> <yunlin.tang@aspeedtech.com>
->>> Subject: Re: [PATCH v5 13/17] aspeed/soc: Add AST2700 support
->>>
->>> Hi Jamin,
->>>
->>> On 4/6/24 07:44, Jamin Lin wrote:
->>>> Initial definitions for a simple machine using an AST2700 SOC
->>>> (Cortex-a35
->>> CPU).
->>>>
->>>> AST2700 SOC and its interrupt controller are too complex to handle
->>>> in the common Aspeed SoC framework. We introduce a new ast2700 class
->>>> with instance_init and realize handlers.
->>>>
->>>> AST2700 is a 64 bits quad core cpus and support 8 watchdog.
->>>> Update maximum ASPEED_CPUS_NUM to 4 and ASPEED_WDTS_NUM to 8.
->>>> In addition, update AspeedSocState to support scuio, sli, sliio and intc.
->>>>
->>>> Add TYPE_ASPEED27X0_SOC machine type.
->>>>
->>>> The SDMC controller is unlocked at SPL stage.
->>>> At present, only supports to emulate booting start from u-boot stage.
->>>> Set SDMC controller unlocked by default.
->>>>
->>>> In INTC, each interrupt of INT 128 to INT 136 combines 32 interrupts.
->>>> It connect GICINT IRQ GPIO-OUTPUT pins to GIC device with irq 128 to 136.
->>>> And, if a device irq is 128 to 136, its irq GPIO-OUTPUT pin is
->>>> connected to GICINT or-gates instead of GIC device.
->>>>
->>>> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
->>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>> ---
->>>>    hw/arm/aspeed_ast27x0.c     | 563
->>> ++++++++++++++++++++++++++++++++++++
->>>>    hw/arm/meson.build          |   1 +
->>>>    include/hw/arm/aspeed_soc.h |  28 +-
->>>>    3 files changed, 590 insertions(+), 2 deletions(-)
->>>>    create mode 100644 hw/arm/aspeed_ast27x0.c
->>>
->>>
->>>> +static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error
->>>> +**errp) {
->>>> +    Aspeed27x0SoCState *a = ASPEED27X0_SOC(dev);
->>>> +    AspeedSoCState *s = ASPEED_SOC(dev);
->>>> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->>>> +    SysBusDevice *gicbusdev;
->>>> +    DeviceState *gicdev;
->>>> +    QList *redist_region_count;
->>>> +    int i;
->>>> +
->>>> +    gicbusdev = SYS_BUS_DEVICE(&a->gic);
->>>> +    gicdev = DEVICE(&a->gic);
->>>> +    qdev_prop_set_uint32(gicdev, "revision", 3);
->>>> +    qdev_prop_set_uint32(gicdev, "num-cpu", sc->num_cpus);
->>>> +    qdev_prop_set_uint32(gicdev, "num-irq", AST2700_MAX_IRQ);
->>>> +
->>>> +    redist_region_count = qlist_new();
->>>> +    qlist_append_int(redist_region_count, sc->num_cpus);
->>>> +    qdev_prop_set_array(gicdev, "redist-region-count",
->>>> + redist_region_count);
->>>> +
->>>> +    if (!sysbus_realize(gicbusdev, errp)) {
->>>> +        return false;
->>>> +    }
->>>> +    sysbus_mmio_map(gicbusdev, 0, sc->memmap[ASPEED_GIC_DIST]);
->>>> +    sysbus_mmio_map(gicbusdev, 1,
->> sc->memmap[ASPEED_GIC_REDIST]);
->>>> +
->>>> +    for (i = 0; i < sc->num_cpus; i++) {
->>>> +        DeviceState *cpudev = DEVICE(&a->cpu[i]);
->>>> +        int NUM_IRQS = 256, ARCH_GIC_MAINT_IRQ = 9,
->>> VIRTUAL_PMU_IRQ = 7;
->>>> +        int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
->>>> +
->>>> +        const int timer_irq[] = {
->>>> +            [GTIMER_PHYS] = 14,
->>>> +            [GTIMER_VIRT] = 11,
->>>> +            [GTIMER_HYP]  = 10,
->>>> +            [GTIMER_SEC]  = 13,
->>>> +        };
->>>> +        int j;
->>>> +
->>>> +        for (j = 0; j < ARRAY_SIZE(timer_irq); j++) {
->>>> +            qdev_connect_gpio_out(cpudev, j,
->>>> +                    qdev_get_gpio_in(gicdev, ppibase +
->> timer_irq[j]));
->>>> +        }
->>>> +
->>>> +        qemu_irq irq = qdev_get_gpio_in(gicdev,
->>>> +                                        ppibase +
->>> ARCH_GIC_MAINT_IRQ);
->>>> +        qdev_connect_gpio_out_named(cpudev,
->>> "gicv3-maintenance-interrupt",
->>>> +                                    0, irq);
->>>> +        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
->>>> +                qdev_get_gpio_in(gicdev, ppibase +
->>> VIRTUAL_PMU_IRQ));
->>>> +
->>>> +        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev,
->>> ARM_CPU_IRQ));
->>>> +        sysbus_connect_irq(gicbusdev, i + sc->num_cpus,
->>>> +                           qdev_get_gpio_in(cpudev,
->>> ARM_CPU_FIQ));
->>>> +        sysbus_connect_irq(gicbusdev, i + 2 * sc->num_cpus,
->>>> +                           qdev_get_gpio_in(cpudev,
->>> ARM_CPU_VIRQ));
->>>> +        sysbus_connect_irq(gicbusdev, i + 3 * sc->num_cpus,
->>>> +                           qdev_get_gpio_in(cpudev,
->>> ARM_CPU_VFIQ));
->>>
->>> Your patch was merged around the same time Jinjie added NMI support
->>> (see commit b36a32ead1 "target/arm: Add support for Non-maskable
->> Interrupt").
->>>
->>> Should we add them now?
+Code based on i386/pc enablement.
+The memory layout places space for 16 host bridge register regions after
+the GIC_REDIST2 in the extended memmap. Note this is in a hole, so
+nothing should move.
 
-> I referred to this line, https://github.com/qemu/qemu/blob/master/hw/arm/virt.c#L907, in QEMU's virt.c to add NMI support.
-> 
-> Are you suggesting adding the following lines to enable NMI support?
-> It worked as well.
-> 
-> ```
-> sysbus_connect_irq(gicbusdev, i + 4 * sc->num_cpus,
->                     qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-> sysbus_connect_irq(gicbusdev, i + 5 * sc->num_cpus,
->                     qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
-> ```
+The CFMWs are placed above the extended memmap.
 
-Yes, correct!
+Only create the CEDT table if cxl=on set for the machine.
 
-Thanks.
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+---
+ include/hw/arm/virt.h    |  4 +++
+ hw/arm/virt-acpi-build.c | 34 +++++++++++++++++++++++++
+ hw/arm/virt.c            | 54 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 92 insertions(+)
+
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c8e94e6aed..3e83d9e06b 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -36,6 +36,7 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/bsa.h"
+ #include "hw/block/flash.h"
++#include "hw/cxl/cxl.h"
+ #include "system/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "qom/object.h"
+@@ -85,6 +86,7 @@ enum {
+ /* indices of IO regions located after the RAM */
+ enum {
+     VIRT_HIGH_GIC_REDIST2 =  VIRT_LOWMEMMAP_LAST,
++    VIRT_CXL_HOST,
+     VIRT_HIGH_PCIE_ECAM,
+     VIRT_HIGH_PCIE_MMIO,
+ };
+@@ -146,6 +148,7 @@ struct VirtMachineState {
+     bool secure;
+     bool highmem;
+     bool highmem_compact;
++    bool highmem_cxl;
+     bool highmem_ecam;
+     bool highmem_mmio;
+     bool highmem_redists;
+@@ -180,6 +183,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    CXLState cxl_devices_state;
+ };
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3ac8f8e178..339aa60ce5 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -39,10 +39,12 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
+ #include "hw/acpi/pci.h"
++#include "hw/acpi/cxl.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/acpi/tpm.h"
+ #include "hw/acpi/hmat.h"
++#include "hw/cxl/cxl.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bus.h"
+@@ -119,10 +121,29 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+     aml_append(scope, dev);
+ }
+ 
++static void build_acpi0017(Aml *table)
++{
++    Aml *dev, *scope, *method;
++
++    scope =  aml_scope("_SB");
++    dev = aml_device("CXLM");
++    aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0017")));
++
++    method = aml_method("_STA", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_return(aml_int(0x0B)));
++    aml_append(dev, method);
++    build_cxl_dsm_method(dev);
++
++    aml_append(scope, dev);
++    aml_append(table, scope);
++}
++
+ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+                               uint32_t irq, VirtMachineState *vms)
+ {
+     int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
++    bool cxl_present = false;
++    PCIBus *bus = vms->bus;
+     struct GPEXConfig cfg = {
+         .mmio32 = memmap[VIRT_PCIE_MMIO],
+         .pio    = memmap[VIRT_PCIE_PIO],
+@@ -136,6 +157,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     }
+ 
+     acpi_dsdt_add_gpex(scope, &cfg);
++    QLIST_FOREACH(bus, &vms->bus->child, sibling) {
++        if (pci_bus_is_cxl(bus)) {
++            cxl_present = true;
++        }
++    }
++    if (cxl_present) {
++        build_acpi0017(scope);
++    }
+ }
+ 
+ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+@@ -967,6 +996,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+         }
+     }
+ 
++    if (vms->cxl_devices_state.is_enabled) {
++        cxl_build_cedt(table_offsets, tables_blob, tables->linker,
++                       vms->oem_id, vms->oem_table_id, &vms->cxl_devices_state);
++    }
++
+     if (ms->nvdimms_state->is_enabled) {
+         nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+                           ms->nvdimms_state, ms->ram_slots, vms->oem_id,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 99e0a68b6c..cc16a5750d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -56,6 +56,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/pci-host/gpex.h"
++#include "hw/pci-bridge/pci_expander_bridge.h"
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/core/sysbus-fdt.h"
+ #include "hw/platform-bus.h"
+@@ -84,6 +85,8 @@
+ #include "hw/virtio/virtio-md-pci.h"
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
++#include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
+ 
+ static GlobalProperty arm_virt_compat[] = {
+@@ -211,6 +214,7 @@ static const MemMapEntry base_memmap[] = {
+ static MemMapEntry extended_memmap[] = {
+     /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+     [VIRT_HIGH_GIC_REDIST2] =   { 0x0, 64 * MiB },
++    [VIRT_CXL_HOST] =           { 0x0, 64 * KiB * 16 }, /* 16 UID */
+     [VIRT_HIGH_PCIE_ECAM] =     { 0x0, 256 * MiB },
+     /* Second PCIe window */
+     [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 512 * GiB },
+@@ -1615,6 +1619,17 @@ static void create_pcie(VirtMachineState *vms)
+     }
+ }
+ 
++static void create_cxl_host_reg_region(VirtMachineState *vms)
++{
++    MemoryRegion *sysmem = get_system_memory();
++    MemoryRegion *mr = &vms->cxl_devices_state.host_mr;
++
++    memory_region_init(mr, OBJECT(vms), "cxl_host_reg",
++                       vms->memmap[VIRT_CXL_HOST].size);
++    memory_region_add_subregion(sysmem, vms->memmap[VIRT_CXL_HOST].base, mr);
++    vms->highmem_cxl = true;
++}
++
+ static void create_platform_bus(VirtMachineState *vms)
+ {
+     DeviceState *dev;
+@@ -1733,6 +1748,12 @@ void virt_machine_done(Notifier *notifier, void *data)
+     struct arm_boot_info *info = &vms->bootinfo;
+     AddressSpace *as = arm_boot_address_space(cpu, info);
+ 
++    cxl_hook_up_pxb_registers(vms->bus, &vms->cxl_devices_state,
++                              &error_fatal);
++
++    if (vms->cxl_devices_state.is_enabled) {
++        cxl_fmws_link_targets(&vms->cxl_devices_state, &error_fatal);
++    }
+     /*
+      * If the user provided a dtb, we assume the dynamic sysbus nodes
+      * already are integrated there. This corresponds to a use case where
+@@ -1785,6 +1806,7 @@ static inline bool *virt_get_high_memmap_enabled(VirtMachineState *vms,
+ {
+     bool *enabled_array[] = {
+         &vms->highmem_redists,
++        &vms->highmem_cxl,
+         &vms->highmem_ecam,
+         &vms->highmem_mmio,
+     };
+@@ -1892,6 +1914,27 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+     if (device_memory_size > 0) {
+         machine_memory_devices_init(ms, device_memory_base, device_memory_size);
+     }
++
++    if (vms->cxl_devices_state.fixed_windows) {
++        GList *it;
++
++        base = ROUND_UP(vms->highest_gpa + 1, 256 * MiB);
++        for (it = vms->cxl_devices_state.fixed_windows; it; it = it->next) {
++            CXLFixedWindow *fw = it->data;
++
++            if (base + fw->size <= BIT_ULL(pa_bits)) {
++                vms->highest_gpa = base + fw->size - 1;
++            } else {
++                error_report("CFMWS does not fit under PA limit");
++                exit(EXIT_FAILURE);
++            }
++
++            fw->base = base;
++            memory_region_init_io(&fw->mr, OBJECT(vms), &cfmws_ops, fw,
++                                  "cxl-fixed-memory-region", fw->size);
++            base += fw->size;
++        }
++    }
+ }
+ 
+ static VirtGICType finalize_gic_version_do(const char *accel_name,
+@@ -2346,6 +2389,15 @@ static void machvirt_init(MachineState *machine)
+     memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+                                 machine->ram);
+ 
++    if (vms->cxl_devices_state.fixed_windows) {
++        GList *it;
++        for (it = vms->cxl_devices_state.fixed_windows; it; it = it->next) {
++            CXLFixedWindow *fw = it->data;
++
++            memory_region_add_subregion(sysmem, fw->base, &fw->mr);
++        }
++    }
++
+     virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+ 
+     create_gic(vms, sysmem);
+@@ -2401,6 +2453,7 @@ static void machvirt_init(MachineState *machine)
+     create_rtc(vms);
+ 
+     create_pcie(vms);
++    create_cxl_host_reg_region(vms);
+ 
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
+@@ -3332,6 +3385,7 @@ static void virt_instance_init(Object *obj)
+ 
+     vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+     vms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
++    cxl_machine_init(obj, &vms->cxl_devices_state);
+ }
+ 
+ static const TypeInfo virt_machine_info = {
+-- 
+2.43.0
 

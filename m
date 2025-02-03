@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a57181sm768648166b.170.2025.02.03.06.40.54
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a5a26bsm762985066b.183.2025.02.03.06.40.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Feb 2025 06:40:57 -0800 (PST)
+        Mon, 03 Feb 2025 06:40:56 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 356195FA5E;
-	Mon,  3 Feb 2025 14:40:50 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id D836C6099F;
+	Mon,  3 Feb 2025 14:40:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org,
@@ -36,215 +36,127 @@ Cc: qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Alexandre Iooss <erdnaxe@crans.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 15/18] gdbstub: Allow late attachment
-Date: Mon,  3 Feb 2025 14:40:45 +0000
-Message-Id: <20250203144048.2131117-16-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 12/18] user: Introduce user/signal.h
+Date: Mon,  3 Feb 2025 14:40:42 +0000
+Message-Id: <20250203144048.2131117-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
 References: <20250203144048.2131117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jbier+LOeCL3
+X-TUID: k3PqbrKFH+aQ
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Allow debugging individual processes in multi-process applications by
-starting them with export QEMU_GDB=/tmp/qemu-%d.sock,suspend=n.
-Currently one would have to attach to every process to ensure the app
-makes progress.
+gdbstub needs target_to_host_signal(), so move its declaration to a
+public header.
 
-In case suspend=n is not specified, the flow remains unchanged. If it
-is specified, then accepting the client connection is delegated to a
-thread. In the future this machinery may be reused for handling
-reconnections and interruptions.
-
-On accepting a connection, the thread schedules gdb_handlesig() on the
-first CPU and wakes it up with host_interrupt_signal. Note that the
-result of this gdb_handlesig() invocation is handled, as opposed to
-many other existing call sites. These other call sites probably need to
-be fixed separately.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-7-iii@linux.ibm.com>
+Message-Id: <20250117001542.8290-4-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- bsd-user/main.c   |   1 -
- gdbstub/user.c    | 115 +++++++++++++++++++++++++++++++++++++++++-----
- linux-user/main.c |   1 -
- 3 files changed, 103 insertions(+), 14 deletions(-)
+ bsd-user/signal-common.h   |  1 -
+ include/user/signal.h      | 23 +++++++++++++++++++++++
+ linux-user/signal-common.h |  1 -
+ bsd-user/signal.c          |  1 +
+ linux-user/signal.c        |  1 +
+ linux-user/syscall.c       |  1 +
+ 6 files changed, 26 insertions(+), 2 deletions(-)
+ create mode 100644 include/user/signal.h
 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index b2f6a9be2f..fdb160bed0 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -629,7 +629,6 @@ int main(int argc, char **argv)
+diff --git a/bsd-user/signal-common.h b/bsd-user/signal-common.h
+index 77d7c7a78b..4e634e04a3 100644
+--- a/bsd-user/signal-common.h
++++ b/bsd-user/signal-common.h
+@@ -42,7 +42,6 @@ void process_pending_signals(CPUArchState *env);
+ void queue_signal(CPUArchState *env, int sig, int si_type,
+                   target_siginfo_t *info);
+ void signal_init(void);
+-int target_to_host_signal(int sig);
+ void target_to_host_sigset(sigset_t *d, const target_sigset_t *s);
  
-     if (gdbstub) {
-         gdbserver_start(gdbstub, &error_fatal);
--        gdb_handlesig(cpu, 0, NULL, NULL, 0);
-     }
-     cpu_loop(env);
-     /* never exits */
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 8225b70280..3730f32c41 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -22,6 +22,7 @@
- #include "gdbstub/user.h"
- #include "gdbstub/enums.h"
- #include "hw/core/cpu.h"
+ /*
+diff --git a/include/user/signal.h b/include/user/signal.h
+new file mode 100644
+index 0000000000..19b6b9e5dd
+--- /dev/null
++++ b/include/user/signal.h
+@@ -0,0 +1,23 @@
++/*
++ * Signal-related declarations.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef USER_SIGNAL_H
++#define USER_SIGNAL_H
++
++#ifndef CONFIG_USER_ONLY
++#error Cannot include this header from system emulation
++#endif
++
++/**
++ * target_to_host_signal:
++ * @sig: target signal.
++ *
++ * On success, return the host signal between 0 (inclusive) and NSIG
++ * (exclusive) corresponding to the target signal @sig. Return any other value
++ * on failure.
++ */
++int target_to_host_signal(int sig);
++
++#endif
+diff --git a/linux-user/signal-common.h b/linux-user/signal-common.h
+index 8584d9ecc2..196d2406f8 100644
+--- a/linux-user/signal-common.h
++++ b/linux-user/signal-common.h
+@@ -61,7 +61,6 @@ void queue_signal(CPUArchState *env, int sig, int si_type,
+                   target_siginfo_t *info);
+ void host_to_target_siginfo(target_siginfo_t *tinfo, const siginfo_t *info);
+ void target_to_host_siginfo(siginfo_t *info, const target_siginfo_t *tinfo);
+-int target_to_host_signal(int sig);
+ int host_to_target_signal(int sig);
+ long do_sigreturn(CPUArchState *env);
+ long do_rt_sigreturn(CPUArchState *env);
+diff --git a/bsd-user/signal.c b/bsd-user/signal.c
+index b4e1458237..8c51f6ce65 100644
+--- a/bsd-user/signal.c
++++ b/bsd-user/signal.c
+@@ -24,6 +24,7 @@
+ #include "user/cpu_loop.h"
+ #include "exec/page-protection.h"
+ #include "user/page-protection.h"
 +#include "user/signal.h"
- #include "trace.h"
- #include "internals.h"
+ #include "user/tswap-target.h"
+ #include "gdbstub/user.h"
+ #include "signal-common.h"
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 087c4d270e..bffbef235c 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -36,6 +36,7 @@
+ #include "user/cpu_loop.h"
+ #include "user/page-protection.h"
+ #include "user/safe-syscall.h"
++#include "user/signal.h"
+ #include "tcg/tcg.h"
  
-@@ -393,32 +394,122 @@ static int gdbserver_open_port(int port, Error **errp)
-     return fd;
- }
- 
--bool gdbserver_start(const char *port_or_path, Error **errp)
-+static bool gdbserver_accept(int port, int gdb_fd, const char *path)
- {
--    int port = g_ascii_strtoull(port_or_path, NULL, 10);
-+    bool ret;
-+
-+    if (port > 0) {
-+        ret = gdb_accept_tcp(gdb_fd);
-+    } else {
-+        ret = gdb_accept_socket(gdb_fd);
-+        if (ret) {
-+            gdbserver_user_state.socket_path = g_strdup(path);
-+        }
-+    }
-+
-+    if (!ret) {
-+        close(gdb_fd);
-+    }
-+
-+    return ret;
-+}
-+
-+struct {
-+    int port;
-     int gdb_fd;
-+    char *path;
-+} gdbserver_args;
-+
-+static void do_gdb_handlesig(CPUState *cs, run_on_cpu_data arg)
-+{
-+    int sig;
-+
-+    sig = target_to_host_signal(gdb_handlesig(cs, 0, NULL, NULL, 0));
-+    if (sig >= 1 && sig < NSIG) {
-+        qemu_kill_thread(gdb_get_cpu_index(cs), sig);
-+    }
-+}
-+
-+static void *gdbserver_accept_thread(void *arg)
-+{
-+    if (gdbserver_accept(gdbserver_args.port, gdbserver_args.gdb_fd,
-+                         gdbserver_args.path)) {
-+        CPUState *cs = first_cpu;
-+
-+        async_safe_run_on_cpu(cs, do_gdb_handlesig, RUN_ON_CPU_NULL);
-+        qemu_kill_thread(gdb_get_cpu_index(cs), host_interrupt_signal);
-+    }
-+
-+    g_free(gdbserver_args.path);
-+    gdbserver_args.path = NULL;
-+
-+    return NULL;
-+}
- 
-+#define USAGE "\nUsage: -g {port|path}[,suspend={y|n}]"
-+
-+bool gdbserver_start(const char *args, Error **errp)
-+{
-+    g_auto(GStrv) argv = g_strsplit(args, ",", 0);
-+    const char *port_or_path = NULL;
-+    bool suspend = true;
-+    int gdb_fd, port;
-+    GStrv arg;
-+
-+    for (arg = argv; *arg; arg++) {
-+        g_auto(GStrv) tokens = g_strsplit(*arg, "=", 2);
-+
-+        if (g_strcmp0(tokens[0], "suspend") == 0) {
-+            if (tokens[1] == NULL) {
-+                error_setg(errp,
-+                           "gdbstub: missing \"suspend\" option value" USAGE);
-+                return false;
-+            } else if (!qapi_bool_parse(tokens[0], tokens[1],
-+                                        &suspend, errp)) {
-+                return false;
-+            }
-+        } else {
-+            if (port_or_path) {
-+                error_setg(errp, "gdbstub: unknown option \"%s\"" USAGE, *arg);
-+                return false;
-+            }
-+            port_or_path = *arg;
-+        }
-+    }
-+    if (!port_or_path) {
-+        error_setg(errp, "gdbstub: port or path not specified" USAGE);
-+        return false;
-+    }
-+
-+    port = g_ascii_strtoull(port_or_path, NULL, 10);
-     if (port > 0) {
-         gdb_fd = gdbserver_open_port(port, errp);
-     } else {
-         gdb_fd = gdbserver_open_socket(port_or_path, errp);
-     }
--
-     if (gdb_fd < 0) {
-         return false;
-     }
- 
--    if (port > 0 && gdb_accept_tcp(gdb_fd)) {
--        return true;
--    } else if (gdb_accept_socket(gdb_fd)) {
--        gdbserver_user_state.socket_path = g_strdup(port_or_path);
-+    if (suspend) {
-+        if (gdbserver_accept(port, gdb_fd, port_or_path)) {
-+            gdb_handlesig(first_cpu, 0, NULL, NULL, 0);
-+            return true;
-+        } else {
-+            error_setg(errp, "gdbstub: failed to accept connection");
-+            return false;
-+        }
-+    } else {
-+        QemuThread thread;
-+
-+        gdbserver_args.port = port;
-+        gdbserver_args.gdb_fd = gdb_fd;
-+        gdbserver_args.path = g_strdup(port_or_path);
-+        qemu_thread_create(&thread, "gdb-accept",
-+                           &gdbserver_accept_thread, NULL,
-+                           QEMU_THREAD_DETACHED);
-         return true;
-     }
--
--    /* gone wrong */
--    close(gdb_fd);
--    error_setg(errp, "gdbstub: failed to accept connection");
--    return false;
- }
- 
- void gdbserver_fork_start(void)
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 7198fa0986..5c74c52cc5 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -1024,7 +1024,6 @@ int main(int argc, char **argv, char **envp)
- 
-     if (gdbstub) {
-         gdbserver_start(gdbstub, &error_fatal);
--        gdb_handlesig(cpu, 0, NULL, NULL, 0);
-     }
- 
- #ifdef CONFIG_SEMIHOSTING
+ /* target_siginfo_t must fit in gdbstub's siginfo save area. */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 6ee02383da..90afaa4426 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -138,6 +138,7 @@
+ #include "user-mmap.h"
+ #include "user/page-protection.h"
+ #include "user/safe-syscall.h"
++#include "user/signal.h"
+ #include "qemu/guest-random.h"
+ #include "qemu/selfmap.h"
+ #include "user/syscall-trace.h"
 -- 
 2.39.5

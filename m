@@ -1,183 +1,177 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2222898njb;
-        Mon, 3 Feb 2025 08:19:04 -0800 (PST)
-X-Received: by 2002:a05:6402:2803:b0:5dc:100c:1560 with SMTP id 4fb4d7f45d1cf-5dc5efc5d8fmr59821847a12.18.1738599544518;
-        Mon, 03 Feb 2025 08:19:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738599544; cv=none;
+Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2446363njb;
+        Mon, 3 Feb 2025 15:20:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXoxazZ+Gh5WlplewYjtxOo2nfkp36kDCZapa8MIxgMe9b9oWvyG8Mz5nEzitBOaoQDL9kUn3qQz7CuMw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLo8zkRYg4i0rtx1gKBX41wtXo1+KexBffguP0FI9+C7sgH9VDfUNrW2rbc9fWN9JHPh7n
+X-Received: by 2002:a5d:47c8:0:b0:38b:e32a:10ab with SMTP id ffacd0b85a97d-38c51934f02mr16264015f8f.9.1738624808942;
+        Mon, 03 Feb 2025 15:20:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738624808; cv=none;
         d=google.com; s=arc-20240605;
-        b=QHeUwnKx4XS3ELrw2hpVsPyw0EAJ2hXA8jT2QAoDE8Bt9RxAtUVYJO0TX0H+xea31k
-         o/bA1z16pbEgcZzitbN4Q+oPNMVChxzclJa0Ku8cufljZq4NaVo8ePVyQQaiTZ1DTcbF
-         kO38gJ1GauKOy1Nt7d+LFvD0khYxa72Pc1ffTjaXWRX1sCcFbEzAiW26KHCHLxQY299e
-         uQqWCVUSchMNe33SlrJLSdVENk2B954ngrv6jnoiqPQ+qh16JXB4sdUmY3wn/s+O192m
-         Z5hS4X/XbrxxLUqA6xuRTANylRqA5SRrL7khOXyntbPuOXFlR//8ScpAdJTcQbadTnUR
-         70sg==
+        b=Uvkh5uBLuWdhvT4vox6T6ZCJfWiZ3f5WWgXkSVhByH2EuzWIg7Zam8poDWcWrUelBt
+         X+cjwhVRzYKHnbchkwgZjooR6OrK3kNqoT2ezYeN8BbqI+orZu2QcWGzYcq34ntgouCo
+         mqCk7aotbxI5ajGmjRuASKlj8fdBBHN7MJRpPwLIu6IpjZ/66nDux+WVmIdHxdc2pYNg
+         KOyAR0/qMLw8iZn+LyIWDYlTspteGkSqAyIaOm8/Ek36zq4SQYopyZmqN8V8cAgiXFhO
+         ZTpEh9c9MWN5naONE+NgOz/M/tbiR3nmcI0ZN+/ZSvKLmhWKeoRT3Ix9m/WOWJH2Xw3A
+         LGig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=s6JmQhWYBv/7vKIG7Kne6Qi0XIk2WkTX7JMwwDBl4qQ=;
-        fh=Vc1Hgjx38P2vGWkCry98nTJDdjAjyzRuS2F2DcO8qYU=;
-        b=LG96TEc1nsoIJN0ltf2XmzDhxRWJFyz07J/lzgkw1bbQ/3D4Jm5+IYc1s1i+OZL05z
-         5Aki0ZWdmt6Gi4Yn2ixloN6ZflLemn7ND2CfgKa3lfDglLVfJw7MjHFIAEeVo7J67jml
-         W9fmXrIpTxjQNgvnXM/M9CLH5WfpC5d16bAoeeKXDRlRuv8pdlIztBCho79tZiqIsLa+
-         LXOzWF0bZCt/0ABzRccAUak6+xz2A0xymwe4YYgaq1q2CFhrZ6ytsVVolDwvEFRiQe/A
-         jfOZ5oiXt+OVssgBpkukJ5Dglij2m61r8oYulvgc3C8P/AZilbpKu2wtazS4ff8O3HXo
-         IIjQ==;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date;
+        bh=XOZbURGqTdtTcXQlh2phGp7R1cs7X/ODep7twv1rrhQ=;
+        fh=ihM5l46MEyAbhHaGH2Dxn8CQES9WbIwYsd12DAlwR3c=;
+        b=fxZ5XpOc97VJycY+Kn+mlbB0PY3c3npDy9pevSUOCYRb/wQRrlwnzir4NGZdlw2bi7
+         Xu0JJvcQsZvfCgvzx8G/qfis4rQxu4iQNprwDOwcqvc8z/zJh7PtJwqwpDz1cU5jeMyA
+         i0aWOtlCC7zius0ZE19G2MXzMqYsaYMq7HSe7Zm7rWeXM84hgly0GFiABfS149b1iQYg
+         WH+jHloaQpFYiTzLpPIuYJIgtkT+ua+uAHYmdEpnP0TbwrBC4n21MFXYmEpxlxijLhfB
+         Tm+XdcGGwMc/bn5diDh0PUH4pRwOIsW2A27v/9oIsfDqzIXQwsGUu19y2WSvwZyKVhDX
+         4mHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="UErB6/x3";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5dc724ca56fsor3828355a12.10.2025.02.03.08.19.04
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 03 Feb 2025 08:19:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <balaton@eik.bme.hu>
+Received: from zero.eik.bme.hu (zero.eik.bme.hu. [2001:738:2001:2001::2001])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-438e245fe52si78928685e9.177.2025.02.03.15.20.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Feb 2025 15:20:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) client-ip=2001:738:2001:2001::2001;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="UErB6/x3";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738599544; x=1739204344; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=s6JmQhWYBv/7vKIG7Kne6Qi0XIk2WkTX7JMwwDBl4qQ=;
-        b=UErB6/x3jyrF44XhlheVgSbcSLA7lUnu5BYQnhy6I/piCSiCu8gDFb/n+qxsEdQIOk
-         W6W9vLuVTccSTvh+D/vqJZud2eSwuj0YvW1t36zSJNdsCU5qQZlA/kAX7LQM3js0zHVQ
-         2TnL6VgXNH66e6T4Qz1KPWq2N2kzZ1z4ZeTUbHIQYdxvgY1aGvC/ElKOwYo6tMfkogGH
-         bjexlKy6+3QGaxxawliL2jXZhuZkcocLKw6S1nIyjGKStcl2EjaoZXgxsgW8G3gkN4qZ
-         X4AvjmiT3Qyuy748abnG0RAIsdfsYAUV00OaCSxfTJYWzL+c9W5Wdw/4+AiKXIo2Tnje
-         cKZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738599544; x=1739204344;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=s6JmQhWYBv/7vKIG7Kne6Qi0XIk2WkTX7JMwwDBl4qQ=;
-        b=M0VB0cNOfE0TpX7zQx3THwil/MSPMJDCzBYi9SYkcBtwlvmZ3Z3qXwql1k8zVJ0REM
-         onMLPpEuII8NCXzpqskJLBMHbBFmhXy3DuxC/tMnrzu8z8XowvoBcHV3D+VTMkcc/qvn
-         5fD8E6IsUaEodnUICRPssUwMHL+nPqCREylWg1ZkLfYQYDfa66LGD8F6yYeHRy+mJXNR
-         YK9MGT6+3tS/VbRZ9gSx1faXdRU3sQ0F5Kq1GqTkhFd8Ki/Hbtqs0tKShfGh3YSWtPN+
-         SdbpJB0UisRwc78N8/XFLyDP6tHtfYfSaMU2xP3AZKa4mKGuFMnp9ppQA9lQjuu2V4yh
-         0YoA==
-X-Gm-Message-State: AOJu0YxW36XTp01fIzqArrTEDx40fERtzw6tyjYSRUvuT/0NrFlOb556
-	6YwYRzFYYhRbWJRd9c02Zm5a3gfJB4yygzF+JGUpBbxg1Fyi1LNJbXPn3I30/yAFMH7lFk5hlB6
-	w2X0ftA==
-X-Gm-Gg: ASbGncv+nJmjDsFNuOl+Iw/0TrbAPIdPVVyk3hPnWA2aVJY5CLf9J0M6mg4LN8jTUO+
-	wyNF1pJUduzymcDoUBjobyvEkn2wqB0KCa3rKEdAcXPowITf0Ii9U+rz8RMZur9ErB7Y785iKA9
-	LYTsjgm9g3tq2LBkfHIreRlbM97G4enRIV6BV6g6+A1loxgvGDksWeq/nYTSEJ5nKTVQCDbf8mf
-	xGpkqv3+S2NdR1CulnwINdiLPH9eOPNQ/XzCQCBhGaDPCJp2KRLQ8xQX+pi9pjx9OoaoxNB+7+i
-	wNLDKLWjJr6DG8PnfBrL8KA29SFxEEOywTwitcgUWXTAlym1ZYmayB4hcU8=
-X-Google-Smtp-Source: AGHT+IEhCqGW4p/kPC3C2/4dqKJZ4Emb/N/MU063Ikqk7mo/VIRNc94Pz1I60J8gPBW3czgaDQjHZA==
-X-Received: by 2002:a05:6402:13ca:b0:5db:e7eb:1b4c with SMTP id 4fb4d7f45d1cf-5dc5efbf41amr60307893a12.10.1738599543924;
-        Mon, 03 Feb 2025 08:19:03 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e47cf294sm777844466b.41.2025.02.03.08.19.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Feb 2025 08:19:03 -0800 (PST)
-Message-ID: <7f765a75-d02d-450e-b229-3232d16871c3@linaro.org>
-Date: Mon, 3 Feb 2025 17:19:02 +0100
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id ED7554E6010;
+	Tue, 04 Feb 2025 00:20:07 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id pKSBRQrVEwqf; Tue,  4 Feb 2025 00:20:05 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id ACE834E600E; Tue, 04 Feb 2025 00:20:05 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id A7CB574577D;
+	Tue, 04 Feb 2025 00:20:05 +0100 (CET)
+Date: Tue, 4 Feb 2025 00:20:05 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Peter Maydell <peter.maydell@linaro.org>, 
+    =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
+    qemu-devel@nongnu.org, Jared Mauch <jared+home@puck.nether.net>, 
+    qemu-arm@nongnu.org, devel@lists.libvirt.org
+Subject: Re: [PATCH 0/7] hw/arm/raspi4b: Add models with 4GB and 8GB of
+ DRAM
+In-Reply-To: <7f765a75-d02d-450e-b229-3232d16871c3@linaro.org>
+Message-ID: <816f46cb-ad10-e5bc-1ba1-45cf991c0347@eik.bme.hu>
+References: <20250201091528.1177-1-philmd@linaro.org> <90d87f0e-56a3-8966-614c-364f3e726d61@eik.bme.hu> <CAFEAcA_mBXO20NhYRHJCgkB0h8uYQQhBMdwVW376R4u-qh51nA@mail.gmail.com> <87ed0fayoy.fsf@draig.linaro.org> <Z6DTsdf35ApQ0qLU@redhat.com>
+ <CAFEAcA8Qigt1EBVgz1D4hon0x4ukLZbZ-jS_KB+ZBH0yi+QCXw@mail.gmail.com> <Z6DXmN-ROswsaDAi@redhat.com> <7f765a75-d02d-450e-b229-3232d16871c3@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/7] hw/arm/raspi4b: Add models with 4GB and 8GB of DRAM
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- Jared Mauch <jared+home@puck.nether.net>, qemu-arm@nongnu.org,
- devel@lists.libvirt.org
-References: <20250201091528.1177-1-philmd@linaro.org>
- <90d87f0e-56a3-8966-614c-364f3e726d61@eik.bme.hu>
- <CAFEAcA_mBXO20NhYRHJCgkB0h8uYQQhBMdwVW376R4u-qh51nA@mail.gmail.com>
- <87ed0fayoy.fsf@draig.linaro.org> <Z6DTsdf35ApQ0qLU@redhat.com>
- <CAFEAcA8Qigt1EBVgz1D4hon0x4ukLZbZ-jS_KB+ZBH0yi+QCXw@mail.gmail.com>
- <Z6DXmN-ROswsaDAi@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <Z6DXmN-ROswsaDAi@redhat.com>
+Content-Type: multipart/mixed; boundary="3866299591-441919731-1738624805=:61971"
+X-TUID: rKFD1bUbGPBJ
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-441919731-1738624805=:61971
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: /rcCjt+ftbI6
+Content-Transfer-Encoding: 8BIT
 
-On 3/2/25 15:50, Daniel P. Berrangé wrote:
-> On Mon, Feb 03, 2025 at 02:45:06PM +0000, Peter Maydell wrote:
->> On Mon, 3 Feb 2025 at 14:33, Daniel P. Berrangé <berrange@redhat.com> wrote:
->>>
->>> On Mon, Feb 03, 2025 at 02:29:49PM +0000, Alex Bennée wrote:
->>>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>>
->>>>> On Sat, 1 Feb 2025 at 12:57, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>>>
->>>>>> On Sat, 1 Feb 2025, Philippe Mathieu-Daudé wrote:
->>>>>>> - Deprecate the 'raspi4b' machine name, renaming it as
->>>>>>>   'raspi4b-1g' on 32-bit hosts, 'raspi4b-2g' otherwise.
->>>>>>> - Add the 'raspi4b-4g' and 'raspi4b-8g' machines, with
->>>>>>>   respectively 4GB and 8GB of DRAM.
->>>>>>
->>>>>> IMHO (meaning you can ignore it, just my opinion) if the only difference
->>>>>> is the memory size -machine raspi4b -memory 4g would be better user
->>>>>> experience than having a lot of different machines.
->>>>>
->>>>> Yes, I think I agree. We have a way for users to specify
->>>>> how much memory they want, and I think it makes more sense
->>>>> to use that than to have lots of different machine types.
->>>>
->>>> I guess for the Pi we should validate the -memory supplied is on of the
->>>> supported grid of devices rather than an arbitrary value?
->>>
->>> If the user wants to create a rpi4 with 6 GB RAM why should we stop
->>> them ? It is their choice if they want to precisely replicate RAM
->>> size from a physical model, or use something different when virtualized.
->>
->> The board revision code (reported to the guest via the emulated
->> firmware interface) only supports reporting 256MB, 512MB,
->> 1GB, 2GB, 4GB or 8GB:
->>
->> https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes
-> 
-> I think it would be valid to report the revision code for the memory
-> size that doesn't exceed what QEMU has configured. eg if configured
-> with 6 GB, then report code for 4 GB.
+On Mon, 3 Feb 2025, Philippe Mathieu-Daudé wrote:
+> On 3/2/25 15:50, Daniel P. Berrangé wrote:
+>> On Mon, Feb 03, 2025 at 02:45:06PM +0000, Peter Maydell wrote:
+>>> On Mon, 3 Feb 2025 at 14:33, Daniel P. Berrangé <berrange@redhat.com> 
+>>> wrote:
+>>>> 
+>>>> On Mon, Feb 03, 2025 at 02:29:49PM +0000, Alex Bennée wrote:
+>>>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>>> 
+>>>>>> On Sat, 1 Feb 2025 at 12:57, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>>>>> 
+>>>>>>> On Sat, 1 Feb 2025, Philippe Mathieu-Daudé wrote:
+>>>>>>>> - Deprecate the 'raspi4b' machine name, renaming it as
+>>>>>>>>   'raspi4b-1g' on 32-bit hosts, 'raspi4b-2g' otherwise.
+>>>>>>>> - Add the 'raspi4b-4g' and 'raspi4b-8g' machines, with
+>>>>>>>>   respectively 4GB and 8GB of DRAM.
+>>>>>>> 
+>>>>>>> IMHO (meaning you can ignore it, just my opinion) if the only 
+>>>>>>> difference
+>>>>>>> is the memory size -machine raspi4b -memory 4g would be better user
+>>>>>>> experience than having a lot of different machines.
+>>>>>> 
+>>>>>> Yes, I think I agree. We have a way for users to specify
+>>>>>> how much memory they want, and I think it makes more sense
+>>>>>> to use that than to have lots of different machine types.
+>>>>> 
+>>>>> I guess for the Pi we should validate the -memory supplied is on of the
+>>>>> supported grid of devices rather than an arbitrary value?
+>>>> 
+>>>> If the user wants to create a rpi4 with 6 GB RAM why should we stop
+>>>> them ? It is their choice if they want to precisely replicate RAM
+>>>> size from a physical model, or use something different when virtualized.
+>>> 
+>>> The board revision code (reported to the guest via the emulated
+>>> firmware interface) only supports reporting 256MB, 512MB,
+>>> 1GB, 2GB, 4GB or 8GB:
+>>> 
+>>> https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes
+>> 
+>> I think it would be valid to report the revision code for the memory
+>> size that doesn't exceed what QEMU has configured. eg if configured
+>> with 6 GB, then report code for 4 GB.
+>
+> We need to distinct between physical machines VS virtual ones.
+>
+> Guests on virtual machines have some way to figure the virtual
+> hardware (ACPI tables, DeviceTree blob, fw-cfg, ...).
+>
+> Guests for physical machines usually expect fixed hardware (not
+> considering devices on busses).
+>
+> For the particular case of the Raspberry Pi machines, their
+> bootloader gets the board layout by reading the
+> RPI_FWREQ_GET_BOARD_REVISION constant value.
+>
+>
+> What would be the point of emulating a raspi machine with 6GB
+> if the FW is not going to consider besides 4GB?
+> Besides, someone modify a guest to work with 6GB, it won't work
+> on real HW.
 
-We need to distinct between physical machines VS virtual ones.
-
-Guests on virtual machines have some way to figure the virtual
-hardware (ACPI tables, DeviceTree blob, fw-cfg, ...).
-
-Guests for physical machines usually expect fixed hardware (not
-considering devices on busses).
-
-For the particular case of the Raspberry Pi machines, their
-bootloader gets the board layout by reading the
-RPI_FWREQ_GET_BOARD_REVISION constant value.
-
-
-What would be the point of emulating a raspi machine with 6GB
-if the FW is not going to consider besides 4GB?
-Besides, someone modify a guest to work with 6GB, it won't work
-on real HW.
-
->> For Arm embedded boards we mostly tend to "restrict the user
->> to what you can actually do", except for older boards where
->> we tended not to write any kind of sanity checking on CPU
->> type, memory size, etc.
-> 
-> If we're going to strictly limit memory size that's accepted I wonder
-> how we could information users/mgmt apps about what's permitted ?
-> 
-> Expressing valid combinations of configs across different args gets
-> pretty complicated quickly :-(
-
-I'll try to address Zoltan and Peter request to have a dynamic raspi
-machine. It is a bit unfortunate we didn't insisted on that when we
-decided to expose a fixed set of existing boards in order to not be
-bothered by inconsistent bug reports, back in 2019.
+Usually the point of such non-standard configs would be running Linux via 
+-kernel which could use whatever is configured if it has a way to detect 
+it or maybe for memory it could even be specified on the kernel command 
+line. But maybe this is not a common enough config to support so reporting 
+error for memory size that's not on the list of valid sizes might be 
+enough. This is similar to qemu-system-ppc -machine sam460ex which has a 
+memory controller register that can only describe existing DIMM sizes. 
+Originally I allowed users to specify whatever memory size and only warn 
+for sizes not matching a DIMM size because Linux only looks at the device 
+tree which QEMU can generate when booting with -kernel so it works but the 
+firmware detects RAM from the SPD data and can only support certain sizes 
+so only less RAM that could be convered with SPD data would be visible for 
+guests. But then others thought it's better to return error for such cases 
+and changed it and removed the support for arbitrary memory size so now it 
+returns error when non power of 2 memory size is specified.
 
 Regards,
+BALATON Zoltan
 
-Phil.
+>>> For Arm embedded boards we mostly tend to "restrict the user
+>>> to what you can actually do", except for older boards where
+>>> we tended not to write any kind of sanity checking on CPU
+>>> type, memory size, etc.
+>> 
+>> If we're going to strictly limit memory size that's accepted I wonder
+>> how we could information users/mgmt apps about what's permitted ?
+>> 
+>> Expressing valid combinations of configs across different args gets
+>> pretty complicated quickly :-(
+>
+> I'll try to address Zoltan and Peter request to have a dynamic raspi
+> machine. It is a bit unfortunate we didn't insisted on that when we
+> decided to expose a fixed set of existing boards in order to not be
+> bothered by inconsistent bug reports, back in 2019.
+>
+> Regards,
+>
+> Phil.
+>
+>
+--3866299591-441919731-1738624805=:61971--

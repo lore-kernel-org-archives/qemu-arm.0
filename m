@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6ff432351sm578507166b.68.2025.02.03.06.40.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e49ff968sm767111566b.111.2025.02.03.06.40.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 03 Feb 2025 06:40:49 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8F12F5F8BF;
+	by draig.lan (Postfix) with ESMTP id F2AE95FA60;
 	Mon,  3 Feb 2025 14:40:48 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,119 +36,63 @@ Cc: qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH 00/18] maintainer updates for feb25 (qtest, gdbstub, plugins)
-Date: Mon,  3 Feb 2025 14:40:30 +0000
-Message-Id: <20250203144048.2131117-1-alex.bennee@linaro.org>
+Subject: [PATCH 04/18] tests/qtest: simplify qtest_process_inbuf
+Date: Mon,  3 Feb 2025 14:40:34 +0000
+Message-Id: <20250203144048.2131117-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250203144048.2131117-1-alex.bennee@linaro.org>
+References: <20250203144048.2131117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PMK4GU2LVGgj
+X-TUID: 8VD9dETP8FjN
 
-Another month and another set of updates from across my maintainer
-trees. They include:
+Don't both creating a GString to temporarily hold our qtest command.
+Instead do a simpler g_strndup and use autofree to clean up
+afterwards.
 
-  * qtest set/step clock cleanups
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ system/qtest.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
-It seems the earlier patch to avoid deadlock when shutting down was
-overly broad. So in this series after a little clean-up to the qtest
-reply code we tighten up some checks for steps that make no sense and
-eventually revert the original deadlock avoiding patch.
-
-  * reducing migration test scope depending on accel
-
-Fabino's continued work on the migration tests and avoiding them
-taking too much of the overall test execution time. KVM guests still
-get the full range and we smoke test TCG guests.
-
-  * gdbstub late attachment
-
-These are Ilya's patches to make it easier to debug heavily
-multi-process linux-user invocations. Comes with documentation and
-a test case ;-)
-
-  * plugins
-
-Fix a compiler false positive.
-
-As this is the first iteration I intend to send out a pre-PR later
-this week if everything is reviewed ok with a PR shortly after.
-
-Alex.
-
-Alex Bennée (7):
-  tests/docker: replicate the check-rust-tools-nightly CI job
-  tests/qtest: don't attempt to clock_step while waiting for virtio ISR
-  tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
-  tests/qtest: simplify qtest_process_inbuf
-  tests/qtest: rename qtest_send_prefix and roll-up into qtest_send
-  tests/qtest: tighten up the checks on clock_step
-  Revert "util/timer: avoid deadlock when shutting down"
-
-Fabiano Rosas (2):
-  tests/qtest/migration: Add --full option
-  tests/qtest/migration: Pick smoke tests
-
-Ilya Leoshkevich (8):
-  gdbstub: Allow the %d placeholder in the socket path
-  gdbstub: Try unlinking the unix socket before binding
-  user: Introduce user/signal.h
-  user: Introduce host_interrupt_signal
-  osdep: Introduce qemu_kill_thread()
-  gdbstub: Allow late attachment
-  docs/user: Document the %d placeholder and suspend=n QEMU_GDB features
-  tests/tcg: Add late gdbstub attach test
-
-Marc-André Lureau (1):
-  plugins: fix -Werror=maybe-uninitialized false-positive
-
- MAINTAINERS                                |   1 +
- docs/user/main.rst                         |  16 ++-
- bsd-user/signal-common.h                   |   1 -
- include/qemu/osdep.h                       |   9 ++
- include/system/qtest.h                     |   1 -
- include/user/signal.h                      |  25 ++++
- linux-user/signal-common.h                 |   1 -
- tests/qtest/migration/framework.h          |   1 +
- bsd-user/main.c                            |   1 -
- bsd-user/signal.c                          |  13 ++
- contrib/plugins/cache.c                    |   2 +-
- gdbstub/user.c                             | 150 ++++++++++++++++-----
- hw/ppc/spapr_rtas.c                        |   1 -
- hw/riscv/riscv_hart.c                      |   1 -
- linux-user/main.c                          |   1 -
- linux-user/signal.c                        |  26 +++-
- linux-user/syscall.c                       |   1 +
- stubs/monitor-fd.c                         |   9 ++
- system/qtest.c                             |  59 +++-----
- tests/qtest/libqos/virtio-pci-modern.c     |   6 +-
- tests/qtest/libqos/virtio-pci.c            |   6 +-
- tests/qtest/migration-test.c               |  25 ++++
- tests/qtest/migration/compression-tests.c  |  15 ++-
- tests/qtest/migration/cpr-tests.c          |   6 +
- tests/qtest/migration/file-tests.c         |  19 ++-
- tests/qtest/migration/misc-tests.c         |  16 ++-
- tests/qtest/migration/postcopy-tests.c     |  14 +-
- tests/qtest/migration/precopy-tests.c      |  23 +++-
- tests/qtest/migration/tls-tests.c          |  14 +-
- tests/qtest/npcm7xx_timer-test.c           |   1 -
- tests/tcg/multiarch/late-attach.c          |  41 ++++++
- util/oslib-posix.c                         |  15 +++
- util/qemu-timer.c                          |  16 +--
- stubs/meson.build                          |   2 +
- tests/docker/Makefile.include              |   3 +
- tests/docker/test-rust                     |  21 +++
- tests/guest-debug/run-test.py              |  15 ++-
- tests/qtest/meson.build                    |  11 +-
- tests/tcg/multiarch/Makefile.target        |   9 +-
- tests/tcg/multiarch/gdbstub/late-attach.py |  28 ++++
- util/meson.build                           |   2 +
- 41 files changed, 491 insertions(+), 136 deletions(-)
- create mode 100644 include/user/signal.h
- create mode 100644 stubs/monitor-fd.c
- create mode 100644 tests/tcg/multiarch/late-attach.c
- create mode 100755 tests/docker/test-rust
- create mode 100644 tests/tcg/multiarch/gdbstub/late-attach.py
-
+diff --git a/system/qtest.c b/system/qtest.c
+index e68ed0f2a8..bb1efba9fd 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -763,25 +763,21 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+     }
+ }
+ 
++/*
++ * Process as much of @inbuf as we can in newline terminated chunks.
++ * Remove the processed commands from @inbuf as we go.
++ */
+ static void qtest_process_inbuf(CharBackend *chr, GString *inbuf)
+ {
+     char *end;
+ 
+     while ((end = strchr(inbuf->str, '\n')) != NULL) {
+-        size_t offset;
+-        GString *cmd;
+-        gchar **words;
+-
+-        offset = end - inbuf->str;
++        size_t len = end - inbuf->str;
++        g_autofree char *cmd = g_strndup(inbuf->str, len);
++        g_auto(GStrv) words = g_strsplit(cmd, " ", 0);
+ 
+-        cmd = g_string_new_len(inbuf->str, offset);
+-        g_string_erase(inbuf, 0, offset + 1);
+-
+-        words = g_strsplit(cmd->str, " ", 0);
++        g_string_erase(inbuf, 0, len + 1);
+         qtest_process_command(chr, words);
+-        g_strfreev(words);
+-
+-        g_string_free(cmd, TRUE);
+     }
+ }
+ 
 -- 
 2.39.5

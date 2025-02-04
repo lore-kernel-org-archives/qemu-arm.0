@@ -1,262 +1,250 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp100980njb;
-        Tue, 4 Feb 2025 01:46:25 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCX9cSkFJq3h81RFXm/tH8neSkP+YD6+d4FXyugb2D0ukpfbj46VtgXMWzKWWFeAB4nVM8yUuRXztoEdOw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEjEPSgVspytwsFCbZ2gw/bpc0/OYnRXxN4rH6JPaJKgWFNS+lJC2s+U3Bb9fp26t1SZjk8
-X-Received: by 2002:a05:622a:6083:b0:46c:7646:4a29 with SMTP id d75a77b69052e-46fd0af8588mr343191131cf.29.1738662385485;
-        Tue, 04 Feb 2025 01:46:25 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738662385; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp91748njb;
+        Tue, 4 Feb 2025 01:21:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWQfYBXpn90GaqKjYZO7bt4RIvs7IysVSKUj59CpMzMwlGwsSpatZKuFUsWLs6DMC+Brfb36/r1QGgnGA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF5vOqVeXsDbnVUdK6o/gojQ7zLBUu7TP6PYxlNa6ivabT7rMbZjmNhYu4FNgpfvYauaGpV
+X-Received: by 2002:a05:620a:414d:b0:7b6:eba3:2dfb with SMTP id af79cd13be357-7c02ec592f6mr410262885a.16.1738660895042;
+        Tue, 04 Feb 2025 01:21:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738660895; cv=none;
         d=google.com; s=arc-20240605;
-        b=gb6loDlYVC7yeLg40NeP//gC+ARmMtvHtUBJrCWzh+pZuUUrWiw7GzWElsupEhYSbC
-         ICzNS8T7cRXSlAEnEYBcItxa2i8XIOr08IM+5W02bypzE8YSFDM6L2dpiaFqRIfPaklo
-         BzC77R3H9JeD0o3VrfydZQV9gvpTsmkDWtI//nksTj9N08OLMDVRJPeFaCdikz9wbHgw
-         eJC8ncme57H72aKS8BBaYR1+t2IrswjPukj2QCP+zGaXA4CIp/kz40nqS2O7swErHleL
-         GOwKvN5bMK8zbpX5zj8ay9FGbPjUlEqYmy0e164RbUpjvds94bz5YdvJP35q/Qu50Ej0
-         jO/g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=PKUPGqmX47gnqq6YEa5INyWfVOK2DWY/3M9wm0byAe8zBqGNU0x2eK7F/u4ZrAVLog
+         t6cRuWP8yGqA9u/6uccvLmm6fhQCS/44oZ9N3eBOTKhQ/CTggsCpuddpFicbH6lIr97E
+         gNth8+5Ix33HA66qJfNz6XtF1DPYE8IVWnKHi5zudaLmR+keKCiDVjI8fqihKf75NHtV
+         Ao1jGPWIF9qkQKgFaVbnfusqX/uV5q3704hYl+yzxxJBe5D6vHeZaWcJh4dRr6xnQOHo
+         APbGlk9txMz3Wgh9Jwgtnv+tZT3QYVLYFbnw9De/26GnRHbuApavxlX/xBTtoP1qSsV3
+         3WDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=+OTZ7ejh8HI3k71X+kpd1ewexjvTndCWHBzWkxcFkyQ=;
-        fh=Di+GWwPrN92aEJsOIkbgJfzXV8JTtAd2+TRiI5c9dNM=;
-        b=CRnUH0NIOGgQ5sHrAcCMcHZzU2437YO1KdQnrp7dZd5lwquBfOw8JFEvXf4zJYgNgS
-         zCz/M+cx8iqB+z36/K2T9/2BUUZ+qMKyO2Ebutdg4Q8cojN4yccOOF9IBjR99N2daBJz
-         iPQpWb0uHT4xqKF+K38NPbgSWzeYRCdoMBwNjSQ/XjIYa7WvikS8Z3zWh+vkFEIBBmS8
-         H6RqIikFXFltCSn8izelsCWf851Wr57f6/n1/APcMt2kCGtSqF5Exxz5v7IuZoPUJzWr
-         I3VPAGPa3uC61+TOqmfCjOIywCqVSsc23q2jQLdBAtaV1jdyGfxA1fzmUcHcPxv55DvG
-         wN8g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vG2zeYlx21p1/xmxRjUnwQ71OyTX+iR75azfeATRfxI=;
+        fh=KqbP3qUpcPJQIxJ5QMY0T+ynNV7y+kvA7VxAT9Zs4TQ=;
+        b=CHahHeGNTjUaGZZdemXBB+upJF3I91RqdXTC+6HM8wBJeFzCfc4TIHyYNn9oCedcJW
+         qiR2UWJ8OBV4ZEYGMBrpbxf1MUM0rAWNyUUIt3Ct8wIsGEC1eYJaPfrwmIC+rb5XJ9tq
+         dMXTBDLDjC61RMRr/kdjoDd+WljCxJa+FcDe1UQPqGHz9kvQqyMKQrzP+qAyU737wnS6
+         3C30dGssicP0r6tSPw3VhryhVBowJVRJzqcI5JV4h2o+zjNQAkRVSb/lXyAYetiS9aRK
+         6YAhgfpsnUA+t5BFdASGk2Ud0lkXTygWthNAB+KTJ/0aW1CI9w9xAbQx8rSPZ7DpgZaD
+         jzoA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=kd1ILdqs;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dkRHXBbA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016b7e396si24912671cf.276.2025.02.04.01.46.25
+        by mx.google.com with ESMTPS id af79cd13be357-7c02dbdd6easi220818385a.263.2025.02.04.01.21.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 01:46:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2025 01:21:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=kd1ILdqs;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dkRHXBbA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfFUx-0006KU-AF; Tue, 04 Feb 2025 04:45:39 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfF7Y-0004hX-1a; Tue, 04 Feb 2025 04:21:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfFUt-0006K4-TW; Tue, 04 Feb 2025 04:45:36 -0500
-Received: from mail-psaapc01on20727.outbound.protection.outlook.com
- ([2a01:111:f403:200e::727]
- helo=APC01-PSA-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfFUs-0003sI-F8; Tue, 04 Feb 2025 04:45:35 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dy3LCz4kofwr7y7nvfLaeo1aKkh8at/PFl0BId//6Gh5EznHA7aDr93Ot+PBxa2CYTBZtRL7OkJtjaLYMsvXKh75x7+/6MVI+D/607Fwztf+ZIsqQ5/t+RJcb+bVeZt7CqoqYDz+munf0i3QRO2ZhRkiK/+OrGmknDnhOL0gQTQitii3ujTFDF+DZRzAECoawRoCIXc0CoHzm7JLfZdgzVCr+PUTECJPAMl8RIfzv7L+KMXvUg6DelHlpYKi+I/tLFQXohxdfrBs4Rbw5ayE0DsUUSq3nkCViC3BOySJ0XWJhYqD4in0pv3L+OjJ4SAMZRDypct8pRx5jvWxNV5vWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+OTZ7ejh8HI3k71X+kpd1ewexjvTndCWHBzWkxcFkyQ=;
- b=leeARFiq4nWG6RZvVlCwRplGe6rP13n+CV0tCUeqxXYlW4JZvin5tiSADtK3fREpnq4QmqqCtSaw7njDj5ibGrbmqUbPc/+VvYblZwqUrNkG1hc55ruPwYq9W7oJHokqLKW78PrQRHtqMtebHo1GIZoTcsKSfNUsCbIi7hzU3NeA3Wfn4jTBxohP5iMzroGdVI2dmNAS94D/MUKyOK0hviJ1lGWHXqQJAgCXMiAH9Wxv+VdavhLxgEUKUriNYxSrIlgD02MGCYM1ZrIDf2JbdL06hNuYVKSQ5Rfhujv0pmqJAVZ1T7j3SbChJ6vkmWs2Qvr9W2wxa7cottvAANU5Gw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+OTZ7ejh8HI3k71X+kpd1ewexjvTndCWHBzWkxcFkyQ=;
- b=kd1ILdqsj6WJYUUKc1rKMG1HpDE5qPNekIPG0DgaNogCmiXLGVGqpFMC/2xo+atkuaqy4WG5+S90NS1OMzkJF7/8NjVzEKUPL1p/sK+fAtSV/V3FgVC4m00sYURQadMLvSEctk2IsnYLDZOJy8IJNKC86tx3EVlrmuIIxqBa98c0eHUx0VYmfkOhYhelsMXtJXqieEedGpCVlOJ8XCKHbFPz9HRsNRkjxPDgx6Lk/DXT92pr4X9qiboyLbMEIHxbdfzcYWYDC1Ymhv+7bPOZ9rQaf3A2FJvcqpnfYDvf/yEr2oV0yZOQymqFXpGyRapaX3Hit22eJDxX9a0QwOxHXA==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- KL1PR06MB6790.apcprd06.prod.outlook.com (2603:1096:820:ff::13) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8422.10; Tue, 4 Feb 2025 09:45:25 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%5]) with mapi id 15.20.8422.005; Tue, 4 Feb 2025
- 09:45:25 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
- <yunlin.tang@aspeedtech.com>
-Subject: RE: [PATCH v1 06/18] hw/intc/aspeed: Introduce AspeedINTCIRQ
- structure to save the irq index and register address
-Thread-Topic: [PATCH v1 06/18] hw/intc/aspeed: Introduce AspeedINTCIRQ
- structure to save the irq index and register address
-Thread-Index: AQHba9K7meqnZdOEZ0SS3T3u/tT+zbMuveUAgAg9ElA=
-Date: Tue, 4 Feb 2025 09:45:25 +0000
-Message-ID: <SI2PR06MB504172A9411E9D6663A84E04FCF42@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
- <20250121070424.2465942-7-jamin_lin@aspeedtech.com>
- <a853d2ae4bc50703fe193406f9e4008d18110287.camel@codeconstruct.com.au>
-In-Reply-To: <a853d2ae4bc50703fe193406f9e4008d18110287.camel@codeconstruct.com.au>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|KL1PR06MB6790:EE_
-x-ms-office365-filtering-correlation-id: 9f13e6ad-a322-4b8e-141b-08dd4500a6ac
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?djZacjlxck5aQXJPczFWNkN3eU1QTU5MZmJ4SFFlY1Z1amhGVGY3QWlxTWNw?=
- =?utf-8?B?Skc0N0NNMkFnbjJEVjlQNjRtR3p4NkI5bGJ5T1o3cHdockY5OG80SERSMmV5?=
- =?utf-8?B?UTdVL1kyNWh3UHpkOFRGcitFVm90RVF6eW5HR05Yd3FnOXR3cmJoNnJYcW9l?=
- =?utf-8?B?STVUT0dUMHBLZzV4R1BNVWU5NHRwL1Q4TmVTdCs5akpVUnBqSHlLRWRoeE5O?=
- =?utf-8?B?d1A1SkJoRkovdTdMZ2h5Vy9lZE5RNjNreWhzeGdpQnpodThuV0ZiekRad3Vr?=
- =?utf-8?B?cHorcWJTeWZSay9MdWFhNTd4Y2VFanRxMjhTZG9mNlhEbVZkV2Q4R1dtc2JQ?=
- =?utf-8?B?SkUxalZrWXAyUEtZZG5lZ24zYVQ2MlBMWnpoYTBxWG44dkQ4aTBEQmZwNFJY?=
- =?utf-8?B?RUJhWnhlMUpocVNJbkY5dTJVR0s4MTYwM1NOQ2lZZ1ZVOHNEVlRKd2dtNWh2?=
- =?utf-8?B?b3R6VlVWMjNHOTRHbHJ4V25tZ0xiUlRrRW5SQ2JNVUhDWXFNdnVsTjVZY3FW?=
- =?utf-8?B?a1pON1RaWEdpRDMvMHJUSUYvRGg0anl2TEhTQTRSdFU4blZ6V0pPdWtqOFlk?=
- =?utf-8?B?U1ZHOHo4MUt3cVJzMnRtaDE2T3FGazkzUGJqS3BWb1pDTlQ2M1B0WWplVXpr?=
- =?utf-8?B?VjZpcVVnWS8ycEtHR3NuZVZEZnVYcGxVWjZuQ3hYS05kVzI0R24zNVJ3NzVC?=
- =?utf-8?B?MDRpOHpyMXpwOHhnQlp5clJzN3JqMmV4MnZiMVkwc2JOOWpoUVNDVTFWRHk5?=
- =?utf-8?B?cG5pMWxLT01na2QvYUNKYXVBY2ltOTZyRXBDSTRHbGw4eStZVkNuS1FDLzVO?=
- =?utf-8?B?QkwvcDNacks5MU1pRzl4bitxejg1WW0zSThMOVg1aFA5L2xSb0VKUm9TSDF5?=
- =?utf-8?B?QUFWZkZ0TnNHeWlwYXdIcC9iL0JDQ09ITERmSGZYanZkWnNURTAwVUg4QW1o?=
- =?utf-8?B?c0MwOHFndVl4eXFMdEFBY0RCMEVRUGVCSVR5UDNFTktIY0g4Njg4RzlpaGx6?=
- =?utf-8?B?dHQxNkRMVnN2Z0tOMzdaaW85RDBrOG8vZnBNeVJ0bjhzQUNjRWFzYkxLdjVk?=
- =?utf-8?B?R0FiejUxYnhMcFdndHZPM2Uwa2IwVWF0bnVsSXV5bExSVjNqNFIvODJITElr?=
- =?utf-8?B?RExpaVhCcW9Kd0lHQWtBdU1vdUhIN1FFajRsZVZxY3pTMmpZYUJjQ3ZjV3Ru?=
- =?utf-8?B?VGdTbXJhbmlIdDdxSVcrSjNUTFo5TUJKQUcvY3B5ZDE3ZHFLYURJY3BUbFZr?=
- =?utf-8?B?VWVmWGNjVEJ6d2ljMTZVbGpzaEZmYUpkVkVBVFBLcXRCU1h1VmF1KzM1eUJW?=
- =?utf-8?B?bWRibUtRNFBzdWgzaG8xNEtudlQrME9ZMmgwQWV1YXk3ZkdPRlNxUjlRSWE4?=
- =?utf-8?B?MU9udnVod1c1QmZuODlRMk9WcUJZaXkvQ1JRK0w1aHVZbWh4djZHbnFuR2tH?=
- =?utf-8?B?NzNTRnJuN0ZHVVh4bXpuTndpeUxCTUZqQTlIcUs2WFJvTTBEMzFZNXJYYTZn?=
- =?utf-8?B?NHo1cUxMVjlnZXlBUzVTRDdDYnM5a0JneUt3aE9hZklST2JrWXk4Q1UzSkM3?=
- =?utf-8?B?T2xLL1NSanNab0E0a050S0tFSlVOMFlYbUk1RHhjdzNmbEpCMnpsSHhSZ2FK?=
- =?utf-8?B?dTFtSXZnaVNYWHVHdDlQM1NwZHVDUkk0RlpaVFAzb2lZU3ZOdVJhb09DWitV?=
- =?utf-8?B?U1BGUWZJRExNL2s4SWROV3lFb0lIRElHZUZJalZMeFEyaVdOc2xJK3NnSlJ2?=
- =?utf-8?B?NERHWDlIMUQ0NHFlcjU3bWxMckJrZ1U4emNzSm14N0JhWVUzeTZ2WjlJR1hV?=
- =?utf-8?B?ZkMrcHlqTGk5R0RSbFVkcUowVzhOZEFnZEU4MlVEYU12QXhTbE1NcXlZdWkz?=
- =?utf-8?B?S21iWnFiZXZsMitZYzFMbUNKWFVGQURTYlRveEp0S05XUnprZ2tkZlJ2clR4?=
- =?utf-8?Q?JZoCmJzIUo1xa7aJvUs7u6hUdQzSzq6Q?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y3o1MEZETkJ6MExlSHNoUHh0NWpLZVBlcUpCVWZtSlcxRUxWQlNkTHZUK0pV?=
- =?utf-8?B?OGlicXRIOVFTL2ZtT0VHREVTOEE3SnRSYnk0OFFaWHhIVFNjQ2FoM2haRGlK?=
- =?utf-8?B?eGxkazhmZ2FKYkFNZTFrMStYNy9ZekZ3czE1M3I3NHh0OHZlbEp4VEF1TzVI?=
- =?utf-8?B?K0QzeXhVcFZTalJVTjVYMzZibWoxTDhVM0xkMU1NMFhsZTNtcTl3ajJZTnlL?=
- =?utf-8?B?eFVyQnUvVEtZL2F5ZENmN1R6Z3Nmci92WVJOY0N6bWhoS2ttMG54eHlEVU5W?=
- =?utf-8?B?d2ZmSWYydFh2YitMZlVJUWVFN0JXSSsrTVg0VGVxMnhZaVo2dXhZYkV5blhv?=
- =?utf-8?B?NlM4cjVDMWxJd1k4VjNzYVpKaGRNU21aV0xLUzVsODhob200dGtlTHZuSWYy?=
- =?utf-8?B?dU5FWVpFSGpMcG5nM3MrMmxGQ1NDcGJhcnJzYXh5MU5LSzJMc3NEUlRncGp5?=
- =?utf-8?B?US85TGliWG1SNVNVaENPMmEyMEZLMzR5dmJGRWJDNXJBSGhCUXN2d1BaeVR0?=
- =?utf-8?B?SG02aVhRVnFua2VGM3prMlc3Y0c5aU5EbC9LQTMrNURXSzkyZGdQREVVSEhY?=
- =?utf-8?B?SFpvNUhEUXlsWnM3MkkwU0FrK2xUUVQ3UDRXVEovMHE1czZhWHVvK1UrZXRW?=
- =?utf-8?B?bUl4T2c0ZUsxdjZFaWkxWE9xamJhNFQvRkltYzVJR2dFaHloTVlIVnFJaGdV?=
- =?utf-8?B?Vm4yaHBlRjJrTzJQdlVCM0Z6UmZZZGpnNUF5d0IyaUw2RlR1Yml2YnY4NTI2?=
- =?utf-8?B?RVZQa2NZQlArekpyL3VQekczNkIyN0FIVlduTVkwUVQ4V0sxV3Zoa2NRRzZx?=
- =?utf-8?B?M0MrY1hJdmIrTy9yU01CWXBxOWQxUzNaMGVubVZ3RHdoNzQvdW84MzFsUU9F?=
- =?utf-8?B?TUhPK0lKWFN3T2ZMSm5qdURWV1JuQWhMUUhDVTVJaTlsT2V1blVubVZrWDhw?=
- =?utf-8?B?UFV1WUVRTjk5b1JSUlJnbEorWElSZTBXUjlNVUhEcXgwSnNFb2dwUWMzeE5W?=
- =?utf-8?B?WUdXU25IbjdKSTBoRktnNHpGZlkwTVRLUzgwR0FSNTc1UzhvVnNXcUdxL1NJ?=
- =?utf-8?B?Y3lxWkd5eXhlaEo2T1JCVnRvUlNCc0dMbXkrTzhDWndiT1pXVFVNdklLell1?=
- =?utf-8?B?Y0wxQlgyZW90Uk1jMlJwRnV1aERodXpGWXFyUFlBa01GcmRsRWZ3Tm44ZXc4?=
- =?utf-8?B?VTJQMWJzRHlkMTViVUpJSXJ5azZ5eFZZV2JxY2UvTDJ0RHg5L0d6ZTVTSHN1?=
- =?utf-8?B?Wkw3UTl0TjFYWmV2MWdCeWVsblN2cnJtek1TSWlZZVBNV3c2K08weGl1ejFn?=
- =?utf-8?B?OFlGdWFQMTNSSXh0aml2d2d0b25LbmFQOFpvSGFyY25yenNCU2xLeGY3N2NI?=
- =?utf-8?B?QzU4OTdqSVU5MDNsa2ZQM2xOU3JUVC8yZjZSbHRadDVoUDdTNUUxV0IyRWhy?=
- =?utf-8?B?N1RDQXE4akN6YzhXRitOK0lLUk5aVzF5RkQxR0xKWTVQaVhzQTVsQlczbkVj?=
- =?utf-8?B?VnFtcCtqOGE0UTNXZXZ2citvL2ZzaE15TDl6OGdXeDB5bkRKS2tnKytIOWVp?=
- =?utf-8?B?Y1FYV0llYWNQSFZrSEptQTV5U2RWR01SaXlUQmtSWGh5RGR2M2NOUzhRN1pm?=
- =?utf-8?B?RDdhK3YwRWRTQXl3djRhWVZvdTNkY3RCb2w0dmVxeEZWSmZjaEp5YXFnUDht?=
- =?utf-8?B?M09jSVZFbWF6eUc5dnNLWnFRZk9OM0pIckIwaXB1a1ZIbjV4ZDFtUDVRVnNp?=
- =?utf-8?B?UGtvYTlDejA1ckhkZ3JWQ01PWHRFZTRNR0lTeXJqbXE4dTY0ZTlKcFRaVE1H?=
- =?utf-8?B?czRYVnNrYTZoRTVEYkltTktqZWdDOUlQVHV6U3pDOHc1MWM1RnhBZDRLSWd5?=
- =?utf-8?B?S2wvWEV0aVVpc0FCZXdPYVBTcWJYZ2w5Vno1QVp5c29icXUxbDhWcCsyeWR2?=
- =?utf-8?B?VXl3TVUwYWdISmVlOFIva2lxanFabTR1cllpT1lnTVdITjlRZERtZ1hvMW9x?=
- =?utf-8?B?N3R2eUtqQlpxbmZRN3U2Z1dGeVl1MXJoSldub0hsOUJQb0FMbXU4RFB0L29a?=
- =?utf-8?B?V1BVUC9aNkMxZWJ2aUtHZmpTdWthQWUxVFYzVzVSWjNXc3FteG5IM2NrYzlV?=
- =?utf-8?Q?aC+26sv6VqInjVhCWCawY+fLp?=
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tfF7W-0004gV-6h; Tue, 04 Feb 2025 04:21:26 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tfF7T-00052B-Q4; Tue, 04 Feb 2025 04:21:25 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-43626213fffso39034305e9.1; 
+ Tue, 04 Feb 2025 01:21:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1738660881; x=1739265681; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=vG2zeYlx21p1/xmxRjUnwQ71OyTX+iR75azfeATRfxI=;
+ b=dkRHXBbAzbg2azwjp7dof6U8oltuncm5mavHSO+YQuI+85SgNWpwEd0+pxaDgaCRCV
+ sC8phhaNHT76eTkSPxOI9+/rBunDYwpEl5/CXxX5pTw0vbSSOLPEMJ8hHL4eGx+Vb3FM
+ irZVDZ+7i/z664dt2wduKa89l4bNytvI5zvYrPoz9TBDX+d1O4Od5X7rAelTMtjeS1GF
+ NSYZ+4O4Eez5rxUyzuWV7L5a0f4edGcNlMUwU6+KF71WP8H2cNhfnVJRvn4YpJ9O6ZS4
+ Bj8HaJNV3/kPxbnluZ0qnqdqkrBp1Q7HEs8Rz6/UUtDPwS/BANdMVz/7B9ZShOv1OTDU
+ XKLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738660881; x=1739265681;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vG2zeYlx21p1/xmxRjUnwQ71OyTX+iR75azfeATRfxI=;
+ b=QE5dL88BRzsQZbUk9ymKgFnnxKykz91R2FcdYEPIadeay43hhyOSMyj7Vzqwp/o3am
+ orNLNBwR1STc7pCwREyaNCGZTGVm5v0a0ckqyj4qNdP5i9iWZnfv9pPIYIe24m9z++Ux
+ URZCTjfgJ1tDyr6bWq09mFMDgVuBlccTJq6Ib7QwV8gcd+NWV3rWVljZg9BMJhLU/W9c
+ 1ldQDnpO86Jw1HzBW/qebyx+AeV0fDE5EoUCJmD6/GlJcIV11YfRpqjI0sau9akaJph6
+ U1miZrXJc11l4+AP0dqdn8XE240CC/8/njpmwXGcGWxnOiSnsw1xnbXqBJCse94Xl4Qq
+ 0BoA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUwpVfWHuWmsigMzRGl+PIhvh0l8OaLY6talLwfW5wmjjU6TEJDtwGuGhXom32M14VVkI7HTVZLgg==@nongnu.org
+X-Gm-Message-State: AOJu0YwNq3xRgqJ9Wn8MderaOyQnkl5MevnlJxBk8yUH7GlNJUaIbW0z
+ 6YfHfbvk/jyAEbBq14B5wyGIqJr770OfxaCAYl9TmeG+aVR33HLlXfaE4g==
+X-Gm-Gg: ASbGncsz3tCWnvwWAjljPpUjrj/3pnPvTLIkkoRY4gJZOeJ7Ee03MvqjHVjRWlcttjZ
+ 45fGRohn0qtpUCy8My9XyRv5E/0smWmmESICDgTEYxzxwR78ir0G9RMGlax07c/Gwy6xSFR653f
+ 7hbRcFLjK+uGTIuGI5EVk3HsBwCI3bnXXUOgrko4abzpNqf2d0/evFrUec6Tm39mmel8b/o2ZRj
+ 4koA0zveNNA7/DsoGjsu0s9IWIuh7Cj9/LxP7/0gPnZThMktsAP5AiqPZHxykNNKWMeREqZF0v3
+ EcOkLuX0iYpEn19Pf2dIxCeONAjuFpgbM2ho+UoJny0BrcNveoIu3V+5boyphAj0VMIw3/UfcgS
+ jCB+30rWaqg==
+X-Received: by 2002:a05:600c:4286:b0:436:1b0b:2633 with SMTP id
+ 5b1f17b1804b1-43905f782a9mr17459505e9.9.1738660880658; 
+ Tue, 04 Feb 2025 01:21:20 -0800 (PST)
+Received: from Georg-PC.fritz.box
+ (p200300faaf0043006a2cae69f03f1c85.dip0.t-ipconnect.de.
+ [2003:fa:af00:4300:6a2c:ae69:f03f:1c85])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Feb 2025 01:21:20 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 00/18] Add i.MX 8M Plus EVK machine
+Date: Tue,  4 Feb 2025 10:20:54 +0100
+Message-ID: <20250204092112.26957-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.48.1
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f13e6ad-a322-4b8e-141b-08dd4500a6ac
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2025 09:45:25.4642 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qEXwSyqX2MEQA2hEg1DPpwQMKJ6bTsFhCmQRCco+RgOStL8G61u8HSbaM4/uwm1EKfp2mDvkYtIdKdGAYw5+24inp3xyhw7duVIAtQ3UKZo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6790
-Received-SPF: pass client-ip=2a01:111:f403:200e::727;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=APC01-PSA-obe.outbound.protection.outlook.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pytVzKjW1+Df
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qKYvuzAF36h9
 
-SGkgQW5kcmV3LCANCg0KPiBGcm9tOiBBbmRyZXcgSmVmZmVyeSA8YW5kcmV3QGNvZGVjb25zdHJ1
-Y3QuY29tLmF1Pg0KPiBTZW50OiBUaHVyc2RheSwgSmFudWFyeSAzMCwgMjAyNSAxMTo1NSBBTQ0K
-PiBUbzogSmFtaW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBDw6lkcmljIExlIEdv
-YXRlciA8Y2xnQGthb2Qub3JnPjsNCj4gUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5h
-cm8ub3JnPjsgU3RldmVuIExlZQ0KPiA8c3RldmVuX2xlZUBhc3BlZWR0ZWNoLmNvbT47IFRyb3kg
-TGVlIDxsZWV0cm95QGdtYWlsLmNvbT47IEpvZWwgU3RhbmxleQ0KPiA8am9lbEBqbXMuaWQuYXU+
-OyBvcGVuIGxpc3Q6QVNQRUVEIEJNQ3MgPHFlbXUtYXJtQG5vbmdudS5vcmc+OyBvcGVuDQo+IGxp
-c3Q6QWxsIHBhdGNoZXMgQ0MgaGVyZSA8cWVtdS1kZXZlbEBub25nbnUub3JnPg0KPiBDYzogVHJv
-eSBMZWUgPHRyb3lfbGVlQGFzcGVlZHRlY2guY29tPjsgWXVubGluIFRhbmcNCj4gPHl1bmxpbi50
-YW5nQGFzcGVlZHRlY2guY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYxIDA2LzE4XSBody9p
-bnRjL2FzcGVlZDogSW50cm9kdWNlIEFzcGVlZElOVENJUlENCj4gc3RydWN0dXJlIHRvIHNhdmUg
-dGhlIGlycSBpbmRleCBhbmQgcmVnaXN0ZXIgYWRkcmVzcw0KPiANCj4gT24gVHVlLCAyMDI1LTAx
-LTIxIGF0IDE1OjA0ICswODAwLCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gVGhlIElOVEMwIGNvbnRy
-b2xsZXIgc3VwcG9ydHMgR0lDSU5UMTI4IHRvIEdJQ0lOVDEzNiwgbWFwcGluZyAxOjEgdG8NCj4g
-PiBpbnB1dCBhbmQgb3V0cHV0IElSUXMgMCB0byA4LiBQcmV2aW91c2x5LCB0aGUgZm9ybXVsYSAi
-YWRkcmVzcyAmDQo+ID4gMHgwZjAwIiB3YXMgdXNlZCB0byBkZXJpdmUgdGhlIElSUSBpbmRleCBu
-dW1iZXJzLg0KPiA+DQo+ID4gSG93ZXZlciwgdGhlIElOVEMwIGNvbnRyb2xsZXIgYWxzbyBzdXBw
-b3J0cyBHSUNJTlQxOTJfMjAxLCBtYXBwaW5nIDENCj4gPiBpbnB1dCBJUlEgcGluIHRvIDEwIG91
-dHB1dCBJUlEgcGlucy4gVGhlIHBpbiBudW1iZXJzIGZvciBpbnB1dCBhbmQNCj4gPiBvdXRwdXQg
-YXJlIGRpZmZlcmVudC4NCj4gPiBBZGRpdGlvbmFsbHksIHRoZSBJTlRDMCBjb250cm9sbGVyIHN1
-cHBvcnRzIHJvdXRpbmcgdG8gR0lDLCBTU1AsIFRTUCwNCj4gPiBhbmQgQk9PVE1DVSwgbWFraW5n
-IGl0IGRpZmZpY3VsdCB0byB1c2UgYSBmb3JtdWxhIHRvIGRldGVybWluZSB0aGUNCj4gPiBpbmRl
-eCBudW1iZXIgb2YNCj4gPiBJTlRDMCBtb2RlbCBzdXBwb3J0ZWQgaW5wdXQgYW5kIG91dHB1dCBJ
-UlFzLg0KPiANCj4gSXQncyBhbHNvIGEgYml0IGRpZmZpY3VsdCB0byBmb2xsb3csIGV2ZW4gaGF2
-aW5nIGxvb2tlZCBhdCB0aGUgZGF0YXNoZWV0LiBEbyB5b3UNCj4gbWluZCBhZGRpbmcgc29tZSBk
-b2N1bWVudGF0aW9uIHdpdGggZGlzY3Vzc2lvbiBhbmQgYSBkaWFncmFtIG9mIHRoZQ0KPiBjb21w
-b25lbnRzIGludm9sdmVkIGFuZCB0aGUgcG90ZW50aWFsIGludGVycnVwdCBwYXRocz8NCj4gRnVy
-dGhlciwgaXQgd291bGQgYmUgZ3JlYXQgaWYgdGhlIGRvY3VtZW50YXRpb24gYWxzbyBkZXNjcmli
-ZWQgdGhlIG1vdGl2YXRpb24NCj4gZm9yIHRoZSBpbnRlcnJ1cHQgY2hhaW5pbmcgaW52b2x2aW5n
-IGludm9sdmluZyBJTlQxMjgtMTU5LCBJTlRNKiwgYW5kDQo+IEdJQ0lOVDE5Ml8yMDEsIEdJQ0lO
-VDIwOCBhbmQgR0lDSU5UMjI0LiBDbGVhcmx5IGl0J3MgYSB0aGluZywgYnV0LCB3aHk/DQo+IA0K
-PiANCg0KUGxlYXNlIHNlZSBteSBjb21tZW50cyBpbiBwYXRjaCAxMi4NClRoYW5rcyBmb3IgeW91
-ciByZXZpZXcgYW5kIHN1Z2dlc3Rpb24uDQpKYW1pbg0KDQo+IEFuZHJldw0K
+This series adds a new aarch64 machine to QEMU: i.MX 8M Plus EVK [1]. It al=
+lows=0D
+for running Linux distributions such as Buildroot=0D
+(freescale_imx8mpevk_defconfig) and Arch Linux [2] via direct kernel boot.=
+=0D
+U-Boot does not work yet. I plan to use this machine myself and I also want=
+ to=0D
+make it available to a bigger audience, so I propose to add it to QEMU. My =
+goal=0D
+would be to have it added for 10.0.=0D
+=0D
+The series is structured as follows: The first three patches fix some issue=
+s in=0D
+device models reused by the new machine. Patches 4-17 add the machine step =
+by=0D
+step which includes documentation. The last patch adds an I=C2=B2C RTC whic=
+h I'd like=0D
+to use along with the new machine.=0D
+=0D
+I've based some code on existing one (see "Based on" in file headers) and I=
+'m=0D
+unsure how to handle the licensing and attribution correctly -- advice welc=
+ome.=0D
+=0D
+v2:=0D
+* Rebase onto master, eliminating some patches from the series=0D
+* Initialize ROM with memory_region_init_rom() (Zoltan)=0D
+* Mark the machine as "Maintained" (Peter)=0D
+* Do not select TEST_DEVICES (Peter)=0D
+* Have separate sources for the two clock tree modules (Peter)=0D
+* Make PCI devices attach to the correct bus (Peter)=0D
+* Avoid adding documentation that is removed later (Zoltan) Instead, docume=
+nt=0D
+  Buildroot process in the first place and change it slightly.=0D
+* Drop TCA6416 device model (Phil, Dmitrii)=0D
+* Add pca955* Kconfig cleanup patch=0D
+=0D
+[1] https://www.nxp.com/design/design-center/development-boards-and-designs=
+/8MPLUSLPD4-EVK=0D
+[2] https://archlinuxarm.org/platforms/armv8/generic=0D
+=0D
+Bernhard Beschow (18):=0D
+  hw/usb/hcd-dwc3: Align global registers size with Linux=0D
+  hw/pci-host/designware: Prevent device attachment on internal PCIe=0D
+    root bus=0D
+  hw/gpio/pca955*: Move Kconfig switches next to implementations=0D
+  hw/arm: Add i.MX 8M Plus EVK board=0D
+  hw/arm/fsl-imx8mp: Implement clock tree=0D
+  hw/arm/fsl-imx8mp: Add SNVS=0D
+  hw/arm/fsl-imx8mp: Add USDHC storage controllers=0D
+  hw/arm/fsl-imx8mp: Add PCIe support=0D
+  hw/arm/fsl-imx8mp: Add GPIO controllers=0D
+  hw/arm/fsl-imx8mp: Add I2C controllers=0D
+  hw/arm/fsl-imx8mp: Add SPI controllers=0D
+  hw/arm/fsl-imx8mp: Add watchdog support=0D
+  hw/arm/fsl-imx8mp: Implement gneral purpose timers=0D
+  hw/arm/fsl-imx8mp: Add Ethernet controller=0D
+  hw/arm/fsl-imx8mp: Add USB support=0D
+  hw/arm/fsl-imx8mp: Add boot ROM=0D
+  hw/arm/fsl-imx8mp: Add on-chip RAM=0D
+  hw/rtc: Add Ricoh RS5C372 RTC emulation=0D
+=0D
+ MAINTAINERS                         |  15 +=0D
+ docs/system/arm/imx8mp-evk.rst      |  72 +++=0D
+ docs/system/target-arm.rst          |   1 +=0D
+ include/hw/arm/fsl-imx8mp.h         | 285 +++++++++++=0D
+ include/hw/misc/imx8mp_analog.h     |  81 +++=0D
+ include/hw/misc/imx8mp_ccm.h        |  30 ++=0D
+ include/hw/pci-host/designware.h    |   7 +=0D
+ include/hw/pci-host/fsl_imx8m_phy.h |  27 +=0D
+ include/hw/timer/imx_gpt.h          |   1 +=0D
+ include/hw/usb/hcd-dwc3.h           |   2 +-=0D
+ hw/arm/fsl-imx8mp.c                 | 736 ++++++++++++++++++++++++++++=0D
+ hw/arm/imx8mp-evk.c                 |  74 +++=0D
+ hw/misc/imx8mp_analog.c             | 160 ++++++=0D
+ hw/misc/imx8mp_ccm.c                | 175 +++++++=0D
+ hw/pci-host/designware.c            |  18 +-=0D
+ hw/pci-host/fsl_imx8m_phy.c         |  88 ++++=0D
+ hw/rtc/rs5c372.c                    | 227 +++++++++=0D
+ hw/timer/imx_gpt.c                  |  25 +=0D
+ hw/usb/hcd-dwc3.c                   |   5 +=0D
+ hw/arm/Kconfig                      |  24 +=0D
+ hw/arm/meson.build                  |   2 +=0D
+ hw/gpio/Kconfig                     |  10 +=0D
+ hw/misc/Kconfig                     |  14 +-=0D
+ hw/misc/meson.build                 |   2 +=0D
+ hw/pci-host/Kconfig                 |   3 +=0D
+ hw/pci-host/meson.build             |   1 +=0D
+ hw/rtc/Kconfig                      |   5 +=0D
+ hw/rtc/meson.build                  |   1 +=0D
+ hw/rtc/trace-events                 |   4 +=0D
+ pc-bios/imx8mp-boot.rom             | Bin 0 -> 258048 bytes=0D
+ pc-bios/meson.build                 |   1 +=0D
+ 31 files changed, 2086 insertions(+), 10 deletions(-)=0D
+ create mode 100644 docs/system/arm/imx8mp-evk.rst=0D
+ create mode 100644 include/hw/arm/fsl-imx8mp.h=0D
+ create mode 100644 include/hw/misc/imx8mp_analog.h=0D
+ create mode 100644 include/hw/misc/imx8mp_ccm.h=0D
+ create mode 100644 include/hw/pci-host/fsl_imx8m_phy.h=0D
+ create mode 100644 hw/arm/fsl-imx8mp.c=0D
+ create mode 100644 hw/arm/imx8mp-evk.c=0D
+ create mode 100644 hw/misc/imx8mp_analog.c=0D
+ create mode 100644 hw/misc/imx8mp_ccm.c=0D
+ create mode 100644 hw/pci-host/fsl_imx8m_phy.c=0D
+ create mode 100644 hw/rtc/rs5c372.c=0D
+ create mode 100644 pc-bios/imx8mp-boot.rom=0D
+=0D
+-- =0D
+2.48.1=0D
+=0D

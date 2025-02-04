@@ -1,123 +1,123 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92079njb;
-        Tue, 4 Feb 2025 01:22:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUgIG0UOcTqacsGWxAUX05RlOntJ8G+W0oerlaOj73lVRtNr983bwEvtvguryY4AW72tK3eIWfQ1ukIlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFb0Fq4oj7LwqrECFkTumjY7Uma6arEDCkOjRhGHT96J8e1KIBLDpAb5Ui+1gZF001VdZR2
-X-Received: by 2002:a05:6214:19c8:b0:6e1:f40c:b558 with SMTP id 6a1803df08f44-6e243ccd0a6mr318530976d6.44.1738660944217;
-        Tue, 04 Feb 2025 01:22:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738660944; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92137njb;
+        Tue, 4 Feb 2025 01:22:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWT6mKOWyD2gmL6cw0SuMO2c9d99ROxhikQ8xKr65NUn7JK/VhmLH9LuqaAJjNl4ZJE1hIH2og7pGIrUA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHlXGCtP6lOe0f60cR+5u95JfeCLg96uuBNaO9dutSaHJ8YGfmPNL54pQJvHXxnPN8oFJd8
+X-Received: by 2002:a05:620a:44d5:b0:7a9:afef:33e6 with SMTP id af79cd13be357-7bffcd06881mr3392198985a.34.1738660953572;
+        Tue, 04 Feb 2025 01:22:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738660953; cv=none;
         d=google.com; s=arc-20240605;
-        b=DRVCxX0VI0JmQU11OKyq1aJ4GMR6LeqY+8fkZiljun0eXqbp9jTLCRLyYM5Yu0fUSH
-         7mkr41ZG4v2spEnhbweUQSwZXz3CG0GkN29VKwJ+W1XQd+81ZpjaIswY5TaPe+JdziKe
-         7d751M0fg5rUG7hqItiYEGR/xxpc6OzG1wQJXLvOZI7JzmmBn7r/CrV9YMSx4734SzRg
-         +OF61DXWe5Y1NQWbOHDql13a0DnLOJP7gblEYPp2sLtMiF0tHEht6RZSCckdvqXEmi3i
-         rSSb+Jg10k6nFcONbwWN7Y8NLdu59+NeSPL/cAmZM7346EbOpV4C2gweaxwHWms3gNrC
-         T0CQ==
+        b=cXOMj86Ddl8hzFFHiUHpZelJUYGtVYL5Uo49qA67Pq6RnAoYSbNqTnY5I1bQLGJcSw
+         VpRV4uMHe5xec+SlZj4XGXblkk5dvdCq9v7Gawa7XBswKqNjXus9A1hAQ0kVoWg7Qo+5
+         mDTDGNGOjj0PdONk59O0iF0yzClqjWZ/3j0pqwl28i95nPS5flAz1ROO3fGWrlm4XxzU
+         NLqdp3CTcGxGj7QIJVWJcDeLWPsA1k1r2fr/8PBDDps1Y+P3sMvaJD+XPF3XkVIZXsCe
+         q0wc1C/msdIHiPQUYEv1hJogIxfipF0mIhygzEUQmOJHvz15jFn7GrvGxGQ0zTQKwvfA
+         h9Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=W8F5xCOhhynwLC/fmoiu9ikpJz3majDALcSrfoJxGNU=;
-        fh=QvEkWBsx+1DRbWnDi0Q3G22FOdJqE0Bijonbb5H8Tk4=;
-        b=g9BYsZaFBeKZF85u7164E1BO+opcEgNEFn5UuA0io9bKphnwUMH5W7HuULiAMD7ci0
-         PURJQZaWPE3LIYtER5MR5Y1I+iLPhzbDVeZpBSimsqIJr7tlWM4H8wdiHxtEjsErq2bj
-         XRMj3iwOMDBNjFcE20N/yMgeJD4b84oNT+C/pBpNNJya5yBkbimzS8v8F3FnNsjgL0M2
-         zHTc3D5IeBADfdo7/Ooecfd4AHKgExllUqPoecerprnrm7ejqk7xzit9O/T0RwDThULz
-         LvZnSjLHI1T19KIaDRMtPvv8JxBuSb3NPD0T4BHOKIbrZS/Jz/0KL9vdh3JMKrjEd7GB
-         txdA==;
+        bh=iNwJL70TvJQ4/pz3SSQlqnGrmJeGd5p37x5US2YKiT0=;
+        fh=LRssvzZKNDZJ+Ge2QBl68a3+AiGj8QOHnsJPSmXdbWE=;
+        b=aVrll44n34ekZBsOuLACbySSfPiU6SYyQKU4TuKfOkqd/zuQI9m0+oPi7+vUGUm0Ow
+         KkfoFXE9GDmzgJrDsSO2NoGrHHg09X5cKgWnLUccM3W2NuC6PS/xnL5FMgxp7hoM5rgL
+         rsUejNbqveLJd9umU4SSz/wKSFKQYEFmi9p4GCelVX9KU8SOLczBbuciiGvSxXrt7wMf
+         sSrOMJgihwsSyY9xlStKdHc3npnJ+M29lALxtbtBDnL75a0kCYzFYHZPayQrocOTZDwH
+         xvCWYTDX8/c1NBzUL8sWsjsCSMujKnH/5scf6ZHGHHXz1OpCFuu/49/nEJQd+69BzQEM
+         cezQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NYsVII0N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OMNh0UBP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fed73ecsi23863706d6.375.2025.02.04.01.22.24
+        by mx.google.com with ESMTPS id af79cd13be357-7c02dbdd8fcsi213090085a.281.2025.02.04.01.22.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 01:22:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2025 01:22:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NYsVII0N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OMNh0UBP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfF89-0005nY-1M; Tue, 04 Feb 2025 04:22:05 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tfF89-0005qZ-SQ; Tue, 04 Feb 2025 04:22:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7p-00057T-Qx; Tue, 04 Feb 2025 04:21:48 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1tfF7n-00054X-6j; Tue, 04 Feb 2025 04:21:43 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7n-00056q-2m; Tue, 04 Feb 2025 04:21:45 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-436202dd7f6so61911125e9.0; 
- Tue, 04 Feb 2025 01:21:41 -0800 (PST)
+ id 1tfF7l-00056H-0w; Tue, 04 Feb 2025 04:21:42 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-43622267b2eso53300305e9.0; 
+ Tue, 04 Feb 2025 01:21:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738660900; x=1739265700; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1738660898; x=1739265698; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W8F5xCOhhynwLC/fmoiu9ikpJz3majDALcSrfoJxGNU=;
- b=NYsVII0Ni2/bJXI1Sb7ydkHQBrob4AXMyhRYfGaOCUl66lVaShon/8KOjN1vomdWu0
- Kzn7C94ySa6p+p13444LfodBnVlGdCB2rbBdMXsm5WUt1oGCQQaQ1uJ/sdv56n4bwVUN
- EReXf/szOZ4yYYOVD3GWQrz5q+aiRy7HQxPRKG5X1VPgLEBxbERR3WRvjmxDbGyI55fy
- WR+86ARmW87bmkdWIquydmXDm+ZOmXpbNB4jbDKm4+NBYp9owiJkKRU3aDM8/0GID5A/
- njajA3/XdWUPg8CiHXmz8p4VmGmWrxjtfagfHW8fioLmb2ZIcjh+zC/YHesDLY3i1/kX
- LGFg==
+ bh=iNwJL70TvJQ4/pz3SSQlqnGrmJeGd5p37x5US2YKiT0=;
+ b=OMNh0UBPv7lTcJYxlk4ST9puvQexomDV0gY99kP1EN50Q+KzubjHP1QItqxr+eAD5N
+ XKxyBt3FBQ2Ywu87pOeGJHt1fr+gE+V8dfuxKeYMqA9J/1WJ2wJW1XeNO4f4jTi9+nSH
+ s3bs+3JA5MtuIMw20Li7edbm38lnGjfqc9nKpSqxKZ14ISnSJFiw3vOovTfIbaGV547v
+ FVZYQ4tqgJ8vwnJGj37P6GZ3O7wlwTT3/ytnj30CKmyjlTCrF40wMvKNtY30Ac7h/R4Q
+ UHwKrCLzq2M+VcbOrZLwZUi6lZutSuMZ5NOVt3mWD5eVzWM+JFtDkZOK5nPrwe/CiFmJ
+ bbQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738660900; x=1739265700;
+ d=1e100.net; s=20230601; t=1738660899; x=1739265699;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W8F5xCOhhynwLC/fmoiu9ikpJz3majDALcSrfoJxGNU=;
- b=wdLVv9I9ifZhLsr8pDXOw87EPFoZLxvATiembwXUrFhuFzdR4IKjNUkVzhBAmjsLrg
- 2v5mDE0I9nTSBE7yTcOKjqaeT1mG7z5C45M0FGr8BiaKdmDZqM3fK4Whk9k/IUDhOlvv
- bwuea9D73RbE9pShUJjNi3hExK2SfJewfTWKi2FPhOHinSAN0tXejiUNptZAoq/GGuOy
- JTv0HAwcbjs9InKiJMQkwi1tBPtomMAPHWmI+6soyQLuPx4IsnlEf3eEsYRJLj6xlNEB
- 2eY2SCsWKGFE5vngxrhLOy745e7wEnkUfUc6IAQ6dSU4Jrigzgzh4103GD20X7grmm6R
- BQUg==
+ bh=iNwJL70TvJQ4/pz3SSQlqnGrmJeGd5p37x5US2YKiT0=;
+ b=ZhWPB3sX17XXtv84hdVkmH67SpfYyZtPZHCzGMovOu0Cv7Oou/ad4RsG1+rujI2uI+
+ TRarPwgMpc4wP275f+Awb4xsJCQbNyZTf+CZQArrjH1GxQbxitVXq8/vuEDmyPIY2sEU
+ 0QWEKqPCcnqiGVmPPMiCf4hoMuZNi8lG7BNLTo7zATXApTa3gmCf9wzV2IS0lSWpRJxd
+ dO/kzrj2MSPp2UN9JSqxD5+hgo33boiS8EPBAdhwHkPwe33du3yJy4gWiiy4QB7WG8m9
+ UDIH+wLbNF6MFpMdX75WYWfoYuBGm2DEotcgOMfMQpKBrvKtjchm2XRgoNS0tIJfR2lb
+ v65A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVeBe14s4mDWUOiD+4H6bYGKesQ33rsDACQAtPcxM+V73Vh14fDg2XzfawDwiuCsb+bhW7Lg3sddg==@nongnu.org
-X-Gm-Message-State: AOJu0YxayrxeuUTFCgKhNWlJX34pLFdFkcCOEiNnYT1LtT1x4An63Ovn
- tDmF/1/yuCmaoAVUt3JfgF/latZd2XIfVQ8+zmRT8L2uELXBhHL0uvxbkQ==
-X-Gm-Gg: ASbGncvuKRMuD09Dd0r3aDQpBPKzRCBQM1qz8kGlUrfN5nzWbiBEDl7TBb3791tlMC8
- kINTFupFQdBR01AedwQP7aToPW5nKiUpq+8NSM9LCSovJRgLoZWzwWgsCVpbz3VuUfMywPtIypB
- jQwdWGA0Ab+HZxJyCL6ONAfBbb456V7bwfSLsajEjMS08PLgepYYNFeceH9NUq+iwP1qzEEpDDt
- kKvfbL8aiaXXAwMvaVPvbuQt9PRVVAFOOL+CaVpZB63u3ziQkF4wHqTgqx3e6jBVs0Bi+GBsiVl
- WOit/p0ciE/COfDay1hlWFAH1gT9ripKbsKThICPf2al2izdVlfn2Ip4Nwni8c+JEpGoc/F7OWF
- q9PbxugIUJw==
-X-Received: by 2002:a05:600c:4f07:b0:436:6ddf:7a27 with SMTP id
- 5b1f17b1804b1-438dc40da5dmr201147225e9.23.1738660900342; 
- Tue, 04 Feb 2025 01:21:40 -0800 (PST)
+ AJvYcCWLLcBcfK8UEHIfs9GdGDjoVVpWRwPo8/IyBfeYzWi2H5PCOpRcby1QuGYEwbm5Y9YGT5S1LIiq+A==@nongnu.org
+X-Gm-Message-State: AOJu0YxiOxr3Myl3gxkLYGrENk++k4/oCANFxD2bwSs5acgBUmacXNYw
+ QEKW7pzgRKZ7/JANrZjc20hxFbZQ8uivT65IoYA0nLRKSORtMCJ8JzQV8A==
+X-Gm-Gg: ASbGncswOe3We/SJoUUxdSDN3gAVOqrjyXYOVPT7dDFmUo6r/KuqYCDYIqems5b51nZ
+ 8Umds6ZDM+zh4WOR3T11a5VJ+Lh8BUV3Q1zvdV+WrtCEuFfRVo07orzarZGWoVN5fSoezjLut4i
+ IhTDTtLaKqGc4vCD4WcUw2tJCPGSF8wjaui/l9Ot8TF+XgTqbIT8C7+bTWQx1pld8RmVYnXTQ/u
+ DfnZ6kMgTCBbWDKRGDiTKtcQXRtMJ2lxqYY2pkEdBr/ucyxiTEm5eJ4CJwUcRGre7jC4fOciPMV
+ 2Y2Ted9El1GB7yJTY6oFGPmPPLBats0vbddkrvvDeE/BCaB3UgJ10AECLEjgPeQ4I6/8sHxRvvW
+ QQf9XUnvzpQ==
+X-Received: by 2002:a05:600c:5119:b0:438:a432:7c44 with SMTP id
+ 5b1f17b1804b1-438dc40b281mr194151655e9.21.1738660898418; 
+ Tue, 04 Feb 2025 01:21:38 -0800 (PST)
 Received: from Georg-PC.fritz.box
  (p200300faaf0043006a2cae69f03f1c85.dip0.t-ipconnect.de.
  [2003:fa:af00:4300:6a2c:ae69:f03f:1c85])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.39
+ 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2025 01:21:39 -0800 (PST)
+ Tue, 04 Feb 2025 01:21:38 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
-Date: Tue,  4 Feb 2025 10:21:12 +0100
-Message-ID: <20250204092112.26957-19-shentey@gmail.com>
+Subject: [PATCH v2 16/18] hw/arm/fsl-imx8mp: Add boot ROM
+Date: Tue,  4 Feb 2025 10:21:10 +0100
+Message-ID: <20250204092112.26957-17-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250204092112.26957-1-shentey@gmail.com>
 References: <20250204092112.26957-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,312 +126,161 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fRd7yy3yjVuG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NkfWJG1KnTAy
 
-The implementation just allows Linux to determine date and time.
+On a real device, the boot ROM contains the very first instructions the CPU
+executes. Also, U-Boot calls into the ROM to determine the boot device. While
+we're not actually implementing this here, let's create the infrastructure and
+add a dummy ROM with all zeros. This allows for implementing a ROM later without
+touching the source code and even allows for users to provide their own ROMs.
+
+The imx8mp-boot.rom was created with
+`dd if=/dev/zero of=imx8mp-boot.rom bs=1 count=258048`.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- MAINTAINERS         |   1 +
- hw/rtc/rs5c372.c    | 227 ++++++++++++++++++++++++++++++++++++++++++++
- hw/rtc/Kconfig      |   5 +
- hw/rtc/meson.build  |   1 +
- hw/rtc/trace-events |   4 +
- 5 files changed, 238 insertions(+)
- create mode 100644 hw/rtc/rs5c372.c
+ MAINTAINERS                 |   1 +
+ include/hw/arm/fsl-imx8mp.h |   1 +
+ hw/arm/fsl-imx8mp.c         |  18 ++++++++++++++++++
+ pc-bios/imx8mp-boot.rom     | Bin 0 -> 258048 bytes
+ pc-bios/meson.build         |   1 +
+ 5 files changed, 21 insertions(+)
+ create mode 100644 pc-bios/imx8mp-boot.rom
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index ee837a3f6e..d87435adba 100644
+index 94af3d90e4..ee837a3f6e 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -828,6 +828,7 @@ F: hw/arm/imx8mp-evk.c
- F: hw/arm/fsl-imx8mp.c
- F: hw/misc/imx8mp_*.c
- F: hw/pci-host/fsl_imx8m_phy.c
-+F: hw/rtc/rs5c372.c
+@@ -831,6 +831,7 @@ F: hw/pci-host/fsl_imx8m_phy.c
  F: include/hw/arm/fsl-imx8mp.h
  F: include/hw/misc/imx8mp_*.h
  F: include/hw/pci-host/fsl_imx8m_phy.h
-diff --git a/hw/rtc/rs5c372.c b/hw/rtc/rs5c372.c
-new file mode 100644
-index 0000000000..d300f93e13
---- /dev/null
-+++ b/hw/rtc/rs5c372.c
-@@ -0,0 +1,227 @@
-+/*
-+ * Ricoh RS5C372, R222x I2C RTC
-+ *
-+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
-+ *
-+ * Based on hw/rtc/ds1338.c
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bcd.h"
-+#include "qom/object.h"
-+#include "system/rtc.h"
-+#include "trace.h"
-+
-+#define NVRAM_SIZE 0x10
-+
-+/* Flags definitions */
-+#define SECONDS_CH 0x80
-+#define HOURS_PM   0x20
-+#define CTRL2_24   0x20
-+
-+#define TYPE_RS5C372 "rs5c372"
-+OBJECT_DECLARE_SIMPLE_TYPE(RS5C372State, RS5C372)
-+
-+struct RS5C372State {
-+    I2CSlave parent_obj;
-+
-+    int64_t offset;
-+    uint8_t wday_offset;
-+    uint8_t nvram[NVRAM_SIZE];
-+    uint8_t ptr;
-+    uint8_t tx_format;
-+    bool addr_byte;
-+};
-+
-+static const VMStateDescription vmstate_rs5c372 = {
-+    .name = "rs5c372",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, RS5C372State),
-+        VMSTATE_INT64(offset, RS5C372State),
-+        VMSTATE_UINT8_V(wday_offset, RS5C372State, 2),
-+        VMSTATE_UINT8_ARRAY(nvram, RS5C372State, NVRAM_SIZE),
-+        VMSTATE_UINT8(ptr, RS5C372State),
-+        VMSTATE_UINT8(tx_format, RS5C372State),
-+        VMSTATE_BOOL(addr_byte, RS5C372State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void capture_current_time(RS5C372State *s)
-+{
-+    /*
-+     * Capture the current time into the secondary registers which will be
-+     * actually read by the data transfer operation.
-+     */
-+    struct tm now;
-+    qemu_get_timedate(&now, s->offset);
-+    s->nvram[0] = to_bcd(now.tm_sec);
-+    s->nvram[1] = to_bcd(now.tm_min);
-+    if (s->nvram[0xf] & CTRL2_24) {
-+        s->nvram[2] = to_bcd(now.tm_hour);
-+    } else {
-+        int tmp = now.tm_hour;
-+        if (tmp % 12 == 0) {
-+            tmp += 12;
-+        }
-+        if (tmp <= 12) {
-+            s->nvram[2] = to_bcd(tmp);
-+        } else {
-+            s->nvram[2] = HOURS_PM | to_bcd(tmp - 12);
-+        }
-+    }
-+    s->nvram[3] = (now.tm_wday + s->wday_offset) % 7 + 1;
-+    s->nvram[4] = to_bcd(now.tm_mday);
-+    s->nvram[5] = to_bcd(now.tm_mon + 1);
-+    s->nvram[6] = to_bcd(now.tm_year - 100);
-+}
-+
-+static void inc_regptr(RS5C372State *s)
-+{
-+    s->ptr = (s->ptr + 1) & (NVRAM_SIZE - 1);
-+}
-+
-+static int rs5c372_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        /*
-+         * In h/w, capture happens on any START condition, not just a
-+         * START_RECV, but there is no need to actually capture on
-+         * START_SEND, because the guest can't get at that data
-+         * without going through a START_RECV which would overwrite it.
-+         */
-+        capture_current_time(s);
-+        s->ptr = 0xf;
-+        break;
-+    case I2C_START_SEND:
-+        s->addr_byte = true;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t rs5c372_recv(I2CSlave *i2c)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+    uint8_t res;
-+
-+    res  = s->nvram[s->ptr];
-+
-+    trace_rs5c372_recv(s->ptr, res);
-+
-+    inc_regptr(s);
-+    return res;
-+}
-+
-+static int rs5c372_send(I2CSlave *i2c, uint8_t data)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+
-+    if (s->addr_byte) {
-+        s->ptr = data >> 4;
-+        s->tx_format = data & 0xf;
-+        s->addr_byte = false;
-+        return 0;
-+    }
-+
-+    trace_rs5c372_send(s->ptr, data);
-+
-+    if (s->ptr < 7) {
-+        /* Time register. */
-+        struct tm now;
-+        qemu_get_timedate(&now, s->offset);
-+        switch (s->ptr) {
-+        case 0:
-+            now.tm_sec = from_bcd(data & 0x7f);
-+            break;
-+        case 1:
-+            now.tm_min = from_bcd(data & 0x7f);
-+            break;
-+        case 2:
-+            if (s->nvram[0xf] & CTRL2_24) {
-+                now.tm_hour = from_bcd(data & 0x3f);
-+            } else {
-+                int tmp = from_bcd(data & (HOURS_PM - 1));
-+                if (data & HOURS_PM) {
-+                    tmp += 12;
-+                }
-+                if (tmp % 12 == 0) {
-+                    tmp -= 12;
-+                }
-+                now.tm_hour = tmp;
-+            }
-+            break;
-+        case 3:
-+            {
-+                /*
-+                 * The day field is supposed to contain a value in the range
-+                 * 1-7. Otherwise behavior is undefined.
-+                 */
-+                int user_wday = (data & 7) - 1;
-+                s->wday_offset = (user_wday - now.tm_wday + 7) % 7;
-+            }
-+            break;
-+        case 4:
-+            now.tm_mday = from_bcd(data & 0x3f);
-+            break;
-+        case 5:
-+            now.tm_mon = from_bcd(data & 0x1f) - 1;
-+            break;
-+        case 6:
-+            now.tm_year = from_bcd(data) + 100;
-+            break;
-+        }
-+        s->offset = qemu_timedate_diff(&now);
-+    } else {
-+        s->nvram[s->ptr] = data;
-+    }
-+    inc_regptr(s);
-+    return 0;
-+}
-+
-+static void rs5c372_reset(DeviceState *dev)
-+{
-+    RS5C372State *s = RS5C372(dev);
-+
-+    /* The clock is running and synchronized with the host */
-+    s->offset = 0;
-+    s->wday_offset = 0;
-+    memset(s->nvram, 0, NVRAM_SIZE);
-+    s->ptr = 0;
-+    s->addr_byte = false;
-+}
-+
-+static void rs5c372_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = rs5c372_event;
-+    k->recv = rs5c372_recv;
-+    k->send = rs5c372_send;
-+    device_class_set_legacy_reset(dc, rs5c372_reset);
-+    dc->vmsd = &vmstate_rs5c372;
-+}
-+
-+static const TypeInfo rs5c372_types[] = {
-+    {
-+        .name          = TYPE_RS5C372,
-+        .parent        = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(RS5C372State),
-+        .class_init    = rs5c372_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(rs5c372_types)
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index 2fe04ec1d0..315b0e4ecc 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -26,3 +26,8 @@ config GOLDFISH_RTC
++F: pc-bios/imx8mp*
+ F: docs/system/arm/imx8mp-evk.rst
  
- config LS7A_RTC
-     bool
+ MPS2 / MPS3
+diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
+index 5247e972b8..4dbe30f524 100644
+--- a/include/hw/arm/fsl-imx8mp.h
++++ b/include/hw/arm/fsl-imx8mp.h
+@@ -68,6 +68,7 @@ struct FslImx8mpState {
+     DesignwarePCIEHost pcie;
+     FslImx8mPciePhyState   pcie_phy;
+     OrIRQState         gpt5_gpt6_irq;
++    MemoryRegion       boot_rom;
+ 
+     uint32_t           phy_num;
+     bool               phy_connected;
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 14d696957a..6439639110 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -9,12 +9,14 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/datadir.h"
+ #include "exec/address-spaces.h"
+ #include "hw/arm/bsa.h"
+ #include "hw/arm/fsl-imx8mp.h"
+ #include "hw/intc/arm_gicv3.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/boards.h"
++#include "hw/loader.h"
+ #include "system/system.h"
+ #include "target/arm/cpu-qom.h"
+ #include "qapi/qmp/qlist.h"
+@@ -266,6 +268,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     MachineState *ms = MACHINE(qdev_get_machine());
+     FslImx8mpState *s = FSL_IMX8MP(dev);
+     DeviceState *gicdev = DEVICE(&s->gic);
++    g_autofree char *filename = NULL;
+     int i;
+ 
+     if (ms->smp.cpus > FSL_IMX8MP_NUM_CPUS) {
+@@ -648,10 +651,25 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->pcie_phy), 0,
+                     fsl_imx8mp_memmap[FSL_IMX8MP_PCIE_PHY1].addr);
+ 
++    /* ROM memory */
++    if (!memory_region_init_rom(&s->boot_rom, OBJECT(dev),
++                                fsl_imx8mp_memmap[FSL_IMX8MP_BOOT_ROM].name,
++                                fsl_imx8mp_memmap[FSL_IMX8MP_BOOT_ROM].size,
++                                errp)) {
++        return;
++    }
++    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, "imx8mp-boot.rom");
++    load_image_size(filename, memory_region_get_ram_ptr(&s->boot_rom),
++                    memory_region_size(&s->boot_rom));
++    memory_region_add_subregion(get_system_memory(),
++                                fsl_imx8mp_memmap[FSL_IMX8MP_BOOT_ROM].addr,
++                                &s->boot_rom);
 +
-+config RS5C372_RTC
-+    bool
-+    depends on I2C
-+    default y if I2C_DEVICES
-diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
-index 8ecc2d792c..6c87864dc0 100644
---- a/hw/rtc/meson.build
-+++ b/hw/rtc/meson.build
-@@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_RTC', if_true: files('goldfish_rtc.c'))
- system_ss.add(when: 'CONFIG_LS7A_RTC', if_true: files('ls7a_rtc.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-rtc.c'))
- system_ss.add(when: 'CONFIG_MC146818RTC', if_true: files('mc146818rtc.c'))
-+system_ss.add(when: 'CONFIG_RS5C372_RTC', if_true: files('rs5c372.c'))
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index 8012afe102..b9f2852d35 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -35,3 +35,7 @@ m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%04x val
- # goldfish_rtc.c
- goldfish_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
- goldfish_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+
-+# rs5c372.c
-+rs5c372_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0x%02" PRIx8
-+rs5c372_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0x%02" PRIx8
+     /* Unimplemented devices */
+     for (i = 0; i < ARRAY_SIZE(fsl_imx8mp_memmap); i++) {
+         switch (i) {
+         case FSL_IMX8MP_ANA_PLL:
++        case FSL_IMX8MP_BOOT_ROM:
+         case FSL_IMX8MP_CCM:
+         case FSL_IMX8MP_GIC_DIST:
+         case FSL_IMX8MP_GIC_REDIST:
+diff --git a/pc-bios/imx8mp-boot.rom b/pc-bios/imx8mp-boot.rom
+new file mode 100644
+index 0000000000000000000000000000000000000000..5324b5eed200e723d048f8476e4d96d45622fd4d
+GIT binary patch
+literal 258048
+zcmeIuF#!Mo0K%a4Pi+Q&h(KY$fB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM
+z7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*
+z1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd
+z0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwA
+zz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEj
+zFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r
+z3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@
+z0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VK
+zfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5
+zV8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM
+z7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*
+z1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd
+z0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwA
+zz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEj
+zFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r
+z3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@
+z0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VK
+zfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5
+zV8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM
+z7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*
+z1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd
+z0RsjM7%*VKfB^#r3>YwAz<>b*1`HT5V8DO@0|pEjFkrxd0RsjM7%*VKfB^#r3>f$Z
+E2JkHa0RR91
+
+literal 0
+HcmV?d00001
+
+diff --git a/pc-bios/meson.build b/pc-bios/meson.build
+index b68b29cc7d..64d3286fdd 100644
+--- a/pc-bios/meson.build
++++ b/pc-bios/meson.build
+@@ -60,6 +60,7 @@ blobs = [
+   'efi-virtio.rom',
+   'efi-e1000e.rom',
+   'efi-vmxnet3.rom',
++  'imx8mp-boot.rom',
+   'qemu-nsis.bmp',
+   'multiboot.bin',
+   'multiboot_dma.bin',
 -- 
 2.48.1
 

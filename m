@@ -1,170 +1,229 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp361542njb;
-        Tue, 4 Feb 2025 09:17:26 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWA+OPNh+l8LAVqvWoODZgmpR7WpiiEqyF8WLd3kjJQbuHYxuq2imEkAGlQj7vaDccYX3knsFTfzjg00w==@linaro.org
-X-Google-Smtp-Source: AGHT+IF9ZzH53wGji/dwj3hrAG0QqDMQieU0IBqXgWt8s723rAH1xbif05H2sv0pw7TVfUnvIP2y
-X-Received: by 2002:a05:6102:d92:b0:4b9:c87c:fb3 with SMTP id ada2fe7eead31-4b9c87c14c9mr14637156137.11.1738689446066;
-        Tue, 04 Feb 2025 09:17:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738689446; cv=pass;
+Received: by 2002:a05:7023:b15:b0:92:a90b:6588 with SMTP id qd21csp416671dlb;
+        Tue, 4 Feb 2025 09:42:38 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVBFYKfZRzml3hKNDJNRuVjSzSYWuKsbMPI98KYYhVypQNpTHvoFC3v4wY6Ye+zIlSZu9H9AGz6tmvAjw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOaG97m3+O/roMS9NHnflf/ZsQ7PDML0OCogfQaJZ4b3wbV3mgGW1V+KJmsXpfd1zaf5Gq
+X-Received: by 2002:a17:90b:5188:b0:2ee:59af:a432 with SMTP id 98e67ed59e1d1-2f83ac8379cmr36851493a91.31.1738690958467;
+        Tue, 04 Feb 2025 09:42:38 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738690958; cv=pass;
         d=google.com; s=arc-20240605;
-        b=SabKKvknvcwyoswAF0JfutcQyWyT7BeRcKIxGHJH5ZCmXzOmnHd5KsZLo5151J8NmU
-         cB8gThMb5rbIO+ssjJjpdOAfgIOkyqIMH9RJKwJD7s+4IZOAMdaY+NvDA//LDxm5LYV/
-         Y+A50AIq9nKbwR6CWSy7ZXGCSERB/plGmemOjWS9eWzU5sEEbVs7OV082FkeEybmmIuQ
-         beSLvqAGO0T5QvZsDZkMIEAA7fSq6ugI8AaRXXDOEilvsK9oR/2avOsSyJUC6FFoOVUY
-         maQ6JLgcflLkDMNuGbF8NfcTDIO6XaefSnBC5kMYvdpduDkDYP1tdGf+vB9ld5U3pwNL
-         HvYw==
+        b=jMZkJCQ9UG0dL5XEWfJNSX6IaBoirRNmO7G19olr3g7LGfScYJLxoO5artHwgDB1l4
+         A0pl3ncwVmG6z/6EBrUDrrHFu/5HSjHl1bGYmLHFYHI35X43s8VuH/CNGVspfzt5z7ba
+         4cUDhVbMMnlVaxUUOsV5EfaKKKWogupSlKKiFLv/SZxTcb9B7zvWfhpJZtmbwIzljnUU
+         cJYDc3oz+f1Jpz+q+zUwQ4iO1ybsYlNgKsawTMTyc1oJ2Qlmjiz+AuV1u+QyBL8qf0Zt
+         ZEuQhVjg1B0MqseIHTlEmmt7N48/pMFz9070tquzqF2m1WLmKWD0YKJDguu5cTU/L5Zj
+         Ayug==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
          :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=EF1aKWjXDK0s5pYyzWzruFk/aZgJr2WHBwIj97Q+fRI=;
-        fh=gQszwuce1wymzee24lihpDA/K7IXXeSol3i1L/WI/lM=;
-        b=Dw8K+USiJlyPSCo6nuz2iYH14YC7N0HnOiaFEVrG5uRKWGkS9meuqO4sw1K8n69fBU
-         EOAbXTOIs5OM2JXNdy4Y8UyADi/rxClb9KEX+o/xi/wCeqLXMQHKSqYvP7FOQdhTRWto
-         MRmKoafX8Lt08hkPeSt2xB2w9D+ihDG1baERaZ9nTTUrVz6LT5uFIq+ayT0gvrz4jQLm
-         NdLNvDZ9KLF/l1Ot9AIO7ohDViIb9GcvpAcX2l9eqcnT4UOd24JyioNQt2Ox2qDHb1+p
-         YOjhZlZdpXmsV18DvqbwQnkeoTo4xEDiFnBmD4bpeSmdWPI5+5jwjfdWwGJLgl9//XPw
-         3TzA==;
+         :date:message-id:dkim-signature;
+        bh=6xvLMBbIJRGPQ6vbqTTrPD/v72AS7GvH4rIHfkZKoNw=;
+        fh=7uwf+qL5gv+rPJ45d17W8iC4wsbN59+tqnLo45A44bg=;
+        b=IWv+WEaR7MU/kJnrkZkArYwjzUyuA897v8YJc+D1JNMxFzAeNg2c0fNxBMJARn1FiV
+         kEA80KZfpW+LDht10YNz0w0LqTUlVx6an9YT4gVxy4/+8/jUFg1Z6lBPzOW82wehagvF
+         dxUTzUmPm4RMxsxR1T7+Qa5o7A8pD/O8YrJH8sGimrcl3xV+L/0FENNzGtFjrr5pRMs5
+         uJoBmZecMUzj8PR1M6ERXXKxtJVIDvmEvar4xsbrz7UUDRq+bSdX62DOOXA3dxXzhoqo
+         1j2ZGSgmPCwXeC8J/qJPTDVpRF+LIQe+sr5Mjzg1fwpIj9VeMv7JDNU9o+Rmxg5DnP3T
+         KTBQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CWGiKwIj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OKqUu500;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b9bad8c3e7si2637910137.291.2025.02.04.09.17.25
+Return-Path: <kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2f84b52e777si15831479a91.94.2025.02.04.09.42.38
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Feb 2025 09:17:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Tue, 04 Feb 2025 09:42:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CWGiKwIj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OKqUu500;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37251-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37254-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 10F8A162546
-	for <alex.bennee@linaro.org>; Tue,  4 Feb 2025 17:17:25 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id C3B713A4A50
+	for <alex.bennee@linaro.org>; Tue,  4 Feb 2025 17:42:30 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 885502153D2;
-	Tue,  4 Feb 2025 17:17:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 039BA215F7F;
+	Tue,  4 Feb 2025 17:42:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="CWGiKwIj"
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="OKqUu500"
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E10E175A5
-	for <kvm@vger.kernel.org>; Tue,  4 Feb 2025 17:17:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 22603213E82
+	for <kvm@vger.kernel.org>; Tue,  4 Feb 2025 17:42:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738689440; cv=none; b=cTh/2Vng4Op1HBFNCtv1P1ThJEf4ev2142SsuTB010jjyFd5flLVLAYb2okXEwoSE9cBsahc6fjOLrNRtYRqNXqi3O5MBvxPeqsJh9KVkmSti/2HEH3qMGN2+YthkaGko4plDgIkUnqA2ev6mMQ+zp1O1lHmG6lgXsSrpGyJ1Pk=
+	t=1738690953; cv=none; b=DrQbR+qGS+qO8UJQeyZTVV0VLjB9JSlfrbWH8AoRh4j9OJ+Bv/uGZKv7xSo3DPWj0NOugP/xEklvcmOoMsHN9YAi5Rhln3JU5wfUZFdImNvz3XuqkKCv45laxX7lvdJH5YYOGJphkMUmrxAZwfsGy5kIIB6lgNy9KFH9WORBM3E=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738689440; c=relaxed/simple;
-	bh=YJAv8v+tnPU2AiOy7U9M+Cw5XN7fGQIqVXVhQli3vSk=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=ZdFQ3CtafDsAdi2AdfTbUzqechq0Ad0bcsRYnnaJfbQmiGQ+0vGBiE6ttdGrM9ITc/LWFtkkjVSMsMmOta6hvbLcypCGUlwRuyaztDpEt0T5wk5xj/3+8uAuXkjs2I4zTzTOB9qaIUIBit6I9+zW4zg3Un7MfUe35fp4XxNTx6w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=CWGiKwIj; arc=none smtp.client-ip=170.10.129.124
+	s=arc-20240116; t=1738690953; c=relaxed/simple;
+	bh=TE2nvjzS9waRQRDvTmhX5eCI5Y3S1yUETwOVB+l2HRY=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=mYRF4YpvHoG3iDBHpGLGr8R+b4LtC0/8lTQaP6fF8OwpL9m6czpxv12eWMx0pkWR9Cx9E+NLZgIjcdJpDAoHxle/EhqMITOQzPJyj5dNbG1jkN89bMAjM5+ejq4QtpZ9NRcxcPqT6eWeQp4NKh1NkX7kWp+OGI4KfYkLv/YIdJE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=OKqUu500; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738689437;
+	s=mimecast20190719; t=1738690950;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EF1aKWjXDK0s5pYyzWzruFk/aZgJr2WHBwIj97Q+fRI=;
-	b=CWGiKwIjGk2a1nZSY6qpn8OJA6cEzaNTeGvaIFbMa6Uq4OtptVcsUy58YcATyQ4N0BEFvN
-	ekkprJFd+dj+/UZ6zwZzzxBljb3ffpu9QP/kzCVxPP82LYqmFbpCRlLrlnvmwkQiBIlKnm
-	R+ZEmNaGaQyeUhULDdaPyCC9LrORZ6o=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=6xvLMBbIJRGPQ6vbqTTrPD/v72AS7GvH4rIHfkZKoNw=;
+	b=OKqUu500ApJ9lC+1b3zLtdWp4enKK48UUL0u01S7BntIEi8rg/Y5k3+9kpAULILv1VOFI0
+	OllPTX3L8B5XJUL+wD0KiZtobOy6UV3yTh271D+YNeip/N+pfxYMAxRnxBGtYcTjhmeiuw
+	ZgENUaCP2JVkIlaVRtRlrnEI5GRzlDY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-669-QSCAzwIhNdKqb7WGa01zjQ-1; Tue, 04 Feb 2025 12:17:15 -0500
-X-MC-Unique: QSCAzwIhNdKqb7WGa01zjQ-1
-X-Mimecast-MFC-AGG-ID: QSCAzwIhNdKqb7WGa01zjQ
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-467be89d064so63398921cf.3
-        for <kvm@vger.kernel.org>; Tue, 04 Feb 2025 09:17:15 -0800 (PST)
+ us-mta-563-nZ0GuY0VNeGB6HP0fuhW8w-1; Tue, 04 Feb 2025 12:42:28 -0500
+X-MC-Unique: nZ0GuY0VNeGB6HP0fuhW8w-1
+X-Mimecast-MFC-AGG-ID: nZ0GuY0VNeGB6HP0fuhW8w
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-38da839b458so520535f8f.2
+        for <kvm@vger.kernel.org>; Tue, 04 Feb 2025 09:42:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738689435; x=1739294235;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EF1aKWjXDK0s5pYyzWzruFk/aZgJr2WHBwIj97Q+fRI=;
-        b=EOttufkfzGwEASkec2+GgUilb9cX7Jqrm9d67cYHPSF8i5yBjgwDwJeLnGyVK2f4nD
-         V2pI7VY5ZNMLJ9RMt/pgIodnYukxRgSkiMKXcnlMZLKdGQXXRDCG2tLOBkMhGLilkW7F
-         a9cofs5UeSf255ojgJ9UA8+IbZ4MIWWqDJ+jO94iDnF8au7JlquTxoy5g+bEo1tyuoi2
-         0WFTmwBLwQZ1t49W/rlRZ1MRZL3iPyA/5eqyFqX27AMpbuE1zC6VnL4QEF6kbQffC6z8
-         xE6iqK+i5pU6hHFuYqZd6grEBUujRQHbtNHvlhEJBoTLOudA3gfZDBt12VaJcmhi7oky
-         /WyA==
-X-Forwarded-Encrypted: i=1; AJvYcCWjN6MrsYSFIxQHaYF0PkdfbhTK1n/oI4izMcB4nNyOrtJmx8wL2Nk85hd8iHi85UIq+7g=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzCIieHLvY1lGB9QOHF8AFvHP/izamJRmMF3Jw6SE+tmiPMwI8c
-	qXpX460b0qlW/RqZgSCXGltlZIva1D3ScP+CLJqNFenwj4oyDz9QPtDQnNNoH7Vxs4Sz/z9JadK
-	9H1yMcJDF9tUvvH4ajQTy3OCDiEwwXm6Y6hLdIx5mmReezhzKkw==
-X-Gm-Gg: ASbGnctgBl8RU7pZtHYYhwqr2DSsbqTtcS7dPlJqqmo5XPWNZrok76iHwajuNTdA2lJ
-	8k0M51y3mSPvqUrS3VgR1eFWsFwrAA5Gtuohns54el3SCH4+OL8jVYap8BgsEE8mrTGkjHXkmX1
-	g8FSIA0j+7jbPJ70iXXK8/Tr0s/i4J27fADouYMETdXCkjB9dHw2Szq/wlvMS1NUzuVWXt5hu6K
-	C0NcVKo71x8YRRIJ45SD6eQS8STC+d052C6bnWNvLKcsHwslL3x5xUO+O4vfLLRtir+N+8IlD9y
-	O1Hioe/gzR2fbvjHTUJNsVlwltEdkRVIm2HE7RZv+1aLRlJ0
-X-Received: by 2002:a05:622a:1a0d:b0:46e:548f:ab8d with SMTP id d75a77b69052e-46fd0b68d36mr371888561cf.37.1738689435393;
-        Tue, 04 Feb 2025 09:17:15 -0800 (PST)
-X-Received: by 2002:a05:622a:1a0d:b0:46e:548f:ab8d with SMTP id d75a77b69052e-46fd0b68d36mr371888011cf.37.1738689434987;
-        Tue, 04 Feb 2025 09:17:14 -0800 (PST)
-Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com. [99.254.114.190])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46fdf0c90d2sm60982721cf.28.2025.02.04.09.17.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Feb 2025 09:17:14 -0800 (PST)
-Date: Tue, 4 Feb 2025 12:17:12 -0500
-From: Peter Xu <peterx@redhat.com>
-To: =?utf-8?Q?=E2=80=9CWilliam?= Roche <william.roche@oracle.com>
-Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, pbonzini@redhat.com,
-	richard.henderson@linaro.org, philmd@linaro.org,
-	peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
-	eduardo@habkost.net, marcel.apfelbaum@gmail.com,
-	wangyanan55@huawei.com, zhao1.liu@intel.com,
-	joao.m.martins@oracle.com
-Subject: Re: [PATCH v7 4/6] numa: Introduce and use ram_block_notify_remap()
-Message-ID: <Z6JLmG8srpk9_3Jn@x1.local>
-References: <20250201095726.3768796-1-william.roche@oracle.com>
- <20250201095726.3768796-5-william.roche@oracle.com>
+        d=1e100.net; s=20230601; t=1738690947; x=1739295747;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=6xvLMBbIJRGPQ6vbqTTrPD/v72AS7GvH4rIHfkZKoNw=;
+        b=SfraCKFfUCHOKY/oPJmqbinw35KaCV3m7/aQzX+iAW42RFLb2oKzHemNkPjZ6KTYeL
+         vq/j2CfPLj6i0onZWwVVLovIEiAzpoifo1okAqzu1dpJukLtBEegnSA8yqClCSKzhJqf
+         8WEtqPdW90qEfB5LEI9Bc4sd3q91h/hdyqgIQyiAXPRFBHi/Zbvy2PN9X+tgEEytGDvF
+         qV3/ICVhdj+Mmhys3NkLWjp9y6SmD6af5KsmWfKTFSM/ywR7M5jfAsy+ifrG+LdkPL9r
+         8ImctGxX1dHCXfIeqiqwKnGkRDDKYJhGq+eol2AXhpQCnJxHLCkPtJsZXMXmIQGlPEyb
+         8bHA==
+X-Gm-Message-State: AOJu0YzI7OfFWaJs71SfjwVHyMCXm5Z+Rid204Xlgmxeje0xJ/RzHWqF
+	8g1ZATj/ig51Un4cJ3VgBkM3fO6NZ+1H92DAwgWB+Aa0wb8y8yox3qDmihbHWUdyPna+YlRlCNp
+	iWFJN6e11786cHmzzZvx/4B0YR2eaiBxywIZb+4XjnDRfKftERw==
+X-Gm-Gg: ASbGncukEAKCFe/ILYb7fePh+fr+Kc77bGTsKnXvynfcM6HKX7jjQ02G2SdVrti7XAA
+	/XQCjXiklqL8iyWpHEtH3hUhqOKT1MwstSrADNh+BcHIyp0mp4LFJKBWpffnfyA//r2pBdMAVhr
+	JXAXSahGXnbvbx5uPzIUyi59vwR/q0Hv5T3G8dYEwNciiTSgoGMnvarAwLeS5GfTcCZOvSTMStk
+	0po071lcgo0uC2kFuCbEjcqwzxN6uW1nbxXtSTuwODVGoyRhMoUhVlGfK1zl9cmq3ZbV9Fyg8jU
+	HXmYe7ICTmUHVygp5Atia/qYyKrMNxK1AUjzqFxs3/q/RI0rgzM4EApU6IYMqGhaYW7H2M+VZVJ
+	swMPoTVnJG65i0cbX1uNKTyhclL8=
+X-Received: by 2002:a05:6000:1843:b0:38c:5d42:152b with SMTP id ffacd0b85a97d-38c5d421959mr17554952f8f.54.1738690947621;
+        Tue, 04 Feb 2025 09:42:27 -0800 (PST)
+X-Received: by 2002:a05:6000:1843:b0:38c:5d42:152b with SMTP id ffacd0b85a97d-38c5d421959mr17554942f8f.54.1738690947283;
+        Tue, 04 Feb 2025 09:42:27 -0800 (PST)
+Received: from ?IPV6:2003:cb:c70a:300:3ae1:c3c0:cef:8413? (p200300cbc70a03003ae1c3c00cef8413.dip0.t-ipconnect.de. [2003:cb:c70a:300:3ae1:c3c0:cef:8413])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38db15f7712sm899214f8f.49.2025.02.04.09.42.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 04 Feb 2025 09:42:26 -0800 (PST)
+Message-ID: <6356ce2f-0e41-4d6d-a019-5164af502de6@redhat.com>
+Date: Tue, 4 Feb 2025 18:42:24 +0100
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 4/6] numa: Introduce and use ram_block_notify_remap()
+To: Peter Xu <peterx@redhat.com>, =?UTF-8?Q?=E2=80=9CWilliam_Roche?=
+ <william.roche@oracle.com>
+Cc: kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, richard.henderson@linaro.org, philmd@linaro.org,
+ peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <20250201095726.3768796-1-william.roche@oracle.com>
+ <20250201095726.3768796-5-william.roche@oracle.com>
+ <Z6JLmG8srpk9_3Jn@x1.local>
+From: David Hildenbrand <david@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <Z6JLmG8srpk9_3Jn@x1.local>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250201095726.3768796-5-william.roche@oracle.com>
-X-TUID: 7B0VcfW4ZjbU
+X-TUID: ekKpeljOReD4
 
-On Sat, Feb 01, 2025 at 09:57:24AM +0000, “William Roche wrote:
-> From: David Hildenbrand <david@redhat.com>
+On 04.02.25 18:17, Peter Xu wrote:
+> On Sat, Feb 01, 2025 at 09:57:24AM +0000, “William Roche wrote:
+>> From: David Hildenbrand <david@redhat.com>
+>>
+>> Notify registered listeners about the remap at the end of
+>> qemu_ram_remap() so e.g., a memory backend can re-apply its
+>> settings correctly.
+>>
+>> Signed-off-by: David Hildenbrand <david@redhat.com>
+>> Signed-off-by: William Roche <william.roche@oracle.com>
 > 
-> Notify registered listeners about the remap at the end of
-> qemu_ram_remap() so e.g., a memory backend can re-apply its
-> settings correctly.
+> IIUC logically speaking we don't need a global remap notifier - here a
+> per-ramblock notifier looks more reasonable, like RAMBlock.resized().
+
+Right. Note that qemu_ram_resize() also triggers global notifiers.
+
+> It'll change the notify path from O(N**2) to O(N).  After all, backend1's
+> notifier won't care other ramblock's remap() events but only itself's.
 > 
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> Signed-off-by: William Roche <william.roche@oracle.com>
+> It's not a huge deal as I expect we don't have a huge amount of ramblocks,
+> but looks like this series will miss the recent pull anyway..  so let me
+> comment as so on this one for consideration when respin.
 
-IIUC logically speaking we don't need a global remap notifier - here a
-per-ramblock notifier looks more reasonable, like RAMBlock.resized().
-It'll change the notify path from O(N**2) to O(N).  After all, backend1's
-notifier won't care other ramblock's remap() events but only itself's.
+... and ram remap during reboot is not particularly the fast path we 
+care about (or should be caring about).
 
-It's not a huge deal as I expect we don't have a huge amount of ramblocks,
-but looks like this series will miss the recent pull anyway..  so let me
-comment as so on this one for consideration when respin.
+> 
+> We could also merge partial of the series to fix hugetlb poisoning first,
+> as this one looks like can be separately done too.
 
-We could also merge partial of the series to fix hugetlb poisoning first,
-as this one looks like can be separately done too.
-
-Thanks,
+hugetlb frequently uses preallocation, and the remaining patches in this 
+series make sure preallocation after remapping happens.
 
 -- 
-Peter Xu
+Cheers,
+
+David / dhildenb
 

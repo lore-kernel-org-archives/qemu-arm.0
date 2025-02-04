@@ -1,236 +1,223 @@
-Received: by 2002:a05:7023:b15:b0:92:a90b:6588 with SMTP id qd21csp421001dlb;
-        Tue, 4 Feb 2025 09:49:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWqSO+N91WHSay2CRp4Fg4Edxy4uRXD/9rI2AfloToYtXbWSb/eGqvzoR0oNu7/eLAO1fcPoxhdis6Cfg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH7oQaGHVyC4tA2VbPXRTTsHGXu9kNHdnd9B76gChere7DgXqT0Rw92AkwmaZMGwY0E/Hf7
-X-Received: by 2002:a05:622a:4a08:b0:467:7a27:f3bb with SMTP id d75a77b69052e-46fd0b92617mr408876741cf.49.1738691384365;
-        Tue, 04 Feb 2025 09:49:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738691384; cv=none;
+Received: by 2002:a05:7023:b15:b0:92:a90b:6588 with SMTP id qd21csp421402dlb;
+        Tue, 4 Feb 2025 09:50:34 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVW6u1YsYUD0viS8kuCFZn2pvWLsk5U4v5qFvhl+a1bmAliRJtY/aY3g2eYJX6MQ4RlZcNF+AEYUMPCHw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHiRhNJmX+7T97S6LjFDQaFPrpJHdPKCv4Cc0/3SCoyLwo61Cy5NmcFW/NsXCGS+171Jqla
+X-Received: by 2002:a17:906:2b4e:b0:ab6:df74:3a42 with SMTP id a640c23a62f3a-ab6df743a4amr2247034466b.31.1738691433896;
+        Tue, 04 Feb 2025 09:50:33 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738691433; cv=pass;
         d=google.com; s=arc-20240605;
-        b=kbmhQxguWfg3YQEiAI7z0AkOSgOxZQIC1u7ud8m/7mrvq91FSw98h48LcXi/Hoj+xl
-         HVJbtylvdEFD+LQ0+7W6kbXN4atIKLK6GmoYP3Yz2kunFr63qbUzhdv7CQHUlcMFnbz5
-         Fn7cd1Ynim5dQP8I5O1S77OKbvCc2wKyzbtwidGnNCyQ5te8lElUan/mVtvVpqnJSEqm
-         u7fWCECDTRQ5YCHES/t4gda1jaj3hoam21cmVs88TbfbLfW5G9hHhfOBDzgJaLGH33DD
-         G4ebKm0bCrrkqzvAcAx2ekztZKesIhGVvIxNodMwq1hcXS4jKaAIfH291PspG9XIcgNg
-         GMhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ocVkwQum6xQIQj9MxspsCl6nfLCBD5by5s9rb96rDtI=;
-        fh=ytySsqAmrmGAc+Bcb8TfIF7aNn0tiVw29l4Wxctveho=;
-        b=OuV+ctwdqO5Rrs5T9KeJWpL0YmF+CdQkrrRouHv+psA+kw6DZjB3D53KrHIpf1Ta5O
-         Ow+5dnarbDC9Wz77uDDrD6KkGtLyCriQLs8ueOabx/Y567uKDo2iIvl4ZX552mM2LVQ9
-         x/wAXIMOrqYrOWKvytT1TKtM7X86qBEgXleKs1Ju9WiMIn1kXcrhCXOQYolrqZLEuTb6
-         z/ohy07LFaM0GXyuYj8M6c531MgXc4wgfdunpA6m2z4nuACzZP0iRhg5UhmMykc1yU4N
-         JSsdotwGWFZzymbIgzqer+ldE6+7n5R1IBAGTwMVieQd9eaEuP9Zz3O/3xpBmC4FjCfk
-         Gi0g==;
+        b=FR9VEf2UGeDRvA9SsN8g9AwnUQtetCsIONM+SxesyEA9NB5WZihVe/cNDYuu3gE9Ao
+         ZtkgO3QiikFN1EdkuyFdqP8GnFDnCQhKuYfe3Ft/QeW5IygxWpSW4hLSJkOco4s84+pz
+         k8uPj8OCHjcpHQaUYACkt1CS0TzEzzK/4LkNmeSb9x++Ez9jajIVgB9BnPsAjeQrwG76
+         N7vmZy90nYBO1UKjILz6MeB1b6v/rRwzRrNasNJ21O2HkAS2IAPpFcBp0OMzV8Z9lGj2
+         wzBxmwIQ/UAiWj3FOikKYtQk9o4bye9Q1JAqZVvhTAsadOv+kOYUysQSLBU15kkjGd9v
+         D7lQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :date:message-id:dkim-signature;
+        bh=cCAfUQtOu7IcGoh9whRLfLqU6KGUvoUvxjONbv3P3nc=;
+        fh=huBwf/+eSdJ7Nd66u5p8L0qo9yHndjfqQWO7a2Snh1Y=;
+        b=DLZbIGEsF0H4SPZQ6v92p4AMk8ci3IhFXEH972JdtbyiD+EEauh1s4N+gbJGXgZufr
+         QGv76AUPklbMGMdodwQH6NVqkkBVReY2SA0wuCwVr1sm9+qPa+mVPyPOeisHEm/wnBQE
+         uKRCURMpZqjO5QIRUVskyee80M1jm5UWJfCcXOhquwldL3age14zgFy0S6UnO+V7AnkW
+         feInhGFn+7f1XDkS42a9RuVIZCVJIPPDyXDUmkLoA/hhX6eqNdsllLzle2Y8thdL/M1Z
+         8OZzC8WYc6SgXuRgXHLjsvuCmGwRFNzBmr2pL+orbHRsLcGczsojREA+IKZx1zL4Z/fz
+         VPcQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YeH2U9nl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g+Kfig3K;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016bd20ccsi34385031cf.562.2025.02.04.09.49.44
+Return-Path: <kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ab75931f8b7si41574566b.670.2025.02.04.09.50.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 09:49:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Feb 2025 09:50:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YeH2U9nl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g+Kfig3K;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-37255-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfN3B-0005y7-Nn; Tue, 04 Feb 2025 12:49:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tfN3A-0005xp-44
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 12:49:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tfN38-0000zX-F2
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 12:49:27 -0500
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8D1E41887616
+	for <alex.bennee@linaro.org>; Tue,  4 Feb 2025 17:50:38 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5AD34213E82;
+	Tue,  4 Feb 2025 17:50:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="g+Kfig3K"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7ED40215F74
+	for <kvm@vger.kernel.org>; Tue,  4 Feb 2025 17:50:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738691427; cv=none; b=HM/HorcwLOo2Qm0VZhk6C8D/0v0A8w+H2LqAJr8d6hCvZ/REs4+j0tk+HF3+jvh+OgO/jMbmM1WNUuHNXlnBtFaq47KD5AynZR3RjdrUDXjPq4YcswK62GrzCl5otC2JolLEDSsz643cBt/DRTBXDe98YQlxQwEnA6bbU/n068E=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738691427; c=relaxed/simple;
+	bh=fDOCUG4Wa9wQYfo76718L/VAMknz9Dzh++Xf+8VgtXk=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=d+k5JVmtMmcpN8kHLELA48Tm2IPWKm8Yrt2UfdEmF2L0f6BupcsJG7+m2Ys+mKam1z1uDuiqzf0Oj9ALykGtXLCeqSnXINWcgz7dxe04kE13kC69fctCoHJouziRfHFM/jxCTb0ytpv/YBPM+nbFkEBC1AXzPi+HMrB+zQuMGrg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=g+Kfig3K; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738691364;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ocVkwQum6xQIQj9MxspsCl6nfLCBD5by5s9rb96rDtI=;
- b=YeH2U9nl0nE9IOQA1dFmYkzx2dIUg4sp0MtGITbcEP9otHOp4kHAJpbq8oEL011RErBp1g
- LuQxpYwNm2fOlWQj9+o/iiY79tERIzVVSPPkOjBCPa5DjjdRGI7ugLSUBkUOrwNW84c2ea
- 3KxB/Lk9RR3GkNTVj5wwzEGOTGBO+y8=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1738691424;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=cCAfUQtOu7IcGoh9whRLfLqU6KGUvoUvxjONbv3P3nc=;
+	b=g+Kfig3KQwESAph+yHmRK86AjiURy+aOOkYFH46aFEET6QDIt1gx59yGQXa4aw+reNNWS+
+	YiYC2yhHOmEprIyzP+nId9EMw+vODckMYFi34H5QMU4TGMB8k/UsJYprP4tzWejozVJRgl
+	TlbMh9unZJ0ERCnUtYElqjxTSFYvO60=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-178-A_Vy7UUDN3SjEfBVdhc9bA-1; Tue, 04 Feb 2025 12:49:20 -0500
-X-MC-Unique: A_Vy7UUDN3SjEfBVdhc9bA-1
-X-Mimecast-MFC-AGG-ID: A_Vy7UUDN3SjEfBVdhc9bA
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-467b645935fso108778031cf.3
- for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 09:49:20 -0800 (PST)
+ us-mta-226-hL5p7Qt0Pla_-t6UJ2CJsA-1; Tue, 04 Feb 2025 12:50:23 -0500
+X-MC-Unique: hL5p7Qt0Pla_-t6UJ2CJsA-1
+X-Mimecast-MFC-AGG-ID: hL5p7Qt0Pla_-t6UJ2CJsA
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-436219070b4so30906245e9.1
+        for <kvm@vger.kernel.org>; Tue, 04 Feb 2025 09:50:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738691360; x=1739296160;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ocVkwQum6xQIQj9MxspsCl6nfLCBD5by5s9rb96rDtI=;
- b=KroVsylUlXLUAVvZGeCh+6cEIum2ZpgI+i8JJMwjzw0oKB+fUKnSIkxC9hBHhf0xtV
- 4PPEo4mlJttQXlcsSbOYYKTtzOsNB/W4an3S0M2DT1QxAetMl609XuF/NwG7H/lnyIUB
- uwSCawkXTQvwp3EX5XCx5oSKy1b6J51hSgdxAniHZd4mnv/v9/Z5bSCGPMhjMDZAn9Wr
- q/iwhxkBqovMdPs1r/V1UfpZHWaslj9qy5Zd7srX5xam++zK3uzhqOmAdj9YwS6jqZvy
- 0qVhmyfo+RYXNTwHofZQFmEdIBSj/7pLY0Zc4RwtW3tlfC5kLKdiq6LGrEHn0SE9s4At
- e0mQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWUjMb/vqN+rAwHf0iGA1YVZNTmDMP+R1bLPKG7S1l2QkDpkYIj9FCMZ5wT1oxaT+kcJj4APjji1w==@nongnu.org
-X-Gm-Message-State: AOJu0Yw7DCFsDTdF9rXBYfbDhvs6g3Bq29K1JZY71INhT9itgE7SyarV
- CvqbFSjP6CzYVooVm9vukIgLYbfSE7K9MgSCHecM2YZDQqhB+3PeygtVSnMmTLFfXclnIUaqvXI
- eTo39FcmfudUJtQ47ggcavKNFHCOfdA77Sm3LdNsMdy/cuPd83w==
-X-Gm-Gg: ASbGnctiRLx7rLUvaQhr5TDz78n43SfaXBxQZOdXJJzWNrB1fgDubRwbekjOfXDyLAt
- G6FV+r9uE2BLqUPKBo/gejsu6A20/ZjMdZH27slqAcrOTLFuBNueEVjqO7Lr81WHxnOyodAr/yf
- zadAB8Sypx37sx4f8XLpix5UALvv1yed/eE/Uw90Ug3ylR4ESQtOXym7wa6z+c6D8aTggvYhJMr
- wiza2aeL0IfCcPpI7BvmD4S+KEHGhJ7+1WkGKC+V4MBOyxQeFum5IiO8BpwzSBh6ETTXnDAyeYj
- dYePZyu6sSttw26o/KJUIa58QegilKkvI7QX+XuBYmllzmxTiLgI
-X-Received: by 2002:ac8:7c45:0:b0:466:9197:b503 with SMTP id
- d75a77b69052e-46fd0b9152amr338420491cf.46.1738691360356; 
- Tue, 04 Feb 2025 09:49:20 -0800 (PST)
-X-Received: by 2002:ac8:7c45:0:b0:466:9197:b503 with SMTP id
- d75a77b69052e-46fd0b9152amr338420011cf.46.1738691359835; 
- Tue, 04 Feb 2025 09:49:19 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6e254819959sm64435856d6.31.2025.02.04.09.49.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Feb 2025 09:49:19 -0800 (PST)
-Message-ID: <77f736f6-9ef9-462b-916e-c8cfff279044@redhat.com>
-Date: Tue, 4 Feb 2025 18:49:15 +0100
+        d=1e100.net; s=20230601; t=1738691420; x=1739296220;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=cCAfUQtOu7IcGoh9whRLfLqU6KGUvoUvxjONbv3P3nc=;
+        b=s/ZC9I7SXogrMr7RMF4oR43dOuqc7tvys12ibsLglvzr45azwnxYuu2XvU8IJopo9c
+         b4J3xPzmpLJALv0GBirTlrvtBUzvN9vEGbwfTCvmR6OQMsYa9TsTntpaydNZE9lnsmuL
+         Ud/uklUbzUFvVCMtfDRvO+OwsBU0L7ceb2jb5F1+BX9zFKc4gvFKJwtnEL/2VrQgJo82
+         aZSVAd7KK0fZfQauomi+ltJt+wohhK21AdQTrTM/jZCnzZU/ptFShg6fAe6evXzFUIM2
+         VnDVzjHCQxYmsqEBXdSWtWFUHr6iD/ler5IVVe+cvvWZbEMm9H4ybh1MjgXjXH+AtEvq
+         9tkA==
+X-Forwarded-Encrypted: i=1; AJvYcCWGg6nuSpit+iwJNjIFP8eEt8lumYx1pqZSk06PtnCr6JG32EhuKhNBMRjJzMvk2tBnOlI=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yw0opoU7cIxXp9S2PdqSzOHsX8wP9aypqMdz8fsNAi6Fl7jCI/T
+	vaJ4dUOqudrqbCXpR7KMgBAT1fczjiRBgDcJxHmIjlb36jCXM1wxtrb5S21aTyszQcmm67b2EEi
+	ud1rdtqdhHfZECV+wTVzz9HnQQoRUgKJuMi8CamY+Wp+9eHhTkw==
+X-Gm-Gg: ASbGncvE82I7Lytk0YuQa9/pIcmcBY1s5gifXRESQGvMzm5E7s4umuv4gX03PcairSM
+	4QMtdxM4JVh87vKgazZdTk12Q8iL2n6nMweQ07EVClL0le4PDKhqKOdFUwJAj88B2vADzmBUq8h
+	V0P5lQflZiADNZwmwBTghWeMpusXBEIT6r7DHLaZmneMdNyCLtmYAEKck3MMTX2Wf2+nhdS+69R
+	3vrZ6HzVFdw2TeKnv+zAakeJQ/ltlteM/izGqcxotUwQ0BuCH3hotuqKCxXNrYqAIOH+BPhWtRS
+	CFlmuUawDrdZUWzfVELZYFxNwx+hJbBi018esuI1Ol7sjIBcmpi/xSeQOt9eTJelj1XvLFJrehq
+	XOY8RK56sSZyABbm1EKa6rYCdrPw=
+X-Received: by 2002:a5d:47a8:0:b0:38d:b1a5:3f7d with SMTP id ffacd0b85a97d-38db1a54457mr897904f8f.5.1738691420547;
+        Tue, 04 Feb 2025 09:50:20 -0800 (PST)
+X-Received: by 2002:a5d:47a8:0:b0:38d:b1a5:3f7d with SMTP id ffacd0b85a97d-38db1a54457mr897890f8f.5.1738691420179;
+        Tue, 04 Feb 2025 09:50:20 -0800 (PST)
+Received: from ?IPV6:2003:cb:c70a:300:3ae1:c3c0:cef:8413? (p200300cbc70a03003ae1c3c00cef8413.dip0.t-ipconnect.de. [2003:cb:c70a:300:3ae1:c3c0:cef:8413])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c1b547csm16633215f8f.62.2025.02.04.09.50.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 04 Feb 2025 09:50:19 -0800 (PST)
+Message-ID: <7a899f00-833e-4472-abc5-b2b9173eb133@redhat.com>
+Date: Tue, 4 Feb 2025 18:50:17 +0100
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
- <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
- <329445b2f68a47269292aefb34584375@huawei.com>
- <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
- <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
- <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: kwEktpWyOfu_jxmQIPJDAsB3Zlcy1LXUFY5aKBY0njs_1738691360
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v7 6/6] hostmem: Handle remapping of RAM
+To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+ imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <20250201095726.3768796-1-william.roche@oracle.com>
+ <20250201095726.3768796-7-william.roche@oracle.com>
+From: David Hildenbrand <david@redhat.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <20250201095726.3768796-7-william.roche@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_BTC_ID=0.499, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U3e8g8iT6iS/
+X-TUID: SSVBTG60W8SK
 
-Hi Nicolin, Shameer,
+>       /*
+> @@ -595,6 +628,7 @@ static const TypeInfo host_memory_backend_info = {
+>       .instance_size = sizeof(HostMemoryBackend),
+>       .instance_init = host_memory_backend_init,
+>       .instance_post_init = host_memory_backend_post_init,
+> +    .instance_finalize = host_memory_backend_finalize,
+>       .interfaces = (InterfaceInfo[]) {
+>           { TYPE_USER_CREATABLE },
+>           { }
+> diff --git a/include/system/hostmem.h b/include/system/hostmem.h
+> index 5c21ca55c0..170849e8a4 100644
+> --- a/include/system/hostmem.h
+> +++ b/include/system/hostmem.h
+> @@ -83,6 +83,7 @@ struct HostMemoryBackend {
+>       HostMemPolicy policy;
+>   
+>       MemoryRegion mr;
+> +    RAMBlockNotifier ram_notifier;
+>   };
 
-On 2/3/25 7:50 PM, Nicolin Chen wrote:
-> On Fri, Jan 31, 2025 at 05:54:56PM +0100, Eric Auger wrote:
->> On 1/9/25 5:45 AM, Nicolin Chen wrote:
->>> On Mon, Dec 16, 2024 at 10:01:29AM +0000, Shameerali Kolothum Thodi wrote:
->>>> And patches prior to this commit adds that support: 
->>>> 4ccdbe3: ("cover-letter: Add HW accelerated nesting support for arm
->>>> SMMUv3")
->>>>
->>>> Nicolin is soon going to send out those for review. Or I can include
->>>> those in this series so that it gives a complete picture. Nicolin?
->>> Just found that I forgot to reply this one...sorry
->>>
->>> I asked Don/Eric to take over that vSMMU series:
->>> https://lore.kernel.org/qemu-devel/Zy0jiPItu8A3wNTL@Asurada-Nvidia/
->>> (The majority of my effort has been still on the kernel side:
->>>  previously vIOMMU/vDEVICE, and now vEVENTQ/MSI/vCMDQ..)
->>>
->>> Don/Eric, is there any update from your side?
->> To be honest we have not much progressed so far. On my end I can
->> dedicate some cycles now. I currently try to understand how and what
->> subset I can respin and which test setup can be used. I will come back
->> to you next week.
-> In summary, we will have the following series:
-> 1) HWPT uAPI patches in backends/iommufd.c (Zhenzhong or Shameer)
->    https://lore.kernel.org/qemu-devel/SJ0PR11MB6744943702EB5798EC9B3B9992E02@SJ0PR11MB6744.namprd11.prod.outlook.com/
-> 2) vIOMMU uAPI patches in backends/iommufd.c (I will rebase/send)
-for 1 and 2, are you taking about the "Add VIOMMU infrastructure support
-" series in Shameer's branch: private-smmuv3-nested-dev-rfc-v1.
-Sorry I may instead refer to NVidia or Intel's branch but I am not sure
-about the last ones.
-> 3) vSMMUv3 patches for HW-acc/nesting (Hoping Don/you could take over)
-We can start sending it upstream assuming we have a decent test environment.
+Thinking about Peters comment, it would be a nice improvement to have a 
+single global memory-backend notifier that looks up the fitting memory 
+backend, instead of having one per memory backend.
 
-However in
-https://lore.kernel.org/all/329445b2f68a47269292aefb34584375@huawei.com/
+A per-ramblock notifier might also be possible, but that's a bit 
+harder/ackward to configure: e.g., the resize callback is passed to 
+memory_region_init_resizeable_ram() right now.
 
-Shameer suggested he may include it in his SMMU multi instance series.
-What do you both prefer?
+-- 
+Cheers,
 
-Eric
-
-
-> 4) Shameer's work on "-device" in ARM virt.c
-> 5) vEVENTQ for fault injection (if time is right, squash into 2/3)
->
-> Perhaps, 3/4 would come in a different order, or maybe 4 could split
-> into a few patches changing "-device" (sending before 3) and then a
-> few other patches adding multi-vSMMU support (sending after 3).
->
-> My latest QEMU branch for reference:
-> https://github.com/nicolinc/qemu/commits/wip/for_iommufd_veventq-v6
-> It hasn't integrated Shameer's and Nathan's work though..
-> For testing, use this kernel branch:
-> https://github.com/nicolinc/iommufd/commits/iommufd_veventq-v6-with-rmr
->
-> I think we'd need to build a shared branch by integrating the latest
-> series in the list above.
->
-> Thanks
-> Nicolin
->
+David / dhildenb
 

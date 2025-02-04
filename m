@@ -1,124 +1,118 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp432643njb;
-        Tue, 4 Feb 2025 11:12:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVq6lhWY9OzlY5Euk2XVZ92TfxifK2dzHYKhFHCPqltqgxaaOi0+3xvicIYpK2XAea+9fLDR60zKQ438g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEQ+4Q+axAJ07Vz1Grp8CjNNqcYBT4JoONTac/vBzNKStS3ZcieuVX99nfxMWJ1wjt30C2F
-X-Received: by 2002:a05:620a:4148:b0:7b6:f03e:6c0e with SMTP id af79cd13be357-7bffcd070ffmr4111916785a.31.1738696365579;
-        Tue, 04 Feb 2025 11:12:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738696365; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp463914njb;
+        Tue, 4 Feb 2025 12:10:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWkc17jyLNQfQ84O9CyGzgFmq5L1S55uYwddyoGgOKEJlbuFvlmxap3BKTubZgAO6Hd1wGuwP6zXkZtLg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEIQr3C1pAQu4KhjfrMaNGW4Q37B3B6mLdTLuAy+NjjiCaMUU7bWZMU3Ipnx9mNAPd9aGO5
+X-Received: by 2002:a05:620a:248c:b0:7b6:c92e:2e6d with SMTP id af79cd13be357-7c03a0418f6mr8322485a.52.1738699817647;
+        Tue, 04 Feb 2025 12:10:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738699817; cv=none;
         d=google.com; s=arc-20240605;
-        b=g4Y/sJ5Jaqp79xKTYh52fN0V0cPpMnHlCO5e8jEt0aEFsVeLk5jLmqvTDPWRDTIlAT
-         ptst6xzRyipUjYb+sSjArCj34MMyGvxxbUKONOYXIkmTRIEcXBXvAMNpYrsqkvE37faQ
-         jm8tXB6rTB3Tzh3iK6RoxQlEetFE6WJ479EDeW3k3cOotSFFIw/JI+3lgCb2ceD9FpRY
-         AragEfOLOU4e+obwSIwgOGBkM7q29ArIAciw92nHoF5cfXx2+AsR0TfpLNI71dFGKhb3
-         8gsGk+szGRv2hjmf2X6CjIYfydYLADCWB9A5Kgq95AtLe0ypUZVCpfjxdbKtovMjT87K
-         OlKA==
+        b=QRy3XxSEtTrA1n7o3NI47006xT6L/CdQzFb/8AM5JzGfmIKYCj8WaZDRSqfEhD2LAw
+         xVoDKxS9NHXyqHnjs6XymSrjjiYp32oDKmbB4X2G0I1z5e1bLo+nt9JT3xVRXCz4RYWm
+         k4ZkgkCoTYi+9TazJ0pxMDMRdk5I+10uY3+WXGyrrW7n9bFBPYMnhuNY5MQQcgHvYMqM
+         t6R16xvU4CSqpA9m+gp2ChLo6d2qhMLw6hSd0/0f9WPAX1Qv1apSM2xq2aYl3RsD0NWU
+         LoHfyY/tJXxG8yIhouipuu+gzx9TFx1ksK2twn0SzcGANPe6BmtK0oMoIi7eNAeDLaCA
+         lfUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1uhHhvRU/BGikXKHNsjTq2q46NE2D8U8FefZtc09pRc=;
-        fh=tMDdplrpGbO3EN63KCD9n1fxtgyz6OOdcr2L4Mo8VNM=;
-        b=gIXT7D6soD2W4wg2H2iGB8pgxXeGvRO6goBROMEfRyWcvFtznOkU9IWQjd9lbRhHo8
-         lh8U6VB5AMzLlsP9UjISdy3HPoRfMHHMIW4IdOHsCxJkaFzfUcEyX9OyUJwbGlrmkVlb
-         SXLK2C9ACN/G5SN/y0dpwW2ZnyI3NByC1abo/eeJylwZ6s7j0gb+OWT6lM4rb7M5/deD
-         zDMN/1jOI/ottKoK9tcgckF33v5sdiHaCmHgFWfJyuvCO8bivqNUHfEGp6QlbNefg+zd
-         8dV6n8czpCCnSdrQF/T/iXeofvFJyEDYzs7s3DWp1Ui1dH9BGvXmMnEbojf6J3Sa4oOs
-         OToA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EqVhAosz/A6QAaD3TmSgOO9xc/masNVVDg/+AovaPWA=;
+        fh=sNGqOaX3y8lXh2+UGIMHh3hU0PVxqHddbMe6cdsY+j8=;
+        b=dh7Qqb9QWforS7ji2+LTTtrtc55Np/KE0Y0NDXIlH8ABYC1ubJWXPU9IXy1kjHy1rh
+         KSw+bhfZ/pMUSomlZIzqDEu9LgO8fuUk879IEjW0ddPqmPC6uGDXwQoe0GopAWVTmGlh
+         /76sOc88Z8JT/bpotxgY0lzjbdOkHNQtMrTJiMXgoc+do3iJ9CfS/I9npfSBLoI4G61R
+         LPd4jRRW9TC40cmTHMDyj32JsHj7Do9Kprtu3Wo9x7jkGsrDmlLLQdoiApv8mkUH/gv2
+         rM/fbSjForsJppe9zo65kcS/N6f27icLfWjj2I3AnYm4+IWg9NOuO+zDaPQCsxoNfGl6
+         dfCA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U7LT57lS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AWq7hsTc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c02db4de10si326398585a.61.2025.02.04.11.12.45
+        by mx.google.com with ESMTPS id af79cd13be357-7c02db6318fsi336643085a.163.2025.02.04.12.10.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 11:12:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2025 12:10:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U7LT57lS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AWq7hsTc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfOLc-0003Z5-KB; Tue, 04 Feb 2025 14:12:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tfPFC-00010t-Ga; Tue, 04 Feb 2025 15:10:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfOLY-0003SV-M4
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 14:12:32 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfPEw-0000vo-55
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2025 15:09:48 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfOLW-0007yW-43
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 14:12:32 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4368a293339so68888785e9.3
- for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 11:12:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfPEp-0006Nv-7g
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2025 15:09:45 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3863494591bso3087047f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 12:09:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738696348; x=1739301148; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1uhHhvRU/BGikXKHNsjTq2q46NE2D8U8FefZtc09pRc=;
- b=U7LT57lSksdBrCNlZFKXvk/oImbV90v4kwQR9KBGLMqn5L02aUbBSQzbUhr+v4L5qD
- gWjO3M8WYjMJjOdC45D5S80DlWAuTIwgJc1O3gj+VChOznAxcvn9NXXukTPsIFVzXvbF
- K0Fz2PTE+MQQUWHRciNKH16To25grZaineCUqsXl3NPnpeaYcz+XxdUV6lH4vnxm6xTt
- dE61Omf4txeIU48K82fePe4Yq/baRWu8lSz+KMPXdoCoesQsp+QOe5fLQo+X+v6tx3Ga
- nKyYjfTHPCUUVc5btKBNyGVKZxkCHlwYk12xihhbwSwt8phzbdK254/zmWAeLyPjVr5Z
- 6+JQ==
+ d=linaro.org; s=google; t=1738699776; x=1739304576; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EqVhAosz/A6QAaD3TmSgOO9xc/masNVVDg/+AovaPWA=;
+ b=AWq7hsTczEOEwbviHPgE4ZgnMxvsr8lY2+H1tgWlK6YvBrcNwJcsie23ADNfjDBhyu
+ 4LwajMCQV3HFTMTcX+LCh1ebf49bNy+ifEeMy9+E8TMACWcKQA8Ma3jjnEHrJlPNbjzM
+ /POlzWhJRieSh1nFZP1GxlawT3FRlSgF6e+/NhJ3JGQAOhHw6XzchEzqZ8cpzrGnF04j
+ odMbC7hWzzD4owM92hHmi3GTXA2bJrr8SdYSbh42G71wQd1SvR6aIFeXYTFUBwxi9R7T
+ UapFWggasAlOjR57vCvSFMHygXC6/se0R7O3n17RC0FppPXBGnDPxYihniJEKVUtIwxl
+ FSrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738696348; x=1739301148;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1uhHhvRU/BGikXKHNsjTq2q46NE2D8U8FefZtc09pRc=;
- b=pU+sN9TzuvNWCPIkVAgBruaOSZb5gn6eOjupq7x07lWXRluogBYyr2B8DcASgBRDXm
- x+NiGgPn2y4NjPfH96a4wtNJbo0u4FMBmgaH1aRCuM+dEvpooZrwIVxTR3dh/0Sbwlvx
- Sobnqwml+j8nIYRYZZyHWb9VxGqAPzsMqnLcNn9PA/NnNBg7PtKbMgjUKpC9R63eOBfu
- t5xGgfdfi+7roD0W4Mjh9aSHYhGZ5MKnE5+Rz1XhoCba0LP3Ve1CDJNzKVZx+J67swvx
- MkF5JomN1YMudCuyRM29JkUJUXK5i7MTUmcTfmWG8Bpu5IN5Nnf7AL3YLzTbOLqUha/T
- 5asw==
-X-Gm-Message-State: AOJu0YyKRXFWKhPu+4QRLJc9E/lrf9Im+ooqz3BjQ50ruTyGzeuAibKp
- Qh11x2h1f86dmm4lBhg7xFjRXGaOpic3x9Gn8ZlDfB7yJoo2VnLz5cQolCHJEG8/gqzAPruK24b
- j/c8=
-X-Gm-Gg: ASbGncuLg4aBc+sYlGseYUqi0ZhZtck/vlJ00AsKl7+tkhJcFkpfF4qU+n6a5nVYICn
- sm6Q/XiEY4SFy63RRHQQGYkt4TtIUmaFqk91BD+9sC66Zykk/+rQCPDejsTbhwLrrN88C/GdjQX
- bTurusLfEDksthv3q3tD/pRV2RytRpteJTBH0BFZDaN95eW2hneUm9TeRYavP53KGQr0VPjqpqm
- uEMcKisg7jwN258SblgQ4y0PQI6Vg1G/kMnqVqqgFeFpB989Kr25DhT9g+qeP6LdEXIh6ENlIeV
- er81VRW1k06FmBoiidTk19MatjzMM7vTPFXPCUlW4Z1UbJllcetXKtGeP1k=
-X-Received: by 2002:a05:600c:3488:b0:436:ed38:5c85 with SMTP id
- 5b1f17b1804b1-438dc3cbc24mr258085405e9.14.1738696348146; 
- Tue, 04 Feb 2025 11:12:28 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1738699776; x=1739304576;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EqVhAosz/A6QAaD3TmSgOO9xc/masNVVDg/+AovaPWA=;
+ b=VgK6UVVI71UFoVF6f63hatZwDMNJaQYb39BeLF3Wvk9UEUV4oJ5gJM1Gx3Uc/GmwSb
+ POYcbCMAs0SIehqhOH25oQT1bYVY531C8irn3xdWjm2/I4i1mMEXb30LpuuzVCnoBFI6
+ LsJbMdITvhQAt8/DiQDDHkzE8RBSf0TW0SgkDJEVvhTawHM7uTzgo2bA/ZwlPzzCe82v
+ LynxuMKjAbA7pO+Y71BKdJQRu7wYOfqLvfu/uoQF0sI2zKxL7SP2eAwMvzay+n+cugft
+ AOHtu5w6fbZ5C25xYVl/Osq8MG/soINj3azGsQHfjm4/El9kRgg30AJ3aKjwMNXCTdXL
+ TGGg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUbvfimu9Wxv3ez0HCM0Jw5FTgP7fo8HeFs+coQ+wRJSQLiAvJGvylJERtYCVb0SmrONDpe3ptF+g==@nongnu.org
+X-Gm-Message-State: AOJu0YzajcVPGRihxaiwwh53y/uues8aHTaXVB58iV+4GZHj6nP/24AW
+ uwynbZOGJ/xjXhNgc13eyIhe1OUmrg4iN9fStkPvOHlnxEC7rNDoedEvf7C1PJs=
+X-Gm-Gg: ASbGncs5dEMXBIFOn6j196QuiPc0igJ8SX3onFDOWuLjSVradtc20GwKGTZMMDUOhl1
+ o1jeLZc2FgkQljbdJYN2rY2Uviz6bGAOj5BxXsK7LcUbL8gqmjYtMnOIZYn4EAGeUDQ3XVZMpt3
+ HZy9J3kdkluzdWDNc+VPQMcVqzr4ly2mY5IjaDYOERoaVqttPeNu8QPwYqtTb60wckHf8rxHL4k
+ O0P/xG+LR0OdivP/lzsOsn2euhj+WKMlWGy7JQhRfw/EXrodvrnayB/dPb9Y+rPUe6c15aQhPQe
+ 49toKRYP5pX8AiZ5jVJ346zttbMWhzSGYMYNaQ0iOzMZWgVxMHvwXOPNTtYYiGO93g==
+X-Received: by 2002:a05:6000:1a8a:b0:385:e8aa:2a4e with SMTP id
+ ffacd0b85a97d-38db48bfb90mr123522f8f.31.1738699776239; 
+ Tue, 04 Feb 2025 12:09:36 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438dcc6dfb5sm240172815e9.31.2025.02.04.11.12.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Feb 2025 11:12:27 -0800 (PST)
-Message-ID: <075834df-6e81-43f8-81e0-2b2df5b9a828@linaro.org>
-Date: Tue, 4 Feb 2025 20:12:26 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/7] hw/arm: Remove all invalid uses of
- auto_create_sdcard=true
+ 5b1f17b1804b1-438dcc26d6fsm233518245e9.14.2025.02.04.12.09.35
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 04 Feb 2025 12:09:35 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-References: <20250204182903.59200-1-philmd@linaro.org>
- <20250204182903.59200-6-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250204182903.59200-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v4 0/7] hw/boards: Try to make sense of
+ MachineClass::no_sdcard flag
+Date: Tue,  4 Feb 2025 21:09:27 +0100
+Message-ID: <20250204200934.65279-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,62 +121,99 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KO9wUs7ISkRW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: M2L2/K9eifkN
 
-On 4/2/25 19:29, Philippe Mathieu-Daudé wrote:
-> MachineClass::auto_create_sdcard is only useful to automatically
-> create a SD card, attach a IF_SD block drive to it and plug the
-> card onto a SD bus. None of the ARM machines modified by this
-> commit try to use the IF_SD interface.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/arm/aspeed.c            | 21 ---------------------
->   hw/arm/b-l475e-iot01a.c    |  1 -
->   hw/arm/bananapi_m2u.c      |  1 -
->   hw/arm/collie.c            |  1 -
->   hw/arm/digic_boards.c      |  1 -
->   hw/arm/exynos4_boards.c    |  2 --
->   hw/arm/fby35.c             |  1 -
->   hw/arm/highbank.c          |  2 --
->   hw/arm/imx25_pdk.c         |  1 -
->   hw/arm/kzm.c               |  1 -
->   hw/arm/mcimx6ul-evk.c      |  1 -
->   hw/arm/mcimx7d-sabre.c     |  3 ++-
->   hw/arm/microbit.c          |  1 -
->   hw/arm/mps2-tz.c           |  4 ----
->   hw/arm/mps2.c              |  4 ----
->   hw/arm/mps3r.c             |  1 -
->   hw/arm/msf2-som.c          |  1 -
->   hw/arm/musca.c             |  2 --
->   hw/arm/musicpal.c          |  1 -
->   hw/arm/netduino2.c         |  1 -
->   hw/arm/netduinoplus2.c     |  1 -
->   hw/arm/olimex-stm32-h405.c |  1 -
->   hw/arm/raspi.c             |  5 -----
->   hw/arm/raspi4b.c           |  1 -
->   hw/arm/sabrelite.c         |  1 -
->   hw/arm/sbsa-ref.c          |  1 -
->   hw/arm/stellaris.c         |  1 -
->   hw/arm/stm32vldiscovery.c  |  1 -
->   hw/arm/versatilepb.c       |  2 --
->   hw/arm/virt.c              |  1 -
->   hw/arm/xen-pvh.c           |  1 -
->   hw/arm/xlnx-versal-virt.c  |  1 -
->   hw/arm/xlnx-zcu102.c       |  1 -
->   33 files changed, 2 insertions(+), 67 deletions(-)
+Invert MachineClass 'no_sdcard' flag logic and rename it
+to 'create_default_sdcard_drive' to make sense of this
+default value applied to all machines.
+We use the OnOffAuto tri-state to catch implicit default
+values. Then we toggle the logic and remove invalid uses.
+No logical change intended (except the assertion added).
 
-As Thomas noted in v2, this patch isn't correct.
+The list of machines using this feature is:
+
+  $ git grep -l 'auto_create_sdcard = true'
+  hw/arm/aspeed.c
+  hw/arm/bananapi_m2u.c
+  hw/arm/cubieboard.c
+  hw/arm/exynos4_boards.c
+  hw/arm/fby35.c
+  hw/arm/imx25_pdk.c
+  hw/arm/integratorcp.c
+  hw/arm/mcimx6ul-evk.c
+  hw/arm/mcimx7d-sabre.c
+  hw/arm/npcm7xx_boards.c
+  hw/arm/omap_sx1.c
+  hw/arm/orangepi.c
+  hw/arm/raspi.c
+  hw/arm/raspi4b.c
+  hw/arm/realview.c
+  hw/arm/sabrelite.c
+  hw/arm/stellaris.c
+  hw/arm/versatilepb.c
+  hw/arm/vexpress.c
+  hw/arm/xlnx-versal-virt.c
+  hw/arm/xlnx-zcu102.c
+  hw/riscv/microchip_pfsoc.c
+  hw/riscv/sifive_u.c
+
+Since v3:
+- Do not remove machines with multiple sd-bus
+Since v2:
+- Fixed mis-rebase catched by Thomas
+
+Philippe Mathieu-Daudé (7):
+  hw/boards: Convert no_sdcard flag to OnOffAuto tri-state
+  hw/boards: Explicit no_sdcard=false as ON_OFF_AUTO_OFF
+  hw/boards: Rename no_sdcard -> auto_create_sdcard
+  hw/boards: Remove all invalid uses of auto_create_sdcard=true
+  hw/arm: Remove all invalid uses of auto_create_sdcard=true
+  hw/riscv: Remove all invalid uses of auto_create_sdcard=true
+  hw/boards: Ensure machine setting auto_create_sdcard expose a SD Bus
+
+ include/hw/boards.h        |  2 +-
+ hw/arm/aspeed.c            | 20 ++++++++++++++++++++
+ hw/arm/bananapi_m2u.c      |  1 +
+ hw/arm/cubieboard.c        |  1 +
+ hw/arm/exynos4_boards.c    |  2 ++
+ hw/arm/fby35.c             |  1 +
+ hw/arm/imx25_pdk.c         |  1 +
+ hw/arm/integratorcp.c      |  1 +
+ hw/arm/mcimx6ul-evk.c      |  1 +
+ hw/arm/mcimx7d-sabre.c     |  1 +
+ hw/arm/npcm7xx_boards.c    |  5 +++++
+ hw/arm/omap_sx1.c          |  2 ++
+ hw/arm/orangepi.c          |  1 +
+ hw/arm/raspi.c             |  5 +++++
+ hw/arm/raspi4b.c           |  1 +
+ hw/arm/realview.c          |  4 ++++
+ hw/arm/sabrelite.c         |  1 +
+ hw/arm/stellaris.c         |  1 +
+ hw/arm/versatilepb.c       |  2 ++
+ hw/arm/vexpress.c          |  2 ++
+ hw/arm/xilinx_zynq.c       |  1 -
+ hw/arm/xlnx-versal-virt.c  |  1 +
+ hw/arm/xlnx-zcu102.c       |  1 +
+ hw/core/null-machine.c     |  1 -
+ hw/riscv/microchip_pfsoc.c |  1 +
+ hw/riscv/sifive_u.c        |  1 +
+ hw/s390x/s390-virtio-ccw.c |  1 -
+ system/vl.c                | 24 ++++++++++++++++++++----
+ 28 files changed, 78 insertions(+), 8 deletions(-)
+
+-- 
+2.47.1
+

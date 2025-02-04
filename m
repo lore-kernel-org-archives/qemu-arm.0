@@ -1,177 +1,232 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp505852njb;
-        Tue, 4 Feb 2025 13:38:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVAyEN9nb/Cy52yJG9gne6v5vqup1SW/J7DGojC6OmD7HKylXbIKR0bxNq2umURl9QdnpFVzw7hAjj7Uw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAquDYrH3J8u5QWSAnRV2vrQhINDRftfPekdY7WJtfnUOF8K1mtIVh3YTn1KJxFBY5BeDD
-X-Received: by 2002:a05:622a:254:b0:467:867b:ff57 with SMTP id d75a77b69052e-470282e9be9mr5076051cf.44.1738705119571;
-        Tue, 04 Feb 2025 13:38:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738705119; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp508991njb;
+        Tue, 4 Feb 2025 13:46:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV6cgnXEGJx7AJSRrfAEGMe3iK1Xtyyx7Y+voLOkuGy9mtzBHhMfO0imGEeLA20SV0PUc/ea1VtGF6+rg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHzfJebQ+BDdw2gsnbgfcDfbbI76YeflSXX+0EtkY9NRBcwqZhhAnil7Oc6tK2o0Ip3aIaj
+X-Received: by 2002:ac8:59c3:0:b0:46e:25ed:1601 with SMTP id d75a77b69052e-470281c3de6mr3658741cf.14.1738705611701;
+        Tue, 04 Feb 2025 13:46:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738705611; cv=none;
         d=google.com; s=arc-20240605;
-        b=jm8sd+6jrgIgRRtLtiWylTx83SKChd8N7ODBDMytZaChFK8QklgjSb8JYvoelhjg2e
-         /Ky4EvwXR+nblMj00p+Doooww1xRCQu6359KYdk9yQTNFyIdwxp2HaICpCBEnHNTCNue
-         2InHrY+OfZ0qy6Blvs6fwRgVnrlZZQnYSRjkqk/V2s8mXrdYfxtD4c0ECtvJ6qVSaIGZ
-         5mqjwV9f4+e6ZtFPESrN5JXOGOP2qm5hca6vw2wujlrSU1Q8TLYPI28L2VgC3u132Pab
-         KSyYVK3GKTI6uaknbcGZ2LZ+ZBvI6aDc2K0GGtJd/O7m7ZmSuq25t82XBpxtRSWnn0oh
-         tMgw==
+        b=KhvSuNPps+nd48BsWJdyj1N0YuekyaZ/hGT7A66Aq6sn/dRvK84UMwhu+8q2isl7Ei
+         NFCA71N3eaexJ9i/CoCcwDslINCwe7TdaU0feqr2ddzoc6rVCibVi/kvmLt32wsUuh1d
+         bzJY7eHaYO0uHt6guZTuI7ylp/gu+ZL/oMCuxxuFXXyG8xMsJOml32hFxBE4Jy3kpXEk
+         1p6jxT+owxWV6mrKNSa+TKSWjIF9isdIyIZp6NdfN2A3qUqffBhCS0DY5owKOcNZNg+q
+         Ri04In/ppSwyDaHSFfRtbOwvPRof6/2M6fhsf/tQ++xFImwY9dVlrj681n1Hw4W65c56
+         0aww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=S0hDIfiZm7cM2pMBKQYziSrKjmJPOXOvSA6Bjp6kfZE=;
-        fh=ZoeGIVtIFj3A4WOj+ZC1v6d69xuB2WCcQ/hjfWfbW0Y=;
-        b=G+V9ZPkqcJTTb+txIA0XToFUXHuyaf8EoU9/r9h6rJd/38dog4Q2r7ntfc1RJLsN6x
-         7vGwuY24Q5PF43hzD3bfy2aPmo0bVpvoTMduwm7cY5YaJbHZkPSckj2Z5lg4msXT5VfH
-         e0cBvERpfFOBfWkCr4eD0hYz0AuH3LnVps6p729PR7H1EfTalu9boUV9eAhiYnCfj+Rg
-         nkLIqR+aNsOTVd/yzNh4yK8IB+3PmpZrPQWBxJQ6wdcUoO9waBPZMDweYRZHpdibD1Hy
-         maGPZaIJUDxLEu9NuUiLUDIH9wvdgIVso2p8vKHzjIn2CQIhz63Up+7V9R6D7nZcmCjQ
-         XVqw==;
+        bh=6zix+2XzlAWB3iAZ7J6dqnst6Y/RLxo8jGubN17CA0I=;
+        fh=68g+JZzBQPaj8MYqkSCA5yhdJZGHOasR5dmtOh8BMB4=;
+        b=bhH3wn1UBbCDxExjDm+Vw8WxdWXTwSiQOrZh2ncpSGg/Pv2aM5JfL0qs1D+Arro1RR
+         JSZ9RMho6EWBjIk1KEQt7n4emTXxFUqT0dU5fB+zbalkj7wYcBkJ7wTPiKBrUUn5bZL4
+         FIU38J6JugdJOEZRZvpgDxSr5rt+XEjz1Y1gJakkcsYjCaAzQFGWfAerItqBnmjQqhwd
+         Z5pL5u1kuqPOW6WnAuN4ZWjEUpuXLowH279o9yBo9t9puWkxmXr5ggFeh15gnUi7C2Pt
+         MebBCCM3PXVmBE3zct6ysw5M8lH2H8L9Hineq6xIOREi35XVTVQd8kw9QyXlZ99veuKC
+         0P4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Uzq2Ss+4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Lza/yNQQ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016bf64e9si38400311cf.617.2025.02.04.13.38.39
+        by mx.google.com with ESMTPS id d75a77b69052e-470169f844asi37158311cf.39.2025.02.04.13.46.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 13:38:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2025 13:46:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Uzq2Ss+4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Lza/yNQQ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfQcn-0004wn-1g; Tue, 04 Feb 2025 16:38:29 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfQkd-0008Oe-Vo; Tue, 04 Feb 2025 16:46:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfQcl-0004tl-M5
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 16:38:27 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfQkc-0008O5-Lx
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 16:46:34 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfQcj-0003jU-WE
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 16:38:27 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4361815b96cso42589605e9.1
- for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 13:38:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfQkZ-0005Nl-Kg
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 16:46:34 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-38db104d35eso704853f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 13:46:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738705104; x=1739309904; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738705590; x=1739310390; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=S0hDIfiZm7cM2pMBKQYziSrKjmJPOXOvSA6Bjp6kfZE=;
- b=Uzq2Ss+4geK5XD3FkaRe/ByWe5wgCfiaOXalNUVvQD/IvzMnvbrupNe4VLCG2vgeEK
- I+8C62oOOIYNvLVjbpRgzjSkwtM+RFRbbSVZ+M9z0sq5q7AncZp4eDVOaQoAAlUL5nw/
- PJJkxAozup4xaRFQV8KfLetInSfZJqXkfuqCstJz+iqwnDW8DTtTNbsFLjn2zHhIsGL8
- ozs7FjpudBoFftAE50ny6WA6w+5XTswmuJATCoHM2aifAjToThjQF9+RZBB/twXYTvKc
- r+zcYtGMpMjYJhKbBHqN9vnx3fZwS1kIIgUBwelJpD0E9NlhRgScUjstH3+juAkHcgev
- AuNg==
+ bh=6zix+2XzlAWB3iAZ7J6dqnst6Y/RLxo8jGubN17CA0I=;
+ b=Lza/yNQQN1cT0EuqDyveidlbE4Ep/Ek1FzSlMe3+cPoe764Th0o9hQvf5gTW1y4/8s
+ qrvs0YndgOiIUi9e9ts6I3F/qbwBQCP10g4KZy1EWZc+mukSBrFyOJwEPVMj7fclo3up
+ oY79w4s8RM917bhiZurHBYXmZkn2vlUZaa48trnQ8hg5f1x0ba4sFvqpQ9LnSAZEajKM
+ sIAGgyQRjkKSKPLdWqYtot7VzbXhGL4N+Hpv+KNXHreuP4oZyiNuHaM0aA58cfmuN+fF
+ U22xMH9G/KRMzx1fN1wMqMuuwp6li3/nHiEqocRFiZBQwq/8uCiFg+HCX2oxalSXVlNp
+ txmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738705104; x=1739309904;
+ d=1e100.net; s=20230601; t=1738705590; x=1739310390;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=S0hDIfiZm7cM2pMBKQYziSrKjmJPOXOvSA6Bjp6kfZE=;
- b=dI8M4CIIEs3fTr7RlUz3c3I2OBLO/b3/lhojsW9ROX2LWitT5aBxMQl4aKcz1EFHkb
- FQi8NXN/7264MffQtWIEB7HWXtMktLW6NWEDWL2Z6DBGC7qWhBJ2UmnfOd8EE7ccxwsm
- pOTDPCOtYgctBVqV3xxTYQKt7Xjj20TbWZAx+fOQjAPuoXZzYuzCLdL9c49HdbkTbtvt
- ci/cLITruQo++uhOlZbb62tV9I2mOQpvYrWccnJdPstqa9pblB1yEWONxSdltcSFaJP2
- Mfnv6xUaqCIZvMBqszQp/xR2///glrYzBNVvdhZDlW8MfrALU3WjFYtBNH0P91tsY88i
- xthQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWcVVSUeAdo/Y/lTA93bVOLWTk9p7s3Ul8MxeGflvM92vGFu394Y4uWUIoS/uABCGj2M1RqkurjpQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxaRtuaAnPmDT7iFU9iEgg07cYcNqFE71ra0hC+a73ICNo8SFrq
- 0X0a+2DYeitFWKwDwcWjODRjpy/0j/b2AK8AFm9fWNUTv/5LeIyjP9QMxgjYmoA9dMdpLbuFWsD
- IrEY=
-X-Gm-Gg: ASbGncuUWmV3OWlPsU9qBTNvTZYTJCKsWSi2fH+SxucUzhLLeqZQWcg+FpfRdbMmjqW
- JVddoDzR/rk/nzOn/vsvrMTmH8kr5OVZT5J5P4Vfzm6ruMejLYeaCIur6Yso1nX6He4iMph+aGg
- 24szw7qynFPwBPDIoxGn3s5r/Wt0WoI64owVFwtuRrHaI58TaQLMEz5Ipe+gCJCKLYIniwme8Nw
- FaykAB2bNLXjjZxYuRVDDzZihMeKxVitfdN/fu/+VTjsSaF+/+R+/iKvYq8VO/u4rogshCncvYI
- JwTtjJSJyJ2yZ/Dhx2dZRqvnjXMF0qRPBDN4EmKJLBcTZ3iavwqpSW6yzU0=
-X-Received: by 2002:a05:6000:1882:b0:38a:88bc:aea4 with SMTP id
- ffacd0b85a97d-38db48be08bmr217475f8f.30.1738705104574; 
- Tue, 04 Feb 2025 13:38:24 -0800 (PST)
+ bh=6zix+2XzlAWB3iAZ7J6dqnst6Y/RLxo8jGubN17CA0I=;
+ b=aYu8Ymb2vzWlWkr+f+JHxocDYbzGZGL2yfVGDRwirKapKceYBbjpm5GIbRxq0HfqXG
+ uosiZxtJr9kUHvmjI0aoufhVrDh2xBvnRTcQxCw/g0pICO40iniIePsWRiCDJH2FNYQ+
+ jfSfBZA4cbb0RO9jYDUwn0knwYJiT0m4SXyoWzo1rcHYg6EHXK3eYbdAi9hWmNHXAGZd
+ va0dd8Yt845d0TncFMhzuqmYyvyA1px8wLpBycvgnb8YB9Oguwbzr3BQk2cydLxUBetU
+ L1Mcl2TUuUdIAJ0rNlZYThgTzbH3lUXou932QuS4N6nmBMFYa+KUA+HZUe/zzOmMrsp+
+ U90g==
+X-Gm-Message-State: AOJu0YwdsXTX3OJZuzQbK0rD0++eN+9ixm1dHgan9dYVMcXayJiY+kGl
+ 8WGSEndF1d5gIV/VltcZXAmUZX9wE+cqiJuM9eFmlzDy+SfzzZmmAmHlTZYsDQg=
+X-Gm-Gg: ASbGncuXWnAa7hVZSECzOTfmAnU0MxyS0XOsTS9uGSOIBMuRKKzFWJxtskaIBkxT39Q
+ hZaUp+63lo6stuh9fSWCDPall0PjIHT0k2zk+wjcUlaCchtDZgtOqvPpi2OU5TK6dcrrQFLkZUl
+ ulS2lxRuqKoJqoB69xUispFMT8+biPmY0dlHKjaIIDFWMMcFxjDMBVXxP7zkfdgBPBGfJuaJh3t
+ 9lrOommAm+yLLxq9HYvCy4duUrZ4j6CcU3qPAtDWyUcJ5e/ucOrRSYs1F1cihLpC+eAy0zwNK6P
+ 1OnWZblJfqohETk480ql36wX6D95jO7NT2bADAtAV+5RlzrVngL37bdrP1Q=
+X-Received: by 2002:adf:ef89:0:b0:38d:a883:b95b with SMTP id
+ ffacd0b85a97d-38db48a42f8mr273456f8f.28.1738705589709; 
+ Tue, 04 Feb 2025 13:46:29 -0800 (PST)
 Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dae1a1e4bsm2606202f8f.55.2025.02.04.13.38.23
+ ffacd0b85a97d-38c5c1cf560sm16648489f8f.89.2025.02.04.13.46.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Feb 2025 13:38:24 -0800 (PST)
-Message-ID: <b053170f-1116-40be-8e60-95961721dd64@linaro.org>
-Date: Tue, 4 Feb 2025 22:38:23 +0100
+ Tue, 04 Feb 2025 13:46:29 -0800 (PST)
+Message-ID: <e6d14f33-94ec-47ba-9fec-64ce94da2ad0@linaro.org>
+Date: Tue, 4 Feb 2025 22:46:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] aspeed/soc: Support Non-maskable Interrupt for
- AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20250204060955.3546022-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH] smbios: make memory device size configurable per Machine
+To: Igor Mammedov <imammedo@redhat.com>, qemu-riscv <qemu-riscv@nongnu.org>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ wangyanan55@huawei.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ anisinha@redhat.com, qemu-arm@nongnu.org
+References: <20240711074822.3384344-1-imammedo@redhat.com>
+ <d921c3d3-71a9-49e4-9f28-1ff3f19b9c48@linaro.org>
+ <20240711104230.1582fba0@imammedo.users.ipa.redhat.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250204060955.3546022-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240711104230.1582fba0@imammedo.users.ipa.redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 75/VfnJQ17ka
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CzELY2jT77yJ
 
-On 4/2/25 07:09, Jamin Lin via wrote:
-> QEMU supports GICv3 Non-maskable Interrupt, adds to support Non-maskable
-> Interrupt for AST2700.
+On 11/7/24 10:42, Igor Mammedov wrote:
+> On Thu, 11 Jul 2024 10:19:27 +0200
+> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 > 
-> Reference:
-> https://github.com/qemu/qemu/commit/b36a32ead
+>> Hi Igor,
+>>
+>> On 11/7/24 09:48, Igor Mammedov wrote:
+>>> Currently SMBIOS maximum memory device chunk is capped at 16Gb,
+>>> which is fine for the most cases (QEMU uses it to describe initial
+>>> RAM (type 17 SMBIOS table entries)).
+>>> However when starting guest with terabytes of RAM this leads to
+>>> too many memory device structures, which eventually upsets linux
+>>> kernel as it reserves only 64K for these entries and when that
+>>> border is crossed out it runs out of reserved memory.
+>>>
+>>> Instead of partitioning initial RAM on 16Gb chunks, use maximum
+>>> possible chunk size that SMBIOS spec allows[1]. Which lets
+>>> encode RAM in Mb units in uint32_t-1 field (upto 2047Tb).
+>>> As result initial RAM will generate only one type 17 structure
+>>> until host/guest reach ability to use more RAM in the future.
+>>>
+>>> Compat changes:
+>>> We can't unconditionally change chunk size as it will break
+>>> QEMU<->guest ABI (and migration). Thus introduce a new machine class
+>>> field that would let older versioned machines to use 16Gb chunks
+>>> while new machine type could use maximum possible chunk size.
+>>>
+>>> While it might seem to be risky to rise max entry size this much
+>>> (much beyond of what current physical RAM modules support),
+>>> I'd not expect it causing much issues, modulo uncovering bugs
+>>> in software running within guest. And those should be fixed
+>>> on guest side to handle SMBIOS spec properly, especially if
+>>> guest is expected to support so huge RAM configs.
+>>> In worst case, QEMU can reduce chunk size later if we would
+>>> care enough about introducing a workaround for some 'unfixable'
+>>> guest OS, either by fixing up the next machine type or
+>>> giving users a CLI option to customize it.
+>>>
+>>> 1) SMBIOS 3.1.0 7.18.5 Memory Device — Extended Size
+>>>
+>>> PS:
+>>> * tested on 8Tb host with RHEL6 guest, which seems to parse
+>>>     type 17 SMBIOS table entries correctly (according to 'dmidecode').
+>>>
+>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+>>> ---
+>>>    include/hw/boards.h |  4 ++++
+>>>    hw/arm/virt.c       |  1 +
+>>>    hw/core/machine.c   |  1 +
+>>>    hw/i386/pc_piix.c   |  1 +
+>>>    hw/i386/pc_q35.c    |  1 +
+>>>    hw/smbios/smbios.c  | 11 ++++++-----
+>>>    6 files changed, 14 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/include/hw/boards.h b/include/hw/boards.h
+>>> index ef6f18f2c1..48ff6d8b93 100644
+>>> --- a/include/hw/boards.h
+>>> +++ b/include/hw/boards.h
+>>> @@ -237,6 +237,9 @@ typedef struct {
+>>>     *    purposes only.
+>>>     *    Applies only to default memory backend, i.e., explicit memory backend
+>>>     *    wasn't used.
+>>> + * @smbios_memory_device_size:
+>>> + *    Default size of memory device,
+>>> + *    SMBIOS 3.1.0 "7.18 Memory Device (Type 17)"
+>>>     */
+>>>    struct MachineClass {
+>>>        /*< private >*/
+>>> @@ -304,6 +307,7 @@ struct MachineClass {
+>>>        const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+>>>        int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
+>>>        ram_addr_t (*fixup_ram_size)(ram_addr_t size);
+>>> +    uint64_t smbios_memory_device_size;
+>>
+>> Quick notes since I'm on holidays (not meant to block this patch):
+>>
+>> - How will evolve this machine class property in the context of
+>>     a heterogeneous machine (i.e. x86_64 cores and 1 riscv32 one)?
 > 
+> I'm not aware of a SMBIOS spec (3.x) that cares about that heterogeneous
+> setup yet. Are there anything in that area exists yet?
 
-Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Not yet.
 
-> ---
->   hw/arm/aspeed_ast27x0.c | 4 ++++
->   1 file changed, 4 insertions(+)
 > 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 4114e15ddd..361a054d46 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -470,6 +470,10 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
->                              qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
->           sysbus_connect_irq(gicbusdev, i + 3 * sc->num_cpus,
->                              qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +        sysbus_connect_irq(gicbusdev, i + 4 * sc->num_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-> +        sysbus_connect_irq(gicbusdev, i + 5 * sc->num_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
->       }
+>> - Should this become a SmbiosProviderInterface later?
+> if/when SMBIOS does get there (heterogeneous machines), introducing
+> an interface might make a sense.
 
-Thank you!
+OK.
+

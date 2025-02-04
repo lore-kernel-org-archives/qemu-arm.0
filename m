@@ -1,177 +1,141 @@
-Received: by 2002:a17:505:11ab:b0:1be9:327d:8ee3 with SMTP id so11csp2446363njb;
-        Mon, 3 Feb 2025 15:20:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXoxazZ+Gh5WlplewYjtxOo2nfkp36kDCZapa8MIxgMe9b9oWvyG8Mz5nEzitBOaoQDL9kUn3qQz7CuMw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHLo8zkRYg4i0rtx1gKBX41wtXo1+KexBffguP0FI9+C7sgH9VDfUNrW2rbc9fWN9JHPh7n
-X-Received: by 2002:a5d:47c8:0:b0:38b:e32a:10ab with SMTP id ffacd0b85a97d-38c51934f02mr16264015f8f.9.1738624808942;
-        Mon, 03 Feb 2025 15:20:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738624808; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92256njb;
+        Tue, 4 Feb 2025 01:22:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWjP/R44AjTjkDt7S02oA5NPU5cdaCbG5YuONQRFc4s9v8IOWTzduq5Q6PO//2YXMCJyHF6PoOSB/TPOA==@linaro.org
+X-Received: by 2002:a05:690c:c99:b0:6f6:7ef2:fe74 with SMTP id 00721157ae682-6f7a8426a5dmr187290397b3.32.1738660971685;
+        Tue, 04 Feb 2025 01:22:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738660971; cv=none;
         d=google.com; s=arc-20240605;
-        b=Uvkh5uBLuWdhvT4vox6T6ZCJfWiZ3f5WWgXkSVhByH2EuzWIg7Zam8poDWcWrUelBt
-         X+cjwhVRzYKHnbchkwgZjooR6OrK3kNqoT2ezYeN8BbqI+orZu2QcWGzYcq34ntgouCo
-         mqCk7aotbxI5ajGmjRuASKlj8fdBBHN7MJRpPwLIu6IpjZ/66nDux+WVmIdHxdc2pYNg
-         KOyAR0/qMLw8iZn+LyIWDYlTspteGkSqAyIaOm8/Ek36zq4SQYopyZmqN8V8cAgiXFhO
-         ZTpEh9c9MWN5naONE+NgOz/M/tbiR3nmcI0ZN+/ZSvKLmhWKeoRT3Ix9m/WOWJH2Xw3A
-         LGig==
+        b=buxN45PyIcmY3mE+1y7UEkDXJ/loF2j2pOn7x00swD1Rn0NfhR2EdQ8J6gtrqMGTpT
+         Des04WEoVf6GSpdzilJrh9PXFLZpVYCMimxlNh0cjiymtTuLwONAuBkuHSZbOmWVn27Y
+         8VKenRTr97jZJiTlFqqZylCVhIfjl/Fmn/soDFZBB3av/9S0Qmt5uzAm4HJIDEj6GEu3
+         nCTph8KogkaOpvyX9J1O/Qo+YY3BNgRSP7EeTjCtMDObGITJhDHDWAdfpQ+36qAyV082
+         3QS8ie5qJ0WH3H7YK7kiBPpt76qQK5fq/buWUCg42CA5amJuUKb3ZlwRW/DdK345ZNYR
+         gMiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date;
-        bh=XOZbURGqTdtTcXQlh2phGp7R1cs7X/ODep7twv1rrhQ=;
-        fh=ihM5l46MEyAbhHaGH2Dxn8CQES9WbIwYsd12DAlwR3c=;
-        b=fxZ5XpOc97VJycY+Kn+mlbB0PY3c3npDy9pevSUOCYRb/wQRrlwnzir4NGZdlw2bi7
-         Xu0JJvcQsZvfCgvzx8G/qfis4rQxu4iQNprwDOwcqvc8z/zJh7PtJwqwpDz1cU5jeMyA
-         i0aWOtlCC7zius0ZE19G2MXzMqYsaYMq7HSe7Zm7rWeXM84hgly0GFiABfS149b1iQYg
-         WH+jHloaQpFYiTzLpPIuYJIgtkT+ua+uAHYmdEpnP0TbwrBC4n21MFXYmEpxlxijLhfB
-         Tm+XdcGGwMc/bn5diDh0PUH4pRwOIsW2A27v/9oIsfDqzIXQwsGUu19y2WSvwZyKVhDX
-         4mHg==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kmTq86FYCcD32W1a13YONW1OgZwVXJNTzJxvAv4s/LI=;
+        fh=UA/0VAygUlDSH2BGVbxqZblWdivfEHTOdVjJhTcekr4=;
+        b=bhPYzheQcVj+yp6YNkxv/HESiCsVrRiRhjkcRThPxL19lBc8XCW58oYRAK0jVnFIpT
+         6cOFZ/ZP3JcJXfibxBkeEaFQpc58fIBSTPSXfTz++X3SJpjg/Dsba8Wv/Vu1Dt6ajb6o
+         1C1JnEdGP+eKL5pZC7lwqZARIiwY0/MGNo/feR5z2wj2+fZRnOUz9oFv2WqJKcfAQjaR
+         NK6WF0weeRYDAMUkH9JgpSlLNZpo7jnyyLPrIE2cvUQMoYoI8Y/Qtv78wgMUOJjK3KFe
+         vbI5uEKB/S3PsS6KM3a8ryW8MFz89dyk9x/BTdrGRKAdRoH43DevksRKzCwiCwRWA2ED
+         Sxhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <balaton@eik.bme.hu>
-Received: from zero.eik.bme.hu (zero.eik.bme.hu. [2001:738:2001:2001::2001])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-438e245fe52si78928685e9.177.2025.02.03.15.20.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Feb 2025 15:20:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) client-ip=2001:738:2001:2001::2001;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OO+qaHHV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 3f1490d57ef6-e5acb28327csor5942993276.4.2025.02.04.01.22.51
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 04 Feb 2025 01:22:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id ED7554E6010;
-	Tue, 04 Feb 2025 00:20:07 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id pKSBRQrVEwqf; Tue,  4 Feb 2025 00:20:05 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id ACE834E600E; Tue, 04 Feb 2025 00:20:05 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id A7CB574577D;
-	Tue, 04 Feb 2025 00:20:05 +0100 (CET)
-Date: Tue, 4 Feb 2025 00:20:05 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
-    Peter Maydell <peter.maydell@linaro.org>, 
-    =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
-    qemu-devel@nongnu.org, Jared Mauch <jared+home@puck.nether.net>, 
-    qemu-arm@nongnu.org, devel@lists.libvirt.org
-Subject: Re: [PATCH 0/7] hw/arm/raspi4b: Add models with 4GB and 8GB of
- DRAM
-In-Reply-To: <7f765a75-d02d-450e-b229-3232d16871c3@linaro.org>
-Message-ID: <816f46cb-ad10-e5bc-1ba1-45cf991c0347@eik.bme.hu>
-References: <20250201091528.1177-1-philmd@linaro.org> <90d87f0e-56a3-8966-614c-364f3e726d61@eik.bme.hu> <CAFEAcA_mBXO20NhYRHJCgkB0h8uYQQhBMdwVW376R4u-qh51nA@mail.gmail.com> <87ed0fayoy.fsf@draig.linaro.org> <Z6DTsdf35ApQ0qLU@redhat.com>
- <CAFEAcA8Qigt1EBVgz1D4hon0x4ukLZbZ-jS_KB+ZBH0yi+QCXw@mail.gmail.com> <Z6DXmN-ROswsaDAi@redhat.com> <7f765a75-d02d-450e-b229-3232d16871c3@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=OO+qaHHV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738660971; x=1739265771; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kmTq86FYCcD32W1a13YONW1OgZwVXJNTzJxvAv4s/LI=;
+        b=OO+qaHHV0ULbIPaFl04mkSsVIYjd/mKvkoX3UqVQlPZ/NdmaXMGc/CA3991WeynQwG
+         r9EtoIGPwhr6frgFUsldyL6YNPC6iL8ychORa1UTZnUOe/nCUGO67Jfa/derlw2XUwc7
+         9zSEKjt6ez1m/dq4Oay/23UVh+cY403rnqHAbWIET/VlLGQCjR2aIczwMsrVsT+QeuZ6
+         p6dpGk7PT5xNp06du0VWxl2U0O513JSycToukZeNEji9uLxbDIBFF/JwYZvQDwdY0pgN
+         Nwh70PQR3rNRGV8NlCfiDC4Mx6VIu0ER8bTmf8ZKxDK4MxVVBKBpv2smN7L0xlDObcqF
+         13Cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738660971; x=1739265771;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kmTq86FYCcD32W1a13YONW1OgZwVXJNTzJxvAv4s/LI=;
+        b=QjmbWxY8yGo1BmcD7RAEqsvnpA3XRjmoOL0Xh2HwHdD2EuJs7/VsvwqUs9NckLQko8
+         3PFXj+nS+vqGtUL96jH/GELBYAyLNWix+bkNEKSdusngOCPephihqQPe6yWOMM1AxM0J
+         mIb4psW+zc+SjVBq4tBDGdW7IH0QOPUpYuUPJyOhQ2xhJ7fyMHDizKH+yEvshvh+YvBc
+         TZ2tsRQtG8ksUHDTnqd/sp7DDhnxGBH3KIE4IV5huCmG8z2934qlF3fiJauAA2ZsIAct
+         IUKLGJdJm7ZPeyvY9M43Uzc5poMfCd46dJCScqmDSXY7RrDlCw0RJmgYYU84jAJJc/ya
+         g86g==
+X-Forwarded-Encrypted: i=1; AJvYcCWD5JzhJM1MjC+49cG7STQjvsUecIVsV+vBnzx0TGFHSFKujahyesFC9aTDmI1f/SYESRsQQcxoeESc2g==@linaro.org
+X-Gm-Message-State: AOJu0Ywb6AqwMOJzKNGyootuGtzmSOKqLjQJPKIalsUwIxOwa/9ParKu
+	iHwY4dVeQVqv2z4tEnzYf2Mb4A3/Xno+DpfDATHkCR9wgxICBsmzqF5QEfw02YdS/Q6LqiaNSyb
+	6V4k4B91FHPIq0cyOocaoXKwstmO14NR+YgXxxuTx
+X-Gm-Gg: ASbGncsxUkAdbwuNlXed7ZdnWiibRPl950n7hULS3zwYqhd6RXm+IF/REXF78JPCV1y
+	/XTd/UsE7lUuJ9dVhdwNxBM320txYKd76u6zHYZq52c1vyXErFShqrUnJg3X+t9fTikYjAUVIWw
+	==
+X-Google-Smtp-Source: AGHT+IFFjXuj8XbVbZVDT1GJ1qUUlvLcG/+G3580Q4Aiu9VRYi6+8xxGCC+IlQwKFz0q0mtKFx5CW37+SY+RBGB6Mh0=
+X-Received: by 2002:a05:6902:18c5:b0:e4d:89e9:6a96 with SMTP id
+ 3f1490d57ef6-e58a4ac4ad0mr18807657276.18.1738660971230; Tue, 04 Feb 2025
+ 01:22:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3866299591-441919731-1738624805=:61971"
-X-TUID: rKFD1bUbGPBJ
+References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-12-philmd@linaro.org>
+In-Reply-To: <20250204002240.97830-12-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Feb 2025 09:22:40 +0000
+X-Gm-Features: AWEUYZnyAqsYIZvVkTJpPKo3klQkwasA6ZLEXrr7ajvWzT26Y73l5f5_IaGZxzE
+Message-ID: <CAFEAcA-3JJ1tZAXsik5hAonuSO9sCqDF1xqPQVhAeN-XwAAhDw@mail.gmail.com>
+Subject: Re: [PATCH v2 11/12] hw/arm/raspi: Deprecate old raspiX machine names
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>, 
+	Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>, Jared Mauch <jared+home@puck.nether.net>, 
+	Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	devel@lists.libvirt.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: dP3HEXc0AU4Q
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Tue, 4 Feb 2025 at 00:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> All previous raspi machines can be created using the
+> generic machine. Deprecate the old names to maintain
+> a single one. Update the tests.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
---3866299591-441919731-1738624805=:61971
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 4a3c302962a..c9a11a52f78 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -257,6 +257,19 @@ Big-Endian variants of MicroBlaze ``petalogix-ml605`=
+` and ``xlnx-zynqmp-pmu`` ma
+>  Both ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` were added for little e=
+ndian
+>  CPUs. Big endian support is not tested.
+>
+> +ARM ``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b`` and=
+ ``raspi4b`` machines (since 10.0)
+> +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''=
+''''''''''''''''''''''''''''''''''
+> +
+> +The Raspberry Pi machines have been unified under the generic ``raspi`` =
+machine,
+> +which takes the model as argument.
+> +
+> +    - `raspi0`` is now an alias for ``raspi,model=3DZero``
+> +    - `raspi1ap`` is now an alias for ``raspi,model=3D1A+``
+> +    - `raspi2b`` is now an alias for ``raspi,model=3D2B``
+> +    - `raspi3ap`` is now an alias for ``raspi,model=3D3A+``
+> +    - `raspi3b`` is now an alias for ``raspi,model=3D3B``
+> +    - `raspi4b`` is now an alias for ``raspi,model=3D4B``
 
-On Mon, 3 Feb 2025, Philippe Mathieu-Daudé wrote:
-> On 3/2/25 15:50, Daniel P. Berrangé wrote:
->> On Mon, Feb 03, 2025 at 02:45:06PM +0000, Peter Maydell wrote:
->>> On Mon, 3 Feb 2025 at 14:33, Daniel P. Berrangé <berrange@redhat.com> 
->>> wrote:
->>>> 
->>>> On Mon, Feb 03, 2025 at 02:29:49PM +0000, Alex Bennée wrote:
->>>>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>>> 
->>>>>> On Sat, 1 Feb 2025 at 12:57, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>>>> 
->>>>>>> On Sat, 1 Feb 2025, Philippe Mathieu-Daudé wrote:
->>>>>>>> - Deprecate the 'raspi4b' machine name, renaming it as
->>>>>>>>   'raspi4b-1g' on 32-bit hosts, 'raspi4b-2g' otherwise.
->>>>>>>> - Add the 'raspi4b-4g' and 'raspi4b-8g' machines, with
->>>>>>>>   respectively 4GB and 8GB of DRAM.
->>>>>>> 
->>>>>>> IMHO (meaning you can ignore it, just my opinion) if the only 
->>>>>>> difference
->>>>>>> is the memory size -machine raspi4b -memory 4g would be better user
->>>>>>> experience than having a lot of different machines.
->>>>>> 
->>>>>> Yes, I think I agree. We have a way for users to specify
->>>>>> how much memory they want, and I think it makes more sense
->>>>>> to use that than to have lots of different machine types.
->>>>> 
->>>>> I guess for the Pi we should validate the -memory supplied is on of the
->>>>> supported grid of devices rather than an arbitrary value?
->>>> 
->>>> If the user wants to create a rpi4 with 6 GB RAM why should we stop
->>>> them ? It is their choice if they want to precisely replicate RAM
->>>> size from a physical model, or use something different when virtualized.
->>> 
->>> The board revision code (reported to the guest via the emulated
->>> firmware interface) only supports reporting 256MB, 512MB,
->>> 1GB, 2GB, 4GB or 8GB:
->>> 
->>> https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes
->> 
->> I think it would be valid to report the revision code for the memory
->> size that doesn't exceed what QEMU has configured. eg if configured
->> with 6 GB, then report code for 4 GB.
->
-> We need to distinct between physical machines VS virtual ones.
->
-> Guests on virtual machines have some way to figure the virtual
-> hardware (ACPI tables, DeviceTree blob, fw-cfg, ...).
->
-> Guests for physical machines usually expect fixed hardware (not
-> considering devices on busses).
->
-> For the particular case of the Raspberry Pi machines, their
-> bootloader gets the board layout by reading the
-> RPI_FWREQ_GET_BOARD_REVISION constant value.
->
->
-> What would be the point of emulating a raspi machine with 6GB
-> if the FW is not going to consider besides 4GB?
-> Besides, someone modify a guest to work with 6GB, it won't work
-> on real HW.
+This is not how we typically handle "we have a bunch
+of different devboards in one family". What's wrong with the
+existing set of machine names?
 
-Usually the point of such non-standard configs would be running Linux via 
--kernel which could use whatever is configured if it has a way to detect 
-it or maybe for memory it could even be specified on the kernel command 
-line. But maybe this is not a common enough config to support so reporting 
-error for memory size that's not on the list of valid sizes might be 
-enough. This is similar to qemu-system-ppc -machine sam460ex which has a 
-memory controller register that can only describe existing DIMM sizes. 
-Originally I allowed users to specify whatever memory size and only warn 
-for sizes not matching a DIMM size because Linux only looks at the device 
-tree which QEMU can generate when booting with -kernel so it works but the 
-firmware detects RAM from the SPD data and can only support certain sizes 
-so only less RAM that could be convered with SPD data would be visible for 
-guests. But then others thought it's better to return error for such cases 
-and changed it and removed the support for arbitrary memory size so now it 
-returns error when non power of 2 memory size is specified.
+Can we implement "support more than just the fixed amount
+of RAM" by making '-m 2G' work, without changing the
+machine names at all, please?
 
-Regards,
-BALATON Zoltan
-
->>> For Arm embedded boards we mostly tend to "restrict the user
->>> to what you can actually do", except for older boards where
->>> we tended not to write any kind of sanity checking on CPU
->>> type, memory size, etc.
->> 
->> If we're going to strictly limit memory size that's accepted I wonder
->> how we could information users/mgmt apps about what's permitted ?
->> 
->> Expressing valid combinations of configs across different args gets
->> pretty complicated quickly :-(
->
-> I'll try to address Zoltan and Peter request to have a dynamic raspi
-> machine. It is a bit unfortunate we didn't insisted on that when we
-> decided to expose a fixed set of existing boards in order to not be
-> bothered by inconsistent bug reports, back in 2019.
->
-> Regards,
->
-> Phil.
->
->
---3866299591-441919731-1738624805=:61971--
+thanks
+-- PMM

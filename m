@@ -1,220 +1,113 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp251950njb;
-        Tue, 4 Feb 2025 06:37:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXIcLdytkzktofBWeZsgVvRoJBGcxiMT1KybWIBJk9D4zWLrQ+Fgsk89TRugfGhN+aXVJaEy//sXuqZ3A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFnrzquWXQ3HoojRkPRsSnQkXduwdELh5n+Y8wCV8kiBdR1nUFJeAxf6qMyrqH3AVCEAHJ4
-X-Received: by 2002:a05:622a:19a8:b0:467:50d0:8869 with SMTP id d75a77b69052e-46fd0a204b2mr402397551cf.18.1738679866176;
-        Tue, 04 Feb 2025 06:37:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738679866; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp266133njb;
+        Tue, 4 Feb 2025 07:01:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVw/lnINQQdQdmJD45GEZ2SKPnznoIRCNxjZsmjEH8NfCcBu0kz5jjxcoKrTwgIK05/Qsqyt3IcEAKllw==@linaro.org
+X-Received: by 2002:a05:6902:2490:b0:e58:118d:67e6 with SMTP id 3f1490d57ef6-e58a4cfd0c8mr18856067276.48.1738681309213;
+        Tue, 04 Feb 2025 07:01:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738681309; cv=none;
         d=google.com; s=arc-20240605;
-        b=iT17eK0jgVTqJlvOUc0YuvHL5xvXXsXqJb2MZ2JuonKYNIWWnM9rfgXCiHHt1H0SIW
-         i9i28Vg7TukRxFCEPVJ2brPCFMOEy6Sn9dR1IIBHTQnCsIFgcCyRjZvN5CDdtRDsJfsM
-         qLgiOb4sTgvDIkk4DXAjv9Pfi5wHj85VensnRjaHFjQva9qyolaGbwELkvZJgzTPvEK5
-         58qUhcj37xSBBS3F7i5/I8fMfgECTW8z95hxNCueAhainZjjnvejk+RzhkP0ib5mmUEo
-         siNwnhOIqJRXCyiKHeSVjqI0KCVSAgo1GPBRmKeXDZVCFeIkT6Y+GMAvpSGAOfu+I7QP
-         vylw==
+        b=H/L83xDQu2Rl+vfDPic+O7Tns6JYg5E832IIsm8eGda9JBflBx/jGJkACEmJ8eWRNF
+         KsCQowqjCfJ0iYaKI5IOqu5E55yJ3W8oG6G8cIbtwazOn2QrJS1ruDX6irn3MrweE9kI
+         Jwgs0llsJM8AZrTsO+WYzsKb79jyERqQNK+LspZ5Y3Q6cWcT0CX0UT6WTV3ozbjPfWEU
+         XZzwlaYUpjg1irB+GmJqpI8nMhpG7BgX1j+ov3o+hEGBuHxvzKyQT47S8zPLEbsYxaVp
+         vKoh6p4BAvxJw5l+zF4dqL2x5jSR4bSIrJ8nLIs2EVWctKV1hRUh4mxHU4DL+IXz5/mT
+         OBOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=xStaCCUZvvadRvtt4KgqZgtZxDLVmqWt85RHs9AVyn0=;
-        fh=AoYPdBjdZ/94IHwlZImTPyu2nJGh8nRstmzJEx4Lahw=;
-        b=N52u63wBtcteRuYoqniIs/LV3yXW7Mm3kGzn5h2v7DOaXImRrSahylPpAe2BQnXdic
-         ipXDE6+9iPIQT8CJByBwLdqqYmhhMXys5EeTnszXZYxBLn8w+/PHLGVFm3p6LsgREdJb
-         K/KZBj4XChzEAOigrPW33xzmcyKehMds9idKqocwcpJPFANqRG+6e0VQDPG/hRlpPbZ+
-         ps+MRv0m1ZsnZskitc1KTDRzIQna9QYkEMJqF8KmdT+exxdShx+HSrqTwggRDsFccFem
-         ocJtL1qW4D2YcPoA11Y/j7euRtLBBodg2ZF3+N2nDXnIo2n/OWgf8X87Z2IgTu0hSYu5
-         8hPg==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
+        fh=davU7tYB67e69bF/TevoU1TD/foksOuQyrhgqtSQe50=;
+        b=XFJhZ6RgnjvT38bf4x8vAVxZbLFpRplDQhioQeb1hD39w8zKdLl97j6oAUlkDuvtoN
+         8tEk1S4vnIBPkqhfTYVghpCZx2eC6y3pK6Ehtn87wkqLCvr6jilHT0soR4PYQE9UlQkm
+         IvvfUbIa1nnSSMXFQQRd2CakN0ewzoxaTC1xjelNEpKFi7OG0iEkYkABaGveN8G05Cp+
+         1NqMeQpne1dJiX1LiRR8x+UjaBzqjWQJ8JPeeVJEZKDKpU1vm9yTGJdFkxyauvvcm2en
+         Vi1ZUAvykaAyt9K5WeTmoeIVW4u1G0m/5Xbre3VAqF+eVSS5QbQRwI0ravYpth5lR9tg
+         I55w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z01XCcQ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bjPwxgkl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016bc5a4csi28270211cf.466.2025.02.04.06.37.46
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 3f1490d57ef6-e5acb2839a0sor6384751276.2.2025.02.04.07.01.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 06:37:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 04 Feb 2025 07:01:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z01XCcQ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bjPwxgkl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfK3M-0002Z1-AS; Tue, 04 Feb 2025 09:37:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfK3J-0002Y3-MF
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 09:37:25 -0500
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfK3H-0001p1-TN
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 09:37:25 -0500
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-6f6ca9a3425so38598347b3.2
- for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 06:37:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738679843; x=1739284643; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xStaCCUZvvadRvtt4KgqZgtZxDLVmqWt85RHs9AVyn0=;
- b=z01XCcQ11xhNfWLpefunV0JD2Z2B+Tunil1ag8XEOOd0n1yYbuYh10nCflT8E3xacm
- aMtCwbGAYEmD/jX5T6QQN1J9/0Zcl76gQ4xC6Xfj45RmD3OhdnIgxM70wO6knQQbh4TA
- cnKcDflKje/4RTilTn1WGSiRKqsOeTbQH7MX/UNxqQjFXgNCLGT3UIwEVtY5O8ndSYoo
- 4VRpGmo1GAZ+k+9SC2WM30YqmHT+KE1wb7ZfJMDZYLBl+GLIypq6ec07Dmfgl3zkQI+C
- 7OJRVnsRqZ9jgozrrUv5Ikq69eqT6/r1WUgi/VgxU82K2SpwReXppZsg2qkxbC0EvRqV
- qk7A==
+        d=linaro.org; s=google; t=1738681308; x=1739286108; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
+        b=bjPwxgklCZp3D15ZTJ3TgCM2duCvSkhRwEojcN4e/feEhAKXb2xgGhMJKnrnv7fZx4
+         5I1/UZuSk63ixITpMqKN/WyHTRqqpnrf4IKIwt5rnrC2U2j23ogHr/Leq7RakPowZX/H
+         6zS6kswoOCKRgG3w+MCzA68ps/LjuDghxRxvZIaTn7Xh88mdArbcmJJxYnwCiRZk6XOp
+         ayHPL7QebVHPTzNcKuVMI6KSX9zPHflwU0joHWY3BNwNarRfSUJmadg2mtvCLq7VFcGL
+         V453rqCLVVzWiJfh6su5SwbIN02M6VUuusD5KPgq167PCts5DsJs5h+7K3irvsP0kusU
+         pYsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738679843; x=1739284643;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=xStaCCUZvvadRvtt4KgqZgtZxDLVmqWt85RHs9AVyn0=;
- b=ZAh6VffPP6HkrG2inpp86mVsx7dqeG3zYDaejYYblY+zieQP7NfHszhvwAF29Fz+kk
- iYIpYtUo5G6Q5JKwjUp3m+l8beMBSessWL4t8euiIu7WfY5LhxgYtAZzJIwuAUsJhfOx
- unQ01qkfJL+cLop0egy5qJBSU2to2Ph4Bt/nKQCQbn0B/2aajqmp4PW+P13mEIbUgs25
- RIYOi8MoWNfVNkFNxhUt1fPoZ+aMwIqoPTJpUZs8TE+I0CO2WRhFMdO0qQs39SrTF7HR
- LN9j/oKARt4gSJZ5M/cVGu/1FQzm/g3A8l9bI2M3FHpPyf0AcUDgVuEoP+OaSl4liqD+
- X1mQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWPa1mJOJfjlqV2W37w0Fc4JTN144B8MSrIJxr3r2PeLeF7/2zF4ez6o3YbPCeT8mWvELP3HnAcoA==@nongnu.org
-X-Gm-Message-State: AOJu0YyVeovw+nDWpoqD4FMuAesqAsNzu0DI6IqhAroyl5B5d+gePTrD
- pqxTa1mZKgv/qQtRIpxbGh6VBgGafxaOaIp88eUyErrDl+Cp/zXEUh/erSrMqp99UhwoGDixmCa
- w+wiquAqJB4iNr7bCU/kFN1R5fkeOvuDk0PDKmQ==
-X-Gm-Gg: ASbGncuxwQWqgpDYUIFXVQGAnCTqWEVk5lHTFeW4sZ07UxZUda32RQZsAx3l+btHiq7
- pCQy3yDykdS+KR4Rn++6VosRYfx4neDpgBfVKfDPv/XOck9M2OnVDaSRb8dPv+WBloIqiU0YETg
- ==
-X-Received: by 2002:a05:690c:6d07:b0:6ef:7d1e:bffd with SMTP id
- 00721157ae682-6f7a8424acbmr220356367b3.37.1738679842769; Tue, 04 Feb 2025
- 06:37:22 -0800 (PST)
+        d=1e100.net; s=20230601; t=1738681308; x=1739286108;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
+        b=oTSxHrd+jDS1cTmKAhapUnLZbxE7orVAx0/1mFrOuY/Zv3w5nQpm3a2o6vKrd033RV
+         iK+GDS6uTDo+tSEcBS4OqQctGKERz0lomid57zIYBXzG99sjD8rG7uyi9ndDhZevUP43
+         r+em0sF/E0r0ATvR2fI6a6ve+QfWlV5rRIPidD4BugUtQSP9bkLEOyLqvdUzhcyzYLoE
+         /+x3SZpCBxArQHTv8nIxRgukgJo86VuzLPElTa64Gn3Cyr+MJs3T/sfVldruv5NkqmKp
+         1JNcUjfi2Yhs2uCLpsa/DnZ5ZpIgj7bXW5CXM/ne9znvVb0Tt6qwYCN3XR6UJwwDGS94
+         iL3A==
+X-Forwarded-Encrypted: i=1; AJvYcCVYPFs3nxMaqG04Mq2QcgxqxqkTKqMMC7MkIA8ED/lseKDs7OGd+KW9fgO4RXZiXBvDwwiEyIyPMZUvUA==@linaro.org
+X-Gm-Message-State: AOJu0YzUGbud5qNuNg/EnPrElZqjcm3oF+p/iyPR25crh/4u3x3vlCn7
+	H69u/5b6aHIu+JBw/Eg01+1W6CUVYSyCbsYgycYLzxR+R/50FpS1q+EuBL4CFuo+W262dcRl2m7
+	ShzH6eBIZlPV3ynacHzWemcS1LTWvLbKuCleTduXI
+X-Gm-Gg: ASbGncsyJcWbgnd04pnmJpgY2UQADEHNBRrdCIP5fjiOB9yKYG0G1T5qE+8E/wjzyf6
+	xU6JOjqg6OHpZTH0y8l4uvYktTKaD+juPUm5vJ2kwIMBJOqhJVFLDnyCOuTETojFzDnclrxPGXw
+	==
+X-Google-Smtp-Source: AGHT+IGqdRFVVlgvBC9VJmskRtI7WIvKmj7y5vYNXJS+YwDjaPEGEDaekuhEAzi17kMbX4ub1OfNDI3cJcnzBm/H7yQ=
+X-Received: by 2002:a05:6902:1549:b0:e57:f841:94b5 with SMTP id
+ 3f1490d57ef6-e58a4a9c45cmr19114402276.9.1738681299015; Tue, 04 Feb 2025
+ 07:01:39 -0800 (PST)
 MIME-Version: 1.0
-References: <20241219061658.805-1-andrew.yuan@jaguarmicro.com>
- <CAFEAcA96ZLjOhBT9rhNhuk32ve0Qv4hUVuTTtgE=DBApbN98Pg@mail.gmail.com>
- <CAJy5ezovedShKH=HFbK9uRY44no2ijQocs29CHLt2jKoNL+Vpw@mail.gmail.com>
-In-Reply-To: <CAJy5ezovedShKH=HFbK9uRY44no2ijQocs29CHLt2jKoNL+Vpw@mail.gmail.com>
+References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-2-philmd@linaro.org>
+In-Reply-To: <20250204002240.97830-2-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 14:37:11 +0000
-X-Gm-Features: AWEUYZmAzwjxcadMUURkTX997SIG-NIF8iCLXYs9UFr5Zjq8L2ymYEyJvDXIWxM
-Message-ID: <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/net: cadence_gem: feat: add logic for the
- DISABLE_MASK bit in type2_compare_x_word_1
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>, philmd@linaro.org,
- alistair@alistair23.me, 
- jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Tue, 4 Feb 2025 15:01:27 +0000
+X-Gm-Features: AWEUYZleavtlFLCYcqPwtasPxF3I4nOwiYTgSufdo5qM95M5JBXV4T0flBNl_U4
+Message-ID: <CAFEAcA9kabWXcfWBNBmp2o1MtXX3zZ8cqhKuSm54w6zghypwJg@mail.gmail.com>
+Subject: Re: [PATCH v2 01/12] hw/arm/raspi: Access SoC parent object using
+ BCM283X_BASE() macro
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>, 
+	Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>, Jared Mauch <jared+home@puck.nether.net>, 
+	Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	devel@lists.libvirt.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9Z3bvuHopFdx
+X-TUID: yHrJbE/XYDhF
 
-On Thu, 30 Jan 2025 at 22:31, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Mon, Jan 27, 2025 at 8:40=E2=80=AFAM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
->> On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan <andrew.yuan@jaguarmicro.com> =
-wrote:
->> > -            rx_cmp =3D rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
->> > -            mask =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VAL=
-UE);
->> > -            compare =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPA=
-RE_VALUE);
->> > +            disable_mask =3D
->> > +                FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1, DISABLE_MASK)=
-;
->> > +            if (disable_mask) {
->> > +                /*
->> > +                 * If disable_mask is set,
->> > +                 * mask_value is used as an additional 2 byte Compare=
- Value.
->> > +                 * To simple, set mask =3D 0xFFFFFFFF, if disable_mas=
-k is set.
->> > +                 */
->> > +                rx_cmp =3D ldl_le_p(rxbuf_ptr + offset);
->> > +                mask =3D 0xFFFFFFFF;
->> > +                compare =3D cr0;
->> > +            } else {
->> > +                rx_cmp =3D lduw_le_p(rxbuf_ptr + offset);
->>
->> Is the change in behaviour in the !disable_mask codepath here
->> intentional? Previously we use one byte from rxbuf_ptr[offset],
->> duplicated into both halves of rx_cmp; now we will load two
->> different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].
->>
->> If this is intended, we should say so in the commit message.
->>
+On Tue, 4 Feb 2025 at 00:22, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
 >
-> I agree that it should be mentioned (looks like a correct bugfix).
+> We shouldn't access a QOM parent object directly.
+> Use the appropriate type-cast macro.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/arm/raspi.c   | 2 +-
+>  hw/arm/raspi4b.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Thanks. I've expanded the commit message:
-
-    hw/net/cadence_gem:  Fix the mask/compare/disable-mask logic
-
-    Our current handling of the mask/compare logic in the Cadence
-    GEM ethernet device is wrong:
-     (1) we load the same byte twice from rx_buf when
-         creating the compare value
-     (2) we ignore the DISABLE_MASK flag
-
-    The "Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev:
-    R1p12 - Doc Rev: 1.3 User Guide" states that if the DISABLE_MASK bit
-    in type2_compare_x_word_1 is set, the mask_value field in
-    type2_compare_x_word_0 is used as an additional 2 byte Compare Value.
-
-    Correct these bugs:
-     * in the !disable_mask codepath, use lduw_le_p() so we
-       correctly load a 16-bit value for comparison
-     * in the disable_mask codepath, we load a full 4-byte value
-       from rx_buf for the comparison, set the compare value to
-       the whole of the cr0 register (i.e. the concatenation of
-       the mask and compare fields), and set mask to 0xffffffff
-       to force a 32-bit comparison
-
-and also tweaked the comment a bit:
-
-+                /*
-+                 * If disable_mask is set, mask_value is used as an
-+                 * additional 2 byte Compare Value; that is equivalent
-+                 * to using the whole cr0 register as the comparison value=
-.
-+                 * Load 32 bits of data from rx_buf, and set mask to
-+                 * all-ones so we compare all 32 bits.
-+                 */
-
-and applied this to target-arm.next.
-
-> Other than that this patch looks good to me!
-
-Can I call that a Reviewed-by (with the above changes)?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

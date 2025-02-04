@@ -1,146 +1,161 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp104925njb;
-        Tue, 4 Feb 2025 01:57:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUUhC15/ssMc15ob+L7crk+XLUVYXocYCnWRG1NHDhX27Qkhcc9AZ23jRnQNId2/hDynVx91HcQt4AW4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEJEaLmTydmaSiizA80LJm8H7B1/gW8uoQFysSYTyXFBWf+VwVe6yfB7tqmVfUMZkSK4oTf
-X-Received: by 2002:a05:620a:4556:b0:7b6:dac1:cb80 with SMTP id af79cd13be357-7bffcdb1e79mr3645478185a.58.1738663076540;
-        Tue, 04 Feb 2025 01:57:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738663076; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp105155njb;
+        Tue, 4 Feb 2025 01:58:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUKhYVZQdfMf3z1rL1EcBlKpqMIU7D77hGaP4CgZD3P3hA3E+kA4Y4JmY1zFg2LOAVtu+zTJnz7R9If/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEYm+zLGW9sKg4MopXw94wonuPzHwmK4hVEzsr/UkFxZ4E0hKAe8KA2eT+dG95hbAJLe4sV
+X-Received: by 2002:a05:600c:3b0e:b0:434:fbda:1f36 with SMTP id 5b1f17b1804b1-438dc40cab1mr200604135e9.20.1738663122426;
+        Tue, 04 Feb 2025 01:58:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738663122; cv=none;
         d=google.com; s=arc-20240605;
-        b=cYcfGdzL+6gftt8TY7XFf4XN2Wzy71LJ9LPKBDla4MJ7V74A+5xgLi9LG78xMqV3Go
-         1USmpsfHZa5dxSDa6ul90Wjg06fhawC/3rBpYj5A6w8ZV+iNdqBkLRnHnw5fbLbuZQo0
-         sdsjxrn4daKGfGCu+GTAFZ2o+sEqGDcVV5gg7L80bnYwcVKW8K4Ite0yvVYl8pQ4Rj0G
-         Is8I0Scf2yrd8PgLC0LewFYME7mdvsaGMVIR7Bcs6aUTJmZEQC0It7/SvBHGU7JlKuBO
-         8AKttwQYOxHFh3upRj6yBdPQxZKImZHT7i4qGT55LZmYGAmjVt8xWof+aWqjEvAdtXVz
-         9Ihw==
+        b=bgFBajUzz2h4x0Q5JEPiT5qQJukjma1Jtjg7dVIW5UTA6GrI1TyN3WGvkIl31yQHrf
+         tq9AEsoHzeN0JCjSAkJ8Eygpju3MrW86xjz/WHgxnqL33AstFT+FtWV7RLZ1/E5vSmxI
+         7xabH1wRRQhnI1Thwdh1YRP2rZAWeUvYW2HVfscMt3PXSg8RRVI0rxyjbYGoyvhpMg1a
+         6DQAwTPmhcTDPEd/bjuoDO/iaXklKsAZRp+A7l/Ful1ZJ+Xx1pcnFE1hztX6kGdp8a12
+         mxrol8o8QeSFgPuTIphGS2K7zplVg5x889SN+tQjmehMGnbFtiRFoezkYnnb6hnqjhjP
+         ObRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=6wOfD6wl8HRJmdVvw6Fl4fJc9lI2o+gjYGu99zpcPkQ=;
-        fh=lu773w75w/i7TjQdWbJVklPn2lP29lCMkAzFx2pRSiI=;
-        b=CIwF+Sd6k2mS4W/YTVYHyKP8QKOG5ltvC+h8iZGS2oqBo83o12v/DVXwhmZVI4KwMV
-         XGD1Zq2P/UNCwmiml47rb3BI8wfX79+W0zc+cRKLh8tBGnYqflE91ZMSOHmtNKWm7rW9
-         WuUgyC0XCvqSF80BT4A6UR12gKtEVW7Rms6JlZfxTNv6Fl8HSkxIVnT9S8a7vPMFnHuS
-         GFTV3DhR15uxNbNQKFXpiwqHLo1hJrH0kSqnVE8exb3ySaq+qdqYo83SpYHp9uwhYoby
-         jdxgKZDISUyxE63G+swhve6+enkkQZ0cyjSZ7TjgEiSWc2d5Kc2DJtQWEs+MIv4j68Wr
-         QP6Q==;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date;
+        bh=lTePR5umiTgLiqhcUi8BFmWFgDC0js/kpvSSOPYew+s=;
+        fh=EP158TUx0vA27RdGBygosBn6dysmMrs116aAZsmuFuc=;
+        b=WDx3wumz2Nwg+0xlZNrQBUpI+LYLTkxkFcTgdJIfge2n0yYoGM8cSJYSgcM3OYM9Xl
+         foilF37bKNokiRSyKiomIOi8OTOtTjurt+LADDobqzlJVzjZzE5J6o1nImuGRDQ8mkAs
+         qOxGYtmYmjb3iAe92XjRSoBxzWN21CIJD+LLtZl/MbxaYb/kLQv9V12m7pHkOaMFK1dh
+         w5phUI2BWywMELhMEHF6nPaxOL6VgVMo7DFdythf8RC0oTNS9OypYiULwqJCz9hvphTH
+         BFoMt+6lOT6ByLQgzXKAlDy/a85AGaiy+zVGpaYJn0QU3xfB1zoFc7u8AAApOysyTGVP
+         jiJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HNawE4Sz;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c02dc098efsi219159185a.609.2025.02.04.01.57.56
-        for <alex.bennee@linaro.org>
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <balaton@eik.bme.hu>
+Received: from zero.eik.bme.hu (zero.eik.bme.hu. [152.66.115.2])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38c5c20ddb9si7503587f8f.849.2025.02.04.01.58.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Feb 2025 01:57:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 04 Feb 2025 01:58:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) client-ip=152.66.115.2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HNawE4Sz;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738663076;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6wOfD6wl8HRJmdVvw6Fl4fJc9lI2o+gjYGu99zpcPkQ=;
-	b=HNawE4SzG0wj826dtfixGayWgPjaIwCVBCh3nFfdEZqHb+C57qKQ2xn2SMtibBvah6kya3
-	R8PJTxIdIeJvB9rlepQG2sCqKzLPyNyhAUCm2ATbboS5GfsxZpGnZsSAWO99KTlVTXNXZE
-	iFQfs+INiYQ7QRtwpDSjzgTS0ytYt7Y=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-286-7rxGVZBqP9Cr7qKpixcgwQ-1; Tue,
- 04 Feb 2025 04:57:53 -0500
-X-MC-Unique: 7rxGVZBqP9Cr7qKpixcgwQ-1
-X-Mimecast-MFC-AGG-ID: 7rxGVZBqP9Cr7qKpixcgwQ
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D4AAF195608A;
-	Tue,  4 Feb 2025 09:57:50 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.60])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5DAAC1956095;
-	Tue,  4 Feb 2025 09:57:44 +0000 (UTC)
-Date: Tue, 4 Feb 2025 09:57:40 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>,
-	Jared Mauch <jared+home@puck.nether.net>,
-	Fabiano Rosas <farosas@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	devel@lists.libvirt.org
-Subject: Re: [PATCH v2 11/12] hw/arm/raspi: Deprecate old raspiX machine names
-Message-ID: <Z6HklNsu0Mzgh7bC@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250204002240.97830-1-philmd@linaro.org>
- <20250204002240.97830-12-philmd@linaro.org>
- <CAFEAcA-3JJ1tZAXsik5hAonuSO9sCqDF1xqPQVhAeN-XwAAhDw@mail.gmail.com>
- <e32a54f2-ef46-4964-89d4-a8969b6d1b05@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id D33B44E601A;
+	Tue, 04 Feb 2025 10:58:41 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id fUcay_nW9171; Tue,  4 Feb 2025 10:58:39 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id EB5774E6013; Tue, 04 Feb 2025 10:58:39 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id E905674577C;
+	Tue, 04 Feb 2025 10:58:39 +0100 (CET)
+Date: Tue, 4 Feb 2025 10:58:39 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
+    =?ISO-8859-15?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Laurent Vivier <lvivier@redhat.com>, 
+    Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>, 
+    Jared Mauch <jared+home@puck.nether.net>, Fabiano Rosas <farosas@suse.de>, 
+    Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+    =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
+    devel@lists.libvirt.org
+Subject: Re: [PATCH v2 11/12] hw/arm/raspi: Deprecate old raspiX machine
+ names
 In-Reply-To: <e32a54f2-ef46-4964-89d4-a8969b6d1b05@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: SE6yNglk2x8e
+Message-ID: <1ec3cd49-7fe8-9c80-212d-68939580b8ce@eik.bme.hu>
+References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-12-philmd@linaro.org> <CAFEAcA-3JJ1tZAXsik5hAonuSO9sCqDF1xqPQVhAeN-XwAAhDw@mail.gmail.com> <e32a54f2-ef46-4964-89d4-a8969b6d1b05@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="3866299591-1784103270-1738663119=:54447"
+X-TUID: 5EvK8ZyHTi4E
 
-On Tue, Feb 04, 2025 at 10:51:04AM +0100, Philippe Mathieu-Daudé wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-1784103270-1738663119=:54447
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Tue, 4 Feb 2025, Philippe Mathieu-Daudé wrote:
 > On 4/2/25 10:22, Peter Maydell wrote:
-> > On Tue, 4 Feb 2025 at 00:23, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
-> > > 
-> > > All previous raspi machines can be created using the
-> > > generic machine. Deprecate the old names to maintain
-> > > a single one. Update the tests.
-> > > 
-> > > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > 
-> > > diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> > > index 4a3c302962a..c9a11a52f78 100644
-> > > --- a/docs/about/deprecated.rst
-> > > +++ b/docs/about/deprecated.rst
-> > > @@ -257,6 +257,19 @@ Big-Endian variants of MicroBlaze ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` ma
-> > >   Both ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` were added for little endian
-> > >   CPUs. Big endian support is not tested.
-> > > 
-> > > +ARM ``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b`` and ``raspi4b`` machines (since 10.0)
-> > > +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> > > +
-> > > +The Raspberry Pi machines have been unified under the generic ``raspi`` machine,
-> > > +which takes the model as argument.
-> > > +
-> > > +    - `raspi0`` is now an alias for ``raspi,model=Zero``
-> > > +    - `raspi1ap`` is now an alias for ``raspi,model=1A+``
-> > > +    - `raspi2b`` is now an alias for ``raspi,model=2B``
-> > > +    - `raspi3ap`` is now an alias for ``raspi,model=3A+``
-> > > +    - `raspi3b`` is now an alias for ``raspi,model=3B``
-> > > +    - `raspi4b`` is now an alias for ``raspi,model=4B``
-> > 
-> > This is not how we typically handle "we have a bunch
-> > of different devboards in one family". What's wrong with the
-> > existing set of machine names?
-> 
+>> On Tue, 4 Feb 2025 at 00:23, Philippe Mathieu-Daudé <philmd@linaro.org> 
+>> wrote:
+>>> 
+>>> All previous raspi machines can be created using the
+>>> generic machine. Deprecate the old names to maintain
+>>> a single one. Update the tests.
+>>> 
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> 
+>>> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+>>> index 4a3c302962a..c9a11a52f78 100644
+>>> --- a/docs/about/deprecated.rst
+>>> +++ b/docs/about/deprecated.rst
+>>> @@ -257,6 +257,19 @@ Big-Endian variants of MicroBlaze ``petalogix-ml605`` 
+>>> and ``xlnx-zynqmp-pmu`` ma
+>>>   Both ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` were added for little 
+>>> endian
+>>>   CPUs. Big endian support is not tested.
+>>> 
+>>> +ARM ``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b`` and 
+>>> ``raspi4b`` machines (since 10.0)
+>>> +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+>>> +
+>>> +The Raspberry Pi machines have been unified under the generic ``raspi`` 
+>>> machine,
+>>> +which takes the model as argument.
+>>> +
+>>> +    - `raspi0`` is now an alias for ``raspi,model=Zero``
+>>> +    - `raspi1ap`` is now an alias for ``raspi,model=1A+``
+>>> +    - `raspi2b`` is now an alias for ``raspi,model=2B``
+>>> +    - `raspi3ap`` is now an alias for ``raspi,model=3A+``
+>>> +    - `raspi3b`` is now an alias for ``raspi,model=3B``
+>>> +    - `raspi4b`` is now an alias for ``raspi,model=4B``
+>> 
+>> This is not how we typically handle "we have a bunch
+>> of different devboards in one family". What's wrong with the
+>> existing set of machine names?
+>
 > Zoltan and you don't want to add more machine names, then you
 > don't want a generic machine. This is very confusing.
 
-IMHO we can have distinct machines for each model, but
-*NOT* have further machines for each RAM size within a
-model.
+I said either rastpi4b,revision=1.4 or -machine raspi4b -memory 4g would 
+be better IMHO. Peter perefers -memory which is also fine with me. I just 
+don't think adding more machine names where only RAM size is different 
+would be better than using -memory for that as usual.
 
+Regards,
+BALATON Zoltan
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> See previous patch:
+>
+>  $ qemu-system-aarch64 -M raspi,model=help
+>  Available models (processor):
+>  - A          (BCM2835)
+>  - B          (BCM2835)
+>  - A+         (BCM2835)
+>  - B+         (BCM2835)
+>  - CM1        (BCM2835)
+>  - Zero       (BCM2835)
+>  - ZeroW      (BCM2835)
+>  - 2B         (BCM2836)
+>  - 3B         (BCM2837)
+>  - CM3        (BCM2837)
+>  - 3B+        (BCM2837)
+>  - 3A+        (BCM2837)
+>  - CM3+       (BCM2837)
+>  - 4B         (BCM2838)
+>
+> Can we or not add the other raspi models?
+>
+>> Can we implement "support more than just the fixed amount
+>> of RAM" by making '-m 2G' work, without changing the
+>> machine names at all, please?
+>
+> We surely can if we find developers motivated to do the work.
+>
+> Regards,
+>
+> Phil.
+>
+>
+--3866299591-1784103270-1738663119=:54447--

@@ -1,374 +1,300 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92861njb;
-        Tue, 4 Feb 2025 01:24:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXeykvo43qO5Lz4uy2MN/zAXVxRc3Go0OI4WC7Tf9REZgfx0sFpUM/CRqfyHtchQfOJdk93WRUeox753A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFAUFYcNPWxOwKc25fw5BrXmbyfD/ZGOEPfGqztbIHZhkaqHXwyquXz3vIuBcv85EHGcpe5
-X-Received: by 2002:ad4:551c:0:b0:6e4:2343:816e with SMTP id 6a1803df08f44-6e4234382e7mr17804516d6.39.1738661052638;
-        Tue, 04 Feb 2025 01:24:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738661052; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp94943njb;
+        Tue, 4 Feb 2025 01:30:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2MS7SFtT8LH7eKabsMkNVpiH6/KM9VV9h3d8r9mqYNAcPQ2D1xCENOoyaS+74vVHWAVhXDE5CSqleaw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG3hzSgwVgU0xxTWiKaGkaXq2OmgULuTGTb6pTWSdfVUryEPNjr7SNsuc7Itpb8rnoRqYt1
+X-Received: by 2002:a05:622a:59ca:b0:46c:870f:f621 with SMTP id d75a77b69052e-46fd0ace15amr348871791cf.26.1738661404371;
+        Tue, 04 Feb 2025 01:30:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738661404; cv=none;
         d=google.com; s=arc-20240605;
-        b=aO6Ppq+Y7jU51UP0dN5DCpIpubxVnXUOzLir2q1PDaJItYuQiNP4MmXOhz9npmsL9K
-         bFSK2IynfThNkVnBCoi0qd4sZkDro3ePDw0Sk7tcw2jmGX2b9066jwCw+XlV1Llp2VRo
-         o0IpyMX1Gadxx+j95uoKVBAE9TP7bxtPBQHz35K6wpRudlUtrruvGc7ronh2pzc947Sp
-         QpZLdTnDJXDMjc2yT7OGCDFlERn1MDwwll2vCAZsMxDydeyZ5n8vEu2Q/tyaoIo8lfRI
-         NQy+8jmdSClT0w9hf+YeTXm5mqF9Od6ASd8MtsRg0VrRn4KsqIx5L+zbKl0FKgWvAI45
-         n+xA==
+        b=NhGZi6K+7Z1Eo1HhOrqnx8ktRiWVPK/G1PGedhOVUgyvGbBGm/Mz9j1pLMEq/jh9zC
+         9YmScnORlBkRZbIvxwh6xBSYS+vpeDB2WGMhI5oBZw5xmIj0TmlGEWc9eROs0a5bWOz7
+         9Ak0y7+xv98+yWKhHGkTZFqFzrhMAbu/kCNHKcsjQHvxEHidkj87P74SdNgsWrtg0oJK
+         3WaOK49ZcJ4KzWW97hnI7GswDN89P7dMFN8/Nq0dh3+7iVKogNSlHTS+abRYLdJYfkwe
+         sJZBnqXJou75hRtcF6BotRqXNjS2nLohoPOq2q1Ldq0JlJxl5wryWPwq5FzVamGXFrCC
+         VpTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=j+hfKYX/95ZBX8pAGwzv4H1lSS0fZN3vLc/eDigEhw0=;
-        fh=Kuyt3dtR+uoraMTdnuxEUe9lEFUMaaCAnwsQuL7bdCc=;
-        b=Re7P8NL/s2N4fzshMSBxihTuSpoeKT8/GbA9t6AS7JmmhUQ3/SncErqywKoPMrti7W
-         fWw82ci49NJ0dFTchqOJTffhXpDo0Dm73wYhpxDb0wDp5A7Sp1AQlcx3NPKnXvS3kh5n
-         D9uHoGyTeHWoiREJrQfD5zutfIk9+jDwryHnCWVWT4+PpQ6BeqTDmyO8NrtTfmi73mhA
-         KRiXHh9B/aLXd/Q8nof6Ru7IWs2glAU6UXZk9KTSVeLa8uN3LQrMugc+vKwDbsiCs4RS
-         yooANQvCaerpAxROr2pwDo7eyCtt2y5CPx/nrOgfIeGr9NLcELHz3UcUbXhQOhkjxEnX
-         utTA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=/WNQ/IrbjuWiCdKikYL6xVm/blBxFNQgfzWcFy3vTXk=;
+        fh=Co2PZG7bDVtc1mzXllBlKzJ5mo7hx6cWUzYX9xls5fQ=;
+        b=aJKp1qvqZsn9nlBmM6g6iCR2YNF1sRpyODhFyxxBfeAbAa2u6xPimdWu/ljXQ19UH+
+         b/2W4o1lT1i/CLXhC0u8DMoHgHleRBw6EXv99DetB13xdgSQX+viAoc9tOORLy7WR/Pf
+         scWab5lA7LvkW+WyNJsASiYRPl1jecM9DbnW2ciZt8xySWIARWabCGvIakKfBdjYFIvS
+         zU4wiGwhllPIiEWoQeH9AJ7Hxc+AtoMCWRL0a0RlvOZCeCcpY+MvwRq3ddWzY8te0Srw
+         66RoiR2Qvmb3B1GcYOSnhvFTFqDEMuvtBTyL7U8saGx+xDVtLMKTWT3GwuU27X9bdzaq
+         itiQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VXhX1kxC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fdf9247si23179816d6.147.2025.02.04.01.24.12
+        by mx.google.com with ESMTPS id d75a77b69052e-47016ba3c93si23570111cf.367.2025.02.04.01.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 01:24:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2025 01:30:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VXhX1kxC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfF84-0005WY-1P; Tue, 04 Feb 2025 04:22:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tfFFi-0002aW-PC; Tue, 04 Feb 2025 04:29:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7k-0004zh-I6; Tue, 04 Feb 2025 04:21:40 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7i-00055b-GR; Tue, 04 Feb 2025 04:21:40 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-436ce2ab251so36532295e9.1; 
- Tue, 04 Feb 2025 01:21:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738660896; x=1739265696; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=j+hfKYX/95ZBX8pAGwzv4H1lSS0fZN3vLc/eDigEhw0=;
- b=VXhX1kxCBCwoVIRUWkm031F7q674S8b0v4y7ZWCP2fYMJP+dl03trR/g2DZXNYOaMX
- PpKxxNAEub0r1VVpFP0y8AmTiyYwg6U60gysVmFB9BAzNv7XD4kLg12egYgwK/AjR7Xi
- UXXXWJPn35hs0/A2RZkHXiegTcxocReppdoYHxL45D1dQZD+91TJa9q0zWBAvxe5k/bl
- gMV3gTDcEBnOv0tfkTfPgYYNJcP+35DrtQFFxFuaBU1MjQU0hj6/HH4MRf3v2yVZf3ou
- OHJiWNfQxm0tbMZYbQSigAHGjG+a1Id1aUyEE7NiDjuhf2fA90ty+HWWiZUo0bewMvOV
- FwGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738660896; x=1739265696;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=j+hfKYX/95ZBX8pAGwzv4H1lSS0fZN3vLc/eDigEhw0=;
- b=INMGxMNt3t1s1b828XX5yokPpEC+OTBY2yh75NjI4uO7zHqpUa+mP9hP/oidyW3gDC
- QDJO+YfNLMNSMkYh2ibQzD+O58r3xo1hqZ8oQYz7UoCgUJXJsTBJqYrRLCKlRwQetQb4
- pHhAwVuXAHtNzjetm+lpC1DU76dZGv/xjL8rkD3P6LRd0lgF8Mb5TZ2KCd3+yBb09SCM
- 13iXd3xb/GS0zOme2LV8FhX5frcgL8ueKEgyNFg04ff3ZaBy1W6QX9xhiu/5v2KX1Z+1
- c871y6mE8zFKHoDv6qFdx8NbmxycRv8rj3rHF9+A7FG+OOGki2TLeT7/1/JwgHvHry1Y
- EGVA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUqdQlHK6HtOTbxR0zJPGafrY8Sz7AU4CC9kl5ILD0q/sGSjk79QeqmXu9z+PdfAU/VaIrUD3uyTQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzM1hqE69hL/dWF5cX5QpuFUm2zxDsEErItfB9uM2MhbKR7GrV/
- 78t0+4gx4MVE0ExdlZeRcLzuURiQMYw/fO5t6zdzKgGZPejc5nvJvtwvLg==
-X-Gm-Gg: ASbGnctWMxJau1m/eCGvZYB3z2P3AI32BBcIMuGwx6mLTUy/sLSmShSXthWWmg0Wmzb
- jvdKVMDqRDMITLUqf9xQXLNa0yO5Pr9VhBtGHe9ZLH7kDrDpEGkb87fmJXuw7Zx42lD2qHnl8LR
- QbNoiHdRRUsK+Zvxg5HLEqnowmGomQi6wGqI13XlAuweS/w0vc+DYakKiSwX14ib2IqIk5TsGTt
- F5x3gi28ooJoNtuPYCX4PX4vua/1QtWgMgy0W3WZi9MZm2SmDyPOxYM5E1pGodqiOwW2/ulS6E6
- 0hH3ThFWo7vgO8+4OFWd6QtHbz8/U6BfoY7Z7G04GKAof6knbFD2zO9FjMa0WoO0LBlm0jBwrNp
- PlCHG4PDTJQ==
-X-Received: by 2002:a05:600c:1391:b0:431:60ec:7a96 with SMTP id
- 5b1f17b1804b1-438dc4223c4mr185174315e9.25.1738660895747; 
- Tue, 04 Feb 2025 01:21:35 -0800 (PST)
-Received: from Georg-PC.fritz.box
- (p200300faaf0043006a2cae69f03f1c85.dip0.t-ipconnect.de.
- [2003:fa:af00:4300:6a2c:ae69:f03f:1c85])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2025 01:21:34 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 13/18] hw/arm/fsl-imx8mp: Implement gneral purpose timers
-Date: Tue,  4 Feb 2025 10:21:07 +0100
-Message-ID: <20250204092112.26957-14-shentey@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250204092112.26957-1-shentey@gmail.com>
-References: <20250204092112.26957-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tfFFh-0002aD-FY; Tue, 04 Feb 2025 04:29:53 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tfFFe-0006j3-ES; Tue, 04 Feb 2025 04:29:53 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YnJ0v3Pbpz6L4tw;
+ Tue,  4 Feb 2025 17:27:11 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 3309414011B;
+ Tue,  4 Feb 2025 17:29:46 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 4 Feb
+ 2025 10:29:45 +0100
+Date: Tue, 4 Feb 2025 09:29:44 +0000
+To: Itaru Kitayama <itaru.kitayama@linux.dev>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>, <linux-cxl@vger.kernel.org>,
+ <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, Yuquan Wang
+ <wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>
+Subject: Re: [RFC PATCH v12 qemu 2/2] qtest/cxl: Add aarch64 virt test for CXL
+Message-ID: <20250204092944.00004d3c@huawei.com>
+In-Reply-To: <4AEA1355-C6E8-4A9D-8652-607FEBD7EE03@linux.dev>
+References: <20250203173040.145763-1-Jonathan.Cameron@huawei.com>
+ <20250203173040.145763-3-Jonathan.Cameron@huawei.com>
+ <4AEA1355-C6E8-4A9D-8652-607FEBD7EE03@linux.dev>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wMk5nJEvsxne
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BwxIm6VOI20X
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- docs/system/arm/imx8mp-evk.rst |  1 +
- include/hw/arm/fsl-imx8mp.h    | 11 +++++++
- include/hw/timer/imx_gpt.h     |  1 +
- hw/arm/fsl-imx8mp.c            | 53 ++++++++++++++++++++++++++++++++++
- hw/timer/imx_gpt.c             | 25 ++++++++++++++++
- hw/arm/Kconfig                 |  1 +
- 6 files changed, 92 insertions(+)
+On Tue, 4 Feb 2025 14:16:19 +0900
+Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
 
-diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
-index 15514055b5..9293cabb85 100644
---- a/docs/system/arm/imx8mp-evk.rst
-+++ b/docs/system/arm/imx8mp-evk.rst
-@@ -19,6 +19,7 @@ The ``imx8mp-evk`` machine implements the following devices:
-  * 6 I2C Controllers
-  * 3 SPI Controllers
-  * 3 Watchdogs
-+ * 6 General Purpose Timers
-  * Secure Non-Volatile Storage (SNVS) including an RTC
-  * Clock Tree
- 
-diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index dfbdc6ac7f..975887751b 100644
---- a/include/hw/arm/fsl-imx8mp.h
-+++ b/include/hw/arm/fsl-imx8mp.h
-@@ -17,10 +17,12 @@
- #include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx8mp_analog.h"
- #include "hw/misc/imx8mp_ccm.h"
-+#include "hw/or-irq.h"
- #include "hw/pci-host/designware.h"
- #include "hw/pci-host/fsl_imx8m_phy.h"
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/imx_spi.h"
-+#include "hw/timer/imx_gpt.h"
- #include "hw/watchdog/wdt_imx2.h"
- #include "qom/object.h"
- #include "qemu/units.h"
-@@ -35,6 +37,7 @@ enum FslImx8mpConfiguration {
-     FSL_IMX8MP_NUM_CPUS         = 4,
-     FSL_IMX8MP_NUM_ECSPIS       = 3,
-     FSL_IMX8MP_NUM_GPIOS        = 5,
-+    FSL_IMX8MP_NUM_GPTS         = 6,
-     FSL_IMX8MP_NUM_I2CS         = 6,
-     FSL_IMX8MP_NUM_IRQS         = 160,
-     FSL_IMX8MP_NUM_UARTS        = 4,
-@@ -47,6 +50,7 @@ struct FslImx8mpState {
- 
-     ARMCPU             cpu[FSL_IMX8MP_NUM_CPUS];
-     GICv3State         gic;
-+    IMXGPTState        gpt[FSL_IMX8MP_NUM_GPTS];
-     IMXGPIOState       gpio[FSL_IMX8MP_NUM_GPIOS];
-     IMX8MPCCMState     ccm;
-     IMX8MPAnalogState  analog;
-@@ -58,6 +62,7 @@ struct FslImx8mpState {
-     IMX2WdtState       wdt[FSL_IMX8MP_NUM_WDTS];
-     DesignwarePCIEHost pcie;
-     FslImx8mPciePhyState   pcie_phy;
-+    OrIRQState         gpt5_gpt6_irq;
- };
- 
- enum FslImx8mpMemoryRegions {
-@@ -224,6 +229,12 @@ enum FslImx8mpIrqs {
-     FSL_IMX8MP_I2C3_IRQ     = 37,
-     FSL_IMX8MP_I2C4_IRQ     = 38,
- 
-+    FSL_IMX8MP_GPT1_IRQ      = 55,
-+    FSL_IMX8MP_GPT2_IRQ      = 54,
-+    FSL_IMX8MP_GPT3_IRQ      = 53,
-+    FSL_IMX8MP_GPT4_IRQ      = 52,
-+    FSL_IMX8MP_GPT5_GPT6_IRQ = 51,
-+
-     FSL_IMX8MP_GPIO1_LOW_IRQ  = 64,
-     FSL_IMX8MP_GPIO1_HIGH_IRQ = 65,
-     FSL_IMX8MP_GPIO2_LOW_IRQ  = 66,
-diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-index 5a1230da35..5488f7e4df 100644
---- a/include/hw/timer/imx_gpt.h
-+++ b/include/hw/timer/imx_gpt.h
-@@ -80,6 +80,7 @@
- #define TYPE_IMX6_GPT "imx6.gpt"
- #define TYPE_IMX6UL_GPT "imx6ul.gpt"
- #define TYPE_IMX7_GPT "imx7.gpt"
-+#define TYPE_IMX8MP_GPT "imx8mp.gpt"
- 
- #define TYPE_IMX_GPT TYPE_IMX25_GPT
- 
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 6646f1c8b4..43395df628 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -211,6 +211,13 @@ static void fsl_imx8mp_init(Object *obj)
-         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
-     }
- 
-+    for (i = 0; i < FSL_IMX8MP_NUM_GPTS; i++) {
-+        snprintf(name, NAME_SIZE, "gpt%d", i + 1);
-+        object_initialize_child(obj, name, &s->gpt[i], TYPE_IMX8MP_GPT);
-+    }
-+    object_initialize_child(obj, "gpt5-gpt6-irq", &s->gpt5_gpt6_irq,
-+                            TYPE_OR_IRQ);
-+
-     for (i = 0; i < FSL_IMX8MP_NUM_I2CS; i++) {
-         snprintf(name, NAME_SIZE, "i2c%d", i + 1);
-         object_initialize_child(obj, name, &s->i2c[i], TYPE_IMX_I2C);
-@@ -379,6 +386,52 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(gicdev, serial_table[i].irq));
-     }
- 
-+    /* GPTs */
-+    object_property_set_int(OBJECT(&s->gpt5_gpt6_irq), "num-lines", 2,
-+                            &error_abort);
-+    if (!qdev_realize(DEVICE(&s->gpt5_gpt6_irq), NULL, errp)) {
-+        return;
-+    }
-+
-+    qdev_connect_gpio_out(DEVICE(&s->gpt5_gpt6_irq), 0,
-+                          qdev_get_gpio_in(gicdev, FSL_IMX8MP_GPT5_GPT6_IRQ));
-+
-+    for (i = 0; i < FSL_IMX8MP_NUM_GPTS; i++) {
-+        static const hwaddr gpt_addrs[FSL_IMX8MP_NUM_GPTS] = {
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT1].addr,
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT2].addr,
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT3].addr,
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT4].addr,
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT5].addr,
-+            fsl_imx8mp_memmap[FSL_IMX8MP_GPT6].addr,
-+        };
-+
-+        s->gpt[i].ccm = IMX_CCM(&s->ccm);
-+
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpt[i]), errp)) {
-+            return;
-+        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpt[i]), 0, gpt_addrs[i]);
-+
-+        if (i < FSL_IMX8MP_NUM_GPTS - 2) {
-+            static const unsigned int gpt_irqs[FSL_IMX8MP_NUM_GPTS - 2] = {
-+                FSL_IMX8MP_GPT1_IRQ,
-+                FSL_IMX8MP_GPT2_IRQ,
-+                FSL_IMX8MP_GPT3_IRQ,
-+                FSL_IMX8MP_GPT4_IRQ,
-+            };
-+
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpt[i]), 0,
-+                               qdev_get_gpio_in(gicdev, gpt_irqs[i]));
-+        } else {
-+            int irq = i - FSL_IMX8MP_NUM_GPTS + 2;
-+
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpt[i]), 0,
-+                               qdev_get_gpio_in(DEVICE(&s->gpt5_gpt6_irq), irq));
-+        }
-+    }
-+
-     /* I2Cs */
-     for (i = 0; i < FSL_IMX8MP_NUM_I2CS; i++) {
-         static const struct {
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 11eca9fa4d..200a89225b 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -126,6 +126,17 @@ static const IMXClk imx7_gpt_clocks[] = {
-     CLK_NONE,      /* 111 not defined */
- };
- 
-+static const IMXClk imx8mp_gpt_clocks[] = {
-+    CLK_NONE,      /* 000 No clock source */
-+    CLK_IPG,       /* 001 ipg_clk, 532MHz */
-+    CLK_IPG_HIGH,  /* 010 ipg_clk_highfreq */
-+    CLK_EXT,       /* 011 External clock */
-+    CLK_32k,       /* 100 ipg_clk_32k */
-+    CLK_HIGH,      /* 101 ipg_clk_16M */
-+    CLK_NONE,      /* 110 not defined */
-+    CLK_NONE,      /* 111 not defined */
-+};
-+
- /* Must be called from within ptimer_transaction_begin/commit block */
- static void imx_gpt_set_freq(IMXGPTState *s)
- {
-@@ -552,6 +563,13 @@ static void imx7_gpt_init(Object *obj)
-     s->clocks = imx7_gpt_clocks;
- }
- 
-+static void imx8mp_gpt_init(Object *obj)
-+{
-+    IMXGPTState *s = IMX_GPT(obj);
-+
-+    s->clocks = imx8mp_gpt_clocks;
-+}
-+
- static const TypeInfo imx25_gpt_info = {
-     .name = TYPE_IMX25_GPT,
-     .parent = TYPE_SYS_BUS_DEVICE,
-@@ -584,6 +602,12 @@ static const TypeInfo imx7_gpt_info = {
-     .instance_init = imx7_gpt_init,
- };
- 
-+static const TypeInfo imx8mp_gpt_info = {
-+    .name = TYPE_IMX8MP_GPT,
-+    .parent = TYPE_IMX25_GPT,
-+    .instance_init = imx8mp_gpt_init,
-+};
-+
- static void imx_gpt_register_types(void)
- {
-     type_register_static(&imx25_gpt_info);
-@@ -591,6 +615,7 @@ static void imx_gpt_register_types(void)
-     type_register_static(&imx6_gpt_info);
-     type_register_static(&imx6ul_gpt_info);
-     type_register_static(&imx7_gpt_info);
-+    type_register_static(&imx8mp_gpt_info);
- }
- 
- type_init(imx_gpt_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 71102ac0a9..f2859f6a88 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -586,6 +586,7 @@ config FSL_IMX8MP
-     select FSL_IMX8MP_CCM
-     select IMX
-     select IMX_I2C
-+    select OR_IRQ
-     select PCI_EXPRESS_DESIGNWARE
-     select PCI_EXPRESS_FSL_IMX8M_PHY
-     select SDHCI
--- 
-2.48.1
+> Jonathan,
+>=20
+> > On Feb 4, 2025, at 2:30, Jonathan Cameron <Jonathan.Cameron@huawei.com>=
+ wrote:
+> >=20
+> > Add a single complex case for aarch64 virt machine.
+> > Given existing much more comprehensive tests for x86 cover the
+> > common functionality, a single test should be enough to verify
+> > that the aarch64 part continue to work.
+> >=20
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > ---
+> > tests/qtest/cxl-test.c  | 59 ++++++++++++++++++++++++++++++++---------
+> > tests/qtest/meson.build |  1 +
+> > 2 files changed, 47 insertions(+), 13 deletions(-)
+> >=20
+> > diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+> > index a600331843..c7189d6222 100644
+> > --- a/tests/qtest/cxl-test.c
+> > +++ b/tests/qtest/cxl-test.c
+> > @@ -19,6 +19,12 @@
+> >     "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
+> >     "-M cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw=
+.0.size=3D4G "
+> >=20
+> > +#define QEMU_VIRT_2PXB_CMD \
+> > +    "-machine virt,cxl=3Don -cpu max " \
+> > +    "-device pxb-cxl,id=3Dcxl.0,bus=3Dpcie.0,bus_nr=3D52 " \
+> > +    "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
+> > +    "-M cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fm=
+w.0.size=3D4G "
+> > +
+> > #define QEMU_RP \
+> >     "-device cxl-rp,id=3Drp0,bus=3Dcxl.0,chassis=3D0,slot=3D0 "
+> >=20
+> > @@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
+> >     qtest_end();
+> >     rmdir(tmpfs);
+> > }
+> > +
+> > +static void cxl_virt_2pxb_4rp_4t3d(void)
+> > +{
+> > +    g_autoptr(GString) cmdline =3D g_string_new(NULL);
+> > +    char template[] =3D "/tmp/cxl-test-XXXXXX";
+> > +    const char *tmpfs;
+> > +
+> > +    tmpfs =3D mkdtemp(template);
+> > +
+> > +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
+> > +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
+> > +                    tmpfs, tmpfs);
+> > +
+> > +    qtest_start(cmdline->str);
+> > +    qtest_end();
+> > +    rmdir(tmpfs);
+> > +}
+> > #endif /* CONFIG_POSIX */
+> >=20
+> > int main(int argc, char **argv)
+> > {
+> > -    g_test_init(&argc, &argv, NULL);
+> > +    const char *arch =3D qtest_get_arch();
+> >=20
+> > -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> > -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> > -    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
+> > -    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window=
+);
+> > -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> > -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+> > +    g_test_init(&argc, &argv, NULL);
+> > +    if (strcmp(arch, "i386") =3D=3D 0 || strcmp(arch, "x86_64") =3D=3D=
+ 0) {
+> > +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> > +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> > +        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window=
+);
+> > +        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_wi=
+ndow);
+> > +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> > +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+> > #ifdef CONFIG_POSIX
+> > -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> > -    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
+> > -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> > -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_=
+lsa);
+> > -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> > -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4=
+rp_4t3d);
+> > +        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> > +        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persisten=
+t);
+> > +        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> > +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volat=
+ile_lsa);
+> > +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> > +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
+> > +                       cxl_2pxb_4rp_4t3d);
+> > #endif
+> > +    } else if (strcmp(arch, "aarch64") =3D=3D 0) {
+> > +#ifdef CONFIG_POSIX
+> > +        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
+> > +                       cxl_virt_2pxb_4rp_4t3d);
+> > +#endif
+> > +    }
+> > +
+> >     return g_test_run();
+> > }
+> > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> > index e60e92fe9d..f5e7fb060e 100644
+> > --- a/tests/qtest/meson.build
+> > +++ b/tests/qtest/meson.build
+> > @@ -257,6 +257,7 @@ qtests_aarch64 =3D \
+> >   (config_all_accel.has_key('CONFIG_TCG') and                          =
+                  \
+> >    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-tes=
+t'] : []) + \
+> >   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : =
+[]) + \
+> > +  qtests_cxl +                                                        =
+                          \
+> >   ['arm-cpu-features',
+> >    'numa-test',
+> >    'boot-serial-test',
+> > --=20
+> > 2.43.0
+> >  =20
+>=20
+> In Ubuntu 22.04 LTS, cxl-test applied on top of today=E2=80=99s QEMU upst=
+ream master branch cxl-test fails:
+>=20
+> $ ./tests/qtest/cxl-test
+> # random seed: R02S2a8b02df7b32b79d086ce22f7f8ebeab
+> 1..1
+> # Start of aarch64 tests
+> # Start of pci tests
+> # Start of cxl tests
+> # Start of virt tests
+> # starting QEMU: exec qemu-system-aarch64 -qtest unix:/tmp/qtest-568421.s=
+ock -qtest-log /dev/null -chardev socket,path=3D/tmp/qtest-568421.qmp,id=3D=
+char0 -mon chardev=3Dchar0,mode=3Dcontrol -display none -audio none -machin=
+e virt,cxl=3Don -cpu max -device pxb-cxl,id=3Dcxl.0,bus=3Dpcie.0,bus_nr=3D5=
+2 -device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 -M cxl-fmw.0.targets.=
+0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw.0.size=3D4G -device cxl-rp,id=
+=3Drp0,bus=3Dcxl.0,chassis=3D0,slot=3D0 -device cxl-rp,id=3Drp1,bus=3Dcxl.0=
+,chassis=3D0,slot=3D1 -device cxl-rp,id=3Drp2,bus=3Dcxl.1,chassis=3D0,slot=
+=3D2 -device cxl-rp,id=3Drp3,bus=3Dcxl.1,chassis=3D0,slot=3D3 -object memor=
+y-backend-file,id=3Dcxl-mem0,mem-path=3D/tmp/cxl-test-WdBn4X,size=3D256M -o=
+bject memory-backend-file,id=3Dlsa0,mem-path=3D/tmp/cxl-test-WdBn4X,size=3D=
+256M -device cxl-type3,bus=3Drp0,persistent-memdev=3Dcxl-mem0,lsa=3Dlsa0,id=
+=3Dpmem0 -object memory-backend-file,id=3Dcxl-mem1,mem-path=3D/tmp/cxl-test=
+-WdBn4X,size=3D256M -object memory-backend-file,id=3Dlsa1,mem-path=3D/tmp/c=
+xl-test-WdBn4X,size=3D256M -device cxl-type3,bus=3Drp1,persistent-memdev=3D=
+cxl-mem1,lsa=3Dlsa1,id=3Dpmem1 -object memory-backend-file,id=3Dcxl-mem2,me=
+m-path=3D/tmp/cxl-test-WdBn4X,size=3D256M -object memory-backend-file,id=3D=
+lsa2,mem-path=3D/tmp/cxl-test-WdBn4X,size=3D256M -device cxl-type3,bus=3Drp=
+2,persistent-memdev=3Dcxl-mem2,lsa=3Dlsa2,id=3Dpmem2 -object memory-backend=
+-file,id=3Dcxl-mem3,mem-path=3D/tmp/cxl-test-WdBn4X,size=3D256M -object mem=
+ory-backend-file,id=3Dlsa3,mem-path=3D/tmp/cxl-test-WdBn4X,size=3D256M -dev=
+ice cxl-type3,bus=3Drp3,persistent-memdev=3Dcxl-mem3,lsa=3Dlsa3,id=3Dpmem3 =
+ -accel qtest
+> qemu-system-aarch64: -audio: invalid option
+> socket_accept failed: Resource temporarily unavailable
+> **
+> ERROR:../tests/qtest/libqtest.c:550:qtest_connect: assertion failed: (s->=
+fd >=3D 0 && s->qmp_fd >=3D 0)
+> Bail out! ERROR:../tests/qtest/libqtest.c:550:qtest_connect: assertion fa=
+iled: (s->fd >=3D 0 && s->qmp_fd >=3D 0)
+> ../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU proces=
+s but encountered exit status 1 (expected 0)
+> Aborted (core dumped)
+>=20
+> Do I need set env vars when execute this test?
 
+I've just been running it with make check-qtest and not seeing anything sim=
+ilar.
+
+I'm not sure what infrastructure qtest puts round these but I guess it sets
+up that socket.
+
+Jonathan
+
+
+
+>=20
+> Itaru.

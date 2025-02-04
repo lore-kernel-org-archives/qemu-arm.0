@@ -1,145 +1,278 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp330238njb;
-        Tue, 4 Feb 2025 08:32:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUd46xPNCBXyF4lggrqTD4yLWoOYvqVl0nH8zwplL2Y8yQn1VEScCNCmULF7HIxyTYz7JvJ3E67lusYaA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMwy8bWFctNMvvAH1EAGxrVcQli2o0+HwLZ1yJyEX0mHxrJ01CESblMx/jmiBIC0si34G5
-X-Received: by 2002:a05:6102:3e15:b0:4b2:5d67:94c3 with SMTP id ada2fe7eead31-4b9a52345edmr20691611137.18.1738686735288;
-        Tue, 04 Feb 2025 08:32:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738686735; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp348772njb;
+        Tue, 4 Feb 2025 09:02:03 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVJ4akLWZGCmS9d00I0gJsrdBTDjpNMNk+88nJ3pUHZ0goFMxKK4Eaaj3MeEuxaePDIdTpwLfpiHJOh+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHSOvNo+N/uHe6eHS159kBbPB5TbT93iF8rRIKuSZmD9Lz0OOWoN86LZScdhIRdF2FJ0y1w
+X-Received: by 2002:a17:90b:288c:b0:2f4:432d:250d with SMTP id 98e67ed59e1d1-2f83ac17f80mr36836758a91.21.1738688522462;
+        Tue, 04 Feb 2025 09:02:02 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738688522; cv=pass;
         d=google.com; s=arc-20240605;
-        b=j/ziz32/Dh7SfBVLlvzqyY0kh5ovUjgFfIzYmUXOwQrIsQYkovQmixJkqA2vy8tALw
-         /T5Ex6vj71KOPXDywz6hdwmbPogYD4iUkguIXkTIgTim95UZRFR0EhuyIIR1w0qpbCAl
-         Hm1nXsHaeJrQU+dO2homsvTLBy8cYrWgHjReRJkbugBW0yTdd+XDlO70pB1aOV/Cv4TL
-         /Qile+EKtIBYqL7XH7DNUBxLJCILz90ktPvkEIRprfZyPggMrzDrwupacfOdbWdEw9XL
-         pbaB1Bxi28w20oVYwaF5xTooXIi1oOlz1+oCsza66tBC8Ss94uQ8DEUrDHWwBQPgma9J
-         onHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=weNFiOUeXuTkCzNy2Pj0WVjcsbJPxWOUwHhfVmugXdo=;
-        fh=bkCr8YGdZKa/VjP8PkZkMrIQTAu9pr3e90RwzsW5UvU=;
-        b=I+Sy175t15md5Wy6wO9K4yidv0gIpkt8orgg2WsYGGsVe761WraK4eU4cTin2fFCP6
-         GU5v6NJEe1D0W62qCxHUZZfBUmYqMx/paGbKVI75YjvXGSWw0H0Edgg87DikOEW/llox
-         xtuBpVnRbXgvMyQqIElx8VBpmGmeLtJXlJQQD81RPCg71CcnY+KHZWqsfWT75T9uZo7c
-         omAvDm3fn9uqOfx0TFiDcTJU5M77NGw/yuWrAfvfV1fB6p3ycmxiXVZqvuIrIfVvJlg4
-         WSksMOQK1uR1dr2Uf+I3lBcMxRDMTGsZJMODf1+JKRa70omSQe5pIkfQJZ18IeEpEHzz
-         2sLQ==;
+        b=E90pz+Zq25EUyGteh/LiciIokLl3Pt3THVlZSp3FK2habO0LXYzikJRBPRk7Sfq+fd
+         mEepyxbvW1QegaOVsotyd4huyvVeW3AqMvhbqzXKsk5JGmXls2se/sfObIik+aMR7Xyh
+         Qe317Xzhh+VFHeaMuIqJgWDT/va3bzWCogtm8H7Ty6b0zZLHbfk8Q9C9aclBuhels/4k
+         hqoIYBrJGwCo0gtXpeyy9qSNqRwkupzGuSwY/45ZXhVFogfd5aPylaPg8Yho9J2o6X+9
+         fv0xZa6Dkn0wtDfMhJTEqtYkLqA/MK680284IWHwErs2imf9UKcb5MZfqi0tAzOU40b5
+         Ye0Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=jmpuwmtNIyVuancbMXxzBE7rmXZl8E7krQ5h0kLqhxc=;
+        fh=pb2nofxcOvm7+XCzxG5DtHksa4ZDrN/r85KA3/+8fkY=;
+        b=fHe3TB4KfOb8ivCNVIbIX7JEhBaaBlj2efiFifXQXETR17uMOBKzY/iYTndXkFi2Mn
+         6dCL3lbpsU8oukcQ7OJ2lZni6eTeaW/OavKfrpmxA58L6uMYdAtdt5nOqxAL0Evj41Lz
+         BOYzoB7B+CIptJLFInUke0mK9h48RZFIDCwyFX9UVHszaVqYy/eQuIfk7Is+b/flNWzo
+         PnXpIFQa3A7e9AHDaIWJXwgY3yOk3cwx3C9Ue43k4o2ozSY1O+MT0HPItQJ0nLjgLLXn
+         oHwpz002e2PIH2inrc6NMBnN+RNQmousSL//4876W5re4TTLxyxmHbIYG0DU6Pvr6CDe
+         KB0w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MC5uU+2w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b9badb9a6asi2509698137.346.2025.02.04.08.32.15
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmxTTSbT;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2f84b74c7a1si15924157a91.95.2025.02.04.09.02.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 08:32:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Feb 2025 09:02:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MC5uU+2w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfLqQ-0007tF-3E; Tue, 04 Feb 2025 11:32:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfLpk-0007D5-7i
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 11:31:37 -0500
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfLph-0003bQ-7E
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 11:31:31 -0500
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-6f7440444efso39760857b3.2
- for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 08:31:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738686688; x=1739291488; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=weNFiOUeXuTkCzNy2Pj0WVjcsbJPxWOUwHhfVmugXdo=;
- b=MC5uU+2w4y5ufsunKyejsJx9K5ciFSmAEQ+3868s0w7kP+PHNSTha1FQWJpCCwMO9s
- 1CYCzZo4+xHDE58pHpbI2aSGF6bL0DtVDtx7wPjCPlcJNG9jLPRCFq//a9pnfmMP1imR
- GS/Jvq24VXgxVPp6HOQMq4EoJNicY5fRY+mLIX4INobodwG+YH8RaLjVqWSAmtd9LIgI
- EN2Mg3wnyjzSQzK5oUAN2PcnnhR/YCGMJgeV2cg2eR8oty/HoA7UbYtTGgfqObsHOZst
- 0NPXOHunVU/4VPXN45FwG9P14Xrb0op8J7+TFJdJvHx9vDIAXr43oQarKv1kUnUmX/yc
- PhTw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmxTTSbT;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37248-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id A356D3A75F5
+	for <alex.bennee@linaro.org>; Tue,  4 Feb 2025 17:01:54 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 793A81547E0;
+	Tue,  4 Feb 2025 17:01:58 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="NmxTTSbT"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 513D0175A5
+	for <kvm@vger.kernel.org>; Tue,  4 Feb 2025 17:01:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738688518; cv=none; b=SD1BFkMBnuDQcrqlPXV+qqzyFeEO3Y0MdyIAcaKZJB4TR2/+Ku4oWughJZN4brwpp7H+DUjjMVeVC/ZeDgriHAckbzI2QHT/8WEEY8HO3+h8kCMNjkadOa/gmoKF43SuXe2idxSKlng1dv1N5aJ0HRCVPxzZag9kC2c/DVC2f+I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738688518; c=relaxed/simple;
+	bh=uEmvTAlqty3Uxcb4pQ7abVmu+CxoETQTo6aCX4n10vw=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=MmwIVRoxlAWYH9FHFtpKn1agodXcUeBIP4MYJYSxi1ShL/fkQWm0mRJ6vpSyhjRZLwtqgI23DQhb80o2dHfLwway5lDPfgRjcCrR+9U9AW1m5AHve2ecSynIy0pm3MIOnHT/fKjUny4sMqmofWe2s6dYYdCtvrHlVaZ42cDY2jQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=NmxTTSbT; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1738688515;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jmpuwmtNIyVuancbMXxzBE7rmXZl8E7krQ5h0kLqhxc=;
+	b=NmxTTSbTljV7ht+iU2yRNGcYxIwhy5yaDaNgvSzssJUtV/fNuHIG06YhC9pi8ZXX2C/7+Z
+	sLRfT4xfiBq1pYEfA767aZbbHNsnZD7FWshyS8tGxpX89XXYQpgZFL/mvrCkNEIdfquiCu
+	bE3s/YJX9te+LX6tQUlnCz/lraDl7zs=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-463-W3b_zWI6NlyL1Su___lw7g-1; Tue, 04 Feb 2025 12:01:54 -0500
+X-MC-Unique: W3b_zWI6NlyL1Su___lw7g-1
+X-Mimecast-MFC-AGG-ID: W3b_zWI6NlyL1Su___lw7g
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-467bb8aad28so62119931cf.1
+        for <kvm@vger.kernel.org>; Tue, 04 Feb 2025 09:01:53 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738686688; x=1739291488;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=weNFiOUeXuTkCzNy2Pj0WVjcsbJPxWOUwHhfVmugXdo=;
- b=DEog7w0ZNpDkPrF6C2/aZc1VGNhp03+WGryC6V1H1bFCs9K36jtis/BO+JxYLjznMf
- bTC6o0OZUF19c/yG61mEbuBoOX5Qfk0Ba5orDK5FWTan8pQSXwhuUtYHcBL0rPSxM6Ut
- XO/CzZ65+6grWdvww1H/+uDJh+N1rqRbs0k9HCUNtc6NNT1juPdXFWMwlV08rp6HtNWy
- wOvIR0qjDJ8XxardTg8IJBM45rZ/vbxlZy67m6myB5WAiefqSdZfuVi/ooEptzFVbglR
- kEga69zcLeigWgGaFyT4TJJpI5Qegeka1WQJCpf9s0wOVgp6+Z68O59uw09C9KvXi8x1
- LB6A==
-X-Gm-Message-State: AOJu0Yy17DSwcMp0kmuWgx3NXhTwb7g9RJV7iDScX9zzH+yHhZMzYJhs
- WgImPFcvHaVcYqB4bV1aSh6IKnNWeDHklmHb4IKsn0E980YQMmecP6xc3spQwPqtP1CIlhZ6WDD
- +YyusUUSlwdk1gpPiAZw6mInf4ghS1gvaI8yZ/Tk9fshyFWrl
-X-Gm-Gg: ASbGnctfHFWCZGMMRVKcvQzjPNh7fhEUSpvcWAXC3Q1sIANKoSTbP/5r3Wa1m5nbmwC
- tRNDskBhbKqjGZXOvyz4sBOasuXrBo7mWNMFFO0FSH2M/h4IO/IZ6jscwaexSyQKJnfwAgSogNA
- ==
-X-Received: by 2002:a05:6902:1ac9:b0:e58:1112:c3e6 with SMTP id
- 3f1490d57ef6-e58a4a9c707mr21143927276.2.1738686687935; Tue, 04 Feb 2025
- 08:31:27 -0800 (PST)
+        d=1e100.net; s=20230601; t=1738688513; x=1739293313;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jmpuwmtNIyVuancbMXxzBE7rmXZl8E7krQ5h0kLqhxc=;
+        b=n1giVEkfN0qq9GlTB/4G6jh4oexXwH8Cf1OZO0rvSVrw2ZkrgpzdVulV9HYim712f9
+         5COOdl5mrgsztARW0PmXzh3Z16SkpD1slXnFoXT959bzI5+dHRCVj1eZ+6yiqx3Cnfd7
+         MxOSCQBrYYM6KXdkWlJhSBg05xM9nJccyHNPg/8F+afAohPhiQn+6mWzwKcvCtDpSkx8
+         cjmeQys/gFxR8I+Los2jTi/WM0vei5HPPpxwYBY+ky1jLM5N2YsTNXAFx6H/bVNk0L0H
+         jTEO+gdERjruWEOlQ0zsmbg4WncBz7eYvfqGlyFxYMH3Y+5/hcNWCCZibp2I+Th/+0il
+         TByA==
+X-Forwarded-Encrypted: i=1; AJvYcCUyFyOl0Sc9+XXzWWFWvd94IMhXKa+UsdWRmkulG1zV6lEmwcHsfkAF+SfoHG8HWUEXP+Q=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwoyRV34cGY94ST2fU3+1lGW5V+qjHIKwHRHL1P2zlFYtl54N2g
+	yPbP3gf4ChLwFr7nGXery23IjM64zoKm7E0IoAkoZmUA61s9QLC4Is+fax6YyEEyJPFWIYEaG4a
+	rRodetn8Wi+cSdUCkrxjQhidj/pkEorXTPtydvA3kZBtVWl4VQQ==
+X-Gm-Gg: ASbGncuoug2LtotuMrrrrEAdK3FXSbbPP8LzMAY3ZsLbf1NJ4uNT0begdKmOTrigRV9
+	UZrJnIOcuoytU19s5CsTrh6wPUbtP/GwSF4UmnTgl+VDDPx+SaSpqL6MPglu5jtG72EaYenBnub
+	XWmm99N7uRA2qjoh5T0zjIBl5kTXcYq9ashZWHJtDqhlFnXeuD9zjvyGU/SZQNZCL4nuQyvLwQn
+	nd8ytV2p+z/saCV7c3NNiIeCZRejdg0AfqGeDpU3LiumY3wkZmTFEEZaUoI27/3q9YeBGWJABrg
+	XuBUevbHExW0yoTyoaSU5VKRunAIcYC1c38t1hPmEfTEPgzZ
+X-Received: by 2002:ac8:5745:0:b0:467:75fa:8c8 with SMTP id d75a77b69052e-46fd0ad89femr403610821cf.31.1738688512396;
+        Tue, 04 Feb 2025 09:01:52 -0800 (PST)
+X-Received: by 2002:ac8:5745:0:b0:467:75fa:8c8 with SMTP id d75a77b69052e-46fd0ad89femr403606451cf.31.1738688511250;
+        Tue, 04 Feb 2025 09:01:51 -0800 (PST)
+Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com. [99.254.114.190])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46fdf172372sm60828601cf.60.2025.02.04.09.01.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Feb 2025 09:01:50 -0800 (PST)
+Date: Tue, 4 Feb 2025 12:01:48 -0500
+From: Peter Xu <peterx@redhat.com>
+To: =?utf-8?Q?=E2=80=9CWilliam?= Roche <william.roche@oracle.com>
+Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, pbonzini@redhat.com,
+	richard.henderson@linaro.org, philmd@linaro.org,
+	peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+	eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+	wangyanan55@huawei.com, zhao1.liu@intel.com,
+	joao.m.martins@oracle.com
+Subject: Re: [PATCH v7 3/6] accel/kvm: Report the loss of a large memory page
+Message-ID: <Z6JH_OyppIA7WFjk@x1.local>
+References: <20250201095726.3768796-1-william.roche@oracle.com>
+ <20250201095726.3768796-4-william.roche@oracle.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20241226082800.2887689-1-wuhaotsh@google.com>
- <20241226082800.2887689-4-wuhaotsh@google.com>
-In-Reply-To: <20241226082800.2887689-4-wuhaotsh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 16:31:16 +0000
-X-Gm-Features: AWEUYZnHcokF_MJBr8VGWEBW9XSBoMAJsmVJArX1QgEeKlBk1cXBPVIP09i_Q8g
-Message-ID: <CAFEAcA9h1P_Z8MX+c9yW1nvbZ1YofPJNoqXf9CoyP5jHVbL5JA@mail.gmail.com>
-Subject: Re: [PATCH v2 03/17] pc-bios: Add NPCM8XX vBootrom
-To: Hao Wu <wuhaotsh@google.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, titusr@google.com, hskinnemoen@google.com, 
- venture@google.com, pbonzini@redhat.com, jasowang@redhat.com, 
- alistair@alistair23.me
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eE+AkLFY5mU/
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250201095726.3768796-4-william.roche@oracle.com>
+X-TUID: 46HwwWQulT0g
 
-On Thu, 26 Dec 2024 at 08:28, Hao Wu <wuhaotsh@google.com> wrote:
->
-> The bootrom is a minimal bootrom used to load an NPCM8XX image.
-> The source code is located in the same repo as the NPCM7XX one:
-> github.com/google/vbootrom/tree/master/npcm8xx.
->
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+On Sat, Feb 01, 2025 at 09:57:23AM +0000, “William Roche wrote:
+> From: William Roche <william.roche@oracle.com>
+> 
+> In case of a large page impacted by a memory error, provide an
+> information about the impacted large page before the memory
+> error injection message.
+> 
+> This message would also appear on ras enabled ARM platforms, with
+> the introduction of an x86 similar error injection message.
+> 
+> In the case of a large page impacted, we now report:
+> Memory Error on large page from <backend>:<address>+<fd_offset> +<page_size>
+> 
+> The +<fd_offset> information is only provided with a file backend.
+> 
+> Signed-off-by: William Roche <william.roche@oracle.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This is still pretty kvm / arch relevant patch that needs some reviews.
 
-thanks
--- PMM
+I wonder do we really need this - we could fetch ramblock mapping
+(e.g. hwaddr -> HVA) via HMP "info ramblock", and also dmesg shows process
+ID + VA.  IIUC we have all below info already as long as we do some math
+based on above.  Would that work too?
+
+> ---
+>  accel/kvm/kvm-all.c       | 18 ++++++++++++++++++
+>  include/exec/cpu-common.h | 10 ++++++++++
+>  system/physmem.c          | 22 ++++++++++++++++++++++
+>  target/arm/kvm.c          |  3 +++
+>  4 files changed, 53 insertions(+)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index f89568bfa3..9a0d970ce1 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -1296,6 +1296,24 @@ static void kvm_unpoison_all(void *param)
+>  void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+>  {
+>      HWPoisonPage *page;
+> +    struct RAMBlockInfo rb_info;
+> +
+> +    if (qemu_ram_block_info_from_addr(ram_addr, &rb_info)) {
+> +        size_t ps = rb_info.page_size;
+> +
+> +        if (ps > TARGET_PAGE_SIZE) {
+> +            uint64_t offset = QEMU_ALIGN_DOWN(ram_addr - rb_info.offset, ps);
+> +
+> +            if (rb_info.fd >= 0) {
+> +                error_report("Memory Error on large page from %s:%" PRIx64
+> +                             "+%" PRIx64 " +%zx", rb_info.idstr, offset,
+> +                             rb_info.fd_offset, ps);
+> +            } else {
+> +                error_report("Memory Error on large page from %s:%" PRIx64
+> +                            " +%zx", rb_info.idstr, offset, ps);
+> +            }
+> +        }
+> +    }
+>  
+>      QLIST_FOREACH(page, &hwpoison_page_list, list) {
+>          if (page->ram_addr == ram_addr) {
+> diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+> index 3771b2130c..190bd4f34a 100644
+> --- a/include/exec/cpu-common.h
+> +++ b/include/exec/cpu-common.h
+> @@ -110,6 +110,16 @@ int qemu_ram_get_fd(RAMBlock *rb);
+>  size_t qemu_ram_pagesize(RAMBlock *block);
+>  size_t qemu_ram_pagesize_largest(void);
+>  
+> +struct RAMBlockInfo {
+> +    char idstr[256];
+> +    ram_addr_t offset;
+> +    int fd;
+> +    uint64_t fd_offset;
+> +    size_t page_size;
+> +};
+> +bool qemu_ram_block_info_from_addr(ram_addr_t ram_addr,
+> +                                   struct RAMBlockInfo *block);
+> +
+>  /**
+>   * cpu_address_space_init:
+>   * @cpu: CPU to add this address space to
+> diff --git a/system/physmem.c b/system/physmem.c
+> index e8ff930bc9..686f569270 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -1678,6 +1678,28 @@ size_t qemu_ram_pagesize_largest(void)
+>      return largest;
+>  }
+>  
+> +/* Copy RAMBlock information associated to the given ram_addr location */
+> +bool qemu_ram_block_info_from_addr(ram_addr_t ram_addr,
+> +                                   struct RAMBlockInfo *b_info)
+> +{
+> +    RAMBlock *rb;
+> +
+> +    assert(b_info);
+> +
+> +    RCU_READ_LOCK_GUARD();
+> +    rb =  qemu_get_ram_block(ram_addr);
+> +    if (!rb) {
+> +        return false;
+> +    }
+> +
+> +    pstrcat(b_info->idstr, sizeof(b_info->idstr), rb->idstr);
+> +    b_info->offset = rb->offset;
+> +    b_info->fd = rb->fd;
+> +    b_info->fd_offset = rb->fd_offset;
+> +    b_info->page_size = rb->page_size;
+> +    return true;
+> +}
+> +
+>  static int memory_try_enable_merging(void *addr, size_t len)
+>  {
+>      if (!machine_mem_merge(current_machine)) {
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index da30bdbb23..d9dedc6d74 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -2389,6 +2389,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>                  kvm_cpu_synchronize_state(c);
+>                  if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+>                      kvm_inject_arm_sea(c);
+> +                    error_report("Guest Memory Error at QEMU addr %p and "
+> +                        "GUEST addr 0x%" HWADDR_PRIx " of type %s injected",
+> +                        addr, paddr, "BUS_MCEERR_AR");
+>                  } else {
+>                      error_report("failed to record the error");
+>                      abort();
+> -- 
+> 2.43.5
+> 
+
+-- 
+Peter Xu
+

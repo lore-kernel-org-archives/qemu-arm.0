@@ -1,115 +1,116 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp297413njb;
-        Tue, 4 Feb 2025 07:45:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUK5zSVZIjA7vRcOniA+wRxdxMOY6UxgsM5ygwBXzYizA7nz/1O9QzYH9x8f6wT0BkB0d5HgrqcxLSbfw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMa8bAR04IizWFlCW3rkBcEYTZJHliCS+H5ZKS2muffZZ5HIY2+tu/1DJnJRnJM06LF9fs
-X-Received: by 2002:a05:6214:2468:b0:6d8:aa52:74a3 with SMTP id 6a1803df08f44-6e243c7320cmr412316986d6.28.1738683942267;
-        Tue, 04 Feb 2025 07:45:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738683942; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp299303njb;
+        Tue, 4 Feb 2025 07:49:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV4lpT9cc/2NhMcZQi8G9n8WJyVtQtBU6tHFrUlDXmmYrHp//u5xtChVDQaHKHJ83awvAcWmiiMMjelMQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlE30WjBvgL1bQx+wiIGGzmpnVFzxPl1kRXIHSspDdXWrx6Kkfi6Z1OsCBkpI9fSKabRaa
+X-Received: by 2002:a05:6214:2348:b0:6d8:871d:49f1 with SMTP id 6a1803df08f44-6e243cae62amr300296316d6.44.1738684141217;
+        Tue, 04 Feb 2025 07:49:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738684141; cv=none;
         d=google.com; s=arc-20240605;
-        b=fo4v7zncEHa9+L6CCBU8YYRB7tynYjLTWRCwT2h8vLTA5N81dwOUMUSaEqIG3GqLpi
-         gH0jmHvty8CkcqRAG+2tjMOv0Vps5z6ev7d6rNgFJ/7aKZ4PV0GnMXCs7UmTl9ucS4rp
-         Okl+pNxePGXId9eZJo9EUHXbxAQmcsiLYYGSZARnkq4LXlB/7qCUf1AZDgoF3sBO1zh8
-         w9cd03J712BiLHRasx4Z5Oyz5rYDbC8VIECXGyB62VHpeADuc5zU/lY4ILvApEIpmdVS
-         SQcslV13IVz2LAB2IAy01NbXY/bJZL2XNxlgn33H612W1dDHmx+gIGITxE5BWC6TKmE0
-         iBpA==
+        b=YJ+rNko+FpHmuC5Q6AUj6q14bw4XewaPoEisYiwB/Yw/nnkDBTvdvPmsLGZabsM0jd
+         WGD/uQUOyL5r1dnOPVCYtdhLxNiErXS/7IGZfCC30bqaSjv0DcvU2W8VS5bZ1Mr0cJXP
+         lvOqe/kSky7hbWeJyhBYVFpH3lF7apiSt5Eq1pjja/hGTYayMNIWahSXqjE2AeQSpQZX
+         zIJ1nVs/uNTk8ejgF2Jvoewo7mBqjU9EYu3Uk2szsyFMi+H3jNPbdsEzZAPMK9tGNCSO
+         f9l5u4B3e4uRQdFAkKfu9Ldb0UQzvBCtWhXnFLN0cc8XY3W1/4mpymXpMjxzq4nNP9eh
+         PHoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
-        fh=bnv0Ks5E+xTQoX9jLW9+dW1lhALEpf83+Bz0FnIq6lg=;
-        b=jwJwE9SzAYPSoRHLLsMJS/2W7TwGu+o/Vz/mWhB8VjW1LF8SclCXxah0tzWB7Wdh9C
-         ElD0ThHSgGovlkFYzAwQdcwTX+zIc+9Xypou+A4YiTAJxmZOmlh+WaiB7AaQp6xKlGqU
-         KljD8Cc6JbKdbhHpcqRNZhkUnjsTSZPiryq5ji5fIGAwZOYI1wnh2cQ6b+Baqrnz9/MN
-         ykE8KcKHb17DlycWdwqcKcwcfcJXBxdVv/Y/Tm2n5NiwELA8trh7rO+exQzXHZJ87y2g
-         5tSgIPp8HlPnMgS1TvcagAiul7JvOiP6OG7z63KqF7lZMLFu2bMs3E2INnVDluymrYyk
-         6bHw==;
+        bh=paLWb1IWEozX8sqBe9vdeY/DC9v4P6ORAyKEeUZsFtk=;
+        fh=6MSrhwGuBIRP767zEkpauTlmudH6ahEBakcUmWbe5lQ=;
+        b=C3ty//gbEzNiwVk70NR7/yfTm3FDVlrfSCaNe7fDXU6EYdArLoI8nAZhvpb01wp+g1
+         8iUpZGLJuRgBAmJ5MFEmsr74vPzp9JE9iuWqb8gbULzvKM1Vpg6hGq27zxGS8oLqMbc3
+         lnyiHSwh+M5lGbgxVsmo+6tA8lM7NWrfixnJEdsMULNd10hvjRlSbf+RqSCHTDzW7vSF
+         5UHTz46JuBZxmx7LKhzvZZLPAlCTWXhQY1zWRVXYAbx+2Y1gVTCNQQzwxnM8KXn9+9d3
+         uoUpQEVV7Qu/21qUg+rhAuJfZnMNBIrxCw/UM+O4cd0NnOmHEIPp9xnKwbroVLSbmzpa
+         EBJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vuWzeW4L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dF15KTb1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fed727asi30657036d6.378.2025.02.04.07.45.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e428967593si12189136d6.92.2025.02.04.07.49.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 07:45:42 -0800 (PST)
+        Tue, 04 Feb 2025 07:49:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vuWzeW4L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dF15KTb1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfL7E-0003E0-RA; Tue, 04 Feb 2025 10:45:32 -0500
+	id 1tfLAQ-0004xk-CF; Tue, 04 Feb 2025 10:48:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfL7A-0003D6-L2
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:45:28 -0500
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+ id 1tfLAP-0004wk-26
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:48:49 -0500
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfL77-00080h-CJ
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:45:27 -0500
-Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-e3978c00a5aso5147771276.1
- for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 07:45:24 -0800 (PST)
+ id 1tfLAN-0008Aw-J8
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:48:48 -0500
+Received: by mail-yb1-xb2e.google.com with SMTP id
+ 3f1490d57ef6-e4419a47887so4989612276.0
+ for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 07:48:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738683924; x=1739288724; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738684126; x=1739288926; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
- b=vuWzeW4LG7+2SsLLbg49H1n/2q308pWe8X2seCoyJYHy41aiqOTWiy5vw6OoN2T87M
- 9v9KValgYLnJK1Mh2nuHw8EjfEyYHphWjft8bbl1E56vuMoYoaVxUlAct4KDbE6Au/WQ
- MQIh1rWhGJ60d+7dC2aVOWh84C2Ljm3uwo+M6XxPMzcCjqQbX4DDowXGt1D/yldNOmAw
- EJlt/PxejKqURS/aZ9lVdmJuxqvhbXDOHI/XYJVweAZ8Wv2L5IjDfja8Y/+F5oj7afXO
- aX8OHfg9q5MuwlQ0SWHayerkz7W9+BHAIDkeUAtdPZqftEqTXWbuFSz4wRT+D6D885wA
- glHQ==
+ bh=paLWb1IWEozX8sqBe9vdeY/DC9v4P6ORAyKEeUZsFtk=;
+ b=dF15KTb1L5lwA4wkAvXn7h8E5dZ6o7WP/C2i275cfqUVlyxXOL8L1x0Xev3pevG5a6
+ W5QyC5R3GLSNeSQgMJMolibV4l3VRrJ9BixwcM3ERMPlOXMM7KjsVFaEYhGdC59GMs5h
+ gr55ZVz+3ABfuLhw18aLmIdSmXKvB17/MqgYZ4YKG4eab4wPZINpHYFvbHX1bM7Xv1n1
+ cbJSj2jQI3aR2yT6Bi3vLX8130NRSK3I/QvUJB0GiaZFmj32aVYJQlLyGo2uuc634Sz0
+ OJjpNbW4lzhLS1xMr2QOt19ta59GYNiXtzgijUvSAZp4QjejHkVrsHJ8vtzzuCJ/cuPQ
+ QyAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738683924; x=1739288724;
+ d=1e100.net; s=20230601; t=1738684126; x=1739288926;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
- b=KOTB7r4JfbVwnlmttXUQGmU89ZJUo1x2FTYNWUTUTa2Ooiaq3Sa9bQ7VhW+6yQZehG
- 50OxIhrEwLkk2pU+o3N/tEW21SLXFb8l+vtZV+TRMKtEUn/TcJkBsyoWfU9itulQhAGm
- WtXBzuxd+KKpISZ33JwM9rLf9URtOY5S3Q5gflPQBsN01hGC47p9Usd8BvEjW7Eutjob
- dZPH+Gafuy3G3Jpr+4puX4SOyn2FKzU4smB3O4ueCpzOhSH570O1p2IL7kB1lQomq/VD
- H9JqSdPDPneMI6/hmP0ShAVyll2pmOEAkavISZFH7npDd6bFdb13X0sbLKyMKU0RI0DH
- q8nA==
+ bh=paLWb1IWEozX8sqBe9vdeY/DC9v4P6ORAyKEeUZsFtk=;
+ b=ggHA+LJYVZjm/OM4/lz5l4doRPXEr9DKDSHVtxiL5R5lE2dajs7x9+G3+R5OZKiA0L
+ BQhPH9Mf4goPzPq2WdEY4arcQzfXt1IvtHDRqLyDllDqgKAthOZ5ThDLHDrmQ3AVulSY
+ mvAyeQWCr/7c2ZMKfGCX9Cdjn9GokDLfcfGL0nMxwajtlTYOevw1f6EnaqekzOfbgHgJ
+ +CWwm85EP8us7j46nh9OB5PFilgTzdEF8FB6OSWE16L4LFjU7rCdBfv9l3uHb1YU7Nox
+ ujTGHOOx500YVnUfOjPi4XCRqAlMYHAVHYjEtDtZHxdVx/2MK6y1KAq72aRm7x/CggYi
+ fm1g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVLcq3HRHjZzv0FKPzLcmSV1ZbIYm4PRjA1CdYt+OaW9t4pcBm6dmuX10OgDRm8kEPiB4NGJUtnuNUv@nongnu.org
-X-Gm-Message-State: AOJu0Yz4qf/w2/DkizVznScL/wQuNqXVSe2XsS+0wB7wInyDL2z/ESJ3
- r89ZnmMFtzZS7H7YRHf4zs2VJwUcJLILxPzewkfzA+F6jVqog2d/lf7IjUIUjCXQaXjsYkV5zul
- s99YDP672n8H4VIKIjte2E2BXEC+VG0pZvqZAZg==
-X-Gm-Gg: ASbGncvgtUCUkXA08t7t4lz5UXQ/tCxzyxuc73FpMJDA9XaPdV14hbk+vgbJ2JN7Jxq
- FJMKr8g4i7zVMwfbi/DwNYoElMusEHg1+uYvVCibHKYDZ5dcIF96eqtpHbvPvQCLFZRVAiUQDXQ
+ AJvYcCUp5623P62LSGGu79/8rVwLNvZzO5dcOWPqU3DLIZyvQ3QtLRPmmlLGEYfUvyDhPazevvt/d0VF+my0@nongnu.org
+X-Gm-Message-State: AOJu0YzSTuA1QWJ5+6bPb3oTNRC3J2CMqrcjuXtpxfGXtTvr4pO9+y5J
+ cU089b3b00HL4N20Yz9yv2QLqWAqnJU26jXzC8CQsChB1wM/N1yJBn9Bf6zinsKDqXWHMPb1g+B
+ RVDOk0M6jH0ffgZUFLpSB4Ku+moEn4cz9di6zHg==
+X-Gm-Gg: ASbGncvEcx4c168NXcTgQ5P8fFCQfyjDTOSHb0nz+LCx3cRQyLTr3YJVmxsoVV/zYFv
+ JNRfKKZgFkMS7UPt8pvbni3KaS30a6tmjEo9zubDHqclKwMmi4/RSwt+1gKhx59Hl2Ye6bI91+Q
  ==
-X-Received: by 2002:a05:6902:1441:b0:e57:44de:aba9 with SMTP id
- 3f1490d57ef6-e58a4ad04d7mr19179352276.17.1738683924054; Tue, 04 Feb 2025
- 07:45:24 -0800 (PST)
+X-Received: by 2002:a05:6902:102a:b0:e57:caaa:fe60 with SMTP id
+ 3f1490d57ef6-e58a4bcb243mr19270540276.30.1738684126247; Tue, 04 Feb 2025
+ 07:48:46 -0800 (PST)
 MIME-Version: 1.0
 References: <20241226082800.2887689-1-wuhaotsh@google.com>
- <20241226082800.2887689-7-wuhaotsh@google.com>
-In-Reply-To: <20241226082800.2887689-7-wuhaotsh@google.com>
+ <20241226082800.2887689-8-wuhaotsh@google.com>
+In-Reply-To: <20241226082800.2887689-8-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 15:45:12 +0000
-X-Gm-Features: AWEUYZmvFU_mO1MS_kHd0dpUC_PlM8W5v_Z0BarWMj3tWZ_nYqjmKdacAffAlLw
-Message-ID: <CAFEAcA-qth7X0Ypt-PjxMBmxReGWkfbLBwhFn6WdEpebn1uHRg@mail.gmail.com>
-Subject: Re: [PATCH v2 06/17] hw/misc: Move NPCM7XX GCR to NPCM GCR
+Date: Tue, 4 Feb 2025 15:48:35 +0000
+X-Gm-Features: AWEUYZkPWAGKft-HLXzTtHHdtAZVdCyvY_93435NkCAswGey_L4gLpW3OUfbTHs
+Message-ID: <CAFEAcA82ZPPPBFxJ1QzmnVPs96U5uTYQrdkkw3db=R7gQD_FcQ@mail.gmail.com>
+Subject: Re: [PATCH v2 07/17] hw/misc: Add nr_regs and cold_reset_values to
+ NPCM GCR
 To: Hao Wu <wuhaotsh@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, titusr@google.com, hskinnemoen@google.com, 
  venture@google.com, pbonzini@redhat.com, jasowang@redhat.com, 
  alistair@alistair23.me
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,17 +132,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8u6+GOb2HMye
+X-TUID: eY+CLq1GV3kH
 
 On Thu, 26 Dec 2024 at 08:28, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> A lot of NPCM7XX and NPCM8XX GCR modules share the same code,
-> this commit moves the NPCM7XX GCR to NPCM GCR for these
-> properties.
+> These 2 values are different between NPCM7XX and NPCM8XX
+> GCRs. So we add them to the class and assign different values
+> to them.
 >
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
 > ---
+>  hw/misc/npcm_gcr.c         | 24 +++++++++++++++---------
+>  include/hw/misc/npcm_gcr.h | 13 +++++++++++--
+>  2 files changed, 26 insertions(+), 11 deletions(-)
+>
 
+
+
+> @@ -156,10 +158,10 @@ static const struct MemoryRegionOps npcm_gcr_ops = {
+>  static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
+>  {
+>      NPCMGCRState *s = NPCM_GCR(obj);
+> +    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(obj);
+>
+> -    QEMU_BUILD_BUG_ON(sizeof(s->regs) != sizeof(cold_reset_values));
+> -
+> -    memcpy(s->regs, cold_reset_values, sizeof(s->regs));
+> +    memcpy(s->regs, c->cold_reset_values, c->nr_regs * sizeof(uint32_t));
+
+Previously we had a compile-time assert that we were copying
+the right amount of data. Making this a class-specific
+thing means we can't assert at compile time any more, but
+I think it's still worth a runtime assert that we aren't
+copying more data than will fit into s->regs.
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

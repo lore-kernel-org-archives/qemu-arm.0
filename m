@@ -1,216 +1,164 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp236822njb;
-        Tue, 4 Feb 2025 06:14:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVrYZOppHS3OH/5DRynJwCytt6IJRrj3WieNCz2Y0zPQCkAD/ghnS48HrNeSMkzQaRD/FKg5jOtRRrUDA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEP7TFX+OSJXC03DSZT0qzKW8VW1035r61uZ1brytXCpobKQSYE9GV23oilBBPAz2Xgvmo7
-X-Received: by 2002:ad4:4eeb:0:b0:6d8:af66:6344 with SMTP id 6a1803df08f44-6e243befc16mr404627576d6.2.1738678466201;
-        Tue, 04 Feb 2025 06:14:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738678466; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp263939njb;
+        Tue, 4 Feb 2025 06:59:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWvjB/G2GlZBKmyCuwH9c3q22L87loElW4VTEo9S7QtbuAiZcc5ketG97PJ29cVry2xerXSpoaeKZyang==@linaro.org
+X-Received: by 2002:a05:600c:470c:b0:434:fddf:5bfa with SMTP id 5b1f17b1804b1-438dc3bb395mr229596795e9.2.1738681166560;
+        Tue, 04 Feb 2025 06:59:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738681166; cv=none;
         d=google.com; s=arc-20240605;
-        b=aT5Cx+9WFV4RrSbfgKFhk8Mj5ScisnMPxAlD4s89cLl9ECC2zNhz0wD0Xvo+r9XCGT
-         t9m93IBo1jiDJ80Bk1BU7jd6OnEZAkt//4+CxvI1FxHxYbzG78oNt5Fi9E8iZUyjyep7
-         twE/x7TmG3c4+DJTk/RFJbat1916BdKlkynKr3VejtTKu5JdxiHZsqy21SSxUEI0thHk
-         tcCSsVONa8Ga9hfjvgqkYX8NCaATC8EaV1WcKIyO75NnqAvzWQ0qXFS6mc2FlQUoNYlB
-         p5Aa3IHxNmAjxGhpLEjHzMSle6QBp2P1I/ceJRMFqU9JF2JSpZURwJfwAQrNsGLpl52q
-         X8uA==
+        b=eEiC3eRXCPh5zpY0j08SKXhKbIpigBLO52y53osjIzgNwrZ45n5egRV10YPxjI7wyn
+         tY7vtnE7VoGC9EPMtna863mCg78q/kOPWWfao4pl5ijUuYVnClWJ0BMnpD1pJz4u70wW
+         KKhogKJHH4FTULhYTc/i1NBj5cuVJhCKHyqNgC/Ar54igVTO/u5TWrBjBGXtgahfppFS
+         2L7s/4za1PgYg3ucbqa2pt7wu0H8gRkGZi5yiWysIbn06eIONTNAC+ERVMgj22Sth3JN
+         gfBwlsg2AiBbEPMGPjM6u1huh7cOezSclQ5Rj3Q4C5CbEAuXhdHmMJMtBb2F3f/ol0kU
+         pTBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Nlu5T2bogCzgYYiWWaNBgtj4Bx6LB5+nciCf3px8pb0=;
-        fh=J+MSWPZxbDEOau4dlWoFtS/7KrBkAfQvnrUl5fep0rM=;
-        b=akpcywYR7g0kowz+KdFZYZRwxlBkuoEvoF7fGarW0appqjtL+TMccTLO13n/GNeaat
-         PFt439/prOl2hBqeaQAg25bUGlmrtjjTYTXj+BJCCXo11qzsNQBnDKd3i2u8UvErP8j1
-         Yj9WF5FOsisX3lS1L9uQo0EQ5TMSetUPsjz5/d5myETzWRGiPbUeksVHL6+9wtSv+4IW
-         //oJ2zUP8EvLdgMOREcUlT+X45mt70QdI33yL/uSLf9QZ9r1TJ8M0QosyJmzVeejXM7Y
-         uz/quxjsyBUmfunJMGTlaRIwhML1Q7DtR5vYRX36yNN68v7r/AViAUtIbOe1TaMLX1hg
-         cEew==;
+        bh=G8anBbyMT55oA4TitLuKWWu2XDaUG1CFB4kIBNGpbGw=;
+        fh=bJmYBDpCtFLoMmD3mAOPCDx7TdI3oN6agDdJH8hypy0=;
+        b=S+bS9oQwPKxpcqArvIF2iBUevd/qu7ghgJN701vF2tIPRA0qVuXUMfvj+J5yOECcTZ
+         L+X3xtrSQ4b2bRucKsSPtVzL58a9CP9cl5ii4zahVK8cN0Qe+sU2vtEBSUVkiwC5JtTv
+         WwcVlWhCX/Sk9m2lLTOhXuFO5Z8cP5xi4556rDmaAq7ZbMCcxLf6W+8TefhmPzXMUb/F
+         Vn0bwuL5BbOODFFqi7pGNVX3AwOL50j973seYnDcX2bPDFh9FQBXpK+GAPL64M/adL4s
+         G+PldPAYtrorufX115ybGlzUrnmndZBrGS82208zJWOD0ucTiv+kloEm/QD++dsHaDCY
+         VtTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kDJG6qIl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OsmlbRVs;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e42644f0b5si13679176d6.136.2025.02.04.06.14.26
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438e23eaecfsor51258755e9.5.2025.02.04.06.59.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 06:14:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 04 Feb 2025 06:59:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kDJG6qIl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OsmlbRVs;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfJgy-0002OE-QQ; Tue, 04 Feb 2025 09:14:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfJgN-0002GG-3a
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 09:13:45 -0500
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfJgL-00031S-1J
- for qemu-arm@nongnu.org; Tue, 04 Feb 2025 09:13:42 -0500
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e46c6547266so4934173276.3
- for <qemu-arm@nongnu.org>; Tue, 04 Feb 2025 06:13:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738678419; x=1739283219; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Nlu5T2bogCzgYYiWWaNBgtj4Bx6LB5+nciCf3px8pb0=;
- b=kDJG6qIllszQYaTmGBzr7Tv3MACeZorUKsYKulvXJfp/Gh4OJUDQRgaZmhtc+d5UAp
- qXHa6PNwjM+7U1bkrUrpqczU77PaTqVINjzzN5aN4LmaIl711QZPKGJ9PnIOQVtIRH9r
- 0KNK+plsecQrCcveDfzK8kADyfV03VWLVc4ADF9N8D4GBG4uBK2pah1hWb65a6tR3/Fv
- 7nLIWa+44fjGPBoz92CPJY6vYLL9kGX6P1NSPr02HQWt2dROynOntMtDFNXKd6jBnIPp
- n5YvPBL/Wpmad/vFBaOxJgqc1N1Qe/DfQpysNJHjOvhZsVo+IVV+8AswArMnt6lef+dc
- aqRw==
+        d=linaro.org; s=google; t=1738681166; x=1739285966; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G8anBbyMT55oA4TitLuKWWu2XDaUG1CFB4kIBNGpbGw=;
+        b=OsmlbRVseNEzH3wcUg0JtYFsBDFNF2dzVgwhcKPii71VESsktZ5a9pV/sXYYcMVPJy
+         /7zR8S++/DDp0BBO7pEs9zqr2zmWZOng1gRuXWvCiXJLp+WuKGFwu6+1u+a5aAKbV9jL
+         98dluhypJHNCziWlg91cu+XREdlwc26e72QsXBJoEbCkHtRq3GV6NBqW2CjvXrGsl8Kk
+         KQlORQqF9Og1Mq//e0R4ftFIUaqM/uddSgmn4dLk1SpXGTSFXLD1Gi2r/1HiDei5HpNv
+         UuzLP4mkweU74phk7aof2ziaJ3nxKop5fmkaftC3nsKyOWS598gXenA5G/0wLnW+59Q1
+         +NsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738678419; x=1739283219;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Nlu5T2bogCzgYYiWWaNBgtj4Bx6LB5+nciCf3px8pb0=;
- b=Rjhf4OFIGme0PXe+eVhOa4NgddTCZ/wIe4ZaVo/I3qiYo8dyfzLLAlcra+8nNhfOJT
- i5d1/tqJlAB9L3eTYFxVFpbfDnJo9Aubpj8XAxqL1CyI39rTesnpt55HxHQTvyTmEr33
- O9cIEjeViv50zHncYc2s+EPLYXF9gPt8zXbSbxR/HpKjnn3tT99wsgqHfN9v9v0MncCk
- 4IzeCRGBd6nwsNOJEp5E5YquX4oW1LvTbTiNolGHcm8pMO8hCy9AmbG5tD3kiMGS/Cp6
- ov6zpkEhl9aY9C6CEa0fJY34ivy6MGnB/7v26vK79kvX6kiXCTgV8fSxBqKZzL9Ul8GR
- txCw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXNL8K8MhJOfT/PHjStGkgzg/ZhdQBewhp2ALlROvImPZd0byNUiodElW/BUy7ZPjdiLSorzH5bIA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/CoQWslhPQNxzn/xp495ranDMLOdZPBCh+yWOpl1bzIAjrPSC
- tpwUORgXvYIB+JawF2dr9e8KRW5/TcyYD1e//gaUIGT1wIcRLil6G4vi2Y1AWQUWk6wEVeAnBAI
- N0+xGg4nOx8yuZmeWY1TAzLXixofahLPAgAwyHw==
-X-Gm-Gg: ASbGnctfuqWoOHR955KDk+UiMI1AgY/BDQSM9xVJRzArgrRkDlIG4lEmqp+VUrvwSpn
- 2BSQZK4dozc+e+delcwaUYwBUt7cRoJdxPpVMJcm3NArNhn83r4Nh41oG7+5fssYKQUieGslAKQ
- ==
-X-Received: by 2002:a05:6902:2e04:b0:e58:3990:3f77 with SMTP id
- 3f1490d57ef6-e58a4b02ccdmr20490317276.22.1738678418591; Tue, 04 Feb 2025
- 06:13:38 -0800 (PST)
+        d=1e100.net; s=20230601; t=1738681166; x=1739285966;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G8anBbyMT55oA4TitLuKWWu2XDaUG1CFB4kIBNGpbGw=;
+        b=VirweSNPzEe/APLPbZ3qs4mFhAR6Z4wobaHg5TSk5QbxrM7EQ0ZKjR93F8ZaJF1hDP
+         fig/PfpNUmZ+aGMcYhVwoA4jBolNitHdSM+EE7ns1UoqXOSFghVt7FArKt9DgAyV1d0r
+         ThrAVk38PlapCvna6T69i/yzWYjYHo/eQWPE1B1d3PtLP7BTEiIGXxwf67msqyG4G+y7
+         uBnPv6kOkWnD+6E9S/egC/oO2rspeF31pcoluhsz/0XAMZarCuLfpATb9muDD78FL5ZX
+         qjMv0EZz+XQOq5vWbt45UYabNBLjU3FNkxMyl8R4RkA2aNlUkVKEVnSH+3+7lKPkIL0B
+         GWlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWE/vq5nYodHCdruF/5+hoLTWeSN2KU3kA8n9XMO0GjgNwtY8zQJ+L/tOGAPcuPPKQkvo7kkagroX4ogA==@linaro.org
+X-Gm-Message-State: AOJu0Yyfms7zRDB77es7wSr+sAv3vJ7+niWwCZGy6dsWQT2H1wfJMn/D
+	ddJgEmLXxtHnaKkYnUDkvNzRuOwOpukNWvO9BQ1b0X9I41Ra7YWdoDG4KvleBWRE7g==
+X-Gm-Gg: ASbGncu6/wI4d9mq5brFveW3OXF12OE6PVu8bPWGTj22mijCnGEGeBrzNsCEch8J6+E
+	XVp/BDClV+914LaWD6mAlsRTJkZfvtoYNV8bZyY+NzumqxLJbtlWFZEvongkBpFkb2ZLj/rToVn
+	CiCC3qt07BPoPikv6tfYRnVeoLZQZjdPwiCWQmF8MF5iwYSQtxTAOx9D7/y2f9X5GTxNsA51wAf
+	9qeDY1EfYZph8zF942T51c8hnoK+DQcL/O790PZcYB9s4l/yVMTxO0VOBkI8OkkDYDW0bz7ZbSp
+	BDYQbjtvfipTP7BxwU6IG/SYWix31CJNL7W6Ty6cG/HWLFQXNN/jNq0nmgE=
+X-Google-Smtp-Source: AGHT+IEu5vViV42ffKjJRwQusiGEU2jHEczefEeY2w30sljGmqFRrYksEhjWr66LJJC4E5zny08+5w==
+X-Received: by 2002:a05:600c:500b:b0:436:fa4f:a1cf with SMTP id 5b1f17b1804b1-438dc42551fmr232683835e9.29.1738681165971;
+        Tue, 04 Feb 2025 06:59:25 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438e245f41esm193956215e9.36.2025.02.04.06.59.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 04 Feb 2025 06:59:25 -0800 (PST)
+Message-ID: <e368b476-5958-404a-98e0-591e8f638d34@linaro.org>
+Date: Tue, 4 Feb 2025 15:59:24 +0100
 MIME-Version: 1.0
-References: <20250130182441.40480-1-philmd@linaro.org>
- <20250130182441.40480-9-philmd@linaro.org>
-In-Reply-To: <20250130182441.40480-9-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 14:13:27 +0000
-X-Gm-Features: AWEUYZlm_bASjdgxOE3Y52KoDiyX0THDP9sh1OAgHWGMw2WMkCmYZ2THVFVFyu8
-Message-ID: <CAFEAcA-ZtcP8epex5rJ5Y5F1mS6aURkaeJdzVZJ+Nty3uStZ4w@mail.gmail.com>
-Subject: Re: [PATCH 8/8] hw/cpu/arm_mpcore: Remove default values for GIC
- external IRQs
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5tN6zK2wzH3F
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/12] hw/arm/raspi: Deprecate old raspiX machine names
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>,
+ Jared Mauch <jared+home@puck.nether.net>, Fabiano Rosas <farosas@suse.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ devel@lists.libvirt.org
+References: <20250204002240.97830-1-philmd@linaro.org>
+ <20250204002240.97830-12-philmd@linaro.org>
+ <CAFEAcA-3JJ1tZAXsik5hAonuSO9sCqDF1xqPQVhAeN-XwAAhDw@mail.gmail.com>
+ <e32a54f2-ef46-4964-89d4-a8969b6d1b05@linaro.org>
+ <Z6HklNsu0Mzgh7bC@redhat.com>
+ <CAFEAcA9m8g=K-0RU31kswbNSKWnUqA78KxNkcXEAqR=BhWc9bA@mail.gmail.com>
+ <8616891b-9747-4388-99dc-d6e53e090001@linaro.org>
+ <CAFEAcA9weFzHW+kL8W0GD26A+QTWpC7Baf9-=Oc3t2yw77=RCA@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9weFzHW+kL8W0GD26A+QTWpC7Baf9-=Oc3t2yw77=RCA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: MISXaEmT71BN
 
-On Thu, 30 Jan 2025 at 18:27, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Implicit default values are often hard to figure out, better
-> be explicit. Now that all boards explicitly set the number of
-> GIC external IRQs, remove the default values (displaying an
-> error message if it is not set).
+On 4/2/25 14:52, Peter Maydell wrote:
+> On Tue, 4 Feb 2025 at 13:40, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> On 4/2/25 12:13, Peter Maydell wrote:
+>>> On Tue, 4 Feb 2025 at 09:57, Daniel P. Berrangé <berrange@redhat.com> wrote:
+>>>> IMHO we can have distinct machines for each model, but
+>>>> *NOT* have further machines for each RAM size within a
+>>>> model.
+>>>
+>>> Yes, this was what I was intending to suggest. Apologies
+>>> if I was confusing with what I said the previous time round.
+>>
+>> OK, let's see if we understand each other correctly as developer,
+>> before explaining to users, taking the 4B model as example.
+>>
+>> The 4B come in 4 physical variants, depending on the amount of
+>> DRAM: 1G, 2G, 4G and 8G.
+>>
+>> We can not allocate 2G on 32-bit hosts, so to have a reproducible
+>> guest behavior on 32/64-bit hosts, it makes sense to takes the
+>> model with 1G of DRAM as default for the 'raspi4b' machine.
+> 
+> At the moment we create the 1GB version on 32-bit hosts and
+> the 2GB version on 64-bit hosts. I dunno that that's ideal,
+> but I think it's probably best not to change that at this point.
 
-> diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-> index 3b0897e54ee..372b615178f 100644
-> --- a/hw/cpu/a15mpcore.c
-> +++ b/hw/cpu/a15mpcore.c
-> @@ -58,6 +58,11 @@ static void a15mp_priv_realize(DeviceState *dev, Error=
- **errp)
->      bool has_el2 =3D false;
->      Object *cpuobj;
->
-> +    if (!s->num_irq) {
-> +        error_setg(errp, "Property 'num-irq' not set");
-> +        return;
-> +    }
-> +
->      gicdev =3D DEVICE(&s->gic);
->      qdev_prop_set_uint32(gicdev, "num-cpu", s->num_cpu);
->      qdev_prop_set_uint32(gicdev, "num-irq", s->num_irq);
-> @@ -146,13 +151,7 @@ static void a15mp_priv_realize(DeviceState *dev, Err=
-or **errp)
->
->  static const Property a15mp_priv_properties[] =3D {
->      DEFINE_PROP_UINT32("num-cpu", A15MPPrivState, num_cpu, 1),
-> -    /* The Cortex-A15MP may have anything from 0 to 224 external interru=
-pt
-> -     * IRQ lines (with another 32 internal). We default to 128+32, which
-> -     * is the number provided by the Cortex-A15MP test chip in the
-> -     * Versatile Express A15 development board.
-> -     * Other boards may differ and should set this property appropriatel=
-y.
-> -     */
-> -    DEFINE_PROP_UINT32("num-irq", A15MPPrivState, num_irq, 160),
-> +    DEFINE_PROP_UINT32("num-irq", A15MPPrivState, num_irq, 0),
+Well this is annoying in my "unify qemu-system-{arm/aarch64}" effort,
+but not a blocker.
 
-I think it's worth keeping at least some form of comment here
-to document the valid range and that the value is internal + external
-interrupts. Something like:
+>> If an user specify -m 2G ... 8G, we can adapt the 'board_rev'
+>> register to expose the corresponding amount of ram. Now, how /
+>> where to tell the users 1/ the default is 1G, and 2/ they can use
+>> 2/4/8G?
+> 
+> In the documentation: docs/system/arm/raspi.rst .
 
-    /*
-     * The Cortex-A15MP may have anything from 0 to 224 external interrupt
-     * lines, plus always 32 internal IRQs. This property sets the total
-     * of internal + external, so the valid range is from 32 to 256.
-     * The board model must set this to whatever the configuration
-     * used for the CPU on that board or SoC is.
-     */
+OK.
 
-?
+Back to this series, please tell me if patches 1-7 aren't useful or
+if you prefer them in a separate series:
 
-(I suppose we could also actually check the property really
-is between 32 and 256, but a simple "did the board actually set
-it?" check like you have here is fine.)
+   hw/arm/raspi: Access SoC parent object using  BCM283X_BASE() macro
+   hw/arm/raspi: Merge model 4B with other models
+   hw/arm/raspi: Unify RASPI_MACHINE types
+   hw/arm/raspi: Pass board_rev as argument to raspi_base_machine_init()
+   hw/arm/raspi: Consider processor id in types[] array
+   hw/arm/raspi: Consider network interface for B models
+   hw/arm/raspi: Check ramsize is within chipset aperture
 
-> @@ -160,13 +166,7 @@ static void a9mp_priv_realize(DeviceState *dev, Erro=
-r **errp)
->
->  static const Property a9mp_priv_properties[] =3D {
->      DEFINE_PROP_UINT32("num-cpu", A9MPPrivState, num_cpu, 1),
-> -    /* The Cortex-A9MP may have anything from 0 to 224 external interrup=
-t
-> -     * IRQ lines (with another 32 internal). We default to 64+32, which
-> -     * is the number provided by the Cortex-A9MP test chip in the
-> -     * Realview PBX-A9 and Versatile Express A9 development boards.
-> -     * Other boards may differ and should set this property appropriatel=
-y.
-> -     */
+Thanks,
 
-Similarly here.
-
-thanks
--- PMM
+Phil.

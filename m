@@ -1,167 +1,156 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp274049njb;
-        Tue, 4 Feb 2025 07:10:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUCNL66Az+WXDbRHNDdiA64AbaDTP33M6fmeFgimYXqBSiPcdCaTN/DFtYfpoxCVW18uN3p64WdZ1vubw==@linaro.org
-X-Received: by 2002:a05:6902:2006:b0:e38:9d2e:4162 with SMTP id 3f1490d57ef6-e5b135ce7b9mr3236277276.12.1738681836020;
-        Tue, 04 Feb 2025 07:10:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738681836; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp296352njb;
+        Tue, 4 Feb 2025 07:43:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV9WMqnWMKT/8RlOpek4hEGEemmR2anIEnD+9sc4WheWHdWuxMGGqr4ggfa6P82fR8ue7GzGFYZEatwOw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFYd/NxLIHVyOSaFLHf/3WC63QdmhdED4AegBITApTPFyX2mVD3WyYlP8KNrv7CS8Ojdx2p
+X-Received: by 2002:a05:6214:506:b0:6e2:43d1:5fe5 with SMTP id 6a1803df08f44-6e243d16526mr303229316d6.34.1738683830373;
+        Tue, 04 Feb 2025 07:43:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738683830; cv=none;
         d=google.com; s=arc-20240605;
-        b=j3flZ6fLuft0DRSZf4IFwCIdvXnmet/tAb+8y6QQIdZa0EVG0kuu/aHqiexpM1oXXO
-         D/bdRl/O22fhISHRyNFnpY3geES9koPbtkyj2VIMzmNQEgZm5HaPCRfpj5CFuziUSGRo
-         1u0ENBdDpvYgfIpkMpJv9JzdwatTkkZu/+XXXqIssEG3t8guDmMkKIODid8PIoiY5v0N
-         5xSxTK5jcXmCi/m9dYrZJcE5u+4fnzG6uT1SD3fg4Uo9pVhK4/XeNJ1uYvEseEdoM37/
-         LSsV5KW9DE30u71idqhpvgDu4YOl+PfwGVtfXoEFY5qXlVGJD4lt1M7oZ/07V/h/1jUa
-         LMpg==
+        b=TCr8C4bux9DiVYDO/INVTdeiSiaq4FTrt5sv0QRd559SFCRIR/n17UWvXV8tWTAw0d
+         qWP5lEJXfjR3hn0DyXQYinUuBivynnZQcuybDnx7Ziy0ArjZNI7Jj/ZVeo2SoXrZQ1EA
+         +WA5HuWwBoPdC42MSlYM2dfZSAKZilT9dT5hiOG3H9wNEM5+oGE/b8Mok+6bvj2bvg86
+         TWZf5h77mzMd0S0bcVdJ+UtpKIyo/TNGyzR9yb+q7aT4sMl+0aEfepU/nfb9oXshJuX9
+         OttMi5aS8gyeK9n7IoYR12ma1hRqBaZjMixS/sXmUU3zRYzl7hTlxuFc88zi/4jqF14J
+         uOBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=eWuGHrcBgE5gWrOGEcMmcRHM4su5sxfaNfpSnxgJY44=;
-        fh=elTeciFzBPXinfE1wPtpAw9P0wB42Q31h3ndOUBBNhM=;
-        b=LzQP4F8QGgNeWI74pndhNn7sx06sqz6NcQBqd7qUcOLueVZ/PEUG67d+VLcCEdXQHw
-         IY/VNklWBEIS3QFEMPyonnjK0Xzui/eclfE4ttICwUND/Z8D103XDpl2EY+Ef0Ua/LGy
-         Nq4SaPXMcQuiTq5KlVyEbiPsXPeuYvByhj071s5ozghglbCzp43SRHjWgodlrgQqCUiS
-         ivQOATvNxlBuBB/j2UOdjNYzLc4Oer0UMXlzNb1SscA1eRP1mbC8yZn4sCbwu+ZcGRFZ
-         ZkLGodCVX93QRF+ZS8GcE0S6by/lxhQA1DGFK/WhghkpmiGp85y6qGkfDA4hOFN8DLRS
-         f77A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
+        fh=do02H6a5pExsDRmA3+mSdN3Yji6Kee3sOXr7kpsb5Qs=;
+        b=efn4N1CHnUT2pCM2rZVaynyvMv5IJssDrz+Oppu3wPCnqDZdC/FJ1+AHgZI0Yfy0Ub
+         mv3o/NlTpn9EnqneHO2jStg5bQ851w3x9RCAoXXtP9D+clLwzWMRRIK2Rt0CpO6utc0x
+         4YnGr21ohxiS1g//uUC51mOtEN7jWqWMmoBh0dZiEEGVD7mmxH27vyEIlNrNEyfyJHX/
+         s/dH2vexdLbf/dBIS55nJ1OT84LqwOzICNq81FY2m23PRWSBYplC9NwWvPPHVwXVy/Cx
+         Sx5123VZTTfh+U7x3d1E8Wmt97DenPGG8r7Ti/1GPzEcXFl8fFj51eti5460y9Ns1Ezy
+         z/SQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="a1MZd/sL";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F8Huk1FB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 3f1490d57ef6-e5b2213dbe1sor112577276.6.2025.02.04.07.10.35
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e41feb9285si30243596d6.257.2025.02.04.07.43.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 04 Feb 2025 07:10:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Feb 2025 07:43:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="a1MZd/sL";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F8Huk1FB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfL5B-0000z9-MA; Tue, 04 Feb 2025 10:43:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tfL58-0000y5-LL
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:43:22 -0500
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tfL57-0007Wf-6X
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:43:22 -0500
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-e580d6211c8so5810778276.1
+ for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 07:43:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738681835; x=1739286635; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eWuGHrcBgE5gWrOGEcMmcRHM4su5sxfaNfpSnxgJY44=;
-        b=a1MZd/sL71aJNfM6STfYFeDf73jRZLpmRYzCFfC44RpOliidkaGZhQypOrmsKDcOOE
-         /aNag8A1C8/KIXGuGlhhn9PswcnvEeXiKYBujebHXTRC8Jd5JUgXMSQOt9tlixuZ+MkL
-         m/HikC2t0ezol8pjfkwGRnITguvqUcU0lFFZiiYR423vQCXKUHoB+e0GJj7/0UVKBko2
-         EsQxyj5VrClJ0/Vz6PUaJbENFY0HFV4i4zRRsLpp5RsqkqGno43tty+v3DxKJP99i2DH
-         qoMo0lLW9rYkJyKQ6rfTnQgRAuvm//yqLdfC2ybYNTARZvRjlbpciV3GG6zRqjITbviT
-         PJ5g==
+ d=linaro.org; s=google; t=1738683800; x=1739288600; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
+ b=F8Huk1FBxsgqim2c2izkgTSvvC26QxBCbptx1EJID5RLrSV8EPU5sL+4ngKFyuWfJv
+ orznkB87pDutHDAk/6PTgjUAm6EX9T5EPzyV/yHiY6PfmIF5UTcsRpqIcr7BsXU/dpHD
+ JI6ULBlSHaguOYFwE4yFjmw9etdk1b1F38ckr+IEVIzCK4kgXgvTkZh/LXFc+aUmypIk
+ pQuG2wg1SIe+TAbfHx7fSCt4SwM6kIbf+OJtxK23sg728PsDt+PObfxZIrA9UsCGkq2J
+ 0Wg/OEF2f5idCH6s5HjSVPYXPtzusBWWrGrp2mv7q5X/lAgv6kACY22Xh8GGKyW8XuQE
+ elDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738681835; x=1739286635;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eWuGHrcBgE5gWrOGEcMmcRHM4su5sxfaNfpSnxgJY44=;
-        b=U5bn75DTuwUBIqLRpCe+Umc+YmxTejqa+z7J2VpMAM67J8/8CVYP+/XLkMOFFhjZcT
-         O+T5QCG+rx/yYj8yO2wF1x1py2wnPwRh1RZ4rD/WyQ1DiWJNqjK4dyTzzKpq7qs9LcLn
-         vj8x/2a1aF3Weo8IftV3AXoJZ4HH9FPrWxa5hsuNmKhoTpr3GEkC7gttygZ3jrJH2Ft2
-         vDi++7KPu1aBjt3rTu+0yYe902fPyqaf6LwaKffHKSP5SUWPs1ZrfxldymWRAuiIUT9/
-         iyLppLDYu61x+aTG8lURZIDX4Ao04gUhofkDWZRv0rEWsjKwzK1N/XUDg+pSrTRujIDB
-         Iaeg==
-X-Forwarded-Encrypted: i=1; AJvYcCXiCA5mYT7QbvfU4PwKRy3T3UAB1Uquf+35PJwTpkeqbk/diGGHSK4BqNQyuthYDNrGluMDVz1cHgEXSw==@linaro.org
-X-Gm-Message-State: AOJu0Yz/k9QzESjGMdA6ai4P5kNLOGBxN8AmrOrdzVwlg5HoL8uEg3cp
-	KrPcE6vO2DfWftA7rUpn++9KR2HM0IpA/v8xed6wBOJAFFRbMnbw2bOC3cHmOC79CLeoOW3332O
-	dBjJYfOZ26SiWHx+337C+bNj3BJiEEK+sm6T2xNGu
-X-Gm-Gg: ASbGncvu0uY06lnHKi23kl3IeQIf8F1yrSLfi7zBvxCHKAA5lw4+4lABzoGPCFYhmUm
-	fcJqD0IKM5vk7UelKczu6kGyBWLR5gLCSRrai779O+OESYquSEE6Pj4TbVy+Bi5qHOixXQtlHPA
-	==
-X-Google-Smtp-Source: AGHT+IFFDOWQ+brIrOrbY2qM/1jbZurjUz5KlsBxwHhSnSsTfLh/iq4ILQrbYGtZTi9eQP8BeKCLNfW0guPl2ilEN3A=
-X-Received: by 2002:a05:6902:128f:b0:e5b:1108:2240 with SMTP id
- 3f1490d57ef6-e5b1318c38dmr3383060276.0.1738681835552; Tue, 04 Feb 2025
- 07:10:35 -0800 (PST)
+ d=1e100.net; s=20230601; t=1738683800; x=1739288600;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
+ b=Xtqd+BUGF32ZkXrC6n23A+9Lyac7XY4tKk1vbDrBobma1/HD7iZWFDDf6M4dC8+Wtb
+ XP44CRAvfhFBYnu9KU5qTffLhHxsRXDVnenyT+Dxjto9fFY+cRPDJkVsBuu0v0dNjm1Y
+ hk2lt1Q0FzVA8Uol523YO7/eTw8zRM+MknehAz9q3n19SUimXVb7q7yYhGKMzdFMryCr
+ C78EAGoOkX5XVm5PVTGGOuP12JzH4CSfsH7aLUbi0cVvET6DP+Ky4RvnASzTuNVYlOTb
+ zrNV3ixKw7R3V8pWus6b3DE5/kLcorpH6tUMrxDAqucEM+luzn90FhJT78hopbBXAMVF
+ t+6g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUXqDmLtBkfovtG3QYo9+rzrfGZ6x4IUAdQiYakvqsIGTIeEOeWpXUWzSA1qYeRnNd/XSZ870YJVWwd@nongnu.org
+X-Gm-Message-State: AOJu0YxmRacdAF4CTyrN4ci4+Ul1XP9oWCOVdkQhvXYf86hsEZzz+zai
+ 9j66ugtXD59mItZlnfAOdAEhzbA9uiwMk9YigHhT04oef41De5gPqI386J/kKlY89ltCioVfzLi
+ H548W8b3QSvBgXKb28d6avAopukXmGQ/7iEA+dQ==
+X-Gm-Gg: ASbGnctc1kLgewRyV6McJrNjVR+Wa9yWVheKrJqEAWyw6OC0QPuHHlQj17Vier8XdLZ
+ 9xgyA2yg5NprfzY0tLbW62Dq5YejfECPGELdrzQBxNk3rbQGV5wu+LLC9X+82UiL8p/Q+LhxwGw
+ ==
+X-Received: by 2002:a05:6902:220d:b0:e44:e084:52c0 with SMTP id
+ 3f1490d57ef6-e58a4b1aea9mr20537180276.23.1738683800117; Tue, 04 Feb 2025
+ 07:43:20 -0800 (PST)
 MIME-Version: 1.0
-References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-8-philmd@linaro.org>
-In-Reply-To: <20250204002240.97830-8-philmd@linaro.org>
+References: <20241226082800.2887689-1-wuhaotsh@google.com>
+ <20241226082800.2887689-6-wuhaotsh@google.com>
+In-Reply-To: <20241226082800.2887689-6-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 15:10:24 +0000
-X-Gm-Features: AWEUYZkNiNVYYvGzIQpxktw7EIsb5zKYOhOLRKpDlnx_1hsSJUbMWGHSChHySfA
-Message-ID: <CAFEAcA_sphbzR9V_dSgR4yP1msNjWTKbXcFi5H5497UUya67nw@mail.gmail.com>
-Subject: Re: [PATCH v2 07/12] hw/arm/raspi: Check ramsize is within chipset aperture
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>, 
-	Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>, Jared Mauch <jared+home@puck.nether.net>, 
-	Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	devel@lists.libvirt.org
+Date: Tue, 4 Feb 2025 15:43:08 +0000
+X-Gm-Features: AWEUYZnbP7Ny17e2vKnQzkXN03gJ6193JxkCFYhQ0AnHTyZG-C-oZTgKK4l7lJI
+Message-ID: <CAFEAcA_bwhiPo6Ye17GKoVE7RpjpHBm29Kw9EvRUVY6DgF71iQ@mail.gmail.com>
+Subject: Re: [PATCH v2 05/17] hw/misc: Rename npcm7xx_gcr to npcm_gcr
+To: Hao Wu <wuhaotsh@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, titusr@google.com, mimik-dev@google.com, 
+ hskinnemoen@google.com, venture@google.com, pbonzini@redhat.com, 
+ jasowang@redhat.com, alistair@alistair23.me
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: y+AQn8vEMy/C
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: D4cKOGDzUtGi
 
-On Tue, 4 Feb 2025 at 00:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
+q
+
+On Thu, 26 Dec 2024 at 08:28, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> Add the 'max_ramsize' field to the soc_property[] array,
-> corresponding to the maximum DRAM size a SoC can map.
+> NPCM7XX and NPCM8XX have a different set of GCRs and the GCR module
+> needs to fit both. This commit changes the name of the GCR module.
+> Future commits will add the support for NPCM8XX GCRs.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
 > ---
->  hw/arm/raspi.c | 21 +++++++++++++++++----
->  1 file changed, 17 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 68332fba027..d44277001ee 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -76,11 +76,12 @@ typedef enum RaspiProcessorId {
->  static const struct {
->      const char *type;
->      int cores_count;
-> +    uint64_t max_ramsize;
->  } soc_property[] =3D {
-> -    [PROCESSOR_ID_BCM2835] =3D {TYPE_BCM2835, 1},
-> -    [PROCESSOR_ID_BCM2836] =3D {TYPE_BCM2836, BCM283X_NCPUS},
-> -    [PROCESSOR_ID_BCM2837] =3D {TYPE_BCM2837, BCM283X_NCPUS},
-> -    [PROCESSOR_ID_BCM2838] =3D {TYPE_BCM2838, BCM283X_NCPUS},
-> +    [PROCESSOR_ID_BCM2835] =3D {TYPE_BCM2835, 1,              512 * MiB}=
-,
-> +    [PROCESSOR_ID_BCM2836] =3D {TYPE_BCM2836, BCM283X_NCPUS,  1 * GiB},
-> +    [PROCESSOR_ID_BCM2837] =3D {TYPE_BCM2837, BCM283X_NCPUS,  1 * GiB},
-> +    [PROCESSOR_ID_BCM2838] =3D {TYPE_BCM2838, BCM283X_NCPUS,  8 * GiB},
->  };
->
->  static const struct {
-> @@ -133,6 +134,11 @@ static int cores_count(uint32_t board_rev)
->      return soc_property[board_processor_id(board_rev)].cores_count;
->  }
->
-> +static uint64_t ramsize_max(uint32_t board_rev)
-> +{
-> +    return soc_property[board_processor_id(board_rev)].max_ramsize;
-> +}
-> +
->  static const char *board_type(uint32_t board_rev)
->  {
->      assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-> @@ -294,6 +300,7 @@ void raspi_base_machine_init(MachineState *machine,
->      BlockBackend *blk;
->      BusState *bus;
->      DeviceState *carddev;
-> +    uint64_t max_ramsize;
->
->      if (machine->ram_size !=3D ram_size) {
->          char *size_str =3D size_to_str(ram_size);
-> @@ -301,6 +308,12 @@ void raspi_base_machine_init(MachineState *machine,
->          g_free(size_str);
->          exit(1);
->      }
-> +    max_ramsize =3D ramsize_max(board_rev);
-> +    if (ram_size > max_ramsize) {
-> +        g_autofree char *max_ramsize_str =3D size_to_str(max_ramsize);
-> +        error_report("At most %s of RAM can be used", max_ramsize_str);
-> +         exit(1);
+>  hw/misc/meson.build                           | 2 +-
+>  hw/misc/{npcm7xx_gcr.c => npcm_gcr.c}         | 2 +-
+>  include/hw/arm/npcm7xx.h                      | 2 +-
+>  include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} | 6 +++---
+>  4 files changed, 6 insertions(+), 6 deletions(-)
+>  rename hw/misc/{npcm7xx_gcr.c => npcm_gcr.c} (99%)
+>  rename include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} (96%)
 
-Indent error?
-
-> +    }
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

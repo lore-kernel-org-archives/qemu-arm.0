@@ -1,89 +1,88 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp266133njb;
-        Tue, 4 Feb 2025 07:01:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVw/lnINQQdQdmJD45GEZ2SKPnznoIRCNxjZsmjEH8NfCcBu0kz5jjxcoKrTwgIK05/Qsqyt3IcEAKllw==@linaro.org
-X-Received: by 2002:a05:6902:2490:b0:e58:118d:67e6 with SMTP id 3f1490d57ef6-e58a4cfd0c8mr18856067276.48.1738681309213;
-        Tue, 04 Feb 2025 07:01:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738681309; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp267336njb;
+        Tue, 4 Feb 2025 07:03:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWVXMY/nhQ1bK4YxjINupE6j4cNmkd8laMn/dgzt2cpA7X6hJSuGd+osU4O/mFoI0AiUXxW9cORLDgZJg==@linaro.org
+X-Received: by 2002:a05:6902:11ce:b0:e33:67d8:654e with SMTP id 3f1490d57ef6-e58a4bfd22fmr20187112276.49.1738681384600;
+        Tue, 04 Feb 2025 07:03:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738681384; cv=none;
         d=google.com; s=arc-20240605;
-        b=H/L83xDQu2Rl+vfDPic+O7Tns6JYg5E832IIsm8eGda9JBflBx/jGJkACEmJ8eWRNF
-         KsCQowqjCfJ0iYaKI5IOqu5E55yJ3W8oG6G8cIbtwazOn2QrJS1ruDX6irn3MrweE9kI
-         Jwgs0llsJM8AZrTsO+WYzsKb79jyERqQNK+LspZ5Y3Q6cWcT0CX0UT6WTV3ozbjPfWEU
-         XZzwlaYUpjg1irB+GmJqpI8nMhpG7BgX1j+ov3o+hEGBuHxvzKyQT47S8zPLEbsYxaVp
-         vKoh6p4BAvxJw5l+zF4dqL2x5jSR4bSIrJ8nLIs2EVWctKV1hRUh4mxHU4DL+IXz5/mT
-         OBOw==
+        b=cWTE2uQ/TuBPmaFQmCwWfYtI1sUJrnjKGl12VsysRssRSNntvJPF2/GSUkPL2mtmwU
+         sBDMqC0P8Up7oOyfIRVp2yvZtKGU3rcUqZ6LPJhWR/LprCU8JaGmhjtVfebak1atVhG9
+         Np3C3hY8HxJKRK3sU/DsNgunThTkCryMRP/LOi+N2PWahM6Uj8X49QsrfwmpHQZP33h7
+         RHTJgc3HfRPSx4b8nLBkcFCyg7HRnfIODdCbV1q+g5wRsJPX15GtYiAhiACbhLAQwIK2
+         V60WP8P5LyZ5MGWyo2vdFWTihyvtgP1S+pagGaIZU8XyIIjtBXrAkkixauxBiuxbNmY3
+         FmUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
-        fh=davU7tYB67e69bF/TevoU1TD/foksOuQyrhgqtSQe50=;
-        b=XFJhZ6RgnjvT38bf4x8vAVxZbLFpRplDQhioQeb1hD39w8zKdLl97j6oAUlkDuvtoN
-         8tEk1S4vnIBPkqhfTYVghpCZx2eC6y3pK6Ehtn87wkqLCvr6jilHT0soR4PYQE9UlQkm
-         IvvfUbIa1nnSSMXFQQRd2CakN0ewzoxaTC1xjelNEpKFi7OG0iEkYkABaGveN8G05Cp+
-         1NqMeQpne1dJiX1LiRR8x+UjaBzqjWQJ8JPeeVJEZKDKpU1vm9yTGJdFkxyauvvcm2en
-         Vi1ZUAvykaAyt9K5WeTmoeIVW4u1G0m/5Xbre3VAqF+eVSS5QbQRwI0ravYpth5lR9tg
-         I55w==;
+        bh=xVwOgDmF4gi+qCbLpHs+nCN3M6GyYgsFZqSNBxemEzY=;
+        fh=e6o65q/BrA1hT0oDGcRioHtA2+dbZsvnEwexCpN91as=;
+        b=EOxGz/Mrfi2Hg45isbArLGcqPasFcf6yVZ4l1X+S2rSDYhPfQs9qbdU3EevkRMd69r
+         MvK3Q5uV5ncJCgzZSnVA5gYDC9Zf5npWR73X1PS/9YO+FGtv615s7KmCD+k9L2eZx6Dx
+         BzMHaRP1XppgaKLa6wyU1S6k70jFPgRTKklYIPFQCBW/BT8sXMnBtpcH8e2nTQcOg2E6
+         /AH1oReN1AYZsyn4bV3YrEWdi0hedQnmQ6D4+3i4xCzco+qm/Jty29wWX4f0eWGX0Rsr
+         qtIPyHNLZ1q1f2fqbj7gKjhAm2TC6Li8CKS4Qn80OAL6GG65AHe1E4b6CquuIa6mfWCL
+         BY/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bjPwxgkl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ADIeQ5Cw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 3f1490d57ef6-e5acb2839a0sor6384751276.2.2025.02.04.07.01.48
+        by mx.google.com with SMTPS id 3f1490d57ef6-e5acb2fe5b0sor4716128276.7.2025.02.04.07.03.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 04 Feb 2025 07:01:48 -0800 (PST)
+        Tue, 04 Feb 2025 07:03:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bjPwxgkl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ADIeQ5Cw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738681308; x=1739286108; darn=linaro.org;
+        d=linaro.org; s=google; t=1738681383; x=1739286183; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
-        b=bjPwxgklCZp3D15ZTJ3TgCM2duCvSkhRwEojcN4e/feEhAKXb2xgGhMJKnrnv7fZx4
-         5I1/UZuSk63ixITpMqKN/WyHTRqqpnrf4IKIwt5rnrC2U2j23ogHr/Leq7RakPowZX/H
-         6zS6kswoOCKRgG3w+MCzA68ps/LjuDghxRxvZIaTn7Xh88mdArbcmJJxYnwCiRZk6XOp
-         ayHPL7QebVHPTzNcKuVMI6KSX9zPHflwU0joHWY3BNwNarRfSUJmadg2mtvCLq7VFcGL
-         V453rqCLVVzWiJfh6su5SwbIN02M6VUuusD5KPgq167PCts5DsJs5h+7K3irvsP0kusU
-         pYsA==
+        bh=xVwOgDmF4gi+qCbLpHs+nCN3M6GyYgsFZqSNBxemEzY=;
+        b=ADIeQ5CwiFrno9F7WQf/kHPBlpB8iIxElibPgva1jlEUcrqiGEfoh23Kw6433Y3XWK
+         DEfQVciHsuJXo8dYwXfyMl6TwhkpZQE9MFHSfNPGJhJJkBcc4PxjO2VDN9B4mduaYE4/
+         E4MCH0/y6GiePqS2hw5kEGKO9zCuCAlZ1zreeF45dVPV+gQyiO5VLZa9kfXe5gXVW6xy
+         E+V/r2nge1ER34jHZJypApgL5sbnYOkTr0OQEICoXsl+BomWq5U+tomg/LyIK2+id50u
+         esQK4UJs1/c2+CPOueZEYgRulcic4L2/PjI9I979eHnyCR9602WW4KI+bn4Oia9L58pq
+         Nvow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738681308; x=1739286108;
+        d=1e100.net; s=20230601; t=1738681383; x=1739286183;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=i96K6oJTe9yCko7ETubUnTI4pspHh0HcmsrsCYj/siM=;
-        b=oTSxHrd+jDS1cTmKAhapUnLZbxE7orVAx0/1mFrOuY/Zv3w5nQpm3a2o6vKrd033RV
-         iK+GDS6uTDo+tSEcBS4OqQctGKERz0lomid57zIYBXzG99sjD8rG7uyi9ndDhZevUP43
-         r+em0sF/E0r0ATvR2fI6a6ve+QfWlV5rRIPidD4BugUtQSP9bkLEOyLqvdUzhcyzYLoE
-         /+x3SZpCBxArQHTv8nIxRgukgJo86VuzLPElTa64Gn3Cyr+MJs3T/sfVldruv5NkqmKp
-         1JNcUjfi2Yhs2uCLpsa/DnZ5ZpIgj7bXW5CXM/ne9znvVb0Tt6qwYCN3XR6UJwwDGS94
-         iL3A==
-X-Forwarded-Encrypted: i=1; AJvYcCVYPFs3nxMaqG04Mq2QcgxqxqkTKqMMC7MkIA8ED/lseKDs7OGd+KW9fgO4RXZiXBvDwwiEyIyPMZUvUA==@linaro.org
-X-Gm-Message-State: AOJu0YzUGbud5qNuNg/EnPrElZqjcm3oF+p/iyPR25crh/4u3x3vlCn7
-	H69u/5b6aHIu+JBw/Eg01+1W6CUVYSyCbsYgycYLzxR+R/50FpS1q+EuBL4CFuo+W262dcRl2m7
-	ShzH6eBIZlPV3ynacHzWemcS1LTWvLbKuCleTduXI
-X-Gm-Gg: ASbGncsyJcWbgnd04pnmJpgY2UQADEHNBRrdCIP5fjiOB9yKYG0G1T5qE+8E/wjzyf6
-	xU6JOjqg6OHpZTH0y8l4uvYktTKaD+juPUm5vJ2kwIMBJOqhJVFLDnyCOuTETojFzDnclrxPGXw
+        bh=xVwOgDmF4gi+qCbLpHs+nCN3M6GyYgsFZqSNBxemEzY=;
+        b=nOeDTGmbm60JKfyys1WauDYR3zy/HvboQAlVqNmgNTlbJ4tir4qkoiHzaUHHxQKL9t
+         fVRsDjwSGVibY1ulI0TZclg3iFz8GyiRCTlcWI+LYt15cAL5m8Spx7WveUSu0rfw8R2R
+         VWDS9SPJBEb+h6Fqd+usUzAFJg09dOQ+iRfBYtSP3xTULFsPY3OE6aHGFVL6X58//Ro6
+         ky1Q/MhM4BlZ+xR31FlNF/GZW5Y6Jp2LA1mXIHlPmdIImq9jPzBzywJLVTuX7pnsWR2Z
+         ic6SrUV6qMmSQgJLdNvhxpx9nRcXccBUa3AY/OYYSN+PpoCFiunItfh11kZNvYQv0qtY
+         KDNw==
+X-Forwarded-Encrypted: i=1; AJvYcCUeh89qoCkJZ18ZDZzdBLlFDXdzCGGqck3dzSNdPW/8WPZoZLpeOxETxl8djDYAwKuRZPg4gVXf4czCNg==@linaro.org
+X-Gm-Message-State: AOJu0YzqNdPyQfBqtPtWEGxWNpasZdxcmuLJjWmOxpc4LvQ0cwVGsRCb
+	vS9w74tpaECrODunl6DPIuGtC2GBXUPuUo9rhT5xoubsvvFTOpCiDnmGD1B30tue1x9aM6UHy9r
+	yadoFcRsR4I9b503/WmUI8jeXuXeGp5XnAzlm39/8
+X-Gm-Gg: ASbGncsYRSfymIqiYZ/NZNNzAPufbmyhZaRRnH+g1QU/mRqRgaM5G/LHt/CgGBAzFLj
+	8PSD+WGOgNtjh/kFJHmJt2Av4gjQ5EDNSKpWdrEIXEZi6XBl3xWr4Qn3S2BiM+V0BLS8mLZEFlw
 	==
-X-Google-Smtp-Source: AGHT+IGqdRFVVlgvBC9VJmskRtI7WIvKmj7y5vYNXJS+YwDjaPEGEDaekuhEAzi17kMbX4ub1OfNDI3cJcnzBm/H7yQ=
-X-Received: by 2002:a05:6902:1549:b0:e57:f841:94b5 with SMTP id
- 3f1490d57ef6-e58a4a9c45cmr19114402276.9.1738681299015; Tue, 04 Feb 2025
- 07:01:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE2+k4dNWOkjUTNBGQCMdedxo5hXuTuw4YJ3BG8iG4wy/uAUcm0YywyQycDBV42GKSiyvDT3lZDO1LQJv3KK84=
+X-Received: by 2002:a05:6902:98d:b0:e5b:16b3:ed03 with SMTP id
+ 3f1490d57ef6-e5b16b3ed8emr2138400276.32.1738681383020; Tue, 04 Feb 2025
+ 07:03:03 -0800 (PST)
 MIME-Version: 1.0
-References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-2-philmd@linaro.org>
-In-Reply-To: <20250204002240.97830-2-philmd@linaro.org>
+References: <20250204002240.97830-1-philmd@linaro.org> <20250204002240.97830-3-philmd@linaro.org>
+In-Reply-To: <20250204002240.97830-3-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 15:01:27 +0000
-X-Gm-Features: AWEUYZleavtlFLCYcqPwtasPxF3I4nOwiYTgSufdo5qM95M5JBXV4T0flBNl_U4
-Message-ID: <CAFEAcA9kabWXcfWBNBmp2o1MtXX3zZ8cqhKuSm54w6zghypwJg@mail.gmail.com>
-Subject: Re: [PATCH v2 01/12] hw/arm/raspi: Access SoC parent object using
- BCM283X_BASE() macro
+Date: Tue, 4 Feb 2025 15:02:51 +0000
+X-Gm-Features: AWEUYZkhKyrTk-DrJEK9mRsV5YS6tnbUjpd1wInUYBoaRRy0O3OpFYDsFvLcKMQ
+Message-ID: <CAFEAcA-q-SBmM8QSfMvNwpiYohzjBRTyTuYc8fW1-a4=25YpQA@mail.gmail.com>
+Subject: Re: [PATCH v2 02/12] hw/arm/raspi: Merge model 4B with other models
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
 	BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>, 
@@ -93,19 +92,21 @@ Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redh
 	devel@lists.libvirt.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: yHrJbE/XYDhF
+X-TUID: GuFObP+XvMUj
 
 On Tue, 4 Feb 2025 at 00:22, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
 > wrote:
 >
-> We shouldn't access a QOM parent object directly.
-> Use the appropriate type-cast macro.
+> Except we alter the device tree blob, the 4B
+> is just another raspi model.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  hw/arm/raspi.c   | 2 +-
->  hw/arm/raspi4b.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  hw/arm/raspi.c     | 114 ++++++++++++++++++++++++++++++++++++-
+>  hw/arm/raspi4b.c   | 136 ---------------------------------------------
+>  hw/arm/meson.build |   2 +-
+>  3 files changed, 114 insertions(+), 138 deletions(-)
+>  delete mode 100644 hw/arm/raspi4b.c
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

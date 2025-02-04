@@ -1,115 +1,115 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp296352njb;
-        Tue, 4 Feb 2025 07:43:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV9WMqnWMKT/8RlOpek4hEGEemmR2anIEnD+9sc4WheWHdWuxMGGqr4ggfa6P82fR8ue7GzGFYZEatwOw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFYd/NxLIHVyOSaFLHf/3WC63QdmhdED4AegBITApTPFyX2mVD3WyYlP8KNrv7CS8Ojdx2p
-X-Received: by 2002:a05:6214:506:b0:6e2:43d1:5fe5 with SMTP id 6a1803df08f44-6e243d16526mr303229316d6.34.1738683830373;
-        Tue, 04 Feb 2025 07:43:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738683830; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp297413njb;
+        Tue, 4 Feb 2025 07:45:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUK5zSVZIjA7vRcOniA+wRxdxMOY6UxgsM5ygwBXzYizA7nz/1O9QzYH9x8f6wT0BkB0d5HgrqcxLSbfw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFMa8bAR04IizWFlCW3rkBcEYTZJHliCS+H5ZKS2muffZZ5HIY2+tu/1DJnJRnJM06LF9fs
+X-Received: by 2002:a05:6214:2468:b0:6d8:aa52:74a3 with SMTP id 6a1803df08f44-6e243c7320cmr412316986d6.28.1738683942267;
+        Tue, 04 Feb 2025 07:45:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738683942; cv=none;
         d=google.com; s=arc-20240605;
-        b=TCr8C4bux9DiVYDO/INVTdeiSiaq4FTrt5sv0QRd559SFCRIR/n17UWvXV8tWTAw0d
-         qWP5lEJXfjR3hn0DyXQYinUuBivynnZQcuybDnx7Ziy0ArjZNI7Jj/ZVeo2SoXrZQ1EA
-         +WA5HuWwBoPdC42MSlYM2dfZSAKZilT9dT5hiOG3H9wNEM5+oGE/b8Mok+6bvj2bvg86
-         TWZf5h77mzMd0S0bcVdJ+UtpKIyo/TNGyzR9yb+q7aT4sMl+0aEfepU/nfb9oXshJuX9
-         OttMi5aS8gyeK9n7IoYR12ma1hRqBaZjMixS/sXmUU3zRYzl7hTlxuFc88zi/4jqF14J
-         uOBw==
+        b=fo4v7zncEHa9+L6CCBU8YYRB7tynYjLTWRCwT2h8vLTA5N81dwOUMUSaEqIG3GqLpi
+         gH0jmHvty8CkcqRAG+2tjMOv0Vps5z6ev7d6rNgFJ/7aKZ4PV0GnMXCs7UmTl9ucS4rp
+         Okl+pNxePGXId9eZJo9EUHXbxAQmcsiLYYGSZARnkq4LXlB/7qCUf1AZDgoF3sBO1zh8
+         w9cd03J712BiLHRasx4Z5Oyz5rYDbC8VIECXGyB62VHpeADuc5zU/lY4ILvApEIpmdVS
+         SQcslV13IVz2LAB2IAy01NbXY/bJZL2XNxlgn33H612W1dDHmx+gIGITxE5BWC6TKmE0
+         iBpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
-        fh=do02H6a5pExsDRmA3+mSdN3Yji6Kee3sOXr7kpsb5Qs=;
-        b=efn4N1CHnUT2pCM2rZVaynyvMv5IJssDrz+Oppu3wPCnqDZdC/FJ1+AHgZI0Yfy0Ub
-         mv3o/NlTpn9EnqneHO2jStg5bQ851w3x9RCAoXXtP9D+clLwzWMRRIK2Rt0CpO6utc0x
-         4YnGr21ohxiS1g//uUC51mOtEN7jWqWMmoBh0dZiEEGVD7mmxH27vyEIlNrNEyfyJHX/
-         s/dH2vexdLbf/dBIS55nJ1OT84LqwOzICNq81FY2m23PRWSBYplC9NwWvPPHVwXVy/Cx
-         Sx5123VZTTfh+U7x3d1E8Wmt97DenPGG8r7Ti/1GPzEcXFl8fFj51eti5460y9Ns1Ezy
-         z/SQ==;
+        bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
+        fh=bnv0Ks5E+xTQoX9jLW9+dW1lhALEpf83+Bz0FnIq6lg=;
+        b=jwJwE9SzAYPSoRHLLsMJS/2W7TwGu+o/Vz/mWhB8VjW1LF8SclCXxah0tzWB7Wdh9C
+         ElD0ThHSgGovlkFYzAwQdcwTX+zIc+9Xypou+A4YiTAJxmZOmlh+WaiB7AaQp6xKlGqU
+         KljD8Cc6JbKdbhHpcqRNZhkUnjsTSZPiryq5ji5fIGAwZOYI1wnh2cQ6b+Baqrnz9/MN
+         ykE8KcKHb17DlycWdwqcKcwcfcJXBxdVv/Y/Tm2n5NiwELA8trh7rO+exQzXHZJ87y2g
+         5tSgIPp8HlPnMgS1TvcagAiul7JvOiP6OG7z63KqF7lZMLFu2bMs3E2INnVDluymrYyk
+         6bHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F8Huk1FB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vuWzeW4L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e41feb9285si30243596d6.257.2025.02.04.07.43.50
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e41fed727asi30657036d6.378.2025.02.04.07.45.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 07:43:50 -0800 (PST)
+        Tue, 04 Feb 2025 07:45:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F8Huk1FB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vuWzeW4L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfL5B-0000z9-MA; Tue, 04 Feb 2025 10:43:25 -0500
+	id 1tfL7E-0003E0-RA; Tue, 04 Feb 2025 10:45:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfL58-0000y5-LL
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:43:22 -0500
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ id 1tfL7A-0003D6-L2
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:45:28 -0500
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tfL57-0007Wf-6X
- for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:43:22 -0500
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e580d6211c8so5810778276.1
- for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 07:43:20 -0800 (PST)
+ id 1tfL77-00080h-CJ
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2025 10:45:27 -0500
+Received: by mail-yb1-xb2c.google.com with SMTP id
+ 3f1490d57ef6-e3978c00a5aso5147771276.1
+ for <qemu-devel@nongnu.org>; Tue, 04 Feb 2025 07:45:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738683800; x=1739288600; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738683924; x=1739288724; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
- b=F8Huk1FBxsgqim2c2izkgTSvvC26QxBCbptx1EJID5RLrSV8EPU5sL+4ngKFyuWfJv
- orznkB87pDutHDAk/6PTgjUAm6EX9T5EPzyV/yHiY6PfmIF5UTcsRpqIcr7BsXU/dpHD
- JI6ULBlSHaguOYFwE4yFjmw9etdk1b1F38ckr+IEVIzCK4kgXgvTkZh/LXFc+aUmypIk
- pQuG2wg1SIe+TAbfHx7fSCt4SwM6kIbf+OJtxK23sg728PsDt+PObfxZIrA9UsCGkq2J
- 0Wg/OEF2f5idCH6s5HjSVPYXPtzusBWWrGrp2mv7q5X/lAgv6kACY22Xh8GGKyW8XuQE
- elDw==
+ bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
+ b=vuWzeW4LG7+2SsLLbg49H1n/2q308pWe8X2seCoyJYHy41aiqOTWiy5vw6OoN2T87M
+ 9v9KValgYLnJK1Mh2nuHw8EjfEyYHphWjft8bbl1E56vuMoYoaVxUlAct4KDbE6Au/WQ
+ MQIh1rWhGJ60d+7dC2aVOWh84C2Ljm3uwo+M6XxPMzcCjqQbX4DDowXGt1D/yldNOmAw
+ EJlt/PxejKqURS/aZ9lVdmJuxqvhbXDOHI/XYJVweAZ8Wv2L5IjDfja8Y/+F5oj7afXO
+ aX8OHfg9q5MuwlQ0SWHayerkz7W9+BHAIDkeUAtdPZqftEqTXWbuFSz4wRT+D6D885wA
+ glHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738683800; x=1739288600;
+ d=1e100.net; s=20230601; t=1738683924; x=1739288724;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=qdHfe0Uk43sFsa7hqxlIZdLKy67gdQ4KBBaUPlCyPOY=;
- b=Xtqd+BUGF32ZkXrC6n23A+9Lyac7XY4tKk1vbDrBobma1/HD7iZWFDDf6M4dC8+Wtb
- XP44CRAvfhFBYnu9KU5qTffLhHxsRXDVnenyT+Dxjto9fFY+cRPDJkVsBuu0v0dNjm1Y
- hk2lt1Q0FzVA8Uol523YO7/eTw8zRM+MknehAz9q3n19SUimXVb7q7yYhGKMzdFMryCr
- C78EAGoOkX5XVm5PVTGGOuP12JzH4CSfsH7aLUbi0cVvET6DP+Ky4RvnASzTuNVYlOTb
- zrNV3ixKw7R3V8pWus6b3DE5/kLcorpH6tUMrxDAqucEM+luzn90FhJT78hopbBXAMVF
- t+6g==
+ bh=GlSXFXace9GO76gmkuZgYpUB6N75RaDZoHYno2q8Svo=;
+ b=KOTB7r4JfbVwnlmttXUQGmU89ZJUo1x2FTYNWUTUTa2Ooiaq3Sa9bQ7VhW+6yQZehG
+ 50OxIhrEwLkk2pU+o3N/tEW21SLXFb8l+vtZV+TRMKtEUn/TcJkBsyoWfU9itulQhAGm
+ WtXBzuxd+KKpISZ33JwM9rLf9URtOY5S3Q5gflPQBsN01hGC47p9Usd8BvEjW7Eutjob
+ dZPH+Gafuy3G3Jpr+4puX4SOyn2FKzU4smB3O4ueCpzOhSH570O1p2IL7kB1lQomq/VD
+ H9JqSdPDPneMI6/hmP0ShAVyll2pmOEAkavISZFH7npDd6bFdb13X0sbLKyMKU0RI0DH
+ q8nA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUXqDmLtBkfovtG3QYo9+rzrfGZ6x4IUAdQiYakvqsIGTIeEOeWpXUWzSA1qYeRnNd/XSZ870YJVWwd@nongnu.org
-X-Gm-Message-State: AOJu0YxmRacdAF4CTyrN4ci4+Ul1XP9oWCOVdkQhvXYf86hsEZzz+zai
- 9j66ugtXD59mItZlnfAOdAEhzbA9uiwMk9YigHhT04oef41De5gPqI386J/kKlY89ltCioVfzLi
- H548W8b3QSvBgXKb28d6avAopukXmGQ/7iEA+dQ==
-X-Gm-Gg: ASbGnctc1kLgewRyV6McJrNjVR+Wa9yWVheKrJqEAWyw6OC0QPuHHlQj17Vier8XdLZ
- 9xgyA2yg5NprfzY0tLbW62Dq5YejfECPGELdrzQBxNk3rbQGV5wu+LLC9X+82UiL8p/Q+LhxwGw
+ AJvYcCVLcq3HRHjZzv0FKPzLcmSV1ZbIYm4PRjA1CdYt+OaW9t4pcBm6dmuX10OgDRm8kEPiB4NGJUtnuNUv@nongnu.org
+X-Gm-Message-State: AOJu0Yz4qf/w2/DkizVznScL/wQuNqXVSe2XsS+0wB7wInyDL2z/ESJ3
+ r89ZnmMFtzZS7H7YRHf4zs2VJwUcJLILxPzewkfzA+F6jVqog2d/lf7IjUIUjCXQaXjsYkV5zul
+ s99YDP672n8H4VIKIjte2E2BXEC+VG0pZvqZAZg==
+X-Gm-Gg: ASbGncvgtUCUkXA08t7t4lz5UXQ/tCxzyxuc73FpMJDA9XaPdV14hbk+vgbJ2JN7Jxq
+ FJMKr8g4i7zVMwfbi/DwNYoElMusEHg1+uYvVCibHKYDZ5dcIF96eqtpHbvPvQCLFZRVAiUQDXQ
  ==
-X-Received: by 2002:a05:6902:220d:b0:e44:e084:52c0 with SMTP id
- 3f1490d57ef6-e58a4b1aea9mr20537180276.23.1738683800117; Tue, 04 Feb 2025
- 07:43:20 -0800 (PST)
+X-Received: by 2002:a05:6902:1441:b0:e57:44de:aba9 with SMTP id
+ 3f1490d57ef6-e58a4ad04d7mr19179352276.17.1738683924054; Tue, 04 Feb 2025
+ 07:45:24 -0800 (PST)
 MIME-Version: 1.0
 References: <20241226082800.2887689-1-wuhaotsh@google.com>
- <20241226082800.2887689-6-wuhaotsh@google.com>
-In-Reply-To: <20241226082800.2887689-6-wuhaotsh@google.com>
+ <20241226082800.2887689-7-wuhaotsh@google.com>
+In-Reply-To: <20241226082800.2887689-7-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Feb 2025 15:43:08 +0000
-X-Gm-Features: AWEUYZnbP7Ny17e2vKnQzkXN03gJ6193JxkCFYhQ0AnHTyZG-C-oZTgKK4l7lJI
-Message-ID: <CAFEAcA_bwhiPo6Ye17GKoVE7RpjpHBm29Kw9EvRUVY6DgF71iQ@mail.gmail.com>
-Subject: Re: [PATCH v2 05/17] hw/misc: Rename npcm7xx_gcr to npcm_gcr
+Date: Tue, 4 Feb 2025 15:45:12 +0000
+X-Gm-Features: AWEUYZmvFU_mO1MS_kHd0dpUC_PlM8W5v_Z0BarWMj3tWZ_nYqjmKdacAffAlLw
+Message-ID: <CAFEAcA-qth7X0Ypt-PjxMBmxReGWkfbLBwhFn6WdEpebn1uHRg@mail.gmail.com>
+Subject: Re: [PATCH v2 06/17] hw/misc: Move NPCM7XX GCR to NPCM GCR
 To: Hao Wu <wuhaotsh@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, titusr@google.com, mimik-dev@google.com, 
- hskinnemoen@google.com, venture@google.com, pbonzini@redhat.com, 
- jasowang@redhat.com, alistair@alistair23.me
+ kfting@nuvoton.com, titusr@google.com, hskinnemoen@google.com, 
+ venture@google.com, pbonzini@redhat.com, jasowang@redhat.com, 
+ alistair@alistair23.me
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,25 +131,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D4cKOGDzUtGi
-
-q
+X-TUID: 8u6+GOb2HMye
 
 On Thu, 26 Dec 2024 at 08:28, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> NPCM7XX and NPCM8XX have a different set of GCRs and the GCR module
-> needs to fit both. This commit changes the name of the GCR module.
-> Future commits will add the support for NPCM8XX GCRs.
+> A lot of NPCM7XX and NPCM8XX GCR modules share the same code,
+> this commit moves the NPCM7XX GCR to NPCM GCR for these
+> properties.
 >
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
 > ---
->  hw/misc/meson.build                           | 2 +-
->  hw/misc/{npcm7xx_gcr.c => npcm_gcr.c}         | 2 +-
->  include/hw/arm/npcm7xx.h                      | 2 +-
->  include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} | 6 +++---
->  4 files changed, 6 insertions(+), 6 deletions(-)
->  rename hw/misc/{npcm7xx_gcr.c => npcm_gcr.c} (99%)
->  rename include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} (96%)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

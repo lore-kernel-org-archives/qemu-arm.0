@@ -1,123 +1,123 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92167njb;
-        Tue, 4 Feb 2025 01:22:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWTP/lSWk0NKj6DyXas8dvM+7b/AhAb5Vrwi/rn3KNwz6JyIe4p4byU5wIsvnhdmhG8TNZBIrFTNVI9YQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGXWGPN0RHUqmoltK6cF0V2sGHdX1zoyxT0FNz9VTeycqRcIhrqgdhGtdHRuqCOgGwhX1H+
-X-Received: by 2002:ac8:57cf:0:b0:460:8e3b:6790 with SMTP id d75a77b69052e-46fd0bccee1mr318797991cf.48.1738660958420;
-        Tue, 04 Feb 2025 01:22:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738660958; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp92260njb;
+        Tue, 4 Feb 2025 01:22:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUd66ipAEZ76zp2wZpg9HcUyuOk835bN3OsjzcYbXC/KB3Fw6WJZKWe8fS2yUiA80CB1/q53heprWr3hQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5cXUeK/EsbmYyjWMg5epFmT1F6NvaXA6MnU2oiEOPWYZTyuhH30hItxvGNg7ttxX1GfDc
+X-Received: by 2002:a05:620a:bcc:b0:7b6:6b88:cc00 with SMTP id af79cd13be357-7bffccc97b1mr3544907885a.5.1738660971890;
+        Tue, 04 Feb 2025 01:22:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738660971; cv=none;
         d=google.com; s=arc-20240605;
-        b=c6f75WlIeIcy5QBe+ZH6DWwxQQwTVqVtaebPeUNRBqbRRQYKhXOJXcZTviGa00oLQ4
-         vxVrN1rv1VSIwo8M4ZvqLWdMR+ZKzEHuL9irQwjLzIu1MKXLUhkz/KCJyZoCs1j6nBnK
-         Zi+y1ClG7TTJjvczVbVquWRcLGmoTNU7STrNgMq72bhh2j5+3/0p737/t9rdG3isEdDx
-         LGXkArYJHIHgFgD+PPX7++gfjWykw8PP4bqaHvWWqjzS6JG7O8H/kFp+X/BzG8l8TLaT
-         zAiLYxkORQYelEI69mnKcZTbDqiAcXBUUktYeCsfQnQ6lt0DKOMFdMfhQbSfRhHNLp8v
-         J0yw==
+        b=GZI3F+RsFsioHkemb8gPQIzRmjp+h40Q08Rw1jd2/CMZwh7ywVKNupG06dPa4WkFY9
+         2Tqeef2gdEKaxiV9dnFuBu84bJQDgOoU5r6apFFF9Pxqz45WEmFVuIM20MAe4tKTRgiG
+         bdN+ID/E5RSDsSCqAMj1Ny1zWdnVujPOlRGv2l1eRXjtB3J5H/rafq6VLoBO48x7aApD
+         k8Vzqh+9lSQvtb5akB74NoBHj5EAWV9VpxqfUhGxuc03JOvnkpGedyObhHFLjJ0KJWYv
+         BYlnNpuhvUoCDgbc6yTLnqo6BXnqNsEO2q7j5tn63Rr78t34pQcYERd66YYePLWGwO0J
+         mOSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Ben52V9EK2Yj3sAQzRvzwRHMna24UHQvLAMSDa7JLy0=;
-        fh=3oC5h/Fn2s0B31dQqkHDfyRTYstuAnDRmnmc7/Gol+c=;
-        b=BH5Pg7pR6xZpPBvnrApwIyZ77HcUWmAG7ptFdAmpEVnq7+vb1O10CVoVqHQVSSnGVZ
-         9n7U36W7cF2Q9Z/yiwiAZLC7EnK0II/l4feB0rTmuBrL0NosSBDVmNeySkpqign7ew/n
-         +mlyHgd5dWu+c6k7/ZSuFf/UIXUGVGBPbWU1MH/CcgHj2yrRk6AmniyKMxWMAxLtKKwZ
-         vqw4E6S3o11RsiKVFyyz/0stmTg/1OoTkAiFYS5PVAEShS5tFLzZwgG8tTxOHkcy8ntm
-         d2fWyyUTULidg/jppiHnVX9n9JlFu+77o2XLttIoDe7R7y+xTX5orZgQkRs9ttj3NZAS
-         EnOQ==;
+        bh=42R2aSml+VKTf0LoVp/saQ6KjzZL2IBFiJZ1dmWdk5A=;
+        fh=qFJWFLdn9usdRQJpwONuWxMu3WzbDm5L0Uto7VYgE/c=;
+        b=PYT/ZUTbfCosdG1MONAAcHczTvYF8McvxIt51cRkqo0AJ2QFPxCpo5bUHut30KB/Ir
+         D915J/Vf099aLU5G01jA6S8D+zVDO4V48uhdfT/XTbhVN7crdLPv5Zet76/arx6+tOfT
+         fpcmyTzZE0TMxiaIvNb5MY6FbM+3u4N+UYii8rs4mjd+VoN9YldtaskLyutJWuacSBMW
+         B+owt0GNdQOPkUUd0KC8Wsd8PQBP20apaLhRZ4fDo/Aw0t2pkhrMH3FGn4ijCNXBvQzz
+         7J3C95gDg1X70rd8VHrnzVbTMRVAp22GoeLetSfGh9qBMdYnSy4UGv1IpAbYDVvabXXt
+         92pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HllkQLxY;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UcqTS11Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47016a00bdfsi20989351cf.108.2025.02.04.01.22.38
+        by mx.google.com with ESMTPS id af79cd13be357-7c02db4b5c4si223878585a.35.2025.02.04.01.22.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 01:22:38 -0800 (PST)
+        Tue, 04 Feb 2025 01:22:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HllkQLxY;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UcqTS11Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfF7i-0004wz-3e; Tue, 04 Feb 2025 04:21:38 -0500
+	id 1tfF87-0005lE-JV; Tue, 04 Feb 2025 04:22:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7f-0004q4-7N; Tue, 04 Feb 2025 04:21:35 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1tfF7m-00054P-FF; Tue, 04 Feb 2025 04:21:43 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tfF7c-00053v-6V; Tue, 04 Feb 2025 04:21:33 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-43690d4605dso36387665e9.0; 
- Tue, 04 Feb 2025 01:21:31 -0800 (PST)
+ id 1tfF7k-000566-AH; Tue, 04 Feb 2025 04:21:42 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-436202dd7f6so61910725e9.0; 
+ Tue, 04 Feb 2025 01:21:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738660890; x=1739265690; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1738660898; x=1739265698; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ben52V9EK2Yj3sAQzRvzwRHMna24UHQvLAMSDa7JLy0=;
- b=HllkQLxYSdcJZey1v+b6EVBe9FB7dPKK2z6sDUHaM9jwPvo/Odtiqdhz5CJa9TAqwD
- WwDIZHbb44R3k18jHTSyFIoZOoBlG+tH4KpYQcHOfm+hh6RLsSVHU/kt/0hiXzITkSkd
- 6RwtdXgtq0muSYadzhYWPuKZxy0IIOjxKkclqwWZw/Vjdnaf3lz/4Z4sdt+SjzQxG5y4
- BgqJemQskir+OooUebtvcfPpDJ+IlDM3eyeOrvdovGjEbLaf/3Zsa1b/QClOuXppVuOB
- CaAkjLmZNQ+ChF/P1+O0gX+kS/bmDycoDgMob4p2hjDH+ZVmvSGBginIr96V39P9GZPr
- lflQ==
+ bh=42R2aSml+VKTf0LoVp/saQ6KjzZL2IBFiJZ1dmWdk5A=;
+ b=UcqTS11ZTtaIjhtasp65i5oq4SZ9LYS0tOb2mkZ6q21FYZkgtQS0cgnLgCpnGzSvA2
+ ishB2MdG6FuY5NzeiSxMAe5tx46HzKCqk2adAqHPigAGfFn93p9BWXaTO6skLQgM5Geh
+ ptJIETqiE4LkDGCTuDf7KYnV4Lkj55HKdfKxNJWxebtQyn0BcaOdXdTgDKfqIRn1EfBh
+ CCRxxZftcHWSLCFzIRbWouP12Ozo3sHboOOeFRtPlHrCSHjiejle33CMUp5fXYX3axFN
+ fN6/d5F8NRGsgZA8KLgWug4A6IYNTcRlnoGBYvyKvp9q8wmZFY3FmaA5YZ3P8g7/T1Tm
+ 5m/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738660890; x=1739265690;
+ d=1e100.net; s=20230601; t=1738660898; x=1739265698;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ben52V9EK2Yj3sAQzRvzwRHMna24UHQvLAMSDa7JLy0=;
- b=orPOzpkPWJGOAkfCvD8nhc6+Rc6nKk/HTOTX+/HnXo/rby4715MiyCEkSG1R+CRtU0
- M7Vlb/REDzO9Xm55yKk69UOrSVaeF1lTXzusxKnyRelo1tTHqJf1xd61+V9B/54xO/2C
- /gE2SJ11mKk7bq9qdY4vHkXPJK0rtyNVMKqH3Nwpsi7YrbDZ6uNDYwxnQgynk/Y+TKVf
- +eWKnuoB47SzuzIKLUjBrMHLtosilHqUqlQcRKBn5Pym1ki1K8Utp3GA7qIPFRANx9hW
- 1Rk/N2jbBTgqkFOmrilv2hd8GH4LDrq7YR+G/g9vLhZaIu0XdmM/Jpzm2+rWmpUtSSx6
- Tvyw==
+ bh=42R2aSml+VKTf0LoVp/saQ6KjzZL2IBFiJZ1dmWdk5A=;
+ b=pg4n61AH7DZhi9C6EFHmxY1smBUwaDZFzKRuNPFw/u9MqFhdH4TmmlesiHh87bebfA
+ nCNN6uQSCZp5G2m5mrFJpk4PuvuAzzPS3C8D5uz4mYWBMnOWx21GhF2jQmTF8vb3H5OW
+ ufbAmWuTwnJDazy8AJIJBHuIVSCIj7UMdv9OGORmnQB2dWLazfv7/QnQOZBp22y6rEhd
+ clUILiL1rVe+9jTGgwEOB2XsFbjXSMNnbBpegT9MoOnush8bztc8POozV+ydBhTqgEUH
+ 2wwzXQj6PYaoM/EY7l+y1dymUZdcAPkYKG5VKuCfSlIVHSJQD2FF2NHD0kX1Sb5S1V2N
+ 3M8w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWSwccjRARCXFO2LrhKCUDg/XEoXQlIbi43oHqRY7HRP3pQBfBvgcLYwkuf6gkQeTVOx96Wsumprw==@nongnu.org
-X-Gm-Message-State: AOJu0YzlxtX5dYxfQAO5SSqrLmo1ldhOLesFC45EXpATwIcNFzaHgeG/
- V+JxV4EGq1bgVbCpVL+b+zSj0sCGL0eeOe/w136ijheObq3xUlgPg4kz4Q==
-X-Gm-Gg: ASbGncsi+O/1LFQpGDQRPD5Qbf0fc7F/zwNq4auQvnRcIJRiJAUkwT9z1ZfRmEkbVg0
- yuNTqHRD1R7kkd3q0U6jpRNCwxshyPO6wxLSfIS/WZ0vHZskHVXPF0Eg00MqQtCoOEWpDSAhYyZ
- 4ep1qrFx6CfPT5ITN5omea0iaGHETK1dFu2+lge0LYq/g2EM+kM910m78e9yVY6+Ib4ILFNETOC
- I6MtsOlLR9k1lc9TnlbgIjgGpCCFZi7I0wY3FoDR74G501cfQ/Sw+8CtpytSCWxVGWbvspR90ww
- DE94Ha4wSspGXt8vVIRFLx+hxCv84RkWl+v9iDuK8RolOUx0JdCtEtrL6RICfr9apa0YSOHqmNf
- 8afc/lxgwiA==
-X-Received: by 2002:a05:600c:3c9f:b0:434:eb73:b0c0 with SMTP id
- 5b1f17b1804b1-438dc3af760mr247409225e9.5.1738660889561; 
- Tue, 04 Feb 2025 01:21:29 -0800 (PST)
+ AJvYcCUJWo4pcxxfV/IQXzUuh7iK+lrDqv0VV3QCuIMe91aiVLxa3O4x778hmKUlJ9v1sqFwd0DlTQm7rw==@nongnu.org
+X-Gm-Message-State: AOJu0YzfmV2ebD8Hx2kFHNAh0L4SzWT3Vnid786t/7oApbT6sB6psvdq
+ 2GZAAow9Q7j6gfb7XHE6BqOHi247AMaCW2+ykz3/NSVapsX9gCw/yXx7/Q==
+X-Gm-Gg: ASbGncsgKxtqrCzFMsAZZCYKkQCYjDqvb4YQie6DazBO7nlLOdI62G/RIrxVFzn2Bb7
+ +TkxgMngWze6x97IgfiyUNmhQPWa+eBGr8BpPOCSJWAmJ906TTJOGMZvjPpf0AzVIkahrILABlo
+ ucBDsHP/xi7SXLvO7Je/uyFjEZLBT3ImQhqq0qNJZsGo9X1mVJovcfLp4AG2kuWzs3Wj9yGMsti
+ IIM2SeXVBPWc7yas4QQP6Seg4Bze+4RN5GG262W7YeoSAmuG7zEJi2W3mDOub8UCk1bizOYseC8
+ N1Id1hC2IBigfSMfMoKb2ZxkDTX/NAtFyIKOd7/3sbyxFi6QFUXj1yAfWNZtOGHgzcIFPYXon1k
+ McL/juawAiw==
+X-Received: by 2002:a05:600c:1d83:b0:434:a781:f5d5 with SMTP id
+ 5b1f17b1804b1-438dc43540bmr225404965e9.30.1738660897620; 
+ Tue, 04 Feb 2025 01:21:37 -0800 (PST)
 Received: from Georg-PC.fritz.box
  (p200300faaf0043006a2cae69f03f1c85.dip0.t-ipconnect.de.
  [2003:fa:af00:4300:6a2c:ae69:f03f:1c85])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.28
+ 5b1f17b1804b1-438e23d42c7sm187233595e9.3.2025.02.04.01.21.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2025 01:21:28 -0800 (PST)
+ Tue, 04 Feb 2025 01:21:36 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 07/18] hw/arm/fsl-imx8mp: Add USDHC storage controllers
-Date: Tue,  4 Feb 2025 10:21:01 +0100
-Message-ID: <20250204092112.26957-8-shentey@gmail.com>
+Subject: [PATCH v2 15/18] hw/arm/fsl-imx8mp: Add USB support
+Date: Tue,  4 Feb 2025 10:21:09 +0100
+Message-ID: <20250204092112.26957-16-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250204092112.26957-1-shentey@gmail.com>
 References: <20250204092112.26957-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,205 +139,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ra7NjKKGBYX4
+X-TUID: JNjML/wC9YZQ
 
-The USDHC emulation allows for running real-world images such as those generated
-by Buildroot. Convert the board documentation accordingly instead of running a
-Linux kernel with ephemeral storage.
+Split the USB MMIO regions to better keep track of the implemented vs.
+unimplemented regions.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/system/arm/imx8mp-evk.rst | 16 +++++++++++-----
- include/hw/arm/fsl-imx8mp.h    |  7 +++++++
- hw/arm/fsl-imx8mp.c            | 28 ++++++++++++++++++++++++++++
- hw/arm/imx8mp-evk.c            | 18 ++++++++++++++++++
+ docs/system/arm/imx8mp-evk.rst |  1 +
+ include/hw/arm/fsl-imx8mp.h    | 12 +++++++++++
+ hw/arm/fsl-imx8mp.c            | 37 ++++++++++++++++++++++++++++++++--
  hw/arm/Kconfig                 |  1 +
- 5 files changed, 65 insertions(+), 5 deletions(-)
+ 4 files changed, 49 insertions(+), 2 deletions(-)
 
 diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
-index 8f1237c74e..475c42d76a 100644
+index 4109387b6e..b3d657be10 100644
 --- a/docs/system/arm/imx8mp-evk.rst
 +++ b/docs/system/arm/imx8mp-evk.rst
-@@ -13,6 +13,7 @@ The ``imx8mp-evk`` machine implements the following devices:
-  * Up to 4 Cortex-A53 Cores
-  * Generic Interrupt Controller (GICv3)
-  * 4 UARTs
-+ * 3 USDHC Storage Controllers
-  * Secure Non-Volatile Storage (SNVS) including an RTC
-  * Clock Tree
- 
-@@ -27,17 +28,22 @@ Direct Linux Kernel Boot
- 
- Probably the easiest way to get started with a whole Linux system on the machine
- is to generate an image with Buildroot. Version 2024.11.1 is tested at the time
--of writing and involves two steps. First run the following commands in the
-+of writing and involves three steps. First run the following commands in the
- toplevel directory of the Buildroot source tree:
- 
- .. code-block:: bash
- 
--  $ echo "BR2_TARGET_ROOTFS_CPIO=y" >> configs/freescale_imx8mpevk_defconfig
-   $ make freescale_imx8mpevk_defconfig
-   $ make
- 
- Once finished successfully there is an ``output/image`` subfolder. Navigate into
--it patch the device tree needs to be patched with the following commands which
-+it and resize the SD card image to a power of two:
-+
-+.. code-block:: bash
-+
-+  $ qemu-img resize sdcard.img 256M
-+
-+Finally, the device tree needs to be patched with the following commands which
- will remove the ``cpu-idle-states`` properties from CPU nodes:
- 
- .. code-block:: bash
-@@ -54,5 +60,5 @@ Now that everything is prepared the newly built image can be run in the QEMU
-       -display none -serial null -serial stdio \
-       -kernel Image \
-       -dtb imx8mp-evk-patched.dtb \
--      -initrd rootfs.cpio \
--      -append "root=/dev/ram"
-+      -append "root=/dev/mmcblk2p2" \
-+      -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
+@@ -16,6 +16,7 @@ The ``imx8mp-evk`` machine implements the following devices:
+  * 3 USDHC Storage Controllers
+  * 1 Designware PCI Express Controller
+  * 1 Ethernet Controller
++ * 2 Designware USB 3 Controllers
+  * 5 GPIO Controllers
+  * 6 I2C Controllers
+  * 3 SPI Controllers
 diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index 26e24e99a1..349d55ca88 100644
+index e292c31a3d..5247e972b8 100644
 --- a/include/hw/arm/fsl-imx8mp.h
 +++ b/include/hw/arm/fsl-imx8mp.h
-@@ -15,6 +15,7 @@
- #include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx8mp_analog.h"
- #include "hw/misc/imx8mp_ccm.h"
-+#include "hw/sd/sdhci.h"
+@@ -24,6 +24,7 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/ssi/imx_spi.h"
+ #include "hw/timer/imx_gpt.h"
++#include "hw/usb/hcd-dwc3.h"
+ #include "hw/watchdog/wdt_imx2.h"
  #include "qom/object.h"
  #include "qemu/units.h"
- 
-@@ -28,6 +29,7 @@ enum FslImx8mpConfiguration {
-     FSL_IMX8MP_NUM_CPUS         = 4,
+@@ -42,6 +43,7 @@ enum FslImx8mpConfiguration {
+     FSL_IMX8MP_NUM_I2CS         = 6,
      FSL_IMX8MP_NUM_IRQS         = 160,
      FSL_IMX8MP_NUM_UARTS        = 4,
-+    FSL_IMX8MP_NUM_USDHCS       = 3,
++    FSL_IMX8MP_NUM_USBS         = 2,
+     FSL_IMX8MP_NUM_USDHCS       = 3,
+     FSL_IMX8MP_NUM_WDTS         = 3,
  };
+@@ -62,6 +64,7 @@ struct FslImx8mpState {
+     IMXFECState        enet;
+     SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
+     IMX2WdtState       wdt[FSL_IMX8MP_NUM_WDTS];
++    USBDWC3            usb[FSL_IMX8MP_NUM_USBS];
+     DesignwarePCIEHost pcie;
+     FslImx8mPciePhyState   pcie_phy;
+     OrIRQState         gpt5_gpt6_irq;
+@@ -199,6 +202,12 @@ enum FslImx8mpMemoryRegions {
+     FSL_IMX8MP_UART4,
+     FSL_IMX8MP_USB1,
+     FSL_IMX8MP_USB2,
++    FSL_IMX8MP_USB1_DEV,
++    FSL_IMX8MP_USB2_DEV,
++    FSL_IMX8MP_USB1_OTG,
++    FSL_IMX8MP_USB2_OTG,
++    FSL_IMX8MP_USB1_GLUE,
++    FSL_IMX8MP_USB2_GLUE,
+     FSL_IMX8MP_USDHC1,
+     FSL_IMX8MP_USDHC2,
+     FSL_IMX8MP_USDHC3,
+@@ -234,6 +243,9 @@ enum FslImx8mpIrqs {
+     FSL_IMX8MP_I2C3_IRQ     = 37,
+     FSL_IMX8MP_I2C4_IRQ     = 38,
  
- struct FslImx8mpState {
-@@ -39,6 +41,7 @@ struct FslImx8mpState {
-     IMX8MPAnalogState  analog;
-     IMX7SNVSState      snvs;
-     IMXSerialState     uart[FSL_IMX8MP_NUM_UARTS];
-+    SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
- };
- 
- enum FslImx8mpMemoryRegions {
-@@ -184,6 +187,10 @@ enum FslImx8mpMemoryRegions {
- };
- 
- enum FslImx8mpIrqs {
-+    FSL_IMX8MP_USDHC1_IRQ   = 22,
-+    FSL_IMX8MP_USDHC2_IRQ   = 23,
-+    FSL_IMX8MP_USDHC3_IRQ   = 24,
++    FSL_IMX8MP_USB1_IRQ     = 40,
++    FSL_IMX8MP_USB2_IRQ     = 41,
 +
-     FSL_IMX8MP_UART1_IRQ    = 26,
-     FSL_IMX8MP_UART2_IRQ    = 27,
-     FSL_IMX8MP_UART3_IRQ    = 28,
+     FSL_IMX8MP_GPT1_IRQ      = 55,
+     FSL_IMX8MP_GPT2_IRQ      = 54,
+     FSL_IMX8MP_GPT3_IRQ      = 53,
 diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 32ca76c671..3e9fedf988 100644
+index 665123cf9c..14d696957a 100644
 --- a/hw/arm/fsl-imx8mp.c
 +++ b/hw/arm/fsl-imx8mp.c
-@@ -210,6 +210,11 @@ static void fsl_imx8mp_init(Object *obj)
-         snprintf(name, NAME_SIZE, "uart%d", i + 1);
-         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
+@@ -40,8 +40,14 @@ static const struct {
+     [FSL_IMX8MP_VPU_VC8000E_ENCODER] = { 0x38320000, 2 * MiB, "vpu_vc8000e_encoder" },
+     [FSL_IMX8MP_VPU_G2_DECODER] = { 0x38310000, 2 * MiB, "vpu_g2_decoder" },
+     [FSL_IMX8MP_VPU_G1_DECODER] = { 0x38300000, 2 * MiB, "vpu_g1_decoder" },
+-    [FSL_IMX8MP_USB2] = { 0x38200000, 1 * MiB, "usb2" },
+-    [FSL_IMX8MP_USB1] = { 0x38100000, 1 * MiB, "usb1" },
++    [FSL_IMX8MP_USB2_GLUE] = { 0x382f0000, 0x100, "usb2_glue" },
++    [FSL_IMX8MP_USB2_OTG] = { 0x3820cc00, 0x100, "usb2_otg" },
++    [FSL_IMX8MP_USB2_DEV] = { 0x3820c700, 0x500, "usb2_dev" },
++    [FSL_IMX8MP_USB2] = { 0x38200000, 0xc700, "usb2" },
++    [FSL_IMX8MP_USB1_GLUE] = { 0x381f0000, 0x100, "usb1_glue" },
++    [FSL_IMX8MP_USB1_OTG] = { 0x3810cc00, 0x100, "usb1_otg" },
++    [FSL_IMX8MP_USB1_DEV] = { 0x3810c700, 0x500, "usb1_dev" },
++    [FSL_IMX8MP_USB1] = { 0x38100000, 0xc700, "usb1" },
+     [FSL_IMX8MP_GPU2D] = { 0x38008000, 32 * KiB, "gpu2d" },
+     [FSL_IMX8MP_GPU3D] = { 0x38000000, 32 * KiB, "gpu3d" },
+     [FSL_IMX8MP_QSPI1_RX_BUFFER] = { 0x34000000, 32 * MiB, "qspi1_rx_buffer" },
+@@ -233,6 +239,11 @@ static void fsl_imx8mp_init(Object *obj)
+         object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDHC);
      }
-+
-+    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
-+        snprintf(name, NAME_SIZE, "usdhc%d", i + 1);
-+        object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDHC);
+ 
++    for (i = 0; i < FSL_IMX8MP_NUM_USBS; i++) {
++        snprintf(name, NAME_SIZE, "usb%d", i);
++        object_initialize_child(obj, name, &s->usb[i], TYPE_USB_DWC3);
 +    }
- }
- 
- static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-@@ -350,6 +355,28 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(gicdev, serial_table[i].irq));
++
+     for (i = 0; i < FSL_IMX8MP_NUM_ECSPIS; i++) {
+         snprintf(name, NAME_SIZE, "spi%d", i + 1);
+         object_initialize_child(obj, name, &s->spi[i], TYPE_IMX_SPI);
+@@ -528,6 +539,27 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                            qdev_get_gpio_in(gicdev, usdhc_table[i].irq));
      }
  
-+    /* USDHCs */
-+    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
++    /* USBs */
++    for (i = 0; i < FSL_IMX8MP_NUM_USBS; i++) {
 +        static const struct {
 +            hwaddr addr;
 +            unsigned int irq;
-+        } usdhc_table[FSL_IMX8MP_NUM_USDHCS] = {
-+            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC1].addr, FSL_IMX8MP_USDHC1_IRQ },
-+            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC2].addr, FSL_IMX8MP_USDHC2_IRQ },
-+            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
++        } usb_table[FSL_IMX8MP_NUM_USBS] = {
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USB1].addr, FSL_IMX8MP_USB1_IRQ },
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USB2].addr, FSL_IMX8MP_USB2_IRQ },
 +        };
 +
-+        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
-+                                 SDHCI_VENDOR_IMX, &error_abort);
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "p2", 1);
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "p3", 1);
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "slots", 2);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usb[i]), errp)) {
 +            return;
 +        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0, usdhc_table[i].addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-+                           qdev_get_gpio_in(gicdev, usdhc_table[i].irq));
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0, usb_table[i].addr);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i].sysbus_xhci), 0,
++                           qdev_get_gpio_in(gicdev, usb_table[i].irq));
 +    }
 +
-     /* SNVS */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
-         return;
-@@ -367,6 +394,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     /* ECSPIs */
+     for (i = 0; i < FSL_IMX8MP_NUM_ECSPIS; i++) {
+         static const struct {
+@@ -632,6 +664,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
          case FSL_IMX8MP_RAM:
          case FSL_IMX8MP_SNVS_HP:
          case FSL_IMX8MP_UART1 ... FSL_IMX8MP_UART4:
-+        case FSL_IMX8MP_USDHC1 ... FSL_IMX8MP_USDHC3:
++        case FSL_IMX8MP_USB1 ... FSL_IMX8MP_USB2:
+         case FSL_IMX8MP_USDHC1 ... FSL_IMX8MP_USDHC3:
+         case FSL_IMX8MP_WDOG1 ... FSL_IMX8MP_WDOG3:
              /* device implemented and treated above */
-             break;
- 
-diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-index 2756d4c21c..27d9e9e8ee 100644
---- a/hw/arm/imx8mp-evk.c
-+++ b/hw/arm/imx8mp-evk.c
-@@ -11,6 +11,7 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/fsl-imx8mp.h"
- #include "hw/boards.h"
-+#include "hw/qdev-properties.h"
- #include "system/qtest.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
-@@ -40,6 +41,23 @@ static void imx8mp_evk_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
-                                 machine->ram);
- 
-+    for (int i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
-+        BusState *bus;
-+        DeviceState *carddev;
-+        BlockBackend *blk;
-+        DriveInfo *di = drive_get(IF_SD, i, 0);
-+
-+        if (!di) {
-+            continue;
-+        }
-+
-+        blk = blk_by_legacy_dinfo(di);
-+        bus = qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
-+        carddev = qdev_new(TYPE_SD_CARD);
-+        qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-+        qdev_realize_and_unref(carddev, bus, &error_fatal);
-+    }
-+
-     if (!qtest_enabled()) {
-         arm_load_kernel(&s->cpu[0], machine, &boot_info);
-     }
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 0079c51734..7af8337354 100644
+index 7767a8725a..6daa9c651f 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -583,6 +583,7 @@ config FSL_IMX8MP
-     select FSL_IMX8MP_ANALOG
-     select FSL_IMX8MP_CCM
-     select IMX
-+    select SDHCI
+@@ -592,6 +592,7 @@ config FSL_IMX8MP
+     select PCI_EXPRESS_FSL_IMX8M_PHY
+     select SDHCI
      select UNIMP
++    select USB_DWC3
+     select WDT_IMX2
  
  config FSL_IMX8MP_EVK
 -- 

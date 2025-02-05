@@ -1,136 +1,138 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1023845njb;
-        Wed, 5 Feb 2025 09:07:24 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXoLmifgitvKeWtxv7trcCYjMHwHUh+13RNVAmglsd2S4W31SK5XVn9y0rhB5z7WeW4oG9sMOGb5IjfIQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHW6XWu9HgGupBEO4meilYClkQ7cnPNraFGomCjsuKMQOTKU9A4DnmGKTJgl/XlToKbTWIa
-X-Received: by 2002:a05:620a:2b4d:b0:7b6:d631:266f with SMTP id af79cd13be357-7c039fc3f7emr488395085a.14.1738775244295;
-        Wed, 05 Feb 2025 09:07:24 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738775244; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1054960njb;
+        Wed, 5 Feb 2025 09:59:01 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCW1qDNRHJkoncIWqNqXvtB8RuNbBGqW5inVXoZa3fAJCpC+Jsd1TVSnJDervpz9ais2Mq+8I2h44fmZpA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG2omg6T5/PS0FTMOwkABPGjDvmNsPJCWRT2iwbH5YN2xRAJtUamCGLeLjhr1xRZ8aW1cED
+X-Received: by 2002:a17:902:f609:b0:216:42fd:79d2 with SMTP id d9443c01a7336-21f17edb8d5mr60925885ad.49.1738778341081;
+        Wed, 05 Feb 2025 09:59:01 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738778341; cv=pass;
         d=google.com; s=arc-20240605;
-        b=J+fRsHXpOUrhBtqZ2Kc9ErPJNysMncSv5yX57MJcFd07QyEJovHuIXKJdTJh4bigPc
-         xD8zYs55gdABgtCz2pTO683sjjcu36hGXiJK/2VhrHZILX8q7ikwNbWo2+SpZiX/I8Ou
-         pf4ljDVeOINZVDUDWPaF07wksFre81hmvwphNO3Nl7IbiUcS0zA8+ixE5/U3yommqZlk
-         yRDZb72qJamrOxpTs+c/XU+nLFZazuzjlBfkI1h1CkJGKx/s1hrMFkzXHy1l90W6WdrC
-         4HihSCA+E+kGhUKBuyPmu2zAXH+8HizYG7VfIUtm7KX2t+hjNjoEF6URijQ7A+fslNLV
-         QNfA==
+        b=J9E+bDl3r7LdJMQXqPGJYlZEpYbN9fFxyXiaIDn5hxy3U32iPvOQCrIWFILJu7TJ18
+         w7djw4w0Eb1RLXpaWRAGhNP/JJaUTRWZo4vbL0SXWqwaKyrWvIJtu5nJIgEImhRC3x5i
+         chSDr6nqnzLTlNfo9YMRdL/HZKxz0q66/TnJkgxXE2+5s2JCQBsw53uH3qFhx+yoeVVT
+         B3qjBavVmOYoLjzFwPe4bXoKCTw3BKZTwJAK3W5s4NDz54d7lwJxKJpg6vTbSy7ZUmOp
+         OBVXdKzOnrlo59P8itLnLvpBWqsGDOHoNpn3q9CXtV8gY2quQVPVCejDGwcUTJdf2oyy
+         a6ew==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=p+OLTbGqj/iIpCK8/1CkoJoVzjfpKlls86EfJDj73zs=;
-        fh=KbiztnrlcvI52nKa/X7WmanTMdeh4gvY2634uwGgDsM=;
-        b=EqwDlycDrVnQ0oTRxzEU5T0iYUjysFUotrHsRBLDkdezsqkElxLu/FAUaouvXxEUgB
-         PhC8mUJgFyzlygLR63ztlASrzIkJ7cZyNhO1k80dlwGhBM8jmKzpQZa+uKQKEpMi0hv5
-         93kBIeOjna0ENxmmSEonbksFZX9VXtD+MORGCR1TA/bknk7cIQGtLBOSMYWeDja6DhOw
-         3pE/nXcsJcx8UnDgDLrveuKDVsOzG3YwN0CR8ZRD6q9NNGm21vW8LMszSL4Mt3mfisLj
-         VvYon5uSdZuOuJMhmDmQ2aiP/J4nRvleBB34yS7kWxJ0cZKQNka6Mbgklg8EYovXHZz0
-         m6VA==;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
+        fh=Zan3QCJI6wvnvc2cGLYYY71l68/y4WIhRq6l3ut+WFk=;
+        b=Q7CdwkRZnBViIDdQpM/SsI0x9WBWHbfs99Bue4pV3YVvhOsQzWGN6vzJLoIFmOVhW1
+         gvfhF31Gf5wvBNAsIX3uEfTGnawFInL/P01I+iqqV/ksvBEUeyfrQicKoQEuRIwzmGaO
+         Eeqj4tdkvg+Ka0C6Cxbl+A9DlERt7ChxwEvHrMHl23vywJnnxMOTkeZDq+CVAF4hhLhY
+         CDkyfK84r+O5RFpPFnifeKT65qGow67O7RYnW9sAjLEx1uL6QjX/LKajFBWQD9vXjfUk
+         6CxMggzIkQ9hiIM7IWW+wXur8GzD4xkCy/NB/Cmj5ax6pOBjDkvJireQNuMb80GWl1u5
+         gitg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M445v1lC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBhbfydL;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7c02db4dd01si522698285a.28.2025.02.05.09.07.24
+Return-Path: <kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d9443c01a7336-21de5f395e1si197760805ad.408.2025.02.05.09.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 09:07:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Wed, 05 Feb 2025 09:59:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M445v1lC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBhbfydL;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37369-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 4659116503C
-	for <alex.bennee@linaro.org>; Wed,  5 Feb 2025 17:07:23 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4476A3A2911
+	for <alex.bennee@linaro.org>; Wed,  5 Feb 2025 17:58:53 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3F41E1DC9B1;
-	Wed,  5 Feb 2025 17:07:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 455F91FC0EB;
+	Wed,  5 Feb 2025 17:58:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="M445v1lC"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cBhbfydL"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 232741DCB0E
-	for <kvm@vger.kernel.org>; Wed,  5 Feb 2025 17:07:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DD8A1519AD
+	for <kvm@vger.kernel.org>; Wed,  5 Feb 2025 17:58:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738775240; cv=none; b=mIzQQg652OLSd68gNCzMEUt5HNOx8fS+VVAI8Zvpqsh4wnvXYyjau5kYNcoQmtNX4rdkNOyWeVMpi6PcEsIsYpA7spu58jwTyTvy60D1duCtdm4uF/voE0Fn4VGXay+BEiKsW+UYb4c+gIlORzATqOeqBVY/Q0q2VoSQW2QNWMU=
+	t=1738778337; cv=none; b=p1sWne1OOqJsXoATxArl/SapWyWY79PGibHF80cIMLqC8czMIyNM9EdXtvFsl4lh87zLEmTifi9l7qIkLuwlaEdNZI4txPHl1Yg/wmiH1FR0NdQcHU13wQqFpdG1/Ogh+pY/Un/IexUc8eL9+OrVshB1deTu/Jp23HIpwWyDigk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738775240; c=relaxed/simple;
-	bh=2zNgr1K9UmvH5cM6uuJglJngBS5qC2wi8bIILVEWPsc=;
+	s=arc-20240116; t=1738778337; c=relaxed/simple;
+	bh=eTmoRU2cR+lb8O0cTSSpNG+hNS9FlxsuqZkUF/fV4Fc=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=CGrRzJ1xGz4r0mLo0IOcyw9Qoo+9WQ4Sh70gsfFVH2kY+eDdsFTZT3165aB9QpphU+fPdHe1JqE097vMvPliY4CJl1UrzGJ7VvKG59i7lwlWAQmbDUcrzPuP3z6Qh7aJQbYbDWN1JzzFxPVEYRJ5GgjBqgwAdvWo2LC9bt/zDrY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=M445v1lC; arc=none smtp.client-ip=170.10.133.124
+	 Content-Type:Content-Disposition:In-Reply-To; b=k3FC594syY7moe3l46TEAfyLEWvXI/Zpary7v3UPgCYEu6on/yVNhaHssiF7mvNkck28abfW4Y0IxU1WWxWUn1wHbFpA8t0MGdwMd6jLA2R9nelHFw84nRouR+t9rDH6CJlv2ky+f32V9CngylG8NVbHqrci1pHGNRSjnLAG9TU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cBhbfydL; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738775235;
+	s=mimecast20190719; t=1738778334;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=p+OLTbGqj/iIpCK8/1CkoJoVzjfpKlls86EfJDj73zs=;
-	b=M445v1lCCdgaWk0Ab7ncWc2bhvV93iDcO3ZF6eb2eYqx815bDcl968BOgCzckI0Iq5ahiJ
-	yQ+rxnD0Sx9QoRVmaI43lyZybhEid94iX2/AmucOkS3hg4CiKkuQc09G9mn1hqQvW3fT78
-	xsjxe6JVTvvyVs907B4YHb+w6LmMMj0=
+	bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
+	b=cBhbfydL1mZLbqnyivdDtgVQH/b1EGRG9o18rYnI6xixAtaTKL3/80DhcA1r9sQGcHo14p
+	03ohJq1MnW3+gT41RyuhbilTxBXIUsiljWHNIENQzuiOFDIdgWVoeJBcFyX2X7MfDJoURi
+	mio2oPT7YU6U8ivJq7DTM7dEirEZM9Y=
 Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
  [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-74-Zu6YVWzaNxC3p8lwmE6fMA-1; Wed, 05 Feb 2025 12:07:14 -0500
-X-MC-Unique: Zu6YVWzaNxC3p8lwmE6fMA-1
-X-Mimecast-MFC-AGG-ID: Zu6YVWzaNxC3p8lwmE6fMA
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-467b19b55d6so358041cf.2
-        for <kvm@vger.kernel.org>; Wed, 05 Feb 2025 09:07:14 -0800 (PST)
+ us-mta-93-d8TcxbcjPnGbF9Ic22Rbgg-1; Wed, 05 Feb 2025 12:58:53 -0500
+X-MC-Unique: d8TcxbcjPnGbF9Ic22Rbgg-1
+X-Mimecast-MFC-AGG-ID: d8TcxbcjPnGbF9Ic22Rbgg
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-46790c5b1a5so1953071cf.2
+        for <kvm@vger.kernel.org>; Wed, 05 Feb 2025 09:58:52 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738775233; x=1739380033;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p+OLTbGqj/iIpCK8/1CkoJoVzjfpKlls86EfJDj73zs=;
-        b=OHphPn9NSmbod6k9YwalE9ZfCdyqXQUx1nFWmP8vLC2J4/6PEUwgrVw5T7+/yeQwlc
-         a2mUV6UTdCiizK6QAi9Mxt/+W8HT8LJphkcYX13C7/Vrd913guOb2OVYHt2ZQ8R4Fz+q
-         yNxkDVYMUyY+NYeCYYQCKDctlCWLDuD5j4xOL5mQv3V4Y+qynHDklzy8PD94z7+y2Z+u
-         3TgqY51ZlEP8QSppFqddL2P4yPYPNb2NIgtQ2atoFUgCrjANR85zISg45NkBGFKD5We4
-         OfO2AHSSPBVpgAE+7oIdkCDUOjM+Q6vkZ0zc5CurKNVxAGt/CtQh9jMj/5/go/ekfNcc
-         Hdpg==
-X-Forwarded-Encrypted: i=1; AJvYcCWG7fk1CSUJFU5JWCWCthNjFfacJOCwgJZTbIuEeXVNOeHLZevQvVozhGnyEWQM3qetw10=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwRhaoNOkzxq9I0MvsdwLQVYZCsdG+qr0VSnO46TBui0ZcQrvix
-	l2GwHb6r2Tpm96ZoDSgR9u7fEsNXD+OBugVj+DVQJYxYpq1+onBYqaAUl6G0Ydv7BY1yL2CgFij
-	OTHOv/e9QY3N0kkgYJDq8YfvvpgQDTC7pP5DJLt41ogy6EkWPUWO9gfUmeg==
-X-Gm-Gg: ASbGncsaPwm+z9JaVjXdBuix941fnE/JrnalKPUD9jYc2I4wDhM9cpZNmjxUISrurBv
-	HO5HjL/7GWnba3DVrFyop5c3KFspJSsDWAM845dtU91VxY+07sxMYw6hV435mS07OiKt17iCgRJ
-	kr+V5kSR6+ruFqJqZLMjjMXMmhTkXkU/uvG43GF3A+/xY4szsCQ40gAbRQjFmy1pACC2crbV/MD
-	JVxmJt9ldvGM3KO0nK83l2os23SXnoLUoHkO93ce7Om8SZ1pQJDNKj0/E6IITmXAVSRD+5KOtV9
-	37vjwDAbYffD4ORF0Fh4/fc7I+JqEbQt4HO5CO+qdJJun2YI
-X-Received: by 2002:a05:622a:1209:b0:46c:791f:bf56 with SMTP id d75a77b69052e-47028165422mr48419601cf.1.1738775233116;
-        Wed, 05 Feb 2025 09:07:13 -0800 (PST)
-X-Received: by 2002:a05:622a:1209:b0:46c:791f:bf56 with SMTP id d75a77b69052e-47028165422mr48419311cf.1.1738775232822;
-        Wed, 05 Feb 2025 09:07:12 -0800 (PST)
+        d=1e100.net; s=20230601; t=1738778332; x=1739383132;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
+        b=cay/GuY7w+bmoltO5ZyGJoOhAhR/FETn8t6tzkX7uB6X0go4AVu+DpiQ6lRbDE3Vmc
+         D5bOOSrUgibkp6CaqPPi5+oAnR6tty1bxqG/eSK15z2na1SOWUw+AMYGdUQaJ+xCkslB
+         BjAh8WGM8ZBIqzWfDjcCOvT4r3bwd5SththrEID6jGm9RZl1sU0so47ayjndDJhVadlK
+         KJHR5hFtxxBFzXg0/zsOhbIguO63byvsxAEUK4ALCS5mV+0QIu5kBmrJgzNBVK/Kjabv
+         MDB6EfeX2HD/kHXBbnJapRX7Pn7cLn2SN9neIvWfXo58dhCbk/xGt2QYxDtWXBg3UJF+
+         h1qw==
+X-Forwarded-Encrypted: i=1; AJvYcCUuQ14vmVR6cdJ7mTxyHbWPbbQFei0rNyCMr2h3SEqhb/r5kXZf3Bac5hdczbSHlNY3dj0=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwNnHpWAx0XjhCF+V0xFsxwr/9feGdSKqQfes8Ti1f1x+BdTQdv
+	Agit5D6T1lplPIwKXsUb1kmKw+ZxQuThuKUdt2LfNdW8JwZaOpVkTZNBPLfC92h4FSr3FaLXsda
+	Tf1gcXS7LEP2rgI6j9vYqRGD//kZIiKdbGmleyzzIZKcqM9+Xqg==
+X-Gm-Gg: ASbGnctzH6SpNpwI6Gm7x5VsL939MrHpsXsuppSttCU5wSdYALWyUNMzCMfzQZDuXLB
+	2aCzcdyMN97XLc4EG03HH/5UEcc7b0gpe5ise8Xp9v1zli2Yb2w153jYT3PcEXsvLg6hDQXJCM5
+	OtnkXGL7eGNYcZlvk1O2/tWgu61bsyh1NwXQDctXSqvajfXNMq0VQe/zRmRrggiCobEdQ1ZnWkm
+	wEKL7EkkB1jag3LIEJkJw+pHoXT0yzFISoFPFh4HG1+XVOlk7y3TSGYYQO7MlyWnnYZplYKma6U
+	R8lcozq6LaMaZ6ocmf72+f2FRv5agdz3unP7C9UC/fB1tBxE
+X-Received: by 2002:a05:622a:1807:b0:46c:728c:8862 with SMTP id d75a77b69052e-4702818fd7emr59106681cf.31.1738778332346;
+        Wed, 05 Feb 2025 09:58:52 -0800 (PST)
+X-Received: by 2002:a05:622a:1807:b0:46c:728c:8862 with SMTP id d75a77b69052e-4702818fd7emr59106171cf.31.1738778332012;
+        Wed, 05 Feb 2025 09:58:52 -0800 (PST)
 Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com. [99.254.114.190])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46fdf0a74c6sm72351171cf.6.2025.02.05.09.07.10
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46fdf0c62d4sm72570071cf.17.2025.02.05.09.58.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 09:07:12 -0800 (PST)
-Date: Wed, 5 Feb 2025 12:07:06 -0500
+        Wed, 05 Feb 2025 09:58:51 -0800 (PST)
+Date: Wed, 5 Feb 2025 12:58:48 -0500
 From: Peter Xu <peterx@redhat.com>
 To: William Roche <william.roche@oracle.com>
-Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, pbonzini@redhat.com,
+Cc: David Hildenbrand <david@redhat.com>, kvm@vger.kernel.org,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
 	richard.henderson@linaro.org, philmd@linaro.org,
 	peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
 	eduardo@habkost.net, marcel.apfelbaum@gmail.com,
 	wangyanan55@huawei.com, zhao1.liu@intel.com,
 	joao.m.martins@oracle.com
-Subject: Re: [PATCH v7 3/6] accel/kvm: Report the loss of a large memory page
-Message-ID: <Z6Oaukumli1eIEDB@x1.local>
+Subject: Re: [PATCH v7 6/6] hostmem: Handle remapping of RAM
+Message-ID: <Z6Om2CiOEnbKzNEk@x1.local>
 References: <20250201095726.3768796-1-william.roche@oracle.com>
- <20250201095726.3768796-4-william.roche@oracle.com>
- <Z6JH_OyppIA7WFjk@x1.local>
- <3f3ebbe8-be97-4827-a8c5-6777dea08707@oracle.com>
+ <20250201095726.3768796-7-william.roche@oracle.com>
+ <7a899f00-833e-4472-abc5-b2b9173eb133@redhat.com>
+ <Z6JVQYDXI2h8Krph@x1.local>
+ <a6f08213-e4a3-41af-9625-a88417a9d527@redhat.com>
+ <Z6J1hFuAvpA78Ram@x1.local>
+ <a3d7a8cc-aad8-4d98-a5ba-79fad20b9df6@oracle.com>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -139,72 +141,122 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <3f3ebbe8-be97-4827-a8c5-6777dea08707@oracle.com>
-X-TUID: nPeYfwYxJ7/w
+In-Reply-To: <a3d7a8cc-aad8-4d98-a5ba-79fad20b9df6@oracle.com>
+X-TUID: 6rMzt7pcMF/u
 
-On Wed, Feb 05, 2025 at 05:27:13PM +0100, William Roche wrote:
-> On 2/4/25 18:01, Peter Xu wrote:
-> > On Sat, Feb 01, 2025 at 09:57:23AM +0000, “William Roche wrote:
-> > > From: William Roche <william.roche@oracle.com>
+On Wed, Feb 05, 2025 at 05:27:50PM +0100, William Roche wrote:
+> On 2/4/25 21:16, Peter Xu wrote:
+> > On Tue, Feb 04, 2025 at 07:55:52PM +0100, David Hildenbrand wrote:
+> > > Ah, and now I remember where these 3 patches originate from: virtio-mem
+> > > handling.
 > > > 
-> > > In case of a large page impacted by a memory error, provide an
-> > > information about the impacted large page before the memory
-> > > error injection message.
+> > > For virtio-mem I want to register also a remap handler, for example, to
+> > > perform the custom preallocation handling.
 > > > 
-> > > This message would also appear on ras enabled ARM platforms, with
-> > > the introduction of an x86 similar error injection message.
-> > > 
-> > > In the case of a large page impacted, we now report:
-> > > Memory Error on large page from <backend>:<address>+<fd_offset> +<page_size>
-> > > 
-> > > The +<fd_offset> information is only provided with a file backend.
-> > > 
-> > > Signed-off-by: William Roche <william.roche@oracle.com>
+> > > So there will be at least two instances getting notified (memory backend,
+> > > virtio-mem), and the per-ramblock one would have only allowed to trigger one
+> > > (at least with a simple callback as we have today for ->resize).
 > > 
-> > This is still pretty kvm / arch relevant patch that needs some reviews.
+> > I see, we can put something into commit log with such on decisions, then
+> > we'll remember.
 > > 
-> > I wonder do we really need this - we could fetch ramblock mapping
-> > (e.g. hwaddr -> HVA) via HMP "info ramblock", and also dmesg shows process
-> > ID + VA.  IIUC we have all below info already as long as we do some math
-> > based on above.  Would that work too?
+> > Said that, this still sounds like a per-ramblock thing, so instead of one
+> > hook function we can also have per-ramblock notifier lists.
+> > 
+> > But I agree the perf issue isn't some immediate concern, so I'll leave that
+> > to you and William.  If so I think we should discuss that in the commit log
+> > too, so we decide to not care about perf until necessary (or we just make
+> > it per-ramblock..).
+> > 
+> > Thanks,
+> > 
 > 
-> The HMP command "info ramblock" is implemented with the ram_block_format()
-> function which returns a message buffer built with a string for each
-> ramblock (protected by the RCU_READ_LOCK_GUARD). Our new function copies a
-> struct with the necessary information.
 > 
-> Relaying on the buffer format to retrieve the information doesn't seem
-> reasonable, and more importantly, this buffer doesn't provide all the needed
-> data, like fd and fd_offset.
+> I agree that we could split this fix in 2 parts: The one fixing the
+> hugetlbfs (ignoring the preallocation setting for the moment), and the
+> notification mechanism as a second set of patches.
 > 
-> I would say that ram_block_format() and qemu_ram_block_info_from_addr()
-> serve 2 different goals.
+> The first part would be the 3 first patches (including a corrected version
+> of patch 2)  and the second part could be an adaptation of the next 3
+> patches, with their notification implementation dealing with merging, dump
+> *and* preallocation setup.
 > 
-> (a reimplementation of ram_block_format() with an adapted version of
-> qemu_ram_block_info_from_addr() taking the extra information needed could be
-> doable for example, but may not be worth doing for now)
+> 
+> But I'd be happy to help with the implementation of this 2nd aspect too:
+> 
+> In order to apply settings like preallocation to a RAMBLock we need to find
+> its associated HostMemoryBackend (where we have the 'prealloc' flag).
+> To do so, we record a RAMBlockNotifier in the HostMemoryBackend struct, so
+> that the notification triggered by the remap action:
+>    ram_block_notify_remap(block->host, offset, page_size);
+> will go through the list of notifiers ram_list.ramblock_notifiers to run the
+> not NULL ram_block_remapped entries on all of them.
+> 
+> For each of them, we know the associated HostMemoryBackend (as it contains
+> the RAMBlockNotifier), and we verify which one corresponds to the host
+> address given, so that we can apply the appropriate settings.
+> 
+> IIUC, my proposal (with David's code) currently has a per-HostMemoryBackend
+> notification.
+> 
+> Now if I want to implement a per-RAMBlock notification, would you suggest to
+> consider that the 'mr' attibute of a RAMBlock always points to a
+> HostMemoryBackend.mr, so that we could get the HostMemoryBackend associated
+> to the block from a
+>     container_of(block->mr, HostMemoryBackend, mr) ?
+> 
+> If this is valid, than we could apply the appropriate settings from there,
+> but can't we have RAMBlocks not pointing to a HostMemoryBackend.mr ?
 
-IIUC admin should be aware of fd_offset because the admin should be fully
-aware of the start offset of FDs to specify in qemu cmdlines, or in
-Libvirt. But yes, we can always add fd_offset into ram_block_format() if
-it's helpful.
+Yes, QEMU definitely has ramblocks that are not backed by memory backends.
+However each memory backend must have its ramblock.
 
-Besides, the existing issues on this patch:
+IIUC what we need to do is let host_memory_backend_memory_complete()
+register a per-ramblock notifier on top of its ramblock, which can be
+referenced by backend->mr.ramblock.
 
-  - From outcome of this patch, it introduces one ramblock API (which is ok
-    to me, so far), to do some error_report()s.  It looks pretty much for
-    debugging rather than something serious (e.g. report via QMP queries,
-    QMP events etc.).  From debug POV, I still don't see why this is
-    needed.. per discussed above.
+> 
+> 
+> I'm probably confused about what you are referring to.
+> So how would you suggest that I make the notification per-ramblock ?
+> Thanks in advance for your feedback.
+> 
+> 
+> I'll send a corrected version of the first 3 patches, unless you want to go
+> with the current version of the patches 4/6, 5/6 and 6/6, so that we can
+> deal with preallocation.
 
-  - From merge POV, this patch isn't a pure memory change, so I'll need to
-    get ack from other maintainers, at least that should be how it works..
+I don't feel strongly, but I can explain how the per-ramblock can be done.
 
-I feel like when hwpoison becomes a serious topic, we need some more
-serious reporting facility than error reports.  So that we could have this
-as separate topic to be revisited.  It might speed up your prior patches
-from not being blocked on this.
+One thing interesting I found is we actually have such notifier list
+already in ramblocks.. see:
+
+struct RAMBlock {
+    ...
+    QLIST_HEAD(, RAMBlockNotifier) ramblock_notifiers;
+    ...
+}
+
+I guess that's some leftover from the global ramblock notifier.. e.g. I
+tried remove that line and qemu compiles all fine.
+
+Then instead of removing it, we could make that the per-ramblock list.
+
+One way to do this is:
+
+  - Patch 1: refactor current code, let RAMBlock.resized() to be a notifier
+    instead of a fn() pointer passed over from
+    memory_region_init_resizeable_ram().  It means we can remove
+    RAMBlock.resized() but make fw_cfg_resized() becomes a notifier, taking
+    RAM_BLOCK_RESIZED event instead.
+
+  - Patch 2: introduce another RAM_BLOCK_REMAPPED event, then host backends
+    (probably, host_memory_backend_memory_complete() after alloc() done so
+    that the ramblock will always be available..) can register a notifier
+    only looking for REMAPPED.
+
+Then in the future virtio-mem can register similarly to specific ramblock
+on REMAPPED only.
 
 Thanks,
 

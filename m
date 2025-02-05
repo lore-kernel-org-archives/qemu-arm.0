@@ -1,76 +1,77 @@
-Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp102973dlb;
-        Tue, 4 Feb 2025 23:31:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUuyh0ATOrm3ZQd9xpSKC8MhjRm5R6Iq+F4Su3OPrsRF1UCS9HQIMuZj6/ZfeFy1KOF7qDvlakQ5EGoMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMo0JX1SoFEkmJ686DOuqYQdIFLm6MEx92fANcXUg4wwGqoUqZxCwEs01YhnF4Fz48CuTx
-X-Received: by 2002:ad4:5ce9:0:b0:6d8:8a60:ef2c with SMTP id 6a1803df08f44-6e42fb6a6a3mr29400806d6.2.1738740713510;
-        Tue, 04 Feb 2025 23:31:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738740713; cv=none;
+Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp102983dlb;
+        Tue, 4 Feb 2025 23:31:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWBMAE146W4cW/bl042vrYzSxYrlNtkSaxAhCQ+HnzQ5n9Qp0SLQxSjDShNjhP+Wbd0/W9yVMUnNOiozw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF60AqcUpbyxgZhqt9uPnR6sDY8frWEOUV8uA90g8Cfo7KL1mQuT/MF/+4sxRuOkEVhszB4
+X-Received: by 2002:a05:622a:10d:b0:467:706f:14b1 with SMTP id d75a77b69052e-4702816a681mr23474741cf.2.1738740716209;
+        Tue, 04 Feb 2025 23:31:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738740716; cv=none;
         d=google.com; s=arc-20240605;
-        b=E7WwHWbsju7ZTcv58YgGxnIAKVuv+qthAOWr/lgOJ7ZCfTet/sbBCVuOcqIxDcIUVf
-         1y8pbA+GekPuF5y3AcNQlP7QCwIgeVWYhm0YHNCEOC+goabfORrzY3cW2J054Ag2teht
-         Yt/e12pgUedVSGgtFA4loJjUXP+z0AfAUHVTgDhavy9neoFHn6HmNnCIqB56fk4rk0H9
-         Tvd8cgnAHbdnFsjbukbHHx6ougelF+4wTvJCRjcBVY8JRoTQFPEdNpQJcYJsurAbc8dK
-         UtppH+JD9TTySRgE13Q3bau1dhC8HL7yMzvjS3QEA40ZR8XvgERAPmeFM4mV97s/4FL2
-         45xw==
+        b=YHjNqQ4OGiIGjQp5NKFsfthv+hsiRAe7gOLcmigOTcoT+DJgHVYc2ihlwjatccZ2sI
+         t5dULbcCOMCsGSMIbv/TrwG/fcdVhlk+qhzcQVTk8uaMmMlr0g35IDd2ZUnKCFzNMCh/
+         uS2iDa3MJNZ81kZGgxZjjwtu6yyC12X6zmAVra5aE6OkxwWT2EJ9vKUJp5y7CdQN4WRX
+         tQEzXFVOWqclysYdhsEEehMTrZODrvc0+DtZSmfEpYm16GMywiN2PhVc/+H3DMd1ictR
+         0UYE0t8qw9Azi6/B8cffvj9nWHPD7U9lZQ96VhQRE3yNeZ6cQOFJ5TT9t/SS6fWDBE+C
+         FsjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=96U/ocB72XSh3Td1zbtQWGf/ENFjkKsL6BjJAi/99pU=;
-        fh=edHFb3qjMz04APyAGEv6k2Q280R5QJBLxoDRsCY/DyU=;
-        b=YCAlz6HUDySZgZLKGGNR8n1GuCwsAZdh8omCiY3dN02HpQuxl77J5Tw5OwcgcgbIjs
-         ngC7kld1XpP00uVjidU90bNQW9IJ0HradclFIU/EByRphqPeslc3yH5ZuIop6x0gnPwl
-         WvLjevAl6d5oYUCmWYbmf7bt00xM+hK98UaDDTJjVgWGN68c7fX6DRdE07Vcbn2Jh9os
-         HngK6l2F6CPI2/LUue9T4aLREP2sA/PWVFGg2gvRhRoYLPnz93X1fmQ0TJIaBgOzgvTS
-         pCDP8wopnS2dcqi6Cqr/bYovVhmx+DQXdB8CgYmZa5to+deiYt777gUuHXaeIQ4W1z7S
-         U4xw==;
+        bh=wYNJhdSRsvtm2NN03rlA4P8Lph1cotOWXc0BgGnVtLk=;
+        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
+        b=LSMTQfu8Z3a6Yk1N4UaJkwOP6w8ir+YOQG/9KSRqCZ399rJAltr7l8Fw384+70UNof
+         yl05c3BwLquAyLnn1dBXuCTQMeTGjHr4ALho4wtLYVKt0AUX9QkPKxPBlTb/LuoZRlhU
+         fYZFcEgOUUrIosU8VeTWz8EiRYzzMsjTGJK9WrpEnOLuWWtUCdKakmfStxfvtoFHIqM0
+         p/ty0+zMyYiotttXAj0nigvGWVwdtNjaBf/4dLcMjSuOyVRaKZA9HqHuC6Ii901ehLpp
+         rlWdnQgn3vrKvIUSW/gFEtneKjlh5bfrnOy851nBSE6PcAhp9DcD1DKub7ovXTXa1K3T
+         WhtA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e4212639ebsi38015326d6.454.2025.02.04.23.31.53
+        by mx.google.com with ESMTPS id d75a77b69052e-470169f7a3csi45401611cf.82.2025.02.04.23.31.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2025 23:31:53 -0800 (PST)
+        Tue, 04 Feb 2025 23:31:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfZsj-0002DT-Ud; Wed, 05 Feb 2025 02:31:33 -0500
+	id 1tfZsS-00028d-Tk; Wed, 05 Feb 2025 02:31:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=1SSW=U4=kaod.org=clg@ozlabs.org>)
- id 1tfZsg-0002D4-VQ; Wed, 05 Feb 2025 02:31:31 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1tfZsR-00027e-BV; Wed, 05 Feb 2025 02:31:15 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=1SSW=U4=kaod.org=clg@ozlabs.org>)
- id 1tfZse-0002iT-JH; Wed, 05 Feb 2025 02:31:30 -0500
+ id 1tfZsO-0002hN-VG; Wed, 05 Feb 2025 02:31:15 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YnsNd0wB8z4wnp;
- Wed,  5 Feb 2025 18:31:13 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YnsND5rWwz4wnp;
+ Wed,  5 Feb 2025 18:30:52 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YnsNY69Xcz4wcD;
- Wed,  5 Feb 2025 18:31:09 +1100 (AEDT)
-Message-ID: <8b33436d-6fda-4fc8-b9ae-9eb32b284337@kaod.org>
-Date: Wed, 5 Feb 2025 08:31:17 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YnsN90PF6z4wcD;
+ Wed,  5 Feb 2025 18:30:48 +1100 (AEDT)
+Message-ID: <67fb5d0f-29e2-41b0-8229-ca25c783ac7b@kaod.org>
+Date: Wed, 5 Feb 2025 08:30:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] tests/functional: Update Aspeed OpenBMC images
- (resend)
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Thomas Huth <thuth@redhat.com>
-References: <20250129071820.1258133-1-clg@redhat.com>
+Subject: Re: [PATCH v1 1/1] aspeed/soc: Support Non-maskable Interrupt for
+ AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20250204060955.3546022-1-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -115,17 +116,16 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250129071820.1258133-1-clg@redhat.com>
+In-Reply-To: <20250204060955.3546022-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=1SSW=U4=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.07, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,36 +141,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CvdyMJzod2dE
+X-TUID: 8LsTWN3Esjhu
 
-On 1/29/25 08:18, Cédric Le Goater wrote:
-> Hello,
+On 2/4/25 07:09, Jamin Lin wrote:
+> QEMU supports GICv3 Non-maskable Interrupt, adds to support Non-maskable
+> Interrupt for AST2700.
 > 
-> This series updates the OpenBMC firmware images to the latest version
-> for existing tests and also adds 2 new tests for Aspeed machines which
-> were not tested before : witherspoon and bletchley.
+> Reference:
+> https://github.com/qemu/qemu/commit/b36a32ead
 > 
-> Thanks,
-> 
-> C.
-> 
-> Cédric Le Goater (5):
->    tests/functional: Introduce a new test routine for OpenBMC images
->    tests/functional: Update OpenBMC image of palmetto machine
->    tests/functional: Update OpenBMC image of romulus machine
->    tests/functional: Introduce a witherspoon machine test
->    tests/functional: Introduce a bletchley machine test
-> 
->   tests/functional/aspeed.py                    | 20 +++++++++-------
->   tests/functional/meson.build                  |  4 ++++
->   tests/functional/test_arm_aspeed_bletchley.py | 24 +++++++++++++++++++
->   tests/functional/test_arm_aspeed_palmetto.py  | 12 +++++-----
->   tests/functional/test_arm_aspeed_romulus.py   | 12 +++++-----
->   .../functional/test_arm_aspeed_witherspoon.py | 24 +++++++++++++++++++
->   6 files changed, 75 insertions(+), 21 deletions(-)
->   create mode 100755 tests/functional/test_arm_aspeed_bletchley.py
->   create mode 100755 tests/functional/test_arm_aspeed_witherspoon.py
-> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
 
 Applied to aspeed-next.
@@ -179,4 +159,24 @@ Thanks,
 
 C.
 
+
+> ---
+>   hw/arm/aspeed_ast27x0.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 4114e15ddd..361a054d46 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -470,6 +470,10 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
+>                              qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+>           sysbus_connect_irq(gicbusdev, i + 3 * sc->num_cpus,
+>                              qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> +        sysbus_connect_irq(gicbusdev, i + 4 * sc->num_cpus,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
+> +        sysbus_connect_irq(gicbusdev, i + 5 * sc->num_cpus,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
+>       }
+>   
+>       return true;
 

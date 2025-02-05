@@ -1,265 +1,297 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1054960njb;
-        Wed, 5 Feb 2025 09:59:01 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCW1qDNRHJkoncIWqNqXvtB8RuNbBGqW5inVXoZa3fAJCpC+Jsd1TVSnJDervpz9ais2Mq+8I2h44fmZpA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG2omg6T5/PS0FTMOwkABPGjDvmNsPJCWRT2iwbH5YN2xRAJtUamCGLeLjhr1xRZ8aW1cED
-X-Received: by 2002:a17:902:f609:b0:216:42fd:79d2 with SMTP id d9443c01a7336-21f17edb8d5mr60925885ad.49.1738778341081;
-        Wed, 05 Feb 2025 09:59:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738778341; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1150033njb;
+        Wed, 5 Feb 2025 12:54:39 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCU0pg/tluztHQshBhqP5e8wvu07KoHJFzDKMsCnZSsaOAl2u8MpmRfx33yNW3pNM6HraO2ZLMB5WPZcmg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGHZxbWegq9YK34hRj8LjNFZ7T2fwXA7SjaO39y//O/mpQ7g8YFP5HU9xxNSsjNgdUCKJBK
+X-Received: by 2002:a05:620a:4412:b0:7b6:d273:9b4f with SMTP id af79cd13be357-7c040250f7dmr154134285a.11.1738788878936;
+        Wed, 05 Feb 2025 12:54:38 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738788878; cv=pass;
         d=google.com; s=arc-20240605;
-        b=J9E+bDl3r7LdJMQXqPGJYlZEpYbN9fFxyXiaIDn5hxy3U32iPvOQCrIWFILJu7TJ18
-         w7djw4w0Eb1RLXpaWRAGhNP/JJaUTRWZo4vbL0SXWqwaKyrWvIJtu5nJIgEImhRC3x5i
-         chSDr6nqnzLTlNfo9YMRdL/HZKxz0q66/TnJkgxXE2+5s2JCQBsw53uH3qFhx+yoeVVT
-         B3qjBavVmOYoLjzFwPe4bXoKCTw3BKZTwJAK3W5s4NDz54d7lwJxKJpg6vTbSy7ZUmOp
-         OBVXdKzOnrlo59P8itLnLvpBWqsGDOHoNpn3q9CXtV8gY2quQVPVCejDGwcUTJdf2oyy
-         a6ew==
+        b=kZt4mnLjQY553CzwFJ8yKDH3HpvyTOS0tIxqhCQCK/x/1QtCKkFW2VvJMtl6No5gnF
+         +PnKZtdZg42HtIZOQ2TycSkNpiUmg0DkyAwLUaCBV42uPkvHmiZLC6+zonMC5owoJAiW
+         M3+1rB5VfzO4DY9XjBHAhYesleqfDJNxyOdPsPAAARWA5gv0IeCWlHhWduFHMXG5MnLa
+         ccMtqAP74uS5zIWRaMXYOUsnpnak7Ih0za1Fg2i3HOUTz6BZD+4ih8CeyARu50VqOLd4
+         IT2f7xMt1qA+0BtFzxkkh0swwosVvctAHO7Q4BH6jtrXIfzT38AWqmlaMwUwWsohxc37
+         z2Gw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
-        fh=Zan3QCJI6wvnvc2cGLYYY71l68/y4WIhRq6l3ut+WFk=;
-        b=Q7CdwkRZnBViIDdQpM/SsI0x9WBWHbfs99Bue4pV3YVvhOsQzWGN6vzJLoIFmOVhW1
-         gvfhF31Gf5wvBNAsIX3uEfTGnawFInL/P01I+iqqV/ksvBEUeyfrQicKoQEuRIwzmGaO
-         Eeqj4tdkvg+Ka0C6Cxbl+A9DlERt7ChxwEvHrMHl23vywJnnxMOTkeZDq+CVAF4hhLhY
-         CDkyfK84r+O5RFpPFnifeKT65qGow67O7RYnW9sAjLEx1uL6QjX/LKajFBWQD9vXjfUk
-         6CxMggzIkQ9hiIM7IWW+wXur8GzD4xkCy/NB/Cmj5ax6pOBjDkvJireQNuMb80GWl1u5
-         gitg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
+        bh=aPULv/lJNHtmObMrUUwdiz6PNj0ACmBIsOxWMmPZ5Nk=;
+        fh=FZ6q7ggdfYmwS4d19lb22hGhf5je/HojLpx37GDng28=;
+        b=hXhxbFwJPLC/iTlJkAHdYyPlW5+Iju7Sd/VdZg37XsScpK7p+BrDwaqHTEKFx3U651
+         kDnnHto6DPif1W0zQLrzPk0xHAJk52ZeMpiqDMpGiFUF1PLkm4fsGk73OP6A3nXMGCAd
+         nih/kLlDaG74CTyg2K6F3IGH6GMzgZZVJLC8s+DcmiXNCj38j6tcAJS0mdmhSztzvjvg
+         +EYdj7dGPYgcRe9vwG5uacRTeg9wDNZsl5GPqS1dkTYh/t0uH3zn0ESocagqtLhx7Fkt
+         pk66U7AttAIPPsLQohRF0Ha+MpiSVjKjLOoE6Zp+mD5NUD+E5k4YUJMyxuIxLWq3ZWj6
+         g7mw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBhbfydL;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-21de5f395e1si197760805ad.408.2025.02.05.09.59.00
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=DTcKYPnE;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c02db4d337si617921585a.103.2025.02.05.12.54.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 09:59:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Feb 2025 12:54:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBhbfydL;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-37375-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4476A3A2911
-	for <alex.bennee@linaro.org>; Wed,  5 Feb 2025 17:58:53 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 455F91FC0EB;
-	Wed,  5 Feb 2025 17:58:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cBhbfydL"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DD8A1519AD
-	for <kvm@vger.kernel.org>; Wed,  5 Feb 2025 17:58:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738778337; cv=none; b=p1sWne1OOqJsXoATxArl/SapWyWY79PGibHF80cIMLqC8czMIyNM9EdXtvFsl4lh87zLEmTifi9l7qIkLuwlaEdNZI4txPHl1Yg/wmiH1FR0NdQcHU13wQqFpdG1/Ogh+pY/Un/IexUc8eL9+OrVshB1deTu/Jp23HIpwWyDigk=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738778337; c=relaxed/simple;
-	bh=eTmoRU2cR+lb8O0cTSSpNG+hNS9FlxsuqZkUF/fV4Fc=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=k3FC594syY7moe3l46TEAfyLEWvXI/Zpary7v3UPgCYEu6on/yVNhaHssiF7mvNkck28abfW4Y0IxU1WWxWUn1wHbFpA8t0MGdwMd6jLA2R9nelHFw84nRouR+t9rDH6CJlv2ky+f32V9CngylG8NVbHqrci1pHGNRSjnLAG9TU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cBhbfydL; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738778334;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
-	b=cBhbfydL1mZLbqnyivdDtgVQH/b1EGRG9o18rYnI6xixAtaTKL3/80DhcA1r9sQGcHo14p
-	03ohJq1MnW3+gT41RyuhbilTxBXIUsiljWHNIENQzuiOFDIdgWVoeJBcFyX2X7MfDJoURi
-	mio2oPT7YU6U8ivJq7DTM7dEirEZM9Y=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-93-d8TcxbcjPnGbF9Ic22Rbgg-1; Wed, 05 Feb 2025 12:58:53 -0500
-X-MC-Unique: d8TcxbcjPnGbF9Ic22Rbgg-1
-X-Mimecast-MFC-AGG-ID: d8TcxbcjPnGbF9Ic22Rbgg
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-46790c5b1a5so1953071cf.2
-        for <kvm@vger.kernel.org>; Wed, 05 Feb 2025 09:58:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738778332; x=1739383132;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=75ymu4jpHyhbMjYieQ84OtAI2riBguf24EUxH7ex6f0=;
-        b=cay/GuY7w+bmoltO5ZyGJoOhAhR/FETn8t6tzkX7uB6X0go4AVu+DpiQ6lRbDE3Vmc
-         D5bOOSrUgibkp6CaqPPi5+oAnR6tty1bxqG/eSK15z2na1SOWUw+AMYGdUQaJ+xCkslB
-         BjAh8WGM8ZBIqzWfDjcCOvT4r3bwd5SththrEID6jGm9RZl1sU0so47ayjndDJhVadlK
-         KJHR5hFtxxBFzXg0/zsOhbIguO63byvsxAEUK4ALCS5mV+0QIu5kBmrJgzNBVK/Kjabv
-         MDB6EfeX2HD/kHXBbnJapRX7Pn7cLn2SN9neIvWfXo58dhCbk/xGt2QYxDtWXBg3UJF+
-         h1qw==
-X-Forwarded-Encrypted: i=1; AJvYcCUuQ14vmVR6cdJ7mTxyHbWPbbQFei0rNyCMr2h3SEqhb/r5kXZf3Bac5hdczbSHlNY3dj0=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwNnHpWAx0XjhCF+V0xFsxwr/9feGdSKqQfes8Ti1f1x+BdTQdv
-	Agit5D6T1lplPIwKXsUb1kmKw+ZxQuThuKUdt2LfNdW8JwZaOpVkTZNBPLfC92h4FSr3FaLXsda
-	Tf1gcXS7LEP2rgI6j9vYqRGD//kZIiKdbGmleyzzIZKcqM9+Xqg==
-X-Gm-Gg: ASbGnctzH6SpNpwI6Gm7x5VsL939MrHpsXsuppSttCU5wSdYALWyUNMzCMfzQZDuXLB
-	2aCzcdyMN97XLc4EG03HH/5UEcc7b0gpe5ise8Xp9v1zli2Yb2w153jYT3PcEXsvLg6hDQXJCM5
-	OtnkXGL7eGNYcZlvk1O2/tWgu61bsyh1NwXQDctXSqvajfXNMq0VQe/zRmRrggiCobEdQ1ZnWkm
-	wEKL7EkkB1jag3LIEJkJw+pHoXT0yzFISoFPFh4HG1+XVOlk7y3TSGYYQO7MlyWnnYZplYKma6U
-	R8lcozq6LaMaZ6ocmf72+f2FRv5agdz3unP7C9UC/fB1tBxE
-X-Received: by 2002:a05:622a:1807:b0:46c:728c:8862 with SMTP id d75a77b69052e-4702818fd7emr59106681cf.31.1738778332346;
-        Wed, 05 Feb 2025 09:58:52 -0800 (PST)
-X-Received: by 2002:a05:622a:1807:b0:46c:728c:8862 with SMTP id d75a77b69052e-4702818fd7emr59106171cf.31.1738778332012;
-        Wed, 05 Feb 2025 09:58:52 -0800 (PST)
-Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com. [99.254.114.190])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46fdf0c62d4sm72570071cf.17.2025.02.05.09.58.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 09:58:51 -0800 (PST)
-Date: Wed, 5 Feb 2025 12:58:48 -0500
-From: Peter Xu <peterx@redhat.com>
-To: William Roche <william.roche@oracle.com>
-Cc: David Hildenbrand <david@redhat.com>, kvm@vger.kernel.org,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	richard.henderson@linaro.org, philmd@linaro.org,
-	peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
-	eduardo@habkost.net, marcel.apfelbaum@gmail.com,
-	wangyanan55@huawei.com, zhao1.liu@intel.com,
-	joao.m.martins@oracle.com
-Subject: Re: [PATCH v7 6/6] hostmem: Handle remapping of RAM
-Message-ID: <Z6Om2CiOEnbKzNEk@x1.local>
-References: <20250201095726.3768796-1-william.roche@oracle.com>
- <20250201095726.3768796-7-william.roche@oracle.com>
- <7a899f00-833e-4472-abc5-b2b9173eb133@redhat.com>
- <Z6JVQYDXI2h8Krph@x1.local>
- <a6f08213-e4a3-41af-9625-a88417a9d527@redhat.com>
- <Z6J1hFuAvpA78Ram@x1.local>
- <a3d7a8cc-aad8-4d98-a5ba-79fad20b9df6@oracle.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=DTcKYPnE;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tfmPM-0000zm-9c; Wed, 05 Feb 2025 15:54:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1tfmPG-0000zJ-Mq; Wed, 05 Feb 2025 15:53:58 -0500
+Received: from mail-mw2nam12on20602.outbound.protection.outlook.com
+ ([2a01:111:f403:200a::602]
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1tfmPC-0001M2-A8; Wed, 05 Feb 2025 15:53:58 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=TIWpS016te4UbvR503u9BN05tCfoswd/0R3Cnd6/LcpwlHuxHrjTGcTxyoWm9WxfTNSQMHQWE7HhPg5Ib5dBxIvmUIbVHcjDcOJ9344rCzAMgpihRWMYal8fOMcv7Qx0P7cphydCrPoRKpK3inb75bCxUPeK5Jx35GwrfRfnasHLn/CLqKxOYOhX1RkXTl/o+zP/uQi6dAdlxO6SuufVU5U1gbMApoI5d/Wgb/BMP0DWGPfCd8ZZg2UrPHoLq2Qbhr4vMRCS08IuBY5H91xzhSDFAST+O/EfTJISFHHwVj9XcyM3KUnn+pVQE0moW9/lAHYQxDj1wwDixtSQ3BewFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aPULv/lJNHtmObMrUUwdiz6PNj0ACmBIsOxWMmPZ5Nk=;
+ b=whfQbgv4khhBUTuk0ThbhChDiNXjnMKxRg67VD2wRyxRK5S5e2/N2eBWSLxuh5VNlTQ7CWmYnZ0XPOvDQEl/6dAhmAneJRlrU1paR4Xde35Uz/5GDxv1DyL231r1OFt9gal6gLGEyiZO1k1kprnCgfUkLX32GKl7+z2Ul7CgiN1xr7Etn/z5l4Tuf5iI78lPAw0AwiQB50+vw4b2qUhQYOxpmR+/5A6gA+u5067uCDs8gG6ARqTM32HWAuV9dQUsCIgYAIhteFQQp3ZnbYpq/yXrn/CBhOSUI/f62Yu/UqRuWXv248laub8Wre4GU1g7sUfK3cEAjyGpSSKFI40qqw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aPULv/lJNHtmObMrUUwdiz6PNj0ACmBIsOxWMmPZ5Nk=;
+ b=DTcKYPnE8kbhfPg5gaSae2C4k6d8anpQAnBYfIa+ik+lWK9UeHTGNI75hO7vIdfrSkTBVP4T5MkJQ1H8w7/qjOPjkofOt5afe7F0ehINdoikKOKjji0ByV2JzuHjsBhggNLR/2DsLqRpuJI1zX9dE7R9LTR6LHPxD1+15psCPr08Vb8ucXr4p8v+LHn8F5CTqxtl+KjMjbDjbwkcwyFngm2Xww7hOyhyU8jj2td/sdduRNBbmGwBuPXgxgHpaSDKcsiUub8JLlUw+o38Ec2Pte5UqcUdhmlvvRIk0UGFJ4dqtS3VfbmGlFxK6aOcJDxOOEpSHtXUwsI7RJFJIW7tBQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com (2603:10b6:806:266::18)
+ by SA1PR12MB7247.namprd12.prod.outlook.com (2603:10b6:806:2bb::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.23; Wed, 5 Feb
+ 2025 20:53:47 +0000
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400]) by SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400%7]) with mapi id 15.20.8398.021; Wed, 5 Feb 2025
+ 20:53:47 +0000
+Message-ID: <5709592d-cd1c-4894-a1d4-c0c4c61a2e07@nvidia.com>
+Date: Wed, 5 Feb 2025 12:53:42 -0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+To: eric.auger@redhat.com
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Jason Gunthorpe <jgg@nvidia.com>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z5uiGnAxUf4jXTEI@redhat.com> <7ecabe74e0514367baf28d67675e5db8@huawei.com>
+ <fc91e1a798324390b2a556fae5d40f46@huawei.com>
+ <20250131142404.GP5556@nvidia.com>
+ <3efcea1171af4b2f81be842f2c55fe51@huawei.com>
+ <20250131145411.GR5556@nvidia.com>
+ <20039bbc40df453a8a41a863d74b9ff9@huawei.com>
+ <c292ab40-3620-4e72-b043-4e3cbd7fd297@redhat.com>
+Content-Language: en-US
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <c292ab40-3620-4e72-b043-4e3cbd7fd297@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR05CA0159.namprd05.prod.outlook.com
+ (2603:10b6:a03:339::14) To SN7PR12MB6838.namprd12.prod.outlook.com
+ (2603:10b6:806:266::18)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <a3d7a8cc-aad8-4d98-a5ba-79fad20b9df6@oracle.com>
-X-TUID: 6rMzt7pcMF/u
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR12MB6838:EE_|SA1PR12MB7247:EE_
+X-MS-Office365-Filtering-Correlation-Id: d78a34a8-697b-42da-d7b3-08dd46272f6a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?SDFVeDYrenUyY2tvR25NbEUrT25HSlBmcTgxUjhaT1U5NDQwL3FHcVNJQ0hq?=
+ =?utf-8?B?cHRweFBXTm9Rc1NsNkNlMGw3aHNIQWptSEpvS3NHSFI2WW5Td3gzUmJ0MzRK?=
+ =?utf-8?B?dDNvVldoZ0lrMDJxSzhGQjhWc3M4Z2RsVmpKTTAyVytENjhDRUR5U0JsWGJC?=
+ =?utf-8?B?Y29NQzFMOERCWW1QQVhrcVNDL1JaTmlwWnVZMnZQSWNnWXhaT0g1MDB4SHds?=
+ =?utf-8?B?YWZKcUtKbk9kc0NiK3dOVVFIZWFoZWhXc1NOL205TTduZ3RuQUZyd2p0OXo1?=
+ =?utf-8?B?Sk5CWUQ4QXN5ekJiTW9mRHVmMThkWEhwVHRzMzUvRXAweHR0Y1dqZkJzclZG?=
+ =?utf-8?B?ejBXL0s2dzhOSTdKb3VxU09LQlRYdXY3b1NJK0dVdzhjMzlyZDhPUUVSVm1I?=
+ =?utf-8?B?NTNneXQ3ZEJoRUprTTdHVmpzZStMYm9OWXR1WjJNNjl1NnB6alh0VW43dFhB?=
+ =?utf-8?B?OVdSanpXWXN4QXZMakRhVWRMMjZZSTh2c0NiYjRCS2JBR1JxWTJwUVJtd2pk?=
+ =?utf-8?B?VlM0R0xLL3o5NHNMOFU1R0I1QnBjMmI4TEtBT3EzWFhIYjZpZ3R5Qndab3lj?=
+ =?utf-8?B?OEhGT2tRMlZKV1RhSVJjUGdwZXdoNXI3UFVKZk9CcGRLSkZXV01ZMEQ4QUhG?=
+ =?utf-8?B?MkNxMjNCSW5CZ203NEkzYm93L2NIZ3U0Y3RKRk5BRGh3ejdMWGdud0ZlNHBr?=
+ =?utf-8?B?ZkNkSXV4b1M3OHRvbGxRdXY3YzZnWGMydDVzck1KMzdGREl4S21aQmovcko4?=
+ =?utf-8?B?QitiaXVzSFF6NFVqUnB0VUFYeHZwbTY2N0w2d1dUd1JObjNoQmRSelZsZnRD?=
+ =?utf-8?B?b3BmY3BTaFNlbTlvYmJodlByODdqMjJvUTZXWWFRN09iSFVWalBqcmQvMjd5?=
+ =?utf-8?B?UDFyc3Fpckw4NGtqMHlUL3R2QlpyM1hjRGwxQ2p6c1d4QXVnNDJnc1lDRWYx?=
+ =?utf-8?B?NlZKOG1VNy85d1lxeUU3R3UzQXo0eTdmK3ovOTBiTUFUalI2dm9DVTd2QXJk?=
+ =?utf-8?B?cVJYbHUxRXl4bmQ0dFRsT2toS09NMHQ3ME1UbHBxL3hQNUoxT0tmOTZMNEtn?=
+ =?utf-8?B?bWVVWWt0U3R2Y3lEaE9BOUdPN2x4TGRMcVZHYkpxb3RYdHVvQUhxU0M0cHdY?=
+ =?utf-8?B?UVh0eHBJNUJ2RUtrT21jZ1Zha1k5ak4wTWVQWWZFdnFaZ1RTTGI1bEVKWjhL?=
+ =?utf-8?B?RW9iaHFyWDlxV2F6ZzlsdnkwNEwzUkhhR2dJOTUzV3lxSktlNU43QTdEOXhI?=
+ =?utf-8?B?WkhxeEJQR1QzdGlMdzdSZXBnWS9MWTJvNVd2aFJhU3lTVzBHQ1NOMkJpUFMv?=
+ =?utf-8?B?SUFiVk1UaGhtTkRLM29OOUNXSGYzMFJZQ0IzWkxJczhBNkwxOG1sa2M0NnlJ?=
+ =?utf-8?B?MkJIajFWaDBYb1BFWldvaHJPOTdJeXd2OVNHZHVVMEgwaXdteTRjdUJOMEUz?=
+ =?utf-8?B?UzgzenRURjZaTTcvVnBaVk0yak95clBFVml1RmpyNVNnN0dHajJubDkwT1JK?=
+ =?utf-8?B?L0dlRjU4UUNaRlhCSUVOdys2Z3ZWeVZxZU9BU0tIUmI1MmFXQ1NvS3dQVnpS?=
+ =?utf-8?B?Q2JEZzc5QTE2akdCMVkxOVlpSDdMR1NEUU9UaHE2ZDZ2TkNaWUl3S3R2QWRz?=
+ =?utf-8?B?dmNleGF0S0RmZ1lwYS9aMlR5UEJnUzE0T3NzSmZZcm50YjI5OGpXcXFhMElP?=
+ =?utf-8?B?T0tVMzZkRmZSKzRXbTBCZ29xaUxQVU5LVjY2M3NBcUx1bXU1V0VRYVFFeVJV?=
+ =?utf-8?B?R0gya1p6ZGU4cFdiVElyV2QyV24wN2VFTWJHR3diNno5RVQ2MGdCQmQ3OW9x?=
+ =?utf-8?B?dVUrNDIvSzZ6WWM5eUJ6Zz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR12MB6838.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eEt3N2ZuNjh6WGxFMVI2NjJtRjZRdnRlMGdPQkc5MjJjT0JrbjRpWUV0ams2?=
+ =?utf-8?B?LzZ5c2dBUWplZ0tjRzV1bHVYR0VEQ3hCdzdQNkRtN3ROVU9QOVllM3hOM2Fa?=
+ =?utf-8?B?T1M1b3VUNmRvMlBnVjBTSTFJeDQvSXJHTUM5ZExWZnlaYkhXeDRPUmsvQ2FS?=
+ =?utf-8?B?dno3QjgyS1N3Zm5mV2RsRWNxeFI1Q2JpZzRzTlVZYisrQ0g3akpvM3FpR1dJ?=
+ =?utf-8?B?djdnT1lxYzFuTnlhQU03SHZROVNVa0FLZlBjSTczWmo5Zk5QNUlXK0NubU9F?=
+ =?utf-8?B?b2lZTnJwYVNOUDZGeDBQelAzd3daOTNiK241eG00RWhvVGZSY01SMUUwWUE2?=
+ =?utf-8?B?R28xcEd6aWxzSmZyVVJQWkVyWWxuYnNjMjlPUGovbWhpOUtxTWJDaC9PYWd5?=
+ =?utf-8?B?RHI5RGxqc2pQS1d5VTMvRXJPV1NKYUQ0bXl0VnpVOFRlTkxOSmR0YkRaWFM1?=
+ =?utf-8?B?MzVWNjg5alNGaXN5QzdQL21mMmc3R2JJbVBrczV6ZDVTbzJ6eHRMT1N0Tnds?=
+ =?utf-8?B?MVhLSmwrRTBMc1FWY0cwa1YzTzlEUHVuc21WMkplL013WXI1Y0VkcytKT2lE?=
+ =?utf-8?B?WmdYaUxaOWt0UkV3Ymx4L2M5TzhTbU8zcjQ0Zm9aNXYyb1pPZWlLYzUyQTVx?=
+ =?utf-8?B?SmJaQWZROXJic0YyeXRicXNVTDdNTWNCd3YydkIyQmtCZnR2UHRhd0I3NjR0?=
+ =?utf-8?B?Ri9xcngxbEdHRkhkeldLT3phUms4U1o2WGdpaFJTS2FnUUp1c1l5SEUvSkw4?=
+ =?utf-8?B?Ni9MbjdFbFBEKzR1cXJpd3VXeVBaK3I3eWx3NnNWdmhaY04wZzVJd3hGc0c0?=
+ =?utf-8?B?a2JKV0tYRkk1cHZPeW5rQ2Z6RitTNjQveVF0eTBPVkR2ekFuSUgyU1I1WlMw?=
+ =?utf-8?B?VCtBNEkvZWkxbXJNTjVYU1Q3cE9UT2l0VVBLK3N0QnJacUI1QzRjRXl3SnUz?=
+ =?utf-8?B?T0ZoenJnYm11THRhaGhIWTVGbDRJd1VxQm83YjdsWnY0RExQa2RKUUpZeEl3?=
+ =?utf-8?B?L0M5dzB4OFQvRTBXSkV3OHg4Tnc3SVNkZDR3OTkxTkJOMk00Q1lzdGVUS1Vs?=
+ =?utf-8?B?UmxkUWNzczI3YVNYa3hlYW9Jak8wSDBBTHh3NkJwZUhZUE9VMk8vNWcwd3gr?=
+ =?utf-8?B?MUk5bG9UMzJDM0dyUzJzU0VmQ0g3eEJKQVNVMml3V1FaajNiSnRLQ2xMZXdG?=
+ =?utf-8?B?RHBVSU12YkxxN2k1Z2t1U1pkaE5nM1cxNzAzMStOM2h6RXlBWUJuczR5bmtJ?=
+ =?utf-8?B?UThlMHA2VmRWNkRkaGxlcm4yQXpoMjJDV1RZQkwwMktYOFYwUmpicUpMWUEx?=
+ =?utf-8?B?Mzh5a0UzdEhCQ0lTbXdyc29RU0drOEZtdTN6S2xsNjlhR0dicGxTeWVwdjZv?=
+ =?utf-8?B?bW90RzZqUWg3U3ZaZ0FxUVA4QTJlNVpZbGhHL3VBSS9pTCtVeHZjb2ZjREo3?=
+ =?utf-8?B?VkRuTktCeFNkcWwyYmI0b1diVndxSkd6S0xSazFsbytGeW1CVDhocDZnYjh0?=
+ =?utf-8?B?R1BGc20wbTl5dE8wQ3F5ZXlTdDlOcHpBbSsyRU1NTk5KQURENzN2eldEcWxv?=
+ =?utf-8?B?VzJqaDdOMzJSYUdoWFk4cmV3b1NvT1RuMnNmaXFzc2UrMXFpMDBhVHozbXVX?=
+ =?utf-8?B?bnk3dlpxcFJMU0g3L0hpNDIrK0VYQks0bFg4L2lLcUZmd0EycXZqd2d3dE5H?=
+ =?utf-8?B?ck40TmV4VnY2dTJpdlBBNTk4U0tvYytZaDdYOTNNMmdzNjUvNXQrdWgyWERy?=
+ =?utf-8?B?bmRXendmbXZaNFVtcEgvSjg2S3Z1RVJBZ25XSzVXRUtacUtvMGlvZ21nUFM4?=
+ =?utf-8?B?eVJobVdEVjFDTCtnMGZBeHNBZDNuSWl3RndHMytqSnpMQWVHNGpZeEFFb1Rv?=
+ =?utf-8?B?VThkbVNQUnI2eDJpU3l3WkxTOGx6Zm1kaStlaU1EdEdtM3dwV1d5MnJTejBw?=
+ =?utf-8?B?VW81bGp2TlZJRVNlbXY2eE1LWXNUYkg4aTJ0eHdWSlYwWEJGZ0hoVlVwcDV6?=
+ =?utf-8?B?WDk1T2dwL1FYMFEyTVFJUWRHYzFXT2VmY3ZnTzB2Z1FiSSsxUmdXNmM2cFdn?=
+ =?utf-8?B?UE5DZHYwc2RRSXFhS3Y5aGYrZFYzczhCNmlRcDNVWEUxSWc2c2tMUjlkdGZl?=
+ =?utf-8?Q?qEFrEXgRVekyjRGa5kAuaP6bI?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d78a34a8-697b-42da-d7b3-08dd46272f6a
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR12MB6838.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Feb 2025 20:53:47.1271 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: UlAAPirAEsWVk9WVJdDoLBiOONsVfQ5LPgdgx1rTQo3pr14BejhQsGWlDpsx2+wo/gD+++/xqA7UX8YeVP1SGQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7247
+Received-SPF: softfail client-ip=2a01:111:f403:200a::602;
+ envelope-from=nathanc@nvidia.com;
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: loRbSc/NKw9J
 
-On Wed, Feb 05, 2025 at 05:27:50PM +0100, William Roche wrote:
-> On 2/4/25 21:16, Peter Xu wrote:
-> > On Tue, Feb 04, 2025 at 07:55:52PM +0100, David Hildenbrand wrote:
-> > > Ah, and now I remember where these 3 patches originate from: virtio-mem
-> > > handling.
-> > > 
-> > > For virtio-mem I want to register also a remap handler, for example, to
-> > > perform the custom preallocation handling.
-> > > 
-> > > So there will be at least two instances getting notified (memory backend,
-> > > virtio-mem), and the per-ramblock one would have only allowed to trigger one
-> > > (at least with a simple callback as we have today for ->resize).
-> > 
-> > I see, we can put something into commit log with such on decisions, then
-> > we'll remember.
-> > 
-> > Said that, this still sounds like a per-ramblock thing, so instead of one
-> > hook function we can also have per-ramblock notifier lists.
-> > 
-> > But I agree the perf issue isn't some immediate concern, so I'll leave that
-> > to you and William.  If so I think we should discuss that in the commit log
-> > too, so we decide to not care about perf until necessary (or we just make
-> > it per-ramblock..).
-> > 
-> > Thanks,
-> > 
-> 
-> 
-> I agree that we could split this fix in 2 parts: The one fixing the
-> hugetlbfs (ignoring the preallocation setting for the moment), and the
-> notification mechanism as a second set of patches.
-> 
-> The first part would be the 3 first patches (including a corrected version
-> of patch 2)  and the second part could be an adaptation of the next 3
-> patches, with their notification implementation dealing with merging, dump
-> *and* preallocation setup.
-> 
-> 
-> But I'd be happy to help with the implementation of this 2nd aspect too:
-> 
-> In order to apply settings like preallocation to a RAMBLock we need to find
-> its associated HostMemoryBackend (where we have the 'prealloc' flag).
-> To do so, we record a RAMBlockNotifier in the HostMemoryBackend struct, so
-> that the notification triggered by the remap action:
->    ram_block_notify_remap(block->host, offset, page_size);
-> will go through the list of notifiers ram_list.ramblock_notifiers to run the
-> not NULL ram_block_remapped entries on all of them.
-> 
-> For each of them, we know the associated HostMemoryBackend (as it contains
-> the RAMBlockNotifier), and we verify which one corresponds to the host
-> address given, so that we can apply the appropriate settings.
-> 
-> IIUC, my proposal (with David's code) currently has a per-HostMemoryBackend
-> notification.
-> 
-> Now if I want to implement a per-RAMBlock notification, would you suggest to
-> consider that the 'mr' attibute of a RAMBlock always points to a
-> HostMemoryBackend.mr, so that we could get the HostMemoryBackend associated
-> to the block from a
->     container_of(block->mr, HostMemoryBackend, mr) ?
-> 
-> If this is valid, than we could apply the appropriate settings from there,
-> but can't we have RAMBlocks not pointing to a HostMemoryBackend.mr ?
 
-Yes, QEMU definitely has ramblocks that are not backed by memory backends.
-However each memory backend must have its ramblock.
 
-IIUC what we need to do is let host_memory_backend_memory_complete()
-register a per-ramblock notifier on top of its ramblock, which can be
-referenced by backend->mr.ramblock.
-
+On 1/31/2025 8:08 AM, Eric Auger wrote:
+>>>>>> And Qemu does some checking to make sure that the device is indeed
+>>>>> associated
+>>>>>> with the specified phys-smmuv3.  This can be done going through the
+>>>>> sysfs path checking
+>>>>>> which is what I guess libvirt is currently doing to populate the
+>>> topology.
+>>>>> So basically
+>>>>>> Qemu is just replicating that to validate again.
+>>>>> I would prefer that iommufd users not have to go out to sysfs..
+>>>>>
+>>>>>> Or another option is extending the IOMMU_GET_HW_INFO IOCTL to
+>>>>> return the phys
+>>>>>> smmuv3 base address which can avoid going through the sysfs.
+>>>>> It also doesn't seem great to expose a physical address. But we could
+>>>>> have an 'iommu instance id' that was a unique small integer?
+>>>> Ok. But how the user space can map that to the device?
+>>> Why does it need to?
+>>>
+>>> libvirt picks some label for the vsmmu instance, it doesn't matter
+>>> what the string is.
+>>>
+>>> qemu validates that all of the vsmmu instances are only linked to PCI
+>>> device that have the same iommu ID. This is already happening in the
+>>> kernel, it will fail attaches to mismatched instances.
+>>>
+>>> Nothing further is needed?
+>> -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
+>> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \
+>> -device arm-smmuv3-accel,bus=pcie.1,id=smmuv1 \
+> I don't get what is the point of adding such an id if it is not
+> referenced anywhere?
 > 
-> 
-> I'm probably confused about what you are referring to.
-> So how would you suggest that I make the notification per-ramblock ?
-> Thanks in advance for your feedback.
-> 
-> 
-> I'll send a corrected version of the first 3 patches, unless you want to go
-> with the current version of the patches 4/6, 5/6 and 6/6, so that we can
-> deal with preallocation.
+> Eric
 
-I don't feel strongly, but I can explain how the per-ramblock can be done.
+Daniel mentions that the host-to-guest SMMU pairing must be chosen such 
+that it makes conceptual sense w.r.t. the guest NUMA to host NUMA 
+pairing [0]. The current implementation allows for incorrect host to 
+guest numa node pairings, e.g. pSMMU has affinity to host numa node 0, 
+but it’s paired with a vSMMU paired with a guest numa node pinned to 
+host numa node 1.
 
-One thing interesting I found is we actually have such notifier list
-already in ramblocks.. see:
+By specifying the host SMMU id, we can explicitly pair a host SMMU with 
+a guest SMMU associated with the correct PXB NUMA node, vs. implying the 
+host-to-guest SMMU pairing based on what devices are attached to the 
+PXB. While it would not completely prevent the incorrect pSMMU/vSMMU 
+pairing w.r.t. host to guest numa node pairings, specifying the pSMMU id 
+would make the implications of host to guest numa node pairings more 
+clear when specifying a vSMMU instance.
 
-struct RAMBlock {
-    ...
-    QLIST_HEAD(, RAMBlockNotifier) ramblock_notifiers;
-    ...
-}
+ From the libvirt discussion with Daniel [1], he also states "libvirt's 
+goal has always been to make everything that's functionally impacting a 
+guest device be 100% explicit. So I don't think we should be implying 
+mappings to the host SMMU in QEMU at all, QEMU must be told what to map 
+to." Specifying the id would be a means of explicitly specifying host to 
+guest SMMU mapping instead of implying the mapping.
 
-I guess that's some leftover from the global ramblock notifier.. e.g. I
-tried remove that line and qemu compiles all fine.
-
-Then instead of removing it, we could make that the per-ramblock list.
-
-One way to do this is:
-
-  - Patch 1: refactor current code, let RAMBlock.resized() to be a notifier
-    instead of a fn() pointer passed over from
-    memory_region_init_resizeable_ram().  It means we can remove
-    RAMBlock.resized() but make fw_cfg_resized() becomes a notifier, taking
-    RAM_BLOCK_RESIZED event instead.
-
-  - Patch 2: introduce another RAM_BLOCK_REMAPPED event, then host backends
-    (probably, host_memory_backend_memory_complete() after alloc() done so
-    that the ramblock will always be available..) can register a notifier
-    only looking for REMAPPED.
-
-Then in the future virtio-mem can register similarly to specific ramblock
-on REMAPPED only.
+[0] https://lore.kernel.org/qemu-devel/Z51DmtP83741RAsb@redhat.com/
+[1] 
+https://lists.libvirt.org/archives/list/devel@lists.libvirt.org/thread/7GDT6RX5LPAJMPP4ZSC4ACME6GVMG236/#X6R52JRBYDFZ5PSJFR534A655UZ3RHKN
 
 Thanks,
-
--- 
-Peter Xu
-
+Nathan

@@ -1,344 +1,253 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp776446njb;
-        Wed, 5 Feb 2025 02:04:11 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCW8cGGAwxg/RZYT7vOBWtsND4xloRP/0k69jB40cu5WfkzdmlTDVnTP2dQqapp5AjPfcH6iao51vXdcGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHK+UzY+1X0qvI1HKlKLYCAlEmWAB9O5vFhiIs0bfgq4nxwc6inlejbnPuJcjdCQcj8Y5BA
-X-Received: by 2002:a05:620a:d8b:b0:7b6:e207:c8a2 with SMTP id af79cd13be357-7c03a041ad1mr343264185a.55.1738749851049;
-        Wed, 05 Feb 2025 02:04:11 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738749851; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp778241njb;
+        Wed, 5 Feb 2025 02:07:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU2wNr5JKcZQIScOMZ8r02uD5neBaH8JK6k1glWiGWfQmK508QhxoJa3SOFsbWD5Mpb4rth+P6hCnznjg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGnvfsPg7SSrNuvE2jHvn/0fHdJ6jIUAes57ma/LvVYINCvxpR8J1LbsL8Q0TuErRq3OKnC
+X-Received: by 2002:ac8:59c6:0:b0:461:7467:e9f1 with SMTP id d75a77b69052e-470281df42amr24737881cf.26.1738750054081;
+        Wed, 05 Feb 2025 02:07:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738750054; cv=none;
         d=google.com; s=arc-20240605;
-        b=LKGTO4SiO23ck2zFiiAgurJi1vQY60oBOFt/mXs6uC97TyR5B9mlS5VFA2OBTLYB6Y
-         9saDnOmiN9vgtN2V06uOATTHh0bJwY3ZsEKT5aLcgE0gD6X1OOlh+6TVQ4iCtJlEqTN8
-         ImN9qu+40px3VI24ib82U/pL8pZE8HQlu38LaDYrFmeFTLXxVGekIWJP1WRXcplKT0NH
-         jHHn7HypLTVrEwI+2YOXPG2LIP7ltCFhnVgSTt2n6BaQ8V49+rJU4Xh4CjnlfTM/915U
-         SDmQulQa8jBWzNVLrWJEQmXvxC9cViDxisFjqQB+RyYLJJgNgpbLDK7jLn6osTM6i5ah
-         5yRw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=VzUQ4vCBJpKzzDMO8biGgL6OeuyevSJKcbaC42p67oY=;
-        fh=HJd+cJnAt4a8A8yC9ZXaUV4EMCevcLMmZAD6XpFNEog=;
-        b=eKU9a7Cl5t+iGfnibrSlx25krlMGAyxkke0iUux3V/nzYA26D5H14Sr+KZcpm5TUP9
-         gSUp11YHL69v5lZ7eZoOBTbZbrBMrI8e5+yZ16PrvSSVKTr7T+gBkDg1B68kjOrt4rZO
-         vg/okKpy8QAex9bj7253Wr5QFlRTnVovBqq5mtStI/y5md6BQrbAY0cQgIsd2evwu2qL
-         VOg7b18MlG64pljT1AsriPJMuGjM4wVSWqo5KuBleB/xQd7fTc6J6rVr2dVpoH6xtRcF
-         nqrPWsNCmUOMakHFgyRYRhmGBiuYw1O3atVmsp1iuF/x3ddiwxFd20wdFM0EroaoTnnp
-         VQfw==;
+        b=BG8WMd9b6aHtncLbNelfEQYhj7QrduLc4SeG+GgN7YejmpHy6nVzvEfOWIgIGxyUDg
+         KHuAyS351jl2fScq5L9rIf5wph7bSwbsixqXuob9cZ7uv8ijS8ccOjR2Grd2jKWPKY6J
+         S9HKcO2hTHTRT9g15f9xBA/KjJQIZ4JMPnh6+z03KJFOFKoCjjGgGwzqZgK4iNePCevx
+         39GEVUNdBwXyJKIvhhRi1dkq8vWaLtrMMi6ZelO7CJjt/pYCdc7KAfYNg6YnP+/Y3hSm
+         HMxEbLjrOTLcqmGITC/22bZhquFLwkUEU949WmtHS65bt41Bva2GuMTRK2rCOuIW6EGd
+         mzuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:date:references:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=1zDoZmkitSBKZ8WS2tPZOpQfMN+YQSBeT3+5PJja8Yo=;
+        fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
+        b=Q/iyj8v6qahZz6Px4FmnRuAMV9VBhGmn60yxLB8a484emUB3ig14HM1G9hDGCR0MWc
+         tIjThipaLAXDm1gXCJMpG+623AhRzAwidZcGXCzkD/GR1h2cBaIoKE15tuTug5IfMd25
+         CWh62sKYEw2+CUqYb7i/KgBBGaUQUcTXTYXvwW4WjBEyNl8AdbUCvzOcWw+sVFpiRhSR
+         R2ul2kDUCj5FshoiUhsKglHuQYoqIlaiKbFrMRcd4KuVY1N4Ah0fPvTssM26RsOxZl6S
+         hE6COFP62eNqBBRvCtXAqv0HKBgc/LgFoLkIC5DyLW24zhGVhpW42lrtbNXQn2ddMuLr
+         maNw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="alq/5FvK";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aoGUj8su;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7c02dbe9329si547424685a.411.2025.02.05.02.04.10
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-47016b7685dsi51176551cf.293.2025.02.05.02.07.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 02:04:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Feb 2025 02:07:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="alq/5FvK";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37317-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aoGUj8su;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 118BB1692FF
-	for <alex.bennee@linaro.org>; Wed,  5 Feb 2025 10:04:10 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7768F218AA2;
-	Wed,  5 Feb 2025 10:04:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="alq/5FvK"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40F8B1547D8
-	for <kvm@vger.kernel.org>; Wed,  5 Feb 2025 10:04:03 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738749846; cv=none; b=EyguRgfnEH3exxmms/25wyLGO8KQApQuuDmpJssd8iKQrLNyOd6Kh/rbr7dRFxhKXovr0i2wQtv/Q5VRXzCF03tEf/Yh+UKka57FPRW0WECJOKsKYAi1+z5qppWxx96JwHS1Yl8Gm8uqLdbuag3pCJle0+uDCPH+wSyCI0xSWdQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738749846; c=relaxed/simple;
-	bh=82fc+VmARm260icKaXEErWbrNxkHZkRFxsf3XJLyAqU=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=BTmsWC49GtW2E8DxP7tTBRr5s8W65OIhHx7VnXlY7M8coYOnqjolouhu44Bju+5ejp0oCHojehsLJ4/2N2SplHM8wowIYe0U8p+d4BJKznhpqqCrLDLMvzdWaNpY+IjME8iwqjxRRXKnVCeAs/Aos8pZhx1LgJOXXU2BxMNCKF4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=alq/5FvK; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfcJX-00042S-HR; Wed, 05 Feb 2025 05:07:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tfcJW-00041u-3U
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 05:07:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tfcJU-0007BX-Jx
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 05:07:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738749842;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VzUQ4vCBJpKzzDMO8biGgL6OeuyevSJKcbaC42p67oY=;
-	b=alq/5FvKAWyxUUFZvqNHWU+jgxbAGBg4xQLFz+ePnBDPcw9yFVGYWldnlyNQpYMeTqdB+k
-	OJLR9I1+HnNg7AA+7vqj4S1QXOCLxXHAQEClCPirq6lzW19bgcaxxu4wbdUuphRJItKpjz
-	6ePhYU74ablcMRvxAX6o76qoJYkEdKA=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1738750039;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1zDoZmkitSBKZ8WS2tPZOpQfMN+YQSBeT3+5PJja8Yo=;
+ b=aoGUj8suwHoVBf57s0rodpHRZgNTkt5PGHw3t17ChJSl8h9bWbLUPyzyk9CKiJ5z6FLSKN
+ V+/Q+2TQ0WkY3EA0szyrjPYNaQ2MorSU8Wii1K1JGj8g2LECiw7phOAToXarl7mL0tKhO7
+ 38487yCEGK2KeYxmxh2uK6cqGxc2xSk=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-628-vQG75amlMDejvhFzrI5qyQ-1; Wed,
- 05 Feb 2025 05:03:58 -0500
-X-MC-Unique: vQG75amlMDejvhFzrI5qyQ-1
-X-Mimecast-MFC-AGG-ID: vQG75amlMDejvhFzrI5qyQ
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B43BD1956094;
-	Wed,  5 Feb 2025 10:03:55 +0000 (UTC)
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-240-_xxC_nefP8Gptcel8UouCw-1; Wed,
+ 05 Feb 2025 05:07:15 -0500
+X-MC-Unique: _xxC_nefP8Gptcel8UouCw-1
+X-Mimecast-MFC-AGG-ID: _xxC_nefP8Gptcel8UouCw
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4BE0819560B6; Wed,  5 Feb 2025 10:07:13 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.40])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B1C0918004A7;
-	Wed,  5 Feb 2025 10:03:53 +0000 (UTC)
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ABD7019560A3; Wed,  5 Feb 2025 10:07:12 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6D80521E6A28; Wed, 05 Feb 2025 11:03:51 +0100 (CET)
+ id 64CC221E6A28; Wed, 05 Feb 2025 11:07:10 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Zhao Liu <zhao1.liu@intel.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
-  Markus Armbruster <armbru@redhat.com>,  Michael Roth
- <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Marcelo Tosatti
- <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric Auger
- <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Laurent
- Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Sebastian
- Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
-  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
-  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
-In-Reply-To: <20250122090517.294083-2-zhao1.liu@intel.com> (Zhao Liu's message
-	of "Wed, 22 Jan 2025 17:05:13 +0800")
+ Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
+ Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
+ qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 3/5] i386/kvm: Support event with select & umask format
+ in KVM PMU filter
+In-Reply-To: <20250122090517.294083-4-zhao1.liu@intel.com> (Zhao Liu's message
+ of "Wed, 22 Jan 2025 17:05:15 +0800")
 References: <20250122090517.294083-1-zhao1.liu@intel.com>
-	<20250122090517.294083-2-zhao1.liu@intel.com>
-Date: Wed, 05 Feb 2025 11:03:51 +0100
-Message-ID: <871pwc3dyw.fsf@pond.sub.org>
+ <20250122090517.294083-4-zhao1.liu@intel.com>
+Date: Wed, 05 Feb 2025 11:07:10 +0100
+Message-ID: <87zfj01z8x.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: mNzSS3pPsBtz
-
-Quick & superficial review for now.
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rRx8UbNRQ1Xk
 
 Zhao Liu <zhao1.liu@intel.com> writes:
 
-> Introduce the kvm-pmu-filter object and support the PMU event with raw
-> format.
->
-> The raw format, as a native PMU event code representation, can be used
-> for several architectures.
->
-> Considering that PMU event related fields are commonly used in
-> hexadecimal, define KVMPMURawEventVariant, KVMPMUFilterEventVariant, and
-> KVMPMUFilterPropertyVariant in kvm.json to support hexadecimal number
-> strings in JSON.
->
-> Additionally, define the corresponding numeric versions of
-> KVMPMURawEvent, KVMPMUFilterEvent, and KVMPMUFilterProperty in kvm.json.
-> This allows to handle numeric values more effectively and take advantage
-> of the qapi helpers.
->
+> The select&umask is the common way for x86 to identify the PMU event,
+> so support this way as the "x86-default" format in kvm-pmu-filter
+> object.
+
+So, format 'raw' lets you specify the PMU event code as a number, wheras
+'x86-default' lets you specify it as select and umask, correct?
+
+Why do we want both?
+
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 
 [...]
 
 > diff --git a/qapi/kvm.json b/qapi/kvm.json
-> new file mode 100644
-> index 000000000000..d51aeeba7cd8
-> --- /dev/null
+> index d51aeeba7cd8..93b869e3f90c 100644
+> --- a/qapi/kvm.json
 > +++ b/qapi/kvm.json
-> @@ -0,0 +1,116 @@
-> +# -*- Mode: Python -*-
-> +# vim: filetype=python
-> +
-> +##
-> +# = KVM based feature API
+> @@ -27,11 +27,13 @@
+>  #
+>  # @raw: the encoded event code that KVM can directly consume.
+>  #
+> +# @x86-default: standard x86 encoding format with select and umask.
 
-This is a top-level section.  It ends up between sections "QMP
-introspection" and "QEMU Object Model (QOM)".  Is this what we want?  Or
-should it be a sub-section of something?  Or next to something else?
-
-> +##
-> +
-> +##
-> +# @KVMPMUFilterAction:
-> +#
-> +# Actions that KVM PMU filter supports.
-> +#
-> +# @deny: disable the PMU event/counter in KVM PMU filter.
-> +#
-> +# @allow: enable the PMU event/counter in KVM PMU filter.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'enum': 'KVMPMUFilterAction',
-> +  'prefix': 'KVM_PMU_FILTER_ACTION',
-> +  'data': ['allow', 'deny'] }
-> +
-> +##
-> +# @KVMPMUEventEncodeFmt:
-
-Please don't abbreviate Format to Fmt.  We use Format elsewhere, and
-consistency is desirable.
+Why is this named -default?
 
 > +#
-> +# Encoding formats of PMU event that QEMU/KVM supports.
-> +#
-> +# @raw: the encoded event code that KVM can directly consume.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'enum': 'KVMPMUEventEncodeFmt',
-> +  'prefix': 'KVM_PMU_EVENT_FMT',
-> +  'data': ['raw'] }
-> +
-> +##
-> +# @KVMPMURawEvent:
-> +#
-> +# Raw PMU event code.
-> +#
-> +# @code: the raw value that has been encoded, and QEMU could deliver
-> +#     to KVM directly.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'struct': 'KVMPMURawEvent',
-> +  'data': { 'code': 'uint64' } }
-> +
-> +##
-> +# @KVMPMUFilterEvent:
-> +#
-> +# PMU event filtered by KVM.
-> +#
-> +# @format: PMU event format.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'union': 'KVMPMUFilterEvent',
-> +  'base': { 'format': 'KVMPMUEventEncodeFmt' },
-> +  'discriminator': 'format',
-> +  'data': { 'raw': 'KVMPMURawEvent' } }
-> +
-> +##
-> +# @KVMPMUFilterProperty:
-> +#
-> +# Property of KVM PMU Filter.
-> +#
-> +# @events: the KVMPMUFilterEvent list.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'struct': 'KVMPMUFilterProperty',
-> +  'data': { '*events': ['KVMPMUFilterEvent'] } }
-> +
-> +##
-> +# @KVMPMURawEventVariant:
-> +#
-> +# The variant of KVMPMURawEvent with the string, rather than the
-> +# numeric value.
-> +#
-> +# @code: the raw value that has been encoded, and QEMU could deliver
-> +#     to KVM directly.  This field is a uint64 string.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'struct': 'KVMPMURawEventVariant',
-> +  'data': { 'code': 'str' } }
-> +
-> +##
-> +# @KVMPMUFilterEventVariant:
-> +#
-> +# The variant of KVMPMUFilterEvent.
-> +#
-> +# @format: PMU event format.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'union': 'KVMPMUFilterEventVariant',
-> +  'base': { 'format': 'KVMPMUEventEncodeFmt' },
-> +  'discriminator': 'format',
-> +  'data': { 'raw': 'KVMPMURawEventVariant' } }
-> +
-> +##
-> +# @KVMPMUFilterPropertyVariant:
-> +#
-> +# The variant of KVMPMUFilterProperty.
-> +#
-> +# @action: action that KVM PMU filter will take.
-> +#
-> +# @events: the KVMPMUFilterEventVariant list.
-> +#
-> +# Since 10.0
-> +##
-> +{ 'struct': 'KVMPMUFilterPropertyVariant',
-> +  'data': { 'action': 'KVMPMUFilterAction',
-> +            '*events': ['KVMPMUFilterEventVariant'] } }
-> diff --git a/qapi/meson.build b/qapi/meson.build
-> index e7bc54e5d047..856439c76b67 100644
-> --- a/qapi/meson.build
-> +++ b/qapi/meson.build
-> @@ -37,6 +37,7 @@ qapi_all_modules = [
->    'error',
->    'introspect',
->    'job',
-> +  'kvm',
->    'machine-common',
->    'machine',
->    'machine-target',
-> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-> index b1581988e4eb..742818d16e45 100644
-> --- a/qapi/qapi-schema.json
-> +++ b/qapi/qapi-schema.json
-> @@ -64,6 +64,7 @@
->  { 'include': 'compat.json' }
->  { 'include': 'control.json' }
->  { 'include': 'introspect.json' }
-> +{ 'include': 'kvm.json' }
->  { 'include': 'qom.json' }
->  { 'include': 'qdev.json' }
->  { 'include': 'machine-common.json' }
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 28ce24cd8d08..c75ec4b21e95 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -8,6 +8,7 @@
->  { 'include': 'block-core.json' }
->  { 'include': 'common.json' }
->  { 'include': 'crypto.json' }
-> +{ 'include': 'kvm.json' }
+>  # Since 10.0
+>  ##
+>  { 'enum': 'KVMPMUEventEncodeFmt',
+>    'prefix': 'KVM_PMU_EVENT_FMT',
+> -  'data': ['raw'] }
+> +  'data': ['raw', 'x86-default'] }
 >  
 >  ##
->  # = QEMU Object Model (QOM)
-> @@ -1108,6 +1109,7 @@
->        'if': 'CONFIG_LINUX' },
->      'iommufd',
->      'iothread',
-> +    'kvm-pmu-filter',
->      'main-loop',
->      { 'name': 'memory-backend-epc',
->        'if': 'CONFIG_LINUX' },
-> @@ -1183,6 +1185,7 @@
->                                        'if': 'CONFIG_LINUX' },
->        'iommufd':                    'IOMMUFDProperties',
->        'iothread':                   'IothreadProperties',
-> +      'kvm-pmu-filter':             'KVMPMUFilterPropertyVariant',
+>  # @KVMPMURawEvent:
+> @@ -46,6 +48,25 @@
+>  { 'struct': 'KVMPMURawEvent',
+>    'data': { 'code': 'uint64' } }
+>  
+> +##
+> +# @KVMPMUX86DefalutEvent:
 
-The others are like
+Default, I suppose.
 
-         'mumble': 'MumbleProperties'
+> +#
+> +# x86 PMU event encoding with select and umask.
+> +# raw_event = ((select & 0xf00UL) << 24) | \
+> +#              (select) & 0xff) | \
+> +#              ((umask) & 0xff) << 8)
 
-Let's stick to that, and also avoid running together multiple
-capitalized acronyms: KvmPmuFilterProperties.
+Sphinx rejects this with "Unexpected indentation."
 
->        'main-loop':                  'MainLoopProperties',
->        'memory-backend-epc':         { 'type': 'MemoryBackendEpcProperties',
->                                        'if': 'CONFIG_LINUX' },
+Is the formula needed here?
+
+> +#
+> +# @select: x86 PMU event select field, which is a 12-bit unsigned
+> +#     number.
+> +#
+> +# @umask: x86 PMU event umask field.
+> +#
+> +# Since 10.0
+> +##
+> +{ 'struct': 'KVMPMUX86DefalutEvent',
+> +  'data': { 'select': 'uint16',
+> +            'umask': 'uint8' } }
+> +
+>  ##
+>  # @KVMPMUFilterEvent:
+>  #
+> @@ -58,7 +79,8 @@
+>  { 'union': 'KVMPMUFilterEvent',
+>    'base': { 'format': 'KVMPMUEventEncodeFmt' },
+>    'discriminator': 'format',
+> -  'data': { 'raw': 'KVMPMURawEvent' } }
+> +  'data': { 'raw': 'KVMPMURawEvent',
+> +            'x86-default': 'KVMPMUX86DefalutEvent' } }
+>  
+>  ##
+>  # @KVMPMUFilterProperty:
+> @@ -86,6 +108,23 @@
+>  { 'struct': 'KVMPMURawEventVariant',
+>    'data': { 'code': 'str' } }
+>  
+> +##
+> +# @KVMPMUX86DefalutEventVariant:
+> +#
+> +# The variant of KVMPMUX86DefalutEvent with the string, rather than
+> +# the numeric value.
+> +#
+> +# @select: x86 PMU event select field.  This field is a 12-bit
+> +#     unsigned number string.
+> +#
+> +# @umask: x86 PMU event umask field. This field is a uint8 string.
+
+Why are these strings?  How are they parsed into numbers?
+
+> +#
+> +# Since 10.0
+> +##
+> +{ 'struct': 'KVMPMUX86DefalutEventVariant',
+> +  'data': { 'select': 'str',
+> +            'umask': 'str' } }
+> +
+>  ##
+>  # @KVMPMUFilterEventVariant:
+>  #
+> @@ -98,7 +137,8 @@
+>  { 'union': 'KVMPMUFilterEventVariant',
+>    'base': { 'format': 'KVMPMUEventEncodeFmt' },
+>    'discriminator': 'format',
+> -  'data': { 'raw': 'KVMPMURawEventVariant' } }
+> +  'data': { 'raw': 'KVMPMURawEventVariant',
+> +            'x86-default': 'KVMPMUX86DefalutEventVariant' } }
+>  
+>  ##
+>  # @KVMPMUFilterPropertyVariant:
+
+[...]
 

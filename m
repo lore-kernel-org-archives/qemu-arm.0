@@ -1,182 +1,204 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp734319njb;
-        Wed, 5 Feb 2025 00:17:15 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXlePtgDCuM5ZKpA7ZBdNR9bUq9NIkSiyg/hPqRvWCCmLWkyXj40zOd8kiBBNWnUhwEUgfvdy8W0z+Z2g==@linaro.org
-X-Google-Smtp-Source: AGHT+IF3H+La3YWfGMK5PF8quX93vXuQFeBETWDSompNWk9DrZGkdaeOwhI7uXS3s4yLBUFJb5QK
-X-Received: by 2002:a17:903:8c7:b0:215:8d49:e2a7 with SMTP id d9443c01a7336-21f17ee7820mr28600695ad.50.1738743435423;
-        Wed, 05 Feb 2025 00:17:15 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738743435; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp793447njb;
+        Wed, 5 Feb 2025 02:44:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWFEGNI4L50WHvg1fB1iiA8fp3a68t7z5X2dR0qR8POMvbLzyvQsr6Js18vOfSYGuUdb14Rhf4D/cIfKQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdzmyM5N3S8AmlE/a/BMZb5dRvbRKJhnT1FPFvYkO1S/iAFz1ngjyXA8foqk/ciBm1iLiZ
+X-Received: by 2002:a05:620a:bd4:b0:7b6:f998:3368 with SMTP id af79cd13be357-7c03a042570mr265957985a.57.1738752288258;
+        Wed, 05 Feb 2025 02:44:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738752288; cv=none;
         d=google.com; s=arc-20240605;
-        b=EOQ+5EqxRclaDUang/DqtC4FoeudOh/m6cQBZJYXyyl6HhWav0L2TJtCqVClk4n5xu
-         UXtkGHISW96e1wVq9GTP/q4VX1aDZrhBb+Tu8Mvq8OcSrjR3rC7rRsZJfOr07zr56U1t
-         BMqZ6QSgtcatY+NjN0mZZEai9DcMwAC9R6oi+yMcJmtHy9KWR2yDTOFSe71CGud6xuoF
-         HabdbqMVI+w2AoCeJP712uamV7ikWYT1h/RyAURCnDx6QX1WU7SpOmEepzWdrgo6Cj70
-         CFRVmz5ttyT1JtKmzmsCq8dz/KoSGpwd8livjtT0uNsj9O0E2AjXmjgVxVWz9yG5+mF1
-         WXJw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=6BRqQ3fWXl/YMiyl0p96PplQZs/WUy+PJhzJxG+8YK4=;
-        fh=EHzICKlvn0ZqJZn9i3VcXOFhp9wJCxnYpUZbW0AQECw=;
-        b=M3j38gj4GjDPOQXY1xoKcJAhC/9WboIUqpLcjS7MnjiSvO7IHK82J6sMGaX7iDlmpX
-         eev+bjmCM9Q0bRgglml2dPnModXWqIR1pOjX4Qu1NO8cyYJirMz3XOOETNBqSQ0qvVNB
-         W0C6GlGBbgHyXWRy+PVqql+eQn2EC56RAAHgkoS1BOp5McyO1C015hZAWIKSKbWbV7HU
-         1pg/l39Fihu1o2He+RCfaccNByhU3Uv9hLYM8PXnn1JyDuo6g74x63JG/XiqDdaDaFA5
-         Zq9lqswauUYyPD5pA98sAE+4SL/g1auXqPu/HMP4C6G90HsUk9u3SueX2Xv5oqLTdt0l
-         TVcw==;
+        b=DqinC3n5jAPJ00SgZSMbpQxRT6q6RoimVmhotSstYMiaUbUprIoA1gfOCZWC0zIPAu
+         YNaGIjvH+JQ9g7clCVtuNZTCfStr6HU1JJZwwv7mMBvGP/N46XK4kxBnTICyaSCeukiw
+         1lLBKg2ymOKdlPI/tzzSmhp+3+ARzLLAKRLlPcb7Va5pVroMuX0E9vG1wU6x2emRSP5u
+         rnlLoracyF2aKlPO3A9b/8HuDnli4m1Die6LZ00rWCe19YuRpiPOuQyQSpdh2lAnCiK0
+         AVTXqAZTekOMEln4watfe/Yymk7GpM5qrJ3V2BtnSsHR/eiu0tJrhCJeXZRMfP46vvxz
+         iD+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=cvlOU8rut4jfEFt+d0/lVGJGUDlpGPQ3b+K0nJMlgtc=;
+        fh=nmpT9UunnqPBqTHH72Bg9QGpqQocxcryizfdCLtWIR0=;
+        b=bNBWxW/EOQVTzVgCbnU6vJBazugJkSMd4X790TrvyR+1wwVBAOcWHcDetYhghnitNM
+         /GYktS/CTI8oQOp5Ht1qe82c2wBEEu2LIx/sTjWxah6PnIEo07g2onWOO7aRd1/VK/bp
+         3SBowIN4yxF3E5lPs0nJ8k6hQtiZe/9YerDrNTJZ3EFR4JwUKvtokZyG/RB+OSrFkSf9
+         qDwIx0B1xdPAoWNDb2a9cqIphIhNa5CLXQnA6gFiEb9eFA5vH4GJ1XS04XUjwxBipDNf
+         c+875m7epkEAnHn6SsKGGkKdSDeLQUcvlo/2tWJkMxXP3GINgb8CYdT+6QaZX+oOmpht
+         BM1g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lip17dEX;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-acec0d994afsi17573208a12.526.2025.02.05.00.17.15
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c02dbe91d2si484498185a.404.2025.02.05.02.44.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 00:17:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Feb 2025 02:44:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lip17dEX;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-499523-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4FDEB3A4A7E
-	for <alex.bennee@linaro.org>; Wed,  5 Feb 2025 08:16:58 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 24D5D21A428;
-	Wed,  5 Feb 2025 08:17:05 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Lip17dEX"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D9342153C6
-	for <linux-kernel@vger.kernel.org>; Wed,  5 Feb 2025 08:17:02 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738743424; cv=none; b=ux9Rq5iXTkR0uZiXu0Lludyf0gT4A5W0jU6XjlQwVsiy9JsRF3C1yFhKfhkSwEWVhHczFy0502JztPyDnpZArEBndk1nnis1nEwHeh3FZxYfgQJ/qqTSaae0DOZDbbR+Oz04Ghp2b45KiCZldmL0n7xCvsAy/ILi61E1fCLhiPg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738743424; c=relaxed/simple;
-	bh=G9EdTKUAoZNkAAibkZdLJ7dNF36/V8cqxltgQehgLXk=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=gYw+3BzQBf/GTfAcTAaNPW6nJlFI0P4UM/UiTaaz2lQvSSWNGr+ZoS1LSmCk+bsHdD4qtMl61wBHRZc20Z+T2IHRttzr4iadbRmfoHL5tsj609sCCsCMTBkeXerTdcuu+7Y4BUHnYmK+yN4cU4T7xFSGzRDHZypIOEXKZCufo+o=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Lip17dEX; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738743421;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6BRqQ3fWXl/YMiyl0p96PplQZs/WUy+PJhzJxG+8YK4=;
-	b=Lip17dEXeUFtg2mKEG/C72Oz2iTYgmTrDQO73u95kG5tmT55oWgkXLjTlFtF1sgDHCb8uk
-	2GTz/BjAut4zeoUFNcaPSqWfTi0pZdDt80Yk74gfn/K+Owy6nFTQTJZmIx6jFuWXyen0AW
-	pKpgn4X1KQHuRFCH+tmaXqwh8INSymc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-184-ocbuJZS0NRen_c3dQigbDw-1; Wed,
- 05 Feb 2025 03:16:58 -0500
-X-MC-Unique: ocbuJZS0NRen_c3dQigbDw-1
-X-Mimecast-MFC-AGG-ID: ocbuJZS0NRen_c3dQigbDw
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E74DC1800264;
-	Wed,  5 Feb 2025 08:16:56 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.40])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B09501800365;
-	Wed,  5 Feb 2025 08:16:55 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 3340F21E6A28; Wed, 05 Feb 2025 09:16:53 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Igor Mammedov <imammedo@redhat.com>,  "Michael S . Tsirkin"
- <mst@redhat.com>,  Jonathan Cameron <Jonathan.Cameron@huawei.com>,  Shiju
- Jose <shiju.jose@huawei.com>,  qemu-arm@nongnu.org,
-  qemu-devel@nongnu.org,  Cleber Rosa <crosa@redhat.com>,  John Snow
- <jsnow@redhat.com>,  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 14/14] scripts/ghes_inject: add a script to generate
- GHES error inject
-In-Reply-To: <80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
-	(Mauro Carvalho Chehab's message of "Fri, 31 Jan 2025 18:42:55 +0100")
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
-	<80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
-Date: Wed, 05 Feb 2025 09:16:53 +0100
-Message-ID: <87bjvg6c22.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tfctJ-0006SO-1S; Wed, 05 Feb 2025 05:44:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tfctF-0006RK-Pd; Wed, 05 Feb 2025 05:44:17 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tfctB-0005zA-SY; Wed, 05 Feb 2025 05:44:16 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YnxcR1jRmz6D8X1;
+ Wed,  5 Feb 2025 18:41:43 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id B0895140CB1;
+ Wed,  5 Feb 2025 18:43:58 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 5 Feb 2025 11:43:53 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Wed, 5 Feb 2025 11:43:53 +0100
+To: Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>
+CC: "ddutile@redhat.com" <ddutile@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
+ =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
+ <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
+ Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>
+Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rLkOMCAgAAM2QCAAAz2gIAEhqeggCVVAYCAI176AIAE12cAgAGBGYCAAGn5AIAAwbpw
+Date: Wed, 5 Feb 2025 10:43:53 +0000
+Message-ID: <b0ba9582d8bb431da39c115e4c5f1ffb@huawei.com>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
+ <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
+ <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
+ <77f736f6-9ef9-462b-916e-c8cfff279044@redhat.com>
+ <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
+In-Reply-To: <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: mKngz99XozqG
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, PDS_BTC_ID=0.499,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ THREAD_INDEX_BAD=3.199 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Z/Z8ZLPzD5K1
 
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
 
-> Using the QMP GHESv2 API requires preparing a raw data array
-> containing a CPER record.
->
-> Add a helper script with subcommands to prepare such data.
->
-> Currently, only ARM Processor error CPER record is supported, by
-> using:
-> 	$ ghes_inject.py arm
->
-> which produces those warnings on Linux:
->
-> [  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-> [  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-> [  774.866583] {4}[Hardware Error]: event severity: recoverable
-> [  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
-> [  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
-> [  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
-> [  774.867189] {4}[Hardware Error]:   running state: 0x0
-> [  774.867321] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-> [  774.867511] {4}[Hardware Error]:   Error info structure 0:
-> [  774.867679] {4}[Hardware Error]:   num errors: 2
-> [  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
-> [  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
-> [  774.868124] {4}[Hardware Error]:     transaction type: Data Access
-> [  774.868280] {4}[Hardware Error]:     cache error, operation type: Data write
-> [  774.868465] {4}[Hardware Error]:     cache level: 2
-> [  774.868592] {4}[Hardware Error]:     processor context not corrupted
-> [  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
->
-> Such script allows customizing the error data, allowing to change
-> all fields at the record. Please use:
->
-> 	$ ghes_inject.py arm -h
->
-> For more details about its usage.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-[...]
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Wednesday, February 5, 2025 12:09 AM
+> To: Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; Eric Auger
+> <eric.auger@redhat.com>
+> Cc: ddutile@redhat.com; Peter Maydell <peter.maydell@linaro.org>; Jason
+> Gunthorpe <jgg@nvidia.com>; Daniel P. Berrang=E9 <berrange@redhat.com>;
+> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Linuxarm
+> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+> Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+> nested SMMUv3
+>=20
+> On Tue, Feb 04, 2025 at 06:49:15PM +0100, Eric Auger wrote:
+> > > In summary, we will have the following series:
+> > > 1) HWPT uAPI patches in backends/iommufd.c (Zhenzhong or Shameer)
+> > >    https://lore.kernel.org/qemu-
+> devel/SJ0PR11MB6744943702EB5798EC9B3B9992E02@SJ0PR11MB6744.nam
+> prd11.prod.outlook.com/
+> > > 2) vIOMMU uAPI patches in backends/iommufd.c (I will rebase/send)
+>=20
+> > for 1 and 2, are you taking about the "Add VIOMMU infrastructure
+> support
+> > " series in Shameer's branch: private-smmuv3-nested-dev-rfc-v1.
+> > Sorry I may instead refer to NVidia or Intel's branch but I am not sure
+> > about the last ones.
+>=20
+> That "vIOMMU infrastructure" is for 2, yes.
+>=20
+> For 1, it's inside the Intel's series:
+> "cover-letter: intel_iommu: Enable stage-1 translation for passthrough
+> device"
+>=20
+> So, we need to extract them out and make it separately..
+>=20
+> > > 3) vSMMUv3 patches for HW-acc/nesting (Hoping Don/you could take
+> over)
+> > We can start sending it upstream assuming we have a decent test
+> environment.
+> >
+> > However in
+> >
+> https://lore.kernel.org/all/329445b2f68a47269292aefb34584375@huawei.c
+> om/
+> >
+> > Shameer suggested he may include it in his SMMU multi instance series.
+> > What do you both prefer?
+>=20
+> Sure, I think it's good to include those patches, though I believe
+> we need to build a new shared branch as Shameer's branch might not
+> reflect the latest kernel uAPI header.
+>=20
+> Here is a new branch on top of latest master tree (v9.2.50):
+> https://github.com/nicolinc/qemu/commits/wip/for_shameer_02042025
+>=20
+> I took HWPT patches from Zhenzhong's series and rebased all related
+> changes from my tree. I did some sanity and it should work with RMR.
+>=20
+> Shameer, would you please try this branch and then integrate your
+> series on top of the following series?
+>    cover-letter: Add HW accelerated nesting support for arm SMMUv3
+>    cover-letter: Add vIOMMU-based nesting infrastructure support
+>    cover-letter: Add HWPT-based nesting infrastructure support
+> Basically, just replace my old multi-instance series with yours, to
+> create a shared branch for all of us.
 
-> diff --git a/scripts/arm_processor_error.py b/scripts/arm_processor_error.py
-> new file mode 100644
-> index 000000000000..b0e8450e667e
-> --- /dev/null
-> +++ b/scripts/arm_processor_error.py
-> @@ -0,0 +1,476 @@
-> +#!/usr/bin/env python3
-> +#
-> +# pylint: disable=C0301,C0114,R0903,R0912,R0913,R0914,R0915,W0511
-> +# SPDX-License-Identifier: GPL-2.0
+Ok. I will take a look at that and rebase.
 
-Sorry if this has been answered already...  why not GPL-2.0-or-later?
-
-More of the same below.
-
-[...]
-
+Thanks,
+Shameer

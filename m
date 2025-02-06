@@ -1,182 +1,226 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1578350njb;
-        Thu, 6 Feb 2025 06:38:21 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUhexsDERo1g+r/L7o0d12cyiJCB0ksaBcoGkO+2kqSyudIflJFJZEYPgS3UFEdr/znJkkNfxKuEVhURw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHiUpCSLfuu6tRT/ZHVdArbDcO9exGfFPphEpO0Gx4JGPmGGBm+wjwhEwv2HWlIf+uzD/qw
-X-Received: by 2002:a05:6602:3987:b0:849:a2bb:ffde with SMTP id ca18e2360f4ac-854ea4402a7mr836666939f.4.1738852701568;
-        Thu, 06 Feb 2025 06:38:21 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738852701; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1583690njb;
+        Thu, 6 Feb 2025 06:47:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVgJWnZkebW0KdCxrrH3sHEGvD8F3nlWyDouwf6cqn/KISRdob3k6xo4ITeQ7aBVYKyv6q3orWAIsU93Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFeps8uBo5LGRdKZQ9JtrNrP2M4+qC8iNxdj8Fn4Qfx0eae473jXqbsQyL9tiQAh53+2KKV
+X-Received: by 2002:a05:622a:114d:b0:467:69f5:c2d9 with SMTP id d75a77b69052e-470282e8396mr112025421cf.47.1738853236902;
+        Thu, 06 Feb 2025 06:47:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738853236; cv=none;
         d=google.com; s=arc-20240605;
-        b=PqQNLmZmaRYPYq0DuvxNRKWzoEeIUU4hq7VNk6YxsuREySQXCDw/t0s/axUdG3Vjlv
-         4e3ixo46HCrq5hUkvzp2No3BizDVTOf6q/dF/di2LDPRg8SiAy/OQnMIKG7lT7jDrd/w
-         s3ApH0pe7W1jzinJrRh7pEfZvc5BWMA2GShqwW67wFCjbOGmo+VoBTKXU+Tz7CqxiPV8
-         NjqUf9bcLCqa4n7i8+HgXG2XVcV75TfMXTPHoHRXPft5olC4OOoiB/c1o3VzcSeua0lK
-         0RLl77t4rRqEh0C3QuGmYRn7JsGbCRPlOT1TXjX7ZUf9ge1U9cgTKbV2HeqRm1HzzOv8
-         sOOQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=PGxTIT8w0CVk8Ed6Q8vKZ4j2I1ebk3pq7CgjH4MNKcY=;
-        fh=LXrFrPdOrnHjcoJB4W+0FV/Ct2UvDwhTF2K/yNjSLV4=;
-        b=PCoxyVj3omRo5wRFHubwPxR7eX2L5YIhYTw4jXoSvH21xHOIkeLLeSa4xYKlO/hMMC
-         SzV2f/sBc0nAtt5uH8hIBgI+xlGZ4R8PSvcrkJRhXnFvDgMUgEZi5RJYaF0ZxC4O9nhw
-         lbnLQMMzMgLlod4SiRa14/DlL8aEpWiTJ1Wl+Z8Zgi+QdWpZL1sjuBVdqnZz0UD5q6kz
-         6xXqwX9saqJTyoiiHAkoTmWW3pV1XYggLWgP72QLVdVR2yMItgry60cyu7eaE+Wlv0+9
-         6WthSTotVhQ9QKyG85xtZTDImURu9eKL4enAUfPeLxbI2LghXrfHdNMbrmUhA6WT+Idv
-         9KBA==;
+        b=N/hXXfjGKezEpGf/VqPo8tJDRB9n6s1ldoIfbJ4qdY4WGnPdHEiFk1q2/qTdIk3PVb
+         m2aAezfmou7AoVtDyUMn14rKjjXDwfGX13iBJGvXLvkEyk8Y1avp2X8AI0ekD8CflopT
+         W6YDVncq2EINNMZtdpgI/XY49ac9tyhKiJe5Y6TQyAkRUd4z+IhF38814y+yNzJi+RPZ
+         t2ufpXZMLgO1JMcaPXn/OGFNRNBjW6wXmbssUTbrhi/Eo6Y65ZPEBtTZRqUAy9Her31/
+         yHC4xe03LMxo8x/pzftmue0F3BYyZGz0lUPQF5WXEiveb4LWelLFZHOwas1LpmJfrSYJ
+         DFTg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gTWnLZ7ZsqpHPB7SWUp/KJbXvK8lp77mmoGEGHxKNc8=;
+        fh=XGzJYtIJ7SbcC/MoEYnRWlAa01sTJ279b1+066m10jY=;
+        b=Ma/BYuc3qjUxen4l7/7a1xROiOKfvbEk5xT5j51h9DJgYAMhUH/tV9uHiE9cOXHaD6
+         pwcfW+lYuYwl56Hyfk5WqeUuGofAw/jOZBL42glJi0/KBnOPZL0FGDmK7FpO1JdfzrC1
+         aeBTrPwQAMz02eOAAwwl6eYa5VqAoyHSudqD1Z/NJ58IPFHHBbx42k+0W1fgq3d1BDwA
+         EUMT5euefxymEmFeew0laKinHFDIgPCz3rUkVxgdaXp6fPW7MtV+gQP3aoR1z5NUhVaE
+         9gbmwWN39O977yyR2jMsSPnC+BPlNkheQlqouKhsJPTrGpBD/R0Vttfg43j/csQQcSfb
+         OQKA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=L0PnozY4;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 8926c6da1cb9f-4eccfc2e077si1279975173.117.2025.02.06.06.38.21
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JBKS2QiS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-47153be4776si11525761cf.612.2025.02.06.06.47.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Feb 2025 06:38:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Feb 2025 06:47:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=L0PnozY4;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37486-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 9D0543A8DC9
-	for <alex.bennee@linaro.org>; Thu,  6 Feb 2025 14:38:10 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 66E3A23642F;
-	Thu,  6 Feb 2025 14:38:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="L0PnozY4"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 83952236427
-	for <kvm@vger.kernel.org>; Thu,  6 Feb 2025 14:38:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.14
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738852696; cv=none; b=R0I7HwPISgN+RECJzzHTjIIZZSOh99/jk98J4ca1wozN4QGvVj6MsyOA9cgmFKFeZPBL/MmERDlEoKCqvA4no81Ds07E2FD+qZN1GeWoMpB2/R5JsgAAwuXWHpKhddOLhoMawNAMxT4hNgPTqV6eRnxiSlHvID7Sk/roHdgXqPs=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738852696; c=relaxed/simple;
-	bh=jfGStSSlY2W8EaMKPfKJE3V47I6s68bEGdj7zqDZJXU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=RURr8p8B8kYh6VMTf8JgREzWPOWIvsSdPNk9/bh5DUhXX6evqgghN05GJ8W/LvB98q7Q8q0bbdgzCemrGF1kN3CPsDf3cVuO4eSv3Sm5QRBCrCghvAF/Cp5ykg8f4fIet8YfNyIBkdGSf/R4JJk0a5LCVzzCvBVtf/wCm948uj0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=L0PnozY4; arc=none smtp.client-ip=198.175.65.14
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1738852695; x=1770388695;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jfGStSSlY2W8EaMKPfKJE3V47I6s68bEGdj7zqDZJXU=;
-  b=L0PnozY4TqFq27uMMymknh7yXFj1B5+1rf7dQRA8xk0cwFrNRA6WSovw
-   sAZ10ECUBj7iwMw5I1YORJSKcKFbX6rVHhfoUMutRBZM9/JmOslr/cPlT
-   KO95fMas5mgScAeP4uVA6Gl2OO0Xzg6NlGJX6978F9SEK6/6d9Ftm9CMW
-   pUi/U0oypMHuDtX1nFGnZISy8hvE9UgT9Zm4ty+Wzu3oNDTdnr81FHsby
-   QMUQ/6W7t3halL5L72HPNbA0ghZMeXAC/khKaDzVc1rAteKkt6MU0iPwS
-   WbrNUgZhCBiGByek2l7dtvl8eLAdpEgZ/hStOtVQwGFe8WJ8McrVvf53L
-   g==;
-X-CSE-ConnectionGUID: sMUCYuPvS/SynlILt+sP2g==
-X-CSE-MsgGUID: KCspJwFXTd6arqAvvjXffA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="43213757"
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; 
-   d="scan'208";a="43213757"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Feb 2025 06:38:14 -0800
-X-CSE-ConnectionGUID: dP1RgmONRgiX4KjojGxDhA==
-X-CSE-MsgGUID: eLEb1rSlTJu9e1GKfNwPKw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="111079245"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by orviesa010.jf.intel.com with ESMTP; 06 Feb 2025 06:35:13 -0800
-Date: Thu, 6 Feb 2025 22:54:41 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel =?utf-8?B?UC4gQmVycmFuZ++/vQ==?= <berrange@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
-	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-Message-ID: <Z6TNMZbonWmsnyM7@intel.com>
-References: <20250122090517.294083-1-zhao1.liu@intel.com>
- <20250122090517.294083-4-zhao1.liu@intel.com>
- <87zfj01z8x.fsf@pond.sub.org>
- <Z6SG2NLxxhz4adlV@intel.com>
- <Z6SEIqhJEWrMWTU1@redhat.com>
- <878qqjqskm.fsf@pond.sub.org>
- <Z6TFr49Cnhe1s4/5@intel.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JBKS2QiS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tg39b-0005bD-W6; Thu, 06 Feb 2025 09:46:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tg39Z-0005aK-NP
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 09:46:54 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tg39X-0008AE-Po
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 09:46:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1738853209;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gTWnLZ7ZsqpHPB7SWUp/KJbXvK8lp77mmoGEGHxKNc8=;
+ b=JBKS2QiSxhZNRjpH/D6Sh5CW+WMQRstvE1SMsaCKP8/oCFCCvajUrU3iBCncBet8HectCp
+ gymJR6Mob0hyE6bG+BpKXEr79eOR1i1Fa7/+V2vOz7Uc0bbtJclPAUYHM0Zq3eNuKgm8Rl
+ F4RwvSa8e4d5BHAhmNX6nPRin8/ozxs=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-w-yhJ0T8OJ6xol3F73baeQ-1; Thu,
+ 06 Feb 2025 09:46:46 -0500
+X-MC-Unique: w-yhJ0T8OJ6xol3F73baeQ-1
+X-Mimecast-MFC-AGG-ID: w-yhJ0T8OJ6xol3F73baeQ
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 50BA61955D53; Thu,  6 Feb 2025 14:46:42 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.33])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 22E69180087A; Thu,  6 Feb 2025 14:46:36 +0000 (UTC)
+Date: Thu, 6 Feb 2025 14:46:33 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Message-ID: <Z6TLSdwgajmHVmGH@redhat.com>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z5uiGnAxUf4jXTEI@redhat.com>
+ <7ecabe74e0514367baf28d67675e5db8@huawei.com>
+ <Z51DmtP83741RAsb@redhat.com>
+ <47d2c2556d794d87abf440263b2f7cd8@huawei.com>
+ <Z6SQ3_5bcqseyzVa@redhat.com>
+ <f898b6de4a664fe8810b06b7741e3120@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <Z6TFr49Cnhe1s4/5@intel.com>
-X-TUID: TWe5EIsDKS6S
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f898b6de4a664fe8810b06b7741e3120@huawei.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: M3/LMriyeCxI
 
-> > Do users need to know how to compute the raw event value from @select
-> > and @umask?
+On Thu, Feb 06, 2025 at 01:51:15PM +0000, Shameerali Kolothum Thodi wrote:
+> Hmm..I don’t think just swapping the order will change the association with
+> Guest SMMU here. Because, we have,
 > 
-> Yes, because it's also a unified calculation. AMD and Intel have
-> differences in bits for supported select field, but this calculation
-> (which follows from the KVM code) makes both compatible.
+> >  -device arm-smmuv3-accel,id=smmuv2,bus=pcie.2
 > 
-> > If yes, is C code the best way?
-
-Sorry, I missed this line. In this patch, there's macro:
-
-+#define X86_PMU_RAW_EVENT(eventsel, umask) (((eventsel & 0xf00UL) << 24) | \
-+                                            ((eventsel) & 0xff) | \
-+                                            ((umask) & 0xff) << 8)
-
-So could I said something like the following?
-
-+##
-+# @KVMPMUX86SelectUmaskEvent:
-+#
-+# x86 PMU event encoding with select and umask.  Using the X86_PMU_RAW_EVENT
-+# macro, the select and umask fields will be encoded into raw foramt and
-+# delivered to KVM.
-+#
-+# @select: x86 PMU event select field, which is a 12-bit unsigned
-+#     number.
-+#
-+# @umask: x86 PMU event umask field.
-+#
-+# Since 10.0
-+##
-+{ 'struct': 'KVMPMUX86DefalutEvent',
-+  'data': { 'select': 'uint16',
-+            'umask': 'uint8' } }
-+
-
-Thanks very much!
-
-> > Here's another way:
-> > 
-> >     bits  0..7 : bits 0..7 of @select
-> >     bits  8..15: @umask
-> >     bits 24..27: bits 8..11 of @select
-> >     all other bits: zero
-> >
+> During smmuv3-accel realize time, this will result in, 
+>  pci_setup_iommu(primary_bus, ops, smmu_state);
 > 
-> Thank you! This is what I want.
+> And when the vfio dev realization happens,
+>  set_iommu_device() 
+>    smmu_dev_set_iommu_device(bus, smmu_state, ,)
+>       --> this is where the guest smmuv3-->host smmuv3 association is first
+>             established. And any further vfio dev to this Guest SMMU will
+>             only succeeds if it belongs to the same phys SMMU.
 > 
+> ie, the Guest SMMU to pci bus association, actually make sure you have the
+> same Guest SMMU for the device.
+
+Ok, so at time of VFIO device realize, QEMU is telling the kernel
+to associate a physical SMMU, and its doing this with the virtual
+SMMU attached to PXB parenting the VFIO device.
+
+> smmuv2 --> pcie.2 --> (pxb-pcie, numa_id = 1)
+> 0000:dev2 -->  pcie.port2 --> pcie.2 --> smmuv2 (pxb-pcie, numa_id = 1)
 > 
-> 
+> Hence the association of 0000:dev2 to Guest SMMUv2 remain same.
+
+Yes, I concur the SMMU physical <-> virtual association should
+be fixed, as long as the same VFIO device is always added to
+the same virtual SMMU.
+
+> I hope this is clear. And I am not sure the association will be broken in any
+> other way unless Qemu CLI specify the dev to a different PXB.
+
+Although the ordering is at least predictable, I remain uncomfortable
+about the idea of the virtual SMMU association with the physical SMMU
+being a side effect of the VFIO device placement.
+
+There is still the open door for admin mis-configuration that will not
+be diagnosed. eg consider we attached VFIO device 1 from the host NUMA
+node 1 to  a PXB associated with host NUMA node 0. As long as that's
+the first VFIO device, the kernel will happily associate the physical
+and guest SMMUs.
+
+If we set the physical/guest SMMU relationship directly, then at the
+time the VFIO device is plugged, we can diagnose the incorrectly
+placed VFIO device, and better reason about behaviour.
+
+I've another question about unplug behaviour..
+
+ 1. Plug a VFIO device for host SMMU 1 into a PXB with guest SMMU 1.
+      => Kernel associates host SMMU 1 and guest SMMU 1 together
+ 2. Unplug this VFIO device
+ 3. Plug a VFIO device for host SMMU 2 into a PXB with guest SMMU 1.
+
+Does the host/guest SMMU 1<-> 1 association remain set after step 2,
+implying step 3 will fail ? Or does it get unset, allowing step 3
+to succeed, and establish a new mapping host SMMU 2 to guest SMMU 1.
+
+If step 2 does NOT break the association, do we preserve that
+across a savevm+loadvm sequence of QEMU. If we don't, then step
+3 would fail before the savevm, but succeed after the loadvm.
+
+Explicitly representing the host SMMU association on the guest SMMU
+config makes this behaviour unambiguous. The host / guest SMMU
+relationship is fixed for the lifetime of the VM and invariant of
+whatever VFIO device is (or was previously) plugged.
+
+So I still go back to my general principle that automatic side effects
+are an undesirable idea in QEMU configuration. We have a long tradition
+of making everything entirely explicit to produce easily predictable
+behaviour.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

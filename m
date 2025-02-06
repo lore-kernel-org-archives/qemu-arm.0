@@ -1,117 +1,123 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1429050njb;
-        Thu, 6 Feb 2025 02:00:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMdw0UF3opxNg9sf97cDzxYFoIikC52VDPZbAnSETgs+b3tBPjr9/9hZSDteaFeBolbOL3ZGpMunL4yQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEJ4gsAFeZbsAYwq/vSh2hbfV1DBaolRVi3/KKI+z6OHfjiZZBnHUE9UrAgQ6Zba0PB8yzL
-X-Received: by 2002:a05:620a:2614:b0:7b6:ecaa:9638 with SMTP id af79cd13be357-7c03a04b7edmr937749085a.55.1738836053926;
-        Thu, 06 Feb 2025 02:00:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738836053; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1622985njb;
+        Thu, 6 Feb 2025 07:41:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnMTlKpKDGHDVnwFn+n6qx3cFdq6896oBulkMjU+tkDPml/jId9Fs0g+jBgvK1oV8YAnPIS4bPSZPNVA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFyweg3wxaWEx8ssC++XnuWj0o1fE1TJjUA0EX5/Z+QLUf3O6lKrbUhyZ+5vLOyEnWKl13J
+X-Received: by 2002:a05:6214:4108:b0:6e4:4331:aad2 with SMTP id 6a1803df08f44-6e44331adbcmr1328186d6.9.1738856518030;
+        Thu, 06 Feb 2025 07:41:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738856518; cv=none;
         d=google.com; s=arc-20240605;
-        b=UdhNH2++5mL2xT2fvZETU+ckmlc4WFY6339+XuS1FzOITML7S/rxrugdp+du52R4UJ
-         4RHFXMvuA3OA/IxyBpHnEjyWAByrc51f3NF6p/suSf0/4Yh/8pdNnnGrx4KCB1zZ3Y3B
-         AKNrrC0yUN51wblt5zrqCo0CdstI3Y6f0Ts6p/Ed9Dtl7ivduU5VDT+hYgP0UZWlD8r/
-         +gDP4WkihiEJObuVMINbpspw+01v1P8OGNRcqttYcVGplktEUXMyUvAYz3zQSXOBrWi3
-         UOzghgtBNwmwN4v1Wy+EgISYOHY9X99UoN/45uNVVZ0d2xj9L5IaXVGQDamBHDiO2/Hc
-         YkoQ==
+        b=W8Dmr6M+6GvC4ITK6Nqd7fU3Z4tzMh1ulI0DMVCyT4IbSyaq4EawAM929J5xPKD65u
+         9diPv1HZ6Lq3OZZVGRQ8ksF6iOLdl0MTTReRimrqXwVJBU6uq5lFBued3LmNI09tbD5K
+         X8wpoP5pWbfVz2mbHp/PysevzKQGt1fqpdgLuCE7bZQRF8oJkDM4Hy+FJ2/RuRte1BjN
+         /O9IrkjkMVUr4kIclncHyB5+O3cJVtOHTMe5+pxI4+d+xWsw/sWkGHUkfUhUASnoRBfE
+         4epnBE6Jeu55OjAYOyZFIoLPcdohxfbL6dM9SeA6tBE3oLTFAA6x7x8duTdo82d0mjHp
+         O5kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Az1ikhbqneh+W5sX3hRteMmweloD8P7vVUguIqWdSR8=;
-        fh=5YDLLJgO7dHw3UrwgK3PqKzoqhNi0WRWyfs5b9Zwmpw=;
-        b=dcWymD8y0mdVdsLiip0b+NKwQrO7M+3/mDw+q5DQhJPEGO7SoDbbU5Q+/25NGBg8OR
-         aB3+HBpJwCqdVzjC9LcxxY0G4a7KP/v6diuSIgfEskIlanYX2LEW9Ndt8mrNte93TR5L
-         jU0eko3+/EjCm+C1a6shazpvSMjUXjqmRkAuugSRB7aLjtb0iSb5zxfRnHth5ut178xd
-         P8yKAn3onG8dO3vdZ/2tDN3yI30uaVSKXe7oEfdeoN79ohoY/CFhHjRz9IX7xrNln1wV
-         yr+DCWHeIk+TYKJRmSeKXGZa91Ebn2BpKPftWnKFEFUCwiI24bwJ4J1jpt2oKvNplJAX
-         gQig==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
+        fh=kW31jPbf29cCNxSafIiHxrBiAlQUT+IT2FkBJdYRBho=;
+        b=ArZBravTGrk90TxSAN15B+hsTwBOVaNgvI8RFH+AIGNSe8tl7Y4zROnyU0AGKSXoGY
+         /TK9mCoLGXuogOpI0928DzLsVeQJP5AYR36ASPckT7q4FZKcmQaUtMOnK6ZSXA7kt+S6
+         GHvVxCFj+XWjql2HSS36qckBuvmCEl52hggJfU2F7875+JDxh/sDZUbvNJIZOMDCruhi
+         eHK8O3w01vJ408hcevWLbHT+DtKUxMimM1g+jm2ulqyXgN8Df9KSDZnYHUOhwaPU87i8
+         yoP7LQYo/QvjctEdJw/4mZLheZLyhxIrU8Ln0tzTMMd3p3WkJ7zZ7HGkwWv3Rrefc3PZ
+         IMXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sbup0LoY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s6e0nHDn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041eb5162si86651285a.392.2025.02.06.02.00.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e44262c5a1si2464576d6.286.2025.02.06.07.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 02:00:53 -0800 (PST)
+        Thu, 06 Feb 2025 07:41:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sbup0LoY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s6e0nHDn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfygc-0002aa-Ia; Thu, 06 Feb 2025 05:00:43 -0500
+	id 1tg40Q-0006KB-I8; Thu, 06 Feb 2025 10:41:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tfygV-0002Zy-Vr; Thu, 06 Feb 2025 05:00:36 -0500
-Received: from mgamail.intel.com ([198.175.65.17])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tfygT-0006gZ-2T; Thu, 06 Feb 2025 05:00:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738836034; x=1770372034;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=MU874FEMTTz129Wl0GzXGt5/AqElqEZSPesXYVwITzg=;
- b=Sbup0LoYTTgTs94LAMa1wLH7VvRDXPup/ufkwrmtQXntv+zTAzlb0x8e
- LCsVlXLjnO35HdPeKxUtiM4wHqbtPadhrTAqSEFiSY9oW9T9X7Ty+fd3a
- sbm8eO4/kv+3ikrSVUTH+tesqCvcNY7dZIzdia2Tz0hR22/xTHsnAk9Ne
- 7Vo26zU08q91WxbqfOcNXJnd6WZSxoUZzKJxLaFet5zPf1wkE8tvvQE8D
- 00joTUJxOlUWo0iDIHL8yzs3okCIXL7Sca2p5zRP0nwFioD+hW8MSOWPd
- LFpPSFS0oa6PG90+NLkNu0Eu6Nx7Q6FbCzl3mTZays0WQ6nhVIdQz0iX+ w==;
-X-CSE-ConnectionGUID: 9/bAfngoQaGicD6MoveraQ==
-X-CSE-MsgGUID: TZyqQ+K5Tvy4gNC2OdBFwQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39456944"
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="39456944"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2025 02:00:30 -0800
-X-CSE-ConnectionGUID: cx0BQhqjQt27D6NsVtSqcQ==
-X-CSE-MsgGUID: QCjIMYF1Qie+rufoFs4vsQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="116147595"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa004.jf.intel.com with ESMTP; 06 Feb 2025 02:00:22 -0800
-Date: Thu, 6 Feb 2025 18:19:50 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
-Message-ID: <Z6SMxlWhHgronott@intel.com>
-References: <20250122090517.294083-1-zhao1.liu@intel.com>
- <20250122090517.294083-2-zhao1.liu@intel.com>
- <871pwc3dyw.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tg40O-0006Jj-RI
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 10:41:29 -0500
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tg40M-0002gB-H5
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 10:41:28 -0500
+Received: by mail-yb1-xb32.google.com with SMTP id
+ 3f1490d57ef6-e5b1c4d14f2so926182276.0
+ for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 07:41:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738856484; x=1739461284; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
+ b=s6e0nHDnAesWEOZMfaAO/WETLNT/fJzFnauXMiH1qKYHd3s/BB+usNhcsIK+CZUYNB
+ 6Va34xp5EojKsinKx3cGGSnHP02XQ4MC2lBp5wpcKD7fQIBWc8gvybue67iB6yDm0h5L
+ n5Anji1rwJLe06HEpVMHwDMBZxIQFtF/BQYlampXIQ4S9AftWrm0aN14gfp1M6PukQxK
+ LxXUBVIAKY6qxT75WdWBJdb6iYruWXl7FIekbrpHB06uKSXPbz+ZvKZLWZ9duq5cZvca
+ XTdHUmPdYYIBsi9k5jnT2BpxcGLWykoX0J3vTj4agvg6VOxEa7lk3jtM6sj/hX92n8RI
+ h7Lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738856484; x=1739461284;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
+ b=vvRAtZV6TjKeHLPBlryzrLF9WXRAuZALDPWAud2HF3zc0JtjQ+mV0YXZAI77oTVwcf
+ JSkWxlfNZpXcOhYuAdpY8p/hvsMCc1ZGzACSHWdNlIMmLI0tJeoKjFV7JuHPKSlUZwan
+ i+oj2sdmfXhK2cjzqjSdgKsHfMbd5JTjqxj/mkFs6KQgnQoAO+lKWtOMm64DxWnD0VYw
+ xcPw/97m/tGlr/0uVAM/IrqmBQu68kyHJIHIpjotKiVkHkdPP2AjEzthnlu7/n9t3CJ9
+ umxpuRjkjQDlLAKubcP4UQqMnV/n+7RpGOO2Q3EUEqJZjb8n6vMITY/CK9sE/ecZ5+77
+ ZdOg==
+X-Gm-Message-State: AOJu0YxjsFJQI6WJSPzOWktN+0cPRhHgSScTVabL0sbdPfEVpqCcsitz
+ Oku2xV3ZgGJj//GMJU3W/cOfKO27fMk2ZO3H9oRy9jB3FRasU9KmLdKAmI4Swv85LyZi9wjmoPU
+ oAMaI9LWwd79zaTuRgQB/jcMcWdLeL5bMCs+tEw==
+X-Gm-Gg: ASbGncsPayZVPC3bpNeHIrCY0cj8UjQ+CUnzYMclxQM2rcgfQA1zxtuya4l3Qn7lRV4
+ tbjCsx7WXFvbpkDk6Ln2PPO2BAe+sGD5Yrn2l063viyyzHeRSk8NK17aDs8b89eKWV082fDSS1Q
+ ==
+X-Received: by 2002:a05:6902:cc9:b0:e5b:257e:c3b1 with SMTP id
+ 3f1490d57ef6-e5b259d1967mr5605889276.8.1738856484213; Thu, 06 Feb 2025
+ 07:41:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <871pwc3dyw.fsf@pond.sub.org>
-Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20240615185423.49474-1-florian.lugou@provenrun.com>
+ <CAFEAcA_+WrzM4fXQMUxMi3L5yiUWMrUGTSZH=NDdYDKUCP+8NQ@mail.gmail.com>
+ <20240620135627.qxcrkdx5v7wdurx4@flugou-latitude5401>
+ <CAFEAcA-ngrrEUDD7eA_sOLGF+_wRCuQVxTwuCA4pXjRcuJucmA@mail.gmail.com>
+ <20240621140725.f4hsasmhrhh4joxm@flugou-latitude5401>
+ <CAFEAcA9c9hbpsdyc7+=QEOZGrNY2m-urk6VrWdwCdfk9ipkwpw@mail.gmail.com>
+ <20240820113024.53tmzejw2omm6bbx@flugou-latitude5401>
+In-Reply-To: <20240820113024.53tmzejw2omm6bbx@flugou-latitude5401>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Feb 2025 15:41:12 +0000
+X-Gm-Features: AWEUYZmahiK2qpuPa0z3RYfenGXJ3dinOUgdtOsO67P154Uz5jEB1MLc-NVKMig
+Message-ID: <CAFEAcA9X0w5QW2qnnhF2k72ZrS8SALWiXV7uNr1e=jQnZvrQ7Q@mail.gmail.com>
+Subject: Re: [PATCH] target/arm/helper: Fix timer interrupt masking when
+ HCR_EL2.E2H == 0
+To: Florian Lugou <florian.lugou@provenrun.com>
+Cc: qemu-devel@nongnu.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,107 +132,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XOaqhzQZ7sl4
+X-TUID: TWMFgmqXSY36
 
-On Wed, Feb 05, 2025 at 11:03:51AM +0100, Markus Armbruster wrote:
-> Date: Wed, 05 Feb 2025 11:03:51 +0100
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
-> 
-> Quick & superficial review for now.
+On Tue, 20 Aug 2024 at 12:30, Florian Lugou <florian.lugou@provenrun.com> wrote:
+>
+> > > $ aarch64-none-elf-gcc -ffreestanding -nostdlib -T qemu/tests/tcg/aarch64/system/kernel.ld -o test test.S
+> > >
+> > > $ qemu-system-aarch64 \
+> > >         -machine virt,secure=on,gic-version=3 \
+> > >         -cpu cortex-a57 \
+> > >         -kernel test \
+> > >         -display none \
+> > >         -semihosting
+> > >
+> > > $ # Exits after ~1s
+> > >
+> > > $ qemu-system-aarch64 \
+> > >         -machine virt,secure=on,gic-version=3 \
+> > >         -cpu cortex-a57 \
+> > >         -kernel test \
+> > >         -display none \
+> > >         -semihosting \
+> > >         -icount shift=0,sleep=off
+> > >
+> > > ... (hangs until QEMU is killed)
+> >
+> > For me, with QEMU commit 9eb51530c12ae645b, this test case
+> > exits (doesn't hang) with both these command lines. Do you
+> > still see this bug? I guess it's possible we fixed it in
+> > the last month or so, though I can't see anything obviously
+> > relevant in the git logs.
+>
+> Thank you for taking the time to test it.
+>
+> On my machine (Ubuntu 22.04), with QEMU configuration options
+> "--target-list=aarch64-softmmu --enable-debug", running the provided test case
+> with "-icount shift=0,sleep=off" still makes QEMU hang forever on commit
+> 9eb51530c12ae645b.
+>
+> The issue was initially reported by a colleague of mine so I was hoping it would
+> be somehow reliably reproducible. But apparently it is not.
 
-Thanks!
+Somebody else reported a similar issue to this to me this week,
+which reminded me of a different bug that we'd found and fixed
+in the interim, which was enough of a hint that I figured out
+why this wasn't reproducible for me.
 
-> > diff --git a/qapi/kvm.json b/qapi/kvm.json
-> > new file mode 100644
-> > index 000000000000..d51aeeba7cd8
-> > --- /dev/null
-> > +++ b/qapi/kvm.json
-> > @@ -0,0 +1,116 @@
-> > +# -*- Mode: Python -*-
-> > +# vim: filetype=python
-> > +
-> > +##
-> > +# = KVM based feature API
-> 
-> This is a top-level section.  It ends up between sections "QMP
-> introspection" and "QEMU Object Model (QOM)".  Is this what we want?  Or
-> should it be a sub-section of something?  Or next to something else?
+This bug only reproduces if your QEMU binary isn't compiled
+with slirp support (which will happen if your host system
+doesn't have libslirp-dev or libslirp-devel installed).
+If slirp is present then the usermode networking backend
+will be present and it always has an active timer. Without
+slirp, the problem manifests when there are no active timers.
 
-Do you mean it's not in the right place in the qapi-schema.json?
+You can also repro it on a with-slirp compile by adding
+"-net none" to the command line.
 
-diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-index b1581988e4eb..742818d16e45 100644
---- a/qapi/qapi-schema.json
-+++ b/qapi/qapi-schema.json
-@@ -64,6 +64,7 @@
- { 'include': 'compat.json' }
- { 'include': 'control.json' }
- { 'include': 'introspect.json' }
-+{ 'include': 'kvm.json' }
- { 'include': 'qom.json' }
- { 'include': 'qdev.json' }
- { 'include': 'machine-common.json' }
+I'll have a look at what the underlying bug is... thanks again
+for the handy test case.
 
-Because qom.json includes kvm.json, so I have to place it before
-qom.json.
-
-It doesn't have any dependencies itself, so placing it in the previous
-position should be fine, where do you prefer?
-
-> > +##
-> > +
-> > +##
-> > +# @KVMPMUFilterAction:
-> > +#
-> > +# Actions that KVM PMU filter supports.
-> > +#
-> > +# @deny: disable the PMU event/counter in KVM PMU filter.
-> > +#
-> > +# @allow: enable the PMU event/counter in KVM PMU filter.
-> > +#
-> > +# Since 10.0
-> > +##
-> > +{ 'enum': 'KVMPMUFilterAction',
-> > +  'prefix': 'KVM_PMU_FILTER_ACTION',
-> > +  'data': ['allow', 'deny'] }
-> > +
-> > +##
-> > +# @KVMPMUEventEncodeFmt:
-> 
-> Please don't abbreviate Format to Fmt.  We use Format elsewhere, and
-> consistency is desirable.
-
-OK, will fix.
-
-> >  ##
-> >  # = QEMU Object Model (QOM)
-> > @@ -1108,6 +1109,7 @@
-> >        'if': 'CONFIG_LINUX' },
-> >      'iommufd',
-> >      'iothread',
-> > +    'kvm-pmu-filter',
-> >      'main-loop',
-> >      { 'name': 'memory-backend-epc',
-> >        'if': 'CONFIG_LINUX' },
-> > @@ -1183,6 +1185,7 @@
-> >                                        'if': 'CONFIG_LINUX' },
-> >        'iommufd':                    'IOMMUFDProperties',
-> >        'iothread':                   'IothreadProperties',
-> > +      'kvm-pmu-filter':             'KVMPMUFilterPropertyVariant',
-> 
-> The others are like
-> 
->          'mumble': 'MumbleProperties'
-> 
-> Let's stick to that, and also avoid running together multiple
-> capitalized acronyms: KvmPmuFilterProperties.
-
-IIUC, then I should use the name "KvmPmuFilterProperties" (string version
-for QAPI), and the name "KvmPmuFilterPropertiesVariant" (numeric version
-in codes), do you agree?
- 
-> >        'main-loop':                  'MainLoopProperties',
-> >        'memory-backend-epc':         { 'type': 'MemoryBackendEpcProperties',
-> >                                        'if': 'CONFIG_LINUX' },
-> 
+thanks
+-- PMM

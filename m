@@ -1,115 +1,129 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1444151njb;
-        Thu, 6 Feb 2025 02:35:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX2wMpDayAQ0jEmTJDKttZ3Sx5jNA3JTRMJfNmJpAEOOlx4RHIJ+DCfEdhkURNxz/+/TzbQ4VVl8W505g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFoAV57epa4fa3KNxyRsMNY658sEeXKwWRa8Yt9IGteCTUTm5ScKq8b1SGuBvsb40qq2SWN
-X-Received: by 2002:ac8:5aca:0:b0:462:ea1d:9e2 with SMTP id d75a77b69052e-4703372d300mr41123951cf.16.1738838101772;
-        Thu, 06 Feb 2025 02:35:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738838101; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1445371njb;
+        Thu, 6 Feb 2025 02:38:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVjcHIqJ4YSCur9ShcOPDvZZefECFhq8+xAXUvI39136brYdOur5a5a4W+tOPgxjEzpUvgY5bVrvy/fvw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGou92wCM82uejNphgProFOg2nthAuh5ORat9qoeGi83RMHSlz90YtqO7l6gKXxI/2arKYz
+X-Received: by 2002:a05:620a:4247:b0:7b6:da92:fcd0 with SMTP id af79cd13be357-7c039f97ae9mr970271185a.8.1738838281300;
+        Thu, 06 Feb 2025 02:38:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738838281; cv=none;
         d=google.com; s=arc-20240605;
-        b=BlKcNBXzwhjqGi8NpySX8FB/o/QWyfNVS6y4Zpsgp5iUZYH0ptPODmopSg1ny3VmLR
-         fCFICgbvilfcjsar8tcUE7RBuJG0FeC+uB0PJxEixiVjj/o9NlRsGC7Q6Zc1dzXG7c9X
-         R4JNtjrBjlxkIVowX9j7owF+u++IHsXtKZrk972NNxqZU7px0emQoWOlYDe00qSNVjme
-         pPkvqTSzP5/uznLjp8BpFH9mA/Ro2bRsSmP7eehFPY2VrZjuKdeIUvfo9XkySsxLS+k7
-         pmrWD9BGPyJ6DSyBMUpdK0uIhO3i69+P7dD1lDx1PqnTTSa9N1bHdO5g3jZ0dp5OfSPa
-         A5Dw==
+        b=XKRQP2h/rtqyshhRpgYXKMRrf/5tsmIkzuAXZM+wWxU/ZycJHSe1kpfgjjksNSlZtY
+         ZWCeSNr6x/gEQniS9VLYtTwk3vy/kHH+sN7KkLTkf56HPqT6P3dbAjt4mmMwTZRmMqNg
+         E4a0YhzxkzIDSQo0erft/tYkzL8Jk8Pj710jbaWHNTMe4hs2ZiyYRWrF3vevWAxCZDQj
+         8Z8pcXTcGFFGKvXeYrbmeq/HTVhKS1UumOD8XcIZXocNnkFhQdBX8vA8p8rV/bJOxSpB
+         QfsRmhSn9e9HvzTZFJT4NGqPz5OGGafet0umoCezxX0+p0SoCMViphcFfL4GdQeOFbbw
+         kbHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=tQoO/wrHLMSGhUAq5NIM4hrNJGnYdySseNKR22fjt3E=;
-        fh=nmpT9UunnqPBqTHH72Bg9QGpqQocxcryizfdCLtWIR0=;
-        b=YKLKP9PQtt55l7+zM/RdAReFl62XXxj2xrLbR+JAdB4W6SAy0mGxvzUpf0MMEIiCK+
-         rzHKM4sRAJKnI/xGyb7n/LDyFsBqOietQK/UYAu4C45HG7iPR6DY+VnKZXJFylQ8Crr5
-         /F5xzr1LQibJUDEdFKMI+Wr+7qMDTyN4qg+9pSWc4Mtv8J0eyVVortSKXGvAkd9n8Xul
-         WFVq/7KT0eJCI2MZcaMYae2vypF/0wkdJOB1joxiYoJC5RBkVvY/pMjy2N125iI4Ur3E
-         uUqzeY5W8NpHcrcMedtTViX0A21hHdxTU7q7e4x6Eca1btbGq2zNPNlLmprLPkLdXlIg
-         L3tg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=KwRcckK+8zgNcBJitELOtOH3ui9fvJbiGQAm1rOkKzE=;
+        fh=XGzJYtIJ7SbcC/MoEYnRWlAa01sTJ279b1+066m10jY=;
+        b=XMp6CwMDXIkDC4T86shnCWFj0T7ri5QnZ1nKa2QdomIBwsqxrlwQHE5PwSIiOjbJf7
+         +VjlZHk3zC0qyQoDCYQ5PFgvMS0s7GG+CihRvkSCilZL1zn0UHaxzGYN9sIDKJUxiiIT
+         z1DYuMPKxpS83R8sCLixMDBWFP86XbHy9qF4A7NgG9a+tLWYk8r26pZ+eFq9kAi8IXa1
+         P9+IqzsqZyLAgA/QS8tdyQEVz92p5mB3HW0kUibWi+qt6FJmOBBpGpIXjC/7R4MY1sMj
+         G9orDFURvQS8FqWW9V/q1iH56c9cID6iDcAbO2xkH5VAcfVnzVnzBGNJ8CixK+j5bQy+
+         jr4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HGHLRLDU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153bba2basi8153851cf.478.2025.02.06.02.35.01
+        by mx.google.com with ESMTPS id af79cd13be357-7c041df5a13si93217885a.112.2025.02.06.02.38.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 02:35:01 -0800 (PST)
+        Thu, 06 Feb 2025 02:38:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HGHLRLDU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfzDG-0000XO-2G; Thu, 06 Feb 2025 05:34:26 -0500
+	id 1tfzGQ-0001cl-CJ; Thu, 06 Feb 2025 05:37:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tfzDE-0000Wu-Cl; Thu, 06 Feb 2025 05:34:24 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tfzGO-0001bh-Eo
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 05:37:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tfzDB-0001TM-0y; Thu, 06 Feb 2025 05:34:24 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YpYLk4TwZz6H8Vk;
- Thu,  6 Feb 2025 18:31:58 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
- by mail.maildlp.com (Postfix) with ESMTPS id 9F1D51408F9;
- Thu,  6 Feb 2025 18:34:15 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 6 Feb 2025 11:34:15 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Thu, 6 Feb 2025 11:34:15 +0100
-To: Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>
-CC: "ddutile@redhat.com" <ddutile@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
- =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
- <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
- Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>
-Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tfzGM-0001rl-2o
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 05:37:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1738838256;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KwRcckK+8zgNcBJitELOtOH3ui9fvJbiGQAm1rOkKzE=;
+ b=HGHLRLDUXKUyjZa50mARLExzOqdL58QeEZ7qbK1PvZRthrfIgvYkiQw+urSPQx7xceYsVK
+ G0fr4yanOqxU9BL7Evsmx3p+uKhOh624QmetK0fXtv1nB128lFW5NB1TXqBfYWHifK7TPy
+ /npaVB56Qd1xKhXK5jxVwPCxvaTz0Mw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-WyS2MNE3Nr2b8WO3Lne9ww-1; Thu,
+ 06 Feb 2025 05:37:32 -0500
+X-MC-Unique: WyS2MNE3Nr2b8WO3Lne9ww-1
+X-Mimecast-MFC-AGG-ID: WyS2MNE3Nr2b8WO3Lne9ww
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7841B19560B7; Thu,  6 Feb 2025 10:37:30 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.33])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 93B671800872; Thu,  6 Feb 2025 10:37:23 +0000 (UTC)
+Date: Thu, 6 Feb 2025 10:37:19 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
  nested SMMUv3
-Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rLkOMCAgAAM2QCAAAz2gIAEhqeggCVVAYCAI176AIAE12cAgAGBGYCAAGn5AIACTjRQ
-Date: Thu, 6 Feb 2025 10:34:15 +0000
-Message-ID: <8224c38797344d1a9c0f453774925db3@huawei.com>
+Message-ID: <Z6SQ3_5bcqseyzVa@redhat.com>
 References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
- <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
- <329445b2f68a47269292aefb34584375@huawei.com>
- <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
- <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
- <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
- <77f736f6-9ef9-462b-916e-c8cfff279044@redhat.com>
- <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
-In-Reply-To: <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ <Z5uiGnAxUf4jXTEI@redhat.com>
+ <7ecabe74e0514367baf28d67675e5db8@huawei.com>
+ <Z51DmtP83741RAsb@redhat.com>
+ <47d2c2556d794d87abf440263b2f7cd8@huawei.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, PDS_BTC_ID=0.498,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <47d2c2556d794d87abf440263b2f7cd8@huawei.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- THREAD_INDEX_BAD=3.197 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,76 +136,173 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OV+E2A4q3Jas
+X-TUID: Mi5S+f+QisZA
 
-Hi Nicolin,
+On Thu, Feb 06, 2025 at 10:02:25AM +0000, Shameerali Kolothum Thodi wrote:
+> Hi Daniel,
+> 
+> > -----Original Message-----
+> > From: Daniel P. Berrangé <berrange@redhat.com>
+> > Sent: Friday, January 31, 2025 9:42 PM
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> > eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
+> > nicolinc@nvidia.com; ddutile@redhat.com; Linuxarm
+> > <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> > <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+> > Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+> > nested SMMUv3
+> > 
+> > On Thu, Jan 30, 2025 at 06:09:24PM +0000, Shameerali Kolothum Thodi
+> > wrote:
+> > >
+> > > Each "arm-smmuv3-nested" instance, when the first device gets attached
+> > > to it, will create a S2 HWPT and a corresponding SMMUv3 domain in
+> > kernel
+> > > SMMUv3 driver. This domain will have a pointer representing the physical
+> > > SMMUv3 that the device belongs. And any other device which belongs to
+> > > the same physical SMMUv3 can share this S2 domain.
+> > 
+> > Ok, so given two guest SMMUv3s,   A and B, and two host SMMUv3s,
+> > C and D, we could end up with A&C and B&D paired, or we could
+> > end up with A&D and B&C paired, depending on whether we plug
+> > the first VFIO device into guest SMMUv3  A or B.
+> > 
+> > This is bad.  Behaviour must not vary depending on the order
+> > in which we create devices.
+> > 
+> > An guest SMMUv3 is paired to a guest PXB. A guest PXB is liable
+> > to be paired to a guest NUMA node. A guest NUMA node is liable
+> > to be paired to host NUMA node. The guest/host SMMU pairing
+> > must be chosen such that it makes conceptual sense wrt to the
+> > guest PXB NUMA to host NUMA pairing.
+> > 
+> > If the kernel picks guest<->host SMMU pairings on a first-device
+> > first-paired basis, this can end up with incorrect guest NUMA
+> > configurations.
+> 
+> Ok. I am trying to understand how this can happen as I assume the
+> Guest PXB numa node is picked up by whatever device we are
+> attaching to it and based on which numa_id that device belongs to
+> in physical host.
+> 
+> And the physical smmuv3 numa id will be the same to that of the
+> device numa_id  it is associated with. Isn't it?
+> 
+> For example I have a system here, that has 8 phys SMMUv3s and numa
+> assignments on this is something like below,
+> 
+> Phys SMMUv3.0 --> node 0
+>   \..dev1 --> node0
+> Phys SMMUv3.1 --> node 0
+> \..dev2 -->node0
+> Phys SMMUv3.2 --> node 0
+> Phys SMMUv3.3 --> node 0
+> 
+> Phys SMMUv3.4 --> node 1
+> Phys SMMUv3.5 --> node 1
+> \..dev5 --> node1
+> Phys SMMUv3.6 --> node 1
+> Phys SMMUv3.7 --> node 1
+> 
+> 
+> If I have to assign say dev 1, 2 and 5 to a Guest, we need to specify 3
+>  "arm-smmuv3-accel" instances as they belong to different phys SMMUv3s.
+> 
+> -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_id=0 \
+> -device pxb-pcie,id=pcie.2,bus_nr=2,bus=pcie.0,numa_id=0 \
+> -device pxb-pcie,id=pcie.3,bus_nr=3,bus=pcie.0,numa_id=1 \
+> -device arm-smmuv3-accel,id=smmuv1,bus=pcie.1 \
+> -device arm-smmuv3-accel,id=smmuv2,bus=pcie.2 \
+> -device arm-smmuv3-accel,id=smmuv3,bus=pcie.3 \
+> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \
+> -device pcie-root-port,id=pcie.port2,bus=pcie.3,chassis=2 \
+> -device pcie-root-port,id=pcie.port3,bus=pcie.2,chassis=3 \
+> -device vfio-pci,host=0000:dev1,bus=pcie.port1,iommufd=iommufd0 \
+> -device vfio-pci,host=0000: dev2,bus=pcie.port2,iommufd=iommufd0 \
+> -device vfio-pci,host=0000: dev5,bus=pcie.port3,iommufd=iommufd0
+> 
+> So I guess even if we don't specify the physical SMMUv3 association
+> explicitly, the kernel will check that based on the devices the Guest
+> SMMUv3 is attached to (and hence the Numa association), right?
 
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Wednesday, February 5, 2025 12:09 AM
-> To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; Eric Auger
-> <eric.auger@redhat.com>
-> Cc: ddutile@redhat.com; Peter Maydell <peter.maydell@linaro.org>; Jason
-> Gunthorpe <jgg@nvidia.com>; Daniel P. Berrang=E9 <berrange@redhat.com>;
-> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Linuxarm
-> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
-> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
-> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
-> Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
-> nested SMMUv3
->=20
-> On Tue, Feb 04, 2025 at 06:49:15PM +0100, Eric Auger wrote:
-> > > In summary, we will have the following series:
-> > > 1) HWPT uAPI patches in backends/iommufd.c (Zhenzhong or Shameer)
-> > >    https://lore.kernel.org/qemu-
-> devel/SJ0PR11MB6744943702EB5798EC9B3B9992E02@SJ0PR11MB6744.nam
-> prd11.prod.outlook.com/
-> > > 2) vIOMMU uAPI patches in backends/iommufd.c (I will rebase/send)
->=20
-> > for 1 and 2, are you taking about the "Add VIOMMU infrastructure
-> support
-> > " series in Shameer's branch: private-smmuv3-nested-dev-rfc-v1.
-> > Sorry I may instead refer to NVidia or Intel's branch but I am not sure
-> > about the last ones.
->=20
-> That "vIOMMU infrastructure" is for 2, yes.
->=20
-> For 1, it's inside the Intel's series:
-> "cover-letter: intel_iommu: Enable stage-1 translation for passthrough
-> device"
->=20
-> So, we need to extract them out and make it separately..
->=20
-> > > 3) vSMMUv3 patches for HW-acc/nesting (Hoping Don/you could take
-> over)
-> > We can start sending it upstream assuming we have a decent test
-> environment.
-> >
-> > However in
-> >
-> https://lore.kernel.org/all/329445b2f68a47269292aefb34584375@huawei.c
-> om/
-> >
-> > Shameer suggested he may include it in his SMMU multi instance series.
-> > What do you both prefer?
->=20
-> Sure, I think it's good to include those patches,=20
+It isn't about checking the devices, it is about the guest SMMU
+getting differing host SMMU associations.
 
-One of the feedback I received on my series was to rename "arm-smmuv3-neste=
-d"
-to "arm-smmuv3-accel" and possibly rename function names to include "accel'=
- as well
-and move those functions to a separate "smmuv3-accel.c" file. I suppose tha=
-t applies to=20
-the " Add HW accelerated nesting support for arm SMMUv3" series as well.=20
+> In other words how an explicit association helps us here?
+> 
+> Or is it that the Guest PXB numa_id allocation is not always based
+> on device numa_id?
 
-Is that fine with you?
+Lets simplify to 2 SMMUs for shorter CLIs.
 
-Thanks,
-Shameer
+So to start with we assume physical host with two SMMUs, and
+two PCI devices we want to assign
+
+  0000:dev1 - associated with host SMMU 1, and host NUMA node 0
+  0000:dev2 - associated with host SMMU 2, and host NUMA node 1
+
+So now we configure QEMU like this:
+
+ -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_id=0
+ -device pxb-pcie,id=pcie.2,bus_nr=2,bus=pcie.0,numa_id=1
+ -device arm-smmuv3-accel,id=smmuv1,bus=pcie.1
+ -device arm-smmuv3-accel,id=smmuv2,bus=pcie.2
+ -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1
+ -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2
+ -device vfio-pci,host=0000:dev1,bus=pcie.port1,iommufd=iommufd0
+ -device vfio-pci,host=0000:dev2,bus=pcie.port2,iommufd=iommufd0
+
+For brevity I'm not going to show the config for host/guest NUMA mappings,
+but assume that guest NUMA node 0 has been configured to map to host NUMA
+node 0 and guest node 1 to host node 1.
+
+In this order of QEMU CLI args we get
+
+  VFIO device 0000:dev1 causes the kernel to associate guest smmuv1 with
+  host SSMU 1.
+
+  VFIO device 0000:dev2 causes the kernel to associate guest smmuv2 with
+  host SSMU 2.
+
+Now consider we swap the ordering of the VFIO Devices on the QEMU cli
+
+
+ -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_id=0
+ -device pxb-pcie,id=pcie.2,bus_nr=2,bus=pcie.0,numa_id=1
+ -device arm-smmuv3-accel,id=smmuv1,bus=pcie.1
+ -device arm-smmuv3-accel,id=smmuv2,bus=pcie.2
+ -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1
+ -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2
+ -device vfio-pci,host=0000:dev2,bus=pcie.port2,iommufd=iommufd0
+ -device vfio-pci,host=0000:dev1,bus=pcie.port1,iommufd=iommufd0
+
+In this order of QEMU CLI args we get
+
+  VFIO device 0000:dev2 causes the kernel to associate guest smmuv1 with
+  host SSMU 2.
+
+  VFIO device 0000:dev1 causes the kernel to associate guest smmuv2 with
+  host SSMU 1.
+
+This is broken, as now we have inconsistent NUMA mappings between host
+and guest. 0000:dev2 is associated with a PXB on NUMA node 1, but
+associated with a guest SMMU that was paired with a PXB on NUMA node 0.
+
+This is because the kernel is doing first-come first-matched logic for
+mapping guest and host SMMUs, and thus is sensitive to ordering of the
+VFIO devices on the CLI. We need to be ordering invariant, which means
+libvirt must tell  QEMU which host + guest SMMUs to pair together, and
+QEMU must in turn tell the kernel.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

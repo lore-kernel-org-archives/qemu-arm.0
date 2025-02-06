@@ -1,213 +1,188 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1684840njb;
-        Thu, 6 Feb 2025 09:14:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVXi0Uk5/NV1cdwIPB4cl74lpDh0vqhSes0iiQva+dSmuBKikkMDwuMq8mTqPydccE3/kvMVw/PmcoZJw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEEQAgs3lXrpyakYd0gUdRPXSGZkqJgyb4vblp368z5MzS0NGB/QHDVKxbnlQ85+Rlk6kWp
-X-Received: by 2002:a05:6102:4b86:b0:4b2:adca:c13a with SMTP id ada2fe7eead31-4ba85e5536fmr20701137.12.1738862074935;
-        Thu, 06 Feb 2025 09:14:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738862074; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1705510njb;
+        Thu, 6 Feb 2025 09:49:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGFQBwF/IJVhtao8rQJX/ZutzqpuM3oRE2NDOght79LVc6CbnLkyMyau57d4q7tMsoJOUnJCWdc0mHEQ==@linaro.org
+X-Received: by 2002:a5d:5850:0:b0:385:f1f2:13ee with SMTP id ffacd0b85a97d-38db490f8b3mr5824777f8f.46.1738864180272;
+        Thu, 06 Feb 2025 09:49:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738864180; cv=none;
         d=google.com; s=arc-20240605;
-        b=iD8qXBcVEX7q7/dxSov7p0KKHaTKIE9uWAH1P4+zlJfNPuNdxpzqNQohkbhNwRwTFZ
-         TboWmJyBSf252a3KeFKbg9jMhtAIfEdG0gOoIM509wnfHK3MrGHE7q6j597Fm/MHYWL9
-         sL8m6ELOBTByFAKgkxQgt4X2ytbGbVPBiGNG3u8SlE4xlbKRHoyGED5w3HrJoRa52EL0
-         wTaE+jpoGK0GWjaJ5Kq6jWU3C5XdrWi90v1soi/tAH2c3VPOKnlQCiQXCCxMuTSA45OC
-         ML0xykZSz/9xoelKPmblfvNSwgWlY1EOOK8XSTm208kFhFJ5RhtlLdG6YeHH2oy0H2oH
-         E+NA==
+        b=b1Hf4h3l7V4Uvn2KIfpgRVmH1gP/ek3mLom2+WOww4jPc2OBzk2yhB6UTDo/bWPu0F
+         QJGttKKBBFXzu/id5EqcXrJxdN0pR+yka+VpSU+Ou1/fe1H68FoKhWL0hD7gwtgmxwhe
+         T5YNv6FJKlvkl7gC4lVUktmwT7sF5c4mN/Z520gNbh55r0L455sLOkijdT/9Pgiz1f4i
+         vkXZSQuzQCiL4ScGMOlDxi1ZBR8uB6C2fIU1LLfDsC7AdeGGeSpwOt4rvN3+oJHve2W4
+         Na12RbI8SYepIUFtH/HwpdeCioqbclH9Bmwfom6z1oB6Kk+B0Xgj58+H4orwoWsyFzza
+         JNNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=5UXVlKoJC0TaVRGPDBhXNQT+xB0fThhs8UGHJ4HWzLU=;
-        fh=Zxzxxwo9pt0oO1natY//PM42Fl6UqDbd0LeJDAYVIy0=;
-        b=gARRK2tQm6qQbG4h1K0YDXfeScz0i3AuaZ4QI8G9YowEXmVyBmeetVypFIBQN56ryQ
-         +6+Xx6cOk2ie6D93N7ENR/6NA4UjZCwGoh1b/zghld1Q272jf1ORiN4YHlhcxMdo4k7Y
-         1a9El8ozKqIyHYx6nr1WfV/ZFMDmqT8aOL8qgKCcBG8M/rLVMG9xFs5a79aWIXqnGNr6
-         s44UTwNB581WpbXtGt8Jm0jD3l0TMq/q/CMuKFUBNJqDZa9cHCldjsFGcAsSq7yZaFnw
-         7sAvKDRr/vvFHCbgtS57h8FjdEtyCChkT3mXMWkH3jbEWE1QFzqxQbbiAGy9vYwvqziJ
-         eR0Q==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=1qbATPXaShk6uHSkyuikGuAhkTLp1PYYgNhbuymCQ74=;
+        fh=yw+3VhWcxjjwWFcXDHGCJZ57WGP1+G7xHjh2bfImVjQ=;
+        b=TgYeD9Z4OsrZxkVPTd8JmaEAT9AaFWzn4lw5tAmqPBCQEUCE9FDcZhz6bTR17bInBk
+         7pgTFxW61T+rT3otZ8mSSLtxw9o5oxJDP/P+Pxlxft2up9x91O5IIIbbbm8kkPBzvPd0
+         PcCywEbgMKULv7MdvroUsQV24ZkZFVceducIrD+3bl46SxxUg5ZDOIsouDMRUHgWHRAA
+         GMI8QXUaV2KaiFgFwxZzGaaJNgVJhkxreIwZkrU6PYtflGJCxFmaKlZbyrXXr4DypZSz
+         /2J46HDDQAlUuihWiNBgGvvUVPo4f6A+7OyrQjJUnT3BLRequBm7D9jiRluePBN2LzT6
+         7z9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YRyDtSeg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-866f97e3de4si287615241.133.2025.02.06.09.14.34
+       dkim=pass header.i=@linaro.org header.s=google header.b=qb4RM8um;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4391dcad258sor6996065e9.3.2025.02.06.09.49.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 09:14:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 06 Feb 2025 09:49:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YRyDtSeg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tg5SE-0000kP-RR; Thu, 06 Feb 2025 12:14:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tg5SB-0000jT-3T
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 12:14:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tg5S9-00053G-3J
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 12:14:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738862051;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=5UXVlKoJC0TaVRGPDBhXNQT+xB0fThhs8UGHJ4HWzLU=;
- b=YRyDtSegJaWqqFlmpFapmFE559jl6dkuKJssPXfKV2K2UF01Oambci4jKsTC1TNxo4lVHK
- YGHfMt6K7h6PCuVYgT199wZr5tW1KX4edUCMCIUEAdZTifzmcZic83xwoiVoHH+E0DDyzP
- QQ3VFcm6FBf69uF1z64M4cvOvzigTjs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-221-uv8uHyyxNwmGq70QIRBSgQ-1; Thu, 06 Feb 2025 12:14:09 -0500
-X-MC-Unique: uv8uHyyxNwmGq70QIRBSgQ-1
-X-Mimecast-MFC-AGG-ID: uv8uHyyxNwmGq70QIRBSgQ
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-38dab928a84so452469f8f.0
- for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 09:14:09 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=qb4RM8um;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738864180; x=1739468980; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1qbATPXaShk6uHSkyuikGuAhkTLp1PYYgNhbuymCQ74=;
+        b=qb4RM8umvyrmVAsHMnVgLDv/tBDPZ1VVzDHmKMJ3VcN/lPIYfFRJXw8GxMhvYV86p4
+         qH52EMgOwiyvd6pKEfDXLNx89DGecbI4o8Z9I78kW1crK4LZoWvyRQ5yhZNUyaA6FT3i
+         fEZeGlgGL09iehRfjVergHN+HHkCgGEp/e/CMUDVhzvPoWmeDWQObeZfSO9IRC4wy367
+         376rDAenSUkzmz9Kightj0CRVCKFCBv/qr1DDUoLULo6MfYD2K2gpQquGcnWaF8cHC4t
+         eOodwlylMulvV8+HSmM2I71Gosf5s8bLE0zfmZpvxBWX+qhgNxXA7CEnKME+PWRY+Gs8
+         sBSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738862048; x=1739466848;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5UXVlKoJC0TaVRGPDBhXNQT+xB0fThhs8UGHJ4HWzLU=;
- b=jC0mIfXD08svbyx/FHvv5ziaKEUVqX4nd/Qr81inPq9dOUrRVR9wfY8wiUiI0FDX/v
- O8BSTqsAo591ZzwMeFLpC7Cuioryq3wwyyCTRtsD6JWxkd4q9mVY+dGMfleeifZ2ibzw
- jA33ZOrDPdzWRJMtfdDIuK0I4uQpCAAv8zleHyAxeA71SRBj2ssHQvUGyxXAFPmC57Ws
- eaP0VbIcL1Nu97OoOhi+VAgF7EHMF1o9Eeb5a3akGjIJ13EE4g/UrZn3Bvr35IclrlKG
- CwnG8DqobZxajLqQnKpYSLM3A2zcY+9nsWPUSRF8ocMUaadf4Xv1mJ46RAWwTEZEcSI/
- RBDA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW7lIGSKNzwPOzQjTGIXJ1qnyToDB3hEisMMtyCodMU2468zLxSyi6fhjKggp0iq8DEYpeifGkHjc5u@nongnu.org
-X-Gm-Message-State: AOJu0YzTXopvp8sKslRuqjiQRtV1x5l3m3DWxYaxqT4CO6PewOFWVbYE
- piFk7TSao9TiTOJ3VSvIj21fMD+6oP/32v+bLisEibSGThXDY0a8X2VMYEIzmlfBWtFsKGF1TlA
- GmKSW7QHH1Bjw5TM8ZKa0E7GRwbTYBY479cbdOL8KflqGGDv32DFdlP+ZXSsN
-X-Gm-Gg: ASbGnculi4SReQ+MZRARaIbTkE5ZF1a96ExwSAhpJMVxIpNSy4V6MiOurBrso24SkjO
- FwAGeP8GhkLaAmJ56ai0JLuSPBdja0DDLiDOXi418bPuP3wwNTZUttoNVpwV0ftYnHXO1RwlFwI
- hAInoDjiBJdfMieeVnje94NZdgyCPslnp+B+r+PVijufDkoCJTwlEi1nES/agmKkRTzt6H9+9ZF
- Ft/CJ3ptgQlaISiLOrHR/bx0yka3doEjyFlG8+upbvMhY18apmm0N+vIcDeVsVzhY0XiFRC63vK
- rmHPNsFa3EbQQ8yC0ZJcMwcYcrypnEYuHsCz
-X-Received: by 2002:a05:6000:1882:b0:38d:adc2:110a with SMTP id
- ffacd0b85a97d-38db48caa46mr6659529f8f.43.1738862048478; 
- Thu, 06 Feb 2025 09:14:08 -0800 (PST)
-X-Received: by 2002:a05:6000:1882:b0:38d:adc2:110a with SMTP id
- ffacd0b85a97d-38db48caa46mr6659506f8f.43.1738862048132; 
- Thu, 06 Feb 2025 09:14:08 -0800 (PST)
-Received: from [192.168.0.7] (ip-109-42-48-132.web.vodafone.de.
- [109.42.48.132]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dbdd35bd6sm2191175f8f.22.2025.02.06.09.14.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Feb 2025 09:14:07 -0800 (PST)
-Message-ID: <9761d9fd-4b1d-469d-afd3-484c52db97d3@redhat.com>
-Date: Thu, 6 Feb 2025 18:14:06 +0100
+        d=1e100.net; s=20230601; t=1738864180; x=1739468980;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1qbATPXaShk6uHSkyuikGuAhkTLp1PYYgNhbuymCQ74=;
+        b=e13aczmKueQ1pa+H3rwSGQhXKdcSmWxOh5jgn25AaxLyrS1VMIC8puz8eEYAXnIKoZ
+         NnWalK9KOCEW0rdGaoUsVjwrnRTBY67+VDZ6MV2b+utLEgQVKpBJc6dR13ncJDsGOsIi
+         cYQQlJkH2p1tbRbB1i7gdmeBAujNFtp38iHkLrht1XCsEXDUG51JYoH60h9LK4f9kcD7
+         XgOr50/bPZ733HvZxk53anWzCWfKvAHDFUdotjJS7x+P22hLA/7JBdY817ylrWV1hunr
+         V6RrfOKdnZU9KA2Nl4g2I8/GlT8Y2KJfmpbfh5aYJIg7l8q7/G57s+a85cvH5KwA2p4G
+         kung==
+X-Forwarded-Encrypted: i=1; AJvYcCURyq4Iw6xB3NGVI7xKiSMGNZoTHK2dyBRQmnvwZQoj1NnPFIBKPa4zJN4mzAlyyYf2bB7/+DU0hn0hhw==@linaro.org
+X-Gm-Message-State: AOJu0YyNfUeTu8w6TrUy42jnpmQy+g7j4E0mgpWH6fjyGwk8urn/amGr
+	RNQ53t28zwhbDmr1yV1/UpKlUj4WxIEXBg1T6hQkHO856dDcJcJ1ehuiWa2IM1O0Dw==
+X-Gm-Gg: ASbGncsjp+EtCGoMddQCRrZ0aCGhIiAemfXsbTwdIhRSLcHjFZtjbirHf1YURYL9jUy
+	is4SBAUan/Gq45OVNPQ4myRsiMBFiGIWLvSVZZDn7Z0AXBRw6BPP5y5ueTUT7w4q9oU9wWU6dQW
+	erGLwlXpsSWVbJRU/wkaM0IJEfkend+jYvZ32BosD1ZngmHlP/WZuFRxvI6Ef1/3F+vVZKGU1+6
+	nTqtAZ4/Fgm6X2EugBNjQPWX8rjnp7CaedT65dKlV7MZyv7C72fiBJwXcmV5SMTXrbh3z4kR00L
+	xx0K1SY4Q7kzX0s/trhH9jdQiFUdOFk8oBnfvuSfcAYvafruHCdYG33sjPA=
+X-Google-Smtp-Source: AGHT+IHGwiA08zihX48ND/VhtsouPRB1vY98R0v9pH2fOXaRNWTVoOUqMhvwPWkq8cNmhk8ESV7Szg==
+X-Received: by 2002:a05:600c:218f:b0:436:fbe0:cebe with SMTP id 5b1f17b1804b1-43924aca5c4mr2326755e9.30.1738864179625;
+        Thu, 06 Feb 2025 09:49:39 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dbde1deebsm2253959f8f.86.2025.02.06.09.49.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Feb 2025 09:49:39 -0800 (PST)
+Message-ID: <63f1130e-a30d-4416-ae74-374f1fd94dbe@linaro.org>
+Date: Thu, 6 Feb 2025 18:49:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 02/16] hw/net/xilinx_ethlite: Make device endianness
- configurable
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
- Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
+Subject: Re: [PATCH v5 11/16] hw/microblaze: Support various endianness for
+ s3adsp1800 machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Anton Johansson
+ <anjo@rev.ng>, Jason Wang <jasowang@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
 References: <20250206131052.30207-1-philmd@linaro.org>
- <20250206131052.30207-3-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
+ <20250206131052.30207-12-philmd@linaro.org> <Z6S3Mgt1G7fIjeBB@redhat.com>
+ <4624f149-76d0-4da5-8f13-8c015043c335@linaro.org>
+ <Z6THtfjL6UVhBiW7@redhat.com>
+ <3156dc3b-9553-4b5f-a934-f29ee0601887@linaro.org>
+ <Z6TtisO7JGAMGILH@redhat.com>
 Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20250206131052.30207-3-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <Z6TtisO7JGAMGILH@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ilxvN4oCdQC/
+X-TUID: Hgfr+bFOdWLK
 
-On 06/02/2025 14.10, Philippe Mathieu-Daudé wrote:
-> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
-> of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
-> Add the "little-endian" property to select the device
-> endianness, defaulting to little endian.
-> Set the proper endianness on the single machine using the
-> device.
+On 6/2/25 18:12, Daniel P. Berrangé wrote:
+> On Thu, Feb 06, 2025 at 04:04:20PM +0100, Philippe Mathieu-Daudé wrote:
+>> On 6/2/25 15:31, Daniel P. Berrangé wrote:
+>>> On Thu, Feb 06, 2025 at 02:53:58PM +0100, Philippe Mathieu-Daudé wrote:
+>>>> Hi Daniel,
+>>>>
+>>>> On 6/2/25 14:20, Daniel P. Berrangé wrote:
+>>>>> On Thu, Feb 06, 2025 at 02:10:47PM +0100, Philippe Mathieu-Daudé wrote:
+>>>>>> Introduce an abstract machine parent class which defines
+>>>>>> the 'little_endian' property. Duplicate the current machine,
+>>>>>> which endian is tied to the binary endianness, to one big
+>>>>>> endian and a little endian machine; updating the machine
+>>>>>> description. Keep the current default machine for each binary.
+>>>>>>
+>>>>>> 'petalogix-s3adsp1800' machine is aliased as:
+>>>>>> - 'petalogix-s3adsp1800-be' on big-endian binary,
+>>>>>> - 'petalogix-s3adsp1800-le' on little-endian one.
+>>>>>
+>>>>> Does it makes sense to expose these as different machine types ?
+>>>>>
+>>>>> If all the HW is identical in both cases, it feels like the
+>>>>> endianness could just be a bool property of the machine type,
+>>>>> rather than a new machine type.
+>>>>
+>>>> Our test suites expect "qemu-system-foo -M bar" to work out of
+>>>> the box, we can not have non-default properties.
+>>>>
+>>>> (This is related to the raspberry pi discussion in
+>>>> https://lore.kernel.org/qemu-devel/20250204002240.97830-1-philmd@linaro.org/).
+>>>>
+>>>> My plan is to deprecate 'petalogix-s3adsp1800', so once we
+>>>> remove it we can merge both qemu-system-microblaze and
+>>>> qemu-system-microblazeel into a single binary.
+>>>>
+>>>> If you don't want to add more machines, what should be the
+>>>> endianness of the 'petalogix-s3adsp1800' machine in a binary
+>>>> with no particular endianness? Either we add for explicit
+>>>> endianness (fixing test suites) or we add one machine for
+>>>> each endianness; I fail to see other options not too
+>>>> confusing for our users.
+>>>
+>>> We would pick an arbitrary endianness of our choosing
+>>> I guess. How does this work in physical machines ? Is
+>>> the choice of endianess a firmware setting, or a choice
+>>> by the vendor when manufacturing in some way ?
+>>
+>> Like MIPS*, SH4* and Xtensa*, it is a jumper on the board
+>> (wired to a CPU pin which is sampled once at cold reset).
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
->   hw/net/xilinx_ethlite.c                  | 20 ++++++++++++++------
->   2 files changed, 15 insertions(+), 6 deletions(-)
+> That makes me thing even more it is just a machine type property.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I'm happy with a machine property, this was even my first approach
+using OnOffAuto until I ran the test-suite and have qom-introspection
+failing.
 
+What should be the default?
+
+Per the SH4 datasheet:
+
+   Bit 31—Endian Flag (ENDIAN): Samples the value of the endian
+   specification external pin (MD5) in a power-on reset by the
+   RESET pin. The endian mode of all spaces is determined by this
+   bit. ENDIAN is a read-only bit.
+
+There is no default per the spec, and I believe using one is
+a mistake.
+
+> None the less, since you've already taken this pattern of
+> dual machine types for BE & LE on  MIPS/SH4/XTensa, I think
+> we should stick with your precedent. Consistent modelling
+> of endian handling across all machine types is most important
+> IMHO
+> 
+> 
+> With regards,
+> Daniel

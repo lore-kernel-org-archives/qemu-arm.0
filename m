@@ -1,203 +1,125 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1894129njb;
-        Thu, 6 Feb 2025 16:09:30 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWt3VVgDI4ggJBdNGAUrjD0oshZf4dERzrag13RwRI7e8/4fpW9V78SglDz5lbfdyLz+ifB1IAjy4NK8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFb042ODtR1r2pA8h6nEeudG0GdrQ+TVieNKpM8p+H8DErnXOqfGzDnlJlfuE5gnKkGDzl0
-X-Received: by 2002:a05:622a:24d:b0:467:94c9:24e1 with SMTP id d75a77b69052e-47167ad8c0amr18354731cf.32.1738886970275;
-        Thu, 06 Feb 2025 16:09:30 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1738886970; cv=pass;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1777059njb;
+        Thu, 6 Feb 2025 11:57:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVZz5RFZbzTcPbnqrDcNDhhiZmAFODu1z3r6q0kTBcwmCoq6ZJsenM1SqccYY8y0OpSTr+nViHeZWCqKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFvhKF4ssNMgX7ebpG8qx0HaZ2gcGLThTXdE0/iBsQY9fPjZ9UvTSk25+jQDIMQv4xY48mC
+X-Received: by 2002:a05:620a:2403:b0:7b7:342:a0a5 with SMTP id af79cd13be357-7c047ca805emr79204985a.55.1738871869485;
+        Thu, 06 Feb 2025 11:57:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738871869; cv=none;
         d=google.com; s=arc-20240605;
-        b=PAquB/5mZYyzA+DteQ9LjwecvBMkQRR9bgkMSBMeyAtfDzWJNzblO9dcW3RVFgu+AZ
-         iVdFGcxZA8mTCjTMTe635JQL1FEJCfsatLxRYZzsn8WC9JixkbJB6osL65ezoQFF7gVK
-         954NCS3Q4b0Lj986g91MdN9PvlArPXnusOcjtSUT8/A5hArS77W3B6ll6pzwR/OC5Sva
-         7mbUmv/LRNgD3MrA/9OjUp41sM+yC0tblplMb3wu7q5XjnOEqTOUIHhAX2onN98hjirw
-         oociRdIeISmeQrBbC2hLztcyqb24MBnFf8nFuMbjvMb5gaGM8b46VFGrTGYatvDlvRih
-         uNfg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=kYl+gicD94l09ca2GnyANdaqmBnTpZW9GgOrkfMmS6dSi3ap0N2h6dAiZLaJwLmSxO
+         wPM9oG7ISsQT07ohVJBx9ASMR4T4j0SVNalDeKplsseatgYJQyRnKwSZmw3eOGKQ6EWK
+         P9kJPTvnV19aLeFfYSjGXlTrtyyYQXGAtXykv2LedscZwku2spa+h/DjbCiQ1tWTb8fD
+         7b4PganZ7X2pTQoXbBnlWFc7xws4REyxr8Cc2v2Mr3+leIRrEmagF8t6gDI2iapEafQH
+         0gKjJADSjiWQBR0STcd/dicouANe4yPg1XHqCKXIbidEXOt1VRIuen9Wj4mZpfxSBNBN
+         8usQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=MPs/LcdhyfUoM1ZDnpL3RAt2vSe3DdWH/zVS2FYb8do=;
-        fh=r9LmkxXUofytUVmZquIsFA3OOgiZ1Y9VzYbH/hQSXok=;
-        b=PfY02AWSaBi6eUSrbYPqDSkyWnMvpuGA0ER0LVA3vIttIH1AxT6IG9vp23eqG8n6Hm
-         15zdnDysIBcjAsqYsO5EzkJ70eiyzpSJa7IxWzVYM0AnSzEW0FXjn+Abs7Xkm5AyNacC
-         8be3j5jP6CI/y3+cbsH96qCGddtOSZsB65fByngz6YxlgDX2EAPT8vG2hWz/P55i1uuo
-         QzCJnxq+hEJQcUxsqe/JFKYWexckUO7RFY/i4/k0LZsb9bdXvzGk6vJmY1v/lqMZ7ePa
-         pwglPfqP9KY3cGL3JaS90b6yKYwgJobiNT8siG6iCzZw5uSo7okYM/b2yzMBOpZ2fEwB
-         a/HA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=PdvwNl7JiFORoJKfG82WHoJWKQvzz977qK5CdHrmdQk=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=Dt8d9MJOenbaiizqaEEJAqhcGqWSpvbIelhjLKKjG9r6ei6SRSoUhVcl1/TQj5xnyg
+         cwqmD4ZjYKq4kFAMp4iTPzFNIiJUoEwjbT8YqzMxUD7ALBPiT92uRYFhlH5I/2amRSrY
+         jY+j72YoRz/5Ve3M7yytNcj9w+9104TEsq0hDdNT0Yg1y9vrPYCIwyDN75AK3+RC66QT
+         oeymXoZcAENFAUJmCX2DX1C7h60vwK1gQ+IzUM0qnjYYMagXWYtegiaW6SB6bboINJ8A
+         fvkxkeXi7dEd7G+4elIN1Ob3hyeBEPCysbcn1Iw7qv7dMGi+ZI+svprLiQSNJP+iAPrF
+         xsFw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="F/TozAm+";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bYNmus+A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153bbd381si20573261cf.479.2025.02.06.16.09.30
+        by mx.google.com with ESMTPS id af79cd13be357-7c041ed0f10si174363785a.500.2025.02.06.11.57.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 16:09:30 -0800 (PST)
+        Thu, 06 Feb 2025 11:57:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="F/TozAm+";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=bYNmus+A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tgBvf-0004aJ-Lh; Thu, 06 Feb 2025 19:09:07 -0500
+	id 1tg809-0007Bl-UO; Thu, 06 Feb 2025 14:57:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1tgBvc-0004ZI-Ss; Thu, 06 Feb 2025 19:09:05 -0500
-Received: from mail-bn1nam02on2061c.outbound.protection.outlook.com
- ([2a01:111:f403:2407::61c]
- helo=NAM02-BN1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1tgBva-00019V-NY; Thu, 06 Feb 2025 19:09:04 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=TOswSofc5sXxZKZK1cBW5/mGuwAfWRTBTb+ou2gOXjPpS4ABwuVkf2sxJj1S7BOTzP5cX1n8H+IcagFu6Sd39RAtVaeNIqQeWnujGOj3Bii8JKBTClfD2UhnJauukDq/GISrTyopCTuz2TrrxRG8dnBtJaa3B1L8msD0+N6sCVAHem+VtJQQxSq60rSLG5YZW4XTcKcrAaMMyJ9jwUtSu//gMPONAkdMunJx8qNChZt1r9i+sY2zdwxJ3y6zNuuUinkSUNoX3n+e2MWftKib5C+QnbvF5O6YWRzmq16oCaoTLqWrze8K1gdPmBOD995DyN9WT4iyI6HOjc+GB4FYbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MPs/LcdhyfUoM1ZDnpL3RAt2vSe3DdWH/zVS2FYb8do=;
- b=ySoj307WHfgs/OOy57tQDg6/8zN9wCPlQftrnal7iNfMZqTEs8PAaL6I6mZsKWJb4mtlo6dltBC1ww/qkBFvFy37a5xuzLrKn1C5wcexQYoRJUdv6bc92xnedgcw2el01vbvbvfW+um9DT7MyE7rgjCW3LKN0krQvuua6hcAf/Z66zBgmY7lyh3r3gtb1OLln4cVqoBXthfV6gKFRDZ26QkvANSsQcOxS+Ik4tYSbUM+tqS7h2/etMq5z7C4H3lNNmAkQXVJjyWbUDH1ls4S0TJuNEqcT83sORL2eUAl4hbD9mtGPwJYjVazXK1SfSsH3TCBOd7ZFTlKpfDKs5zrxw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MPs/LcdhyfUoM1ZDnpL3RAt2vSe3DdWH/zVS2FYb8do=;
- b=F/TozAm+RcTOueIYgrEcEaSwpW4ujSf3IBSIgMdQOP1SwV7SgdC7g1DCUU9LX9icVA+AA0pROk30WI1obnBCfTCKjPC5H+Em3ousNDpkF4Ko8N/aZ1MDZFHSZWe1Z6yvSyrwRbDK7a4e3tBey68ijUns94Nohsa1IlvrO30EJr4LzyVlx/fdTtkD5xSpwmxpsnyDMQuWfZ5b07/niDi6DcdmEaEChk+tsvqEhOyJ61CiroB8rqyTV62ag35oSoAhN+j+ef5ND2H0IXL8gHa9ERqH12cy4AKnySEbNAsWLvcgeXrEF8LIxkwJo7vtAhI4dQw5rVuR1AYxXkYI2HMxlg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by PH7PR12MB6907.namprd12.prod.outlook.com (2603:10b6:510:1b9::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.24; Fri, 7 Feb
- 2025 00:08:55 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%6]) with mapi id 15.20.8398.025; Fri, 7 Feb 2025
- 00:08:54 +0000
-Date: Thu, 6 Feb 2025 20:08:53 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Message-ID: <20250207000853.GO2960738@nvidia.com>
-References: <20250206175843.GI2960738@nvidia.com>
- <13b1d8b97a314cb28b87563fa9b45299@huawei.com>
- <20250206181306.GK2960738@nvidia.com>
- <02a0080a4a1642d69b7f5dd4707a5b3d@huawei.com>
- <20250206182201.GL2960738@nvidia.com>
- <Z6Ucj/u3wt9muakb@Asurada-Nvidia>
- <20250206203855.GM2960738@nvidia.com>
- <Z6UgKHfGD34K3Rcs@Asurada-Nvidia>
- <20250206211113.GN2960738@nvidia.com>
- <Z6U70maXhx8UcMID@Asurada-Nvidia>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z6U70maXhx8UcMID@Asurada-Nvidia>
-X-ClientProxiedBy: BN9PR03CA0163.namprd03.prod.outlook.com
- (2603:10b6:408:f4::18) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tg802-00076Q-HZ
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 14:57:22 -0500
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tg7zz-0000RC-OY
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 14:57:22 -0500
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-21f20666e72so28699425ad.1
+ for <qemu-arm@nongnu.org>; Thu, 06 Feb 2025 11:57:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738871838; x=1739476638; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PdvwNl7JiFORoJKfG82WHoJWKQvzz977qK5CdHrmdQk=;
+ b=bYNmus+A/tGnDLhFYxZglXmMieUUR14Fkg2KZ+LjsYl6rDs46iB1O44+6ugKlDlWss
+ ijadoSO3AvLGCHLx3sZY06PRs2pDlfr+7Zi2YoS/abz/sCdIdIfDCOKBMWjNKEW3+bhV
+ wAMOauCNLsnE9nYsjbpgJwZDivdJYPbk5ekeh3jV1RyrPEQUf70ZsJNbM/NSaBJNQl1P
+ nwXGErettlmykLtMyceR3x5R78BFQUFwdmtr+zo6V2kJDhqXuqE0bj05baF3KEfqjLCh
+ RBfC0RUSu0L8wZS2Zc89XRduM4Lp1tZED7IPOOVv2aL5JvEBXVL4OkWqB45O28szCUyp
+ nvjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738871838; x=1739476638;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=PdvwNl7JiFORoJKfG82WHoJWKQvzz977qK5CdHrmdQk=;
+ b=oBIjcGVnyUTRHjylyQq4k6jfZll4CpuFaqFXAj5F9x/E/ef8Vr7CfuflbIvejfxUod
+ WkbBVL5hhmJTmZYytN9wsYfKd91yJIRA+SMDHjw3Xb+pz0uxCbV2CWp3R8zUWTjn9tvl
+ VbmdVkfzZCmVQuo44w3KxdtJLnQjzEwjE6N0rttSVmxOaksZ5aPLdDBlh+u5LI82dNfH
+ 6SeP4P1etW1sJOxd/PGD3gmfur14CgnSMd7NpzX2WJ+nc8yf+9Ck/vRFMWZ3D9HSxLP4
+ UQCHfB9wQ/EhenZFsmLGFe3hlY6lLJ20uFPB1dfTWuOiZNean+QdzvMROgiuZm0SawiI
+ G8iQ==
+X-Gm-Message-State: AOJu0Ywzii1NIn0Gsx0YM2z9oMWszY+tU/iDQ9uMFVN0+SgukkIf7RfN
+ Y+Hjaf+6vit44D2DRTUuJy9XR4oVuFtoaCb8Kqw7TY0Am3NzaOyG9V3AvOtYKdkybGuDvC0mgbZ
+ 8
+X-Gm-Gg: ASbGncsYIYXuQ5zDPyMMP+H0y2bJR37lSv7pQMGQuvguDYs0q4Yw9STCIJP5HTLIIhm
+ oMaQtqkqqaqFVNB5iUiT5b6ELCEkJ/TezdtWsHcOb/l71TovuR+mbHEavkgUw2ELFGaaNjLZ5Fw
+ j4xl50VO9siGG5TXocebcmWeqg/fEotTE2YcN03mXcQDy/6Bc4ooxgranoLeQ7PLpzLNU71B2BL
+ 7YwS3W5Jk6Yceuq5pS1Y4TBZoPjC9742yXUnTh9Tk2CE7fbbnr4IcVBtdsJIxikIm7Deo7Tot5A
+ 1s63GA39OnNzbRSl52Z7oZV5qIrNpXCk98XFAvVkWst2KG4=
+X-Received: by 2002:a05:6a00:1da9:b0:72a:bc6a:3a87 with SMTP id
+ d2e1a72fcca58-7305d2d04f0mr986172b3a.0.1738871838254; 
+ Thu, 06 Feb 2025 11:57:18 -0800 (PST)
+Received: from stoup.. (71-212-39-66.tukw.qwest.net. [71.212.39.66])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-73048c16370sm1666993b3a.152.2025.02.06.11.57.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Feb 2025 11:57:17 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 02/61] tcg: Add dbase argument to do_dup
+Date: Thu,  6 Feb 2025 11:56:16 -0800
+Message-ID: <20250206195715.2150758-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250206195715.2150758-1-richard.henderson@linaro.org>
+References: <20250206195715.2150758-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|PH7PR12MB6907:EE_
-X-MS-Office365-Filtering-Correlation-Id: 09ae2f13-174f-43f9-5b05-08dd470b9c25
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?1iMeGyuahBdpc9YuhCAMxEhao0OiL9LrkRImQFB73JSHxY51D6KgjqveZ0KQ?=
- =?us-ascii?Q?23ZLaSNozoCbRoSsWn4GEeQel7TM/kqAgj39af4IN1C3B1wKrWkRsQ4lzSqj?=
- =?us-ascii?Q?U0vn60sSDkqGBguZEdzDAehoLZ6jgSXcWE0lqTuylA3pzIs4QaHMQMmeJfcO?=
- =?us-ascii?Q?aDNjZIN7FktWnsOkRy1i0JLZUYzhgVlOy/ya82opLV5cp5tVkXE3wUwcOYnH?=
- =?us-ascii?Q?U9FmceL/bu/hgrsL/XnCcqryP5zjNL1KlPLJl0gigbqHkNmN4vs5L2J7L6jk?=
- =?us-ascii?Q?em01PzRu/k2sWt9ZWOE1yt2YCJB5OwZDYds8Y2uawnQQQtAgRJn/HhylpTgv?=
- =?us-ascii?Q?xWhHdR6Jg1JF67GQBczz9bqgXJpuZjkzgbXfa0kcovk8P9XMue4a1n7gy/Vd?=
- =?us-ascii?Q?E1qUBvsJc6E72aHzIyTaTpi5VKlJwrvKOUg1A+DHYVZ57RDCT0twa1CdSaN0?=
- =?us-ascii?Q?7NYl/HPpyxQwleFFqiV60j4TvwM0/bMGxl4pN7hGtEIGJc/DhsKqXWuf7LwT?=
- =?us-ascii?Q?Ebh0zM+cplqrVUfs4qad3m5rnVt+x9wOGjsuIr9x2IedIm/Xh/baEIIHZFUc?=
- =?us-ascii?Q?9h0VXd8FC7t1PoKNs3rvVmNo4AKxk+lveLIxxmBmfDUW/9/2NE+xL9X4LS0i?=
- =?us-ascii?Q?2YA6NsadJvBbd1k3XYt3f4ZJZfnfPAKmw6UnZ8SFKm2y/nrzVTbKDQXrH+V2?=
- =?us-ascii?Q?f6ZgYAWKOBJ4OkDNdWGubpXxleysxxxy43ybLY1Mk9aqco3zTmN55T0JA1G8?=
- =?us-ascii?Q?IZKtxLYQHi2iaPsnV2Fw7lnTk1jz3knjyl/lJgOHzmgNBN6eibFhBJ/qJGA/?=
- =?us-ascii?Q?nUUrR/tcQSBft2PEQFtcCnsyPqSGqV/pkYz3oUWiJGyAOyYzF0dKTvl+Ya7N?=
- =?us-ascii?Q?Za7MMqlGhwFjVd/5XDtYH6dpnf0CpejInZhWqXR5ax+ELG++NZD1JeytU42f?=
- =?us-ascii?Q?cJ3BTVyMxBwPxS8sCc+4x4x2oO2kSUoCM3zK614Z0rN4it9631Dg3c8nwavm?=
- =?us-ascii?Q?owt4DAmek7ZT+H9k1v5ifRMob2CZ/fDGnxdgSYPBinV9SrOXzL47QCj/WZH1?=
- =?us-ascii?Q?tLYi9VKUQDjoItzTrvdKZ2i9YMaGl5vHugIbzptoYeh2/Hdqn6bi9HAQW8Dt?=
- =?us-ascii?Q?y6D/0/WBoChvhVobFpYQms7NGLixq0WqzZD4nu+0QTsHBdRRw1VcBe7Mp3vC?=
- =?us-ascii?Q?7pWTR4pX9IHdY9z6Uj0NZ3e8NAGex9DaoMP/dctpPhJCC8wYkdh+DRIXWjJZ?=
- =?us-ascii?Q?08Y5QKGX6qV9ay5dAQ4dd5H+xqc05ezAw0IbHQqxmhmk3oFlw7UmMMTlj4md?=
- =?us-ascii?Q?rRpaEvH7aRprfqf2vkQFlIqfXVF2LmlNLxwiMhLlSJi3GMHH/LhU86gclLNK?=
- =?us-ascii?Q?MR96ZcVfd8TAk+Vr8GorzYLTbaLa?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB8659.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vuwLLTb030eg9FzttPA3Y0C/ndHvqhZJXaKSctNLwHGGGpj+pHNh503Vu7O0?=
- =?us-ascii?Q?Rr6Ia3LjVXL4MwznHS75Px5U3vVqxKC+4tZ6H6PPG+Sw83rP5FLz9qQwyazn?=
- =?us-ascii?Q?a4b0h1FBuUouBkc8t9ya+c7484d4Qatq319Kq4WT66wuDpm7h2FYobnzuMms?=
- =?us-ascii?Q?LaoPJNSkYSqvYVoYTIX1v0XT4CTxnHqO/0MH/shACsf6+he5WahdOZV0KUZE?=
- =?us-ascii?Q?eOP8pUtCAOOxbFKEosDKKiNz++mZ8XonoWRYtRYqFop60xst5pDbMR0owm90?=
- =?us-ascii?Q?33jhuaiZA0KU7uQAKAIdMGpiPoYc9InxiYz2kv66Fvcj6WrF5Ef2a3vN7s2A?=
- =?us-ascii?Q?S3JOnLdr1D3NAUX3r2dQZwCvYLYV8VMBAhKv5xHPLo3RpmMe5RsTyv+qTcs2?=
- =?us-ascii?Q?9+2GXxddkzDmqN2M9Inr1HjvqK+yodsVHmgQyagUHrH6vUDpoPZu0zADcS7a?=
- =?us-ascii?Q?iW22ufnFx/H1g/r5fKOCfejrjZ7dksC0axRpdtI8dcDNdNosQswTpHK4vrzz?=
- =?us-ascii?Q?O4gWgVcuZJU5QNwS1ZwVNl1Y0symPVbky0FUQBU/+C7irtcCBqjaMUdHxzKs?=
- =?us-ascii?Q?vASiW0sMOHWmqL7Rlj2IkncL1g02P44iv13Wm2ha4nAjvXyCYA/9VT7EBLRU?=
- =?us-ascii?Q?xIH7fNHVIn4uIGYo65nk7nmY4xPbq+E2TVugatOtl3DKPi9WuNDivxtZUhMF?=
- =?us-ascii?Q?PsF27Stvo7HIQ3/S4TQ6SV16qbii1UjtTZp56LWs41pr4o5iOWEFPS9y9lxC?=
- =?us-ascii?Q?bQ/wt89mYdgzktjzsSJ6aggvMzyRDRluLh4c1bVZ9wAE3GvH4qHI2KhO0nKv?=
- =?us-ascii?Q?9zanp/K3B9wzoul9BsSd8TPrdoyVCr8AhN3WXk8cvMk0ucLyfhl3rx0TKeeq?=
- =?us-ascii?Q?u+4IrThi4y+zyBkEFFIAlm32KDBKZKzebeanLcbqJIUDeqxHfjopGSagoZCe?=
- =?us-ascii?Q?uhvlavgWP/XHSSxEuoRlLVMgpz3uGM6EXxWOBIeLhhO1V8C6stKkSbr1m+tL?=
- =?us-ascii?Q?5wb+7BRcMqG06rEKf7V1OX3/YtZQYRGKL1xmGT45zLB9j+GJHIaSzStQi69l?=
- =?us-ascii?Q?k8Q3WLN/39Fsn4d+oZrW3lDessMs8itPzFe5Oc14L4UC/sXNtLzOw72OpdSE?=
- =?us-ascii?Q?qzOf2XajBGm1snDgS97mvbM/6LEZ0Bt1r7OdhQ9OX5//rgcgaEqf1bTItj20?=
- =?us-ascii?Q?BHCDr5u9/RRLrCUulFMCDUSWTtxWU107NnfnomaUeJX6AYP29cKoP4Ej8l8e?=
- =?us-ascii?Q?PARcyWD7xhc9BNJtd62EaDELXJhkXFQkCWiU0iXcdV/szeDGWwLd+hTuj0pz?=
- =?us-ascii?Q?tVdJ0JRn3xyChz0qMVsejx1yIwT4bG1QaOdv9iqgJKbgp2Tv+CwfXr09eE4u?=
- =?us-ascii?Q?JH3VtvlsVSszAF4y/Z8fP242WsUp6kM3hhbQg/fVPRmz9c8UtjMleiDNhUwY?=
- =?us-ascii?Q?FYXs//iaW1fSFOnOcIV28+8O0VONJEo4GtWgxkeaPP1gMB7ZQc5WT/mIzcy6?=
- =?us-ascii?Q?y+it0ZUON/TMAgto9Gsxy6vGkNnoDIyxsdmTdaPpSNGuLTPnq263gnsupNet?=
- =?us-ascii?Q?ys5k1C2SxyfEwvHCe2U=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 09ae2f13-174f-43f9-5b05-08dd470b9c25
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2025 00:08:54.8755 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: c2tiSC0gMZwCnTJ4bL56c7OUgs3xx81KB1444xjbjenRJE7Xf9O2SUlvsKp/W0/i
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6907
-Received-SPF: softfail client-ip=2a01:111:f403:2407::61c;
- envelope-from=jgg@nvidia.com;
- helo=NAM02-BN1-obe.outbound.protection.outlook.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -212,20 +134,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NBmqLnoqS3gu
+X-TUID: ykI7MxCFkdsl
 
-On Thu, Feb 06, 2025 at 02:46:42PM -0800, Nicolin Chen wrote:
-> > You'd use the command line information and wouldn't need GET_HW_INFO,
-> > it would be complicated
-> 
-> Do you mean the "-device arm-smmuv3-accel,id=xx" line? This still
-> won't give us the host IDR/IIDR register values to probe a vSMMU,
-> unless it has a VFIO device assigned to vSMMU's associated PXB in
-> that command line?
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/tcg-op-gvec.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-Yes, put the IDR registers on the command line too.
+diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+index 1aad7b0864..451091753d 100644
+--- a/tcg/tcg-op-gvec.c
++++ b/tcg/tcg-op-gvec.c
+@@ -534,9 +534,9 @@ static void do_dup_store(TCGType type, TCGv_ptr dbase, uint32_t dofs,
+  * Only one of IN_32 or IN_64 may be set;
+  * IN_C is used if IN_32 and IN_64 are unset.
+  */
+-static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
+-                   uint32_t maxsz, TCGv_i32 in_32, TCGv_i64 in_64,
+-                   uint64_t in_c)
++static void do_dup(unsigned vece, TCGv_ptr dbase, uint32_t dofs,
++                   uint32_t oprsz, uint32_t maxsz,
++                   TCGv_i32 in_32, TCGv_i64 in_64, uint64_t in_c)
+ {
+     TCGType type;
+     TCGv_i64 t_64;
+@@ -574,7 +574,7 @@ static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
+         } else {
+             tcg_gen_dupi_vec(vece, t_vec, in_c);
+         }
+-        do_dup_store(type, tcg_env, dofs, oprsz, maxsz, t_vec);
++        do_dup_store(type, dbase, dofs, oprsz, maxsz, t_vec);
+         return;
+     }
+ 
+@@ -618,14 +618,14 @@ static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
+         /* Implement inline if we picked an implementation size above.  */
+         if (t_32) {
+             for (i = 0; i < oprsz; i += 4) {
+-                tcg_gen_st_i32(t_32, tcg_env, dofs + i);
++                tcg_gen_st_i32(t_32, dbase, dofs + i);
+             }
+             tcg_temp_free_i32(t_32);
+             goto done;
+         }
+         if (t_64) {
+             for (i = 0; i < oprsz; i += 8) {
+-                tcg_gen_st_i64(t_64, tcg_env, dofs + i);
++                tcg_gen_st_i64(t_64, dbase, dofs + i);
+             }
+             tcg_temp_free_i64(t_64);
+             goto done;
+@@ -634,7 +634,7 @@ static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
+ 
+     /* Otherwise implement out of line.  */
+     t_ptr = tcg_temp_ebb_new_ptr();
+-    tcg_gen_addi_ptr(t_ptr, tcg_env, dofs);
++    tcg_gen_addi_ptr(t_ptr, dbase, dofs);
+ 
+     /*
+      * This may be expand_clr for the tail of an operation, e.g.
+@@ -710,7 +710,7 @@ static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
+ /* Likewise, but with zero.  */
+ static void expand_clr(uint32_t dofs, uint32_t maxsz)
+ {
+-    do_dup(MO_8, dofs, maxsz, maxsz, NULL, NULL, 0);
++    do_dup(MO_8, tcg_env, dofs, maxsz, maxsz, NULL, NULL, 0);
+ }
+ 
+ /* Expand OPSZ bytes worth of two-operand operations using i32 elements.  */
+@@ -1711,7 +1711,7 @@ void tcg_gen_gvec_dup_i32(unsigned vece, uint32_t dofs, uint32_t oprsz,
+ {
+     check_size_align(oprsz, maxsz, dofs);
+     tcg_debug_assert(vece <= MO_32);
+-    do_dup(vece, dofs, oprsz, maxsz, in, NULL, 0);
++    do_dup(vece, tcg_env, dofs, oprsz, maxsz, in, NULL, 0);
+ }
+ 
+ void tcg_gen_gvec_dup_i64(unsigned vece, uint32_t dofs, uint32_t oprsz,
+@@ -1719,7 +1719,7 @@ void tcg_gen_gvec_dup_i64(unsigned vece, uint32_t dofs, uint32_t oprsz,
+ {
+     check_size_align(oprsz, maxsz, dofs);
+     tcg_debug_assert(vece <= MO_64);
+-    do_dup(vece, dofs, oprsz, maxsz, NULL, in, 0);
++    do_dup(vece, tcg_env, dofs, oprsz, maxsz, NULL, in, 0);
+ }
+ 
+ void tcg_gen_gvec_dup_mem(unsigned vece, uint32_t dofs, uint32_t aofs,
+@@ -1745,12 +1745,12 @@ void tcg_gen_gvec_dup_mem(unsigned vece, uint32_t dofs, uint32_t aofs,
+                 tcg_gen_ld_i32(in, tcg_env, aofs);
+                 break;
+             }
+-            do_dup(vece, dofs, oprsz, maxsz, in, NULL, 0);
++            do_dup(vece, tcg_env, dofs, oprsz, maxsz, in, NULL, 0);
+             tcg_temp_free_i32(in);
+         } else {
+             TCGv_i64 in = tcg_temp_ebb_new_i64();
+             tcg_gen_ld_i64(in, tcg_env, aofs);
+-            do_dup(vece, dofs, oprsz, maxsz, NULL, in, 0);
++            do_dup(vece, tcg_env, dofs, oprsz, maxsz, NULL, in, 0);
+             tcg_temp_free_i64(in);
+         }
+     } else if (vece == 4) {
+@@ -1833,7 +1833,7 @@ void tcg_gen_gvec_dup_imm(unsigned vece, uint32_t dofs, uint32_t oprsz,
+                           uint32_t maxsz, uint64_t x)
+ {
+     check_size_align(oprsz, maxsz, dofs);
+-    do_dup(vece, dofs, oprsz, maxsz, NULL, NULL, x);
++    do_dup(vece, tcg_env, dofs, oprsz, maxsz, NULL, NULL, x);
+ }
+ 
+ void tcg_gen_gvec_not(unsigned vece, uint32_t dofs, uint32_t aofs,
+@@ -3772,7 +3772,7 @@ void tcg_gen_gvec_cmp(TCGCond cond, unsigned vece, uint32_t dofs,
+     check_overlap_3(dofs, aofs, bofs, maxsz);
+ 
+     if (cond == TCG_COND_NEVER || cond == TCG_COND_ALWAYS) {
+-        do_dup(MO_8, dofs, oprsz, maxsz,
++        do_dup(MO_8, tcg_env, dofs, oprsz, maxsz,
+                NULL, NULL, -(cond == TCG_COND_ALWAYS));
+         return;
+     }
+@@ -3892,7 +3892,7 @@ void tcg_gen_gvec_cmps(TCGCond cond, unsigned vece, uint32_t dofs,
+     check_overlap_2(dofs, aofs, maxsz);
+ 
+     if (cond == TCG_COND_NEVER || cond == TCG_COND_ALWAYS) {
+-        do_dup(MO_8, dofs, oprsz, maxsz,
++        do_dup(MO_8, tcg_env, dofs, oprsz, maxsz,
+                NULL, NULL, -(cond == TCG_COND_ALWAYS));
+         return;
+     }
+-- 
+2.43.0
 
-Nothing from the host should be copied to the guest without the option
-to control it through the command line.
-
-Jason

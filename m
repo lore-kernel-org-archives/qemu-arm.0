@@ -1,96 +1,96 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1569541njb;
-        Thu, 6 Feb 2025 06:24:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVly7Q58srNelVNylIhEICiXrq+0/sW6quZMyhgRYZxwPnYsp3ZJfgh2QqKREkZzQlMvyaandni8RgJ8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IERnuoyyLwJKTufwWgATMSlyWGJTsE2MmarRKNKD4BW41o/rLKQpnxhVTyztrM7xa2lrr4h
-X-Received: by 2002:a05:620a:294e:b0:7b6:cb81:95d with SMTP id af79cd13be357-7c039f983cemr1016252785a.21.1738851851486;
-        Thu, 06 Feb 2025 06:24:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738851851; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1569857njb;
+        Thu, 6 Feb 2025 06:24:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU7HBIV8fyOsqxUco/qfs/TQ6MiR8cyFWayBPhlmdPIOJiysuVeY3H4LeCvttjLIKQKTEo/Fdbth4b+PQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEKA+l+sZZxaS/Hjc5Qq3zrGRRb1HpulvhuotP3j0ctdsYpZNiESdkrjEc5iuR1fVz1Zmgq
+X-Received: by 2002:a05:620a:2586:b0:7b7:142d:53c7 with SMTP id af79cd13be357-7c03a041a9dmr954506785a.52.1738851882799;
+        Thu, 06 Feb 2025 06:24:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738851882; cv=none;
         d=google.com; s=arc-20240605;
-        b=lVCumgjx5M8lCxFKbx+qlb8KkW0qi5f67PicOSespb/zrl4ONqY+mPnRWbP93CO6Rz
-         O9yecUEKERd3GTqR4kIiXIXQQQhElHA/0lL9bagIOdQyuVm17iXu5/X4zWWUpt2RdCxC
-         Tf3BmKb2Pqii7kN8Du0f848r4oC4hXh8RhbAPxCcwDZY7mJHpP+xJxN3MXmz1Zu4Ko82
-         /WagaODqO1ildHO8a3QZlW4RizXFSFWMiDec7Yn+2W724oHrZJp1gr3Cow0GNroESF9P
-         tgZs3Q2kTBjjrZBQpPatyVE49V2Uy0YdG4pje88ef9HhKxOQxj1l9Yw5EhMa6MZ8IsHB
-         ffBg==
+        b=CXaFfZ05HJArIs14wPC0qIZ8Net6TtS2Y8gALUGel+09xLnmKwXeqe5TB60vYjaiX5
+         auOrS9v0rynnaZkKgisVVyHtqIo0nBhF4gII4mzqTEMT2wSUdCDyuLZPf6loz0K7X7FT
+         qsYbaZ5i501QoXwpONUs1hLuFuuhQGqnl95GobZsAIHXnOe21wtX16ZsyOEV7WeY5aQI
+         Vowmd8OZokl3GZkSerU7lKmD/p8kbpqxjFpsqKMWrCtTkRSXGzIzXKud036+e8j+AyGT
+         x/dxA4QYnSTGUh/w8KXw55ZiOvgNrvhvi0vW5j9QY89Cwqz7AqVcTc7QlYgUOrfMddoX
+         zzjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OwJOgKMx0mCJNKFJZr/JfU+XCS/7nyr6ABOgYudzD2Q=;
+        bh=K9BmzrzIx8xbJgcbBJlgaVyGLZPZHzbO44k1rk6hqws=;
         fh=swiL4bERDBgIQIiNoTOu/2bBoUECE5mFI7R2Xc6Vuzs=;
-        b=HhbiaGZDYGgXyzTFflCh3MGSwUabDBLvqMyRGX169+LUFMGlaB8b8iT4IBIT8ERcsm
-         K+ga1ZRaOvUCKQFE0KsOBfZPW8hxkpEPyZNRuyMKy1ZTI7wIN8FafjfB0kWzKVk/t8HB
-         Hh0YBQo5oC9FV6UdFHZ9FzMffniyAMUeCVxPiNvr2Lv6DK3x+D5ZQAJ6bJ/llpAofP8i
-         QoZ7fvQbZR/0u5JB8URYqFtKX9zJjsiETa2NqTFL+JZeg+iw4aZphuf2PHUTyY+BdEqG
-         r5Gk1CMqck59lzJRGIB42uASwrW7XQUl/fK03Odfkwggd3i4O8ewCDPiBztxBfLnXVRM
-         4Y0g==;
+        b=hXxjTT+X+JeXcV2plzza8ePWBVLiU194w+PbEkb4jSIS5FCv0bkQe55EBDHjwjilKH
+         YraCzrTsQKfBUpodLh2Yw0ywVTMSmnIW6so05gGxiqjZqBLEe2LqrLc9RYYw+oiBqOlQ
+         odsIqNnTS9P2YodjDgYlXZsUMqG7dOJ3gADwc/DUR7TIuAcy1PJdJA8Ms09OP80jcDnx
+         CsL/Vo3Of8vQHcfpjmLE3o0VKyZty9o+TXfFFipofDeq0Rm0dEA0hIEfRmHaBgqCsNEh
+         F/x/iO/NzVCBnl/IlPmL0tSJ6iX63QxQGDgWxgIcB6GrFu4G86zyJKIb2jHUGafA24yZ
+         adnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P+7l+85v;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g7EHnxfe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041e95b87si118325485a.203.2025.02.06.06.24.11
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb5873si117862385a.347.2025.02.06.06.24.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 06:24:11 -0800 (PST)
+        Thu, 06 Feb 2025 06:24:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P+7l+85v;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g7EHnxfe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tg2nJ-0002Jm-QC; Thu, 06 Feb 2025 09:23:53 -0500
+	id 1tg2nF-0002IH-Ex; Thu, 06 Feb 2025 09:23:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tg2nI-0002JN-DT
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:23:52 -0500
+ id 1tg2nE-0002H8-8o
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:23:48 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tg2nH-0006tU-06
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:23:52 -0500
+ id 1tg2nC-0006qn-Fn
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:23:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738851830;
+ s=mimecast20190719; t=1738851825;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OwJOgKMx0mCJNKFJZr/JfU+XCS/7nyr6ABOgYudzD2Q=;
- b=P+7l+85v78Jgae6GUkxFiO7zBIWSEfQ2jAazIxId+dhWvrfSum96QErURQIujSai7HUhX+
- +fq1Ky0XnTukVpV7vQAf3qWAL+2Pda2RMYydTHLzqA4MearGr/Hbky8k0IiAdLJ5lK9rZJ
- 4PK3XdGjmSi0WhSwSrV9zm3Q3UWM64U=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=K9BmzrzIx8xbJgcbBJlgaVyGLZPZHzbO44k1rk6hqws=;
+ b=g7EHnxfeLJlDCvNN6I6Jay5oKT2cr7iJXmNGluGChZ/gpnKkRQEec4jDNZdruUn7BYhhNe
+ RhoMCcgPHSbw1GG67uj4CbrUXHduDMQtVhW5WcUt+L0DdNJeXPmmSSMuoVykGrGXDxxjSz
+ PuJs2AJ4a1E9WjoGrQihoo1Z/W5EzVM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-120-xMTwQ4UhNNaW5LsjFzlxww-1; Thu,
- 06 Feb 2025 09:23:47 -0500
-X-MC-Unique: xMTwQ4UhNNaW5LsjFzlxww-1
-X-Mimecast-MFC-AGG-ID: xMTwQ4UhNNaW5LsjFzlxww
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-U-H9v37SOp2SzP6sJo32LA-1; Thu,
+ 06 Feb 2025 09:23:42 -0500
+X-MC-Unique: U-H9v37SOp2SzP6sJo32LA-1
+X-Mimecast-MFC-AGG-ID: U-H9v37SOp2SzP6sJo32LA
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E5DD5195608C; Thu,  6 Feb 2025 14:23:45 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2C3281800879; Thu,  6 Feb 2025 14:23:41 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.9])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A929A1800570; Thu,  6 Feb 2025 14:23:41 +0000 (UTC)
+ id 003A41800570; Thu,  6 Feb 2025 14:23:36 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  jasowang@redhat.com, imammedo@redhat.com, peterx@redhat.com,
  alex.williamson@redhat.com, clg@redhat.com, philmd@linaro.org,
  zhenzhong.duan@intel.com, ddutile@redhat.com
-Subject: [PATCH 5/5] hw/vfio/common: Add a trace point in vfio_reset_handler
-Date: Thu,  6 Feb 2025 15:21:56 +0100
-Message-ID: <20250206142307.921070-6-eric.auger@redhat.com>
+Subject: [PATCH 4/5] hw/arm/smmuv3: Move reset to exit phase
+Date: Thu,  6 Feb 2025 15:21:55 +0100
+Message-ID: <20250206142307.921070-5-eric.auger@redhat.com>
 In-Reply-To: <20250206142307.921070-1-eric.auger@redhat.com>
 References: <20250206142307.921070-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -120,41 +120,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7VNdxcH33VBw
+X-TUID: GC06PBB5RpGq
 
-To ease the debug of reset sequence, let's add a trace point
-in vfio_reset_handler()
+Currently the iommu may be reset before the devices
+it protects. For example this happens with virtio-scsi-pci.
+when system_reset is issued from qmp monitor, spurious
+"virtio: zero sized buffers are not allowed" warnings can
+be observed.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/vfio/common.c     | 1 +
- hw/vfio/trace-events | 1 +
- 2 files changed, 2 insertions(+)
+ hw/arm/smmuv3.c     | 9 +++++----
+ hw/arm/trace-events | 1 +
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index f7499a9b74..173fb3a997 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1386,6 +1386,7 @@ void vfio_reset_handler(void *opaque)
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index c0cf5df0f6..7522c32b24 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1870,13 +1870,14 @@ static void smmu_init_irq(SMMUv3State *s, SysBusDevice *dev)
+     }
+ }
+ 
+-static void smmu_reset_hold(Object *obj, ResetType type)
++static void smmu_reset_exit(Object *obj, ResetType type)
  {
-     VFIODevice *vbasedev;
+     SMMUv3State *s = ARM_SMMUV3(obj);
+     SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
  
-+    trace_vfio_reset_handler();
-     QLIST_FOREACH(vbasedev, &vfio_device_list, global_next) {
-         if (vbasedev->dev->realized) {
-             vbasedev->ops->vfio_compute_needs_reset(vbasedev);
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index cab1cf1de0..c5385e1a4f 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -120,6 +120,7 @@ vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t subtype
- vfio_legacy_dma_unmap_overflow_workaround(void) ""
- vfio_get_dirty_bitmap(uint64_t iova, uint64_t size, uint64_t bitmap_size, uint64_t start, uint64_t dirty_pages) "iova=0x%"PRIx64" size= 0x%"PRIx64" bitmap_size=0x%"PRIx64" start=0x%"PRIx64" dirty_pages=%"PRIu64
- vfio_iommu_map_dirty_notify(uint64_t iova_start, uint64_t iova_end) "iommu dirty @ 0x%"PRIx64" - 0x%"PRIx64
-+vfio_reset_handler(void) ""
+-    if (c->parent_phases.hold) {
+-        c->parent_phases.hold(obj, type);
++    trace_smmu_reset_exit();
++    if (c->parent_phases.exit) {
++        c->parent_phases.exit(obj, type);
+     }
  
- # platform.c
- vfio_platform_realize(char *name, char *compat) "vfio device %s, compat = %s"
+     smmuv3_init_regs(s);
+@@ -1999,7 +2000,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+     SMMUv3Class *c = ARM_SMMUV3_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_smmuv3;
+-    resettable_class_set_parent_phases(rc, NULL, smmu_reset_hold, NULL,
++    resettable_class_set_parent_phases(rc, NULL, NULL, smmu_reset_exit,
+                                        &c->parent_phases);
+     device_class_set_parent_realize(dc, smmu_realize,
+                                     &c->parent_realize);
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index c64ad344bd..7790db780e 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -56,6 +56,7 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
+ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
+ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+ smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
++smmu_reset_exit(void) ""
+ 
+ # strongarm.c
+ strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
 -- 
 2.47.1
 

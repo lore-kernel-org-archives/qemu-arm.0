@@ -1,334 +1,232 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1426861njb;
-        Thu, 6 Feb 2025 01:54:04 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUNqgIK2X94OAhGr5tVb4q2KddCcj3as+hEGO7/3aSKwM0iuZGGr2LfO1eS98uGzWM3+/FhBlj1zFj13Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFp7ZU0wYYqpOttF/2IVp8SHE5Kenwc/jaErbHCFKhG0bP8z/a52QiMzUp4hybX04C9JsaL
-X-Received: by 2002:a05:6214:1bc5:b0:6e4:2d56:647c with SMTP id 6a1803df08f44-6e42fc5a005mr93890216d6.37.1738835644645;
-        Thu, 06 Feb 2025 01:54:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738835644; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1429050njb;
+        Thu, 6 Feb 2025 02:00:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVMdw0UF3opxNg9sf97cDzxYFoIikC52VDPZbAnSETgs+b3tBPjr9/9hZSDteaFeBolbOL3ZGpMunL4yQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJ4gsAFeZbsAYwq/vSh2hbfV1DBaolRVi3/KKI+z6OHfjiZZBnHUE9UrAgQ6Zba0PB8yzL
+X-Received: by 2002:a05:620a:2614:b0:7b6:ecaa:9638 with SMTP id af79cd13be357-7c03a04b7edmr937749085a.55.1738836053926;
+        Thu, 06 Feb 2025 02:00:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738836053; cv=none;
         d=google.com; s=arc-20240605;
-        b=PAoBll1rsAqZJv+URXnfPrx28dGElNsxfWw317onUkmVAPD5tL6sEG18gucsROuVtn
-         3TMUjsBA/QdWo96+MO0YMUMwv8nCXNcFjGdsJNOC0ic62zkFGj3gfVKqV4MDIdFCzJ3+
-         7isCL5q/7UbsJQ4zM6v2beGF3qW3ETvFyHxMbXKtvBMNes5jE6iqRuZEisnTZe0KGIwz
-         /oSSX0xV0QaGEZ8M1NwpXS/Kw8ZNiKPakWRCfS62zWf5zM9GlT5MTpvZbtYqD0I7YM8e
-         Bkplo9P3S/XysAu/9NjXC1+ljO0nAxweCuQYbq+v/L+klW6REvruin+UHsn6QgRr6y8Z
-         G3aw==
+        b=UdhNH2++5mL2xT2fvZETU+ckmlc4WFY6339+XuS1FzOITML7S/rxrugdp+du52R4UJ
+         4RHFXMvuA3OA/IxyBpHnEjyWAByrc51f3NF6p/suSf0/4Yh/8pdNnnGrx4KCB1zZ3Y3B
+         AKNrrC0yUN51wblt5zrqCo0CdstI3Y6f0Ts6p/Ed9Dtl7ivduU5VDT+hYgP0UZWlD8r/
+         +gDP4WkihiEJObuVMINbpspw+01v1P8OGNRcqttYcVGplktEUXMyUvAYz3zQSXOBrWi3
+         UOzghgtBNwmwN4v1Wy+EgISYOHY9X99UoN/45uNVVZ0d2xj9L5IaXVGQDamBHDiO2/Hc
+         YkoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=/D9uKpyLzumgJACpNysdOOv+ObmSSmnDEsaKz+F0q3o=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=bgp5KyJUeL9JMMtcxUNcrLCGCs6tH14PaYXub+EpZOyj1Ggw6MvH6CN3qpdWQnEaa6
-         YQgWuylBHyDg6HqVRRfugNguXYucx/hzcMXUSC/xDI0Ph9k3eXq/J8SsKRF0SsBh9rl4
-         lzM/lCwgvycAKtIJpvF2RwcALWFR35bc6KHzfSIb2LtRIjDB/2tmQF7ooC+0BlX2S7iF
-         cqmoVRYhZJDbH1mW5VP5cNlPIB4Ou6iscufzlSFigxdZp8ZRZF3O0JQqP3R9dgReHDWD
-         kLkjdIzOXsg+9eNXwLfh9uNztrSekoaHL1Z/+YBX87Dv9sZwMXDKl//xhMOje/tSFPr5
-         YPOw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Az1ikhbqneh+W5sX3hRteMmweloD8P7vVUguIqWdSR8=;
+        fh=5YDLLJgO7dHw3UrwgK3PqKzoqhNi0WRWyfs5b9Zwmpw=;
+        b=dcWymD8y0mdVdsLiip0b+NKwQrO7M+3/mDw+q5DQhJPEGO7SoDbbU5Q+/25NGBg8OR
+         aB3+HBpJwCqdVzjC9LcxxY0G4a7KP/v6diuSIgfEskIlanYX2LEW9Ndt8mrNte93TR5L
+         jU0eko3+/EjCm+C1a6shazpvSMjUXjqmRkAuugSRB7aLjtb0iSb5zxfRnHth5ut178xd
+         P8yKAn3onG8dO3vdZ/2tDN3yI30uaVSKXe7oEfdeoN79ohoY/CFhHjRz9IX7xrNln1wV
+         yr+DCWHeIk+TYKJRmSeKXGZa91Ebn2BpKPftWnKFEFUCwiI24bwJ4J1jpt2oKvNplJAX
+         gQig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Sbup0LoY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e43baf9ac2si8106336d6.370.2025.02.06.01.54.04
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb5162si86651285a.392.2025.02.06.02.00.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 01:54:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Feb 2025 02:00:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Sbup0LoY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfyZS-000200-5t; Thu, 06 Feb 2025 04:53:18 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfygc-0002aa-Ia; Thu, 06 Feb 2025 05:00:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfyZJ-0001yC-38; Thu, 06 Feb 2025 04:53:13 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tfygV-0002Zy-Vr; Thu, 06 Feb 2025 05:00:36 -0500
+Received: from mgamail.intel.com ([198.175.65.17])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfyZH-00051a-8C; Thu, 06 Feb 2025 04:53:08 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 6 Feb
- 2025 17:52:53 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 6 Feb 2025 17:52:53 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 2/6] hw/intc/aspeed: Introduce helper functions for enable
- and status registers
-Date: Thu, 6 Feb 2025 17:52:48 +0800
-Message-ID: <20250206095253.928308-3-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
-References: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tfygT-0006gZ-2T; Thu, 06 Feb 2025 05:00:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1738836034; x=1770372034;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=MU874FEMTTz129Wl0GzXGt5/AqElqEZSPesXYVwITzg=;
+ b=Sbup0LoYTTgTs94LAMa1wLH7VvRDXPup/ufkwrmtQXntv+zTAzlb0x8e
+ LCsVlXLjnO35HdPeKxUtiM4wHqbtPadhrTAqSEFiSY9oW9T9X7Ty+fd3a
+ sbm8eO4/kv+3ikrSVUTH+tesqCvcNY7dZIzdia2Tz0hR22/xTHsnAk9Ne
+ 7Vo26zU08q91WxbqfOcNXJnd6WZSxoUZzKJxLaFet5zPf1wkE8tvvQE8D
+ 00joTUJxOlUWo0iDIHL8yzs3okCIXL7Sca2p5zRP0nwFioD+hW8MSOWPd
+ LFpPSFS0oa6PG90+NLkNu0Eu6Nx7Q6FbCzl3mTZays0WQ6nhVIdQz0iX+ w==;
+X-CSE-ConnectionGUID: 9/bAfngoQaGicD6MoveraQ==
+X-CSE-MsgGUID: TZyqQ+K5Tvy4gNC2OdBFwQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39456944"
+X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="39456944"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2025 02:00:30 -0800
+X-CSE-ConnectionGUID: cx0BQhqjQt27D6NsVtSqcQ==
+X-CSE-MsgGUID: QCjIMYF1Qie+rufoFs4vsQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="116147595"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa004.jf.intel.com with ESMTP; 06 Feb 2025 02:00:22 -0800
+Date: Thu, 6 Feb 2025 18:19:50 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
+Message-ID: <Z6SMxlWhHgronott@intel.com>
+References: <20250122090517.294083-1-zhao1.liu@intel.com>
+ <20250122090517.294083-2-zhao1.liu@intel.com>
+ <871pwc3dyw.fsf@pond.sub.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <871pwc3dyw.fsf@pond.sub.org>
+Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m+cfqR9zGg+z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XOaqhzQZ7sl4
 
-The behavior of the enable and status registers is almost identical between
-INTC(CPU Die) and INTC_IO(IO Die). To reduce duplicated code, adds
-"aspeed_intc_enable_handler" functions to handle enable register write
-behavior and "aspeed_intc_status_handler" functions to handle status
-register write behavior.
+On Wed, Feb 05, 2025 at 11:03:51AM +0100, Markus Armbruster wrote:
+> Date: Wed, 05 Feb 2025 11:03:51 +0100
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
+> 
+> Quick & superficial review for now.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/intc/aspeed_intc.c | 185 +++++++++++++++++++++++-------------------
- 1 file changed, 103 insertions(+), 82 deletions(-)
+Thanks!
 
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 316885a27a..8b1f83c878 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -114,6 +114,107 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-     }
- }
+> > diff --git a/qapi/kvm.json b/qapi/kvm.json
+> > new file mode 100644
+> > index 000000000000..d51aeeba7cd8
+> > --- /dev/null
+> > +++ b/qapi/kvm.json
+> > @@ -0,0 +1,116 @@
+> > +# -*- Mode: Python -*-
+> > +# vim: filetype=python
+> > +
+> > +##
+> > +# = KVM based feature API
+> 
+> This is a top-level section.  It ends up between sections "QMP
+> introspection" and "QEMU Object Model (QOM)".  Is this what we want?  Or
+> should it be a sub-section of something?  Or next to something else?
+
+Do you mean it's not in the right place in the qapi-schema.json?
+
+diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+index b1581988e4eb..742818d16e45 100644
+--- a/qapi/qapi-schema.json
++++ b/qapi/qapi-schema.json
+@@ -64,6 +64,7 @@
+ { 'include': 'compat.json' }
+ { 'include': 'control.json' }
+ { 'include': 'introspect.json' }
++{ 'include': 'kvm.json' }
+ { 'include': 'qom.json' }
+ { 'include': 'qdev.json' }
+ { 'include': 'machine-common.json' }
+
+Because qom.json includes kvm.json, so I have to place it before
+qom.json.
+
+It doesn't have any dependencies itself, so placing it in the previous
+position should be fine, where do you prefer?
+
+> > +##
+> > +
+> > +##
+> > +# @KVMPMUFilterAction:
+> > +#
+> > +# Actions that KVM PMU filter supports.
+> > +#
+> > +# @deny: disable the PMU event/counter in KVM PMU filter.
+> > +#
+> > +# @allow: enable the PMU event/counter in KVM PMU filter.
+> > +#
+> > +# Since 10.0
+> > +##
+> > +{ 'enum': 'KVMPMUFilterAction',
+> > +  'prefix': 'KVM_PMU_FILTER_ACTION',
+> > +  'data': ['allow', 'deny'] }
+> > +
+> > +##
+> > +# @KVMPMUEventEncodeFmt:
+> 
+> Please don't abbreviate Format to Fmt.  We use Format elsewhere, and
+> consistency is desirable.
+
+OK, will fix.
+
+> >  ##
+> >  # = QEMU Object Model (QOM)
+> > @@ -1108,6 +1109,7 @@
+> >        'if': 'CONFIG_LINUX' },
+> >      'iommufd',
+> >      'iothread',
+> > +    'kvm-pmu-filter',
+> >      'main-loop',
+> >      { 'name': 'memory-backend-epc',
+> >        'if': 'CONFIG_LINUX' },
+> > @@ -1183,6 +1185,7 @@
+> >                                        'if': 'CONFIG_LINUX' },
+> >        'iommufd':                    'IOMMUFDProperties',
+> >        'iothread':                   'IothreadProperties',
+> > +      'kvm-pmu-filter':             'KVMPMUFilterPropertyVariant',
+> 
+> The others are like
+> 
+>          'mumble': 'MumbleProperties'
+> 
+> Let's stick to that, and also avoid running together multiple
+> capitalized acronyms: KvmPmuFilterProperties.
+
+IIUC, then I should use the name "KvmPmuFilterProperties" (string version
+for QAPI), and the name "KvmPmuFilterPropertiesVariant" (numeric version
+in codes), do you agree?
  
-+static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
-+                                       uint64_t data)
-+{
-+    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
-+    uint32_t addr = offset >> 2;
-+    uint32_t old_enable;
-+    uint32_t change;
-+    uint32_t irq;
-+
-+    irq = (offset & 0x0f00) >> 8;
-+
-+    if (irq >= aic->num_ints) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
-+                      __func__, irq);
-+        return;
-+    }
-+
-+    /*
-+     * The enable registers are used to enable source interrupts.
-+     * They also handle masking and unmasking of source interrupts
-+     * during the execution of the source ISR.
-+     */
-+
-+    /* disable all source interrupt */
-+    if (!data && !s->enable[irq]) {
-+        s->regs[addr] = data;
-+        return;
-+    }
-+
-+    old_enable = s->enable[irq];
-+    s->enable[irq] |= data;
-+
-+    /* enable new source interrupt */
-+    if (old_enable != s->enable[irq]) {
-+        trace_aspeed_intc_enable(s->enable[irq]);
-+        s->regs[addr] = data;
-+        return;
-+    }
-+
-+    /* mask and unmask source interrupt */
-+    change = s->regs[addr] ^ data;
-+    if (change & data) {
-+        s->mask[irq] &= ~change;
-+        trace_aspeed_intc_unmask(change, s->mask[irq]);
-+    } else {
-+        s->mask[irq] |= change;
-+        trace_aspeed_intc_mask(change, s->mask[irq]);
-+    }
-+
-+    s->regs[addr] = data;
-+}
-+
-+static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
-+                                       uint64_t data)
-+{
-+    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
-+    uint32_t addr = offset >> 2;
-+    uint32_t irq;
-+
-+    irq = (offset & 0x0f00) >> 8;
-+
-+    if (irq >= aic->num_ints) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
-+                      __func__, irq);
-+        return;
-+    }
-+
-+    /* clear status */
-+    s->regs[addr] &= ~data;
-+
-+    /*
-+     * These status registers are used for notify sources ISR are executed.
-+     * If one source ISR is executed, it will clear one bit.
-+     * If it clear all bits, it means to initialize this register status
-+     * rather than sources ISR are executed.
-+     */
-+    if (data == 0xffffffff) {
-+        return;
-+    }
-+
-+    /* All source ISR execution are done */
-+    if (!s->regs[addr]) {
-+        trace_aspeed_intc_all_isr_done(irq);
-+        if (s->pending[irq]) {
-+            /*
-+             * handle pending source interrupt
-+             * notify firmware which source interrupt are pending
-+             * by setting status register
-+             */
-+            s->regs[addr] = s->pending[irq];
-+            s->pending[irq] = 0;
-+            trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
-+            aspeed_intc_update(s, irq, 1);
-+        } else {
-+            /* clear irq */
-+            trace_aspeed_intc_clear_irq(irq, 0);
-+            aspeed_intc_update(s, irq, 0);
-+        }
-+    }
-+}
-+
- static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
- {
-     AspeedINTCState *s = ASPEED_INTC(opaque);
-@@ -140,9 +241,6 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-     AspeedINTCState *s = ASPEED_INTC(opaque);
-     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
-     uint32_t addr = offset >> 2;
--    uint32_t old_enable;
--    uint32_t change;
--    uint32_t irq;
- 
-     if (offset >= aic->reg_size) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -163,45 +261,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-     case R_GICINT134_EN:
-     case R_GICINT135_EN:
-     case R_GICINT136_EN:
--        irq = (offset & 0x0f00) >> 8;
--
--        if (irq >= aic->num_ints) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
--                          __func__, irq);
--            return;
--        }
--
--        /*
--         * These registers are used for enable sources interrupt and
--         * mask and unmask source interrupt while executing source ISR.
--         */
--
--        /* disable all source interrupt */
--        if (!data && !s->enable[irq]) {
--            s->regs[addr] = data;
--            return;
--        }
--
--        old_enable = s->enable[irq];
--        s->enable[irq] |= data;
--
--        /* enable new source interrupt */
--        if (old_enable != s->enable[irq]) {
--            trace_aspeed_intc_enable(s->enable[irq]);
--            s->regs[addr] = data;
--            return;
--        }
--
--        /* mask and unmask source interrupt */
--        change = s->regs[addr] ^ data;
--        if (change & data) {
--            s->mask[irq] &= ~change;
--            trace_aspeed_intc_unmask(change, s->mask[irq]);
--        } else {
--            s->mask[irq] |= change;
--            trace_aspeed_intc_mask(change, s->mask[irq]);
--        }
--        s->regs[addr] = data;
-+        aspeed_intc_enable_handler(s, offset, data);
-         break;
-     case R_GICINT128_STATUS:
-     case R_GICINT129_STATUS:
-@@ -212,46 +272,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-     case R_GICINT134_STATUS:
-     case R_GICINT135_STATUS:
-     case R_GICINT136_STATUS:
--        irq = (offset & 0x0f00) >> 8;
--
--        if (irq >= aic->num_ints) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
--                          __func__, irq);
--            return;
--        }
--
--        /* clear status */
--        s->regs[addr] &= ~data;
--
--        /*
--         * These status registers are used for notify sources ISR are executed.
--         * If one source ISR is executed, it will clear one bit.
--         * If it clear all bits, it means to initialize this register status
--         * rather than sources ISR are executed.
--         */
--        if (data == 0xffffffff) {
--            return;
--        }
--
--        /* All source ISR execution are done */
--        if (!s->regs[addr]) {
--            trace_aspeed_intc_all_isr_done(irq);
--            if (s->pending[irq]) {
--                /*
--                 * handle pending source interrupt
--                 * notify firmware which source interrupt are pending
--                 * by setting status register
--                 */
--                s->regs[addr] = s->pending[irq];
--                s->pending[irq] = 0;
--                trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
--                aspeed_intc_update(s, irq, 1);
--            } else {
--                /* clear irq */
--                trace_aspeed_intc_clear_irq(irq, 0);
--                aspeed_intc_update(s, irq, 0);
--            }
--        }
-+        aspeed_intc_status_handler(s, offset, data);
-         break;
-     default:
-         s->regs[addr] = data;
--- 
-2.34.1
-
+> >        'main-loop':                  'MainLoopProperties',
+> >        'memory-backend-epc':         { 'type': 'MemoryBackendEpcProperties',
+> >                                        'if': 'CONFIG_LINUX' },
+> 

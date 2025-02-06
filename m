@@ -1,133 +1,128 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1405074njb;
-        Thu, 6 Feb 2025 00:55:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXThj31P4AoJGc2J2vOnjq6ZmeAQqxdAudMlKNBQXRxJEtH24ak+bjclOrXlYViAEBOSgPJcZ/sSQ0FsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBbT/3jzEHVu+qY9vWvtH04yxIHlPnYrEk+lUQCMA9/4U0bbJeYm+9O4gpyvIuCGrL43zK
-X-Received: by 2002:a05:622a:1343:b0:466:b122:5138 with SMTP id d75a77b69052e-470281a2f9cmr65620741cf.17.1738832127630;
-        Thu, 06 Feb 2025 00:55:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738832127; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1410214njb;
+        Thu, 6 Feb 2025 01:07:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW3a/Ji/lNORH4TTz1Eq67pb7gF1q/9amjd8rT9Ra/0G4jpTONGlQi/9sHDyGpKtwq8zqkTjT7kb3xIfA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1IfZn38Cczff87uESWCT4LYIiE95xc5c+i4A81N0hRiswgwJ4H+q/61FcY7rxO/gwidu5
+X-Received: by 2002:a05:620a:f14:b0:7b6:d4a2:f126 with SMTP id af79cd13be357-7c039fc06eamr927488685a.13.1738832836204;
+        Thu, 06 Feb 2025 01:07:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738832836; cv=none;
         d=google.com; s=arc-20240605;
-        b=V9rfAvZerJpM3o3jIlw8jQBzpA/FA4U8gQ2vJe3RHImWiZk5HVOVTx++zjl2YmMon9
-         TN5XtjQIYUQyJzhil0RR2AG3ffzyWxRki2TvXX6RfMkAJPHvttNPbEkJpxGtUjYuSfQi
-         +Kv+aG4Ctmo7qF3Bk6+6l2iRwzkxMbukqzlWVGorkK7NF1iPORvpyWPmb3iNqOnZA9F7
-         0DrbRSVIOMKqxl0McLiZAU5PWlZUVpMVeVHObWnq0FXTDkX9oi/XNKHtxjakSzMV0OAV
-         Z8qX6lHMVERx9SH0jQWT2RKJD1e7c3JRp0/EjukzNlhEdFrdlGTpASKDBP+UHnkSwToQ
-         5VkA==
+        b=kGdIT3V47k4wPcwZgdWFsHzfc1fdoiutBVbrwjw7ii9p1n5svUn60kVtHbXsiIeFK2
+         QH4MCe1gp/DTXKW4nlsN3alv3I46Q2JdeicJbbGmgm7LiJa5rCPHLUVpXrs8kb8UAg7V
+         +jBKpVAAEMsojdj1pWavoUtTE5nH6oADDhYI8Uo3AVqYM024YKbVop4V5tAPZqEpJbXQ
+         bgWMV0YXFx9xn6oe/Pv0KjtEYzgFvhq5yuFPXFNtw9ubLHK+S5sbImaYcnxE1Pfg6Idj
+         N5G23phpfIv4j0/saICYwer6ODBYic4/0RDG6OnfnB9L5R/vxAE5e8XVqOWwEOps5q64
+         JEEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/7DMP8RCz4MtWOgriPg2r75pBWlGZv8A4jVtyT4iTTM=;
-        fh=YerOcnbmId3tuKElxsdoczYOJ/wCtg3QoI8Tyifx8SA=;
-        b=dLxPeV6vBdo60fs02Vc5dTBhWGxCo15Ny33yjkbT5RKYFLN+ORlM0pOjwn/kD+NyU7
-         bPOV32sxjlAiaQZr5ZBNKRcxe4hB18k9tuLbdKlzJVVYhmasrkZ1+Ak5szhToGtPMGxD
-         upsU2b8xHp6ixvg7uxdlwDC6QWF5oynHuAcQUSrgZXUZSd1EjXmU9QTz9Jce4N3LwoF1
-         CGg1NOTHj7c8F1nZkesnL2xQd55D3UHpQfCIdVM9oX6d1Cn8ZjffzW9INUXDCW65FJJ4
-         CkLtEP+VhAycQuXgMC5BmhPbBM+uUk4Js/OkONkIoeV7HpRj69c4kW4P5n7RtVqZ9Eak
-         GkyQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=IzCJVvvfB1EaRb4n7nTPbLIP0W9cumDbV+oH5GXptgs=;
+        fh=c8fHOSfepZpraM5kd61iQblNo+/0YhVDJmbS6Tbl5o8=;
+        b=Ge+oNT7j/Pqp7vr4H8eOYkQy6mFbUfo41AfGzwPo2upwtvtixkvJ3nUc2ptli/2mxj
+         MAEx4JawnWbCMd1LlTtl48RyLb+PY9hoNjcu5aVSQZauLwSlO3mLeVsCxWpjVHAIOgVw
+         D1VT995Uf+ehiO0skG16agcP/YzGkdkNEpL4E1IgfSDh5JcMsakg7L2vCW2Fv7qjultm
+         CGXp2Ztc6cWOGkpfWk7frnVirFiGakQYD/kQtm486Aa97HzM5xpheG4awvMvKjRGpLaa
+         HxX4ELPQLUerHAmTcCFBI5kjUxQ7IGLrEsq9Yjgc3K67tMq+9z3HeVNjx0oNhSp0+ZpE
+         0aTw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KzlikL7N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wfl2z4ja;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153bc255asi6924571cf.528.2025.02.06.00.55.27
+        by mx.google.com with ESMTPS id af79cd13be357-7c041df4791si81602285a.92.2025.02.06.01.07.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 00:55:27 -0800 (PST)
+        Thu, 06 Feb 2025 01:07:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KzlikL7N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wfl2z4ja;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfxfI-0001PO-LG; Thu, 06 Feb 2025 03:55:19 -0500
+	id 1tfxqV-0006rA-A8; Thu, 06 Feb 2025 04:06:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tfxfA-0001Nt-OW
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 03:55:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tfxf8-0002q3-Mn
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 03:55:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738832104;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/7DMP8RCz4MtWOgriPg2r75pBWlGZv8A4jVtyT4iTTM=;
- b=KzlikL7NligxBy+tws/ONDnB7zjv0AvcY2IMjglF+XQIZRGGjvdtY/GLqP1xzsms/HwQDB
- KT8WEqhVV0Vr9DYb+wh3Fn80cqrUN0GpaW0eTEVgUJl2+dUs7LHqkHC6EIPZF9rJSalD/M
- HIMHg79uXqGSpkMxNaSHnpFoeqq2wfE=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-tJbHVk_wPJapAgkX5lJ0Nw-1; Thu,
- 06 Feb 2025 03:54:58 -0500
-X-MC-Unique: tJbHVk_wPJapAgkX5lJ0Nw-1
-X-Mimecast-MFC-AGG-ID: tJbHVk_wPJapAgkX5lJ0Nw
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C70941955DDD; Thu,  6 Feb 2025 08:54:54 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.33])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9027D1800570; Thu,  6 Feb 2025 08:54:50 +0000 (UTC)
-Date: Thu, 6 Feb 2025 08:54:46 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Nathan Chen <nathanc@nvidia.com>
-Cc: eric.auger@redhat.com, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Message-ID: <Z6R41tYpGR-mofbT@redhat.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z5uiGnAxUf4jXTEI@redhat.com>
- <7ecabe74e0514367baf28d67675e5db8@huawei.com>
- <fc91e1a798324390b2a556fae5d40f46@huawei.com>
- <20250131142404.GP5556@nvidia.com>
- <3efcea1171af4b2f81be842f2c55fe51@huawei.com>
- <20250131145411.GR5556@nvidia.com>
- <20039bbc40df453a8a41a863d74b9ff9@huawei.com>
- <c292ab40-3620-4e72-b043-4e3cbd7fd297@redhat.com>
- <5709592d-cd1c-4894-a1d4-c0c4c61a2e07@nvidia.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfxqQ-0006q9-Qb
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 04:06:48 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfxqO-0008Cd-N9
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 04:06:46 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-385dece873cso234984f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 06 Feb 2025 01:06:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738832803; x=1739437603; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IzCJVvvfB1EaRb4n7nTPbLIP0W9cumDbV+oH5GXptgs=;
+ b=Wfl2z4jaKejKQjxVllFulSmaqfsKLnTJOao8meIdEzl/d+ssvfPg71Ixorpq4HO6Lk
+ 2Md1mlsXw1Tl/KNM/sx2O/5W0wCfy3BSS573qeBMGpJJOMX3BJoe9A3oiphHvH5uXuIX
+ GnMapvGTk4kPLeJisZ1qCHUrTl4Firvcrhn+rbnjU3rME88bEpTgg1oo366cGmTHhq3w
+ DORghthnrr+ERTUBG6cUvGgzRRbKPPg1MRl6lHx8eeT+MAMltESf1m1dhZqX2jv2PZ8X
+ u0whhFs4HZdqE9r4ozcv+oFRSxMKzoKPDjV9vqMqpmHeJNCynRZUZ2fifnKZkYcEhu06
+ H1Lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738832803; x=1739437603;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IzCJVvvfB1EaRb4n7nTPbLIP0W9cumDbV+oH5GXptgs=;
+ b=qY3rZ3Te2IThStwcV6t1JpobYxLRoKTovjv0uwhFOrRW9zaUpLM7Q3ksDxs0iJLrac
+ RNoTcKYxod9xQvzy+JBk/TMTK1W8+Rirbig3R6BOtA95du6dt4yoIWWkPdq+xdGQLn0z
+ 08vDwHwpIpPNEDB6ymS4tlPJAlPKrtqWzvP5leGZdE5Kkgja95pvJ4R/plKhN+7mV1gd
+ be+u6S+vvsyIIFQ30CY6S38OelyTw8jrRpz83TB4bPq94v+WysqZL2nQdYQCDwl7Y//3
+ lLQ4ruEVVeY75fFXZa9ofPCULcZ/TMc65UPb+B85YeNO2q1ItUVB34aRGdmZzMFV+YgY
+ Yl5w==
+X-Gm-Message-State: AOJu0Yw5ptJj+j/tAAHf70OsAohWw73y/KDBLS6cyB4v3yvxYmZqjkgN
+ AwBS/DPPxVIIRAgIZV0xmU+XAU4J5vS7fbUvRjhpe8h0BHNFxG4crbHsCtWWB/2lsSS7lnOgSpx
+ E8y0=
+X-Gm-Gg: ASbGncvO5fguLc7q7nAthXBG+AlwWr+LiImgP/Qtsnz7cgZ54mqEnUX3vrvKaFTWdpT
+ drO0gMtsch6kLHeHl/Juv1+HWe/sFlTa4JBNkF5mdlv6ibkVE0swsNUM/wv2JoME8PuwspAUNcs
+ nGW3841Ae5oSnHQJUVYAGvZuS9uFWLtUOqrUAuxGu1pXgm6mKwewjHwHnGeA6IiwkJPLHCaUkWa
+ Wsm7uZRef9FqIguPO0w/gYSbcWgYrZRiJld/6dMBqoZKpapbgSNZkEeybI72+FQkCUmGUTFGVm2
+ 7hAj3rEenNDLTsUUIaiSEzgFnBB99a8x2C5ILF7Bhw7lSxavQSKubPVoMGU=
+X-Received: by 2002:a05:6000:1fa4:b0:38d:b125:3787 with SMTP id
+ ffacd0b85a97d-38db48bcac1mr3965207f8f.17.1738832802699; 
+ Thu, 06 Feb 2025 01:06:42 -0800 (PST)
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dbde31ccesm1176186f8f.98.2025.02.06.01.06.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Feb 2025 01:06:42 -0800 (PST)
+Message-ID: <20258263-a231-45be-b0f4-f6499d613640@linaro.org>
+Date: Thu, 6 Feb 2025 10:06:40 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5709592d-cd1c-4894-a1d4-c0c4c61a2e07@nvidia.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 03/17] hw/ssi: Make flash size a property in NPCM7XX FIU
+To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com,
+ Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com,
+ titusr@google.com, chli30@nuvoton.corp-partner.google.com
+References: <20250206013105.3228344-1-wuhaotsh@google.com>
+ <20250206013105.3228344-4-wuhaotsh@google.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250206013105.3228344-4-wuhaotsh@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,76 +135,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Yey10ZZDS5an
+X-TUID: RBRC7LQMxL+I
 
-On Wed, Feb 05, 2025 at 12:53:42PM -0800, Nathan Chen wrote:
+Hi Hao,
+
+On 6/2/25 02:30, Hao Wu wrote:
+> This allows different FIUs to have different flash sizes, useful
+> in NPCM8XX which has multiple different sized FIU modules.
 > 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>   hw/arm/npcm7xx.c             |  6 ++++++
+>   hw/ssi/npcm7xx_fiu.c         | 11 +++++++----
+>   include/hw/ssi/npcm7xx_fiu.h |  1 +
+>   3 files changed, 14 insertions(+), 4 deletions(-)
 > 
-> On 1/31/2025 8:08 AM, Eric Auger wrote:
-> > > > > > > And Qemu does some checking to make sure that the device is indeed
-> > > > > > associated
-> > > > > > > with the specified phys-smmuv3.  This can be done going through the
-> > > > > > sysfs path checking
-> > > > > > > which is what I guess libvirt is currently doing to populate the
-> > > > topology.
-> > > > > > So basically
-> > > > > > > Qemu is just replicating that to validate again.
-> > > > > > I would prefer that iommufd users not have to go out to sysfs..
-> > > > > > 
-> > > > > > > Or another option is extending the IOMMU_GET_HW_INFO IOCTL to
-> > > > > > return the phys
-> > > > > > > smmuv3 base address which can avoid going through the sysfs.
-> > > > > > It also doesn't seem great to expose a physical address. But we could
-> > > > > > have an 'iommu instance id' that was a unique small integer?
-> > > > > Ok. But how the user space can map that to the device?
-> > > > Why does it need to?
-> > > > 
-> > > > libvirt picks some label for the vsmmu instance, it doesn't matter
-> > > > what the string is.
-> > > > 
-> > > > qemu validates that all of the vsmmu instances are only linked to PCI
-> > > > device that have the same iommu ID. This is already happening in the
-> > > > kernel, it will fail attaches to mismatched instances.
-> > > > 
-> > > > Nothing further is needed?
-> > > -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
-> > > -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \
-> > > -device arm-smmuv3-accel,bus=pcie.1,id=smmuv1 \
-> > I don't get what is the point of adding such an id if it is not
-> > referenced anywhere?
-> > 
-> > Eric
-> 
-> Daniel mentions that the host-to-guest SMMU pairing must be chosen such that
-> it makes conceptual sense w.r.t. the guest NUMA to host NUMA pairing [0].
-> The current implementation allows for incorrect host to guest numa node
-> pairings, e.g. pSMMU has affinity to host numa node 0, but it’s paired with
-> a vSMMU paired with a guest numa node pinned to host numa node 1.
-> 
-> By specifying the host SMMU id, we can explicitly pair a host SMMU with a
-> guest SMMU associated with the correct PXB NUMA node, vs. implying the
-> host-to-guest SMMU pairing based on what devices are attached to the PXB.
-> While it would not completely prevent the incorrect pSMMU/vSMMU pairing
-> w.r.t. host to guest numa node pairings, specifying the pSMMU id would make
-> the implications of host to guest numa node pairings more clear when
-> specifying a vSMMU instance.
+> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> index 386b2c35e9..2d6e08b72b 100644
+> --- a/hw/arm/npcm7xx.c
+> +++ b/hw/arm/npcm7xx.c
+> @@ -292,17 +292,21 @@ static const struct {
+>       hwaddr regs_addr;
+>       int cs_count;
+>       const hwaddr *flash_addr;
+> +    size_t flash_size;
+>   } npcm7xx_fiu[] = {
+>       {
+>           .name = "fiu0",
+>           .regs_addr = 0xfb000000,
+>           .cs_count = ARRAY_SIZE(npcm7xx_fiu0_flash_addr),
+>           .flash_addr = npcm7xx_fiu0_flash_addr,
+> +        .flash_size = 128 * MiB,
+> +
+>       }, {
+>           .name = "fiu3",
+>           .regs_addr = 0xc0000000,
+>           .cs_count = ARRAY_SIZE(npcm7xx_fiu3_flash_addr),
+>           .flash_addr = npcm7xx_fiu3_flash_addr,
+> +        .flash_size = 128 * MiB,
+>       },
+>   };
+>   
+> @@ -735,6 +739,8 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>   
+>           object_property_set_int(OBJECT(sbd), "cs-count",
+>                                   npcm7xx_fiu[i].cs_count, &error_abort);
+> +        object_property_set_int(OBJECT(sbd), "flash-size",
+> +                                npcm7xx_fiu[i].flash_size, &error_abort);
+>           sysbus_realize(sbd, &error_abort);
+>   
+>           sysbus_mmio_map(sbd, 0, npcm7xx_fiu[i].regs_addr);
+> diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+> index 21fc489038..ccdce67fa9 100644
+> --- a/hw/ssi/npcm7xx_fiu.c
+> +++ b/hw/ssi/npcm7xx_fiu.c
+> @@ -28,9 +28,6 @@
+>   
+>   #include "trace.h"
+>   
+> -/* Up to 128 MiB of flash may be accessed directly as memory. */
+> -#define NPCM7XX_FIU_FLASH_WINDOW_SIZE (128 * MiB)
+> -
+>   /* Each module has 4 KiB of register space. Only a fraction of it is used. */
+>   #define NPCM7XX_FIU_CTRL_REGS_SIZE (4 * KiB)
+>   
+> @@ -507,6 +504,11 @@ static void npcm7xx_fiu_realize(DeviceState *dev, Error **errp)
+>           return;
+>       }
+>   
+> +    if (s->flash_size == 0) {
+> +        error_setg(errp, "%s: flash size must be set", dev->canonical_path);
+> +        return;
+> +    }
+> +
+>       s->spi = ssi_create_bus(dev, "spi");
+>       s->cs_lines = g_new0(qemu_irq, s->cs_count);
+>       qdev_init_gpio_out_named(DEVICE(s), s->cs_lines, "cs", s->cs_count);
+> @@ -525,7 +527,7 @@ static void npcm7xx_fiu_realize(DeviceState *dev, Error **errp)
+>           flash->fiu = s;
+>           memory_region_init_io(&flash->direct_access, OBJECT(s),
+>                                 &npcm7xx_fiu_flash_ops, &s->flash[i], "flash",
+> -                              NPCM7XX_FIU_FLASH_WINDOW_SIZE);
+> +                              s->flash_size);
 
-You've not specified any host SMMU id in the above CLI args though,
-only the PXB association.
+Per the comment, this is the device aperture.
 
-It needs something like
+Either add a check whether size is always <= 128 * MiB, or use
+MIN(s->flash_size, NPCM7XX_FIU_FLASH_WINDOW_SIZE)?
 
- -device arm-smmuv3-accel,bus=pcie.1,id=smmuv1,host-smmu=XXXXX
-
-where 'XXXX' is some value to identify the host SMMU
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+>           sysbus_init_mmio(sbd, &flash->direct_access);
+>       }
+>   }
+> @@ -543,6 +545,7 @@ static const VMStateDescription vmstate_npcm7xx_fiu = {
+>   
+>   static const Property npcm7xx_fiu_properties[] = {
+>       DEFINE_PROP_INT32("cs-count", NPCM7xxFIUState, cs_count, 0),
+> +    DEFINE_PROP_SIZE("flash-size", NPCM7xxFIUState, flash_size, 0),
+>   };
+>   
+>   static void npcm7xx_fiu_class_init(ObjectClass *klass, void *data)
+> diff --git a/include/hw/ssi/npcm7xx_fiu.h b/include/hw/ssi/npcm7xx_fiu.h
+> index a3a1704289..1785ea16f4 100644
+> --- a/include/hw/ssi/npcm7xx_fiu.h
+> +++ b/include/hw/ssi/npcm7xx_fiu.h
+> @@ -60,6 +60,7 @@ struct NPCM7xxFIUState {
+>       int32_t cs_count;
+>       int32_t active_cs;
+>       qemu_irq *cs_lines;
+> +    size_t flash_size;
+>       NPCM7xxFIUFlash *flash;
+>   
+>       SSIBus *spi;
 

@@ -1,105 +1,105 @@
-Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp669347dlb;
+Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp669355dlb;
         Wed, 5 Feb 2025 17:34:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU38PvyCLY2JXcda+FdjZu+J/hwfVKwm/bF/76kJel6enk0bDeW491gudwbZLZC8yooSiusZtqIDbJEJQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHL4TiEgPYgOQp/tCIMCWWdkCP8c3zU3GLOi/OVbA/twQCup/hHx7uXpndfLbh0xN/mr6mZ
-X-Received: by 2002:a05:620a:4552:b0:7b6:c540:9531 with SMTP id af79cd13be357-7c039fcf48cmr769305385a.18.1738805677130;
+X-Forwarded-Encrypted: i=2; AJvYcCVcUSDD6FB/nALRwEuaFjHBSwOcDWRuvKDcRsEtF64MN2uRxV+t6kbogcf/HuNAX7s8GLMvvSm2NEJmhA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFrwZi2rb5AKgJKJHeNpQSGBJQGMFGtNDzKQscrY0XMXHF4chHMEIu0OKB/gPkeERm1iThv
+X-Received: by 2002:ac8:7f4d:0:b0:464:c8f2:e553 with SMTP id d75a77b69052e-4702828befbmr58747141cf.42.1738805677746;
         Wed, 05 Feb 2025 17:34:37 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1738805677; cv=none;
         d=google.com; s=arc-20240605;
-        b=MB8uwK7PAfD3jCJkfuhpOpcC3+DX5H2SZQj/5iXOIXdz1i7hd95561Py+g82iIyeZ0
-         o84nrHMWGvIQ/VrJlzcUNORwN/Jp0fat8n9F+CaOUwVVLhpBesrAft/FVb00SO+JXFSZ
-         9qOd3TFDygAMcPcFNDfdTSyBU7cWCk3xmS6vGWoFrUbhaUaeLJkTJY+uZ+YG5CnZbYai
-         pT5JAHfPvhALT2VyuhLyHHQB5UAtOLZhKwDSmVHUWrFDNKecEmu+ZB92c1A1lRibU5ij
-         9QVGk7cKWDbD36NLDh0UdRRdl0YH/sautCOKpZryeAZsvZzoJW/VYD/DAvIOeM0HQwjG
-         rE0w==
+        b=AvfeAul0lKNcFo9Nc2W/SOcr4ee/+YSam+Tw/sZQszvaE3zOgr51gj9vdQowHkIpSo
+         wRmQgJCGa0Bl/hLBHIV/c76FVq9/Hs0hQMqrctGcKUzefyLcN8rJMyYCZqRr3Q5niuF6
+         t+tYH03C7YP+TrGnxYvzQLBbXLKHwQ1a3ghI9BdFe559FgdU2nMGreT0hyZrrQrqe9J3
+         K+dmyyEzRkYfQdGP7shrWP1b7mNFqvGndZSEYIRvIuhJZFgFF00g6hdcRQytsAFqrrrT
+         SHJC/7rK8gOy/YXYueg9EV5pK4Jo5PD9qxWBrA+rdZLsEnT+g3lub6/vcK+05FAcoBft
+         PgmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=EMwJqO0GVwvNpTJ+WKNZl+C56TmDUIgVRx3/tC2n9ds=;
-        fh=bnYRv9auOEic40HgJoe9CbQ+z0pEkJT7dA5ZnZnRlWQ=;
-        b=I2dIKQgKdbAKYVTvNV/sN5mbwTHh28wNbS39BYAkDfsWEcTQoJVLqAQO/2rBeiasx6
-         g+gq4xPIiBY0ZEpwodY/cNoMHAS5ahSPHf371Zo1XJIGxff+8ZDsHe4A6Un0FXBjpvEL
-         X+D1Q0gKPClqCJoFxEwuamzYiYPfeK+nfqV99PAUXG5qHb4C6gHSWg6PDoHFzxcKLrBL
-         422jw85XJLzEySHW1wI4poZGrnnb94Airlplo2RGqccK+2sQhThRVqjmfN1WA3W2LtMq
-         zvAqU2mnHu2CVfZ62ur4t5X8UmswBvH9oKsUrqS5WvFQpkSy+6eqO+l2nQFNPGbZSKoi
-         NiJQ==;
+        bh=nhDHNsqOuHIuugitVBKeEkbSBRDrJD2r9kXRQvXzHqw=;
+        fh=aBBbEEhL0CKkBSRD7QeH5twD/OucnoYN9FrUu19YSlg=;
+        b=d/6UDoTEBK20LSOcTzblf0QCp8nA0i/CNSHNYzrHONq+vhHOdhubEeqRZItMEd6v/r
+         lzs9o31ti3VwKyvJoAlFukRTBq5W4OHNPM9Ol/TmibVYGllobR0Q5Kj3g8di7c6Qg9/9
+         1Iol+6wQLXAWjCPodCPrNISo3Ro28Pm2WaH2W7sylzk3NYsIN/KadQ1HcNCwTUCMuIzu
+         UtYuZhmlqT7LsNLIPS6oTBiwrPqfRMCQr/3uiJfGe782WA/5ViprNOr0jIV1uQEaBHtl
+         ebLOh4icUGqYAsZOY+tlL+qrB4dwjLMzrjjup9nmQNgJg94oxrq8L94+6kDk5gAZmKe8
+         Yn3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=yNyVYLVD;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tSEtZEHf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041ed5287si21973185a.539.2025.02.05.17.34.37
+        by mx.google.com with ESMTPS id d75a77b69052e-4714927bc32si1809581cf.50.2025.02.05.17.34.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 05 Feb 2025 17:34:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=yNyVYLVD;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tSEtZEHf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfqkh-0005UF-TT; Wed, 05 Feb 2025 20:32:25 -0500
+	id 1tfqkU-0005MK-DU; Wed, 05 Feb 2025 20:32:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3-hCkZwgKCu8nlYRfkjYXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--wuhaotsh.bounces.google.com>)
- id 1tfqkD-0005GX-4K
- for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:59 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ <35RCkZwgKCtoSQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1tfqjt-0005Ci-7i
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:40 -0500
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3-hCkZwgKCu8nlYRfkjYXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--wuhaotsh.bounces.google.com>)
- id 1tfqk3-0006wu-3J
- for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:45 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2f816a85facso768852a91.3
- for <qemu-devel@nongnu.org>; Wed, 05 Feb 2025 17:31:38 -0800 (PST)
+ <35RCkZwgKCtoSQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1tfqjk-0006tT-4o
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:26 -0500
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-2fa032b17c3so847399a91.1
+ for <qemu-devel@nongnu.org>; Wed, 05 Feb 2025 17:31:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1738805498; x=1739410298; darn=nongnu.org;
+ d=google.com; s=20230601; t=1738805477; x=1739410277; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=EMwJqO0GVwvNpTJ+WKNZl+C56TmDUIgVRx3/tC2n9ds=;
- b=yNyVYLVD6En4DINC36obiUZ6MlDsncvsylWXXulO5gGwY2Fq4PRqb/0+Zq+A892N1C
- iDIh/yVwKpRm32Ivi9kG4Z3bx3+mzwGDhXqnTw5DwJsNtO0es0SQgNGTZZz66sAh+zkv
- jQ4ROuwVczsv3wcrp6Um2i9ae797hLNe4FjZLK2Q7z2Ks/LqqMTPSFC59+RiAAw93Cnj
- b2sPp/Op1MpaKrjQpFLJmuFFZQfv6WyjNN366F/E2Hl7VUVoTUCYaXmem+7yCcvfVnC0
- FtAnbowR/oJwMMP38LAgarC8uFLDuaioCd9WJ1Qvai9MvD/cr7oq3G8ozp5PyRHd52jR
- trcw==
+ bh=nhDHNsqOuHIuugitVBKeEkbSBRDrJD2r9kXRQvXzHqw=;
+ b=tSEtZEHfM/AcFuNAGKhTFgQZQ5Y10ASIhVPrG9KvMt0khbH9o1Ka6P2ogmBI/knO57
+ MnW5Gi33+eW2NSw1Pt8LQFgakPcCMtPXlOvHDd/qroGHoveoIf/wiEPqXgRkMywqrc2e
+ SsCXgmpuC2RFn5Z7mxWIqz45tcRoV1n5BLo5mp1HD57IpyyqG/9ErpkxlSe6wLHbesGv
+ ew/iZJshlI8LsobtEasf5U9wTe9qJRmiFlXxQAKQbaHxH38XJlI0LxjJs/xly+VBS/mx
+ 7PTc1wrxjeuoX9Xdx/KRrVARlLnyWUpOrjeCEnq4FpNqEV8lcW4AiPZGX0yhKJe6v1rL
+ HMyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738805498; x=1739410298;
+ d=1e100.net; s=20230601; t=1738805477; x=1739410277;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EMwJqO0GVwvNpTJ+WKNZl+C56TmDUIgVRx3/tC2n9ds=;
- b=RzTo1IWz63aOi5+md+WgkK5UbVK4I2AJrT5xOMcAwm2pmi2PMQwKAbeeJXnOy7mj10
- Lvct5TZcvLZD3ePztQpeiL4lnb9QP16n9WVSzI0gfDzs5aaDYSNiZICPXHYNZbzWk7YL
- OfdSp9v3yY1PUkY1M3tR37iScyd1j+CrQbC77qmx6vOk9pQf6T4IacMl1L8Rf7ffYIaO
- VDeGBL6xzDsgNIU4RsBFPN7yODzTPmYDhCupgHsRjjCzDbGt81BATwoeaCwpj9roAzn+
- 7FJ/j5KLNMlEu1naNXrpeemr50IvsxOzh9cCRX+L+aD4LnmjshU60aYdzsnYFjrd9tRJ
- aY9Q==
+ bh=nhDHNsqOuHIuugitVBKeEkbSBRDrJD2r9kXRQvXzHqw=;
+ b=P+KVvRBQdG6kc9fg3vnXmcp0T/OPKYx89RyU+LnmANSu2fN1xnYtf2/8Sra4w5x2D3
+ ciEQYjn8GfWzmxNB3RLiPts3p85XilFJNBIr9dI3sNK1+XNe1CDb7QdN36BGB5y2+DpZ
+ ljDiBLIypKI3ms5eqRJkaDuGueewuNZaMORMxkDBCLzpnlZQz845iOuhA3cRF/8hYfgF
+ CayLfuj1Fqz3rUcOzWjowo7mpE6I2kW93z6P1jE9VdiR8bt9+oYM2bYIQl3x+lLpv6ii
+ BE3q1fDSCTg3ZLLhWEAaRowBImFCl400V5G4wVULaN6ZBI2v2qgeREdlM7AA1SjX0HgN
+ fCqA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVFdSFzNLsIc4vuVdBLvGA8ZfvtypuHBEFkQ8MKzqXywSapWuvelmfLgoveFQqFIMM1tT75sN5qU0s2@nongnu.org
-X-Gm-Message-State: AOJu0YwE1xxP6vV0aPSMF9CSrF0yWY2V4sFLjZTbkzXmHPJ/eAvfYeTn
- ENRuTiRY24XTXlvV4q40XkGsMWcBNivhew45r3lFR2Fm5Z+V7NEg0DAtlaju++BoQdm+w/etSRE
- PZ4Im83A8LQ==
-X-Received: from pjbli9.prod.google.com ([2002:a17:90b:48c9:b0:2e0:52d7:183e])
+ AJvYcCVOoFy029EDcrHbFTgMD0u+Rscfrx6hIqnGGs0NAVV3jkDTpgn01H8y/6lCLofY3/UrhAL7tc/p/LHG@nongnu.org
+X-Gm-Message-State: AOJu0Yzh0BI6INje2CoN+WFJ3TM0OS4XVK7NsJyYTNg54sSyxF/UYbAs
+ pxGcFR45+Bpc90QRuX7O1wuGpQRlPiQcuCjGU2UBnt5kCPwIjeqZhI1SRyPDpKolGqZ78VuccYf
+ wdcEPvIhzTg==
+X-Received: from pjbpd11.prod.google.com ([2002:a17:90b:1dcb:b0:2ef:79ee:65c0])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:4f4b:b0:2ee:aed2:c15c with SMTP id
- 98e67ed59e1d1-2f9e083cc9cmr7802162a91.28.1738805498106; 
- Wed, 05 Feb 2025 17:31:38 -0800 (PST)
-Date: Wed,  5 Feb 2025 17:31:05 -0800
+ 2002:a17:90b:17d1:b0:2ee:df70:1ff3 with SMTP id
+ 98e67ed59e1d1-2f9e06a1b1dmr9626179a91.0.1738805477505; 
+ Wed, 05 Feb 2025 17:31:17 -0800 (PST)
+Date: Wed,  5 Feb 2025 17:30:52 -0800
 In-Reply-To: <20250206013105.3228344-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20250206013105.3228344-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.48.1.362.g079036d154-goog
-Message-ID: <20250206013105.3228344-18-wuhaotsh@google.com>
-Subject: [PATCH v3 17/17] docs/system/arm: Add Description for NPCM8XX SoC
+Message-ID: <20250206013105.3228344-5-wuhaotsh@google.com>
+Subject: [PATCH v3 04/17] hw/misc: Rename npcm7xx_gcr to npcm_gcr
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -107,9 +107,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  hskinnemoen@google.com, titusr@google.com, 
  chli30@nuvoton.corp-partner.google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3-hCkZwgKCu8nlYRfkjYXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=35RCkZwgKCtoSQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -131,77 +131,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hCjJh6B4jfKr
+X-TUID: Fabe4+2Ml4kF
 
-NPCM8XX SoC is the successor of the NPCM7XX. It features quad-core
-Cortex-A35 (Armv8, 64-bit) CPUs and some additional peripherals.
+NPCM7XX and NPCM8XX have a different set of GCRs and the GCR module
+needs to fit both. This commit changes the name of the GCR module.
+Future commits will add the support for NPCM8XX GCRs.
 
-This document describes the NPCM8XX SoC and an evaluation board
-(NPCM 845 EVB).
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- docs/system/arm/nuvoton.rst | 27 ++++++++++++++++++++-------
- 1 file changed, 20 insertions(+), 7 deletions(-)
+ hw/misc/meson.build                           | 2 +-
+ hw/misc/{npcm7xx_gcr.c => npcm_gcr.c}         | 2 +-
+ include/hw/arm/npcm7xx.h                      | 2 +-
+ include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+ rename hw/misc/{npcm7xx_gcr.c => npcm_gcr.c} (99%)
+ rename include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} (96%)
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index 05059378e5..e4827fb43a 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -1,12 +1,13 @@
--Nuvoton iBMC boards (``kudo-bmc``, ``mori-bmc``, ``npcm750-evb``, ``quanta-gbs-bmc``, ``quanta-gsj``)
--=====================================================================================================
-+Nuvoton iBMC boards (``kudo-bmc``, ``mori-bmc``, ``npcm750-evb``, ``quanta-gbs-bmc``, ``quanta-gsj``, ``npcm845-evb``)
-+======================================================================================================================
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 55f493521b..554eb8df5b 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -70,7 +70,7 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
+   'npcm7xx_clk.c',
+-  'npcm7xx_gcr.c',
++  'npcm_gcr.c',
+   'npcm7xx_mft.c',
+   'npcm7xx_pwm.c',
+   'npcm7xx_rng.c',
+diff --git a/hw/misc/npcm7xx_gcr.c b/hw/misc/npcm_gcr.c
+similarity index 99%
+rename from hw/misc/npcm7xx_gcr.c
+rename to hw/misc/npcm_gcr.c
+index 07464a4dc9..826fd41123 100644
+--- a/hw/misc/npcm7xx_gcr.c
++++ b/hw/misc/npcm_gcr.c
+@@ -16,7 +16,7 @@
  
--The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
-+The `Nuvoton iBMC`_ chips are a family of Arm-based SoCs that are
- designed to be used as Baseboard Management Controllers (BMCs) in various
--servers. They all feature one or two ARM Cortex-A9 CPU cores, as well as an
--assortment of peripherals targeted for either Enterprise or Data Center /
--Hyperscale applications. The former is a superset of the latter, so NPCM750 has
--all the peripherals of NPCM730 and more.
-+servers. Currently there are two families: NPCM7XX series and
-+NPCM8XX series. NPCM7XX series feature one or two Arm Cortex-A9 CPU cores,
-+while NPCM8XX feature 4 Arm Cortex-A35 CPU cores. Both series contain a
-+different assortment of peripherals targeted for either Enterprise or Data
-+Center / Hyperscale applications.
+ #include "qemu/osdep.h"
  
- .. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
+-#include "hw/misc/npcm7xx_gcr.h"
++#include "hw/misc/npcm_gcr.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 4e0d210188..510170471e 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -24,7 +24,7 @@
+ #include "hw/i2c/npcm7xx_smbus.h"
+ #include "hw/mem/npcm7xx_mc.h"
+ #include "hw/misc/npcm7xx_clk.h"
+-#include "hw/misc/npcm7xx_gcr.h"
++#include "hw/misc/npcm_gcr.h"
+ #include "hw/misc/npcm7xx_mft.h"
+ #include "hw/misc/npcm7xx_pwm.h"
+ #include "hw/misc/npcm7xx_rng.h"
+diff --git a/include/hw/misc/npcm7xx_gcr.h b/include/hw/misc/npcm_gcr.h
+similarity index 96%
+rename from include/hw/misc/npcm7xx_gcr.h
+rename to include/hw/misc/npcm_gcr.h
+index c0bbdda77e..9b4998950c 100644
+--- a/include/hw/misc/npcm7xx_gcr.h
++++ b/include/hw/misc/npcm_gcr.h
+@@ -13,8 +13,8 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+  * for more details.
+  */
+-#ifndef NPCM7XX_GCR_H
+-#define NPCM7XX_GCR_H
++#ifndef NPCM_GCR_H
++#define NPCM_GCR_H
  
-@@ -27,6 +28,11 @@ There are also two more SoCs, NPCM710 and NPCM705, which are single-core
- variants of NPCM750 and NPCM730, respectively. These are currently not
- supported by QEMU.
+ #include "exec/memory.h"
+ #include "hw/sysbus.h"
+@@ -70,4 +70,4 @@ struct NPCM7xxGCRState {
+ #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
+ OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxGCRState, NPCM7XX_GCR)
  
-+The NPCM8xx SoC is the successor of the NPCM7xx SoC. It has 4 Cortex-A35 cores.
-+The following machines are based on this chip :
-+
-+- ``npcm845-evb``       Nuvoton NPCM845 Evaluation board
-+
- Supported devices
- -----------------
- 
-@@ -62,6 +68,8 @@ Missing devices
-    * System Wake-up Control (SWC)
-    * Shared memory (SHM)
-    * eSPI slave interface
-+   * Block-transfer interface (8XX only)
-+   * Virtual UART (8XX only)
- 
-  * Ethernet controller (GMAC)
-  * USB device (USBD)
-@@ -76,6 +84,11 @@ Missing devices
-  * Video capture
-  * Encoding compression engine
-  * Security features
-+ * I3C buses (8XX only)
-+ * Temperature sensor interface (8XX only)
-+ * Virtual UART (8XX only)
-+ * Flash monitor (8XX only)
-+ * JTAG master (8XX only)
- 
- Boot options
- ------------
+-#endif /* NPCM7XX_GCR_H */
++#endif /* NPCM_GCR_H */
 -- 
 2.48.1.362.g079036d154-goog
 

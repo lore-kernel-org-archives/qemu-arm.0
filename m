@@ -1,250 +1,152 @@
-Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp669873dlb;
-        Wed, 5 Feb 2025 17:36:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUz6B4vD8KqNcwE+0ioW5i7cUGNugQ87pANUDJr9btt2uGLArvd8KHlW7jlupRfq4Yj9bKwc5fuYLA2AA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGZUwku/LQRCyQ8EYlKOH3rdM2COwIoeFzWTIY4ogpBC6blKKq39yMf/jxWZ//iQty2nbWv
-X-Received: by 2002:a05:620a:25c6:b0:7b6:f143:44e3 with SMTP id af79cd13be357-7c039ff4f48mr705974785a.32.1738805762222;
-        Wed, 05 Feb 2025 17:36:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738805762; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1326417njb;
+        Wed, 5 Feb 2025 20:55:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXJMB/k3WMUYsEKoW3mKaKbbMl5J6rkvxjYZGM6QuMv4UKieW6wEPAUcAA4GTspL4g4SZTsSFHutl4iUw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE2ffyE3oQlNu3ho9/q8TWeSshxT1LmAp5HGx2Em+7vH1vmklwwvI0VDruE4VWJvVUon9nH
+X-Received: by 2002:a05:622a:114e:b0:467:56a2:b05c with SMTP id d75a77b69052e-47028196c37mr71759541cf.10.1738817757759;
+        Wed, 05 Feb 2025 20:55:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738817757; cv=none;
         d=google.com; s=arc-20240605;
-        b=EkO9zChJSLy4IlXMmJTXLI1wGAkdBgRVcR+Y0oGSs3PoEV8PA6frkxfR2so0UoMe8L
-         K9oenWtvrwzYwYEPTdN3EC8k8shbCG/RLSVRccR84gN/yfbi9G3nBJuXSy12zzH3qWek
-         esoXYG0qz11nVmbEG94WIAQSGh9jt02FkaftKE7qIPtkIbZfm5Xyl5tGb1yanW0jInJZ
-         xEVePfCrkBx/tVYSuRlPYB7d0qHkXqcIyQS3cIcYtbU2Ow6We1Y+dA5jWymFk50EyEhR
-         Cf1P37sNzTu3+W7/aFS6OIO88I2yJgiASmEvxQyi/tX7FN1giiyublIvRCb1+W6gg0al
-         T2TA==
+        b=Ca4HeXFWkPY6XSKZ1lO70Oh7va5yFn3C/9uERIosrM7f8AEHojjgzXHvz1ZEJBozLD
+         YUhrDQIxXiairothjlwyj3d1Ty2AXxriL3rLMXVug3QcqORNkt522/P2UUYOLn0dCVwu
+         QmneGnWuCTuaPPZ7G4SM+agIUag/qHdDva+PMf3Fr+91N0Z/kkkLbpB0c5S5H68adDxk
+         yvIsqGbCOerNXmJvNvpFEsl0IsG9sDh9GMxZ0pwDuOuLR1EDE+Kp3LwM8z34eDJw0NgP
+         neJDLp69TJ3wNrBNYuFDDwvJknW2LXEU6M8K0RPPW7l18ivVT7qyYFGGHs0laSuYQOYB
+         11og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=oBetUZa1VIuwY/hQFvT1H//eRdbda2Y81ohbyoRG5Cw=;
-        fh=ZITWRJo3u7z2sj4CP7djukVWvbVPBYYi8TcarXgkfBY=;
-        b=WZDxKFBH/qhAxwkj2KjSHs/cPxKys4mGuxCmnG3BmXwwXLRCf2M8u3ia303wz6hISq
-         g5ynxKp6ILzbsbl/wSG2LCvXZiTkARluVOxKBVM+C3arklYM74vD/gIHSj2d+LMtJb+B
-         8gOCmrC9RpHcDnyAkv/Vz/Ncztn/BT/NaM9VQLI8qaQPtKMm+xXRyX1CoK1iqIsEZL6N
-         L+81A2iGjD6/sOlFEAQdmgnWdJAED41AVsedGvLMPaVn6L5adjTyNWPRdXjWlHHN7nu2
-         ncp9yPlACNxE+uARciAQn+EimKePfDVIfRcpZyv+LBjss+AzPjQo/tHG0LI3WF71T1ZU
-         +y6w==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=XLVmGnTu9QcBFDGargltYNSyfitpcqPUI3TFnWJ4wsE=;
+        fh=PlbL4/H00Vf9zJ82piqj68Mi6JLUSQmUwuXkpJ5w2Lw=;
+        b=DYoi0emVHmKOjuHMFijFET+5orW90R2oA/yQVB+pckRjbKjWu15c5SprnsWR0fSFyz
+         6yhFItJdflnh0iye6rJEySFWLU3eqjMkmLsChEzvmLCeBedsXcmbrS+g8qgDEvJZEjJ4
+         F+xbe3rfl8y/dqJKpvG8qTFr4+UPvgnx9TyIzwEcWNo1Q5UjzH0gkPVptjltpiftqAs9
+         npqJCF5tMh9O0Z+V/BJhotZxIa4z4vkG7bzo6fxPZXda1vk0g3g/Ozze2zBs0tgO6W9z
+         uZAmqpxb45yg9MoZSZuHctWu7DBdDKDTMgkw6zEqBlL4TTuOh+Oef92mxcArZExIZXyO
+         a3wA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="v/mVq8/G";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=DMnV9E16;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041ed5a53si21634385a.535.2025.02.05.17.36.02
+        by mx.google.com with ESMTPS id d75a77b69052e-47153b91810si4155621cf.396.2025.02.05.20.55.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2025 17:36:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2025 20:55:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="v/mVq8/G";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=DMnV9E16;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfqkX-0005O3-Ad; Wed, 05 Feb 2025 20:32:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tftvV-00067I-MQ; Wed, 05 Feb 2025 23:55:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <38hCkZwgKCucfdQJXcbQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--wuhaotsh.bounces.google.com>)
- id 1tfqk1-0005Dv-2l
- for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:42 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1tftvU-00066x-6F; Wed, 05 Feb 2025 23:55:44 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <38hCkZwgKCucfdQJXcbQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--wuhaotsh.bounces.google.com>)
- id 1tfqjy-0006vY-1Z
- for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:40 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2f9ee46968cso654927a91.3
- for <qemu-devel@nongnu.org>; Wed, 05 Feb 2025 17:31:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1tftvR-0003NZ-O6; Wed, 05 Feb 2025 23:55:43 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-ab777352df4so7969466b.2; 
+ Wed, 05 Feb 2025 20:55:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1738805490; x=1739410290; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=oBetUZa1VIuwY/hQFvT1H//eRdbda2Y81ohbyoRG5Cw=;
- b=v/mVq8/GKw3HkgRGlcLyHrmkFjssL8bloYeFxGc5gpRJJLJ452b9bi42xR0mWa/uG/
- KlhfDOF2QvGY61QdtC3kuIeJLHjTI3lBsF4X8aynD2R7x1lQP/uxW9g2XxChsqlWqH3l
- 6yTt0oBbGUpJHcNQ0jm8NCbqR+WxClMpYb/P+JTIe5re+PcPz090DGmjmahXbAMlzE2A
- b4twPep5yPFms6945IeLiYH8Sn1yUAgz3TAD/Y3YU00DBBO+6JoYtIEtVZrV0NgU+m5X
- rVM2/Z0BsY3zsvMNL0mQwEaPn3Xhb1erx0ntVS2AqIgNeN2ATq6RqwthpzoRZtSpLk1d
- A7JA==
+ d=jms.id.au; s=google; t=1738817739; x=1739422539; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=XLVmGnTu9QcBFDGargltYNSyfitpcqPUI3TFnWJ4wsE=;
+ b=DMnV9E16TQzu6VP5+jHZ3VKrziyMjUoOukI5ASXdl2a5frOTrCw9LsH+yvA2Fk+OFm
+ 3NQyJJ7AnbpcXhHfP7X7xfzKSMRNlf4kKo1RQm+sdsOqo7cWpjJR4wFHGePIT2xG5OxJ
+ GMwz4TJN4QhBlL9KCzRmFjwaEv2XljNhqgBnA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738805490; x=1739410290;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oBetUZa1VIuwY/hQFvT1H//eRdbda2Y81ohbyoRG5Cw=;
- b=haayfQsftIbBU8zzM4AwaMTA6ChbHLgbYFBLQ8Ea0rWmjoETuTzvTVczxkMq18vAEv
- z/DR40Zo6k4TBVbRt24y56Wddt7VnlZmaTCOGL15tNdEoq/LoIJFJ2lHIXfsLDr+3huC
- 2ZwwdFDCSMJS4lFQsVwjdy5oKWAY8BNG8vBkz3FlhV1TX8c5WGU4yuFHzC8+kz4O47Hb
- BnqGD0i5GV0fr8CwIEJghZk9sdB1mrCXxEtcRk/ceQMi3kknkY7uzbtF7/vWh0oHRIGu
- PFjtYUBxdUntsJ1N9PCiuN447T945XK7kkLFYZvbI+agQ8eCH137QfCeka/qsBc1tdd8
- 7WGQ==
+ d=1e100.net; s=20230601; t=1738817739; x=1739422539;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XLVmGnTu9QcBFDGargltYNSyfitpcqPUI3TFnWJ4wsE=;
+ b=HhAzRY2BrH7e+XF1lTjTCAztBCt8/whfEbexsqNS0PcVZltlVC0diBbB3nBGBuVgaE
+ L3jM6VGx8m3eBl2SCbAGjw25PmYYZbF+xTUc7rSkdF9seDr0Hz1R4J2oHHyMql+szVx8
+ bCrpTxMFe5lIyhQOzBh17LaUrrNEa4jTTTBDdwrXcXxw9w7Twf05Zk0JGa4EqmtMP8C4
+ Uz5wKmsVE1RYLgD2Cclyi9Om5l/yZsdduYWtoJd+Yktyxfu21ybSD6l688nkkErZvKDo
+ eYpY++fBZXCedh5FYvr/UBRYR2grLx3O9dcfIpVkmOCNBghAP59CkZ5Rym6BvHwiQ7hb
+ oaCA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXOw7PxGgmaOCPkUwZCgjtyzC/7kzj6IL0pQmVLyJUfDZzMyi5uUaYHVCAF1i8vENfOQKYSubTzwEoL@nongnu.org
-X-Gm-Message-State: AOJu0Yw2ad0ic52li3esn0t7Qa6+hjacNJ5BYbfsq8joTGgLG8Y9T714
- qnGpfiMDUHrOuN04gEIfKPhm1551zW4EbQB2SEt4hvVH/dSTvkU+H21CYdzCcaBvHOiXOzvel+K
- XiNPup0sXrg==
-X-Received: from pfbbe14.prod.google.com
- ([2002:a05:6a00:1f0e:b0:725:936f:c305])
- (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a00:e0d:b0:725:f153:22d5 with SMTP id
- d2e1a72fcca58-730351ec08cmr8925502b3a.18.1738805490000; 
- Wed, 05 Feb 2025 17:31:30 -0800 (PST)
-Date: Wed,  5 Feb 2025 17:31:00 -0800
-In-Reply-To: <20250206013105.3228344-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20250206013105.3228344-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.48.1.362.g079036d154-goog
-Message-ID: <20250206013105.3228344-13-wuhaotsh@google.com>
-Subject: [PATCH v3 12/17] hw/misc: Add nr_regs and cold_reset_values to NPCM
- CLK
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, titusr@google.com, 
- chli30@nuvoton.corp-partner.google.com
+ AJvYcCWDAYFNLV58k5EGmJYxL9FsI6p1pQIXmfSrB8nmAJTaNEi3Hzet9kYq/LsWyRvW7vXleObtcqLLbA==@nongnu.org,
+ AJvYcCXkI/3TOJLOtj2E+oo483HgROwHlRlJTpnVJyknANCRsyERx2MKWWGMnM1ZM8DE8TUiZ/2i3ysR5ZkHtw==@nongnu.org
+X-Gm-Message-State: AOJu0YwxGdhCA5tJZdnatAZMOh4JdrujgAR2Ork5cvFzROutA6+25vGF
+ ntlPtZ2HS04zJfzsI//EgjW1f8TXhxA+q5yRukLx9WGe1oXgMEXrYtTV7pZtb+B1S3NbmV47GZO
+ FJGlkz8sQSmRB9DB8Pkn6OzQ13n0=
+X-Gm-Gg: ASbGncvapUPG7e2VLUjcFaf9/E1Q/Ph4N4cS3tfAjhAv/280tXryLGznZUYDgi0emn/
+ N+E0fN1RsF+HLKKXf2MuWrJ1ZCHLYjM3YyLKHP4ONfZeO2i0iL/kJnH9wPx9Cx3ouEU6msvNJ
+X-Received: by 2002:a17:907:3f8c:b0:ab7:b7d:62b with SMTP id
+ a640c23a62f3a-ab75e212fb0mr566031766b.6.1738817739270; Wed, 05 Feb 2025
+ 20:55:39 -0800 (PST)
+MIME-Version: 1.0
+References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
+ <20250121070424.2465942-13-jamin_lin@aspeedtech.com>
+ <cb18b72dbfce3a606a4bd7ea41732d451fbea0f1.camel@codeconstruct.com.au>
+ <SI2PR06MB50414F9067112317161AD907FCF42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <ad26f753de3648a2b238514ac7136847a2ae3a71.camel@codeconstruct.com.au>
+ <SI2PR06MB50410511510D84B854672E8CFCF72@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <64d943d2e53c70ca55b33ec7a9b103368d72acc0.camel@codeconstruct.com.au>
+In-Reply-To: <64d943d2e53c70ca55b33ec7a9b103368d72acc0.camel@codeconstruct.com.au>
+From: Joel Stanley <joel@jms.id.au>
+Date: Thu, 6 Feb 2025 15:25:27 +1030
+X-Gm-Features: AWEUYZnCHO-LLNOyeq040VPSELTy8l87Av9SDnLykQ3kVM1c_Vx7fRyp1WcgJbM
+Message-ID: <CACPK8XfaJKPObz+FuRQhP7SSxPCV+KNaeFgT+U0id6HhYQ0Fdw@mail.gmail.com>
+Subject: Re: [PATCH v1 12/18] hw/arm/aspeed_ast27x0: Support two levels of
+ INTC controllers for AST2700 A1
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, 
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=38hCkZwgKCucfdQJXcbQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.069,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yPMjmwRiTRpN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Uok2ApVIwKME
 
-These 2 values are different between NPCM7XX and NPCM8XX
-CLKs. So we add them to the class and assign different values
-to them.
+Hi Jamin,
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/misc/npcm_clk.c         | 19 +++++++++++++------
- include/hw/misc/npcm_clk.h |  9 ++++++++-
- 2 files changed, 21 insertions(+), 7 deletions(-)
+On Thu, 6 Feb 2025 at 10:09, Andrew Jeffery <andrew@codeconstruct.com.au> wrote:
+> Thanks, I'll consider this updated diagram as well while I put my own
+> together from the other pieces of info you've provided.
 
-diff --git a/hw/misc/npcm_clk.c b/hw/misc/npcm_clk.c
-index 0ecf0df3bb..9ad66ce212 100644
---- a/hw/misc/npcm_clk.c
-+++ b/hw/misc/npcm_clk.c
-@@ -81,7 +81,7 @@ enum NPCM7xxCLKRegisters {
-  * All are loaded on power-up reset. CLKENx and SWRSTR should also be loaded on
-  * core domain reset, but this reset type is not yet supported by QEMU.
-  */
--static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
-+static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
-     [NPCM7XX_CLK_CLKEN1]        = 0xffffffff,
-     [NPCM7XX_CLK_CLKSEL]        = 0x004aaaaa,
-     [NPCM7XX_CLK_CLKDIV1]       = 0x5413f855,
-@@ -728,10 +728,11 @@ static uint64_t npcm_clk_read(void *opaque, hwaddr offset, unsigned size)
- {
-     uint32_t reg = offset / sizeof(uint32_t);
-     NPCMCLKState *s = opaque;
-+    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
-     int64_t now_ns;
-     uint32_t value = 0;
- 
--    if (reg >= NPCM7XX_CLK_NR_REGS) {
-+    if (reg >= c->nr_regs) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
-                       __func__, offset);
-@@ -776,11 +777,12 @@ static void npcm_clk_write(void *opaque, hwaddr offset,
- {
-     uint32_t reg = offset / sizeof(uint32_t);
-     NPCMCLKState *s = opaque;
-+    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
-     uint32_t value = v;
- 
-     trace_npcm_clk_write(offset, value);
- 
--    if (reg >= NPCM7XX_CLK_NR_REGS) {
-+    if (reg >= c->nr_regs) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
-                       __func__, offset);
-@@ -870,10 +872,11 @@ static const struct MemoryRegionOps npcm_clk_ops = {
- static void npcm_clk_enter_reset(Object *obj, ResetType type)
- {
-     NPCMCLKState *s = NPCM_CLK(obj);
-+    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
- 
--    QEMU_BUILD_BUG_ON(sizeof(s->regs) != sizeof(cold_reset_values));
--
--    memcpy(s->regs, cold_reset_values, sizeof(cold_reset_values));
-+    g_assert(sizeof(s->regs) >= sizeof(c->cold_reset_values));
-+    g_assert(sizeof(s->regs) >= c->nr_regs * sizeof(uint32_t));
-+    memcpy(s->regs, c->cold_reset_values, sizeof(s->regs));
-     s->ref_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     npcm7xx_clk_update_all_clocks(s);
-     /*
-@@ -1045,11 +1048,14 @@ static void npcm_clk_class_init(ObjectClass *klass, void *data)
- 
- static void npcm7xx_clk_class_init(ObjectClass *klass, void *data)
- {
-+    NPCMCLKClass *c = NPCM_CLK_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END > NPCM_CLK_MAX_NR_REGS);
-     QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END != NPCM7XX_CLK_NR_REGS);
-     dc->desc = "NPCM7xx Clock Control Registers";
-+    c->nr_regs = NPCM7XX_CLK_NR_REGS;
-+    c->cold_reset_values = npcm7xx_cold_reset_values;
- }
- 
- static const TypeInfo npcm7xx_clk_pll_info = {
-@@ -1081,6 +1087,7 @@ static const TypeInfo npcm_clk_info = {
-     .parent             = TYPE_SYS_BUS_DEVICE,
-     .instance_size      = sizeof(NPCMCLKState),
-     .instance_init      = npcm_clk_init,
-+    .class_size         = sizeof(NPCMCLKClass),
-     .class_init         = npcm_clk_class_init,
-     .abstract           = true,
- };
-diff --git a/include/hw/misc/npcm_clk.h b/include/hw/misc/npcm_clk.h
-index db03b46a52..f47614ac8d 100644
---- a/include/hw/misc/npcm_clk.h
-+++ b/include/hw/misc/npcm_clk.h
-@@ -175,8 +175,15 @@ struct NPCMCLKState {
-     Clock *clkref;
- };
- 
-+typedef struct NPCMCLKClass {
-+    SysBusDeviceClass parent;
-+
-+    size_t nr_regs;
-+    const uint32_t *cold_reset_values;
-+} NPCMCLKClass;
-+
- #define TYPE_NPCM_CLK "npcm-clk"
--OBJECT_DECLARE_SIMPLE_TYPE(NPCMCLKState, NPCM_CLK)
-+OBJECT_DECLARE_TYPE(NPCMCLKState, NPCMCLKClass, NPCM_CLK)
- #define TYPE_NPCM7XX_CLK "npcm7xx-clk"
- 
- #endif /* NPCM_CLK_H */
--- 
-2.48.1.362.g079036d154-goog
+When you send the next version, please try to separate your code
+cleanups and minor renames into a different patch. It makes it easier
+to see what you're adding.
 
+Thanks,
+
+Joel

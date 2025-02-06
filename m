@@ -1,101 +1,105 @@
-Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp668316dlb;
-        Wed, 5 Feb 2025 17:32:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVipFcnk+R4F9kKbOR87lFRDtj7IvhtRQuUV5gU59L6pZFJZoiLj2OgslRYz6FQKD6X4vSJLhTYI8ZiIw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGhGWQlPJJ+gK8jVz2O4cHcZ5xGBu9uaABRkR1kjIhJBDT7S2Jy/J23C3nyMZpxeQ9f8GVL
-X-Received: by 2002:a05:6214:27eb:b0:6cb:ee08:c1e8 with SMTP id 6a1803df08f44-6e42fbd377emr76184346d6.23.1738805521146;
-        Wed, 05 Feb 2025 17:32:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738805521; cv=none;
+Received: by 2002:a05:7022:3c17:b0:97:989a:5032 with SMTP id tu23csp668521dlb;
+        Wed, 5 Feb 2025 17:32:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUoijlG23zgWm0pzRqH9VEae03O4Gcs7ufA8ar7hFQ9mGwewCMK++ZJ8fEt6JFYUZxfSRpMnoZBc/VFwA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHsfdaj0FCfdE1yQCLER9rjFLDJ/vFqT2bkaZ/XWGtzQcBEFxhSYeo4Ld1lhA2kEW8bsZMq
+X-Received: by 2002:a05:620a:4247:b0:7b6:d9d2:d279 with SMTP id af79cd13be357-7c03a02bb81mr670407085a.45.1738805549832;
+        Wed, 05 Feb 2025 17:32:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738805549; cv=none;
         d=google.com; s=arc-20240605;
-        b=V+7DG+mkyViXbd2PBAszQXjjuUL1MtZrsLKnQu+6+8YHkJ0crq9WbVoMQH2KkLvu1t
-         gNMt5sIa9BPzCmKRCeKh6ZoL5x9fGV5KfArOurGBwAuiAGHBi7ijYuRRoaiDD8u/iDH+
-         MSzFXGhgLfR4/NlyV12hfw5qcxvadn2haGKWWQQF7El+eqnYff9smHlaumsL//07Ldxo
-         KlEMuegONBDHQj4uZskARn/CO0xO1ZGqDudL3m6YZ1BEFYaOPQjsZ40FftUoYFEmhJA4
-         eapdaH8ARmwgAl40P3W7UrisHWQ0MbovVNihNS/5JNBxyZhIJNXSeuuUgJVh/pTpU9SZ
-         ZxDA==
+        b=a5m18iHjSSCvPW73dse/Q8u0NYJwY7EBVLtMCE3d15WDj9cdS3OQ0qFjpvokP02COQ
+         yll2GAlbGmIBVIE8TubTKfH4md6PvjxSyMza6FYhpLmbBmN6vqkbS8rDx7dY7IgOLmU3
+         EmCAddxRus7XBUdRsxcDKiRQ1sE5dMIUr7HQpE8BQDB68ElawvsA7fURckC7ZMqPtz3W
+         IcU68zoIzFLxGArnjRCmDiJ+SOkp0Ch+/Y0G3L4nNZcADYV1LD4ohMGBKNTxTOqOT754
+         YmOfkln+T4aMC1nuk2dbZYH2LX+PQ0G7LmrDKfdkFrIe2ocLa+0xdg5JLKw8AfvuVSd6
+         yq6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=6H53Z1uXZaAXgTmZF6LwgzkOoyjl/bBsioLhlrHPsI8=;
-        fh=zEsyXHM5341ZmEZeRygnyMNFMy/uCeaSHp0n2rhaj2c=;
-        b=J58ouKZSsnJ4zoLL5gbtvU9yEPVm6FRGqn8PXOaoAqFexprGXLAoU31UyCRC6UjwJx
-         SB0G54xdJ16LC5O7g++wt+sFHiKTVXmJssdi7lrOHzy0Ojn/n2rRD3me0ZNmeDUO733z
-         aXJ0ZUcyFr/8DGm8HRwJCma7H7zSefhBQ/cJV/0T92MM2YEbUp4DXXfMEr/CO+aPEWSn
-         nmVbzZYIzeTbjNYue9n2P/ewLHWZ+vHQ+OdMzU+5VXk+QYUiZ/of81yqdEHJxluIaxpE
-         w7MeehftYgmyQz0rPNrXQL14l5eKkuDybUY6db/BdGdOCJt/t+cHQ0kFzaUXwEUuvTjj
-         0kEw==;
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=JaVg/g6EQqS12RNL+1GUc+SLFamR9zFyvWGXWV6PDIY=;
+        fh=1FVRaZ8VTdLEbhbZFEV6yOrFJCHXjMTjGyKA4FH6bpU=;
+        b=JVXwsBf1Z88O1h9fTu/A9rMIcy2WvIEAXVX1eT1rgiZvA69MeFGDrcOHhY6bQCDIOI
+         A/DJuNa78ovi+MnBQEN5tQ8aDzG9yu6ZUn7BXp4lJaMRcRDpVy7mu1BFLkYOniHknJeS
+         2UXmxu4rlipodIriJ1B8IsTxSZ9rjtG007xNhGfNNyoDTUCpFE0PntOyGDQqRiauHwdR
+         eQcPWTS3/ptJ360sWNMxFiG6LGksL1TwueddwByk1zIKmu2zxnDjQxpM76SuP5uImTrO
+         0iP4BhYMH1Me0v7mgFREU2ncdML+p4CpQfn0KwgO5hech1O91g7pBzv89RqcaMouUcZm
+         yGrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Zk8/u6yr";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=1JmifxAt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e43ba38113si2202316d6.110.2025.02.05.17.32.01
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb637csi22527485a.354.2025.02.05.17.32.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2025 17:32:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2025 17:32:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Zk8/u6yr";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=1JmifxAt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfqk4-0005E7-S3; Wed, 05 Feb 2025 20:31:45 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tfqkR-0005KZ-IE; Wed, 05 Feb 2025 20:32:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <33xCkZwgKCNQMK70EJI76EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--wuhaotsh.bounces.google.com>)
- id 1tfqjh-0005BS-Ge
- for qemu-arm@nongnu.org; Wed, 05 Feb 2025 20:31:24 -0500
-Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
+ <37RCkZwgKCuIaYLESXWLKSSKPI.GSQUIQY-HIZIPRSRKRY.SVK@flex--wuhaotsh.bounces.google.com>)
+ id 1tfqjz-0005Da-Iy
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:40 -0500
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <33xCkZwgKCNQMK70EJI76EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--wuhaotsh.bounces.google.com>)
- id 1tfqjc-0006sW-UU
- for qemu-arm@nongnu.org; Wed, 05 Feb 2025 20:31:19 -0500
-Received: by mail-pl1-x64a.google.com with SMTP id
- d9443c01a7336-21f02d17cd0so7433375ad.0
- for <qemu-arm@nongnu.org>; Wed, 05 Feb 2025 17:31:12 -0800 (PST)
+ <37RCkZwgKCuIaYLESXWLKSSKPI.GSQUIQY-HIZIPRSRKRY.SVK@flex--wuhaotsh.bounces.google.com>)
+ id 1tfqju-0006uo-Mi
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2025 20:31:37 -0500
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-2f9fdc4dc84so699372a91.2
+ for <qemu-devel@nongnu.org>; Wed, 05 Feb 2025 17:31:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1738805471; x=1739410271; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=6H53Z1uXZaAXgTmZF6LwgzkOoyjl/bBsioLhlrHPsI8=;
- b=Zk8/u6yrSIAxdgb5wkML6uE9CxY4+wpxppCdOInhzLYps0uNv5fOrhPSYSdbAt0aay
- 0wQwqlhpg3DO+gxSwyNVK3yDBpIzJAUIj1BmRicr+NyABvwFuCXgrle6qI6DqoHqgxiQ
- JfN8PHEAuubk4HBnmyHt01+qWHuyu5QiGhPd0smA7srt4Bjt8ytrSTBJEjfFfaKils1Z
- EeUzbSJ0JA7yrnd3HcLPHi1wUsTQdG80+1fZKLWwkCNbx+Rt78d0VcZ6eB5qRKrXMoEg
- 1mc2YlzxANS8QhER3EQl9HL+bD3uqNLU6imHK6cHEO3A4KsyQrd45X19bHUUIKtPZT9B
- NaYA==
+ d=google.com; s=20230601; t=1738805485; x=1739410285; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=JaVg/g6EQqS12RNL+1GUc+SLFamR9zFyvWGXWV6PDIY=;
+ b=1JmifxAtB4UeMXDrnJpkTeVngLjZN1MXOAluJSPfkYs3u+QOsC1AUHclBCcCwMSC8z
+ BshhIn1f94sAMNbg1SGlJOGZ7Kq0qaOoqrKpwRrm7uq/GvVwE/tx/ROr5TJzBsNkIbRk
+ jbDJwzKjOGSqgoszqI32XMXzbojMBP4cZOA7j/Yw7NeNHhSLXPQS7nMnbEBiYjTMpRBT
+ qB+6IbDJWGr4qApTc1yw8dcepL6gaiKV6GwgacasBPnfTk5vbVHi4506LQSkJDahiLio
+ Zzw5ipFOr4aa0I2Yse+ImCWjICzdUSUd3JEeyP5hlflMfziMLzysZm//bf06BEY6tl66
+ VoZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738805471; x=1739410271;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6H53Z1uXZaAXgTmZF6LwgzkOoyjl/bBsioLhlrHPsI8=;
- b=C/c0OI0/Cc3sWY+aTgpqlrwENdCNOcP57JdsFJYA/susmp+qB1sqtSzcCM63OBM64r
- H5bhrXUQCKkTSQqIEdNtJ7H9ashjdguq2wIcXvFGdbHA0piUfccYouMdO2FIItv/gqrU
- HXayGWS9ix/dFLQ9yF91in6+HB8YF0Feh/PtAo/SN/exOTdS+hEhctb2y0AlSJe9Oleh
- 20xIYYaHspXNmWmJZyPAesqqaV0b0jt109U7l2k57ZZVcbvi8OFVlm4yO8ni1N5wyDZI
- w4yrpbdhO0ADuRsKfEmfM85oNxlQ2mgwSbH+nNOO/HHaZiHBiT1klPZu1ZxB9Y4V5qkT
- 3Trw==
-X-Gm-Message-State: AOJu0YxbGOwpRyC5BriAySVIIfmJ+0mATy5Nk06NH4do3zYoif1wjxOe
- comc2NK7OHrBfbP2GC0RAzTz5undSBNNEZ/ukDzPy9WnAnzJLsvZ2HPDEKFSKjVPO7v9GS/xb/f
- eQ7U6UC2e7g==
-X-Received: from pjbpl10.prod.google.com ([2002:a17:90b:268a:b0:2f8:4024:b59a])
+ d=1e100.net; s=20230601; t=1738805485; x=1739410285;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=JaVg/g6EQqS12RNL+1GUc+SLFamR9zFyvWGXWV6PDIY=;
+ b=ILJxjFRJMSuPkOIJ6b6swi1ol50VZynpuw+XY0cogmVVo1EQYVyBP0V2c6+YpAIjJ7
+ Q/vcFrD8TiBOUQkSgSM2B9nFpidR8GgQ84oMW76u/90o19wFZ7md3pIfPvhkpmk1XamV
+ 2SUqT+jIlOsmGaNt2+rnim9UbdLQMcVp/H9nfNO9QLKaWlFMXwvml32swxuaLuJ/nWNZ
+ sM2XWYSQdmc6Rdo9EeMxUz9rljlD5jnIFNGwVEGEwmvLRtl+Pl30vZm1nQPVvDkJismw
+ LyhsseZIBiNbCA/YaZuj8JkbEPGckj3ZiWRpM+S7yxXV+qOecrpmoQgGS9rkU1irFmtz
+ M6rA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXC8yu/8YHViHyHrjLERtpaojQVH0NJZITAdk+S3TzsixNVfnUaMOrYOOgikKSPgD18xRLt5hVZkNzs@nongnu.org
+X-Gm-Message-State: AOJu0YyPGuA7dDPgBOOw+wVInmVDRXOZ5UJlaeXEGZ955RJVLKero1rg
+ Umox2hCCRERDhxo6lvPkKVCn6aISwYBhHP5cGqwz/WFibwDmwQQYLleT0+b42xluzeW+2J/3YBw
+ rWYpykO3djw==
+X-Received: from pjbqc13.prod.google.com ([2002:a17:90b:288d:b0:2d8:8d32:2ea3])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:902:f786:b0:216:2abc:194f with SMTP id
- d9443c01a7336-21f17edec5cmr93802495ad.40.1738805471300; 
- Wed, 05 Feb 2025 17:31:11 -0800 (PST)
-Date: Wed,  5 Feb 2025 17:30:48 -0800
+ 2002:a17:90b:3e8e:b0:2ea:3f34:f190 with SMTP id
+ 98e67ed59e1d1-2f9e080f2f3mr7612332a91.25.1738805485301; 
+ Wed, 05 Feb 2025 17:31:25 -0800 (PST)
+Date: Wed,  5 Feb 2025 17:30:57 -0800
+In-Reply-To: <20250206013105.3228344-1-wuhaotsh@google.com>
 Mime-Version: 1.0
+References: <20250206013105.3228344-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.48.1.362.g079036d154-goog
-Message-ID: <20250206013105.3228344-1-wuhaotsh@google.com>
-Subject: [PATCH v3 00/17] hw/arm: Add NPCM8XX Support
+Message-ID: <20250206013105.3228344-10-wuhaotsh@google.com>
+Subject: [PATCH v3 09/17] hw/misc: Support 8-bytes memop in NPCM GCR module
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -103,126 +107,188 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  hskinnemoen@google.com, titusr@google.com, 
  chli30@nuvoton.corp-partner.google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
- envelope-from=33xCkZwgKCNQMK70EJI76EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x64a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=37RCkZwgKCuIaYLESXWLKSSKPI.GSQUIQY-HIZIPRSRKRY.SVK@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kcEMmS0526S8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TWGgkuGvWS7q
 
-Changes since v2:
+The NPCM8xx GCR device can be accessed with 64-bit memory operations.
+This patch supports that.
 
-1. Update doc to include npcm845-evb description
-2. Add g_assert for register size in CLK and GCR enter_reset function
-3. Fix various 8xx SoC and board file issues.
-
-Changes since v1:
-
-1. Updated vbootrom and pc-bios
-2. Split out CLK/GCR patches into refactoring and adding new features
-3. Fixed a few misc items from the patches.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
+ hw/misc/npcm_gcr.c   | 94 +++++++++++++++++++++++++++++++++-----------
+ hw/misc/trace-events |  4 +-
+ 2 files changed, 74 insertions(+), 24 deletions(-)
 
-NPCM8XX BMCs are the successors of the NPCM7XX BMCs. They feature
-quad-core ARM Cortex A35 that supports both 32 bits and 64 bits
-operations. This patch set aims to support basic functionalities
-of the NPCM7XX BMCs. The patch set includes:
-
-1. We derive most devices from the 7XX models and
-made some modifications.
-2. We have constructed a minimum vBootROM similar to the 7XX one at
-https://github.com/google/vbootrom/tree/master/npcm8xx
-and included it in the patch set.
-3.  We added a new NPCM8XX SOC and an evaluation
-board machine npcm845-evb.
-
-The OpenBMC for NPCM845 evaluation board can be found at:
-https://github.com/Nuvoton-Israel/openbmc/tree/npcm-v2.10/meta-evb/meta-evb-nuvoton/meta-evb-npcm845
-
-The patch set can boot the evaluation board image built from the source
-above to login prompt.
-
-Hao Wu (17):
-  roms: Update vbootrom to 1287b6e
-  pc-bios: Add NPCM8XX vBootrom
-  hw/ssi: Make flash size a property in NPCM7XX FIU
-  hw/misc: Rename npcm7xx_gcr to npcm_gcr
-  hw/misc: Move NPCM7XX GCR to NPCM GCR
-  hw/misc: Add nr_regs and cold_reset_values to NPCM GCR
-  hw/misc: Add support for NPCM8XX GCR
-  hw/misc: Store DRAM size in NPCM8XX GCR Module
-  hw/misc: Support 8-bytes memop in NPCM GCR module
-  hw/misc: Rename npcm7xx_clk to npcm_clk
-  hw/misc: Move NPCM7XX CLK to NPCM CLK
-  hw/misc: Add nr_regs and cold_reset_values to NPCM CLK
-  hw/misc: Support NPCM8XX CLK Module Registers
-  hw/net: Add NPCM8XX PCS Module
-  hw/arm: Add NPCM8XX SoC
-  hw/arm: Add NPCM845 Evaluation board
-  docs/system/arm: Add Description for NPCM8XX SoC
-
- MAINTAINERS                                   |   1 +
- configs/devices/aarch64-softmmu/default.mak   |   1 +
- docs/system/arm/nuvoton.rst                   |  27 +-
- hw/arm/Kconfig                                |  13 +
- hw/arm/meson.build                            |   1 +
- hw/arm/npcm7xx.c                              |   6 +
- hw/arm/npcm8xx.c                              | 804 ++++++++++++++++++
- hw/arm/npcm8xx_boards.c                       | 253 ++++++
- hw/misc/meson.build                           |   4 +-
- hw/misc/npcm7xx_gcr.c                         | 264 ------
- hw/misc/{npcm7xx_clk.c => npcm_clk.c}         | 240 ++++--
- hw/misc/npcm_gcr.c                            | 485 +++++++++++
- hw/misc/trace-events                          |  12 +-
- hw/net/meson.build                            |   1 +
- hw/net/npcm_pcs.c                             | 410 +++++++++
- hw/net/trace-events                           |   4 +-
- hw/ssi/npcm7xx_fiu.c                          |  11 +-
- include/hw/arm/npcm7xx.h                      |   8 +-
- include/hw/arm/npcm8xx.h                      | 127 +++
- include/hw/misc/{npcm7xx_clk.h => npcm_clk.h} |  43 +-
- include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} |  29 +-
- include/hw/net/npcm_pcs.h                     |  42 +
- include/hw/ssi/npcm7xx_fiu.h                  |   1 +
- pc-bios/README                                |   8 +-
- pc-bios/meson.build                           |   1 +
- pc-bios/npcm7xx_bootrom.bin                   | Bin 768 -> 768 bytes
- pc-bios/npcm8xx_bootrom.bin                   | Bin 0 -> 608 bytes
- roms/Makefile                                 |   6 +
- roms/vbootrom                                 |   2 +-
- 29 files changed, 2434 insertions(+), 370 deletions(-)
- create mode 100644 hw/arm/npcm8xx.c
- create mode 100644 hw/arm/npcm8xx_boards.c
- delete mode 100644 hw/misc/npcm7xx_gcr.c
- rename hw/misc/{npcm7xx_clk.c => npcm_clk.c} (81%)
- create mode 100644 hw/misc/npcm_gcr.c
- create mode 100644 hw/net/npcm_pcs.c
- create mode 100644 include/hw/arm/npcm8xx.h
- rename include/hw/misc/{npcm7xx_clk.h => npcm_clk.h} (83%)
- rename include/hw/misc/{npcm7xx_gcr.h => npcm_gcr.h} (76%)
- create mode 100644 include/hw/net/npcm_pcs.h
- create mode 100644 pc-bios/npcm8xx_bootrom.bin
-
+diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
+index 820b730606..654e048048 100644
+--- a/hw/misc/npcm_gcr.c
++++ b/hw/misc/npcm_gcr.c
+@@ -201,6 +201,7 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
+     uint32_t reg = offset / sizeof(uint32_t);
+     NPCMGCRState *s = opaque;
+     NPCMGCRClass *c = NPCM_GCR_GET_CLASS(s);
++    uint64_t value;
+ 
+     if (reg >= c->nr_regs) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -209,9 +210,21 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
+         return 0;
+     }
+ 
+-    trace_npcm_gcr_read(offset, s->regs[reg]);
++    switch (size) {
++    case 4:
++        value = s->regs[reg];
++        break;
++
++    case 8:
++        value = deposit64(s->regs[reg], 32, 32, s->regs[reg + 1]);
++        break;
++
++    default:
++        g_assert_not_reached();
++    }
+ 
+-    return s->regs[reg];
++    trace_npcm_gcr_read(offset, value);
++    return value;
+ }
+ 
+ static void npcm_gcr_write(void *opaque, hwaddr offset,
+@@ -231,29 +244,65 @@ static void npcm_gcr_write(void *opaque, hwaddr offset,
+         return;
+     }
+ 
+-    switch (reg) {
+-    case NPCM7XX_GCR_PDID:
+-    case NPCM7XX_GCR_PWRON:
+-    case NPCM7XX_GCR_INTSR:
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n",
+-                      __func__, offset);
+-        return;
+-
+-    case NPCM7XX_GCR_RESSR:
+-    case NPCM7XX_GCR_CP2BST:
+-        /* Write 1 to clear */
+-        value = s->regs[reg] & ~value;
++    switch (size) {
++    case 4:
++        switch (reg) {
++        case NPCM7XX_GCR_PDID:
++        case NPCM7XX_GCR_PWRON:
++        case NPCM7XX_GCR_INTSR:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n",
++                          __func__, offset);
++            return;
++
++        case NPCM7XX_GCR_RESSR:
++        case NPCM7XX_GCR_CP2BST:
++            /* Write 1 to clear */
++            value = s->regs[reg] & ~value;
++            break;
++
++        case NPCM7XX_GCR_RLOCKR1:
++        case NPCM7XX_GCR_MDLR:
++            /* Write 1 to set */
++            value |= s->regs[reg];
++            break;
++        };
++        s->regs[reg] = value;
+         break;
+ 
+-    case NPCM7XX_GCR_RLOCKR1:
+-    case NPCM7XX_GCR_MDLR:
+-        /* Write 1 to set */
+-        value |= s->regs[reg];
++    case 8:
++        s->regs[reg] = value;
++        s->regs[reg + 1] = extract64(v, 32, 32);
+         break;
+-    };
+ 
+-    s->regs[reg] = value;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static bool npcm_gcr_check_mem_op(void *opaque, hwaddr offset,
++                                  unsigned size, bool is_write,
++                                  MemTxAttrs attrs)
++{
++    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(opaque);
++
++    if (offset >= c->nr_regs * sizeof(uint32_t)) {
++        return false;
++    }
++
++    switch (size) {
++    case 4:
++        return true;
++    case 8:
++        if (offset >= NPCM8XX_GCR_SCRPAD_00 * sizeof(uint32_t) &&
++            offset < (NPCM8XX_GCR_NR_REGS - 1) * sizeof(uint32_t)) {
++            return true;
++        } else {
++            return false;
++        }
++    default:
++        return false;
++    }
+ }
+ 
+ static const struct MemoryRegionOps npcm_gcr_ops = {
+@@ -262,7 +311,8 @@ static const struct MemoryRegionOps npcm_gcr_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid      = {
+         .min_access_size        = 4,
+-        .max_access_size        = 4,
++        .max_access_size        = 8,
++        .accepts                = npcm_gcr_check_mem_op,
+         .unaligned              = false,
+     },
+ };
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 0f7204a237..f25dbd6030 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -135,8 +135,8 @@ npcm7xx_clk_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 " valu
+ npcm7xx_clk_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+ 
+ # npcm_gcr.c
+-npcm_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+-npcm_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
++npcm_gcr_read(uint64_t offset, uint64_t value) " offset: 0x%04" PRIx64 " value: 0x%08" PRIx64
++npcm_gcr_write(uint64_t offset, uint64_t value) "offset: 0x%04" PRIx64 " value: 0x%08" PRIx64
+ 
+ # npcm7xx_mft.c
+ npcm7xx_mft_read(const char *name, uint64_t offset, uint16_t value) "%s: offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
 -- 
 2.48.1.362.g079036d154-goog
 

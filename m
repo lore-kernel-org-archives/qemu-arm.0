@@ -1,204 +1,328 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1777292njb;
-        Thu, 6 Feb 2025 11:58:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWrV79x33jpsNcL/AgLi0ranL1eVgL/cecFkDYfIaQabQS/VXs6vTLnbwHL72LrbSTAGkCxiYZs2LiYSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFZRnnZ8CHjvtOTOcMRELnpQSWADguBtG2bEAb9cYgs14EcmHgeoYfb5nl/1LOvYuzE/8vA
-X-Received: by 2002:a05:622a:1356:b0:46e:2a18:939d with SMTP id d75a77b69052e-4716880caeemr3863451cf.11.1738871900707;
-        Thu, 06 Feb 2025 11:58:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738871900; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1777345njb;
+        Thu, 6 Feb 2025 11:58:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWB4JHGa9KPnFUeIQuPEwHpWcUmS6dvHRcLVFtXldcnhDeTZHoD2IjR4kDZIh00uoe4V+llVBX7d55AOg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH+0XQF2SIQEiRUtR3rP00QxJfnaL3TePSuYuGNCrcT8wn3rIgJNtofcAFwRlWrdHAn7kTA
+X-Received: by 2002:a05:6214:1d26:b0:6e1:6c94:b5c5 with SMTP id 6a1803df08f44-6e4455c554amr5338776d6.4.1738871906565;
+        Thu, 06 Feb 2025 11:58:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738871906; cv=none;
         d=google.com; s=arc-20240605;
-        b=Qclnr6rvJ5P/tFKAsWFapDobLPgFZ6KT4lka3qndmK52pZJy4psnZyITBynWMzB3dR
-         A7HDmNY1ea0GBDZbsiXIBJjnXwiB/V5cFJDF9aJI0aSOkViw7coSQITYpzwMtmNnHLFd
-         aPF9zaMoEClTQ80/plKt7V2DvLJfgclQEEzW9ms0yZ+9PCekdRdyoIozb2l7HnHdvWkD
-         Cc2WTaXzZZDWgZutfrtesRbKB7lYnH+HtQfmZsG7Z0CaepDwRjB2f3KekAD1Cgasz8bA
-         ELlTbWvy3yKIRPcKgPDClvsm5xic0meic1yy/CJcy2gcXxcoK5yUVstgIXC49JxRRcvQ
-         dDdg==
+        b=HpZXCXWBvl/+K/f7W501FwpwZ5oyn9GicUrZ4pZb3pIOZo1SkdvuPTgYn25XBPbqMh
+         iu54xi5O/WXR7RCdI6bK2tcEHbnztpfOkaoM3P8XijelNb8yGM7PJxVmrX/rdODvC9El
+         5kn/8chIOrzXqIUIbnGoRxmY72YKebjxt726M9L+V9yBFuwKQT/fNyG7uYMNad66StJ1
+         zLTyMMv2IgNUGnf3qJ8VJdq5FwSMy6tSO+wGGk5jzmpbCI4kwJwQFg/QNVuAF+nl5lLb
+         WOKX3SKGVc/1+Av8837z2IHV1eyFvEfswmm2D+GN/hQr1v7mdNvSm4qdYZVU0dHPMBgH
+         9lIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=EspsqzaZ6GlbqtXIsalcEYjHvoKmFLTIXcSUIIyZVaE=;
+        bh=1jeL6G+ehP6DAv/JMmuB8zO0ZT9W1TNZmuyontpehM8=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=dOBPHw24ikZ1xfCfuVOa2hGIK6X7jjXHLUEA+Lp4mVMrMzA9xhf+VC4vMeULG7LV7m
-         eD1Fe8LNr8XsljSZGWLL5z0Lpr3wlh7KbHbrTpj0f3XQj6PU9ztUKlYXs4HfeHQuyumf
-         O/IwEPoCeUllyXmKHRc3Tn0EclP1rN6MAVMnrWg974X1krcQ/UBtDV7KeSJgjY5hjcTM
-         OAL5+sMKkBS4UQyDVdUpyCcRL8rqG1SSSHl4AWuYAMDG+Loi/hAJ6fkT5v3VnfqHwpbi
-         2ZeIK6H7y3hwLDZcNb2MB3Xh5A0S41lg4tyb6eOY+JGhZ1raZk6OaouDMZIrJk2rL0LS
-         gA9w==;
+        b=iXETH9vSqfgooT1OUGznhL5+XZcGGLhpv6Qnl8gkmkhM+EX+Gv+U5UeGcYUVejIAq7
+         miQL6W5u6UbCHXD1eoPasXJt70zDiyFfoveHSCZaW160F2zrUDQvqx2SLtbj/SZiQCvm
+         2+njhAwlK8peamhaKAye0qCrhUF9kLxMAeDPDXfBw9wFDgATi6CVqR4DNmDzWQ5W51/L
+         qDmuRQZo2cuKLqw7eC9At0nKDzB2cO2BN+LdB5C5wSsvO97VpyDyUvFRSoH8lhsasQxO
+         4IBY3vRcK6vaMUFClyQbtiVLKbWHMUeoFHXcam+zR+jKPwJWnhCc389WoSvjOm7ud5Sk
+         eE9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3VnPnfa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YNppJS2Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153bbbf97si16615701cf.489.2025.02.06.11.58.20
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e43bac33besi16759706d6.210.2025.02.06.11.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 11:58:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Feb 2025 11:58:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3VnPnfa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YNppJS2Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tg80B-0007Cu-WD; Thu, 06 Feb 2025 14:57:32 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tg80U-0007O8-Tl; Thu, 06 Feb 2025 14:57:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tg805-00078h-IL
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 14:57:25 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1tg809-0007Bc-By
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 14:57:29 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tg803-0000Si-TY
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 14:57:25 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-21f0bc811dbso36347945ad.1
- for <qemu-arm@nongnu.org>; Thu, 06 Feb 2025 11:57:23 -0800 (PST)
+ id 1tg806-0000Tt-Bl
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2025 14:57:28 -0500
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-21f48ebaadfso12072685ad.2
+ for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 11:57:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738871842; x=1739476642; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738871845; x=1739476645; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EspsqzaZ6GlbqtXIsalcEYjHvoKmFLTIXcSUIIyZVaE=;
- b=k3VnPnfaaF6G6/BsDh7CSTWwcDQyW9HAk9Sd0+gityraDCj21GoUdauzXvrgaAi7wT
- jgSwEl3L9QYE1LSJVE8oJiVHX3P0979sO7Xd7ibRNcJNGk74duKKsXo5sfDbIK+yPAxF
- 6gEVkc2iCEQH/jwSlU0NwztaaG4+7Psj3KWPgiRGNLSJynqcHLZEFPPj2K/kUyq+tj4z
- HCSHNyWVum1QL0TOw5QtHrrqZagvG7K2Fxl/UBMYiRJveZhDNmnAfv4gN++VHHoJF/AN
- fhnSW1UcbfoOjoDvz+7iM4zoc4Uod2rrQBOoMtSP6d/ShumLXVGcJbitSAehzYSgg5SS
- TK0A==
+ bh=1jeL6G+ehP6DAv/JMmuB8zO0ZT9W1TNZmuyontpehM8=;
+ b=YNppJS2YRyvI7bSdGz4OgVDETMCDIEf2NXYk8gwwQazPgJ8MjWR4gHLC9COJP8+uT7
+ m18WYJZhLxVkoQ+C+/p9nI1yEgAtWiONDiJ35I03otu8JnR4+iDdeLkOvA9FDJJV3a/y
+ xillf8VyXrKUNBjBhKMjQ0Ii/dWoJ9vR6wGkaK2/niNWT+ft4Qnz02Ww6EqcU1gRxyI4
+ BWv0AnbCUTrVch4GN7eQOCNZh8univhukpPVblTp04XATCnxs0p+5Gj8dhtgFxMIDw1z
+ cXQMk27IgV1PLmO2/paW1IblXI3kGtxT5KQlUvMiOck3HxbdFcxQvmuYR0bIu6PCdB+u
+ zdHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738871842; x=1739476642;
+ d=1e100.net; s=20230601; t=1738871845; x=1739476645;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=EspsqzaZ6GlbqtXIsalcEYjHvoKmFLTIXcSUIIyZVaE=;
- b=I3bibjI5OJRFwkZ3JtCBkiUi0wgjC2acEHlaVjxG9H0635KEyOIAnL/gp5L5YaAIgD
- h2NuRYX4SCsfR3eQdlkcPC48uYZTOfv2/+M+CVfGBccLSU/AedHfxru9REFAU6+S4b+0
- dVD5FRp/GKrcSDKDZlQhHdaq68oJEpUxdxEcsFVJXYlt7fvxo7Uct1icyfkB29S3ydT6
- +qW2gtHFVugCEHGk/bappdzoOVxUDv2sBjVsLZ/pgMm2FWo/u7lh3dfBY9lrhnJ7QDIQ
- s6VfxO1Z5hcYI1xpOgt/YxduI41EENo5KVOGqrlYDrCDp6THrhKzrVWAUQJwo6sSxzsV
- xcBQ==
-X-Gm-Message-State: AOJu0YyII1OgPgojqRAHiB9ZP3uklBz+EnOZcfEZrrzWnVfHvwiXqvw9
- tFc48AjijevACzD+dtJk0JKdCMqzvpf64MUd8RwyZkzjgUlgBwMA7vg8QQF8h14=
-X-Gm-Gg: ASbGncspuYtN/+W8kSxigMu+rzBmnBwIUo293mBtuui4T8DtKPAkmCi9QWh2hc1T5Ju
- vSsGOhcKsXic69FWhJN6QyB5r1Np4MenV9Zyq7s+eVomQm2kgPqHxl/gG3Yrcne4G5Au03t84wB
- EW0CTIT2oEtH3ZVFLa/W1Zt7PVf6CnZLkQbsyPdRXgqX9n9H46jEbKa3dp1vkiqaTJgUoy8DwiP
- 9CY4vTBvESoNoS+mA4MX3pr45HSbp4LILygHnYwpHPrbUxzgQzjGGcQ1JyFuH/b21B5tj6Ovu9N
- rKZ9G107T5+U6BgtFE94hecs3gPI2EDv9RK96t4aO4qtqok=
-X-Received: by 2002:a62:b40c:0:b0:727:39a4:30cc with SMTP id
- d2e1a72fcca58-73042a57f94mr6945938b3a.1.1738871841782; 
- Thu, 06 Feb 2025 11:57:21 -0800 (PST)
+ bh=1jeL6G+ehP6DAv/JMmuB8zO0ZT9W1TNZmuyontpehM8=;
+ b=ePOs1AkAFtJlUu47HM9pxi7KSQAhO6RtmVgCnRCexwzfkL5bGGUJK5/ZYEWUcsmuUj
+ PcAgMq8pav+y8Fw6hxk8k7yt3XI9c3D68U7UNlDWhyxJ9F4mkVxLJgYQMkXmVIThPsxw
+ Bu4FnruQ4rt74D772ectYwiayNlQFQCReA8MfufYEpy1IefERq4sXnF9STjCq9ieVYVI
+ fHnF/zJm5MrC7EUfK486GTlB/6uTYyP+88sLILkUBL2XSIjfGBQtxSrE9KvWmaVT1bzJ
+ XPuP3R9bKsVpSeWqnC7TOfnrzmtV/A/Tl0OWhUie/TyZF8klLtbuJNMmYzqZLMql0M8c
+ df6w==
+X-Gm-Message-State: AOJu0YyJsN5hhb8vEI8C9PF5W4KWJiDA0J+6BXbx93s3K4aOy5XK2bwI
+ zy2ptpmp++cMkEMStGdRpq6R3fDghyNaOOEjWQvXrpQokuZwXzU9DzoBkJN1RvZY1qOE61Iaq+r
+ H
+X-Gm-Gg: ASbGncsmGH8naxC9KJ6hWJH+l19oZC5oIx9sPi8pateOwZagcFU0DvAuVLoETgwkMvU
+ JiWkkrK3boF+NFX4LPbvgHp1623TrnMvCP5g/4Jf4UTtdUedEdSUmyEtIpTYh3j20gBvcLU60KG
+ yn+cJzwl4KyOGKk0jQZovirS5EJoIoxy8Cqc5yly5f4kCWd+OjjMk5/RIYNSphpY374V4W2fecc
+ thYYOc14nbAKQYF5i9iuqBeWNtkzbM62yTT7nea20qduPJY1Jast5kTyOXIvQVflUG6RehqzZkp
+ wbLHjkF+RvhpoFE9YgzwjTDcVAtQWyqW3vvbqH4eRbO7BV4=
+X-Received: by 2002:a05:6a00:84c:b0:725:cfa3:bc6b with SMTP id
+ d2e1a72fcca58-7305d413212mr1174912b3a.3.1738871844884; 
+ Thu, 06 Feb 2025 11:57:24 -0800 (PST)
 Received: from stoup.. (71-212-39-66.tukw.qwest.net. [71.212.39.66])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-73048c16370sm1666993b3a.152.2025.02.06.11.57.21
+ d2e1a72fcca58-73048c16370sm1666993b3a.152.2025.02.06.11.57.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Feb 2025 11:57:21 -0800 (PST)
+ Thu, 06 Feb 2025 11:57:24 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 07/61] tcg: Split out tcg_gen_gvec_mov_var
-Date: Thu,  6 Feb 2025 11:56:21 -0800
-Message-ID: <20250206195715.2150758-8-richard.henderson@linaro.org>
+Subject: [PATCH 11/61] target/arm: Rename zarray to za_state.za
+Date: Thu,  6 Feb 2025 11:56:25 -0800
+Message-ID: <20250206195715.2150758-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250206195715.2150758-1-richard.henderson@linaro.org>
 References: <20250206195715.2150758-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D/Pno8mD53Sn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1C6lF4nfcHKB
+
+The whole ZA state will also contain ZT0.
+Make things easier in aarch64_set_svcr to zero both
+by wrapping them in a common structure.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/tcg/tcg-op-gvec-common.h |  4 ++++
- tcg/tcg-op-gvec.c                | 21 +++++++++++++++------
- 2 files changed, 19 insertions(+), 6 deletions(-)
+ target/arm/cpu.h               | 48 +++++++++++++++++++---------------
+ linux-user/aarch64/signal.c    |  4 +--
+ target/arm/cpu.c               |  4 +--
+ target/arm/helper.c            |  2 +-
+ target/arm/machine.c           |  2 +-
+ target/arm/tcg/sme_helper.c    |  6 ++---
+ target/arm/tcg/translate-sme.c |  4 +--
+ 7 files changed, 38 insertions(+), 32 deletions(-)
 
-diff --git a/include/tcg/tcg-op-gvec-common.h b/include/tcg/tcg-op-gvec-common.h
-index 6e8fccad01..cabbe957c8 100644
---- a/include/tcg/tcg-op-gvec-common.h
-+++ b/include/tcg/tcg-op-gvec-common.h
-@@ -253,6 +253,10 @@ void tcg_gen_gvec_4i(uint32_t dofs, uint32_t aofs, uint32_t bofs, uint32_t cofs,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 42c39ac6bd..938c990854 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -733,27 +733,33 @@ typedef struct CPUArchState {
  
- /* Expand a specific vector operation.  */
+     uint64_t scxtnum_el[4];
  
-+void tcg_gen_gvec_mov_var(unsigned vece, TCGv_ptr dbase, uint32_t dofs,
-+                          TCGv_ptr abase, uint32_t aofs,
-+                          uint32_t oprsz, uint32_t maxsz);
-+
- void tcg_gen_gvec_mov(unsigned vece, uint32_t dofs, uint32_t aofs,
-                       uint32_t oprsz, uint32_t maxsz);
- void tcg_gen_gvec_not(unsigned vece, uint32_t dofs, uint32_t aofs,
-diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-index 3e53e43354..5e58b1cc75 100644
---- a/tcg/tcg-op-gvec.c
-+++ b/tcg/tcg-op-gvec.c
-@@ -1741,8 +1741,9 @@ static void vec_mov2(unsigned vece, TCGv_vec a, TCGv_vec b)
-     tcg_gen_mov_vec(a, b);
- }
+-    /*
+-     * SME ZA storage -- 256 x 256 byte array, with bytes in host word order,
+-     * as we do with vfp.zregs[].  This corresponds to the architectural ZA
+-     * array, where ZA[N] is in the least-significant bytes of env->zarray[N].
+-     * When SVL is less than the architectural maximum, the accessible
+-     * storage is restricted, such that if the SVL is X bytes the guest can
+-     * see only the bottom X elements of zarray[], and only the least
+-     * significant X bytes of each element of the array. (In other words,
+-     * the observable part is always square.)
+-     *
+-     * The ZA storage can also be considered as a set of square tiles of
+-     * elements of different sizes. The mapping from tiles to the ZA array
+-     * is architecturally defined, such that for tiles of elements of esz
+-     * bytes, the Nth row (or "horizontal slice") of tile T is in
+-     * ZA[T + N * esz]. Note that this means that each tile is not contiguous
+-     * in the ZA storage, because its rows are striped through the ZA array.
+-     *
+-     * Because this is so large, keep this toward the end of the reset area,
+-     * to keep the offsets into the rest of the structure smaller.
+-     */
+-    ARMVectorReg zarray[ARM_MAX_VQ * 16];
++    struct {
++        /*
++         * SME ZA storage -- 256 x 256 byte array, with bytes in host
++         * word order, as we do with vfp.zregs[].  This corresponds to
++         * the architectural ZA array, where ZA[N] is in the least
++         * significant bytes of env->za_state.za[N].
++         *
++         * When SVL is less than the architectural maximum, the accessible
++         * storage is restricted, such that if the SVL is X bytes the guest
++         * can see only the bottom X elements of zarray[], and only the least
++         * significant X bytes of each element of the array. (In other words,
++         * the observable part is always square.)
++         *
++         * The ZA storage can also be considered as a set of square tiles of
++         * elements of different sizes. The mapping from tiles to the ZA array
++         * is architecturally defined, such that for tiles of elements of esz
++         * bytes, the Nth row (or "horizontal slice") of tile T is in
++         * ZA[T + N * esz]. Note that this means that each tile is not
++         * contiguous in the ZA storage, because its rows are striped through
++         * the ZA array.
++         *
++         * Because this is so large, keep this toward the end of the
++         * reset area, to keep the offsets into the rest of the structure
++         * smaller.
++         */
++        ARMVectorReg za[ARM_MAX_VQ * 16];
++    } za_state;
+ #endif
  
--void tcg_gen_gvec_mov(unsigned vece, uint32_t dofs, uint32_t aofs,
--                      uint32_t oprsz, uint32_t maxsz)
-+void tcg_gen_gvec_mov_var(unsigned vece, TCGv_ptr dbase, uint32_t dofs,
-+                          TCGv_ptr abase, uint32_t aofs,
-+                          uint32_t oprsz, uint32_t maxsz)
- {
-     static const GVecGen2 g = {
-         .fni8 = tcg_gen_mov_i64,
-@@ -1750,14 +1751,22 @@ void tcg_gen_gvec_mov(unsigned vece, uint32_t dofs, uint32_t aofs,
-         .fno = gen_helper_gvec_mov,
-         .prefer_i64 = TCG_TARGET_REG_BITS == 64,
-     };
--    if (dofs != aofs) {
--        tcg_gen_gvec_2(dofs, aofs, oprsz, maxsz, &g);
--    } else {
-+
-+    if (dofs == aofs && dbase == abase) {
-         check_size_align(oprsz, maxsz, dofs);
-         if (oprsz < maxsz) {
--            expand_clr(tcg_env, dofs + oprsz, maxsz - oprsz);
-+            expand_clr(dbase, dofs + oprsz, maxsz - oprsz);
+     struct CPUBreakpoint *cpu_breakpoint[16];
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index bc7a13800d..d50cab78d8 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -248,7 +248,7 @@ static void target_setup_za_record(struct target_za_context *za,
+     for (i = 0; i < vl; ++i) {
+         uint64_t *z = (void *)za + TARGET_ZA_SIG_ZAV_OFFSET(vq, i);
+         for (j = 0; j < vq * 2; ++j) {
+-            __put_user_e(env->zarray[i].d[j], z + j, le);
++            __put_user_e(env->za_state.za[i].d[j], z + j, le);
          }
-+        return;
      }
-+
-+    tcg_gen_gvec_2_var(dbase, dofs, abase, aofs, oprsz, maxsz, &g);
-+}
-+
-+void tcg_gen_gvec_mov(unsigned vece, uint32_t dofs, uint32_t aofs,
-+                      uint32_t oprsz, uint32_t maxsz)
-+{
-+    tcg_gen_gvec_mov_var(vece, tcg_env, dofs, tcg_env, aofs, oprsz, maxsz);
  }
+@@ -397,7 +397,7 @@ static bool target_restore_za_record(CPUARMState *env,
+     for (i = 0; i < vl; ++i) {
+         uint64_t *z = (void *)za + TARGET_ZA_SIG_ZAV_OFFSET(vq, i);
+         for (j = 0; j < vq * 2; ++j) {
+-            __get_user_e(env->zarray[i].d[j], z + j, le);
++            __get_user_e(env->za_state.za[i].d[j], z + j, le);
+         }
+     }
+     return true;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index ba08c05ec6..813cb45276 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1369,8 +1369,8 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+             qemu_fprintf(f, "ZA[%0*d]=", svl_lg10, i);
+             for (j = zcr_len; j >= 0; --j) {
+                 qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%c",
+-                             env->zarray[i].d[2 * j + 1],
+-                             env->zarray[i].d[2 * j],
++                             env->za_state.za[i].d[2 * j + 1],
++                             env->za_state.za[i].d[2 * j],
+                              j ? ':' : '\n');
+             }
+         }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7d95eae997..e5f06bc288 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6438,7 +6438,7 @@ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
+      * when disabled either.
+      */
+     if (change & new & R_SVCR_ZA_MASK) {
+-        memset(env->zarray, 0, sizeof(env->zarray));
++        memset(&env->za_state, 0, sizeof(env->za_state));
+     }
  
- void tcg_gen_gvec_dup_i32(unsigned vece, uint32_t dofs, uint32_t oprsz,
+     if (tcg_enabled()) {
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 978249fb71..d41da414b3 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -315,7 +315,7 @@ static const VMStateDescription vmstate_za = {
+     .minimum_version_id = 1,
+     .needed = za_needed,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_STRUCT_ARRAY(env.zarray, ARMCPU, ARM_MAX_VQ * 16, 0,
++        VMSTATE_STRUCT_ARRAY(env.za_state.za, ARMCPU, ARM_MAX_VQ * 16, 0,
+                              vmstate_vreg, ARMVectorReg),
+         VMSTATE_END_OF_LIST()
+     }
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index d4562502dd..45f6cdfcb4 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -39,12 +39,12 @@ void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
+     uint32_t i;
+ 
+     /*
+-     * Special case clearing the entire ZA space.
++     * Special case clearing the entire ZArray.
+      * This falls into the CONSTRAINED UNPREDICTABLE zeroing of any
+      * parts of the ZA storage outside of SVL.
+      */
+     if (imm == 0xff) {
+-        memset(env->zarray, 0, sizeof(env->zarray));
++        memset(env->za_state.za, 0, sizeof(env->za_state.za));
+         return;
+     }
+ 
+@@ -54,7 +54,7 @@ void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
+      */
+     for (i = 0; i < svl; i++) {
+         if (imm & (1 << (i % 8))) {
+-            memset(&env->zarray[i], 0, svl);
++            memset(&env->za_state.za[i], 0, svl);
+         }
+     }
+ }
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 51175c923e..e8b3578174 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -92,7 +92,7 @@ static TCGv_ptr get_tile_rowcol(DisasContext *s, int esz, int rs,
+     offset = tile * sizeof(ARMVectorReg);
+ 
+     /* Include the byte offset of zarray to make this relative to env. */
+-    offset += offsetof(CPUARMState, zarray);
++    offset += offsetof(CPUARMState, za_state.za);
+     tcg_gen_addi_i32(tmp, tmp, offset);
+ 
+     /* Add the byte offset to env to produce the final pointer. */
+@@ -112,7 +112,7 @@ static TCGv_ptr get_tile(DisasContext *s, int esz, int tile)
+     TCGv_ptr addr = tcg_temp_new_ptr();
+     int offset;
+ 
+-    offset = tile * sizeof(ARMVectorReg) + offsetof(CPUARMState, zarray);
++    offset = tile * sizeof(ARMVectorReg) + offsetof(CPUARMState, za_state.za);
+ 
+     tcg_gen_addi_ptr(addr, tcg_env, offset);
+     return addr;
 -- 
 2.43.0
 

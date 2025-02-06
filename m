@@ -1,175 +1,270 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1435249njb;
-        Thu, 6 Feb 2025 02:13:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUop1c9c70ZPKLX2PIk6HdX5GpFo8QWdTveR1Vj8FQaYj0RSyCAcHRnKVPBZcyQw62S36BrOJwS62zVjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQ9pNsHjXEW6qRbH2enGNKvzj+YcE71R84BOQ6ZHpX/jQu2sawHPuHsXEBCdvPpobtv8NN
-X-Received: by 2002:a05:622a:1b13:b0:467:6e87:99ea with SMTP id d75a77b69052e-470283018a0mr106196921cf.44.1738836793118;
-        Thu, 06 Feb 2025 02:13:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738836793; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1439994njb;
+        Thu, 6 Feb 2025 02:24:41 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWnFQi+fRmcg7jcxOHKeKcUy09ccx6bdyhIj/msnL40goxKkMRyPxEfbyrvyMG7B4rbNsrTps6osmjOpw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFmhSvsT0ENUt/uzdUwkugneSAhfmWDLyKmYIKih2GumVz4520PkUjjnhmdLjjEkIsNTMSq
+X-Received: by 2002:a05:620a:450e:b0:7b1:161c:ef58 with SMTP id af79cd13be357-7c039ff3865mr884852385a.28.1738837481695;
+        Thu, 06 Feb 2025 02:24:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738837481; cv=pass;
         d=google.com; s=arc-20240605;
-        b=TjiLLlRE8Jg9mcwiWOpIW8DeN0ZJhLcL6qbhdJrdJ+ySKHMVizYLKIx1sW5Qz2MaYG
-         6Pc9+vooWSLPQRCq3jNyzQufW2Rhiv42QO40WsTPrxjziC0bFZku5IyRqDcgyzcILTTu
-         OG1W7reblXmCuyRk1uWWiBWqr6IWJ9aSn6qoTb6QRPjQ5lQFABKAQGXthbGRd/fHB3fl
-         rRjExXLOLXrj/MO1Gvdn+GUbh7vVrUc07gCDHveRJukHphAXoGa+YbTU8eR4KC/1AZN7
-         C4JAsbU4VQ6t5OzYhoEdh5xBWrVmAeu5P3xJRJ6HTo8XtjbVO3jXKGNZL3FL6Zu/zWEr
-         herA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=74qmYuiEHZsoW3qpFUrxotGCmscxu7yjDuGjZCX+Wj4=;
-        fh=N902TCJRl8HMhZhm2mGvIWxznrU21hBpL+PyzSAE5MU=;
-        b=CqBYyR/J+uTLuEUmKZaN5mkEZ6XhiaMJvpwyWnEsHP+xwRQkEM3Rhxl22HywnoxPAu
-         6YfAkizkvjsAbedmAmDXOhIQMkbE71yO0zqjD9LZbwu5jGUP73ZJgJoJG19f3fJSqYPK
-         QW1CIwWBWLXySgMko3o/t2juLJ2MrXzQy0YE5MXY6PSwQc1KMAUpr9sq9DeIWcmo5yJP
-         lpKnxO0mB8tWNPKnTC60rqvPFCzye/lhCR9CMZ8knTJmkMAnUxyFAULRNXwXXv5mEALr
-         b8oruaX8LEE1Vg66Oei5AC5fcKgq/0mb/SMFlCW+sjttBkKe4RKlzfS1JkjC5D3W9hHY
-         tDPQ==;
+        b=TKN9J7ev6g/S9ll/uL4/z24B366HTKHjOufcleU+4QeYMT8LEygWDGz2YuOK8K9efK
+         bC5PsviRQnRUI+bUCIYgJ2DsZS9NIDQf/b6mVhqRViYxrb5FKj4oNtNh7sRNd/7VJybz
+         MHh7bo/LnbYRA/jmRX0KGKq0wJzciGayPsnHKUvu/XPh2pwSBgLWVWO2l6IN+I8AqGpa
+         LF+sDMLoZdBKPXPmmgIa7oROrXR/szjI33dbSmEVY2ajGUr3lp5vfWy1fnTK9G9el/Wh
+         1X64reWQyzdt2vmh2Y2cyI7ZaUz5vM+QhVsRtsUTzhYp2ELvW3OxFWj/UxFbLw6oKAZS
+         v+AA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=J1JJwh6yF/IsT6sxd11Y4Ef5wsz/K3dI/+2i6YU4egY=;
+        fh=QJW6WRegAfgGUj6xjbGcGm6MVBgZwcHmld1hbBwQWfA=;
+        b=Nu3MdVU+AeVjxqau/R02thI4UlNRbEJG7Sjxe2UBBXAMMa2jNpYKLF+x7GPt7R8mta
+         2/Oh5VM4+lt8P2h+h633jlPGnD20KklCsBaMyPI5bGjyjHZcMEP08cOYpZzk41i34ihM
+         svbR1QQQUDzVmPqWPlYqNc+0pvBv0hxMF5TWOZqqhz0czfdkKRiorA4pOMMhEpCb2L4k
+         xqg78r8WHg/4nODAlCYNdIMrTxdu7ydWlUyVRDt6M0v/vd7agy7p9IsfFWC7QatRq78I
+         VYCUZoMttUf6Fh+oHKJWbW/Z5l2M8pCWPYC7WbECjiYRPTaqBSFRyXsWxQTl0ZJncGBA
+         dG1A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FavQIoe8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153be48d1si8073711cf.647.2025.02.06.02.13.13
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HyiTQJoG;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7c041ecf27esi86762885a.479.2025.02.06.02.24.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 02:13:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Feb 2025 02:24:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FavQIoe8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tfysR-0001T3-4j; Thu, 06 Feb 2025 05:12:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfysO-0001Rl-5s
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 05:12:52 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tfysL-0002Hi-OX
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 05:12:51 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43675b1155bso7681095e9.2
- for <qemu-arm@nongnu.org>; Thu, 06 Feb 2025 02:12:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738836768; x=1739441568; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=74qmYuiEHZsoW3qpFUrxotGCmscxu7yjDuGjZCX+Wj4=;
- b=FavQIoe8K4z4kG9CRNFVQgkIPyME1YRyt6NwqjfPxDljRyG4Z5n4ZHfwDhh+oVeKJN
- +BV0GOtoDkkMRHvPsa48XWktLIJ1jnOYahks0fpRpKE9aV4OIchD07ON14+vvEHTLJr6
- cBsbDNtTsLjUkJC19BgVjXvx9ibIExG3qEwonkHazYgE3vD2x7CQEXYpyEIgFX0lQOHi
- zCcDKpD2CPkSdH6jmUMJbp71bnXU0dJhe2hGg26wY1+VKSkpnUtpEoTb354PqpiauyKT
- k/U0NUwDnvG85eljxpLTOlLgkeI3RqgcMPS8eplDNTMspud1ELurwqF0HG1zxpNqTevo
- 8egg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738836768; x=1739441568;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=74qmYuiEHZsoW3qpFUrxotGCmscxu7yjDuGjZCX+Wj4=;
- b=oI/+U+4T2FDICwJFK2TA+LVXzXRG1mSJnPuP698Ha/cb0sCvUk6KObA5sSIAkq7fs9
- SN4XsH9SojB2ZI8QQSWZwefwi5nzUmTC6D7z8KqyABRkpuz1/bUKhYHDihaqTuN5JIzF
- oGBYYLUxD1Dsn7hu1ZYv5BvNr9emsU8NbfpxCmmUBYyF8QCHiuoytsLN/Zh+5HgV1PSG
- xImJjj3IZdkcH/GXUQwpDvKHeRVuE/87+GiNxyP+GWlLs4QSS6Qn4/utcNdYCb9uVo65
- GgeUvDJRS439j62ZEYNWzt3YVfABpmyR4KYOHa8zvFWnPJxGGXrXTbfBVqfiRlOMJGNM
- /Jcw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVsjiIA25tElEn6yO9liSkQalUaPeU+35Lw23eGLlvDvu5Ms4SgDH3XV3atrFQKAO0LNjlZVKNmXw==@nongnu.org
-X-Gm-Message-State: AOJu0YwM+EIwjq/BAkz4unAsMBJU/qY0E15/sciaUSZA+dn9UQ05tLZi
- cN0Ku/Z/Xe5/3tDi2VKAHfFp/y4y/DQDI1g+VkmB/r0icpR8WnejV4zgaQU+06I=
-X-Gm-Gg: ASbGnctfV0tGtUPm/Z7QGrD6ujEsW815JE+FxEY6vSjdsP7nKoiyxTT2HQHnhBKs2GE
- 2cGU+v9YRZ3e+bZOF7GmulQ/7lQwSWrGCNWBZmLHzzYIpiwQrZGdR4GODarxVrhICXuHWsFVsgm
- dwnXaCoP1jNAkAbvnOjz/VX04TW2B5rozbAbVUvF/lANT8jVLNnZxmv/swAfRUoIInRo7uhmoiH
- zpltux8yoMx3jU4/DR1RTbYUMmXNczEIGA27v75P6UUhnSuILDvpUUZY0eMDiKVErshGaT7fqeH
- SbxA6vG5/dNywRmJRrRMuYlCMczylB2b+8cW/yWH8rMl9ULjY+k2cz3C9I8=
-X-Received: by 2002:a05:6000:a8a:b0:385:e37a:2a56 with SMTP id
- ffacd0b85a97d-38db48fec0bmr3972471f8f.52.1738836767869; 
- Thu, 06 Feb 2025 02:12:47 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dbdd1b9b3sm1336405f8f.13.2025.02.06.02.12.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Feb 2025 02:12:47 -0800 (PST)
-Message-ID: <34235ce5-9f6c-4968-a8c1-ab868389e9cf@linaro.org>
-Date: Thu, 6 Feb 2025 11:12:46 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HyiTQJoG;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-37473-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BD5C91663D5
+	for <alex.bennee@linaro.org>; Thu,  6 Feb 2025 10:24:40 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C32C522686A;
+	Thu,  6 Feb 2025 10:24:37 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HyiTQJoG"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B56822540F
+	for <kvm@vger.kernel.org>; Thu,  6 Feb 2025 10:24:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738837477; cv=none; b=Kze/XVUVhTlDmw+4E0+4Xh5j6ijowxqJyUgcBxPEMCpy4vsfeQv7UM1wRFGbs7Ks9Fbor3/afPYz0fQdi+sLBFgYH0Djl8PqrFfrRgWEjFPS4bxpLvNh2ORKvfjhoGL3MMVRixx2NkzohKoCLqL8Eie4pVwbaYnYoCKw11Z2o7g=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738837477; c=relaxed/simple;
+	bh=yKWKhFuyFgUT90mmJgqdnrEf8oTqigGVhZrZZdFE7ic=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=m5Rlub8xTzaa4kQGBf9Xxyrn1I3BZcHo96qS91t9vkIDpKNsT8lyINAUrkAbE5PMg43jP4vmMKVtPJYmzvY39Bg9TWKtNtYBfY7AkHWKoz2Qqrf8FBUz7dcvuuzyWWgXLg55bF1WzYwQlo21Q+L81R/+RgZIvnL/Ns87GXr8X90=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=HyiTQJoG; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1738837474;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=J1JJwh6yF/IsT6sxd11Y4Ef5wsz/K3dI/+2i6YU4egY=;
+	b=HyiTQJoG9BsU9+pzgYfmbb60YNQsi/xAy3FRCJpTZDkNg0kUryxLOfWII+Vi28z8BEgact
+	Sd7WVqqL4D1gJs7PcqJTolcexOCgzpr+mZ4NSwLXZ2doay1+IT//22ifYdUaKIrBjtliys
+	moHayIGomjiPj1FHgokFyTs6Qa22y0E=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-275-GwQ5mL2yOECZrkG943ojpQ-1; Thu,
+ 06 Feb 2025 05:24:30 -0500
+X-MC-Unique: GwQ5mL2yOECZrkG943ojpQ-1
+X-Mimecast-MFC-AGG-ID: GwQ5mL2yOECZrkG943ojpQ
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EE9CE1956088;
+	Thu,  6 Feb 2025 10:24:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.40])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5403830001AB;
+	Thu,  6 Feb 2025 10:24:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 27B7321E6A28; Thu, 06 Feb 2025 11:24:25 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Zhao Liu <zhao1.liu@intel.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+  Eric Blake <eblake@redhat.com>,  Michael Roth <michael.roth@amd.com>,
+  Eduardo Habkost <eduardo@habkost.net>,  Marcelo Tosatti
+ <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric Auger
+ <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Laurent
+ Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Sebastian
+ Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
+  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 3/5] i386/kvm: Support event with select & umask format
+ in KVM PMU filter
+In-Reply-To: <Z6SEIqhJEWrMWTU1@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+	"Thu, 6 Feb 2025 09:42:58 +0000")
+References: <20250122090517.294083-1-zhao1.liu@intel.com>
+	<20250122090517.294083-4-zhao1.liu@intel.com>
+	<87zfj01z8x.fsf@pond.sub.org> <Z6SG2NLxxhz4adlV@intel.com>
+	<Z6SEIqhJEWrMWTU1@redhat.com>
+Date: Thu, 06 Feb 2025 11:24:25 +0100
+Message-ID: <878qqjqskm.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/8] hw/boards: Remove all invalid uses of
- auto_create_sdcard=true
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org
-References: <20250204180746.58357-1-philmd@linaro.org>
- <20250204180746.58357-5-philmd@linaro.org> <87a5b07u1d.fsf@pond.sub.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87a5b07u1d.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uOHcsOy+oa4P
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 1W61NMUZMkY+
 
-On 5/2/25 08:03, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
->> MachineClass::auto_create_sdcard is only useful to automatically
->> create a SD card, attach a IF_SD block drive to it and plug the
->> card onto a SD bus. Only the ARM and RISCV targets use such
->> feature:
->>
->>   $ git grep -wl IF_SD hw | cut -d/ -f-2 | sort -u
->>   hw/arm
->>   hw/riscv
->>   $
->>
->> Remove all other uses.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> Impact?
-> 
-> As far as I can tell, this stops creation of the if=sd default drive
-> these machines don't actually use.  Correct?
-> 
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-Yes, since these machines don't expose a SD-bus, the drive can
-not be attached and always triggers the same error:
+> On Thu, Feb 06, 2025 at 05:54:32PM +0800, Zhao Liu wrote:
+>> On Wed, Feb 05, 2025 at 11:07:10AM +0100, Markus Armbruster wrote:
+>> > Date: Wed, 05 Feb 2025 11:07:10 +0100
+>> > From: Markus Armbruster <armbru@redhat.com>
+>> > Subject: Re: [RFC v2 3/5] i386/kvm: Support event with select & umask
+>> >  format in KVM PMU filter
+>> >=20
+>> > Zhao Liu <zhao1.liu@intel.com> writes:
+>> >=20
+>> > > The select&umask is the common way for x86 to identify the PMU event,
+>> > > so support this way as the "x86-default" format in kvm-pmu-filter
+>> > > object.
+>> >=20
+>> > So, format 'raw' lets you specify the PMU event code as a number, wher=
+as
+>> > 'x86-default' lets you specify it as select and umask, correct?
+>>=20
+>> Yes!
+>>=20
+>> > Why do we want both?
+>>=20
+>> This 2 formats are both wildly used in x86(for example, in perf tool).
+>>=20
+>> x86 documents usually specify the umask and select fields.
+>>=20
+>> But raw format could also be applied for ARM since ARM just uses a number
+>> to encode event.
 
-$ qemu-system-hppa -sd /bin/sh
-qemu-system-hppa: -sd /bin/sh: machine type does not support 
-if=sd,bus=0,unit=0
+Is it really too much to ask of the client to compute a raw value from
+umask and select values?
+
+>> > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>> >=20
+>> > [...]
+>> >=20
+>> > > diff --git a/qapi/kvm.json b/qapi/kvm.json
+>> > > index d51aeeba7cd8..93b869e3f90c 100644
+>> > > --- a/qapi/kvm.json
+>> > > +++ b/qapi/kvm.json
+>> > > @@ -27,11 +27,13 @@
+>> > >  #
+>> > >  # @raw: the encoded event code that KVM can directly consume.
+>> > >  #
+>> > > +# @x86-default: standard x86 encoding format with select and umask.
+>> >=20
+>> > Why is this named -default?
+>>=20
+>> Intel and AMD both use umask+select to encode events, but this format
+>> doesn't have a name... so I call it `default`, or what about
+>> "x86-umask-select"?
+
+Works for me.
+
+>> > > +#
+>> > >  # Since 10.0
+>> > >  ##
+>> > >  { 'enum': 'KVMPMUEventEncodeFmt',
+>> > >    'prefix': 'KVM_PMU_EVENT_FMT',
+>> > > -  'data': ['raw'] }
+>> > > +  'data': ['raw', 'x86-default'] }
+>> > >=20=20
+>> > >  ##
+>> > >  # @KVMPMURawEvent:
+>> > > @@ -46,6 +48,25 @@
+>> > >  { 'struct': 'KVMPMURawEvent',
+>> > >    'data': { 'code': 'uint64' } }
+>> > >=20=20
+>> > > +##
+>> > > +# @KVMPMUX86DefalutEvent:
+>> >=20
+>> > Default, I suppose.
+>>=20
+>> Thanks!
+>>=20
+>> > > +#
+>> > > +# x86 PMU event encoding with select and umask.
+>> > > +# raw_event =3D ((select & 0xf00UL) << 24) | \
+>> > > +#              (select) & 0xff) | \
+>> > > +#              ((umask) & 0xff) << 8)
+>> >=20
+>> > Sphinx rejects this with "Unexpected indentation."
+>> >=20
+>> > Is the formula needed here?
+>>=20
+>> I tried to explain the relationship between raw format and umask+select.
+>>=20
+>> Emm, where do you think is the right place to put the document like
+>> this?
+
+Do users need to know how to compute the raw event value from @select
+and @umask?
+
+If yes, is C code the best way?
+
+Here's another way:
+
+    bits  0..7 : bits 0..7 of @select
+    bits  8..15: @umask
+    bits 24..27: bits 8..11 of @select
+    all other bits: zero
+
+>> ...
+>>=20
+>> > > +##
+>> > > +# @KVMPMUX86DefalutEventVariant:
+>
+> Typo   s/Defalut/Default/ - repeated many times in this patch.
+>
+>> > > +#
+>> > > +# The variant of KVMPMUX86DefalutEvent with the string, rather than
+>> > > +# the numeric value.
+>> > > +#
+>> > > +# @select: x86 PMU event select field.  This field is a 12-bit
+>> > > +#     unsigned number string.
+>> > > +#
+>> > > +# @umask: x86 PMU event umask field. This field is a uint8 string.
+>> >=20
+>> > Why are these strings?  How are they parsed into numbers?
+>>=20
+>> In practice, the values associated with PMU events (code for arm, select&
+>> umask for x86) are often expressed in hexadecimal. Further, from linux
+>> perf related information (tools/perf/pmu-events/arch/*/*/*.json), x86/
+>> arm64/riscv/nds32/powerpc all prefer the hexadecimal numbers and only
+>> s390 uses decimal value.
+>>=20
+>> Therefore, it is necessary to support hexadecimal in order to honor PMU
+>> conventions.
+>
+> IMHO having a data format that matches an arbitrary external tool is not
+> a goal for QMP. It should be neutral and exclusively use the normal JSON
+> encoding, ie base-10 decimal. Yes, this means a user/client may have to
+> convert from hex to dec before sending data over QMP. This is true of
+> many areas of QMP/QEMU config though and thus normal/expected behaviour.
+
+Concur.
 

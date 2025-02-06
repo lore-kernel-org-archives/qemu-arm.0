@@ -1,205 +1,156 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1554419njb;
-        Thu, 6 Feb 2025 06:03:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCViToh0qlNNYpdjWokftGpLZu4pDpWfZZsOwgKGhxG7KvKXLffKK8zxR84D1z9GieTpOndSNWI1KeGpbA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE79/TA+oH/c6U1gxUK/nCJ1jS9EKA6wnfE+jJFE22bDDjXEtQ0ckUWFWvWNNVBzXeOfUuS
-X-Received: by 2002:a05:6512:b20:b0:543:9a5c:1906 with SMTP id 2adb3069b0e04-54405a23143mr2427750e87.17.1738850621563;
-        Thu, 06 Feb 2025 06:03:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738850621; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1562204njb;
+        Thu, 6 Feb 2025 06:13:07 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXbig8un6sCytvT4ZZqwRM2dQK3q1KDQDDAbNED6leVuOqYAmtMxI7Ld8i2yBYYjeEK4lPiOTOvsSjCmA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEL57/hsAjQppZDiLzxADCO06JIvR9R3CCOZf/2quLZU4iGM1M0920/T8qgqp7u/i3kn6h7
+X-Received: by 2002:a05:6871:8210:b0:29e:3484:ae1d with SMTP id 586e51a60fabf-2b805136281mr4862253fac.26.1738851186837;
+        Thu, 06 Feb 2025 06:13:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738851186; cv=pass;
         d=google.com; s=arc-20240605;
-        b=HgnWUetoGsdVQx4GeDVIdEbMqBmNMcP5RvrfoQxEq4vNzBrnv0EJQp8NgQcwIa6tMM
-         vWWdg05u06wzz1l980wVt+PISc4FAaFLEnTVl84kcx0ed15FnQS9dwgD93eRZ7SY4Wmg
-         wZaiyy6L3JDipdI2NZeRWAllhFTXaCVUjicSq25ePx/UdtDD9k2wqAMNNuNYtdInyEUl
-         9LwZtdqDylbVSdXvNn1Kbu6n/9rV/OaONX0UzDjHxckxbkz4j+JQX+bGaQtRzjs19nIi
-         zfbPTwCtDMTR8ulODW+0IymCehjfHI3Zkuk3AseVf/Su6GMHlwkEUauWL4er7qN+4fh6
-         fuiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=0pQiClkeR16Ty9DA00Xr8uCokwMvQ7nfhD6DeuY3mwo=;
-        fh=3C6Fl4nOBlykjkMpiDR1IJ4V/xqhWmrk9hg7t5GnhU0=;
-        b=c9oP1nPA3oAnH7X+GnIVm19bgQD+qnv28J9q3R8jcg7rJFYfIw5lhVi8omuKMBt8Ih
-         TFyKe9p00bwEfH/l4/WliN6y17DwVNur6HcMHAf5fnApzKxioPdouVLEJvh686a/ks+6
-         xAa21XsSEi8MF06FwCJKXaAydvW0I2t11yOfW9mjeI6p2EobcdOwV8GlBnyh5EF10xYK
-         n9uFxxky3HZm+8LJAdDUJcjlVLEVh7Nyro92/YLVWPYc3aCZvxZe7azKmrjHckxDHO+2
-         sWbKXonbGdoNKT1K6JooxY/moKSErUf2X7fy7xidD6YlZOSitoCmMvnRlA2vdVh4JyaD
-         HT5A==;
+        b=eLBSVRMCu6njc9yvaTUTNhKaFQvJ/mFraU2eMGrRGqC9v8EnBIccG0SJVUtZmuDB/u
+         clGBPzrsVpzutPd7LLONSONj5BRyQt2K0P8Z/Y3eJeln749X379a2GV1w/34/Dzs54Nj
+         AZBGeP5fKVXKSX6jita4vr5r9OMahV16iq7Zq8LXEVKz2mJMlYADUs7O1VThJVLQsOQn
+         qUUkVbZv9pK32kfISXyKrnBRhvnCF3AM4NYTH/62Jyr8a+dtt3J1PSJMD4REqD7Abkfh
+         gOtzwzsKBsf8TTjN0V7V1s0UIgKLV5ucBZ1fm6AxlESo5lA1KXwURw0OK3HlOVgq8asQ
+         xOYA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=YbXev9MD1M4dokUXn+5wlKeQhDVlD7FVYURbLCJYkFk=;
+        fh=5YDLLJgO7dHw3UrwgK3PqKzoqhNi0WRWyfs5b9Zwmpw=;
+        b=CJgjAoJyBSwVtjDqVM2pSY07tPdPxLNDcUFLza/cw3N7aj1udllOUdSU7u7qOjEOQC
+         B9Xynz8+Ju9AzIEnXoWr3xsuE1kIBW57ZGUlHP/9LNqW8E+r6fWkWyIicYQCgeTh/wPb
+         XfeVUWcKaXlrk/0AZoQ1/Qp8wRVJ9kMqJJkfbpimO/rccFz7qrOjMS/Csa8mIlc3VH/J
+         DgFGdUy2KO0T22xTMT5DxIZsOglM9SpFI1YqEI11Cs3sdjignCG8E7KsHf3uaTGLiJ12
+         3ofCDd7tgMlakvyCCQbt/8be6SkSnjxBBJr+rYVRG0VcZ7ZLL1dttnL6+HqLb4m2pltI
+         s1xw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LfBItjXC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=GNqtcr11;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2adb3069b0e04-544105415d5si544700e87.93.2025.02.06.06.03.41
+Return-Path: <kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 586e51a60fabf-2b82627218dsi1116057fac.218.2025.02.06.06.13.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 06:03:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Feb 2025 06:13:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LfBItjXC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=GNqtcr11;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37485-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tg2TU-0004WS-1l; Thu, 06 Feb 2025 09:03:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tg2TS-0004Vr-Ja; Thu, 06 Feb 2025 09:03:22 -0500
-Received: from mgamail.intel.com ([192.198.163.16])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tg2TP-0006xT-Og; Thu, 06 Feb 2025 09:03:22 -0500
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id DD0923A23B0
+	for <alex.bennee@linaro.org>; Thu,  6 Feb 2025 14:12:58 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6EF791C7000;
+	Thu,  6 Feb 2025 14:13:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="GNqtcr11"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 884941EA7FD
+	for <kvm@vger.kernel.org>; Thu,  6 Feb 2025 14:13:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.18
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1738851183; cv=none; b=QrUGeTBXsWxXL5Rol+bM6rtcy3xmsRTOaqmdQOxPBukxUJJjNok/zICfUk9zNgTuDl2UNHVRupL7clm4d2OBgj2U7MtFHGInmMP2GkR6lb1jsZipGOuCUuniDOOeDNBWwD/q63wBNpYT1Ft9Qy7jXybaaRq2vQ2UhAV4De9jKQ0=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1738851183; c=relaxed/simple;
+	bh=ZMq35FrhEk5mDeRr7RJiv16EUshbu3LSB2bSHyn92zU=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=n5DpncQc8m7Rjd7KqFGsEyHO+BJeb3+NFRi89XWljeDNHwzXxG7g75OHfAfRWtdYAE7NxlfoZGCkIU8qV05RAc1AbG8MpSD7V0jOo5+oit/8Hu9Xd6r/z6TyteJVD7IGNOoZn9CdmW9Br7TZvG/KMONXQTvk7zhwEBi+XteI89M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=GNqtcr11; arc=none smtp.client-ip=192.198.163.18
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738850600; x=1770386600;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=5HfmyYU47Yo8Mg89L6hc3hs2QgBq3rcWfXeIDFRabrY=;
- b=LfBItjXCcZxo8/OU7hDSCNlnf2wKIalpBwYgrWeQRhu21qyBv8wxB4XI
- iQgaejmFJYfy1kDrqNYvonOdVXxRNDnKUdJvBGedG/ow8MMWh+Bn9HMse
- KNOxYdiojnhUdXuxqKBEBfqOIeXCYwL+/QqTvW+O7gGXlC3YY8u2r/cNQ
- ejUjyWBJ6o+LQd7jT3UkjYtySvIjbmvL3gS8cvPOGbpfJtxNmousP5M1X
- gMSPKWLfq68yV/WcdISe8NpmptfcfA8H80hBDVVBl24Q5+L/BZKbNFgR2
- ycKlZlhti+9ZAv9OUjkqVG8R/gXS53a9OIDOL9lQwLk2zqsphu2V8blNQ w==;
-X-CSE-ConnectionGUID: bQYpwbjSSiqQxFn5V1MzEA==
-X-CSE-MsgGUID: PkojNNIqTAumsNBn14epMw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="27054493"
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="27054493"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2025 06:03:16 -0800
-X-CSE-ConnectionGUID: 7pf8A9zfSR2Dg+23jhjvlQ==
-X-CSE-MsgGUID: vlg2A+STQTW+U7ie6oNbtg==
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1738851182; x=1770387182;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ZMq35FrhEk5mDeRr7RJiv16EUshbu3LSB2bSHyn92zU=;
+  b=GNqtcr11CfJg7By4oLSYdkeYcHVT4SSUzd3BPD2VvjT3oQJk2iREPpIO
+   OyvLmpf20lS/Wq01SkVYYhDuxdvAImYL/TL90Q7JUJiHK+3AN3IfaHKGJ
+   D0gcnZysrDL7Uz4jf2o0w5aio/tYYfkVXj/dMSCZPNB+E35wEEyqi1Qws
+   dSg6s1LZ0Kq7myn/wX2k4UBwsdhzBI5XrDmSkfwZD0sE9tuf7KVeLPUcp
+   xiOZUSvmHfVvDWAkar/3NczBBby9E3BzSCWbU6mTiVc/eGFa0XAVdAoN6
+   1hD2y2fDm0hS3KrUFIWXNaoGX81KL2X4tR/MpeEC65yGi3WTQX3S6VZqo
+   Q==;
+X-CSE-ConnectionGUID: LZ9nkyIPQO+dtgB47RUDUA==
+X-CSE-MsgGUID: yizg1aC/T/a7S3EZJiXS6A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="38686408"
+X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; 
+   d="scan'208";a="38686408"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Feb 2025 06:13:01 -0800
+X-CSE-ConnectionGUID: dGmgrJBGSfyPuxx/edfiyg==
+X-CSE-MsgGUID: 4Ek+cwODRZqo7tx2bSyBtw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="111068581"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa010.jf.intel.com with ESMTP; 06 Feb 2025 06:03:10 -0800
-Date: Thu, 6 Feb 2025 22:22:39 +0800
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="116180151"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
+  by orviesa003.jf.intel.com with ESMTP; 06 Feb 2025 06:12:57 -0800
+Date: Thu, 6 Feb 2025 22:32:25 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-Message-ID: <Z6TFr49Cnhe1s4/5@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
+Message-ID: <Z6TH+ZyLg/6pgKId@intel.com>
 References: <20250122090517.294083-1-zhao1.liu@intel.com>
- <20250122090517.294083-4-zhao1.liu@intel.com>
- <87zfj01z8x.fsf@pond.sub.org> <Z6SG2NLxxhz4adlV@intel.com>
- <Z6SEIqhJEWrMWTU1@redhat.com> <878qqjqskm.fsf@pond.sub.org>
+ <20250122090517.294083-2-zhao1.liu@intel.com>
+ <871pwc3dyw.fsf@pond.sub.org>
+ <Z6SMxlWhHgronott@intel.com>
+ <87h657p8z0.fsf@pond.sub.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <878qqjqskm.fsf@pond.sub.org>
-Received-SPF: pass client-ip=192.198.163.16; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JGsOTlL+iukT
+In-Reply-To: <87h657p8z0.fsf@pond.sub.org>
+X-TUID: WztMiqPA8mEo
 
-> >> > > The select&umask is the common way for x86 to identify the PMU event,
-> >> > > so support this way as the "x86-default" format in kvm-pmu-filter
-> >> > > object.
-> >> > 
-> >> > So, format 'raw' lets you specify the PMU event code as a number, wheras
-> >> > 'x86-default' lets you specify it as select and umask, correct?
-> >> 
-> >> Yes!
-> >> 
-> >> > Why do we want both?
-> >> 
-> >> This 2 formats are both wildly used in x86(for example, in perf tool).
-> >> 
-> >> x86 documents usually specify the umask and select fields.
-> >> 
-> >> But raw format could also be applied for ARM since ARM just uses a number
-> >> to encode event.
+> Let's ignore how to place it for now, and focus on where we would *like*
+> to place it.
 > 
-> Is it really too much to ask of the client to compute a raw value from
-> umask and select values?
+> Is it related to anything other than ObjectType / ObjectOptions in the
+> QMP reference manual?
 
-I understand you're wondering if we can omit the select+umask format...
+Yes!
 
-In principle, having either one should work correctly... The additional
-support for the umask+select format is more user-friendly and doesn't
-introduce much complexity in the code.
-
-My own observation is that Intel's doc rarely uses the raw format
-directly, whereas AMD uses the raw format relatively more often.
-Personally, when using the perf tool, I prefer the umask+select format.
-
-Even if only the raw format is supported, users still need to be aware
-of the umask+select format because there is the third format - "masked
-entry" (which tries to mask a group of events with same select, patch 4).
-
-So I would like to keep both raw and umask+select formats if possible.
-
-...
-
-> >> > > +#
-> >> > > +# x86 PMU event encoding with select and umask.
-> >> > > +# raw_event = ((select & 0xf00UL) << 24) | \
-> >> > > +#              (select) & 0xff) | \
-> >> > > +#              ((umask) & 0xff) << 8)
-> >> > 
-> >> > Sphinx rejects this with "Unexpected indentation."
-> >> > 
-> >> > Is the formula needed here?
-> >> 
-> >> I tried to explain the relationship between raw format and umask+select.
-> >> 
-> >> Emm, where do you think is the right place to put the document like
-> >> this?
+> I guess qapi/kvm.json is for KVM-specific stuff in general, not just the
+> KVM PMU filter.  Should we have a section for accelerator-specific
+> stuff, with subsections for the various accelerators?
 > 
-> Do users need to know how to compute the raw event value from @select
-> and @umask?
+> [...]
 
-Yes, because it's also a unified calculation. AMD and Intel have
-differences in bits for supported select field, but this calculation
-(which follows from the KVM code) makes both compatible.
+If we consider the accelerator from a top-down perspective, I understand
+that we need to add accelerator.json, kvm.json, and kvm-pmu-filter.json.
 
-> If yes, is C code the best way?
-> 
-> Here's another way:
-> 
->     bits  0..7 : bits 0..7 of @select
->     bits  8..15: @umask
->     bits 24..27: bits 8..11 of @select
->     all other bits: zero
->
+The first two files are just to include subsections without any additional
+content. Is this overkill? Could we just add a single kvm-pmu-filter.json
+(I also considered this name, thinking that kvm might need to add more
+things in the future)?
 
-Thank you! This is what I want.
+Of course, I lack experience with the file organization here. If you think
+the three-level sections (accelerator.json, kvm.json, and kvm-pmu-filter.json)
+is necessary, I am happy to try this way. :-)
 
 

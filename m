@@ -1,125 +1,196 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1786362njb;
-        Thu, 6 Feb 2025 12:11:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUHyaSVUeAMN0iADBK6/giiVrgqr0o0dQzExbYtN4GaKIR5+4X5lhIvEqgWzaFn1Wah7U1mX8eWFvNKXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEl0rZQvYlYXkEF1wipTlUr2kknoWaJYL74eZ5G6luYd0pwbc8757123ZxeqhQ8uAH8+cdC
-X-Received: by 2002:a05:6122:20a3:b0:516:2833:1b8d with SMTP id 71dfb90a1353d-51f2e286edcmr695658e0c.11.1738872699303;
-        Thu, 06 Feb 2025 12:11:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738872699; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1805974njb;
+        Thu, 6 Feb 2025 12:49:31 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVlqx9bqYU5aOmTGn2u1qA0xsmh7Y+Cb+jkKAshyfO7HCcolyKVx8h6ZOYzn3VbG4u+ToehHBasQRSppw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHyVuXHqBZIkVH4/d0CczxWhp1DxvjyK/NYudy8aKLn9hZUeqPQ9FXP17Udps/2NAtk/krJ
+X-Received: by 2002:a05:620a:26a8:b0:7c0:349d:3dda with SMTP id af79cd13be357-7c047c45ebdmr115911885a.49.1738874971157;
+        Thu, 06 Feb 2025 12:49:31 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738874971; cv=pass;
         d=google.com; s=arc-20240605;
-        b=InhMkFW/w6hKsfMyyhCGkwCpXyraWs7CcogbDZP3pC+ux49zMOUyeOHCHEZSaD/B2f
-         eCcIGUVqOfCwCaRUzGd79baERoaQWhy9APq7gEqgGtmXDIQw2ICQvo+bsE1bTDzAxFap
-         mb/ELFBeuaoXMstQA2ybHhtDaawH4jVDO3zHLUhAb2Q81bZgyTZ5fPqC3+nbgpMx9bwb
-         o3P4b7JmxU+0WfrDNjVZevq3HXzmdBxMKdwgcZSlRso58N521Q7zgG09TqULHx9dkjmd
-         LKqeqwjDr/uThu4elQB0yI+qH0V5LiNq20tzhFMpVeKBsWsIIgSHTZYmcV9+FiO3ryiy
-         lFKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=RW9dlairBLOIs3sPRNxVDHm4sBeyXnrxmaF5NJOtMx5jioaPneC/x0qRbx+T6pUw34
+         qlIMcuveKvXVCxyE8d2tMkbjA0sKwkM+NEY5JX1Me1muK+S+jY11cRK1rLlCRX+7KRNo
+         Kk76KC0J0V6wV+NtMke+bBqwZ8pG0geQJF7Z7rS9XhIRB8XjW4ZxfS6uhIhlM3+yo5SG
+         +PJqvL4jaFWwOCzjZ0NWB+F92NIcb7MKugwPMYRpcGWHvSbbPnHoSFTN6M+F0jAGS6sp
+         7ngwZfmiQBfcGDadEvkE3VL5DgcRTn7gE9QHbbH6wd7aANGZrpzaSWEE5DO8PanxbB4f
+         OxiQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=rib88K3Vq9r86qb9m6rKUTkXJDCx+ZO4Ay+fuRWmhO4=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=UYrwI9hTEHLNZ3rAnCna3OaUze5xJO7wogAlUvbvJ69BNPWzfaM1i+LyA/L5abh2pf
-         m1Uazr4LJvfKhP+SplsXErv+dxz45bt0am7dpycnAQO6I+/0Xu6DroklZw94J1K9G3xh
-         oOabv3DJPd6g8JQsqNWTUlHEEv5TgGNCuErBVF6ARcADu/whj/TeZaTOdgAlgz+sxegm
-         Ug3HZh2a6ltmjpzL18zS9LvPuAbp8+d7G6Q2V0sSCsTYoZwjNMHrhA8Pv4EvZNjHCuVJ
-         TyEV6qkoHw+CRqs6Lf5w+YarfD5OWo1GyAPgBWQyJsmbEyZsKurQNLfZa52M3UbPE87u
-         c2xw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=CXJwW57LzaUDrD+4lkdFcdekX3oC8oAe8+SDZ1PTA80=;
+        fh=hbd3Oq2j9DFgu38US8ZJbuOr3iofdk/OYwlooBdjC8o=;
+        b=Hoo7lX1bUWJ55/qNjN6OBRyb4JirCjJclZ+wNoHjzExlgTkkzwE6ik02UbHpQ7T6Ob
+         pgun91Flv0UIELo29YT2nVnSedxPfCtZfIAb1h+oX4rPUXOZeuQVYQCQp8f1bYilAQyE
+         ayOzza6kYOMkTVb3v/SNtKHwZRbH0s8EUcUtohO8oKb41b+JOWJGcvseAqS9R6Y3kN7y
+         ShTA85BwUR3n8AgJ5oN0y8d/8CWg7OADJ5VWQSN3LeMdZlxDWu4VTI2hti8rz/6yqUXS
+         uU8jHhL9yMNDMoqXjLeBN4XsxTMwdnRgNaB0ImyHUPtdTNpToUsesPLzj56KU2EZGXM5
+         UNcA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iXWTIvOQ;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Wsfi5WUs;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-51f22766820si402886e0c.59.2025.02.06.12.11.39
+        by mx.google.com with ESMTPS id d75a77b69052e-47153b71b2csi17569371cf.315.2025.02.06.12.49.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 12:11:39 -0800 (PST)
+        Thu, 06 Feb 2025 12:49:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iXWTIvOQ;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Wsfi5WUs;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tg86z-0003eY-OY; Thu, 06 Feb 2025 15:04:34 -0500
+	id 1tg8oH-0001MB-Lh; Thu, 06 Feb 2025 15:49:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tg83s-00082e-Kt
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 15:01:21 -0500
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tg83j-0001Ba-D6
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 15:01:18 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id
- 98e67ed59e1d1-2f9cd9601b8so2318162a91.3
- for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 12:01:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738872060; x=1739476860; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rib88K3Vq9r86qb9m6rKUTkXJDCx+ZO4Ay+fuRWmhO4=;
- b=iXWTIvOQVQIMlnRKcFL5Y4xb8qYRLoL5I+qAOFvuXppPpneKfEVxfGsej9iVcgLjy9
- scLc1Up3KoLFduT0v8VUiDMu7TFe1ubdFw600agDTopAZpR9idPKVT6KSZOl64G55oTi
- 8zjNojbYJijju1i7cmJ1HiY+G+5cT1fooLNdYrgQv1jC9KvMAe89T5cpmbXbJwurBgBj
- CnBuDlFMoet5cg8q8u+9E4imu+7jxAIa3Nitqy3HSB+FldGOV8XKY2SPCFNdWupZX6vz
- nWB+4b8FK4XRsJKg3Ono4qbpcwDVpa1nDdRFe36vD75EezH3+Eb8TLlFnpd6RHxraQez
- +2cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738872060; x=1739476860;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=rib88K3Vq9r86qb9m6rKUTkXJDCx+ZO4Ay+fuRWmhO4=;
- b=JILrvaNrDoYd0QpfNOnW/EUYOybbsVTThHJHmd70JTKuxfdfXfw3o29wrWWs1JnHOR
- 1ntc9MbOnWGADX90Q7ePxP4hrFwmGTPB8H2GdJt+xcxzsrnidkJWPTlKIQ2t+6VkRE9o
- cOzbZHbZF7LFAHghNyctkXZOU+i8KcqtCNiS3d19jmFxdf41PwMQpM3MxlcOIFvCXrzF
- Q9yWuWiF3GIGHmvILEznXpW9JNDyF/Lm7Mw0NQnM0j74ICO2wUq/Hf+jpI64pupFXhVI
- 72kLkPfHhG1LTPBqFthRG3jpWTNvK1Vcpz30bz4m/0n/1dGnFHl1GYrJuRVhzClAkMzm
- gCqQ==
-X-Gm-Message-State: AOJu0Yw0+43sZfsFSlxielrs3fyw8giPtlXydltjX6sjmTCcvoKtNuMa
- MDHcVWsm/LwlbNUI1/7PjEaYt7H30jnf2lb1DNWEwJDUdhXxBBassTuTFEgsQip0h+KLTzSpCDQ
- c
-X-Gm-Gg: ASbGncsAyDCZWyyAuSqslKa4K/nrpwjaVKc7NGIKR97xsv3CRm4uUBWVZkJxO6RqFuM
- aVq4WfKPXMmWtc7sAfMLusXTC5nRBlzSr6kcAN+fwLuvZ+UGFHBHnCAIkErjU2ZLaLmcEhLWhZz
- ePoK1jJYdJRx15l8EtBQ8kEis4MaZ8KORxlp2POhQBy5VEqrPYTGKV/iD+bRNJxzWZz34bKqKda
- GbmgvgVmamU455EsLqEmOI1kS1Zq1sj8KcxvCoqMzL3Y4v+hPQozx/fl0pWJLpxNeyKQMLZQ9O7
- rtC99YFtcLKBPWOxSQTu73SurpyJ/i6jQGWv1laC+jvcqRk=
-X-Received: by 2002:a17:90b:3596:b0:2ee:b2e6:4276 with SMTP id
- 98e67ed59e1d1-2fa243e9aaamr497446a91.27.1738872060324; 
- Thu, 06 Feb 2025 12:01:00 -0800 (PST)
-Received: from stoup.. (71-212-39-66.tukw.qwest.net. [71.212.39.66])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2fa09b3ee24sm1808857a91.36.2025.02.06.12.00.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Feb 2025 12:01:00 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 59/61] target/arm: Implement SME2 FCLAMP, SCLAMP, UCLAMP
-Date: Thu,  6 Feb 2025 11:57:13 -0800
-Message-ID: <20250206195715.2150758-60-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250206195715.2150758-1-richard.henderson@linaro.org>
-References: <20250206195715.2150758-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tg8oF-0001LV-8Y; Thu, 06 Feb 2025 15:49:15 -0500
+Received: from mail-co1nam11on20620.outbound.protection.outlook.com
+ ([2a01:111:f403:2416::620]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tg8oC-0004Nn-Je; Thu, 06 Feb 2025 15:49:14 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QpVF4JlHPWAA7Ef3omTYTe5hahcV9aYXXSkCdTUVFmpgsP+zZ6s1wymXtxHUznkIJGWpP1RgWdgcrF8HWBz1ScF0ixxTOSnXuR7frfwOjv9QZoCtnCSOyLmz3QaRAthlWjw8YHWUhciKtx+3lQ8T2E9HCHh4O7gdV1dvL/APALOaGZaVFVtJW1YEUSN4fgG+Q6meIhJwT4hC0rUlaFli7qUP/6irZ1p2MJkuj38gh1enD/EhYz2vXu+clH5Ph+b//VEI6MmXeBLZuEGnlQIKSZx/Ae45ssZgpaF7NiXRmo/+9EXIeiB12J3csMJpBmejoZTlv99w3vwlh5AJWBQuSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CXJwW57LzaUDrD+4lkdFcdekX3oC8oAe8+SDZ1PTA80=;
+ b=PF2B5okgMqlOxjRjIfcUQ8L4EpP1lYqy+Y6mr8zAjuxSJjbuZGU5DkXeMfga/lnzqR11o2alHgrmx/gVHBKBzeTcis6B7zow92G/D33xY08qMm0bcNFfoilGLxooC/dXhbRVgpnH8vEgLPe8jwkDTmfjjRbEWvfkH6gQS7AouPNYDcwS5rx7ggVTLtvW3ehSn6H7yHhsLeBLvK8bGddX9S4O2/pGkOM/JRLKIjwEGzlQzUh1j2qD3mfhJJNwLgwZK5gDxLWPEY7bPukKtum4H+ZVNYBmOGYPKDCSg+sMJYHW4K8Ftau7/xMVxxzP+TdT+iWbvrEl6Jz5WfE6RRd9Yw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CXJwW57LzaUDrD+4lkdFcdekX3oC8oAe8+SDZ1PTA80=;
+ b=Wsfi5WUsM4mWJLj7hqbAFkvdlAksU3Vae4mletPxks+NccjmaRiMrV04IAUFFcK1ySNcs4z9oNWu0TPCQgqpiZprQguzn3cpRIJfyfuTdvzVK9tyws3rH8y8uPc5MJnRRxxsHKVfBGg1zVNSoigZok69U62p/jf4vAVKBQNKGIxkXfoHSghkyGpFIEdftiM2sKDZdz/kh46RY1RAW8cEppYhEBytMm8Y25EKHWTUgeNtaFj/pfuNDj7BDFCfxJP6iezF68dIAToV37iMUbhqCqmRZpduorFl3Pkus/S74EYPPNeZCXya7zfNHmLL8hoEB7MGw1TzjWrrpO2DMo6Z8g==
+Received: from MW4PR04CA0295.namprd04.prod.outlook.com (2603:10b6:303:89::30)
+ by PH0PR12MB7487.namprd12.prod.outlook.com (2603:10b6:510:1e9::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.10; Thu, 6 Feb
+ 2025 20:49:04 +0000
+Received: from CO1PEPF000042AC.namprd03.prod.outlook.com
+ (2603:10b6:303:89:cafe::b4) by MW4PR04CA0295.outlook.office365.com
+ (2603:10b6:303:89::30) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8398.29 via Frontend Transport; Thu,
+ 6 Feb 2025 20:49:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CO1PEPF000042AC.mail.protection.outlook.com (10.167.243.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8398.14 via Frontend Transport; Thu, 6 Feb 2025 20:49:02 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 6 Feb 2025
+ 12:48:42 -0800
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 6 Feb
+ 2025 12:48:42 -0800
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Thu, 6 Feb 2025 12:48:41 -0800
+Date: Thu, 6 Feb 2025 12:48:40 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>, Daniel
+ =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Message-ID: <Z6UgKHfGD34K3Rcs@Asurada-Nvidia>
+References: <Z6TtCLQ35UI12T77@redhat.com> <20250206174647.GA3480821@nvidia.com>
+ <Z6T3cX_fM-aeYbMI@redhat.com> <20250206175843.GI2960738@nvidia.com>
+ <13b1d8b97a314cb28b87563fa9b45299@huawei.com>
+ <20250206181306.GK2960738@nvidia.com>
+ <02a0080a4a1642d69b7f5dd4707a5b3d@huawei.com>
+ <20250206182201.GL2960738@nvidia.com>
+ <Z6Ucj/u3wt9muakb@Asurada-Nvidia>
+ <20250206203855.GM2960738@nvidia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250206203855.GM2960738@nvidia.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PEPF000042AC:EE_|PH0PR12MB7487:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3fcffaeb-d253-4ca4-6b3b-08dd46efb090
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|82310400026|1800799024|7416014|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?0Njbu7mxXEFE2IIn81MbHb3O8OCWr9SttXe5iIISWFruww3OezeptW70Bs2c?=
+ =?us-ascii?Q?k+R+GISXmh7cq4M66TF8oXHCirUidEv1+Y/DNsuczNpqXVYJJd3iO91zTNEL?=
+ =?us-ascii?Q?Z1RFTYKgcqrC/LSp6w3yuEp+8DhtQMl9XdyVeeogZVw5vNHLv7/OgtchLo5S?=
+ =?us-ascii?Q?LGbg/kNEMRHtiVX1Ma9yZaOA1xuEfnBfG/TUZzkHqibTw1Vi9mZhXLoPr/aa?=
+ =?us-ascii?Q?Vit4i3n+ZJ//JPembDsOvz7mK7EQnhin7MjmNzRbTjQ5LVocfEUVHthIeops?=
+ =?us-ascii?Q?VXlOdG5VzvwmGgHNhl8b1kMEqtxF4gx21U/ywAeZInVsMCkgg7fZZXVQiScg?=
+ =?us-ascii?Q?IkHtRz1kgoRsjtfoCiIId5FP18pxaIi5ZfKIXquk7WN99VaVxJz8vn6U6Jx1?=
+ =?us-ascii?Q?+fJ6tXq47OkGNPXQQs/SxEHgswD5FCyKUcyDqFXmyb0F/291LTcidapxP/69?=
+ =?us-ascii?Q?AhYX/EM7bNCSQiSPg5Mcptuhj91lSZikpcBuk50vcodUG+6rFmExsLmiZVvR?=
+ =?us-ascii?Q?tciqTIOKkc51qSv9aJ3FIcd22t+9og2iGI3cdhRB3dKqEnD1RQims1XiFTx+?=
+ =?us-ascii?Q?VYzvJg3oOLEtlvvxLOp+OE1ppCucJt4Zsb/eMctfDVLa+SRjpN9vim6p2nXm?=
+ =?us-ascii?Q?EyngVZS1S92b3mmT10dNg9Hpv6Tn75iMn5EPbniF6Q+oMEA1n43wBRk5DKia?=
+ =?us-ascii?Q?UcaqoFuxZ10DttFmQRIDhVh/2v2c6h5fkSM6TaRMGYjG2ks+VhXVQ/9q8Rk5?=
+ =?us-ascii?Q?TU+2O7jGNE+74qx9xTbv0oZjjq+kXaN9KctLPg/NHNqi817qpXt7GduUMd2s?=
+ =?us-ascii?Q?kZLyjSoHps6MNKUh2o2c3emDDxtphIHHop6oIWzmMb1XH1fog8qWg6sp3N0V?=
+ =?us-ascii?Q?eEGNGm0dhZ23eoVysveCZFsAKp9Maur4PWGwesdTsXjc/RHtlqH+4srZ3Nn4?=
+ =?us-ascii?Q?h3SmKqBsbVeORlNFDwt40VAtXlUTv3XNFNiKAHzxV2xJFo+qS0936GU5t6JZ?=
+ =?us-ascii?Q?VPoe9zgLe5vapZCav7l3yq4C2XiUMC1aZzuFUhoNoxTaEtiNN4Wg3OjwgHd/?=
+ =?us-ascii?Q?5WPz8y0VHBmvXANP+WgVtTi25MJJLd9bh4ORqAtLWCUA1JIXA2DOEIhkqMJx?=
+ =?us-ascii?Q?KynKQOS8TzwDL46zJrVrk1nKAxvSlCs3OT6e6+OghHu1i50mtCps9usa05fL?=
+ =?us-ascii?Q?H64bLkN1eTyl/scGoro/7Hjn/HeZ8Etb7DyljFTJE4uAsshPJYc8FvhKw0m9?=
+ =?us-ascii?Q?0flpLSetoL7yS9OHWZbrBmkyBzZdVEqwbgOwXPpxQITfaXqko7+ZYlylbrIh?=
+ =?us-ascii?Q?nXOIIFwso7HNiHV6fQR+7T4lkWnESniv1ibWucMXO9qtEbrDQCaZ0KXTNx8/?=
+ =?us-ascii?Q?eXIJWP/xBBAy8LPche9geaqgcDXpBHv+tUn8qJiopsrBo8SRN5ZMBnJFZxAS?=
+ =?us-ascii?Q?t8MHi94wXOk6h1HXvGqvUd5+nlckZfpJU5ATseL/C3BZUTmjMapq3t3QzxBA?=
+ =?us-ascii?Q?5/FFquYmukxf0T4=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(82310400026)(1800799024)(7416014)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2025 20:49:02.8923 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fcffaeb-d253-4ca4-6b3b-08dd46efb090
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042AC.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB7487
+Received-SPF: softfail client-ip=2a01:111:f403:2416::620;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,188 +205,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1ANsnOq7XFNS
+X-TUID: 909O2LAHUXb7
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-sme.h    | 15 +++++++++
- target/arm/tcg/sme_helper.c    | 52 +++++++++++++++++++++++++++++++
- target/arm/tcg/translate-sme.c | 56 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/sme.decode      | 17 +++++++++++
- 4 files changed, 140 insertions(+)
+On Thu, Feb 06, 2025 at 04:38:55PM -0400, Jason Gunthorpe wrote:
+> On Thu, Feb 06, 2025 at 12:33:19PM -0800, Nicolin Chen wrote:
+> > On Thu, Feb 06, 2025 at 02:22:01PM -0400, Jason Gunthorpe wrote:
+> > > On Thu, Feb 06, 2025 at 06:18:14PM +0000, Shameerali Kolothum Thodi wrote:
+> > > 
+> > > > > So even if you invent an iommu ID we cannot accept it as a handle to
+> > > > > create viommu in iommufd.
+> > > > 
+> > > > Creating the vIOMMU only happens when the user does a  cold/hot plug of
+> > > > a VFIO device. At that time Qemu checks whether the assigned id matches
+> > > > with whatever the kernel tell it. 
+> > > 
+> > > This is not hard up until the guest is started. If you boot a guest
+> > > without a backing viommu iommufd object then there will be some more
+> > > complexities.
+> > 
+> > Yea, I imagined that things would be complicated with hotplugs..
+> > 
+> > On one hand, I got the part that we need some fixed link forehand
+> > to ease migration/hotplugs.
+> > 
+> > On the other hand, all IOMMUFD ioctls need a VFIO device FD, which
+> > brings the immediate attention that we cannot even decide vSMMU's
+> > capabilities being reflected in its IDR/IIDR registers, without a
+> > coldplug device
+> 
+> As Daniel was saying this all has to be specifiable on the command
+> line.
+> 
+> IMHO if the vSMMU is not fully specified by the time the boot happens
+> (either explicity via command line or implicitly by querying the live
+> HW) then it qemu should fail.
 
-diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme.h
-index a4216c8f3b..6f66e84f38 100644
---- a/target/arm/tcg/helper-sme.h
-+++ b/target/arm/tcg/helper-sme.h
-@@ -293,3 +293,18 @@ DEF_HELPER_FLAGS_3(sme2_sqrshrun_sb, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(sme2_sqrshrn_dh, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(sme2_uqrshrn_dh, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(sme2_sqrshrun_dh, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sme2_sclamp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_sclamp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_sclamp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_sclamp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sme2_uclamp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_uclamp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_uclamp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sme2_uclamp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_5(sme2_fclamp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_5(sme2_fclamp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_5(sme2_fclamp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_5(sme2_bfclamp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
-index a88b602314..850d130512 100644
---- a/target/arm/tcg/sme_helper.c
-+++ b/target/arm/tcg/sme_helper.c
-@@ -1949,3 +1949,55 @@ UZP4(sme2_uzp4_d, uint64_t, )
- UZP4(sme2_uzp4_q, Int128, )
- 
- #undef UZP4
-+
-+#define ICLAMP(NAME, TYPE, H) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)  \
-+{                                                               \
-+    size_t stride = sizeof(ARMVectorReg) / sizeof(TYPE);        \
-+    size_t elements = simd_oprsz(desc) / sizeof(TYPE);          \
-+    size_t nreg = simd_data(desc);                              \
-+    TYPE *d = vd, *n = vn, *m = vm;                             \
-+    for (size_t e = 0; e < elements; e++) {                     \
-+        TYPE nn = n[H(e)], mm = m[H(e)];                        \
-+        for (size_t r = 0; r < nreg; r++) {                     \
-+            TYPE *dd = &d[r * stride + H(e)];                   \
-+            *dd = MIN(MAX(*dd, nn), mm);                        \
-+        }                                                       \
-+    }                                                           \
-+}
-+
-+ICLAMP(sme2_sclamp_b, int8_t, H1)
-+ICLAMP(sme2_sclamp_h, int16_t, H2)
-+ICLAMP(sme2_sclamp_s, int32_t, H4)
-+ICLAMP(sme2_sclamp_d, int64_t, H8)
-+
-+ICLAMP(sme2_uclamp_b, uint8_t, H1)
-+ICLAMP(sme2_uclamp_h, uint16_t, H2)
-+ICLAMP(sme2_uclamp_s, uint32_t, H4)
-+ICLAMP(sme2_uclamp_d, uint64_t, H8)
-+
-+#undef ICLAMP
-+
-+#define FCLAMP(NAME, TYPE, H) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm,                 \
-+                  float_status *fpst, uint32_t desc)            \
-+{                                                               \
-+    size_t stride = sizeof(ARMVectorReg) / sizeof(TYPE);        \
-+    size_t elements = simd_oprsz(desc) / sizeof(TYPE);          \
-+    size_t nreg = simd_data(desc);                              \
-+    TYPE *d = vd, *n = vn, *m = vm;                             \
-+    for (size_t e = 0; e < elements; e++) {                     \
-+        TYPE nn = n[H(e)], mm = m[H(e)];                        \
-+        for (size_t r = 0; r < nreg; r++) {                     \
-+            TYPE *dd = &d[r * stride + H(e)];                   \
-+            *dd = TYPE##_minnum(TYPE##_maxnum(*dd, nn, fpst), mm, fpst); \
-+        }                                                       \
-+    }                                                           \
-+}
-+
-+FCLAMP(sme2_fclamp_h, float16, H2)
-+FCLAMP(sme2_fclamp_s, float32, H4)
-+FCLAMP(sme2_fclamp_d, float64, H8)
-+FCLAMP(sme2_bfclamp, bfloat16, H2)
-+
-+#undef FCLAMP
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index c449760add..e71e3ec8e3 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -1464,3 +1464,59 @@ static gen_helper_gvec_3 * const uzp2_fns[] = {
- };
- TRANS_FEAT(UZP_2, aa64_sme2, do_zipuzp_2, a, uzp2_fns)
- 
-+static bool trans_FCLAMP(DisasContext *s, arg_zzz_en *a)
-+{
-+    static gen_helper_gvec_3_ptr * const fn[] = {
-+        gen_helper_sme2_bfclamp,
-+        gen_helper_sme2_fclamp_h,
-+        gen_helper_sme2_fclamp_s,
-+        gen_helper_sme2_fclamp_d,
-+    };
-+
-+    /* This insn uses MO_8 to encode BFloat16. */
-+    if (!(a->esz == MO_8
-+          ? dc_isar_feature(aa64_sme2_b16b16, s)
-+          : dc_isar_feature(aa64_sme2, s))) {
-+        return false;
-+    }
-+
-+    if (sme_sm_enabled_check(s)) {
-+        int svl = streaming_vec_reg_size(s);
-+        TCGv_ptr fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_A64_F16 : FPST_A64);
-+
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->zd),
-+                           vec_full_reg_offset(s, a->zn),
-+                           vec_full_reg_offset(s, a->zm),
-+                           fpst, svl, svl, a->n, fn[a->esz]);
-+    }
-+    return true;
-+}
-+
-+static bool do_clamp(DisasContext *s, arg_zzz_en *a,
-+                     gen_helper_gvec_3 * const fn[4])
-+{
-+    if (sme_sm_enabled_check(s)) {
-+        int svl = streaming_vec_reg_size(s);
-+        tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->zd),
-+                           vec_full_reg_offset(s, a->zn),
-+                           vec_full_reg_offset(s, a->zm),
-+                           svl, svl, a->n, fn[a->esz]);
-+    }
-+    return true;
-+}
-+
-+static gen_helper_gvec_3 * const sclamp_fns[] = {
-+    gen_helper_sme2_sclamp_b,
-+    gen_helper_sme2_sclamp_h,
-+    gen_helper_sme2_sclamp_s,
-+    gen_helper_sme2_sclamp_d,
-+};
-+TRANS_FEAT(SCLAMP, aa64_sme2, do_clamp, a, sclamp_fns)
-+
-+static gen_helper_gvec_3 * const uclamp_fns[] = {
-+    gen_helper_sme2_uclamp_b,
-+    gen_helper_sme2_uclamp_h,
-+    gen_helper_sme2_uclamp_s,
-+    gen_helper_sme2_uclamp_d,
-+};
-+TRANS_FEAT(UCLAMP, aa64_sme2, do_clamp, a, uclamp_fns)
-diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index bd485a26f0..9bbf89b15c 100644
---- a/target/arm/tcg/sme.decode
-+++ b/target/arm/tcg/sme.decode
-@@ -855,3 +855,20 @@ UZP_2           11000001 esz:2 1 zm:5 110100 zn:5 .... 1    \
-                 &zzz_e zd=%zd_ax2
- UZP_2           11000001 00    1 zm:5 110101 zn:5 .... 1    \
-                 &zzz_e zd=%zd_ax2 esz=4
-+
-+&zzz_en         zd zn zm esz n
-+
-+FCLAMP          11000001 esz:2 1 zm:5 110000 zn:5 .... 0    \
-+                &zzz_en zd=%zd_ax2 n=2
-+FCLAMP          11000001 esz:2 1 zm:5 110010 zn:5 ...0 0    \
-+                &zzz_en zd=%zd_ax4 n=4
-+
-+SCLAMP          11000001 esz:2 1 zm:5 110001 zn:5 .... 0    \
-+                &zzz_en zd=%zd_ax2 n=2
-+SCLAMP          11000001 esz:2 1 zm:5 110011 zn:5 ...0 0    \
-+                &zzz_en zd=%zd_ax4 n=4
-+
-+UCLAMP          11000001 esz:2 1 zm:5 110001 zn:5 .... 1    \
-+                &zzz_en zd=%zd_ax2 n=2
-+UCLAMP          11000001 esz:2 1 zm:5 110011 zn:5 ...0 1    \
-+                &zzz_en zd=%zd_ax4 n=4
--- 
-2.43.0
+Though that makes sense, that would assume we could only support
+the case where a VM has at least one cold plug device per vSMMU?
 
+Otherwise, even if we specify vSMMU to which pSMMU via a command
+line, we can't get access to the pSMMU via IOMMU_GET_HW_INFO..
+
+Thanks
+Nicolin

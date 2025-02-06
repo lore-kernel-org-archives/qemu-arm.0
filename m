@@ -1,224 +1,199 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1574400njb;
-        Thu, 6 Feb 2025 06:32:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV5PuV2JaPJXVyt+j/cJtbYnJAp9OcBgG4SjHdrZJNB4q7+kAnSaBayTKb4IoeK1D2hih12068cH7hfCA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFuDeY/+5BhrRcOWlXYzmYsqiQQGh5ROicacXp4XshV7j1L4u9BfsTMUDkHtxyN9gAmcqiA
-X-Received: by 2002:a05:6102:1629:b0:4b2:4950:16fe with SMTP id ada2fe7eead31-4ba47997ab5mr3818048137.14.1738852328110;
-        Thu, 06 Feb 2025 06:32:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738852328; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1595324njb;
+        Thu, 6 Feb 2025 07:04:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWKfIhamzEXbeEtcoEL/AB1OF2Gm5RNTrPhpIRucNTor4yyGcreygmobyZsYw9t3miAjmM5iONO8j7kdA==@linaro.org
+X-Received: by 2002:a05:600c:3152:b0:434:fe62:28c1 with SMTP id 5b1f17b1804b1-4390d43de55mr63299335e9.18.1738854262883;
+        Thu, 06 Feb 2025 07:04:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738854262; cv=none;
         d=google.com; s=arc-20240605;
-        b=cnwz99b/qsCZMom61tDY7kkeUZmMQ6+d5D2HEVE2urozkNitVAsOtit488pl7DtHx5
-         7LzRDjEsHtR3Lwc4RO+jH15/ilMxBctQMB/Z/2nUt5+T/CrdpWh1twnGyakXDdUEAB24
-         nTn7cJIp33JDaFAOpX3OvajxCytxpEFogivqh37EGsZwjKqAErQWjuIqg2HZIsDDtA/p
-         UaiE9z0Ha/Cx2HUfvubkHFIg3MLTajDf9lfhpRbb/t3dAJAlHt25UBM04K6/K/6oggXp
-         VYDFu/Nji7IS3FhD0JO8Rz7xT3fDyZLu19tyb50Ak/KzDaYpqACIlk29KjeS+nRTrsPP
-         o7bQ==
+        b=Fl7eiC+dncBIu7PqCzDbAGU9NnTu6qwdLmTa3jJjQqg5BDHpvHG45vdSr7IZYTJkPa
+         flQQ45Zdsw2F0oWQQXwkVDEiffrUltD7guqnE8RY0L6OxTOMgp5udSyQbaF4ajm0WaeS
+         MReUNZej9c3QAqjcfT7s9pkOwmbcZGW2BnXYIScuf2ptq+H+v2DALJydFqr39ICWK0A5
+         oazT5vzIRFaIh5vF1Q6V6koGZ1Q0E9/Miyq5pQqrIIw66APEI+3zr+u1gE/ghXFVxZKj
+         +PB5kUsYYcrTIxL9IQqILJmwpmqwqEDBiFeP721Nlw6jZB+2LC9ihY7hBiO5KnL3XcO0
+         Xr/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=NUn8fm+GX6XtBZaHJoDnuBMOfBEjUR6YRXk17snVc3M=;
-        fh=yWPD0YbbnW4+pviCR+H2tmsxQpcDikULoNtB9bLqxoo=;
-        b=MAX5n/wDGN7ZMT2yQkY7bpM0gvo9kbZWWRzvNGGHHKnvehvNJSwBnYcpWXZEw/lK9b
-         HGeTbWF8+hqKjP/Nd9+a0Jl+Y0Z/qz948NypAGPNa8r/uzpj+dEn3yThHrV7tHyUhqwW
-         Ns2j6zOVs5TYwdacxlZEwTBW0M3N6jUSXwsBtBU/1dYqy3ZVvimALGEBX6dLRc6BNqCd
-         tnMh3L77zG2QztatmLqLwnbY6uzgLuw4nMbL9Y7GY8NUzxPx+HOdaUo9a+Dk1YqCuvIP
-         Djiu2SWIuCEB+BafaK7bTQlyiqhjk8lekJtAEvslSL4qRbHh3S+TxHgfeAsgXIpa9+cD
-         YRDw==;
+        bh=km8wfH1YKDGjHtyfe844rEvoeDz+boWvButHiUcY8IM=;
+        fh=fBM6ftd+S8+6jwaZsp1h+f+XBDBo1OFTLEMaejnzq+Q=;
+        b=AmUp98o387vsE/98Y2melwlo+/plHXGh4p3sN7uViGtbRL1ll/+KvDL5QSiKIKxY97
+         Ha+9g1GWHvx5Poq84QYvy0xGOAtnqITXMEw6KmteI0j2uPXCwLgx1LBh282ODpafscLz
+         NP55iYcmJqDL2NyhZX/F7YOZZDvhBb9haG1waK6jnKEW8gq3T/ikcmMZNEPdK5GBsK3Y
+         aCtL1xdzwMsm3gRKRBcFzXnSkjUkyOd+BZCiYXP0cGWO6sUSdSl8CrfK9NsYUmbRYeMB
+         SJkTuQapP0CUOqUALhdadFCN7d/X8/DKkXJu1PFkNlDKlzpaOA26SaY6RJ0I14ACRbaH
+         ZrJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iEhNqEvH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4ba7765a513si208036137.26.2025.02.06.06.32.07
+       dkim=pass header.i=@linaro.org header.s=google header.b=QPjdH9Hb;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4391daac8b3sor6732625e9.2.2025.02.06.07.04.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 06:32:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 06 Feb 2025 07:04:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iEhNqEvH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tg2ut-0008JU-Co; Thu, 06 Feb 2025 09:31:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tg2up-0008Hm-Uy
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:31:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tg2uo-0000YZ-5h
- for qemu-arm@nongnu.org; Thu, 06 Feb 2025 09:31:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738852296;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NUn8fm+GX6XtBZaHJoDnuBMOfBEjUR6YRXk17snVc3M=;
- b=iEhNqEvHVac2IY7of1ngjI6Mb8AN/ZUBt0jS9fLqbENGKhjBRASoC1nWR7v79s2vPyHVgE
- 8/RdmZs5XugXeQlCk65aGMnxqqHNG+TOaOr/Wz3snBbnA+g3ZRzm/7x2dOf0dBJL6oidBD
- SFcqDXMsVqPjEpMBhfNjLrSnEeIxeUA=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-3-J6dGRMjJPf-VkBJ3ilb60Q-1; Thu,
- 06 Feb 2025 09:31:32 -0500
-X-MC-Unique: J6dGRMjJPf-VkBJ3ilb60Q-1
-X-Mimecast-MFC-AGG-ID: J6dGRMjJPf-VkBJ3ilb60Q
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 390431956086; Thu,  6 Feb 2025 14:31:25 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.33])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 19F1F19560AB; Thu,  6 Feb 2025 14:31:20 +0000 (UTC)
-Date: Thu, 6 Feb 2025 14:31:17 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Anton Johansson <anjo@rev.ng>, Jason Wang <jasowang@redhat.com>,
+       dkim=pass header.i=@linaro.org header.s=google header.b=QPjdH9Hb;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738854262; x=1739459062; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=km8wfH1YKDGjHtyfe844rEvoeDz+boWvButHiUcY8IM=;
+        b=QPjdH9HbCpgGT9DOi/NWoXW3CeCkUebyIRSGKCt0Hz9zQI5v+zVFMV2IsbhSJ4KvDB
+         4dilmn2abFb0bIjK67Rr/mxpYOsWf5MPSu+JaVd7ko04eXp/mR8/yDaCWpXl8gTo6SPQ
+         gOIYI5RRn2/6U0T/7VmylyhmFlEKDQCAbDY2MSlufYghe8SdcaI9y0FUlSL9ThXJMxbh
+         UjXEqeSM+dLVUftnIDa4oXXo8Bbp0odS/xj0kKVt88D1+6ItiDgRh8bHSmV1mgKuwCT1
+         n8Qf4NI/sEIpz0joiqnki6T/axAI+jrrnjt9/WBMKssVcbszvsm7WrjJY8t+xEO3IeZT
+         TAsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738854262; x=1739459062;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=km8wfH1YKDGjHtyfe844rEvoeDz+boWvButHiUcY8IM=;
+        b=MXpbWngTuxtTXtacG2AYyQSV9YAOQx+XATfqzX60TRcQ2fIGwlCw1wArObEheptOFf
+         v4wYpC3pPjdXHffk2jDAMObIzVFMuuk9qhSPTM46dRxwNXetExp3LlwPkvYypiOnaHIa
+         r81Ru+R6Wew5ynunwb0BC4kRk6wLkeKKMA7pe7hFzP6V6fGzCEWfQmuyQKMDcEzP2AOX
+         nys+ZX1ZSWCwDEf/6fJaMm8tPR4TtqxJ9L6X52aun2MIwegVFwPiW3WqO4dGeqYCCnwt
+         F7FjquDJyHx/orKVTks21MKSv/o/zDFiSpwEgkv+ROHUdUKec0V/FVMKB69gTmFrs5wH
+         g4wg==
+X-Forwarded-Encrypted: i=1; AJvYcCWko5v1JiQDRlR+6f3ghhsLX65gI4jkM+fW+rx0NRf0rTyY5oHclmlFUk8o5iVvLa/1Nm9W3EEjustx4Q==@linaro.org
+X-Gm-Message-State: AOJu0YwgZRkkSqyge0vpLwqoijhXo0SemyXG1zsLyH7tL7eFk4FhrHvD
+	8ZvUi2nT8nmWS2q4+RiG0iP/LH1Uz12JOVi3cBUTfuFtKvDsFYZW5hJi9EOcS8iMIw==
+X-Gm-Gg: ASbGnct9u6H5VnZ2MZCUWOVHbkq0bp28PcnwsVZRpfp37rArtwAKJ9K2vjFnPc9EaKp
+	hIw1h6VDRQeY/7mQih360UJTttBU+kRR/zeEWAuCxJRdjJpl6+nCeizp2MS1+Sd9xrH2e06JU5w
+	fvcvQqEknw7l7ilwfOM/oZ3DgZxyrqYt1DGGWg/eP9GmwtwScHtHM7lByRnzomuSYsa6SQNdNgw
+	Q8Wgn3W4EmEqHQ5cxGhAsfJkmu9ufwX/vmpu+GbNhC1U/CT4F/Y81L2Mb0Y3yFIKME6gNVepwFH
+	W1zlODfgDl1S686Kx7UeiYRhUwAAghdnw87/Cjp2o4k3NA2hBOJndBoUTTs=
+X-Google-Smtp-Source: AGHT+IHUetmvOAjyxDOEknvKxGKDD1pjI4/z+TXs5R19Q+StoQ/DaECimwilp7pdm9UPWZDsweO8ig==
+X-Received: by 2002:a5d:6d8e:0:b0:385:faf5:eba6 with SMTP id ffacd0b85a97d-38db48b42c0mr4890013f8f.1.1738854262183;
+        Thu, 06 Feb 2025 07:04:22 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dbdd368bdsm2000130f8f.33.2025.02.06.07.04.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Feb 2025 07:04:21 -0800 (PST)
+Message-ID: <3156dc3b-9553-4b5f-a934-f29ee0601887@linaro.org>
+Date: Thu, 6 Feb 2025 16:04:20 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 11/16] hw/microblaze: Support various endianness for
+ s3adsp1800 machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Anton Johansson
+ <anjo@rev.ng>, Jason Wang <jasowang@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v5 11/16] hw/microblaze: Support various endianness for
- s3adsp1800 machines
-Message-ID: <Z6THtfjL6UVhBiW7@redhat.com>
+ Markus Armbruster <armbru@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
 References: <20250206131052.30207-1-philmd@linaro.org>
- <20250206131052.30207-12-philmd@linaro.org>
- <Z6S3Mgt1G7fIjeBB@redhat.com>
+ <20250206131052.30207-12-philmd@linaro.org> <Z6S3Mgt1G7fIjeBB@redhat.com>
  <4624f149-76d0-4da5-8f13-8c015043c335@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <Z6THtfjL6UVhBiW7@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <Z6THtfjL6UVhBiW7@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <4624f149-76d0-4da5-8f13-8c015043c335@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kmj1sM/wN6Ij
+X-TUID: weSOyA5y+Dvg
 
-On Thu, Feb 06, 2025 at 02:53:58PM +0100, Philippe Mathieu-Daudé wrote:
-> Hi Daniel,
+On 6/2/25 15:31, Daniel P. Berrangé wrote:
+> On Thu, Feb 06, 2025 at 02:53:58PM +0100, Philippe Mathieu-Daudé wrote:
+>> Hi Daniel,
+>>
+>> On 6/2/25 14:20, Daniel P. Berrangé wrote:
+>>> On Thu, Feb 06, 2025 at 02:10:47PM +0100, Philippe Mathieu-Daudé wrote:
+>>>> Introduce an abstract machine parent class which defines
+>>>> the 'little_endian' property. Duplicate the current machine,
+>>>> which endian is tied to the binary endianness, to one big
+>>>> endian and a little endian machine; updating the machine
+>>>> description. Keep the current default machine for each binary.
+>>>>
+>>>> 'petalogix-s3adsp1800' machine is aliased as:
+>>>> - 'petalogix-s3adsp1800-be' on big-endian binary,
+>>>> - 'petalogix-s3adsp1800-le' on little-endian one.
+>>>
+>>> Does it makes sense to expose these as different machine types ?
+>>>
+>>> If all the HW is identical in both cases, it feels like the
+>>> endianness could just be a bool property of the machine type,
+>>> rather than a new machine type.
+>>
+>> Our test suites expect "qemu-system-foo -M bar" to work out of
+>> the box, we can not have non-default properties.
+>>
+>> (This is related to the raspberry pi discussion in
+>> https://lore.kernel.org/qemu-devel/20250204002240.97830-1-philmd@linaro.org/).
+>>
+>> My plan is to deprecate 'petalogix-s3adsp1800', so once we
+>> remove it we can merge both qemu-system-microblaze and
+>> qemu-system-microblazeel into a single binary.
+>>
+>> If you don't want to add more machines, what should be the
+>> endianness of the 'petalogix-s3adsp1800' machine in a binary
+>> with no particular endianness? Either we add for explicit
+>> endianness (fixing test suites) or we add one machine for
+>> each endianness; I fail to see other options not too
+>> confusing for our users.
 > 
-> On 6/2/25 14:20, Daniel P. Berrangé wrote:
-> > On Thu, Feb 06, 2025 at 02:10:47PM +0100, Philippe Mathieu-Daudé wrote:
-> > > Introduce an abstract machine parent class which defines
-> > > the 'little_endian' property. Duplicate the current machine,
-> > > which endian is tied to the binary endianness, to one big
-> > > endian and a little endian machine; updating the machine
-> > > description. Keep the current default machine for each binary.
-> > > 
-> > > 'petalogix-s3adsp1800' machine is aliased as:
-> > > - 'petalogix-s3adsp1800-be' on big-endian binary,
-> > > - 'petalogix-s3adsp1800-le' on little-endian one.
-> > 
-> > Does it makes sense to expose these as different machine types ?
-> > 
-> > If all the HW is identical in both cases, it feels like the
-> > endianness could just be a bool property of the machine type,
-> > rather than a new machine type.
+> We would pick an arbitrary endianness of our choosing
+> I guess. How does this work in physical machines ? Is
+> the choice of endianess a firmware setting, or a choice
+> by the vendor when manufacturing in some way ?
+
+Like MIPS*, SH4* and Xtensa*, it is a jumper on the board
+(wired to a CPU pin which is sampled once at cold reset).
+
+> Picking an arbitrary endianess is compatible with our
+> test suite, it just has the implication that we would
+> only end up testing the machine in a single endianness
+> configuration.
 > 
-> Our test suites expect "qemu-system-foo -M bar" to work out of
-> the box, we can not have non-default properties.
+> If we wanted to test both endianness options, the test
+> would need amending to know to try both values of the
+> endian property on the machine.
 > 
-> (This is related to the raspberry pi discussion in
-> https://lore.kernel.org/qemu-devel/20250204002240.97830-1-philmd@linaro.org/).
+>> This approach is the same I took to merge MIPS*, SH4* and
+>> Xtensa* machines in endianness-agnostic binaries.
 > 
-> My plan is to deprecate 'petalogix-s3adsp1800', so once we
-> remove it we can merge both qemu-system-microblaze and
-> qemu-system-microblazeel into a single binary.
+> If we have prior art like this, then remaining consistentv is
+> desirable and thus my comments are too late.
+
+My worry is about how to not break what distros currently ship.
+
 > 
-> If you don't want to add more machines, what should be the
-> endianness of the 'petalogix-s3adsp1800' machine in a binary
-> with no particular endianness? Either we add for explicit
-> endianness (fixing test suites) or we add one machine for
-> each endianness; I fail to see other options not too
-> confusing for our users.
-
-We would pick an arbitrary endianness of our choosing
-I guess. How does this work in physical machines ? Is
-the choice of endianess a firmware setting, or a choice
-by the vendor when manufacturing in some way ?
-
-Picking an arbitrary endianess is compatible with our
-test suite, it just has the implication that we would
-only end up testing the machine in a single endianness
-configuration.
-
-If we wanted to test both endianness options, the test
-would need amending to know to try both values of the
-endian property on the machine.
-
-> This approach is the same I took to merge MIPS*, SH4* and
-> Xtensa* machines in endianness-agnostic binaries.
-
-If we have prior art like this, then remaining consistentv is
-desirable and thus my comments are too late.
-
-> Also the same I'm using to merge 32/64-bit targets into the
-> same binaries.
-> Assuming we have a qemu-system-x86 binary able to run i386 and
-> x86_64 machines, what do you expect when starting '-M pc'? How
-> to not confuse users wanting to run FreeDOS in 32-bit mode?
+>> Also the same I'm using to merge 32/64-bit targets into the
+>> same binaries.
+>> Assuming we have a qemu-system-x86 binary able to run i386 and
+>> x86_64 machines, what do you expect when starting '-M pc'? How
+>> to not confuse users wanting to run FreeDOS in 32-bit mode?
+>>
+>> Again, IMO having '-M pc,mode=32' is simpler, but that breaks
+>> the test suites assumptions than machines can start with no
+>> default values (see QOM introspection tests for example).
 > 
-> Again, IMO having '-M pc,mode=32' is simpler, but that breaks
-> the test suites assumptions than machines can start with no
-> default values (see QOM introspection tests for example).
+> With x86 there's no need for mode=32. Whether the machine
+> supports 64-bit or not is a property of the CPU model
+> chosen. eg  "qemu -M pc -cpu Nehalem" would be 64-bit and
+> "qemu -M pc -cpu pentium" would be 32-bit.
+> 
+> The qemu-system-i386 binary is pretty much pointless as a
+> separate thing. Libvirt will happily use qemu-system-x86_64
+> to run 32-bit guests, by just specifying a 32-bit CPU
+> model
 
-With x86 there's no need for mode=32. Whether the machine
-supports 64-bit or not is a property of the CPU model
-chosen. eg  "qemu -M pc -cpu Nehalem" would be 64-bit and
-"qemu -M pc -cpu pentium" would be 32-bit.
+IIRC Thomas tried to convert TARGET_X86_64 to a runtime check
+but it wasn't that easy:
 
-The qemu-system-i386 binary is pretty much pointless as a
-separate thing. Libvirt will happily use qemu-system-x86_64
-to run 32-bit guests, by just specifying a 32-bit CPU
-model
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+https://lore.kernel.org/qemu-devel/20230425133851.489283-1-thuth@redhat.com/

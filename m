@@ -1,195 +1,182 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1622985njb;
-        Thu, 6 Feb 2025 07:41:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVnMTlKpKDGHDVnwFn+n6qx3cFdq6896oBulkMjU+tkDPml/jId9Fs0g+jBgvK1oV8YAnPIS4bPSZPNVA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFyweg3wxaWEx8ssC++XnuWj0o1fE1TJjUA0EX5/Z+QLUf3O6lKrbUhyZ+5vLOyEnWKl13J
-X-Received: by 2002:a05:6214:4108:b0:6e4:4331:aad2 with SMTP id 6a1803df08f44-6e44331adbcmr1328186d6.9.1738856518030;
-        Thu, 06 Feb 2025 07:41:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738856518; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1524196njb;
+        Thu, 6 Feb 2025 05:12:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNEexIbG1yK9CHkZdWPfpNj8innfm58gXwN8fYdVGmus8RiwfOXow4vYQoH7oKFdsPRFO+7CgBb6bkRg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHty1r+TPUocqjhQBDwCxB3o1R+KLfaeENJ9fsV67zPKGlvz4+HgaHlk3xZk/e7A4d8ZV3i
+X-Received: by 2002:ad4:5cc7:0:b0:6e4:3eb1:2bde with SMTP id 6a1803df08f44-6e43eb12de9mr18080516d6.19.1738847550294;
+        Thu, 06 Feb 2025 05:12:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738847550; cv=none;
         d=google.com; s=arc-20240605;
-        b=W8Dmr6M+6GvC4ITK6Nqd7fU3Z4tzMh1ulI0DMVCyT4IbSyaq4EawAM929J5xPKD65u
-         9diPv1HZ6Lq3OZZVGRQ8ksF6iOLdl0MTTReRimrqXwVJBU6uq5lFBued3LmNI09tbD5K
-         X8wpoP5pWbfVz2mbHp/PysevzKQGt1fqpdgLuCE7bZQRF8oJkDM4Hy+FJ2/RuRte1BjN
-         /O9IrkjkMVUr4kIclncHyB5+O3cJVtOHTMe5+pxI4+d+xWsw/sWkGHUkfUhUASnoRBfE
-         4epnBE6Jeu55OjAYOyZFIoLPcdohxfbL6dM9SeA6tBE3oLTFAA6x7x8duTdo82d0mjHp
-         O5kw==
+        b=bumTIaG4rcQZ1wnaPQPk4TF2E+p2+q3M1REgbd4md1SwtWkIWs4Pk6eEK1HVCZ8vgv
+         E5xKGS9Nq3qfismgKlABbqgkAYcyzNkwmlYqca3KZttW7P0IbluPtImL7irSZa1Lw+n5
+         RT8UBQ0BuYX941SZS9ypGWtaTuRR73NXSXkrGHQFJkIdcDAm05Ew2U6ASbaeFIrr0cfN
+         fJ+B0a9IKmB69E6/XonscnA/dko1OrMHTkFx474ILBQzGmGYwbIiOkqRUJnwA+cAAZHO
+         +/RlUf7rmP1rQKXheAn4DGJmg7kQENOJR6wMtWh6cYG1aKEOJTzZ7sbzAR0x6fx/+AVL
+         vhXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
-        fh=kW31jPbf29cCNxSafIiHxrBiAlQUT+IT2FkBJdYRBho=;
-        b=ArZBravTGrk90TxSAN15B+hsTwBOVaNgvI8RFH+AIGNSe8tl7Y4zROnyU0AGKSXoGY
-         /TK9mCoLGXuogOpI0928DzLsVeQJP5AYR36ASPckT7q4FZKcmQaUtMOnK6ZSXA7kt+S6
-         GHvVxCFj+XWjql2HSS36qckBuvmCEl52hggJfU2F7875+JDxh/sDZUbvNJIZOMDCruhi
-         eHK8O3w01vJ408hcevWLbHT+DtKUxMimM1g+jm2ulqyXgN8Df9KSDZnYHUOhwaPU87i8
-         yoP7LQYo/QvjctEdJw/4mZLheZLyhxIrU8Ln0tzTMMd3p3WkJ7zZ7HGkwWv3Rrefc3PZ
-         IMXw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Ca93GC7mN6YPt3WWqji2t66DsugWAK2ak9CpDn3N/CI=;
+        fh=7NsVx5R+L140HvZ0es4udPXCD2KdHoHcZm3kdyNBbE4=;
+        b=kc6gbyrt22nLIeMIb4KZg5f3BcdHqPJ1iG066DASFhlXrVOfWCU92BQri7GvfAL+Z0
+         1TU4CNPS1dJZZ2TdNzEVyzUozXmWxVQCvfay+/1fLsHMLRdaXHI9ymVdSL5oTY1uoC0R
+         T+Y9F7ipNQ9kLAZrd1WYP94xZLN8WqZ84wsVWj1xXeJNCqxhMbMgpdgktgV0+XU24oks
+         RaxAlY8XrWgAl/4QPx9ibVG9pc8zYvnwqJiwZEz4+9reBPHrBSZN5d1ydw8yijfRL+vV
+         xjsGCKxDbNNkYtDOxlx3k/qGzilGYpgQ4Q7HfNu5RZ+J5BhDvQUoOi7Hhv7SXls5tpiv
+         z1mw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s6e0nHDn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RURTQN8c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e44262c5a1si2464576d6.286.2025.02.06.07.41.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e43ba2d0c4si11532386d6.75.2025.02.06.05.12.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 07:41:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Feb 2025 05:12:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s6e0nHDn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RURTQN8c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tg40Q-0006KB-I8; Thu, 06 Feb 2025 10:41:30 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tg1g6-0006RT-P3; Thu, 06 Feb 2025 08:12:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tg40O-0006Jj-RI
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 10:41:29 -0500
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tg1fr-00061a-QO
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 08:12:10 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tg40M-0002gB-H5
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 10:41:28 -0500
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e5b1c4d14f2so926182276.0
- for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 07:41:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tg1fq-0008Go-BB
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2025 08:12:07 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4368a293339so9689365e9.3
+ for <qemu-arm@nongnu.org>; Thu, 06 Feb 2025 05:12:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738856484; x=1739461284; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
- b=s6e0nHDnAesWEOZMfaAO/WETLNT/fJzFnauXMiH1qKYHd3s/BB+usNhcsIK+CZUYNB
- 6Va34xp5EojKsinKx3cGGSnHP02XQ4MC2lBp5wpcKD7fQIBWc8gvybue67iB6yDm0h5L
- n5Anji1rwJLe06HEpVMHwDMBZxIQFtF/BQYlampXIQ4S9AftWrm0aN14gfp1M6PukQxK
- LxXUBVIAKY6qxT75WdWBJdb6iYruWXl7FIekbrpHB06uKSXPbz+ZvKZLWZ9duq5cZvca
- XTdHUmPdYYIBsi9k5jnT2BpxcGLWykoX0J3vTj4agvg6VOxEa7lk3jtM6sj/hX92n8RI
- h7Lw==
+ d=linaro.org; s=google; t=1738847525; x=1739452325; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ca93GC7mN6YPt3WWqji2t66DsugWAK2ak9CpDn3N/CI=;
+ b=RURTQN8ctGT83eS/AVxCTh1cuivsavHE4nwcjcBi26kl/blahsMr3RoFSqr74nVmxy
+ yZjSXeLWTuP6QBuRXNDAagNNspzOfJngGmvnZz28jZkRkrQaMtfxOSRhYsZ6fMm5wQ4s
+ kh2T3sjT2jQGVeWJ72eSUvjsPg1w6nBapRk5uoCZ2ltqV+LTNectb8ZGxGZqETZI4VWw
+ 4go2bRxQcuJ5D9rJnueOzv+Or3130Uld3sENmuPkojKJD70jcgiq8iYvBeFZuweSl8gX
+ 6R50iUXJAg3DNWQdmvgZXMvsv3xPlORd5+AC5IdKu5QWDlwJ8l3BAjgnC4OTkGn9tnWv
+ fqIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738856484; x=1739461284;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=MUmIUl+7CiZDD1nVfbNvHDoplWKLvo/NAi2M7/ioT+8=;
- b=vvRAtZV6TjKeHLPBlryzrLF9WXRAuZALDPWAud2HF3zc0JtjQ+mV0YXZAI77oTVwcf
- JSkWxlfNZpXcOhYuAdpY8p/hvsMCc1ZGzACSHWdNlIMmLI0tJeoKjFV7JuHPKSlUZwan
- i+oj2sdmfXhK2cjzqjSdgKsHfMbd5JTjqxj/mkFs6KQgnQoAO+lKWtOMm64DxWnD0VYw
- xcPw/97m/tGlr/0uVAM/IrqmBQu68kyHJIHIpjotKiVkHkdPP2AjEzthnlu7/n9t3CJ9
- umxpuRjkjQDlLAKubcP4UQqMnV/n+7RpGOO2Q3EUEqJZjb8n6vMITY/CK9sE/ecZ5+77
- ZdOg==
-X-Gm-Message-State: AOJu0YxjsFJQI6WJSPzOWktN+0cPRhHgSScTVabL0sbdPfEVpqCcsitz
- Oku2xV3ZgGJj//GMJU3W/cOfKO27fMk2ZO3H9oRy9jB3FRasU9KmLdKAmI4Swv85LyZi9wjmoPU
- oAMaI9LWwd79zaTuRgQB/jcMcWdLeL5bMCs+tEw==
-X-Gm-Gg: ASbGncsPayZVPC3bpNeHIrCY0cj8UjQ+CUnzYMclxQM2rcgfQA1zxtuya4l3Qn7lRV4
- tbjCsx7WXFvbpkDk6Ln2PPO2BAe+sGD5Yrn2l063viyyzHeRSk8NK17aDs8b89eKWV082fDSS1Q
- ==
-X-Received: by 2002:a05:6902:cc9:b0:e5b:257e:c3b1 with SMTP id
- 3f1490d57ef6-e5b259d1967mr5605889276.8.1738856484213; Thu, 06 Feb 2025
- 07:41:24 -0800 (PST)
+ d=1e100.net; s=20230601; t=1738847525; x=1739452325;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ca93GC7mN6YPt3WWqji2t66DsugWAK2ak9CpDn3N/CI=;
+ b=OkYJSjD1dDtvOzWO58Kd9v/CUwEpMAd8ZfAPoHSWm4nMMMVAqw2ZXoJHrCYtmMvxCS
+ qBxl/AJy/lvlpZu1vaHNKE7B7MBc5w7ySeUZO6cH9KA8IhBrh0vJybkKYfPhP7nw5ZXB
+ s+mfCoa2GuNxbUH58h/NBbceHO66PgkjEBknWiTtz6lMLvXO+f/kjeT36LmyYaIO4LYn
+ FpJqmtZwU2HNH5bhScB8qKN4IRjTtxtWrDG8v2apyY64VYTJHcYqhH6jx3sBwxSC6Zjb
+ el9/59/2ZCpiuW6zUbWkzkQYiPzniVW73KNMDerHKr3+AUEdM0k1laQu4RidNX0sZPq6
+ 2M4A==
+X-Gm-Message-State: AOJu0YxsMAeFbEGRkVcrLDcl87X6GOvv7QkJY7wmQ1PraA9Bx7SubydO
+ v532eGMVG8CI5uQ0S1ETNKiHyfLwWVmSG0hlClAU9rpUQcUQWP4DdqRbA6GYUb4=
+X-Gm-Gg: ASbGncsZat+Z9WOhmPV5aBUCj0zAEQICVPkskQD9AIIHINZyXIVCBTZ2IpPb8GWVkFJ
+ sclxycWFzU4yv8Nf0IoYoMrtMosPu5qXb4Nn9WVPzYfmRyuvYmJRPXmBMoX24mv70doCxFZVovy
+ Oa3obHu9P5msEv1PiIwzgcI1KMHVI+bNnVZx72YJK5K/UahL+pCs0Q388TWqvDKFtHUwFCgGwmJ
+ l+01lqDpRO4aLE3w01jEwFWwC86E16g/8FAB8aSbSEzZGWEWZwA+aPY5bqCoKeV3nj47ZqS92fq
+ ebFEeHJY5YzGiQB+HkYR7SNDGpfXtrXNAS4cNECtoCTlDJKFg3+eu+f2SmOQyAh+Ww==
+X-Received: by 2002:a05:600c:3511:b0:434:a202:7a0d with SMTP id
+ 5b1f17b1804b1-4390d569890mr50269095e9.22.1738847524879; 
+ Thu, 06 Feb 2025 05:12:04 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dbdd1af14sm1703873f8f.8.2025.02.06.05.12.03
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 06 Feb 2025 05:12:04 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
+ Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v5 14/16] tests/functional: Remove sleep() kludges from
+ microblaze tests
+Date: Thu,  6 Feb 2025 14:10:50 +0100
+Message-ID: <20250206131052.30207-15-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250206131052.30207-1-philmd@linaro.org>
+References: <20250206131052.30207-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20240615185423.49474-1-florian.lugou@provenrun.com>
- <CAFEAcA_+WrzM4fXQMUxMi3L5yiUWMrUGTSZH=NDdYDKUCP+8NQ@mail.gmail.com>
- <20240620135627.qxcrkdx5v7wdurx4@flugou-latitude5401>
- <CAFEAcA-ngrrEUDD7eA_sOLGF+_wRCuQVxTwuCA4pXjRcuJucmA@mail.gmail.com>
- <20240621140725.f4hsasmhrhh4joxm@flugou-latitude5401>
- <CAFEAcA9c9hbpsdyc7+=QEOZGrNY2m-urk6VrWdwCdfk9ipkwpw@mail.gmail.com>
- <20240820113024.53tmzejw2omm6bbx@flugou-latitude5401>
-In-Reply-To: <20240820113024.53tmzejw2omm6bbx@flugou-latitude5401>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Feb 2025 15:41:12 +0000
-X-Gm-Features: AWEUYZmahiK2qpuPa0z3RYfenGXJ3dinOUgdtOsO67P154Uz5jEB1MLc-NVKMig
-Message-ID: <CAFEAcA9X0w5QW2qnnhF2k72ZrS8SALWiXV7uNr1e=jQnZvrQ7Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/helper: Fix timer interrupt masking when
- HCR_EL2.E2H == 0
-To: Florian Lugou <florian.lugou@provenrun.com>
-Cc: qemu-devel@nongnu.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TWMFgmqXSY36
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SuPJJsAX/0p7
 
-On Tue, 20 Aug 2024 at 12:30, Florian Lugou <florian.lugou@provenrun.com> wrote:
->
-> > > $ aarch64-none-elf-gcc -ffreestanding -nostdlib -T qemu/tests/tcg/aarch64/system/kernel.ld -o test test.S
-> > >
-> > > $ qemu-system-aarch64 \
-> > >         -machine virt,secure=on,gic-version=3 \
-> > >         -cpu cortex-a57 \
-> > >         -kernel test \
-> > >         -display none \
-> > >         -semihosting
-> > >
-> > > $ # Exits after ~1s
-> > >
-> > > $ qemu-system-aarch64 \
-> > >         -machine virt,secure=on,gic-version=3 \
-> > >         -cpu cortex-a57 \
-> > >         -kernel test \
-> > >         -display none \
-> > >         -semihosting \
-> > >         -icount shift=0,sleep=off
-> > >
-> > > ... (hangs until QEMU is killed)
-> >
-> > For me, with QEMU commit 9eb51530c12ae645b, this test case
-> > exits (doesn't hang) with both these command lines. Do you
-> > still see this bug? I guess it's possible we fixed it in
-> > the last month or so, though I can't see anything obviously
-> > relevant in the git logs.
->
-> Thank you for taking the time to test it.
->
-> On my machine (Ubuntu 22.04), with QEMU configuration options
-> "--target-list=aarch64-softmmu --enable-debug", running the provided test case
-> with "-icount shift=0,sleep=off" still makes QEMU hang forever on commit
-> 9eb51530c12ae645b.
->
-> The issue was initially reported by a colleague of mine so I was hoping it would
-> be somehow reliably reproducible. But apparently it is not.
+Commit f0ec14c78c4 ("tests/avocado: Fix console data loss") fixed
+QEMUMachine's problem with console, we don't need to use the sleep()
+kludges.
 
-Somebody else reported a similar issue to this to me this week,
-which reminded me of a different bug that we'd found and fixed
-in the interim, which was enough of a hint that I figured out
-why this wasn't reproducible for me.
+Suggested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ tests/functional/test_microblazeel_s3adsp1800.py | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-This bug only reproduces if your QEMU binary isn't compiled
-with slirp support (which will happen if your host system
-doesn't have libslirp-dev or libslirp-devel installed).
-If slirp is present then the usermode networking backend
-will be present and it always has an active timer. Without
-slirp, the problem manifests when there are no active timers.
+diff --git a/tests/functional/test_microblazeel_s3adsp1800.py b/tests/functional/test_microblazeel_s3adsp1800.py
+index 715ef3f79ac..60aab4a45e8 100755
+--- a/tests/functional/test_microblazeel_s3adsp1800.py
++++ b/tests/functional/test_microblazeel_s3adsp1800.py
+@@ -7,8 +7,7 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later. See the COPYING file in the top-level directory.
+ 
+-import time
+-from qemu_test import exec_command, exec_command_and_wait_for_pattern
++from qemu_test import exec_command_and_wait_for_pattern
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import wait_for_console_pattern
+ 
+@@ -31,9 +30,8 @@ def do_xmaton_le_test(self, machine):
+         self.vm.add_args('-nic', f'user,tftp={tftproot}')
+         self.vm.launch()
+         wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
+-        time.sleep(0.1)
+-        exec_command(self, 'root')
+-        time.sleep(0.1)
++        wait_for_console_pattern(self, 'buildroot login:')
++        exec_command_and_wait_for_pattern(self, 'root', '#')
+         exec_command_and_wait_for_pattern(self,
+                 'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
+                 '821cd3cab8efd16ad6ee5acc3642a8ea')
+-- 
+2.47.1
 
-You can also repro it on a with-slirp compile by adding
-"-net none" to the command line.
-
-I'll have a look at what the underlying bug is... thanks again
-for the handy test case.
-
-thanks
--- PMM

@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1426706njb;
-        Thu, 6 Feb 2025 01:53:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVhx7fXljzPdFJtnyUApY73Uzqc/WoF1bi2OLheygwGEndxAi9ejDPTkkI2GBBwGpsM06yr5Ph1Ms0lQQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEheYcPCKVgUnzioETXrLZWLKgo6gC6mI6k+rrJz4UQxPECBNjedhWzV5rXxZPiQIhVWMGd
-X-Received: by 2002:ac8:7fc4:0:b0:46f:d6c3:2de9 with SMTP id d75a77b69052e-47028168d36mr61287841cf.7.1738835614035;
-        Thu, 06 Feb 2025 01:53:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738835614; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1426775njb;
+        Thu, 6 Feb 2025 01:53:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWTBgEbUiPph0y8cKdoD1BNQnR1qU8z54Uo3ZwoSYMBLNPUL/gEjWdtvwNLOkonj91UwrDVF8pZMzGJKA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEheVK5gkL3NMc3pANcCKCIodM2nUNtIcsxzuXbRGn+jx3XLfm1WrZNBOxDZZoGFN4gUM01
+X-Received: by 2002:a05:620a:1a8b:b0:7b6:d350:9bfc with SMTP id af79cd13be357-7c039fcf611mr949817985a.27.1738835624845;
+        Thu, 06 Feb 2025 01:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738835624; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rpa8KibmxHPf7LjPFuVn/VTOVNm+mJtYWpdP9Z86ZgsENhkBu+7ICUAd/L59raDNN3
-         a66P7KPZ2qLB9233nnjZIGq7m7RpHSjlxHTDh08EBnD+WB1SdYa1RVOGNOawkwqnwjoU
-         wgH4kHUmIOFn4ZLGXGRC8cc/+l2S9yQ/cSu9aDUSHJk8CN43JyprHwgoDcZ/Vl4G2gH1
-         2pUhQexlxexgVXV2VfvxxFHciZgQpY/Il9bqwu3KP1f5B1YYewPUmUs3Z90Kimg+qe3N
-         8ctulinmN4MTyhpMyUmKKEVTx2GKTN55EdEamF8v9kFkBl82wxsIoPWl41mMVVhvsJ7R
-         zymg==
+        b=Nf91tZU4SfjwWaPmucvRi6DZ9NWNuNb5XTGXwwVZsW7omdyuD8xQu7n6ES3UkkP34o
+         1CgGTG5XH+dF625wfc9vNpmfSpo4WsWxMSVYh4Qd1yEgxWrm9GgPTwLxEEXxL259kHB+
+         TEihWphqxJaU0K+mIFNik2iAZPQUNBZysv03FxXXe6h8rXn7fcm+P3vC8l4Pkp7+S7PW
+         dzrGWtJEZLId2DhiB8sKDTOnnYTgPVOL2YETvVR0wshRQjnQk7SN49m0e1qxU6kd3XcU
+         S7E51HHAtuxkFeCww0KLI3Byk1hIlwgHSyTSgwzeF1lgkYHK7+N4rM4oTk1F17lbg5gf
+         ftZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=/5a4zQCoMdiELl+Bzw+RaXISePSq4G2dscc5x4PAVjs=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=rHNn8ZhYLDinJ6aKgDEfgqvmGnJc94WjYWQ/vQAWcKc=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=Qvd2K3FcmiisfT4nSaEl/VavOf+3q8ZOB8HSRptJQr46LyRmvGxhZJzLYab81DLocT
-         5Kom1bNM/KCFMLfdQi22JssmINE96S0aNJGiPrpsIcqiyfNCHARps/C3Lx4QKK1aN+v7
-         ckax8TBZCCM0Jltt1kmxuTSyt4V73ofQCJfS5eB6TCy62jZtPm1igIKjT3/j6v8r7YYB
-         rU06i44gIxGJL4YrfR9RuUrQUogye19LykIQVQoApxykrY2bkrptOgHAuHRn+pHDXLTE
-         xYdVXh+Co0gj5JXX2GJ49KV8KUlUF6RJlrq3huGVn+iJdry8NTt2GK0Q9fx8YawC9XH5
-         9d4w==;
+        b=g3h/eb8LGN8iem+b7rzFL0KfiAmQlpnETaXvM7Fr6+0gAyrI/Xn9lpFj5G8ajFs7rD
+         seI67HXqEELjV7wF8DF/NAq49je4Cf2rn4GfA0H1J6qvDXN9/KGMK2EdKWNvgRTWNlER
+         419NQLzXNARIt+qv75s2ocNLp61MCydbED7yrmC/sgQ7u03GrfPw53W106hfhdp6UN0+
+         6Pnm8M+L3GbJzvYxulyWjIK8fPnUS/cFIjMPh2rTZj36ovO+UoiuzOh3y8lyMB9tSVWn
+         FLvlHxUhLfS7MsPWj48BRGUs8jtZIDNkG3cSUkGDLuX8OgqDFKss8+h1ioUYQZ+tL6z7
+         oKUw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47153b926a3si7952701cf.435.2025.02.06.01.53.33
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb4dc6si84970985a.408.2025.02.06.01.53.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 01:53:34 -0800 (PST)
+        Thu, 06 Feb 2025 01:53:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tfyZN-0001yB-6O; Thu, 06 Feb 2025 04:53:15 -0500
+	id 1tfyZU-00021Q-Le; Thu, 06 Feb 2025 04:53:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfyZC-0001wy-71; Thu, 06 Feb 2025 04:53:04 -0500
+ id 1tfyZG-0001xi-8H; Thu, 06 Feb 2025 04:53:07 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tfyZ9-00051a-O3; Thu, 06 Feb 2025 04:53:01 -0500
+ id 1tfyZD-00051a-39; Thu, 06 Feb 2025 04:53:05 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 6 Feb
@@ -65,10 +65,13 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 0/6] INTC model cleanup
-Date: Thu, 6 Feb 2025 17:52:46 +0800
-Message-ID: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 1/6] hw/intc/aspeed: Support setting different memory and
+ register size
+Date: Thu, 6 Feb 2025 17:52:47 +0800
+Message-ID: <20250206095253.928308-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
+References: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -96,32 +99,100 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jj1KtdEMnmoE
+X-TUID: 8NeY+Q6Ss0aq
 
-v2:
-  To streamline the review process, split the following patch series into
-  three parts.
-  https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.2465942-1-jamin_lin@aspeedtech.com/
-  This patch series focuses on cleaning up the INTC model to
-  facilitate future support for the INTC_IO model.
+According to the AST2700 datasheet, the INTC (CPU DIE) controller has 16KB
+(0x4000) of register space, and the INTC_IO (I/O DIE) controller has 1KB (0x400)
+of register space.
 
-Jamin Lin (6):
-  hw/intc/aspeed: Support setting different memory and register size
-  hw/intc/aspeed: Introduce helper functions for enable and status
-    registers
-  hw/intc/aspeed: Add object type name to trace events for better
-    debugging
-  hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
-  hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
-  hw/intc/aspeed: Support different memory region ops
+Introduced a new class attribute "mem_size" to set different memory sizes for
+the INTC models in AST2700.
 
- hw/arm/aspeed.c               |   8 +-
- hw/arm/aspeed_ast27x0.c       |  58 ++++-----
- hw/intc/aspeed_intc.c         | 227 ++++++++++++++++++++--------------
- hw/intc/trace-events          |  24 ++--
- include/hw/intc/aspeed_intc.h |   5 +
- 5 files changed, 183 insertions(+), 139 deletions(-)
+Introduced a new class attribute "reg_size" to set different register sizes for
+the INTC models in AST2700.
 
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/intc/aspeed_intc.c         | 17 +++++++++++++----
+ include/hw/intc/aspeed_intc.h |  4 ++++
+ 2 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index 126b711b94..316885a27a 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -117,10 +117,11 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+ static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+ {
+     AspeedINTCState *s = ASPEED_INTC(opaque);
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     uint32_t addr = offset >> 2;
+     uint32_t value = 0;
+ 
+-    if (addr >= ASPEED_INTC_NR_REGS) {
++    if (offset >= aic->reg_size) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -143,7 +144,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     uint32_t change;
+     uint32_t irq;
+ 
+-    if (addr >= ASPEED_INTC_NR_REGS) {
++    if (offset >= aic->reg_size) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -302,10 +303,16 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     int i;
+ 
++    memory_region_init(&s->iomem_container, OBJECT(s),
++            TYPE_ASPEED_INTC ".container", aic->mem_size);
++
++    sysbus_init_mmio(sbd, &s->iomem_container);
++
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
+-                          TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
++                          TYPE_ASPEED_INTC ".regs", aic->reg_size);
++
++    memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
+ 
+-    sysbus_init_mmio(sbd, &s->iomem);
+     qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_ints);
+ 
+     for (i = 0; i < aic->num_ints; i++) {
+@@ -344,6 +351,8 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+     dc->desc = "ASPEED 2700 INTC Controller";
+     aic->num_lines = 32;
+     aic->num_ints = 9;
++    aic->mem_size = 0x4000;
++    aic->reg_size = 0x2000;
+ }
+ 
+ static const TypeInfo aspeed_2700_intc_info = {
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 18cb43476c..ecaeb15aea 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -25,6 +25,8 @@ struct AspeedINTCState {
+ 
+     /*< public >*/
+     MemoryRegion iomem;
++    MemoryRegion iomem_container;
++
+     uint32_t regs[ASPEED_INTC_NR_REGS];
+     OrIRQState orgates[ASPEED_INTC_NR_INTS];
+     qemu_irq output_pins[ASPEED_INTC_NR_INTS];
+@@ -39,6 +41,8 @@ struct AspeedINTCClass {
+ 
+     uint32_t num_lines;
+     uint32_t num_ints;
++    uint64_t mem_size;
++    uint64_t reg_size;
+ };
+ 
+ #endif /* ASPEED_INTC_H */
 -- 
 2.34.1
 

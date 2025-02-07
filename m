@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab781453f04sm205306266b.161.2025.02.07.07.31.13
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5de46b7b480sm1366479a12.36.2025.02.07.07.31.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 07 Feb 2025 07:31:13 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B6FC05FAD2;
+	by draig.lan (Postfix) with ESMTP id A48D95FA80;
 	Fri,  7 Feb 2025 15:31:12 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,66 +35,39 @@ Cc: Peter Xu <peterx@redhat.com>,
 	qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-rust@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 04/17] tests/qtest: simplify qtest_process_inbuf
-Date: Fri,  7 Feb 2025 15:30:59 +0000
-Message-Id: <20250207153112.3939799-5-alex.bennee@linaro.org>
+	qemu-riscv@nongnu.org
+Subject: [PATCH v2 03/17] tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
+Date: Fri,  7 Feb 2025 15:30:58 +0000
+Message-Id: <20250207153112.3939799-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250207153112.3939799-1-alex.bennee@linaro.org>
 References: <20250207153112.3939799-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8+ych75VJAg/
+X-TUID: CvyxRnFeigCX
 
-Don't both creating a GString to temporarily hold our qtest command.
-Instead do a simpler g_strndup and use autofree to clean up
-afterwards.
+Until there are timers enabled the semantics of clock_step_next() will
+fail. Since d524441a36 (system/qtest: properly feedback results of
+clock_[step|set]) we will signal a FAIL if time doesn't advance.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 ---
- system/qtest.c | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+ tests/qtest/npcm7xx_timer-test.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/system/qtest.c b/system/qtest.c
-index e68ed0f2a8..bb1efba9fd 100644
---- a/system/qtest.c
-+++ b/system/qtest.c
-@@ -763,25 +763,21 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-     }
- }
+diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
+index 58f58c2f71..43711049ca 100644
+--- a/tests/qtest/npcm7xx_timer-test.c
++++ b/tests/qtest/npcm7xx_timer-test.c
+@@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer test_data)
+     int i;
  
-+/*
-+ * Process as much of @inbuf as we can in newline terminated chunks.
-+ * Remove the processed commands from @inbuf as we go.
-+ */
- static void qtest_process_inbuf(CharBackend *chr, GString *inbuf)
- {
-     char *end;
+     tim_reset(td);
+-    clock_step_next();
  
-     while ((end = strchr(inbuf->str, '\n')) != NULL) {
--        size_t offset;
--        GString *cmd;
--        gchar **words;
--
--        offset = end - inbuf->str;
-+        size_t len = end - inbuf->str;
-+        g_autofree char *cmd = g_strndup(inbuf->str, len);
-+        g_auto(GStrv) words = g_strsplit(cmd, " ", 0);
- 
--        cmd = g_string_new_len(inbuf->str, offset);
--        g_string_erase(inbuf, 0, offset + 1);
--
--        words = g_strsplit(cmd->str, " ", 0);
-+        g_string_erase(inbuf, 0, len + 1);
-         qtest_process_command(chr, words);
--        g_strfreev(words);
--
--        g_string_free(cmd, TRUE);
-     }
- }
- 
+     tim_write_ticr(td, count);
+     tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
 -- 
 2.39.5

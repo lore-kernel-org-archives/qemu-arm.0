@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5dcf6c9f8besm2702253a12.52.2025.02.07.07.31.18
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab772f843f4sm290915266b.68.2025.02.07.07.39.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Feb 2025 07:31:23 -0800 (PST)
+        Fri, 07 Feb 2025 07:39:40 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BF95060E67;
+	by draig.lan (Postfix) with ESMTP id EBB25619CE;
 	Fri,  7 Feb 2025 15:31:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,214 +37,177 @@ Cc: Peter Xu <peterx@redhat.com>,
 	qemu-rust@nongnu.org,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v2 15/17] gdbstub: Allow late attachment
-Date: Fri,  7 Feb 2025 15:31:10 +0000
-Message-Id: <20250207153112.3939799-16-alex.bennee@linaro.org>
+Subject: [PATCH v2 17/17] tests/tcg: Add late gdbstub attach test
+Date: Fri,  7 Feb 2025 15:31:12 +0000
+Message-Id: <20250207153112.3939799-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250207153112.3939799-1-alex.bennee@linaro.org>
 References: <20250207153112.3939799-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IEFOpUakKT8E
+X-TUID: xkKn/HAzUtHI
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Allow debugging individual processes in multi-process applications by
-starting them with export QEMU_GDB=/tmp/qemu-%d.sock,suspend=n.
-Currently one would have to attach to every process to ensure the app
-makes progress.
+Add a small test to prevent regressions.
+Make sure that host_interrupt_signal is not visible to the guest.
 
-In case suspend=n is not specified, the flow remains unchanged. If it
-is specified, then accepting the client connection is delegated to a
-thread. In the future this machinery may be reused for handling
-reconnections and interruptions.
-
-On accepting a connection, the thread schedules gdb_handlesig() on the
-first CPU and wakes it up with host_interrupt_signal. Note that the
-result of this gdb_handlesig() invocation is handled, as opposed to
-many other existing call sites. These other call sites probably need to
-be fixed separately.
-
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-7-iii@linux.ibm.com>
+Message-Id: <20250117001542.8290-9-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- bsd-user/main.c   |   1 -
- gdbstub/user.c    | 115 +++++++++++++++++++++++++++++++++++++++++-----
- linux-user/main.c |   1 -
- 3 files changed, 103 insertions(+), 14 deletions(-)
+ tests/tcg/multiarch/late-attach.c          | 41 ++++++++++++++++++++++
+ tests/guest-debug/run-test.py              | 15 ++++++--
+ tests/tcg/multiarch/Makefile.target        |  9 ++++-
+ tests/tcg/multiarch/gdbstub/late-attach.py | 28 +++++++++++++++
+ 4 files changed, 90 insertions(+), 3 deletions(-)
+ create mode 100644 tests/tcg/multiarch/late-attach.c
+ create mode 100644 tests/tcg/multiarch/gdbstub/late-attach.py
 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index b2f6a9be2f..fdb160bed0 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -629,7 +629,6 @@ int main(int argc, char **argv)
- 
-     if (gdbstub) {
-         gdbserver_start(gdbstub, &error_fatal);
--        gdb_handlesig(cpu, 0, NULL, NULL, 0);
-     }
-     cpu_loop(env);
-     /* never exits */
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 8225b70280..3730f32c41 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -22,6 +22,7 @@
- #include "gdbstub/user.h"
- #include "gdbstub/enums.h"
- #include "hw/core/cpu.h"
-+#include "user/signal.h"
- #include "trace.h"
- #include "internals.h"
- 
-@@ -393,32 +394,122 @@ static int gdbserver_open_port(int port, Error **errp)
-     return fd;
- }
- 
--bool gdbserver_start(const char *port_or_path, Error **errp)
-+static bool gdbserver_accept(int port, int gdb_fd, const char *path)
- {
--    int port = g_ascii_strtoull(port_or_path, NULL, 10);
-+    bool ret;
+diff --git a/tests/tcg/multiarch/late-attach.c b/tests/tcg/multiarch/late-attach.c
+new file mode 100644
+index 0000000000..20a364034b
+--- /dev/null
++++ b/tests/tcg/multiarch/late-attach.c
+@@ -0,0 +1,41 @@
++/*
++ * Test attaching GDB to a running process.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include <assert.h>
++#include <signal.h>
++#include <stdio.h>
++#include <stdlib.h>
 +
-+    if (port > 0) {
-+        ret = gdb_accept_tcp(gdb_fd);
-+    } else {
-+        ret = gdb_accept_socket(gdb_fd);
-+        if (ret) {
-+            gdbserver_user_state.socket_path = g_strdup(path);
-+        }
-+    }
++static const char *phase = "start";
 +
-+    if (!ret) {
-+        close(gdb_fd);
-+    }
-+
-+    return ret;
-+}
-+
-+struct {
-+    int port;
-     int gdb_fd;
-+    char *path;
-+} gdbserver_args;
-+
-+static void do_gdb_handlesig(CPUState *cs, run_on_cpu_data arg)
++int main(void)
 +{
++    sigset_t set;
 +    int sig;
 +
-+    sig = target_to_host_signal(gdb_handlesig(cs, 0, NULL, NULL, 0));
-+    if (sig >= 1 && sig < NSIG) {
-+        qemu_kill_thread(gdb_get_cpu_index(cs), sig);
-+    }
-+}
++    assert(sigfillset(&set) == 0);
++    assert(sigprocmask(SIG_BLOCK, &set, NULL) == 0);
 +
-+static void *gdbserver_accept_thread(void *arg)
-+{
-+    if (gdbserver_accept(gdbserver_args.port, gdbserver_args.gdb_fd,
-+                         gdbserver_args.path)) {
-+        CPUState *cs = first_cpu;
-+
-+        async_safe_run_on_cpu(cs, do_gdb_handlesig, RUN_ON_CPU_NULL);
-+        qemu_kill_thread(gdb_get_cpu_index(cs), host_interrupt_signal);
-+    }
-+
-+    g_free(gdbserver_args.path);
-+    gdbserver_args.path = NULL;
-+
-+    return NULL;
-+}
- 
-+#define USAGE "\nUsage: -g {port|path}[,suspend={y|n}]"
-+
-+bool gdbserver_start(const char *args, Error **errp)
-+{
-+    g_auto(GStrv) argv = g_strsplit(args, ",", 0);
-+    const char *port_or_path = NULL;
-+    bool suspend = true;
-+    int gdb_fd, port;
-+    GStrv arg;
-+
-+    for (arg = argv; *arg; arg++) {
-+        g_auto(GStrv) tokens = g_strsplit(*arg, "=", 2);
-+
-+        if (g_strcmp0(tokens[0], "suspend") == 0) {
-+            if (tokens[1] == NULL) {
-+                error_setg(errp,
-+                           "gdbstub: missing \"suspend\" option value" USAGE);
-+                return false;
-+            } else if (!qapi_bool_parse(tokens[0], tokens[1],
-+                                        &suspend, errp)) {
-+                return false;
-+            }
-+        } else {
-+            if (port_or_path) {
-+                error_setg(errp, "gdbstub: unknown option \"%s\"" USAGE, *arg);
-+                return false;
-+            }
-+            port_or_path = *arg;
++    /* Let GDB know it can send SIGUSR1. */
++    phase = "sigwait";
++    if (getenv("LATE_ATTACH_PY")) {
++        assert(sigwait(&set, &sig) == 0);
++        if (sig != SIGUSR1) {
++            fprintf(stderr, "Unexpected signal %d\n", sig);
++            return EXIT_FAILURE;
 +        }
 +    }
-+    if (!port_or_path) {
-+        error_setg(errp, "gdbstub: port or path not specified" USAGE);
-+        return false;
++
++    /* Check that the guest does not see host_interrupt_signal. */
++    assert(sigpending(&set) == 0);
++    for (sig = 1; sig < NSIG; sig++) {
++        if (sigismember(&set, sig)) {
++            fprintf(stderr, "Unexpected signal %d\n", sig);
++            return EXIT_FAILURE;
++        }
 +    }
 +
-+    port = g_ascii_strtoull(port_or_path, NULL, 10);
-     if (port > 0) {
-         gdb_fd = gdbserver_open_port(port, errp);
-     } else {
-         gdb_fd = gdbserver_open_socket(port_or_path, errp);
-     }
--
-     if (gdb_fd < 0) {
-         return false;
-     }
++    return EXIT_SUCCESS;
++}
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 5a091db8be..75e9c92e03 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -36,6 +36,8 @@ def get_args():
+     parser.add_argument("--gdb-args", help="Additional gdb arguments")
+     parser.add_argument("--output", help="A file to redirect output to")
+     parser.add_argument("--stderr", help="A file to redirect stderr to")
++    parser.add_argument("--no-suspend", action="store_true",
++                        help="Ask the binary to not wait for GDB connection")
  
--    if (port > 0 && gdb_accept_tcp(gdb_fd)) {
--        return true;
--    } else if (gdb_accept_socket(gdb_fd)) {
--        gdbserver_user_state.socket_path = g_strdup(port_or_path);
-+    if (suspend) {
-+        if (gdbserver_accept(port, gdb_fd, port_or_path)) {
-+            gdb_handlesig(first_cpu, 0, NULL, NULL, 0);
-+            return true;
-+        } else {
-+            error_setg(errp, "gdbstub: failed to accept connection");
-+            return false;
-+        }
-+    } else {
-+        QemuThread thread;
+     return parser.parse_args()
+ 
+@@ -73,10 +75,19 @@ def log(output, msg):
+ 
+     # Launch QEMU with binary
+     if "system" in args.qemu:
++        if args.no_suspend:
++            suspend = ''
++        else:
++            suspend = ' -S'
+         cmd = f'{args.qemu} {args.qargs} {args.binary}' \
+-            f' -S -gdb unix:path={socket_name},server=on'
++            f'{suspend} -gdb unix:path={socket_name},server=on'
+     else:
+-        cmd = f'{args.qemu} {args.qargs} -g {socket_name} {args.binary}'
++        if args.no_suspend:
++            suspend = ',suspend=n'
++        else:
++            suspend = ''
++        cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
++            f' {args.binary}'
+ 
+     log(output, "QEMU CMD: %s" % (cmd))
+     inferior = subprocess.Popen(shlex.split(cmd))
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 18d3cf4ae0..688a6be203 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -130,6 +130,13 @@ run-gdbstub-follow-fork-mode-parent: follow-fork-mode
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-parent.py, \
+ 	following parents on fork)
+ 
++run-gdbstub-late-attach: late-attach
++	$(call run-test, $@, env LATE_ATTACH_PY=1 $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" --no-suspend \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/late-attach.py, \
++	attaching to a running process)
 +
-+        gdbserver_args.port = port;
-+        gdbserver_args.gdb_fd = gdb_fd;
-+        gdbserver_args.path = g_strdup(port_or_path);
-+        qemu_thread_create(&thread, "gdb-accept",
-+                           &gdbserver_accept_thread, NULL,
-+                           QEMU_THREAD_DETACHED);
-         return true;
-     }
--
--    /* gone wrong */
--    close(gdb_fd);
--    error_setg(errp, "gdbstub: failed to accept connection");
--    return false;
- }
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
+@@ -139,7 +146,7 @@ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+ 	      run-gdbstub-registers run-gdbstub-prot-none \
+ 	      run-gdbstub-catch-syscalls run-gdbstub-follow-fork-mode-child \
+ 	      run-gdbstub-follow-fork-mode-parent \
+-	      run-gdbstub-qxfer-siginfo-read
++	      run-gdbstub-qxfer-siginfo-read run-gdbstub-late-attach
  
- void gdbserver_fork_start(void)
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 7198fa0986..5c74c52cc5 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -1024,7 +1024,6 @@ int main(int argc, char **argv, char **envp)
- 
-     if (gdbstub) {
-         gdbserver_start(gdbstub, &error_fatal);
--        gdb_handlesig(cpu, 0, NULL, NULL, 0);
-     }
- 
- #ifdef CONFIG_SEMIHOSTING
+ # ARM Compatible Semi Hosting Tests
+ #
+diff --git a/tests/tcg/multiarch/gdbstub/late-attach.py b/tests/tcg/multiarch/gdbstub/late-attach.py
+new file mode 100644
+index 0000000000..1d40efb5ec
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/late-attach.py
+@@ -0,0 +1,28 @@
++"""Test attaching GDB to a running process.
++
++SPDX-License-Identifier: GPL-2.0-or-later
++"""
++from test_gdbstub import main, report
++
++
++def run_test():
++    """Run through the tests one by one"""
++    try:
++        phase = gdb.parse_and_eval("phase").string()
++    except gdb.error:
++        # Assume the guest did not reach main().
++        phase = "start"
++
++    if phase == "start":
++        gdb.execute("break sigwait")
++        gdb.execute("continue")
++        phase = gdb.parse_and_eval("phase").string()
++    report(phase == "sigwait", "{} == \"sigwait\"".format(phase))
++
++    gdb.execute("signal SIGUSR1")
++
++    exitcode = int(gdb.parse_and_eval("$_exitcode"))
++    report(exitcode == 0, "{} == 0".format(exitcode))
++
++
++main(run_test)
 -- 
 2.39.5

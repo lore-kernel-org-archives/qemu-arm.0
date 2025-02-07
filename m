@@ -1,160 +1,295 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp428646njb;
-        Fri, 7 Feb 2025 11:04:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWX+OoKmDHfTbzsiqh+Ki+wcOlc4IE9XtQXIgn09TIL/gZFTpMIHk/AjoOUX61AHi6ZzRrkOQCR36s+fw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFzHEPEFbDyUjUv+3cQe4mf8iq/2ykmBZ1XwD3Ln4pMP/V2f2a4mCs/8yY0mxxLmaYkFmiD
-X-Received: by 2002:a05:620a:29c6:b0:7b6:7030:511a with SMTP id af79cd13be357-7c047c7521emr712851285a.37.1738955042616;
-        Fri, 07 Feb 2025 11:04:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738955042; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp505019njb;
+        Fri, 7 Feb 2025 12:38:18 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVzqUSWtF3yriN+/YGvLHu/+41spKdw8GOPerbGokBEoy2e+VMUcUVUiTfgR105LAxjPtEkcZiL5QeZOw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGro1n5ncUp6qVqHwZQ7UPf3n5VowJX4+8FsUW6YaOoKlhPPMuz/x8QBg0PWFBqxgOIvKA4
+X-Received: by 2002:a05:622a:8a:b0:46c:7646:4a3a with SMTP id d75a77b69052e-471679b1655mr62259031cf.7.1738960697824;
+        Fri, 07 Feb 2025 12:38:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738960697; cv=pass;
         d=google.com; s=arc-20240605;
-        b=OOc0e6lPa+sl3jKDj9gyXNNjHgpObv14hpb+5c/h4tOCNN92U1GzDsZa07f5RSFGx2
-         1oLhm9GzP1pmAfr53PWtlF60Y8tSfS2eGYKqe1s9UMClxZ8FG0uDVcRi2mas2kQUbwM1
-         jYF/aJZk+Fap+TQsCtKtWj1oASZu0v13SsyT5RSvW4hgXMc4uGU9CcYC+dh4K7uf3P0M
-         xP68EmhuzrkQRdXgsMW3Z05J4BFNIvzKP8rzs/X1yb6GKR48SLFzOU5QNvx4GJXlE9Y3
-         v1hD/yZVoRcUMpdRh5EYw1VUS36I3AJVO02GtS94EJDGTvaKACwK8eqDK+ucucES18ce
-         mVVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=EOZaCmc+jkTFEa+Mv6i5PL9/lNWDvu2sw2nIgJfF9EZ2xXnUwsRINmbmuh3AeK4p/w
+         7hYG76vpib597wN558ngCDhI0bjt3X+nblhk68hSxTzb6cThMAGkE+dtITRR2tNxABS+
+         QmG0dwt4JpyYYTTW+8zSDy3sEdMIVu8esb2oEFvqPi/r1XVNRvsD5WM5wbiuC54GZUpz
+         59kQ8oHJQN7TTWrqQKh89jTB1X7usEX5j6j7PXYEW5+xURPaZRiVX37GZnVtG1DDL6ZB
+         yypw7aNug09K7eif7+A8ODnxaYRLTexE4AiPiVXqVH/qwG056vHTqkvJNzJCATrPHj0M
+         lBGw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=x5iLhqQVo5p3cfm1ZHXkEjzjBbO03jMKvKOw7vCeE+w=;
-        fh=+14RDqOiEl341Sw3NqTk2yeTqK5zeOdG/41RkpUPr1k=;
-        b=ABjCs2Gh4g452k7mjdStUoU+1H8fuOAs5ogvP1uY6aizNvyNAiy0tn7VlnvugZLwXB
-         3CQnw+5lfj6AUl3uTbnw66aMK/9mI8raOGn22PNFl7/muK7cR0kj3AYr9PI0u5MkNN1j
-         mCy01zXHdTQO73C2FjDvqvfK903k12JKJA5hnIiGdl15nliHv0/JQ4lHugHL5cKVD3Hb
-         mH2z4b/GP9Prb+Dn7jdaRzPYc3q348dQD5hixR8WPMCyZX/uA4/0heXxuPlp4h4N1L+Y
-         gVHACkql6eSWvG3OY+Nh6tljxuM1qt1j+Ek2hA64X6Hua6bHpnHXaG9EvvIK6aOn1WO8
-         bepQ==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=DjF6AlmFefWU7Pa/XVVmqQzEwRt7+ijjXNqzZKKZFmQ=;
+        fh=PNb9Yi80fEDtgLbYTBt7z5qCl7A6lgtJrQaLl7xlcLE=;
+        b=DA6YHiwF68y+wLfeymb4s/oaHf2bjM75MHP9b+Zz6NnSG/DBF9cfko6SKs335ds9vR
+         RlLZ81j7dYeYSYqmf/HD4A0i4U6LEvkyEn5tcbv2Q2kEUAVrVDmHbQcTEYdWiCC+Tcjq
+         PYXiJnGEXwVO5Vy84acj1nosJW53Fwq606lcjSFMCD3WsrG5v4Fh9AfCSZ+ZbzXsH2EQ
+         Te2+iIv5TIT1LZ/4iv7eWvjlvSwfFG5W+0LQ+O5QsTQJNNssn5O9ac2nHxby5m19KPe2
+         Xm0ErdRw+SugkCriPdvtzMgAj6ns8bvuQwxvPvW9VqZogMR1C42Y4AHtBgnxXk4DnwIu
+         nJJQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4eTpicz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=RW1f6CgL;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041e957dbsi406704785a.229.2025.02.07.11.04.01
+        by mx.google.com with ESMTPS id d75a77b69052e-47153b6f1e7si38666051cf.304.2025.02.07.12.38.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2025 11:04:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Feb 2025 12:38:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4eTpicz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=RW1f6CgL;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tgTd6-0002T0-2I; Fri, 07 Feb 2025 14:03:08 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tgV6V-0006pJ-II; Fri, 07 Feb 2025 15:37:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tgTd3-0002Rw-GI
- for qemu-arm@nongnu.org; Fri, 07 Feb 2025 14:03:05 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tgTd0-0005QJ-5N
- for qemu-arm@nongnu.org; Fri, 07 Feb 2025 14:03:05 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-21f40deb941so43277345ad.2
- for <qemu-arm@nongnu.org>; Fri, 07 Feb 2025 11:03:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738954980; x=1739559780; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=x5iLhqQVo5p3cfm1ZHXkEjzjBbO03jMKvKOw7vCeE+w=;
- b=C4eTpiczapIPhgWIFBn5btO97h5HQLR/En4pq5mvv8bFJDw0XpnlwnB/QjkeBUil9F
- bc7qgN4QYSOhKIVGUSoCmDUjcH2fkJF/2QjZ0jFRcqCs2gxfvMHNPdIIw9RK2hQRUVv+
- 9/iARV7uvkA1yw3J3we3Qv/tXuNiXOI6HdRlcaL94kFvM3ZN+SQbTTfDcxerMVYT0ger
- IeSCutLmAPd3V9p5LFcTYUKlcGhea3Rv8kaXL/VAyzgWeED/s2uxjeaOsWG9KGmOkBrW
- DmGccshjwVtAgd1l1MTVmP7IcnKFnal+QTI/G65QH8hmIaHXCvluNKVRJucppp6Q/fs0
- iX+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738954980; x=1739559780;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=x5iLhqQVo5p3cfm1ZHXkEjzjBbO03jMKvKOw7vCeE+w=;
- b=O2gpMGmutgew9zwzaR6677tFUPFgkkgxkq1GoXmQyn7Dp1eg7YaMU/WlQBfZNX2eCU
- mOVIRYH8gP/EIdtrKPrNk5g2vfuAd36gnJuIJBrfRHt9EPENvaVCJMGlO6hrDjRF/anw
- VNJkLseZgB0n+qLPcYVHlFJOzpPgSGgOb7+BsZ3qf0miq6N9h7AqjW4KwEKeu6/+cqoy
- GN1FZb25HWI8fmYl8Rhb8wchifjlu6IwqF7MzA/M7AknpBm+zDlIcOBqJZNNmcgup5FE
- GozEwRsFToQ+3JKxj9ISrOZ4fQN/2RvB/Tpnpy0Uj7KfuwKx+4+RMT/r3Uw6K5D9q8nh
- vvpg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXpNVxYYwd94ya2+Xkbv4qxiY8zVt2PO1ePsYIL14clzB8xcecQjf/n11l6K2K1bEMPcN80GakRiA==@nongnu.org
-X-Gm-Message-State: AOJu0YwVoHr1bqHv8u4EDHQKXU+XeCNKMwlYdNeEUib94PIT3ALoeRXX
- PzMxdykh1uMsI7j1/PYhLoweoHfrAgcMn1X9NTNjLoxjHN+PVQ0n0REL2f3LLs9eI3L8uHx+Sz+
- 5
-X-Gm-Gg: ASbGncsMOPlHibVAuU7dXH3rxvz1YlUjP7TeQ41Cn/w8DKjgm/14NUWO4r8ZQpB5B+d
- sAZZySMNIXXcq3Y/jMaYs+hNV4RhpYbCyFVxfxGQVYVfjylOPT01yw2yH/mPsqh6FzGN2OPR7nn
- A5706sW7hqCoGj3Mn4pFRsNW+Q/3gwV4F+WaWeIFF3mMtP82gc1h4yH7RsN5rNGO8lRKeHtb72d
- w/iALMNFaHt3vAVPYV0baLmz+9KOpegLYQHYIl1pYQZOgswAT97KZoBidNYgy3UHWH8RA8dSasp
- BeXrjEtcYGhJZYFVEGz1oNLr/leYlfjicSy/4OuaJCB/0N472fJ/YMk=
-X-Received: by 2002:a17:903:1c4:b0:215:72aa:693f with SMTP id
- d9443c01a7336-21f4e6ce75emr60838215ad.9.1738954980335; 
- Fri, 07 Feb 2025 11:03:00 -0800 (PST)
-Received: from [192.168.0.4] (71-212-39-66.tukw.qwest.net. [71.212.39.66])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21f3687c68asm34363405ad.172.2025.02.07.11.02.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Feb 2025 11:02:59 -0800 (PST)
-Message-ID: <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org>
-Date: Fri, 7 Feb 2025 11:02:58 -0800
+ (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
+ id 1tgV6U-0006p2-DF; Fri, 07 Feb 2025 15:37:34 -0500
+Received: from mail-mw2nam12on20614.outbound.protection.outlook.com
+ ([2a01:111:f403:200a::614]
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
+ id 1tgV6S-00006N-Ag; Fri, 07 Feb 2025 15:37:34 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bTOdrgXjblsuhO6ttjwP4oUXtS76umbYALJLRsoZ2YXx6kb0Q13ckhyFwDkkN+pFVEvnmyIGjNzHXqW2zKLCBcT0xdQsanbfusgXGzZZv6VQHxsTMFqApdcANHg5ijobVO/sa+bFpauFdFiRfWmNeqt5IT0thHSH57VHl/fQNpXyA6kO9saOVOMkSwoiuF2AO8YvckeZTLiE1dbg6UyeZcnThll3gZBcW+ZGxTTGKCJ+hwMmx1pm3pJdlubWn4bq/uskxfjcjarwpHg0p18dyNNdCoPa3R+qbM87f+t4uT8AcYKZQG6KkDt4sXeCEWPyfr/WcezXeTww6eLRnJg3mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DjF6AlmFefWU7Pa/XVVmqQzEwRt7+ijjXNqzZKKZFmQ=;
+ b=iYaiu8mOffLnwlew/+WtZTDb0SPYLNlZTebEFeB+7dJ0I350I1Ts2mYR5bAwvYhV+vmoCMgEl26b2FaDIL1z8fRVaqGHa+GWU7khICaDtgRt6vKNDqRTMPvlaKcU005oUNdvLF7tY6X7CF36wKY2se5GGaIA7ZeX2Q8eVC7nuhNIk/+Qj9gca6UKchWzXLxRfiSOPUGTRWQId7ME3D7Dkj8pIP7z78EPCAScXbbGeeAzt5iqIBpwgixemYAu1tx5aOH0Eta3d/l/olgCjTp0+nla+noQfREGw19I34TLjwf6CCm5R3pXFUHiVbun7jaRgHEOwRvv+CJmr9XhQk6mUg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DjF6AlmFefWU7Pa/XVVmqQzEwRt7+ijjXNqzZKKZFmQ=;
+ b=RW1f6CgL0k6ofwT9gNmkLKxYMrVuvWdMtN9PUJB1E+mJGimAEBpT3b3v9G10StivGRCR0KVOxauqQgsRoP/EaJbISRfpWy3AuL4Zx7T4ila5Q7zaXfmlMlO28Wk7fJ9RRd7VYgvItRe9+FqfuTfhGCrbLVEd2vK5KHh38PtsU/U4XF9JrJPhoIGBsTOE+SbsJfZGYGNPT2UpgxqmO0k+eDf52ZE3okAEx7Ro5FjLxiEunZYsylG1tICkCIEFkr7KolJQQs1xISQXJqq0JkPK6ghq4/e+WVUhwDf/QKr2In3Opt1q+JJ9eEvgS1WtM/6s3WLiFHgADRHEZ3RcS1vcEw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MW6PR12MB8897.namprd12.prod.outlook.com (2603:10b6:303:24a::19)
+ by SJ0PR12MB7476.namprd12.prod.outlook.com (2603:10b6:a03:48d::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.11; Fri, 7 Feb
+ 2025 20:37:23 +0000
+Received: from MW6PR12MB8897.namprd12.prod.outlook.com
+ ([fe80::7c55:5a45:be80:e971]) by MW6PR12MB8897.namprd12.prod.outlook.com
+ ([fe80::7c55:5a45:be80:e971%4]) with mapi id 15.20.8422.009; Fri, 7 Feb 2025
+ 20:37:23 +0000
+From: "Matthew R. Ochs" <mochs@nvidia.com>
+To: qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
+ nathanc@nvidia.com
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, ddutile@redhat.com,
+ eric.auger@redhat.com, nicolinc@nvidia.com, ankita@nvidia.com,
+ philmd@linaro.org, gshan@redhat.com
+Subject: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
+Date: Fri,  7 Feb 2025 12:37:22 -0800
+Message-ID: <20250207203722.304621-1-mochs@nvidia.com>
+X-Mailer: git-send-email 2.46.0
+X-NVConfidentiality: public
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: BYAPR08CA0069.namprd08.prod.outlook.com
+ (2603:10b6:a03:117::46) To MW6PR12MB8897.namprd12.prod.outlook.com
+ (2603:10b6:303:24a::19)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/15] arm/cpu: Add generated files
-To: Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-References: <20250207110248.1580465-1-cohuck@redhat.com>
- <20250207110248.1580465-16-cohuck@redhat.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250207110248.1580465-16-cohuck@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW6PR12MB8897:EE_|SJ0PR12MB7476:EE_
+X-MS-Office365-Filtering-Correlation-Id: e83e7469-ce95-4249-b2a9-08dd47b73a2b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?z6xR5nxUVrK5qu795PBjax/azCa7RiERCKZcRLWhCpIUXNyR62X0gYcPli6s?=
+ =?us-ascii?Q?6b3akL6EDmLz6Bhy4UhPr9GOoVIQSK0dZbFppukC123eSF+Zd/kZm3nNHO6F?=
+ =?us-ascii?Q?nUUSJBvyIgwQ8ChZX3dHk2H6rTjbkTjLDbkx2Fzy8mVOJhx1f9WIwJm70IMn?=
+ =?us-ascii?Q?ni0Pbdl0B5qPygjeAmmeiWEDFV18+aF6XXAg75u4VKkrEO05WvbUTd2VZ4DD?=
+ =?us-ascii?Q?OcTx9vrZ/xoArCJOHvFSp+ckVz+TSxAVdbjppKgrri1ZzERn9/+W8xGSBGME?=
+ =?us-ascii?Q?JTAZOwKCsH8fAfb//N55PkgQLvLOw1AHH8sOp2QyIKTOzp25sondOzMYGN5Y?=
+ =?us-ascii?Q?HXlnJQMaB4uzZ+OZZnGB9TSewunZ77WClbisP5jQJqSRE9n4stdyZBDhJECr?=
+ =?us-ascii?Q?fJQIwXkEKEFfXwPD0KZoFnni0SK5uGZ4eTtu9dgdZUZxKCFvTK0plutmJEeR?=
+ =?us-ascii?Q?pTc39qv4nAxDIkZ0gJM+vOzUIyrZI23HZbOP+m+GcQxqhY13pQaDLDGu6GGc?=
+ =?us-ascii?Q?MACN6pYMIwGIC6R4kOmraIUy2/x4G3Zcc2F41htTR8RczIv292/O8QuK5dSi?=
+ =?us-ascii?Q?ZF8t0FMuYBMaTv1corqJBBRAcv0959M9yEBk4+VChncb2HGalFlXn64zqbdq?=
+ =?us-ascii?Q?jeYpnD5lf/4rYXiuvm5n8MlLEOFSJJnKb3E3XtJrfSEWvWFi5IW+HZtt8WLb?=
+ =?us-ascii?Q?D8SDbMrJIoV3cX5bOHT/Dkw8Z0SgaXY2NdHxx0FmGgWrtWEzPod28sKO4VQX?=
+ =?us-ascii?Q?IeJj07wIjy8z0QW4eQVkVIfqKx/XGiih5rKu3iQezBVlWwF/jMT08KM89ybH?=
+ =?us-ascii?Q?ZjdvbjciaDg5sUNAzPAAvwYb3OuJ938wRivMUtGrtJvSAG/t1VHMJ7BTmpZe?=
+ =?us-ascii?Q?pbPAQ/4C1HxD84ap1C1I6GOdWsK7TKy98igd2ifm/0O6Alh+7qs0PWv/6DF6?=
+ =?us-ascii?Q?fPikgj5KL0Xa8jreGM/4HJlFNa3KW0rVn0JI6GNRQaUfDD+/o25skA2Mw0Lt?=
+ =?us-ascii?Q?3NGAdyRYM3V1ZfE1gmafzqIz4LNjNvXIPJdcvAGWzHoo03TBAWiRWtBx828s?=
+ =?us-ascii?Q?+Jevu8CaZCZs4bTQKz1/c7dzLG7tO4MFOcnrZemjI3vDZFdaFKVYzk9czEBR?=
+ =?us-ascii?Q?iMGaBlNCewozKg77YLee2ppdD2DgpXKfq6zQKNCvO7BXtHNGh+MKgJ2Xf7Rp?=
+ =?us-ascii?Q?LHy//Vuo6tpvtMJT8QeLYnPAtL5zyO6mfhpJUqHKkeAhBHx2cmoWsMFqXySJ?=
+ =?us-ascii?Q?xr1FXOqIXhhnC1qZvU5CjgEy/aT+BvHeEP5Bvmt+eqnpq6NGGjg2Ns8yzn/K?=
+ =?us-ascii?Q?+HTMBVSQO0sENaDfde8hicESj7rKldOZKhgLwcvLuVYRDCcUciKCTc+DFsjZ?=
+ =?us-ascii?Q?Z1zhf+F9mYw2V56j46CoWig3J0qN?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW6PR12MB8897.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YRZcQMDF9to0tCQDwN+SWqWnKJH4h9TBNyZcTXvZVENHeQlLRfu4W2BvMERu?=
+ =?us-ascii?Q?A+OstJJOBUezTiwozQ9f9aBSz+kd6/5W2kMcOOcR8w4LyUC23D7ZOixc1kTl?=
+ =?us-ascii?Q?nKnAUkiobBEByNZL/4E6TsELyWYVk9il8Zydy+Z0eGCvGNtV1vA5CUU6BNj3?=
+ =?us-ascii?Q?m59fo3M6ISdD2aKI90OgsT/RNKEgULup0LzD5BKfDWU5K7Eax5rPx1hk8L9/?=
+ =?us-ascii?Q?GcO+TzWyfZrmLCu+t56N3pz+1NDMiK7TSlvN2orNPy/2bqRleIh1oSfhVduV?=
+ =?us-ascii?Q?/5RCqbOUYqTL2F3k3h/DrBTtM7Lo/2IGeLxatK+iUPWfLUA/QL+B8rQ3Ugsh?=
+ =?us-ascii?Q?9wpe6PWvW/fP1pjMFKxfjZ7osPKXsCa74feRbpvG6V5whg/ZzsLy/R2O7MCO?=
+ =?us-ascii?Q?kUPS6klDuIZIjNiQ/EKwHHjIKAq/r/MJuaKkTHkyZFp3oEr9QlfmA5Py3+bj?=
+ =?us-ascii?Q?vSeHuMMdayjBKw6lf5P5iaDme3RK/HlkdePUMfD6GxK73tDFjOVIyQ5+txFa?=
+ =?us-ascii?Q?pfNszE0iRGmzQh3kOLuNS+KD0JsQUqMClxS5wGsGpQ0IMDBaICv+5r9cTYix?=
+ =?us-ascii?Q?v/VRDjFWcHsg2rUUhLjwFoBxYLwwsZFjr1L0mdFQWXvTOFg2Rt9jnKOQdi/U?=
+ =?us-ascii?Q?KCpbcnmhh/5AIO66iNtIKcvoYF6MGscaEb7vfljeWeE3bM+BdhU2vmEYLsZ7?=
+ =?us-ascii?Q?GPDLeL8+6x1MNSZGIAIapjurZhy+aMykLYaIvb/74K+BZLTPQNbQs6QLAZCz?=
+ =?us-ascii?Q?kDy2cjNZVu1QPFZ32sT2sk7FnciV2okn/txkUcqN5L3AqR9UCjjp4iaOO7WJ?=
+ =?us-ascii?Q?qnA9VVlSZL1o86ugFd6whz2ydv7n6F37Bzu0PkmLmxds/VvfE3n/BRkOaRjQ?=
+ =?us-ascii?Q?NP308WfQDStnXWAL7FYAgoqNNzXHZKHqjsuVD1kekFIidZcQqTssAjM1NmkS?=
+ =?us-ascii?Q?7Y+EYsN1457x2Cw5sXGUsyYFRyV/5HZkWhwzg5HAJjRQNCXFvWX+XB0JtmfF?=
+ =?us-ascii?Q?LLpomjE53u3g4R1w4r4d0AB0CzImMYeWyq/OmexfVd+qPHCnnMyB9EJclxWr?=
+ =?us-ascii?Q?Znwpvod9/6w48yl6mZA+Y9jr9M1c+J/r2evLwDzlypcE//CDvsG1ehtgTCrX?=
+ =?us-ascii?Q?S5rL8NjsjijEFN+ZrMGx801ArSszTSSdmzvRc7W+2oGnL+QdJXgrieCLRYFC?=
+ =?us-ascii?Q?OpMLx6isSMvGsN1N7wxR7CRCUjCSh/CdoTzjPxZkT2utaKcSz/tt2ltoXkNl?=
+ =?us-ascii?Q?nabCzYpoGyi59/eEmA1BoxizZMr2pJh88XlsVqqc0X36p1gE7h0VsMzPlCT7?=
+ =?us-ascii?Q?hZk+nedFboF2NJt0Y333Uzn57Q0mwXz38uiUVB2HrgUSuUZByWkUVBVQO3av?=
+ =?us-ascii?Q?jeD4Nfz983l+SM2w5JTfIOVayGgBoE0MSmb5o7YUUSRldq/GWjo7Y99PEzr4?=
+ =?us-ascii?Q?LPHVvtwAjyaeXrSnTxhWBxnOh6VFijbqmVlcEZ3YF5vrxk/OWcvz7DPXlSwd?=
+ =?us-ascii?Q?gXAZxLuvp2hSb4VVQfEKkB0RhUZK8CNaMGDX8PebG3mHXolJge+a+kvXDqAk?=
+ =?us-ascii?Q?e01IGBweSSkY1CSd1erTLtV0fMb2pZ0SpJtLEYAS?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e83e7469-ce95-4249-b2a9-08dd47b73a2b
+X-MS-Exchange-CrossTenant-AuthSource: MW6PR12MB8897.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2025 20:37:23.8496 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: yztf/Q+/s7ISJHyfHHE7113vOv8Uws6R+vYHbAbf8wUMzK6a0YJxMTWQ1UUx0xtKl5RbN7J9morEvA6bdc5TPA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB7476
+Received-SPF: softfail client-ip=2a01:111:f403:200a::614;
+ envelope-from=mochs@nvidia.com;
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tn2iaR90RT9Z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JMN/rm1NLMbz
 
-On 2/7/25 03:02, Cornelia Huck wrote:
-> And switch to using the generated definitions.
-> 
-> Generated against Linux 6.14-rc1.
-> 
-> Signed-off-by: Cornelia Huck<cohuck@redhat.com>
-> ---
->   target/arm/cpu-sysreg-properties.c | 716 ++++++++++++++++++++++++++++-
->   target/arm/cpu-sysregs.h           | 116 +----
->   target/arm/cpu-sysregs.h.inc       | 164 +++++++
->   3 files changed, 860 insertions(+), 136 deletions(-)
->   create mode 100644 target/arm/cpu-sysregs.h.inc
+The MMIO region size required to support virtualized environments with
+large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
+For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed through
+requires more MMIO memory than the amount provided by VIRT_HIGH_PCIE_MMIO
+(currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
+new parameter, highmem-mmio-size, that specifies the MMIO size required
+to support the VM configuration.
 
-Why are we committing generated files and not generating them at build-time?
+Example usage with 1TB MMIO region size:
+	-machine virt,gic-version=3,highmem-mmio-size=1T
 
+Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+---
+v3: - Updated highmem-mmio-size description
+v2: - Add unit suffix to example in commit message
+    - Use existing "high memory region" terminology
+    - Resolve minor braces nit
 
-r~
+ docs/system/arm/virt.rst |  4 ++++
+ hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 42 insertions(+)
+
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index e67e7f0f7c50..20b14c22b659 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -138,6 +138,10 @@ highmem-mmio
+   Set ``on``/``off`` to enable/disable the high memory region for PCI MMIO.
+   The default is ``on``.
+ 
++highmem-mmio-size
++  Set the high memory region size for PCI MMIO. Must be a power-of-2 and
++  greater than or equal to the default size.
++
+ gic-version
+   Specify the version of the Generic Interrupt Controller (GIC) to provide.
+   Valid values are:
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 49eb0355ef0c..d8d62df43f04 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2773,6 +2773,36 @@ static void virt_set_highmem_mmio(Object *obj, bool value, Error **errp)
+     vms->highmem_mmio = value;
+ }
+ 
++static void virt_get_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
++                          void *opaque, Error **errp)
++{
++    uint64_t size = extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
++
++    visit_type_size(v, name, &size, errp);
++}
++
++static void virt_set_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
++                          void *opaque, Error **errp)
++{
++    uint64_t size;
++
++    if (!visit_type_size(v, name, &size, errp)) {
++        return;
++    }
++
++    if (!is_power_of_2(size)) {
++        error_setg(errp, "highmem_mmio_size is not a power-of-2");
++        return;
++    }
++
++    if (size < extended_memmap[VIRT_HIGH_PCIE_MMIO].size) {
++        error_setg(errp, "highmem_mmio_size is less than the default (%lu)",
++                   extended_memmap[VIRT_HIGH_PCIE_MMIO].size);
++        return;
++    }
++
++    extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
++}
+ 
+ static bool virt_get_its(Object *obj, Error **errp)
+ {
+@@ -3446,6 +3476,14 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "Set on/off to enable/disable high "
+                                           "memory region for PCI MMIO");
+ 
++    object_class_property_add(oc, "highmem-mmio-size", "size",
++                                   virt_get_highmem_mmio_size,
++                                   virt_set_highmem_mmio_size,
++                                   NULL, NULL);
++    object_class_property_set_description(oc, "highmem-mmio-size",
++                                          "Set the high memory region size "
++                                          "for PCI MMIO");
++
+     object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
+                                   virt_set_gic_version);
+     object_class_property_set_description(oc, "gic-version",
+-- 
+2.46.0
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab79378ee30sm54936666b.160.2025.02.07.07.31.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab772f4870bsm286370366b.32.2025.02.07.07.31.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Feb 2025 07:31:15 -0800 (PST)
+        Fri, 07 Feb 2025 07:31:18 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 016CE5FB89;
+	by draig.lan (Postfix) with ESMTP id 4FB7C608B4;
 	Fri,  7 Feb 2025 15:31:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,69 +36,59 @@ Cc: Peter Xu <peterx@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-rust@nongnu.org,
 	qemu-riscv@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 07/17] Revert "util/timer: avoid deadlock when shutting down"
-Date: Fri,  7 Feb 2025 15:31:02 +0000
-Message-Id: <20250207153112.3939799-8-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 10/17] gdbstub: Allow the %d placeholder in the socket path
+Date: Fri,  7 Feb 2025 15:31:05 +0000
+Message-Id: <20250207153112.3939799-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250207153112.3939799-1-alex.bennee@linaro.org>
 References: <20250207153112.3939799-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ma2hKp0c4Gx2
+X-TUID: //0YNm8gynH6
 
-This reverts commit bc02be4508d8753d1f6071b77d10f4661587df6f.
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Now we catch attempts to clock_step to the next timer when none are
-enabled we can revert the previous attempt to prevent deadlock. As
-long as a new target time is given we will move time forward even if
-no timers will fire. This is desirable for tests which are checking
-that nothing changes when things are disabled.
+Just like for QEMU_LOG_FILENAME, replace %d with PID in the GDB socket
+path. This allows running multi-process applications with, e.g.,
+export QEMU_GDB=/tmp/qemu-%d.sock. Currently this is not possible,
+since the first process will cause the subsequent ones to fail due to
+not being able to bind() the GDB socket.
 
-Previously most tests got away with it because --enable-slirp always
-has a timer running while the test is active.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20250117001542.8290-2-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- util/qemu-timer.c | 16 +++-------------
- 1 file changed, 3 insertions(+), 13 deletions(-)
+ gdbstub/user.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 0e8a453eaa..3243d2c515 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -675,17 +675,10 @@ int64_t qemu_clock_advance_virtual_time(int64_t dest)
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index c2bdfc3d49..fd29d595f4 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -317,9 +317,19 @@ static bool gdb_accept_socket(int gdb_fd)
+ 
+ static int gdbserver_open_socket(const char *path)
  {
-     int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     AioContext *aio_context;
--    int64_t deadline;
--
-     aio_context = qemu_get_aio_context();
--
--    deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
--                                          QEMU_TIMER_ATTR_ALL);
--    /*
--     * A deadline of < 0 indicates this timer is not enabled, so we
--     * won't get far trying to run it forward.
--     */
--    while (deadline >= 0 && clock < dest) {
-+    while (clock < dest) {
-+        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-+                                                      QEMU_TIMER_ATTR_ALL);
-         int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
++    g_autoptr(GString) buf = g_string_new("");
+     struct sockaddr_un sockaddr = {};
++    char *pid_placeholder;
+     int fd, ret;
  
-         qemu_virtual_clock_set_ns(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + warp);
-@@ -693,9 +686,6 @@ int64_t qemu_clock_advance_virtual_time(int64_t dest)
-         qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
-         timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
-         clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--
--        deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
--                                              QEMU_TIMER_ATTR_ALL);
-     }
-     qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
- 
++    pid_placeholder = strstr(path, "%d");
++    if (pid_placeholder != NULL) {
++        g_string_append_len(buf, path, pid_placeholder - path);
++        g_string_append_printf(buf, "%d", qemu_get_thread_id());
++        g_string_append(buf, pid_placeholder + 2);
++        path = buf->str;
++    }
++
+     fd = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (fd < 0) {
+         perror("create socket");
 -- 
 2.39.5

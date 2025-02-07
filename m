@@ -1,213 +1,121 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab772f843f4sm290915266b.68.2025.02.07.07.39.40
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp289311njb;
+        Fri, 7 Feb 2025 07:57:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXPRNEjhT9FZYzk2wd+eYEy71dONoe0glyJaiKY4mstenmfpnsCmVwEIW9KPhg31eLUjK5vTaG0iXFcHw==@linaro.org
+X-Received: by 2002:a05:6000:400f:b0:38c:5bb2:b932 with SMTP id ffacd0b85a97d-38dc8da64damr2660785f8f.3.1738943835824;
+        Fri, 07 Feb 2025 07:57:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738943835; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Ls3gtetyLUiZsTTeESs6ox1TiozzKiQ1eaVheiSlU30y2/AuntLY3XB92eagIFA35h
+         kT+59eRitNv7NDMvsT7tqALZ/KvpMFdVfPT+LxKkxs+38tkBGnf4f6KD+Sq8CoMlhGeD
+         qUuUW8BNmMStpAFLg0VqqGofZWNKqNkPGW+JVKMyk67vztwMwZe9WLNND52edKB1gnbK
+         EEk4wGGu8B8/HdGeqQgseymfPTY1fu5T8fKqN8a0En869XcAorGd0Bv4htT6YfKsRVa4
+         HFLb9rHiGhqGPnso2D7qM69op8+9H9ywl/4j+0lOFIeRtHLa0DjeTnSb63oACYnxzKH+
+         ypuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=jqvGFtgLIcssDAnzxgAxV/XWOhETlMnJ77XRKC1k4ck=;
+        fh=x6APFmbnck5evsJd+X0DlOgXg4mWZKViJLCWlzqHOKo=;
+        b=jMFusoTTzdYOO1J6AeK9D9VdyGIsX1lkCIKn5PZ+uj8lSMIVpiTldblhuwC3WB+XSM
+         v+bjOhusL9OTvnRY2abNJlNjJEjk2xe51CuAJVo9HHPhGDX1/BMT7+qFrGkQfy15/uzo
+         bIgf9ce+FUaM/Q1lHmrbMpmm8gglCxD6RLPJR515R8L3MGTLbho3s9RGoigGZLu1oMhb
+         +q6uzY1cL4793y8/+okpDUZoOhVFjYsdC1mmMy7UjK9zCjquGdJAjkVEjtvG8h2/N0vO
+         dneQxI8GoeUnEcTiomAXuJFw2Mx/8Ts3NPqE5u2/1W8r8Sv0CVnOjSZOYKVNKTQkiwJI
+         nEvw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSgAyjwM;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-38dc6d4f4d1sor1134912f8f.4.2025.02.07.07.57.15
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 07 Feb 2025 07:57:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSgAyjwM;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738943835; x=1739548635; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jqvGFtgLIcssDAnzxgAxV/XWOhETlMnJ77XRKC1k4ck=;
+        b=vSgAyjwMZ2qPiW1yEk8NXt+supgm3F9riJxhfZY4ZSuxrzJoJGP5NYzIkBwKxScmqH
+         gfO6PHOwqTp2RL7wHNL9pKmJk3rksbwM3SxG1DK3NnbvbZh3W4OJ/GQ2J91XXbrX5hzl
+         +XxHf8+oq8stFWqeCwQGE+KMBO6emlqU3EBfRmDONZ7UtMLsnqeNKEeo//NkiNcs8Yaf
+         i54DnJoo67RuHo6jzjUTBxvlnWz0OMSq6aaYgIfhtDaVMFXzdcXbIpiVBVtLiZVPmqaY
+         pFknLe0znY/lVOq816Rpv1tWlOy4/ltIT+rNyk+zRpxF9iDTstaQD55JHAkxtmsCV8Gs
+         Bg3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738943835; x=1739548635;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jqvGFtgLIcssDAnzxgAxV/XWOhETlMnJ77XRKC1k4ck=;
+        b=i2CoFE7Q+r9ZYek347cnwDqx/YGVpt+z1jchim1SdAW7Zh+Y5vrZ3pzIuuXzJzBrOw
+         xIHlNUR0RgN2tVri72SDYFODWnVmeORv1o62fQlhblEoxMvNY2Nsw+iMgQkUcwoGGZWF
+         nNyHi3Ph1fgXsq/6WnJpQc+KRPoIa06JJDypR0I7o9xuzrh4PYw2+eIDcs6accUCisRp
+         jclf/NU/B3qiqNqGovTz2mv+UnDcjBGiKhjpruw9U87I67O16FTPJ/voz8yKzyRsAUAM
+         yiLwz6b6A8512aI6IZaVEiLPPkpYZeV/GQObi4lluZltBqEmbntgKq/KrGJ/Y6v7jQQJ
+         XaHw==
+X-Forwarded-Encrypted: i=1; AJvYcCVnIXyPjmm5s3WN1sFaW9irTLcfD72UflxkA9geoZzklO7Zp0quMlcLc2+3ZRTza+BN1x/Sy9yQzKYOmg==@linaro.org
+X-Gm-Message-State: AOJu0YyYbxS5iwCYPuTbgijJ1/UilFcb+nIhpzMkO3HoEe+++fHe6emu
+	Ohxv9oojlGGthfRWoPPMSnNuOKbw09d3xsL2BZKjgoMovmiVS/iougLO3cO+1M4avw==
+X-Gm-Gg: ASbGncuYQR0x+MfYR24nGwm02f5HTXgKhfxPhwQWPHh/4etRHp0mlIpFgMa445hCGt3
+	J2fz0EZZMBA9RcBUzbj0QtMlRekJDauDcjP1aCCWFmujjQ1jBEjvlGexAz3WaXtHKqsy7aB+Mg4
+	0HdMPBa8ewGeBiDMqIq20t9W0QFks2Scr+CUwfQygcuiCkS8TIAshW1YIXHNXzWAyhvGwDwkDRG
+	6D7nX3P47104q+Ru17iU6i2MfINSNeZJ7HouQW0merlEDsXKcUwhwk69VGCyzHAr/nheqDzK0gR
+	It+CsmYCmdmAeA==
+X-Google-Smtp-Source: AGHT+IG0i0l5YpSBv7JUxMbvMfBfChO+FTI9m1yzLejFjQzYD8mDS4GA4acnoVtaTqBUwe2XXLFxaQ==
+X-Received: by 2002:adf:e90e:0:b0:38a:41a3:ac4 with SMTP id ffacd0b85a97d-38dc937334bmr2151278f8f.45.1738943835257;
+        Fri, 07 Feb 2025 07:57:15 -0800 (PST)
+Return-Path: <jean-philippe@linaro.org>
+Received: from myrica ([2.221.137.100])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4390d9334e7sm93748775e9.6.2025.02.07.07.57.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Feb 2025 07:39:40 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id EBB25619CE;
-	Fri,  7 Feb 2025 15:31:13 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	qemu-arm@nongnu.org,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Bin Meng <bmeng.cn@gmail.com>,
-	Tyrone Ting <kfting@nuvoton.com>,
-	Hao Wu <wuhaotsh@google.com>,
-	Kyle Evans <kevans@freebsd.org>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-rust@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v2 17/17] tests/tcg: Add late gdbstub attach test
-Date: Fri,  7 Feb 2025 15:31:12 +0000
-Message-Id: <20250207153112.3939799-18-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250207153112.3939799-1-alex.bennee@linaro.org>
-References: <20250207153112.3939799-1-alex.bennee@linaro.org>
+        Fri, 07 Feb 2025 07:57:15 -0800 (PST)
+Date: Fri, 7 Feb 2025 15:57:39 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.bennee@linaro.org
+Subject: Re: [PATCH v3 08/26] hw/core/loader: Add ROM loader notifier
+Message-ID: <20250207155739.GC3546768@myrica>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-10-jean-philippe@linaro.org>
+ <73f81e95-7636-4a55-aa29-d288b20005b1@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: xkKn/HAzUtHI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <73f81e95-7636-4a55-aa29-d288b20005b1@redhat.com>
+X-TUID: zDUZRpMiFqWU
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+On Tue, Feb 04, 2025 at 03:33:10PM +1000, Gavin Shan wrote:
+> > diff --git a/include/hw/loader.h b/include/hw/loader.h
+> > index 7f6d06b956..0cd9905f97 100644
+> > --- a/include/hw/loader.h
+> > +++ b/include/hw/loader.h
+> > @@ -353,6 +353,21 @@ void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
+> >   ssize_t rom_add_vga(const char *file);
+> >   ssize_t rom_add_option(const char *file, int32_t bootindex);
+> > +typedef struct RomLoaderNotify {
+> > +    /* Parameters passed to rom_add_blob() */
+> > +    hwaddr addr;
+> > +    size_t len;
+> > +    size_t max_len;
+> > +} RomLoaderNotify;
+> > +
+> 
+> I would suggest to rename it to RomLoaderNotifyData since it's the
+> data passed to the notifier.
 
-Add a small test to prevent regressions.
-Make sure that host_interrupt_signal is not visible to the guest.
+Agreed
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20250117001542.8290-9-iii@linux.ibm.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/multiarch/late-attach.c          | 41 ++++++++++++++++++++++
- tests/guest-debug/run-test.py              | 15 ++++++--
- tests/tcg/multiarch/Makefile.target        |  9 ++++-
- tests/tcg/multiarch/gdbstub/late-attach.py | 28 +++++++++++++++
- 4 files changed, 90 insertions(+), 3 deletions(-)
- create mode 100644 tests/tcg/multiarch/late-attach.c
- create mode 100644 tests/tcg/multiarch/gdbstub/late-attach.py
-
-diff --git a/tests/tcg/multiarch/late-attach.c b/tests/tcg/multiarch/late-attach.c
-new file mode 100644
-index 0000000000..20a364034b
---- /dev/null
-+++ b/tests/tcg/multiarch/late-attach.c
-@@ -0,0 +1,41 @@
-+/*
-+ * Test attaching GDB to a running process.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <assert.h>
-+#include <signal.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+
-+static const char *phase = "start";
-+
-+int main(void)
-+{
-+    sigset_t set;
-+    int sig;
-+
-+    assert(sigfillset(&set) == 0);
-+    assert(sigprocmask(SIG_BLOCK, &set, NULL) == 0);
-+
-+    /* Let GDB know it can send SIGUSR1. */
-+    phase = "sigwait";
-+    if (getenv("LATE_ATTACH_PY")) {
-+        assert(sigwait(&set, &sig) == 0);
-+        if (sig != SIGUSR1) {
-+            fprintf(stderr, "Unexpected signal %d\n", sig);
-+            return EXIT_FAILURE;
-+        }
-+    }
-+
-+    /* Check that the guest does not see host_interrupt_signal. */
-+    assert(sigpending(&set) == 0);
-+    for (sig = 1; sig < NSIG; sig++) {
-+        if (sigismember(&set, sig)) {
-+            fprintf(stderr, "Unexpected signal %d\n", sig);
-+            return EXIT_FAILURE;
-+        }
-+    }
-+
-+    return EXIT_SUCCESS;
-+}
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index 5a091db8be..75e9c92e03 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -36,6 +36,8 @@ def get_args():
-     parser.add_argument("--gdb-args", help="Additional gdb arguments")
-     parser.add_argument("--output", help="A file to redirect output to")
-     parser.add_argument("--stderr", help="A file to redirect stderr to")
-+    parser.add_argument("--no-suspend", action="store_true",
-+                        help="Ask the binary to not wait for GDB connection")
- 
-     return parser.parse_args()
- 
-@@ -73,10 +75,19 @@ def log(output, msg):
- 
-     # Launch QEMU with binary
-     if "system" in args.qemu:
-+        if args.no_suspend:
-+            suspend = ''
-+        else:
-+            suspend = ' -S'
-         cmd = f'{args.qemu} {args.qargs} {args.binary}' \
--            f' -S -gdb unix:path={socket_name},server=on'
-+            f'{suspend} -gdb unix:path={socket_name},server=on'
-     else:
--        cmd = f'{args.qemu} {args.qargs} -g {socket_name} {args.binary}'
-+        if args.no_suspend:
-+            suspend = ',suspend=n'
-+        else:
-+            suspend = ''
-+        cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
-+            f' {args.binary}'
- 
-     log(output, "QEMU CMD: %s" % (cmd))
-     inferior = subprocess.Popen(shlex.split(cmd))
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index 18d3cf4ae0..688a6be203 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -130,6 +130,13 @@ run-gdbstub-follow-fork-mode-parent: follow-fork-mode
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-parent.py, \
- 	following parents on fork)
- 
-+run-gdbstub-late-attach: late-attach
-+	$(call run-test, $@, env LATE_ATTACH_PY=1 $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" --no-suspend \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/late-attach.py, \
-+	attaching to a running process)
-+
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
-@@ -139,7 +146,7 @@ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
- 	      run-gdbstub-registers run-gdbstub-prot-none \
- 	      run-gdbstub-catch-syscalls run-gdbstub-follow-fork-mode-child \
- 	      run-gdbstub-follow-fork-mode-parent \
--	      run-gdbstub-qxfer-siginfo-read
-+	      run-gdbstub-qxfer-siginfo-read run-gdbstub-late-attach
- 
- # ARM Compatible Semi Hosting Tests
- #
-diff --git a/tests/tcg/multiarch/gdbstub/late-attach.py b/tests/tcg/multiarch/gdbstub/late-attach.py
-new file mode 100644
-index 0000000000..1d40efb5ec
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/late-attach.py
-@@ -0,0 +1,28 @@
-+"""Test attaching GDB to a running process.
-+
-+SPDX-License-Identifier: GPL-2.0-or-later
-+"""
-+from test_gdbstub import main, report
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    try:
-+        phase = gdb.parse_and_eval("phase").string()
-+    except gdb.error:
-+        # Assume the guest did not reach main().
-+        phase = "start"
-+
-+    if phase == "start":
-+        gdb.execute("break sigwait")
-+        gdb.execute("continue")
-+        phase = gdb.parse_and_eval("phase").string()
-+    report(phase == "sigwait", "{} == \"sigwait\"".format(phase))
-+
-+    gdb.execute("signal SIGUSR1")
-+
-+    exitcode = int(gdb.parse_and_eval("$_exitcode"))
-+    report(exitcode == 0, "{} == 0".format(exitcode))
-+
-+
-+main(run_test)
--- 
-2.39.5
+Thanks,
+Jean

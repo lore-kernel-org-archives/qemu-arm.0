@@ -1,334 +1,362 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1846541njb;
-        Thu, 6 Feb 2025 14:14:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUkEAWtzTXMBeZIq4ECdtuusr6J3tT2qkSRqTFptKoMBVLtKtcm3XaqvOQbWfIs/fXo4KT/dWw4kV0ssw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTLtEBJXANtzzYuhfKpfd3Iu7xOilmxSmuCBFLIzDwrOYKw44AQV2Af9OlW9mH2wwEt7op
-X-Received: by 2002:ac8:5714:0:b0:467:5836:a9b with SMTP id d75a77b69052e-471679f1aacmr12132791cf.15.1738880086176;
-        Thu, 06 Feb 2025 14:14:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738880086; cv=none;
+Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1949403njb;
+        Thu, 6 Feb 2025 18:40:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUSJcHCH6+OXvEJAspf8EQwBUO3BZXXsR8a2o4dS1AqqbL02ciVynH2ioah5hFOWZdDXoIRrCf1FNQtcQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFVdTcJqVkoo29pt7NsWgcnnqYLtC0jZoCStCGyvg7cQWWRE3bNethreHBB4AgacbnDKBh6
+X-Received: by 2002:a05:620a:454b:b0:7b6:d63a:ae8f with SMTP id af79cd13be357-7c047bbc544mr264422285a.21.1738896019966;
+        Thu, 06 Feb 2025 18:40:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738896019; cv=none;
         d=google.com; s=arc-20240605;
-        b=InIrqkeGA1NdlA7ZMsDKI5OSzU85WMuaFONaHcsf6lKQJ/p2qxGlQjTS/2mNqvHMow
-         2mt/D0wbvm02cNQIt/3VvIpPlK3sA4SCQjzrieT2qcp+Iwoz/TuG9tiwTylwALHeZpfa
-         krFzKhxtmg3AojnsUkUOXZr+gOTsFvKjdjyF7E3EXkf65fBCX+gBB0SaakW9J40oBQD6
-         gxoXcAzTFnGNwy8uUXwkOmzPdFLjSceid3STfqFYIQBdBzw7lKON2zoKKrRCypdJxGFg
-         r9hCp4RgmJo4PHXT4H+qFao9EkMH5bsYd/PRLm2njZY+ySlZLmAVKJD9J2YgMNArylAS
-         VjGA==
+        b=V/kagl2E4Gxpj4sBzDEf6JLw/helXbq6ry+eYqvc9h5uyu8G+ozk+OH2jOGNObaFXD
+         MAgz+TiLrmxlLqnDDQOeKPvs7omL+aSK9xPjv6I3TjzkIzBDaHPp4LBsFJyKVgzYm5wC
+         4qdCmDEibMYUpBCbgFkL0+Y9hHsbq+aGmr6HQV+1pBDYj2iYq0uXZHebLZAYYL6NnHF/
+         9NkSEDs6TXHlEuuI9FaySFQK50WYzK77keDDHnh/av37jGVu+CMnoFko+fEzcGORRimW
+         picTaHHuntozI6ZNS/4CkpKPokeIH8tv7LNh/hYvTUO4iAzQUpmdh3qXf/D7kDl3qovb
+         7bAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=nDJzAEPG2XlAR86oDUybVnwfzGyaqdOQkfpCUbU701k=;
-        fh=QKkQCc0bqpkmpWcZ4RzeHDOWFPKGTB4/vSSDYR9k9iA=;
-        b=LE1EQbrgZKijKUfo3nrzr4YWiQCXjcw45RQh9YTOD10w0HRlkVyIwd/C41ex4sc1yn
-         +t+Dh5GZcwQueRHx70P+vnzALdtzmu/KrZLgbU9bwC9nvarFOshNICV6pZESxHGkvRzF
-         hAtESTsyxJ6Z6w6px/otqNgGOKYB72CV9gJ9GWICWnGNEwUflLrrDJsXt1Zt0k1AUi+E
-         9sxi5M0hMl9X/svhveFDiSDJJpjBntp9Yl21+PlcgELPCLL5N5BvW2iyqqBjuy5RJu8W
-         xBn7jj+JV+5fbse4LLm06A5N73bNic4K/oVO4n8NqCaXB2iyRfFsxmDEM9XduzStVpxa
-         Wd8A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
+        fh=whoagpteY7jJjaIh9tQzkzav5eU67fX2UtZwwLNECmA=;
+        b=XAgzE5jJdGQzOsOLmvqE6u6aBNY9G3Hywn2FsKYphjRIq5Wo15Y4d3eckNcZSKY2RT
+         8wu2a2uyDaMEuwHs4Ow3jYw7vXJqNMu+PSuZNgo68KVkozCX+14hVCUKE/hmDflb4rSQ
+         9U5lcqN9b+SlrcEVYsXAcIGp4zqAT3J6lg1wY5HCGAthkck5tR9C7YTK+QPhMXymE8bL
+         TezbMYcWqgw86mf8uDqaiXqzx68hmPbN/HfsJVziHMgqUbcArbqr30zbwnxqNGCzuOQP
+         WJRxRF9TUPNbkEikV4ZjEE/p5hhhwcRLgtLn2j26IlOdmZ2i2TCEyLhgq/lryxGWhNr6
+         Jy7g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Rg+g/Pbp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=A37bkVII;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4714927baa7si19809771cf.111.2025.02.06.14.14.46
+        by mx.google.com with ESMTPS id af79cd13be357-7c041df43cdsi227817685a.42.2025.02.06.18.40.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 14:14:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Feb 2025 18:40:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Rg+g/Pbp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=A37bkVII;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tgA6r-0005pQ-Id; Thu, 06 Feb 2025 17:12:35 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tgEHS-0005Gp-HV; Thu, 06 Feb 2025 21:39:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3wjOlZwgKCgMzxkdrwvkjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--wuhaotsh.bounces.google.com>)
- id 1tgA6j-0005dg-4l
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 17:12:26 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tgEHQ-0005Gd-Fe; Thu, 06 Feb 2025 21:39:44 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3wjOlZwgKCgMzxkdrwvkjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--wuhaotsh.bounces.google.com>)
- id 1tgA6f-0001RT-O1
- for qemu-devel@nongnu.org; Thu, 06 Feb 2025 17:12:24 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2f9f2bf2aaeso2870215a91.1
- for <qemu-devel@nongnu.org>; Thu, 06 Feb 2025 14:12:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tgEHO-00005n-AI; Thu, 06 Feb 2025 21:39:44 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5de4c7720bcso15229a12.0; 
+ Thu, 06 Feb 2025 18:39:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1738879939; x=1739484739; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=nDJzAEPG2XlAR86oDUybVnwfzGyaqdOQkfpCUbU701k=;
- b=Rg+g/Pbp6hplHcesarVDvK6+K+eXA0H4B2ATeKC+W9KFsrTKvbUTi5vY/P07DvSO/j
- q4UEhwktxk261++H0EwStCpemlRGrey4aZ/vG3u4TUT8qwGOT80kw2vY8Y8YrIIbhvmx
- nVyr/izbJUXyV5tbEa87BOMeiaPCEEFbdEapv72kYaDnykVYk/AStMsRzpPHsX8bdVXx
- Y7LvSBCdEsKoDJd4EIBUbC8kTSOt5E9LS7un7P7DqlFtJoYIscXVLfEtQtmKLE3/9BZX
- 6Ykn0sLcHTP4zHbsBG7BRGEjGceBDG4PB1yU/g1Cxb80lc8oW5fINw+VDo0qER75Vn5Q
- JQ6w==
+ d=gmail.com; s=20230601; t=1738895980; x=1739500780; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
+ b=A37bkVIIL3XEq7GD0rTixC087rJvEEaFZcRbH87ZFWBkK+tyPTQj7HA+aJVPUeM2bR
+ u5RLNIz8qElU1x4TzGlb6yrzA4WcFAb9D728lOJREaC6PvkEV7CmenmFUqRUqod3NB+I
+ 6T9i9n7BVTXD1+WsX3nIHI31CVJhjup7Prw8lDXBrMi9ryGKxpQeedLHBQx6VPetNLIl
+ 0BQ+JKoiqegQkP35c3DVm3t7MZ9dBq0jgGmPi3Ao5d21tmxSby38ZDyJuZNwxfbt5ROm
+ EcwHq+pPt7Q0RIx/tW6y1kvMVc0aP/7v3dLboNWT6OZrb7X/uhPWNqrUGq6AJgqDaFp+
+ hLxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738879939; x=1739484739;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nDJzAEPG2XlAR86oDUybVnwfzGyaqdOQkfpCUbU701k=;
- b=DFBC9WxiAAPtZgbfiaF2SAYm4NyCAD0rZ0UJwJOF7/52DKtAwofxdrcbcFjRGqRAwY
- CMjHxNlcHZSlpZs/ptvyMsbk4Iw3BuU9YdzbsH1GBFuHhC0zEmtqXo0qCR/VjGcITG6B
- WegqRti5IU5snUWnpsnLmh2NRwPN3N++QJV1Up60ARHQSLzu05mhUNa0sw5G4wDkxvJk
- Ie4zJpcnzhHfXbsDh51QKM353qxR1r+r2Akdf0A65Eshdtth5CXM4U1u1Z8aGOCaH6CJ
- 1Ia/2ITAaEM6fYnb0BjnLUgugP/YeJRv44tYCCQWcAg1elx8IzSCW85Bk+l62FztbQJY
- GfOQ==
+ d=1e100.net; s=20230601; t=1738895980; x=1739500780;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
+ b=qQ9KFGRWS/+gp+CBYu7eKZWbEeFfnf0UjjLooSZlCRNLIQIrGOdbTBsYe/xWuXpFvd
+ 8/hpAywAbsuLG5veYTax+/Lc+98znkVnx1+ktYe5ahPURHqaXGYVLyae/5+eOOp0f1ST
+ bwiLBy4NGyORWb/jn0r7UajTm6y8gG3HPar6PE5L3NF9jH90Opal/dp1iV2lFIg0SHlW
+ k7wEG3u3JmNl2aJFLDfcvR/K/xg1okMXDH362yV2kO9CbIRhru31OQzMu0kntQP9ppSW
+ ST6ahqd4Stf/VDGWDfAFKrcuKRdZz539VoFK/FZq/VHylAapUHJ5F5lVp0nvx0RBKC6e
+ dBpw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU/TuMT7P1LxOYNR/r8Y3Ci561VY3Rhb9DcxA51qOAO6zCelVi67SNNLbHapNMj7AGYoOkNys2ssEL0@nongnu.org
-X-Gm-Message-State: AOJu0YxCMpgSI/ExrGpeEjMg6q+13aiv5Hyn29OPPS9Nd34NEnmIcw6R
- IDUBvwNFbsTRwbyt3ffOszz7ac4HEs3MGzqBN3oUnZejhVVZtKRaH1P3/+gzdh1lKq7GQPD0cXZ
- riHKQlr77CQ==
-X-Received: from pjur6.prod.google.com ([2002:a17:90a:d406:b0:2f2:e97a:e77f])
- (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:4a86:b0:2fa:226e:8491 with SMTP id
- 98e67ed59e1d1-2fa2406baa8mr1240119a91.9.1738879938785; 
- Thu, 06 Feb 2025 14:12:18 -0800 (PST)
-Date: Thu,  6 Feb 2025 14:11:53 -0800
-In-Reply-To: <20250206221203.4187217-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20250206221203.4187217-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.48.1.502.g6dc24dfdaf-goog
-Message-ID: <20250206221203.4187217-8-wuhaotsh@google.com>
-Subject: [PATCH v4 07/17] hw/misc: Add support for NPCM8XX GCR
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, titusr@google.com, 
- chli30@nuvoton.corp-partner.google.com, pbonzini@redhat.com, 
- jasowang@redhat.com, alistair@alistair23.me, philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3wjOlZwgKCgMzxkdrwvkjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ AJvYcCU9oVgMF30aBE/VTXvcUzTn7XMINHlT/0KDOzNfcT3vry4sjrlt9VFysBVuqUyCin8PlkKvBO5Nn3xf/g==@nongnu.org,
+ AJvYcCXpZYWCszq+P9eYBbhF6Oo2Y7iEQHgNtxBiVyxHMa16i2sXb+kXhKGHyNySeYrP7JOSJ/pkefw2Ig==@nongnu.org
+X-Gm-Message-State: AOJu0YxsZvI6RJ2Xe8xEEa4p/RpLpqCF1gyreZwgquIs6EteKQDiS+31
+ oyyW5POGL7Y6/hKjJvr/5rEJ6mc3SjDxhXWwE9FA8BP4k2YdQo36vVykHJx9re5IJLF9Uovbmbp
+ TAyV1nnaFdG6xelNSoSJKT1Xu3SQ=
+X-Gm-Gg: ASbGncuMMio9b4Bcac+dNPYO/azg2p26ryI40E0FE0mSE7XAmZGnNcqQFVz3kK//ecb
+ nxezsMDeY0ED6eRP4PsxL0I0oRQHGZQtv3ocuvGxLW+H76lbPkkG1rtdKI8wBCZXkxeZY3XFq3b
+ I=
+X-Received: by 2002:a05:6402:2186:b0:5dc:db28:6afc with SMTP id
+ 4fb4d7f45d1cf-5de44e5f09amr1781938a12.0.1738895980288; Thu, 06 Feb 2025
+ 18:39:40 -0800 (PST)
+MIME-Version: 1.0
+References: <20241219061658.805-1-andrew.yuan@jaguarmicro.com>
+ <CAFEAcA96ZLjOhBT9rhNhuk32ve0Qv4hUVuTTtgE=DBApbN98Pg@mail.gmail.com>
+ <CAJy5ezovedShKH=HFbK9uRY44no2ijQocs29CHLt2jKoNL+Vpw@mail.gmail.com>
+ <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Thu, 6 Feb 2025 20:39:29 -0600
+X-Gm-Features: AWEUYZkTuMwuyatggAhCHe9X5WWgRk7lvGsuQ_A2TDqn4rCZLv0zKPA6IRCcFbg
+Message-ID: <CAJy5ezpS+wMdXSZU4SH+DoGr2jd4k4gAj3NJXcWKAHa4a6dpjw@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/net: cadence_gem: feat: add logic for the
+ DISABLE_MASK bit in type2_compare_x_word_1
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>, philmd@linaro.org,
+ alistair@alistair23.me, 
+ jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000034df7e062d844527"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +FWCBIK1nLL8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LtIP7exIIqb1
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/misc/npcm_gcr.c         | 129 ++++++++++++++++++++++++++++++++++++-
- include/hw/misc/npcm_gcr.h |   6 +-
- 2 files changed, 132 insertions(+), 3 deletions(-)
+--00000000000034df7e062d844527
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
-index d89e8c2c3b..fe6e332de7 100644
---- a/hw/misc/npcm_gcr.c
-+++ b/hw/misc/npcm_gcr.c
-@@ -1,5 +1,5 @@
- /*
-- * Nuvoton NPCM7xx System Global Control Registers.
-+ * Nuvoton NPCM7xx/8xx System Global Control Registers.
-  *
-  * Copyright 2020 Google LLC
-  *
-@@ -83,6 +83,118 @@ static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
-     [NPCM7XX_GCR_USB2PHYCTL]    = 0x034730e4,
- };
- 
-+enum NPCM8xxGCRRegisters {
-+    NPCM8XX_GCR_PDID,
-+    NPCM8XX_GCR_PWRON,
-+    NPCM8XX_GCR_MISCPE          = 0x014 / sizeof(uint32_t),
-+    NPCM8XX_GCR_FLOCKR2         = 0x020 / sizeof(uint32_t),
-+    NPCM8XX_GCR_FLOCKR3,
-+    NPCM8XX_GCR_A35_MODE        = 0x034 / sizeof(uint32_t),
-+    NPCM8XX_GCR_SPSWC,
-+    NPCM8XX_GCR_INTCR,
-+    NPCM8XX_GCR_INTSR,
-+    NPCM8XX_GCR_HIFCR           = 0x050 / sizeof(uint32_t),
-+    NPCM8XX_GCR_INTCR2          = 0x060 / sizeof(uint32_t),
-+    NPCM8XX_GCR_SRCNT           = 0x068 / sizeof(uint32_t),
-+    NPCM8XX_GCR_RESSR,
-+    NPCM8XX_GCR_RLOCKR1,
-+    NPCM8XX_GCR_FLOCKR1,
-+    NPCM8XX_GCR_DSCNT,
-+    NPCM8XX_GCR_MDLR,
-+    NPCM8XX_GCR_SCRPAD_C        = 0x080 / sizeof(uint32_t),
-+    NPCM8XX_GCR_SCRPAD_B,
-+    NPCM8XX_GCR_DAVCLVLR        = 0x098 / sizeof(uint32_t),
-+    NPCM8XX_GCR_INTCR3,
-+    NPCM8XX_GCR_PCIRCTL         = 0x0a0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_VSINTR,
-+    NPCM8XX_GCR_SD2SUR1         = 0x0b4 / sizeof(uint32_t),
-+    NPCM8XX_GCR_SD2SUR2,
-+    NPCM8XX_GCR_INTCR4          = 0x0c0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_CPCTL           = 0x0d0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_CP2BST,
-+    NPCM8XX_GCR_B2CPNT,
-+    NPCM8XX_GCR_CPPCTL,
-+    NPCM8XX_GCR_I2CSEGSEL       = 0x0e0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_I2CSEGCTL,
-+    NPCM8XX_GCR_VSRCR,
-+    NPCM8XX_GCR_MLOCKR,
-+    NPCM8XX_GCR_SCRPAD          = 0x13c / sizeof(uint32_t),
-+    NPCM8XX_GCR_USB1PHYCTL,
-+    NPCM8XX_GCR_USB2PHYCTL,
-+    NPCM8XX_GCR_USB3PHYCTL,
-+    NPCM8XX_GCR_MFSEL1          = 0x260 / sizeof(uint32_t),
-+    NPCM8XX_GCR_MFSEL2,
-+    NPCM8XX_GCR_MFSEL3,
-+    NPCM8XX_GCR_MFSEL4,
-+    NPCM8XX_GCR_MFSEL5,
-+    NPCM8XX_GCR_MFSEL6,
-+    NPCM8XX_GCR_MFSEL7,
-+    NPCM8XX_GCR_MFSEL_LK1       = 0x280 / sizeof(uint32_t),
-+    NPCM8XX_GCR_MFSEL_LK2,
-+    NPCM8XX_GCR_MFSEL_LK3,
-+    NPCM8XX_GCR_MFSEL_LK4,
-+    NPCM8XX_GCR_MFSEL_LK5,
-+    NPCM8XX_GCR_MFSEL_LK6,
-+    NPCM8XX_GCR_MFSEL_LK7,
-+    NPCM8XX_GCR_MFSEL_SET1      = 0x2a0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_MFSEL_SET2,
-+    NPCM8XX_GCR_MFSEL_SET3,
-+    NPCM8XX_GCR_MFSEL_SET4,
-+    NPCM8XX_GCR_MFSEL_SET5,
-+    NPCM8XX_GCR_MFSEL_SET6,
-+    NPCM8XX_GCR_MFSEL_SET7,
-+    NPCM8XX_GCR_MFSEL_CLR1      = 0x2c0 / sizeof(uint32_t),
-+    NPCM8XX_GCR_MFSEL_CLR2,
-+    NPCM8XX_GCR_MFSEL_CLR3,
-+    NPCM8XX_GCR_MFSEL_CLR4,
-+    NPCM8XX_GCR_MFSEL_CLR5,
-+    NPCM8XX_GCR_MFSEL_CLR6,
-+    NPCM8XX_GCR_MFSEL_CLR7,
-+    NPCM8XX_GCR_WD0RCRLK        = 0x400 / sizeof(uint32_t),
-+    NPCM8XX_GCR_WD1RCRLK,
-+    NPCM8XX_GCR_WD2RCRLK,
-+    NPCM8XX_GCR_SWRSTC1LK,
-+    NPCM8XX_GCR_SWRSTC2LK,
-+    NPCM8XX_GCR_SWRSTC3LK,
-+    NPCM8XX_GCR_TIPRSTCLK,
-+    NPCM8XX_GCR_CORSTCLK,
-+    NPCM8XX_GCR_WD0RCRBLK,
-+    NPCM8XX_GCR_WD1RCRBLK,
-+    NPCM8XX_GCR_WD2RCRBLK,
-+    NPCM8XX_GCR_SWRSTC1BLK,
-+    NPCM8XX_GCR_SWRSTC2BLK,
-+    NPCM8XX_GCR_SWRSTC3BLK,
-+    NPCM8XX_GCR_TIPRSTCBLK,
-+    NPCM8XX_GCR_CORSTCBLK,
-+    /* 64 scratch pad registers start here. 0xe00 ~ 0xefc */
-+    NPCM8XX_GCR_SCRPAD_00       = 0xe00 / sizeof(uint32_t),
-+    /* 32 semaphore registers start here. 0xf00 ~ 0xf7c */
-+    NPCM8XX_GCR_GP_SEMFR_00     = 0xf00 / sizeof(uint32_t),
-+    NPCM8XX_GCR_GP_SEMFR_31     = 0xf7c / sizeof(uint32_t),
-+};
-+
-+static const uint32_t npcm8xx_cold_reset_values[NPCM8XX_GCR_NR_REGS] = {
-+    [NPCM8XX_GCR_PDID]          = 0x04a35850,   /* Arbel A1 */
-+    [NPCM8XX_GCR_MISCPE]        = 0x0000ffff,
-+    [NPCM8XX_GCR_A35_MODE]      = 0xfff4ff30,
-+    [NPCM8XX_GCR_SPSWC]         = 0x00000003,
-+    [NPCM8XX_GCR_INTCR]         = 0x0010035e,
-+    [NPCM8XX_GCR_HIFCR]         = 0x0000004e,
-+    [NPCM8XX_GCR_SD2SUR1]       = 0xfdc80000,
-+    [NPCM8XX_GCR_SD2SUR2]       = 0x5200b130,
-+    [NPCM8XX_GCR_INTCR2]        = (1U << 19),   /* DDR initialized */
-+    [NPCM8XX_GCR_RESSR]         = 0x80000000,
-+    [NPCM8XX_GCR_DAVCLVLR]      = 0x5a00f3cf,
-+    [NPCM8XX_GCR_INTCR3]        = 0x5e001002,
-+    [NPCM8XX_GCR_VSRCR]         = 0x00004800,
-+    [NPCM8XX_GCR_SCRPAD]        = 0x00000008,
-+    [NPCM8XX_GCR_USB1PHYCTL]    = 0x034730e4,
-+    [NPCM8XX_GCR_USB2PHYCTL]    = 0x034730e4,
-+    [NPCM8XX_GCR_USB3PHYCTL]    = 0x034730e4,
-+    /* All 32 semaphores should be initialized to 1. */
-+    [NPCM8XX_GCR_GP_SEMFR_00...NPCM8XX_GCR_GP_SEMFR_31] = 0x00000001,
-+};
-+
- static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
- {
-     uint32_t reg = offset / sizeof(uint32_t);
-@@ -260,6 +372,16 @@ static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
-     c->cold_reset_values = npcm7xx_cold_reset_values;
- }
- 
-+static void npcm8xx_gcr_class_init(ObjectClass *klass, void *data)
-+{
-+    NPCMGCRClass *c = NPCM_GCR_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "NPCM8xx System Global Control Registers";
-+    c->nr_regs = NPCM8XX_GCR_NR_REGS;
-+    c->cold_reset_values = npcm8xx_cold_reset_values;
-+}
-+
- static const TypeInfo npcm_gcr_info[] = {
-     {
-         .name               = TYPE_NPCM_GCR,
-@@ -275,5 +397,10 @@ static const TypeInfo npcm_gcr_info[] = {
-         .parent             = TYPE_NPCM_GCR,
-         .class_init         = npcm7xx_gcr_class_init,
-     },
-+    {
-+        .name               = TYPE_NPCM8XX_GCR,
-+        .parent             = TYPE_NPCM_GCR,
-+        .class_init         = npcm8xx_gcr_class_init,
-+    },
- };
- DEFINE_TYPES(npcm_gcr_info)
-diff --git a/include/hw/misc/npcm_gcr.h b/include/hw/misc/npcm_gcr.h
-index 9af24e5cdc..9ac76ca9ab 100644
---- a/include/hw/misc/npcm_gcr.h
-+++ b/include/hw/misc/npcm_gcr.h
-@@ -1,5 +1,5 @@
- /*
-- * Nuvoton NPCM7xx System Global Control Registers.
-+ * Nuvoton NPCM7xx/8xx System Global Control Registers.
-  *
-  * Copyright 2020 Google LLC
-  *
-@@ -54,8 +54,9 @@
-  * Number of registers in our device state structure. Don't change this without
-  * incrementing the version_id in the vmstate.
-  */
--#define NPCM_GCR_MAX_NR_REGS NPCM7XX_GCR_NR_REGS
-+#define NPCM_GCR_MAX_NR_REGS NPCM8XX_GCR_NR_REGS
- #define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))
-+#define NPCM8XX_GCR_NR_REGS (0xf80 / sizeof(uint32_t))
- 
- typedef struct NPCMGCRState {
-     SysBusDevice parent;
-@@ -78,6 +79,7 @@ typedef struct NPCMGCRClass {
- 
- #define TYPE_NPCM_GCR "npcm-gcr"
- #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
-+#define TYPE_NPCM8XX_GCR "npcm8xx-gcr"
- OBJECT_DECLARE_TYPE(NPCMGCRState, NPCMGCRClass, NPCM_GCR)
- 
- #endif /* NPCM_GCR_H */
--- 
-2.48.1.502.g6dc24dfdaf-goog
+On Tue, 4 Feb 2025 at 08:37, Peter Maydell <peter.maydell@linaro.org> wrote=
+:
 
+> On Thu, 30 Jan 2025 at 22:31, Edgar E. Iglesias
+> <edgar.iglesias@gmail.com> wrote:
+> > On Mon, Jan 27, 2025 at 8:40=E2=80=AFAM Peter Maydell <peter.maydell@li=
+naro.org>
+> wrote:
+> >> On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan <andrew.yuan@jaguarmicro.com=
+>
+> wrote:
+> >> > -            rx_cmp =3D rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
+> >> > -            mask =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0,
+> MASK_VALUE);
+> >> > -            compare =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0,
+> COMPARE_VALUE);
+> >> > +            disable_mask =3D
+> >> > +                FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1,
+> DISABLE_MASK);
+> >> > +            if (disable_mask) {
+> >> > +                /*
+> >> > +                 * If disable_mask is set,
+> >> > +                 * mask_value is used as an additional 2 byte
+> Compare Value.
+> >> > +                 * To simple, set mask =3D 0xFFFFFFFF, if disable_m=
+ask
+> is set.
+> >> > +                 */
+> >> > +                rx_cmp =3D ldl_le_p(rxbuf_ptr + offset);
+> >> > +                mask =3D 0xFFFFFFFF;
+> >> > +                compare =3D cr0;
+> >> > +            } else {
+> >> > +                rx_cmp =3D lduw_le_p(rxbuf_ptr + offset);
+> >>
+> >> Is the change in behaviour in the !disable_mask codepath here
+> >> intentional? Previously we use one byte from rxbuf_ptr[offset],
+> >> duplicated into both halves of rx_cmp; now we will load two
+> >> different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].
+> >>
+> >> If this is intended, we should say so in the commit message.
+> >>
+> >
+> > I agree that it should be mentioned (looks like a correct bugfix).
+>
+> Thanks. I've expanded the commit message:
+>
+>     hw/net/cadence_gem:  Fix the mask/compare/disable-mask logic
+>
+>     Our current handling of the mask/compare logic in the Cadence
+>     GEM ethernet device is wrong:
+>      (1) we load the same byte twice from rx_buf when
+>          creating the compare value
+>      (2) we ignore the DISABLE_MASK flag
+>
+>     The "Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev:
+>     R1p12 - Doc Rev: 1.3 User Guide" states that if the DISABLE_MASK bit
+>     in type2_compare_x_word_1 is set, the mask_value field in
+>     type2_compare_x_word_0 is used as an additional 2 byte Compare Value.
+>
+>     Correct these bugs:
+>      * in the !disable_mask codepath, use lduw_le_p() so we
+>        correctly load a 16-bit value for comparison
+>      * in the disable_mask codepath, we load a full 4-byte value
+>        from rx_buf for the comparison, set the compare value to
+>        the whole of the cr0 register (i.e. the concatenation of
+>        the mask and compare fields), and set mask to 0xffffffff
+>        to force a 32-bit comparison
+>
+> and also tweaked the comment a bit:
+>
+> +                /*
+> +                 * If disable_mask is set, mask_value is used as an
+> +                 * additional 2 byte Compare Value; that is equivalent
+> +                 * to using the whole cr0 register as the comparison
+> value.
+> +                 * Load 32 bits of data from rx_buf, and set mask to
+> +                 * all-ones so we compare all 32 bits.
+> +                 */
+>
+> and applied this to target-arm.next.
+>
+> > Other than that this patch looks good to me!
+>
+> Can I call that a Reviewed-by (with the above changes)?
+
+
+Yes, thanks!!
+
+
+
+>
+> thanks
+> -- PMM
+>
+
+--00000000000034df7e062d844527
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><br></div><div><br><div class=3D"gmail_quote gmail_quote_=
+container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, 4 Feb 2025 at 08:3=
+7, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.mayd=
+ell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:sol=
+id;padding-left:1ex;border-left-color:rgb(204,204,204)">On Thu, 30 Jan 2025=
+ at 22:31, Edgar E. Iglesias<br>
+&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igl=
+esias@gmail.com</a>&gt; wrote:<br>
+&gt; On Mon, Jan 27, 2025 at 8:40=E2=80=AFAM Peter Maydell &lt;<a href=3D"m=
+ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
+/a>&gt; wrote:<br>
+&gt;&gt; On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan &lt;<a href=3D"mailto:an=
+drew.yuan@jaguarmicro.com" target=3D"_blank">andrew.yuan@jaguarmicro.com</a=
+>&gt; wrote:<br>
+&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_cmp =3D rxbuf_p=
+tr[offset] &lt;&lt; 8 | rxbuf_ptr[offset];<br>
+&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask =3D FIELD_EX3=
+2(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);<br>
+&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 compare =3D FIELD_=
+EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 disable_mask =3D<b=
+r>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 FIEL=
+D_EX32(cr1, TYPE2_COMPARE_0_WORD_1, DISABLE_MASK);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (disable_mask) =
+{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<b=
+r>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0* If disable_mask is set,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0* mask_value is used as an additional 2 byte Compare Value.<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0* To simple, set mask =3D 0xFFFFFFFF, if disable_mask is set.<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0*/<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_c=
+mp =3D ldl_le_p(rxbuf_ptr + offset);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask=
+ =3D 0xFFFFFFFF;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 comp=
+are =3D cr0;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_c=
+mp =3D lduw_le_p(rxbuf_ptr + offset);<br>
+&gt;&gt;<br>
+&gt;&gt; Is the change in behaviour in the !disable_mask codepath here<br>
+&gt;&gt; intentional? Previously we use one byte from rxbuf_ptr[offset],<br=
+>
+&gt;&gt; duplicated into both halves of rx_cmp; now we will load two<br>
+&gt;&gt; different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].<=
+br>
+&gt;&gt;<br>
+&gt;&gt; If this is intended, we should say so in the commit message.<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt; I agree that it should be mentioned (looks like a correct bugfix).<br>
+<br>
+Thanks. I&#39;ve expanded the commit message:<br>
+<br>
+=C2=A0 =C2=A0 hw/net/cadence_gem:=C2=A0 Fix the mask/compare/disable-mask l=
+ogic<br>
+<br>
+=C2=A0 =C2=A0 Our current handling of the mask/compare logic in the Cadence=
+<br>
+=C2=A0 =C2=A0 GEM ethernet device is wrong:<br>
+=C2=A0 =C2=A0 =C2=A0(1) we load the same byte twice from rx_buf when<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0creating the compare value<br>
+=C2=A0 =C2=A0 =C2=A0(2) we ignore the DISABLE_MASK flag<br>
+<br>
+=C2=A0 =C2=A0 The &quot;Cadence IP for Gigabit Ethernet MAC Part Number: IP=
+7014 IP Rev:<br>
+=C2=A0 =C2=A0 R1p12 - Doc Rev: 1.3 User Guide&quot; states that if the DISA=
+BLE_MASK bit<br>
+=C2=A0 =C2=A0 in type2_compare_x_word_1 is set, the mask_value field in<br>
+=C2=A0 =C2=A0 type2_compare_x_word_0 is used as an additional 2 byte Compar=
+e Value.<br>
+<br>
+=C2=A0 =C2=A0 Correct these bugs:<br>
+=C2=A0 =C2=A0 =C2=A0* in the !disable_mask codepath, use lduw_le_p() so we<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0correctly load a 16-bit value for comparison<br>
+=C2=A0 =C2=A0 =C2=A0* in the disable_mask codepath, we load a full 4-byte v=
+alue<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0from rx_buf for the comparison, set the compare =
+value to<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0the whole of the cr0 register (i.e. the concaten=
+ation of<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0the mask and compare fields), and set mask to 0x=
+ffffffff<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0to force a 32-bit comparison<br>
+<br>
+and also tweaked the comment a bit:<br>
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* If disable=
+_mask is set, mask_value is used as an<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* additional=
+ 2 byte Compare Value; that is equivalent<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* to using t=
+he whole cr0 register as the comparison value.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Load 32 bi=
+ts of data from rx_buf, and set mask to<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* all-ones s=
+o we compare all 32 bits.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
+<br>
+and applied this to target-arm.next.<br>
+<br>
+&gt; Other than that this patch looks good to me!<br>
+<br>
+Can I call that a Reviewed-by (with the above changes)?</blockquote><div di=
+r=3D"auto"><br></div><div dir=3D"auto">Yes, thanks!!</div><div dir=3D"auto"=
+><br></div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:sol=
+id;padding-left:1ex;border-left-color:rgb(204,204,204)" dir=3D"auto"><br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--00000000000034df7e062d844527--

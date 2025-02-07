@@ -1,178 +1,142 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp366939njb;
-        Fri, 7 Feb 2025 09:48:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUqmtfHI0bUAMJ8J0QUXVS27G0JVnc4X29Ll3pHKgM89OMfBZJK8DiDD6+LU7Bg2KgwLiL3nq0yXPFJTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEYdJMoxB8XxmAGGPw1yyWRJPSjMG5xSmmBKCfN3XfHNLteYq0Y8S/d3zCNryrFwp7j4a/E
-X-Received: by 2002:a05:6102:4414:b0:4af:e61d:e22f with SMTP id ada2fe7eead31-4ba85f90424mr4364024137.24.1738950512513;
-        Fri, 07 Feb 2025 09:48:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738950512; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp350256njb;
+        Fri, 7 Feb 2025 09:22:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVQj/loPwXGlezJ6LT2IZEXY/yZ5N03Wcn+95JMLtrE4hedtVH4TQXjIeSAW6/raG82mcXyY5QExHBudg==@linaro.org
+X-Received: by 2002:a17:902:ecc8:b0:21f:507b:9ad7 with SMTP id d9443c01a7336-21f507b9d6cmr54199685ad.25.1738948940218;
+        Fri, 07 Feb 2025 09:22:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738948940; cv=none;
         d=google.com; s=arc-20240605;
-        b=Boh52gRc3W6ftUy7dgZt+3C6E5WtjHjZY2zqE+uC/PQglDxbBKdg1DapCT/bRSIjjg
-         6RgekKr+958m0sujy7eZ6Cak50qKfYuaMvPbXVlMS6OPfArvnauU+EeWnHV7DTmQD91q
-         o4nHBqDLDCNWEocK3g3kkW7PD8LsAyNGFf6O7qzuKqL+QP71tODgHG9wMdmcSw70EHIc
-         ZKfIf/968s0GO8IBct7I4Qa0x+yez3hDT4KfmIgg9tal0Ias1XDB74LY6nJk8CFO32t4
-         fO+RBuJESR+YKJjdsE5FRaAl3/7vucOFPoSxq+yLwcjqiJwdh7I4LFJRtcw+iYDMuqlj
-         SRnw==
+        b=YuFPD+14VmlLDXb9hpjkjaDbnURhiIt1D7cGtJYapW8efnG/CRu2cD5rR/k4KkD0t4
+         rxphJ7ogLWmzy+6ePWXYw7GSmsYd2px7ilRrXmV5cbdghEE/kwKTFVGlNvAQs2YjFrfl
+         zKcBcGwniAniHOK/JC/kx2Rl7Drm3kZ8IUTa7/G7o4sg9W2dmrmi1QKnk40XIfRepIK3
+         U/NFTrouAi9Zn6QzMYy2vbk49B1cMImEM2LoiQX9fdtl9q7QWk3dkX15oUVWgZwq1P7n
+         HTcxnY/4RDsbv0COd5abPyWzPRPvfdmfRB8aHALHFAGHefaSLmXT8OGnIyrqTCYivnlY
+         NhQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=cxfsx6u5R8uKJa8bY5IZuJYQ2qLA5Q3iOTNlVtOC1+0=;
-        fh=lhqgT9dn15ggNEeUVzi3SDkLUNX6P2FLugqxGqtPGpA=;
-        b=gTGgn+t7iiobATv0qf/tajV+NxWCESkQoC8/j3bNCL9fQygTf/T+Fc3auIgsTsJxxE
-         DEVSLL/MPeGSyEEb6TfnwQC95S5yQyW7IZoP8nJPmrxMs7EyiZARkuYh2vHG+yren6Cq
-         KcWae8IrMai3dqKhX15Z6k7nJB5C3qcbZh5oUTlmhj3tAxr63Uq19hBEDP9rG7gfDVne
-         gT4w4oriHQrCkho1lhNBS7NRkHDR7UVTX7n6IWTsVQq+iSi+p2NGHUg8SFypyUqQImsW
-         27douFOYbCmhPifMtqz4rcxhjnkygYca2DUAKhj2ePLcw6hKrB4noxCACqGGgN1sWMLh
-         B6hQ==;
+        bh=PuI9ezYBAeHIwgM6VLS6Ioe0cLgcltuopXziKm5PBHw=;
+        fh=bwj8RfSpVNUuh468cBLro+SkTnnRUwionOQDT2MfopA=;
+        b=Z4A6jkJ6GeqPXgA7MzVjln1dSsUs4bALdHcadxzzwOdfgczYdvQFYEDEPp/SgGmZIr
+         BdpHfpMbq5RyUwAwwH2CGlEGi/kFnPA1Owyocxd7Smj6x8b1Pc+PbF+fD6B9m1gedMfH
+         eQHG6U8SoE4WqcWT08CIZbhhbjDaIKZAO+8iwOK5AEhouTpNcG3Zh2wngkWmu54ydEmv
+         qm/Zwx0CK/IYGcaM1mFnPzZwNvZZv3Ci9i9l3DOq9llnALC/rSJJcNWLGvs7vqEFQWkr
+         l3VeSV1KB1NGLiivlksKWsc0JjX7MrF3CoPCe2jA9ZMJvmPJPvK+8isy21rTQVNFdcCo
+         KxVg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e3PMS/eI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4ba77935951si897828137.663.2025.02.07.09.48.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=cHVmiZza;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-21f42a86b44sor14189095ad.7.2025.02.07.09.22.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2025 09:48:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 07 Feb 2025 09:22:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e3PMS/eI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tgSSU-0000re-Vt; Fri, 07 Feb 2025 12:48:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tgSST-0000rO-88
- for qemu-arm@nongnu.org; Fri, 07 Feb 2025 12:48:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tgSSR-0001q2-9d
- for qemu-arm@nongnu.org; Fri, 07 Feb 2025 12:48:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738950481;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=cxfsx6u5R8uKJa8bY5IZuJYQ2qLA5Q3iOTNlVtOC1+0=;
- b=e3PMS/eIKftY174SJbJpv5ogGuQYCt1c4zwUD5en60s6NRxiNIl7hBr8DH4KFqxuU5zvom
- eU3XfyGHmM/iP9Mt4cSS2y30Wgy6s/6ca7dmMqPrea75ukJ3YcK/JCbZjnrAWZZ4/9jmGl
- Yk8OWHjzl0d8EusrceCU3IyjrJ40EQc=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-135-HH9bbC-0Mcu7avznkOId8Q-1; Fri, 07 Feb 2025 12:47:59 -0500
-X-MC-Unique: HH9bbC-0Mcu7avznkOId8Q-1
-X-Mimecast-MFC-AGG-ID: HH9bbC-0Mcu7avznkOId8Q
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-7b6e852eeabso357767785a.0
- for <qemu-arm@nongnu.org>; Fri, 07 Feb 2025 09:47:59 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=cHVmiZza;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738948940; x=1739553740; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PuI9ezYBAeHIwgM6VLS6Ioe0cLgcltuopXziKm5PBHw=;
+        b=cHVmiZza8nuZBlQahpWh49Z0V26yB+zlgnO5KedeVoeKnK69H6g4Iqj54nhvL9Qbzb
+         y4xDSxF1jUvo4VHKCz4M4Ye2e6BX7aUF4mfGEJORXq0iWBVrWvS3zthnvU4Dw/gpFoVg
+         FRQf7PoIZ7LbLusp+LWxoWGU9rh0GfCMTGn5SLGkX0vsHGLmYUg8TRtaCw29iU+2eBIn
+         iPdi4//h8i4J456HaMAa9CZGeUEdju6mKq3g2WhIFkQ4hKBSGkSe16g98cIYgy+jK/ix
+         11838bXrO9KZogAd66xLQJ6QY05+qEmNp1v0LomP1ff1gMpUWR/ofe4MmWVdkmxJuQsn
+         VZeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738950479; x=1739555279;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cxfsx6u5R8uKJa8bY5IZuJYQ2qLA5Q3iOTNlVtOC1+0=;
- b=jsyG1Clcy8Roi7ei3D5xMVZiJ+ECkvC3eeVTAz6dDtUcovT2XTjxJYPBovFdGmFXhX
- ikauS/KPMk8FxjhR+UUsunSJ8q+GJ90mTQiEmSeNkVF+MRCnjz00dFV8hBeZGZ8E4nHJ
- 7QUkJKhb59z/YZ0DoXnif6+RotD9S+02XspKlfC28r0MYHFv21GAnXUmycGEfqc4ME8k
- rhp4wFgPxGBBavMZv9pzqGrI0zUIoAwP/BFFUzwscxQ7ckBfUzDS60/olPuK7QxvpyKF
- 4fk8Aj2hXdoMjqCg47v7kyJCCG+RXGgri49Jl9xFb9WOwqW6LAjHtUHk3oPfA/gzG2XS
- XYEA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXA25uIE3S5bjlnnHHFF2kQjm70B1JGc55pQENJeerDkO9emAWkOLJhMArD3Oydbtu0HT9i9JDvlg==@nongnu.org
-X-Gm-Message-State: AOJu0YySukEi+tb80326sfIqNonoFD/HAvVzygYYftAG8FfifuLEh7j1
- cZ2LZQsT99i8+UUT/ghp5WG6jY7Js5Xv+n2NlUICpxkOHVQlmLdOue3YFOKWSY1rnzwZJjIwfTS
- ipLGWimqBxXQfmWh1xvtmqhtbba9OxPz2K/MYclhRqO63SNgm5g==
-X-Gm-Gg: ASbGncsRW64qe2j+kR8GdxpeW9AST/YShmFVcIi5RZ+QMUC2f5xv0RYyJDicDVplYHD
- f2jjP+Z4hJV0U/9wr4Nj2BcJ1QxvxKBxo8nF18hm8eZQtz/yiIETsP1oceNwnob2YEJpbtKQFOJ
- YSp7aL2TVX3fsNWOfMSyZeH8x3WTrKy+efav8YAzkCTYz8BnJfN44l0MRdWEhfS+67ap9SV8+me
- Lx4Tf/VbSWgqgi60zgmUCw9JdXn8r57x9E72K5/TPPphkxnhUWEKOotPDVDcM2X2jC6hfrzUine
- KR9hNrOIosUqL6sJPusoS86cwGg7Zb6xYtQDuWCy4WZ7m98l
-X-Received: by 2002:a05:620a:454a:b0:7b6:66d0:5ac2 with SMTP id
- af79cd13be357-7c047c45d24mr756874185a.54.1738950479392; 
- Fri, 07 Feb 2025 09:47:59 -0800 (PST)
-X-Received: by 2002:a05:620a:454a:b0:7b6:66d0:5ac2 with SMTP id
- af79cd13be357-7c047c45d24mr756869685a.54.1738950479060; 
- Fri, 07 Feb 2025 09:47:59 -0800 (PST)
-Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com.
- [99.254.114.190]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7c041eb776fsm214743485a.91.2025.02.07.09.47.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Feb 2025 09:47:58 -0800 (PST)
-Date: Fri, 7 Feb 2025 12:47:57 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jasowang@redhat.com,
- imammedo@redhat.com, alex.williamson@redhat.com, clg@redhat.com,
- philmd@linaro.org, zhenzhong.duan@intel.com, ddutile@redhat.com
-Subject: Re: [PATCH 4/5] hw/arm/smmuv3: Move reset to exit phase
-Message-ID: <Z6ZHTStx_S9ALdxt@x1.local>
-References: <20250206142307.921070-1-eric.auger@redhat.com>
- <20250206142307.921070-5-eric.auger@redhat.com>
- <CAFEAcA_LgrBRbafVQ0vLGPd8xG=wsLjWnKTJ2JSEREYUqgRQBQ@mail.gmail.com>
- <7102d470-ac72-4c02-b8bc-20f1379a4843@redhat.com>
- <CAFEAcA-XK5GwT0b_Ff-8fYnWcDgzaE-0Ei-YqDoXv-aXFGNXUQ@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1738948940; x=1739553740;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PuI9ezYBAeHIwgM6VLS6Ioe0cLgcltuopXziKm5PBHw=;
+        b=ZBrgB6IaJrENlvDdREYLz/BlCzjAah9aRkMd1yE9dlAi6wI1R5wzawJ67lB/6vaRWo
+         +BPM5O9w5kpj/eNJLu39GArMtHlvtJaa1K/ReAQPSQ79sZdpyQtzWprrvKNvvYEfVhxY
+         YD8A+dNBGf6DG8d/oRxSTlJUP2ui9ytJczk1CWthDfey3Tetlx6MXeWQ9Zc9QOyBJGTI
+         qJEkfk0Xll2Etis4Wtnxj3qaB37zd/gacOHoahT9Zh1cLIScDpGCYr8cMzEvg8aJbYh8
+         tzJB0hLqjNPYQwbimihFE/XZUKnZmdZk3EtT3Pu5qB8rFs35yn4HASkF4OIOwT0qimNj
+         OiJA==
+X-Forwarded-Encrypted: i=1; AJvYcCWmm3OMK+3b/dx78HUIK0PydEi/iND09LJ0IWI+4L64RaWXUC1F2wERg84qXSQVS16pgf3XLGg0k4Q4Uw==@linaro.org
+X-Gm-Message-State: AOJu0YxuOP6rKrjeCIgFDazUugCBXE2pJOS+9lYOrkjwkt6y7CdLPfMn
+	y16FuhcrMgCRiDt2oSm6OHNGn0+YSkdcVGgGiyR56uKfit7/6kqaJDmfqGV/dFm6nw==
+X-Gm-Gg: ASbGncuGksBHEQWgZCbd4/zIZF9Ows7fhhMZlEYO1C4PrmlVepJK8GBwdBcViLbe8NP
+	MJkRl449cEAkm8D1djxFSCaBe2q3Xv4jlo+LszkG194vDhs15tbJyGiyROwm6IRcm8ttmUMcbjJ
+	SM/cUBPdDSmtyB3mv1HbuitMkVPU1y3ou9S37rv6B2PwGfUrls5yW+DVgDArl9XDZ+OTO8VlIne
+	ytdYUJ+z1c6BVgVv5rua/CsKR+DTQWrnrpvJW735yvgAQfQlLcGmKmlG58+5Vhqqz14aqrWv7HU
+	2Lvb8QGm596fC3wsjSeYMCxQ1UjmU4KqQ7Vef+zHwfbyUHoobTgq+gc=
+X-Google-Smtp-Source: AGHT+IFH65CDDp7tP5xkPhrzS7K+EByWPF9bO0ure/lihhPD5d4Cw3JSMGTG2j77BjsC2FVvWZ9cCg==
+X-Received: by 2002:a17:903:2311:b0:215:acb3:3786 with SMTP id d9443c01a7336-21f4e6e649dmr71243065ad.19.1738948939645;
+        Fri, 07 Feb 2025 09:22:19 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (71-212-39-66.tukw.qwest.net. [71.212.39.66])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21f3683dc55sm33238375ad.125.2025.02.07.09.22.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Feb 2025 09:22:19 -0800 (PST)
+Message-ID: <5ee77b8c-e6a4-421b-b729-a6535fdf1e6d@linaro.org>
+Date: Fri, 7 Feb 2025 09:22:17 -0800
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-XK5GwT0b_Ff-8fYnWcDgzaE-0Ei-YqDoXv-aXFGNXUQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xk2YjrG6L7m1kqDcBhkRPKf5wDjtaeZdHIqrQNvPpRY_1738950479
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4VW1FV92/h3y
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm/helper: Fix timer interrupt masking when
+ HCR_EL2.E2H == 0
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Florian Lugou <florian.lugou@provenrun.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20240615185423.49474-1-florian.lugou@provenrun.com>
+ <CAFEAcA_+WrzM4fXQMUxMi3L5yiUWMrUGTSZH=NDdYDKUCP+8NQ@mail.gmail.com>
+ <20240620135627.qxcrkdx5v7wdurx4@flugou-latitude5401>
+ <CAFEAcA-ngrrEUDD7eA_sOLGF+_wRCuQVxTwuCA4pXjRcuJucmA@mail.gmail.com>
+ <20240621140725.f4hsasmhrhh4joxm@flugou-latitude5401>
+ <CAFEAcA9c9hbpsdyc7+=QEOZGrNY2m-urk6VrWdwCdfk9ipkwpw@mail.gmail.com>
+ <20240820113024.53tmzejw2omm6bbx@flugou-latitude5401>
+ <CAFEAcA9X0w5QW2qnnhF2k72ZrS8SALWiXV7uNr1e=jQnZvrQ7Q@mail.gmail.com>
+ <CAFEAcA-MrouAPdwpsyojMC-bx4aFtuL=tYZD=2pBS1vP5iicaw@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-MrouAPdwpsyojMC-bx4aFtuL=tYZD=2pBS1vP5iicaw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: g+9XYAFs7aiV
 
-On Fri, Feb 07, 2025 at 04:58:39PM +0000, Peter Maydell wrote:
-> (I wonder if we ought to suggest quiescing outstanding
-> DMA in the enter phase? But it's probably easier to fix
-> the iommus like this series does than try to get every
-> dma-capable pci device to do something different.)
+On 2/7/25 07:45, Peter Maydell wrote:
+> This is where things go wrong -- icount_start_warp_timer()
+> notices that all CPU threads are currently idle, and
+> decides it needs to warp the timer forwards to the
+> next deadline, which is at the end of time -- INT64_MAX.
+> 
+> But once timer_mod_ns() returns, the generic timer code
+> is going to raise an interrupt (this goes through the GIC
+> code and comes back into the CPU which calls cpu_interrupt()),
+> so we don't want to warp the timer at all. The clock should
+> stay exactly at the value it has and the CPU is going to
+> have more work to do.
+> 
+> How is this supposed to work? Shouldn't we only be doing
+> the "start moving the icount forward to the next deadline"
+> once we've completed all the "run timers and AIO stuff" that
+> icount_handle_deadline() triggers, not randomly in the middle
+> of that when this timer callback or some other one might do
+> something to trigger an interrupt?
 
-I wonder if we should provide some generic helper to register vIOMMU reset
-callbacks, so that we'll be sure any vIOMMU model impl that will register
-at exit() phase only, and do nothing during the initial two phases.  Then
-we can put some rich comment on that helper on why.
+I don't understand timer warping at all.  And you're right, it doesn't seem like this 
+should happen outside of a specific point in the main loop.
 
-Looks like it means the qemu reset model in the future can be a combination
-of device tree (which resets depth-first) and the three phases model.  We
-will start to use different approach to solve different problems.
+> ... But I don't think there's any reason why
+> timer callbacks should be obliged to reprogram their timers
+> last, and in any case you can imagine scenarios where there
+> are multiple timer callbacks for different timers and it's
+> only the second timer that raises an interrupt...
 
-Maybe after we settle our mind, we should update the reset document,
-e.g. for device emulation developers, we need to be clear on where to
-quiesce the DMAs, and it must not happen at exit().  Both all devices and
-all iommu impls need to follow the rules to make it work like the plan.
+Agreed.
 
-Thanks,
 
--- 
-Peter Xu
-
+r~

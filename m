@@ -1,211 +1,193 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp328282njb;
-        Fri, 7 Feb 2025 08:53:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWpi5uZTe9UJRVmP0sQcff8r5Qzt/RvvfBjarJ6WOJQGfOEZk6TZs6QSzzKA/FbXxRrVyZe4jZMdXoNVA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEWcTQMg/8pVNErzQ8SKqo9LokU4rAa9/bRvaOERmeNN1jbyqdcVJK9mhLfFEs9W8LElm+o
-X-Received: by 2002:a05:620a:2b91:b0:79d:76c3:5309 with SMTP id af79cd13be357-7c047c03352mr674027885a.4.1738947191057;
-        Fri, 07 Feb 2025 08:53:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738947191; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp328991njb;
+        Fri, 7 Feb 2025 08:54:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVjYutkfGHj/xLejZqRBlB/Orflea9tKNF5aVH7ECwvCoujgjIFGb4XaJvMg3HRdIZoWQUkrl9iqWAI0w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGHUAtNpnbhAMERpPzT1/c6A8CE0zf8IIHQJ1AdiCb+6TVTEo4X4jtgAZLwMHfsYwNPnD1m
+X-Received: by 2002:a05:622a:244c:b0:461:3834:b632 with SMTP id d75a77b69052e-471679a0c1amr66876901cf.1.1738947273569;
+        Fri, 07 Feb 2025 08:54:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738947273; cv=none;
         d=google.com; s=arc-20240605;
-        b=fb18tMCTWX3ihOidCI+RlOO9PjRg7DMHMrVcExmtjuA0QyPCoUEBbxMWkoP4l6u+fH
-         Pm3KyOLxDN2FhpG3oY6Et9arj5yLTV3ZUljVLegyu6tGmPbIQeS7Y3yCdS3Jk/0JLXIB
-         NQNMsjioSKhPLACi52TBjKQMeeYlvtXSGfC/80sPmYLZi2fz2Q4Q6BNsvYFsXQmNfxp+
-         vuGC4M+zE5iu1Q1qpRQ8432+i/VnbQS5j2oTjl9LFQw9VjtrBuAEsNrnc0hVwhHteCmj
-         VACvxgwmZl4FMWqBWBBx9dcFhpceGXTYKjs40qzJToeUGGC2Ki9Q5FvFzQzgrIwJeYky
-         K6pg==
+        b=I33l+n7PZEFFL38TuzqkLC5hzAg7bKlZHu7Ni4BBZ241OOSto0ao9TlwevASloUyof
+         xmdAOBoyKOjSSvPp78/mogRDAXViMGN5IQ0xKLJor3J7u9or13H/MNgww8ARsGc2+3Pp
+         7XVRkT6yC02MahRhQK8gW5dww6I6FhAGCqSuVpT+8qXQCzkm30nUj9xLmZi5atDn/HR1
+         R35nKUUG1eeA9gBtVqaHrHMUd9kTU3Eoc443NnX4bX8vzxA0LNy9HHHpYq3onYkZgmqC
+         6vmtgH+lsiSkTqiTHl7FhAmUg96EL7PbMc0lxbRbxDGV8zb2VL7Qc1vOzQPDHDsIX33o
+         RkCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=s2DMxp5NqGuhlDKNQ2xuPhKVtGPCQC67oVHERu9c1Xs=;
-        fh=5oUDb09O5RYEo74GXMEQL5w8UkHY85CWdsIqWBKBn9I=;
-        b=OWObhVSZ6cq56smagiq2spAABnftzUqp4oWd/0MmdQswZYVMdaiNKXlyN1VditepjC
-         iSakxI3O+D/VCZWMCL/95i250nVONv40piCXmnZThmAFp8Icl0Rm8pYr9evYg1Ucm5CD
-         05VvOU1Dty8HmDjqmkRz6Vzjqpw/LwibUIDlCQlaFcXBFz4zK4yenqVloKi06+/+VKeh
-         i54rfsZyuV0/BdiYH7KupZdG3BDknY0ET1/kIAIGGEOMPC7HTGdCq6TpYGsJEmBbUxw9
-         KPH0q3lH0lYoe7HKDrHHYT+7jnQ+11xh596UB00lO/DKnz0dO4OxXGCHfucGas6j6mKp
-         DxRA==;
+        bh=YJXeFnEzqoSV6B2sp8vrSeC5C1Yde3acfQJgATlGvqc=;
+        fh=9Gdsr9BagbaufgNVnI5CkssuhKbPSZr6togr/IHE/rs=;
+        b=JqnKyMgC8I1xeT6OmuWannJfEUyOzUFvjF3vFU8T4dGhAEK1TSgFZoI1m0w/G8P6Em
+         OyVqU6dfybPu5FUXR63uur6uk4ZNaiRLI+Bag9A4euStkt0wCzihLdKZNQeDVP0nSK+E
+         YSu3LUdIEEaCPovbQ0NhIotXv2il9Obi5idGfjmMNnkrx0cyvTSDb83lGf3RAJ8iZdNR
+         qtgGZrLzaBBAQZbieyHs+ls5F61QlC4UEbr+WeobhC1AEDvHcBvdxMyg8zpZMj27Ia6c
+         gidAizzeV+koHxoV5DAtE6G86cKGQykyZf0Xr8PYx0AcVSQo0AoK6qAx3AY8PBQfEyXU
+         xAlQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TXSI+iw/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQiQzFPq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041e0bc49si364658185a.188.2025.02.07.08.53.10
+        by mx.google.com with ESMTPS id d75a77b69052e-47153be5584si37657441cf.635.2025.02.07.08.54.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2025 08:53:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Feb 2025 08:54:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TXSI+iw/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQiQzFPq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tgRb1-0007uK-K2; Fri, 07 Feb 2025 11:52:51 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tgRcQ-0000Ft-6P; Fri, 07 Feb 2025 11:54:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tgRaz-0007tu-Vp
- for qemu-devel@nongnu.org; Fri, 07 Feb 2025 11:52:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tgRcO-0000FT-Uq
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2025 11:54:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tgRay-0004FV-60
- for qemu-devel@nongnu.org; Fri, 07 Feb 2025 11:52:49 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tgRcN-0004Qt-Br
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2025 11:54:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738947166;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1738947253;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=s2DMxp5NqGuhlDKNQ2xuPhKVtGPCQC67oVHERu9c1Xs=;
- b=TXSI+iw/Kq6O/jBG7e8TLBiajYRo+pM1kp4c+nTeC1kB+s0IT4vzCapl+VjsgYZo/5yKSG
- m0SVm+Epy7ufvyXcFJLrSOfa8S8ruAevSF5LN4PVQudFTxSP33bIp2e2d6PtDiiHTB8IIg
- 1qRCL+JHmk30KU32rRZaZxtww5BWAA4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=YJXeFnEzqoSV6B2sp8vrSeC5C1Yde3acfQJgATlGvqc=;
+ b=GQiQzFPqg+pYSwch9t7ovciVZiI1hO5H1jM8r8AIpISWmSWgiUcxCg9vUruKXguiPNF0cs
+ qcZuHBMv6+HzEKoPzDtFVkdKVmGQwkbOLyKiZbQRV/Om8NYvt0J662KrOQqe09GluUaZpo
+ 0fmtnqhkPCMBQKqRwgAmYxHYanjSz4I=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-680-BkUaSVXoMTG21WO9WuaP3Q-1; Fri, 07 Feb 2025 11:52:45 -0500
-X-MC-Unique: BkUaSVXoMTG21WO9WuaP3Q-1
-X-Mimecast-MFC-AGG-ID: BkUaSVXoMTG21WO9WuaP3Q
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4361efc9d1fso17698455e9.2
- for <qemu-devel@nongnu.org>; Fri, 07 Feb 2025 08:52:45 -0800 (PST)
+ us-mta-621-hOcuMbykNVeGOI1Mhbe75g-1; Fri, 07 Feb 2025 11:54:12 -0500
+X-MC-Unique: hOcuMbykNVeGOI1Mhbe75g-1
+X-Mimecast-MFC-AGG-ID: hOcuMbykNVeGOI1Mhbe75g
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-6e1b8065ed4so41916096d6.0
+ for <qemu-arm@nongnu.org>; Fri, 07 Feb 2025 08:54:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738947164; x=1739551964;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=s2DMxp5NqGuhlDKNQ2xuPhKVtGPCQC67oVHERu9c1Xs=;
- b=gImOR3z1bpuRIjHfSe2gJSav6DnKt5ZfJc/hclxWOP6tQr/iX8+TP1W1PbG3qJFA2W
- 20NgilaIza1naa0AsGhavXKg8ujk5zDxXQOqB9idyfwdmHoE8bTjQkAarBSFJI7fk3Gr
- LTnnlVzM1aAJu4vO/JnGKorBBnQ/9kunEBaf3+jd8FDXFTCPCzoCh++V2HjB5eoE5Gxt
- sDYKhi/22zHKfSy3uRFdskumK+Z6ruVPgk9v4pAcd0bwPXo7mME3z60ypA2edMEEyh3O
- KhJmF72wJZa9qkup+2soJcNW3SmIXCUxgp6j1YqaLD6PNBulNzZlSn4Mf4kmgUqieV9/
- nQlA==
+ d=1e100.net; s=20230601; t=1738947252; x=1739552052;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YJXeFnEzqoSV6B2sp8vrSeC5C1Yde3acfQJgATlGvqc=;
+ b=NmCOl8ALAHqKaQs55l5tUKASh8iVZBiwJsGoxGUWrefptiKsePQi9J/BEtfYj3Hzvm
+ Q4d6wzPiavYksIFCB1XKl+WpsXmSVuARJ2IKgDsgVJJZoofDdUayznXO6pAMBvCg3ak/
+ Ko60ZmHfn6YnrQv/r6qRIYCxLVyCpkHPOxSaDnO9BVcrJx8mr29hpmGnlAEgAoWdHHAX
+ Qqqe6RbsNojFNcFYmS6374Yx6XEoz2IANeBZty4PtBoYQSvm5UfiU13EaelVRb4Ozk0k
+ 59MeyLs0vx/Xfk67t89txu46lhzZ8/C5azWS0rxVxkY1yyA/mxZ8zBD1Ypb3LAXhFM+T
+ 75qA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVJ/7YJd7RZhopCipIoILDd8rGOVI+hVhW86ACqiyEtDW16HfgMI3OQ+jbXhBJ9vNqBno7YmXvTtbDP@nongnu.org
-X-Gm-Message-State: AOJu0Yw9uu+Rb6FrRmyGiSwe+zRXt7HdzXaTGkkFQcW/y+Auy/CQo9hZ
- adQZMFWo/iAflN7zWYSsUjK2zcOVcU6lVIhxq3yAH8xdLZW+5q2wwpu4Mt7hrl9bnjQaOLruwBP
- UyLxvjpKBL62hhRevvNOwQMTK0Lbd9WTg8tLbTBRX3qJrUPrW2NN0
-X-Gm-Gg: ASbGncsnjE4YUEovNMR80KDQpZfLawVdPdI7VxnMbRkM+WBmfD4a4lUD8EvQgTxsTKt
- 2gxhjeWZS1pA1qQXdkKpldXmq+WvWILoF9u9em8dyZGoBSBS6upp/4oBBggUTxgjKf2t1bK11Wf
- FAyAgKjiQB1jP3jj042NhLFDIfCt7T0OyistF6CI3YglL0rdXKlijKGsi34xL4szrwsv3SFRjSU
- XbX45+DDs0oh5xv63kIF32oUTmS3Dgr9+CApUFubqE4v+IVAZQmSFRlfPT51ljK/oEAKwyJowA4
- yc/lMoywN3HlLH+HfO3LoC6awD1ZLqcLNJFgoLPPjhR2UzWmodrs
-X-Received: by 2002:a05:600c:354a:b0:436:e751:e445 with SMTP id
- 5b1f17b1804b1-43924980937mr41889435e9.5.1738947164475; 
- Fri, 07 Feb 2025 08:52:44 -0800 (PST)
-X-Received: by 2002:a05:600c:354a:b0:436:e751:e445 with SMTP id
- 5b1f17b1804b1-43924980937mr41889175e9.5.1738947164052; 
- Fri, 07 Feb 2025 08:52:44 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4391da964e2sm60760295e9.4.2025.02.07.08.52.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Feb 2025 08:52:43 -0800 (PST)
-Message-ID: <fdd6c6db-fd02-4dbf-af74-2b5e7ca5ca71@redhat.com>
-Date: Fri, 7 Feb 2025 17:52:40 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] Fix vIOMMU reset order
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ AJvYcCVHP3X6qbPE8Jpepbr42l3aHyVCaIsdZwQ/d0F01pD0pfAJ3vH2/fAgcusLg5+pEI48ZxVhX3a28g==@nongnu.org
+X-Gm-Message-State: AOJu0YzzXbYqa6mcRGo2F+2tqvHySO+5FhRM6d3aavSCcJS0LFASjnuP
+ 1Nzab7Z86jSaLE0JUqUDRODmyon0H2gEWFXThEwpasbzVTYnOrmUK7DypLvc7LkJfOTxdMTHdcL
+ G0mLx0zXQoY0KblUbAixg7ncYTovc0/+CMexqna5fu2bxdhrG9g==
+X-Gm-Gg: ASbGncvtHYyFF4RZA2iqObx53rYNY5HARWsF2S9X/Ua7zJhrpsszqyBv2y5zhD1YwvE
+ N74YMdPN+iG359mLNnjkX9bndIWQAINlQOGMnVMdDdc1Tembj7B+rjseH6IKEAK9uYBRHlO/v1A
+ YkgBiydOer1vB/SOg5DXQbU2QORaSoybU59ROEWLgtYTdapqXQHFcsU8/+/31PkPlhQZyjnqJsH
+ pmc9MHZ1UfeSd37xXqlWaxyWbSUh0zb6zRIfe11I+bNAok1P5LR2NWWBmbb+Kw87/xfoYRqEzv3
+ /68u/0z1NQdeCYnO9dB0VM/bnTloL3vMxEl1EBCYGepogy7J
+X-Received: by 2002:a05:6214:1d24:b0:6d8:9c92:6555 with SMTP id
+ 6a1803df08f44-6e4456fea73mr53485876d6.29.1738947252107; 
+ Fri, 07 Feb 2025 08:54:12 -0800 (PST)
+X-Received: by 2002:a05:6214:1d24:b0:6d8:9c92:6555 with SMTP id
+ 6a1803df08f44-6e4456fea73mr53485486d6.29.1738947251796; 
+ Fri, 07 Feb 2025 08:54:11 -0800 (PST)
+Received: from x1.local (pool-99-254-114-190.cpe.net.cable.rogers.com.
+ [99.254.114.190]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6e44eb52460sm2915526d6.8.2025.02.07.08.54.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Feb 2025 08:54:11 -0800 (PST)
+Date: Fri, 7 Feb 2025 11:54:09 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- jasowang@redhat.com, imammedo@redhat.com, peterx@redhat.com,
- alex.williamson@redhat.com, clg@redhat.com, philmd@linaro.org,
- zhenzhong.duan@intel.com, ddutile@redhat.com
+ peter.maydell@linaro.org, mst@redhat.com, jasowang@redhat.com,
+ imammedo@redhat.com, alex.williamson@redhat.com, clg@redhat.com,
+ philmd@linaro.org, zhenzhong.duan@intel.com, ddutile@redhat.com
+Subject: Re: [PATCH 0/5] Fix vIOMMU reset order
+Message-ID: <Z6Y6sf064FBWT5G1@x1.local>
 References: <20250206142307.921070-1-eric.auger@redhat.com>
- <20250207060822-mutt-send-email-mst@kernel.org>
- <CAFEAcA8j_ra21a2cuJKSxcL81qoT5aUHmb_mOs1J7aVjdR+eXQ@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA8j_ra21a2cuJKSxcL81qoT5aUHmb_mOs1J7aVjdR+eXQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+MIME-Version: 1.0
+In-Reply-To: <20250206142307.921070-1-eric.auger@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: aTGelpf_1EgJUhwypCiNy9r4bw70urDPcenZ-4Ql1QA_1738947252
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fzs5It4yTb+c
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vVGxyIuFAr5w
 
-Hi Peter, Michael,
+On Thu, Feb 06, 2025 at 03:21:51PM +0100, Eric Auger wrote:
+> This is a follow-up of Peter's attempt to fix the fact that
+> vIOMMUs are likely to be reset before the device they protect:
+> 
+> [PATCH 0/4] intel_iommu: Reset vIOMMU after all the rest of devices
+> https://lore.kernel.org/all/20240117091559.144730-1-peterx@redhat.com/
+> 
+> This is especially observed with virtio devices when a qmp system_reset
+> command is sent but also with VFIO devices.
+> 
+> This series puts the vIOMMU reset in the 3-phase exit callback.
+> 
+> This scheme was tested successful with virtio-devices and some
+> VFIO devices. Nevertheless not all the topologies have been
+> tested yet.
 
+Eric,
 
-On 2/7/25 5:40 PM, Peter Maydell wrote:
-> On Fri, 7 Feb 2025 at 11:10, Michael S. Tsirkin <mst@redhat.com> wrote:
->> On Thu, Feb 06, 2025 at 03:21:51PM +0100, Eric Auger wrote:
->>> This is a follow-up of Peter's attempt to fix the fact that
->>> vIOMMUs are likely to be reset before the device they protect:
->>>
->>> [PATCH 0/4] intel_iommu: Reset vIOMMU after all the rest of devices
->>> https://lore.kernel.org/all/20240117091559.144730-1-peterx@redhat.com/
->>>
->>> This is especially observed with virtio devices when a qmp system_reset
->>> command is sent but also with VFIO devices.
->>>
->>> This series puts the vIOMMU reset in the 3-phase exit callback.
->>>
->>> This scheme was tested successful with virtio-devices and some
->>> VFIO devices. Nevertheless not all the topologies have been
->>> tested yet.
->>>
->>> Best Regards
->>>
->>> Eric
->>
->>
->> Looks good.
->>
->>
->> Acked-by: Michael S. Tsirkin <mst@redhat.com>
->>
->> How should this be merged?
->> I supposed I can merge the 1st three and the other
->> two by the respective maintainers?
->> I don't think there's a dependency here, right?
-> If we're happy with the design of the series I think it
-> would be simpler to take the whole thing through one
-> tree, rather than split it up. I had a question on the
-> smmu patch which is mostly about clarifying what the
-> issue is that we're running into, but in principle
-> I'm happy for you to take that patch as well.
-Thank you for the swift review. I will respin to add some comments along
-with the reset function and the relevance of exit phase + add more
-details in the cover letter.
+It's great to know that we seem to be able to fix everything in such small
+changeset!
 
-Thanks
+I would like to double check two things with you here:
 
-Erc
->
-> -- PMM
->
+  - For VFIO's reset hook, looks like we have landed more changes so that
+    vfio's reset function is now a TYPE_LEGACY_RESET, and it always do the
+    reset during "hold" phase only (via legacy_reset_hold()).  That part
+    will make sure vIOMMU (if switching to exit()-only reset) will order
+    properly with VFIO.  Is my understanding correct here?
+
+  - Is it possible if some PCIe devices that will provide its own
+    phase.exit(), would it matter on the order of PCIe device's
+    phase.exit() and vIOMMU's phase.exit() (if vIOMMUs switch to use
+    exit()-only approach like this one)?
+
+PS: it would be great to attach such information in either cover letter or
+commit message.  But definitely not a request to repost the patchset, if
+Michael would have Message-ID when merge that'll be far enough to help
+anyone find this discussion again.
+
+Thanks!
+
+-- 
+Peter Xu
 

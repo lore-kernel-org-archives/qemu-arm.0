@@ -1,122 +1,132 @@
-Received: by 2002:a17:505:32ab:b0:1be9:327d:8ee3 with SMTP id js11csp1949403njb;
-        Thu, 6 Feb 2025 18:40:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUSJcHCH6+OXvEJAspf8EQwBUO3BZXXsR8a2o4dS1AqqbL02ciVynH2ioah5hFOWZdDXoIRrCf1FNQtcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFVdTcJqVkoo29pt7NsWgcnnqYLtC0jZoCStCGyvg7cQWWRE3bNethreHBB4AgacbnDKBh6
-X-Received: by 2002:a05:620a:454b:b0:7b6:d63a:ae8f with SMTP id af79cd13be357-7c047bbc544mr264422285a.21.1738896019966;
-        Thu, 06 Feb 2025 18:40:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738896019; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp43533njb;
+        Fri, 7 Feb 2025 00:09:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUX1cQlBRojlTtghGU0itSjTL4KN24kNZ/agkIkkcOW37LzR9hv3c0p/PbPWa97krEQJPiDVOgZ++G2hg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9s4uIMvjuuF/qe5o/wmw31vI+npMTAHdoLEKV5J6isWKX5J36fh02YyNoam15dv+ZUz2e
+X-Received: by 2002:a05:620a:430a:b0:7b6:da92:fcdd with SMTP id af79cd13be357-7c047bba8a3mr304829885a.15.1738915753255;
+        Fri, 07 Feb 2025 00:09:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738915753; cv=none;
         d=google.com; s=arc-20240605;
-        b=V/kagl2E4Gxpj4sBzDEf6JLw/helXbq6ry+eYqvc9h5uyu8G+ozk+OH2jOGNObaFXD
-         MAgz+TiLrmxlLqnDDQOeKPvs7omL+aSK9xPjv6I3TjzkIzBDaHPp4LBsFJyKVgzYm5wC
-         4qdCmDEibMYUpBCbgFkL0+Y9hHsbq+aGmr6HQV+1pBDYj2iYq0uXZHebLZAYYL6NnHF/
-         9NkSEDs6TXHlEuuI9FaySFQK50WYzK77keDDHnh/av37jGVu+CMnoFko+fEzcGORRimW
-         picTaHHuntozI6ZNS/4CkpKPokeIH8tv7LNh/hYvTUO4iAzQUpmdh3qXf/D7kDl3qovb
-         7bAg==
+        b=YYx79hQJwvvzElzfd3ueiPukS+cYMFuS5tQFUPjVLoHpruL9zGpgQVa0aKK46JZvrk
+         fLW1oQGtQ2VaHjA6RttcYENnOsjZl/CvZBoR8cexTi+ZJqO3H6Z4hFtd8N4uHi5G0JZE
+         WfgtTbTfJ9Mn/IKRwLNeQSjaK+P3XEcMU3CwNhRBuCp1Jdh+mO1FkW5vQVwNBhPRj5A+
+         ykCVgxXkPtWZ4yGT8LSUtosz2+RUcXyeEusheZOwszhKwDsAg9CReyRK1+VK/vuvrlAu
+         GpTqae9p2Wyqk48C0CUN4EVxX62Xf7Psu4eH7eqgQhSL2bd4EHT6yMfOx9BZF7Qg2GS6
+         Jvfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
-        fh=whoagpteY7jJjaIh9tQzkzav5eU67fX2UtZwwLNECmA=;
-        b=XAgzE5jJdGQzOsOLmvqE6u6aBNY9G3Hywn2FsKYphjRIq5Wo15Y4d3eckNcZSKY2RT
-         8wu2a2uyDaMEuwHs4Ow3jYw7vXJqNMu+PSuZNgo68KVkozCX+14hVCUKE/hmDflb4rSQ
-         9U5lcqN9b+SlrcEVYsXAcIGp4zqAT3J6lg1wY5HCGAthkck5tR9C7YTK+QPhMXymE8bL
-         TezbMYcWqgw86mf8uDqaiXqzx68hmPbN/HfsJVziHMgqUbcArbqr30zbwnxqNGCzuOQP
-         WJRxRF9TUPNbkEikV4ZjEE/p5hhhwcRLgtLn2j26IlOdmZ2i2TCEyLhgq/lryxGWhNr6
-         Jy7g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=cfuB8UaY4MnnUB3yo93YJbez+5tWGjee/zrK0ccjw/A=;
+        fh=+9omio81ghw/Na7r+JQRbVm8RK15yiM34AN254OJlDo=;
+        b=GrJ9tSQKIamJ1zXEtBSqMk2ExmS6qRWgzHdmnOLzSzhE6hY1J8zqsEzFamZlIOnsHH
+         iyrNSuEvZ8dv512LwZyzH/pNKKRu4Sf4/L3q6WORKl+kQnB3V69fyUkaEc/cMfOjYusQ
+         XRjIRpM+zF2vgKFIvBxnSOUAEInvOlpUcx8NzV+FtNbfh7ijHKBO7k+ITVr8N0s2D/sK
+         TxgXU4S2YDOf2h8O7ph+58c4Y78XbhTXxIqfqkYL5yXU5jbMY6CW49gWn6NWqwxmclnd
+         9idCKDeDRAz20EfPgRYvobHRKa4TqmHYhJimFGA7fHJfTLu6TT5Cpr+6ZfZa2sjNx99Z
+         x8Tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=A37bkVII;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PeRQ+Qkc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041df43cdsi227817685a.42.2025.02.06.18.40.19
+        by mx.google.com with ESMTPS id af79cd13be357-7c041ed0d18si286692385a.514.2025.02.07.00.09.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2025 18:40:19 -0800 (PST)
+        Fri, 07 Feb 2025 00:09:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=A37bkVII;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PeRQ+Qkc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tgEHS-0005Gp-HV; Thu, 06 Feb 2025 21:39:46 -0500
+	id 1tgJQ9-00088o-BE; Fri, 07 Feb 2025 03:09:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1tgEHQ-0005Gd-Fe; Thu, 06 Feb 2025 21:39:44 -0500
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tgJQ7-000883-74; Fri, 07 Feb 2025 03:09:03 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1tgEHO-00005n-AI; Thu, 06 Feb 2025 21:39:44 -0500
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-5de4c7720bcso15229a12.0; 
- Thu, 06 Feb 2025 18:39:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tgJQ5-0000tk-Ov; Fri, 07 Feb 2025 03:09:02 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43626213fffso17069045e9.1; 
+ Fri, 07 Feb 2025 00:09:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738895980; x=1739500780; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
- b=A37bkVIIL3XEq7GD0rTixC087rJvEEaFZcRbH87ZFWBkK+tyPTQj7HA+aJVPUeM2bR
- u5RLNIz8qElU1x4TzGlb6yrzA4WcFAb9D728lOJREaC6PvkEV7CmenmFUqRUqod3NB+I
- 6T9i9n7BVTXD1+WsX3nIHI31CVJhjup7Prw8lDXBrMi9ryGKxpQeedLHBQx6VPetNLIl
- 0BQ+JKoiqegQkP35c3DVm3t7MZ9dBq0jgGmPi3Ao5d21tmxSby38ZDyJuZNwxfbt5ROm
- EcwHq+pPt7Q0RIx/tW6y1kvMVc0aP/7v3dLboNWT6OZrb7X/uhPWNqrUGq6AJgqDaFp+
- hLxg==
+ d=gmail.com; s=20230601; t=1738915739; x=1739520539; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cfuB8UaY4MnnUB3yo93YJbez+5tWGjee/zrK0ccjw/A=;
+ b=PeRQ+Qkc+FS5jpsqCjmk6M/JAHtNQyZpgeoGPnctrlF6o+SxJEWF8g+uzCV7MPBY9K
+ vHiZxZXaYn7YXprIlBNgsZ7ykmMcq4Y0z551TT+v4+dbUAeL+i5D+uUfd8DP5eESQ4Go
+ 6tZ5q2FKtYJl5h8YGq1G0HklTbv88sU7Lpa+TWtVIskxcp7Aw5dwQtM88NxIRvy0iO9E
+ Grz94I10khdNUuUN//xhAllDp0U1wUePsqp2ecPK8LU/MTCF5FkOa4nUVZrSJ7nAkE8H
+ FSvT3zgVQ3JXLk5ai3snVz1pjlrNMoLkQvejdkzCtg6IL4AbRc0L3WY8UywfG5CXMqbe
+ xxVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738895980; x=1739500780;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8XlNkNs/hW098c9OGj+Y5ih0rxT7wYNs1pxlwpJQjtc=;
- b=qQ9KFGRWS/+gp+CBYu7eKZWbEeFfnf0UjjLooSZlCRNLIQIrGOdbTBsYe/xWuXpFvd
- 8/hpAywAbsuLG5veYTax+/Lc+98znkVnx1+ktYe5ahPURHqaXGYVLyae/5+eOOp0f1ST
- bwiLBy4NGyORWb/jn0r7UajTm6y8gG3HPar6PE5L3NF9jH90Opal/dp1iV2lFIg0SHlW
- k7wEG3u3JmNl2aJFLDfcvR/K/xg1okMXDH362yV2kO9CbIRhru31OQzMu0kntQP9ppSW
- ST6ahqd4Stf/VDGWDfAFKrcuKRdZz539VoFK/FZq/VHylAapUHJ5F5lVp0nvx0RBKC6e
- dBpw==
+ d=1e100.net; s=20230601; t=1738915739; x=1739520539;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cfuB8UaY4MnnUB3yo93YJbez+5tWGjee/zrK0ccjw/A=;
+ b=gG7qx4KhhaQmoDpZKoAjn7g+EVH/j7SwDsrATnrkPtnogRJy3ZGRLPgCdcF5LIMrQN
+ kkZAmwWoIcVu1Iev5YXr3NO1/J5uZ1m0zlVNfuAKlbVYqwz/9xmeY5Yqg4TKGkHwiru7
+ vkwrTzOHM08IHwmU4u2LT3l+076l2qa5ZeCcXV3jgNvNEobno8PHQ5/PSdaMh3h/7asU
+ VMG8+uGQexuDx6Z1FIr6d5oXnyQ4zeC6UQgsdAak635e5hl7LLOq/jEPN5gKTLxxyxPN
+ 5vrMh+KA/JvPgenYXM5jkT6uULqoML2YlRhhzBDAP7SI9QiSHjO2GFxFF0EpMkgsYy+C
+ sCtA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU9oVgMF30aBE/VTXvcUzTn7XMINHlT/0KDOzNfcT3vry4sjrlt9VFysBVuqUyCin8PlkKvBO5Nn3xf/g==@nongnu.org,
- AJvYcCXpZYWCszq+P9eYBbhF6Oo2Y7iEQHgNtxBiVyxHMa16i2sXb+kXhKGHyNySeYrP7JOSJ/pkefw2Ig==@nongnu.org
-X-Gm-Message-State: AOJu0YxsZvI6RJ2Xe8xEEa4p/RpLpqCF1gyreZwgquIs6EteKQDiS+31
- oyyW5POGL7Y6/hKjJvr/5rEJ6mc3SjDxhXWwE9FA8BP4k2YdQo36vVykHJx9re5IJLF9Uovbmbp
- TAyV1nnaFdG6xelNSoSJKT1Xu3SQ=
-X-Gm-Gg: ASbGncuMMio9b4Bcac+dNPYO/azg2p26ryI40E0FE0mSE7XAmZGnNcqQFVz3kK//ecb
- nxezsMDeY0ED6eRP4PsxL0I0oRQHGZQtv3ocuvGxLW+H76lbPkkG1rtdKI8wBCZXkxeZY3XFq3b
- I=
-X-Received: by 2002:a05:6402:2186:b0:5dc:db28:6afc with SMTP id
- 4fb4d7f45d1cf-5de44e5f09amr1781938a12.0.1738895980288; Thu, 06 Feb 2025
- 18:39:40 -0800 (PST)
-MIME-Version: 1.0
-References: <20241219061658.805-1-andrew.yuan@jaguarmicro.com>
- <CAFEAcA96ZLjOhBT9rhNhuk32ve0Qv4hUVuTTtgE=DBApbN98Pg@mail.gmail.com>
- <CAJy5ezovedShKH=HFbK9uRY44no2ijQocs29CHLt2jKoNL+Vpw@mail.gmail.com>
- <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 6 Feb 2025 20:39:29 -0600
-X-Gm-Features: AWEUYZkTuMwuyatggAhCHe9X5WWgRk7lvGsuQ_A2TDqn4rCZLv0zKPA6IRCcFbg
-Message-ID: <CAJy5ezpS+wMdXSZU4SH+DoGr2jd4k4gAj3NJXcWKAHa4a6dpjw@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/net: cadence_gem: feat: add logic for the
- DISABLE_MASK bit in type2_compare_x_word_1
+ AJvYcCVpIWwqo5qSiT3KReEYufbHVGoGK5mv7YLRh+dkYvLuMRq+KkpL/Vj6zP8N53/brdsOvXu7fIp/mA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzyt0SLXMWeTCuMcjNtVmGoCL9K9qM7WlvF22ghWBSjYq+UyZD+
+ 6KupGCxzsok/Ypi7BuJR0jIjbJEnG1RlipNjSBsFvsbDSUH++MvB
+X-Gm-Gg: ASbGnctXU5HlfHeKeVfOLyeMBwV/y0/bQxx9S0Q56ZkfWWEr1epJ2E/qLQDDNIJVIi7
+ QepbbjdaO9UuUzuHkZs86RJfUiWyupbph3fHlGHe1DOrQL1zPBvftzr86vLyi2kA5zNgi0/CgUd
+ cy7VUjA25DWhfmQ7ZSLuSBUd4fhnujh8WA6MA5e0trIqT4bWIznOG5XhU6wxGO2wkhYNS0MzZFL
+ MpJP+k2COfEOkr9x4gkxobY01vzuAwE2tnF0zHMsnRt3FjthckBNbIiTAA/7OaWoJoyfFi+g8qM
+ eCD2wvK7UKtAh715GHx+Ed+a76c129aLD+2zq1107OubpVK3U2g/XuhO/ESeSa7GCGfwFijGIA4
+ =
+X-Received: by 2002:a5d:6487:0:b0:38d:b349:2db2 with SMTP id
+ ffacd0b85a97d-38dc99a099bmr1231986f8f.22.1738915739402; 
+ Fri, 07 Feb 2025 00:08:59 -0800 (PST)
+Received: from ?IPv6:::1?
+ (p200300faaf004300ecd7bea232a7e2ce.dip0.t-ipconnect.de.
+ [2003:fa:af00:4300:ecd7:bea2:32a7:e2ce])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dc09fc2d9sm3157748f8f.6.2025.02.07.00.08.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Feb 2025 00:08:58 -0800 (PST)
+Date: Fri, 07 Feb 2025 08:08:57 +0000
+From: Bernhard Beschow <shentey@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>, philmd@linaro.org,
- alistair@alistair23.me, 
- jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000034df7e062d844527"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52d.google.com
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_13/18=5D_hw/arm/fsl-imx?=
+ =?US-ASCII?Q?8mp=3A_Implement_gneral_purpose_timers?=
+In-Reply-To: <CAFEAcA93kevhjQHWjbZFMRaka2LSTr+jYcT7aA_AyrTDsKcubw@mail.gmail.com>
+References: <20250204092112.26957-1-shentey@gmail.com>
+ <20250204092112.26957-14-shentey@gmail.com>
+ <CAFEAcA93kevhjQHWjbZFMRaka2LSTr+jYcT7aA_AyrTDsKcubw@mail.gmail.com>
+Message-ID: <1C1367FE-A7FF-4673-8858-10A22E35DF75@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,231 +142,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LtIP7exIIqb1
+X-TUID: f02bX+Du7P8s
 
---00000000000034df7e062d844527
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, 4 Feb 2025 at 08:37, Peter Maydell <peter.maydell@linaro.org> wrote=
+
+Am 6=2E Februar 2025 17:29:16 UTC schrieb Peter Maydell <peter=2Emaydell@l=
+inaro=2Eorg>:
+>On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
 :
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>  docs/system/arm/imx8mp-evk=2Erst |  1 +
+>>  include/hw/arm/fsl-imx8mp=2Eh    | 11 +++++++
+>>  include/hw/timer/imx_gpt=2Eh     |  1 +
+>>  hw/arm/fsl-imx8mp=2Ec            | 53 ++++++++++++++++++++++++++++++++=
+++
+>>  hw/timer/imx_gpt=2Ec             | 25 ++++++++++++++++
+>>  hw/arm/Kconfig                 |  1 +
+>>  6 files changed, 92 insertions(+)
+>
+>Typo in the subject: "general"=2E Otherwise
 
-> On Thu, 30 Jan 2025 at 22:31, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> > On Mon, Jan 27, 2025 at 8:40=E2=80=AFAM Peter Maydell <peter.maydell@li=
-naro.org>
-> wrote:
-> >> On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan <andrew.yuan@jaguarmicro.com=
+Will be fixed in v3=2E
 >
-> wrote:
-> >> > -            rx_cmp =3D rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
-> >> > -            mask =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0,
-> MASK_VALUE);
-> >> > -            compare =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0,
-> COMPARE_VALUE);
-> >> > +            disable_mask =3D
-> >> > +                FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1,
-> DISABLE_MASK);
-> >> > +            if (disable_mask) {
-> >> > +                /*
-> >> > +                 * If disable_mask is set,
-> >> > +                 * mask_value is used as an additional 2 byte
-> Compare Value.
-> >> > +                 * To simple, set mask =3D 0xFFFFFFFF, if disable_m=
-ask
-> is set.
-> >> > +                 */
-> >> > +                rx_cmp =3D ldl_le_p(rxbuf_ptr + offset);
-> >> > +                mask =3D 0xFFFFFFFF;
-> >> > +                compare =3D cr0;
-> >> > +            } else {
-> >> > +                rx_cmp =3D lduw_le_p(rxbuf_ptr + offset);
-> >>
-> >> Is the change in behaviour in the !disable_mask codepath here
-> >> intentional? Previously we use one byte from rxbuf_ptr[offset],
-> >> duplicated into both halves of rx_cmp; now we will load two
-> >> different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].
-> >>
-> >> If this is intended, we should say so in the commit message.
-> >>
-> >
-> > I agree that it should be mentioned (looks like a correct bugfix).
->
-> Thanks. I've expanded the commit message:
->
->     hw/net/cadence_gem:  Fix the mask/compare/disable-mask logic
->
->     Our current handling of the mask/compare logic in the Cadence
->     GEM ethernet device is wrong:
->      (1) we load the same byte twice from rx_buf when
->          creating the compare value
->      (2) we ignore the DISABLE_MASK flag
->
->     The "Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev:
->     R1p12 - Doc Rev: 1.3 User Guide" states that if the DISABLE_MASK bit
->     in type2_compare_x_word_1 is set, the mask_value field in
->     type2_compare_x_word_0 is used as an additional 2 byte Compare Value.
->
->     Correct these bugs:
->      * in the !disable_mask codepath, use lduw_le_p() so we
->        correctly load a 16-bit value for comparison
->      * in the disable_mask codepath, we load a full 4-byte value
->        from rx_buf for the comparison, set the compare value to
->        the whole of the cr0 register (i.e. the concatenation of
->        the mask and compare fields), and set mask to 0xffffffff
->        to force a 32-bit comparison
->
-> and also tweaked the comment a bit:
->
-> +                /*
-> +                 * If disable_mask is set, mask_value is used as an
-> +                 * additional 2 byte Compare Value; that is equivalent
-> +                 * to using the whole cr0 register as the comparison
-> value.
-> +                 * Load 32 bits of data from rx_buf, and set mask to
-> +                 * all-ones so we compare all 32 bits.
-> +                 */
->
-> and applied this to target-arm.next.
->
-> > Other than that this patch looks good to me!
->
-> Can I call that a Reviewed-by (with the above changes)?
+>Reviewed-by: Peter Maydell <peter=2Emaydell@linaro=2Eorg>
 
-
-Yes, thanks!!
-
-
+Thanks,
+Bernhard
 
 >
-> thanks
-> -- PMM
->
-
---00000000000034df7e062d844527
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><br></div><div><br><div class=3D"gmail_quote gmail_quote_=
-container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, 4 Feb 2025 at 08:3=
-7, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.mayd=
-ell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:sol=
-id;padding-left:1ex;border-left-color:rgb(204,204,204)">On Thu, 30 Jan 2025=
- at 22:31, Edgar E. Iglesias<br>
-&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igl=
-esias@gmail.com</a>&gt; wrote:<br>
-&gt; On Mon, Jan 27, 2025 at 8:40=E2=80=AFAM Peter Maydell &lt;<a href=3D"m=
-ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
-/a>&gt; wrote:<br>
-&gt;&gt; On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan &lt;<a href=3D"mailto:an=
-drew.yuan@jaguarmicro.com" target=3D"_blank">andrew.yuan@jaguarmicro.com</a=
->&gt; wrote:<br>
-&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_cmp =3D rxbuf_p=
-tr[offset] &lt;&lt; 8 | rxbuf_ptr[offset];<br>
-&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask =3D FIELD_EX3=
-2(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);<br>
-&gt;&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 compare =3D FIELD_=
-EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 disable_mask =3D<b=
-r>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 FIEL=
-D_EX32(cr1, TYPE2_COMPARE_0_WORD_1, DISABLE_MASK);<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (disable_mask) =
-{<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<b=
-r>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0* If disable_mask is set,<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0* mask_value is used as an additional 2 byte Compare Value.<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0* To simple, set mask =3D 0xFFFFFFFF, if disable_mask is set.<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0*/<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_c=
-mp =3D ldl_le_p(rxbuf_ptr + offset);<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask=
- =3D 0xFFFFFFFF;<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 comp=
-are =3D cr0;<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_c=
-mp =3D lduw_le_p(rxbuf_ptr + offset);<br>
-&gt;&gt;<br>
-&gt;&gt; Is the change in behaviour in the !disable_mask codepath here<br>
-&gt;&gt; intentional? Previously we use one byte from rxbuf_ptr[offset],<br=
->
-&gt;&gt; duplicated into both halves of rx_cmp; now we will load two<br>
-&gt;&gt; different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].<=
-br>
-&gt;&gt;<br>
-&gt;&gt; If this is intended, we should say so in the commit message.<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt; I agree that it should be mentioned (looks like a correct bugfix).<br>
-<br>
-Thanks. I&#39;ve expanded the commit message:<br>
-<br>
-=C2=A0 =C2=A0 hw/net/cadence_gem:=C2=A0 Fix the mask/compare/disable-mask l=
-ogic<br>
-<br>
-=C2=A0 =C2=A0 Our current handling of the mask/compare logic in the Cadence=
-<br>
-=C2=A0 =C2=A0 GEM ethernet device is wrong:<br>
-=C2=A0 =C2=A0 =C2=A0(1) we load the same byte twice from rx_buf when<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0creating the compare value<br>
-=C2=A0 =C2=A0 =C2=A0(2) we ignore the DISABLE_MASK flag<br>
-<br>
-=C2=A0 =C2=A0 The &quot;Cadence IP for Gigabit Ethernet MAC Part Number: IP=
-7014 IP Rev:<br>
-=C2=A0 =C2=A0 R1p12 - Doc Rev: 1.3 User Guide&quot; states that if the DISA=
-BLE_MASK bit<br>
-=C2=A0 =C2=A0 in type2_compare_x_word_1 is set, the mask_value field in<br>
-=C2=A0 =C2=A0 type2_compare_x_word_0 is used as an additional 2 byte Compar=
-e Value.<br>
-<br>
-=C2=A0 =C2=A0 Correct these bugs:<br>
-=C2=A0 =C2=A0 =C2=A0* in the !disable_mask codepath, use lduw_le_p() so we<=
-br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0correctly load a 16-bit value for comparison<br>
-=C2=A0 =C2=A0 =C2=A0* in the disable_mask codepath, we load a full 4-byte v=
-alue<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0from rx_buf for the comparison, set the compare =
-value to<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0the whole of the cr0 register (i.e. the concaten=
-ation of<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0the mask and compare fields), and set mask to 0x=
-ffffffff<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0to force a 32-bit comparison<br>
-<br>
-and also tweaked the comment a bit:<br>
-<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* If disable=
-_mask is set, mask_value is used as an<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* additional=
- 2 byte Compare Value; that is equivalent<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* to using t=
-he whole cr0 register as the comparison value.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Load 32 bi=
-ts of data from rx_buf, and set mask to<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* all-ones s=
-o we compare all 32 bits.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-<br>
-and applied this to target-arm.next.<br>
-<br>
-&gt; Other than that this patch looks good to me!<br>
-<br>
-Can I call that a Reviewed-by (with the above changes)?</blockquote><div di=
-r=3D"auto"><br></div><div dir=3D"auto">Yes, thanks!!</div><div dir=3D"auto"=
-><br></div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:sol=
-id;padding-left:1ex;border-left-color:rgb(204,204,204)" dir=3D"auto"><br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---00000000000034df7e062d844527--
+>thanks
+>-- PMM

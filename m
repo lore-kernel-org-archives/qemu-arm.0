@@ -1,85 +1,86 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp976509njb;
-        Sat, 8 Feb 2025 08:39:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXOlM8klsu33AHpdAY8gWPbbjynA06KsVtMZG8Cwl5EsE2DSfwlve4yzFIr3INWUpGgz9rAognZDrz5ZA==@linaro.org
-X-Received: by 2002:a05:600c:282:b0:434:fdbc:5ce5 with SMTP id 5b1f17b1804b1-439250df461mr60626645e9.29.1739032775998;
-        Sat, 08 Feb 2025 08:39:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739032775; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp976552njb;
+        Sat, 8 Feb 2025 08:39:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX/DZS/0tYd0WKhkMkR7tZQMmWjrXnlV9z2VnAOv047syLYAo5jzfNLkXiwwKDEe6r8l4c1Ca4NBMhxZw==@linaro.org
+X-Received: by 2002:a05:600c:a085:b0:434:e2ea:fc94 with SMTP id 5b1f17b1804b1-439249843b8mr75608555e9.11.1739032781003;
+        Sat, 08 Feb 2025 08:39:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739032780; cv=none;
         d=google.com; s=arc-20240605;
-        b=eTsQ6OcMTnzfCFhVBN0+k3C2kjFq6YSpIZ0aMzxtG8SS05cS+zWL2X91eJAo1OxBLv
-         SiSRyuAsn1gC4bcm51Ya3j77tFrpgVxETZTMAEy8Rdn2IxVFEiiS9HUz6Esu2OtLlMvn
-         Aiz8fDAIa5SQmVMDUO6Oyf570Bw45cXCv34xAWGAJ8ddc+K/vtSoM2dvnAnMXlJ5BxFx
-         pqJkyYTGq/EuyZCCfN20MevYK0eYdFH8Q9/0X2nw5a+1IORlAtFkognCGEVqHNHrewYH
-         qEBfqso42PSUFI+PxUzMYaY8b9eLiWxrsouVt8Ji6SSkXmhNGinrATCT5hQzctnXgcg9
-         D6aw==
+        b=jzLxwl49twLUttKuINLO6Y/+fUv1ZCF0pNw13b4w7S4Cv0jqzZbBzVWxCMq3tfRKuh
+         L5H6cyhkWcNp2JGirvu7fSn8J0NKt8nfCUGdJwy55jZ5CX23OSyF5UxBIlfElAr2/0ys
+         RXL+JQrZnue5TGP1h9+ZAQWSy2gSDtBJ5L3WmMvM5nZFncgjws+R1EfsxrmDogTisoaL
+         AQrRj7G190LaU6SHJ29Ws8NHZ+QzBoWv6v4izeKVZiVQtTxYII80b34FVq9Vvm7DOPft
+         K2nr87+CNNSlrgFY8nRE06XDsbnPSlpVa/QlZm/KyWZL14BUz6UmMIIV9MkFd0pkCmlS
+         BJLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PHdzv7+PANz1XyqKozB4I/EYUC6swY8LmKK++HWkyR0=;
-        fh=XvMIsdhz7SkEGRHV2VIpcVwMWsdPfy4XHnTuASLo3rU=;
-        b=JasoR9nNFYftdlWNZcc/VsFnV+QPkr/GDFgbcuq9OZtf/LJQ0c/ncUKetQQx9Ophr9
-         3EtUXgv2OwKbyiaLbLM5XteJcj4ozmDrm16QZGNu9V5jaSFyRA20wVpWcUFVXkN6VfxF
-         EpjhZHBYEJFmkjkEgADfQJXZ0oGL4h70a2Co/0JZ6Hbf6qIlVrI2xCHkFnVyxC2P/qz5
-         tKm6xWBpue/70F2igEbBxqhf6Nn0nWGWGKO8vM71clEqnROoUKnAnjIuziY6A2ZAub48
-         hwgrR4Lc7wquHcM77zQAtRykLQuFEkcbaehogtzZ7CXZTFPjSchk97TesUcgfOS8Svuj
-         u9/Q==;
+        bh=k3jwnJ8U5C1FFKFcPCQMKp4F/bw0CDqtfmKmUBOfDPU=;
+        fh=rNRLI7IxhZNBoc0GlJFvwusyOVrHyobHeLU2Mvog51I=;
+        b=htwUu4tdoXCbegeYpoP1Myt3gSRZZno0sYitMn3g/9JY7psvz2+TFBcEEXq4U8YHom
+         e8WlRQzPp9Am+n5QcRL7BKpWSM5RTe3/aM9jQFgaocMJb2UOiYuqXjrxedoWYFCqSoAU
+         sPXi0bSQeSOqdKqiFIkA8q4cAiorptjBmFsHgsApU7D5y26p+Oqz2XhDr9ZQv0mQz6H1
+         uo7VK0oeMMMn9qHhH58fB4oCmvn+ejSbzsCv0uGs5WFHgRukYT9RWjn7UuGdhcVwb9QD
+         aYCJ3K3dbwgGuf+rbaksY7T8pmeM/Ye7LkrByzIJXB6PzR08IuNsuABaoAY3b12vhniV
+         V4CQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gmzzCE7y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AWSQESOF;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4391dfdc15bsor20118375e9.6.2025.02.08.08.39.35
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43923ff2813sor15348485e9.9.2025.02.08.08.39.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 08 Feb 2025 08:39:35 -0800 (PST)
+        Sat, 08 Feb 2025 08:39:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gmzzCE7y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AWSQESOF;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739032775; x=1739637575; darn=linaro.org;
+        d=linaro.org; s=google; t=1739032780; x=1739637580; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=PHdzv7+PANz1XyqKozB4I/EYUC6swY8LmKK++HWkyR0=;
-        b=gmzzCE7ynKWCQKEdCECZY2GLcZ7BZeOiGj85bBMSHsu5CFCF9Typ9dHKUG2reYa09h
-         wKCz1E0YxBNVwWfefAp5tiZOrqW/hJj/cXYo9XGlX/81QNPVqXs9UETO8E+oVOtSCnQy
-         zqBJl/S/WVAjlpMk9x/P4u0jhDbMNBKfygeD5InUpFa8Lz+2SIRroawFoJBlWBCJZUzz
-         lqZ7UNPDau47hEGv5l0osf58Zuft0dYsHPT6Bxlb5d2A8HEkzIXu51NejWzCqA8wvBkH
-         PLtZgzG6mJuB/ifE3ieMe3jdANkvrrjSxJBvnVVWBCuCyN4AKW+cd49HD8PpqAYO7IM0
-         tGOw==
+        bh=k3jwnJ8U5C1FFKFcPCQMKp4F/bw0CDqtfmKmUBOfDPU=;
+        b=AWSQESOF4szNiAPgj3/CkHNvdqvzygC+Nt/r/PZgmwuSGU81FmBuZKq+XVRO/kVElB
+         k7K21n9E/jj8Ho6euV4cQmPN7n3zwV3jxMKZH4tnJ4sMNI54lAht/x4NSn6flTfQOUNn
+         wkj8EkX8MvLPqZsQBsBoXvnL/bcFXY+EiNW9Rf0VsDbNQdAZKj5FOrAVwAwAgFtwpvTX
+         dM0a78tz2l9A5tvaRgyvWMzbl/ibRUWK4V2+CIxv26IdackVT8J/mP72RINvyqbK53YV
+         JbJQ3adb4qQXmob8xzwaoWP2XA3USisuZXoCZSUH0p4tpAQ6TQsQrZoi0+3t3+HY+A8K
+         MWTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739032775; x=1739637575;
+        d=1e100.net; s=20230601; t=1739032780; x=1739637580;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=PHdzv7+PANz1XyqKozB4I/EYUC6swY8LmKK++HWkyR0=;
-        b=GG6VZfeYwYrD3cRnih/1fNRHmTqv1KYWwC2OnuAht3Sw0NfBNmueyfdQYo4B73s7uS
-         wrQeo/HfynfQRIsyXBzq96WdUq4ae8+h8FbnrPSKiN9QXcrBVeZbkpWd/2v2hgGOW+ic
-         BgtMESZ61SUzIAd4z3hP1HKlbfT+pDoMYjl1hjWi1c9MRJh2JulKwu3Ix7mcDAuoA1kE
-         PieCHYkCSaVmErEbWLMvQrM4VzyaCxm//29D1z6WX5dfT0GmJHlCYCD5ASQh83J/8Or8
-         wm9A3C3HF8CsyvZCycvNbczGCM2H8jVB8TI7aCJOJG+ZpQj5rbwyq0e7urbQk3R9Qwik
-         XQBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUtX/3CrsFccxpo8/s7M4rp/rqUVyD2MNrQPtfCDYEZMuhn8mMvtZC91XrAdQqh9zSgSHW5GrExzWhigw==@linaro.org
-X-Gm-Message-State: AOJu0YwARPJa+1Lg5DqGZVDuEY+VY94uzECN9tA38xaNMnF9BIqZZmRv
-	55TjcCuU67P/jelnx4IeJzZgwH4f1okPMJD2YcQtgudWSyWK3agEFBizRPcIgyS1Ew==
-X-Gm-Gg: ASbGncuizBpultYBMIBekl3mMaefDST2ulTw5tzp9Ja+MHOs+LcZeaL6nRSCH70NsCG
-	rtQJQilHa25gWI45wVQI8tKBg2iEM7YDBB7qp+T6PejQ0SY+QbBshgG5w3N28SWeLldaHCPHLPD
-	0hXHk4JeatUvdwEiAjAsOCKCIM5ENXhxCNeqpNgwSUd/Nh9DJauIdkf561Hgm+L3OOMsqUhC9am
-	Y/8O4hFNav6dCABOVPnVzuRtyLwZxpv/Wg65M+HpGFH0Bru90VmCoAw9UWbemHmLAOKVaY98j46
-	WAYpG5L4JiVucKMqVk19iAqUc8u43dbyP1FenTwuWkwa7q9IdNytNAP6kE4Z9U1IUA==
-X-Google-Smtp-Source: AGHT+IH6YpUMdG322bhbp1b6ekVP+kxaXrw7iSiny0srrOqCy4sWpckqu3Y/SBLQQuH4TYwy4uKzVg==
-X-Received: by 2002:a5d:5915:0:b0:38b:f4dc:4483 with SMTP id ffacd0b85a97d-38dc8fe80bcmr4396795f8f.29.1739032775508;
-        Sat, 08 Feb 2025 08:39:35 -0800 (PST)
+        bh=k3jwnJ8U5C1FFKFcPCQMKp4F/bw0CDqtfmKmUBOfDPU=;
+        b=sBdAyv0lnJpDCVT/L48FFKU6MyFF5y8ujJG7lGi3CKw+Uf7F1F2tlV0dHcqOXGn3OC
+         Nx07S+jFNuz6joSidzwaQY7zh4Mt6XGYD67nUP5HJo7pC2FT0aoBpMY+h1Fj4iDNGTHj
+         zwsrjEBLLqoRXKxOxabT2WFA1ApJ72V2j6m98DVolzYyxyUMSRjitjhJLEK/eujoCb6U
+         5jogQ4ZndtigveK3wbKUsNgt+CHoROcwhEY+EGxjrpV9HKHUnp2ECe4B2bVNAnlYtbZi
+         5g7jRkugjC1kFK9pl2Oh3K+Z/w+WZALywi2UjLpo1X9csRfFkyWvaNgmFjo1OvV5ovds
+         AvXw==
+X-Forwarded-Encrypted: i=1; AJvYcCU7bxxsdvLKXTKEYBwXxdxwkVkU3/ZhqhTYVLH+m9bCHD5aM4Ytlr9BgV8ev+Z78BzM0YCnutvJtJIZCQ==@linaro.org
+X-Gm-Message-State: AOJu0YwSm+z0ItN/iEEHQOvTTizKhtI8IvJIFwTqqTtV1QFWAomlByqf
+	KP6Oyk9z+slB9GwDOzTD8K9x+5YiAXey/S8KihhnjRjPLILkEe0VFTzn9fLyPTtvfOmirzNuD/T
+	4solbdg==
+X-Gm-Gg: ASbGncuAvt7x0jGpQAoxO65ItEtvm728nBZXrofEoOsfpxE2gEwC2P0HPDUDpO7Q9Sh
+	dj8EkLdJnQA/QTnOef2HXTZmhv7NKuMGDczyy6anx2EjWfNfuz0t7o/rJnBI6ZL3cqF9i29JL1+
+	bJh6RvD5xSUAxdyyBcjFTKzLYa54eYorKnO8SRxQOfgrEOLpJwnJMU6hd8+it6c3xZlSff5BYdr
+	xO0YoZfNnEPnn/mH2gRNp5I2LuGnrMLJ4Zf1Z46ZSHoFT/Dyaep5ucTJfZTsCZ0LxiKjMntinKK
+	h2EMdVExixZAsaDpfzY7BeJ/Ut9JVZ1MY4a+c75NvHswD0Jiy22gut2GzLb0ihDdAQ==
+X-Google-Smtp-Source: AGHT+IGiNbPF0hpneHG2b2A0Hn0xLt9FrKz3WmDdZusUAVuNNTx1ruYM+CySYBMFZZ2UaThcWdrCkA==
+X-Received: by 2002:a05:600c:4e0f:b0:436:1b7a:c0b4 with SMTP id 5b1f17b1804b1-4392497d53amr49853725e9.1.1739032780459;
+        Sat, 08 Feb 2025 08:39:40 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4390d964c7csm124581855e9.17.2025.02.08.08.39.34
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dc9ef8ac6sm4922432f8f.27.2025.02.08.08.39.39
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 08 Feb 2025 08:39:35 -0800 (PST)
+        Sat, 08 Feb 2025 08:39:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -89,58 +90,87 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 4/7] hw/char/pl011: Trace FIFO enablement
-Date: Sat,  8 Feb 2025 17:39:08 +0100
-Message-ID: <20250208163911.54522-5-philmd@linaro.org>
+Subject: [PATCH v6 5/7] hw/char/pl011: Consider TX FIFO overrun error
+Date: Sat,  8 Feb 2025 17:39:09 +0100
+Message-ID: <20250208163911.54522-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250208163911.54522-1-philmd@linaro.org>
 References: <20250208163911.54522-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WmGtscDfuLdb
+X-TUID: QbqY4vIx8qO+
+
+When transmission is disabled, characters are still queued
+to the FIFO which eventually overruns. Report that error
+condition in the status register.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/char/pl011.c      | 4 +++-
- hw/char/trace-events | 2 ++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ hw/char/pl011.c      | 20 ++++++++++++++++++++
+ hw/char/trace-events |  2 ++
+ 2 files changed, 22 insertions(+)
 
 diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index b9c9e5b5983..447f185e2d5 100644
+index 447f185e2d5..ef39ab666a2 100644
 --- a/hw/char/pl011.c
 +++ b/hw/char/pl011.c
-@@ -148,6 +148,7 @@ static bool pl011_loopback_enabled(PL011State *s)
+@@ -61,6 +61,9 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
+ /* Data Register, UARTDR */
+ #define DR_BE   (1 << 10)
  
- static bool pl011_is_fifo_enabled(PL011State *s)
- {
-+    trace_pl011_fifo_is_enabled((s->lcr & LCR_FEN) != 0);
-     return (s->lcr & LCR_FEN) != 0;
++/* Receive Status Register/Error Clear Register, UARTRSR/UARTECR */
++#define RSR_OE  (1 << 3)
++
+ /* Interrupt status bits in UARTRIS, UARTMIS, UARTIMSC */
+ #define INT_OE (1 << 10)
+ #define INT_BE (1 << 9)
+@@ -158,6 +161,16 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
+     return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
  }
  
-@@ -464,8 +465,9 @@ static void pl011_write(void *opaque, hwaddr offset,
-         pl011_trace_baudrate_change(s);
-         break;
-     case 11: /* UARTLCR_H */
--        /* Reset the FIFO state on FIFO enable or disable */
-         if ((s->lcr ^ value) & LCR_FEN) {
-+            /* Reset the FIFO state on FIFO enable or disable */
-+            trace_pl011_fifo_enable(value & LCR_FEN);
-             pl011_reset_rx_fifo(s);
-             pl011_reset_tx_fifo(s);
-         }
++static bool pl011_is_tx_fifo_full(PL011State *s)
++{
++    if (pl011_is_fifo_enabled(s)) {
++        trace_pl011_fifo_tx_is_full("FIFO", fifo8_is_full(&s->xmit_fifo));
++        return fifo8_is_full(&s->xmit_fifo);
++    }
++    trace_pl011_fifo_tx_is_full("CHAR", !fifo8_is_empty(&s->xmit_fifo));
++    return !fifo8_is_empty(&s->xmit_fifo);
++}
++
+ static inline void pl011_reset_rx_fifo(PL011State *s)
+ {
+     s->read_count = 0;
+@@ -264,6 +277,13 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
+                       "PL011 data written to disabled TX UART\n");
+     }
+ 
++    if (pl011_is_tx_fifo_full(s)) {
++        /* The FIFO is already full. Content remains valid. */
++        trace_pl011_fifo_tx_overrun();
++        s->rsr |= RSR_OE;
++        return;
++    }
++
+     trace_pl011_fifo_tx_put(data);
+     pl011_loopback_tx(s, data);
+     fifo8_push(&s->xmit_fifo, data);
 diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 3d07866be5c..dd635ac6012 100644
+index dd635ac6012..8234f3afa13 100644
 --- a/hw/char/trace-events
 +++ b/hw/char/trace-events
-@@ -63,6 +63,8 @@ pl011_read(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x valu
- pl011_read_fifo(int read_count) "FIFO read, read_count now %d"
- pl011_write(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x value 0x%08x reg %s"
- pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_count %d returning %d"
-+pl011_fifo_enable(bool enable) "enable:%u"
-+pl011_fifo_is_enabled(bool enabled) "enabled:%u"
+@@ -67,9 +67,11 @@ pl011_fifo_enable(bool enable) "enable:%u"
+ pl011_fifo_is_enabled(bool enabled) "enabled:%u"
  pl011_fifo_rx_put(uint32_t c, int read_count) "new char 0x%02x read_count now %d"
  pl011_fifo_rx_full(void) "RX FIFO now full, RXFF set"
++pl011_fifo_tx_is_full(const char *desc, bool full) "mode:%s full:%u"
  pl011_fifo_tx_put(uint8_t byte) "TX FIFO push char [0x%02x]"
+ pl011_fifo_tx_xmit_used(unsigned sent) "TX FIFO used %u chars"
+ pl011_fifo_tx_xmit_consumed(unsigned sent) "TX FIFO consumed %u chars"
++pl011_fifo_tx_overrun(void) "TX FIFO overrun"
+ pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t ibrd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32 ", fbrd: %" PRIu32 ")"
+ 
+ # cmsdk-apb-uart.c
 -- 
 2.47.1

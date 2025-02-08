@@ -1,84 +1,85 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp976377njb;
-        Sat, 8 Feb 2025 08:39:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXbJjwkCfArB24XNKOmTHc3w18seJFFLLsp9ZeCDN+dpNb1VGh6fC9UXoWAcQvGqgCsoTAFd7W69PduWA==@linaro.org
-X-Received: by 2002:a05:600c:1d0d:b0:431:5632:448b with SMTP id 5b1f17b1804b1-439249c658cmr48383835e9.25.1739032754592;
-        Sat, 08 Feb 2025 08:39:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739032754; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp976408njb;
+        Sat, 8 Feb 2025 08:39:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWvPA4l7Xzz4Rx64b3z0qCxWwZFXVoAb+TnC1p0cOjYp4L4Igah3DLoChvT4f9AkIqWN9md1PZ+plxCJQ==@linaro.org
+X-Received: by 2002:a5d:6d8f:0:b0:38d:b6be:bde4 with SMTP id ffacd0b85a97d-38dc8fe4187mr5082225f8f.22.1739032759416;
+        Sat, 08 Feb 2025 08:39:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739032759; cv=none;
         d=google.com; s=arc-20240605;
-        b=Bj4kjCg/cPWKHZOCBESNBBGq9foZzZ8tOz27SKBGzU4IwAwYmUenHcx0Q6sXxgGmeA
-         +Q5/C0O212SMxnkHebADtctSJioKc50eS/8SHI6yOKvgyoFW+3s87bLyVI5h7zmm77lC
-         H7UCeyyQ7FJw92DB5jDhS58N268lq4UrUHGkynF5gpM7L+0kZGXzmyw7H+bWZOOKfsak
-         yi/1uxAzXICaSgLwnaxJXy7S2bOdcASLtTv8MihRgBEQFj6FGtQ9Ql7VWU/I666wc+Zp
-         ABJQo3UxQdPduMGFf72ampkDO4dUpz7EO5FWzNDx5SXfb51ji8JocPOJwVsFqCemYTWr
-         fT8A==
+        b=dDTzgxXKaHtc0BhxDb6zb+d6a+RuT0NlFVGLXYCDCXILSMl8L1WkPjffknEO6uO7rk
+         1AHs5TiIhAsWeLHKyPKSvHMtPGfvrbYjb/X3+/UhMJY44Un8qhB2w+fEbS+8jsrlJ3Qv
+         8OH5GK1LQLZIWPegA8UomlesXtNPtQr90nF6mHXUrAnaAAO8haayanflq7qXwtbMYzEF
+         aiP0OOtJxlFFq8Y3jHZEDpdRwO4kyqJHpSrcKG7VmyIpFJJ9nAFEods+jPkLu+R8+wTR
+         NT3Xz24NqP9QQdLDMDzrzx77LKVmypl6xQ27qhrMwS7/uiEWUidwyL0SmGe4KtJ95Fo3
+         2kJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=qaigCbdh9lLsPPD1nebNreJyZCsil1fOMv0TEy5XZiw=;
-        fh=qruG9N0OdoJ6z5PQwGTaWI88pQ0x5OicZrxH2lf0gwU=;
-        b=LvR3AwermKLEJWGxJdWp8+GyZlFf8oUFyHFZNRuLwuaYV2zSUK7DidVyb/INjbLzjR
-         cTXDWMX27amUc2SwPIo573lDaTSk9HR0ULAypJvbV4EB1eqAzBji6/umifU9pzgNAjDu
-         ovrEm+dBDVr7sAnwXzg7cCvxUpo6kw+UEwTtA+Dt/GqOa84z4PHgfedWte6BlnDKg2HM
-         ZyZlBUeBfm1nFz4wm3pprkdbTiVCv3+umS9aFoOu/Ns7zizRHf1NEUpZfP080b1q6cZU
-         lShLe6GTxKW0gs0ClIPWSJ1ifGov4NJLKNGtdg9xxPvDA+ezju+UZJD2nyAXw01Rg2kh
-         rhNA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=pnDfQ0pDNHjagyoidO1nQy0wbrzE23spPhP9nSEJCp0=;
+        fh=KQRIHze64T4ZRYKw3CyXp8dQCP35vFbCwgtuDxypDsA=;
+        b=EYEU8LnK5I1fxrOShCr+JJkRHFXW7y7P2FYEvXcUlOGI8UagqvsSp2gQj8Nd7NvQ8b
+         +TlDbcDyXAG+3Dw8kIYC0cG3Ft5DyTvNy+tt+6/sHBTOq6B6pSLT+5WHp2wnrjDQIIpM
+         jpa1sr6ZH1Khtl1Ueiv7OjiHV4391Nd4Xa9B77D6PbKjoBwYBUdxis123YIQ9orbOmvb
+         PAJSLedlfhWciv79gbdMLWTxZt/uAx9vjnLCxS9Xjrkr6aRXDuAMOR0EhmqwnjharrFJ
+         a43FLz9uhVq+2nTkS47KOS4lEbw0flhIIVOXaCwLgvCoduBCYJwQA0HOOfQRD0L8DxxV
+         H9MA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="W7/wn4uw";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cni+dS0l;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43924030d34sor18549855e9.10.2025.02.08.08.39.14
+        by mx.google.com with SMTPS id ffacd0b85a97d-38dc6d75e78sor1713075f8f.8.2025.02.08.08.39.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 08 Feb 2025 08:39:14 -0800 (PST)
+        Sat, 08 Feb 2025 08:39:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="W7/wn4uw";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cni+dS0l;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739032754; x=1739637554; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qaigCbdh9lLsPPD1nebNreJyZCsil1fOMv0TEy5XZiw=;
-        b=W7/wn4uwC4QyVfooFuwcoaxv64sQ+6sHC0qlxpz/cZ6VmRozGrjHkDq+jozZtsZouo
-         L+xD620zxbKjIVafnWC+0++4vAe8oTbUeHGTC2kmV/7Cev99ZZBZBv8wBNArD7qQD56z
-         048KSTY2RIkFNLPmaPMqP5WH23vaVcjd3V57D8sPJRSzhRQVvp4d2dJ3P567RJc/7xA9
-         oW2fgxwFwWCSh7E8d1Mt2gypai8FRHEdcM2Z2DTIBurEpMd97FrwWuRftJjpHykVoSXv
-         VBdsCJE4I1iL5E8xncygxWGhR+Z+tud696sR6+fkMcIhPniHLlJBEYeYHWXPPSVx0aam
-         ivaA==
+        d=linaro.org; s=google; t=1739032759; x=1739637559; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pnDfQ0pDNHjagyoidO1nQy0wbrzE23spPhP9nSEJCp0=;
+        b=Cni+dS0ld2kyBTqFjW242SySqIwVplig0FV+sL/SFeSoIXwsxZj152Zj2UKBvIMrQb
+         r+QkXGIKN7e0QgetBlOAQHvpDOVmDu6YXzx4EoVxqV4G8gcqt7v1uvPMx6/HCHL2RS+s
+         z9OM28tscbQUgPz+UQJJDctlIVg1kRR+gF0WnbIFgDxfMp4pyMF2oCQpNUhr4rZycNK+
+         HLi1nB4zaQB74GMAEQcpkDM0EtIkuaO1kCQjLwGyMKiao3xqMDKvEPivBRWFofrM9X3K
+         Yb3JOHd8UHY2Mngszf/sUIBUzIOhZXuOoJDCoSSwhjEsjPNaNwoScN64UMt/0RPDL3Pd
+         9C6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739032754; x=1739637554;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qaigCbdh9lLsPPD1nebNreJyZCsil1fOMv0TEy5XZiw=;
-        b=Yfge0pAfmP2WAnoeqUCP5Xg1WsUF4mV7kdgqaOE354u2clCUfEnjEcomJ4UEWg8Oup
-         BhA6b0etxY4HWWFMu3Ynvba7+GDSPhj1LIIxAB6bbCfzNVk3eiRcf4L9ETJ2rFKDTZ6N
-         EFpKuZYKSyYRliYP1ZvVuJcIxZ3XajTduZcqAH9CQP8veQXfusFCzHgmK8h4xAdAxZ3N
-         0nkC1/WdhvL0AVnSn7rheesqOP1M0Ws3b/K7j9/xHfzOUUOACrJpUMF75bRvU55STBut
-         0rzU3DRkw5QjvzYf2Srl5rY7T/RwTHOG8zOXz368U3/ypB9WOwgFBqbDPE8Lkqa+2qIW
-         3PgA==
-X-Forwarded-Encrypted: i=1; AJvYcCWdD4wx+CzVwr53OIjqjO+SfKL+NMHhOgsm0H5Xq2IR1RXeJR+uZOEmVRTWRIgy5DfMmcZn8gkEfaOAgw==@linaro.org
-X-Gm-Message-State: AOJu0YzKJ5FFMWVc1atpCa70C4iEfsLmAYHnqe1T7W5SBEfWTMqH7dKm
-	vIDvDDlIArgBB/hdFf+SusCLd0oGB9dgCWkIaFRw7Up7vlW8hJgBJh1UEN9RH9yBQA==
-X-Gm-Gg: ASbGncvpJ0N+OPB+xKgKcLw+8zz4ZodBODGAdYayRU5jMtRC5jsMqPM6S24RJ3W14nF
-	pNeALIVpmR+c4ZEEmTrVJMI9GBDLA7LzumnXa80Dz8zTJX4eDG2UtwcJsCfSNH4Y3byF1kJzjFX
-	txJYyFIRknhEEeHris/8MpOTLBWPK4NvQk1pxNCQw7ngqpCxVZ7OQ2cKV5w57D3eEzizxbfBPLF
-	ig2/s4qi8jxJYUYIHelt/XqtYtwL+kKFEVHxTrnQugzR2mMI+r0ctd5SliLoEYKigByq5j5pdO/
-	dpjuMnnv65Hpskqr7Uz2ausWRBL+JcIGFAFGfZqha8qZGP96usjUniLqigKRpv3CHQ==
-X-Google-Smtp-Source: AGHT+IHygbNeN/nzmn3uAxT66ZJ/KOZhj/7LBKvwVV9M/SHGpg95uFH5ZT36qRSQPZfOiTvu5G8SYw==
-X-Received: by 2002:a05:600c:cc8:b0:434:a94f:f8a9 with SMTP id 5b1f17b1804b1-439249c6dfamr55862665e9.28.1739032754064;
-        Sat, 08 Feb 2025 08:39:14 -0800 (PST)
+        d=1e100.net; s=20230601; t=1739032759; x=1739637559;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pnDfQ0pDNHjagyoidO1nQy0wbrzE23spPhP9nSEJCp0=;
+        b=O3AAOvtnpnGzFHWva9f7Kau6zNzi5VmazTunDfQ+jjLA84PS7ywHbm60SOxlaVRkPy
+         S9OaexF2xNVjAjgYeUgFDp37DMI44Et2bCFjKxssDPr1pc+t1y6gIgjEjUsxsU8Ogg31
+         MP2bkcSkbf/PGxUWR0tC/x60bhqyC/U6jyx4in1DT3fFXn40jweIv9pLGvewKRBfQPQp
+         BsESPR6cgkKmXupU5euo7z9PfX4Qsiw3nBgf5Gbh54xrnGZrhL7fJX5YfzlW0gRoLZHQ
+         GqFiswovq+WVW9E8Gh34pcOLbT4KEUIjmht5JdHLDQD5fVXyM+S00Jl8+kBpRPiQ7+Fo
+         z2Lw==
+X-Forwarded-Encrypted: i=1; AJvYcCXHPD3cwCJ6ViONzi2JaOLVfZkjP2T7sU5FsqokEKR9a1mEVJwFPiuWgthYmzyL4hdGPr2jWivXcKlLlg==@linaro.org
+X-Gm-Message-State: AOJu0YyYHc20S+VcTFnL7EkJFugT6LKXRjTuBB97RJLMFx6kvFG24Jcd
+	Q3rd9novLF46/dliGrd/a80UGSyl2gvvVbBop22KksssC8mV8aLrKdso5iR9OwrLUQ==
+X-Gm-Gg: ASbGnct3ncEmyCn06kCQjVLImJoLCSxAYvd12xSBH5m7TGWWPaz3jCRnmSy54AlbOBP
+	H2lWn4AVxIdkboptELITUbvBjhM63CxiWO/UERnl8fDEg+gD8Pxy11jFPl0MCmcTz5fmCfJmwP/
+	7yGiexjgYtPYOpJuj6SrvHL1ReqX8HQEBM3JGr9aeyc8X9u7anJxY+lMnWJZm+NHzJtWQfNhI34
+	IjNOfB9xhX6MZ/VLKQy4H/X1gfD4dw7jt4cOLIu/tEma3ja9Cyf5UlJawQYS4HgOpfAj7XS78HM
+	D+AWTaSbdAaVPmugbm8X5LgvQKD6zdW3kHztEUdYDQQxdxbz5i2pZXhwlZbPWT4w3g==
+X-Google-Smtp-Source: AGHT+IGtem7OP/J+ciEP6t1sttj6uUucFHKFy2ilA0KO9IbGMYq37p+5gV+Q9tzUmRYGQPuY0zZLXQ==
+X-Received: by 2002:a05:6000:1887:b0:386:3356:f3ac with SMTP id ffacd0b85a97d-38dc90edfecmr5468949f8f.26.1739032758923;
+        Sat, 08 Feb 2025 08:39:18 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dd44c5e3dsm2007425f8f.62.2025.02.08.08.39.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dbdd54624sm7410071f8f.45.2025.02.08.08.39.17
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 08 Feb 2025 08:39:13 -0800 (PST)
+        Sat, 08 Feb 2025 08:39:18 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -87,60 +88,54 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 0/7] hw/char/pl011: Implement TX (async) FIFO to avoid blocking the main loop
-Date: Sat,  8 Feb 2025 17:39:04 +0100
-Message-ID: <20250208163911.54522-1-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v6 1/7] hw/char/pl011: Warn when using disabled receiver
+Date: Sat,  8 Feb 2025 17:39:05 +0100
+Message-ID: <20250208163911.54522-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250208163911.54522-1-philmd@linaro.org>
+References: <20250208163911.54522-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7srNg62Q134R
+X-TUID: ExS9OCLKqK7I
 
-Hi,
+We shouldn't receive characters when the full UART or its
+receiver is disabled. However we don't want to break the
+possibly incomplete "my first bare metal assembly program"s,
+so we choose to simply display a warning when this occurs.
 
-This series add support for (async) FIFO on the transmit path
-of the PL011 UART.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/char/pl011.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Since v5:
-- Rebased (few patches already merged)
-- Do not forbid disabled UART/receiver (Peter)
-- Use fifo8_peek API for wrapped buffer (Mark)
-
-Since v4:
-- Rebased (loopback)
-- Addressed Richard & Juan migration comments
-- Split in smaller patches
-
-Since v3:
-- Document migration bits (Alex, Richard)
-- Just check FIFO is not empty in pl011_xmit_fifo_state_needed (rth)
-- In pl011_xmit check TX enabled first, and ignore < 8-bit TX (rth)
-
-Since v2:
-- Added R-b tags
-- Addressed Richard comments on migration
-
-Since v1:
-- Restrict pl011_ops[] impl access_size,
-- Do not check transmitter is enabled (Peter),
-- Addressed Alex's review comments,
-- Simplified migration trying to care about backward compat,
-  but still unsure...
-
-Philippe Mathieu-Daudé (7):
-  hw/char/pl011: Warn when using disabled receiver
-  hw/char/pl011: Add transmit FIFO to PL011State
-  hw/char/pl011: Introduce pl011_xmit() as GSource
-  hw/char/pl011: Trace FIFO enablement
-  hw/char/pl011: Consider TX FIFO overrun error
-  hw/char/pl011: Drain TX FIFO when no backend connected
-  hw/char/pl011: Implement TX FIFO
-
- include/hw/char/pl011.h |   2 +
- hw/char/pl011.c         | 140 +++++++++++++++++++++++++++++++++++++---
- hw/char/trace-events    |   9 +++
- 3 files changed, 141 insertions(+), 10 deletions(-)
-
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 06ce851044d..60cea1d9a16 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -85,6 +85,7 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
+ #define CR_OUT1     (1 << 12)
+ #define CR_RTS      (1 << 11)
+ #define CR_DTR      (1 << 10)
++#define CR_RXE      (1 << 9)
+ #define CR_TXE      (1 << 8)
+ #define CR_LBE      (1 << 7)
+ #define CR_UARTEN   (1 << 0)
+@@ -487,6 +488,12 @@ static int pl011_can_receive(void *opaque)
+     PL011State *s = (PL011State *)opaque;
+     int r;
+ 
++    if (!(s->cr & CR_UARTEN)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "PL011 reading data on disabled UART\n");
++    }
++    if (!(s->cr & CR_RXE)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "PL011 reading data on disabled TX UART\n");
++    }
+     r = s->read_count < pl011_get_fifo_depth(s);
+     trace_pl011_can_receive(s->lcr, s->read_count, r);
+     return r;
 -- 
 2.47.1

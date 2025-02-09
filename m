@@ -1,118 +1,126 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1191008njb;
-        Sat, 8 Feb 2025 19:33:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCViOHoIX3A8YbUN8x+I6q9scju/sUfePzFt8oDOxsqbKU7VE7pqJEuOYcPzD6d2yHQM8oczMWuoGgEkgA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFyfNUq/DVtiDnXBWN1sDtd0/pYmj9ESMbb17ZiHK+/7gZ1Y4Zc79nE53sGTIRIF3tGdcQP
-X-Received: by 2002:a05:620a:44c7:b0:7b6:6bff:d13f with SMTP id af79cd13be357-7c047c2cb25mr1314078585a.42.1739072010004;
-        Sat, 08 Feb 2025 19:33:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739072009; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1305355njb;
+        Sun, 9 Feb 2025 02:36:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUvy/DTy0hM6yTTSW4pEWtPOeCDyszdxo30GmqNKAizs5O6lpB2kCwBGXGqQs79Qx1debTqOL2Vez7HZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGFPKAk4hy3ppDD7NNG46SxL6hFOynp/alVJNeEAneqBx9sa8smOnFDC9MOq0iusMmvhKgJ
+X-Received: by 2002:a05:6214:2621:b0:6d8:b189:5419 with SMTP id 6a1803df08f44-6e4455c198dmr142030296d6.8.1739097404278;
+        Sun, 09 Feb 2025 02:36:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739097404; cv=none;
         d=google.com; s=arc-20240605;
-        b=I59CxfmzNLreThHoH4b6Q8IeELasbcBGNeYW/qizDo1s5Cx4MKPFX86458+YXdTczx
-         1KWMBqfDc8Z5qCGiq1QCvBHqwatrjEvKKHoicr5gUMaGDiY9TlqF0ootNAMPIPvfkIfo
-         T4/89AqpnkWTnzPm4R6eWD0dh7ZpIscPhwHiXsozk7ZM/DDn6zAd8ktJ/npkmrPA9MTd
-         km+9+R0oZfmWky18Hef3vU8M5Zag68CSrm9sZeiUQxPU/ZmqOOHnu0a9pGZpnOXL2/DL
-         pR5tq5zL30R0eGa7+50ElaV966xiQQsLH6JZ/uLsSqIjMLZHEa10nVCQOR2eHyVSzVCq
-         /4RA==
+        b=MmZ6SfKWTJTfUcO7FpREuxcxJKdxwozOx4A91LT+Lx4Hmh8blpuNXMkZ8Rhp99+2AZ
+         mI4R5aJTCOBva5P3LkG2IMAfR5BejPPtfDEUkDLX3ouKwcF8xAj+lN0IA8do6/3OSRiV
+         KT6sot3/4OoHyyi9KT/kskh04ZEfRNnk7N1Ao7ErVBv2jhiJmNBb9KD5KJ+rFf615LR0
+         qL4V/SLGEplxOPDWBxC2132ZdzZ5qLFKwtwMT11QcOnBoVquVH6gV3eu5hih+k8NSbGl
+         OjrTh/KYLUfIFKIdTlbfc4hdZbYu1qvWO25rRzpwEMY09EKyq+oI7AKE3VOJZGefkSvI
+         pdSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=40hOV1XLmKGFFIuKf1SgFgrMU4Y3jviwBqNER7UevnM=;
-        fh=eiTtP8zmUZeh9DENHcLecNKRZEYQX5Pd0+jp0A6SWRI=;
-        b=EPhWWbIuGMx4xr4begdzjHWqqHupFEe6DVs+v4TsbkPgJWQ198b559Ulugwpt1iePB
-         oi63fLVDwDk5okJ394jkYJbli6aiXMulx4DZLTWgByfr9PV7p2g4TPoMgLOJhJSgRmel
-         aGpG+mRdjdDDsUL6HEJeAzHoaPH+phjbVCzhY5GrpdrrPopc2pnS+9NlIxmhS/ZYGyS2
-         gTD0VvbZWupWh+6m+A9K5EXuXI+k5xkUhplkKi3Q1RFR+qRyCiAxPllDkoeILp1sJKxV
-         HM32EBdyE0MvhICi5PdFXv/salqj+NWuUY2sruxJJZx9RYPk+WNDE3afLL7HdFFw14SK
-         c6fw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=MYsdbMV3jgmw6Y96Lc6iJvpdy36kIPdKE3AGeizboVc=;
+        fh=UDiJ0yKqldWIyX+1KXyBsmS7PXEpIIFaw5+wopEEylM=;
+        b=ig9W+lMGZ1EkkUrOiapXgxd5HQaZAmz03hkyDT4fB6Z23jHPAqJiwbcY3bHmwOHKpq
+         vGqSu0cf/XnP/jjGrgNVaOcAyGyJhVeHsVTFfT/xdDIc6SZwKyswYcR+gHonKmyY3uRV
+         5KGMA0uYQXLqPPZb2nu6K5Rns/FRPFj+9a0uV/Z6eMQRTAruhb7ovJPnxSKfF+zlu85e
+         Sc/hRynsez9tmcDCFdWHXwvFy6iInm+ZBEGXKNaWixAiol73WJjvjBmdDBb3qt9mp7nJ
+         CbPFNoCvBg9APb82Rd9zTvmI3+JJuvx03mFRjPN5xuybRPc37VAovrci/awu9Y6YLzg4
+         pWHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bvI9I7Yf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c05a5de3c1si57392885a.294.2025.02.08.19.33.29
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e4496b5318si49263626d6.461.2025.02.09.02.36.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Feb 2025 19:33:29 -0800 (PST)
+        Sun, 09 Feb 2025 02:36:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bvI9I7Yf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tgy41-0005r3-Aa; Sat, 08 Feb 2025 22:32:57 -0500
+	id 1th4fj-0008DM-Q8; Sun, 09 Feb 2025 05:36:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1tgy3p-0005pA-Hk; Sat, 08 Feb 2025 22:32:45 -0500
-Received: from mail-pl1-f177.google.com ([209.85.214.177])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1th4fh-0008D3-WC; Sun, 09 Feb 2025 05:36:18 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1tgy3k-0001PT-Go; Sat, 08 Feb 2025 22:32:43 -0500
-Received: by mail-pl1-f177.google.com with SMTP id
- d9443c01a7336-21f6d2642faso19270845ad.1; 
- Sat, 08 Feb 2025 19:32:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1th4ff-0006uA-Tk; Sun, 09 Feb 2025 05:36:17 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-38dd93a6f0aso385460f8f.0; 
+ Sun, 09 Feb 2025 02:36:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1739097373; x=1739702173; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=MYsdbMV3jgmw6Y96Lc6iJvpdy36kIPdKE3AGeizboVc=;
+ b=bvI9I7YfCBTx98DecI/XNVhqmMvJxFe7ilVdMBNJgHoaelThtZ0Z9ovc/IEmTptfXu
+ JeZHFxddGfAbd0+5qT6Pw2qnvQSvTjTHj7jNWmgWtU9kH+kzXwCPNTDr556nCOT/aMIG
+ m7EynRdcAYKjypVoegQ821b3X40AZZpyBeE12R1iSU1L9TAOX+HNchPJcViaKBJLD55q
+ Cv3kWUsm3qPBzJiFxqLlRiZWRNmtzkAn9DhsAJ+DbqsR0PLQ0j0gko96/jTtqeaQ5xZu
+ CG0ekuW7yHgUMXY/pWXq08y1ZFa9BHKxyKtv6SKLVPxVyWyCcbQHLkmFSCV9cZReoUuk
+ RuFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739071958; x=1739676758;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=40hOV1XLmKGFFIuKf1SgFgrMU4Y3jviwBqNER7UevnM=;
- b=tbFTHo7Zr34NV16sxBEzvLubokqveC+FpZTN1CZjG5hJb7umQC7c7HZKRT2alM2T25
- dTu42Sl3tvQ6M9n+6aPy69of2S7nKnrsSyDlzZ8AdvJkrFCk9AEA2hMUdDfpJfJMpn97
- aBVjDy4U/IGzhV+x5q6P4SRKvhfLxQwFSCu+U7JHxIr2EmhnzQwkz0HpmV0oDs18RCc3
- WXR/xtYhEQSCQojHAOVVrlHtgCD74VbEVAJsmPHg77RGZeLQLwULILGxAkxyoW/4tsKi
- i27idnB/UPeBoR3NbYKd9GSdkpiOPMorKV9dwUgj+9z+l8RPf2HcQD/aZInVJB/2E9Ql
- KBAQ==
+ d=1e100.net; s=20230601; t=1739097373; x=1739702173;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MYsdbMV3jgmw6Y96Lc6iJvpdy36kIPdKE3AGeizboVc=;
+ b=DW3cpRWnuRpDB74OFPPll7aXqOABy/YMemOsEcMRn8/yqJ6Y3losFJ+5sHb+LM137N
+ HkoYXmzZQIM9i0zCKFWoV/bBf/SA+cvJkPRLaMfYBwnJGCYiNZpS6UjzJqp0onaFW6sE
+ gTe1Y2wvdFe+0mDn0vbSz8qRKUcm8vgC33U6v6U8ZB2utr3SQR7EBW8zPu1elA/D1Nrj
+ BCx/TYizwvZgdTOEONVlu4UJg1oTypv3XA/dvnPJjoK395mslGvKoN7w++8Yq/Pagkp4
+ W5NbuYkALbag3oTDmxOhzn8OzN8lKktr+J2KILf8ytfsBvNYKGYg8zYU7GGmHNHY8LWD
+ mBug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVw7W3svtQqN6Y2RutvgMDNXZWGNnn4kwL/WVVLU/rw+ZtKPl7NJsUJucKKclnPLGNIA7KF/+PzCQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyXz0vLcHmADaPNF3wjb9LMxHzx510K3IHyUyLNpP8N6LzQikt1
- SdxF18eb9ellu8eg8oASLE4DQ5stjRK03N5GjIjVKVFQuW6w/Cq/YVec8Gh3
-X-Gm-Gg: ASbGnctMe7LJIW6zXUpG3HpiCMopOBqS7ga6OIWK5f8XNSMG1JKTjWKuAl7DQpuLNVP
- up24VQdd6y57ktvFSxb4xVYB7rhrl9lWQ8ZikZFXmBZmxQ1HolYgrqyueVZsLiIeS5KwkKFlWgT
- v5QCchmsisRPa6kB84PX3D8n3UfC/KodjadNd7lMjAtzLyZ3TpJRZaQ96XoNpj5vmDE4TXnbrBa
- b4kXjNNNC8AtCkt2TNMW2RqdzyrWsbVMtsAntO/joY1A3MCOU6JLuC8+n/R9iRjajM79bkGnddT
- lGKwo8Mo/xA7oZJkFuh6NwaOe0fPkP/+nn43JFALty0Z0AM=
-X-Received: by 2002:a05:6a21:9211:b0:1ed:a4e2:8638 with SMTP id
- adf61e73a8af0-1ee03b78d70mr16423609637.39.1739071958132; 
- Sat, 08 Feb 2025 19:32:38 -0800 (PST)
-Received: from localhost.localdomain
- ([2607:fb90:9e97:4903:dc10:4530:8a3f:fdb6])
+ AJvYcCUxbIRCvpCCOyEfopt6GCEaK874liph8c5b4/bPZyLDjPHnByTHtQKZL1mgT70R4IO0oDp41F0f0g==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7TwJyMgtmLNWJf/7IJgIOFKQ7SRrefEyutPeJLX8Lna4Bj0zn
+ 2/c5mmye9jopsvRp+u9Oi6pOhFqnwTYv/f2MriiF9iS9DOES62NgSZfiTQ==
+X-Gm-Gg: ASbGncu59WWC+FIShU+H2thI8a+KpWbfb78nDFTWImzj03qJ+HoIEFrHPxYq/Fnx5No
+ 57GlIEw34cSibHPg5PY/oJD4asw4mlEoouVCmBCdn84kHmgeyaZ6V/MZkJu/5Sef5l1nkRcmO+/
+ z+oWWB3D2806IVliLw04Gd+GUM/zcrFl5uBwnfdnRwbRx5qCzXa83wBxOCT22QKC4mRg6ZviCR6
+ LJ8kbVmXkklHMGP4Dfi3I3BP0z2R1syhGEBPMN9V4mvzNA9EbeaZ/UUfXQik476luuUCXIGGlzz
+ JSW9Nxmhdq/GpSqGaftEPJnN5uF0brchwUMPJNHqlIrZEcO661WH0m6mZGEnJz6m16p6kHY2aLK
+ h1McCVFxIVg==
+X-Received: by 2002:a5d:5889:0:b0:38a:888c:a727 with SMTP id
+ ffacd0b85a97d-38dc90ee376mr7409938f8f.25.1739097372567; 
+ Sun, 09 Feb 2025 02:36:12 -0800 (PST)
+Received: from Georg-PC.fritz.box
+ (p200300faaf0043006a2cae69f03f1c85.dip0.t-ipconnect.de.
+ [2003:fa:af00:4300:6a2c:ae69:f03f:1c85])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-ad5453e2366sm1333610a12.47.2025.02.08.19.32.36
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Feb 2025 19:32:37 -0800 (PST)
-From: Joelle van Dyne <j@getutm.app>
+ ffacd0b85a97d-38dcd34a39esm6152744f8f.30.2025.02.09.02.36.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 09 Feb 2025 02:36:11 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Joelle van Dyne <j@getutm.app>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH RFC 1/4] cpu-exec: support single-step without debug
-Date: Sat,  8 Feb 2025 19:32:30 -0800
-Message-ID: <20250209033233.53853-2-j@getutm.app>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20250209033233.53853-1-j@getutm.app>
-References: <20250209033233.53853-1-j@getutm.app>
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH] Kconfig: Extract CONFIG_USB_CHIPIDEA from CONFIG_IMX
+Date: Sun,  9 Feb 2025 11:36:04 +0100
+Message-ID: <20250209103604.29545-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.214.177; envelope-from=osy86dev@gmail.com;
- helo=mail-pl1-f177.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.07, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,148 +135,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bKTRmph0F28H
+X-TUID: jb9+NO/1ZOgn
 
-Currently, single-stepping is tied to GDB debugging. This means that when
-EXCP_DEBUG is returned, a debug exception is triggered in many cases. We
-define a new EXCP_SINGLESTEP to differentiate the case where we want a
-single step to not be tied to a debug exception. We also define a new flag
-for cpu->singlestep_enabled called SSTEP_NODEBUG which is set when we want
-to use single-step for purposes other than debugging.
+TYPE_CHIPIDEA models an IP block which is also used in TYPE_ZYNQ_MACHINE which
+itself is not an IMX device. CONFIG_ZYNQ selects CONFIG_USB_EHCI_SYSBUS while
+TYPE_CHIPIDEA is a separate compilation unit, so only works by accident if
+CONFIG_IMX is given. Fix that by extracting CONFIG_USB_CHIPIDEA from CONFIG_IMX.
 
-Signed-off-by: Joelle van Dyne <j@getutm.app>
+Fixes: 616ec12d0fcc "hw/arm/xilinx_zynq: Fix USB port instantiation"
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-stable
 ---
- include/exec/cpu-common.h |  1 +
- include/hw/core/cpu.h     |  1 +
- target/arm/internals.h    |  3 ++-
- accel/tcg/cpu-exec.c      | 35 +++++++++++++++++++++++++----------
- cpu-target.c              |  7 +++++--
- 5 files changed, 34 insertions(+), 13 deletions(-)
+ hw/arm/Kconfig     | 6 +++++-
+ hw/usb/Kconfig     | 4 ++++
+ hw/usb/meson.build | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index b1d76d6985..e1c798b07d 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -22,6 +22,7 @@
- #define EXCP_HALTED     0x10003 /* cpu is halted (waiting for external event) */
- #define EXCP_YIELD      0x10004 /* cpu wants to yield timeslice to another */
- #define EXCP_ATOMIC     0x10005 /* stop-the-world and emulate atomic */
-+#define EXCP_SINGLESTEP 0x10006 /* singlestep without debugging */
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 256013ca80..7eab3914d4 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -303,7 +303,7 @@ config ZYNQ
+     select PL330
+     select SDHCI
+     select SSI_M25P80
+-    select USB_EHCI_SYSBUS
++    select USB_CHIPIDEA
+     select XILINX # UART
+     select XILINX_AXI
+     select XILINX_SPI
+@@ -489,6 +489,7 @@ config FSL_IMX25
+     select IMX
+     select IMX_FEC
+     select IMX_I2C
++    select USB_CHIPIDEA
+     select WDT_IMX2
+     select SDHCI
  
- void cpu_exec_init_all(void);
- void cpu_exec_step_atomic(CPUState *cpu);
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index fb397cdfc5..e3c8450f8f 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -1072,6 +1072,7 @@ void qemu_init_vcpu(CPUState *cpu);
- #define SSTEP_ENABLE  0x1  /* Enable simulated HW single stepping */
- #define SSTEP_NOIRQ   0x2  /* Do not use IRQ while single stepping */
- #define SSTEP_NOTIMER 0x4  /* Do not Timers while single stepping */
-+#define SSTEP_NODEBUG 0x8  /* Single-stepping is not for debugging */
+@@ -516,6 +517,7 @@ config FSL_IMX6
+     select PL310  # cache controller
+     select PCI_EXPRESS_DESIGNWARE
+     select SDHCI
++    select USB_CHIPIDEA
+     select OR_IRQ
  
- /**
-  * cpu_single_step:
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 863a84edf8..961cd9927a 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -57,7 +57,8 @@ static inline bool excp_is_internal(int excp)
-         || excp == EXCP_HALTED
-         || excp == EXCP_EXCEPTION_EXIT
-         || excp == EXCP_KERNEL_TRAP
--        || excp == EXCP_SEMIHOST;
-+        || excp == EXCP_SEMIHOST
-+        || excp == EXCP_SINGLESTEP;
- }
+ config ASPEED_SOC
+@@ -576,6 +578,7 @@ config FSL_IMX7
+     select SDHCI
+     select OR_IRQ
+     select UNIMP
++    select USB_CHIPIDEA
  
- /*
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 8b773d8847..6b4e63e69e 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -349,7 +349,7 @@ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
-      * so that one could (gdb) singlestep into the guest kernel's
-      * architectural breakpoint handler.
-      */
--    if (cpu->singlestep_enabled) {
-+    if (cpu->singlestep_enabled && !(cpu->singlestep_enabled & SSTEP_NODEBUG)) {
-         return false;
-     }
+ config ARM_SMMUV3
+     bool
+@@ -591,6 +594,7 @@ config FSL_IMX6UL
+     select IMX_I2C
+     select WDT_IMX2
+     select SDHCI
++    select USB_CHIPIDEA
+     select UNIMP
  
-@@ -529,7 +529,11 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
-      * is handled in cpu_handle_exception.
-      */
-     if (unlikely(cpu->singlestep_enabled) && cpu->exception_index == -1) {
--        cpu->exception_index = EXCP_DEBUG;
-+        if (!(cpu->singlestep_enabled & SSTEP_NODEBUG)) {
-+            cpu->exception_index = EXCP_DEBUG;
-+        } else {
-+            cpu->exception_index = EXCP_SINGLESTEP;
-+        }
-         cpu_loop_exit(cpu);
-     }
+ config MICROBIT
+diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+index 5fbecd2f43..69c663be52 100644
+--- a/hw/usb/Kconfig
++++ b/hw/usb/Kconfig
+@@ -143,3 +143,7 @@ config USB_DWC3
+ config XLNX_USB_SUBSYS
+     bool
+     select USB_DWC3
++
++config USB_CHIPIDEA
++    bool
++    select USB_EHCI_SYSBUS
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build
+index 1b4d1507e4..17360a5b5a 100644
+--- a/hw/usb/meson.build
++++ b/hw/usb/meson.build
+@@ -25,8 +25,8 @@ system_ss.add(when: 'CONFIG_USB_XHCI_SYSBUS', if_true: files('hcd-xhci-sysbus.c'
+ system_ss.add(when: 'CONFIG_USB_XHCI_NEC', if_true: files('hcd-xhci-nec.c'))
+ system_ss.add(when: 'CONFIG_USB_DWC2', if_true: files('hcd-dwc2.c'))
+ system_ss.add(when: 'CONFIG_USB_DWC3', if_true: files('hcd-dwc3.c'))
++system_ss.add(when: 'CONFIG_USB_CHIPIDEA', if_true: files('chipidea.c'))
  
-@@ -781,13 +785,20 @@ static inline bool cpu_handle_exception(CPUState *cpu, int *ret)
-         cpu->exception_index = -1;
- 
-         if (unlikely(cpu->singlestep_enabled)) {
--            /*
--             * After processing the exception, ensure an EXCP_DEBUG is
--             * raised when single-stepping so that GDB doesn't miss the
--             * next instruction.
--             */
--            *ret = EXCP_DEBUG;
--            cpu_handle_debug_exception(cpu);
-+            if (!(cpu->singlestep_enabled & SSTEP_NODEBUG)) {
-+                /*
-+                 * After processing the exception, ensure an EXCP_DEBUG is
-+                 * raised when single-stepping so that GDB doesn't miss the
-+                 * next instruction.
-+                 */
-+                *ret = EXCP_DEBUG;
-+                cpu_handle_debug_exception(cpu);
-+            } else {
-+                /*
-+                 * In case of non-debug single step, just return
-+                 */
-+                *ret = EXCP_SINGLESTEP;
-+            }
-             return true;
-         }
-     } else if (!replay_has_interrupt()) {
-@@ -892,7 +903,11 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
-                  * next instruction.
-                  */
-                 if (unlikely(cpu->singlestep_enabled)) {
--                    cpu->exception_index = EXCP_DEBUG;
-+                    if (!(cpu->singlestep_enabled & SSTEP_NODEBUG)) {
-+                        cpu->exception_index = EXCP_DEBUG;
-+                    } else {
-+                        cpu->exception_index = EXCP_SINGLESTEP;
-+                    }
-                     bql_unlock();
-                     return true;
-                 }
-diff --git a/cpu-target.c b/cpu-target.c
-index 667688332c..6293477ed9 100644
---- a/cpu-target.c
-+++ b/cpu-target.c
-@@ -322,9 +322,12 @@ void list_cpus(void)
-    CPU loop after each instruction */
- void cpu_single_step(CPUState *cpu, int enabled)
- {
--    if (cpu->singlestep_enabled != enabled) {
--        cpu->singlestep_enabled = enabled;
-+    int previous = cpu->singlestep_enabled;
-+    bool prev_debug_en = previous && !(previous & SSTEP_NODEBUG);
-+    bool cur_debug_en = enabled && !(enabled & SSTEP_NODEBUG);
- 
-+    cpu->singlestep_enabled = enabled;
-+    if (prev_debug_en != cur_debug_en) {
- #if !defined(CONFIG_USER_ONLY)
-         const AccelOpsClass *ops = cpus_get_accel();
-         if (ops->update_guest_debug) {
+-system_ss.add(when: 'CONFIG_IMX', if_true: files('chipidea.c'))
+ system_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))
+ system_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c'))
+ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
 -- 
-2.41.0
+2.48.1
 

@@ -1,145 +1,269 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp2010679njb;
-        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWjmT2WdMaqOR3fStZM0Sg0j7Hmdz+24m/oEOPijsYAihu1Ud3eiAq70VnGaoct9jdGeZmFBeRpInI74Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IF2puW639Qlc5SdLRTsoLfe4lx2wHgue5rJdVE9N69D0gZ3xMcN2ip4qdmTx9BVig/mtBJD
-X-Received: by 2002:a05:6102:8082:b0:4b2:5ecf:d124 with SMTP id ada2fe7eead31-4ba85e4b9d2mr9455962137.14.1739200845421;
-        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1739200845; cv=pass;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp2069196njb;
+        Mon, 10 Feb 2025 08:49:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWWIa3/SqV+/Twumu2xGta3g6V05Lu/nL09uqBA0beWQqgnE4qghtjflmOVhlednT+WfMkG7gPLmyMoTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGToIUJRsIAsYUWAZgNFLNtNF8Rl+a5u5X8bvv4eJcyIrqQkz42V2vco1lxFCINvx8XOAuk
+X-Received: by 2002:a05:620a:4309:b0:7b1:52a9:ae1d with SMTP id af79cd13be357-7c047bf22c8mr2482625185a.6.1739206163992;
+        Mon, 10 Feb 2025 08:49:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739206163; cv=none;
         d=google.com; s=arc-20240605;
-        b=UPiZQE3ouBAmHGgnvb3wkuGDhXo3sit9BUWKOGZWWlA/K7ASQdfZXYOzRjVn3amzIE
-         0x1gEMT1xC0wgNGk6LI4e6+luCGORYJK06bthkXBL+Vu+aLZIDuLQ5NIiXTnpnagd66U
-         YhOca8yId5PsivG/ayNHup+czdmiJ83BO2iJJmYmJ6yEMHIpbajh5JoaAe03QgeApRw0
-         w5stPWIJu28+iR16ltcDB08/uXHiobFd2y9ZSpnk6xIr7HoLwUScrjaS+mvmf/8K43V8
-         mOJ9OInzTOrdlRltk/qNbYiGavNolAG8reU1bHiTh4YZrG98sez5hjSSBnwcBXtjo/BJ
-         ZzIw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :message-id:date:user-agent:references:organization:in-reply-to
-         :subject:to:from:dkim-signature;
-        bh=l+1vKWq8tav0v5vOrEs4bMdzd3ftwt2N0noMcIDxK+A=;
-        fh=IhIF/oSww6zpX9UNFwS/PhZR+m2PBKW7LmeGATUQyj8=;
-        b=LNAhpvBfhwCtCNDuXyn3h8GMuE98BUN57nyLhJ/tDT+sMThmTnw1/lvVv3lEx2tis2
-         q7nUewE6fejyJybPzkXIPEMreXmQlePmumT6HuvKg0JRpmladsGnqjOHC9BY7NDf9GNx
-         BzErz692CVWjp27Iu0ID4OA4bO7Qnf2D09lL0G6rCGZvaTdVe35xK9gSGiYcffnJ3+w/
-         gjXHWCiaFnNkz2K7vwe7qFnv6tzC4469Pd3u3EO6vHoVYIv/rE+WYt4gydWgDXBqohiU
-         JxUX968P490qyf9IF0O2PcjPC5YK47Jqgr4Xq6hlmeEIyivk+ogAbwcBGvIQQ22Rfgcq
-         Er5A==;
+        b=E0f66HOZm7EaibqlVLWOhl2GHE3cV98KSJ5PJdKN+D2Q6eMJZKEMYsse79OvoGMUJP
+         QUo1ApUzsGsEp3Zky3Llxivn781lemKYwIV7rVKJKbkuX79FQcg8AVBh1DEHEoxcfn5D
+         1zz0IF7WgJGfye0kMxnurZZ/TSC6xsfpx+OGZC/kJZQgtC69fG6MesGRlwN0pnNbcy0K
+         Bm4zUDQ0gKy8AQ26azxkWBzsFgn9puwnfS1XSbDgH2+pEK+IoGB9QxJII4+HCov7evKo
+         Bvi/Uxncccl2ltFHSO/+jBUQ9RIcAEhr8TyxPSD35XdoqTEiK0+2ZmtDe6dcvl5wNVYK
+         kNqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=AbJ/q4McdqvgWbdZpzsX0c88NodzGfPGVk3OSUhSBag=;
+        fh=Y+fLzNRdJOooPOH0UlXfieqc/2dHN3YGNBM/O6SyWGY=;
+        b=G5LIfuMcEUbKQ1oMcI+nG+gRkzSeuhuOlL2KBnG39kBsTezQWX5T+Aju+LMMVmvt7/
+         mqau3maTTxHGy2AqRjdYh3JCtVImh9jUxDFzvK4FCe5FeK0QKcOucV/J6NkgGJbnn48b
+         cvFdNbJecqF22jZWWWmwRaj2nqfHTTjK30cwF5kSm33wNgTRJkOtA43dParm6txVeA+V
+         bTDq9DJMBLyO812XCEMbyuZ/3QcK5Yrv6QEN77wTPMr8EIzwEMU61HGshqiRnwmUiW+x
+         uCUpiBQYgZ61HKSXgzzKTzsmIGmwzI7IPTPx1bJIZd/v0pTAFc3sks0FyOxQ+kP2qijv
+         lvhg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQiTcuHC;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GsZZoUzA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4bbc6512a6bsi515006137.134.2025.02.10.07.20.45
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c0522c0c67si483985985a.115.2025.02.10.08.49.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 10 Feb 2025 08:49:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQiTcuHC;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GsZZoUzA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 8F4AF16286D
-	for <alex.bennee@linaro.org>; Mon, 10 Feb 2025 15:20:44 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id DE1782528E1;
-	Mon, 10 Feb 2025 15:20:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="EQiTcuHC"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3414935972
-	for <kvmarm@lists.linux.dev>; Mon, 10 Feb 2025 15:20:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1739200842; cv=none; b=j5xU6bLgpH2cvz+tN1ee3iddx01rzwuZPxaGfZ4Ny/ry1/BMa7akCG+hbwj90itxIIV0XhwOQx/gG/dQ1tcs71SKoVq9lesJxnavhjYXYOD3LeToPyNg35xjFgU9jtchmd6crOwX44zZb0KiZp90EkB4sMknIdaHnxIY6JqLM1g=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1739200842; c=relaxed/simple;
-	bh=L5OT+59C3iT4MQ/lC2n03E8ed7rGkqDhCwJBIDscTR8=;
-	h=From:To:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=bn5VFj8ORB4BfnVY5vUceDEwLOQ75X87efpoSttI/Xef3k6UVHgQD5qOiuPDUjQCLeSRz6ED+E4aDfPoOOKph+3KB/1a0YG5YkQ+fzsMlhs1GeUIz7ZEwpNviimTk1Ahx6VNhcnrhJ8ewriGLL7dK0AyezoSQF3lMpHkcRaj3gE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=EQiTcuHC; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1thWxx-0003aU-JC; Mon, 10 Feb 2025 11:49:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thWxs-0003Zu-O6
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 11:48:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thWxq-0006nn-8T
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 11:48:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739200840;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=l+1vKWq8tav0v5vOrEs4bMdzd3ftwt2N0noMcIDxK+A=;
-	b=EQiTcuHCGLK2iUoaOgNxAp6gav4BRR7x1Tlu8F1KwWKsEyttULskewPpEXhQnUlCgPMkLL
-	VZw3zmeHrzpIG964Y1k7fuZ33bXwbl3ej/x2UV3iMFcSz+nuYb67C81CI87Bh7T9HVBgPc
-	ll52WZKZCxnDyetkSIw2XJ0jewSkG1A=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-dgWwLAmSMn2f19JyAWRGdQ-1; Mon,
- 10 Feb 2025 10:20:36 -0500
-X-MC-Unique: dgWwLAmSMn2f19JyAWRGdQ-1
-X-Mimecast-MFC-AGG-ID: dgWwLAmSMn2f19JyAWRGdQ
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BA59D19560B1;
-	Mon, 10 Feb 2025 15:20:31 +0000 (UTC)
-Received: from localhost (unknown [10.45.225.231])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F032D30001AB;
-	Mon, 10 Feb 2025 15:20:30 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Subject: Re: [PATCH 15/15] arm/cpu: Add generated files
-In-Reply-To: <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20250207110248.1580465-1-cohuck@redhat.com>
- <20250207110248.1580465-16-cohuck@redhat.com>
- <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Mon, 10 Feb 2025 16:20:28 +0100
-Message-ID: <874j117rnn.fsf@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvmarm@lists.linux.dev
-List-Id: <kvmarm.lists.linux.dev>
-List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
-List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
+ s=mimecast20190719; t=1739206132;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=AbJ/q4McdqvgWbdZpzsX0c88NodzGfPGVk3OSUhSBag=;
+ b=GsZZoUzAfZ4Cu6G1O3+h+guQ045padYYUZDmd4Bv/ruC//hfKZC1P6b0ycrNhIl++TicBV
+ O0pl/QOuWiZgWxTt+/1sXY2k6tSlkcKMQe32hXMKqfFMjqcfkxIejr7u0QUqElYb6dXcnG
+ X9kmzmSEynVCwYJRswxsTODC4UP0A6U=
+Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
+ [209.85.161.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-484-yKSBFTvHMCSMhnbGssdnbA-1; Mon, 10 Feb 2025 11:48:51 -0500
+X-MC-Unique: yKSBFTvHMCSMhnbGssdnbA-1
+X-Mimecast-MFC-AGG-ID: yKSBFTvHMCSMhnbGssdnbA
+Received: by mail-oo1-f70.google.com with SMTP id
+ 006d021491bc7-5fc0058d68eso1275428eaf.0
+ for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 08:48:51 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739206131; x=1739810931;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AbJ/q4McdqvgWbdZpzsX0c88NodzGfPGVk3OSUhSBag=;
+ b=rwxRbWEXAWSivOjSkff2rolfZS7FE+CVxB/N89/fTRIwYAe+fWmY9iRcQaz1wPpK5h
+ IctUkfgSX3yuDT6QDY0StWo9Qha5tC7UFLf7SAm7FmGs0S42kikUVQpy5bU8xfUwgb5v
+ t9LMpJ3qK4keJOBQe98J/vRreBXh3B00lZjA4rWkCBc7JtN2A91EizXkUTGaGC0rBd6e
+ zjcO0+6qSI067ViVIiGRiWrGhVPi+a0Jefxc9RP3iRQwfmOn0IDaHwsLxJyP+gLVqtDj
+ pz+lB2GO/flNDiGNqfTD88TYvsd8cryReBQCRTzNj5+8zUgIOTp285i6+8s8SiPL3Q/f
+ 2voA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUJXr1XdCHK8dkEAEJR1H//F+mI3lEOvjgSVw2WgMeVbT4xfGmJ3RgvFk1AxTZC0uBGNznpUSaJDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyVR30sRF5lh/8l+0kRRNQTybQr5LkVBwx2xSARS0lmCwC1DFu7
+ cK1MYK8vz/eIESJnl5ofn9V/3muQuWOnsCcrHAhIYwCHNZUEcJPQfpazRMcuW0COMg0Sh6eBZbX
+ oUaXGmn5d/QBGqZRL/uPZcm05Xh0n6foppcR55PU3OMDuj+7uNA==
+X-Gm-Gg: ASbGnctBj50gamkU5MIqax9aNG6ZoF1yIv9mRAbbr1MduemlhIFWDbrMtl2uo1xKwal
+ l4HOK48hBz7XZ2iSZlsYXwnU0N4jcHDnKU7XU8svltEsTNbiTJvaNp1hBN7c0NILFb48kozVHPv
+ gIwCd1D2Q9MjSQ6JK4OHtP9H/BItSo1gmM7Z1DeSwC2vXKo3r5CPqtRBHseyGvSHbbcKWVdhku5
+ UIlIN01lIHY8q9BDxxffjI2a5N7K1oNhAQdMCsQAQOKPkvpGzIW3jLHeEY=
+X-Received: by 2002:a05:6808:219f:b0:3eb:3f7d:b777 with SMTP id
+ 5614622812f47-3f3923d19d7mr10657887b6e.31.1739206130617; 
+ Mon, 10 Feb 2025 08:48:50 -0800 (PST)
+X-Received: by 2002:a05:6808:219f:b0:3eb:3f7d:b777 with SMTP id
+ 5614622812f47-3f3923d19d7mr10657866b6e.31.1739206130266; 
+ Mon, 10 Feb 2025 08:48:50 -0800 (PST)
+Received: from x1.local ([2604:7a40:2041:2b00::1000])
+ by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-726af9411c5sm2467490a34.28.2025.02.10.08.48.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Feb 2025 08:48:49 -0800 (PST)
+Date: Mon, 10 Feb 2025 11:48:45 -0500
+From: Peter Xu <peterx@redhat.com>
+To: William Roche <william.roche@oracle.com>
+Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, pbonzini@redhat.com,
+ richard.henderson@linaro.org, philmd@linaro.org,
+ peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+Subject: Re: [PATCH v7 3/6] accel/kvm: Report the loss of a large memory page
+Message-ID: <Z6ot7eVxaf39oWKr@x1.local>
+References: <20250201095726.3768796-1-william.roche@oracle.com>
+ <20250201095726.3768796-4-william.roche@oracle.com>
+ <Z6JH_OyppIA7WFjk@x1.local>
+ <3f3ebbe8-be97-4827-a8c5-6777dea08707@oracle.com>
+ <Z6Oaukumli1eIEDB@x1.local>
+ <2ad49f5d-f2c1-4ba2-9b6b-77ba96c83bab@oracle.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: 36tjIBxP8kkH
+In-Reply-To: <2ad49f5d-f2c1-4ba2-9b6b-77ba96c83bab@oracle.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rbcHUuhYYFj3tVejW2QD6iyIVKWik09Fz50XGKesOqQ_1739206131
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.388,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cbw77Fw1x1kj
 
-On Fri, Feb 07 2025, Richard Henderson <richard.henderson@linaro.org> wrote:
+On Fri, Feb 07, 2025 at 07:02:22PM +0100, William Roche wrote:
+> On 2/5/25 18:07, Peter Xu wrote:
+> > On Wed, Feb 05, 2025 at 05:27:13PM +0100, William Roche wrote:
+> > > [...]
+> > > The HMP command "info ramblock" is implemented with the ram_block_format()
+> > > function which returns a message buffer built with a string for each
+> > > ramblock (protected by the RCU_READ_LOCK_GUARD). Our new function copies a
+> > > struct with the necessary information.
+> > > 
+> > > Relaying on the buffer format to retrieve the information doesn't seem
+> > > reasonable, and more importantly, this buffer doesn't provide all the needed
+> > > data, like fd and fd_offset.
+> > > 
+> > > I would say that ram_block_format() and qemu_ram_block_info_from_addr()
+> > > serve 2 different goals.
+> > > 
+> > > (a reimplementation of ram_block_format() with an adapted version of
+> > > qemu_ram_block_info_from_addr() taking the extra information needed could be
+> > > doable for example, but may not be worth doing for now)
+> > 
+> > IIUC admin should be aware of fd_offset because the admin should be fully
+> > aware of the start offset of FDs to specify in qemu cmdlines, or in
+> > Libvirt. But yes, we can always add fd_offset into ram_block_format() if
+> > it's helpful.
+> > 
+> > Besides, the existing issues on this patch:
+> > 
+> >    - From outcome of this patch, it introduces one ramblock API (which is ok
+> >      to me, so far), to do some error_report()s.  It looks pretty much for
+> >      debugging rather than something serious (e.g. report via QMP queries,
+> >      QMP events etc.).  From debug POV, I still don't see why this is
+> >      needed.. per discussed above.
+> 
+> The reason why I want to inform the user of a large memory failure more
+> specifically than a standard sized page loss is because of the significant
+> behavior difference: Our current implementation can transparently handle
+> many situations without necessarily leading the VM to a crash. But when it
+> comes to large pages, there is no mechanism to inform the VM of a large
+> memory loss, and usually this situation leads the VM to crash, and can also
+> generate some weird situations like qemu itself crashing or a loop of
+> errors, for example.
+> 
+> So having a message informing of such a memory loss can help to understand a
+> more radical VM or qemu behavior -- it increases the diagnosability of our
+> code.
+> 
+> To verify that a SIGBUS appeared because of a large page loss, we currently
+> need to verify the targeted memory block backend page_size.
+> We should usually get this information from the SIGBUS siginfo data (with a
+> si_addr_lsb field giving an indication of the page size) but a KVM weakness
+> with a hardcoded si_addr_lsb=PAGE_SHIFT value in the SIGBUS siginfo returned
+> from the kernel prevents that: See kvm_send_hwpoison_signal() function.
+> 
+> So I first wrote a small API addition called qemu_ram_pagesize_from_addr()
+> to retrieve only this page_size value from the impacted address; and later
+> on, this function turned into the richer qemu_ram_block_info_from_addr()
+> function to have the generated messages match the existing memory messages
+> as rightly requested by David.
+> 
+> So the main reason is a KVM "weakness" with kvm_send_hwpoison_signal(), and
+> the second reason is to have richer error messages.
 
-> On 2/7/25 03:02, Cornelia Huck wrote:
->> And switch to using the generated definitions.
->> 
->> Generated against Linux 6.14-rc1.
->> 
->> Signed-off-by: Cornelia Huck<cohuck@redhat.com>
->> ---
->>   target/arm/cpu-sysreg-properties.c | 716 ++++++++++++++++++++++++++++-
->>   target/arm/cpu-sysregs.h           | 116 +----
->>   target/arm/cpu-sysregs.h.inc       | 164 +++++++
->>   3 files changed, 860 insertions(+), 136 deletions(-)
->>   create mode 100644 target/arm/cpu-sysregs.h.inc
->
-> Why are we committing generated files and not generating them at build-time?
+This seems true, and I also remember something when I looked at this
+previously but maybe nobody tried to fix it.  ARM seems to be correct on
+that field, otoh.
 
-We'd either have to carry a copy of Linux' sysregs file, or generate a
-build dependency on Linux. I think we should handle this similar to the
-Linux headers update, where we do an explicit update and check for
-anything unexpected that might have crept in. (Same applies if we switch
-to any other external source for register definitions.)
+Is it possible we fix KVM on x86?
+
+kvm_handle_error_pfn() has the fault context, so IIUC it should be able to
+figure that out too like what ARM does (with get_vma_page_shift()).
+
+> 
+> 
+> 
+> >    - From merge POV, this patch isn't a pure memory change, so I'll need to
+> >      get ack from other maintainers, at least that should be how it works..
+> 
+> I agree :)
+> 
+> > 
+> > I feel like when hwpoison becomes a serious topic, we need some more
+> > serious reporting facility than error reports.  So that we could have this
+> > as separate topic to be revisited.  It might speed up your prior patches
+> > from not being blocked on this.
+> 
+> I explained why I think that error messages are important, but I don't want
+> to get blocked on fixing the hugepage memory recovery because of that.
+
+What is the major benefit of reporting in QEMU's stderr in this case?
+
+For example, how should we consume the error reports that this patch
+introduces?  Is it still for debugging purpose?
+
+I agree it's always better to dump something in QEMU when such happened,
+but IIUC what I mentioned above (by monitoring QEMU ramblock setups, and
+monitor host dmesg on any vaddr reported hwpoison) should also allow anyone
+to deduce the page size of affected vaddr, especially if it's for debugging
+purpose.  However I could possibly have missed the goal here..
+
+> 
+> If you think that not displaying a specific message for large page loss can
+> help to get the recovery fixed, than I can change my proposal to do so.
+> 
+> Early next week, I'll send a simplified version of my first 3 patches
+> without this specific messages and without the preallocation handling in all
+> remap cases, so you can evaluate this possibility.
+
+Yes IMHO it'll always be helpful to separate it if possible.
+
+Thanks,
+
+-- 
+Peter Xu
 

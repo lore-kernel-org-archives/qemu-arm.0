@@ -1,126 +1,127 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1844951njb;
-        Mon, 10 Feb 2025 02:45:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWQ7tFbvj0mxh/yXwViAHwfPBKvYj6ki5xRPv7ARP/qT64YgWoIxDC165Cq66tVdWRue8UBbF7XtLsYlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHWxk+okE8u7CtFTAf/zF3aHHfENyec8kzPCgrO2ok2ZteaOzvCt5y23vlAC3WaD9KyIOfW
-X-Received: by 2002:a05:620a:4549:b0:7b6:ecaa:9633 with SMTP id af79cd13be357-7c047ba6bdbmr2311812185a.7.1739184315908;
-        Mon, 10 Feb 2025 02:45:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739184315; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1956955njb;
+        Mon, 10 Feb 2025 06:04:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVJbgbBjHxfEtRrQ/+slv6oA8tWHpwrjxRQpi+FG1AThIlOqYsDxC/F0TVjs4CJ2I81O0KBc/9C3mPe9w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEBCLii2HZ/vGnFaMlrgI/F6SNIAOe8FkDNI2Nt9G02VeyY7emyu43y0HqLUdIXTsbq5aCY
+X-Received: by 2002:a05:6214:2503:b0:6e4:4194:df35 with SMTP id 6a1803df08f44-6e4455c9612mr239022106d6.9.1739196248352;
+        Mon, 10 Feb 2025 06:04:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739196248; cv=none;
         d=google.com; s=arc-20240605;
-        b=kurZjYgfy0tGNVpoi05rFhGiODLN0GAGAh5OPaIK+IEjqoT3UKw+4rSKaI7E63dx6O
-         DvnRa38B8BqPvyG1bLL1MsrjHgKo+BJM5kylcIqIu0SWd+dz0oPxaaWw9S0i1rHpLixi
-         ji0AxYgOSSQvdfVw8CrXYJFBGTcI6gJx1R3V+LQd19E8O0NNSYSckRWE96ftL5R1uwOf
-         /olQogn2+XyFki/Hn95lbMzePa/kNTra7fm0eDZz6WNMc3z5tErDFVu2T1kXSq+mkw0T
-         gVswhip4wiPfZzTtvZGb4QEFzAucwR2WjVUAlkdKV5dNAS//KsbZwBzELqMCKl9RYhC0
-         /UPA==
+        b=H2ihsYPNjzxdq0ruOYLpEwVrKL5HY1Gkhi69aixaMBOXSCUS9SIW9eLo8Bl1MFJluJ
+         J3ZE7cu2OhXqCu8JNdsD3edu5tzvf/9VSiudsw3c3hpNmRcGlvc/iiSqk3RuNCXWk3s4
+         5Xh3k77MY3YDubq6DQMeJfgUaXK64y3do6z8ioxJrfORNcufkbOELCQtxKt4VR8Knglu
+         35Zm1nI/pxIK25fCOeb3sudPmvosSHqy5YU0+O58mFzqlGhvg4Jo99YWjxvbA+otLwSs
+         xPqmQxBImPSOI5PPE5XU8zM3re3B+HsDl6fea20UCDwEdFSrAaMOVTZvqIiIXmJP5X05
+         s4RQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=D0Dwoc7RY4bZRTzAOMQfPuoeH3Y30Ed9EhRFs8jdDH8=;
-        fh=zz4ix6P9Mz9CeH5Hvp6qx/mW4kOs9RjPOUirpTpd5is=;
-        b=j39r90+2I3ddAcnMM4uvMVB27b6JquNg9L7+DRsAhmEBtvjav47oATFqfD7FAasfLo
-         yWHHMYc9sztFwrDogJ+sjkFXJrwik6fJkxYEyutRWgd9ubCSAnKfORIp5EP5zPqxDBwk
-         TeQ/mTaqJ5FWUGODG2ofPN67PkS9K2kII0eJYxALsFvrOj/Q9OPiLrgjfB/UPbwZ+iy2
-         FHZy14MBYDGE5JAk2ZCseqj8BjXn3AmByJT7p5SrpZPobwZHKsiPLRgI3RKm8jJrXvnJ
-         DX+2zrQHn1ffXglLUMfPUObIJ5JNP1lNamxg/5mlriE9jSEKfjzl/vSU7U9IWh4mh50/
-         bhOg==;
+        bh=54fufbxc7LkWLY3gsqftXZih0oh4axfXg2KzENgF1oo=;
+        fh=NCKPmq7ipw9I/TO1RYC8kga4CMeWktcxH/89E1uo3kQ=;
+        b=FAernVYvDz9AY/NAh3xac0yl81PwWYhzudFm7Hv79QKrqlTiCpmLLCb7x8OcNxrrbz
+         2eUfslkSs2+ptiw8BLmJGrvLsyGD1y6DSXn/gwL5D/qNxEFmVzHWl6IxtJFRH627uoy8
+         Mo8eR9OGdH2gfSrqJjmCb4FrlxE/on+QvVX5ioSiHOQjslZOtr1XwIFMLEoUwvh2oMk4
+         OljITdNaq0qD3ri3KRjxZJfOY7oQciWIwGaRq8UpLt2uihalS2AVUf4aLAnPaNJ6zlWu
+         h8bSyunhd5AB9FG7Iflnz8u3fIPnl9Ws8QOMM8xlv1clm9dYdCdg7f+bP2DsHFndWikg
+         hujg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m17JTpe4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P2fqfghC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c05b5fe2bfsi251360285a.62.2025.02.10.02.45.15
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e451429000si54907796d6.103.2025.02.10.06.04.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Feb 2025 02:45:15 -0800 (PST)
+        Mon, 10 Feb 2025 06:04:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m17JTpe4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P2fqfghC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thRHP-0006kC-2S; Mon, 10 Feb 2025 05:44:43 -0500
+	id 1thUO9-0001Hm-7X; Mon, 10 Feb 2025 09:03:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thRHN-0006ju-Mp
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 05:44:42 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thUO1-0001GY-Hd
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:03:47 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thRHL-0005wV-Vd
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 05:44:41 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43618283dedso41428395e9.3
- for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 02:44:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thUNx-0002ki-A1
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:03:43 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-43937cf2131so10879265e9.2
+ for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 06:03:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739184278; x=1739789078; darn=nongnu.org;
+ d=linaro.org; s=google; t=1739196217; x=1739801017; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=D0Dwoc7RY4bZRTzAOMQfPuoeH3Y30Ed9EhRFs8jdDH8=;
- b=m17JTpe4wFr7C3Ww+yEAl39/t23BAi4FQx0auEN/LspKN2yUTUBRdJhwgLm6Cwn6OI
- Nt41JmYqk07w0rdAlVCxBH9LEMrb/CqjXLPakLVMx2dREPueE6Kh3QJmoWZNDlZCjcTV
- F9ALf6d951HwgQ2ETrlEJgSHdOJLUO3FQCD62xRFT8LQ54iesVzjlo5KIk1lI4IZMofE
- 44AP3dEiiinsLZpYipt2dgjyuL98B33WfPrwZOfTSVu3I6kM1m3GKBdKKM35JIfVxFfV
- h/HWbDmKEhCUGbxsLqTeNAAtOwoHp1l9UBzNqRQlLcg/qKHte4A7+t6cswDPi6eF78pp
- nG5g==
+ bh=54fufbxc7LkWLY3gsqftXZih0oh4axfXg2KzENgF1oo=;
+ b=P2fqfghC6knXqtSxtOPh9lvj5VO3QGaxeVUDj0daSpQcE4c7BrhL21KX1T6TIr2gdL
+ lfDWaY+JSAyqXL6hdtfxgFdpr3THkuLrrxLyy0/g3JDha7gcuQhrNoo+wR/PojGVClHy
+ YAnOalZpG91Cha64IwJdIEVXqnHslQU+ieh1+jI6BDAlv41lfwBP6S+xi98CFpJZ0NnX
+ tleFsTW6fRhwFkwr4ExQUvcc8PxGoOv/+zKuMR9cq+W+pnbUAfnwpH1IIV3U+I4N/xvd
+ rwD8kZS8wteTwzmsb9Ii3wkDRuqCCaAsJk90CbFv6rvRmMWKASW+u7rqyNDTP4Iv4uvR
+ 74Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739184278; x=1739789078;
+ d=1e100.net; s=20230601; t=1739196217; x=1739801017;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=D0Dwoc7RY4bZRTzAOMQfPuoeH3Y30Ed9EhRFs8jdDH8=;
- b=aDQr/kksUCzUkCqabjFCpZ6J82N9/FvBNMnYicdTURhmiOSKi8wQ+EvXB3gA2mPhb5
- YDyizbNaVO/sNrUnYwMjgiJ1s2vfIESvTJBFvK/PGiaVY66tUHm0IFE6ccr1/GiJXNzd
- ECkGnnm0OhwfKbnRLAdeJvQPPzGbX7XXoeAxiizcX/BanoSo25XqSVQNN+8WvVgT20IT
- CJEA3vcqabs9LrqLrmE9gOveoFFthUzH7hGO+sKySq9Ouevw4Dj9MKmOzyk9E/2fvve6
- 1ZA9dCMmzSii0y2zp2kHQihK6L8Xt2nrK94qbJA/nVWfJ0tUABTw2jOL0ng1ZNeZhvqk
- gZ9w==
+ bh=54fufbxc7LkWLY3gsqftXZih0oh4axfXg2KzENgF1oo=;
+ b=Yb8ky/aBrHPuCcNuIghMrX1ZMOcaNY2AiUmTEmYCQGYC+NFfM5MuDerOVRTF7hHSit
+ Js61S5uq83R5Sesc9LqhKwd9KBqVKPU+LZBTlzg0eTFDrer9qo4Kk5kH1zAPM8/PW7eO
+ DLqMCV+JhanZzpt33JG0GA1l3Kfd6inpzcu7y5F+1K69LnZ6k/833dvFu136NCNQRBjT
+ F5AurU4cbBr9gKOfsWTnxozuuedEfeXYvvY1EhXgAZY7horLuNh1drOCuJ8xJjia1f4Q
+ HlTBVtR5VQhouoJj79AoDzciGtsdnDP7UZ7Zd/OpyZJh134J6RI/azQ/W3/ZKWKc8qHs
+ vwdg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUkIyoQPrTRnVVOJImx/v7WBDr1T88ty6BsclzwYSBgfnZGwUuZKABSMhiz+kIYDxz33V2nZ8q6dA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyx5lbe2kHDzr+6iVvFb+RRI86ZICg11yrnSyqrTzkFoiQUIrIe
- zFCEngRLhfJ9sBZuW9nclaXh5zD5fMLGZTi0jHAr6C5J5M+mAHZQ1M2bxHCApyzEi3jM/pueyRj
- WitI=
-X-Gm-Gg: ASbGncvvI+ISUVmqKeuWdHyfNbtfp7zI13POrKz6lO90orBWJTLPipE6EELYKTvoSyD
- n7nRJMryiOl65PHNpl7QJ6fwKeFy2c5vQRIXoF7RK5wNACEPXP2plpByfxcTWFWWit2bS0Ggn8p
- /Y35btA4YFquw6PqME+2J+QnzdyHCboHuBPATvgaJAzkq9o9acMJLT7aizBiX2QblMyeyI5HGiN
- wGlfLJ71ylPJWzwdUeCgcmrGed0skFTBlrhU4Ub4BZ4JWw0tUruUE2wqZBbmbIxo/5wAe611+Vp
- 3U9scMOXk1xR8gbSEtP0uJxM9RGRV1tQ/DBReto3VbAWzDke5WebGK/HYinIMeJe
-X-Received: by 2002:a05:6000:1547:b0:385:e35e:9da8 with SMTP id
- ffacd0b85a97d-38dc8dd3475mr9256407f8f.18.1739184278172; 
- Mon, 10 Feb 2025 02:44:38 -0800 (PST)
+ AJvYcCWwL4ZN8Tct9sRGxD0oBz2eXMw4cCehxNtLJOgDuoyLZQErZs5yQ5l6qF24c2jzlEVesT8k3HOWkA==@nongnu.org
+X-Gm-Message-State: AOJu0YyntQKecCtXABx8WcSWPXwQNChIU2/o6R5YnBBYj5cnhvQG/1Yk
+ uLh3nRfIZyrz3M1UoeNLEfennkDet7Fxjf54YnzsgoFbB2WOoxFl+B6B8QkpIco=
+X-Gm-Gg: ASbGnctoVwL3LXVw7kwlvKABZCyaVLJkuNI8FygR0p19tq2Zwf421QAWgxNVqstG9BS
+ nQpBxeZmZiqp2d0TDzx1WPiEnFDaUMicHBDssjn3VWfdxHt44+98ps/gM3DKplLf+HgCkIvHwq9
+ NdaSFHvzNEe48yaFUv30FMd+8GDGXAqOrRk77tq+m/QVJTuGM563RitMcVwzs3jW+q3u67S82e5
+ G8xAmkbr/Z4ICVA4lDz3KNf5UE02M8xcBmAavjIw0z3ntG6lCz4qH9/vVOMFx+1iv6jMTqqioYj
+ A8DLEnfFVq5lAtteKJDrVx7nrUXwRiidAWQydJsdrMGp453k4hX4OpDpCec=
+X-Received: by 2002:a05:600c:1e0e:b0:436:f3f6:9582 with SMTP id
+ 5b1f17b1804b1-43924988870mr103881395e9.8.1739196217423; 
+ Mon, 10 Feb 2025 06:03:37 -0800 (PST)
 Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dcb22f737sm8995633f8f.24.2025.02.10.02.44.37
+ ffacd0b85a97d-38dd9c48173sm4661490f8f.37.2025.02.10.06.03.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Feb 2025 02:44:37 -0800 (PST)
-Message-ID: <e5bcfc84-ad3e-4ee2-bf83-b3c4aea4e56e@linaro.org>
-Date: Mon, 10 Feb 2025 11:44:36 +0100
+ Mon, 10 Feb 2025 06:03:36 -0800 (PST)
+Message-ID: <96b39b3e-1a90-457c-bd8a-40a1b6216c1a@linaro.org>
+Date: Mon, 10 Feb 2025 15:03:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/net: cadence_gem: feat: add logic for the
- DISABLE_MASK bit in type2_compare_x_word_1
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>, alistair@alistair23.me,
- jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20241219061658.805-1-andrew.yuan@jaguarmicro.com>
- <CAFEAcA96ZLjOhBT9rhNhuk32ve0Qv4hUVuTTtgE=DBApbN98Pg@mail.gmail.com>
- <CAJy5ezovedShKH=HFbK9uRY44no2ijQocs29CHLt2jKoNL+Vpw@mail.gmail.com>
- <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
+Subject: Re: [PATCH v2 4/8] hw/boards: Remove all invalid uses of
+ auto_create_sdcard=true
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org
+References: <20250204180746.58357-1-philmd@linaro.org>
+ <20250204180746.58357-5-philmd@linaro.org> <87a5b07u1d.fsf@pond.sub.org>
+ <34235ce5-9f6c-4968-a8c1-ab868389e9cf@linaro.org>
+ <8734gpj4wn.fsf@pond.sub.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA8oaRVs8USMDGHvDW82AtRZGAhRCg189hhWtmRm2Y-YaQ@mail.gmail.com>
+In-Reply-To: <8734gpj4wn.fsf@pond.sub.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -142,79 +143,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o3CubdMCtAz/
+X-TUID: nJViZQFmgmzf
 
-On 4/2/25 15:37, Peter Maydell wrote:
-> On Thu, 30 Jan 2025 at 22:31, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
->> On Mon, Jan 27, 2025 at 8:40 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On Thu, 19 Dec 2024 at 06:17, Andrew.Yuan <andrew.yuan@jaguarmicro.com> wrote:
->>>> -            rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
->>>> -            mask = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
->>>> -            compare = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);
->>>> +            disable_mask =
->>>> +                FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1, DISABLE_MASK);
->>>> +            if (disable_mask) {
->>>> +                /*
->>>> +                 * If disable_mask is set,
->>>> +                 * mask_value is used as an additional 2 byte Compare Value.
->>>> +                 * To simple, set mask = 0xFFFFFFFF, if disable_mask is set.
->>>> +                 */
->>>> +                rx_cmp = ldl_le_p(rxbuf_ptr + offset);
->>>> +                mask = 0xFFFFFFFF;
->>>> +                compare = cr0;
->>>> +            } else {
->>>> +                rx_cmp = lduw_le_p(rxbuf_ptr + offset);
+On 7/2/25 13:49, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+>> On 5/2/25 08:03, Markus Armbruster wrote:
+>>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
 >>>
->>> Is the change in behaviour in the !disable_mask codepath here
->>> intentional? Previously we use one byte from rxbuf_ptr[offset],
->>> duplicated into both halves of rx_cmp; now we will load two
->>> different bytes from rxbuf_ptr[offset] and rxbuf_ptr[offset + 1].
+>>>> MachineClass::auto_create_sdcard is only useful to automatically
+>>>> create a SD card, attach a IF_SD block drive to it and plug the
+>>>> card onto a SD bus. Only the ARM and RISCV targets use such
+>>>> feature:
+>>>>
+>>>>    $ git grep -wl IF_SD hw | cut -d/ -f-2 | sort -u
+>>>>    hw/arm
+>>>>    hw/riscv
+>>>>    $
+>>>>
+>>>> Remove all other uses.
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >>>
->>> If this is intended, we should say so in the commit message.
+>>> Impact?
 >>>
+>>> As far as I can tell, this stops creation of the if=sd default drive
+>>> these machines don't actually use.  Correct?
 >>
->> I agree that it should be mentioned (looks like a correct bugfix).
+>> Yes, since these machines don't expose a SD-bus, the drive can
+>> not be attached and always triggers the same error:
+>>
+>> $ qemu-system-hppa -sd /bin/sh
+>> qemu-system-hppa: -sd /bin/sh: machine type does not support
+>> if=sd,bus=0,unit=0
 > 
-> Thanks. I've expanded the commit message:
+> To be precise...
 > 
->      hw/net/cadence_gem:  Fix the mask/compare/disable-mask logic
+> Before the series, a bunch of machines create an if=sd,index=0 drive by
+> default even though they cannot use it.  HMP "info block" shows it:
 > 
->      Our current handling of the mask/compare logic in the Cadence
->      GEM ethernet device is wrong:
->       (1) we load the same byte twice from rx_buf when
->           creating the compare value
->       (2) we ignore the DISABLE_MASK flag
+>      sd0: [not inserted]
+>          Removable device: not locked, tray closed
 > 
->      The "Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev:
->      R1p12 - Doc Rev: 1.3 User Guide" states that if the DISABLE_MASK bit
->      in type2_compare_x_word_1 is set, the mask_value field in
->      type2_compare_x_word_0 is used as an additional 2 byte Compare Value.
+> "By default" means -nodefaults suppresses it.
 > 
->      Correct these bugs:
->       * in the !disable_mask codepath, use lduw_le_p() so we
->         correctly load a 16-bit value for comparison
->       * in the disable_mask codepath, we load a full 4-byte value
->         from rx_buf for the comparison, set the compare value to
->         the whole of the cr0 register (i.e. the concatenation of
->         the mask and compare fields), and set mask to 0xffffffff
->         to force a 32-bit comparison
+> After the series, this default drive is gone.
 > 
-> and also tweaked the comment a bit:
+> That is all.
 > 
-> +                /*
-> +                 * If disable_mask is set, mask_value is used as an
-> +                 * additional 2 byte Compare Value; that is equivalent
-> +                 * to using the whole cr0 register as the comparison value.
-> +                 * Load 32 bits of data from rx_buf, and set mask to
-> +                 * all-ones so we compare all 32 bits.
-> +                 */
-> 
-> and applied this to target-arm.next.
-> 
->> Other than that this patch looks good to me!
-> 
-> Can I call that a Reviewed-by (with the above changes)?
+> Correct?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Correct.
 
+> The commit message could be clearer about this.  Perhaps:
+> 
+>      hw/boards: Do not create unusable default if=sd drives
+> 
+>      A number of machines create an if=sd drive by default even though
+>      they lack an SD bus, and therefore cannot use the drive.
+> 
+>      This drive is created when the machine sets flag
+>      @auto_create_sdcard.
+> 
+>      Delete that from machines that lack an SD bus.
+
+I reworded as:
+
+     hw/boards: Do not create unusable default if=sd drives
+
+     A number of machines create an if=sd drive by default even though
+     they lack an SD bus, and therefore cannot use the drive.
+
+     This drive is created when the machine sets flag
+     @auto_create_sdcard.
+
+     See for example running HMP "info block" on the HPPA C3700 machine:
+
+       $ qemu-system-hppa -M C3700 -monitor stdio -S
+       (qemu) info block
+
+       floppy0: [not inserted]
+           Removable device: not locked, tray closed
+
+       sd0: [not inserted]
+           Removable device: not locked, tray closed
+
+       $ qemu-system-hppa -M C3700 -sd /bin/sh
+       qemu-system-hppa: -sd /bin/sh: machine type does not support 
+if=sd,bus=0,unit=0
+
+     Delete that from machines that lack an SD bus.
+
+     Note, only the ARM and RISCV targets use such feature:
+
+      $ git grep -wl IF_SD hw | cut -d/ -f-2 | sort -u
+      hw/arm
+      hw/riscv
+      $
+
+> Listing the affected machines might be useful.
+
+I'll pass :)
+
+> Worth a mention in the release notes?  I don't know.
+
+I don't think so, since nothing working is lost.

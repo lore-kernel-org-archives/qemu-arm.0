@@ -1,134 +1,127 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1768869njb;
-        Sun, 9 Feb 2025 23:24:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUD2bUr1CnofxqXYdfMubvV2nCQ74kV5rlA/ZsmACm/QnAhxfChecfwMZzkiawujt2NGdHLfR5Yqrhqqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPsXyS1jUmfyrRPTXZPVJFpSASkOyHCapfipGNnEAY5T3xX0wBMaeHeKCVJVD6Hd9Y6r9/
-X-Received: by 2002:ad4:576b:0:b0:6d8:7ed4:336c with SMTP id 6a1803df08f44-6e4455c5bb5mr225465566d6.9.1739172268590;
-        Sun, 09 Feb 2025 23:24:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739172268; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1873169njb;
+        Mon, 10 Feb 2025 03:43:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX8DyFw25UiebV+sdfR6sNZ1OR2KQJI+wmYzMczR/thqfkX01Wcr+PZ0oVQjDcODLN7thluTda60SmRwg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGBmZuNeG0VGsRd1rk0LTLGT3q2BDld4gBwRt/TzQ5RfLfjHokdnTux1IPD13EZDNGS5mrI
+X-Received: by 2002:a05:620a:4394:b0:7c0:6728:125f with SMTP id af79cd13be357-7c067281529mr53587185a.50.1739187804038;
+        Mon, 10 Feb 2025 03:43:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739187804; cv=none;
         d=google.com; s=arc-20240605;
-        b=YKmcIftXlI4PyK7lOI9oS+y08jhBXHZWKo5q1KMb1b+2/kAVPTtVF5yFfNL/hvLuyG
-         Zd80qNFHMx+9RLD4wbwtUs7zoRvBUpe39piabLzuW/HxxBUmMilmcEgPyoeyw4/WJ6Wh
-         R50mTpsIuBKSn22aZyL+NC4N+jk83wifJjvJPbHsyd/6rUO82B9CQYEyhx2Lf2yUi75v
-         5D0DuaGx1nBIRcHYpA26P2qfqKqbtFzEhfNPQcVQbwr652xpYl6CVrbqw6yZ7hm8GmKv
-         n3yQHnhMWPciJtOABnCXvGizBjz94GMOsM/DhCVnIFgcGvaBu5REtMFFK+QQn6cfPcZT
-         DfJA==
+        b=R8ji4ivTk5AdrJc3clh09VVvkekccz7CulEPcd6pEB4JJUA8obe7eTfkhOIZlcO8Iv
+         mUHt18Ezx8w0gKhu11x8FoHX6fL4ItAXa8c2zAzHtjX+SNlYaARRe1dUN/2uojLDh7D5
+         OZwZd1GB2qi/IrX5VhGf2GxrNmeu4LPY1FLywZYj4p7zAY1obSj0PaBnOOwZNWyDGf21
+         G+Gm9S/OrAE1Da/SKob8vN60dFwfQB/KSj3vsx4b/aJtXkBST7auFK6LZw3eiLoNvFdK
+         +N1coKZ3IBgsNTlq6UylxhQmmQpZPClC6cQgwiuzRqvQmzUjmfsjXXS55ByB/9Of2fJz
+         nmHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=nZFAuCFf73F3SFsYK+BLmA5yLsMbg0IYAdL8KA++AAQ=;
-        fh=CL8FkEck4sBUNnn94VzrZRxnUNRexsX6t//lDNccdpQ=;
-        b=ZekIFdX0nvrJ9i/9TLS1gF4DUuy73X1VxpfHcBHI3MY7z4GAhHwd0iHyUYkwVhp8YI
-         l8HtYBK6+lPkr0drK/8rBQ0tpYMNFNcQpPbiAlcuXCRNfMMJxZDwzvnM+28sMoqUc72X
-         yxRYnudIPIB06yKOQmu99QNtRrklEcHUXvPlUKbMQ1ndk9eZsptDE6oYPL9e5m3LcrIG
-         wegSSvWS8nKw11TT/SB4473SA9jOjriUL7CrHhnZEIhDcK5fbadyg/z+QCoftl8BRBwc
-         gVGyZDDCW/Uw2z1p4+Ol3SDKGdL2dutHl1u8PJJnea6A2rY5h7TnD5NUCVZdc6r/2OhP
-         CvCw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=8EfAEcBZVfgER+PyjUrcBoEN2a5jycU5m9Zrs1Vj4dU=;
+        fh=j6S+EfI5hmtm9YYJIFo9V14FnLHOAIJkWH05bQFYkwo=;
+        b=eNTBSw2VfbIrG0jAne+ZIW2xnekOZx/sP+8VIrLWL2RNhbWZU4VxrcnoK5pzWQHJU/
+         RGuVzVzw7Pj1/JbjpYzZK56m/MpWvSanUnJSa/xelQtrX9IrW7d100TMDWcaGeOj+ENW
+         A9I/FNS0+3slf2zqBMJ/kof2hAIscu9U+XmMRec2kNNpz0LF2pLRqUxyYv8dS5Se5gtK
+         yaHTiAVks2emv6l03hjXbpTJIwGjUr4LiI245/5cuZwLM0xxJdukFTLmrlHUFDShvpUJ
+         ZUbo2LWcMxx3ko7D8/20sv/7lN2a9dTN24R32DwJwLbBXCtmo15uKsLj05NvoQY2+jqL
+         N8kA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=btU546x3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e44f73e948si54229176d6.8.2025.02.09.23.24.28
+        by mx.google.com with ESMTPS id af79cd13be357-7c05a410ad2si300425185a.9.2025.02.10.03.43.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Feb 2025 23:24:28 -0800 (PST)
+        Mon, 10 Feb 2025 03:43:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=btU546x3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thO9T-0002sb-DL; Mon, 10 Feb 2025 02:24:19 -0500
+	id 1thSBy-0006Q9-Tj; Mon, 10 Feb 2025 06:43:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ENuV=VB=kaod.org=clg@ozlabs.org>)
- id 1thO9Q-0002sO-J5; Mon, 10 Feb 2025 02:24:16 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ENuV=VB=kaod.org=clg@ozlabs.org>)
- id 1thO9N-0001p0-VJ; Mon, 10 Feb 2025 02:24:16 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Yrx005Tlqz4wxh;
- Mon, 10 Feb 2025 18:24:00 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Yrwzw28M8z4wby;
- Mon, 10 Feb 2025 18:23:55 +1100 (AEDT)
-Message-ID: <f23dcbe6-596f-4b5c-9fe5-135f087112bd@kaod.org>
-Date: Mon, 10 Feb 2025 08:23:51 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thSBv-0006On-8i
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 06:43:07 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thSBs-0007D9-BG
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 06:43:06 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-436281c8a38so27685655e9.3
+ for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 03:43:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1739187782; x=1739792582; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8EfAEcBZVfgER+PyjUrcBoEN2a5jycU5m9Zrs1Vj4dU=;
+ b=btU546x3o3G73Idc7HYNR0PYZDnk5C+Uuz9Y54/q4NdV/svSkITW3WuzcAziVnYw0N
+ 9ov5gJ/JkUQDfa8JSLiSgToYPTTQDm3QZkJlnJ8135FEGJOPNtRVmhvhRUOWjMWsmRqD
+ adqCqtgaDGCMQaciYupoyTS0HHLRw5/cQRLjTVNsmioiGbQV0Qgkb4aIw4yIJog/CSHA
+ qdFw2TqZ5NmubjF+rJXiIDvier1F+/XQIebCncfWr6ZgY0XgmVM4xz4rk8rksxHgphET
+ lM8qLt5OTfp+mkNzJRayMPHahLkGqgaUvcduHbLpchTkWjJ9qkAO1hL7L4EXZhjXPEXB
+ 6XaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739187782; x=1739792582;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8EfAEcBZVfgER+PyjUrcBoEN2a5jycU5m9Zrs1Vj4dU=;
+ b=EFwmZIyhuB5XZeG2xGgOUKXMaTslX0Fn8nL/I+Zw6a28GjswidFQqcH3sJ89hhdvX8
+ 4T0+aRqNlZn6MD0tgtWh0/A4MO/nP3L9252+r1uqAtsR2PNt7Z0SdkvfbGbBWfG3qSBU
+ D4blEAGDPN88wlxAPaxmb4qNvhpDG1GlWTWXIx97dEi/juv09hEAIaV1Ovma2/Wsb62f
+ 1TmybAj0LvZU4DYXzpYNJ1slFMP+FcDz2Jmn4IZG6NiGSJ3Kmu0TotoCOh1N9xRauPBA
+ d4kf4RR6nHmhHvixuCqw+HM5EBtkf2Dmyq6JgeLE+FEyda+TSbEg0Mwt3M+GN1zXSEAx
+ b7FA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXpjNoVqvbFdGcv3Z6i8NM2L9xjTGTANL4Uiw6jdgtUcGmfbGu0CrSBvmxJaXPnpN8Y4K1Drtln1Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yw1QYrYAVaipPpu4M17i1ERTmpnkQjHVyZH0YHjP8J+a0jhhn5b
+ BlSttlFnsx5UgDIka1NRCouCxWMjMdkS4gXFi8sKbAQ0U4asU438oDWauiPELWA=
+X-Gm-Gg: ASbGncvBNlwnP0RHBtYROpGxDTT6fcIYfi6Z/a0MBqbMCuzmVW6/1QTyck/4BxfUGPc
+ WuF87hQ8/I5aXKJpPD3TYW/HEgVpSRN9PUSdmCGV7m0JxeYpDh0+0jkaiYnOLCwXmx/ekqo/P6o
+ Ep463df1HlrphZgVnfKEg12HCVwzD3M7ZeBnjMSE7y7huXmHL42Jr46bH55Rhd99OXCtjkDD++u
+ 6QXlP9qvZN+fV//QZaYF2tQ8pOAE0vHTf+2BToaPcI5tp1lnnCfGJF5c/HEj7bKSV8TE7xAraIg
+ +sja4KYLytn2EFTQa34zeFChu3+uvPdYiFcEsJUaf/OEYLhHkWOkkV3dNMw15SGT
+X-Received: by 2002:a05:600c:204c:b0:439:3050:1abc with SMTP id
+ 5b1f17b1804b1-43930501c28mr65743385e9.15.1739187782022; 
+ Mon, 10 Feb 2025 03:43:02 -0800 (PST)
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4390d94d753sm177623775e9.11.2025.02.10.03.43.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 Feb 2025 03:43:01 -0800 (PST)
+Message-ID: <69457f04-47bb-4cee-9f10-64dfb1dc9447@linaro.org>
+Date: Mon, 10 Feb 2025 12:43:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/6] INTC model cleanup
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20250206095253.928308-1-jamin_lin@aspeedtech.com>
- <SI2PR06MB504118C85E9C5FFEADB3274FFCF22@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI2PR06MB504118C85E9C5FFEADB3274FFCF22@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH] hw/net/smc91c111: Ignore attempt to pop from empty RX fifo
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <20250207151157.3151776-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250207151157.3151776-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=ENuV=VB=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,66 +136,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kJ0oVN1m0uKM
+X-TUID: UeihKt1icmYM
 
-Hello Jamin,
-
-On 2/10/25 02:46, Jamin Lin wrote:
-> Hi Cedric, Andrew
+On 7/2/25 16:11, Peter Maydell wrote:
+> The SMC91C111 includes an MMU Command register which permits
+> the guest to remove entries from the RX FIFO. The datasheet
+> does not specify what happens if the guest tries to do this
+> when the FIFO is already empty; there are no status registers
+> containing error bits which might be applicable.
 > 
->> -----Original Message-----
->> From: Jamin Lin <jamin_lin@aspeedtech.com>
->> Sent: Thursday, February 6, 2025 5:53 PM
->> To: Cédric Le Goater <clg@kaod.org>; Peter Maydell
->> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
->> Lee <leetroy@gmail.com>; Andrew Jeffery <andrew@codeconstruct.com.au>;
->> Joel Stanley <joel@jms.id.au>; open list:ASPEED BMCs
->> <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Jamin Lin <jamin_lin@aspeedtech.com>; Troy Lee
->> <troy_lee@aspeedtech.com>; Yunlin Tang <yunlin.tang@aspeedtech.com>
->> Subject: [PATCH v2 0/6] INTC model cleanup
->>
->> v2:
->>    To streamline the review process, split the following patch series into
->>    three parts.
->>
->> https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.246
->> 5942-1-jamin_lin@aspeedtech.com/
->>    This patch series focuses on cleaning up the INTC model to
->>    facilitate future support for the INTC_IO model.
->>
->> Jamin Lin (6):
->>    hw/intc/aspeed: Support setting different memory and register size
->>    hw/intc/aspeed: Introduce helper functions for enable and status
->>      registers
->>    hw/intc/aspeed: Add object type name to trace events for better
->>      debugging
->>    hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
->>    hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
->>    hw/intc/aspeed: Support different memory region ops
->>
->>   hw/arm/aspeed.c               |   8 +-
->>   hw/arm/aspeed_ast27x0.c       |  58 ++++-----
->>   hw/intc/aspeed_intc.c         | 227 ++++++++++++++++++++--------------
->>   hw/intc/trace-events          |  24 ++--
->>   include/hw/intc/aspeed_intc.h |   5 +
->>   5 files changed, 183 insertions(+), 139 deletions(-)
->>
+> Currently we don't guard at all against pop of an empty
+> RX FIFO, with the result that we allow the guest to drive
+> the rx_fifo_len index to negative values, which will cause
+> smc91c111_receive() to write to the rx_fifo[] array out of
+> bounds when we receive the next packet.
 > 
-> Please ignore the v2 patch.
-> I will resend the v3 patch, as I am retaining the INTC naming and introducing a new INTC_IO model to support the AST2700 A1.
-> So, I think I don't need to split 3 part patches to support AST2700 A1.
-> Sorry for your inconvenience.
-> Do you have any suggestion or concern?
+> Instead ignore attempts to pop an empty RX FIFO.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 80337b66a8e7 ("NIC emulation for qemu arm-softmmu")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2780
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/net/smc91c111.c | 9 +++++++++
+>   1 file changed, 9 insertions(+)
 
-none. Please resend as well as the hace series if possible. these 2
-series are easy to review and merge.
-
-
-Thanks,
-
-C.
-
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

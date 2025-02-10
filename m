@@ -1,141 +1,144 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1965276njb;
-        Mon, 10 Feb 2025 06:15:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXZa8sHTHK7Ga2Qv7Iz4UBCk+gQpEa8UROjlB3fChQSsUQSnkRtJ0+TDvXjAVe8w/yBSTWJWkAAfQrM4A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsRlV65Meesyo2BnbamlCxCEGsRFWfvcO/g8vCWgq3Zd28KIlHmW2kB10/RuXIBrsi0PWJ
-X-Received: by 2002:ac8:5dd2:0:b0:471:8f5d:217 with SMTP id d75a77b69052e-4718f5d0541mr66426881cf.39.1739196921644;
-        Mon, 10 Feb 2025 06:15:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739196921; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1968042njb;
+        Mon, 10 Feb 2025 06:19:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVFJ+wpuwn0KUpDfp+YqXjNH9/QWZEwCEl3MhQxSQAR3pJ9N2SGX1KoFZnDlepeto5JnE1iuuR3I3V1yA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEjHdWEeytgfHAVs4RguUPvyz3XTEROXz/c7MYUG0AuPF0C7+uUlMTnYfQgw7GAqQKt7y7Q
+X-Received: by 2002:a05:6102:f0f:b0:4b2:5d10:29db with SMTP id ada2fe7eead31-4ba85dea287mr8270809137.7.1739197161272;
+        Mon, 10 Feb 2025 06:19:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739197161; cv=none;
         d=google.com; s=arc-20240605;
-        b=JBo79u1w4EWdeC4aLkNKt1lx2ySXs2Byw83s603N15SokV7lriVJzGINixsH42ubQq
-         0dRZaRZk9LeUcfb0K0X3u/5AplzLdajPdlFlvgjtEW/1ehipz03cf6STqMrVtBLojueo
-         cbpp3+KhQk0ku1kGJdKZt+dKh7Eb5zpB5BDOTATwNfFvFAiYleO9yTJVSYa9WXXbXfmk
-         8wxrf11funEyMwX0DUE9PwyTtIRNuvlkECVj9DzAWdJYqEEtIi0EUaCa1XI9rgqztgm6
-         6QPETQihAH58x9olXICaQyFsj2Lo7j9mZSP8E9NGlRehGN2To8Fw/0FPSW2kQECuyme4
-         WnlQ==
+        b=jMwT0ZWqAH3DCA2XLQp2qweyP02UX6dqw/PbsE4Oh4fxgvZBXik7El1zV3NJK2MZoD
+         zDySojQWehh7S4bpb74RvcNQokG98jVppuE08EAFRtELo4uD2T3gDVtqi3VOzM7QFpIA
+         Xq9z99Ws533WFo+iwNv/r3M4gTr2cNutsiFvDD0ZPS9zVVLLO84abiZK4jJy2Zu8k7yd
+         ySR5yji5juFamuzcpI0ACLUFeaY9nFkNNub6DFy6oy5RAJ4YEWHjiW3isQclYFOXar+r
+         NwsSr1XtYSWzr2Q4B91FkFjmAdqgr3bHlTNYIlBNbpVXwUKh4Pa65bUe6prVHllzfns+
+         wEUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=2PMBRrivkjfUaWhRN1bT2/4VqOxJ9LmWyNMlDVwIqek=;
-        fh=WTLB7ZFwqEBwvM5/RhM1CLcI+rl91y9DaaJ63trwD58=;
-        b=S/o0lYXTW2oaPr4ghq5Ry8SIHWW+5/hTTRUdLs9sm7Xtg1mIDQ2EJtMYQpp+cPiL5O
-         ZBiVz7C4wT8I+6hUumgC0N0XRWaTIGALfLvfdp7NEe+8NdxVFCJzoAYEvhl8YsVC7D/2
-         kpmP43EQ6CiWjsuENgerZC6lbV8dnygSW/P9IpolEsqF5T5UIlpNhVY2N5mVHZYNBTPP
-         VSlIwKgJIIkXosXpRt5CNIKtAgCRO1YOP4R1VOPutKHu6nsw+47XwPRCiNImUgUK6uQL
-         rAI4b7MhzsJKfg4HjeOlUt4de0k/xSmDQwh/vCZqpjFYTo0hkyp+b/i2xYqMsv9g5LIp
-         JIPQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Mt519XCXvXRZv7C4cviRwClcbA5MJY9X+DjkeSxm6PQ=;
+        fh=y8sd5Oa5dQsr+9Hh/Tw2JrqwqduaAPogL1rw/MMICkI=;
+        b=Lz9EbLkpkpZ2eImJHqb+BsZoztT8MYtFx+Rx8fY+m7EH0uoJj9jze7eJF3nOFmeYip
+         kfO7p0Z86GHUx43ZY6MYUPFbbts6/jbvjrAZZdZ2YdRThrDMpjYdWVHdyOW1vmojBvWC
+         mrqzfdcWxDhTgZCs4E02KXpJ/c6gu8RAz3y9NR/IPuIwPpeQ1k99M7XEcRd1I7HjUK79
+         J4DCVGYUvxnDMlVN2sOk/C3Xx3aqxGzkl2uTeLLMvkW7ZcUZ8VN/akWaCalvYMP72TYx
+         4R6R+X211xU6OH35o/9F8S5kwtzNVic775+B9EEpMlPfM11xxvQhx15lkBAZrwdshW6F
+         kw4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HQanrLH7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=areQ6kxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4717c48f4d2si46785831cf.445.2025.02.10.06.15.21
+        by mx.google.com with ESMTPS id ada2fe7eead31-4bbc1c4bba1si537052137.351.2025.02.10.06.19.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Feb 2025 06:15:21 -0800 (PST)
+        Mon, 10 Feb 2025 06:19:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HQanrLH7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=areQ6kxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thUYq-0008Hl-AD; Mon, 10 Feb 2025 09:14:56 -0500
+	id 1thUd3-0002gR-3E; Mon, 10 Feb 2025 09:19:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thUYo-0008D0-Cm
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:14:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thUcg-0002UI-0w
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:18:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thUYl-0005Hf-Dn
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:14:54 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1thUce-00067z-2w
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:18:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739196887;
+ s=mimecast20190719; t=1739197130;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2PMBRrivkjfUaWhRN1bT2/4VqOxJ9LmWyNMlDVwIqek=;
- b=HQanrLH7/DeSCEA0mbv/2YkjBiVe+r4enilHwxUAgIGgxVCJ940BUuxvnIHm6/8l8Lm9gK
- 3EKDbHeewPlhrbPDgsLn8YRSQiVhhKVhFS+KXMbwwHRCoRh2Uq9BA0GL3rUc/qd1YSikQy
- /YHeZIlPEGOXGEkVFJBB9IHGibF+X6U=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Mt519XCXvXRZv7C4cviRwClcbA5MJY9X+DjkeSxm6PQ=;
+ b=areQ6kxo5yrfWvqT5fi3YaiQTp1DT2OWh62xidjpjrFAnphB3D3jzNQbxEPYDwPHCfmxvu
+ kClWnwJ2xST4yDnxm07igzY+EGjW7kz4rCMGsvoPMMgPaJbHci42So907H7KCEtdwEFWPn
+ h79QafmvIcueny8Y2nfjXbAfYzfhpPM=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-247-0cVGA1DkPCmwHlYS-fxm3Q-1; Mon, 10 Feb 2025 09:14:43 -0500
-X-MC-Unique: 0cVGA1DkPCmwHlYS-fxm3Q-1
-X-Mimecast-MFC-AGG-ID: 0cVGA1DkPCmwHlYS-fxm3Q
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-6e1b8065ed4so77706886d6.0
- for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 06:14:43 -0800 (PST)
+ us-mta-44-QIxU-HsuMKiDGM2W9lkLmA-1; Mon, 10 Feb 2025 09:18:49 -0500
+X-MC-Unique: QIxU-HsuMKiDGM2W9lkLmA-1
+X-Mimecast-MFC-AGG-ID: QIxU-HsuMKiDGM2W9lkLmA
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-6e4565be110so14812426d6.2
+ for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 06:18:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739196882; x=1739801682;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2PMBRrivkjfUaWhRN1bT2/4VqOxJ9LmWyNMlDVwIqek=;
- b=Qwy+b/jk3qlKtoLrY8WW6U+PcgRY79xfo95fzbfT6ZXmex1QmFiL9UXtm4g5fzAktf
- MWXgMfGOXw2zeCiY2onAprrNTWiqhARZnfFO6r3FniuQdTUxA7erc/uJraa/MYzlGQ0S
- 8E/Wm/SP3aTCwKgATRq2iOwZun/CtO5H+Ze8J5v+jLexHq9wDddb0zfCboWclqeomJY0
- MQ9x/HIG7T7AzGOVgjJ2mDslGekOOAsewNtl2p9gjrpKk+twUP/R8fAsJ31tQvXMYwqW
- vurFAxgyLdNL3SO+29mAiX2no8l7evC4rDutWXHSIG4ozsx1S49+v8iON2LBrQ+MpoKw
- 1A0Q==
+ d=1e100.net; s=20230601; t=1739197129; x=1739801929;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Mt519XCXvXRZv7C4cviRwClcbA5MJY9X+DjkeSxm6PQ=;
+ b=rVsigFkpNkNjQ99LjEEb+8OgvlT90eoQ9f+fcvRJCIPn/36DYjm4Px3dmwSNOG7rkH
+ FPfi8U7i02DpCcyg0ihvMpRpTtdK+RDWpz+JIDTHbCnzpoodei6b3UrA/JeGO69SGmPV
+ oYvIPRApBRDMa96x811VYK5RSfwaBdbJ4BlaO2/O9e3dblqnvDYIRr0XwrL1Y6ntZYyd
+ xzBXfVO3c7yUYsqZ5KQfzgHQdE7IJZDw2TSlrHj/Gkd0se3+iJ4z2jjufykhsMeCatYD
+ La1sy9/b8Bf4/+y2FLrgsTvfdEev8xXZaKysZ6YYBkPQ0CmkxE5OXWfkQj65xqp3GyRr
+ vUDQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWWAqCfNUXrLBFiISaafvdKlxRW8tR4i7d457cDtCPW2lELRZILJR/8JnVQZkDiNpTcvn2ANYzSNQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzXXBMdWVSyQaS+aN8OOVRPe+8D/bykR+X7/wWU5OuUX3PGZFfo
- ZBubEpLhepebP5WYyz+MrbyfRH7nNJYGy5s3klkk5FQBL9ILdKn76N97Y1umfYv1qVPEmD9X1XX
- f1HOtv4eaVl0yXVYP2p7DqxtJ6Ga4o2hbUwhwG/v+T6CqTGO8Xw==
-X-Gm-Gg: ASbGnct7KddT9n8rEn//0wz0cnCejdtc3Beac4xgKeNPM3Q21Nwfi9Ftr/LH+RTTGfz
- ZH6+RpX/Oq+XJi2v45JaORbLB0SI24bMk5fiDELJfafFcJF0jRSg0NoqHsmrd6eaEkthTKr9anM
- +CTXfiduHGNeKDzL+mZHKYHy2KJ9m+GvyW0zAS9f3FPhrbP8EbJPzLxGEy5NSYSM9TrglD8TqVa
- BikL/zEPTaQu2/vfmzgsEh5oCS/ETvFeocs9K/BIXASzZIZgRuWrQxZfWY=
-X-Received: by 2002:a05:6214:da6:b0:6e1:a51d:e96f with SMTP id
- 6a1803df08f44-6e4455d8764mr191864966d6.8.1739196882650; 
- Mon, 10 Feb 2025 06:14:42 -0800 (PST)
-X-Received: by 2002:a05:6214:da6:b0:6e1:a51d:e96f with SMTP id
- 6a1803df08f44-6e4455d8764mr191864556d6.8.1739196882208; 
- Mon, 10 Feb 2025 06:14:42 -0800 (PST)
+ AJvYcCWThQa/eSzOhsrhTYfoA8Ase3rMzCTcWzLGY8f1lvi3ahG3inJ6qWLwIJPWkQn+YW+NQu2i0VvAAg==@nongnu.org
+X-Gm-Message-State: AOJu0YxipX6+QOW9IkuOwnj2YKxIRVUxCfHp3LDCkcdTa83h3sfmRNwN
+ 44YEzjaXU52CPkhg24wG9u0HUWToCqfPYuepB63JADdQfnqKTKnjFm3iNwCxY0XT07ODQKUAi5V
+ N1Nk4T/1UauJ+VbKAKu/EYZrZ771O/ICZWUiFDJ2kTFijwI8DQw==
+X-Gm-Gg: ASbGncvQI1Ih5YYDpvcjO20IBzy7u7RQqut7VuT78xtITltD8advTjF+9RUuC2ABjQv
+ 7NIP3LOC+D3o7Sja6O+gSql48H6XN3m51XDEyNYFJ2E9IJvtvZwadvShOmbOGBmMrdxnUkF28I8
+ UJEhLJH6/uZv1Yc9N8mtlpADl2SOUhld9X8l389LOpoppENm2lU0ibXJZ5wONVzzwKrpj26R1+d
+ nJ7vhbIAlxG4ZrrzUHyNfR7LuknG8OxTHST86ftni+k6bcBqL2ge0m8Z04=
+X-Received: by 2002:ac8:5895:0:b0:45d:9357:1cca with SMTP id
+ d75a77b69052e-47167a156d4mr174918071cf.14.1739197127937; 
+ Mon, 10 Feb 2025 06:18:47 -0800 (PST)
+X-Received: by 2002:ac8:5895:0:b0:45d:9357:1cca with SMTP id
+ d75a77b69052e-47167a156d4mr174917751cf.14.1739197127574; 
+ Mon, 10 Feb 2025 06:18:47 -0800 (PST)
 Received: from x1.local ([2604:7a40:2041:2b00::1000])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6e44da75f46sm32473116d6.58.2025.02.10.06.14.39
+ 6a1803df08f44-6e44f7dcdf0sm29929926d6.39.2025.02.10.06.18.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Feb 2025 06:14:40 -0800 (PST)
-Date: Mon, 10 Feb 2025 09:14:37 -0500
+ Mon, 10 Feb 2025 06:18:46 -0800 (PST)
+Date: Mon, 10 Feb 2025 09:18:43 -0500
 From: Peter Xu <peterx@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jasowang@redhat.com,
- imammedo@redhat.com, alex.williamson@redhat.com, clg@redhat.com,
- philmd@linaro.org, zhenzhong.duan@intel.com, ddutile@redhat.com
+To: Eric Auger <eric.auger@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
+ jasowang@redhat.com, imammedo@redhat.com,
+ alex.williamson@redhat.com, clg@redhat.com, philmd@linaro.org,
+ zhenzhong.duan@intel.com, ddutile@redhat.com
 Subject: Re: [PATCH 4/5] hw/arm/smmuv3: Move reset to exit phase
-Message-ID: <Z6oJzRCt_fJLfkmQ@x1.local>
+Message-ID: <Z6oKw8I3oijXMnCf@x1.local>
 References: <20250206142307.921070-1-eric.auger@redhat.com>
  <20250206142307.921070-5-eric.auger@redhat.com>
  <CAFEAcA_LgrBRbafVQ0vLGPd8xG=wsLjWnKTJ2JSEREYUqgRQBQ@mail.gmail.com>
  <7102d470-ac72-4c02-b8bc-20f1379a4843@redhat.com>
  <CAFEAcA-XK5GwT0b_Ff-8fYnWcDgzaE-0Ei-YqDoXv-aXFGNXUQ@mail.gmail.com>
  <Z6ZHTStx_S9ALdxt@x1.local>
- <CAFEAcA8ovoGsQ9oEco88iw3iUy_3kBOUaYHL+oq5VF-i9xg4+A@mail.gmail.com>
+ <3db2e0a7-0f38-4c6a-a9a4-d44e0c6af436@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8ovoGsQ9oEco88iw3iUy_3kBOUaYHL+oq5VF-i9xg4+A@mail.gmail.com>
+In-Reply-To: <3db2e0a7-0f38-4c6a-a9a4-d44e0c6af436@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: wBQm2zOw6wRHehIysCkygvfMk5l1gZIUz1GxuKBGWdM_1739196883
+X-Mimecast-MFC-PROC-ID: hM8eVptSgNB1n-P6jJ2UOxbunAnjFalrdp-rKx7mh7A_1739197129
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.388,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,70 +153,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7AAJgTxuX+Dq
+X-TUID: bhcSAyTdGYwo
 
-On Fri, Feb 07, 2025 at 06:18:50PM +0000, Peter Maydell wrote:
-> On Fri, 7 Feb 2025 at 17:48, Peter Xu <peterx@redhat.com> wrote:
-> >
+On Mon, Feb 10, 2025 at 09:35:53AM +0100, Eric Auger wrote:
+> Hi Peter,
+
+Eric,
+
+> 
+> 
+> On 2/7/25 6:47 PM, Peter Xu wrote:
 > > On Fri, Feb 07, 2025 at 04:58:39PM +0000, Peter Maydell wrote:
-> > > (I wonder if we ought to suggest quiescing outstanding
-> > > DMA in the enter phase? But it's probably easier to fix
-> > > the iommus like this series does than try to get every
-> > > dma-capable pci device to do something different.)
-> >
+> >> (I wonder if we ought to suggest quiescing outstanding
+> >> DMA in the enter phase? But it's probably easier to fix
+> >> the iommus like this series does than try to get every
+> >> dma-capable pci device to do something different.)
 > > I wonder if we should provide some generic helper to register vIOMMU reset
 > > callbacks, so that we'll be sure any vIOMMU model impl that will register
 > > at exit() phase only, and do nothing during the initial two phases.  Then
 > > we can put some rich comment on that helper on why.
+> As discussed with Cédric, I think it shall think about having eventually
+> a base class for vIOMMU. Maybe this is something we can handle
+> afterwards though.
+
+Yes agreed.
+
 > >
 > > Looks like it means the qemu reset model in the future can be a combination
 > > of device tree (which resets depth-first) and the three phases model.  We
 > > will start to use different approach to solve different problems.
-> 
-> The tree of QOM devices (i.e. the one based on the qbus buses
-> and rooted at the sysbus) resets depth-first, but it does so in
-> three phases: first we traverse everything doing 'enter'; then
-> we traverse everything doing 'hold'; then we traverse everything
-> doing 'exit'. There *used* to be an awkward mix of some things
-> being three-phase and some not, but we have now got rid of all
-> of those so a system reset does a single three-phase reset run
-> which resets everything.
+> >
+> > Maybe after we settle our mind, we should update the reset document,
+> > e.g. for device emulation developers, we need to be clear on where to
+> > quiesce the DMAs, and it must not happen at exit().  Both all devices and
+> > all iommu impls need to follow the rules to make it work like the plan.
+> The 3 phase documentation already states that you shouldn't do anything
+> in enter phase that can have side-effect on other devices. However I
+> agree we can add another example besides the qemu_irq line one.
 
-Right.  Sorry I wasn't very clear before indeed on what I wanted to
-express.
+The document will be relevant to two sides of things (so far not relevant
+to enter() phase, but more on what we should put into the last two phases
+either for vIOMMU impl or a PCIe device impl), that I commented in the
+other reply to Peter.  I am not sure whether we need such fine granule
+document, but in all cases I agree this can definitely be done later. :)
 
-My understanding is the 3 phases reset, even if existed, was not designed
-to order things like vIOMMU and devices that is already described by system
-topology.  That's, IMHO, exactly what QOM topology wanted to achieve right
-now on ordering device resets and the whole depth-first reset method would
-make sense with it.
-
-So from that specific POV, it's a mixture use of both methods on ordering
-of devices to reset now (rather than the order of reset process within a
-same device, provided into 3 phases).  It may not be very intuitive when
-someone reads about the two reset mechanisms, as one would naturally take
-vIOMMU as a root object of any other PCIe devices under root complex, and
-thinking the order should be guaranteed by QOM on reset already.  In
-reality it's not.  So that's the part I wonder if we want to document.
-
-So we must make sure both:
-
-  - All vIOMMUs across all archs must only tear down its mapping at its
-    exit() phase, providing the mapping available for all devices during
-    the initial 2 phases (probably we could even assert the initial 2 phase
-    functions to be NULL when there's a base class).  Meanwhile,
-
-  - All PCIe devices must quiesce their DMA in the initial 2 phases,
-    guaranteeing that there's no on-the-fly DMAs possible in the complete
-    3rd exit() phase, because any vIOMMU implementation can start to tear
-    down its device mappings even as the first entry in 3rd phase (IOW,
-    there's also no order constraint for 3rd phase that vIOMMU exit() will
-    be invoked before devices' exit()).
-
-I'm not sure if it would be important to document this, but only thought
-about it if we want crystal clearance on the choice of this design.
-
-Thanks,
+Thanks!
 
 -- 
 Peter Xu

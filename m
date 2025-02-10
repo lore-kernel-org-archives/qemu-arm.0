@@ -1,217 +1,145 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp1990365njb;
-        Mon, 10 Feb 2025 06:53:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV/o+rCa9bimEPl4/GKZtKNnvSYPFm7h+NHTbek6TcPsbOmwwwxFWEGDAtDe8s70Ju4gGsRCip3jGG9aQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH82fAgIPnKo7J5W2QBsEIKwAvFi6dWhsi/ohFSCKJTfUoecQZNuW7SNuMSNbLQwqJ/mlhZ
-X-Received: by 2002:a05:620a:2951:b0:7c0:6809:e99c with SMTP id af79cd13be357-7c06809ef5fmr79973785a.7.1739199224856;
-        Mon, 10 Feb 2025 06:53:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739199224; cv=none;
+Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp2010679njb;
+        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWjmT2WdMaqOR3fStZM0Sg0j7Hmdz+24m/oEOPijsYAihu1Ud3eiAq70VnGaoct9jdGeZmFBeRpInI74Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IF2puW639Qlc5SdLRTsoLfe4lx2wHgue5rJdVE9N69D0gZ3xMcN2ip4qdmTx9BVig/mtBJD
+X-Received: by 2002:a05:6102:8082:b0:4b2:5ecf:d124 with SMTP id ada2fe7eead31-4ba85e4b9d2mr9455962137.14.1739200845421;
+        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1739200845; cv=pass;
         d=google.com; s=arc-20240605;
-        b=XU17fjHJmCdldD7bcPzIiSQzsec3ql/bswM+WLUpX64kTE58n7+qdDjJEW4Ki3c+F4
-         u+dpGNqdhT4IzdXk6xXj1tSN4O63H0vUip08X19vCydk0IXQADGYg9PBmZWu9NBKMe0j
-         o3RFo7KbBdiHaxvidKCwaEetH8ufbMMXYawtmDqDqb3HJzIFp//t10b/my3pYYUNAeSo
-         xpwO2M7fAsNfkEuBC+/u/1aeuuFBon1N6Nqrl373Wgo3o0El0mWyJQ6nJsEpbwoRpkiO
-         UoFULEQY+3YKqXk+Um1Ml4RBZJPCR/6P/AkIp+G1zaKEUHiPVotnSqOx3rt7+mfC2cSp
-         WOpA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=rWhDsEiYuxRKPXphxfZ/7andCBJuLYjmYo9q0Z0tb7o=;
-        fh=x03RV1Ej0T1wB3m81Rst3lNRLA+4GyNB42CwYQgKzu4=;
-        b=Kg6Ms5HC5iyVH8zajiGV6bvzGNP6bnbLrjsbBKO+cNNvp1e5GzHu8tlIGTg11LzI3f
-         9ruyK85rAuTd4FpcCxOZFmVYq/w7mtE2VhqckTCU1HjVxqB1CLX25K1oIA/LhEB24ulx
-         V0DZTRC2wio6XJn9LFbQciBhaZlz/0C6ApB14jRHhh+S7M/ZFIyOFeB72G4gXpK6YJ6w
-         qM2IXPl3v8/A5lTh1byWi1o7hnhd0uRQ1uu1CBlA+nbP+MPlIYjoDUk1tBn6jJfVUX8D
-         gaA4sCSmHZmwSoAelcDYm/Fp1jtUj1M6qGPXhPEJnc9G/WLKFrvgpIhgEs7ZUDZJYXLZ
-         Plfg==;
+        b=UPiZQE3ouBAmHGgnvb3wkuGDhXo3sit9BUWKOGZWWlA/K7ASQdfZXYOzRjVn3amzIE
+         0x1gEMT1xC0wgNGk6LI4e6+luCGORYJK06bthkXBL+Vu+aLZIDuLQ5NIiXTnpnagd66U
+         YhOca8yId5PsivG/ayNHup+czdmiJ83BO2iJJmYmJ6yEMHIpbajh5JoaAe03QgeApRw0
+         w5stPWIJu28+iR16ltcDB08/uXHiobFd2y9ZSpnk6xIr7HoLwUScrjaS+mvmf/8K43V8
+         mOJ9OInzTOrdlRltk/qNbYiGavNolAG8reU1bHiTh4YZrG98sez5hjSSBnwcBXtjo/BJ
+         ZzIw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :message-id:date:user-agent:references:organization:in-reply-to
+         :subject:to:from:dkim-signature;
+        bh=l+1vKWq8tav0v5vOrEs4bMdzd3ftwt2N0noMcIDxK+A=;
+        fh=IhIF/oSww6zpX9UNFwS/PhZR+m2PBKW7LmeGATUQyj8=;
+        b=LNAhpvBfhwCtCNDuXyn3h8GMuE98BUN57nyLhJ/tDT+sMThmTnw1/lvVv3lEx2tis2
+         q7nUewE6fejyJybPzkXIPEMreXmQlePmumT6HuvKg0JRpmladsGnqjOHC9BY7NDf9GNx
+         BzErz692CVWjp27Iu0ID4OA4bO7Qnf2D09lL0G6rCGZvaTdVe35xK9gSGiYcffnJ3+w/
+         gjXHWCiaFnNkz2K7vwe7qFnv6tzC4469Pd3u3EO6vHoVYIv/rE+WYt4gydWgDXBqohiU
+         JxUX968P490qyf9IF0O2PcjPC5YK47Jqgr4Xq6hlmeEIyivk+ogAbwcBGvIQQ22Rfgcq
+         Er5A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a97WZc3y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041e949acsi965727685a.264.2025.02.10.06.53.44
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQiTcuHC;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4bbc6512a6bsi515006137.134.2025.02.10.07.20.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Feb 2025 06:53:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Feb 2025 07:20:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a97WZc3y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thV9t-0000Gz-6c; Mon, 10 Feb 2025 09:53:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thV9r-0000Fg-Sf
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:53:12 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1thV9p-0003Jw-AH
- for qemu-arm@nongnu.org; Mon, 10 Feb 2025 09:53:11 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-38dd14c99d3so2056143f8f.3
- for <qemu-arm@nongnu.org>; Mon, 10 Feb 2025 06:53:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739199187; x=1739803987; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rWhDsEiYuxRKPXphxfZ/7andCBJuLYjmYo9q0Z0tb7o=;
- b=a97WZc3y5ISnXUr8VDsvzHKtilNR3n6vjmH04WX8KY0s+uCGyfOgVXxq065cZRd26g
- y4cs9sucXit/ra41ybK10i4TZ6L1pTI7UMwZRhJ0FrSfbaNBmRd+EYzpgv675s6UyHzM
- BbWynKjz/YO3mVbi19CrwbbKFDroeOdgIpiXB0gmfRjy1IGSHXVGeH4kGJToPBS8rwqa
- EsIXNuouDha6TYTU5ue+RqbladsoreD4hT0eT8tw5J/RpPvZvgTjPFC7llQtS1eTBh8K
- nEaQX52XOkSCU+y/e0F/fZT1IV8SGk3S+0krYx3vEIXGEKmx6v51FUgYa23+4zhE95dH
- Kr1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739199187; x=1739803987;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rWhDsEiYuxRKPXphxfZ/7andCBJuLYjmYo9q0Z0tb7o=;
- b=TKk4SxWsXwUkI2ab5eTRVVulCjqDGKXZDspjOW0JfbFQaAlL/wakgTOOYiMM+cd/Ps
- aZwN2TVFU7uXM6JtMERCfSYqP1FS09IoI0xROK6wStE3pnXQ1dFfj/8Q1rpazmA8Iii8
- KLBXlFRhunIOvXiIrqLeAvz9bPpLL50VSg+QGssYvrX+s0z4sG0o1+2TSUVlQrsbYwTI
- BBJGur8WeBbQr7z2PItgiHJ250Gw0NL2sohr6qpzkSSM8WkQhQvUqGSALZBzJP+D6Md8
- Ea7wk5d+SiG+FjkUSeVFlSE4K/ghL7QuKD540mwF/V49ddyTi4hStY8GJ3v86tPI5HqL
- rX7g==
-X-Gm-Message-State: AOJu0YxbjjZ4IYEJXIrpXj36mQxbSGXrrEHWCwlVwraNCUsaSMSrdCmE
- U6Dl2032mQWxyHuqy0xNw6YY6k9Xl96geXxLIK/BpS9jtaWwXToMxlPJW8RctdM=
-X-Gm-Gg: ASbGncv9IgT4B5nbNWfTRK4eUjoSjhNfhzuoRSI6zCqaZCxe/iujKpYOgix4e0ujEA+
- 0iOuiouj1WXkw+UM7KjPKXBuZDYn+ZBs8xgd/rBUm9bsteSafIDIM/qe2kjHNBeADN6Eg3hdlQz
- jTAo8R5GLAZZpIkoa0ipCBn0CCjxuqxr2nuE9QuYcWgHRzsYZLK21TujEh0wPEM/2LbEw/NNDAO
- jIKFTGjuEPnY2BQekPIWuu3V3Br2aVtaWDw/TX5IZhYOKSoBE5t6AGrg/hWj1pqDdgdtBeVQza9
- x94r7UPZ/pju/1BYsxG8XAQI2OClS6jNOaZQ4GrlhCSD+aT6NykJqFDTiI0=
-X-Received: by 2002:a5d:6488:0:b0:386:375a:8322 with SMTP id
- ffacd0b85a97d-38dc8dc0ab9mr12451376f8f.13.1739199187449; 
- Mon, 10 Feb 2025 06:53:07 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dd9552667sm4908649f8f.45.2025.02.10.06.53.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Feb 2025 06:53:06 -0800 (PST)
-Message-ID: <4f8886e4-1c00-4fa6-99aa-d5952842042c@linaro.org>
-Date: Mon, 10 Feb 2025 15:53:05 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQiTcuHC;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvmarm+bounces-19065-alex.bennee=linaro.org@lists.linux.dev";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 8F4AF16286D
+	for <alex.bennee@linaro.org>; Mon, 10 Feb 2025 15:20:44 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id DE1782528E1;
+	Mon, 10 Feb 2025 15:20:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="EQiTcuHC"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3414935972
+	for <kvmarm@lists.linux.dev>; Mon, 10 Feb 2025 15:20:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1739200842; cv=none; b=j5xU6bLgpH2cvz+tN1ee3iddx01rzwuZPxaGfZ4Ny/ry1/BMa7akCG+hbwj90itxIIV0XhwOQx/gG/dQ1tcs71SKoVq9lesJxnavhjYXYOD3LeToPyNg35xjFgU9jtchmd6crOwX44zZb0KiZp90EkB4sMknIdaHnxIY6JqLM1g=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1739200842; c=relaxed/simple;
+	bh=L5OT+59C3iT4MQ/lC2n03E8ed7rGkqDhCwJBIDscTR8=;
+	h=From:To:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=bn5VFj8ORB4BfnVY5vUceDEwLOQ75X87efpoSttI/Xef3k6UVHgQD5qOiuPDUjQCLeSRz6ED+E4aDfPoOOKph+3KB/1a0YG5YkQ+fzsMlhs1GeUIz7ZEwpNviimTk1Ahx6VNhcnrhJ8ewriGLL7dK0AyezoSQF3lMpHkcRaj3gE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=EQiTcuHC; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739200840;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=l+1vKWq8tav0v5vOrEs4bMdzd3ftwt2N0noMcIDxK+A=;
+	b=EQiTcuHCGLK2iUoaOgNxAp6gav4BRR7x1Tlu8F1KwWKsEyttULskewPpEXhQnUlCgPMkLL
+	VZw3zmeHrzpIG964Y1k7fuZ33bXwbl3ej/x2UV3iMFcSz+nuYb67C81CI87Bh7T9HVBgPc
+	ll52WZKZCxnDyetkSIw2XJ0jewSkG1A=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-dgWwLAmSMn2f19JyAWRGdQ-1; Mon,
+ 10 Feb 2025 10:20:36 -0500
+X-MC-Unique: dgWwLAmSMn2f19JyAWRGdQ-1
+X-Mimecast-MFC-AGG-ID: dgWwLAmSMn2f19JyAWRGdQ
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BA59D19560B1;
+	Mon, 10 Feb 2025 15:20:31 +0000 (UTC)
+Received: from localhost (unknown [10.45.225.231])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F032D30001AB;
+	Mon, 10 Feb 2025 15:20:30 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Subject: Re: [PATCH 15/15] arm/cpu: Add generated files
+In-Reply-To: <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250207110248.1580465-1-cohuck@redhat.com>
+ <20250207110248.1580465-16-cohuck@redhat.com>
+ <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Mon, 10 Feb 2025 16:20:28 +0100
+Message-ID: <874j117rnn.fsf@redhat.com>
+Precedence: bulk
+X-Mailing-List: kvmarm@lists.linux.dev
+List-Id: <kvmarm.lists.linux.dev>
+List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
+List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 15/17] hw/arm: Add NPCM8XX SoC
-To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com,
- Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com,
- titusr@google.com, chli30@nuvoton.corp-partner.google.com,
- pbonzini@redhat.com, jasowang@redhat.com, alistair@alistair23.me
-References: <20250206221203.4187217-1-wuhaotsh@google.com>
- <20250206221203.4187217-16-wuhaotsh@google.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250206221203.4187217-16-wuhaotsh@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: miWOxPMgWulu
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 36tjIBxP8kkH
 
-On 6/2/25 23:12, Hao Wu wrote:
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> ---
->   configs/devices/aarch64-softmmu/default.mak |   1 +
->   hw/arm/Kconfig                              |  13 +
->   hw/arm/meson.build                          |   1 +
->   hw/arm/npcm8xx.c                            | 804 ++++++++++++++++++++
->   include/hw/arm/npcm8xx.h                    | 107 +++
->   5 files changed, 926 insertions(+)
->   create mode 100644 hw/arm/npcm8xx.c
->   create mode 100644 include/hw/arm/npcm8xx.h
+On Fri, Feb 07 2025, Richard Henderson <richard.henderson@linaro.org> wrote:
 
+> On 2/7/25 03:02, Cornelia Huck wrote:
+>> And switch to using the generated definitions.
+>> 
+>> Generated against Linux 6.14-rc1.
+>> 
+>> Signed-off-by: Cornelia Huck<cohuck@redhat.com>
+>> ---
+>>   target/arm/cpu-sysreg-properties.c | 716 ++++++++++++++++++++++++++++-
+>>   target/arm/cpu-sysregs.h           | 116 +----
+>>   target/arm/cpu-sysregs.h.inc       | 164 +++++++
+>>   3 files changed, 860 insertions(+), 136 deletions(-)
+>>   create mode 100644 target/arm/cpu-sysregs.h.inc
+>
+> Why are we committing generated files and not generating them at build-time?
 
-> diff --git a/include/hw/arm/npcm8xx.h b/include/hw/arm/npcm8xx.h
-> new file mode 100644
-> index 0000000000..2c8cfb1289
-> --- /dev/null
-> +++ b/include/hw/arm/npcm8xx.h
-> @@ -0,0 +1,107 @@
-> +/*
-> + * Nuvoton NPCM8xx SoC family.
-> + *
-> + * Copyright 2022 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms of the GNU General Public License as published by the
-> + * Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + * for more details.
-> + */
-> +#ifndef NPCM8XX_H
-> +#define NPCM8XX_H
-> +
-> +#include "hw/boards.h"
-
-Not necessary (MachineState is forward-declarated).
-
-> +#include "hw/adc/npcm7xx_adc.h"
-> +#include "hw/core/split-irq.h"
-> +#include "hw/cpu/cluster.h"
-> +#include "hw/gpio/npcm7xx_gpio.h"
-> +#include "hw/i2c/npcm7xx_smbus.h"
-> +#include "hw/intc/arm_gic_common.h"
-> +#include "hw/mem/npcm7xx_mc.h"
-> +#include "hw/misc/npcm_clk.h"
-> +#include "hw/misc/npcm_gcr.h"
-> +#include "hw/misc/npcm7xx_mft.h"
-> +#include "hw/misc/npcm7xx_pwm.h"
-> +#include "hw/misc/npcm7xx_rng.h"
-> +#include "hw/net/npcm7xx_emc.h"
-> +#include "hw/nvram/npcm7xx_otp.h"
-> +#include "hw/sd/npcm7xx_sdhci.h"
-> +#include "hw/timer/npcm7xx_timer.h"
-> +#include "hw/ssi/npcm7xx_fiu.h"
-> +#include "hw/usb/hcd-ehci.h"
-> +#include "hw/usb/hcd-ohci.h"
-> +#include "target/arm/cpu.h"
-
-
-> +/**
-> + * npcm8xx_load_kernel - Loads memory with everything needed to boot
-> + * @machine - The machine containing the SoC to be booted.
-> + * @soc - The SoC containing the CPU to be booted.
-> + *
-> + * This will set up the ARM boot info structure for the specific NPCM8xx
-> + * derivative and call arm_load_kernel() to set up loading of the kernel, etc.
-> + * into memory, if requested by the user.
-> + */
-> +void npcm8xx_load_kernel(MachineState *machine, NPCM8xxState *soc);
-> +
-> +#endif /* NPCM8XX_H */
+We'd either have to carry a copy of Linux' sysregs file, or generate a
+build dependency on Linux. I think we should handle this similar to the
+Linux headers update, where we do an explicit update and check for
+anything unexpected that might have crept in. (Same applies if we switch
+to any other external source for register definitions.)
 

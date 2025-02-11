@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp191670njb;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp191674njb;
         Tue, 11 Feb 2025 01:24:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXDry6XZdBcJke7AHoi22iJg5olmLf0idMp0pYOINUGKQUXQ0HH8PUAlj2aZ+nsj4zfWhGTAAK8SQ8YLw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGGNLMElI0h1GPXgReaiCy2uY4Hzht7TUcK+dChxlLF/l4fC6m9EmIXvw1cSgn0wFiZkT30
-X-Received: by 2002:a05:6214:2621:b0:6e1:6bdf:ed1c with SMTP id 6a1803df08f44-6e4455fdb46mr261342786d6.14.1739265877824;
-        Tue, 11 Feb 2025 01:24:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739265877; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCU96t8+0bD1V0jUvsMfk7ziN9+rnI4cXv6viHRuiZMtDEItKXmufgAL6U6mMAKUGDOX1Gcbqo/ecmbTsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgtlV2x2cXKzluHqhc2/iZmPlfQ0uT2UzaGOkruo258W17ljDB9Aan8mnvtARtauAfMBmV
+X-Received: by 2002:a05:622a:124a:b0:471:9dd6:b51a with SMTP id d75a77b69052e-471a13c6410mr42404981cf.21.1739265878551;
+        Tue, 11 Feb 2025 01:24:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739265878; cv=none;
         d=google.com; s=arc-20240605;
-        b=fuMykD+0oHRDM8/MROhIt+P9wz6PQsQfh6e0i6ggq6/vj+wsDcutuG4UjjY9AM7WIl
-         rGvSbGXnJsZhn72dohcGsVBl8ZD0cAfAUj1BQybnotZKIBHvvhRtwfvCBho5M/JxgC8V
-         8ouieDGufRc1HQqGgWEjc+B45rsRuF3Ra8UOaF4rLQpOP1eYoYTXHCjhdtpPYogupko1
-         zzMhhwgOvEWAzxnx7AJRuyQhdYW2dVVw4jLFkk+vaJVNHG26jvmkQmrZiLTwjLpSBXBO
-         B0GDxT3+A+oRqQsTU9L9VHmIQ+dnf4iBMM3PQagr2hBFT7QrIgnibOawUsrnseOiI7Jo
-         IaHw==
+        b=hXdEVZSjz5yI7djTXwTbnN6il8alDlbK8PztoIlSLcSOpubLgXzsBW9QSSdN4Q+6gZ
+         saHiExnh04/Em59sfAnFyDM/d9JUjlKc+8XTLi8C32qUzmRJ3JuRjGoQ/BLS0kI0Ldj6
+         zlJtK4qgygq8PPdA5tvnwXp/PUYFqccbycJky0zAbnYZb8xt2BSlwiGP737gJT3RHIBK
+         52FiYSb2F0l4G5XtUOaHvFW1dkfue+VWDLO10MsmzzmRXc3/UB35iZGhdxvCFNAxqQbZ
+         BMX4n4cNnwEn3tZlakJjooVBPDDfDA1ECv54ph5CgwT5Ti4nE3w4L6nxIrr930Jh0Pvg
+         GUjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
+        bh=fzoSZ7P230cNolUyWlYH+DuKgwD9D+nEBNHpVd5SQuY=;
         fh=e1SboN20/jHvoiD1YSHiGEBjk/mnJDcFYjKWtsBcI2Q=;
-        b=PmTMEfi74dyAueLBlA8mK0+soevQGCjMhmypQjHj1D7iDmd6lYCWj2OtctZ5x8e71Z
-         ueX42xJBzZpRIZBiXIb5pG+s1rZ36s1CFHtMxo3XdZmQporazAL2RvJbSErRVyZHFX3g
-         Wvo7zZwCrQTwsE/Gn3VxUwlJsMG+J2IzQbmc/WIWy+CiWyb+bwkfU4jcRnXcDn3I+MMa
-         D/HGoiFeKWR8JXkrKacqcwIocMDqVEHHNOvXQ+Xd/KxHGJGccIsZC40bg8GcMmvQKSBt
-         FrOrdwcQvoPIXWf2sXFkACUKtJW+lUEtvuu7y+NDhAoAjBJkQsRPboyoyoVlO/b18MI6
-         UAhg==;
+        b=ErDi6FW5Wg/PoOYNjpg6/d7aL1T9ob0yeh/eT24pNy0BY3yaMRJwX8hske107SQ+LZ
+         6Id0mfcPFdS9D1z4XIgmC8qSWYduFfcowUBw+UlUp05h+ou67Vz/fEFjDj7YV2wdzOUW
+         HmpsUTLDGi/Aq9MLBZ8LXG1THO1e0s6nXfMdWp1f+MeQ2HilsioJzlR1ddPuVQ817+j1
+         zYdPoIkpQjt6V2605NGKgrByqZ6YbJKPu52z53ZrsgnDYYDLbcjtiWW9T/zkBolUeCjQ
+         T8VDek90ZQmhgFWRkWL4zbpCUMOjziF9FUFTm/Hw+Rq9HIfOX1djfuPIgmRxmUIdqtO0
+         j8KA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NOEtnwzf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WnLkHub3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e44bad6e67si84228196d6.65.2025.02.11.01.24.37
+        by mx.google.com with ESMTPS id d75a77b69052e-471821960afsi58855161cf.428.2025.02.11.01.24.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2025 01:24:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Feb 2025 01:24:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NOEtnwzf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WnLkHub3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1thmUk-0002D4-3k; Tue, 11 Feb 2025 04:23:57 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1thmV3-0002rR-Jg; Tue, 11 Feb 2025 04:24:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUZ-00023C-AB
- for qemu-devel@nongnu.org; Tue, 11 Feb 2025 04:23:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUx-0002a6-QJ
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:24:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUX-0002y5-1U
- for qemu-devel@nongnu.org; Tue, 11 Feb 2025 04:23:43 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUv-000364-5b
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:24:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739265820;
+ s=mimecast20190719; t=1739265843;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
- b=NOEtnwzfVZQLExDmw93wu0aSXflRGtaO8ai6P+S8ODnA3BzZTsnPbdI5vTZRghoV+8RUqa
- L6ARPq68Q6BE8alX4ORblgcQeJ0E9y2of/hLuQJPG+FVXHDcbHtfMcJNIxMJl4W68oksiv
- qrqDxovfq3u40vtvy+vTWJmMqUVPv34=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=fzoSZ7P230cNolUyWlYH+DuKgwD9D+nEBNHpVd5SQuY=;
+ b=WnLkHub3dpbT9jxwCEkLKkC8vnu/M7ZzWg5GpUQNusLBno3KUADyX6TR+goSRMPsqBjpBN
+ OB0XBI4SVEqnCoZ5BJuolpe9qN6kcXm38cLGz968QXyJM6mDn+t/inU05W4T9CYsPc7Ws3
+ F/qsrBFmarsRogi6sFEpGJ96Vv5Ub0M=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-563-LDOo18xPMBW2TeM8dJWlkA-1; Tue,
- 11 Feb 2025 04:23:37 -0500
-X-MC-Unique: LDOo18xPMBW2TeM8dJWlkA-1
-X-Mimecast-MFC-AGG-ID: LDOo18xPMBW2TeM8dJWlkA
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-350-16pEWMTVOWeygcaTtuFLSQ-1; Tue,
+ 11 Feb 2025 04:24:01 -0500
+X-MC-Unique: 16pEWMTVOWeygcaTtuFLSQ-1
+X-Mimecast-MFC-AGG-ID: 16pEWMTVOWeygcaTtuFLSQ
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D3C3A1956094; Tue, 11 Feb 2025 09:23:35 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6CB8B1800268; Tue, 11 Feb 2025 09:24:00 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.57])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4825919560A3; Tue, 11 Feb 2025 09:23:35 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CFC051800358; Tue, 11 Feb 2025 09:23:59 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id B7D801800390; Tue, 11 Feb 2025 10:23:24 +0100 (CET)
+ id E0A7F1800622; Tue, 11 Feb 2025 10:23:25 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
@@ -94,153 +94,178 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ard Biesheuvel <ardb@kernel.org>
-Subject: [PATCH v3 04/23] hw/uefi: add var-service-guid.c
-Date: Tue, 11 Feb 2025 10:23:02 +0100
-Message-ID: <20250211092324.965440-5-kraxel@redhat.com>
+Subject: [PATCH v3 20/23] hw/uefi: add uefi-vars-isa device
+Date: Tue, 11 Feb 2025 10:23:18 +0100
+Message-ID: <20250211092324.965440-21-kraxel@redhat.com>
 In-Reply-To: <20250211092324.965440-1-kraxel@redhat.com>
 References: <20250211092324.965440-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.388,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lxxaNceVbYKO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VZav6Y4IMsXw
 
-Add variables for a bunch of UEFI GUIDs we will need.
+This adds isa bindings for the variable service.
+
+Usage: qemu-system-x86_64 -device uefi-vars-isa,jsonfile=/path/to/uefivars.json
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-guid.c | 99 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 99 insertions(+)
- create mode 100644 hw/uefi/var-service-guid.c
+ hw/uefi/var-service-isa.c | 90 +++++++++++++++++++++++++++++++++++++++
+ hw/uefi/Kconfig           |  6 +++
+ hw/uefi/meson.build       |  5 +++
+ 3 files changed, 101 insertions(+)
+ create mode 100644 hw/uefi/var-service-isa.c
 
-diff --git a/hw/uefi/var-service-guid.c b/hw/uefi/var-service-guid.c
+diff --git a/hw/uefi/var-service-isa.c b/hw/uefi/var-service-isa.c
 new file mode 100644
-index 000000000000..eba3655c8d30
+index 000000000000..8247b9ae054a
 --- /dev/null
-+++ b/hw/uefi/var-service-guid.c
-@@ -0,0 +1,99 @@
++++ b/hw/uefi/var-service-isa.c
+@@ -0,0 +1,90 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - GUIDs
++ * uefi vars device - ISA variant for x64.
 + */
-+
 +#include "qemu/osdep.h"
-+#include "system/dma.h"
++#include "migration/vmstate.h"
++
++#include "hw/isa/isa.h"
++#include "hw/qdev-properties.h"
 +
 +#include "hw/uefi/var-service.h"
++#include "hw/uefi/var-service-api.h"
 +
-+/* variable namespaces */
++OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_isa_state, UEFI_VARS_ISA)
 +
-+const QemuUUID EfiGlobalVariable = {
-+    .data = UUID_LE(0x8be4df61, 0x93ca, 0x11d2, 0xaa, 0x0d,
-+                    0x00, 0xe0, 0x98, 0x03, 0x2b, 0x8c)
++struct uefi_vars_isa_state {
++    ISADevice parent_obj;
++    struct uefi_vars_state state;
 +};
 +
-+const QemuUUID EfiImageSecurityDatabase = {
-+    .data = UUID_LE(0xd719b2cb, 0x3d3a, 0x4596, 0xa3, 0xbc,
-+                    0xda, 0xd0, 0x0e, 0x67, 0x65, 0x6f)
++static const VMStateDescription vmstate_uefi_vars_isa = {
++    .name = TYPE_UEFI_VARS_ISA,
++    .fields = (VMStateField[]) {
++        VMSTATE_STRUCT(state, uefi_vars_isa_state, 0,
++                       vmstate_uefi_vars, uefi_vars_state),
++        VMSTATE_END_OF_LIST()
++    }
 +};
 +
-+const QemuUUID EfiCustomModeEnable = {
-+    .data = UUID_LE(0xc076ec0c, 0x7028, 0x4399, 0xa0, 0x72,
-+                    0x71, 0xee, 0x5c, 0x44, 0x8b, 0x9f)
++static const Property uefi_vars_isa_properties[] = {
++    DEFINE_PROP_SIZE("size", uefi_vars_isa_state, state.max_storage,
++                     256 * 1024),
++    DEFINE_PROP_STRING("jsonfile", uefi_vars_isa_state, state.jsonfile),
++    DEFINE_PROP_BOOL("force-secure-boot", uefi_vars_isa_state,
++                     state.force_secure_boot, false),
++    DEFINE_PROP_BOOL("disable-custom-mode", uefi_vars_isa_state,
++                     state.disable_custom_mode, false),
 +};
 +
-+const QemuUUID EfiSecureBootEnableDisable = {
-+    .data = UUID_LE(0xf0a30bc7, 0xaf08, 0x4556, 0x99, 0xc4,
-+                    0x0, 0x10, 0x9, 0xc9, 0x3a, 0x44)
++static void uefi_vars_isa_init(Object *obj)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(obj);
++
++    uefi_vars_init(obj, &uv->state);
++}
++
++static void uefi_vars_isa_reset(DeviceState *dev)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++
++    uefi_vars_hard_reset(&uv->state);
++}
++
++static void uefi_vars_isa_realize(DeviceState *dev, Error **errp)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++    ISADevice *isa = ISA_DEVICE(dev);
++
++    isa_register_ioport(isa, &uv->state.mr, UEFI_VARS_IO_BASE);
++    uefi_vars_realize(&uv->state, errp);
++}
++
++static void uefi_vars_isa_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = uefi_vars_isa_realize;
++    dc->vmsd = &vmstate_uefi_vars_isa;
++    device_class_set_legacy_reset(dc, uefi_vars_isa_reset);
++    device_class_set_props(dc, uefi_vars_isa_properties);
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo uefi_vars_isa_info = {
++    .name          = TYPE_UEFI_VARS_ISA,
++    .parent        = TYPE_ISA_DEVICE,
++    .instance_size = sizeof(uefi_vars_isa_state),
++    .instance_init = uefi_vars_isa_init,
++    .class_init    = uefi_vars_isa_class_init,
 +};
++module_obj(TYPE_UEFI_VARS_ISA);
++module_dep("hw-uefi-vars");
 +
-+/* signatures */
++static void uefi_vars_isa_register_types(void)
++{
++    type_register_static(&uefi_vars_isa_info);
++}
 +
-+const QemuUUID EfiCertSha256Guid = {
-+    .data = UUID_LE(0xc1c41626, 0x504c, 0x4092, 0xac, 0xa9,
-+                    0x41, 0xf9, 0x36, 0x93, 0x43, 0x28)
-+};
++type_init(uefi_vars_isa_register_types)
+diff --git a/hw/uefi/Kconfig b/hw/uefi/Kconfig
+index ca6c2bc46a96..feb9f6de5e30 100644
+--- a/hw/uefi/Kconfig
++++ b/hw/uefi/Kconfig
+@@ -1,3 +1,9 @@
+ config UEFI_VARS
+ 	bool
+         default y if X86_64 || AARCH64
 +
-+const QemuUUID EfiCertSha384Guid = {
-+    .data = UUID_LE(0xff3e5307, 0x9fd0, 0x48c9, 0x85, 0xf1,
-+                    0x8a, 0xd5, 0x6c, 0x70, 0x1e, 0x1)
-+};
++config UEFI_VARS_ISA
++	bool
++        default y
++        depends on UEFI_VARS
++        depends on ISA_BUS
+diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
+index cf2d26e9bf9a..0f191c436bcf 100644
+--- a/hw/uefi/meson.build
++++ b/hw/uefi/meson.build
+@@ -14,6 +14,11 @@ if (config_all_devices.has_key('CONFIG_UEFI_VARS'))
+   uefi_vars_ss.add(files('var-service-siglist.c'))
+ endif
+ 
++uefi_vars_isa_ss = ss.source_set()
++uefi_vars_isa_ss.add(when: 'CONFIG_UEFI_VARS_ISA',
++                     if_true: files('var-service-isa.c'))
 +
-+const QemuUUID EfiCertSha512Guid = {
-+    .data = UUID_LE(0x93e0fae, 0xa6c4, 0x4f50, 0x9f, 0x1b,
-+                    0xd4, 0x1e, 0x2b, 0x89, 0xc1, 0x9a)
-+};
-+
-+const QemuUUID EfiCertRsa2048Guid = {
-+    .data = UUID_LE(0x3c5766e8, 0x269c, 0x4e34, 0xaa, 0x14,
-+                    0xed, 0x77, 0x6e, 0x85, 0xb3, 0xb6)
-+};
-+
-+const QemuUUID EfiCertX509Guid = {
-+    .data = UUID_LE(0xa5c059a1, 0x94e4, 0x4aa7, 0x87, 0xb5,
-+                    0xab, 0x15, 0x5c, 0x2b, 0xf0, 0x72)
-+};
-+
-+const QemuUUID EfiCertTypePkcs7Guid = {
-+    .data = UUID_LE(0x4aafd29d, 0x68df, 0x49ee, 0x8a, 0xa9,
-+                    0x34, 0x7d, 0x37, 0x56, 0x65, 0xa7)
-+};
-+
-+/*
-+ * mm_header.guid values that the guest DXE/BDS phases use for
-+ * sending requests to management mode
-+ */
-+
-+const QemuUUID EfiSmmVariableProtocolGuid = {
-+    .data = UUID_LE(0xed32d533, 0x99e6, 0x4209, 0x9c, 0xc0,
-+                    0x2d, 0x72, 0xcd, 0xd9, 0x98, 0xa7)
-+};
-+
-+const QemuUUID VarCheckPolicyLibMmiHandlerGuid = {
-+    .data = UUID_LE(0xda1b0d11, 0xd1a7, 0x46c4, 0x9d, 0xc9,
-+                    0xf3, 0x71, 0x48, 0x75, 0xc6, 0xeb)
-+};
-+
-+/*
-+ * mm_header.guid values that the guest DXE/BDS phases use for
-+ * reporting event groups being signaled to management mode
-+ */
-+
-+const QemuUUID EfiEndOfDxeEventGroupGuid = {
-+    .data = UUID_LE(0x02ce967a, 0xdd7e, 0x4FFc, 0x9e, 0xe7,
-+                    0x81, 0x0c, 0xF0, 0x47, 0x08, 0x80)
-+};
-+
-+const QemuUUID EfiEventReadyToBootGuid = {
-+    .data = UUID_LE(0x7ce88Fb3, 0x4bd7, 0x4679, 0x87, 0xa8,
-+                    0xa8, 0xd8, 0xde, 0xe5, 0x0d, 0x2b)
-+};
-+
-+const QemuUUID EfiEventExitBootServicesGuid = {
-+    .data = UUID_LE(0x27abF055, 0xb1b8, 0x4c26, 0x80, 0x48,
-+                    0x74, 0x8F, 0x37, 0xba, 0xa2, 0xdF)
-+};
+ modules += { 'hw-uefi' : {
+     'vars'     : uefi_vars_ss,
++    'vars-isa' : uefi_vars_isa_ss,
+ }}
 -- 
 2.48.1
 

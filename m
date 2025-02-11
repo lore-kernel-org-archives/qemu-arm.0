@@ -1,131 +1,102 @@
-Received: by 2002:a17:505:5382:b0:1be9:327d:8ee3 with SMTP id ma2csp2262505njb;
-        Mon, 10 Feb 2025 14:49:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUSnFiQpigC/KBikGgb8r8QaEL0e3yoK4ztT8X/cGH2hgltjG5GhJlmFyyZ34vl+gr3wtki8cq411FWzQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHB0N5uDfE65HJJGi2HzcnKhnhlI483rc4ijVXIyd58MAW3p3GkXAyI3TL4yOnkcHkj84K9
-X-Received: by 2002:a05:6214:1d24:b0:6d8:aeda:dd93 with SMTP id 6a1803df08f44-6e4456ffe18mr221010976d6.39.1739227741596;
-        Mon, 10 Feb 2025 14:49:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739227741; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp165940njb;
+        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWJxx/7L9ojkVVx9oO2eh0t3CqGXq9rRIPEnXWyHpvn6GmHhoNuNR6eoPitIB6/7LdI7w2xlI7YiSYgYA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGVaNodzWAHlHaV/C1DgwMT7i1jO14rUdjJqfvf3SdjU/herz5sHNH0N8/xgwxWokarCvFp
+X-Received: by 2002:a05:620a:454c:b0:7b6:d0be:ca31 with SMTP id af79cd13be357-7c0690df2admr359844485a.25.1739261696759;
+        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739261696; cv=none;
         d=google.com; s=arc-20240605;
-        b=Z+sV50n6Com2LR72CxZOYbrI2Zjlqbv0F8RTfp7Ajeh3iw8UEMeYKw+x9oE3v0JywO
-         Ix3K3mmHH5BE/5GebkllK90yfhyE3OGNpN8DgnkXmdfxhUQyF/O+LLPxbVz3ixJqWYHr
-         hDLpcTWL7E1KfBK2ms7jnCCBOCZeVOriFFmsrG0UDC9xnXHtAR+xDXsY6/w80KRF7UpY
-         Z8vviSMQQ5gROD/1tahsz4NYY9RjT+vHO2T9AUt4bvgAYrTQO8/+X1vC6geHfhgJOPWd
-         UgiKmp27eeBtDAKZ2wRKSvbCx+vcKs33D3VsKW6TKcUBroHslxiKJZU8qynEDJiI6Vsi
-         LwUw==
+        b=kqB+W+In2lvsnQRg1edttdwjDUlQyfNBp62IUbybd/lmE8U9Z7ax5O34XlrsmknBg2
+         zV/VXCYSJNHCFEWSb6mZmZvNcZtLthy93Iw5qxxkBLGWdaujppkmca9veMGGRhyl1A1y
+         /IIzSS/gGTmKTvAm/JZZEG35O97J9rjQnhHNWwi/javGmabxUsmOF5AnS7nUQBOdcKdG
+         Fzw0bq09+itEfcdQLGs06TaUy7RWNtPgxPxnk18YpAeued3yWdmMcyNqgj+biZLfUQOr
+         d3OXj+wsIjRgaRNcARAFwqQ2EhpLzAYjHW5pxidIs6u3OO2PfETDaLVl80LQAqJOmEzA
+         sQKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=cP5LifdYyCcwXnUpjlTi7Q1GyBwG1MhbcNFx3wTGDyA=;
-        fh=bBHNAe3vxxT3+WRQiXUpPj+SEhEkErLNABgICusi1YY=;
-        b=FZRO7N4g/74hdEkHHeoYCvIOL8WfufJ/hbbLAHgNy7Tk2HMZKjURf+xCN+8eU+Vyfu
-         8Y/I0G3gJXji0ImRgKFUGESqmZ9w4iRfZRQSZUSW0kXH8ZOuKkAw+DH3umCYLjloWiKZ
-         yL+cwu52/fYbFPIrtm1r9Ite7HWgo+Q0ipNWjiG5UHST8FOKS3XHkMOsnWR3VbFp/tjA
-         IwyXXCA/qpc9yr/CKtBxTKsoqhtgKyzY8dEK1HoImW+/7m0X1W8IC8GISJOO86yTZhKK
-         AxvsQJThTYlcOVr6hZKRLGRraDmMwnKBt8bkWCtZwX2/5zE45OYyIEvcmI63yiRc4euf
-         et1Q==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=hjQkD7h0s+lM7NyfWTEij0eXR3bDJ7v0mqrhD82z0qw=;
+        fh=4OS7Up5m3kkoBmi0D+jctWV+RykZmvyXictbTNjproM=;
+        b=kOTlvkYazYZNlSwmkCUKCBEgtstKGiIv0jDzNV21i08hpr1mWH7Saop3hI9jlvP9Ck
+         XCXT/xE4PxUKYZDUATzUkrz+WjfjoS49vKJSztZVwWvH1KOTYHPqzy4vSVedrc3t0Qdi
+         23kOFPos+Tj3fSu96+FWUuVHgwfvqQdnxume2WlUbqr+KNKvN+Lzy/zqfiyutw7A/Aoh
+         QDglJZbzBdgrsx2XJnxtUxxdQKBLUE6lLvTNo8+2KoIw36hmS0UndP4hvH5iQDrlWJCC
+         ZK709JJwfrtbXWgM4WrD9ojUp/DDcW6ztxiPavb1r2GOua5/lWuOKJzE1Do9gtizr73g
+         dMGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=edJtWYVn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e43bb082c7si100891046d6.433.2025.02.10.14.49.01
+        by mx.google.com with ESMTPS id d75a77b69052e-471824eb380si61510991cf.485.2025.02.11.00.14.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Feb 2025 14:49:01 -0800 (PST)
+        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=edJtWYVn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thcZt-0008T3-7Q; Mon, 10 Feb 2025 17:48:35 -0500
+	id 1thlPX-0000MS-4c; Tue, 11 Feb 2025 03:14:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1thcZq-0008SS-3I; Mon, 10 Feb 2025 17:48:30 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1thcZo-0008K0-Aw; Mon, 10 Feb 2025 17:48:29 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5de7519e5a7so2177356a12.2; 
- Mon, 10 Feb 2025 14:48:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1739227706; x=1739832506; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cP5LifdYyCcwXnUpjlTi7Q1GyBwG1MhbcNFx3wTGDyA=;
- b=edJtWYVnVwZUxkcGfeiktmbk7wVnIRT0mcfdGfYlmcCum2mH2elqBGgBPH60+M0tTD
- Evu3uHLgsDmGS7oeGua58F+7RUM2rbRYHAvu3sBroMLmOfV1Ixp+d0CwZDkPkZqzqv/o
- cTca6bWkzXKcguOXM8s8s20GxQLzqiaq13Alz9VZx/Buru2pr0imAj7uYqKVAaLls8zs
- brSnILnfVo7AFFwo/93TWkt3811S0SjwI6NDZxNrn/Sj/hGB6pmuxAkADDuk4HZGPV7o
- PE10VzLujg0RYuAFQ1gvIaNLsG9biDVpspR6Gd6idEHnisn/H0xe8kbb8WASAxhjJzho
- r3wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739227706; x=1739832506;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cP5LifdYyCcwXnUpjlTi7Q1GyBwG1MhbcNFx3wTGDyA=;
- b=vYYxNbgOPT0xq/8ZGXzDnzrR2nuuDkeOoqeWdhbmKn5pKkrOwyfaSNLZl3m15jHgau
- QhgvyY9TRAt9gU41jX5iJnYdQHM9D7w6U0cODXHsDA09elzitgNJM7fmHl8p5oNZon1o
- hIe1m30jhpf2QjGurl9g9R7AA4F/jMKOTh3ZsDaRjWaHmjRnzHRWhnb1yB7XKeOjf3j/
- X7DaND8uH8+jsEDXCMbm9Nl1dS2rPO5icLLlkNxh8M/LvilKDzqCzW1snZkYLpfGIFFj
- /HjsjrnyrOLCn1BfIRUfWc8WbYdRbyWG+5O/DUI0nONS16ZmykGLRplskZEJLSmvGH9t
- aoPQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX3DCf6i7ehVQ8Dm/JenHZS98nDU/6QL45Kx2bN3MFx8xzQa6HyiModCcA4od4gm30D4xueVjhImQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywwy15bhTLiW3Q+Ti6eQhoKx0IYa9pIF7lOWapjrKJq+hWXAwf7
- 5OfnYt22q0rDJDG+HmLbgKmzQVP7c69wyAxVhsiTEyi8hEgt6/0C
-X-Gm-Gg: ASbGncsx4U86nJweHEfraywbleC+uq/MHmMgxCeivf0OytI32zp4WAk4mtgsnyPAZrW
- yJd6uRKY1qp1yUSioL6i7qh1pkCEt3n/8B0d95B+/AcORkKJPomlbce2Ty8IhtWI/Lra9V7IiYN
- tmKLbOiPt1zN4LQBvZu9xyBZE8KrabxQw2vxOJzsMKNLLEQK/LMq8Y3pE6r9DuVmJb/qnzCHnOk
- rbqAG8X2lLlbx/DUlHJPA1FcGfBYKei2tYp1WtcrDdIZZrCFegKFnHKkyrpp9HPBi0Ow2b8myeH
- zvWk8VwUvtb2QCjOag+TdJjYORQGt/Vel81zWaV2pdUSg9TFjltM8LTZ4mtrI7aN
-X-Received: by 2002:a05:6402:3907:b0:5d0:b925:a8a with SMTP id
- 4fb4d7f45d1cf-5de45019b56mr15890173a12.16.1739227705723; 
- Mon, 10 Feb 2025 14:48:25 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-078-054-086-138.78.54.pool.telefonica.de.
- [78.54.86.138]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5de44e4bc17sm7427469a12.70.2025.02.10.14.48.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Feb 2025 14:48:25 -0800 (PST)
-Date: Mon, 10 Feb 2025 22:48:24 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
-In-Reply-To: <a8855d03-d207-4a0d-a16f-24e4436a3b66@linaro.org>
-References: <20250204092112.26957-1-shentey@gmail.com>
- <20250204092112.26957-19-shentey@gmail.com>
- <CAFEAcA_gxGWivT7byZh9gYc2QHfsTqbJ8vtxPDToOxLMdMvwQg@mail.gmail.com>
- <F8650CD9-AA03-4462-A74E-7A068820F1A2@gmail.com>
- <a8855d03-d207-4a0d-a16f-24e4436a3b66@linaro.org>
-Message-ID: <6E5A0BEB-F0AC-4791-8CB6-B9AF74CBF307@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1thlPU-0000Ly-Tg; Tue, 11 Feb 2025 03:14:24 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1thlPR-00040G-MF; Tue, 11 Feb 2025 03:14:24 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YsZ1y4mJCz6K9BY;
+ Tue, 11 Feb 2025 16:12:54 +0800 (CST)
+Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
+ by mail.maildlp.com (Postfix) with ESMTPS id E66A11400CB;
+ Tue, 11 Feb 2025 16:14:06 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 11 Feb 2025 09:14:06 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Tue, 11 Feb 2025 09:14:06 +0100
+To: "Matthew R. Ochs" <mochs@nvidia.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ankita@nvidia.com" <ankita@nvidia.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, "gshan@redhat.com"
+ <gshan@redhat.com>
+Subject: RE: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
+Thread-Topic: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
+Thread-Index: AQHbeaAcYLReEf7WUEKnd1RoayHpjbNBxTUQ
+Date: Tue, 11 Feb 2025 08:14:06 +0000
+Message-ID: <6d12b4beb35a4afbb7e06bb3bde1fbb6@huawei.com>
+References: <20250207203722.304621-1-mochs@nvidia.com>
+In-Reply-To: <20250207203722.304621-1-mochs@nvidia.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+MIME-Version: 1.0
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,48 +110,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KgoFQAtMOgfi
+X-TUID: /m/PfEav8qqD
 
 
 
-Am 10=2E Februar 2025 14:26:00 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg>:
->On 6/2/25 22:58, Bernhard Beschow wrote:
->>=20
->>=20
->> Am 6=2E Februar 2025 17:32:31 UTC schrieb Peter Maydell <peter=2Emaydel=
-l@linaro=2Eorg>:
->>> On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wr=
-ote:
->>>>=20
->>>> The implementation just allows Linux to determine date and time=2E
->>>>=20
->>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>>> ---
->>>>   MAINTAINERS         |   1 +
->>>>   hw/rtc/rs5c372=2Ec    | 227 +++++++++++++++++++++++++++++++++++++++=
-+++++
->>>>   hw/rtc/Kconfig      |   5 +
->>>>   hw/rtc/meson=2Ebuild  |   1 +
->>>>   hw/rtc/trace-events |   4 +
->>>>   5 files changed, 238 insertions(+)
->>>>   create mode 100644 hw/rtc/rs5c372=2Ec
->>>=20
->>> Should there be a patch after this one that adds this device
->>> to your board ?
->>=20
->> As per Kconfig the board selects I2C_DEVICES and this device is "defaul=
-t y if I2C_DEVICES"=2E I've deliberately not hardcoded this device to the b=
-oard to make it emulate a plain i=2EMX 8M Plus SoC (see also board document=
-ation)=2E
->
->Then maybe add a test to be sure it is not bitroting?
+> -----Original Message-----
+> From: Matthew R. Ochs <mochs@nvidia.com>
+> Sent: Friday, February 7, 2025 8:37 PM
+> To: qemu-devel@nongnu.org; Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; nathanc@nvidia.com
+> Cc: qemu-arm@nongnu.org; peter.maydell@linaro.org;
+> ddutile@redhat.com; eric.auger@redhat.com; nicolinc@nvidia.com;
+> ankita@nvidia.com; philmd@linaro.org; gshan@redhat.com
+> Subject: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
+>=20
+> The MMIO region size required to support virtualized environments with
+> large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
+> For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed
+> through
+> requires more MMIO memory than the amount provided by
+> VIRT_HIGH_PCIE_MMIO
+> (currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
+> new parameter, highmem-mmio-size, that specifies the MMIO size required
+> to support the VM configuration.
+>=20
+> Example usage with 1TB MMIO region size:
+> 	-machine virt,gic-version=3D3,highmem-mmio-size=3D1T
+>=20
+> Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> ---
+> v3: - Updated highmem-mmio-size description
+> v2: - Add unit suffix to example in commit message
+>     - Use existing "high memory region" terminology
+>     - Resolve minor braces nit
+>=20
+>  docs/system/arm/virt.rst |  4 ++++
+>  hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 42 insertions(+)
+>=20
+> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+> index e67e7f0f7c50..20b14c22b659 100644
+> --- a/docs/system/arm/virt.rst
+> +++ b/docs/system/arm/virt.rst
+> @@ -138,6 +138,10 @@ highmem-mmio
+>    Set ``on``/``off`` to enable/disable the high memory region for PCI MM=
+IO.
+>    The default is ``on``.
+>=20
+> +highmem-mmio-size
+> +  Set the high memory region size for PCI MMIO. Must be a power-of-2 and
+> +  greater than or equal to the default size.
 
-Good idea=2E I haven't written a test in QEMU yet but I could certainly dr=
-aw some inspiration from ds1338-test=2Ec=2E This may take an iteration long=
-er but won't be forgotten=2E
+Nit: May be good to specify the default size.
 
-Best regards,
-Bernhard
+> +
+>  gic-version
+>    Specify the version of the Generic Interrupt Controller (GIC) to provi=
+de.
+>    Valid values are:
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 49eb0355ef0c..d8d62df43f04 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2773,6 +2773,36 @@ static void virt_set_highmem_mmio(Object *obj,
+> bool value, Error **errp)
+>      vms->highmem_mmio =3D value;
+>  }
+>=20
+> +static void virt_get_highmem_mmio_size(Object *obj, Visitor *v, const
+> char *name,
+> +                          void *opaque, Error **errp)
+> +{
+> +    uint64_t size =3D extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
+> +
+> +    visit_type_size(v, name, &size, errp);
+> +}
+> +
+> +static void virt_set_highmem_mmio_size(Object *obj, Visitor *v, const ch=
+ar
+> *name,
+> +                          void *opaque, Error **errp)
+> +{
+> +    uint64_t size;
+> +
+> +    if (!visit_type_size(v, name, &size, errp)) {
+> +        return;
+> +    }
+> +
+> +    if (!is_power_of_2(size)) {
+> +        error_setg(errp, "highmem_mmio_size is not a power-of-2");
+> +        return;
+> +    }
+> +
+> +    if (size < extended_memmap[VIRT_HIGH_PCIE_MMIO].size) {
+> +        error_setg(errp, "highmem_mmio_size is less than the default (%l=
+u)",
+> +                   extended_memmap[VIRT_HIGH_PCIE_MMIO].size);
+> +        return;
+> +    }
+> +
+> +    extended_memmap[VIRT_HIGH_PCIE_MMIO].size =3D size;
+> +}
+>=20
+>  static bool virt_get_its(Object *obj, Error **errp)
+>  {
+> @@ -3446,6 +3476,14 @@ static void virt_machine_class_init(ObjectClass
+> *oc, void *data)
+>                                            "Set on/off to enable/disable =
+high "
+>                                            "memory region for PCI MMIO");
+>=20
+> +    object_class_property_add(oc, "highmem-mmio-size", "size",
+> +                                   virt_get_highmem_mmio_size,
+> +                                   virt_set_highmem_mmio_size,
+> +                                   NULL, NULL);
+> +    object_class_property_set_description(oc, "highmem-mmio-size",
+> +                                          "Set the high memory region si=
+ze "
+> +                                          "for PCI MMIO");
+> +
+
+Assuming the migration compatibility scenario discussed in v1 is not a prob=
+lem
+and is expected to be handled by user/libvirt,
+
+Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+
+Thanks,
+Shameer

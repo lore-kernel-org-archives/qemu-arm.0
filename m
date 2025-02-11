@@ -1,103 +1,117 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp165940njb;
-        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJxx/7L9ojkVVx9oO2eh0t3CqGXq9rRIPEnXWyHpvn6GmHhoNuNR6eoPitIB6/7LdI7w2xlI7YiSYgYA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVaNodzWAHlHaV/C1DgwMT7i1jO14rUdjJqfvf3SdjU/herz5sHNH0N8/xgwxWokarCvFp
-X-Received: by 2002:a05:620a:454c:b0:7b6:d0be:ca31 with SMTP id af79cd13be357-7c0690df2admr359844485a.25.1739261696759;
-        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739261696; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp191436njb;
+        Tue, 11 Feb 2025 01:24:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWeWvz8f/EKNfxCuZ3oLXZoozTXavStstvVO9+aeRi555FkSxS/EzJj5Up2Mfg1YKiiU6KwGEqrw8IrAQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFm+pfG15lbE1Q2zNxgJHj2NkcTF9hCg63WYB64dL8BfewdeUu7Q4qTMFiIA1ve3U9oqk1Z
+X-Received: by 2002:a05:620a:462c:b0:7b6:dd9c:fac1 with SMTP id af79cd13be357-7c06882da58mr476458485a.49.1739265842049;
+        Tue, 11 Feb 2025 01:24:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739265842; cv=none;
         d=google.com; s=arc-20240605;
-        b=kqB+W+In2lvsnQRg1edttdwjDUlQyfNBp62IUbybd/lmE8U9Z7ax5O34XlrsmknBg2
-         zV/VXCYSJNHCFEWSb6mZmZvNcZtLthy93Iw5qxxkBLGWdaujppkmca9veMGGRhyl1A1y
-         /IIzSS/gGTmKTvAm/JZZEG35O97J9rjQnhHNWwi/javGmabxUsmOF5AnS7nUQBOdcKdG
-         Fzw0bq09+itEfcdQLGs06TaUy7RWNtPgxPxnk18YpAeued3yWdmMcyNqgj+biZLfUQOr
-         d3OXj+wsIjRgaRNcARAFwqQ2EhpLzAYjHW5pxidIs6u3OO2PfETDaLVl80LQAqJOmEzA
-         sQKA==
+        b=CX7v+zc1W8wnSEwSXJqNHcQ1nNED1RIVE/hEahITT1GxCN4PYy0vbo8Tf9t6y8Pc3E
+         wP7yP4sqyx/FMdlP3mTjvBWUhZm6KslkH4dbIcZsAetbCYS5J8v7PgxyWAl/1hJ7to9y
+         HglmRZ8DGdhzK6lMazrnim/hlsQbl7Z9TlkX4MCF5et+ATyuntq8eSO5ruQr62tCZDu4
+         k/v2y/IAhlnoxKlZBexE/E3b5AUBcxqIvNyBHxnwsYfozbFxDzRiW2GxH/kYKwBpnXQ8
+         xy1vTru51yWFaC8e4C+7AaNmZU7/phmNPD/JJ5v0bjC9HLGznlG0BBgS0/ZSzm1R3IZ2
+         ZIBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=hjQkD7h0s+lM7NyfWTEij0eXR3bDJ7v0mqrhD82z0qw=;
-        fh=4OS7Up5m3kkoBmi0D+jctWV+RykZmvyXictbTNjproM=;
-        b=kOTlvkYazYZNlSwmkCUKCBEgtstKGiIv0jDzNV21i08hpr1mWH7Saop3hI9jlvP9Ck
-         XCXT/xE4PxUKYZDUATzUkrz+WjfjoS49vKJSztZVwWvH1KOTYHPqzy4vSVedrc3t0Qdi
-         23kOFPos+Tj3fSu96+FWUuVHgwfvqQdnxume2WlUbqr+KNKvN+Lzy/zqfiyutw7A/Aoh
-         QDglJZbzBdgrsx2XJnxtUxxdQKBLUE6lLvTNo8+2KoIw36hmS0UndP4hvH5iQDrlWJCC
-         ZK709JJwfrtbXWgM4WrD9ojUp/DDcW6ztxiPavb1r2GOua5/lWuOKJzE1Do9gtizr73g
-         dMGg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UcwzD9Z63x96h1sI6W/9y2W4Vf+j646dhLH7hNWWdtg=;
+        fh=e1SboN20/jHvoiD1YSHiGEBjk/mnJDcFYjKWtsBcI2Q=;
+        b=ZUfEUogyo4bGWj6PcjeeYoEF5gtuf5AJ+bXThJCwbaszpPQ9mLKyV5SZ3xdhIBqAj+
+         Sg1Y+++1NbnVbKaOTOIokQ1jpuG3EoJ4X1McmmIeytuIzScU0NH+AJHV4ICZLGq7tYjP
+         5ut2L7ESqzwaYFBPnL/Jaea3mUrtAkK7cFaY9ZWqnjK6pChcko/eqiAY8hfJQ4fEIsE/
+         Omr0o688jbItgREgUlnrVRhHuv+F9NIFH9mhOt3Cn2+jB2GmpsBPPv1MLoOFIvZL8dnG
+         zVgE+IYqIblrHabiqiBkloYYq3REQrgF8LkFt9AgndOXihyjrxhUoJVCzohZbK6r2375
+         aKbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VuKFy3p4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471824eb380si61510991cf.485.2025.02.11.00.14.56
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb8ccdsi1082756885a.457.2025.02.11.01.24.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2025 00:14:56 -0800 (PST)
+        Tue, 11 Feb 2025 01:24:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VuKFy3p4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thlPX-0000MS-4c; Tue, 11 Feb 2025 03:14:27 -0500
+	id 1thmUb-000289-MF; Tue, 11 Feb 2025 04:23:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1thlPU-0000Ly-Tg; Tue, 11 Feb 2025 03:14:24 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUX-0001zp-KW
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:23:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1thlPR-00040G-MF; Tue, 11 Feb 2025 03:14:24 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YsZ1y4mJCz6K9BY;
- Tue, 11 Feb 2025 16:12:54 +0800 (CST)
-Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
- by mail.maildlp.com (Postfix) with ESMTPS id E66A11400CB;
- Tue, 11 Feb 2025 16:14:06 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 11 Feb 2025 09:14:06 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Tue, 11 Feb 2025 09:14:06 +0100
-To: "Matthew R. Ochs" <mochs@nvidia.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "ddutile@redhat.com" <ddutile@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "nicolinc@nvidia.com"
- <nicolinc@nvidia.com>, "ankita@nvidia.com" <ankita@nvidia.com>,
- "philmd@linaro.org" <philmd@linaro.org>, "gshan@redhat.com"
- <gshan@redhat.com>
-Subject: RE: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
-Thread-Topic: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
-Thread-Index: AQHbeaAcYLReEf7WUEKnd1RoayHpjbNBxTUQ
-Date: Tue, 11 Feb 2025 08:14:06 +0000
-Message-ID: <6d12b4beb35a4afbb7e06bb3bde1fbb6@huawei.com>
-References: <20250207203722.304621-1-mochs@nvidia.com>
-In-Reply-To: <20250207203722.304621-1-mochs@nvidia.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUU-0002xO-Hk
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:23:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739265817;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UcwzD9Z63x96h1sI6W/9y2W4Vf+j646dhLH7hNWWdtg=;
+ b=VuKFy3p4H6CIWlieOpOnc/vqBpIa9RxYY4RrdC6Y0x4LzClxiQYSpN7gJFPNSCm0HF0hgL
+ BbFD6dmYehmn4ROwzjV1lrHY3vb7RmFuF1KuC7PrrVW4VtE92d12c8tbxGJHHeQGr/COPy
+ 5ztk0frnIjbXaUAOoizQx1sf0N3J7mk=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-591-XLOUSeq5Mw-k2KGyvqkEVQ-1; Tue,
+ 11 Feb 2025 04:23:34 -0500
+X-MC-Unique: XLOUSeq5Mw-k2KGyvqkEVQ-1
+X-Mimecast-MFC-AGG-ID: XLOUSeq5Mw-k2KGyvqkEVQ
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E59801800876; Tue, 11 Feb 2025 09:23:32 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.57])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4DEF91800358; Tue, 11 Feb 2025 09:23:31 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 986D51800381; Tue, 11 Feb 2025 10:23:24 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
+ Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Ard Biesheuvel <ardb@kernel.org>
+Subject: [PATCH v3 02/23] hw/uefi: add include/hw/uefi/var-service-edk2.h
+Date: Tue, 11 Feb 2025 10:23:00 +0100
+Message-ID: <20250211092324.965440-3-kraxel@redhat.com>
+In-Reply-To: <20250211092324.965440-1-kraxel@redhat.com>
+References: <20250211092324.965440-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.388,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,136 +124,253 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /m/PfEav8qqD
+X-TUID: UgkYvpQt8rcV
 
+A bunch of #defines and structs copied over from edk2,
+mostly needed to decode and encode the messages in the
+communication buffer.
 
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/hw/uefi/var-service-edk2.h | 227 +++++++++++++++++++++++++++++
+ 1 file changed, 227 insertions(+)
+ create mode 100644 include/hw/uefi/var-service-edk2.h
 
-> -----Original Message-----
-> From: Matthew R. Ochs <mochs@nvidia.com>
-> Sent: Friday, February 7, 2025 8:37 PM
-> To: qemu-devel@nongnu.org; Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; nathanc@nvidia.com
-> Cc: qemu-arm@nongnu.org; peter.maydell@linaro.org;
-> ddutile@redhat.com; eric.auger@redhat.com; nicolinc@nvidia.com;
-> ankita@nvidia.com; philmd@linaro.org; gshan@redhat.com
-> Subject: [PATCH v3] hw/arm/virt: Support larger highmem MMIO regions
->=20
-> The MMIO region size required to support virtualized environments with
-> large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
-> For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed
-> through
-> requires more MMIO memory than the amount provided by
-> VIRT_HIGH_PCIE_MMIO
-> (currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
-> new parameter, highmem-mmio-size, that specifies the MMIO size required
-> to support the VM configuration.
->=20
-> Example usage with 1TB MMIO region size:
-> 	-machine virt,gic-version=3D3,highmem-mmio-size=3D1T
->=20
-> Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> ---
-> v3: - Updated highmem-mmio-size description
-> v2: - Add unit suffix to example in commit message
->     - Use existing "high memory region" terminology
->     - Resolve minor braces nit
->=20
->  docs/system/arm/virt.rst |  4 ++++
->  hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
->  2 files changed, 42 insertions(+)
->=20
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index e67e7f0f7c50..20b14c22b659 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -138,6 +138,10 @@ highmem-mmio
->    Set ``on``/``off`` to enable/disable the high memory region for PCI MM=
-IO.
->    The default is ``on``.
->=20
-> +highmem-mmio-size
-> +  Set the high memory region size for PCI MMIO. Must be a power-of-2 and
-> +  greater than or equal to the default size.
+diff --git a/include/hw/uefi/var-service-edk2.h b/include/hw/uefi/var-service-edk2.h
+new file mode 100644
+index 000000000000..c743a8df948d
+--- /dev/null
++++ b/include/hw/uefi/var-service-edk2.h
+@@ -0,0 +1,227 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * uefi-vars device - structs and defines from edk2
++ *
++ * Note: The edk2 UINTN type has been mapped to uint64_t,
++ *       so the structs are compatible with 64bit edk2 builds.
++ */
++#ifndef QEMU_UEFI_VAR_SERVICE_EDK2_H
++#define QEMU_UEFI_VAR_SERVICE_EDK2_H
++
++#include "qemu/uuid.h"
++
++#define MAX_BIT                   0x8000000000000000ULL
++#define ENCODE_ERROR(StatusCode)  (MAX_BIT | (StatusCode))
++#define EFI_SUCCESS               0
++#define EFI_INVALID_PARAMETER     ENCODE_ERROR(2)
++#define EFI_UNSUPPORTED           ENCODE_ERROR(3)
++#define EFI_BAD_BUFFER_SIZE       ENCODE_ERROR(4)
++#define EFI_BUFFER_TOO_SMALL      ENCODE_ERROR(5)
++#define EFI_WRITE_PROTECTED       ENCODE_ERROR(8)
++#define EFI_OUT_OF_RESOURCES      ENCODE_ERROR(9)
++#define EFI_NOT_FOUND             ENCODE_ERROR(14)
++#define EFI_ACCESS_DENIED         ENCODE_ERROR(15)
++#define EFI_ALREADY_STARTED       ENCODE_ERROR(20)
++#define EFI_SECURITY_VIOLATION    ENCODE_ERROR(26)
++
++#define EFI_VARIABLE_NON_VOLATILE                           0x01
++#define EFI_VARIABLE_BOOTSERVICE_ACCESS                     0x02
++#define EFI_VARIABLE_RUNTIME_ACCESS                         0x04
++#define EFI_VARIABLE_HARDWARE_ERROR_RECORD                  0x08
++#define EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS             0x10  /* deprecated */
++#define EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS  0x20
++#define EFI_VARIABLE_APPEND_WRITE                           0x40
++
++/* SecureBootEnable */
++#define SECURE_BOOT_ENABLE         1
++#define SECURE_BOOT_DISABLE        0
++
++/* SecureBoot */
++#define SECURE_BOOT_MODE_ENABLE    1
++#define SECURE_BOOT_MODE_DISABLE   0
++
++/* CustomMode */
++#define CUSTOM_SECURE_BOOT_MODE    1
++#define STANDARD_SECURE_BOOT_MODE  0
++
++/* SetupMode */
++#define SETUP_MODE                 1
++#define USER_MODE                  0
++
++typedef uint64_t efi_status;
++typedef struct mm_header mm_header;
++
++/* EFI_MM_COMMUNICATE_HEADER */
++struct mm_header {
++    QemuUUID  guid;
++    uint64_t  length;
++};
++
++/* --- EfiSmmVariableProtocol ---------------------------------------- */
++
++#define SMM_VARIABLE_FUNCTION_GET_VARIABLE            1
++#define SMM_VARIABLE_FUNCTION_GET_NEXT_VARIABLE_NAME  2
++#define SMM_VARIABLE_FUNCTION_SET_VARIABLE            3
++#define SMM_VARIABLE_FUNCTION_QUERY_VARIABLE_INFO     4
++#define SMM_VARIABLE_FUNCTION_READY_TO_BOOT           5
++#define SMM_VARIABLE_FUNCTION_EXIT_BOOT_SERVICE       6
++#define SMM_VARIABLE_FUNCTION_LOCK_VARIABLE           8
++#define SMM_VARIABLE_FUNCTION_GET_PAYLOAD_SIZE       11
++
++typedef struct mm_variable mm_variable;
++typedef struct mm_variable_access mm_variable_access;
++typedef struct mm_next_variable mm_next_variable;
++typedef struct mm_next_variable mm_lock_variable;
++typedef struct mm_variable_info mm_variable_info;
++typedef struct mm_get_payload_size mm_get_payload_size;
++
++/* SMM_VARIABLE_COMMUNICATE_HEADER */
++struct mm_variable {
++    uint64_t  function;
++    uint64_t  status;
++};
++
++/* SMM_VARIABLE_COMMUNICATE_ACCESS_VARIABLE */
++struct QEMU_PACKED mm_variable_access {
++    QemuUUID  guid;
++    uint64_t  data_size;
++    uint64_t  name_size;
++    uint32_t  attributes;
++    /* Name */
++    /* Data */
++};
++
++/* SMM_VARIABLE_COMMUNICATE_GET_NEXT_VARIABLE_NAME */
++struct mm_next_variable {
++    QemuUUID  guid;
++    uint64_t  name_size;
++    /* Name */
++};
++
++/* SMM_VARIABLE_COMMUNICATE_QUERY_VARIABLE_INFO */
++struct QEMU_PACKED mm_variable_info {
++    uint64_t max_storage_size;
++    uint64_t free_storage_size;
++    uint64_t max_variable_size;
++    uint32_t attributes;
++};
++
++/* SMM_VARIABLE_COMMUNICATE_GET_PAYLOAD_SIZE */
++struct mm_get_payload_size {
++    uint64_t  payload_size;
++};
++
++/* --- VarCheckPolicyLibMmiHandler ----------------------------------- */
++
++#define VAR_CHECK_POLICY_COMMAND_DISABLE     0x01
++#define VAR_CHECK_POLICY_COMMAND_IS_ENABLED  0x02
++#define VAR_CHECK_POLICY_COMMAND_REGISTER    0x03
++#define VAR_CHECK_POLICY_COMMAND_DUMP        0x04
++#define VAR_CHECK_POLICY_COMMAND_LOCK        0x05
++
++typedef struct mm_check_policy mm_check_policy;
++typedef struct mm_check_policy_is_enabled mm_check_policy_is_enabled;
++typedef struct mm_check_policy_dump_params mm_check_policy_dump_params;
++
++/* VAR_CHECK_POLICY_COMM_HEADER */
++struct QEMU_PACKED mm_check_policy {
++    uint32_t  signature;
++    uint32_t  revision;
++    uint32_t  command;
++    uint64_t  result;
++};
++
++/* VAR_CHECK_POLICY_COMM_IS_ENABLED_PARAMS */
++struct QEMU_PACKED mm_check_policy_is_enabled {
++    uint8_t   state;
++};
++
++/* VAR_CHECK_POLICY_COMM_DUMP_PARAMS */
++struct QEMU_PACKED mm_check_policy_dump_params {
++    uint32_t  page_requested;
++    uint32_t  total_size;
++    uint32_t  page_size;
++    uint8_t   has_more;
++};
++
++/* --- Edk2VariablePolicyProtocol ------------------------------------ */
++
++#define VARIABLE_POLICY_ENTRY_REVISION  0x00010000
++
++#define VARIABLE_POLICY_TYPE_NO_LOCK            0
++#define VARIABLE_POLICY_TYPE_LOCK_NOW           1
++#define VARIABLE_POLICY_TYPE_LOCK_ON_CREATE     2
++#define VARIABLE_POLICY_TYPE_LOCK_ON_VAR_STATE  3
++
++typedef struct variable_policy_entry variable_policy_entry;
++typedef struct variable_lock_on_var_state variable_lock_on_var_state;
++
++/* VARIABLE_POLICY_ENTRY */
++struct variable_policy_entry {
++    uint32_t      version;
++    uint16_t      size;
++    uint16_t      offset_to_name;
++    QemuUUID      namespace;
++    uint32_t      min_size;
++    uint32_t      max_size;
++    uint32_t      attributes_must_have;
++    uint32_t      attributes_cant_have;
++    uint8_t       lock_policy_type;
++    uint8_t       padding[3];
++    /* LockPolicy */
++    /* Name */
++};
++
++/* VARIABLE_LOCK_ON_VAR_STATE_POLICY */
++struct variable_lock_on_var_state {
++    QemuUUID      namespace;
++    uint8_t       value;
++    uint8_t       padding;
++    /* Name */
++};
++
++/* --- variable authentication --------------------------------------- */
++
++#define WIN_CERT_TYPE_EFI_GUID  0x0EF1
++
++typedef struct efi_time efi_time;
++typedef struct efi_siglist efi_siglist;
++typedef struct variable_auth_2 variable_auth_2;
++
++/* EFI_TIME */
++struct efi_time {
++    uint16_t  year;
++    uint8_t   month;
++    uint8_t   day;
++    uint8_t   hour;
++    uint8_t   minute;
++    uint8_t   second;
++    uint8_t   pad1;
++    uint32_t  nanosecond;
++    int16_t   timezone;
++    uint8_t   daylight;
++    uint8_t   pad2;
++};
++
++/* EFI_SIGNATURE_LIST */
++struct efi_siglist {
++    QemuUUID  guid_type;
++    uint32_t  siglist_size;
++    uint32_t  header_size;
++    uint32_t  sig_size;
++};
++
++/* EFI_VARIABLE_AUTHENTICATION_2 */
++struct variable_auth_2 {
++    struct efi_time timestamp;
++
++    /* WIN_CERTIFICATE_UEFI_GUID */
++    uint32_t  hdr_length;
++    uint16_t  hdr_revision;
++    uint16_t  hdr_cert_type;
++    QemuUUID  guid_cert_type;
++    uint8_t   cert_data[];
++};
++
++#endif /* QEMU_UEFI_VAR_SERVICE_EDK2_H */
+-- 
+2.48.1
 
-Nit: May be good to specify the default size.
-
-> +
->  gic-version
->    Specify the version of the Generic Interrupt Controller (GIC) to provi=
-de.
->    Valid values are:
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 49eb0355ef0c..d8d62df43f04 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2773,6 +2773,36 @@ static void virt_set_highmem_mmio(Object *obj,
-> bool value, Error **errp)
->      vms->highmem_mmio =3D value;
->  }
->=20
-> +static void virt_get_highmem_mmio_size(Object *obj, Visitor *v, const
-> char *name,
-> +                          void *opaque, Error **errp)
-> +{
-> +    uint64_t size =3D extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
-> +
-> +    visit_type_size(v, name, &size, errp);
-> +}
-> +
-> +static void virt_set_highmem_mmio_size(Object *obj, Visitor *v, const ch=
-ar
-> *name,
-> +                          void *opaque, Error **errp)
-> +{
-> +    uint64_t size;
-> +
-> +    if (!visit_type_size(v, name, &size, errp)) {
-> +        return;
-> +    }
-> +
-> +    if (!is_power_of_2(size)) {
-> +        error_setg(errp, "highmem_mmio_size is not a power-of-2");
-> +        return;
-> +    }
-> +
-> +    if (size < extended_memmap[VIRT_HIGH_PCIE_MMIO].size) {
-> +        error_setg(errp, "highmem_mmio_size is less than the default (%l=
-u)",
-> +                   extended_memmap[VIRT_HIGH_PCIE_MMIO].size);
-> +        return;
-> +    }
-> +
-> +    extended_memmap[VIRT_HIGH_PCIE_MMIO].size =3D size;
-> +}
->=20
->  static bool virt_get_its(Object *obj, Error **errp)
->  {
-> @@ -3446,6 +3476,14 @@ static void virt_machine_class_init(ObjectClass
-> *oc, void *data)
->                                            "Set on/off to enable/disable =
-high "
->                                            "memory region for PCI MMIO");
->=20
-> +    object_class_property_add(oc, "highmem-mmio-size", "size",
-> +                                   virt_get_highmem_mmio_size,
-> +                                   virt_set_highmem_mmio_size,
-> +                                   NULL, NULL);
-> +    object_class_property_set_description(oc, "highmem-mmio-size",
-> +                                          "Set the high memory region si=
-ze "
-> +                                          "for PCI MMIO");
-> +
-
-Assuming the migration compatibility scenario discussed in v1 is not a prob=
-lem
-and is expected to be handled by user/libvirt,
-
-Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-
-Thanks,
-Shameer

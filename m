@@ -1,249 +1,293 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp619218njb;
-        Tue, 11 Feb 2025 13:46:26 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXgAqIq/91Z53ijY1Gtbk4vKGVPKfTmnzehh/B6QNosnhkMjW8MvYu2PAVHAzMYynORuugAN/Mes/0fKg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBUj4+0e5Hui9lmV17OIHxyKSCseUX2/sTZjNDUHG/PuCupcdqwqxLNN51iTD686Bu/l3Q
-X-Received: by 2002:a05:6a00:804:b0:730:927c:d451 with SMTP id d2e1a72fcca58-7322c612734mr884810b3a.20.1739310386642;
-        Tue, 11 Feb 2025 13:46:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1739310386; cv=pass;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp665825njb;
+        Tue, 11 Feb 2025 15:40:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVDEi4aHca9/FOgso6Jpn3pcphS4X8wu+Vxazk5i4Y0g6OJgjTNvoxNnrd1EXcX12HROQAIv/QHyI538A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHhF0eZ4Y6z2G+MAbvTEUju0gJ3Da4s0N/Li09qrEXLz1VMg/yGYCLM2+dV4aoGHqvKnZd4
+X-Received: by 2002:ad4:5dc2:0:b0:6d8:b2f2:bccf with SMTP id 6a1803df08f44-6e46ed7819dmr18229746d6.1.1739317251017;
+        Tue, 11 Feb 2025 15:40:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739317251; cv=none;
         d=google.com; s=arc-20240605;
-        b=JNTP38q9MOYzYmpRIezn1l5F6FvwmY91daDmrPWXPAK1p5RvJuD3nI8yHAV57O7zpE
-         Qg+lNe3OIuDoZmIUJEFuYEzGqv3RaACtJ8ojitVjKF8Ng9ngI65N3/UUgt2hidQKfrVC
-         Q032mtubcO/6q+9Dx1mO/QKn7ONa9HSGz38xNCRyhm8Qvbk90Efhb6oMzPOXD8e7PqV1
-         ERM4chqnmuHzLmJlx4S1IBtnn3X3T5BcLQBDpm69OJq60pxc8OejoXC/W9WZWVeyZvZE
-         DIKSdaT1LhKmin2ev7UYykT9jlG95P69uU2UUAsm/7oDjVADf6BDi6JNqtOvA3TGX26H
-         qohQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=PgX+573L61jAZ+NGLaGL4AkiU3yn8kRPpAQyDAW3KPU=;
-        fh=frv7tqg4otbELdfQzJuP4z2krrM9VABWPipYDrf8lSo=;
-        b=SKyMoqMjVig4tYBdBNQxPjEdhmOwcNzjdH8wfe6B89G5urf76JCO+2dvvbwWVxhKmP
-         pU4NHAYXkh0UzVc7AMAfSZK40ACONG9y3D0qIN66o95qP7ApPOFmIAE9lq3HcYN9vMGI
-         0rodzmBvQnSQxS+z4nQTJO/PJbPSh/7ZB531SQLoLA96V91qlRkzVYCawGC+w4Q2M1d9
-         ZlmP00WSi6eSWEnpqdYGZV+Mmev85bBAiodcNSRRf0Eu3I9DQtdHCsq7n5UU03lb5KBY
-         /yKjfRCvJzqrAhbUgtHNYSkIFXFuJRI4cKbtgsnRJHG6byIEytRF7vRVvSBesHChApe4
-         aebQ==;
+        b=GiWfNVeD/FsAS3p2TeJ44ty1Z0i5soKyP8e+hvUpj2k70ncl0DhAWgI4Gr96pmz/ml
+         4nyJ9y/lFu/DaZZgz+GO5DdaIJU9d9dfQemTzNV4G5ogEI2o15Iy+8jfiKNbgRfFTM9V
+         eBM0rmPFt8kRFD5Ohw3Onqhtf/Er8DWxIOVZ8bGPHP4X0cgBKEPIRAv1wd4HZIDXgQnB
+         SAJ4hrLGd5h2aU90eVqkXr0F5BQHqnfIw+OyvnC3J62dEmN20BIfC6Kh+ZUmbcAqMBSE
+         X1H11FYI9J8G9sz1s/aEBqzctlKuARJjQYj9iVeNxpqop5m9j7XXq2BaPG+tryTBBPtv
+         yxEQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=k/5Nb9o4KF3LWCwuMPwYQTtNfalzd7ogY1Xyw/B3g2Y=;
+        fh=3uxNRzaxg45NnFqDKKEG2Q7QaG6b9mDYeNs++VEd8qs=;
+        b=MkZ1APQVgwXLnJ8di5gqD4PE2rV+/SV923Z3xnD6+Sf6T5/QJ7I8ZX1s1mLUeyxiTH
+         NPLQNxsNaoobtAlK3gWHoiZYmPAgDyPzQHwQW4uUxs2iQ2bt79uz1V+zPyq+anDO/g5d
+         60E/4lyBP6XQw33vQSZyV0ski+6mHdW5hRAj4m2SUrH2whQbxSr3SDaOySUdPO5oOPFX
+         lV+GZB3aQtk3E39Z//SHx7XOa50zr2cZ2d9h/XatZCQoZRkXxVaTuugwRPOl3FluFRUN
+         g5LcDZqF+JiaS6G0deoBtIB8qAKiOL+lAeKC4leko7GkxxBDshv22ElWyf6MBvWL3zyW
+         bX3A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JLmktekR;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-73048c290cfsi16585427b3a.287.2025.02.11.13.46.26
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TuP6BX+E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e443a2b9aasi106193396d6.143.2025.02.11.15.40.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Feb 2025 13:46:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 11 Feb 2025 15:40:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JLmktekR;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-37924-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2DB483A4B88
-	for <alex.bennee@linaro.org>; Tue, 11 Feb 2025 21:46:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4B21426772A;
-	Tue, 11 Feb 2025 21:46:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JLmktekR"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D775267721
-	for <kvm@vger.kernel.org>; Tue, 11 Feb 2025 21:46:04 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1739310367; cv=none; b=PlkGCG6j+4r/2wehudg0tKEhhAyKrIlkFi7NujP0BdvLvts2Nvb8q8xQJLq7q7b/Rt645f9CxasNVPV6eTgmUWNoCascubpcQqjNFmYKQGEuRkpsFeWAOrQtMLbgr1C2kGFiumkOQKrckfjoemzpkVPnjiMftV/wFR1A+cx/AXo=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1739310367; c=relaxed/simple;
-	bh=Cl0AvwvO8dzPV+/0fQ2F3rAgpT/jet3fZHiJhFZhN6M=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=JAbgc980tFw8whn563aG5Y27wYtaa4YKoxt3sXvGYD8G8CBSrr59NY+22h7kgTSuBjYEad1xlEg2H6pTIRSYTx++BC9WABV57d/itKyDrk18doTHggBiXVoNcopuSWrzj4xnLf6Bu+ZZrOHvIj+jY26RHR7qkFsIdi4xa+9e5z4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=JLmktekR; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739310364;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PgX+573L61jAZ+NGLaGL4AkiU3yn8kRPpAQyDAW3KPU=;
-	b=JLmktekR2XSonk4V1fddddQY08Bh4KPtBZnf4LnrGZ2mVa0q6ecSSYwl9BOJYgWHsTLnqb
-	1cEDfJtk2DU9kta33khXndWSnq3v2z35IOZxeuk4Zv5uQUv8TVRyjdSAHSo8CN+31AQ/gb
-	GWjKi21fXBYjUnNt98uhty6r7qB7Vh4=
-Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
- [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-548-z_ZA8BpPNzueeo6N_kvHUw-1; Tue, 11 Feb 2025 16:46:02 -0500
-X-MC-Unique: z_ZA8BpPNzueeo6N_kvHUw-1
-X-Mimecast-MFC-AGG-ID: z_ZA8BpPNzueeo6N_kvHUw
-Received: by mail-oi1-f197.google.com with SMTP id 5614622812f47-3f3b8f794e1so2046374b6e.2
-        for <kvm@vger.kernel.org>; Tue, 11 Feb 2025 13:46:02 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TuP6BX+E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1thzrs-0004jR-Dr; Tue, 11 Feb 2025 18:40:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1thzrq-0004jB-F0; Tue, 11 Feb 2025 18:40:38 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1thzro-00010w-FI; Tue, 11 Feb 2025 18:40:38 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5de7519e5a7so3827537a12.2; 
+ Tue, 11 Feb 2025 15:40:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1739317233; x=1739922033; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=k/5Nb9o4KF3LWCwuMPwYQTtNfalzd7ogY1Xyw/B3g2Y=;
+ b=TuP6BX+Er6Fk5ldfqbTslXBR/aGOz6i2ZVhSdeaRnlaogTBykZI2J4zx2uO1zkh/mw
+ Y7vaqvS0+ArtbDZTWqDeWGSPJVL35eQOHv5N4LyRcVBa5ssuCuF738sMovGpqT96kzdX
+ NPYuT7P0tr7bN+bgHgcwNaGiHPRuhiP08+2mCaKviklJ+BZv58YTKT2aagd4faA9GQgL
+ IJpzvw37oUltEMC9qHmSLvS0WXPHWvWTMRGtmaVNK/xPVncEhynk+kYIBSUaSiJ/vn0H
+ Jk7l4/ji3CqJkaoC52mpUPO+otUhY495zH+1LRq6/vIr2RuyWVLeGItVmNSUSFt7oeO5
+ Qlxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739310362; x=1739915162;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PgX+573L61jAZ+NGLaGL4AkiU3yn8kRPpAQyDAW3KPU=;
-        b=FbatQHOwP9sPRzCcLTBnym3lVgGfjUKufiHCZdixaZS8CfvXWE4rJZH4IWgpRUah3z
-         5YeP4YyJB+OgQRKuRTP0gwEHeG1ZmxkLd1cc1bsaW7PD41B/20+Rv6SH/neyY26hzYTR
-         lHro2yC+24DBKX055u3icissG6invj2wIfPDusvbFG0LrWojz3V3T3EJmfZpT+HI/gRG
-         wcfovrUHDXzPUfRVsw1poZX878o06qfD3FnFeOQ5z07ZhGUzHFnjqVakaEPOxhobKFAL
-         PriB8E1rG/MAS4IV5uRJ8lIljkBnTLVfaizanpf2FOI6d53XuKHk0bP0zceQwSVVlfVq
-         NUng==
-X-Forwarded-Encrypted: i=1; AJvYcCU3HzT7yeiJxrnJLPySS8do8gEtjRtK10WKLy0Mwn7fFthvTe1UuxYt8gDb8tlHtDDHOVU=@vger.kernel.org
-X-Gm-Message-State: AOJu0YyZOsvDcIM0DTe0vltkZAIDoK9cwxmVdqyS9D8POhKTLfOzRTBQ
-	pu1JXxJ2Wn/p3bS+0FHkIiDK2SqEWBE1rdjac8eUERR35m8xQ3dc4ieVbgMhVcOgKlkbJE+DFPh
-	IvAe6N6Wl8MgqSwr3RYD/o7WTSoXIxCSXhUcMgARaD1VTTLl/1w==
-X-Gm-Gg: ASbGncshrqs/oC5K9b+JsZXseBxZ1F1yVB5ax2PWMd3yWwRwZVj5qAoSux4jln44W2w
-	3o2vrtvlx4JIe71nQrAwr8jDwsQ8kquJ2MqEeN/edk3fRPPagqyrVlKNJRPlhUkhrijsARSxll0
-	sQFwdUKLXT3mvTROaaRnVefd0s87DEIqsL9lfarcrCqyvFex++FMtQOGVmhO9E8wgCSJWafJQSM
-	KHOyFtE6wOj0QORw4srqkSYF6tIEbhEVlqHh9lIPE39Fd4M32QNutGMyUA=
-X-Received: by 2002:a05:6808:1454:b0:3eb:6db7:f787 with SMTP id 5614622812f47-3f3cefdd936mr302528b6e.11.1739310362157;
-        Tue, 11 Feb 2025 13:46:02 -0800 (PST)
-X-Received: by 2002:a05:6808:1454:b0:3eb:6db7:f787 with SMTP id 5614622812f47-3f3cefdd936mr302509b6e.11.1739310361858;
-        Tue, 11 Feb 2025 13:46:01 -0800 (PST)
-Received: from x1.local ([2604:7a40:2041:2b00::1000])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3f389ea91acsm3500233b6e.8.2025.02.11.13.45.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Feb 2025 13:46:01 -0800 (PST)
-Date: Tue, 11 Feb 2025 16:45:55 -0500
-From: Peter Xu <peterx@redhat.com>
-To: William Roche <william.roche@oracle.com>
-Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, pbonzini@redhat.com,
-	richard.henderson@linaro.org, philmd@linaro.org,
-	peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
-	eduardo@habkost.net, marcel.apfelbaum@gmail.com,
-	wangyanan55@huawei.com, zhao1.liu@intel.com,
-	joao.m.martins@oracle.com
-Subject: Re: [PATCH v7 3/6] accel/kvm: Report the loss of a large memory page
-Message-ID: <Z6vFEwS6EjDXHsFc@x1.local>
-References: <20250201095726.3768796-1-william.roche@oracle.com>
- <20250201095726.3768796-4-william.roche@oracle.com>
- <Z6JH_OyppIA7WFjk@x1.local>
- <3f3ebbe8-be97-4827-a8c5-6777dea08707@oracle.com>
- <Z6Oaukumli1eIEDB@x1.local>
- <2ad49f5d-f2c1-4ba2-9b6b-77ba96c83bab@oracle.com>
- <Z6ot7eVxaf39oWKr@x1.local>
- <6c891caf-fbc0-4f5e-8e21-e87c3348c9fa@oracle.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1739317233; x=1739922033;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=k/5Nb9o4KF3LWCwuMPwYQTtNfalzd7ogY1Xyw/B3g2Y=;
+ b=eNNFvdjaIQ8W6Tptxq1iQppkh0UmT3HoRAiNaoWtNV7LFkin7CQec/vEniPWrjYl47
+ 4c+IZhnOE0DybK78gg96fHq28ne/Jo/XcAxlIjlDtITLBATrHgsgNclvcvTN31lvt0GZ
+ mdYDgJjYSuOZZhLM0O2WbKXuXCIbeGjZl/G3BAtZzNSFYyNIZFTo3kk9OjQNTjGd58yW
+ YjuFZCYnvzfMmm9lvNxwgf5VkXUDf46wbGG8w0ta5SNdhuzJzNUK+K3OoUckr4C3/scY
+ Vz5kTTzMqKcCFMywe27h9pDXhJyf4xS5I99qzdhJ1Klsnz9XGIa9uMKzWwLx7is8UKS1
+ /+kQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWZ0EI9SPS7G6FlKTnZAY270qlbEjEev/pduXvLRf6B6v5UoANbBDDaso5IEoIEsAyQxrX0Ekv/lw==@nongnu.org
+X-Gm-Message-State: AOJu0YxKsonD8nr/hcxJLLFBcKe5Q7lyxYcbdw8JCdopmNsHiMyxreku
+ StwgINgipvcamdn9ybK0nC01l+6imQHncUjsQr5P6f1v+M3ZwT19
+X-Gm-Gg: ASbGncv0otfDYddZ5RmOprLC0VpZsBivo2kpOA6T5ieeONH5UfP9KEYDdgkfOmxeND4
+ 7g/m2hP2oj8plT677QG0BH5iXjIKbP3+wzHPO0wDA0Qvj67ZnBJ/9RoinGKxpI6H+B2+HaE0CFw
+ MGByySM79u9CdLVFxQ2QZ0jqPmWxRG5gCRBIdThdV9euA9mtk7dGjPb6xC+co7xHd1e8LdU/8j8
+ YFuS3U5s+pssvGlWJInWuUsKe9ObtvQ2E/vPpoHxIiZcVdiQ2y3yRRkFxLVOqA9lAXLGuQCMv9e
+ YXT99G8mm6YrNy2QtyReDDnUcg9YdEguoL9K5LoVfN76PyRliHNBBER7U30PJEcl
+X-Received: by 2002:a05:6402:2189:b0:5dc:5860:6881 with SMTP id
+ 4fb4d7f45d1cf-5deaddb5921mr857954a12.19.1739317232460; 
+ Tue, 11 Feb 2025 15:40:32 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-089-012-033-197.89.12.pool.telefonica.de.
+ [89.12.33.197]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5de45a92fa7sm9513159a12.23.2025.02.11.15.40.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Feb 2025 15:40:31 -0800 (PST)
+Date: Tue, 11 Feb 2025 23:40:29 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 04/18] hw/arm: Add i.MX 8M Plus EVK board
+In-Reply-To: <CAFEAcA-7REe0uQsuptAxxSsd36c5MgPVzufqVcstJVqZmfAKDw@mail.gmail.com>
+References: <20250204092112.26957-1-shentey@gmail.com>
+ <20250204092112.26957-5-shentey@gmail.com>
+ <CAFEAcA8qgEDAnfaQDmpUjy77KZBiqwdKSmyLE-ZwEAhMNLWn4Q@mail.gmail.com>
+ <831901E4-69B2-4637-8507-77C7BF4DA65D@gmail.com>
+ <CAFEAcA-7REe0uQsuptAxxSsd36c5MgPVzufqVcstJVqZmfAKDw@mail.gmail.com>
+Message-ID: <9777664F-E3FB-4C9E-B41B-2793625E799D@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <6c891caf-fbc0-4f5e-8e21-e87c3348c9fa@oracle.com>
-X-TUID: REybh6Q37rdj
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ia036mBYdgvg
 
-On Tue, Feb 11, 2025 at 10:22:38PM +0100, William Roche wrote:
-> On 2/10/25 17:48, Peter Xu wrote:
-> > On Fri, Feb 07, 2025 at 07:02:22PM +0100, William Roche wrote:
-> > > [...]
-> > > So the main reason is a KVM "weakness" with kvm_send_hwpoison_signal(), and
-> > > the second reason is to have richer error messages.
-> > 
-> > This seems true, and I also remember something when I looked at this
-> > previously but maybe nobody tried to fix it.  ARM seems to be correct on
-> > that field, otoh.
-> > 
-> > Is it possible we fix KVM on x86?
-> 
-> Yes, very probably, and it would be a kernel fix.
-> This kernel modification would be needed to run on the hypervisor first to
-> influence a new code in qemu able to use the SIGBUS siginfo information and
-> identify the size of the page impacted (instead of using an internal
-> addition to kvm API).
-> But this mechanism could help to generate a large page memory error specific
-> message on SIGBUS receiving.
 
-Yes, QEMU should probably better be able to work on both old/new kernels,
-even if this will be fixed.
 
-> 
-> 
-> > > > 
-> > > > I feel like when hwpoison becomes a serious topic, we need some more
-> > > > serious reporting facility than error reports.  So that we could have this
-> > > > as separate topic to be revisited.  It might speed up your prior patches
-> > > > from not being blocked on this.
-> > > 
-> > > I explained why I think that error messages are important, but I don't want
-> > > to get blocked on fixing the hugepage memory recovery because of that.
-> > 
-> > What is the major benefit of reporting in QEMU's stderr in this case?
-> 
-> Such messages can be collected into VM specific log file, as any other
-> error_report() message, like the existing x86 error injection messages
-> reported by Qemu.
-> This messages should help the administrator to better understand the
-> behavior of the VM.
+Am 11=2E Februar 2025 10:06:19 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>On Mon, 10 Feb 2025 at 22:44, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
+e:
+>>
+>>
+>>
+>> Am 10=2E Februar 2025 17:30:01 UTC schrieb Peter Maydell <peter=2Emayde=
+ll@linaro=2Eorg>:
+>> >On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wr=
+ote:
+>> >>
+>> >> As a first step, implement the bare minimum: CPUs, RAM, interrupt co=
+ntroller,
+>> >> serial=2E All other devices of the A53 memory map are represented as
+>> >> TYPE_UNIMPLEMENTED_DEVICE, i=2Ee=2E the whole memory map is provided=
+=2E This allows
+>> >> for running Linux without it crashing due to invalid memory accesses=
+=2E
+>> >>
+>> >> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> >> ---
+>> >
+>> >
+>> >
+>> >> --- /dev/null
+>> >> +++ b/docs/system/arm/imx8mp-evk=2Erst
+>> >> @@ -0,0 +1,56 @@
+>> >> +NXP i=2EMX 8M Plus Evaluation Kit (``imx8mp-evk``)
+>> >> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+>> >> +
+>> >> +The QEMU i=2EMX 8M Plus EVK board emulation is intended to emulate =
+a plain i=2EMX 8M
+>> >> +Plus system on chip (SoC)=2E All peripherals the real board has suc=
+h as flash and
+>> >> +I2C devices are intended to be added via configuration, e=2Eg=2E co=
+mmand line=2E
+>> >
+>> >Why do this? If they're on the real hardware board, we should
+>> >be creating them by default in the machine model in QEMU=2E
+>> >Command line options are for devices that are optional and
+>> >pluggable by the user on the hardware=2E
+>>
+>> My goal is to be able to model a custom, proprietary machine which runs=
+ in a CI=2E In order to avoid peripherals getting in the way, the idea is t=
+o have a machine which essentially exposes the plain SoC, and allow users t=
+o "decorate" it themselves=2E Is an EVK machine the wrong approach for this=
+? Are there any other ways to achieve this, e=2Eg=2E with -nodefaults?
+>
+>That's not really a usage model QEMU currently supports=2E We generally
+>speaking model what the actual hardware does=2E=20
 
-I'll still put "better understand the behavior of VM" into debugging
-category. :)
+Why not support such usage model? The machine in this series works amazing=
+ly well for our purposes=2E If modeling a concrete board implies hardcoding=
+ peripherals, would modeling an artificial "board" which just contains the =
+SoC work instead? IOW should I drop the "-evk" suffix from the machine and =
+claim it only models the SoC?
 
-But I agree such can be important information.  That's also why I was
-curious whether it should be something like a QMP event instead.  That's a
-much formal way of sending important messages.
+>In the same way,
+>if you were running CI on the real EVK board your CI would have
+>to deal with those devices being present=2E
+>
+>> >> +        /*
+>> >> +         * Magic value from Linux output: "arch_timer: cp15 timer(s=
+) running at
+>> >> +         * 8=2E00MHz (phys)"=2E
+>> >> +         */
+>> >> +        object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 80000=
+00,
+>> >> +                                &error_abort);
+>> >
+>> >This is the CNTFRQ value in Hz=2E The datasheet actually tells you
+>> >this, so we don't need to call it a magic number (section 4=2E11=2E4=
+=2E1=2E6=2E4
+>> >of the i=2EMX 8M Plus Applications Processor Reference Manual says the
+>> >base frequency of the system counter is 8MHz)=2E
+>>
+>> Ah, so then it's the "nxp,sysctr-timer"-compatible counter in
+>> the device tree? I've stared my own implementation but didn't
+>> see the relation to the cp15 timer=2E Thanks for clarifying this=2E
+>
+>Yeah; I haven't actually checked carefully whether there
+>are NXP specifics here, as that device-tree compat string
+>suggests=2E But it's almost certainly the same general principle:
+>there's a memory-mapped system counter which is the global
+>source of the system count, and each CPU consumes that count
+>and uses it to feed its generic timers and counters=2E So if
+>you mess with the enable on the memory mapped system counter
+>then this causes the CPU's timers/counters to stop ticking=2E
 
-> 
-> 
-> > For example, how should we consume the error reports that this patch
-> > introduces?  Is it still for debugging purpose?
-> 
-> Its not only debugging, but it's a trace of a significant event that can
-> have major consequences on the VM.
-> 
-> > 
-> > I agree it's always better to dump something in QEMU when such happened,
-> > but IIUC what I mentioned above (by monitoring QEMU ramblock setups, and
-> > monitor host dmesg on any vaddr reported hwpoison) should also allow anyone
-> > to deduce the page size of affected vaddr, especially if it's for debugging
-> > purpose.  However I could possibly have missed the goal here..
-> 
-> You're right that knowing the address, the administrator can deduce what
-> memory area was impacted and the associated page size. But the goal of these
-> large page specific messages was to give details on the event type and
-> immediately qualify the consequences.
-> Using large pages can also have drawbacks, and a large page specific message
-> on memory error makes that more obvious !  Not only a debug msg, but an
-> indication that the VM lost an unusually large amount of its memory.
-> 
-> > > 
-> > > If you think that not displaying a specific message for large page loss can
-> > > help to get the recovery fixed, than I can change my proposal to do so.
-> > > 
-> > > Early next week, I'll send a simplified version of my first 3 patches
-> > > without this specific messages and without the preallocation handling in all
-> > > remap cases, so you can evaluate this possibility.
-> > 
-> > Yes IMHO it'll always be helpful to separate it if possible.
-> 
-> I'm sending now a v8 version, without the specific messages and the remap
-> notification. It should fix the main recovery bug we currently have. More
-> messages and a notification dealing with pre-allocation can be added in a
-> second step.
-> 
-> Please let me know if this v8 version can be integrated without the prealloc
-> and specific messages ?
+Yeah, this also is how I understand the documentation of the system counte=
+r in the reference manual=2E
 
-IMHO fixing hugetlb page is still a progress on its own, even without any
-added error message, or proactive allocation during reset.
+>
+>I modelled this similarly to the in-tree M-profile
+>sse-counter and sse-timer, where you link the timer to
+>the counter and there's an API that lets the timer know
+>when the counter is enabled/disabled, changes frequency, etc=2E
+>This needs changes to the timer and counter code in the CPU
+>itself=2E (You can get away without doing this if you assume
+>that the guest code never tries to actually disable the system
+>counter or pick a non-default frequency, which is typically true:
+>it will just want to set it up to a single standard config and
+>then leave it alone=2E)
 
-One issue is the v8 still contains patch 3 which is for ARM kvm.. You may
-need to post it separately for ARM maintainers to review & collect.  I'll
-be able to queue patch 1-2.
+I have this implementation which puts the focus more on waking up the CPUs=
+ via the IRQ: <https://github=2Ecom/shentok/qemu/commit/1aa0887a5ff926572ab=
+40b39fe5a087acb3ff249> The IRQ fires but doesn't wake any CPU in case of di=
+rect kernel boot since the IRQ is masked in EL1 (rich OS mode) and EL3 isn'=
+t set up=2E
 
-Thanks,
+>
+>> >(Incidentally the memory mapped system counter is a stock Arm
+>> >IP block and I have about 60% of a model of it, I just haven't
+>> >needed to upstream it yet because in practice no guest software
+>> >really tries to mess with it=2E If we turn out to need it for
+>> >this SoC that would be a reason for me to clean it up and
+>> >send it out=2E But I suspect we don't need it in practice=2E)
+>>
+>> The ugly workaround for the cpu-idle-states above is actually related t=
+o this counter, IIUC=2E I suppose that QEMU doesn't support these idle stat=
+es, it only seems to support WFI=2E But if it did, then this counter would =
+wake up the CPUs (if I'm not mistaken, I'm no expert here)=2E It would be n=
+ice to be able to boot the machine via U-Boot, and I wonder if that could f=
+ix the idle states when there are PSCI handlers in the secure world=2E Agai=
+n, this probably also requires the counter implementation=2E Looking into U=
+-Boot, TF-A, and OP-TEE is on my plan, but right now I'm focusing on direct=
+ kernel boot=2E
+>
+>Hmm, if the system counter can generate interrupts then
+>it might be different from the Arm IP block in that
+>respect=2E I'd have to check the datasheet=2E Anyway, as
+>you suggest this is all something we can postpone until
+>we need to care about running EL3 firmware in the guest=2E
 
--- 
-Peter Xu
+Yeah, this would probably work with U-Boot then=2E But for direct kernel b=
+oot we'd need support beyond WFI directly in QEMU -- which is currently mis=
+sing, right?
 
+Best regards,
+Bernhard
+
+>
+>thanks
+>-- PMM

@@ -1,85 +1,87 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp191528njb;
-        Tue, 11 Feb 2025 01:24:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWRoNUxSWfOlMse0nu9TYcBC24t7ypQkidsakyeSFncYBTQQwRNDQo9dLmmTgthEjTemMZuWqGRKBGyBA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGzj86k6vwuz3715RnKW2Qz6aXNB+832jFh+ZsI/FvtCgKsDBBQRQUYdiWRBELGREupx11B
-X-Received: by 2002:a05:620a:2893:b0:7b6:7618:d7ce with SMTP id af79cd13be357-7c047ba6129mr1925697385a.10.1739265857186;
-        Tue, 11 Feb 2025 01:24:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739265857; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp191670njb;
+        Tue, 11 Feb 2025 01:24:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXDry6XZdBcJke7AHoi22iJg5olmLf0idMp0pYOINUGKQUXQ0HH8PUAlj2aZ+nsj4zfWhGTAAK8SQ8YLw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGGNLMElI0h1GPXgReaiCy2uY4Hzht7TUcK+dChxlLF/l4fC6m9EmIXvw1cSgn0wFiZkT30
+X-Received: by 2002:a05:6214:2621:b0:6e1:6bdf:ed1c with SMTP id 6a1803df08f44-6e4455fdb46mr261342786d6.14.1739265877824;
+        Tue, 11 Feb 2025 01:24:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739265877; cv=none;
         d=google.com; s=arc-20240605;
-        b=ENP0djwDkjXuL8ZJaI7YCSjfz7KICMTuG3knFRbgUinmsXR/zhD7+RtA020xE0DLo4
-         m93tkC7QdojQwSL7nYlFYgZV28Ho43+Oe+W0Ze+t/TvzEwJCscsMAEL5gzKdvU0/uKFX
-         UJKgH5nRyImBqPO3F9yoDbGQ7KsPqxW8sVz/lpFrFN0vhB07aNhrMXVucRb3xaSxIUgj
-         /ABcS6Q7f+AW5rT8DCr7jWz4kzsHRw2LBD0HY3isrtEzuo0k0hPNGO7N6swqi+kY0udZ
-         m83hgRMWpCszArb5s4COjzIfP7O5xphl47FjOGKmxFizoVKSL9WK85IqiDAponbmqCu2
-         L8pA==
+        b=fuMykD+0oHRDM8/MROhIt+P9wz6PQsQfh6e0i6ggq6/vj+wsDcutuG4UjjY9AM7WIl
+         rGvSbGXnJsZhn72dohcGsVBl8ZD0cAfAUj1BQybnotZKIBHvvhRtwfvCBho5M/JxgC8V
+         8ouieDGufRc1HQqGgWEjc+B45rsRuF3Ra8UOaF4rLQpOP1eYoYTXHCjhdtpPYogupko1
+         zzMhhwgOvEWAzxnx7AJRuyQhdYW2dVVw4jLFkk+vaJVNHG26jvmkQmrZiLTwjLpSBXBO
+         B0GDxT3+A+oRqQsTU9L9VHmIQ+dnf4iBMM3PQagr2hBFT7QrIgnibOawUsrnseOiI7Jo
+         IaHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=M2r1Rs6BXYcKF/uiYfWQYlqbrAwdcb91F9vQvBimd5U=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
         fh=e1SboN20/jHvoiD1YSHiGEBjk/mnJDcFYjKWtsBcI2Q=;
-        b=WA/CiYROhjuQfwmlJsBg8CFbK0pByQxD0Cduq8yKT4C57d5SOSnfgH0wgDN0ETa+2c
-         L5WgQA4XMk08R+YIYXmqZu8ZUG1o/0p0qZqDOi+gzJlIoAXD2Alw1CyneGSjyxKDGJyi
-         S6mq2AlJ0sgOXD6laqDCSI4LRXdGKp+vASQjcI69La7XbjvJek0BfRFRUBgmhgA3BVXw
-         5AxJsBF3QHKZf+TKf2R1tJ6Wfr9bqaC2iobkh75xki/spmnb6a2AD2lno04IZ/Rv9hcz
-         WnhKcADO0YC2Mjuca0KsYHACf9s1UR7T0gxDW7P0/1F0N8ZF+RAFd4l65er1RQhLpTvY
-         eOkg==;
+        b=PmTMEfi74dyAueLBlA8mK0+soevQGCjMhmypQjHj1D7iDmd6lYCWj2OtctZ5x8e71Z
+         ueX42xJBzZpRIZBiXIb5pG+s1rZ36s1CFHtMxo3XdZmQporazAL2RvJbSErRVyZHFX3g
+         Wvo7zZwCrQTwsE/Gn3VxUwlJsMG+J2IzQbmc/WIWy+CiWyb+bwkfU4jcRnXcDn3I+MMa
+         D/HGoiFeKWR8JXkrKacqcwIocMDqVEHHNOvXQ+Xd/KxHGJGccIsZC40bg8GcMmvQKSBt
+         FrOrdwcQvoPIXWf2sXFkACUKtJW+lUEtvuu7y+NDhAoAjBJkQsRPboyoyoVlO/b18MI6
+         UAhg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsKdTL1p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NOEtnwzf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0615800ecsi288978885a.618.2025.02.11.01.24.16
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e44bad6e67si84228196d6.65.2025.02.11.01.24.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2025 01:24:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Feb 2025 01:24:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsKdTL1p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NOEtnwzf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1thmUZ-00023D-GW; Tue, 11 Feb 2025 04:23:43 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1thmUk-0002D4-3k; Tue, 11 Feb 2025 04:23:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUX-0001yT-0B
- for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:23:41 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUZ-00023C-AB
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2025 04:23:43 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUS-0002wZ-B1
- for qemu-arm@nongnu.org; Tue, 11 Feb 2025 04:23:39 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1thmUX-0002y5-1U
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2025 04:23:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739265811;
+ s=mimecast20190719; t=1739265820;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=M2r1Rs6BXYcKF/uiYfWQYlqbrAwdcb91F9vQvBimd5U=;
- b=OsKdTL1pNXUrCMNK/AFYQSJe2kQZLor6q94fw0boMk3lzSVcSs/H2LWrKXLUi1MtJn4MHv
- yOUkm3Cb06nwgABRArC67QS9engM3Ft1JGNxtLzblMyvBQFM8Gb7Tpa+ZnQReYCJRW+lT7
- mUDI7dmQVzcrbnDOBCXvOKLIzvtDkVw=
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
+ b=NOEtnwzfVZQLExDmw93wu0aSXflRGtaO8ai6P+S8ODnA3BzZTsnPbdI5vTZRghoV+8RUqa
+ L6ARPq68Q6BE8alX4ORblgcQeJ0E9y2of/hLuQJPG+FVXHDcbHtfMcJNIxMJl4W68oksiv
+ qrqDxovfq3u40vtvy+vTWJmMqUVPv34=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-519-5GR7zToNM6CvbdGvcfGIrw-1; Tue,
- 11 Feb 2025 04:23:30 -0500
-X-MC-Unique: 5GR7zToNM6CvbdGvcfGIrw-1
-X-Mimecast-MFC-AGG-ID: 5GR7zToNM6CvbdGvcfGIrw
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-563-LDOo18xPMBW2TeM8dJWlkA-1; Tue,
+ 11 Feb 2025 04:23:37 -0500
+X-MC-Unique: LDOo18xPMBW2TeM8dJWlkA-1
+X-Mimecast-MFC-AGG-ID: LDOo18xPMBW2TeM8dJWlkA
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CF0FC195608E; Tue, 11 Feb 2025 09:23:28 +0000 (UTC)
+ id D3C3A1956094; Tue, 11 Feb 2025 09:23:35 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.57])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D95391800115; Tue, 11 Feb 2025 09:23:26 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4825919560A3; Tue, 11 Feb 2025 09:23:35 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 79DAC18000A6; Tue, 11 Feb 2025 10:23:24 +0100 (CET)
+ id B7D801800390; Tue, 11 Feb 2025 10:23:24 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
@@ -92,13 +94,14 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ard Biesheuvel <ardb@kernel.org>
-Subject: [PATCH v3 00/23] hw/uefi: add uefi variable service
-Date: Tue, 11 Feb 2025 10:22:58 +0100
-Message-ID: <20250211092324.965440-1-kraxel@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+Subject: [PATCH v3 04/23] hw/uefi: add var-service-guid.c
+Date: Tue, 11 Feb 2025 10:23:02 +0100
+Message-ID: <20250211092324.965440-5-kraxel@redhat.com>
+In-Reply-To: <20250211092324.965440-1-kraxel@redhat.com>
+References: <20250211092324.965440-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
@@ -108,138 +111,136 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.388,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ctvJhhtRo9Iz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lxxaNceVbYKO
 
-This patch adds a virtual device to qemu which the uefi firmware can use
-to store variables.  This moves the UEFI variable management from
-privileged guest code (managing vars in pflash) to the host.  Main
-advantage is that the need to have privilege separation in the guest
-goes away.
+Add variables for a bunch of UEFI GUIDs we will need.
 
-On x86 privileged guest code runs in SMM.  It's supported by kvm, but
-not liked much by various stakeholders in cloud space due to the
-complexity SMM emulation brings.
-
-On arm privileged guest code runs in el3 (aka secure world).  This is
-not supported by kvm, which is unlikely to change anytime soon given
-that even el2 support (nested virt) is being worked on for years and is
-not yet in mainline.
-
-The design idea is to reuse the request serialization protocol edk2 uses
-for communication between SMM and non-SMM code, so large chunks of the
-edk2 variable driver stack can be used unmodified.  Only the driver
-which traps into SMM mode must be replaced by a driver which talks to
-qemu instead.
-
-A edk2 test branch can be found here (build with "-D QEMU_PV_VARS=TRUE").
-https://github.com/kraxel/edk2/commits/devel/secure-boot-external-vars
-
-The uefi-vars device re-implements the privileged edk2 protocols
-(i.e. the code running in SMM mode).
-
-v3 changes:
- - switch sysbus device variant to use the qemu platform bus.
- - misc minor changes.
-v2 changes:
- - fully implement authenticated variables.
- - various cleanups and fixes.
-
-enjoy & take care,
-  Gerd
-
-Gerd Hoffmann (23):
-  hw/uefi: add include/hw/uefi/var-service-api.h
-  hw/uefi: add include/hw/uefi/var-service-edk2.h
-  hw/uefi: add include/hw/uefi/var-service.h
-  hw/uefi: add var-service-guid.c
-  hw/uefi: add var-service-utils.c
-  hw/uefi: add var-service-vars.c
-  hw/uefi: add var-service-auth.c
-  hw/uefi: add var-service-policy.c
-  hw/uefi: add var-service-core.c
-  hw/uefi: add var-service-pkcs7.c
-  hw/uefi: add var-service-pkcs7-stub.c
-  hw/uefi: add var-service-siglist.c
-  hw/uefi: add var-service-json.c + qapi for NV vars.
-  hw/uefi: add trace-events
-  hw/uefi: add UEFI_VARS to Kconfig
-  hw/uefi: add to meson
-  hw/uefi: add uefi-vars-sysbus device
-  hw/uefi-vars-sysbus: qemu platform bus support
-  hw/uefi-vars-sysbus: allow for arm virt
-  hw/uefi: add uefi-vars-isa device
-  hw/uefi-vars-isa: add acpi device
-  docs: add uefi variable service documentation
-  hw/uefi: add MAINTAINERS entry
-
- include/hw/uefi/var-service-api.h  |  43 ++
- include/hw/uefi/var-service-edk2.h | 227 +++++++++
- include/hw/uefi/var-service.h      | 186 ++++++++
- hw/arm/virt.c                      |   2 +
- hw/core/sysbus-fdt.c               |  24 +
- hw/uefi/var-service-auth.c         | 361 ++++++++++++++
- hw/uefi/var-service-core.c         | 237 ++++++++++
- hw/uefi/var-service-guid.c         |  99 ++++
- hw/uefi/var-service-isa.c          | 115 +++++
- hw/uefi/var-service-json.c         | 242 ++++++++++
- hw/uefi/var-service-pkcs7-stub.c   |  16 +
- hw/uefi/var-service-pkcs7.c        | 436 +++++++++++++++++
- hw/uefi/var-service-policy.c       | 370 +++++++++++++++
- hw/uefi/var-service-siglist.c      | 212 +++++++++
- hw/uefi/var-service-sysbus.c       |  90 ++++
- hw/uefi/var-service-utils.c        | 241 ++++++++++
- hw/uefi/var-service-vars.c         | 725 +++++++++++++++++++++++++++++
- MAINTAINERS                        |   6 +
- docs/devel/index-internals.rst     |   1 +
- docs/devel/uefi-vars.rst           |  66 +++
- hw/Kconfig                         |   1 +
- hw/meson.build                     |   1 +
- hw/uefi/Kconfig                    |   9 +
- hw/uefi/LIMITATIONS.md             |   7 +
- hw/uefi/meson.build                |  24 +
- hw/uefi/trace-events               |  17 +
- meson.build                        |   1 +
- qapi/meson.build                   |   1 +
- qapi/qapi-schema.json              |   1 +
- qapi/uefi.json                     |  45 ++
- 30 files changed, 3806 insertions(+)
- create mode 100644 include/hw/uefi/var-service-api.h
- create mode 100644 include/hw/uefi/var-service-edk2.h
- create mode 100644 include/hw/uefi/var-service.h
- create mode 100644 hw/uefi/var-service-auth.c
- create mode 100644 hw/uefi/var-service-core.c
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/uefi/var-service-guid.c | 99 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 99 insertions(+)
  create mode 100644 hw/uefi/var-service-guid.c
- create mode 100644 hw/uefi/var-service-isa.c
- create mode 100644 hw/uefi/var-service-json.c
- create mode 100644 hw/uefi/var-service-pkcs7-stub.c
- create mode 100644 hw/uefi/var-service-pkcs7.c
- create mode 100644 hw/uefi/var-service-policy.c
- create mode 100644 hw/uefi/var-service-siglist.c
- create mode 100644 hw/uefi/var-service-sysbus.c
- create mode 100644 hw/uefi/var-service-utils.c
- create mode 100644 hw/uefi/var-service-vars.c
- create mode 100644 docs/devel/uefi-vars.rst
- create mode 100644 hw/uefi/Kconfig
- create mode 100644 hw/uefi/LIMITATIONS.md
- create mode 100644 hw/uefi/meson.build
- create mode 100644 hw/uefi/trace-events
- create mode 100644 qapi/uefi.json
 
+diff --git a/hw/uefi/var-service-guid.c b/hw/uefi/var-service-guid.c
+new file mode 100644
+index 000000000000..eba3655c8d30
+--- /dev/null
++++ b/hw/uefi/var-service-guid.c
+@@ -0,0 +1,99 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * uefi vars device - GUIDs
++ */
++
++#include "qemu/osdep.h"
++#include "system/dma.h"
++
++#include "hw/uefi/var-service.h"
++
++/* variable namespaces */
++
++const QemuUUID EfiGlobalVariable = {
++    .data = UUID_LE(0x8be4df61, 0x93ca, 0x11d2, 0xaa, 0x0d,
++                    0x00, 0xe0, 0x98, 0x03, 0x2b, 0x8c)
++};
++
++const QemuUUID EfiImageSecurityDatabase = {
++    .data = UUID_LE(0xd719b2cb, 0x3d3a, 0x4596, 0xa3, 0xbc,
++                    0xda, 0xd0, 0x0e, 0x67, 0x65, 0x6f)
++};
++
++const QemuUUID EfiCustomModeEnable = {
++    .data = UUID_LE(0xc076ec0c, 0x7028, 0x4399, 0xa0, 0x72,
++                    0x71, 0xee, 0x5c, 0x44, 0x8b, 0x9f)
++};
++
++const QemuUUID EfiSecureBootEnableDisable = {
++    .data = UUID_LE(0xf0a30bc7, 0xaf08, 0x4556, 0x99, 0xc4,
++                    0x0, 0x10, 0x9, 0xc9, 0x3a, 0x44)
++};
++
++/* signatures */
++
++const QemuUUID EfiCertSha256Guid = {
++    .data = UUID_LE(0xc1c41626, 0x504c, 0x4092, 0xac, 0xa9,
++                    0x41, 0xf9, 0x36, 0x93, 0x43, 0x28)
++};
++
++const QemuUUID EfiCertSha384Guid = {
++    .data = UUID_LE(0xff3e5307, 0x9fd0, 0x48c9, 0x85, 0xf1,
++                    0x8a, 0xd5, 0x6c, 0x70, 0x1e, 0x1)
++};
++
++const QemuUUID EfiCertSha512Guid = {
++    .data = UUID_LE(0x93e0fae, 0xa6c4, 0x4f50, 0x9f, 0x1b,
++                    0xd4, 0x1e, 0x2b, 0x89, 0xc1, 0x9a)
++};
++
++const QemuUUID EfiCertRsa2048Guid = {
++    .data = UUID_LE(0x3c5766e8, 0x269c, 0x4e34, 0xaa, 0x14,
++                    0xed, 0x77, 0x6e, 0x85, 0xb3, 0xb6)
++};
++
++const QemuUUID EfiCertX509Guid = {
++    .data = UUID_LE(0xa5c059a1, 0x94e4, 0x4aa7, 0x87, 0xb5,
++                    0xab, 0x15, 0x5c, 0x2b, 0xf0, 0x72)
++};
++
++const QemuUUID EfiCertTypePkcs7Guid = {
++    .data = UUID_LE(0x4aafd29d, 0x68df, 0x49ee, 0x8a, 0xa9,
++                    0x34, 0x7d, 0x37, 0x56, 0x65, 0xa7)
++};
++
++/*
++ * mm_header.guid values that the guest DXE/BDS phases use for
++ * sending requests to management mode
++ */
++
++const QemuUUID EfiSmmVariableProtocolGuid = {
++    .data = UUID_LE(0xed32d533, 0x99e6, 0x4209, 0x9c, 0xc0,
++                    0x2d, 0x72, 0xcd, 0xd9, 0x98, 0xa7)
++};
++
++const QemuUUID VarCheckPolicyLibMmiHandlerGuid = {
++    .data = UUID_LE(0xda1b0d11, 0xd1a7, 0x46c4, 0x9d, 0xc9,
++                    0xf3, 0x71, 0x48, 0x75, 0xc6, 0xeb)
++};
++
++/*
++ * mm_header.guid values that the guest DXE/BDS phases use for
++ * reporting event groups being signaled to management mode
++ */
++
++const QemuUUID EfiEndOfDxeEventGroupGuid = {
++    .data = UUID_LE(0x02ce967a, 0xdd7e, 0x4FFc, 0x9e, 0xe7,
++                    0x81, 0x0c, 0xF0, 0x47, 0x08, 0x80)
++};
++
++const QemuUUID EfiEventReadyToBootGuid = {
++    .data = UUID_LE(0x7ce88Fb3, 0x4bd7, 0x4679, 0x87, 0xa8,
++                    0xa8, 0xd8, 0xde, 0xe5, 0x0d, 0x2b)
++};
++
++const QemuUUID EfiEventExitBootServicesGuid = {
++    .data = UUID_LE(0x27abF055, 0xb1b8, 0x4c26, 0x80, 0x48,
++                    0x74, 0x8F, 0x37, 0xba, 0xa2, 0xdF)
++};
 -- 
 2.48.1
 

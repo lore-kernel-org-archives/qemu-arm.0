@@ -1,134 +1,134 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp934006njb;
-        Wed, 12 Feb 2025 03:45:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX1QuebykJ1gHcIqKNzkXt5g77L/2wWmCXtKQohoPerxCQLMR5UC3dTggh2VzXDKbKjmKH0zOumaqZ59w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEQ3TLwzi1g0wKkwDyn1LT7tOfLFlVdHqxMhEwdBS5qjqqpi+7UR6n026h6hOXAmQCE22as
-X-Received: by 2002:a05:600c:1d9a:b0:439:5573:932a with SMTP id 5b1f17b1804b1-439581cb97bmr27084165e9.29.1739360709706;
-        Wed, 12 Feb 2025 03:45:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739360709; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp965967njb;
+        Wed, 12 Feb 2025 04:42:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVNpK+C77jpsCOKmwjA7xbbjloG32Lh77aLPngzRPudyom6mEUochp7TxqBrzxYFkzZZjb494Q1iEJ61Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHk8KNsHT4MsahYF6iGUkg1piHTJWrw0Qzxn0URchErYD8h8ejEXH8+1FIGuMXl8QYFsn+n
+X-Received: by 2002:ac8:7e8f:0:b0:471:a897:b3ae with SMTP id d75a77b69052e-471aff1dc5bmr42482261cf.46.1739364160908;
+        Wed, 12 Feb 2025 04:42:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739364160; cv=none;
         d=google.com; s=arc-20240605;
-        b=YIAVnAxUW3AGcnW5Xk05mtcQPCsfaxTUS1xcQreD155zKhXWBwk7Taym2RwHyH4Swv
-         Z1ALFGc2n8/epAbco+cmrQbNNI25YoxwJzKjLrxFVPUcUn+sMiBIuz0qmDt4bnZeyxqW
-         fOYEtxxharqum0ETEIdGDNwAsj56ZBq24xBF94WmYgzw5M7Xo72esz8iNsv3IEZO5+Ws
-         maalgZWA27tLMkP1htBXUbbHALEzuFIRvyaazG0tUjgNeJ7UvoawvT0GGHq3GEvrqeai
-         MwXtwd5yMTbu5YflFK8exOXKMukoargluFydREybICtsYqt/D1/fwHH55ARYOiJao7NN
-         258A==
+        b=NKy55/YDIu+1ge7yxSZnH5fVFSN/qQfLftuPURsSzbWdCDeNAGU+Dcg2Xjng2Y4bmO
+         nZ1rDVLw5dQNMjqDFqrjRYiNmEA5bYDaFiYGV/4H96DbB8uKHo2fJaPF1iIZpM4F6VpO
+         010Zg+gf2XT9eMFscGEDFqmuey3Q7k33h4liZUTzkfOpPDo2WiqkRDmAbcVk4XHf6e/f
+         bNFMsWoEgKaPI/+ze7n8nm4AUhYxv7LdO7jBADNlIPr2pVa6R99anYooYecay3y8WWXF
+         2636Kd+CCg07fvAyHbZ0Mp5H8ldDEGL8itnqj6Zu+ZkejFy9/1a3Dji3/J0AWoz2WzW9
+         nGuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=GUtgXWeGjH4fmUCFTN1pAgkStUkgWd6guj/Zi5JuNq0=;
-        fh=/Ypf8y0F2fDZEaNtM8Xpa5Ns/Ih3qmiPHbwQ4LmZiaU=;
-        b=d3ijMJPcAgx+viGDqUczJAsM2aLV+xZ1EoUFTKoSzAO7seEQ2NAvBxcZa0GjIVYWhA
-         akqF2kQVztfJLieISDUyT2+pSE9t7mUTfOn2mLga0AHY52zC7qoL3A4k1A3ZlSyXnCpn
-         2GDdri2POMeUOSJq7t6swwMzsL1AuPKjRK0jVSPHk0SrmSeUTw3vmO+9uZP2ggmipGZL
-         I3mpWDevxcd1kbx6gvv6ltfCZnd2gCgnyjAcb4n14hrVkxr3BxJsym4+Il7cckzUiUgn
-         sfpOLiVNsd64ipODcwqhwd0yH4agwxWTkN/4U/Rbjaj1s5wNoT5g52c5tcRglpov2F9R
-         xIzQ==;
+        bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
+        fh=rh0LCinyD/Arq96VXngAo6nmXyNpOsZgiNhnJ7Jjky0=;
+        b=ZkCQpDk3bCVPUGuaMHkeI4NeAROboApu7rI9+CLAlvyHu51Txa06ImBj5hO9MkpYR9
+         nLjo8ViPPU3l2ctZG2P6JAT1G+XtWicAABzECWQ4Sh92XV+KypfpJG8FoA7bc3o1j3c6
+         0dc6zdTwSKqA5YwGyotTd2bRn1Ho4pFEh+QOqT/Qc4cK+NAYMZgzJz56d23YJ/PCjKIA
+         1TAfkeTasxfGOIwdZf8AGZTuvVklX+17rtYdx2P97WOfZt86e0XTKHaQKF8GhvD0CkgX
+         m4MOw0ZNHcqzG56goGX0za0qAgRhaxDHd34EGvT3xZRgwxheubLz29CCm+X+ST5VCQCk
+         /DiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aWmGp5dO;
+       dkim=pass header.i=@linaro.org header.s=google header.b="kNR/Asfy";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43959d5c281si8911835e9.184.2025.02.12.03.45.09
+        by mx.google.com with ESMTPS id d75a77b69052e-471bb2111cdsi4020421cf.656.2025.02.12.04.42.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 03:45:09 -0800 (PST)
+        Wed, 12 Feb 2025 04:42:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aWmGp5dO;
+       dkim=pass header.i=@linaro.org header.s=google header.b="kNR/Asfy";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiBAl-0008DO-SY; Wed, 12 Feb 2025 06:44:57 -0500
+	id 1tiC4N-0002qv-7T; Wed, 12 Feb 2025 07:42:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiBAS-00088i-3X
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:44:37 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC2B-0007Gp-97
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:40:09 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiBAM-00021B-F7
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:44:35 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4361e89b6daso46673815e9.3
- for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 03:44:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC24-0001Yl-On
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:40:02 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-38dd14c99c3so2531378f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 04:39:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739360665; x=1739965465; darn=nongnu.org;
+ d=linaro.org; s=google; t=1739363998; x=1739968798; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=GUtgXWeGjH4fmUCFTN1pAgkStUkgWd6guj/Zi5JuNq0=;
- b=aWmGp5dOtduKglVDbobIIZIOwmXk/tN/cvSGHB/M00j8Ya7vyP/6xg5b4GniaaAqPi
- KLjBAQp1recKH7NX3GD8CoBwnScE4ebdY/Hn0oDjn/FM6f8S8Yv+Yqnyd+W/jUTr0ll6
- cOn+4LG5+hunsAQhOiro3iRVebop03f7yWngQV/1OLah/DhkeRHmmN5DgZf/iSj6ZC22
- fo3UnvHKX0yJh9z7Ehi3FZS2g7NJWAd4mql1Kd1CVsCBQqwrE9uJi/LRxlPHu/owARhg
- 3VFNO0pJVbkzmA6pd0PqRIvSDy7xn5rNCowG2GlBLZFkxKIA++MDRoBdGFwqTb1Hap2w
- r41Q==
+ bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
+ b=kNR/AsfyynfKBmNWYnNfd+8f/0Us8Jbzep1FT+F/7ULMg0TPyXH3+xc4RARTTCw2hS
+ M48UX1uhbPEOcxp9d4rbHtqulGo7OxcGxFvMIPYyy1eLxyNiwvZgIc7B6OJRkztaYYaO
+ LO0jEjjQb0iuHaSxyVFIpk94hIYZyG4z0LtThIdOL+796hUg8PpUvpPN/4w06w+TPYqM
+ mBfHHMVSN4rSkYQ7fW/oJPszdnV/TBGnVVpzsaizyIz1iQbyIaKBdZlxQEIXQ1/0iXii
+ VFBIvfPrJmKYLvS+dRqhUhe+CjAJaQmDgl/RRdOKX9AfMX32Xy20bTanL1bRbSA9rROt
+ BRBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739360665; x=1739965465;
+ d=1e100.net; s=20230601; t=1739363998; x=1739968798;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GUtgXWeGjH4fmUCFTN1pAgkStUkgWd6guj/Zi5JuNq0=;
- b=JGd29q2bp2qU8Y9tk8UfnZVuAK3Nv4WAjgV1Qe7U7RmOJyydFKJXBgVHe+La64U7Ln
- 2Qv0h9GZ4owuHYYFPNJ25xpzTaO9EIh9AS73K20ws/oRXxuzvzmIyBQ8mvteKgqCcPqW
- 08DT1Gz1KY1yK6S8x/HRW7Hf99ptim5z0lGnVyhG1KmcMdQTM8sKuvYdhOx24GmZYQDX
- oLxb5w+Ce+IcEv0dqjtk/R6X2HgSmDodBzedq227Pm7+q5qdpcqAmLgfK2MhoODf7I8X
- ksRrKI4LUbBeClBzKLwDp2e5w+NKzU+knXd2u2NH9l/SJqyRLFFl3TZSMekY3Qw+770r
- dqfg==
+ bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
+ b=gTAbreLUMNiLzjaCL16dXhpkdkLOqGFFKpHugebI0Y1loq5F4N2W7yyaT6/BoQtihX
+ 8YxOwx5Bsyg+pjcwhygS/uNojIGj17r3ORkqmAdnvoiZkShr9SmCxMVvxI657ab5cfXd
+ vC6f5oxQuO9Cft+C9O+znQNxGJFSB++y1CJjMgX9dwWaa6Meiub7NBfV0MK4CMU/BX3/
+ joQu+3kZ6CBgaqNMYOl385u+IhrPT8Rl99lAq0eF0/06WRRVgkIGUoBJW2qwK8M0xcjf
+ WCJb/6zXLHaGPWrE7oBED6UKVmwJQBp3uLe7Lv9zQz3V+TLmlR6lnUzsQUPewN3h5mB+
+ bd0w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUOUXKGYBdMD03mFwoIc8v4GKtVo4xFktZWdR2BP5eY5PGbqZ3F2DYT99I++6ywtAhZNPgP3BGPVQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy5U8SZNK4BtARTA1kvCfoOzCzoik25xCQsOO0UM5A606395t+C
- 0KWNxNUllfGvkgNpaAACggeJQqoGap+HCUUgkX4Bh9ss/EEf0aYmJlYE+lZeQHo=
-X-Gm-Gg: ASbGnctAI9kjzLPg5qqammKh90SkV4SOi4Q4VvMPX2NFzt2XKb7xZvp9ytSW2A+6Fab
- s6veCMu/+r5GeMrx6F3mdAhG9X0vXZwWeS6jvd5dx58/u26n6AgtxMujbUyHs9esljQqmm1TQrz
- 6ADYhEExUNUawiw0M9e2iG2LwN0ezt+tX5eOwn7CvzaF/XYHqjVjw77sFaAUFi2TNF5pjonf/8I
- GmCRMOQU5jCj+x0M6MqEMtje6wzN60fB0doKyChAciRGDg9efzeqTPVZwQFzp7wQrdJBWSl4N1n
- akcSXU4/ckt1PjjK97THTgvZ/tImIp8xyz7k6VqTFN5q5Vp9QnhOC7Ob99Q=
-X-Received: by 2002:a05:600c:1d9a:b0:439:5573:932a with SMTP id
- 5b1f17b1804b1-439581cb97bmr27062355e9.29.1739360665149; 
- Wed, 12 Feb 2025 03:44:25 -0800 (PST)
+ AJvYcCW7SqyfzDKa0A3XVFW1d9r+9LYr0FBH30Xgjk4KE0eoooU4HAYhU6PeLWNm8QRrUkYu/hpri3tmKQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzrdI+qicHNVJ6DU7UVeIb6KfcpzTn1PGxRcM9926f7Z5TfYBJc
+ 4HVlSo+csXyPk6WBS+7QC0VMIt7lgmTXt8H3uSQUV6JS55lOzUDy6Vzr0yFOdYI=
+X-Gm-Gg: ASbGnctkbqp2szleiA9TcsV1BPsNPfE4KB5Pz6sXSrIDV9N2dmLPf76yHqI6XPC06sj
+ H0h/CIPhs/+x1uoxmoOOKku2mXDTq8UzMl5vLJTHPwZnomcPesb8TT3A9TsWd0S1sz6rJOy+OYu
+ jHkvUqYrVdBd5Ynj3CO6UXgGBg+6zoqQiNtG2wxGPNEydqVJScjMNFm6JTWAphMjbuWpJXeDZw3
+ jprPYwsyLj4pktYLmKFsTyxWP+P+NBdJDHqXbUTgHD0DIUv1TI58tjqYtIjfJLEOMUhvFVKpxTn
+ TAhPniWrNeXRNGCeOz1MuN0mxuAnGN5gs4lkSSg3hb9d8zD9jFzvDSb/174=
+X-Received: by 2002:a05:6000:400f:b0:38d:e572:4db4 with SMTP id
+ ffacd0b85a97d-38dea2e6942mr2407650f8f.43.1739363997821; 
+ Wed, 12 Feb 2025 04:39:57 -0800 (PST)
 Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4395a06b1ddsm17519645e9.22.2025.02.12.03.44.23
+ 5b1f17b1804b1-4395a04cda4sm19557005e9.1.2025.02.12.04.39.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2025 03:44:24 -0800 (PST)
-Message-ID: <e2c0e0fe-dafa-4ed6-be0d-63f9afb5a8b2@linaro.org>
-Date: Wed, 12 Feb 2025 12:44:23 +0100
+ Wed, 12 Feb 2025 04:39:57 -0800 (PST)
+Message-ID: <a3b32514-6220-4101-ade0-38d2af20b5fc@linaro.org>
+Date: Wed, 12 Feb 2025 13:39:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 02/11] hw/intc/xilinx_intc: Make device endianness
+Subject: Re: [PATCH v7 02/10] hw/intc/xilinx_intc: Make device endianness
  configurable
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-ppc@nongnu.org, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Markus Armbruster <armbru@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20250212112413.37553-1-philmd@linaro.org>
- <20250212112413.37553-3-philmd@linaro.org>
- <125a3dac-8ef9-4748-a3ce-f8fb97d8cb59@redhat.com>
+References: <20250212123659.52764-1-philmd@linaro.org>
+ <20250212123659.52764-3-philmd@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <125a3dac-8ef9-4748-a3ce-f8fb97d8cb59@redhat.com>
+In-Reply-To: <20250212123659.52764-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,130 +143,202 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KfO7r8I0M9US
+X-TUID: RQrG2G3TftK+
 
-On 12/2/25 12:42, Thomas Huth wrote:
-> On 12/02/2025 12.24, Philippe Mathieu-Daudé wrote:
->> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
->> of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
->> Add the "little-endian" property to select the device
->> endianness, defaulting to little endian.
->> Set the proper endianness for each machine using the device.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/intc/xilinx_intc.c                    | 60 ++++++++++++++++++------
->>   hw/microblaze/petalogix_ml605_mmu.c      |  1 +
->>   hw/microblaze/petalogix_s3adsp1800_mmu.c |  3 ++
->>   hw/ppc/virtex_ml507.c                    |  1 +
->>   hw/riscv/microblaze-v-generic.c          |  1 +
->>   5 files changed, 52 insertions(+), 14 deletions(-)
->>
->> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
->> index 6930f83907a..523402b688c 100644
->> --- a/hw/intc/xilinx_intc.c
->> +++ b/hw/intc/xilinx_intc.c
->> @@ -3,6 +3,9 @@
->>    *
->>    * Copyright (c) 2009 Edgar E. Iglesias.
->>    *
->> + * https://docs.amd.com/v/u/en-US/xps_intc
->> + * DS572: LogiCORE IP XPS Interrupt Controller (v2.01a)
->> + *
->>    * Permission is hereby granted, free of charge, to any person 
->> obtaining a copy
->>    * of this software and associated documentation files (the 
->> "Software"), to deal
->>    * in the Software without restriction, including without limitation 
->> the rights
->> @@ -23,10 +26,12 @@
->>    */
->>   #include "qemu/osdep.h"
->> +#include "qapi/error.h"
->>   #include "hw/sysbus.h"
->>   #include "qemu/module.h"
->>   #include "hw/irq.h"
->>   #include "hw/qdev-properties.h"
->> +#include "hw/qdev-properties-system.h"
->>   #include "qom/object.h"
->>   #define D(x)
->> @@ -49,6 +54,7 @@ struct XpsIntc
->>   {
->>       SysBusDevice parent_obj;
->> +    EndianMode model_endianness;
->>       MemoryRegion mmio;
->>       qemu_irq parent_irq;
->> @@ -140,18 +146,29 @@ static void pic_write(void *opaque, hwaddr addr,
->>       update_irq(p);
->>   }
->> -static const MemoryRegionOps pic_ops = {
->> -    .read = pic_read,
->> -    .write = pic_write,
->> -    .endianness = DEVICE_NATIVE_ENDIAN,
->> -    .impl = {
->> -        .min_access_size = 4,
->> -        .max_access_size = 4,
->> +static const MemoryRegionOps pic_ops[2] = {
->> +    [0 ... 1] = {
-> 
-> Hmm, ok, so here we have now an assumption that ENDIAN_MODE_BIG and 
-> ENDIAN_MODE_LITTLE match 0 and 1, which would not work anymore when 
-> using 0 as unspecified... a little bit ugly ... so maybe instead of 
-> changing pic_ops into an array ....
-> 
->> +        .read = pic_read,
->> +        .write = pic_write,
->> +        .endianness = DEVICE_BIG_ENDIAN,
->> +        .impl = {
->> +            .min_access_size = 4,
->> +            .max_access_size = 4,
->> +        },
->> +        .valid = {
->> +            /*
->> +             * All XPS INTC registers are accessed through the PLB 
->> interface.
->> +             * The base address for these registers is provided by the
->> +             * configuration parameter, C_BASEADDR. Each register is 
->> 32 bits
->> +             * although some bits may be unused and is accessed on a 
->> 4-byte
->> +             * boundary offset from the base address.
->> +             */
->> +            .min_access_size = 4,
->> +            .max_access_size = 4,
->> +        },
->>       },
->> -    .valid = {
->> -        .min_access_size = 4,
->> -        .max_access_size = 4
->> -    }
->> +    [ENDIAN_MODE_BIG].endianness = DEVICE_BIG_ENDIAN,
->> +    [ENDIAN_MODE_LITTLE].endianness = DEVICE_LITTLE_ENDIAN,
->>   };
->>   static void irq_handler(void *opaque, int irq, int level)
->> @@ -174,13 +191,27 @@ static void xilinx_intc_init(Object *obj)
->>       qdev_init_gpio_in(DEVICE(obj), irq_handler, 32);
->>       sysbus_init_irq(SYS_BUS_DEVICE(obj), &p->parent_irq);
->> -
->> -    memory_region_init_io(&p->mmio, obj, &pic_ops, p, "xlnx.xps-intc",
->> -                          R_MAX * 4);
->>       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &p->mmio);
->>   }
->> +static void xilinx_intc_realize(DeviceState *dev, Error **errp)
->> +{
->> +    XpsIntc *p = XILINX_INTC(dev);
->> +
->> +    if (p->model_endianness == ENDIAN_MODE_UNSPECIFIED) {
->> +        error_setg(errp, TYPE_XILINX_INTC " property 'endianness'"
->> +                         " must be set to 'big' or 'little'");
->> +        return;
->> +    }
-> 
-> ... would it be possible to patch in the right value for pic_ops.endianness
-> here instead?
+On 12/2/25 13:36, Philippe Mathieu-Daudé wrote:
+> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
+> of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
+> Add the "little-endian" property to select the device
+> endianness, defaulting to little endian.
 
-Ah, clever than my reply on the previous patch. I'll give it a try, thanks!
+Grr, please read:
 
+   Add the "endianness" property to select the device endianness.
+   This property is unspecified by default, and machines need to
+   make it explicit.
+
+(same in following patches).
+
+> Set the proper endianness for each machine using the device.
 > 
->   Thomas
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/intc/xilinx_intc.c                    | 59 ++++++++++++++++++------
+>   hw/microblaze/petalogix_ml605_mmu.c      |  1 +
+>   hw/microblaze/petalogix_s3adsp1800_mmu.c |  3 ++
+>   hw/ppc/virtex_ml507.c                    |  1 +
+>   hw/riscv/microblaze-v-generic.c          |  1 +
+>   5 files changed, 51 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+> index 6930f83907a..ab1c4a32221 100644
+> --- a/hw/intc/xilinx_intc.c
+> +++ b/hw/intc/xilinx_intc.c
+> @@ -3,6 +3,9 @@
+>    *
+>    * Copyright (c) 2009 Edgar E. Iglesias.
+>    *
+> + * https://docs.amd.com/v/u/en-US/xps_intc
+> + * DS572: LogiCORE IP XPS Interrupt Controller (v2.01a)
+> + *
+>    * Permission is hereby granted, free of charge, to any person obtaining a copy
+>    * of this software and associated documentation files (the "Software"), to deal
+>    * in the Software without restriction, including without limitation the rights
+> @@ -23,10 +26,12 @@
+>    */
+>   
+>   #include "qemu/osdep.h"
+> +#include "qapi/error.h"
+>   #include "hw/sysbus.h"
+>   #include "qemu/module.h"
+>   #include "hw/irq.h"
+>   #include "hw/qdev-properties.h"
+> +#include "hw/qdev-properties-system.h"
+>   #include "qom/object.h"
+>   
+>   #define D(x)
+> @@ -49,6 +54,7 @@ struct XpsIntc
+>   {
+>       SysBusDevice parent_obj;
+>   
+> +    EndianMode model_endianness;
+>       MemoryRegion mmio;
+>       qemu_irq parent_irq;
+>   
+> @@ -140,18 +146,28 @@ static void pic_write(void *opaque, hwaddr addr,
+>       update_irq(p);
+>   }
+>   
+> -static const MemoryRegionOps pic_ops = {
+> -    .read = pic_read,
+> -    .write = pic_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> -    .impl = {
+> -        .min_access_size = 4,
+> -        .max_access_size = 4,
+> +static const MemoryRegionOps pic_ops[2] = {
+> +    [0 ... 1] = {
+> +        .read = pic_read,
+> +        .write = pic_write,
+> +        .impl = {
+> +            .min_access_size = 4,
+> +            .max_access_size = 4,
+> +        },
+> +        .valid = {
+> +            /*
+> +             * All XPS INTC registers are accessed through the PLB interface.
+> +             * The base address for these registers is provided by the
+> +             * configuration parameter, C_BASEADDR. Each register is 32 bits
+> +             * although some bits may be unused and is accessed on a 4-byte
+> +             * boundary offset from the base address.
+> +             */
+> +            .min_access_size = 4,
+> +            .max_access_size = 4,
+> +        },
+>       },
+> -    .valid = {
+> -        .min_access_size = 4,
+> -        .max_access_size = 4
+> -    }
+> +    [0].endianness = DEVICE_LITTLE_ENDIAN,
+> +    [1].endianness = DEVICE_BIG_ENDIAN,
+>   };
+>   
+>   static void irq_handler(void *opaque, int irq, int level)
+> @@ -174,13 +190,27 @@ static void xilinx_intc_init(Object *obj)
+>   
+>       qdev_init_gpio_in(DEVICE(obj), irq_handler, 32);
+>       sysbus_init_irq(SYS_BUS_DEVICE(obj), &p->parent_irq);
+> -
+> -    memory_region_init_io(&p->mmio, obj, &pic_ops, p, "xlnx.xps-intc",
+> -                          R_MAX * 4);
+>       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &p->mmio);
+>   }
+>   
+> +static void xilinx_intc_realize(DeviceState *dev, Error **errp)
+> +{
+> +    XpsIntc *p = XILINX_INTC(dev);
+> +
+> +    if (p->model_endianness == ENDIAN_MODE_UNSPECIFIED) {
+> +        error_setg(errp, TYPE_XILINX_INTC " property 'endianness'"
+> +                         " must be set to 'big' or 'little'");
+> +        return;
+> +    }
+> +
+> +    memory_region_init_io(&p->mmio, OBJECT(dev),
+> +                          &pic_ops[p->model_endianness == ENDIAN_MODE_BIG],
+> +                          p, "xlnx.xps-intc",
+> +                          R_MAX * 4);
+> +}
+> +
+>   static const Property xilinx_intc_properties[] = {
+> +    DEFINE_PROP_ENDIAN_NODEFAULT("endianness", XpsIntc, model_endianness),
+>       DEFINE_PROP_UINT32("kind-of-intr", XpsIntc, c_kind_of_intr, 0),
+>   };
+>   
+> @@ -188,6 +218,7 @@ static void xilinx_intc_class_init(ObjectClass *klass, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>   
+> +    dc->realize = xilinx_intc_realize;
+>       device_class_set_props(dc, xilinx_intc_properties);
+>   }
+>   
+> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+> index 8b44be75a22..55398cc67d1 100644
+> --- a/hw/microblaze/petalogix_ml605_mmu.c
+> +++ b/hw/microblaze/petalogix_ml605_mmu.c
+> @@ -111,6 +111,7 @@ petalogix_ml605_init(MachineState *machine)
+>   
+>   
+>       dev = qdev_new("xlnx.xps-intc");
+> +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+>       qdev_prop_set_uint32(dev, "kind-of-intr", 1 << TIMER_IRQ);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
+> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> index 2c0d8c34cd2..15cabe11777 100644
+> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> @@ -71,6 +71,8 @@ petalogix_s3adsp1800_init(MachineState *machine)
+>       MemoryRegion *phys_ram = g_new(MemoryRegion, 1);
+>       qemu_irq irq[32];
+>       MemoryRegion *sysmem = get_system_memory();
+> +    EndianMode endianness = TARGET_BIG_ENDIAN ? ENDIAN_MODE_BIG
+> +                                              : ENDIAN_MODE_LITTLE;
+>   
+>       cpu = MICROBLAZE_CPU(object_new(TYPE_MICROBLAZE_CPU));
+>       object_property_set_str(OBJECT(cpu), "version", "7.10.d", &error_abort);
+> @@ -95,6 +97,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
+>                             64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
+>   
+>       dev = qdev_new("xlnx.xps-intc");
+> +    qdev_prop_set_enum(dev, "endianness", endianness);
+>       qdev_prop_set_uint32(dev, "kind-of-intr",
+>                            1 << ETHLITE_IRQ | 1 << UARTLITE_IRQ);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+> index 23238119273..df8f9644829 100644
+> --- a/hw/ppc/virtex_ml507.c
+> +++ b/hw/ppc/virtex_ml507.c
+> @@ -217,6 +217,7 @@ static void virtex_init(MachineState *machine)
+>   
+>       cpu_irq = qdev_get_gpio_in(DEVICE(cpu), PPC40x_INPUT_INT);
+>       dev = qdev_new("xlnx.xps-intc");
+> +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_BIG);
+>       qdev_prop_set_uint32(dev, "kind-of-intr", 0);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
+> diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
+> index 26788a1824a..ebdd461ae98 100644
+> --- a/hw/riscv/microblaze-v-generic.c
+> +++ b/hw/riscv/microblaze-v-generic.c
+> @@ -79,6 +79,7 @@ static void mb_v_generic_init(MachineState *machine)
+>       memory_region_add_subregion(sysmem, ddr_base, phys_ram);
+>   
+>       dev = qdev_new("xlnx.xps-intc");
+> +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+>       qdev_prop_set_uint32(dev, "kind-of-intr",
+>                            1 << UARTLITE_IRQ);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 

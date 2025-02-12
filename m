@@ -1,134 +1,188 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp965967njb;
-        Wed, 12 Feb 2025 04:42:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVNpK+C77jpsCOKmwjA7xbbjloG32Lh77aLPngzRPudyom6mEUochp7TxqBrzxYFkzZZjb494Q1iEJ61Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHk8KNsHT4MsahYF6iGUkg1piHTJWrw0Qzxn0URchErYD8h8ejEXH8+1FIGuMXl8QYFsn+n
-X-Received: by 2002:ac8:7e8f:0:b0:471:a897:b3ae with SMTP id d75a77b69052e-471aff1dc5bmr42482261cf.46.1739364160908;
-        Wed, 12 Feb 2025 04:42:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739364160; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp973868njb;
+        Wed, 12 Feb 2025 04:57:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWfmVCaz5C9rkg97BJQ9zLXNVx/dBDOS4M7oy7F6So1+/9pRDRQ6bav1fQwxvBCeZtZCV88QTIcGR71kA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTpvoL94/lrk8tfSBBZo9qIsQ+XlEbHCcc/wBAQ/dyJISSW8jzaOnRSZR+vYEHjG+Z3btu
+X-Received: by 2002:a05:622a:1983:b0:471:93cb:77d3 with SMTP id d75a77b69052e-471afe0ec3fmr43366691cf.2.1739365035724;
+        Wed, 12 Feb 2025 04:57:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739365035; cv=none;
         d=google.com; s=arc-20240605;
-        b=NKy55/YDIu+1ge7yxSZnH5fVFSN/qQfLftuPURsSzbWdCDeNAGU+Dcg2Xjng2Y4bmO
-         nZ1rDVLw5dQNMjqDFqrjRYiNmEA5bYDaFiYGV/4H96DbB8uKHo2fJaPF1iIZpM4F6VpO
-         010Zg+gf2XT9eMFscGEDFqmuey3Q7k33h4liZUTzkfOpPDo2WiqkRDmAbcVk4XHf6e/f
-         bNFMsWoEgKaPI/+ze7n8nm4AUhYxv7LdO7jBADNlIPr2pVa6R99anYooYecay3y8WWXF
-         2636Kd+CCg07fvAyHbZ0Mp5H8ldDEGL8itnqj6Zu+ZkejFy9/1a3Dji3/J0AWoz2WzW9
-         nGuA==
+        b=g3Tbw20WtZVp9y292FuzPK5ebJ5EmHaqA99fIbtxpjPkeIvyBQLZ5cjdLF9ksSP8/G
+         s8YX85NH/RzSke3Rmzxm8SEJdy+Z7GjDgHfYaeKpXHyusfNEm56GzDMgciVGVMMZcPyR
+         d2r71x+f52KC4sDrRshmnxIoTbAx8jQxFcd+/q5VyPxK0x7VDkTL5mVmfgKTL4bISAxo
+         GrkFOnMO1p26rAj2m3N2FIYeH7UzLcpV9ngmje69iODNicbKf3xf/Xj5OAWSZgpsPoQw
+         343+BZFgvsmochEVXJvZJXpv4hsKS3m7T4JQ595i3bs7133apNX3CwgkyYuD16B09C6g
+         AxOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
-        fh=rh0LCinyD/Arq96VXngAo6nmXyNpOsZgiNhnJ7Jjky0=;
-        b=ZkCQpDk3bCVPUGuaMHkeI4NeAROboApu7rI9+CLAlvyHu51Txa06ImBj5hO9MkpYR9
-         nLjo8ViPPU3l2ctZG2P6JAT1G+XtWicAABzECWQ4Sh92XV+KypfpJG8FoA7bc3o1j3c6
-         0dc6zdTwSKqA5YwGyotTd2bRn1Ho4pFEh+QOqT/Qc4cK+NAYMZgzJz56d23YJ/PCjKIA
-         1TAfkeTasxfGOIwdZf8AGZTuvVklX+17rtYdx2P97WOfZt86e0XTKHaQKF8GhvD0CkgX
-         m4MOw0ZNHcqzG56goGX0za0qAgRhaxDHd34EGvT3xZRgwxheubLz29CCm+X+ST5VCQCk
-         /DiA==;
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ne1BlzP1YQdadKpVDm54zkVw4T40qs/CxXR7/xXJYC8=;
+        fh=BrCoGxO/tyG6LJbwmZU2q6Oe7Sjbeiv9rF7AGadg6k0=;
+        b=KvVjW0tKRbnZzUIZo0SkZd+mgw/NDFMDnfYQ/xJuOldfYdKC8BXdZXcS0kjOl27FLD
+         Bg3DXDdyHLbq6iVnS4N2R/arSTtyjG13bLb5IdIkuULKrWJTZhvdTxx4O/oGGOH7k4nn
+         n8JPPZCSEdPq8WfitpThQVlBwkC4DrCL/+EBDTBYHsqKZBeAwty9mglu68jaAH6wFeig
+         bmUZ3YlbSfJfIm/q7H67OVkiMRfr/aTONbHyg3GApYGAA5P6dgUa0LFGbSEMvfDuDu2N
+         DqK87urfyMvzCUFhYAgNfr38ArScsgMNXrs60u9yizMeInTP9Ps/jUtPoQiaWYLlBYLp
+         V+wA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="kNR/Asfy";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DbGAKiSp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471bb2111cdsi4020421cf.656.2025.02.12.04.42.40
+        by mx.google.com with ESMTPS id d75a77b69052e-4718c96e36fsi72679491cf.593.2025.02.12.04.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 04:42:40 -0800 (PST)
+        Wed, 12 Feb 2025 04:57:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="kNR/Asfy";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DbGAKiSp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiC4N-0002qv-7T; Wed, 12 Feb 2025 07:42:23 -0500
+	id 1tiCIW-00012c-OR; Wed, 12 Feb 2025 07:57:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC2B-0007Gp-97
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:40:09 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC24-0001Yl-On
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:40:02 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-38dd14c99c3so2531378f8f.3
- for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 04:39:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739363998; x=1739968798; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
- b=kNR/AsfyynfKBmNWYnNfd+8f/0Us8Jbzep1FT+F/7ULMg0TPyXH3+xc4RARTTCw2hS
- M48UX1uhbPEOcxp9d4rbHtqulGo7OxcGxFvMIPYyy1eLxyNiwvZgIc7B6OJRkztaYYaO
- LO0jEjjQb0iuHaSxyVFIpk94hIYZyG4z0LtThIdOL+796hUg8PpUvpPN/4w06w+TPYqM
- mBfHHMVSN4rSkYQ7fW/oJPszdnV/TBGnVVpzsaizyIz1iQbyIaKBdZlxQEIXQ1/0iXii
- VFBIvfPrJmKYLvS+dRqhUhe+CjAJaQmDgl/RRdOKX9AfMX32Xy20bTanL1bRbSA9rROt
- BRBg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiCI7-0000uX-BV
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:56:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiCI4-0006Gu-Cf
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 07:56:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739364990;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ne1BlzP1YQdadKpVDm54zkVw4T40qs/CxXR7/xXJYC8=;
+ b=DbGAKiSp0oj1q2TF6UHqD5RVD0mwkcitHflw4pXPCJ0iy9y3sa9stbke0y3sz28ywiqEw1
+ accgYiPnW5VtbGe0XN59ZYhVUSZkRqJlO1oZg4hA35HxXIOFa4wXrvnsTz8UatuetwB1wt
+ s8Wl0wG5ED7mX9OBqXQYZ1ueGYe2mRc=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-435-hIi0E_97PmqxDp8XuXu2Rg-1; Wed, 12 Feb 2025 07:56:29 -0500
+X-MC-Unique: hIi0E_97PmqxDp8XuXu2Rg-1
+X-Mimecast-MFC-AGG-ID: hIi0E_97PmqxDp8XuXu2Rg
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-38de0a98043so1342525f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 04:56:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739363998; x=1739968798;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XVggahge6PQwVtPrzOlQf5XNa7nfQaS8kLhbInvvTDo=;
- b=gTAbreLUMNiLzjaCL16dXhpkdkLOqGFFKpHugebI0Y1loq5F4N2W7yyaT6/BoQtihX
- 8YxOwx5Bsyg+pjcwhygS/uNojIGj17r3ORkqmAdnvoiZkShr9SmCxMVvxI657ab5cfXd
- vC6f5oxQuO9Cft+C9O+znQNxGJFSB++y1CJjMgX9dwWaa6Meiub7NBfV0MK4CMU/BX3/
- joQu+3kZ6CBgaqNMYOl385u+IhrPT8Rl99lAq0eF0/06WRRVgkIGUoBJW2qwK8M0xcjf
- WCJb/6zXLHaGPWrE7oBED6UKVmwJQBp3uLe7Lv9zQz3V+TLmlR6lnUzsQUPewN3h5mB+
- bd0w==
+ d=1e100.net; s=20230601; t=1739364988; x=1739969788;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ne1BlzP1YQdadKpVDm54zkVw4T40qs/CxXR7/xXJYC8=;
+ b=DsszbaS23+FOzhB462pSbF2uVmCP8YrHn4T905WxiPgKlg2Th9Y1sQ8jTZpTbGdPIR
+ 4F+liX+rZHstdc333lTysvJanMLEzH34JX1FJALD59DS8sfB8JCTHH41JWlW3B1RGff+
+ vr8+B9pxK2MxgcpblDO11IGT2qc/AXBVMgtn1ury+kwI6BnY2Yt6+QHc+K7uTekegtIX
+ 3KMviPbVLl3MDpA6SmPvLQogw+v713GE2mXWYBHl8A/eRMqQqNlCMBYusD3Z7Wm5Zq5V
+ EAVZdx/FRGB2Bbff1H1Cd9BeLUr2iJsU9HXiroWC2TAESiEGGNAa39v3Ey9KIcnxgblG
+ HYVg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7SqyfzDKa0A3XVFW1d9r+9LYr0FBH30Xgjk4KE0eoooU4HAYhU6PeLWNm8QRrUkYu/hpri3tmKQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzrdI+qicHNVJ6DU7UVeIb6KfcpzTn1PGxRcM9926f7Z5TfYBJc
- 4HVlSo+csXyPk6WBS+7QC0VMIt7lgmTXt8H3uSQUV6JS55lOzUDy6Vzr0yFOdYI=
-X-Gm-Gg: ASbGnctkbqp2szleiA9TcsV1BPsNPfE4KB5Pz6sXSrIDV9N2dmLPf76yHqI6XPC06sj
- H0h/CIPhs/+x1uoxmoOOKku2mXDTq8UzMl5vLJTHPwZnomcPesb8TT3A9TsWd0S1sz6rJOy+OYu
- jHkvUqYrVdBd5Ynj3CO6UXgGBg+6zoqQiNtG2wxGPNEydqVJScjMNFm6JTWAphMjbuWpJXeDZw3
- jprPYwsyLj4pktYLmKFsTyxWP+P+NBdJDHqXbUTgHD0DIUv1TI58tjqYtIjfJLEOMUhvFVKpxTn
- TAhPniWrNeXRNGCeOz1MuN0mxuAnGN5gs4lkSSg3hb9d8zD9jFzvDSb/174=
-X-Received: by 2002:a05:6000:400f:b0:38d:e572:4db4 with SMTP id
- ffacd0b85a97d-38dea2e6942mr2407650f8f.43.1739363997821; 
- Wed, 12 Feb 2025 04:39:57 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4395a04cda4sm19557005e9.1.2025.02.12.04.39.56
+ AJvYcCXzKTQzDAbSHuy3IyYYaakxpBXYF27XEcva9Zm8bXyBpYvp5zW+Fn62BIuqqGxnXsNDEfmz+D4WCw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxmyuh4VwMz9JPCBhxSRi5SJfDZ55UzlICCFTWxywvmxmHCXvrE
+ ktCIY5k61UT2eirijIeL95LbxM6B5UyFl3UfVXMFPw8HGwsQcpQrUkl9YXBFOj4Gm1U227aVhKy
+ GsGINJUXCw3voc+yeSPsHOUjm/ZKwPiZU15rmDco1ukR52sQW9A==
+X-Gm-Gg: ASbGncuh6sB7r1whOdlHuCvXfPqqc8taS722WvonR+abSICooUeq1yqYS1M2S1Vb4/t
+ ShfmlACG9P151vkDOVTD9ZM+4Lcj28+1zjUZb7P0NFFkXn1PM2RZRcr9NV/jx+3acycSUD3OOoW
+ gIZ4cO0zp/TI27QqG7o8QpB3rYOm6HaTJm9VErvKPJp3ujB55iCTcSYo59Vh6fHUcGwsaEeFGBT
+ 5129YMJsmyBqnyeSlAKwW8ZJqQhJk9QZLqc3M66pdTwOppHLYb6fvEw/sSG0Ve41eCDAzDoaTWW
+ hhz24lGPuX8WCrVOVwB3/TjaaJWpnsZiaw==
+X-Received: by 2002:a5d:47af:0:b0:38d:d4b5:84cf with SMTP id
+ ffacd0b85a97d-38dea256360mr2255269f8f.5.1739364987932; 
+ Wed, 12 Feb 2025 04:56:27 -0800 (PST)
+X-Received: by 2002:a5d:47af:0:b0:38d:d4b5:84cf with SMTP id
+ ffacd0b85a97d-38dea256360mr2255240f8f.5.1739364987576; 
+ Wed, 12 Feb 2025 04:56:27 -0800 (PST)
+Received: from [192.168.0.7] (ip-109-42-48-37.web.vodafone.de. [109.42.48.37])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dd4764880sm11720485f8f.25.2025.02.12.04.56.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2025 04:39:57 -0800 (PST)
-Message-ID: <a3b32514-6220-4101-ade0-38d2af20b5fc@linaro.org>
-Date: Wed, 12 Feb 2025 13:39:56 +0100
+ Wed, 12 Feb 2025 04:56:27 -0800 (PST)
+Message-ID: <8e5050d7-2792-44af-8317-2dd6948f72c7@redhat.com>
+Date: Wed, 12 Feb 2025 13:56:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v7 02/10] hw/intc/xilinx_intc: Make device endianness
  configurable
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-ppc@nongnu.org, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
  Markus Armbruster <armbru@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 References: <20250212123659.52764-1-philmd@linaro.org>
  <20250212123659.52764-3-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
 In-Reply-To: <20250212123659.52764-3-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: CgZhKmBBrtS8z8zJXrV8emXV2UghqPOejAmBzwnZVx0_1739364988
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,147 +197,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RQrG2G3TftK+
+X-TUID: D7fl7eWb1Zs3
 
-On 12/2/25 13:36, Philippe Mathieu-Daudé wrote:
+On 12/02/2025 13.36, Philippe Mathieu-Daudé wrote:
 > Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
 > of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
 > Add the "little-endian" property to select the device
 > endianness, defaulting to little endian.
-
-Grr, please read:
-
-   Add the "endianness" property to select the device endianness.
-   This property is unspecified by default, and machines need to
-   make it explicit.
-
-(same in following patches).
-
 > Set the proper endianness for each machine using the device.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/intc/xilinx_intc.c                    | 59 ++++++++++++++++++------
->   hw/microblaze/petalogix_ml605_mmu.c      |  1 +
->   hw/microblaze/petalogix_s3adsp1800_mmu.c |  3 ++
->   hw/ppc/virtex_ml507.c                    |  1 +
->   hw/riscv/microblaze-v-generic.c          |  1 +
->   5 files changed, 51 insertions(+), 14 deletions(-)
-> 
-> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
-> index 6930f83907a..ab1c4a32221 100644
-> --- a/hw/intc/xilinx_intc.c
-> +++ b/hw/intc/xilinx_intc.c
-> @@ -3,6 +3,9 @@
->    *
->    * Copyright (c) 2009 Edgar E. Iglesias.
->    *
-> + * https://docs.amd.com/v/u/en-US/xps_intc
-> + * DS572: LogiCORE IP XPS Interrupt Controller (v2.01a)
-> + *
->    * Permission is hereby granted, free of charge, to any person obtaining a copy
->    * of this software and associated documentation files (the "Software"), to deal
->    * in the Software without restriction, including without limitation the rights
-> @@ -23,10 +26,12 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qapi/error.h"
->   #include "hw/sysbus.h"
->   #include "qemu/module.h"
->   #include "hw/irq.h"
->   #include "hw/qdev-properties.h"
-> +#include "hw/qdev-properties-system.h"
->   #include "qom/object.h"
->   
->   #define D(x)
-> @@ -49,6 +54,7 @@ struct XpsIntc
->   {
->       SysBusDevice parent_obj;
->   
-> +    EndianMode model_endianness;
->       MemoryRegion mmio;
->       qemu_irq parent_irq;
->   
-> @@ -140,18 +146,28 @@ static void pic_write(void *opaque, hwaddr addr,
->       update_irq(p);
->   }
->   
-> -static const MemoryRegionOps pic_ops = {
-> -    .read = pic_read,
-> -    .write = pic_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> -    .impl = {
-> -        .min_access_size = 4,
-> -        .max_access_size = 4,
-> +static const MemoryRegionOps pic_ops[2] = {
-> +    [0 ... 1] = {
-> +        .read = pic_read,
-> +        .write = pic_write,
-> +        .impl = {
-> +            .min_access_size = 4,
-> +            .max_access_size = 4,
-> +        },
-> +        .valid = {
-> +            /*
-> +             * All XPS INTC registers are accessed through the PLB interface.
-> +             * The base address for these registers is provided by the
-> +             * configuration parameter, C_BASEADDR. Each register is 32 bits
-> +             * although some bits may be unused and is accessed on a 4-byte
-> +             * boundary offset from the base address.
-> +             */
-> +            .min_access_size = 4,
-> +            .max_access_size = 4,
-> +        },
->       },
-> -    .valid = {
-> -        .min_access_size = 4,
-> -        .max_access_size = 4
-> -    }
-> +    [0].endianness = DEVICE_LITTLE_ENDIAN,
-> +    [1].endianness = DEVICE_BIG_ENDIAN,
->   };
->   
->   static void irq_handler(void *opaque, int irq, int level)
-> @@ -174,13 +190,27 @@ static void xilinx_intc_init(Object *obj)
->   
->       qdev_init_gpio_in(DEVICE(obj), irq_handler, 32);
->       sysbus_init_irq(SYS_BUS_DEVICE(obj), &p->parent_irq);
-> -
-> -    memory_region_init_io(&p->mmio, obj, &pic_ops, p, "xlnx.xps-intc",
-> -                          R_MAX * 4);
->       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &p->mmio);
->   }
->   
-> +static void xilinx_intc_realize(DeviceState *dev, Error **errp)
-> +{
-> +    XpsIntc *p = XILINX_INTC(dev);
-> +
-> +    if (p->model_endianness == ENDIAN_MODE_UNSPECIFIED) {
-> +        error_setg(errp, TYPE_XILINX_INTC " property 'endianness'"
-> +                         " must be set to 'big' or 'little'");
-> +        return;
-> +    }
-> +
-> +    memory_region_init_io(&p->mmio, OBJECT(dev),
-> +                          &pic_ops[p->model_endianness == ENDIAN_MODE_BIG],
-> +                          p, "xlnx.xps-intc",
-> +                          R_MAX * 4);
-> +}
-> +
->   static const Property xilinx_intc_properties[] = {
-> +    DEFINE_PROP_ENDIAN_NODEFAULT("endianness", XpsIntc, model_endianness),
->       DEFINE_PROP_UINT32("kind-of-intr", XpsIntc, c_kind_of_intr, 0),
->   };
->   
-> @@ -188,6 +218,7 @@ static void xilinx_intc_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
->   
-> +    dc->realize = xilinx_intc_realize;
->       device_class_set_props(dc, xilinx_intc_properties);
->   }
->   
+...
 > diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
 > index 8b44be75a22..55398cc67d1 100644
 > --- a/hw/microblaze/petalogix_ml605_mmu.c
@@ -293,52 +218,11 @@ Grr, please read:
 >   
 >       dev = qdev_new("xlnx.xps-intc");
 > +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
->       qdev_prop_set_uint32(dev, "kind-of-intr", 1 << TIMER_IRQ);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
-> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> index 2c0d8c34cd2..15cabe11777 100644
-> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> @@ -71,6 +71,8 @@ petalogix_s3adsp1800_init(MachineState *machine)
->       MemoryRegion *phys_ram = g_new(MemoryRegion, 1);
->       qemu_irq irq[32];
->       MemoryRegion *sysmem = get_system_memory();
-> +    EndianMode endianness = TARGET_BIG_ENDIAN ? ENDIAN_MODE_BIG
-> +                                              : ENDIAN_MODE_LITTLE;
->   
->       cpu = MICROBLAZE_CPU(object_new(TYPE_MICROBLAZE_CPU));
->       object_property_set_str(OBJECT(cpu), "version", "7.10.d", &error_abort);
-> @@ -95,6 +97,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
->                             64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
->   
->       dev = qdev_new("xlnx.xps-intc");
-> +    qdev_prop_set_enum(dev, "endianness", endianness);
->       qdev_prop_set_uint32(dev, "kind-of-intr",
->                            1 << ETHLITE_IRQ | 1 << UARTLITE_IRQ);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-> index 23238119273..df8f9644829 100644
-> --- a/hw/ppc/virtex_ml507.c
-> +++ b/hw/ppc/virtex_ml507.c
-> @@ -217,6 +217,7 @@ static void virtex_init(MachineState *machine)
->   
->       cpu_irq = qdev_get_gpio_in(DEVICE(cpu), PPC40x_INPUT_INT);
->       dev = qdev_new("xlnx.xps-intc");
-> +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_BIG);
->       qdev_prop_set_uint32(dev, "kind-of-intr", 0);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
-> diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
-> index 26788a1824a..ebdd461ae98 100644
-> --- a/hw/riscv/microblaze-v-generic.c
-> +++ b/hw/riscv/microblaze-v-generic.c
-> @@ -79,6 +79,7 @@ static void mb_v_generic_init(MachineState *machine)
->       memory_region_add_subregion(sysmem, ddr_base, phys_ram);
->   
->       dev = qdev_new("xlnx.xps-intc");
-> +    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
->       qdev_prop_set_uint32(dev, "kind-of-intr",
->                            1 << UARTLITE_IRQ);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+
+Do we still need a TARGET_BIG_ENDIAN ?: check here, too? ... the 
+petalogix_ml605_machine_init() code still contains it, though big endian is 
+marked as deprecated and untested ...
+
+Anyway, assuming that nobody uses this in big endian anymore:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

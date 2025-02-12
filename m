@@ -1,131 +1,124 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1017440njb;
-        Wed, 12 Feb 2025 06:04:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVoRDkrXKFvUuQPSZ081e77S3Tqoo0T08PzQYAhu/l3DiB3J/muE5gnnKz4GFzJuuIbeH5HHMXwnSi/KA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFq0hgojTkchTfl2mv6MaEjHskCtP3moLYyxosbc0dmXEd/eEUskm7Z7WuosZLPIlW4EcaM
-X-Received: by 2002:a05:620a:2955:b0:7c0:6ae3:884c with SMTP id af79cd13be357-7c06fc57a06mr360525185a.3.1739369070488;
-        Wed, 12 Feb 2025 06:04:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739369070; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1053398njb;
+        Wed, 12 Feb 2025 06:59:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXSmZjHSYtazJfIxwKJRC+gxXB8v+4645gnnZ9wPRF3nbOgi2w56hR+mku/uhmBW1xaPSJ4ZsxSW15Q1w==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1fmuHJT8Nb8Hum6p77UFMLBDSv9KOfZW+ZKowBbJJaDqq+YoywtrOIhXqqU+qrZ2RV+JF
+X-Received: by 2002:a05:6214:410:b0:6d8:ab7e:e554 with SMTP id 6a1803df08f44-6e46edc1dadmr64314876d6.34.1739372346568;
+        Wed, 12 Feb 2025 06:59:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739372346; cv=none;
         d=google.com; s=arc-20240605;
-        b=UhZOYwXZCmudNYYrIW1fSBu0eCamAUo+uavxxPZBhc+NU8yn8YX8qNMMioN5mpUvi/
-         5ekJCgiWkhi58RDCJhnrW9GwKMnLo4sM3cO4aQmZPnvoek/JvoW+bgx5s/wcCrVxlm4g
-         gMeHXkSR/pPOT08ae5eTreFTZRLEMy3xcdWzlV6IYEuLwGCifevJARAxvT8IaqjCFRK5
-         0RbhTY9yBl8bWE9SxuT9Y0PiP+9QeSrZICTp0DuBDpc1rCnzy9SpiLNlYc7ldQJvShRP
-         ioWUK5CN2Wkw1b4mmywQFdbc1ZKL1HsuZ8NdJ5spyp7QCQeBeG2zO5fDxuGKtJlie60b
-         DjPg==
+        b=RBzi7x1C1qS+e+KmZ1XISRb8H4JdvkU8D970pBpJDsOz6vqOuKtHOnaKvXQt33Z39F
+         SedPMhAraw02Vgs8r+JiyzbMIzfviM5vVfsZX5dJb9YF/Li0Fjn0/MiDtzm6cjsfYn9Y
+         c8K3xAoKbRqyJRNTTdUQLfUD5fWqoEStk3q86vxU3/O66CjMl4hk8mj/47YNEZzse9RY
+         eqLfVgo/0wYTnCk6uU8rFk98GsXhwFXrt07zrpS3lMcbASigAZwjEiKRVjdrJ5MBs4JD
+         mqgN6wPIG7HUBMrPNma6gDbFB+yRuqvddohyOZPge8teKdTR1kgycQ6m7rgQUW7qq9KG
+         hYvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kAH2qclmGgBA3ka8vJzUEw7N4C7mBg3fIza94AFCUGI=;
-        fh=3xjc2/6p0FBV614NeldhGxTsWZeYNZf6ZD+i/vkk2wA=;
-        b=bkEwPDKcgRE43ocMP966NTfKGMcn0v58ql7J4SLlgqXkW+dpbC/Lu1Ly3ufK2T59OY
-         fZHid+9GivJsGebz/BTYBi6Qu5ZI3FqUlp5vbbLQHSdJkBTXZ3GJKmmCWM4SOVRz8foC
-         +HgqAoQGVtY4SrM+zS/4iBBKPM6T8GDPxFGklB8z7kDgyLkl3veWlkmKUCaHbM7g3/fB
-         3tfG3NVKFHtWoE/ublU4Wu7SihIrC7QDa8DwOGce9hIHjoCGOnRhZ8PVAdBI1WJfph4k
-         kMYyB3M4p42B2f9j3VjQIHdvEqpH4SyEdzBuwJeqgA6v+QBOEK8h5dPVPq1X1rG09cY7
-         7rJg==;
+        bh=y0cXZBivovxP8ijksatPfPKzIFHRx4Z7abcU1oSJGVA=;
+        fh=BEizEjcKKL/56OMmXtnOFdwBgc86NGkjRMY0k00fz84=;
+        b=RzRUP4NRcWMGYThomFaJMvjIKKvZAEkEt8HCVjftKKAubskZDy/jDR/bMp20poCgUN
+         +U5CF7NDvkfi7n9QndKR7dy7qJGTXP7UcYp7WaE7JsX7vV8c+XS2qB5ip7A54d2usHOt
+         BgblPcyT5bFbM70J3QCRsl2nQ2DB6HtlFtwgIMPHKHd0hhLKwKa+VV3bFygX5AsXLyF6
+         bSbHifagon03av0KLyHQYerKGFzlWAG+vd/rb+XCnTDpaewr0XvUH9AkJQYtL9IcI7F3
+         CJi42/M4cin0gV+b0UEKYTA+bgVxYJScSn2h8y195Pi2P+XghH7lLlWsZ45SdIr1SIuX
+         iAgA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UbkiZW39;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AV+1q7H5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041ee50f6si1329310885a.609.2025.02.12.06.04.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e469c8d4f0si36011986d6.11.2025.02.12.06.59.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 06:04:30 -0800 (PST)
+        Wed, 12 Feb 2025 06:59:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UbkiZW39;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AV+1q7H5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiDLA-0006pI-9N; Wed, 12 Feb 2025 09:03:48 -0500
+	id 1tiECL-0003Vf-FW; Wed, 12 Feb 2025 09:58:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiDL7-0006oY-Fo
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 09:03:46 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiECK-0003VG-Ld
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 09:58:44 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiDL5-0006XR-FS
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 09:03:45 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-38dd011ff8bso4082393f8f.0
- for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 06:03:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiECI-0003sc-Ob
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 09:58:44 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4395f81db4dso1240565e9.1
+ for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 06:58:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739369022; x=1739973822; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=kAH2qclmGgBA3ka8vJzUEw7N4C7mBg3fIza94AFCUGI=;
- b=UbkiZW39MrY0A/jnjsPCqfVFfhFXyM/hjOB2w+7c1WQwVm5ege+38p3A+SdVKNrb0n
- uH5fSq7LITLpNbWOA8vPFX638penPK1iqJKhSlXK8qvfTwmiWSVrdyHcaL2mGtjUonZs
- jAlveIy8l+mXrbWmjqw4iqCERwRRzzwXbtvz9iLIrk2c0JxOxJUXEaOJwor9SlCH8FTM
- fKanWyyGwKqAnnZlgzEob7SZXVWavRz1EBGr3ffzfJawPJF7+hy6w6vRPfIsvr9nYgvf
- fDqWfKwTm+X7c2ErvpDW1/rjPIyqAVLa/m2mkbINjxA1bO2PKMT1vajm5vzMabEDSNfD
- 5tqw==
+ d=linaro.org; s=google; t=1739372321; x=1739977121; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=y0cXZBivovxP8ijksatPfPKzIFHRx4Z7abcU1oSJGVA=;
+ b=AV+1q7H5+LyDbwnvguY4bK5W5QxZJZSxE4bgZ6IhTJTtt56CKTD275UiVLH4kcTsFX
+ XS0jbxaRonhlla8OkoY+PY9LBygNAvtf1cORAmqSR34FdgAjEjXBnqzDJIYcQUQ8sGtz
+ Nu9ZaZegQbeTjK/upnkFWw1288ql143aHebpo6j6CppCS6hZkeyUFH9jOi2C9D95k+9G
+ VmqF3PUvISN6XKmN3LjegFBQzGA88syOq1ZzBPYrN/VM7korOgzkekT9wYNPfZ1xl11x
+ DGr4nDSwjB/FGosMFoY098wPjgr/LUflzoRNZlUoR7HrzQX8wfV0jqjaxzKHO5VNAzqb
+ pcFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739369022; x=1739973822;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1739372321; x=1739977121;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kAH2qclmGgBA3ka8vJzUEw7N4C7mBg3fIza94AFCUGI=;
- b=vRIO8JkiQ9/Idvcgl1LIvLnXOuCicsEfYT6O90CgNFw06ACdsvKtzvvADPDBmhZCB+
- wOxkZkMa2xWaKePORwIGeyQwmDIagF+ZN8VnN9h77bZHY3J50FGt8dwXgFQ6FVaLhXzl
- nPaIZK71N8HyASocF9v/Q0vFuqD/p0o0oVIxNMHouT2S8/XmpjQrc3+fQOs1A1UpDi7e
- EA89m5ggvpGI7LJK99Kv/4oMXQyLGwCnpKvhV+r1e+m3zI75Y+BjkDGEbt2AZOdAxtdp
- k/P0deslq5fgdozMB8SEUkb8BbfdETY3Y/iPTnu6GTX8Ql43oHguRzGdSXlYLSTCBT5p
- dXOA==
+ bh=y0cXZBivovxP8ijksatPfPKzIFHRx4Z7abcU1oSJGVA=;
+ b=XRw0VuNUq1m7yS3RlH4DU3TLVYE+InGIE77pqRbYjElZRzgHeeXQkQtx3+sCKCcJKd
+ vdbdMwf+voPQGEJdsyMRiWEv18tvJFcCNKINKn4fXhEiHsyIs03p0r2RirT8K8oK96kR
+ 7M+nzVVg9EyeMbe3rdXmvsxBCMoKtnTChmmYxp6B5eAGFGTFsd+JGSXz4aVUzSgNgu+0
+ YVN6MNtvNkT0Cy2x1eNUrt92be9jp17TKs1H9bBdc5+De4wBzFUuqpDV/LYCzo8d2J8k
+ 64yGy+l5TGyRHwdPmftKjBy9hYlUBTlkzLY8WNDnYIYAFVIjhDAXm9Ny2hGHR3Olahwq
+ li0w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVmo4IOXWTASE0nZCdrS44fZjZirv3/ql80Suyi1fBhINS4OlzElx49gW5U0dHd9/nlq5IHusa3MA==@nongnu.org
-X-Gm-Message-State: AOJu0YxGu/6Hfu5uTlwHbHjnOLdbCJANtZrQPJAWfrIv3ms67XA0ZLRP
- nJc6P7HJAvjAj+CGZra9b4psxAxTBso8xEIF53gPZewVzzIWsRsst3rEB8iV24Y=
-X-Gm-Gg: ASbGnctOlythNs/aKdmeyi043NhYfWmJvFZCfQnkBQqaFyChrpBxrnFKMxzJSFWHRqw
- axd2fAgFyuV1q/I9Bfr2SE2V0mxq0TXJ9JVLuImdF9I5xoO0A3qbZ4SNW25g3CXOPICDRcIiIwX
- 1GcqbmSjjoNRRfotD77bthZwcvZoC7u3BwP9IipCTCRfaJjDc2fjyIJZ4JPch6c7pdj72TpSVpR
- aC0mWLpamW1SmtH8HGjyu63Zz0A1PbP8DFFhmXKLFCmr/lPPqsff8ur4BVVVgyW4P+Seh6orE+a
- 1h93Ty7eJN5rdeWOlM2Q/tWu7oceqDSc8LIOzYvo80M6TegRT4mIkyqZNaU=
-X-Received: by 2002:a05:6000:184:b0:38d:b448:8ffc with SMTP id
- ffacd0b85a97d-38dea28eb1cmr2337831f8f.27.1739369021551; 
- Wed, 12 Feb 2025 06:03:41 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ AJvYcCXPP5iMpEj1OEN48/0V4a3Mt2kJAWni8wQLCreuikky+vvFVxMTQJ/FSqkPsYXAMloWuMwbtnYQ7w==@nongnu.org
+X-Gm-Message-State: AOJu0YybaeoosqxKBM5o6OgXjNOu9W9PatSH40avEbXg8d9wqHXU0geN
+ BUTthZ7u//NsMIFuSUPAlWAerK11xLsI3Ub46Dr/tV4XVZmp3VCQ5ztWmOhz4zE=
+X-Gm-Gg: ASbGnctFfNvZmeXqqiP8oYQEdeFK0s5QbLRJOqRKKmrbxyGptiJFktH0mwGV0gUVu/1
+ Y/XWLeitui7leQ8RQG89L5RVw3BiJceTARsiNR0sfa/rcy+9QyAcop03JG1J1kSlNnOmV0im56U
+ LsnhabEf3Lxg2++Lk62a5yMqAGpFoCxc9ixxhEt0ixV6TVN0xsd/tp/5Iylb7tPTL5ALiqfQpRm
+ 824sY1ZPukPTwmHVasOnIFChcX9ByrKOBfuqHyfDegJTkfFLF/bP8SOijiWxHFQvVZT2ZAv3/Kd
+ m9kruGMUSY8aGoc6lY8OI++B6R4GbD1dMajWzRfEkG9KuhP/qWN4nTPNQNE=
+X-Received: by 2002:a05:600c:468c:b0:434:ff08:202e with SMTP id
+ 5b1f17b1804b1-439583b4d4bmr30639625e9.8.1739372321223; 
+ Wed, 12 Feb 2025 06:58:41 -0800 (PST)
+Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4395a1b84bcsm21489225e9.40.2025.02.12.06.03.40
+ 5b1f17b1804b1-4395a1aa7bcsm21972115e9.28.2025.02.12.06.58.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2025 06:03:40 -0800 (PST)
-Message-ID: <a3608e43-79ce-403d-8ba7-6735fde66759@linaro.org>
-Date: Wed, 12 Feb 2025 15:03:39 +0100
+ Wed, 12 Feb 2025 06:58:40 -0800 (PST)
+Message-ID: <824c0c10-8aba-4778-b653-d0e2eb6115ea@linaro.org>
+Date: Wed, 12 Feb 2025 15:58:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 01/11] hw/qdev-properties-system: Introduce EndianMode
- QAPI enum
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+Subject: Re: [PATCH 3/8] hw/arm/realview: Explicit number of GIC external IRQs
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20250212112413.37553-1-philmd@linaro.org>
- <20250212112413.37553-2-philmd@linaro.org>
- <cb828dd8-25f6-47c6-9ac7-cae5b0d0932e@redhat.com>
- <50ba4e4b-4124-46bb-bb84-4758ce9c5e66@linaro.org>
- <3b3baed4-0d79-3a28-40cd-e1835e078863@eik.bme.hu>
- <6e707c7f-b94c-47ef-83ab-795605e27963@linaro.org>
+ Igor Mitsyanko <i.mitsyanko@gmail.com>
+References: <20250130182441.40480-1-philmd@linaro.org>
+ <20250130182441.40480-4-philmd@linaro.org>
+ <CAFEAcA_PFSBdB0Uhb8K5aog0kj-HN=s_EBL=pQCkkNLuwUO42g@mail.gmail.com>
 Content-Language: en-US
-In-Reply-To: <6e707c7f-b94c-47ef-83ab-795605e27963@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA_PFSBdB0Uhb8K5aog0kj-HN=s_EBL=pQCkkNLuwUO42g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -147,80 +140,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WAAzsFGVeP+I
+X-TUID: bxmJqY6KtE0x
 
-On 12/2/25 14:53, Philippe Mathieu-Daudé wrote:
-> On 12/2/25 13:56, BALATON Zoltan wrote:
->> On Wed, 12 Feb 2025, Philippe Mathieu-Daudé wrote:
->>> On 12/2/25 12:37, Thomas Huth wrote:
->>>> On 12/02/2025 12.24, Philippe Mathieu-Daudé wrote:
->>>>> Introduce the EndianMode type and the DEFINE_PROP_ENDIAN() macros.
->>>>> Endianness can be BIG, LITTLE or unspecified (default).
->>>>>
->>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>>> ---
->>>>>   qapi/common.json                    | 16 ++++++++++++++++
->>>>>   include/hw/qdev-properties-system.h |  7 +++++++
->>>>>   hw/core/qdev-properties-system.c    | 11 +++++++++++
->>>>>   3 files changed, 34 insertions(+)
->>>>>
->>>>> diff --git a/qapi/common.json b/qapi/common.json
->>>>> index 6ffc7a37890..217feaaf683 100644
->>>>> --- a/qapi/common.json
->>>>> +++ b/qapi/common.json
->>>>> @@ -212,3 +212,19 @@
->>>>>   ##
->>>>>   { 'struct': 'HumanReadableText',
->>>>>     'data': { 'human-readable-text': 'str' } }
->>>>> +
->>>>> +##
->>>>> +# @EndianMode:
->>>>> +#
->>>>> +# An enumeration of three options: little, big, and unspecified
->>>>> +#
->>>>> +# @little: Little endianness
->>>>> +#
->>>>> +# @big: Big endianness
->>>>> +#
->>>>> +# @unspecified: Endianness not specified
->>>>> +#
->>>>> +# Since: 10.0
->>>>> +##
->>>>> +{ 'enum': 'EndianMode',
->>>>> +  'data': [ 'little', 'big', 'unspecified' ] }
->>>>
->>>> Should 'unspecified' come first? ... so that it gets the value 0, 
->>>> i.e. when someone forgets to properly initialize a related variable, 
->>>> the chances are higher that it ends up as "unspecified" than as 
->>>> "little" ?
->>>
->>> Hmm but then in this series the dual-endianness regions are defined as:
->>>
->>> +static const MemoryRegionOps pic_ops[2] = {
->>> +    [0 ... 1] = {
+On 30/1/25 19:36, Peter Maydell wrote:
+> On Thu, 30 Jan 2025 at 18:25, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
->> This is already confusing as you'd have to know that 0 and 1 here 
->> means ENDIAN_MODE_LITTLE and ENDIAN_MODE_BIG (using those constants 
->> here as well might be clearer). It's easy to miss what this does so 
-
-At this point 0 / 1 only mean "from the index #0 included to the index
-#1 included", 0 being the first one and 1 the last one.
-
->> maybe repeating the definitions for each case would be longer but less 
->> confusing and then it does not matter what the values are.
-
-This is what I tried to do with:
-
-+    [ENDIAN_MODE_BIG].endianness = DEVICE_BIG_ENDIAN,
-+    [ENDIAN_MODE_LITTLE].endianness = DEVICE_LITTLE_ENDIAN,
-};
-
-but in v7 we are back of picking an arbitrary value.
-
->> Or what uses the ops.endianness now should look at the property 
->> introduced by this patch to avoid having to propagate it like below 
->> and drop the ops.endianness? Or it should move to the memory region 
->> and set when the ops are assigned?
+>> When not specified, Cortex-A9MP configures its GIC with 64 external
+>> IRQs (see commit a32134aad89 "arm:make the number of GIC interrupts
+>> configurable"). Add the GIC_EXT_IRQS definition (with a comment)
+>> to make that explicit.
+>>
+>> Except explicitly setting a property value to its same implicit
+>> value, there is no logical change intended.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/arm/realview.c | 17 +++++++++++++++--
+>>   1 file changed, 15 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+>> index 9900a98f3b8..4a62c83506b 100644
+>> --- a/hw/arm/realview.c
+>> +++ b/hw/arm/realview.c
+>> @@ -35,6 +35,14 @@
+>>   #define SMP_BOOT_ADDR 0xe0000000
+>>   #define SMP_BOOTREG_ADDR 0x10000030
+>>
+>> +/*
+>> + * The Cortex-A9MP may have anything from 0 to 224 external interrupt
+>> + * IRQ lines (with another 32 internal). We default to 64+32, which
+>> + * is the number provided by the Cortex-A9MP test chip in the
+>> + * Realview PBX-A9 and Versatile Express A9 development boards.
+>> + */
 > 
-> I'm not understanding well what you ask, but maybe the answer is in v7 :)
+> On the other hand, this really *is* the Realview PBX-A9
+> development board. So we can just say that that's the right
+> number (and the vexpress is irrelevant, and the range of
+> settings the CPU itself can have isn't very important either).
+> 
+> (PS: there's no verb "to explicit" in English (ignoring some
+> obscure obsolete ones); French "expliciter" => English "to make
+> explicit"; or you in the case of the subject line here,
+> "specify explicitly" is probably most natural.)
+
+TIL, thanks :)
 

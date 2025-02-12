@@ -1,192 +1,212 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1006164njb;
-        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWc/ISn9fHhzxFwW869tPL9/MzrOAQ5+B65w0tpVm1BTarFrJykZpJW1NBCfEkeJqUCrMA4+iHgkaoFwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHtikgGLBjkhqW4YCmCwGsbzUZafODSpmAmvATn6Styd9EvnYzLtJ5BxekF7ary/PvdncU0
-X-Received: by 2002:a05:620a:4712:b0:7b6:5e73:99e8 with SMTP id af79cd13be357-7c06fc825b1mr604942885a.25.1739367986845;
-        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739367986; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1010097njb;
+        Wed, 12 Feb 2025 05:53:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX2fGM8jHccQZcKp8D1KZgruMw/wq3kOq6M219xkKGaUqnkK/cQftYtLJSX5jGJsilSokNwl37/c6bGQA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHQO+Zv7RggcWwd3VeVNMx+SHGPXM60oKeDw2wa82ROhUv9efM/itj22RxzqHysQ3BnmoYw
+X-Received: by 2002:a05:620a:44d6:b0:7b6:6ffc:e972 with SMTP id af79cd13be357-7c06fc57105mr519232085a.5.1739368403268;
+        Wed, 12 Feb 2025 05:53:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739368403; cv=none;
         d=google.com; s=arc-20240605;
-        b=As/nCjnaSpmrRK8aBY5xowvQk6gGlt/r/tDSrCQnJkAsBNWsVxZwrXWBgHrBSMcveA
-         ONq/SzAlUW8Z07fN3LVn3OjJN/S8rpGwVcNCwE95SQ0sTKiEIZc3ZHTRP9Bvxy0e66lD
-         TyqYI3L4Yh4PEpwt1TbtzhkStGTy3/ok30OMZq0qRkxta2V+bo4KPT7f/n4WU+MXs1no
-         /eSdW5yxFVobU6y1bbF5e2qkjwW9aBg/WedUwn73aA+kp22fwY42pnvU5vdbwUhXd+9d
-         6sir6GcIPza8jASgH1O4u6m25In1BLTSnUAqC6NrPA2gDJkJYJq9A5XrG/SYHyaJiJnD
-         4GBA==
+        b=D/RqyvRIhpY9Z5UQF62PXy3XW2ldS9C38VsFDc6kRwP2LBnOCUwkCo2wzOcTjBdsUn
+         tqDV6G7L4XVGeDTAUWcV6MTfo4iwYBp6o4Gk5yGEEs0kI6aTE+DB3gMTeJjrkT7IsTFO
+         NZysD//D4wviuzGH8QV7+gJt3KRfw8NIDUlWDnenwvCGyHU3dGCnc6Iph/OIpHt5e9aj
+         klmY0vOjddw44fZvOcqkjzPmOG4SHs5v9RYZr6SuIppjN73K/Ahx9kaph3fe4x9wQVg+
+         aiAkLsm/I+sAFJh0LPUjanvhKLfdiKh1nv5cgZqVs00MiQhI7U7jC9Mx+tK/yj9F7bh5
+         LiaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8nNDiYVOIzb50G8u/FMD6qLfVR5OxkQy/ZxxsYWuLR4=;
-        fh=6rrE52cgrYC9rXTqUznJzNUw28CrRy1ExPnK9AwMPYQ=;
-        b=hw3FPSbHPJjUSCyz2JnRhBf0bgWMoy80CvoIw0NUDVbniWZdenoYIjKNGzlnYAf4/F
-         skGZIrPKjTOWdKfENkSEK3CDe2YukHz+e9qdSw16s9O//e1AYX/xYtzBp7Pw41Ntu0Jo
-         vEBW6Me19zBPS/BzbH1F0fQs54isbbRD7xDHKnW8Av+yQPWkGQPYz35k2Zoy+o280vy5
-         yK0CglUmuIY50XNIHxSISk8e9ROHFctPEA1Kti1kEMPb+uwTo58y5HZAlK+dv6ylI00P
-         RU6ELkZV2Mx5IVCd4o7OomJb9XoBMkDY5BketaR0r0cUm5S8zGBUt4UWMJwMaewurkqj
-         6/hQ==;
+        bh=zfbyxcqWj/UiN856rWG2h1KLNYBYxW0dhw/bjjl2hE0=;
+        fh=DdEZKeBlDtAA4K2wnjZsPXzbNBV47Bm7nPGFEY3htMo=;
+        b=F1hoLCkddvlh89pG1Ay9qyMW1ixaTCT/ND/EIYraCX1lGZG0c9Hon67XfXoYlGo028
+         z9e/1NyR8m+RnAjwSM1/ctTc6Ea6jvhgFP1bFzsZuowxDZc1LA4IJua9ScpA+HnWNpDq
+         LEZPllfOsio+BTb3aEySqeo3VtlU3299ZKd4+B8YCXg/2Kb+WB3SLYCA42fJX2exeAHN
+         dXbttUsP61ZuPQo6a1yQtWRG/tWNWndn0T2gbFtogiQLAXhJY1Z9JA4blZR6oRR8YhFn
+         zwVZqraYgC1fb9y6oKj31kJbtjDOPrdqSVSR74sj60deQnAqlkRaMnAle7iYxAJVcynf
+         /elg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=OvnF2Qib;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aYMeakJW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041ee6872si1329597385a.607.2025.02.12.05.46.26
+        by mx.google.com with ESMTPS id af79cd13be357-7c074360f29si109305085a.2.2025.02.12.05.53.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Feb 2025 05:53:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=OvnF2Qib;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=aYMeakJW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiD3s-0006Ui-Pk; Wed, 12 Feb 2025 08:45:56 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tiDAw-00029C-Fm; Wed, 12 Feb 2025 08:53:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=131cd17d8=graf@amazon.de>)
- id 1tiD3q-0006U3-Hq; Wed, 12 Feb 2025 08:45:54 -0500
-Received: from smtp-fw-80007.amazon.com ([99.78.197.218])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=131cd17d8=graf@amazon.de>)
- id 1tiD3o-0002qk-CB; Wed, 12 Feb 2025 08:45:54 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiDAq-0001z9-Ou
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 08:53:10 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiDAn-0004UD-BR
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 08:53:08 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-38dcb7122c1so4565764f8f.2
+ for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 05:53:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1739367952; x=1770903952;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=8nNDiYVOIzb50G8u/FMD6qLfVR5OxkQy/ZxxsYWuLR4=;
- b=OvnF2QibsSWW2RmFaSbTQF8TXnQgDNX5xY5pFTxBHWepbEFn6j3LtXME
- 7NALqnPaa5r014hi3VkZTknJbcmRDSsUPJ9naY/MjFuuiplOL1qHorrjh
- ZWs8t9dUYANma6ohRcJM57XcFQjrgDfytb6JtaKIkptDFhcBBQ/QYrarJ o=;
-X-IronPort-AV: E=Sophos;i="6.13,280,1732579200"; d="scan'208";a="376710266"
-Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
- smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.210])
- by smtp-border-fw-80007.pdx80.corp.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 13:45:48 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [10.0.38.20:50646]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.63.65:2525]
- with esmtp (Farcaster)
- id 229e485f-f479-4442-ae6b-8afd477a348f; Wed, 12 Feb 2025 13:45:47 +0000 (UTC)
-X-Farcaster-Flow-ID: 229e485f-f479-4442-ae6b-8afd477a348f
-Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
- Wed, 12 Feb 2025 13:45:47 +0000
-Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
- (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Wed, 12 Feb 2025
- 13:45:43 +0000
-Message-ID: <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
-Date: Wed, 12 Feb 2025 14:45:41 +0100
+ d=linaro.org; s=google; t=1739368382; x=1739973182; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zfbyxcqWj/UiN856rWG2h1KLNYBYxW0dhw/bjjl2hE0=;
+ b=aYMeakJWs/OmTBwXGYTQIOS3fnmd2DDTL9fXfNxZpZTHJ3d5qLkv5REWRdHsf14iOV
+ p6KvwAeuyCyHzBfauGVUdwSDnAPpYzAl5xGtmxj/B4lpeVoajb5TdwYzE2ZEHgUeFH75
+ K2D2HKWl5V2CKqNNsH/FBVBeY/ZXfedFqD7rllAWQGejDGtVi4Q4HdkT4qmLfCnBdsYD
+ ocg3iS1zNlqkRqWVJh0xGgMwwPfRakFKDSX//mNtwPqUDrujVHCBg5x5poOpEpRV1zsa
+ dPG/iqtLVwT03vQ1vb65gLpCQbDJ01U+SGK3iWcwOix8c9+FNgSZKoiTjN2wvKjcT/rg
+ aAIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739368382; x=1739973182;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=zfbyxcqWj/UiN856rWG2h1KLNYBYxW0dhw/bjjl2hE0=;
+ b=f1IZXty/l3QVcrz7YpGqEbHM+furNj+CiCRKizpwVI9ShmHp3/HNtgv6YOLVin8SAz
+ xyTQTgWcz7AF1XH8/WDcFad/7KuOt9gJXtxAdDNf6Pv951pv9mNDj+AL7WFsAMui+F8L
+ 4LLDA9spBOaw35hI0fIVs4z8Dlu4D9bhf2s911bArf+Ip7Uc0HJs/4hh1240priztF5F
+ vHHAybaruafR3/LRaj/fBAl2VwDXAraGq0JWcs5BshOqLbzcG28+/wre8SuTWV/GbHIi
+ 5GzYd4kYAKRTujC61kil6HLQC79/awCqBw0npJ6e3pdbCYFv3hWkc9RpOBdG4fMmF6ba
+ Q22A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVtF8to8gqC1dJufEAW0Xn/GUrpnw7Sv8K0R3H2JbJiqFTyl+PnI52PxYmc7eOxjtIo2kYejYgOt53s@nongnu.org
+X-Gm-Message-State: AOJu0YxNJXqoq3aRMB4sFQiFyU/6F5ecamyx+M7QbyRz71AsIJkzYqDo
+ 5pig7S1/3dH9fTFvQw2nDvd8d8CgyT6jDSU+1enrJ33IFMqhar48vW5wW1kV/BXWFCESP7eI1FN
+ /pWw=
+X-Gm-Gg: ASbGnct++GWBOQNNQ2jfnXCWBUeNoeYGaqnBJXlY81S9lfrvHQiPELMjrSVhMcJneXK
+ DHXBBSfACpXZZV8zBf/S2eAkHxAuVgYI4i1z5/DzOMfSZg/HvwI4X0di4gG54DYSXWB9MgwQ2MQ
+ MIyZv0h21pQQ8aTIb3k5tORYGtjqh/D1E587KlRTVjLTxoJp/DNoEi3U1fAg7W1lloYkjLTOEeQ
+ kG3i3EcAGR2Jqev+biAgkm1Ij62M928TgvvIWbUDXC3OsdOfgKWJ5HEQhIV0kWbUsSU0cvyjaQm
+ Zen9EI2XId3IZ3ia3sLC0dxtZMSfBXjqpIDznF34/GTZ85nqSmExZUeYcvg=
+X-Received: by 2002:a05:6000:bd2:b0:38d:dc0d:8f4c with SMTP id
+ ffacd0b85a97d-38dea270ec9mr2169095f8f.20.1739368382142; 
+ Wed, 12 Feb 2025 05:53:02 -0800 (PST)
+Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dc33939f3sm16776390f8f.17.2025.02.12.05.53.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Feb 2025 05:53:01 -0800 (PST)
+Message-ID: <6e707c7f-b94c-47ef-83ab-795605e27963@linaro.org>
+Date: Wed, 12 Feb 2025 14:53:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
-To: Gerd Hoffmann <kraxel@redhat.com>
-CC: <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Thomas Huth
- <thuth@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, <qemu-arm@nongnu.org>, Michael Roth
- <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Ard Biesheuvel
- <ardb@kernel.org>
-References: <20250211092324.965440-1-kraxel@redhat.com>
- <20250211092324.965440-10-kraxel@redhat.com>
- <da0ac9ed-fdca-433e-b793-5423f430a852@amazon.com>
- <iuwaykfdm7bwtvblyz7lkew3em2ksi5xeztdphqjdv7tsp2ejw@s6j64y3lfmrw>
- <ea1d355b-7e56-47ef-b1e7-158003b6d85f@amazon.com>
- <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
+Subject: Re: [PATCH v6 01/11] hw/qdev-properties-system: Introduce EndianMode
+ QAPI enum
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+References: <20250212112413.37553-1-philmd@linaro.org>
+ <20250212112413.37553-2-philmd@linaro.org>
+ <cb828dd8-25f6-47c6-9ac7-cae5b0d0932e@redhat.com>
+ <50ba4e4b-4124-46bb-bb84-4758ce9c5e66@linaro.org>
+ <3b3baed4-0d79-3a28-40cd-e1835e078863@eik.bme.hu>
 Content-Language: en-US
-From: Alexander Graf <graf@amazon.com>
-In-Reply-To: <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.253.83.51]
-X-ClientProxiedBy: EX19D044UWB002.ant.amazon.com (10.13.139.188) To
- EX19D020UWC004.ant.amazon.com (10.13.138.149)
-Received-SPF: pass client-ip=99.78.197.218;
- envelope-from=prvs=131cd17d8=graf@amazon.de; helo=smtp-fw-80007.amazon.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <3b3baed4-0d79-3a28-40cd-e1835e078863@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ek2NLytwp7YC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wvvkAAodXzLl
 
-
-On 12.02.25 13:28, Gerd Hoffmann wrote:
-> On Wed, Feb 12, 2025 at 12:30:20PM +0100, Alexander Graf wrote:
->> On 12.02.25 11:24, Gerd Hoffmann wrote:
->>> Why do you use confidential computing in the first place if you trust
->>> the host with your EFI variables?  I'd rather see something simliar
->>> running under guest control, in svsm context.
->> That depends heavily on your threat model. You can use a host provided
->> variable store to gain variable persistence for things like boot variables
->> and then have an ephemeral SVSM based TPM that you use to measure the loaded
->> payloads. A malicious host can already replace your root volume, so
->> extending the threat to variables is not the end of the world.
-> If you go depend on measured boot instead of secure boot then yes, this
-> might be a workable model.  Should be doable with a small svsm driver
-> which forwards requests to the host via svsm-controlled bounce buffer
-> (where the svsm has control over page properties).
-
-
-In a BYOF world it's even useful without SVSM at all, because the launch 
-digest performs measurement for you, but you still want to find your 
-boot variables.
-
-
->>> The firmware knows all this very well though.  The OS passes a mapping
->>> table to the firmware, efi runtime drivers can subscribe to mapping
->>> updates and can use RT->ConvertPointer to translate addresses from
->>> physical to virtual.
+On 12/2/25 13:56, BALATON Zoltan wrote:
+> On Wed, 12 Feb 2025, Philippe Mathieu-Daudé wrote:
+>> On 12/2/25 12:37, Thomas Huth wrote:
+>>> On 12/02/2025 12.24, Philippe Mathieu-Daudé wrote:
+>>>> Introduce the EndianMode type and the DEFINE_PROP_ENDIAN() macros.
+>>>> Endianness can be BIG, LITTLE or unspecified (default).
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>> ---
+>>>>   qapi/common.json                    | 16 ++++++++++++++++
+>>>>   include/hw/qdev-properties-system.h |  7 +++++++
+>>>>   hw/core/qdev-properties-system.c    | 11 +++++++++++
+>>>>   3 files changed, 34 insertions(+)
+>>>>
+>>>> diff --git a/qapi/common.json b/qapi/common.json
+>>>> index 6ffc7a37890..217feaaf683 100644
+>>>> --- a/qapi/common.json
+>>>> +++ b/qapi/common.json
+>>>> @@ -212,3 +212,19 @@
+>>>>   ##
+>>>>   { 'struct': 'HumanReadableText',
+>>>>     'data': { 'human-readable-text': 'str' } }
+>>>> +
+>>>> +##
+>>>> +# @EndianMode:
+>>>> +#
+>>>> +# An enumeration of three options: little, big, and unspecified
+>>>> +#
+>>>> +# @little: Little endianness
+>>>> +#
+>>>> +# @big: Big endianness
+>>>> +#
+>>>> +# @unspecified: Endianness not specified
+>>>> +#
+>>>> +# Since: 10.0
+>>>> +##
+>>>> +{ 'enum': 'EndianMode',
+>>>> +  'data': [ 'little', 'big', 'unspecified' ] }
 >>>
->>> The edk2 code (https://github.com/tianocore/edk2/pull/10695) does
->>> exactly that.
->>>
->>> I see your driver does that too, so in theory it should work just fine.
->>> I'm wondering what exactly the problem with macOS is?
->> You get to know the new virtual address, but ConvertPointer never tells you
->> what the new *physical* address is. That means you have no idea where to DMA
->> from once you're in virtual land.
-> Yes.  Knowing both physical and virtual address works only for memory
-> you allocated yourself before ExitBootServices.  So you can't pass on
-> pointers from the OS, you have to copy the data to a buffer where you
-> know the physical address instead.  Yes, some overhead.  Should still
-> be much faster than going to pio transfer mode ...
+>>> Should 'unspecified' come first? ... so that it gets the value 0, 
+>>> i.e. when someone forgets to properly initialize a related variable, 
+>>> the chances are higher that it ends up as "unspecified" than as 
+>>> "little" ?
+>>
+>> Hmm but then in this series the dual-endianness regions are defined as:
+>>
+>> +static const MemoryRegionOps pic_ops[2] = {
+>> +    [0 ... 1] = {
+> 
+> This is already confusing as you'd have to know that 0 and 1 here means 
+> ENDIAN_MODE_LITTLE and ENDIAN_MODE_BIG (using those constants here as 
+> well might be clearer). It's easy to miss what this does so maybe 
+> repeating the definitions for each case would be longer but less 
+> confusing and then it does not matter what the values are.
+> 
+> Or what uses the ops.endianness now should look at the property 
+> introduced by this patch to avoid having to propagate it like below and 
+> drop the ops.endianness? Or it should move to the memory region and set 
+> when the ops are assigned?
 
-
-MacOS takes over the full physical address map past ExitBootServices: 
-Your code no longer has VA access to random code and it literally 
-memcpy()'s all preserved (virtual available) code and data to different 
-physical addresses. You simply have nothing that is all of 1) RAM 
-(mapped as cacheable on ARM), 2) known VA 3) known PA.
-
-So we really really need a fallback mechanism that works without DMA :).
-
-
-Alex
-
+I'm not understanding well what you ask, but maybe the answer is in v7 :)

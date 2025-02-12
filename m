@@ -1,102 +1,103 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp931528njb;
-        Wed, 12 Feb 2025 03:39:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXXxvPGNNRW0vXKImhMUz6VPFSZw1d8XfcWH8FaYwgfT6tfeFcnuh93PcpboUqtRdurhO0ogGMI3sNR8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IH8UHa0jZssT4NFiOGuDu5xOJLV9hindlTxhandRI6JwDl0EZTsdx+VqNuwkXMIWASy7mFf
-X-Received: by 2002:adf:cc82:0:b0:38d:d8e0:a9a1 with SMTP id ffacd0b85a97d-38dea3d9d1dmr1712538f8f.29.1739360397196;
-        Wed, 12 Feb 2025 03:39:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739360397; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp931724njb;
+        Wed, 12 Feb 2025 03:40:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUDGD/i14qzCt+tu0FjuUnOKV3SiLyChL7gpeVF7qLME7fDQWRm85r1oEjpsteCNomLz+qBTYGIvYOcHQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFgUm2R57B5/4bB5R1oZVMbx4h3vEJBvsf75XXrrIlJHpGsRbxP13WxXPgjzFOApBhG2geq
+X-Received: by 2002:a5d:64ac:0:b0:38d:c74f:4234 with SMTP id ffacd0b85a97d-38dea26a18cmr2235241f8f.29.1739360422414;
+        Wed, 12 Feb 2025 03:40:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739360422; cv=none;
         d=google.com; s=arc-20240605;
-        b=IRyNid/pKSn37SyTaQ2SRPPu3x1dWOvGLqGyrEGqsgmSwAZCYV0ekqPJY5iRrXrfuh
-         LaIBrb3EdeDU4IgidZElVJ3y742HSLzWJkjPPXkcY6sOvJUD2s9eZchHNNdUd4GPotKC
-         Uwy5uql+zJl3cKdO83mS+8ECF8JjpMtl8oMAaPURUCxh6EiZ8U7c7ZPQ4Dw/afJ9V2G5
-         cjf4rfweNul3Sh+G9PHCnh02CTyTh1rfUDgtjjfqFAlptgBpLVigXJG9RqjUp8bbnewJ
-         sAmSojfNlIpnhXLD/J8lc1EK5N/kWEY15/OcIGQuF/938eUMF00skM9sLuIwW0e/qjyk
-         dcPg==
+        b=Wzft0GtPvWZ8YQ3k7e49o2QGrXatbvkIH5J3zvs22ksnfQB8QFG6d/9M9bHy+fjNQR
+         acj0b7KuNXjcgvTVBKQBbksucKHfLuJ1QMduhPsXVlWDeU/QiplXBWBZiMBS10PTnkDq
+         NBc+uo+f5pBE1dhopvghj47+j7dzGyFaBLZpcnrhohXL2OzPncYVhLdHC9JsFPS3pWbV
+         RbM1817VYG8/Z760Hlkd9ZXjJc4lIMGPsETySNCNlDVX5jRvyj6zZtJ9mcNz455D2HAP
+         vag/Aez2VIPUVk7RUxZuSsdZQnT8A6B7QHEq5kygSMvo+VpPNH64o61gW3uoqajH3oI3
+         8dfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mEUX3qY75fsXd/SIMG1U80ZMnDgC2FfV0nZrMVlIheQ=;
-        fh=M3jhSyWjU5lhw9j1QvLaiqsl7EGWeilRGMdlV7ypQfE=;
-        b=HU+WKn87dxPFZz9ZxEDEXFcCjIa0hReSTG2aLe0neWQzTOKGGCHe0urchmdDyfDPuC
-         sHTm238fEvRQmuakns+G7dZzetmI8T2WhJGaqYK4gOUfl38tvTffPv2rllYZUkG/xp40
-         mDUclGI7hXw/fWWGgcrC8vTALNbun0VQ6Zu1pqptM4b+WXej2H8jzevuZpMDTY6mYZsk
-         cb8JMUsfdUqlwjNOBMvMA7NMd2Y89qxqiZAkAxSOP5+lke1rCQv9sWa5oBEuw+sUNeZq
-         mdJGKDUanNluWYyj7RbhZbKa8uxOqXz0xqZR5zjQvUE5YZDqxDvyNTyU5pSJSRZSi+LB
-         kIDg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=sIXSfpZB5bg/6F/oxfJ3kCEKliHJiMRTVVFGSr9Kzec=;
+        fh=vD7qhQ7cZX19KLZAcmtT05o0qXFeHyljVeBJb5qxcok=;
+        b=EpvsUvD2BAQRDuA7uBY4fudCj+seXCcIwMTxOhXCXBU9hGh+EyGkcmeCsyU7DmIYlx
+         yJf6AVPmUeRgwgNWnEvVPPDGYYoynHygean47raHi2MfqG+QtQmIbVD/zCgSkQr4rLbI
+         Y9jE6IP+ft77f3ENgKhcVKQVMM/7+WUoX2fGh7qGwWHEKzllPJxTNi9+ME/Hk4C+sSx3
+         Oy+yi2JwwRhr3ypHf191bT7AOC3EUrJGUPW+BPLcu8+keJG8dSWuM2UjAXKoXit6kT1s
+         673bAfN1EW/LXfzCJWjQE4Wm8U7HIPzkpVE90WhzO50dhK9LP7nVGil8Qer+iYiSDBaM
+         CmdA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IObPy7KL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ApfGU6N9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-38dc5de20absi8485408f8f.822.2025.02.12.03.39.57
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38dc0c5a888si9021496f8f.683.2025.02.12.03.40.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 03:39:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Feb 2025 03:40:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IObPy7KL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ApfGU6N9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiB5q-0002Es-86; Wed, 12 Feb 2025 06:39:50 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tiB5z-0002Gz-JI; Wed, 12 Feb 2025 06:39:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiB5o-0002EP-Cq
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:39:49 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiB5x-0002G3-1x
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 06:39:57 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiB5j-0000Zk-IM
- for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:39:47 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4393dc02b78so24341675e9.3
- for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 03:39:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiB5q-0000dW-Bd
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 06:39:56 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-38dcac27bcbso452100f8f.0
+ for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 03:39:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739360380; x=1739965180; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=mEUX3qY75fsXd/SIMG1U80ZMnDgC2FfV0nZrMVlIheQ=;
- b=IObPy7KLcj3hV1yfbX0rNGRyYkyttzPHEycUx/0aku7yptfTZo3+OyUmUFoFY3WEoH
- fPCM0fJIH9wknbGrt5ipX4chqAMKKKlkzGpMiQJSWqDK1BtVQd7W31BOUHA1HAVj+UG4
- UyHhKvneSXqEfVgMeIUgoau4lg7c2Lw7pHVJQnubJRcA+7BGz8Yl/f2bZE1VYbKxpW2D
- z5D5iqVRm7VFVbBDl28y0BhWR3vmn4o8xguyszksVxs1rPvF+Ikmo19BZZ6wO9RsoZxI
- Xmr1zJ/qleDZDrkW3lv1muBM9aDO9/pTd+Ofnzmpr88h4GlxJlrgLq26HBmnXi2M+JQN
- QX7g==
+ d=linaro.org; s=google; t=1739360385; x=1739965185; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sIXSfpZB5bg/6F/oxfJ3kCEKliHJiMRTVVFGSr9Kzec=;
+ b=ApfGU6N90m80snJK1PDVahwRAKMQ7AtifRNDzQhoZThqRc1+1u7505TBXlj6CyYy2K
+ 496fBz4rgOXvo695gDcNv5aQRA6tQ9KXZG5jTPremQKPU3+tBnRdDY0qutuxpPe+Nf/Y
+ +iN+hnTahlxYupOR72jCe00aC4V7mNXqCWRCI4xxDgit4PY6s6kWGNT3hCfCtZwlj5Tx
+ v4wIFyCgocotFOoCJdood53N3mbG1H3sPDI47OAJB9/Tz3NqBmbWC0ZdCOyzGFROfVMO
+ NVI4jAOeqZeZPRpYvrGmaQya1h+50RPrkkhwAFIll+nC/QmEHAfEpKCDbvN8pYhEMQD0
+ DJ4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739360380; x=1739965180;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mEUX3qY75fsXd/SIMG1U80ZMnDgC2FfV0nZrMVlIheQ=;
- b=dxyDeVx+Wd1BfIXxEt6714mkJ9bAZOFjLHliMtF+neutf9dPHMH3Cfbk480XWSK1Rh
- pyFfD6aJjIRuYQw+VqtpHzZZH3TbSMobpi/wVhoyPGPl2JZC8O/ZsMok+cwn6fG9WCyx
- Q6qG5XIMLCfHKmGj0ZYl65SgxPuxWdZmMu0cPqTRhN3qH2fa0YlR/7HIncxeSmg9gaRe
- p+8YphiepncN9lUVkEnPPend1UDOaw/riybAgEZdDpGXCdsDGj+bnMweQ3OZuqrXas70
- 0/deTZ8Gksl12pwSAB+w3M24aHxsBi8D4P8B65fY8WiVKqWfTChvlPOdX247OiIRjSPT
- i84A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdNqrWs1NhkYMIeoJlNlnUHKHV801piBq5WxeWeXmUrtrJqsGtu5lS5MXjqkSKuXJzd3fahWuvLg==@nongnu.org
-X-Gm-Message-State: AOJu0YzO8w2x4Ydf8pAniyzcVb+bM2Liz/USj7EHQ/Sr6a0erwBHZcNM
- n3q27/L/0ARwPj/rflaU6srl3799qj/+8tFjvy/Ldnb/NGQZ+hYTKdYI4aX5xV4=
-X-Gm-Gg: ASbGncskwbRF5QiBIYQezbN8p6TTVUTgWwntgpkjH7E8kvtsYajWFEzEHSKW7jA1LAU
- 8yMSOSIuiXxM8c8VqU6K8Hq+6/mKsB7pKEp5GmsjNQNNy3l91CgoFbkNmf9YeQmcyJQdRP28lxk
- +rHATeX2cDgEqe2AJmUMeoJcb4r/KfJoKusrwtFzwowka4j9ZwSestVd29UPwj1xff1MyGwYJI2
- 1KOIHnHKvRw1Nn7NZGxV19ipcaxRZsknk/P+UNWvIdMj22h/73zh8byaBurGe/zE3gwAszSFpWM
- +HtfwGfgLcTpoxiRfvCc4JO0/kTkz3MdgshyxRe288+RsXKW4fsUdJ54ycJu2HtMAg==
-X-Received: by 2002:a05:6000:1faa:b0:38d:e9dd:bc88 with SMTP id
- ffacd0b85a97d-38dea3c33f4mr2183502f8f.7.1739360380324; 
- Wed, 12 Feb 2025 03:39:40 -0800 (PST)
+ d=1e100.net; s=20230601; t=1739360385; x=1739965185;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sIXSfpZB5bg/6F/oxfJ3kCEKliHJiMRTVVFGSr9Kzec=;
+ b=Ra8jAEU+pFp1QG3K1SDSXHPj9CAZbhvzGhtvPMRTjNkouG+xEJ2TJ05F/Jj4ZaVn3t
+ 8WCLwpeW18ZftUEtf4Dr5XzyG3wFI4Lys7QjCJ5apy9DdVpyqhHjLRv9jYqNn1Op8PBL
+ wvheKeCsjhvJRkTf380MRvgtZdEUxc44HPWqoRErgywnTfvT4CQZgpZ0RkyAU0dudBc7
+ y/sxJ0rTb6CEG1OZNB0sYmUNdBACq1jgOoFyBl7dKgCpiVuorWZU6c/+cX7gD5KcrZFZ
+ 1F/RIjMEA0t+SUegAc1soUjJB0lhtqDvphQt0VYKZHO8vCIibEa+jDqLWKEXw4iwdsBQ
+ r89w==
+X-Gm-Message-State: AOJu0YyGGT3lPGz7g6CszBJklE6xSrwYbcit9UsivWvt2a7s30k8iwWu
+ pOecTk9PqhFHnSgOaf3aAwIp4sLz3WQ7LUStkW/LTiUzNGEP1v5pRLx3ui8do3ErpuVi7zZmPwF
+ HcAQ=
+X-Gm-Gg: ASbGnctb+HrjtF4sMRuOqh6WO+exuibe3Cqgk8OhtN69F62/kk7DGg3xOCqyyYvWtVA
+ 7L6XBXlfC8QcnqS917zc9L+7nw8RzsymWu5oTsK27P5SYBaNP1Jme4QWVbfUXWF0yRDBdx9QRTf
+ Xx3QhXG9tTcQU78eXhXcPzUOmOikQA8X4gvkTHuCgJRatkcYTb51c7oJa3yocKl9z9SlNhaONCe
+ VG4XwpPJoQJ6dmNKVsyFsqgzxE7FD5wIyFRzd1cH7KYZ/QhjyWXrQFvejQFRivhLoaUeEHte+i5
+ Rt7ThES+oxE4VQ/iDIVMddrSXZiLbrdgjUBp0R6xsWrSYP1Sa1JsL/XhXk+N37ln3g==
+X-Received: by 2002:a05:6000:178d:b0:38d:ba8e:7327 with SMTP id
+ ffacd0b85a97d-38dea1e118dmr2225310f8f.8.1739360385415; 
+ Wed, 12 Feb 2025 03:39:45 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38f1f27e612sm861398f8f.93.2025.02.12.03.39.39
+ ffacd0b85a97d-38dd2e0765esm11984517f8f.82.2025.02.12.03.39.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 12 Feb 2025 03:39:39 -0800 (PST)
+ Wed, 12 Feb 2025 03:39:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paul Burton <paulburton@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
@@ -110,56 +111,53 @@ Cc: Paul Burton <paulburton@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Jason Wang <jasowang@redhat.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH 0/5] hw: More DEVICE_ [NATIVE -> LITTLE] _ENDIAN conversions
-Date: Wed, 12 Feb 2025 12:39:33 +0100
-Message-ID: <20250212113938.38692-1-philmd@linaro.org>
+Subject: [PATCH 1/5] hw/arm: Mark Allwinner Technology devices as little-endian
+Date: Wed, 12 Feb 2025 12:39:34 +0100
+Message-ID: <20250212113938.38692-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250212113938.38692-1-philmd@linaro.org>
+References: <20250212113938.38692-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JPoIa4SpDPE8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oL0iBinSvGRJ
 
-When devices are only built for little-endian targets,
-DEVICE_NATIVE_ENDIAN expand to DEVICE_LITTLE_ENDIAN.
-Replace by the latter to simplify.
+These devices are only used by the ARM targets, which are
+only built as little-endian. Therefore the DEVICE_NATIVE_ENDIAN
+definition expand to DEVICE_LITTLE_ENDIAN (besides, the
+DEVICE_BIG_ENDIAN case isn't tested). Simplify directly using
+DEVICE_LITTLE_ENDIAN.
 
-Philippe Mathieu-Daudé (5):
-  hw/arm: Mark Allwinner Technology devices as little-endian
-  hw/mips: Mark Boston machine devices as little-endian
-  hw/mips: Mark Loonson3 Virt machine devices as little-endian
-  hw/pci-host: Mark versatile regions as little-endian
-  target/i386: Mark WHPX APIC region as little-endian
-
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
  hw/arm/allwinner-a10.c         |  2 +-
  hw/arm/allwinner-h3.c          |  8 ++++----
  hw/arm/allwinner-r40.c         |  2 +-
  hw/i2c/allwinner-i2c.c         |  2 +-
  hw/intc/allwinner-a10-pic.c    |  2 +-
- hw/mips/boston.c               |  6 +++---
- hw/mips/loongson3_virt.c       |  4 ++--
  hw/misc/allwinner-a10-ccm.c    |  2 +-
  hw/misc/allwinner-a10-dramc.c  |  2 +-
  hw/misc/allwinner-cpucfg.c     |  2 +-
@@ -172,15 +170,368 @@ Philippe Mathieu-Daudé (5):
  hw/misc/allwinner-sramc.c      |  2 +-
  hw/net/allwinner-sun8i-emac.c  |  2 +-
  hw/net/allwinner_emac.c        |  2 +-
- hw/pci-host/versatile.c        |  4 ++--
  hw/rtc/allwinner-rtc.c         |  2 +-
  hw/sd/allwinner-sdhost.c       |  2 +-
  hw/ssi/allwinner-a10-spi.c     |  2 +-
  hw/timer/allwinner-a10-pit.c   |  2 +-
  hw/watchdog/allwinner-wdt.c    |  2 +-
- target/i386/whpx/whpx-apic.c   |  2 +-
- 26 files changed, 39 insertions(+), 39 deletions(-)
+ 22 files changed, 31 insertions(+), 31 deletions(-)
 
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index a829913f1b5..f1b399759a1 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -158,7 +158,7 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     /* FIXME use a qdev chardev prop instead of serial_hd() */
+     serial_mm_init(get_system_memory(), AW_A10_UART0_REG_BASE, 2,
+                    qdev_get_gpio_in(dev, 1),
+-                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
++                   115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+ 
+     for (size_t i = 0; i < AW_A10_NUM_USB; i++) {
+         g_autofree char *bus = g_strdup_printf("usb-bus.%zu", i);
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+index 2efced3f66a..1b1afa4fb6f 100644
+--- a/hw/arm/allwinner-h3.c
++++ b/hw/arm/allwinner-h3.c
+@@ -408,19 +408,19 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+     /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART0], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
+-                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
++                   115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+     /* UART1 */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART1], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART1),
+-                   115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
++                   115200, serial_hd(1), DEVICE_LITTLE_ENDIAN);
+     /* UART2 */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART2], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART2),
+-                   115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
++                   115200, serial_hd(2), DEVICE_LITTLE_ENDIAN);
+     /* UART3 */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART3], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART3),
+-                   115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
++                   115200, serial_hd(3), DEVICE_LITTLE_ENDIAN);
+ 
+     /* DRAMC */
+     sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index 47b3180f0ec..cef6e4d18c2 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -492,7 +492,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+ 
+         serial_mm_init(get_system_memory(), addr, 2,
+                        qdev_get_gpio_in(DEVICE(&s->gic), uart_irqs[i]),
+-                       115200, serial_hd(i), DEVICE_NATIVE_ENDIAN);
++                       115200, serial_hd(i), DEVICE_LITTLE_ENDIAN);
+     }
+ 
+     /* I2C */
+diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
+index 16f1d6d40e7..66d6431c508 100644
+--- a/hw/i2c/allwinner-i2c.c
++++ b/hw/i2c/allwinner-i2c.c
+@@ -407,7 +407,7 @@ static const MemoryRegionOps allwinner_i2c_ops = {
+     .write = allwinner_i2c_write,
+     .valid.min_access_size = 1,
+     .valid.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const VMStateDescription allwinner_i2c_vmstate = {
+diff --git a/hw/intc/allwinner-a10-pic.c b/hw/intc/allwinner-a10-pic.c
+index c0f30092cd6..93a604f7a04 100644
+--- a/hw/intc/allwinner-a10-pic.c
++++ b/hw/intc/allwinner-a10-pic.c
+@@ -135,7 +135,7 @@ static void aw_a10_pic_write(void *opaque, hwaddr offset, uint64_t value,
+ static const MemoryRegionOps aw_a10_pic_ops = {
+     .read = aw_a10_pic_read,
+     .write = aw_a10_pic_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const VMStateDescription vmstate_aw_a10_pic = {
+diff --git a/hw/misc/allwinner-a10-ccm.c b/hw/misc/allwinner-a10-ccm.c
+index 575b0189524..6ca1daaff8a 100644
+--- a/hw/misc/allwinner-a10-ccm.c
++++ b/hw/misc/allwinner-a10-ccm.c
+@@ -147,7 +147,7 @@ static void allwinner_a10_ccm_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_a10_ccm_ops = {
+     .read = allwinner_a10_ccm_read,
+     .write = allwinner_a10_ccm_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-a10-dramc.c b/hw/misc/allwinner-a10-dramc.c
+index a7c58fa6d06..badc4c56eb7 100644
+--- a/hw/misc/allwinner-a10-dramc.c
++++ b/hw/misc/allwinner-a10-dramc.c
+@@ -114,7 +114,7 @@ static void allwinner_a10_dramc_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_a10_dramc_ops = {
+     .read = allwinner_a10_dramc_read,
+     .write = allwinner_a10_dramc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-cpucfg.c b/hw/misc/allwinner-cpucfg.c
+index 022f63ddf34..a4f7a011419 100644
+--- a/hw/misc/allwinner-cpucfg.c
++++ b/hw/misc/allwinner-cpucfg.c
+@@ -217,7 +217,7 @@ static void allwinner_cpucfg_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_cpucfg_ops = {
+     .read = allwinner_cpucfg_read,
+     .write = allwinner_cpucfg_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-h3-ccu.c b/hw/misc/allwinner-h3-ccu.c
+index 92e579a9918..e765f4c54b4 100644
+--- a/hw/misc/allwinner-h3-ccu.c
++++ b/hw/misc/allwinner-h3-ccu.c
+@@ -155,7 +155,7 @@ static void allwinner_h3_ccu_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_h3_ccu_ops = {
+     .read = allwinner_h3_ccu_read,
+     .write = allwinner_h3_ccu_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-h3-dramc.c b/hw/misc/allwinner-h3-dramc.c
+index 13bba26d0e4..c4f3eb92747 100644
+--- a/hw/misc/allwinner-h3-dramc.c
++++ b/hw/misc/allwinner-h3-dramc.c
+@@ -219,7 +219,7 @@ static void allwinner_h3_dramphy_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_h3_dramcom_ops = {
+     .read = allwinner_h3_dramcom_read,
+     .write = allwinner_h3_dramcom_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -230,7 +230,7 @@ static const MemoryRegionOps allwinner_h3_dramcom_ops = {
+ static const MemoryRegionOps allwinner_h3_dramctl_ops = {
+     .read = allwinner_h3_dramctl_read,
+     .write = allwinner_h3_dramctl_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -241,7 +241,7 @@ static const MemoryRegionOps allwinner_h3_dramctl_ops = {
+ static const MemoryRegionOps allwinner_h3_dramphy_ops = {
+     .read = allwinner_h3_dramphy_read,
+     .write = allwinner_h3_dramphy_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-h3-sysctrl.c b/hw/misc/allwinner-h3-sysctrl.c
+index 40059e8cb0c..32a0ceb01a3 100644
+--- a/hw/misc/allwinner-h3-sysctrl.c
++++ b/hw/misc/allwinner-h3-sysctrl.c
+@@ -78,7 +78,7 @@ static void allwinner_h3_sysctrl_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_h3_sysctrl_ops = {
+     .read = allwinner_h3_sysctrl_read,
+     .write = allwinner_h3_sysctrl_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-r40-ccu.c b/hw/misc/allwinner-r40-ccu.c
+index 005a15b2dae..8f37a9213c0 100644
+--- a/hw/misc/allwinner-r40-ccu.c
++++ b/hw/misc/allwinner-r40-ccu.c
+@@ -129,7 +129,7 @@ static void allwinner_r40_ccu_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_r40_ccu_ops = {
+     .read = allwinner_r40_ccu_read,
+     .write = allwinner_r40_ccu_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-r40-dramc.c b/hw/misc/allwinner-r40-dramc.c
+index 97c3664e3a3..96e1848c21f 100644
+--- a/hw/misc/allwinner-r40-dramc.c
++++ b/hw/misc/allwinner-r40-dramc.c
+@@ -297,7 +297,7 @@ static void allwinner_r40_dramphy_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_r40_dramcom_ops = {
+     .read = allwinner_r40_dramcom_read,
+     .write = allwinner_r40_dramcom_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -308,7 +308,7 @@ static const MemoryRegionOps allwinner_r40_dramcom_ops = {
+ static const MemoryRegionOps allwinner_r40_dramctl_ops = {
+     .read = allwinner_r40_dramctl_read,
+     .write = allwinner_r40_dramctl_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -319,7 +319,7 @@ static const MemoryRegionOps allwinner_r40_dramctl_ops = {
+ static const MemoryRegionOps allwinner_r40_dramphy_ops = {
+     .read = allwinner_r40_dramphy_read,
+     .write = allwinner_r40_dramphy_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -358,7 +358,7 @@ static void allwinner_r40_detect_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_r40_detect_ops = {
+     .read = allwinner_r40_detect_read,
+     .write = allwinner_r40_detect_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -393,7 +393,7 @@ static uint64_t allwinner_r40_dualrank_detect_read(void *opaque, hwaddr offset,
+ 
+ static const MemoryRegionOps allwinner_r40_dualrank_detect_ops = {
+     .read = allwinner_r40_dualrank_detect_read,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-sid.c b/hw/misc/allwinner-sid.c
+index 042b747f30b..2bb81f9c540 100644
+--- a/hw/misc/allwinner-sid.c
++++ b/hw/misc/allwinner-sid.c
+@@ -99,7 +99,7 @@ static void allwinner_sid_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_sid_ops = {
+     .read = allwinner_sid_read,
+     .write = allwinner_sid_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/misc/allwinner-sramc.c b/hw/misc/allwinner-sramc.c
+index a20b0b4c5cb..51df5e45aa2 100644
+--- a/hw/misc/allwinner-sramc.c
++++ b/hw/misc/allwinner-sramc.c
+@@ -104,7 +104,7 @@ static void allwinner_sramc_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_sramc_ops = {
+     .read = allwinner_sramc_read,
+     .write = allwinner_sramc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
+index ff44554e957..5adb41dc469 100644
+--- a/hw/net/allwinner-sun8i-emac.c
++++ b/hw/net/allwinner-sun8i-emac.c
+@@ -784,7 +784,7 @@ static void allwinner_sun8i_emac_set_link(NetClientState *nc)
+ static const MemoryRegionOps allwinner_sun8i_emac_mem_ops = {
+     .read = allwinner_sun8i_emac_read,
+     .write = allwinner_sun8i_emac_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+index 3eb9e09dc5c..47f1e7f086c 100644
+--- a/hw/net/allwinner_emac.c
++++ b/hw/net/allwinner_emac.c
+@@ -421,7 +421,7 @@ static void aw_emac_set_link(NetClientState *nc)
+ static const MemoryRegionOps aw_emac_mem_ops = {
+     .read = aw_emac_read,
+     .write = aw_emac_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/rtc/allwinner-rtc.c b/hw/rtc/allwinner-rtc.c
+index a19e4310bb1..fd8355a8676 100644
+--- a/hw/rtc/allwinner-rtc.c
++++ b/hw/rtc/allwinner-rtc.c
+@@ -259,7 +259,7 @@ static void allwinner_rtc_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_rtc_ops = {
+     .read = allwinner_rtc_read,
+     .write = allwinner_rtc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index ee5c5c78a81..03980d27168 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -761,7 +761,7 @@ static void allwinner_sdhost_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_sdhost_ops = {
+     .read = allwinner_sdhost_read,
+     .write = allwinner_sdhost_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/ssi/allwinner-a10-spi.c b/hw/ssi/allwinner-a10-spi.c
+index 3eb50b44ac5..d2f6bb9cdc7 100644
+--- a/hw/ssi/allwinner-a10-spi.c
++++ b/hw/ssi/allwinner-a10-spi.c
+@@ -502,7 +502,7 @@ static const MemoryRegionOps allwinner_a10_spi_ops = {
+     .write = allwinner_a10_spi_write,
+     .valid.min_access_size = 1,
+     .valid.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const VMStateDescription allwinner_a10_spi_vmstate = {
+diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
+index ddaf2128c2d..da3d7173ef5 100644
+--- a/hw/timer/allwinner-a10-pit.c
++++ b/hw/timer/allwinner-a10-pit.c
+@@ -185,7 +185,7 @@ static void a10_pit_write(void *opaque, hwaddr offset, uint64_t value,
+ static const MemoryRegionOps a10_pit_ops = {
+     .read = a10_pit_read,
+     .write = a10_pit_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const Property a10_pit_properties[] = {
+diff --git a/hw/watchdog/allwinner-wdt.c b/hw/watchdog/allwinner-wdt.c
+index 1bfec41ff8b..78f4f9d6f67 100644
+--- a/hw/watchdog/allwinner-wdt.c
++++ b/hw/watchdog/allwinner-wdt.c
+@@ -275,7 +275,7 @@ static void allwinner_wdt_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps allwinner_wdt_ops = {
+     .read = allwinner_wdt_read,
+     .write = allwinner_wdt_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
 -- 
 2.47.1
 

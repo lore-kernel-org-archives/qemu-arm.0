@@ -1,230 +1,192 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp984394njb;
-        Wed, 12 Feb 2025 05:10:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXQDreH2QbYDtcucVmL2FMloER3NX3BrEuU83hHNFf8Mndzj/5KundBlXfNsaXQC35+IXDEeX4N5d/uEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFLnyKjZqrQkpw/1gZTjrbZNeXxgJBReVDe15BWsqHf618SNaX+U0/7xmP6n4TuEwQa7vZG
-X-Received: by 2002:a05:620a:4442:b0:7c0:589b:2f40 with SMTP id af79cd13be357-7c06fc8f199mr428365685a.33.1739365858988;
-        Wed, 12 Feb 2025 05:10:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739365858; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1006164njb;
+        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWc/ISn9fHhzxFwW869tPL9/MzrOAQ5+B65w0tpVm1BTarFrJykZpJW1NBCfEkeJqUCrMA4+iHgkaoFwg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHtikgGLBjkhqW4YCmCwGsbzUZafODSpmAmvATn6Styd9EvnYzLtJ5BxekF7ary/PvdncU0
+X-Received: by 2002:a05:620a:4712:b0:7b6:5e73:99e8 with SMTP id af79cd13be357-7c06fc825b1mr604942885a.25.1739367986845;
+        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739367986; cv=none;
         d=google.com; s=arc-20240605;
-        b=V1ip5yIqNEM8jsQef1a+REDkwopHbN8ec0x0snwtet+oQ/OI6lykSG+vA/BnjXuD4O
-         9+xZG8UQyVLvRAx1ufTOxt3zhgeZufI+7+MJsOzX9nBwyOx5LWyImlPZpWGEzVWHKiaQ
-         FR908vZ4m+uiRf/YJmwpalm+KvJHNNEnXFprQofkcjb6JDsIPCAlXJTndmGYkDmaJZC+
-         +luKgVRdt6/CEedwWnaJVcOFnPpm8OZVzBVORU/rA/Fy0B/vL1eFNCyh7X/wuZF+mIYm
-         gsdHu/BBvEMpdHY3o0FG/CJ9950KU/wgfu5eS4jy58l++g+Wval5psFhmJw8VyHZ8bvy
-         fnJg==
+        b=As/nCjnaSpmrRK8aBY5xowvQk6gGlt/r/tDSrCQnJkAsBNWsVxZwrXWBgHrBSMcveA
+         ONq/SzAlUW8Z07fN3LVn3OjJN/S8rpGwVcNCwE95SQ0sTKiEIZc3ZHTRP9Bvxy0e66lD
+         TyqYI3L4Yh4PEpwt1TbtzhkStGTy3/ok30OMZq0qRkxta2V+bo4KPT7f/n4WU+MXs1no
+         /eSdW5yxFVobU6y1bbF5e2qkjwW9aBg/WedUwn73aA+kp22fwY42pnvU5vdbwUhXd+9d
+         6sir6GcIPza8jASgH1O4u6m25In1BLTSnUAqC6NrPA2gDJkJYJq9A5XrG/SYHyaJiJnD
+         4GBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Yd2eGfK+Lxdw9ddCog4geY1dPZFxFIy/5XYrJKGx/c0=;
-        fh=QwCIknh66ZMG9bRCxM3cMId5P7E2Zk7WrAj+Uv6+XjA=;
-        b=S9Kc6jMqhoSLx4oYkJ64zprZ0ccgT6F/wFJ0CefLZFVfoGeHDTZtCpIcBFaidJNfMV
-         rp/IuH++M/vLowuW1xoQ80LNBQRQ0QlUkwPCWGtivu0qGk6Sa2BUp57Ea4GUsuKHBtLB
-         Lg3rFx5NGa0ur2vxdxKdh4ZIu8AeTJswJiDlQT5nb7pNaL6s9qK3ZivkAL5B1XqsqCcU
-         I3cPxR+s8SuigBIzahSy/3Lzjbd5A5Mfn5NxzIi18rLZZlFovrTr6K1vE1xX5/PpCN7n
-         Z5I8aDkEVINWENMB0Hb3oRa0/88YVILpqTUHl9ym3/V1AiraPI6gEm4J3Xk8alAAGllU
-         sQ0w==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=8nNDiYVOIzb50G8u/FMD6qLfVR5OxkQy/ZxxsYWuLR4=;
+        fh=6rrE52cgrYC9rXTqUznJzNUw28CrRy1ExPnK9AwMPYQ=;
+        b=hw3FPSbHPJjUSCyz2JnRhBf0bgWMoy80CvoIw0NUDVbniWZdenoYIjKNGzlnYAf4/F
+         skGZIrPKjTOWdKfENkSEK3CDe2YukHz+e9qdSw16s9O//e1AYX/xYtzBp7Pw41Ntu0Jo
+         vEBW6Me19zBPS/BzbH1F0fQs54isbbRD7xDHKnW8Av+yQPWkGQPYz35k2Zoy+o280vy5
+         yK0CglUmuIY50XNIHxSISk8e9ROHFctPEA1Kti1kEMPb+uwTo58y5HZAlK+dv6ylI00P
+         RU6ELkZV2Mx5IVCd4o7OomJb9XoBMkDY5BketaR0r0cUm5S8zGBUt4UWMJwMaewurkqj
+         6/hQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GjD3dJLO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=OvnF2Qib;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c078b8e093si23821385a.441.2025.02.12.05.10.58
+        by mx.google.com with ESMTPS id af79cd13be357-7c041ee6872si1329597385a.607.2025.02.12.05.46.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 05:10:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Feb 2025 05:46:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GjD3dJLO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=OvnF2Qib;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tiCVO-0002SX-7y; Wed, 12 Feb 2025 08:10:18 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tiD3s-0006Ui-Pk; Wed, 12 Feb 2025 08:45:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiCVJ-0002PS-On
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 08:10:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <prvs=131cd17d8=graf@amazon.de>)
+ id 1tiD3q-0006U3-Hq; Wed, 12 Feb 2025 08:45:54 -0500
+Received: from smtp-fw-80007.amazon.com ([99.78.197.218])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiCVH-00015n-Me
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 08:10:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739365810;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Yd2eGfK+Lxdw9ddCog4geY1dPZFxFIy/5XYrJKGx/c0=;
- b=GjD3dJLOKEeVjyswR5mCzMx1w14SnLRk0NObMhNAk7b/JbrbosbSE9+xGL4BomJuwjvFPy
- xWVo+MbTqb9DMkCCmPCjGC5AbAY6KKMg4hqOO3NsxIk0dzz5TeeY6OXU6tN2cHlmeSiu3K
- iNLERwCyjqO17Qi1z0fljM9u0VqpCms=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-47-6rMOjAClNOiTL-uYanh7oQ-1; Wed, 12 Feb 2025 08:10:08 -0500
-X-MC-Unique: 6rMOjAClNOiTL-uYanh7oQ-1
-X-Mimecast-MFC-AGG-ID: 6rMOjAClNOiTL-uYanh7oQ_1739365808
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-38de1e83c97so1241711f8f.1
- for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 05:10:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739365807; x=1739970607;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Yd2eGfK+Lxdw9ddCog4geY1dPZFxFIy/5XYrJKGx/c0=;
- b=F7HwzCi2GYI5ccXa8zapf/WQiDOWsvxkRbCLh1PpTkfC0c510drDpYWVh/BT8LdHFs
- FLI4MgULNPvLhtqmMhxkYWcuRLEHqHTtAU+HR6sw9MYMBtO/xxgsEtL/aMT8suOvdPEj
- CyF/aF/qaWaONN6Jm9DWH0httpy3KnZ5z6RhATrz5mJW9x5ybRpVeoUlmPWKyoD6Uwdt
- GHnf1r2BXfobgnYz5j8zIMc+JhKPyDU/KXmXARh2qtzTWPkkl+76CAKowwpein15/K56
- QUHKmkqAS506f3Uwnj8OKYpvsMHClQJGuY+Fy6Ez05xUkoB29phVAvjNBXqxgSDvt/dh
- R98A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV6mSzrwjcUctBbDN07ickLAYLDaxCadZQNjqgT4+rXreznpcrutnhbrZVW+yxPBxyMDBc50Wlv0unO@nongnu.org
-X-Gm-Message-State: AOJu0YwSiusya/xy5O89RjvtFz26K3IAFW+qCzi0IUyO4OUAVc/xnm1r
- 8bb9jRymoFho79iBP7o/goqfne+/AA5CboVh8paGzZgduB7NbmFkddrPdpy0NfKXc2OvkbKGZUw
- BZ3A+uY/EOCJg4BD341FDnUsqoBLXwkzXpq79BfP9RjRUzEbES5d8
-X-Gm-Gg: ASbGncslE7F6ypUdoBEeoXivIqEZERqzHINMGbrHm3Z/pEhfsNcydzgmIrouivRG+yl
- IJEP6eCdXdieK2j6gEogFrni7uZX+9ahtXO5FVmSil7Ud4omdpJNJj5Pm00rway7AZ5k0EjVGs1
- 9SUziuOAvS+M7rvuViWb2VlYPOkuif1cp9IByIgpkr73MXUnrwebsxvBHRov70U/9zIUyoJkS3z
- XhSRbeekeQ6k/RGBNp9anulObI9dsIp2zAC5Le5o1qdjSwwpCkvBjGs/lLivibh+fgHeVeurLau
- OU+NPtYTwowkMcIm/nT3zwiCWMLzfHG/jQ==
-X-Received: by 2002:adf:e60e:0:b0:38b:f4dc:4483 with SMTP id
- ffacd0b85a97d-38dea28c1e0mr2082967f8f.29.1739365807666; 
- Wed, 12 Feb 2025 05:10:07 -0800 (PST)
-X-Received: by 2002:adf:e60e:0:b0:38b:f4dc:4483 with SMTP id
- ffacd0b85a97d-38dea28c1e0mr2082943f8f.29.1739365807308; 
- Wed, 12 Feb 2025 05:10:07 -0800 (PST)
-Received: from [192.168.0.7] (ip-109-42-48-37.web.vodafone.de. [109.42.48.37])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dde7d3f8asm8072300f8f.21.2025.02.12.05.10.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2025 05:10:06 -0800 (PST)
-Message-ID: <3502836e-ef25-444e-92ba-a131d90d24e0@redhat.com>
-Date: Wed, 12 Feb 2025 14:10:05 +0100
+ (Exim 4.90_1) (envelope-from <prvs=131cd17d8=graf@amazon.de>)
+ id 1tiD3o-0002qk-CB; Wed, 12 Feb 2025 08:45:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1739367952; x=1770903952;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=8nNDiYVOIzb50G8u/FMD6qLfVR5OxkQy/ZxxsYWuLR4=;
+ b=OvnF2QibsSWW2RmFaSbTQF8TXnQgDNX5xY5pFTxBHWepbEFn6j3LtXME
+ 7NALqnPaa5r014hi3VkZTknJbcmRDSsUPJ9naY/MjFuuiplOL1qHorrjh
+ ZWs8t9dUYANma6ohRcJM57XcFQjrgDfytb6JtaKIkptDFhcBBQ/QYrarJ o=;
+X-IronPort-AV: E=Sophos;i="6.13,280,1732579200"; d="scan'208";a="376710266"
+Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.210])
+ by smtp-border-fw-80007.pdx80.corp.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 13:45:48 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [10.0.38.20:50646]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.63.65:2525]
+ with esmtp (Farcaster)
+ id 229e485f-f479-4442-ae6b-8afd477a348f; Wed, 12 Feb 2025 13:45:47 +0000 (UTC)
+X-Farcaster-Flow-ID: 229e485f-f479-4442-ae6b-8afd477a348f
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
+ Wed, 12 Feb 2025 13:45:47 +0000
+Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Wed, 12 Feb 2025
+ 13:45:43 +0000
+Message-ID: <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
+Date: Wed, 12 Feb 2025 14:45:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 06/10] hw/ssi/xilinx_spi: Make device endianness
- configurable
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- Markus Armbruster <armbru@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20250212123659.52764-1-philmd@linaro.org>
- <20250212123659.52764-7-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
+To: Gerd Hoffmann <kraxel@redhat.com>
+CC: <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, <qemu-arm@nongnu.org>, Michael Roth
+ <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Ard Biesheuvel
+ <ardb@kernel.org>
+References: <20250211092324.965440-1-kraxel@redhat.com>
+ <20250211092324.965440-10-kraxel@redhat.com>
+ <da0ac9ed-fdca-433e-b793-5423f430a852@amazon.com>
+ <iuwaykfdm7bwtvblyz7lkew3em2ksi5xeztdphqjdv7tsp2ejw@s6j64y3lfmrw>
+ <ea1d355b-7e56-47ef-b1e7-158003b6d85f@amazon.com>
+ <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
 Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20250212123659.52764-7-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.253.83.51]
+X-ClientProxiedBy: EX19D044UWB002.ant.amazon.com (10.13.139.188) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Received-SPF: pass client-ip=99.78.197.218;
+ envelope-from=prvs=131cd17d8=graf@amazon.de; helo=smtp-fw-80007.amazon.com
+X-Spam_score_int: -57
+X-Spam_score: -5.8
+X-Spam_bar: -----
+X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PgF8TJYdUN4P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ek2NLytwp7YC
 
-On 12/02/2025 13.36, Philippe Mathieu-Daudé wrote:
-> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
-> of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
-> Add the "little-endian" property to select the device
-> endianness, defaulting to little endian.
-> Set the proper endianness on the single machine using the
-> device.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/microblaze/petalogix_ml605_mmu.c |  1 +
->   hw/ssi/xilinx_spi.c                 | 32 +++++++++++++++++++++--------
->   2 files changed, 24 insertions(+), 9 deletions(-)
-> 
-> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-> index 490640e9428..b34edf13796 100644
-> --- a/hw/microblaze/petalogix_ml605_mmu.c
-> +++ b/hw/microblaze/petalogix_ml605_mmu.c
-> @@ -175,6 +175,7 @@ petalogix_ml605_init(MachineState *machine)
->           SSIBus *spi;
->   
->           dev = qdev_new("xlnx.xps-spi");
-> +        qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
->           qdev_prop_set_uint8(dev, "num-ss-bits", NUM_SPI_FLASHES);
->           busdev = SYS_BUS_DEVICE(dev);
->           sysbus_realize_and_unref(busdev, &error_fatal);
 
-TARGET_BIG_ENDIAN required again?
+On 12.02.25 13:28, Gerd Hoffmann wrote:
+> On Wed, Feb 12, 2025 at 12:30:20PM +0100, Alexander Graf wrote:
+>> On 12.02.25 11:24, Gerd Hoffmann wrote:
+>>> Why do you use confidential computing in the first place if you trust
+>>> the host with your EFI variables?  I'd rather see something simliar
+>>> running under guest control, in svsm context.
+>> That depends heavily on your threat model. You can use a host provided
+>> variable store to gain variable persistence for things like boot variables
+>> and then have an ephemeral SVSM based TPM that you use to measure the loaded
+>> payloads. A malicious host can already replace your root volume, so
+>> extending the threat to variables is not the end of the world.
+> If you go depend on measured boot instead of secure boot then yes, this
+> might be a workable model.  Should be doable with a small svsm driver
+> which forwards requests to the host via svsm-controlled bounce buffer
+> (where the svsm has control over page properties).
 
-Anyway,
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+In a BYOF world it's even useful without SVSM at all, because the launch 
+digest performs measurement for you, but you still want to find your 
+boot variables.
+
+
+>>> The firmware knows all this very well though.  The OS passes a mapping
+>>> table to the firmware, efi runtime drivers can subscribe to mapping
+>>> updates and can use RT->ConvertPointer to translate addresses from
+>>> physical to virtual.
+>>>
+>>> The edk2 code (https://github.com/tianocore/edk2/pull/10695) does
+>>> exactly that.
+>>>
+>>> I see your driver does that too, so in theory it should work just fine.
+>>> I'm wondering what exactly the problem with macOS is?
+>> You get to know the new virtual address, but ConvertPointer never tells you
+>> what the new *physical* address is. That means you have no idea where to DMA
+>> from once you're in virtual land.
+> Yes.  Knowing both physical and virtual address works only for memory
+> you allocated yourself before ExitBootServices.  So you can't pass on
+> pointers from the OS, you have to copy the data to a buffer where you
+> know the physical address instead.  Yes, some overhead.  Should still
+> be much faster than going to pio transfer mode ...
+
+
+MacOS takes over the full physical address map past ExitBootServices: 
+Your code no longer has VA access to random code and it literally 
+memcpy()'s all preserved (virtual available) code and data to different 
+physical addresses. You simply have nothing that is all of 1) RAM 
+(mapped as cacheable on ARM), 2) known VA 3) known PA.
+
+So we really really need a fallback mechanism that works without DMA :).
+
+
+Alex
 

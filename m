@@ -1,103 +1,103 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp964101njb;
-        Wed, 12 Feb 2025 04:39:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVVi6QxYkSVKio+cTWxe7XftKqCMmKdM1SRiLB3GJgV4Sf7Wdy26aFX2p3JlQ3D49RhCvfcMHR44rCSsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFHC0/5IrrF9lxgiyjn9EIRQrRHeDb76ESt3XoT+3jTS9QREjYVV4YddSItKcuIT/9LZm5i
-X-Received: by 2002:a05:620a:8904:b0:7c0:60b3:74e8 with SMTP id af79cd13be357-7c06fc6987bmr414342385a.24.1739363967520;
-        Wed, 12 Feb 2025 04:39:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739363967; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp964158njb;
+        Wed, 12 Feb 2025 04:39:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV1G4D6hXCDPiU0Jr/FA/Wlwh0Fj8aZPrQEH9NpIDAs6+ssCma2Le2M81ZWSjUKs8xwiEBbQZje3z/Ggg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4ZnbBnjYUaUzgW9OfK/kEexZNqDnFl1Na3HAbbarHdG3AU1tLfnRW5SeWLewVKcyeFaqm
+X-Received: by 2002:a05:6214:daa:b0:6e4:4164:8bb2 with SMTP id 6a1803df08f44-6e46edada27mr39326146d6.29.1739363973970;
+        Wed, 12 Feb 2025 04:39:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739363973; cv=none;
         d=google.com; s=arc-20240605;
-        b=M9YOjUpBt8xOkUM6QTGnt5Ou8uhmTJpbx7v+yS5SQYNbvOBrs4cGLpkwTIbig5LMdR
-         FwsfaZ5OOG29DlzzGs5qZptCYOCSQ8OB043lnvtYMc7AP69fEjZromp2nE13tFK/9XWb
-         8XolDSuV9zIbv2pvMmiAbRcdPB07XmSp/0Vh8Xer6eq5wJPsElEt29UUCMhJccUzYI39
-         LmXyx3y9LwZ4XYy/+jz31kh+F5lmGqsV3Ok9ifg6Vo1oG2k9eY2EogrhITw3K7qAjC9i
-         nV0iduU9spI7RmDav1ptCmBb2y3yf1WaH4MNvP7Xi0itv8nRkhzlKMNARp+vVN9qX7MD
-         9W3w==
+        b=AgibjHn537mSHKe7e547HJNoCNHlnHvgrgkwgNGjb7ULegIiMPScXT003ckJAyuO41
+         i026t+aNTflL4eOSZ6MWD4COLeF9UQ60SM1yE/DyHlmx6df/cibcT9pZYb6k+YOLlIuF
+         xc40uW7bBvCJuHoDRlDRZbtuXOFSyFp/FQ0qBFsZOe/b3P2KULPuhvWgtn6vtGbmPcv+
+         At1IYYnq0Ypu9MVKPvPSGIynjLnuKrNOmL2xD8l7s0SRMeH0HOZRlK4dq9IfQVhPu7AR
+         KECRY2xvmjkntpzAmKEAA6Ikt+ogWu+iofsgUn7cd97a4eUiDVTkPeghyIEzrZmXdetO
+         EUdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=y0Jylw0uyNdhLEP5WPnDbQTvuZQEAz9gJDHH7wlCJhk=;
+        bh=b9KWIiGOWq55nxx0C4B7NMOGhhvAoCPOGFcu0xxlyb8=;
         fh=HlENWry5pBMj1xy+XPJJKz1+KJ8prrg3FvBcv7/VjNo=;
-        b=gR/hH5r78s9EnrWZzv2Svz30ByALUvoH8eZhBeIgwplhz1443eQuY48kkXJqUbQh7a
-         aAhewsbBeCwtdYSzXxBmm4PcHFN+PBEWYor6sbDLE2puNjbfnFP4rZ2WCqJGLR0K+9XI
-         zhFWyzVpxKzt1jy/SOVnmXy8zf8WyzK8yCP72K1XybsBFiKd3W735FvB2KQozAKVXXBo
-         Q6xpJ2S+kCH2jyUFldfoZ8vUoC8yRs3wbDVuymB0BAfwJxQXL6pzM1YEvjHLUv/TXa7l
-         Zzt4kuOZzb2CxQJlrKml1VYH9OJon8gulwrv1QRNEJhPyBYoReLuy7dYylCmef9fkLAK
-         +xmg==;
+        b=BfM4UwalYWXHtftoT50tCsVTePkY5MLiEcZfTRcXJ1dISYvYM79mqRViW4GyGKjIb8
+         kMVCoTToZYS6iRSWijrXuKSj8Ng9oA9jkFpaeU+Fc8eYX+hDnCKXVgI5Caj3GLK/5nVi
+         Jk21fODmON0Zpqb1GqKjyDQ0MXn93Szbv27kdHRWyQyzGfM4eNWreq1+/NeTS4Ehukci
+         cmsWf+DnJytJaL52fTzv8hgYCOaXvH972m+WUDPyT7bGQgUuT3sKB+KFiZgBm8ZU1Uto
+         hBrY9WJbvfAKAMm1PcoE79S/lYofDI/yOwzDiujiDBL2RKV+S2pSRqWw0BNmGb2YUzaB
+         Juug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EzwZOshH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zacuj7DS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c041e94ba2si1399007585a.211.2025.02.12.04.39.27
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e46f94f2b8si16334616d6.288.2025.02.12.04.39.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 04:39:27 -0800 (PST)
+        Wed, 12 Feb 2025 04:39:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EzwZOshH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zacuj7DS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tiC0K-00049p-2W; Wed, 12 Feb 2025 07:38:12 -0500
+	id 1tiC11-0004kt-Fc; Wed, 12 Feb 2025 07:38:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiBzk-0003b5-C6
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 07:37:37 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC0D-0003v6-Hn
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 07:38:05 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiBzc-0000VT-DP
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 07:37:34 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-38f1e8efe82so501912f8f.0
- for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 04:37:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiC0A-0000ip-O0
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2025 07:38:05 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-38dd14c99c3so2530230f8f.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 04:37:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739363846; x=1739968646; darn=nongnu.org;
+ d=linaro.org; s=google; t=1739363870; x=1739968670; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y0Jylw0uyNdhLEP5WPnDbQTvuZQEAz9gJDHH7wlCJhk=;
- b=EzwZOshHJrK3He2qWz3WQ2jWrW+Y6mXfQ+FJQB+mVxSo/S1cxkC7yPyFrZtEcFu4oZ
- AMHOx+03eOUNOE7zPSWBGq3EcOJE+gCTRW4kdXjTs9dleoD3QaHz7cl/cl2/xMJ5Xz3B
- nitsIRQwXy12pSnAY0di9D4JLPmIrI0opnACk2Ba8vIhn1WEJA6HYTtEtbRVOr49f7fQ
- Mxu4yWdLpqxOlAshm3M9DlEhdnEgV6wNq9x0GVV1QNgPclX6wDlFYtlx4BAGQkKd4Bbx
- NZID3EkfyM4Yb+kTShMLIm3qIBtziX1oy056tCPmRg0yUen8lSAFj1x57lQyey1U2b17
- xSoQ==
+ bh=b9KWIiGOWq55nxx0C4B7NMOGhhvAoCPOGFcu0xxlyb8=;
+ b=Zacuj7DS+BGVYQG9fnH5CQ2ChWJV1w2TcxjsKri85l9gUhxtORdcc7bm3UUGl1fUYp
+ oZlNqMMwI64Uv20u78VPSZ0Mv8g7qyfbYc2CCJdzJ/GisugZcX0k/Vjd/I+uhFoBM5j7
+ JgN5rlefydXqmX22r6saDKd5ysyNO3maD76AYL/B4OWzboxNDHwKJtthiq6nD9mt+Pe+
+ 90mYgVK4awdOv2yaWGt8hhTi9Smo8jbiAVyNHndePI4XCMFi02ZVWVcIJUaQMzs2mxLD
+ Tz+hHZJy9Es4X5kOfH4eNntSjj9aBCmJ+b85HTKiKD4+iFbCG9lkIDWtb98h9g/jRjrA
+ 6Icw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739363846; x=1739968646;
+ d=1e100.net; s=20230601; t=1739363870; x=1739968670;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=y0Jylw0uyNdhLEP5WPnDbQTvuZQEAz9gJDHH7wlCJhk=;
- b=OblS4mMgJOYyAhGq9BO8HLgk58DTFvA5LGY03TK5w6YaNoOo8CzZFerysuhhzwJlYc
- 77CipH2u5ca1RsxOZvctLo7j3iNCneBZ4gJg9+j1W4Ln+FW7h0wzxG7ZnKh2o5+kRLHk
- SpuiPJoCjdBhYsuAqhA+NSxY9e1/S2k9gpjYaIFLKsod9K/Ww+efZY4FWJLJwA8EemLi
- G9JiCqkBlZu6oT+vmpUddF7p6+91u/qaVc5IuRu8gA+tTWXjQUIJqmVlQNfBzby+Mpp4
- sDBAnMIk/UwHBAjVwxqqlZmNhiU1aKCZPBnGYLWV2HQYsQI4Edgz6eOtt30IRtkMYkPI
- kLxw==
-X-Gm-Message-State: AOJu0YwSpJsKvqbKbZsKImfJdCpGAws7sfR9qxi09jcEjsYPTuJVGv2D
- PvGSL0Wdi0sgj12FjNvkUAeZ9TfKR4+FDmo4ghpbgv+/ea6ikhZu5kxI7H4stxPwtfW5rZ9hVoQ
- KApw=
-X-Gm-Gg: ASbGncuMQ8sizu9lmYI9ov61wdSy/nxdvGYEh6RVAPcZy6m200Y7apxJFNSnkKEh9/T
- +sWUv+ksXJAK0Pu1M8D1K8vXoAkReIm0KY1VUSx9wQeFPCvKoIhXZuwNW3++BxlBdSaHjle8RPm
- XJJRqwDhlpeQbzIwTPhnJfKruHtp+seS1LCqq8EdgZJ9jQQkm0hX32hZB1WWKFUboMYwZSSFF+q
- KDXhMyRexh+wDdOEjHUC9x+mZ6zzx5tnvBegRS9xkzA+0444sNa9uPaosXCqH6m5liJe6yv6fKQ
- NuVYFtLyXBcQQOuu+AWMyXf9RchR4kSZGn5dhlKa0N6SL1s72pkT+CiYTGUpnNuGEA==
-X-Received: by 2002:a5d:4b4c:0:b0:38d:dd43:8be5 with SMTP id
- ffacd0b85a97d-38dea265c8cmr2058738f8f.15.1739363846146; 
- Wed, 12 Feb 2025 04:37:26 -0800 (PST)
+ bh=b9KWIiGOWq55nxx0C4B7NMOGhhvAoCPOGFcu0xxlyb8=;
+ b=Fqjll/T12ItbjBu/vV3Rh5LY9sp6BNOVf6Jb/erioCC4CCTu4jvjWrJPz8xXcEF0Ne
+ +Ww+ZAXvsOPrAsI4imNfVCb+Uy72xscL90CYt4pG3C5A10BkejO2x28dH+uyC6qRbYld
+ PX4SL0gOUudHCiEJfEtrzxDY6qBvGVqAmmm6PuwP3EBieiNyBBTdTJckYxPX8pfcWgP6
+ Bhfm+OzBLm2L9/enCzoe9k5GpKWKGr14cSrvy3ymsdmtm6jKSyOlLKpAeGqq4twYuqGX
+ p2NQOPv93LZAoDjpvgeMyTi7zwTNt2/d9HOUk/PExxnrDG04iswSk4Dv2bbjK+WNwsSI
+ LvhA==
+X-Gm-Message-State: AOJu0YyearC+VzeTNpxLGIEuCTxJ08sIX15vtM0XNA5DVa1JiOyD4r/m
+ HUqxkxxy14LCLPY+jEYfWg8qLKUd7lE5VVp+VPPyRTME2M6PLYxFDRI3Tmq20+KabONl3Dm/7dw
+ jZCI=
+X-Gm-Gg: ASbGncvxU6x6kChKQ5nspuD4K2c59eTss19KLcffnzSmGVa30Frmjd6nE3GDMq9LJ50
+ 4/1vTFQDmbXvjLQ6X2JPovdTfW0jvMg6Dcm2cF3ExzMDRs8012aFTnENlZvOmez8W1Il0g1TUSd
+ dqo+ewqq3YF8OKQf8TDpMNBO7JL0NSsFRMb74uVF754wo/5NlejzbqNVrV5nlhFUO/HoGvGN04b
+ UgDQICuFtQOX9pKo3bqOug/4OTb70284IX46JyVsU8Tj44a2zCjzztSdAeV8KtV9Kg2gwB3JdTs
+ b0XL80urdRvhrb7hgUgyyPMn8nEZOc/fcC6bEVLqyAX3GZrJsUyJLqnUD/B+eUOvKA==
+X-Received: by 2002:a5d:64cf:0:b0:38d:b57e:7202 with SMTP id
+ ffacd0b85a97d-38dea28d854mr2723465f8f.31.1739363870257; 
+ Wed, 12 Feb 2025 04:37:50 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38dbde0fd0dsm17238125f8f.75.2025.02.12.04.37.25
+ ffacd0b85a97d-38f221c4145sm322697f8f.85.2025.02.12.04.37.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 12 Feb 2025 04:37:25 -0800 (PST)
+ Wed, 12 Feb 2025 04:37:49 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
@@ -108,18 +108,18 @@ Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
  Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v7 05/10] hw/char/xilinx_uartlite: Make device endianness
- configurable
-Date: Wed, 12 Feb 2025 13:36:54 +0100
-Message-ID: <20250212123659.52764-6-philmd@linaro.org>
+Subject: [PATCH v7 10/10] tests/functional: Have microblaze tests inherit
+ common parent class
+Date: Wed, 12 Feb 2025 13:36:59 +0100
+Message-ID: <20250212123659.52764-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250212123659.52764-1-philmd@linaro.org>
 References: <20250212123659.52764-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,122 +141,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PYx9itnbsTuR
+X-TUID: JHQ/GQjxSvv9
 
-Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
-of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
-Add the "little-endian" property to select the device
-endianness, defaulting to little endian.
-Set the proper endianness on the single machine using the
-device.
+Have the MicroblazeMachine class being common to both
+MicroblazeBigEndianMachine and MicroblazeLittleEndianMachine
+classes. Move the xmaton and ballerina tests to the parent class.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20250206131052.30207-16-philmd@linaro.org>
 ---
- hw/char/xilinx_uartlite.c                | 34 ++++++++++++++++--------
- hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
- hw/riscv/microblaze-v-generic.c          |  1 +
- 3 files changed, 25 insertions(+), 11 deletions(-)
+ .../functional/test_microblaze_s3adsp1800.py  | 23 +++++++++++++++
+ .../test_microblazeel_s3adsp1800.py           | 29 ++-----------------
+ 2 files changed, 26 insertions(+), 26 deletions(-)
 
-diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
-index 56955e0d74a..4037c937eeb 100644
---- a/hw/char/xilinx_uartlite.c
-+++ b/hw/char/xilinx_uartlite.c
-@@ -24,6 +24,7 @@
+diff --git a/tests/functional/test_microblaze_s3adsp1800.py b/tests/functional/test_microblaze_s3adsp1800.py
+index c4226f49cf3..177c8a685bc 100755
+--- a/tests/functional/test_microblaze_s3adsp1800.py
++++ b/tests/functional/test_microblaze_s3adsp1800.py
+@@ -7,6 +7,7 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later. See the COPYING file in the top-level directory.
  
- #include "qemu/osdep.h"
- #include "qemu/log.h"
-+#include "qapi/error.h"
- #include "hw/char/xilinx_uartlite.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-@@ -57,6 +58,7 @@
- struct XilinxUARTLite {
-     SysBusDevice parent_obj;
++from qemu_test import exec_command_and_wait_for_pattern
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import wait_for_console_pattern
  
-+    EndianMode model_endianness;
-     MemoryRegion mmio;
-     CharBackend chr;
-     qemu_irq irq;
-@@ -166,17 +168,21 @@ uart_write(void *opaque, hwaddr addr,
-     uart_update_irq(s);
- }
+@@ -20,6 +21,10 @@ class MicroblazeMachine(QemuSystemTest):
+          'day17.tar.xz'),
+         '3ba7439dfbea7af4876662c97f8e1f0cdad9231fc166e4861d17042489270057')
  
--static const MemoryRegionOps uart_ops = {
--    .read = uart_read,
--    .write = uart_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--    .valid = {
--        .min_access_size = 1,
--        .max_access_size = 4
--    }
-+static const MemoryRegionOps uart_ops[2] = {
-+    [0 ... 1] = {
-+        .read = uart_read,
-+        .write = uart_write,
-+        .valid = {
-+            .min_access_size = 1,
-+            .max_access_size = 4,
-+        },
-+    },
-+    [0].endianness = DEVICE_LITTLE_ENDIAN,
-+    [1].endianness = DEVICE_BIG_ENDIAN,
- };
- 
- static const Property xilinx_uartlite_properties[] = {
-+    DEFINE_PROP_ENDIAN_NODEFAULT("endianness", XilinxUARTLite, model_endianness),
-     DEFINE_PROP_CHR("chardev", XilinxUARTLite, chr),
- };
- 
-@@ -214,6 +220,15 @@ static void xilinx_uartlite_realize(DeviceState *dev, Error **errp)
- {
-     XilinxUARTLite *s = XILINX_UARTLITE(dev);
- 
-+    if (s->model_endianness == ENDIAN_MODE_UNSPECIFIED) {
-+        error_setg(errp, TYPE_XILINX_UARTLITE " property 'endianness'"
-+                         " must be set to 'big' or 'little'");
-+        return;
-+    }
++    ASSET_IMAGE_LE = Asset(
++        ('http://www.qemu-advent-calendar.org/2023/download/day13.tar.gz'),
++        'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
 +
-+    memory_region_init_io(&s->mmio, OBJECT(dev),
-+                          &uart_ops[s->model_endianness == ENDIAN_MODE_BIG],
-+                          s, "xlnx.xps-uartlite", R_MAX * 4);
-     qemu_chr_fe_set_handlers(&s->chr, uart_can_rx, uart_rx,
-                              uart_event, NULL, s, NULL, true);
- }
-@@ -223,9 +238,6 @@ static void xilinx_uartlite_init(Object *obj)
-     XilinxUARTLite *s = XILINX_UARTLITE(obj);
+     def do_ballerina_be_test(self, machine):
+         self.set_machine(machine)
+         self.archive_extract(self.ASSET_IMAGE_BE)
+@@ -34,6 +39,24 @@ def do_ballerina_be_test(self, machine):
+         # message, that's why we don't test for a later string here. This
+         # needs some investigation by a microblaze wizard one day...
  
-     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
++    def do_xmaton_le_test(self, machine):
++        self.require_netdev('user')
++        self.set_machine(machine)
++        self.archive_extract(self.ASSET_IMAGE_LE)
++        self.vm.set_console()
++        self.vm.add_args('-kernel', self.scratch_file('day13', 'xmaton.bin'))
++        tftproot = self.scratch_file('day13')
++        self.vm.add_args('-nic', f'user,tftp={tftproot}')
++        self.vm.launch()
++        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
++        wait_for_console_pattern(self, 'buildroot login:')
++        exec_command_and_wait_for_pattern(self, 'root', '#')
++        exec_command_and_wait_for_pattern(self,
++                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
++                '821cd3cab8efd16ad6ee5acc3642a8ea')
++
++class MicroblazeBigEndianMachine(MicroblazeMachine):
++
+     def test_microblaze_s3adsp1800_legacy_be(self):
+         self.do_ballerina_be_test('petalogix-s3adsp1800')
+ 
+diff --git a/tests/functional/test_microblazeel_s3adsp1800.py b/tests/functional/test_microblazeel_s3adsp1800.py
+index 60aab4a45e8..56645bd0bb2 100755
+--- a/tests/functional/test_microblazeel_s3adsp1800.py
++++ b/tests/functional/test_microblazeel_s3adsp1800.py
+@@ -7,34 +7,11 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later. See the COPYING file in the top-level directory.
+ 
+-from qemu_test import exec_command_and_wait_for_pattern
+-from qemu_test import QemuSystemTest, Asset
+-from qemu_test import wait_for_console_pattern
++from qemu_test import QemuSystemTest
+ 
++from test_microblaze_s3adsp1800 import MicroblazeMachine
+ 
+-class MicroblazeelMachine(QemuSystemTest):
 -
--    memory_region_init_io(&s->mmio, obj, &uart_ops, s,
--                          "xlnx.xps-uartlite", R_MAX * 4);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
- }
+-    timeout = 90
+-
+-    ASSET_IMAGE_LE = Asset(
+-        ('http://www.qemu-advent-calendar.org/2023/download/day13.tar.gz'),
+-        'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
+-
+-    def do_xmaton_le_test(self, machine):
+-        self.require_netdev('user')
+-        self.set_machine(machine)
+-        self.archive_extract(self.ASSET_IMAGE_LE)
+-        self.vm.set_console()
+-        self.vm.add_args('-kernel', self.scratch_file('day13', 'xmaton.bin'))
+-        tftproot = self.scratch_file('day13')
+-        self.vm.add_args('-nic', f'user,tftp={tftproot}')
+-        self.vm.launch()
+-        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
+-        wait_for_console_pattern(self, 'buildroot login:')
+-        exec_command_and_wait_for_pattern(self, 'root', '#')
+-        exec_command_and_wait_for_pattern(self,
+-                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
+-                '821cd3cab8efd16ad6ee5acc3642a8ea')
++class MicroblazeLittleEndianMachine(MicroblazeMachine):
  
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index caaea222a8c..bdba2006b72 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -109,6 +109,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     }
- 
-     dev = qdev_new(TYPE_XILINX_UARTLITE);
-+    qdev_prop_set_enum(dev, "endianness", endianness);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, UARTLITE_BASEADDR);
-diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
-index 3c79f5733b2..d8e67906d26 100644
---- a/hw/riscv/microblaze-v-generic.c
-+++ b/hw/riscv/microblaze-v-generic.c
-@@ -92,6 +92,7 @@ static void mb_v_generic_init(MachineState *machine)
- 
-     /* Uartlite */
-     dev = qdev_new(TYPE_XILINX_UARTLITE);
-+    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, UARTLITE_BASEADDR);
+     def test_microblaze_s3adsp1800_legacy_le(self):
+         self.do_xmaton_le_test('petalogix-s3adsp1800')
 -- 
 2.47.1
 

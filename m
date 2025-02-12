@@ -1,117 +1,117 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp935161njb;
-        Wed, 12 Feb 2025 03:47:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVnBZQauhfOr5zaRvj1N8QiWDKhLW9VmczI5BHL6OtPWrzRxF1YAjDOjNkejG7W3QCm+YcW3mzZrBJZFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEHG7Pdgc8N+5GlYBkUN0uW1Qk3Rzny6+54JWxPvNOCjENutQMOnRLOtgUKWKH2b7Lu5QOF
-X-Received: by 2002:a05:620a:1aaa:b0:7b6:d90f:e4ca with SMTP id af79cd13be357-7c070735f36mr396997285a.26.1739360850010;
-        Wed, 12 Feb 2025 03:47:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739360849; cv=none;
+Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp936113njb;
+        Wed, 12 Feb 2025 03:49:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW4HEQ0dTVHUjTT0O/Qdo/ALPMyr7Ao4vXfpjm2QMxD5UXIHSn8RHIgL22UBYEhLR0hic/9JZMRPQ4UCg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHfedkB/JO6CCWwNE9suBgKO31IZ/6aO8LZJ/7G/UaNQ1gIF4WT+Y0Hl0FS7XPhARAUIMmM
+X-Received: by 2002:a05:620a:618c:b0:7b1:527f:cf4f with SMTP id af79cd13be357-7c06fcce9f6mr416111185a.42.1739360983194;
+        Wed, 12 Feb 2025 03:49:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739360983; cv=none;
         d=google.com; s=arc-20240605;
-        b=EwkYuk1irM+6p3lS5j9iJC3g4JyDk7o0EIVlMvnhFoyBJymn9JU4TOXP2A3+cmtQDj
-         hxbEQKVIqgwIa3EuMfVn3n2FJx0shUkrXs0pl1XCnZ8D0TSgGOvb4/uynsiak2vWtfsc
-         /f+KzPbaVrHfqclwKaPAd0khsHQrBREhcA3WJ0q5R8mgy915Y1z/S+miIkkqZ/vWVfyJ
-         Wu67viYVleNm134hfcght6EJz2mthej2Cnk4dhxt3JrGXpOdI4HyObCIKBqJt1Z5CPJz
-         k55cHQIJGs1kaPopcRXjZ/72u0jLksRFozlnaoDVGvr00sotjlbbgMp0xFXKG7I/Sla+
-         SR0Q==
+        b=ZUOBPyL1mH7tZQk/3uROPbD1AdogpWiS/2SewHOGO//QEZ1cIkeSWmI92kZmg8E1Pe
+         QarYnpmQeRQYt5Y/kGEI2AOFBL6TmbD2rq0DtIdPSnhxsJ708XaT71dmfSR/E/3DkYnC
+         hY1dsScKYVTHgYQkNsTuKzxLD7cXYCOaC5wZqlLvY+oO+XPdXWnPmWr/9KZQt9eUwxvo
+         ryeVGlBJfsv/wAZJ3+x2eoYAxQlS0f+cPj6iGeXhM6xPodrbPP4AnaZ1pO+fvirvqi0w
+         Tovn4IKf9WAkIelmCYxIfdehAZduPNY9vgyxdSgBwQKekCY7qc7tzNMWlrC06jjlLQ/s
+         zsnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6XiwCfz+nKDKJLdJPfvfodCuEZr+wHsHEy+a5HiTISo=;
-        fh=wXBmiPjYfiOfmozfHj3sQFj8o2sqo6yeFz6dwGryd4g=;
-        b=ONTDNgw5O9m/gu+fu29QWAES61Xmo56XfCMtfxLy1W+iG7cTQwFKUVmApdxANe9trm
-         Fm/2EqCgZNFZPRH/FwfNOQk1ID2vW0RiQhfyzVv1tHqg1DggVOhp/AHACGEPnr0MFgRA
-         Ru/JO0p/9rRHM59KH2i0oXLGDng2iNJgenYk00b49r2KX+LjgmEQRtdu0mpQ/hBaScsf
-         1kpur9AM/jOt2mkhHRm7OH5m7uBE65ahDR7V7jczDxgWdc1EJpDs+NwOeOeZgRgXEWVX
-         aqRJA4uwyxMD3pxyC/gvlJ3JGWpnTe3UHuuEPfd+GM7WoggUNMwEB7LQlPQTXyx2Q/RY
-         zl0w==;
+        bh=PZNpFVnsh6lshbKMRE5Z9zohd8VxnEo1QVzFiZkw9iI=;
+        fh=16Os/njb5PrbvwZ/h9wlR7UKgNe5RKNEN0Gt61oVCTM=;
+        b=OFDCVFw7vEr6NxutYpfzCCWFrVXb3ciP+Ty+ggtLM4ZcK/GavVHRgQJBbT/t3nL+1a
+         Gel+SewyjSrV5626WgMQeZpSv8YhpJVWQew+B6I4Z1cmFUSGEMtr/C1i30z5SflwOvZg
+         MbpG3Ku5TK2jUhbdgHkIT36cjIgr6LzzTA6m6feS6Mfr+lqOj2u38//yTOCY1c8my+/3
+         MqlV8UvJTjzZj8G2UUn8gb9nOXWC2F6OYIlhKwddweFqmEoAXzfmLwqukDmvcp2Ttf13
+         IXh7/d6cEaGKP/360oDoYtg79gSAm6yCcm0PtwSsqGvJ/uvUlsEYfs7RvaoIyCp+3cFy
+         JIEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a65jV0A+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CprXHWiC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c050c4cfcesi865409485a.316.2025.02.12.03.47.29
+        by mx.google.com with ESMTPS id af79cd13be357-7c041eb4df1si1312549785a.387.2025.02.12.03.49.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 03:47:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Feb 2025 03:49:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a65jV0A+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CprXHWiC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tiBCw-0001Ga-OA; Wed, 12 Feb 2025 06:47:14 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tiBEt-0002cL-SR; Wed, 12 Feb 2025 06:49:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiBCk-0001CS-5W
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 06:46:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiBEt-0002c3-7m
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:49:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiBCd-0002YV-I4
- for qemu-devel@nongnu.org; Wed, 12 Feb 2025 06:46:56 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tiBEq-0002pj-Ro
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2025 06:49:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739360810;
+ s=mimecast20190719; t=1739360947;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=6XiwCfz+nKDKJLdJPfvfodCuEZr+wHsHEy+a5HiTISo=;
- b=a65jV0A+gXV/YCCrMrEghA0gad6V1cShJdNNnVzhGvNJVxpZ7gFlSHBxBjUBFD8pJpkLYa
- J7NAPSeUGjw7JlmG6YAHE8zoUvfVzIp/v02eDuWhms2GoNWDJqGe9p5L/cAMiJVh7k2nqA
- /cOKJ1dicMvDRaU14LyGZCLjm2wADQs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=PZNpFVnsh6lshbKMRE5Z9zohd8VxnEo1QVzFiZkw9iI=;
+ b=CprXHWiCT1q/vRhsQDcci38m5/XaZpSv3Eqo+kLP3qFaW0qeDqmPDhR3qgUbI14ghVs4sn
+ /mqrO+PnmbDQ3gFODLk8xt+AHJntRPK2fyh1aaOrf/jyJH3nlABOajErme3E8arli2J5k1
+ 1GX7nwo9fiyf2qfGUJYS4i1ooHGbfpw=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-336-hcXVbOWcO0ylBAzENEVJ3A-1; Wed, 12 Feb 2025 06:46:48 -0500
-X-MC-Unique: hcXVbOWcO0ylBAzENEVJ3A-1
-X-Mimecast-MFC-AGG-ID: hcXVbOWcO0ylBAzENEVJ3A
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4395586f952so8201025e9.2
- for <qemu-devel@nongnu.org>; Wed, 12 Feb 2025 03:46:48 -0800 (PST)
+ us-mta-665-kIvAxZu4Mc2SHqit3V_zeA-1; Wed, 12 Feb 2025 06:49:05 -0500
+X-MC-Unique: kIvAxZu4Mc2SHqit3V_zeA-1
+X-Mimecast-MFC-AGG-ID: kIvAxZu4Mc2SHqit3V_zeA
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4393e873962so18755205e9.3
+ for <qemu-arm@nongnu.org>; Wed, 12 Feb 2025 03:49:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739360807; x=1739965607;
+ d=1e100.net; s=20230601; t=1739360944; x=1739965744;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6XiwCfz+nKDKJLdJPfvfodCuEZr+wHsHEy+a5HiTISo=;
- b=GvYq5517EtLf6DO2m1tznTPcj7uVEjF80xgNJjruvC+EQjloHg4LwoK4Lahfp3JNPR
- EJqCN620fQau7fqV3fpkSJyuxrzI5y1tESjAjaOxoW5ZErlye70vJG0wGXhORPg07PD7
- vJxyU7Q+uulOy2ljwqZURIjswIBSJ4LzZGZzbKC6eNLHNjEdw4I12BO5XQe1d5o82wXe
- 0OQUGYeyDRgeNjGR60pKKnRv7kCEDNENiFz3mWtpBTWQD+rJLY2FphVRy49eTJ+gERt6
- d5xSnUsGzaPKysld9K7WHrsa66D1AsfTD+mjlHu7RX1R5ZFJbbH9A1vYtMW4cU3Up+Oc
- 3CmQ==
+ bh=PZNpFVnsh6lshbKMRE5Z9zohd8VxnEo1QVzFiZkw9iI=;
+ b=picFoV1JcL6BlDVXjArdYtpG21P0mm+CEALl9Me/QZLyJQ+gCm614jdaPVkBKZiSPe
+ 4X5muM8om6f1BOKk5DXWbFkupvk8aU4LJPu2hsNoR/0jAupyU1sVRCmqlko0+9TdHwFU
+ 9MwizKU3Yz0ULlNWZZ8Z8npDxt/OJ+1I/3VAAgnudpdisPi3ZsmUC6kBsGbKCSnS4Uxn
+ hnzoKWRxGHtZ2EfwMfyGsHcbxfjYlPM8e1ocstGtKFARJ3EAzjoONs0G9GH5tFVVGYZN
+ o5N06Z86KVU7RahdibtQSFNB8GdPet6MXJ48xxc8y/8Xqq5ZOnb4GYFMYLw3QINDSNy2
+ IGhQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWPP3FUFowAOg76laZt3/CLeRefQmUSbCfrrRUl3v/WTkyCt4CyiNauvWCMkaaOX0MovBrhNjOC8JDn@nongnu.org
-X-Gm-Message-State: AOJu0YxPHBY36cooeXqluL9vdzLXCvWsbhVzH3YP6Lrj7sMgTHN2p+HT
- U3IaTTS/xDln0ebvOlN9yE1TNJfqHyyWQNQphVuSilTQUBnzfytLW445BXqXCPOac+hzqCR/Eka
- Ht0KUDeLXmw/M7jcNH8BOo27EXq9huH7WHoTvja11lWjlFMmjMAaE
-X-Gm-Gg: ASbGncsNSc53S1FVSKQKLuL/PQUsO3d//2voD4oUQpROwhhFirxRT2VQrIin889gML/
- ckP1oIkPTlSMCyk4M8aog+olvoxBLJNaNLw6l8t3ajm0MB6CzsF+4Kl2vbZ4mgofeUEG752eo/u
- nSfZPRujKk2CCo6EVbrtMbMApfeB2aCmj1d7azb5F9KbbHl6jxkauLwWDyYXem/CgrdgMwdZc1t
- e4OBxw5LFy6I+TRBED01hrw495eJa0LH90s66oLR7/c3xsENZiRdwBZhwyr2kPCRHW7GfA8vz3R
- lO93nE4ROQfS3TdfAIVdfLYlV1kWekGRBA==
-X-Received: by 2002:a05:600c:3007:b0:439:5b36:b4e7 with SMTP id
- 5b1f17b1804b1-4395b36b75bmr15718315e9.9.1739360807425; 
- Wed, 12 Feb 2025 03:46:47 -0800 (PST)
-X-Received: by 2002:a05:600c:3007:b0:439:5b36:b4e7 with SMTP id
- 5b1f17b1804b1-4395b36b75bmr15717975e9.9.1739360807007; 
- Wed, 12 Feb 2025 03:46:47 -0800 (PST)
+ AJvYcCWamNuK33+tvAa7BxluMQ/Wf+hIhn3H7COKmZWEYKD1lR22wK5ZY4oyIhY1OktM7scrkV2uWcNMVQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzykGf4cfsfs8PLc4lXkWp+DdtiQaJUm/iljS09tXOsDXAAwKmc
+ 5WcHLLBc0H0OwXC0+/UxnQDIR6wmVPU5KDsIXVS2Jv771xHLIA3P4tgKHdQ2LX7/Cdg5SYzxXJD
+ nMVrRm8nmYI1p+p6ROh9tOHCHvDyYhScTLsmx9AzjFP56Kc4TXw==
+X-Gm-Gg: ASbGncsWBQnoTQFDLgpRyT79WD0pzM6oYdMnulEEJ+ycxkMw6XU08qHEn+8Qi86Ag1+
+ E+hBVkPEI8zqRQAk/O8b+wDJb7w/0AxrDW6AyBI5QRR4py9XNL2DaMsHnddh6n2C2Vpf7tc0tlR
+ POjUE5/W6xN8CtIrvM8nnLswixt3C9hR1KWxyT4mJisOCuMyYE8qRRj8DPg244h9pGN2IBN6F1o
+ MzP5BDEV9D7fb8EMsjaSLas/McQWIsbzcHjciLQXf4hwf+86VMqOdIrozTc8v7a+jG2GuqjfY9l
+ uhQSZGS4TBiHmZs2ZiIbu15ZFPCBLQrqnw==
+X-Received: by 2002:a05:600c:19cd:b0:439:54a5:dde9 with SMTP id
+ 5b1f17b1804b1-43958188eb8mr27738295e9.13.1739360944609; 
+ Wed, 12 Feb 2025 03:49:04 -0800 (PST)
+X-Received: by 2002:a05:600c:19cd:b0:439:54a5:dde9 with SMTP id
+ 5b1f17b1804b1-43958188eb8mr27737985e9.13.1739360944207; 
+ Wed, 12 Feb 2025 03:49:04 -0800 (PST)
 Received: from [192.168.0.7] (ip-109-42-48-37.web.vodafone.de. [109.42.48.37])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4395a07ce08sm17337985e9.39.2025.02.12.03.46.45
+ 5b1f17b1804b1-4395a04cd53sm17806975e9.6.2025.02.12.03.49.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2025 03:46:46 -0800 (PST)
-Message-ID: <c18f47eb-c308-4dfe-9e2f-5f33bf73010d@redhat.com>
-Date: Wed, 12 Feb 2025 12:46:45 +0100
+ Wed, 12 Feb 2025 03:49:03 -0800 (PST)
+Message-ID: <86753d5f-c9f8-4107-91f3-4477fe44cc73@redhat.com>
+Date: Wed, 12 Feb 2025 12:49:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 11/11] tests/functional: Have microblaze tests inherit
- common parent class
+Subject: Re: [PATCH v6 07/11] tests/functional: Avoid using
+ www.qemu-advent-calendar.org URL
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -121,9 +121,8 @@ Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 References: <20250212112413.37553-1-philmd@linaro.org>
- <20250212112413.37553-12-philmd@linaro.org>
+ <20250212112413.37553-8-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -166,152 +165,65 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250212112413.37553-12-philmd@linaro.org>
+In-Reply-To: <20250212112413.37553-8-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: J8O900KcJ4xbufbrmQqt15Az4oenU5_NUq8keVtcnLk_1739360945
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nW2RjUDi3xsl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DqRO4gXu4lW/
 
 On 12/02/2025 12.24, Philippe Mathieu-Daudé wrote:
-> Have the MicroblazeMachine class being common to both
-> MicroblazeBigEndianMachine and MicroblazeLittleEndianMachine
-> classes. Move the xmaton and ballerina tests to the parent class.
+> Avoid fetching assets from www.qemu-advent-calendar.org
+> website, prefer fetching microblaze assets from GitLab servers.
 > 
+> Suggested-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Message-Id: <20250206131052.30207-16-philmd@linaro.org>
 > ---
->   .../functional/test_microblaze_s3adsp1800.py  | 24 +++++++++++++++
->   .../test_microblazeel_s3adsp1800.py           | 30 ++-----------------
->   2 files changed, 27 insertions(+), 27 deletions(-)
+>   tests/functional/test_microblazeel_s3adsp1800.py | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/tests/functional/test_microblaze_s3adsp1800.py b/tests/functional/test_microblaze_s3adsp1800.py
-> index c4226f49cf3..650416e0c09 100755
-> --- a/tests/functional/test_microblaze_s3adsp1800.py
-> +++ b/tests/functional/test_microblaze_s3adsp1800.py
-> @@ -7,6 +7,7 @@
->   # This work is licensed under the terms of the GNU GPL, version 2 or
->   # later. See the COPYING file in the top-level directory.
->   
-> +from qemu_test import exec_command_and_wait_for_pattern
->   from qemu_test import QemuSystemTest, Asset
->   from qemu_test import wait_for_console_pattern
->   
-> @@ -20,6 +21,11 @@ class MicroblazeMachine(QemuSystemTest):
->            'day17.tar.xz'),
->           '3ba7439dfbea7af4876662c97f8e1f0cdad9231fc166e4861d17042489270057')
->   
-> +    ASSET_IMAGE_LE = Asset(
-> +        ('https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/'
-> +         'day05.tar.xz'),
-> +        'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
-> +
->       def do_ballerina_be_test(self, machine):
->           self.set_machine(machine)
->           self.archive_extract(self.ASSET_IMAGE_BE)
-> @@ -34,6 +40,24 @@ def do_ballerina_be_test(self, machine):
->           # message, that's why we don't test for a later string here. This
->           # needs some investigation by a microblaze wizard one day...
->   
-> +    def do_xmaton_le_test(self, machine):
-> +        self.require_netdev('user')
-> +        self.set_machine(machine)
-> +        self.archive_extract(self.ASSET_IMAGE_LE)
-> +        self.vm.set_console()
-> +        self.vm.add_args('-kernel', self.scratch_file('day13', 'xmaton.bin'))
-> +        tftproot = self.scratch_file('day13')
-> +        self.vm.add_args('-nic', f'user,tftp={tftproot}')
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
-> +        wait_for_console_pattern(self, 'buildroot login:')
-> +        exec_command_and_wait_for_pattern(self, 'root', '#')
-> +        exec_command_and_wait_for_pattern(self,
-> +                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
-> +                '821cd3cab8efd16ad6ee5acc3642a8ea')
-> +
-> +class MicroblazeBigEndianMachine(MicroblazeMachine):
-
-Add this here 'til the problem with the precaching is fixed:
-
-     ASSET_IMAGE_BE = MicroblazeMachine.ASSET_IMAGE_BE
-
-?
-
->       def test_microblaze_s3adsp1800_legacy_be(self):
->           self.do_ballerina_be_test('petalogix-s3adsp1800')
->   
 > diff --git a/tests/functional/test_microblazeel_s3adsp1800.py b/tests/functional/test_microblazeel_s3adsp1800.py
-> index d50b98342d7..56645bd0bb2 100755
+> index c382afe6bfa..5bf94d88dd8 100755
 > --- a/tests/functional/test_microblazeel_s3adsp1800.py
 > +++ b/tests/functional/test_microblazeel_s3adsp1800.py
-> @@ -7,35 +7,11 @@
->   # This work is licensed under the terms of the GNU GPL, version 2 or
->   # later. See the COPYING file in the top-level directory.
+> @@ -18,7 +18,8 @@ class MicroblazeelMachine(QemuSystemTest):
+>       timeout = 90
 >   
-> -from qemu_test import exec_command_and_wait_for_pattern
-> -from qemu_test import QemuSystemTest, Asset
-> -from qemu_test import wait_for_console_pattern
-> +from qemu_test import QemuSystemTest
->   
-> +from test_microblaze_s3adsp1800 import MicroblazeMachine
->   
-> -class MicroblazeelMachine(QemuSystemTest):
-> -
-> -    timeout = 90
-> -
-> -    ASSET_IMAGE_LE = Asset(
-> -        ('https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/'
-> -         'day05.tar.xz'),
-> -        'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
-> -
-> -    def do_xmaton_le_test(self, machine):
-> -        self.require_netdev('user')
-> -        self.set_machine(machine)
-> -        self.archive_extract(self.ASSET_IMAGE_LE)
-> -        self.vm.set_console()
-> -        self.vm.add_args('-kernel', self.scratch_file('day13', 'xmaton.bin'))
-> -        tftproot = self.scratch_file('day13')
-> -        self.vm.add_args('-nic', f'user,tftp={tftproot}')
-> -        self.vm.launch()
-> -        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
-> -        wait_for_console_pattern(self, 'buildroot login:')
-> -        exec_command_and_wait_for_pattern(self, 'root', '#')
-> -        exec_command_and_wait_for_pattern(self,
-> -                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
-> -                '821cd3cab8efd16ad6ee5acc3642a8ea')
-> +class MicroblazeLittleEndianMachine(MicroblazeMachine):
+>       ASSET_IMAGE = Asset(
+> -        ('http://www.qemu-advent-calendar.org/2023/download/day13.tar.gz'),
+> +        ('https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/'
+> +         'day05.tar.xz'),
+>           'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
 
-And add this here:
-
-     ASSET_IMAGE_LE = MicroblazeMachine.ASSET_IMAGE_LE
-
-?
+You'd likely need to adjust the sha256 sum as well since I repacked with xz 
+instead of gz ... but according to Eldon, the original download should be 
+working again, so I'd suggest to drop this patch for now.
 
   Thomas
-
->       def test_microblaze_s3adsp1800_legacy_le(self):
->           self.do_xmaton_le_test('petalogix-s3adsp1800')
 

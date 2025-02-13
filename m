@@ -1,69 +1,70 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp589776njc;
-        Thu, 13 Feb 2025 05:51:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWO8b17KTp5qIMUzWJvJ2JASuxZNCD+vopMC4o6u4BJGMBLGzvG8fXSAUSrFi8cVIVoA71W9ccip8XPlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHUGUWePWld9PGLzKeaH5TQ9jgDjQosxPk9um5779a6fpoYQLaIqjh8gp+UJ+qMdlc7+vGL
-X-Received: by 2002:a05:6000:4714:b0:38d:df15:2770 with SMTP id ffacd0b85a97d-38f24c5e374mr3090362f8f.0.1739454661102;
-        Thu, 13 Feb 2025 05:51:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739454661; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp589881njc;
+        Thu, 13 Feb 2025 05:51:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUUX+pkLZqN9/AMhNPKJRG6zakpxEjxZV9lameecXqRbtJDQ3IE6IDfjdZbXsV9nO61BOUcrGEJyLJPBQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvnWIE0q08AWc3bK08gdR/gsrNQA7Ru4e4On97UiIAkE9+WVa/0jrVv23l+XFApHdogowF
+X-Received: by 2002:a05:6214:4011:b0:6d8:8b9d:1500 with SMTP id 6a1803df08f44-6e46edabd25mr149746266d6.36.1739454670921;
+        Thu, 13 Feb 2025 05:51:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739454670; cv=none;
         d=google.com; s=arc-20240605;
-        b=XmKKG27p2jJJAOdHxeQBI5hj3Z+7lX0iNQF6oro37T1xJZU+nHqqcNilASNZ/7K37n
-         xUUdLQmwucajBkf2CK9SeVcwk/FCBudNRHLhcLyfVpxCuOaMAc0OirIyaBjgi66ulrxO
-         BLjXLKecrtkrq1fxO5NHyFsg7+geGn8XcecN49zWQUWnpK4+iH6njve/KZbprETLPsHP
-         EUMkHRWEzJ4Pqg+MHcCl17Qcv/pIQJB5jtLd7Wlrmcua/qlwuVTcL+pd5YSlo2jvAXZU
-         5BP1bMxIeR/eKa8PWkor9hRECQIv+MVDD7PafyhLd9ExES0azF8Gq3mk+h1gOGiYECA2
-         kSGw==
+        b=HzRwUp9J1/4UGW0rp389ngVVHCAuB3IAJ/bu9OGsOg6/x9A5p6v/LhSga12zWXXYrK
+         EdsLqls0/FSkTyszP1Jr9JvBvoc7e2M6uk+TDyKIjBWsGeYrKZtU6eNtYPtRtt3nPr1+
+         jDCtczddLoLLBN2yiptfpjwPdUE4i3DouPc7CfqVkhcwZxfgCftolDVddUJBxVa6cNY5
+         a0puIlBQESYMY8L23VbtKLNNU3zLp91vvIaqwofQkIJkDP1Vl7CDdQ0eMh3NnxEvcaYA
+         VC/4509XzfXs7x3Dl06WiWKdbv4JJ6O5Jimvb+DEkrOuxQfX9RYyAeATcd6dkGbuhODh
+         um0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=9y3iX25JXzJV4LsWdCKwdpyFNIF9HsTeFE8wOHwrl9Y=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=i61uZKOUpSCeJlTNk3nSmeaPm5pItDiwyvp2HBiI56Y=;
         fh=MnhyUl3vVgRMrTIm5urs1XY+2V00f3MxvY4hBV+jHPk=;
-        b=ZuHmT7nGDkmeB5J9bI16OK5rJW7uwAAPlw5NLYj2Wl9GNn5ZKvgLuvgBHAB03x4u5T
-         IxeTBOHqOCHfj17xj+JB8l9jDtkJESOI5C1MZ1Bv0UgJk7VF3EgO0n6n3R/c6mAwDJ5a
-         BU1Z1Es0pbjEPV7cbq7n/POF+WrRKwD9HvjGJm1P7AAg1N3PjR/09SXrT0C/05lzVBax
-         QuxgKVQReIQw8hVjox4Dhy08hqNGM85XKFQGPZ9/Fqc8f7uHZARtOs/GQinjD5UHQnFG
-         HHxCb82XAryAfEKFtia4/gn0wWFohH/wD7qsMQCqkz7u7fyq1p/QRR4zAgYThKxgBKpt
-         J8mA==;
+        b=Ghn4d5t5FAFnbL7e1/kzVI6MbT6jkVJnZDojyz3WuZSEI8S4HqW/gt9PiX2d7uj0ZX
+         QuE99afY9F8c6b0+48ATfJItpU68jDB/pfhmHyoCcfZhfPQ6OI2NSIpT9Ua0Wx52Dcxv
+         NosTamYbboa2JEXx8nTSkD0DJ3Hlk+ny+3yd+HDOMifoklfxW9BUvfpo4kPnZROEj6qF
+         uFVn52lfLYvSbhvV3XhQlJjh+TkfaE2regmQPM2/7kyOmSYEuSLAnW9XIZ6DJcjmMXYM
+         MF37f4HjbLCmMyDNZLHAbMTvFrLxZb9o3wCSSr3OqFCAkD9el0dpFNHrcvyni5Ovnrxo
+         eWoQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVVjNZx2;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="F6n8/UVn";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kchamart@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-38f258f8d5bsi1527385f8f.222.2025.02.13.05.51.00
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c5063si13541406d6.372.2025.02.13.05.51.10
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Feb 2025 05:51:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 13 Feb 2025 05:51:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVVjNZx2;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="F6n8/UVn";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739454659;
+	s=mimecast20190719; t=1739454670;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=9y3iX25JXzJV4LsWdCKwdpyFNIF9HsTeFE8wOHwrl9Y=;
-	b=jVVjNZx2uMJAvRqcv+NxwZbvBNAErnJzmhMbD7M8VIc/PAog8e/8Uh9/wLcZmwq/XgOf56
-	kvpnIE7U7rbShQoH3FgAG694TXLdfi6P6tSY1if1n7OaxhqUHlGErV6ailrjQeVN7I89jk
-	xOhdBRsI7SiJx69QQeKdLV15xdNNjsw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=i61uZKOUpSCeJlTNk3nSmeaPm5pItDiwyvp2HBiI56Y=;
+	b=F6n8/UVn7FEyVr0rGgnHqfzLo82q80qYm55AMGDOMePKj8hw57OSdXwfaBpz1fjR31nr0X
+	sGJ3+ndocdrbuSKqilHsoeeLUnwwWdyri7jEbhjuekP6zzW2+J6u+nLisy/BJkschV0aIV
+	Thu6PBMHAmkEZpL4zm3AflBSI9vYCQ0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-278-ZyrfqnmMM5mP6QUbieqWpQ-1; Thu,
- 13 Feb 2025 08:50:56 -0500
-X-MC-Unique: ZyrfqnmMM5mP6QUbieqWpQ-1
-X-Mimecast-MFC-AGG-ID: ZyrfqnmMM5mP6QUbieqWpQ_1739454654
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-183-Uay8ptp2NqaZ5swOhTHFVw-1; Thu,
+ 13 Feb 2025 08:51:09 -0500
+X-MC-Unique: Uay8ptp2NqaZ5swOhTHFVw-1
+X-Mimecast-MFC-AGG-ID: Uay8ptp2NqaZ5swOhTHFVw_1739454666
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DF188180087C;
-	Thu, 13 Feb 2025 13:50:51 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 7288C1800992;
+	Thu, 13 Feb 2025 13:51:04 +0000 (UTC)
 Received: from gezellig.redhat.com (unknown [10.45.242.15])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id B6A22300018D;
-	Thu, 13 Feb 2025 13:50:34 +0000 (UTC)
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 928733000197;
+	Thu, 13 Feb 2025 13:50:52 +0000 (UTC)
 From: Kashyap Chamarthy <kchamart@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: maz@kernel.org,
@@ -87,60 +88,82 @@ Cc: maz@kernel.org,
 	Troy Lee <leetroy@gmail.com>,
 	Alistair Francis <alistair@alistair23.me>,
 	Kashyap Chamarthy <kchamart@redhat.com>
-Subject: [PATCH v2 0/3] docs: Small changes to system/arm/cpu-features and more
-Date: Thu, 13 Feb 2025 14:50:28 +0100
-Message-ID: <20250213135032.2987289-1-kchamart@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+Subject: [PATCH v2 1/3] docs/cpu-features: Consistently use vCPU instead of VCPU
+Date: Thu, 13 Feb 2025 14:50:29 +0100
+Message-ID: <20250213135032.2987289-2-kchamart@redhat.com>
+In-Reply-To: <20250213135032.2987289-1-kchamart@redhat.com>
+References: <20250213135032.2987289-1-kchamart@redhat.com>
 MIME-Version: 1.0
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: 1qNwY7WXer+F
+X-TUID: SOO84Ar0Du4d
 
-In v2:
+Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+---
+ docs/system/arm/cpu-features.rst | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-  - Add live-migration context to the PAuth docs (Marc Zyngier)
-
-  - Fix the Arm capitlalization (Peter Maydell)
-    (See:
-    https://lists.gnu.org/archive/html/qemu-devel/2025-01/msg05137.html)
-
-    * * *
-
-v1 cover letter:
-
-One is a trivial, mechanical change to consistenlty use "vCPU".  The
-other updates some details about the "PAuth" (Pointer Authentication)
-feature.
-
-I replaced the "TCG vCPU Features" heading with "PAuth" because of this:
-before this change, the section says, it is about "CPU features that are
-specific to TCG".  But it has only PAuth-related parameters under it.
-Since PAuth is relevant to both KVM and TCG, I moved them under a
-separate PAuth section, instead of duplicating it.
-
-But now we have a small inconsistency - there's a KVM-only CPU features
-section, but no TCG-only section.  I thought when there are more
-TCG-only CPU features, that section can be added back in.  Or I can add
-that back in, if anyone feels strongly about it.
-
-Kashyap Chamarthy (3):
-  docs/cpu-features: Consistently use vCPU instead of VCPU
-  docs/cpu-features: Update "PAuth" (Pointer Authentication) details
-  docs: Fix "Arm" capitaliaztion
-
- docs/devel/testing/qgraph.rst        |  8 ++--
- docs/devel/vfio-iommufd.rst          |  2 +-
- docs/specs/fsi.rst                   |  2 +-
- docs/system/arm/aspeed.rst           |  6 +--
- docs/system/arm/b-l475e-iot01a.rst   |  2 +-
- docs/system/arm/cpu-features.rst     | 60 +++++++++++++++++++++++-----
- docs/system/arm/nrf.rst              |  4 +-
- docs/system/arm/nuvoton.rst          |  4 +-
- docs/system/arm/stm32.rst            | 12 +++---
- docs/system/arm/xlnx-versal-virt.rst | 12 +++---
- docs/system/arm/xlnx-zynq.rst        |  2 +-
- docs/system/guest-loader.rst         |  2 +-
- 12 files changed, 77 insertions(+), 39 deletions(-)
-
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 37d5dfd15b..a596316384 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -27,7 +27,7 @@ disabled, enables the optional AArch32 CPU feature, is only supported
+ when using the KVM accelerator and when running on a host CPU type that
+ supports the feature.  While ``aarch64`` currently only works with KVM,
+ it could work with TCG.  CPU features that are specific to KVM are
+-prefixed with "kvm-" and are described in "KVM VCPU Features".
++prefixed with "kvm-" and are described in "KVM vCPU Features".
+ 
+ CPU Feature Probing
+ ===================
+@@ -167,22 +167,22 @@ disabling many SVE vector lengths would be quite verbose, the ``sve<N>`` CPU
+ properties have special semantics (see "SVE CPU Property Parsing
+ Semantics").
+ 
+-KVM VCPU Features
++KVM vCPU Features
+ =================
+ 
+-KVM VCPU features are CPU features that are specific to KVM, such as
++KVM vCPU features are CPU features that are specific to KVM, such as
+ paravirt features or features that enable CPU virtualization extensions.
+ The features' CPU properties are only available when KVM is enabled and
+-are named with the prefix "kvm-".  KVM VCPU features may be probed,
++are named with the prefix "kvm-".  KVM vCPU features may be probed,
+ enabled, and disabled in the same way as other CPU features.  Below is
+-the list of KVM VCPU features and their descriptions.
++the list of KVM vCPU features and their descriptions.
+ 
+ ``kvm-no-adjvtime``
+   By default kvm-no-adjvtime is disabled.  This means that by default
+   the virtual time adjustment is enabled (vtime is not *not* adjusted).
+ 
+   When virtual time adjustment is enabled each time the VM transitions
+-  back to running state the VCPU's virtual counter is updated to
++  back to running state the vCPU's virtual counter is updated to
+   ensure stopped time is not counted.  This avoids time jumps
+   surprising guest OSes and applications, as long as they use the
+   virtual counter for timekeeping.  However it has the side effect of
+@@ -200,15 +200,15 @@ the list of KVM VCPU features and their descriptions.
+ 
+   When kvm-steal-time is enabled a 64-bit guest can account for time
+   its CPUs were not running due to the host not scheduling the
+-  corresponding VCPU threads.  The accounting statistics may influence
++  corresponding vCPU threads.  The accounting statistics may influence
+   the guest scheduler behavior and/or be exposed to the guest
+   userspace.
+ 
+-TCG VCPU Features
++TCG vCPU Features
+ =================
+ 
+-TCG VCPU features are CPU features that are specific to TCG.
+-Below is the list of TCG VCPU features and their descriptions.
++TCG vCPU features are CPU features that are specific to TCG.
++Below is the list of TCG vCPU features and their descriptions.
+ 
+ ``pauth``
+   Enable or disable ``FEAT_Pauth`` entirely.
 -- 
 2.48.1

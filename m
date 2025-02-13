@@ -1,182 +1,215 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp479501njc;
-        Thu, 13 Feb 2025 02:14:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUqSBF8ePQ2joZWnecRXJ3xLWf8FeyrXKjPsOR/r84HGfokY4NJO28hK86tWs3HB+UIWZZUP9QrgkfmLA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFxmP1q7Grx1+TFmfBzJKMn/YPNM2ez7s3Mp/v6iYV3Vq4/9W9kEPLUki49/6VwdzoRP+cD
-X-Received: by 2002:ac8:5d10:0:b0:471:9b25:3a8e with SMTP id d75a77b69052e-471becfc2efmr48345311cf.1.1739441671514;
-        Thu, 13 Feb 2025 02:14:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739441671; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp636228njc;
+        Thu, 13 Feb 2025 06:57:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWDub/w4+RkkO92opSwvofcI/c/CnK1R81T2EX7/3b65CPmngsW+ciNILh3srjg8SEG/fWBm7YkBrBoRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZIWoIRXs+pVeQPewmqoNrt5fNnIJk5iHaVy8F4Ya4bgqULxxYmKK2K9Bjt6IXq3WF24w6
+X-Received: by 2002:ac8:5911:0:b0:471:8a7e:905d with SMTP id d75a77b69052e-471bed3012emr45186171cf.6.1739458629458;
+        Thu, 13 Feb 2025 06:57:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739458629; cv=none;
         d=google.com; s=arc-20240605;
-        b=UxOw9Z+rWfZHDxg32qfqtIRZ2jHep/Q4wToThw8+BM9e6pwvtWEss4A0Lbdpqf1X6x
-         dU3x3QyLhscuUB28PyO6tW1JARZMqiqWzSru9xHNSpMIyJjTcdoCQzikeeMBi7M6OnWr
-         uJGgsZx93689Ark8rO14AotUlcRo6/G0tsgERqw7Ac2cToN5UIHphRWnPkbbusGdGUeL
-         8BCCXerGHW9d+K4g8kfgsr7PS0qIz7wHcn+lTa4iAl3Vh9WxilCv3WSqMIK6moxV6NRa
-         L3V8vnzFHKgLpvtik8lA/mO1fdtTORvXycIJvSK+EvaC+qh3Lzeq/tuekyuTYra0npsD
-         INiw==
+        b=RffgOhLGU5tkzhfNHcQpoUvhplG9nVTzJ97+pMXuELswnNfcGapjFmY0S3B7+eBom+
+         lETH26soJ6R0rx9jo2oUm6mC2/DxBR6UucgbrKKNehYQaOTXHuFV//p8uGOY8hx8tMcd
+         ILqEc7GGIrpvm2f8qsld+EUoCQwIV076BnkVh7YOcmJIrEWRUxVRSMeENYnh4jPOl/Jf
+         ukRcoKJmoEIB7XpQEar2+RRe4/tFF5YPmac3OSrS06+La/P3pYzjMZ0g83Xg7mYRVpQ2
+         WU+stXMjPVC+1jtNPkvX/nEsSev9qE4wpf9kvqk94vVfLy6Vojr/c+PRwMAUhLbnt1kL
+         1uwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=NF6TsSr0bWdAlT9eyk9YvlvoTYhpihpBhptbLVZzBQE=;
-        fh=6rrE52cgrYC9rXTqUznJzNUw28CrRy1ExPnK9AwMPYQ=;
-        b=DFyDVjagnc9nbv48548EEhkhf0/81baPqoLNb2QMjO9WTz9zjBmhdID6VJ/WC5HbLK
-         IwYNv315d5hRMERzdJuU0ytO9u14KtE1vXayQiVu4494bKe1sTXqIgep5oEfq/BSDXTq
-         JOQfAVkzebTz3oN8HScYCo/ERE3MvVpVmqJSDrkFUhIhjMqFyJ0mcKnrfIRpXXDk1MhO
-         /xwXc7qH/PoqDDsX6O9WiiiJa/W9xS69OtFzLtp3qTnfafHq7B+1ZogVPvCRfukBdm/L
-         latLY2J0tBprHBHkLToCtEzaEWNDjTpsmRHLb2HXTQaszAfqxpVeEV/cFnG2irjuV+lD
-         6mYw==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=mLzA/q7Wak1o6xgCrFEjzd276uFX5017ZwLwfye8rHU=;
+        fh=cDF4NjXVtWPytFk8U/RNfKVjcCF7KTN4VtdhdvzWKis=;
+        b=iq2kKhlGVAKJqB2BgcwmJe4XUdGsN+ptjBLURuPSodlgkZNeNJn8BjVUCe76TzxHOU
+         fuTkxqjrt3m7xZJZRCCcu0WJx26hYxWlqRPp5ZjQifQOcl8naOuDdZ5BZ0qBj8N+Ucgs
+         6o+NFqU96hZzEvWa6+A8/rzqNfIdP4/Pdtf3K86SbdBg/DJ7M4dFaDBlevCyfboHa6g8
+         mOB5xO1e9L7W/nJ3wYvFtNx2oTiIZhqVmi+2AnOvpS2u7piSNrR6rZXs7+rSiEvlwV0P
+         j7AcV3snTLLC8mggjiVIOYNWsaTjKzRfGsKI7Rw2GWdmdBgiZMPcBv0hT1McPqHK7gmp
+         tUBw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=tqIBrf3c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c2b2c88dsi10313231cf.207.2025.02.13.02.14.31
+        by mx.google.com with ESMTPS id d75a77b69052e-471c2b45895si14797521cf.344.2025.02.13.06.57.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2025 02:14:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Feb 2025 06:57:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=tqIBrf3c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiWEm-0004l6-6N; Thu, 13 Feb 2025 05:14:28 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tiady-0005pP-KZ; Thu, 13 Feb 2025 09:56:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
- id 1tiWEi-0004iR-PM; Thu, 13 Feb 2025 05:14:24 -0500
-Received: from smtp-fw-80007.amazon.com ([99.78.197.218])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tiadk-0005lA-D9; Thu, 13 Feb 2025 09:56:32 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
- id 1tiWEg-00079z-UK; Thu, 13 Feb 2025 05:14:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1739441664; x=1770977664;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=NF6TsSr0bWdAlT9eyk9YvlvoTYhpihpBhptbLVZzBQE=;
- b=tqIBrf3cEvDvt3frVmxki0QSomYKnw06WUSdU5y9Sc7uM6qIRtKSpUUQ
- DWPzSFR4xCaCVp1mxan+n7/+nX5qU1wk4fHqc9JIh5PJ9h53k5Z+ngef2
- BiovCohuiRwciMg2wXwWJVEfhu8VsQmhNHf4myifvhqFWbIu8wrhNehhs Q=;
-X-IronPort-AV: E=Sophos;i="6.13,282,1732579200"; d="scan'208";a="376988335"
-Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
- smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.210])
- by smtp-border-fw-80007.pdx80.corp.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 10:14:16 +0000
-Received: from EX19MTAUWA002.ant.amazon.com [10.0.38.20:59877]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.9.187:2525]
- with esmtp (Farcaster)
- id 23d80605-072c-4b49-b2af-acac7eaca184; Thu, 13 Feb 2025 10:14:15 +0000 (UTC)
-X-Farcaster-Flow-ID: 23d80605-072c-4b49-b2af-acac7eaca184
-Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
- Thu, 13 Feb 2025 10:14:08 +0000
-Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
- (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Thu, 13 Feb 2025
- 10:14:05 +0000
-Message-ID: <f59bb48f-051d-4681-a702-6aed3420c2f7@amazon.com>
-Date: Thu, 13 Feb 2025 11:14:03 +0100
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tiadi-0003dL-59; Thu, 13 Feb 2025 09:56:32 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id F36964E602A;
+ Thu, 13 Feb 2025 15:56:26 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id BGkFooncBxR9; Thu, 13 Feb 2025 15:56:25 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0247A4E6019; Thu, 13 Feb 2025 15:56:25 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id F363174577C;
+ Thu, 13 Feb 2025 15:56:24 +0100 (CET)
+Date: Thu, 13 Feb 2025 15:56:24 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Thomas Huth <thuth@redhat.com>
+cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH v6 01/11] hw/qdev-properties-system: Introduce EndianMode
+ QAPI enum
+In-Reply-To: <babd30e7-0434-436a-852b-7ff1599d3944@redhat.com>
+Message-ID: <10b73553-4044-288e-3788-7a3ed9c41cb2@eik.bme.hu>
+References: <20250212112413.37553-1-philmd@linaro.org>
+ <20250212112413.37553-2-philmd@linaro.org>
+ <cb828dd8-25f6-47c6-9ac7-cae5b0d0932e@redhat.com>
+ <50ba4e4b-4124-46bb-bb84-4758ce9c5e66@linaro.org>
+ <3b3baed4-0d79-3a28-40cd-e1835e078863@eik.bme.hu>
+ <6e707c7f-b94c-47ef-83ab-795605e27963@linaro.org>
+ <a3608e43-79ce-403d-8ba7-6735fde66759@linaro.org>
+ <e1436061-a840-0942-2c2c-4f49bfb932b8@eik.bme.hu>
+ <672045c1-9b09-4b7b-9bed-fa990129ce2c@linaro.org>
+ <fb7045a4-20f6-a52d-5531-2410fc803bb4@eik.bme.hu>
+ <0f7ea6d6-8476-4ba6-9d4f-eeb76aed04fa@redhat.com>
+ <9e121e62-8e6e-61d6-dbfb-4dfda469acc5@eik.bme.hu>
+ <babd30e7-0434-436a-852b-7ff1599d3944@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
-To: Gerd Hoffmann <kraxel@redhat.com>
-CC: <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Thomas Huth
- <thuth@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, <qemu-arm@nongnu.org>, Michael Roth
- <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Ard Biesheuvel
- <ardb@kernel.org>
-References: <20250211092324.965440-1-kraxel@redhat.com>
- <20250211092324.965440-10-kraxel@redhat.com>
- <da0ac9ed-fdca-433e-b793-5423f430a852@amazon.com>
- <iuwaykfdm7bwtvblyz7lkew3em2ksi5xeztdphqjdv7tsp2ejw@s6j64y3lfmrw>
- <ea1d355b-7e56-47ef-b1e7-158003b6d85f@amazon.com>
- <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
- <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
- <4bwjwcs2k4hbrj6mokc57a5dy57jjssfxnvd4qm5257dgnid3x@yqdx7e47o2mf>
- <2c06a98c-f286-4632-a352-8b47dc4cc43c@amazon.com>
- <2vgc4scgezmb3med6dypykcym7te7gzlx7wp3vm5ehtfmxj3xr@kswpu35wt5ns>
-Content-Language: en-US
-From: Alexander Graf <graf@amazon.com>
-In-Reply-To: <2vgc4scgezmb3med6dypykcym7te7gzlx7wp3vm5ehtfmxj3xr@kswpu35wt5ns>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.253.83.51]
-X-ClientProxiedBy: EX19D032UWB003.ant.amazon.com (10.13.139.165) To
- EX19D020UWC004.ant.amazon.com (10.13.138.149)
-Received-SPF: pass client-ip=99.78.197.218;
- envelope-from=prvs=1325cea77=graf@amazon.de; helo=smtp-fw-80007.amazon.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j5EjLIZSS7KH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: En4WoJ/UOKbq
 
-
-On 13.02.25 10:52, Gerd Hoffmann wrote:
->    Hi,
+On Thu, 13 Feb 2025, Thomas Huth wrote:
+> On 13/02/2025 14.59, BALATON Zoltan wrote:
+>> On Thu, 13 Feb 2025, Thomas Huth wrote:
+>>> On 12/02/2025 23.34, BALATON Zoltan wrote:
+> [...]
+>>>> So then can the behaviour of NATIVE_ENDIAN be changed to look at the 
+>>>> machine endianness instead of replacing it with a constant?
+>>> 
+>>> No, that does not work. First, the machine knows about its devices, but a 
+>>> device should not know about the wiring of the global machine (just like 
+>>> in real life).
+>> 
+>> That means all devices should be either big or little endian and there 
+>> should be no native endian ones. Why do we have those then?
 >
->> That will bring back all issues with cached vs non-cached memory accesses,
->> no? So edk2 will always access that memory as device memory which means it
->> bypasses the cache, while QEMU will access it through the cache. So that
->> buffer would need to actually be MMIO memory I suppose?
-> I don't think so.  The firmware driver knows this actually is normal ram
-> and can setup mappings and memory attributes accordingly.  The situation
-> is a bit different from vga memory bars which are handled by pci bus
-> management which doesn't know anything about virtualization specifics.
+> Some device can indeed be either big or little endian - think of devices that 
+> are synthesized in an FPGA for example. But in most cases, it rather depends 
+> on the bus wiring. Anyway, we need a config knob to allow either the one or 
+> the other endianness for certain devices.
 >
-> Well, unless macos thinks it knows everything better and goes setup
-> uncached mappings ...
-
-
-It's not only macOS. After SetVirtualAddressMap, the OS owns the virtual 
-address space of Runtime Services. So in theory it also owns 
-cacheability attributes of all mappings.
-
+>> That's why this endianness property should either be removed from ops and 
+>> only attached to it when added to a machine if needed or kept to show which 
+>> machines it can be attached to: only big, little or both endian which is 
+>> what it seems to be doing now.
 >
->>> Not sure how to do that best on x86 though.  Find 64k unused address
->>> space over ioapic?  Do we have enough free space there?  And how
->>> future-proof would that be?
->> I'm not worried yet about where we place that memory, but more about
->> ensuring that we actually have a working path to access it. We can always
->> find space in the PCI hole, as long as we properly advertise it to all
->> stakeholders via ACPI and memory map.
-> Well, the host can't easily place stuff in the pci hole because the
-> guest will manage that (map pci bars etc).  But making the pci hole
-> a bit smaller to make room is an option I think.
+> Again, devices should not know about machines, not the other way round. So 
+> the device should offer a config switch (property) and the machine should set 
+> it to the value that it needs.
 
+That would mean this endianness in ops should be set when the memory 
+region is mapped in the machine not when defining the device. So all 
+device ops should really be NATIVE_ENDIAN and only assigned an endianness 
+when they are mapped based on the machine/bus/cpu they are connected to.
 
-Yes, IIRC we advertise where the hole is. I'm sure we can find a spot. 
-Somewhere next to the HPET :).
+>>> Second, imagine a board with e.g. a big endian main CPU and a little 
+>>> endian service processor - how should a device know the right endianness 
+>>> here?
+>> 
+>> How would that work with this series? So the proposed solution is to double 
+>> the devices now marked as NATIVE_ENDIAN to have a big and a little endian 
+>> variant for them so the board can choose?
+>
+> This is not doubling the devices. It just introduces a config property to let 
+> the machine switch the endianness.
 
+Yes, I've oversimpified, each ops has its own endianness config not the 
+device. But since the endianness is not a property of the device or its 
+regions but the bus it's connected to, this config switch may be at the 
+wrong place now.
 
-Alex
+>> That does not exist in real as you wrote, there's only one device so then 
+>> this is probably not the right way to model it.
+>
+> Some devices can exist in both, big and little endian variants. We could of 
+> course create two devices for this, but that's nonsense if it can simply be 
+> handled by a property instead.
+>
+>>>> Or would that be too much overhead? If always looking up the endianness 
+>>>> is not wanted could the ops declaration keep NATIVE_ENDIAN 
+>>> 
+>>> IMHO we should get rid of NATIVE_ENDIAN completely since there is no 
+>>> "native" endian in multi-CPU boards.
+>> 
+>> If we say NATIVE_ENDIAN means that the device can be attached to either big 
+>> or little endian machine then we can keep this constant but when adding the 
+>> ops to a memory region the board has to then decide which endianness it is 
+>> and replace it with either big or little. Then we don't need two versions 
+>> of the same device and NATIVE_ENDIAN means that the device can be used in 
+>> both machines.
+>
+> Well, it's currently the devices that are calling memory_region_init_io().
 
+That answers my question. Then it seems it's not so simple to set 
+endianness when the device is mapped because it would need to be done 
+somewhere else. It may still be possible but might be too much work to 
+find it out.
+
+> And since memory_region_init_io() does not copy the MemoryRegionOps struct,
+> we need two implementations right now for this, one for big and one for 
+> little endian. So I think Philippe's series here is fine.
+
+It could copy the MemoryRegionOps when needed but seems it's not 
+memory_region_init_io that would need to handle that. Given the current 
+way it's implemented doubling the ops region may be the simplest even if 
+not the correct way to do it so it's OK if there's no simple alternative 
+that's more correct.
+
+> But feel free to 
+> suggest clean up patches on top if you think that the memory_region_init_io() 
+> needs to be handled differently in QEMU everywhere.
+
+I think so as I've described above but not enough to try to solve it so 
+I'm OK with Philippe's series if there's no other way to make it less like 
+a workaround for something that could be done clearer. Looks like other 
+way might be too complex for now.
+
+Regards,
+BALATON Zoltan

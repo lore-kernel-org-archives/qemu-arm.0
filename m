@@ -1,297 +1,146 @@
-Received: by 2002:a17:505:4688:b0:1be9:327d:8ee3 with SMTP id cb8csp1051646njb;
-        Wed, 12 Feb 2025 06:56:00 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVbYbaMSYMtc5jqVDS6AlKQBiD/q/1BkYLNzW+4OHdtA04HM6qauZIZ/HQ5ZliDrSv57FHDTylVDl2kmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEEKV9/rlHNzkUCe5wPrc8lMojX49tmu95SzBFRQhzNJGKNCIj4ipY8hWRgdqgpotWoHd2K
-X-Received: by 2002:a05:6102:f9c:b0:4bb:e14a:9451 with SMTP id ada2fe7eead31-4bbf21e1b31mr3480945137.20.1739372160466;
-        Wed, 12 Feb 2025 06:56:00 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1739372160; cv=pass;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp442944njc;
+        Thu, 13 Feb 2025 00:44:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXsulR3Kvf/T2es66BAE86FDH9NTsBaQVNmfaozwUtjdwoqtcVOPpWfYtuCoFSSBs6DP4QLLMCEApOc9w==@linaro.org
+X-Google-Smtp-Source: AGHT+IG63rirZex7uXMltEszjJEXVmJu8SncAcacjKVRxQoYckK+KxU/glRywDseBxi0wjQcFMtD
+X-Received: by 2002:a05:620a:c45:b0:7c0:7dfb:9a73 with SMTP id af79cd13be357-7c07dfb9c15mr93347185a.39.1739436249543;
+        Thu, 13 Feb 2025 00:44:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739436249; cv=none;
         d=google.com; s=arc-20240605;
-        b=Hr38KcWYMAnqkHyhtklSMzGMvi/Xl5oKRo34s8KofEWWSr18jebmjBAj8RRJ3OBmkq
-         c7VMAT/ThlAS+dxTokcZbZF6Ft0IVxteDuM8Qe4CTXtkDTYy+iM0ao00hYBbjDb8+NyJ
-         lhPap+B++ybEM6CTXXl1yoZ5WMYP20kTPl7mPJ30FZ6S+zHeabfZEcRch1uXkJXHWEkI
-         thnVuKEiGzjoML0NVFfgDOLYsztTZIKz52w/vslMcOnu5nwcBrjnv/g5BONsMA/ehy8r
-         oeW53E01wRH1Vs+i13dkhIN7NiwO9FiyvDmHb5ZQNtrWFdtvMWweMOn1Bo1qe1GZb3He
-         lYhg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=LzWCt0avLbV0er/quSlNkL9UqVqF0BnC5ub28xuK6Ok=;
-        fh=PNb9Yi80fEDtgLbYTBt7z5qCl7A6lgtJrQaLl7xlcLE=;
-        b=g4WSQ+sPsSyVlYsbfVRMdxo6vwc25zynwuxLS1/d7WAsbph3alycyWo3UWh3sUYtbN
-         OzYmuOwKG3Mhpr2wlFJERh5unXjttpH6nqKvjbwJiCKAiBI1BPfM46CUY4AVuAvw46Lz
-         O7aH5Xd8pixzb3wN1IowiClUZKN2YJIy1tH8/wETuzeDjiuJSWDK3My/ltSEP0dsRT0A
-         NdCptZm3IBL94vDyM9BCZJnt0nR3gcWPVxW/5YP4wXnKpg2/zLYvUv9ehJl8BPXc3iM6
-         leXJmOMw0Rzx7ZRjWK1l3R1UPavsGd0NgcfVYcx+EgMAD2LYIGvb+bT+J4d8ga39oqOs
-         gicA==;
+        b=SOeAVZ04ZLEMviiMlXnS9Ee+LVcrhPsXxmt8tXHrW/rxWNW2mwGVqOkR5GiKSwKieT
+         Wzg4WQPvaNYmz4bPD6EAKW2gmBnE1vzA8pW4ej1u1T8HP1Qk0QIwHJ/YSd7Muqdkfto9
+         TPeruw4ZAdqbVC+N+7o2SWsAkl+I3r46wpseNbj0G/gkJEC5l3haKdKjPyUODChfGge/
+         c5KMV9fJHSyTpvam+BE2/Nor2YWDMp8wXyk7ZnQfcl80AGzayUgtBlepT2k9+ehs8C0y
+         7YC6esMOB84d9Dh1h5hBOuuHVMwG+LGG8nkKEecQ+zztPlBtCjWxYr2hMS6UPG/9x4E3
+         XBWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=TDscnvDbzgsuXBKLjlRdr1DWJnCnoW2CdRilsJ4Cn6w=;
+        fh=J7iIlZKBLqizLdAqfby8j3nWBmfuEqejuhWlnrppJY4=;
+        b=bQ+UsWUlNqrUeg1aieM+HHgPEiDgd08o2si1AgtHLWja8tF3RGho2tM4JYyD1BhhwA
+         JaV3vY82jkRU3TmkKE+uucc36+V4AvHPbCFN10l2u+zkaGzewJpJsNG2wXHXFsOvYqPd
+         BSFZIxotxHzcxI225fnNexO4pPKvuo1kaCWMrN+WRc+Ymq27EXDX5wWaK1q7vGksTxqN
+         8dtvGcG6ZCHbk+9LJSOtqGy9IJ/7v/uI2rfTry6J/55F/O98tHnPiBkoU6Nf7ktSjSas
+         FLnNNxabRADvYF3wGbnrd5VerIES+4ZSSEwWd09tWVB8Mk0kqYDeydp35whjpVJ2M7h7
+         yLCA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=bwWGghZE;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4bbb57728e5si1865286137.110.2025.02.12.06.56.00
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NEnp/8St";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kchamart@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c07c873af3si87346285a.310.2025.02.13.00.44.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 06:56:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Feb 2025 00:44:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=bwWGghZE;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tiE8x-00029t-Te; Wed, 12 Feb 2025 09:55:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
- id 1tiE8v-00029O-Nd; Wed, 12 Feb 2025 09:55:13 -0500
-Received: from mail-mw2nam12on20629.outbound.protection.outlook.com
- ([2a01:111:f403:200a::629]
- helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
- id 1tiE8r-0003Zg-Dl; Wed, 12 Feb 2025 09:55:13 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pViXoIxxclphL8le8zY6CQYJwWCEmSP6+hhe41P6MgzHArFLfyhY/q7ILOXLjTPjoWWGk3NaNILwHGv4MWovtljfmHOs08W1H0gatbQ+hcVBTXhEjpBnj9yTstzDUUVgImnVPeskvE9Cs0BXgNo7kQp+nATeSDtpX8mXdOUZGxK9aWzOzmKhW25tT+xvi1D1g9WiY2EjgRYkwkGFOrrWte2ah6ZUdQ9cRQe9ebhzpouFGSqdzO1a/sALGCmC2gYQNfoNO1jA4ILaN8pVvyCT6lUE2N+tQR9cF2Lj1mJJHCwOl52szHW/xlnZUlmErnbwyyOP/DBMXB8NdfzmvbNsJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LzWCt0avLbV0er/quSlNkL9UqVqF0BnC5ub28xuK6Ok=;
- b=vwXiiVKIhkQn7/tgCR6u0rXZ6egsii2j9IIIwV5BX/Phr+nYZo9PoHs3a7g4nqwzqljUo7u6Me8A9rW1PkFwpt+3kN5eeW33Rly6R/hWbyJHhHyfmvTu3z1fQBNcJ+T01DupVm0yli5O8d5kUyIv6sj5fPS28xwTfJyuLBwzFhGTVrvLeijNNsWJA2b9QnbLdXj7VWikynx2glbWENDJhV+QyCRRcqNvcyzW9ZNaKtneH2cnRgLL5dLVzbierdS3zfkZQ7v5iWb7QWioafuxbR6JFnEFfOQiEG5nWowIca735u0M9eKe4O5YDMLd8eAwgH+ABXOoNdiY6/VozPSXLg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LzWCt0avLbV0er/quSlNkL9UqVqF0BnC5ub28xuK6Ok=;
- b=bwWGghZECo2epj+IagDWPJzPlAMsmL024KXeu0aVa0RVweyqBcjkNhxCpBUNVfmeldaMsQYP63zARaIQ/D8IJWal21E7rSyNHh6Os9RJsO6z/P/6oL5BqtpwZMr0Z6RFwJradsbgNOOR6T7Gq8pmy1do8ScgM2+YrQ8tGDnCBrB0h+hDFBLOwXYuB+HFjZCmsD4PMhRqdLAVlIzJSqEeUApsdf6WXdMccafKSeHkUTLBO5PXyoTBSgl5w9GYzGwey47hmBwyagyJSikqq1ekcUB5ZMeXmdMIGoGcUjzP9Ez/LUdpCBBaWBIeqdPSqabRje+QEo3FAan3o+P4nw4lBw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MW6PR12MB8897.namprd12.prod.outlook.com (2603:10b6:303:24a::19)
- by PH7PR12MB7425.namprd12.prod.outlook.com (2603:10b6:510:200::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.16; Wed, 12 Feb
- 2025 14:54:59 +0000
-Received: from MW6PR12MB8897.namprd12.prod.outlook.com
- ([fe80::7c55:5a45:be80:e971]) by MW6PR12MB8897.namprd12.prod.outlook.com
- ([fe80::7c55:5a45:be80:e971%4]) with mapi id 15.20.8422.015; Wed, 12 Feb 2025
- 14:54:59 +0000
-From: "Matthew R. Ochs" <mochs@nvidia.com>
-To: qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
- nathanc@nvidia.com
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, ddutile@redhat.com,
- eric.auger@redhat.com, nicolinc@nvidia.com, ankita@nvidia.com,
- philmd@linaro.org, gshan@redhat.com
-Subject: [PATCH v4] hw/arm/virt: Support larger highmem MMIO regions
-Date: Wed, 12 Feb 2025 06:54:57 -0800
-Message-ID: <20250212145457.1899954-1-mochs@nvidia.com>
-X-Mailer: git-send-email 2.46.0
-X-NVConfidentiality: public
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BYAPR07CA0022.namprd07.prod.outlook.com
- (2603:10b6:a02:bc::35) To MW6PR12MB8897.namprd12.prod.outlook.com
- (2603:10b6:303:24a::19)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NEnp/8St";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739436249;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=TDscnvDbzgsuXBKLjlRdr1DWJnCnoW2CdRilsJ4Cn6w=;
+	b=NEnp/8StKTy2JV+PKD7WpMV+AFepcSfACubRSR/PYOZcwRHacU/vupJvTLIjtgFPYshnyX
+	suETnyMc6GB6wwCRYIyYjRY2CCW/xjcQ/KUmwlHkFq/c2n5Dd98KQOzKRp2C4cgTNB4tP4
+	5Hbgs80dyTTfjywi0JHPMImcLhu2ih0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-669-VPoz4C7SPhCUYPQ0qbS4AA-1; Thu,
+ 13 Feb 2025 03:44:06 -0500
+X-MC-Unique: VPoz4C7SPhCUYPQ0qbS4AA-1
+X-Mimecast-MFC-AGG-ID: VPoz4C7SPhCUYPQ0qbS4AA
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E7BAA18011E4;
+	Thu, 13 Feb 2025 08:43:57 +0000 (UTC)
+Received: from gezellig.redhat.com (unknown [10.45.225.218])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 55F2518004A7;
+	Thu, 13 Feb 2025 08:42:47 +0000 (UTC)
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: maz@kernel.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Yi Liu <yi.l.liu@intel.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Jamin Lin <jamin_lin@aspeedtech.com>,
+	Troy Lee <leetroy@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Joel Stanley <joel@jms.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Zhenzhong Duan <zhenzhong.duan@intel.com>,
+	Hao Wu <wuhaotsh@google.com>,
+	sebott@redhat.com,
+	Eric Auger <eric.auger@redhat.com>,
+	Ninad Palsule <ninad@linux.ibm.com>,
+	Kashyap Chamarthy <kchamart@redhat.com>
+Subject: [PATCH v2 0/3] docs: Small changes to system/arm/cpu-features and more
+Date: Thu, 13 Feb 2025 09:42:15 +0100
+Message-ID: <20250213084219.2975727-1-kchamart@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW6PR12MB8897:EE_|PH7PR12MB7425:EE_
-X-MS-Office365-Filtering-Correlation-Id: 89f92666-5dfe-4935-3753-08dd4b7538ad
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?dUM7GDpDCjGko1agtju+YHJEHyqTJZsF+TbpGacgZdi49FnIZhJ6MhjpSjvs?=
- =?us-ascii?Q?4jsKfLKl+z8WAsWnKxRZ6zjpZUAGZcWXeDNR/GHBzJ2jxF0junD4sCi7gbSE?=
- =?us-ascii?Q?MH0o6ZcarxbyugXwcW72j55sbHchSl90EbXAMBuHk6+qfpjBbjYjPBUMQTKP?=
- =?us-ascii?Q?/P6+gHDdhYp3kT7lDYIn11HFA+0AomuHye70/RQ3A86j2WENGQA9UlxILbWj?=
- =?us-ascii?Q?55+BFuZEC3RzNCj0Q6mvLJD29dSsp3V2G5NHykpls3mdc7mdvlrZ9NW8AdK3?=
- =?us-ascii?Q?xFtsy0RvtB1E/uWp6WvIDYroobPlH+9lxc9gynNetxqfV+Jbi0zD+aV6TinZ?=
- =?us-ascii?Q?DrXWitu+D0QTBJMl0ZlsQOzLZNTZMBRBgmvXQ9yR5rlGkBVET/FUB3x+htJD?=
- =?us-ascii?Q?HCefTskCnsX5vypNlJDcGUGsCvpVHJ5T+jcDU4Ow5n5+rt93h/OVzeJZFpdV?=
- =?us-ascii?Q?FvWEq8L8kiSWQUOc/fqJbtj4s05NMdOE+BgrKAbAGwduS6+IRYZw2U0qiOal?=
- =?us-ascii?Q?pk/ss/MN4JFmSVO+9T67VFWO96DxK64In8JWC8bSlIgKn5/XMunmApD2MFLo?=
- =?us-ascii?Q?Omv1svR0zFfuLtY1je7vmXkZWq2j6lnjSwVbQRp0yRK+XNDNqPkcs3sIA4SX?=
- =?us-ascii?Q?94niCEQ9SZmaDrgKcTGHubdB7EMxceLID1/6HVqBztcy1SFpU8vAhzDgYJWi?=
- =?us-ascii?Q?nzYBhPQ8HXsH5V3hhx7tPH0P8JTxaWT25aqC3Sq5IEazp89brwrVH5zuWmwG?=
- =?us-ascii?Q?KG7W3N2pQLwm+Kg5CiheTeWr1TcKMUDaW1fxlhmYPxy8pG0W04RIFNq4lI+V?=
- =?us-ascii?Q?OKPAEvZ4Ss0E4NmOcL0k0YXJsngnC6Wv9zm7qSwVQ7q1P9BUoT1B808cYapi?=
- =?us-ascii?Q?mO4S8adqbtdgTO1S6Y73k15mrMXEJGSMEiXfsOWyvwp3RpmJ6Fw/jv4sF7n3?=
- =?us-ascii?Q?x60P2XZSXicoVotZ0vvJTzftszezSgzjThLdm1DCMUsXAmeeQfhM4BVBNxew?=
- =?us-ascii?Q?pXj8qdgaC9opuvzKgvW6SepW+kZxm2JTO4vd/v7W7KKcEjDDuxTsxuyGIAj1?=
- =?us-ascii?Q?9M/9O4n9FbeORgbUWIP+Ds0SGJxMie/g4NI5mNFQCC4yZ4vKgDCOGA5YnJ+Q?=
- =?us-ascii?Q?P+ZfbUV8EDcKVPVByBJXBqxWqas9vhCQ78cJtT/+XNCtApZ4kdhXB5Q5lXd7?=
- =?us-ascii?Q?SABBwK/lXrGcdEuhlWk4fJJZ2hY8274xmpcQTMRpn7Faqg8BPiFQyMRhLF+r?=
- =?us-ascii?Q?OX3d2BN90dvPHX+mD8P6C3N53Ap6osHsMZNtMJKCWj8wXYsZYagXJfoeq7Ed?=
- =?us-ascii?Q?ifZazhmdLxN9By2BpG0Ll77Pt7Ng+fCGyhTJiv0PYRaJmC5+wNhnHEukO+G5?=
- =?us-ascii?Q?+zbHzWgN6cHbnrH6Ut9F8rs3ea+l?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW6PR12MB8897.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9QrSzh2/j+p2FgFadkgGEsmslADjlbHAyveKQ2Q/j1PMRRTKCYpvf68khVWx?=
- =?us-ascii?Q?GTuo+RrNEWDYY7RRbYejPAoasfiO2abeY6dfLOr9aXc7tGGIylJKGoruI6xK?=
- =?us-ascii?Q?27hombPj8QDpDztqo1PdVtyDZoj61Spx8se9e9imFhhhj4jeV7z873JdmzjZ?=
- =?us-ascii?Q?NpWx6ESoxkW1xtsVry6WKxX7n7Cni2kgfBUMEoSnDTMpTtMLw4lN8P/IG1I+?=
- =?us-ascii?Q?fA5e391V/jO8A4i8k/mKLMuMrHmG3ItKb3/fctXYTWk+ma2UCWA35JzZF9Y3?=
- =?us-ascii?Q?tjio459VyP5PZj7c9jriz1OpgiJfbgZlKxvnjJ22Cm3vSZT1TnphXx04F50j?=
- =?us-ascii?Q?TJ5d9YolQKbgsNE+hpl6TKMLaj2feFmRIl7LSnHgAvbxrC7B6kpYXsGvo28w?=
- =?us-ascii?Q?gk01viTqXqAiANpEkbXYX2rCE79dB6VlvTSBJd8pQVqf+gm3lzQrkOMKDCOG?=
- =?us-ascii?Q?+XMKrvohZ6iANM7rxBx9xbFf2ORLTL5oEGjRnOSsadxMvcMLKtvpqrvVK0KG?=
- =?us-ascii?Q?tN/qYeM7BI31BaHj9GKcdYaaCkHXuQnCIaW1+ZSDsovKHS0ZBbdEMQKTdY/4?=
- =?us-ascii?Q?yuMkQ/b+uryoEZKBZhfLRsBs2GWvMPGqo4vBRWclUrQcQY/HTl55FlIUWykg?=
- =?us-ascii?Q?fuRNCtvH8y1gb/EvQAGXfN38UIolDUOpwNgSIKhDXSRzNOQO0xBDQyMmTnVS?=
- =?us-ascii?Q?Cy4AHi3uYJqClDXJJmnKfp17tgyrhNaOXNUDhxQ61JwzEbK/ssCX0YSWVfpf?=
- =?us-ascii?Q?bUqWHatjvO0EzZhtyLP9HqIEzLgFvcPTb8tlgazgDewOcrPDSk7D08evOvE7?=
- =?us-ascii?Q?VIet378CR6SWy+1aJxp4OEi5lQEZAbSVe8A6rzuby02Bqi1VL7D+eQ1rZrVw?=
- =?us-ascii?Q?Z2UpYP98yOX6t8bCmInTGXiUquB8rBCV+0OAtSMxhWJD7JCWTvBuuz04ejdJ?=
- =?us-ascii?Q?qJIdODC5ppASZAHDUQYHQ7vlkHw7DCccFfQgV0guOWqV5HHHzRragnEgk3iS?=
- =?us-ascii?Q?O0IJysV4odpuOUmRNh77gjPzyVg/tnI2MZxI9n4GOE276Hs87kGfWU1iqRt9?=
- =?us-ascii?Q?OBaCTPe/RpZdAn4nhYyp8brQtiXoOUZ7TEl5m5GWKuu27t1piYLgDfFTyoqp?=
- =?us-ascii?Q?7SIgF1q16MXbNL2LWl3YbBXxI5F/MIKabhSKeYmXgcOwji27AN2LlobzL58B?=
- =?us-ascii?Q?Zw9PTzI90UUKn4I6C4Oit9RfdHxSv2WFrDHkV6EhWe2dP1nVU53af/kv29Kv?=
- =?us-ascii?Q?zrCESSd1Jn+rZNMFGNUaPZOW9Io9JiypelbKurNwGzOXYl/yKcb7FCLQ5XNv?=
- =?us-ascii?Q?85zzyykx0yZGxipniOamWlFmD1p60x+yJL0XKVkFDvYHzgZz+N9jz2fQdRW6?=
- =?us-ascii?Q?os5ge7zQXelnxdT64Umf3hGHNDAH2hfhhrBiMQ2it9H4AK1QuF5TrldZC21d?=
- =?us-ascii?Q?DxnD9xdmSvotDejGkNObUGU6S/nyjRX0g6/YALSDuMzkgihNR2rME2PMdLo2?=
- =?us-ascii?Q?CuzdodmCTD4KVTHjzs/l4CFXB8gNgAs3ro+y7WL45gXTH6pgMrMH22Zvk2TW?=
- =?us-ascii?Q?5ci5ZI9vyvYtk/QqOaQF9AxUrpUnadpNbbEG7oe1?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 89f92666-5dfe-4935-3753-08dd4b7538ad
-X-MS-Exchange-CrossTenant-AuthSource: MW6PR12MB8897.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2025 14:54:59.1813 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 18NM4lbuog8ojgPBhfYuY3VldQg38D4RhAUX0AexlUwpHTbkh9sRvJPX4/mtOXtps3uDkZQj+MzPZ/hQUMJyMg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7425
-Received-SPF: softfail client-ip=2a01:111:f403:200a::629;
- envelope-from=mochs@nvidia.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PXiT+w/mRZ7r
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-TUID: JJUyxgG063TC
 
-The MMIO region size required to support virtualized environments with
-large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
-For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed through
-requires more MMIO memory than the amount provided by VIRT_HIGH_PCIE_MMIO
-(currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
-new parameter, highmem-mmio-size, that specifies the MMIO size required
-to support the VM configuration.
+In v2:
 
-Example usage with 1TB MMIO region size:
-	-machine virt,gic-version=3,highmem-mmio-size=1T
+  - Add live-migration context to the PAuth docs (Marc Zyngier)
 
-Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
-v4: - Added default size to highmem-mmio-size description
-v3: - Updated highmem-mmio-size description
-v2: - Add unit suffix to example in commit message
-    - Use existing "high memory region" terminology
-    - Resolve minor braces nit
+  - Fix the Arm capitlalization (Peter Maydell)
+    - Context here:
+      (https://lists.gnu.org/archive/html/qemu-devel/2025-01/msg05137.html)
 
- docs/system/arm/virt.rst |  4 ++++
- hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 42 insertions(+)
+    * * *
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e67e7f0f7c50..6ff1de1ecbba 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -138,6 +138,10 @@ highmem-mmio
-   Set ``on``/``off`` to enable/disable the high memory region for PCI MMIO.
-   The default is ``on``.
- 
-+highmem-mmio-size
-+  Set the high memory region size for PCI MMIO. Must be a power-of-2 and
-+  greater than or equal to the default size (512G).
-+
- gic-version
-   Specify the version of the Generic Interrupt Controller (GIC) to provide.
-   Valid values are:
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 49eb0355ef0c..d8d62df43f04 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2773,6 +2773,36 @@ static void virt_set_highmem_mmio(Object *obj, bool value, Error **errp)
-     vms->highmem_mmio = value;
- }
- 
-+static void virt_get_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
-+                          void *opaque, Error **errp)
-+{
-+    uint64_t size = extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
-+
-+    visit_type_size(v, name, &size, errp);
-+}
-+
-+static void virt_set_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
-+                          void *opaque, Error **errp)
-+{
-+    uint64_t size;
-+
-+    if (!visit_type_size(v, name, &size, errp)) {
-+        return;
-+    }
-+
-+    if (!is_power_of_2(size)) {
-+        error_setg(errp, "highmem_mmio_size is not a power-of-2");
-+        return;
-+    }
-+
-+    if (size < extended_memmap[VIRT_HIGH_PCIE_MMIO].size) {
-+        error_setg(errp, "highmem_mmio_size is less than the default (%lu)",
-+                   extended_memmap[VIRT_HIGH_PCIE_MMIO].size);
-+        return;
-+    }
-+
-+    extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
-+}
- 
- static bool virt_get_its(Object *obj, Error **errp)
- {
-@@ -3446,6 +3476,14 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "Set on/off to enable/disable high "
-                                           "memory region for PCI MMIO");
- 
-+    object_class_property_add(oc, "highmem-mmio-size", "size",
-+                                   virt_get_highmem_mmio_size,
-+                                   virt_set_highmem_mmio_size,
-+                                   NULL, NULL);
-+    object_class_property_set_description(oc, "highmem-mmio-size",
-+                                          "Set the high memory region size "
-+                                          "for PCI MMIO");
-+
-     object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
-                                   virt_set_gic_version);
-     object_class_property_set_description(oc, "gic-version",
+v1 cover letter:
+
+One is a trivial, mechanical change to consistenlty use "vCPU".  The
+other updates some details about the "PAuth" (Pointer Authentication)
+feature.
+
+I replaced the "TCG vCPU Features" heading with "PAuth" because of this:
+before this change, the section says, it is about "CPU features that are
+specific to TCG".  But it has only PAuth-related parameters under it.
+Since PAuth is relevant to both KVM and TCG, I moved them under a
+separate PAuth section, instead of duplicating it.
+
+But now we have a small inconsistency - there's a KVM-only CPU features
+section, but no TCG-only section.  I thought when there are more
+TCG-only CPU features, that section can be added back in.  Or I can add
+that back in, if anyone feels strongly about it.
+
+Kashyap Chamarthy (3):
+  docs/cpu-features: Consistently use vCPU instead of VCPU
+  docs/cpu-features: Update "PAuth" (Pointer Authentication) details
+  docs: Fix "Arm" capitaliaztion
+
+ docs/devel/testing/qgraph.rst        |  8 ++--
+ docs/devel/vfio-iommufd.rst          |  2 +-
+ docs/specs/fsi.rst                   |  2 +-
+ docs/system/arm/aspeed.rst           |  6 +--
+ docs/system/arm/b-l475e-iot01a.rst   |  2 +-
+ docs/system/arm/cpu-features.rst     | 60 +++++++++++++++++++++++-----
+ docs/system/arm/nrf.rst              |  4 +-
+ docs/system/arm/nuvoton.rst          |  4 +-
+ docs/system/arm/stm32.rst            | 12 +++---
+ docs/system/arm/xlnx-versal-virt.rst | 12 +++---
+ docs/system/arm/xlnx-zynq.rst        |  2 +-
+ docs/system/guest-loader.rst         |  2 +-
+ 12 files changed, 77 insertions(+), 39 deletions(-)
+
 -- 
-2.46.0
-
+2.48.1

@@ -1,291 +1,270 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp540214njc;
-        Thu, 13 Feb 2025 04:24:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV9pOKQwzccbvAwy4mUFCr6kOJl2KVp8EHxQbLdLlX34JKD5KN2R9ZEgC7w4M6bgfIiUpXDaHMta6a3OQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGZWGT32p/C0iQvn8j7BiC2PsfnPNXjo/weXDE2hBaWJj9S5m6NZ0jzYCTimotVdb1Cg/Xr
-X-Received: by 2002:a05:6214:cc3:b0:6d4:c6d:17fe with SMTP id 6a1803df08f44-6e65bf4db37mr62208246d6.25.1739449498213;
-        Thu, 13 Feb 2025 04:24:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739449498; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp594577njc;
+        Thu, 13 Feb 2025 06:00:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWNi8VZwaBI4rXTVWTWDC1SK1mtBcNNJKpFLyQ+UxfMYG7Ed0AhIWdNlwaQVmjR02xDSVStdWIC6C9zfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGKS+6CLMxLM0AHbPNuwJ1cCwvDoq3FXZTJ/5axi0yXfL4o1smNs3YleFKX2ZMgov+j/xrR
+X-Received: by 2002:a05:622a:8c6:b0:471:c03d:cd6c with SMTP id d75a77b69052e-471c03dce38mr47220141cf.19.1739455215427;
+        Thu, 13 Feb 2025 06:00:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739455215; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rex2E8SxNOyIR/A+uiAZW2cJrUUe03gzNKvcJb/5OYNxGsPJubOnr5b4IgZbfYjeMC
-         h7SF/8nGuRQBeOCENYO5tnoSXoECIQoml43yluNjfuhKddSIKhxJKFW10JOfwqCNkAov
-         YrU2hIVCGjwAR+ntbmQPALaJdJukn2Ws4vNJTfNHY1cvDMGjQ9nF50y04Uvl7nkZzd8U
-         X0WASV4ufAExcupapzS5cT1rpt2BuvNRHFA1Q5hHDnvD9xCGok5XOyZ15qwyLO9csuiP
-         ipc0CuDAHlhwq2rmFyB8IZNxaY8joiMtzwfEK6nqAcsOY7uR1d33ah7s8G+yRQQvMOed
-         OeCg==
+        b=cARG8LzqYE74Kk7xu9uqGiuWa+mWh41bB1XM4tqMHsY+2e9m7tRiiQg+/QjnJMWnm/
+         v/tUfmYF9IVnUBjqRWIgomi1nSQSVIY5uJppIOCn0lJ0VYw86f8+7koDNm2B1tDbMyLs
+         1YbGUsVDc/WEklrRaK5d2RVgiwhs4DU6D8iO7jH27DHqvOYkVYDNt8gLkEagNCPPbaI2
+         gpjtCJWDPTgEdxcTG0enJYhVUprlWsO73BnJSqSsH5RKT/ILgfoY8Nq32fwWogTttgWv
+         QyntyTBnB8uIRePBIP4V0rQtm65MPItCO4G20uoKgTjshKqEBmPdN4OREsyDtu9yiLkR
+         zztg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=r3JDPQWYy24MD735D0eYi/u2QpMsBv2AYsysjl3US+0=;
-        fh=7G23nAa7ccyiTxKVJ+ZzEMcKfCbp3J9CFWyGkTQOXRo=;
-        b=gl64srdTog6Aaajc0y7efeB6atn23kE2pW3vG0clcRwm0NRC7R/axuRIwPUC+8IDBc
-         SR1+KWQhx9xvDYM+dBo5z2tY94BdGBQxPiLiTlWXlRKPQyYnn3rM/EEnkhbfiT+0z0Le
-         3V9lrrwOFXMI3Fw9szUh5MY0L0rNs1FoRzhgI6/Y7krqv5yyFXGSNu6TZ7BRj17po2A4
-         ZbJqjLMssnYkIlNUZSUTByyeFA35hIgy0Xqf5Q1+tHUdpV3KacUm96YOcMOUwQcx2nos
-         vk3/KdbZMCDxdF6G5Mtw04cbidItUNJWTtxlRqoOPqZsSPLuIadTsR8dC6Al8ASUj3LS
-         uTHQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=qZubBvXP8fQ2DGr+qQdEor6QfBoY3FocF0ySP4eUM4k=;
+        fh=cDF4NjXVtWPytFk8U/RNfKVjcCF7KTN4VtdhdvzWKis=;
+        b=kGu7WTyWWCApRDRnrQfZWQTyALE0CARTQl08hh4BG/NpfZNgLIUAdrxtVKmWnjuYts
+         IDv4Dr7O3vbsLs9xhSnEDlFyTzG6VlDiblyZZ2neQVO6gcsSRKoEo6N4JiHmCN0C3PO+
+         gUfuoG96Pw7ywhrii2luo5mmDEuBWUN+L0LB3ZZaAIyHW/pn3nH5AmcGDlzcSQyVpig5
+         BAzA/b3g7lwLOigL32UYHIXN7xcRY+F3r7669x9F1YYuCYrKQ9mZTiRN1hnSWBcL2Lj/
+         S4K4spS0Fe7AOi8q8HZQ4XnLPs6JrUPTKawmUT/rsXZnzkmYoFmisVYkdCNV0ulRg2IN
+         LsUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNfBdApz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a1f56si12431086d6.170.2025.02.13.04.24.58
+        by mx.google.com with ESMTPS id d75a77b69052e-471c2b790a1si13648921cf.636.2025.02.13.06.00.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2025 04:24:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Feb 2025 06:00:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNfBdApz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tiYEv-00026P-Oq; Thu, 13 Feb 2025 07:22:45 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tiZkf-000567-76; Thu, 13 Feb 2025 08:59:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiYEu-000263-7B
- for qemu-devel@nongnu.org; Thu, 13 Feb 2025 07:22:44 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tiYEs-0002Wo-98
- for qemu-devel@nongnu.org; Thu, 13 Feb 2025 07:22:43 -0500
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-aaee2c5ee6eso141410466b.1
- for <qemu-devel@nongnu.org>; Thu, 13 Feb 2025 04:22:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739449360; x=1740054160; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r3JDPQWYy24MD735D0eYi/u2QpMsBv2AYsysjl3US+0=;
- b=mNfBdApziv2SIrFJzQPxLi4yEHCwQQBlXEGGY4dSu08SqJCQrW2jKNQWe+JQ9KN9ha
- Sq9ds4ZdoM5ZbjITcwikcW8xGW6MvMQm7TANt3a9w/XeJvNNcrR2xgc4fphiFeFWJzWo
- v9hsVAexUcS6HH5Odray6GZW/7BpDclyTID4uZvkt3ruiWS1eYuRZwFJ0lw2KO2uFMNg
- K1gDYQgbnS1bTn640kOrL+YAzyK+fW7ZtSBwhqwPXX8dmVn4jA7DuhF/cHgJxbLMY+OF
- zNizKncyW447jPaSFRj/c0FgJ16Ppm/IYE1yXcLgyT1l06fKxRKeBVAGkVzVFu1DVi2Q
- rSTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739449360; x=1740054160;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=r3JDPQWYy24MD735D0eYi/u2QpMsBv2AYsysjl3US+0=;
- b=Nzcn6yBtg34xKiHK5p+yFgbAcBnLkV+YszKgeowqqK8xQyLm8sSAOeorzDAGdjsYIP
- vhHG2ND55U8W6UnmmhZKW5IKYiecbz2QhbdHcf6qB5k8gS9boAqEAJmP7LkJ8A22tVmQ
- xaAf1Ze5sVpdl2nSVuA2cmmgt9DmsREDdP278TFvzazsjtZyGdmqlpwr7WRyeIXftMiC
- j4jHXlXiCI4H+JbGGGNCurgEcC10Qt4Ha6xJTQcMgiFk7kcOAmd0XYGEa5O1TtSklk6p
- isTBiGSS30Iq3DJUik7jbl6Etmomj90+LkNRkeMRHsLZtNRi7knuozhCFAxa1gpCnYFE
- joHw==
-X-Gm-Message-State: AOJu0Yyj394dju+tBnhjgLWHEUcYbsIfa9Qst/SV/TN7UkcIstKATOnh
- fqq1FRpc2kuMhGx4cnP8IUsBzfFRxcouwDizmHoSyOfmnmoXC2e7OwkkMXMs/miuyjAfCvHctwq
- bUvE=
-X-Gm-Gg: ASbGncu1iKy904C7q+t353mTO5NIfeWwD67m4c/z3Y3jA2vcbs/XQW3mA6hpomh07Eg
- 6eYcT4AN82qF2EV1th7SUo1G0ThtoziiuydjYOojX0OIlBLCXBNIdUArStqvMPXuNlf/SQle1q/
- kggl2AjBkPx797tOWvN3ck0LygcLqUNKVrWFZoT4VaMvvzv/z9DhM91ysMqsi08eOawAWHSKP5O
- oE8bLCDlOv6UzC+Qll0/i30Hal2b8zaUEUSwX1R2LevP3IKCDbm5X1b8+J3PrDGqf90JcFSPPJY
- 9Qs+gqrfurIBWQtWMqbqys7ReRRR5uc8TvPRHOMc79ycPUHjaeZl0UAZfMr3
-X-Received: by 2002:a17:907:7206:b0:ab7:ee47:993f with SMTP id
- a640c23a62f3a-ab7f34a31c4mr634545966b.47.1739449360292; 
- Thu, 13 Feb 2025 04:22:40 -0800 (PST)
-Received: from localhost.localdomain (6.170.88.92.rev.sfr.net. [92.88.170.6])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aba53398364sm122047166b.128.2025.02.13.04.22.38
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 13 Feb 2025 04:22:39 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v8 3/6] hw/net/xilinx_ethlite: Make device endianness
- configurable
-Date: Thu, 13 Feb 2025 13:22:14 +0100
-Message-ID: <20250213122217.62654-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250213122217.62654-1-philmd@linaro.org>
-References: <20250213122217.62654-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tiZkd-00055j-Fz; Thu, 13 Feb 2025 08:59:35 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tiZka-0002XJ-Ef; Thu, 13 Feb 2025 08:59:35 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 3C6954E602A;
+ Thu, 13 Feb 2025 14:59:25 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id XJ0WleSlwnnq; Thu, 13 Feb 2025 14:59:23 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 362304E6019; Thu, 13 Feb 2025 14:59:23 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 33B1674577D;
+ Thu, 13 Feb 2025 14:59:23 +0100 (CET)
+Date: Thu, 13 Feb 2025 14:59:23 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Thomas Huth <thuth@redhat.com>
+cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH v6 01/11] hw/qdev-properties-system: Introduce EndianMode
+ QAPI enum
+In-Reply-To: <0f7ea6d6-8476-4ba6-9d4f-eeb76aed04fa@redhat.com>
+Message-ID: <9e121e62-8e6e-61d6-dbfb-4dfda469acc5@eik.bme.hu>
+References: <20250212112413.37553-1-philmd@linaro.org>
+ <20250212112413.37553-2-philmd@linaro.org>
+ <cb828dd8-25f6-47c6-9ac7-cae5b0d0932e@redhat.com>
+ <50ba4e4b-4124-46bb-bb84-4758ce9c5e66@linaro.org>
+ <3b3baed4-0d79-3a28-40cd-e1835e078863@eik.bme.hu>
+ <6e707c7f-b94c-47ef-83ab-795605e27963@linaro.org>
+ <a3608e43-79ce-403d-8ba7-6735fde66759@linaro.org>
+ <e1436061-a840-0942-2c2c-4f49bfb932b8@eik.bme.hu>
+ <672045c1-9b09-4b7b-9bed-fa990129ce2c@linaro.org>
+ <fb7045a4-20f6-a52d-5531-2410fc803bb4@eik.bme.hu>
+ <0f7ea6d6-8476-4ba6-9d4f-eeb76aed04fa@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-291458086-1739455163=:73770"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WzEGChHCOq1b
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8nJD//fkMyYN
 
-Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair of
-DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Add the "endianness" property to select the device endianness.
-This property is unspecified by default, and machines need to
-make it explicit.
+--3866299591-291458086-1739455163=:73770
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Set the proper endianness for each machine using the device.
+On Thu, 13 Feb 2025, Thomas Huth wrote:
+> On 12/02/2025 23.34, BALATON Zoltan wrote:
+>> On Wed, 12 Feb 2025, Philippe Mathieu-Daudé wrote:
+>>> On 12/2/25 17:23, BALATON Zoltan wrote:
+>>>> On Wed, 12 Feb 2025, Philippe Mathieu-Daudé wrote:
+>>>>> On 12/2/25 14:53, Philippe Mathieu-Daudé wrote:
+>>>>>> On 12/2/25 13:56, BALATON Zoltan wrote:
+>>>>>>> On Wed, 12 Feb 2025, Philippe Mathieu-Daudé wrote:
+>>>>>>>> On 12/2/25 12:37, Thomas Huth wrote:
+>>>>>>>>> On 12/02/2025 12.24, Philippe Mathieu-Daudé wrote:
+>>>>>>>>>> Introduce the EndianMode type and the DEFINE_PROP_ENDIAN() macros.
+>>>>>>>>>> Endianness can be BIG, LITTLE or unspecified (default).
+>>>>>>>>>> 
+>>>>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>>>>>>> ---
+>>>>>>>>>>   qapi/common.json                    | 16 ++++++++++++++++
+>>>>>>>>>>   include/hw/qdev-properties-system.h |  7 +++++++
+>>>>>>>>>>   hw/core/qdev-properties-system.c    | 11 +++++++++++
+>>>>>>>>>>   3 files changed, 34 insertions(+)
+>>> 
+>>> 
+>>>>>>>>>> +{ 'enum': 'EndianMode',
+>>>>>>>>>> +  'data': [ 'little', 'big', 'unspecified' ] }
+>>>>>>>>> 
+>>>>>>>>> Should 'unspecified' come first? ... so that it gets the value 0, 
+>>>>>>>>> i.e. when someone forgets to properly initialize a related variable, 
+>>>>>>>>> the chances are higher that it ends up as "unspecified" than as 
+>>>>>>>>> "little" ?
+>>>>>>>> 
+>>>>>>>> Hmm but then in this series the dual-endianness regions are defined 
+>>>>>>>> as:
+>>>>>>>> 
+>>>>>>>> +static const MemoryRegionOps pic_ops[2] = {
+>>>>>>>> +    [0 ... 1] = {
+>>>>>>> 
+>>>>>>> This is already confusing as you'd have to know that 0 and 1 here 
+>>>>>>> means ENDIAN_MODE_LITTLE and ENDIAN_MODE_BIG (using those constants 
+>>>>>>> here as well might be clearer). It's easy to miss what this does so 
+>>>>> 
+>>>>> At this point 0 / 1 only mean "from the index #0 included to the index
+>>>>> #1 included", 0 being the first one and 1 the last one.
+>>>>> 
+>>>>>>> maybe repeating the definitions for each case would be longer but less 
+>>>>>>> confusing and then it does not matter what the values are.
+>>>>> 
+>>>>> This is what I tried to do with:
+>>>>> 
+>>>>> +    [ENDIAN_MODE_BIG].endianness = DEVICE_BIG_ENDIAN,
+>>>>> +    [ENDIAN_MODE_LITTLE].endianness = DEVICE_LITTLE_ENDIAN,
+>>>>> };
+>>>>> 
+>>>>> but in v7 we are back of picking an arbitrary value.
+>>>>> 
+>>>>>>> Or what uses the ops.endianness now should look at the property 
+>>>>>>> introduced by this patch to avoid having to propagate it like below 
+>>>>>>> and drop the ops.endianness? Or it should move to the memory region 
+>>>>>>> and set when the ops are assigned?
+>>>>>> 
+>>>>>> I'm not understanding well what you ask, but maybe the answer is in v7 
+>>>>>> :)
+>>>> 
+>>>> I'm not sure I understand it well either. I think what I was asking about 
+>>>> is the same as what Thomas asked if this could be avoided to make it 
+>>>> necessary to allocate two separate ops for this. Looks like from now on 
+>>>> this ops struct should really loose the endianness value and this should 
+>>>> be assigned when the ops is added to the io region because that's where 
+>>>> it decides which endianness is it based on the property added in this 
+>>>> series. But I don't know if that could be done or would need deeper 
+>>>> changes as what later uses this ops struct might not have access to the 
+>>>> property and if we have a single ops struct it may need to be copied to 
+>>>> set different endianness intstead of just referencing it. So I'm not sure 
+>>>> there's a better way but I think this change makes an already cryptic 
+>>>> boiler plate even more confusing for people less knowledgeable about QEMU 
+>>>> and C programming so it makes even harder to write devices. But as long 
+>>>> as it's just a few devices that need to work with different endianness 
+>>>> then it might be OK. But wasn't that what NATIVE_ENDIAN was meant for? 
+>>>> What can't that be kept then?
+>>> 
+>>> Moving toward a single binary able to run heterogeneous machines, we
+>>> can't rely on a particular target endianness, so we need to remove
+>>> DEVICE_NATIVE_ENDIAN. The endianness is a property a device / machine,
+>>> not of the binary.
+>> 
+>> So then can the behaviour of NATIVE_ENDIAN be changed to look at the 
+>> machine endianness instead of replacing it with a constant?
+>
+> No, that does not work. First, the machine knows about its devices, but a 
+> device should not know about the wiring of the global machine (just like in 
+> real life).
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
- hw/net/xilinx_ethlite.c                  | 29 +++++++++++++++++++-----
- hw/riscv/microblaze-v-generic.c          |  1 +
- 3 files changed, 25 insertions(+), 6 deletions(-)
+That means all devices should be either big or little endian and there 
+should be no native endian ones. Why do we have those then? That's why 
+this endianness property should either be removed from ops and only 
+attached to it when added to a machine if needed or kept to show which 
+machines it can be attached to: only big, little or both endian which is 
+what it seems to be doing now.
 
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index 15cabe11777..d419dc49a25 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -123,6 +123,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
- 
-     dev = qdev_new("xlnx.xps-ethernetlite");
-+    qdev_prop_set_enum(dev, "endianness", endianness);
-     qemu_configure_nic_device(dev, true, NULL);
-     qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
-     qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
-diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-index 14bf2b2e17a..15d9b95aa80 100644
---- a/hw/net/xilinx_ethlite.c
-+++ b/hw/net/xilinx_ethlite.c
-@@ -34,6 +34,7 @@
- #include "hw/sysbus.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-+#include "hw/qdev-properties-system.h"
- #include "hw/misc/unimp.h"
- #include "net/net.h"
- #include "trace.h"
-@@ -85,6 +86,7 @@ struct XlnxXpsEthLite
- {
-     SysBusDevice parent_obj;
- 
-+    EndianMode model_endianness;
-     MemoryRegion container;
-     qemu_irq irq;
-     NICState *nic;
-@@ -183,10 +185,10 @@ static void port_tx_write(void *opaque, hwaddr addr, uint64_t value,
-     }
- }
- 
--static const MemoryRegionOps eth_porttx_ops = {
-+static const MemoryRegionOps eth_porttx_ops[2] = {
-+    [0 ... 1] = {
-         .read = port_tx_read,
-         .write = port_tx_write,
--        .endianness = DEVICE_NATIVE_ENDIAN,
-         .impl = {
-             .min_access_size = 4,
-             .max_access_size = 4,
-@@ -195,6 +197,9 @@ static const MemoryRegionOps eth_porttx_ops = {
-             .min_access_size = 4,
-             .max_access_size = 4,
-         },
-+    },
-+    [0].endianness = DEVICE_LITTLE_ENDIAN,
-+    [1].endianness = DEVICE_BIG_ENDIAN,
- };
- 
- static uint64_t port_rx_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -232,10 +237,10 @@ static void port_rx_write(void *opaque, hwaddr addr, uint64_t value,
-     }
- }
- 
--static const MemoryRegionOps eth_portrx_ops = {
-+static const MemoryRegionOps eth_portrx_ops[2] = {
-+    [0 ... 1] = {
-         .read = port_rx_read,
-         .write = port_rx_write,
--        .endianness = DEVICE_NATIVE_ENDIAN,
-         .impl = {
-             .min_access_size = 4,
-             .max_access_size = 4,
-@@ -244,6 +249,9 @@ static const MemoryRegionOps eth_portrx_ops = {
-             .min_access_size = 4,
-             .max_access_size = 4,
-         },
-+    },
-+    [0].endianness = DEVICE_LITTLE_ENDIAN,
-+    [1].endianness = DEVICE_BIG_ENDIAN,
- };
- 
- static bool eth_can_rx(NetClientState *nc)
-@@ -300,6 +308,14 @@ static NetClientInfo net_xilinx_ethlite_info = {
- static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
- {
-     XlnxXpsEthLite *s = XILINX_ETHLITE(dev);
-+    unsigned ops_index;
-+
-+    if (s->model_endianness == ENDIAN_MODE_UNSPECIFIED) {
-+        error_setg(errp, TYPE_XILINX_ETHLITE " property 'endianness'"
-+                         " must be set to 'big' or 'little'");
-+        return;
-+    }
-+    ops_index = s->model_endianness == ENDIAN_MODE_BIG ? 1 : 0;
- 
-     memory_region_init(&s->container, OBJECT(dev),
-                        "xlnx.xps-ethernetlite", 0x2000);
-@@ -328,7 +344,7 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
-                                BUFSZ_MAX, &error_abort);
-         memory_region_add_subregion(&s->container, 0x0800 * i, &s->port[i].txbuf);
-         memory_region_init_io(&s->port[i].txio, OBJECT(dev),
--                              &eth_porttx_ops, s,
-+                              &eth_porttx_ops[ops_index], s,
-                               i ? "ethlite.tx[1]io" : "ethlite.tx[0]io",
-                               4 * TX_MAX);
-         memory_region_add_subregion(&s->container, i ? A_TX_BASE1 : A_TX_BASE0,
-@@ -340,7 +356,7 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
-         memory_region_add_subregion(&s->container, 0x1000 + 0x0800 * i,
-                                     &s->port[i].rxbuf);
-         memory_region_init_io(&s->port[i].rxio, OBJECT(dev),
--                              &eth_portrx_ops, s,
-+                              &eth_portrx_ops[ops_index], s,
-                               i ? "ethlite.rx[1]io" : "ethlite.rx[0]io",
-                               4 * RX_MAX);
-         memory_region_add_subregion(&s->container, i ? A_RX_BASE1 : A_RX_BASE0,
-@@ -363,6 +379,7 @@ static void xilinx_ethlite_init(Object *obj)
- }
- 
- static const Property xilinx_ethlite_properties[] = {
-+    DEFINE_PROP_ENDIAN_NODEFAULT("endianness", XlnxXpsEthLite, model_endianness),
-     DEFINE_PROP_UINT32("tx-ping-pong", XlnxXpsEthLite, c_tx_pingpong, 1),
-     DEFINE_PROP_UINT32("rx-ping-pong", XlnxXpsEthLite, c_rx_pingpong, 1),
-     DEFINE_NIC_PROPERTIES(XlnxXpsEthLite, conf),
-diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
-index ebdd461ae98..a21fdfbe6db 100644
---- a/hw/riscv/microblaze-v-generic.c
-+++ b/hw/riscv/microblaze-v-generic.c
-@@ -120,6 +120,7 @@ static void mb_v_generic_init(MachineState *machine)
- 
-     /* Emaclite */
-     dev = qdev_new("xlnx.xps-ethernetlite");
-+    qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
-     qemu_configure_nic_device(dev, true, NULL);
-     qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
-     qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
--- 
-2.47.1
+> Second, imagine a board with e.g. a big endian main CPU and a 
+> little endian service processor - how should a device know the right 
+> endianness here?
 
+How would that work with this series? So the proposed solution is to 
+double the devices now marked as NATIVE_ENDIAN to have a big and a little 
+endian variant for them so the board can choose? That does not exist in 
+real as you wrote, there's only one device so then this is probably not 
+the right way to model it.
+
+>> Or would that be too much overhead? If always looking up the endianness is 
+>> not wanted could the ops declaration keep NATIVE_ENDIAN 
+>
+> IMHO we should get rid of NATIVE_ENDIAN completely since there is no "native" 
+> endian in multi-CPU boards.
+
+If we say NATIVE_ENDIAN means that the device can be attached to either 
+big or little endian machine then we can keep this constant but when 
+adding the ops to a memory region the board has to then decide which 
+endianness it is and replace it with either big or little. Then we don't 
+need two versions of the same device and NATIVE_ENDIAN means that the 
+device can be used in both machines.
+
+In real life probably all devices can be used with either CPU and if they 
+are accessed in little or big endian is only determinded by how they are 
+wired on the board. So the device endianness only means what endianness 
+the device expects for something (what exactly? e.g. a video chip may have 
+a frame buffer and a registers area with different endianness). So this 
+should be the board that decides this not the device. Therefore it may not 
+need to be defined when MemoryRegionOps is defined at all (or only as a 
+hint to show what the device expects normally) and then 
+memory_region_init_io which takes the MemoryRegionOps should also take an 
+endianness corresponding the board and set it at that point. It can warn 
+if the device endianness does not match what the board sets but you can 
+still connect a big endian device to a little endian CPU as long as the 
+drivers write the right values or the data lines are connected the right 
+way, the latter of which corresponds to NATIVE_ENDIAN now as the 
+conversion is done by the wiring so drivers don't need to care.
+
+But if it's simpler to just double the few devices that need to be used 
+this way then it's a possible solution but if there's a cleaner one with 
+not much more complexity then maybe that should be considered, because the 
+way to define these doubled devices is a bit confusing for new people (on 
+top of that defining devices is already confusing with the lot of boiler 
+plate code needed). So if this could be kept simpler that would be a good 
+thing IMO.
+
+Regards,
+BALATON Zoltan
+--3866299591-291458086-1739455163=:73770--

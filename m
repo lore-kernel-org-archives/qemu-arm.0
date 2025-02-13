@@ -1,140 +1,129 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp877016njc;
-        Thu, 13 Feb 2025 12:58:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXaPCNtaHb3hnf4xYaUSMY2EHob6w90Gs0/FYYzWDa1wG6c0mb6snFrVSFhC0ssCsVUyb0La9MXGPqGfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEniXKHAxMsJIDcfHfzFqB642Oq1wWUj9dKer1TIXUSDXMgzuG0dAz+10veHOuQhp+4qoXE
-X-Received: by 2002:a05:620a:4154:b0:7b6:e47a:8e1d with SMTP id af79cd13be357-7c07a14eca8mr700046185a.31.1739480332232;
-        Thu, 13 Feb 2025 12:58:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739480332; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp918856njc;
+        Thu, 13 Feb 2025 14:25:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXQOnIwTnIqV4STBVCR7Ts8cnlkqDAv4DsrdWiQqEdAE+Dr/BvqK4Qu6DwTbyxZcwVQ/ADb2nHmhRk++A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEH0xG8b3Eka9h9KdkGXYrziJSastLjAx0wOaBsOWVYKmsD7JVB8X3pYIYnrO0vxvBgJKd0
+X-Received: by 2002:a05:622a:204:b0:471:bb6f:5788 with SMTP id d75a77b69052e-471beda6e30mr83963651cf.32.1739485544718;
+        Thu, 13 Feb 2025 14:25:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739485544; cv=none;
         d=google.com; s=arc-20240605;
-        b=fb566Kq0y75+vroRctMAfnCCymbnmfi+Hz9aX23Kcb9klthUdC6pIDANgqsvXCpJTT
-         QxzuUShxr1kJLV5NtjsBNlt+mPCXwxLAGinSyJLroe0K1bPSUxTwMyuTGU8YxSTf2q8B
-         qiWUUkfQDqplMTqDjFzlW/DBfF7kn2jN8xzvU6F5rcrjO1xSlVVKmQV2AVyk143kIHjc
-         GOYHVSzKsYjphFVQVApf/l8gjxPFrrK08BvhwxGjQnBxho/F7t0lnlkE7A1YxQiLeQDO
-         u3Vd++FNvXEwkpfJ0FfpQHtjYK8/xcQotHkL41yp9oyx2gHz3ec5ZqIWBxqi0eiDW94T
-         o92w==
+        b=eMAI6Ci6WURON08tApUALhYR9fsyYJb0RRVC1EhJpcrHluVxOOeD2wJH+Q3dpwom4y
+         HGBaUrISSpJleybqUPbO1lit8Ss9ZDYSfNxp4ERDwRH5ZqZB+aZP3FS4n8cAaj9zHch2
+         gFWgBy+W4j/0f7skNiKzVCuzXTqhmxzK/0246vE0/YfcNvgkGVKcZgKTUTMPmiAkarFU
+         2b2p34+ebHrnl24kOOgcempiPhioWxJVmH3fsqko4qbpYWIGhliVcgKaQaIfoNnndwEV
+         o4adpXL3RSLntPfUxtKlpWG39P/DOX8P7ZHOQ+IlIGit+NXisk8gg/J5fLZCxQJIdEYR
+         gAkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=vIwv28Eg9o+8B62iOwIAut8oKASTwz+J/sQ3Qky9Q8c=;
-        fh=Tv69pGE2DMYt/edAGn69p7Nw3txNkgHUvJmq8XDvKFQ=;
-        b=FByZsn4fbAR7Qy6BzUHLch7y67IxzS2Yd9Xt6Q5IVrsQvUe7bi/kxGC50vrsOTvoNE
-         uawg0Q25qzvf4dxCaH3aLDwO2xlrF8UWyG+dfmsVysh+ti46UllDHNvPctzb23qKMWBA
-         m9eG796BB7vkoZDI+iDCwEJBvZFDeTYMYIyNZdh6+B3JeLt6z6GgduPetuEORPvyABOe
-         qgD/QS0iqGi3pmiVvIkZdPvChtI5NvFeFhkEpIXuD/tutqLb7D+zIAw3z2Jj3OUYf3Xk
-         SNDF1E2Z3b81+GBXrfnBvsI8OLnvz5DNTuRUMuhdM4IGdOLfvhFzgeSleDNp9RNx19I0
-         eKlQ==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=AhGb81AL7FQLqyJblBY54Scpdy8nLptMezQfMN+OzPI=;
+        fh=6rrE52cgrYC9rXTqUznJzNUw28CrRy1ExPnK9AwMPYQ=;
+        b=gSAcoX7/J4Athel79NXqCZK0FJ0YVyKCqsdfGdDv8iaUosvCfVprmTMMIpBhRr51GE
+         zsXPY8mXqc8zVKkSmS7jYtdRLCzIAZb83wpCqQsVBsw8ey9UmYi/dYmF5Ec5qPUFdzqI
+         kHq6u61ZBGygUfsH5TSj+h5KGcNu1yv1W2y/nMNpXaveavH2bwOIPfWWW82j4/OZMpFy
+         W3PNn04+wqXch1WTOfUyYc9f9jXunPFYCQKlYPLT4ie2KXCMpualLc4F+Jq8pnHddxCq
+         WoPE2g86AQZ3K623H2hBs9VXNUwotOTSWGY+eQFSCnxAF1OnipM5ye/wS7o570HskEvU
+         RIZw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QaibO+40;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=p26mQgBK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c07c8bb1a6si191356485a.492.2025.02.13.12.58.52
+        by mx.google.com with ESMTPS id d75a77b69052e-471c2b5b318si21004001cf.491.2025.02.13.14.25.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2025 12:58:52 -0800 (PST)
+        Thu, 13 Feb 2025 14:25:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QaibO+40;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=p26mQgBK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tigI6-0001e5-0v; Thu, 13 Feb 2025 15:58:34 -0500
+	id 1tiheD-00016T-TP; Thu, 13 Feb 2025 17:25:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tigI2-0001dg-Ss
- for qemu-arm@nongnu.org; Thu, 13 Feb 2025 15:58:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
+ id 1tihe9-00015N-2e; Thu, 13 Feb 2025 17:25:25 -0500
+Received: from smtp-fw-52004.amazon.com ([52.119.213.154])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1tigI1-0001BB-8q
- for qemu-arm@nongnu.org; Thu, 13 Feb 2025 15:58:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739480307;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vIwv28Eg9o+8B62iOwIAut8oKASTwz+J/sQ3Qky9Q8c=;
- b=QaibO+40Jjy2NNhRIwRomSED4kjuaDp32hOQJRf79ZA4+8+4dbeiY5xwndWJW3MMaSFDc+
- cJU6KgvX6mgOkjL9yDb/dSO0EelpLhx8k144OeRZLBD3zfwMfgfuPaFfsWt/OeLjG3lHIF
- mv29QfYZ8oU6vbRE0U93B2MYZZNFQoc=
-Received: from mail-oa1-f71.google.com (mail-oa1-f71.google.com
- [209.85.160.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-665-NTyoB8uQMAqJbg4uCcd2Ow-1; Thu, 13 Feb 2025 15:58:23 -0500
-X-MC-Unique: NTyoB8uQMAqJbg4uCcd2Ow-1
-X-Mimecast-MFC-AGG-ID: NTyoB8uQMAqJbg4uCcd2Ow
-Received: by mail-oa1-f71.google.com with SMTP id
- 586e51a60fabf-2bc76a4085aso138383fac.3
- for <qemu-arm@nongnu.org>; Thu, 13 Feb 2025 12:58:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739480302; x=1740085102;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vIwv28Eg9o+8B62iOwIAut8oKASTwz+J/sQ3Qky9Q8c=;
- b=gZOEincLi4ODefQHcX1FX86zKifwF6nOK6C4xEWnq0hc/BQSFjnj5rmq7MjFLp0dAH
- jf+SlCchfIjjYyN4ixHu7Qz13mT4a6XCiQkv5JjrjYlbzVtA2rOkx26cuTZF9C+MjVaq
- zjdVcEdmyHGCXoRZ7Hf6owEdpPHY8xOprgYJZ3ciK6VTMJ4qNgwXX4fDANPMzednyOGe
- FHz0xQFEIXF7jW0KRu9wcujmasd4RCNIDkz6r2FhgYrOWLHdXHuGkdfmxrM+3LlTCohc
- iupbGDy/TePbDo6Sc2LgpKAdoMHUtvezKLzudqH5TD4T4dqY+u4DNKtz6TFaEyPCBkkC
- epWQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVsyW8nJJYVMaeDNtXQYBFwLO3ki+DsYFVAs3GYiY/+CDzHpkcXBmsrtDQJoUngFKCA6L7lMUrvrQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxq5/GUBoOUIBPx4smsBQDqbFrbvlrDqILdE2znhkH3Ux/ER3U4
- yIKDqcUOA4UsEuChc2akzSHMBY5C1PTZqXHeXA5WycWRhdD7URmcRIaqzIyvMAWLcmAjqeIooO9
- ssu2nKmEHXF66vnI3f4HPxqBqReA//O7RTZIcv7f2AMQ2TPdXHQ==
-X-Gm-Gg: ASbGnctj3RiWKBZ3gDFBUiEfNGsbV9jPspnWQe+HiCiTkhfUKxjkOJdhOdhc3H+rda5
- C2p84zpJqWVa2g8vfqpw/oV+W1CRU30QjdOi3ySAeY/80mChVq4KCrDj73fYnXVlSH6WqR+D+qK
- gdZH4FSLK2QFYHp+rqTiDdIdbrL+MVIMNp/yTF8nRGdrl3d+QJe8SvT+G3mVZacs59w8CaBb/uq
- 40pj9M8yJWU/d823aLH2QQFJ59pRRslM3QMc7E6Kr7OJKJ/wG8IS90o+Rk=
-X-Received: by 2002:a05:6871:1c5:b0:2b7:f2dc:a4c2 with SMTP id
- 586e51a60fabf-2b8f8c0129emr2590474fac.18.1739480302181; 
- Thu, 13 Feb 2025 12:58:22 -0800 (PST)
-X-Received: by 2002:a05:6871:1c5:b0:2b7:f2dc:a4c2 with SMTP id
- 586e51a60fabf-2b8f8c0129emr2590455fac.18.1739480301793; 
- Thu, 13 Feb 2025 12:58:21 -0800 (PST)
-Received: from x1.local ([2604:7a40:2041:2b00::1000])
- by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2b954820707sm1112555fac.10.2025.02.13.12.58.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Feb 2025 12:58:20 -0800 (PST)
-Date: Thu, 13 Feb 2025 15:58:17 -0500
-From: Peter Xu <peterx@redhat.com>
-To: William Roche <william.roche@oracle.com>
-Cc: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, pbonzini@redhat.com,
- richard.henderson@linaro.org, philmd@linaro.org,
- peter.maydell@linaro.org, joao.m.martins@oracle.com,
- Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v8 0/3] Poisoned memory recovery on reboot
-Message-ID: <Z65c6W98c9hruUIE@x1.local>
-References: <20250211212707.302391-1-william.roche@oracle.com>
- <Z6vQvr4dCCsBR2sX@x1.local>
- <6e8aedfc-f270-4fa8-a1d3-df0389e505cb@oracle.com>
+ (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
+ id 1tihe7-0004mR-C5; Thu, 13 Feb 2025 17:25:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1739485524; x=1771021524;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=AhGb81AL7FQLqyJblBY54Scpdy8nLptMezQfMN+OzPI=;
+ b=p26mQgBKPNYg7VzBMbjm2tLUNL53y4ubD9tcsWJ/2YHkCNrrkcdQ58DW
+ tvPbhIAMvJ6IyFGfL4X/3duzACI+xzRNJkPtAqqZjojK0KOhEzDIrBdIc
+ byhAT+AiVEFDi/JKXYNiCfqrbwezC7Cpmbt6KgTQFqlsj1ek1CuWpUdWZ I=;
+X-IronPort-AV: E=Sophos;i="6.13,284,1732579200"; d="scan'208";a="271011974"
+Received: from iad12-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.2])
+ by smtp-border-fw-52004.iad7.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 22:25:18 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [10.0.7.35:37483]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.12.97:2525]
+ with esmtp (Farcaster)
+ id 031fe074-2353-4ad6-9ea9-6ec42be02d85; Thu, 13 Feb 2025 22:25:16 +0000 (UTC)
+X-Farcaster-Flow-ID: 031fe074-2353-4ad6-9ea9-6ec42be02d85
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
+ Thu, 13 Feb 2025 22:25:11 +0000
+Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Thu, 13 Feb 2025
+ 22:25:08 +0000
+Message-ID: <342a1bd9-52e9-4a6d-8a2a-63d2b478d896@amazon.com>
+Date: Thu, 13 Feb 2025 23:25:06 +0100
 MIME-Version: 1.0
-In-Reply-To: <6e8aedfc-f270-4fa8-a1d3-df0389e505cb@oracle.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: wSl-IorpHh6F25BDQkveC_aAr0gicNQofSTRff_5agY_1739480302
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
+To: Gerd Hoffmann <kraxel@redhat.com>
+CC: <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, <qemu-arm@nongnu.org>, Michael Roth
+ <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Ard Biesheuvel
+ <ardb@kernel.org>
+References: <20250211092324.965440-10-kraxel@redhat.com>
+ <da0ac9ed-fdca-433e-b793-5423f430a852@amazon.com>
+ <iuwaykfdm7bwtvblyz7lkew3em2ksi5xeztdphqjdv7tsp2ejw@s6j64y3lfmrw>
+ <ea1d355b-7e56-47ef-b1e7-158003b6d85f@amazon.com>
+ <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
+ <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
+ <4bwjwcs2k4hbrj6mokc57a5dy57jjssfxnvd4qm5257dgnid3x@yqdx7e47o2mf>
+ <2c06a98c-f286-4632-a352-8b47dc4cc43c@amazon.com>
+ <2vgc4scgezmb3med6dypykcym7te7gzlx7wp3vm5ehtfmxj3xr@kswpu35wt5ns>
+ <f59bb48f-051d-4681-a702-6aed3420c2f7@amazon.com>
+ <jnxvyw6q4vkng7jztu7q5rabgeohhpoxojdn4wt6xckc6pzmqz@ateji77pl5j7>
+Content-Language: en-US
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <jnxvyw6q4vkng7jztu7q5rabgeohhpoxojdn4wt6xckc6pzmqz@ateji77pl5j7>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.253.83.51]
+X-ClientProxiedBy: EX19D036UWC001.ant.amazon.com (10.13.139.233) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Received-SPF: pass client-ip=52.119.213.154;
+ envelope-from=prvs=1325cea77=graf@amazon.de; helo=smtp-fw-52004.amazon.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,89 +138,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mXV6mWhMPm0x
+X-TUID: ZEjq1C2PTCUP
 
-On Thu, Feb 13, 2025 at 08:35:09PM +0100, William Roche wrote:
-> On 2/11/25 23:35, Peter Xu wrote:
-> > On Tue, Feb 11, 2025 at 09:27:04PM +0000, “William Roche wrote:
-> > > From: William Roche <william.roche@oracle.com>
-> > > 
-> > > Here is a very simplified version of my fix only dealing with the
-> > > recovery of huge pages on VM reset.
-> > >   ---
-> > > This set of patches fixes an existing bug with hardware memory errors
-> > > impacting hugetlbfs memory backed VMs and its recovery on VM reset.
-> > > When using hugetlbfs large pages, any large page location being impacted
-> > > by an HW memory error results in poisoning the entire page, suddenly
-> > > making a large chunk of the VM memory unusable.
-> > > 
-> > > The main problem that currently exists in Qemu is the lack of backend
-> > > file repair before resetting the VM memory, resulting in the impacted
-> > > memory to be silently unusable even after a VM reboot.
-> > > 
-> > > In order to fix this issue, we take into account the page size of the
-> > > impacted memory block when dealing with the associated poisoned page
-> > > location.
-> > > 
-> > > Using the page size information we also try to regenerate the memory
-> > > calling ram_block_discard_range() on VM reset when running
-> > > qemu_ram_remap(). So that a poisoned memory backed by a hugetlbfs
-> > > file is regenerated with a hole punched in this file. A new page is
-> > > loaded when the location is first touched.  In case of a discard
-> > > failure we fall back to remapping the memory location.
-> > > 
-> > > But we currently don't reset the memory settings and the 'prealloc'
-> > > attribute is ignored after the remap from the file backend.
-> > 
-> > queued patch 1-2, thanks.
-> > 
-> 
-> Thank you very much Peter, and thanks to David too !
-> 
-> According to me, ARM needs more than only error injection messages.
-> For example, the loop of errors that can appear during kdump when dealing
-> with large pages is a real problem, hanging a VM.
 
-Maybe it'll be better to post arm patches separately so that it can attract
-more attention from arm developers specifically.
+On 13.02.25 15:54, Gerd Hoffmann wrote:
+> On Thu, Feb 13, 2025 at 11:14:03AM +0100, Alexander Graf wrote:
+>>> I don't think so.  The firmware driver knows this actually is normal ram
+>>> and can setup mappings and memory attributes accordingly.  The situation
+>>> is a bit different from vga memory bars which are handled by pci bus
+>>> management which doesn't know anything about virtualization specifics.
+>>>
+>>> Well, unless macos thinks it knows everything better and goes setup
+>>> uncached mappings ...
+>> It's not only macOS. After SetVirtualAddressMap, the OS owns the virtual
+>> address space of Runtime Services. So in theory it also owns cacheability
+>> attributes of all mappings.
+> Hmm.  Played around with the device memory approach a bit today.  Looks
+> workable for both arm/sysbus and x86/isa.  Problem is, if that does
+> leave any unsolved corner cases on the table it doesn't buy us much, and
+> the arm caching issues start to make me a bit nervous ...
+>
+> So, maybe allowing pio data transfers is the better approach after all.
+>
+> How do your patches pick the transfer mode?  Is that dictated by the
+> host?  Or is the guest free to choose?  In case of the latter:  How does
+> the guest decide what to do?
 
-I see that PeterM is in the loop, besides you could also try to copy Eric
-Auger <eric.auger@redhat.com>.  I have Eric copied.  I'm not sure whether
-Eric or the team would be interested in this too at some point.
 
-> 
-> There is also the remap notification (to better deal with 'prealloc'
-> attribute for example) that needs to be implemented now.
+In our version, the guest gets to pick. It defaults to the DMA interface 
+unless it detects that it's running either the macOS logic (a case you 
+can ignore for now) or is running with SEV-SNP.
 
-Right, this one should be easy, IMHO.  And I hope if prealloc is the only
-concern then the impact is low, I mean prefaults for hugetlb pages is less
-important comparing to small pages - fault one 1G page which used to be
-poisoned may not even be detectable from guest as long as there're still
-free 1G available.
+I think for the upstream interface, it would be best to have the host 
+indicate which one it recommends the guest to use. That way you can 
+force the fallback path without requiring tedious edk2 changes.
 
-> 
-> And finally the kernel KVM enhancement needed on x86 to return a more
-> accurate SIGBUS siginfo.si_addr_lsb value on large pages memory errors.
-> Qemu could than take this information into account to provide more useful
-> feedback about the 'failed' memory size.
 
-I confess this isn't high priority for now.  Before hugetlb pages can be
-split this isn't providing much help indeed, as QEMU knows whatever the
-kernel knows.
+>
+>> Yes, IIRC we advertise where the hole is. I'm sure we can find a spot.
+>> Somewhere next to the HPET :).
+> 0xfef1000 seems to be free, which is kida fun b/c of the 'ef1' in the
+> address.
 
-It can be more important until someone allows hugetlb pages to split so
-poison may only affect 4k out of 1G.  In that case it must report with 4k
-of part of 1G.  We'll see how that would work out at last, we may need some
-new mm interface to tell the userspace that "when I say 4k is poisoned,
-it's really only that 4k..", or something like that.
 
-> 
-> I don't know yet when I'll have the possibility to come back to these
-> problems, but at least we have the recovery of large pages mostly fixed with
-> the 2 patches queued.
+True, I love it! :)
 
-Yes, thanks for fixing it.
+It's not enough address space to fit the full 64k buffer though, right? 
+Would all of 0xfef00000 be free by chance? Then you could just direct 
+map the transfer buffer there.
 
--- 
-Peter Xu
+
+Alex
 

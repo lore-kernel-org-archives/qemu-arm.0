@@ -1,100 +1,102 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp469297njc;
-        Thu, 13 Feb 2025 01:52:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVyy035irNnylXvGvxtkf52qe3RHESkW1Luk56VmgfNNeK+xjCfWPcJjdDXgTi5x8IrHH20mm1ToH0qfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IENJDWbYNAikpMjMaA3MBykqYI81G3ARG8+/vxNcuEEF2vXGUFlNr/l+kjbnm7lC6Cmck51
-X-Received: by 2002:a05:620a:27cf:b0:7b6:7257:1359 with SMTP id af79cd13be357-7c07071a73cmr1045371785a.13.1739440359297;
-        Thu, 13 Feb 2025 01:52:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739440359; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp476247njc;
+        Thu, 13 Feb 2025 02:07:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnV1t2Hd+ajObSa1J4FPKrRMkIs5yjwoRiZGAR8oif1YnZ5iQSc9wcgmLruNQegdMrKeFEuxZ1Y1MrZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNrZEsFptNDMFKVqfWazX0MHt2DB7Caxt17ZDwuWfHhpRrFMCBZ6eMhsfjVrHENTq+2XBX
+X-Received: by 2002:a05:622a:589:b0:458:5716:fbd8 with SMTP id d75a77b69052e-471afee0744mr92818531cf.32.1739441230427;
+        Thu, 13 Feb 2025 02:07:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739441230; cv=none;
         d=google.com; s=arc-20240605;
-        b=EhhnaN+h0C5e6yXft7BPgiZlv92e/uklpq4Z3ftG6ZXEdL8zqtp+FhmlfGH64HqIZZ
-         TH1jAbqyc9bKJGeZwiq8hFdRgvtFdJyYiVwUGxjwHaEYOM2YpWIcfVoIpH+zF6aE5AC4
-         YnYMoqiAFt/dSQhxQefzsixxAuwdLb8oGMhRZV7H+eaGoaNAF8iTcWdrKAUhY8ZQo6Uz
-         ynn/90cLyz2/lVU+oz8ZOKMsvio6xlaBuEhBw9t0FK0xxZJIfgbnab2ljLJDu7pySYW4
-         uJaxqpUFAU10BKWJFjG1lTdoLXKs1dDweTaMUe7/xF6RPsmA5T/94ysBxE3IeDPM0tDd
-         nDXA==
+        b=IKT7JifCXI/uLfbjcXiY56vyRHYKpFLW3d5l6qwyD/LZSP6Zezyw/d4VJFQSRB1z9Y
+         liU74dG49SQNU1gIEfN0rTncLXhoQXE4zSMqTec6aY5Yr78onChgCEm8UaCXBpp9kHUa
+         DKs0752a6YG1o6UVHft07cGI0mhZ6vjlQ/718bOhLwv551HS7XNZ19+qPKDsOH9ZMHq3
+         Pr5Mcv6aZVkGHjshCaqzwtBhsjb72uzubNXhP+ZS6MUigMoPvVI1cwc5SVUwOBLUV8oT
+         oTsspOYxq0WoCiKIEwyqdu8T0c3F2o8P4ogN/Fi/3WTNfegVYwYLHkjT+Y9EjX3YF0u0
+         4kag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=tFNBp19PlskggX+XxDmTx7MkQZoyGay4JhSLOld0Fuo=;
-        fh=rrua58aPyIBHnRLYa6DhwCQw1Suzf5rAWcQoGwyatcE=;
-        b=ax5gXjvPep+44KmeMRMJFxxxQtkr7Tr1NNLWD0baJqjfaRBGqeQ6zNijVpplE46wle
-         aLQGHeU4qKB/Z+pNDrgP6U9MgmDt8Cg8wqhEWo47FZiqmd51lkbUWiNFYdaSmEzRtpJ9
-         4qJsMA3vHMb6BDpJiU8IJ3vh18DsOIJV7o/03HeC3DjaWhhD36o4lOctcN9uQ2mkm8pz
-         KylxbkNFu1DyXqSvITVbyGDCs1i+iDrI/MWY/JvCE0j4n+MpzPbHGrmLCGjnaMkxwUxo
-         zb8g3P50M+IB9k6iWFIKJ7TZHOANlX/zIfo1FveaJAysP7kYy8W0EntIx3wh2hZv7f2b
-         FmJQ==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=ll4CuhIf7mFggQoX8RTnwFFYu7XxUD88uccQ2k3U6aQ=;
+        fh=a6KRkrXMjkIwkQtmyH/CdeEqHBrI7q8jZcEVePVIezc=;
+        b=iKBqr8ZQofBaqaue/XhiMnWj4JBMrw1CV32HVt2Cruuc3EPY+74W+bSP/C/5/0tfBQ
+         2AVZ7jOoDQjFiz/Pz1CaosYTCkeAlzbh2qKD4CCZsFCvY0gQuJnfHmWB6G7xkRWr4u2i
+         oAuOeCOr4JYEqzqdri0rm0VHt8LZpvcXd/c1NfohIiReOYEuKgW7vfRXyDlphliy9wsQ
+         WFUSGyrI6652NwZQGPt/oNnKptHV/NAAln8buI8RxoDEl3u9u2m6iYvVHY8Z+wzcMM+v
+         4hK9hFh2hIK84T+SPFsKZJnEVvNf/IL4YxFMAFEjx11MnLo3SNZYTECkX/c5Qe90wB9n
+         6RdA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aD3N70it;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=cKRFeiDq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c29ef8c5si10859201cf.110.2025.02.13.01.52.39
+        by mx.google.com with ESMTPS id d75a77b69052e-471c2b2c4e0si10712101cf.334.2025.02.13.02.07.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2025 01:52:39 -0800 (PST)
+        Thu, 13 Feb 2025 02:07:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aD3N70it;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=cKRFeiDq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiVtW-0004Fw-Q7; Thu, 13 Feb 2025 04:52:31 -0500
+	id 1tiW7K-0008DT-VN; Thu, 13 Feb 2025 05:06:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tiVtS-0004FM-IG
- for qemu-arm@nongnu.org; Thu, 13 Feb 2025 04:52:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
+ id 1tiW72-00086L-W1; Thu, 13 Feb 2025 05:06:30 -0500
+Received: from smtp-fw-52004.amazon.com ([52.119.213.154])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tiVtP-00044I-Ew
- for qemu-arm@nongnu.org; Thu, 13 Feb 2025 04:52:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739440341;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tFNBp19PlskggX+XxDmTx7MkQZoyGay4JhSLOld0Fuo=;
- b=aD3N70itjmFibxV7zPE+rIMb4QOvYxGJmWMQpMmVWwb9wmn20tMa9LAHvHsFkTkrGhPFfw
- D4VySJYBjJWEu6w0Oj7noDIvDK5s0JbBGt06Kz5IXhfMKLZO3/BjmwjyW3vfEdd6SIWMEp
- En6aqTyWOoXhsgKUo2vxgfUcKvQOM+w=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-679-W4fu4iEWPcWhuVv-8EOmaQ-1; Thu,
- 13 Feb 2025 04:52:20 -0500
-X-MC-Unique: W4fu4iEWPcWhuVv-8EOmaQ-1
-X-Mimecast-MFC-AGG-ID: W4fu4iEWPcWhuVv-8EOmaQ
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D55BE190F9E8; Thu, 13 Feb 2025 09:52:17 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.45.224.69])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 37A25300018D; Thu, 13 Feb 2025 09:52:16 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id C4F7A1800097; Thu, 13 Feb 2025 10:52:13 +0100 (CET)
-Date: Thu, 13 Feb 2025 10:52:13 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>, 
- Markus Armbruster <armbru@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Ard Biesheuvel <ardb@kernel.org>
+ (Exim 4.90_1) (envelope-from <prvs=1325cea77=graf@amazon.de>)
+ id 1tiW70-0006BA-BN; Thu, 13 Feb 2025 05:06:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1739441187; x=1770977187;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to;
+ bh=ll4CuhIf7mFggQoX8RTnwFFYu7XxUD88uccQ2k3U6aQ=;
+ b=cKRFeiDqRPEmB5PcwTlz0z3Hur81KWWJa6CdzFI2b2/bLLQI4x2XXplZ
+ S4wjX+suEU5bo3IZiWNULOG442NGNEBZwl151MVvNiNASRnUBUJcXIx1C
+ MJNPCprqMv3ki3dbFDDHo4tgk7AXwJnhzi979mYyn9t8+i0ZSUv+zuVI+ w=;
+X-IronPort-AV: E=Sophos;i="6.13,282,1732579200"; 
+ d="scan'208,217";a="270824079"
+Received: from iad12-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.2])
+ by smtp-border-fw-52004.iad7.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 10:06:19 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [10.0.7.35:37198]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.21.53:2525]
+ with esmtp (Farcaster)
+ id 1325899b-285c-4051-90f8-0998ab36c980; Thu, 13 Feb 2025 10:06:18 +0000 (UTC)
+X-Farcaster-Flow-ID: 1325899b-285c-4051-90f8-0998ab36c980
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
+ Thu, 13 Feb 2025 10:06:10 +0000
+Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Thu, 13 Feb 2025
+ 10:06:07 +0000
+Content-Type: multipart/alternative;
+ boundary="------------Xf1MkVMVt0nC8UJaQN0AJdG3"
+Message-ID: <f2cea4d6-6bde-4e22-9f1d-2aa92a0d287d@amazon.com>
+Date: Thu, 13 Feb 2025 11:06:05 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
-Message-ID: <2vgc4scgezmb3med6dypykcym7te7gzlx7wp3vm5ehtfmxj3xr@kswpu35wt5ns>
+To: Ard Biesheuvel <ardb@kernel.org>
+CC: Gerd Hoffmann <kraxel@redhat.com>, <qemu-devel@nongnu.org>, Eric Blake
+ <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ <qemu-arm@nongnu.org>, Michael Roth <michael.roth@amd.com>, Markus Armbruster
+ <armbru@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
 References: <20250211092324.965440-1-kraxel@redhat.com>
  <20250211092324.965440-10-kraxel@redhat.com>
  <da0ac9ed-fdca-433e-b793-5423f430a852@amazon.com>
@@ -104,21 +106,24 @@ References: <20250211092324.965440-1-kraxel@redhat.com>
  <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
  <4bwjwcs2k4hbrj6mokc57a5dy57jjssfxnvd4qm5257dgnid3x@yqdx7e47o2mf>
  <2c06a98c-f286-4632-a352-8b47dc4cc43c@amazon.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2c06a98c-f286-4632-a352-8b47dc4cc43c@amazon.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com>
+Content-Language: en-US
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com>
+X-Originating-IP: [10.253.83.51]
+X-ClientProxiedBy: EX19D045UWC003.ant.amazon.com (10.13.139.198) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Received-SPF: pass client-ip=52.119.213.154;
+ envelope-from=prvs=1325cea77=graf@amazon.de; helo=smtp-fw-52004.amazon.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,36 +138,354 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7BV56nqIiEGR
+X-TUID: BrD/Zk7JOqgT
 
-  Hi,
- 
-> That will bring back all issues with cached vs non-cached memory accesses,
-> no? So edk2 will always access that memory as device memory which means it
-> bypasses the cache, while QEMU will access it through the cache. So that
-> buffer would need to actually be MMIO memory I suppose?
+--------------Xf1MkVMVt0nC8UJaQN0AJdG3
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 
-I don't think so.  The firmware driver knows this actually is normal ram
-and can setup mappings and memory attributes accordingly.  The situation
-is a bit different from vga memory bars which are handled by pci bus
-management which doesn't know anything about virtualization specifics.
 
-Well, unless macos thinks it knows everything better and goes setup
-uncached mappings ...
+On 13.02.25 10:28, Ard Biesheuvel wrote:
+> On Wed, 12 Feb 2025 at 22:26, Alexander Graf<graf@amazon.com> wrote:
+>>
+>> On 12.02.25 16:18, Gerd Hoffmann wrote:
+>>>     Hi,
+>>>
+>>>>> Yes.  Knowing both physical and virtual address works only for memory
+>>>>> you allocated yourself before ExitBootServices.  So you can't pass on
+>>>>> pointers from the OS, you have to copy the data to a buffer where you
+>>>>> know the physical address instead.  Yes, some overhead.  Should still
+>>>>> be much faster than going to pio transfer mode ...
+>>>> MacOS takes over the full physical address map past ExitBootServices: Your
+>>>> code no longer has VA access to random code
+>>> That is totally fine.  EFI drivers must register everything they need as
+>>> runtime memory.  Anything else can be unmapped by the OS when calling
+>>> EFI services.
+>>>
+>>>> and it literally memcpy()'s all preserved (virtual available) code and
+>>>> data to different physical addresses.
+>>> Uhm.  I have my doubts this copying behavior is blessed by the UEFI spec.
+>>
+>> I don't remember anything in the spec prohibiting it.
+>>
+> The UEFI spec clearly states that runtime services must either be
+> called using a 1:1 mapping, or via a virtual remapping but in that
+> case, SetVirtualAddresMap() must be called to inform the firmware of
+> the new virtual mapping.
 
-> > Not sure how to do that best on x86 though.  Find 64k unused address
-> > space over ioapic?  Do we have enough free space there?  And how
-> > future-proof would that be?
-> 
-> I'm not worried yet about where we place that memory, but more about
-> ensuring that we actually have a working path to access it. We can always
-> find space in the PCI hole, as long as we properly advertise it to all
-> stakeholders via ACPI and memory map.
 
-Well, the host can't easily place stuff in the pci hole because the
-guest will manage that (map pci bars etc).  But making the pci hole
-a bit smaller to make room is an option I think.
+Correct, which is what boot.efi does. That mapping only tells firmware 
+about the change from old VA -> new VA though.
 
-take care,
-  Gerd
 
+> Even if this is not clearly stated, this violates the intent of the
+> UEFI spec: the code reasons about mappings of physical memory,
+> implying that the mapping is the only thing that changes. Moving
+> memory contents around can only be done safely after
+> SetVirtualAddressMap(), making it mandatory on these systems, whereas
+> the spec clearly states that it is entirely optional.
+
+
+The spec says that calling SetVirtualAddressMap is optional from the 
+firmware's point of view. A boot loader may call it - and even depend on 
+its functionality. The spec even goes further and almost endorses the 
+case boot.efi does:
+
+> The call to SetVirtualAddressMap() must be done with the physical 
+> mappings. On successful return from this function, the system must 
+> then make any future calls with the newly assigned virtual mappings. 
+> All address space mappings must be done in accordance to the 
+> cacheability flags as specified in the original address map. [...]
+
+
+You can absolutely read that paragraph as "From here on, only virtual 
+mappings matter".
+
+
+> But whatever OSX does on x86 is irrelevant anyway: it is vertically
+> integrated with the firmware, which is vaguely EFI based but does not
+> aim for spec compliance. The OSX EULA does not permit running it on
+> anything other than Apple hardware. And x86 Apple hardware will be
+> reaching obsolescence pretty soon, at least where future development
+> is concerned.
+
+
+I halfway agree. It's fairly trivial to make x86 Mac OS X work with 
+stock edk2 [1]. All you need are a few boot services, a non-standard way 
+(or BootXXX variables) to find the real boot binary and APFS driver 
+(binary is included in every APFS FS) load support. The rest is a fairly 
+standard compliant UEFI environment.
+
+But I'm not sure how that's relevant to the argument that we need a way 
+to perform runtime service calls without relying on DMA? In addition to 
+the potential VA/PA mismatch issue, relying on DMA from RTS can quickly 
+also get broken for any confidential compute environments where you need 
+to take explicit action to make memory visible to the hypervisor.
+
+All I'm asking for is an (optional) viable path that works without DMA :).
+
+
+> My colleague filed a USWG proposal for a EFI_MEMORY_SHARED attribute
+> that must be honored by the OS when creating runtime mappings, and map
+> the region in a way that allows access by another observer (typically
+> the VMM but semantically it could mean other things too)
+
+
+For something as core as a UEFI variable service that should become the 
+default in a generic platform like QEMU, I don't think we should rely on 
+new additions to the UEFI spec :(. Users want to be able to run old 
+Operating Systems.
+
+
+>
+>>>> You simply have nothing that is all of 1) RAM (mapped as cacheable on
+>>>> ARM), 2) known VA 3) known PA.
+>>> Bummer.
+>>>
+>>>> So we really really need a fallback mechanism that works without DMA
+>>>> :).
+>>> On arm it should be relatively simple to move the buffer to device
+>>> memory.  Just place one more region on the platform bus, advertise
+>>> address + size via device tree, done.
+>>
+>> That will bring back all issues with cached vs non-cached memory
+>> accesses, no? So edk2 will always access that memory as device memory
+>> which means it bypasses the cache, while QEMU will access it through the
+>> cache. So that buffer would need to actually be MMIO memory I suppose?
+>>
+> Indeed. Presenting memory as MMIO just to trick the guest into mapping
+> it shared is not the right approach here, which is why we need
+> EFI_MEMORY_SHARED on ARM. On x86, using the EfiMemoryMappedIo type
+> happens to work, but it is a hack (e.g., you cannot allocate memory of
+> this type)
+
+
+The non-hacky alternative would be to expose a real 64KiB large MMIO 
+window into host memory that goes through full instruction emulation for 
+every access. Then we could expose it as real MMIO target memory to RTS 
+which should always work. DMA can then be an (optional) optimization on 
+top to copy to/from that buffer.
+
+
+Alex
+
+
+[1] 
+https://github.com/tianocore/edk2/compare/vUDK2018...agraf:edk2:vUDK2018-AppleSupportPkg
+
+--------------Xf1MkVMVt0nC8UJaQN0AJdG3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <div class="moz-cite-prefix">On 13.02.25 10:28, Ard Biesheuvel
+      wrote:<br>
+    </div>
+    <blockquote type="cite"
+cite="mid:CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">
+On Wed, 12 Feb 2025 at 22:26, Alexander Graf <a class="moz-txt-link-rfc2396E" href="mailto:graf@amazon.com">&lt;graf@amazon.com&gt;</a> wrote:
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">
+
+On 12.02.25 16:18, Gerd Hoffmann wrote:
+</pre>
+        <blockquote type="cite">
+          <pre wrap="" class="moz-quote-pre">   Hi,
+
+</pre>
+          <blockquote type="cite">
+            <blockquote type="cite">
+              <pre wrap="" class="moz-quote-pre">Yes.  Knowing both physical and virtual address works only for memory
+you allocated yourself before ExitBootServices.  So you can't pass on
+pointers from the OS, you have to copy the data to a buffer where you
+know the physical address instead.  Yes, some overhead.  Should still
+be much faster than going to pio transfer mode ...
+</pre>
+            </blockquote>
+            <pre wrap="" class="moz-quote-pre">MacOS takes over the full physical address map past ExitBootServices: Your
+code no longer has VA access to random code
+</pre>
+          </blockquote>
+          <pre wrap="" class="moz-quote-pre">That is totally fine.  EFI drivers must register everything they need as
+runtime memory.  Anything else can be unmapped by the OS when calling
+EFI services.
+
+</pre>
+          <blockquote type="cite">
+            <pre wrap="" class="moz-quote-pre">and it literally memcpy()'s all preserved (virtual available) code and
+data to different physical addresses.
+</pre>
+          </blockquote>
+          <pre wrap="" class="moz-quote-pre">Uhm.  I have my doubts this copying behavior is blessed by the UEFI spec.
+</pre>
+        </blockquote>
+        <pre wrap="" class="moz-quote-pre">
+
+I don't remember anything in the spec prohibiting it.
+
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+The UEFI spec clearly states that runtime services must either be
+called using a 1:1 mapping, or via a virtual remapping but in that
+case, SetVirtualAddresMap() must be called to inform the firmware of
+the new virtual mapping.</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>Correct, which is what boot.efi does. That mapping only tells
+      firmware about the change from old VA -&gt; new VA though.<br>
+    </p>
+    <p><br>
+    </p>
+    <blockquote type="cite"
+cite="mid:CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">Even if this is not clearly stated, this violates the intent of the
+UEFI spec: the code reasons about mappings of physical memory,
+implying that the mapping is the only thing that changes. Moving
+memory contents around can only be done safely after
+SetVirtualAddressMap(), making it mandatory on these systems, whereas
+the spec clearly states that it is entirely optional.</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>The spec says that calling SetVirtualAddressMap is optional from
+      the firmware's point of view. A boot loader may call it - and even
+      depend on its functionality. The spec even goes further and almost
+      endorses the case boot.efi does:<br>
+      <br>
+      <blockquote type="cite"><span
+style="color: rgb(64, 64, 64); font-family: Lato, proxima-nova, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(252, 252, 252); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">The
+          call to SetVirtualAddressMap() must be done with the physical
+          mappings. On successful return from this function, the system
+          must then make any future calls with the newly assigned
+          virtual mappings. All address space mappings must be done in
+          accordance to the cacheability flags as specified in the
+          original address map. [...]<br>
+        </span></blockquote>
+      <br>
+      <br>
+      You can absolutely read that paragraph as "From here on, only
+      virtual mappings matter".<br>
+    </p>
+    <p><br>
+    </p>
+    <blockquote type="cite"
+cite="mid:CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">But whatever OSX does on x86 is irrelevant anyway: it is vertically
+integrated with the firmware, which is vaguely EFI based but does not
+aim for spec compliance. The OSX EULA does not permit running it on
+anything other than Apple hardware. And x86 Apple hardware will be
+reaching obsolescence pretty soon, at least where future development
+is concerned.</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>I halfway agree. It's fairly trivial to make x86 Mac OS X work
+      with stock edk2 [1]. All you need are a few boot services, a
+      non-standard way (or BootXXX variables) to find the real boot
+      binary and APFS driver (binary is included in every APFS FS) load
+      support. The rest is a fairly standard compliant UEFI environment.<br>
+      <br>
+      But I'm not sure how that's relevant to the argument that we need
+      a way to perform runtime service calls without relying on DMA? In
+      addition to the potential VA/PA mismatch issue, relying on DMA
+      from RTS can quickly also get broken for any confidential compute
+      environments where you need to take explicit action to make memory
+      visible to the hypervisor.<br>
+      <br>
+      All I'm asking for is an (optional) viable path that works without
+      DMA :).<br>
+    </p>
+    <p><br>
+    </p>
+    <blockquote type="cite"
+cite="mid:CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">My colleague filed a USWG proposal for a EFI_MEMORY_SHARED attribute
+that must be honored by the OS when creating runtime mappings, and map
+the region in a way that allows access by another observer (typically
+the VMM but semantically it could mean other things too)</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>For something as core as a UEFI variable service that should
+      become the default in a generic platform like QEMU, I don't think
+      we should rely on new additions to the UEFI spec :(. Users want to
+      be able to run old Operating Systems.<br>
+    </p>
+    <p><br>
+    </p>
+    <blockquote type="cite"
+cite="mid:CAMj1kXHDMCNGG94V8VcnS8busEGs-MwOy+Ne_oRCkvtw9DiX1w@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">
+
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">
+</pre>
+        <blockquote type="cite">
+          <blockquote type="cite">
+            <pre wrap="" class="moz-quote-pre">You simply have nothing that is all of 1) RAM (mapped as cacheable on
+ARM), 2) known VA 3) known PA.
+</pre>
+          </blockquote>
+          <pre wrap="" class="moz-quote-pre">Bummer.
+
+</pre>
+          <blockquote type="cite">
+            <pre wrap="" class="moz-quote-pre">So we really really need a fallback mechanism that works without DMA
+:).
+</pre>
+          </blockquote>
+          <pre wrap="" class="moz-quote-pre">On arm it should be relatively simple to move the buffer to device
+memory.  Just place one more region on the platform bus, advertise
+address + size via device tree, done.
+</pre>
+        </blockquote>
+        <pre wrap="" class="moz-quote-pre">
+
+That will bring back all issues with cached vs non-cached memory
+accesses, no? So edk2 will always access that memory as device memory
+which means it bypasses the cache, while QEMU will access it through the
+cache. So that buffer would need to actually be MMIO memory I suppose?
+
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+Indeed. Presenting memory as MMIO just to trick the guest into mapping
+it shared is not the right approach here, which is why we need
+EFI_MEMORY_SHARED on ARM. On x86, using the EfiMemoryMappedIo type
+happens to work, but it is a hack (e.g., you cannot allocate memory of
+this type)
+</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>The non-hacky alternative would be to expose a real 64KiB large
+      MMIO window into host memory that goes through full instruction
+      emulation for every access. Then we could expose it as real MMIO
+      target memory to RTS which should always work. DMA can then be an
+      (optional) optimization on top to copy to/from that buffer.<br>
+      <br>
+      <br>
+      Alex<br>
+    </p>
+    <p><br>
+    </p>
+    <p>[1]
+<a class="moz-txt-link-freetext" href="https://github.com/tianocore/edk2/compare/vUDK2018...agraf:edk2:vUDK2018-AppleSupportPkg">https://github.com/tianocore/edk2/compare/vUDK2018...agraf:edk2:vUDK2018-AppleSupportPkg</a><br>
+      <br>
+    </p>
+  </body>
+</html>
+
+--------------Xf1MkVMVt0nC8UJaQN0AJdG3--

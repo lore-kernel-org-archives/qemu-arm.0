@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp344867njc;
-        Wed, 12 Feb 2025 19:38:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWILhT2lpNYBxo9KdAODInTG/S6YCzV/HXh0N20RgTL45JEIc2wfCLjxLfXPm1u2N+gVdbdt/9M747H+w==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2aaHvwmcEUQkEzwvGIo4YPwQnJGg/T39+H62U4qez7K/Do0YcLe0H1lgYFe8JnK8iA1yP
-X-Received: by 2002:a05:622a:24b:b0:471:af70:4b9f with SMTP id d75a77b69052e-471bed28f4bmr32035111cf.22.1739417918162;
-        Wed, 12 Feb 2025 19:38:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739417918; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp345018njc;
+        Wed, 12 Feb 2025 19:39:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVe39B88FqP8SDOJ4vUEf+ITjUdVgJbHjQKfMKyuEfY/DWidpMtrPaz6XH60Ouq6WQ1tDORgVMdTkwxzA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE3rS8PdEAGtucTCj8ykCB+EwguOdzeH/VBlLEs+b74FnMIjZhzyzyCm+uunwff56jUjoCP
+X-Received: by 2002:a05:622a:130c:b0:467:4395:2ac9 with SMTP id d75a77b69052e-471afe4d95emr91074611cf.31.1739417948994;
+        Wed, 12 Feb 2025 19:39:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739417948; cv=none;
         d=google.com; s=arc-20240605;
-        b=b3lr6SjxOOXKgAWcrADqrD9ZWDfd5EAO8ZwrrHQYqkXDAnyUcjPtYTKj4a6k4ONdKy
-         gVHDPS/oNI02R5bzyM6d2wfeYoN2n+LVuOHoszf2x1PsitdWmn2OTuVKKjinnRxU0pQy
-         z7C5Fy7I107F6fsum5VPHEaIddbXayTm129N+cDfRhImLkeMXMYNopn+/4RjYbBsy8yF
-         2mQDWvbGtTmOIr+/0r7kfC9oo3cdzZU+XjXdET9fAO8ZDUzZwBBnqekYJDk/jdiSX+/9
-         niFdU4ed43w3WXh6Oum/04mX/IZydnaRNXnotzLNcqXaNQz5oI+q24g3mPq17fqdCRXL
-         K8dA==
+        b=TDKKjcrNBQfTRe45nC8MSOYS3XEnBpTUWGVbS5Ks9+gyM0l1VECHgEMRMonHdYFMJ2
+         qThhN++NpgnRfoC8vxiwiaiLQeJbPZG6LmuKM4CBQ6woELPmf0XVwCu7gD+ybU0/0kKi
+         pCpRTxi4eJYIXQsnU6KsM3iTXDxnwCPVbI+ouTqD1h5hGE0h9k8/yWc37UDtFyTk0pa/
+         VGPhL3SsFKs0GYN31QbibjVSQSMWcD72v5OwDyYKYGiiz6mdfPz8Mpxzd2ZlRdGSwt0o
+         Fzj2T51tYcTmgNdS4Sk5vMtBOIlYQXEcugSG49Nx3TwixrTp6WT4WgZB/6d4fL1fHJjd
+         q2ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=dFW4p3EBPa8w9t12S9hlMYQXRsF6hJd1Kog21vtLNng=;
+        bh=Fd6Q5uasHS/JxcQq6Q1T3yv3zbyBpkwybkaWZJHyLa0=;
         fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
-        b=FNS2PYjDTGfxj7hqJegdkK32sifdRnLhmTV7UjQ38dVSub6r44nzwJ0ELVN6wT/7O6
-         3jf4ahwVeaw/PAcUobaJypEsdQWAup2y5jePN2gPIMDrauAqkuUu+gDraJkuWSwmTdGT
-         I77ItMlhtlZWS2tEm2G/aEHrqqOlF5Cq7s1C4+P1vi9/+DyR/jDaIvXnhydwYveKF4W8
-         D3lT/KJPvoiAqahvMhvAe0dMjitfv1jVYjRW6koYH9eXVwlO74vTSessOTyyzzgjOZ4w
-         cbrbxbf2ENWDrva50rDWhMnkQvQX0yEuzUtkaPeepNIpv2fGPnRul7Gp+4jVRyG7RuuL
-         2KZg==;
+        b=Tt6hwt++6+t+csZ+NATP2FdQuRw/r03fyz/yeyw5S9jxvJmWrN1VdNblyS4PZhqvpL
+         bpVNTGTQvT36JHoOVFF8cbM5XQngAB8cS7IOzfVQOlQSyB742ViDg3Jt1y3aefg9R8+P
+         knu1bTMEnKBE8bm7M3IFfwI0/Ixw6tZd7MnlfgulY6MqP5aQQ/I9vfzddoC5dklejWHy
+         4Jj0FPgMYifMc3kWszgMPIX8uxsGkPT1LEAKzREA7tOkfJji//URBFI5BN90q4GunEWD
+         u0EXQOySOvAeQ7oZxPtHIs3nw0v1KxDZEEOVmpV6xCcdO/oh0F8jHMT1pmYYbNnxRx7t
+         kVkA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c29ef98csi5935871cf.114.2025.02.12.19.38.38
+        by mx.google.com with ESMTPS id d75a77b69052e-471c2a24137si5795281cf.162.2025.02.12.19.39.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2025 19:38:38 -0800 (PST)
+        Wed, 12 Feb 2025 19:39:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,32 +42,32 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tiQ1H-0007DI-T2; Wed, 12 Feb 2025 22:36:09 -0500
+	id 1tiQ2t-0002dD-66; Wed, 12 Feb 2025 22:37:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tiQ14-0007A7-1O; Wed, 12 Feb 2025 22:35:54 -0500
+ id 1tiQ2p-0002P8-Td; Wed, 12 Feb 2025 22:37:44 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tiQ12-0000gz-MF; Wed, 12 Feb 2025 22:35:53 -0500
+ id 1tiQ2o-0000pw-3s; Wed, 12 Feb 2025 22:37:43 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 13 Feb
- 2025 11:35:33 +0800
+ 2025 11:35:41 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 13 Feb 2025 11:35:33 +0800
+ Transport; Thu, 13 Feb 2025 11:35:41 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 05/28] hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ
- number
-Date: Thu, 13 Feb 2025 11:35:08 +0800
-Message-ID: <20250213033531.3367697-6-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 24/28] tests/functional/aspeed: Introduce
+ start_ast2700_test API and update hwmon path
+Date: Thu, 13 Feb 2025 11:35:27 +0800
+Message-ID: <20250213033531.3367697-25-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
 References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
@@ -81,8 +81,7 @@ X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,92 +98,101 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hwyQX2UkS2FI
+X-TUID: z/dsTo8QRn91
 
-To improve readability, sort the IRQ table by IRQ number.
+Added a new method `start_ast2700_test` to the `AST2x00MachineSDK` class and
+this method centralizes the logic for starting the AST2700 test, making it
+reusable for different test cases.
+
+Modified the hwmon path to use a wildcard to handle different SDK versions:
+"cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input".
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 50 ++++++++++++++++++++---------------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
+ tests/functional/test_aarch64_aspeed.py | 35 +++++++++++++------------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 6e3375f5d3..4862b215c1 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -73,27 +73,13 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
+index f3d7c8331a..aa817afa4e 100755
+--- a/tests/functional/test_aarch64_aspeed.py
++++ b/tests/functional/test_aarch64_aspeed.py
+@@ -31,34 +31,29 @@ def extra_aspeed_archive(self, version, file, checksum):
+         url = 'https://github.com/AspeedTech-BMC/openbmc/releases/download'
+         self.archive_extract(Asset(f'{url}/{version}/{file}', f'{checksum}'))
  
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
- static const int aspeed_soc_ast2700a0_irqmap[] = {
--    [ASPEED_DEV_UART0]     = 132,
--    [ASPEED_DEV_UART1]     = 132,
--    [ASPEED_DEV_UART2]     = 132,
--    [ASPEED_DEV_UART3]     = 132,
--    [ASPEED_DEV_UART4]     = 8,
--    [ASPEED_DEV_UART5]     = 132,
--    [ASPEED_DEV_UART6]     = 132,
--    [ASPEED_DEV_UART7]     = 132,
--    [ASPEED_DEV_UART8]     = 132,
--    [ASPEED_DEV_UART9]     = 132,
--    [ASPEED_DEV_UART10]    = 132,
--    [ASPEED_DEV_UART11]    = 132,
--    [ASPEED_DEV_UART12]    = 132,
--    [ASPEED_DEV_FMC]       = 131,
-     [ASPEED_DEV_SDMC]      = 0,
--    [ASPEED_DEV_SCU]       = 12,
--    [ASPEED_DEV_ADC]       = 130,
-+    [ASPEED_DEV_HACE]      = 4,
-     [ASPEED_DEV_XDMA]      = 5,
--    [ASPEED_DEV_EMMC]      = 15,
--    [ASPEED_DEV_GPIO]      = 130,
-+    [ASPEED_DEV_UART4]     = 8,
-+    [ASPEED_DEV_SCU]       = 12,
-     [ASPEED_DEV_RTC]       = 13,
-+    [ASPEED_DEV_EMMC]      = 15,
-     [ASPEED_DEV_TIMER1]    = 16,
-     [ASPEED_DEV_TIMER2]    = 17,
-     [ASPEED_DEV_TIMER3]    = 18,
-@@ -102,19 +88,33 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
-     [ASPEED_DEV_TIMER6]    = 21,
-     [ASPEED_DEV_TIMER7]    = 22,
-     [ASPEED_DEV_TIMER8]    = 23,
--    [ASPEED_DEV_WDT]       = 131,
--    [ASPEED_DEV_PWM]       = 131,
-+    [ASPEED_DEV_DP]        = 28,
-     [ASPEED_DEV_LPC]       = 128,
-     [ASPEED_DEV_IBT]       = 128,
-+    [ASPEED_DEV_KCS]       = 128,
-+    [ASPEED_DEV_ADC]       = 130,
-+    [ASPEED_DEV_GPIO]      = 130,
-     [ASPEED_DEV_I2C]       = 130,
--    [ASPEED_DEV_PECI]      = 133,
-+    [ASPEED_DEV_FMC]       = 131,
-+    [ASPEED_DEV_WDT]       = 131,
-+    [ASPEED_DEV_PWM]       = 131,
-+    [ASPEED_DEV_I3C]       = 131,
-+    [ASPEED_DEV_UART0]     = 132,
-+    [ASPEED_DEV_UART1]     = 132,
-+    [ASPEED_DEV_UART2]     = 132,
-+    [ASPEED_DEV_UART3]     = 132,
-+    [ASPEED_DEV_UART5]     = 132,
-+    [ASPEED_DEV_UART6]     = 132,
-+    [ASPEED_DEV_UART7]     = 132,
-+    [ASPEED_DEV_UART8]     = 132,
-+    [ASPEED_DEV_UART9]     = 132,
-+    [ASPEED_DEV_UART10]    = 132,
-+    [ASPEED_DEV_UART11]    = 132,
-+    [ASPEED_DEV_UART12]    = 132,
-     [ASPEED_DEV_ETH1]      = 132,
-     [ASPEED_DEV_ETH2]      = 132,
-     [ASPEED_DEV_ETH3]      = 132,
--    [ASPEED_DEV_HACE]      = 4,
--    [ASPEED_DEV_KCS]       = 128,
--    [ASPEED_DEV_DP]        = 28,
--    [ASPEED_DEV_I3C]       = 131,
-+    [ASPEED_DEV_PECI]      = 133,
-     [ASPEED_DEV_SDHCI]     = 133,
- };
+-    def test_aarch64_ast2700_evb_sdk_v09_03(self):
+-        self.set_machine('ast2700-evb')
+-
+-        self.extra_aspeed_archive('v09.03', 'ast2700-default-obmc.tar.gz',
+-            '91225f50d255e2905ba8d8e0c80b71b9d157c3609770c7a740cd786370d85a77')
+-
++    def start_ast2700_test(self, name):
+         num_cpu = 4
+-        uboot_size = os.path.getsize(self.scratch_file('ast2700-default',
++        uboot_size = os.path.getsize(self.scratch_file(name,
+                                                        'u-boot-nodtb.bin'))
+         uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
  
+         load_images_list = [
+             {
+                 'addr': '0x400000000',
+-                'file': self.scratch_file('ast2700-default',
++                'file': self.scratch_file(name,
+                                           'u-boot-nodtb.bin')
+             },
+             {
+                 'addr': str(uboot_dtb_load_addr),
+-                'file': self.scratch_file('ast2700-default', 'u-boot.dtb')
++                'file': self.scratch_file(name, 'u-boot.dtb')
+             },
+             {
+                 'addr': '0x430000000',
+-                'file': self.scratch_file('ast2700-default', 'bl31.bin')
++                'file': self.scratch_file(name, 'bl31.bin')
+             },
+             {
+                 'addr': '0x430080000',
+-                'file': self.scratch_file('ast2700-default', 'optee',
++                'file': self.scratch_file(name, 'optee',
+                                           'tee-raw.bin')
+             }
+         ]
+@@ -77,23 +72,29 @@ def test_aarch64_ast2700_evb_sdk_v09_03(self):
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
+         self.do_test_aarch64_aspeed_sdk_start(
+-            self.scratch_file('ast2700-default', 'image-bmc'))
++            self.scratch_file(name, 'image-bmc'))
+ 
+-        wait_for_console_pattern(self, 'ast2700-default login:')
++        wait_for_console_pattern(self, f'{name} login:')
+ 
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+-        exec_command_and_wait_for_pattern(self,
+-            '0penBmc', 'root@ast2700-default:~#')
++        exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+ 
+         exec_command_and_wait_for_pattern(self,
+             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
+             'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
+         exec_command_and_wait_for_pattern(self,
+-            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
++            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
+         self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+                     property='temperature', value=18000)
+         exec_command_and_wait_for_pattern(self,
+-            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
++            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
++
++    def test_aarch64_ast2700_evb_sdk_v09_03(self):
++        self.set_machine('ast2700-evb')
++
++        self.extra_aspeed_archive('v09.03', 'ast2700-default-obmc.tar.gz',
++            '91225f50d255e2905ba8d8e0c80b71b9d157c3609770c7a740cd786370d85a77')
++        self.start_ast2700_test('ast2700-default')
+ 
+ 
+ if __name__ == '__main__':
 -- 
 2.34.1
 

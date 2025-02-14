@@ -1,100 +1,99 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp1220579njc;
-        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVnMnl+5BQf1dJ9Isi/XQ6IMcw5zmah2oxNnJc8nWSVtBljlLPrv7VTLC2kZAYyNrML/QVy4PESyYkKAw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHp4laXgTg5qHmF1lM29qU85Q9FQnT20pymOj25lwxCGxEVv703XZHlgDo01fjkH22aOZV8
-X-Received: by 2002:a05:6214:cab:b0:6e6:666b:6c28 with SMTP id 6a1803df08f44-6e6666b6d72mr26183506d6.19.1739531811282;
-        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739531811; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp1256926njc;
+        Fri, 14 Feb 2025 04:23:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU+Vqmke19lMIftuTf5hIBYkyiCPYDbwu+RK76+SvGdvzYmNS0P8blXjAIJvSVpAnK4+U2AI96epAAIQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGZFU0rho8qC8hdK42AP0Yjgt7NYtPk5wcTe9m5uSp3ldVRTFWQUHGcsx3cs1foZ1AJalzJ
+X-Received: by 2002:a05:6214:c86:b0:6e4:4288:61a3 with SMTP id 6a1803df08f44-6e46ed83425mr188476966d6.18.1739535795824;
+        Fri, 14 Feb 2025 04:23:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739535795; cv=none;
         d=google.com; s=arc-20240605;
-        b=EE2UapxArUxoVvYw+fltGZ3K7IOUqdMlTURU2jDynF3dnXZjPM2nRJXgUMJODb2aYm
-         2rI4uU4yhS/ikr15T6X4+2oX8vEWQ2JY8COtMsKPXorAgvB5ujygTtOmCzMtVAh+QBcO
-         t8eb/9BLAscrqAlWN1ASvBJXcyAMpo3se7ECCm9SH3Q7LPJqUUUo8EZ7nRnMWvizyPNJ
-         pjfZ4VyEXbPbHkTjS+bWlLE4zvXSiEO3MItltIntvvyDtZWWcGlsY8YDvyw2klDTXnOw
-         RM75cv/oPzwcChA6p2vwNQxwkp5qFGTPImDQ6utHiQBG20umKgPVzu63MVRN2Wq3iYzO
-         6aAA==
+        b=Tu5hO5530y4ANX4sNkf3KIzNSuWy9wggAJsnMM3AH4fMt7m1xyj+t7AtBMH2z1L58J
+         C0lBqdH2JCfd0ivPCMFqfyNa5kO1e6sAdWDF+IG3AbZB0bgbbgYQaG3DGzCE8l/uLs7d
+         A/iuiIQ81Booym0Cec5xdYx06tp3SWTmzb42l1FZe//oRCO99ayowtKAijQ1z2SQngq3
+         GR3VaHUC1+KIy8NCn3H84TD6FuttQDWiXcSJqBTNzVMGQSkcGc0OKQr7lzYZbgniDWWK
+         vVHekgqmG/1JUFQ9Ecij7OVaAAnkHZzUK1JS8f2W9HHv0cKyrUIMtjeww1qMWC+zzI3E
+         +wUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Qq/85eNfuF/SFBYBdN6Exlh+AgbqJ4Jg34k6AMEcN2o=;
-        fh=rrua58aPyIBHnRLYa6DhwCQw1Suzf5rAWcQoGwyatcE=;
-        b=M42UGfnVklySIfgs6jKTs74BQXxxK+Qy694apS/acmm54CEJEWeadHiLEuakNrwsXR
-         /0BuQJrXsaySKyLvmTwFD8hSzvkAeRrwodW8gmGlp3qYDP0t/gg1eG/23HhB2FME44sp
-         DIupECjZZTLld5dNJiSQMdy3yiNZib5niQBbIbkPTQRzv7OzTBgx1FQ7Hh/Us9PjkfMO
-         hnRrn1o7lSCoitmT9RCkT1PvSeHMJbvG5jO1cdhJayZBfwk1HF4rRx4dwqFOHOuocki0
-         QXgZdFJv4Rxq1VIjSOB1rF9sFJD/DzVC4tdEFCwJPF79y13Kj3y+DNNksvoIUorxX6D1
-         c0yQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=nLKsqGE/1IcijdeTlYJxozj2UMrtOjxKXaQ53M4yRvY=;
+        fh=6rrE52cgrYC9rXTqUznJzNUw28CrRy1ExPnK9AwMPYQ=;
+        b=ifwaT26BiIa2/CG3N36pfXAIOFnEGSrcMoTBDD3ljoNnaDQU4DB2NIFDhZnQQQ/UQ6
+         m944OnE6IZUoFMY6JQ6WAmEFD3eSj9jgAwnvW14JMyuWBEwMUwZyYfKTJDL2NOAP9Xt5
+         z7r7+zwGisYYDbWSdLvcn30Sfd68zA2qWmTbxo2V0rbaJMsRHNWPUYo9ximeekACdBDo
+         cxQIPXNWuhgKow8RQXj41TcU49cr3KJkiGs0fhPn9TsyrvynAYg2vaiHKgxOB4qfBwf0
+         aTcm55MLCSiIjzpG/jzUa0ImL6rV3/PaCJsMKBWGKHJG+8Mb7kP5caMF7zc56x6TTh8/
+         xt8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IaORxRHX;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=NeA4xyBE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c1838si32366596d6.343.2025.02.14.03.16.51
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d7431b1si34160156d6.165.2025.02.14.04.23.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
+        Fri, 14 Feb 2025 04:23:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IaORxRHX;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=NeA4xyBE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1titgS-0000Vb-W6; Fri, 14 Feb 2025 06:16:37 -0500
+	id 1tiuiW-00010l-Rk; Fri, 14 Feb 2025 07:22:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1titgR-0000V9-1w
- for qemu-arm@nongnu.org; Fri, 14 Feb 2025 06:16:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <prvs=133e246af=graf@amazon.de>)
+ id 1tiuiU-00010N-Kd; Fri, 14 Feb 2025 07:22:46 -0500
+Received: from smtp-fw-6001.amazon.com ([52.95.48.154])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1titgN-0000JT-Kl
- for qemu-arm@nongnu.org; Fri, 14 Feb 2025 06:16:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739531789;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Qq/85eNfuF/SFBYBdN6Exlh+AgbqJ4Jg34k6AMEcN2o=;
- b=IaORxRHXVVZrEt7uLqmfs1iP2PjVlnyjPb/4h0BgOqIyCAQA71J0VK/ieNYT3qeUboOogG
- FeGgCqbp5ByAWJP4YrYQ2Gmz+JbLY5E3oeNFYpAIfY3YHKXIFFirsFKovImtQvMdFrYDOG
- 30mbNDaCBHugEXeFGK7MqwSdh+K5w8A=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-vxRlNaFsMYGfGqrO0czlTQ-1; Fri,
- 14 Feb 2025 06:16:25 -0500
-X-MC-Unique: vxRlNaFsMYGfGqrO0czlTQ-1
-X-Mimecast-MFC-AGG-ID: vxRlNaFsMYGfGqrO0czlTQ_1739531784
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A17A71800373; Fri, 14 Feb 2025 11:16:23 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.45.224.69])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B01E11800570; Fri, 14 Feb 2025 11:16:22 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 4A5A21800097; Fri, 14 Feb 2025 12:16:20 +0100 (CET)
-Date: Fri, 14 Feb 2025 12:16:20 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>, 
- Markus Armbruster <armbru@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Ard Biesheuvel <ardb@kernel.org>
+ (Exim 4.90_1) (envelope-from <prvs=133e246af=graf@amazon.de>)
+ id 1tiuiS-0003HH-P2; Fri, 14 Feb 2025 07:22:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1739535765; x=1771071765;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=nLKsqGE/1IcijdeTlYJxozj2UMrtOjxKXaQ53M4yRvY=;
+ b=NeA4xyBEa9uK8uLwCz+X7/No4gq04ae4fBtkZpW0QlAJ9G8CpeH+FhhU
+ SMOIjeWjUHoHnUhjcVWdUKBrSq4r/aOPX6kfwvRJKj99YPiv+ZJ2tpA5O
+ gCYwrO+mzHswyb8+C6GwZ7tDBMSL1QY6nVhp6kisA1AVkTMIJhcwIj1+w o=;
+X-IronPort-AV: E=Sophos;i="6.13,285,1732579200"; d="scan'208";a="462547518"
+Received: from iad12-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.2])
+ by smtp-border-fw-6001.iad6.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Feb 2025 12:22:40 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [10.0.7.35:43970]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.28.176:2525]
+ with esmtp (Farcaster)
+ id 189c9969-2a3d-49db-a012-bff917a0d461; Fri, 14 Feb 2025 12:22:38 +0000 (UTC)
+X-Farcaster-Flow-ID: 189c9969-2a3d-49db-a012-bff917a0d461
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39;
+ Fri, 14 Feb 2025 12:22:38 +0000
+Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.39; Fri, 14 Feb 2025
+ 12:22:35 +0000
+Message-ID: <eed0e242-db81-444a-88e9-ec73a33dc5c9@amazon.com>
+Date: Fri, 14 Feb 2025 13:22:33 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
-Message-ID: <imob6duupjhtdqrmxdvnopqeqgdtw7vjgjzixej7vy6yragzck@o7kcfbdbqedv>
+To: Gerd Hoffmann <kraxel@redhat.com>
+CC: <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, <qemu-arm@nongnu.org>, Michael Roth
+ <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Ard Biesheuvel
+ <ardb@kernel.org>
 References: <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
  <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
  <4bwjwcs2k4hbrj6mokc57a5dy57jjssfxnvd4qm5257dgnid3x@yqdx7e47o2mf>
@@ -105,21 +104,27 @@ References: <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
  <342a1bd9-52e9-4a6d-8a2a-63d2b478d896@amazon.com>
  <5whdvrcqkpted5wl53yo5qbq2g4bf4j57vrzvbsebho56xfz4w@mjpktoiarmto>
  <a39a1cfb-7d98-485e-98aa-9c03300f4be2@amazon.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a39a1cfb-7d98-485e-98aa-9c03300f4be2@amazon.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <imob6duupjhtdqrmxdvnopqeqgdtw7vjgjzixej7vy6yragzck@o7kcfbdbqedv>
+Content-Language: en-US
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <imob6duupjhtdqrmxdvnopqeqgdtw7vjgjzixej7vy6yragzck@o7kcfbdbqedv>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.253.83.51]
+X-ClientProxiedBy: EX19D032UWA001.ant.amazon.com (10.13.139.62) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Received-SPF: pass client-ip=52.95.48.154;
+ envelope-from=prvs=133e246af=graf@amazon.de; helo=smtp-fw-6001.amazon.com
+X-Spam_score_int: -59
+X-Spam_score: -6.0
+X-Spam_bar: ------
+X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.732,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,270 +139,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: INB979TDEABv
+X-TUID: TSWdMcjBn9nU
 
-On Fri, Feb 14, 2025 at 10:51:17AM +0100, Alexander Graf wrote:
 
-> I also like to have dedicated register spaces per component. So even if you
-> choose to make it a hard split, I think we're better off with 4k at
-> 0xfef10000 for control and 64k at 0xfef20000 for the buffer for example.
+On 14.02.25 12:16, Gerd Hoffmann wrote:
+> On Fri, Feb 14, 2025 at 10:51:17AM +0100, Alexander Graf wrote:
+>
+>> I also like to have dedicated register spaces per component. So even if you
+>> choose to make it a hard split, I think we're better off with 4k at
+>> 0xfef10000 for control and 64k at 0xfef20000 for the buffer for example.
+> Well, if we go for PIO transfer mode instead of device memory we don't
+> need map the buffer any more.
+>
+> The control registers for the x86 variant are in io address space right
+> now (0x520, next to fw_cfg).  We could place them in a mmio page @
+> 0xfef10000 instead.  Any preference, and if so, why?
 
-Well, if we go for PIO transfer mode instead of device memory we don't
-need map the buffer any more.
 
-The control registers for the x86 variant are in io address space right
-now (0x520, next to fw_cfg).  We could place them in a mmio page @
-0xfef10000 instead.  Any preference, and if so, why?
+I did the same mistake in my version and use PIO for x86 but MMIO for 
+ARM. In hindsight, I think the same mechanism for both would have 
+simplified things a lot: You get better testing coverage of the exact 
+same code path. If you split between PIO and MMIO, you always have 
+issues that only pop up in one of the implementations. It complexifies 
+your test matrix for little gain.
 
-First sketch below, on top of this series.  No edk2 counterpart yet, so
-untested beyond compiling the code.
+Since you need an MMIO avenue anyway, you may as well always use that. 
+This is not a high performance interface where the exit latency 
+difference between PIO and MMIO really matters.
 
-take care,
-  Gerd
 
---------------------- cut here ------------------------
-diff --git a/include/hw/uefi/var-service-api.h b/include/hw/uefi/var-service-api.h
-index 6765925d9ed0..99911e904652 100644
---- a/include/hw/uefi/var-service-api.h
-+++ b/include/hw/uefi/var-service-api.h
-@@ -21,16 +21,21 @@
- #define UEFI_VARS_REG_MAGIC                  0x00  /* 16 bit */
- #define UEFI_VARS_REG_CMD_STS                0x02  /* 16 bit */
- #define UEFI_VARS_REG_BUFFER_SIZE            0x04  /* 32 bit */
--#define UEFI_VARS_REG_BUFFER_ADDR_LO         0x08  /* 32 bit */
--#define UEFI_VARS_REG_BUFFER_ADDR_HI         0x0c  /* 32 bit */
--#define UEFI_VARS_REGS_SIZE                  0x10
-+#define UEFI_VARS_REG_DMA_BUFFER_ADDR_LO     0x08  /* 32 bit */
-+#define UEFI_VARS_REG_DMA_BUFFER_ADDR_HI     0x0c  /* 32 bit */
-+#define UEFI_VARS_REG_PIO_BUFFER_TRANSFER    0x10  /* 8-64 bit */
-+#define UEFI_VARS_REG_PIO_BUFFER_CRC32C      0x18  /* 32 bit (read-only) */
-+#define UEFI_VARS_REG_RESERVED               0x1c  /* 32 bit */
-+#define UEFI_VARS_REGS_SIZE                  0x20
- 
- /* magic value */
- #define UEFI_VARS_MAGIC_VALUE               0xef1
- 
- /* command values */
- #define UEFI_VARS_CMD_RESET                  0x01
--#define UEFI_VARS_CMD_MM                     0x02
-+#define UEFI_VARS_CMD_DMA_MM                 0x02
-+#define UEFI_VARS_CMD_PIO_MM                 0x03
-+#define UEFI_VARS_CMD_PIO_ZERO_OFFSET        0x04
- 
- /* status values */
- #define UEFI_VARS_STS_SUCCESS                0x00
-diff --git a/include/hw/uefi/var-service.h b/include/hw/uefi/var-service.h
-index e078d2b0e68f..7dbede659a8f 100644
---- a/include/hw/uefi/var-service.h
-+++ b/include/hw/uefi/var-service.h
-@@ -56,6 +56,10 @@ struct uefi_vars_state {
-     QTAILQ_HEAD(, uefi_variable)      variables;
-     QTAILQ_HEAD(, uefi_var_policy)    var_policies;
- 
-+    /* pio transfer buffer */
-+    uint32_t                          pio_xfer_offset;
-+    uint8_t                           *pio_xfer_buffer;
-+
-     /* boot phases */
-     bool                              end_of_dxe;
-     bool                              ready_to_boot;
-diff --git a/hw/uefi/var-service-core.c b/hw/uefi/var-service-core.c
-index 78a668e68fa2..a96b66934769 100644
---- a/hw/uefi/var-service-core.c
-+++ b/hw/uefi/var-service-core.c
-@@ -4,6 +4,7 @@
-  * uefi vars device
-  */
- #include "qemu/osdep.h"
-+#include "qemu/crc32c.h"
- #include "system/dma.h"
- #include "migration/vmstate.h"
- 
-@@ -41,6 +42,7 @@ const VMStateDescription vmstate_uefi_vars = {
-         VMSTATE_UINT32(buf_size, uefi_vars_state),
-         VMSTATE_UINT32(buf_addr_lo, uefi_vars_state),
-         VMSTATE_UINT32(buf_addr_hi, uefi_vars_state),
-+        /* TODO: pio xfer offset + buffer */
-         VMSTATE_BOOL(end_of_dxe, uefi_vars_state),
-         VMSTATE_BOOL(ready_to_boot, uefi_vars_state),
-         VMSTATE_BOOL(exit_boot_service, uefi_vars_state),
-@@ -54,7 +56,7 @@ const VMStateDescription vmstate_uefi_vars = {
-     },
- };
- 
--static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
-+static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv, bool dma_mode)
- {
-     hwaddr    dma;
-     mm_header *mhdr;
-@@ -69,9 +71,13 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
-     }
- 
-     /* read header */
--    dma_memory_read(&address_space_memory, dma,
--                    uv->buffer, sizeof(*mhdr),
--                    MEMTXATTRS_UNSPECIFIED);
-+    if (dma_mode) {
-+        dma_memory_read(&address_space_memory, dma,
-+                        uv->buffer, sizeof(*mhdr),
-+                        MEMTXATTRS_UNSPECIFIED);
-+    } else {
-+        memcpy(uv->buffer, uv->pio_xfer_buffer, sizeof(*mhdr));
-+    }
- 
-     if (uadd64_overflow(sizeof(*mhdr), mhdr->length, &size)) {
-         return UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE;
-@@ -81,9 +87,15 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
-     }
- 
-     /* read buffer (excl header) */
--    dma_memory_read(&address_space_memory, dma + sizeof(*mhdr),
--                    uv->buffer + sizeof(*mhdr), mhdr->length,
--                    MEMTXATTRS_UNSPECIFIED);
-+    if (dma_mode) {
-+        dma_memory_read(&address_space_memory, dma + sizeof(*mhdr),
-+                        uv->buffer + sizeof(*mhdr), mhdr->length,
-+                        MEMTXATTRS_UNSPECIFIED);
-+    } else {
-+        memcpy(uv->buffer + sizeof(*mhdr),
-+               uv->pio_xfer_buffer + sizeof(*mhdr),
-+               mhdr->length);
-+    }
-     memset(uv->buffer + size, 0, uv->buf_size - size);
- 
-     /* dispatch */
-@@ -113,9 +125,15 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
-     }
- 
-     /* write buffer */
--    dma_memory_write(&address_space_memory, dma,
--                     uv->buffer, sizeof(*mhdr) + mhdr->length,
--                     MEMTXATTRS_UNSPECIFIED);
-+    if (dma_mode) {
-+        dma_memory_write(&address_space_memory, dma,
-+                         uv->buffer, sizeof(*mhdr) + mhdr->length,
-+                         MEMTXATTRS_UNSPECIFIED);
-+    } else {
-+        memcpy(uv->pio_xfer_buffer + sizeof(*mhdr),
-+               uv->buffer + sizeof(*mhdr),
-+               sizeof(*mhdr) + mhdr->length);
-+    }
- 
-     return retval;
- }
-@@ -150,8 +168,13 @@ static uint32_t uefi_vars_cmd(uefi_vars_state *uv, uint32_t cmd)
-     case UEFI_VARS_CMD_RESET:
-         uefi_vars_soft_reset(uv);
-         return UEFI_VARS_STS_SUCCESS;
--    case UEFI_VARS_CMD_MM:
--        return uefi_vars_cmd_mm(uv);
-+    case UEFI_VARS_CMD_DMA_MM:
-+        return uefi_vars_cmd_mm(uv, true);
-+    case UEFI_VARS_CMD_PIO_MM:
-+        return uefi_vars_cmd_mm(uv, false);
-+    case UEFI_VARS_CMD_PIO_ZERO_OFFSET:
-+        uv->pio_xfer_offset = 0;
-+        return UEFI_VARS_STS_SUCCESS;
-     default:
-         return UEFI_VARS_STS_ERR_NOT_SUPPORTED;
-     }
-@@ -161,6 +184,7 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
- {
-     uefi_vars_state *uv = opaque;
-     uint64_t retval = -1;
-+    void *xfer_ptr;
- 
-     trace_uefi_reg_read(addr, size);
- 
-@@ -174,12 +198,37 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
-     case UEFI_VARS_REG_BUFFER_SIZE:
-         retval = uv->buf_size;
-         break;
--    case UEFI_VARS_REG_BUFFER_ADDR_LO:
-+    case UEFI_VARS_REG_DMA_BUFFER_ADDR_LO:
-         retval = uv->buf_addr_lo;
-         break;
--    case UEFI_VARS_REG_BUFFER_ADDR_HI:
-+    case UEFI_VARS_REG_DMA_BUFFER_ADDR_HI:
-         retval = uv->buf_addr_hi;
-         break;
-+    case UEFI_VARS_REG_PIO_BUFFER_TRANSFER:
-+        if (uv->pio_xfer_offset + size > uv->buf_size) {
-+            retval = 0;
-+            break;
-+        }
-+        xfer_ptr = uv->pio_xfer_buffer + uv->pio_xfer_offset;
-+        switch (size) {
-+        case 1:
-+            retval = *(uint8_t *)xfer_ptr;
-+            break;
-+        case 2:
-+            retval = *(uint16_t *)xfer_ptr;
-+            break;
-+        case 4:
-+            retval = *(uint32_t *)xfer_ptr;
-+            break;
-+        case 8:
-+            retval = *(uint64_t *)xfer_ptr;
-+            break;
-+        }
-+        uv->pio_xfer_offset += size;
-+        break;
-+    case UEFI_VARS_REG_PIO_BUFFER_CRC32C:
-+        retval = crc32c(0xffffffff, uv->pio_xfer_buffer, uv->pio_xfer_offset);
-+        break;
-     }
-     return retval;
- }
-@@ -187,6 +236,7 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
- static void uefi_vars_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
- {
-     uefi_vars_state *uv = opaque;
-+    void *xfer_ptr;
- 
-     trace_uefi_reg_write(addr, val, size);
- 
-@@ -200,14 +250,40 @@ static void uefi_vars_write(void *opaque, hwaddr addr, uint64_t val, unsigned si
-         }
-         uv->buf_size = val;
-         g_free(uv->buffer);
-+        g_free(uv->pio_xfer_buffer);
-         uv->buffer = g_malloc(uv->buf_size);
-+        uv->pio_xfer_buffer = g_malloc(uv->buf_size);
-         break;
--    case UEFI_VARS_REG_BUFFER_ADDR_LO:
-+    case UEFI_VARS_REG_DMA_BUFFER_ADDR_LO:
-         uv->buf_addr_lo = val;
-         break;
--    case UEFI_VARS_REG_BUFFER_ADDR_HI:
-+    case UEFI_VARS_REG_DMA_BUFFER_ADDR_HI:
-         uv->buf_addr_hi = val;
-         break;
-+    case UEFI_VARS_REG_PIO_BUFFER_TRANSFER:
-+        if (uv->pio_xfer_offset + size > uv->buf_size) {
-+            break;
-+        }
-+        xfer_ptr = uv->pio_xfer_buffer + uv->pio_xfer_offset;
-+        switch (size) {
-+        case 1:
-+            *(uint8_t *)xfer_ptr = val;
-+            break;
-+        case 2:
-+            *(uint16_t *)xfer_ptr = val;
-+            break;
-+        case 4:
-+            *(uint32_t *)xfer_ptr = val;
-+            break;
-+        case 8:
-+            *(uint64_t *)xfer_ptr = val;
-+            break;
-+        }
-+        uv->pio_xfer_offset += size;
-+        break;
-+    case UEFI_VARS_REG_PIO_BUFFER_CRC32C:
-+    default:
-+        break;
-     }
- }
- 
+Alex
 

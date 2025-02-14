@@ -1,92 +1,125 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp1189885njc;
-        Fri, 14 Feb 2025 02:12:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWNq8rDv64IGQlj7DjxNIkCXnCr7t3TTgJAurzQ5iHdW2Bh94WEkD7Z1m4KM65q8128tPBqfDdOgs1IlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXPbKggGZBbBN+h9EsfKW6dxfVZBW0DvaJrYzSYLukYlbNtndAUzKvvqpcF/IjZ84J8KgG
-X-Received: by 2002:ad4:5ce4:0:b0:6e2:4ad7:24c8 with SMTP id 6a1803df08f44-6e65bf0d0c2mr110424866d6.2.1739527974180;
-        Fri, 14 Feb 2025 02:12:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739527974; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp1220579njc;
+        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnMnl+5BQf1dJ9Isi/XQ6IMcw5zmah2oxNnJc8nWSVtBljlLPrv7VTLC2kZAYyNrML/QVy4PESyYkKAw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHp4laXgTg5qHmF1lM29qU85Q9FQnT20pymOj25lwxCGxEVv703XZHlgDo01fjkH22aOZV8
+X-Received: by 2002:a05:6214:cab:b0:6e6:666b:6c28 with SMTP id 6a1803df08f44-6e6666b6d72mr26183506d6.19.1739531811282;
+        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739531811; cv=none;
         d=google.com; s=arc-20240605;
-        b=Gvc6QYkiAz5oWSdhqbBjaeugd6UwhvlDG+A6gPfmBLodc95OXd3u6MxLmYe4QwZ0CP
-         UMW64zc3AYrkEAIPDGT7HfanSpAlriH2mj1cT/ffLk1kFKH4DVJflt3rKMCNjFIfuWBX
-         I2jWH0N2hthXkgUkzdiyxvMrpAhLvB2iuSLuhxf9+0qMlCZnMc5OMqOjSQDgM9KgHbrh
-         Ac/tgDVcN0OEcV0LD3sUU+x0ijnj+IMfdgIWpyaVV5J4ttVaNYId0AOimyxNlcuwuHZl
-         AiHR3a/+jYuMHLDXI9vExKyTNB16c+At62T6KdFaVyx9sVlqDQpOw3XWkAhCwSSA31ey
-         Qbmw==
+        b=EE2UapxArUxoVvYw+fltGZ3K7IOUqdMlTURU2jDynF3dnXZjPM2nRJXgUMJODb2aYm
+         2rI4uU4yhS/ikr15T6X4+2oX8vEWQ2JY8COtMsKPXorAgvB5ujygTtOmCzMtVAh+QBcO
+         t8eb/9BLAscrqAlWN1ASvBJXcyAMpo3se7ECCm9SH3Q7LPJqUUUo8EZ7nRnMWvizyPNJ
+         pjfZ4VyEXbPbHkTjS+bWlLE4zvXSiEO3MItltIntvvyDtZWWcGlsY8YDvyw2klDTXnOw
+         RM75cv/oPzwcChA6p2vwNQxwkp5qFGTPImDQ6utHiQBG20umKgPVzu63MVRN2Wq3iYzO
+         6aAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=epEaMBD5iwhlNT+EnVdhfs98NwQXVcInb988t4gIH9E=;
-        fh=C+g26U4H6m0pfuaQsjUHD9mEjf8oyDbWFSuiQn1P4xs=;
-        b=T0w4v68t36braWxF0agEjRrb/HYXDNxq5NUqAzMbsny+7YBiLH/l0DcVz1G8CL4ljp
-         Jh2uo2SwVXFM5uSqHduc96gPuPSj7HLBKjEFMPreBzGWsj1xE8tmYAUkfRoYnuHNbXOe
-         yUp+EOB7ZWMP/lasLybzk8UEivz2CMwo/RXrir3t0/6n1AJoDA1B8KnOcfg9qAUcyfEN
-         XZONVK7TvY4SNtY5vRMB4mkNeWJwFnL9iibaSKLs6BfPmwAx2mRlfu07V8Ykov/a6tY5
-         RXqWToGtdl1PIINwq2sa2UlwiyJIIgpCnhaOoit3d8S7RXKJgDh5hMDJG+aeT0nlZBKA
-         tvzg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Qq/85eNfuF/SFBYBdN6Exlh+AgbqJ4Jg34k6AMEcN2o=;
+        fh=rrua58aPyIBHnRLYa6DhwCQw1Suzf5rAWcQoGwyatcE=;
+        b=M42UGfnVklySIfgs6jKTs74BQXxxK+Qy694apS/acmm54CEJEWeadHiLEuakNrwsXR
+         /0BuQJrXsaySKyLvmTwFD8hSzvkAeRrwodW8gmGlp3qYDP0t/gg1eG/23HhB2FME44sp
+         DIupECjZZTLld5dNJiSQMdy3yiNZib5niQBbIbkPTQRzv7OzTBgx1FQ7Hh/Us9PjkfMO
+         hnRrn1o7lSCoitmT9RCkT1PvSeHMJbvG5jO1cdhJayZBfwk1HF4rRx4dwqFOHOuocki0
+         QXgZdFJv4Rxq1VIjSOB1rF9sFJD/DzVC4tdEFCwJPF79y13Kj3y+DNNksvoIUorxX6D1
+         c0yQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IaORxRHX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c5d9csi30591086d6.413.2025.02.14.02.12.54
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c1838si32366596d6.343.2025.02.14.03.16.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2025 02:12:54 -0800 (PST)
+        Fri, 14 Feb 2025 03:16:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IaORxRHX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tisgZ-0004XO-Mt; Fri, 14 Feb 2025 05:12:40 -0500
+	id 1titgS-0000Vb-W6; Fri, 14 Feb 2025 06:16:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tisgV-0004Wx-6g; Fri, 14 Feb 2025 05:12:35 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1titgR-0000V9-1w
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2025 06:16:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tisgM-00064O-KM; Fri, 14 Feb 2025 05:12:30 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YvSTX66dVz6M4XV;
- Fri, 14 Feb 2025 18:09:52 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id DAF941400DA;
- Fri, 14 Feb 2025 18:12:20 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 14 Feb
- 2025 11:12:20 +0100
-Date: Fri, 14 Feb 2025 10:12:18 +0000
-To: Gavin Shan <gshan@redhat.com>, Mauro Carvalho Chehab
- <mchehab+huawei@kernel.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <mst@redhat.com>,
- <imammedo@redhat.com>, <anisinha@redhat.com>, <gengdongjiu1@gmail.com>,
- <peter.maydell@linaro.org>, <pbonzini@redhat.com>, <shan.gavin@gmail.com>
-Subject: Re: [PATCH 0/4] target/arm: Improvement on memory error handling
-Message-ID: <20250214101158.00004f69@huawei.com>
-In-Reply-To: <20250214041635.608012-1-gshan@redhat.com>
-References: <20250214041635.608012-1-gshan@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1titgN-0000JT-Kl
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2025 06:16:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739531789;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Qq/85eNfuF/SFBYBdN6Exlh+AgbqJ4Jg34k6AMEcN2o=;
+ b=IaORxRHXVVZrEt7uLqmfs1iP2PjVlnyjPb/4h0BgOqIyCAQA71J0VK/ieNYT3qeUboOogG
+ FeGgCqbp5ByAWJP4YrYQ2Gmz+JbLY5E3oeNFYpAIfY3YHKXIFFirsFKovImtQvMdFrYDOG
+ 30mbNDaCBHugEXeFGK7MqwSdh+K5w8A=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-vxRlNaFsMYGfGqrO0czlTQ-1; Fri,
+ 14 Feb 2025 06:16:25 -0500
+X-MC-Unique: vxRlNaFsMYGfGqrO0czlTQ-1
+X-Mimecast-MFC-AGG-ID: vxRlNaFsMYGfGqrO0czlTQ_1739531784
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A17A71800373; Fri, 14 Feb 2025 11:16:23 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.45.224.69])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B01E11800570; Fri, 14 Feb 2025 11:16:22 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 4A5A21800097; Fri, 14 Feb 2025 12:16:20 +0100 (CET)
+Date: Fri, 14 Feb 2025 12:16:20 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Alexander Graf <graf@amazon.com>
+Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, 
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>, 
+ Markus Armbruster <armbru@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Ard Biesheuvel <ardb@kernel.org>
+Subject: Re: [PATCH v3 09/23] hw/uefi: add var-service-core.c
+Message-ID: <imob6duupjhtdqrmxdvnopqeqgdtw7vjgjzixej7vy6yragzck@o7kcfbdbqedv>
+References: <kk4f5e3olb26qfjveqefkuzrjc45djikkk7uspz4yj7iesdmbj@zointitbvhdp>
+ <73fe41f7-dff0-4506-8769-1997323c0a76@amazon.com>
+ <4bwjwcs2k4hbrj6mokc57a5dy57jjssfxnvd4qm5257dgnid3x@yqdx7e47o2mf>
+ <2c06a98c-f286-4632-a352-8b47dc4cc43c@amazon.com>
+ <2vgc4scgezmb3med6dypykcym7te7gzlx7wp3vm5ehtfmxj3xr@kswpu35wt5ns>
+ <f59bb48f-051d-4681-a702-6aed3420c2f7@amazon.com>
+ <jnxvyw6q4vkng7jztu7q5rabgeohhpoxojdn4wt6xckc6pzmqz@ateji77pl5j7>
+ <342a1bd9-52e9-4a6d-8a2a-63d2b478d896@amazon.com>
+ <5whdvrcqkpted5wl53yo5qbq2g4bf4j57vrzvbsebho56xfz4w@mjpktoiarmto>
+ <a39a1cfb-7d98-485e-98aa-9c03300f4be2@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a39a1cfb-7d98-485e-98aa-9c03300f4be2@amazon.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,79 +132,272 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0IuzREoIbMQY
+X-TUID: INB979TDEABv
 
-On Fri, 14 Feb 2025 14:16:31 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+On Fri, Feb 14, 2025 at 10:51:17AM +0100, Alexander Graf wrote:
 
-> Currently, there is only one CPER buffer (entry), meaning only one
-> memory error can be reported. In extreme case, multiple memory errors
-> can be raised on different vCPUs. For example, a singile memory error
-> on a 64KB page of the host can results in 16 memory errors to 4KB
-> pages of the guest. Unfortunately, the virtual machine is simply aborted
-> by multiple concurrent memory errors, as the following call trace shows.
-> A SEA exception is injected to the guest so that the CPER buffer can
-> be claimed if the error is successfully pushed by acpi_ghes_memory_errors(),
-> Otherwise, abort() is triggered to crash the virtual machine.
-> 
->   kvm_vcpu_thread_fn
->     kvm_cpu_exec
->       kvm_arch_on_sigbus_vcpu
->         kvm_cpu_synchronize_state
->         acpi_ghes_memory_errors         (a)
->         kvm_inject_arm_sea | abort
-> 
-> It's arguably to crash the virtual machine in this case. The better
-> behaviour would be to retry on pushing the memory errors, to keep the
-> virtual machine alive so that the administrator has chance to chime
-> in, for example to dump the important data with luck. This series
-> adds one more parameter to acpi_ghes_memory_errors() so that it will
-> be tried to push the memory error until it succeeds.
-Hi Gavin,
+> I also like to have dedicated register spaces per component. So even if you
+> choose to make it a hard split, I think we're better off with 4k at
+> 0xfef10000 for control and 64k at 0xfef20000 for the buffer for example.
 
-If the ultimate aim is to support multiple memory errors why not
-just do that?  Been a while since I look at how that works, but 
-the spec definitely allows it.  I think by just queuing up the errors
-and updating the Error Status Address as each one is handled.
-I think that's what GHESv2 ack is all about as it prevents the
-RAS firmware updating the error record until it is acknowledged
-at which point the RAS firmware can report the next one.
+Well, if we go for PIO transfer mode instead of device memory we don't
+need map the buffer any more.
 
-Or... Given the usecase above of a 64KiB host page and 4KiB guest
-can we inject a single error record with multiple CPER entries and
-just handle it all in one go?
+The control registers for the x86 variant are in io address space right
+now (0x520, next to fw_cfg).  We could place them in a mmio page @
+0xfef10000 instead.  Any preference, and if so, why?
 
-Set the Error record header -> section count to 16 and provide
-16 Memory Error Sections or equivalent.
+First sketch below, on top of this series.  No edk2 counterpart yet, so
+untested beyond compiling the code.
 
-Doesn't help with multiple errors in unrelated memory addresses but
-maybe removes one problem case.
+take care,
+  Gerd
 
-I've not checked all the information makes it to the right places
-however or that we don't end up with a deadlock when multiple vCPU
-involved.
-
-If doing the more significant surgery this would involve, I'd
-love to see Mauro's series land first as it cleans up a lot of
-how HEST is handled etc.
-
-Jonathan
-
-> 
-> Gavin Shan (4):
->   acpi/ghes: Make ghes_record_cper_errors() static
->   acpi/ghes: Use error_report() in ghes_record_cper_errors()
->   acpi/ghes: Allow retry to write CPER errors
->   target/arm: Retry pushing CPER error if necessary
-> 
->  hw/acpi/ghes-stub.c    |  3 ++-
->  hw/acpi/ghes.c         | 45 +++++++++++++++++++++---------------------
->  include/hw/acpi/ghes.h |  5 ++---
->  target/arm/kvm.c       | 31 +++++++++++++++++++++++------
->  4 files changed, 51 insertions(+), 33 deletions(-)
-> 
+--------------------- cut here ------------------------
+diff --git a/include/hw/uefi/var-service-api.h b/include/hw/uefi/var-service-api.h
+index 6765925d9ed0..99911e904652 100644
+--- a/include/hw/uefi/var-service-api.h
++++ b/include/hw/uefi/var-service-api.h
+@@ -21,16 +21,21 @@
+ #define UEFI_VARS_REG_MAGIC                  0x00  /* 16 bit */
+ #define UEFI_VARS_REG_CMD_STS                0x02  /* 16 bit */
+ #define UEFI_VARS_REG_BUFFER_SIZE            0x04  /* 32 bit */
+-#define UEFI_VARS_REG_BUFFER_ADDR_LO         0x08  /* 32 bit */
+-#define UEFI_VARS_REG_BUFFER_ADDR_HI         0x0c  /* 32 bit */
+-#define UEFI_VARS_REGS_SIZE                  0x10
++#define UEFI_VARS_REG_DMA_BUFFER_ADDR_LO     0x08  /* 32 bit */
++#define UEFI_VARS_REG_DMA_BUFFER_ADDR_HI     0x0c  /* 32 bit */
++#define UEFI_VARS_REG_PIO_BUFFER_TRANSFER    0x10  /* 8-64 bit */
++#define UEFI_VARS_REG_PIO_BUFFER_CRC32C      0x18  /* 32 bit (read-only) */
++#define UEFI_VARS_REG_RESERVED               0x1c  /* 32 bit */
++#define UEFI_VARS_REGS_SIZE                  0x20
+ 
+ /* magic value */
+ #define UEFI_VARS_MAGIC_VALUE               0xef1
+ 
+ /* command values */
+ #define UEFI_VARS_CMD_RESET                  0x01
+-#define UEFI_VARS_CMD_MM                     0x02
++#define UEFI_VARS_CMD_DMA_MM                 0x02
++#define UEFI_VARS_CMD_PIO_MM                 0x03
++#define UEFI_VARS_CMD_PIO_ZERO_OFFSET        0x04
+ 
+ /* status values */
+ #define UEFI_VARS_STS_SUCCESS                0x00
+diff --git a/include/hw/uefi/var-service.h b/include/hw/uefi/var-service.h
+index e078d2b0e68f..7dbede659a8f 100644
+--- a/include/hw/uefi/var-service.h
++++ b/include/hw/uefi/var-service.h
+@@ -56,6 +56,10 @@ struct uefi_vars_state {
+     QTAILQ_HEAD(, uefi_variable)      variables;
+     QTAILQ_HEAD(, uefi_var_policy)    var_policies;
+ 
++    /* pio transfer buffer */
++    uint32_t                          pio_xfer_offset;
++    uint8_t                           *pio_xfer_buffer;
++
+     /* boot phases */
+     bool                              end_of_dxe;
+     bool                              ready_to_boot;
+diff --git a/hw/uefi/var-service-core.c b/hw/uefi/var-service-core.c
+index 78a668e68fa2..a96b66934769 100644
+--- a/hw/uefi/var-service-core.c
++++ b/hw/uefi/var-service-core.c
+@@ -4,6 +4,7 @@
+  * uefi vars device
+  */
+ #include "qemu/osdep.h"
++#include "qemu/crc32c.h"
+ #include "system/dma.h"
+ #include "migration/vmstate.h"
+ 
+@@ -41,6 +42,7 @@ const VMStateDescription vmstate_uefi_vars = {
+         VMSTATE_UINT32(buf_size, uefi_vars_state),
+         VMSTATE_UINT32(buf_addr_lo, uefi_vars_state),
+         VMSTATE_UINT32(buf_addr_hi, uefi_vars_state),
++        /* TODO: pio xfer offset + buffer */
+         VMSTATE_BOOL(end_of_dxe, uefi_vars_state),
+         VMSTATE_BOOL(ready_to_boot, uefi_vars_state),
+         VMSTATE_BOOL(exit_boot_service, uefi_vars_state),
+@@ -54,7 +56,7 @@ const VMStateDescription vmstate_uefi_vars = {
+     },
+ };
+ 
+-static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
++static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv, bool dma_mode)
+ {
+     hwaddr    dma;
+     mm_header *mhdr;
+@@ -69,9 +71,13 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
+     }
+ 
+     /* read header */
+-    dma_memory_read(&address_space_memory, dma,
+-                    uv->buffer, sizeof(*mhdr),
+-                    MEMTXATTRS_UNSPECIFIED);
++    if (dma_mode) {
++        dma_memory_read(&address_space_memory, dma,
++                        uv->buffer, sizeof(*mhdr),
++                        MEMTXATTRS_UNSPECIFIED);
++    } else {
++        memcpy(uv->buffer, uv->pio_xfer_buffer, sizeof(*mhdr));
++    }
+ 
+     if (uadd64_overflow(sizeof(*mhdr), mhdr->length, &size)) {
+         return UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE;
+@@ -81,9 +87,15 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
+     }
+ 
+     /* read buffer (excl header) */
+-    dma_memory_read(&address_space_memory, dma + sizeof(*mhdr),
+-                    uv->buffer + sizeof(*mhdr), mhdr->length,
+-                    MEMTXATTRS_UNSPECIFIED);
++    if (dma_mode) {
++        dma_memory_read(&address_space_memory, dma + sizeof(*mhdr),
++                        uv->buffer + sizeof(*mhdr), mhdr->length,
++                        MEMTXATTRS_UNSPECIFIED);
++    } else {
++        memcpy(uv->buffer + sizeof(*mhdr),
++               uv->pio_xfer_buffer + sizeof(*mhdr),
++               mhdr->length);
++    }
+     memset(uv->buffer + size, 0, uv->buf_size - size);
+ 
+     /* dispatch */
+@@ -113,9 +125,15 @@ static uint32_t uefi_vars_cmd_mm(uefi_vars_state *uv)
+     }
+ 
+     /* write buffer */
+-    dma_memory_write(&address_space_memory, dma,
+-                     uv->buffer, sizeof(*mhdr) + mhdr->length,
+-                     MEMTXATTRS_UNSPECIFIED);
++    if (dma_mode) {
++        dma_memory_write(&address_space_memory, dma,
++                         uv->buffer, sizeof(*mhdr) + mhdr->length,
++                         MEMTXATTRS_UNSPECIFIED);
++    } else {
++        memcpy(uv->pio_xfer_buffer + sizeof(*mhdr),
++               uv->buffer + sizeof(*mhdr),
++               sizeof(*mhdr) + mhdr->length);
++    }
+ 
+     return retval;
+ }
+@@ -150,8 +168,13 @@ static uint32_t uefi_vars_cmd(uefi_vars_state *uv, uint32_t cmd)
+     case UEFI_VARS_CMD_RESET:
+         uefi_vars_soft_reset(uv);
+         return UEFI_VARS_STS_SUCCESS;
+-    case UEFI_VARS_CMD_MM:
+-        return uefi_vars_cmd_mm(uv);
++    case UEFI_VARS_CMD_DMA_MM:
++        return uefi_vars_cmd_mm(uv, true);
++    case UEFI_VARS_CMD_PIO_MM:
++        return uefi_vars_cmd_mm(uv, false);
++    case UEFI_VARS_CMD_PIO_ZERO_OFFSET:
++        uv->pio_xfer_offset = 0;
++        return UEFI_VARS_STS_SUCCESS;
+     default:
+         return UEFI_VARS_STS_ERR_NOT_SUPPORTED;
+     }
+@@ -161,6 +184,7 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
+ {
+     uefi_vars_state *uv = opaque;
+     uint64_t retval = -1;
++    void *xfer_ptr;
+ 
+     trace_uefi_reg_read(addr, size);
+ 
+@@ -174,12 +198,37 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
+     case UEFI_VARS_REG_BUFFER_SIZE:
+         retval = uv->buf_size;
+         break;
+-    case UEFI_VARS_REG_BUFFER_ADDR_LO:
++    case UEFI_VARS_REG_DMA_BUFFER_ADDR_LO:
+         retval = uv->buf_addr_lo;
+         break;
+-    case UEFI_VARS_REG_BUFFER_ADDR_HI:
++    case UEFI_VARS_REG_DMA_BUFFER_ADDR_HI:
+         retval = uv->buf_addr_hi;
+         break;
++    case UEFI_VARS_REG_PIO_BUFFER_TRANSFER:
++        if (uv->pio_xfer_offset + size > uv->buf_size) {
++            retval = 0;
++            break;
++        }
++        xfer_ptr = uv->pio_xfer_buffer + uv->pio_xfer_offset;
++        switch (size) {
++        case 1:
++            retval = *(uint8_t *)xfer_ptr;
++            break;
++        case 2:
++            retval = *(uint16_t *)xfer_ptr;
++            break;
++        case 4:
++            retval = *(uint32_t *)xfer_ptr;
++            break;
++        case 8:
++            retval = *(uint64_t *)xfer_ptr;
++            break;
++        }
++        uv->pio_xfer_offset += size;
++        break;
++    case UEFI_VARS_REG_PIO_BUFFER_CRC32C:
++        retval = crc32c(0xffffffff, uv->pio_xfer_buffer, uv->pio_xfer_offset);
++        break;
+     }
+     return retval;
+ }
+@@ -187,6 +236,7 @@ static uint64_t uefi_vars_read(void *opaque, hwaddr addr, unsigned size)
+ static void uefi_vars_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+ {
+     uefi_vars_state *uv = opaque;
++    void *xfer_ptr;
+ 
+     trace_uefi_reg_write(addr, val, size);
+ 
+@@ -200,14 +250,40 @@ static void uefi_vars_write(void *opaque, hwaddr addr, uint64_t val, unsigned si
+         }
+         uv->buf_size = val;
+         g_free(uv->buffer);
++        g_free(uv->pio_xfer_buffer);
+         uv->buffer = g_malloc(uv->buf_size);
++        uv->pio_xfer_buffer = g_malloc(uv->buf_size);
+         break;
+-    case UEFI_VARS_REG_BUFFER_ADDR_LO:
++    case UEFI_VARS_REG_DMA_BUFFER_ADDR_LO:
+         uv->buf_addr_lo = val;
+         break;
+-    case UEFI_VARS_REG_BUFFER_ADDR_HI:
++    case UEFI_VARS_REG_DMA_BUFFER_ADDR_HI:
+         uv->buf_addr_hi = val;
+         break;
++    case UEFI_VARS_REG_PIO_BUFFER_TRANSFER:
++        if (uv->pio_xfer_offset + size > uv->buf_size) {
++            break;
++        }
++        xfer_ptr = uv->pio_xfer_buffer + uv->pio_xfer_offset;
++        switch (size) {
++        case 1:
++            *(uint8_t *)xfer_ptr = val;
++            break;
++        case 2:
++            *(uint16_t *)xfer_ptr = val;
++            break;
++        case 4:
++            *(uint32_t *)xfer_ptr = val;
++            break;
++        case 8:
++            *(uint64_t *)xfer_ptr = val;
++            break;
++        }
++        uv->pio_xfer_offset += size;
++        break;
++    case UEFI_VARS_REG_PIO_BUFFER_CRC32C:
++    default:
++        break;
+     }
+ }
+ 
 

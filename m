@@ -1,119 +1,163 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp1371518njc;
-        Fri, 14 Feb 2025 07:07:03 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHMSUEm8Nx8v6+bqXv7fbpVSu/FT47em7kY9p4UOjouw291d2OLgorHZT+52gpkW6VHxKzS
-X-Received: by 2002:a05:600c:3b0d:b0:434:ff08:202e with SMTP id 5b1f17b1804b1-43960e98d5cmr93848765e9.8.1739545622786;
-        Fri, 14 Feb 2025 07:07:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739545622; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp2272906njc;
+        Sat, 15 Feb 2025 21:58:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUUKkyCOJzFluGAbYKy2Kxuveh09iKDHtuKcVDFv5uZ82Tpa/vAP6V+jcyz6m96FZKFPtxp9oK2Z0459g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHW8YXJAVzIBp9OD3b5PytaI1vy+PKsnX5g/T9eZJmIjeeKLUfj/x9KPKIHMm0h4WzcCnFU
+X-Received: by 2002:a05:6214:ac8:b0:6e6:684f:7f6b with SMTP id 6a1803df08f44-6e66cd23992mr80106626d6.33.1739685514625;
+        Sat, 15 Feb 2025 21:58:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739685514; cv=none;
         d=google.com; s=arc-20240605;
-        b=dY/1gsUkUtK8PVi4W16m7V8Xp5ii+pbD//BlOARBQx1poQZWFmQjsrycBM5OsDf7uy
-         c4N6pCz6www/5fh6y8hKi7+XkZMEA4trtCO3u7tb0LL1NPNWz/m4CPX3MLCBsWoRi3iU
-         UzeKi35ppuxZfR+S8pcKvm0czbB8L+UhaYM8SRiLQfSTFE94YiBn1wL38/sBNISDES0o
-         lo244sy36sqZwc206w7gUbPiHYo8GdbeNt8IYpAi/dJysIPFX8X34RCWJJNlA4Fh1uj3
-         CDtCnBYguZ4/MsAj6jxvMBALM2M5/O/O8KjtWSHOIq7MRcAG85aDF67VU7ln4tUsXAyJ
-         XMAg==
+        b=aXbyDmzfYomAgHW+JoG6EcbvsfPvHbjo2BPQc6U6e7eUmDsOrxdnHK7AiBsLq7YdNV
+         vcRrbk4KDUgKIY0ri5gzToMSlB4Mjigj+9oGtrzQyCfJdSq+FeH5cEbcuqvGt3MPCGnV
+         fgnLfyWzgLFxFAyF5NL8TbuEAWM0l5dciAGchhsD0h6AtaN7/DAx1v4OpH2bMyymQhO1
+         De8D72deq1TScyCpOtZrZCWju9jiPAYs2qYvY8714+fUktMMGciNk8zOBMNRbD/5NFyI
+         3rSwCcRoc22m0jMeL4oTKVjfIgeGdztBq/2wKNZd9EFhhU0VD4MOvaGiVN7DplfaNKBc
+         Eypg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=jr/nu0gmy2vwNLaPbJCFNJlI3FptA3Fz3pf+mSERcgM=;
-        fh=fcBDm8jkb8fu/WfFWsdgCBc/xYH+lf37ujPvHo08FQg=;
-        b=Pi2Fmu39xOlyvhLpzF+Zrd6GVTI922Id81dnh5BzMRwfgQYI36Gdt3pON15qWoclQM
-         ypBDxg7579YE69YdBBZCG9q2mkmz1gvlIqr8q4i57Cz2SvCZpFk9Uo4oQiDcRE4VlLVZ
-         jCVGxn/o4hGZXM+XIQ06EXzuC9uERVt27OQNRcJ+Jv034O1uJINdBxMzLXhsRJdY4SxN
-         DoEpB9RkM6P1lzv2g2DogoYIEX8zD/JnGc7goJBay+ISqSV+JKjLzGUiLuNabD5e8jT8
-         VqXDnaUhsZkMv4SRIk/T3XfHdWlsOWZ1XeZ/Cys7bEKF1RHXnRacEWHHJbxthUn6BRG+
-         +fIA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:cc:from:to:content-language:mime-version:date:message-id
+         :dkim-signature:dkim-signature;
+        bh=JmtHLnlzelDiMG/aaAhaae/vF1+y41ZDzU76AdNWZlM=;
+        fh=U7hL8divuZ6iKuobpEqIMijVSiAPMb4HvaCzEnaDdso=;
+        b=QykTM8d7fXGE4DdfqPXo9lRndD1gF8qzvTSCvg087+JLiDqt8HCRq9872qK5u+jRW9
+         JSj9rup7j02Lkty9avuDfg/CIldm6N/If4GNxv4h8XPZo+cdecDKjc3SAWz2Iq0MVcYA
+         mOPTn1rqzZkwvxaiGQjimxJQf3dauWNogxjtQHNeV6hs3FW7N50OJ5waTXq34Pf0N63w
+         iYc0RW/B+f/y6n/tKFr0yJfDCcNPUB3Oe5z98JWqaBwdFXIkTkcjvHhCkggTEyvq607r
+         pyyO6Uo1vBZauX50bG0GGf8DlbNgJpmuRKA+hj4fx3UZCfchNJ1cINyWWStZqjVJvKBU
+         qGIw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=daDSVuDG;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kchamart@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43960820663si37623815e9.1.2025.02.14.07.07.02
+       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=tqJopBqy;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c0ad6si66662146d6.314.2025.02.15.21.58.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Feb 2025 07:07:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 15 Feb 2025 21:58:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=daDSVuDG;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739545621;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jr/nu0gmy2vwNLaPbJCFNJlI3FptA3Fz3pf+mSERcgM=;
-	b=daDSVuDGYzd5QlF/SnpLNcvr3Jjl4UPHjvegWOxspXvDwOo5ViKvNgsi6Nb9vf4W14CgY4
-	T1VTmrkgmVHDu8NYPeNbAnL2FDwMCSCQjDznhM9KUxigO93bGBBZOSlipuMRRl43WqQ5xW
-	p0FQdTY9+GjeP2x0bD4h21n58ZQlGrc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-aKO2M2ZlP-OSJkNwqkHyYQ-1; Fri,
- 14 Feb 2025 10:06:56 -0500
-X-MC-Unique: aKO2M2ZlP-OSJkNwqkHyYQ-1
-X-Mimecast-MFC-AGG-ID: aKO2M2ZlP-OSJkNwqkHyYQ_1739545613
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 643A51800878;
-	Fri, 14 Feb 2025 15:06:47 +0000 (UTC)
-Received: from gezellig (unknown [10.45.226.6])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F1DAD300018D;
-	Fri, 14 Feb 2025 15:06:25 +0000 (UTC)
-Date: Fri, 14 Feb 2025 16:06:20 +0100
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, maz@kernel.org, Joel Stanley <joel@jms.id.au>,
-	Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Jamin Lin <jamin_lin@aspeedtech.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eric Auger <eric.auger@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
-	Hao Wu <wuhaotsh@google.com>, Tyrone Ting <kfting@nuvoton.com>,
-	sebott@redhat.com, Steven Lee <steven_lee@aspeedtech.com>,
-	Zhenzhong Duan <zhenzhong.duan@intel.com>,
-	Troy Lee <leetroy@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH v2 1/3] docs/cpu-features: Consistently use vCPU instead
- of VCPU
-Message-ID: <Z69b7M8PkJ4AFtXP@gezellig>
-References: <20250213135032.2987289-1-kchamart@redhat.com>
- <20250213135032.2987289-2-kchamart@redhat.com>
- <87v7tdpn5z.fsf@draig.linaro.org>
+       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=tqJopBqy;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tjXfc-00086R-Nw; Sun, 16 Feb 2025 00:58:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
+ id 1tjVk1-0003o8-An; Sat, 15 Feb 2025 22:54:49 -0500
+Received: from mail.csclub.uwaterloo.ca ([129.97.134.52])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
+ id 1tjVjz-000340-3j; Sat, 15 Feb 2025 22:54:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
+ s=csc; t=1739678083;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=JmtHLnlzelDiMG/aaAhaae/vF1+y41ZDzU76AdNWZlM=;
+ b=tqJopBqybRmYP3sSVvS/W4ny0Z/5LJpT9w8GxjOit1iN4v93RaVnoAJvr2iiONPhn0A+w0
+ +pzbfC6HoxwICHlQF5JSlxs7OaIJFOfIKqvM6qregBnqFjtOCJ7EtIn4cYXDjn6byOUJBS
+ IdZ3zKmedoKaMYsdo4O4T+kk/omwBjI=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
+ s=202502e; t=1739678083;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=JmtHLnlzelDiMG/aaAhaae/vF1+y41ZDzU76AdNWZlM=;
+ b=XGNIuT/chy/ms9JubnMhf+jaY3Sy8Maib76ovN+NH9p17ebODeaaH7lgGFpZi6utvLtoaw
+ 6c0VcoI35tT7aHBQ==
+Message-ID: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
+Date: Sat, 15 Feb 2025 22:54:42 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+From: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
+Cc: peter.maydell@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org
+Subject: [PATCH] bcm2838: Add GIC-400 timer interupt connections
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87v7tdpn5z.fsf@draig.linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: IX4dMOpf7lVU
+Received-SPF: pass client-ip=129.97.134.52;
+ envelope-from=s23adhik@csclub.uwaterloo.ca; helo=mail.csclub.uwaterloo.ca
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 16 Feb 2025 00:58:23 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DGqBXIf7TKto
 
-On Thu, Feb 13, 2025 at 09:09:12PM +0000, Alex Benn�e wrote:
-> Kashyap Chamarthy <kchamart@redhat.com> writes:
-> 
-> > Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-> 
-> Should we add vCPU to glossary.rst?
+Hello everyone,
 
-Ah, I didn't notice this in the tree.  I can add as a follow-up later.
+This patch adds support for the system timer interrupts
+in QEMU's BCM2838 model. It defines a new constant
+called GIC400_TIMER_INT, and connects 4 timer interupts
+to the GIC-400.
+Previously timer interupts were not being routed to the
+interupt controller, causing scheduling, and some other
+stuff to have issues (me and a few friends bumped into
+this, and that's why this was written lol).
 
-PS: I sent the patch while on a train, `git publish` was acting up.  My
-apologies if duplicate copies of this patch series land on 'qemu-devel'.
+Signed-off-by: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
+---
+  hw/arm/bcm2838.c | 11 +++++++++++
+  1 file changed, 11 insertions(+)
 
-> Anyway: Reviewed-by: Alex Benn�e <alex.bennee@linaro.org>
-> 
-> -- 
-> Alex Benn�e
-> Virtualisation Tech Lead @ Linaro
-> 
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+index ddb7c5f..0a4179f 100644
+--- a/hw/arm/bcm2838.c
++++ b/hw/arm/bcm2838.c
+@@ -21,6 +21,8 @@
+  #define GIC400_TIMER_S_EL1_IRQ      13
+  #define GIC400_TIMER_NS_EL1_IRQ     14
+  #define GIC400_LEGACY_IRQ           15
++#define GIC400_TIMER_INT            (96 - 32)
++
 
+  /* Number of external interrupt lines to configure the GIC with */
+  #define GIC_NUM_IRQS                192
+@@ -176,6 +178,15 @@ static void bcm2838_realize(DeviceState *dev, Error 
+**errp)
+                      qdev_get_gpio_in(gicdev, PPI(n, VIRTUAL_PMU_IRQ)));
+      }
+
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 0,
++        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT + 
+INTERRUPT_TIMER0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 1,
++        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT + 
+INTERRUPT_TIMER1));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 2,
++        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT + 
+INTERRUPT_TIMER2));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 3,
++        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT + 
+INTERRUPT_TIMER3));
++
+      /* Connect UART0 to the interrupt controller */
+      sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->uart0), 0,
+                         qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_UART0));
 -- 
-/kashyap
+2.48.1
+

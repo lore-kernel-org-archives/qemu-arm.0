@@ -1,177 +1,253 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp90165njb;
-        Mon, 17 Feb 2025 07:01:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+NREsLuSiNHajVR+Ck9Fw5fxivnXf8UEhpFjUrfFhrbOG5m2O2/+oaBjqiz0eFpT9frvY7HqmRDAXjQ==@linaro.org
-X-Received: by 2002:a05:600c:1e26:b0:439:7dfe:f12 with SMTP id 5b1f17b1804b1-4397dfe11eamr52669935e9.5.1739804511150;
-        Mon, 17 Feb 2025 07:01:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739804511; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp115939njb;
+        Mon, 17 Feb 2025 07:36:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX9Vp6BhIGICKjrJyDaAzxTSNqbDZBOw5Z7wb8DKDSQ3Jet7UuVT7ihdR+BbjoSibsStm9ZsZpgXNxNVg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZpGT4SG9dFahaSLAJjfjKTU/FTl1RxZqODUM6BjhoVl+NOcBVWAwSaC2NetjDYc7pKFNT
+X-Received: by 2002:ad4:5c49:0:b0:6e4:5fc3:723f with SMTP id 6a1803df08f44-6e65c84a2f5mr257245546d6.0.1739806591377;
+        Mon, 17 Feb 2025 07:36:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739806591; cv=none;
         d=google.com; s=arc-20240605;
-        b=kANV3I0gkqyIOHxKfNhzUSjwrondZ9SW/vzmooz5OF94eGicefvVWW95nkQhg3gLZ8
-         wy47gKhGqR2EZt55tjmfHS/TYqKd3xYCEv2iI4g35OwVcwozd1jMN2Idkdcl1ci9FWuU
-         8vxJ2r1CKOqwoDKZDHyntoE6sjdT+Qs9bPf1YWwxli3isMfb5ndQTj6hW+S+3ZyZBWxn
-         Ro6DFIbjyl5mIdnwgV+59+8Ihjc447vBltPSVOgI3/rPkjBgap6lqbr/Ed/RoJSCVfqI
-         V4codEyO81h249n4L2KlnBSh/l0gr9UPVFrBUAQvG/dyPK6cLf0P8v5+b9Hw6ORXW069
-         32uA==
+        b=Q3qfi2or9byz2gzJDFFuDWcZrVrh7uIUdhloshLd841CKuWr07XW9/B/PMgFNQBw9K
+         b+1Ep51a24kVRzF6FdCnGQ6V2DARfmMzCngGmIRUCMBmXKOoxEq7210/y+4M8j7b8NKD
+         Irpfs0HZp0L8tNMeZYIpW2rCnfZfzQwA33u5uTcEmcTxvFxEI2qWlnj8gugJU2Vjb+ra
+         DSUMwXky5i85yrEbuzicliC4XgSTgcM44juHTpaGsDqj+XXSatgPns/zmiKAs9ABM287
+         GObhT2Y+2ZHtJPdqPDnww9oeo0PhxjGGdJAjt1lcvLVBr0csSRbzYWPuaKI5yKgZtwuE
+         ke2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6AAzIQyMN9qYAjU2Tp3QEwJMsCO2X01fJXoL87c9eZM=;
-        fh=3qSfCF3vtSxM4KPnr905RG7vsAJqEfIj70szSiPEREI=;
-        b=cnChbxOit8PqESR1bbnkHGAY/Z4nWs3mYWGVhNyEqSXSAZvrtpJrDq1kbcfUyZuAS4
-         Gssi4U/RtAvE2WUUugWS5TxGScyPoZkdAusTYlgw6SCCtfFYi7TgoNzePxXYCwEweoHS
-         zZfAmTjSNKSeP8zMqVCJGR9ZGifw3+vm87F5HgYmNtWRsRmPoVxY39czhMZYpaPsP60l
-         7h4rWFo5eTne4BdetJ+er+yoPJyPJNoM+RsDPLx2sKr6SGkzVYVKmNZcPnxBfL7wwPra
-         qZnHejRZyJwabfWyMirYAdln9609C+CDhXjdiQGf/RDLhHrzUQHOR+TwNMZHdcWpPH7L
-         KJ6A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=q/SmX+4/x7nNo6mf4bgOhCg6hutnga5O426Jzw+klLU=;
+        fh=RTT2ez3B9DPJKcEZjfNopwsAEP//OBpx/cqK/D1qnrU=;
+        b=J1g41eOsxWri5WT8nBEW8MC1OvcXA9Llr6gRM9BgUB272j3ZC2VRcmQwxT0uxv4E/c
+         uDwZAwsTbmpsy7Kq6ypyUKsPVcDQVCYln9VTvxPXlTTGrIO+Uq776GGbKfAgYNwEmjUp
+         6mdVKH00mGdXUdM1P6ug9EjsLi39x+ztzatLRBLaouAAZhyY5bLXypr1OMTBgaABs4Q5
+         FHZh5wKbturgJxaYuyFa4mjEh3uIdh8Sb9tMwE5dWrwgEtERE2Q4fGjsX5uD9l4/+nWO
+         cRlevGwffDeDTzfBdgF99nvO7HcOTXfdQxmvCNc2m/TlNl1sWAzPXQjh+dxUj4NETytS
+         A8iA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qTMf9hnz;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FRKpFud2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4398a92561asor5129765e9.6.2025.02.17.07.01.50
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d733e63si90872646d6.70.2025.02.17.07.36.31
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Feb 2025 07:01:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Feb 2025 07:36:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qTMf9hnz;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FRKpFud2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tk3AL-0003tg-GR; Mon, 17 Feb 2025 10:36:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tk3AK-0003t4-2d
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2025 10:36:12 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tk3AG-0003nL-4g
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2025 10:36:11 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-6f768e9be1aso44556397b3.0
+ for <qemu-devel@nongnu.org>; Mon, 17 Feb 2025 07:36:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739804510; x=1740409310; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6AAzIQyMN9qYAjU2Tp3QEwJMsCO2X01fJXoL87c9eZM=;
-        b=qTMf9hnziZjoELLhhNJ2GyWfT+o7CiQ3fwPYlhsIVYGHugB3+UYo2NZthWgOdO/7tx
-         6asS08NN7XCnAb9lz5RhO5vOtr7tUsw3pwlcwlJbr7dVNFtwtCPRZtSnwtXQ3hOhwWAV
-         5IcGkJA8GMj+q/Pncv1kf6MR5K8UAZg+py+pGT7Z8Y2Xid76O2a1FtYFU9sA9RfQxdaj
-         6USxx78Ki24Zhxfi/gSlQ0X77i9X79/DhpQa9m6mS/BFo6yh7VyF6GSOdJdhuV7AwuXG
-         TmbveOJsDLGRP9fINwQYggLmmr5UpSaVWZiOUit+LAOVxt2tBetHo84qc+qvg0Ejxljs
-         fTOQ==
+ d=linaro.org; s=google; t=1739806567; x=1740411367; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=q/SmX+4/x7nNo6mf4bgOhCg6hutnga5O426Jzw+klLU=;
+ b=FRKpFud2XRfP+5xdxW4UrZzDZj/K5HEe2mjuZvfs0Tgu2WBA4snp935L59m8+0gTo0
+ yh9ptEwjgdVT1+AGiXoDOHKOoCtqD/pdfJvxpclmmEFzIqguQ2n27b/DNIlLQHDHDzOK
+ P65rpk+fv2KqbBjaLA98lKKhkrXZk0zg/gNT2GZewKgtbHJPzxRnVKdmlFKWNGNdVwEM
+ wJV7BX2uG4Yl2j6uaUjUXdksu8J8OSGCbMkP+AaYfSXB996xqd/5ztohvlcHW4JHwJ/l
+ z0AYLH+O3N09Z/6zaLZ4iMkHuM4BYFq2hdE23Btgyt78ZBaR8iI8v/q3dHgTEA+YGFL7
+ TfwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739804510; x=1740409310;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6AAzIQyMN9qYAjU2Tp3QEwJMsCO2X01fJXoL87c9eZM=;
-        b=a0PssGqzl5A/7vVbE5KFsRzDkRPxtxWKKjzWzLhzvvqHLjRVEebIPLJXhFZh7RTYJh
-         GJVJsPFaQNboSb2sBiacSCvgZ6tq3ttGPj+MNm9vtFCiRaoTuBprricmke9R6aE7/gJj
-         xQDZWXFUQ/4+u12mjRP4U+L+kzMj+rimHcCnvIX+JhqU7SGQU3To3a1i9wqTbbcZrBGO
-         ndb/Ei+VMFDlEHHXhbBiwQas1yjxlhkpTcIu1zF/ksMwnR11cp+5l+1gbZ8KdIOeEc21
-         Yd6Zk2tViVHIocsa4/RmuFgbnqKeaInqgG9tECnqD661rjM48E04NQmQy1LZMqhWjAhF
-         FFXA==
-X-Forwarded-Encrypted: i=1; AJvYcCUwTL9MYWdv13Gc5dcpqMj/aWYpbXhUwJAUWYi+WHbLvR4uoQzfyTlFcjL6pvDuS/xO8yxyVsLA1BI/YA==@linaro.org
-X-Gm-Message-State: AOJu0Yxqj13fXEm3ihoHC1l5ndkOzhqG5JTnF92D08Cp3z0y304KNEjd
-	ARLLwrIbmTHTnYLKaFWkGRINDj/vtSZlgqsNknQsTwgM8qix4lQxuMYk05hO8HNWbw==
-X-Gm-Gg: ASbGncsFT3VTQ+dvTcOBPpNrFsDtdHhTKPSwi5sYtvNIFBuLc7Fpx77EYRbizauC7J3
-	F0luZek5/uAJ/vYt8K1X08qIQtXwUzIYnSPLpVIoKZvtpm9WSnIy9/qGZKbKsdGPPb5i4PP8mEX
-	vdWs6oaZeVFZNGp57IN1KYynCAzMQk1YzUfBFwHwXBZhoIkYr4WRWDcxPVuZhRTMugxd55Ppx9W
-	1BecYRQHWfglsVBKIPueWVeTG1NLn5czZOGu7Q2cSx9TWPhLwZSHstJULIVAUwD7iP49fAx/PWT
-	tgHR35F9Gpx3arPQzv3kGJXJqyIRow==
-X-Google-Smtp-Source: AGHT+IFgDPjon7CRTeHv9/585GbSQr6lPZYnnAggj/PUO7tDZNXLK2wK8w5zFFGob2D/MOxoGAi5KA==
-X-Received: by 2002:a05:6000:1862:b0:38f:4c8a:d5ea with SMTP id ffacd0b85a97d-38f4c8ad67cmr1782672f8f.22.1739804510055;
-        Mon, 17 Feb 2025 07:01:50 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.121] ([176.167.144.216])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f258b432asm12235412f8f.6.2025.02.17.07.01.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Feb 2025 07:01:49 -0800 (PST)
-Message-ID: <17651f42-8a9d-444c-8598-b0a6c099cbe6@linaro.org>
-Date: Mon, 17 Feb 2025 16:01:47 +0100
+ d=1e100.net; s=20230601; t=1739806567; x=1740411367;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=q/SmX+4/x7nNo6mf4bgOhCg6hutnga5O426Jzw+klLU=;
+ b=WLrWSJSLgxJtGoRx3yyP7l5XR20XuhumsKV8ZZpcu289FiUJT9tJocee0SiIJTP2wM
+ eTJe6F618Kt4hDAdSsv2Fzx+S0MZGBgncPrBoEa4Q3EZN9zKjfpQcxj4NqdKc4mho3VI
+ 07ixN+YZa1t1wUVC8uSVnpVG/x0QHRDu3flG/9hAi1q119AhqRBn9epfI6QV5smpaXvl
+ K2IKEDiVkdDYNbYBLLdnf2oi21ClltLnDpihTb5FPqOqPXtz/Qy66XjBWcJx1wRPsLxr
+ 5H1EBliui0O1sqfomUVEQpShwdA9HT65R1w/3rpmg6ngRvtmKGWEdjqt4jJvOhK/GfjJ
+ +7sw==
+X-Gm-Message-State: AOJu0YxpDSf+XfJdlFuW7cyE772qttUYI/rPDA9LbGlvrUl3dQ+unVH0
+ vg0aDPbcbCr7xd7g/rVN3+wiSjHTlbu8d/rdXBy8ppeyz5lu4n5jtbLj5aa7EX3jxegJyIrc1/a
+ jzn3VxJBCCllnAlh970eutZSA9rd8mI7h4WhBXA==
+X-Gm-Gg: ASbGnctYyC+f9VySP5rI1Sk8vPsv1b4g+kv02r8RGfJ5JE1lCMhmkHsiPj91+esJPgz
+ 8h3iLoAQU/A6lRC3c223wYN1n5I5TH5USc+C7xeTYMnaVPDTFnbNvO+y8y6lj9N7RX8hOEo+wqg
+ ==
+X-Received: by 2002:a05:6902:843:b0:e5d:c697:8808 with SMTP id
+ 3f1490d57ef6-e5dc69789eamr9926292276.18.1739806566683; Mon, 17 Feb 2025
+ 07:36:06 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 5/7] hw/char/pl011: Consider TX FIFO overrun error
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20250208163911.54522-1-philmd@linaro.org>
- <20250208163911.54522-6-philmd@linaro.org>
- <CAFEAcA8ZSSD=TxCier0Ji8+DVDspgqKQeKJyVDZ+LEBy=j9=Lw@mail.gmail.com>
- <CAFEAcA_MLUCqBPLfdwp1u-TEFLz-u5MsmAFeGEYfpOgC0cX8zQ@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_MLUCqBPLfdwp1u-TEFLz-u5MsmAFeGEYfpOgC0cX8zQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: uMzHu8XzkXnB
+References: <20250212145457.1899954-1-mochs@nvidia.com>
+In-Reply-To: <20250212145457.1899954-1-mochs@nvidia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Feb 2025 15:35:55 +0000
+X-Gm-Features: AWEUYZmVuWh4m87DgtYJZdFtCG9lTUjCZM0LWlFJiKnUrbgAJXiTcKzFCUlofB4
+Message-ID: <CAFEAcA8VN=M1ysRGTEY4dVd-PJHnK+bw8L2zH2x2bt2DKJ-OgQ@mail.gmail.com>
+Subject: Re: [PATCH v4] hw/arm/virt: Support larger highmem MMIO regions
+To: "Matthew R. Ochs" <mochs@nvidia.com>
+Cc: qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com, 
+ nathanc@nvidia.com, qemu-arm@nongnu.org, ddutile@redhat.com, 
+ eric.auger@redhat.com, nicolinc@nvidia.com, ankita@nvidia.com, 
+ philmd@linaro.org, gshan@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NsX6AuZtISEK
 
-On 17/2/25 15:52, Peter Maydell wrote:
-> On Mon, 17 Feb 2025 at 14:29, Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> On Sat, 8 Feb 2025 at 16:39, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>>
->>> When transmission is disabled, characters are still queued
->>> to the FIFO which eventually overruns. Report that error
->>> condition in the status register.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   hw/char/pl011.c      | 20 ++++++++++++++++++++
->>>   hw/char/trace-events |  2 ++
->>>   2 files changed, 22 insertions(+)
->>>
->>> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
->>> index 447f185e2d5..ef39ab666a2 100644
->>> --- a/hw/char/pl011.c
->>> +++ b/hw/char/pl011.c
->>> @@ -61,6 +61,9 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
->>>   /* Data Register, UARTDR */
->>>   #define DR_BE   (1 << 10)
->>>
->>> +/* Receive Status Register/Error Clear Register, UARTRSR/UARTECR */
->>> +#define RSR_OE  (1 << 3)
->>> +
->>>   /* Interrupt status bits in UARTRIS, UARTMIS, UARTIMSC */
->>>   #define INT_OE (1 << 10)
->>>   #define INT_BE (1 << 9)
->>> @@ -158,6 +161,16 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
->>>       return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
->>>   }
->>>
->>> +static bool pl011_is_tx_fifo_full(PL011State *s)
->>> +{
->>> +    if (pl011_is_fifo_enabled(s)) {
->>> +        trace_pl011_fifo_tx_is_full("FIFO", fifo8_is_full(&s->xmit_fifo));
->>> +        return fifo8_is_full(&s->xmit_fifo);
->>> +    }
->>> +    trace_pl011_fifo_tx_is_full("CHAR", !fifo8_is_empty(&s->xmit_fifo));
->>> +    return !fifo8_is_empty(&s->xmit_fifo);
->>
->> More repetition of expressions, but anyway
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Here I propose to squash in this tweak:
-> 
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -165,12 +165,13 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
-> 
->   static bool pl011_is_tx_fifo_full(PL011State *s)
->   {
-> -    if (pl011_is_fifo_enabled(s)) {
-> -        trace_pl011_fifo_tx_is_full("FIFO", fifo8_is_full(&s->xmit_fifo));
-> -        return fifo8_is_full(&s->xmit_fifo);
-> -    }
-> -    trace_pl011_fifo_tx_is_full("CHAR", !fifo8_is_empty(&s->xmit_fifo));
-> -    return !fifo8_is_empty(&s->xmit_fifo);
-> +    bool fifo_enabled = pl011_is_fifo_enabled(s);
-> +    bool tx_fifo_full = fifo_enabled ?
-> +        fifo8_is_full(&s->xmit_fifo) : !fifo8_is_empty(&s->xmit_fifo);
+On Wed, 12 Feb 2025 at 14:55, Matthew R. Ochs <mochs@nvidia.com> wrote:
+>
+> The MMIO region size required to support virtualized environments with
+> large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
+> For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed through
+> requires more MMIO memory than the amount provided by VIRT_HIGH_PCIE_MMIO
+> (currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
+> new parameter, highmem-mmio-size, that specifies the MMIO size required
+> to support the VM configuration.
+>
+> Example usage with 1TB MMIO region size:
+>         -machine virt,gic-version=3,highmem-mmio-size=1T
+>
+> Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> v4: - Added default size to highmem-mmio-size description
+> v3: - Updated highmem-mmio-size description
+> v2: - Add unit suffix to example in commit message
+>     - Use existing "high memory region" terminology
+>     - Resolve minor braces nit
+>
+>  docs/system/arm/virt.rst |  4 ++++
+>  hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 42 insertions(+)
+>
+> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+> index e67e7f0f7c50..6ff1de1ecbba 100644
+> --- a/docs/system/arm/virt.rst
+> +++ b/docs/system/arm/virt.rst
+> @@ -138,6 +138,10 @@ highmem-mmio
+>    Set ``on``/``off`` to enable/disable the high memory region for PCI MMIO.
+>    The default is ``on``.
+>
+> +highmem-mmio-size
+> +  Set the high memory region size for PCI MMIO. Must be a power-of-2 and
+
+Nit: no hyphens in "power of 2" here, or in the error message text.
+
+> +  greater than or equal to the default size (512G).
 > +
-> +    trace_pl011_fifo_tx_is_full(fifo_enabled ? "FIFO" : "CHAR",
-> +                                tx_fifo_full);
-> +    return tx_fifo_full;
->   }
+>  gic-version
+>    Specify the version of the Generic Interrupt Controller (GIC) to provide.
+>    Valid values are:
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 49eb0355ef0c..d8d62df43f04 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2773,6 +2773,36 @@ static void virt_set_highmem_mmio(Object *obj, bool value, Error **errp)
+>      vms->highmem_mmio = value;
+>  }
+>
+> +static void virt_get_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
+> +                          void *opaque, Error **errp)
+> +{
+> +    uint64_t size = extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
+> +
+> +    visit_type_size(v, name, &size, errp);
+> +}
+> +
+> +static void virt_set_highmem_mmio_size(Object *obj, Visitor *v, const char *name,
+> +                          void *opaque, Error **errp)
+> +{
+> +    uint64_t size;
+> +
+> +    if (!visit_type_size(v, name, &size, errp)) {
+> +        return;
+> +    }
+> +
+> +    if (!is_power_of_2(size)) {
+> +        error_setg(errp, "highmem_mmio_size is not a power-of-2");
 
-Thank you, appreciated!
+In these error messages we want to use the property name,
+which has hyphens, not underscores.
 
-> 
-> thanks
-> -- PMM
+> +        return;
+> +    }
+> +
+> +    if (size < extended_memmap[VIRT_HIGH_PCIE_MMIO].size) {
+> +        error_setg(errp, "highmem_mmio_size is less than the default (%lu)",
+> +                   extended_memmap[VIRT_HIGH_PCIE_MMIO].size);
+
+The size member here is a hwaddr, so %lu is the wrong format
+string for it (it won't compile on 32-bit hosts). You want
+HWADDR_PRIu. Printing 512GB as a decimal integer isn't
+very user friendly in any case.
+
+> +        return;
+> +    }
+> +
+> +    extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
+
+Because we set this field to the new size, if we try to
+set the property twice, once to a large value and then again
+to a value smaller than the first one, we'll print an
+odd error message claiming the default value to be something
+other than the default value. (Luckily I think you can't
+do this via the command line; but you might be able to via QMP.)
+
+Suggestion:
+
+/* If changing this, update the docs for highmem-mmio-size */
+#define DEFAULT_HIGH_PCIE_MMIO_SIZE_GB 512
+#define DEFAULT_HIGH_PCIE_MMIO_SIZE (DEFAULT_HIGH_PCIE_MMIO_SIZE_GB * GiB)
+
+and use it in the definition of extended_memmap[] and in
+the "if (size < ...)" test for the "smaller than default" check.
+
+Have the error message say
+   "highmem_mmio_size cannot be set to a lower value than the default (%d GiB)",
+   DEFAULT_HIGH_PCIE_MMIO_SIZE_GB
+
+I agree also with Eric that we should update the comment
+on extended_memmap[] with e.g.
+
+ * Note that the highmem_mmio_size property will update the
+ * high PCIE MMIO size field in this array.
+
+thanks
+-- PMM

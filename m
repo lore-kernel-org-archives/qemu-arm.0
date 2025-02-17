@@ -1,128 +1,185 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp158394njb;
-        Mon, 17 Feb 2025 08:42:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX5UHc/pxvZrpRFspTsYfZhRPc9BbrzsepwJQpEk0srFoIE7Y6Go8d+qceklanpGMt4XwuCP4QaNhRI1w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFktpajiG/mL/VTTjNsBbmAan3QQtYZahjlXgNceE6Ra8+kCTLdXYpg66KLji8u5Xtw/d7z
-X-Received: by 2002:a05:620a:1b93:b0:7c0:a954:6394 with SMTP id af79cd13be357-7c0a9546a41mr130457485a.14.1739810541021;
-        Mon, 17 Feb 2025 08:42:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739810541; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp212119njb;
+        Mon, 17 Feb 2025 10:06:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU0tIhj3+dAoPm/IWJlw7yp5g3cbowC980QNzn4FM7su3JHQJVG442UD/yrYRHb47sqUpuJVfFP3XjwcA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGI47E3wQkabLsj2ttfZqUwqLEVu90IPj+CtgY4+zxogWWVQ1gUcihetB8Qrmr6Ezc30bOk
+X-Received: by 2002:a05:620a:1986:b0:7c0:791a:6faf with SMTP id af79cd13be357-7c08aa74353mr1603969585a.53.1739815598206;
+        Mon, 17 Feb 2025 10:06:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739815598; cv=none;
         d=google.com; s=arc-20240605;
-        b=aLFbb5Ioy8zGf8sZmXC2CHm9xY7RpGRvSZcKT7x5RY9eGr5Iqj6OEGm1XQ+MJ2OOye
-         Km6VzrBLahjWs6HrJ1F7XnIDZLqM41TqTP6I3QIE1nqXyxJCe6lJ/RKmXxlMhZpD3/N2
-         oBj1xdGN4k3FSxK+eAkj8rVsRj4wlRrp55SaYW5qhRVwx7+pPi0V5L4uWsi1Ldzw9TYK
-         4vcixbLMzMIfldWO9rDFH0t7bIM421enhoVpWsiAMv8jOJGm/o0nidGmELqFNcuyrh93
-         RT8odPnDwgu2Yoy6z1v6rqChiRzQagXO0DrobXCMKBeUV2oZ34qYMb5T1KvsTcOdCctX
-         ilRg==
+        b=c0e4d2H3F4vK3pdPeK24sOkoThcTHhTFGkBE1IGKNVokYnPGWpweE7/OFwslxVV6zZ
+         yVG+nnJb40lHPpoF7V5e2hFBb1LC43JG6BTabP+TYQjo5WWIGCyqfOnk43J6C7obglq1
+         SmJhjiJnoQOEf1vD9r5yxhZdKiHgOmbe/RGtiwFSGgEeKVZ6G/NjGfjdT7ANEiU4uUOq
+         j79IQkujrRw5jL98ZUZp9WK1CivykQo6uWKYQOhd1yKOHXzUb9+tNZW28UpLpgTgEfw0
+         zgR6/l0EsTfx7sfq3ljKVwEHziDF1HngpvWeanQa0wYLelEegZMC2x8J/OVD/kE6d7GS
+         VA5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=XbkIoklqqdbuIOGIReku3lHEr+KYa4uqc8v7BThesjM=;
-        fh=47QcS27w30xEdSwnc4ef8oyM0HkcJB52S9BkqDpOu10=;
-        b=EqevNQyM3B7a6YBLDjrtv7G1KVhY1LG8+xoENRlleBRxwyhX0d6kCcHtHmc1uXIqYp
-         5FvpuB/g+2h7TtDp6qG36g/HrSvT0bUKc2653G06rqMAXtSaoIcLq11HiInUCPiqRvHY
-         RzYQP3HsWY19G8aWG7LCRXWRpeEvFQZ6lH/9qRoZ1iyLknolynzvUDCFOAhwMEuw+ozO
-         3MfWSrbj2Z0ria3fuSVYnKw5lnLGptAHYhfLVxSyAehrn0eFn0spjt060oai3HWNwYVz
-         w6LLjYB1AFbelvZr/Gflp9z47ntgzzS6QjFmD5jmTcFlHrfiJwy3lFHMFPg5qagpUNIP
-         pOpw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=vaN2sSPFFiwBnMfqYqsl5cyD2PC40+ClPj2oGdRuNAw=;
+        fh=zhmfxUXk91XYz8NF9r+yYVlZeFj4f/YIy3J3HQiGwlE=;
+        b=b08FW0x2HiSEau+/ljiixvtxPoS7hUrX0doe2p5WWsurkx8kC/DwUykEW0TLhgR6Xw
+         fbQSntiepObgAnqcC+N7oE6FY35gzjolHILdUSBfAv2snWEw+KznKYQKLBoAazQKQ7h/
+         FIipKRQZdHC/u0kLUTT9x7FpvxAeFWzqu8J65+PONoa0tTxxKu/Tt/owfYh/IUCvxE/x
+         SMsPWd41fi9/2QmF0Nat0gJ7cXaX/ynxoszFQ2tY9vNfP8WEqRRJUCcOvLOOVuqlYCGN
+         I11GGxW1msx0aYvmCXLr5nhjBa6qCLLyXiN5MBzSyCHtI90Vw4kqylu77WLMzNUDUu1L
+         /JXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDVZTsYQ;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kchamart@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0a41ff944si112721685a.63.2025.02.17.08.42.20
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="fFr3u/T4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c0a252cdf2si154231285a.322.2025.02.17.10.06.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Feb 2025 08:42:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Feb 2025 10:06:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDVZTsYQ;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739810540;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=XbkIoklqqdbuIOGIReku3lHEr+KYa4uqc8v7BThesjM=;
-	b=SDVZTsYQMZSLijn3vMdNdqERqBsoPizqyePbsAV4bN+KoF3GKIZ+WHkkASEiFNsWw8GrH7
-	ClCOINzWeYWlEqbtPK/YLS7Um6zSOaojYbR0ox6oQTPArorIRupKrA6sj7ivH9/UdpQj8A
-	zXtoH6e+WaeAgiSfrcDrfK9gwABnH4k=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-j4sB0fCTMsO_KX5yRpATvw-1; Mon,
- 17 Feb 2025 11:42:15 -0500
-X-MC-Unique: j4sB0fCTMsO_KX5yRpATvw-1
-X-Mimecast-MFC-AGG-ID: j4sB0fCTMsO_KX5yRpATvw_1739810533
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4235F1800878;
-	Mon, 17 Feb 2025 16:42:12 +0000 (UTC)
-Received: from gezellig (unknown [10.44.32.23])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 100F0300018D;
-	Mon, 17 Feb 2025 16:41:59 +0000 (UTC)
-Date: Mon, 17 Feb 2025 22:11:55 +0530
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, maz@kernel.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Steven Lee <steven_lee@aspeedtech.com>, Yi Liu <yi.l.liu@intel.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Alistair Francis <alistair@alistair23.me>,
-	Tyrone Ting <kfting@nuvoton.com>,
-	Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
-	qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>,
-	Joel Stanley <joel@jms.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Zhenzhong Duan <zhenzhong.duan@intel.com>,
-	Hao Wu <wuhaotsh@google.com>, sebott@redhat.com,
-	Eric Auger <eric.auger@redhat.com>,
-	Ninad Palsule <ninad@linux.ibm.com>
-Subject: Re: [PATCH v2 0/3] docs: Small changes to system/arm/cpu-features
- and more
-Message-ID: <Z7Nm03NCxsCGPTe6@gezellig>
-References: <20250213084219.2975727-1-kchamart@redhat.com>
- <CAFEAcA9MgeaCQspu=4dCusTQVP3KOvpze55vshPJCaNS_E43yg@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="fFr3u/T4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tk5VR-0003io-QO; Mon, 17 Feb 2025 13:06:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tk5VQ-0003iP-5U; Mon, 17 Feb 2025 13:06:08 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tk5VO-0005Nx-Fu; Mon, 17 Feb 2025 13:06:07 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-5e04064af07so3751057a12.0; 
+ Mon, 17 Feb 2025 10:06:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1739815564; x=1740420364; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vaN2sSPFFiwBnMfqYqsl5cyD2PC40+ClPj2oGdRuNAw=;
+ b=fFr3u/T4BjYZX4rxftcOzo5jDC5iQzi0rpuND7aM79FW1BsFK2aZ8j6r2C85arzDAY
+ s9SQst3zNPGS82jBJjUkyTAyxT7xgvRcomgM1hiEUZ6f6T89inuoc9QA/msfaglKOpy4
+ bAI0QSLLOSa4swPxcdsODfJgFvy6jRcgfLHdh9zqqGmUtZCr8wkRTYbanGv5S5tUEp6l
+ n6XMaNuFINDq1jn+HE7G/qGNfgq/MCRMpV7mgfmkaaeHQL/2p9rTnxXKQkonXMZuqYgD
+ MOsmNxhSx1vINupZXN/t4gujZOe/1O1LNBPM/t2lw4RzV37sNqm6if7kS0yztPZuZN01
+ 316A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739815564; x=1740420364;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vaN2sSPFFiwBnMfqYqsl5cyD2PC40+ClPj2oGdRuNAw=;
+ b=gXtb3X/FlgViR3rNCTjUxUHox/c9Jlj+IFHHY/eMajfa0USCVtO+50YtrWvYjNBijB
+ hcBKYRoZfQGGXvgne+fgY7CoWrlXcxTrk9eskkUDZwPK37dS4JURprN10xoRjzwJKJqX
+ mAw6pu6JoymkrXfYliYkaF+mLKHiV2ZYWq1SZtDHyQascwPO4/gMfby/L9pHBp6XhQ74
+ kv6o8s0+97jIllRoUL2qgV2UBcCmdqBRixMtefRVr5/QWMABGjQEbZTHn3l6/mu95FRu
+ F0quougCwSNp3bU3vDwzT3FzFmRZfeNNpi9SVXfVDt+3k8vo4JpU/inA8m1n9SXxN8u0
+ jVVw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUabD0QendhZ4fzp0JNJ2Hin0VL4Ryk3HX73KOpVR/H2mXXJSW0u5K9iVKD7A7T1RTGYudaNHfW/A==@nongnu.org,
+ AJvYcCUsUFN9+07B7fGexP5ILwwrhIksAfD5EyfKLVIQybjLtjx41vpaHODuzRHlXC2x4wYAxzxrSdOd42bBkw==@nongnu.org
+X-Gm-Message-State: AOJu0YwkJ0JXwXqLGMtvx1GDo8EMd2IUfOkh6G+yyDb+IatiQT7INwuE
+ fb+20wz4gHHAxyAKqIlYoi7RWVlNKl8ICi5TH/JaSH3ibYQ+FF5R
+X-Gm-Gg: ASbGncsLWFAv5gq3A71eV83wUxaPpPCweiMoCyidusG1w4buTH1VYnaLjWHu2/wM6/A
+ W18z5GukBE0OegExQvYKDdrwItfhP7JLpAWIYkcrj9wU5/r6CpRu9xwjLj5lSFvR0YIUM5Boyiy
+ oWVYAp71JHBHfX5oJNTrlYqBPABf9GZfeyAINJ8ccwIPNI1sxCs+iknhmOC53i3U62i5UELTTmG
+ hgbsq6IiKCB3LHgm8iGbQAed8fJVB+vqn6hQoKtGP8RJr63Dj/UcVsrvuKNEsakb9t+U5ypD96P
+ j1BzjyXV2VE=
+X-Received: by 2002:a05:6402:4413:b0:5dc:d0be:c348 with SMTP id
+ 4fb4d7f45d1cf-5e0361cc69amr10060460a12.20.1739815563764; 
+ Mon, 17 Feb 2025 10:06:03 -0800 (PST)
+Received: from [127.0.0.1] ([90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5dece1b4debsm7544846a12.15.2025.02.17.10.06.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Feb 2025 10:06:03 -0800 (PST)
+Date: Mon, 17 Feb 2025 18:06:01 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Dmitriy Sharikhin <d.sharikhin@yadro.com>,
+ "sai.pavan.boddu@amd.com" <sai.pavan.boddu@amd.com>,
+ "edgar.iglesias@amd.com" <edgar.iglesias@amd.com>,
+ "francisco.iglesias@amd.com" <francisco.iglesias@amd.com>,
+ "philmd@linaro.org" <philmd@linaro.org>
+CC: "andrew.smirnov@gmail.com" <andrew.smirnov@gmail.com>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "jcd@tribudubois.net" <jcd@tribudubois.net>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 20/21] hw/i2c: Import TCA6416 emulation from Xilinx
+In-Reply-To: <bfe7bca1df7d420266ec804d00a5352ef187c13c.camel@yadro.com>
+References: <20250120203748.4687-1-shentey@gmail.com>
+ <20250120203748.4687-21-shentey@gmail.com>
+ <df0ed59a-fe1b-44b0-a0cc-c62303294d7b@linaro.org>
+ <32A9B14A-A0F9-4768-A28F-80702FA93960@gmail.com>
+ <9d957453-5749-47c7-aad1-6977dac9aeea@linaro.org>
+ <bfe7bca1df7d420266ec804d00a5352ef187c13c.camel@yadro.com>
+Message-ID: <10A067EA-99B7-4898-BA08-15657BE841C4@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9MgeaCQspu=4dCusTQVP3KOvpze55vshPJCaNS_E43yg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: fOJZM5Qa1zA8
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WAKd1cmr3Tv9
 
-On Mon, Feb 17, 2025 at 01:23:51PM +0000, Peter Maydell wrote:
-> On Thu, 13 Feb 2025 at 08:44, Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> >
-> > In v2:
-> >
-> >   - Add live-migration context to the PAuth docs (Marc Zyngier)
-> >
-> >   - Fix the Arm capitlalization (Peter Maydell)
-> >     - Context here:
-> >       (https://lists.gnu.org/archive/html/qemu-devel/2025-01/msg05137.html)
-> 
-> 
-> > Kashyap Chamarthy (3):
-> 
-> Hi -- it looks like only patches 1 and 2 ever made it to
-> the list. Would you mind resending, please?
 
-It's strange, but as you pointed out on IRC: occasionally the list "eats
-an email for no clear reason".
 
-Now sent a v2, with a note at the top of the cover-letter.
+Am 3=2E Februar 2025 05:42:55 UTC schrieb Dmitriy Sharikhin <d=2Esharikhin=
+@yadro=2Ecom>:
+>At Sun, 02/02/2025 at 18:09 +0100, Philippe Mathieu-Daud=C3=A9 writes:
+>> No clue about compatibility=2E If you unfortunately need to add it,
+>> then please address my comments in the next version=2E
+>TCA6416 is _way_ more complex device than PCF8574=2E Basically PCF8574 is
+>shift register directly connected to IO lines, while TCA6416 is more like
+>fully-fledged GPIO controller with output direction, drive strength, inte=
+rrupt
+>mask configuration etc etc=2E
+>
+>In Linux kernel these devices are handled by family-compatible driver
+>   drivers/gpio/gpio-pca953x=2Ec
+>Closest things by implementation in QEMU source tree are
+>   hw/gpio/pca9552=2Ec and
+>   hw/gpio/pca9554=2Ec
+>However they are NOT register-compatible with pca953x=2E I suppose, best
+>decision would be new driver for TCA6416 which eventually should support =
+whole
+>pca953x family of I2C GPIO expanders=2E
 
-> >   docs/cpu-features: Consistently use vCPU instead of VCPU
-> >   docs/cpu-features: Update "PAuth" (Pointer Authentication) details
-> >   docs: Fix "Arm" capitaliaztion
-> 
-> (nit: "capitalization")
+Just for the record: There has been an attempt to implement it: <https://l=
+ore=2Ekernel=2Eorg/qemu-devel/20241107195453=2E2684138-3-titusr@google=2Eco=
+m/>
 
-Fixed in the re-sent v2.
-
--- 
-/kashyap
+>
+>Best regards,
+>Dmitrii

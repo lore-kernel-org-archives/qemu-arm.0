@@ -1,124 +1,123 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp2722335njc;
-        Sun, 16 Feb 2025 19:50:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUJbqK7bkr89TKxv4gKKdVumeIlZfXBRzUAEDvz2pm6FFab1aB7ocqWSYhupDUzt7OLNC6I24xBKDLRjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFldj9sjqp1eZpeZ/0u+9hSx/qvPh7sE4DF8DC1T6+Gfm1UJaYH542oUQdL4W3a+85V80Tk
-X-Received: by 2002:a05:622a:1304:b0:471:b546:9050 with SMTP id d75a77b69052e-471dbcc0e5dmr119877471cf.4.1739764240419;
-        Sun, 16 Feb 2025 19:50:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739764240; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp2724455njc;
+        Sun, 16 Feb 2025 19:59:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXml6VEAmczg3DZND/pu9pB5vuzcJO8iMB9WNoB1T84/Cj/JkEDnxPyGzWCGLjZ5MuiEhpHoW4sohMTLw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEo5P0O7Ofu6jNftrMod4+a1MiyfY09hv6v9GGCNtkRUto1US2LYUCB9XTG9ZCTsOM6iv+Y
+X-Received: by 2002:a05:6214:29cb:b0:6e6:5bd5:f3bb with SMTP id 6a1803df08f44-6e66cc8aa53mr114841506d6.7.1739764781150;
+        Sun, 16 Feb 2025 19:59:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739764781; cv=none;
         d=google.com; s=arc-20240605;
-        b=I0aIvA8X0TankQhBhfsTJvBDuMCM0hGU8++0jsBwIR6TD/6wuH6V432aIOqcmmPwU4
-         pQDolu2kK2fwRWC2ToGFOeaKUZ07jC4BAdptseogCmNjXU2ZvSbTqBsBAGXJZc2iuE4G
-         FxxaIyCr9GydmSJpI3ubbN6iGuJo+j4GUHY/eB7VTfXizkweBpQu1NTolb6OMNzYOymi
-         UFjP5XpqiZvOnLF45/ZFEazP+u+JNMmHu46CCVfGoUSdrYOy2Pdonk5VJ9koFf3WGPlE
-         TVRO++2uj4hldK9Nlpfxq1LS5E2TggBuQh5ZY/6Oz6pLxO/HPpafYdaRnh2skftUwJfc
-         FUBw==
+        b=Rrsowwp604+4/BQ9qmDB0SB6dilsklWIJ3gP3YvbTSZfWVJjja5IUp+sUyhYiJuvxc
+         NqqSFpplwjCPPKbw+mHKvSAXWlJuxCktZsFRivEQ3E23NS19Agck6KbiUyO/dSJ2adxT
+         IeMFN6zXs0vt8edJDX1hvkic+0X5D27l1WU8x7nHpwSLxuEarRqdvhgE3ucD1S88I6p4
+         8oiXLxK5ntLH8RJPazAH4x58ZJ+IJnNvXlQ/TTJY7/fbTbBIE4Te0E0VKIT4o3kZSR7M
+         dptsvI45izQPwKFpCNCC5x9WsAl2+VGWRqkaMaVaDzx+OJIwccf4frQrgYzsyr0uQdGl
+         +sXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9ygw7WIDZJrA8UQDfE5udyUyyNV78KT9W3tjyhghz9k=;
-        fh=ZWaYY9XDS4Xr14WYP0ZXX4UR3nzOuFLxxNk2LoTHSZI=;
-        b=XD4YCFYzD+YDMJ7L6ly16zZPC1Uvm9k6DiHsBmoSU4ZVhlLFCtGLEXrHvOvgn/7axG
-         HkaGprTfxTnHkMZX9AIlYpKpr+wvy14jh2K3W7Yd1bj+G/fkWBSgSXfdQd5lbxL6KEBj
-         cB+oGGaLVceOybNaz5KP4eMX2j+8V8O0ogygNgzgpe6ETaffhoSzWVrsQKsfTDJqval9
-         YHuUu8zBPGs+QEjj2ILlmxd5bXXTIQgDfZSrq1IHeBSE6IiZ2zkXd3zN//trhgLlLJ1u
-         MKxK58V9Jbuz/UUckFbt4wHuNCkD6uQfGvjr7Tug+rtiemHPdFel8OkWDwftRCO1AaM3
-         axvA==;
+        bh=h65WkFi/EmB5cWM2abccwfaf8y3XQxyzMfwJRkQ52g8=;
+        fh=D5SQaAQHQLJ8B3KMHI7sHb35WI4/RdkISvED0q4/aRQ=;
+        b=PLbpZjK/KKVG5/VMReAyo0+aIizXZ29Gigv9iXLMiwk9B/VlhgF5nrWJ3b7eqXi2g4
+         aPv0arFw9uK8HFd69ZVxUKAxo8Eltobef6Q3wznDtwwL6wQbfuu5M2aguP2qzP82OlBT
+         XmwuvebUQeNQxs0vgy6tX+KhOTdI0MEpL1w9XumH5+sWMgItsDk2o/AQkgClupy9oV3L
+         4nZL2DInhjPUIkQOQq/9sx2ivnx7jAONexP8ani8LW7ao78mtVpQGspXml9B2Yl/lntl
+         qrOmoG//dnF+qnJPR9hqwozjRW1mBaZ9fiIkLQaHd0sSy29uCM8SMQgmqIJmhDGrBQUX
+         wg4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3YmA6Ls;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bKxL2mVt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c5f1690asi76349991cf.379.2025.02.16.19.50.40
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e676213255si28011246d6.8.2025.02.16.19.59.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2025 19:50:40 -0800 (PST)
+        Sun, 16 Feb 2025 19:59:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3YmA6Ls;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bKxL2mVt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tjs9A-0000EP-J6; Sun, 16 Feb 2025 22:50:16 -0500
+	id 1tjsHc-0003fF-Sy; Sun, 16 Feb 2025 22:59:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjs97-00005e-G6
- for qemu-arm@nongnu.org; Sun, 16 Feb 2025 22:50:13 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjsHH-00036U-Gv
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2025 22:58:40 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjs95-0006IY-2V
- for qemu-arm@nongnu.org; Sun, 16 Feb 2025 22:50:13 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjsHF-0006u3-Sp
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2025 22:58:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739764207;
+ s=mimecast20190719; t=1739764716;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9ygw7WIDZJrA8UQDfE5udyUyyNV78KT9W3tjyhghz9k=;
- b=P3YmA6LsnM0C4EQVDDPwLe/zWWtYbo8idlh1LUOopNAOnoqOumqN1xbG3W9MMRn3p7qU9y
- 2/FvOV2rQst9u+o4NxJQfuySK3ZMP7gGXJwA/U5XAExTtzSe6LnFv60CX/WRqc8TEZMeeK
- 1gbZ4Z6fws++H6KfUqZK4j9p3s8Sa3Y=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=h65WkFi/EmB5cWM2abccwfaf8y3XQxyzMfwJRkQ52g8=;
+ b=bKxL2mVtV/32ySOTn6ZW/Wyya00oOYx6yJ+ME45lMwsUPNd54w/yjdqS3NpystLcjmE9pR
+ GkKCeayDZzoBGjB+ryUGmBg/zYCWooLP7RANnLM+2v8dvNSO7Bw3PDPj1F3otreFMe/kGr
+ sW8seU1N4Qa/IM3nYZBkbqEQO/xKPbM=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-CSGvpW-nOLuB1VjerMBfFg-1; Sun, 16 Feb 2025 22:50:02 -0500
-X-MC-Unique: CSGvpW-nOLuB1VjerMBfFg-1
-X-Mimecast-MFC-AGG-ID: CSGvpW-nOLuB1VjerMBfFg_1739764201
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-220caea15ccso139319155ad.2
- for <qemu-arm@nongnu.org>; Sun, 16 Feb 2025 19:50:01 -0800 (PST)
+ us-mta-649-NilbjJJcMnS4-SF5VxdqKw-1; Sun, 16 Feb 2025 22:58:34 -0500
+X-MC-Unique: NilbjJJcMnS4-SF5VxdqKw-1
+X-Mimecast-MFC-AGG-ID: NilbjJJcMnS4-SF5VxdqKw_1739764713
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-220ff7d7b67so42109405ad.2
+ for <qemu-arm@nongnu.org>; Sun, 16 Feb 2025 19:58:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739764201; x=1740369001;
+ d=1e100.net; s=20230601; t=1739764713; x=1740369513;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9ygw7WIDZJrA8UQDfE5udyUyyNV78KT9W3tjyhghz9k=;
- b=p+1bBVNx/W+Qscfci+CkwCwqeK8JiVrQHPi5YRJpDGKjZsnAXtcO7go8n/xrHVG9a5
- IQBm94+mghg+JLYTE+qUM9lb88MDBzaP63icYvMxnm8hpFwymj9IgqHOeWWA5JPNxFZT
- RL7TIFvOSHSzyz85AoAtf9L5PSl1DotnfI8jgEibPCC1OU7WmJakXLD3m/gqm6Dh/YY8
- z0OV/GOPeITBu0Gu4mznk6Y6YgH70s7eKV8qcWEOKSkX0mSC2E24IAsQz2oa8Y8NBF/j
- HPcds4YI94nEVRqkZcLEjvgRLILN6zRQsnvsHS2XaSmd+YrVMouMvzWRcaOOdA+/GCqJ
- 4F6w==
-X-Gm-Message-State: AOJu0YzfDGlOLjtpIgGUWVOpPXX+Ot6yBaXONV9RfYhR8rASpcErBtmr
- g93vn5OC0dxjQGIanvNnh53tzVgkkGgkSIv8RN4vzv4K3Z9m71BIy+g4m2Yj2VzHM2WHD2qHSZS
- bJYR2ARXKE0xDcrFtYLRTThD1+ycokPzTYZ37ZtfjG93svf7CCA==
-X-Gm-Gg: ASbGncs0lj7WuEMi/iKa305ek/11hUxuH0uu1AzVdEP1kpGYLsmqdlEOBVMgJaCJHDh
- zYE4r9lTqX/UtLLd8s/mhZfuqSYFR/tQTKJs/4HNE1Iw8FeHHWNgsUShW7uLxs08Tq1VFBw4YEV
- wFzzumw509ujiN42HejhLyLq/x/c+ZQ3K5QFVfQP80PdXT+Zk9VMW+VJ0YYlVBMXLiz7f5+il61
- kTCajZcJBdW/4wpHKIxU3CntRbisdxumfqyYt1RtXxpw3RzB6BcP0qwndFuyeah1tf2hURAMcjx
- B0rWtw==
-X-Received: by 2002:a17:903:27ce:b0:21f:89e5:2712 with SMTP id
- d9443c01a7336-221040ab970mr94464745ad.39.1739764201030; 
- Sun, 16 Feb 2025 19:50:01 -0800 (PST)
-X-Received: by 2002:a17:903:27ce:b0:21f:89e5:2712 with SMTP id
- d9443c01a7336-221040ab970mr94464555ad.39.1739764200686; 
- Sun, 16 Feb 2025 19:50:00 -0800 (PST)
+ bh=h65WkFi/EmB5cWM2abccwfaf8y3XQxyzMfwJRkQ52g8=;
+ b=ZQVaDgkHrAXvw7pY6u3N8zUXmvl3bXnUWeZ21B2bCP1P9C4Gtm++yKuM18eOi1yJXo
+ ELGvOQsh7E5Jx3UgCGzHFCIgQxy7bZv1WGxe79ynktBlEwh317wVRQdeQKPHRMbKPx5N
+ aGtq61wwcW5ryIs06wDCGp37XKTR1SlvknqUVrHp/0xfyNSAV8wVm4ialNkNNgzVPozD
+ jIy1WnLm6t9KZf4d+E1PGrqsYCy6bD4DKZ83Ki1xgxrHFx5ZmSGLBwbhpYzEciWMQphD
+ HhEzhlE72OME8cPNRrKlVH4BDrv+CRVI/bNL0UCXIcVF1plYawK9Zke+ZKVjC0zVc+c4
+ c7RQ==
+X-Gm-Message-State: AOJu0YwM+CQZEV4oFyjzGKf23IAVrfSs5049kJ+GWtdUr7gy/3KqPpRt
+ h4yyPuSi/FTR8LD6DtpY3fPKUIs+nWxZ+C9fESeWUv5GxaXF+ryIEbiKqxYpjXe8KmKfsxJXZqE
+ pONcvCUSCOlh/pSdGfawllLumz9mp0hT96vQQIZEGOGpQJezFUg==
+X-Gm-Gg: ASbGncteldOfpQa1PFmmjHLBUW7itdI1ofDixxTEIG/FA4QxHdBLPbw3GzixFGIhMNe
+ Q4PvN+rKUZum3YrqK9QNENhwIWa6rQkaPY5l+40ilouzXubq12HrxSKZttUnsmbXfav8WskEPz+
+ EY28PbkPNXYMYCRSmeWFO1+Pko0aF4o4VxJ8F6SQ4Kq7QVyh5YWuKdmUBYperI3deiTN821nOZt
+ s4QwgD74rYw1Le8+Rv6JV9XyxJEOWt45Hgiw/H5M+Y+dMqzgVY0S7uiUa4rBQdwug1/AI8OBLew
+ BEnnZg==
+X-Received: by 2002:a17:903:41c8:b0:216:3466:7414 with SMTP id
+ d9443c01a7336-221040bcc46mr148178125ad.44.1739764713099; 
+ Sun, 16 Feb 2025 19:58:33 -0800 (PST)
+X-Received: by 2002:a17:903:41c8:b0:216:3466:7414 with SMTP id
+ d9443c01a7336-221040bcc46mr148177885ad.44.1739764712757; 
+ Sun, 16 Feb 2025 19:58:32 -0800 (PST)
 Received: from [192.168.68.55] ([180.233.125.64])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-adb57d542f1sm6505740a12.2.2025.02.16.19.49.56
+ d9443c01a7336-220d534af3asm61917705ad.44.2025.02.16.19.58.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 16 Feb 2025 19:50:00 -0800 (PST)
-Message-ID: <e0250e0d-2af8-4b2a-adfb-3f5a01e0f03c@redhat.com>
-Date: Mon, 17 Feb 2025 13:49:54 +1000
+ Sun, 16 Feb 2025 19:58:32 -0800 (PST)
+Message-ID: <8a5b8897-0754-41bf-b044-15b85fe155d7@redhat.com>
+Date: Mon, 17 Feb 2025 13:58:26 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/4] target/arm: Improvement on memory error handling
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
  imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com,
  peter.maydell@linaro.org, pbonzini@redhat.com, shan.gavin@gmail.com
 References: <20250214041635.608012-1-gshan@redhat.com>
- <20250214101158.00004f69@huawei.com>
+ <20250214135945.322319cc@foz.lan>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20250214101158.00004f69@huawei.com>
+In-Reply-To: <20250214135945.322319cc@foz.lan>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HMwQqPdXKqqCaTQyYaloXhNbgZgQTdak4ZNqc0hznvY_1739764201
+X-Mimecast-MFC-PROC-ID: 0WT118_Pq2-qB38A8sxwrAbkRakg6SjpRoI51NFihGY_1739764713
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -132,7 +131,7 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.382,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,17 +146,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VCwvl9/C9C65
+X-TUID: Qa+SSL4lWkGq
 
-On 2/14/25 8:12 PM, Jonathan Cameron wrote:
-> On Fri, 14 Feb 2025 14:16:31 +1000
-> Gavin Shan <gshan@redhat.com> wrote:
+On 2/14/25 10:59 PM, Mauro Carvalho Chehab wrote:
+> Em Fri, 14 Feb 2025 14:16:31 +1000
+> Gavin Shan <gshan@redhat.com> escreveu:
 > 
 >> Currently, there is only one CPER buffer (entry), meaning only one
 >> memory error can be reported. In extreme case, multiple memory errors
 >> can be raised on different vCPUs. For example, a singile memory error
 >> on a 64KB page of the host can results in 16 memory errors to 4KB
->> pages of the guest. Unfortunately, the virtual machine is simply aborted
+>> pages of the guest.
+> 
+> There is already a patchset allowing to have multiple CPER entries
+> floating around since last year:
+> 
+> 	https://lore.kernel.org/qemu-devel/cover.1738345063.git.mchehab+huawei@kernel.org/
+> 
+> I guess it is almost ready for being merged, needing just some
+> nitpick changes to satisfy ACPI maintainers. Such changeset already
+> adds a second CPER entry for GED, and allows to easily add more as
+> needed.
+> 
+
+Thanks for the linker, Mauro. As I explained to Jonathan, the bottleneck
+isn't the number of CPER entries (single or multiple). The bottleneck
+is actually the acknowledgment mechanism. With the mechanism, a single
+CPER buffer, which could contain multiple entries, can be delivered
+and acknowledged at once. I don't see your series changes anything in
+this regard if I don't miss anything.
+
+>> In extreme case, multiple memory errors
+>> can be raised on different vCPUs. For example, a singile memory error
+>> on a 64KB page of the host can results in 16 memory errors to 4KB
+>> pages of the guest.
+> 
+>> Unfortunately, the virtual machine is simply aborted
 >> by multiple concurrent memory errors, as the following call trace shows.
 >> A SEA exception is injected to the guest so that the CPER buffer can
 >> be claimed if the error is successfully pushed by acpi_ghes_memory_errors(),
@@ -176,47 +200,16 @@ On 2/14/25 8:12 PM, Jonathan Cameron wrote:
 >> in, for example to dump the important data with luck. This series
 >> adds one more parameter to acpi_ghes_memory_errors() so that it will
 >> be tried to push the memory error until it succeeds.
-> Hi Gavin,
 > 
-> If the ultimate aim is to support multiple memory errors why not
-> just do that?  Been a while since I look at how that works, but
-> the spec definitely allows it.  I think by just queuing up the errors
-> and updating the Error Status Address as each one is handled.
-> I think that's what GHESv2 ack is all about as it prevents the
-> RAS firmware updating the error record until it is acknowledged
-> at which point the RAS firmware can report the next one.
-> 
-> Or... Given the usecase above of a 64KiB host page and 4KiB guest
-> can we inject a single error record with multiple CPER entries and
-> just handle it all in one go?
-> 
-> Set the Error record header -> section count to 16 and provide
-> 16 Memory Error Sections or equivalent.
-> 
-> Doesn't help with multiple errors in unrelated memory addresses but
-> maybe removes one problem case.
-> 
-> I've not checked all the information makes it to the right places
-> however or that we don't end up with a deadlock when multiple vCPU
-> involved.
-> 
-> If doing the more significant surgery this would involve, I'd
-> love to see Mauro's series land first as it cleans up a lot of
-> how HEST is handled etc.
+> Having a retry buffer might be interesting for some types of errors,
+> like error-injected and corrected errors. Yet, it doesn't sound right
+> to buffer uncorrected errors that would affect the virtual machine.
 > 
 
-Jonathan, thanks for review and comments. It's just an example that a problematic
-64k host page can affect 16 4k guest pages. The errors aren't raised at the same
-time because the SIGBUS signal is received by QEMU when the corresponding 4k guest
-page is accessed. If all those errors are queued up and delivered at once, the
-problem is when all those queued errors are delivered?
-
-Besides, the problematic 64k host page affecting 16 4k guest page is an example.
-when host/guest has same page size (e.g. 4KB), it's possible that two problematic
-pages are detected by SIGBUS signals. It's also possible that one CPER error
-is being delivered, but not acknowledged. A followup CPER error is raised to be
-delivered. In this case, abort() is triggered either. So the problem isn't specific
-64k host page size + 4k guest page size.
+The question is how the uncorrected error can be delivered if the previous
+corrected error is being delivered and not acknowledged yet? With the
+acknowledgement mechanism, all errors are equal in priority when they're
+delivered, correct?
 
 Thanks,
 Gavin

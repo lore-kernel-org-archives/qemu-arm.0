@@ -1,197 +1,145 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp199225njb;
-        Mon, 17 Feb 2025 09:45:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVYs9fJhE9+iW0iNv/awH5LSAXNc7+fuHqxoGa3MwuyXU4bwoAwwAo7t6TD+BhBzepmYWEjuhTl24/Rgg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFymEFE5Q/8eWLXUOGdhWql5fqynjHJ4KTR8yhYwXy4KvcdMbiNPnlHamo6agUW00FHKLsk
-X-Received: by 2002:a05:620a:40c1:b0:7c0:61d2:4ec5 with SMTP id af79cd13be357-7c08aaad182mr1748683685a.53.1739814359487;
-        Mon, 17 Feb 2025 09:45:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739814359; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp256465njb;
+        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXwh7rh6BEm7L4Q7T/Icg9UNDnBIxa3CjXIOJDxtbEg4iCRvejj3FyeOIkO4blJPbF2a/rIOlmVFQtf+A==@linaro.org
+X-Received: by 2002:a05:6a21:9999:b0:1ee:66f6:87e6 with SMTP id adf61e73a8af0-1ee8cbbba1amr19535377637.31.1739820522655;
+        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739820522; cv=none;
         d=google.com; s=arc-20240605;
-        b=k1LdBUhcwkUzPWr66hUI5zOcY2EvmPYy1A31hxLJwcgaGf9MvJhLknEGxYYb2mpDFW
-         XF5eZqIJzWwaA4JGzSqNPetjSTdMdm+zSPi13vVy/om1jdeAdtyoYk+gAOxGayZIEcO3
-         9F6LoBWR/4hHkRvPOlNQ5EYiWFLgUA3XoUOG8BQdMn67nU2cgIp4YKbxaqtz6ExW5FAJ
-         YhhHnIx5vPLaynaXVx7ZwpZI7JOU2+gVlmQxwxmVbX7k0iEhc3jsB759FEEXMhpbuPkZ
-         QFYzENNwkT0LDea6Ubo9nt2iIdshKIvwWXRD0xMlRB/xT1La7GOGNrk+dg7XulSo9K1o
-         6DOQ==
+        b=ZiXfZS4EJLLHxW0uISvBU9tT43DPEToWLVRPQSRVj31nkXhCF6dfIuMb8Px3EtfuEl
+         DT+rlFodo91254WwLzUHuucfBLOi2Of+fTnOxTrzkP8Hnc8z3h59r2xcZwOxlKSjsJGR
+         ywKdaCGpZ9NTyNsBeXIH4gfqjazNBapOBnmK9QS/FDl2D1hLEm24MITgT/NRXoTcqRIk
+         q7h9zDYwCQr3Qosg2qizLeeTXnUJypB5pgJn4d0oWvpEB6lKXAGv6nTKukhv4bk68TSQ
+         cMSiaRX4mbFCWYsFzirgZ4i/0VMnDcIG+IVetYSgUh+OfqxNBrbpQVgkPxF4a+UTHooU
+         VeiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=bARpz6GEXYVosp14t8tSmIlTn9yfAWyKdBrSYpBepWY=;
-        fh=raD6oBcmI/z2F84ZZ5nhi7CU5/iRFmIxACRBaTamy1U=;
-        b=NcGV/xoM0PU2rMbszylUznXAWrNLatQyNV5QAoHW4vWnMrQnsNT2bijC3Jwy3vUCGO
-         6jrdSuLt4lHXZWnsKN4zxAxnM9pSCqyyBMXV/YVXKulfrcdaWZJU+8Ts6dI7lBpUCYfu
-         MHVFkWLQly4ny7sinpq25cMTJkpt18izNl+ij+gOuolm5ZDqE7DduXSRa5gR7dmI9Avl
-         k9DvXwkRLvd4SfMDudS6PeHmiVfRICM/kieDcvIs1FWAJj4wmPqKDiZq/2qMwkAO7sL1
-         d3ce1HhqCc3sJta3lCdELYmy2F2uyBBJanTQMqfkMvHCOzNAW1m0HurXGhFgOyZE44Ob
-         Etvw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
+        fh=iYlOkC5AjwAJ0mVitG32CPvQhLbmhkk1mlUR2HiWX4g=;
+        b=VWOMsJYO9xOgFxdvyRJLFoflpI36ceLaNj7TsJpvYURVsfHL1wJjqvS4RGedetVCqn
+         JNtr90efSrUQZ99bG0gZQSjqjb8jfcEd48M27WkLLhpT9VN10K4PL7WVrb7yU5XBKE9X
+         KNznoDVK7KMZka15Hk7RlEcbPGXtw7f4LO/OUT+ofS6C8cAjVmf9UPSDJafKo9BmF+2k
+         O86JTLi6W9gaYORKxd6wl5BrKsou+/tANEkSEOqCJzEv++rIOu6ekFp9T+YsacauegPf
+         lJ28jn0zODOx255ZZHFsgSVU8H4itIj/8Yjl35R+5VZVomefuW83DQDWy5kI29L++Ywo
+         bjBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PPhruxzm;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c07c8d5a63si954120385a.616.2025.02.17.09.45.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=I968RVnt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73242459d50sor9638392b3a.0.2025.02.17.11.28.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Feb 2025 09:45:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PPhruxzm;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739814359;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bARpz6GEXYVosp14t8tSmIlTn9yfAWyKdBrSYpBepWY=;
-	b=PPhruxzmXqcqs0IXn0QYEHehEbUXUHmqE59qw0WsGe7/5i/pOWpmjdDbuKVBI2B3XacP5l
-	PDsDK6r2NPRDYU0oYWJJ8VjK3dBmZfb6a3kRaPv2QPb4M1capcT4NI9rh/m3B6cnBO9E9F
-	msLwZFtBX1rGZpmRub41OXXnfbZY6QM=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-25-RZRsW6vuOTy6AtrcyHzaQQ-1; Mon, 17 Feb 2025 12:45:58 -0500
-X-MC-Unique: RZRsW6vuOTy6AtrcyHzaQQ-1
-X-Mimecast-MFC-AGG-ID: RZRsW6vuOTy6AtrcyHzaQQ_1739814357
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-38f20b530dfso4863310f8f.3
-        for <alex.bennee@linaro.org>; Mon, 17 Feb 2025 09:45:57 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=I968RVnt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1739820522; x=1740425322; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
+        b=I968RVntCWaQUg87Q/yi4XdlVdV/b2h1bUy+s/UvAfW8fYjRcd83RCLiPwToXnqKDB
+         xcwFZPF/VcEoovUW5EDHrvWABxrGXAPt4mZKuzAvLXv4/vS6LoHVazA17HXLEEHzsyUO
+         L+wssR5VkBk6QO0wZjnUJZtX83eMZbnJmwvKQnqxErX7+ZO/npXJ1EmnIXonPBFt21gn
+         8eF5xnc70BXpVRVL73nYPjAHYgwt6JRD95fen8VlZwUzcKdmFmL8PYdZH/ExXKIGzRdG
+         n0pj1F3EBlgubC1o8YXGm+V8fU8z1Ic/IuCrWk6mZMqbzvHKQnPIjnRl1ZOfk5Qextqz
+         rcWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739814357; x=1740419157;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bARpz6GEXYVosp14t8tSmIlTn9yfAWyKdBrSYpBepWY=;
-        b=expB3+Swkk3oe8wp+5SMKwzkwTxRuL+Gt7fWbnULK9ao/5KL8+3yxC9mre8Mgg+LBk
-         DAN477uEbQKatvd6FdPf5nlSTX7zC41sLyEJ3PgP2ZpnYlzGMBQxIPH5MGrZeCZM+VXX
-         XkoJsJlnrJNU93DGMSV1rqLpeMkfwbIcshAK0W/MxB9lFP05NwnOZq6RKcsEZFsNij0T
-         id63gCetk5yFWPQTx8cWNJ2YEMFWyIfmLL9dY/voefPcjaYc5ehsRmBYebGLNgHbE62H
-         G4+Abj6zpTpsjxsZRo4qBs1Hu6hkRB9kP9OTHzvzC1ZpVkySUi5d+aZC/nXgvH9Ft7pX
-         c/WQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXKBclWNpqYG3JagJ0JoIN6ZjmM2jNNoNCgc07xtJxRkA6w2De5XUi+zVRLA6TQZhETnf+EzAE2TAc45g==@linaro.org
-X-Gm-Message-State: AOJu0YwnCVNJwwDsn+G4D11EKeXLZQr1kICA3kSrNfxQQbzZ/XcK3+Mb
-	AzY8G+GXbC2nD5AujHgGEP5ALru8SD3tiD6QEdq3N+97HrBzld0jS4I26a6B8qcbjmI9aX6iZTo
-	eUuj4KQaOTC5fTFlluGPwVL9VcldRYxJS9wMRAAsHyMoWJQSVh5s/4A==
-X-Gm-Gg: ASbGncsxokEU67fWkqZzZsTjPA/270gKZuYcQqhxapyLY7gpbxFB56r23Es94ArXfCH
-	+Y4+TshF6kiocah5K9qU0JsHgTD5/WECNvJ0/FVtwgpyLNvJT1jnFgBZD0ZgY8e1MFmsvTDagf1
-	yEx+pej9AEM0rfpGsHcDluddueZMoY+XZcxoalnDI6VzgSgO704GlC5TqR8UqZpdAgVF/WobL2f
-	BYYNMfF4R7nHeLnBPl/ukeTGX9EBmup5SK6hAnETGjiQ0+++BJO7I5gqxcwdggMGMRM5dolnGHX
-	59PRiANlzXtyYOq0x65/NHdIaOFU+WBvPM7zaZPADdts+bYOdZEq
-X-Received: by 2002:a5d:6c66:0:b0:388:c61d:43e0 with SMTP id ffacd0b85a97d-38f34167d68mr11769343f8f.48.1739814356783;
-        Mon, 17 Feb 2025 09:45:56 -0800 (PST)
-X-Received: by 2002:a5d:6c66:0:b0:388:c61d:43e0 with SMTP id ffacd0b85a97d-38f34167d68mr11769307f8f.48.1739814356402;
-        Mon, 17 Feb 2025 09:45:56 -0800 (PST)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f25914d73sm13039169f8f.54.2025.02.17.09.45.53
+        d=1e100.net; s=20230601; t=1739820522; x=1740425322;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
+        b=ETO8YUeA0XLTqck6aNOgqpf6qeGwWhfkKGMeGLdTNtT9L1DZzhQgmTCrPvNFvoovfz
+         GvDLg8W2woeImOOHltCwRC85psa7uLvjVVYpGKl4psdl/rFDf2XaqFcFQFIGJyJOLs1G
+         Xlu3f5VlxRXt2YSkORCWQo5fTgPp6CvjJ9wTIZowNSD/f/XLVyupCJyy62sEbHj9dkDy
+         2EySQT4osaIC60iPeJxmufc2vnHHBMBHMGNWcojXQIhPko2J26bI7BgTnYWOkTMyB94p
+         cErnHjk2o13TfHDMq21WN1cvXzDn3mJD+5Ably4vJtnM2cd8WAd1ZcI8fG07pipsqRwC
+         uBSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV9doqsDh9tRLO75VqE9469tcpS7ORP4trtJgXzbqWROQGuHYeSt3qch33l82mBR9ItMFTiepV6KDhD6A==@linaro.org
+X-Gm-Message-State: AOJu0Yz9gSseRpV0x7UiElEa0Y6Lnvx+VZLfaZvaZNsrHaU/eUAGsZrp
+	uS2XW7pdYV6rLGx07CbJ5VgqbYlQ2mPHpkeGcsXoJtz62D2SmPcPcXUS+L5xgOuxdQ==
+X-Gm-Gg: ASbGncvcnOTaTK+6BKUo8GTEMpyYGlcR7zwGYTkb296FNUR/d9dIqULGL5mtUEvP26b
+	GjqehScoHsAX716HHAoVl4VQmCPtVg6BHGjhg8pstssx+3umLfJsP64uA2erL1PUozvjbiKV/c7
+	f3nUCojJMZAaMy+AdHEojs08BdeppEgmzxnulBe48V056b9wWyRT2gEiyWJeTnQrFt7HhNrSIW/
+	BkTIFty9xe8yODdRDfCJcIxQIz9rNrDsCmUqjBreILh/khmIZj5dEMhRsTTfqoKFVSLUtsqZGUf
+	xfcvTcGeA9EYqBg9naI51bzBCERR3hDjGUTiMsJjdkz5M3qYxrslOhs=
+X-Google-Smtp-Source: AGHT+IFw9x3ddCLNhBbl16dPCQzotblc4ykNeeWquQsvMRT1NjsLlII2PlFLuCRaJQswwJsL3MPGMA==
+X-Received: by 2002:a05:6a00:2e08:b0:730:74f8:25c1 with SMTP id d2e1a72fcca58-732618c0351mr14386201b3a.15.1739820521870;
+        Mon, 17 Feb 2025 11:28:41 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (71-212-39-66.tukw.qwest.net. [71.212.39.66])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73242568a0dsm8436448b3a.43.2025.02.17.11.28.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Feb 2025 09:45:55 -0800 (PST)
-Message-ID: <349acbc0-dfc2-4cb7-8d5e-21e48a4219e7@redhat.com>
-Date: Mon, 17 Feb 2025 18:45:52 +0100
+        Mon, 17 Feb 2025 11:28:41 -0800 (PST)
+Message-ID: <3cf6d45b-0d0e-4669-954f-a545f3ec1a37@linaro.org>
+Date: Mon, 17 Feb 2025 11:28:39 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v2 1/3] docs/cpu-features: Consistently use vCPU instead
- of VCPU
-To: Kashyap Chamarthy <kchamart@redhat.com>, qemu-devel@nongnu.org
-Cc: Ninad Palsule <ninad@linux.ibm.com>, sebott@redhat.com, maz@kernel.org,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Yi Liu <yi.l.liu@intel.com>,
- qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>
-References: <20250217163732.3718617-1-kchamart@redhat.com>
- <20250217163732.3718617-2-kchamart@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250217163732.3718617-2-kchamart@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Pp1h8jh3MWfXx_wmGsJA73uSK3slDtPNiVqvszHJiOE_1739814357
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 16/20] cpus: Restrict cpu_common_post_load() code to TCG
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+References: <20250123234415.59850-1-philmd@linaro.org>
+ <20250123234415.59850-17-philmd@linaro.org>
+ <e52485c5-122a-4a95-928f-08fcd17cd772@linaro.org>
+ <a8be34a4-c157-4a5f-99bc-50c87c1330b1@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: Gho2vcfbHk2A
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <a8be34a4-c157-4a5f-99bc-50c87c1330b1@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: DHOoMYq78T/5
 
+On 2/17/25 09:19, Philippe Mathieu-Daudé wrote:
+> On 26/1/25 22:16, Richard Henderson wrote:
+>> On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
+>>> CPU_INTERRUPT_EXIT was removed in commit 3098dba01c7
+>>> ("Use a dedicated function to request exit from execution
+>>> loop"), tlb_flush() and tb_flush() are related to TCG
+>>> accelerator.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   cpu-target.c | 33 +++++++++++++++++++--------------
+>>>   1 file changed, 19 insertions(+), 14 deletions(-)
+>>>
+>>> diff --git a/cpu-target.c b/cpu-target.c
+>>> index a2999e7c3c0..c05ef1ff096 100644
+>>> --- a/cpu-target.c
+>>> +++ b/cpu-target.c
+>>> @@ -45,22 +45,27 @@
+>>>   #ifndef CONFIG_USER_ONLY
+>>>   static int cpu_common_post_load(void *opaque, int version_id)
+>>>   {
+>>> -    CPUState *cpu = opaque;
+>>> +#ifdef CONFIG_TCG
+>>> +    if (tcg_enabled()) {
+>>
+>> Why do you need both ifdef and tcg_enabled()?  I would have thought just tcg_enabled().
+>>
+>> Are there declarations that are (unnecessarily?) protected?
+> 
+> No, you are right, tcg_enabled() is sufficient, I don't remember why
+> I added the #ifdef.
+> 
+> Could I include your R-b tag without the #ifdef lines?
 
+Yes.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-On 2/17/25 5:37 PM, Kashyap Chamarthy wrote:
-> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-> ---
->  docs/system/arm/cpu-features.rst | 20 ++++++++++----------
->  1 file changed, 10 insertions(+), 10 deletions(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 37d5dfd15b..a596316384 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -27,7 +27,7 @@ disabled, enables the optional AArch32 CPU feature, is only supported
->  when using the KVM accelerator and when running on a host CPU type that
->  supports the feature.  While ``aarch64`` currently only works with KVM,
->  it could work with TCG.  CPU features that are specific to KVM are
-> -prefixed with "kvm-" and are described in "KVM VCPU Features".
-> +prefixed with "kvm-" and are described in "KVM vCPU Features".
->  
->  CPU Feature Probing
->  ===================
-> @@ -167,22 +167,22 @@ disabling many SVE vector lengths would be quite verbose, the ``sve<N>`` CPU
->  properties have special semantics (see "SVE CPU Property Parsing
->  Semantics").
->  
-> -KVM VCPU Features
-> +KVM vCPU Features
->  =================
->  
-> -KVM VCPU features are CPU features that are specific to KVM, such as
-> +KVM vCPU features are CPU features that are specific to KVM, such as
->  paravirt features or features that enable CPU virtualization extensions.
->  The features' CPU properties are only available when KVM is enabled and
-> -are named with the prefix "kvm-".  KVM VCPU features may be probed,
-> +are named with the prefix "kvm-".  KVM vCPU features may be probed,
->  enabled, and disabled in the same way as other CPU features.  Below is
-> -the list of KVM VCPU features and their descriptions.
-> +the list of KVM vCPU features and their descriptions.
->  
->  ``kvm-no-adjvtime``
->    By default kvm-no-adjvtime is disabled.  This means that by default
->    the virtual time adjustment is enabled (vtime is not *not* adjusted).
->  
->    When virtual time adjustment is enabled each time the VM transitions
-> -  back to running state the VCPU's virtual counter is updated to
-> +  back to running state the vCPU's virtual counter is updated to
->    ensure stopped time is not counted.  This avoids time jumps
->    surprising guest OSes and applications, as long as they use the
->    virtual counter for timekeeping.  However it has the side effect of
-> @@ -200,15 +200,15 @@ the list of KVM VCPU features and their descriptions.
->  
->    When kvm-steal-time is enabled a 64-bit guest can account for time
->    its CPUs were not running due to the host not scheduling the
-> -  corresponding VCPU threads.  The accounting statistics may influence
-> +  corresponding vCPU threads.  The accounting statistics may influence
->    the guest scheduler behavior and/or be exposed to the guest
->    userspace.
->  
-> -TCG VCPU Features
-> +TCG vCPU Features
->  =================
->  
-> -TCG VCPU features are CPU features that are specific to TCG.
-> -Below is the list of TCG VCPU features and their descriptions.
-> +TCG vCPU features are CPU features that are specific to TCG.
-> +Below is the list of TCG vCPU features and their descriptions.
->  
->  ``pauth``
->    Enable or disable ``FEAT_Pauth`` entirely.
+r~

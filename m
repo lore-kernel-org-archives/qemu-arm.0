@@ -1,119 +1,138 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp159404njb;
-        Mon, 17 Feb 2025 08:44:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUqsWyEtoXhIFdTm/OYze4CgTNFt0rVDZPnn9j+ax+ztMtE/UHJTKijXga7t2wEPwgXvuFWXwXFds3tKQ==@linaro.org
-X-Received: by 2002:a05:6402:430a:b0:5df:b0e9:a5da with SMTP id 4fb4d7f45d1cf-5e0360de1d3mr8552789a12.16.1739810654210;
-        Mon, 17 Feb 2025 08:44:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739810654; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp183896njb;
+        Mon, 17 Feb 2025 09:19:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNPwzGCVBJ73k054JhQH4kmtBRsqv17KvGZJ0lHnL3LlkZ3RowV5mCs0rIGoRxBf9aZQrprTjKtHKaHg==@linaro.org
+X-Received: by 2002:a05:600c:4a18:b0:439:5b03:586d with SMTP id 5b1f17b1804b1-43960bd4e04mr196523255e9.8.1739812793275;
+        Mon, 17 Feb 2025 09:19:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739812793; cv=none;
         d=google.com; s=arc-20240605;
-        b=EmrlhX+090ymIzVaAJYaGFTFaIGqlngQqdziHi1mlWW64eCbSj+c1sbZs2vzjBOd7d
-         omq4yKJwRPjLfUYZdyPP1jtisQb52/RUrj+3Xl4mWwAKw5dO5mbZJFoVzWrVn2PKDx6X
-         LepzLa0ZyE3o4phGdmOXHnJ1bxTBl5MkNpNdHJsT2p8tQK5V7W4Ap8Y73Uzpi9W+hdrm
-         1toLofUTxXM78wjh28aZ62YDP+MEqgR2WOkFNvD3V5XSacSAbv6Fq6XG75XsrL0EzCyx
-         UuI3K9xD/n4Bfw4ToFKXMmT7JbrBwC39t7zpj5ojKTfmsaDWJKlJKT8kNPwyWv8Ix5u/
-         7gnA==
+        b=MfkkNt0FfJA9s2xG+UjagqjZlxNLkyWYg8jGUQsCwIPmPv7vVJe7NTeDAOdkfReztl
+         8YIKJp9CCBnVFEZzH6YXSYVKsiJEczoc0fxuVzIWoL2r0tUJmAlTgGASRNbWIulQe2UF
+         EJTIf2c4kbbIaeON7J73AelCI4R5k2bKm2lnq4do6RwOOEXc1YgTmos/e6k3hs1hRoJf
+         zNNbCbEgO9/neVFZx0q8n5T7KzH1tHwq1mwVGF/dhuvep6fevmdfFMdxQNU0nPipMT/x
+         gjr8Qbfhxq73T9A53oxAWQJDM3RXFNOlXIOXmfm0iOYFFRwtYNIWaU0QkSt/Y6MmaXeF
+         0S0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=3FHUaz8ZQxfTEz+ywIpzuVfvUH6DLK/X9OlNeD6XI5Q=;
-        fh=AlvpSud0Za3JXQ/wT4X0bRO/15Vr5fipQXW9N6pdCRU=;
-        b=cgrCVTdZq4/gGnpiaibhlxNi1Yl4x4IuzXx+23IE93ZiuS17/kdMXESzIFGXr7czeH
-         mowmsBuHqFncq9JQO+srWPiyS2A92ulFp4oukF3Jjqi5I4YOpmprbWrZ2BlCubj4sAC7
-         KCNklLI7j1ih1uoNhqvfNsQvipdHK9XHBI7UNEiEzDG1+PEYllOvmn5PLnsBJVvSOgQH
-         R6AzdhWjcW/yimF5YgZkJSg6PHZjb4qydYb/2bR50VeF1M465tduP73iOXD9QEZ+jdyQ
-         lCBxjMTAO01Mov8brPxUvX1QVaBkSVJhieD0Xul1bZrvc7JBeSFyl9Mt+m+ESVq0zraF
-         Wjwg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=iQ6iKHAl4GiTXceekAQxS3dDYx6wGvfJgfBKoYsDbfU=;
+        fh=a8/iz6LfR0I0GaS71p1iNdX3f+fxeWRqZut9WDzu32A=;
+        b=ivU/oqPUzh+9aJa30hWJJywVBOhk8TBrTQD23oIz+8cpRqqzWh5ngqDC2VmIF5Qfci
+         qypPWFKNpYNJLXCOm5Ubba5GZvJaMvkechbbOrlnKORG4X8eBsinoGX9ecxLBTPihmRT
+         JIsY5GutTIbMqrjaRVsYqYO6OdreSksA8uhwT9R0NyAojhMFEgW880ncenEDSatJoRBX
+         5FvlDNjZ38ABEcaiu8Y7SKXHtaEChQp0KOgOuY1GZGbmFulU2FxHcARwPsS1BMbrcqbz
+         Q4q0TbjCU9esyrrymuXBBcRaFdO5arvxc+sC5gmQXcQpOKjC7C3uK7xbZ3y7U1xbOf4R
+         zfjA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y1z+HSbW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x48ybCB4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5dece1842a7sor4313899a12.2.2025.02.17.08.44.14
+        by mx.google.com with SMTPS id 5b1f17b1804b1-439804522e4sor8444475e9.1.2025.02.17.09.19.53
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 17 Feb 2025 08:44:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 17 Feb 2025 09:19:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y1z+HSbW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x48ybCB4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739810654; x=1740415454; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=3FHUaz8ZQxfTEz+ywIpzuVfvUH6DLK/X9OlNeD6XI5Q=;
-        b=y1z+HSbWPPj52/0QeXPKdqZVsDjIozcuJslSlQSdcGWD4HdStCkIuvaQdZdjuO5VY5
-         85kQey3a7TGFROlRccrmJn4PxLlfWjDe0cMLS+LjrCgcB3mzrfuP0nBwRukL3nsuMDtn
-         NUOeBne5xVNJCpNNCjcor+QbrV8/E5RgmhHpYmvD4OcNUnLFIBXWz0JuMRyn0kI+VrO/
-         vwyeoaHHRTozlZOeHEBmnOFkygEGdQ+8uUto85TAnyAVJEk4ylX6uiAPNK42ePaOntb5
-         gzCv16e/aDWxte+/3qGI07VT9/0d9EBtEr95EAYDLUUIRd87LoFuB33IRRZvGmnCQfb5
-         ANmQ==
+        d=linaro.org; s=google; t=1739812793; x=1740417593; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iQ6iKHAl4GiTXceekAQxS3dDYx6wGvfJgfBKoYsDbfU=;
+        b=x48ybCB41XLzqcK+1bun8juW1YF5rd5nX0gxsU7iMubM5Sl8uBEhyXHUUuTuoyf1N/
+         4ofLGiL2KBdToZ8j16aGOwzperRdJXuriKYfyZjpwNhMB8XvDsqmglmKGQw4QYA3j545
+         iPs2ZXTPKAkMXPHTjtqSSGxl5FQ289u4lTKfcWgYc9WXRMSWovKSumjE3mB0121EcRei
+         6/E4XpokEyjyTubOl3oJQYFsnNXV5x7WB9hytzww+UH7Ab12osLNoPFIWfR4W/DH62Xn
+         N8yv1w/L2C55CJWNMmvqgyOxEFZ4HYcQEKMYqjvjvkpcLqht4v+02WoCh3B2kDQgP7n6
+         AVJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739810654; x=1740415454;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3FHUaz8ZQxfTEz+ywIpzuVfvUH6DLK/X9OlNeD6XI5Q=;
-        b=euKmeYrNPw4BAefebc5xQD/bu3uM4sJCCVVqF7vhKmyCnbtLycZo3u/XluMF78+1Ek
-         9uWrsv+6CTMqtIr6/jJUmwPAqQcohyPFdkHB3ceN5c6yLFQEULaoTmX/25PIxvJZca19
-         mIZbeUDNgGKExe0rDd0cCa7z6gkNlD7CYj86MCxVcDMOoJhG+8n4MjLVJsDlPyPrWDTo
-         xhJbpnpW3g/1DclS5SD//ydmTQHCkD/WVLzXRs+JVc+Q4L7zlix8hXrPO+12/cW0hmEV
-         5tpIVLtL71DpTE/ZG9xlV6rkf5VuwZICbrNNkYIfTJzLXRe1b4NE+Em86JV+bf2Awxgw
-         SdjA==
-X-Forwarded-Encrypted: i=1; AJvYcCUBc6K+sBwJ8mem/KEiaJ3h0H+0gKjrA+ANrBE0Uk9t7WzYwtayrLk9ktaNCtyXW88fPz1rY2J3LEFo7Q==@linaro.org
-X-Gm-Message-State: AOJu0YzNSKqGqIHpw87Qo8AllwDwKVnbfAQPOQqC4VlfR6qizlib46gc
-	Om76+jQ7XvlBNfmpL51RhBVvvRD0rfUY1srG3VOrRjGB3x0E6t2VXnF8AdvBdQj+lCWnawcB2V4
-	z8JjjKDy3AmdBWRxH7m8zjXhzA7NK+YbzVfSxxMN6
-X-Gm-Gg: ASbGncsYDkBdWy1xQffbxixbFVdn5/ZkBv73VxR50JDNASXAM6Gmw8G4QkC7FI5YrCJ
-	qVDvHnc+nb4m3g+6KO7t++OYHjWuF/dBmdpZRbiG0gytAT9DYevNvmPIGY1XJGWyPhY/uxIgMQA
-	==
-X-Google-Smtp-Source: AGHT+IF2z0Tn106JwfTcbTOA8ob1xJk3Nzd1r8r28ml+1/7h8E8YoLHQcQF1OiE2O94pGUXHt/b9leat+umNKo4ICJo=
-X-Received: by 2002:a05:6402:3488:b0:5dc:a44f:6ec4 with SMTP id
- 4fb4d7f45d1cf-5e036092b01mr11041093a12.13.1739810653589; Mon, 17 Feb 2025
- 08:44:13 -0800 (PST)
+        d=1e100.net; s=20230601; t=1739812793; x=1740417593;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iQ6iKHAl4GiTXceekAQxS3dDYx6wGvfJgfBKoYsDbfU=;
+        b=wiQoFhdOboGkWjd+6KliR195kSkzbQV67KLawGLotd6iIOsEgZKfUBEVdEnCGb8qBa
+         s+pmp2ekniTn1dIOxZZZp8UUFPD1m18NA+TOZpARqVRjMcVDOL9WHEJB3SkCh0rnOpkd
+         VNUvoM6wzK3qlCNpaaX1lbYmt7r99Gg4HNoAi8MEhyXl0bRzTci4A7B5UjoVfXGGaBal
+         mnYsBp4THzUYR8Obphak1rug+zAyK+Ag+WJGh7u/h4923NQ4RUgP8ZWXVM9fVzPDotAs
+         fhkUHC8APKF084PQ5KQRV94X7WlZ9B4jNYjQ7iUN85tPWvBZomj7N2SEzjZKtgCRSEcE
+         Oh8g==
+X-Forwarded-Encrypted: i=1; AJvYcCWnKcLxwzAK3VcbgICjvK9sjcf83NnkAy4aSr19p/IzxRuoXDTwWTqthel/A9NmLe9y1+ImRMbU4Su59A==@linaro.org
+X-Gm-Message-State: AOJu0YyluSvlWJ4fyPtjRw91+yubkBvUSET0pu5x+uBoDf2pW+CZqaV7
+	E5rcRZZOsDNLNha3/s/n1a6qt0Q60WxCkEHmwDCIKzJ5fKCtCXXVyJt9s7afbU5KmQ==
+X-Gm-Gg: ASbGncsYcciES3j1jGqoKXygcNzqZ5f3EFKankc+9hWuED1JJ+4QaQwvrtDe8x2x5dF
+	wmLylXNTSGweN5l6Fzb2aBhji+bo9uanw8PZqtHVclPPdq/YtOsu2d8/bvRgiPgTVdRXuSdgQ0i
+	dtz0atmdAuhYjV2xt/mmhz93BtqJe6qUcdEH3FJdhtMtvPidXrYkYM5NSXW7N1wMflB84w9Iy1Y
+	FyXq9UoLKPKE3fSJ6lGtllKhjoISqQooZvFVapkxPDwLDhmDK3IfXCjSkh10y7/DIDSdvYcgqHt
+	zWO9K67L1PKd0bN2lZLY7meu/LYN0Q==
+X-Google-Smtp-Source: AGHT+IEgo1pk8uQGUSG6ebpaxNPekQ6qVjpVo6fgVMW/kIFnegEFZYxMbxaDbrxa4QtPRDs+dN9QbQ==
+X-Received: by 2002:a05:600c:3396:b0:439:8439:de7e with SMTP id 5b1f17b1804b1-4398439dfdamr42175065e9.15.1739812792683;
+        Mon, 17 Feb 2025 09:19:52 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.121] ([176.167.144.216])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4395a1b83a3sm157295295e9.33.2025.02.17.09.19.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 17 Feb 2025 09:19:51 -0800 (PST)
+Message-ID: <a8be34a4-c157-4a5f-99bc-50c87c1330b1@linaro.org>
+Date: Mon, 17 Feb 2025 18:19:48 +0100
 MIME-Version: 1.0
-References: <20250217163732.3718617-1-kchamart@redhat.com> <20250217163732.3718617-4-kchamart@redhat.com>
-In-Reply-To: <20250217163732.3718617-4-kchamart@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Feb 2025 16:44:00 +0000
-X-Gm-Features: AWEUYZkA--iZUaOyUegiY0uWHGnZA28MagWGT1ImgXRuF2Ab4cbzkvy7fM5jJho
-Message-ID: <CAFEAcA89YVi-0WTD=9=-nvK2-kr859VAtxgmvyhfTDNx3TvERw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] docs: Fix "Arm" capitalization
-To: Kashyap Chamarthy <kchamart@redhat.com>
-Cc: qemu-devel@nongnu.org, Ninad Palsule <ninad@linux.ibm.com>, sebott@redhat.com, 
-	maz@kernel.org, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Alistair Francis <alistair@alistair23.me>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
-	Zhenzhong Duan <zhenzhong.duan@intel.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
-	Joel Stanley <joel@jms.id.au>, Eric Auger <eric.auger@redhat.com>, 
-	Jamin Lin <jamin_lin@aspeedtech.com>, Yi Liu <yi.l.liu@intel.com>, qemu-arm@nongnu.org, 
-	Alexandre Iooss <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: Yv9+HLAaAyx2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 16/20] cpus: Restrict cpu_common_post_load() code to TCG
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+References: <20250123234415.59850-1-philmd@linaro.org>
+ <20250123234415.59850-17-philmd@linaro.org>
+ <e52485c5-122a-4a95-928f-08fcd17cd772@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <e52485c5-122a-4a95-928f-08fcd17cd772@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: Ayz3ZEsyfBAz
 
-On Mon, 17 Feb 2025 at 16:38, Kashyap Chamarthy <kchamart@redhat.com> wrote:
->
-> This is based on Peter's suggestion here[1].
->
-> I simply addrressed the occurrences that I found with `git grep "ARM "`
-> in the docs/ directory.  I didn't touch stuff like these "StrongARM",
-> ARM926EJ-S, ARM1176JZS, etc.  Related commit[2].
->
-> [1] https://lists.gnu.org/archive/html/qemu-devel/2025-01/msg05137.html
->     - docs/cpu-features: Update "PAuth" (Pointer Authentication) details
->
-> [2] 6fe6d6c9a9 (docs: Be consistent about capitalization of 'Arm',
->     2020-03-09)
->
-> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-> ---
+On 26/1/25 22:16, Richard Henderson wrote:
+> On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
+>> CPU_INTERRUPT_EXIT was removed in commit 3098dba01c7
+>> ("Use a dedicated function to request exit from execution
+>> loop"), tlb_flush() and tb_flush() are related to TCG
+>> accelerator.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   cpu-target.c | 33 +++++++++++++++++++--------------
+>>   1 file changed, 19 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/cpu-target.c b/cpu-target.c
+>> index a2999e7c3c0..c05ef1ff096 100644
+>> --- a/cpu-target.c
+>> +++ b/cpu-target.c
+>> @@ -45,22 +45,27 @@
+>>   #ifndef CONFIG_USER_ONLY
+>>   static int cpu_common_post_load(void *opaque, int version_id)
+>>   {
+>> -    CPUState *cpu = opaque;
+>> +#ifdef CONFIG_TCG
+>> +    if (tcg_enabled()) {
+> 
+> Why do you need both ifdef and tcg_enabled()?  I would have thought just 
+> tcg_enabled().
+> 
+> Are there declarations that are (unnecessarily?) protected?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+No, you are right, tcg_enabled() is sufficient, I don't remember why
+I added the #ifdef.
 
-thanks
--- PMM
+Could I include your R-b tag without the #ifdef lines?

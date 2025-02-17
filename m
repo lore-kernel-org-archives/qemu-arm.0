@@ -1,138 +1,231 @@
-Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp2666034njc;
-        Sun, 16 Feb 2025 16:30:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWj9DPc4dF8FU7Xv7QpaGiipLeA8jXU+8NoTkLG4dfM9cGxIxW+1LgdqJqDiumhPqqpCUA4h0GMsPUbFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPS9dExrbSTvHBDrehb+fpf0gDndcjBFj2iLD64TktBl6Ia82mZ4W3k+GCxuP469bBz4ah
-X-Received: by 2002:a05:620a:288b:b0:7c0:7a41:667e with SMTP id af79cd13be357-7c08aaa8aabmr957865585a.44.1739752203522;
-        Sun, 16 Feb 2025 16:30:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739752203; cv=none;
+Received: by 2002:a17:504:240b:b0:1be9:327d:8ee3 with SMTP id v11csp2710170njc;
+        Sun, 16 Feb 2025 19:03:47 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWXmhdTdoMyfxSK+NTy/zm87V6Ehhl7yRoQquymFQ3z/axFlnA3aWtr1tLtZE4+sHXSCGbX0jnwjBCOKA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHFwQ/rRgMrBctHf4SUqztxE2j/hqH55pZ1Xh+4Kl+M1Y0wbsJ7c4Ij/KMn0Yt1NtUeH0qd
+X-Received: by 2002:a05:6214:29cb:b0:6d8:a8e1:b57b with SMTP id 6a1803df08f44-6e66ccf6352mr147450906d6.36.1739761427334;
+        Sun, 16 Feb 2025 19:03:47 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1739761427; cv=pass;
         d=google.com; s=arc-20240605;
-        b=UhfgfrpEWJDmoKKBMsZToJFL2P0ISJyen/AwHT0Nbtgexz7sFhB0mz09ATSyCG5zrw
-         H63m6jgb1mGMrXmiSEid0GKlIF3m9GFPvsQVUZFA7HJX8Pf2aN24iVr8SA9d7i31BU2m
-         DLAISH7QqZzvwC4q+KMLk5VQxEYasUPJUVr8aC+84trxWhR8DdAMb9PKnXa/rwUp25Mi
-         5Np37F5riRzYf1KGIGlZC9BQ5bj+0nMK8IcXC+VnxsTLYoTDr3EK90pH0mBdokBB4PgW
-         4T2sYiqKILTh7KYBXQWpKHZopiPe9BEtjGnYk5Pd93KkeTSmq0F3de7xMlUPbG+PFqNb
-         72ig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=i2xpdpEhIQ1odH8lZbFBmgyas6/BuO2+rH7GhbECGtn5zw7g9mZP1167nY5BA6kuy8
+         OEbQybbFzsgyFxZHhun2cNquIULA9y3iQqyteF34fxG+v7py1LgNr7L/gFeHTGscxjNl
+         3+qKl5DN66DXi2ESQtWR0f0UAn1RyK8Ix6E3TdwgP+hT41dRFyWwzQATfMCpVykE+tYx
+         j5VupgqloGbNAzLiUsGDUbUemvZ6TJxJqEsa65pRIlxhwZMigy/mAMR7Rf6ROU7jiRVy
+         PapLENCS3Ee+Ut66PAz38fllCy4FUetBZBjUqo4047kv60g/32UgrlHHrXN3eUnaX1QD
+         6OUw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=vXJNdbq4maba12nquUSj5Dc56qd2/s7ETawfKG9qXSg=;
-        fh=uwLFj7UEyLkRAnb1NJsr8vL3dG7D5dIVPyn0zl/ZC2M=;
-        b=NiSIxXGDC8Km+QEse6UGe0v9IvIKt1GT90GPAWOedD0RH3O9thb/ZqAkYUDVX0aCHk
-         mEzTBMvfQfgzazMWvZaBq6V/3667U7jt1WFguPTnhKeyeatT4lyeRBAttUZedAuOWIYn
-         kQe2r7hXyngOgN3nGS9BptBtKgjCbpEh5xSXuHcmWVOpkcRsoRR9+fvj6gptcGwbXXQL
-         eALdThD8W4YRDRsDvmBhxE5bb8IXCeSHO3CuEkNlnuWhWsYtFfzv69wFFdMFzXMf5A8B
-         6C2pveHmLh5ab2GPl8kv8KU6E03pQmBgVPLAbJ6NwE5GE9QPLBS2Z0gtXJ1NmZNww+fp
-         Vm0Q==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=icg2IRjoye0fc7b9FxcHUYrHruWinQscl16vUcH8uqs=;
+        fh=lyRm11rGAR5X6xaGKr1UgMzJ8WkUZgueWSzbgF2gVIk=;
+        b=VC2DhWKtK9fb2/JRxZ29fHIBMRKqCQXJ+aFkJcUPE3afTnzeuXPJGATQM7fS8PCRY4
+         RAJLjbfa3R85XjzblttlbteZzZcj4N0p6nVLkXyqbpGQPsgubQtxtoqI2iq33gZuV2XA
+         rQIvnxEfOcwrzCTXdrqopipUzfC7EOKnpAqiE9Q6ArzNzh5icAu7qELYx0LUUYYUYycG
+         aVj+qLgFcZz+qEmT1CYS4ISyNCNCIJVcU/oaz3OJPs7qWB82knaCN6vUt21IJdRHbl7Y
+         T5pynONMF4mJHuLQDDoqkmRS4Qkr45awPgnV6MyFJyoOLwqMwV2dx9RNA0XgoKpMT88M
+         JLDw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aR3obX9z;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TriBpw45;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c07c892245si777325385a.373.2025.02.16.16.30.03
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e67812abaesi21672476d6.354.2025.02.16.19.03.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2025 16:30:03 -0800 (PST)
+        Sun, 16 Feb 2025 19:03:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aR3obX9z;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TriBpw45;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tjp1C-000256-SL; Sun, 16 Feb 2025 19:29:50 -0500
+	id 1tjrPp-0002rd-R9; Sun, 16 Feb 2025 22:03:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjp1B-00024k-8b
- for qemu-arm@nongnu.org; Sun, 16 Feb 2025 19:29:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1tjrPe-0002qe-Ud; Sun, 16 Feb 2025 22:03:14 -0500
+Received: from mgamail.intel.com ([198.175.65.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1tjp18-00045i-Lg
- for qemu-arm@nongnu.org; Sun, 16 Feb 2025 19:29:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739752183;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vXJNdbq4maba12nquUSj5Dc56qd2/s7ETawfKG9qXSg=;
- b=aR3obX9zdyYNxHLlt9E858JZEZKbwu2dyVz3V5H0UuD3vtH0USszleD+OSRZDXXKMn45Xc
- FktZn3TKcStE8PeIX4aKTQuDUftkrRcoXo4KUBsGIhh1r62HpiCkCimaIH5UfnCX3Qqe59
- StdThYnCJjI2W+cAH9s1v4UpSCV9y2Y=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-638-6wQfZ7FBOnug14Et2eLK3g-1; Sun, 16 Feb 2025 19:29:40 -0500
-X-MC-Unique: 6wQfZ7FBOnug14Et2eLK3g-1
-X-Mimecast-MFC-AGG-ID: 6wQfZ7FBOnug14Et2eLK3g_1739752180
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-220ec5c16e9so51870095ad.1
- for <qemu-arm@nongnu.org>; Sun, 16 Feb 2025 16:29:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739752180; x=1740356980;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vXJNdbq4maba12nquUSj5Dc56qd2/s7ETawfKG9qXSg=;
- b=NztXUSO25gt3dW9foT45ANeojsiCMeqs/esZaEYHYr4h79sSShQiNsJsAv8nAJUGIQ
- b1akzaBKzeCj9FLzEE5zrDZ+zXoAbUYW3lFxX9SwQfiagxdrjwRV1C6zE1RPpNjGKHtl
- ulU3nmD0LdV/ktM57bEtqtLfm2sA9ZDch/0SsduNp1V9eGO/ZZv/eEtZwcoRDFCpARHB
- 9uZzJKe/B+JMICEp0VgSYbhsSx+HFjFTYypXl8SHrl/HeSwVO0VCcvVPus5FD4RZLm0i
- LtTMvXFtgLYeGgHNbHIwzCRM2H/Xqd8Omz0J8oiN1HfVrcutdh3KE4rUT1Obq+T0w4t4
- IoyA==
-X-Gm-Message-State: AOJu0YyNBmn+OG1R8U/amGdvc5upPoLmE/JgDX44aFbINRCHUfvW56G2
- 3N+e82rrGFCO8KauvM+phmOOfKgAczCrw09gelbvNwHcsuKtsVjpoyegdI1buOn8/nxXj51rWe1
- XxMFEbnb9MvRoqhFzwk7CGKKoM7/IbH1nzcb6QzZ2wt1WByRCdw==
-X-Gm-Gg: ASbGncvfNpGENkixXXOfBCMHmhtl8VR8oLIJyNufUntphHlHZjo7PVsbJSF3DxW0569
- 7ko5reEYOPY8ghKf2Pwmw6Kv8CFPvLSY2bCKoQgJL8+iR0STuo/roVMaDmVpNj5UFAxw30en4HO
- 2S7DOfq/Zv+uRTS/oWg7PzJnFPBNz1hzw7ewdcgmJZ8iOv1JhK13qwDQHLcbugi9xkfF92prqEx
- xFtP0/wRhdJZg2zL10qZFCNqguyJlqgph2r9xfx7RacGuT14onkGmGnRXObGYXkctaIzGIRwlVr
- 0Fi+pw==
-X-Received: by 2002:a17:902:cec9:b0:220:bc9e:ff4 with SMTP id
- d9443c01a7336-22104062cebmr123387385ad.28.1739752179787; 
- Sun, 16 Feb 2025 16:29:39 -0800 (PST)
-X-Received: by 2002:a17:902:cec9:b0:220:bc9e:ff4 with SMTP id
- d9443c01a7336-22104062cebmr123387045ad.28.1739752179352; 
- Sun, 16 Feb 2025 16:29:39 -0800 (PST)
-Received: from [192.168.68.55] ([180.233.125.64])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-220d558527dsm60793765ad.219.2025.02.16.16.29.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 16 Feb 2025 16:29:38 -0800 (PST)
-Message-ID: <b6699187-a720-4fbd-a57c-a7bd86d7621b@redhat.com>
-Date: Mon, 17 Feb 2025 10:29:31 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] target/arm: Improvement on memory error handling
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com,
- peter.maydell@linaro.org, pbonzini@redhat.com, shan.gavin@gmail.com,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-References: <20250214041635.608012-1-gshan@redhat.com>
- <20250214095353.00007afc@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20250214095353.00007afc@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: r-BMcZdCWeAC2zk2_YZjtJ7HkantFTxC327zCAx5k2g_1739752180
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1tjrPc-0001eC-0v; Sun, 16 Feb 2025 22:03:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1739761392; x=1771297392;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=6AyL2VG2gLeIInbuHjSeB3wdpT8PbHXVaJAEWEPNk/w=;
+ b=TriBpw45nmLkWz+sKr/alapfclGQodeWsU8lMMeNT+apKx+m4KQAIXBQ
+ Ug2NKud2iv9WaBo7foy04SlMAtd/7Dcv9boZeL1Vko3hjVuGcjufpMqRA
+ S0v5wCeDKQtlP9oBy0YnPa6XEwXNNWE/bNy5o+UrQrfUXvaWNwKgQyXtU
+ c0q77wpNVS+STYdBsohTCPMUS/Mnb0t/7hfottpaAK77kBCFvQfpJaR42
+ VoNJH/6cy605LhS2UvY+1FZONab5jNmVLuahBIi3Id9R6nfA+swywIKks
+ p3/9SbjTNtsQxOgmHT5z1j3hjoiRl7saspRpjnIw/FLPCdrbPzVBz6ruv Q==;
+X-CSE-ConnectionGUID: KJm1yXQQT56Ij+8lxoK1bQ==
+X-CSE-MsgGUID: a0KkVotCR1KYy50KvEb3ZA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11347"; a="40139814"
+X-IronPort-AV: E=Sophos;i="6.13,291,1732608000"; d="scan'208";a="40139814"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2025 19:03:05 -0800
+X-CSE-ConnectionGUID: YisO66ChRDahGbcoHEvVsA==
+X-CSE-MsgGUID: oipkO5/wRYeY+JFCdx3Ikg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="144917687"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 Feb 2025 19:02:58 -0800
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Sun, 16 Feb 2025 19:02:57 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Sun, 16 Feb 2025 19:02:57 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.177)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Sun, 16 Feb 2025 19:02:57 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=WLCkod0lfyEsU5FMMhyifdpReoSLW1BI0NYiorZgwRkbWPmMf2nYO1q+1wuPuHLY18IYq9AVF5vxmEHSaW9DQOXd7igQ9VkwQCl6kw/Px5zVuhGBQstLAUh0YG70LRB3LWID18ltdAzXxzvs8OxkqgUrqdv74m3eHv0AaltjxvdPsC+FjgYAAMPGtE8BasV3BQjB+NdiVb2qJ9qr2b5fCbDMFgVGaqVYBFyFN17zZnqlWErFKqlVbt0utSrfek3IiM0Y9IrPwKEdo35g4rGXM1XTIgY/iNXB107YhKYuUAJreKNBwI7dm9OQZNtPdevtH2KfxrwsIMkYv0QD9jlkGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=icg2IRjoye0fc7b9FxcHUYrHruWinQscl16vUcH8uqs=;
+ b=L8NBy5Enm25pLaZpjVRp7A0q5FqC26vpYr7V7ocKMAm2FbMwc5xzoajEZQ499HKSpZXXyt8kJ4I9g0Am6SzXcqhPXc6GhwjOp+it0M3EZ37OaDfQfZtPS+xJ6OZ38oLztgFf0Bj6OU2WlF9cvjg+GRXln3NSz3u29uMKfuh6c5lQTZjCNld+WEifx6LImTMI9Sw4RopJlN6kz0O1TRP79LAFBKYNn59ojwMwFKomflx8Nug3a3gbxHr5FhTj3y+p8bngt61/xUTZIGCX0qik+ALMgq9k+3TLKCKtGKoPySShN8Z/bvr4DZvyhbTYj1Jc+rSYjqMYtyk6zcKo1hyZPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
+ by DS0PR11MB7557.namprd11.prod.outlook.com (2603:10b6:8:14d::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.19; Mon, 17 Feb
+ 2025 03:02:53 +0000
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::fe49:d628:48b1:6091]) by SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::fe49:d628:48b1:6091%6]) with mapi id 15.20.8445.013; Mon, 17 Feb 2025
+ 03:02:53 +0000
+From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "clg@redhat.com"
+ <clg@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+ "ddutile@redhat.com" <ddutile@redhat.com>
+Subject: RE: [PATCH 3/5] hw/i386/intel_iommu: Tear down address spaces before
+ IOMMU reset
+Thread-Topic: [PATCH 3/5] hw/i386/intel_iommu: Tear down address spaces before
+ IOMMU reset
+Thread-Index: AQHbeKLMyYd+oAvkI0aAtbyMJaiADLNK3oTA
+Date: Mon, 17 Feb 2025 03:02:52 +0000
+Message-ID: <SJ0PR11MB67444138EAFE0660733B315D92FB2@SJ0PR11MB6744.namprd11.prod.outlook.com>
+References: <20250206142307.921070-1-eric.auger@redhat.com>
+ <20250206142307.921070-4-eric.auger@redhat.com>
+In-Reply-To: <20250206142307.921070-4-eric.auger@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.382,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|DS0PR11MB7557:EE_
+x-ms-office365-filtering-correlation-id: 2b63b085-469e-4fd3-de7b-08dd4eff9201
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|7416014|1800799024|376014|38070700018|921020; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?PWXD2wX++BpW5zfys6CObbzs6xI3bP8bBl/WHozp7hWB/ginWD0MfzZ9dN+b?=
+ =?us-ascii?Q?gXHQupVhJLMNzEdryMOPG3JnhlrrMW+jG755w5ur9z03AOMuZ+tEfApexGq1?=
+ =?us-ascii?Q?eG4XYP2ZWx7+QSfFRR23Gl+4E81Wq3oGNgQNqj4mJ9LqeYeAJqbIpHjLM6JK?=
+ =?us-ascii?Q?8FWQxK7qzUEWOye4zLU0pdBPeasSdMOBXukPqGr5HTjquXeIMr0ObkjeFbHQ?=
+ =?us-ascii?Q?Me3qeqqjDM/Gx8lI5toWGVamzr1r4j2Qva+u0tk5B2bmVMIR8evNj/9y3Dkc?=
+ =?us-ascii?Q?/rtxRKJW0zgdvtBJ19GpaIWIUF9QTI36luRqJhWq0eVT5ev5I7WAi1c14JwX?=
+ =?us-ascii?Q?Q5jNofjb2uvOAPbKHnRF+lorKVOhN7ILQa8IWFcSfHWR55wMpPo48vSQE7VU?=
+ =?us-ascii?Q?cmz+uee3zjfVXdRMwGmWj5vd7AVC46A6R42Fbkc+Qk9k3tzeXgzwyi5Hbend?=
+ =?us-ascii?Q?ofU8EEyKcyegOzRPyP3uI+2w2n56mo1I/opFjGrIiUVskjybtXsrhMi+VP8k?=
+ =?us-ascii?Q?xFhVw26mOKkcj+pLyALJBVABqYVmKMpG4sawcciPzycMpZeAQPlgAlz0pKA7?=
+ =?us-ascii?Q?VvV8R1luj5pmjaNuPDTvmgwppTH17oeQYpyv8p1MCR5u+jrDAA8DGBeEJuvJ?=
+ =?us-ascii?Q?wUCNbl0Bu4TzymkOey7cUguzHHMMeXK9kkvFrOGUXXYokf+IdhZtP10AHyaD?=
+ =?us-ascii?Q?URs0kUu1rgP9/Zr5JUdDS+dmJAEwuk3dd7wmCOcmsNnNzxOGH3GYY/SilqHz?=
+ =?us-ascii?Q?F97On0kC384nSFlST+cBtXy9Rtu2WbfL/coUkzxY4lgkOONgjKTEZo2FT40i?=
+ =?us-ascii?Q?gjFwLEr2LYZ/YzLEJgA3J09S7oKm1G4iGp7DxgeLfrGuEFyhFYdvLhCH0Drs?=
+ =?us-ascii?Q?6sJ/vY2uljWkbjDwV9fGuNDoVDiEBH2cZncpe97KPQGTLRC5y4wQDQP1QpIc?=
+ =?us-ascii?Q?QyVA+dG6Qa+IT6E4SNX9SylDKdKP4G1690Mx0jYTew13hFhdz3iy/WHd33id?=
+ =?us-ascii?Q?OOS+ptQKq38HVQ+sCCK+iUvnuQxR1tY8pjzJlQiuaC5lUwZs7AdYF+Qz4nbw?=
+ =?us-ascii?Q?zZgZrsseLOVI+hZLL0ezLvcker4QfBVt5L+qI4vAowYIrfO8D4S5SoEfwkWF?=
+ =?us-ascii?Q?KparuDa3bmYf5xGfN2dNER6wIZW9Y7HOoZXozh+EkBvMHsrODUh/OFWJEmHB?=
+ =?us-ascii?Q?vYcr19PaXqzZh0aZf80mSZ38KRpA7HEr3fBopz4ofEsHIumIVSk9vMaUci+f?=
+ =?us-ascii?Q?agLAtqbNHdab+qyGlcd65GQDl8T2hFszbuvDCPobX9VJBLdw938TvutfXTyg?=
+ =?us-ascii?Q?ls1e5YROtuIxw0c629xhkM5d1I+9+nxS9ObBvJDSG2VrS6VsitkyqturfJGy?=
+ =?us-ascii?Q?DqQeXItsSFxc/jXj0UFL/8CNHHGPrQnEPwq4lpaxzQgev4RMrGlVt7jWTZg6?=
+ =?us-ascii?Q?oe4XLv83x8VQ3/y+MGixN7Ia0Oa/bHWtAPREnfEWVvS+gaHFy5S1dQ=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(1800799024)(376014)(38070700018)(921020);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6wcqf1A4nHwKyC+3AosSwGpxW9QruXwoU8/vvH+fc3pYbP4fK8+p+5fd3VMx?=
+ =?us-ascii?Q?phnha1cS4v5G3tpdpNS+CZlHRkq8bMrMcsKC6rKdhfG3fpigozuyAZ/bDbzq?=
+ =?us-ascii?Q?fNNchm9XQv6xWRaiVYbQASc/KFNXY18UtghXZy/Ts1Bminbf7wxoErj7shD6?=
+ =?us-ascii?Q?z9XLCTPe1B4LkJTMe08TsY9zeVCPRY9sg2lnahweW1OwyRbJV61+5sB4BQ/Z?=
+ =?us-ascii?Q?eTjnWAq0zu6//UYHsEWNiAHc1lxL/M4ynBKd/DfSUMQq1T5oETMw+ePwtWXy?=
+ =?us-ascii?Q?qPd6xQnSRA9v7FymWpzZ2+F1WDvwa1hiQEcMlNO2MeTp2WFEpwErVSYJSELd?=
+ =?us-ascii?Q?hPw3U3pEemGhuUG7wfNVDApd6ViQ1sUHt5qqdUmwRHf1wVk+OgWYJG4RBzu6?=
+ =?us-ascii?Q?qWZq524JPUVzlX23o/RFx4ozjx3DhW4D6fFNgcOQpP1IBvsYIN/nCuqlwv/E?=
+ =?us-ascii?Q?shImG+R0DjWoHMkHnOxfG5PJuvhrEm6BN99P738IQtnuPD6QpufZUq0Q1f9Y?=
+ =?us-ascii?Q?c7L8zzLOqdcUIJRUd24eX7Os3FtPSqLL7cfj3TbD28m0hFW1sgKG1NNh/q1X?=
+ =?us-ascii?Q?e35FqP7InMst8VxwgagPd4k5lJvTfUU1X4hq5kE3iDfOLp8nNk13Im/iXRuQ?=
+ =?us-ascii?Q?TqV+YB4eZZdZoi7cXsoLKON81+gyCYKFPbfQ5DFcu8st5Ff2EtCHD7MKpyyn?=
+ =?us-ascii?Q?r/s82JGI9mXm9GIZr81RWTHbG2utQYMoUteGnDhZd7vBoaVF8wo1nPKCOvje?=
+ =?us-ascii?Q?Qbf4Zv2JufnBuPeib80c31Cc7YLB6HLja1VZR+ClDi05j684Ih7x13C2i3yW?=
+ =?us-ascii?Q?ZNg2T4gzn+2yFGgsAEB8o1/oY8A54NoxsFCcDuroHAH+uEmikeJrFjFEhPMe?=
+ =?us-ascii?Q?fAQLVCxScSVXsVkBZ7QPE3xHegzExuunBtA9qorihQkvC/uhw3j4QQx8msco?=
+ =?us-ascii?Q?iIt/6+Ql9DSsUIgeLz0sp5FmSRHA+YUbRuTGmRxCmQIZtqHzB1fGT87wZdjF?=
+ =?us-ascii?Q?G/U2b9miXj+4W3gtJo/lUirSsv4DEQWvT3De5AIRyBgb/uyIfU96s6b+tFbk?=
+ =?us-ascii?Q?vxRasJbjAWZL5H4UjW7c94277vBD2Q/3D0brnqpQZArJ7SLW+q1pxkO85Cp1?=
+ =?us-ascii?Q?H+rsWwXe9+JPJ3n/pp4ojdQcgeHnTZ8pe1mPbWIhgWA5YUJuP4qF3qDi8paV?=
+ =?us-ascii?Q?VQh0J7SUtPrWj2V7Fo6TvdFu2afqw0+gHWYyh8RbeKnHgyKA8Xc3fmsXbgtS?=
+ =?us-ascii?Q?0BH0QW+IxUzBmcWCZyySo0Do/9y7n5OsDjEyfB2kQ3BsrhCG6YAkgb+cT/5J?=
+ =?us-ascii?Q?0diFmOVrAJl0CieR12loozoecgxoy/bM8ekPMDN50cRKDgTHzLqnPiXAXRCu?=
+ =?us-ascii?Q?yt5WsBENwzw6qXDP36X6PzvfRPt3Y8WU6bEHqO54NmuXZpjxA8wK2o3zlQ0k?=
+ =?us-ascii?Q?P4tAPsMWBHRgqqaEH3pgwBOzADfQApvUk1HU18eNmL0yPJglGD8Aw+wWhaVp?=
+ =?us-ascii?Q?Dc8dhdCkqEPXtgQiVu23ZmH1ceCvsqsCmTqNByx0SsNp77Ok62GVUaAEtwZ5?=
+ =?us-ascii?Q?PIIjtA5Nr1hTZmeF5iQjz9Szul8N3frf9/4LOZQ4?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2b63b085-469e-4fd3-de7b-08dd4eff9201
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Feb 2025 03:02:52.9479 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qRdASUVXnlW78Aq7Aufb+eG14yW+/dB/e7LjH3Kcvk3WdGJSOW8smksE1yW+1/8hb6VpPnTgcE5nJLZ+47sQYRl1wg5XukleguKYgPRce3w=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7557
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=198.175.65.20;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.382,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,69 +240,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IXHD7qNYXfJw
+X-TUID: Z2vG3o5pj/S5
 
-On 2/14/25 7:53 PM, Jonathan Cameron wrote:
-> On Fri, 14 Feb 2025 14:16:31 +1000
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> Currently, there is only one CPER buffer (entry), meaning only one
->> memory error can be reported. In extreme case, multiple memory errors
->> can be raised on different vCPUs. For example, a singile memory error
->> on a 64KB page of the host can results in 16 memory errors to 4KB
->> pages of the guest. Unfortunately, the virtual machine is simply aborted
->> by multiple concurrent memory errors, as the following call trace shows.
->> A SEA exception is injected to the guest so that the CPER buffer can
->> be claimed if the error is successfully pushed by acpi_ghes_memory_errors(),
->> Otherwise, abort() is triggered to crash the virtual machine.
->>
->>    kvm_vcpu_thread_fn
->>      kvm_cpu_exec
->>        kvm_arch_on_sigbus_vcpu
->>          kvm_cpu_synchronize_state
->>          acpi_ghes_memory_errors         (a)
->>          kvm_inject_arm_sea | abort
->>
->> It's arguably to crash the virtual machine in this case. The better
->> behaviour would be to retry on pushing the memory errors, to keep the
->> virtual machine alive so that the administrator has chance to chime
->> in, for example to dump the important data with luck. This series
->> adds one more parameter to acpi_ghes_memory_errors() so that it will
->> be tried to push the memory error until it succeeds.
-> 
-> Hi Gavin,
-> 
-> +CC Mauro given:
-> https://lore.kernel.org/all/cover.1738345063.git.mchehab+huawei@kernel.org/
-> 
-> is more or less reviewed subject to some requested patch reordering and
-> whilst I haven't checked, seems unlikely that there won't be a
-> clash with this series (might just be some fuzz)
-> 
+Hi Eric,
 
-Jonathan, thanks for the pointer. I didn't notice there are pending acpi/hest
-changes. The changes clash with those included in this series, I will take a
-close look.
+>-----Original Message-----
+>From: Eric Auger <eric.auger@redhat.com>
+>Subject: [PATCH 3/5] hw/i386/intel_iommu: Tear down address spaces before
+>IOMMU reset
+>
+>From: Peter Xu <peterx@redhat.com>
+>
+>No bug report for this, but logically tearing down of existing address
+>space should happen before reset of IOMMU state / registers, because the
+>current address spaces may still rely on those information.
+>
+>Signed-off-by: Peter Xu <peterx@redhat.com>
+>Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>---
+> hw/i386/intel_iommu.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+>diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+>index 21a8bf45f8..1bd9ae403b 100644
+>--- a/hw/i386/intel_iommu.c
+>+++ b/hw/i386/intel_iommu.c
+>@@ -4702,8 +4702,8 @@ static void vtd_reset_exit(Object *obj, ResetType ty=
+pe)
+>     IntelIOMMUState *s =3D INTEL_IOMMU_DEVICE(obj);
+>
+>     trace_vtd_reset_exit();
+>-    vtd_init(s);
+>     vtd_address_space_refresh_all(s);
+>+    vtd_init(s);
 
-Thanks,
-Gavin
+I'm not sure if we should have this change. vtd_switch_address_space() chec=
+ks s->dmar_enabled and vtd_init() updates s->dmar_enabled. With this change=
+, will we leave stale mapping there after reset?
 
-> Jonathan
-> 
-> 
-> 
->>
->> Gavin Shan (4):
->>    acpi/ghes: Make ghes_record_cper_errors() static
->>    acpi/ghes: Use error_report() in ghes_record_cper_errors()
->>    acpi/ghes: Allow retry to write CPER errors
->>    target/arm: Retry pushing CPER error if necessary
->>
->>   hw/acpi/ghes-stub.c    |  3 ++-
->>   hw/acpi/ghes.c         | 45 +++++++++++++++++++++---------------------
->>   include/hw/acpi/ghes.h |  5 ++---
->>   target/arm/kvm.c       | 31 +++++++++++++++++++++++------
->>   4 files changed, 51 insertions(+), 33 deletions(-)
->>
-> 
+Thanks
+Zhenzhong
+
+> }
+>
+> static AddressSpace *vtd_host_dma_iommu(PCIBus *bus, void *opaque, int
+>devfn)
+>--
+>2.47.1
 

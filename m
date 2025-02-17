@@ -1,123 +1,120 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp282849njb;
-        Mon, 17 Feb 2025 12:22:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVsSD1UqJluuGgLoB06saT39xMT6S33dO11Ru51SouKCKOV4It4HPwRppeNCQowLLEQHboUD0nDfUCwHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFYz6pdzPChk5Lw+TBq2dkmGYQAMpr8vPZp54fnJOLyvyulLWwKKWOl8CDRa+Ui1d3S8JXp
-X-Received: by 2002:a05:620a:2493:b0:7c0:60a8:7741 with SMTP id af79cd13be357-7c08aa7a047mr1976443585a.36.1739823733742;
-        Mon, 17 Feb 2025 12:22:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739823733; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp283431njb;
+        Mon, 17 Feb 2025 12:23:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUp8Oa5XGUweVGLgK+y4AzJqztJzDjUu83I8zD2l/YtXmz/FmMgF/UM//qo4NWkKX4O25iTpKVLIp5aKA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGGqNXNI0Uy3qtA8FRfd0w1XWA9+FaeWmSiHiDTATcSrhyd1KnwmMBTCWBbZ8j7d4+BE3uj
+X-Received: by 2002:ac8:5955:0:b0:471:fa40:cb1a with SMTP id d75a77b69052e-471fa40e478mr30898091cf.0.1739823818706;
+        Mon, 17 Feb 2025 12:23:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739823818; cv=none;
         d=google.com; s=arc-20240605;
-        b=ieQJHGmlYb4B841/NB/I61KHNT+O2ixP4awwBw2C6lJmP3rjWYdPF9tPYgovfGqFHa
-         rd1WdbdZ8MvYHQK+NrWvHNy9pDw3tQsWMPYLiIhwWU7vdao1nn35IhPMlbI6dEnF44TA
-         rh5QmsCouUlCKN4DEJlKuvNZxcEFgyQV0TKddG71xBhWNrq4IIgD22AWY7A4V5ltMxUg
-         sTaTZunCDH9XJsovgVmgMq36QLbXAoBqilsyhnmOHrFbRT4DnTVpy9kK6fN557SxEy49
-         0M4lZWrm0zdKhkeAavwaxIiqsKAXYb9eSLYAx9XE9KYMhu8uC4P53YYdNGjHVfy6X45W
-         SJSw==
+        b=KOBGeUHaCH264tsYQKS+smKVpr547IIs8XcTW77auP4FPlXQ7m1amijtHTLS4p8OXw
+         A5WloN+9yQ5+pAQpMShWq3hfUkusa+sihvLWTqPLnwi1JLZPJ1aas4MxIRtOBv8Pr0Bz
+         OP6ZOAffaHHlAOA4n4xSD39zxAK8P1nxNbitZB4GDiPKEyEMYzy2887PPNKOQANPgwV6
+         yLB1rXOW89jk5yZJChmRzkQRjohshxyE47Gl39f65lZaz4IQzykYROqDNqpFwRo7CUU5
+         gX1Ce/gZ1CP7jXxEGxBaeqXOiMEFWfg0x+gD4IkelL+/PHdVKT5V0iUJnQG/1luH/Ot7
+         +tJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:references:in-reply-to:subject:cc:to:from
          :date:dkim-signature;
-        bh=ZREVhBW3YhrKhq8Mmtpeghu4/sgYahbIKLxpHaZzI+U=;
-        fh=NZMBPCQEpFum/0RJ41WhmMWGhr/ZWZ5TrUpxe+gr5GU=;
-        b=KXi01tfsl83xj1TqeJ1g5BuApu7YRWpJ7dA9ohTbKi8yIKNFbHXWTnPP0NFYcER5uV
-         9rIJcSq6c6oNtBj8zcengoEQKHNtmoGk+qQyrPt1e9G/94f0cg2+iufOSu4XydXtL8os
-         ttH9rgAEfXsqHSNP1xk2kTJd6VqCqtrM9bRYfyQ26FvsKKn39JMhz0yt4DLx0j+GXMB9
-         wFRPzJvB//caHMzBHhnXAj113Pm+VtgjncTV47EYvRnjz48XmIQ86obDFR5LFrSS0RUS
-         WJ9RO45CXUHF0AImSGyUBvr6M6fn2n7zDA0OpzbVk1KwzX8kyYZFwcAsndpntVzCQdmf
-         U6Bg==;
+        bh=TOj5LzMjBOUWjUvELjZgrGM3RG4dwgyaNtRsuPZcSI4=;
+        fh=NyntIA0zvJK0XNQ8JR/84cNTcuv6bpSEEszxIzFVgFc=;
+        b=SSyKgWr4XhQOjuaqCTH3zeyyRty2Nrw9C/roDD8u8mF72x5v9wlH1HmRnywEzaqatc
+         mird7R3YSdjcvIb+uHacrLtrVmnEllR3msquCod7d60+AfF+d8/j3iBGBsfhGWpndeXR
+         PQ8CQKWx7u5wQL1nUrIYkAfd1tSY4Hg0uF9ldkYUkM7IN02IXuXqT0wpNcRaJ04kI0/I
+         ajCSDhUA2nAHLhhD+zIuWTQy5nGRAhNhiZl5rZTEbVM4aYFZ1CirmBRUm29XjavEbufD
+         xmn6MvDoG1VvfP5UTfx5Tqlirh4IF2N9XNH6YiGx+/eq/xOvNQOg5yLFZ35ILdxoCrYu
+         wDfQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=aRcET85i;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BlFTZMz4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0a21f0323si184399585a.491.2025.02.17.12.22.13
+        by mx.google.com with ESMTPS id d75a77b69052e-471eb37f892si33401861cf.77.2025.02.17.12.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2025 12:22:13 -0800 (PST)
+        Mon, 17 Feb 2025 12:23:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=aRcET85i;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BlFTZMz4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tk7cv-0008Ew-EQ; Mon, 17 Feb 2025 15:22:01 -0500
+	id 1tk7eD-0000QZ-36; Mon, 17 Feb 2025 15:23:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tk7ct-0008EO-Og; Mon, 17 Feb 2025 15:21:59 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1tk7e6-0000Q9-0z; Mon, 17 Feb 2025 15:23:14 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tk7cs-0007Yr-2t; Mon, 17 Feb 2025 15:21:59 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-5e04c044224so2861395a12.0; 
- Mon, 17 Feb 2025 12:21:57 -0800 (PST)
+ id 1tk7e3-0007dh-5T; Mon, 17 Feb 2025 15:23:12 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-ab7c07e8b9bso819591066b.1; 
+ Mon, 17 Feb 2025 12:23:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1739823716; x=1740428516; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1739823789; x=1740428589; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZREVhBW3YhrKhq8Mmtpeghu4/sgYahbIKLxpHaZzI+U=;
- b=aRcET85iRw6XspJFGMqdhcaea5Y/AHY4VyrJueL3zJ7RYMACWXaTwH6e3fOcnT9YV/
- qpti1/muv2lA3QNB17l+sexgsEiaIUtcYE5QW/vF3vhs2zr8zO4BuMMGYKtDVte+ZfHw
- 21WwjME8sxUuXG3XPqt8I+l5fPbki022UuCkJ15ExwMG+5ecT+HVDRKZy4MtvbbfBlMW
- zlwRT1CYeqTHJRYtlkoUiMzVIHLY8mWz2re8SAXATJyyDKF6LuUI/4rPWGa07gpogYUd
- IS2zuOCm2Hfrvvvl8vHRNgCZOWPKrx52QOEdGxXZpAOI4EHYYa3NQGKx4LVKhgVhNjjN
- N+EA==
+ bh=TOj5LzMjBOUWjUvELjZgrGM3RG4dwgyaNtRsuPZcSI4=;
+ b=BlFTZMz48GFJTykTZrLwzYGIcb3NUxub7ykO7TZNrZkByCYO72EO/MJXlp+YqzPSPG
+ pfEb5Gp1NeKH6rlombleGrCHRzCIB1sr/aO6EIcCG5+HX2fSAazJKifpT3R6onpQH8+r
+ Z1laoLIWFtMxG4pwKMqjGtFtV5dx0uo04p4eyWEbzRMU4nBy5pBTBcmGlj9PUR8fhj3y
+ /RgLu/8xNN6C0rnlGlWcXGgJ7buThu5dEXUKFCGlwq5oJ8hBRxxOb+luJHOL+28wunkZ
+ qo6D7jl5xNf2cuHvCPKBZGok93WSGlRo8kZm3Soh0AqYYf3Mr1FON4FKChEUipz3JU5b
+ 9uLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739823716; x=1740428516;
+ d=1e100.net; s=20230601; t=1739823789; x=1740428589;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZREVhBW3YhrKhq8Mmtpeghu4/sgYahbIKLxpHaZzI+U=;
- b=PgHJQ7d/LZZ/i4wxwyCD7dTnGJQmUYMZXiPFXu0UuX51wxPrFsRQaoV7OEo6nGFXP7
- fjC7tZi8PQ1wGmA5I0xjMh09PCz33uyVSeDNWPx3fOX69SA95DiGK2FLq1L4aa2v2C7a
- XB/Q6/bax8aYt8+8i+IZxX3jLnoirsGeNHnrJGAqppwsEJLoDAFihCetgsJUk5fZ5ms+
- FbxegXe7WkM/V0ttAcn31vrT4ndv34luyFa5jXeVKKmwwzDd2VspEFV32icFEfAxCWsD
- n08QLuyRg/ztKWEvchMqXzTr08400+GYvTAZ0vsV8xFlEcdhpqb9kyt8diKFJsZeHm2K
- ecZw==
+ bh=TOj5LzMjBOUWjUvELjZgrGM3RG4dwgyaNtRsuPZcSI4=;
+ b=GQJ7N/xKya92BsYnJ3Vn92+ltd81womdYx0RoLGp/+Z6Zcn7e8tpC8mnFmcmwvz/Z7
+ 9eZPLdZ4VH3E3dakMWXQhM0sOuQqUIEZjS2FquK/yj9p1RWgdDK+3tj4yQ/5x62K9OzU
+ lvsOTtPSHGx/4ZtT4MAsmX0w04pSmbZZ5rCBkHCJ+qzUoB7sMZfL7F+L6IjmazCAPZpw
+ 3nUJ0EjsrKi/cuGqCw6XKniGUUW2QO5Tvwq2hjMytoVq0di0+Ut6UBuKrz5cK3cmq5zT
+ 8fGkufECt2kbW0IqriZ6UFoXCKIsrQ5ORDdNPitMDNwhXB/4Vqh1vZTuplz4jF9bSx2J
+ kQMw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVY03KB9VSAZSoPFOxph7GTl/YtMHubPwmLWPoTuoaen5ip8kMySIOyzkTU56Gc3wSLtkzg2LAgvw==@nongnu.org
-X-Gm-Message-State: AOJu0YxhSY7/CWnWq7ZtIwUrZNHKkQApJCijo71xwGOeRbI14DtC8qwb
- DlC2tceE9T3U7azJAsGQV3MHSCKLSeDo4V6wZuE/Nk27J8J0Vg5g
-X-Gm-Gg: ASbGncvMaF8zolIv09/GE3RzGaMpbw1H/9Wz8DTevpixV+V/gQPTRpc92KuvInh+NoF
- ZSwVZeqw8DACl/MxWYkk5W8k4JWWloHtMJARntNzvzkN+ZIhicmHjayZXwocrwgHg13y79/qCLL
- nn7i81mYhrLWbA8xgCQwVEH5Ts17CGzYmEhcyohcJTFAexbe/JkO8OXey0a/j7JWV8yLHfZt6az
- ej7cRXJ4f09Vk9RhYK5AkrqEPnxFDJtiDx5q9ocMlsxsxQveJC+jUeyi5Nf3UYId883a80hYWk3
- MXajM9Kfo8WqKAmicX98J/X9O3Qfe7NASmsqG1E92D7K561DZD7I0SXNoQ0mHEHkrp4=
-X-Received: by 2002:a05:6402:27d3:b0:5d0:ed71:3ce4 with SMTP id
- 4fb4d7f45d1cf-5e036049b1fmr12517559a12.6.1739823715616; 
- Mon, 17 Feb 2025 12:21:55 -0800 (PST)
+ AJvYcCWSp1rqq9jTMxVssqyRydFA/NlYkNOuUfKKfcbRRq+YeIpYOHTVt3XoWTG+YF0QF5KA/dAKvO8B6Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzlKMpnt0ovS08JqX4ZA92Kj2/ZEETku/PCBGaR+8aFB7jynFvJ
+ ylrVMQrH9YiLuYfgqNmqn2SLHCpY4xta5GCJ8gc76N1FwIo9CtH8bmhZlg==
+X-Gm-Gg: ASbGncvaa0vQILznGhOrK8h0x9/uxnvx8Guqrd8cYiUA4UWccqH9bBGA1uA9TY46CUJ
+ Zmw5EKhL4Yoj8KwIwwky44gP87d/RAfHsoaTFvSpY8zIRR1MThYkcHDGyn4OOBso4ouiz+krgWj
+ PU+XPtVIEqIc3A0bW7AmKU3DBOLvRMteR9iNmmr3N+N/mFwBBj2y52L83qOcYnzrbwliL8hGXUd
+ Zsz5RumktP7/Pvc0MRnOsQlZ7tFw+rp+EJleB4d0nWqQB/oGcoeOKiYX3bOn77bMoJJwDM8Ecic
+ TneOOCni5pzpjg/BCzaXFLZ3Ra8FPHMWSeGhqHfTYqYPhiG1VDBcYWdHMIj6xaa3OOQ=
+X-Received: by 2002:a17:907:7705:b0:abb:b2ad:4d3d with SMTP id
+ a640c23a62f3a-abbb2ad551emr117683366b.8.1739823787769; 
+ Mon, 17 Feb 2025 12:23:07 -0800 (PST)
 Received: from [127.0.0.1] (dynamic-077-191-175-027.77.191.pool.telefonica.de.
  [77.191.175.27]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5e075f59e3csm244342a12.43.2025.02.17.12.21.54
+ a640c23a62f3a-abb7c76b0cfsm490052966b.28.2025.02.17.12.23.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2025 12:21:55 -0800 (PST)
-Date: Mon, 17 Feb 2025 19:39:02 +0000
+ Mon, 17 Feb 2025 12:23:07 -0800 (PST)
+Date: Mon, 17 Feb 2025 20:23:06 +0000
 From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_03/18=5D_hw/gpio/pca955*=3A_Mov?=
- =?US-ASCII?Q?e_Kconfig_switches_next_to_implementations?=
-In-Reply-To: <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
-References: <20250204092112.26957-1-shentey@gmail.com>
- <20250204092112.26957-4-shentey@gmail.com>
- <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
-Message-ID: <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
+To: qemu-devel@nongnu.org
+CC: BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] Kconfig: Extract CONFIG_USB_CHIPIDEA from CONFIG_IMX
+In-Reply-To: <20250209103604.29545-1-shentey@gmail.com>
+References: <20250209103604.29545-1-shentey@gmail.com>
+Message-ID: <442E81CE-D99F-47C2-B5A3-3DC61EBB7DD0@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,49 +136,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EXwnv55CHgah
+X-TUID: EwXMVuofD4iG
 
 
 
-Am 17=2E Februar 2025 13:35:04 UTC schrieb Peter Maydell <peter=2Emaydell@=
-linaro=2Eorg>:
->On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> While at it and since they are user-creatable, build them when
->> CONFIG_I2C_DEVICES is set=2E
+Am 9=2E Februar 2025 10:36:04 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>TYPE_CHIPIDEA models an IP block which is also used in TYPE_ZYNQ_MACHINE =
+which
+>itself is not an IMX device=2E CONFIG_ZYNQ selects CONFIG_USB_EHCI_SYSBUS=
+ while
+>TYPE_CHIPIDEA is a separate compilation unit, so only works by accident i=
+f
+>CONFIG_IMX is given=2E Fix that by extracting CONFIG_USB_CHIPIDEA from CO=
+NFIG_IMX=2E
 >
->The patch subject says this is just a rearrangement
->of the Kconfig stanzas with no behaviour change, but then the
->commit message body includes one=2E
->
->If you want to build these when CONFIG_I2C_DEVICES is set,
->that should be its own patch that does that=2E
->
->(The move of the Kconfig bits to hw/gpio is fixing a bug
->in 6328d8ffa6cb9d ("misc/pca955*: Move models under hw/gpio"),
->which moved the code but forgot to move the Kconfig sections=2E)
+>Fixes: 616ec12d0fcc "hw/arm/xilinx_zynq: Fix USB port instantiation"
+>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>cc: qemu-stable
+>---
+> hw/arm/Kconfig     | 6 +++++-
+> hw/usb/Kconfig     | 4 ++++
+> hw/usb/meson=2Ebuild | 2 +-
+> 3 files changed, 10 insertions(+), 2 deletions(-)
 
-Okay, I'll split the patch and use above commit message=2E
-
->
->Separately, it's unclear to me how worthwhile it is to add
->these to CONFIG_I2C_DEVICES, because they're GPIO devices,
->which means there's not much you can do with them as a user:
->as far as I know you can't wire the output/input GPIO lines
->up to anything=2E We have the device models mainly for boards
->which provide them, so that guest code that expects to see
->them doesn't fall over on bootup, and because the board
->model code does have the APIs to wire up the GPIO lines=2E
-
-It's basically to satisfy Linux which will clog the i2c bus if such a GPIO=
- expander is configured in the DTB but missing in the emulation (it will de=
-fer probing which will never make progress)=2E Once it is its own patch we =
-can decide separately how to proceed with it, e=2Eg=2E dropping=2E
-
-Best regards,
-Bernhard
+Ping
 
 >
->thanks
->-- PMM
+>diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>index 256013ca80=2E=2E7eab3914d4 100644
+>--- a/hw/arm/Kconfig
+>+++ b/hw/arm/Kconfig
+>@@ -303,7 +303,7 @@ config ZYNQ
+>     select PL330
+>     select SDHCI
+>     select SSI_M25P80
+>-    select USB_EHCI_SYSBUS
+>+    select USB_CHIPIDEA
+>     select XILINX # UART
+>     select XILINX_AXI
+>     select XILINX_SPI
+>@@ -489,6 +489,7 @@ config FSL_IMX25
+>     select IMX
+>     select IMX_FEC
+>     select IMX_I2C
+>+    select USB_CHIPIDEA
+>     select WDT_IMX2
+>     select SDHCI
+>=20
+>@@ -516,6 +517,7 @@ config FSL_IMX6
+>     select PL310  # cache controller
+>     select PCI_EXPRESS_DESIGNWARE
+>     select SDHCI
+>+    select USB_CHIPIDEA
+>     select OR_IRQ
+>=20
+> config ASPEED_SOC
+>@@ -576,6 +578,7 @@ config FSL_IMX7
+>     select SDHCI
+>     select OR_IRQ
+>     select UNIMP
+>+    select USB_CHIPIDEA
+>=20
+> config ARM_SMMUV3
+>     bool
+>@@ -591,6 +594,7 @@ config FSL_IMX6UL
+>     select IMX_I2C
+>     select WDT_IMX2
+>     select SDHCI
+>+    select USB_CHIPIDEA
+>     select UNIMP
+>=20
+> config MICROBIT
+>diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+>index 5fbecd2f43=2E=2E69c663be52 100644
+>--- a/hw/usb/Kconfig
+>+++ b/hw/usb/Kconfig
+>@@ -143,3 +143,7 @@ config USB_DWC3
+> config XLNX_USB_SUBSYS
+>     bool
+>     select USB_DWC3
+>+
+>+config USB_CHIPIDEA
+>+    bool
+>+    select USB_EHCI_SYSBUS
+>diff --git a/hw/usb/meson=2Ebuild b/hw/usb/meson=2Ebuild
+>index 1b4d1507e4=2E=2E17360a5b5a 100644
+>--- a/hw/usb/meson=2Ebuild
+>+++ b/hw/usb/meson=2Ebuild
+>@@ -25,8 +25,8 @@ system_ss=2Eadd(when: 'CONFIG_USB_XHCI_SYSBUS', if_true=
+: files('hcd-xhci-sysbus=2Ec'
+> system_ss=2Eadd(when: 'CONFIG_USB_XHCI_NEC', if_true: files('hcd-xhci-ne=
+c=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_USB_DWC2', if_true: files('hcd-dwc2=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_USB_DWC3', if_true: files('hcd-dwc3=2Ec'))
+>+system_ss=2Eadd(when: 'CONFIG_USB_CHIPIDEA', if_true: files('chipidea=2E=
+c'))
+>=20
+>-system_ss=2Eadd(when: 'CONFIG_IMX', if_true: files('chipidea=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy=
+=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-p=
+ci=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-=
+usb2-ctrl-regs=2Ec'))

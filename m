@@ -1,96 +1,97 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp883839njb;
-        Tue, 18 Feb 2025 10:28:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWehYM2wPJ+OhiKOED9djZ2KUAfcYpYaw/gnl0LItIz/067yX2xpp88z6JdGNGbOFhyiqIdcgkrRpHPlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGIbjCYy8Q22VeYYst3EpNbuZBo/D4fyAxhizYIiGAp6eoGHPJJ35VWIpmPAp3zYicHow4b
-X-Received: by 2002:ac8:5796:0:b0:471:97ef:28c2 with SMTP id d75a77b69052e-471dbea3239mr248442361cf.50.1739903328478;
-        Tue, 18 Feb 2025 10:28:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739903328; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp884084njb;
+        Tue, 18 Feb 2025 10:29:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX6bZzZhL8GJD6fgaRdgYbilgwCk+Gw0Toqq6SR/bDweR8M7PM+xpM308DA5WFwOaTQ983LTbY1cUz6wg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHOPg76Ml3U+uoMmCH/3xQcEr5WOtQBOJkL+kHImEeGTMwmdMRggJhvRmSAK4nZYLXke3pG
+X-Received: by 2002:ac8:5892:0:b0:471:cdae:ac44 with SMTP id d75a77b69052e-471dbe978a2mr235990151cf.47.1739903359038;
+        Tue, 18 Feb 2025 10:29:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739903359; cv=none;
         d=google.com; s=arc-20240605;
-        b=lWtsxxKl+D/kg07ZMfYyaGaOF6/SGdNFzq5ksHzXVKBMBuGRULOwhbiYPxFc3RobaX
-         8GrcQXgcTmHgQLsvH2jQPL/r5VbdoCw7wzrnwbFWd0fb7pGQtxn7A6/wWVdaGjS+7IdM
-         liUA3xLujK2Y5bWtgtqChOuE4XrKm3BPMBIpmdFxXD9flY600nbgsgeWcwmNRbPAnMTs
-         OwuRmCbp1uqMtXaC8Qr5gjqyAlXkSNx3OfH+A3usnVRs0h6SDBGoJwcy0bXCJqhlBvy7
-         XNI+bXuOro9hjLWGrRE5yWm6xGJyejEM2mFchhzSOFB75K4/sLup+AZZ9AnRK7HG1gPh
-         wZsQ==
+        b=goSAEbLaMadFLKE6ZqaeURJdlDKbHCloIE46MMK6T7hzKRIDScQN5h36AEQI4hsxpM
+         0rt0XIqiljMBvS8gQuMh4ZMOz39Bjlzkx+G8y01mS2qUPFNGYEvkYogU7vYP3HuwqCHx
+         VBYNkqkUq/v46VTRuNNsAx5oBb4D7jnFfKMv6JH56gbLrWbB0mkvE0KvAhmGbldOYdjA
+         ChuTJt5JrjlHsu/LyybTaG7lyMK9MbEv9oGxRlED81pCfc78rtZD5Bf+MdhHjgWCCMg6
+         JPpvkdOxcl6yfs7KuMoPE4cesaeoIO5rzEKYLSR8vh8Le8gq1m2FdoJSyGruhAmkxMxw
+         HQLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7e0yvKdeKjYjXuavY6rL0tjgXFmYPvHLmA5XFR1YAco=;
+        bh=Hzy1s/cX5PZBqXxEFMKtvC50muZSUNBgdHX/8kzCoeU=;
         fh=swiL4bERDBgIQIiNoTOu/2bBoUECE5mFI7R2Xc6Vuzs=;
-        b=T6OGFKQrwAmsFC5C1ZvG9Jm4zPJolikZ7ZmZD5Znae8P8JgI34fZoYcoZXHzxxZ8Zo
-         +ZC3V6R7e/jaf8PkhUlcer95n8QKfi5Iiyh1y3dxo5gGw2ZyK5alpE16Orw+mChjxnzy
-         lqe6ppVc4wB57WiXx4LjlMmKUJnFOTtudbPcmea1LTW6yhOPWOIME/OCSiVA2WnwhmgO
-         MPc2E6PsuoexJNRFcMe28OpOjUAtfVQmTOw1fnElbMKVfHXiJmVLwCaCqhP7+WBVYDCS
-         C9tzgF98IWIrL9peBB1JQA+TKxxdtjJHuEON0ShQM1f9aCUiwNSY52lAybiEGOzjwZwY
-         N0WA==;
+        b=LPabxoc2ijNHfDPzQqfnQZMu41ClTfrQlaSiKRhmGcHYtZBSrv3uaCQZeUpo2EgGTS
+         A0XjLn6HZFanw4tRCR9rAMs1ubrUMY2Ig9WINQVsoPUkBj+mOkPmvzbOL2tUHFpOLGVv
+         lCsenFAdy44+o6GFaJwrUX9UNan/lmMaYMF1a94K9duI6smjAsSyBDcHCwZ0PBZmSxh5
+         bCyYOQ9d47pymHgv+6fGkV37DHvvkZLrKpUeYv8kRp73MiJ1RdleP+NsvKtF2bQqzGWm
+         kJYLI5kSbnqt0mnoVdiibOgTuKofSokXyEPXhdZMK8kXhYxGPBE/7niEeyaMDniQkgoc
+         fBPQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JIcBNbne;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzeJ1c4C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471f079b54dsi45297131cf.446.2025.02.18.10.28.48
+        by mx.google.com with ESMTPS id d75a77b69052e-471f4766a2csi38204211cf.19.2025.02.18.10.29.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 10:28:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2025 10:29:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JIcBNbne;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzeJ1c4C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkSKN-0006OA-NY; Tue, 18 Feb 2025 13:28:15 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkSKw-0006di-PM; Tue, 18 Feb 2025 13:28:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tkSKK-0006NR-GJ
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 13:28:12 -0500
+ id 1tkSKX-0006Rj-Pi
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2025 13:28:27 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tkSKI-0008QX-Nm
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 13:28:12 -0500
+ id 1tkSKW-0008UT-8c
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2025 13:28:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739903290;
+ s=mimecast20190719; t=1739903303;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7e0yvKdeKjYjXuavY6rL0tjgXFmYPvHLmA5XFR1YAco=;
- b=JIcBNbnePDV1WNIJul+OTEzBewuIGh3/2C7X/z/+BT8UHVHInOgn/U0px+azyF8XhoUxME
- wPx43eMBgubfV0HOKldSGFH5nYb53y8xMJVIXqrSyxzjHMTSk1r+YXOL63IgRyMIcl39Zi
- H9LVrJntDRVhPAHw+MT7It5fMf+86Uk=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Hzy1s/cX5PZBqXxEFMKtvC50muZSUNBgdHX/8kzCoeU=;
+ b=dzeJ1c4CzzCLF2c2FSS+GlD11enZlhMMLLmFHglard2v5S7XXn7SP+OmpxbxqF6ApMzXOV
+ VJD8L2ngZFk8R4YZE+Rhg9kg18iEwwTB/PEpCPmmiTTgyuTkMessUSL0ZfiICzMmM5cpo7
+ aguhTncgXqSHyRDBJvOtTy5uFhD0ppw=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-389-Qwd6eTv6MSOaQIV7Xwwcag-1; Tue,
- 18 Feb 2025 13:28:06 -0500
-X-MC-Unique: Qwd6eTv6MSOaQIV7Xwwcag-1
-X-Mimecast-MFC-AGG-ID: Qwd6eTv6MSOaQIV7Xwwcag_1739903283
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-151-uHDJB473NCyVaaENyFn6Eg-1; Tue,
+ 18 Feb 2025 13:28:18 -0500
+X-MC-Unique: uHDJB473NCyVaaENyFn6Eg-1
+X-Mimecast-MFC-AGG-ID: uHDJB473NCyVaaENyFn6Eg_1739903295
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C64CA193578F; Tue, 18 Feb 2025 18:28:03 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2A48019373D9; Tue, 18 Feb 2025 18:28:15 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.254])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 56E6D1800359; Tue, 18 Feb 2025 18:27:57 +0000 (UTC)
+ id F1F4A180035F; Tue, 18 Feb 2025 18:28:09 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  jasowang@redhat.com, imammedo@redhat.com, peterx@redhat.com,
  alex.williamson@redhat.com, clg@redhat.com, philmd@linaro.org,
  zhenzhong.duan@intel.com, ddutile@redhat.com
-Subject: [PATCH v3 3/5] hw/arm/smmuv3: Move reset to exit phase
-Date: Tue, 18 Feb 2025 19:25:33 +0100
-Message-ID: <20250218182737.76722-4-eric.auger@redhat.com>
+Subject: [PATCH v3 5/5] docs/devel/reset: Document reset expectations for DMA
+ and IOMMU
+Date: Tue, 18 Feb 2025 19:25:35 +0100
+Message-ID: <20250218182737.76722-6-eric.auger@redhat.com>
 In-Reply-To: <20250218182737.76722-1-eric.auger@redhat.com>
 References: <20250218182737.76722-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -107,126 +108,48 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vETwPlCjPPtK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: K4//o1EdsZVt
 
-Currently the iommu may be reset before the devices
-it protects. For example this happens with virtio-scsi-pci.
-when system_reset is issued from qmp monitor: spurious
-"virtio: zero sized buffers are not allowed" warnings can
-be observed. This happens because outstanding DMA requests
-are still happening while the SMMU gets reset.
-
-This can also happen with VFIO devices. In that case
-spurious DMA translation faults can be observed on host.
-
-Make sure the SMMU is reset in the 'exit' phase after
-all DMA capable devices have been reset during the 'enter'
-or 'hold' phase.
+To avoid any translation faults, the IOMMUs are expected to be
+reset after the devices they protect. Document that we expect
+DMA requests to be stopped during the 'enter' or 'hold' phase
+while IOMMUs should be reset during the 'exit' phase.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-
 ---
+ docs/devel/reset.rst | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-v1 -> v2:
-- also migrate smmu_base_reset_hold to smmu_base_reset_exit
-  which was an oversight of v1
-- add a comment emphasizing the importance of doing the reset
-  in 'exit' phase.
----
- hw/arm/smmu-common.c |  9 +++++++--
- hw/arm/smmuv3.c      | 14 ++++++++++----
- hw/arm/trace-events  |  1 +
- 3 files changed, 18 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index dd74c2e558..8c1b407b82 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -924,7 +924,12 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
-     }
- }
+diff --git a/docs/devel/reset.rst b/docs/devel/reset.rst
+index adefd59ef9..0b8b2fa5f4 100644
+--- a/docs/devel/reset.rst
++++ b/docs/devel/reset.rst
+@@ -143,6 +143,11 @@ The *exit* phase is executed only when the last reset operation ends. Therefore
+ the object does not need to care how many of reset controllers it has and how
+ many of them have started a reset.
  
--static void smmu_base_reset_hold(Object *obj, ResetType type)
-+/*
-+ * Make sure the IOMMU is reset in 'exit' phase after
-+ * all outstanding DMA requests have been quiesced during
-+ * the 'enter' or 'hold' reset phases
-+ */
-+static void smmu_base_reset_exit(Object *obj, ResetType type)
- {
-     SMMUState *s = ARM_SMMU(obj);
++DMA capable devices are expected to cancel all outstanding DMA operations
++during either 'enter' or 'hold' phases. IOMMUs are expected to reset during
++the 'exit' phase and this sequencing makes sure no outstanding DMA request
++will fault.
++
  
-@@ -949,7 +954,7 @@ static void smmu_base_class_init(ObjectClass *klass, void *data)
-     device_class_set_props(dc, smmu_dev_properties);
-     device_class_set_parent_realize(dc, smmu_base_realize,
-                                     &sbc->parent_realize);
--    rc->phases.hold = smmu_base_reset_hold;
-+    rc->phases.exit = smmu_base_reset_exit;
- }
- 
- static const TypeInfo smmu_base_info = {
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index c0cf5df0f6..b49a59b64c 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1870,13 +1870,19 @@ static void smmu_init_irq(SMMUv3State *s, SysBusDevice *dev)
-     }
- }
- 
--static void smmu_reset_hold(Object *obj, ResetType type)
-+/*
-+ * Make sure the IOMMU is reset in 'exit' phase after
-+ * all outstanding DMA requests have been quiesced during
-+ * the 'enter' or 'hold' reset phases
-+ */
-+static void smmu_reset_exit(Object *obj, ResetType type)
- {
-     SMMUv3State *s = ARM_SMMUV3(obj);
-     SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
- 
--    if (c->parent_phases.hold) {
--        c->parent_phases.hold(obj, type);
-+    trace_smmu_reset_exit();
-+    if (c->parent_phases.exit) {
-+        c->parent_phases.exit(obj, type);
-     }
- 
-     smmuv3_init_regs(s);
-@@ -1999,7 +2005,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
-     SMMUv3Class *c = ARM_SMMUV3_CLASS(klass);
- 
-     dc->vmsd = &vmstate_smmuv3;
--    resettable_class_set_parent_phases(rc, NULL, smmu_reset_hold, NULL,
-+    resettable_class_set_parent_phases(rc, NULL, NULL, smmu_reset_exit,
-                                        &c->parent_phases);
-     device_class_set_parent_realize(dc, smmu_realize,
-                                     &c->parent_realize);
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index c64ad344bd..7790db780e 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -56,6 +56,7 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
- smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
-+smmu_reset_exit(void) ""
- 
- # strongarm.c
- strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+ Handling reset in a resettable object
+ -------------------------------------
 -- 
 2.47.1
 

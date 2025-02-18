@@ -1,165 +1,174 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp918330njb;
-        Tue, 18 Feb 2025 11:30:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWD3Tf3e5UUhWtYTkebSYghiTbf6LriA+s5SuEgYCBL70dbD6mRzOWY83fuShmA7SQXj0Rk0/PIAAuPYw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvCdE0kv6x9DRdWx37wbVqVIpqJc4VUMUkgq5jqwIhbSnpOZl/n+Q18Fsq+XsNweIxeReo
-X-Received: by 2002:a05:6808:4d9:b0:3f3:fb4e:f5b6 with SMTP id 5614622812f47-3f3fb4ef7e2mr5558160b6e.15.1739907015770;
-        Tue, 18 Feb 2025 11:30:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739907015; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1000387njb;
+        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVHZJOausG7Mob0e0DptpY/wbnw0Xvb7lAGSS/Ik4YaCrZpGdgTltcEFPB+QpERu8H8Evr3buaWy8kd2g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFgtfPuR4Mf8cX6CdN/+EwN5ADPF6CKR7K0F92AzImW4YXL71uH+3bTuyDCtvpm8MA1i3gN
+X-Received: by 2002:a05:6214:501a:b0:6d4:18ce:117f with SMTP id 6a1803df08f44-6e66ccd13c8mr215128506d6.20.1739917362820;
+        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739917362; cv=none;
         d=google.com; s=arc-20240605;
-        b=Vu17HYQzdeRHe/O0cP3caGT7vRiRhaLBU0VGE4M4jz1ERwlQYWMXr7HleHD6jVfwNq
-         qB/dehmqYLUWbOZfNDqUM6RE5Yea/f/6dc1YFWk37yQ6mfzmyrhGUpeSUu7IaYQ9+0lk
-         /qdNCjStnrT6CCCymYrqqQSVc91FMIAOz59n/PDPrQr+xEj3DlWImsZDZ6gP9kgikMSf
-         cf0Dv0dzWskQ67m2vnopU3tIFT3iuTFBEDgGLBrPYq1CIG3luMrkTSlZq60Fzfwq/KU9
-         c0JeO15se7N0DVKgXSTlVxiciMJmw7PZU1dJJAmhep30HiY7D6stzgSuR0o69jI0Efnj
-         1O7w==
+        b=ZMq6/QxxT5wzZIb51Ft/OmnD5Mlqm3bUozhrLyB+sB+cI88dz3dkYG/ZisNi4VfCQr
+         LBeatkZ43SSzW4Vfr1V1lgW6ER/XNsQbAkoAwWCGi/M3BfraqSYvgs/fX2L12TIV5dzy
+         y/XajvFXIpUUmlQXf03eUlYjZwF7wcHUlnmGSe3EAMqkdA0kMwYxEYz2M9ReK6yCozWP
+         glExNfdYIiqbdElKikZauilwwtCXI8J40VN9X5EMt3KKW4cW6Emq/RVC1WBi2oLpfZEh
+         3Qbp4rNIiU0I6rTkB+sJtuDTr4L4Co3PLjnlsy115iTXqO2rHe11Ji+uojDTgIKArqRN
+         pflQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-id:mime-version:user-agent:references:message-id
-         :in-reply-to:subject:cc:to:from:date:dkim-signature;
-        bh=7ITAOt6cpCpDVb6glnbNyNWtoGH9hbLBZWVJwHOBmdU=;
-        fh=dipJbbVY3fTpEZP61/OJLsAdHLtrYaNIIVxbVGEOHok=;
-        b=X+7Bg6UHSRX7c6pgNO7ZGAI5k1MNCkQxL5K0Q27aqd/KYTXPtBNoWsfaG0Yu4NdpFz
-         C5nhHlQ/IfD/J91FSCixueppShoIzJqDzBeQvlgbL7U5Zgp28i5sHn5nELQeNqvV5pXL
-         Va/vuiST3c3fj5zWghURSqBIhsT95D8PJhyXiFa3DUa3Vxvq3jzVNocHbgLnRg5zTzuX
-         9svNBA1EDeVMCcDMaHs5+1ejW0rEsSsCI0a5H81yRqlQ1VlUN66h1uHxYsF3O0NwCQuE
-         aBaT/i3U1MDkmN/XG774eNsNI0x8YW70PanXfjV9f8/Vj8KWEz+H1CBsG5WFc4bYqWpO
-         QUTw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
+        fh=J5rK49AvbqWd6GqL5OV0utShe4OiV3iZ48PVDD3WoNg=;
+        b=YHTmkuHxYd8+EdbIebHYHFSkvJoW5SFaIRM1OSEGSGjX+it21bJBlnZlZPyuNfjvuK
+         EOSJX6/9vtnqxYGIjULZS85y27cSMYh4FxBl+as6liUkEa6zCd2B7jJdVI1AeusycAmA
+         TwzvhkkON4TyAAxkNSG701+1bye5mSeELUgavGVLN/9j3WE86EaWweNudgGfn20ib9+9
+         DghDtuQike4cukGNR1PKwBe59jHhAs/cvDkrj4CDH3Swe14tzDuhPfXLRL2/K6f+Su87
+         7Ex5OOxVH2L7EnnHZUyn8XJg8XKo9Dja0nOJC5qraZ717Mgo6ImSjJM2gCyuuj/YK2YC
+         L5/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q9b0bNzo;
-       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <sstabellini@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id 5614622812f47-3f3da9264f3si11825503b6e.53.2025.02.18.11.30.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 11:30:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=cvple46e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c5d4dsi112792746d6.420.2025.02.18.14.22.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q9b0bNzo;
-       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8D0DF5C544A;
-	Tue, 18 Feb 2025 19:29:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3091AC4CEE2;
-	Tue, 18 Feb 2025 19:30:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739907014;
-	bh=D0SmKXnflUF1ENknpmghSoPwbGW+dV6iEGQTiKLiGkM=;
-	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
-	b=Q9b0bNzo2GKJ3P5Xaenndxxjunnkiowf73I3YoZMkGzz/9m3DI5W6nlgJZbijiPdE
-	 y05lVFMBHQkfh29eo3Hia6sY/NC6jyoMwGGIS4ox0x1aA9txS0r3CSNtf47kb7XXn3
-	 2jw0eyggkxm0fYjvyx72eXB8AzDztykIyjtKjKH3IH6K+v4fMajnUj6LQJ1OXH5JTH
-	 PSwyUXYMNnC71CMOUmru8M9Q8+uBE5k5nGif0Wl9US2432af4b9M1yHqUyJ7WRhu03
-	 ZA/NlJiRNrF5IKgzuIDvdc+iGOLJFcUhQEGwjz/Pk1FsfXo0Mz0T6lvieZMho5k24X
-	 jVzw/uqhFU4WA==
-Date: Tue, 18 Feb 2025 11:30:10 -0800 (PST)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
-To: Andrew Cooper <andrew.cooper3@citrix.com>
-cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
-    qemu-devel@nongnu.org, David Woodhouse <dwmw2@infradead.org>, 
-    "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>, 
-    Paul Durrant <paul@xen.org>, Stefano Stabellini <sstabellini@kernel.org>, 
-    Anthony PERARD <anthony@xenproject.org>, 
-    "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-    Stefano Stabellini <sstabellini@kernel.org>, 
-    Thomas Huth <thuth@redhat.com>, 
-    Richard Henderson <richard.henderson@linaro.org>, 
-    qemu-arm <qemu-arm@nongnu.org>, 
-    =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-    =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Subject: Re: [PULL 3/9] meson: Disallow 64-bit on 32-bit Xen emulation
-In-Reply-To: <9b22d0ff-5902-4ec7-ae54-e974482ebd87@citrix.com>
-Message-ID: <alpine.DEB.2.22.394.2502181120100.1085376@ubuntu-linux-20-04-desktop>
-References: <20250208205725.568631-1-richard.henderson@linaro.org> <20250208205725.568631-4-richard.henderson@linaro.org> <aeaf0f19-0f14-4a02-9c51-09521e7c75e1@linaro.org> <9b22d0ff-5902-4ec7-ae54-e974482ebd87@citrix.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
-MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1975763779-1739906423=:1085376"
-Content-ID: <alpine.DEB.2.22.394.2502181121020.1085376@ubuntu-linux-20-04-desktop>
-X-TUID: 9XRPU//dSvos
+       dkim=pass header.i=@google.com header.s=20230601 header.b=cvple46e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tkVyy-0001kS-BM; Tue, 18 Feb 2025 17:22:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
+ id 1tkVyv-0001k1-G0
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2025 17:22:21 -0500
+Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
+ id 1tkVys-0001jC-DP
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2025 17:22:21 -0500
+Received: by mail-pj1-x1049.google.com with SMTP id
+ 98e67ed59e1d1-2fc318bd470so9007264a91.0
+ for <qemu-arm@nongnu.org>; Tue, 18 Feb 2025 14:22:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1739917334; x=1740522134; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
+ b=cvple46eI5iib2qTHaeGmqg4yGDjzG1/vTH1lsJ+Q/8hObMypkFbFyhrNct2kZKd6N
+ ODZwD0SZtVLdGqE3bZ0kQYeqaD0jTT6hdCG+dPZ0sU1IY7dt5yExYU5pTyHGlJfkejfJ
+ PYu/vwkLRgRQj1gYHlU52GNMHPVxMPbkxxTM7s+mb4h1xSR1s1pvm4Q9TNocu9l8JYXy
+ Bmlg+O2dwhUceLwF+lf3a4V9sCKO7okv8ea5V+xK2vDGgpyWxn4mqDMPnAUwSbrlURoA
+ xZTT3lNgSJUwRy+GlsNbhdKf//okSH0Sx8JLnOiANmzuWw4Vlf/6E3shM2Qa5CMZEiSv
+ 6DLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739917334; x=1740522134;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
+ b=CRREYaSGoUsLqQHpVr0u6kmLfmwJZx/eLQtUDDYTqPiikuYTrZEMz4Uzo56XoVz7Sb
+ ijSkoyakjJwxTbAru/Ko9o33ynYagvejwQ1mqeVW+2B4Ci/Tc5URIFjMWO2EZ0cGSyJG
+ e2jfqs7jWToFq3jvbvLF7T1hmi8bp+4wsKcERZhDQ7CuEOtwGYw00RkDy9ax3lrybUN6
+ 6hPj7dFdo3T56bh9Mnt6GODaaKU7t/uoKie21VGjYUKQY0nsXdXNAAoi8pUBqoYw/VX2
+ NYa21ESYrqVhAKVMp2+2HAIPlUVzzN5sdgxJE6lDuEjNSrUpul62lH7mQa424myPGUby
+ MQXQ==
+X-Gm-Message-State: AOJu0YxjPfJmS3dIs0w0mraFL5+bCu39j0HZH4OK68kcQ6XEHNnpMNzL
+ Ftw0WA1XkZcp4zZuMysyEqNFnVJzYRt3321i6+iuYkNh7bkW5qmiHFEcMLVqY07kmWwIpO+egvs
+ HbBZY27mqmOUt38mCJQ==
+X-Received: from pjbrs15.prod.google.com ([2002:a17:90b:2b8f:b0:2f2:e97a:e77f])
+ (user=slongfield job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:90b:2b4d:b0:2fa:226e:8491 with SMTP id
+ 98e67ed59e1d1-2fc40f1027cmr23084628a91.9.1739917334128; 
+ Tue, 18 Feb 2025 14:22:14 -0800 (PST)
+Date: Tue, 18 Feb 2025 22:22:11 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
+Message-ID: <20250218222211.1092072-1-slongfield@google.com>
+Subject: [PATCH] target/arm: Fix signed integer overflow undefined behavior.
+From: Stephen Longfield <slongfield@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, slongfield@google.com, 
+ roqueh@google.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
+ envelope-from=3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com;
+ helo=mail-pj1-x1049.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p9ymu/muP6HU
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+The problem is internal to t32_expandimm_imm, the imm intermediate
+immediate value. This value is sourced from x, which always comes from
+the return of a deposit32 call, which returns uint32_t already.
 
---8323329-1975763779-1739906423=:1085376
-Content-Type: text/plain; CHARSET=UTF-8
-Content-Transfer-Encoding: 8BIT
-Content-ID: <alpine.DEB.2.22.394.2502181121021.1085376@ubuntu-linux-20-04-desktop>
+It's extracted via: int imm = extract32(x, 0, 8);, so the value will be
+between 0-255
 
-On Tue, 18 Feb 2025, Andrew Cooper wrote:
-> On 18/02/2025 11:20 am, Philippe Mathieu-Daudé wrote:
-> > Hi,
-> >
-> > Adding Xen community.
-> >
-> > On 8/2/25 21:57, Richard Henderson wrote:
-> >> Require a 64-bit host binary to spawn a 64-bit guest.
-> >>
-> >> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> >> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-> >>   meson.build | 9 +++++++--
-> >>   1 file changed, 7 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/meson.build b/meson.build
-> >> index 1af8aeb194..911955cfa8 100644
-> >> --- a/meson.build
-> >> +++ b/meson.build
-> >> @@ -304,9 +304,14 @@ else
-> >>   endif
-> >>   accelerator_targets = { 'CONFIG_KVM': kvm_targets }
-> >>   -if cpu in ['x86', 'x86_64']
-> >> +if cpu == 'x86'
-> >> +  xen_targets = ['i386-softmmu']
-> >> +elif cpu == 'x86_64'
-> >>     xen_targets = ['i386-softmmu', 'x86_64-softmmu']
-> >> -elif cpu in ['arm', 'aarch64']
-> >> +elif cpu == 'arm'
-> >> +  # i386 emulator provides xenpv machine type for multiple
-> >> architectures
-> >> +  xen_targets = ['i386-softmmu']
-> >
-> > Is actually someone *testing* this config? I'm having hard time building
-> > it, so am very suspicious about how it runs, and start to wonder if I'm
-> > not just wasting my time (as could be our CI).
-> 
-> It was intentional.  I believe it was Stefano (CC'd) who introduced it.
-> 
-> Xen uses qemu-system-i386 everywhere because qemu-system-x86_64 doesn't
-> make compatible VMs.  I'm not sure why; I suspect it's bugs in the Xen
-> machine types, but I don't know QEMU well enough to be sure.
-> 
-> Another thing that (at least, was) tied to qemu-system-i386 was using
-> Qemu as a XenBlk <-> QCOW adapter, at which point it wasn't even really
-> a system emulator, just a paravirtual disk implementation.
-> 
-> This is, AIUI, what ARM wants with the xenpv machine.  If there's a
-> better way to do this, please do say.
-> 
-> 
-> Looking through Xen's CI, I can't see any of the ARM builds building
-> QEMU at all.  I think it's quite possible it's not tested any more.
+It is then multiplied by one of 1, 0x00010001, 0x01000100, 0x01010101,
+or 0x80.
 
-Hi all,
+Values between 128-255 multiplied by 0x01000100 or 0x01010101 will cause
+the upper bit to get set, which is a signed integer overflow. From
+Chapter 6.5, paragraph 5 of the C11 spec:
+https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf this is
+undefined behavior.
 
-I answered on a similar question recently:
-https://marc.info/?l=qemu-devel&m=173862237031104&w=2
+Though this is a minor undefined behavior, I'd like to see this fixed,
+since the error is showing up when I enable clang's sanitizers while
+looking for other issues.
 
-In short, while QEMU for x86 HVM guest is required, QEMU is not required
-for x86 PVH guests, and ARM guests. The model is different and QEMU is
-only providing PV backends or virtio backends if the VM is configured
-that way. You can have a fully functional VM without QEMU (or other
-virtio backends provider).
+Signed-off-by: Stephen Longfield <slongfield@google.com>
+Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
+---
+ target/arm/tcg/translate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-In this context, the original integration of QEMU for Xen on ARM was
-done reusing the qemu-system-i386 target. But Edgar recently upstreamed
-a much better newer machine that is cleaner, simpler and faster: XenPVH
-(see hw/arm/xen-pvh.c and hw/i386/xen/xen-pvh.c). So we don't need
-qemu-system-i386 on either ARM32 or ARM64 anymore.
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 68ac393415..8770f0ce1c 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3508,9 +3508,9 @@ static int t32_expandimm_rot(DisasContext *s, int x)
+ }
 
-Moreover, for ARM32 specifically, I think it would be OK to remove QEMU
-support for ARM32 Xen machines in general because of the reasons I wrote
-in the other email and above here.
---8323329-1975763779-1739906423=:1085376--
+ /* Return the unrotated immediate from T32ExpandImm.  */
+-static int t32_expandimm_imm(DisasContext *s, int x)
++static uint32_t t32_expandimm_imm(DisasContext *s, uint32_t x)
+ {
+-    int imm = extract32(x, 0, 8);
++    uint32_t imm = extract32(x, 0, 8);
+
+     switch (extract32(x, 8, 4)) {
+     case 0: /* XY */
+--
+2.48.1.601.g30ceb7b040-goog
+

@@ -1,225 +1,189 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp768843njb;
-        Tue, 18 Feb 2025 07:33:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVYXE8vBr4x19XpNUxeab/L3nT/FlTiWnobRUsKM/6RN1wwP5injZDkyajxOmyCLq0m4TSWHagWgT+tkA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGq5F2dhIiHh+dQCBoz1d4X2zLNB5ncqqaMPUvsbZTFYXUDVpmbbo7YN4lnY6tqvAeagS10
-X-Received: by 2002:a05:6122:87:b0:521:bdd8:989e with SMTP id 71dfb90a1353d-521c33b73b9mr172723e0c.7.1739892800860;
-        Tue, 18 Feb 2025 07:33:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739892800; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp772859njb;
+        Tue, 18 Feb 2025 07:39:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWrJUqL0TdiTdjTwutAuohR4wag1cnt5j/MF0YClkUOXInyw0vBBSIaZtvVBfAiSsgnPCpzsfDARg3oQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEKlo1IpyDKG69O5BR0YKNot/NHkPE+Gz1r9sM5+vUFzlqxCmUblZURPMCPaldxt6gKjSXB
+X-Received: by 2002:a05:622a:41:b0:467:672a:abb6 with SMTP id d75a77b69052e-47208260e6emr1525451cf.23.1739893165603;
+        Tue, 18 Feb 2025 07:39:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739893165; cv=none;
         d=google.com; s=arc-20240605;
-        b=BiyuzRbidr6z6IdElWt2bNgRPDJZHLm8ypSxh7GBGWtyPDsH1T13J2kFZ00pQUESbg
-         TrW/+1KwlwM1/EgCSGxgK51qMBJjGb+HqgocW0S3+huussg8SKzM6UD4k2k2OrRTGc0h
-         Rp8W1bgs2CE+n5spVpmx5/+5OI0eKJXM18xfWs80JNuN4vH0X0J3ircoPjVfV9dL5oob
-         ojGI4MpJHlCRWsbcTBGs7sjXEcpvAKt+1nHofd4+00jChQv0NhSNHj/Ybk9JRL0WpQXq
-         3/mbZgZFvIrda5aVeDRIBEtyPlAxGNsIZ9YHLAWk+QqAJlYeKulDEQsS5shccHinRIUa
-         spaA==
+        b=IeuxwO60peomFLOZo9AEhFukrrtEfGL8rvxHotzJrR/LhIDZ2/ANXy9dZvu4SXUB1u
+         6nZfw77/j4dHGd3ntJNb2QsLpdq+mrXR8H3IkKx0E0haK6BtRkALWrjRP9QOAKXUha3i
+         JKz55OzgUjC53iMTYA900J43CZJYCTrk20QgmOgjl4bSFlTHteEAN02kMCIKv2L2o3qt
+         buMq+yzrVfRq8kXBmdK6ttBv3aFqjjUpKzKRuMkVN0ZA0fZTneFFfM6hHB+JsY18uhJK
+         Krk9vfrMZIN7GCYhcH8HBaBKUXLqIIqu6LQ8m40BJACU57YSgPwO985jgPapQIp+7a51
+         KZ2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=0UCjt3mp7yDvSEsnhqs87k56LFrtYTUCWzATqqG4knA=;
-        fh=0wuzy7Ogg5vp4DER6mgLGIR/FbqwryyAMv0jCQLwEWA=;
-        b=D2ekrBbptQtMlm16b1zypWtSUAIcKTXxLdT59hZmnX4LlNauR1EJQ6j7hMtlnosiD+
-         7siqAJ8P8yBaPEKrCYzwyo2k98PtVHUyhJYiazu58Ih1SfZJEF1BTbT/GD8m4bNWsOOV
-         lQ5Rl1LCqDppq1KTGtsROZUrMNbhWzwW6zFmooHzg3abz3qWaa8qtDRisiD7w+TEb10X
-         DOLLn1uiby76Waw5EmqCawFeyhR5N5cJrCnqY5AMnWIbx692MbllDoYtqvrbn1b4/WIP
-         eQwkqXh6ptehsHopoyoYd/TwLgomle84vP0frrkPXeb2UGK2bVIsOpzsswWr2wAQBmux
-         3OcA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Q6RSWJxfEGqes3umox+llGPyGNYXu5Aw8FHp2E+UoKk=;
+        fh=PpL5deARx24ZnW9oDWIYB40g5ncgYrL/Roo+F61I+R4=;
+        b=laNIhNF4XIqpMdemB3vbk2AilXA2CLJ0osLup7t80NJQrdPSUOXRbr3kk28DNIk6Id
+         //wCwYZP+y10AZMEnYfUfTW4g3J5PKqxIy7toTspjWCpv2+VA/Yab0eHYE89vsYnvBpK
+         MotkqlNdLEhXkAMpgarsVFBzCpk0/NLPoWDfowYN46LjmIB/R2IhxACLQB9nWlIiaiSW
+         HfWrUXsdEQHWyuVDTEtR7i2PnEdktgORWWt2zYRXwkem2wshTF8YkHaSyytcWaqBzn/Q
+         dbqYyhfmHNJfVsLT5Gq7htQgxICfZPj5XEtftR0FD99KodhPM/yIMwkSybnSg4Ta+f6g
+         5XhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DL2g7cSo;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=irsDQkcB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-868e86bbbd0si2049782241.93.2025.02.18.07.33.20
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-471ee641dabsi45993051cf.640.2025.02.18.07.39.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 07:33:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Feb 2025 07:39:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DL2g7cSo;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=irsDQkcB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkPga-00055e-C1; Tue, 18 Feb 2025 10:39:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tkPgY-00055K-El
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2025 10:38:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tkPgW-00021L-5U
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2025 10:38:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739892800;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0UCjt3mp7yDvSEsnhqs87k56LFrtYTUCWzATqqG4knA=;
-	b=DL2g7cSoa83cutkxLiFEqq1r4YDYUj9nmw4fc9uquHKzuTA9zsuf7kIRuWrH2aUaZ91qFI
-	YqDy33m+3/2rRkLzDew5sTUPEHl/OMXt1WPNNGcqritCd/1nLHq4H7phFQ9XTtQ1D8lNrX
-	OadBFLDwaO7LPimy3rclGGrv+RfY7cI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1739893134;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q6RSWJxfEGqes3umox+llGPyGNYXu5Aw8FHp2E+UoKk=;
+ b=irsDQkcBnBT50bIilZsK2Jsfe9JOr1gAROqoxZuUAdz8N6vOfIslgqwvMfHZSwwz4lNhhB
+ u39hI+IRaJ0Zod3VsKMM+d1fL5cwAjYKxyRR0km1T2BLRBxKGXluPi4v2ZG3387VuOXKr2
+ rQFTirEO/0fxDI4NINDoClrRyZcm6rw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-76-bJgM3oCQM7qU8bSET2E-Fg-1; Tue, 18 Feb 2025 10:33:17 -0500
-X-MC-Unique: bJgM3oCQM7qU8bSET2E-Fg-1
-X-Mimecast-MFC-AGG-ID: bJgM3oCQM7qU8bSET2E-Fg_1739892796
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-38f394f6d84so2015498f8f.1
-        for <alex.bennee@linaro.org>; Tue, 18 Feb 2025 07:33:17 -0800 (PST)
+ us-mta-223-ZWkYc0IjMLaYUGaqdNlRIA-1; Tue, 18 Feb 2025 10:38:52 -0500
+X-MC-Unique: ZWkYc0IjMLaYUGaqdNlRIA-1
+X-Mimecast-MFC-AGG-ID: ZWkYc0IjMLaYUGaqdNlRIA_1739893131
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4394b2c19ccso46336385e9.1
+ for <qemu-devel@nongnu.org>; Tue, 18 Feb 2025 07:38:52 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739892796; x=1740497596;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0UCjt3mp7yDvSEsnhqs87k56LFrtYTUCWzATqqG4knA=;
-        b=RS2PCko8uw6+fANv6dJeCILqY18Or3miEagIBTlkWZkbUHtvA4vQEmj9o2EQSj2lJH
-         dhPiz7fyZjRMWGDu5BA+1dHJxyw08RmGVKlX0qpBxGB4/lqJK4vG552QGKjhVBwWXT8z
-         /qqmITTThdhB4dZD5VfT1OQVVUs0idbxZ0or02/oma/CoSVXgQQiMinhdWP+RN/zcDYS
-         QjlkxI4R/3yvzVHAjhV+N6Qjc2nuPxJURcHiyFFTx6Aie1WLiF6zjG4NpwMsYxdAaI7p
-         Eg2kX9ELppZt/8eK+Aitmi8Jsi63k7k8VcAez0rVKk0DhF+pzUKukYcsoV505Bt+RqGt
-         29kg==
-X-Forwarded-Encrypted: i=1; AJvYcCWTJUAsj5HEnR+5XPOEoVr5D56eS+X450ovVbMSsF4JoJ1o9FA/ySz1OF8gw8uBGo/HufNCMW6xKeBXUw==@linaro.org
-X-Gm-Message-State: AOJu0Yw13ko24ounLW4THMXLR8nYYiiuGCRnV/47aDDrzzzUOxHV+uwC
-	LJYBlUFWrTGBzudRZTPT8K0ZHgIl7kuonCQbCbgTYPx4D19DQhH2cXC5snhsTwYNj7GmAqaPgOT
-	FgR9NL6GJcvj2eb0tm/ipBajfGgRVrlb8miheSdp1RT8pzDYLR1+v9A==
-X-Gm-Gg: ASbGncvklZnflYHvnkLM75AbUIZnUsIFK13A3aeUqqJ0dAFpIzqgL+qHw8Q4rzRWUjO
-	/sCG0W9PNMs5KhfkgUqJ8IC4n8uyUtcwyZm6zrY/5jG/XRhUTOjipR2MaIhgHbjAqZqTjfCUCTR
-	tgaxn2EeZXu44CwESCxoOS0IH4n+faCCL1fOmZEIXzXeBrxoQNm9EPcbQWV/jg8G7nre1zV9j1f
-	NXtwrsPHFau8CuSS7uAjbWSg37Q+xmGn+VxXpxqtt0Rf9HDhrK0BWdSS67mJSZ0BaRbnB5NiZ/m
-	W5RWhGSXqhxhm8XC6wuWW7uJ8UtYEWcw+Jciw4BAXZN9CxMk90Ex
-X-Received: by 2002:adf:e80a:0:b0:38f:2230:c0ff with SMTP id ffacd0b85a97d-38f33f4ea6dmr10548877f8f.30.1739892796520;
-        Tue, 18 Feb 2025 07:33:16 -0800 (PST)
-X-Received: by 2002:adf:e80a:0:b0:38f:2230:c0ff with SMTP id ffacd0b85a97d-38f33f4ea6dmr10548858f8f.30.1739892796174;
-        Tue, 18 Feb 2025 07:33:16 -0800 (PST)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f259d5c36sm15486329f8f.67.2025.02.18.07.33.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Feb 2025 07:33:15 -0800 (PST)
-Message-ID: <b1a2e796-b2f5-4acc-9d6d-e85d99d67a0d@redhat.com>
-Date: Tue, 18 Feb 2025 16:33:13 +0100
+ d=1e100.net; s=20230601; t=1739893131; x=1740497931;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Q6RSWJxfEGqes3umox+llGPyGNYXu5Aw8FHp2E+UoKk=;
+ b=XgLkI4i9Iwb0EUHvZVzLOpeNOmgAchLXSAm5SRYyJ55CW7p3G1BCKu1zK9tOqdrAwm
+ 3/64pMlUxbrvTh89I2xxgK7K3TjX47fjXafLlRir4oPbdYquM0kYwH9OvvsAaQCSrsxE
+ 5vcts4yLubJlkvdemMwW2oDc62OFouiZAotlaaSMWLbE2P9hHHgBS9OGMquzq9a3YlFa
+ dc8RmEmcsIdTmtaBZXrDoscDKKmSraJPXHwXHvJQpjhEpOC/vu8KO/DNLQiAko6uacXG
+ 1IQ3vbzAUlZIJYLFTuODnzKo7hrgFkSP5wKtSW6q7Lm06O3taeiDBwE+jOfCYKYChK7x
+ 0wuw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV/oAQDLezcVPZwEKzl8fZggIMG6G2Kxgn3feR/SB4seoCVq9xUnuhM86gvf+3p4xoLmENqtLBIMES6@nongnu.org
+X-Gm-Message-State: AOJu0Yw889sVTgtJ+R7saP7NZIT8prz34kM6aftY8yyzOpww6Alao91F
+ sVKlv8SP818QdC5JXPN8YkFDy7gTzBi228w4uJz4Gro2+z0KNSaVdI73J6MZOfPazw4Mi1ygsuG
+ GtV0dRoXBt3CBCATPqjoWTOrOlH4sJe1V1c0IniDjTQ3yrugnXU9y
+X-Gm-Gg: ASbGncs0ZYGaoRwtIdRy9jyaudkLq1KEIVyUAjhNp3eV5OXgD0G6QlGnQMuqn+PGP8z
+ 4hq3G1ijy+E2uoM/TX889vSij2l3M1VScuDR3ZyV550m9ZJ41tl63eYhh39GLIkeU+eXODJ16IB
+ bnK9c5nxkdhIpdbsFJqU8+kQC9aUCeL/BaaerACB/7oXvqv2AQsIWZ02JRdFpcTUPvkZnfNsUeR
+ LcRPwm+5nawu/uddykyxLaD2pA5MWyuou4nBxN4Vkns01Rv/RAzYyGnNcQho4xdzokVDUGWYQF0
+ 7Sj8eQig60Sfp0ios0ezxuIouBHDSbNLzgm2bipsTHVynfIZmfV8
+X-Received: by 2002:a05:600c:4450:b0:439:916a:b3db with SMTP id
+ 5b1f17b1804b1-439916ab5bdmr53775025e9.6.1739893131141; 
+ Tue, 18 Feb 2025 07:38:51 -0800 (PST)
+X-Received: by 2002:a05:600c:4450:b0:439:916a:b3db with SMTP id
+ 5b1f17b1804b1-439916ab5bdmr53774765e9.6.1739893130745; 
+ Tue, 18 Feb 2025 07:38:50 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43959d3d5f3sm185943015e9.0.2025.02.18.07.38.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Feb 2025 07:38:49 -0800 (PST)
+Message-ID: <884138d7-3b76-406d-8603-16eaa59deaba@redhat.com>
+Date: Tue, 18 Feb 2025 16:38:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH 02/15] arm/kvm: add accessors for storing host features
- into idregs
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-References: <20250207110248.1580465-1-cohuck@redhat.com>
- <20250207110248.1580465-3-cohuck@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250207110248.1580465-3-cohuck@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: JHCsu87NW0sV2MeJUfj6xd4M4AchHotWIcuXg7wOhwM_1739892796
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 15/15] arm/cpu: Add generated files
 Content-Language: en-US
+To: Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+References: <20250207110248.1580465-1-cohuck@redhat.com>
+ <20250207110248.1580465-16-cohuck@redhat.com>
+ <f5878231-79b8-4e29-bfb0-f9a57ac3f6a4@linaro.org> <874j117rnn.fsf@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <874j117rnn.fsf@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TUID: GHzanCAYRqVS
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R4fQO4zlxh/a
+
+Hi,
 
 
-Hi Connie
-
-On 2/7/25 12:02 PM, Cornelia Huck wrote:
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  target/arm/cpu-sysregs.h |  3 +++
->  target/arm/cpu64.c       | 25 +++++++++++++++++++++++++
->  target/arm/kvm.c         | 30 ++++++++++++++++++++++++++++++
->  3 files changed, 58 insertions(+)
+On 2/10/25 4:20 PM, Cornelia Huck wrote:
+> On Fri, Feb 07 2025, Richard Henderson <richard.henderson@linaro.org> wrote:
 >
-> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-> index de09ebae91a5..54a4fadbf0c1 100644
-> --- a/target/arm/cpu-sysregs.h
-> +++ b/target/arm/cpu-sysregs.h
-> @@ -128,4 +128,7 @@ static const uint32_t id_register_sysreg[NUM_ID_IDX] = {
->      [CTR_EL0_IDX] = SYS_CTR_EL0,
->  };
->  
-> +int get_sysreg_idx(ARMSysRegs sysreg);
-> +uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
-> +
->  #endif /* ARM_CPU_SYSREGS_H */
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 8188ede5cc8a..9ae78253cb34 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -736,6 +736,31 @@ static void aarch64_a53_initfn(Object *obj)
->      define_cortex_a72_a57_a53_cp_reginfo(cpu);
->  }
->  
-> +#ifdef CONFIG_KVM
-> +
-> +int get_sysreg_idx(ARMSysRegs sysreg)
-> +{
-> +    int i;
-> +
-> +    for (i = 0; i < NUM_ID_IDX; i++) {
-> +        if (id_register_sysreg[i] == sysreg) {
-I agree with Richard that if we could get rid of this linear search it
-would be nicer.
-> +            return i;
-> +        }
-> +    }
-> +    return -1;
-> +}
-> +
-> +uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg)
-> +{
-> +    return ARM64_SYS_REG((sysreg & CP_REG_ARM64_SYSREG_OP0_MASK) >> CP_REG_ARM64_SYSREG_OP0_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_OP1_MASK) >> CP_REG_ARM64_SYSREG_OP1_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_CRN_MASK) >> CP_REG_ARM64_SYSREG_CRN_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_CRM_MASK) >> CP_REG_ARM64_SYSREG_CRM_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_OP2_MASK) >> CP_REG_ARM64_SYSREG_OP2_SHIFT);
-> +}
-> +
-> +#endif
-> +
->  static void aarch64_host_initfn(Object *obj)
->  {
->  #if defined(CONFIG_KVM)
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index da30bdbb2349..3b8bb5661f2b 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -246,6 +246,36 @@ static bool kvm_arm_pauth_supported(void)
->              kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
->  }
->  
-> +/* read a 32b sysreg value and store it in the idregs */
-> +static int get_host_cpu_reg32(int fd, ARMHostCPUFeatures *ahcf, ARMSysRegs sysreg)
-those are defined as static but there is no user so this will break
-compilation locally
+>> On 2/7/25 03:02, Cornelia Huck wrote:
+>>> And switch to using the generated definitions.
+>>>
+>>> Generated against Linux 6.14-rc1.
+>>>
+>>> Signed-off-by: Cornelia Huck<cohuck@redhat.com>
+>>> ---
+>>>   target/arm/cpu-sysreg-properties.c | 716 ++++++++++++++++++++++++++++-
+>>>   target/arm/cpu-sysregs.h           | 116 +----
+>>>   target/arm/cpu-sysregs.h.inc       | 164 +++++++
+>>>   3 files changed, 860 insertions(+), 136 deletions(-)
+>>>   create mode 100644 target/arm/cpu-sysregs.h.inc
+>> Why are we committing generated files and not generating them at build-time?
+> We'd either have to carry a copy of Linux' sysregs file, or generate a
+> build dependency on Linux. I think we should handle this similar to the
+> Linux headers update, where we do an explicit update and check for
+> anything unexpected that might have crept in. (Same applies if we switch
+> to any other external source for register definitions.)
+
+Yes this was the initial intent, I mean do a manual import from linux
+sysreg or any other reliable source such as the JSON dump pointed out by
+Marc. That way we are still able to analyze potential breakages.
 
 Eric
-> +{
-> +    int index = get_sysreg_idx(sysreg);
-> +    uint64_t *reg;
-> +    int ret;
-> +
-> +    if (index < 0) {
-> +        return -ERANGE;
-> +    }
-> +    reg = &ahcf->isar.idregs[index];
-> +    ret = read_sys_reg32(fd, (uint32_t *)reg, idregs_sysreg_to_kvm_reg(sysreg));
-> +    return ret;
-> +}
-> +
-> +/* read a 64b sysreg value and store it in the idregs */
-> +static int get_host_cpu_reg64(int fd, ARMHostCPUFeatures *ahcf, ARMSysRegs sysreg)
-> +{
-> +    int index = get_sysreg_idx(sysreg);
-> +    uint64_t *reg;
-> +    int ret;
-> +
-> +    if (index < 0) {
-> +        return -ERANGE;
-> +    }
-> +    reg = &ahcf->isar.idregs[index];
-> +    ret = read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg));
-> +    return ret;
-> +}
-> +
->  static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->  {
->      /* Identify the feature bits corresponding to the host CPU, and
+>
+>
+

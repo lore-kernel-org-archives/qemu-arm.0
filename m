@@ -1,133 +1,115 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp506014njb;
-        Mon, 17 Feb 2025 22:50:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW4dwJF7JFiOzZLjMw+HIlCqjVF3DhJ6+zJ0iNPLg7j6AD0iAzyuhPXGxMDROS3t5JNJFczQi8IvJ6wZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHelnj7P+Nq60LHxK7+YJbUIXKDL0cnmgoRdEA+lI+GD0sEJWv5OD2mVZtK22WFHqhsk7b9
-X-Received: by 2002:a05:622a:1986:b0:471:cb4a:92d with SMTP id d75a77b69052e-471dbd54f96mr156207661cf.23.1739861420172;
-        Mon, 17 Feb 2025 22:50:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739861420; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp506741njb;
+        Mon, 17 Feb 2025 22:53:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWIbtVmQ1Ji0FkNN910NdRFRyJQwzZZC/EYM8CJ66m9jykdb5PC2OBKYBJB8beom0zhe8Vj3pw8MuTo8g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHltIo+0xx8mcFuyoQeIxVHPuVt8qkfWc5UdjGv2iQLVMEcYWlDYjaSpP7haaTRzswg6CGR
+X-Received: by 2002:a05:620a:40c1:b0:7c0:7350:9adb with SMTP id af79cd13be357-7c08a9801b5mr1624978985a.11.1739861582671;
+        Mon, 17 Feb 2025 22:53:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739861582; cv=none;
         d=google.com; s=arc-20240605;
-        b=eZ/ppWYLoesYmnDq9YQhPdQVm3gHVPr1RI/mzjX/xSVkEXMPr97M9Xtv5317O6HQ5h
-         5YDgv2JG9HCz2SM9+YcdOfOZm3hmfRQ9FFD3oD5uRBc/EBRhUhP+xRVcf6ogNK3eby3O
-         uY6cSdzZYAIOgTPm6NPdfqudEMQXNmv7U9MBSUneqSX9gtR0/J6m6NNgCBgdBbQfdamB
-         KENuwLX0TOYdvxW1rxde1AnjhKkelunK0T0KgJK6R0txUhlmxfs4N5TfPlDpJg8/7HET
-         2YrvLAwstMZS6IvLEEMyVfnHXnk9j7u+WyrTh1+gOrHdfVNiSezppOjjTVt/O83STPaM
-         eM3w==
+        b=JX/KfhyopBPxU2YN0RPVuUSh5aoXnnWeBMY8QFoF0jhyue8XqG8FP1t9l9MwJEyQgp
+         SCiQJa8ZJaU0LHd4oafuCwfk59teVFad9QIxGeHIWXzpWehkmdcEySe3Cwlk74jQSrNA
+         Hy+nBQCAGzsEXxooz4FGJWgjnNl6agGi7Qg3OjNGgFUka2y4GmDDPlmk/luovPtVapWB
+         bWv+yefF4Kes8iNjdtErmb80R30PoNmWW3FFi1c6ZpK8VBDlIsrl0GaF+imC7ZJkYGnU
+         xSPlEJY1OyPcyi+9ZzySLhcHm6+ZMzsjTv/hiZYUGINkg15OeoN05ohu3IqWjVUcKgVG
+         HJdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=IrK39lNTBgyTIXEnetXCaiE9xol2+KvTmTKLVFB5C6s=;
-        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=JoMbQLXrugLuKMGaXiYywRKcItEKnczfxu7peCH5Zbu78HZeu3qt4LVdmwCdtSC83C
-         FCIUBP817grKjiw6nPdrr7OqascAonp1ddlWC8L/Rp2f8Xn3HNpW3wh70Dq3EyMXIIiV
-         frR9cA3C7TOI6ji8i0S0wf+vXoyJ70Bb4DgVJ9NFJnmbkNbAimmkjTsxiwajxy1uNlsV
-         YpgRbmoMEFwQy4dB/Lp6UdtYxFGAlawYd8ItCu3y1jqMZlqfYBQ+FTb8Vrt3L+RsCED6
-         jBh10DmHVV5PKu6NDqZzw4tjqm0QKuLuHKE6GsjLHIMApGj3rtruswAVw4hOGrTeHhU5
-         4AMw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=hcoK3NmBPdAVabKPGeGtfv9vcBWZ7N6wGSJPtpup+Gg=;
+        fh=noIpCBSmQgI9f0jyNOKvGlnnepwuyxyAIOkMBOvEOsE=;
+        b=cS+fN/Ed3tLTFXfjJb3/w9NrYFdV7c9/9Hc4m4y8dnMwKoQCyUQpDU70ls1Vi6TWBS
+         6ft47Y3uE3iMmpivc0F4255ushjKNbTXdqHGZWs/CXXKcPVlra4NhVGNwtx51VLQ/Zbb
+         zTjGTC8RqKHIEt3M+lA/L7H7O/6v/b9s0FBRNxju59y7HCTX6m5N68lbmGBXgPG/Lzcp
+         DquhkSezrMTnWVNCGyThnEn3cUQjWy55z9XXhoFEGFsEFKVOBfL/cG1Kdsr2sYUPVFbg
+         IbJ+dHFtVlsY8bwYdqKLG0r2qRsXwmwLy4ODeWqE9FiX6ohNXME2BKGLXhQMmR/wSZGD
+         bz8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c2b2df4dsi101819601cf.213.2025.02.17.22.50.20
+        by mx.google.com with ESMTPS id af79cd13be357-7c0b053a752si35974685a.302.2025.02.17.22.53.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2025 22:50:20 -0800 (PST)
+        Mon, 17 Feb 2025 22:53:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tkHQQ-00022u-60; Tue, 18 Feb 2025 01:49:46 -0500
+	id 1tkHTO-0003dA-Hf; Tue, 18 Feb 2025 01:52:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkHQN-00022R-Qg; Tue, 18 Feb 2025 01:49:43 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tkHTE-0003cS-5a; Tue, 18 Feb 2025 01:52:40 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkHQL-00076r-IF; Tue, 18 Feb 2025 01:49:43 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Yxqrg1x8jz4x0t;
- Tue, 18 Feb 2025 17:49:39 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Yxqrc3nHjz4wcr;
- Tue, 18 Feb 2025 17:49:36 +1100 (AEDT)
-Message-ID: <ca2ad388-2bb0-4583-88c1-7821064592e6@kaod.org>
-Date: Tue, 18 Feb 2025 07:49:34 +0100
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tkHTB-0007TL-Il; Tue, 18 Feb 2025 01:52:39 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Yxqrw2mHsz6M4P2;
+ Tue, 18 Feb 2025 14:49:52 +0800 (CST)
+Received: from frapeml100006.china.huawei.com (unknown [7.182.85.201])
+ by mail.maildlp.com (Postfix) with ESMTPS id 906881400DA;
+ Tue, 18 Feb 2025 14:52:26 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100006.china.huawei.com (7.182.85.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 18 Feb 2025 07:52:26 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Tue, 18 Feb 2025 07:52:26 +0100
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>, Nicolin Chen
+ <nicolinc@nvidia.com>, Donald Dutile <ddutile@redhat.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
+ =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
+ <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
+ Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>, "Peng, Chao P" <chao.p.peng@intel.com>
+Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rLkOMCAgAAM2QCAAAz2gIAEhqeggCVVAYCAAxlYAIAS3VEAgABWAvCAACxmsIAnKXxwgAFsm4A=
+Date: Tue, 18 Feb 2025 06:52:26 +0000
+Message-ID: <c975f6dfaa9243c5a2db9e37d592ea51@huawei.com>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
+ <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <568014f5-25fd-439b-b70c-9cf50f31255b@redhat.com>
+ <Z5HBJOgO4tUJApY+@nvidia.com> <8fe09b60e6f04cc6aec99b72b46b2fb3@huawei.com>
+ <SJ0PR11MB6744943702EB5798EC9B3B9992E02@SJ0PR11MB6744.namprd11.prod.outlook.com>
+ <SJ0PR11MB6744B3D96A98584525B0401292FB2@SJ0PR11MB6744.namprd11.prod.outlook.com>
+In-Reply-To: <SJ0PR11MB6744B3D96A98584525B0401292FB2@SJ0PR11MB6744.namprd11.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.48.156.112]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 18/28] hw/arm/aspeed: Add SoC and Machine Support for
- AST2700 A1
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
- <20250213033531.3367697-19-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250213033531.3367697-19-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,161 +122,70 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GP5wWs6xH/P3
+X-TUID: n8ecRWm85QSE
 
-On 2/13/25 04:35, Jamin Lin wrote:
-> The memory map for AST2700 A1 remains compatible with AST2700 A0. However, the
-> IRQ mapping has been updated for AST2700 A1, with GIC interrupts now ranging
-> from 192 to 201. Add a new IRQ map table for AST2700 A1.
-> Add "aspeed_soc_ast2700a1_class_init" to initialize the AST2700 A1 SoC.
-> Introduce "aspeed_machine_ast2700a1_evb_class_init" to initialize the
-> AST2700 A1 EVB.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed.c         | 13 +++++++
->   hw/arm/aspeed_ast27x0.c | 80 +++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 93 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 6ddfdbdeba..c0539e5950 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1672,6 +1672,15 @@ static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc, void *data)
->       mc->default_ram_size = 1 * GiB;
->       aspeed_machine_class_init_cpus_defaults(mc);
->   }
-> +
-> +static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
-> +    amc->soc_name  = "ast2700-a1";
-> +}
->   #endif
->   
->   static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-> @@ -1798,6 +1807,10 @@ static const TypeInfo aspeed_machine_types[] = {
->           .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
->           .parent        = TYPE_ASPEED_MACHINE,
->           .class_init    = aspeed_machine_ast2700a0_evb_class_init,
-> +        }, {
-> +        .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
-> +        .parent        = MACHINE_TYPE_NAME("ast2700a0-evb"),
+Hi Zhenzhong,
 
-Shouldn't the parent be TYPE_ASPEED_MACHINE instead ?
+> -----Original Message-----
+> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
+> Sent: Monday, February 17, 2025 9:17 AM
+> To: Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; Nicolin Chen
+> <nicolinc@nvidia.com>; Donald Dutile <ddutile@redhat.com>
+> Cc: eric.auger@redhat.com; Peter Maydell <peter.maydell@linaro.org>;
+> Jason Gunthorpe <jgg@nvidia.com>; Daniel P. Berrang=E9
+> <berrange@redhat.com>; qemu-arm@nongnu.org; qemu-
+> devel@nongnu.org; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+> Jonathan Cameron <jonathan.cameron@huawei.com>;
+> zhangfei.gao@linaro.org; Peng, Chao P <chao.p.peng@intel.com>
+> Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+> nested SMMUv3
+>=20
+> Hi Shameer, Nicolin,
+>=20
+[...]
 
-> +        .class_init    = aspeed_machine_ast2700a1_evb_class_init,
->   #endif
->       }, {
->           .name          = TYPE_ASPEED_MACHINE,
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 0ccec774de..926b4c3e76 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -119,6 +119,52 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
->       [ASPEED_DEV_SDHCI]     = 133,
->   };
->   
-> +static const int aspeed_soc_ast2700a1_irqmap[] = {
-> +    [ASPEED_DEV_SDMC]      = 0,
-> +    [ASPEED_DEV_HACE]      = 4,
-> +    [ASPEED_DEV_XDMA]      = 5,
-> +    [ASPEED_DEV_UART4]     = 8,
-> +    [ASPEED_DEV_SCU]       = 12,
-> +    [ASPEED_DEV_RTC]       = 13,
-> +    [ASPEED_DEV_EMMC]      = 15,
-> +    [ASPEED_DEV_TIMER1]    = 16,
-> +    [ASPEED_DEV_TIMER2]    = 17,
-> +    [ASPEED_DEV_TIMER3]    = 18,
-> +    [ASPEED_DEV_TIMER4]    = 19,
-> +    [ASPEED_DEV_TIMER5]    = 20,
-> +    [ASPEED_DEV_TIMER6]    = 21,
-> +    [ASPEED_DEV_TIMER7]    = 22,
-> +    [ASPEED_DEV_TIMER8]    = 23,
-> +    [ASPEED_DEV_DP]        = 28,
-> +    [ASPEED_DEV_LPC]       = 192,
-> +    [ASPEED_DEV_IBT]       = 192,
-> +    [ASPEED_DEV_KCS]       = 192,
-> +    [ASPEED_DEV_I2C]       = 194,
-> +    [ASPEED_DEV_ADC]       = 194,
-> +    [ASPEED_DEV_GPIO]      = 194,
-> +    [ASPEED_DEV_FMC]       = 195,
-> +    [ASPEED_DEV_WDT]       = 195,
-> +    [ASPEED_DEV_PWM]       = 195,
-> +    [ASPEED_DEV_I3C]       = 195,
-> +    [ASPEED_DEV_UART0]     = 196,
-> +    [ASPEED_DEV_UART1]     = 196,
-> +    [ASPEED_DEV_UART2]     = 196,
-> +    [ASPEED_DEV_UART3]     = 196,
-> +    [ASPEED_DEV_UART5]     = 196,
-> +    [ASPEED_DEV_UART6]     = 196,
-> +    [ASPEED_DEV_UART7]     = 196,
-> +    [ASPEED_DEV_UART8]     = 196,
-> +    [ASPEED_DEV_UART9]     = 196,
-> +    [ASPEED_DEV_UART10]    = 196,
-> +    [ASPEED_DEV_UART11]    = 196,
-> +    [ASPEED_DEV_UART12]    = 196,
-> +    [ASPEED_DEV_ETH1]      = 196,
-> +    [ASPEED_DEV_ETH2]      = 196,
-> +    [ASPEED_DEV_ETH3]      = 196,
-> +    [ASPEED_DEV_PECI]      = 197,
-> +    [ASPEED_DEV_SDHCI]     = 197,
-> +};
-> +
->   /* GICINT 128 */
->   /* GICINT 192 */
->   static const int ast2700_gic128_gic192_intcmap[] = {
-> @@ -838,6 +884,34 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
->       sc->get_irq      = aspeed_soc_ast2700_get_irq;
->   }
->   
-> +static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, void *data)
-> +{
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("cortex-a35"),
-> +        NULL
-> +    };
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
-> +
-> +    /* Reason: The Aspeed SoC can only be instantiated from a board */
-> +    dc->user_creatable = false;
-> +    dc->realize      = aspeed_soc_ast2700_realize;
-> +
-> +    sc->name         = "ast2700-a1";
-> +    sc->valid_cpu_types = valid_cpu_types;
-> +    sc->silicon_rev  = AST2700_A1_SILICON_REV;
-> +    sc->sram_size    = 0x20000;
-> +    sc->spis_num     = 3;
-> +    sc->wdts_num     = 8;
-> +    sc->macs_num     = 3;
-> +    sc->uarts_num    = 13;
-> +    sc->num_cpus     = 4;
-> +    sc->uarts_base   = ASPEED_DEV_UART0;
-> +    sc->irqmap       = aspeed_soc_ast2700a1_irqmap;
-> +    sc->memmap       = aspeed_soc_ast2700_memmap;
-> +    sc->get_irq      = aspeed_soc_ast2700_get_irq;
-> +}
-> +
->   static const TypeInfo aspeed_soc_ast27x0_types[] = {
->       {
->           .name           = TYPE_ASPEED27X0_SOC,
-> @@ -850,6 +924,12 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
->           .instance_init  = aspeed_soc_ast2700_init,
->           .class_init     = aspeed_soc_ast2700a0_class_init,
->       },
-> +    {
-> +        .name           = "ast2700-a1",
-> +        .parent         = TYPE_ASPEED27X0_SOC,
-> +        .instance_init  = aspeed_soc_ast2700_init,
-> +        .class_init     = aspeed_soc_ast2700a1_class_init,
-> +    },
->   };
->   
->   DEFINE_TYPES(aspeed_soc_ast27x0_types)
+> >>Hi Zhenzhong,
+> >>
+> >>Just wondering what your plans are for the above patches.  If it make
+> sense and
+> >>you
+> >>are fine with it, I think it is a good idea one of us can pick up those=
+ from
+> that
+> >>series
+> >>and sent out separately so that it can get some review and take it
+> forward.
+> >
+> >Emulated series is merged, I plan to send Intel pass-through series afte=
+r
+> >Chinese festival vacation, but at least half a month later. So feel free=
+ to
+> >pick those patches you need and send for comments.
+>=20
+> I plan to send vtd nesting series out this week and want to ask about sta=
+tus
+> of "1) HWPT uAPI patches in backends/iommufd.c" series.
+>=20
+> If you had sent it out, I will do a rebase and bypass them to avoid dupli=
+cate
+> review effort in community. Or I can send them in vtd nesting series if y=
+ou
+> not yet.
+
+No. It is not send out yet. Please include it in your vtd nesting series. T=
+hanks.
+
+I am currently working on refactoring the SMMUv3 accel series and the
+"Add HW accelerated nesting support for arm SMMUv3" series
+from Nicolin.
+
+Thanks,
+Shameer.
+
 

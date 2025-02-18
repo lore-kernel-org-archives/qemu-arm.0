@@ -1,151 +1,215 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp615802njb;
-        Tue, 18 Feb 2025 03:20:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWcv31BrKtx9muS12a6BVLXfxhYvObTyuqVUw8leuEFTR7G7X774df/rLQrxQyochVSfj/h0f/6DQ6ojA==@linaro.org
-X-Received: by 2002:a05:600c:a384:b0:439:88bb:d000 with SMTP id 5b1f17b1804b1-43988bbd267mr37913895e9.25.1739877609987;
-        Tue, 18 Feb 2025 03:20:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739877609; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp619591njb;
+        Tue, 18 Feb 2025 03:29:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVaa8viIWX5amdPa4UPKdCoQSQmktRz6O5jMQjTGRS33Ojol6xAYG/P1TO9cqqcKxHH77nUBRIGWNixqA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFWSRhtPO/TltKbMRB5blcypscEc2NgvTX7+yAzZRAe0bqDZ49sDK6kYPIYQICy38bwzxNf
+X-Received: by 2002:a17:902:ef49:b0:212:63c0:d9e7 with SMTP id d9443c01a7336-22103c5f3bamr226998305ad.0.1739878152952;
+        Tue, 18 Feb 2025 03:29:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739878152; cv=none;
         d=google.com; s=arc-20240605;
-        b=cKQaOg8+MUINYjg15YQzHlXmopUH7R8GOeoYWFYdmiGf9PK2nINquIhFTFk16cK053
-         TF6uj6uTEMrchmAODIleaNSnG+7zK1VJdB4T4l64+HawYY1oOcnhfmd09s/n2ZkrP9C1
-         0Pzmo/NmIL1p/M3Xi4B4eDR8YjJYdmXbxaZG+2aYgO86xYzFTmDb88m1tfD5WVdngoC4
-         zLOosfrMprlKZ0z6a0evvdWOcwdvrSKZk2RYgtNMNX0/YfUchHpYaE+zI1tcQ+D0ebQ7
-         yQaq/GM3MNt/zXWv6QgnCNJEtJqTZgnKHH53HrgILmTlAmM3yKBt3mhjTI32DpUlCin5
-         fkjA==
+        b=BP0NdyilpJsid+FXsXVf3PZTIJkosllZsAr7aUqQK1nEneIUNA9NU1il4HHqLBkQim
+         vQNnAwLzVjIggRAa06FvBOZcXVq7cR31+ynSF5gVZoRPMcf9Bwa7Q6ORsv5tazCO3HDn
+         WoZBEHIX8P50M4SswZBqIaDaKDipnCclGxMNTN+uobPP6AEtPRaKvtNdzG3l1Dx4hMNK
+         sLe/k+AyskFq4z1T7R88OJlpPAXXruU+Bsbvrq2Nhp79NGsh9f6gbqU4sgn8f+3xS9rk
+         izMVHC5Pxyl36UzP9J95c1UdCGhmgqhv/MZSipRHjdHQDnnzBJjl4yHk4xer/GEcM84K
+         N8nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=b9/3DjAFxI/v4Ul4XBqPwJ9mqca8bUx0Fi7qKIYKz4c=;
-        fh=UeZyCcJhbljJoAN8Ot8NGZtuSGpUIZ0OFG9hWGwWzIc=;
-        b=DxhTzsxz46ilO4qZCKrpA0JcoyfkjCpySwWUmQNxOtn2/ajMgtENM/LG2SnUaBomPU
-         Ohu/rmTID3824yUwRAX1WmaqEbaIUxh/3Keh1Be+H7YpckNSK3RrCEgNaRK4Hv7D5q9O
-         S7IJFLdOtJWPrO/6wnBI6nseJ2D/xF3UfZwft+hAFk/yAl4559xQsqHZHlbfW2vgVvp5
-         xSe2xeR3XEPj46Be5HdO1h4qSI77pdQW5Yz0qkSP/KSUj5qNLJoey4UHsbBNGh+XUDow
-         8Qq6Sx/yQOurfCGiby/6q7qiHgShESGSk1O6ucyDMPwTtOIF/0LRd5374s2H98hhBVuX
-         LgUA==;
+        bh=wA5Dr3SAIqSUJqZ/TzERixoJpvxFjCXN+UQvjfqh3DM=;
+        fh=TK97auETtXIDrXVlRZRKapiSZtjZaADh77v9YezEXak=;
+        b=fufwekSwoiHqAR6bL0VljL1t91fz++RUxb6/0z3oZd7pxPoAdTqQLGBI90Hfyh5XZ0
+         cpCT5AJXWD6QjQWFAff1jIkwBoU5Z/YRdryJyQthP9W6f1g8QrL8Ec3piPcQkC7xscHq
+         O0AfRyaJcGheLILWs2TyHjg7jGqTWOZh896T4mIfaoUEDk9kTTKv96dXfMOLRLMgipSH
+         +scEV9JXf2qd9PU4Ec1jqAuozfRl6kl6Qf3XnLgtyLGvs/mXA276u3z1Y28IZE3pE+zH
+         9JE36d1fXIWzDq9CC8uzq1b3CoIbaxBD1Bp4uWTTYFCGY9fowkZOEKJ1mR4mVrlSrxbX
+         sLEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QnEfi6r2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-439619146aesor49415235e9.9.2025.02.18.03.20.09
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FHKF/k6x";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kchamart@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-adda2e700eesi10660658a12.559.2025.02.18.03.29.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 18 Feb 2025 03:20:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Feb 2025 03:29:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QnEfi6r2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739877609; x=1740482409; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=b9/3DjAFxI/v4Ul4XBqPwJ9mqca8bUx0Fi7qKIYKz4c=;
-        b=QnEfi6r26nyHZc1qmh6lOLpjWcNntqRoPvhLktsSUEoAEbtQNY0xZzYM4Z7RFXyA9F
-         B/S/ykUadvA2bOnmgbdg4D5/volAPPcuyXMwehZox5VKEjWJUQgFwjfrCIZ+oWCYvZMZ
-         8T1vO+G2ReCU5iEq/tdHCXfwUfwvhBLjpCK3rVy6tW3rHL7j10ClsQU92zKcKeL16qRP
-         E4lIZQjXoS9v5ysjswAQwlpj0IxPRmxLC0DjEbkomKJiBxktu0d2E526A+Hv77Z5Fqlg
-         /+e2JzPRTF3YiWzT/PmMisqfXHQn3izSwLe4XtH5V+aWJdSmUxhxiFF2wFrSjoRFjXfA
-         A9JA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739877609; x=1740482409;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b9/3DjAFxI/v4Ul4XBqPwJ9mqca8bUx0Fi7qKIYKz4c=;
-        b=PKEcUezJhticCX2LE8KAuuIF3BIQWmv7zy2vHhH4n98Y5WWVEHZPtOCpssrFAqI3mT
-         qCKxquho9iCVqp9Nk0uANzdY1WIO4yy+Wwvox2LxBQcH4P80f42ZTbp9UIkXEAYfxbei
-         92F4bqV0Hhpa07jAuAflpZEK0bky9FCKmhdjs99JltJGHOAHb5sB4ZvVeVmfw8SquMyc
-         Tdaof2FhhOdcIMGOjf4X8eUKgOJYwJmhcqUyQr4YSg5AW36HvLCvGg4gFjxReyUcbn+7
-         cZ2qMAgejrhGDQeDqlEgw583vPR50oEpulSuzSn/LTegUz41gzmwjbHApxM8pBS0bBP+
-         dkHg==
-X-Forwarded-Encrypted: i=1; AJvYcCWzHcEBkd9wa6e7oxOqXFX9WemLXlgfOk/lFvSgwx75cHS86aaj2+DEBnMW3oTUr3r8iKJXe1oKkwebtA==@linaro.org
-X-Gm-Message-State: AOJu0Yzju0jVnacKTRuiV63OWkxOJUgH6M0ktwwsDBD/oBzxIYtxQAZ0
-	1EyjUhv23CrJGVSLbLGWdN9VOUSalro7CcEG2Te/7XeuVRvsUu39cf/Nx9p57/tEUA==
-X-Gm-Gg: ASbGnctIXgAmp71aW7uUplw2CkYo44pgnpxEi7EfEBkLyudloEb4Tm8/ndwAVPjy9OC
-	FFNRBn9Yl2xQUi1hQCcqz5XdbQxyimolRj9WAAY96OhGNob4RE8wXZ/LsMcP5EMaNjK8pCYnTWC
-	QIFbJ0Q+v2+5obt75Rbf3PyHiTMPjgXmFH3Ol3tkad/SmRN1MJy4irzZS+ugk1Ktn5K2OA44Czw
-	CotWDnAkTRi3w/TFPXo6wZXkno6ZKh3L5IdK3J8fLbHuOIN+U9xCEeFKEgM7dB7w2i1zbH6OoLv
-	YUnpcEuyMgaWiIVc3j7ywwgj7fwABzW68lvSpWHmFc3H5NctuA4or+/5+04=
-X-Google-Smtp-Source: AGHT+IGQ2Y/CQJvytuSzQ8bn6E1HTuNsvy6h2hib1hr/tIxCj4phhTrfkdFlTDkp4pKM2tI2/ftZfA==
-X-Received: by 2002:a05:600c:1c24:b0:439:6304:e28a with SMTP id 5b1f17b1804b1-4396e5b56e7mr147751645e9.0.1739877609433;
-        Tue, 18 Feb 2025 03:20:09 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f25913f5asm14935008f8f.52.2025.02.18.03.20.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Feb 2025 03:20:08 -0800 (PST)
-Message-ID: <aeaf0f19-0f14-4a02-9c51-09521e7c75e1@linaro.org>
-Date: Tue, 18 Feb 2025 12:20:07 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FHKF/k6x";
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739878151;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wA5Dr3SAIqSUJqZ/TzERixoJpvxFjCXN+UQvjfqh3DM=;
+	b=FHKF/k6x1Jc18RZp01ed6jWw/jnEx9GipjTn9HQTUaBRl0hylb8JUZ4COFR/+F7uMuX+Hz
+	yqp5y/pX4a9cyygqsrYO22UpuJj/plmjuiEfx2qtLlXyb9gmpCJBFoBrtjmSJuRsGhwbHK
+	6fu7P73pAzxCJNCRPJNfzaFB+Asb6Kg=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-144-ph7rpuYxPBe0gJkPhRIb6g-1; Tue,
+ 18 Feb 2025 06:29:08 -0500
+X-MC-Unique: ph7rpuYxPBe0gJkPhRIb6g-1
+X-Mimecast-MFC-AGG-ID: ph7rpuYxPBe0gJkPhRIb6g_1739878146
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 714F318EAB04;
+	Tue, 18 Feb 2025 11:29:04 +0000 (UTC)
+Received: from gezellig (unknown [10.44.34.39])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 30D0919560AB;
+	Tue, 18 Feb 2025 11:28:50 +0000 (UTC)
+Date: Tue, 18 Feb 2025 16:58:45 +0530
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org, Ninad Palsule <ninad@linux.ibm.com>,
+	sebott@redhat.com, maz@kernel.org,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+	Zhenzhong Duan <zhenzhong.duan@intel.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
+	Jamin Lin <jamin_lin@aspeedtech.com>, Yi Liu <yi.l.liu@intel.com>,
+	qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>,
+	richard.henderson@linaro.org
+Subject: Re: [PATCH v2 2/3] docs/cpu-features: Update "PAuth" (Pointer
+ Authentication) details
+Message-ID: <Z7Qnsm02w6gao_ui@gezellig>
+References: <20250217163732.3718617-1-kchamart@redhat.com>
+ <20250217163732.3718617-3-kchamart@redhat.com>
+ <ff481ffd-545f-4d0c-b53a-3cf9e0f8f388@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 3/9] meson: Disallow 64-bit on 32-bit Xen emulation
-To: qemu-devel@nongnu.org, David Woodhouse <dwmw2@infradead.org>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- Paul Durrant <paul@xen.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20250208205725.568631-1-richard.henderson@linaro.org>
- <20250208205725.568631-4-richard.henderson@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250208205725.568631-4-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: UjKAbBUVrG1S
+In-Reply-To: <ff481ffd-545f-4d0c-b53a-3cf9e0f8f388@redhat.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: 5mMmINzR3+Nz
 
-Hi,
+(Cc: Richard Henderson; context: "SME" and "RME" feature discussion
+below.)
 
-Adding Xen community.
+On Mon, Feb 17, 2025 at 06:43:01PM +0100, Eric Auger wrote:
+> Hi Kashyap,
 
-On 8/2/25 21:57, Richard Henderson wrote:
-> Require a 64-bit host binary to spawn a 64-bit guest.
+Hey,
+
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   meson.build | 9 +++++++--
->   1 file changed, 7 insertions(+), 2 deletions(-)
+> On 2/17/25 5:37 PM, Kashyap Chamarthy wrote:
+
+[...]
+
+> > Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+> > ---
+> > v2: address Marc Zyngier's comments:
+> >     https://lists.gnu.org/archive/html/qemu-devel/2025-01/msg03451.html
+> > ---
+
+[...]
+
+> > +Live migration and PAuth
+> > +~~~~~~~~~~~~~~~~~~~~~~~~
+> > +
+> > +The level of PAuth support depends on which Arm architecture a given CPU
+> > +supports (e.g. Armv8.3 vs. Armv8.6).  This gradation in PAuth support
+> > +has implications for live migration.  For example, to be able to
+> > +live-migrate from host-A (with Armv8.3) to host-B (with Arm v8.6):
+> > +
+> > +  - the source and destination hosts must "agree" on (a) the PAC
+> > +    signature algorithm, and (b) all the sub-features of PAuth; or
+> > +
+> > +  - the alternative (and less desirable) option is to turn off PAuth
+> > +    off on both source and destination — this is generally not
+> > +    recommended, as PAuth is a security feature.
+> > +
+> > +TCG
+> > +---
+> >  
+> > -TCG vCPU features are CPU features that are specific to TCG.
+> > -Below is the list of TCG vCPU features and their descriptions.
 > 
-> diff --git a/meson.build b/meson.build
-> index 1af8aeb194..911955cfa8 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -304,9 +304,14 @@ else
->   endif
->   accelerator_targets = { 'CONFIG_KVM': kvm_targets }
->   
-> -if cpu in ['x86', 'x86_64']
-> +if cpu == 'x86'
-> +  xen_targets = ['i386-softmmu']
-> +elif cpu == 'x86_64'
->     xen_targets = ['i386-softmmu', 'x86_64-softmmu']
-> -elif cpu in ['arm', 'aarch64']
-> +elif cpu == 'arm'
-> +  # i386 emulator provides xenpv machine type for multiple architectures
-> +  xen_targets = ['i386-softmmu']
+> The resulting header layout seems weird to me.
+> Initially we had at top level (assuming ===):
+> 
+> KVM vCPU Features
+> TCG vCPU Features
+> SVE CPU Properties
+> SME CPU Properties
+> RME CPU Properties
+> 
+> and now
+> 
+> TCG vCPU Features has somehow disappeared giving the impression that
+> there are none.
 
-Is actually someone *testing* this config? I'm having hard time building
-it, so am very suspicious about how it runs, and start to wonder if I'm
-not just wasting my time (as could be our CI).
+I did think about it :) That's why I wrote this in the cover-letter; not
+sure if you noticed it:
 
-> +elif cpu == 'aarch64'
->     # i386 emulator provides xenpv machine type for multiple architectures
->     xen_targets = ['i386-softmmu', 'x86_64-softmmu', 'aarch64-softmmu']
->   else
+    I replaced the "TCG vCPU Features" heading with "PAuth" because of
+    this: before this change, the section says, it is about "CPU
+    features that are specific to TCG".  But it has only PAuth-related
+    parameters under it.  Since PAuth is relevant to both KVM and TCG, I
+    moved them under a separate PAuth section, instead of duplicating
+    it.
 
-Regards,
+    But now we have a small inconsistency - there's a KVM-only CPU
+    features section, but no TCG-only section.  I thought when there are
+    more TCG-only CPU features, that section can be added back in.  Or I
+    can add that back in, if anyone feels strongly about it.
 
-Phil.
+> SME and RME and TCG only if am not wrong while PAUTH and SVE are both
+> KVM and TCG
+
+I didn't know that.  I read the docs a bit more closer about SME, RME,
+and SVE, and did some quick `git-annotate` analysis:
+
+  - "SME is not supported by KVM at this time" — this was added in
+    commit e74c097638 (target/arm: Add cpu properties for SME,
+    2022-06-20).
+
+    If it is still accurate, then yes, SME looks to be TCG-only.
+
+  - "The status of RME support with QEMU is experimental" — this was
+    added in commit 57223a4c24 (docs/system/arm: Document FEAT_RME,
+    2023-06-22).
+
+    The phrase "with QEMU" doesn't quite decisively tell me whether it
+    is experimental for TCG-only, or if it also applies for KVM.  Maybe
+    Richard (in Cc) can tell us more.
+
+  - SVE seems to be for both KVM and TCG, as the section "SVE CPU
+    Property Dependencies and Constraints" talks about KVM.
+
+  - PAuth is both KVM and TCG.
+
+> Maybe we shall
+> - rename KVM vCPU Features -> KVM only vCPU Features
+> - Add a TCG only vCPU features including both SME and RME ones
+> - introduce a top level KVM and TCG vCPU features with below:
+> PAUTH, SVE, detailing potential different semantic for both KVM and TCG mode
+
+Yeah, it can be done.  Would you be okay if I do it as a follow-up?  As
+this a re-work of the entire doc with several features.
+
+> Also while we are at it, we may use vCPU everywhere instead of CPU (SVE
+> CPU Properties) and just skip CPU if it lays within the KVM and TCG vCPU
+> Features
+
+Yes, make sense.
+
+[...]
+
+-- 
+/kashyap

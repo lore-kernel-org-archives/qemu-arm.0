@@ -1,129 +1,134 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp345123njb;
-        Mon, 17 Feb 2025 14:49:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUmjtg3A5k9rXaV4hiyzbTNzTmLdQhI8zI9ONeudh8RCMtHjvC5Q9kZ937JckvzyuXb5DFLzbZs9S4grw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFnEF96QXSrbp9AoPWOidK22R6Nvb50/ocEuZUtwvbObVRZNXCrYJ+VlLDSnL+uAHmAsIur
-X-Received: by 2002:a05:622a:4ccc:b0:471:f447:3b62 with SMTP id d75a77b69052e-471f4473defmr58430971cf.6.1739832540470;
-        Mon, 17 Feb 2025 14:49:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739832540; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp400389njb;
+        Mon, 17 Feb 2025 17:14:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVdhyvRnED4wGBrrJetHXpshq0jv6r3PQKAic/tEuu1b+W8s3+oD5dRJzx58i2Vz4dv7spmpeahmpMwGg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOkQmSj9jiOMz9GY9wTt9P0ECu0C75808luWYPLyVYsnsVazHc5sHzmKddqGrTvkvf9CfL
+X-Received: by 2002:a05:6214:29cb:b0:6e1:700e:488a with SMTP id 6a1803df08f44-6e66ccc476bmr154579186d6.22.1739841296157;
+        Mon, 17 Feb 2025 17:14:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739841296; cv=none;
         d=google.com; s=arc-20240605;
-        b=XPl9jclGsI/ok8q8onz0S3DxVAAntaGPAC83+8K324+ZYhHQNrWK4QxJQm2ucNfURG
-         LiucjIQEmqEaMddfJQYgYPJWJHAdP8QOLNcMllaCN75/dusWFdkSdTl59mK9EW1OWKC/
-         uQkqZlnxRJt2b1E7l+kXua74SFp7aqPUf2X86SJ/P5v0HytOeeg/KsNSpD1MFHfSFaD1
-         +Xge7IM0GyNW+Hb1Hkiivx+Fsw05ATgWcWSpJTNf8xGUdks/erQHV3CIo45e79PZ3G09
-         YuCD5C/3v6TmFCR5nGalce56hC3YVT0/dR62IUo6BDzIESQNtEsOPhR+ry4lRMZpA70l
-         amuA==
+        b=Va33TrK1CSaY2ZVs5nBL59QK11H5r289+4XgS8ZQav//j2ufaFAXhryglKWQ8sklaZ
+         KeCl8s/PP3sdj65hHyInEnK7G0DoyKDmQ8JQIGLF+uncAVt91RZZLKxJomknis/xj7BM
+         OhgQn3zwxMqqtbcE0iCh6Hd2TD9xmoPuL0Xy789bNT30eFfk2gQhni6rw8NwrZAim3l+
+         ue4ma93+kKLodsBu4VHbnvi7VhvklU6TTKXsxSSikNS1LTUCfEnAakT3dhL/+u5IWS57
+         7onZnf5Tm0hH/Gwu/rjXwsLDVwQC98iC30SSRtYibD3QzqY/VYUKEwc86XctsJF4tSgC
+         q43g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=9OFVkilwu+UsQuAT97bo8myhwJ+KIzz1njO0RURHPKI=;
-        fh=p0OvZuU0YFky6XBblphA0MCt+NRI1gaiawSpdQQz2aA=;
-        b=WG65lj6RO7ZxAQ02Rlkg2G5qVHWQuKGz0aR4X5X79p/GTX8Qh8bokEGDJ5PKpS/BWr
-         0n8ByXdrc455MwJ5s+S14pmaxwoteGZKppZbw+I3aJpTdHfZKixwTvoBE+jOcdHgnWya
-         Rx99Qxc26qIy29bfdZIILA3/6JVgyGwvWsTsCST0x2etQT6XfRNKeLO9FraTyIsegZi5
-         FmM5T1AthOCSQZpjsMHVZJcvgLLwOGwmkqLao1SoCMB6HiLoCEwxLxf+w5In5nahXg+b
-         5KoreE7H5KPl/sQk2iWl9ZJ2WbaYmkfwfU/0D6YQ9LdOLLay8XPgd/TlrDBLU4ifXQsF
-         bJPA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=JlUytGWMnvbmK4f4oX+kdzLnB9J92mhbar11srDT/3U=;
+        fh=6y4bqqcbsEu2YF1Rf7985gPix2EtN8l8ZRvWINMBUFQ=;
+        b=cWkZPvz2xJZNRXtdkgOfnmmminZHzw/Ux2nf0JyFiaGesePORti0C4jOxsLsoR7Ild
+         ka5DjW42KYJOndjJCY0fJvFSI2XNydnkQKyInM7IbcxqfAgXcP+9lBlHeDDoXhb0fLee
+         RasVv867GuSXvUnnyqYPHoR9ThjciHNBnpJYv6Y3dT+PVrd+wACYZeRUPXu7cQ0PtTLP
+         faf11IMsStfjFQ4AjPYdb+39TxgZoAyYnrTNcMUm8qDEPecyE0hB11f/n98PFiz7VBYj
+         ks82896yUnfM5C03uyUMyZ8faA9GT7abGgdkep4sBDErJBT9GxzlZIh5DEcSyttDRwTP
+         a2cg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=a5I5antC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UmHBC/Qg";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471c2b2c1basi97760071cf.281.2025.02.17.14.49.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a8e07si100889026d6.232.2025.02.17.17.14.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2025 14:49:00 -0800 (PST)
+        Mon, 17 Feb 2025 17:14:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=a5I5antC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UmHBC/Qg";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tk9uh-0005Sv-W2; Mon, 17 Feb 2025 17:48:32 -0500
+	id 1tkCCC-0003mv-31; Mon, 17 Feb 2025 20:14:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tk9uh-0005Sb-4p; Mon, 17 Feb 2025 17:48:31 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tk9uf-0007Kw-Aa; Mon, 17 Feb 2025 17:48:30 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-5e0516e7a77so2478067a12.1; 
- Mon, 17 Feb 2025 14:48:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1739832507; x=1740437307; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9OFVkilwu+UsQuAT97bo8myhwJ+KIzz1njO0RURHPKI=;
- b=a5I5antCb/9UqEkUD0BXol0w34Wtu/x1Z7irSraUozeTnAvxhOeE7BaIantYhxTeav
- NfaBKrb9TUpBYyl+XuwFAZZPLzuWW6aIJ1Sgx9eSOTFoZoNJ/04tZrD4FBpEGHqPwxSh
- oMEEcKsLwF/wNobOWmeWlrhwEyJFrtH9abdFIVZerg/uxHSRX/VTCK5q8vuMYADSeV/d
- nx9xqQDOGnVY56St20HHkCXQ2/pkbKLPbVsXK8+eCl0hFc3btMrJRlv1KfNARi/KzOvQ
- tfBbaeaNDz4cdKpLIV5ZOzs0jIVGRq6I4n+OyBTGz7Ilgxxlt3yaTEJlkIdaB7o/puiR
- 8MOA==
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1tkCCA-0003mX-Ri
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2025 20:14:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1tkCC9-00065u-Dr
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2025 20:14:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739841280;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JlUytGWMnvbmK4f4oX+kdzLnB9J92mhbar11srDT/3U=;
+ b=UmHBC/QgZBl4uiaZWJe2SeHjB7uIDStzzh9Fr+JOvoK9ZgtS3Ds7ICG2v570fEGpDS3yR9
+ rawVVkV+qhOJnBeHayAx5DS/8pZvdXhQwCYOy4WhymJ2k7RjXlJAJp5lq51hRLUPEqoHnG
+ sfhBmPQ8D+sPG6BF9GVFqJl5sZhVSqo=
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-91-k1ZPHJoCPged85qKTbP84Q-1; Mon, 17 Feb 2025 20:14:36 -0500
+X-MC-Unique: k1ZPHJoCPged85qKTbP84Q-1
+X-Mimecast-MFC-AGG-ID: k1ZPHJoCPged85qKTbP84Q_1739841275
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-2fc518f0564so4269750a91.2
+ for <qemu-arm@nongnu.org>; Mon, 17 Feb 2025 17:14:36 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739832507; x=1740437307;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1739841275; x=1740446075;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9OFVkilwu+UsQuAT97bo8myhwJ+KIzz1njO0RURHPKI=;
- b=MqS7JwbpGvYGgnA3jlDVcWFIPBz4rpdUZlFHYQjQF762C1UhsBNngogvfq7XC6xmpK
- LuQdWSB53cpEpmk2vZUUWzzeHjlvFTCHOsRa6qb4Xp2hUxpSy8cg2A++4uYvMagrjr0H
- JaSr1LhXuxSsCK6znz0H+bfuK2vYgLCeEHcZb+EaXPp604n+tnxpfmm5PnImCF22Wmua
- nVD7V0vHRhZ8JB/Fyyqu88BX4HTIcGYUdcwgL65Ysbb09iAl/mpB6S2brTCu5pQafMuK
- qtZJDaMbEeat3iqNfh69pl6qoYuflVq8bJ7LBPIJGB7ihEoRZkJnazzk/5JKLU0Kjv6e
- c3uQ==
+ bh=JlUytGWMnvbmK4f4oX+kdzLnB9J92mhbar11srDT/3U=;
+ b=cN8uLRtqQ7oc1BAAWqSipAaZiKCAM3ifacO6uZg/6/ZoRdoFk9wb0mfHDPP7Qj2sgy
+ ogZD+A8w/4T62o36HCDxW8Q5MpbmMC22yQs1ee01Wx827XXDtLT7U1+DC/UT26ruz8hS
+ x0nsDhAurrE7DbsdZzZqoqWMzeJ6cLKSU6zvip8OhIC2+1GGWqXOSU9qCVdCVm2YfMh6
+ 8iaCQHa0bHduQpjhJuTHcOBwTjwlogMLNoVzTJ8MbOrGZxyq0/QD6g6ZKgAVWffTMUi0
+ JKn8qHIqSYuaLm0BPar8ykXXht0Jn4sXCUr86cZtiy71v1x6IgUpdrgkR125+Z1rE3P8
+ F1yg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWMOQqcLX+o9GZTwPEzctyaNHbEZrUKEALjOI6xvHUPo0mtyO6h9XIOru/Ai+x/i91lx/ZT3r4Stg==@nongnu.org
-X-Gm-Message-State: AOJu0YySKNjWx3kMnM5ymLrl/rgQN/cQU+XCQ3ELj1M5jwlE0M28LlLA
- G8EuAGFW1/PHngxXDJOs1n8SYrTzJdOH2MNKxz+aGygZ0bon7VqC
-X-Gm-Gg: ASbGncuOdg93US9IYm6L/MAEuHsXLdHb1hgDlBGyZbqxRzfaMNumyMXV84GXJjYGjdU
- q6sg297mMUhrv+CweUQkdAB0hpteQ0KAAOc8jdvf08Oupn11NcdxYRfKaFOK+w1fUo1z8/szuD7
- Fkq1L1SjdjwGUlAyisl8W6Y4nfeQnqubRXP6hJOYy2ygyKcuaGTwepkUGhvbHicUwZqw1dP3upZ
- GT4/3bbqQGw69H39cUtYT6MyD/hBGF3awDlVUsBoKuXemfVh0uIEqsVZSBVxSmE7WPoO+VW8Z4t
- OFbI8Lf0WbVfECC2ePkalBXlxftHF3HOmBe6tx7tYi6XHghq4d+50LozPOYFV0uzB68=
-X-Received: by 2002:a17:907:9716:b0:ab9:5544:5eb3 with SMTP id
- a640c23a62f3a-abb70b354e7mr1059917366b.26.1739832506563; 
- Mon, 17 Feb 2025 14:48:26 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-077-191-175-027.77.191.pool.telefonica.de.
- [77.191.175.27]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-abbb78583fbsm31580766b.112.2025.02.17.14.48.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2025 14:48:25 -0800 (PST)
-Date: Mon, 17 Feb 2025 22:48:23 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2 16/18] hw/arm/fsl-imx8mp: Add boot ROM
-In-Reply-To: <CAFEAcA_Kasz0jMTQO1F32bMwSh6tRoDTaS2DE0sSruLENdcu8g@mail.gmail.com>
-References: <20250204092112.26957-1-shentey@gmail.com>
- <20250204092112.26957-17-shentey@gmail.com>
- <CAFEAcA_Kasz0jMTQO1F32bMwSh6tRoDTaS2DE0sSruLENdcu8g@mail.gmail.com>
-Message-ID: <382AF9A2-4339-42F8-9C32-E7F6960CD4A8@gmail.com>
+ AJvYcCW3EQ+5G0+FpEOdIulySu78Mvsqp/SqQ0d5GIoSqf50nk6f8AEdjSguc3Pyry5tvnMZzGPaLXTuZg==@nongnu.org
+X-Gm-Message-State: AOJu0YweKp5cicQiI/AhGTXJLqSrLa8PecwVUgVjwl05LFk6fJF+lirc
+ tndLjygXSJ1xrHlUMXwxRU/+ExLtTYWcXM9MWsBCpRVswLesHexP2MRWl5pBPT9GcWYk1kdhjdp
+ BP1l1NnCgKGWyazB1vgWsrt+TPCJa14h/yH9aprpoYKEHdPluQBpPb1/pLHGN6BJLMz9xHVoC5t
+ Cc7vw16YMFtOFIxDdw1D9OGik3
+X-Gm-Gg: ASbGncvmF1NlKeI7UTWJeynGs5NfLPU5EKpQtODbegE12RqsM0Jx/DicZNzgSblh66B
+ g4NOf1jSjcoYmXE2vN17f77TTO48wzowE1/9hX+ZEbbXRxgWSqWMICoXgSkAHGsk=
+X-Received: by 2002:a17:90b:3c0e:b0:2ee:c2df:5d30 with SMTP id
+ 98e67ed59e1d1-2fc41049570mr15485551a91.26.1739841275259; 
+ Mon, 17 Feb 2025 17:14:35 -0800 (PST)
+X-Received: by 2002:a17:90b:3c0e:b0:2ee:c2df:5d30 with SMTP id
+ 98e67ed59e1d1-2fc41049570mr15485519a91.26.1739841274953; Mon, 17 Feb 2025
+ 17:14:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <20250217133746.6801-1-eric.auger@redhat.com>
+ <20250217133746.6801-3-eric.auger@redhat.com>
+In-Reply-To: <20250217133746.6801-3-eric.auger@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Date: Tue, 18 Feb 2025 09:14:23 +0800
+X-Gm-Features: AWEUYZlemt7CdyCxs3gTTPsy35o4E62-eO8fjj4mFeDyR3v_ATbsmttI1QkZuZw
+Message-ID: <CACGkMEst7Q5Zdu3AahgKaTnCh46b+-8f+wkFx0e3Apc+jSKRGw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/5] hw/i386/intel-iommu: Migrate to 3-phase reset
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, mst@redhat.com, imammedo@redhat.com, 
+ peterx@redhat.com, alex.williamson@redhat.com, clg@redhat.com, 
+ philmd@linaro.org, zhenzhong.duan@intel.com, ddutile@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: DVyJvLuAhijel8caEwE9gIQ99dH38yTeUuq64YsfDqM_1739841275
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,39 +143,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T/7s2Ihd1wHx
+X-TUID: KpVsYPTnA63c
 
-
-
-Am 17=2E Februar 2025 13:28:42 UTC schrieb Peter Maydell <peter=2Emaydell@=
-linaro=2Eorg>:
->On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> On a real device, the boot ROM contains the very first instructions the=
- CPU
->> executes=2E Also, U-Boot calls into the ROM to determine the boot devic=
-e=2E While
->> we're not actually implementing this here, let's create the infrastruct=
-ure and
->> add a dummy ROM with all zeros=2E This allows for implementing a ROM la=
-ter without
->> touching the source code and even allows for users to provide their own=
- ROMs=2E
->>
->> The imx8mp-boot=2Erom was created with
->> `dd if=3D/dev/zero of=3Dimx8mp-boot=2Erom bs=3D1 count=3D258048`=2E
+On Mon, Feb 17, 2025 at 9:38=E2=80=AFPM Eric Auger <eric.auger@redhat.com> =
+wrote:
 >
->If it's all zeroes, we don't need to commit it to git as a binary,
->we can generate it at build time=2E (We should avoid having
->binaries in git as much as we can manage=2E)
-
-I went with this solution since it trivially works on any build platform=
-=2E Any idea how to generate the file in a portable way?
-
-Thanks,
-Bernhard
-
+> Currently the IOMMU may be reset before the devices
+> it protects. For example this happens with virtio devices
+> but also with VFIO devices. In this latter case this
+> produces spurious translation faults on host.
 >
->thanks
->-- PMM
+> Let's use 3-phase reset mechanism and reset the IOMMU on
+> exit phase after all DMA capable devices have been reset
+> on 'enter' or 'hold' phase.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>
+
+Acked-by: Jason Wang <jasowang@redhat.com>
+
+Thanks
+

@@ -1,69 +1,68 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp563114njb;
-        Tue, 18 Feb 2025 01:17:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUDkWKtGRS4Lnw+4/G/gTOnLbH4p/FPs3U0d3/jSKF1pM8r0hS7W+CyIWHGcR3q2d9pWs0/WnkFctbBfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFLLzdIeY6IEk3ge1ZXbJ9hF2ZDjc/X4Q9Sj+FR6aXmwf19qnAa6ZrYtx3h86sdaJEw2yPa
-X-Received: by 2002:ac8:590a:0:b0:471:a602:e75 with SMTP id d75a77b69052e-471dbd6d4e9mr161301091cf.25.1739870271725;
-        Tue, 18 Feb 2025 01:17:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739870271; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp566569njb;
+        Tue, 18 Feb 2025 01:26:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVr6099XmApHCCF87HA132odJ5S9i728Du5fjBrbuDMYz2ldtbKDDVypacPSYarWtL6/IDHzo9Ne70Ngg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFvb7FdkNvI4mXJTfvWZNcIkbBEO59iGex5HqOVnO9TAwnl8SHbHafMjpGU8Uc16I1bxfQv
+X-Received: by 2002:a05:622a:28d:b0:471:ba31:ce96 with SMTP id d75a77b69052e-471dbd22eefmr146048191cf.17.1739870792897;
+        Tue, 18 Feb 2025 01:26:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739870792; cv=none;
         d=google.com; s=arc-20240605;
-        b=Nm8XpqRXOFDHPd6ryNUgznCKjL19jdaxJ2/vAyP8iJIilFlXhzrG0HTyvZITc4WQLG
-         IfGndZt77mR/GZ6mKuc7cSqFwlvNmw6u1Aesy4FzbC+dNSv8SUsKB2l4pXGe2YjnGvO7
-         yIU9NrbouuzJrWdLuR7sZnCX2IWlz9zOhxwPZ9ATSGQc2cp2Ywn69/7qLw/oWETJzT5E
-         uNcToLo85VEvTe3LGtCcx6ggTJ6Y2OxW5Vj9zmpNEmIIrMR4NEjDNYttKo2KO8A3nq8H
-         xq+h/5mlPT6DhwCjhcryEThVT7F8fL/3eoPYtM4ptjHKy63cz/viU7XJf8tHsM1NNWiu
-         47SQ==
+        b=czznImwAmfSWawVYaSG+yeKJLJxJOU6ZqPV6yeCp4H1MPFaYgpb0hHPsbIigv0Nu+7
+         lHDthwX0hhrqT71STclpm+rB9I1QdV6zwPoR18O+QnfxV1D3irh1S0j3oWa7tO5ScDRc
+         zeaVKPNWzLS7Uq9p2gJTVfOdhGLvKYG/5kvDe/6aNJs0d+AByu2O7p77EQukDQQaFTUv
+         BZLXEbPbUneIzPaVtEd/SAdbGx+ROAW4GGnHOehxK09XjD028FY7rkT5MauqBflXxMX/
+         m2ivp/AkmWlcIXUQAQ7DSbHO6XDC/Ew90hguJ3g76XDM1Dal06MeHSfumodxHF3VvM6/
+         gxGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=MmHQ2o9OghTbPK+JQw5nJ72oL0netPEkfyqp+VDlfQw=;
+        bh=HRhh3i9Diyo9C6EiDaARzUc7r0zTuEEUWlNeUwQp3rc=;
         fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=jhbmKuoi3QZca0etxM/TeLKkm/1JtTvF5DrHglkXtXTRwY1UVeZST9IfostV/DvImx
-         TJdz7GnnymG1BV8LeVcAiXScDPMIJDhufQgeJPT5KNcjXLcVw47cC/zjDaZWmUyrwQ0/
-         hloW5HyXUxM6xRaM2rUoArLjpx83W3eY2b2V5VLsmkIes9gHmVuWPUGjl/HulCNpB3cC
-         iUQ3Rm+e4pbQRI0kiC/bPoYf6X8pfqlayDXLAJBafl8jjRiskNF7zHKbA0MWYY1h7sv7
-         iAuRgsHEoWjRs93ig0iNJcq2qqTr0T91UhpLsOn4NeE9xcS2Szuq4QzwexcWT/yOBXxp
-         0Zrw==;
+        b=DYFMmgtHVmjmzsIBLMjWUmNI7LnpOY0A/knCRQZGyub1TBsMyBq2cERycQ84dOAx/j
+         603M4+QA/MEM+VZzH53DtrTZXyCmW+qU8jqKpbD4zliMMUo8XLtZbi80Y3CwwHwVZ/Ja
+         +n92hW/bGjixB58GvvSox4t6eJwwlqiGp4T8LDswHsRj40v9EwvBbjA4Up2B1jeZOf5z
+         SAJJ5D9ssvWgB0A24eShonFoIypHfGpBOJEWQhQtQyVYKG0WkS++pFai4gVvxzdPwpSf
+         Y7GuEzv60Y395XTUHQvWiKz4AWoCulDr4oVlqBA+AbQuzO8kxxpJq8GPiZzVnLYoqVKU
+         08Ow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47200a500b5si10613521cf.271.2025.02.18.01.17.51
+        by mx.google.com with ESMTPS id d75a77b69052e-47203fb7798si5334681cf.144.2025.02.18.01.26.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 01:17:51 -0800 (PST)
+        Tue, 18 Feb 2025 01:26:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkJjV-0001CW-O4; Tue, 18 Feb 2025 04:17:37 -0500
+	id 1tkJrg-0005Qh-IM; Tue, 18 Feb 2025 04:26:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkJjM-0001C1-PG; Tue, 18 Feb 2025 04:17:30 -0500
+ id 1tkJrf-0005QS-JW; Tue, 18 Feb 2025 04:26:03 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkJjJ-0007E8-NI; Tue, 18 Feb 2025 04:17:28 -0500
+ id 1tkJrZ-0008CK-Ti; Tue, 18 Feb 2025 04:26:03 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Yxv751gCwz4wcm;
- Tue, 18 Feb 2025 20:17:21 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YxvJw0L1Bz4x5h;
+ Tue, 18 Feb 2025 20:25:52 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Yxv723VVPz4wb0;
- Tue, 18 Feb 2025 20:17:18 +1100 (AEDT)
-Message-ID: <5ec569c6-f7a7-4a0d-b60e-abb727cf1330@kaod.org>
-Date: Tue, 18 Feb 2025 10:17:16 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YxvJs26Brz4x33;
+ Tue, 18 Feb 2025 20:25:49 +1100 (AEDT)
+Message-ID: <4bbd5a9e-934e-4535-b829-1d4fe070d63d@kaod.org>
+Date: Tue, 18 Feb 2025 10:25:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 11/28] hw/intc/aspeed: Introduce IRQ handler function
- to reduce code duplication
+Subject: Re: [PATCH v3 00/28] Support AST2700 A1
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +71,6 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
- <20250213033531.3367697-12-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +115,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250213033531.3367697-12-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -142,107 +140,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S5ae2THJGikO
+X-TUID: OBq/vnKfTATv
+
+Hello Jamin,
+
 
 On 2/13/25 04:35, Jamin Lin wrote:
-> The behavior of the INTC set IRQ is almost identical between INTC and INTCIO.
-> To reduce duplicated code, introduce the "aspeed_intc_set_irq_handler" function
-> to handle both INTC and INTCIO IRQ behavior.
+> v1:
+>   1. Refactor INTC model to support both INTC0 and INTC1.
+>   2. Support AST2700 A1.
+>   3. Create ast2700a0-evb machine.
+>   
+> v2:
+>    To streamline the review process, split the following patch series into
+>    three parts.
+>    https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.2465942-1-jamin_lin@aspeedtech.com/
+>    This patch series focuses on cleaning up the INTC model to
+>    facilitate future support for the INTC_IO model.
+> 
+> v3:
+>   1. Update and add functional test for AST2700
+>   2. Add AST2700 INTC design guidance and its block diagram.
+>   3. Retaining the INTC naming and introducing a new INTCIO model to support the AST2700 A1.
+>   4. Create ast2700a1-evb machine and rename ast2700a0-evb machine
+>   5. Fix silicon revision issue and support AST2700 A1.
+> 
+> With the patch applied, QEMU now supports two machines for running AST2700 SoCs:
+> ast2700a0-evb: Designed for AST2700 A0
+> ast2700a1-evb: Designed for AST2700 A1
+> 
+> Test information
+> 1. QEMU version: https://github.com/qemu/qemu/commit/ffaf7f0376f8040ce9068d71ae9ae8722505c42e
+> 2. ASPEED SDK v09.05 pre-built image
+>     https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
+>     ast2700-default-obmc.tar.gz (AST2700 A1)
+>     https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz
+>     ast2700-a0-default-obmc.tar.gz (AST2700 A0)
+>     https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz
+
+The part adding new functional tests needs a rework. See comment.
+
+> Known Issue:
+> The HACE crypto and hash engine is enable by default since AST2700 A1.
+> However, aspeed_hace.c(HACE model) currently does not support the CRYPTO command.
+> To boot AST2700 A1, I have created a Patch 21 which temporarily resolves the
+> issue by sending an interrupt to notify the firmware that the cryptographic
+> command has completed. It is a temporary workaround to resolve the boot issue
+> in the Crypto Manager SelfTest.
+> 
+> As a result, you will encounter the following kernel warning due to the
+> Crypto Manager test failure. If you don't want to see these kernel warning,
+> please add the following settings in your kernel config.
+> 
+> ```
+> CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
+> ```
+
+Would it be possible to send the hace changes in its own series ?
 
 
-It's good practice to add "No functional change".
+> 
+> Jamin Lin (28):
+>    hw/intc/aspeed: Support setting different memory and register size
+>    hw/intc/aspeed: Introduce helper functions for enable and status
+>      registers
+>    hw/intc/aspeed: Add object type name to trace events for better
+>      debugging
+>    hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
+>    hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
+>    hw/intc/aspeed: Support different memory region ops
+>    hw/intc/aspeed: Rename num_ints to num_inpins for clarity
+>    hw/intc/aspeed: Add support for multiple output pins in INTC
+>    hw/intc/aspeed: Refactor INTC to support separate input and output pin
+>      indices
+>    hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
+>      index and register address
+>    hw/intc/aspeed: Introduce IRQ handler function to reduce code
+>      duplication
+>    hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
+>    hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
+>    hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
+>      Revisions
+>    hw/misc/aspeed_scu: Fix the revision ID cannot be set in the SOC layer
+>      for AST2700
+>    hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC Interrupt Mapping
+>    hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
+>      AST2700 A1
+>    hw/arm/aspeed: Add SoC and Machine Support for AST2700 A1
+>    hw/misc/aspeed_hace: Fix coding style
+>    hw/misc/aspeed_hace: Add AST2700 support
+>    hw/misc/aspeed_hace: Fix boot issue in the Crypto Manager Self Test
+>    hw/arm/aspeed_ast27x0: Add HACE support for AST2700
+>    test/functional/aspeed: Introduce new function to fetch assets
+>    tests/functional/aspeed: Introduce start_ast2700_test API and update
+>      hwmon path
+>    tests/functional/aspeed: Update test ASPEED SDK v09.05
+>    tests/functional/aspeed: Renamed test case and machine for AST2700 A0
+>    tests/functional/aspeed: Add test case for AST2700 A1
+>    docs/specs: add aspeed-intc
+> 
+>   docs/specs/aspeed-intc.rst              | 136 ++++++
+>   docs/specs/index.rst                    |   1 +
+>   hw/arm/aspeed.c                         |  21 +-
+>   hw/arm/aspeed_ast27x0.c                 | 291 +++++++++---
+>   hw/intc/aspeed_intc.c                   | 593 +++++++++++++++++++-----
+>   hw/intc/trace-events                    |  25 +-
+>   hw/misc/aspeed_hace.c                   |  44 +-
+>   hw/misc/aspeed_scu.c                    |   5 +-
+>   include/hw/arm/aspeed_soc.h             |   3 +-
+>   include/hw/intc/aspeed_intc.h           |  32 +-
+>   include/hw/misc/aspeed_hace.h           |   1 +
+>   include/hw/misc/aspeed_scu.h            |   2 +
+>   tests/functional/test_aarch64_aspeed.py |  47 +-
+>   13 files changed, 963 insertions(+), 238 deletions(-)
+>   create mode 100644 docs/specs/aspeed-intc.rst
+> 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Patch 1-9 and the hace changes could be merged quickly.
+
+
+I need  some help on patch 10,12,16,17.
+
+Andrew,
+
+Would you have time please ?
 
 Thanks,
 
 C.
-
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/intc/aspeed_intc.c | 62 ++++++++++++++++++++++++-------------------
->   1 file changed, 34 insertions(+), 28 deletions(-)
-> 
-> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-> index 59c1069294..fd4f75805a 100644
-> --- a/hw/intc/aspeed_intc.c
-> +++ b/hw/intc/aspeed_intc.c
-> @@ -92,11 +92,40 @@ static void aspeed_intc_update(AspeedINTCState *s, int inpin_idx,
->       qemu_set_irq(s->output_pins[outpin_idx], level);
->   }
->   
-> +static void aspeed_intc_set_irq_handler(AspeedINTCState *s,
-> +                                        const AspeedINTCIRQ *intc_irq,
-> +                                        uint32_t select)
-> +{
-> +    const char *name = object_get_typename(OBJECT(s));
-> +
-> +    if (s->mask[intc_irq->inpin_idx] || s->regs[intc_irq->status_addr]) {
-> +        /*
-> +         * a. mask is not 0 means in ISR mode
-> +         * sources interrupt routine are executing.
-> +         * b. status register value is not 0 means previous
-> +         * source interrupt does not be executed, yet.
-> +         *
-> +         * save source interrupt to pending variable.
-> +         */
-> +        s->pending[intc_irq->inpin_idx] |= select;
-> +        trace_aspeed_intc_pending_irq(name, intc_irq->inpin_idx,
-> +                                      s->pending[intc_irq->inpin_idx]);
-> +    } else {
-> +        /*
-> +         * notify firmware which source interrupt are coming
-> +         * by setting status register
-> +         */
-> +        s->regs[intc_irq->status_addr] = select;
-> +        trace_aspeed_intc_trigger_irq(name, intc_irq->inpin_idx,
-> +                                      intc_irq->outpin_idx,
-> +                                      s->regs[intc_irq->status_addr]);
-> +        aspeed_intc_update(s, intc_irq->inpin_idx, intc_irq->outpin_idx, 1);
-> +    }
-> +}
-> +
->   /*
-> - * The address of GICINT128 to GICINT136 are from 0x1000 to 0x1804.
-> - * Utilize "address & 0x0f00" to get the irq and irq output pin index
-> - * The value of irq should be 0 to num_inpins.
-> - * The irq 0 indicates GICINT128, irq 1 indicates GICINT129 and so on.
-> + * GICINT128 to GICINT136 map 1:1 to input and output IRQs 0 to 8.
-> + * The value of input IRQ should be between 0 and the number of inputs.
->    */
->   static void aspeed_intc_set_irq(void *opaque, int irq, int level)
->   {
-> @@ -135,30 +164,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
->       }
->   
->       trace_aspeed_intc_select(name, select);
-> -
-> -    if (s->mask[intc_irq->inpin_idx] || s->regs[intc_irq->status_addr]) {
-> -        /*
-> -         * a. mask is not 0 means in ISR mode
-> -         * sources interrupt routine are executing.
-> -         * b. status register value is not 0 means previous
-> -         * source interrupt does not be executed, yet.
-> -         *
-> -         * save source interrupt to pending variable.
-> -         */
-> -        s->pending[intc_irq->inpin_idx] |= select;
-> -        trace_aspeed_intc_pending_irq(name, intc_irq->inpin_idx,
-> -                                      s->pending[intc_irq->inpin_idx]);
-> -    } else {
-> -        /*
-> -         * notify firmware which source interrupt are coming
-> -         * by setting status register
-> -         */
-> -        s->regs[intc_irq->status_addr] = select;
-> -        trace_aspeed_intc_trigger_irq(name, intc_irq->inpin_idx,
-> -                                      intc_irq->outpin_idx,
-> -                                      s->regs[intc_irq->status_addr]);
-> -        aspeed_intc_update(s, intc_irq->inpin_idx, intc_irq->outpin_idx, 1);
-> -    }
-> +    aspeed_intc_set_irq_handler(s, intc_irq, select);
->   }
->   
->   static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
 

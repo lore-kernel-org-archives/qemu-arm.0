@@ -1,145 +1,317 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp256465njb;
-        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXwh7rh6BEm7L4Q7T/Icg9UNDnBIxa3CjXIOJDxtbEg4iCRvejj3FyeOIkO4blJPbF2a/rIOlmVFQtf+A==@linaro.org
-X-Received: by 2002:a05:6a21:9999:b0:1ee:66f6:87e6 with SMTP id adf61e73a8af0-1ee8cbbba1amr19535377637.31.1739820522655;
-        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739820522; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp501521njb;
+        Mon, 17 Feb 2025 22:35:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXyQOgdRc3CUleeyy6m2WFjYwxQ8w26w5rdi/1fGgwdtKCqUSv7pqEZ85pvBHURK/RxZztWcQuYG5c/lQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IE5QJ9sS135qxMRiascObweE2wVekcoDivewZ/39l2vVFdqcpZCMzOFWu+qQhrOjcRobZdB
+X-Received: by 2002:a05:622a:19a5:b0:472:e9:59ff with SMTP id d75a77b69052e-47200e95b74mr20805421cf.19.1739860503604;
+        Mon, 17 Feb 2025 22:35:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739860503; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZiXfZS4EJLLHxW0uISvBU9tT43DPEToWLVRPQSRVj31nkXhCF6dfIuMb8Px3EtfuEl
-         DT+rlFodo91254WwLzUHuucfBLOi2Of+fTnOxTrzkP8Hnc8z3h59r2xcZwOxlKSjsJGR
-         ywKdaCGpZ9NTyNsBeXIH4gfqjazNBapOBnmK9QS/FDl2D1hLEm24MITgT/NRXoTcqRIk
-         q7h9zDYwCQr3Qosg2qizLeeTXnUJypB5pgJn4d0oWvpEB6lKXAGv6nTKukhv4bk68TSQ
-         cMSiaRX4mbFCWYsFzirgZ4i/0VMnDcIG+IVetYSgUh+OfqxNBrbpQVgkPxF4a+UTHooU
-         VeiA==
+        b=fcvdhkgsWBakX1ydiwIs74V1YUDGytQA4M/wE0udb5eRCQXSTOEUlkdmS3PwJNW8yH
+         HGk4zVWChBlE11pvlHmiuHyrt6synfxOQuG/0kvhC0aKdbnFXdkS7ZJlWrxZQkC66xEx
+         5Sp/vagJQiHX3vr/pMo7fggNhSeduHj/EP84EuSCCevVxIOdsosVdCFuRl6aWzKK6/Ud
+         t4Dl0CDG3tMn9MYYNqaf4/AMaA7md6oS+3jC8ijembxRl3soHUTNUFl5dMMjUR69lnxn
+         BJjd9GIudYldt/K8yC3faXB2g0VucPtbn6SGnD/6zPbBabB3J6xaJB7sS6QVVYj3J2zq
+         UwfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
-        fh=iYlOkC5AjwAJ0mVitG32CPvQhLbmhkk1mlUR2HiWX4g=;
-        b=VWOMsJYO9xOgFxdvyRJLFoflpI36ceLaNj7TsJpvYURVsfHL1wJjqvS4RGedetVCqn
-         JNtr90efSrUQZ99bG0gZQSjqjb8jfcEd48M27WkLLhpT9VN10K4PL7WVrb7yU5XBKE9X
-         KNznoDVK7KMZka15Hk7RlEcbPGXtw7f4LO/OUT+ofS6C8cAjVmf9UPSDJafKo9BmF+2k
-         O86JTLi6W9gaYORKxd6wl5BrKsou+/tANEkSEOqCJzEv++rIOu6ekFp9T+YsacauegPf
-         lJ28jn0zODOx255ZZHFsgSVU8H4itIj/8Yjl35R+5VZVomefuW83DQDWy5kI29L++Ywo
-         bjBQ==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=x5AhtQ12gH8aBCtU16EhV/9L7NlWQ+Hp7XX+wS4vcjM=;
+        fh=ALcTFGjFkV8H6gOUXoHiX10vimrc30sragkaw75lSXs=;
+        b=DOiQScEUUZFAs8irQJG+lOzEsEHZa0SOHuzzIrEvxWTqRkBtp9afOqkEaexNqLRn42
+         7Hp1zTMrWK4hDsKQ2lNOPjVjrwQ00DLLXNRUNLy24Lt9f8knyV5f2+9a2urMmhLcjL5+
+         LnoEz5jjlKNgQksAb1eOinECVxx7ax14ujVjPOXy5jE0hGv8kCvGKB1XHSEpzheyAVMN
+         7uoaTek4V3mOV5Md6Yv3DdHiqK5CnK6edkRTShh4/YY3bjWfvhR664gYPO3vIaaXB9S8
+         Sx1WTg5e5XZN6JFC2R8ZbeaSJ+TJlVTfADMSbLZe+VNhzhkiwASHE88H5cW51El/03Nc
+         iOMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I968RVnt;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73242459d50sor9638392b3a.0.2025.02.17.11.28.42
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TgfwdL0I;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-471f4b90b91si26166621cf.424.2025.02.17.22.35.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Feb 2025 11:28:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Feb 2025 22:35:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I968RVnt;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739820522; x=1740425322; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
-        b=I968RVntCWaQUg87Q/yi4XdlVdV/b2h1bUy+s/UvAfW8fYjRcd83RCLiPwToXnqKDB
-         xcwFZPF/VcEoovUW5EDHrvWABxrGXAPt4mZKuzAvLXv4/vS6LoHVazA17HXLEEHzsyUO
-         L+wssR5VkBk6QO0wZjnUJZtX83eMZbnJmwvKQnqxErX7+ZO/npXJ1EmnIXonPBFt21gn
-         8eF5xnc70BXpVRVL73nYPjAHYgwt6JRD95fen8VlZwUzcKdmFmL8PYdZH/ExXKIGzRdG
-         n0pj1F3EBlgubC1o8YXGm+V8fU8z1Ic/IuCrWk6mZMqbzvHKQnPIjnRl1ZOfk5Qextqz
-         rcWw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TgfwdL0I;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739860503;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=x5AhtQ12gH8aBCtU16EhV/9L7NlWQ+Hp7XX+wS4vcjM=;
+	b=TgfwdL0I3YGx/MP82unNkTjbhTmlSMloUqEnS62jlcbO+ypuGU+3k2IYTyaK7jNR7PcBo7
+	e0PZm2cLWlTmg4vDQzDLqyoraXjP1zilwpSMylt5lY19ZvP0r/Gf3aWUZ1rPLoKw43WLcw
+	9ssE1jpzwweUjFE6VE/xw0JDaY+ZBzc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-553-Y-meDT3dOECvj8qo2SciMQ-1; Tue, 18 Feb 2025 01:34:58 -0500
+X-MC-Unique: Y-meDT3dOECvj8qo2SciMQ-1
+X-Mimecast-MFC-AGG-ID: Y-meDT3dOECvj8qo2SciMQ_1739860497
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43945f32e2dso40502425e9.2
+        for <alex.bennee@linaro.org>; Mon, 17 Feb 2025 22:34:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739820522; x=1740425322;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VEJ/B3GBCyQg1NZ8srPFvpNFWpxr50mPaKhI69Ppxgo=;
-        b=ETO8YUeA0XLTqck6aNOgqpf6qeGwWhfkKGMeGLdTNtT9L1DZzhQgmTCrPvNFvoovfz
-         GvDLg8W2woeImOOHltCwRC85psa7uLvjVVYpGKl4psdl/rFDf2XaqFcFQFIGJyJOLs1G
-         Xlu3f5VlxRXt2YSkORCWQo5fTgPp6CvjJ9wTIZowNSD/f/XLVyupCJyy62sEbHj9dkDy
-         2EySQT4osaIC60iPeJxmufc2vnHHBMBHMGNWcojXQIhPko2J26bI7BgTnYWOkTMyB94p
-         cErnHjk2o13TfHDMq21WN1cvXzDn3mJD+5Ably4vJtnM2cd8WAd1ZcI8fG07pipsqRwC
-         uBSQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV9doqsDh9tRLO75VqE9469tcpS7ORP4trtJgXzbqWROQGuHYeSt3qch33l82mBR9ItMFTiepV6KDhD6A==@linaro.org
-X-Gm-Message-State: AOJu0Yz9gSseRpV0x7UiElEa0Y6Lnvx+VZLfaZvaZNsrHaU/eUAGsZrp
-	uS2XW7pdYV6rLGx07CbJ5VgqbYlQ2mPHpkeGcsXoJtz62D2SmPcPcXUS+L5xgOuxdQ==
-X-Gm-Gg: ASbGncvcnOTaTK+6BKUo8GTEMpyYGlcR7zwGYTkb296FNUR/d9dIqULGL5mtUEvP26b
-	GjqehScoHsAX716HHAoVl4VQmCPtVg6BHGjhg8pstssx+3umLfJsP64uA2erL1PUozvjbiKV/c7
-	f3nUCojJMZAaMy+AdHEojs08BdeppEgmzxnulBe48V056b9wWyRT2gEiyWJeTnQrFt7HhNrSIW/
-	BkTIFty9xe8yODdRDfCJcIxQIz9rNrDsCmUqjBreILh/khmIZj5dEMhRsTTfqoKFVSLUtsqZGUf
-	xfcvTcGeA9EYqBg9naI51bzBCERR3hDjGUTiMsJjdkz5M3qYxrslOhs=
-X-Google-Smtp-Source: AGHT+IFw9x3ddCLNhBbl16dPCQzotblc4ykNeeWquQsvMRT1NjsLlII2PlFLuCRaJQswwJsL3MPGMA==
-X-Received: by 2002:a05:6a00:2e08:b0:730:74f8:25c1 with SMTP id d2e1a72fcca58-732618c0351mr14386201b3a.15.1739820521870;
-        Mon, 17 Feb 2025 11:28:41 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (71-212-39-66.tukw.qwest.net. [71.212.39.66])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73242568a0dsm8436448b3a.43.2025.02.17.11.28.40
+        d=1e100.net; s=20230601; t=1739860497; x=1740465297;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=x5AhtQ12gH8aBCtU16EhV/9L7NlWQ+Hp7XX+wS4vcjM=;
+        b=gFC7vVuv6wGstZ1Dk0/k44/bVlqkzvtciC5L6Zcv2vKU5wxGxoqv+jFG2l0B+8xtEs
+         gCl51YIZiPji2m5udn5Pn6VxGDQ/ho9anxzMo0aBw8QQDhNajZ9ZuaQf7maEVlOLaFzz
+         bEc4C/nGLEPRgl4Hp6tazLPk1Le8jmhh9r07qZzQ2WvQ7hexsjoFQdDvwNteDaEhlCnd
+         QV1M56LopkTE9w/jiMTxgnyHyXTifS3q2VJSEU2ib2mzdOfBIN62AF+3vh9+jNxuetNc
+         PrqTcviDXzqsVYca+aLXK+0zuyfpnZH21KC2C4gUDkJPyigmd6bTiqyinWTI9ERXXqeB
+         +zmg==
+X-Forwarded-Encrypted: i=1; AJvYcCVZx8m+oRvhWO2Gj4rFm+DdV6divpLocR/lVYgwKRVNj4MN9tNDSKw/6FgUZbVNEETTo07PratWlChzYw==@linaro.org
+X-Gm-Message-State: AOJu0YzWqSBKLbzUy4y7fyOeH0KHmQnyH809cVTlR4mmtAbYZvkcXqLV
+	k9KODxcwY1+WLB/6H6Hjh/5Sstg9PeXYZG46LVFvYBwa8WNAkRefn53UnQqRtH1c61Xvp8yoDVO
+	oJmPlIY+JwcmCNbCPfPqdI9U5CJaubFrrNdbKmURGCycxEO8MEO+vTQ==
+X-Gm-Gg: ASbGncuQCK1VzeK0NL+pxbOH0QX/YkD18rQWZm7j2ivv5xNB18hn6ZuAvpFuGCEtGbt
+	6H8pTAjVSpBhRlQuYJisfvyZyh36uofNML55q19D+tkH328pjmJTV5Nq+Um6ihyS9+ZDKzLGRLX
+	/k1GbKHsSx2DOIkFSjRrxrwQQyPKu75CFBN0SSy5s46XxZclYqZNNazf7/3CbNjltVNsiTpOgKU
+	74pZacbm6WSGfQyUHLq3KNj1d98d1yCHHRd7qNs8Izl8aUB9lRF5IJxCMNpfczP8k+WGDKkVUWN
+	87WUXVYs54rta0ckq2ozwpEt5bRwX2PftqVU
+X-Received: by 2002:a05:600c:1910:b0:439:96aa:e502 with SMTP id 5b1f17b1804b1-43996aae68amr3182675e9.12.1739860497285;
+        Mon, 17 Feb 2025 22:34:57 -0800 (PST)
+X-Received: by 2002:a05:600c:1910:b0:439:96aa:e502 with SMTP id 5b1f17b1804b1-43996aae68amr3182435e9.12.1739860496843;
+        Mon, 17 Feb 2025 22:34:56 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ip-109-42-51-157.web.vodafone.de. [109.42.51.157])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4395a1b824dsm171358935e9.34.2025.02.17.22.34.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Feb 2025 11:28:41 -0800 (PST)
-Message-ID: <3cf6d45b-0d0e-4669-954f-a545f3ec1a37@linaro.org>
-Date: Mon, 17 Feb 2025 11:28:39 -0800
+        Mon, 17 Feb 2025 22:34:55 -0800 (PST)
+Message-ID: <6d1cad85-4824-4912-b209-60a8070c59af@redhat.com>
+Date: Tue, 18 Feb 2025 07:34:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 16/20] cpus: Restrict cpu_common_post_load() code to TCG
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
- qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
-References: <20250123234415.59850-1-philmd@linaro.org>
- <20250123234415.59850-17-philmd@linaro.org>
- <e52485c5-122a-4a95-928f-08fcd17cd772@linaro.org>
- <a8be34a4-c157-4a5f-99bc-50c87c1330b1@linaro.org>
+Subject: Re: [PULL 23/32] tests/functional: extend test_aarch64_virt with
+ vulkan test
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, "open list:Virt" <qemu-arm@nongnu.org>
+References: <20250110131754.2769814-1-alex.bennee@linaro.org>
+ <20250110131754.2769814-24-alex.bennee@linaro.org>
+ <CAFEAcA8Kf4eF-nxEsxhPZnV3pwU+9kXLq1zXDi61ODQEQXaAYw@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAFEAcA8Kf4eF-nxEsxhPZnV3pwU+9kXLq1zXDi61ODQEQXaAYw@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: KOpVRT9sgo6UUBjvs919TfcNBZ5mfgIEEmI8KbWZbNk_1739860497
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <a8be34a4-c157-4a5f-99bc-50c87c1330b1@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: DHOoMYq78T/5
+X-TUID: 2uDTO7Okgj9c
 
-On 2/17/25 09:19, Philippe Mathieu-Daudé wrote:
-> On 26/1/25 22:16, Richard Henderson wrote:
->> On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
->>> CPU_INTERRUPT_EXIT was removed in commit 3098dba01c7
->>> ("Use a dedicated function to request exit from execution
->>> loop"), tlb_flush() and tb_flush() are related to TCG
->>> accelerator.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   cpu-target.c | 33 +++++++++++++++++++--------------
->>>   1 file changed, 19 insertions(+), 14 deletions(-)
->>>
->>> diff --git a/cpu-target.c b/cpu-target.c
->>> index a2999e7c3c0..c05ef1ff096 100644
->>> --- a/cpu-target.c
->>> +++ b/cpu-target.c
->>> @@ -45,22 +45,27 @@
->>>   #ifndef CONFIG_USER_ONLY
->>>   static int cpu_common_post_load(void *opaque, int version_id)
->>>   {
->>> -    CPUState *cpu = opaque;
->>> +#ifdef CONFIG_TCG
->>> +    if (tcg_enabled()) {
+On 17/02/2025 17.30, Peter Maydell wrote:
+> On Fri, 10 Jan 2025 at 13:23, Alex Bennée <alex.bennee@linaro.org> wrote:
+>> Now that we have virtio-gpu Vulkan support, let's add a test for it.
+>> Currently this is using images build by buildroot:
 >>
->> Why do you need both ifdef and tcg_enabled()?  I would have thought just tcg_enabled().
+>>    https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
 >>
->> Are there declarations that are (unnecessarily?) protected?
+>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> Message-Id: <20250108121054.1126164-24-alex.bennee@linaro.org>
 > 
-> No, you are right, tcg_enabled() is sufficient, I don't remember why
-> I added the #ifdef.
+> Hi; this test currently fails for me with a clang sanitizer
+> build (ubuntu 24.04 host). It seems to run weston in the guest,
+> which fails with:
 > 
-> Could I include your R-b tag without the #ifdef lines?
+> 2025-02-17 16:11:10,218: [16:11:10.672] Command line: weston -B
+> headless --renderer gl --shell kiosk -- vkmark -b:duration=1.0
+> 2025-02-17 16:11:10,224: [16:11:10.675] OS: Linux, 6.11.10, #2 SMP Thu
+> Dec  5 16:27:12 GMT 2024, aarch64
+> 2025-02-17 16:11:10,225: [16:11:10.680] Flight recorder: enabled
+> 2025-02-17 16:11:10,226: [16:11:10.681] warning: XDG_RUNTIME_DIR
+> "/tmp" is not configured
+> 2025-02-17 16:11:10,226: correctly.  Unix access mode must be 0700
+> (current mode is 0777),
+> 2025-02-17 16:11:10,226: and must be owned by the user UID 0 (current
+> owner is UID 0).
+> 2025-02-17 16:11:10,227: Refer to your distribution on how to get it, or
+> 2025-02-17 16:11:10,227:
+> http://www.freedesktop.org/wiki/Specifications/basedir-spec
+> 2025-02-17 16:11:10,228: on how to implement it.
+> 2025-02-17 16:11:10,240: [16:11:10.695] Starting with no config file.
+> 2025-02-17 16:11:10,253: [16:11:10.707] Output repaint window is 7 ms maximum.
+> 2025-02-17 16:11:10,262: [16:11:10.716] Loading module
+> '/usr/lib/libweston-14/headless-backend.so'
+> 2025-02-17 16:11:10,313: [16:11:10.768] Loading module
+> '/usr/lib/libweston-14/gl-renderer.so'
+> 2025-02-17 16:11:21,858: libEGL warning: egl: failed to create dri2 screen
+> 2025-02-17 16:11:21,959: libEGL warning: egl: failed to create dri2 screen
+> 2025-02-17 16:11:22,023: libEGL warning: egl: failed to create dri2 screen
+> 2025-02-17 16:11:22,032: [16:11:22.486] failed to initialize display
+> 2025-02-17 16:11:22,033: [16:11:22.488] EGL error state:
+> EGL_NOT_INITIALIZED (0x3001)
+> 2025-02-17 16:11:22,036: [16:11:22.490] fatal: failed to create
+> compositor backend
+> 
+> Then eventually the test framework times it ou and sends it
+> a SIGTERM, and QEMU SEGVs inside libEGL trying to run an
+> exit handler:
+> 
+> qemu-system-aarch64: terminating on signal 15 from pid 242824
+> (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/pyvenv/bin/python3)
+> UndefinedBehaviorSanitizer:DEADLYSIGNAL
+> ==243045==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
+> 0x73fbfefe6a31 (pc 0x73fbba9788e9 bp 0x73fbbbe0af80 sp 0x7ffd676fbfe0
+> T243045)
+> ==243045==The signal is caused by a READ memory access.
+>      #0 0x73fbba9788e9
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15788e9)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #1 0x73fbbaafc178
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x16fc178)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #2 0x73fbba62564f
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x122564f)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #3 0x73fbbab067d7
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x17067d7)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #4 0x73fbba63b786
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x123b786)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #5 0x73fbba96290a
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x156290a)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #6 0x73fbba941c5c
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x1541c5c)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+>      #7 0x73fbc2041f20
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0x41f20) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #8 0x73fbc2041f68
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0x41f68) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #9 0x73fbc2034ca9
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0x34ca9) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #10 0x73fbc203ae90
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0x3ae90) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #11 0x73fbc203aeda
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0x3aeda) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #12 0x73fbc20a45f5
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0xa45f5) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #13 0x73fbc20a2bfc
+> (/lib/x86_64-linux-gnu/libEGL_nvidia.so.0+0xa2bfc) (BuildId:
+> 6cd9e3e571aa104d4fa5512a5c7196617fea6b51)
+>      #14 0x73fbd3047a75 in __run_exit_handlers stdlib/exit.c:108:8
+>      #15 0x73fbd3047bbd in exit stdlib/exit.c:138:3
+>      #16 0x5a5bab5e3fdb in qemu_default_main
+> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/main.c:52:5
+>      #17 0x5a5bab5e3f9e in main
+> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/main.c:76:9
+>      #18 0x73fbd302a1c9 in __libc_start_call_main
+> csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+>      #19 0x73fbd302a28a in __libc_start_main csu/../csu/libc-start.c:360:3
+>      #20 0x5a5ba9c5b554 in _start
+> (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/qemu-system-aarch64+0x15dc554)
+> (BuildId: 8efda3601b42aa2644dde35d1d63f7b22b649a33)
+> 
+> UndefinedBehaviorSanitizer can not provide additional info.
+> SUMMARY: UndefinedBehaviorSanitizer: SEGV
+> (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15788e9)
+> (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+> ==243045==ABORTING
 
-Yes.
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+FWIW, I just saw this test also failing in a normal clang build (without 
+sanitizers enabled). In the console log:
 
-r~
+2025-02-18 07:08:47,497: [06:08:47.588] Loading module 
+'/usr/lib/weston/kiosk-shell.so'
+2025-02-18 07:08:47,914: =======================================================
+2025-02-18 07:08:47,915: vkmark 2017.08
+2025-02-18 07:08:47,915: =======================================================
+2025-02-18 07:08:47,915: Vendor ID:      0x8086
+2025-02-18 07:08:47,915: Device ID:      0x9A60
+2025-02-18 07:08:47,916: Device Name:    Virtio-GPU Venus (Intel(R) UHD 
+Graphics (TGL GT1))
+2025-02-18 07:08:47,916: Driver Version: 100675584
+2025-02-18 07:08:47,916: Device UUID:    c5930b2b12677aad53343f8a072209af
+2025-02-18 07:08:47,916: =======================================================
+2025-02-18 07:08:52,277: [vertex] device-local=true:MESA-VIRTIO: debug: 
+stuck in fence wait with iter at 1024
+2025-02-18 07:09:03,142: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 2048
+2025-02-18 07:09:24,640: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 3072
+2025-02-18 07:09:46,192: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 4096
+2025-02-18 07:10:28,665: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 5120
+2025-02-18 07:11:11,067: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 6144
+2025-02-18 07:11:53,619: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 7168
+2025-02-18 07:12:36,397: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 8192
+2025-02-18 07:14:01,431: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 9216
+2025-02-18 07:15:26,387: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 10240
+2025-02-18 07:16:51,349: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 11264
+2025-02-18 07:18:16,409: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 12288
+2025-02-18 07:19:41,439: MESA-VIRTIO: debug: stuck in fence wait with iter 
+at 13312
+
+Should we maybe mark it as flaky for the time being?
+
+  Thomas

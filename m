@@ -1,165 +1,135 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp680832njb;
-        Tue, 18 Feb 2025 05:20:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWMbMbslPEqaPm1n1SR5TshndXwFFjstcFN1EOF4pTtu0xhBt5yqorOjCruB29c/NYn8VSEyE27d4PD9Q==@linaro.org
-X-Received: by 2002:a5d:5343:0:b0:38d:d371:e04d with SMTP id ffacd0b85a97d-38f33f437dbmr10471729f8f.34.1739884835238;
-        Tue, 18 Feb 2025 05:20:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739884835; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp700448njb;
+        Tue, 18 Feb 2025 05:55:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVRRLnrDmuAeM31UechM69/NfppkOKLf6kvj4RJirC0EbzyGLJPMUTZxMRFMRlaHdZXehhseGJVqsuUug==@linaro.org
+X-Received: by 2002:a05:6902:985:b0:e54:d63a:911c with SMTP id 3f1490d57ef6-e5dc980e1bfmr13421376276.10.1739886907551;
+        Tue, 18 Feb 2025 05:55:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739886907; cv=none;
         d=google.com; s=arc-20240605;
-        b=izrNFLaOPRqq7tb234YoS8rXD35qMIV+eqh4SgN7F2vGbPAs1dx0GkViTh+3oX5eXO
-         +tbP0f+0ffLkQDeWB+A3HSRAu5IM54sM5gzQASjrT0JlFZUEc8Lo23cmk48+qUefo+08
-         T29KNQ+JR639Gdj3zUoDnykB+4uQhKCC30CfSY/TZBKOqOWBOeRD2hOlvJhJ6ZhMxfvt
-         xJhZlQobPfMFsaPLlE8610uZ43h8ZXJ9RlbHQAWw3Udlv2LGQoba1q5qz4jFSCrmoxyy
-         3zqUlduf+fvPLt58dKhXdsihTztMGZEJ34kTs4MU930N0D0eiHVJEphGWddDQyvvHyoR
-         a9AA==
+        b=YYg755FRH5EZc/zVgNVOUfeCX14MclCxMnmtOkLZK8WDumhO6AMJ2iAg15eklnHwiw
+         dbSnHlHy4FqoIzQNEaySyFQfRtbOEizfajyCFq6bBmX8UXum2Ofd113tu6DeqCldtfgZ
+         q0kdgMdlWVvzDHR2Gnsu/fwYph0x9zs/T4qkb6FRxDt4R6Fn8SDDLP13nc8r0yJ4GVFj
+         2iHE6LznjpPkmGlzy7LbrSR8oKWNoZ8KNROhn22w79blyMhzf0XI3/AOEqQyJejtiaUM
+         feIQf5l+CPCc+xVMRtgMfY/ad0QhqiO2rnLBd08Nwhhb83OntOR/n4D0WXnZpP2b1lor
+         eVCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=vC3MmtES1R3kkG1nVWHLeiRBuKWybO9xGwH1FF01u2M=;
-        fh=tCqEjanl/TmAPm7IGO1ITuqd9XCmFumGPkr3gh21XR4=;
-        b=gUqhXHTpkDibtr9QfD/GSKz9Xf97CURXOqsNrRS0EUl8Z1NeLzQieoFkJR8ClIx/hB
-         GaBJ4Pa+0hU+5k5EYxTTGd68W5iDVrZo8bf4AIlwUj+Uuc3XQPXpNaqS/V0+c4/vbzf/
-         u1Ao99tfPQnhkekhhKyZ+PWljc4Wx9N0U+9gc7bUaCh1xainQRnZZRpcc+PA0leYjtwY
-         WvSeCc6MRc8WjaPfbKfHO6zXICfrsZCXQPeSJ6sXEhYTOpN1skRc3teKm6oXt43ShHB3
-         8UirUBmbKg8QbcDC9meLDA9MitFL6HGqiu57xlr3ZYtkVrFh9t+ShAjYVnztSMdfGQ5k
-         SXKQ==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=39fn1BS3vuf40TnRJ0SE8lCne6FUxR6xiuWLRie0Qos=;
+        fh=0OOWjdpK8BvBSr92bDO7XW9znNYrLlxW+X1HF9/8oHU=;
+        b=X7nuOxM12ZH9YU3+P7FJwbWGy36eYoS5u1JwBWgzrL2BduLfhiq/2TPiX6w1nLCzEn
+         E9P0xpNsNSVvCVcski+gFAl1geCgX+Gjh8guft2VWAPrPT1bkDgWoPsC113Lr4BXs7UL
+         pb833MLx8iAWgHqrsBVdJTvPo5WRZMwuDcOUFg9lTa1vnzIlieEqSWhKUKXhQ/8EFIlE
+         4wIFmIV2Z+C4kw3BqKtA24riFU0HiuF1U7psV7jKtFjqwU2l63PxiQfHgCsdfU2faqcd
+         fcgErVkgeENGYxqdmv+xkypRboZTHaJgEowUy8Oyz2WfLdbT61IgaWfW6aWdMxzw71EE
+         iriw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VnBf5ELL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pQzOD5zU;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38f25898f63sor4956661f8f.1.2025.02.18.05.20.35
+        by mx.google.com with SMTPS id 3f1490d57ef6-e5dae0b075bsor6268697276.3.2025.02.18.05.55.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 18 Feb 2025 05:20:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 18 Feb 2025 05:55:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VnBf5ELL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pQzOD5zU;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739884835; x=1740489635; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=vC3MmtES1R3kkG1nVWHLeiRBuKWybO9xGwH1FF01u2M=;
-        b=VnBf5ELLZ760OuR7Pry/+N/1nod75f9YB1c8EbAxaeQGwMkdwM6dWUF0d8nX9LuKFN
-         wC+vS+c4RqJZzMadoUS7/Ht3IV9H6Tu5ciGO4XG5rpXUHMTgWYr+UanCzYzh7r58+Qdz
-         6qmmz32xva2WUIt8j7o9ihSJvCaDHbXHJogX7tYPvom8L60T+ILOwNTym005TUBp+Itf
-         OVFrIIKwDpj8ZIi4ZnKEcs28uPln0cRQz/L5A9s0puHc+qD/OABouQm8LWw9ekxxVXAX
-         TIFw0oXuX8W4Ms/9kSwvE9oCDdXHWdCFrqaKSXyRATFqbOb0DSCCgF/Qs5FMhoXsMmxB
-         gLyg==
+        d=linaro.org; s=google; t=1739886907; x=1740491707; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=39fn1BS3vuf40TnRJ0SE8lCne6FUxR6xiuWLRie0Qos=;
+        b=pQzOD5zUARX9lxfHY6NkhbCZZGD9Hku2YpCI+IMqrKY/U47gvQdbiN7S9Q9qmjz2l4
+         ZdBzP8JiQP7EVNUHlbCatXwrPMIKWYM6WtBuFfPwzYYHRal6ieukxv/zHl/3UNuyRjLa
+         i2IABDFDwOqj0ABWpWxdfEEoXjzHjN0DMy/x/BAyi8bp9EbDBxTB5hQ+edKnKhj7j8gs
+         jEhuB4uzjKS8/s7zO5dW+WeB1+OG2o/UOI40MS4e1mJagW+X7UN/xlunP7aoPp1te/gr
+         RvZz3MD/XDS9TQ2Vgopb7xM4opxx56fNlT7LNQeLPJ3S0FYEymIDbE3EFuDrELC2oY4L
+         qEMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739884835; x=1740489635;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vC3MmtES1R3kkG1nVWHLeiRBuKWybO9xGwH1FF01u2M=;
-        b=jW4vYzJXekQuPsnQroOiZ5wUEGnjqZFJfF7XKVvmmnMMcRdRORUExItN9uePgL+lUC
-         2AFgm8naJ8R6Rqh44pimIrKqNiUKIHmtgq4tyLKhLPqvEHQnxfUhd967P1TEoyLuoPAk
-         a3SD5wi11pyhVAMNpCwlpZFj3uEu6v2yqS4XzHP8C+zZgEotFyEHe6J/UtzfnPUYYKzY
-         1cxBD0pH1or6zMdWut6TXQ4TJxR/4Z6fOeEjpECxrwzvmlyu7Tz8kiRFW/TN/ktg7YXK
-         KZMqpklhA1pKC4m5RQl9FaX7ntVzpQ2xub2fWmhJbkfqesHViDG+P6NJ5DfL1SdDTZo6
-         gyHA==
-X-Forwarded-Encrypted: i=1; AJvYcCWI5+q0JkKuBe3sruISwSZTVZWtCXvEMkYk255UT5JFwT+Sl7x0how5+9Z7P9IYzzpy/1yH/9HeD/0v4w==@linaro.org
-X-Gm-Message-State: AOJu0YzNO721Vz7S+piAVJUm9tePXOkYJ/drpJ8CK2WgEjZdaC5hchAl
-	3df9s4u7a8AJlzKcORzaPh3I1HrrVxHIe84EKKpQM1hQaEydoPiqVSVGNRKNB7stfw==
-X-Gm-Gg: ASbGncuN3QSjFN+OvZ3Syid7wOqbR+9ZcVxWJ0U5dX2y1rAtLxf2AU2Ecc07Y0p3N0P
-	CYT03RArUOemItUebc1gzm+B4eIt+APMdjin9PntFZgurA4aa+WXVjZz2Ejj+QJVydflTwadQqE
-	B60uIVJlCnQ4E4+5cY2h6IJtSeEmOT+/hU2JT8+8rNOffqQIQeCttrjpw7ffKvaw/PDqmhY68lG
-	VWfTnbsQPjayGibPjxzh3qMBo1CLZfJP49wfIsLqhcwwcBEd2IsNoTDsObrigjgleNoJCw8sC7z
-	i8wviU6fvzAzS3q7UQ+FhLLJiKmHqyKgs/pKwDB3IKmCWUM8YknL5HjUZ6Q=
-X-Google-Smtp-Source: AGHT+IForCtadydOvVhTNjd9ECIey58DSMhrG0QgWU5N7F/lu9Reb+pwn3DxvYQ/N+/It+4SLbTErg==
-X-Received: by 2002:a05:6000:156c:b0:38f:2ddd:a1bb with SMTP id ffacd0b85a97d-38f33f10603mr11940369f8f.8.1739884834689;
-        Tue, 18 Feb 2025 05:20:34 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4395a1b824dsm181005315e9.34.2025.02.18.05.20.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Feb 2025 05:20:33 -0800 (PST)
-Message-ID: <2691328e-09db-496f-975a-c4f61e358f92@linaro.org>
-Date: Tue, 18 Feb 2025 14:20:32 +0100
+        d=1e100.net; s=20230601; t=1739886907; x=1740491707;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=39fn1BS3vuf40TnRJ0SE8lCne6FUxR6xiuWLRie0Qos=;
+        b=a+UdQk+yh+BNsM7CFvPyByFeWpbbBB2zRleEP7ufJudomiPYEKmx6XKFd+A941BoyV
+         ViqNpFAhJyXITHEbwiom0CPbDdBXoEQ0er4+7zeIqaMXe/C5Y971+9W92wWJrrTlBlFg
+         IInpMiNI5Wlemk/2XQrcoPtSCopJ2giSu9qcalxft6QrRqe04a3jBqnCIWc1nqBUhnpq
+         34TEwItAB1bQCOxm19OlOj37dK9iv11p5cI8RKlE1f+p9pyqh8ehPV3VEOubDMA9VqUI
+         Q/EVUoLE7wdXBtpggJt2eQez8v+oUICNNdpBgC35hgWmRYllZD/KLXVHwN2fTBP8wkz1
+         3dkQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWyzVEj89+bufPfPUT/Z3qHFKIcwFU65gXBBUd+OPIi7CPywd0khXrRaHxDbw3T3EvRVxvbXFWS/uXoDA==@linaro.org
+X-Gm-Message-State: AOJu0Yzatc5O1vvOJLY1a9pX/9+MIR0DOOtobWf/krhZAk9+W8U11B28
+	EOeWmOkd0OWPadJMSZSTyUv3ybUMmCNOJ7MqH1koo1jCmoxFINMaXya84C2UGaT12GAGJtUd931
+	YQKodcfQ3LSOwxwysiWYbxYoWH5hzEUfsJlAkEtVB
+X-Gm-Gg: ASbGnctrcWoDsIrh6B3zd4VSxR8KlZWSyKzxtuyHblpcfTNXacDz3zVm9A3HWFUxdZk
+	XcZLIGIgm04rUNRNPX1pnJxlB8cRVacD4uo1JTngjeqO9SGaRKQa+TFI4cFyB9fqEWxVl+kr++Q
+	==
+X-Google-Smtp-Source: AGHT+IGVCuthWFQAA8eqh0bykJgVjjswKOY+Z0sUC4HSC9ekQacmG8hCajtYaV/IzJ3UQLdLUTaTpYlud97iDLd85Nw=
+X-Received: by 2002:a05:6902:c06:b0:e5b:3d71:bff1 with SMTP id
+ 3f1490d57ef6-e5da9eb14f1mr17190459276.0.1739886907134; Tue, 18 Feb 2025
+ 05:55:07 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 3/9] meson: Disallow 64-bit on 32-bit Xen emulation
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org, David Woodhouse <dwmw2@infradead.org>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- Paul Durrant <paul@xen.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-References: <20250208205725.568631-1-richard.henderson@linaro.org>
- <20250208205725.568631-4-richard.henderson@linaro.org>
- <aeaf0f19-0f14-4a02-9c51-09521e7c75e1@linaro.org>
- <dc24cf43-b6a1-42b6-ac93-4128f2c03684@linaro.org>
-Content-Language: en-US
-In-Reply-To: <dc24cf43-b6a1-42b6-ac93-4128f2c03684@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: lUOJMNYFSOS2
+References: <20250208163911.54522-1-philmd@linaro.org> <CAFEAcA8PYv3-JX66THwj-mDM0es6V5gVVWJsHTqkd9wTEVor4A@mail.gmail.com>
+In-Reply-To: <CAFEAcA8PYv3-JX66THwj-mDM0es6V5gVVWJsHTqkd9wTEVor4A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Feb 2025 13:54:55 +0000
+X-Gm-Features: AWEUYZnAZ3KPEu27SvYRa3093KcYYrD48TSXN3xhNyE1aBE_lWOl7Fze5E7ctQE
+Message-ID: <CAFEAcA-ioFgThGJ70cyhe7rA0kbnDULsr-BuAqE+3b3TE0BGwg@mail.gmail.com>
+Subject: Re: [PATCH v6 0/7] hw/char/pl011: Implement TX (async) FIFO to avoid
+ blocking the main loop
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: T/Qgwi0kXb/0
 
-On 18/2/25 14:19, Philippe Mathieu-Daudé wrote:
-> On 18/2/25 12:20, Philippe Mathieu-Daudé wrote:
->> Hi,
->>
->> Adding Xen community.
->>
->> On 8/2/25 21:57, Richard Henderson wrote:
->>> Require a 64-bit host binary to spawn a 64-bit guest.
->>>
->>> Reviewed-by: Thomas Huth <thuth@redhat.com>
->>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->>> ---
->>>   meson.build | 9 +++++++--
->>>   1 file changed, 7 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/meson.build b/meson.build
->>> index 1af8aeb194..911955cfa8 100644
->>> --- a/meson.build
->>> +++ b/meson.build
->>> @@ -304,9 +304,14 @@ else
->>>   endif
->>>   accelerator_targets = { 'CONFIG_KVM': kvm_targets }
->>> -if cpu in ['x86', 'x86_64']
->>> +if cpu == 'x86'
->>> +  xen_targets = ['i386-softmmu']
->>> +elif cpu == 'x86_64'
->>>     xen_targets = ['i386-softmmu', 'x86_64-softmmu']
->>> -elif cpu in ['arm', 'aarch64']
->>> +elif cpu == 'arm'
->>> +  # i386 emulator provides xenpv machine type for multiple 
->>> architectures
->>> +  xen_targets = ['i386-softmmu']
->>
->> Is actually someone *testing* this config? I'm having hard time building
->> it, so am very suspicious about how it runs, and start to wonder if I'm
->> not just wasting my time (as could be our CI).
-> 
-> This config is not tested and not functional. I'll post a patch
-> removing it.
+On Mon, 17 Feb 2025 at 14:55, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+>
+> On Sat, 8 Feb 2025 at 16:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
+rg> wrote:
+> >
+> > Hi,
+> >
+> > This series add support for (async) FIFO on the transmit path
+> > of the PL011 UART.
+> >
+>
+> Applied to target-arm.next, thanks (with a couple of minor
+> tweaks to two of the patches).
 
-(thus no need to follow the deprecation policy).
+Unfortunately I seem to get failures in 'make check-functional'
+with the last patch of this series applied. This is with a
+clang sanitizer build on ubuntu 24.04:
+'../../configure' '--cc=3Dclang' '--cxx=3Dclang++' '--enable-ubsan'
+'--target-list=3Darm-softmmu,arm-linux-user,aarch64-softmmu,aarch64-linux-u=
+ser'
 
-> 
->>
->>> +elif cpu == 'aarch64'
->>>     # i386 emulator provides xenpv machine type for multiple 
->>> architectures
->>>     xen_targets = ['i386-softmmu', 'x86_64-softmmu', 'aarch64-softmmu']
->>>   else
->>
->> Regards,
->>
->> Phil.
->>
-> 
+and the tests that fail are:
+42/44 qemu:func-thorough+func-aarch64-thorough+thorough /
+func-aarch64-aarch64_xlnx_versal     TIMEOUT          90.01s   killed
+by signal 15 SIGTERM
+43/44 qemu:func-thorough+func-aarch64-thorough+thorough /
+func-aarch64-aarch64_raspi4          TIMEOUT         480.01s   killed
+by signal 15 SIGTERM
+44/44 qemu:func-thorough+func-aarch64-thorough+thorough /
+func-aarch64-aarch64_virt            TIMEOUT         720.01s   killed
+by signal 15 SIGTERM
+
+Looking at the test logs it looks like the test framework
+starts QEMU but there is never any output from the guest
+console.
+
+I've dropped the patchset from target-arm.next for the moment.
+
+thanks
+-- PMM

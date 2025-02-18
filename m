@@ -1,131 +1,126 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp566569njb;
-        Tue, 18 Feb 2025 01:26:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVr6099XmApHCCF87HA132odJ5S9i728Du5fjBrbuDMYz2ldtbKDDVypacPSYarWtL6/IDHzo9Ne70Ngg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFvb7FdkNvI4mXJTfvWZNcIkbBEO59iGex5HqOVnO9TAwnl8SHbHafMjpGU8Uc16I1bxfQv
-X-Received: by 2002:a05:622a:28d:b0:471:ba31:ce96 with SMTP id d75a77b69052e-471dbd22eefmr146048191cf.17.1739870792897;
-        Tue, 18 Feb 2025 01:26:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739870792; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp594967njb;
+        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVoTkVA5f1GlQmr3hsf1DdMInPNkl6OAjiHxlxLrgKk9N54DYxVQuS6PiDgBUtlE77gkzPADzW2WRX1RA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEE0P8+E0S8E9eCG5EQ8IIxidb1T/3BcsOgS0H9JaYc6A3LCMpDK6+I12Lki94YewfxYoGf
+X-Received: by 2002:a05:6214:29cb:b0:6e4:2ef4:2a01 with SMTP id 6a1803df08f44-6e66ccccc72mr193435226d6.22.1739874883643;
+        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739874883; cv=none;
         d=google.com; s=arc-20240605;
-        b=czznImwAmfSWawVYaSG+yeKJLJxJOU6ZqPV6yeCp4H1MPFaYgpb0hHPsbIigv0Nu+7
-         lHDthwX0hhrqT71STclpm+rB9I1QdV6zwPoR18O+QnfxV1D3irh1S0j3oWa7tO5ScDRc
-         zeaVKPNWzLS7Uq9p2gJTVfOdhGLvKYG/5kvDe/6aNJs0d+AByu2O7p77EQukDQQaFTUv
-         BZLXEbPbUneIzPaVtEd/SAdbGx+ROAW4GGnHOehxK09XjD028FY7rkT5MauqBflXxMX/
-         m2ivp/AkmWlcIXUQAQ7DSbHO6XDC/Ew90hguJ3g76XDM1Dal06MeHSfumodxHF3VvM6/
-         gxGg==
+        b=XXMwyhehxvGeBMr1EDux0P+RdH9f4a1mIyEKqL5oeNtEy5I5aA68GfNfNP0o87Ro0I
+         xBRVvBMTK1zYGnX/Jfi7q81xSVetSQcmV29AcZHW+IOjpn3WFWVe957WV2F6gxi3aTaf
+         3CbQoBhAlXohDHW+EIZGz3UPUIXxSPNzxv5Q51JNid3augLmGIZrHivrlI3bZ2Auv4NY
+         FfdBl/kTVpCSKv2wSbdzv8LTs/g1jUhIbJbeszLYvEdQCxnTEFEverCGFSX5JNTPylGL
+         KIwYrFC3+13K2Qka03QP5W7VvEfs0TDYZb/dfw8BHYL449+savh6LVY+Bwa8yT1I1hbS
+         uD1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=HRhh3i9Diyo9C6EiDaARzUc7r0zTuEEUWlNeUwQp3rc=;
-        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=DYFMmgtHVmjmzsIBLMjWUmNI7LnpOY0A/knCRQZGyub1TBsMyBq2cERycQ84dOAx/j
-         603M4+QA/MEM+VZzH53DtrTZXyCmW+qU8jqKpbD4zliMMUo8XLtZbi80Y3CwwHwVZ/Ja
-         +n92hW/bGjixB58GvvSox4t6eJwwlqiGp4T8LDswHsRj40v9EwvBbjA4Up2B1jeZOf5z
-         SAJJ5D9ssvWgB0A24eShonFoIypHfGpBOJEWQhQtQyVYKG0WkS++pFai4gVvxzdPwpSf
-         Y7GuEzv60Y395XTUHQvWiKz4AWoCulDr4oVlqBA+AbQuzO8kxxpJq8GPiZzVnLYoqVKU
-         08Ow==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
+        fh=slyLyflB3zhh15feRyXiu18/txdXokVriuEkTWo3SaM=;
+        b=Ouh1OqOUd5hqYFBX5JK83gOsRIyol++U7C8PdgYvWXASUf8ke1eXINENHCxEhpUDTz
+         4jBTRlgfZ6lx+s3q1h2X4N2wLQMNiic74Z7JeqFfb62NrAwwTYcNHu5Pglc6DzkQgBeo
+         BnLpN2k0VF3U6ptdp7pZ6AcENRAS3QrQL/U4VzqZzFfIvI+30MEKX82qDIQWT5Cm30hT
+         M8DNETCynZ0Dn8tLlnU2WGPVZ4Z86w3x9ZWU3PJb2anX0VuT4lIYoaPzgfjbPsXdxgL8
+         Fk9heoTntMxLATZyDSwT5G7VGmRLYbbMKxUIFK/hpW0IxLz5PcdooHFtnPljtWwG6/HJ
+         9SKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yshFPwnH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47203fb7798si5334681cf.144.2025.02.18.01.26.32
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a2136si104766836d6.192.2025.02.18.02.34.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 01:26:32 -0800 (PST)
+        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yshFPwnH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkJrg-0005Qh-IM; Tue, 18 Feb 2025 04:26:04 -0500
+	id 1tkKvA-0001ru-Ql; Tue, 18 Feb 2025 05:33:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkJrf-0005QS-JW; Tue, 18 Feb 2025 04:26:03 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org>)
- id 1tkJrZ-0008CK-Ti; Tue, 18 Feb 2025 04:26:03 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YxvJw0L1Bz4x5h;
- Tue, 18 Feb 2025 20:25:52 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YxvJs26Brz4x33;
- Tue, 18 Feb 2025 20:25:49 +1100 (AEDT)
-Message-ID: <4bbd5a9e-934e-4535-b829-1d4fe070d63d@kaod.org>
-Date: Tue, 18 Feb 2025 10:25:46 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tkKv8-0001r2-AL
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2025 05:33:42 -0500
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tkKv5-0000pW-Dd
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2025 05:33:41 -0500
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-6f678a27787so45135157b3.1
+ for <qemu-arm@nongnu.org>; Tue, 18 Feb 2025 02:33:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1739874817; x=1740479617; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
+ b=yshFPwnH3EkShN4pUPzJCHsSjBEX6YrjsKhzcGEvWAcoy3jyVTyraPtk+7Avnc+VuE
+ sxC6IK7QoMPXfKSb2kuV4k2TEz21esDySriPRdvanw0QkZpwfKH0wT05mAxjJxrNWIZB
+ iSb3jHhuUsOXdMcfbvFXQZqI0UN5M3eF30luq0gVBKUOQcBaxovulgqUowMWvQi3LI/U
+ LDOnmx/wVLFkwpxJ884GHYv42HgyYOK6Q6FVQaOgTLyVnIp8f77TOdZmgKoQZHxRlyLu
+ /xFMqzXds9y3K+wn7TJf86iLPNEStiDO/PtHiBbGrNK19IZ5/p6jt2p+BTDGHSI8WC/K
+ WhKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739874817; x=1740479617;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
+ b=dKo5VXjZFcPgtNPHAjpi96JcucKao+4eh4qOmg/w2o/CVwbDbF+u4l1hAorb0GSS96
+ pmKGhAJUaOktmbAEOldRaIwP0tkEMIMg4udmMWrIF8276jfvqQnF2/yer6z7n+EAXczy
+ mB0vHsoQWW9cmG6SMIwxigp9fC5/sQn3y52o5/7G1i6V/ICE+3iOWHvVS2zFuarAe597
+ Vhe+4L/wIBl/6/5rMSJu/cmjpBKg3iH7dnDMT5/xWUgrf8JGahojb6pNw2F/+KzltaIu
+ xjVtTxhe1H4fkSZkEG/S1VlQnI3xDk50kfJVyjUnDkSi0Io2bAKg+EIPegaG074fKl8n
+ LHqA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWTpCBC+MwzUstz1G1NpDMmwq851XClXsb2H57eXGmkFvflep5Wthy/otUFg0ufv3PinKx2vRBb+g==@nongnu.org
+X-Gm-Message-State: AOJu0YynZD7z+1ofjU5DuYuVJ7nYcjJR7eHk1VcpK/hFICipLtt5qbdS
+ sYq+1UktHib9XazJfbrwwAQXAAjDMxH5ngzF0LaaP45Ksrf0lmXcUckzwuKahKKgm77yqaBJwCU
+ dytH5FXR2qFnxxayTFjKg0C8cjZy19bgv4mel5Q==
+X-Gm-Gg: ASbGnctFSGECdlNl4I9NZkHfax91kfx8Goc8H0Wt+vYzxtQLM8exm5eQunEevRjKqqL
+ Fv0PlKkG9fPnIKRIiScKzSEtM3o8b6Glf3o3+Nt49NT8i/ywPwX4WEusCg563IEC2hz9exCg4RQ
+ ==
+X-Received: by 2002:a05:6902:2582:b0:e57:f8cd:f0a4 with SMTP id
+ 3f1490d57ef6-e5dc91dcaa6mr8628872276.34.1739874817456; Tue, 18 Feb 2025
+ 02:33:37 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/28] Support AST2700 A1
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=OI5l=VJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250204092112.26957-1-shentey@gmail.com>
+ <20250204092112.26957-4-shentey@gmail.com>
+ <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
+ <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
+In-Reply-To: <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Feb 2025 10:33:26 +0000
+X-Gm-Features: AWEUYZlsppH-2icB6RCfvtouUYvl1m3E3sPeDA__8q4ovSspImO-7xZxHurUO9Q
+Message-ID: <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
+Subject: Re: [PATCH v2 03/18] hw/gpio/pca955*: Move Kconfig switches next to
+ implementations
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,132 +135,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OBq/vnKfTATv
+X-TUID: JNj5HSGcgMRX
 
-Hello Jamin,
+On Mon, 17 Feb 2025 at 20:21, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+>
+>
+> Am 17. Februar 2025 13:35:04 UTC schrieb Peter Maydell <peter.maydell@lin=
+aro.org>:
+> >On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail.com> wrote:
+> >>
+> >> While at it and since they are user-creatable, build them when
+> >> CONFIG_I2C_DEVICES is set.
+> >
+> >The patch subject says this is just a rearrangement
+> >of the Kconfig stanzas with no behaviour change, but then the
+> >commit message body includes one.
+> >
+> >If you want to build these when CONFIG_I2C_DEVICES is set,
+> >that should be its own patch that does that.
+> >
+> >(The move of the Kconfig bits to hw/gpio is fixing a bug
+> >in 6328d8ffa6cb9d ("misc/pca955*: Move models under hw/gpio"),
+> >which moved the code but forgot to move the Kconfig sections.)
+>
+> Okay, I'll split the patch and use above commit message.
+>
+> >
+> >Separately, it's unclear to me how worthwhile it is to add
+> >these to CONFIG_I2C_DEVICES, because they're GPIO devices,
+> >which means there's not much you can do with them as a user:
+> >as far as I know you can't wire the output/input GPIO lines
+> >up to anything. We have the device models mainly for boards
+> >which provide them, so that guest code that expects to see
+> >them doesn't fall over on bootup, and because the board
+> >model code does have the APIs to wire up the GPIO lines.
+>
+> It's basically to satisfy Linux which will clog the i2c bus if such a GPI=
+O expander is configured in the DTB but missing in the emulation (it will d=
+efer probing which will never make progress). Once it is its own patch we c=
+an decide separately how to proceed with it, e.g. dropping.
 
+If Linux wants to see it because it's in the dtb for the
+hardware it sounds like the right answer is that we
+should create it in the board code, which we can do
+without adding it to CONFIG_I2C_DEVICES, because we
+can make the board code's Kconfig do "select PCA9552",
+like the aspeed board does already.
 
-On 2/13/25 04:35, Jamin Lin wrote:
-> v1:
->   1. Refactor INTC model to support both INTC0 and INTC1.
->   2. Support AST2700 A1.
->   3. Create ast2700a0-evb machine.
->   
-> v2:
->    To streamline the review process, split the following patch series into
->    three parts.
->    https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.2465942-1-jamin_lin@aspeedtech.com/
->    This patch series focuses on cleaning up the INTC model to
->    facilitate future support for the INTC_IO model.
-> 
-> v3:
->   1. Update and add functional test for AST2700
->   2. Add AST2700 INTC design guidance and its block diagram.
->   3. Retaining the INTC naming and introducing a new INTCIO model to support the AST2700 A1.
->   4. Create ast2700a1-evb machine and rename ast2700a0-evb machine
->   5. Fix silicon revision issue and support AST2700 A1.
-> 
-> With the patch applied, QEMU now supports two machines for running AST2700 SoCs:
-> ast2700a0-evb: Designed for AST2700 A0
-> ast2700a1-evb: Designed for AST2700 A1
-> 
-> Test information
-> 1. QEMU version: https://github.com/qemu/qemu/commit/ffaf7f0376f8040ce9068d71ae9ae8722505c42e
-> 2. ASPEED SDK v09.05 pre-built image
->     https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
->     ast2700-default-obmc.tar.gz (AST2700 A1)
->     https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz
->     ast2700-a0-default-obmc.tar.gz (AST2700 A0)
->     https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz
-
-The part adding new functional tests needs a rework. See comment.
-
-> Known Issue:
-> The HACE crypto and hash engine is enable by default since AST2700 A1.
-> However, aspeed_hace.c(HACE model) currently does not support the CRYPTO command.
-> To boot AST2700 A1, I have created a Patch 21 which temporarily resolves the
-> issue by sending an interrupt to notify the firmware that the cryptographic
-> command has completed. It is a temporary workaround to resolve the boot issue
-> in the Crypto Manager SelfTest.
-> 
-> As a result, you will encounter the following kernel warning due to the
-> Crypto Manager test failure. If you don't want to see these kernel warning,
-> please add the following settings in your kernel config.
-> 
-> ```
-> CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
-> ```
-
-Would it be possible to send the hace changes in its own series ?
-
-
-> 
-> Jamin Lin (28):
->    hw/intc/aspeed: Support setting different memory and register size
->    hw/intc/aspeed: Introduce helper functions for enable and status
->      registers
->    hw/intc/aspeed: Add object type name to trace events for better
->      debugging
->    hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
->    hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
->    hw/intc/aspeed: Support different memory region ops
->    hw/intc/aspeed: Rename num_ints to num_inpins for clarity
->    hw/intc/aspeed: Add support for multiple output pins in INTC
->    hw/intc/aspeed: Refactor INTC to support separate input and output pin
->      indices
->    hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
->      index and register address
->    hw/intc/aspeed: Introduce IRQ handler function to reduce code
->      duplication
->    hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
->    hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
->    hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
->      Revisions
->    hw/misc/aspeed_scu: Fix the revision ID cannot be set in the SOC layer
->      for AST2700
->    hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC Interrupt Mapping
->    hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
->      AST2700 A1
->    hw/arm/aspeed: Add SoC and Machine Support for AST2700 A1
->    hw/misc/aspeed_hace: Fix coding style
->    hw/misc/aspeed_hace: Add AST2700 support
->    hw/misc/aspeed_hace: Fix boot issue in the Crypto Manager Self Test
->    hw/arm/aspeed_ast27x0: Add HACE support for AST2700
->    test/functional/aspeed: Introduce new function to fetch assets
->    tests/functional/aspeed: Introduce start_ast2700_test API and update
->      hwmon path
->    tests/functional/aspeed: Update test ASPEED SDK v09.05
->    tests/functional/aspeed: Renamed test case and machine for AST2700 A0
->    tests/functional/aspeed: Add test case for AST2700 A1
->    docs/specs: add aspeed-intc
-> 
->   docs/specs/aspeed-intc.rst              | 136 ++++++
->   docs/specs/index.rst                    |   1 +
->   hw/arm/aspeed.c                         |  21 +-
->   hw/arm/aspeed_ast27x0.c                 | 291 +++++++++---
->   hw/intc/aspeed_intc.c                   | 593 +++++++++++++++++++-----
->   hw/intc/trace-events                    |  25 +-
->   hw/misc/aspeed_hace.c                   |  44 +-
->   hw/misc/aspeed_scu.c                    |   5 +-
->   include/hw/arm/aspeed_soc.h             |   3 +-
->   include/hw/intc/aspeed_intc.h           |  32 +-
->   include/hw/misc/aspeed_hace.h           |   1 +
->   include/hw/misc/aspeed_scu.h            |   2 +
->   tests/functional/test_aarch64_aspeed.py |  47 +-
->   13 files changed, 963 insertions(+), 238 deletions(-)
->   create mode 100644 docs/specs/aspeed-intc.rst
-> 
-
-Patch 1-9 and the hace changes could be merged quickly.
-
-
-I need  some help on patch 10,12,16,17.
-
-Andrew,
-
-Would you have time please ?
-
-Thanks,
-
-C.
-
+thanks
+-- PMM

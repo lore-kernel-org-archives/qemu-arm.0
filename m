@@ -1,174 +1,268 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp805317njb;
-        Tue, 18 Feb 2025 08:27:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWWONq7mriDB2TaQAPsY3IBOAT2A20bbgwskM8CjooPb733dJF6aAk/bf8ME/9NPumZ6q5X+DlaS9JiqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFesGdn5XWa/0rno9gai0IqxoNuZbi9djMMjVmOLe0ja2+WgOnbp/+0rgjMnmzl8tRR/5Q5
-X-Received: by 2002:a05:690c:370a:b0:6f9:5530:f37e with SMTP id 00721157ae682-6fb5839ef1bmr124088257b3.37.1739896068006;
-        Tue, 18 Feb 2025 08:27:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739896067; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp811019njb;
+        Tue, 18 Feb 2025 08:36:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWmonfrFT9tnTUOvPaggr5MGa5ipq3evpryOBjnc3vrGGoPVIL/EzCXCy0ONtTHeimgxh0lIGJhiur+8g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFxl6ttNFvjjC9spyW06iDkZFI9Xhh0rsLRYatbPlKgOAaWkG9c5Y0oGHC5gPprFggpPYSQ
+X-Received: by 2002:a05:6214:2422:b0:6e6:606b:a7be with SMTP id 6a1803df08f44-6e69755cd73mr4673736d6.34.1739896574539;
+        Tue, 18 Feb 2025 08:36:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739896574; cv=none;
         d=google.com; s=arc-20240605;
-        b=Mcn7NsH6G3/ZU8eoL4t3xu0RzsBjev/jaiqm/5sJCnbpvTTAUL7gZlFHvLGjZbVamV
-         /XUcLxo32XoyKQeyGfS+h38bLAnNKTipdEMjB0Dfn+qtA5+kvhyUjhJlL3eymR5g2zYQ
-         ID+vKWawuy9iAv5UiNnJnk9QB5PzH7M5A8Rcd8e9E/ojk+j9101+yBPSgT4HcvD+/d5d
-         cz7kC0mjTC1xps3IpwZxv+zyrOVbuF2VbTB5erknUBoh1v+Idkgnt+OO9TJLiB6IvWKL
-         oec+LhRgRmz8a7tZXy5x3rovtGcxEa/Htp31W59rjon+s8PUi/PQnTEGKOX16n/8YbJT
-         gFWw==
+        b=S3XLYOQz/UQjIad/PPw75ESusJuzddCtRiWWDfXq244z/EVXh5tVMsblzRaNRy7P8h
+         mEfvFUnf8vLEbt7C1zN0lkTdCIBTJfsY2s48p50D60HzjI73T8hP5mgYfI5mBag+0Smd
+         AoRKgG/J6MKrOji8ZKtZ48pVTolnTEOGu60FdYpF9VDun3AeNzE9Kgt0rrQJPfdt4BXd
+         KUjrQaFDkqbCcKrnwVycQsrFqPl2oXciGK735jJepIVSXzVLmiYG0G2mVZhmPX1Zx6JW
+         EUhFoaIItiBaNd5Nb2wuphnbDi6tSYHL64Arpsx2Pq+wpgjENFrzjr+sHvTd4QWEAlMZ
+         Txxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=LY1yJOtl399lZ4AXgftr3zMqyDj58QmxjVcxn7qswe0=;
-        fh=WNhUvQbxbTuCPpJStLY+V254rGd5ShqAf0s2ixhR3pk=;
-        b=iQs37/sqfHK56XUx2+D2pDn16zzEdQVbOfYnkuLsm4tk9GnfP6T320J5X/Vvpej+PI
-         vk9opKNDJYzNP8KKWI3f6pAUJEf478sXlbi8PEqZl+VcR3X6RpgtqQRTBNVQAmw4+vbz
-         vHINSvNkKgYlyrCZC73dDU6BPXOM9B+jQDQt0HjY9Vwgo+vq5gKjoUoMiJLzEiCizOsc
-         KstkDqUl+5lk+Pz/XMRU1wZYr2spK9CB08BonPUv0x9Rn4OqOUGIz/Qh2IQC7e7AmcGH
-         YZzLKDVnX7iBg+oNqfFuEdVBuf0N/Jl/WVsyj9ZVk9mM8APBsjxEqXYzlGp68CfWLizF
-         kIgw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=y39IuXLb8+Yv2MA9uCKmIr6MY5yiNZEZ7BG41cUuj8Y=;
+        fh=3ceSSPutM8iONC1Wo7lmbLz5KOKb9PWPt91bZdWb+NE=;
+        b=f9oTcXQP6ccgCZuSFMwKF2kY587v/aLflUnN5zXQU72z3aFVkH1a/7ICvl/6fyJjZ0
+         uj94AzSvf+4W12b20Q/nZAHPxwzGWip69hCesPaxEIjWhlMUmuJFcclVJy2flxrDlk+O
+         R/23nE12tJewJtwkVYnuNpAd4tEeydwoOvvhBOnYWqz1DeYjDAE6M+qsCzIEytbhfFrU
+         Kk9jVvG6MT+q4M0h/Pl7rJZtK8KOaU0NXN3dKiTdKyGZrCdFfIx+QBhVhzSOmsjixXle
+         +JhtboRXPFaXYHiG6A/W4zh5EW/05l40HSW8p1RJWX9WOMX4ap1XuCCTOxqg+Q1C4n7s
+         v6fw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TCQerYR+;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iwrlBRAs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 00721157ae682-6fb80b34ae0si36368047b3.204.2025.02.18.08.27.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 08:27:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c0b5esi109375376d6.309.2025.02.18.08.36.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Feb 2025 08:36:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TCQerYR+;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iwrlBRAs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.892029.1301066 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1tkQR2-0006pf-Kh; Tue, 18 Feb 2025 16:27:00 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 892029.1301066; Tue, 18 Feb 2025 16:27:00 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1tkQR2-0006pU-H3; Tue, 18 Feb 2025 16:27:00 +0000
-Received: by outflank-mailman (input) for mailman id 892029;
- Tue, 18 Feb 2025 16:26:59 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=vlVU=VJ=linaro.org=philmd@srs-se1.protection.inumbo.net>)
- id 1tkQR1-0003yu-2r
- for xen-devel@lists.xenproject.org; Tue, 18 Feb 2025 16:26:59 +0000
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
- [2a00:1450:4864:20::331])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 2cbd687d-ee15-11ef-9aa7-95dc52dad729;
- Tue, 18 Feb 2025 17:26:58 +0100 (CET)
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-439350f1a0bso34734545e9.0
- for <xen-devel@lists.xenproject.org>; Tue, 18 Feb 2025 08:26:58 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-439941bd54bsm23652215e9.11.2025.02.18.08.26.55
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 18 Feb 2025 08:26:56 -0800 (PST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 2cbd687d-ee15-11ef-9aa7-95dc52dad729
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tkQZo-0004Yw-ME; Tue, 18 Feb 2025 11:36:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tkQZm-0004YD-RF; Tue, 18 Feb 2025 11:36:02 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tkQZl-0002AB-1W; Tue, 18 Feb 2025 11:36:02 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5dee07e51aaso8708517a12.3; 
+ Tue, 18 Feb 2025 08:36:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739896018; x=1740500818; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LY1yJOtl399lZ4AXgftr3zMqyDj58QmxjVcxn7qswe0=;
-        b=TCQerYR+4TBAt11bIGDudigKkAKdBszbAUNNh4Cjii5mELuq0vTBgr0Gompb1wyHd0
-         uFIlFQvhp/BDUFDw7mFms5QqpBASdQRCXaBfFtcK588Se1YCOmaGYULefUgJVIvEJwGN
-         6SkzThZcdwzepHAz24NZf3krWLNcUufbLtA2JZ5tAh3c4Ko53MXP4Qp0s73d/VT8sUxK
-         0UKOljPDYyBRgvzUdDExKE7tEop2iNxh+aKGZ6TC0jW7QmKdCFFr4qE8TeLiymHeAPMz
-         ZnHlwkCifDOQ7ZJ2aA7nWKDlbBgNMoJznWxB1G4ma0vZKiUtvyMj/+b6xDojxaJA9agq
-         2L2Q==
+ d=gmail.com; s=20230601; t=1739896559; x=1740501359; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=y39IuXLb8+Yv2MA9uCKmIr6MY5yiNZEZ7BG41cUuj8Y=;
+ b=iwrlBRAsHN8WnNJxZnbbz6Y+F3jXMu4G2n+jjACwPbR45p78B2hKmTi8EaQQwSBD0A
+ iVTwiIcL4BrXk3UmK9xAgAw9Hr2hwQvuw6YzQVgkRU2EX0CEOHAQaXh4jVodj7IVNZ6q
+ 0Z8tUZPRgCGOGqQOeXHWTtIk6Od4wgbIW8VFREfN9NagsdUyJsk3Y67nss2e2X391d/T
+ GBztxjpKyTu290DO7K3pmPsQKFdhycGOyMcAevgpbuGNXTcKroG1xJGKhawziKUHL+jy
+ UVt+5VTKYn7tzm+PDS5wc9LtNz5P69zhG2Qe0BjGLwC5U81u3Yt2XqeCwX0w9EOOsqpM
+ AeTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739896018; x=1740500818;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LY1yJOtl399lZ4AXgftr3zMqyDj58QmxjVcxn7qswe0=;
-        b=YVkDKgVzYgBSN7Oas6CTReSFje8gp5gGh3ZZZhJbj4kfQhxme7W632fJUi2y9WdBud
-         ETQWgD4p2Y/An05kMzd8cclk0m1GlQ7PNhJex8MEQ1V1V/SQyHPwFHNy46y5thE3Pwse
-         IYov/4ue9MXgwGwT7lVm+2DtMUYFATRE4xcTeoORG2XP+pc0NqSzCD70V8tdpHi6HySP
-         RxhzM1e58pm2sHF/Joqlewtsjq6qoXQ4L8w6VUG/Pffbr56emKspY6NiGysTEUdlloI2
-         CIf4283j3r8WJSqwow7Ymf0C6z+TzTFmJUKviocXki+lagGduCfIjyeEFB1m/KyqLTht
-         rlhw==
-X-Forwarded-Encrypted: i=1; AJvYcCVfZB/GOEXj6krBzNjvTWq3BodD+UNfhFpI4+xd/N0J30McIuU+px824L5MLoQG+Un6KFwKNh/6I1E=@lists.xenproject.org
-X-Gm-Message-State: AOJu0YxHWLAf7eQ5bX/FwBZU42ZaJzukO8KisSWYQk+thzbDbq5qIpdg
-	uh3jUCN72dNXPJI6LrbKgdQB8JEYEHdqG/N2FXxJ5pgT6vlayLTwXV9jR91ci5w=
-X-Gm-Gg: ASbGncsZH/oAES2aQoBTgupjmMayQ4bJROVHOe9E3psfQdt1E1VX0z+/uCza+bwVqDd
-	/yYSWRa0Ihrk5TCCYJ4n2kRmbb0k2oWAtvcQfsLp9bWpOhxlocWOysDI+kFCQoiHLevkIZwQyDY
-	H+mwFjGgWYXEOTnFZavZYd13bezA3vCU8Fv4ntLSSuvMu45tEo0drjDXhj9spceOhKvV0RS4rbg
-	KO402/HaqLBDVuD1GJtcFHVTxtBnG1rZ9BPW5wpH8EIKs7he+hvE+B0YfQ6sHPYisiq7cE7YDGE
-	8yqxWT0w447qF34jOIY489UNYThpTBNFXLHX8vg6YE+L/gSHe8oK6cT69ZovI3vWKA==
-X-Received: by 2002:a05:600c:4f15:b0:439:4c1e:d810 with SMTP id 5b1f17b1804b1-43999b0283amr4460925e9.9.1739896017978;
-        Tue, 18 Feb 2025 08:26:57 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Anthony PERARD <anthony@xenproject.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Paul Durrant <paul@xen.org>,
-	Andrew Cooper <andrew.cooper3@citrix.com>,
-	Juergen Gross <jgross@suse.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Vikram Garhwal <vikram.garhwal@bytedance.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Jan Beulich <jbeulich@suse.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH 7/8] hw/xen/xen-legacy-backend: Remove unused 'net/net.h' header
-Date: Tue, 18 Feb 2025 17:26:17 +0100
-Message-ID: <20250218162618.46167-8-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250218162618.46167-1-philmd@linaro.org>
-References: <20250218162618.46167-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1739896559; x=1740501359;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=y39IuXLb8+Yv2MA9uCKmIr6MY5yiNZEZ7BG41cUuj8Y=;
+ b=VBh9+/myLIv2PocVdkYGVHr+ejoJt3VLyB5wKx4ccCDPQFKzzYHA5ug+2aUP+TRo8Z
+ vTiMneWoxdcwHkvkPVjaILH7191t+VpDUxGsDJ8h+6bVKvqR8cX5rM5sIakE9H+CAjgy
+ N6O5SFJ2xB6KMSrsrUqpDXufCb/LfsJzlhNAjh51xjKWBgdENNTdo1t/mcVv06wOxLAV
+ RlB5OnDU7kAkTpqlyP1XGuCbzBjtsbNLW2VMXcn03YldTb0rb4FtBsFMl+ZuidFix3i7
+ vuMlJSD+ENnVYViGWNnzWfz2kNcdjs0LdNViOnej18O52Qk6DXP3kB9hEKs3saDa9UT2
+ W/YA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUBjYcGwb0VEcYcgaw5kk/3DZ+3PN/vrrCDsiW/PiIuBCVRtcrOQi6oPU28KrTNCnrV+9LSiFs8IA==@nongnu.org
+X-Gm-Message-State: AOJu0YxI5I3hV/lDXH/aXEpOwKdrZKmuo9kVj1R6TpU/aTbJBTsfYyuO
+ 5ST5Tw4Hg9gmnUVXUL78yeE/Sh4zyIY01nBbWxcdr6NNmsRcZx4VvZ+4KJLxpLuyjTaZE/CO5jL
+ bG7HotBcSi8wGvLFJRH/q5mymJrGVXvmHBVk=
+X-Gm-Gg: ASbGncuwca/vfrqyrAu0AbqdHgxvz8B+YgDkj7fDGMMjHEcd8oug0TdgV356gFZ5ziR
+ v7upDdU3Xb8JvS1ExG5YpY5X82Yy15bP7hYanutyTuS/xEVrUO66v9L+y3CmOnkrmESMYJTOR
+X-Received: by 2002:a05:6402:5246:b0:5db:f5e9:6745 with SMTP id
+ 4fb4d7f45d1cf-5e035f4cbcemr15926636a12.0.1739896558995; Tue, 18 Feb 2025
+ 08:35:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: X7BLa3gIF9hx
+References: <20250218162618.46167-1-philmd@linaro.org>
+ <20250218162618.46167-2-philmd@linaro.org>
+In-Reply-To: <20250218162618.46167-2-philmd@linaro.org>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Tue, 18 Feb 2025 10:35:45 -0600
+X-Gm-Features: AWEUYZngkCBYmTsrxRCCzUblDe0MPj8n_01v-kvqpONaymoS4p_xVYJeHIFfDo4
+Message-ID: <CAJy5ezoHT1RehKYvLJtU7=0SR_Ahs2AUBpu==cqvo6zVj1+vXg@mail.gmail.com>
+Subject: Re: [PATCH 1/8] accel/Kconfig: Link XenPVH with GPEX PCIe bridge
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, 
+ Anthony PERARD <anthony@xenproject.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Paul Durrant <paul@xen.org>, Andrew Cooper <andrew.cooper3@citrix.com>, 
+ Juergen Gross <jgross@suse.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, David Woodhouse <dwmw2@infradead.org>, 
+ Vikram Garhwal <vikram.garhwal@bytedance.com>, Thomas Huth <thuth@redhat.com>, 
+ Jan Beulich <jbeulich@suse.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000005856d9062e6d3cc9"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: x1IwGPmRAOIV
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/xen/xen-legacy-backend.h | 1 -
- 1 file changed, 1 deletion(-)
+--0000000000005856d9062e6d3cc9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/include/hw/xen/xen-legacy-backend.h b/include/hw/xen/xen-legacy-backend.h
-index e198b120c5d..2d0cbfecade 100644
---- a/include/hw/xen/xen-legacy-backend.h
-+++ b/include/hw/xen/xen-legacy-backend.h
-@@ -3,7 +3,6 @@
- 
- #include "hw/xen/xen_backend_ops.h"
- #include "hw/xen/xen_pvdev.h"
--#include "net/net.h"
- #include "qom/object.h"
- 
- #define TYPE_XENSYSDEV "xen-sysdev"
--- 
-2.47.1
+On Tue, Feb 18, 2025 at 10:26=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philm=
+d@linaro.org>
+wrote:
 
+> XenPVH requires the PCIe/GPEX device. Add it to Kconfig
+> to avoid when configuring using --without-default-devices:
+>
+>   /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-pvh-common.c.o: in
+> function `xenpvh_gpex_init':
+>   hw/xen/xen-pvh-common.c:174: undefined reference to `gpex_set_irq_num'
+>   /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-hvm-common.c.o: in
+> function `pci_dev_bus_num':
+>   include/hw/pci/pci.h:337: undefined reference to `pci_bus_num'
+>   /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to
+> `pci_bus_num'
+>   /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to
+> `pci_bus_num'
+>   /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to
+> `pci_bus_num'
+>   /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to
+> `pci_bus_num'
+>   /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-hvm-common.c.o: in
+> function `cpu_ioreq_config':
+>   hw/xen/xen-hvm-common.c:412: undefined reference to
+> `pci_host_config_read_common'
+>   /usr/bin/ld: hw/xen/xen-hvm-common.c:428: undefined reference to
+> `pci_host_config_read_common'
+>   /usr/bin/ld: hw/xen/xen-hvm-common.c:438: undefined reference to
+> `pci_host_config_write_common'
+>
+> Fixes: f22e598a72c ("hw/xen: pvh-common: Add support for creating
+> PCIe/GPEX")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+
+
+
+> ---
+>  accel/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/accel/Kconfig b/accel/Kconfig
+> index 794e0d18d21..4263cab7227 100644
+> --- a/accel/Kconfig
+> +++ b/accel/Kconfig
+> @@ -16,4 +16,5 @@ config KVM
+>  config XEN
+>      bool
+>      select FSDEV_9P if VIRTFS
+> +    select PCI_EXPRESS_GENERIC_BRIDGE
+>      select XEN_BUS
+> --
+> 2.47.1
+>
+>
+
+--0000000000005856d9062e6d3cc9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Tue, Feb 18, 2025 at 10:26=E2=80=AFAM =
+Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philmd=
+@linaro.org</a>&gt; wrote:</div><div class=3D"gmail_quote gmail_quote_conta=
+iner"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex">XenPVH requires the=
+ PCIe/GPEX device. Add it to Kconfig<br>
+to avoid when configuring using --without-default-devices:<br>
+<br>
+=C2=A0 /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-pvh-common.c.o: =
+in function `xenpvh_gpex_init&#39;:<br>
+=C2=A0 hw/xen/xen-pvh-common.c:174: undefined reference to `gpex_set_irq_nu=
+m&#39;<br>
+=C2=A0 /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-hvm-common.c.o: =
+in function `pci_dev_bus_num&#39;:<br>
+=C2=A0 include/hw/pci/pci.h:337: undefined reference to `pci_bus_num&#39;<b=
+r>
+=C2=A0 /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to `pci_b=
+us_num&#39;<br>
+=C2=A0 /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to `pci_b=
+us_num&#39;<br>
+=C2=A0 /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to `pci_b=
+us_num&#39;<br>
+=C2=A0 /usr/bin/ld: include/hw/pci/pci.h:337: undefined reference to `pci_b=
+us_num&#39;<br>
+=C2=A0 /usr/bin/ld: libqemu-aarch64-softmmu.a.p/hw_xen_xen-hvm-common.c.o: =
+in function `cpu_ioreq_config&#39;:<br>
+=C2=A0 hw/xen/xen-hvm-common.c:412: undefined reference to `pci_host_config=
+_read_common&#39;<br>
+=C2=A0 /usr/bin/ld: hw/xen/xen-hvm-common.c:428: undefined reference to `pc=
+i_host_config_read_common&#39;<br>
+=C2=A0 /usr/bin/ld: hw/xen/xen-hvm-common.c:438: undefined reference to `pc=
+i_host_config_write_common&#39;<br>
+<br>
+Fixes: f22e598a72c (&quot;hw/xen: pvh-common: Add support for creating PCIe=
+/GPEX&quot;)<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lin=
+aro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br></blockquote><div><=
+br></div><div>Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.ig=
+lesias@amd.com">edgar.iglesias@amd.com</a>&gt;</div><div><br></div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0accel/Kconfig | 1 +<br>
+=C2=A01 file changed, 1 insertion(+)<br>
+<br>
+diff --git a/accel/Kconfig b/accel/Kconfig<br>
+index 794e0d18d21..4263cab7227 100644<br>
+--- a/accel/Kconfig<br>
++++ b/accel/Kconfig<br>
+@@ -16,4 +16,5 @@ config KVM<br>
+=C2=A0config XEN<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0select FSDEV_9P if VIRTFS<br>
++=C2=A0 =C2=A0 select PCI_EXPRESS_GENERIC_BRIDGE<br>
+=C2=A0 =C2=A0 =C2=A0select XEN_BUS<br>
+-- <br>
+2.47.1<br>
+<br>
+</blockquote></div></div>
+
+--0000000000005856d9062e6d3cc9--

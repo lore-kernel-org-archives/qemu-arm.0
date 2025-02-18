@@ -1,187 +1,355 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp594967njb;
-        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVoTkVA5f1GlQmr3hsf1DdMInPNkl6OAjiHxlxLrgKk9N54DYxVQuS6PiDgBUtlE77gkzPADzW2WRX1RA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEE0P8+E0S8E9eCG5EQ8IIxidb1T/3BcsOgS0H9JaYc6A3LCMpDK6+I12Lki94YewfxYoGf
-X-Received: by 2002:a05:6214:29cb:b0:6e4:2ef4:2a01 with SMTP id 6a1803df08f44-6e66ccccc72mr193435226d6.22.1739874883643;
-        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739874883; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp761608njb;
+        Tue, 18 Feb 2025 07:22:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXn+cyb/W0e60/OZVJZQmwAmCkX9TLsfYihn9lSvI1eDn0j/5cbrP9zqIXb/YKfQt4LgJtJXnc3wkKi0A==@linaro.org
+X-Google-Smtp-Source: AGHT+IG7NH/zJVscOkqQ6QRSsWUWF91p+RSOIh7wWtMZ+cV7vafxwa+Pr20/XbSp/3uPOot27frp
+X-Received: by 2002:ad4:5f0a:0:b0:6e4:3c52:d67e with SMTP id 6a1803df08f44-6e66ccbcd8amr215725886d6.18.1739892139140;
+        Tue, 18 Feb 2025 07:22:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739892139; cv=none;
         d=google.com; s=arc-20240605;
-        b=XXMwyhehxvGeBMr1EDux0P+RdH9f4a1mIyEKqL5oeNtEy5I5aA68GfNfNP0o87Ro0I
-         xBRVvBMTK1zYGnX/Jfi7q81xSVetSQcmV29AcZHW+IOjpn3WFWVe957WV2F6gxi3aTaf
-         3CbQoBhAlXohDHW+EIZGz3UPUIXxSPNzxv5Q51JNid3augLmGIZrHivrlI3bZ2Auv4NY
-         FfdBl/kTVpCSKv2wSbdzv8LTs/g1jUhIbJbeszLYvEdQCxnTEFEverCGFSX5JNTPylGL
-         KIwYrFC3+13K2Qka03QP5W7VvEfs0TDYZb/dfw8BHYL449+savh6LVY+Bwa8yT1I1hbS
-         uD1A==
+        b=aUa0xr8hge9bHjCYzjR9pOXAYXtG9LTUcY8eFvj6XHVkCXhCS+Gzxxt9/2ULrs47uZ
+         T+4ERwiwqbuGIAmZOEZ9L1kcZRvlFdy0NbF+bq+bWDZi2V47XLfPs7NtWvYw7QJxyo2w
+         sgmsIXgKZDrfuhXTNG24/g5WSB0dn3xr+P7uPxEsRlt6fEU5oUYXn/O02HJCst66GAK+
+         8TzVgUC1IylwuY+sDeJ4m1c4FPs+RNAsKsK4VAwG2ei63Pt5Hhofbb0Zb2S61KjFFKTl
+         1tX0qDX76yGu/17xQ1SaOYARqVpiKVnw3EiDUrRjcpecv4V+YBG66mnSa4ZqD4ewHUYp
+         SWjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
-        fh=slyLyflB3zhh15feRyXiu18/txdXokVriuEkTWo3SaM=;
-        b=Ouh1OqOUd5hqYFBX5JK83gOsRIyol++U7C8PdgYvWXASUf8ke1eXINENHCxEhpUDTz
-         4jBTRlgfZ6lx+s3q1h2X4N2wLQMNiic74Z7JeqFfb62NrAwwTYcNHu5Pglc6DzkQgBeo
-         BnLpN2k0VF3U6ptdp7pZ6AcENRAS3QrQL/U4VzqZzFfIvI+30MEKX82qDIQWT5Cm30hT
-         M8DNETCynZ0Dn8tLlnU2WGPVZ4Z86w3x9ZWU3PJb2anX0VuT4lIYoaPzgfjbPsXdxgL8
-         Fk9heoTntMxLATZyDSwT5G7VGmRLYbbMKxUIFK/hpW0IxLz5PcdooHFtnPljtWwG6/HJ
-         9SKA==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=Ot+fYgSVKyy+rAYXe+wg7VR70oe9I02rM5x2Ee3gz8M=;
+        fh=k9eAKcDs0gPeZdUe7YsBsV2XjZ4T5R/MlpvDmtZ8Z+w=;
+        b=HwYDJH5Ogb3JTg/AfTp7vg/PAHVM+beFphejMLTBotN3lVltvmsa7AaBc10BKKOrCn
+         6TcyRPber9EmE5X4ZOZLa1LJ2ikT/DvrU2yFbUDZx1RDhVcOvjkKXN3NkAqoqncx4kfk
+         xaPfWcb5tXLfuviuER1mx329pCVtAlT+dpKS9AYZeRZnfnpp3xDGeWn6faM84FmVtny7
+         0iCRHscODRdKFRswSE+fwcJjDimdbcxTthjcyaNOl1GgzGl/oAB2LSnWeFfV2PBrxKqY
+         Vkr1FD4xTNduUZrHxMGJx0UmxLlD44Q3XHKs13xSn09RlcTKqrxpfk4OD0vY0QP0VBLh
+         tklg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yshFPwnH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a2136si104766836d6.192.2025.02.18.02.34.43
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CoIIsnmS;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-471f22dbc09si38546561cf.261.2025.02.18.07.22.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 02:34:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Feb 2025 07:22:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yshFPwnH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkKvA-0001ru-Ql; Tue, 18 Feb 2025 05:33:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tkKv8-0001r2-AL
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 05:33:42 -0500
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tkKv5-0000pW-Dd
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 05:33:41 -0500
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-6f678a27787so45135157b3.1
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2025 02:33:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1739874817; x=1740479617; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
- b=yshFPwnH3EkShN4pUPzJCHsSjBEX6YrjsKhzcGEvWAcoy3jyVTyraPtk+7Avnc+VuE
- sxC6IK7QoMPXfKSb2kuV4k2TEz21esDySriPRdvanw0QkZpwfKH0wT05mAxjJxrNWIZB
- iSb3jHhuUsOXdMcfbvFXQZqI0UN5M3eF30luq0gVBKUOQcBaxovulgqUowMWvQi3LI/U
- LDOnmx/wVLFkwpxJ884GHYv42HgyYOK6Q6FVQaOgTLyVnIp8f77TOdZmgKoQZHxRlyLu
- /xFMqzXds9y3K+wn7TJf86iLPNEStiDO/PtHiBbGrNK19IZ5/p6jt2p+BTDGHSI8WC/K
- WhKA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CoIIsnmS;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739892138;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Ot+fYgSVKyy+rAYXe+wg7VR70oe9I02rM5x2Ee3gz8M=;
+	b=CoIIsnmSWTKSn1St5s9WQrCd/HPrPoDLFuPxy7aXmT2wypcpIgmIGcsZJNqpYqkTWIR8JV
+	mTWhZTZTeEwEcYG2q07Ao6/vHPMWpAceAieMPIhACMF993YoSgGVHr4r565vkd7v++jRLw
+	3cYtnJEiFNoQDwu/2XUXjB8amEKw1Yw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-624-Q3IUb2BNOU6FgWfvM36ccg-1; Tue, 18 Feb 2025 10:22:17 -0500
+X-MC-Unique: Q3IUb2BNOU6FgWfvM36ccg-1
+X-Mimecast-MFC-AGG-ID: Q3IUb2BNOU6FgWfvM36ccg_1739892137
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-38f455a8fcaso2305161f8f.2
+        for <alex.bennee@linaro.org>; Tue, 18 Feb 2025 07:22:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739874817; x=1740479617;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3ZMBmVs5XRmd0x+E9pD+oKiYoHw6RL9O2OW6WpxeJPY=;
- b=dKo5VXjZFcPgtNPHAjpi96JcucKao+4eh4qOmg/w2o/CVwbDbF+u4l1hAorb0GSS96
- pmKGhAJUaOktmbAEOldRaIwP0tkEMIMg4udmMWrIF8276jfvqQnF2/yer6z7n+EAXczy
- mB0vHsoQWW9cmG6SMIwxigp9fC5/sQn3y52o5/7G1i6V/ICE+3iOWHvVS2zFuarAe597
- Vhe+4L/wIBl/6/5rMSJu/cmjpBKg3iH7dnDMT5/xWUgrf8JGahojb6pNw2F/+KzltaIu
- xjVtTxhe1H4fkSZkEG/S1VlQnI3xDk50kfJVyjUnDkSi0Io2bAKg+EIPegaG074fKl8n
- LHqA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWTpCBC+MwzUstz1G1NpDMmwq851XClXsb2H57eXGmkFvflep5Wthy/otUFg0ufv3PinKx2vRBb+g==@nongnu.org
-X-Gm-Message-State: AOJu0YynZD7z+1ofjU5DuYuVJ7nYcjJR7eHk1VcpK/hFICipLtt5qbdS
- sYq+1UktHib9XazJfbrwwAQXAAjDMxH5ngzF0LaaP45Ksrf0lmXcUckzwuKahKKgm77yqaBJwCU
- dytH5FXR2qFnxxayTFjKg0C8cjZy19bgv4mel5Q==
-X-Gm-Gg: ASbGnctFSGECdlNl4I9NZkHfax91kfx8Goc8H0Wt+vYzxtQLM8exm5eQunEevRjKqqL
- Fv0PlKkG9fPnIKRIiScKzSEtM3o8b6Glf3o3+Nt49NT8i/ywPwX4WEusCg563IEC2hz9exCg4RQ
- ==
-X-Received: by 2002:a05:6902:2582:b0:e57:f8cd:f0a4 with SMTP id
- 3f1490d57ef6-e5dc91dcaa6mr8628872276.34.1739874817456; Tue, 18 Feb 2025
- 02:33:37 -0800 (PST)
+        d=1e100.net; s=20230601; t=1739892136; x=1740496936;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ot+fYgSVKyy+rAYXe+wg7VR70oe9I02rM5x2Ee3gz8M=;
+        b=q6Zqarx+kDXfNGQEhx1vH7mhAEDRtCLc9sWevXugOmXwPqSXb2VbvCLO5UQ4CKV5lw
+         Bf39taFZx1jofCkeCmTvRLAIrF8rH+zSgDgfDiiGQBztsb1oDwyJo5YvCojuCZLOksIM
+         NhZvfbYcWVzZVjVFOZPcIZymgAyHO8NAWIrtpF52QcMC3L1RrXRwrUwFtldMl1yHAgww
+         NIwRhv4//dIkSOJkX6c8bQYUZ1dsNh9OWVztYUA5LXRfcsh7eHizdQYKlm5hxvEYo3Tu
+         3j/HBbtyOcDvssK+ZF4+/3h7KWt/J2Bqtlwmk3Xp0iwQXI4V9VoLHZ6yinpNgUpCTZsT
+         EUFA==
+X-Forwarded-Encrypted: i=1; AJvYcCV552oYUhPqGlP9z036hiP4e7/96p+0EHE7fuABmSrsNAph35SX6OSirjFTNgXiaw9A+kjFzc98YIgR2A==@linaro.org
+X-Gm-Message-State: AOJu0Yy+DoEDkEv0ZduW0b/D/Aq4eqSOW2gY4R9lwJMGNH5KFXfiv+l9
+	83AuCO8pIelMw1cQwa2/Mrz7zKCE1t0z6yZxLTDNjJPXOI1OZm9moQ4OBtnSLXWEfHRCTCXKo/T
+	4iuUoyGEjoAMNG6ZbKlwu8gP3HKZAZ7Xk5iWHwG0DY5RlUtyUgrocLQ==
+X-Gm-Gg: ASbGnctsT5F4V/Cj/XBo9uoCKV8srKyO/nBb1QyhAJ9iRnNTXpxLi6J08eRsDbauMFr
+	KxWlkbOtWcL9aOWdJ4MwbktgD6I74vE876tmg647k46jaFewJAVyMt+1UFDFqM36mE7A2CvqIRm
+	xroY/9oSUJJWT870G+N+jTT9/JXOMLpd9ukrq2n/OSjo4Z5kYyI46CL+mk22cryBOAJApwu0Tv2
+	PMh+DUXnyJwdhwpApiz8THWEwhh4r44X9njD767M2/xVPFOwJeONAWkBsc1Ueg74bXKQkJnjxIO
+	Rqno5w2G70586fEv3J7skfnJiJoU322rg7eAetcHR/Lilxb838cp
+X-Received: by 2002:a05:6000:2a7:b0:38d:e190:b713 with SMTP id ffacd0b85a97d-38f33f4acbdmr9880405f8f.37.1739892136444;
+        Tue, 18 Feb 2025 07:22:16 -0800 (PST)
+X-Received: by 2002:a05:6000:2a7:b0:38d:e190:b713 with SMTP id ffacd0b85a97d-38f33f4acbdmr9880373f8f.37.1739892136005;
+        Tue, 18 Feb 2025 07:22:16 -0800 (PST)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f258f5fb6sm15062981f8f.44.2025.02.18.07.22.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Feb 2025 07:22:15 -0800 (PST)
+Message-ID: <6030fd76-e7f1-47ca-9eb7-8cafe48bd639@redhat.com>
+Date: Tue, 18 Feb 2025 16:22:12 +0100
 MIME-Version: 1.0
-References: <20250204092112.26957-1-shentey@gmail.com>
- <20250204092112.26957-4-shentey@gmail.com>
- <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
- <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
-In-Reply-To: <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Feb 2025 10:33:26 +0000
-X-Gm-Features: AWEUYZlsppH-2icB6RCfvtouUYvl1m3E3sPeDA__8q4ovSspImO-7xZxHurUO9Q
-Message-ID: <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
-Subject: Re: [PATCH v2 03/18] hw/gpio/pca955*: Move Kconfig switches next to
- implementations
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JNj5HSGcgMRX
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH 01/15] arm/cpu: Add sysreg definitions in cpu-sysregs.h
+To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
+ peter.maydell@linaro.org, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
+References: <20250207110248.1580465-1-cohuck@redhat.com>
+ <20250207110248.1580465-2-cohuck@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250207110248.1580465-2-cohuck@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: iqFskHh87Xz-22QVkYoTInR6sWQ9QsSfRJz-sJhOCLI_1739892137
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: CS2Y60kvm38c
 
-On Mon, 17 Feb 2025 at 20:21, Bernhard Beschow <shentey@gmail.com> wrote:
->
->
->
-> Am 17. Februar 2025 13:35:04 UTC schrieb Peter Maydell <peter.maydell@lin=
-aro.org>:
-> >On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail.com> wrote:
-> >>
-> >> While at it and since they are user-creatable, build them when
-> >> CONFIG_I2C_DEVICES is set.
-> >
-> >The patch subject says this is just a rearrangement
-> >of the Kconfig stanzas with no behaviour change, but then the
-> >commit message body includes one.
-> >
-> >If you want to build these when CONFIG_I2C_DEVICES is set,
-> >that should be its own patch that does that.
-> >
-> >(The move of the Kconfig bits to hw/gpio is fixing a bug
-> >in 6328d8ffa6cb9d ("misc/pca955*: Move models under hw/gpio"),
-> >which moved the code but forgot to move the Kconfig sections.)
->
-> Okay, I'll split the patch and use above commit message.
->
-> >
-> >Separately, it's unclear to me how worthwhile it is to add
-> >these to CONFIG_I2C_DEVICES, because they're GPIO devices,
-> >which means there's not much you can do with them as a user:
-> >as far as I know you can't wire the output/input GPIO lines
-> >up to anything. We have the device models mainly for boards
-> >which provide them, so that guest code that expects to see
-> >them doesn't fall over on bootup, and because the board
-> >model code does have the APIs to wire up the GPIO lines.
->
-> It's basically to satisfy Linux which will clog the i2c bus if such a GPI=
-O expander is configured in the DTB but missing in the emulation (it will d=
-efer probing which will never make progress). Once it is its own patch we c=
-an decide separately how to proceed with it, e.g. dropping.
+Hi Connie,
 
-If Linux wants to see it because it's in the dtb for the
-hardware it sounds like the right answer is that we
-should create it in the board code, which we can do
-without adding it to CONFIG_I2C_DEVICES, because we
-can make the board code's Kconfig do "select PCA9552",
-like the aspeed board does already.
 
-thanks
--- PMM
+On 2/7/25 12:02 PM, Cornelia Huck wrote:
+> From: Eric Auger <eric.auger@redhat.com>
+>
+> This new header contains macros that define aarch64 registers.
+> In a subsequent patch, this will be replaced by a more exhaustive
+> version that will be generated from linux arch/arm64/tools/sysreg
+> file. Those macros are sufficient to migrate the storage of those
+> ID regs from named fields in isar struct to an array cell.
+>
+> [CH: reworked to use different structures]
+> [CH: moved accessors from the patches first using them to here,
+>      dropped interaction with writable registers, which will happen
+>      later]
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  target/arm/cpu-sysregs.h | 131 +++++++++++++++++++++++++++++++++++++++
+>  target/arm/cpu.h         |  42 +++++++++++++
+>  2 files changed, 173 insertions(+)
+>  create mode 100644 target/arm/cpu-sysregs.h
+>
+> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+> new file mode 100644
+> index 000000000000..de09ebae91a5
+> --- /dev/null
+> +++ b/target/arm/cpu-sysregs.h
+> @@ -0,0 +1,131 @@
+> +#ifndef ARM_CPU_SYSREGS_H
+> +#define ARM_CPU_SYSREGS_H
+> +
+> +/*
+> + * Following is similar to the coprocessor regs encodings, but with an argument
+> + * ordering that matches the ARM ARM. We also reuse the various CP_REG_ defines
+> + * that actually are the same as the equivalent KVM_REG_ values.
+> + */
+> +#define ENCODE_ID_REG(op0, op1, crn, crm, op2)          \
+> +    (((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
+> +     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
+> +     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
+> +     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
+> +     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
+> +
+> +typedef enum ARMIDRegisterIdx {
+> +    ID_AA64PFR0_EL1_IDX,
+> +    ID_AA64PFR1_EL1_IDX,
+> +    ID_AA64SMFR0_EL1_IDX,
+> +    ID_AA64DFR0_EL1_IDX,
+> +    ID_AA64DFR1_EL1_IDX,
+> +    ID_AA64ISAR0_EL1_IDX,
+> +    ID_AA64ISAR1_EL1_IDX,
+> +    ID_AA64ISAR2_EL1_IDX,
+> +    ID_AA64MMFR0_EL1_IDX,
+> +    ID_AA64MMFR1_EL1_IDX,
+> +    ID_AA64MMFR2_EL1_IDX,
+> +    ID_AA64MMFR3_EL1_IDX,
+> +    ID_PFR0_EL1_IDX,
+> +    ID_PFR1_EL1_IDX,
+> +    ID_DFR0_EL1_IDX,
+> +    ID_MMFR0_EL1_IDX,
+> +    ID_MMFR1_EL1_IDX,
+> +    ID_MMFR2_EL1_IDX,
+> +    ID_MMFR3_EL1_IDX,
+> +    ID_ISAR0_EL1_IDX,
+> +    ID_ISAR1_EL1_IDX,
+> +    ID_ISAR2_EL1_IDX,
+> +    ID_ISAR3_EL1_IDX,
+> +    ID_ISAR4_EL1_IDX,
+> +    ID_ISAR5_EL1_IDX,
+> +    ID_MMFR4_EL1_IDX,
+> +    ID_ISAR6_EL1_IDX,
+> +    MVFR0_EL1_IDX,
+> +    MVFR1_EL1_IDX,
+> +    MVFR2_EL1_IDX,
+> +    ID_PFR2_EL1_IDX,
+> +    ID_DFR1_EL1_IDX,
+> +    ID_MMFR5_EL1_IDX,
+> +    ID_AA64ZFR0_EL1_IDX,
+> +    CTR_EL0_IDX,
+> +    NUM_ID_IDX,
+> +} ARMIDRegisterIdx;
+> +
+> +typedef enum ARMSysRegs {
+> +    SYS_ID_AA64PFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 4, 0),
+> +    SYS_ID_AA64PFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 4, 1),
+> +    SYS_ID_AA64SMFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 4, 5),
+> +    SYS_ID_AA64DFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 5, 0),
+> +    SYS_ID_AA64DFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 5, 1),
+> +    SYS_ID_AA64ISAR0_EL1 = ENCODE_ID_REG(3, 0, 0, 6, 0),
+> +    SYS_ID_AA64ISAR1_EL1 = ENCODE_ID_REG(3, 0, 0, 6, 1),
+> +    SYS_ID_AA64ISAR2_EL1 = ENCODE_ID_REG(3, 0, 0, 6, 2),
+> +    SYS_ID_AA64MMFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 7, 0),
+> +    SYS_ID_AA64MMFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 7, 1),
+> +    SYS_ID_AA64MMFR2_EL1 = ENCODE_ID_REG(3, 0, 0, 7, 2),
+> +    SYS_ID_AA64MMFR3_EL1 = ENCODE_ID_REG(3, 0, 0, 7, 3),
+> +    SYS_ID_PFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 0),
+> +    SYS_ID_PFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 1),
+> +    SYS_ID_DFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 2),
+> +    SYS_ID_MMFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 4),
+> +    SYS_ID_MMFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 5),
+> +    SYS_ID_MMFR2_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 6),
+> +    SYS_ID_MMFR3_EL1 = ENCODE_ID_REG(3, 0, 0, 1, 7),
+> +    SYS_ID_ISAR0_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 0),
+> +    SYS_ID_ISAR1_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 1),
+> +    SYS_ID_ISAR2_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 2),
+> +    SYS_ID_ISAR3_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 3),
+> +    SYS_ID_ISAR4_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 4),
+> +    SYS_ID_ISAR5_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 5),
+> +    SYS_ID_MMFR4_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 6),
+> +    SYS_ID_ISAR6_EL1 = ENCODE_ID_REG(3, 0, 0, 2, 7),
+> +    SYS_MVFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 0),
+> +    SYS_MVFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 1),
+> +    SYS_MVFR2_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 2),
+> +    SYS_ID_PFR2_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 4),
+> +    SYS_ID_DFR1_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 5),
+> +    SYS_ID_MMFR5_EL1 = ENCODE_ID_REG(3, 0, 0, 3, 6),
+> +    SYS_ID_AA64ZFR0_EL1 = ENCODE_ID_REG(3, 0, 0, 4, 4),
+> +    SYS_CTR_EL0 = ENCODE_ID_REG(3, 3, 0, 0, 1),
+> +} ARMSysRegs;
+> +
+> +static const uint32_t id_register_sysreg[NUM_ID_IDX] = {
+> +    [ID_AA64PFR0_EL1_IDX] = SYS_ID_AA64PFR0_EL1,
+> +    [ID_AA64PFR1_EL1_IDX] = SYS_ID_AA64PFR1_EL1,
+> +    [ID_AA64SMFR0_EL1_IDX] = SYS_ID_AA64SMFR0_EL1,
+> +    [ID_AA64DFR0_EL1_IDX] = SYS_ID_AA64DFR0_EL1,
+> +    [ID_AA64DFR1_EL1_IDX] = SYS_ID_AA64DFR1_EL1,
+> +    [ID_AA64ISAR0_EL1_IDX] = SYS_ID_AA64ISAR0_EL1,
+> +    [ID_AA64ISAR1_EL1_IDX] = SYS_ID_AA64ISAR1_EL1,
+> +    [ID_AA64ISAR2_EL1_IDX] = SYS_ID_AA64ISAR2_EL1,
+> +    [ID_AA64MMFR0_EL1_IDX] = SYS_ID_AA64MMFR0_EL1,
+> +    [ID_AA64MMFR1_EL1_IDX] = SYS_ID_AA64MMFR1_EL1,
+> +    [ID_AA64MMFR2_EL1_IDX] = SYS_ID_AA64MMFR2_EL1,
+> +    [ID_AA64MMFR3_EL1_IDX] = SYS_ID_AA64MMFR3_EL1,
+> +    [ID_PFR0_EL1_IDX] = SYS_ID_PFR0_EL1,
+> +    [ID_PFR1_EL1_IDX] = SYS_ID_PFR1_EL1,
+> +    [ID_DFR0_EL1_IDX] = SYS_ID_DFR0_EL1,
+> +    [ID_MMFR0_EL1_IDX] = SYS_ID_MMFR0_EL1,
+> +    [ID_MMFR1_EL1_IDX] = SYS_ID_MMFR1_EL1,
+> +    [ID_MMFR2_EL1_IDX] = SYS_ID_MMFR2_EL1,
+> +    [ID_MMFR3_EL1_IDX] = SYS_ID_MMFR3_EL1,
+> +    [ID_ISAR0_EL1_IDX] = SYS_ID_ISAR0_EL1,
+> +    [ID_ISAR1_EL1_IDX] = SYS_ID_ISAR1_EL1,
+> +    [ID_ISAR2_EL1_IDX] = SYS_ID_ISAR2_EL1,
+> +    [ID_ISAR3_EL1_IDX] = SYS_ID_ISAR3_EL1,
+> +    [ID_ISAR4_EL1_IDX] = SYS_ID_ISAR4_EL1,
+> +    [ID_ISAR5_EL1_IDX] = SYS_ID_ISAR5_EL1,
+> +    [ID_MMFR4_EL1_IDX] = SYS_ID_MMFR4_EL1,
+> +    [ID_ISAR6_EL1_IDX] = SYS_ID_ISAR6_EL1,
+> +    [MVFR0_EL1_IDX] = SYS_MVFR0_EL1,
+> +    [MVFR1_EL1_IDX] = SYS_MVFR1_EL1,
+> +    [MVFR2_EL1_IDX] = SYS_MVFR2_EL1,
+> +    [ID_PFR2_EL1_IDX] = SYS_ID_PFR2_EL1,
+> +    [ID_DFR1_EL1_IDX] = SYS_ID_DFR1_EL1,
+> +    [ID_MMFR5_EL1_IDX] = SYS_ID_MMFR5_EL1,
+> +    [ID_AA64ZFR0_EL1_IDX] = SYS_ID_AA64ZFR0_EL1,
+> +    [CTR_EL0_IDX] = SYS_CTR_EL0,
+> +};
+> +
+> +#endif /* ARM_CPU_SYSREGS_H */
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 2213c277348d..4bbce34e268d 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -30,6 +30,7 @@
+>  #include "qapi/qapi-types-common.h"
+>  #include "target/arm/multiprocessing.h"
+>  #include "target/arm/gtimer.h"
+> +#include "target/arm/cpu-sysregs.h"
+>  
+>  #ifdef TARGET_AARCH64
+>  #define KVM_HAVE_MCE_INJECTION 1
+> @@ -832,6 +833,46 @@ typedef struct {
+>      uint32_t map, init, supported;
+>  } ARMVQMap;
+>  
+> +static inline uint64_t _get_idreg(uint64_t *idregs, uint32_t index)
+> +{
+> +    return idregs[index];
+> +}
+> +
+> +static inline void _set_idreg(uint64_t *idregs, uint32_t index, uint64_t value)
+> +{
+> +    idregs[index] = value;
+> +}
+> +
+> +/* REG is ID_XXX */
+nit: we have MVFRx too so maybe we shall rather say that REG is the
+
+ARMIDRegisterIdx litteral without  _EL1_IDX suffix or just remove the comment
+
+ 
+> +#define FIELD_DP64_IDREG(ARRAY, REG, FIELD, VALUE)              \
+> +{                                                             \
+> +    uint64_t regval = _get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX);   \
+> +        regval = FIELD_DP64(regval, REG, FIELD, VALUE);                 \
+> +    _set_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX, regval);             \
+> +}
+> +
+> +#define FIELD_DP32_IDREG(ARRAY, REG, FIELD, VALUE)              \
+> +{                                                             \
+> +uint64_t regval = _get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX);       \
+> +regval = FIELD_DP32(regval, REG, FIELD, VALUE);               \
+> +_set_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX, regval);                 \
+> +}
+> +
+> +#define FIELD_EX64_IDREG(ARRAY, REG, FIELD)                     \
+> +FIELD_EX64(_get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX), REG, FIELD)  \
+> +
+> +#define FIELD_EX32_IDREG(ARRAY, REG, FIELD)                     \
+> +FIELD_EX32(_get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX), REG, FIELD)  \
+> +
+> +#define FIELD_SEX64_IDREG(ARRAY, REG, FIELD)                     \
+> +FIELD_SEX64(_get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX), REG, FIELD)  \
+> +
+> +#define SET_IDREG(ARRAY, REG, VALUE)                            \
+> +_set_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX, VALUE)
+> +
+> +#define GET_IDREG(ARRAY, REG)                                   \
+> +_get_idreg((uint64_t *)ARRAY, REG ## _EL1_IDX)
+> +
+>  /**
+>   * ARMCPU:
+>   * @env: #CPUARMState
+> @@ -1040,6 +1081,7 @@ struct ArchCPU {
+>          uint64_t id_aa64zfr0;
+>          uint64_t id_aa64smfr0;
+>          uint64_t reset_pmcr_el0;
+> +        uint64_t idregs[NUM_ID_IDX];
+>      } isar;
+>      uint64_t midr;
+>      uint32_t revidr;
+
+Thanks
+
+Eric

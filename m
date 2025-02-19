@@ -1,116 +1,257 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1076526njb;
-        Tue, 18 Feb 2025 17:37:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWukT3WN5WiImTTJ0Mn4lceWor2inLZX8mDNOEF10Yeakp9ZZSWnXGau6VHMu2lK+8JX1KiSR76gW2PzQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFo+R3y9OLx6o76RiYVZWY1uvIlCRTTl4LiRvHNDnH6vfkfh9MADvfLdXxBr9WwwCX/Y0S9
-X-Received: by 2002:ac8:5893:0:b0:467:45b7:c495 with SMTP id d75a77b69052e-471dbd19d7bmr213443071cf.15.1739929021014;
-        Tue, 18 Feb 2025 17:37:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739929021; cv=none;
+Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1281829dlb;
+        Tue, 18 Feb 2025 23:15:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXagDAXbkVq2ZDG5SroZLA2qxWbjwIu/bGguSTxCxdeORNCmSi8Sq4eAP4l9YLSjMp9N6q5NO2dOVbVNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGSiBmUAG0z0Hmz0RNQz0EjPg5M2qqcqKZJxcZsmWvy8uT68tHRQbuGtikCgh1uyWUKrqZo
+X-Received: by 2002:ad4:5aa1:0:b0:6e6:6535:17dd with SMTP id 6a1803df08f44-6e6974f60ffmr33461366d6.7.1739949330432;
+        Tue, 18 Feb 2025 23:15:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739949330; cv=none;
         d=google.com; s=arc-20240605;
-        b=ixeYsP5uRIpTfOhGXHsngenTzIWOWkT6RrQTMVoadsitwpca9Hlfb+Htm0ERt+HahK
-         zc/M2T9Ycea66gq882xELpKm8SklRNnVhAzuYSWplizwKKkO4+n4Nr2zG6lhVxJ7fa6s
-         U6hxpdb/55Ru/ek6NlpdLjAEp0KkbT0Oaw+885/3/4hoF6aKjiol0omFaDidunrAr2El
-         3DYRV7SIPumkhLVhkg+cX5JqNGEPk4ExquVj5tYpRB62UaghMsB4PCkDFTc3zb4WqCtr
-         xrKhbLpsdm8FOvf52ekAOgrZB20wHTBnrvQrSQCaqxEJpADEDq/FZ7RSpd0DZxz9dDRv
-         qJBQ==
+        b=KX+asoROYVH49dxowWx33TVYx1tJzV0eW8/pYD1r7CKq7ZHxksmfZdzfvYY58BHnDA
+         lFZKN9YSXp6Bbc3n505DhGGq+StC3NnrbiTo1SOiemKBiV1fjNMoPtfaDVYcJjV7Vg1v
+         zC4OCPq45HwCFUCxaXxnG91VNCdwOJoIo8g8bX0ElP5Hb99CaQ5LncIbCnNsWA47fx4X
+         rrbACborjxPssBVdeOhyznkGgQvENUaICKYQiwK4Wz5Crpl7Bcq/qBnGQu0nyxmneZ7P
+         w/oIRxUz+q+b4C4SdxoTcyErA64fLZCChH8X1VHHavLO7eCqaUUsG6nyDKkoZKPOW9G0
+         SBMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=F63M/1e+eywrzPbVcgGK45bzslpIH0ylXeM+M4jaei0=;
-        fh=C8f3JfqsWYANrl8R5RGclljFmfXAbGP6qncSob0qNKk=;
-        b=L9Wb7ayvFYDJdOypFkBYWpJY4CONfWr1du1vS1MkfRkpNkUXUcKxcERUdDpdej2g5V
-         KKxHvi8myCwQCnrZjNiHifwcK/9VSQzoI18PyqxJ/fRtD9Y6tKKctnpAH2eMJXoEaUs4
-         6CHky5Q/UqaQWCxF/uaMU60mEIdKCWHxPhcXG2U1yMoWpd8o0EUdOJhW/sQplBc2HUu+
-         3dCo/jzUm9rprWwKc8zImeoYl7n7eMXX3Iop5oV4EoirIWFrX2zOHQyYx30t4RxUQHXu
-         fS1ItFmua9kNddnAHgEV978dDlDtbP6GYTfLTVZ5GtoyIXFdcQJjf8/ySahkVngS2P4K
-         blnQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=H0ly+Ik9R8QxBVmgfFGjfY1mlDOzgNavtHRoKYMQm7Y=;
+        fh=KhXLSX8c6wVmhLa/nUuNp/bImSZbg0QIIf+cCdMOZ3k=;
+        b=gD6Qqek+70NR77l7G6xDUE++u4DLB6yrLTvBjgINOKHr6hGdB3M0FXJdMY9LSsbZuS
+         JXOsx03F2ShfZWpY0/BWEftYpgt/GHKe+pE6293r2335A/cTseoyUGdiY7SnOgKMeZG2
+         6d2tExNQgjJ2CgNXvNF2PqPCqTUNo111VF7CuYAGL7mgoNQ80ZCv7mS4RGdevf847DVh
+         cYbjFCtybtE7ILsLN34SXnWnI/3WU9XzDAcl1qcaOSqfKL0Iy9oINRAUZK2opP2T9aRb
+         aRr6l76Ww/dbMJGbvNCwgfv0QpOz//oTGA1bqvFftOTvIkRy2nnfYTY2ImRg+U+lX/VW
+         uj9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=O7CvckeR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EAp9XS3i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471f092819bsi52274481cf.595.2025.02.18.17.37.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c5efbsi125285626d6.433.2025.02.18.23.15.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 17:37:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2025 23:15:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=O7CvckeR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EAp9XS3i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkZ0h-0000qC-Dx; Tue, 18 Feb 2025 20:36:23 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkeIT-0002HZ-0I; Wed, 19 Feb 2025 02:15:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tkZ0e-0000pL-06; Tue, 18 Feb 2025 20:36:20 -0500
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeID-00029l-5L
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:14:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tkZ0Z-0000l1-S0; Tue, 18 Feb 2025 20:36:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1739928963;
- bh=F63M/1e+eywrzPbVcgGK45bzslpIH0ylXeM+M4jaei0=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=O7CvckeRmEnzBPIT9eExLgwyKXhayFMaj1H43otklqoMD1gmkaUCQkmJWKfsWX/od
- fAOD+F3lFW9KiMZCg0uFsUYBZ9pcfTYLpm3h2KHEZHph0ceOdH1SNGUyKKWVraQ6oN
- /lZK1srivKTtUtO9wPBN+wSgy87mZPpXTc2+31Ic3+CpiDBxGAeXmVUvTr46zSDY47
- VVPcAowv43u9K0LkvK4FgWyfo+rMfuK5BwJckLovoMWGNR0frYWu7rJkp/TRN3ajYh
- RQrN1KwWFV7+crLmBAdPdecysH3rqwaSoHl/Ou+FlvQbHVi6vXGgWUD94Jn91A5Iyz
- q//fc+J1hPkzQ==
-Received: from [192.168.68.112] (203-173-1-6.dyn.iinet.net.au [203.173.1.6])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 8C96276191;
- Wed, 19 Feb 2025 09:36:02 +0800 (AWST)
-Message-ID: <090dbd8f11acbd3c166c62e3b0b7acdd1d6cb347.camel@codeconstruct.com.au>
-Subject: Re: [PATCH] aspeed: Remove duplicate typename in AspeedSoCClass
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>
-Date: Wed, 19 Feb 2025 12:06:01 +1030
-In-Reply-To: <20250218073534.585066-1-clg@redhat.com>
-References: <20250218073534.585066-1-clg@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeI8-0004x1-KP
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:14:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739949282;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=H0ly+Ik9R8QxBVmgfFGjfY1mlDOzgNavtHRoKYMQm7Y=;
+ b=EAp9XS3izwQQOZfAunjw3ehuDPpcJ3HjIJaeiQH2/sBZRDyFECvMnlx3c0LyD8zvA/gfS5
+ hA8cawV25awzlEORzse5NY56JlSS9QADHFcEG9dLWckQStGrJbhl9UlG8+5azG2Fxj2taV
+ jwJK2jUSI2bvRKkARWNoNJZwfiXAITo=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-296-M7A5Lu5jPxeZ2gLUX3aq0w-1; Wed,
+ 19 Feb 2025 02:14:38 -0500
+X-MC-Unique: M7A5Lu5jPxeZ2gLUX3aq0w-1
+X-Mimecast-MFC-AGG-ID: M7A5Lu5jPxeZ2gLUX3aq0w_1739949276
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5947A180036F; Wed, 19 Feb 2025 07:14:36 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.78])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4EAB21955BCB; Wed, 19 Feb 2025 07:14:34 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id E07521800082; Wed, 19 Feb 2025 08:14:31 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
+ Michael Roth <michael.roth@amd.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eric Blake <eblake@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ graf@amazon.com, Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH v4 00/24] hw/uefi: add uefi variable service
+Date: Wed, 19 Feb 2025 08:14:02 +0100
+Message-ID: <20250219071431.50626-1-kraxel@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nuEfbGLCprtz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: n/ERne2/eLzO
 
-On Tue, 2025-02-18 at 08:35 +0100, C=C3=A9dric Le Goater wrote:
-> The SoC type name is stored under AspeedSoCClass which is
-> redundant. Use object_get_typename() instead where needed.
->=20
-> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
+This patch adds a virtual device to qemu which the uefi firmware can use
+to store variables.  This moves the UEFI variable management from
+privileged guest code (managing vars in pflash) to the host.  Main
+advantage is that the need to have privilege separation in the guest
+goes away.
 
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+On x86 privileged guest code runs in SMM.  It's supported by kvm, but
+not liked much by various stakeholders in cloud space due to the
+complexity SMM emulation brings.
+
+On arm privileged guest code runs in el3 (aka secure world).  This is
+not supported by kvm, which is unlikely to change anytime soon given
+that even el2 support (nested virt) is being worked on for years and is
+not yet in mainline.
+
+The design idea is to reuse the request serialization protocol edk2 uses
+for communication between SMM and non-SMM code, so large chunks of the
+edk2 variable driver stack can be used unmodified.  Only the driver
+which traps into SMM mode must be replaced by a driver which talks to
+qemu instead.
+
+A edk2 test branch can be found here (build with "-D QEMU_PV_VARS=TRUE").
+https://github.com/kraxel/edk2/commits/devel/secure-boot-external-vars
+
+The uefi-vars device re-implements the privileged edk2 protocols
+(i.e. the code running in SMM mode).
+
+v4 changes:
+ - drop the isa variant in favor of a x64-specific sysbus variant using
+   mmio to expose the device registers.
+ - use etc/hardware-info for device discovery on x64.
+ - add pio transfer mode support.
+v3 changes:
+ - switch sysbus device variant to use the qemu platform bus.
+ - misc minor changes.
+v2 changes:
+ - fully implement authenticated variables.
+ - various cleanups and fixes.
+
+enjoy & take care,
+  Gerd
+
+Gerd Hoffmann (24):
+  Add support for etc/hardware-info fw_cfg file
+  hw/uefi: add include/hw/uefi/var-service-api.h
+  hw/uefi: add include/hw/uefi/var-service-edk2.h
+  hw/uefi: add include/hw/uefi/var-service.h
+  hw/uefi: add var-service-guid.c
+  hw/uefi: add var-service-utils.c
+  hw/uefi: add var-service-vars.c
+  hw/uefi: add var-service-auth.c
+  hw/uefi: add var-service-policy.c
+  hw/uefi: add var-service-core.c
+  hw/uefi: add var-service-pkcs7.c
+  hw/uefi: add var-service-pkcs7-stub.c
+  hw/uefi: add var-service-siglist.c
+  hw/uefi: add var-service-json.c + qapi for NV vars.
+  hw/uefi: add trace-events
+  hw/uefi: add UEFI_VARS to Kconfig
+  hw/uefi: add to meson
+  hw/uefi: add uefi-vars-sysbus device
+  hw/uefi-vars-sysbus: qemu platform bus support
+  hw/uefi-vars-sysbus: add x64 variant
+  hw/uefi-vars-sysbus: allow for arm virt
+  hw/uefi-vars-sysbus: allow for pc and q35
+  hw/uefi: add MAINTAINERS entry
+  docs: add uefi variable service documentation
+
+ include/hw/uefi/hardware-info.h    |  35 ++
+ include/hw/uefi/var-service-api.h  |  48 ++
+ include/hw/uefi/var-service-edk2.h | 227 +++++++++
+ include/hw/uefi/var-service.h      | 191 ++++++++
+ hw/arm/virt.c                      |   2 +
+ hw/core/sysbus-fdt.c               |  24 +
+ hw/i386/pc_piix.c                  |   2 +
+ hw/i386/pc_q35.c                   |   2 +
+ hw/uefi/hardware-info.c            |  33 ++
+ hw/uefi/var-service-auth.c         | 361 ++++++++++++++
+ hw/uefi/var-service-core.c         | 321 +++++++++++++
+ hw/uefi/var-service-guid.c         |  99 ++++
+ hw/uefi/var-service-json.c         | 243 ++++++++++
+ hw/uefi/var-service-pkcs7-stub.c   |  16 +
+ hw/uefi/var-service-pkcs7.c        | 436 +++++++++++++++++
+ hw/uefi/var-service-policy.c       | 370 +++++++++++++++
+ hw/uefi/var-service-siglist.c      | 212 +++++++++
+ hw/uefi/var-service-sysbus.c       | 124 +++++
+ hw/uefi/var-service-utils.c        | 241 ++++++++++
+ hw/uefi/var-service-vars.c         | 725 +++++++++++++++++++++++++++++
+ MAINTAINERS                        |   6 +
+ docs/devel/index-internals.rst     |   1 +
+ docs/devel/uefi-vars.rst           |  68 +++
+ hw/Kconfig                         |   1 +
+ hw/meson.build                     |   1 +
+ hw/uefi/Kconfig                    |   3 +
+ hw/uefi/LIMITATIONS.md             |   7 +
+ hw/uefi/meson.build                |  21 +
+ hw/uefi/trace-events               |  17 +
+ meson.build                        |   1 +
+ qapi/meson.build                   |   1 +
+ qapi/qapi-schema.json              |   1 +
+ qapi/uefi.json                     |  45 ++
+ 33 files changed, 3885 insertions(+)
+ create mode 100644 include/hw/uefi/hardware-info.h
+ create mode 100644 include/hw/uefi/var-service-api.h
+ create mode 100644 include/hw/uefi/var-service-edk2.h
+ create mode 100644 include/hw/uefi/var-service.h
+ create mode 100644 hw/uefi/hardware-info.c
+ create mode 100644 hw/uefi/var-service-auth.c
+ create mode 100644 hw/uefi/var-service-core.c
+ create mode 100644 hw/uefi/var-service-guid.c
+ create mode 100644 hw/uefi/var-service-json.c
+ create mode 100644 hw/uefi/var-service-pkcs7-stub.c
+ create mode 100644 hw/uefi/var-service-pkcs7.c
+ create mode 100644 hw/uefi/var-service-policy.c
+ create mode 100644 hw/uefi/var-service-siglist.c
+ create mode 100644 hw/uefi/var-service-sysbus.c
+ create mode 100644 hw/uefi/var-service-utils.c
+ create mode 100644 hw/uefi/var-service-vars.c
+ create mode 100644 docs/devel/uefi-vars.rst
+ create mode 100644 hw/uefi/Kconfig
+ create mode 100644 hw/uefi/LIMITATIONS.md
+ create mode 100644 hw/uefi/meson.build
+ create mode 100644 hw/uefi/trace-events
+ create mode 100644 qapi/uefi.json
+
+-- 
+2.48.1
+

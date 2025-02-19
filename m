@@ -1,87 +1,87 @@
-Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1282111dlb;
-        Tue, 18 Feb 2025 23:16:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVEwLgkTwPq/pOUqJmB93gyGrWHrvN0/qCyW5soyIFuGBhlifSkuHMJRWBPwSH9R8kV0ECeArZAtc2twg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG6+8g5nszvX0Joee3Gd/hhAeFgSWlpWi9Kbgn5YcQDmQ96rZnS4FKmNi1VirQjqT57g+pd
-X-Received: by 2002:a05:622a:60e:b0:471:b702:ff86 with SMTP id d75a77b69052e-4720824fa17mr41706341cf.18.1739949374198;
-        Tue, 18 Feb 2025 23:16:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739949374; cv=none;
+Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1282254dlb;
+        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW1Yq9dXYlD/mK4fd2rT3aGmxi+iAqOjhkUJazAGc8VsV48GOg4CTTgN2FNmhy3lW70arFeZvWMnHFoEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbJGqsn7fXFdpG99q2QvZ1E0d5ZTwWz+PiC+GbIjtoHVa1fFyOtES/7y2mtaTTkX4q1XZG
+X-Received: by 2002:ac8:5d88:0:b0:472:9ea:8873 with SMTP id d75a77b69052e-47209ea8c3dmr15377641cf.9.1739949400233;
+        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739949400; cv=none;
         d=google.com; s=arc-20240605;
-        b=PLNgnT59mkO+LNFihPhioa3KNmltRmt2igAtSVXtAeonYJh1UMjtDkaWILfylA+Oo+
-         Y8SmfIwQgIl4SY3bYph/Chs3D3h8hKsD9tx74VzXBKbu5r8QDottkDrMLJk1CyZGV8M0
-         ogmURLAqP4rPuIyMP/PnmpIhtzGr//eFgkSgFYbfIY+5Opsv58XgFZ19q3uWPsQqbs0f
-         vG+mSCIDtD/RMuDaTJzrDkOxjDmzAKUjaWro+ghi9fA6IGglRisywwzGs4ic1yJzQzWT
-         6Bomw9Az+5clQD5MR0De3HtaqzkM2Kuxf1hzLPb8xbXUCJfikP/ONvP63PZvOId+7t1y
-         +xHA==
+        b=YF1cVUV3A8VaiTcF1EQrxcUuk3cb/U58ei5DKmzIR8mlDgzrGAEHynF02W39jB44qA
+         Eo1H1ERz/ePVPv/M/nIRPlNFyQnyuuBgR/6SL9Wee0aIUwy/G0ejAwlhgECJuVBdiKe2
+         q5/fFtQARL0Qu7d8CeSA/GdXV9XnVudccnvG/e018U0xJsgQlP/sHosKHNOGDkpYPR42
+         C0Ycqe6RSy7h1+b8KzkAtXZPfyiqDck74lzQWp3goN7mLCDxsSo/a7ZiC2wpXg/Tf6Wc
+         EG+m9nbhQOuP+hvVI55Hs6InRztU225k8v8qALZDJ0DYcVho7XPy5DQ/TsnaDrwHbRiY
+         okKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=M488v8strzoU10ZKHxB/mEcFlevFrNsMwLtpHFimZyw=;
+        bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
         fh=KhXLSX8c6wVmhLa/nUuNp/bImSZbg0QIIf+cCdMOZ3k=;
-        b=FVMsCiT78v0jFskGnYekjHTemhm6lZGW4t48ElBTLHGdP1sjYBvMHCMeZ1mN3RQWep
-         sISnB3c4WpkwniV+cnCOF1fumsC0WBBOLxRlCpwLq3jQTGcxa6a+G/cqKEciwlm86t/P
-         1k8hM7Piy8WJfE8fYd95LugV8RhDlWWSsvfhj4KRUEj0bEcAyPE9TVQlao0FNwUgVIQS
-         ruuvB2vW1zXnCOd3cS1/SEQwU5ledM2spxJnwYgB0TNzdJfvgRupDO0MfbHrcBQhw2vm
-         KfM8FUv26u07TCZU2xsNDBYorrgx4cPXQQ6xlmiRPxYCVM7VnxOmzxBNRV9QtpPJrFxo
-         tNSQ==;
+        b=BQ9uP1CYqCFr7brb8VxA02XuagB4SNACoMSAr9ebMPRVG8xmNK2BWS3ap73OhjIqsl
+         q+SXVerLqLm4iAmirIfVOALNghrMnPOm30da6lypBq1mrIqYvJ/exSwFXiDazZxSFlWR
+         Sk06Uitoc+ypi604tlQjgaEN8Be5haQ9GG2tEMkFmAnRzijvq0c9Oy50Vx021pYi/66D
+         2fCzCS/B45ct290++K6UU7Wu/+Lgb/dD8X9IZ4HvdBuh7VmvRx3myQ6o+/59Z7VOr5J6
+         C956TAwOjfhwe0K2zKyQx/0ecvJqpT5NNdEJvW3HfbxjX8zPn//C2fRDh14njYYWtbj8
+         0K6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gN0+yRHl;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qdgwc4SW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4720fae16e2si110781cf.172.2025.02.18.23.16.14
+        by mx.google.com with ESMTPS id d75a77b69052e-47200e8da3asi27563091cf.143.2025.02.18.23.16.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 23:16:14 -0800 (PST)
+        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gN0+yRHl;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qdgwc4SW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tkeJH-00037k-Fi; Wed, 19 Feb 2025 02:15:55 -0500
+	id 1tkeJw-0004OR-PR; Wed, 19 Feb 2025 02:16:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeII-0002Fa-PM
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:14:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeId-0002RG-Hz
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIG-0004yF-Hv
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:14:54 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIT-0005GU-SM
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739949286;
+ s=mimecast20190719; t=1739949304;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=M488v8strzoU10ZKHxB/mEcFlevFrNsMwLtpHFimZyw=;
- b=gN0+yRHlarvFVBz3BUvS/Pv7KYxNxHK7NJa0vsXLFrHiyNgOifs/G+Yryd34aETLGw6bhu
- 9O2OE1NjqkysBHcYwOrvbRzFNHSVNzVEFntoS1fycn3ZnqIBTgkCrsxw7lLfdyThSMx3tO
- d4LtJH+E5GvtK371oCLsh2P9UY6TGiE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
+ b=Qdgwc4SWzpRS0qnCaVgR1vY8Y9o1T6nZ2HAZ1BBdM1W+hD8FZIvUlKwQJB7QARGuDmUx9h
+ V4bWW8Pi9H2jWqKpW4Pau2FitBlDYgpF3sXvfa8pW0U0K1DabI+FRh14Z3eTpt5RXL39uh
+ UquGN2Wx+K72pMdNX3BCDYBT7+2hWWk=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-3-JSj32AoqOZWIfLbK5pOkaA-1; Wed,
- 19 Feb 2025 02:14:38 -0500
-X-MC-Unique: JSj32AoqOZWIfLbK5pOkaA-1
-X-Mimecast-MFC-AGG-ID: JSj32AoqOZWIfLbK5pOkaA_1739949276
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-21Woik8nO_iNfy2Wu3mhOw-1; Wed,
+ 19 Feb 2025 02:15:00 -0500
+X-MC-Unique: 21Woik8nO_iNfy2Wu3mhOw-1
+X-Mimecast-MFC-AGG-ID: 21Woik8nO_iNfy2Wu3mhOw_1739949299
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6AAB11801A16; Wed, 19 Feb 2025 07:14:35 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 12E501800981; Wed, 19 Feb 2025 07:14:59 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.78])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 67DAF1800D9D; Wed, 19 Feb 2025 07:14:34 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BE2EA300019F; Wed, 19 Feb 2025 07:14:57 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id F3984180093D; Wed, 19 Feb 2025 08:14:31 +0100 (CET)
+ id CAEC01801AA4; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
@@ -96,22 +96,22 @@ Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  graf@amazon.com, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v4 01/24] Add support for etc/hardware-info fw_cfg file
-Date: Wed, 19 Feb 2025 08:14:03 +0100
-Message-ID: <20250219071431.50626-2-kraxel@redhat.com>
+Subject: [PATCH v4 13/24] hw/uefi: add var-service-siglist.c
+Date: Wed, 19 Feb 2025 08:14:15 +0100
+Message-ID: <20250219071431.50626-14-kraxel@redhat.com>
 In-Reply-To: <20250219071431.50626-1-kraxel@redhat.com>
 References: <20250219071431.50626-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -128,115 +128,237 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wi1drZZt2+yg
+X-TUID: vFL6QPN5DHbt
 
-edk2 looks for the etc/hardware-info fw_cfg file to discover hardware
-which can not easily be found in other ways.  Entries consist of a
-header with hardware type and entry size (HARDWARE_INFO_HEADER),
-followed by the actual hardware description (which is type specific).
-The file can have multiple entries.
-
-This patch adds the infrastructure to add entries to the file and an
-entry struct for simple devices (HARDWARE_INFO_SIMPLE_DEVICE) which have
-an mmio address only.
+Functions to serialize and de-serialize EFI signature databases.  This
+is needed to merge signature databases (happens in practice when
+appending dbx updates) and also to extract the certificates for
+pkcs7 signature verification.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/uefi/hardware-info.h | 35 +++++++++++++++++++++++++++++++++
- hw/uefi/hardware-info.c         | 33 +++++++++++++++++++++++++++++++
- hw/uefi/meson.build             |  1 +
- 3 files changed, 69 insertions(+)
- create mode 100644 include/hw/uefi/hardware-info.h
- create mode 100644 hw/uefi/hardware-info.c
- create mode 100644 hw/uefi/meson.build
+ hw/uefi/var-service-siglist.c | 212 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 212 insertions(+)
+ create mode 100644 hw/uefi/var-service-siglist.c
 
-diff --git a/include/hw/uefi/hardware-info.h b/include/hw/uefi/hardware-info.h
+diff --git a/hw/uefi/var-service-siglist.c b/hw/uefi/var-service-siglist.c
 new file mode 100644
-index 000000000000..94c38cff2007
+index 000000000000..8948f1b78471
 --- /dev/null
-+++ b/include/hw/uefi/hardware-info.h
-@@ -0,0 +1,35 @@
++++ b/hw/uefi/var-service-siglist.c
+@@ -0,0 +1,212 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * pass hardware information to uefi
-+ *
-+ * see OvmfPkg/Library/HardwareInfoLib/ in edk2
-+ */
-+#ifndef QEMU_UEFI_HARDWARE_INFO_H
-+#define QEMU_UEFI_HARDWARE_INFO_H
-+
-+/* data structures */
-+
-+typedef enum {
-+    HardwareInfoTypeUndefined  = 0,
-+    HardwareInfoTypeHostBridge = 1,
-+    HardwareInfoQemuUefiVars   = 2,
-+} HARDWARE_INFO_TYPE;
-+
-+typedef struct {
-+    union {
-+        uint64_t            uint64;
-+        HARDWARE_INFO_TYPE  value;
-+    } type;
-+    uint64_t  size;
-+} HARDWARE_INFO_HEADER;
-+
-+typedef struct {
-+    uint64_t  mmio_address;
-+} HARDWARE_INFO_SIMPLE_DEVICE;
-+
-+/* qemu functions */
-+
-+void hardware_info_register(HARDWARE_INFO_TYPE type, void *info, uint64_t size);
-+
-+#endif /* QEMU_UEFI_HARDWARE_INFO_H */
-diff --git a/hw/uefi/hardware-info.c b/hw/uefi/hardware-info.c
-new file mode 100644
-index 000000000000..19a83f377ccd
---- /dev/null
-+++ b/hw/uefi/hardware-info.c
-@@ -0,0 +1,33 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * pass hardware information to uefi
-+ *
-+ * see OvmfPkg/Library/HardwareInfoLib/ in edk2
++ * uefi vars device - parse and generate efi signature databases
 + */
 +
 +#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "system/dma.h"
 +
-+#include "hw/nvram/fw_cfg.h"
-+#include "hw/uefi/hardware-info.h"
++#include "hw/uefi/var-service.h"
 +
-+static void      *blob;
-+static uint64_t  blobsize;
-+
-+void hardware_info_register(HARDWARE_INFO_TYPE type, void *info, uint64_t infosize)
++/*
++ * Add x509 certificate to list (with duplicate check).
++ */
++static void uefi_vars_siglist_add_x509(uefi_vars_siglist *siglist,
++                                       QemuUUID *owner,
++                                       void *data, uint64_t size)
 +{
-+    HARDWARE_INFO_HEADER hdr = {
-+        .type.value = type,
-+        .size       = infosize,
-+    };
-+    void *ptr;
++    uefi_vars_cert *c;
 +
-+    blob = g_realloc(blob, blobsize + sizeof(hdr) + infosize);
-+    memcpy(blob + blobsize, &hdr, sizeof(hdr));
-+    blobsize += sizeof(hdr);
-+    memcpy(blob + blobsize, info, infosize);
-+    blobsize += infosize;
++    QTAILQ_FOREACH(c, &siglist->x509, next) {
++        if (c->size != size) {
++            continue;
++        }
++        if (memcmp(c->data, data, size) != 0) {
++            continue;
++        }
++        return;
++    }
 +
-+    ptr = fw_cfg_modify_file(fw_cfg_find(), "etc/hardware-info", blob, blobsize);
-+    g_free(ptr);
++    c = g_malloc(sizeof(*c) + size);
++    c->owner = *owner;
++    c->size = size;
++    memcpy(c->data, data, size);
++    QTAILQ_INSERT_TAIL(&siglist->x509, c, next);
 +}
-diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
-new file mode 100644
-index 000000000000..a8b168941255
---- /dev/null
-+++ b/hw/uefi/meson.build
-@@ -0,0 +1 @@
-+system_ss.add(files('hardware-info.c'))
++
++/*
++ * Add sha256 hash to list (with duplicate check).
++ */
++static void uefi_vars_siglist_add_sha256(uefi_vars_siglist *siglist,
++                                         QemuUUID *owner,
++                                         void *data)
++{
++    uefi_vars_hash *h;
++
++    QTAILQ_FOREACH(h, &siglist->sha256, next) {
++        if (memcmp(h->data, data, 32) != 0) {
++            continue;
++        }
++        return;
++    }
++
++    h = g_malloc(sizeof(*h) + 32);
++    h->owner = *owner;
++    memcpy(h->data, data, 32);
++    QTAILQ_INSERT_TAIL(&siglist->sha256, h, next);
++}
++
++void uefi_vars_siglist_init(uefi_vars_siglist *siglist)
++{
++    memset(siglist, 0, sizeof(*siglist));
++    QTAILQ_INIT(&siglist->x509);
++    QTAILQ_INIT(&siglist->sha256);
++}
++
++void uefi_vars_siglist_free(uefi_vars_siglist *siglist)
++{
++    uefi_vars_cert *c, *cs;
++    uefi_vars_hash *h, *hs;
++
++    QTAILQ_FOREACH_SAFE(c, &siglist->x509, next, cs) {
++        QTAILQ_REMOVE(&siglist->x509, c, next);
++        g_free(c);
++    }
++    QTAILQ_FOREACH_SAFE(h, &siglist->sha256, next, hs) {
++        QTAILQ_REMOVE(&siglist->sha256, h, next);
++        g_free(h);
++    }
++}
++
++/*
++ * Parse UEFI signature list.
++ */
++void uefi_vars_siglist_parse(uefi_vars_siglist *siglist,
++                             void *data, uint64_t size)
++{
++    efi_siglist *efilist;
++    uint64_t start;
++
++    while (size) {
++        if (size < sizeof(*efilist)) {
++            break;
++        }
++        efilist = data;
++        if (size < efilist->siglist_size) {
++            break;
++        }
++
++        if (uadd64_overflow(sizeof(*efilist), efilist->header_size, &start)) {
++            break;
++        }
++        if (efilist->sig_size <= sizeof(QemuUUID)) {
++            break;
++        }
++
++        if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertX509Guid)) {
++            if (start + efilist->sig_size != efilist->siglist_size) {
++                break;
++            }
++            uefi_vars_siglist_add_x509(siglist,
++                                       (QemuUUID *)(data + start),
++                                       data + start + sizeof(QemuUUID),
++                                       efilist->sig_size - sizeof(QemuUUID));
++
++        } else if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertSha256Guid)) {
++            if (efilist->sig_size != sizeof(QemuUUID) + 32) {
++                break;
++            }
++            if (start + efilist->sig_size > efilist->siglist_size) {
++                break;
++            }
++            while (start <= efilist->siglist_size - efilist->sig_size) {
++                uefi_vars_siglist_add_sha256(siglist,
++                                             (QemuUUID *)(data + start),
++                                             data + start + sizeof(QemuUUID));
++                start += efilist->sig_size;
++            }
++
++        } else {
++            QemuUUID be = qemu_uuid_bswap(efilist->guid_type);
++            char *str_uuid = qemu_uuid_unparse_strdup(&be);
++            warn_report("%s: unknown type (%s)", __func__, str_uuid);
++            g_free(str_uuid);
++        }
++
++        data += efilist->siglist_size;
++        size -= efilist->siglist_size;
++    }
++}
++
++uint64_t uefi_vars_siglist_blob_size(uefi_vars_siglist *siglist)
++{
++    uefi_vars_cert *c;
++    uefi_vars_hash *h;
++    uint64_t size = 0;
++
++    QTAILQ_FOREACH(c, &siglist->x509, next) {
++        size += sizeof(efi_siglist) + sizeof(QemuUUID) + c->size;
++    }
++
++    if (!QTAILQ_EMPTY(&siglist->sha256)) {
++        size += sizeof(efi_siglist);
++        QTAILQ_FOREACH(h, &siglist->sha256, next) {
++            size += sizeof(QemuUUID) + 32;
++        }
++    }
++
++    return size;
++}
++
++/*
++ * Generate UEFI signature list.
++ */
++void uefi_vars_siglist_blob_generate(uefi_vars_siglist *siglist,
++                                     void *data, uint64_t size)
++{
++    uefi_vars_cert *c;
++    uefi_vars_hash *h;
++    efi_siglist *efilist;
++    uint64_t pos = 0, start;
++    uint32_t i;
++
++    QTAILQ_FOREACH(c, &siglist->x509, next) {
++        efilist = data + pos;
++        efilist->guid_type = EfiCertX509Guid;
++        efilist->sig_size = sizeof(QemuUUID) + c->size;
++        efilist->header_size = 0;
++
++        start = pos + sizeof(efi_siglist);
++        memcpy(data + start,
++               &c->owner, sizeof(QemuUUID));
++        memcpy(data + start + sizeof(QemuUUID),
++               c->data, c->size);
++
++        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size;
++        pos += efilist->siglist_size;
++    }
++
++    if (!QTAILQ_EMPTY(&siglist->sha256)) {
++        efilist = data + pos;
++        efilist->guid_type = EfiCertSha256Guid;
++        efilist->sig_size = sizeof(QemuUUID) + 32;
++        efilist->header_size = 0;
++
++        i = 0;
++        start = pos + sizeof(efi_siglist);
++        QTAILQ_FOREACH(h, &siglist->sha256, next) {
++            memcpy(data + start + efilist->sig_size * i,
++                   &h->owner, sizeof(QemuUUID));
++            memcpy(data + start + efilist->sig_size * i + sizeof(QemuUUID),
++                   h->data, 32);
++            i++;
++        }
++
++        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size * i;
++        pos += efilist->siglist_size;
++    }
++
++    assert(pos == size);
++}
 -- 
 2.48.1
 

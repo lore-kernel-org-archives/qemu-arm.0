@@ -1,87 +1,87 @@
-Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1283710dlb;
-        Tue, 18 Feb 2025 23:20:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVigtP4nvUAVwUfaXJDRfe3tzaaTGS3j2La3xT8i0hnIiLZVx/uIEZGxcP2o1eSlh044n9sQs2W4rYDFA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHhkcT6HFszDwM5nIentmo6WtF2cEDtHJ/73WoLcXIyEumCq/xKcVnzMz5OgJfaCS6V7HNY
-X-Received: by 2002:a05:622a:588e:b0:472:744:e273 with SMTP id d75a77b69052e-4720744e63dmr39046031cf.42.1739949640761;
-        Tue, 18 Feb 2025 23:20:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739949640; cv=none;
+Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1283724dlb;
+        Tue, 18 Feb 2025 23:20:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXWBqchtSDEwKFtA6yaJObH2npF78jvvzbV5f5NizkVsjjy66yIPvYhQy28hbb5Lz/Dl6BxhzPaInz2eQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEuxr6CsCZc+KFb84LDMoYWSDtQ3GgNp/Qk2R2LJrCrLm6A8pdQNCb2O0ABGyPQe3OfvGhw
+X-Received: by 2002:ac8:5d86:0:b0:471:ca95:217c with SMTP id d75a77b69052e-47208281e9cmr42149681cf.23.1739949641522;
+        Tue, 18 Feb 2025 23:20:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739949641; cv=none;
         d=google.com; s=arc-20240605;
-        b=WkioMBh9E+6F/gKNn4pHBs5kr/uT64ttec+ziW9hMChreWUGuVSYrZF7Nbhq10HGrY
-         9YjW1xkKlGbLnSLTmxSHbAQKdg1vNEcGUILYoONN5wlLhcFxlqIU6quGf3fY2vCkYPMW
-         So/QDBeLK5GYvYQfUpiBCS/jmqcwJ7GRFKBwNsZyannQ5dDe+4YkjfzrBwAszDnjpMM0
-         /NOfckARnBMJW3GWfIP3VyG5u1plpewtE6IqSOePWUuJKNhw+SDloBxG3QBq5REpejk6
-         ECUwopgjfWmzUv1J4GcBO/dPVEjiTlVH0wJacSkHSDeH/8xlzZCa695e4A6WO6YdmEk9
-         r9lQ==
+        b=JZQEJMrhhKvIbHRtlQ6e+koAI7Z4g/rttlz3BAQWKA8Yajiqtw2TR1EeDC3IcMCb5J
+         XU3F0g9kn7Cie7uEFXlABDLw0VltJYaI+MUYW1MV+HEI6LGevLUXS4/oWL3eZ7zhgBG2
+         zXX1PENLDkdtp9tpYIgj59xnvdG4o4WYUnzrqRuUzSoFD9nM3+kY93gbZLsEzn4Plstb
+         vEepOHWv4v/3ocguLrNnOrLjCyIYWq+sX4snSDXpaG2KmTBxci+jnZVSltysfjkdAZq/
+         HrRQoqwViA+TTOrj/f9Zk8Iw/y9DWgMhj86MLdINqm2m5okV/sZfcUJHZcVG+vQP4Cie
+         6Bcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YXNuajfZD2sOZfyoIVGSQeK/kNn6uyu2HvSacJoCJkI=;
+        bh=0LerVMLCO2g0uxpoATuHSnU0aK0p7jxOiA6jhHk9aNQ=;
         fh=KhXLSX8c6wVmhLa/nUuNp/bImSZbg0QIIf+cCdMOZ3k=;
-        b=j74KkKfsiXWe9RmX/G+DeA7EG7geeCM0qMvOSE7b7e7ppDLEne4zsun0K2FkTugVrG
-         g8qx96SWzJTcXPX9hfiMR5m/H8Y6dBpMIv0lqd/Y5ZMD6K0T2swWXcmQXoI2PkbNp4dR
-         3T20bdIBPPz33Isl4jd7afYIzl0XKWeKmbO13I3AgZU8Zs09WijpCc6UEOWO6dWVO5zA
-         8WEWVSOGPstXqPgzorDVPrrYMprfbvwHe5VExQAXM9XGZaFv5d4HNG5s2itBG/+AfHOm
-         7CpyHNb9HHDXwDsbCveMBwOPZOGJkVVvGYBFgmmyxGAmS+FUIuCRQV24uh8/5GxpFoBa
-         /QWA==;
+        b=N1PI6j4bPoDC3hbCFjnH1o6kskwd5tm/FV4LVqiymKK37ktMUKiBOYM0RoGsJosl+V
+         bzC9COuAJq/2nAex/PlwHoXN3qWNtI3MtWUqv8a8SNpicFWUlKdbG4If+GCL+3Fo2TX3
+         ObQ0RiuN+Nhv7nuT4aNYfCs9f4FGxtW8kZwv4gxUKSU7IBwce1E7K+BdgixZF1ehLGa7
+         6Glds/knRrLxjDBGJRfgZYofGFnHmNynxRGBL5a/BQMj24rACiWe5+mwh0XwM6OfjdsB
+         VlUGkXalBvPKrKH0icT/xzyYg8kYoWR/ZG/h/oMP1MGwQHEqy1ABpl/U1d81NEyJ9RAU
+         m6zg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c+7oRsFs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LBg4o6gT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471ffa83c85si31936171cf.248.2025.02.18.23.20.40
+        by mx.google.com with ESMTPS id d75a77b69052e-471f1f58a35si51950251cf.524.2025.02.18.23.20.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 23:20:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2025 23:20:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c+7oRsFs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LBg4o6gT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkeJb-0003bw-4V; Wed, 19 Feb 2025 02:16:15 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkeKW-0005dn-3i; Wed, 19 Feb 2025 02:17:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIV-0002Mb-9t
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:10 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIt-0002fo-Rh
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:35 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIS-00054k-BE
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:06 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIo-0005N3-Id
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739949302;
+ s=mimecast20190719; t=1739949321;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YXNuajfZD2sOZfyoIVGSQeK/kNn6uyu2HvSacJoCJkI=;
- b=c+7oRsFsdC4+RrIOQT4z3/8NEsOC8Gv66cC65/STrJOsEEhdW6rxMstnaLr1tt4KsGhFXS
- FcIX+3CbMpnV4hqDdQDT/n/t/UUIWUTn94UVOVAVJlPMdLhAXI0O2gLZBrGAdyOKsAvHzY
- HNQcMxGuvgCv0LnOH/3399CQNA+dBow=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=0LerVMLCO2g0uxpoATuHSnU0aK0p7jxOiA6jhHk9aNQ=;
+ b=LBg4o6gT1VD+FjzWThoJ8G5E9k1nt3VBP2wxyL+12BJYP9uyfyaT+/all+V2bI5foA4y/d
+ hyW4hkilDGUj6bjhBYQsUt6fcOgWuNgBvjQiS9QAp7u/9ss21w0j8vAJRrhA11bLpElB9d
+ QTN4rTBrIaSG8a8XbiVO81aJwsEE69c=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-601-E1UGmBc6P9eLCO3xP2U38g-1; Wed,
- 19 Feb 2025 02:14:59 -0500
-X-MC-Unique: E1UGmBc6P9eLCO3xP2U38g-1
-X-Mimecast-MFC-AGG-ID: E1UGmBc6P9eLCO3xP2U38g_1739949297
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-265-XOGlt5EVNGq7KypFDY3-CA-1; Wed,
+ 19 Feb 2025 02:15:15 -0500
+X-MC-Unique: XOGlt5EVNGq7KypFDY3-CA-1
+X-Mimecast-MFC-AGG-ID: XOGlt5EVNGq7KypFDY3-CA_1739949314
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B249A1801A17; Wed, 19 Feb 2025 07:14:57 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F1144180087C; Wed, 19 Feb 2025 07:15:13 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.78])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A0C3A1800362; Wed, 19 Feb 2025 07:14:56 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9ED2F180087E; Wed, 19 Feb 2025 07:15:13 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id BA0E61801A9A; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
+ id 7DD981801B2A; Wed, 19 Feb 2025 08:14:33 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
@@ -96,14 +96,14 @@ Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  graf@amazon.com, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v4 12/24] hw/uefi: add var-service-pkcs7-stub.c
-Date: Wed, 19 Feb 2025 08:14:14 +0100
-Message-ID: <20250219071431.50626-13-kraxel@redhat.com>
+Subject: [PATCH v4 22/24] hw/uefi-vars-sysbus: allow for pc and q35
+Date: Wed, 19 Feb 2025 08:14:24 +0100
+Message-ID: <20250219071431.50626-23-kraxel@redhat.com>
 In-Reply-To: <20250219071431.50626-1-kraxel@redhat.com>
 References: <20250219071431.50626-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -115,54 +115,69 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2s/NluZhk1bf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F41GaGvc8SYK
 
-pkcs7 stub which is used in case gnutls is not available.
-
-It throws EFI_WRITE_PROTECTED errors unconditionally, so all
-authenticated variables are readonly for the guest.
+Allow the device being added to x86_64 pc and q35 VMs.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-pkcs7-stub.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
- create mode 100644 hw/uefi/var-service-pkcs7-stub.c
+ hw/i386/pc_piix.c | 2 ++
+ hw/i386/pc_q35.c  | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/hw/uefi/var-service-pkcs7-stub.c b/hw/uefi/var-service-pkcs7-stub.c
-new file mode 100644
-index 000000000000..118cba446d4b
---- /dev/null
-+++ b/hw/uefi/var-service-pkcs7-stub.c
-@@ -0,0 +1,16 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * uefi vars device - pkcs7 stubs
-+ */
-+#include "qemu/osdep.h"
-+#include "system/dma.h"
-+
-+#include "hw/uefi/var-service.h"
-+
-+efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
-+                                   void **digest, uint32_t *digest_size,
-+                                   mm_variable_access *va, void *data)
-+{
-+    return EFI_WRITE_PROTECTED;
-+}
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 04d2957adcd7..6c91e2d29298 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -65,6 +65,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -468,6 +469,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+ 
+     object_class_property_add_enum(oc, "x-south-bridge", "PCSouthBridgeOption",
+                                    &PCSouthBridgeOption_lookup,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 77536dd697f5..fd96d0345c7d 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -58,6 +58,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -355,6 +356,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+     compat_props_add(m->compat_props,
+                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);
+ }
 -- 
 2.48.1
 

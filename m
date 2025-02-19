@@ -1,116 +1,139 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1482769njb;
-        Wed, 19 Feb 2025 08:55:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWva3DS6ux/ru9jElI07u5gGH6TKu/V2v5BbtRSr4mmPEyeV+CMZYhR+zNFZPheE+jxoRP4K8au4ifXpw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHWoL5fuojPKFJMWYbHr41dIe9x0Fp+e0VtYhV5DIFTKQoAJ0N+2EDb1DAnjwyBjtgRtQZ/
-X-Received: by 2002:a05:620a:44c2:b0:7b6:6701:7a4d with SMTP id af79cd13be357-7c08aa94183mr2659602785a.56.1739984152241;
-        Wed, 19 Feb 2025 08:55:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739984152; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1522494njb;
+        Wed, 19 Feb 2025 09:55:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU26KaifDWd9BQwN3LeiIUEvxncrMpKfUniGVzLPEKQz3OV1sdvUPeKlEuM/WGogJowUnhfi4cyvpWvHQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF8Qv5ijg9xNXD00GE7Z9JI7pOsD66QOpCBnwv155/5bTihiREnY3IqFcb+mHkrWZ2yJ6l1
+X-Received: by 2002:a05:622a:ce:b0:471:8cc6:50e3 with SMTP id d75a77b69052e-471dbea432bmr229264811cf.52.1739987753593;
+        Wed, 19 Feb 2025 09:55:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739987753; cv=none;
         d=google.com; s=arc-20240605;
-        b=B9BmQ9aT1iy/NCpGnljrknaO3BdUowYM59Nulytw8K1RIQSTfKZQOkiIahxptkrM98
-         6g6YGg18fXlG5gWrdvPK5h9AWnR349A0c4DlK/E/vRoulKToFGmRbwKUS7afDWy99RZm
-         B4Yr9YAQ8lZaNrqAmWWPJXvGFV7H0PHxvYL7zbQG0gozb28Nf0wX3EUEbugNQ1/WvoIx
-         j90B4PCRT7NErbBsdv35HzH6gF7MXR/TD8lSAZjaLBvw6ofxQpewZON/sCRcJNlWU3l0
-         6bFqtp3jTzfbeRHXEpdW/61u+JUY+Myvncr6f4IB4KeFG68+Ms3AyKf8BNff7H6zX10D
-         TUzA==
+        b=HbUg0WXIRft45fHokDIH43OA3yab1jgooPbiUlkZmtzrZi3eDoUC2uUDLQjGJ1mAh5
+         Vyv2IHBWWj+4GILcwcyKuKuL++teU7orT4VEU3A84cvJXd1iLxVjJ/SsJUaxHA5VaHHs
+         SF2Efmsd96CZPDCn0lLZlZrBVdDCIsBzdLQHJTXVSRacIH8JklkW6Y6L6XaCnAJAsnqq
+         0NcwCN5o+U5KwTZc91PdKRe8VnL9y6zJzoMaIA8uMwIW8l19ej0iVTZOKycMU4HFhsMW
+         R5OsOB1cSCTveQh7CeUFHWn9z0WAdcxt+aMpNLcsIERo3YfC5fT92qyBIM4Ks3Iozh0v
+         t5mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=tSS/crWLI1n46EnaE/CdO35FER4SHdPfAC1ZYsNG/S4=;
-        fh=J5rK49AvbqWd6GqL5OV0utShe4OiV3iZ48PVDD3WoNg=;
-        b=gRyo6LLXQXAu4l0X143hxb1zgdAZF/7Ua97LN0IlpeI4E+5FHVWMrQl1tgHW7PUJM+
-         NpcFt6/U61H8+u8hljim1w/+7o7KxjhAdHjSS4suR7AczZSkUvjoKzD2Sbu3V8+WFThV
-         LdwqGMy4pMlmMFUZWbLzdRLRjZ2WrH0pwTDS+XYOX3U+ZJqbmhOnX1yUODxejOERWbcU
-         OYOxlCAKYIEk8nf/Urmtx5rlGZWBuxvxXhquWzH22zjX/TO7RExfS5LRSPDmKcMyiVFp
-         TJZEI/Xu7cS/9L5gERE+MbyoTdOE9MFl0dPtVxM6bvmk/mQNYLFoHgyPT2R2JPvMTrWO
-         q81Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=ja272GOSac81WNMuQ/dxI36+9cjnhmMdrmPs6R3fh9w=;
+        fh=+Nf3XwFsQgrgwg75DuZAbzqjFbtoSgdE8gWVjtZi2lw=;
+        b=SV3rPkUPGqaTlmuJCfkKCKUYSAvafbJ0sNHmXJ1tPYTXWT0Q2meSw+TXBjlMZeYHub
+         zsDR1oD5R6M6mUrYLpdryN3Pteo+YZdn3OpZrBg+CcbN2WFhNYAXQwd4WH9wxm/cQ0MP
+         kOBLAwZMXwZIlcUGK1JDAf/JRbqRKd1QUfI/lKhDAd866qxmSrOk1ZyKSmpBI3bBcqOt
+         4vSLAAqta/aABdpyOIPTYjmsWtGIzhWPx6c1CnjTyfooC1ShcBGiT3JtyiIMxY3pUN81
+         Ycr9CYpQPJt6a6YOXs1C/Dv/763Ts8+KTA4KCEagwloFfIlomOPXSPQUPCy1VFuRlYZx
+         HQbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2GfOhoNj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cMGNKznB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c1728si132150216d6.321.2025.02.19.08.55.52
+        by mx.google.com with ESMTPS id d75a77b69052e-471fc92b98csi44797981cf.650.2025.02.19.09.55.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2025 08:55:52 -0800 (PST)
+        Wed, 19 Feb 2025 09:55:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2GfOhoNj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cMGNKznB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tknMN-0004U1-9t; Wed, 19 Feb 2025 11:55:43 -0500
+	id 1tkoIH-0007U6-J3; Wed, 19 Feb 2025 12:55:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3CA22ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
- id 1tknMM-0004Td-6i
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 11:55:42 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3CA22ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
- id 1tknMK-0003ve-39
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 11:55:41 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2fc45101191so7113a91.1
- for <qemu-arm@nongnu.org>; Wed, 19 Feb 2025 08:55:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1739984137; x=1740588937; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=tSS/crWLI1n46EnaE/CdO35FER4SHdPfAC1ZYsNG/S4=;
- b=2GfOhoNj0ay6GDdt22Fxghb45GN/mhIqHQGFbBJA3LFesw458f63Pv5XS5Zr9b3g61
- faWFKA7VhWzKNpcnBQsyu6vMzIy+78nZe5dKkhY7G9jNxzIuEV1vGXFM7Q9pW9mIoym6
- C+QWW5FP0zwGLJ8ieUH0DXrXgCfEbX9bY3MzxKl5OESfteYt3dE0T8kBWUMhTuOzZdEw
- lKei+Fnra+xHzhfaea+v47AiM9+JG673J/i1hlfxgKPcDiPOh0wN3lxnGiJI8LdzUiQu
- p5qO1wtCd5lYHBgRxoxtURPoCIeyB2WK2oGitDSEQjdxG9io3+iJATnMGTzTd1NGWOVE
- OuaA==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tkoIB-0007TZ-Q0
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 12:55:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tkoI9-0001IE-AV
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 12:55:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739987723;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ja272GOSac81WNMuQ/dxI36+9cjnhmMdrmPs6R3fh9w=;
+ b=cMGNKznB8rhzZRLhOUqo1LAJW9PpOG6OghIw2AsLSxDApfph5Ck58SXBha4b1HompeEbQZ
+ aYRqTHR3Za7gwt6i8cvJ7v8hMyuhjUTx3OHmPPKedTvLWLie6/2lCVlIpv4LZl3+Mt3NJr
+ wZziiWhd+EAwDcH57wEszyK3fWZUsx4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-447-pVhOgMUbMc2Q6eWVVcue_Q-1; Wed, 19 Feb 2025 12:55:22 -0500
+X-MC-Unique: pVhOgMUbMc2Q6eWVVcue_Q-1
+X-Mimecast-MFC-AGG-ID: pVhOgMUbMc2Q6eWVVcue_Q_1739987721
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4399d2a1331so448005e9.1
+ for <qemu-arm@nongnu.org>; Wed, 19 Feb 2025 09:55:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739984137; x=1740588937;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tSS/crWLI1n46EnaE/CdO35FER4SHdPfAC1ZYsNG/S4=;
- b=McWvVQ0LmP7h+hH8p0raO8DF7bSCF1sNXNbL9IY4L78796JOk2DVwCD5ObkPF3W99t
- /eEjrAebpF53nfBRKpL7siGadfqCXSrz0THIiR5HnGK7Y/sXEYnnb9ypmgosfhVycPjr
- pYhy5BQDpnp4LM2vmEkuehh9lHkHFPX84ZaUVd7PdT9WNoIx497XSBqfTDy0mxLJdH8G
- 9jZxu4DVySDVSJhYAbQvJYqLZxvdug6O5S+6y1/XvUxFYd77SNXeOnxAwNTRFV/VNcOH
- wOElmV7L7yfB7kxVpfe5LB7wo7zqb/jyZVjEsaE1oLgZqKr/7BFVP2Rf8x4aDt1CS1NZ
- 3RDA==
-X-Gm-Message-State: AOJu0Yx3gRSEDS9MrxRph1ntQswsaPxFkYiH6dluQ1kqEBd9RzFlY3M4
- lpkNic4WRuINsAjKbxyVXN4sb4Hgx7AqojjrEOvH8KgbMvxivooBaxIHD8bjo9TnxP6USFffUcr
- GEMCMmnVO7tx7uew5HA==
-X-Received: from pjbsy7.prod.google.com ([2002:a17:90b:2d07:b0:2ea:4a74:ac2])
- (user=slongfield job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:3c4e:b0:2ee:6d08:7936 with SMTP id
- 98e67ed59e1d1-2fc40f233bamr27990118a91.20.1739984136776; 
- Wed, 19 Feb 2025 08:55:36 -0800 (PST)
-Date: Wed, 19 Feb 2025 16:55:34 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
-Message-ID: <20250219165534.3387376-1-slongfield@google.com>
-Subject: [PATCH v2] target/arm: Fix signed integer overflow undefined behavior.
-From: Stephen Longfield <slongfield@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, slongfield@google.com, 
- roqueh@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3CA22ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ d=1e100.net; s=20230601; t=1739987721; x=1740592521;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ja272GOSac81WNMuQ/dxI36+9cjnhmMdrmPs6R3fh9w=;
+ b=Pf47plEFtnDWgkTAiyXjRiZ2FDCCrFSnFnCl059ebaTUqUF4l/PXtCZ6tC8+k2i/ah
+ iR4Qcu7GeDmulz2CfH/3AUIbwGUe/g/y+ohpWryrKSIFZXt7iqKGGaW4irBpKJhiWuHF
+ Our68Zwj6mwMYMbLI70NopqX7btu6hG99jn13we4+BdBlHaX5huCrGXk41OcqSKWFKIR
+ prJmv85o/qqDaq7WzL7ppi/c6vQQy3pXfsXsMmryG5ipmBX+dEpkeJbEvhz4oSXQ/iPc
+ LokkhB0msd/YqhhHdzDjLYS7+TF/PraH6o90x9Cyw1uwFu52v7lRox7vRPUI0zn07Aoe
+ qYjg==
+X-Gm-Message-State: AOJu0YzFldcz/r08u4LEifyzpe50vVxzNujh5lTOCGTcLAkRQbh58bAz
+ 6lOpuRKbIUlBqjC4EXLHEvzjEoSLbo9Cn+bonbN6uuiX5YMaHR3nM12u5IcMC7qZ7r8usHRmtXv
+ 1yfjHZ55CG+UDzv4LhtXY8b5H/EPYk5aJ836MMax72Hb0906gQw==
+X-Gm-Gg: ASbGncsB81kE8QdbZhUXcP6NEtsFL+QVoELPRGO1/1lgTkdWoqmiMCKS/+gN5+lraov
+ 3gTpSyKiwO+PQOsZ/9sbEYZZU7VTF5clne1GxjCOfG3Bm2iiTSzbskBKbTR2ndHUF9BnCYe8kR8
+ ik0+040fxuxJoal8t8gtKTCgG13exTzDRjqUP3TH66AU9pLwqrzUNOzgibkAjveUn0CLnsYVldO
+ y+FXcEPHbVzs23hp1GbitnfjsvDlmO5yg4cS3R/uxEhZ+jlzagzRMwweOCHQNN1okmFtFe5qfwO
+ SgXV3vdW4VJgEioCmzxhXsW3J+wsv/hXEJBzX42y0CcjQN+NlZTw
+X-Received: by 2002:a05:600c:1c9d:b0:439:968b:6669 with SMTP id
+ 5b1f17b1804b1-439a2faf7d8mr1777165e9.1.1739987720814; 
+ Wed, 19 Feb 2025 09:55:20 -0800 (PST)
+X-Received: by 2002:a05:600c:1c9d:b0:439:968b:6669 with SMTP id
+ 5b1f17b1804b1-439a2faf7d8mr1776915e9.1.1739987720417; 
+ Wed, 19 Feb 2025 09:55:20 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38f259f7fe6sm18117958f8f.86.2025.02.19.09.55.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Feb 2025 09:55:19 -0800 (PST)
+Date: Wed, 19 Feb 2025 18:55:18 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ pbonzini@redhat.com, shan.gavin@gmail.com, Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 4/4] target/arm: Retry pushing CPER error if necessary
+Message-ID: <20250219185518.767a48d9@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250214041635.608012-5-gshan@redhat.com>
+References: <20250214041635.608012-1-gshan@redhat.com>
+ <20250214041635.608012-5-gshan@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MIuluH6dMCOGfkGjMrQ-9vjPTJGqB2mZi1esX0EWOZc_1739987721
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.191,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,50 +148,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o9GKU3h9eThJ
+X-TUID: Gwirszj2AGbi
 
-The problem is internal to t32_expandimm_imm, the imm intermediate
-immediate value.
+On Fri, 14 Feb 2025 14:16:35 +1000
+Gavin Shan <gshan@redhat.com> wrote:
 
-It's extracted via: int imm = extract32(x, 0, 8);, so the value will be
-between 0-255
+> The error -1 is returned if the previously reported CPER error
+> hasn't been claimed. The virtual machine is terminated due to
+> abort(). It's conflicting to the ideal behaviour that the affected
+> vCPU retries pushing the CPER error in this case since the vCPU
+> can't proceed its execution.
+> 
+> Move the chunk of code to push CPER error to a separate helper
+> report_memory_errors() and retry the request when the return
+> value from acpi_ghes_memory_errors() is greater than zero.
+> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  target/arm/kvm.c | 31 +++++++++++++++++++++++++------
+>  1 file changed, 25 insertions(+), 6 deletions(-)
+> 
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 5c0bf99aec..9f063f6053 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -2362,6 +2362,30 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+>      return ret;
+>  }
+>  
+> +static void report_memory_error(CPUState *c, hwaddr paddr)
+> +{
+> +    int ret;
+> +
+> +    while (true) {
+> +        /* Retry if the previously report error hasn't been claimed */
+> +        ret = acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr, true);
+> +        if (ret <= 0) {
+> +            break;
+> +        }
+> +
+> +        bql_unlock();
+> +        g_usleep(1000);
+even with bql released it's not safe to loop in here.
+consider,
+  a guest with 2 vcpus
+    * vcpu 1 gets SIGBUS due to error
+    * vcpu 2 trips over the same error and gets into this loop
+    * on guest side vcpu 1 continues to run to handle SEA but
+      might need to acquire a lock that vcpu 2 holds
 
-It is then multiplied by one of 1, 0x00010001, 0x01000100, 0x01010101,
-or 0x80.
+GHESv2 error source we support, can report several errors,
+currently QEMU supports only 1 'error status block' which
+can hold several error records (CPER) (though storage size is limited)
 
-Values between 128-255 multiplied by 0x01000100 or 0x01010101 will cause
-the upper bit to get set, which is a signed integer overflow. From
-Chapter 6.5, paragraph 5 of the C11 spec:
-https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf this is
-undefined behavior.
+1:
+We can potentially add support for more GHESv2 error sources
+with their own Read ACK registers (let's say =max_cpus)
+(that is under assumption that no other error will be
+triggered while guest VCPUs handle their own SEA (upto clearing Read ACK))
 
-Though this is a minor undefined behavior, I'd like to see this fixed,
-since the error is showing up when I enable clang's sanitizers while
-looking for other issues.
+2:
+Another way could be for QEMU to allocate more error status _blocks_
+for the only one error source it has now and try to find
+empty status block to inject new error(s).
+ * it can be saturated with high rate of errors (so what do we do in case it happens?)
+ * subject to race between clearing/setting Read ACK
+    (maybe it can dealt with that on side by keeping internal read_ack counter)
 
-Changes from v1: From peter.maydell@linaro.org's review, only changing
-the internal representation from int to uint32_t, and leaving the API
-types the same.
+3:
+And alternatively, queue incoming errors until read ack is cleared
+and then inject pending errors in one go.
+(problem with that is that at the moment QEMU doesn't monitor
+read ack register memory so it won't notice guest clearing that)
 
-Signed-off-by: Stephen Longfield <slongfield@google.com>
-Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
----
- target/arm/tcg/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 68ac393415..d8225b77c8 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -3510,7 +3510,7 @@ static int t32_expandimm_rot(DisasContext *s, int x)
- /* Return the unrotated immediate from T32ExpandImm.  */
- static int t32_expandimm_imm(DisasContext *s, int x)
- {
--    int imm = extract32(x, 0, 8);
-+    uint32_t imm = extract32(x, 0, 8);
+Given spec has provision for multiple error status blocks/error data entries
+it seems that #2 is an expected way to deal with the problem.
 
-     switch (extract32(x, 8, 4)) {
-     case 0: /* XY */
---
-2.48.1.601.g30ceb7b040-goog
+PS:
+I'd prefer Mauro's series being merged 1st (once it's resplit),
+for it refactors a bunch of original code and hopefully makes
+code easier to follow/extend.
+
+> +        bql_lock();
+> +    }
+> +
+> +    if (ret == 0) {
+> +        kvm_inject_arm_sea(c);
+> +    } else {
+> +        error_report("Error %d to report memory error", ret);
+> +        abort();
+> +    }
+> +}
+> +
+>  void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>  {
+>      ram_addr_t ram_addr;
+> @@ -2387,12 +2411,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>               */
+>              if (code == BUS_MCEERR_AR) {
+>                  kvm_cpu_synchronize_state(c);
+> -                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr, false)) {
+> -                    kvm_inject_arm_sea(c);
+> -                } else {
+> -                    error_report("failed to record the error");
+> -                    abort();
+> -                }
+> +                report_memory_error(c, paddr);
+>              }
+>              return;
+>          }
 

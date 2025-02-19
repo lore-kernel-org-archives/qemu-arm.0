@@ -1,174 +1,234 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1000387njb;
-        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVHZJOausG7Mob0e0DptpY/wbnw0Xvb7lAGSS/Ik4YaCrZpGdgTltcEFPB+QpERu8H8Evr3buaWy8kd2g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgtfPuR4Mf8cX6CdN/+EwN5ADPF6CKR7K0F92AzImW4YXL71uH+3bTuyDCtvpm8MA1i3gN
-X-Received: by 2002:a05:6214:501a:b0:6d4:18ce:117f with SMTP id 6a1803df08f44-6e66ccd13c8mr215128506d6.20.1739917362820;
-        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739917362; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1344257njb;
+        Wed, 19 Feb 2025 05:25:43 -0800 (PST)
+X-Received: by 2002:a05:600c:450b:b0:439:9225:2f50 with SMTP id 5b1f17b1804b1-43999db0139mr36046675e9.16.1739971542840;
+        Wed, 19 Feb 2025 05:25:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739971542; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZMq6/QxxT5wzZIb51Ft/OmnD5Mlqm3bUozhrLyB+sB+cI88dz3dkYG/ZisNi4VfCQr
-         LBeatkZ43SSzW4Vfr1V1lgW6ER/XNsQbAkoAwWCGi/M3BfraqSYvgs/fX2L12TIV5dzy
-         y/XajvFXIpUUmlQXf03eUlYjZwF7wcHUlnmGSe3EAMqkdA0kMwYxEYz2M9ReK6yCozWP
-         glExNfdYIiqbdElKikZauilwwtCXI8J40VN9X5EMt3KKW4cW6Emq/RVC1WBi2oLpfZEh
-         3Qbp4rNIiU0I6rTkB+sJtuDTr4L4Co3PLjnlsy115iTXqO2rHe11Ji+uojDTgIKArqRN
-         pflQ==
+        b=T7g6n2CeC+VAz5FYgyz31rxlx0rt+J+GwYMv2chABmcsBPMIzu4Z07odCXtbCGSi2D
+         9eCeWo5kNezXkjS+bqCe3/bskjhnP/Xy6F1Z/WTgaLS/K2UDcGyhhXG3XSyZtYpkjhNn
+         L3c7eHhq21ZrEjZi6sHOy6JcNXFWxrwHAKXFTRsfaw7WBmRJPJWzJkn5eHU2vFJI5zMb
+         TRX0T8aQ/FIvpLP745LZyoct0Ns/a63tIdsLXob+HxxygxALHgoKzxjlUnJgZuJIiPtC
+         gLJfGi3aQDgFWEj2C44QrFfy+kixvL95Ml7Nrs75OS9LXAgcS7JaCnv0EYmzio9WdAgd
+         RhyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
-        fh=J5rK49AvbqWd6GqL5OV0utShe4OiV3iZ48PVDD3WoNg=;
-        b=YHTmkuHxYd8+EdbIebHYHFSkvJoW5SFaIRM1OSEGSGjX+it21bJBlnZlZPyuNfjvuK
-         EOSJX6/9vtnqxYGIjULZS85y27cSMYh4FxBl+as6liUkEa6zCd2B7jJdVI1AeusycAmA
-         TwzvhkkON4TyAAxkNSG701+1bye5mSeELUgavGVLN/9j3WE86EaWweNudgGfn20ib9+9
-         DghDtuQike4cukGNR1PKwBe59jHhAs/cvDkrj4CDH3Swe14tzDuhPfXLRL2/K6f+Su87
-         7Ex5OOxVH2L7EnnHZUyn8XJg8XKo9Dja0nOJC5qraZ717Mgo6ImSjJM2gCyuuj/YK2YC
-         L5/g==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=DtuF+rz3778eIKLYUWSSALvsbBodG1m8cm177EWmjXM=;
+        fh=o0qZTedznJwHkfc7d4faW3QLEovAIIN8A8tFNpqaouE=;
+        b=UyEWX0PSWz/yhlyoHx+rzgYxZ0LQjGzmziAzGig0cZDdKasbr0y9d+/27aRYw0FNwW
+         9T2ENvz8X07Phk2fEwzq426S4Zb/SZ4CkWffYXSl4K3L1hHPj09zlFUGP8VUVnUHeX2L
+         fG5C1zRsJPBeeuhM202hb+2ij+VeACm+LjYhm2o9znycaDM6PkIv8mP+smHm5fGp0X9S
+         9zo55RLtreaodkIze1QlXNUbM0rYl0ueFehOE6jFWYrMniBu6g90NoW53XxAHQkTnqB0
+         m2S0Q7Ch1B8AmAOiNsed1DljH1tDQEOIX7ZVhTG2FbH4fCYBGraKCWHcNaAWrDwUHJaH
+         cHcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=cvple46e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=I+CSrnLP;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c5d4dsi112792746d6.420.2025.02.18.14.22.42
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-38f258f01e0sor3649767f8f.3.2025.02.19.05.25.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 14:22:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 19 Feb 2025 05:25:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=cvple46e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=I+CSrnLP;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkVyy-0001kS-BM; Tue, 18 Feb 2025 17:22:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
- id 1tkVyv-0001k1-G0
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 17:22:21 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com>)
- id 1tkVys-0001jC-DP
- for qemu-arm@nongnu.org; Tue, 18 Feb 2025 17:22:21 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2fc318bd470so9007264a91.0
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2025 14:22:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1739917334; x=1740522134; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
- b=cvple46eI5iib2qTHaeGmqg4yGDjzG1/vTH1lsJ+Q/8hObMypkFbFyhrNct2kZKd6N
- ODZwD0SZtVLdGqE3bZ0kQYeqaD0jTT6hdCG+dPZ0sU1IY7dt5yExYU5pTyHGlJfkejfJ
- PYu/vwkLRgRQj1gYHlU52GNMHPVxMPbkxxTM7s+mb4h1xSR1s1pvm4Q9TNocu9l8JYXy
- Bmlg+O2dwhUceLwF+lf3a4V9sCKO7okv8ea5V+xK2vDGgpyWxn4mqDMPnAUwSbrlURoA
- xZTT3lNgSJUwRy+GlsNbhdKf//okSH0Sx8JLnOiANmzuWw4Vlf/6E3shM2Qa5CMZEiSv
- 6DLQ==
+        d=linaro.org; s=google; t=1739971542; x=1740576342; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DtuF+rz3778eIKLYUWSSALvsbBodG1m8cm177EWmjXM=;
+        b=I+CSrnLPCdQjlxu75M6sH+ABrrDHi6E9T/leDO+Ezn6D9iAW2zixoTcGb0YAbX1zfN
+         mpao6EOW4kYNfbSkmfg/sHUNUjM6N/XhfjAKtREmZOLwhEquW5ArKNWg/v7ipT4/54/u
+         3ao6/ke9FRXvnaqkDz4vKvfF6wdWYjE3l3wVNVddFctZFRpLjHSqALphgkz2I16jpD1c
+         nYKPZsEFRfKvOm7biD4A6Opn/nF8+DhnAHjBxQNT0sJk4adz34H9NSHE0XipumFJQwnw
+         ajXyOaUw2LTQW+jT046JyIfigLND/0bqvDg0xaP1zfTUkfG/kKjipDmcqSerNQL/CjLZ
+         LV0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739917334; x=1740522134;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YzyMiiwDnQ6S+QqMo6hPoD3cO7L/FwWaN/5gyzhjYLI=;
- b=CRREYaSGoUsLqQHpVr0u6kmLfmwJZx/eLQtUDDYTqPiikuYTrZEMz4Uzo56XoVz7Sb
- ijSkoyakjJwxTbAru/Ko9o33ynYagvejwQ1mqeVW+2B4Ci/Tc5URIFjMWO2EZ0cGSyJG
- e2jfqs7jWToFq3jvbvLF7T1hmi8bp+4wsKcERZhDQ7CuEOtwGYw00RkDy9ax3lrybUN6
- 6hPj7dFdo3T56bh9Mnt6GODaaKU7t/uoKie21VGjYUKQY0nsXdXNAAoi8pUBqoYw/VX2
- NYa21ESYrqVhAKVMp2+2HAIPlUVzzN5sdgxJE6lDuEjNSrUpul62lH7mQa424myPGUby
- MQXQ==
-X-Gm-Message-State: AOJu0YxjPfJmS3dIs0w0mraFL5+bCu39j0HZH4OK68kcQ6XEHNnpMNzL
- Ftw0WA1XkZcp4zZuMysyEqNFnVJzYRt3321i6+iuYkNh7bkW5qmiHFEcMLVqY07kmWwIpO+egvs
- HbBZY27mqmOUt38mCJQ==
-X-Received: from pjbrs15.prod.google.com ([2002:a17:90b:2b8f:b0:2f2:e97a:e77f])
- (user=slongfield job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:2b4d:b0:2fa:226e:8491 with SMTP id
- 98e67ed59e1d1-2fc40f1027cmr23084628a91.9.1739917334128; 
- Tue, 18 Feb 2025 14:22:14 -0800 (PST)
-Date: Tue, 18 Feb 2025 22:22:11 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
-Message-ID: <20250218222211.1092072-1-slongfield@google.com>
-Subject: [PATCH] target/arm: Fix signed integer overflow undefined behavior.
-From: Stephen Longfield <slongfield@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, slongfield@google.com, 
- roqueh@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3Fgi1ZwoKCD8tmpohgjfmehpphmf.dpnrfnv-bsnopohov.psh@flex--slongfield.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p9ymu/muP6HU
+        d=1e100.net; s=20230601; t=1739971542; x=1740576342;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DtuF+rz3778eIKLYUWSSALvsbBodG1m8cm177EWmjXM=;
+        b=utTiT1Gud+2gT93W9CseIsYxMkSUP3x47tIccJp+YoZcxrHMSWelFBo9X/2C3BT788
+         eT4NUoS1MXkz2YQyVvWHjB5hRRNCSEPu4jF6HKeaYuu+nPiSG0sHdukyGdBh42ghdToS
+         oiNnBsIK0JQiKqK20jssXWCJNmG9Fg7p02TJIpg8mijwTxjejG/NSm0yw35WT2tf4t1d
+         UghmDgujUyRDIu4Bq0FvQyG+EMZHTwPXCTwvz16m92itLBAvqaW/xFk0VRwwgpdLL1h5
+         tZGgDmDQukXlnH5cIxx/+FB9jzJePt4YLaJYUc2VmwhsE/YQLwqtcsMT+aYxqaISfC96
+         I/eA==
+X-Gm-Message-State: AOJu0Yyj+CpucaEymC+B9+3PSqPYkIp7L3+zy1o0xCgnSIlNxg8m8G9Q
+	uuYUGCRMPOxIdzx3fBphOrpC0Eu0tyPtpwUovYYs8eF41ajB1B+bLAIy+yyz20KjmtL8wm7Hxu/
+	zpOt8nQ==
+X-Gm-Gg: ASbGncskL3P/Aa+dwig/4yiEMCdHve9TpAqc6dwjvvhsVkbRZmj1SPizpvtOHdh9K8S
+	UBhLikSyCsYhqv6PxZatsnGNz6sSeHuOkXEMkgHRe6qLQ7A7dZiflEfzyrT8QqUm5bmDGTQdjS8
+	Xgti0+ummDz0uKe+yfqg1pt/Gv80/B3vQpKBzqFC/+Il82BjFMzVi7WXDFTOkJSXzf7qs7/DJOj
+	MpyceoZUOTd2fp27UeJgGHvmhMftxP4lWdPHeJaUHLjXOQotmt7bOlRlA9lKKR4M0aooReGkWxp
+	u8EfwA626xyvX95x53PeNL4B1fDsy6UWz5YKbNE8XR2/ZbYMpTo7ruUYROM=
+X-Google-Smtp-Source: AGHT+IGQi91u7eT7pJaTa/M46yJFoAWIp0cbTppUiL2Wr7Z9PasuLWGkNly1NAnHG8rmGiO8vNDf6Q==
+X-Received: by 2002:a5d:588f:0:b0:38f:3791:c1d3 with SMTP id ffacd0b85a97d-38f587f4141mr2809496f8f.54.1739971541858;
+        Wed, 19 Feb 2025 05:25:41 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f258ddba7sm18113033f8f.38.2025.02.19.05.25.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Feb 2025 05:25:41 -0800 (PST)
+Message-ID: <91a78caf-2200-42b7-8da6-e857af38bad7@linaro.org>
+Date: Wed, 19 Feb 2025 14:25:40 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 23/32] tests/functional: extend test_aarch64_virt with
+ vulkan test
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Virt" <qemu-arm@nongnu.org>
+References: <20250110131754.2769814-1-alex.bennee@linaro.org>
+ <20250110131754.2769814-24-alex.bennee@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250110131754.2769814-24-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: Tm6iVNWBRmkH
 
-The problem is internal to t32_expandimm_imm, the imm intermediate
-immediate value. This value is sourced from x, which always comes from
-the return of a deposit32 call, which returns uint32_t already.
+(+Markus for CLI)
 
-It's extracted via: int imm = extract32(x, 0, 8);, so the value will be
-between 0-255
+On 10/1/25 14:17, Alex Bennée wrote:
+> Now that we have virtio-gpu Vulkan support, let's add a test for it.
+> Currently this is using images build by buildroot:
+> 
+>    https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20250108121054.1126164-24-alex.bennee@linaro.org>
+> 
+> diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+> index 201c5ed023..6b2336a28d 100755
+> --- a/tests/functional/test_aarch64_virt.py
+> +++ b/tests/functional/test_aarch64_virt.py
+> @@ -13,10 +13,12 @@
+>   import logging
+>   from subprocess import check_call, DEVNULL
+>   
+> +from qemu.machine.machine import VMLaunchFailure
+> +
+>   from qemu_test import QemuSystemTest, Asset
+> -from qemu_test import exec_command_and_wait_for_pattern
+> +from qemu_test import exec_command, exec_command_and_wait_for_pattern
+>   from qemu_test import wait_for_console_pattern
+> -from qemu_test import get_qemu_img
+> +from qemu_test import skipIfMissingCommands, get_qemu_img
+>   
+>   
+>   class Aarch64VirtMachine(QemuSystemTest):
+> @@ -132,5 +134,73 @@ def test_aarch64_virt_gicv2(self):
+>           self.common_aarch64_virt("virt,gic-version=2")
+>   
+>   
+> +    ASSET_VIRT_GPU_KERNEL = Asset(
+> +        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+> +        'download?path=%2F&files='
+> +        'Image',
+> +        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
+> +
+> +    ASSET_VIRT_GPU_ROOTFS = Asset(
+> +        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+> +        'download?path=%2F&files='
+> +        'rootfs.ext4.zstd',
+> +        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
+> +
+> +    @skipIfMissingCommands('zstd')
+> +    def test_aarch64_virt_with_gpu(self):
+> +        # This tests boots with a buildroot test image that contains
+> +        # vkmark and other GPU exercising tools. We run a headless
+> +        # weston that nevertheless still exercises the virtio-gpu
+> +        # backend.
+> +
+> +        self.set_machine('virt')
+> +        self.require_accelerator("tcg")
+> +
+> +        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
+> +        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
+> +
+> +        self.vm.set_console()
+> +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=ttyAMA0 root=/dev/vda')
+> +
+> +        self.vm.add_args("-accel", "tcg")
+> +        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
+> +        self.vm.add_args("-machine", "virt,gic-version=max",
+> +                         '-kernel', kernel_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.add_args("-smp", "2", "-m", "2048")
+> +        self.vm.add_args("-device",
+> +                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
+> +        self.vm.add_args("-display", "egl-headless")
+> +        self.vm.add_args("-display", "dbus,gl=on")
 
-It is then multiplied by one of 1, 0x00010001, 0x01000100, 0x01010101,
-or 0x80.
+[*]
 
-Values between 128-255 multiplied by 0x01000100 or 0x01010101 will cause
-the upper bit to get set, which is a signed integer overflow. From
-Chapter 6.5, paragraph 5 of the C11 spec:
-https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf this is
-undefined behavior.
+> +        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
+> +        self.vm.add_args("-blockdev",
+> +                         "driver=raw,file.driver=file,"
+> +                         "node-name=hd0,read-only=on,"
+> +                         f"file.filename={image_path}")
+> +        self.vm.add_args("-snapshot")
+> +
+> +        try:
+> +            self.vm.launch()
+> +        except VMLaunchFailure as excp:
+> +            if "old virglrenderer, blob resources unsupported" in excp.output:
+> +                self.skipTest("No blob support for virtio-gpu")
+> +            elif "old virglrenderer, venus unsupported" in excp.output:
+> +                self.skipTest("No venus support for virtio-gpu")
 
-Though this is a minor undefined behavior, I'd like to see this fixed,
-since the error is showing up when I enable clang's sanitizers while
-looking for other issues.
+This seems dependent on the order of the CLI arguments, as I got:
 
-Signed-off-by: Stephen Longfield <slongfield@google.com>
-Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
----
- target/arm/tcg/translate.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+qemu-system-aarch64: -device 
+virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on: 'virtio-gpu-gl-pci' is 
+not a valid device model name
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 68ac393415..8770f0ce1c 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -3508,9 +3508,9 @@ static int t32_expandimm_rot(DisasContext *s, int x)
- }
+I understand it is too complex to check this device availability with
+meson, in order to avoid running the test.
 
- /* Return the unrotated immediate from T32ExpandImm.  */
--static int t32_expandimm_imm(DisasContext *s, int x)
-+static uint32_t t32_expandimm_imm(DisasContext *s, uint32_t x)
- {
--    int imm = extract32(x, 0, 8);
-+    uint32_t imm = extract32(x, 0, 8);
+Can we use device introspection instead, like we do in QTest with
+qtest_qom_has_concrete_type() for accelerators? Maybe in the lines of:
 
-     switch (extract32(x, 8, 4)) {
-     case 0: /* XY */
---
-2.48.1.601.g30ceb7b040-goog
+   @skipIfMissingQOMType('virtio-gpu-gl-pci')
 
+Or having a skipIfMissingDevice -> skipIfMissingQOMType alias:
+
+   @skipIfMissingDevice('virtio-gpu-gl-pci')
+
+tests/functional/test_virtio_version.py already uses some of it:
+
+  def devtype_implements(vm, devtype, implements):
+      return devtype in [d['name'] for d in
+                         vm.cmd('qom-list-types', implements=implements)]
+
+> +            else:
+> +                self.log.info("unhandled launch failure: {excp.output}")
+> +                raise excp
+> +
+> +        self.wait_for_console_pattern('buildroot login:')
+> +        exec_command(self, 'root')
+> +        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
+> +        exec_command_and_wait_for_pattern(self,
+> +                                          "weston -B headless "
+> +                                          "--renderer gl "
+> +                                          "--shell kiosk "
+> +                                          "-- vkmark -b:duration=1.0",
+> +                                          "vkmark Score")
+> +
+> +
+>   if __name__ == '__main__':
+>       QemuSystemTest.main()

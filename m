@@ -1,87 +1,87 @@
-Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1283738dlb;
-        Tue, 18 Feb 2025 23:20:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXUVhHfR0mG0Qa/GAnt9CzZO3zYTKKLOL83ooVnCbDYY24VvnpRKDSQb+2Xs1Js1XAXJff+aRVPIA7aoA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEvA1nMUpattXD0qEzOGKuJ3YySTMxMS0YFzhWgel9T/lgFiCvOX9/onPmN2Y7uBXtQGawp
-X-Received: by 2002:a05:620a:2b46:b0:7c0:a3d5:488d with SMTP id af79cd13be357-7c0a3d54d3fmr1198931885a.21.1739949643080;
-        Tue, 18 Feb 2025 23:20:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739949643; cv=none;
+Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1284162dlb;
+        Tue, 18 Feb 2025 23:21:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWHdePNpMaZKql2dbxYJFc01kPr/AkoPvB6ODuTrVqN8X9fsW1zY2mkBbHuTzgdIrIqAGIU/+HbgjPX3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHa02GA3kHHpH+QXg6S5Pq7uHW9MsWE7TInyH6d9Zag1IGBH/B7UBt2x3DmOyxpu8tubkYr
+X-Received: by 2002:a05:620a:1b93:b0:7c0:a954:6391 with SMTP id af79cd13be357-7c0a95469d0mr918865085a.11.1739949714469;
+        Tue, 18 Feb 2025 23:21:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739949714; cv=none;
         d=google.com; s=arc-20240605;
-        b=SMAofZhTs357dqRFvHXPY08L7dUFvqTPdMScziUrW3C3c5E+7qjAFS2MRNVjMAP3s6
-         h+aNQenSVdWrkdjT/4tCXwJ+88OS92k3PZOIrb8J+PTWuftv/rNgywt3hAKIvcgO64U0
-         00Lu9duiRQCXArYUzprd4AKUfn9j77PlTQRQXmHl/SNR4ARPNa/xajrMchNJm3oCeuqx
-         qblSq3jtb/A4XA7r+OYWN1vSZOpXDYzil/ep5WJOy5wKpQfmgu470j4poC5ybuqhwBCw
-         x7CDqvmcNn9wSs+H49OTnzWfU2lkhBmas8O1Y4DwcTP89mnl7M+pJN3X3DelNSov9P8O
-         e2VA==
+        b=LRLH1DVQ7QdAmKcTcmUmq+fuUPvLQlvpLAFCYysp71/JprEhuw2Tic9IBatqwgxm0S
+         +B4O3iJUXfO+fSMmm04MSyRFUoHXUzs7C4teZw76wQnCv3HenbNUgJS0zpJvUmxlU308
+         Ap3fSXkDcQmJPz0+52NoMN1CN7Fx2nTrYwjAzNjFb4M3OzzL8M+eLur8c13BHvgi8v5Q
+         orqK4cXco9+c2TAYz/njrMfEIKrJOVtld8DAASa1ioOnYHo6aaBss8vW8SKo1xYd1R0x
+         vqh76Tv2DX9fAJOJGyhbZ2fteK5FrcUU0lOaIMXtLnzqX+xOftcLzMhC5POrvOpUQXkD
+         E4Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hgQBER1MJ2liAJuH4wPTGa8SyH6MCQm9SD6Ph8MTQ5Y=;
+        bh=ub0g4x4V9SHheKAbxAvxNnt6py7VbQX4lNtEfUlDiNU=;
         fh=KhXLSX8c6wVmhLa/nUuNp/bImSZbg0QIIf+cCdMOZ3k=;
-        b=Svy/LEQS0S7ANJNnDq/gS4jWrb0hMLdsfj0Uu0zLAL8g88VNu7VyOK2uWJzCH5XjR0
-         1xLSJakz6L2CA3w2RaGzfkpYhSPzE0g2zf7RovRh3RaYttiJHUf9xsc1CMSaW7mLmhdt
-         wqUKDQp6ihcZk0SSidX7kSzRvahjU6p96OvLZPduyFwPuhxuJJjg5CvtTDSHHWYwFcwL
-         EFHaPvxTu2EckfwCWYnocwfykGra4aiTOc7Krrw4WgcYp1mqL4gPc/xOsLXE9BUz8lgE
-         zCypug2flW+pazF7W91I025vNyJtX9yg1oiujFPHc5cCyEsFZZZVjrANLT+QKG3xTAor
-         e6GQ==;
+        b=Js/+egBKsquc2eqNx2eeS7jOXRT94VxU7NAPVg/OH8euAofvW4+V9UHBQZihabhanM
+         DOfWaxGe9S4FIYkBS4BG4fzKEG43ATeVhDP7rxXezRwj1VYXMaU+ULCIHey6F4wzWulQ
+         ms9a9G+8oHm9gn6VwE62T/w60a17uihfKm18bJT9DsjwFtoUS1AgFgNh6IQlAqKCRyZJ
+         og1p9Yd1Ji3wLqnXSJmFfEy5UNKsz5Oa9AusZrrJkqykJwTNcEaoWf9KkoxJh7/WIEyG
+         VRtegUf9MOEqkQUdzqJTGTw0hGZGRJUL394Zu9j0LIYjeqFvvGTrBUdKCzgPq1/FQ0uA
+         BE4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAMxgDaX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNZlagon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0a0b01d9bsi508314985a.428.2025.02.18.23.20.42
+        by mx.google.com with ESMTPS id af79cd13be357-7c0ad956068si291743885a.271.2025.02.18.23.21.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 23:20:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2025 23:21:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAMxgDaX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNZlagon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tkeJd-0003oQ-Vt; Wed, 19 Feb 2025 02:16:18 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tkeK4-0004hR-Fs; Wed, 19 Feb 2025 02:16:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIR-0002KK-Gv
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:04 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIn-0002Z5-2X
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:28 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIM-00052p-EG
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:00 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIf-0005J7-Ue
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739949297;
+ s=mimecast20190719; t=1739949307;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hgQBER1MJ2liAJuH4wPTGa8SyH6MCQm9SD6Ph8MTQ5Y=;
- b=QAMxgDaX7oragcFR1SQ/nUUiGAM8Y1HR6UqzA+niHS1+MKoUx0ahZCuTYL2oPH6Nsds3uW
- 9qyKUs9cA+HG/DvEcTGIl4G7qfZz2saOK2AzMtmX6WUTr/43xjKBsrOy7boRU2wFO2SjOD
- gvy0i1fCZrpgfgtQRIoCfSJ750S9m2Q=
+ bh=ub0g4x4V9SHheKAbxAvxNnt6py7VbQX4lNtEfUlDiNU=;
+ b=CNZlagonFIxlNboooYvkfofrmJs3ohm6aGG065+99+6D9ZwLiD8azMWcu3XVWSh+dQjp2q
+ oA+jNZrAiqLpuU+AHD+2y4ZJIec6repNe5gQjRca3dO8eZhGRG18gOn+AbBZBLF9XDuZTN
+ VgMU3t8keRnFtmbqGDfmueX8Q8zAKjk=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-628-cgCVKbGaMMOOiHB-B1QM-g-1; Wed,
- 19 Feb 2025 02:14:52 -0500
-X-MC-Unique: cgCVKbGaMMOOiHB-B1QM-g-1
-X-Mimecast-MFC-AGG-ID: cgCVKbGaMMOOiHB-B1QM-g_1739949291
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-458-spqVHIOePQaLlDGytro_6A-1; Wed,
+ 19 Feb 2025 02:15:03 -0500
+X-MC-Unique: spqVHIOePQaLlDGytro_6A-1
+X-Mimecast-MFC-AGG-ID: spqVHIOePQaLlDGytro_6A_1739949302
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3D70F1800877; Wed, 19 Feb 2025 07:14:51 +0000 (UTC)
+ id D671C1800980; Wed, 19 Feb 2025 07:15:01 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.78])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A43E6300019F; Wed, 19 Feb 2025 07:14:50 +0000 (UTC)
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 46006194129F; Wed, 19 Feb 2025 07:15:00 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 753471801A93; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
+ id E34401801AB5; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
@@ -96,14 +96,14 @@ Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  graf@amazon.com, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v4 08/24] hw/uefi: add var-service-auth.c
-Date: Wed, 19 Feb 2025 08:14:10 +0100
-Message-ID: <20250219071431.50626-9-kraxel@redhat.com>
+Subject: [PATCH v4 14/24] hw/uefi: add var-service-json.c + qapi for NV vars.
+Date: Wed, 19 Feb 2025 08:14:16 +0100
+Message-ID: <20250219071431.50626-15-kraxel@redhat.com>
 In-Reply-To: <20250219071431.50626-1-kraxel@redhat.com>
 References: <20250219071431.50626-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -113,404 +113,359 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3dpFMDPa4RCO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +I5TKmU0Y9lA
 
-This implements authenticated variable handling (see AuthVariableLib in
-edk2).
+Define qapi schema for the uefi variable store state.
 
-The by far most common use case for auth variables is secure boot.  The
-secure boot certificate databases ('PK', 'KEK', 'db' and 'dbx') are
-authenticated variables, with update rules being specified in the UEFI
-specification.
+Use it and the generated visitor helper functions to store persistent
+(EFI_VARIABLE_NON_VOLATILE) variables in JSON format on disk.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-auth.c | 361 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 361 insertions(+)
- create mode 100644 hw/uefi/var-service-auth.c
+ hw/uefi/var-service-json.c | 243 +++++++++++++++++++++++++++++++++++++
+ qapi/meson.build           |   1 +
+ qapi/qapi-schema.json      |   1 +
+ qapi/uefi.json             |  45 +++++++
+ 4 files changed, 290 insertions(+)
+ create mode 100644 hw/uefi/var-service-json.c
+ create mode 100644 qapi/uefi.json
 
-diff --git a/hw/uefi/var-service-auth.c b/hw/uefi/var-service-auth.c
+diff --git a/hw/uefi/var-service-json.c b/hw/uefi/var-service-json.c
 new file mode 100644
-index 000000000000..fba5a0956a57
+index 000000000000..761082c11fc1
 --- /dev/null
-+++ b/hw/uefi/var-service-auth.c
-@@ -0,0 +1,361 @@
++++ b/hw/uefi/var-service-json.c
+@@ -0,0 +1,243 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - AuthVariableLib
++ * uefi vars device - serialize non-volatile varstore from/to json,
++ *                    using qapi
++ *
++ * tools which can read/write these json files:
++ *  - https://gitlab.com/kraxel/virt-firmware
++ *  - https://github.com/awslabs/python-uefivars
 + */
-+
 +#include "qemu/osdep.h"
++#include "qemu/cutils.h"
 +#include "qemu/error-report.h"
 +#include "system/dma.h"
 +
 +#include "hw/uefi/var-service.h"
 +
-+static const uint16_t name_pk[]           = u"PK";
-+static const uint16_t name_kek[]          = u"KEK";
-+static const uint16_t name_db[]           = u"db";
-+static const uint16_t name_dbx[]          = u"dbx";
-+static const uint16_t name_setup_mode[]   = u"SetupMode";
-+static const uint16_t name_sigs_support[] = u"SignatureSupport";
-+static const uint16_t name_sb[]           = u"SecureBoot";
-+static const uint16_t name_sb_enable[]    = u"SecureBootEnable";
-+static const uint16_t name_custom_mode[]  = u"CustomMode";
-+static const uint16_t name_vk[]           = u"VendorKeys";
-+static const uint16_t name_vk_nv[]        = u"VendorKeysNv";
++#include "qobject/qobject.h"
++#include "qobject/qjson.h"
 +
-+static const uint32_t sigdb_attrs =
-+    EFI_VARIABLE_NON_VOLATILE |
-+    EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+    EFI_VARIABLE_RUNTIME_ACCESS |
-+    EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS;
++#include "qapi/dealloc-visitor.h"
++#include "qapi/qobject-input-visitor.h"
++#include "qapi/qobject-output-visitor.h"
++#include "qapi/qapi-types-uefi.h"
++#include "qapi/qapi-visit-uefi.h"
 +
-+static void set_secure_boot(uefi_vars_state *uv, uint8_t sb)
++static char *generate_hexstr(void *data, size_t len)
 +{
-+    uefi_vars_set_variable(uv, EfiGlobalVariable,
-+                           name_sb, sizeof(name_sb),
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+                           EFI_VARIABLE_RUNTIME_ACCESS,
-+                           &sb, sizeof(sb));
++    static const char hex[] = {
++        '0', '1', '2', '3', '4', '5', '6', '7',
++        '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
++    };
++    uint8_t *src = data;
++    char *dest;
++    size_t i;
++
++    dest = g_malloc(len * 2 + 1);
++    for (i = 0; i < len * 2;) {
++        dest[i++] = hex[*src >> 4];
++        dest[i++] = hex[*src & 15];
++        src++;
++    }
++    dest[i++] = 0;
++
++    return dest;
 +}
 +
-+static void set_secure_boot_enable(uefi_vars_state *uv, uint8_t sbe)
++static UefiVarStore *uefi_vars_to_qapi(uefi_vars_state *uv)
 +{
-+    uefi_vars_set_variable(uv, EfiSecureBootEnableDisable,
-+                           name_sb_enable, sizeof(name_sb_enable),
-+                           EFI_VARIABLE_NON_VOLATILE |
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS,
-+                           &sbe, sizeof(sbe));
-+}
-+
-+static void set_setup_mode(uefi_vars_state *uv, uint8_t sm)
-+{
-+    uefi_vars_set_variable(uv, EfiGlobalVariable,
-+                           name_setup_mode, sizeof(name_setup_mode),
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+                           EFI_VARIABLE_RUNTIME_ACCESS,
-+                           &sm, sizeof(sm));
-+}
-+
-+static void set_custom_mode(uefi_vars_state *uv, uint8_t cm)
-+{
-+    uefi_vars_set_variable(uv, EfiCustomModeEnable,
-+                           name_custom_mode, sizeof(name_custom_mode),
-+                           EFI_VARIABLE_NON_VOLATILE |
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS,
-+                           &cm, sizeof(cm));
-+}
-+
-+static void set_signature_support(uefi_vars_state *uv)
-+{
-+    QemuUUID sigs_support[5];
-+
-+    sigs_support[0] = EfiCertSha256Guid;
-+    sigs_support[1] = EfiCertSha384Guid;
-+    sigs_support[2] = EfiCertSha512Guid;
-+    sigs_support[3] = EfiCertRsa2048Guid;
-+    sigs_support[4] = EfiCertX509Guid;
-+
-+    uefi_vars_set_variable(uv, EfiGlobalVariable,
-+                           name_sigs_support, sizeof(name_sigs_support),
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+                           EFI_VARIABLE_RUNTIME_ACCESS,
-+                           sigs_support, sizeof(sigs_support));
-+}
-+
-+static bool setup_mode_is_active(uefi_vars_state *uv)
-+{
++    UefiVarStore *vs;
++    UefiVariableList **tail;
++    UefiVariable *v;
++    QemuUUID be;
 +    uefi_variable *var;
-+    uint8_t *value;
 +
-+    var = uefi_vars_find_variable(uv, EfiGlobalVariable,
-+                                  name_setup_mode, sizeof(name_setup_mode));
-+    if (var) {
-+        value = var->data;
-+        if (value[0] == SETUP_MODE) {
-+            return true;
++    vs = g_new0(UefiVarStore, 1);
++    vs->version = 2;
++    tail = &vs->variables;
++
++    QTAILQ_FOREACH(var, &uv->variables, next) {
++        if (!(var->attributes & EFI_VARIABLE_NON_VOLATILE)) {
++            continue;
 +        }
++
++        v = g_new0(UefiVariable, 1);
++        be = qemu_uuid_bswap(var->guid);
++        v->guid = qemu_uuid_unparse_strdup(&be);
++        v->name = uefi_ucs2_to_ascii(var->name, var->name_size);
++        v->attr = var->attributes;
++
++        v->data = generate_hexstr(var->data, var->data_size);
++
++        if (var->attributes &
++            EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS) {
++            v->time = generate_hexstr(&var->time, sizeof(var->time));
++            if (var->digest && var->digest_size) {
++                v->digest = generate_hexstr(var->digest, var->digest_size);
++            }
++        }
++
++        QAPI_LIST_APPEND(tail, v);
 +    }
-+    return false;
++    return vs;
 +}
 +
-+static bool custom_mode_is_active(uefi_vars_state *uv)
++static unsigned parse_hexchar(char c)
 +{
++    switch (c) {
++    case '0' ... '9': return c - '0';
++    case 'a' ... 'f': return c - 'a' + 0xa;
++    case 'A' ... 'F': return c - 'A' + 0xA;
++    default: return 0;
++    }
++}
++
++static void parse_hexstr(void *dest, char *src, int len)
++{
++    uint8_t *data = dest;
++    size_t i;
++
++    for (i = 0; i < len; i += 2) {
++        *(data++) =
++            parse_hexchar(src[i]) << 4 |
++            parse_hexchar(src[i + 1]);
++    }
++}
++
++static void uefi_vars_from_qapi(uefi_vars_state *uv, UefiVarStore *vs)
++{
++    UefiVariableList *item;
++    UefiVariable *v;
++    QemuUUID be;
 +    uefi_variable *var;
-+    uint8_t *value;
++    uint8_t *data;
++    size_t i, len;
 +
-+    var = uefi_vars_find_variable(uv, EfiCustomModeEnable,
-+                                  name_custom_mode, sizeof(name_custom_mode));
-+    if (var) {
-+        value = var->data;
-+        if (value[0] == CUSTOM_SECURE_BOOT_MODE) {
-+            return true;
++    for (item = vs->variables; item != NULL; item = item->next) {
++        v = item->value;
++
++        var = g_new0(uefi_variable, 1);
++        var->attributes = v->attr;
++        qemu_uuid_parse(v->guid, &be);
++        var->guid = qemu_uuid_bswap(be);
++
++        len = strlen(v->name);
++        var->name_size = len * 2 + 2;
++        var->name = g_malloc(var->name_size);
++        for (i = 0; i <= len; i++) {
++            var->name[i] = v->name[i];
 +        }
-+    }
-+    return false;
-+}
 +
-+bool uefi_vars_is_sb_pk(uefi_variable *var)
-+{
-+    if (qemu_uuid_is_equal(&var->guid, &EfiGlobalVariable) &&
-+        uefi_str_equal(var->name, var->name_size, name_pk, sizeof(name_pk))) {
-+        return true;
-+    }
-+    return false;
-+}
++        len = strlen(v->data);
++        var->data_size = len / 2;
++        var->data = data = g_malloc(var->data_size);
++        parse_hexstr(var->data, v->data, len);
 +
-+static bool uefi_vars_is_sb_kek(uefi_variable *var)
-+{
-+    if (qemu_uuid_is_equal(&var->guid, &EfiGlobalVariable) &&
-+        uefi_str_equal(var->name, var->name_size, name_kek, sizeof(name_kek))) {
-+        return true;
-+    }
-+    return false;
-+}
-+
-+static bool uefi_vars_is_sb_db(uefi_variable *var)
-+{
-+    if (!qemu_uuid_is_equal(&var->guid, &EfiImageSecurityDatabase)) {
-+        return false;
-+    }
-+    if (uefi_str_equal(var->name, var->name_size, name_db, sizeof(name_db))) {
-+        return true;
-+    }
-+    if (uefi_str_equal(var->name, var->name_size, name_dbx, sizeof(name_dbx))) {
-+        return true;
-+    }
-+    return false;
-+}
-+
-+bool uefi_vars_is_sb_any(uefi_variable *var)
-+{
-+    if (uefi_vars_is_sb_pk(var) ||
-+        uefi_vars_is_sb_kek(var) ||
-+        uefi_vars_is_sb_db(var)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
-+static uefi_variable *uefi_vars_find_siglist(uefi_vars_state *uv,
-+                                             uefi_variable *var)
-+{
-+    if (uefi_vars_is_sb_pk(var)) {
-+        return uefi_vars_find_variable(uv, EfiGlobalVariable,
-+                                       name_pk, sizeof(name_pk));
-+    }
-+    if (uefi_vars_is_sb_kek(var)) {
-+        return uefi_vars_find_variable(uv, EfiGlobalVariable,
-+                                       name_pk, sizeof(name_pk));
-+    }
-+    if (uefi_vars_is_sb_db(var)) {
-+        return uefi_vars_find_variable(uv, EfiGlobalVariable,
-+                                       name_kek, sizeof(name_kek));
-+    }
-+
-+    return NULL;
-+}
-+
-+static efi_status uefi_vars_check_auth_2_sb(uefi_vars_state *uv,
-+                                            uefi_variable *var,
-+                                            mm_variable_access *va,
-+                                            void *data,
-+                                            uint64_t data_offset)
-+{
-+    variable_auth_2 *auth = data;
-+    uefi_variable *siglist;
-+
-+    if (custom_mode_is_active(uv)) {
-+        /* no authentication in custom mode */
-+        return EFI_SUCCESS;
-+    }
-+
-+    if (setup_mode_is_active(uv) && !uefi_vars_is_sb_pk(var)) {
-+        /* no authentication in setup mode (except PK) */
-+        return EFI_SUCCESS;
-+    }
-+
-+    if (auth->hdr_length == 24) {
-+        /* no signature (auth->cert_data is empty) */
-+        return EFI_SECURITY_VIOLATION;
-+    }
-+
-+    siglist = uefi_vars_find_siglist(uv, var);
-+    if (!siglist && setup_mode_is_active(uv) && uefi_vars_is_sb_pk(var)) {
-+        /* check PK is self-signed */
-+        uefi_variable tmp = {
-+            .guid       = EfiGlobalVariable,
-+            .name       = (uint16_t *)name_pk,
-+            .name_size  = sizeof(name_pk),
-+            .attributes = sigdb_attrs,
-+            .data       = data + data_offset,
-+            .data_size  = va->data_size - data_offset,
-+        };
-+        return uefi_vars_check_pkcs7_2(&tmp, NULL, NULL, va, data);
-+    }
-+
-+    return uefi_vars_check_pkcs7_2(siglist, NULL, NULL, va, data);
-+}
-+
-+efi_status uefi_vars_check_auth_2(uefi_vars_state *uv, uefi_variable *var,
-+                                  mm_variable_access *va, void *data)
-+{
-+    variable_auth_2 *auth = data;
-+    uint64_t data_offset;
-+    efi_status status;
-+
-+    if (va->data_size < sizeof(*auth)) {
-+        return EFI_SECURITY_VIOLATION;
-+    }
-+    if (uadd64_overflow(sizeof(efi_time), auth->hdr_length, &data_offset)) {
-+        return EFI_SECURITY_VIOLATION;
-+    }
-+    if (va->data_size < data_offset) {
-+        return EFI_SECURITY_VIOLATION;
-+    }
-+
-+    if (auth->hdr_revision != 0x0200 ||
-+        auth->hdr_cert_type != WIN_CERT_TYPE_EFI_GUID ||
-+        !qemu_uuid_is_equal(&auth->guid_cert_type, &EfiCertTypePkcs7Guid)) {
-+        return EFI_UNSUPPORTED;
-+    }
-+
-+    if (uefi_vars_is_sb_any(var)) {
-+        /* secure boot variables */
-+        status = uefi_vars_check_auth_2_sb(uv, var, va, data, data_offset);
-+        if (status != EFI_SUCCESS) {
-+            return status;
++        if (v->time && strlen(v->time) == 32) {
++            parse_hexstr(&var->time, v->time, 32);
 +        }
-+    } else {
-+        /* other authenticated variables */
-+        status = uefi_vars_check_pkcs7_2(NULL,
-+                                         &var->digest, &var->digest_size,
-+                                         va, data);
-+        if (status != EFI_SUCCESS) {
-+            return status;
++
++        if (v->digest) {
++            len = strlen(v->digest);
++            var->digest_size = len / 2;
++            var->digest = g_malloc(var->digest_size);
++            parse_hexstr(var->digest, v->digest, len);
 +        }
-+    }
 +
-+    /* checks passed, set variable data */
-+    var->time = auth->timestamp;
-+    if (va->data_size - data_offset > 0) {
-+        var->data = g_malloc(va->data_size - data_offset);
-+        memcpy(var->data, data + data_offset, va->data_size - data_offset);
-+        var->data_size = va->data_size - data_offset;
++        QTAILQ_INSERT_TAIL(&uv->variables, var, next);
 +    }
-+
-+    return EFI_SUCCESS;
 +}
 +
-+efi_status uefi_vars_check_secure_boot(uefi_vars_state *uv, uefi_variable *var)
++static GString *uefi_vars_to_json(uefi_vars_state *uv)
 +{
-+    uint8_t *value = var->data;
++    UefiVarStore *vs = uefi_vars_to_qapi(uv);
++    QObject *qobj = NULL;
++    Visitor *v;
++    GString *gstr;
 +
-+    if (uefi_vars_is_sb_any(var)) {
-+        if (var->attributes != sigdb_attrs) {
-+            return EFI_INVALID_PARAMETER;
-+        }
++    v = qobject_output_visitor_new(&qobj);
++    if (visit_type_UefiVarStore(v, NULL, &vs, NULL)) {
++        visit_complete(v, &qobj);
 +    }
++    visit_free(v);
++    qapi_free_UefiVarStore(vs);
 +
-+    /* reject SecureBootEnable updates if force_secure_boot is set */
-+    if (qemu_uuid_is_equal(&var->guid, &EfiSecureBootEnableDisable) &&
-+        uefi_str_equal(var->name, var->name_size,
-+                       name_sb_enable, sizeof(name_sb_enable)) &&
-+        uv->force_secure_boot &&
-+        value[0] != SECURE_BOOT_ENABLE) {
-+        return EFI_WRITE_PROTECTED;
-+    }
++    gstr = qobject_to_json_pretty(qobj, true);
++    qobject_unref(qobj);
 +
-+    /* reject CustomMode updates if disable_custom_mode is set */
-+    if (qemu_uuid_is_equal(&var->guid, &EfiCustomModeEnable) &&
-+        uefi_str_equal(var->name, var->name_size,
-+                       name_custom_mode, sizeof(name_custom_mode)) &&
-+        uv->disable_custom_mode) {
-+        return EFI_WRITE_PROTECTED;
-+    }
-+
-+    return EFI_SUCCESS;
++    return gstr;
 +}
 +
-+/* AuthVariableLibInitialize */
-+void uefi_vars_auth_init(uefi_vars_state *uv)
++void uefi_vars_json_init(uefi_vars_state *uv, Error **errp)
 +{
-+    uefi_variable *pk_var, *sbe_var;
-+    uint8_t platform_mode, sb, sbe, vk;
-+
-+    /* SetupMode */
-+    pk_var = uefi_vars_find_variable(uv, EfiGlobalVariable,
-+                                     name_pk, sizeof(name_pk));
-+    if (!pk_var) {
-+        platform_mode = SETUP_MODE;
-+    } else {
-+        platform_mode = USER_MODE;
++    if (uv->jsonfile) {
++        uv->jsonfd = qemu_create(uv->jsonfile, O_RDWR, 0666, errp);
 +    }
-+    set_setup_mode(uv, platform_mode);
-+
-+    /* SignatureSupport */
-+    set_signature_support(uv);
-+
-+    /* SecureBootEnable */
-+    sbe = SECURE_BOOT_DISABLE;
-+    sbe_var = uefi_vars_find_variable(uv, EfiSecureBootEnableDisable,
-+                                      name_sb_enable, sizeof(name_sb_enable));
-+    if (sbe_var) {
-+        if (platform_mode == USER_MODE) {
-+            sbe = ((uint8_t *)sbe_var->data)[0];
-+        }
-+    } else if (platform_mode == USER_MODE) {
-+        sbe = SECURE_BOOT_ENABLE;
-+        set_secure_boot_enable(uv, sbe);
-+    }
-+
-+    if (uv->force_secure_boot && sbe != SECURE_BOOT_ENABLE) {
-+        sbe = SECURE_BOOT_ENABLE;
-+        set_secure_boot_enable(uv, sbe);
-+    }
-+
-+    /* SecureBoot */
-+    if ((sbe == SECURE_BOOT_ENABLE) && (platform_mode == USER_MODE)) {
-+        sb = SECURE_BOOT_MODE_ENABLE;
-+    } else {
-+        sb = SECURE_BOOT_MODE_DISABLE;
-+    }
-+    set_secure_boot(uv, sb);
-+
-+    /* CustomMode */
-+    set_custom_mode(uv, STANDARD_SECURE_BOOT_MODE);
-+
-+    vk = 0;
-+    uefi_vars_set_variable(uv, EfiGlobalVariable,
-+                           name_vk_nv, sizeof(name_vk_nv),
-+                           EFI_VARIABLE_NON_VOLATILE |
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+                           EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS,
-+                           &vk, sizeof(vk));
-+    uefi_vars_set_variable(uv, EfiGlobalVariable,
-+                           name_vk, sizeof(name_vk),
-+                           EFI_VARIABLE_BOOTSERVICE_ACCESS |
-+                           EFI_VARIABLE_RUNTIME_ACCESS,
-+                           &vk, sizeof(vk));
-+
-+    /* flush to disk */
-+    uefi_vars_json_save(uv);
 +}
++
++void uefi_vars_json_save(uefi_vars_state *uv)
++{
++    GString *gstr;
++    int rc;
++
++    if (uv->jsonfd == -1) {
++        return;
++    }
++
++    gstr = uefi_vars_to_json(uv);
++
++    lseek(uv->jsonfd, 0, SEEK_SET);
++    rc = ftruncate(uv->jsonfd, 0);
++    if (rc != 0) {
++        warn_report("%s: ftruncate error", __func__);
++    }
++    rc = write(uv->jsonfd, gstr->str, gstr->len);
++    if (rc != gstr->len) {
++        warn_report("%s: write error", __func__);
++    }
++    fsync(uv->jsonfd);
++
++    g_string_free(gstr, true);
++}
++
++void uefi_vars_json_load(uefi_vars_state *uv, Error **errp)
++{
++    UefiVarStore *vs;
++    QObject *qobj;
++    Visitor *v;
++    char *str;
++    size_t len;
++    int rc;
++
++    if (uv->jsonfd == -1) {
++        return;
++    }
++
++    len = lseek(uv->jsonfd, 0, SEEK_END);
++    if (len == 0) {
++        return;
++    }
++
++    str = g_malloc(len + 1);
++    lseek(uv->jsonfd, 0, SEEK_SET);
++    rc = read(uv->jsonfd, str, len);
++    if (rc != len) {
++        warn_report("%s: read error", __func__);
++    }
++    str[len] = 0;
++
++    qobj = qobject_from_json(str, errp);
++    v = qobject_input_visitor_new(qobj);
++    visit_type_UefiVarStore(v, NULL, &vs, errp);
++    visit_free(v);
++
++    if (!(*errp)) {
++        uefi_vars_from_qapi(uv, vs);
++        uefi_vars_update_storage(uv);
++    }
++
++    qapi_free_UefiVarStore(vs);
++    qobject_unref(qobj);
++    g_free(str);
++}
+diff --git a/qapi/meson.build b/qapi/meson.build
+index e7bc54e5d047..eadde4db307f 100644
+--- a/qapi/meson.build
++++ b/qapi/meson.build
+@@ -65,6 +65,7 @@ if have_system
+     'pci',
+     'rocker',
+     'tpm',
++    'uefi',
+   ]
+ endif
+ if have_system or have_tools
+diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+index b1581988e4eb..2877aff73d0c 100644
+--- a/qapi/qapi-schema.json
++++ b/qapi/qapi-schema.json
+@@ -81,3 +81,4 @@
+ { 'include': 'vfio.json' }
+ { 'include': 'cryptodev.json' }
+ { 'include': 'cxl.json' }
++{ 'include': 'uefi.json' }
+diff --git a/qapi/uefi.json b/qapi/uefi.json
+new file mode 100644
+index 000000000000..c268ed11b70c
+--- /dev/null
++++ b/qapi/uefi.json
+@@ -0,0 +1,45 @@
++# -*- Mode: Python -*-
++# vim: filetype=python
++#
++
++##
++# @UefiVariable:
++#
++# UEFI Variable
++#
++# @guid: variable namespace guid
++#
++# @name: variable name (utf-8)
++#
++# @attr: variable attributes
++#
++# @data: variable content (base64)
++#
++# @time: variable modification time (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS).
++#
++# @digest: variable certificate digest (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS).
++#
++# Since: 10.0
++##
++{ 'struct' : 'UefiVariable',
++  'data' : { 'guid'  : 'str',
++             'name'  : 'str',
++             'attr'  : 'int',
++             'data'  : 'str',
++             '*time' : 'str',
++             '*digest' : 'str'}}
++
++##
++# @UefiVarStore:
++#
++# UEFI Variable Store
++#
++# @version: 2
++#
++# @variables: list of uefi variables
++#
++# Since: 10.0
++##
++{ 'struct' : 'UefiVarStore',
++  'data' : { 'version'   : 'int',
++             'variables' : [ 'UefiVariable' ] }}
 -- 
 2.48.1
 

@@ -1,105 +1,106 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1554418njb;
-        Wed, 19 Feb 2025 10:49:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWvalHAoqAOtliUzwm8l8jrKo+2bo2bTRBW+YHymh/zUMKoQcRoBAdwinqmcc7BjeJoFKNjiYGgXqh1Ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IEEURx1whEVh+quKP08xSL1GP7V+He48cxwGs4FMDgUvu+2K3slqZblxHMjzMVIwoIyfIyR
-X-Received: by 2002:a05:6214:2528:b0:6d8:aeda:dd93 with SMTP id 6a1803df08f44-6e66cd2e923mr251090736d6.39.1739990977083;
-        Wed, 19 Feb 2025 10:49:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739990977; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1554571njb;
+        Wed, 19 Feb 2025 10:49:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVFda4uIJUCvyKEuELdWDzJMH7nAkwz31YbGVNzaE7k+6RTEPM6mutP4eB9yqcpvabl3r9PDCc83ZF5Lg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHf3qYefsZQXp1hBHi8BRQR7e12J+Lnx1CPg45xwV5TR/+0izfgZaKL2p+ByiEq16c/YlJ7
+X-Received: by 2002:a05:620a:4591:b0:7c0:b1f3:b496 with SMTP id af79cd13be357-7c0b5283a1bmr608403485a.29.1739990996364;
+        Wed, 19 Feb 2025 10:49:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739990996; cv=none;
         d=google.com; s=arc-20240605;
-        b=Iji5EjM/vRZCX5Pk1pZcxijVIaUxA65fN7CTDuZPUZwRvThB+CPFQ3H27A8b9b++x/
-         pPhoE3OpU0Hlt/X7dokoMgtBIJvbhr4dW8vCJjyMPlYHDGBpcoOjcf8FG0pcP6LY6RTl
-         r9xFl0loN/qSczdPza75TiQ5Hp5SsIGRZpgCkeBXpyPA+SVJc3dqLABUEBATlHZUDYPJ
-         ZKYHtMiq4bavYHu9ZeDGFFnDOWZafYjcwdLCaGAR7CfHzKgEjqqbgoFgJs52cNEMbpc9
-         nlr2aB9fOdzelVdhh2n6KEU27j1i3xBTC/pLjO2kgdftWLgWShOHjqq2o25BxSv1ZGtP
-         M+rA==
+        b=DBarkYP7WhLsybBBlhuWWvW+h4Urgg84+R69jNayk3rA4/57SkZRuwTqAHaS1lFFPy
+         kXBVKOfJMmxjFmdHYUHijHSHCX7BnJFmO6BRfgXYR7FoX+j/sspmeVYGtMgBzG7SraI/
+         ATI4/ftS3Q7jBQev3C18nft05vCxJmWdjfzeIUunT7q1g5SuS93tiVtAMBs2Bx1GIBHI
+         MMQ+pVcCrg4b7WlBbcQ6O0FsRR3bpXX5ZFWgmvK6P8haJL7C7rjx6+JJNmmutV7eKfed
+         WscqmtRcMVbesbXiYi4tQ0SyiIRuZAcKC2M5qjQXjLKQw63XZmyipdHk7gLNkp06K6ks
+         CRtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=Z1Ln4707tX2136OTJ3dVAu/2OMhEvp/vGQL0FoGY3R8=;
-        fh=gF6aWbDz6o9oHWyKPReQW5I0p6Tl8T02Bq/e8b/d6hY=;
-        b=W1FqWuUr3BYuGnMnZ/Y5KvgCtJbXQtWAWGd9B885ea14D+lbwIRkzOJFq6lSSt/I6I
-         jdaXI/oNqdtatkVm8/BAv2EAjrg4atSbi19GmZ0zogEJ9BQ0Ec3zRR1nQTs7MyEsyQLd
-         lBHn9QxACTHbvdP1ne+tWdTxHC6wYoDXnOyovTX91c3uirE7i/pYaWhpB7+BhGL93jUr
-         A7cx6U9cPIOWspcqrFTNoDACG5fDP8drl7iQD+lpBO5tuiJ/WzN6KoYoTRM/QZ+GY5+U
-         OFkbPL3ajl26CxWlaP7k54oyvk3T8TYzh8bp3S7igczEN8Coy0dP4xV4b7T9tFvnEPfj
-         Xgag==;
+        bh=lyVllTcI111VtjzH6JIfu4s10NxcNO2uVXt7+AOWiic=;
+        fh=Gum/9OsHqMD+m4mQErY4ej1Chd3c0q0KGr5v1Bt9ZOw=;
+        b=FeNbgGHXhhY0xuyC7g8aj9q2hxZ9mcYt+i8JuIvJRpusYUA0Fj4ygeTR0Opv+l5gYm
+         nvpiKrsPJgYJ3PZMR1nuCpt3SMetpmaI4oUilLAhdUjUoU/kilX6fgTBHNo1/fgW0IZ3
+         spTa7PW9ArbJhcFCYzgPG1RuOlJcL8FvbFMkVJrZCvUiI3+8sRQIRG01ZtvTz9eqwxsT
+         4yE310Tnx40fB3Vq2uv7WneabmqaVnJulFC+xQj/n9C7as6OBx/d5JzcG/Pdh6LHl/Gu
+         peXmc3m9CrU1j5KkZFjcllNKTo7Dh6mGDC8UA4jmj5mI1h8DKSUYu/KgWXuToDMtC7bK
+         zkWg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=oHEXhPHo;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=B6G923iA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d733d96si131179126d6.90.2025.02.19.10.49.36
+        by mx.google.com with ESMTPS id af79cd13be357-7c0b36ef2f0si246186085a.582.2025.02.19.10.49.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2025 10:49:37 -0800 (PST)
+        Wed, 19 Feb 2025 10:49:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=oHEXhPHo;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=B6G923iA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tkp5j-0002yR-20; Wed, 19 Feb 2025 13:46:39 -0500
+	id 1tkp5o-00031Z-PB; Wed, 19 Feb 2025 13:46:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3Aie2ZwgKCm0hfSLZedSRZZRWP.NZXbPXf-OPgPWYZYRYf.ZcR@flex--wuhaotsh.bounces.google.com>)
- id 1tkp5d-0002wX-Fv
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:35 -0500
-Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
+ <3CSe2ZwgKCnQomZSglkZYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp5j-0002yt-6e
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:39 -0500
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3Aie2ZwgKCm0hfSLZedSRZZRWP.NZXbPXf-OPgPWYZYRYf.ZcR@flex--wuhaotsh.bounces.google.com>)
- id 1tkp5a-0004gt-3w
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:32 -0500
-Received: by mail-pl1-x64a.google.com with SMTP id
- d9443c01a7336-220ee2e7746so744715ad.2
- for <qemu-devel@nongnu.org>; Wed, 19 Feb 2025 10:46:28 -0800 (PST)
+ <3CSe2ZwgKCnQomZSglkZYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp5g-0004jD-MR
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:38 -0500
+Received: by mail-pl1-x649.google.com with SMTP id
+ d9443c01a7336-220d6c10a17so24458695ad.0
+ for <qemu-devel@nongnu.org>; Wed, 19 Feb 2025 10:46:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1739990787; x=1740595587; darn=nongnu.org;
+ d=google.com; s=20230601; t=1739990794; x=1740595594; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=Z1Ln4707tX2136OTJ3dVAu/2OMhEvp/vGQL0FoGY3R8=;
- b=oHEXhPHoil3TdToYN8dD/2FJt3tc86RZXaeLGN10E1Xb/hLNrfPim+jpsWr+PV9Gd2
- eRjgLAVEL0aguTKnM/TFU/fKtJnnsslQfY6OONGxzM7lVgiZXXgugskKNC1E3SyglsXE
- 6pFePZM2D/6Cd5/1jAkZGkFqEimFN3OF0Rq5UMvSAHZWWWqtaBcIbj0fdVe2S5D55n/1
- 6t2jyH9AsaFmPPXRQeoyUVJA9D1ub99LPoC46Kl5GZl/Xmt67tiKXLdj5KIEHs+onTfD
- AIYcDmwbh/Y0m8QlaXmneauR//aUSX7CgbJrV/1MO5EpTPXd3b2kjK1YC09VyLuXTcNx
- U5DQ==
+ bh=lyVllTcI111VtjzH6JIfu4s10NxcNO2uVXt7+AOWiic=;
+ b=B6G923iARtFkerXrYejU1QwqrMCVD7Q9mgUdtG3f6Ee+M6PaL08oq/msaLBbOEzZsg
+ EzdcfzXCv8GSu4sQoj/in5aOhSdc3KsLweM9RuLWz/kxeGgZGIKOKw7asfGwpnFbSOmt
+ F0HWIaQUD4O0C30MsdHILKb0rMc/SUJxwN11Yex/rf21zpoCva9pMG3C5DdWjOeB+7pv
+ DqrRvCIawfVyAVdnhgsxLeFqh1Bfb17tRZDaaQfjh+2Nkf1pPGbhIjaK3hiFKinmJNKo
+ 2+yy4kVGL628uM61xwq8jUUWyUp3MqRjY2LRtJD2DQyXKfOTgZOoSl3jeUBqM6rWNSqf
+ uUbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739990787; x=1740595587;
+ d=1e100.net; s=20230601; t=1739990794; x=1740595594;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Z1Ln4707tX2136OTJ3dVAu/2OMhEvp/vGQL0FoGY3R8=;
- b=ZRuqkKBjHfdyUZepQuPz1ljE2uNYP7VSqd0Ayylx48kx6DBSVc3ZhqlfGDpVJasL0h
- +T73oZcHWaZtEgcCV8W7tbHIqT0uT0n8PpCFfN7ssE4Gs0H4jQTVmTF8/mxX8nAcI2II
- 3RaS9ttc9WuLosFHO7K95vCzN6bJT2qpopV6oUpg5+ke8YjXST1FDgqpTNXrsIrlmHho
- 5rIvKA8BmjkyNznQs5etfOK7fEFjsxLoogF7s0uVRe/MfV2R/B+QfbLFwHVLyLsLEnVK
- 4JcaBagwLyd+gz3Vxj5+W2cNhPZBsGI2m5Tae7WT5io+QUq7q/8n9qp+kPDyMB67jUnR
- GPZg==
+ bh=lyVllTcI111VtjzH6JIfu4s10NxcNO2uVXt7+AOWiic=;
+ b=MvtALLzZTuGO1T12uQsFRXjjkHXqaX2B0UD4kKwBzkDdU/y+xKz9NNgrbU7SctbOqM
+ hTcaeoXBRdq6g/zt/ljpd0eeBIPtuQJDqFmYtojXtUx8gVRKdJpMr524Kj/BcDznvXIu
+ nI7QoZKgAof3W8bKkMs/do9LgI/iNZJKGkUpD3GJFlUl5hAWOc1KpwC8bOI900mTTDzL
+ aNTgu4jc0MiHgyPPa/XcZLMlGK4r9dNFsvkQGGYCdKPncK7yqiHaDI+th8NJTEeOUB6g
+ jn2VY5TuoNrdFeGRBXn7z9PxOhq/0Sh/gN/eT5nhP8wuHp8tYf2qb2qAeHSompXa9/UD
+ I3/w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX9m6eDzHypqDEnTA2qnkA/diD7EMNN/kFNjEPd7PLknIcnb+XQftqV+QdY+4T7qb4VzeZyy814Q1yB@nongnu.org
-X-Gm-Message-State: AOJu0YxAkG6/qYM/+oroA3NZEkdZeoIBPqzkNoFTVrv4JmUxqWg0UFCg
- xb+O2HKqXDdQT/7SdWnWEv3GIoa3kMyI63hpCIiwMizQhBSJ1PtJ5QEO+rsO9cbL31wUuJZhYXh
- e7AlNn2iSnQ==
-X-Received: from plbbe12.prod.google.com ([2002:a17:902:aa0c:b0:220:e56f:4b97])
+ AJvYcCVxsQAivfetuw9bOPMDlSrhsTdkCcAIrFJh/z/396xc8QtJjvXcSoizE7FcFiDooLaOAtu7UOqh2kgy@nongnu.org
+X-Gm-Message-State: AOJu0YyP/HZgaHrrniiCVW5gEroB9MBMr0TF/i4utI5Xci0V+sQaDpdO
+ RoLtlmHqJEzbUVLS4WPFcDb/7HILE9T/8eOup6VG0eU83oX8S6KdOjVHxvdFZcy6++y1gxwrHEl
+ xooy6mnh4WQ==
+X-Received: from pjg4.prod.google.com ([2002:a17:90b:3f44:b0:2f5:4762:e778])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:903:32c5:b0:220:c2a8:6fbc with SMTP id
- d9443c01a7336-221711a75camr79582505ad.34.1739990786841; 
- Wed, 19 Feb 2025 10:46:26 -0800 (PST)
-Date: Wed, 19 Feb 2025 10:45:53 -0800
+ 2002:a17:90b:3ec3:b0:2fa:603e:905c with SMTP id
+ 98e67ed59e1d1-2fccc0f96d4mr542078a91.2.1739990793702; 
+ Wed, 19 Feb 2025 10:46:33 -0800 (PST)
+Date: Wed, 19 Feb 2025 10:45:57 -0800
 In-Reply-To: <20250219184609.1839281-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20250219184609.1839281-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
-Message-ID: <20250219184609.1839281-3-wuhaotsh@google.com>
-Subject: [PATCH v5 02/17] pc-bios: Add NPCM8XX vBootrom
+Message-ID: <20250219184609.1839281-7-wuhaotsh@google.com>
+Subject: [PATCH v5 06/17] hw/misc: Add nr_regs and cold_reset_values to NPCM
+ GCR
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -108,9 +109,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  chli30@nuvoton.corp-partner.google.com, pbonzini@redhat.com, 
  jasowang@redhat.com, alistair@alistair23.me, philmd@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
- envelope-from=3Aie2ZwgKCm0hfSLZedSRZZRWP.NZXbPXf-OPgPWYZYRYf.ZcR@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x64a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3CSe2ZwgKCnQomZSglkZYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x649.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -132,113 +133,164 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XSOac2k++8ut
+X-TUID: xxO8pt6OCYjJ
 
-The bootrom is a minimal bootrom used to load an NPCM8XX image.
-The source code is located in the same repo as the NPCM7XX one:
-github.com/google/vbootrom/tree/master/npcm8xx.
+These 2 values are different between NPCM7XX and NPCM8XX
+GCRs. So we add them to the class and assign different values
+to them.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- MAINTAINERS                 |   1 +
- pc-bios/README              |   8 ++++----
- pc-bios/meson.build         |   1 +
- pc-bios/npcm8xx_bootrom.bin | Bin 0 -> 608 bytes
- roms/Makefile               |   6 ++++++
- 5 files changed, 12 insertions(+), 4 deletions(-)
- create mode 100644 pc-bios/npcm8xx_bootrom.bin
+ hw/misc/npcm_gcr.c         | 27 ++++++++++++++++-----------
+ include/hw/misc/npcm_gcr.h | 13 +++++++++++--
+ 2 files changed, 27 insertions(+), 13 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3848d37a38..e145017d53 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -878,6 +878,7 @@ F: include/hw/*/npcm*
- F: tests/qtest/npcm*
- F: tests/qtest/adm1266-test.c
- F: pc-bios/npcm7xx_bootrom.bin
-+F: pc-bios/npcm8xx_bootrom.bin
- F: roms/vbootrom
- F: docs/system/arm/nuvoton.rst
- F: tests/functional/test_arm_quanta_gsj.py
-diff --git a/pc-bios/README b/pc-bios/README
-index 7ffb2f43a4..700dcaab52 100644
---- a/pc-bios/README
-+++ b/pc-bios/README
-@@ -70,10 +70,10 @@
-   source code also contains code reused from other projects described here:
-   https://github.com/riscv/opensbi/blob/master/ThirdPartyNotices.md.
+diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
+index 0959f2e5c4..d89e8c2c3b 100644
+--- a/hw/misc/npcm_gcr.c
++++ b/hw/misc/npcm_gcr.c
+@@ -66,10 +66,9 @@ enum NPCM7xxGCRRegisters {
+     NPCM7XX_GCR_SCRPAD          = 0x013c / sizeof(uint32_t),
+     NPCM7XX_GCR_USB1PHYCTL,
+     NPCM7XX_GCR_USB2PHYCTL,
+-    NPCM7XX_GCR_REGS_END,
+ };
  
--- npcm7xx_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for Nuvoton
--  NPCM7xx BMC devices. It currently implements the bare minimum to load, parse,
--  initialize and run boot images stored in SPI flash, but may grow more
--  features over time as needed. The source code is available at:
-+- npcm{7xx,8xx}_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for
-+  Nuvoton NPCM7xx/8xx BMC devices. It currently implements the bare minimum to
-+  load, parse, initialize and run boot images stored in SPI flash, but may grow
-+  more features over time as needed. The source code is available at:
-   https://github.com/google/vbootrom
+-static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
++static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
+     [NPCM7XX_GCR_PDID]          = 0x04a92750,   /* Poleg A1 */
+     [NPCM7XX_GCR_MISCPE]        = 0x0000ffff,
+     [NPCM7XX_GCR_SPSWC]         = 0x00000003,
+@@ -88,8 +87,9 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t reg = offset / sizeof(uint32_t);
+     NPCMGCRState *s = opaque;
++    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(s);
  
- - hppa-firmware.img (32-bit) and hppa-firmware64.img (64-bit) are firmware
-diff --git a/pc-bios/meson.build b/pc-bios/meson.build
-index b68b29cc7d..51e95cc903 100644
---- a/pc-bios/meson.build
-+++ b/pc-bios/meson.build
-@@ -80,6 +80,7 @@ blobs = [
-   'opensbi-riscv32-generic-fw_dynamic.bin',
-   'opensbi-riscv64-generic-fw_dynamic.bin',
-   'npcm7xx_bootrom.bin',
-+  'npcm8xx_bootrom.bin',
-   'vof.bin',
-   'vof-nvram.bin',
- ]
-diff --git a/pc-bios/npcm8xx_bootrom.bin b/pc-bios/npcm8xx_bootrom.bin
-new file mode 100644
-index 0000000000000000000000000000000000000000..6370d6475635c4d445d2b927311edcd591949c82
-GIT binary patch
-literal 608
-zcmdUrKTE?<6vfX=0{*3B5ET?nwWA^;qEk()n=Xb9-4dxoSBrz#p|QJQL~zokn{Eyc
-z?PBXUkU+aB?k?IbNQftG5ej|*FC2c{bKkr7zLy3jhNxj`gc_y5h&V=Ru)PgZC)Y`f
-zTqA9Am28qL<U6@cMtA>Hlr*^&hT#;re-)dpxT0U42|O+cWOcx=B;{6xXH04vx?cjm
-z+%U{oFx!aPpV3>ZKz0i$XA-yq{f}<H?{MHBq+VwIvR9WmcL(xr1vuIRGELcRC-S+P
-zl3%RlR5(6+1;xg_<~xR#bPItDN1*Hp^{JyNs7o*BMq0Q9q1#>x4;|pb<NWIbQ8wb1
-zTac^<ebj^E^Ig<?U?(PO-w>w;l#@9zGd|z-rs*H@V-o%PEV)D-)8n2%DyH5@w_^Y8
-LH5R3RMV#gjxYTW}
-
-literal 0
-HcmV?d00001
-
-diff --git a/roms/Makefile b/roms/Makefile
-index 31e4b97c98..beff58d9d5 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -34,6 +34,7 @@ find-cross-gcc = $(firstword $(wildcard $(patsubst %ld,%gcc,$(call find-cross-ld
- # finally strip off path + toolname so we get the prefix
- find-cross-prefix = $(subst gcc,,$(notdir $(call find-cross-gcc,$(1))))
+-    if (reg >= NPCM7XX_GCR_NR_REGS) {
++    if (reg >= c->nr_regs) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+                       __func__, offset);
+@@ -106,11 +106,12 @@ static void npcm_gcr_write(void *opaque, hwaddr offset,
+ {
+     uint32_t reg = offset / sizeof(uint32_t);
+     NPCMGCRState *s = opaque;
++    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(s);
+     uint32_t value = v;
  
-+aarch64_cross_prefix := $(call find-cross-prefix,aarch64)
- arm_cross_prefix := $(call find-cross-prefix,arm)
- powerpc64_cross_prefix := $(call find-cross-prefix,powerpc64)
- powerpc_cross_prefix := $(call find-cross-prefix,powerpc)
-@@ -66,6 +67,7 @@ default help:
- 	@echo "  u-boot.e500        -- update u-boot.e500"
- 	@echo "  u-boot.sam460      -- update u-boot.sam460"
- 	@echo "  npcm7xx_bootrom    -- update vbootrom for npcm7xx"
-+	@echo "  npcm8xx_bootrom    -- update vbootrom for npcm8xx"
- 	@echo "  efi                -- update UEFI (edk2) platform firmware"
- 	@echo "  opensbi32-generic  -- update OpenSBI for 32-bit generic machine"
- 	@echo "  opensbi64-generic  -- update OpenSBI for 64-bit generic machine"
-@@ -194,6 +196,10 @@ npcm7xx_bootrom:
- 	$(MAKE) -C vbootrom CROSS_COMPILE=$(arm_cross_prefix)
- 	cp vbootrom/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
+-    trace_npcm_gcr_write(offset, value);
++    trace_npcm_gcr_write(offset, v);
  
-+npcm8xx_bootrom:
-+	$(MAKE) -C vbootrom CROSS_COMPILE=$(aarch64_cross_prefix)
-+	cp vbootrom/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
+-    if (reg >= NPCM7XX_GCR_NR_REGS) {
++    if (reg >= c->nr_regs) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+                       __func__, offset);
+@@ -156,10 +157,12 @@ static const struct MemoryRegionOps npcm_gcr_ops = {
+ static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
+ {
+     NPCMGCRState *s = NPCM_GCR(obj);
++    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(obj);
+ 
+-    QEMU_BUILD_BUG_ON(sizeof(s->regs) != sizeof(cold_reset_values));
+-
+-    memcpy(s->regs, cold_reset_values, sizeof(s->regs));
++    g_assert(sizeof(s->regs) >= sizeof(c->cold_reset_values));
++    g_assert(sizeof(s->regs) >= c->nr_regs * sizeof(uint32_t));
++    memcpy(s->regs, c->cold_reset_values, c->nr_regs * sizeof(uint32_t));
++    /* These 3 registers are at the same location in both 7xx and 8xx. */
+     s->regs[NPCM7XX_GCR_PWRON] = s->reset_pwron;
+     s->regs[NPCM7XX_GCR_MDLR] = s->reset_mdlr;
+     s->regs[NPCM7XX_GCR_INTCR3] = s->reset_intcr3;
+@@ -224,7 +227,7 @@ static const VMStateDescription vmstate_npcm_gcr = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM7XX_GCR_NR_REGS),
++        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM_GCR_MAX_NR_REGS),
+         VMSTATE_END_OF_LIST(),
+     },
+ };
+@@ -238,7 +241,6 @@ static void npcm_gcr_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END > NPCM7XX_GCR_NR_REGS);
+     dc->realize = npcm_gcr_realize;
+     dc->vmsd = &vmstate_npcm_gcr;
+ 
+@@ -247,13 +249,15 @@ static void npcm_gcr_class_init(ObjectClass *klass, void *data)
+ 
+ static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
+ {
++    NPCMGCRClass *c = NPCM_GCR_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+-    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END != NPCM7XX_GCR_NR_REGS);
+     dc->desc = "NPCM7xx System Global Control Registers";
+     rc->phases.enter = npcm7xx_gcr_enter_reset;
+ 
++    c->nr_regs = NPCM7XX_GCR_NR_REGS;
++    c->cold_reset_values = npcm7xx_cold_reset_values;
+ }
+ 
+ static const TypeInfo npcm_gcr_info[] = {
+@@ -262,6 +266,7 @@ static const TypeInfo npcm_gcr_info[] = {
+         .parent             = TYPE_SYS_BUS_DEVICE,
+         .instance_size      = sizeof(NPCMGCRState),
+         .instance_init      = npcm_gcr_init,
++        .class_size         = sizeof(NPCMGCRClass),
+         .class_init         = npcm_gcr_class_init,
+         .abstract           = true,
+     },
+diff --git a/include/hw/misc/npcm_gcr.h b/include/hw/misc/npcm_gcr.h
+index 6d3d00d260..9af24e5cdc 100644
+--- a/include/hw/misc/npcm_gcr.h
++++ b/include/hw/misc/npcm_gcr.h
+@@ -18,6 +18,7 @@
+ 
+ #include "exec/memory.h"
+ #include "hw/sysbus.h"
++#include "qom/object.h"
+ 
+ /*
+  * NPCM7XX PWRON STRAP bit fields
+@@ -53,6 +54,7 @@
+  * Number of registers in our device state structure. Don't change this without
+  * incrementing the version_id in the vmstate.
+  */
++#define NPCM_GCR_MAX_NR_REGS NPCM7XX_GCR_NR_REGS
+ #define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))
+ 
+ typedef struct NPCMGCRState {
+@@ -60,15 +62,22 @@ typedef struct NPCMGCRState {
+ 
+     MemoryRegion iomem;
+ 
+-    uint32_t regs[NPCM7XX_GCR_NR_REGS];
++    uint32_t regs[NPCM_GCR_MAX_NR_REGS];
+ 
+     uint32_t reset_pwron;
+     uint32_t reset_mdlr;
+     uint32_t reset_intcr3;
+ } NPCMGCRState;
+ 
++typedef struct NPCMGCRClass {
++    SysBusDeviceClass parent;
 +
- hppa-firmware:
- 	$(MAKE) -C seabios-hppa parisc
- 	cp seabios-hppa/out/hppa-firmware.img      ../pc-bios/
++    size_t nr_regs;
++    const uint32_t *cold_reset_values;
++} NPCMGCRClass;
++
+ #define TYPE_NPCM_GCR "npcm-gcr"
+ #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
+-OBJECT_DECLARE_SIMPLE_TYPE(NPCMGCRState, NPCM_GCR)
++OBJECT_DECLARE_TYPE(NPCMGCRState, NPCMGCRClass, NPCM_GCR)
+ 
+ #endif /* NPCM_GCR_H */
 -- 
 2.48.1.601.g30ceb7b040-goog
 

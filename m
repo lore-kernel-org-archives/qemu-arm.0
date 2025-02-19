@@ -1,104 +1,105 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1553959njb;
-        Wed, 19 Feb 2025 10:48:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUYaUkNrHMjkV+Z1gR1a/oEw4fagU4JpaNZkI6vEw1uUL28dWEtIcubFnTtsL/tWt8SYN7xjmiaGwdEXQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHHVxR7PYd17b35JKvlE/n7icQzZa9Fc8iSXHfq+P+H8/fAR7rLGfwLf7q2iHsVOf0Ig3kh
-X-Received: by 2002:a05:622a:189f:b0:472:14c9:ecf5 with SMTP id d75a77b69052e-47214c9edaamr6266521cf.15.1739990924535;
-        Wed, 19 Feb 2025 10:48:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739990924; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1554083njb;
+        Wed, 19 Feb 2025 10:48:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVxchiYtYXTyOHeYVJdBv4sx0NVsrVwKYAwJUboldxCS9l6cUb3kYj2+XOYhoYoqfphiJITvKDNNTi0aA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHfpDuPm6eeXW0FF0xtFFtEDqQcM0XwaCD3NN1ln5JJZpUiG5krOYpDvuEYUOkCVfPs9ZkQ
+X-Received: by 2002:a05:6214:c4b:b0:6e6:6936:6b06 with SMTP id 6a1803df08f44-6e66ccc049cmr272244936d6.16.1739990937928;
+        Wed, 19 Feb 2025 10:48:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739990937; cv=none;
         d=google.com; s=arc-20240605;
-        b=HOeYlDseXMi9aTuLC/w+NdEcVO453ed9udyLAwS1iqenrRCGnDSWWdaH57voFjcx89
-         6Sr35eKLSr917sUliUOFFo4pSKMap6stfRanjaq3z/c9ARKn8VkdRMxEbGLCQQ2Bnim+
-         dkv5aY7roVJDrrv534qEDEcD1zftmihSeiDxISuVcgdB7/xItY2yGmuHBxqj1bVIVQSI
-         WUsxebqnkvr+Z5nhKj3zcA6I39ERBm6SiItzHr8E4ghPO5V1kQ3akh70PkfCGy1Tb++O
-         JDW9yU+aK/S6ABwTawXU47N9AhouYVKmBZa9JBv9DQLNCc0nr3WrmVcinNtqLzIrb3Ny
-         0gjA==
+        b=J6wUVfBkDjdK0rWgeMT+VaH2Q1p+HWZum19Cup8UHFCNKqhbOmaog/TJxW5/LJ7ytB
+         5eCcrYL3Tx1HSUBlL8+5HDTlfMMPpcxG87b99PNclxRLBUeCrHMBT6tWgAZ3e7eoZjPr
+         XHkWZ5bDdt4dqoicKwE9JlLmgxBU93J9oFsSWrwlMlGQV6SWdp3/kxV+70FCpA52HBli
+         f6WkBrPcrSMsFhacokfg1fdx2ZC+JUw06ylRhG9QKoICA85rknY+VFnX720szHQHxk8U
+         xAg13zvpoaJlx5aWzHy57crYh7l9d7Rxi3aHxaCmM6Y93JD1WbGEZ0vhNxqXIkoICVsE
+         DO3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=M0Okg1E1VKh2zDVBD2EeLDVaF3WBxFI/Lxfymlmdrcw=;
-        fh=biy2AaKCbwpAZ/Lk7Qechxb9C3WSrIx4CYh+Y6obQL0=;
-        b=FGTSdQUTWSl1ixVlV6MPfgfXziX3hsmXYLiTmIZF+1vV9RhZFm89l8OxXbubgd0r/m
-         PEIVpKIQcD+kMPFS/Duugn3oEEEkCEFcw9SKyf8AE4YIl6IN8crv51M2rNgpU+KbT+sh
-         QpG+jh9d2/TJA9TW0aw9SEQ8RhFsIwIWtRQdIVl1WfxJtOaq8jSgiGlF7zoKpYqwlZa6
-         Hf9CPCk7XdxrzLl/MsG6w+X5vuD0VFn5JcuQwctYdmzIyerqgBUqgZGPoGVaR3TLp+M5
-         3yECjPYhvuOODAE06X7tuNvHFqP+7YRLuMtWKKK/gT56/2ZaJBPv0FLyx1OTavgnSqLR
-         xHFg==;
+        bh=3SejqOcjjpl6991EIw9Gc87lKKQmWVixdOIoAQhgcmc=;
+        fh=uNBtYOiErso1fOiVZCA1oQr1T2kBAFr+m9aHZyAmJNw=;
+        b=XFXts67l1HmqN30a2NgiF+J0TaPnBkM2TCKZx59g81ZHjPMlyvLezv+kYDqEi6tQaw
+         TmG+ATAi2jOrLlKfjjsX2CsPDzUmsJ1peBKn3UUErc3lnL2p9ISTCP3/40tSNaGcETTL
+         uY35yBlyF7AH+RbntGIGaB3kQ4RZGTgzskBeKAKOQE0DnF2qZo8InEV+IY7ntwpPcZ6G
+         Jo1qhjXlFSW1PL+Y1ieHdjDXRZ2fHafKJUwAR3mqkLM/13rdj6sERm7d7zqcDp0PBBjQ
+         5S2H9Zaw9S4/SpUBosTNUgdm7SxuzZK/DpHyYanBiEIhkvkqDgYTQemqIvy1HrdfcChD
+         1qbw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=4kjhJK+1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=wPvf1QCs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4721093cfcbsi8059201cf.295.2025.02.19.10.48.44
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a8df9si133749596d6.242.2025.02.19.10.48.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2025 10:48:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Feb 2025 10:48:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=4kjhJK+1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=wPvf1QCs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkp6S-0003Qt-Ec; Wed, 19 Feb 2025 13:47:24 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkp6S-0003Qq-EA; Wed, 19 Feb 2025 13:47:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3Gie2ZwgKCIU53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
- id 1tkp6E-000399-Az
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 13:47:13 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ <3Fye2ZwgKCoI20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp60-00036k-KS
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:58 -0500
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3Gie2ZwgKCIU53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
- id 1tkp66-0004pp-3l
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 13:47:05 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2fc1a70935fso206641a91.1
- for <qemu-arm@nongnu.org>; Wed, 19 Feb 2025 10:46:51 -0800 (PST)
+ <3Fye2ZwgKCoI20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp5t-0004oa-Q0
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:52 -0500
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-22119b07d52so652955ad.1
+ for <qemu-devel@nongnu.org>; Wed, 19 Feb 2025 10:46:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1739990811; x=1740595611; darn=nongnu.org;
+ d=google.com; s=20230601; t=1739990807; x=1740595607; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=M0Okg1E1VKh2zDVBD2EeLDVaF3WBxFI/Lxfymlmdrcw=;
- b=4kjhJK+1/JYvHe951GxSL1zHVEzlAIBDN6xTG+B+NEeUUe14u6zJuiBxiXpo7MhdIL
- UELSR4nTSC/UPXFhpr6mSxxmbq8UviVRuYZBF5yrgAbxlk2Ht/aTZ3HVFpCVNn1WmlbG
- R7pFld6Pp5/xyevohKbsDWvSlOjI2CsEneuTOSJWOkls8NsgunNPvelC65PA6GkBmuug
- BeZuloqHGe+FDRwu3YOfrzVqR43dLAYmpDD4lKTul1g17tys5dMDeiB0LQH2c793EBt3
- 49hIAQ+yiAMFy5R4vTuGrPomdY80aJK+wjzd1GofYXDp+2oPzRyVeMyDQmBiwTZwmwgD
- v47A==
+ bh=3SejqOcjjpl6991EIw9Gc87lKKQmWVixdOIoAQhgcmc=;
+ b=wPvf1QCsXTboGGHP/8iIFrjWSVRx/ItklEJh8La7kyHKYUxf6Q60Qtg7ipocAJAmU9
+ htG5/9QwwHVcNEoB9pl81BXzvr9NsCJ6KoYe9hlFoSip4LfM1ELvKbkn3Rmqx57YcbFh
+ 3dWUVd91/f7hrvx4FMjPWfISdyLmauTDsMsF2Q7J+kED3WcYxQRxwCuzDcBL4cXBYRFW
+ 6zOc84SkQWcu/fxht/cxA8wGLfvlMWJJeX4ox21ZhW8NRropFaw1n4oaLcxKEmKYsSUc
+ YcMUiYZAI1S9xQGgksNYiTd/OI2PMEiV3PjIvQFDfLyqKFyyLZlvvqhUrnrI1GSeNdeV
+ Wp2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739990811; x=1740595611;
+ d=1e100.net; s=20230601; t=1739990807; x=1740595607;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=M0Okg1E1VKh2zDVBD2EeLDVaF3WBxFI/Lxfymlmdrcw=;
- b=Qa+xAxO4wrXy2ZWiziWEFm4gQEDsLu5kT0cMZkbULQZgeIRSF8hbvs29b/cmcAUGGa
- IXl1GKZIqhtsW59p3AlUTfG/wdI9UMbxlr3Axq4T8MxncOfT5bZKGyrRQeYfJH92CZGI
- K9pysF4t75bNUraGvP2lxozuUkz85tjlab01G+QDElVtX80GSX5xbgH0DIPz6058TLWs
- X8H0IoRjIuMIFY6l0Cq1dClu04B0DzZIOqC8TrINu83pAV1ud1ZDdZutoagNFj/Vs1Nr
- m/zvaYfH53SdLNySlaRhkbLxcnf3nm1u4z2j1FW5NMywLIbdUslSC2qSvzvQfgG5ZZ63
- 5zdA==
-X-Gm-Message-State: AOJu0Yz0w6BE+wTTwXX6+w7njrH3xDYm+HHTwts+Ja9iavv4ffKVkAh7
- k4MkfmPJsntsfPjVsGDIq6TE6s2uKbRbrlmZlFud891A/ls2urWPsvIPPyeswoeOHPx13TI4zfM
- nt30uUXP7Cg==
-X-Received: from pfbcw22.prod.google.com
- ([2002:a05:6a00:4516:b0:731:9461:420e])
+ bh=3SejqOcjjpl6991EIw9Gc87lKKQmWVixdOIoAQhgcmc=;
+ b=uGcIKT8bq6lIgtWGsuYamSwS+HK6QHkvIsj+mtder0LoQvyWu91CxGZCzIeMABdNSV
+ uBbzJkYqt3dT1Uj6/Eop2Du+mjkBetvvv3r11AFe398hM7uYaXYzihEwMh6LAGvxyEPP
+ ZeZx1IdB8uRQhmuQwWL/GgSU3OCQ1ZWVawKRV2RoGa+OGIDukpVKSGmdGrR8RMEPhjNw
+ 7/QaD0Zp8+JoQxSNT0t4JVwvYJbao7dD4WQPwi6svW4Bnhth0x3pcMi64ga7eMl9bO72
+ 2P2kRn7d1r0O5P8tsEH/yWzQZ43m+4P8quCU4VA5njRoBoUmnk7PDi4jzXV/ETAob7bx
+ aFHw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXHxDcdivb6P1xCbGfNNHTD2PYTmJfIdHBcbX5omhyGjawkwGu09pIg4AbfudJ7SrvAwytoo8QwxIsX@nongnu.org
+X-Gm-Message-State: AOJu0YyqZ4AN8cnOFasVffj30vTttZGzTGI4TQEDo65Lvf99RKFPWeZ7
+ 8MEA5SJLUOXh08+wrU9CD3jWyDaTh7CdSjmZQ1efyFS9qvaZWPgthMdKXplMDTi9CjL0RMeV/Y/
+ 9lnEEe+r7BQ==
+X-Received: from pjbsp16.prod.google.com ([2002:a17:90b:52d0:b0:2ea:5be5:da6])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a00:2e28:b0:732:5a8f:f51b with SMTP id
- d2e1a72fcca58-7326179ebd4mr34318408b3a.8.1739990810991; 
- Wed, 19 Feb 2025 10:46:50 -0800 (PST)
-Date: Wed, 19 Feb 2025 10:46:07 -0800
+ 2002:a17:902:e890:b0:21f:6885:2b0b with SMTP id
+ d9443c01a7336-221040697ecmr298376885ad.26.1739990807417; 
+ Wed, 19 Feb 2025 10:46:47 -0800 (PST)
+Date: Wed, 19 Feb 2025 10:46:05 -0800
 In-Reply-To: <20250219184609.1839281-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20250219184609.1839281-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
-Message-ID: <20250219184609.1839281-17-wuhaotsh@google.com>
-Subject: [PATCH v5 16/17] hw/arm: Add NPCM845 Evaluation board
+Message-ID: <20250219184609.1839281-15-wuhaotsh@google.com>
+Subject: [PATCH v5 14/17] hw/net: Add NPCM8XX PCS Module
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -107,64 +108,70 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  chli30@nuvoton.corp-partner.google.com, pbonzini@redhat.com, 
  jasowang@redhat.com, alistair@alistair23.me, philmd@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3Gie2ZwgKCIU53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
+ envelope-from=3Fye2ZwgKCoI20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x64a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y/tN4RajI4js
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JZ5o/uZD/uAb
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+The PCS exists in NPCM8XX's GMAC1 and is used to control the SGMII
+PHY. This implementation contains all the default registers and
+the soft reset feature that are required to load the Linux kernel
+driver. Further features have not been implemented yet.
+
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/meson.build       |   2 +-
- hw/arm/npcm8xx_boards.c  | 253 +++++++++++++++++++++++++++++++++++++++
- include/hw/arm/npcm8xx.h |  21 ++++
- 3 files changed, 275 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/npcm8xx_boards.c
+ hw/net/meson.build        |   1 +
+ hw/net/npcm_pcs.c         | 410 ++++++++++++++++++++++++++++++++++++++
+ hw/net/trace-events       |   4 +-
+ include/hw/net/npcm_pcs.h |  42 ++++
+ 4 files changed, 455 insertions(+), 2 deletions(-)
+ create mode 100644 hw/net/npcm_pcs.c
+ create mode 100644 include/hw/net/npcm_pcs.h
 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index d7813c089c..465c757f97 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -12,7 +12,7 @@ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
- arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
- arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
- arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
--arm_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm8xx.c'))
-+arm_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm8xx.c', 'npcm8xx_boards.c'))
- arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
- arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
- arm_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
-diff --git a/hw/arm/npcm8xx_boards.c b/hw/arm/npcm8xx_boards.c
+diff --git a/hw/net/meson.build b/hw/net/meson.build
+index 3bb5d749a8..e6759e26ca 100644
+--- a/hw/net/meson.build
++++ b/hw/net/meson.build
+@@ -40,6 +40,7 @@ system_ss.add(when: 'CONFIG_SUNHME', if_true: files('sunhme.c'))
+ system_ss.add(when: 'CONFIG_FTGMAC100', if_true: files('ftgmac100.c'))
+ system_ss.add(when: 'CONFIG_SUNGEM', if_true: files('sungem.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_emc.c', 'npcm_gmac.c'))
++system_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm_pcs.c'))
+ 
+ system_ss.add(when: 'CONFIG_COLDFIRE', if_true: files('mcf_fec.c'))
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_llan.c'))
+diff --git a/hw/net/npcm_pcs.c b/hw/net/npcm_pcs.c
 new file mode 100644
-index 0000000000..19610483f9
+index 0000000000..ce5034e234
 --- /dev/null
-+++ b/hw/arm/npcm8xx_boards.c
-@@ -0,0 +1,253 @@
++++ b/hw/net/npcm_pcs.c
+@@ -0,0 +1,410 @@
 +/*
-+ * Machine definitions for boards featuring an NPCM8xx SoC.
++ * Nuvoton NPCM8xx PCS Module
 + *
-+ * Copyright 2021 Google LLC
++ * Copyright 2022 Google LLC
 + *
 + * This program is free software; you can redistribute it and/or modify it
 + * under the terms of the GNU General Public License as published by the
@@ -177,275 +184,463 @@ index 0000000000..19610483f9
 + * for more details.
 + */
 +
++/*
++ * Disclaimer:
++ * Currently we only implemented the default values of the registers and
++ * the soft reset feature. These are required to boot up the GMAC module
++ * in Linux kernel for NPCM845 boards. Other functionalities are not modeled.
++ */
++
 +#include "qemu/osdep.h"
 +
-+#include "chardev/char.h"
-+#include "hw/arm/npcm8xx.h"
-+#include "hw/core/cpu.h"
-+#include "hw/loader.h"
-+#include "hw/qdev-core.h"
-+#include "hw/qdev-properties.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "qemu/datadir.h"
++#include "exec/hwaddr.h"
++#include "hw/registerfields.h"
++#include "hw/net/npcm_pcs.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
 +#include "qemu/units.h"
++#include "trace.h"
 +
-+#define NPCM845_EVB_POWER_ON_STRAPS 0x000017ff
++#define NPCM_PCS_IND_AC_BA      0x1fe
++#define NPCM_PCS_IND_SR_CTL     0x1e00
++#define NPCM_PCS_IND_SR_MII     0x1f00
++#define NPCM_PCS_IND_SR_TIM     0x1f07
++#define NPCM_PCS_IND_VR_MII     0x1f80
 +
-+static const char npcm8xx_default_bootrom[] = "npcm8xx_bootrom.bin";
++REG16(NPCM_PCS_SR_CTL_ID1, 0x08)
++REG16(NPCM_PCS_SR_CTL_ID2, 0x0a)
++REG16(NPCM_PCS_SR_CTL_STS, 0x10)
 +
-+static void npcm8xx_load_bootrom(MachineState *machine, NPCM8xxState *soc)
-+{
-+    const char *bios_name = machine->firmware ?: npcm8xx_default_bootrom;
-+    g_autofree char *filename = NULL;
-+    int ret;
++REG16(NPCM_PCS_SR_MII_CTRL, 0x00)
++REG16(NPCM_PCS_SR_MII_STS, 0x02)
++REG16(NPCM_PCS_SR_MII_DEV_ID1, 0x04)
++REG16(NPCM_PCS_SR_MII_DEV_ID2, 0x06)
++REG16(NPCM_PCS_SR_MII_AN_ADV, 0x08)
++REG16(NPCM_PCS_SR_MII_LP_BABL, 0x0a)
++REG16(NPCM_PCS_SR_MII_AN_EXPN, 0x0c)
++REG16(NPCM_PCS_SR_MII_EXT_STS, 0x1e)
 +
-+    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+    if (!filename) {
-+        error_report("Could not find ROM image '%s'", bios_name);
-+        if (!machine->kernel_filename) {
-+            /* We can't boot without a bootrom or a kernel image. */
-+            exit(1);
-+        }
-+        return;
-+    }
-+    ret = load_image_mr(filename, machine->ram);
-+    if (ret < 0) {
-+        error_report("Failed to load ROM image '%s'", filename);
-+        exit(1);
-+    }
-+}
++REG16(NPCM_PCS_SR_TIM_SYNC_ABL, 0x10)
++REG16(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x12)
++REG16(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0x14)
++REG16(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x16)
++REG16(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0x18)
++REG16(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x1a)
++REG16(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0x1c)
++REG16(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x1e)
++REG16(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0x20)
 +
-+static void npcm8xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
-+                                  const char *flash_type, DriveInfo *dinfo)
-+{
-+    DeviceState *flash;
-+    qemu_irq flash_cs;
++REG16(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x000)
++REG16(NPCM_PCS_VR_MII_AN_CTRL, 0x002)
++REG16(NPCM_PCS_VR_MII_AN_INTR_STS, 0x004)
++REG16(NPCM_PCS_VR_MII_TC, 0x006)
++REG16(NPCM_PCS_VR_MII_DBG_CTRL, 0x00a)
++REG16(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x00c)
++REG16(NPCM_PCS_VR_MII_EEE_TXTIMER, 0x010)
++REG16(NPCM_PCS_VR_MII_EEE_RXTIMER, 0x012)
++REG16(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0x014)
++REG16(NPCM_PCS_VR_MII_EEE_MCTRL1, 0x016)
++REG16(NPCM_PCS_VR_MII_DIG_STS, 0x020)
++REG16(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0x022)
++REG16(NPCM_PCS_VR_MII_MISC_STS, 0x030)
++REG16(NPCM_PCS_VR_MII_RX_LSTS, 0x040)
++REG16(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x070)
++REG16(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x074)
++REG16(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x07a)
++REG16(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0x07c)
++REG16(NPCM_PCS_VR_MII_MP_TX_STS, 0x090)
++REG16(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0b0)
++REG16(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x0b2)
++REG16(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x0ba)
++REG16(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0f0)
++REG16(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0f2)
++REG16(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x110)
++REG16(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0x126)
++REG16(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x130)
++REG16(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0x132)
++REG16(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0x134)
++REG16(NPCM_PCS_VR_MII_DIG_CTRL2, 0x1c2)
++REG16(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0x1c4)
 +
-+    flash = qdev_new(flash_type);
-+    if (dinfo) {
-+        qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
-+    }
-+    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
++/* Register Fields */
++#define NPCM_PCS_SR_MII_CTRL_RST            BIT(15)
 +
-+    flash_cs = qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
-+    qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
-+}
-+
-+static void npcm8xx_connect_dram(NPCM8xxState *soc, MemoryRegion *dram)
-+{
-+    memory_region_add_subregion(get_system_memory(), NPCM8XX_DRAM_BA, dram);
-+
-+    object_property_set_link(OBJECT(soc), "dram-mr", OBJECT(dram),
-+                             &error_abort);
-+}
-+
-+static NPCM8xxState *npcm8xx_create_soc(MachineState *machine,
-+                                        uint32_t hw_straps)
-+{
-+    NPCM8xxMachineClass *nmc = NPCM8XX_MACHINE_GET_CLASS(machine);
-+    Object *obj;
-+
-+    obj = object_new_with_props(nmc->soc_type, OBJECT(machine), "soc",
-+                                &error_abort, NULL);
-+    object_property_set_uint(obj, "power-on-straps", hw_straps, &error_abort);
-+
-+    return NPCM8XX(obj);
-+}
-+
-+static I2CBus *npcm8xx_i2c_get_bus(NPCM8xxState *soc, uint32_t num)
-+{
-+    g_assert(num < ARRAY_SIZE(soc->smbus));
-+    return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
-+}
-+
-+static void npcm8xx_init_pwm_splitter(NPCM8xxMachine *machine,
-+                                      NPCM8xxState *soc, const int *fan_counts)
-+{
-+    SplitIRQ *splitters = machine->fan_splitter;
-+
-+    /*
-+     * PWM 0~3 belong to module 0 output 0~3.
-+     * PWM 4~7 belong to module 1 output 0~3.
-+     */
-+    for (int i = 0; i < NPCM8XX_NR_PWM_MODULES; ++i) {
-+        for (int j = 0; j < NPCM7XX_PWM_PER_MODULE; ++j) {
-+            int splitter_no = i * NPCM7XX_PWM_PER_MODULE + j;
-+            DeviceState *splitter;
-+
-+            if (fan_counts[splitter_no] < 1) {
-+                continue;
-+            }
-+            object_initialize_child(OBJECT(machine), "fan-splitter[*]",
-+                                    &splitters[splitter_no], TYPE_SPLIT_IRQ);
-+            splitter = DEVICE(&splitters[splitter_no]);
-+            qdev_prop_set_uint16(splitter, "num-lines",
-+                                 fan_counts[splitter_no]);
-+            qdev_realize(splitter, NULL, &error_abort);
-+            qdev_connect_gpio_out_named(DEVICE(&soc->pwm[i]), "duty-gpio-out",
-+                                        j, qdev_get_gpio_in(splitter, 0));
-+        }
-+    }
-+}
-+
-+static void npcm8xx_connect_pwm_fan(NPCM8xxState *soc, SplitIRQ *splitter,
-+                                    int fan_no, int output_no)
-+{
-+    DeviceState *fan;
-+    int fan_input;
-+    qemu_irq fan_duty_gpio;
-+
-+    g_assert(fan_no >= 0 && fan_no <= NPCM7XX_MFT_MAX_FAN_INPUT);
-+    /*
-+     * Fan 0~1 belong to module 0 input 0~1.
-+     * Fan 2~3 belong to module 1 input 0~1.
-+     * ...
-+     * Fan 14~15 belong to module 7 input 0~1.
-+     * Fan 16~17 belong to module 0 input 2~3.
-+     * Fan 18~19 belong to module 1 input 2~3.
-+     */
-+    if (fan_no < 16) {
-+        fan = DEVICE(&soc->mft[fan_no / 2]);
-+        fan_input = fan_no % 2;
-+    } else {
-+        fan = DEVICE(&soc->mft[(fan_no - 16) / 2]);
-+        fan_input = fan_no % 2 + 2;
-+    }
-+
-+    /* Connect the Fan to PWM module */
-+    fan_duty_gpio = qdev_get_gpio_in_named(fan, "duty", fan_input);
-+    qdev_connect_gpio_out(DEVICE(splitter), output_no, fan_duty_gpio);
-+}
-+
-+static void npcm845_evb_i2c_init(NPCM8xxState *soc)
-+{
-+    /* tmp100 temperature sensor on SVB, tmp105 is compatible */
-+    i2c_slave_create_simple(npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
-+}
-+
-+static void npcm845_evb_fan_init(NPCM8xxMachine *machine, NPCM8xxState *soc)
-+{
-+    SplitIRQ *splitter = machine->fan_splitter;
-+    static const int fan_counts[] = {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0};
-+
-+    npcm8xx_init_pwm_splitter(machine, soc, fan_counts);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[0], 0x00, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[0], 0x01, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[1], 0x02, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[1], 0x03, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[2], 0x04, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[2], 0x05, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[3], 0x06, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[3], 0x07, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[4], 0x08, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[4], 0x09, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[5], 0x0a, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[5], 0x0b, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[6], 0x0c, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[6], 0x0d, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[7], 0x0e, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[7], 0x0f, 1);
-+}
-+
-+static void npcm845_evb_init(MachineState *machine)
-+{
-+    NPCM8xxState *soc;
-+
-+    soc = npcm8xx_create_soc(machine, NPCM845_EVB_POWER_ON_STRAPS);
-+    npcm8xx_connect_dram(soc, machine->ram);
-+    qdev_realize(DEVICE(soc), NULL, &error_fatal);
-+
-+    npcm8xx_load_bootrom(machine, soc);
-+    npcm8xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
-+    npcm845_evb_i2c_init(soc);
-+    npcm845_evb_fan_init(NPCM8XX_MACHINE(machine), soc);
-+    npcm8xx_load_kernel(machine, soc);
-+}
-+
-+static void npcm8xx_set_soc_type(NPCM8xxMachineClass *nmc, const char *type)
-+{
-+    NPCM8xxClass *sc = NPCM8XX_CLASS(object_class_by_name(type));
-+    MachineClass *mc = MACHINE_CLASS(nmc);
-+
-+    nmc->soc_type = type;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus = sc->num_cpus;
-+}
-+
-+static void npcm8xx_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("cortex-a9"),
-+        NULL
-+    };
-+
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_parallel = 1;
-+    mc->default_ram_id = "ram";
-+    mc->valid_cpu_types = valid_cpu_types;
-+}
-+
-+static void npcm845_evb_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    NPCM8xxMachineClass *nmc = NPCM8XX_MACHINE_CLASS(oc);
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    npcm8xx_set_soc_type(nmc, TYPE_NPCM8XX);
-+
-+    mc->desc = "Nuvoton NPCM845 Evaluation Board (Cortex-A35)";
-+    mc->init = npcm845_evb_init;
-+    mc->default_ram_size = 1 * GiB;
++static const uint16_t npcm_pcs_sr_ctl_cold_reset_values[NPCM_PCS_NR_SR_CTLS] = {
++    [R_NPCM_PCS_SR_CTL_ID1]                 = 0x699e,
++    [R_NPCM_PCS_SR_CTL_STS]                 = 0x8000,
 +};
 +
-+static const TypeInfo npcm8xx_machine_types[] = {
-+    {
-+        .name           = TYPE_NPCM8XX_MACHINE,
-+        .parent         = TYPE_MACHINE,
-+        .instance_size  = sizeof(NPCM8xxMachine),
-+        .class_size     = sizeof(NPCM8xxMachineClass),
-+        .class_init     = npcm8xx_machine_class_init,
-+        .abstract       = true,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("npcm845-evb"),
-+        .parent         = TYPE_NPCM8XX_MACHINE,
-+        .class_init     = npcm845_evb_machine_class_init,
++static const uint16_t npcm_pcs_sr_mii_cold_reset_values[NPCM_PCS_NR_SR_MIIS] = {
++    [R_NPCM_PCS_SR_MII_CTRL]                = 0x1140,
++    [R_NPCM_PCS_SR_MII_STS]                 = 0x0109,
++    [R_NPCM_PCS_SR_MII_DEV_ID1]             = 0x699e,
++    [R_NPCM_PCS_SR_MII_DEV_ID2]             = 0xced0,
++    [R_NPCM_PCS_SR_MII_AN_ADV]              = 0x0020,
++    [R_NPCM_PCS_SR_MII_EXT_STS]             = 0xc000,
++};
++
++static const uint16_t npcm_pcs_sr_tim_cold_reset_values[NPCM_PCS_NR_SR_TIMS] = {
++    [R_NPCM_PCS_SR_TIM_SYNC_ABL]            = 0x0003,
++    [R_NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR] = 0x0038,
++    [R_NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR] = 0x0038,
++    [R_NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR] = 0x0058,
++    [R_NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR] = 0x0048,
++};
++
++static const uint16_t npcm_pcs_vr_mii_cold_reset_values[NPCM_PCS_NR_VR_MIIS] = {
++    [R_NPCM_PCS_VR_MII_MMD_DIG_CTRL1]         = 0x2400,
++    [R_NPCM_PCS_VR_MII_AN_INTR_STS]           = 0x000a,
++    [R_NPCM_PCS_VR_MII_EEE_MCTRL0]            = 0x899c,
++    [R_NPCM_PCS_VR_MII_DIG_STS]               = 0x0010,
++    [R_NPCM_PCS_VR_MII_MP_TX_BSTCTRL0]        = 0x000a,
++    [R_NPCM_PCS_VR_MII_MP_TX_LVLCTRL0]        = 0x007f,
++    [R_NPCM_PCS_VR_MII_MP_TX_GENCTRL0]        = 0x0001,
++    [R_NPCM_PCS_VR_MII_MP_RX_GENCTRL0]        = 0x0100,
++    [R_NPCM_PCS_VR_MII_MP_RX_GENCTRL1]        = 0x1100,
++    [R_NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0]       = 0x000e,
++    [R_NPCM_PCS_VR_MII_MP_MPLL_CTRL0]         = 0x0100,
++    [R_NPCM_PCS_VR_MII_MP_MPLL_CTRL1]         = 0x0032,
++    [R_NPCM_PCS_VR_MII_MP_MPLL_STS]           = 0x0001,
++    [R_NPCM_PCS_VR_MII_MP_LVL_CTRL]           = 0x0019,
++};
++
++static void npcm_pcs_soft_reset(NPCMPCSState *s)
++{
++    memcpy(s->sr_ctl, npcm_pcs_sr_ctl_cold_reset_values,
++           NPCM_PCS_NR_SR_CTLS * sizeof(uint16_t));
++    memcpy(s->sr_mii, npcm_pcs_sr_mii_cold_reset_values,
++           NPCM_PCS_NR_SR_MIIS * sizeof(uint16_t));
++    memcpy(s->sr_tim, npcm_pcs_sr_tim_cold_reset_values,
++           NPCM_PCS_NR_SR_TIMS * sizeof(uint16_t));
++    memcpy(s->vr_mii, npcm_pcs_vr_mii_cold_reset_values,
++           NPCM_PCS_NR_VR_MIIS * sizeof(uint16_t));
++}
++
++static uint16_t npcm_pcs_read_sr_ctl(NPCMPCSState *s, hwaddr offset)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_CTLS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_CTL read offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return 0;
++    }
++
++    return s->sr_ctl[regno];
++}
++
++static uint16_t npcm_pcs_read_sr_mii(NPCMPCSState *s, hwaddr offset)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_MIIS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_MII read offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return 0;
++    }
++
++    return s->sr_mii[regno];
++}
++
++static uint16_t npcm_pcs_read_sr_tim(NPCMPCSState *s, hwaddr offset)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_TIMS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_TIM read offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return 0;
++    }
++
++    return s->sr_tim[regno];
++}
++
++static uint16_t npcm_pcs_read_vr_mii(NPCMPCSState *s, hwaddr offset)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_VR_MIIS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: VR_MII read offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return 0;
++    }
++
++    return s->vr_mii[regno];
++}
++
++static void npcm_pcs_write_sr_ctl(NPCMPCSState *s, hwaddr offset, uint16_t v)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_CTLS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_CTL write offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return;
++    }
++
++    s->sr_ctl[regno] = v;
++}
++
++static void npcm_pcs_write_sr_mii(NPCMPCSState *s, hwaddr offset, uint16_t v)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_MIIS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_MII write offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return;
++    }
++
++    s->sr_mii[regno] = v;
++
++    if ((offset == A_NPCM_PCS_SR_MII_CTRL) && (v & NPCM_PCS_SR_MII_CTRL_RST)) {
++        /* Trigger a soft reset */
++        npcm_pcs_soft_reset(s);
++    }
++}
++
++static void npcm_pcs_write_sr_tim(NPCMPCSState *s, hwaddr offset, uint16_t v)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_SR_TIMS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SR_TIM write offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return;
++    }
++
++    s->sr_tim[regno] = v;
++}
++
++static void npcm_pcs_write_vr_mii(NPCMPCSState *s, hwaddr offset, uint16_t v)
++{
++    hwaddr regno = offset / sizeof(uint16_t);
++
++    if (regno >= NPCM_PCS_NR_VR_MIIS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: VR_MII write offset 0x%04" HWADDR_PRIx
++                      " is out of range.\n",
++                      DEVICE(s)->canonical_path, offset);
++        return;
++    }
++
++    s->vr_mii[regno] = v;
++}
++
++static uint64_t npcm_pcs_read(void *opaque, hwaddr offset, unsigned size)
++{
++    NPCMPCSState *s = opaque;
++    uint16_t v = 0;
++
++    if (offset == NPCM_PCS_IND_AC_BA) {
++        v = s->indirect_access_base;
++    } else {
++        switch (s->indirect_access_base) {
++        case NPCM_PCS_IND_SR_CTL:
++            v = npcm_pcs_read_sr_ctl(s, offset);
++            break;
++
++        case NPCM_PCS_IND_SR_MII:
++            v = npcm_pcs_read_sr_mii(s, offset);
++            break;
++
++        case NPCM_PCS_IND_SR_TIM:
++            v = npcm_pcs_read_sr_tim(s, offset);
++            break;
++
++        case NPCM_PCS_IND_VR_MII:
++            v = npcm_pcs_read_vr_mii(s, offset);
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Read with invalid indirect address base: 0x%"
++                          PRIx16 "\n", DEVICE(s)->canonical_path,
++                          s->indirect_access_base);
++        }
++    }
++
++    trace_npcm_pcs_reg_read(DEVICE(s)->canonical_path, s->indirect_access_base,
++                            offset, v);
++    return v;
++}
++
++static void npcm_pcs_write(void *opaque, hwaddr offset,
++                              uint64_t v, unsigned size)
++{
++    NPCMPCSState *s = opaque;
++
++    trace_npcm_pcs_reg_write(DEVICE(s)->canonical_path, s->indirect_access_base,
++                             offset, v);
++    if (offset == NPCM_PCS_IND_AC_BA) {
++        s->indirect_access_base = v;
++    } else {
++        switch (s->indirect_access_base) {
++        case NPCM_PCS_IND_SR_CTL:
++            npcm_pcs_write_sr_ctl(s, offset, v);
++            break;
++
++        case NPCM_PCS_IND_SR_MII:
++            npcm_pcs_write_sr_mii(s, offset, v);
++            break;
++
++        case NPCM_PCS_IND_SR_TIM:
++            npcm_pcs_write_sr_tim(s, offset, v);
++            break;
++
++        case NPCM_PCS_IND_VR_MII:
++            npcm_pcs_write_vr_mii(s, offset, v);
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Write with invalid indirect address base: 0x%02"
++                          PRIx16 "\n", DEVICE(s)->canonical_path,
++                          s->indirect_access_base);
++        }
++    }
++}
++
++static void npcm_pcs_enter_reset(Object *obj, ResetType type)
++{
++    NPCMPCSState *s = NPCM_PCS(obj);
++
++    npcm_pcs_soft_reset(s);
++}
++
++static const struct MemoryRegionOps npcm_pcs_ops = {
++    .read = npcm_pcs_read,
++    .write = npcm_pcs_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 2,
++        .max_access_size = 2,
++        .unaligned = false,
 +    },
 +};
 +
-+DEFINE_TYPES(npcm8xx_machine_types)
-diff --git a/include/hw/arm/npcm8xx.h b/include/hw/arm/npcm8xx.h
-index a32fbb035b..9812e6fa7e 100644
---- a/include/hw/arm/npcm8xx.h
-+++ b/include/hw/arm/npcm8xx.h
-@@ -51,6 +51,27 @@
- 
- #define NPCM8XX_NR_PWM_MODULES 3
- 
-+struct NPCM8xxMachine {
-+    MachineState        parent_obj;
++static void npcm_pcs_realize(DeviceState *dev, Error **errp)
++{
++    NPCMPCSState *pcs = NPCM_PCS(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
 +
-+    /*
-+     * PWM fan splitter. each splitter connects to one PWM output and
-+     * multiple MFT inputs.
-+     */
-+    SplitIRQ            fan_splitter[NPCM8XX_NR_PWM_MODULES *
-+                                     NPCM7XX_PWM_PER_MODULE];
++    memory_region_init_io(&pcs->iomem, OBJECT(pcs), &npcm_pcs_ops, pcs,
++                          TYPE_NPCM_PCS, 8 * KiB);
++    sysbus_init_mmio(sbd, &pcs->iomem);
++}
++
++static const VMStateDescription vmstate_npcm_pcs = {
++    .name = TYPE_NPCM_PCS,
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT16(indirect_access_base, NPCMPCSState),
++        VMSTATE_UINT16_ARRAY(sr_ctl, NPCMPCSState, NPCM_PCS_NR_SR_CTLS),
++        VMSTATE_UINT16_ARRAY(sr_mii, NPCMPCSState, NPCM_PCS_NR_SR_MIIS),
++        VMSTATE_UINT16_ARRAY(sr_tim, NPCMPCSState, NPCM_PCS_NR_SR_TIMS),
++        VMSTATE_UINT16_ARRAY(vr_mii, NPCMPCSState, NPCM_PCS_NR_VR_MIIS),
++        VMSTATE_END_OF_LIST(),
++    },
 +};
 +
++static void npcm_pcs_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+struct NPCM8xxMachineClass {
-+    MachineClass        parent_class;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    dc->desc = "NPCM PCS Controller";
++    dc->realize = npcm_pcs_realize;
++    dc->vmsd = &vmstate_npcm_pcs;
++    rc->phases.enter = npcm_pcs_enter_reset;
++}
 +
-+    const char          *soc_type;
++static const TypeInfo npcm_pcs_types[] = {
++    {
++        .name = TYPE_NPCM_PCS,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(NPCMPCSState),
++        .class_init = npcm_pcs_class_init,
++    },
++};
++DEFINE_TYPES(npcm_pcs_types)
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index c35bfb2eb8..72b69c4a8b 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -483,8 +483,8 @@ npcm_gmac_packet_tx_desc_data(const char* name, uint32_t tdes0, uint32_t tdes1)
+ npcm_gmac_tx_desc_owner(const char* name, uint32_t desc_addr) "%s: TX Descriptor @0x%04" PRIX32 " is owned by software"
+ 
+ # npcm_pcs.c
+-npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
+-npcm_pcs_reg_write(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
++npcm_pcs_reg_read(const char *name, uint16_t indirect_access_base, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
++npcm_pcs_reg_write(const char *name, uint16_t indirect_access_base, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
+ 
+ # dp8398x.c
+ dp8393x_raise_irq(int isr) "raise irq, isr is 0x%04x"
+diff --git a/include/hw/net/npcm_pcs.h b/include/hw/net/npcm_pcs.h
+new file mode 100644
+index 0000000000..d5c481ad70
+--- /dev/null
++++ b/include/hw/net/npcm_pcs.h
+@@ -0,0 +1,42 @@
++/*
++ * Nuvoton NPCM8xx PCS Module
++ *
++ * Copyright 2022 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#ifndef NPCM_PCS_H
++#define NPCM_PCS_H
++
++#include "hw/sysbus.h"
++
++#define NPCM_PCS_NR_SR_CTLS     (0x12 / sizeof(uint16_t))
++#define NPCM_PCS_NR_SR_MIIS     (0x20 / sizeof(uint16_t))
++#define NPCM_PCS_NR_SR_TIMS     (0x22 / sizeof(uint16_t))
++#define NPCM_PCS_NR_VR_MIIS     (0x1c6 / sizeof(uint16_t))
++
++struct NPCMPCSState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    uint16_t indirect_access_base;
++    uint16_t sr_ctl[NPCM_PCS_NR_SR_CTLS];
++    uint16_t sr_mii[NPCM_PCS_NR_SR_MIIS];
++    uint16_t sr_tim[NPCM_PCS_NR_SR_TIMS];
++    uint16_t vr_mii[NPCM_PCS_NR_VR_MIIS];
 +};
 +
-+#define TYPE_NPCM8XX_MACHINE MACHINE_TYPE_NAME("npcm8xx")
-+OBJECT_DECLARE_TYPE(NPCM8xxMachine, NPCM8xxMachineClass, NPCM8XX_MACHINE)
++#define TYPE_NPCM_PCS "npcm-pcs"
++OBJECT_DECLARE_SIMPLE_TYPE(NPCMPCSState, NPCM_PCS)
 +
- struct NPCM8xxState {
-     DeviceState         parent_obj;
- 
++#endif /* NPCM_PCS_H */
 -- 
 2.48.1.601.g30ceb7b040-goog
 

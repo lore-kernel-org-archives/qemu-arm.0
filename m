@@ -1,87 +1,87 @@
-Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1282254dlb;
-        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW1Yq9dXYlD/mK4fd2rT3aGmxi+iAqOjhkUJazAGc8VsV48GOg4CTTgN2FNmhy3lW70arFeZvWMnHFoEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbJGqsn7fXFdpG99q2QvZ1E0d5ZTwWz+PiC+GbIjtoHVa1fFyOtES/7y2mtaTTkX4q1XZG
-X-Received: by 2002:ac8:5d88:0:b0:472:9ea:8873 with SMTP id d75a77b69052e-47209ea8c3dmr15377641cf.9.1739949400233;
-        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739949400; cv=none;
+Received: by 2002:a05:7022:983:b0:97:989a:5032 with SMTP id bt3csp1282308dlb;
+        Tue, 18 Feb 2025 23:16:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV1sBra59hplorI3S7hlPvzEgDPROPaWVtel+khySkmczar8hYAFcbb1HgOSkd/D1JXX3FL/WMWZyZ2cQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGdWurornaatJ2djtoqgygZuJKFv2FSBXshu1vTCToY1ZzpgBgIEEa8ySZQvH94xcH/QwpC
+X-Received: by 2002:a05:620a:248f:b0:7c0:7d34:6a7b with SMTP id af79cd13be357-7c0b5234bb0mr314508885a.19.1739949409432;
+        Tue, 18 Feb 2025 23:16:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739949409; cv=none;
         d=google.com; s=arc-20240605;
-        b=YF1cVUV3A8VaiTcF1EQrxcUuk3cb/U58ei5DKmzIR8mlDgzrGAEHynF02W39jB44qA
-         Eo1H1ERz/ePVPv/M/nIRPlNFyQnyuuBgR/6SL9Wee0aIUwy/G0ejAwlhgECJuVBdiKe2
-         q5/fFtQARL0Qu7d8CeSA/GdXV9XnVudccnvG/e018U0xJsgQlP/sHosKHNOGDkpYPR42
-         C0Ycqe6RSy7h1+b8KzkAtXZPfyiqDck74lzQWp3goN7mLCDxsSo/a7ZiC2wpXg/Tf6Wc
-         EG+m9nbhQOuP+hvVI55Hs6InRztU225k8v8qALZDJ0DYcVho7XPy5DQ/TsnaDrwHbRiY
-         okKA==
+        b=UQPlLPGFu7y3JLHFyA8GJO95SwdzW9ixgUSKCsbpY9Vy1fuveTKvcvrSgaXq6DXL8e
+         Z5Pa/43T7Vq6oXoWv5crjNXbUV+MG2xLIfbW7woWC4loTgmvOloA6YUE9N+J/fidWYFF
+         HXJQdcO3crDcEsbLwd9ZspoZYXeBINYXkJUtRTbcHETLmKMOOUI3jjbvQLHoZKBxuZPg
+         R3d2ZcvU3+tcLt7DL8RYcWa3FWe0r9FXvh2mYKjt3xELUlB0w7zz7MBioATut1oTV9A4
+         drCknzu/RXPAfAra1HtAv+uIoa8MsvFog5VJn/nOhxZyBEHjpyVC2mLdEuJwndGQNtrF
+         HOzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
+        bh=dihYdzQJoxG55KPRUrzoXBvN3cz1o1fWZpT8/A+vLW4=;
         fh=KhXLSX8c6wVmhLa/nUuNp/bImSZbg0QIIf+cCdMOZ3k=;
-        b=BQ9uP1CYqCFr7brb8VxA02XuagB4SNACoMSAr9ebMPRVG8xmNK2BWS3ap73OhjIqsl
-         q+SXVerLqLm4iAmirIfVOALNghrMnPOm30da6lypBq1mrIqYvJ/exSwFXiDazZxSFlWR
-         Sk06Uitoc+ypi604tlQjgaEN8Be5haQ9GG2tEMkFmAnRzijvq0c9Oy50Vx021pYi/66D
-         2fCzCS/B45ct290++K6UU7Wu/+Lgb/dD8X9IZ4HvdBuh7VmvRx3myQ6o+/59Z7VOr5J6
-         C956TAwOjfhwe0K2zKyQx/0ecvJqpT5NNdEJvW3HfbxjX8zPn//C2fRDh14njYYWtbj8
-         0K6Q==;
+        b=ZuBu/n6MEKcukiIUbhswXHY1S9A7j8DQMbGcs5OqUYeOdVw2dJ0nqWAWC48bWZuhwR
+         ghzU0GjdFw5KsiroMWk6MehSucEmBBD+xC2v7sCUkA6tZeSMQfyzRSjrWY3iwn4zU4+W
+         pWw5HkJIvXmASLDY76CpvQ27ViM8OTHtM6C2VsGM1viE4UnNu0+6wn6ZfH77P3EIvWwj
+         BtP1XjrvMPKYat2vK2dy4XKMlLNuySzz29DrXCPgiNNVI6WSNPe7ShpMYBwORGKpGCi6
+         pr+lP9iAjtpG4+HSghI9yxHo+p10AIe1UmXZDXUHAHEJYMDRL9DWDdTSzsGtvyD0B2CT
+         356g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qdgwc4SW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U0cQAOX6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47200e8da3asi27563091cf.143.2025.02.18.23.16.40
+        by mx.google.com with ESMTPS id af79cd13be357-7c0a5935d68si417824085a.331.2025.02.18.23.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2025 23:16:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2025 23:16:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qdgwc4SW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U0cQAOX6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tkeJw-0004OR-PR; Wed, 19 Feb 2025 02:16:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tkeJY-0003P8-8I; Wed, 19 Feb 2025 02:16:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeId-0002RG-Hz
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:20 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIR-0002KL-Gv
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:04 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIT-0005GU-SM
- for qemu-devel@nongnu.org; Wed, 19 Feb 2025 02:15:08 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tkeIL-000527-8v
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2025 02:15:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1739949304;
+ s=mimecast20190719; t=1739949295;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
- b=Qdgwc4SWzpRS0qnCaVgR1vY8Y9o1T6nZ2HAZ1BBdM1W+hD8FZIvUlKwQJB7QARGuDmUx9h
- V4bWW8Pi9H2jWqKpW4Pau2FitBlDYgpF3sXvfa8pW0U0K1DabI+FRh14Z3eTpt5RXL39uh
- UquGN2Wx+K72pMdNX3BCDYBT7+2hWWk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=dihYdzQJoxG55KPRUrzoXBvN3cz1o1fWZpT8/A+vLW4=;
+ b=U0cQAOX66M/YisqKBHARFy9stTxJLB8k6l2PHlVeZb/MJSGAIVelZx1DPG2TDQCvN7Odia
+ jADleW9Ba9qRVSIWr313JDa//1rlgt6WNQ7kx+5vJn+7OtiiI/s4KQK8RurovJe+PphBvG
+ k0FpWvGpTSwgUbrIM3qNSQ8n9RiCOdU=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-21Woik8nO_iNfy2Wu3mhOw-1; Wed,
- 19 Feb 2025 02:15:00 -0500
-X-MC-Unique: 21Woik8nO_iNfy2Wu3mhOw-1
-X-Mimecast-MFC-AGG-ID: 21Woik8nO_iNfy2Wu3mhOw_1739949299
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-1JRYKyyEPsGd9uWKVPgDSg-1; Wed,
+ 19 Feb 2025 02:14:50 -0500
+X-MC-Unique: 1JRYKyyEPsGd9uWKVPgDSg-1
+X-Mimecast-MFC-AGG-ID: 1JRYKyyEPsGd9uWKVPgDSg_1739949288
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 12E501800981; Wed, 19 Feb 2025 07:14:59 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3B2D218EB2C9; Wed, 19 Feb 2025 07:14:48 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.78])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BE2EA300019F; Wed, 19 Feb 2025 07:14:57 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 25CC81800940; Wed, 19 Feb 2025 07:14:47 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id CAEC01801AA4; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
+ id 503631801A91; Wed, 19 Feb 2025 08:14:32 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
@@ -96,14 +96,14 @@ Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  graf@amazon.com, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v4 13/24] hw/uefi: add var-service-siglist.c
-Date: Wed, 19 Feb 2025 08:14:15 +0100
-Message-ID: <20250219071431.50626-14-kraxel@redhat.com>
+Subject: [PATCH v4 06/24] hw/uefi: add var-service-utils.c
+Date: Wed, 19 Feb 2025 08:14:08 +0100
+Message-ID: <20250219071431.50626-7-kraxel@redhat.com>
 In-Reply-To: <20250219071431.50626-1-kraxel@redhat.com>
 References: <20250219071431.50626-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -113,251 +113,278 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.423,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vFL6QPN5DHbt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p7IM3yz1ujiq
 
-Functions to serialize and de-serialize EFI signature databases.  This
-is needed to merge signature databases (happens in practice when
-appending dbx updates) and also to extract the certificates for
-pkcs7 signature verification.
+Add utility functions.  Helpers for UEFI (ucs2) string handling.
+Helpers for readable trace messages.  Compare UEFI time stamps.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-siglist.c | 212 ++++++++++++++++++++++++++++++++++
- 1 file changed, 212 insertions(+)
- create mode 100644 hw/uefi/var-service-siglist.c
+ hw/uefi/var-service-utils.c | 241 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 241 insertions(+)
+ create mode 100644 hw/uefi/var-service-utils.c
 
-diff --git a/hw/uefi/var-service-siglist.c b/hw/uefi/var-service-siglist.c
+diff --git a/hw/uefi/var-service-utils.c b/hw/uefi/var-service-utils.c
 new file mode 100644
-index 000000000000..8948f1b78471
+index 000000000000..c9ef46570f48
 --- /dev/null
-+++ b/hw/uefi/var-service-siglist.c
-@@ -0,0 +1,212 @@
++++ b/hw/uefi/var-service-utils.c
+@@ -0,0 +1,241 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - parse and generate efi signature databases
++ * uefi vars device - helper functions for ucs2 strings and tracing
 + */
-+
 +#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
 +#include "system/dma.h"
 +
 +#include "hw/uefi/var-service.h"
 +
-+/*
-+ * Add x509 certificate to list (with duplicate check).
-+ */
-+static void uefi_vars_siglist_add_x509(uefi_vars_siglist *siglist,
-+                                       QemuUUID *owner,
-+                                       void *data, uint64_t size)
-+{
-+    uefi_vars_cert *c;
++#include "trace/trace-hw_uefi.h"
 +
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        if (c->size != size) {
-+            continue;
-+        }
-+        if (memcmp(c->data, data, size) != 0) {
-+            continue;
-+        }
-+        return;
-+    }
-+
-+    c = g_malloc(sizeof(*c) + size);
-+    c->owner = *owner;
-+    c->size = size;
-+    memcpy(c->data, data, size);
-+    QTAILQ_INSERT_TAIL(&siglist->x509, c, next);
-+}
++/* ------------------------------------------------------------------ */
 +
 +/*
-+ * Add sha256 hash to list (with duplicate check).
++ * string helper functions.
++ *
++ * Most of the time uefi ucs2 strings are NULL-terminated, except
++ * sometimes when they are not (for example in variable policies).
 + */
-+static void uefi_vars_siglist_add_sha256(uefi_vars_siglist *siglist,
-+                                         QemuUUID *owner,
-+                                         void *data)
-+{
-+    uefi_vars_hash *h;
 +
-+    QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+        if (memcmp(h->data, data, 32) != 0) {
-+            continue;
++gboolean uefi_str_is_valid(const uint16_t *str, size_t len,
++                           gboolean must_be_null_terminated)
++{
++    size_t pos = 0;
++
++    for (;;) {
++        if (pos == len) {
++            if (must_be_null_terminated) {
++                return false;
++            } else {
++                return true;
++            }
 +        }
-+        return;
-+    }
-+
-+    h = g_malloc(sizeof(*h) + 32);
-+    h->owner = *owner;
-+    memcpy(h->data, data, 32);
-+    QTAILQ_INSERT_TAIL(&siglist->sha256, h, next);
-+}
-+
-+void uefi_vars_siglist_init(uefi_vars_siglist *siglist)
-+{
-+    memset(siglist, 0, sizeof(*siglist));
-+    QTAILQ_INIT(&siglist->x509);
-+    QTAILQ_INIT(&siglist->sha256);
-+}
-+
-+void uefi_vars_siglist_free(uefi_vars_siglist *siglist)
-+{
-+    uefi_vars_cert *c, *cs;
-+    uefi_vars_hash *h, *hs;
-+
-+    QTAILQ_FOREACH_SAFE(c, &siglist->x509, next, cs) {
-+        QTAILQ_REMOVE(&siglist->x509, c, next);
-+        g_free(c);
-+    }
-+    QTAILQ_FOREACH_SAFE(h, &siglist->sha256, next, hs) {
-+        QTAILQ_REMOVE(&siglist->sha256, h, next);
-+        g_free(h);
++        switch (str[pos]) {
++        case 0:
++            /* end of string */
++            return true;
++        case 0xd800 ... 0xdfff:
++            /* reject surrogates */
++            return false;
++        default:
++            /* char is good, check next */
++            break;
++        }
++        pos++;
 +    }
 +}
 +
-+/*
-+ * Parse UEFI signature list.
-+ */
-+void uefi_vars_siglist_parse(uefi_vars_siglist *siglist,
-+                             void *data, uint64_t size)
++size_t uefi_strlen(const uint16_t *str, size_t len)
 +{
-+    efi_siglist *efilist;
-+    uint64_t start;
++    size_t pos = 0;
 +
-+    while (size) {
-+        if (size < sizeof(*efilist)) {
-+            break;
++    for (;;) {
++        if (pos == len) {
++            return pos;
 +        }
-+        efilist = data;
-+        if (size < efilist->siglist_size) {
-+            break;
++        if (str[pos] == 0) {
++            return pos;
++        }
++        pos++;
++    }
++}
++
++gboolean uefi_str_equal_ex(const uint16_t *a, size_t alen,
++                           const uint16_t *b, size_t blen,
++                           gboolean wildcards_in_a)
++{
++    size_t pos = 0;
++
++    alen = alen / 2;
++    blen = blen / 2;
++    for (;;) {
++        if (pos == alen && pos == blen) {
++            return true;
++        }
++        if (pos == alen && b[pos] == 0) {
++            return true;
++        }
++        if (pos == blen && a[pos] == 0) {
++            return true;
++        }
++        if (pos == alen || pos == blen) {
++            return false;
++        }
++        if (a[pos] == 0 && b[pos] == 0) {
++            return true;
 +        }
 +
-+        if (uadd64_overflow(sizeof(*efilist), efilist->header_size, &start)) {
-+            break;
-+        }
-+        if (efilist->sig_size <= sizeof(QemuUUID)) {
-+            break;
-+        }
-+
-+        if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertX509Guid)) {
-+            if (start + efilist->sig_size != efilist->siglist_size) {
-+                break;
++        if (wildcards_in_a && a[pos] == '#') {
++            if (!isxdigit(b[pos])) {
++                return false;
 +            }
-+            uefi_vars_siglist_add_x509(siglist,
-+                                       (QemuUUID *)(data + start),
-+                                       data + start + sizeof(QemuUUID),
-+                                       efilist->sig_size - sizeof(QemuUUID));
-+
-+        } else if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertSha256Guid)) {
-+            if (efilist->sig_size != sizeof(QemuUUID) + 32) {
-+                break;
-+            }
-+            if (start + efilist->sig_size > efilist->siglist_size) {
-+                break;
-+            }
-+            while (start <= efilist->siglist_size - efilist->sig_size) {
-+                uefi_vars_siglist_add_sha256(siglist,
-+                                             (QemuUUID *)(data + start),
-+                                             data + start + sizeof(QemuUUID));
-+                start += efilist->sig_size;
-+            }
-+
 +        } else {
-+            QemuUUID be = qemu_uuid_bswap(efilist->guid_type);
-+            char *str_uuid = qemu_uuid_unparse_strdup(&be);
-+            warn_report("%s: unknown type (%s)", __func__, str_uuid);
-+            g_free(str_uuid);
++            if (a[pos] != b[pos]) {
++                return false;
++            }
 +        }
-+
-+        data += efilist->siglist_size;
-+        size -= efilist->siglist_size;
++        pos++;
 +    }
 +}
 +
-+uint64_t uefi_vars_siglist_blob_size(uefi_vars_siglist *siglist)
++gboolean uefi_str_equal(const uint16_t *a, size_t alen,
++                        const uint16_t *b, size_t blen)
 +{
-+    uefi_vars_cert *c;
-+    uefi_vars_hash *h;
-+    uint64_t size = 0;
-+
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        size += sizeof(efi_siglist) + sizeof(QemuUUID) + c->size;
-+    }
-+
-+    if (!QTAILQ_EMPTY(&siglist->sha256)) {
-+        size += sizeof(efi_siglist);
-+        QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+            size += sizeof(QemuUUID) + 32;
-+        }
-+    }
-+
-+    return size;
++    return uefi_str_equal_ex(a, alen, b, blen, false);
 +}
 +
-+/*
-+ * Generate UEFI signature list.
-+ */
-+void uefi_vars_siglist_blob_generate(uefi_vars_siglist *siglist,
-+                                     void *data, uint64_t size)
++char *uefi_ucs2_to_ascii(const uint16_t *ucs2, uint64_t ucs2_size)
 +{
-+    uefi_vars_cert *c;
-+    uefi_vars_hash *h;
-+    efi_siglist *efilist;
-+    uint64_t pos = 0, start;
-+    uint32_t i;
++    char *str = g_malloc0(ucs2_size / 2 + 1);
++    int i;
 +
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        efilist = data + pos;
-+        efilist->guid_type = EfiCertX509Guid;
-+        efilist->sig_size = sizeof(QemuUUID) + c->size;
-+        efilist->header_size = 0;
-+
-+        start = pos + sizeof(efi_siglist);
-+        memcpy(data + start,
-+               &c->owner, sizeof(QemuUUID));
-+        memcpy(data + start + sizeof(QemuUUID),
-+               c->data, c->size);
-+
-+        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size;
-+        pos += efilist->siglist_size;
-+    }
-+
-+    if (!QTAILQ_EMPTY(&siglist->sha256)) {
-+        efilist = data + pos;
-+        efilist->guid_type = EfiCertSha256Guid;
-+        efilist->sig_size = sizeof(QemuUUID) + 32;
-+        efilist->header_size = 0;
-+
-+        i = 0;
-+        start = pos + sizeof(efi_siglist);
-+        QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+            memcpy(data + start + efilist->sig_size * i,
-+                   &h->owner, sizeof(QemuUUID));
-+            memcpy(data + start + efilist->sig_size * i + sizeof(QemuUUID),
-+                   h->data, 32);
-+            i++;
++    for (i = 0; i * 2 < ucs2_size; i++) {
++        if (ucs2[i] == 0) {
++            break;
 +        }
++        if (ucs2[i] < 128) {
++            str[i] = ucs2[i];
++        } else {
++            str[i] = '?';
++        }
++    }
++    str[i] = 0;
++    return str;
++}
 +
-+        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size * i;
-+        pos += efilist->siglist_size;
++/* ------------------------------------------------------------------ */
++/* time helper functions                                              */
++
++int uefi_time_compare(efi_time *a, efi_time *b)
++{
++    if (a->year < b->year) {
++        return -1;
++    }
++    if (a->year > b->year) {
++        return 1;
 +    }
 +
-+    assert(pos == size);
++    if (a->month < b->month) {
++        return -1;
++    }
++    if (a->month > b->month) {
++        return 1;
++    }
++
++    if (a->day < b->day) {
++        return -1;
++    }
++    if (a->day > b->day) {
++        return 1;
++    }
++
++    if (a->hour < b->hour) {
++        return -1;
++    }
++    if (a->hour > b->hour) {
++        return 1;
++    }
++
++    if (a->minute < b->minute) {
++        return -1;
++    }
++    if (a->minute > b->minute) {
++        return 1;
++    }
++
++    if (a->second < b->second) {
++        return -1;
++    }
++    if (a->second > b->second) {
++        return 1;
++    }
++
++    if (a->nanosecond < b->nanosecond) {
++        return -1;
++    }
++    if (a->nanosecond > b->nanosecond) {
++        return 1;
++    }
++
++    return 0;
++}
++
++/* ------------------------------------------------------------------ */
++/* tracing helper functions                                           */
++
++void uefi_trace_variable(const char *action, QemuUUID guid,
++                         const uint16_t *name, uint64_t name_size)
++{
++    QemuUUID be = qemu_uuid_bswap(guid);
++    char *str_uuid = qemu_uuid_unparse_strdup(&be);
++    char *str_name = uefi_ucs2_to_ascii(name, name_size);
++
++    trace_uefi_variable(action, str_name, name_size, str_uuid);
++
++    g_free(str_name);
++    g_free(str_uuid);
++}
++
++void uefi_trace_status(const char *action, efi_status status)
++{
++    switch (status) {
++    case EFI_SUCCESS:
++        trace_uefi_status(action, "success");
++        break;
++    case EFI_INVALID_PARAMETER:
++        trace_uefi_status(action, "invalid parameter");
++        break;
++    case EFI_UNSUPPORTED:
++        trace_uefi_status(action, "unsupported");
++        break;
++    case EFI_BAD_BUFFER_SIZE:
++        trace_uefi_status(action, "bad buffer size");
++        break;
++    case EFI_BUFFER_TOO_SMALL:
++        trace_uefi_status(action, "buffer too small");
++        break;
++    case EFI_WRITE_PROTECTED:
++        trace_uefi_status(action, "write protected");
++        break;
++    case EFI_OUT_OF_RESOURCES:
++        trace_uefi_status(action, "out of resources");
++        break;
++    case EFI_NOT_FOUND:
++        trace_uefi_status(action, "not found");
++        break;
++    case EFI_ACCESS_DENIED:
++        trace_uefi_status(action, "access denied");
++        break;
++    case EFI_ALREADY_STARTED:
++        trace_uefi_status(action, "already started");
++        break;
++    case EFI_SECURITY_VIOLATION:
++        trace_uefi_status(action, "security violation");
++        break;
++    default:
++        trace_uefi_status(action, "unknown error");
++        break;
++    }
 +}
 -- 
 2.48.1

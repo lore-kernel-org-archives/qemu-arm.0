@@ -1,103 +1,106 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1554353njb;
-        Wed, 19 Feb 2025 10:49:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbp4Wj6eMrMBwE3O6EpsnzpL5ZhToHuzZsfxBtaczf5TcWb999AlPZreWatZ8SbEdfTtbheb2D9ln+wg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG6x/Lk0NlQvZrd3zr7l3DpniGShYd6AWjRmOM2HIrcprtlbjvpk0mPYdg1OLCyWoL7saNY
-X-Received: by 2002:a05:6214:1d25:b0:6e6:69e4:825e with SMTP id 6a1803df08f44-6e6a260ea16mr4632726d6.21.1739990969779;
-        Wed, 19 Feb 2025 10:49:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739990969; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1554380njb;
+        Wed, 19 Feb 2025 10:49:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXTepfP9hznvJxsBWOOlL+GCW7nEkLFeBWdp9qRVNWi3FZAiKW4TUh0SmKuKzhQhb7LFiSidsZqVLMMUg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHfWcnmEhoAz6r6bRhwcy2oIuyXiw3Nj+QmcxRAThiHMR3aArilkBioBVRHmRlCD7NC4tTN
+X-Received: by 2002:ac8:7f0e:0:b0:472:15d6:837d with SMTP id d75a77b69052e-47215d684fbmr323841cf.51.1739990972185;
+        Wed, 19 Feb 2025 10:49:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1739990972; cv=none;
         d=google.com; s=arc-20240605;
-        b=ctgnauVmPADDCa7y/jXd16MMgcEPOXEUPWUpG0B40Unrdb2C7zBp9uIEVOTXIQ9lef
-         tFhTJAPUK+Fh9zWV1b3mytLd3zgPVryOmsBH2/4cTTs7eOEc8Ysf84OcQpUb4jYFkNd+
-         7nczTACLTCrST4i3fPlEZ4M9GKJkGH0tKGTfdjcYwr5tGBngbFvX6i8bNoc/aym3Qn+V
-         qcmDhdjddkqB1CKBfmoVbdfPhc8x7mZY4XlXbV9BbmPWTButghP+b8rt5WgCVeCm4fGk
-         oS3Wf3OoA3OMJSrUd5+YK37cnh58vyCznl4ftt8h/8XnEhbRc2CqGJIDvBqWhxTJnw0a
-         n1Bw==
+        b=QZDWLL+YppW5S7HN7mlkeK/+ibg4LqTtEp7m3W0jtoCZZWtzD8VHb7jsdVyYx53A+Y
+         paMAAX3Ua8zfk6lS7kfUYcSxZkzXgQAfPVzkSl2/2rUMe6nvXNf9quqA1ClpyKtQTSa2
+         AkKqEXBTZBJisq543pq96+hC8EqUXuLKqeXRewu2pCAX61kmt8lKJ2t6NMmTc6Qqz8Du
+         1gOBA3SraJSesp8V1rmp8GDbyUg6Zau9JFjId0Yc5KWen5Oq9775rIwiXPGfZj9lnC8T
+         xQmNx8tiobw1IWb7au9xWfDB0tBmK0SuH31W9RCmrRG8eHjKcwW33q6EuK9Sdc2zP/UO
+         ibTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=DOX2NXbz0HslYt+n1dFJGvqfvtJ8wmCtAwMzsry5EDQ=;
-        fh=biy2AaKCbwpAZ/Lk7Qechxb9C3WSrIx4CYh+Y6obQL0=;
-        b=UXsxddR1Db2eQqVPqDZ1ruPMDv5eSNsC2QK5kI7Hc02n+wKUDbjTxVTJoBn5t5YPjX
-         KVR31ogcCpQaTIDmWKc8L902UCHuzZp0b4mbA80kiS1utjksjHvtIzAfKjVgvniOehHM
-         Rf0eDxjk18g61ME/rE06qdwPCn7fN3ZH1L/nXbif+A7sjhJ3Pih2UIcIGJ5gpyUdRPCs
-         BC1zr0jjCHuj6KE/o7j4VizTyR2o9wirTRUcKv5be+Fi71xucQFA1MHSVJiTV/w17Rqz
-         MQeNSObfU/TpCxkOzYAb/PnNa4lggNcm/qfBBQzpD+7FPfumVL4Hvc53UOL3n60lBHYH
-         +YGQ==;
+        bh=ipQdIA04T744C2J6dFE/7rZXfs1YEtRcQyXL2+84upE=;
+        fh=frXJpLgHjaSBlf/uF991n0QrzzgIZYfn8Ny/7qWu6uQ=;
+        b=M4PkuGIw1+HGf6DPv8XsmM+PDHvzopvAxq2SzZr17IsVISV03KBj2TfK10Vs5eUatP
+         PAh2kqbsvmVX6M92Uf2/CGrzeLTGbP43WsGd8u7m5PH4uj9ffQAOTgBc0dd+FG2znLkU
+         h7lklFo2tN4J7DHaXQb4y4TF707i9yYohJKJzKois5yPXH8zhEoEqPxEkX+EdQsoIXwr
+         KONQ+Fi6h38mByQWP2F1csWX/FMbq/lILGvQHWCmxXe9BW4BRtlVwF6V2m/bDiEZ+EUa
+         hYnPepUOyWmKQ+4gWOccAzNhvsJAj6BKtxtU71EJsHSyGsKZRAvQC2CrfPAoKHdvK9AN
+         EA4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="h/R4yYys";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=dPyqvAKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9cfc29si131214866d6.469.2025.02.19.10.49.29
+        by mx.google.com with ESMTPS id d75a77b69052e-471ee641dabsi67831311cf.640.2025.02.19.10.49.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2025 10:49:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Feb 2025 10:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="h/R4yYys";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=dPyqvAKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkp6W-0003bh-Hg; Wed, 19 Feb 2025 13:47:28 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tkp6Q-0003L4-TG; Wed, 19 Feb 2025 13:47:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3FSe2ZwgKCIA0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com>)
- id 1tkp5v-00035x-2V
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 13:46:58 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ <3Eye2ZwgKCn4ywjcqvujiqqing.eqosgow-fgxgnpqpipw.qti@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp5s-00034W-Oy
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:48 -0500
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3FSe2ZwgKCIA0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com>)
- id 1tkp5r-0004nv-Eg
- for qemu-arm@nongnu.org; Wed, 19 Feb 2025 13:46:50 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2f46b7851fcso302273a91.1
- for <qemu-arm@nongnu.org>; Wed, 19 Feb 2025 10:46:46 -0800 (PST)
+ <3Eye2ZwgKCn4ywjcqvujiqqing.eqosgow-fgxgnpqpipw.qti@flex--wuhaotsh.bounces.google.com>)
+ id 1tkp5q-0004nG-TU
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2025 13:46:48 -0500
+Received: by mail-pl1-x649.google.com with SMTP id
+ d9443c01a7336-221063a808dso822685ad.1
+ for <qemu-devel@nongnu.org>; Wed, 19 Feb 2025 10:46:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1739990806; x=1740595606; darn=nongnu.org;
+ d=google.com; s=20230601; t=1739990804; x=1740595604; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=DOX2NXbz0HslYt+n1dFJGvqfvtJ8wmCtAwMzsry5EDQ=;
- b=h/R4yYys6UQR3RlgOXQTF5GVP+9f+ppZ2MMYxj3O8RDZMXjX4f9GWUwJeTlHie350j
- 8mnGgoa0hon976Yw/yFzvsy74dzQtw1+GOGtcesBcFxuiaZnaZis/+pLyVoVdNm3oz7U
- 85EQ5WhRLoltqYy2ilDWci0wQdO5fF3LUyA/IdhV0vmNKgMaiuPnZ9zrKDatZIpNeKNV
- 2h/whTzspCGd8BdbPYUDSSlSQvStF7cjOMiIAonznqE3Pd8LRCFHsCfPRGFXn/fvGbzY
- GGneHfzvt4HHwaj+Bm+WxyQGXZkP9ATF29FV4h7bmrUcTueDE1I6NE9d3OMpTWPyHrW/
- 9nVA==
+ bh=ipQdIA04T744C2J6dFE/7rZXfs1YEtRcQyXL2+84upE=;
+ b=dPyqvAKwGrvQdrc0IEnvRYuYvFchCC/X9Uqo9yWMCAzrSSmC3rjNyCTtUIrm0IoNC6
+ Ji8+nYniwCseSLcggEUS2gVBhI66xcDTKdq4OEglg6hCZX3/aYoZd+0+S2BNljKOfgt1
+ 733lL6F9WjQbJGhZcZEOgCKaJ3+bdLAGrAJm3U8gZnFqJ3MT6JpPg4AGgG1QhPtYWTw2
+ WJAFkj1wPeqjHWIjaHoP1oR9zVYkzkQD41R9uSmgIqgAcwyl+WXjKx7DadbzCwE1J1FS
+ 1UZbbJAZTFGqhr2jFOW772N3aqEJe7SKBp0Tx4ByssmuJ0y1Vq07wP58yb3yeCby+vGD
+ H0Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739990806; x=1740595606;
+ d=1e100.net; s=20230601; t=1739990804; x=1740595604;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DOX2NXbz0HslYt+n1dFJGvqfvtJ8wmCtAwMzsry5EDQ=;
- b=Jf3DMztC8f2q11E6/UsBJJ8VCJd5tchjUVgXgCPwMKItwPyEmHyjfNu9RAXzrkLM1Q
- NA5QSPcaiDo9dYLH1rb0XAjN95snJVZnIj0lmXNHZKugCbm2QKjUr8j6ihO2bRaz46hE
- +wIA2w08vKzadRXZzJtEXWCsj4V46Q1nBqg2iomc7mGOqeOO7t5pGJ58zHjrOJ4WtH8d
- rYcakDZeNeqzBTqTj9jVirl8XmI8OcWkt8v6ufJ5aIiEIzXeZC48d3RnVvad2OBu7x7M
- VJKTPH/RwOeljfQEaSj+NXtvE34sXlNrRcPdcrh1Il1WFaSksvM1b8nUYuxYCmOUyLIC
- 6MzA==
-X-Gm-Message-State: AOJu0YxEyzsA2i6xywa4J9KKXWfrfGgwBpDSEjI39GECEhdjBgNEqcON
- ddFPZk/6Bgecojz/+fKHCQQwxfsXugjoIJx5XoUnMNyjrRVSXwcvLQM9AG7JQHutdxYGDht+inL
- nBQ01fCNfoQ==
-X-Received: from pjbpd16.prod.google.com ([2002:a17:90b:1dd0:b0:2ef:8055:93d9])
+ bh=ipQdIA04T744C2J6dFE/7rZXfs1YEtRcQyXL2+84upE=;
+ b=Dc+DbUH8zLtvzI0C+1ebp9d7d4h6HScHVaANup0joN3JhKCmT/j5SmmlwaYlVOr1xP
+ LDoi+lQr2Lofhef7ubIscePctey5KTzbskGdXyKmzvhuZf4/stQfbl4/G4I9pL+e42Rx
+ ft+YfcODBG6oZDbIvszVmIQkb2Qievk002ZRLqz4dDTZNKoIqbbOP/oOij3xqXglRfKQ
+ eQWaOBZm1EqgzwQ1FlTUmFgV+7l+wiuST1My4WQ40cEfYOGKZHqqAG3U92drgUhgtQJV
+ EW4AXmX2fdn5SHulEJ7jHKMewV75dHEDsTdV3GoHuei++4Rvc+OyOGSOlHJLhXZOhmIr
+ djqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXhan4hGQqqx7GAQLGliFr44iFNQjah8UBN0lrL5YWaou6zDU2EgTblJlwkkhdLExql4+GHfelktV68@nongnu.org
+X-Gm-Message-State: AOJu0YyKaE4jGSnJcY25bANudPNDqYxqrY623skuS0feXveJPU9szTNe
+ HLMOvPoKP13+UYU1viRMCn6gVQtdn6rXnGzic2H25an2LFH/W0Vbi7dZlglDVKwBX+pGWmkAr6r
+ Y0QYDPpCwrQ==
+X-Received: from pjbpl7.prod.google.com ([2002:a17:90b:2687:b0:2f4:4222:ebba])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:5546:b0:2ee:f80c:6892 with SMTP id
- 98e67ed59e1d1-2fc40c1a7f6mr28386527a91.3.1739990805743; 
- Wed, 19 Feb 2025 10:46:45 -0800 (PST)
-Date: Wed, 19 Feb 2025 10:46:04 -0800
+ 2002:a17:902:e841:b0:21f:860:6d0d with SMTP id
+ d9443c01a7336-22103efb488mr324146705ad.5.1739990803946; 
+ Wed, 19 Feb 2025 10:46:43 -0800 (PST)
+Date: Wed, 19 Feb 2025 10:46:03 -0800
 In-Reply-To: <20250219184609.1839281-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20250219184609.1839281-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.48.1.601.g30ceb7b040-goog
-Message-ID: <20250219184609.1839281-14-wuhaotsh@google.com>
-Subject: [PATCH v5 13/17] hw/misc: Support NPCM8XX CLK Module Registers
+Message-ID: <20250219184609.1839281-13-wuhaotsh@google.com>
+Subject: [PATCH v5 12/17] hw/misc: Add nr_regs and cold_reset_values to NPCM
+ CLK
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -106,262 +109,160 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  chli30@nuvoton.corp-partner.google.com, pbonzini@redhat.com, 
  jasowang@redhat.com, alistair@alistair23.me, philmd@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3FSe2ZwgKCIA0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3Eye2ZwgKCn4ywjcqvujiqqing.eqosgow-fgxgnpqpipw.qti@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x649.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ukqMnWmyuewI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fig9QmsuJR7P
 
-NPCM8XX adds a few new registers and have a different set of reset
-values to the CLK modules. This patch supports them.
+These 2 values are different between NPCM7XX and NPCM8XX
+CLKs. So we add them to the class and assign different values
+to them.
 
-This patch doesn't support the new clock values generated by these
-registers. Currently no modules use these new clock values so they
-are not necessary at this point.
-Implementation of these clocks might be required when implementing
-these modules.
-
-Reviewed-by: Titus Rwantare <titusr@google.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/misc/npcm_clk.c         | 117 +++++++++++++++++++++++++++++++++++--
- include/hw/misc/npcm_clk.h |  10 +++-
- 2 files changed, 119 insertions(+), 8 deletions(-)
+ hw/misc/npcm_clk.c         | 18 ++++++++++++------
+ hw/misc/npcm_gcr.c         |  2 ++
+ include/hw/misc/npcm_clk.h |  9 ++++++++-
+ 3 files changed, 22 insertions(+), 7 deletions(-)
 
 diff --git a/hw/misc/npcm_clk.c b/hw/misc/npcm_clk.c
-index 78144b14e3..d1f29759d5 100644
+index 0ecf0df3bb..78144b14e3 100644
 --- a/hw/misc/npcm_clk.c
 +++ b/hw/misc/npcm_clk.c
-@@ -1,5 +1,5 @@
- /*
-- * Nuvoton NPCM7xx Clock Control Registers.
-+ * Nuvoton NPCM7xx/8xx Clock Control Registers.
-  *
-  * Copyright 2020 Google LLC
-  *
-@@ -72,7 +72,57 @@ enum NPCM7xxCLKRegisters {
-     NPCM7XX_CLK_AHBCKFI,
-     NPCM7XX_CLK_SECCNT,
-     NPCM7XX_CLK_CNTR25M,
--    NPCM7XX_CLK_REGS_END,
-+};
-+
-+enum NPCM8xxCLKRegisters {
-+    NPCM8XX_CLK_CLKEN1,
-+    NPCM8XX_CLK_CLKSEL,
-+    NPCM8XX_CLK_CLKDIV1,
-+    NPCM8XX_CLK_PLLCON0,
-+    NPCM8XX_CLK_PLLCON1,
-+    NPCM8XX_CLK_SWRSTR,
-+    NPCM8XX_CLK_IPSRST1         = 0x20 / sizeof(uint32_t),
-+    NPCM8XX_CLK_IPSRST2,
-+    NPCM8XX_CLK_CLKEN2,
-+    NPCM8XX_CLK_CLKDIV2,
-+    NPCM8XX_CLK_CLKEN3,
-+    NPCM8XX_CLK_IPSRST3,
-+    NPCM8XX_CLK_WD0RCR,
-+    NPCM8XX_CLK_WD1RCR,
-+    NPCM8XX_CLK_WD2RCR,
-+    NPCM8XX_CLK_SWRSTC1,
-+    NPCM8XX_CLK_SWRSTC2,
-+    NPCM8XX_CLK_SWRSTC3,
-+    NPCM8XX_CLK_TIPRSTC,
-+    NPCM8XX_CLK_PLLCON2,
-+    NPCM8XX_CLK_CLKDIV3,
-+    NPCM8XX_CLK_CORSTC,
-+    NPCM8XX_CLK_PLLCONG,
-+    NPCM8XX_CLK_AHBCKFI,
-+    NPCM8XX_CLK_SECCNT,
-+    NPCM8XX_CLK_CNTR25M,
-+    /* Registers unique to NPCM8XX SoC */
-+    NPCM8XX_CLK_CLKEN4,
-+    NPCM8XX_CLK_IPSRST4,
-+    NPCM8XX_CLK_BUSTO,
-+    NPCM8XX_CLK_CLKDIV4,
-+    NPCM8XX_CLK_WD0RCRB,
-+    NPCM8XX_CLK_WD1RCRB,
-+    NPCM8XX_CLK_WD2RCRB,
-+    NPCM8XX_CLK_SWRSTC1B,
-+    NPCM8XX_CLK_SWRSTC2B,
-+    NPCM8XX_CLK_SWRSTC3B,
-+    NPCM8XX_CLK_TIPRSTCB,
-+    NPCM8XX_CLK_CORSTCB,
-+    NPCM8XX_CLK_IPSRSTDIS1,
-+    NPCM8XX_CLK_IPSRSTDIS2,
-+    NPCM8XX_CLK_IPSRSTDIS3,
-+    NPCM8XX_CLK_IPSRSTDIS4,
-+    NPCM8XX_CLK_CLKENDIS1,
-+    NPCM8XX_CLK_CLKENDIS2,
-+    NPCM8XX_CLK_CLKENDIS3,
-+    NPCM8XX_CLK_CLKENDIS4,
-+    NPCM8XX_CLK_THRTL_CNT,
- };
+@@ -81,7 +81,7 @@ enum NPCM7xxCLKRegisters {
+  * All are loaded on power-up reset. CLKENx and SWRSTR should also be loaded on
+  * core domain reset, but this reset type is not yet supported by QEMU.
+  */
+-static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
++static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
+     [NPCM7XX_CLK_CLKEN1]        = 0xffffffff,
+     [NPCM7XX_CLK_CLKSEL]        = 0x004aaaaa,
+     [NPCM7XX_CLK_CLKDIV1]       = 0x5413f855,
+@@ -728,10 +728,11 @@ static uint64_t npcm_clk_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t reg = offset / sizeof(uint32_t);
+     NPCMCLKState *s = opaque;
++    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
+     int64_t now_ns;
+     uint32_t value = 0;
  
- /*
-@@ -103,6 +153,46 @@ static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
-     [NPCM7XX_CLK_AHBCKFI]       = 0x000000c8,
- };
+-    if (reg >= NPCM7XX_CLK_NR_REGS) {
++    if (reg >= c->nr_regs) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+                       __func__, offset);
+@@ -776,11 +777,12 @@ static void npcm_clk_write(void *opaque, hwaddr offset,
+ {
+     uint32_t reg = offset / sizeof(uint32_t);
+     NPCMCLKState *s = opaque;
++    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
+     uint32_t value = v;
  
-+/*
-+ * These reset values were taken from version 0.92 of the NPCM8xx data sheet.
-+ */
-+static const uint32_t npcm8xx_cold_reset_values[NPCM8XX_CLK_NR_REGS] = {
-+    [NPCM8XX_CLK_CLKEN1]        = 0xffffffff,
-+    [NPCM8XX_CLK_CLKSEL]        = 0x154aaaaa,
-+    [NPCM8XX_CLK_CLKDIV1]       = 0x5413f855,
-+    [NPCM8XX_CLK_PLLCON0]       = 0x00222101 | PLLCON_LOKI,
-+    [NPCM8XX_CLK_PLLCON1]       = 0x00202101 | PLLCON_LOKI,
-+    [NPCM8XX_CLK_IPSRST1]       = 0x00001000,
-+    [NPCM8XX_CLK_IPSRST2]       = 0x80000000,
-+    [NPCM8XX_CLK_CLKEN2]        = 0xffffffff,
-+    [NPCM8XX_CLK_CLKDIV2]       = 0xaa4f8f9f,
-+    [NPCM8XX_CLK_CLKEN3]        = 0xffffffff,
-+    [NPCM8XX_CLK_IPSRST3]       = 0x03000000,
-+    [NPCM8XX_CLK_WD0RCR]        = 0xffffffff,
-+    [NPCM8XX_CLK_WD1RCR]        = 0xffffffff,
-+    [NPCM8XX_CLK_WD2RCR]        = 0xffffffff,
-+    [NPCM8XX_CLK_SWRSTC1]       = 0x00000003,
-+    [NPCM8XX_CLK_SWRSTC2]       = 0x00000001,
-+    [NPCM8XX_CLK_SWRSTC3]       = 0x00000001,
-+    [NPCM8XX_CLK_TIPRSTC]       = 0x00000001,
-+    [NPCM8XX_CLK_PLLCON2]       = 0x00c02105 | PLLCON_LOKI,
-+    [NPCM8XX_CLK_CLKDIV3]       = 0x00009100,
-+    [NPCM8XX_CLK_CORSTC]        = 0x04000003,
-+    [NPCM8XX_CLK_PLLCONG]       = 0x01228606 | PLLCON_LOKI,
-+    [NPCM8XX_CLK_AHBCKFI]       = 0x000000c8,
-+    [NPCM8XX_CLK_CLKEN4]        = 0xffffffff,
-+    [NPCM8XX_CLK_CLKDIV4]       = 0x70009000,
-+    [NPCM8XX_CLK_IPSRST4]       = 0x02000000,
-+    [NPCM8XX_CLK_WD0RCRB]       = 0xfffffe71,
-+    [NPCM8XX_CLK_WD1RCRB]       = 0xfffffe71,
-+    [NPCM8XX_CLK_WD2RCRB]       = 0xfffffe71,
-+    [NPCM8XX_CLK_SWRSTC1B]      = 0xfffffe71,
-+    [NPCM8XX_CLK_SWRSTC2B]      = 0xfffffe71,
-+    [NPCM8XX_CLK_SWRSTC3B]      = 0xfffffe71,
-+    [NPCM8XX_CLK_TIPRSTCB]      = 0xfffffe71,
-+    [NPCM8XX_CLK_CORSTCB]       = 0xfffffe71,
-+};
-+
- /* The number of watchdogs that can trigger a reset. */
- #define NPCM7XX_NR_WATCHDOGS    (3)
+     trace_npcm_clk_write(offset, value);
  
-@@ -1000,8 +1090,8 @@ static const VMStateDescription vmstate_npcm7xx_clk_divider = {
+-    if (reg >= NPCM7XX_CLK_NR_REGS) {
++    if (reg >= c->nr_regs) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+                       __func__, offset);
+@@ -870,10 +872,10 @@ static const struct MemoryRegionOps npcm_clk_ops = {
+ static void npcm_clk_enter_reset(Object *obj, ResetType type)
+ {
+     NPCMCLKState *s = NPCM_CLK(obj);
++    NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
  
- static const VMStateDescription vmstate_npcm_clk = {
-     .name = "npcm-clk",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .post_load = npcm_clk_post_load,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, NPCMCLKState, NPCM_CLK_MAX_NR_REGS),
-@@ -1050,13 +1140,21 @@ static void npcm7xx_clk_class_init(ObjectClass *klass, void *data)
-     NPCMCLKClass *c = NPCM_CLK_CLASS(klass);
+-    QEMU_BUILD_BUG_ON(sizeof(s->regs) != sizeof(cold_reset_values));
+-
+-    memcpy(s->regs, cold_reset_values, sizeof(cold_reset_values));
++    g_assert(sizeof(s->regs) >= c->nr_regs * sizeof(uint32_t));
++    memcpy(s->regs, c->cold_reset_values, sizeof(s->regs));
+     s->ref_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+     npcm7xx_clk_update_all_clocks(s);
+     /*
+@@ -1045,11 +1047,14 @@ static void npcm_clk_class_init(ObjectClass *klass, void *data)
+ 
+ static void npcm7xx_clk_class_init(ObjectClass *klass, void *data)
+ {
++    NPCMCLKClass *c = NPCM_CLK_CLASS(klass);
      DeviceClass *dc = DEVICE_CLASS(klass);
  
--    QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END > NPCM_CLK_MAX_NR_REGS);
--    QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END != NPCM7XX_CLK_NR_REGS);
+     QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END > NPCM_CLK_MAX_NR_REGS);
+     QEMU_BUILD_BUG_ON(NPCM7XX_CLK_REGS_END != NPCM7XX_CLK_NR_REGS);
      dc->desc = "NPCM7xx Clock Control Registers";
-     c->nr_regs = NPCM7XX_CLK_NR_REGS;
-     c->cold_reset_values = npcm7xx_cold_reset_values;
++    c->nr_regs = NPCM7XX_CLK_NR_REGS;
++    c->cold_reset_values = npcm7xx_cold_reset_values;
  }
  
-+static void npcm8xx_clk_class_init(ObjectClass *klass, void *data)
-+{
-+    NPCMCLKClass *c = NPCM_CLK_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "NPCM8xx Clock Control Registers";
-+    c->nr_regs = NPCM8XX_CLK_NR_REGS;
-+    c->cold_reset_values = npcm8xx_cold_reset_values;
-+}
-+
  static const TypeInfo npcm7xx_clk_pll_info = {
-     .name               = TYPE_NPCM7XX_CLOCK_PLL,
-     .parent             = TYPE_DEVICE,
-@@ -1097,6 +1195,12 @@ static const TypeInfo npcm7xx_clk_info = {
-     .class_init         = npcm7xx_clk_class_init,
+@@ -1081,6 +1086,7 @@ static const TypeInfo npcm_clk_info = {
+     .parent             = TYPE_SYS_BUS_DEVICE,
+     .instance_size      = sizeof(NPCMCLKState),
+     .instance_init      = npcm_clk_init,
++    .class_size         = sizeof(NPCMCLKClass),
+     .class_init         = npcm_clk_class_init,
+     .abstract           = true,
  };
+diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
+index ec16ea620e..4e8ce2cb89 100644
+--- a/hw/misc/npcm_gcr.c
++++ b/hw/misc/npcm_gcr.c
+@@ -215,6 +215,7 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
+         break;
  
-+static const TypeInfo npcm8xx_clk_info = {
-+    .name               = TYPE_NPCM8XX_CLK,
-+    .parent             = TYPE_NPCM_CLK,
-+    .class_init         = npcm8xx_clk_class_init,
-+};
-+
- static void npcm7xx_clk_register_type(void)
- {
-     type_register_static(&npcm7xx_clk_pll_info);
-@@ -1104,5 +1208,6 @@ static void npcm7xx_clk_register_type(void)
-     type_register_static(&npcm7xx_clk_divider_info);
-     type_register_static(&npcm_clk_info);
-     type_register_static(&npcm7xx_clk_info);
-+    type_register_static(&npcm8xx_clk_info);
- }
- type_init(npcm7xx_clk_register_type);
+     case 8:
++        g_assert(!(reg & 1));
+         value = deposit64(s->regs[reg], 32, 32, s->regs[reg + 1]);
+         break;
+ 
+@@ -270,6 +271,7 @@ static void npcm_gcr_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case 8:
++        g_assert(!(reg & 1));
+         s->regs[reg] = value;
+         s->regs[reg + 1] = extract64(v, 32, 32);
+         break;
 diff --git a/include/hw/misc/npcm_clk.h b/include/hw/misc/npcm_clk.h
-index f47614ac8d..8fa1e14bdd 100644
+index db03b46a52..f47614ac8d 100644
 --- a/include/hw/misc/npcm_clk.h
 +++ b/include/hw/misc/npcm_clk.h
-@@ -1,5 +1,5 @@
- /*
-- * Nuvoton NPCM7xx Clock Control Registers.
-+ * Nuvoton NPCM7xx/8xx Clock Control Registers.
-  *
-  * Copyright 2020 Google LLC
-  *
-@@ -21,11 +21,12 @@
- #include "hw/sysbus.h"
+@@ -175,8 +175,15 @@ struct NPCMCLKState {
+     Clock *clkref;
+ };
  
- #define NPCM7XX_CLK_NR_REGS             (0x70 / sizeof(uint32_t))
-+#define NPCM8XX_CLK_NR_REGS             (0xc4 / sizeof(uint32_t))
- /*
-  * Number of maximum registers in NPCM device state structure. Don't change
-  * this without incrementing the version_id in the vmstate.
-  */
--#define NPCM_CLK_MAX_NR_REGS            NPCM7XX_CLK_NR_REGS
-+#define NPCM_CLK_MAX_NR_REGS            NPCM8XX_CLK_NR_REGS
- 
- #define NPCM7XX_WATCHDOG_RESET_GPIO_IN "npcm7xx-clk-watchdog-reset-gpio-in"
- 
-@@ -162,6 +163,10 @@ struct NPCMCLKState {
-     MemoryRegion iomem;
- 
-     /* Clock converters */
-+    /*
-+     * TODO: Implement unique clock converters for NPCM8xx.
-+     * NPCM8xx adds a few more clock outputs.
-+     */
-     NPCM7xxClockPLLState plls[NPCM7XX_CLOCK_NR_PLLS];
-     NPCM7xxClockSELState sels[NPCM7XX_CLOCK_NR_SELS];
-     NPCM7xxClockDividerState dividers[NPCM7XX_CLOCK_NR_DIVIDERS];
-@@ -185,5 +190,6 @@ typedef struct NPCMCLKClass {
++typedef struct NPCMCLKClass {
++    SysBusDeviceClass parent;
++
++    size_t nr_regs;
++    const uint32_t *cold_reset_values;
++} NPCMCLKClass;
++
  #define TYPE_NPCM_CLK "npcm-clk"
- OBJECT_DECLARE_TYPE(NPCMCLKState, NPCMCLKClass, NPCM_CLK)
+-OBJECT_DECLARE_SIMPLE_TYPE(NPCMCLKState, NPCM_CLK)
++OBJECT_DECLARE_TYPE(NPCMCLKState, NPCMCLKClass, NPCM_CLK)
  #define TYPE_NPCM7XX_CLK "npcm7xx-clk"
-+#define TYPE_NPCM8XX_CLK "npcm8xx-clk"
  
  #endif /* NPCM_CLK_H */
 -- 

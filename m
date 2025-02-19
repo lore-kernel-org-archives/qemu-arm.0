@@ -1,145 +1,217 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1628170njb;
-        Wed, 19 Feb 2025 13:09:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXStsrDuPk/KAFx5tHX4Ic2hqrp1g9VAYH49jKQX/Qdtbp6XzraSlqbG3mjM7JqdRl2KGgYUlCSRPUyfA==@linaro.org
-X-Received: by 2002:a05:6000:1aca:b0:38f:4f07:fab7 with SMTP id ffacd0b85a97d-38f58782c55mr3907400f8f.8.1739999367450;
-        Wed, 19 Feb 2025 13:09:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739999367; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1644008njb;
+        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVZpuFoqFW7RM6UDNlzLdx7H6yip4uFsbIyW96ZZT8dyTFXQw4THVtuCWjvaNprKFjxR5BwHSdqiBPmZA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGV82iWYLfptJhaEdwJ7llsouH++nkk5X+IxNQQHo4z3qZI3b/0Pykcf/hMdPXlsq5I6boo
+X-Received: by 2002:ac8:5702:0:b0:471:fde4:f09e with SMTP id d75a77b69052e-471fde50816mr131138621cf.36.1740001529740;
+        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740001529; cv=none;
         d=google.com; s=arc-20240605;
-        b=W4LWnZZKhrS6eentPLKTHDPPKVtkqGatNH/RrsSp+Ql7iZbVCcozgvw9FJI/qqIn1U
-         1nX3bpdBr8yml3MWrAANCNJ+ZTaXTroruW3PcbLu43OtzyZoaqaQ5+fYBriBCnE+F1hv
-         44S94uIZC2/wR5gQHtOcqC7NpDGXXK2tYQhC/grzgLfXnkBRA0H4RbWNz7YXPXwaA8TF
-         lUu7xPVC+QwFqPJixh3merSZT3m/Uq3vHOnRXNPFlBZA2rTiXdJeV/Ko6hFW/qOZdo5f
-         /kQriqD02BY6dzJSbGVsoTH5GYnisDa3cwQf3nftUP37CZNk461hTC+QZRcbSGgRMkhx
-         KvrA==
+        b=FP3mE9Oaxnjxyubt9PJUPpBssOtQH0loXoe/nU77/kQYGGhI/B7qts6GIs0p0Ueghk
+         sxL6iCkLxUVk7eRHRcABnmBoIvDzBQywLvoaI/Bt3spT3UYb55jKtJO7e9ZyqKDi2MOb
+         zh+6Yj8aPEH0+xZjX9bHyci2HMdu1vzxTf1Qu7YgM6pbUz+EMvpQl1Yuo5ZUkaRm+evP
+         EKeA3rTb03t3/rk+C/zBhKmceGjo8LKeo895lTEgmZGr5J1BLUCcm45Twfs4sq6C83b3
+         JXTTWEK7JXsN61j6sLNzABk5xkrQuPhDcRhOp8azqurSoUUVP2sYI6v+TSMNM7x6/fo7
+         jFmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1M+9N1O1172KT1xmekfC3o1CG3P7IIUgC0GICjqwA8E=;
-        fh=o5mg9NL2jR3I0DAYxJ6mxPt0P2nIElx3+6x2y5HuNsY=;
-        b=QQTlVmUXuIoHTUGV2fKxGPzoW5h/WvO+zUbmYNC72VrZNAIJk6WDs7Mb6Z3iku78Ks
-         Le5IO0CJ1zupU0qfyDZGLs8kjLzXaK339i/NEAhSAAeKlTNzBkZgWk00MX3fpoZgejxw
-         O4OmGfSh7Bv7h2RfOTmfVGkPi0V8+mxUsus32NLTltJHwyFRq9GK8LSVvZrAyP8xE8EA
-         k8l9GtEHe9jl7Yl+Vy9rFno1RIAct9GHEnToyCJnCAu7FBWDTBiyCccoOZt9pMuHVQLz
-         Cf5tDP9Xq4l1e7EnuOtm9yENdS1g6mtc+s3pVgv9qEEeSNCQHhOZSffl9ZvgLycEu2v5
-         pgOg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
+        fh=scwUd7c7TUMvARZPQ6tZ+qTIbyy+FS49PuJVOeOekKg=;
+        b=VDAiYKiUsNOGhVpsYWWieJv+o8E1Ak5kBlE0O8YcuhERLKjkUyP6z893B4S3OPrZ0d
+         uAGCrgcvXE0Lgymsgfuzvqw961jdyAwevKhgblbM0c5vTE7eE5klioyuePgF/JIb3Ast
+         TbHRXwoMxI/hxOaJonBbnlGyX0R3tbAVZdWgjY+dzRwt3/DMIgnADqXs6OYCScEihPl1
+         kQFZ87AS0NneR3tpFE/Rj1X0O4k1A8xNOBLb1pDYDj0RbOnSOynuVsa5un9agJ0Z4Mu2
+         xUX61evrlrxz/c5OXD/XgqHi8niPATLjLstqKi9BhPLOQA5+JVk6djC4PG+RukzkhcdC
+         hVhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zwabolJ6;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="He/iNt0P";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-439a0df3f89sor4732245e9.10.2025.02.19.13.09.27
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-471f2a2cd26si62947601cf.317.2025.02.19.13.45.29
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 19 Feb 2025 13:09:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zwabolJ6;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="He/iNt0P";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tkrsP-0001vO-9g; Wed, 19 Feb 2025 16:45:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tkrsM-0001tP-Ih; Wed, 19 Feb 2025 16:45:02 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tkrsK-0004HI-JS; Wed, 19 Feb 2025 16:45:02 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-abb7f539c35so64753566b.1; 
+ Wed, 19 Feb 2025 13:44:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739999367; x=1740604167; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1M+9N1O1172KT1xmekfC3o1CG3P7IIUgC0GICjqwA8E=;
-        b=zwabolJ66VYfeqTAdNhtrWrEHflo+6cIVmhuS+flqCdU6FrBEHUNOwqIX2G4eLQduI
-         VoXEPczY0BzhfOwZ4bmJsvO8yO0AXZx7PwwyQV8LXo7ihS5pHMlND76jjnCus1q5MzvI
-         EYxSK1dBrLrzrCtVWIm4hPdZe6aWPuHpT1N6HfhCt33YMNYp1BJlYFkLBaj1l6YwB8XC
-         JQlXWm1JflYsFgF0y38AAOLqIz1q4WAZ17Ex/GiLWOhHlv5zNBnqr1xi6TkDaAlQFBvt
-         iz4nVBOWK3z9Zbye0bzQ3wvVYl/ULadiSuNV9AgBwmzFtO16DT0+NXuGlxl/FrQEcFMK
-         uUIg==
+ d=gmail.com; s=20230601; t=1740001498; x=1740606298; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
+ b=He/iNt0PK/4KQsjbY3PsACNSA4G6bJMg2YFei4OmYInm2J9+iNsAPhyoSMQvhbAoQi
+ mHq4wijEAhB0HFkeS2x4q75zMX8lsiiEhFs6uSIdro5bdSivpA0RwbXoWfmRjyeStMDe
+ cVMlPZO8toYU5mORA207mONkKns4XdPQG2E9M8uY9CHvRztvy63tnIjhMybs9xHwQPUP
+ 8FG8FuMJbyD+prqWgA9ijHjgrW0adKVkBHfn3sbJG869F7dEXF3587y+8LTQuZwAkOHh
+ etGziJQuWdonZHfZGxmSvxKuS/PUY6MeJRa8PRm3FL25mQU3ExdYezt7HKmRUjQD4TBo
+ j1YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739999367; x=1740604167;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1M+9N1O1172KT1xmekfC3o1CG3P7IIUgC0GICjqwA8E=;
-        b=c4amhgVRfxirMo9rBk4b43nRL2C7c5KfCoCP7JtbjOdgL3WT6LIchUBGZ5x7aGM0kD
-         KRT4bkY1fTbTSVqBKnuG9nZC56+KW0tqHIAKeHrwenA0DVysHctseyk0nEPcHTmK24Ev
-         UtG75/pNX+l79fbqWYUpUYslrLaplFZ63iawh4apRdHRTsmNjAhhUHb4MgQlqSg7nxAY
-         JCwN2CgPwdygIrsVsa8IVBtVSQsrRFqx/L0b2bbi1vUzFx9geEu+Tbsv7nFyYPazUJsp
-         o7oh3wGfJj7W9i9/R6a9LkaonaZGGw3kqpxNqkivhsLmQkgAih14fq+jb6PVUn3IR3k1
-         6WeQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVmAiaDWIUu7cJv+RgxuqfAzSDE41UmlfyNCQN+kkTvOkvfoQFqYq72nd9MWvM9M8yyniTyE4+A5/Bzrw==@linaro.org
-X-Gm-Message-State: AOJu0Yy4uZ3B63mCO//k9XMlZzT/3ZPottFKMKLl35TcvY5lWLtWo07k
-	bAipWpDbC0eOBx0qPlnqaU79ep1PiXjkgSHEkU9e847pGC8Tw44j59kJTCDpRFG7Cg==
-X-Gm-Gg: ASbGncubQw/Som15sBGB8jhT75iO0yKdfiI5bI427PhOtAW1/5Q4K77Q6WpXKwn7DnS
-	k3LRBw+3kXQOAqbpmbz9zm0rX0OrEW/bBvkqGtFmU2YD3rfC1SP+lvan8PT8JG6S5wqM1fE3KjC
-	jZtR862ybtTVkHebNiqdQYBQxZJPboU3Acev9XGwhlldrqzj2eRxmmxnCiBHeLod+mZmNY5fZ0i
-	GrcCZVsTZYPJ9PAibQBpDeLK+unWksqI1fiZgfINI0GQM4wIWmOxTDsMGX2ufLPjkVQud5nJiUk
-	V97Sr/70QAdVAjrFXcy9XQ0p+WZozFXLI92QrbWSZUXR+yxNIkzJ1GK2g8ldCQAxLA==
-X-Google-Smtp-Source: AGHT+IHgQjtyqw6XWw6SOlJ72y8SLFeZ4PIEzvT9q1McUWRWY3RDiPIVRF2x3LtvdBdqtutQZFDrLw==
-X-Received: by 2002:a05:600c:458a:b0:439:3d5c:8bfb with SMTP id 5b1f17b1804b1-43999dd11d6mr47685055e9.22.1739999366853;
-        Wed, 19 Feb 2025 13:09:26 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4395a04f208sm221457235e9.6.2025.02.19.13.09.25
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 19 Feb 2025 13:09:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	Rayhan Faizel <rayhan.faizel@gmail.com>,
-	Luc Michel <luc.michel@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <huth@tuxfamily.org>,
-	Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH 8/9] hw/char/mcf_uart: Really use RX FIFO depth
-Date: Wed, 19 Feb 2025 22:08:40 +0100
-Message-ID: <20250219210841.94797-9-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250219210841.94797-1-philmd@linaro.org>
-References: <20250219210841.94797-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1740001498; x=1740606298;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
+ b=DyST+CgcgHLLMofo3DCQ0Z7F1fnualcfw71vLfBKmAN7M8SlzLQTvY8zfvfrPi0o3m
+ tZOSH+n44l0Rf3FscWgyG02NhhzEu04+hgMoGcROgKfFB6bqcwq2fSx6Q0OkcCaNTZ5j
+ E04jqjltxu1Iwsk5ZaXqO3fDNWQYBsm6Qvs9qhVVOcleMvb4VXMTS6s/7gXU7rce6D6R
+ pKznaskX24BpMaC0bpAEiXtfueGf0XdOi2bjH/T0iz7b8iF4tNAJk23Al1X+YxBuaaq+
+ Bldz8A3L1vF3K7juB685zZuHoU0mJGbeuWilcg/lkEa49ZrreCqf5bbnvSQNF/3d0fXF
+ oIhg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXpvraQKU4oE5DoCaEiULvnaj9/8e1HDb7BovoKwr7/UXH+1QC2bSNmn1C+psiN9N6HkPKZqijB5A==@nongnu.org
+X-Gm-Message-State: AOJu0YyHdAJaNzL7eW31506K7l+ddhyX5QIQy1XpOj6A6vhkQaDHzqgt
+ YRuP6UkrXVrAo2RFFaWK3NlTS5MWlY+Dk2G27j9eyv0iMDqx8S13
+X-Gm-Gg: ASbGncvNf/gVrclFRGCcWVoeNk58I6va7rHoUOpJhpQqGfMXBFwMIVH6i9KFuRNkWjZ
+ Zvn96XnMe3Kcwi2mg4xPrLcDFOxeATLkga7W1CXQCYPA3YUdKb4eWKY/I9caWNp+BrwxkbCwAmx
+ MF3y6VOYe4uf6yaZ1ndjfcfDvyyeU4tiz5Iiytif5p5917VOr7sPUEqCQWXS5nPMJS5jR/cyzDG
+ KEy+PjknvwG7yLquEIUWS6xS5lkUmvJ4NKbktBjwAjVFWPEwe9qac3vk4eEiQyovMNduICx4WdN
+ 0fFg6SsF032yclsimmkj++XbiKZcMXQ07W+8LGZGz8V9pZg3KswQO9sS7YhQAIg12Vg=
+X-Received: by 2002:a17:907:d9e:b0:ab3:2b85:5d5 with SMTP id
+ a640c23a62f3a-abb70df3417mr2171594466b.49.1740001498082; 
+ Wed, 19 Feb 2025 13:44:58 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-183-067-186.77.183.pool.telefonica.de.
+ [77.183.67.186]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-abbdf076360sm161654066b.110.2025.02.19.13.44.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 19 Feb 2025 13:44:57 -0800 (PST)
+Date: Wed, 19 Feb 2025 21:43:50 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_03/18=5D_hw/gpio/pca955*=3A_Mov?=
+ =?US-ASCII?Q?e_Kconfig_switches_next_to_implementations?=
+In-Reply-To: <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
+References: <20250204092112.26957-1-shentey@gmail.com>
+ <20250204092112.26957-4-shentey@gmail.com>
+ <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
+ <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
+ <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
+Message-ID: <6DE88581-5B09-4599-ABE0-780D1BC76E66@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: KdAKUm7uKgQH
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6Qetv8rzuoQA
 
-While we model a 4-elements RX FIFO since the PL011 model
-was introduced in commit 20dcee94833 ("MCF5208 emulation"),
-we only read 1 char at a time!
 
-Have the IOCanReadHandler handler return how many elements are
-available, and use that in the IOReadHandler handler.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/char/mcf_uart.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Am 18=2E Februar 2025 10:33:26 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>On Mon, 17 Feb 2025 at 20:21, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
+e:
+>>
+>>
+>>
+>> Am 17=2E Februar 2025 13:35:04 UTC schrieb Peter Maydell <peter=2Emayde=
+ll@linaro=2Eorg>:
+>> >On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wr=
+ote:
+>> >>
+>> >> While at it and since they are user-creatable, build them when
+>> >> CONFIG_I2C_DEVICES is set=2E
+>> >
+>> >The patch subject says this is just a rearrangement
+>> >of the Kconfig stanzas with no behaviour change, but then the
+>> >commit message body includes one=2E
+>> >
+>> >If you want to build these when CONFIG_I2C_DEVICES is set,
+>> >that should be its own patch that does that=2E
+>> >
+>> >(The move of the Kconfig bits to hw/gpio is fixing a bug
+>> >in 6328d8ffa6cb9d ("misc/pca955*: Move models under hw/gpio"),
+>> >which moved the code but forgot to move the Kconfig sections=2E)
+>>
+>> Okay, I'll split the patch and use above commit message=2E
+>>
+>> >
+>> >Separately, it's unclear to me how worthwhile it is to add
+>> >these to CONFIG_I2C_DEVICES, because they're GPIO devices,
+>> >which means there's not much you can do with them as a user:
+>> >as far as I know you can't wire the output/input GPIO lines
+>> >up to anything=2E We have the device models mainly for boards
+>> >which provide them, so that guest code that expects to see
+>> >them doesn't fall over on bootup, and because the board
+>> >model code does have the APIs to wire up the GPIO lines=2E
+>>
+>> It's basically to satisfy Linux which will clog the i2c bus if such a G=
+PIO expander is configured in the DTB but missing in the emulation (it will=
+ defer probing which will never make progress)=2E Once it is its own patch =
+we can decide separately how to proceed with it, e=2Eg=2E dropping=2E
+>
+>If Linux wants to see it because it's in the dtb for the
+>hardware it sounds like the right answer is that we
+>should create it in the board code, which we can do
+>without adding it to CONFIG_I2C_DEVICES, because we
+>can make the board code's Kconfig do "select PCA9552",
+>like the aspeed board does already=2E
 
-diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index 95f269ee9b7..529c26be93a 100644
---- a/hw/char/mcf_uart.c
-+++ b/hw/char/mcf_uart.c
-@@ -281,14 +281,16 @@ static int mcf_uart_can_receive(void *opaque)
- {
-     mcf_uart_state *s = (mcf_uart_state *)opaque;
- 
--    return s->rx_enabled && (s->sr & MCF_UART_FFULL) == 0;
-+    return s->rx_enabled ? FIFO_DEPTH - s->fifo_len : 0;
- }
- 
- static void mcf_uart_receive(void *opaque, const uint8_t *buf, int size)
- {
-     mcf_uart_state *s = (mcf_uart_state *)opaque;
- 
--    mcf_uart_push_byte(s, buf[0]);
-+    for (int i = 0; i < size; i++) {
-+        mcf_uart_push_byte(s, buf[i]);
-+    }
- }
- 
- static const MemoryRegionOps mcf_uart_ops = {
--- 
-2.47.1
+These devices are primarily intended for modeling our custom hardware on t=
+he command line, for the purpose explained in [1]=2E While the real imx8mp-=
+evk has a tca6416, I'd rather avoid creating it in board code, even if ther=
+e was a model for it in QEMU=2E The reason is that the machine works fine w=
+ithout it as is, and that omitting hardcoded peripherals seems to increase =
+the utility of the machine because it allows users to customize their machi=
+nes without hardcoded peripherals getting into their way=2E
+
+Since the two device models in this patch work by chance if other machines=
+ select them I'm fine with not implying CONFIG_I2C_DEVICES=2E
+
+Best regards,
+Bernhard
+
+[1] https://lore=2Ekernel=2Eorg/qemu-devel/831901E4-69B2-4637-8507-77C7BF4=
+DA65D@gmail=2Ecom/
+
+>
+>thanks
+>-- PMM

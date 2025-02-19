@@ -1,179 +1,250 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1381870njb;
-        Wed, 19 Feb 2025 06:24:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUvw8bI5il8+ZcKzr4XR+YyjEDpbnWfEtAaZHYQMQwvYq6RoTSezBzJR91iPJxxjH485qXfDVbZHmcScw==@linaro.org
-X-Received: by 2002:a5d:5887:0:b0:38f:3b57:681e with SMTP id ffacd0b85a97d-38f3b576996mr12764203f8f.49.1739975055570;
-        Wed, 19 Feb 2025 06:24:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1739975055; cv=none;
-        d=google.com; s=arc-20240605;
-        b=CXj+62knzI44PwgElwfdtVdrx9IJYdO7pYl7dR3WEh0jsFxuZIFMKb3DMSlmqsj3u+
-         oue8R2lQ3Z3GXqn4ysJHszfs8u1V+Hl24T/DEwbkSWZkNuupuQGVuEXJxlZbueiWdbl3
-         KeAaYOmlO0P7/ZG6hDMQb6VKRRUOUAfsS2Oes2Xy5IRrB3V/znWggAl50d9ae+VQfopd
-         +EZhSDDIoag4hNbcZyj4Vk03MWtimoVq1aChhmkYkmmWkrKtidvb+JGSiRRSQpQoswMp
-         GP1oCXsSU8ECal2PcDIvpOwE8x9fkOprdf91ky+EN7A++KponmZptwVQId/6nlfANQ8F
-         UsRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=2bXM2FM3uqWtmWOWElh2OEI9PyZko/TrtNoyq1yEV7A=;
-        fh=78HvogL6z5wE3bGiCkY43pE7fdstQfy1BkJ4E6DoHnI=;
-        b=c3itm//H92uhVDApjnfEDKnZZ26/oM2UT7ZGdiZeoUkSlvg6qjaKfO3EOz7RE2RCCi
-         ND7FWnnqeJp/40FYtpka3TtkCV3wd87wFls0LAlQwHVSOpXbMlrT5IHDb8YZzp2Fhhpn
-         YoC7gu+Ki6OTNd0sDYpfpGuSj8has7WWsH7+SKJk6eWL9BkPmzVuHqAaLUMJ15Ez2fSY
-         IuCMN0ywa5kcqEcCEP3VHu6+ZqrTK6g72PX0aIl7Ybiw/nGoQtXM4Ip3HfrhdEx21vQ5
-         L5ZVpZOvIypZP9M9UAHpJsiB2toDLuyLhvHzQCDb4cmarkDgjETMbIMrVLIKIgqMuD7k
-         To9g==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tfx9bhJY;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38f25900da9sor5151978f8f.1.2025.02.19.06.24.15
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 19 Feb 2025 06:24:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tfx9bhJY;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739975055; x=1740579855; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=2bXM2FM3uqWtmWOWElh2OEI9PyZko/TrtNoyq1yEV7A=;
-        b=tfx9bhJY9iRgsIklIIYOdWO0s+rfDZusEifRd9fgMDIhFCjkZ9ZvMBKqEAFlIlgSDp
-         LRqmjfJ/kmjKWaTKxrO/hlGP7LJVAT0WVujhLrzOiDWruS1GMSafIpZGWk+bNaJrRSqc
-         x8T2Q9dpv62iF9cYa8HnM2skF89oJFZWJnaVVn8/I0kx7VQJxo9kuksYPtJtzkFLqdQ5
-         WmkyGNdsTOz4C5BRxjnA0xSRZZxnfuvqoGyAj/oFY30mEi77HEuss2hJ+B0UFzGEDpvv
-         ihWibRIuA2/4z/HcMFEwFrHNkIUdz8gmbkfRxtL647K1rBEfthsCNBxLimHgvU8BAy20
-         MIBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739975055; x=1740579855;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2bXM2FM3uqWtmWOWElh2OEI9PyZko/TrtNoyq1yEV7A=;
-        b=fXUlujlkKtFAsvTmWYvpQ1OZB2nEC/DU99eOJSNZgWMuVrpNkhaPUgK58nVt9+SXvy
-         ux8IiX2jfGssTTiBHx+jEzXbO0oYLbJ54vW+AFoLitaQbGGHscI1flJ8kh2ha329LQFS
-         kaX1X5fWPcsSA3lPGlA/gPRfRhPfMZgMc/iBkU0v+s5RCEKxsWibszB/5nPXTfCY+JoR
-         Vm5XlYMPpZFNxfQe6ZkgDfAOghA9JG0OrTsOr0TfW0fi20z28zzebyEPFqXzLDej1Va8
-         g08uGIDm4nSsMmO6GLvie4hvzVz7bERzp0C0SEbPs1zMm74SSg9P1goWrkjhEts9gDKc
-         sZpw==
-X-Forwarded-Encrypted: i=1; AJvYcCWnMTe0rjSqCuOCDuBjPW9ypv5432Mbmhxi6ECL1yEV6dxYiHpG+lh0hnb2e8/ezNHaDDXzUxvqavk31w==@linaro.org
-X-Gm-Message-State: AOJu0Yyf1HVKAgCzA28vJqZhXjPOZbmy4p70lUIqP1uOoJ4yQpGMt+bj
-	5HId52UguHfTEtaFL6ywbazUI5mbOJ12ij5BwCkMCPn7DUwAice4hwlhMR+WJSxfbA==
-X-Gm-Gg: ASbGncv5M4IF/Fs9Pf8Ksed6czvWXR1GjK99P/qDn1QG36zsJ2mdiWORb936BZl+Gne
-	ORo2jfc4r9GCr/bBVODKuWlZLPPODngG3a0MzdkTyqMAqLWLiVuiZ4fYZQWLyHxlnWbQSScMSx1
-	QimRy4OQpBwMW7R0ZA1B+QNVJ+PWiAf12zZ1REIpOJfny8VGZbTiUcNGAUMBoSmqQ2sTvuj8fuj
-	jPUiLFgQ/641neIYjvDGXQe0I36asklJOlTBnHXrIe7v6tWS/6DLtUtwZh07/Et5gUlD/IRa5YD
-	FQ18CI5qUHyufFdtKMi4Q6RZGOHM1LLRqvbF6iiXcrekc4WbZ9rUYdCygGy8YWeL/w==
-X-Google-Smtp-Source: AGHT+IH2mIeEyEDNzSmMKUzcoIIO10ZgIHVAabz05fRr9/XBi5aY1cEVgmc+n5ZJs4XpwHEsZVU5dw==
-X-Received: by 2002:a5d:64a3:0:b0:38f:50bd:ad11 with SMTP id ffacd0b85a97d-38f50bdadd5mr6329613f8f.5.1739975054947;
-        Wed, 19 Feb 2025 06:24:14 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f2591570esm18217888f8f.59.2025.02.19.06.24.13
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 19 Feb 2025 06:24:14 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abba278e1b1sm549131466b.99.2025.02.19.07.00.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Feb 2025 07:00:09 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 36F39619B1;
+	Wed, 19 Feb 2025 15:00:09 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-s390x@nongnu.org,
 	qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>
-Subject: [RFC PATCH] tests/functional: Generic method to check required devices availability
-Date: Wed, 19 Feb 2025 15:24:12 +0100
-Message-ID: <20250219142412.77536-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 1/4] tests/functional: move aarch64 GPU test into own file
+Date: Wed, 19 Feb 2025 15:00:06 +0000
+Message-Id: <20250219150009.1662688-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250219150009.1662688-1-alex.bennee@linaro.org>
+References: <20250219150009.1662688-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ykns+b06P4VX
+X-TUID: cMgtAkdJt9cL
 
-Not all binaries contain the same set of devices. Since some
-tests depend on specific devices, we need to check their
-availability in the binary.
+I want to expand the number of tests to cover a wide range of
+configurations. That starts with splitting off from the normal virt
+test from which it doesn't really share much code.
 
-QemuSystemTest::require_device() allows for system tests to
-explicitly check for a particular device. Add a similar
-check_required_devices() method which check all devices
-requested on the command line. If a device is missing, the
-test is skipped.
-
-Example running test_aarch64_virt.py on macOS:
-
-  ok 1 test_aarch64_virt.Aarch64VirtMachine.test_aarch64_virt_with_gpu # SKIP no support for device virtio-gpu-gl-pci
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
-Just an idea to see if we can avoid manual require_device() calls.
-However not having a device in binary might also be a bug, so RFC...
----
- python/qemu/machine/machine.py         | 10 ++++++++++
- tests/functional/qemu_test/testcase.py |  8 ++++++++
- tests/functional/test_aarch64_virt.py  |  2 ++
- 3 files changed, 20 insertions(+)
+ tests/functional/meson.build              |   2 +
+ tests/functional/test_aarch64_virt.py     |  71 ---------------
+ tests/functional/test_aarch64_virt_gpu.py | 102 ++++++++++++++++++++++
+ 3 files changed, 104 insertions(+), 71 deletions(-)
+ create mode 100755 tests/functional/test_aarch64_virt_gpu.py
 
-diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index ebb58d5b68c..ff1ff066823 100644
---- a/python/qemu/machine/machine.py
-+++ b/python/qemu/machine/machine.py
-@@ -468,6 +468,16 @@ def launch(self) -> None:
-             # that exception. However, we still want to clean up.
-             raise
- 
-+    def get_command_arguments(self, command) -> List[str]:
-+        """
-+        Return a list of arguments used with one kind of command
-+        """
-+        args = []
-+        for index, element in enumerate(self._args):
-+            if element == command:
-+                args += [self._args[index + 1]]
-+        return args
-+
-     def _launch(self) -> None:
-         """
-         Launch the VM and establish a QMP connection
-diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index 869f3949fe9..7e3288f452c 100644
---- a/tests/functional/qemu_test/testcase.py
-+++ b/tests/functional/qemu_test/testcase.py
-@@ -335,6 +335,14 @@ def require_device(self, devicename):
-         if help.find(devicename) < 0:
-             self.skipTest('no support for device ' + devicename)
- 
-+    def check_required_devices(self):
-+        """
-+        Check the devices requested on the command line are available
-+        in the binary. To be used before the VM launch() call.
-+        """
-+        for device in self.vm.get_command_arguments('-device'):
-+            self.require_device(device.split(',')[0])
-+
-     def _new_vm(self, name, *args):
-         vm = QEMUMachine(self.qemu_bin,
-                          name=name,
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index b516d21cba..11b7ca1577 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -19,6 +19,7 @@ test_timeouts = {
+   'aarch64_sbsaref_freebsd' : 720,
+   'aarch64_tuxrun' : 240,
+   'aarch64_virt' : 720,
++  'aarch64_virt_gpu' : 720,
+   'acpi_bits' : 420,
+   'arm_aspeed_palmetto' : 120,
+   'arm_aspeed_romulus' : 120,
+@@ -77,6 +78,7 @@ tests_aarch64_system_thorough = [
+   'aarch64_tcg_plugins',
+   'aarch64_tuxrun',
+   'aarch64_virt',
++  'aarch64_virt_gpu',
+   'aarch64_xen',
+   'aarch64_xlnx_versal',
+   'multiprocess',
 diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index 95f5ce8b4c0..589680a44c5 100755
+index 95f5ce8b4c..884aad7af6 100755
 --- a/tests/functional/test_aarch64_virt.py
 +++ b/tests/functional/test_aarch64_virt.py
-@@ -180,6 +180,8 @@ def test_aarch64_virt_with_gpu(self):
-                          f"file.filename={image_path}")
-         self.vm.add_args("-snapshot")
+@@ -134,77 +134,6 @@ def test_aarch64_virt_gicv2(self):
+         self.common_aarch64_virt("virt,gic-version=2")
  
-+        self.check_required_devices()
+ 
+-    ASSET_VIRT_GPU_KERNEL = Asset(
+-        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+-        'download?path=%2F&files='
+-        'Image',
+-        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
+-
+-    ASSET_VIRT_GPU_ROOTFS = Asset(
+-        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+-        'download?path=%2F&files='
+-        'rootfs.ext4.zstd',
+-        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
+-
+-    @skipIfMissingCommands('zstd')
+-    def test_aarch64_virt_with_gpu(self):
+-        # This tests boots with a buildroot test image that contains
+-        # vkmark and other GPU exercising tools. We run a headless
+-        # weston that nevertheless still exercises the virtio-gpu
+-        # backend.
+-
+-        self.set_machine('virt')
+-        self.require_accelerator("tcg")
+-
+-        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
+-        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
+-
+-        self.vm.set_console()
+-        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+-                               'console=ttyAMA0 root=/dev/vda')
+-
+-        self.vm.add_args("-accel", "tcg")
+-        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
+-        self.vm.add_args("-machine", "virt,gic-version=max",
+-                         '-kernel', kernel_path,
+-                         '-append', kernel_command_line)
+-        self.vm.add_args("-smp", "2", "-m", "2048")
+-        self.vm.add_args("-device",
+-                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
+-        self.vm.add_args("-display", "egl-headless")
+-        self.vm.add_args("-display", "dbus,gl=on")
+-        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
+-        self.vm.add_args("-blockdev",
+-                         "driver=raw,file.driver=file,"
+-                         "node-name=hd0,read-only=on,"
+-                         f"file.filename={image_path}")
+-        self.vm.add_args("-snapshot")
+-
+-        try:
+-            self.vm.launch()
+-        except VMLaunchFailure as excp:
+-            if "old virglrenderer, blob resources unsupported" in excp.output:
+-                self.skipTest("No blob support for virtio-gpu")
+-            elif "old virglrenderer, venus unsupported" in excp.output:
+-                self.skipTest("No venus support for virtio-gpu")
+-            elif "egl: no drm render node available" in excp.output:
+-                self.skipTest("Can't access host DRM render node")
+-            elif "'type' does not accept value 'egl-headless'" in excp.output:
+-                self.skipTest("egl-headless support is not available")
+-            else:
+-                self.log.info(f"unhandled launch failure: {excp.output}")
+-                raise excp
+-
+-        self.wait_for_console_pattern('buildroot login:')
+-        exec_command(self, 'root')
+-        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
+-        exec_command_and_wait_for_pattern(self,
+-                                          "weston -B headless "
+-                                          "--renderer gl "
+-                                          "--shell kiosk "
+-                                          "-- vkmark -b:duration=1.0",
+-                                          "vkmark Score")
+-
+ 
+ if __name__ == '__main__':
+     QemuSystemTest.main()
+diff --git a/tests/functional/test_aarch64_virt_gpu.py b/tests/functional/test_aarch64_virt_gpu.py
+new file mode 100755
+index 0000000000..f21ae18392
+--- /dev/null
++++ b/tests/functional/test_aarch64_virt_gpu.py
+@@ -0,0 +1,102 @@
++#!/usr/bin/env python3
++#
++# Functional tests for the various graphics modes we can support.
++#
++# Copyright (c) 2024, 2025 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-         try:
-             self.vm.launch()
-         except VMLaunchFailure as excp:
++import logging
++
++from qemu.machine.machine import VMLaunchFailure
++
++from qemu_test import QemuSystemTest, Asset
++from qemu_test import exec_command, exec_command_and_wait_for_pattern
++from qemu_test import wait_for_console_pattern
++from qemu_test import skipIfMissingCommands
++
++class Aarch64VirtGPUMachine(QemuSystemTest):
++    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
++    timeout = 360
++
++    def wait_for_console_pattern(self, success_message, vm=None):
++        wait_for_console_pattern(self, success_message,
++                                 failure_message='Kernel panic - not syncing',
++                                 vm=vm)
++
++    ASSET_VIRT_GPU_KERNEL = Asset(
++        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++        'download?path=%2F&files='
++        'Image',
++        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
++
++    ASSET_VIRT_GPU_ROOTFS = Asset(
++        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++        'download?path=%2F&files='
++        'rootfs.ext4.zstd',
++        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
++
++    @skipIfMissingCommands('zstd')
++    def test_aarch64_virt_with_vulkan_gpu(self):
++        # This tests boots with a buildroot test image that contains
++        # vkmark and other GPU exercising tools. We run a headless
++        # weston that nevertheless still exercises the virtio-gpu
++        # backend.
++
++        self.set_machine('virt')
++        self.require_accelerator("tcg")
++
++        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
++        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0 root=/dev/vda')
++
++        self.vm.add_args("-accel", "tcg")
++        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
++        self.vm.add_args("-machine", "virt,gic-version=max",
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.add_args("-smp", "2", "-m", "2048")
++        self.vm.add_args("-device",
++                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
++        self.vm.add_args("-display", "egl-headless")
++        self.vm.add_args("-display", "dbus,gl=on")
++        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
++        self.vm.add_args("-blockdev",
++                         "driver=raw,file.driver=file,"
++                         "node-name=hd0,read-only=on,"
++                         f"file.filename={image_path}")
++        self.vm.add_args("-snapshot")
++
++        try:
++            self.vm.launch()
++        except VMLaunchFailure as excp:
++            if "old virglrenderer, blob resources unsupported" in excp.output:
++                self.skipTest("No blob support for virtio-gpu")
++            elif "old virglrenderer, venus unsupported" in excp.output:
++                self.skipTest("No venus support for virtio-gpu")
++            elif "egl: no drm render node available" in excp.output:
++                self.skipTest("Can't access host DRM render node")
++            elif "'type' does not accept value 'egl-headless'" in excp.output:
++                self.skipTest("egl-headless support is not available")
++            else:
++                self.log.info(f"unhandled launch failure: {excp.output}")
++                raise excp
++
++        self.wait_for_console_pattern('buildroot login:')
++        exec_command(self, 'root')
++        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
++        exec_command_and_wait_for_pattern(self,
++                                          "weston -B headless "
++                                          "--renderer gl "
++                                          "--shell kiosk "
++                                          "-- vkmark -b:duration=1.0",
++                                          "vkmark Score")
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
 -- 
-2.47.1
+2.39.5

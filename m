@@ -1,216 +1,135 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1863307njb;
-        Thu, 20 Feb 2025 00:27:01 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXJD7gkU3KjugEi0LAfcOVWAzad7CeQUNWlh+NN00eNBBXVa0Tx/1oP77uvpMrxM8Jf9MFCsC4k9c61FA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGMKx6lh/FhE/S4HTWlLcRQw3bhhdq6U87WTqjgd73hWlc/5uQ7NTayxnZlf4rfn4nlXWbA
-X-Received: by 2002:a05:6a21:681:b0:1ee:d2d9:3515 with SMTP id adf61e73a8af0-1eed4fd3b63mr10619484637.42.1740040021604;
-        Thu, 20 Feb 2025 00:27:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740040021; cv=pass;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1863819njb;
+        Thu, 20 Feb 2025 00:28:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWLcqe9QRByFekz35z4VW+c9dAu7ZNGvYTLeVwjtwmoEiiRzD0Xn2b7Srjm4m2od2UGAUkrNnfKBzcdSw==@linaro.org
+X-Received: by 2002:a05:600c:510f:b0:439:3d5c:8c19 with SMTP id 5b1f17b1804b1-439a3d07b0bmr13525775e9.24.1740040124549;
+        Thu, 20 Feb 2025 00:28:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740040124; cv=none;
         d=google.com; s=arc-20240605;
-        b=YXhgkvg3Mmw6heQSihxW2pIvQnjQXEnrzqxwpUe/hH+nO7ii+xJUPkm6XT2cCuQAhA
-         T4Sd229snVvL0GNBWq7uCU+VEGopvgbseJ36hRLLCVyhj1o9/ZwRm6yDcKrXXBtAODeY
-         /kMLePehwwAZesXz0Ly0C0RXuMUvt/LlRfOtGolnOny/pSOOShyKwedhOhI2EZ0JP5Oy
-         gGK9zotGA4xruFrkfkwQyzmNmipk/479+303Ys8or63aK4NXjbIivx1ugLMTTTnZ9sZG
-         PMLrwNcLIIyYWiPpcKI2LWQVWvgpw8VCGuOBhRdIec+kFKSNfhutY6pzv3TZsBqrEHfS
-         AYag==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        b=aZ7o/5mgwxkYrpEt5PkJ+saRfs8nLst0Kd0ZRgmBMDBBpppXdqw+zkifmHMyfqzXlq
+         uCaAfdx/PeVsOqTnZYcqSmchK7q1zwrwQFMl/zaOkPbqJtR8WdkqjKPPNJCUjkECHttA
+         eQP/XIr6MdDIQwejPUIfpkZg+ELmcuQHNKxmjxuVU5ieA2mBJbViH6eafPmmt7Sd0AYI
+         fxWwR8/2wHRQ2FrMIKC4ZvLXkfxWg4+Bo3Oymwu/KM086C1XP52WdETfb1JLm0D8wgup
+         vfbeyK/nsHiZUY+Uot68hmhKFbfOJJRYiIdIjZZlNZuVnRR5VTqlCWDizZGDZVoS1jDD
+         Y/uA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ta7V6gqRwreNtqZqvkeavRTeSB8C4bBE+/fRJtFIyVU=;
-        fh=McEJFpNWooeu4KfjMpm8Y/6NgpK0tuD9PnL3C9AEwbM=;
-        b=kBKMJ/yihPf3KzrvOAiwLUgSdkSa1AL9xmFJdsrnj8N+D1gjQPOY90YzsDlubpTXmO
-         ZOJYFI1Bw8m+7yKqd5/HF8rIp4agqJbWeAiiLtscBm9W1mKY0MWjIHPt1i+cla59ZLOn
-         IL190JDGc7u/BF8HtG/nRVDkXIO7fCOiVbHeA11Z7EVprXPhvcuK4bKtI8KaCgKEVJOl
-         /ywrk63b+bSDuTJF19JGR/yfyCLx/AKOaMHp2vbtksFkhIGG5Fo8CP37oSCw027fFBQM
-         IN9uw7/aVS7Z25I9XiCuCK8tYDIjsI2qyUvb8kg61aBKFenZ7yOJ2dNRWs7RQm67R88I
-         54yA==;
+        bh=o42TVScMkWBRcW50EFj59vXpjFTmKfRrsrDbs3gtzaI=;
+        fh=SRpyw3P4U2nefHxyOAjUsNZXZNS3SSzkEBF6DxAncoI=;
+        b=BgdaQHV1TCZH5YI5OxRUJE8OHPORHoXZZDy55BY+FPsw8pVwSpzaru65mNTLHaQDK/
+         ldxmx7cLcfsi1hp9I0WfaBkNzK0OTsT5XA+b5VQgruDRS7dC/lCh8niEjAuPxFEhe2yp
+         HPSYEMw2NCcId8g/rls2MXVukxns3Ado9Nf6PhPIYWTDIeGWzDvJVl9b02L2OWa0owGW
+         NBVcYiTYZqonF8y2++ujQ5VByw8sqbmssbi4eQTR2fEGSt1inBcWZifAEnpaftIa6cww
+         PjxgLDHiyiFlX+Va6awrchl7XgZIJ4RpVtG1x30BG/dMgvHZay2BUehj3ScXiMwOpb/m
+         zaLw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=n+Eu5M49;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:200a::611 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <Luc.Michel@amd.com>
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (mail-mw2nam12on20611.outbound.protection.outlook.com. [2a01:111:f403:200a::611])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-ae0eec7a0b9si10051718a12.27.2025.02.20.00.27.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2025 00:27:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:200a::611 as permitted sender) client-ip=2a01:111:f403:200a::611;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="NQBrdxs/";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-439a74e62dbsor2358715e9.4.2025.02.20.00.28.44
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 20 Feb 2025 00:28:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=n+Eu5M49;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:200a::611 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wM8YvW9C/OuSmn40xrVH/LvXB7u13qYYZZT4XwDzYr2YnB/EUCle54URGrnF9K/69jKoh5dphFPH1dxok4OWLeTIYwPunf9pLghwH2Bdq76T4xbWOMSk+dQr6lNxRef5/zvc8deRArlDRvvpfpUmTsuk4JuasOuhdGQKgLrQfwcddXtxE7y3SuKLyME1YHHVj7c4mDJHTQaQs1jsJzJg+04r0+az27j6LnK+KciNfjWL3I1b4U+7jdMELA11tI5K/lAyje1XHL64Igh2Ww+hEW6MfXtf+tXhSA67rxfPtFoaYFxyaajEgsHGyipTizUJ6KV/B0Q71/fX4rJA/CxrPQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ta7V6gqRwreNtqZqvkeavRTeSB8C4bBE+/fRJtFIyVU=;
- b=SMNzTiwpmeYPJ1Eyzf390muorgUnHoWKNDdO1jY3PhmJ/LZVzFCSkjQl3RfNOaeDMOf3BEGAWayvV+wHild6v/gB/17qVDGR67QK7ejTRlni4KVs//QxER1m2fIdCcHpQJ5463QHZW8PUlpM+apx9Lmi4WYxq+QN6L09/SVRGUTvy2pq69bKC8ianjG+1pjnpnCw0sdWbKT1ltRsbAQy+6yDpjd8WJuf//wWSMZJLblibIjSkA8khyOHuumXbITuVe2aBsjyRRhGQp30PUji6bzw5XDF6HwBUMx6DCWcuRL4wRcJJ3Oq3FRV/f4dVEoWKYeW7PlbZ/o0ojeQZeTY/A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ta7V6gqRwreNtqZqvkeavRTeSB8C4bBE+/fRJtFIyVU=;
- b=n+Eu5M49AioBS+inuO0INsdcBdoT42o+ajM9NA4phCFXQx8pqkhKuE3NayzXmZkCNCbHsnHIrOyylBoagLnCS6RaookeOhuTnz1iiOWXkVDCxt3/eAXpEbQZHkbZb7h1k67e2qu/o3P2u7EU8ciF/oria77+gCdz2CxHnct16Jo=
-Received: from PH3PEPF000040A1.namprd05.prod.outlook.com (2603:10b6:518:1::52)
- by IA1PR12MB7565.namprd12.prod.outlook.com (2603:10b6:208:42f::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.19; Thu, 20 Feb
- 2025 08:26:58 +0000
-Received: from CY4PEPF0000EE30.namprd05.prod.outlook.com
- (2a01:111:f403:f912::2) by PH3PEPF000040A1.outlook.office365.com
- (2603:1036:903:49::3) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8466.14 via Frontend Transport; Thu,
- 20 Feb 2025 08:26:58 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CY4PEPF0000EE30.mail.protection.outlook.com (10.167.242.36) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.8466.11 via Frontend Transport; Thu, 20 Feb 2025 08:26:57 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Feb
- 2025 02:26:56 -0600
-Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39 via Frontend
- Transport; Thu, 20 Feb 2025 02:26:54 -0600
-Date: Thu, 20 Feb 2025 09:26:48 +0100
-From: Luc Michel <luc.michel@amd.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-CC: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	<qemu-devel@nongnu.org>, Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	Rayhan Faizel <rayhan.faizel@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>, Magnus Damm
-	<magnus.damm@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Thomas Huth
-	<huth@tuxfamily.org>, Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
-	<qemu-arm@nongnu.org>
-Subject: Re: [PATCH 8/9] hw/char/mcf_uart: Really use RX FIFO depth
-Message-ID: <Z7bnSNJQrY2Lffiu@XFR-LUMICHEL-L2.amd.com>
-References: <20250219210841.94797-1-philmd@linaro.org>
- <20250219210841.94797-9-philmd@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="NQBrdxs/";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1740040124; x=1740644924; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=o42TVScMkWBRcW50EFj59vXpjFTmKfRrsrDbs3gtzaI=;
+        b=NQBrdxs/3G5JkQ8UP+dXmI+rv/XeAo0tD49V13HiSOZ3IMtJIQO2aQ948f4KcgRmRT
+         OMY0UBCcUc/ajIDxhKveBFCBtwb0s6k+0lKkQfkXOChinoUZrqhST4N5gUbSkkNWwnDY
+         YnGE/dErcM7yINSXpDbpZn7eM8dWbeWQ47umPuRrqgLQiqFMUho+gw3h8On/kbkit5Qs
+         kHUmDrqpyFb0QZixoYqXqlM4UgFsVZo03NGZlej07npR9rVpIgYG4+8kiyHwp0Yx2eh1
+         uN9ti/IgBXmkixfOvRBfw5+uVM0ZMezsTiRgfvpkFVnr81VurEqXlrZoQNxNKUA7PuPs
+         kuGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740040124; x=1740644924;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=o42TVScMkWBRcW50EFj59vXpjFTmKfRrsrDbs3gtzaI=;
+        b=mHKRBJFKak4W69m9pl6dbcly6uihzNK5Df9ITwakd+tsydKkdujsygXIwptP2WZidO
+         3VJHE/6SyCDo8ZjhMcHzis6/VS8uSD7AXi3YKNU9T3m+7KkkwdvHXUvGoduzovkM7xQj
+         oCudUi/uFUqqPgkTOfxif54ZBm7JuFUYt+2PlCkcDXvjzJkX0aZGoJ/6YyPEbZEg/W7C
+         sRtWvMTmZe5YCDZDB1NPpJ62tsZF1EOprVMOi7/78iapxPeMpQtDLw7fvad0S30IsUSL
+         GhrH8YsFcU9nuLK5VaoyveUuEaoRbz8jrT439Mv3gf5PIH2d+KQ69JjvOpsAz+JFgfrr
+         iVnA==
+X-Forwarded-Encrypted: i=1; AJvYcCU/7tNKpcWEGj3r6xmxs3Koj3eJZkEHx2kRAyFri0MbKpsKqdPGviuV5CxqzDaJNiv11RZCQBJ4uUTF6A==@linaro.org
+X-Gm-Message-State: AOJu0YzyquIsZ6vOzHIpyJJ7PNBe+xs4Pb58bbHtu/i3lvd+T3hr74MM
+	i0MreD+cEUvYHYcQB6CVjaYiA0HOjgGVBNNdUo0Yyu7HDpDv9RsaZF3MxlN3D55Fsw==
+X-Gm-Gg: ASbGncsdW/7xCNH+sHkNAJJ3BjE3HbI5YQFqAHxtJodV2pOexKAvSn3eblXCCUmuulH
+	a72/mDKa5Nc6LBn/vARKDIhbra8WyEbADyyecoWsg9PyWHXqxD1N35CK9PspVK8OIJfqng52E4y
+	IDcMc1Rf7gLQLI/HjT3XGoGEfTGhVPOd801cswSFJADEgqkhBYN5eYXIwyxsD6QAnAzb+C9Z3b0
+	ImlI9KfRHdBRX7qHm+MJyuXpZA0voTXj1qIGVk73TIqhzImxBoX0Dzhwg2YMKtBvCCZnLmIHLLU
+	8o3MvC2QbSLZhxVUWt8jivi26eKkLMr35W2wgc3wffs5anJC4q3X1i2mDAM=
+X-Google-Smtp-Source: AGHT+IHPTG0euoZqI2s0iNfGxqPzS5bcoKsS+brkfAysI0y2548v3uJvhG9NAadqPKFq839NR+HfeQ==
+X-Received: by 2002:a05:600c:5246:b0:439:9d75:9e92 with SMTP id 5b1f17b1804b1-4399d75b257mr49033445e9.28.1740040122491;
+        Thu, 20 Feb 2025 00:28:42 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f258ddbe0sm20155678f8f.39.2025.02.20.00.28.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Feb 2025 00:28:42 -0800 (PST)
+Message-ID: <d159a860-21b2-46e8-a74f-cd6be14ea525@linaro.org>
+Date: Thu, 20 Feb 2025 09:28:40 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/9] hw/char/bcm2835_aux: Really use RX FIFO depth
+To: Luc Michel <luc.michel@amd.com>
+Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org, Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+ Rayhan Faizel <rayhan.faizel@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Thomas Huth <huth@tuxfamily.org>,
+ Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>, qemu-arm@nongnu.org
+References: <20250219210841.94797-1-philmd@linaro.org>
+ <20250219210841.94797-6-philmd@linaro.org>
+ <Z7bmAqE4z2y_kNse@XFR-LUMICHEL-L2.amd.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <Z7bmAqE4z2y_kNse@XFR-LUMICHEL-L2.amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250219210841.94797-9-philmd@linaro.org>
-Return-Path: Luc.Michel@amd.com
-Received-SPF: None (SATLEXMB03.amd.com: luc.michel@amd.com does not designate
- permitted sender hosts)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE30:EE_|IA1PR12MB7565:EE_
-X-MS-Office365-Filtering-Correlation-Id: 846b1741-40af-4e09-af73-08dd51885737
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam:
-	BCL:0;ARA:13230040|1800799024|82310400026|7416014|376014|36860700013|7053199007;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?SE9XcngzV0JPOExPMGJQL213bkRJblQ4UFlzeGtHMVhRVG1DRHlTWTM0U2t0?=
- =?utf-8?B?TmNQR0hKT0FRRnhEZllhRXFDMXF2K1JqcVpRVzZ0MkVCYVBKa21DU0pxMUY3?=
- =?utf-8?B?MURXR1lYTExGMm9TL3B3N0FyYW5YRGIxQ2dOVmptT25SRXhyZEtBUmszUkQ0?=
- =?utf-8?B?MHJ3WEQ0WGN6RjdnamhBMEc4OENXcUY1YXA2c2ViVCsyZWQvb2w1VE4vTktM?=
- =?utf-8?B?NWlQbjB4NFVkdys4bVRDMVRuZHlYazNXOTN3M01YTUtrWjdMZVJCODRUV1Qr?=
- =?utf-8?B?bUpEdUlpNFpiWXdtMVMyYnRzejdkZ0Z6WkQvRWMvTU1LVUJqbjhUVTV1WGtZ?=
- =?utf-8?B?UWUzdmVRZE1ReHpGcVRiMDQrMGhUdWZhTGRxQTl2Tnc2QWxPSWxGNnFsTzVF?=
- =?utf-8?B?M3lkSndQMjZlTml4bE5xLzU2bHNpTE4xbXlqS3lKYkRuOWt2cEt3UWw2T0VX?=
- =?utf-8?B?enFSWmRPQVQ2cUxPZEJER0NNOUpMZkxaUSs4ZWo4U1U1QUt3RCtLaitPT1h0?=
- =?utf-8?B?SmplWFUrMmR5Z1pPMjVWUVhrSG1jYmVSK0lnVyt1UXdUazcxSG9tb1NJNmJQ?=
- =?utf-8?B?TDZqeEM1Z1ZpTVAxaTRtR1VsYjV3TlZuSEdQVHdaMi9kcmM4cXR2eis5N1dm?=
- =?utf-8?B?NUZrSjcyMkNrL0hqSTNhWS9qdE5iS3ErQ2VkdGQrdnQwQmRiUzJjMlF3Z1Zu?=
- =?utf-8?B?RVR6SjV2N3hGMDBPUk9jSEh2cEFiSTBCUGUwSjB6T0trcWtTT0J6VDU0NDN5?=
- =?utf-8?B?d3FCSU9OY05nVmVyOTlVL2YxN1VTdDRCUlZ2clQrQWJ1dytoeW9oSmZUSU95?=
- =?utf-8?B?Mmd3amcrRjFNS05RVlRja21Zak5CdmdobHhmWEpHSGU2NVV4OHphTEF1aEhq?=
- =?utf-8?B?RFpKOW9oRnN1b2kzdDBWbkV1YUhCbjlISXRZUVM3Qmh2Q0d6TXloUTR4U0p3?=
- =?utf-8?B?M2dscjFvTEs4OW5nbWszQnhxU2VVeWEwMWpsMlhJV1pENTkycGxqMDJZU0lG?=
- =?utf-8?B?ZFJTekNUVmEwRlFqdGZRV0k1em1CMTE5VURWOEwrdy9nWHVpV2ZQMzNhREVx?=
- =?utf-8?B?S1MwMlVhV0s5MElzeFhNYVR3L0RrZTlUcWNMdzdYK3M1c0U2a0FsNiswMFNj?=
- =?utf-8?B?blRBdjdtYUJlQWdubnFES2VFaFUyODhWK2JjWWJGeWdkTCt4Z0NoVFY2dy81?=
- =?utf-8?B?bC9uaE9GQmNENCtMc3ZaVUNiZ1dQV3RNZUNIN3ZMRnBhUTQ0WUppOTRDS0Ez?=
- =?utf-8?B?Qy9BNUtmWUxYK25aenhVUG9ZcFNPVmF2WlFabUhjSU5GOUgzK1Y1aWNIR25y?=
- =?utf-8?B?djVRaVV0NmxkMjBTU0JFRkEvUWtMM1hyVHVWeGRVUEpIRGNZYXZwRHZXc0k2?=
- =?utf-8?B?c0xGSzRBSzRlS1NOZTNEdHpBcHR6VHZRYmVJYzVNRzBubDBJeGlWbkI0Nlly?=
- =?utf-8?B?TDh5ZkY5dEFMb1hDczByb2dReUhpTHlFdDIwQXVIQTNSWm93R2RVb0lVWmo3?=
- =?utf-8?B?Q2RQYTBUUFZMekpFa1hFTUNqSnZ0cEt5bnE3RnNjVmdnYmlva3FxcE5vbUV2?=
- =?utf-8?B?RGwvWDhDcFpFT2d0U2pSZENsZkJxZFZpWGd1aXRQdHNxalRyWjgvYVdUM1Y0?=
- =?utf-8?B?aTZMTUg0cmtxNkh2M3A4elI4akNsSGszamIzSnhON3BPdzdiV0FiclJvSUxV?=
- =?utf-8?B?VVpLZDFTbG8yRnRCTTlWM0RkUjR1cXpNVHBmRG9kWS9wRno3MGxvaFplVU83?=
- =?utf-8?B?UlhySzZxWVRPUEV6bTBBQU1ZMkppOFB1WllzQUlRdmk1WkZlUC9vKy9TK1NU?=
- =?utf-8?B?S29oRkhsYWwwZTVmQ05XQm5BOUJYUzVIdFNZSUVtWUlDcGdYTkxJbmM0dERv?=
- =?utf-8?B?RG1MWXpCTlBnZnFvTnBkQXpBZnNBdDdOL09ZRENZVTFBZ3FXd0hLbjhBQ3Nk?=
- =?utf-8?B?b1dWMThaMll3d0djRWpxaEdwQmpJK2ZZRnkxZmRqa3dIOXBJeElXa2tla0c2?=
- =?utf-8?Q?JMLYn0LmBjZWAmVrh8o/keQ4mynh1k=3D?=
-X-Forefront-Antispam-Report:
-	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(1800799024)(82310400026)(7416014)(376014)(36860700013)(7053199007);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2025 08:26:57.5585
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 846b1741-40af-4e09-af73-08dd51885737
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource:
-	CY4PEPF0000EE30.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7565
-X-TUID: 8bUbRdvOgmAD
+X-TUID: wGYGyPCmrzw6
 
-On 22:08 Wed 19 Feb     , Philippe Mathieu-Daudé wrote:
-> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
+On 20/2/25 09:21, Luc Michel wrote:
+> On 22:08 Wed 19 Feb     , Philippe Mathieu-Daudé wrote:
+>> While we model a 8-elements RX FIFO since the PL011 model was
+>> introduced in commit 97398d900ca ("bcm2835_aux: add emulation
+>> of BCM2835 AUX block") we only read 1 char at a time!
 > 
-> 
-> While we model a 4-elements RX FIFO since the PL011 model
-> was introduced in commit 20dcee94833 ("MCF5208 emulation"),
-> we only read 1 char at a time!
+> I'm not sure I get why in this patch and the subsequent ones you keep
+> mentioning the PL011 model while you modify other UARTs. I guess you
+> mean "the BCM2835 AUX model" here?
 
-"the MCF UART model"
-
-Reviewed-by: Luc Michel <luc.michel@amd.com>
+Oops too much copy/pasting...
 
 > 
-> Have the IOCanReadHandler handler return how many elements are
-> available, and use that in the IOReadHandler handler.
+> In any case:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/char/mcf_uart.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-> index 95f269ee9b7..529c26be93a 100644
-> --- a/hw/char/mcf_uart.c
-> +++ b/hw/char/mcf_uart.c
-> @@ -281,14 +281,16 @@ static int mcf_uart_can_receive(void *opaque)
->  {
->      mcf_uart_state *s = (mcf_uart_state *)opaque;
-> 
-> -    return s->rx_enabled && (s->sr & MCF_UART_FFULL) == 0;
-> +    return s->rx_enabled ? FIFO_DEPTH - s->fifo_len : 0;
->  }
-> 
->  static void mcf_uart_receive(void *opaque, const uint8_t *buf, int size)
->  {
->      mcf_uart_state *s = (mcf_uart_state *)opaque;
-> 
-> -    mcf_uart_push_byte(s, buf[0]);
-> +    for (int i = 0; i < size; i++) {
-> +        mcf_uart_push_byte(s, buf[i]);
-> +    }
->  }
-> 
->  static const MemoryRegionOps mcf_uart_ops = {
-> --
-> 2.47.1
-> 
+> Reviewed-by: Luc Michel <luc.michel@amd.com>
 
--- 
+Thanks!
+
+> 
+>>
+>> Have the IOCanReadHandler handler return how many elements are
+>> available, and use that in the IOReadHandler handler.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/char/bcm2835_aux.c | 6 ++++--
+>>   1 file changed, 4 insertions(+), 2 deletions(-)

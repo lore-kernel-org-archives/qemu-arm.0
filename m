@@ -1,122 +1,112 @@
-Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp34327njk;
-        Thu, 20 Feb 2025 04:44:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUrslPvbcU+6ml+0w2aSMZv28k0623OaVrS/5wx1NUzMGIphTV3TLHJ1rlOGEyaVACahrRG+YP9+ZfgXg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEutFlTJTba6XbntwHTzcVCkRBTrnIdNtB/ZIxIyiKleenDvr+nN7B7NRCD6gCsHEkaLBaz
-X-Received: by 2002:a05:620a:2451:b0:7c0:b685:1bb0 with SMTP id af79cd13be357-7c0b6851ea6mr857704385a.17.1740055480914;
-        Thu, 20 Feb 2025 04:44:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740055480; cv=none;
+Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp88295njk;
+        Thu, 20 Feb 2025 06:10:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUy06EZUy69f6dShmHBigY/TCNNbJiLHg18Ekw91JwGu7gLkSEmaZJwLbjrW1rcyVkDkVqS3rtKr00wyw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGTDz5ZsWaxj1PFXQJjvvAtxxaZj5fm/KSVaSezri/jnBuNqtn0qirJ5fPoNlZFGiq3e1U9
+X-Received: by 2002:a05:600c:1d1e:b0:439:60ef:ce94 with SMTP id 5b1f17b1804b1-43999dd1193mr66574795e9.21.1740060613248;
+        Thu, 20 Feb 2025 06:10:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740060613; cv=none;
         d=google.com; s=arc-20240605;
-        b=MmC3HbhdC4TP+M2yvmA0Ek6gqr/as8mhejv6jzb1GWL1PJWe9aB+M4se/V/lxesG4a
-         I66ABWgDaoPT+pKYTGd55ftKyn1xL34lQrAC7MRjitE7n7RfJfEza0Qb+ftK8uOiTEPB
-         rfVGHGwLYKKp3RR08dRv7beMVPsZrEAy/N27flDH83ch6j4hAS+j+UofkIA73ITVYnJG
-         LDztU1OxBWXMfCQ1IoZYAbOPsYyoW4x0qFJwCzdQ0BkoeR0Rbum7ery1IQBQXQ4nofkq
-         5n97G9PGNBsixFRuet8jNJGFSaWBQHj5M8UlSi1STaeqw6igSJ+7+rvwyn5clRhaCfd7
-         +85A==
+        b=iQ/1nLiVMBac2rvOAQsh3k/Mv51vC4cGnQGxQ+EnnDpNiAsGzLg2KXcTtiduaKIIzD
+         BP8z8NaFq/7w4bSGCfw955hWmNwo8DZjgxV5FUrUIp64+mrO2M461CaUmrdbb5wC8SlX
+         S/Cure9l1NyUjBgQ/hAO5eW4B+TenIwKonVuNht97EeSCDGxj5+PhU4SMbB4y/Sx8H4s
+         ostgnwvWprhmkBcYHVSuC4jg7Hmh0k4MG8abXQfqpzQh9i9UGlOafx3y0J7Wcyac2+sI
+         wN/yxQc8aoPYc5KtZj3OM4YuGAsKsUKJWdy8yx97f75B6I7PtCKnActF7ddCSTfFryFw
+         xrog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
-        fh=6VGrfyY7T8wSSJsdxl80PaFT5YaIXTh8xRrZUUaC/HQ=;
-        b=jP65GwYW5Lo5fp7IfhgZoEvdtjS8HPtnBXA4MwKB07wJD9SX4/y0z7i1GJyWENnFmA
-         R6UtjWajmOIdkZXvAKcQD7uZFqrOSqbpE7aKe8FxaAojc4+0CQzy1ZmGr2Qo/eyuE4Rx
-         22aQlwOhUJuG3WFDjcw+EiZYkkEyO4z5Mz0Ld+nSc0wV58tq0JE2L0uhxg9E82MHKwWB
-         /BTGoJu4REUXDov6E0NKGnsXZlh7IVos1POewyifYSo1qEg2LxJe+2gO4igfKD3iFgYr
-         8fdKrJMd+s2uOdp2PmpI1lNo8vMvPS6peUtz5ypTyzqA+exGvGVaK8IZ6wrv+n6sejV/
-         1/XA==;
+        bh=UIZshvD68i6YUVum3s1elgKpBgGDILDeQgleIfXIgtk=;
+        fh=rPQXZHeh96yxgz2TTZvoOmb243JXXC1x42IWQF0HLGQ=;
+        b=DASqmoR/cJroPbGZUMu5CKaAQhv2aDo+5ELJCneM97zT3/ARzCY5/MrW0yjMvEPpum
+         f0fUWXoIy75YTbchQw9p2c9b98n7ASLae2dzR7c2vYLqIdaywgBzi0wtfB3rx5s4yKb8
+         xl6OLSdMNBYIYErh7plsAb+ZxWK7dyKrmD2C47Cp1Y0+1KztbMM9bN7bH2mpC/67WibL
+         3WGXXV2UpR4QF6OUfyjLJkI5F+hEW+VADwLTuUTZqcswgUv++39+602DePaLXjtLIC9K
+         GrkakqpHgptUUJQHnt1KXoP0L5prOd+fO9/pQIFiy0FakR/FfipWmQVMPCqW/ChmwHs/
+         BEZw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C+HBi1gR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=svraJXh9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0b3bee1dasi379053685a.341.2025.02.20.04.44.40
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-439938d3dc6si43046965e9.171.2025.02.20.06.10.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2025 04:44:40 -0800 (PST)
+        Thu, 20 Feb 2025 06:10:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C+HBi1gR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=svraJXh9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tl5uR-0002we-J7; Thu, 20 Feb 2025 07:44:07 -0500
+	id 1tl7FK-0005fp-Ry; Thu, 20 Feb 2025 09:09:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ilias.apalodimas@linaro.org>)
- id 1tl5uK-0002wE-S2
- for qemu-arm@nongnu.org; Thu, 20 Feb 2025 07:44:01 -0500
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tl7FI-0005fN-Ho
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 09:09:45 -0500
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ilias.apalodimas@linaro.org>)
- id 1tl5uJ-0001N6-0E
- for qemu-arm@nongnu.org; Thu, 20 Feb 2025 07:44:00 -0500
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-6f4434b5305so6726707b3.3
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2025 04:43:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tl7FG-0004EK-Ii
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 09:09:44 -0500
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-6fb6c36ba25so8790117b3.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Feb 2025 06:09:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740055437; x=1740660237; darn=nongnu.org;
+ d=linaro.org; s=google; t=1740060581; x=1740665381; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
- b=C+HBi1gR0xW8ZUOwrCpbJq7tiExLMTOPPJP8fEcy0ZwInQWrEkThtmFbKNJG4p8L5O
- 5fTaRkVj2CEh/lkXxYUlOy+1g2WoYdX0Ou70hK2eIJ2L6yttv1bxrJ8BjhNDbcvALvhJ
- byeI0bzGd9nT0wluRetNxrKBIp/vSf8XLQnYAgoo/EeqcjJW4n0r0uOGmrKZZYseDo8t
- HtgTTRn2qnebxqxwdawFXBFGhMw6dXhonPv/4RCRNIA9RgEfy0kJzfi8rWmc1d1k7pEo
- TQSCjGKepFgiXcMQUA7CJutfgM6PwnCgyJqexfOPevNBr33iII/xG5ivjX0qi8qjXmiK
- y7gg==
+ bh=UIZshvD68i6YUVum3s1elgKpBgGDILDeQgleIfXIgtk=;
+ b=svraJXh9Vr+kJZidYyWnejLkHBSCF4y1qPPEXQKs3vvqhuW1kWCNX+ZXRujfDC54i7
+ AQdEZufuFd1Vpe6BJLAKSVLtxiUzlUBCejicoeY+yC7fCx5o9A0bEST5RrCqgR23RXqY
+ fgDuDD/GImiYbSK4dtlfUEqdVhzhz5PDs84rFM02G+iQXNhnGF7HLRJpXseYXwDa+Rdn
+ Oy1v/iSrvvYwhOo7HqgBRGBD0qktmizfRsUYpUgLhCgxYHipcav19L8CDNY+sQIDi8PZ
+ 5LbsFTbyH3l+Hv8MQrxK1XdxTVuBxZBNj1xmXJF5HX6OXZxdD188AFTKSfzwq0I7azVB
+ 727A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740055437; x=1740660237;
+ d=1e100.net; s=20230601; t=1740060581; x=1740665381;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
- b=ASBkWAJ+SvimgaI5JkeKi1buQOEG3UyZOJkJWsPNysWdz2Or7Z2f86jkI/VkxMNlXU
- HUxyiZbXkw7pOcsRYY21cwANG2Ra2WZMDHLBFOauQAchtIBVubGu1/rZhwOKtQ0Ac2UN
- 3WuiYi7OhggCkNys6h93YpkaiEPnRSSC2IFgWXvhEEwmQ7+cvxhGpScG+P2FVd13chqN
- 9kiqcboy7mwDk+kdZWWiPR65uztQhG8x6fBmKGUWojwRRLCJOws2xafnnwW1848/9pSe
- rWZ2IaN3WzuqHJuOchc0pydaItqoGuFYSregANCRJ/B35g/+GyoHTO0Ex3KkuT0vHoX5
- iXMw==
+ bh=UIZshvD68i6YUVum3s1elgKpBgGDILDeQgleIfXIgtk=;
+ b=Iq7enjhHrGGL+Cda2/yiuIZXfkrspC9TVM9VybOmbBDBERCF/jt0JAYs1/vbFAPiTB
+ 8aS+cGKkkDUVONsDIsTohiJw7LI5rkQ01nfiyzjD5wOZg167XqZrIv60nUPPTEmKIVIK
+ +qigWAMn4KbQvC+EzYd+zMRs49235xwyw4+/pC97IOiInaavq6phvrHnXevcGDoxd2ri
+ LcG0I/9spGhsa/0cE9gRjsG1cDBfQcqBWySF/+HzQh4rhsZrY44WGGYB/qEipdGIgiLW
+ QZGN+EK45UI0v/cCJ2kjsoMfEv7R3Xjhvq8MoHSGTYqctxcRl7/JDoL9YbBqcHBEM9il
+ QJ9A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXB84aWMnN3O1xDwKIPXX7DG44dXyxGpKmtOAV0m0QOIAqKP4k5aEwGJGVW6caxwDIFi7DQlip/RA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy66EP3oCpqmT//+Mj9MuVEH84SUc+J+XW3wcO39dNG4D8IlV2e
- 20ciEdO+xt71WBFaef+dXQHHwPZmrilxYt7p2ENJPr/P4aPcKgKpQxY7sbwuYodrQczuGeAxXP8
- 4d6lWLpltrGGyWThZ3mEj+AiiVTjz0XaT7CnMFA==
-X-Gm-Gg: ASbGncve2B/m7dtMroWz2HRJV2p1lv/PXtc/dWslnx4nkEsUvM5W3Z0CkFNnBP/6FBT
- 8Tax/neobJFw0E5N5gtRaqLNAaXMhge9t9dYMsH3ukSuSGGMOy/XegolD5Q7+hhbqxqk3ecrCag
+ AJvYcCWjkMksL2f7nFlNnCzE2dElQ6GgUvP6YR+0/9bM7HY/P9UOFnlbsGe5jKyZGVyUGOuw9W63Nhjaig==@nongnu.org
+X-Gm-Message-State: AOJu0Yz/OOc7HA4cyGoxFBK/IkMCVkF9ywAJH5XOtKCKhNgj4zl6IS+O
+ Drf+CdQZ16Lsoc6mQzxNcrYGP672gKfqD+2v8Yg7WejyJgg5FW6yU3YWCig7BI/hvWP/fP/emYs
+ J0p8oC+SXJgbA3F3TETRfib4UTzDS6vOyRnFJFg==
+X-Gm-Gg: ASbGncvzitMJ3Fg3tJDMO8UvOBqZWJSM6k0bWc/mDqdwZLRCUVYS9f84L8zv0OWgemx
+ bXs3UI/mpjga1h8rxuwWjKcT3ab4RMLPtW/uMa26h8g4oXgdPnJ/eXKHNw3CXlO7+pahYrYpwiw
  ==
-X-Received: by 2002:a05:690c:7305:b0:6fb:a376:3848 with SMTP id
- 00721157ae682-6fba37640ddmr81976137b3.34.1740055437223; Thu, 20 Feb 2025
- 04:43:57 -0800 (PST)
+X-Received: by 2002:a05:690c:630f:b0:6fb:a251:2450 with SMTP id
+ 00721157ae682-6fbb78f8026mr28349537b3.1.1740060580969; Thu, 20 Feb 2025
+ 06:09:40 -0800 (PST)
 MIME-Version: 1.0
-References: <20250211092324.965440-1-kraxel@redhat.com>
- <CAMj1kXE289FkzV=GZSUARF7TFUyRuxYVX-090ic06Erb_RLGrg@mail.gmail.com>
- <cc41f19c-5778-4376-a1a1-762a92c8584c@amazon.com>
- <CAMj1kXFaoZCnXpAsq+i5nzpCOjcrsN4QA2r6Z=F6UUwcUe_qJA@mail.gmail.com>
-In-Reply-To: <CAMj1kXFaoZCnXpAsq+i5nzpCOjcrsN4QA2r6Z=F6UUwcUe_qJA@mail.gmail.com>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Thu, 20 Feb 2025 14:43:21 +0200
-X-Gm-Features: AWEUYZnTlr-A1I-DiZeEgvoZs27SOWRVjgKDye9_lKOfKPY-Xyn4Y7NDn08Whsg
-Message-ID: <CAC_iWj+eGFOTBUAgStAcN+UMH6fjbivgKAcm-i8qaGap1GPAOQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/23] hw/uefi: add uefi variable service
-To: Ard Biesheuvel <ardb@kernel.org>, Alexander Graf <graf@amazon.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>, 
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+References: <20250209103604.29545-1-shentey@gmail.com>
+In-Reply-To: <20250209103604.29545-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Feb 2025 14:09:29 +0000
+X-Gm-Features: AWEUYZlFlf1hUAcZI1NRD35GD7_3yphfZhQCUZ67plEEHBq8rKZ3O7hGlTEnAa8
+Message-ID: <CAFEAcA-PGTAQhmktPmMvAjkL8S7UDhEp2+edwiLJT0f_xe=8ZQ@mail.gmail.com>
+Subject: Re: [PATCH] Kconfig: Extract CONFIG_USB_CHIPIDEA from CONFIG_IMX
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=ilias.apalodimas@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,73 +128,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tw0saOLEeMwy
+X-TUID: mXldefhxLIWV
 
-Hi Alex, Ard, Gerd,
-
-Thanks for roping me in,
-
-On Thu, 13 Feb 2025 at 12:13, Ard Biesheuvel <ardb@kernel.org> wrote:
+On Sun, 9 Feb 2025 at 10:36, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> On Thu, 13 Feb 2025 at 11:11, Alexander Graf <graf@amazon.com> wrote:
-> >
-> >
-> > On 13.02.25 10:41, Ard Biesheuvel wrote:
-> > > On Tue, 11 Feb 2025 at 10:23, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> > >> This patch adds a virtual device to qemu which the uefi firmware can use
-> > >> to store variables.  This moves the UEFI variable management from
-> > >> privileged guest code (managing vars in pflash) to the host.  Main
-> > >> advantage is that the need to have privilege separation in the guest
-> > >> goes away.
-> > >>
-> > >> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
-> > >> not liked much by various stakeholders in cloud space due to the
-> > >> complexity SMM emulation brings.
-> > >>
-> > >> On arm privileged guest code runs in el3 (aka secure world).  This is
-> > >> not supported by kvm, which is unlikely to change anytime soon given
-> > >> that even el2 support (nested virt) is being worked on for years and is
-> > >> not yet in mainline.
-> > >>
-> > > The secure counterpart of this would never execute at EL3 on ARM, but
-> > > at secure EL1 (or potentially at secure EL2 on more recent CPUs). But
-> > > the general point that this is difficult to virtualize stands; I've
-> > > contemplated doing something similar to SMM emulation using non-secure
-> > > EL1 in a separate VM to provide an execution context that could those
-> > > the secure EL1 payload (using standalone MM) but I never found the
-> > > time to work on this.
-> >
-> >
-> > Sounds very similar to what Ilias built a few years ago?
-> >
-> > https://lore.kernel.org/all/20200511085205.GD73895@apalos.home/T/
-> >
-> > Which reminds me: How similar is the protocol in this patch set to the
-> > one implemented in U-Boot? No need to reinvent the wheel over and over
-> > again.
-> >
+> TYPE_CHIPIDEA models an IP block which is also used in TYPE_ZYNQ_MACHINE which
+> itself is not an IMX device. CONFIG_ZYNQ selects CONFIG_USB_EHCI_SYSBUS while
+> TYPE_CHIPIDEA is a separate compilation unit, so only works by accident if
+> CONFIG_IMX is given. Fix that by extracting CONFIG_USB_CHIPIDEA from CONFIG_IMX.
 >
-> Identical afaik
+> Fixes: 616ec12d0fcc "hw/arm/xilinx_zynq: Fix USB port instantiation"
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> cc: qemu-stable
 
-I don't know what I can do to help here but I'll explain what we have
-in case we can figure something out .
-The idea is very close indeed and in fact it works on QEMU with some
-hacks for arm(7/8). [0]. Since QEMU doesn't have an RPMB emulation I
-am providing one in software in U-Boot. That's obviously useless in
-real use usecases, since the memory backend disappears when we leave
-the firmware, but still useful for testing.
 
-I also have a blog explaining the arm specific bits here [1].
 
-The TL;DR is that we set up everything StMM needs inside OP-TEE and
-execute it in S-EL1. For storage, we have a 'special' StMM driver that
-sends requests to OP-TEE and uses its RPMB support to write sensitive
-data on the device.
+Applied to target-arm.next, thanks.
 
-[0] https://git.linaro.org/people/ilias.apalodimas/efi_optee_variables.git/
-[1] https://old.linaro.org/blog/protected-uefi-variables-with-u-boot/
-
-Let me know if you need anything else
-
-Cheers
-/Ilias
+-- PMM

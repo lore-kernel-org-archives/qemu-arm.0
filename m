@@ -1,199 +1,272 @@
-Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp138306njk;
-        Thu, 20 Feb 2025 07:22:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7D90SYSDCaBpCUx4YekyWqEAjfoWOB7CiuctaqslEtr4x6+OLdl2kM26nfS+Vgp6ldBQWox9i1rY7Lw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE+iO+brfsB8uXbcH+sixYmI/PHtwCXDCng5ht8PvhDoL7jRGTQ7ciVYS9gKPjp8yn5LbU2
-X-Received: by 2002:a05:6122:1812:b0:520:6773:e5bf with SMTP id 71dfb90a1353d-521c43c2685mr4449146e0c.1.1740064920374;
-        Thu, 20 Feb 2025 07:22:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740064920; cv=none;
+Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp158382njk;
+        Thu, 20 Feb 2025 07:55:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWyln7rQs8hBsJgPsBXWTl+8L/DU0uzIIQLhloMU4Tk89lN81snODEBqIm74uLH2AEzGEd8iao6H6TTsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEoJCP2b4Ep+0GaEg8KdE2C2yuroyXgNPQ+EixbTDSwyfhy0Amz4/3m5aoyO6ZKHJrzZHu1
+X-Received: by 2002:a05:622a:1106:b0:472:4c9:617e with SMTP id d75a77b69052e-472082862a5mr130966221cf.31.1740066932356;
+        Thu, 20 Feb 2025 07:55:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740066932; cv=none;
         d=google.com; s=arc-20240605;
-        b=jdoHibMvIqTZDrJOr9KA1wuHddxeMgFGrijm2N7MDXRLlUgSuPQ1cAGxGQvcYCkwh0
-         eo/7WyJv55lDJXo6laoDkKxCWzHTJCcfp7tuGbCHKp7EkDQ82/1bclYZW6YdKRzSMMyV
-         ONerjkBKiMZbv/jfD6TKxttUoI0vv1S5F08DN3bf6ToVIIiCo55No68GgWyabYtLA5gr
-         8FiL5UJgDa+5aeiLlJRmu+4Z0uCfE0WWBltc3PYHexBhfcI0UZtYuc2THn/UZE8qELI9
-         /ssBHc6AShXbFd5M9Y4qtcpTTkpYWW5Zo5mJM2ptmRxohSBYJUCf05wGy8gUlSigCtEO
-         KfjQ==
+        b=ADF/T0hfPe21faOSzWBo8Mz17pwpqYnMO137Ipt6CWKCKGOfN5BKRYYRXM0ZzWDD/M
+         Uo4TBdad1RzxNr9KJWZvUMW+9pZAjrEadx7pv/XUfAwumQS7MuawIWRSAil+p+qYQq+/
+         ck71zw2TrUo84WdE8HmdFq/rTOa36PuMax78FyrEgnvXhzWyKiKPpBWqlPgUISNqDkmk
+         7eF5PEckbOmBEZ6pN+0prCLyj4KHdYsuywvsbv6ab1q0RThmeBdfrckrBAC+WtqAZE52
+         fPA+xNRyIUhClqjvY7PvFmeWYBGUeVXG7gOKwZkmXVxSdpifY9qgo1hSX6VQslX6zqOY
+         8tPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:date:references:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=/6XkVQ4ezBwaXgU6HbYM+ncvnfzjKadVi0rsVD2IzSY=;
-        fh=dRWNYZ4/66DWZoWX1FMcy+GzizryTh1rKGHA61RWg8k=;
-        b=il+VyBXtly6dUFxASmSwErBXECtJ4AiUoIoNXnBBvJF3xE1GnugRpf2oDJGmuf8vfv
-         D8VuRZI4OzyHqu2jkKvZTcGhSZe0Vi0aUelidhzfqszaj0+JjnLz5Q/i7nRajdfrZ3dO
-         WeVNvufRU6jJeknuNQmvrsD3nsyq6qm4HDKuzdeCd1JCUPDeJ/x4ewY8IOSDGDhrKaYF
-         S21QryckCs2FQ7n0jZo0nk1aTkoHJvTU8HbjLKmxznp/8Kxa8SCwabF0gyhbe/e+2+MP
-         ocOqPx4+RkZNgQyFb82m2vPVjyIF0/CFoJZVATV8ManmUMporOvCupCajAP9OxZNTCaV
-         aHqA==;
+        bh=svMb0hMjsByEN3jNk32qxtNTGWo84eb8AH74fZ+nvGk=;
+        fh=tUCyjvcSN1KRD/P8TJfN97xpHG61EnEtdwb1LlsWOhY=;
+        b=LOYnKZen0qMA15NmjbEYMs66NadroJ+mPS0u5SUC2OIb16mv0Q4aDpy7KOZr7xALNM
+         iRWUw8w8Mg9iqt9VRMmfWw4ceQEcZ13PZv/RcMcpiim7WbG6HbDIu9pqYCdxG7Nm2leW
+         grI9TH6BhCSQeDkDuAD14QoyGbbak2Hzsqud5IeDpclZKkSRU4L4usPxc4dHq8xFN7nH
+         iDw1uPaOIUgdI6z3KXq+U0mgTdDJrkFtyEpiGNneLJBjdYj+rUuS8oMfMK0i6cAtNdpr
+         M2FD+uMxjK7OkbCFt0FHGCg1wNsQm7cknnM8NGV3Bg3fmX7zcbNBhbD+Pd7vuvurFlYG
+         /1NQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x2GZym/h";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NjE3Y/qh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-868e8586d84si3161596241.40.2025.02.20.07.22.00
+        by mx.google.com with ESMTPS id d75a77b69052e-47205450f0fsi46172211cf.671.2025.02.20.07.55.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2025 07:22:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Feb 2025 07:55:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x2GZym/h";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NjE3Y/qh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tl8N0-0004xA-97; Thu, 20 Feb 2025 10:21:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tl8sy-0000Bf-JS; Thu, 20 Feb 2025 10:54:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tl8Mx-0004wQ-Fn
- for qemu-devel@nongnu.org; Thu, 20 Feb 2025 10:21:43 -0500
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tl8Mv-0007k6-Ob
- for qemu-devel@nongnu.org; Thu, 20 Feb 2025 10:21:43 -0500
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-6fb7c373416so8215407b3.0
- for <qemu-devel@nongnu.org>; Thu, 20 Feb 2025 07:21:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740064900; x=1740669700; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/6XkVQ4ezBwaXgU6HbYM+ncvnfzjKadVi0rsVD2IzSY=;
- b=x2GZym/hh3TF4XZ77pSczQflbt6RfTUZ2oOHZz58YJ5GGvBEr1eWuwZbzu1ndEM9rb
- e7/iXfIUIDGJ630H6z8dgU6cDPjcAnrsTEfN6C+QSxGl6gAubO2oOl1Mgmb34DwvQAc6
- q+Isbv4sU8h11sZxpKKXcEjLOcNFYz8i1r/aqa4/dHKRW9ba/etnqGFYnT/TSoK6fhM4
- 6zgYIfOS1xakG8rnQKv9KvaWSf3+qDQ4F8HaZRTCaryzIBrFGoiY7HBRz1lQGvVfQz1R
- SRneAs1ZaYI5uwU0Grqdz40DRW1a9hUO9eHgUHZ7m825UQxRYWkyoqjVmNBhsssgC+I5
- xRYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740064900; x=1740669700;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/6XkVQ4ezBwaXgU6HbYM+ncvnfzjKadVi0rsVD2IzSY=;
- b=Wj0tfOMpp0B10kZKqOP13Zk8+q/5RnlzVRjEEpQjZV17DDUAbNptipA4m0HiOQqwyx
- NGJ5sxmQieZ6gHqozlfsgztBuWXa+cJp/YUov2WHAvvcIM+BS2EEHoT1Jo0GWTyBwz6A
- pAI6tD9bIrBr3Y9K8NnNjqSoP2TUQXnCEjNVOY8REw2+6V3SRuh2CQuMVJTOI5/IzIL4
- kmQIkbRYHOqLDJvXTz25o16bDEA1qV14eNG0TXa3r0MhnZr0LsBajSq+G35aw02ZjtLy
- 1xZvZ8qPwYdxHRpTaKQC00Bvw+y3or0R6NjYp3SJi9mp1tsVbYQkvT3DxaAxSKESfUax
- bMVg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUftOYIpb2tnxgYkjwYkvrgkb0uilMITqRilOsvdzAUrrw1ddzLADKtPYOf75cZ5VHJ6mo9hs2d/Ul5@nongnu.org
-X-Gm-Message-State: AOJu0YzIUP7Ny8hVFnEHIy51iZ0vrpOXCiQWbxWNwpq/VYVSI0C8vQgk
- XgQVkqGQMaLP/XVv48jaVanu5UYD3lCCvBEae06JxmJRLAlqDNHMwahB4xQkXENj7oITr6joNj+
- CmcKBId7UfhTewKofECF8PKqxw5/ZkucbRwAOBQ==
-X-Gm-Gg: ASbGncsWkO36yTsrPVdI9g06EKaxbph5ykWKUIdzIXg/ofiPKTuDjM0T3cv3hOx7Gl+
- A6ltUX0BsSkQlaTTdvCzBk6wOIEGebuOC1w8ZtVHbxs1+xyriYIfYYFrM5xfS1dqGS9Bml8rd8A
- ==
-X-Received: by 2002:a05:690c:62c3:b0:6ef:6536:bb96 with SMTP id
- 00721157ae682-6fba56ba0demr82745397b3.10.1740064899848; Thu, 20 Feb 2025
- 07:21:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tl8sw-0000As-Im
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 10:54:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1tl8st-0004mA-IA
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 10:54:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1740066882;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=svMb0hMjsByEN3jNk32qxtNTGWo84eb8AH74fZ+nvGk=;
+ b=NjE3Y/qhLLTNDH75dGTpUpwKNANEY5fuOt3ATG3UTGqSxQBeqOEtFewvDB764b+cZepSe+
+ uURvfVgq7PsH/CujnP/zm279JUQSWiAz4r8sBn3+8AxiJCmQRMOt1OQ4OxWyjDSDFDyIb2
+ gjVFxLPtV0muH9/qQl/Bb4TNKGVzzzg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-176-B3pw8yMyMauE5q5vR1YHTQ-1; Thu,
+ 20 Feb 2025 10:54:37 -0500
+X-MC-Unique: B3pw8yMyMauE5q5vR1YHTQ-1
+X-Mimecast-MFC-AGG-ID: B3pw8yMyMauE5q5vR1YHTQ_1740066876
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0E85D19783B6; Thu, 20 Feb 2025 15:54:34 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.9])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 853A219412A3; Thu, 20 Feb 2025 15:54:32 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E9B4A21E6A28; Thu, 20 Feb 2025 16:54:29 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Ard Biesheuvel
+ <ardb@kernel.org>,  Michael Roth <michael.roth@amd.com>,  "Michael S.
+ Tsirkin" <mst@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,
+ Paolo Bonzini <pbonzini@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Daniel
+ P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  graf@amazon.com,  Markus Armbruster
+ <armbru@redhat.com>
+Subject: Re: [PATCH v4 14/24] hw/uefi: add var-service-json.c + qapi for NV
+ vars.
+In-Reply-To: <20250219071431.50626-15-kraxel@redhat.com> (Gerd Hoffmann's
+ message of "Wed, 19 Feb 2025 08:14:16 +0100")
+References: <20250219071431.50626-1-kraxel@redhat.com>
+ <20250219071431.50626-15-kraxel@redhat.com>
+Date: Thu, 20 Feb 2025 16:54:29 +0100
+Message-ID: <87tt8or4qy.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20250219184609.1839281-1-wuhaotsh@google.com>
- <20250219184609.1839281-4-wuhaotsh@google.com>
-In-Reply-To: <20250219184609.1839281-4-wuhaotsh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Feb 2025 15:21:27 +0000
-X-Gm-Features: AWEUYZnDUvb4Rt6qsD3pqVXAgzwvGBpV9nQeXjGCtbnKp5pp782u5ayFQ3E9Wx8
-Message-ID: <CAFEAcA81OORsvepsy6BN5G3_UTaUjFtNLpp71TiukgJt4-S6LA@mail.gmail.com>
-Subject: Re: [PATCH v5 03/17] hw/ssi: Make flash size a property in NPCM7XX FIU
-To: Hao Wu <wuhaotsh@google.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
- Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com, 
- titusr@google.com, chli30@nuvoton.corp-partner.google.com, 
- pbonzini@redhat.com, jasowang@redhat.com, alistair@alistair23.me, 
- philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.457,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J9+dloQ3S/14
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: E5GyHDTdxVAl
 
-On Wed, 19 Feb 2025 at 18:46, Hao Wu <wuhaotsh@google.com> wrote:
->
-> This allows different FIUs to have different flash sizes, useful
-> in NPCM8XX which has multiple different sized FIU modules.
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Philippe Mathieu-Daude <philmd@linaro.org>
+Gerd Hoffmann <kraxel@redhat.com> writes:
 
-> @@ -543,6 +554,7 @@ static const VMStateDescription vmstate_npcm7xx_fiu =
-=3D {
+> Define qapi schema for the uefi variable store state.
 >
->  static const Property npcm7xx_fiu_properties[] =3D {
->      DEFINE_PROP_INT32("cs-count", NPCM7xxFIUState, cs_count, 0),
-> +    DEFINE_PROP_SIZE("flash-size", NPCM7xxFIUState, flash_size, 0),
->  };
+> Use it and the generated visitor helper functions to store persistent
+> (EFI_VARIABLE_NON_VOLATILE) variables in JSON format on disk.
 >
->  static void npcm7xx_fiu_class_init(ObjectClass *klass, void *data)
-> diff --git a/include/hw/ssi/npcm7xx_fiu.h b/include/hw/ssi/npcm7xx_fiu.h
-> index a3a1704289..1785ea16f4 100644
-> --- a/include/hw/ssi/npcm7xx_fiu.h
-> +++ b/include/hw/ssi/npcm7xx_fiu.h
-> @@ -60,6 +60,7 @@ struct NPCM7xxFIUState {
->      int32_t cs_count;
->      int32_t active_cs;
->      qemu_irq *cs_lines;
-> +    size_t flash_size;
->      NPCM7xxFIUFlash *flash;
->
->      SSIBus *spi;
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 
-The field for a DEFINE_PROP_SIZE must be a uint64_t, or it
-won't build on 32-bit hosts:
+[...]
 
-In file included from ../include/qemu/osdep.h:53,
-                 from ../hw/ssi/npcm7xx_fiu.c:17:
-../include/qemu/compiler.h:65:35: error: invalid operands to binary -
-(have =E2=80=98uint64_t *=E2=80=99 {aka =E2=80=98long long unsigned int *=
-=E2=80=99} and =E2=80=98size_t *=E2=80=99
-{aka =E2=80=98unsigned int *=E2=80=99})
-65 | #define type_check(t1,t2) ((t1*)0 - (t2*)0)
-   |                                   ^
-../include/hw/qdev-properties.h:71:15: note: in expansion of macro =E2=80=
-=98type_check=E2=80=99
-71 | + type_check(_type, typeof_field(_state, _field)), \
-   |   ^~~~~~~~~~
-../include/hw/qdev-properties.h:90:5: note: in expansion of macro =E2=80=98=
-DEFINE_PROP=E2=80=99
-90 | DEFINE_PROP(_name, _state, _field, _prop, _type, \
-   | ^~~~~~~~~~~
-../include/hw/qdev-properties.h:166:5: note: in expansion of macro
-=E2=80=98DEFINE_PROP_UNSIGNED=E2=80=99
-166 | DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_size, uint64_t)
-    | ^~~~~~~~~~~~~~~~~~~~
-../hw/ssi/npcm7xx_fiu.c:557:5: note: in expansion of macro =E2=80=98DEFINE_=
-PROP_SIZE=E2=80=99
-557 | DEFINE_PROP_SIZE("flash-size", NPCM7xxFIUState, flash_size, 0),
-    | ^~~~~~~~~~~~~~~~
+> diff --git a/qapi/meson.build b/qapi/meson.build
+> index e7bc54e5d047..eadde4db307f 100644
+> --- a/qapi/meson.build
+> +++ b/qapi/meson.build
+> @@ -65,6 +65,7 @@ if have_system
+>      'pci',
+>      'rocker',
+>      'tpm',
+> +    'uefi',
+>    ]
+>  endif
+>  if have_system or have_tools
+> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+> index b1581988e4eb..2877aff73d0c 100644
+> --- a/qapi/qapi-schema.json
+> +++ b/qapi/qapi-schema.json
+> @@ -81,3 +81,4 @@
+>  { 'include': 'vfio.json' }
+>  { 'include': 'cryptodev.json' }
+>  { 'include': 'cxl.json' }
+> +{ 'include': 'uefi.json' }
+> diff --git a/qapi/uefi.json b/qapi/uefi.json
+> new file mode 100644
+> index 000000000000..c268ed11b70c
+> --- /dev/null
+> +++ b/qapi/uefi.json
+> @@ -0,0 +1,45 @@
+> +# -*- Mode: Python -*-
+> +# vim: filetype=python
+> +#
+> +
 
--- PMM
+This ends up in section "CXL devices", which is not what you want.  I
+guess you want a suitable heading right here, like
+
+   ##
+   # UEFI mumble mumble
+   ##
+
+> +##
+> +# @UefiVariable:
+> +#
+> +# UEFI Variable
+
+Overview text is optional.  Is this one worthwhile?
+
+> +#
+> +# @guid: variable namespace guid
+
+How is guid usually capitalized in UEFI documentation?  GUID maybe?
+
+> +#
+> +# @name: variable name (utf-8)
+
+UTF-8
+
+> +#
+> +# @attr: variable attributes
+
+These are encoded as int.  How?
+
+> +#
+> +# @data: variable content (base64)
+
+I'm not a native speaker...  for what it's worth, "contents" feels
+better to me.
+
+(base64 encoded) and (encoded in base64) are the common phrasings.
+
+> +#
+> +# @time: variable modification time (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS).
+
+Long line, please break it like
+
+   # @time: variable modification time
+   #     (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS)
+
+What's the unit and the anchor?  Seconds since the epoch?
+
+What is EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS trying to
+tell the reader?
+
+> +#
+> +# @digest: variable certificate digest (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS).
+
+Long line, please break it like
+
+   # @digest: variable certificate digest
+   #     (EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS)
+
+What kind of digest is this?
+
+> +#
+> +# Since: 10.0
+> +##
+> +{ 'struct' : 'UefiVariable',
+> +  'data' : { 'guid'  : 'str',
+> +             'name'  : 'str',
+> +             'attr'  : 'int',
+> +             'data'  : 'str',
+> +             '*time' : 'str',
+> +             '*digest' : 'str'}}
+> +
+> +##
+> +# @UefiVarStore:
+> +#
+> +# UEFI Variable Store
+
+Overview is optional.  Is this one worthwhile?
+
+> +#
+> +# @version: 2
+
+What about "currently always 2"?
+
+> +#
+> +# @variables: list of uefi variables
+
+UEFI
+
+> +#
+> +# Since: 10.0
+> +##
+> +{ 'struct' : 'UefiVarStore',
+> +  'data' : { 'version'   : 'int',
+> +             'variables' : [ 'UefiVariable' ] }}
+

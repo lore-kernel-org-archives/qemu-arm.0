@@ -1,94 +1,94 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1861292njb;
-        Thu, 20 Feb 2025 00:21:30 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUeyTx7zaWMOTSE8I/cVwiCNiLxYZdlYNep12yX6/EL/IdvhdMuunkjTrwdgjBKQs1SLvMgfzgtrU1Xcg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFsfLs92AeQGSDETZRJJmKEgIrnWt82pKbbzKePFCEU5+ey3C25Hj/XDwnJP591y1/YVVzq
-X-Received: by 2002:a05:6a21:a41:b0:1ee:dcd3:80d7 with SMTP id adf61e73a8af0-1eee5a71498mr3301408637.0.1740039689850;
-        Thu, 20 Feb 2025 00:21:29 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740039689; cv=pass;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1862546njb;
+        Thu, 20 Feb 2025 00:24:40 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWJS3dY8778H5Fv6esu9AeSPvhAo5LxJsxTjTfdE8b2XsRnnJVoeyKXiQ/tHqBXBgasDsfnO7z08mBL7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IF8pFdho0UQWpcmYANIdEy3BjKjgJDM+qnW3hgGixMZjdukOFI4wQUmHanpXHZqKpgoMYhf
+X-Received: by 2002:a05:6902:841:b0:e5a:b05e:4da8 with SMTP id 3f1490d57ef6-e5e0a14fd16mr5023895276.42.1740039880305;
+        Thu, 20 Feb 2025 00:24:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740039880; cv=pass;
         d=google.com; s=arc-20240605;
-        b=YHT6IWIIDhJDc9+Fl1DoY5DcIQwCAHFdGpr9AP9OuqtRJdAoGjhYY+2RHCEWR0Tg7r
-         2n4m70E0VWU/gd5C5X372HxqkkFhLL8FvzgFsTY9AKx2fnhA+wZzbawogIuqf85rhlJa
-         jnZ2HrLhpJOuQPzbBHHsXGp+B/kKRqlG/Brm4ZhJO423/AlR0aNI6Id8sVfcvStMUPx0
-         Hu7HjingvXD0B4AnKiRVvlNQQBWBQeaRDyzud6P+3ZnS4lMJp7mDXnY21CJh2XAExufS
-         Bl0nDsVNMrinqcfmsdzyVdTf4nqBbbcPA4TSMNJ39VXL7bAymk7intgLw/GzDu4HTPUE
-         k6sw==
+        b=R9bAGzckuRIAenIAIoJIHWlEiLlFQuLHnI2YZu7zxf/nTKVvhqSuKibnHQCimOodzH
+         oWR4xRFGv1GSn7tE2Yff9Ar+Bmqt39K/06fao1tZC5/TT0h3//DMtoKoFK/TgYaFZ+D2
+         WUoasKR9XqXhcygNDPdFYCKzQFt1lRlWlQQHuaMYebiw543TTaYIRh/4/pEF53tZJwWx
+         HO9Bqo27QIh+H8J99pXCe4zuSVorXW/ZYzJaRC1WQTMRCfRy5LY+902GnVprGrLrOI1g
+         Z8crSuAYwGuAR6e4BdN84ed8x42tRPROttHcX2W+al0lVl7rccezdsIfn7PP099A9LnZ
+         8u4w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=wwQuZmY1WhrO+ScNAcw91nkeQJVmwxpl7uySFAJ0FuI=;
+        bh=OvrISlHYHxzrNPGqs14HRBEi4tmzubxjCuElFTH8sJ0=;
         fh=McEJFpNWooeu4KfjMpm8Y/6NgpK0tuD9PnL3C9AEwbM=;
-        b=lgRTTQlsH48iaur/8RJBRTLTM7VmtWbaNL/P7cHuvHulPMcj9fTxrn/nsIod+goQjL
-         2ltlyxrbXtwelZEw2U2gNi3j8vwssrBRbyuXi0BrXc1OzDBfgYy3UC4Pi0h9TBoMhLmM
-         PiTUuxgfgO0IkEF4nhTglAMOq9K6t/+wi9D5BWnNXx7kPKHfBdjnJLQ8OaEviyCLDOwi
-         5ywxZrGdWSnYXZUOGOiROUtC5YIDPcpvTaczQ+DEPOcYl8nLF+smqjZLqrqiLNUL9EHI
-         H8np6crFKYNwoLJMOezCmLnTFTe2JYZsdz/3Hy0bnoIH6bv60zzRLdCxpm/ZhoyU/9fS
-         z/iQ==;
+        b=Ggp0bYUuYFlow7aiRfjxxlwJuWu9SxOEUzcQJ0KMY7q2Gk/pEu9N6JbHCwoLjeqpha
+         GQxdITJgLTnadwhURgoq3MMPU92hH+RvCYd8a5e3ceGNbxqkGEp3E1BTCDbJhH8r+mI1
+         Gh8IYVZIUQY+NfYZsRBIDe8bBvLyLEvdxutYfzTy4wUK9RxOK+5zEaYFWqi385H/gc/z
+         t9OFF5RHze9q2JGyVDzArN9baHnscEuR42cndJlMhI1LSSBhP6m88FIILiuxnso3OVfN
+         xOnxreYLPAesNPkwoCNIzhnTUs2e6aCv1XFfIqv1iNWgGmxz7mld/iqh89lW68b+5/I7
+         k+kA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=Wxz3wmaN;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="B5/N6V5j";
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2417::622 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
+       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2412::622 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <Luc.Michel@amd.com>
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (mail-dm6nam12on20622.outbound.protection.outlook.com. [2a01:111:f403:2417::622])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-adf87ad4c6fsi13646154a12.94.2025.02.20.00.21.29
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (mail-mw2nam10on20622.outbound.protection.outlook.com. [2a01:111:f403:2412::622])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e5dade98b3dsi13564543276.154.2025.02.20.00.24.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2025 00:21:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2417::622 as permitted sender) client-ip=2a01:111:f403:2417::622;
+        Thu, 20 Feb 2025 00:24:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2412::622 as permitted sender) client-ip=2a01:111:f403:2412::622;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=Wxz3wmaN;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="B5/N6V5j";
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2417::622 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
+       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2412::622 as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=S3GQY7JKH0Befg5az3J+8nZ7gx296A8SI5GL885cNLpgYoJXku5uroGNQd3BINbMCzg994b7wibQyImHYob4xbJefuiScNWXMucRtEOSY2lxsnlr5Arr8XpYouZQLLGJJ2MRr2bAsuEsnkKbswl5sGMwa6osvhpJ4U95O9SeN8BtBvW0e/h/VoTz9TW0Eo5cizwXwcVgo2pP7gTOXq14MNkqIyS2R6i8nFgAKly5bORneCVElTTiVwssKsi/Ngu2+IaDUl8bL1+OCxlCY4vwGXFAZ/tVO73WPnYSJ1svv8sLajdNCOEGLrwC8qS1dilDjxdOExJ2EVgw/XnuWOf8IA==
+ b=rdbEQ9OQebtxOkaRzYRN/n991UDdkT6FQ3AoL5Jvjtg5PEfgw76mwnEtKhwNAE5o/o2eyu97Qh9HgfNxUV+P5v83gv9MO/3DSCTN2Y6MbaZwietSSjAn6BOv12wswwegj3Hf1Nl01vneokoCP4MPG5uz2mD4Nx4ofkHwt1y6J7cCaggPKL3+dBha3PoJNA3WmleVUv4hEnHBjmXBMB8dTyBelQQH9sgleMcmwkcvrvQEe8ky/C4XHYzlxm4TkPql44+vI0NEyh+Vup5yc9vNF3Aqv+vWfQjVzRTS+kNsi1loYmnfk9XwsEVHaXF1viavlCZTnoHl+KVsgyoUN8pP6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wwQuZmY1WhrO+ScNAcw91nkeQJVmwxpl7uySFAJ0FuI=;
- b=hxQ0KqiX50fL8+1o0gLy/a9A57w16xfvv+sVSmdtvN7GCjWFs5huUBjCYABRKVMnUVJ89Nt1WKkbR2y6X4V9SLjhImK2LVtJB1vmTPm8bYImuXpQ0XsVIl/eKIHvtxoExxVKknOjsGcNO6gWVIWOK8MPwgLDsHdXRPyh2t3luljPyjVntqjNeoZwg5AMnamEnKXsQllECLMrxLPlCsMYjN9jyRcZPk+2eapSi0B/FuoovHo75y3suO9EZc3sU9ZRuOWUowdzNkrrzv3gyUJ1fzOpMyMmYcJzM+tEsacWIg2urGKMYcj9T0ltper/1TtV9Vu22jBq5FA/LuLypV95ow==
+ bh=OvrISlHYHxzrNPGqs14HRBEi4tmzubxjCuElFTH8sJ0=;
+ b=eOPCXfg+/zayG+exlkGEedqf8piIxaECHmt/ugC3x5NpR6k9LsmcwO1lwW4Z2AWttijiit9HjimCHz8fdbKORt2DwHsjxX5xlb668vjvTD4tu/Ay3p8S7isoY/e1GdRpJGL2jwPRhTCxyOktNp85mO973SwcvFHVo0RzajJak7/sFaSJgFna6zl7fv0K6L8VhSLKW6BGSADYSnWUubqhHi9CaQeOyKx37hvIOSP4B8tS+tI4ndKoSaozoiON4QNtmvqWqFf/tp7tN6sjde/N7nCh56tcTpWRQuleRlZTQOG4rMwU5wJXLDzcY12qQ9YA34nSexRzCwBYptmFK88gfw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wwQuZmY1WhrO+ScNAcw91nkeQJVmwxpl7uySFAJ0FuI=;
- b=Wxz3wmaNG8g6iJwHjiD9hf8rGTpV8jHiX6ZW646IPasRBz2VTvUTCKxMZQfJGy0k4dgVEJIepBaHq/hifRv6KGXTO7hFGXhrXIF6nz/XuTZkjTbvOsy/V7EbsutFz7dX6XQY9o+O9c6KZnPbXOUbLtCalmMEKOZxqdVC/hSWYcM=
-Received: from MW4PR04CA0054.namprd04.prod.outlook.com (2603:10b6:303:6a::29)
- by LV2PR12MB5896.namprd12.prod.outlook.com (2603:10b6:408:172::15) with
+ bh=OvrISlHYHxzrNPGqs14HRBEi4tmzubxjCuElFTH8sJ0=;
+ b=B5/N6V5jVXoRK+I4VWVxx4Zij54X4+uis0QfENth9QnA6EgMB3uLVVGjCZyK44nUJEMavXfTRMjoW9+hDShUHHTtKsIAjRHAhXfKlsmQCj/d3blfnw7tYUCBYgFLQubcPlEbO+EeVVa2MItcirV3cDXj6wumqPP/9v4bAHDZi8c=
+Received: from DM6PR02CA0066.namprd02.prod.outlook.com (2603:10b6:5:177::43)
+ by SJ1PR12MB6313.namprd12.prod.outlook.com (2603:10b6:a03:458::18) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.19; Thu, 20 Feb
- 2025 08:21:27 +0000
-Received: from SJ5PEPF00000209.namprd05.prod.outlook.com
- (2603:10b6:303:6a:cafe::97) by MW4PR04CA0054.outlook.office365.com
- (2603:10b6:303:6a::29) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.14; Thu, 20 Feb
+ 2025 08:24:37 +0000
+Received: from CY4PEPF0000EE31.namprd05.prod.outlook.com
+ (2603:10b6:5:177:cafe::8a) by DM6PR02CA0066.outlook.office365.com
+ (2603:10b6:5:177::43) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.8466.14 via Frontend Transport; Thu,
- 20 Feb 2025 08:21:27 +0000
+ 20 Feb 2025 08:24:36 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
 Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- SJ5PEPF00000209.mail.protection.outlook.com (10.167.244.42) with Microsoft
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ CY4PEPF0000EE31.mail.protection.outlook.com (10.167.242.37) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.8466.11 via Frontend Transport; Thu, 20 Feb 2025 08:21:26 +0000
-Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.8466.11 via Frontend Transport; Thu, 20 Feb 2025 08:24:36 +0000
+Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Feb
- 2025 02:21:26 -0600
+ 2025 02:24:35 -0600
 Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB06.amd.com
  (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Feb
- 2025 02:21:25 -0600
+ 2025 02:24:35 -0600
 Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39 via Frontend
- Transport; Thu, 20 Feb 2025 02:21:23 -0600
-Date: Thu, 20 Feb 2025 09:21:22 +0100
+ Transport; Thu, 20 Feb 2025 02:24:33 -0600
+Date: Thu, 20 Feb 2025 09:24:27 +0100
 From: Luc Michel <luc.michel@amd.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 CC: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
@@ -99,120 +99,127 @@ CC: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
  =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Thomas Huth
 	<huth@tuxfamily.org>, Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
 	<qemu-arm@nongnu.org>
-Subject: Re: [PATCH 5/9] hw/char/bcm2835_aux: Really use RX FIFO depth
-Message-ID: <Z7bmAqE4z2y_kNse@XFR-LUMICHEL-L2.amd.com>
+Subject: Re: [PATCH 7/9] hw/char/mcf_uart: Use FIFO_DEPTH definition instead
+ of magic values
+Message-ID: <Z7bmuy1cURsbjNZF@XFR-LUMICHEL-L2.amd.com>
 References: <20250219210841.94797-1-philmd@linaro.org>
- <20250219210841.94797-6-philmd@linaro.org>
+ <20250219210841.94797-8-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250219210841.94797-6-philmd@linaro.org>
+In-Reply-To: <20250219210841.94797-8-philmd@linaro.org>
 Return-Path: Luc.Michel@amd.com
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ5PEPF00000209:EE_|LV2PR12MB5896:EE_
-X-MS-Office365-Filtering-Correlation-Id: 97062dae-01af-4e53-008c-08dd5187922e
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE31:EE_|SJ1PR12MB6313:EE_
+X-MS-Office365-Filtering-Correlation-Id: d46ea832-2b0c-48c6-e185-08dd51880347
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam:
-	BCL:0;ARA:13230040|1800799024|7416014|36860700013|376014|82310400026|7053199007;
+	BCL:0;ARA:13230040|36860700013|7416014|376014|82310400026|1800799024|7053199007;
 X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?aGd1ZkU2YmJUcE9YMEZrTHQ2YitrMVBzeUpoMGxsanpvS0VWem1yb25zNzBY?=
- =?utf-8?B?Z0NMZFM4akkzSDduN1oxanVMcE9iakZaWUZJZVo4TDBzZXc4WDd0d1BrWm9l?=
- =?utf-8?B?L3Rxb2dnTDFPcTAyMzlZN2E4KzdDcG1hZFNhMDhJOFlOUEtDUHFOZVpOS204?=
- =?utf-8?B?YXVIUmt1SGs1T1hnUG1ZZFp0QllyNkhsSnpSeVpZakJCa1hXUm5MZllSNnVt?=
- =?utf-8?B?VnY5eVpsdFBpMmNwM1JRelVoNGVxS0h3SjhYWFlVbWhJMC9Xb0h0Y08rZXpT?=
- =?utf-8?B?SVNrVjc1RjJLeDA0U2pRN0Y3aUcyRWl3K0dZQzNGQ2srVmIvVDlyNmlzcGVJ?=
- =?utf-8?B?N1FGRU03OU9oT2ZINE5yNUtoMDR2VFpwUldYekFBRUE0alEvQ0FMVEdma1hF?=
- =?utf-8?B?cHJiK0lESEhla1NsQ2Y4UUxKYmZqcm9VTWlCRHQ0N0J2bTU1dWRRdTNqRzV5?=
- =?utf-8?B?WVh3SU1OU3ZBMFl0blM2RzBpSWd1MmUrOUp2MXYwdjIxRStoUW5saHVUbEFt?=
- =?utf-8?B?Tkw1WDFZT3c2Rmp4OWRxMzZHMHUyUzAxVEk0ekFRalU0L1FNQmplc0YzQWlr?=
- =?utf-8?B?SkhCbWphVENmbTZmcW1QQkJZcFBrazE2MXZCVERBSllWckJoa3VuajFHcWxk?=
- =?utf-8?B?SHFrS05GM3F4d1k0bzE2NmN4WnZJL3Njb1QydVZsWlF4ZStYMm10OGcxN0V0?=
- =?utf-8?B?ZFRZTGhtV1JLV3pzRThRcmpITWpZcU1Qc080STNwNE4rL1hvUUN5REh0QkdT?=
- =?utf-8?B?YzlFTFAwc0tpZDFiZ01pcTJzM25GT2hod29YTnBHa0U1OVpQVFVrV1hIMWF3?=
- =?utf-8?B?R00wWS8zUWpKbFo2ejVsWFdKY1d2VTc1eHVSRkRCd2xwVVVGSXJFQ3BGMXBy?=
- =?utf-8?B?aWVmaDRqWHRkbmtpVmd1UndNYXhkOEt2T1MvNk1QeEJidTU3NmVVajczdXN4?=
- =?utf-8?B?dVk5MGZ2bllHR0JndFVoR205aHhmR3JDZnNFTllWek9FcXJHZjNYWTdRYUVu?=
- =?utf-8?B?VlBHb2FlN04waWtKalFKR0dDVlVxajNIS3RBMmR0bkFDWWU1VjI0VDZZTFRJ?=
- =?utf-8?B?cC80VDdzL293Nkp0RHAxc21oRlkybnJ0ZGdMZjZnd0IrNVFDVWJucHhHUE13?=
- =?utf-8?B?amRzSGo4RXJBTW1LM0tRTFpWbWFhOTh0YWVwVkViczJ2b0IxV1h3Yi94NnF5?=
- =?utf-8?B?ZUY3NEkrS2p6VVpzVUNaYzMxc1dxUHlSNEdBN0U1cFkrS3YxTGE3WEtEcHE5?=
- =?utf-8?B?b2ZHcWRJQXFCR0FSckJZQUg2TUF0Y3NPNG9VWExCNk9oNnViSmVtRHhXMjUv?=
- =?utf-8?B?dTZlSEs0dFZzYnllcEt6Q2dKVnJHd0JaSEhBcTdzOW8xRzFrQ2lUTEdNUVV6?=
- =?utf-8?B?V0FDTzNBUnBDZUhETmtNbmxSR0hkRCtYNGUzeE9UaTMvNUJGM1RaZFZZS3ZQ?=
- =?utf-8?B?NDVVenVPZzNzcFF1M1FsVndmcUxObFRyMk93Z3NzSklZVnlDaUxDWDE0RFFk?=
- =?utf-8?B?UkI1c3dLZGxsUGU1YU1udVdRSHppTTNGZlp1cUdSbjJGYzJjcWNsdzdkcjY1?=
- =?utf-8?B?d0xZem5MRko5QXFvalhBelVxRWxaalcvazB1N3ZxZ1lDZ0duSllZaTVWVkpE?=
- =?utf-8?B?ZHY2VkVMTStoMk9FMWZHbHE3cUNCekczSXhNNCtRUHYyV05xR1ZwS1ZEN0dN?=
- =?utf-8?B?SnFybWp6V3FhY2NyOVNjb2YxeDFEUXBTRVMyV2d2SGdqN1czazFBdTNVWWh2?=
- =?utf-8?B?WFZOVnZQSlNzSDFJUURaNkhDV1VvejIvb0hLUWZialZ2RDY4anNFbGV5akdQ?=
- =?utf-8?B?OXNPSnZEdDMrbXBIcDNnbDJLWXRlUisxYTBrb1lPVHpMNHd0L0lTbE1za0xG?=
- =?utf-8?B?cnhTVUNJZHJ5dyt1SytxTVlaaHRIT1k2bkcrWUhvd0s1R2dGeVlDQldmUW1G?=
- =?utf-8?B?dW5mRytDQzlJeW10QVp1N1o1T3puTmNPcWhZT3YrbWI1R09aSzduMDFISXdj?=
- =?utf-8?Q?aiPZJDf/IxM2CEGq/8VTcDdgO0swiU=3D?=
+	=?utf-8?B?bmZQUWYyUGN0V3krZnVKS052b1hPb3N5REhhaC9vYk85R3NsSGFyOVFXanFT?=
+ =?utf-8?B?aTFxUG5jOEIyUmpEVkg3WHQ0RWI0TXBSSTdUS1dVdVpjOHVZZXJYbGZpMklU?=
+ =?utf-8?B?V0ZzakE3elZvdm5HVncwS2FkdXVOVjlKQXpaS0dpSThXSGcyRHNNcStOTEFB?=
+ =?utf-8?B?OW1hZHJyOUQxSUhJbXlHZSs0NG1MQWp1YmhDVDF3VzVBczlaT2g5TDZIK3lR?=
+ =?utf-8?B?WUlsdGk4TUlaOEkxczFzVElzbUdCVXBRcjBpOE92bWhtSWxPM1d0eHZRZi9I?=
+ =?utf-8?B?S2pRcThNdVE5ZVROVXRDTGlac2lJVUpqRnNiTnArSWVXaUtHREZYaXpRbjFY?=
+ =?utf-8?B?aHRQOUlsUHFCVDdad0FSbGtISEJHcm5tc2pBcE1uVk1SQ29NSVQwS1k0aEJq?=
+ =?utf-8?B?QXZkZy9UK0tuaWtnSFgvOHZ4MGxNNlM2WHh4R2I1ZVBsRmdVT0RvRCtZMEpp?=
+ =?utf-8?B?WTN0WjEwbGUzYlJIdm52ZXRDWTNXSHpHaUszMkkwUDVHZ2FiWGtaaDk0VUhJ?=
+ =?utf-8?B?cGZNY2lnYjFxKzlzZURmUWMxaTI3SW5Kd1RkVWFYaktEeTlOaEpVUHZxdi9w?=
+ =?utf-8?B?czVZV281dlRER2RqMk5HdjRhTVl2a1ZvR2pIWGVrOVNUYlFPZFU3QnlVUEhR?=
+ =?utf-8?B?cjJnRlRRK2kxZGx2eE94bGREWkJoandDOUlRdHdWRlplMDF4dHVqbEtUNEtT?=
+ =?utf-8?B?b3BwTHh1VEpNM3V6YWVYU0xwVEhFVEJRR0xTL3V3SldtSllBUzBwQm9aaTVN?=
+ =?utf-8?B?a3JhUzl2aUFJdW9hSVRGZ2tUWCttbkpoeGR1ajVQUWw5bmxTNmtPOGVndlFH?=
+ =?utf-8?B?YllQOTZ2ZlFqSXhCMmloVWtQbDM4eGRtUkZqQlBSb2RxNmNCS0tJaUR4ZHRF?=
+ =?utf-8?B?dkc1Rk9VdXVOdHRjZkNTZWZoSkJEalhnQnpVeGJFMlUvRlNhL1dBT2dmWmtO?=
+ =?utf-8?B?K21OSmNJMktHNjVmRkwxR3dNK1N4MjlTMFZpM1psc0pib2t2U1VkdUl0eXB5?=
+ =?utf-8?B?Tk9YYnc5N21aTmZ6ODVleGpLSHAvaEk2VDQwWkdEWUxoQU4rUjJPVHlaQlFI?=
+ =?utf-8?B?RUg3OWdRNlp1ZXg2bDY4YkxkRHB4T0Q0alpZUExaL091eFVWc1NKK0Q1MkVs?=
+ =?utf-8?B?Q050dEN1VElJaURIdHZNZXBiVDcwTW5QUXhpbTlQa1Rrd1FJd0xBSWg0NkJS?=
+ =?utf-8?B?eUVJaGR1N29wd3lOVytJRDVqbUltODYxN2VlcnY5allnNGhRRUxCYjhxRnI0?=
+ =?utf-8?B?em1FMko0M3hYL2g3SVFmdktFNEtyMWE1eW1DdDFnc093K0lYVXhEbnZJLytw?=
+ =?utf-8?B?WFZrcnRaSEVKYXdIRFdFbG1CYjJGaXVILzJKVUk4bVhES1czbTFzOVhXbHNj?=
+ =?utf-8?B?cmEwcklUcEJtVW9qS21IWmtvejcvcHkxMkc0SkpHWUZ5TW8wSVBsbEs0TmZr?=
+ =?utf-8?B?bE5XZE1lUTcyV2hma1BaYUl5cFIwdE8rY3EvRHRGTk5pYzVXT0E5L2w5Q3Iv?=
+ =?utf-8?B?R0V3L0RiOHVHanJianczeFdZUTIwN3pXMXpmZjBEaUFURHV6Q0ZPVGhzY3Iz?=
+ =?utf-8?B?SEJBZnU1UlJremZkZTBDeVp5WkZtTTkxcTh3TkF3Ty8zZ3lNWFJEVk9UM3JS?=
+ =?utf-8?B?M3pDYjZTaDZnVFFQYkZBYm03QVBvZ1ZJVk5OM3dmdWdvL3ErMURVbnlYVVYy?=
+ =?utf-8?B?WWpMaWtyVWxMOVlGWHNUOThwYllsU2dFbG5KaXBPSGxNUGJBZmJjcEZ2RFNL?=
+ =?utf-8?B?a3VUVlhkbDNvV2xEK1VDdzJIRExuWmthaHRQckd6Vnk2OEUvc2tkUHhqUlV0?=
+ =?utf-8?B?RWxVdWQ1MmVtV2d0cWFKTGhOVzMvRG1BbXlHOXJ0aEh5S2h4MjlrMlBSQUp6?=
+ =?utf-8?B?ZWp0YmxXS0xma2E1T3c4TVluZERNSzhmcW5wbjQxQy9KRHp6M01kOEQxMld5?=
+ =?utf-8?B?K0lXMmxENm10TDl0ODBPVVRvWUFpem5SREZ1M2pYazZUVTBNOHZ6ODZjaXhs?=
+ =?utf-8?Q?0UuOcOGg5DCeg2oxvLtdS364yoqcnI=3D?=
 X-Forefront-Antispam-Report:
-	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(36860700013)(376014)(82310400026)(7053199007);DIR:OUT;SFP:1101;
+	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700013)(7416014)(376014)(82310400026)(1800799024)(7053199007);DIR:OUT;SFP:1101;
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2025 08:21:26.9839
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2025 08:24:36.7360
  (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97062dae-01af-4e53-008c-08dd5187922e
+X-MS-Exchange-CrossTenant-Network-Message-Id: d46ea832-2b0c-48c6-e185-08dd51880347
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
 X-MS-Exchange-CrossTenant-AuthSource:
-	SJ5PEPF00000209.namprd05.prod.outlook.com
+	CY4PEPF0000EE31.namprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5896
-X-TUID: 1u8uQyrdb5SL
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR12MB6313
+X-TUID: 4gb+hNhhaE6j
 
 On 22:08 Wed 19 Feb     , Philippe Mathieu-Daudé wrote:
-> While we model a 8-elements RX FIFO since the PL011 model was
-> introduced in commit 97398d900ca ("bcm2835_aux: add emulation
-> of BCM2835 AUX block") we only read 1 char at a time!
-
-I'm not sure I get why in this patch and the subsequent ones you keep
-mentioning the PL011 model while you modify other UARTs. I guess you
-mean "the BCM2835 AUX model" here?
-
-In any case:
+> Defines FIFO_DEPTH and use it, fixing coding style.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 Reviewed-by: Luc Michel <luc.michel@amd.com>
 
-> 
-> Have the IOCanReadHandler handler return how many elements are
-> available, and use that in the IOReadHandler handler.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  hw/char/bcm2835_aux.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  hw/char/mcf_uart.c | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-> index 73ad5934067..c6e7eccf7dd 100644
-> --- a/hw/char/bcm2835_aux.c
-> +++ b/hw/char/bcm2835_aux.c
-> @@ -221,7 +221,7 @@ static int bcm2835_aux_can_receive(void *opaque)
+> diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
+> index 980a12fcb7d..95f269ee9b7 100644
+> --- a/hw/char/mcf_uart.c
+> +++ b/hw/char/mcf_uart.c
+> @@ -17,6 +17,8 @@
+>  #include "chardev/char-fe.h"
+>  #include "qom/object.h"
+> 
+> +#define FIFO_DEPTH 4
+> +
+>  struct mcf_uart_state {
+>      SysBusDevice parent_obj;
+> 
+> @@ -27,7 +29,7 @@ struct mcf_uart_state {
+>      uint8_t imr;
+>      uint8_t bg1;
+>      uint8_t bg2;
+> -    uint8_t fifo[4];
+> +    uint8_t fifo[FIFO_DEPTH];
+>      uint8_t tb;
+>      int current_mr;
+>      int fifo_len;
+> @@ -247,14 +249,16 @@ static void mcf_uart_reset(DeviceState *dev)
+>  static void mcf_uart_push_byte(mcf_uart_state *s, uint8_t data)
 >  {
->      BCM2835AuxState *s = opaque;
-> 
-> -    return s->read_count < BCM2835_AUX_RX_FIFO_LEN;
-> +    return BCM2835_AUX_RX_FIFO_LEN - s->read_count;
->  }
-> 
->  static void bcm2835_aux_put_fifo(void *opaque, uint8_t value)
-> @@ -243,7 +243,9 @@ static void bcm2835_aux_put_fifo(void *opaque, uint8_t value)
-> 
->  static void bcm2835_aux_receive(void *opaque, const uint8_t *buf, int size)
->  {
-> -    bcm2835_aux_put_fifo(opaque, *buf);
-> +    for (int i = 0; i < size; i++) {
-> +        bcm2835_aux_put_fifo(opaque, buf[i]);
+>      /* Break events overwrite the last byte if the fifo is full.  */
+> -    if (s->fifo_len == 4)
+> +    if (s->fifo_len == FIFO_DEPTH) {
+>          s->fifo_len--;
 > +    }
->  }
 > 
->  static const MemoryRegionOps bcm2835_aux_ops = {
+>      s->fifo[s->fifo_len] = data;
+>      s->fifo_len++;
+>      s->sr |= MCF_UART_RxRDY;
+> -    if (s->fifo_len == 4)
+> +    if (s->fifo_len == FIFO_DEPTH) {
+>          s->sr |= MCF_UART_FFULL;
+> +    }
+> 
+>      mcf_uart_update(s);
+>  }
 > --
 > 2.47.1
 > 

@@ -1,182 +1,210 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1888553njb;
-        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXWAnqkML3n3CrjyHxH0vNO0G+ys3WVQjQgRt6licHhwBHXX7Ce/DBe/QX9LzsBeU6IySTNmVMk3TnuYg==@linaro.org
-X-Received: by 2002:a17:902:c411:b0:220:d078:eb33 with SMTP id d9443c01a7336-221040ac0a7mr378237535ad.36.1740043896312;
-        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740043896; cv=none;
+Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp34327njk;
+        Thu, 20 Feb 2025 04:44:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUrslPvbcU+6ml+0w2aSMZv28k0623OaVrS/5wx1NUzMGIphTV3TLHJ1rlOGEyaVACahrRG+YP9+ZfgXg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEutFlTJTba6XbntwHTzcVCkRBTrnIdNtB/ZIxIyiKleenDvr+nN7B7NRCD6gCsHEkaLBaz
+X-Received: by 2002:a05:620a:2451:b0:7c0:b685:1bb0 with SMTP id af79cd13be357-7c0b6851ea6mr857704385a.17.1740055480914;
+        Thu, 20 Feb 2025 04:44:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740055480; cv=none;
         d=google.com; s=arc-20240605;
-        b=S/QKSw8UHuexVgk4HC0D+zoTCe2h28ll+IAzOyWdk73RQkKworK7e212vtydpXszy5
-         UgTWONLzOg8ir0mLR7KPJMsHdB+96e+bBlYDrFPW0/f/+txN9ZeFbMQ3Ayc4RiZ2FBkd
-         IB7qd5r67+vpKrmACVRXU0vyynW9Wks4s2WAVBW4YC2DKfby8JM0YPpbJyXlW0d8cusZ
-         zh6f/V4/9SKFrqjPrFMir3hB5BZDFUNib5kp2PkBooSw6KUN9QfwmpZqbhQQVaxzovTt
-         GFFaZsQFtqoiHStqIh0ZAQ1ItAxOyI2gZPRqkfltq8CL1MgBdhlhrAj5NRvrFX+5wZ6L
-         uPZA==
+        b=MmC3HbhdC4TP+M2yvmA0Ek6gqr/as8mhejv6jzb1GWL1PJWe9aB+M4se/V/lxesG4a
+         I66ABWgDaoPT+pKYTGd55ftKyn1xL34lQrAC7MRjitE7n7RfJfEza0Qb+ftK8uOiTEPB
+         rfVGHGwLYKKp3RR08dRv7beMVPsZrEAy/N27flDH83ch6j4hAS+j+UofkIA73ITVYnJG
+         LDztU1OxBWXMfCQ1IoZYAbOPsYyoW4x0qFJwCzdQ0BkoeR0Rbum7ery1IQBQXQ4nofkq
+         5n97G9PGNBsixFRuet8jNJGFSaWBQHj5M8UlSi1STaeqw6igSJ+7+rvwyn5clRhaCfd7
+         +85A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
-        fh=mifLLVS5MuYJHgOWg44DbEnpomkmf3estrlfbSXAHro=;
-        b=UowmxFNXfTJQzoaiUU0bjyXWn9Y9TpBGUIHxVUfjQqfIF/LwWXb9q8lyKNp9fo+05M
-         XTmnZ0m2y19q4mNS3PR2l2/ABqGPfdqyiDgxU3xeaccvMlCmovCEYKGEmmT0UI3IcUto
-         oCXdgK0hXnqbbycOGxlSIcFRdHekqZmQpqO1X4wT9IBUjfuxMjDb6El2jU+o8VMjY5Lg
-         PfKhrbw2krHreBXjfyOgOzMNqwRGz7ShUBEzU36q4UpDu6JLNeCNysdoouXL9i5ZLxX7
-         Aiwp5JXc9zawNNJ9i23xylT6w4zyLj/suvNsqA1sh34E0R25hf7SIRq0Qek0LVjqDt4U
-         21uA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
+        fh=6VGrfyY7T8wSSJsdxl80PaFT5YaIXTh8xRrZUUaC/HQ=;
+        b=jP65GwYW5Lo5fp7IfhgZoEvdtjS8HPtnBXA4MwKB07wJD9SX4/y0z7i1GJyWENnFmA
+         R6UtjWajmOIdkZXvAKcQD7uZFqrOSqbpE7aKe8FxaAojc4+0CQzy1ZmGr2Qo/eyuE4Rx
+         22aQlwOhUJuG3WFDjcw+EiZYkkEyO4z5Mz0Ld+nSc0wV58tq0JE2L0uhxg9E82MHKwWB
+         /BTGoJu4REUXDov6E0NKGnsXZlh7IVos1POewyifYSo1qEg2LxJe+2gO4igfKD3iFgYr
+         8fdKrJMd+s2uOdp2PmpI1lNo8vMvPS6peUtz5ypTyzqA+exGvGVaK8IZ6wrv+n6sejV/
+         1/XA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oxOHXBzD;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=C+HBi1gR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-220f5d65bf2sor85788465ad.9.2025.02.20.01.31.36
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c0b3bee1dasi379053685a.341.2025.02.20.04.44.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Feb 2025 04:44:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oxOHXBzD;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=C+HBi1gR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tl5uR-0002we-J7; Thu, 20 Feb 2025 07:44:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ilias.apalodimas@linaro.org>)
+ id 1tl5uK-0002wE-S2
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 07:44:01 -0500
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ilias.apalodimas@linaro.org>)
+ id 1tl5uJ-0001N6-0E
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2025 07:44:00 -0500
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-6f4434b5305so6726707b3.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Feb 2025 04:43:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740043896; x=1740648696; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
-        b=oxOHXBzDh47kqTIPlimCBrPUujy18KGT9lUlQoxz7d9fLsAOsbCWSiqBU2qrjsWXOa
-         K0WW+s62QvJPYqkkgzARgJZmc0Cajc6fp5mBmV+ELx6Ei+jR5E1cIs1c9Md2GEv0wntd
-         QOROEW/5eB1Co3p/conybZ4pNq6IRkVe2Rt6ReXFjkVU9gkl0kpVI3tAnHhKi62jJ/Gl
-         +tSMPUZ+WSsLnMyAYbEaEkykwtl8mKJGal3ibFQVV3Cgh/ElPs4Jw87FP+Z1FV0xDO65
-         9BJIKmDMteJw2jurj07Si+sdV+rYbAEzcjiUGVjVtqUcADB6upZXSmTReEzTpN7E5zbc
-         5vpw==
+ d=linaro.org; s=google; t=1740055437; x=1740660237; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
+ b=C+HBi1gR0xW8ZUOwrCpbJq7tiExLMTOPPJP8fEcy0ZwInQWrEkThtmFbKNJG4p8L5O
+ 5fTaRkVj2CEh/lkXxYUlOy+1g2WoYdX0Ou70hK2eIJ2L6yttv1bxrJ8BjhNDbcvALvhJ
+ byeI0bzGd9nT0wluRetNxrKBIp/vSf8XLQnYAgoo/EeqcjJW4n0r0uOGmrKZZYseDo8t
+ HtgTTRn2qnebxqxwdawFXBFGhMw6dXhonPv/4RCRNIA9RgEfy0kJzfi8rWmc1d1k7pEo
+ TQSCjGKepFgiXcMQUA7CJutfgM6PwnCgyJqexfOPevNBr33iII/xG5ivjX0qi8qjXmiK
+ y7gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740043896; x=1740648696;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
-        b=o89a/jGKM3pXs/4xYXfQ/qcaRVMT76K41q3goFeQy/ciFPWodeCt8fP/tuvjn0wlru
-         F7L4XsSokYt/AT0A9FuHBVWmGFo+EfplLiiSQlBXln5C2pV4GobPp2SWujleJr8FwwTr
-         g6n/UByN/x7uqe3j2+zpF+/so7bzvK0nxF0raq6R4WLz6gORIjznON//AthNw/UJftwt
-         hPMW+6o0RW1OelptLLgATn6dujVTCnk/C4wI1yFht1aFisMWrI37KPgPJZZxN11jqBN5
-         jF7zUGI6JNTNmeG9FduCS6EVPHTvIzGmqQL6A61jNbTZoSJPJxiZumXPT9P9BsxiVLTY
-         1Ndg==
-X-Forwarded-Encrypted: i=1; AJvYcCUdqP8ma9GHrOUChkScyMrmmeOGdsJ7uqm4s/w2Tkf3t6TqcpZEta3/Y/Ksa2tUuPXIfQbLIVdocnGXgw==@linaro.org
-X-Gm-Message-State: AOJu0YxostrTTtlM3cp43iQAvU6wbAYsN3ZAkPoBiylTCzDYuYCD+HaS
-	XQ9i+jX53lcHuYX0ZxncjfJV6Lmgxi90P/Ah0bkSLjfVHhszCfXeFWFFJbi21mtRkw==
-X-Gm-Gg: ASbGncv/FoxIW9Hi3YDtYzJL+U9QFss1/kh6SNLp05g5Mg39sFALkOxITS7sJL5pQOw
-	rdV+pIV/vkrCPWHl/7Mj/fYz6ZMElUSdEFj7naPWB9Q76F1f/qBN9KkKxvh7YlN4ZmUOd6vZJbn
-	Ve1/5i6mvadEc+/bvGEKBLoBL+CNAzqecc68pTsRvKXwNx/d2znVb9XellYGBpHD6WRqYVnjX0J
-	sP6WLGaaiT0MsI9i6Jquzub39zU2DUZ0IUT3bQdkc2IudTklvBQ14b1td3T0llfUrcXuOXy2XYb
-	Iy6xGcpPVDscNDR7uc7VrkdUNQs+JC/arVd7N7LO3tfdq7yWecKEDaf3sQaiBKoNnA==
-X-Google-Smtp-Source: AGHT+IHzB09fOgQ9JAxm6Hg43hIcwbgKVGg/0WdEobzd0QwenNGTBOK1RXpNvRCYw4fa0qda/VG64w==
-X-Received: by 2002:a17:90b:2f8f:b0:2ef:2d9f:8e58 with SMTP id 98e67ed59e1d1-2fc411508famr28637110a91.34.1740043895854;
-        Thu, 20 Feb 2025 01:31:35 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fcbaaf3f38sm1628375a91.1.2025.02.20.01.31.29
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 20 Feb 2025 01:31:35 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Thomas Huth <huth@tuxfamily.org>,
-	Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
-	Rayhan Faizel <rayhan.faizel@gmail.com>,
-	qemu-arm@nongnu.org,
-	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Luc Michel <luc.michel@amd.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: [PATCH v2 9/9] hw/char/sh_serial: Return correct number of empty RX FIFO elements
-Date: Thu, 20 Feb 2025 10:29:02 +0100
-Message-ID: <20250220092903.3726-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250220092903.3726-1-philmd@linaro.org>
-References: <20250220092903.3726-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1740055437; x=1740660237;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3N+6yuA28M7s6c57t8EizrNFZ6i9s62eFI+syvkNaN4=;
+ b=ASBkWAJ+SvimgaI5JkeKi1buQOEG3UyZOJkJWsPNysWdz2Or7Z2f86jkI/VkxMNlXU
+ HUxyiZbXkw7pOcsRYY21cwANG2Ra2WZMDHLBFOauQAchtIBVubGu1/rZhwOKtQ0Ac2UN
+ 3WuiYi7OhggCkNys6h93YpkaiEPnRSSC2IFgWXvhEEwmQ7+cvxhGpScG+P2FVd13chqN
+ 9kiqcboy7mwDk+kdZWWiPR65uztQhG8x6fBmKGUWojwRRLCJOws2xafnnwW1848/9pSe
+ rWZ2IaN3WzuqHJuOchc0pydaItqoGuFYSregANCRJ/B35g/+GyoHTO0Ex3KkuT0vHoX5
+ iXMw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXB84aWMnN3O1xDwKIPXX7DG44dXyxGpKmtOAV0m0QOIAqKP4k5aEwGJGVW6caxwDIFi7DQlip/RA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy66EP3oCpqmT//+Mj9MuVEH84SUc+J+XW3wcO39dNG4D8IlV2e
+ 20ciEdO+xt71WBFaef+dXQHHwPZmrilxYt7p2ENJPr/P4aPcKgKpQxY7sbwuYodrQczuGeAxXP8
+ 4d6lWLpltrGGyWThZ3mEj+AiiVTjz0XaT7CnMFA==
+X-Gm-Gg: ASbGncve2B/m7dtMroWz2HRJV2p1lv/PXtc/dWslnx4nkEsUvM5W3Z0CkFNnBP/6FBT
+ 8Tax/neobJFw0E5N5gtRaqLNAaXMhge9t9dYMsH3ukSuSGGMOy/XegolD5Q7+hhbqxqk3ecrCag
+ ==
+X-Received: by 2002:a05:690c:7305:b0:6fb:a376:3848 with SMTP id
+ 00721157ae682-6fba37640ddmr81976137b3.34.1740055437223; Thu, 20 Feb 2025
+ 04:43:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: YYjzzTp6OENy
+References: <20250211092324.965440-1-kraxel@redhat.com>
+ <CAMj1kXE289FkzV=GZSUARF7TFUyRuxYVX-090ic06Erb_RLGrg@mail.gmail.com>
+ <cc41f19c-5778-4376-a1a1-762a92c8584c@amazon.com>
+ <CAMj1kXFaoZCnXpAsq+i5nzpCOjcrsN4QA2r6Z=F6UUwcUe_qJA@mail.gmail.com>
+In-Reply-To: <CAMj1kXFaoZCnXpAsq+i5nzpCOjcrsN4QA2r6Z=F6UUwcUe_qJA@mail.gmail.com>
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Date: Thu, 20 Feb 2025 14:43:21 +0200
+X-Gm-Features: AWEUYZnTlr-A1I-DiZeEgvoZs27SOWRVjgKDye9_lKOfKPY-Xyn4Y7NDn08Whsg
+Message-ID: <CAC_iWj+eGFOTBUAgStAcN+UMH6fjbivgKAcm-i8qaGap1GPAOQ@mail.gmail.com>
+Subject: Re: [PATCH v3 00/23] hw/uefi: add uefi variable service
+To: Ard Biesheuvel <ardb@kernel.org>, Alexander Graf <graf@amazon.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>, 
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=ilias.apalodimas@linaro.org; helo=mail-yw1-x112e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tw0saOLEeMwy
 
-In the IOCanReadHandler sh_serial_can_receive(), if the Serial
-Control Register 'Receive Enable' bit is set (bit 4), then we
-return a size of (1 << 4) which happens to be equal to 16, so
-effectively SH_RX_FIFO_LENGTH.
+Hi Alex, Ard, Gerd,
 
-The IOReadHandler, sh_serial_receive1() takes care to receive
-multiple chars, but if the FIFO is partly filled, we only process
-the number of free slots in the FIFO, discarding the other chars!
+Thanks for roping me in,
 
-Fix by returning how many elements the FIFO can queue in the
-IOCanReadHandler, so we don't have to process more than that in
-the IOReadHandler, thus not discarding anything.
+On Thu, 13 Feb 2025 at 12:13, Ard Biesheuvel <ardb@kernel.org> wrote:
+>
+> On Thu, 13 Feb 2025 at 11:11, Alexander Graf <graf@amazon.com> wrote:
+> >
+> >
+> > On 13.02.25 10:41, Ard Biesheuvel wrote:
+> > > On Tue, 11 Feb 2025 at 10:23, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> > >> This patch adds a virtual device to qemu which the uefi firmware can use
+> > >> to store variables.  This moves the UEFI variable management from
+> > >> privileged guest code (managing vars in pflash) to the host.  Main
+> > >> advantage is that the need to have privilege separation in the guest
+> > >> goes away.
+> > >>
+> > >> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
+> > >> not liked much by various stakeholders in cloud space due to the
+> > >> complexity SMM emulation brings.
+> > >>
+> > >> On arm privileged guest code runs in el3 (aka secure world).  This is
+> > >> not supported by kvm, which is unlikely to change anytime soon given
+> > >> that even el2 support (nested virt) is being worked on for years and is
+> > >> not yet in mainline.
+> > >>
+> > > The secure counterpart of this would never execute at EL3 on ARM, but
+> > > at secure EL1 (or potentially at secure EL2 on more recent CPUs). But
+> > > the general point that this is difficult to virtualize stands; I've
+> > > contemplated doing something similar to SMM emulation using non-secure
+> > > EL1 in a separate VM to provide an execution context that could those
+> > > the secure EL1 payload (using standalone MM) but I never found the
+> > > time to work on this.
+> >
+> >
+> > Sounds very similar to what Ilias built a few years ago?
+> >
+> > https://lore.kernel.org/all/20200511085205.GD73895@apalos.home/T/
+> >
+> > Which reminds me: How similar is the protocol in this patch set to the
+> > one implemented in U-Boot? No need to reinvent the wheel over and over
+> > again.
+> >
+>
+> Identical afaik
 
-Remove the now unnecessary check on 's->rx_cnt < SH_RX_FIFO_LENGTH'
-in IOReadHandler, reducing the block indentation.
+I don't know what I can do to help here but I'll explain what we have
+in case we can figure something out .
+The idea is very close indeed and in fact it works on QEMU with some
+hacks for arm(7/8). [0]. Since QEMU doesn't have an RPMB emulation I
+am providing one in software in U-Boot. That's obviously useless in
+real use usecases, since the memory backend disappears when we leave
+the firmware, but still useful for testing.
 
-Fixes: 63242a007a1 ("SH4: Serial controller improvement")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Luc Michel <luc.michel@amd.com>
----
- hw/char/sh_serial.c | 30 ++++++++++++++----------------
- 1 file changed, 14 insertions(+), 16 deletions(-)
+I also have a blog explaining the arm specific bits here [1].
 
-diff --git a/hw/char/sh_serial.c b/hw/char/sh_serial.c
-index 247aeb071ac..41c8175a638 100644
---- a/hw/char/sh_serial.c
-+++ b/hw/char/sh_serial.c
-@@ -320,7 +320,7 @@ static uint64_t sh_serial_read(void *opaque, hwaddr offs,
- 
- static int sh_serial_can_receive(SHSerialState *s)
- {
--    return s->scr & (1 << 4);
-+    return s->scr & (1 << 4) ? SH_RX_FIFO_LENGTH - s->rx_head : 0;
- }
- 
- static void sh_serial_receive_break(SHSerialState *s)
-@@ -353,22 +353,20 @@ static void sh_serial_receive1(void *opaque, const uint8_t *buf, int size)
-     if (s->feat & SH_SERIAL_FEAT_SCIF) {
-         int i;
-         for (i = 0; i < size; i++) {
--            if (s->rx_cnt < SH_RX_FIFO_LENGTH) {
--                s->rx_fifo[s->rx_head++] = buf[i];
--                if (s->rx_head == SH_RX_FIFO_LENGTH) {
--                    s->rx_head = 0;
--                }
--                s->rx_cnt++;
--                if (s->rx_cnt >= s->rtrg) {
--                    s->flags |= SH_SERIAL_FLAG_RDF;
--                    if (s->scr & (1 << 6) && s->rxi) {
--                        timer_del(&s->fifo_timeout_timer);
--                        qemu_set_irq(s->rxi, 1);
--                    }
--                } else {
--                    timer_mod(&s->fifo_timeout_timer,
--                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + 15 * s->etu);
-+            s->rx_fifo[s->rx_head++] = buf[i];
-+            if (s->rx_head == SH_RX_FIFO_LENGTH) {
-+                s->rx_head = 0;
-+            }
-+            s->rx_cnt++;
-+            if (s->rx_cnt >= s->rtrg) {
-+                s->flags |= SH_SERIAL_FLAG_RDF;
-+                if (s->scr & (1 << 6) && s->rxi) {
-+                    timer_del(&s->fifo_timeout_timer);
-+                    qemu_set_irq(s->rxi, 1);
-                 }
-+            } else {
-+                timer_mod(&s->fifo_timeout_timer,
-+                    qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + 15 * s->etu);
-             }
-         }
-     } else {
--- 
-2.47.1
+The TL;DR is that we set up everything StMM needs inside OP-TEE and
+execute it in S-EL1. For storage, we have a 'special' StMM driver that
+sends requests to OP-TEE and uses its RPMB support to write sensitive
+data on the device.
+
+[0] https://git.linaro.org/people/ilias.apalodimas/efi_optee_variables.git/
+[1] https://old.linaro.org/blog/protected-uefi-variables-with-u-boot/
+
+Let me know if you need anything else
+
+Cheers
+/Ilias

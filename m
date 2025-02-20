@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1888421njb;
-        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWrNCJuH8gTs/IJf6OEqicKPiCSLR+qsi255CvWvM44zuXOF2htGWQtSimTFDQ5kAYH1yfDIIp6/aY6rw==@linaro.org
-X-Received: by 2002:a05:6a00:130f:b0:732:a24:7352 with SMTP id d2e1a72fcca58-732617998dcmr36352575b3a.7.1740043880620;
-        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740043880; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1888553njb;
+        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXWAnqkML3n3CrjyHxH0vNO0G+ys3WVQjQgRt6licHhwBHXX7Ce/DBe/QX9LzsBeU6IySTNmVMk3TnuYg==@linaro.org
+X-Received: by 2002:a17:902:c411:b0:220:d078:eb33 with SMTP id d9443c01a7336-221040ac0a7mr378237535ad.36.1740043896312;
+        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740043896; cv=none;
         d=google.com; s=arc-20240605;
-        b=JsvCHcWhOuOZNRQqWxRdxFYWy5QOSrAHkOrzLu1FymuP79WFB1Wi/zalIDOdS4xguR
-         lfJ6tPT40FAhHtZm/o2YatO6/FvkPt9kpR5ZPmJp2OdG+GdooQQ1L213IMY0ku1+e492
-         o+IojeKJxGsnSkGhjzd1TMlLTpYnli//aenIk36M7v1NyPQ5V0o0TiBlrUAYCE3PRtMQ
-         YBESNRyoeou9KdzNbpGeP67ZRtd5Z1XTFfZ++/WtT2+KMxwymzi89aLw2ll37T6ZAaR7
-         5JlTUAJlocsiwleiLBWP20BUtghCR7/v9EkslDknsmILxURql51Ln376+TF1HyUb2b1/
-         CxyA==
+        b=S/QKSw8UHuexVgk4HC0D+zoTCe2h28ll+IAzOyWdk73RQkKworK7e212vtydpXszy5
+         UgTWONLzOg8ir0mLR7KPJMsHdB+96e+bBlYDrFPW0/f/+txN9ZeFbMQ3Ayc4RiZ2FBkd
+         IB7qd5r67+vpKrmACVRXU0vyynW9Wks4s2WAVBW4YC2DKfby8JM0YPpbJyXlW0d8cusZ
+         zh6f/V4/9SKFrqjPrFMir3hB5BZDFUNib5kp2PkBooSw6KUN9QfwmpZqbhQQVaxzovTt
+         GFFaZsQFtqoiHStqIh0ZAQ1ItAxOyI2gZPRqkfltq8CL1MgBdhlhrAj5NRvrFX+5wZ6L
+         uPZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
-        fh=4Uu0lcVRDD7PLAjFVNg5oD0JJFRMNQJYZgIdHmwwYPk=;
-        b=QpQQvj513NjlIBgOgpUw43baG7GLavIBPg6QQpf8vxMC9yjNHmmw02q4lzKt90eQUg
-         DJzKo37JPCD5YwuldPaZKETQoYkm7OwlriMdYKgs/Dy8bWulaqdODwJZCGVtXih5n5T2
-         8DKyZit8OwfhW0m+D3mgSW0g40cyL/N9Nc2Nn6DJyGLGLtSwVX6kRIsFrVWPfiD+viz/
-         x/KtuUPcM/bRny+8scH2FqNuTL1hI90rVdhA3lQbaStiOqoHeL85ADfN052PJ8ofDvac
-         SC5vGLNHncXZOPdjeZ0ljWAxYRueXhqQ3OqfVWlZ5ITKpQwlxwiJjHkHjbJGSXwl+3A6
-         +Mxw==;
+        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
+        fh=mifLLVS5MuYJHgOWg44DbEnpomkmf3estrlfbSXAHro=;
+        b=UowmxFNXfTJQzoaiUU0bjyXWn9Y9TpBGUIHxVUfjQqfIF/LwWXb9q8lyKNp9fo+05M
+         XTmnZ0m2y19q4mNS3PR2l2/ABqGPfdqyiDgxU3xeaccvMlCmovCEYKGEmmT0UI3IcUto
+         oCXdgK0hXnqbbycOGxlSIcFRdHekqZmQpqO1X4wT9IBUjfuxMjDb6El2jU+o8VMjY5Lg
+         PfKhrbw2krHreBXjfyOgOzMNqwRGz7ShUBEzU36q4UpDu6JLNeCNysdoouXL9i5ZLxX7
+         Aiwp5JXc9zawNNJ9i23xylT6w4zyLj/suvNsqA1sh34E0R25hf7SIRq0Qek0LVjqDt4U
+         21uA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zdx3NhlQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oxOHXBzD;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73242454997sor14312492b3a.0.2025.02.20.01.31.20
+        by mx.google.com with SMTPS id d9443c01a7336-220f5d65bf2sor85788465ad.9.2025.02.20.01.31.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
+        Thu, 20 Feb 2025 01:31:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zdx3NhlQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oxOHXBzD;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740043880; x=1740648680; darn=linaro.org;
+        d=linaro.org; s=google; t=1740043896; x=1740648696; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
-        b=zdx3NhlQj7OLUygBwDiw98b4L41XhdfKgwzfaHqgtGKP4H5jTapBKWE6brzuq9aGMB
-         viKOJTV/TUgrc6uK7oT4B6mzeeGUZSvS2EzkPdi5T/6b1Yo/NIoq7ewr3DTfDLBPVdRu
-         CBT84vuVMQw1AOcwktIlCmM1bIlyDslJFcbDeTDfm7ITm+0qXI0dZSwJWdOWq5Y1vrKN
-         ktOAn+LnfTK1z2pJl6Z3iLcl8iaT7Fj/hmDaLI1rYjNZ4gphb95EvreExgKP77u34WbG
-         NTqlZXCVQW3urpSzUljGLOB1SLAH6ZxP3ktu0uCy82A5+jpUfLMjNQcUBLr/KIGQ6nFK
-         mZTQ==
+        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
+        b=oxOHXBzDh47kqTIPlimCBrPUujy18KGT9lUlQoxz7d9fLsAOsbCWSiqBU2qrjsWXOa
+         K0WW+s62QvJPYqkkgzARgJZmc0Cajc6fp5mBmV+ELx6Ei+jR5E1cIs1c9Md2GEv0wntd
+         QOROEW/5eB1Co3p/conybZ4pNq6IRkVe2Rt6ReXFjkVU9gkl0kpVI3tAnHhKi62jJ/Gl
+         +tSMPUZ+WSsLnMyAYbEaEkykwtl8mKJGal3ibFQVV3Cgh/ElPs4Jw87FP+Z1FV0xDO65
+         9BJIKmDMteJw2jurj07Si+sdV+rYbAEzcjiUGVjVtqUcADB6upZXSmTReEzTpN7E5zbc
+         5vpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740043880; x=1740648680;
+        d=1e100.net; s=20230601; t=1740043896; x=1740648696;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
-        b=Zx4b8Pry1RCvKvJI4Iec9OzMDzYLsNsJyBXXr7RRYKuQw0arjSZ8E2LQ0F7yYBo5L4
-         0Lo6XiftBIHulGl7maARzfI1aseV23PoWH/dQi0fxox043amUK6HqLiW8v3/0ZWQkfvP
-         /GaWRYCvpcU9RmJnVrWrG00IG6mCfH0SUPYvan+mXceRkZqp8UET0RmSNifZReMSN48W
-         CkNNhhY16dZoZt9RiIetCvK8CJRwg8xDFMcMNTgrtK7IhofHFUntrWt5mBc+clV9Q7+2
-         sWXqUYeTuCqIfOV8GnClg3vYMNCZ/IlQEwI+BhKUxrsE0Nk0J92EqlI7Ayv9c+cry3lQ
-         XoIw==
-X-Forwarded-Encrypted: i=1; AJvYcCXXjQt0ZuHinupzMgKmf1Szt2m7Kgxxw828rCcoogNDGtIbrjV1yT2ZmKPhTWlDLSzIXb4Oe7SFhOzQaA==@linaro.org
-X-Gm-Message-State: AOJu0YyHD3/+V2lim7VDUG7ij3raG+tEHczrr/WQFtp3Y6FjbE+Ri3s4
-	NAo4TEC5plRnTSBaZE1SVIvI17nLbCL5UFNVKd0ltqMW3nwh1B5/qQSe1ORvgMLt4g==
-X-Gm-Gg: ASbGnculckL7Y9NP+aCQHc8qAokesuS2gD3wUSrLFHcZrtKnC5o0OaK4ltpHP6rY3wQ
-	wauKPfwBHsEgkkcKGTknpjSiZXlGrjvZrF5Qk7qMjcwet3OuyBiX5UXaFszgTqGu3I/EPPnknSc
-	2FrjwEstyRYlOlhu+5sA+z7jI5xHliM3Nux2kYPUMJ0Tfvz5RbRPym+c/2IqtupsAK+THA9UkjR
-	lHU/WE7MWK6Bh3jcBgAi2u0cSM0VN8bf+SxvwSZOm5fnB7kcdJRsvyJ6en0lpOqnAvLzPprm4It
-	wsSmspbMudryOSBqTS3SoNJVxwPAvB23qbgPf2p4tfxj40kxR7bxxDQhzzG90dHr7w==
-X-Google-Smtp-Source: AGHT+IFx+v4FclNABrQD9b4vP9z6wIrsuZioITVmY4/cv4uYCbV2ZK6EAFTucgkbxtN26HJ9CIIBTg==
-X-Received: by 2002:a05:6a00:198c:b0:730:8e97:bd74 with SMTP id d2e1a72fcca58-732617756d7mr35402017b3a.2.1740043880114;
-        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
+        bh=wrT6wI7eGWijFG9r07os9uEfYAKBYpxue/APgueq34E=;
+        b=o89a/jGKM3pXs/4xYXfQ/qcaRVMT76K41q3goFeQy/ciFPWodeCt8fP/tuvjn0wlru
+         F7L4XsSokYt/AT0A9FuHBVWmGFo+EfplLiiSQlBXln5C2pV4GobPp2SWujleJr8FwwTr
+         g6n/UByN/x7uqe3j2+zpF+/so7bzvK0nxF0raq6R4WLz6gORIjznON//AthNw/UJftwt
+         hPMW+6o0RW1OelptLLgATn6dujVTCnk/C4wI1yFht1aFisMWrI37KPgPJZZxN11jqBN5
+         jF7zUGI6JNTNmeG9FduCS6EVPHTvIzGmqQL6A61jNbTZoSJPJxiZumXPT9P9BsxiVLTY
+         1Ndg==
+X-Forwarded-Encrypted: i=1; AJvYcCUdqP8ma9GHrOUChkScyMrmmeOGdsJ7uqm4s/w2Tkf3t6TqcpZEta3/Y/Ksa2tUuPXIfQbLIVdocnGXgw==@linaro.org
+X-Gm-Message-State: AOJu0YxostrTTtlM3cp43iQAvU6wbAYsN3ZAkPoBiylTCzDYuYCD+HaS
+	XQ9i+jX53lcHuYX0ZxncjfJV6Lmgxi90P/Ah0bkSLjfVHhszCfXeFWFFJbi21mtRkw==
+X-Gm-Gg: ASbGncv/FoxIW9Hi3YDtYzJL+U9QFss1/kh6SNLp05g5Mg39sFALkOxITS7sJL5pQOw
+	rdV+pIV/vkrCPWHl/7Mj/fYz6ZMElUSdEFj7naPWB9Q76F1f/qBN9KkKxvh7YlN4ZmUOd6vZJbn
+	Ve1/5i6mvadEc+/bvGEKBLoBL+CNAzqecc68pTsRvKXwNx/d2znVb9XellYGBpHD6WRqYVnjX0J
+	sP6WLGaaiT0MsI9i6Jquzub39zU2DUZ0IUT3bQdkc2IudTklvBQ14b1td3T0llfUrcXuOXy2XYb
+	Iy6xGcpPVDscNDR7uc7VrkdUNQs+JC/arVd7N7LO3tfdq7yWecKEDaf3sQaiBKoNnA==
+X-Google-Smtp-Source: AGHT+IHzB09fOgQ9JAxm6Hg43hIcwbgKVGg/0WdEobzd0QwenNGTBOK1RXpNvRCYw4fa0qda/VG64w==
+X-Received: by 2002:a17:90b:2f8f:b0:2ef:2d9f:8e58 with SMTP id 98e67ed59e1d1-2fc411508famr28637110a91.34.1740043895854;
+        Thu, 20 Feb 2025 01:31:35 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-adb57c5ea71sm12264684a12.8.2025.02.20.01.31.13
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fcbaaf3f38sm1628375a91.1.2025.02.20.01.31.29
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 20 Feb 2025 01:31:19 -0800 (PST)
+        Thu, 20 Feb 2025 01:31:35 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
@@ -95,52 +95,88 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@amd.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: [PATCH v2 8/9] hw/char/mcf_uart: Really use RX FIFO depth
-Date: Thu, 20 Feb 2025 10:29:01 +0100
-Message-ID: <20250220092903.3726-9-philmd@linaro.org>
+Subject: [PATCH v2 9/9] hw/char/sh_serial: Return correct number of empty RX FIFO elements
+Date: Thu, 20 Feb 2025 10:29:02 +0100
+Message-ID: <20250220092903.3726-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250220092903.3726-1-philmd@linaro.org>
 References: <20250220092903.3726-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: A6A81THY2aV0
+X-TUID: YYjzzTp6OENy
 
-While we model a 4-elements RX FIFO since the MCF UART model
-was introduced in commit 20dcee94833 ("MCF5208 emulation"),
-we only read 1 char at a time!
+In the IOCanReadHandler sh_serial_can_receive(), if the Serial
+Control Register 'Receive Enable' bit is set (bit 4), then we
+return a size of (1 << 4) which happens to be equal to 16, so
+effectively SH_RX_FIFO_LENGTH.
 
-Have the IOCanReadHandler handler return how many elements are
-available, and use that in the IOReadHandler handler.
+The IOReadHandler, sh_serial_receive1() takes care to receive
+multiple chars, but if the FIFO is partly filled, we only process
+the number of free slots in the FIFO, discarding the other chars!
 
+Fix by returning how many elements the FIFO can queue in the
+IOCanReadHandler, so we don't have to process more than that in
+the IOReadHandler, thus not discarding anything.
+
+Remove the now unnecessary check on 's->rx_cnt < SH_RX_FIFO_LENGTH'
+in IOReadHandler, reducing the block indentation.
+
+Fixes: 63242a007a1 ("SH4: Serial controller improvement")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Luc Michel <luc.michel@amd.com>
 ---
- hw/char/mcf_uart.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/char/sh_serial.c | 30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
 
-diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index 95f269ee9b7..529c26be93a 100644
---- a/hw/char/mcf_uart.c
-+++ b/hw/char/mcf_uart.c
-@@ -281,14 +281,16 @@ static int mcf_uart_can_receive(void *opaque)
- {
-     mcf_uart_state *s = (mcf_uart_state *)opaque;
+diff --git a/hw/char/sh_serial.c b/hw/char/sh_serial.c
+index 247aeb071ac..41c8175a638 100644
+--- a/hw/char/sh_serial.c
++++ b/hw/char/sh_serial.c
+@@ -320,7 +320,7 @@ static uint64_t sh_serial_read(void *opaque, hwaddr offs,
  
--    return s->rx_enabled && (s->sr & MCF_UART_FFULL) == 0;
-+    return s->rx_enabled ? FIFO_DEPTH - s->fifo_len : 0;
+ static int sh_serial_can_receive(SHSerialState *s)
+ {
+-    return s->scr & (1 << 4);
++    return s->scr & (1 << 4) ? SH_RX_FIFO_LENGTH - s->rx_head : 0;
  }
  
- static void mcf_uart_receive(void *opaque, const uint8_t *buf, int size)
- {
-     mcf_uart_state *s = (mcf_uart_state *)opaque;
- 
--    mcf_uart_push_byte(s, buf[0]);
-+    for (int i = 0; i < size; i++) {
-+        mcf_uart_push_byte(s, buf[i]);
-+    }
- }
- 
- static const MemoryRegionOps mcf_uart_ops = {
+ static void sh_serial_receive_break(SHSerialState *s)
+@@ -353,22 +353,20 @@ static void sh_serial_receive1(void *opaque, const uint8_t *buf, int size)
+     if (s->feat & SH_SERIAL_FEAT_SCIF) {
+         int i;
+         for (i = 0; i < size; i++) {
+-            if (s->rx_cnt < SH_RX_FIFO_LENGTH) {
+-                s->rx_fifo[s->rx_head++] = buf[i];
+-                if (s->rx_head == SH_RX_FIFO_LENGTH) {
+-                    s->rx_head = 0;
+-                }
+-                s->rx_cnt++;
+-                if (s->rx_cnt >= s->rtrg) {
+-                    s->flags |= SH_SERIAL_FLAG_RDF;
+-                    if (s->scr & (1 << 6) && s->rxi) {
+-                        timer_del(&s->fifo_timeout_timer);
+-                        qemu_set_irq(s->rxi, 1);
+-                    }
+-                } else {
+-                    timer_mod(&s->fifo_timeout_timer,
+-                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + 15 * s->etu);
++            s->rx_fifo[s->rx_head++] = buf[i];
++            if (s->rx_head == SH_RX_FIFO_LENGTH) {
++                s->rx_head = 0;
++            }
++            s->rx_cnt++;
++            if (s->rx_cnt >= s->rtrg) {
++                s->flags |= SH_SERIAL_FLAG_RDF;
++                if (s->scr & (1 << 6) && s->rxi) {
++                    timer_del(&s->fifo_timeout_timer);
++                    qemu_set_irq(s->rxi, 1);
+                 }
++            } else {
++                timer_mod(&s->fifo_timeout_timer,
++                    qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + 15 * s->etu);
+             }
+         }
+     } else {
 -- 
 2.47.1

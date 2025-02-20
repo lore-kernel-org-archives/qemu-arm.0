@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1888339njb;
-        Thu, 20 Feb 2025 01:31:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUMB+2muX1D8xd5m+YMt+Oz3msqb3MGfRnxIlNmVgBV5plBsHcon6AE6qE+/vJmUgUWjKQMsnI9emjS9Q==@linaro.org
-X-Received: by 2002:a17:90b:53c3:b0:2ee:8031:cdbc with SMTP id 98e67ed59e1d1-2fcb5a99d80mr9598103a91.23.1740043865641;
-        Thu, 20 Feb 2025 01:31:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740043865; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1888421njb;
+        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWrNCJuH8gTs/IJf6OEqicKPiCSLR+qsi255CvWvM44zuXOF2htGWQtSimTFDQ5kAYH1yfDIIp6/aY6rw==@linaro.org
+X-Received: by 2002:a05:6a00:130f:b0:732:a24:7352 with SMTP id d2e1a72fcca58-732617998dcmr36352575b3a.7.1740043880620;
+        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740043880; cv=none;
         d=google.com; s=arc-20240605;
-        b=aq3AtsRTHibBEpPaWn/BfxUuZQCaOggJ8ZhlpPLo9Maso1kOjCNPJ6GKU76xx3Fn93
-         gmOrgcCje2qqCEjWy4mlJeIy8z6jHBa8NmQx+jV2AWDrH3VIcSp3EZ3XHrcRNllIYws5
-         HMLeZl78JFGVvLbyWyjLLjEo4PFOMAPzTZZOlDGYm/pUZ4M3LPqBKm19HxT3CjRN83aG
-         rsHP7LLPUFmLuQnOik3LJvgjZeWvnO+k9huNour0Rg1KjRRbTyMhJaABgLig4UUe41B9
-         Ml4PVT2XtaiX61/ROA90Stg0SMqkVSIt46hHxbg0mZquSFFs6yKM2KstRMH9ifJ5QEtp
-         H62Q==
+        b=JsvCHcWhOuOZNRQqWxRdxFYWy5QOSrAHkOrzLu1FymuP79WFB1Wi/zalIDOdS4xguR
+         lfJ6tPT40FAhHtZm/o2YatO6/FvkPt9kpR5ZPmJp2OdG+GdooQQ1L213IMY0ku1+e492
+         o+IojeKJxGsnSkGhjzd1TMlLTpYnli//aenIk36M7v1NyPQ5V0o0TiBlrUAYCE3PRtMQ
+         YBESNRyoeou9KdzNbpGeP67ZRtd5Z1XTFfZ++/WtT2+KMxwymzi89aLw2ll37T6ZAaR7
+         5JlTUAJlocsiwleiLBWP20BUtghCR7/v9EkslDknsmILxURql51Ln376+TF1HyUb2b1/
+         CxyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2DkPTvskXfEKDS8ksEDRN9mL+hSgQIvFZ8gbNR3D4CQ=;
-        fh=8XdT0YBw02WnYxGH8I4ZeXk61EY8IBya8OksQA9SfCA=;
-        b=eaokrQQJLyDTBqEjRyVTW0AqFg2qkjJRWXgwN6KSU9RNtuHWBrZ2xdEe83ehW8Wqqy
-         rminBtCzSkqNxTUj74GYpQlVoewCWwXMTbYK9CFmQGEeyM8016OtHUhzJ38BtX09jmq4
-         2/6BkBUIdfTokcPg1hrLzzonxhyhsCR0kESeKzOhhlJRi9xjDf/d4n0ThWw6iieMZk3H
-         sZt1OUfXB4SEuQp80cY/zMFWnAujPjqtSWX9saZK7QDGxJQ2wBAQ0nHC49ULF80andz9
-         5NK2RxtlH6jXkKRscCsOhmKFCsSY8qIe8Sfm7VvfX0j9h+8phDDJWDFmXF28yf0lXCwI
-         A/4A==;
+        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
+        fh=4Uu0lcVRDD7PLAjFVNg5oD0JJFRMNQJYZgIdHmwwYPk=;
+        b=QpQQvj513NjlIBgOgpUw43baG7GLavIBPg6QQpf8vxMC9yjNHmmw02q4lzKt90eQUg
+         DJzKo37JPCD5YwuldPaZKETQoYkm7OwlriMdYKgs/Dy8bWulaqdODwJZCGVtXih5n5T2
+         8DKyZit8OwfhW0m+D3mgSW0g40cyL/N9Nc2Nn6DJyGLGLtSwVX6kRIsFrVWPfiD+viz/
+         x/KtuUPcM/bRny+8scH2FqNuTL1hI90rVdhA3lQbaStiOqoHeL85ADfN052PJ8ofDvac
+         SC5vGLNHncXZOPdjeZ0ljWAxYRueXhqQ3OqfVWlZ5ITKpQwlxwiJjHkHjbJGSXwl+3A6
+         +Mxw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QWCM0aQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zdx3NhlQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-220d47beaddsor111363905ad.0.2025.02.20.01.31.05
+        by mx.google.com with SMTPS id d2e1a72fcca58-73242454997sor14312492b3a.0.2025.02.20.01.31.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 20 Feb 2025 01:31:05 -0800 (PST)
+        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QWCM0aQj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zdx3NhlQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740043865; x=1740648665; darn=linaro.org;
+        d=linaro.org; s=google; t=1740043880; x=1740648680; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2DkPTvskXfEKDS8ksEDRN9mL+hSgQIvFZ8gbNR3D4CQ=;
-        b=QWCM0aQj8iyG4YOSVk4/6XNB7Df8TfT2m7TOxR62/R4oKWRTFdwk+1GpzibDw46YT/
-         mQlo+lDU2lxCZ2MX5ie4KPqdlLugtGquAZptQFqWYLXbakpl5r5BmZpjiIpMHSu2Qosq
-         YlajmZ4umrRVfry8+fRybXbqdUXkXYLw+1kxEQhiwbD97orfSLR//2QEOiCdNw85EkHt
-         ZKzc37yN2mk4tg2m2t2oWdo7xkXMybpGSzgXYKbf9TdsmKbXk+Xew7cZwjXG9ibgC+Pt
-         fKNICeis01VJEhj0Ru77uUvKb+w0PPJvrTBdIPYn1v0DL7tAxxbTBtWy7/jcKUgdonsm
-         7Udw==
+        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
+        b=zdx3NhlQj7OLUygBwDiw98b4L41XhdfKgwzfaHqgtGKP4H5jTapBKWE6brzuq9aGMB
+         viKOJTV/TUgrc6uK7oT4B6mzeeGUZSvS2EzkPdi5T/6b1Yo/NIoq7ewr3DTfDLBPVdRu
+         CBT84vuVMQw1AOcwktIlCmM1bIlyDslJFcbDeTDfm7ITm+0qXI0dZSwJWdOWq5Y1vrKN
+         ktOAn+LnfTK1z2pJl6Z3iLcl8iaT7Fj/hmDaLI1rYjNZ4gphb95EvreExgKP77u34WbG
+         NTqlZXCVQW3urpSzUljGLOB1SLAH6ZxP3ktu0uCy82A5+jpUfLMjNQcUBLr/KIGQ6nFK
+         mZTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740043865; x=1740648665;
+        d=1e100.net; s=20230601; t=1740043880; x=1740648680;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2DkPTvskXfEKDS8ksEDRN9mL+hSgQIvFZ8gbNR3D4CQ=;
-        b=lq4WBpxjI4PnDmhuuMPNT0zxHcQGZhUQnxt24xIq+PCVNKE7S9ng/D4rsYsnFeqhxM
-         kLMHxDqjqUKtmWbVaBaRuQjTcxHJJv5ZfKpANOYTMi8AIwF0pnGnHpWkxKspGRuKvcvx
-         luBdjl432P/FthTnzbA3T4c5V1avZ9O83GGZ0sV6Xj24MP7+HnNdZdtmHxShCAq4Vqm8
-         78pv0iozt2A8q+zO2DWtHqq+u8jHYNqRknyg8ObzkPy2hY4dEXi+7AuyV9u2lwmK981+
-         Wfju6gRnItMdSZVdtTDEy1EaTiCp5FLNABTUYfgeiusj9sTH760gGZxDo6CtbXGEqrnD
-         p7CQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWi/LK0pH/Hpso4SMPxfnKgbcHDVOSJ5P+NZm/iC2Lx4Jr2h10ZEFWP5GJvSpLx8lvqGWf9j2ec8xwJGw==@linaro.org
-X-Gm-Message-State: AOJu0YyWEfpec0kkfukRdzFxx1aDcBAZnPzNXZUaDSiMv/HN1ayMhuX2
-	N+kFKc1VFRXLvRnIbNdDLz1VLl6EdJwrcFN9+rJKDiUMiy45h4BtlruQhXjSFc7zxQ==
-X-Gm-Gg: ASbGnctrJZ9KcGQwvrkqKTG72eDABogOwnu/ckHX/o/6m0i8fkBOaGOQrYy8FGQp1BT
-	VLeM7PhFTDQS+QEhB6fK5uaiQm6+VJT8gbb1z2WDTVjgQiEtyFU/k8wooiGoaDuim/iYj5tsYjy
-	+Pvs3+ZrKszJxN6pVyJT+JJauw9XBp0fLtO26DbKTTOn41neM41mj/5Lr6vioIKfnrMMGhWD7yr
-	BdZUVD4qixYMCe5FHo53lrQnHZ2ZbEpZVBDCZDAvk1G6US9rdJzEpr1BoAag3yoRLEgRPE1VYpK
-	lVquFedDbarcGqIaQjEfAvQt6TdjYeDKo1S9zB09mLXx07N0nip1i113kBoipy8XDQ==
-X-Google-Smtp-Source: AGHT+IHfmzLHtddJkZK0gPhKTcPtzUPZ89z8b0ccPmyhcf7pVBkVxv9DNWrVsElk7Iw2TdScMKzjvA==
-X-Received: by 2002:a17:902:d2c6:b0:220:c095:901e with SMTP id d9443c01a7336-2217119ecedmr125278895ad.35.1740043865224;
-        Thu, 20 Feb 2025 01:31:05 -0800 (PST)
+        bh=HC4oun0jFc0+NwBeUFjNGte1nRrGw6nA41LdkLLgvBM=;
+        b=Zx4b8Pry1RCvKvJI4Iec9OzMDzYLsNsJyBXXr7RRYKuQw0arjSZ8E2LQ0F7yYBo5L4
+         0Lo6XiftBIHulGl7maARzfI1aseV23PoWH/dQi0fxox043amUK6HqLiW8v3/0ZWQkfvP
+         /GaWRYCvpcU9RmJnVrWrG00IG6mCfH0SUPYvan+mXceRkZqp8UET0RmSNifZReMSN48W
+         CkNNhhY16dZoZt9RiIetCvK8CJRwg8xDFMcMNTgrtK7IhofHFUntrWt5mBc+clV9Q7+2
+         sWXqUYeTuCqIfOV8GnClg3vYMNCZ/IlQEwI+BhKUxrsE0Nk0J92EqlI7Ayv9c+cry3lQ
+         XoIw==
+X-Forwarded-Encrypted: i=1; AJvYcCXXjQt0ZuHinupzMgKmf1Szt2m7Kgxxw828rCcoogNDGtIbrjV1yT2ZmKPhTWlDLSzIXb4Oe7SFhOzQaA==@linaro.org
+X-Gm-Message-State: AOJu0YyHD3/+V2lim7VDUG7ij3raG+tEHczrr/WQFtp3Y6FjbE+Ri3s4
+	NAo4TEC5plRnTSBaZE1SVIvI17nLbCL5UFNVKd0ltqMW3nwh1B5/qQSe1ORvgMLt4g==
+X-Gm-Gg: ASbGnculckL7Y9NP+aCQHc8qAokesuS2gD3wUSrLFHcZrtKnC5o0OaK4ltpHP6rY3wQ
+	wauKPfwBHsEgkkcKGTknpjSiZXlGrjvZrF5Qk7qMjcwet3OuyBiX5UXaFszgTqGu3I/EPPnknSc
+	2FrjwEstyRYlOlhu+5sA+z7jI5xHliM3Nux2kYPUMJ0Tfvz5RbRPym+c/2IqtupsAK+THA9UkjR
+	lHU/WE7MWK6Bh3jcBgAi2u0cSM0VN8bf+SxvwSZOm5fnB7kcdJRsvyJ6en0lpOqnAvLzPprm4It
+	wsSmspbMudryOSBqTS3SoNJVxwPAvB23qbgPf2p4tfxj40kxR7bxxDQhzzG90dHr7w==
+X-Google-Smtp-Source: AGHT+IFx+v4FclNABrQD9b4vP9z6wIrsuZioITVmY4/cv4uYCbV2ZK6EAFTucgkbxtN26HJ9CIIBTg==
+X-Received: by 2002:a05:6a00:198c:b0:730:8e97:bd74 with SMTP id d2e1a72fcca58-732617756d7mr35402017b3a.2.1740043880114;
+        Thu, 20 Feb 2025 01:31:20 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-220d5349077sm118268655ad.1.2025.02.20.01.30.58
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-adb57c5ea71sm12264684a12.8.2025.02.20.01.31.13
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 20 Feb 2025 01:31:04 -0800 (PST)
+        Thu, 20 Feb 2025 01:31:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
@@ -95,65 +95,52 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@amd.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: [PATCH v2 7/9] hw/char/mcf_uart: Use FIFO_DEPTH definition instead of magic values
-Date: Thu, 20 Feb 2025 10:29:00 +0100
-Message-ID: <20250220092903.3726-8-philmd@linaro.org>
+Subject: [PATCH v2 8/9] hw/char/mcf_uart: Really use RX FIFO depth
+Date: Thu, 20 Feb 2025 10:29:01 +0100
+Message-ID: <20250220092903.3726-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250220092903.3726-1-philmd@linaro.org>
 References: <20250220092903.3726-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: d+JCvbj9gi5E
+X-TUID: A6A81THY2aV0
 
-Defines FIFO_DEPTH and use it, fixing coding style.
+While we model a 4-elements RX FIFO since the MCF UART model
+was introduced in commit 20dcee94833 ("MCF5208 emulation"),
+we only read 1 char at a time!
+
+Have the IOCanReadHandler handler return how many elements are
+available, and use that in the IOReadHandler handler.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Luc Michel <luc.michel@amd.com>
 ---
- hw/char/mcf_uart.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ hw/char/mcf_uart.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index 980a12fcb7d..95f269ee9b7 100644
+index 95f269ee9b7..529c26be93a 100644
 --- a/hw/char/mcf_uart.c
 +++ b/hw/char/mcf_uart.c
-@@ -17,6 +17,8 @@
- #include "chardev/char-fe.h"
- #include "qom/object.h"
- 
-+#define FIFO_DEPTH 4
-+
- struct mcf_uart_state {
-     SysBusDevice parent_obj;
- 
-@@ -27,7 +29,7 @@ struct mcf_uart_state {
-     uint8_t imr;
-     uint8_t bg1;
-     uint8_t bg2;
--    uint8_t fifo[4];
-+    uint8_t fifo[FIFO_DEPTH];
-     uint8_t tb;
-     int current_mr;
-     int fifo_len;
-@@ -247,14 +249,16 @@ static void mcf_uart_reset(DeviceState *dev)
- static void mcf_uart_push_byte(mcf_uart_state *s, uint8_t data)
+@@ -281,14 +281,16 @@ static int mcf_uart_can_receive(void *opaque)
  {
-     /* Break events overwrite the last byte if the fifo is full.  */
--    if (s->fifo_len == 4)
-+    if (s->fifo_len == FIFO_DEPTH) {
-         s->fifo_len--;
-+    }
+     mcf_uart_state *s = (mcf_uart_state *)opaque;
  
-     s->fifo[s->fifo_len] = data;
-     s->fifo_len++;
-     s->sr |= MCF_UART_RxRDY;
--    if (s->fifo_len == 4)
-+    if (s->fifo_len == FIFO_DEPTH) {
-         s->sr |= MCF_UART_FFULL;
-+    }
- 
-     mcf_uart_update(s);
+-    return s->rx_enabled && (s->sr & MCF_UART_FFULL) == 0;
++    return s->rx_enabled ? FIFO_DEPTH - s->fifo_len : 0;
  }
+ 
+ static void mcf_uart_receive(void *opaque, const uint8_t *buf, int size)
+ {
+     mcf_uart_state *s = (mcf_uart_state *)opaque;
+ 
+-    mcf_uart_push_byte(s, buf[0]);
++    for (int i = 0; i < size; i++) {
++        mcf_uart_push_byte(s, buf[i]);
++    }
+ }
+ 
+ static const MemoryRegionOps mcf_uart_ops = {
 -- 
 2.47.1

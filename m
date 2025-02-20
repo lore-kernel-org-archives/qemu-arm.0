@@ -1,190 +1,159 @@
-Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp198597njk;
-        Thu, 20 Feb 2025 08:54:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVCc/L+wdtH0PyFI4YafJTS1xyeATo46gMlem4aWPFyb5uiCJ0PhI/NtCL5st/U0urg146WTeYta8DWfw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFofuni5cNp8l122PIPLCzo4vbgPaTEn5ixdyEiQ8t5vvP38Zobq59JJ7CFhJONR072SOES
-X-Received: by 2002:a05:620a:29c4:b0:7c0:add8:175d with SMTP id af79cd13be357-7c0add82dc1mr1645345785a.18.1740070442757;
-        Thu, 20 Feb 2025 08:54:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740070442; cv=none;
+Received: by 2002:a17:504:6615:b0:1be9:327d:8ee3 with SMTP id h21csp380224njk;
+        Thu, 20 Feb 2025 14:23:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUN4SnA8Svme+1+ycJiSiK6M8fVF8bu/+rKObgntcCTugpBgrf1Eai7ziQYOHJ7Z7Ixr1h3OHHSupSuDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF7IcdkXGVQp45MNAiA09kXUaTIz3+jnRuC8sxtDh9liSmBkZzFAeXPb2cUZ/O5CttBgINg
+X-Received: by 2002:ac8:5f14:0:b0:471:80ef:35e7 with SMTP id d75a77b69052e-47214ffad1amr66827871cf.4.1740090238280;
+        Thu, 20 Feb 2025 14:23:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740090238; cv=none;
         d=google.com; s=arc-20240605;
-        b=j6YBLmJTVELstclHXQdN+u1H/WR6wLTlgcRBgieKFUM0Yw/zYGONICzV/8h0XDdyQX
-         kd6PoZ8tTxo8XkLV89TT3Ua9BIzIuIAqNsYJqi4ThNYsqTdtSPt+/lvPIuMwaiorGW+m
-         qbzujT3xa/9KDc/fioVukkjJYa4JrytLRmOYj16tZxd7V6NxLIiY4SmQMsWROgE4vmGM
-         yNsiLmQ9NFUcaasfJIyed2gzZR0cN7+ut7jNQvnBzHhHZgN0TUhefaIX/PRqqt7UJ2jA
-         rtmeGKqWtvyi8ZhHNw6NCqyziB4jg/5k24WGbJ5C+VQ9YWYEqysBcHQTAvmkNA2lKgKn
-         gmmw==
+        b=ilVOXeBy/uCfGEhHct6OAIaRlWS7tIrrsEQLsuey0JMHg2iAdLq0EmDpPnpL34AwOw
+         x3tKCAljfBdfBM92a0erp2Mk4qfNEkO5wox3WOQq0gveXYnE5T5N7l05/AiLRRD7mrl1
+         78Y4xfxIYmP2eQjGsYwwXIvyJryMIpI30HsFQgJDyd1TP00/jpalSdyRDUTCS8MqhE+i
+         Xu8dOeBVh9ORNs6TtKSdrlRmno52U6MElOrE3C6BouEz9ICWlYCUoW3aTpdcNc3buosy
+         IdPGfv18dkUC03JqJE7MWTNwsx/J3GjPEc6NminHRTDUVBkIawbDB8pSO/tz+De7OwqM
+         bGFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=WGueGLJKjxjk0mP/vtDKATK7kGCq/pQ/lzWMFb9XyBo=;
-        fh=pVK8cZI47VUMQKs7dBdSrDNj1Ikmva3dkLg7UZ638Vs=;
-        b=PmgBk80uj25bXNj8gyGymiGrt2L15ZlRK7NVV1qvwXGdIMTaimDr8yjIobAKZPZLuj
-         LSCJLOOQcnyFfuOPeb3dKVzzaPVqwkXDvzknN2Uz/qBO2BMpLodCBNHJRFqlsmWRMMdu
-         cFIJwthpBWQajDmXQna6kkXbNHPkPy8ZmwymcbG8kvlz5cTsX7bQ34xsV3Mbaftx0D+z
-         uaLLoLd23PC2f0NlWVESqK5yTxsHGLM54SznESmxpHAXE2beVnPZNKSFNq0ziv8ubaxe
-         A7JNqXsyaH6ijuW38QhnMHxg3JHDABx7aRz8py0vpzBLNrG8ndX7peuawHYILGl333iN
-         09/g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xfmW+7Rd75vtwonljeaStfGCcd+krv7ye+cqnLwDETI=;
+        fh=e7wK2SF2YtemLv+KDhpwrwsNSE6YnLNZyzV+3Pe+nPY=;
+        b=egkfa9GFLvY7tkCpskxfIxZmM8+aYqsWUDHPe5hetMbZEy0AddaY7jgu9gQEsqavnL
+         CM2tNqm8plssW50rxxuW1RwJzqSAYO6f4UTi+bPqgr4Bzs0NgjlnYMLgm336Rte1hlIF
+         Zxa18KWGMXFIxF2uy+9yq/29xeLRWBAooxj0/WnxtHn7LEJS7jJey5r4mAigMXA88VYM
+         1mmWXLPqjQpq5ViLb959ZZ03qCtR49Dv6g0JaJiadbOPvshG9pJ1WeNUf0YnXNPHkYcr
+         +xDMKB+xKfO9FCshpba1t23t14HoUpDt/LdPMqUrJwinw0kwtqiW6dlXoYiQ13v2Ue+h
+         EwpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Ns+3uil5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZsbvutSv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0bf1e9a21si235942185a.384.2025.02.20.08.54.02
+        by mx.google.com with ESMTPS id d75a77b69052e-472189dbb90si17103631cf.473.2025.02.20.14.23.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2025 08:54:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Feb 2025 14:23:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Ns+3uil5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZsbvutSv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tl9nq-0005eq-L9; Thu, 20 Feb 2025 11:53:34 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tlExI-0004bn-CR; Thu, 20 Feb 2025 17:23:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1tl9np-0005du-Bh
- for qemu-arm@nongnu.org; Thu, 20 Feb 2025 11:53:33 -0500
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tlExF-0004bI-T9
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2025 17:23:38 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1tl9ng-0005ne-Kv
- for qemu-arm@nongnu.org; Thu, 20 Feb 2025 11:53:26 -0500
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-5461a3a03bdso7658e87.1
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2025 08:53:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tlExC-0004ZN-4V
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2025 17:23:37 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4398ec2abc2so12795495e9.1
+ for <qemu-devel@nongnu.org>; Thu, 20 Feb 2025 14:23:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1740070400; x=1740675200; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=WGueGLJKjxjk0mP/vtDKATK7kGCq/pQ/lzWMFb9XyBo=;
- b=Ns+3uil5p4Kkc4hsWNr6r83ClRZvKMbYAsIbxa1AddMJgapGy0ond/0yPv50Xxf4aI
- SugM5zdsNCqc29GemN3G8jAZnnZJLdqMXf3Dc0vxzN9baIMNy49BQdK+8LmU5GIh5J5K
- t58dlKjcDIvXf51mrGtR1JLWoGhaHCVrv4G+wbFI1qtgSJHRedR1rn1QiVOFF8yiNhck
- oCcU6PHHEyos2YBgcCap9mvmUgWweEEBbpSLuLq5AIn/Wpn40QpHyeqDSqdB6AVZa4h5
- wwTvozoHVzenp2UKz3G5cL7nxY7PRPGKS/sg9X0HFeZHlshq7aDl05en8lvxe99jN+5h
- jG5w==
+ d=linaro.org; s=google; t=1740090211; x=1740695011; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xfmW+7Rd75vtwonljeaStfGCcd+krv7ye+cqnLwDETI=;
+ b=ZsbvutSvqLWsx6tCXPgQje2uwt2z5fGSm2F8o8mKepevCz9Tf0xnOa21u+ick3YvA+
+ 5KALAqvlZSwjxTwQJ2FKQafGANcRU9wNuJVt3Z5Q6M+dMlS3AhC0MxBlzrODwepCYqnp
+ x1y2iIMFdzZunstienEss7CyeNaxbRbEo+aFwvJ6BXsWrABNsAEeB9t+HGBFikS4i25t
+ nrvtClPZQ12v7uFiN2FwDR5nHB5x2lOcFE2J4o/LpbmGwfDj02fHKiSysOIV9BmwS5A+
+ BTsMcfmPD5T1hdn20sKjpVahAkNHAEvTxO1gBsK0324M1v3hCJkS6ZCxvLY0O+Ctxc/t
+ q5Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740070400; x=1740675200;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WGueGLJKjxjk0mP/vtDKATK7kGCq/pQ/lzWMFb9XyBo=;
- b=xLvS3/K59r405/0VumiIChfbWNUmENajNoDruxJLOOcdxFgLmVNiABdkG19+VrTqVZ
- NckWoDFm1f3CihsTY5ifCeFBUuvCaJ6Se26vUAKI8dQlJBt6LyA5m5a2qWcnvpmhFZ39
- zBdeFd3hefsX9XOp9Phb4vPNr2oQ7cMeRxXEn+5DhDwJhJMIc+6WhLpLX5EA0aQnLGhq
- 3vBE5IjLBmg+doDLFTM5rJOkJUF3xd4FV+PkQqljfV0XVyOuyr6zHN3VegmOyVS7IhQ9
- X9L23Bi/7pEiCBMiLQzJMY+ItwMJGxBkRIyRAPlRLfRkOMQqdSmQfnfYpKJpiSM1Vi4f
- WKlA==
-X-Gm-Message-State: AOJu0YzRkbSzZmW2lC1pMIZBEMpHmiXk7zDE1qS5qVIxQIGAcbo69C4/
- heB/lwiN9ql0wjr2JZGKTOXCv1Ki9GZS/76fJfuyTuzh8goP5ye9je/SakFnHoB3YPe2GhM1XmN
- 8AVv9IwBIhD6NKLqem1KYqOyJaFHjF+EOAssv
-X-Gm-Gg: ASbGncumbdAJlTBmZhxGE89FUJjg0k26MG5lkucLcc+30XtzlzJthihMgOBZ14lNRKs
- tr8K1f3D6b77h7r84+2v9kABYcF4uMxmIE5ZUB1Fa3gLNOgKsFbogW9S6RKA5CK0T6uGMWrD3Fd
- bXSidXyelU747TiXVZxVDIn3J6SC0=
-X-Received: by 2002:a05:6512:1054:b0:545:38d:ffd9 with SMTP id
- 2adb3069b0e04-5471c9ba747mr205794e87.1.1740070400341; Thu, 20 Feb 2025
- 08:53:20 -0800 (PST)
+ d=1e100.net; s=20230601; t=1740090211; x=1740695011;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xfmW+7Rd75vtwonljeaStfGCcd+krv7ye+cqnLwDETI=;
+ b=ej0M7M8Q+iinC6oqNq5OmwZLknFdT3BZJNieXcFHz4wE88x3vB31SFTG24ll/MrPgI
+ YuPNvxWSwMf2YAoBSK0VuEko8aQ/FHjRmgIpaCv5l/CzfcNyb+zUGagb/1ncx6Q04LPh
+ 4zNQd50Idb7S/C5fyVt90n5BAAiV8zcJGpKXmwLXDmvUrkoVjEICPF/giuYfsadJh8Mu
+ EMZfutF+Ondsrvpwu9uE/CMUwVLH8r8C6B6B9O51O0lUvKvJUNDMeL84Ah1Z0Ijp1Mzq
+ tOrnBpF2mjU7zyYA4ZBQ6ATso3SDNSMP0Sx5XLGDO4LXVEgXpgOj5d/MBVV2d1a7qILf
+ heXQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX3CQQh1J0qxXUxIlZwS2ybC7WtRT2hdx3ca2rEcha1IDkL+0DQhLX8XhAfXI5FZi7agADRpwxBVs72@nongnu.org
+X-Gm-Message-State: AOJu0Yy/7lCMuYc7ilaCh4ttowwy7c6R5DWuXR9XPJjmemajgiR6EMgk
+ 0ocj+MkBz0KKWQaQ2I7+IswMlfeJoJQr1NrjAjx/Tsy5EIwlExMKKgN6iRjVjtU=
+X-Gm-Gg: ASbGncuhRIGiNPjk0qrAJay3MPYka1NBo+HzFDI4LuQ2r8iy7sLfRJnaBOS7MLMaFie
+ CqSDqQsOU0/8CZhwzwH5MyZoeUMA6BQYgE2atFbKMdPEcVxIZ3i7d4+4BSzSxy90qXEgdfExua4
+ SAxUMXXOO8fxXjLVxCr/RmOmNHq9+/XqNRGfX/qXqocI5YS8nuGBk6YaxPzpuWtDboOEEvpDdN4
+ l14+ano8hcfpQDCt4uwqCx1ijZ2AHcfx/h0nP1X+yGvyr3260b5aBS2GlFAljxUOXgSBAUp/quo
+ 2gPo+UstDI3KS8foMmUhYw+VyDhHKvXajAngP3kW7NDJRGyEMSSdNs3MID0=
+X-Received: by 2002:a05:600c:1991:b0:439:6dba:adf2 with SMTP id
+ 5b1f17b1804b1-439ae1f1986mr7420095e9.15.1740090210974; 
+ Thu, 20 Feb 2025 14:23:30 -0800 (PST)
+Received: from [192.168.69.157] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4399c41022csm58495935e9.40.2025.02.20.14.23.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Feb 2025 14:23:30 -0800 (PST)
+Message-ID: <3637c187-0bea-4eac-9b45-c5f7cdb3e05c@linaro.org>
+Date: Thu, 20 Feb 2025 23:23:29 +0100
 MIME-Version: 1.0
-References: <20250219184609.1839281-1-wuhaotsh@google.com>
- <CAFEAcA_3FOHVo6q_tiOEE7dHZNDw7_0emdCR5=5cEt7fdKVkTQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_3FOHVo6q_tiOEE7dHZNDw7_0emdCR5=5cEt7fdKVkTQ@mail.gmail.com>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Thu, 20 Feb 2025 08:53:08 -0800
-X-Gm-Features: AWEUYZmP1Zv0kYij9jFDGl1PQ-YBD2nsQoseCAyE1URO_xpdh6oEOH_JnloHAyc
-Message-ID: <CAGcCb10OPzQhjMQ0dc06AQt06Y2x2syQURSC26bx=mUsyNir3Q@mail.gmail.com>
-Subject: Re: [PATCH v5 00/17] hw/arm: Add NPCM8XX Support
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
- Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com, 
- titusr@google.com, chli30@nuvoton.corp-partner.google.com, 
- pbonzini@redhat.com, jasowang@redhat.com, alistair@alistair23.me, 
- philmd@linaro.org
-Content-Type: multipart/alternative; boundary="0000000000001935c2062e95b628"
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] Kconfig: Extract CONFIG_USB_CHIPIDEA from CONFIG_IMX
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20250209103604.29545-1-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250209103604.29545-1-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Brb5oDwmSBxA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6EtpBZCdLHeh
 
---0000000000001935c2062e95b628
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 9/2/25 11:36, Bernhard Beschow wrote:
+> TYPE_CHIPIDEA models an IP block which is also used in TYPE_ZYNQ_MACHINE which
+> itself is not an IMX device. CONFIG_ZYNQ selects CONFIG_USB_EHCI_SYSBUS while
+> TYPE_CHIPIDEA is a separate compilation unit, so only works by accident if
+> CONFIG_IMX is given. Fix that by extracting CONFIG_USB_CHIPIDEA from CONFIG_IMX.
+> 
+> Fixes: 616ec12d0fcc "hw/arm/xilinx_zynq: Fix USB port instantiation"
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> cc: qemu-stable
+> ---
+>   hw/arm/Kconfig     | 6 +++++-
+>   hw/usb/Kconfig     | 4 ++++
+>   hw/usb/meson.build | 2 +-
+>   3 files changed, 10 insertions(+), 2 deletions(-)
 
-Thank you very much!
+Maybe "hw/usb/Kconfig: " prefix in patch subject, otherwise thanks!
 
-On Thu, Feb 20, 2025 at 8:18=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> On Wed, 19 Feb 2025 at 18:46, Hao Wu <wuhaotsh@google.com> wrote:
-> >
-> > Changes since v4:
-> >
-> > 1. Bump vmstate versions on NPCM CLK and GCR modules.
-> > 2. Remove "hw/boards.h" include in npcm8xx.h and add it in npcm8xx*.c
-> > 3. Use cpu_to_le32 instead of tswap32 in npcm8xx.c
-> >
->
-> I've applied this to target-arm.next with the fix for the
-> type of flash_size applied.
->
-> thanks
-> -- PMM
->
-
---0000000000001935c2062e95b628
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thank you very much!</div><br><div class=3D"gmail_quote gm=
-ail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 20, =
-2025 at 8:18=E2=80=AFAM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@l=
-inaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
-rgb(204,204,204);padding-left:1ex">On Wed, 19 Feb 2025 at 18:46, Hao Wu &lt=
-;<a href=3D"mailto:wuhaotsh@google.com" target=3D"_blank">wuhaotsh@google.c=
-om</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Changes since v4:<br>
-&gt;<br>
-&gt; 1. Bump vmstate versions on NPCM CLK and GCR modules.<br>
-&gt; 2. Remove &quot;hw/boards.h&quot; include in npcm8xx.h and add it in n=
-pcm8xx*.c<br>
-&gt; 3. Use cpu_to_le32 instead of tswap32 in npcm8xx.c<br>
-&gt;<br>
-<br>
-I&#39;ve applied this to target-arm.next with the fix for the<br>
-type of flash_size applied.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000001935c2062e95b628--

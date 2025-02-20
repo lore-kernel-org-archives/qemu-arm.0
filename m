@@ -1,217 +1,210 @@
-Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1644008njb;
-        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVZpuFoqFW7RM6UDNlzLdx7H6yip4uFsbIyW96ZZT8dyTFXQw4THVtuCWjvaNprKFjxR5BwHSdqiBPmZA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGV82iWYLfptJhaEdwJ7llsouH++nkk5X+IxNQQHo4z3qZI3b/0Pykcf/hMdPXlsq5I6boo
-X-Received: by 2002:ac8:5702:0:b0:471:fde4:f09e with SMTP id d75a77b69052e-471fde50816mr131138621cf.36.1740001529740;
-        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740001529; cv=none;
+Received: by 2002:a17:504:f96:b0:1be9:327d:8ee3 with SMTP id oa22csp1857757njb;
+        Thu, 20 Feb 2025 00:12:23 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXBb7eyy1zSC5x0XDiazdZO1Rm7u/qzk8JyhamrPIIT7beSbe0yHU+29BZBBeUaqbD6rvovHd3nSs6xsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEtW6zaug2GcQ9YJw0HGc9YuY+UDak96LA8OJas006NvPVLBXtPMhoQlSzTHhQ6SffkhwOe
+X-Received: by 2002:a05:6902:1890:b0:e5d:d340:b045 with SMTP id 3f1490d57ef6-e5dd340ba69mr16168720276.38.1740039143437;
+        Thu, 20 Feb 2025 00:12:23 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740039143; cv=pass;
         d=google.com; s=arc-20240605;
-        b=FP3mE9Oaxnjxyubt9PJUPpBssOtQH0loXoe/nU77/kQYGGhI/B7qts6GIs0p0Ueghk
-         sxL6iCkLxUVk7eRHRcABnmBoIvDzBQywLvoaI/Bt3spT3UYb55jKtJO7e9ZyqKDi2MOb
-         zh+6Yj8aPEH0+xZjX9bHyci2HMdu1vzxTf1Qu7YgM6pbUz+EMvpQl1Yuo5ZUkaRm+evP
-         EKeA3rTb03t3/rk+C/zBhKmceGjo8LKeo895lTEgmZGr5J1BLUCcm45Twfs4sq6C83b3
-         JXTTWEK7JXsN61j6sLNzABk5xkrQuPhDcRhOp8azqurSoUUVP2sYI6v+TSMNM7x6/fo7
-         jFmw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
-        fh=scwUd7c7TUMvARZPQ6tZ+qTIbyy+FS49PuJVOeOekKg=;
-        b=VDAiYKiUsNOGhVpsYWWieJv+o8E1Ak5kBlE0O8YcuhERLKjkUyP6z893B4S3OPrZ0d
-         uAGCrgcvXE0Lgymsgfuzvqw961jdyAwevKhgblbM0c5vTE7eE5klioyuePgF/JIb3Ast
-         TbHRXwoMxI/hxOaJonBbnlGyX0R3tbAVZdWgjY+dzRwt3/DMIgnADqXs6OYCScEihPl1
-         kQFZ87AS0NneR3tpFE/Rj1X0O4k1A8xNOBLb1pDYDj0RbOnSOynuVsa5un9agJ0Z4Mu2
-         xUX61evrlrxz/c5OXD/XgqHi8niPATLjLstqKi9BhPLOQA5+JVk6djC4PG+RukzkhcdC
-         hVhQ==;
+        b=SGYXUJXHYLNqP+m0INtHWZ4K4nIn+F4htoZslJY0JQvdhVZt/MFVk+PnbVkULFPgPM
+         +wonRYKyGPgnqsjAF1zjtxW9r6sitXX55S3GH7f8xs8Ou+F7aDHO0L6vWiwtDe+591q6
+         TGy/6HScz+SujjI4VuEDwIjOxWBiK2l5rx/b7mceevru8YeO+IS6n/Is0KMSqFcsfGZ6
+         WLDvCof3TFqOrpyMyGuidTavLSDoBFV6lmsuK5JSefmEwzxC4Z4WEFy3DamRoC2OODD0
+         P7RbTyWz2gm0CZg0S/BK6brr3cp4ivVbac5mOBHy6pVtWsbbaNRH4uUfVTsdKD8OyQIZ
+         bKnw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=cdUzK0kNMy+CsRafYa1CK5vShPOjW/jgI6X5DCe1YTw=;
+        fh=McEJFpNWooeu4KfjMpm8Y/6NgpK0tuD9PnL3C9AEwbM=;
+        b=DB9Oc3d2Caq3CV4upGKpN4uZ7TAXUbsMqY99xaEhS+XYIGXhla0atko1L4HIrSkfFu
+         DnxKpAK6wZ4T5eRjKe+46CFYOlJh4/JTnkRVjrs40xyodcL/8cfC9nznWy50P1YZQiGp
+         +gxBWIEREP/DVOkh5JNT1LRWmW95GXyZrGQkVzq6q55oGL26YmWSLEGS3OVRh81mT2Op
+         Na6M4XIFB1NrsGLvZXo2MWENiLh53VTK7g8OQ+gxSLQf9TVR42bqL9HgrtGXQ3GdjUqj
+         sByec49ya3ZuUrmqpoNzxpcMY1eA5womJNY0gfxmG0YF4a84rtp8zPLNfmKt2uVLrlvl
+         Ry+w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="He/iNt0P";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471f2a2cd26si62947601cf.317.2025.02.19.13.45.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2025 13:45:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=h5OeDHMZ;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2415::60c as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <Luc.Michel@amd.com>
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (mail-dm6nam11on2060c.outbound.protection.outlook.com. [2a01:111:f403:2415::60c])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e5dae12f7a7si13043534276.457.2025.02.20.00.12.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Feb 2025 00:12:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2415::60c as permitted sender) client-ip=2a01:111:f403:2415::60c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="He/iNt0P";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tkrsP-0001vO-9g; Wed, 19 Feb 2025 16:45:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tkrsM-0001tP-Ih; Wed, 19 Feb 2025 16:45:02 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tkrsK-0004HI-JS; Wed, 19 Feb 2025 16:45:02 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-abb7f539c35so64753566b.1; 
- Wed, 19 Feb 2025 13:44:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1740001498; x=1740606298; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
- b=He/iNt0PK/4KQsjbY3PsACNSA4G6bJMg2YFei4OmYInm2J9+iNsAPhyoSMQvhbAoQi
- mHq4wijEAhB0HFkeS2x4q75zMX8lsiiEhFs6uSIdro5bdSivpA0RwbXoWfmRjyeStMDe
- cVMlPZO8toYU5mORA207mONkKns4XdPQG2E9M8uY9CHvRztvy63tnIjhMybs9xHwQPUP
- 8FG8FuMJbyD+prqWgA9ijHjgrW0adKVkBHfn3sbJG869F7dEXF3587y+8LTQuZwAkOHh
- etGziJQuWdonZHfZGxmSvxKuS/PUY6MeJRa8PRm3FL25mQU3ExdYezt7HKmRUjQD4TBo
- j1YQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740001498; x=1740606298;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qMUMjboRNAy18NMEZj699jQWyk6xIgQJY40hHkPwU6E=;
- b=DyST+CgcgHLLMofo3DCQ0Z7F1fnualcfw71vLfBKmAN7M8SlzLQTvY8zfvfrPi0o3m
- tZOSH+n44l0Rf3FscWgyG02NhhzEu04+hgMoGcROgKfFB6bqcwq2fSx6Q0OkcCaNTZ5j
- E04jqjltxu1Iwsk5ZaXqO3fDNWQYBsm6Qvs9qhVVOcleMvb4VXMTS6s/7gXU7rce6D6R
- pKznaskX24BpMaC0bpAEiXtfueGf0XdOi2bjH/T0iz7b8iF4tNAJk23Al1X+YxBuaaq+
- Bldz8A3L1vF3K7juB685zZuHoU0mJGbeuWilcg/lkEa49ZrreCqf5bbnvSQNF/3d0fXF
- oIhg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXpvraQKU4oE5DoCaEiULvnaj9/8e1HDb7BovoKwr7/UXH+1QC2bSNmn1C+psiN9N6HkPKZqijB5A==@nongnu.org
-X-Gm-Message-State: AOJu0YyHdAJaNzL7eW31506K7l+ddhyX5QIQy1XpOj6A6vhkQaDHzqgt
- YRuP6UkrXVrAo2RFFaWK3NlTS5MWlY+Dk2G27j9eyv0iMDqx8S13
-X-Gm-Gg: ASbGncvNf/gVrclFRGCcWVoeNk58I6va7rHoUOpJhpQqGfMXBFwMIVH6i9KFuRNkWjZ
- Zvn96XnMe3Kcwi2mg4xPrLcDFOxeATLkga7W1CXQCYPA3YUdKb4eWKY/I9caWNp+BrwxkbCwAmx
- MF3y6VOYe4uf6yaZ1ndjfcfDvyyeU4tiz5Iiytif5p5917VOr7sPUEqCQWXS5nPMJS5jR/cyzDG
- KEy+PjknvwG7yLquEIUWS6xS5lkUmvJ4NKbktBjwAjVFWPEwe9qac3vk4eEiQyovMNduICx4WdN
- 0fFg6SsF032yclsimmkj++XbiKZcMXQ07W+8LGZGz8V9pZg3KswQO9sS7YhQAIg12Vg=
-X-Received: by 2002:a17:907:d9e:b0:ab3:2b85:5d5 with SMTP id
- a640c23a62f3a-abb70df3417mr2171594466b.49.1740001498082; 
- Wed, 19 Feb 2025 13:44:58 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-077-183-067-186.77.183.pool.telefonica.de.
- [77.183.67.186]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-abbdf076360sm161654066b.110.2025.02.19.13.44.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Feb 2025 13:44:57 -0800 (PST)
-Date: Wed, 19 Feb 2025 21:43:50 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_03/18=5D_hw/gpio/pca955*=3A_Mov?=
- =?US-ASCII?Q?e_Kconfig_switches_next_to_implementations?=
-In-Reply-To: <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
-References: <20250204092112.26957-1-shentey@gmail.com>
- <20250204092112.26957-4-shentey@gmail.com>
- <CAFEAcA8yayMSe+64VDV8TwSMi7u0_wLM+y9-TKsnaZS5seNKZA@mail.gmail.com>
- <18125593-7729-40FA-9FC1-7DC912287503@gmail.com>
- <CAFEAcA_4ONvJB0xSSGKo4RXVfjBxck8N3mD6G=n=DKbfK4r41g@mail.gmail.com>
-Message-ID: <6DE88581-5B09-4599-ABE0-780D1BC76E66@gmail.com>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=h5OeDHMZ;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of luc.michel@amd.com designates 2a01:111:f403:2415::60c as permitted sender) smtp.mailfrom=Luc.Michel@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NiuX7CopJt4Cs8SLE+GkGjV/D1iEmWQzSzebk3AukwbzEQpBHtveQH3aost4PT3bWdwqR0u4e2QMvHE+DGXQeCJR0gVi8V5cu2aSiTJwZjH1ZiE/H1L848ALU214xxy1kNULGKOEe3Vu4X96UVBnRtYVd0zfwJcyBsu6RuI5LCgQLWrjw/hiPvTEUsItua0KKNDva2ANscJnPfQK+A9F4Uz064hB2dWM5qjsaLvdvc2pxYuGa/o0pxdnxbS6m23Gc0A8JGFp6caaQzM2i9fiTFBzl7BZCNFUWj+QlyrJKKo1oN178JmCnqIn4Gw95BPv8sFc2jFpUospPu2H5sjv4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cdUzK0kNMy+CsRafYa1CK5vShPOjW/jgI6X5DCe1YTw=;
+ b=qvMFSaYA+Flc2Cun/rz/8Zy7ezz4MORF8Um79H3Tul9rQYJjs3HQZiejSzvkCAhntdjDJxMoBmT3Pf8VFL6tafPC9sPmeA/XAL75syTEiB238jP5TSV9/h03ZKnRFjCQG4eF9WGRJFax/RK3/oU8euUY5+S4+Ivl84oBnjVbyC4Zj1R9nRKY/I4CxCdKY7jQEQr8fM6dgeIY0j3Thxe3kamEkfCiFX2CsT5l/wotDeiMvCzuuZY9zc5jy6PIxnr79qCubXqWJSEloYEbUIVaoS+oYqan7qPZbp9s6jzkTqRn6nIaRBoDHCAdQR/nsW9hmCtXGLisw3bELEFz+NhguQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cdUzK0kNMy+CsRafYa1CK5vShPOjW/jgI6X5DCe1YTw=;
+ b=h5OeDHMZ22w9JUuJ5h+1Sl3mD0mKrGglqRZr+toS/7Ut9Qtu+RB0UdfoMFxtDG+GrolmbGgpoKuaStguG+JPL4VK7GDtWCt6gNAaRbGLI+uKK5+bvqwT23CGE/rHcEzSFhlLKjClZnRZyMOPf5FzmVd6ScCQ5bCUSm9s+mPegyc=
+Received: from MN2PR01CA0048.prod.exchangelabs.com (2603:10b6:208:23f::17) by
+ MN0PR12MB6031.namprd12.prod.outlook.com (2603:10b6:208:3cd::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8445.19; Thu, 20 Feb 2025 08:12:19 +0000
+Received: from BL6PEPF0001AB57.namprd02.prod.outlook.com
+ (2603:10b6:208:23f:cafe::11) by MN2PR01CA0048.outlook.office365.com
+ (2603:10b6:208:23f::17) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8466.16 via Frontend Transport; Thu,
+ 20 Feb 2025 08:12:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ BL6PEPF0001AB57.mail.protection.outlook.com (10.167.241.9) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.8466.11 via Frontend Transport; Thu, 20 Feb 2025 08:12:19 +0000
+Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Feb
+ 2025 02:12:11 -0600
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB05.amd.com
+ (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Feb
+ 2025 02:12:11 -0600
+Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39 via Frontend
+ Transport; Thu, 20 Feb 2025 02:12:09 -0600
+Date: Thu, 20 Feb 2025 09:12:08 +0100
+From: Luc Michel <luc.michel@amd.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+CC: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	<qemu-devel@nongnu.org>, Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+	Rayhan Faizel <rayhan.faizel@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>, Magnus Damm
+	<magnus.damm@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Thomas Huth
+	<huth@tuxfamily.org>, Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
+	<qemu-arm@nongnu.org>
+Subject: Re: [PATCH 2/9] hw/char/pl011: Simplify a bit pl011_can_receive()
+Message-ID: <Z7bj2Dv8uyldHXuB@XFR-LUMICHEL-L2.amd.com>
+References: <20250219210841.94797-1-philmd@linaro.org>
+ <20250219210841.94797-3-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6Qetv8rzuoQA
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250219210841.94797-3-philmd@linaro.org>
+Return-Path: Luc.Michel@amd.com
+Received-SPF: None (SATLEXMB05.amd.com: luc.michel@amd.com does not designate
+ permitted sender hosts)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB57:EE_|MN0PR12MB6031:EE_
+X-MS-Office365-Filtering-Correlation-Id: 404d0592-b9e5-4a58-c64f-08dd51864bed
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|36860700013|376014|7416014|1800799024|82310400026|7053199007;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?R3ZmMStkd2VBMWI3aEowN3hHeS9PMlIvVVV3QmpCTmxUWmtEZFJGeHJMb0xn?=
+ =?utf-8?B?eTNpT3VyNzlMU1pZbGdwa0VwTWhYbHd3aC85NUlDNVE1QlU4MzVWcTg1MHdS?=
+ =?utf-8?B?dExpWEtoMGs2d2JpK2F5TDdLbmUvZXZkamRkTVFhWjV2L2hlNnRPc3Q4emt0?=
+ =?utf-8?B?Nzc2S1gvSXYvQVlQMjRZQlRxaWZ4ZEg2b0NmcGFObGpSTGxxK01ZMVZPUGx4?=
+ =?utf-8?B?TzVwSkc3RXk5N25GZWVRc3JVN3lhSHR4MVV3WGtZYWVMZmFXNW1uSm1pOVZE?=
+ =?utf-8?B?SVBLa2pFd0FnbCtVMGFORDAyYzlsMUpJMkMvNFkzWXh4OUNMRkNBUGJ2VHZI?=
+ =?utf-8?B?UFBWZnZQWkxUVGpwcHJubXg3dE9YTGgvWmhHWWVYQS9IMkNXQUNlVWFLV05Q?=
+ =?utf-8?B?dTRLcmdhODJtR0wyRXJXcStRTUwycEJTZjMyaDNZbytMOEtwUUJkcWxtdEYx?=
+ =?utf-8?B?RnNGbDN4Rm5veXorOWdJNThVWXVKOWs1V2ZBQyt4VEd1UkZMSXJ5d3hodXJR?=
+ =?utf-8?B?ZDRKYVVqNyt5dE8vTm9IU0VjTjVSNlJIa0N4OWFsd3laVkdwN0syUS9wT2pP?=
+ =?utf-8?B?a3l2SnNETmQrY2lJaE83d3VoLzhSa0UrQkdxdmNIU1pHcTlWUnRMcEJrclpy?=
+ =?utf-8?B?OVk5eVdDMkhhemtPQXBkVkJ2K2xjNHRXZ25sNFlROWwyNitJbURMUHliWE83?=
+ =?utf-8?B?alA1RU9XOHZlVTBmNm13dFJkMUxxeFFpZjU2RUs4QndOQ25Id3R6M0FheXFO?=
+ =?utf-8?B?T2Q5aGc5R2d5V3JDWEFSM3dZUEwwZ0JtNWhJZkE4ZUhRSDhTNXF1WkJ1c2ZQ?=
+ =?utf-8?B?aWVoY2tqWHdlSVoyZjM2RC96b29ROWcxYkhhNTlEZS9PZlBYNUpScjMveDdH?=
+ =?utf-8?B?RVM0TW9BaGhHTEZGY0NZRzIxSkc2WnZJSUNvYUI5MVFWSkpna1hmS3FvU1JN?=
+ =?utf-8?B?bmQ1N0FEWjVMc1V3MHVicitkOHlCTlQvK09aem5xS1lTMEhzR0xKRzJPS2Vh?=
+ =?utf-8?B?OC9TeWw5OFhyRTYzYWtaT1NXY1pxcExmc1BzbkpJQmZrSFVOSHBlQVFta1ZI?=
+ =?utf-8?B?M0tWNTQ2ZlF1YkY4VzhocnZHak55d291RFpLTGFIMGFBaTA3Z2ZjaktjbVAv?=
+ =?utf-8?B?NHJUdmJLR1c1RGlpUENic3M0NWV0QlhmS2dCTFhZUnBBcTdpWmtuYmdIUkNp?=
+ =?utf-8?B?alJseG5wdnZRU1lpb0ZMbUpzdSt3dUZEOWhQckY1SkNMMW5GVlA4Q2Y5aEZ0?=
+ =?utf-8?B?TjFINmZ6Uk9IMG5LZ0xOZXpMbDZVZmJVM0JxYUlHSHBCNkdnNnd4aWY4R0I1?=
+ =?utf-8?B?Zng1WHNYeGhqcy82T1FlVWlKbnd3TlRzY1RSMUlGSVBVMHpsQm5Rb0ZnYTlC?=
+ =?utf-8?B?OU1KU1hVZTJ0R1VKdjVLRGRZVGk4eGJWeFFFS0NuQ1RVa0dOQ1B5aGlaeDFn?=
+ =?utf-8?B?TG4raWxSaHI4elFjdlNCeTNaeHBvKy9rV29nZG5lWjFOR1Q1eVoyZVgrMHNN?=
+ =?utf-8?B?L2FzRzVMeTl6TzdmTG1naEs3UEg5S0pnV2Q3NWF0WHlFaXQxdjcrNWJiamZL?=
+ =?utf-8?B?aDRNcjZiUFk0UHlqZldqK3MwL3lCSk92V01OdDdvSjJyTGZzSytPVHQwSmFI?=
+ =?utf-8?B?Z002Ry9Wbzh6SGVqbys5VUlyK0lRQ2s1NHBtVkliWG9sd08wM1lVTGtJMUhQ?=
+ =?utf-8?B?cGcwaWJBWGk3S3Fkak9sTVpyZmk3b1ZDTjJ6TmJ6K2J6RkNiRGpJTmNNVlRE?=
+ =?utf-8?B?ZGxROExveTRiWUlBcDdWS0tVUGpnVFd2VFgyUFRHUE1uM3JOdm9JTm1CdG41?=
+ =?utf-8?B?QjRRaENrM0x2NWpIMGxieDBvaHZRcWc1dFkwOFhOZWVzeEZBcXdXRlAxcWk0?=
+ =?utf-8?B?ZTV0dG5iZ24vM1gwdXdjUFp1RHpMVTlyR29SUVZZMUVVYldDWjNQKzFKRDZq?=
+ =?utf-8?B?R2o3aEtWUmJKajZpUlNCN2tNcTRDSVhFdlJxcVgrSkNONXJFWnhIbHBEeUdi?=
+ =?utf-8?Q?ETdBbnJIw0NMTiVPYHrapo35UrW+wo=3D?=
+X-Forefront-Antispam-Report:
+	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700013)(376014)(7416014)(1800799024)(82310400026)(7053199007);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2025 08:12:19.7351
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 404d0592-b9e5-4a58-c64f-08dd51864bed
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource:
+	BL6PEPF0001AB57.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6031
+X-TUID: 8yrmzMD7USJE
 
+On 22:08 Wed 19 Feb     , Philippe Mathieu-Daudé wrote:
+> Introduce 'fifo_depth' and 'fifo_available' local variables
+> to better express the 'r' variable use.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Reviewed-by: Luc Michel <luc.michel@amd.com>
 
-Am 18=2E Februar 2025 10:33:26 UTC schrieb Peter Maydell <peter=2Emaydell@=
-linaro=2Eorg>:
->On Mon, 17 Feb 2025 at 20:21, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
-e:
->>
->>
->>
->> Am 17=2E Februar 2025 13:35:04 UTC schrieb Peter Maydell <peter=2Emayde=
-ll@linaro=2Eorg>:
->> >On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> wr=
-ote:
->> >>
->> >> While at it and since they are user-creatable, build them when
->> >> CONFIG_I2C_DEVICES is set=2E
->> >
->> >The patch subject says this is just a rearrangement
->> >of the Kconfig stanzas with no behaviour change, but then the
->> >commit message body includes one=2E
->> >
->> >If you want to build these when CONFIG_I2C_DEVICES is set,
->> >that should be its own patch that does that=2E
->> >
->> >(The move of the Kconfig bits to hw/gpio is fixing a bug
->> >in 6328d8ffa6cb9d ("misc/pca955*: Move models under hw/gpio"),
->> >which moved the code but forgot to move the Kconfig sections=2E)
->>
->> Okay, I'll split the patch and use above commit message=2E
->>
->> >
->> >Separately, it's unclear to me how worthwhile it is to add
->> >these to CONFIG_I2C_DEVICES, because they're GPIO devices,
->> >which means there's not much you can do with them as a user:
->> >as far as I know you can't wire the output/input GPIO lines
->> >up to anything=2E We have the device models mainly for boards
->> >which provide them, so that guest code that expects to see
->> >them doesn't fall over on bootup, and because the board
->> >model code does have the APIs to wire up the GPIO lines=2E
->>
->> It's basically to satisfy Linux which will clog the i2c bus if such a G=
-PIO expander is configured in the DTB but missing in the emulation (it will=
- defer probing which will never make progress)=2E Once it is its own patch =
-we can decide separately how to proceed with it, e=2Eg=2E dropping=2E
->
->If Linux wants to see it because it's in the dtb for the
->hardware it sounds like the right answer is that we
->should create it in the board code, which we can do
->without adding it to CONFIG_I2C_DEVICES, because we
->can make the board code's Kconfig do "select PCA9552",
->like the aspeed board does already=2E
+> ---
+>  hw/char/pl011.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index 60cea1d9a16..bcd516d682d 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -486,7 +486,9 @@ static void pl011_write(void *opaque, hwaddr offset,
+>  static int pl011_can_receive(void *opaque)
+>  {
+>      PL011State *s = (PL011State *)opaque;
+> -    int r;
+> +    unsigned fifo_depth = pl011_get_fifo_depth(s);
+> +    unsigned fifo_available = fifo_depth - s->read_count;
+> +    int r = fifo_available ? 1 : 0;
+> 
+>      if (!(s->cr & CR_UARTEN)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "PL011 reading data on disabled UART\n");
+> @@ -494,7 +496,6 @@ static int pl011_can_receive(void *opaque)
+>      if (!(s->cr & CR_RXE)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "PL011 reading data on disabled TX UART\n");
+>      }
+> -    r = s->read_count < pl011_get_fifo_depth(s);
+>      trace_pl011_can_receive(s->lcr, s->read_count, r);
+>      return r;
+>  }
+> --
+> 2.47.1
+> 
 
-These devices are primarily intended for modeling our custom hardware on t=
-he command line, for the purpose explained in [1]=2E While the real imx8mp-=
-evk has a tca6416, I'd rather avoid creating it in board code, even if ther=
-e was a model for it in QEMU=2E The reason is that the machine works fine w=
-ithout it as is, and that omitting hardcoded peripherals seems to increase =
-the utility of the machine because it allows users to customize their machi=
-nes without hardcoded peripherals getting into their way=2E
-
-Since the two device models in this patch work by chance if other machines=
- select them I'm fine with not implying CONFIG_I2C_DEVICES=2E
-
-Best regards,
-Bernhard
-
-[1] https://lore=2Ekernel=2Eorg/qemu-devel/831901E4-69B2-4637-8507-77C7BF4=
-DA65D@gmail=2Ecom/
-
->
->thanks
->-- PMM
+-- 

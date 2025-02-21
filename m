@@ -1,273 +1,257 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp241918njc;
-        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVAO1SOoHUexTngarnUiJpXp+yPxrqk5ErH/UjorA0CJPkCr7H2D17u2o7ZgwomY4yIbmbTD5xvu8dt2w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBN9FNMXT/EpWzX2NL76/F1p9xCKfdwQNk+swNBiyStNrgvxl8RMfGqRZlPC+pAIJAMjQW
-X-Received: by 2002:a05:6808:2f19:b0:3f4:1166:55ff with SMTP id 5614622812f47-3f4246bfd58mr3160629b6e.9.1740140611340;
-        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740140611; cv=pass;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp244301njc;
+        Fri, 21 Feb 2025 04:28:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXbpHcgZBUMee5PmKuIgdDOKMQD8mh5lBbNquqA9VQpV6QGkhdV9QHpvRfjZxHSHXMEUQaqlrcYl4/dDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHh4CJXCHEzYEVPuYQs8WgIKn5AfN8zxxPNRZRANDokyQkyUaCnyzPItjDeHv1hZ4xnvHYo
+X-Received: by 2002:a05:620a:1720:b0:7c0:b0b7:493f with SMTP id af79cd13be357-7c0cef4a486mr492428085a.37.1740140885589;
+        Fri, 21 Feb 2025 04:28:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740140885; cv=none;
         d=google.com; s=arc-20240605;
-        b=EjQ79hwCb4XSE78iSRZD8ukwtofO8U3orML4akxnKYdE7dWpUup9t/r4dQweVocrrP
-         3cCBo8kvgHgkmxnpwQ09uy0CKh0dsJ+AT6aXZ3t4UlAp98Dza0wcTIlG/gbLvDz9/fma
-         GHJ/RwUPHCu7SrcEUZxQ7l9MUnLmO2Jx0/ThzWCBCUPjZxo6Z+Lwv7rmGRmgsHnMwmR+
-         yHrMuITLnKaIPssjAbMIxMcMyJC0J4azHEdSyU9nq56eB4QRV6OBXdW2G8sTfZORCjbu
-         BPwEQ+NFNbmXHCPA83JnMOD5H50EwAfsDJPUBIkTXfxnGOj4FYYcIvaX2AmeSReijNq6
-         HmPA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=xkIEx8WpIJTzKqbsLPsrtOYIqb9areIuTGb0S1aYMI0=;
-        fh=pCIbXjaf9akKytvcDfMg4B9amRWMUfhhrN0tolHakCM=;
-        b=W4RlgQIfOkjCk5Lj40RiCgnBrgk2Yul4LWnTPb5pY8ptqGOTwYDr12zT1C4AjG238T
-         NlIbzx0S6TyG9pN6MZY4jF83Yj2kAQZNEdUHyY4x4CkYb9Jn1pXnbaIaAcxL295Br4B3
-         C8wg4AXYAo9XuIJMj2Wza+qqla2lUijM1mtczAsYjWRWoOxosFJkGtb0+CSBGWHM5yxP
-         NOetKvY8gDE81vM5WEl0hLnFs68t7pBa4NdskfYLa1mtFy64c8iYYqeInOGMpYPw9gXg
-         Vea6efnkC99f2vTfdJRfidbs7OO/+W8s8jqtXqGVyQQDRw5e2jDWEPPnyrEW2KBcxfVC
-         R6sw==;
+        b=f+V1R0u2giRj1mj+iWTVc0Ge280EATBS07mXPmO0PkgsS3eEkyRP67TgyvHnWnGHo/
+         8CzQ8/z09LYmDq5M7kx6oFmRr8W8T5xk3MlA45f6/j8KsjOQ/j4uEYKdBML8qfxgpXOS
+         xWp6CAQzEOvXgUTLWAw+8Pk4CrARKyPu9eT9/LiLj7/dSZUXDG2sfw+TIAG0qHUA9zmz
+         iXUz7gL+OD1NF2qxGNmVKrecsKAR2eDNRgUN9DbAzh+EMH/4el6X1l4B0ZU/CjNPbb+E
+         G5nTNRkRu55xfQ5QimIMhXd8YTWbxDUBpluFERRlWsVAerWxpDPS5gxD5Vd9DwnS/C5U
+         f41A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=EBrAYudfN30eTDxsGlpkwQ5zRuzxrz1/bLUV220VFQI=;
+        fh=gM8cQd+sQwqiIsXSFiZOVfZCpXNcHj+3db18o8VwB+c=;
+        b=B4Vf6lWKiRgQi5lSd7agp3UbAjS6XqTPrSiAbqbaieE7srqH1Yzf09cpK4qob0dcm9
+         TXZ61EM0KGXUnm125h+ErCpyS0UjBfV8t8rR8Qmv2LPlT7ZszNOjknkTMGDzDr3xgfzE
+         Yue9cIyA3U9h07crjD/QG4tu3UC5ipNz4ydoWFAdrj6v8u/ytll5Yv2RQIxzScZhpUvF
+         rePdOAWycqehK1BP4ITvzofrWC3P3MEeoW6nrv2AJ8GSVNyV0K9ypOql05xodJ3cAm7k
+         R8Q6GLZJdoG7iRQ6DS69AnvwCZb+WtNRRN79CZJQ1vnglbK8NYHZT6mHZw+jZ9gsURCV
+         bnYg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=P0qUkaLz;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 5614622812f47-3f3da9f4991si18304853b6e.135.2025.02.21.04.23.31
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aFaFOOaY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c09afab4ebsi953714985a.242.2025.02.21.04.28.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Feb 2025 04:28:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=P0qUkaLz;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id BFD063B71EC
-	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 12:23:21 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EE64620A5C9;
-	Fri, 21 Feb 2025 12:23:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="P0qUkaLz"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A54BF209F2E;
-	Fri, 21 Feb 2025 12:23:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740140605; cv=none; b=bDsn11BGRAfwY9+59Ne6GV5tCx+tjjZnqwVP8emg7CzkZ0PYFJQiU5jW1cIOe80aK3uUbjbVgUMUnN+kS9PtO6WfmtbBxl82BoKKw0SheeJ7bu/sf+dEgo9GJWCJigeJAOAGPG+08Pg00OS4Jptjan4nnKmeWWVZzZP2JVnF7sc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740140605; c=relaxed/simple;
-	bh=NG9gwLahumtvPU8lC1XAWDBxn6rUCBFuxCyUdn7T0Tw=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=CRtwJYcY7z5tqPhjwBrls8wwNi8LSzHjbodUzwAc2NJE6wC4vub1hzWo31LukBs0xKMYsHwFS8azNsTbTlKnTtkX+9GvO2PDeXq/dhx6WxfSFuz8esuJ8VMgUrSL6G3l6losspo1Ml/xkOA/L3ztCBZM5K0O+IqtJzIAi3ZtLcA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=P0qUkaLz; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D0F2C4CED6;
-	Fri, 21 Feb 2025 12:23:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740140605;
-	bh=NG9gwLahumtvPU8lC1XAWDBxn6rUCBFuxCyUdn7T0Tw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=P0qUkaLzDYg8WBIsuC0NUk9BN8lHt8bLN8qIxX7E1+pOKh7ON6ixGqqv370VLvaJ+
-	 my8I+HoMjKxJJ0fWia0QPaB75JhxKBcvOcC1uo8ARtSFksjgx8bRgH53GxPesso0DC
-	 ilxcc3zEs0tYU50hOaKdMCdM4nwAi2gOtKkizfnPKAPAoQYKh08FamolD11PU+Hjga
-	 VgeDV6pQBOfTZqqdFhyrT2w9tX8+4DNudgTtvFtBsYjPBdbd9mNrfwM9xko+8O8buM
-	 AGe6KhVp6X5aEace2xqSagRT3db2NAnRAAjveAQ5cKEZiCnHFnsJ4rIpC15+GHWuHF
-	 k/C81dQ1lFUhw==
-Date: Fri, 21 Feb 2025 13:23:06 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
- =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
- support for error inject
-Message-ID: <20250221132306.77800dbf@sal.lan>
-In-Reply-To: <20250221102127.000059e6@huawei.com>
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
-	<20250203110934.000038d8@huawei.com>
-	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
-	<20250221073823.061a1039@foz.lan>
-	<20250221102127.000059e6@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aFaFOOaY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tlS5U-0002lF-Sl; Fri, 21 Feb 2025 07:25:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tlS5O-0001wc-34
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2025 07:24:54 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tlS5M-0007FX-4y
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2025 07:24:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1740140691;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=EBrAYudfN30eTDxsGlpkwQ5zRuzxrz1/bLUV220VFQI=;
+ b=aFaFOOaYnVj9ULWSk6wGGS7U95lIvEmS8KSRyGx2pvXHVrzaS6Yo+RmQ4tOy6BrlMwxbNm
+ s2eNB+SQX/B9MO2kZQqgfsqYVSQp4ua+Qry9LecimrUI7VjKYaCt+/rvTts/LUzym4yWA0
+ P+JNfASCxTYywNuVl5JRvV57ViM95Cc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-648-ciXNb4qvNFiQmF8UrRAaug-1; Fri, 21 Feb 2025 07:24:50 -0500
+X-MC-Unique: ciXNb4qvNFiQmF8UrRAaug-1
+X-Mimecast-MFC-AGG-ID: ciXNb4qvNFiQmF8UrRAaug_1740140689
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-38f36fcf4b3so1229551f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2025 04:24:50 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740140689; x=1740745489;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EBrAYudfN30eTDxsGlpkwQ5zRuzxrz1/bLUV220VFQI=;
+ b=apGYmHgasVY0ZRJjCjd/aGeSDWABVGUeB7OGd3dCeSVfNMO62hYAq8EKKIlYsLO2c1
+ mwYZSdt6HowDxiW/L8zyvRcNlXovUiPbARzurQFhtgI/AWSc/73CMv26h3zu4yYbo9f7
+ lhIeydHwwyGK14tP50zArso3bFEijp0sZe0QFGFg+RJlTYuxMVkTdNXFCDzaqsWUACTL
+ WAf6JSVByf24j4GF9QTPcfde15mFCVSWJKDwp+AOhRwkiMojO+YPqD1Y9Oz/BDhwBZBi
+ A4cwuy3PflF5O9WN+24ukfPCWgTOQ7FQzzEvJoZ91cRVp2ix5f1bzpsIcry3H9yY2g3p
+ jO8Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXUa31tr+D3yWm3Q3EY9Vu+3Ww01fH1NvOLcEKm3967sXbYGIZyChvGh0fK7Vd4aomvKmsQ+DDD4Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yx6k0ZswQrHRBS2dECD2ENsdLv4dulg2qMqm+MFPr/ELsEfQeNf
+ KUsksGOYNWx9McK3YCn5GEU3QgNWkAAYIFLzpSECWle+UXRTjwMiiYSKU+Ad0mX0oP3Ro8MQW0g
+ jJauFfSUQ3qgrtdOv8wHg2R0IdqQYpmoFalsMYUwc+E6SHkJEiw==
+X-Gm-Gg: ASbGnctFpCxZdB06zciWMVotifUuIYNXhpUYB8X/NQL9iMxe5xcQ3ooUzOebjRNdnya
+ g+uEisfYOYmsyo86dzIcJLXnaK5qIQs8JsuxG4/3Br6fg8zsumkP4cJedmghLbSAMqCXaMUKH/a
+ NhV/eQoCJNlW+D6xdck0W9s2iMVhtCAYTB3nnUcm6EYXbu/emRRLZsKFK7z6SSf+rQw+FCCrTNQ
+ XXvGUvaQ986ksLWiBZFwJZY/BdLlO5Y1cLylTjHYMXKuQDBstz1OJyM7wucewXjlOOD6bjByVV5
+ 8NMM0Q==
+X-Received: by 2002:a05:6000:178d:b0:38f:4263:9d62 with SMTP id
+ ffacd0b85a97d-38f6e9791acmr2815541f8f.27.1740140689047; 
+ Fri, 21 Feb 2025 04:24:49 -0800 (PST)
+X-Received: by 2002:a05:6000:178d:b0:38f:4263:9d62 with SMTP id
+ ffacd0b85a97d-38f6e9791acmr2815517f8f.27.1740140688648; 
+ Fri, 21 Feb 2025 04:24:48 -0800 (PST)
+Received: from redhat.com ([31.187.78.163]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38f259d65dfsm23693257f8f.64.2025.02.21.04.24.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Feb 2025 04:24:48 -0800 (PST)
+Date: Fri, 21 Feb 2025 07:24:45 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 39/41] hw/arm/smmuv3: Move reset to exit phase
+Message-ID: <e39e3f8b8dea856f141e9945167d2b18021ef445.1740140520.git.mst@redhat.com>
+References: <cover.1740140520.git.mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: Mt1RG9LAft09
+In-Reply-To: <cover.1740140520.git.mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 52ojhOAqV9M_JiHV7j4Quckdz3aQYemkZjmv0gpqSqg_1740140689
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.424,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: U8eyC6v88ImD
 
-Em Fri, 21 Feb 2025 10:21:27 +0000
-Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
+From: Eric Auger <eric.auger@redhat.com>
 
-> On Fri, 21 Feb 2025 07:38:23 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > Em Mon, 3 Feb 2025 16:22:36 +0100
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Mon, 3 Feb 2025 11:09:34 +0000
-> > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> > >     
-> > > > On Fri, 31 Jan 2025 18:42:41 +0100
-> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > >       
-> > > > > Now that the ghes preparation patches were merged, let's add support
-> > > > > for error injection.
-> > > > > 
-> > > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
-> > > > > table and hardware_error firmware file, together with its migration code. Migration tested
-> > > > > with both latest QEMU released kernel and upstream, on both directions.
-> > > > > 
-> > > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
-> > > > >    to inject ARM Processor Error records.
-> > > > > 
-> > > > > If I'm counting well, this is the 19th submission of my error inject patches.        
-> > > > 
-> > > > Looks good to me. All remaining trivial things are in the category
-> > > > of things to consider only if you are doing another spin.  The code
-> > > > ends up how I'd like it at the end of the series anyway, just
-> > > > a question of the precise path to that state!      
-> > > 
-> > > if you look at series as a whole it's more or less fine (I guess you
-> > > and me got used to it)
-> > > 
-> > > however if you take it patch by patch (as if you've never seen it)
-> > > ordering is messed up (the same would apply to everyone after a while
-> > > when it's forgotten)
-> > > 
-> > > So I'd strongly suggest to restructure the series (especially 2-6/14).
-> > > re sum up my comments wrt ordering:
-> > > 
-> > > 0  add testcase for HEST table with current HEST as expected blob
-> > >    (currently missing), so that we can be sure that we haven't messed
-> > >    existing tables during refactoring.    
-> 
-> To potentially save time I think Igor is asking that before you do anything
-> at all you plug the existing test hole which is that we don't test HEST
-> at all.   Even after this series I think we don't test HEST. 
+Currently the iommu may be reset before the devices
+it protects. For example this happens with virtio-scsi-pci.
+when system_reset is issued from qmp monitor: spurious
+"virtio: zero sized buffers are not allowed" warnings can
+be observed. This happens because outstanding DMA requests
+are still happening while the SMMU gets reset.
 
-On a previous review (v2, I guess), Igor requested me to do the DSDT
-test just before and after the patch which is actually changing its
-content (patch 11). The HEST table is inside DSDT firmware, and it is
-already tested.
+This can also happen with VFIO devices. In that case
+spurious DMA translation faults can be observed on host.
 
-> You add
-> a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
-> it should be replaced with the example data for the test.
+Make sure the SMMU is reset in the 'exit' phase after
+all DMA capable devices have been reset during the 'enter'
+or 'hold' phase.
 
-This was actually a misinterpretation from my side: patch 10 adds the
-etc/hardware_errors table (mistakenly naming it as HEST), but this
-was never tested. For the next submission, I'll drop etc/hardware_errors
-table from patches 10 and 12.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
 
-> That indeed doesn't address testing the error data storage which would be
-> a different problem.
-> > 
-> > Not sure if I got this one. The HEST table is part of etc/acpi/tables,
-> > which is already tested, as you pointed at the previous reviews. Doing
-> > changes there is already detected. That's basically why we added patches
-> > 10 and 12:
-> > 
-> > 	[PATCH v3 10/14] tests/acpi: virt: allow acpi table changes for a new table: HEST
-> > 	[PATCH v3 12/14] tests/acpi: virt: add a HEST table to aarch64 virt and update DSDT
-> > 
-> > What tests don't have is a check for etc/hardware_errors firmware inside 
-> > tests/data/acpi/aarch64/virt/, but, IMO, we shouldn't add it there.
-> > 
-> > See, hardware_errors table contains only some skeleton space to
-> > store:
-> > 
-> > 	- 1 or more error block address offsets;
-> > 	- 1 or more read ack register;
-> > 	- 1 or more HEST source entries containing CPER blocks.
-> > 
-> > There's nothing there to be actually checked: it is just some
-> > empty spaces with a variable number of fields.
-> > 
-> > With the new code, the actual number of CPER blocks and their
-> > corresponding offsets and read ack registers can be different on 
-> > different architectures. So, for instance, when we add x86 support,
-> > we'll likely start with just one error source entry, while arm will
-> > have two after this changeset.
-> > 
-> > Also, one possibility to address the issues reported by Gavin Shan at
-> > https://lore.kernel.org/qemu-devel/20250214041635.608012-1-gshan@redhat.com/
-> > would be to have one entry per each CPU. So, the size of such firmware
-> > could be dependent on the number of CPUs.
-> > 
-> > So, adding any validation to it would just cause pain and probably
-> > won't detect any problems.  
-> 
-> If we did do this the test would use a fixed number of CPUs so
-> would just verify we didn't break a small number of variants. Useful
-> but to me a follow up to this series not something that needs to
-> be part of it - particularly as Gavin's work may well change that!
+Message-Id: <20250218182737.76722-4-eric.auger@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/arm/smmu-common.c |  9 +++++++--
+ hw/arm/smmuv3.c      | 14 ++++++++++----
+ hw/arm/trace-events  |  1 +
+ 3 files changed, 18 insertions(+), 6 deletions(-)
 
-I don't think that testing etc/hardware_errors would detect any
-regressions. It will just create a test scenario that will require
-constant changes, as adding any entry to HEST would hit it. 
-
-Besides that, I don't think adding support for it would be a simple
-matter of adding another table. See, after this series, there are two 
-different scenarios for the /etc/hardware_errors:
-
-- one with a single GHESv2 entry, for virt-9.2;
-- another one with two GHESv2 entries for virt-10.0 and above that
-  will dynamically change its size (starting from 2) depending on
-  the features we add, and if we'll have one entry per CPU or not.
-
-Right now, the tests there are only for "virt-latest": there's no
-test directory for "virt-9.2". Adding support for virt-legacy will 
-very likely require lots of changes there at the test infrastructure,
-as it will require some virt migration support. 
-
-> > What could be done instead is to have a different type of tests that
-> > would use the error injection script to check if regressions are 
-> > introduced after QEMU 10.0. Such new kind of test would require
-> > this series to be merged first. It would also require the usage of
-> > an OSPM image with some testing tools on it. This is easier said 
-> > than done, as besides the complexity of having an OSPM test image,
-> > such kind of tests would require extra logic, specially if it would
-> > check regressions for SEA and other notification sources.
-> >   
-> Agreed that a more end to end test is even better, but those are
-> quite a bit more complex so definitely a follow up.
-
-Yes, but it could be simpler than modifying ACPI tests to handle
-migration.
-
-The way I see is that such kind of integration could be done by some
-gitlab workflow that would run an error injection script inside a
-pre-defined image emulating both virt-9.2 and virt-latest and checking
-if the HEST tables were properly generated for both SEA and GED
-sources.
-
-This is probably easier for GED, as the QMP interface already
-detects that the read ack register was changed by the OSPM. For
-SEA, it may require either some additional instrumentation or to
-capture OSPM logs.
-
-Anyway, ether way, a change like that is IMO outside the escope of
-this series, as it will require lots of unrelated changes.
-
-Regards,
-Mauro
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index dd74c2e558..8c1b407b82 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -924,7 +924,12 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+     }
+ }
+ 
+-static void smmu_base_reset_hold(Object *obj, ResetType type)
++/*
++ * Make sure the IOMMU is reset in 'exit' phase after
++ * all outstanding DMA requests have been quiesced during
++ * the 'enter' or 'hold' reset phases
++ */
++static void smmu_base_reset_exit(Object *obj, ResetType type)
+ {
+     SMMUState *s = ARM_SMMU(obj);
+ 
+@@ -949,7 +954,7 @@ static void smmu_base_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, smmu_dev_properties);
+     device_class_set_parent_realize(dc, smmu_base_realize,
+                                     &sbc->parent_realize);
+-    rc->phases.hold = smmu_base_reset_hold;
++    rc->phases.exit = smmu_base_reset_exit;
+ }
+ 
+ static const TypeInfo smmu_base_info = {
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index c0cf5df0f6..b49a59b64c 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1870,13 +1870,19 @@ static void smmu_init_irq(SMMUv3State *s, SysBusDevice *dev)
+     }
+ }
+ 
+-static void smmu_reset_hold(Object *obj, ResetType type)
++/*
++ * Make sure the IOMMU is reset in 'exit' phase after
++ * all outstanding DMA requests have been quiesced during
++ * the 'enter' or 'hold' reset phases
++ */
++static void smmu_reset_exit(Object *obj, ResetType type)
+ {
+     SMMUv3State *s = ARM_SMMUV3(obj);
+     SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
+ 
+-    if (c->parent_phases.hold) {
+-        c->parent_phases.hold(obj, type);
++    trace_smmu_reset_exit();
++    if (c->parent_phases.exit) {
++        c->parent_phases.exit(obj, type);
+     }
+ 
+     smmuv3_init_regs(s);
+@@ -1999,7 +2005,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+     SMMUv3Class *c = ARM_SMMUV3_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_smmuv3;
+-    resettable_class_set_parent_phases(rc, NULL, smmu_reset_hold, NULL,
++    resettable_class_set_parent_phases(rc, NULL, NULL, smmu_reset_exit,
+                                        &c->parent_phases);
+     device_class_set_parent_realize(dc, smmu_realize,
+                                     &c->parent_realize);
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index c64ad344bd..7790db780e 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -56,6 +56,7 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
+ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
+ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+ smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
++smmu_reset_exit(void) ""
+ 
+ # strongarm.c
+ strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+-- 
+MST
 

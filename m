@@ -1,339 +1,395 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp348166njc;
-        Fri, 21 Feb 2025 07:06:15 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUETRRDVvUpEzn0DEXCYFovtun/uDxJjKrsLDgSTC+I/DUSoSv+z6jH8DO+nU/9msh1QRvUbACkmVajgw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGctALuQjYQ37HQCoqfaE/DHsu64pki/HpELYvyY0I8rKDM20METQcw8y49xu+DK+2VvTCv
-X-Received: by 2002:ac8:58ce:0:b0:472:2c0:d642 with SMTP id d75a77b69052e-472229272e9mr44799051cf.39.1740150375711;
-        Fri, 21 Feb 2025 07:06:15 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740150375; cv=pass;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp356755njc;
+        Fri, 21 Feb 2025 07:16:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVq4rxlWiEMWQymlJvOW8AxCBOnT5OYZ7c+15IgqLJwS+T7+PMS+VLGjvJ72MQPdDbzpa0hSqifhm0/hA==@linaro.org
+X-Google-Smtp-Source: AGHT+IELIEyi+mqrYhtlliM7Vl1P4p9yHCr4jpmdIXeO7eHTsYxxHcDhywgmb/P+gylhpVKwKg5R
+X-Received: by 2002:a05:620a:1727:b0:7b6:7ac5:5de4 with SMTP id af79cd13be357-7c0cef12f12mr393139785a.29.1740151013685;
+        Fri, 21 Feb 2025 07:16:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740151013; cv=none;
         d=google.com; s=arc-20240605;
-        b=I9jr04bc4VxBHeRKHRY4AwklsbdNLb3eKcxe801MX6BmQDJBsWE4xAfME2Fcuj7/Si
-         n0xYXYHnsZ6PuN5pBXy/zNkUT002XGhIpGVCoD2wv4UMlMLZzh7TqVp6PKDkG0XvePqh
-         g/XAZmGhLLt23gjFobM3A15JU+YEphy0uTHbWhbNJ4dbq/fRGPeXqXMhyTczsi6Ngv+P
-         dw0OYultBsQkZ/Uy1ZTZH9FbPG8m/N33YnA4JLSgiU3BIUuk+fwXPGiyypjUYtAeooL7
-         z15uixcbRVV3B1Rfvd1xsKmbA860NrAAj3tA9Ys25Y263fadJCWpUOIykOZAm53wCD04
-         nyjg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=TU3h8JtcZiQJyJdzw+8nGgE22ocEuArt+47wtE4K1aU=;
-        fh=pCIbXjaf9akKytvcDfMg4B9amRWMUfhhrN0tolHakCM=;
-        b=JHiKhNmoK12bZRPoawDA6+c+haa1qHMOmvyre0JXxdKjvDuq9Gz+W2LVggbmmTDgg+
-         uXL4qDaAj//aVB/l6WLieHa7kxaEkvh2Kq+1K0JsJdtYJX27NjXuLhLGxOGiQrzZ9RQ+
-         LMrHESVMZXh63e85SvJ1dLaCuNX0SYwqM6iQA2qRy6wwNpn3fEs38mZzsh/EAvu81Jy4
-         V3Rqj0FvmlT9bcf4vm0n32HvQ++uRao6Twj+DyGxY1j834iu/zAv8b8xD74hCdl2K3+z
-         M87XLobHQw13aQIwtjC1ZdKa5LJrPoadiFaHEUfJQjfA410HDXvcV+iP1EtNEKdzTF5t
-         Xuow==;
+        b=Bitd8kuVH1q0X7CIUSthaEVxsORCfqZOaMBuu9Pni0YTmTcoQdH1CoKi8KU6qTBfts
+         rSWq5ZAS0lTr7Beq807mDqBWfvuTh8BBNlGIYFPPZ2R1q+TduAmJuyQn0e+O9xNxPcDb
+         c6f8yUT1JXtlNkwEiYY+Y6ZENOVzscqTkdw/iuslRJd09g90S95rSAAMX0a9bKTTbDZz
+         WOGL8P3O6zTkLoavbm0cQApyVHHVUWScnVdhynWwx6RLCpXYmmcMzoMYtTmiVpbnVjn+
+         +RwM0e1+zklEtMrTbw/WFEQ6gJFyCJopxcXs4S1SW4wngQUrmwZWEidXSY1xFfYjblvM
+         aUUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=Q33/rDA/TTddTn7ErTQkGHvc8DSo2fIq2cbITBK/Nlk=;
+        fh=uYgLQ/RASatA36862a0CBA0fRsT+kExSFwR1sQIxk/c=;
+        b=MK67CBssaz7vCPOFymrsLy+uYLKmrLTxNC/mzHgxnQqX3KobceB9hLBrepQWxmyA8a
+         Tkx65jhz64t7JNU4ylRniY3xeO9bCn2R8scbmeIbdH4I8krCm+sJmSHQAwoWa/hTIsvK
+         UjTVuzXIwSIOb8geBKBYuUqMDdsDVmW6xTvYmzpieLUV14J8SzdMNhETpjcbGex6JkHn
+         O57PEBTlpqgIP+9EzEw+3Qcwbdf7+e3yD7PIZYJKUvKqH4nW3ff1/A+JMsT+DijTADHh
+         FICnwYBvXXAhRwAGbDgo/TnbPNZ6nRyq+6WZTnh8K/Ahlr0sNyRxMVwh1/HDjXG+c3vf
+         SW/g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dOFYx0pg;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-471eee523a7si98386191cf.149.2025.02.21.07.06.15
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4be76fec9e2si2042312137.423.2025.02.21.07.16.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Feb 2025 07:06:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Feb 2025 07:16:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dOFYx0pg;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-38855-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 0D713168A3F
-	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 15:06:15 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1D8EB20B7EC;
-	Fri, 21 Feb 2025 15:06:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="dOFYx0pg"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC861208962;
-	Fri, 21 Feb 2025 15:06:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740150367; cv=none; b=Z2JiP+f2xFS9JmOX4M9/1spfrtCjfkQ6+7hbtivVuJnzpyxG3kEDOgN8v/Jj7297OJf7fIb6rF5Od78oHir/vNmnvLSz/32Yhw6JA5O8LHr0cB0m8lNJS3S91i7sdUAhb2ODPhjoByGDd3R2qHlPaIlNWa0EVi2RiR80QVyqFHE=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740150367; c=relaxed/simple;
-	bh=z949hO3MwOXAyFCNa2KF23enIns2zrbW6wuKQGwpDGA=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=utg6fF5EnQteeWxGdikI/VE1GjzVJ5s+MSk6mYNg9e1n9LhPLQ8Phb015v0EO2A0805WtP8G0KCxZkTgORfdyIvJtc9NiqgW7GV3gD+elDkEhyEuXUOyGTHRqZyZ3dHCJI8MfEz4EPfGJIkw5H3Vf7kZp/wvs+XdJ4yN7l/A6q8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=dOFYx0pg; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D99FC4CED6;
-	Fri, 21 Feb 2025 15:06:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740150367;
-	bh=z949hO3MwOXAyFCNa2KF23enIns2zrbW6wuKQGwpDGA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=dOFYx0pgtFeJmTDUukXY6GQOXqGl42lq6X+gMyonqBl7FP/gI2aE7zyqxwN4APq6h
-	 efrKTQV+HKkN3efyqi6hxldj2F7rjr0EkRw7oaZK6JzvA/JiV4P7Bj8byzy1fGfCdD
-	 ed5jCTOWU8OUlPSHlcha20IJR2ag4JxtU3kLWzFAVnirVJlhycVVgJncDfEqFPqbtY
-	 iXPYRp1lkIxi84zpv3yiQDORVzRqo6J0dg1idG7DlkAVYRTJtqEjlizqIFo/k/snA6
-	 kqmihHXgKf7btUIGuChUjsAz0/f1X9yG59Jwb/IFb5qNUVtAYahtOmI9FB5lRXTS3C
-	 o/q4eQhxcYLvg==
-Date: Fri, 21 Feb 2025 16:05:59 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
- =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
- support for error inject
-Message-ID: <20250221160530.020f6cec@foz.lan>
-In-Reply-To: <20250221132306.77800dbf@sal.lan>
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
-	<20250203110934.000038d8@huawei.com>
-	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
-	<20250221073823.061a1039@foz.lan>
-	<20250221102127.000059e6@huawei.com>
-	<20250221132306.77800dbf@sal.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tlUlK-0005uf-Lx; Fri, 21 Feb 2025 10:16:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
+ id 1tlUl7-0005rt-ET; Fri, 21 Feb 2025 10:16:10 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
+ id 1tlUl4-00045l-SQ; Fri, 21 Feb 2025 10:16:09 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YztxX4RyQz4wy6;
+ Sat, 22 Feb 2025 02:16:00 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YztxS6kT0z4wbR;
+ Sat, 22 Feb 2025 02:15:54 +1100 (AEDT)
+Message-ID: <642b1b3d-c73d-450b-b45e-21bc7bb51d31@kaod.org>
+Date: Fri, 21 Feb 2025 16:15:50 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/28] hw/intc/aspeed: Support setting different memory
+ and register size
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
+ <20250213033531.3367697-2-jamin_lin@aspeedtech.com>
+ <d770b173-c9e8-46b0-9c36-4f3fd3005d92@kaod.org>
+ <SI2PR06MB5041068E28CC4DD8CFA24854FCC42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB5041068E28CC4DD8CFA24854FCC42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: sEgtyMF9DvD/
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dl6UmAQNdsYZ
 
-Em Fri, 21 Feb 2025 13:23:06 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
-
-> Em Fri, 21 Feb 2025 10:21:27 +0000
-> Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
+On 2/20/25 06:45, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> > On Fri, 21 Feb 2025 07:38:23 +0100
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > Em Mon, 3 Feb 2025 16:22:36 +0100
-> > > Igor Mammedov <imammedo@redhat.com> escreveu:
-> > >     
-> > > > On Mon, 3 Feb 2025 11:09:34 +0000
-> > > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> > > >       
-> > > > > On Fri, 31 Jan 2025 18:42:41 +0100
-> > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > > >         
-> > > > > > Now that the ghes preparation patches were merged, let's add support
-> > > > > > for error injection.
-> > > > > > 
-> > > > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
-> > > > > > table and hardware_error firmware file, together with its migration code. Migration tested
-> > > > > > with both latest QEMU released kernel and upstream, on both directions.
-> > > > > > 
-> > > > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
-> > > > > >    to inject ARM Processor Error records.
-> > > > > > 
-> > > > > > If I'm counting well, this is the 19th submission of my error inject patches.          
-> > > > > 
-> > > > > Looks good to me. All remaining trivial things are in the category
-> > > > > of things to consider only if you are doing another spin.  The code
-> > > > > ends up how I'd like it at the end of the series anyway, just
-> > > > > a question of the precise path to that state!        
-> > > > 
-> > > > if you look at series as a whole it's more or less fine (I guess you
-> > > > and me got used to it)
-> > > > 
-> > > > however if you take it patch by patch (as if you've never seen it)
-> > > > ordering is messed up (the same would apply to everyone after a while
-> > > > when it's forgotten)
-> > > > 
-> > > > So I'd strongly suggest to restructure the series (especially 2-6/14).
-> > > > re sum up my comments wrt ordering:
-> > > > 
-> > > > 0  add testcase for HEST table with current HEST as expected blob
-> > > >    (currently missing), so that we can be sure that we haven't messed
-> > > >    existing tables during refactoring.      
-> > 
-> > To potentially save time I think Igor is asking that before you do anything
-> > at all you plug the existing test hole which is that we don't test HEST
-> > at all.   Even after this series I think we don't test HEST.   
+>> Subject: Re: [PATCH v3 01/28] hw/intc/aspeed: Support setting different
+>> memory and register size
+>>
+>> Hello Jamin,
+>>
+>> On 2/13/25 04:35, Jamin Lin wrote:
+>>> According to the AST2700 datasheet, the INTC(CPU DIE) controller has
+>>> 16KB
+>>> (0x4000) of register space, and the INTCIO (I/O DIE) controller has
+>>> 1KB (0x400) of register space.
+>>>
+>>> Introduced a new class attribute "mem_size" to set different memory
+>>> sizes for the INTC models in AST2700.
+>>>
+>>> Introduced a new class attribute "reg_size" to set different register
+>>> sizes for the INTC models in AST2700.
+>>
+>> Shouldn't that be multiple patches ?
+>>
 > 
-> On a previous review (v2, I guess), Igor requested me to do the DSDT
-> test just before and after the patch which is actually changing its
-> content (patch 11). The HEST table is inside DSDT firmware, and it is
-> already tested.
+> I will add one patch for reg_size and another for mem_size.
 > 
-> > You add
-> > a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
-> > it should be replaced with the example data for the test.  
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>    hw/intc/aspeed_intc.c         | 17 +++++++++++++----
+>>>    include/hw/intc/aspeed_intc.h |  4 ++++
+>>>    2 files changed, 17 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c index
+>>> 126b711b94..316885a27a 100644
+>>> --- a/hw/intc/aspeed_intc.c
+>>> +++ b/hw/intc/aspeed_intc.c
+>>> @@ -117,10 +117,11 @@ static void aspeed_intc_set_irq(void *opaque, int
+>> irq, int level)
+>>>    static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned
+>> int size)
+>>>    {
+>>>        AspeedINTCState *s = ASPEED_INTC(opaque);
+>>> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+>>>        uint32_t addr = offset >> 2;
+>>>        uint32_t value = 0;
+>>>
+>>> -    if (addr >= ASPEED_INTC_NR_REGS) {
+>>
+>> Side note, ASPEED_INTC_NR_REGS is defined as
+>>
+>>     #define ASPEED_INTC_NR_REGS (0x2000 >> 2)
+>>
+>> and the register array as:
+>>
+>>     uint32_t regs[ASPEED_INTC_NR_REGS];
+>>
+>> The number of regs looks pretty big for me. Are the registers covering the
+>> whole MMIO aperture ?
+>>
+> According to the datasheet, the entire register address space size of INTC (CPU DIE) is 16KB
+> (0x12100000-0x12103FFF). Therefore, I set the memory size to 0x4000.
+> Currently, we need to use the "GICINT192-201 raw status and clear" register INTC1B04.
+> Thus, an array size of 0x2000 is sufficient.
+
+yes but we are only using these regs :
+
+REG32(GICINT128_EN,         0x1000)
+REG32(GICINT128_STATUS,     0x1004)
+REG32(GICINT129_EN,         0x1100)
+REG32(GICINT129_STATUS,     0x1104)
+REG32(GICINT130_EN,         0x1200)
+REG32(GICINT130_STATUS,     0x1204)
+REG32(GICINT131_EN,         0x1300)
+REG32(GICINT131_STATUS,     0x1304)
+REG32(GICINT132_EN,         0x1400)
+REG32(GICINT132_STATUS,     0x1404)
+REG32(GICINT133_EN,         0x1500)
+REG32(GICINT133_STATUS,     0x1504)
+REG32(GICINT134_EN,         0x1600)
+REG32(GICINT134_STATUS,     0x1604)
+REG32(GICINT135_EN,         0x1700)
+REG32(GICINT135_STATUS,     0x1704)
+REG32(GICINT136_EN,         0x1800)
+REG32(GICINT136_STATUS,     0x1804)
+REG32(GICINT192_201_EN,         0x1B00)
+REG32(GICINT192_201_STATUS,     0x1B04)
+
+so the first 0x1000 are unused.
+
+
 > 
-> This was actually a misinterpretation from my side: patch 10 adds the
-> etc/hardware_errors table (mistakenly naming it as HEST), but this
-> was never tested. For the next submission, I'll drop etc/hardware_errors
-> table from patches 10 and 12.
+> However, we are going to increase the size to 0x3000 to support the co-processors SSP and TSP
+> In the another patch series.
+> We also need to include the following register definitions:
 > 
-> > That indeed doesn't address testing the error data storage which would be
-> > a different problem.  
-> > > 
-> > > Not sure if I got this one. The HEST table is part of etc/acpi/tables,
-> > > which is already tested, as you pointed at the previous reviews. Doing
-> > > changes there is already detected. That's basically why we added patches
-> > > 10 and 12:
-> > > 
-> > > 	[PATCH v3 10/14] tests/acpi: virt: allow acpi table changes for a new table: HEST
-> > > 	[PATCH v3 12/14] tests/acpi: virt: add a HEST table to aarch64 virt and update DSDT
-> > > 
-> > > What tests don't have is a check for etc/hardware_errors firmware inside 
-> > > tests/data/acpi/aarch64/virt/, but, IMO, we shouldn't add it there.
-> > > 
-> > > See, hardware_errors table contains only some skeleton space to
-> > > store:
-> > > 
-> > > 	- 1 or more error block address offsets;
-> > > 	- 1 or more read ack register;
-> > > 	- 1 or more HEST source entries containing CPER blocks.
-> > > 
-> > > There's nothing there to be actually checked: it is just some
-> > > empty spaces with a variable number of fields.
-> > > 
-> > > With the new code, the actual number of CPER blocks and their
-> > > corresponding offsets and read ack registers can be different on 
-> > > different architectures. So, for instance, when we add x86 support,
-> > > we'll likely start with just one error source entry, while arm will
-> > > have two after this changeset.
-> > > 
-> > > Also, one possibility to address the issues reported by Gavin Shan at
-> > > https://lore.kernel.org/qemu-devel/20250214041635.608012-1-gshan@redhat.com/
-> > > would be to have one entry per each CPU. So, the size of such firmware
-> > > could be dependent on the number of CPUs.
-> > > 
-> > > So, adding any validation to it would just cause pain and probably
-> > > won't detect any problems.    
-> > 
-> > If we did do this the test would use a fixed number of CPUs so
-> > would just verify we didn't break a small number of variants. Useful
-> > but to me a follow up to this series not something that needs to
-> > be part of it - particularly as Gavin's work may well change that!  
+> /* SSP INTC Registers */
+> REG32(SSPINT128_EN,             0x2000)
+> REG32(SSPINT128_STATUS,         0x2004)
+> REG32(SSPINT129_EN,             0x2100)
+> REG32(SSPINT129_STATUS,         0x2104)
+> REG32(SSPINT130_EN,             0x2200)
+> REG32(SSPINT130_STATUS,         0x2204)
+> REG32(SSPINT131_EN,             0x2300)
+> REG32(SSPINT131_STATUS,         0x2304)
+> REG32(SSPINT132_EN,             0x2400)
+> REG32(SSPINT132_STATUS,         0x2404)
+> REG32(SSPINT133_EN,             0x2500)
+> REG32(SSPINT133_STATUS,         0x2504)
+> REG32(SSPINT134_EN,             0x2600)
+> REG32(SSPINT134_STATUS,         0x2604)
+> REG32(SSPINT135_EN,             0x2700)
+> REG32(SSPINT135_STATUS,         0x2704)
+> REG32(SSPINT136_EN,             0x2800)
+> REG32(SSPINT136_STATUS,         0x2804)
+> REG32(SSPINT137_EN,             0x2900)
+> REG32(SSPINT137_STATUS,         0x2904)
+> REG32(SSPINT138_EN,             0x2A00)
+> REG32(SSPINT138_STATUS,         0x2A04)
+> REG32(SSPINT160_169_EN,         0x2B00)
+> REG32(SSPINT160_169_STATUS,     0x2B04)
 > 
-> I don't think that testing etc/hardware_errors would detect any
-> regressions. It will just create a test scenario that will require
-> constant changes, as adding any entry to HEST would hit it. 
-
-Btw, there is just one patch on this series touching 
-etc/hardware_errors:
-
-	https://lore.kernel.org/qemu-devel/647f9c974e606924b6b881a83e047d1d4dff47d5.1740148260.git.mchehab+huawei@kernel.org/T/#u
-
-The table change is due to this simple hunk:
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 4f174795ed60..7b6e90d69298 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -896,6 +896,7 @@ static void acpi_align_size(GArray *blob, unsigned align)
- 
- static const AcpiNotificationSourceId hest_ghes_notify[] = {
-     { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-+    { ACPI_HEST_SRC_ID_QMP, ACPI_GHES_NOTIFY_GPIO },
- };
-
-
-Before such patch, /etc/hardware_errors has:
-
-	- 1 error block offset;
-	- 1 ack register;
-	- 1 GHESv2 entry for SEA
-
-After the change:
-
-- for virt-9.2: nothing changes, as hw/arm/virt-acpi-build.c will
-  use the backward-compatible table with a single entry to be
-  added to HEST:
-
-	static const AcpiNotificationSourceId hest_ghes_notify_9_2[] = {
-	    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-	};
-
-- for virt-latest/virt-10.0, it will use the new table to create two
-  sources:
-
-	static const AcpiNotificationSourceId hest_ghes_notify[] = {
-	    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-	    { ACPI_HEST_SRC_ID_QMP, ACPI_GHES_NOTIFY_GPIO },
-	};
-
-  which will actually mean that /etc/hardware_errors will now have:
-
-	- 2 error block offsets (one for SEA, one for GED);
-	- 2 ack registers (one for SEA, one for GED);
-	- 1 GHESv2 entry for SEA notifier;
-	- 1 GHESv2 entry for GED GPIO notifier.
-
-With the discussions with Gavin, for virt-10.0 and above, we may end changing 
-the new table (hest_ghes_notify) to have one SEA entry per CPU, plus the GPIO 
-one, and add an extra logic at the error injection logic to select the SEA
-entry based on the CPU ID and/or based on having an already acked
-SEA notifier.
- 
+>>
+>>> +    if (offset >= aic->reg_size) {
+>>
+>> This is dead code since the MMIO aperture has the same size. You could
+>> remove the check.
 > 
-> Besides that, I don't think adding support for it would be a simple
-> matter of adding another table. See, after this series, there are two 
-> different scenarios for the /etc/hardware_errors:
+> Will remove.
+>>
+>>>            qemu_log_mask(LOG_GUEST_ERROR,
+>>>                          "%s: Out-of-bounds read at offset 0x%"
+>> HWADDR_PRIx "\n",
+>>>                          __func__, offset); @@ -143,7 +144,7 @@
+>> static
+>>> void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>>>        uint32_t change;
+>>>        uint32_t irq;
+>>>
+>>> -    if (addr >= ASPEED_INTC_NR_REGS) {
+>>> +    if (offset >= aic->reg_size) {
+>>>            qemu_log_mask(LOG_GUEST_ERROR,
+>>>                          "%s: Out-of-bounds write at offset 0x%"
+>> HWADDR_PRIx "\n",
+>>>                          __func__, offset); @@ -302,10 +303,16 @@
+>>> static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+>>>        AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+>>>        int i;
+>>>
+>>> +    memory_region_init(&s->iomem_container, OBJECT(s),
+>>> +            TYPE_ASPEED_INTC ".container", aic->mem_size);
+>>> +
+>>> +    sysbus_init_mmio(sbd, &s->iomem_container);
+>>
+>> Why introduce a container ? Do you plan to have multiple sub-regions ?
+>>
+> I created a container to save the entire register address space of INTC and its sub-region to place the
+> actual used register address space.
+> 0000000012100000-0000000012103fff (prio 0, i/o): aspeed.intc.container
+>        0000000012100000-0000000012101fff (prio 0, i/o): aspeed.intc.regs
+> 0000000014c18000-0000000014c183ff (prio 0, i/o): aspeed.intc.container
+>        0000000014c18000-0000000014c183d7 (prio 0, i/o): aspeed.intc.regs
 > 
-> - one with a single GHESv2 entry, for virt-9.2;
-> - another one with two GHESv2 entries for virt-10.0 and above that
->   will dynamically change its size (starting from 2) depending on
->   the features we add, and if we'll have one entry per CPU or not.
-> 
-> Right now, the tests there are only for "virt-latest": there's no
-> test directory for "virt-9.2". Adding support for virt-legacy will 
-> very likely require lots of changes there at the test infrastructure,
-> as it will require some virt migration support. 
-> 
-> > > What could be done instead is to have a different type of tests that
-> > > would use the error injection script to check if regressions are 
-> > > introduced after QEMU 10.0. Such new kind of test would require
-> > > this series to be merged first. It would also require the usage of
-> > > an OSPM image with some testing tools on it. This is easier said 
-> > > than done, as besides the complexity of having an OSPM test image,
-> > > such kind of tests would require extra logic, specially if it would
-> > > check regressions for SEA and other notification sources.
-> > >     
-> > Agreed that a more end to end test is even better, but those are
-> > quite a bit more complex so definitely a follow up.  
-> 
-> Yes, but it could be simpler than modifying ACPI tests to handle
-> migration.
-> 
-> The way I see is that such kind of integration could be done by some
-> gitlab workflow that would run an error injection script inside a
-> pre-defined image emulating both virt-9.2 and virt-latest and checking
-> if the HEST tables were properly generated for both SEA and GED
-> sources.
-> 
-> This is probably easier for GED, as the QMP interface already
-> detects that the read ack register was changed by the OSPM. For
-> SEA, it may require either some additional instrumentation or to
-> capture OSPM logs.
-> 
-> Anyway, ether way, a change like that is IMO outside the escope of
-> this series, as it will require lots of unrelated changes.
-> 
-> Regards,
-> Mauro
-> 
+> If I misunderstood this design, I will change it to have two memory regions for INTC and INTCIO, respectively.
+> If need, I will change to the following memory regions.  --> it removes containers.
+>        0000000012100000-0000000012101fff (prio 0, i/o): aspeed.intc.regs
+>        0000000014c18000-0000000014c183d7 (prio 0, i/o): aspeed.intc.regs
 
+I don't think the region container is useful in that case since there is
+only a single region per model.
+
+However, we could "optimize" a bit the MMIO apertures to avoid mapping
+huge unused gaps and only map the useful set of registers :
+
+   INTC Registers      [ 0x1000 - 0x1B04 ]
+   SSP INTC Registers  [ 0x2000 - 0x2B04 ]
+   INTCIO Registers    [ 0x0100 - 0x0154 ]
+
+Each set would be associated with a subregion which would be mapped at
+the right offset in the region container.
+
+This is just a suggestion.
 
 
 Thanks,
-Mauro
+
+C.
+
+
+
+> Do you expect the above memory regions for INTC?
+> 
+> Thanks for your review and suggestion.
+> Jamin
+>>
+>> Thanks,
+>>
+>> C.
+>>
+>>
+>>
+>>> +
+>>>        memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops,
+>> s,
+>>> -                          TYPE_ASPEED_INTC ".regs",
+>> ASPEED_INTC_NR_REGS << 2);
+>>> +                          TYPE_ASPEED_INTC ".regs", aic->reg_size);
+>>> +
+>>> +    memory_region_add_subregion(&s->iomem_container, 0x0,
+>> &s->iomem);
+>>>
+>>> -    sysbus_init_mmio(sbd, &s->iomem);
+>>>        qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_ints);
+>>>
+>>>        for (i = 0; i < aic->num_ints; i++) { @@ -344,6 +351,8 @@ static
+>>> void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+>>>        dc->desc = "ASPEED 2700 INTC Controller";
+>>>        aic->num_lines = 32;
+>>>        aic->num_ints = 9;
+>>> +    aic->mem_size = 0x4000;
+>>> +    aic->reg_size = 0x2000;
+>>>    }
+>>>
+>>>    static const TypeInfo aspeed_2700_intc_info = { diff --git
+>>> a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h index
+>>> 18cb43476c..ecaeb15aea 100644
+>>> --- a/include/hw/intc/aspeed_intc.h
+>>> +++ b/include/hw/intc/aspeed_intc.h
+>>> @@ -25,6 +25,8 @@ struct AspeedINTCState {
+>>>
+>>>        /*< public >*/
+>>>        MemoryRegion iomem;
+>>> +    MemoryRegion iomem_container;
+>>> +
+>>>        uint32_t regs[ASPEED_INTC_NR_REGS];
+>>>        OrIRQState orgates[ASPEED_INTC_NR_INTS];
+>>>        qemu_irq output_pins[ASPEED_INTC_NR_INTS]; @@ -39,6 +41,8 @@
+>>> struct AspeedINTCClass {
+>>>
+>>>        uint32_t num_lines;
+>>>        uint32_t num_ints;
+>>> +    uint64_t mem_size;
+>>> +    uint64_t reg_size;
+>>>    };
+>>>
+>>>    #endif /* ASPEED_INTC_H */
+> 
+

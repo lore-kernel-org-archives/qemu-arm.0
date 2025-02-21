@@ -1,86 +1,86 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp327296njc;
-        Fri, 21 Feb 2025 06:35:43 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVg1fK5fDVbnpuCv54NdoDvu0B7i44QBpXhnCcaBfGwD0SZGkApm7NUbQ+WwAElVdOoD4bxXeF4eRFayQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZ98InPVV9Kyr8BvPKcABwLsuqlXRstQroGmEtbHxIKLnrjoK09RRTDuDkqGx0dXOLbJCr
-X-Received: by 2002:a05:620a:260b:b0:7c0:b1aa:ba49 with SMTP id af79cd13be357-7c0cf8eb137mr435775885a.30.1740148543499;
-        Fri, 21 Feb 2025 06:35:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740148543; cv=pass;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp327300njc;
+        Fri, 21 Feb 2025 06:35:44 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCX/YJgqKf9SVwbHQz18VDlD4WdE/fZ+c3XZm/Cooa32v6f7Aro1OO8sZi9wkoJa4s7yuLjwhYsvrGLsgA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6aXccDH7eRkk9tMNsC6nxOT3WOuVd9NDF9W4RRsKWfIjO4k6l5Bo+xWM/6Gn4IKY49vnl
+X-Received: by 2002:ac8:7d0e:0:b0:472:1d98:c6df with SMTP id d75a77b69052e-4722490931fmr45106881cf.52.1740148544282;
+        Fri, 21 Feb 2025 06:35:44 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740148544; cv=pass;
         d=google.com; s=arc-20240605;
-        b=JXbwaDoCaw1cDwnJvTPh4yer1nqGWT5lWJYrbtfnrmH39Lg2wrPVPf+dtHir8GjRxQ
-         Cpf/XQEs5dWo+VGpP0q+1MaTb8eRGAdBecrfVrhR6RHfJcVh+CQETRvz/QkYMrWBnS6n
-         CjKj/5rzUwYM02grK2o6G5aY6/vEsMCtCtQ1ITXDsW6QQT75qcSJH+KYLLpCr8J+ndwW
-         3eGrtd4cy/hrie40bBG2usMu2V8b3gJlxohwKwsW+MB2v7ECZYwl3gbQmfwE/4HsRxf3
-         tdkYGPxA2wDM7Psu+Jcpz9tZZi14eL4q/M4mH4Jx4oXkPbtbCpYXbdYZzDggSOQIdRoc
-         NN4Q==
+        b=B5ttuSjXsHHeFKJ11OewdzVGwyhxGF+TDzzjKjqiPPTYSRzpGGurMJfObrvkGsiwP+
+         JZvQDBtCWJCuvcAmglKwr5eBISX4xCrGsOAJeUaRrbX5Ka6Bw0EAd4uf0iMst1eWuNUA
+         3uv7Umf3/Adf5hoWrHsk4ipnGJ6DE+FH0KsuYj5uTfsnGeiMF6tYXJJQV6i4Fn9IcxOG
+         MFfD+U3C76f4lH18YHiWTN3YD55MRdXr/c6AZ75yW2bbUQaRFWh//tGdCkBqVkt9dDvp
+         DQu+oZnZTpez/OLXo970d2apaxFTf0HR3o3IEkmBOWN1ISHInZLV6o4EUcVbmxzXcP+r
+         vlew==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=n7It3CyShOyPipEfY54lTuYKn/o95zLFTuoCGylu40Q=;
-        fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
-        b=GZTy793/1538XV2whYk3Cz9GDw63E1qpZXffrsLEfZ+ZeV5xBljF0qjWXXDhBHQwh2
-         HH2azPbIXgwhm5S8Y31T2zmXjMn6+H615fxfp17FlJisRgE79Uavw1rItHEYYzfOyrs0
-         HPnGJtDyOCNYm/d8K+dXqvpvG9czyttwaXZw+jLqU0PzSFUNri1kFHHljiScw5E5cZHc
-         6pS+tyYWNdju3WxlDlQKNwZgATdqcWLdxDgmdF4JnP6NgI3m27MO67jmADAJbjm5CSMB
-         NpxRnK+6lvYT5lBQOgmcA8YY4VCbxsCm4YvrhkeAWkXBdNycyK8GeUwDnlPQiFcIywEA
-         DyfQ==;
+        bh=iFkoPo8unJoPw/iAo3owD11F4AOetBjtdH0pgzkZcIs=;
+        fh=M7BIFN6MARWKkWyrZnacp989sIldlEKVCOu1j14z3wo=;
+        b=Ni6C4JqQ+XPwhrtwXZF+EOjo1pra67Qd0FUMjfGHYe6pZ9NKvPSJFxMZX7W6nOC+qP
+         /uZUWw9/WAyoUYRakZUVzasY1+c0AFc/3zTm2zuI3U8XZ8fKuPO28SDM4V9/1bScw41w
+         LXfO33PFtJ6yaKhmEbVjd0K+5lDsdOw7cyyMFiezpnUZwXZacSUMwXPlXW9nAYwrimqZ
+         zS7nusjJaDIHfKMWRlnXIvlz7IJ1M5QtveFgfnIxqyG6qcTwvi/1T1ij4wm8taSMMCNF
+         R52HfBJnYL/9KbGu83T92l6mTBY/S8Wod0771OORuhtiiSO9M8TaWLVUqheFA6Qisi4y
+         fl2Q==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=X7bcyQ1Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Af9UKcJu;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org>
 Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0bf0757easi397751785a.143.2025.02.21.06.35.43
+        by mx.google.com with ESMTPS id d75a77b69052e-471f0c61219si95265841cf.501.2025.02.21.06.35.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Feb 2025 06:35:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Fri, 21 Feb 2025 06:35:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=X7bcyQ1Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Af9UKcJu;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525918-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525919-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AFC0C179D37
-	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 14:35:42 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9A65F174253
+	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 14:35:43 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4C8C920FAB7;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 55C4120FABA;
 	Fri, 21 Feb 2025 14:35:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="X7bcyQ1Y"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Af9UKcJu"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0126020B7E0
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 012BA20D4E4
 	for <linux-kernel@vger.kernel.org>; Fri, 21 Feb 2025 14:35:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740148536; cv=none; b=AscPyrFq85ojsEmO1w9CYH8b8w6CHKeQGXvDHQXWp+cegGLotWBU1C3OxzmyWfdpDXs5quESekb84f7aOTWuXJJ4m6Uy8P9Uao7u7nQ8rhiZGTXA+VElwJptzMHOf5bVV7LZ0PzP8oinO+iEbB7JJeXEsjD7TMlkGzOBYGh5ZDs=
+	t=1740148536; cv=none; b=ArFWwBSVtc3DDdYl7cKpUkyNbbhSqcTXYsEz9RLRGG7TxZI0038ZPBXmGCIk8daWEasgsAJObnBOx2Fe7wMEPlkWXBM7TGev6uok0k5lsIIGXVTeBYEnyZngwJat0ettCl+Lqsu2Lqg9BIp+cMLBd9pIjtiRhiHuD67OAWZhyUU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1740148536; c=relaxed/simple;
-	bh=iTWv02XduxVTJBka8dnzXbJmi4AP+/5iq3KOXWgtlpA=;
+	bh=pzXHCfCjh+mWYwhpCslFOQSI+EmLcxETX3FcgrxN5mg=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=JOzu/hJqbXJuqintNw/OkALzNCTVSm+/CVwS267qO3wjGVq7vFECvLYmk5mb5IGpsPaUcmPhSOu6QeI2rdojsuVNcozF0blENr/AEMHgDMOghbbJO92RVcW27W4NnrI0yq22w44/HS8P3236kwRf4HUVRrk6PWtnVwhDTU7SpxA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=X7bcyQ1Y; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EA19C4CEEA;
+	 MIME-Version; b=n0+j/+DlS7vsk7Z0NyVXU7vl6NBXWiMVff/qh65CkoR3TEu4tOkghjOUjkeDPaZlivZ1Sq1uhBBggfWJHkRYpRAcWi4B7wsi4ClloCJ18j6I7UyAM6lHfz6vTrzKnhG01nHSvFReBDt4vIQMAVDkWMfRtkdj+ETtrz34b+o6Bag=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Af9UKcJu; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B6E6C4CEE4;
 	Fri, 21 Feb 2025 14:35:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1740148535;
-	bh=iTWv02XduxVTJBka8dnzXbJmi4AP+/5iq3KOXWgtlpA=;
+	bh=pzXHCfCjh+mWYwhpCslFOQSI+EmLcxETX3FcgrxN5mg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X7bcyQ1YtblJ+YJ9tTP3udPUCcSgHwi1j0roGx5Ktn3GxnFzPzt9a3VaxdCqaWWxB
-	 NmKI+eX3EAhsnaNZrNilWcaHZoP4/CujqAt83pycSFvHSEtmilMb0lMkH8u+JZoHxd
-	 0Cklsogm1PIaU0+qdjcE9i8mp/GudI5EsqGMSSeCGVIGYK/taj5t4EePGVbtKXY5DR
-	 l2jE4CcC4eQvu0t26/tKPMrR4kj/c/W4Y/VsYEP5g8FVRDAFe2pqmomtg5JZysobfZ
-	 OohnqunpQ89f4uVbtsE4Mgtj0q/N9dZE3ebTB9GE83qtYk9ikPGFNBT7VMDcyhGWKw
-	 Qg1Tut6CWLfCg==
+	b=Af9UKcJuSFoZDPBO6Q98XEdVaBdYd2ePnlUA2RN7EipKTbDxwkjsTMCcwh4+zuXnW
+	 EbOvnjO8yiyumYKQYavB2BD9lA4B/JVI9ZQlLdSRkOGQNVewFVbLkgLXuxDeJMqe6o
+	 eG7p7ZlsZVO5dszftcueSSkEIVO0KdjFsCpOYetzlJTetQnxfruN2xyvT2vqTEEuKy
+	 8ob5ufhif7SR7JWY/YxDkhKh3MgZZ2d4SfZtMedC/tpky7NPuV3+NinVvkc0oGpNzq
+	 y4+drOdat/EtmGE7ek4V/m2dQqP8zb0cZ07XAsC36Xyr+h6dEywtM/VnKMTTJfXE2j
+	 ofBrGs2XtXOyQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
 	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tlU7m-00000002jE7-3NdA;
+	id 1tlU7m-00000002jDb-2SCb;
 	Fri, 21 Feb 2025 15:35:30 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>,
@@ -91,10 +91,13 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 	qemu-devel@nongnu.org,
 	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
 	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 09/14] acpi/generic_event_device: add an APEI error device
-Date: Fri, 21 Feb 2025 15:35:18 +0100
-Message-ID: <d283203f6fc5efdd413f66397ccaf4b6549bd8c3.1740148260.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 01/14] acpi/ghes: prepare to change the way HEST offsets are calculated
+Date: Fri, 21 Feb 2025 15:35:10 +0100
+Message-ID: <9eeaabf88e7ddc4884633702b7bc419075975bc8.1740148260.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <cover.1740148260.git.mchehab+huawei@kernel.org>
 References: <cover.1740148260.git.mchehab+huawei@kernel.org>
@@ -106,129 +109,177 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: xOmcj3jxMDoc
+X-TUID: xTswegXcd2MJ
 
-Adds a generic error device to handle generic hardware error
-events as specified at ACPI 6.5 specification at 18.3.2.7.2:
-https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#event-notification-for-generic-error-sources
-using HID PNP0C33.
+Add a new ags flag to change the way HEST offsets are calculated.
+Currently, offsets needed to store ACPI HEST offsets and read ack
+are calculated based on a previous knowledge from the logic
+which creates the HEST table.
 
-The PNP0C33 device is used to report hardware errors to
-the guest via ACPI APEI Generic Hardware Error Source (GHES).
+Such logic is not generic, not allowing to easily add more HEST
+entries nor replicates what OSPM does.
 
-Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+As the next patches will be adding a more generic logic, add a
+new use_hest_addr, set to false, in preparation for such changes.
+
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/aml-build.c                    | 10 ++++++++++
- hw/acpi/generic_event_device.c         | 13 +++++++++++++
- include/hw/acpi/acpi_dev_interface.h   |  1 +
- include/hw/acpi/aml-build.h            |  2 ++
- include/hw/acpi/generic_event_device.h |  1 +
- 5 files changed, 27 insertions(+)
+ hw/acpi/ghes.c           | 46 ++++++++++++++++++++++++----------------
+ hw/arm/virt-acpi-build.c | 15 ++++++++++---
+ include/hw/acpi/ghes.h   | 14 ++++++++++--
+ 3 files changed, 52 insertions(+), 23 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index f8f93a9f66c8..e4bd7b611372 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -2614,3 +2614,13 @@ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source)
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index b709c177cdea..e49a03fdb94e 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -206,7 +206,8 @@ ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
+  * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
+  * See docs/specs/acpi_hest_ghes.rst for blobs format.
+  */
+-static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
++static void build_ghes_error_table(AcpiGhesState *ags, GArray *hardware_errors,
++                                   BIOSLinker *linker)
+ {
+     int i, error_status_block_offset;
  
-     return var;
+@@ -251,13 +252,15 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+                                        i * ACPI_GHES_MAX_RAW_DATA_LENGTH);
+     }
+ 
+-    /*
+-     * tell firmware to write hardware_errors GPA into
+-     * hardware_errors_addr fw_cfg, once the former has been initialized.
+-     */
+-    bios_linker_loader_write_pointer(linker, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, 0,
+-                                     sizeof(uint64_t),
+-                                     ACPI_HW_ERROR_FW_CFG_FILE, 0);
++    if (!ags->use_hest_addr) {
++        /*
++         * Tell firmware to write hardware_errors GPA into
++         * hardware_errors_addr fw_cfg, once the former has been initialized.
++         */
++        bios_linker_loader_write_pointer(linker, ACPI_HW_ERROR_ADDR_FW_CFG_FILE,
++                                         0, sizeof(uint64_t),
++                                         ACPI_HW_ERROR_FW_CFG_FILE, 0);
++    }
  }
+ 
+ /* Build Generic Hardware Error Source version 2 (GHESv2) */
+@@ -331,14 +334,15 @@ static void build_ghes_v2(GArray *table_data,
+ }
+ 
+ /* Build Hardware Error Source Table */
+-void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
++void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
++                     GArray *hardware_errors,
+                      BIOSLinker *linker,
+                      const char *oem_id, const char *oem_table_id)
+ {
+     AcpiTable table = { .sig = "HEST", .rev = 1,
+                         .oem_id = oem_id, .oem_table_id = oem_table_id };
+ 
+-    build_ghes_error_table(hardware_errors, linker);
++    build_ghes_error_table(ags, hardware_errors, linker);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -357,11 +361,11 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     fw_cfg_add_file(s, ACPI_HW_ERROR_FW_CFG_FILE, hardware_error->data,
+                     hardware_error->len);
+ 
+-    /* Create a read-write fw_cfg file for Address */
+-    fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
+-        NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
+-
+-    ags->present = true;
++    if (!ags->use_hest_addr) {
++        /* Create a read-write fw_cfg file for Address */
++        fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
++            NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
++    }
+ }
+ 
+ static void get_hw_error_offsets(uint64_t ghes_addr,
+@@ -411,8 +415,11 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+     ags = &acpi_ged_state->ghes_state;
+ 
+     assert(ACPI_GHES_ERROR_SOURCE_COUNT == 1);
+-    get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
+-                         &cper_addr, &read_ack_register_addr);
 +
-+/* ACPI 5.0b: 18.3.2.6.2 Event Notification For Generic Error Sources */
-+Aml *aml_error_device(void)
-+{
-+    Aml *dev = aml_device(ACPI_APEI_ERROR_DEVICE);
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
++    if (!ags->use_hest_addr) {
++        get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
++                             &cper_addr, &read_ack_register_addr);
++    }
+ 
+     if (!cper_addr) {
+         error_setg(errp, "can not find Generic Error Status Block");
+@@ -494,5 +501,8 @@ bool acpi_ghes_present(void)
+         return false;
+     }
+     ags = &acpi_ged_state->ghes_state;
+-    return ags->present;
++    if (!ags->hw_error_le)
++        return false;
 +
-+    return dev;
-+}
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 14d8513a5440..180eebbce1cd 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -26,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
-     ACPI_GED_PWR_DOWN_EVT,
-     ACPI_GED_NVDIMM_HOTPLUG_EVT,
-     ACPI_GED_CPU_HOTPLUG_EVT,
-+    ACPI_GED_ERROR_EVT,
++    return true;
+ }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3ac8f8e17861..8ab8d11b6536 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -946,9 +946,18 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     build_dbg2(tables_blob, tables->linker, vms);
+ 
+     if (vms->ras) {
+-        acpi_add_table(table_offsets, tables_blob);
+-        acpi_build_hest(tables_blob, tables->hardware_errors, tables->linker,
+-                        vms->oem_id, vms->oem_table_id);
++        AcpiGedState *acpi_ged_state;
++        AcpiGhesState *ags;
++
++        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
++                                                       NULL));
++        if (acpi_ged_state) {
++            ags = &acpi_ged_state->ghes_state;
++
++            acpi_add_table(table_offsets, tables_blob);
++            acpi_build_hest(ags, tables_blob, tables->hardware_errors,
++                            tables->linker, vms->oem_id, vms->oem_table_id);
++        }
+     }
+ 
+     if (ms->numa_state->num_nodes > 0) {
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 39619a2457cb..a3d62b96584f 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -64,12 +64,22 @@ enum {
+     ACPI_GHES_ERROR_SOURCE_COUNT
  };
  
- /*
-@@ -116,6 +117,16 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
-                            aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
-                                       aml_int(0x80)));
-                 break;
-+            case ACPI_GED_ERROR_EVT:
-+                /*
-+                 * ACPI 5.0b: 5.6.6 Device Object Notifications
-+                 * Table 5-135 Error Device Notification Values
-+                 * Defines 0x80 as the value to be used on notifications
-+                 */
-+                aml_append(if_ctx,
-+                           aml_notify(aml_name(ACPI_APEI_ERROR_DEVICE),
-+                                      aml_int(0x80)));
-+                break;
-             case ACPI_GED_NVDIMM_HOTPLUG_EVT:
-                 aml_append(if_ctx,
-                            aml_notify(aml_name("\\_SB.NVDR"),
-@@ -295,6 +306,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_MEM_HOTPLUG_EVT;
-     } else if (ev & ACPI_POWER_DOWN_STATUS) {
-         sel = ACPI_GED_PWR_DOWN_EVT;
-+    } else if (ev & ACPI_GENERIC_ERROR) {
-+        sel = ACPI_GED_ERROR_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-     } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
-index 68d9d15f50aa..8294f8f0ccca 100644
---- a/include/hw/acpi/acpi_dev_interface.h
-+++ b/include/hw/acpi/acpi_dev_interface.h
-@@ -13,6 +13,7 @@ typedef enum {
-     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
-     ACPI_VMGENID_CHANGE_STATUS = 32,
-     ACPI_POWER_DOWN_STATUS = 64,
-+    ACPI_GENERIC_ERROR = 128,
- } AcpiEventStatusBits;
++/*
++ * AcpiGhesState stores an offset that will be used to fill HEST entries.
++ *
++ * When use_hest_addr is false, the stored offset is placed at hw_error_le,
++ * meaning an offset from the etc/hardware_errors firmware address. This
++ * is the default on QEMU 9.x.
++ *
++ * An offset value equal to zero means that GHES is not present.
++ */
+ typedef struct AcpiGhesState {
+     uint64_t hw_error_le;
+-    bool present; /* True if GHES is present at all on this board */
++    bool use_hest_addr;         /* Currently, always false */
+ } AcpiGhesState;
  
- #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index c18f68134246..f38e12971932 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -252,6 +252,7 @@ struct CrsRangeSet {
- /* Consumer/Producer */
- #define AML_SERIAL_BUS_FLAG_CONSUME_ONLY        (1 << 1)
- 
-+#define ACPI_APEI_ERROR_DEVICE   "GEDD"
- /**
-  * init_aml_allocator:
-  *
-@@ -382,6 +383,7 @@ Aml *aml_dma(AmlDmaType typ, AmlDmaBusMaster bm, AmlTransferSize sz,
-              uint8_t channel);
- Aml *aml_sleep(uint64_t msec);
- Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source);
-+Aml *aml_error_device(void);
- 
- /* Block AML object primitives */
- Aml *aml_scope(const char *name_format, ...) G_GNUC_PRINTF(1, 2);
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index d2dac87b4a9f..1c18ac296fcb 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -101,6 +101,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
- #define ACPI_GED_PWR_DOWN_EVT      0x2
- #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
- #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
-+#define ACPI_GED_ERROR_EVT          0x10
- 
- typedef struct GEDState {
-     MemoryRegion evt;
+-void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
++void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
++                     GArray *hardware_errors,
+                      BIOSLinker *linker,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
 -- 
 2.48.1
 

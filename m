@@ -1,155 +1,366 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp192563njc;
-        Fri, 21 Feb 2025 02:44:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWFLMfhXyJvHQVpWYvhfe0pWH2x86K6uIb8eIDdxEn+iImPxruLn4xbgNqQ5jt3aj+BuvJgoSuVF1TAXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5JT1GqY5skw4xHJP6pHII9HnBKsM8Suwn91Xr7tR8p1H8VMFG973FMHk5IN4j8PwEc5O6
-X-Received: by 2002:a05:6214:2469:b0:6e4:4331:aae4 with SMTP id 6a1803df08f44-6e6ae7f391cmr35102966d6.1.1740134677400;
-        Fri, 21 Feb 2025 02:44:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740134677; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp202163njc;
+        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUGSuD5Dhv78PdkjJCxqkOICDJjV7Ci+4hi9Z9OWXGXAGwE9DBuwJYMSDQJvRqGDeUDLh23coZreSzazA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFR+KhQpFJDeBTDwI5RR4FGTBRoxkMwmSzkdjuEdrdeLgddvXXvrEmIryAhdgYR+ThhWEYk
+X-Received: by 2002:a05:6214:29e1:b0:6e6:61a5:aa4c with SMTP id 6a1803df08f44-6e6ae98e884mr31435736d6.31.1740135903468;
+        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740135903; cv=none;
         d=google.com; s=arc-20240605;
-        b=kr9l0HFjFfWl+YH+qB645M/3NgRARFIfRtOP0WPoMylq+OIglk1Jb9pOJjVH0MJMui
-         UTI4I/owVgwjrNkb1gt9kmX2Ngr+ZOW5P/VccFTMLegE1SgGdlaXrnyoltcLmqqUbMKU
-         fgTDgHkWmSfcsiRKEP1bnxzRquDYOfXRO5Z6kEuwKjhLbL8Ce6twaSoGDWmQuW8uyyjH
-         MszPYUx/pRy1a24Iv9FrjHdS/6YoBmixwDn+lhpzyjPl2jbFwKnf5ykWHtYmgSrFXXHJ
-         e1hOADeadXuoXzJuExWhZiryau1AWMDPVX/L3bf8tVhq2TK5TF7q52T5wAfdP8mVrduL
-         wN5A==
+        b=gvB2S2nT8yjX/nWRpT+ROFVfhAUrhNgqLyZcdzrA/YWdP+sLswQXSQUKPNwDW6mpoB
+         q1ukeA+rg4adA/z747N47la+Atfs4zndfXe8IsgEYMfOsSp5lnJcKRBMAvgtv3qvPc7J
+         cBuFqA8vjFqoriF4tH/ISOhxYQfJz/ItWbxRbmRNrZND6uEajl/ma44DUUPe/RXbXaxH
+         Bdjsl3PK3nMPGi2AaxqEM7COHnvZSJd4cpDUQXlsIli4ROorJv6Tb+6yqDtyB7avMg2D
+         XTff0EXMt97ua+Cne6ofvr8IKT9T+mF10pXdIptEDEOcEVWB2Swics6v6zpL1c6nOuhn
+         Ahvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=0hwfsBzZh98QBTrbGtKBh6llchcX7pniNmKm5d/EfCI=;
-        fh=u+Zo0laQK1b3BWJPnMFk7T5uVmvKYrIkhnriJHYHpL4=;
-        b=YqW1KVP94AofSBcidqFrVfcv9lh6mvL6hegp3iY+GIIpf/UJlx3I+1gW5bC9zQGuqd
-         1aBfA0j46W6mwVtflBzxRJDOHfO/79tLM3GDfSUed66VUEUUN1bP8LIbQ+3m0//EVFCC
-         ln6eK6KGYdNMw/GWCh6J5LbwXZSFYaNyD0iEBHzpDJzyPWFO3z3bnzxrmP5TnSUQsnHD
-         HopNfiIlQ+zpmk5gPYV/ZB4qq5Y/tiSrLNtK/4HBXcQ1FweqOFZxoDv8REwZ4fCmAISz
-         v+CJVOomOcsQCkeSfiHsoZE6dgMfHAYWIU4atoEKA+/yX7bEDYk0s6o8tQ6tvMGHYkKe
-         Y2Sw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=wEpU09kFDKJnAn3kPpDGw4AJ5az/CSE7QHReAxfaYnA=;
+        fh=jaKv0nqk24nD12PVOVCnyDKdsvg2A4OxF/Ltxf7HZ5Q=;
+        b=WuHLllMMGxyA5yDBdhPE8CcZXe4tyT9MrJNpYC1a4F4b9VyK1knp2oqNiI8EoiWf8h
+         Nfv6sqkxQYY3OZQ0hKcP/Tyn+KRCJ8dbLXWIA99s3ISpEV1OhRPCp8Nm1QE2HYkrrDQC
+         xPJeKDuVcktUgkDyKLzwEs0wRI3RGBWFsO8rBivRB3qUo8oB+Gfy3RR7yRbNr2FUVLRU
+         rY2KZ5wbnSJgqFkH0v4QDfh4ALkhoeRk7Z5pBAo4SWbu0pKBy46EZe3f7ZUrumWMUJ1X
+         ViF0syKAvs4sdpVwPCOQex05Y4s2LoqWPCQRE7z/X+mxjON664PoK59L1C2/ppzpItPz
+         PdjA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OKa+CY8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a0f7bsi163083386d6.247.2025.02.21.02.44.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a1e69si163479446d6.184.2025.02.21.03.05.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2025 02:44:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OKa+CY8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tlQWB-0003WQ-Lw; Fri, 21 Feb 2025 05:44:28 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tlQps-0000Wo-QE; Fri, 21 Feb 2025 06:04:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tlQW4-0003R3-Cl
- for qemu-devel@nongnu.org; Fri, 21 Feb 2025 05:44:21 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tlQW2-0001uC-UW
- for qemu-devel@nongnu.org; Fri, 21 Feb 2025 05:44:20 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-38f403edb4eso1093602f8f.3
- for <qemu-devel@nongnu.org>; Fri, 21 Feb 2025 02:44:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740134657; x=1740739457; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=0hwfsBzZh98QBTrbGtKBh6llchcX7pniNmKm5d/EfCI=;
- b=OKa+CY8fUH2oQzO6rj8NBvZLTx0zysrx3D4d4pLolYW9bUxM4zZaS/8rq+8ZXESKZC
- K0qS2Cqpgz+CPX+6CAcl+dxTVPNRxq3sQIWTyrJgZEFPBIKudYhIHuyc83Anq/JKq8lE
- 2skxqMXZfe0OJ+tq8zNGwXu2IExN1/8miF9FvyC4YwzdNPJbQ+Alb5Fnmh0Y36Hvm5/d
- zCmVD0fa11+FjpZ5Z+u/PRpiNYHvB4Nfio0AwmErRvJbhh3xFo67/CMqGckcvWHGEAt2
- 4NNwV/o5JiI2gNrdfAC3XU500+OzqpbXOoMwnQlXVNWfmYxUH8k+k9vNUlFn6faffS7x
- hBzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740134657; x=1740739457;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0hwfsBzZh98QBTrbGtKBh6llchcX7pniNmKm5d/EfCI=;
- b=Udd6CfCKf26bt/slH7sDTFLgfpFfcAOcz5j4yTLgHJ5ZsyVfQr57fbcFTnYNs98wpm
- QNkn63OuAgL2IvP/5cV+xwUiYfZyfhAiBgOoxLqXgOGcZCkNFuKtCsJP6mj8+jdRAWYJ
- xXAkwSJDQpSp+ZH1VPLVOANw1V5ytp3+PT3c6xxLyFiZ996hAoE5uNQOnx/qZtTIEMYL
- eok3oDet4nGS1whW67EIMqOXCs6KtyUit3HHOfCgPcdCpU84CZ8f5jFmPDBaKQv5UqUf
- 6H+2SKLi4ipEqnKCIjTrCeIbh+Bxl4yfaGYx/SI7iAq+RgrJ9ekmrR7cWjOq0Yp84Iql
- PlNQ==
-X-Gm-Message-State: AOJu0Yw9fiftn8XR5NhMFaTw9qB4ux9Ja3dSaKpjcmHTqvOGHZoX4Kst
- R42mLHLupPAKGg+BpPn89KRyAEveoV/nAhRSNZn1R7nY3lz5TMmiO0U1zYFqotY=
-X-Gm-Gg: ASbGncvo9A3rk79+KfAiUJYsPmBhCPhHhnY+mymE9TVJCzccRAtdsUiGt93DdPdS4bR
- sSJfu/pgZjVy7KE3bq2J6atS2hunuiPMtR5U2dN2EY2cHwytKi2pLX4UL0++k0ZlEk3QIqquQbs
- datL7mmufGeDqir6DdFpFVCW2qs0MSWGKDb29D2iS/dGEwQQOa/b9DGgkbys5zfxrFSjMkTHD9+
- FNAXOLoja+pvS5GDQVHuJcdbSuatJBtsbwAeIDgyDiEpcKVRErCZZLvaNQY/b7BRqefb0ZXAhXM
- fZPSUlPcZNs2+GmkC61bgdCp8WnP3okOf3Tc3MQQ/NyV1ePVy0+oaEZVTVnRUkQAOfygvQ==
-X-Received: by 2002:a05:6000:154a:b0:38f:27d3:1b3b with SMTP id
- ffacd0b85a97d-38f6e756316mr2174134f8f.11.1740134657178; 
- Fri, 21 Feb 2025 02:44:17 -0800 (PST)
-Received: from [192.168.69.157] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38f259d58f3sm22964171f8f.73.2025.02.21.02.44.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Feb 2025 02:44:16 -0800 (PST)
-Message-ID: <fc644b42-c6ad-47a5-9940-bb6842a06771@linaro.org>
-Date: Fri, 21 Feb 2025 11:44:15 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] acpi/ghes: Make ghes_record_cper_errors() static
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, mst@redhat.com, imammedo@redhat.com,
- anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, shan.gavin@gmail.com
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tlQpr-0000Wc-5W; Fri, 21 Feb 2025 06:04:47 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tlQpo-0004Wl-Cw; Fri, 21 Feb 2025 06:04:46 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YznHT31D5z6G83L;
+ Fri, 21 Feb 2025 19:01:09 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 02518140382;
+ Fri, 21 Feb 2025 19:04:38 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 21 Feb
+ 2025 12:04:37 +0100
+Date: Fri, 21 Feb 2025 11:04:35 +0000
+To: Gavin Shan <gshan@redhat.com>
+CC: Igor Mammedov <imammedo@redhat.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, <mst@redhat.com>, <anisinha@redhat.com>,
+ <gengdongjiu1@gmail.com>, <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
+ <shan.gavin@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 4/4] target/arm: Retry pushing CPER error if necessary
+Message-ID: <20250221110435.00004a3b@huawei.com>
+In-Reply-To: <7caa54df-abe1-4833-bb59-cb83f8241962@redhat.com>
 References: <20250214041635.608012-1-gshan@redhat.com>
- <20250214041635.608012-2-gshan@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250214041635.608012-2-gshan@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <20250214041635.608012-5-gshan@redhat.com>
+ <20250219185518.767a48d9@imammedo.users.ipa.redhat.com>
+ <7caa54df-abe1-4833-bb59-cb83f8241962@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PPWoyjFe1RVI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: G1o6PGQo3Gym
 
-On 14/2/25 05:16, Gavin Shan wrote:
-> acpi_ghes_memory_errors() is the only caller, no need to expose
-> the function. Besides, the last 'return' in this function isn't
-> necessary and remove it.
-> 
-> No functional changes intended.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/acpi/ghes.c         | 6 ++----
->   include/hw/acpi/ghes.h | 2 --
->   2 files changed, 2 insertions(+), 6 deletions(-)
+On Fri, 21 Feb 2025 15:27:36 +1000
+Gavin Shan <gshan@redhat.com> wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On 2/20/25 3:55 AM, Igor Mammedov wrote:
+> > On Fri, 14 Feb 2025 14:16:35 +1000
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >  =20
+> >> The error -1 is returned if the previously reported CPER error
+> >> hasn't been claimed. The virtual machine is terminated due to
+> >> abort(). It's conflicting to the ideal behaviour that the affected
+> >> vCPU retries pushing the CPER error in this case since the vCPU
+> >> can't proceed its execution.
+> >>
+> >> Move the chunk of code to push CPER error to a separate helper
+> >> report_memory_errors() and retry the request when the return
+> >> value from acpi_ghes_memory_errors() is greater than zero.
+> >>
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> >> ---
+> >>   target/arm/kvm.c | 31 +++++++++++++++++++++++++------
+> >>   1 file changed, 25 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> >> index 5c0bf99aec..9f063f6053 100644
+> >> --- a/target/arm/kvm.c
+> >> +++ b/target/arm/kvm.c
+> >> @@ -2362,6 +2362,30 @@ int kvm_arch_get_registers(CPUState *cs, Error =
+**errp)
+> >>       return ret;
+> >>   }
+> >>  =20
+> >> +static void report_memory_error(CPUState *c, hwaddr paddr)
+> >> +{
+> >> +    int ret;
+> >> +
+> >> +    while (true) {
+> >> +        /* Retry if the previously report error hasn't been claimed */
+> >> +        ret =3D acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr, =
+true);
+> >> +        if (ret <=3D 0) {
+> >> +            break;
+> >> +        }
+> >> +
+> >> +        bql_unlock();
+> >> +        g_usleep(1000); =20
+>=20
+> Igor, thanks for the detailed comments. Sorry for a bit delay of the repl=
+y, I
+> was checking the code to understand it better :)
+
+This is moderately tricky stuff so I'm not 100% sure of some of the things
+I said below, but will be traveling for next few weeks so want to get some
+comments out before that!
+
+>=20
+> > even with bql released it's not safe to loop in here.
+> > consider,
+> >    a guest with 2 vcpus
+> >      * vcpu 1 gets SIGBUS due to error
+> >      * vcpu 2 trips over the same error and gets into this loop
+> >      * on guest side vcpu 1 continues to run to handle SEA but
+> >        might need to acquire a lock that vcpu 2 holds
+> >  =20
+>=20
+> Agreed.
+>=20
+> > GHESv2 error source we support, can report several errors,
+> > currently QEMU supports only 1 'error status block' which
+> > can hold several error records (CPER) (though storage size is limited)
+> >=20
+> > 1:
+> > We can potentially add support for more GHESv2 error sources
+> > with their own Read ACK registers (let's say =3Dmax_cpus)
+> > (that is under assumption that no other error will be
+> > triggered while guest VCPUs handle their own SEA (upto clearing Read AC=
+K))
+
+This one seems straight forward but I'd kind of like to know if real systems
+do this (I'll try and find out about ours).  I don't think there is
+any association available between a cpu and and SEA source, so linux at
+least will just go looking for any that are active on each SEA.
+Locking looks fine but it won't help with performance
+
+> >=20
+> > 2:
+> > Another way could be for QEMU to allocate more error status _blocks_
+> > for the only one error source it has now and try to find
+> > empty status block to inject new error(s).
+
+Let me try to get my head around this one...
+
+Each GHESv2 entry points, indirectly, to a single error status block at a t=
+ime
+(only one address to read that from)  Curious quirk is the length for that
+error status block is fixed as that's just a value in GHESv2 not an indirec=
+tion
+via a register - however I think you can just make it 'big'.
+So what I think you are proposing here is that on read_ack write (which we =
+would
+need to monitor for, the value of the error status address register is upda=
+ted
+to point to next one of a queue of error blocks.
+
+That can work.  I'm not sure it actually gets us anything over just queuing=
+ in
+qemu and writing the same error status block.  Those status blocks can cont=
+ain
+multiple Generic Error Data entries, but unless we have a load of them gath=
+ered
+up at time of first notifying the guest, I'm not sure that helps us.
+
+One thing that I'm nervous about is that I can't actually find spec language
+that says that the OS 'must' reread the error status address register on
+each event. That isn't mentioned in the GHESv2 flow description which just =
+says:
+"
+These are the steps the OS must take once detecting an error from a particu=
+lar GHESv2 error source:
+=E2=80=A2 OSPM detects error (via interrupt/exception or polling the block =
+status)
+=E2=80=A2 OSPM copies the error status block
+=E2=80=A2 OSPM clears the block status field of the error status block
+=E2=80=A2 OSPM acknowledges the error via Read Ack register. For example:
+=E2=80=93 OSPM reads the Read Ack register =E2=80=93> X
+=E2=80=93 OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite)
+"
+
+The linux code is confusing me, but I think it wonderfully changes
+the fixmap on every access as it needs to do an ioremap type operation
+in NMI conditions.
+
+> >   * it can be saturated with high rate of errors (so what do we do in c=
+ase it happens?)
+
+Make it big :)  But sure big just makes the condition unlikely rather than =
+solving it.
+
+> >   * subject to race between clearing/setting Read ACK
+> >      (maybe it can dealt with that on side by keeping internal read_ack=
+ counter)
+
+I don't think there are any races as long as we update the register only on=
+ clear which
+should I think happen before the next SEA can happen? My understanding, whi=
+ch may
+be wrong, is the OS must just take a copy of the error status block and set=
+ the
+read_ack all in the exception handler.
+
+> >=20
+> > 3:
+> > And alternatively, queue incoming errors until read ack is cleared
+> > and then inject pending errors in one go.
+> > (problem with that is that at the moment QEMU doesn't monitor
+> > read ack register memory so it won't notice guest clearing that)
+
+We'd need to monitor it definitely.  Injecting all we have queued up
+in one go here seems like a reasonable optimization over doing them
+one at a time.
+
+> >=20
+> >=20
+> > Given spec has provision for multiple error status blocks/error data en=
+tries
+> > it seems that #2 is an expected way to deal with the problem.
+> >  =20
+>=20
+> I would say #1 is the ideal model because the read_ack_register is the bo=
+ttleneck
+> and it should be scaled up to max_cpus. In that way, the bottleneck can b=
+e avoided
+> from the bottom. Another benefit with #1 is the error can be delivered im=
+mediately
+> to the vCPU where the error was raised. This matches with the syntax of S=
+EA to me.
+
+I don't think it helps for the bottleneck in linux at least.  A whole bunch=
+ of locks
+are taken on each SEA because of the novel use of the fixmap.  There is onl=
+y one
+VA ever used to access the error status blocks we just change what PA it po=
+ints to
+under a spin lock. Maybe that can be improved on if we can persuade people =
+that error
+handling performance is a thing to care about!
+
+>=20
+> #2 still has the risk to saturate the multiple error status blocks if the=
+re are
+> high rate of errors as you said. Besides, the vCPU where read_ack_registe=
+r is acknoledged
+> can be different from the vCPU where the error is raised, violating the s=
+yntax of
+> SEA.
+>=20
+> #3's drawback is to violate the syntax of SEA, similar to #2.
+>=20
+> However, #2/#3 wouldn't be that complicated to #1. I didn't expect big su=
+rgery to
+> GHES module, but it seems there isn't perfect solution without a big surg=
+ery.
+> I would vote for #1 to resolve the issue from the ground. What do you thi=
+nk, Igor?
+> I'm also hoping Jonathan and Mauro can provide their preference.
+
+Ideally I'd like whatever we choose to look like what a bare metal machine
+does - mostly because we are less likely to hit untested OS paths.
+
+>=20
+> > PS:
+> > I'd prefer Mauro's series being merged 1st (once it's resplit),
+> > for it refactors a bunch of original code and hopefully makes
+> > code easier to follow/extend.
+> >  =20
+>=20
+> Sure. I won't start the coding until the solution is confirmed. All the f=
+ollowup
+> work will base on Mauro's series.
+>=20
+> >> +        bql_lock();
+> >> +    }
+> >> +
+> >> +    if (ret =3D=3D 0) {
+> >> +        kvm_inject_arm_sea(c);
+> >> +    } else {
+> >> +        error_report("Error %d to report memory error", ret);
+> >> +        abort();
+> >> +    }
+> >> +}
+> >> +
+> >>   void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> >>   {
+> >>       ram_addr_t ram_addr;
+> >> @@ -2387,12 +2411,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int c=
+ode, void *addr)
+> >>                */
+> >>               if (code =3D=3D BUS_MCEERR_AR) {
+> >>                   kvm_cpu_synchronize_state(c);
+> >> -                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, pa=
+ddr, false)) {
+> >> -                    kvm_inject_arm_sea(c);
+> >> -                } else {
+> >> -                    error_report("failed to record the error");
+> >> -                    abort();
+> >> -                }
+> >> +                report_memory_error(c, paddr);
+> >>               }
+> >>               return;
+> >>           } =20
+> >  =20
+>=20
+> Thanks,
+> Gavin
+>=20
+>=20
 

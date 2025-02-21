@@ -1,234 +1,178 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp34741njc;
-        Thu, 20 Feb 2025 19:18:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUDfklQUdLu89z+Jfdk+Efe9ANXEjyNwAKelKEulK6MK6GEVUSjzYXflyzlyuCxgdmTnnJW0f3/7tmtCw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHhVHt71hsCYOybAnJg+we4HNZgB2fMYGRewFwqWila3CAP880fsfFGEg6CqRuyAPGC5o+v
-X-Received: by 2002:ac8:7f0e:0:b0:471:f43b:4831 with SMTP id d75a77b69052e-47214ff4af1mr69185261cf.3.1740107923490;
-        Thu, 20 Feb 2025 19:18:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740107923; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp65449njc;
+        Thu, 20 Feb 2025 20:57:48 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVzDmvBju3PwP3QST8xj4e7wZ2c1J87pg4VYadM6WrZx2Pz4zpzjH35EGI2JYFvU0AxWxmEVLIbk8wJOQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGIuS2F13pCFD91vDsyZLM1oKmLHmjKKyupV7F8v8Z4RpHTSPRFU7DtXvPBms1WHOIUuxL8
+X-Received: by 2002:a05:6402:4409:b0:5e0:815d:4e08 with SMTP id 4fb4d7f45d1cf-5e0b70bbf50mr1343274a12.3.1740113868181;
+        Thu, 20 Feb 2025 20:57:48 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740113868; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Sc6/U60XISl6Ex9fPXzDpXcsrodtyk2t6Iiu+9XOii2ybXxk1KJBv044eJWnDBazR1
-         13/ZUXM9dj5qC6rcsEcPcmoRO20rwK1GK6fLrMzS4kwAJK4pkZI3RV2rVVNPC0qDvzya
-         qscF+EFS+l9meS0rPE+ZUoU1wMr0gupRR6o/VDH2jn9h1BokcqH2HL77gKsVOOuwE/Cj
-         nkBbeVsp1IpqjwMjSHPvlYGtqVJnrs7Y5whe7ovve1K5qhdsZUQj/eLrjD6UwqF90Waq
-         sF7sOb2IB0wLKlEZJGghC/2eDFxACj68SMZ/s64amSpUtuRpY+jIRvU/nRXuZvp8YCy1
-         pVBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=TJFg9SDtvRnVbLXpOlrZPEPhfZ+47nLJOoxAnX5oLFk=;
-        fh=t32qPp0vRGY4DMeM6svdZ+QzzGqcPoztcDV0kMW41ug=;
-        b=MygAL3944zxNbFeJVymVsJPGQiIJKMqjfGZUCKyD1RjVMzZRIvb5EuxrEP4lGxT/Gl
-         /gER46kiVUskOqKf4iGOAWo6bioNwsFcPE0L0YlCVccmtcKXgOTjSNeQIq63H1mRLMBN
-         HlYSgdxI70ph/41bU6V+yaAFy2tuwowuB8w6BUc6l+8z/Hr+a0/5t45OEOYK9C8wGP/7
-         DnjT3dyfwd9k2KbuwwYltyJCoGl9T2pTulSqbr81aKP3ZmVJ9wJv+J40oDaIel8E0alf
-         JW/Db9ZP5WcuWiF4ENg0406oyke7ioO+7gWIMKxsRZmbGQeY5P2i0w+rXQivqCz1Flad
-         e+CA==;
+        b=k7HiMwDSwJXcilCKJjorwd3bPryqH8ToSKTwk+G7nqxPnJLKSTR+YG2zx0tCv/AKei
+         UM/wM4rFsTaF+u+vddhYR7EkbAZ8wo8asQLDsk2qECIlKAoVvV6xy0D3AHCj1lzpk7Pj
+         ZNDm5dFdolAa5qFj7Kd536MRDG/B7ib8ksTaaLsZUkzaQEx2/Fw2Zugz/rl88Zk9gcG1
+         9XQncc+KHO1isMbXXAWHdQWIN1VDWiS/oP6mu9+gzuqMdGv4lf/+G3l7Cg0y4HwNvOwy
+         AYBLZYcNIc1BUqrCPyLhLemERiAn1PYz6F7kJrwe2HnEEFEJsIlavZ6L0ANiUvgC8L4N
+         LqsQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=jsPKNzt3eZWqtai7MwBuxoJW/WIB/0M4MoDpUoICLEw=;
+        fh=uhmEix4oYMwP+v5jhTmFhIMm8k0Vqjz8TQAVpGvM8Ns=;
+        b=f5BNdl6paw5Q4VSJHj9+GhOAQ8FGi1AvEdoAqV/nImkp/3ezSK/lT3Ap/+bw/lbS0l
+         n+Bid3Jm2lKQ8YOmEZp57/UtsZRUYi7GgrRCR1HtqbRHtUlZfGnHtXonM3Ykxcvy275e
+         DFInTdSuVEA9OJNLGjKyFNWj/PjxVnNBaaWuttmUPqm/yjZTaClEebqJr6B7K32PhSHx
+         srWM7n1Vmv3l8H/T/+fIV9XDA0nZ43ss8I/rWiG+QEhpe7/rp/H0ivNPHCz52kw4gJqo
+         YLWgLp4TYrEieRjCk5ORq06m0NddKbW9SKqg+Kf7x23/ayWA9uPbeQZK86QbIUuCJcF0
+         PjQQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hj-micro.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471f115cb0dsi88755241cf.11.2025.02.20.19.18.43
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Y40I6oRu;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5dece262446si13378268a12.488.2025.02.20.20.57.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2025 19:18:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Feb 2025 20:57:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hj-micro.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tlJYa-0001Xq-Fn; Thu, 20 Feb 2025 22:18:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jansef.jian@hj-micro.com>)
- id 1tlJYX-0001XN-NH; Thu, 20 Feb 2025 22:18:25 -0500
-Received: from mail-m3279.qiye.163.com ([220.197.32.79])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jansef.jian@hj-micro.com>)
- id 1tlJYV-0005Mi-IM; Thu, 20 Feb 2025 22:18:25 -0500
-Received: from localhost.localdomain (unknown [219.146.33.230])
- by smtp.qiye.163.com (Hmail) with ESMTP id bbbd308a;
- Fri, 21 Feb 2025 11:18:13 +0800 (GMT+08:00)
-From: JianChunfu <jansef.jian@hj-micro.com>
-To: eric.auger@redhat.com,
-	peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- JianChunfu <jansef.jian@hj-micro.com>
-Subject: [PATCH v2] hw/arm/smmu: Add invalidating function of config data
-Date: Fri, 21 Feb 2025 11:17:41 +0800
-Message-ID: <20250221031741.69946-1-jansef.jian@hj-micro.com>
-X-Mailer: git-send-email 2.47.1
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Y40I6oRu;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525179-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 09A1D19C0420
+	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 04:57:54 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id CD7D91FBE8C;
+	Fri, 21 Feb 2025 04:57:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Y40I6oRu"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C30AF9D9
+	for <linux-kernel@vger.kernel.org>; Fri, 21 Feb 2025 04:57:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740113855; cv=none; b=hhAPVmrmzxwxDOnHEeZTlsaebO/L7R9q8920X7eIYW86qotstWWAnAnb7LlJCXN5hNjhNVBjxRQ6qjhe2h1zrbWW4cT0GhfJDTfMKtAl07/Psqrl3aYkXSfvv0bxTSV1CP+MJMZCx80OAkD2xebsu/XaYywtiKWjbSpYukhr4zc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740113855; c=relaxed/simple;
+	bh=a0SRT1xcLYPZMLZVfUK4U1sanv0c+3i36Oq5Gopf9mE=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=RXj9fwC0i4naATtqVBtBJnt3Cv2eCSyqV94uKU8rc0MvkH4BOZ1p8hIf092JWl93kzAwwx53rFIChzQVuDCbi6qtREEB2i3DGsehvxl2eclob9826LAz2RgdLaKM1QuClod6DmW9IeE+ETJaEGh4K6/BLRYxQLmIWU8yuVj2KWY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Y40I6oRu; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51FE7C4CEE4;
+	Fri, 21 Feb 2025 04:57:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740113854;
+	bh=a0SRT1xcLYPZMLZVfUK4U1sanv0c+3i36Oq5Gopf9mE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Y40I6oRuqHoTRQj41+lBW9ZWJrZUON7emuyU3tsiMVJHONZNYs//mAE7+Q3thPSL8
+	 7lJOEXrTCFNGzZ3JtwqyVknSRteDG0kgOEhiD3/DZS004c+27Of+I6ygTFfsIso6R3
+	 FN5aEW8uQKHNCwcUbk08cY/oHo1iPO4Q4KxPeddSJTTx9FdSTCzrjrdW69rHj2nhVp
+	 P/QDG5lk79eFvcOTLMg/qntEHFaF7AhmWXdg7M0Gvfky7uGilqipeJc2ueL+ry6T+f
+	 nC7AzyTvS4Wu0ljvq3ymt9E1jkOiFwcLc+WZNXdPqM2d0AKuz/QplarYcMmLp7yE5c
+	 1kuWZvOzHb95g==
+Date: Fri, 21 Feb 2025 05:57:28 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju
+ Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 14/14] scripts/ghes_inject: add a script to generate
+ GHES error inject
+Message-ID: <20250221055728.03289b6c@foz.lan>
+In-Reply-To: <87bjvg6c22.fsf@pond.sub.org>
+References: <cover.1738345063.git.mchehab+huawei@kernel.org>
+	<80858743b6fd67db3f48ac8cb466bbcde5b11132.1738345063.git.mchehab+huawei@kernel.org>
+	<87bjvg6c22.fsf@pond.sub.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGEtPVkJIGRlJTUpLQx1JQ1YVFAkWGhdVEwETFh
- oSFyQUDg9ZV1kYEgtZQVlJSkJVSk9NVUhIVUlIS1lXWRYaDxIVHRRZQVlLVUtVS1VLWQY+
-X-HM-Tid: 0a9526834cb109d2kunmbbbd308a
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pwg6Pxw6STITHSELMC1DEhod
- VkpPChFVSlVKTE9LSktMQ0JOSkJCVTMWGhIXVREaFQgeHVUREhoVOxMRVhYSGAkUVRgUFkVZV1kS
- C1lBWUlKQlVKT01VSEhVSUhLWVdZCAFZQU5IT0k3Bg++
-Received-SPF: pass client-ip=220.197.32.79;
- envelope-from=jansef.jian@hj-micro.com; helo=mail-m3279.qiye.163.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GbNrzj2h5qkH
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 2KOmq6AYPFO6
 
-Uniform the removal judgement of g_hash_table_foreach_remove(), previous
-name seems to perform the actual action while it just returns a Boolean.
+Em Wed, 05 Feb 2025 09:16:53 +0100
+Markus Armbruster <armbru@redhat.com> escreveu:
 
-Signed-off-by: JianChunfu <jansef.jian@hj-micro.com>
----
-v2: - move smmuv3_invalidate_ste() to smmu_hash_remove_by_sid_range()
-    - add function smmu_configs_inv_sid_range()
-v1: - Rename smmuv3_invalidate_ste to smmuv3_hash_remove_by_sid_range
----
- hw/arm/smmu-common.c         | 21 +++++++++++++++++++++
- hw/arm/smmu-internal.h       |  5 -----
- hw/arm/smmuv3.c              | 17 +----------------
- hw/arm/trace-events          |  1 +
- include/hw/arm/smmu-common.h |  6 ++++++
- 5 files changed, 29 insertions(+), 21 deletions(-)
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
+> 
+> > Using the QMP GHESv2 API requires preparing a raw data array
+> > containing a CPER record.
+> >
+> > Add a helper script with subcommands to prepare such data.
+> >
+> > Currently, only ARM Processor error CPER record is supported, by
+> > using:
+> > 	$ ghes_inject.py arm
+> >
+> > which produces those warnings on Linux:
+> >
+> > [  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
+> > [  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
+> > [  774.866583] {4}[Hardware Error]: event severity: recoverable
+> > [  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
+> > [  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
+> > [  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
+> > [  774.867189] {4}[Hardware Error]:   running state: 0x0
+> > [  774.867321] {4}[Hardware Error]:   Power State Coordination Interface state: 0
+> > [  774.867511] {4}[Hardware Error]:   Error info structure 0:
+> > [  774.867679] {4}[Hardware Error]:   num errors: 2
+> > [  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
+> > [  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
+> > [  774.868124] {4}[Hardware Error]:     transaction type: Data Access
+> > [  774.868280] {4}[Hardware Error]:     cache error, operation type: Data write
+> > [  774.868465] {4}[Hardware Error]:     cache level: 2
+> > [  774.868592] {4}[Hardware Error]:     processor context not corrupted
+> > [  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
+> >
+> > Such script allows customizing the error data, allowing to change
+> > all fields at the record. Please use:
+> >
+> > 	$ ghes_inject.py arm -h
+> >
+> > For more details about its usage.
+> >
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> 
+> [...]
+> 
+> > diff --git a/scripts/arm_processor_error.py b/scripts/arm_processor_error.py
+> > new file mode 100644
+> > index 000000000000..b0e8450e667e
+> > --- /dev/null
+> > +++ b/scripts/arm_processor_error.py
+> > @@ -0,0 +1,476 @@
+> > +#!/usr/bin/env python3
+> > +#
+> > +# pylint: disable=C0301,C0114,R0903,R0912,R0913,R0914,R0915,W0511
+> > +# SPDX-License-Identifier: GPL-2.0  
+> 
+> Sorry if this has been answered already...  why not GPL-2.0-or-later?
+> 
+> More of the same below.
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 3f8272875..69544392a 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -225,6 +225,27 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
-            ((entry->iova & ~info->mask) == info->iova);
- }
- 
-+static gboolean
-+smmu_hash_remove_by_sid_range(gpointer key, gpointer value, gpointer user_data)
-+{
-+    SMMUDevice *sdev = (SMMUDevice *)key;
-+    uint32_t sid = smmu_get_sid(sdev);
-+    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
-+
-+    if (sid < sid_range->start || sid > sid_range->end) {
-+        return false;
-+    }
-+    trace_smmuv3_config_cache_inv(sid);
-+    return true;
-+}
-+
-+void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range)
-+{
-+    trace_smmu_configs_inv_sid_range(sid_range.start, sid_range.end);
-+    g_hash_table_foreach_remove(s->configs, smmu_hash_remove_by_sid_range,
-+                                &sid_range);
-+}
-+
- void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-                          uint8_t tg, uint64_t num_pages, uint8_t ttl)
- {
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index 843bebb18..d143d296f 100644
---- a/hw/arm/smmu-internal.h
-+++ b/hw/arm/smmu-internal.h
-@@ -141,9 +141,4 @@ typedef struct SMMUIOTLBPageInvInfo {
-     uint64_t mask;
- } SMMUIOTLBPageInvInfo;
- 
--typedef struct SMMUSIDRange {
--    uint32_t start;
--    uint32_t end;
--} SMMUSIDRange;
--
- #endif
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 4c49b5a88..9da3b6df0 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1277,20 +1277,6 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-     }
- }
- 
--static gboolean
--smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
--{
--    SMMUDevice *sdev = (SMMUDevice *)key;
--    uint32_t sid = smmu_get_sid(sdev);
--    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
--
--    if (sid < sid_range->start || sid > sid_range->end) {
--        return false;
--    }
--    trace_smmuv3_config_cache_inv(sid);
--    return true;
--}
--
- static int smmuv3_cmdq_consume(SMMUv3State *s)
- {
-     SMMUState *bs = ARM_SMMU(s);
-@@ -1373,8 +1359,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             sid_range.end = sid_range.start + mask;
- 
-             trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
--            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
--                                        &sid_range);
-+            smmu_configs_inv_sid_range(bs, sid_range);
-             break;
-         }
-         case SMMU_CMD_CFGI_CD:
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index c64ad344b..95f523361 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -15,6 +15,7 @@ smmu_iotlb_inv_asid_vmid(int asid, int vmid) "IOTLB invalidate asid=%d vmid=%d"
- smmu_iotlb_inv_vmid(int vmid) "IOTLB invalidate vmid=%d"
- smmu_iotlb_inv_vmid_s1(int vmid) "IOTLB invalidate vmid=%d"
- smmu_iotlb_inv_iova(int asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
-+smmu_configs_inv_sid_range(uint32_t start, uint32_t end) "Config cache INV SID range from 0x%x to 0x%x"
- smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
- smmu_iotlb_lookup_hit(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
- smmu_iotlb_lookup_miss(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index e5ad55bba..e5e2d0929 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -142,6 +142,11 @@ typedef struct SMMUIOTLBKey {
-     uint8_t level;
- } SMMUIOTLBKey;
- 
-+typedef struct SMMUSIDRange {
-+    uint32_t start;
-+    uint32_t end;
-+} SMMUSIDRange;
-+
- struct SMMUState {
-     /* <private> */
-     SysBusDevice  dev;
-@@ -219,6 +224,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-                          uint8_t tg, uint64_t num_pages, uint8_t ttl);
- void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
-                         uint64_t num_pages, uint8_t ttl);
-+void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
- /* Unmap the range of all the notifiers registered to any IOMMU mr */
- void smmu_inv_notifiers_all(SMMUState *s);
- 
--- 
-2.47.1
+No particular reason. It is just that GPL-2.0 is my preferred license.
 
+I'll change the license of the three scripts to be GPL-2.0-or-later.
+
+> 
+> [...]
+> 
+
+
+
+Thanks,
+Mauro

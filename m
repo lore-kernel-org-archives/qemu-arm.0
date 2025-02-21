@@ -1,101 +1,185 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp328432njc;
-        Fri, 21 Feb 2025 06:37:22 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXpodbeBE3ahlpINJ4RDNpv7zorHY0PHiLvlyT5s7IMWQ1EvBggHOhGFYlrFWuzEDdlxSkSV6AM3DhUgw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEpKRmoP0qLZ0VHeUBarQ6NuiyzvmpanrlKhw+p1+iTUEkzH3eFuqmPJTS55Hb/xR8Swy2I
-X-Received: by 2002:a05:620a:4108:b0:7c0:a531:fe30 with SMTP id af79cd13be357-7c0cef48582mr518828985a.35.1740148642246;
-        Fri, 21 Feb 2025 06:37:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740148642; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp338878njc;
+        Fri, 21 Feb 2025 06:54:53 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVTj9rpa8IjiKSxNM09eAE53Tor1Q9hieudmP4BrLDsmwnDEB61CBGco9Xhf2Wb7XYxAxmRpA1icHlYiw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGGvhpHRr+xrsOBvIfPQh3HgBwYU6nhn6eD6ctLp1qcXGLEoRLiU8pF97tuTBxwKacM3noE
+X-Received: by 2002:a05:6214:c2c:b0:6e2:4e1a:bc82 with SMTP id 6a1803df08f44-6e6ae976a48mr44165316d6.35.1740149693461;
+        Fri, 21 Feb 2025 06:54:53 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740149693; cv=pass;
         d=google.com; s=arc-20240605;
-        b=XCsYGZS0Cekq4mcl/qwsyBze6ILEZH6UuO7cE19ugjYFE5prvM3pULSqT3UycOgkUm
-         EQOQ8PWBO3O05jjwBdNgLYU0dK64ryxS5hiHZWy/Oq4kA3LvSblQrCWibuIyruEzsEoz
-         e1n9s8cy/TFGUdPDK3MLyNCIRp7ZT0U1CfTSVNuM+Xqgh+Q9quFK5E7BtQcUCUeS0wV+
-         ym1SoR1MM3ZGBx1OIR+JnHU9XsV0P7CaAnvz5tYrFhlZ6ubA6ON+8zO+C9x59c+uob+b
-         cWssRXqsNBZDWiCnxvVnvGTsiid+1dt4L5+nP9J2iivpFJ5ASn9596zJEqJyp3BPflmX
-         sUGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=M/10vekTo03oyP7sn3RNznge2BAieDD6fHImWAQNXQnC08nFNMd0oYnzyObS/oPCOv
+         LI+15AY8kQRiYyPdT697tJbekzn1rDw0MhClae29uQSFq9xLgvHJ+jKgwvh7ObAGYfLg
+         lTzO2k1akX/1hq2J0jsHSDr2DOF+IFHPXpUP4LzKz0KmTsaso6gh/nkggXocDu1Buz4K
+         HBnql+AfNvBxmFcjD/1YmyiKsZyfJA2OJAhytgdVGasrgtrOUIrN4Vc5zTs7z2tUVvs9
+         nTrUMWCj+gyndtIyYVae87p1Mxe0KTFvMd1AcralgtyKwnAatPyy+NV5B2ngk/rhLJvL
+         JsyA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=yY/RVgCO8C2gT3Dt477t4CCkzDpFHpFh36UPK4gqD2Q=;
-        fh=BaBMhsa8otE44w+eiuuCkoL0QFe4OiybwLz9x35r5BM=;
-        b=Sn1Mesy0gsm01qJSW8LjJSgBAIwbWmhOFJGXC0dq48pH/0p+VjzpBw83Pcao8m30OU
-         5ZF4fRfSx3LMqi34ry7aPm16N6T7njbISiEPGpwc6XB16K6EfMsbUfAAecnN7cW1eks3
-         kPuwaKmrnuseHsueUMFpgYeDPXPzYgwhjUWjCNs8wlTik01j59vGAnzX6BAmTlgGaGw+
-         zhyT/WB22SPbrLquX6Njw9fovXqSWblWJrJ7YL9fQ2J8S5L5cV6ZZJkBviLMy+8JLas8
-         7zRnusEQrnEuGPlkt052rTTcE6p42yKfIK1kSm3R1YAKXsXtWhqYPLgig+KQ3EaHYU18
-         rgcQ==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=AeW5Gqc0GPYv8Ra7K6+N2ooIi8EMM72j+DzJ1MBdDGo=;
+        fh=CrKzHaH62LF9dm0W++2lfngwdYNI/lEMoluE7MSSZ4Q=;
+        b=bfHLUzWR3vXUxkqVZQIHQA1LFnzGEDQnlIaxeHch5eBqBQZ7uPomZqViUVktmHeKXW
+         WODz6CZn32jR1CnX1XJKMGu1cgH5vMAHqrxpuZGDE15OjsHT8OrbWA8vL7WzVcQ02j7p
+         OyAn5Hb8ENwZnTw/A0fFSIab2qEQgTav51ax4XYWz75LDMT0A56vuy4jzW0ESpheIh9G
+         Vo109pJpHZdlkp+8otTpgvqqz/dFNs5dWc4xurZFvXzf0DrNO7io0ilYWgYWR1TkDRr8
+         4g0qdm0kBoVXYfzi5M7UEMQnaw61M1io+cHyMzeWYhJ0OthgOWJ15uddCpcODii5m5Z/
+         vN+w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HrI9m+TE;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=T6IYIeFP;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0b7929c43si481114885a.240.2025.02.21.06.37.22
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c1574si166441966d6.283.2025.02.21.06.54.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2025 06:37:22 -0800 (PST)
+        Fri, 21 Feb 2025 06:54:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=HrI9m+TE;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=T6IYIeFP;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tlU8G-0000H9-6G; Fri, 21 Feb 2025 09:36:00 -0500
+	id 1tlUQM-0006I2-1a; Fri, 21 Feb 2025 09:54:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tlU84-00009B-EW; Fri, 21 Feb 2025 09:35:48 -0500
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
+ id 1tlUQ9-0006Go-H9; Fri, 21 Feb 2025 09:54:30 -0500
+Received: from mail-mw2nam12on20613.outbound.protection.outlook.com
+ ([2a01:111:f403:200a::613]
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tlU82-0003fu-8K; Fri, 21 Feb 2025 09:35:47 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 5F3DC5C656A;
- Fri, 21 Feb 2025 14:34:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A21E9C4CEED;
- Fri, 21 Feb 2025 14:35:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1740148535;
- bh=f3jsJF20lQ2fLkUgkIm1tbMfMYZ0iu0p9OeKwi8Wtyg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=HrI9m+TEfowBNw0dp5QT4rRRbxPi/Byv9idDnXLSdLUGyKRJVIJbz2+rPm0hMpHBX
- 3mDeIueWba/n4P9D1VG2Z5M73u2Pex0ATiFFcdEUpykmLCjK0EqUFk3bdYB9D6EbBE
- 7yES/GEN3fb+PnPQ8tPN9l16R2jp+sRJGZo0iaQ8CQeSfzwP8A4C2MyLEGqwB+V8qB
- LLwwJMrMv60r6O2apLY0kpw6pV/6hc9v2itdbDO2TYjIvw4upy3Mh/q/7cfkRrB4gs
- gY8sVCB1fcafz7QG1Qnngz2vnuJIqS3L+fACS6dMjunJLQe0FvyFmxdFqoRyCMUzYc
- onYSpHFQVBy8w==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1tlU7m-00000002jDj-2gTs; Fri, 21 Feb 2025 15:35:30 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v4 03/14] acpi/ghes: Use HEST table offsets when preparing
- GHES records
-Date: Fri, 21 Feb 2025 15:35:12 +0100
-Message-ID: <0134424ddba15dea8daaf32b09e89f1bf7e81552.1740148260.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <cover.1740148260.git.mchehab+huawei@kernel.org>
-References: <cover.1740148260.git.mchehab+huawei@kernel.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
+ id 1tlUQ7-0000Q8-5e; Fri, 21 Feb 2025 09:54:29 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=stZPKeTwpVbqo7BTeWYvv3JPWyjsEaYVUvrVjCZIsWDsHAicMsSb1Pa/pykAxm21qTiSU8YV+h9vbLSqKih8D1+kFAaW8a+LTrom3dmz5czuEXD0ED2E6yCyuoEJnKHGTtkUdtuhdrFCwuPAoBsuJJS18uBMXLvswK34LP1lSIEASX5W4Jriy7lFKIwnKI5QfGppPU8TPS7fs4NUWw2zmTo3mrMfRP8pe9CSjP260dv3T0EvxKxnqTQ2/5boiMZEI7HzRn9In7MFk60N/tNnoJ43NWn1VHIYJA3WbMflybpIMOzC0mJFnAmdxi38mum2H9ymXmUVXMh/hAxFm218zw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AeW5Gqc0GPYv8Ra7K6+N2ooIi8EMM72j+DzJ1MBdDGo=;
+ b=XDyrtj2Z3Nzn7ysWCv8yXnq45E+Vj95WQfiEKfZeCm7L3BwqvJNnulMU7hcQbP6bsdw8tykXG0Z1rEE5OUj0I+3KRnyYT2zwbST8AVXB2ai7168DSk9rrFGUZe4n2eHl4oVV6BGI0le8sUUE8INJaBYJ+t/If1WzMDR9zABprVP1t5KumWMSBVRtFNKo0yQG7REenTxY6QxOht/KzEZn0PNGj2UCjQPWM0O4GQfhv7PtTeWatTcKsz2MCSiGnvd2n7HU6T/5QgKtkzYtjEcth8/NLWYvZS93W4FhzTtHg2nFjXfMTmO83WhT5lVbtTUMqwu23cyHJv8FdSTEEmM54w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AeW5Gqc0GPYv8Ra7K6+N2ooIi8EMM72j+DzJ1MBdDGo=;
+ b=T6IYIeFPfIJaEkocKZl9KuWj4KDP09OoVcsmEET6kwZldezAxTh8mvkJWzfGLTSQiiZ6IkOa3lg4ptY+z3azdr5sjrVfxckxWsoFJSVbAyBKiRbPirtMTuAElM+nNegFC5iRDWiu7WnSjQ3SCOKvZDRKj1fdEKL16XyWGzNDz5Z0I3hSnBvuqREhh0VuQ0grq3HtHttJUKCvINNI/tVXwWoRa4yfsRWaVGLAXDKzkRVk+YcswVzKMQWY/u0hzNKkbFcF5Y/0DRdebG1MmyF1irOAO6Q2EUkFLYq64BhUMJjgZqVsTzc46kHL7FvcPpS5I5sT1uzqiwQxA3o17bP73g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MW6PR12MB8897.namprd12.prod.outlook.com (2603:10b6:303:24a::19)
+ by MN0PR12MB6341.namprd12.prod.outlook.com (2603:10b6:208:3c2::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.15; Fri, 21 Feb
+ 2025 14:54:20 +0000
+Received: from MW6PR12MB8897.namprd12.prod.outlook.com
+ ([fe80::7c55:5a45:be80:e971]) by MW6PR12MB8897.namprd12.prod.outlook.com
+ ([fe80::7c55:5a45:be80:e971%4]) with mapi id 15.20.8445.017; Fri, 21 Feb 2025
+ 14:54:20 +0000
+From: "Matthew R. Ochs" <mochs@nvidia.com>
+To: qemu-devel@nongnu.org, nicolinc@nvidia.com, nathanc@nvidia.com,
+ peter.maydell@linaro.org
+Cc: eric.auger@redhat.com, qemu-arm@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com, ddutile@redhat.com,
+ ankita@nvidia.com, philmd@linaro.org, gshan@redhat.com
+Subject: [PATCH v6] hw/arm/virt: Support larger highmem MMIO regions
+Date: Fri, 21 Feb 2025 06:54:19 -0800
+Message-ID: <20250221145419.1281890-1-mochs@nvidia.com>
+X-Mailer: git-send-email 2.46.0
+X-NVConfidentiality: public
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.424,
+Content-Type: text/plain
+X-ClientProxiedBy: SJ0PR03CA0123.namprd03.prod.outlook.com
+ (2603:10b6:a03:33c::8) To MW6PR12MB8897.namprd12.prod.outlook.com
+ (2603:10b6:303:24a::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW6PR12MB8897:EE_|MN0PR12MB6341:EE_
+X-MS-Office365-Filtering-Correlation-Id: c05b0c6d-3b0a-4bfe-3f1e-08dd52879f4e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Z/khCg3gb5LoL8tdCYPueeO/TY6kzR/cflROjDeTDDq8J7N1AKWaCeKD7pBW?=
+ =?us-ascii?Q?bCC4K9dkii3WrJE+QNUdweX/I/DFuujiMZmf3pNrqbmXSLLSuaUq0EHz0fcQ?=
+ =?us-ascii?Q?8M25uQVuDh0OGrIU9OmSlb0TKftiREUY1SmhBc9XBLTx3yMrjVZQKy09j3hZ?=
+ =?us-ascii?Q?25ZiFxcEhQ9iDuE875TxUwtu+58aQI06bG4Y+hm5mj7Pqr730Satft0Bs2Qb?=
+ =?us-ascii?Q?t5PhcZrmCdVBloKlTHGnRS26pFHFNSafk2ixlOoVaWwjlLt3eSurrWy0NABe?=
+ =?us-ascii?Q?d9oz8aZDlpZEXbwhIFLb2iv3v7fZspuCw4KfUbDsG+xf1kdEIvo0x0ACf1mR?=
+ =?us-ascii?Q?bI4kGsBrINmxAT/IEblMaJwc7kQHS8lfmCWxiyxfLrRIwo/MYuETjSV8mWY5?=
+ =?us-ascii?Q?wxmxAbK1i0paayUp+4tADItcJ110eK9LQ/sb/1cixtBbpzA80apX0jrDoN0Q?=
+ =?us-ascii?Q?WJLb6oZ0O8VPJoBgHoPOcmIYIJ8PUeDCGT1OHccQJuG9KnSTbRzAAKS0+z7Y?=
+ =?us-ascii?Q?H9C6WxcoURZ/xFsUIM3ML+95h39/s6tXtxmL/NS1AW4VOWuyVvSUVtvJBD87?=
+ =?us-ascii?Q?LzAtT9TYCU33A5XfHd09FjhCtvQZAX2Y2zYl4gnfpoqz+hP54+kg0U/SID1s?=
+ =?us-ascii?Q?1rURS4QWRYMXrisJkqoAOab135qgiqA5+YS4nHkWwxrLobBohq9VTbgC2RY6?=
+ =?us-ascii?Q?E2x519hiDvkPuevm3sTBLmiAklAUxQZYFyxQ2MO3qqX+QCPwm2G6hJqfOX0w?=
+ =?us-ascii?Q?9HLq1SwVN9eseDaMe2r3jVXomkWGpJtCEKVsqS5vz/Wob9zucjfwKNDe1xdw?=
+ =?us-ascii?Q?v9uHxyRVzEaRjcAbU8K87hAGUewt6rntKEkaVmk9N2Ov9jQ3qBi3YCSFTtHQ?=
+ =?us-ascii?Q?dh9nH9mCC7N0TL40Z/r+vyYDeA8tRqnDFRIQwapF8oyQU/Ms2uZU3jaCrMp7?=
+ =?us-ascii?Q?0FtpjasXpZ4w0XCSlY4Juf3fd11maevRVaboL2plYSMdDOtm9fl/Dhizy6b1?=
+ =?us-ascii?Q?vjhQJ0WLqARghZim4OQKndApIOOlYSBYzwlxjS2SQvvakq3UR0hidtcZdED6?=
+ =?us-ascii?Q?plfTl9vyltISHVvW3+ADdFNKDIaO6WGwqvoC7bsqa+30FTUQEoW5v9cPKqax?=
+ =?us-ascii?Q?Ms2jI/BuL0fQX2p+xStBaWa9ZzP944gyCYc6R6BB1TZwV5vTbcK7/DUKdY7Q?=
+ =?us-ascii?Q?ccS0oQ4S7KE/seX9AlG5aSa7B6wV1m3MEL0YSJyjeQFkH9D90mXKw9cFRNDP?=
+ =?us-ascii?Q?AMNaL4doY8MU6QFYSDinm2stmPWpm8Gu/1GZE5BdQhXkgfI09+sbw77j/PlY?=
+ =?us-ascii?Q?Si25eIkK8PHgivUtpa8yw7W/e20VVNK7RZ1pmUoOLfjIYxaSuS8Te3L1tmqx?=
+ =?us-ascii?Q?R2sQiSaZoURQhlxkSyXeSE8/6ABt?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW6PR12MB8897.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?B/sFn0qM/hP4bc/6VA9Vu83mRYfVd+l2YGBH4VuqBZxc6YNowPzi3J0r/+N+?=
+ =?us-ascii?Q?SzqBEpbFUIOfKEld1ntOfB0A3Cjz9/AVwhwPUxoW2qGkfNIJEMBbGz7Z16qk?=
+ =?us-ascii?Q?oELQgySvdPTJd6EbhifkhHA3d7dSQZGTO5QqroDqT150Vlla61ZaV2nOTz+F?=
+ =?us-ascii?Q?abwxokD5oppuktXC7eHt5cHfZ1Vb17GyS0xCJkwGlex6URJ16uFA1w72cTdf?=
+ =?us-ascii?Q?DgQ1hQwGE5BUIHHvO9NELpIgNkx0A/V5XMMSUdTnyjUTBwrBLz8Rn25mgcr0?=
+ =?us-ascii?Q?cZyn2qYcQcUc6F3E9UuLzzM0DJjAGJOk2sUQP3eTOO0WBoqDqy1uFWi5FN7l?=
+ =?us-ascii?Q?jdtMLPXduD9AM/ZMGf8uTrkij6v0wi7sh+yk9tIOojdMgEauuWkQOnm9SM8F?=
+ =?us-ascii?Q?BhkCg2Nt7O+sy+2b+HHTTNAPoko75RNa5ctwK7wNl0yX1uR/Xs9mpTl9X1SL?=
+ =?us-ascii?Q?naLQT+nc0JdJ/ZePoTeeSN3paE7mLR7bARfp51xVBFkz25fwqi6vJXm2xNHI?=
+ =?us-ascii?Q?o8wp182r10pnqHY1ZGkSVLrxTRKFTfcXjttNYNOdThu2sFZRd6F9tG+8XRoY?=
+ =?us-ascii?Q?+k8eaZ1cSYodGyLoExJPaKWZkBz7lsCRiNMrRcr7DRGxgis2qsZhtGMpVInv?=
+ =?us-ascii?Q?cUw6CLfz6VYIRVo7aUI7jLwRUas/IqeWcrBPEkhZ3zcrPdZ447BZFNnIR/IK?=
+ =?us-ascii?Q?xSKNiYE+9nWvDs5xSCJNErLhrwJ9/iU9a2RtBMwMBM8MmuO0oyRI/EVRaXev?=
+ =?us-ascii?Q?PmhHHq40CDdfj6vaGSjM3B4Y02ZPZOvyi7209Oae6pAoAkdBoMvg2Pm7xQnd?=
+ =?us-ascii?Q?7bvZbSWbHIut9zu5xqndskS0zubX5UF8fH+BHB2ldTHHL13/iXguNxCeTzBi?=
+ =?us-ascii?Q?onHVMAMkW16eKG9wSStZSZV41tgzSSTwTxWeIKlTy5so1PvWoYqsuCKyPzQJ?=
+ =?us-ascii?Q?hMn/oexaalgTqTT6/9sfTNqyVbE5vM5Pzsu9ecEXGR5oNSMzE99TULtz/upR?=
+ =?us-ascii?Q?YHoy2qzt7B/GLtOukIiw8PiELFUquArs8nMM6jgomvCBnWIlMiUwKjiTwyM9?=
+ =?us-ascii?Q?piGw53LxloABFxTQMhfYC/G/btfFxQ5F6OntGCWDiIW24Eu5VFUW+S1gD81D?=
+ =?us-ascii?Q?/RdIKa/jxIACCq08Y3DgMoI0jTRoT1ups0xM5ab+EncHlN6LoyQdZNyiomhb?=
+ =?us-ascii?Q?BXBasac9oEG78+qJx4Do2sHjx4bMsJCzxgL4Jytt8vs9cWdp3lEoKnvGkk8W?=
+ =?us-ascii?Q?j8XaFOMAAyNr3XWBkqhI3i6tspWG1KfCNaqFVjPF+kTY29v2akV4V5ZR2TTg?=
+ =?us-ascii?Q?h8I2/dDz7qOZV4uCaAggvJnO86J2RGPs8jKgcuVaNQlNFcsmTJCXqa7IeQRf?=
+ =?us-ascii?Q?4ZQ/fL3Y7EZjLE5lk2qhZxB/ywnEMAbjvwJ8R8dudkjrzlbMKR1sB/UXHSUI?=
+ =?us-ascii?Q?QF+32kwINQBT4X5N0LcRadVoPf0hnM4xDTaRiyygJOpJOfPYhjf+WgUm0Rjc?=
+ =?us-ascii?Q?DoE/OhYetzemjEQKoOVEEUqSKnVIAD6jspaz+BUmoe0OZ55QWQkkKJ7A/ab0?=
+ =?us-ascii?Q?YdU/yzh4U8PVbbY7FuReon+n3o1EICGjgMlGbWt+?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c05b0c6d-3b0a-4bfe-3f1e-08dd52879f4e
+X-MS-Exchange-CrossTenant-AuthSource: MW6PR12MB8897.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Feb 2025 14:54:20.4696 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: c45yxaIzRym+7jGcB5JHo6sZcB0MgSgCfFmO+d91HDDbpUKO1shZ0DSSfGNiP8J32O7jT70G43vhgKv36uZobA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6341
+Received-SPF: softfail client-ip=2a01:111:f403:200a::613;
+ envelope-from=mochs@nvidia.com;
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.424,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,171 +194,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wr2M9oHfUGXU
+X-TUID: UuzUe0uKvv6U
 
-There are two pointers that are needed during error injection:
+The MMIO region size required to support virtualized environments with
+large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
+For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed through
+requires more MMIO memory than the amount provided by VIRT_HIGH_PCIE_MMIO
+(currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
+new parameter, highmem-mmio-size, that specifies the MMIO size required
+to support the VM configuration.
 
-1. The start address of the CPER block to be stored;
-2. The address of the ack.
+Example usage with 1TB MMIO region size:
+	-machine virt,gic-version=3,highmem-mmio-size=1T
 
-It is preferable to calculate them from the HEST table.  This allows
-checking the source ID, the size of the table and the type of the
-HEST error block structures.
-
-Yet, keep the old code, as this is needed for migration purposes.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 ---
- hw/acpi/ghes.c         | 100 +++++++++++++++++++++++++++++++++++++++++
- include/hw/acpi/ghes.h |   2 +-
- 2 files changed, 101 insertions(+), 1 deletion(-)
+v6: - Fixed minor coding style nit
+v5: - Removed hyphens from power of 2
+    - Consistently use property name in all error messages
+    - Use #defines for default high PCIE MMIO size
+    - Use size_to_str() when printing size values
+    - Add comment clarifying that highmem-mmio-size will
+      update the corresponding value in extended_memmap
+v4: - Added default size to highmem-mmio-size description
+v3: - Updated highmem-mmio-size description
+v2: - Add unit suffix to example in commit message
+    - Use existing "high memory region" terminology
+    - Resolve minor braces nit
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index ba37be9e7022..7efea519f766 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -41,6 +41,12 @@
- /* Address offset in Generic Address Structure(GAS) */
- #define GAS_ADDR_OFFSET 4
+ docs/system/arm/virt.rst |  4 ++++
+ hw/arm/virt.c            | 52 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 55 insertions(+), 1 deletion(-)
+
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 0c9c2ce0351c..adf446c0a295 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -144,6 +144,10 @@ highmem-mmio
+   Set ``on``/``off`` to enable/disable the high memory region for PCI MMIO.
+   The default is ``on``.
  
-+/*
-+ * ACPI spec 1.0b
-+ * 5.2.3 System Description Table Header
-+ */
-+#define ACPI_DESC_HEADER_OFFSET     36
++highmem-mmio-size
++  Set the high memory region size for PCI MMIO. Must be a power of 2 and
++  greater than or equal to the default size (512G).
++
+ gic-version
+   Specify the version of the Generic Interrupt Controller (GIC) to provide.
+   Valid values are:
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4a5a9666e916..ee69081ef421 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -53,6 +53,7 @@
+ #include "hw/loader.h"
+ #include "qapi/error.h"
+ #include "qemu/bitops.h"
++#include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/pci-host/gpex.h"
+@@ -192,6 +193,10 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_MEM] =                { GiB, LEGACY_RAMLIMIT_BYTES },
+ };
+ 
++/* Update the docs for highmem-mmio-size when changing this default */
++#define DEFAULT_HIGH_PCIE_MMIO_SIZE_GB 512
++#define DEFAULT_HIGH_PCIE_MMIO_SIZE (DEFAULT_HIGH_PCIE_MMIO_SIZE_GB * GiB)
 +
  /*
-  * The total size of Generic Error Data Entry
-  * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-@@ -61,6 +67,30 @@
+  * Highmem IO Regions: This memory map is floating, located after the RAM.
+  * Each MemMapEntry base (GPA) will be dynamically computed, depending on the
+@@ -207,13 +212,16 @@ static const MemMapEntry base_memmap[] = {
+  * PA space for one specific region is always reserved, even if the region
+  * has been disabled or doesn't fit into the PA space. However, the PA space
+  * for the region won't be reserved in these circumstances with compact layout.
++ *
++ * Note that the highmem-mmio-size property will update the high PCIE MMIO size
++ * field in this array.
   */
- #define ACPI_GHES_GESB_SIZE                 20
+ static MemMapEntry extended_memmap[] = {
+     /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+     [VIRT_HIGH_GIC_REDIST2] =   { 0x0, 64 * MiB },
+     [VIRT_HIGH_PCIE_ECAM] =     { 0x0, 256 * MiB },
+     /* Second PCIe window */
+-    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 512 * GiB },
++    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE },
+ };
  
-+/*
-+ * See the memory layout map at docs/specs/acpi_hest_ghes.rst.
-+ */
-+
-+/*
-+ * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source version 2
-+ * Table 18-344 Generic Hardware Error Source version 2 (GHESv2) Structure
-+ */
-+#define HEST_GHES_V2_ENTRY_SIZE  92
-+
-+/*
-+ * ACPI 6.1: 18.3.2.7: Generic Hardware Error Source
-+ * Table 18-344 Generic Hardware Error Source version 2 (GHESv2) Structure
-+ * Read Ack Register
-+ */
-+#define GHES_READ_ACK_ADDR_OFF          64
-+
-+/*
-+ * ACPI 6.1: 18.3.2.7: Generic Hardware Error Source
-+ * Table 18-341 Generic Hardware Error Source Structure
-+ * Error Status Address
-+ */
-+#define GHES_ERR_STATUS_ADDR_OFF  20
-+
- /*
-  * Values for error_severity field
-  */
-@@ -412,6 +442,73 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
+ static const int a15irqmap[] = {
+@@ -2550,6 +2558,40 @@ static void virt_set_highmem_mmio(Object *obj, bool value, Error **errp)
+     vms->highmem_mmio = value;
  }
  
-+static void get_ghes_source_offsets(uint16_t source_id,
-+                                    uint64_t hest_addr,
-+                                    uint64_t *cper_addr,
-+                                    uint64_t *read_ack_start_addr,
-+                                    Error **errp)
++static void virt_get_highmem_mmio_size(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
 +{
-+    uint64_t hest_err_block_addr, hest_read_ack_addr;
-+    uint64_t err_source_entry, error_block_addr;
-+    uint32_t num_sources, i;
++    uint64_t size = extended_memmap[VIRT_HIGH_PCIE_MMIO].size;
 +
-+    hest_addr += ACPI_DESC_HEADER_OFFSET;
++    visit_type_size(v, name, &size, errp);
++}
 +
-+    cpu_physical_memory_read(hest_addr, &num_sources,
-+                             sizeof(num_sources));
-+    num_sources = le32_to_cpu(num_sources);
++static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
++{
++    uint64_t size;
 +
-+    err_source_entry = hest_addr + sizeof(num_sources);
-+
-+    /*
-+     * Currently, HEST Error source navigates only for GHESv2 tables
-+     */
-+    for (i = 0; i < num_sources; i++) {
-+        uint64_t addr = err_source_entry;
-+        uint16_t type, src_id;
-+
-+        cpu_physical_memory_read(addr, &type, sizeof(type));
-+        type = le16_to_cpu(type);
-+
-+        /* For now, we only know the size of GHESv2 table */
-+        if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
-+            error_setg(errp, "HEST: type %d not supported.", type);
-+            return;
-+        }
-+
-+        /* Compare CPER source address at the GHESv2 structure */
-+        addr += sizeof(type);
-+        cpu_physical_memory_read(addr, &src_id, sizeof(src_id));
-+        if (le16_to_cpu(src_id) == source_id) {
-+            break;
-+        }
-+
-+        err_source_entry += HEST_GHES_V2_ENTRY_SIZE;
-+    }
-+    if (i == num_sources) {
-+        error_setg(errp, "HEST: Source %d not found.", source_id);
++    if (!visit_type_size(v, name, &size, errp)) {
 +        return;
 +    }
 +
-+    /* Navigate though table address pointers */
-+    hest_err_block_addr = err_source_entry + GHES_ERR_STATUS_ADDR_OFF +
-+                          GAS_ADDR_OFFSET;
++    if (!is_power_of_2(size)) {
++        error_setg(errp, "highmem-mmio-size is not a power of 2");
++        return;
++    }
 +
-+    cpu_physical_memory_read(hest_err_block_addr, &error_block_addr,
-+                             sizeof(error_block_addr));
-+    error_block_addr = le64_to_cpu(error_block_addr);
++    if (size < DEFAULT_HIGH_PCIE_MMIO_SIZE) {
++        char *sz = size_to_str(DEFAULT_HIGH_PCIE_MMIO_SIZE);
++        error_setg(errp, "highmem-mmio-size cannot be set to a lower value "
++                         "than the default (%s)", sz);
++        g_free(sz);
++        return;
++    }
 +
-+    cpu_physical_memory_read(error_block_addr, cper_addr,
-+                             sizeof(*cper_addr));
-+    *cper_addr = le64_to_cpu(*cper_addr);
-+
-+    hest_read_ack_addr = err_source_entry + GHES_READ_ACK_ADDR_OFF +
-+                         GAS_ADDR_OFFSET;
-+    cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
-+                             sizeof(*read_ack_start_addr));
-+    *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
++    extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
 +}
-+
- void ghes_record_cper_errors(const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
+ 
+ static bool virt_get_its(Object *obj, Error **errp)
  {
-@@ -437,6 +534,9 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     if (!ags->use_hest_addr) {
-         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-                              &cper_addr, &read_ack_register_addr);
-+    } else {
-+        get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
-+                                &cper_addr, &read_ack_register_addr, errp);
-     }
+@@ -3207,6 +3249,14 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "Set on/off to enable/disable high "
+                                           "memory region for PCI MMIO");
  
-     if (!cper_addr) {
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 454e97b5341c..2f06e433ce04 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -80,7 +80,7 @@ enum {
- typedef struct AcpiGhesState {
-     uint64_t hest_addr_le;
-     uint64_t hw_error_le;
--    bool use_hest_addr;         /* Currently, always false */
-+    bool use_hest_addr; /* True if HEST address is present */
- } AcpiGhesState;
- 
- void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
++    object_class_property_add(oc, "highmem-mmio-size", "size",
++                                   virt_get_highmem_mmio_size,
++                                   virt_set_highmem_mmio_size,
++                                   NULL, NULL);
++    object_class_property_set_description(oc, "highmem-mmio-size",
++                                          "Set the high memory region size "
++                                          "for PCI MMIO");
++
+     object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
+                                   virt_set_gic_version);
+     object_class_property_set_description(oc, "gic-version",
 -- 
-2.48.1
+2.46.0
 

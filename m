@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp296743njc;
-        Fri, 21 Feb 2025 05:54:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWuFSoFpX5VKjp/C+9NK+dyQA8Nrf+ONDG9Gglo0BDFHcMwzx9TOg+uABg4oHCqJHo3JDKVNVZdW+uPSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG81KeNiOT4Z7tYHLTy5erTZC09X4oGlxqM8d9ZQxE2oGxZowjcMFgGlRYjOXlSQIk9wx74
-X-Received: by 2002:a05:6214:c4b:b0:6e6:6598:43a4 with SMTP id 6a1803df08f44-6e6ae82edb4mr44559276d6.21.1740146059422;
-        Fri, 21 Feb 2025 05:54:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740146059; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp305629njc;
+        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX9/W/TWVFcw0vFGoaCDOQVfCEM+7ByVuN6jDCVGyCofEDnWWB3EgQrRwJRNfwmCJ4vWfyvPxCVhuVO5w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnx33QG4IY6ffYOcJyIf80EL4eKKoXqgxzNFeJJdMAo+t1MGNAwznyahMQcwoXHbuygta8
+X-Received: by 2002:a05:620a:2454:b0:7c0:ae97:7fbb with SMTP id af79cd13be357-7c0cf8aec73mr371030585a.5.1740146748400;
+        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740146748; cv=none;
         d=google.com; s=arc-20240605;
-        b=QMaHhuJ3u+iFVVRI47dZICN+0pWVZqudPLzic40qrw5U5W+YdfZQK2FjmRibvHkB7A
-         yKTjn7mDbxMUdjpL7oppky9zPtTRAwOjvZwv3XLhMdEpDhOLTokkOSOMVkznwYOcsu04
-         Ksnl2Koejb/sOZXXJHTdYois6NXXTAyTdZe641/xL16RktnKJIPXVoHmVYsqBPihbTRS
-         veWa7eilXQpg/QoDvzqG5x1clHgF1QxzGBrQWz2kPBUcTJMbjP0Nb6gKCjF7k756RKg6
-         JhRRx/IAkL5CWAQYRImllq002XHohOvk8Ewp4GTorHwBCRsHVTwkkv+/V3cLz/l5m1Oj
-         YeRg==
+        b=kn3ouUr1aqij2kst9NyGajey5PsV4IZVxRkrKNZ5bjwV26ubkicFOsco9ZsHHIa8zY
+         rFZwD/1dovqL4nPB1XstzYx23APQu9iGR10KL/yw6mkkSCq++33j4vkJDgqhJOEBXN9i
+         Z7rd/ayjrvEjKAq8E4rXxbzrozHgl/jN99mNtc7bBIhjg+8n7kWn6IRCvPQRMA+IYejB
+         qTci9NwmPXLnxmQjeHo1LznHPjXl3onEKPD9ZpRavFogGbaXsr7gFT3SCoX2EWVDiWYl
+         +eJ690QQ+NcOXrSn+oDtjMOP4wNoH9mHlzyozaPB5e3Ih9Me2QVKFdGncFIHpLkhGOyt
+         O4Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=JTUcbhTZtOPhp7LZ+ZWAdkNtQRl4Vy4P7Rhy/uYvOLA=;
+        bh=HV6hKgNgs9TmBShvJcmR4aLAxSiAih6J5IZc808Zfmw=;
         fh=uYgLQ/RASatA36862a0CBA0fRsT+kExSFwR1sQIxk/c=;
-        b=kCx1HrHUAFz2fOs2rpodBqy6WQZv/k/nj1LSnqqMEPoOfEv6u2XU4bmRFsufpcjpO7
-         ai7pfxqkulRmM6wBD3uWDznQFbCmeKrvGiJoEOv8wCcHtnokxghmdLfuBgEbn2W06cq7
-         dIGNTr9tWylCn0n1eW+An26NrWDjDO0bbPI5QP1mWacwQLxgMCAYHBDlLerznD62xW5r
-         aZHvAVHflb1csc6gFlKW3aRhItL7v9W3QWiqpgO372ojwix5pdegz9DPPkQ4uP/IKlXw
-         QOGH8O+wQOppQKZna0vBsW/dTeSZ1+S8hRbqJL+7l37n6ho72KUjnQOARkcwoGJ+TPRi
-         dfNA==;
+        b=FyrFWtmQfusVu4CBxY3N5S5hXJ3/lkDdpUjwBPe7qdDPWV3XAbyniBeW3MyThackcH
+         WLwR/4vETZOwEgzaJvYBCDf78k5+885ppxnSNn/PAj79wmVGFk35J01FmmlV997NSOZI
+         T1AHCEGtBFJXUX/aTTksF5578Ic6mmdJSLX9fw/WfW9UMV0o0Jbld61r7iAaQQEd+DLv
+         y37kLxujjVnR6vqfQqKF3IcCjJne0z58C9TKhjX8ip4+HxKMNKvV8ayT/QmUGzZGigvh
+         1LqbtA4gauFYRERkRcMOGEvc9jlw5YcnMfSgL/kiQFq2+r76QeK1MCdUpamURuVMUV/1
+         k6Fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e694bf9f68si60052376d6.475.2025.02.21.05.54.19
+        by mx.google.com with ESMTPS id af79cd13be357-7c0a16d90bbsi928390085a.137.2025.02.21.06.05.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2025 05:54:19 -0800 (PST)
+        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tlTTU-0004lx-TH; Fri, 21 Feb 2025 08:53:53 -0500
+	id 1tlTea-0001d9-Pr; Fri, 21 Feb 2025 09:05:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
- id 1tlTTT-0004lm-Kx; Fri, 21 Feb 2025 08:53:51 -0500
+ id 1tlTeT-0001U2-2i; Fri, 21 Feb 2025 09:05:14 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
- id 1tlTTR-00080U-IK; Fri, 21 Feb 2025 08:53:51 -0500
+ id 1tlTeP-0002xz-55; Fri, 21 Feb 2025 09:05:12 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Yzs6Y1SvSz4wyl;
- Sat, 22 Feb 2025 00:53:41 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YzsMg1qTRz4wy6;
+ Sat, 22 Feb 2025 01:05:03 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Yzs6T5Y7Wz4wxh;
- Sat, 22 Feb 2025 00:53:36 +1100 (AEDT)
-Message-ID: <68c95702-8ccb-43b7-bb1f-afc37c8d727d@kaod.org>
-Date: Fri, 21 Feb 2025 14:53:32 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YzsMb4zdMz4wby;
+ Sat, 22 Feb 2025 01:04:59 +1100 (AEDT)
+Message-ID: <de3c13e9-f0e0-4c4b-8a31-457c84628119@kaod.org>
+Date: Fri, 21 Feb 2025 15:04:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 21/28] hw/misc/aspeed_hace: Fix boot issue in the
- Crypto Manager Self Test
+Subject: Re: [PATCH v3 04/28] hw/arm/aspeed: Rename IRQ table and machine name
+ for AST2700 A0
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,9 +72,9 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
- <20250213033531.3367697-22-jamin_lin@aspeedtech.com>
- <51b4d012-db0c-42b1-ae0e-2b28751bc2a4@kaod.org>
- <SI2PR06MB5041F4186411EE60CB26CC44FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <20250213033531.3367697-5-jamin_lin@aspeedtech.com>
+ <f3dd3423-8f6d-48ce-80f2-3381550948b7@kaod.org>
+ <SI2PR06MB50418E5359B59E7902B84A05FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI2PR06MB5041F4186411EE60CB26CC44FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <SI2PR06MB50418E5359B59E7902B84A05FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -144,31 +144,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0FA7RMX/tjgW
+X-TUID: G0uzFmZJWjsw
 
-On 2/21/25 06:43, Jamin Lin wrote:
+On 2/21/25 03:23, Jamin Lin wrote:
 > Hi Cedric,
 > 
->> Subject: Re: [PATCH v3 21/28] hw/misc/aspeed_hace: Fix boot issue in the
->> Crypto Manager Self Test
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>
+>> Subject: Re: [PATCH v3 04/28] hw/arm/aspeed: Rename IRQ table and machine
+>> name for AST2700 A0
 >>
 >> On 2/13/25 04:35, Jamin Lin wrote:
->>> Currently, it does not support the CRYPT command. Instead, it only
->>> sends an interrupt to notify the firmware that the crypt command has
->> completed.
->>> It is a temporary workaround to resolve the boot issue in the Crypto
->>> Manager Self Test.
+>>> Currently, AST2700 SoC only supports A0. To support AST2700 A1, rename
+>>> its IRQ table and machine name.
 >>>
 >>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>    hw/arm/aspeed.c         | 8 ++++----
+>>>    hw/arm/aspeed_ast27x0.c | 8 ++++----
+>>>    2 files changed, 8 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
+>>> d9418e2b9f..6ddfdbdeba 100644
+>>> --- a/hw/arm/aspeed.c
+>>> +++ b/hw/arm/aspeed.c
+>>> @@ -1654,12 +1654,12 @@ static void
+>> ast2700_evb_i2c_init(AspeedMachineState *bmc)
+>>>                                TYPE_TMP105, 0x4d);
+>>>    }
+>>>
+>>> -static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc,
+>>> void *data)
+>>> +static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
+>>> +void *data)
+>>>    {
+>>>        MachineClass *mc = MACHINE_CLASS(oc);
+>>>        AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>>>
+>>> -    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
+>>> +    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
+>>>        amc->soc_name  = "ast2700-a0";
+>>>        amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+>>>        amc->hw_strap2 = AST2700_EVB_HW_STRAP2; @@ -1795,9 +1795,9
+>> @@
+>>> static const TypeInfo aspeed_machine_types[] = {
+>>>            .class_init     =
+>> aspeed_minibmc_machine_ast1030_evb_class_init,
+>>>    #ifdef TARGET_AARCH64
+>>>        }, {
+>>> -        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
+>>> +        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
 >>
->> Please add an AspeedHACEClass class attribute (bool) to handle this
->> workaround and a comment in the code mentioning the issue.
+>> machine "ast2700-evb" has now disappeared from QEMU. You need to add an
+>> alias with "mc->alias" to restore the initial machine name, or follow the
+> 
+> 
+> Will add
+> 
+>> deprecation process :
 >>
-> Thanks for review and suggestion.
-> I will add the use_crypt_workaround attribute to the AspeedHACEClass and introduce the use-crypt-workaround property.
-> Do you have any concerns, or do you have a preferred naming convention?
+>>     https://qemu.readthedocs.io/en/v9.2.0/about/deprecated.html
+>>
+> Thanks for letting me know about the machine deprecation rules.
+> I understand why you suggest aliasing the initial machine "ast2700-evb" to "ast2700a0-evb."
 
-May be 'raise_crypt_interrupt_workaround' to reflect what is being done ?
+yes. This to maintain compatibility for the user.
+
+Also, this change is breaking the tests. Please run 'make check'
+  
+> To follow the machine deprecation rule, the initial machine "ast2700-evb" is aliased to "ast2700a0-evb."
+
+You don't need the alias to deprecate a machine. You need the alias
+to maintain compatibility when renaming a machine.
+
+To deprecate, you should update docs/about/deprecated.rst.
+
+> In the future, we will alias "ast2700-evb" to new SoCs, such as "ast2700a1-evb."
+
+Yes we could do that.
+
+Or we could keep the ast2700a0-evb and ast2700a1-evb machines,
+change the alias to point to ast2700a1-evb first and later on
+deprecate ast2700a0-evb.
+
 
 Thanks,
 
@@ -176,58 +233,66 @@ C.
 
 
 
+> Does this progress meet your expectations?
+> 
 > Thanks-Jamin
 > 
->>
 >> Thanks,
 >>
 >> C.
 >>
 >>
 >>
->>> ---
->>>    hw/misc/aspeed_hace.c | 12 ++++++++++++
->>>    1 file changed, 12 insertions(+)
+>>>            .parent        = TYPE_ASPEED_MACHINE,
+>>> -        .class_init    = aspeed_machine_ast2700_evb_class_init,
+>>> +        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
+>>>    #endif
+>>>        }, {
+>>>            .name          = TYPE_ASPEED_MACHINE,
+>>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
+>>> 2d0c99f159..6e3375f5d3 100644
+>>> --- a/hw/arm/aspeed_ast27x0.c
+>>> +++ b/hw/arm/aspeed_ast27x0.c
+>>> @@ -72,7 +72,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] =
+>> {
+>>>    #define AST2700_MAX_IRQ 256
 >>>
->>> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c index
->>> 86422cb3be..4d0999e7e9 100644
->>> --- a/hw/misc/aspeed_hace.c
->>> +++ b/hw/misc/aspeed_hace.c
->>> @@ -59,6 +59,7 @@
->>>    /* Other cmd bits */
->>>    #define  HASH_IRQ_EN                    BIT(9)
->>>    #define  HASH_SG_EN                     BIT(18)
->>> +#define  CRYPT_IRQ_EN                   BIT(12)
->>>    /* Scatter-gather data list */
->>>    #define SG_LIST_LEN_SIZE                4
->>>    #define SG_LIST_LEN_MASK                0x0FFFFFFF
->>> @@ -343,6 +344,13 @@ static void aspeed_hace_write(void *opaque,
->> hwaddr addr, uint64_t data,
->>>                    qemu_irq_lower(s->irq);
->>>                }
->>>            }
->>> +        if (data & CRYPT_IRQ) {
->>> +            data &= ~CRYPT_IRQ;
->>> +
->>> +            if (s->regs[addr] & CRYPT_IRQ) {
->>> +                qemu_irq_lower(s->irq);
->>> +            }
->>> +        }
->>>            break;
->>>        case R_HASH_SRC:
->>>            data &= ahc->src_mask;
->>> @@ -388,6 +396,10 @@ static void aspeed_hace_write(void *opaque,
->> hwaddr addr, uint64_t data,
->>>        case R_CRYPT_CMD:
->>>            qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not
->> implemented\n",
->>>                           __func__);
->>> +        s->regs[R_STATUS] |= CRYPT_IRQ;
->>> +        if (data & CRYPT_IRQ_EN) {
->>> +            qemu_irq_raise(s->irq);
->>> +        }
->>>            break;
->>>        default:
->>>            break;
+>>>    /* Shared Peripheral Interrupt values below are offset by -32 from
+>>> datasheet */ -static const int aspeed_soc_ast2700_irqmap[] = {
+>>> +static const int aspeed_soc_ast2700a0_irqmap[] = {
+>>>        [ASPEED_DEV_UART0]     = 132,
+>>>        [ASPEED_DEV_UART1]     = 132,
+>>>        [ASPEED_DEV_UART2]     = 132,
+>>> @@ -740,7 +740,7 @@ static void aspeed_soc_ast2700_realize(DeviceState
+>> *dev, Error **errp)
+>>>        create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
+>>>    }
+>>>
+>>> -static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void
+>>> *data)
+>>> +static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void
+>>> +*data)
+>>>    {
+>>>        static const char * const valid_cpu_types[] = {
+>>>            ARM_CPU_TYPE_NAME("cortex-a35"), @@ -763,7 +763,7 @@
+>> static
+>>> void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
+>>>        sc->uarts_num    = 13;
+>>>        sc->num_cpus     = 4;
+>>>        sc->uarts_base   = ASPEED_DEV_UART0;
+>>> -    sc->irqmap       = aspeed_soc_ast2700_irqmap;
+>>> +    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
+>>>        sc->memmap       = aspeed_soc_ast2700_memmap;
+>>>        sc->get_irq      = aspeed_soc_ast2700_get_irq;
+>>>    }
+>>> @@ -778,7 +778,7 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
+>>>            .name           = "ast2700-a0",
+>>>            .parent         = TYPE_ASPEED27X0_SOC,
+>>>            .instance_init  = aspeed_soc_ast2700_init,
+>>> -        .class_init     = aspeed_soc_ast2700_class_init,
+>>> +        .class_init     = aspeed_soc_ast2700a0_class_init,
+>>>        },
+>>>    };
+>>>
 > 
 

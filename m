@@ -1,298 +1,162 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp305629njc;
-        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX9/W/TWVFcw0vFGoaCDOQVfCEM+7ByVuN6jDCVGyCofEDnWWB3EgQrRwJRNfwmCJ4vWfyvPxCVhuVO5w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEnx33QG4IY6ffYOcJyIf80EL4eKKoXqgxzNFeJJdMAo+t1MGNAwznyahMQcwoXHbuygta8
-X-Received: by 2002:a05:620a:2454:b0:7c0:ae97:7fbb with SMTP id af79cd13be357-7c0cf8aec73mr371030585a.5.1740146748400;
-        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740146748; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp327287njc;
+        Fri, 21 Feb 2025 06:35:43 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWFQl06JL3VFWzLj61PUlf+NedEKt4znabNWcgxU0PuKL6DCwYTZpltfvDM3IWjvpG4XuJbaoPU4bZzZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH069VqdSf9h3mWoSITUfdOITM9UInYXzGBz14GpRJUCCj8G6+Tz9EdtpVFe64JF1nr+fs6
+X-Received: by 2002:a05:622a:152:b0:460:aa51:8411 with SMTP id d75a77b69052e-472228e54bemr29893981cf.24.1740148542786;
+        Fri, 21 Feb 2025 06:35:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740148542; cv=pass;
         d=google.com; s=arc-20240605;
-        b=kn3ouUr1aqij2kst9NyGajey5PsV4IZVxRkrKNZ5bjwV26ubkicFOsco9ZsHHIa8zY
-         rFZwD/1dovqL4nPB1XstzYx23APQu9iGR10KL/yw6mkkSCq++33j4vkJDgqhJOEBXN9i
-         Z7rd/ayjrvEjKAq8E4rXxbzrozHgl/jN99mNtc7bBIhjg+8n7kWn6IRCvPQRMA+IYejB
-         qTci9NwmPXLnxmQjeHo1LznHPjXl3onEKPD9ZpRavFogGbaXsr7gFT3SCoX2EWVDiWYl
-         +eJ690QQ+NcOXrSn+oDtjMOP4wNoH9mHlzyozaPB5e3Ih9Me2QVKFdGncFIHpLkhGOyt
-         O4Qw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=HV6hKgNgs9TmBShvJcmR4aLAxSiAih6J5IZc808Zfmw=;
-        fh=uYgLQ/RASatA36862a0CBA0fRsT+kExSFwR1sQIxk/c=;
-        b=FyrFWtmQfusVu4CBxY3N5S5hXJ3/lkDdpUjwBPe7qdDPWV3XAbyniBeW3MyThackcH
-         WLwR/4vETZOwEgzaJvYBCDf78k5+885ppxnSNn/PAj79wmVGFk35J01FmmlV997NSOZI
-         T1AHCEGtBFJXUX/aTTksF5578Ic6mmdJSLX9fw/WfW9UMV0o0Jbld61r7iAaQQEd+DLv
-         y37kLxujjVnR6vqfQqKF3IcCjJne0z58C9TKhjX8ip4+HxKMNKvV8ayT/QmUGzZGigvh
-         1LqbtA4gauFYRERkRcMOGEvc9jlw5YcnMfSgL/kiQFq2+r76QeK1MCdUpamURuVMUV/1
-         k6Fg==;
+        b=XWON1HlQvIr40+vQiN9pgHG7lpaQkU4/1rMr097OWRAKqdyzqr6d0Zzogst66oqZxV
+         OM8YuOuxmttyCq1I1f0PwRh/RyVyn8aooOVc76iudxV7OdcHaajgw1sdKq0ywk53wzHl
+         dYOWN1OM0CEwWUV3+gd/0HQfGQoYCx4+Boz7QU0z8Hiy28A5rnCGZc8PGpDPNFMkoaV/
+         yfA18JzvQ6JrDfYWWSIhhsTEFmQ7muRmAMI6LQ5s5hRbRhb/uxPUap3X0n9xEh6E+bX0
+         pvVi0H/wkH0S3aVHj61waILk2yhrz3EJ4IVHgF6c/Ag61J8ULGCUgmLFx8wmnYU3AH2U
+         NU/Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=i5WuX+nX3IFTc7+r+jrgxFNLDZ/rv24Dgcg7Ru/wpEg=;
+        fh=BaBMhsa8otE44w+eiuuCkoL0QFe4OiybwLz9x35r5BM=;
+        b=UFAnuqv3cmtH+pzQQUBnlHCAjq2VYYPoxCfN5/m0IoHY70qG3QkR/yb9EwlIuL2TzA
+         6QbaGk5lILxagNdnfRTM69T1wnQ/fs/cYbWWuxtRGf3WozKUu1BqliPaXAB7OHiZw61c
+         TUdrCK+9Kepdvihj7ZY1EAxN3mpbYaJd2SFLXQ6e9AdSijVGnPbFCfm3pKYOudR7H3bm
+         FbdsiiJVRSuVpAOa1R0xBUd40SkpRnZXD1HjaAqtaNihzeFx/uuRDo2pEpo55S38WNuv
+         jwIbVJDO0sLho/PJ2GZR+7WvrWmNF1mk2vMryrpSKDfaesI9xU0cxaQ07K8DQVe6OzaM
+         gWuw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c0a16d90bbsi928390085a.137.2025.02.21.06.05.48
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ifIvxEfL;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id d75a77b69052e-471eca69004si100129881cf.651.2025.02.21.06.35.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2025 06:05:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Feb 2025 06:35:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tlTea-0001d9-Pr; Fri, 21 Feb 2025 09:05:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
- id 1tlTeT-0001U2-2i; Fri, 21 Feb 2025 09:05:14 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org>)
- id 1tlTeP-0002xz-55; Fri, 21 Feb 2025 09:05:12 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YzsMg1qTRz4wy6;
- Sat, 22 Feb 2025 01:05:03 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YzsMb4zdMz4wby;
- Sat, 22 Feb 2025 01:04:59 +1100 (AEDT)
-Message-ID: <de3c13e9-f0e0-4c4b-8a31-457c84628119@kaod.org>
-Date: Fri, 21 Feb 2025 15:04:56 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ifIvxEfL;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-525915-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C76A0173DC5
+	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 14:35:41 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 44D3920FAB4;
+	Fri, 21 Feb 2025 14:35:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ifIvxEfL"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 011387080D
+	for <linux-kernel@vger.kernel.org>; Fri, 21 Feb 2025 14:35:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740148536; cv=none; b=MbSiI7sj8a9QkbAxs7GZxuauCDt3GJH4QBLuUZg0yWSXOBav15oDCr85ysF0edS06JSaTxw4YBS3vBsV1TwuVnVoFp5E3MnxFQtPuyYxHvk7cwF9Uw22eXb3xD+X+zg2npbSTcP+33Z4LnQ/qz5L8PhbqXRhv4QA70nDwwkahK4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740148536; c=relaxed/simple;
+	bh=ZghINpclHLdwPAQFtSkbNEiY9+NlXye4CKMUjN2PB+4=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=HlFIx0XVTwwiu9hyNB16hoiE44Epto9O2pkKAWv8w4qcUsn81Sg2CoF0qInrhF3raq4ID3YHRR+bssJHGGiR8udldgzmkkgSuvvhQFlwGQxR3OGo2Y2/tObgs9lIEPv72QzzFGjcRDfEKSmuQe+dNnpMNWqxMIDDuD3x+rphVY8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ifIvxEfL; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A100C4CEE7;
+	Fri, 21 Feb 2025 14:35:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740148535;
+	bh=ZghINpclHLdwPAQFtSkbNEiY9+NlXye4CKMUjN2PB+4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ifIvxEfLfgKOrrNg3SNfe0ytLuVpPsY1RoLtujzOU0aZ7T7MbJ0QQI6G0JwH3O/NN
+	 JKkuGU2f9wLTcEih90g8/CQEUYxoLhGgLc8jNI1zK41Mtc4fKLrIpWeK9nL0LvbNHc
+	 MVMS27o/YXfWlkaZb9Wnu4bgsyxBhy720f0khk+4Dr00ETsd5lltqrChutX95dbCzY
+	 tLDbuh97DM/UI0Bx1ZnyQQQzfPPht0UGUb8dKsMhSuso0hg4axnxWIQ/UuQ5HZcaDN
+	 pKiJ/BvXmfOFyM9JaNcudpQosbmNi1IwJlTSHqtOs0221qpSt1yC350U+g5Ksy0dwS
+	 W2ATs+QJfkz6Q==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1tlU7m-00000002jDr-2uzI;
+	Fri, 21 Feb 2025 15:35:30 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4 05/14] acpi/ghes: add a notifier to notify when error data is ready
+Date: Fri, 21 Feb 2025 15:35:14 +0100
+Message-ID: <a6d308aec49c3ad9a5d00baa34ff327eca70eb7f.1740148260.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <cover.1740148260.git.mchehab+huawei@kernel.org>
+References: <cover.1740148260.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/28] hw/arm/aspeed: Rename IRQ table and machine name
- for AST2700 A0
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250213033531.3367697-1-jamin_lin@aspeedtech.com>
- <20250213033531.3367697-5-jamin_lin@aspeedtech.com>
- <f3dd3423-8f6d-48ce-80f2-3381550948b7@kaod.org>
- <SI2PR06MB50418E5359B59E7902B84A05FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI2PR06MB50418E5359B59E7902B84A05FCC72@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=ENLZ=VM=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G0uzFmZJWjsw
+Content-Transfer-Encoding: 8bit
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: zPqDW4K8LqK5
 
-On 2/21/25 03:23, Jamin Lin wrote:
-> Hi Cedric,
-> 
->> Cc: Troy Lee <troy_lee@aspeedtech.com>
->> Subject: Re: [PATCH v3 04/28] hw/arm/aspeed: Rename IRQ table and machine
->> name for AST2700 A0
->>
->> On 2/13/25 04:35, Jamin Lin wrote:
->>> Currently, AST2700 SoC only supports A0. To support AST2700 A1, rename
->>> its IRQ table and machine name.
->>>
->>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>> ---
->>>    hw/arm/aspeed.c         | 8 ++++----
->>>    hw/arm/aspeed_ast27x0.c | 8 ++++----
->>>    2 files changed, 8 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
->>> d9418e2b9f..6ddfdbdeba 100644
->>> --- a/hw/arm/aspeed.c
->>> +++ b/hw/arm/aspeed.c
->>> @@ -1654,12 +1654,12 @@ static void
->> ast2700_evb_i2c_init(AspeedMachineState *bmc)
->>>                                TYPE_TMP105, 0x4d);
->>>    }
->>>
->>> -static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc,
->>> void *data)
->>> +static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
->>> +void *data)
->>>    {
->>>        MachineClass *mc = MACHINE_CLASS(oc);
->>>        AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->>>
->>> -    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
->>> +    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
->>>        amc->soc_name  = "ast2700-a0";
->>>        amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
->>>        amc->hw_strap2 = AST2700_EVB_HW_STRAP2; @@ -1795,9 +1795,9
->> @@
->>> static const TypeInfo aspeed_machine_types[] = {
->>>            .class_init     =
->> aspeed_minibmc_machine_ast1030_evb_class_init,
->>>    #ifdef TARGET_AARCH64
->>>        }, {
->>> -        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
->>> +        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
->>
->> machine "ast2700-evb" has now disappeared from QEMU. You need to add an
->> alias with "mc->alias" to restore the initial machine name, or follow the
-> 
-> 
-> Will add
-> 
->> deprecation process :
->>
->>     https://qemu.readthedocs.io/en/v9.2.0/about/deprecated.html
->>
-> Thanks for letting me know about the machine deprecation rules.
-> I understand why you suggest aliasing the initial machine "ast2700-evb" to "ast2700a0-evb."
+Some error injection notify methods are async, like GPIO
+notify. Add a notifier to be used when the error record is
+ready to be sent to the guest OS.
 
-yes. This to maintain compatibility for the user.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ hw/acpi/ghes.c         | 5 ++++-
+ include/hw/acpi/ghes.h | 3 +++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-Also, this change is breaking the tests. Please run 'make check'
-  
-> To follow the machine deprecation rule, the initial machine "ast2700-evb" is aliased to "ast2700a0-evb."
-
-You don't need the alias to deprecate a machine. You need the alias
-to maintain compatibility when renaming a machine.
-
-To deprecate, you should update docs/about/deprecated.rst.
-
-> In the future, we will alias "ast2700-evb" to new SoCs, such as "ast2700a1-evb."
-
-Yes we could do that.
-
-Or we could keep the ast2700a0-evb and ast2700a1-evb machines,
-change the alias to point to ast2700a1-evb first and later on
-deprecate ast2700a0-evb.
-
-
-Thanks,
-
-C.
-
-
-
-> Does this progress meet your expectations?
-> 
-> Thanks-Jamin
-> 
->> Thanks,
->>
->> C.
->>
->>
->>
->>>            .parent        = TYPE_ASPEED_MACHINE,
->>> -        .class_init    = aspeed_machine_ast2700_evb_class_init,
->>> +        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
->>>    #endif
->>>        }, {
->>>            .name          = TYPE_ASPEED_MACHINE,
->>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
->>> 2d0c99f159..6e3375f5d3 100644
->>> --- a/hw/arm/aspeed_ast27x0.c
->>> +++ b/hw/arm/aspeed_ast27x0.c
->>> @@ -72,7 +72,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] =
->> {
->>>    #define AST2700_MAX_IRQ 256
->>>
->>>    /* Shared Peripheral Interrupt values below are offset by -32 from
->>> datasheet */ -static const int aspeed_soc_ast2700_irqmap[] = {
->>> +static const int aspeed_soc_ast2700a0_irqmap[] = {
->>>        [ASPEED_DEV_UART0]     = 132,
->>>        [ASPEED_DEV_UART1]     = 132,
->>>        [ASPEED_DEV_UART2]     = 132,
->>> @@ -740,7 +740,7 @@ static void aspeed_soc_ast2700_realize(DeviceState
->> *dev, Error **errp)
->>>        create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
->>>    }
->>>
->>> -static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void
->>> *data)
->>> +static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void
->>> +*data)
->>>    {
->>>        static const char * const valid_cpu_types[] = {
->>>            ARM_CPU_TYPE_NAME("cortex-a35"), @@ -763,7 +763,7 @@
->> static
->>> void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
->>>        sc->uarts_num    = 13;
->>>        sc->num_cpus     = 4;
->>>        sc->uarts_base   = ASPEED_DEV_UART0;
->>> -    sc->irqmap       = aspeed_soc_ast2700_irqmap;
->>> +    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
->>>        sc->memmap       = aspeed_soc_ast2700_memmap;
->>>        sc->get_irq      = aspeed_soc_ast2700_get_irq;
->>>    }
->>> @@ -778,7 +778,7 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
->>>            .name           = "ast2700-a0",
->>>            .parent         = TYPE_ASPEED27X0_SOC,
->>>            .instance_init  = aspeed_soc_ast2700_init,
->>> -        .class_init     = aspeed_soc_ast2700_class_init,
->>> +        .class_init     = aspeed_soc_ast2700a0_class_init,
->>>        },
->>>    };
->>>
-> 
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 4a4ea8f4be90..f2d1cc7369f4 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -514,6 +514,9 @@ static void get_ghes_source_offsets(uint16_t source_id,
+     *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
+ }
+ 
++NotifierList acpi_generic_error_notifiers =
++    NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
++
+ void ghes_record_cper_errors(const void *cper, size_t len,
+                              uint16_t source_id, Error **errp)
+ {
+@@ -570,7 +573,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+     /* Write the generic error data entry into guest memory */
+     cpu_physical_memory_write(cper_addr, cper, len);
+ 
+-    return;
++    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
+ }
+ 
+ int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 51c6b6b33327..219aa7ab4fe0 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -24,6 +24,9 @@
+ 
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "qapi/error.h"
++#include "qemu/notify.h"
++
++extern NotifierList acpi_generic_error_notifiers;
+ 
+ /*
+  * Values for Hardware Error Notification Type field
+-- 
+2.48.1
 

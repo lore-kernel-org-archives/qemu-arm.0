@@ -1,89 +1,67 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abb98640619sm1036057166b.54.2025.02.21.07.29.25
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abbe1e8aa51sm486409466b.149.2025.02.21.10.02.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Feb 2025 07:29:25 -0800 (PST)
+        Fri, 21 Feb 2025 10:02:24 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7A7655F8C8;
-	Fri, 21 Feb 2025 15:29:24 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 4D4B35F8C8;
+	Fri, 21 Feb 2025 18:02:23 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,
-  qemu-devel@nongnu.org,  Radoslaw Biernacki <rad@semihalf.com>,  Leif
- Lindholm <leif.lindholm@oss.qualcomm.com>,  Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Subject: Re: [PATCH] tests/functional: Bump some arm test timeouts
-In-Reply-To: <12ff6477-7cd5-4ada-b7a8-97a3add814c3@redhat.com> (Thomas Huth's
-	message of "Fri, 21 Feb 2025 15:25:21 +0100")
-References: <20250221140640.786341-1-peter.maydell@linaro.org>
-	<12ff6477-7cd5-4ada-b7a8-97a3add814c3@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-stable@nongnu.org
+Subject: Re: [PATCH v3 3/9] target/arm: Make CNTPS_* UNDEF from Secure EL1
+ when Secure EL2 is enabled
+In-Reply-To: <20250204125009.2281315-4-peter.maydell@linaro.org> (Peter
+	Maydell's message of "Tue, 4 Feb 2025 12:50:03 +0000")
+References: <20250204125009.2281315-1-peter.maydell@linaro.org>
+	<20250204125009.2281315-4-peter.maydell@linaro.org>
 User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Fri, 21 Feb 2025 15:29:24 +0000
-Message-ID: <87eczriaej.fsf@draig.linaro.org>
+Date: Fri, 21 Feb 2025 18:02:23 +0000
+Message-ID: <87wmdjgor4.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: FSlSK/QZDCQo
+X-TUID: nHCl8ChOr91o
 
-Thomas Huth <thuth@redhat.com> writes:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> On 21/02/2025 15.06, Peter Maydell wrote:
->> On my local machine, for a debug build, sbsaref_alpine takes
->> nearly 900s:
->> $ (cd build/x86 && ./pyvenv/bin/meson test --setup thorough --suite
->> func-thorough func-aarch64-aarch64_sbsaref_alpine
->> )
->> 1/1 qemu:func-thorough+func-aarch64-thorough+thorough /
->> func-aarch64-aarch64_sbsaref_alpine
->>                        OK 896.90s
->> arm_aspeed_rainier can also run close to its current timeout:
->>   6/44 qemu:func-thorough+func-arm-thorough+thorough / func-arm-arm_aspe=
-ed_rainier
->>                        OK 215.75s
->> and arm_aspeed_ast2500 and arm_aspeed_ast2600 can go over:
->> 13/44 qemu:func-thorough+func-arm-thorough+thorough / func-arm-arm_aspee=
-d_ast2600
->>                        OK 792.94s
->> 27/44 qemu:func-thorough+func-arm-thorough+thorough /
->> func-arm-arm_aspeed_ast2500
->>                   TIMEOUT 480.01s
->> The sx1 test fails not on the overall meson timeout but on the
->> 60 second timeout in some of the subtests.
->> Bump all these timeouts up a bit.
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> This at least gets 'make -j4 check-functional' to passing for me
->> for an arm/aarch64 debug build, apart from the gpu test hang which
->> we're discussing in a different thread. Whole thing takes 25 mins...
->> ---
->>   tests/functional/meson.build     | 8 ++++----
->>   tests/functional/test_arm_sx1.py | 6 +++---
->>   2 files changed, 7 insertions(+), 7 deletions(-)
->> diff --git a/tests/functional/meson.build
->> b/tests/functional/meson.build
->> index b516d21cba1..effa31701cf 100644
->> --- a/tests/functional/meson.build
->> +++ b/tests/functional/meson.build
->> @@ -15,16 +15,16 @@ test_timeouts =3D {
->>     'aarch64_raspi4' : 480,
->>     'aarch64_rme_virt' : 1200,
->>     'aarch64_rme_sbsaref' : 1200,
->> -  'aarch64_sbsaref_alpine' : 720,
->> +  'aarch64_sbsaref_alpine' : 1200,
+> When we added Secure EL2 support, we missed that this needs an update
+> to the access code for the EL3 physical timer registers.  These are
+> supposed to UNDEF from Secure EL1 when Secure EL2 is enabled.
 >
-> I wonder whether we should disable that test with @skipSlowTest() by
-> default, since it's really very slow...?
-
-The pauth subtest is marked as @skipSlowTest() - but I think we can drop
-test_sbsaref_alpine_linux_cortex_a57 and
-test_sbsaref_alpine_linux_max_pauth_off because we don't actually verify
-anything so its wasted cycles booting something that we know already
-boots.
-
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/helper.c | 3 +++
+>  1 file changed, 3 insertions(+)
 >
-> Anyway, for this patch here:
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index ac8cb428925..7ec1e6cfaab 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2387,6 +2387,9 @@ static CPAccessResult gt_stimer_access(CPUARMState =
+*env,
+>          if (!arm_is_secure(env)) {
+>              return CP_ACCESS_UNDEFINED;
+>          }
+
+Hmm this failed to apply as b4d3978c2f (target-arm: Add the AArch64 view
+of the Secure physical timer) has the above as CP_ACCESS_TRAP. I guess
+because I didn't apply 20250130182309.717346-1-peter.maydell@linaro.org.
+I guess this needs fixing up for stable.
+
+
+> +        if (arm_is_el2_enabled(env)) {
+> +            return CP_ACCESS_UNDEFINED;
+> +        }
+>          if (!(env->cp15.scr_el3 & SCR_ST)) {
+>              return CP_ACCESS_TRAP_EL3;
+>          }
+
+
+Anyway:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 --=20
 Alex Benn=C3=A9e

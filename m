@@ -1,366 +1,273 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp202163njc;
-        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUGSuD5Dhv78PdkjJCxqkOICDJjV7Ci+4hi9Z9OWXGXAGwE9DBuwJYMSDQJvRqGDeUDLh23coZreSzazA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFR+KhQpFJDeBTDwI5RR4FGTBRoxkMwmSzkdjuEdrdeLgddvXXvrEmIryAhdgYR+ThhWEYk
-X-Received: by 2002:a05:6214:29e1:b0:6e6:61a5:aa4c with SMTP id 6a1803df08f44-6e6ae98e884mr31435736d6.31.1740135903468;
-        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740135903; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp241918njc;
+        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVAO1SOoHUexTngarnUiJpXp+yPxrqk5ErH/UjorA0CJPkCr7H2D17u2o7ZgwomY4yIbmbTD5xvu8dt2w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGBN9FNMXT/EpWzX2NL76/F1p9xCKfdwQNk+swNBiyStNrgvxl8RMfGqRZlPC+pAIJAMjQW
+X-Received: by 2002:a05:6808:2f19:b0:3f4:1166:55ff with SMTP id 5614622812f47-3f4246bfd58mr3160629b6e.9.1740140611340;
+        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740140611; cv=pass;
         d=google.com; s=arc-20240605;
-        b=gvB2S2nT8yjX/nWRpT+ROFVfhAUrhNgqLyZcdzrA/YWdP+sLswQXSQUKPNwDW6mpoB
-         q1ukeA+rg4adA/z747N47la+Atfs4zndfXe8IsgEYMfOsSp5lnJcKRBMAvgtv3qvPc7J
-         cBuFqA8vjFqoriF4tH/ISOhxYQfJz/ItWbxRbmRNrZND6uEajl/ma44DUUPe/RXbXaxH
-         Bdjsl3PK3nMPGi2AaxqEM7COHnvZSJd4cpDUQXlsIli4ROorJv6Tb+6yqDtyB7avMg2D
-         XTff0EXMt97ua+Cne6ofvr8IKT9T+mF10pXdIptEDEOcEVWB2Swics6v6zpL1c6nOuhn
-         Ahvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=wEpU09kFDKJnAn3kPpDGw4AJ5az/CSE7QHReAxfaYnA=;
-        fh=jaKv0nqk24nD12PVOVCnyDKdsvg2A4OxF/Ltxf7HZ5Q=;
-        b=WuHLllMMGxyA5yDBdhPE8CcZXe4tyT9MrJNpYC1a4F4b9VyK1knp2oqNiI8EoiWf8h
-         Nfv6sqkxQYY3OZQ0hKcP/Tyn+KRCJ8dbLXWIA99s3ISpEV1OhRPCp8Nm1QE2HYkrrDQC
-         xPJeKDuVcktUgkDyKLzwEs0wRI3RGBWFsO8rBivRB3qUo8oB+Gfy3RR7yRbNr2FUVLRU
-         rY2KZ5wbnSJgqFkH0v4QDfh4ALkhoeRk7Z5pBAo4SWbu0pKBy46EZe3f7ZUrumWMUJ1X
-         ViF0syKAvs4sdpVwPCOQex05Y4s2LoqWPCQRE7z/X+mxjON664PoK59L1C2/ppzpItPz
-         PdjA==;
+        b=EjQ79hwCb4XSE78iSRZD8ukwtofO8U3orML4akxnKYdE7dWpUup9t/r4dQweVocrrP
+         3cCBo8kvgHgkmxnpwQ09uy0CKh0dsJ+AT6aXZ3t4UlAp98Dza0wcTIlG/gbLvDz9/fma
+         GHJ/RwUPHCu7SrcEUZxQ7l9MUnLmO2Jx0/ThzWCBCUPjZxo6Z+Lwv7rmGRmgsHnMwmR+
+         yHrMuITLnKaIPssjAbMIxMcMyJC0J4azHEdSyU9nq56eB4QRV6OBXdW2G8sTfZORCjbu
+         BPwEQ+NFNbmXHCPA83JnMOD5H50EwAfsDJPUBIkTXfxnGOj4FYYcIvaX2AmeSReijNq6
+         HmPA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=xkIEx8WpIJTzKqbsLPsrtOYIqb9areIuTGb0S1aYMI0=;
+        fh=pCIbXjaf9akKytvcDfMg4B9amRWMUfhhrN0tolHakCM=;
+        b=W4RlgQIfOkjCk5Lj40RiCgnBrgk2Yul4LWnTPb5pY8ptqGOTwYDr12zT1C4AjG238T
+         NlIbzx0S6TyG9pN6MZY4jF83Yj2kAQZNEdUHyY4x4CkYb9Jn1pXnbaIaAcxL295Br4B3
+         C8wg4AXYAo9XuIJMj2Wza+qqla2lUijM1mtczAsYjWRWoOxosFJkGtb0+CSBGWHM5yxP
+         NOetKvY8gDE81vM5WEl0hLnFs68t7pBa4NdskfYLa1mtFy64c8iYYqeInOGMpYPw9gXg
+         Vea6efnkC99f2vTfdJRfidbs7OO/+W8s8jqtXqGVyQQDRw5e2jDWEPPnyrEW2KBcxfVC
+         R6sw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9a1e69si163479446d6.184.2025.02.21.03.05.03
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=P0qUkaLz;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 5614622812f47-3f3da9f4991si18304853b6e.135.2025.02.21.04.23.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2025 03:05:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Feb 2025 04:23:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tlQps-0000Wo-QE; Fri, 21 Feb 2025 06:04:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tlQpr-0000Wc-5W; Fri, 21 Feb 2025 06:04:47 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tlQpo-0004Wl-Cw; Fri, 21 Feb 2025 06:04:46 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YznHT31D5z6G83L;
- Fri, 21 Feb 2025 19:01:09 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 02518140382;
- Fri, 21 Feb 2025 19:04:38 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 21 Feb
- 2025 12:04:37 +0100
-Date: Fri, 21 Feb 2025 11:04:35 +0000
-To: Gavin Shan <gshan@redhat.com>
-CC: Igor Mammedov <imammedo@redhat.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <mst@redhat.com>, <anisinha@redhat.com>,
- <gengdongjiu1@gmail.com>, <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
- <shan.gavin@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH 4/4] target/arm: Retry pushing CPER error if necessary
-Message-ID: <20250221110435.00004a3b@huawei.com>
-In-Reply-To: <7caa54df-abe1-4833-bb59-cb83f8241962@redhat.com>
-References: <20250214041635.608012-1-gshan@redhat.com>
- <20250214041635.608012-5-gshan@redhat.com>
- <20250219185518.767a48d9@imammedo.users.ipa.redhat.com>
- <7caa54df-abe1-4833-bb59-cb83f8241962@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=P0qUkaLz;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-38850-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id BFD063B71EC
+	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 12:23:21 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EE64620A5C9;
+	Fri, 21 Feb 2025 12:23:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="P0qUkaLz"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A54BF209F2E;
+	Fri, 21 Feb 2025 12:23:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740140605; cv=none; b=bDsn11BGRAfwY9+59Ne6GV5tCx+tjjZnqwVP8emg7CzkZ0PYFJQiU5jW1cIOe80aK3uUbjbVgUMUnN+kS9PtO6WfmtbBxl82BoKKw0SheeJ7bu/sf+dEgo9GJWCJigeJAOAGPG+08Pg00OS4Jptjan4nnKmeWWVZzZP2JVnF7sc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740140605; c=relaxed/simple;
+	bh=NG9gwLahumtvPU8lC1XAWDBxn6rUCBFuxCyUdn7T0Tw=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=CRtwJYcY7z5tqPhjwBrls8wwNi8LSzHjbodUzwAc2NJE6wC4vub1hzWo31LukBs0xKMYsHwFS8azNsTbTlKnTtkX+9GvO2PDeXq/dhx6WxfSFuz8esuJ8VMgUrSL6G3l6losspo1Ml/xkOA/L3ztCBZM5K0O+IqtJzIAi3ZtLcA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=P0qUkaLz; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D0F2C4CED6;
+	Fri, 21 Feb 2025 12:23:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740140605;
+	bh=NG9gwLahumtvPU8lC1XAWDBxn6rUCBFuxCyUdn7T0Tw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=P0qUkaLzDYg8WBIsuC0NUk9BN8lHt8bLN8qIxX7E1+pOKh7ON6ixGqqv370VLvaJ+
+	 my8I+HoMjKxJJ0fWia0QPaB75JhxKBcvOcC1uo8ARtSFksjgx8bRgH53GxPesso0DC
+	 ilxcc3zEs0tYU50hOaKdMCdM4nwAi2gOtKkizfnPKAPAoQYKh08FamolD11PU+Hjga
+	 VgeDV6pQBOfTZqqdFhyrT2w9tX8+4DNudgTtvFtBsYjPBdbd9mNrfwM9xko+8O8buM
+	 AGe6KhVp6X5aEace2xqSagRT3db2NAnRAAjveAQ5cKEZiCnHFnsJ4rIpC15+GHWuHF
+	 k/C81dQ1lFUhw==
+Date: Fri, 21 Feb 2025 13:23:06 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
+ =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250221132306.77800dbf@sal.lan>
+In-Reply-To: <20250221102127.000059e6@huawei.com>
+References: <cover.1738345063.git.mchehab+huawei@kernel.org>
+	<20250203110934.000038d8@huawei.com>
+	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
+	<20250221073823.061a1039@foz.lan>
+	<20250221102127.000059e6@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G1o6PGQo3Gym
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: Mt1RG9LAft09
 
-On Fri, 21 Feb 2025 15:27:36 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+Em Fri, 21 Feb 2025 10:21:27 +0000
+Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
 
-> On 2/20/25 3:55 AM, Igor Mammedov wrote:
-> > On Fri, 14 Feb 2025 14:16:35 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:
-> >  =20
-> >> The error -1 is returned if the previously reported CPER error
-> >> hasn't been claimed. The virtual machine is terminated due to
-> >> abort(). It's conflicting to the ideal behaviour that the affected
-> >> vCPU retries pushing the CPER error in this case since the vCPU
-> >> can't proceed its execution.
-> >>
-> >> Move the chunk of code to push CPER error to a separate helper
-> >> report_memory_errors() and retry the request when the return
-> >> value from acpi_ghes_memory_errors() is greater than zero.
-> >>
-> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> >> ---
-> >>   target/arm/kvm.c | 31 +++++++++++++++++++++++++------
-> >>   1 file changed, 25 insertions(+), 6 deletions(-)
-> >>
-> >> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> >> index 5c0bf99aec..9f063f6053 100644
-> >> --- a/target/arm/kvm.c
-> >> +++ b/target/arm/kvm.c
-> >> @@ -2362,6 +2362,30 @@ int kvm_arch_get_registers(CPUState *cs, Error =
-**errp)
-> >>       return ret;
-> >>   }
-> >>  =20
-> >> +static void report_memory_error(CPUState *c, hwaddr paddr)
-> >> +{
-> >> +    int ret;
-> >> +
-> >> +    while (true) {
-> >> +        /* Retry if the previously report error hasn't been claimed */
-> >> +        ret =3D acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr, =
-true);
-> >> +        if (ret <=3D 0) {
-> >> +            break;
-> >> +        }
-> >> +
-> >> +        bql_unlock();
-> >> +        g_usleep(1000); =20
->=20
-> Igor, thanks for the detailed comments. Sorry for a bit delay of the repl=
-y, I
-> was checking the code to understand it better :)
+> On Fri, 21 Feb 2025 07:38:23 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > Em Mon, 3 Feb 2025 16:22:36 +0100
+> > Igor Mammedov <imammedo@redhat.com> escreveu:
+> >   
+> > > On Mon, 3 Feb 2025 11:09:34 +0000
+> > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> > >     
+> > > > On Fri, 31 Jan 2025 18:42:41 +0100
+> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > >       
+> > > > > Now that the ghes preparation patches were merged, let's add support
+> > > > > for error injection.
+> > > > > 
+> > > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
+> > > > > table and hardware_error firmware file, together with its migration code. Migration tested
+> > > > > with both latest QEMU released kernel and upstream, on both directions.
+> > > > > 
+> > > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+> > > > >    to inject ARM Processor Error records.
+> > > > > 
+> > > > > If I'm counting well, this is the 19th submission of my error inject patches.        
+> > > > 
+> > > > Looks good to me. All remaining trivial things are in the category
+> > > > of things to consider only if you are doing another spin.  The code
+> > > > ends up how I'd like it at the end of the series anyway, just
+> > > > a question of the precise path to that state!      
+> > > 
+> > > if you look at series as a whole it's more or less fine (I guess you
+> > > and me got used to it)
+> > > 
+> > > however if you take it patch by patch (as if you've never seen it)
+> > > ordering is messed up (the same would apply to everyone after a while
+> > > when it's forgotten)
+> > > 
+> > > So I'd strongly suggest to restructure the series (especially 2-6/14).
+> > > re sum up my comments wrt ordering:
+> > > 
+> > > 0  add testcase for HEST table with current HEST as expected blob
+> > >    (currently missing), so that we can be sure that we haven't messed
+> > >    existing tables during refactoring.    
+> 
+> To potentially save time I think Igor is asking that before you do anything
+> at all you plug the existing test hole which is that we don't test HEST
+> at all.   Even after this series I think we don't test HEST. 
 
-This is moderately tricky stuff so I'm not 100% sure of some of the things
-I said below, but will be traveling for next few weeks so want to get some
-comments out before that!
+On a previous review (v2, I guess), Igor requested me to do the DSDT
+test just before and after the patch which is actually changing its
+content (patch 11). The HEST table is inside DSDT firmware, and it is
+already tested.
 
->=20
-> > even with bql released it's not safe to loop in here.
-> > consider,
-> >    a guest with 2 vcpus
-> >      * vcpu 1 gets SIGBUS due to error
-> >      * vcpu 2 trips over the same error and gets into this loop
-> >      * on guest side vcpu 1 continues to run to handle SEA but
-> >        might need to acquire a lock that vcpu 2 holds
-> >  =20
->=20
-> Agreed.
->=20
-> > GHESv2 error source we support, can report several errors,
-> > currently QEMU supports only 1 'error status block' which
-> > can hold several error records (CPER) (though storage size is limited)
-> >=20
-> > 1:
-> > We can potentially add support for more GHESv2 error sources
-> > with their own Read ACK registers (let's say =3Dmax_cpus)
-> > (that is under assumption that no other error will be
-> > triggered while guest VCPUs handle their own SEA (upto clearing Read AC=
-K))
+> You add
+> a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
+> it should be replaced with the example data for the test.
 
-This one seems straight forward but I'd kind of like to know if real systems
-do this (I'll try and find out about ours).  I don't think there is
-any association available between a cpu and and SEA source, so linux at
-least will just go looking for any that are active on each SEA.
-Locking looks fine but it won't help with performance
+This was actually a misinterpretation from my side: patch 10 adds the
+etc/hardware_errors table (mistakenly naming it as HEST), but this
+was never tested. For the next submission, I'll drop etc/hardware_errors
+table from patches 10 and 12.
 
-> >=20
-> > 2:
-> > Another way could be for QEMU to allocate more error status _blocks_
-> > for the only one error source it has now and try to find
-> > empty status block to inject new error(s).
+> That indeed doesn't address testing the error data storage which would be
+> a different problem.
+> > 
+> > Not sure if I got this one. The HEST table is part of etc/acpi/tables,
+> > which is already tested, as you pointed at the previous reviews. Doing
+> > changes there is already detected. That's basically why we added patches
+> > 10 and 12:
+> > 
+> > 	[PATCH v3 10/14] tests/acpi: virt: allow acpi table changes for a new table: HEST
+> > 	[PATCH v3 12/14] tests/acpi: virt: add a HEST table to aarch64 virt and update DSDT
+> > 
+> > What tests don't have is a check for etc/hardware_errors firmware inside 
+> > tests/data/acpi/aarch64/virt/, but, IMO, we shouldn't add it there.
+> > 
+> > See, hardware_errors table contains only some skeleton space to
+> > store:
+> > 
+> > 	- 1 or more error block address offsets;
+> > 	- 1 or more read ack register;
+> > 	- 1 or more HEST source entries containing CPER blocks.
+> > 
+> > There's nothing there to be actually checked: it is just some
+> > empty spaces with a variable number of fields.
+> > 
+> > With the new code, the actual number of CPER blocks and their
+> > corresponding offsets and read ack registers can be different on 
+> > different architectures. So, for instance, when we add x86 support,
+> > we'll likely start with just one error source entry, while arm will
+> > have two after this changeset.
+> > 
+> > Also, one possibility to address the issues reported by Gavin Shan at
+> > https://lore.kernel.org/qemu-devel/20250214041635.608012-1-gshan@redhat.com/
+> > would be to have one entry per each CPU. So, the size of such firmware
+> > could be dependent on the number of CPUs.
+> > 
+> > So, adding any validation to it would just cause pain and probably
+> > won't detect any problems.  
+> 
+> If we did do this the test would use a fixed number of CPUs so
+> would just verify we didn't break a small number of variants. Useful
+> but to me a follow up to this series not something that needs to
+> be part of it - particularly as Gavin's work may well change that!
 
-Let me try to get my head around this one...
+I don't think that testing etc/hardware_errors would detect any
+regressions. It will just create a test scenario that will require
+constant changes, as adding any entry to HEST would hit it. 
 
-Each GHESv2 entry points, indirectly, to a single error status block at a t=
-ime
-(only one address to read that from)  Curious quirk is the length for that
-error status block is fixed as that's just a value in GHESv2 not an indirec=
-tion
-via a register - however I think you can just make it 'big'.
-So what I think you are proposing here is that on read_ack write (which we =
-would
-need to monitor for, the value of the error status address register is upda=
-ted
-to point to next one of a queue of error blocks.
+Besides that, I don't think adding support for it would be a simple
+matter of adding another table. See, after this series, there are two 
+different scenarios for the /etc/hardware_errors:
 
-That can work.  I'm not sure it actually gets us anything over just queuing=
- in
-qemu and writing the same error status block.  Those status blocks can cont=
-ain
-multiple Generic Error Data entries, but unless we have a load of them gath=
-ered
-up at time of first notifying the guest, I'm not sure that helps us.
+- one with a single GHESv2 entry, for virt-9.2;
+- another one with two GHESv2 entries for virt-10.0 and above that
+  will dynamically change its size (starting from 2) depending on
+  the features we add, and if we'll have one entry per CPU or not.
 
-One thing that I'm nervous about is that I can't actually find spec language
-that says that the OS 'must' reread the error status address register on
-each event. That isn't mentioned in the GHESv2 flow description which just =
-says:
-"
-These are the steps the OS must take once detecting an error from a particu=
-lar GHESv2 error source:
-=E2=80=A2 OSPM detects error (via interrupt/exception or polling the block =
-status)
-=E2=80=A2 OSPM copies the error status block
-=E2=80=A2 OSPM clears the block status field of the error status block
-=E2=80=A2 OSPM acknowledges the error via Read Ack register. For example:
-=E2=80=93 OSPM reads the Read Ack register =E2=80=93> X
-=E2=80=93 OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite)
-"
+Right now, the tests there are only for "virt-latest": there's no
+test directory for "virt-9.2". Adding support for virt-legacy will 
+very likely require lots of changes there at the test infrastructure,
+as it will require some virt migration support. 
 
-The linux code is confusing me, but I think it wonderfully changes
-the fixmap on every access as it needs to do an ioremap type operation
-in NMI conditions.
+> > What could be done instead is to have a different type of tests that
+> > would use the error injection script to check if regressions are 
+> > introduced after QEMU 10.0. Such new kind of test would require
+> > this series to be merged first. It would also require the usage of
+> > an OSPM image with some testing tools on it. This is easier said 
+> > than done, as besides the complexity of having an OSPM test image,
+> > such kind of tests would require extra logic, specially if it would
+> > check regressions for SEA and other notification sources.
+> >   
+> Agreed that a more end to end test is even better, but those are
+> quite a bit more complex so definitely a follow up.
 
-> >   * it can be saturated with high rate of errors (so what do we do in c=
-ase it happens?)
+Yes, but it could be simpler than modifying ACPI tests to handle
+migration.
 
-Make it big :)  But sure big just makes the condition unlikely rather than =
-solving it.
+The way I see is that such kind of integration could be done by some
+gitlab workflow that would run an error injection script inside a
+pre-defined image emulating both virt-9.2 and virt-latest and checking
+if the HEST tables were properly generated for both SEA and GED
+sources.
 
-> >   * subject to race between clearing/setting Read ACK
-> >      (maybe it can dealt with that on side by keeping internal read_ack=
- counter)
+This is probably easier for GED, as the QMP interface already
+detects that the read ack register was changed by the OSPM. For
+SEA, it may require either some additional instrumentation or to
+capture OSPM logs.
 
-I don't think there are any races as long as we update the register only on=
- clear which
-should I think happen before the next SEA can happen? My understanding, whi=
-ch may
-be wrong, is the OS must just take a copy of the error status block and set=
- the
-read_ack all in the exception handler.
+Anyway, ether way, a change like that is IMO outside the escope of
+this series, as it will require lots of unrelated changes.
 
-> >=20
-> > 3:
-> > And alternatively, queue incoming errors until read ack is cleared
-> > and then inject pending errors in one go.
-> > (problem with that is that at the moment QEMU doesn't monitor
-> > read ack register memory so it won't notice guest clearing that)
-
-We'd need to monitor it definitely.  Injecting all we have queued up
-in one go here seems like a reasonable optimization over doing them
-one at a time.
-
-> >=20
-> >=20
-> > Given spec has provision for multiple error status blocks/error data en=
-tries
-> > it seems that #2 is an expected way to deal with the problem.
-> >  =20
->=20
-> I would say #1 is the ideal model because the read_ack_register is the bo=
-ttleneck
-> and it should be scaled up to max_cpus. In that way, the bottleneck can b=
-e avoided
-> from the bottom. Another benefit with #1 is the error can be delivered im=
-mediately
-> to the vCPU where the error was raised. This matches with the syntax of S=
-EA to me.
-
-I don't think it helps for the bottleneck in linux at least.  A whole bunch=
- of locks
-are taken on each SEA because of the novel use of the fixmap.  There is onl=
-y one
-VA ever used to access the error status blocks we just change what PA it po=
-ints to
-under a spin lock. Maybe that can be improved on if we can persuade people =
-that error
-handling performance is a thing to care about!
-
->=20
-> #2 still has the risk to saturate the multiple error status blocks if the=
-re are
-> high rate of errors as you said. Besides, the vCPU where read_ack_registe=
-r is acknoledged
-> can be different from the vCPU where the error is raised, violating the s=
-yntax of
-> SEA.
->=20
-> #3's drawback is to violate the syntax of SEA, similar to #2.
->=20
-> However, #2/#3 wouldn't be that complicated to #1. I didn't expect big su=
-rgery to
-> GHES module, but it seems there isn't perfect solution without a big surg=
-ery.
-> I would vote for #1 to resolve the issue from the ground. What do you thi=
-nk, Igor?
-> I'm also hoping Jonathan and Mauro can provide their preference.
-
-Ideally I'd like whatever we choose to look like what a bare metal machine
-does - mostly because we are less likely to hit untested OS paths.
-
->=20
-> > PS:
-> > I'd prefer Mauro's series being merged 1st (once it's resplit),
-> > for it refactors a bunch of original code and hopefully makes
-> > code easier to follow/extend.
-> >  =20
->=20
-> Sure. I won't start the coding until the solution is confirmed. All the f=
-ollowup
-> work will base on Mauro's series.
->=20
-> >> +        bql_lock();
-> >> +    }
-> >> +
-> >> +    if (ret =3D=3D 0) {
-> >> +        kvm_inject_arm_sea(c);
-> >> +    } else {
-> >> +        error_report("Error %d to report memory error", ret);
-> >> +        abort();
-> >> +    }
-> >> +}
-> >> +
-> >>   void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-> >>   {
-> >>       ram_addr_t ram_addr;
-> >> @@ -2387,12 +2411,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int c=
-ode, void *addr)
-> >>                */
-> >>               if (code =3D=3D BUS_MCEERR_AR) {
-> >>                   kvm_cpu_synchronize_state(c);
-> >> -                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, pa=
-ddr, false)) {
-> >> -                    kvm_inject_arm_sea(c);
-> >> -                } else {
-> >> -                    error_report("failed to record the error");
-> >> -                    abort();
-> >> -                }
-> >> +                report_memory_error(c, paddr);
-> >>               }
-> >>               return;
-> >>           } =20
-> >  =20
->=20
-> Thanks,
-> Gavin
->=20
->=20
+Regards,
+Mauro
 

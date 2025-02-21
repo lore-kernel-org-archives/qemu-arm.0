@@ -1,98 +1,222 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp178698njc;
-        Fri, 21 Feb 2025 02:10:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXue/Dc1iG0fgmYb4+tUQQJf+pVSnBF75xv8X8aqex37fE6Ei3NFLQftlAVt8589f4TP8gkSS8lZt+PVQ==@linaro.org
-X-Received: by 2002:a05:6000:2a8:b0:38f:2a53:1d78 with SMTP id ffacd0b85a97d-38f6e759571mr2459606f8f.10.1740132646581;
-        Fri, 21 Feb 2025 02:10:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740132646; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp183428njc;
+        Fri, 21 Feb 2025 02:21:40 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWtI/r4uFw8FjN2UO2vJOkE90/EGBwqXwaEzR5SadaloA9+Q11MHIO+wP4jIeLqbQc1E0Wo+NUyiFfmXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4Lg6iFHwIt7c6VTRJzr7/GRfIXu7LfW3CdjfneFS6T2urUEElqN2SEErxGaI5yG2uXSHn
+X-Received: by 2002:a17:90b:3d0e:b0:2ee:ee77:226d with SMTP id 98e67ed59e1d1-2fce7ad5240mr4232049a91.4.1740133300072;
+        Fri, 21 Feb 2025 02:21:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740133300; cv=pass;
         d=google.com; s=arc-20240605;
-        b=jLtAdMJB0a5Gyu9S++EspI453htn3Tat3syh5g3iu/UWGBO3sl5/rw2sXlqdAPXrP9
-         P5YfGyWcRXNTNm9tu8WwDmM69pGJ9ztXkML8P5XnbXAMn+D/xVae3Pe0H+iiS3hwSzpq
-         yAtd9+dM16DlUiotcTvxu8pwJ2TP6LxEMzmGiMKaxw2oLIj7hm72ctjxaLp1Vb1lc98N
-         NWR50isKW3STO/NpMYmMJGwaqd8V+0N5819al2t/o2ytyJXs1IJF90KsLmkeAQgs+7eR
-         vp9GFEiImb9msQ28/lUhMjLpWJAYq/XYvJKBIPqbLAce27RaBM6gOWTiihBmZF/d3ZWw
-         syng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=FP8RwPyV644IP7Cxg0fHu3PhVMjCMcjQhZCVS3A2oyA=;
-        fh=UUnqYdFmA6w98pPfHpldhwloFDqF6OoMMFLOju/ej2g=;
-        b=JFcEJEFsszjhypix9PFtsaVIkyCd5nK4KXh64j9mP8eG8JagY96lmeXT9zE7Dui0fl
-         +UZNXzPa2pHG+h/vjhKujCVW14rWNy4ZSoFzxVvJBjX1mKtJ0C2lPPa8uzhh1O7l0V98
-         Eil0pZtsWW8wqhfAHZY8WGhWEaN6oQZU1x7BFeUfzfIhZHPsE/FIZ6LIFjH3asTXa9Hr
-         L4bgA2H50ScawGShlYogdD9uD5Dyvch5GzIufpJjTfb79ioL/urEKzxLJaglACky2H0i
-         aVx7plWZtu478JSCjmdg6b+3+HhopYR3FYBdmQv4mS1wuKq9wTnRo/b0f+8JDXXmpcel
-         2+Ig==;
+        b=SFxOHfEzUVABxuAZnV8vqftgiRCdDAm0ssfAEAWLa5DQdzDxchvH+tDL//DCyTwDj1
+         fOxLGscf9Y659J6LPmZOQvivmrUTt4R+pWEze15RBQmO2h33jtaPpF2ux8vZYGjWeQQD
+         Fqn5SbfgfBtQbIc65ARaEMWmFWspJIK6oFAsS1b/Cop4fTiguxWIVb6STyHMB8flx570
+         PH8/E9dh0lecKGm6nkqZLBXiP2ZePi2pWjQw01DtsdHrBIiNtAEvDm412awd2IrUb0Fm
+         hzo94t55iZM+SfJYiIw0MyYwJwiiSNSVE5CYvZtvCBKBZSUZGz4kb08Kr/xGyeTnErzO
+         QCdQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=3gQZVuXORxL2QpkPCwl4lcupM/zLoSDN61x7uBisd7U=;
+        fh=JLM3oUQKkHt1Z0W+cful5hmAm7cZ8C9c+kXvxck8P30=;
+        b=H5ajOX5JZShUClSnwlZ9Kx0E5HSJNF3zYHzGo2GDRu6JlC6rc9Ag5qAchiqoKtSY8c
+         zIYA5rDOgAo+BvSfMJ36fMaiEk4YvtUGt4/uhc5SqUM8+5+141hubyYtbqYmiTs867te
+         Dz4qTjn7Dn/dCqB6564aH0W+U+lvWHup31zVnlT1wZDa4/4OztRJiHIq26VaLHikx+kI
+         8BTJa0wA3WhJ8hIj6ImLZjbcNvBMkG3GZaJ6HSQqOuEZhjTrufJqRKp5uUua7VD6+T4I
+         FV+FYBbFwISyTW/q39aEVuiG91LKdk06IL7XtIuUjNDD4WcGwLFDHYk1ZS4hePeUmvny
+         LKfw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=th.huth@gmail.com
-Return-Path: <th.huth@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38f2597609csor5729643f8f.5.2025.02.21.02.10.46
-        (Google Transport Security);
-        Fri, 21 Feb 2025 02:10:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=th.huth@gmail.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740132646; x=1740737446;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FP8RwPyV644IP7Cxg0fHu3PhVMjCMcjQhZCVS3A2oyA=;
-        b=PN3vhDKBxD4Ly47cOkZ3DL+1bUojj0LxWXkqOuSPtEoSrEz6mQDKJLMLFpzJjnifcS
-         2eN4VfEZvt+JumWTVruin2ckogaUtBJpNtKgCdK9GKoTsLVO4h/jYEWJ7s8jVShsvJkg
-         h4DjWKPxJ+tU6fPx0jFDxcHsTch9zxkZzTPGw5UdseoQTpF889S4eaPXu/A+99h2/v56
-         farK/UEvqBbxD4S7+hCwh6S2Ngl84/T265KPveYt4czaa0fEOtRV6DmLyI5S+U5cgU2o
-         T2EmEVlkcv6+4NYiuAAJybJbwdUjBcFiaxai4iI7h5cySKg/GPuIrNbMvOlq/vzwm8i4
-         8IPA==
-X-Forwarded-Encrypted: i=1; AJvYcCVmjC4cInIrsKb4nKNFhik/yC2kdtMzPpWG6+43hiHImlckI2vr+7UsUa9AIsTBbTObBMBbHhn1RiOzXMSiSw==@linaro.org, AJvYcCW3IsK8UYKXO83Wp2TVUtT+BlVuLWIfYDB12pvH9/g1gO9a/P9UvXrKDg3o+wgswws/cyQJeme62x862w==@linaro.org
-X-Gm-Message-State: AOJu0YwD6Aa2krEk618hOJy2iLvSGPb/nppaEn3L8wu1934MgNMuAY9d
-	KaC/rzW6bVPMuS5rFSPOME8Fwk+W9f+hcwPdE4OYFLk/4cyUPXl/BQOFUUY5
-X-Gm-Gg: ASbGncs+3aEFtB3/FtZ2tdig/iuuYNB6iC6/NETKeQyIro2I+QGZti1IhhLl0eGRtR9
-	nntgIzuJ9650YeCbLZP8R6VOXrJam/3QnzjiqJf7X1/f+wzk7mRcZjSvgncy5nAfa5siYtgE8f6
-	fjYtV+7Dwcx77J04lxSr8SdehCW+O/kL2RKqPT5UibDtE+8RlA57DJ6iDNnJhyoD1HLZGiaO7nX
-	1yhjj2S/4gN51RAens2tAkrgSpl6G5rVlUe2AxVpoJvw/W5+4SPSWlstVUvmXMLKd0/DBBpIJXG
-	5kQ4w2H67HkduHA2D/MhnW5KRixMAwH2jOWfv+qdqwWNS8i8
-X-Google-Smtp-Source: AGHT+IE6LfnYu4sY5P0Se25D5TQSkvvopjHqNUh7lEcQ+f3F8IeJZabezMNS0bp/iplA/4W3CqXtnA==
-X-Received: by 2002:a5d:648a:0:b0:38f:43c8:f751 with SMTP id ffacd0b85a97d-38f6f0959c5mr2795062f8f.35.1740132645751;
-        Fri, 21 Feb 2025 02:10:45 -0800 (PST)
-Return-Path: <th.huth@gmail.com>
-Received: from tpx1 (ip-109-42-51-157.web.vodafone.de. [109.42.51.157])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f259f8730sm23519623f8f.93.2025.02.21.02.10.44
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Return-Path: <kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2fceb1447a5si1551935a91.162.2025.02.21.02.21.39
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Feb 2025 02:10:45 -0800 (PST)
-Date: Fri, 21 Feb 2025 11:10:43 +0100
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
- <marcandre.lureau@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, Magnus Damm <magnus.damm@gmail.com>, Shin'ichiro
- Kawasaki <shinichiro.kawasaki@wdc.com>, Rayhan Faizel
- <rayhan.faizel@gmail.com>, qemu-arm@nongnu.org, Evgeny Iakovlev
- <eiakovlev@linux.microsoft.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Luc Michel <luc.michel@amd.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: Re: [PATCH v2 7/9] hw/char/mcf_uart: Use FIFO_DEPTH definition
- instead of magic values
-Message-ID: <20250221111043.6417c938@tpx1>
-In-Reply-To: <20250220092903.3726-8-philmd@linaro.org>
-References: <20250220092903.3726-1-philmd@linaro.org>
-	<20250220092903.3726-8-philmd@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+        Fri, 21 Feb 2025 02:21:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-38842-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 8654C3A7C0A
+	for <alex.bennee@linaro.org>; Fri, 21 Feb 2025 10:21:30 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 49A95202F7B;
+	Fri, 21 Feb 2025 10:21:35 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF32A20102C;
+	Fri, 21 Feb 2025 10:21:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740133295; cv=none; b=J70v/CEn3mxl+JDtKhqkvxWfPMM8tu7p1SJoeEBFIDUcT9XvJmRPkNdwtbraXlBjdyt7sI2vbeaTPOWvUSCd35wjpP8rN+hVnjSkH5Emf12VKrlKEE9pN6XHwU1pgNGS8V/No2PhtW/9mbCXvRF1ItGLt11MbyudEaOtvnNeZcI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740133295; c=relaxed/simple;
+	bh=KIY1UUNUalxnVN5x6j7pVuh9asszExDiV/UCvVb5Mgw=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=Lm/IobZ3GcNEinu4iLQZYL6PhP81zOwg3DeD5v3k796qzmqmWcFmK9Hu6IRwyGRgr93a6J+hK5GVhbWPiS+KqCN9IyTZAU8SOVFBCJEXIQw90tgLeMTGzMu4iNDzLTRSjB8Db++2YkDEriJKFCRxRfzbTHnllLB7HttB8vLCtP8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YzmMm39xkz67QqC;
+	Fri, 21 Feb 2025 18:19:48 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 7629D140257;
+	Fri, 21 Feb 2025 18:21:29 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 21 Feb
+ 2025 11:21:28 +0100
+Date: Fri, 21 Feb 2025 10:21:27 +0000
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	<philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>, Cleber Rosa
+	<crosa@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eduardo Habkost
+	<eduardo@habkost.net>, Eric Blake <eblake@redhat.com>, John Snow
+	<jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, "Markus
+ Armbruster" <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
+	Zhao Liu <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250221102127.000059e6@huawei.com>
+In-Reply-To: <20250221073823.061a1039@foz.lan>
+References: <cover.1738345063.git.mchehab+huawei@kernel.org>
+	<20250203110934.000038d8@huawei.com>
+	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
+	<20250221073823.061a1039@foz.lan>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: wSD4BI3pN0Um
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: UzLLroN/y8gh
 
-Am Thu, 20 Feb 2025 10:29:00 +0100
-schrieb Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>:
+On Fri, 21 Feb 2025 07:38:23 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Defines FIFO_DEPTH and use it, fixing coding style.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Luc Michel <luc.michel@amd.com>
-> ---
->  hw/char/mcf_uart.c | 10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
+> Em Mon, 3 Feb 2025 16:22:36 +0100
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+> 
+> > On Mon, 3 Feb 2025 11:09:34 +0000
+> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> >   
+> > > On Fri, 31 Jan 2025 18:42:41 +0100
+> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > >     
+> > > > Now that the ghes preparation patches were merged, let's add support
+> > > > for error injection.
+> > > > 
+> > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
+> > > > table and hardware_error firmware file, together with its migration code. Migration tested
+> > > > with both latest QEMU released kernel and upstream, on both directions.
+> > > > 
+> > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+> > > >    to inject ARM Processor Error records.
+> > > > 
+> > > > If I'm counting well, this is the 19th submission of my error inject patches.      
+> > > 
+> > > Looks good to me. All remaining trivial things are in the category
+> > > of things to consider only if you are doing another spin.  The code
+> > > ends up how I'd like it at the end of the series anyway, just
+> > > a question of the precise path to that state!    
+> > 
+> > if you look at series as a whole it's more or less fine (I guess you
+> > and me got used to it)
+> > 
+> > however if you take it patch by patch (as if you've never seen it)
+> > ordering is messed up (the same would apply to everyone after a while
+> > when it's forgotten)
+> > 
+> > So I'd strongly suggest to restructure the series (especially 2-6/14).
+> > re sum up my comments wrt ordering:
+> > 
+> > 0  add testcase for HEST table with current HEST as expected blob
+> >    (currently missing), so that we can be sure that we haven't messed
+> >    existing tables during refactoring.  
 
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+To potentially save time I think Igor is asking that before you do anything
+at all you plug the existing test hole which is that we don't test HEST
+at all.   Even after this series I think we don't test HEST.  You add
+a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
+it should be replaced with the example data for the test.
+
+That indeed doesn't address testing the error data storage which would be
+a different problem.
+> 
+> Not sure if I got this one. The HEST table is part of etc/acpi/tables,
+> which is already tested, as you pointed at the previous reviews. Doing
+> changes there is already detected. That's basically why we added patches
+> 10 and 12:
+> 
+> 	[PATCH v3 10/14] tests/acpi: virt: allow acpi table changes for a new table: HEST
+> 	[PATCH v3 12/14] tests/acpi: virt: add a HEST table to aarch64 virt and update DSDT
+> 
+> What tests don't have is a check for etc/hardware_errors firmware inside 
+> tests/data/acpi/aarch64/virt/, but, IMO, we shouldn't add it there.
+> 
+> See, hardware_errors table contains only some skeleton space to
+> store:
+> 
+> 	- 1 or more error block address offsets;
+> 	- 1 or more read ack register;
+> 	- 1 or more HEST source entries containing CPER blocks.
+> 
+> There's nothing there to be actually checked: it is just some
+> empty spaces with a variable number of fields.
+> 
+> With the new code, the actual number of CPER blocks and their
+> corresponding offsets and read ack registers can be different on 
+> different architectures. So, for instance, when we add x86 support,
+> we'll likely start with just one error source entry, while arm will
+> have two after this changeset.
+> 
+> Also, one possibility to address the issues reported by Gavin Shan at
+> https://lore.kernel.org/qemu-devel/20250214041635.608012-1-gshan@redhat.com/
+> would be to have one entry per each CPU. So, the size of such firmware
+> could be dependent on the number of CPUs.
+> 
+> So, adding any validation to it would just cause pain and probably
+> won't detect any problems.
+
+If we did do this the test would use a fixed number of CPUs so
+would just verify we didn't break a small number of variants. Useful
+but to me a follow up to this series not something that needs to
+be part of it - particularly as Gavin's work may well change that!
+
+> 
+> What could be done instead is to have a different type of tests that
+> would use the error injection script to check if regressions are 
+> introduced after QEMU 10.0. Such new kind of test would require
+> this series to be merged first. It would also require the usage of
+> an OSPM image with some testing tools on it. This is easier said 
+> than done, as besides the complexity of having an OSPM test image,
+> such kind of tests would require extra logic, specially if it would
+> check regressions for SEA and other notification sources.
+> 
+Agreed that a more end to end test is even better, but those are
+quite a bit more complex so definitely a follow up.
+
+J
+> Thanks,
+> Mauro
+> 
+

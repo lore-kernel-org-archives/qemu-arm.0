@@ -1,212 +1,186 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp17003njc;
-        Thu, 20 Feb 2025 18:26:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU5vZBwJ03WsurKTX+CtdHKo4dJL1kBCQltaJBMnr6uqjUg5vSzMjjWrJiGMaeim+dLfTfbdGSI9lXTMg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFlECnxj0tjDiwkZxtDOtZO0613jtLjc54tOTWKy+namSB5C46S22v5TkRQYwXHOrm8KKtt
-X-Received: by 2002:a05:622a:1213:b0:471:d53c:1969 with SMTP id d75a77b69052e-472228dc024mr24281681cf.26.1740104776734;
-        Thu, 20 Feb 2025 18:26:16 -0800 (PST)
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp129322njc;
+        Fri, 21 Feb 2025 00:09:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXn89MspfFWJh6owo2LlyDT9PU4eOUYIfqzs5fHbmQzMlMvn7hH/CLlH7eDx0Pa+HKjHQ8TebLpQOv4Vg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE3FwnrTQvCmUBx5s57MNaiq7WzYIjZ4c9HWvjwqBbI+H0vE7+ZrQ5an+FeD/qCMDv9Pd+l
+X-Received: by 2002:ac8:5a0a:0:b0:472:2df:6ff1 with SMTP id d75a77b69052e-472228cf2c9mr41376601cf.13.1740125391491;
+        Fri, 21 Feb 2025 00:09:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740125391; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MRjtHsLhdvpILIzHXyyNK5Ffh0g5DFrhacJz+zBDtoRIIq6UG/bC2Vm5qe70IBmhfZ
+         Vs6u6GG3WhXYvLVh04Ga3ffatD/ScsR3fyce6MEVbt9byIg5PWXCQJL5GeahjMSfVCiu
+         cUWdUM4Co+ywFVWt8W6GiG7aja3za/EIVGWX8XErx2bY8gJEOEBEHP4pyBK88d+uH6qZ
+         f+RTI6BcVy8qN93dVnHsbOcCljUg62yp9Cc9jJinfOq3HUFH9gs/6OMnGYIdpVRCfVwT
+         lvq2qLptHtdaVBwVvuH+C+bFpVVXdxP9FEi7kgirTEumxA0iamt/m/pK5SNYV+iul46P
+         rGUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:autocrypt:content-language:from:references
+         :cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=44AsZ+U8ubfJDcHaFXeefTQmjxtqvBwugZR6R15diFM=;
+        fh=70nVc/LO8fj1Y+IRHLwOUMkj7K2fmLCEUYYQNRXEq6Q=;
+        b=cKbpv9sPI6bGL4RNuCMkHr/D3tYs0tEMbR/PSihapic3NMn3pAGnzcIeZLnRHC6Wco
+         fiRJRLn/Bd9NdKlA0/uZNZzYrmUWw2tZ2Z5YJqfx0selJuQ7SoD3z7FKAVE1Qk2zVYPl
+         33Rxl1tm76JaHYk7952rE5rTTBcnRbFpVRuwF0nzi39nyY0NiIpJrkC9N3XU9rqocrnp
+         qqAmb16djykBXZ2OzPcrG1vHDniSSoPydH1oL5QZ5evTTy5kdwBql/qPieQJb+QPPCod
+         /ajf8DBiayz91378i5Npc+y2WablMmhL7BRVy28Hg6cHjmkniSa1Bp4i7MtTyHZ89SnM
+         Gsbw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hqKHEfYz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-471f7975430si74610901cf.366.2025.02.20.18.26.16
+        by mx.google.com with ESMTPS id d75a77b69052e-471efd0eddesi94318081cf.381.2025.02.21.00.09.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2025 18:26:16 -0800 (PST)
+        Fri, 21 Feb 2025 00:09:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ijIuWjov;
-       arc=fail (signature failed);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hqKHEfYz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tlIjk-00033r-0x; Thu, 20 Feb 2025 21:25:56 -0500
+	id 1tlO68-0000KF-7Q; Fri, 21 Feb 2025 03:09:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenyi.qiang@intel.com>)
- id 1tlIjc-00033O-89; Thu, 20 Feb 2025 21:25:49 -0500
-Received: from mgamail.intel.com ([198.175.65.15])
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tlO65-0008So-P4
+ for qemu-devel@nongnu.org; Fri, 21 Feb 2025 03:09:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenyi.qiang@intel.com>)
- id 1tlIjZ-00079D-NO; Thu, 20 Feb 2025 21:25:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740104745; x=1771640745;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=pE9dqTn2730Cdk2XNUZ5TTN6alWEVEcXn3TWMZhqLTA=;
- b=ijIuWjovgJtB/Z+5K4fZZNhLnsGA2LhlncU77yYYxNjSSR9Hb0/waXST
- /oO/QhjDzRcSR3FIkJcjrucx7xpumTro4zAjKIfk9YJ7DRE4F2D0JRHma
- xw7R3Fgibg/aYsVYYXBb7Lyc62roR2l58HhhmeXH1oPDZMR8ZC+6VBwzd
- C+a+7aQXcoj5e4NDLIE4d8B7507b5e27M9aawozbgk5NogY+0lHDbZnsh
- XpkuM0D6qumn+6vhBaeXATSCiGz8fn43knCLKLUKR6jHUa2KghmPgu1Pg
- gA0phh1hZ7+tVCVz5a6+vGX4026JB6kGn6RJTR/ApcYs7HIfKQmuY0X9w g==;
-X-CSE-ConnectionGUID: Jm9R9TiSR6e8du6M88Mbtg==
-X-CSE-MsgGUID: XOSUtHi7Q26azxtG6ZVb9g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11351"; a="44558119"
-X-IronPort-AV: E=Sophos;i="6.13,303,1732608000"; d="scan'208";a="44558119"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2025 18:25:37 -0800
-X-CSE-ConnectionGUID: gHuqseytQqyeKOdxAO6m9A==
-X-CSE-MsgGUID: E+hr/1qORnWjN88STsPq+Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="116129463"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by orviesa008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2025 18:25:37 -0800
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Thu, 20 Feb 2025 18:25:37 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Thu, 20 Feb 2025 18:25:37 -0800
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.40) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Thu, 20 Feb 2025 18:25:34 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FkgJQ2xDiM6gx642Aus33FMrZHXWtZJzLTwn8LTmm1T8EGX4R7lH7GUO/ptDBFvYA9IGDM+/Y9cGQLMIm6a5fb6SRBBk0zd8z/NZDvihi+v2ieadCiZO+zj0jSQ5Ub9aOXzJQ6pXflJbi+bJfZfFP1p4Vi6T3eb27oWnAJosw9xGHPFXCM6BLMbaRjLbZlsD+aYl0lzkvlyQTPMdZnXkwsYr9AOSRFhfly43636xR68WtnOA+uZrtbIZ2gtD1vy9OW16sv/m2dA1lFv22bAyhTwKeS/UAyXOPV37Vfa1lNs/auHPJAoacM+v/7vn0QfFhCXtHmfMJ12sgkjO2I3EPA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dmQbDNADFOudcoBkdkAdJ69oDZhMyf6abHXaFkM7kjU=;
- b=SBKuDVhYxK9kZjdX8+jVNC/5uqn6sKERX0VLYlQraoN9iONFbfDvxdGzTMXhzmWRXxc0kh+c1kBkyGZTozwQgVd+3rMhMdKmt7pPyiWPp6XimPBZScmX7rc8x8V0ZaCEXgU7QQ1/vgrnpqYnbU9j9cdmcAzG+2kp9IbstTpL9mBAX6UOpNrmHBPJqn8sxeN8B4ZuRQXX+6G+41WE8J8kfp9TIdtQi2JKNVnFSogEbibys7fT2CgyHi1MKAUgKuwFPoK+IGJGJakpHwqDMsEtzNFEm9oPGWY0LKDxCI2eClkSadLyYuAYgRHW0YN28nUnGj1duVKD/neXIUIGWMXGPw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DM3PR11MB8735.namprd11.prod.outlook.com (2603:10b6:0:4b::20) by
- CY5PR11MB6210.namprd11.prod.outlook.com (2603:10b6:930:26::14) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8466.16; Fri, 21 Feb 2025 02:25:18 +0000
-Received: from DM3PR11MB8735.namprd11.prod.outlook.com
- ([fe80::3225:d39b:ca64:ab95]) by DM3PR11MB8735.namprd11.prod.outlook.com
- ([fe80::3225:d39b:ca64:ab95%7]) with mapi id 15.20.8445.017; Fri, 21 Feb 2025
- 02:25:18 +0000
-Message-ID: <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
-Date: Fri, 21 Feb 2025 10:25:11 +0800
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tlO63-0005rC-2o
+ for qemu-devel@nongnu.org; Fri, 21 Feb 2025 03:09:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1740125356;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=44AsZ+U8ubfJDcHaFXeefTQmjxtqvBwugZR6R15diFM=;
+ b=hqKHEfYztdbiy6otf/UgzxkxZlApXpbqTGy2bWQohAw5btBxNTKia4PWWdDMzVxxiazaiz
+ JGp1tDu9uDZPq6tkQPU/mjfqRahYvUh0wnJtb8B1vBowN41lJnXaWltB7WXl3O/9mnJ0RM
+ e42s+G+mkiHTQ28IrRPx7UpJNMO3TM0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-17-3jvjxQvpOdmcmWxiJHI-aw-1; Fri, 21 Feb 2025 03:09:15 -0500
+X-MC-Unique: 3jvjxQvpOdmcmWxiJHI-aw-1
+X-Mimecast-MFC-AGG-ID: 3jvjxQvpOdmcmWxiJHI-aw_1740125354
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4399304b329so9906415e9.3
+ for <qemu-devel@nongnu.org>; Fri, 21 Feb 2025 00:09:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740125354; x=1740730154;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=44AsZ+U8ubfJDcHaFXeefTQmjxtqvBwugZR6R15diFM=;
+ b=pv5VTINxQ4qoWQtJzn5HvO3BwPiWl7hcdFxDPZuLMoBhNpkAti4wJ+Cb4BNj89gpqa
+ Rg8iKRdJJBb7nZklDJmfn73BEaZBCY/5lv4c0Koo8mFHnBCutoiAwTjfib3EsZ3MJB5v
+ Nbp3x3jpm//SibpsgbPB7DC/+V0cKwPIHcfjqmzXZA4kJcdU9cWp1WsTpSuuO/9cHDRq
+ Pm5d3/IBNh965KVgeJlFqo5w0TQ8AXVCjSyQcxPpMAUp7uqQ7bvRkdKYjvUp84GgjG9M
+ ulpUQWyzfPGhQ9QmKtn6aTnLDP+TordImvddPzN0+WmCxEgRriwyzWX7wfhlbXXc+uOu
+ 1IXw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUQ4YWOUKEQ7imofoBcG1jBCrLpe9ERZktWjHWyGpTTa4eDV8tcnt+BLkaARGERD1Gkk+XK24DS235i@nongnu.org
+X-Gm-Message-State: AOJu0Yyu5KzVTZXbxlRduicDMD5cjpeSS9dTOqM58DXW4alOWvBXV+NK
+ F+zIs2oyC9zP+DdWiUuNCoZ66RE1eJJ2pvMaEtPLJL5PXAxy3Ntm1lanAOM36K9+0FJBXXhA2qa
+ SiniN9+sudOpqL+4aOSoTetQ2/JDVu3nlxAut/5690LGsqFrPQu9D
+X-Gm-Gg: ASbGnctDRWlxsNF5ekRN2YAPQ3KBDvF17YiCwwCbf49xMxukyIyBNMlv4gMdFcj44w+
+ Gktp6eNitswpF/HbvRARdAhU/skz8YO3C1OOVpBm1fTr1gqnlII8r/Kh9/qC13Tgbfb/tNOXTzo
+ QNq0uKJXh1ZlthOa5/AghdjDMJYO+vgUdetA80I8m8tsJA2R2GlvFE+6IAbHWGv08zZeYcQW2p6
+ 7IeFB3BJ+AtFe1JPoP08vN5d0J75wYLlpyKleaD1R3klz5ua7YWSs6im7YPzpC9gmKPFqVnicMX
+ xU+872H4Ol0TUeloY3CDw8WKoGXQpgvaCmm0WCto+lUcLg==
+X-Received: by 2002:adf:f5c6:0:b0:38f:278f:58e4 with SMTP id
+ ffacd0b85a97d-38f6e95fe16mr1153147f8f.12.1740125353905; 
+ Fri, 21 Feb 2025 00:09:13 -0800 (PST)
+X-Received: by 2002:adf:f5c6:0:b0:38f:278f:58e4 with SMTP id
+ ffacd0b85a97d-38f6e95fe16mr1153127f8f.12.1740125353444; 
+ Fri, 21 Feb 2025 00:09:13 -0800 (PST)
+Received: from [192.168.3.141] (p4ff23890.dip0.t-ipconnect.de. [79.242.56.144])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38f259d9be9sm23027196f8f.79.2025.02.21.00.09.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Feb 2025 00:09:12 -0800 (PST)
+Message-ID: <ce2306f9-19a4-4979-80e6-29b1e8a92318@redhat.com>
+Date: Fri, 21 Feb 2025 09:09:11 +0100
+MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC 1/2] system/memory: Allow creating IOMMU mappings from RAM
  discard populate notifiers
-To: David Hildenbrand <david@redhat.com>, Jean-Philippe Brucker
- <jean-philippe@linaro.org>, <philmd@linaro.org>, <peterx@redhat.com>,
- <pbonzini@redhat.com>, <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+To: Chenyi Qiang <chenyi.qiang@intel.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, philmd@linaro.org,
+ peterx@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20250220161320.518450-2-jean-philippe@linaro.org>
  <20250220161320.518450-3-jean-philippe@linaro.org>
  <0d761daf-174d-487f-80fe-09b04902006f@redhat.com>
-From: Chenyi Qiang <chenyi.qiang@intel.com>
+ <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
+From: David Hildenbrand <david@redhat.com>
 Content-Language: en-US
-In-Reply-To: <0d761daf-174d-487f-80fe-09b04902006f@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SI1PR02CA0046.apcprd02.prod.outlook.com
- (2603:1096:4:1f5::14) To DM3PR11MB8735.namprd11.prod.outlook.com
- (2603:10b6:0:4b::20)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM3PR11MB8735:EE_|CY5PR11MB6210:EE_
-X-MS-Office365-Filtering-Correlation-Id: de1f8dc9-884f-4b3e-bd55-08dd521efbaf
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?TkJiSWU1YUhFZFVDaHJhOTBHNXJQVkgxNE5nMGozODEyR3AweEpJcWx1MXRu?=
- =?utf-8?B?ZkE5eVBuRlYvSkU5RGUxcVBCdWJhZjBYRU0xUVJ6NURlRUNDUEVQb0RVcFVJ?=
- =?utf-8?B?ZTI1ZnoyMjVtTFA4Q1llU1pUcC9QL1hrWEF0WGdXMzkvQzdubTVTcVl3LzB0?=
- =?utf-8?B?L3dUb0xQWUFwY3diaERkTElVaHhkcWpmY1BMdXNJY0xTU04zSFVpVTVSUFZT?=
- =?utf-8?B?N0t6dnY0NGhvQldSU3dzVytwbmxuVjFCRUFGNUk3aUlHR3BiVmFTZ3lLK3FM?=
- =?utf-8?B?aGpWdWt1TTBic1hReDdGSXF1OGhJaE9VZUlpNmlueHJQQnRxNkRGMVdmYmJ2?=
- =?utf-8?B?Ym5lenlpem04S0Z1cGphSW56bS8vb0EyaW55NHlRNitIbHVPNFRVVHNuTGs2?=
- =?utf-8?B?Y0JIVmliSkFENktTeU1zVjFwRDZ0QmRWemw1MHlJYXM1aDZpQ3EyOTQ3eWVV?=
- =?utf-8?B?SC9GY2pDVjJSS0VpcnhIRkdBT01tOUJMQUpGeGpiWE01MzRzS1lNQXV4SEVZ?=
- =?utf-8?B?WnhrKzJMS1NXdzU2THdyYUgyQU1XTmJ0WWcyZjhpOCtXQTFhSDlEZmtuSzF6?=
- =?utf-8?B?VVdlcHBNRG1WY29UMWU0WFFkMXNuRXl4QWNZTkxYbERIeERHand3TVN5anQv?=
- =?utf-8?B?M2Q4dlkzZENQS1llaDFvZDM4UDBHemErb1Y0Y29oemh2RTI1eEhUcjdDanVX?=
- =?utf-8?B?MXRoSWdZRTNQSVJSUStMa1pBeXB5VWQxMHA2cjgvNkRIU3RYTlNGWUZuRGw0?=
- =?utf-8?B?dkpXRGFvQ0wwSTdYaVZyMnFqemRYWTN6czNINzVtUjdWaHdiSUlxUHY4d0lO?=
- =?utf-8?B?dlRIa1VxdWtKajNhaldSbTIvRC9uN0VYRGFpaXAwOWxFbzQvZC9ud0pMZjZP?=
- =?utf-8?B?YW42OFFJcXNHZWEwa2pYMjZUT0IwSnFqY2lkdGx1YUlET2wyMU41M2VReDh5?=
- =?utf-8?B?bGJtZHdhUWpHQkltWkorZDByTisxaXFaVFovRnFpZEtqNEVRWUhoTnUxTFdP?=
- =?utf-8?B?OC9SQ1lRNEppejZDS09JOGN2QjF5V0dMb2tEeFYvNkFlKzAwTzNpK1lNSTFh?=
- =?utf-8?B?ME51QTBSYVI5b3N4cyttMkpON1MyWjdjQWxCU1dGcFg4SjQxaFlyd2dLcldn?=
- =?utf-8?B?KzM0eUJWTnJ6REFlZGdCTUpxNlJCdGpodTRwTm04cXFsQjdvMFpUQkRGZmNT?=
- =?utf-8?B?cWFnU1FlTEc3TzlVSTNQMzkxNStleWVlNndZUzM0YlNiY0w3TkdRNTNMUXlX?=
- =?utf-8?B?OTJZM2NpWEtMRXlqWGF1WVR5ZzZXYWVUc0NuNmlLZkdNd2RHMXlBd1I5eXJK?=
- =?utf-8?B?ejVBU1JIWEdWeVBROVRMRDZIaVhKb0pRMGx3NkRrQkxFWi9iNkhydFBpYmVr?=
- =?utf-8?B?YlNXREIzalU5MjhlOS9OdFMrelYrbG5oUGR4U3pvSVJUTEs1ZXA1bktjMm5s?=
- =?utf-8?B?OVU1QTBERlV5SkphWWNuaTluUzdyY2pMRkphT1Q2Mnc2OTBGSzBMS0MvR1U0?=
- =?utf-8?B?VEpWcVZ0RVVWa095QnNXbXA2eW5icjlVbEVIOTJtcldMekFreUhBL05IVUpS?=
- =?utf-8?B?d3E1VUxQNEFGelVienZ5VWRYQjgzb3dVRFJtenhhc2VGRE9jVklacVh5NHNu?=
- =?utf-8?B?bmVXV2N2bG1nZDhXWHNGM3E5M1FHcDJTcEsxYTFpN251VVk0Q1Zoa1ZiOXV3?=
- =?utf-8?B?ZkV6cFZVQ2ZOQVBmRG1PTk42SG8yTTZ3MkRUMnVndHdubGU0WkVPc2tja0Ew?=
- =?utf-8?B?d2ZJUHRzZzdlS3VWMFZaVmx2KzZNd2hFUSt1MnF1YjlqUHFGbnNlTXhTOFR6?=
- =?utf-8?B?dSszd0VNZVV6b2o0NmpST1dGRmhUNExab0x3WmdTSm9VbmllVW9kY1dXa2V1?=
- =?utf-8?Q?MqZ8ZDlXUuv0O?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM3PR11MB8735.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WldSc3JLOFd3bEtMbzNTYkNnNnVvNExUalQrOGozRzdLbFlSTisrejljVk9z?=
- =?utf-8?B?aVpnWHFuc0xna25CcUxQamxsQmJ5UkRHNEFsaE1BQWhuNUhTK2VFT3Z0RmQ2?=
- =?utf-8?B?MzdZdUovV2dCSjMycEgzUkVJTmVoeWQ1VHEvK2dFTHQvSVk1Lzd4QlF4UDU2?=
- =?utf-8?B?dUJaSDYrQ0wzMllWdmJEQTFGL0hCV240US9MTnM4UThqOEFKZXY5TXorTWlJ?=
- =?utf-8?B?cEJmWVd3OElVYXVPaU1CLzJTbUt1cnYzV3Q3eHVKelRkdGxrZjRvQTFpdlQz?=
- =?utf-8?B?MisvM2FzalFHalRWcTJoNTZMTXQ4YndubldnNHZGWTloVnhqYWpNUGpwVGZu?=
- =?utf-8?B?ZWNJMzUyU0YxU2dPWVhxTlNwVHlpZlYyeklqK25NOU5lMkZPN3lVWjAvTkpQ?=
- =?utf-8?B?a0d3M3VDK1A2VERUMGhKUHFxU3ZhNnhHRVozQ3crSlUyYTRMSGl0YnZGMTlx?=
- =?utf-8?B?dThpbVpDZ1p2ak0raDVsZWJkek13ZWtjMW1oQ1pKN2RiaVFUTmVVK0pxTEg0?=
- =?utf-8?B?QTBLRXZYdkF3T0dXdTd2YXQ2b2JJbm8zbFVoZ0Zxbzk2cXMzTHdDQWN1dUpI?=
- =?utf-8?B?OTlJQUo1OTJ6bWljMlN6MTFTRWwxdHd1Rm5VNS9zTU56aldCTWt2MDNzMmJW?=
- =?utf-8?B?S3IrY2VobDd2RVRTVm5CeTdTdUZCcFZ2VXhqQiswM0pmSkxGcXcycmQ0ZWhX?=
- =?utf-8?B?ZGdNK2VRVStIeVJaNDZWdFlseVIzS29haHN3eW9QUG1ZalhlUHdEQWlkVkR3?=
- =?utf-8?B?Y09PSXFWc2NqMmJkdmlpKzNpS3NFbG44bzNoeTgzenRmam11T3E2SGtpVS9F?=
- =?utf-8?B?Z2pWSWliNGpVU2R2MUE2OVJjK3MzSEJXZ21DcVhEZGE1UlRoNzFTaklxSUdu?=
- =?utf-8?B?Y1lnbHJZcngxVTByalhYQTRGL1ZHdzhMUjJ1ejl1WlllUEtaQjg0QUxmM0dL?=
- =?utf-8?B?TkY4UjRFUXZuaVFNK0IwM0hOWmxZZWdzNDlLWkZGQlpvak1rNnVEbEYwWHpR?=
- =?utf-8?B?WnN6S21oQWYya0ZBNlZycjViRVIwd2J0MURlNG1jek9JVUdZeVBGMjZJdGhD?=
- =?utf-8?B?YUNRWENLUzc4TFBCTFFrd0NTWXpBNXV4WHpCdVZ5NGJDU0ZZczdVSVhJQXJE?=
- =?utf-8?B?SkMwVWllbVNiVVFHTEhDRE91WlBNM3NyY2diQXN5cUZTNThlRlBBMmlVazZv?=
- =?utf-8?B?NjZrejM5SDNpUENxY3Btbk5tOHlzTFU2dmtDdVJKMWZsRG9UU2s1Uml0NllS?=
- =?utf-8?B?S3ZkYjFPRm1hNGlzTUdEWndBZnVGdURtNUd2UjN4clNvVURHV1o0WkMyVXJn?=
- =?utf-8?B?aGJneG4rU3JXNG9jTGFQdHRaSk8wV0I0SHVKWWZCSC9zY2xtdmwyTmwxM3Fi?=
- =?utf-8?B?L0k3VmV1ZzJqODdQWTBuTVpETHFFZnV2eFBySXFLU1dsS01oTTY3ZWxQVkNq?=
- =?utf-8?B?OU1EZlcydnpCZlhLTE4zalBKS1BlalZtZWdPRTZ0WExIS1QxOURMOEEvejk4?=
- =?utf-8?B?Y2tjb0tUUGFmYkEvMG9XL2p3Yk9kYmFsTzgySFMwdkpsbTRzekk0S3JoV0M2?=
- =?utf-8?B?aXRYUmdlUFdOZ1EwdHdXbzc0SzlRcEdqVEN5V3FTSXVqckpEU3lEaUZEaERO?=
- =?utf-8?B?OGdNUTNLcDBwTFVFS0RvVkUrdU95T24xTnh5b05ndDBmS0E0RnZkbGJwdlJw?=
- =?utf-8?B?MGNOR3pmaUFGSjhNUDdhNC9nKzM3N0hOdGpzY1RlMGRLeTU0TlFDeEJFSkQ2?=
- =?utf-8?B?U1Ywam9uZmxUQUk3MjJTQUs4NktIbjhzMGg1eDdLaDBWeHc1ZWNaSmQxb0RQ?=
- =?utf-8?B?QWNVMXR1bTJCaVhMcFc2UTlNZ2d6eHJSMGJ1c294dXY4dHRkUEplL0NHUkF0?=
- =?utf-8?B?QnFicDFubTJzQUc4c0t5cmhDbkQ2U1F3Y2dOckVzSDZIZENzSW8wYzhZVTAy?=
- =?utf-8?B?N3RFVXBTRTNMNGtob0RWdXF0ZjlIcm5laFJKb3Z6SFdiVlBtcnEzb24rdlJn?=
- =?utf-8?B?UFpWSFNWNkZ0UlFKT0hIcWlmMnlBMkVseU1ldnJQQkRxdjFnVzIyMTVPajFQ?=
- =?utf-8?B?Zm9RaFc1YTN3WGovT21JSm5NVDg5WG5JYWVQcGVKQjJiaEY0am1ZTWN6dW56?=
- =?utf-8?B?bGhGdVRlVXlQRldhczJJVzN1bnBqTnROL0tDOTBGRnpJRnFOVVZ6QTgwdmh2?=
- =?utf-8?B?YUE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: de1f8dc9-884f-4b3e-bd55-08dd521efbaf
-X-MS-Exchange-CrossTenant-AuthSource: DM3PR11MB8735.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Feb 2025 02:25:18.4852 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mvAONi7Q6V46ndFR7Yy5u+3Uo1JFZDsPxR+zbDe7g+dKYS4PmUwLuOGXLiiyz/h520Ro8Y63xVeqtgMybZu8kA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6210
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=198.175.65.15;
- envelope-from=chenyi.qiang@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.457,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.457,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -221,158 +195,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WpmhIgNd7lZD
+X-TUID: QMXt9naq2ZXn
 
-
-
-On 2/21/2025 3:39 AM, David Hildenbrand wrote:
-> On 20.02.25 17:13, Jean-Philippe Brucker wrote:
->> For Arm CCA we'd like the guest_memfd discard notifier to call the IOMMU
->> notifiers and create e.g. VFIO mappings. The default VFIO discard
->> notifier isn't sufficient for CCA because the DMA addresses need a
->> translation (even without vIOMMU).
+On 21.02.25 03:25, Chenyi Qiang wrote:
+> 
+> 
+> On 2/21/2025 3:39 AM, David Hildenbrand wrote:
+>> On 20.02.25 17:13, Jean-Philippe Brucker wrote:
+>>> For Arm CCA we'd like the guest_memfd discard notifier to call the IOMMU
+>>> notifiers and create e.g. VFIO mappings. The default VFIO discard
+>>> notifier isn't sufficient for CCA because the DMA addresses need a
+>>> translation (even without vIOMMU).
+>>>
+>>> At the moment:
+>>> * guest_memfd_state_change() calls the populate() notifier
+>>> * the populate notifier() calls IOMMU notifiers
+>>> * the IOMMU notifier handler calls memory_get_xlat_addr() to get a VA
+>>> * it calls ram_discard_manager_is_populated() which fails.
+>>>
+>>> guest_memfd_state_change() only changes the section's state after
+>>> calling the populate() notifier. We can't easily invert the order of
+>>> operation because it uses the old state bitmap to know which pages need
+>>> the populate() notifier.
 >>
->> At the moment:
->> * guest_memfd_state_change() calls the populate() notifier
->> * the populate notifier() calls IOMMU notifiers
->> * the IOMMU notifier handler calls memory_get_xlat_addr() to get a VA
->> * it calls ram_discard_manager_is_populated() which fails.
+>> I assume we talk about this code: [1]
 >>
->> guest_memfd_state_change() only changes the section's state after
->> calling the populate() notifier. We can't easily invert the order of
->> operation because it uses the old state bitmap to know which pages need
->> the populate() notifier.
-> 
-> I assume we talk about this code: [1]
-> 
-> [1] https://lkml.kernel.org/r/20250217081833.21568-1-chenyi.qiang@intel.com
-> 
-> 
-> +static int memory_attribute_state_change(MemoryAttributeManager *mgr,
-> uint64_t offset,
-> +                                         uint64_t size, bool
-> shared_to_private)
-> +{
-> +    int block_size = memory_attribute_manager_get_block_size(mgr);
-> +    int ret = 0;
-> +
-> +    if (!memory_attribute_is_valid_range(mgr, offset, size)) {
-> +        error_report("%s, invalid range: offset 0x%lx, size 0x%lx",
-> +                     __func__, offset, size);
-> +        return -1;
-> +    }
-> +
-> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
-> offset, size)) ||
-> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
-> offset, size))) {
-> +        return 0;
-> +    }
-> +
-> +    if (shared_to_private) {
-> +        memory_attribute_notify_discard(mgr, offset, size);
-> +    } else {
-> +        ret = memory_attribute_notify_populate(mgr, offset, size);
-> +    }
-> +
-> +    if (!ret) {
-> +        unsigned long first_bit = offset / block_size;
-> +        unsigned long nbits = size / block_size;
-> +
-> +        g_assert((first_bit + nbits) <= mgr->bitmap_size);
-> +
-> +        if (shared_to_private) {
-> +            bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
-> +        } else {
-> +            bitmap_set(mgr->shared_bitmap, first_bit, nbits);
-> +        }
-> +
-> +        return 0;
-> +    }
-> +
-> +    return ret;
-> +}
-> 
-> Then, in memory_attribute_notify_populate(), we walk the bitmap again.
-> 
-> Why?
-> 
-> We just checked that it's all in the expected state, no?
-> 
-> 
-> virtio-mem doesn't handle it that way, so I'm curious why we would have
-> to do it here?
-
-I was concerned about the case where the guest issues a request that
-only partial of the range is in the desired state.
-I think the main problem is the policy for the guest conversion request.
-My current handling is:
-
-1. When a conversion request is made for a range already in the desired
-  state, the helper simply returns success.
-2. For requests involving a range partially in the desired state, only
-  the necessary segments are converted, ensuring the entire range
-  complies with the request efficiently.
-3. In scenarios where a conversion request is declined by other systems,
-  such as a failure from VFIO during notify_populate(), the helper will
-  roll back the request, maintaining consistency.
-
-And the policy of virtio-mem is to refuse the state change if not all
-blocks are in the opposite state.
-
-Actually, this part is still a uncertain to me.
-
-BTW, per the status/bitmap track, the virtio-mem also changes the bitmap
-after the plug/unplug notifier. This is the same, correct?
-
-> 
-> 
+>> [1] https://lkml.kernel.org/r/20250217081833.21568-1-chenyi.qiang@intel.com
 >>
->> For now add a flag to the IOMMU notifier to tell memory_get_xlat_addr()
->> that we're aware of the RAM discard manager state.
 >>
->> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
->> ---
+>> +static int memory_attribute_state_change(MemoryAttributeManager *mgr,
+>> uint64_t offset,
+>> +                                         uint64_t size, bool
+>> shared_to_private)
+>> +{
+>> +    int block_size = memory_attribute_manager_get_block_size(mgr);
+>> +    int ret = 0;
+>> +
+>> +    if (!memory_attribute_is_valid_range(mgr, offset, size)) {
+>> +        error_report("%s, invalid range: offset 0x%lx, size 0x%lx",
+>> +                     __func__, offset, size);
+>> +        return -1;
+>> +    }
+>> +
+>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+>> offset, size)) ||
+>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+>> offset, size))) {
+>> +        return 0;
+>> +    }
+>> +
+>> +    if (shared_to_private) {
+>> +        memory_attribute_notify_discard(mgr, offset, size);
+>> +    } else {
+>> +        ret = memory_attribute_notify_populate(mgr, offset, size);
+>> +    }
+>> +
+>> +    if (!ret) {
+>> +        unsigned long first_bit = offset / block_size;
+>> +        unsigned long nbits = size / block_size;
+>> +
+>> +        g_assert((first_bit + nbits) <= mgr->bitmap_size);
+>> +
+>> +        if (shared_to_private) {
+>> +            bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
+>> +        } else {
+>> +            bitmap_set(mgr->shared_bitmap, first_bit, nbits);
+>> +        }
+>> +
+>> +        return 0;
+>> +    }
+>> +
+>> +    return ret;
+>> +}
 >>
->> Definitely not the prettiest hack, any idea how to do this cleanly?
->> ---
->>   include/exec/memory.h | 5 +++++
->>   system/memory.c       | 3 ++-
->>   2 files changed, 7 insertions(+), 1 deletion(-)
+>> Then, in memory_attribute_notify_populate(), we walk the bitmap again.
 >>
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 9f73b59867..6fcd98fe58 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -116,6 +116,11 @@ typedef enum {
->>       IOMMU_RO   = 1,
->>       IOMMU_WO   = 2,
->>       IOMMU_RW   = 3,
->> +    /*
->> +     * Allow mapping a discarded page, because we're in the process of
->> +     * populating it.
->> +     */
->> +    IOMMU_POPULATING = 4,
->>   } IOMMUAccessFlags;
->>     #define IOMMU_ACCESS_FLAG(r, w) (((r) ? IOMMU_RO : 0) | ((w) ?
->> IOMMU_WO : 0))
->> diff --git a/system/memory.c b/system/memory.c
->> index 4c829793a0..8e884f9c15 100644
->> --- a/system/memory.c
->> +++ b/system/memory.c
->> @@ -2221,7 +2221,8 @@ bool memory_get_xlat_addr(IOMMUTLBEntry *iotlb,
->> void **vaddr,
->>            * Disallow that. vmstate priorities make sure any
->> RamDiscardManager
->>            * were already restored before IOMMUs are restored.
->>            */
->> -        if (!ram_discard_manager_is_populated(rdm, &tmp)) {
->> +        if (!(iotlb->perm & IOMMU_POPULATING) &&
->> +            !ram_discard_manager_is_populated(rdm, &tmp)) {
->>               error_setg(errp, "iommu map to discarded memory (e.g.,
->> unplugged"
->>                            " via virtio-mem): %" HWADDR_PRIx "",
->>                            iotlb->translated_addr);
+>> Why?
+>>
+>> We just checked that it's all in the expected state, no?
+>>
+>>
+>> virtio-mem doesn't handle it that way, so I'm curious why we would have
+>> to do it here?
 > 
+> I was concerned about the case where the guest issues a request that
+> only partial of the range is in the desired state.
+> I think the main problem is the policy for the guest conversion request.
+> My current handling is:
 > 
+> 1. When a conversion request is made for a range already in the desired
+>    state, the helper simply returns success.
+
+Yes.
+
+> 2. For requests involving a range partially in the desired state, only
+>    the necessary segments are converted, ensuring the entire range
+>    complies with the request efficiently.
+
+
+Ah, now I get:
+
++    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+offset, size)) ||
++        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+offset, size))) {
++        return 0;
++    }
++
+
+We're not failing if it might already partially be in the other state.
+
+> 3. In scenarios where a conversion request is declined by other systems,
+>    such as a failure from VFIO during notify_populate(), the helper will
+>    roll back the request, maintaining consistency.
+> 
+> And the policy of virtio-mem is to refuse the state change if not all
+> blocks are in the opposite state.
+
+Yes.
+
+> 
+> Actually, this part is still a uncertain to me.
+> 
+
+IIUC, the problem does not exist if we only convert a single page at a time.
+
+Is there a known use case where such partial conversions could happen?
+
+> BTW, per the status/bitmap track, the virtio-mem also changes the bitmap
+> after the plug/unplug notifier. This is the same, correct?
+Right. But because we reject these partial requests, we don't have to 
+traverse the bitmap and could just adjust the bitmap operations.
+
+-- 
+Cheers,
+
+David / dhildenb
 

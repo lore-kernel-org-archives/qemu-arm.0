@@ -1,130 +1,154 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp479435njc;
-        Fri, 21 Feb 2025 10:25:31 -0800 (PST)
-X-Received: by 2002:a05:690c:6306:b0:6ef:92e0:a989 with SMTP id 00721157ae682-6fbcc38b77cmr39551047b3.23.1740162331576;
-        Fri, 21 Feb 2025 10:25:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740162331; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1100796njc;
+        Sat, 22 Feb 2025 13:59:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVS6cn6yUmHivrggqYMJ6XvnzPd0RDeDlbCFHeLN+v4ec4E6I2DK7FasFDG7a14J0aOIWcIH5V3qZ2mhw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHAfb6gwd0Gx2bKsF0x5Bj1O2bo6MKAJyxE1cq7DMycL5zoJ+drWkJCVRyPMu5muQ7BgB0D
+X-Received: by 2002:a05:620a:4087:b0:7c0:a3bd:a78a with SMTP id af79cd13be357-7c0cf95052amr1072898185a.41.1740261547961;
+        Sat, 22 Feb 2025 13:59:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740261547; cv=none;
         d=google.com; s=arc-20240605;
-        b=V1dkp04jKHK4kDr7RirwSwAnen6IfuxAcSsmcNACJG9MApMeziG9aV0zuBAaNol+Gq
-         6ZX/CSU4zvnS8yKQ+kiEH1KY3iLq0IOiVXKXwP/gTOTMr47haEHXLAEktUrDpJJ4tXwn
-         XBUWBRD741Ij9gh326uWgjRlk3b/sEqVxEWzu5beGPjVpSdOlqDwY98KU9xNRZ48l0eb
-         d8EOEO5YMF9ZcKY98+0gj0YxEBCawdKdqpNor3JotMB+m7WCOINaXzaHXl96BNNACH6U
-         hQ1OYoFqWwdDiPF/8UuCF2RyUPQ3XRENETy4GZ35pmX7Fv9s1Hf87by4l7VHsyhkLXCc
-         zvLA==
+        b=aKov2c+b93ey+sIEAINsA42fZoBKYiyjCVJvCuHqwUlRJnI4fckNjgV1+hiGLwu/49
+         XI2243itdAT5LRvL4u/Z/oW8f97YEmphZT5EVAgqdCNb0wy7fPUu7MHnybDjcW/xJZyF
+         sQR0N4wSxVc92gXI0SDyge/hhRrqvz41v6z5+37yE+Kmf70/y1PlTwa/O0lh6pf0IsLt
+         CmYwq12hpN/OSJQTyuxHjiOp5Tl5NFhLTRlbmndcoAMr8AtQhqKTIFq3O85qar9Sfvvs
+         tWOMWhE9kfBctmTpTxK4FgzJjZ8uPW150JnedSzWRlsmfFChnBpkYpE3j8H796E21k4/
+         4qxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=aGhca+FtKWVAOMd7qYj10v0KdJR1NfirrXY/isbPnrA=;
-        fh=1gFsNVOkCaFtF0s4XFuQFGkH67ymas30vbUqz+gqXv4=;
-        b=lc5dz7vGEr8AEJyg6RwbP3AV82svghWQL3vLekdrEp9Xbp2LxWH37ZQP0TsjPCa9JC
-         xEIdkmgGkXQKwWY38quMJpCAMqSHG6fg6DVxV6qVlrbFzmUjeEBZ3X+kvOz6w06JGtEQ
-         ULqkhVPYhh79MIgfuPQvRIeCT3QKtaZTMqrR5+B1/lbfo9bsnzYKh+vGpvkSkc83RIII
-         /GUMFnacGOSvUxdiSHKP/o0mAQnn7DcX4x2Y8KCCi7xV9n2nscCtGmqYidQHMQv4qDrT
-         T5GsZj7td+clu+eEOPSSOWjpBnuNfbB3dww+Qt1XiSaDpWSJdaNRTbfbdw06ZhgRTl4g
-         QKeQ==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature:dkim-filter;
+        bh=xS0NSTHQ66urKOGPUMLuLeWALosyvFwp3UCvlbyOrUU=;
+        fh=bkbWI7u5UMiGWozkpt8jJiTeYHbaq8a7PWnecgHprQU=;
+        b=N9E3LA+n1TAGWzSnGifErd0BNSdox3FTgfADIup4Dbv5CVFhRUHIfeZ54YL1TOPiSZ
+         rzjFjYGDFhFn8MCzpRT4m2Ooy4gQG1T4xN0/fp/w2KJo7nFHD+WrlheI5v9fOUYYg+7k
+         qnhHO+m6OyU9l3wnCZMjdODM8WRaZt9QELQ0983Mk2YlkwOyIiVJmQbSLMAG+rfH0bk/
+         6dzCOvwJ7PqmklrZBoi+1AnuQME83fadGeGQ3yU47G7Ksoh5seyOD+CyUa9XYkPHWywS
+         pSnvcYjazZ5NKZuhLpOO1JlkKqmAFcV3alIFANXD01VWRCTmX1pj+M4a+Qon8U5eNAfM
+         biNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I5Ghfk5Z;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6fb35d5f761sor116102877b3.4.2025.02.21.10.25.31
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 21 Feb 2025 10:25:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@puck.nether.net header.s=default header.b=deMe6Sog;
+       spf=pass (google.com: domain of jared@puck.nether.net designates 204.42.254.5 as permitted sender) smtp.mailfrom=jared@puck.nether.net;
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=puck.nether.net
+Return-Path: <jared@puck.nether.net>
+Received: from puck.nether.net (puck.nether.net. [204.42.254.5])
+        by mx.google.com with ESMTPS id af79cd13be357-7c0a6cebe73si1025991385a.168.2025.02.22.13.59.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 22 Feb 2025 13:59:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of jared@puck.nether.net designates 204.42.254.5 as permitted sender) client-ip=204.42.254.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I5Ghfk5Z;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740162331; x=1740767131; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aGhca+FtKWVAOMd7qYj10v0KdJR1NfirrXY/isbPnrA=;
-        b=I5Ghfk5Z9H5Z6tCoPGma3mKHCdQtmHjcQ3qpLLc2X31masKNPnolIWy+T19nDNkEW+
-         H7bs2W0IBBf8KP+l0kDTsC7QdQv4JVDxG1giug7rbotqhbC7UH6pxTuxGbU+VqDn7+np
-         SKljh3y1wnOCBwrhdFw5dHt51JwWeXNO8GyQXbFGIryls5un32JhMQ3+u3Z/Xw+sm0Wg
-         6hzoajxuv4eefiOlnb5/vqo7q+M34YoNFJpRNd2fa3gwZuKByT5IOWKdRwJnpdDgDmDC
-         xg6pwbH+rERvTJw8p0WGt2Fn72e05w0jqnCJowIddo7v/M7JkkJh5Nxq38mhyMc10CXB
-         gOIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740162331; x=1740767131;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aGhca+FtKWVAOMd7qYj10v0KdJR1NfirrXY/isbPnrA=;
-        b=FfVOI/SkVdI+NOeJtxMkDZ/JCVNWfZYVfiZP42n53WnwTgvZQIx+nlJY5dj86N/Smx
-         dcb0xpZt1xjhGq5W7qN4DM3o3qYT3Dgevk8yprOf1QtpJND/2vhNa/01NfJpFRC5crCg
-         k/VD5749IcSGrMIDwtKjccg+w3WwA78rOS8SdjRPnfBAF6JRfxebWg1zO3JsuYGDr9ip
-         76DG7iIQu1nKtxBQKHd+cRLPQ6lT+y8pQJtQq+t4N2u7ur3ycAsy/MkLfTArPl2WePyU
-         h90Jbiwhm8xkEJrnKmOf2VHOgt3E1t2ZFXzP31as4zukXMbPeujRASC/pnq9mWv7vrpp
-         BPdg==
-X-Gm-Message-State: AOJu0YwuvoDMFGWU+NLu+8rCUrkjQfqwsioUIIdddDonyenlFm3qUtnJ
-	wN8yYaKTadKs+mGSkcdvadc0mIztrLfO24VUqx7p7+Dzx4fh853rbmR5SzJTmjl3XeRiphCKiya
-	L5CTOEfgp9bEc6sww3xCiojxnJHqC5xSFBhmRd+r25evLrrWUx80=
-X-Gm-Gg: ASbGncsezwXLhCwaQaSOUI77JQIQPCpjxSQHp09ljbSdShZceQfxmRV2I1weAjv9yoT
-	8ZxT+IxxmuccFfbjMw7lT6neDOfIQTkUdVDc4WB9k9gwHQpSuf4tgB6WvtK/6rDAvxZ9+qCaCAA
-	Ptg8ylXpPK
-X-Google-Smtp-Source: AGHT+IHS6Q7iuU3S2eVklWSsBu42hijBhcZV71sMaYmfo+Hua8Ko7uugsQY7LfkjQJYssYhtPvElunzM0cMBHphQoZ0=
-X-Received: by 2002:a05:6902:2484:b0:e5d:df2b:3b13 with SMTP id
- 3f1490d57ef6-e5e2466eeddmr3263002276.32.1740162331081; Fri, 21 Feb 2025
- 10:25:31 -0800 (PST)
+       dkim=pass header.i=@puck.nether.net header.s=default header.b=deMe6Sog;
+       spf=pass (google.com: domain of jared@puck.nether.net designates 204.42.254.5 as permitted sender) smtp.mailfrom=jared@puck.nether.net;
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=puck.nether.net
+Received: by puck.nether.net (Postfix, from userid 1001)
+	id 9F59D5400DF; Sat, 22 Feb 2025 21:57:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 puck.nether.net 9F59D5400DF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=puck.nether.net;
+	s=default; t=1740261453;
+	bh=+vH81h2+gcP1e4jqnnnOikYQLL4SWMws0tQgd5wZBQU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=deMe6SogxScbIBtYG0nvccbTeBw+aOgdY8fgSNzGIBjAhy+rsIHudQj96gqX0vT/U
+	 61zuj0f7HCjq+FcpRtKPtGmXFD5SMFwvQVxK+WQxZuQnAb1yCxu+/AvbThsMIITjHw
+	 LT6BaKRc5rhkHFXxEJugjlvOz2I+yCro+LzzIzst+t5g9Dz73ou3SMwZByMTBtrgC0
+	 cbmgUx1WHdoTRNJYjamm1LzkBKZtWc1NFs07LoWrsPoKILgXGQnMz309i5LoFpBvFY
+	 IFffxAmEK1PJBdTty4BhH6o1Glu9DXaHz/CkD3V7fplOShqJeCmT0YtYM26KkXYn8R
+	 KZA6D0ZSU8hLQ==
+Date: Sat, 22 Feb 2025 21:57:33 +0000
+From: Jared Mauch <jared@puck.nether.net>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>,
+	Jared Mauch <jared+home@puck.nether.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	devel@lists.libvirt.org
+Subject: Re: [PATCH v2 11/12] hw/arm/raspi: Deprecate old raspiX machine names
+Message-ID: <Z7pITScHfXSk-Liy@puck.nether.net>
+References: <20250204002240.97830-1-philmd@linaro.org>
+ <20250204002240.97830-12-philmd@linaro.org>
+ <CAFEAcA-3JJ1tZAXsik5hAonuSO9sCqDF1xqPQVhAeN-XwAAhDw@mail.gmail.com>
+ <e32a54f2-ef46-4964-89d4-a8969b6d1b05@linaro.org>
+ <1ec3cd49-7fe8-9c80-212d-68939580b8ce@eik.bme.hu>
 MIME-Version: 1.0
-References: <20250204125009.2281315-1-peter.maydell@linaro.org>
- <20250204125009.2281315-4-peter.maydell@linaro.org> <87wmdjgor4.fsf@draig.linaro.org>
-In-Reply-To: <87wmdjgor4.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Feb 2025 18:25:19 +0000
-X-Gm-Features: AWEUYZnGh1x1lMuI20asvT9Pcg8yCg1___Vm2MlNcBFXwueu9Gknb7oYMleXZX4
-Message-ID: <CAFEAcA_UsSNGWUE8uzScepxQoPydd-=s2UpUeRxiN_WSdd11XA@mail.gmail.com>
-Subject: Re: [PATCH v3 3/9] target/arm: Make CNTPS_* UNDEF from Secure EL1
- when Secure EL2 is enabled
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: Uw7wvllCI9Ov
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1ec3cd49-7fe8-9c80-212d-68939580b8ce@eik.bme.hu>
+X-TUID: tstIAmS9mlDU
 
-On Fri, 21 Feb 2025 at 18:02, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > When we added Secure EL2 support, we missed that this needs an update
-> > to the access code for the EL3 physical timer registers.  These are
-> > supposed to UNDEF from Secure EL1 when Secure EL2 is enabled.
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  target/arm/helper.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> >
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index ac8cb428925..7ec1e6cfaab 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -2387,6 +2387,9 @@ static CPAccessResult gt_stimer_access(CPUARMStat=
-e *env,
-> >          if (!arm_is_secure(env)) {
-> >              return CP_ACCESS_UNDEFINED;
-> >          }
->
-> Hmm this failed to apply as b4d3978c2f (target-arm: Add the AArch64 view
-> of the Secure physical timer) has the above as CP_ACCESS_TRAP. I guess
-> because I didn't apply 20250130182309.717346-1-peter.maydell@linaro.org.
-> I guess this needs fixing up for stable.
+On Tue, Feb 04, 2025 at 10:58:39AM +0100, BALATON Zoltan wrote:
+> On Tue, 4 Feb 2025, Philippe Mathieu-Daudé wrote:
+> > On 4/2/25 10:22, Peter Maydell wrote:
+> > > On Tue, 4 Feb 2025 at 00:23, Philippe Mathieu-Daudé
+> > > <philmd@linaro.org> wrote:
+> > > > 
+> > > > All previous raspi machines can be created using the
+> > > > generic machine. Deprecate the old names to maintain
+> > > > a single one. Update the tests.
+> > > > 
+> > > > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> > > 
+> > > > diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> > > > index 4a3c302962a..c9a11a52f78 100644
+> > > > --- a/docs/about/deprecated.rst
+> > > > +++ b/docs/about/deprecated.rst
+> > > > @@ -257,6 +257,19 @@ Big-Endian variants of MicroBlaze
+> > > > ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` ma
+> > > >   Both ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` were added
+> > > > for little endian
+> > > >   CPUs. Big endian support is not tested.
+> > > > 
+> > > > +ARM ``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``,
+> > > > ``raspi3b`` and ``raspi4b`` machines (since 10.0)
+> > > > +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> > > > +
+> > > > +The Raspberry Pi machines have been unified under the generic
+> > > > ``raspi`` machine,
+> > > > +which takes the model as argument.
+> > > > +
+> > > > +    - `raspi0`` is now an alias for ``raspi,model=Zero``
+> > > > +    - `raspi1ap`` is now an alias for ``raspi,model=1A+``
+> > > > +    - `raspi2b`` is now an alias for ``raspi,model=2B``
+> > > > +    - `raspi3ap`` is now an alias for ``raspi,model=3A+``
+> > > > +    - `raspi3b`` is now an alias for ``raspi,model=3B``
+> > > > +    - `raspi4b`` is now an alias for ``raspi,model=4B``
+> > > 
+> > > This is not how we typically handle "we have a bunch
+> > > of different devboards in one family". What's wrong with the
+> > > existing set of machine names?
+> > 
+> > Zoltan and you don't want to add more machine names, then you
+> > don't want a generic machine. This is very confusing.
+> 
+> I said either rastpi4b,revision=1.4 or -machine raspi4b -memory 4g would be
+> better IMHO. Peter perefers -memory which is also fine with me. I just don't
+> think adding more machine names where only RAM size is different would be
+> better than using -memory for that as usual.
 
-There is a Based-on: tag in the cover letter which will tell you
-what this series should be based on if you want to apply it.
+	I'm the annoying root cause of this as I had filed this:
+https://gitlab.com/qemu-project/qemu/-/issues/2797#note_2326724893
 
-Yes, we'll need to either tweak this commit for stable
-(i.e. use CP_ACCESS_TRAP_UNCATEGORIZED instead of UNDEFINED)
-or else pull in the refactoring patches it depends on.
+Which was really a question around providing more memory options, I'm
+happy seeing a lot of thought has gone into my simple question/request,
+but it's unclear reading this thread where things concluded.
 
-thanks
--- PMM
+	Is there a chance these are in a branch that one could build
+against to get consensus on some of this style vs substance stuff?  I
+get it that it's tricky and do generally think that one could restrict
+armhf vs arm64 to having 64-bit support in the (hypervisor) OS.
+
+	I was wanting to tweak some disk images before imaging a bunch
+of nvme for use and saw using kvm/qemu as a straightforward path to
+doing that on my laptop (x86_64) before firing up a bunch of compute
+modules etc.
+
+	- Jared
+[i'm not subscribed to the qemu-dev list, so I expect mailman will
+hold/bounce me]
+
+-- 
+Jared Mauch  | pgp key available via finger from jared@puck.nether.net
+clue++;      | http://puck.nether.net/~jared/  My statements are only mine.

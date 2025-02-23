@@ -1,125 +1,195 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp814528njc;
-        Sat, 22 Feb 2025 01:41:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWRi0WtI5bqacnW/hDR7r6k8BwxVBCFNz23ws650jNOGBr9t6h889YputLBlTH+N8pbPeQCjxACe73eDw==@linaro.org
-X-Received: by 2002:a05:600c:4ed1:b0:439:31e0:d9a5 with SMTP id 5b1f17b1804b1-439ae212938mr46505325e9.22.1740217313379;
-        Sat, 22 Feb 2025 01:41:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740217313; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1293763njc;
+        Sun, 23 Feb 2025 02:58:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpU550tNF4RVAUdU55jJZuTeK4ycPDaXp7XfG2N3RcqYVzsO6tXgxolWRD6Dy8TRN6nPCMacIiyaZyWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFvqWOKdYSDxRXoI+69gUY/jEITVA/B9CAxNHYwZDRMphAyXSAiLV8QrYJ/IxsghS1vmG8d
+X-Received: by 2002:a05:620a:2b86:b0:7c0:a2d9:cb65 with SMTP id af79cd13be357-7c0cef66eb1mr1327618785a.57.1740308309859;
+        Sun, 23 Feb 2025 02:58:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740308309; cv=none;
         d=google.com; s=arc-20240605;
-        b=PvnlhVDb4hAE54Ww3+3tg6zpWzVQ0qenl6dcfe2s+9C2UgOKNpfGoTWqte0Fyp43qp
-         x3+OwvZN7NLXD5XMA76I8eo0JAHlKclye1VJvaf7RV/uJ/jDFoxvOed1e8gHheSFn6PN
-         mSSlzvwvLxPbjlAEYnkER0BroypDXzXjAxvtyxSxs48jJIgkMZ1UAoWslMG+eKHELc0m
-         vg6OQtZ06B516kMBDHOk1EiegmT2ft58GEc5dglWCFon/yX/UzGs4aMj71RFxvikjchp
-         TyGj0nfkMvFyjv0TMUJ/HfPF5Kz3tHR1L1zj2DAUEl7pWbpckAb44Kg/ineBUZnvPfFt
-         0ylQ==
+        b=jBphYyLm/L6RUNR9xu8aM/1xCY94dy0LEVwEAnR1ziczsQgPPdUkvVVHxVFXgm8M4V
+         DAF7ePo0iWJxHcWa9FOcN79HNZv9nwxDTQhBN/EL7E/uSN8/lF8Xiwv/hr1DDpppH28S
+         HkHYihK5btPJnGZtUnPj32uhAeLkMb1oH/Mfh01LDr3Gw0fZY5I7jFXhOvWNv9p9othw
+         Jm+iurbuJaBSaEqMlVRiK5cSOY+muyMCNG98pJd1o/NjOc8XNsoQ5kTal9r2/CrF2h2o
+         NrU98T5KvJGx0+C0fcMcG/Q8IS75lKGyOQxJ9zFvj+/5u/pQxMZMaPCu6ZjnInovVjGB
+         o9NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=p/6zF18sr+H4aV8iIBaQuqtGPgtDt/rve8RnYGx0smc=;
-        fh=Bj9QjitRSqzp1iX1TdZod/XfdhvBxyXYm6+k/EhqJIw=;
-        b=Yb2maJXazWvHVLP0pd2lijCUZQgblB14ja1u6nfyXqITu/DAXQJEm6DtD5jcarYTHg
-         UYHt0sPD5blJNlUTU/l70nFhA27w01tHKXnQ9mmRFwgx9VScBIvR8kVk64+xKupUmFlT
-         KsS2m/O+WNFE9GPtYOEI5i1Gkdgv2xYtWReDZD9YQiMiIozwsUo9ciVbWU6avqJvPivZ
-         GCImO5aIJEhnwIgBBTf3lA9QvDGindo9g8caJAhJZ9/lMWJCcctQgsEx0/Krfzq6s171
-         BBW8hZznYZ2gRSMdu9l5pjTyKm9hRGn6PNr7MxsWbvRHxOjEfPqgjHIe3DhKrFSIKTvO
-         mT2w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=jUrrlO6cs7dFVIDoZGPLGnJ38fqkdMfTZsaedCR0h1I=;
+        fh=HYBn3iwK1uitUM80Nb7B1D6grWwlhPvcx281aLhTiKA=;
+        b=eCUXdgNs9IPVRHHyc5wJ6vIbhbPERKKWava0EXpEEgIEurniaIeBG25UwTljTnTT/T
+         KCp181qda9I2EzKdeHC8fyn6jiRp7+92L/KUTIDPUh2L5kEvhxVPfeYaOYGlm9ehWnCh
+         7uacH5Lb+058O6YDYBNfr4bH10DQVVNXP6Gog6GzOKu1kYenVfJU0M3LLrz1NJqELQCg
+         neif0IaXIDci/Sy/U9eC37cVEcjWwVpluROq1EnfIB7d70/9vybN8k0Rss/OJU183ND3
+         zY+9lmY7TOnpA0aNQz6vDcXgOUmbIKp3FHA72lCid83Vx7+RJwCoY2Ho9ZRmrlSRekfL
+         30/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=th.huth@gmail.com
-Return-Path: <th.huth@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-439a67904f7sor17014625e9.0.2025.02.22.01.41.53
-        (Google Transport Security);
-        Sat, 22 Feb 2025 01:41:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=llODNdsJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c097bbb442si1344343285a.255.2025.02.23.02.58.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 23 Feb 2025 02:58:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of th.huth@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=th.huth@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=llODNdsJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tm9gU-0007uZ-9i; Sun, 23 Feb 2025 05:58:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tm9gS-0007uI-Ik; Sun, 23 Feb 2025 05:58:04 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tm9gR-0000Jr-25; Sun, 23 Feb 2025 05:58:04 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-ab78e6edb99so491126666b.2; 
+ Sun, 23 Feb 2025 02:58:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1740308281; x=1740913081; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jUrrlO6cs7dFVIDoZGPLGnJ38fqkdMfTZsaedCR0h1I=;
+ b=llODNdsJx7KCKip4rHgAam+konCmOF4uJgVQ+iKTlRriAEaabcwEwnRS6+GlpqA+yd
+ IfmJsZkw3mLwVvGWm38I3pF3ppRF3Vy9XiUYUTWOWK632CrEQ/raNp41mk5g/YGVkHwK
+ LXvp3OmNC8AOh8FfpvN+M8f0eTYpMUpl658I0CPaWaZsTAdWa5haiwFC/f2WVopFfu50
+ yc1e81O/zwC09hrhgiD+fBR+1fNSt/1QsjhYWEfr7ehZukQBgrTox2ZA0EcnjGVhoBNS
+ VWQfSxhawYRvpxDx1ltTvifUKiDy0X/kCSrZ1aYtFMUmdNr4YvlIrqSYCpLq0uBRxVlD
+ rnOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740217313; x=1740822113;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p/6zF18sr+H4aV8iIBaQuqtGPgtDt/rve8RnYGx0smc=;
-        b=IiZg0GO/H8FK4TWxoYqOxV6m79cGbw7XLNdysdtSLS3ikR8E69Lietyhb61LxkdlzX
-         JZIgK0qyVYWCSXba+QJw7SL4sgRVMGzOSymZTtaTVLF4diVPJ/6vyojOJyqaFMHTiEb7
-         ZRzaCGOVpV/2y2YNPN2ldgthbVi92KHpsIOuOrxZPQU8M4LCwutBPFHVnD1Tx//ZhbvS
-         DVGdRANGpWxZDeN//bjttj86TsXwOw6E9zUKlEvT6JdmEc98Q2rrieUHNue7C/niJB4O
-         L0DqqWQSFVJYkFY+XRHJklnfCS0ZUb8U2/qdqHgRcP/Ihfdrq8/nIQiPX+6B5eITtLDG
-         /j3A==
-X-Forwarded-Encrypted: i=1; AJvYcCU4zA+3gZVLuvdN7Cwx7cn3/dq67RHnTvG/vuK+ZujxnNIr/JvgIC8GZlMm9VMKZyM0HzmOVmbdNQ0mQGBoFA==@linaro.org, AJvYcCV8kIZN1BMrg1rGxsSs0Ol7QDSdnPMOSJoxsNFTBqdU5UdHYm3aIksb56v0jtMUiTByTo1zQauhh9oWhg==@linaro.org
-X-Gm-Message-State: AOJu0YwyEdGjfEFPTEiUrOpefsH39zp4EOlefXXgA0I+FPUMfgPF81j7
-	N6IvtH6LoPD57wyd9N2+JT4vJVcDKHUKdl5JJ42L4YBpMDtaGfKNwafkWffS
-X-Gm-Gg: ASbGncuhn4EybA1to7y01PUu3zvXAgVkwI+C/sK0nwjlQfShraQWSTyK/4wjbozBfUx
-	ruoaiXDWNdu6EdVQBQRyJAwKeqbf4XymseUvjqigdQvalZc4v1ThEN/yB9LH8mihSB6pK/tdxzw
-	/KeLx9dTZznk4OP1ZcM8yBgDLp9a/GZUXjfhnHsWG36JxOYYRRKcecAyunvINreOCE/ZxrcirCR
-	GuLfZ1cf+jVuxf7Yd6kBZDhmkMIwE5nEHPxqu8+KOu3i/gp2l2ZflTjYxdqMevvHiKmz6+78Lgf
-	kaK9RubttjCf4Bs0CLigTPjgitjAUDLGuGJc+dAPpK2JQjtb
-X-Google-Smtp-Source: AGHT+IGEUOKQJQZEbO5RqGE2g5ULtX+AHPzfTNSznb9Z3gM5FL8SnzorvM1NV4f2l0zdVCW50yfgRA==
-X-Received: by 2002:a05:600c:1910:b0:439:9225:2f50 with SMTP id 5b1f17b1804b1-439ae1f1586mr66345315e9.16.1740217312610;
-        Sat, 22 Feb 2025 01:41:52 -0800 (PST)
-Return-Path: <th.huth@gmail.com>
-Received: from tpx1 (ip-109-42-51-157.web.vodafone.de. [109.42.51.157])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f258b434fsm26142897f8f.16.2025.02.22.01.41.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Feb 2025 01:41:52 -0800 (PST)
-Date: Sat, 22 Feb 2025 10:41:50 +0100
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
- <marcandre.lureau@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, Magnus Damm <magnus.damm@gmail.com>, Shin'ichiro
- Kawasaki <shinichiro.kawasaki@wdc.com>, Rayhan Faizel
- <rayhan.faizel@gmail.com>, qemu-arm@nongnu.org, Evgeny Iakovlev
- <eiakovlev@linux.microsoft.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Luc Michel <luc.michel@amd.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: Re: [PATCH v2 8/9] hw/char/mcf_uart: Really use RX FIFO depth
-Message-ID: <20250222104150.03b08f1d@tpx1>
-In-Reply-To: <20250220092903.3726-9-philmd@linaro.org>
-References: <20250220092903.3726-1-philmd@linaro.org>
-	<20250220092903.3726-9-philmd@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1740308281; x=1740913081;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jUrrlO6cs7dFVIDoZGPLGnJ38fqkdMfTZsaedCR0h1I=;
+ b=WE07xRQj13pEKLU/UiM7xw5XAuM/fBoEfatvdBT91zjleL40gAyn07lxskW7+8XzCb
+ hQeR47HneMFNZ0kZXTok2od/wurBulqAvlW2/VbDhZsLJpRprZ0xOOb+ZbVr3fzGTyip
+ I1O9rs9X/Xg1NaMR9vlPWG1laoZPQ/Ijl87C7vqSWjb5qQTD2JmKU1yZOmEedyLCykHD
+ 3Cj0h4czyq334rsbCrDvl7JGYUDdG69eX8U3Rr+rP92TpH0IFumt4McdKIRJHOupGEEg
+ fuEIspZM41DHN8/IEGsAMpDJTZOqNIzvFCCnmfKyAxwllm//DvB6EbEGVoTDuD1Ey7OM
+ QhtQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW0oSVLrJkshPWYTTSsBb6trao0ZD2mMKNJXrnNNP+7gQT4ntmotkOUvtEZLkmQUXqJ1MMXBWGc0w==@nongnu.org
+X-Gm-Message-State: AOJu0YzlVHjeCB79RR0UuVr7yiQp3PCxvpeQiazS0q2OyTSlW6p5VXqS
+ cZ8xnz0O/LcDwtE+X+J9VScULZ1mm69zie2sHgY5gb5z/K/2fLa8
+X-Gm-Gg: ASbGncvh5YjSSlcKKuLrAgr+gNZFPwtQPJqAx6armCZRrOOKvvwhVZpFzlIHpq2QGuq
+ +uVSEMxDXIjI2eI9CPHF+iZOmBixgxD3i9SglVb7R7aPdH0voKnpI5wgjzXTaDKkpo3wT0dACEj
+ h7Vvo5H/woVZk61jN2+96W1c7QCQzJAuEzojDTNfVq+o8DQw/RjQoWC5w4PmLcKkgV1l/dk5f/w
+ scbTsNBeAW453rsPZF/hfCzwnWYD9EXJqD+GpJvR0xbLnhIGntkMp/qCs94ENU/W23ojDDT0epg
+ T7eOqGNNx9lw0UQgWSQve40oISKLKEO7HTkotEHPTT9QwzJOrIYUd9dbeXmhMmd54tMVIqPAAy8
+ =
+X-Received: by 2002:a17:907:da6:b0:ab2:db7b:5db3 with SMTP id
+ a640c23a62f3a-abc09e4727amr926971066b.54.1740308280452; 
+ Sun, 23 Feb 2025 02:58:00 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-011-167-038.77.11.pool.telefonica.de.
+ [77.11.167.38]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-abb9b187203sm1346795966b.61.2025.02.23.02.57.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 23 Feb 2025 02:58:00 -0800 (PST)
+Date: Sun, 23 Feb 2025 10:57:58 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
+In-Reply-To: <6E5A0BEB-F0AC-4791-8CB6-B9AF74CBF307@gmail.com>
+References: <20250204092112.26957-1-shentey@gmail.com>
+ <20250204092112.26957-19-shentey@gmail.com>
+ <CAFEAcA_gxGWivT7byZh9gYc2QHfsTqbJ8vtxPDToOxLMdMvwQg@mail.gmail.com>
+ <F8650CD9-AA03-4462-A74E-7A068820F1A2@gmail.com>
+ <a8855d03-d207-4a0d-a16f-24e4436a3b66@linaro.org>
+ <6E5A0BEB-F0AC-4791-8CB6-B9AF74CBF307@gmail.com>
+Message-ID: <132D5659-EE9A-464A-B82C-28EB826678EF@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Q4GXPqeMipBe
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tvMrVd4X9Nbc
 
-Am Thu, 20 Feb 2025 10:29:01 +0100
-schrieb Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>:
 
-> While we model a 4-elements RX FIFO since the MCF UART model
-> was introduced in commit 20dcee94833 ("MCF5208 emulation"),
-> we only read 1 char at a time!
->=20
-> Have the IOCanReadHandler handler return how many elements are
-> available, and use that in the IOReadHandler handler.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Luc Michel <luc.michel@amd.com>
-> ---
->  hw/char/mcf_uart.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-> index 95f269ee9b7..529c26be93a 100644
-> --- a/hw/char/mcf_uart.c
-> +++ b/hw/char/mcf_uart.c
-> @@ -281,14 +281,16 @@ static int mcf_uart_can_receive(void *opaque)
->  {
->      mcf_uart_state *s =3D (mcf_uart_state *)opaque;
-> =20
-> -    return s->rx_enabled && (s->sr & MCF_UART_FFULL) =3D=3D 0;
-> +    return s->rx_enabled ? FIFO_DEPTH - s->fifo_len : 0;
->  }
-> =20
->  static void mcf_uart_receive(void *opaque, const uint8_t *buf, int size)
->  {
->      mcf_uart_state *s =3D (mcf_uart_state *)opaque;
-> =20
-> -    mcf_uart_push_byte(s, buf[0]);
-> +    for (int i =3D 0; i < size; i++) {
-> +        mcf_uart_push_byte(s, buf[i]);
-> +    }
->  }
 
-Tested-by: Thomas Huth <huth@tuxfamily.org>
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+Am 10=2E Februar 2025 22:48:24 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>
+>
+>Am 10=2E Februar 2025 14:26:00 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>>On 6/2/25 22:58, Bernhard Beschow wrote:
+>>>=20
+>>>=20
+>>> Am 6=2E Februar 2025 17:32:31 UTC schrieb Peter Maydell <peter=2Emayde=
+ll@linaro=2Eorg>:
+>>>> On Tue, 4 Feb 2025 at 09:21, Bernhard Beschow <shentey@gmail=2Ecom> w=
+rote:
+>>>>>=20
+>>>>> The implementation just allows Linux to determine date and time=2E
+>>>>>=20
+>>>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>>>> ---
+>>>>>   MAINTAINERS         |   1 +
+>>>>>   hw/rtc/rs5c372=2Ec    | 227 ++++++++++++++++++++++++++++++++++++++=
+++++++
+>>>>>   hw/rtc/Kconfig      |   5 +
+>>>>>   hw/rtc/meson=2Ebuild  |   1 +
+>>>>>   hw/rtc/trace-events |   4 +
+>>>>>   5 files changed, 238 insertions(+)
+>>>>>   create mode 100644 hw/rtc/rs5c372=2Ec
+>>>>=20
+>>>> Should there be a patch after this one that adds this device
+>>>> to your board ?
+>>>=20
+>>> As per Kconfig the board selects I2C_DEVICES and this device is "defau=
+lt y if I2C_DEVICES"=2E I've deliberately not hardcoded this device to the =
+board to make it emulate a plain i=2EMX 8M Plus SoC (see also board documen=
+tation)=2E
+>>
+>>Then maybe add a test to be sure it is not bitroting?
+>
+>Good idea=2E I haven't written a test in QEMU yet but I could certainly d=
+raw some inspiration from ds1338-test=2Ec=2E This may take an iteration lon=
+ger but won't be forgotten=2E
+
+There will be a test similar to ds1338-test=2Ec in v3=2E
+
+>
+>Best regards,
+>Bernhard

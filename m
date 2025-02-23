@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1309486njc;
-        Sun, 23 Feb 2025 03:47:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVb/sHjn7WTFEP6Qesabxg5PIszccKjj9eee9oi4/vajNmDVHWnJqtAyek45tvDPgw3DkmhLRlmGuQoyQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVN2+wjDz/fq7LPNGRGLq7eHSKdbpf9P2kTT+1k36ltYFcwUakgoAAuFgF81IB+Yywpw8z
-X-Received: by 2002:ac8:5f50:0:b0:471:8b48:70d with SMTP id d75a77b69052e-472228c826cmr146891081cf.21.1740311261231;
-        Sun, 23 Feb 2025 03:47:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740311261; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1309538njc;
+        Sun, 23 Feb 2025 03:47:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUnRbcMXlyqPIUx1bhM+vOWrZ+DT9NjqN8UBFGHn5s+SkqChUb5yDh6kGT2gTzuZD2fXQa0LhsJ3eTCnQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IERnCrd81bzKHVTpYGv3dnQySqqRGkCqhCGSHwqEVqZQoiSeIZtlFUlV4EC0gv4+w7kI1RE
+X-Received: by 2002:a05:6214:1c43:b0:6e6:646d:7550 with SMTP id 6a1803df08f44-6e6ae8b0dddmr144442026d6.19.1740311272888;
+        Sun, 23 Feb 2025 03:47:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740311272; cv=none;
         d=google.com; s=arc-20240605;
-        b=KOImBSsRhmoy66KdUYPvrboHNiMlFL80pNlEohLfrleb/zBdIBaqTsZDm4OkgOf4fw
-         zUdcsqOzKk/h9OjS+bpgBxhL1ev6ef7jMy2CSXy5Jj5SlteARwNEApSkOdUGwFP8YO0o
-         ufJiJFsDboQNkBs7keVCjcvkfE/F3qWVIScFVHVMj6Zfd04XN6EhoLaiOrthJSJx2v45
-         7BJb8r08JD+OjGYSaguVFo4PU1nA5k/9Bu2A1Wh7B28LpJNS65yNaELIyCso9lhnu0UN
-         dp3x3zpT46I3e0YKQHrSY4eVAQtVMSmdCJRLokiQh64mlpmkVv80YVxADQraszid1V8C
-         cPJQ==
+        b=dlFTMUzriVx6mKnRuXB2sl8PYYUZSC8TZv/PYlZXIL21U2vORwSbKLpjwJAImEyc9b
+         xyVD06ab1/BpFx+tMmrGWBSHFNIYGc4RQU7CPFb+TWEAWbIYRa0BZMnHMU9zSYYiwSOQ
+         jD9Vrm6z9SG1v49F/u6mEpbNwZkAmbePq7p2789G0ZvZeTalHOx5APVGwKsHR4dhfz7o
+         WOZGJMyd9kZyhQNgaesM2kolHd9JNW1Bn5wkxHanwEYCvR4ACgzu3eaYd3JQfgeowmuH
+         9Uz/rTB084DYHB4fxDYK72pAGxXOZuPuhNbbgiyKCaWtbdNzLbdMSddrU/QswWiyMbSj
+         o7MQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uWfrQhvz/dbConbW1e2cYEwd7c6kqdBGuDJ0FPSuEbo=;
-        fh=VBmxCzxIHVotSmTsVMLh/OUvX9AgKRncGg8mCyW2BqQ=;
-        b=FilA1lrSncSgJoxjaRhJRRTdigYFSTEqWeyoBiCM7UX+Gwb6dEpBYszNav2zC21YOO
-         3S7KTZG7ZrGygavFUdgQuizDDWjCoxw9fkFOBmuAedxufP3FHqlbYvkGU7J1G3e5Wtpa
-         vVYZBTk/DfI3YtK6HM06Ik2zZFAvfs7jR0iipQzne2WWvsBphzcziTFH2SQrvCrTvck7
-         aVJMW/XgMX2oK8YQIdOCfpB5iLyeehisLv3R5Ilm+18TyanJoSjJovQIRdEhkcSdZmHA
-         6zuS7KnPzoTpzZ+b/HeSQpgnwIY78PRiJ3U8+NJZg5H44R2Io1wFHsQguoM/2dwlBXjY
-         ljLA==;
+        bh=YmClN36esJRhXXDtLBPJ+4kUyD04jFmwOC3ERK+r3K8=;
+        fh=ZIUWw/+UqQNWWGI85BIWsQMd9fGNKQxIG2kNwZEX6PQ=;
+        b=GL7VnUe5bzcLUE1QqFCBmGkndOMN9Sfnj7twniLSs1E2cOzyDt9L0/9Ys+CTdo76Cu
+         pQ0mMcJAvvW4s5pr6y+0czbTVRuCAJHmzSei/rWchqJxrSP3lw9ak4ivhvYUUmvFwIZS
+         +FPZSkgjhRkg8XDhgyYWQinbfW5b7/PUi3HuZo5JM5HaWlc2MpnUUKvdc2LC7hMAtkSJ
+         kXhLMF/l3SEKt6b7ZQx7NZqnLRS5uSQnKoNF4gPcisQAno4d5K8YPvu6n4NCm0cVD4Rw
+         9A1wj2DHV1eVcCQVnozZpP9iVRL+Opg6fhb9qliQz+pgtRx1sw/MyOs1plNFo1WTsX+M
+         dqMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jSib/9rl";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E+sDIx2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e6a3027958si63049126d6.345.2025.02.23.03.47.41
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e65d9c1742si198249416d6.288.2025.02.23.03.47.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Feb 2025 03:47:41 -0800 (PST)
+        Sun, 23 Feb 2025 03:47:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jSib/9rl";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E+sDIx2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmASF-0008QI-O3; Sun, 23 Feb 2025 06:47:27 -0500
+	id 1tmASQ-00005q-Sy; Sun, 23 Feb 2025 06:47:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tmASD-0008Pj-Kc; Sun, 23 Feb 2025 06:47:25 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ id 1tmASN-0008VR-Nm; Sun, 23 Feb 2025 06:47:35 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tmASB-0005vT-Nx; Sun, 23 Feb 2025 06:47:25 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-ab744d5e567so606938866b.1; 
- Sun, 23 Feb 2025 03:47:23 -0800 (PST)
+ id 1tmASL-0005wg-N8; Sun, 23 Feb 2025 06:47:35 -0500
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-abb9709b5b5so656644266b.2; 
+ Sun, 23 Feb 2025 03:47:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1740311241; x=1740916041; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1740311251; x=1740916051; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uWfrQhvz/dbConbW1e2cYEwd7c6kqdBGuDJ0FPSuEbo=;
- b=jSib/9rlrO+yUViatlvCt0Y+dGMKaA3evumBiamf/6HS1DXMAicn7qbhNE+9YY0j+8
- 7rM05E8q4E9qDoLm1te/e02zO6o0YqiymKD5qaUWYuRdA01haplnreBvRSbvit+aOAd2
- 6Lv+8xFhjTje+xjmWgDzac0uMYpqyZ7+9JpoX360zJ8rI0H3c5KGZ6shFako1gGd0jk4
- igMkbLtaNtCthRQg8YeOmXsLC/kigM06j7aaXWdxY+e9YJsF3eoRxiL6+ProsvPV4GDY
- IE7m+v7UA2cd2x/JDOcrWglR7WQsXN83dEVXvo0cn0WWhlseNYPD5GkTvIAUBxUBDOcv
- USXw==
+ bh=YmClN36esJRhXXDtLBPJ+4kUyD04jFmwOC3ERK+r3K8=;
+ b=E+sDIx2gbZOx3fk8qesyjAFQMGdElFqkHtJFy15OhsUc3RuAc5Ql0NT4C73SF0OHn1
+ iCk+mmZTN4TkSsKs2peZVWZr8CCBrXeyVNfavCodtPATscGqWLiycmscyNRw2N0TSJ5o
+ 9Q2M1TAIK2RGoS6l4CIHJXhbLErtr27zAzuKLPqj3U4/MN5tVaa2L554S/17ZZ4Vspms
+ 78/vt3suT1t41VWCQVcgMfkEDgPOgicTUvURMhbxYXEK8cHjdXLCfKmrOAiNPbqDvKti
+ I6XRsMzFbBRfSXedWqV5yj42w/p3TuGmgPdZXBbgnrTqjXHacpvJfgiAZsR7Q2l4yoTV
+ DXUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740311241; x=1740916041;
+ d=1e100.net; s=20230601; t=1740311251; x=1740916051;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uWfrQhvz/dbConbW1e2cYEwd7c6kqdBGuDJ0FPSuEbo=;
- b=sm2gCqtJ3XDF+YyTimGvXzzpszCoTMg99GuieU2lzDQtT+MENFM4qDnS91FHZIZCG/
- CwcvwjIGJXaviy15TSIi1SSFiKUBy8VN2A3XkxDpjsEQpfzlTarc17nKW/fgKEYNko4W
- qbbf74w/8fzve/7aKa7nWo/xKv/9oZfHvTAPSt1ca/pHgdSOHhlbqltOKp24NCnFSwcD
- m2nMzngWIYsY8m3qM32flMxR4xstRA+RfUd4FOUe3CkgQb6Guag4QEGelwpaF6ZGoezY
- ZU2GMwV+3yEfougNUd6QURxS9pbFnXXmAYqwdPS5SJ+0HHJ4YK/IFWk3RKhSV7mu6zqG
- zCJQ==
+ bh=YmClN36esJRhXXDtLBPJ+4kUyD04jFmwOC3ERK+r3K8=;
+ b=YxSMnZct3I4SM5xRjuYAX8TVmGzlCPNJLrpHdTv9eo68CqUu823MM7s74T+D6XkBvg
+ obYR71113AM5WGunuc09mDJxGLzYzG6ZbmOsfmnkCgdoOi04kDSVnvG/Hi6lt68JEnHc
+ TV8TCGxVdOX3I/wHdMd22042W5GYQez70RVGbcX8htmDpBCN95r4/JtQppvy5NbbKy5Z
+ JdFMZyr7IzZfyNOjgf252mmKGmStz4+NugKQXX7j74fQ1/G4fOXMg1dw8GY4IqqoaJ5I
+ qbVeIXz97hiYIxk+s1svF3gQiFFcIcNLaj+pnmLpvV0XBb+83fovQx2+XXt5ShEgg8kx
+ 0HNQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXBUcz00TZ1tZh9f9DN4sK3Ht344d8vIpHmfh+i3koOMxqSiufO55TACHDa/Uq4CKliR35GteRhcA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywyu/UCGRixJzh6LmFClwVCtG29qu/Er38ocZhmSRt8Q2iC99RA
- alOH+BdQkvevG2Li4g+j2t3ZbjTg/CZvrzsaIcSkj6mvadmRTvtiflFF3g==
-X-Gm-Gg: ASbGncteGDrQLEDKTTE1/bDG1SWbYzo7iFyhZps+ER544I7+mFxutdlK8nAp8GQbSsV
- DbB7uZ2FP3RlgcMb++qxQ5AzDLFfPT8HyG6quaVwJesULlbaCY+e6Sex0GW9qsi7G0lLpMFzrpJ
- W1+FfhO9b0FmxiDK+WNW2rMlOp0gq/L2XoITZadk1Gd1v6XaTeQ3diQDTTUek0iFHIoUTaxpACO
- 8M825ed7eZ8815OJqEbXnA+i//Qdj82hPC9C0rb2T8G8es5ARqP5zv/YBYSwfFIUPzNjn9rmYBY
- sOxZMlizIFZNCLmDCnwS7rPXH+Ji20nVx/Y8yzBRo0V/mPzdRH1j85e5vtUjms8PhQcqAxllFSS
- w7DWpSOg6Daw6
-X-Received: by 2002:a17:906:308c:b0:ab3:9aba:ce7d with SMTP id
- a640c23a62f3a-abc0ae1ab4cmr755188166b.1.1740311240904; 
- Sun, 23 Feb 2025 03:47:20 -0800 (PST)
+ AJvYcCXomS/3KKbGO5wWl2/JkHsZviqLuwpmnOXRe3m8Tf1XaWMO6idx+aboNobE1RqxpAqbQQqathD6nw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9T97dkiGxGr20js2mbrDUe+Bx34+BxrPUAGnX7CqKWzgVHpfl
+ x1idekTBryKHDW/3KmEPtQGd7C3BzYtMaZBVTN1hwiMbmrGbSpGeqTTlag==
+X-Gm-Gg: ASbGncvedyW6O0IBNZgnO2lgwITUjL4910dTyBwVX1OhFVM1Iubou8sjd0lrAZtagx/
+ MQvw4f4uhgSHvyzXOVOL/dM5l0OGpilhYWz5DbguPmzir+GuDpgeEfhXW/hkUtEaYTJ6MC3q9K6
+ 2hzn/3yOu+aTOp/ZHwQP5IAS0YDO+JGmHy5W5ulQOgB2QIkIiZmDhmbXaacJWKfWul44Ths+z71
+ Y66Lc9AlQ2H2E3Zt8UvLiwP+yGqKe/Wa8N4R6aKcaK/2BKUtij+m76YXgG2mUVgEbkR2d7IQQyK
+ fhjleeMEyXWaW7LDCGZGfzpWace1t5xAsQOoiC+9RpLmyZFtDyt0GpeQJiHEBsT9yeN4OGkA/iY
+ FKhaAML69H0Vw
+X-Received: by 2002:a17:906:31cc:b0:ab7:bcc0:906a with SMTP id
+ a640c23a62f3a-abc09a808c3mr660610366b.20.1740311250731; 
+ Sun, 23 Feb 2025 03:47:30 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-011-167-038.77.11.pool.telefonica.de. [77.11.167.38])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-abba4b9ee98sm1240515466b.167.2025.02.23.03.47.19
+ a640c23a62f3a-abba4b9ee98sm1240515466b.167.2025.02.23.03.47.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Feb 2025 03:47:20 -0800 (PST)
+ Sun, 23 Feb 2025 03:47:29 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -113,17 +113,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 02/18] hw/pci-host/designware: Prevent device attachment on
- internal PCIe root bus
-Date: Sun, 23 Feb 2025 12:46:52 +0100
-Message-ID: <20250223114708.1780-3-shentey@gmail.com>
+Subject: [PATCH v2 07/18] hw/arm/fsl-imx8mp: Add USDHC storage controllers
+Date: Sun, 23 Feb 2025 12:46:57 +0100
+Message-ID: <20250223114708.1780-8-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250223114708.1780-1-shentey@gmail.com>
 References: <20250223114708.1780-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,92 +144,210 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hjASQpsVTUaC
+X-TUID: kymb+jE+hiRv
 
-On the real device, the PCIe root bus is only connected to a PCIe bridge and
-does not allow for direct attachment of devices. Doing so in QEMU results in no
-PCI devices being detected by Linux. Instead, PCI devices should plug into the
-secondary PCIe bus spawned by the internal PCIe bridge.
-
-Unfortunately, QEMU defaults to plugging devices into the PCIe root bus. To work
-around this, every PCI device created on the command line needs an extra
-`bus=dw-pcie` option which is error prone. Fix that by marking the PCIe root bus
-as full which makes QEMU decend into the child PCIe bus.
+The USDHC emulation allows for running real-world images such as those generated
+by Buildroot. Convert the board documentation accordingly instead of running a
+Linux kernel with ephemeral storage.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/pci-host/designware.h |  7 +++++++
- hw/pci-host/designware.c         | 18 +++++++++++++++++-
- 2 files changed, 24 insertions(+), 1 deletion(-)
+ docs/system/arm/imx8mp-evk.rst | 18 ++++++++++++------
+ include/hw/arm/fsl-imx8mp.h    |  7 +++++++
+ hw/arm/fsl-imx8mp.c            | 28 ++++++++++++++++++++++++++++
+ hw/arm/imx8mp-evk.c            | 18 ++++++++++++++++++
+ hw/arm/Kconfig                 |  1 +
+ 5 files changed, 66 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
-index bf8b278978..a35a3bd06c 100644
---- a/include/hw/pci-host/designware.h
-+++ b/include/hw/pci-host/designware.h
-@@ -25,12 +25,19 @@
- #include "hw/pci/pci_bridge.h"
+diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+index 22541c5442..879c822356 100644
+--- a/docs/system/arm/imx8mp-evk.rst
++++ b/docs/system/arm/imx8mp-evk.rst
+@@ -12,6 +12,7 @@ The ``imx8mp-evk`` machine implements the following devices:
+  * Up to 4 Cortex-A53 cores
+  * Generic Interrupt Controller (GICv3)
+  * 4 UARTs
++ * 3 USDHC Storage Controllers
+  * Secure Non-Volatile Storage (SNVS) including an RTC
+  * Clock Tree
+ 
+@@ -26,18 +27,23 @@ Direct Linux Kernel Boot
+ 
+ Probably the easiest way to get started with a whole Linux system on the machine
+ is to generate an image with Buildroot. Version 2024.11.1 is tested at the time
+-of writing and involves two steps. First run the following commands in the
++of writing and involves three steps. First run the following commands in the
+ toplevel directory of the Buildroot source tree:
+ 
+ .. code-block:: bash
+ 
+-  $ echo "BR2_TARGET_ROOTFS_CPIO=y" >> configs/freescale_imx8mpevk_defconfig
+   $ make freescale_imx8mpevk_defconfig
+   $ make
+ 
+ Once finished successfully there is an ``output/image`` subfolder. Navigate into
+-it and patch the device tree with the following commands which will remove the
+-``cpu-idle-states`` properties from CPU nodes:
++it and resize the SD card image to a power of two:
++
++.. code-block:: bash
++
++  $ qemu-img resize sdcard.img 256M
++
++Finally, the device tree needs to be patched with the following commands which
++will remove the ``cpu-idle-states`` properties from CPU nodes:
+ 
+ .. code-block:: bash
+ 
+@@ -52,5 +58,5 @@ Now that everything is prepared the machine can be started as follows:
+       -display none -serial null -serial stdio \
+       -kernel Image \
+       -dtb imx8mp-evk-patched.dtb \
+-      -initrd rootfs.cpio \
+-      -append "root=/dev/ram"
++      -append "root=/dev/mmcblk2p2" \
++      -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
+diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
+index 26e24e99a1..349d55ca88 100644
+--- a/include/hw/arm/fsl-imx8mp.h
++++ b/include/hw/arm/fsl-imx8mp.h
+@@ -15,6 +15,7 @@
+ #include "hw/misc/imx7_snvs.h"
+ #include "hw/misc/imx8mp_analog.h"
+ #include "hw/misc/imx8mp_ccm.h"
++#include "hw/sd/sdhci.h"
  #include "qom/object.h"
+ #include "qemu/units.h"
  
-+#define TYPE_DESIGNWARE_PCIE_ROOT_BUS "designware-pcie-root-BUS"
-+OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIERootBus, DESIGNWARE_PCIE_ROOT_BUS)
+@@ -28,6 +29,7 @@ enum FslImx8mpConfiguration {
+     FSL_IMX8MP_NUM_CPUS         = 4,
+     FSL_IMX8MP_NUM_IRQS         = 160,
+     FSL_IMX8MP_NUM_UARTS        = 4,
++    FSL_IMX8MP_NUM_USDHCS       = 3,
+ };
+ 
+ struct FslImx8mpState {
+@@ -39,6 +41,7 @@ struct FslImx8mpState {
+     IMX8MPAnalogState  analog;
+     IMX7SNVSState      snvs;
+     IMXSerialState     uart[FSL_IMX8MP_NUM_UARTS];
++    SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
+ };
+ 
+ enum FslImx8mpMemoryRegions {
+@@ -184,6 +187,10 @@ enum FslImx8mpMemoryRegions {
+ };
+ 
+ enum FslImx8mpIrqs {
++    FSL_IMX8MP_USDHC1_IRQ   = 22,
++    FSL_IMX8MP_USDHC2_IRQ   = 23,
++    FSL_IMX8MP_USDHC3_IRQ   = 24,
 +
- #define TYPE_DESIGNWARE_PCIE_HOST "designware-pcie-host"
- OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIEHost, DESIGNWARE_PCIE_HOST)
- 
- #define TYPE_DESIGNWARE_PCIE_ROOT "designware-pcie-root"
- OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIERoot, DESIGNWARE_PCIE_ROOT)
- 
-+struct DesignwarePCIERootBus {
-+    PCIBus parent;
-+};
+     FSL_IMX8MP_UART1_IRQ    = 26,
+     FSL_IMX8MP_UART2_IRQ    = 27,
+     FSL_IMX8MP_UART3_IRQ    = 28,
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index de47ac1804..ad26c1e2f0 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -207,6 +207,11 @@ static void fsl_imx8mp_init(Object *obj)
+         g_autofree char *name = g_strdup_printf("uart%d", i + 1);
+         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
+     }
 +
- typedef struct DesignwarePCIEViewport {
-     DesignwarePCIERoot *root;
++    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
++        g_autofree char *name = g_strdup_printf("usdhc%d", i + 1);
++        object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDHC);
++    }
+ }
  
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 3e8c36e6a7..c07740bfaa 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -55,6 +55,17 @@
- #define DESIGNWARE_PCIE_ATU_DEVFN(x)               (((x) >> 16) & 0xff)
- #define DESIGNWARE_PCIE_ATU_UPPER_TARGET           0x91C
+ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+@@ -346,6 +351,28 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                            qdev_get_gpio_in(gicdev, serial_table[i].irq));
+     }
  
-+static void designware_pcie_root_bus_class_init(ObjectClass *klass, void *data)
-+{
-+    BusClass *k = BUS_CLASS(klass);
++    /* USDHCs */
++    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
++        static const struct {
++            hwaddr addr;
++            unsigned int irq;
++        } usdhc_table[FSL_IMX8MP_NUM_USDHCS] = {
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC1].addr, FSL_IMX8MP_USDHC1_IRQ },
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC2].addr, FSL_IMX8MP_USDHC2_IRQ },
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
++        };
 +
-+    /*
-+     * Designware has only a single root complex. Enforce the limit on the
-+     * parent bus
-+     */
-+    k->max_dev = 1;
-+}
++        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
++                                 SDHCI_VENDOR_IMX, &error_abort);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
++            return;
++        }
 +
- static DesignwarePCIEHost *
- designware_pcie_root_to_host(DesignwarePCIERoot *root)
- {
-@@ -699,7 +710,7 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-                                      &s->pci.memory,
-                                      &s->pci.io,
-                                      0, 4,
--                                     TYPE_PCIE_BUS);
-+                                     TYPE_DESIGNWARE_PCIE_ROOT_BUS);
-     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0, usdhc_table[i].addr);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
++                           qdev_get_gpio_in(gicdev, usdhc_table[i].irq));
++    }
++
+     /* SNVS */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
+         return;
+@@ -363,6 +390,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         case FSL_IMX8MP_RAM:
+         case FSL_IMX8MP_SNVS_HP:
+         case FSL_IMX8MP_UART1 ... FSL_IMX8MP_UART4:
++        case FSL_IMX8MP_USDHC1 ... FSL_IMX8MP_USDHC3:
+             /* device implemented and treated above */
+             break;
  
-     memory_region_init(&s->pci.address_space_root,
-@@ -754,6 +765,11 @@ static void designware_pcie_host_init(Object *obj)
+diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+index 2756d4c21c..27d9e9e8ee 100644
+--- a/hw/arm/imx8mp-evk.c
++++ b/hw/arm/imx8mp-evk.c
+@@ -11,6 +11,7 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/fsl-imx8mp.h"
+ #include "hw/boards.h"
++#include "hw/qdev-properties.h"
+ #include "system/qtest.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+@@ -40,6 +41,23 @@ static void imx8mp_evk_init(MachineState *machine)
+     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
+                                 machine->ram);
  
- static const TypeInfo designware_pcie_types[] = {
-     {
-+        .name           = TYPE_DESIGNWARE_PCIE_ROOT_BUS,
-+        .parent         = TYPE_PCIE_BUS,
-+        .instance_size  = sizeof(DesignwarePCIERootBus),
-+        .class_init     = designware_pcie_root_bus_class_init,
-+    }, {
-         .name           = TYPE_DESIGNWARE_PCIE_HOST,
-         .parent         = TYPE_PCI_HOST_BRIDGE,
-         .instance_size  = sizeof(DesignwarePCIEHost),
++    for (int i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
++        BusState *bus;
++        DeviceState *carddev;
++        BlockBackend *blk;
++        DriveInfo *di = drive_get(IF_SD, i, 0);
++
++        if (!di) {
++            continue;
++        }
++
++        blk = blk_by_legacy_dinfo(di);
++        bus = qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
++        carddev = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
++        qdev_realize_and_unref(carddev, bus, &error_fatal);
++    }
++
+     if (!qtest_enabled()) {
+         arm_load_kernel(&s->cpu[0], machine, &boot_info);
+     }
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f77c451ba3..d2dda3213d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -599,6 +599,7 @@ config FSL_IMX8MP
+     select FSL_IMX8MP_ANALOG
+     select FSL_IMX8MP_CCM
+     select IMX
++    select SDHCI
+     select UNIMP
+ 
+ config FSL_IMX8MP_EVK
 -- 
 2.48.1
 

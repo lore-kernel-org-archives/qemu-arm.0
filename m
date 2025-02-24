@@ -1,122 +1,127 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp2139865njc;
-        Mon, 24 Feb 2025 12:35:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX2aXmmx0L3+R5HpoIzF2CmTri1XjiesZLWEJ+fMNIkKHNMljyuIbz/wHYZIWfBSeKdSv/PWjRPbFjOtw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGwYpLXImqHERodTcWWj+3pi1AmgR0ZP2IRFZjx9YUIX0HUZbAoDqJe6n9qZLuEawNhY6nH
-X-Received: by 2002:a05:620a:4407:b0:7c0:a431:6c64 with SMTP id af79cd13be357-7c23bf44895mr83969385a.35.1740429353780;
-        Mon, 24 Feb 2025 12:35:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740429353; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp2149206njc;
+        Mon, 24 Feb 2025 12:53:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX/etPRhU40jMyG2z5JNjlVqke7sndEsLsyWoKYmC7TKs6oeFKbjZQhlaCL7zrq75P52CziVPRYym9aNA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE6CvGLzQVZxdriDuoBrez8p4Ux4DYXrL0ZdJTxswbCdymtr987mzmNEOL3FYHZSJqzigfX
+X-Received: by 2002:ac8:604d:0:b0:472:dff:37fa with SMTP id d75a77b69052e-473772707c8mr10096411cf.47.1740430402299;
+        Mon, 24 Feb 2025 12:53:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740430402; cv=none;
         d=google.com; s=arc-20240605;
-        b=dA8X3hpCsBcZU9720qcW5jzw1KRwGVIobyjD50HhUKDTbW+53AGGRAkbd/QXOF+Pu1
-         pj3QosgcMk3qn/R6augWgLT05Rs4TDPYNxAv+2m0cmaQYVeJAdDe549X7n3T1BAYKIGh
-         WEPKL+/9e3zDtTFIMyPFKgKs+bPXFnAAQS6OaFC6yLlywH2Ff2906FI+yqDVfPFuE7pQ
-         j3CPuDI02MH5NPhgpec7Y3CHCAx71MOkU4oOCJBItWovyIWyJ5YthagY1HY2fg7dbVCf
-         By5XR3OQ8gupW5E9wXS2ex8Cv8TgV6990re/E5YT+G4j2U52d4OjEVf0mY5uz4GeZ0iE
-         te6Q==
+        b=St+B5OTXPeetLraSjLqDy63d7IuQoaUCJ7PPiR2LvFbBtOUeT5JQAhGjEgSymHNAhF
+         9j7Gxa0vqElllPhxTYZ1WgzlykovqrXKFATSdK5x1whyCye7sW4b3F7M35jNHsQxF6M8
+         VuQlr2nNY5lefv+bI9XsOrj7TySRWr6Tgp3peGYMMNUZcK0tJkAiX3ArYAu8QtDctGUR
+         E8OFBubSjayuWryuHYrZ1ayfO9z1QgnvZWk/glFrRDbtK7jBPglskHVInJcFYIuHCNPZ
+         PApCI0+iZri+kUQuC9QTm+lwK/AqpH7a3p1qQO2Ey+3MBfWmOxdSy0PgbQvS8atvvGvs
+         OI5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kt7gS8BmQi+IL4wbz3L6B79T8ydpItRDtTAfYOHZWGQ=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=O0DuCDXmnNIArymqc+9lJFUB9vK73IhiFF71AnD32olIHHbm52J3QVddvLN6yYuq2E
-         8d7Q5NPbMSMc7sKThLozMetshnjSwLdKxl+nvHsQUviX8aQw2W6y91/kBc9Y9AexnNzY
-         6nVKuc2AO+FuzdfORCA00rPlQPT2EelzvKS7+35vfpz3YABS265pyOJWcAw+zWg1lOa1
-         oCgU0Ej8iYdHYvsVZNvz6KBIl9Ve3R4CxHRU2IyvRrf17czyF/AzwAbOr6mgQ6r84x93
-         fGPU4DjhQYA00McvKXYM3GL1mpsxqNe+SYe8wtZOjaJufRwnaAaebtofwuAzoYdQyhdf
-         95wQ==;
+        bh=MucZrRAiftAZglxTBuWuYGvPsPPilrwX3iRaXpSVwgU=;
+        fh=iG7fI0tIiCxNvPraTn2D3ThWjjpsp9NC1euw5azkpqM=;
+        b=b6sxiYN7G6Wbe4Qj3YL/jZvAuD5Cso8W02etbvF53LYtvAnJeh2nZHriTF/fO9v3z5
+         3wBcw3Mg9PZ1WwGXHSG/RYUFHTEwqpOJMAqxFTnokFalYksOvZyB2W10dlhMFnfVTMVo
+         nissas2PesE5/GrYgxbRgerfsqQxSZYhfx84UuZxiCQ3QGi4THw7YGfpsssnuFEGGZe9
+         rzrZugNhHGs0sNQHc72yJVh/Bz8GPOTu9hKI+U7h3uCFsOuem7sSkjWRgg6P55y+CCus
+         vm8t2+DsUAwcBetyQOuwMq1lr4u/2ucx7aczJ8g2lj+eZTpfxw4umKB/5xNv4j4eDbWD
+         ckyA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nFUYD/An";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WASCfcxt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2da7c9si23550585a.433.2025.02.24.12.35.53
+        by mx.google.com with ESMTPS id d75a77b69052e-473780ac53asi1111701cf.592.2025.02.24.12.53.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2025 12:35:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2025 12:53:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nFUYD/An";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WASCfcxt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmfB5-0005Av-IS; Mon, 24 Feb 2025 15:35:47 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tmfRm-0001JS-Vt; Mon, 24 Feb 2025 15:53:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tmfAq-0005A6-JJ
- for qemu-arm@nongnu.org; Mon, 24 Feb 2025 15:35:33 -0500
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tmfRl-0001JB-Ek
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2025 15:53:01 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tmfAp-00022D-3z
- for qemu-arm@nongnu.org; Mon, 24 Feb 2025 15:35:32 -0500
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-22100006bc8so85370815ad.0
- for <qemu-arm@nongnu.org>; Mon, 24 Feb 2025 12:35:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tmfRj-0005C6-25
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2025 15:53:01 -0500
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-220d28c215eso75290295ad.1
+ for <qemu-devel@nongnu.org>; Mon, 24 Feb 2025 12:52:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740429329; x=1741034129; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=kt7gS8BmQi+IL4wbz3L6B79T8ydpItRDtTAfYOHZWGQ=;
- b=nFUYD/AnuGiJpgltGAxIFOIUXkCMOZO5Ak8St7IDSwraJnBZxwSPEEqzi6lAHIJ0PJ
- wnaGAu+5IUpRVlO0joMYbSNqb18RLRfcSMGdlHlqhLqjVOokvozglHTAzZ03zM5I6vqR
- mNww08UINmGoHg8BtFkYCOmMmm0XtfVXS/UQ6Y+nQ6TYAJqR3kb/8x75T+EEn4okolpg
- UTcZgJzOXdEiio57Pd6Dk/BH3o8ndzuGeL3EcP3+vSWYTkKvmZeBDgOZuEK/9aIIEU/Y
- 86sWROxhlJCC9Gh4/mlccjJKniu+xxM1YyZe9e1cQwvVjxL2Rxh4JdEx1yECvjHB7QNp
- NGyQ==
+ d=linaro.org; s=google; t=1740430377; x=1741035177; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=MucZrRAiftAZglxTBuWuYGvPsPPilrwX3iRaXpSVwgU=;
+ b=WASCfcxt9b1ysCr8YwYX+nPlnkRicVEOBlRJmnky8BLzUB1X21DBuVwOBipVNYIDGX
+ rbCiKOlr2M2CGYc1oiy4tsRYmgxMNnVuSztZ4R4MyLQcG8UfKHBc9D0y2HI7ihlsk9ea
+ K/vFxDIN2UDC/vXuzXIGyUD2v5bFjBkdLoEkOtr3K6QDWiNIbaSIcdKKPFVhAaIImuTP
+ pybf5u+BxICq1AeKYB56T6Q5c66noqm8x7PFOuctyNDtk5nzbTYtnr+SUzDtWggXVeuQ
+ IEbbJfZbfg3AZ+oglSKtIEUmHjAAx0qbuSKyBbwukT+DVeD7JnUKEQvjyOo9CqVcbU/C
+ 99lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740429329; x=1741034129;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1740430377; x=1741035177;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kt7gS8BmQi+IL4wbz3L6B79T8ydpItRDtTAfYOHZWGQ=;
- b=V9t/pIOsTf2gFne0nRpgCi3V5NpF5NMk7kCv9zO7snx1CVKSaf8hBw3O6Lfyo6mq9J
- 00iAT840gpheWQBDiy170VfqdhWh9ViEucacaD7iT595felWAw+jQjrV6G6MYECz0K4A
- qhvSndlkmXMGtt2gLuhbSEHgNKjNYGzXXnq9zk1RTekAdqdxsTJ48NFa+q2CYf0A89rr
- Do1ooLRfCU1/o2rgpKCsx6XPTE+lXkHz+07Zk2Uiq3LEEvj2nWqGSq/3vTd7hjcHFoWN
- TQKy/o+Uua7dvmQHutI4pZmVPH4IxiSzom22YSHyWE3VRZdeigcJrnHQmluGZozWcTby
- Z+tg==
-X-Gm-Message-State: AOJu0YxccEOduM81RJm85C9kIOYQCoYNknujOHqRUi4UaeggeZTVnccb
- cozALSvREHyrN8dR0Tr29ID3Zt3uaEItXxwnVndfTpmjIDs6gsAi3J5cskxdR6XuKsBjr7GXHYw
- f
-X-Gm-Gg: ASbGncs5uc1/jcVS+W6Y7JjPGpCYtxidttAQEFKV5d869kjU8yn9NWa1gZ4fFpDXkSn
- fjJVRguQj8D1XeKHEPyfOMSEnsKOt6cTnm3aTIuEDaz7WjvvEW5nkby0Cj/cumWIXbXSK9SH8Gj
- ViglNzT4AQkqiw+YcRW6HF/ddg/fMweeBv9trs/VjlPbteLy6/4mPNy2IKCmFpRp3dLApzGeKVQ
- Dc6P/Xk08WpAIJG7GaZrHj3nWaYQs71JdktT2Rfcmw/RSSzHJkVVRsKbeOjFXITrTkNCMzJsttS
- goVh/p1eJPK0eddgccPlFOkJdXaGRy+3khhss0Df9TU3SPQsHLBXgAH0XkRP/eqWPGQFTBnBNw1
- AilMCjs8=
-X-Received: by 2002:a17:902:f68c:b0:21f:7880:8472 with SMTP id
- d9443c01a7336-22307e675a7mr11480485ad.35.1740429329450; 
- Mon, 24 Feb 2025 12:35:29 -0800 (PST)
-Received: from [10.254.143.227] (syn-156-019-246-023.biz.spectrum.com.
- [156.19.246.23]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2230a0944a4sm238125ad.121.2025.02.24.12.35.28
+ bh=MucZrRAiftAZglxTBuWuYGvPsPPilrwX3iRaXpSVwgU=;
+ b=iXqTQpyBiRC9hbzGoXaQcG/sAfskvMh3QtyCxbRfD7prEmRN9N4Je+grycuqPYM8o+
+ M37k98/kA85BvFXv7FKKkba7Xi4KopNpnW4DAaveiuXq2dt9+LIrAcLZMVRLiX6z2YxE
+ MYcKmYmGHKtpWWoMHtBoxdJoV24uaYYMv8qCRsPT3CvMFTTtq6MaCN9rd86CsvYAQrBZ
+ XnqEyUR9as2xS4zbIHbXUCzZTb3FJZ9NmatQNIThseP7T+c7GTMZydDj9grO2thhnoEK
+ OOCXqZXmJutJjcxigYSVUkEGUwOhuQzfNXxh43WvHlT+jxbvkB9jHkXMcMrH6GbWWcYG
+ OvCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVFF6PZX6jGtFcxpwy+3BJ2dJlY9R/ud16Y1ZxFLwWD8D07IIYuBT35N1y9LA/a2JHIJm0gL3vqb2jm@nongnu.org
+X-Gm-Message-State: AOJu0YzLNyXlm13ilA+qRcfGrzOQzIAdKj0gDe/+Vz+1VaHn2L20xVAd
+ a5Y6hHyKEZimNRHtCrbHdp6xvd/GYcDoiAoU275BA3+EDdwoEQq/xYDdSAsXLRI=
+X-Gm-Gg: ASbGncssraR0idFngEg0RSfkmO85yPGTvMtKyKmHArj6XYKs3rED7Z4ONFftAHQbETJ
+ aWxfOomwAvY3JenIpRsje9+wtESz6JNNWhGU43+qG8GIfSsiEO95zNbjpDkGRQhVCxL74jfHAjd
+ fySG8u4ztA8gPFrAEONEfrLe25lY1j3WlxsRSmlWfRVPHpwXJOFcEjqXkfyd6V97mWx1XYGd9+V
+ Z/zpCMc4uVOfF13Q3uZbxcICUiu3uQ6wmoKg/jxy8yg2ID8ds3BDJJtERs+T+cK28ijhKhwo+au
+ iZW2f+Ee7b6tH0thW66ztXw+o797zh5i4EzOE/Y=
+X-Received: by 2002:a17:903:32cc:b0:220:c94f:eb28 with SMTP id
+ d9443c01a7336-22307b5b09amr11272285ad.27.1740430377494; 
+ Mon, 24 Feb 2025 12:52:57 -0800 (PST)
+Received: from [192.168.1.67] ([38.39.164.180])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2230a0960edsm378055ad.138.2025.02.24.12.52.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Feb 2025 12:35:29 -0800 (PST)
-Message-ID: <1824fbe1-33a1-40db-8e9a-afc00f13d2b4@linaro.org>
-Date: Mon, 24 Feb 2025 12:35:26 -0800
+ Mon, 24 Feb 2025 12:52:57 -0800 (PST)
+Message-ID: <4ff5c838-27b8-43ce-adb9-1816c9e4a097@linaro.org>
+Date: Mon, 24 Feb 2025 12:52:56 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/61] target/arm: Implement FEAT_SME2
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250206195715.2150758-1-richard.henderson@linaro.org>
- <9e0853e9-b590-4a84-8214-fbb543bd4359@linaro.org>
+Subject: Re: [PATCH v5 06/17] hw/misc: Add nr_regs and cold_reset_values to
+ NPCM GCR
 Content-Language: en-US
-In-Reply-To: <9e0853e9-b590-4a84-8214-fbb543bd4359@linaro.org>
+To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com,
+ Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com,
+ titusr@google.com, chli30@nuvoton.corp-partner.google.com,
+ pbonzini@redhat.com, jasowang@redhat.com, alistair@alistair23.me,
+ philmd@linaro.org
+References: <20250219184609.1839281-1-wuhaotsh@google.com>
+ <20250219184609.1839281-7-wuhaotsh@google.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250219184609.1839281-7-wuhaotsh@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,46 +130,190 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 09/OmUsQTXXk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: D/MrLENFgYXl
 
-On 2/24/25 12:27, Richard Henderson wrote:
-> On 2/6/25 11:56, Richard Henderson wrote:
->> Based-on:20250201164012.1660228-1-peter.maydell@linaro.org
->> ("[PATCH v2 00/69] target/arm: FEAT_AFP and FEAT_RPRES")
->>
->> This implements the Scalar Matrix Extensions, version 2, plus two
->> trivial extensions for float16 and bfloat16.
->>
->> This hasn't been tested much at all; I need to either get FVP up and
->> running for RISU comparison, or write some stand-alone test cases.
->> But in the meantime this could use some eyes.
->>
->> SME2 is the first vector-like extension we've had that has dynamic
->> indexing of registers: ZArray[(rv + offset) % svl], where RV is a
->> general register.  So the first thing I do is extend TCG's gvec
->> support to handle TCGv_ptr base + offset addressing.  I only changed
->> enough to handle what I needed within SME2; changing it all would be
->> a big job, and it would (at least for the moment) remain unused.
->>
->> Still to-do are few more extensions for SME2p1.
+Hello,
+
+This patch introduces a buffer-overflow, now reported by address sanitizer.
+
+I sent a patch:
+https://lore.kernel.org/qemu-devel/20250224205053.104959-1-
+pierrick.bouvier@linaro.org/T/#u
+
+You're welcome to review it, or fix the problem differently if there is 
+a better approach.
+
+Regards,
+Pierrick
+
+On 2/19/25 10:45, Hao Wu wrote:
+> These 2 values are different between NPCM7XX and NPCM8XX
+> GCRs. So we add them to the class and assign different values
+> to them.
 > 
-> Ho hum.  I've missed the entire set of counted predicate insns.
-> Hooray for Arm sample code!
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>   hw/misc/npcm_gcr.c         | 27 ++++++++++++++++-----------
+>   include/hw/misc/npcm_gcr.h | 13 +++++++++++--
+>   2 files changed, 27 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
+> index 0959f2e5c4..d89e8c2c3b 100644
+> --- a/hw/misc/npcm_gcr.c
+> +++ b/hw/misc/npcm_gcr.c
+> @@ -66,10 +66,9 @@ enum NPCM7xxGCRRegisters {
+>       NPCM7XX_GCR_SCRPAD          = 0x013c / sizeof(uint32_t),
+>       NPCM7XX_GCR_USB1PHYCTL,
+>       NPCM7XX_GCR_USB2PHYCTL,
+> -    NPCM7XX_GCR_REGS_END,
+>   };
+>   
+> -static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
+> +static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
+>       [NPCM7XX_GCR_PDID]          = 0x04a92750,   /* Poleg A1 */
+>       [NPCM7XX_GCR_MISCPE]        = 0x0000ffff,
+>       [NPCM7XX_GCR_SPSWC]         = 0x00000003,
+> @@ -88,8 +87,9 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr offset, unsigned size)
+>   {
+>       uint32_t reg = offset / sizeof(uint32_t);
+>       NPCMGCRState *s = opaque;
+> +    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(s);
+>   
+> -    if (reg >= NPCM7XX_GCR_NR_REGS) {
+> +    if (reg >= c->nr_regs) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+>                         __func__, offset);
+> @@ -106,11 +106,12 @@ static void npcm_gcr_write(void *opaque, hwaddr offset,
+>   {
+>       uint32_t reg = offset / sizeof(uint32_t);
+>       NPCMGCRState *s = opaque;
+> +    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(s);
+>       uint32_t value = v;
+>   
+> -    trace_npcm_gcr_write(offset, value);
+> +    trace_npcm_gcr_write(offset, v);
+>   
+> -    if (reg >= NPCM7XX_GCR_NR_REGS) {
+> +    if (reg >= c->nr_regs) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
+>                         __func__, offset);
+> @@ -156,10 +157,12 @@ static const struct MemoryRegionOps npcm_gcr_ops = {
+>   static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
+>   {
+>       NPCMGCRState *s = NPCM_GCR(obj);
+> +    NPCMGCRClass *c = NPCM_GCR_GET_CLASS(obj);
+>   
+> -    QEMU_BUILD_BUG_ON(sizeof(s->regs) != sizeof(cold_reset_values));
+> -
+> -    memcpy(s->regs, cold_reset_values, sizeof(s->regs));
+> +    g_assert(sizeof(s->regs) >= sizeof(c->cold_reset_values));
+> +    g_assert(sizeof(s->regs) >= c->nr_regs * sizeof(uint32_t));
+> +    memcpy(s->regs, c->cold_reset_values, c->nr_regs * sizeof(uint32_t));
+> +    /* These 3 registers are at the same location in both 7xx and 8xx. */
+>       s->regs[NPCM7XX_GCR_PWRON] = s->reset_pwron;
+>       s->regs[NPCM7XX_GCR_MDLR] = s->reset_mdlr;
+>       s->regs[NPCM7XX_GCR_INTCR3] = s->reset_intcr3;
+> @@ -224,7 +227,7 @@ static const VMStateDescription vmstate_npcm_gcr = {
+>       .version_id = 1,
+>       .minimum_version_id = 1,
+>       .fields = (const VMStateField[]) {
+> -        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM7XX_GCR_NR_REGS),
+> +        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM_GCR_MAX_NR_REGS),
+>           VMSTATE_END_OF_LIST(),
+>       },
+>   };
+> @@ -238,7 +241,6 @@ static void npcm_gcr_class_init(ObjectClass *klass, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>   
+> -    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END > NPCM7XX_GCR_NR_REGS);
+>       dc->realize = npcm_gcr_realize;
+>       dc->vmsd = &vmstate_npcm_gcr;
+>   
+> @@ -247,13 +249,15 @@ static void npcm_gcr_class_init(ObjectClass *klass, void *data)
+>   
+>   static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
+>   {
+> +    NPCMGCRClass *c = NPCM_GCR_CLASS(klass);
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       ResettableClass *rc = RESETTABLE_CLASS(klass);
+>   
+> -    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END != NPCM7XX_GCR_NR_REGS);
+>       dc->desc = "NPCM7xx System Global Control Registers";
+>       rc->phases.enter = npcm7xx_gcr_enter_reset;
+>   
+> +    c->nr_regs = NPCM7XX_GCR_NR_REGS;
+> +    c->cold_reset_values = npcm7xx_cold_reset_values;
+>   }
+>   
+>   static const TypeInfo npcm_gcr_info[] = {
+> @@ -262,6 +266,7 @@ static const TypeInfo npcm_gcr_info[] = {
+>           .parent             = TYPE_SYS_BUS_DEVICE,
+>           .instance_size      = sizeof(NPCMGCRState),
+>           .instance_init      = npcm_gcr_init,
+> +        .class_size         = sizeof(NPCMGCRClass),
+>           .class_init         = npcm_gcr_class_init,
+>           .abstract           = true,
+>       },
+> diff --git a/include/hw/misc/npcm_gcr.h b/include/hw/misc/npcm_gcr.h
+> index 6d3d00d260..9af24e5cdc 100644
+> --- a/include/hw/misc/npcm_gcr.h
+> +++ b/include/hw/misc/npcm_gcr.h
+> @@ -18,6 +18,7 @@
+>   
+>   #include "exec/memory.h"
+>   #include "hw/sysbus.h"
+> +#include "qom/object.h"
+>   
+>   /*
+>    * NPCM7XX PWRON STRAP bit fields
+> @@ -53,6 +54,7 @@
+>    * Number of registers in our device state structure. Don't change this without
+>    * incrementing the version_id in the vmstate.
+>    */
+> +#define NPCM_GCR_MAX_NR_REGS NPCM7XX_GCR_NR_REGS
+>   #define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))
+>   
+>   typedef struct NPCMGCRState {
+> @@ -60,15 +62,22 @@ typedef struct NPCMGCRState {
+>   
+>       MemoryRegion iomem;
+>   
+> -    uint32_t regs[NPCM7XX_GCR_NR_REGS];
+> +    uint32_t regs[NPCM_GCR_MAX_NR_REGS];
+>   
+>       uint32_t reset_pwron;
+>       uint32_t reset_mdlr;
+>       uint32_t reset_intcr3;
+>   } NPCMGCRState;
+>   
+> +typedef struct NPCMGCRClass {
+> +    SysBusDeviceClass parent;
+> +
+> +    size_t nr_regs;
+> +    const uint32_t *cold_reset_values;
+> +} NPCMGCRClass;
+> +
+>   #define TYPE_NPCM_GCR "npcm-gcr"
+>   #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
+> -OBJECT_DECLARE_SIMPLE_TYPE(NPCMGCRState, NPCM_GCR)
+> +OBJECT_DECLARE_TYPE(NPCMGCRState, NPCMGCRClass, NPCM_GCR)
+>   
+>   #endif /* NPCM_GCR_H */
 
-Oh, duh -- they're in SME2p1, which is I guess not as optional as I assumed.
-
-
-r~

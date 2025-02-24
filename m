@@ -1,170 +1,151 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1920054njc;
-        Mon, 24 Feb 2025 06:52:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXxbIPSFJZVbwz6qbIhCr7HxRn6bl6o6rbNoMSA7YmB9+V6udScRpaBDxrtHNW6K6XFGRfv52iBvsUfPA==@linaro.org
-X-Received: by 2002:a05:690c:25ca:b0:6ef:8c41:defc with SMTP id 00721157ae682-6fbcc77df64mr119566997b3.11.1740408770070;
-        Mon, 24 Feb 2025 06:52:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740408770; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp2005173njc;
+        Mon, 24 Feb 2025 08:58:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVRs6m/4giS3QnlXA8BvRVi7Kq5YfeNIH0R3eJoF/CVZSkHLUMlQb+9Mbk65R32oblHAd585oQjJPqhKA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEPUFN/Onknmg8zstBJT4CgzD+TcSbH5P6UfA7ju7lbmcvO2HB7fbK2K3j+IgKsuo0P+x2x
+X-Received: by 2002:a05:622a:178a:b0:472:5f8:4a59 with SMTP id d75a77b69052e-472248d8e8emr149825101cf.40.1740416283697;
+        Mon, 24 Feb 2025 08:58:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740416283; cv=none;
         d=google.com; s=arc-20240605;
-        b=IJx8eL8cx2GL8KP0uKmZVYwUgRGCKJgOgNxMvuXvK1w1FyKdSEtessW1Tos07XCruD
-         6INqCFEl+EMsSBZ9S0UBx+galcuLT5Itsczyuc3k8EGvN2bGjYkYdkyyUYlXNv14ObAx
-         1Qhe2c5HulKOawjHfL3HuDm4xZfXt6cGigOWjQa8Z+69dyQmhz6qDtHGE60uAXoYgwpm
-         gbPaCEZqqY7csYEvuTVUWKB5XD4gmzvVCkRiMRzPOhGXFREIoRczqSwO+hsc/lESGqOR
-         e2jSKwqGyYC/U3AW7yH7FFQooMdycOamRuzFoPU2lE26C6g1hmhrF5j4hxy26mlV0BAS
-         vx+w==
+        b=DwMOoTFa2wxjScIJO/nab/XaWEjf2UOchtwCejzxOQnX+eGgaj/43u5aXl7NrYNGFt
+         z3GVdgwR5RqnTqjlcjDbdARh76WddaflA9LQY3LPYjVRHaXlg1tgheduW6GZlmyP4hWV
+         u3Xjrjk2QNCBUlJqGCTYqVZfvCg5zRQfieZEvSqZdnA4MW+F4xLPm1qJUhjAIIK28w3R
+         MXur5zVS+cfBGpgvnzgfHL0TNPcygozrWo3JnV0xxxfmT4TDaGL/MEncEajMlJrTmDmm
+         6h+4VfPANVuOOe48OJcOTIlcb/ZIwEu1CV/8d66GvA8VdiAFfsRtF1uhd1uM9y85UgwJ
+         LqaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=CCVwFU30iRIVDUkhO8+T1DaSlcaCUl6Lrdm8AEwgjvM=;
-        fh=oNP7bj1WlFxPYoL243KUhb7wa6VhwRLHaUldDxgLxCM=;
-        b=PhxipNYa1MYgaZ+pqizn70m3qYko4mD6DMjSTX/bGSgcddZgw+GfUeV4bGcoTg6VD1
-         Oh7ICSqRJmLXuqn2TWWMqXMMBsVeDXwY9YXH9SfWqbwP57ARlxEdXCB8tweEFgrGIkgW
-         ZYsklh3uCXhfd0jOrDNw1b3DFBwtdzK9gzaQ8vUBi9EQ9N17PQBuvlOpQBfJneCaKgOj
-         uocFqkGUbcnbi6R3x4/KE9VBiDmlPvmyPtI2YBZk8FihfpfzS2sLpZ2FryjkuAv2KSHc
-         ER+sjNyrNcvwldnihKlIbUqMu363i16Tvmg7r7zLLxtmYcl3bR9lCDYjOH/6h/dq6azS
-         GMKg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=3dWlk7xDgb1CUcA/8KFyJ9yfBRx9gna7Q3yZXDSfHSo=;
+        fh=1MQqO2tnmjk4TcG7an9MyGuL7RPdXG60IQugdKPLR5s=;
+        b=XSZ7MEIuXVXHQCcpj2vyE9OtmF8Q+SoUHrrpTHLUHvM9EXLT/O9aSudbrGmBI0i5+2
+         cq8KY6Ga+mODkdZ6grj8U0HIeUJHOYT3Te3rU3awai65rwLgMtjIfSGESUbqy3KoSBl8
+         rP/3YdjdCWoYonB4RQ8RdfJyviu7HMgrWgTgII8KIBir9Pj8LT3rJBT36njqtwoXHENN
+         WZSP1wzuk/4B3z5Wbmt1x2dhvocJOaitPzIAGiaWx6Jn8X+NZQRYlWeyx+8Q9bMkibHQ
+         ngE0oTnDe0nebR9KNn/LjJe+jDP9nQpumVjWmJ1gipsYbosVSmmAsNkB7YKEoDdSQ0xN
+         FFjA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BF1uUO1b;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6fb36179616sor159152877b3.16.2025.02.24.06.52.49
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-471ea93df7esi152645051cf.106.2025.02.24.08.58.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 24 Feb 2025 06:52:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Feb 2025 08:58:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BF1uUO1b;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740408769; x=1741013569; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CCVwFU30iRIVDUkhO8+T1DaSlcaCUl6Lrdm8AEwgjvM=;
-        b=BF1uUO1bEbhua2KWYbkNEPGi+klrKWl+cBNGSPVoFRqpp5hNAcWwwukL1OqwsmcWJY
-         UFqzxL15QVis4CoWXEzrLxp5PWsRvYvSqxK2aZbokKKSWvqGZguXlsdirkopqfp5Yc6h
-         xte2MzqVW4Xe0TqqM+x8RgcSIcfyOePIJ69MpN24GwCX9t1zxSYokqm3AA3Y3FfHEnlH
-         dWJAzTasLqV6MLbZeYuDpMxIW3GItSRuWRZQgSCXYb4boZRix+gxbvS4jQOls3l/Ez//
-         HlWrstrjexAPqfEZg13AncgrQi1RDx7L/oPhIGbxMSTAXNIlhJU+j5YwHOoc3YoS/A0L
-         6FPA==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tmbmK-0007Tt-T6; Mon, 24 Feb 2025 11:58:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tmbmI-0007TO-Tr; Mon, 24 Feb 2025 11:57:59 -0500
+Received: from mail-pl1-f170.google.com ([209.85.214.170])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tmbmH-0002pA-Dn; Mon, 24 Feb 2025 11:57:58 -0500
+Received: by mail-pl1-f170.google.com with SMTP id
+ d9443c01a7336-221057b6ac4so89076025ad.2; 
+ Mon, 24 Feb 2025 08:57:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740408769; x=1741013569;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CCVwFU30iRIVDUkhO8+T1DaSlcaCUl6Lrdm8AEwgjvM=;
-        b=HyPMEpjU8uQONPHnEyX1db8UbNUwYtuxwBGj/rkTfVhu5QKIewL7YR2U6KP38A//Gx
-         f+2Vjx9PDKHhpNMtts5PG6CVdLhnHcP0d0kdwhk9iZjz7QnvtSWceSs4T1eaNB3s1Mbt
-         DcN5Ue33EQq6xT2U+1xaJmm/X35RDmQYC7ieyErl0+Y0PBiv736P9Sv7pzsg+gSB8eZP
-         YHv5piMvKCfiG9Lqr53v3lB/SEa8nG9Sm6kCS3YUt3Xmc+I98+gP+jD6/l0AtWHoOhd2
-         d+DN3nwH2iSDuyrmajr00yC41eqvCUZK0MX9j5k3MKxqiSwojQOrXF+JGvpzBjGCGM8z
-         FaFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVUNMtV+rkBDa7Y+84kUuwe/gtCZNtA7z4QRUuo+ckJWXjS2Hd+gEbIa8eIgrJdqZnNlLh8eE4eTY2bdg==@linaro.org
-X-Gm-Message-State: AOJu0YzyYz9n1DJ88cYk4CDdblxNQ6Qj7wcd86yN2D37kVVRgbQr2fvi
-	50hKcZ1uA2Rb6a7+/ZbAP3PQ0INbRBK7lc4KAZbamwM/rxdwYEcpaSSL8jKdFp4jcy0o9DVEU/y
-	ybMLpYFDQb2nwkay6PdV+eYVLKY8oFOfl6kEBJVeB
-X-Gm-Gg: ASbGncs7wLj9iAcP1z+BGLfQwlWqg1/6ibAWaVfNgLVjkHoevTQ76T6WqEzelV+vm2C
-	j+/3QkuMBlMw5H6kGQ5Zh9MDE0lTtVb8VCxHw8jvmymoauhIGqAOh63XMh4V99YsOCCUSErQYel
-	M9R8izzHRN
-X-Google-Smtp-Source: AGHT+IGJ7//z/viz6CX9wR+A/D7zOKGUa8JHhsNi9AAn39cZTjnPkyDlqv3tL6vJfuAFl3VN5kTc6H3ny6F6VeuI0Vk=
-X-Received: by 2002:a05:690c:6a12:b0:6ef:5097:5daa with SMTP id
- 00721157ae682-6fbcc856ce4mr114955077b3.34.1740408769655; Mon, 24 Feb 2025
- 06:52:49 -0800 (PST)
+ d=1e100.net; s=20230601; t=1740416275; x=1741021075;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3dWlk7xDgb1CUcA/8KFyJ9yfBRx9gna7Q3yZXDSfHSo=;
+ b=kyq9evOtOwIbCrJS3A3sQnJZINc/YanY4WuXcmA2YTkAofFMGOShl547XwmkTvqsG1
+ iWLjYFF+kgXhPApAFI6q9R78rDlSMywDAU3xz0psPYzu7jXeXMPZvYSbznJ8SjACUc5W
+ zgaZ3jcNyDSNwyTuPGtf/PL/1yhcpfsU33oIHcSqtRCMYew25T61r1NjdSUJbn7ukasT
+ ptzwx9BaNjlo27m7pTxziNeRKf4Sk0xNff5AW2Cc8+XlX/gCaDaVfsi93gGKTDS3TKWK
+ Gl4j9B+uoynQCmcX4bx/oF+2v/X9uDO8KpgCxJJfN0UbB3XReCsxRtd4r4JU28qMKYEt
+ KFYQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXXgiALWhAZdjCfIbyyCaiete1wJNOc8phZDeNbLCEFWqkvMejLqM8uYfu2Ht1ImUp/6/gil6j4Uw==@nongnu.org
+X-Gm-Message-State: AOJu0YxhRnkeg03uA1SDoFIMo75Rtd5ywOpgzCy9G+V0empGApcMr321
+ 7nj49R/nAPr52OZ33mnhQ5bNap0y6bqU83MjptdYh28BhZsoo77ZAVD6ZQ==
+X-Gm-Gg: ASbGnctvbb/j+HMJPLsc4N786VREUK/gecEPQRHa4uuD0aJAI7lepakFD5CsKKupCKB
+ Fl1yE94O0NQ6pAUvkahljmRu1Pez/1MIa5WLgYvsTGvR5U2r7JaJyTPTOLy9Isvd0sETdZhLbC2
+ i3i1BBkY27DWWAEKhq6ViUK5mUmVcT4vBsFSiDpkonEWm4ECvpW8w+9y3MHEREzYU4LOlIce7Xi
+ AZteAuAQAROllTbp6a+r92/fyjzKt7zgEntaYHloMkSvTK/ztYEJtTVEtSidDHFvvirqtuCxtEi
+ g5bXdJWCzthCB3ui0gyAfTJgWWk6OOAwhunVK6hC/c90uPUnTTQqSMrBaw==
+X-Received: by 2002:a05:6a20:8407:b0:1ee:e785:a082 with SMTP id
+ adf61e73a8af0-1eef52c926bmr25147289637.1.1740416274861; 
+ Mon, 24 Feb 2025 08:57:54 -0800 (PST)
+Received: from localhost.localdomain
+ ([2607:fb90:370f:48e2:5d68:7347:53fe:9673])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-ae07fec1f8esm12845795a12.28.2025.02.24.08.57.53
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 24 Feb 2025 08:57:54 -0800 (PST)
+From: Joelle van Dyne <j@getutm.app>
+To: qemu-devel@nongnu.org
+Cc: Joelle van Dyne <j@getutm.app>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH] hvf: arm: disable SME feature
+Date: Mon, 24 Feb 2025 08:57:34 -0800
+Message-ID: <20250224165735.36792-1-j@getutm.app>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20250210135804.3526943-1-peter.maydell@linaro.org>
-In-Reply-To: <20250210135804.3526943-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Feb 2025 14:52:37 +0000
-X-Gm-Features: AWEUYZkP0tpN-ueTrtqF1asomW7jXOP8tBH0MmuW-H8alHZx7JaGuMcnTIAf0Ks
-Message-ID: <CAFEAcA-SbHjBu8xo8Uy11n2N22LtUejARHC7w8ucu24kg15Xog@mail.gmail.com>
-Subject: Re: [PATCH] util/qemu-timer.c: Don't warp timer from timerlist_rearm()
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: p7zx93ylVmB2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=209.85.214.170; envelope-from=osy86dev@gmail.com;
+ helo=mail-pl1-f170.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bz71oZouGsKx
 
-This has been reviewed, but nobody's picked it up. Paolo,
-MAINTAINERS says qemu-timer.c is part of your "Main loop"
-responsibilities. Did you want to pick it up? Or I could
-throw it in to target-arm.next if you prefer.
+macOS 15.2's Hypervisor.framework exposes SME feature on M4 Macs.
+However, HVF does not properly support it yet causing QEMU to
+fail to start when HVF accelerator is used on these systems.
 
-thanks
--- PMM
+Signed-off-by: Joelle van Dyne <j@getutm.app>
+---
+ target/arm/hvf/hvf.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-On Mon, 10 Feb 2025 at 13:58, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Currently we call icount_start_warp_timer() from timerlist_rearm().
-> This produces incorrect behaviour, because timerlist_rearm() is
-> called, for instance, when a timer callback modifies its timer.  We
-> cannot decide here to warp the timer forwards to the next timer
-> deadline merely because all_cpu_threads_idle() is true, because the
-> timer callback we were called from (or some other callback later in
-> the list of callbacks being invoked) may be about to raise a CPU
-> interrupt and move a CPU from idle to ready.5A
->
-> The only valid place to choose to warp the timer forward is from the
-> main loop, when we know we have no outstanding IO or timer callbacks
-> that might be about to wake up a CPU.
->
-> For Arm guests, this bug was mostly latent until the refactoring
-> commit f6fc36deef6abc ("target/arm/helper: Implement
-> CNTHCTL_EL2.CNT[VP]MASK"), which exposed it because it refactored a
-> timer callback so that it happened to call timer_mod() first and
-> raise the interrupt second, when it had previously raised the
-> interrupt first and called timer_mod() afterwards.
->
-> This call seems to have originally derived from the
-> pre-record-and-replay icount code, which (as of e.g.  commit
-> db1a49726c3c in 2010) in this location did a call to
-> qemu_notify_event(), necessary to get the icount code in the vCPU
-> round-robin thread to stop and recalculate the icount deadline when a
-> timer was reprogrammed from the IO thread.  In current QEMU,
-> everything is done on the vCPU thread when we are in icount mode, so
-> there's no need to try to notify another thread here.
->
-> I suspect that the other reason why this call was doing icount timer
-> warping is that it pre-dates commit efab87cf79077a from 2015, which
-> added a call to icount_start_warp_timer() to main_loop_wait().  Once
-> the call in timerlist_rearm() has been removed, if the timer
-> callbacks don't cause any CPU to be woken up then we will end up
-> calling icount_start_warp_timer() from main_loop_wait() when the rr
-> main loop code calls rr_wait_io_event().
->
-> Remove the incorrect call from timerlist_rearm().
->
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> As far as I can tell, this is the right thing, and it fixes the
-> "icount warps the timer when it should not" bug I'm trying to
-> address, but I'm not super familiar with the icount subsystem or its
-> evolution, so it's possible I've accidentally broken some other setup
-> here.  This does pass the tcg, functional and avocado tests,
-> including the record-and-replay ones.  I've cc'd it to stable as a
-> bugfix, but it definitely merits careful review first.
-> ---
->  util/qemu-timer.c | 4 ----
->  1 file changed, 4 deletions(-)
->
-> diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-> index 0e8a453eaa1..af6e1787e57 100644
-> --- a/util/qemu-timer.c
-> +++ b/util/qemu-timer.c
-> @@ -409,10 +409,6 @@ static bool timer_mod_ns_locked(QEMUTimerList *timer_list,
->
->  static void timerlist_rearm(QEMUTimerList *timer_list)
->  {
-> -    /* Interrupt execution to force deadline recalculation.  */
-> -    if (icount_enabled() && timer_list->clock->type == QEMU_CLOCK_VIRTUAL) {
-> -        icount_start_warp_timer();
-> -    }
->      timerlist_notify(timer_list);
->  }
->
-> --
-> 2.34.1
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0afd96018e..261db2d227 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -899,6 +899,11 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
+ 
++    /*
++     * Disable SME which is not properly handled by QEMU yet
++     */
++    host_isar.id_aa64pfr1 &= ~R_ID_AA64PFR1_SME_MASK;
++
+     ahcf->isar = host_isar;
+ 
+     /*
+-- 
+2.41.0
+

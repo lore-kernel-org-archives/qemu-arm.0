@@ -1,153 +1,159 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1785902njc;
-        Mon, 24 Feb 2025 03:04:12 -0800 (PST)
-X-Received: by 2002:a05:6402:e02:b0:5d0:8197:7ab3 with SMTP id 4fb4d7f45d1cf-5e0b70b5fc7mr12426293a12.3.1740395052494;
-        Mon, 24 Feb 2025 03:04:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740395052; cv=none;
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp1878381njc;
+        Mon, 24 Feb 2025 05:49:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU+XgwQyr8ex5AUdny128hN+ywSYgH7jlKh7Gh8GQXQKcZqKoiOntMgNvJ56ChHDHZKoPQRP+fvfwtLtQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF3erxp6bJNMIWa4JcFAw5sPTMBshvoYqGxXrFILnetqqZqj8+TyURDO975TrTBJkGnRZCK
+X-Received: by 2002:a05:622a:354:b0:471:fecd:103 with SMTP id d75a77b69052e-47222944e7dmr186465241cf.37.1740404978690;
+        Mon, 24 Feb 2025 05:49:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740404978; cv=none;
         d=google.com; s=arc-20240605;
-        b=NaoKBuM/GRihqwCftzRNIrkIFfdxnxJR2CiHevjB4zcD9VzegeWK1eLw2R5R2PRUYh
-         XoU7LFxrLVuD4rU4h1QFl9UDwEI3y7fVAcU/8Hydqvz72su/yx86rba34CRIBoKUAGQq
-         vOgqLPsD0UfZPHF/t8lofmPl+md7BW11kl3QOFM3h4tvD0RefynXrRTYLDcjSrTqkYmi
-         GW2iTDEv/rPcfTeN4KXe4Y6Iw41y/OUKtIF5YUEGFItPiMWfCxD26ckSuzEZY3NQ6mmN
-         rSis8ZDhUuNHq+v/sJI7oxW8iHgBw6PfHfVqI+YJVbWnguV2iCjhNDx/RenTwYGvq1rk
-         NOAw==
+        b=HL++wtQlOUxxn5wi7tL9KBNtPVqvQIplo6fCLiRj2opqfHWuVzUiQA7LUengfR+T/6
+         5IxPhX71xXUGJ44MGwniJN6Nmsk7yLR6e5z0nQQsee5esVJnQND5d+UZu+1mwXNtRBtZ
+         1CpJVAit0CtIxdzYthuJnVzazNZNVFeL0Ah8LyDby/LfgXAbgeMbyf4aUk0ehENc8rbN
+         AHXvYy4mXPWzP+sDX5I4QhRX/72k/0J/MylYm9KzeASaVplV1+mH4UwKoJyD/ZeQ6slm
+         kTRodxKKTH4s6tV8lE/w5DE2bbhbW+wxNFDpv1ktgodl//abtg+/0/7K7RKjXaOangAz
+         az+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:subject:cc:to:from:date:dkim-signature;
-        bh=P3gq1Sc9H5Ms95u4WWh16tH/o7ku03Ter1r8qA1KKf4=;
-        fh=n4x6mxQmEN/4oiPSTZ+aZzRUnWgzaTtThRuAlChklVw=;
-        b=fW/lRKZle2PBZrCAxUZ+geCb7vBLHouTcfp8DDGA9LA/iK31QxXcN+84evoueF208T
-         eeWH3PI3hi+LdIDc1OAbYT2SZJ0bLmBMwmf6gQ29nxo3NGTUT5P+Rokqq+qiTkWcMHNN
-         zsMDuwpdF7z30FPIsXM6o0R1YSRytN00GujAdZPz4+UHCqMu8oBC/XutgEhu/QF4cdjw
-         DiLHU8Xbbpp4g5PRinJ/velzUZBUlo85a+v/g/iaEhgcbQQN2d29diwd13dS/VmoDZT7
-         DTXAy6wZIGGCqjYy1oNk1JFKxmQ0/+b//Wyk3fYl4PQNzWvGNKjuO1fhpd8ks8ASh/LI
-         rlfw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=I+M4tOQ6mll5tAQYc99RXePAKGb1f81J/xwo1gTYimI=;
+        fh=zNa1wHnOOQ2JHtTyEChV918fWfG2eqp0Bal2h3cIVgM=;
+        b=epbe6qXg8NO8JxgUOYkC6M3wZAfTC6CD027/1JhoDdngMcsB8qfBLBKmpoyMlpi7GS
+         yJvLn8huRHwNVrf7aoeuPKDsSoaGwdYF2YH01ZXT7cimhxJx399NvIL7fwjrzcZQ9OV0
+         vCAEMa8P+40DvCHTyXYLnVMEWyKINMDfLHanxM12Ua0KrvGazmlfpBif0HWFtdAneYOF
+         eeoGrowxKqFNb8mZFiDjbiI1Yx3zVxnk0zdCsZ71PUKTNyCoatI3syEIskB+bfBlVuzo
+         BXURpdZaiqWlIohOXu//AxAEGdSKxFGxQ1APMMaK720NVPZvdb11GFK48Uh5ogrYs+jm
+         nl/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="BQCsQ/Ij";
-       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nGQKM+oh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <shentey@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5dece25f389sor8934814a12.8.2025.02.24.03.04.12
-        (Google Transport Security);
-        Mon, 24 Feb 2025 03:04:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-471f05b5a79si141081651cf.601.2025.02.24.05.49.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Feb 2025 05:49:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="BQCsQ/Ij";
-       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nGQKM+oh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tmYpd-0000BK-Qo; Mon, 24 Feb 2025 08:49:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tmYpc-00007v-L8
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2025 08:49:12 -0500
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tmYpb-0008WV-5G
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2025 08:49:12 -0500
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-6f7031ea11cso37898787b3.2
+ for <qemu-arm@nongnu.org>; Mon, 24 Feb 2025 05:49:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740395052; x=1740999852; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=P3gq1Sc9H5Ms95u4WWh16tH/o7ku03Ter1r8qA1KKf4=;
-        b=BQCsQ/IjgjgyL3Tnf1Xt6sJcumAFuPwA/kwO5y8oI0AhNyJ0Vz0I7q0WVqS2PSKw3o
-         VTo6eKRyzpr9q0FBFHPrl2sL4PbJG9PEUdjY/PnixmVnPlKSpMlaLykvn24lmLmiKzeK
-         wNUjNH/Js2n0qIJ+7a0RGr7TijnGKxzws3sgexKz+Ix19OTnM73wVOl/YPlc9RDncDT6
-         /UnY84kKlMmu9S/sUW78hgcFN6JIj1kT3zdsYs1lmSMv74sjfo+Cqj7KhX/szAM3jkk2
-         eoTjJA5ogYpGnVk0xqRonwzaKl8OYTLnb7JB75uDaEZuSkgk1RJltRNH1+sVwCsZIOCq
-         mWYw==
+ d=linaro.org; s=google; t=1740404950; x=1741009750; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=I+M4tOQ6mll5tAQYc99RXePAKGb1f81J/xwo1gTYimI=;
+ b=nGQKM+ohkOr+XZu6pl3LrmS4lQ0q6an0e0Y1V764w6lGIWhVZohoiMgr8zOUTKAZbL
+ FdOzV/fE7SjwKOnQIeu3niJntufIxarq9H1B/7NVbKLgZuGVcV408tyZAsWsd9zL8uxL
+ cJj+qmCL3JsF0xBsW1gbvd5sxsL0ulbt10e2vLbOBRXyH723sAkTgLSQvt2So8y91Bqk
+ Mv3If2WrJBjLtzmuVevez+9XMs0fbD+7gqwZeQovDlY3ZMquHQ73l3Lo4YRl0cUv3DFj
+ F9KoesB9qRz8vuo21ybiyD6MBA2EV72OqaVRmFRNDRjHWPnT2NDGjEDv4ZBS8fiM6XtE
+ Kk4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740395052; x=1740999852;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=P3gq1Sc9H5Ms95u4WWh16tH/o7ku03Ter1r8qA1KKf4=;
-        b=SmBhDtKerfvcem/+QPpB+5vcuMNZ7WImr6rAnT5IvCyQVuRPBUZdKbYRE8F6QKiE+X
-         myeW5lt/2DynrByYrZ1VSb+1kcFUHFC5h4yGQw6FccI43G+zkO1JvADj+NJwtZ/8FyGr
-         mROmRwdanAvTymjFPizj9GWVZ0nri5aRQNunFqa9iaQt6gtNTd1SOKHViZOHz7Ph5/8x
-         j7sVq++h1FvGUQeZGs+ebC1k2KeyDgidWsq/BDE5/1kdPvjolLbqiSyhfpF0otwIQrp3
-         oNErz3GQUPHECZcmi9Zq/O/wRU2niDlhNPLCiiMSOafPp/Gw0pkQVw461x0HiSmGFUoh
-         W8Jg==
-X-Forwarded-Encrypted: i=1; AJvYcCUWA1hrwfq29crQ0+kEgmVZgguNY9LIvTkBMd5zjLrl//z6tC2Nzj7S8GXYsQ98c+C8HkA11Oth@linaro.org, AJvYcCWzI/HICxPsS59Gx2kWkyHHpGFpav97UeAXRYT0g8xb94DecluO/hz8xC968DW+fldfGOjh3AFUdxhduoKS@linaro.org
-X-Gm-Message-State: AOJu0YxFar6HBaiFahlQhQa5GY4mQi7mLdEU1nRFMAqe7PxGjfNnk3fQ
-	upZTUwbdCkpr48kNGfa91t+vg3AT7EwVSmGN3mUb/WpSTB8A7iaMS1SWpA==
-X-Gm-Gg: ASbGncvg4aR9dQ8j3s8Iqq5YS5d+ZtudlRHQe8KhlCv0rW+zd6llF8nJRIKuPGPAfhU
-	8I2+s7WqsJfFOY/fDjqf8UR8gLa5/t+hze98q4P5Lz3L9FgNF+vIPIYzVQBNX+oDw87xa/uairs
-	0fPDJlPFcV+z9mQDhDGEsKoFRkPguwpTDzvIqLN/cpn6+6Y0NQlglw2qmpGbvfCO5d77cY6eMiW
-	diUUer87Y6jgq466UneuXjOKzJ4W8JFcdTBiIEf33iY8I9/R6kJVn3k+bfNpluq466czjzSwnhe
-	3Zd3S/snuaVvwQQdz3XmPAx8BMbRRpb0iTXrBfn1dgWPf+HeTdaUI6Q38wSoOf2JFbMOXo1h
-X-Google-Smtp-Source: AGHT+IGBqHFtFUDRN/LntORiN4opnGqygXBjVh7tMBshQu6ejUrmysMTXNDU2NxJ35ZxDhbPtkpTvw==
-X-Received: by 2002:a05:6402:3554:b0:5dc:5a34:1296 with SMTP id 4fb4d7f45d1cf-5e0b70ef77dmr12639263a12.16.1740395051628;
-        Mon, 24 Feb 2025 03:04:11 -0800 (PST)
-Return-Path: <shentey@gmail.com>
-Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de. [90.187.110.129])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e09072247esm8696740a12.51.2025.02.24.03.04.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Feb 2025 03:04:11 -0800 (PST)
-Date: Mon, 24 Feb 2025 11:04:09 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-CC: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
- Magnus Damm <magnus.damm@gmail.com>, Thomas Huth <huth@tuxfamily.org>,
- Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
- Rayhan Faizel <rayhan.faizel@gmail.com>, qemu-arm@nongnu.org,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc.michel@amd.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: Re: [PATCH v2 6/9] hw/char/imx_serial: Really use RX FIFO depth
-In-Reply-To: <20250220092903.3726-7-philmd@linaro.org>
-References: <20250220092903.3726-1-philmd@linaro.org> <20250220092903.3726-7-philmd@linaro.org>
-Message-ID: <82869227-447B-4B71-BBD4-6C4E1038D69E@gmail.com>
+ d=1e100.net; s=20230601; t=1740404950; x=1741009750;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=I+M4tOQ6mll5tAQYc99RXePAKGb1f81J/xwo1gTYimI=;
+ b=Fv2DdFjP1ZFIBckJXWppscQbR7rFHaQjbuME+huOgir6sKQemMjxcHDAG/k5inuJen
+ TTcbW7QszyV3oB2uX/FJBStNUKPLwU4qIqIppBD/QbJNpS7XIOWG1EegsxMgL+aVh118
+ 3jMcrw5N/4LNkjL6N4dNSWg3cePYEvYWzNTYDZZaacsNe9fP0GCkS5tFM6XPVV+pLyif
+ VCMDraHH/GplPE+AFFOY1YEIGqtXjnC6KB6LEwvjjmvea5uyio1Jtl+JeRpsfHyoGRBN
+ OCiXe7AuzRTYehRfooVKrmSZU5GsZNQU/FabXTLSoLmok8CuhYLfWZwfH02JMSqpaKWr
+ aT6A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU87JwOD0/Jl96U1BsLDIs+7Bwb3zy8uPgyXrHxq2dcd5nXFv2UmGJq8scpJGlkFVvEzEiL8mRJLA==@nongnu.org
+X-Gm-Message-State: AOJu0YwfRST9yc85E/rnwFSc55T5A3JuwZNKr82ERxK77zn+fKAtyDy1
+ lihVuc2qlhui9Sqg3Hkj1BCDDOZwzDROSeVztGwU3JLAs4pqiPugdSn57dltYfXqf7jc7Xwb8hX
+ tS7hcahOCwfgW9ntJcfxrDxCLjhfYVtRxUAtReA==
+X-Gm-Gg: ASbGncvuLRMQSYUgQ9IC8HR5t7GP5VxOJQWUiSauYwgj6086kPbZg3uOrFXqjdjsfTG
+ Rbj3I4FQjiIf/FfZO+amrkYRgO2UOYxNwqVRBrmAz7WzhWwapeJt1Gl/LH2PZabogw4eOZ+u0CH
+ bYwADnIHH+
+X-Received: by 2002:a05:690c:4989:b0:6f9:82a8:e5dd with SMTP id
+ 00721157ae682-6fbcc365f82mr103673837b3.29.1740404948039; Mon, 24 Feb 2025
+ 05:49:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: eGR9MMFWKb2B
+References: <20250221145419.1281890-1-mochs@nvidia.com>
+In-Reply-To: <20250221145419.1281890-1-mochs@nvidia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Feb 2025 13:48:56 +0000
+X-Gm-Features: AWEUYZnEk0p8LXBYiirBPHKlN1COmmRsO6ZpuSdANnTpj-SFDWKtD4UfC-sN3ys
+Message-ID: <CAFEAcA_8DwF21QnFxR8F8xNi4ZgvtVa4sgFOuymZt+W9mxmb8A@mail.gmail.com>
+Subject: Re: [PATCH v6] hw/arm/virt: Support larger highmem MMIO regions
+To: "Matthew R. Ochs" <mochs@nvidia.com>
+Cc: qemu-devel@nongnu.org, nicolinc@nvidia.com, nathanc@nvidia.com, 
+ eric.auger@redhat.com, qemu-arm@nongnu.org, 
+ shameerali.kolothum.thodi@huawei.com, ddutile@redhat.com, ankita@nvidia.com, 
+ philmd@linaro.org, gshan@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Cdqao5zOlIga
 
-
-
-Am 20=2E Februar 2025 09:28:59 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg>:
->While we model a 32-elements RX FIFO since the IMX serial
->model was introduced in commit 988f2442971 ("hw/char/imx_serial:
->Implement receive FIFO and ageing timer") we only read 1 char
->at a time!
+On Fri, 21 Feb 2025 at 14:54, Matthew R. Ochs <mochs@nvidia.com> wrote:
 >
->Have the IOCanReadHandler handler return how many elements are
->available, and use that in the IOReadHandler handler=2E
+> The MMIO region size required to support virtualized environments with
+> large PCI BAR regions can exceed the hardcoded limit configured in QEMU.
+> For example, a VM with multiple NVIDIA Grace-Hopper GPUs passed through
+> requires more MMIO memory than the amount provided by VIRT_HIGH_PCIE_MMIO
+> (currently 512GB). Instead of updating VIRT_HIGH_PCIE_MMIO, introduce a
+> new parameter, highmem-mmio-size, that specifies the MMIO size required
+> to support the VM configuration.
 >
->Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
->Reviewed-by: Luc Michel <luc=2Emichel@amd=2Ecom>
-
-Tested-by: Bernhard Beschow <shentey@gmail=2Ecom>
-
->---
-> hw/char/imx_serial=2Ec | 8 ++++++--
-> 1 file changed, 6 insertions(+), 2 deletions(-)
+> Example usage with 1TB MMIO region size:
+>         -machine virt,gic-version=3,highmem-mmio-size=1T
 >
->diff --git a/hw/char/imx_serial=2Ec b/hw/char/imx_serial=2Ec
->index 38b4865157e=2E=2E6f14f8403a9 100644
->--- a/hw/char/imx_serial=2Ec
->+++ b/hw/char/imx_serial=2Ec
->@@ -386,7 +386,8 @@ static void imx_serial_write(void *opaque, hwaddr off=
-set,
-> static int imx_can_receive(void *opaque)
-> {
->     IMXSerialState *s =3D (IMXSerialState *)opaque;
->-    return s->ucr2 & UCR2_RXEN && fifo32_num_used(&s->rx_fifo) < FIFO_SI=
-ZE;
->+
->+    return s->ucr2 & UCR2_RXEN ? fifo32_num_free(&s->rx_fifo) : 0;
-> }
->=20
-> static void imx_put_data(void *opaque, uint32_t value)
->@@ -417,7 +418,10 @@ static void imx_receive(void *opaque, const uint8_t =
-*buf, int size)
->     IMXSerialState *s =3D (IMXSerialState *)opaque;
->=20
->     s->usr2 |=3D USR2_WAKE;
->-    imx_put_data(opaque, *buf);
->+
->+    for (int i =3D 0; i < size; i++) {
->+        imx_put_data(opaque, buf[i]);
->+    }
-> }
->=20
-> static void imx_event(void *opaque, QEMUChrEvent event)
+> Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+
+
+
+Applied to target-arm.next, thanks.
+
+-- PMM

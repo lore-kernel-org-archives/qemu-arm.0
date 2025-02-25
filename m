@@ -1,578 +1,384 @@
-Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp2150138njc;
-        Mon, 24 Feb 2025 12:55:22 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXUUemHCIp2fX1M9tKj0ktSfpvIk7mHSzr2ZyGfy7HQvQRZx9twnxY7Fv4i08ZLG4awpZKyDClazLx8xw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZe7AKF8OBANYjkDrXXH4J8iWR+4UMBILwoCBs6GxJc9EbfIqBbUghcB1PaCCPuhtjQ4HI
-X-Received: by 2002:a05:6214:21e7:b0:6e6:5bb2:c1a6 with SMTP id 6a1803df08f44-6e87ab9fa68mr8778276d6.28.1740430522612;
-        Mon, 24 Feb 2025 12:55:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740430522; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Qyd9rKTUE6ufy8novoUTK5qKQwPZkRjI+5Fbhu0JP4BNDE80Npqd4uke3J81gnZyYz
-         O4RJxUo+nQtTOCicZ4eaVWvFSQJtuP7SMbAWpuXCWyvBkRPGsChtOVfuX9iEWmqG+ELh
-         +hbah99h6QvC27k2ZfVKVzGh9LvMndS+VGI1aeuT9N5dhJt65JMeeH5u+2u72pe2yvua
-         MD1QLdkgXl2LeoXsqHh+8keafP++7pEmYNVztFnifgtc4e7wLVncKowsBG2z8DmsjE1/
-         nUN8kSvZkHkKOjxIdtlHZzcsTy2DYMgezJlZhTT9kQwqgMr33mrJDykGO9FxmakARkEX
-         szAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=P1J0GeWm5MJLjeHwTWIr2ypSEGDFmTu7z9+C3tEHxms=;
-        fh=ikzTxA2r30vPyHS5tcSFIHzb8wwBef6A3MR3nicpuzE=;
-        b=carkh4E1qKP16KXfFTNixjwo7NAVMR6VfJ1426mizYGEjIp4n73GU5H35iyfFwgyKZ
-         WbbwSBZE+IQekBv4HCTX3i1teUjsEHAp21t6jmNy7vdeQT1+PxgU6UplqeW+UnJWHjdh
-         8vHywhSHEZrgKuD+0nXJYClpqfvnCoI3wT5oFqGhGoXvVEuf1u0pVw4+p0m1oB6ZgZCN
-         kf26RIYoD0IRXytFscO1FEO5oBTDCZGbaJsq2vIz67jMveEkrOUh5J1RxX6l7x588Vam
-         o1qo7E7J5ez4kl3MxnsBTZzfw+2TeDz/k16iHAvD6ZvTzdQAjfwWbjiehf5328PQr75a
-         Hzyw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2gVLAYJl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a17:504:5c6a:b0:1be9:327d:8ee3 with SMTP id dm10csp2285626njc;
+        Mon, 24 Feb 2025 18:00:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW4TmKl+WloJgMokfQ3MdeuuLol5CeU5u5TZ/Ir+NIT8HFyMdfR00mV1WudafWbK4p4/2Q77efVQr9lBg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGWs/b/QmOBsUu0nFcnhz93fr6DGdHspHkGByUaG3Qp9kXhpEy0dT+LPGh2+ov2hGJSJbWb
+X-Received: by 2002:ac8:7d42:0:b0:472:2021:b76a with SMTP id d75a77b69052e-4722471599fmr179422331cf.11.1740448858789;
+        Mon, 24 Feb 2025 18:00:58 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b0e57a9si1875286d6.356.2025.02.24.12.55.22
+        by mx.google.com with ESMTPS id d75a77b69052e-473780abfcfsi5200221cf.556.2025.02.24.18.00.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2025 12:55:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2025 18:00:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2gVLAYJl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@intel.com header.s=Intel header.b="C7sy6/pz";
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tmfTs-0002tv-TU; Mon, 24 Feb 2025 15:55:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tmkFJ-000129-5i; Mon, 24 Feb 2025 21:00:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1tmfTn-0002q2-Dx
- for qemu-devel@nongnu.org; Mon, 24 Feb 2025 15:55:07 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1tmfTk-0005WL-M2
- for qemu-devel@nongnu.org; Mon, 24 Feb 2025 15:55:07 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5dbfc122b82so2969a12.0
- for <qemu-devel@nongnu.org>; Mon, 24 Feb 2025 12:55:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1740430503; x=1741035303; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=P1J0GeWm5MJLjeHwTWIr2ypSEGDFmTu7z9+C3tEHxms=;
- b=2gVLAYJlsSGDaLaDGuGiujq5Kx53VljpkpCnsEmGNp0yEpvrks6r3CufXvOS7Nqjl9
- 5Yo/BkbGXcstkBLiqLSuXQA9iVGdYBYQsD8uatL7CsYBIjmmHUImciu+dTaE/7j+llvg
- aRgHvdxNmSiwH0GGLe4lElSOS3br1p09EKSf4OogBtKukkFeBMMux3mgECPvuBUyeEtz
- 5lHVF4ZlHwg+4J0luF5K4nroRM8XwzKOub2IsFBoFbsYo3MZjWCDRZ0QhOY3vvk6vHcW
- PtPzfwMZw2FZI2Ccexc5KDmA80V3U/qxRrbACg6K0fVHEOrGmxqUa+FU7xAAAL5h+kNB
- 4Ctw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740430503; x=1741035303;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=P1J0GeWm5MJLjeHwTWIr2ypSEGDFmTu7z9+C3tEHxms=;
- b=MkkRCqCGTAKaWqQ+OOFRXs2l9cyERFIe96NRWiChHKYhREyUoTaO2CjIE9EOLyfUn3
- LywbocjwtEnX3nes8KIPautCQjh5DIyH7ZLwWaqTKX3HZTfrWfPDgwlZSOWf8JYKHEzQ
- rMMyQM75m5riDvX6QhuFKMQfrhs0BbZGnJIcDMDLugnhi84vii+e+cgFtb8m+/8oxkk6
- x8edzPIk4R+Lk9nIxQm09jyisNKAiV8NLIMEtC4DKQnEQIhZlo09xx4CdC9f/305gxGC
- RbHxo+HMH27xl6kg8htKrLv+SnO9KwymKm6mBOrLbBWXhIIJttiEbwPBeIpOdmKNIMz6
- CD+A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU9m8uLabMUm2eQZmsJyYTc70JnnH/ZpaMIrGyk4GsrT2h44KtnU8svTkY62ddJisUjiBIFVcxkLV17@nongnu.org
-X-Gm-Message-State: AOJu0YwuWYXLJiJ+ttiy3Winl9n4IPa0t43ZrgHMT6lmpM2RS9sYOb6c
- iWiYaP23txLyQETccM/cFKzgYfgbsxb+iCfWzz+UZo74aL2UJ0qQxHtDiK5eyEKVKTd9YnyOy1N
- 0w4sA567+ZkC/L2bMRrnbngLHPR65NXuxqUG0
-X-Gm-Gg: ASbGnctZmplsqV0NCjXwp5niPnq0B76ZzjBHFSO/ry5pNUggMOBFGEG1HOloFyeXPkC
- UYbzEth82GyPSrIBce+CNeQS5uup3+/m3/d0w7a5N16ltziu8SvexZ5sMH06KMueB74CdDhCKaM
- e3QxkdanQd3q2M8IiJx0pQLrYuEi2z6HRRfbxh
-X-Received: by 2002:aa7:c741:0:b0:5e0:fea1:143a with SMTP id
- 4fb4d7f45d1cf-5e40a069c8fmr31276a12.7.1740430502869; Mon, 24 Feb 2025
- 12:55:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <chenyi.qiang@intel.com>)
+ id 1tmkFG-00011v-S4; Mon, 24 Feb 2025 21:00:26 -0500
+Received: from mgamail.intel.com ([198.175.65.15])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chenyi.qiang@intel.com>)
+ id 1tmkFE-0005OY-7N; Mon, 24 Feb 2025 21:00:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1740448824; x=1771984824;
+ h=message-id:date:subject:from:to:cc:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=JA/ezLx3bUSSnBbf1AevH9zgTr7RRtfJUK5uuUA/hVE=;
+ b=C7sy6/pzLGPM8CUdG82oAezbWYqMLNtvYb5lyHNZUT8Rb+aLmf0YAoFw
+ s6/TyQ6B4JzfHsPhshjhVZj6o7JWBdAdNVF173Gyg7OwYsnQHavAjAGzw
+ 9f+MVLC+p2dlMK9FBy7TbHhBSLA9pATW2MX2msT7Crcc3sye7xkd9Brkq
+ 38PVM0k/Gl3BT/CvYUrpZYPRc/lNB7a7yP8IZMhVM9H2cXnFavJLIn1FQ
+ P8vVC2j6KDIzR66TN/zCg7SbxGDA8pFC92Ywco2aBcW9myuRCd/bNqBn0
+ XyrVwHnIznxP4ym1EcZG2Hs1ZlE+PEA+W72ECjvAjDnL1OuTfd96MU2DM Q==;
+X-CSE-ConnectionGUID: dC9OFf8gTxG/OiWVA5kvuA==
+X-CSE-MsgGUID: al4SdqLdTZugEDajXzgC/g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="44891942"
+X-IronPort-AV: E=Sophos;i="6.13,312,1732608000"; d="scan'208";a="44891942"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2025 18:00:19 -0800
+X-CSE-ConnectionGUID: 1kSfdffFRdSjiKU7PetgVA==
+X-CSE-MsgGUID: 6grlvvViSrOsEZl7GoMxcg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="116736116"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 24 Feb 2025 18:00:19 -0800
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Mon, 24 Feb 2025 18:00:18 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Mon, 24 Feb 2025 18:00:18 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Mon, 24 Feb 2025 18:00:18 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=aBf5eoiV2LSuZE5B3r3WkSmP5Ptmy0ypT3HVQotjO5hCN8k0xW2qbM0XeJr2VVp4QA/QrDs2U1fFG6zlgIcz5O4Snx24TRzRfqUxRJyleEMyiVrLOVTUI4QLN4vM1frL25D3+AwtO+kPl/GyxPzTcVnh8t3XqsoptsxoABE23vOrEL4CiT6UmAXJ2PjtZutr6YqE1MT7129pWD/iB9kMCt9CMZaT1q0Jf6/I3HNnX3igAMVt6zBtHoPAnW0mfIXDgKFYqWdDi8KUR0B0bepjvXXAwWl2Njhd4VxldpXIxfO9s9Ba10qs7K0mjT7exBM7+TI60tjShLKT0J88F19/gw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zJQvEbb5C35A4CmVp9WN+qkBZIlM1yGrUteNie/ZZ50=;
+ b=Itn5hvphJGtKUsRFaYETSenC3H7V440iyNKM2YAZRXAFnSPX27Ht8rPBwx4wRNrSFaBpQLnwWlbeygZhNJKtNFUGnSbZpwSwoJaqbgZ5BHRjs4Tm7mehSKHVBlSVyTheq0zyZFVZBOZNVyv82lg5FmfOeexrbL2XJ/xeqJvvUU/F8FVGMaaUNJoBJHEimRqnrCY1nLm95b3K88Kg0I4lsE7ka7IY1Gg1ZtLXMRFVBzaqUWwkpSmLAEFhfA03evQYUKsx1pzOuZcscdEFldIzMJvx3SXhgn9qknb48pIsLJe6E16mZcdkDCysAZI8aEOJ3FmEWt+QxNjjnJIk4vSt4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DM3PR11MB8735.namprd11.prod.outlook.com (2603:10b6:0:4b::20) by
+ MN0PR11MB6059.namprd11.prod.outlook.com (2603:10b6:208:377::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8466.20; Tue, 25 Feb 2025 02:00:13 +0000
+Received: from DM3PR11MB8735.namprd11.prod.outlook.com
+ ([fe80::3225:d39b:ca64:ab95]) by DM3PR11MB8735.namprd11.prod.outlook.com
+ ([fe80::3225:d39b:ca64:ab95%7]) with mapi id 15.20.8445.017; Tue, 25 Feb 2025
+ 02:00:13 +0000
+Message-ID: <16cb9605-ba4c-441e-8709-369a37655b4a@intel.com>
+Date: Tue, 25 Feb 2025 10:00:05 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 1/2] system/memory: Allow creating IOMMU mappings from RAM
+ discard populate notifiers
+From: Chenyi Qiang <chenyi.qiang@intel.com>
+To: David Hildenbrand <david@redhat.com>, Jean-Philippe Brucker
+ <jean-philippe@linaro.org>, <philmd@linaro.org>, <peterx@redhat.com>,
+ <pbonzini@redhat.com>, <peter.maydell@linaro.org>, Alexey Kardashevskiy
+ <aik@amd.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20250220161320.518450-2-jean-philippe@linaro.org>
+ <20250220161320.518450-3-jean-philippe@linaro.org>
+ <0d761daf-174d-487f-80fe-09b04902006f@redhat.com>
+ <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
+ <ce2306f9-19a4-4979-80e6-29b1e8a92318@redhat.com>
+ <108be3a5-cfc1-4268-a913-3a41d1e4451f@intel.com>
+Content-Language: en-US
+In-Reply-To: <108be3a5-cfc1-4268-a913-3a41d1e4451f@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SI1PR02CA0057.apcprd02.prod.outlook.com
+ (2603:1096:4:1f5::10) To DM3PR11MB8735.namprd11.prod.outlook.com
+ (2603:10b6:0:4b::20)
 MIME-Version: 1.0
-References: <20250219184609.1839281-1-wuhaotsh@google.com>
- <20250219184609.1839281-7-wuhaotsh@google.com>
- <4ff5c838-27b8-43ce-adb9-1816c9e4a097@linaro.org>
-In-Reply-To: <4ff5c838-27b8-43ce-adb9-1816c9e4a097@linaro.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Mon, 24 Feb 2025 12:54:48 -0800
-X-Gm-Features: AWEUYZnlgphwWGCVTBBgQWtERUG4s3BUArGIo9GgOj0wjxxiSJaTLddQfgNggoU
-Message-ID: <CAGcCb10vwMzjidhEdmxV9DS4oH+r6yvzDF5UY5aPwwMtMWwwPg@mail.gmail.com>
-Subject: Re: [PATCH v5 06/17] hw/misc: Add nr_regs and cold_reset_values to
- NPCM GCR
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, titusr@google.com, 
- chli30@nuvoton.corp-partner.google.com, pbonzini@redhat.com, 
- jasowang@redhat.com, alistair@alistair23.me, philmd@linaro.org
-Content-Type: multipart/alternative; boundary="000000000000e1b2b4062ee98d5a"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=wuhaotsh@google.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM3PR11MB8735:EE_|MN0PR11MB6059:EE_
+X-MS-Office365-Filtering-Correlation-Id: a8194f0d-305e-4d80-2183-08dd5540244c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?bXVkY3I4QVVVNTA0d2tCYnJNTGRzbFpqSzJEdkN5WlJYOElDZHEzVUFhbk0y?=
+ =?utf-8?B?c01DRWZhNHZWc3pBVFB6b25PbHdmRURWZWJFanZyK2k2dzR1MC93cTZnM09O?=
+ =?utf-8?B?citmSy8zQ09aT2VnSW9PbDF0YXV5YVIwMXRSSFVFSGs1YjNBU09LcDBMc1dF?=
+ =?utf-8?B?MmVzOVVYWGUvd0lrUFFLYkIyU29acTAzK3haSmVxNHJhUkN0eklxOVdnblA4?=
+ =?utf-8?B?OG02bUVQQzlQR3VFVlJSMUMvMkxLVGhodGZRMVRpMFJWU0pNY0ZlZ3JkVUlI?=
+ =?utf-8?B?ZlFwbWxudU5BZUdXQ3pVWndkdThwY3dBUjdFWGhJbm82SU1Rc0NmVlpPcUps?=
+ =?utf-8?B?d3QvaDJFYVpXSERzajBOMmdJOE0vMUVoU0ZGckRtVlVwM00rQ04rUERJc05D?=
+ =?utf-8?B?WnNVcllGMWFhWnJXNlg2bXlLSVlzUWQweExid0hsNUVabWNyNmFCTjhac3Qx?=
+ =?utf-8?B?Y0NEY1JzSUdTWmd2Qmd3R2hWRVRCMVdueDcraFJOQ1lPaGhSeDVxS2lPTjk3?=
+ =?utf-8?B?VmdjdFBLeXNPN1c0QURGMFpkZmhwLzh1YThXdE1YWnRrZ0gxejNhMHZRU096?=
+ =?utf-8?B?akk1Nlhpa3hGMWlqdjl4MVBFc2lUVGpsL2xYQXJzVTUvRGF2elNuTUZyTlFU?=
+ =?utf-8?B?TllIY1BMOWV0eHE2cTcxdGc1TWVCcUx2NGJ1dzAzbkVMVDR2MUplZzlJYU5q?=
+ =?utf-8?B?TzZxa0pna3o0cjhlK0NCdVlIZGtwUXE0SE1LSkZVT2g2QU5EV3BUR3FQay9J?=
+ =?utf-8?B?cEY4NFhhRm5jbGxXSXdLMEVVRUhYUVljNzdiQlJVMGx4SEpRZnpOM09oM0FY?=
+ =?utf-8?B?L2szQmpQZlFlZUJyTXRvb2drVG9CdmlUM3JQY1krQThrVlFoak15VXd3ODZZ?=
+ =?utf-8?B?bTMzRjlXWjBJL25IQitQVkFNSTRGUWJmeUNDdE9Ndm81RmdGUWtIUWthd1kw?=
+ =?utf-8?B?TFB4MWV2ajVvd1l5K0FsTkZOSm9RTFNEeUNLemJhWDJXWTBWTndFdHpSakVn?=
+ =?utf-8?B?Q3BTSTJXQ2ZWQytXN3MxMWw4NlRQVGc1VStHc2lSeXBKdVd1em1ZTkZCa0Vi?=
+ =?utf-8?B?by8vbXdlYTlFNEsxSHl5MHoyYkY3MmdHR2dEMjFXMGZ2NmdZYm9IdGlaa2NE?=
+ =?utf-8?B?T3E4Y0F5M0RtQ2Q4TUFDWUNxOGg3ZW9tY1huYkZhc1RnbnpsRUsxUFN6NXFm?=
+ =?utf-8?B?cXI1UnZ6WGs5R243QU0zR1VCcGE5NzJFaG9nQk4zTVhQMVZGa09QZG5nT3hP?=
+ =?utf-8?B?T1hxR2hPRUNJNlc1ZTlBWU5PQ3JqczlXalFwZGtNMEt3RlhZRXhlRS9KMFpq?=
+ =?utf-8?B?YTJkeU5Yb3NWUFB0ejAxMEdnS3RnNWpmaTZRK3pVUEFteEhLTlp3Q0FMRXFi?=
+ =?utf-8?B?VytCZDNrQlJJWC9qZFg3TXZFSlB2RExwRGsrYXFEL2NIOVNyalZBZTlzR2d5?=
+ =?utf-8?B?RW52Z1hGeFZLY1NpakNpbkJKOGdYbHNBZmRQSllmRW1ic0FIRVA3VERxY2oy?=
+ =?utf-8?B?dUtaSy9XRHJpWHZFZ3pGNVBNdnI4VU1Ma2lpNzFEbmwwU2FveTBpSFVVVkFu?=
+ =?utf-8?B?K3ZqTjNUVjQzQ0VwRURtNFBaVmdLMTEvY1ViUC8rY281S1J6K25heFpIUS9i?=
+ =?utf-8?B?Ni9EdFpzMVJmbmJZSGZYdURaZWNvNGhnVUxZajJRNFhSOUdvY3FjaU5VN2hN?=
+ =?utf-8?B?L3p1anIwSVM5akM2KzY2c2lWTHYrY3d6MWk5aDBDUy9ZQ0ZXOXdkZzVxNmQ4?=
+ =?utf-8?B?UGhSelNHU1Y1OE15L3ZQak44dHRLUDNnTjhZVGowK1pvSjdJQk9CVk1WRjU2?=
+ =?utf-8?B?QWhjOVRVREIyTXBrOUZXMWRFMG5WNkdTKzRuU3k3N0RBbnUvZXp0UFlGbGRY?=
+ =?utf-8?Q?BnzvL1eTE0sFK?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM3PR11MB8735.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UWhydmFmMWpCYTJRUFNab0ZreURIdzV5WkFWbENMekpSaU4vejZKZWw0ZUlP?=
+ =?utf-8?B?ZXNFWEo3UTJmMFpLSUlUV2xGZlBJVGFNTTczMndJSDNuSmhJVmFOdit0eEdK?=
+ =?utf-8?B?N0hyRWtDblEzYW1ReS9WY0U0UEpueTBNM0Exa2R6Z2J6OWlvbWgwZE1WYzhI?=
+ =?utf-8?B?OVB4VmtVaU1QZUtENUpEQXY0QzIxOU5wTURPUTFQdFpkSWt6VGJqd1pMdVlx?=
+ =?utf-8?B?NktmVVJnT09FWEJYc0ZGd1paZXdYV0x6dGk1OWJVa2xGVVI0alhlQWtIOVRC?=
+ =?utf-8?B?NGovVmQ4SVhlMGNXVlFGc1FnRUZZdFR1RXgvMUp6aDFNcXh0WGFvMm1NNXE5?=
+ =?utf-8?B?T080WGJVeTdnL1llY0Y0RGJETUF4QzdZMVpJektLQzBqa1BVcWdsZWE3dlJP?=
+ =?utf-8?B?UHlIRkgreUQ2Tk5QWXlwRFhqSjJmZzFmL1JSdHNNUkxYbjF6QzA2dEs3Qmx6?=
+ =?utf-8?B?em5ZcnRhcHRzUWkrdGc2VUhRTmpiRWhzS3RQYmQ0Nzk3UlNUeWlPL0RsczJX?=
+ =?utf-8?B?WVdMOTIyODFlMlhybFdlUi9MZ2haR28rdzYvOHZobjdzbDMxMm1aV0ZPV1Zn?=
+ =?utf-8?B?cm9PN2M3N0pzcXR6V1RRZkRCK2o4WHhmeHR6ZW1VUWxMV2hLQktpcU5yZ0tP?=
+ =?utf-8?B?ZEI5Zjh0N0hoVGo5U0FXVHFOaUZROExKV2JJcjlCVjZodFgyTlBZQkh0NU1j?=
+ =?utf-8?B?Zmp1TE9MbnRUaGNuSzZCZjU4QjBIS0JIYWV4QjFQbXRxRkIzVnl0a1kvTU9B?=
+ =?utf-8?B?RnFQcUhZQ0tLS1V0dzlmbEx6WWx4ekJWVG9EMlVVVWtXZ2xuUU1jeVZCOWFS?=
+ =?utf-8?B?cFBkQXZOR2xtMjErL3Y3MnAyWlRVQ1lTL3l1R252ZnRQS0Y3bmdMSTJGK0V2?=
+ =?utf-8?B?OXFTc0xmaHRPYnpPdHFDZXUxdWE4ejZHbzZlN0dWY1B1OHlsbnFDUXBtSDZh?=
+ =?utf-8?B?YWVXZHAyWnJtVmE0K25OV0orZEh3OHREWWgzUGFPeE40K0gxZVg1OUVMRG1N?=
+ =?utf-8?B?Z1ZsUXlUTXgrVEJpbEVzUUNJMklXWUhBUUpNRDZoeDhEY0hoSm0zQzZFK3l5?=
+ =?utf-8?B?YmxlTkJNU0RGTW05djN2cnp3UTl2VlFKWXpuMmlCcEVXZnFqcEtUUE1NaUtZ?=
+ =?utf-8?B?NXQyWmFPZWZtQlY4bEZ3YmtRcHFZY2VJTnZCV0xEOTliQ0x0aThLNDF3M1dz?=
+ =?utf-8?B?L1k2bGc4bStyeXN5eUhpYTBvQlBKcml0SHZZQlN3VkVPSXRzbGNqNlpwWWtl?=
+ =?utf-8?B?WjJ1U2p3aTFQNmdYQm5hdW5qT1JIMGFaQytqMHF1QTBHclM1MnA4Y1F5Y1Vu?=
+ =?utf-8?B?KzN5b1gxNm1QZGZxMnEzZE9pUFBuV0VHczFCcitSYlgycnBFR2l3NzF0S0wz?=
+ =?utf-8?B?Z2JDOStWWE5YdEZ1TEhQbllMU29JRjVCais0eWRQVnRLUXI2ZTF6WjhFcVpx?=
+ =?utf-8?B?emtGVWsrZ1poQlhDZWh1SnEzeUVuR1B2eFFsKzd6NXpYWllqK3h2VTdkdzZP?=
+ =?utf-8?B?aGFoTEZRZXBIempuUWk0bC84YzN3VVlzaHNJYlZRL042TGgxRTk5aG5lVVZZ?=
+ =?utf-8?B?MmZLQmpvK05HejBvKzhGZ1hibjNhUFZDN25MNW1wTUh4NEppNmtkNVNvY3NH?=
+ =?utf-8?B?MHF2WnV2Q2s5RHNZT1FrSkVGWjBBT2FtWi9jMG9DbjZZWW1ZUmlXRklreEgv?=
+ =?utf-8?B?S1dma3FVRlVNaG1RZWZaUWpqNnhFNTNuTjR3QTk0TVlvN1ZqRHhIOTA2cEJ1?=
+ =?utf-8?B?aFdHbjZZNWVlTUhmWXdiYzFtSERvcFBZRTFBZm5WL3M1aG90Y1hoV1pZTnJX?=
+ =?utf-8?B?cUJ6dDcxRzRlZ3d1d2FwSGlLV1d2K3I1cllTVnVGTG9XMk1Xc3hPcGhVS2pO?=
+ =?utf-8?B?Njk4a1MwL0hpd0I2eWtPM0VlcHR4M3ExV1UrRUVpbXE5eTlCc0FtbDdYMi9n?=
+ =?utf-8?B?TWcxdS9Wa3NESFZZOVhYVnNkQjdpb1dOSWQ0N1RITjNCa3dsbEVFTkRVc3Mw?=
+ =?utf-8?B?ZzQ0MDhZWnJFdkgwcy9vV09VeGdmKzA1MW5sSFBoVGV4cm9tbFpBKzgzdnNY?=
+ =?utf-8?B?N3p5d1dXWDZ0UDluMjdnU0FpRGtCazRZcTJMMG1pRkhVOWZJU0JhQTlSUG5H?=
+ =?utf-8?B?dE5haFRmWmlmTWc3RTZhcDVKcjIyZUZ2QmhNWmdpbFd2YVpJdDFzNit6WXcv?=
+ =?utf-8?B?ZEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: a8194f0d-305e-4d80-2183-08dd5540244c
+X-MS-Exchange-CrossTenant-AuthSource: DM3PR11MB8735.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2025 02:00:13.5513 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QSg48bujd7sWYEfI8IVy1raonjaGfiZg2wH/Zt5tfLne5fm3o5KD+tzbjXgnk8z8CgAQA7ir3IDyC2doYy+Y4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR11MB6059
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=198.175.65.15;
+ envelope-from=chenyi.qiang@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D9NHXECDVNlP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T3rp44389hZW
 
---000000000000e1b2b4062ee98d5a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Thanks! I can review the patch.
 
-On Mon, Feb 24, 2025 at 12:52=E2=80=AFPM Pierrick Bouvier <
-pierrick.bouvier@linaro.org> wrote:
+On 2/21/2025 6:04 PM, Chenyi Qiang wrote:
+> 
+> 
+> On 2/21/2025 4:09 PM, David Hildenbrand wrote:
+>> On 21.02.25 03:25, Chenyi Qiang wrote:
+>>>
+>>>
+>>> On 2/21/2025 3:39 AM, David Hildenbrand wrote:
+>>>> On 20.02.25 17:13, Jean-Philippe Brucker wrote:
+>>>>> For Arm CCA we'd like the guest_memfd discard notifier to call the
+>>>>> IOMMU
+>>>>> notifiers and create e.g. VFIO mappings. The default VFIO discard
+>>>>> notifier isn't sufficient for CCA because the DMA addresses need a
+>>>>> translation (even without vIOMMU).
+>>>>>
+>>>>> At the moment:
+>>>>> * guest_memfd_state_change() calls the populate() notifier
+>>>>> * the populate notifier() calls IOMMU notifiers
+>>>>> * the IOMMU notifier handler calls memory_get_xlat_addr() to get a VA
+>>>>> * it calls ram_discard_manager_is_populated() which fails.
+>>>>>
+>>>>> guest_memfd_state_change() only changes the section's state after
+>>>>> calling the populate() notifier. We can't easily invert the order of
+>>>>> operation because it uses the old state bitmap to know which pages need
+>>>>> the populate() notifier.
+>>>>
+>>>> I assume we talk about this code: [1]
+>>>>
+>>>> [1] https://lkml.kernel.org/r/20250217081833.21568-1-
+>>>> chenyi.qiang@intel.com
+>>>>
+>>>>
+>>>> +static int memory_attribute_state_change(MemoryAttributeManager *mgr,
+>>>> uint64_t offset,
+>>>> +                                         uint64_t size, bool
+>>>> shared_to_private)
+>>>> +{
+>>>> +    int block_size = memory_attribute_manager_get_block_size(mgr);
+>>>> +    int ret = 0;
+>>>> +
+>>>> +    if (!memory_attribute_is_valid_range(mgr, offset, size)) {
+>>>> +        error_report("%s, invalid range: offset 0x%lx, size 0x%lx",
+>>>> +                     __func__, offset, size);
+>>>> +        return -1;
+>>>> +    }
+>>>> +
+>>>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+>>>> offset, size)) ||
+>>>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+>>>> offset, size))) {
+>>>> +        return 0;
+>>>> +    }
+>>>> +
+>>>> +    if (shared_to_private) {
+>>>> +        memory_attribute_notify_discard(mgr, offset, size);
+>>>> +    } else {
+>>>> +        ret = memory_attribute_notify_populate(mgr, offset, size);
+>>>> +    }
+>>>> +
+>>>> +    if (!ret) {
+>>>> +        unsigned long first_bit = offset / block_size;
+>>>> +        unsigned long nbits = size / block_size;
+>>>> +
+>>>> +        g_assert((first_bit + nbits) <= mgr->bitmap_size);
+>>>> +
+>>>> +        if (shared_to_private) {
+>>>> +            bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
+>>>> +        } else {
+>>>> +            bitmap_set(mgr->shared_bitmap, first_bit, nbits);
+>>>> +        }
+>>>> +
+>>>> +        return 0;
+>>>> +    }
+>>>> +
+>>>> +    return ret;
+>>>> +}
+>>>>
+>>>> Then, in memory_attribute_notify_populate(), we walk the bitmap again.
+>>>>
+>>>> Why?
+>>>>
+>>>> We just checked that it's all in the expected state, no?
+>>>>
+>>>>
+>>>> virtio-mem doesn't handle it that way, so I'm curious why we would have
+>>>> to do it here?
+>>>
+>>> I was concerned about the case where the guest issues a request that
+>>> only partial of the range is in the desired state.
+>>> I think the main problem is the policy for the guest conversion request.
+>>> My current handling is:
+>>>
+>>> 1. When a conversion request is made for a range already in the desired
+>>>    state, the helper simply returns success.
+>>
+>> Yes.
+>>
+>>> 2. For requests involving a range partially in the desired state, only
+>>>    the necessary segments are converted, ensuring the entire range
+>>>    complies with the request efficiently.
+>>
+>>
+>> Ah, now I get:
+>>
+>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+>> offset, size)) ||
+>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+>> offset, size))) {
+>> +        return 0;
+>> +    }
+>> +
+>>
+>> We're not failing if it might already partially be in the other state.
+>>
+>>> 3. In scenarios where a conversion request is declined by other systems,
+>>>    such as a failure from VFIO during notify_populate(), the helper will
+>>>    roll back the request, maintaining consistency.
+>>>
+>>> And the policy of virtio-mem is to refuse the state change if not all
+>>> blocks are in the opposite state.
+>>
+>> Yes.
+>>
+>>>
+>>> Actually, this part is still a uncertain to me.
+>>>
+>>
+>> IIUC, the problem does not exist if we only convert a single page at a
+>> time.
+>>
+>> Is there a known use case where such partial conversions could happen?
+> 
+> I don't see such case yet. Actually, I'm trying to follow the behavior
+> of KVM_SET_MEMORY_ATTRIBUTES ioctl during page conversion. In KVM, it
+> doesn't reject the request if the whole range isn't in the opposite
+> state. It just uses xa_store() to update it. Also, I don't see the spec
+> says how to handle such case. To be robust, I just allow this special case.
+> 
+>>
+>>> BTW, per the status/bitmap track, the virtio-mem also changes the bitmap
+>>> after the plug/unplug notifier. This is the same, correct?
+>> Right. But because we reject these partial requests, we don't have to
+>> traverse the bitmap and could just adjust the bitmap operations.
+> 
+> Yes, If we treat it as a guest error/bug, we can adjust it.
 
-> Hello,
->
-> This patch introduces a buffer-overflow, now reported by address sanitize=
-r.
->
-> I sent a patch:
-> https://lore.kernel.org/qemu-devel/20250224205053.104959-1-
-> pierrick.bouvier@linaro.org/T/#u
->
-> You're welcome to review it, or fix the problem differently if there is
-> a better approach.
->
-> Regards,
-> Pierrick
->
-> On 2/19/25 10:45, Hao Wu wrote:
-> > These 2 values are different between NPCM7XX and NPCM8XX
-> > GCRs. So we add them to the class and assign different values
-> > to them.
-> >
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> > ---
-> >   hw/misc/npcm_gcr.c         | 27 ++++++++++++++++-----------
-> >   include/hw/misc/npcm_gcr.h | 13 +++++++++++--
-> >   2 files changed, 27 insertions(+), 13 deletions(-)
-> >
-> > diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c
-> > index 0959f2e5c4..d89e8c2c3b 100644
-> > --- a/hw/misc/npcm_gcr.c
-> > +++ b/hw/misc/npcm_gcr.c
-> > @@ -66,10 +66,9 @@ enum NPCM7xxGCRRegisters {
-> >       NPCM7XX_GCR_SCRPAD          =3D 0x013c / sizeof(uint32_t),
-> >       NPCM7XX_GCR_USB1PHYCTL,
-> >       NPCM7XX_GCR_USB2PHYCTL,
-> > -    NPCM7XX_GCR_REGS_END,
-> >   };
-> >
-> > -static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] =3D {
-> > +static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_GCR_NR_REGS] =
-=3D {
-> >       [NPCM7XX_GCR_PDID]          =3D 0x04a92750,   /* Poleg A1 */
-> >       [NPCM7XX_GCR_MISCPE]        =3D 0x0000ffff,
-> >       [NPCM7XX_GCR_SPSWC]         =3D 0x00000003,
-> > @@ -88,8 +87,9 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr
-> offset, unsigned size)
-> >   {
-> >       uint32_t reg =3D offset / sizeof(uint32_t);
-> >       NPCMGCRState *s =3D opaque;
-> > +    NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(s);
-> >
-> > -    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
-> > +    if (reg >=3D c->nr_regs) {
-> >           qemu_log_mask(LOG_GUEST_ERROR,
-> >                         "%s: offset 0x%04" HWADDR_PRIx " out of range\n=
-",
-> >                         __func__, offset);
-> > @@ -106,11 +106,12 @@ static void npcm_gcr_write(void *opaque, hwaddr
-> offset,
-> >   {
-> >       uint32_t reg =3D offset / sizeof(uint32_t);
-> >       NPCMGCRState *s =3D opaque;
-> > +    NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(s);
-> >       uint32_t value =3D v;
-> >
-> > -    trace_npcm_gcr_write(offset, value);
-> > +    trace_npcm_gcr_write(offset, v);
-> >
-> > -    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
-> > +    if (reg >=3D c->nr_regs) {
-> >           qemu_log_mask(LOG_GUEST_ERROR,
-> >                         "%s: offset 0x%04" HWADDR_PRIx " out of range\n=
-",
-> >                         __func__, offset);
-> > @@ -156,10 +157,12 @@ static const struct MemoryRegionOps npcm_gcr_ops =
-=3D
-> {
-> >   static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
-> >   {
-> >       NPCMGCRState *s =3D NPCM_GCR(obj);
-> > +    NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(obj);
-> >
-> > -    QEMU_BUILD_BUG_ON(sizeof(s->regs) !=3D sizeof(cold_reset_values));
-> > -
-> > -    memcpy(s->regs, cold_reset_values, sizeof(s->regs));
-> > +    g_assert(sizeof(s->regs) >=3D sizeof(c->cold_reset_values));
-> > +    g_assert(sizeof(s->regs) >=3D c->nr_regs * sizeof(uint32_t));
-> > +    memcpy(s->regs, c->cold_reset_values, c->nr_regs *
-> sizeof(uint32_t));
-> > +    /* These 3 registers are at the same location in both 7xx and 8xx.
-> */
-> >       s->regs[NPCM7XX_GCR_PWRON] =3D s->reset_pwron;
-> >       s->regs[NPCM7XX_GCR_MDLR] =3D s->reset_mdlr;
-> >       s->regs[NPCM7XX_GCR_INTCR3] =3D s->reset_intcr3;
-> > @@ -224,7 +227,7 @@ static const VMStateDescription vmstate_npcm_gcr =
-=3D {
-> >       .version_id =3D 1,
-> >       .minimum_version_id =3D 1,
-> >       .fields =3D (const VMStateField[]) {
-> > -        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM7XX_GCR_NR_REGS),
-> > +        VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, NPCM_GCR_MAX_NR_REGS)=
-,
-> >           VMSTATE_END_OF_LIST(),
-> >       },
-> >   };
-> > @@ -238,7 +241,6 @@ static void npcm_gcr_class_init(ObjectClass *klass,
-> void *data)
-> >   {
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >
-> > -    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END > NPCM7XX_GCR_NR_REGS);
-> >       dc->realize =3D npcm_gcr_realize;
-> >       dc->vmsd =3D &vmstate_npcm_gcr;
-> >
-> > @@ -247,13 +249,15 @@ static void npcm_gcr_class_init(ObjectClass
-> *klass, void *data)
-> >
-> >   static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
-> >   {
-> > +    NPCMGCRClass *c =3D NPCM_GCR_CLASS(klass);
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >       ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> >
-> > -    QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END !=3D NPCM7XX_GCR_NR_REGS);
-> >       dc->desc =3D "NPCM7xx System Global Control Registers";
-> >       rc->phases.enter =3D npcm7xx_gcr_enter_reset;
-> >
-> > +    c->nr_regs =3D NPCM7XX_GCR_NR_REGS;
-> > +    c->cold_reset_values =3D npcm7xx_cold_reset_values;
-> >   }
-> >
-> >   static const TypeInfo npcm_gcr_info[] =3D {
-> > @@ -262,6 +266,7 @@ static const TypeInfo npcm_gcr_info[] =3D {
-> >           .parent             =3D TYPE_SYS_BUS_DEVICE,
-> >           .instance_size      =3D sizeof(NPCMGCRState),
-> >           .instance_init      =3D npcm_gcr_init,
-> > +        .class_size         =3D sizeof(NPCMGCRClass),
-> >           .class_init         =3D npcm_gcr_class_init,
-> >           .abstract           =3D true,
-> >       },
-> > diff --git a/include/hw/misc/npcm_gcr.h b/include/hw/misc/npcm_gcr.h
-> > index 6d3d00d260..9af24e5cdc 100644
-> > --- a/include/hw/misc/npcm_gcr.h
-> > +++ b/include/hw/misc/npcm_gcr.h
-> > @@ -18,6 +18,7 @@
-> >
-> >   #include "exec/memory.h"
-> >   #include "hw/sysbus.h"
-> > +#include "qom/object.h"
-> >
-> >   /*
-> >    * NPCM7XX PWRON STRAP bit fields
-> > @@ -53,6 +54,7 @@
-> >    * Number of registers in our device state structure. Don't change
-> this without
-> >    * incrementing the version_id in the vmstate.
-> >    */
-> > +#define NPCM_GCR_MAX_NR_REGS NPCM7XX_GCR_NR_REGS
-> >   #define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))
-> >
-> >   typedef struct NPCMGCRState {
-> > @@ -60,15 +62,22 @@ typedef struct NPCMGCRState {
-> >
-> >       MemoryRegion iomem;
-> >
-> > -    uint32_t regs[NPCM7XX_GCR_NR_REGS];
-> > +    uint32_t regs[NPCM_GCR_MAX_NR_REGS];
-> >
-> >       uint32_t reset_pwron;
-> >       uint32_t reset_mdlr;
-> >       uint32_t reset_intcr3;
-> >   } NPCMGCRState;
-> >
-> > +typedef struct NPCMGCRClass {
-> > +    SysBusDeviceClass parent;
-> > +
-> > +    size_t nr_regs;
-> > +    const uint32_t *cold_reset_values;
-> > +} NPCMGCRClass;
-> > +
-> >   #define TYPE_NPCM_GCR "npcm-gcr"
-> >   #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
-> > -OBJECT_DECLARE_SIMPLE_TYPE(NPCMGCRState, NPCM_GCR)
-> > +OBJECT_DECLARE_TYPE(NPCMGCRState, NPCMGCRClass, NPCM_GCR)
-> >
-> >   #endif /* NPCM_GCR_H */
->
->
+Hi David, do you think which option is better? If prefer to reject the
+partial requests, I'll change it in my next version.
 
---000000000000e1b2b4062ee98d5a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> 
+>>
+> 
 
-<div dir=3D"ltr">Thanks! I can review the patch.</div><br><div class=3D"gma=
-il_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mo=
-n, Feb 24, 2025 at 12:52=E2=80=AFPM Pierrick Bouvier &lt;<a href=3D"mailto:=
-pierrick.bouvier@linaro.org">pierrick.bouvier@linaro.org</a>&gt; wrote:<br>=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
-order-left:1px solid rgb(204,204,204);padding-left:1ex">Hello,<br>
-<br>
-This patch introduces a buffer-overflow, now reported by address sanitizer.=
-<br>
-<br>
-I sent a patch:<br>
-<a href=3D"https://lore.kernel.org/qemu-devel/20250224205053.104959-1-" rel=
-=3D"noreferrer" target=3D"_blank">https://lore.kernel.org/qemu-devel/202502=
-24205053.104959-1-</a><br>
-<a href=3D"http://pierrick.bouvier@linaro.org/T/#u" rel=3D"noreferrer" targ=
-et=3D"_blank">pierrick.bouvier@linaro.org/T/#u</a><br>
-<br>
-You&#39;re welcome to review it, or fix the problem differently if there is=
- <br>
-a better approach.<br>
-<br>
-Regards,<br>
-Pierrick<br>
-<br>
-On 2/19/25 10:45, Hao Wu wrote:<br>
-&gt; These 2 values are different between NPCM7XX and NPCM8XX<br>
-&gt; GCRs. So we add them to the class and assign different values<br>
-&gt; to them.<br>
-&gt; <br>
-&gt; Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
-t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/misc/npcm_gcr.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 27 +=
-+++++++++++++++-----------<br>
-&gt;=C2=A0 =C2=A0include/hw/misc/npcm_gcr.h | 13 +++++++++++--<br>
-&gt;=C2=A0 =C2=A02 files changed, 27 insertions(+), 13 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/hw/misc/npcm_gcr.c b/hw/misc/npcm_gcr.c<br>
-&gt; index 0959f2e5c4..d89e8c2c3b 100644<br>
-&gt; --- a/hw/misc/npcm_gcr.c<br>
-&gt; +++ b/hw/misc/npcm_gcr.c<br>
-&gt; @@ -66,10 +66,9 @@ enum NPCM7xxGCRRegisters {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM7XX_GCR_SCRPAD=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =3D 0x013c / sizeof(uint32_t),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM7XX_GCR_USB1PHYCTL,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM7XX_GCR_USB2PHYCTL,<br>
-&gt; -=C2=A0 =C2=A0 NPCM7XX_GCR_REGS_END,<br>
-&gt;=C2=A0 =C2=A0};<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] =3D {<br=
->
-&gt; +static const uint32_t npcm7xx_cold_reset_values[NPCM7XX_GCR_NR_REGS] =
-=3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[NPCM7XX_GCR_PDID]=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =3D 0x04a92750,=C2=A0 =C2=A0/* Poleg A1 */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[NPCM7XX_GCR_MISCPE]=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =3D 0x0000ffff,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[NPCM7XX_GCR_SPSWC]=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0=3D 0x00000003,<br>
-&gt; @@ -88,8 +87,9 @@ static uint64_t npcm_gcr_read(void *opaque, hwaddr o=
-ffset, unsigned size)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t reg =3D offset / sizeof(uint32_t);<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCMGCRState *s =3D opaque;<br>
-&gt; +=C2=A0 =C2=A0 NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(s);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 if (reg &gt;=3D NPCM7XX_GCR_NR_REGS) {<br>
-&gt; +=C2=A0 =C2=A0 if (reg &gt;=3D c-&gt;nr_regs) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_GUEST_ERROR,=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0&quot;%s: offset 0x%04&quot; HWADDR_PRIx &quot; out of =
-range\n&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0__func__, offset);<br>
-&gt; @@ -106,11 +106,12 @@ static void npcm_gcr_write(void *opaque, hwaddr =
-offset,<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t reg =3D offset / sizeof(uint32_t);<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCMGCRState *s =3D opaque;<br>
-&gt; +=C2=A0 =C2=A0 NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(s);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t value =3D v;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 trace_npcm_gcr_write(offset, value);<br>
-&gt; +=C2=A0 =C2=A0 trace_npcm_gcr_write(offset, v);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 if (reg &gt;=3D NPCM7XX_GCR_NR_REGS) {<br>
-&gt; +=C2=A0 =C2=A0 if (reg &gt;=3D c-&gt;nr_regs) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_GUEST_ERROR,=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0&quot;%s: offset 0x%04&quot; HWADDR_PRIx &quot; out of =
-range\n&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0__func__, offset);<br>
-&gt; @@ -156,10 +157,12 @@ static const struct MemoryRegionOps npcm_gcr_ops=
- =3D {<br>
-&gt;=C2=A0 =C2=A0static void npcm7xx_gcr_enter_reset(Object *obj, ResetType=
- type)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCMGCRState *s =3D NPCM_GCR(obj);<br>
-&gt; +=C2=A0 =C2=A0 NPCMGCRClass *c =3D NPCM_GCR_GET_CLASS(obj);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 QEMU_BUILD_BUG_ON(sizeof(s-&gt;regs) !=3D sizeof(cold_r=
-eset_values));<br>
-&gt; -<br>
-&gt; -=C2=A0 =C2=A0 memcpy(s-&gt;regs, cold_reset_values, sizeof(s-&gt;regs=
-));<br>
-&gt; +=C2=A0 =C2=A0 g_assert(sizeof(s-&gt;regs) &gt;=3D sizeof(c-&gt;cold_r=
-eset_values));<br>
-&gt; +=C2=A0 =C2=A0 g_assert(sizeof(s-&gt;regs) &gt;=3D c-&gt;nr_regs * siz=
-eof(uint32_t));<br>
-&gt; +=C2=A0 =C2=A0 memcpy(s-&gt;regs, c-&gt;cold_reset_values, c-&gt;nr_re=
-gs * sizeof(uint32_t));<br>
-&gt; +=C2=A0 =C2=A0 /* These 3 registers are at the same location in both 7=
-xx and 8xx. */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;regs[NPCM7XX_GCR_PWRON] =3D s-&gt;rese=
-t_pwron;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;regs[NPCM7XX_GCR_MDLR] =3D s-&gt;reset=
-_mdlr;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;regs[NPCM7XX_GCR_INTCR3] =3D s-&gt;res=
-et_intcr3;<br>
-&gt; @@ -224,7 +227,7 @@ static const VMStateDescription vmstate_npcm_gcr =
-=3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.version_id =3D 1,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.minimum_version_id =3D 1,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.fields =3D (const VMStateField[]) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, =
-NPCM7XX_GCR_NR_REGS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(regs, NPCMGCRState, =
-NPCM_GCR_MAX_NR_REGS),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_END_OF_LIST(),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0},<br>
-&gt;=C2=A0 =C2=A0};<br>
-&gt; @@ -238,7 +241,6 @@ static void npcm_gcr_class_init(ObjectClass *klass=
-, void *data)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END &gt; NPCM7XX_GCR=
-_NR_REGS);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;realize =3D npcm_gcr_realize;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_npcm_gcr;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; @@ -247,13 +249,15 @@ static void npcm_gcr_class_init(ObjectClass *kla=
-ss, void *data)<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static void npcm7xx_gcr_class_init(ObjectClass *klass, voi=
-d *data)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt; +=C2=A0 =C2=A0 NPCMGCRClass *c =3D NPCM_GCR_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0ResettableClass *rc =3D RESETTABLE_CLASS(kla=
-ss);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 QEMU_BUILD_BUG_ON(NPCM7XX_GCR_REGS_END !=3D NPCM7XX_GCR=
-_NR_REGS);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;NPCM7xx System Global =
-Control Registers&quot;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0rc-&gt;phases.enter =3D npcm7xx_gcr_enter_re=
-set;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 c-&gt;nr_regs =3D NPCM7XX_GCR_NR_REGS;<br>
-&gt; +=C2=A0 =C2=A0 c-&gt;cold_reset_values =3D npcm7xx_cold_reset_values;<=
-br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static const TypeInfo npcm_gcr_info[] =3D {<br>
-&gt; @@ -262,6 +266,7 @@ static const TypeInfo npcm_gcr_info[] =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D TYPE_SYS_BUS_DEVICE,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.instance_size=C2=A0 =C2=A0 =
-=C2=A0 =3D sizeof(NPCMGCRState),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.instance_init=C2=A0 =C2=A0 =
-=C2=A0 =3D npcm_gcr_init,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_size=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0=3D sizeof(NPCMGCRClass),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0=3D npcm_gcr_class_init,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.abstract=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0=3D true,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0},<br>
-&gt; diff --git a/include/hw/misc/npcm_gcr.h b/include/hw/misc/npcm_gcr.h<b=
-r>
-&gt; index 6d3d00d260..9af24e5cdc 100644<br>
-&gt; --- a/include/hw/misc/npcm_gcr.h<br>
-&gt; +++ b/include/hw/misc/npcm_gcr.h<br>
-&gt; @@ -18,6 +18,7 @@<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0#include &quot;exec/memory.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/sysbus.h&quot;<br>
-&gt; +#include &quot;qom/object.h&quot;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0/*<br>
-&gt;=C2=A0 =C2=A0 * NPCM7XX PWRON STRAP bit fields<br>
-&gt; @@ -53,6 +54,7 @@<br>
-&gt;=C2=A0 =C2=A0 * Number of registers in our device state structure. Don&=
-#39;t change this without<br>
-&gt;=C2=A0 =C2=A0 * incrementing the version_id in the vmstate.<br>
-&gt;=C2=A0 =C2=A0 */<br>
-&gt; +#define NPCM_GCR_MAX_NR_REGS NPCM7XX_GCR_NR_REGS<br>
-&gt;=C2=A0 =C2=A0#define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0typedef struct NPCMGCRState {<br>
-&gt; @@ -60,15 +62,22 @@ typedef struct NPCMGCRState {<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion iomem;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 uint32_t regs[NPCM7XX_GCR_NR_REGS];<br>
-&gt; +=C2=A0 =C2=A0 uint32_t regs[NPCM_GCR_MAX_NR_REGS];<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t reset_pwron;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t reset_mdlr;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0uint32_t reset_intcr3;<br>
-&gt;=C2=A0 =C2=A0} NPCMGCRState;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +typedef struct NPCMGCRClass {<br>
-&gt; +=C2=A0 =C2=A0 SysBusDeviceClass parent;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 size_t nr_regs;<br>
-&gt; +=C2=A0 =C2=A0 const uint32_t *cold_reset_values;<br>
-&gt; +} NPCMGCRClass;<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0#define TYPE_NPCM_GCR &quot;npcm-gcr&quot;<br>
-&gt;=C2=A0 =C2=A0#define TYPE_NPCM7XX_GCR &quot;npcm7xx-gcr&quot;<br>
-&gt; -OBJECT_DECLARE_SIMPLE_TYPE(NPCMGCRState, NPCM_GCR)<br>
-&gt; +OBJECT_DECLARE_TYPE(NPCMGCRState, NPCMGCRClass, NPCM_GCR)<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0#endif /* NPCM_GCR_H */<br>
-<br>
-</blockquote></div>
-
---000000000000e1b2b4062ee98d5a--

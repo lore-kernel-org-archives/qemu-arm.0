@@ -1,516 +1,253 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp100506njg;
-        Tue, 25 Feb 2025 01:42:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWd4o5Bd1JFMEW0nLferoUEGl8/K7P+QBeKYDID33epEDLX/Fc/rVgyvT9ENyuhdhVuqhYpvYm1l35nHA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHouUQPZbGcF93RK3LDRE5WXg+/YQDDhc0+hE64jRVA/eI0+TamdQx4M756A2MBcAR4cj68
-X-Received: by 2002:a05:622a:1447:b0:472:5ac:48bb with SMTP id d75a77b69052e-472228e2529mr211446361cf.29.1740476522837;
-        Tue, 25 Feb 2025 01:42:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740476522; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp101106njg;
+        Tue, 25 Feb 2025 01:43:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXCAoxvrTeIf46q/WAZm+5Jvoq8HJc5DP7lcdy8sithGRinCQgw3aK7r28QKzkltuuZcrPvWseFNyZ0Ow==@linaro.org
+X-Google-Smtp-Source: AGHT+IGwK+HRwDMPTZv1tR1E6FS/KUckfaoaNUoFZVvjAQsKdrjmRHB0Q678u2l4e87cm5Ty/gBr
+X-Received: by 2002:a05:620a:2a13:b0:7c0:cb96:8311 with SMTP id af79cd13be357-7c23be2489bmr398243685a.30.1740476628741;
+        Tue, 25 Feb 2025 01:43:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740476628; cv=none;
         d=google.com; s=arc-20240605;
-        b=DdfycyQjAtlsUxyfz4oLqVnjRbA5ACR3KxLWlLIvmKRurO/4lefQK4pw2QgZpgQ0z0
-         Ujhw27BxbI9WXkcya7fDI+A2++AvBlYJfCNwdpKhit6GL0/p3FTcgsD6kNPqLXccEsNr
-         HDlwBBvJ904KMElf/hWCzvU4DqfD1VEmBYa0SjwVus3ho7+fK1wpCNLr5+5cn8rKQjOj
-         mJqzCjz43nuVuzz79ZNL4iEDtwsEX+6UoxoOlFWr1QfG+NyjqaKtRLACjdzWI+y7uv0B
-         g60LeT5REp09wSCg6TeMTC/rd4F1bs5+3F1nb6y3YsasBz85vPbxYKUKgFfB1FlMw5vz
-         PiLQ==
+        b=HwFTQ3NmRNTDP6kavodNL00dKx16dPS8oId/YUVvQZ9VXUoB/Zc6BNSkbX6gAqcM/W
+         a/YoOQae4gb6GbOE6NasP5+3xqN8QYVp63oNHtAw9z40zoTZczw0DnnK18xpUo4t4+rQ
+         vKRkTkPqHWRu3iDso0Z7Mj01/C2Zm8xM+IOR24aKhuoYrWxmCDmDGpf+UfN9WUAeSThG
+         vUTOwybbzqUnrTvNWjG4v2nieQuHCiCwi4cN8MMtL6I32rP/fHZjYini+Ngr2V0ZIf4p
+         sbkuVVMceCUT/llQt4B1S1WnaRzL5u+ZrXrhC/SNldFW4bxQduv+lOlQmmqu0+SZydsc
+         oBaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:autocrypt:content-language:from:references
-         :cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
-        fh=GdJ5GFJZqaiLiBPoJY6OnK2CFGsjdM6GW7/6+NitLQ8=;
-        b=JsJIpBxfJQBs7WfTk5VgjxGF5LRUVLHnLk4IwfZ9a/iDVloaea75SdKb8zk3stmi87
-         qpUMDTTJ1PbJSTPB3I4WF2x9LoYH4b23BkCPvCENuUznhqc8jl4WJbO84XFGWvtDLkD2
-         P5FIBu5rQm6BM4I4nku7XAtvxaMwdXLncUGoLMzlwiUsMI3LKvhyH6xPpAHQWNdOI1BM
-         WAS8L9o37jQjXlqx6coRCfzegB4VO5yUJfYawmp+EoW4oZOjwHIaknHkz6ljc0DecUC4
-         Kr1SPOc1hsZlJJbsEs/545U0BP50ACMuJK5nH6WtX8X4huKOMI+Tubi0ysZ1VBkL4KVD
-         Ur9g==;
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=N5IuXbVC/fE2fpy28ItJZlJGmOxKbKIqaMashXqUdLM=;
+        fh=zGYZwWgH3Svzd8qE6wTrLB+keIVLfsnOCiSck6SjezQ=;
+        b=Uljc93pGX7ESq8AsX/FObqyRLhcR2DjkmaRnSfTjw9Mv9pm/SZnRSEZ4OAZ3VUrs/r
+         oYCINLsQj3XnghKgycnK9eREQLp+YXDRXiDXSXil7wSVSoODbkJccYgHUhpQnVMhqX1r
+         AwRp2m3/mExmCTRTdjC6d61sYTa3cfrEvFiRz+gTfsCSr7RBq/WNqo5JC6U68+FO9jlJ
+         alp20O8SI5dbWxQ+cqCrtneQhtv+0n2xgowfAyRlihvrp3IVPKFHvelNC4b5zNgYs8cY
+         MGFxs22m/HgLyYCMbSWWEHYirkqe4bLWZ8Hwj6/kHyISS3pzR6sL5dR6wJIuaRDQW7KM
+         7DwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dIOxoyxx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QjbpLF07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-473780935d4si11909101cf.338.2025.02.25.01.42.02
+        by mx.google.com with ESMTPS id af79cd13be357-7c23c24d6b3si131949385a.145.2025.02.25.01.43.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 01:42:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2025 01:43:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dIOxoyxx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QjbpLF07;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tmrRi-0005Gp-9p; Tue, 25 Feb 2025 04:41:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tmrTZ-000621-8N; Tue, 25 Feb 2025 04:43:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tmrRf-0005GT-1d
- for qemu-devel@nongnu.org; Tue, 25 Feb 2025 04:41:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tmrTX-00061U-6m
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 04:43:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tmrRc-0005TP-F3
- for qemu-devel@nongnu.org; Tue, 25 Feb 2025 04:41:42 -0500
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tmrTV-0005Zy-4d
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 04:43:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740476497;
+ s=mimecast20190719; t=1740476614;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
- b=dIOxoyxxw80q/22+7k3IzSZP58wrP6g7N5srYuiwqsc6KJ5fqTf1RPxHPef2uG1Tls676L
- vgYDEtt83hOGmE2N3m4hpJKLarpdF+3g10cW/XRe2UPUiOUkDutpHliMwKhMcme1oFQo2P
- 5uUIEFmsPwCgpJcaDDeE1QmGVXIqhKw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=N5IuXbVC/fE2fpy28ItJZlJGmOxKbKIqaMashXqUdLM=;
+ b=QjbpLF07aki1gyhKTleGX0Vk1QmxubQvM2+ICL77t3j4R8Pc4dxU+CFbSTv/KDL74ioKyG
+ piGNzbELpYnrdCobnNmYuZuoq2aN+vCGtiLGBBxkIIl5onMmWMM4rpXuZvy0Sfvo2hf877
+ fTE59sotshM54SNfqVLFf1Zy/pBZTWM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-642-AlNNpOWxNi-j2nJ7CnDhtw-1; Tue, 25 Feb 2025 04:41:36 -0500
-X-MC-Unique: AlNNpOWxNi-j2nJ7CnDhtw-1
-X-Mimecast-MFC-AGG-ID: AlNNpOWxNi-j2nJ7CnDhtw_1740476495
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-38f4e6e004fso3980096f8f.1
- for <qemu-devel@nongnu.org>; Tue, 25 Feb 2025 01:41:35 -0800 (PST)
+ us-mta-473-d5D_NMM4OeeZGYkzmfuPJg-1; Tue, 25 Feb 2025 04:43:31 -0500
+X-MC-Unique: d5D_NMM4OeeZGYkzmfuPJg-1
+X-Mimecast-MFC-AGG-ID: d5D_NMM4OeeZGYkzmfuPJg_1740476610
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4393e89e910so29789755e9.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 01:43:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740476494; x=1741081294;
- h=content-transfer-encoding:in-reply-to:organization:autocrypt
- :content-language:from:references:cc:to:subject:user-agent
- :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to;
- bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
- b=f3Qt/q5ggYTXarjouKkx7cvYsKRuE5ox426L6pj7vACZxkyydyHp1G7DaSuXJacv73
- XMVzEgEwZbtKvVcdPit9ziutdS64eEBNOSF88fDClOu5BfIS5H63bT2QjLPeASKsIExH
- t8wYm7mFjreHTOT6PbnVGiAcK3ZSMGYzC2j2pmb0/CMUhkdnGNKTx1JqyypWEqA+Cju2
- bI2M/VjN6gk7lTQ2Ah258JyfWNQszGtgTSjXNo1N9sMuVkFwM+ngZFc/4WQTxjAjsJYr
- cfeYA8UiLzq2SOk/Y+RK/G49jg62I5wvfNVt2gyfzYSY4BH1Lfr4lFZAUUlU1rBJ/2br
- mBNA==
+ d=1e100.net; s=20230601; t=1740476610; x=1741081410;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=N5IuXbVC/fE2fpy28ItJZlJGmOxKbKIqaMashXqUdLM=;
+ b=USzNG2+PssYyv4RMxkVTzAdr53kH0L7waWS6bODGT+an6iQWq+qWjVx/0i3wWzu640
+ aHb1xppv8junCkLKTqMqAaNL9nAAA1gm8+AuvA4jm1f10iuewYelAqfF6eGoXnfG9RLD
+ 19hT3XD5PttweVOsPTHAIvLfqMCdyBL21asDM3rCmbDl0MNZI6PJ1072Oq0ZicD9gPSD
+ qCEiDbnES/nNzjzY4I2CnccYU1eJXLwuzYCnN2Q4eUoNrVbZkmiUEMJ8sMb+BcutOd2P
+ rIJ5+LWpxT5dV38k+f4L6Exr5IfbVrhiomOyGd7BOO9AFIotnq44asySPR8Avr5rScq7
+ pUJg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHlj+N9b0kITsTvRIXZT8ONN+hMkPlrI58AWX96lNZRVHWeHDmkyDujKy74NdlnevGkyKjjRscxlRx@nongnu.org
-X-Gm-Message-State: AOJu0YwvOP6/dg0UwqKDQi46awTObnwoh+DGYzPzdQpX4CQbKyWL26nC
- lIVjBnkkl+E0gRWNmb7NIVFzp9/gwA2ISkr+zPAa8WvbaDztsaKxfRpwvV7wnqUeeB1b5we2uPZ
- ZQ3CoBAbHCqmnEs1tHrpRaKD4VsZv4MYVw50qtU7akaJZMX16jiRz
-X-Gm-Gg: ASbGncu/D/xq8xXswSF74KqCHil/2PhtZFhiBcKb7jjlJ87aIAyXRtN7KhsFBkB/GKk
- CIa1f+4cjkhrruhxijlvKD5w3Udiuoranlvdz/OWeD20sGo/bM8yz+hI5FbElKW5Jl0oosJoX7x
- PDQVwyxw7oKJ363Xz7/IrnDZRGCvET1rCImgM+YK0sWtu7uAYJ5e6xa/e0lrlxTSKIauDmfnVNo
- e7WxP1aQw2ixWqThol+iCvtYPyV4Vhbflhh/2MnKhCKJ6/nppdfQBjqKAI2Mmdxc4Ye9r81ZopZ
- EqRLwX8csN+UwU0Sz07NbqKAd+20myIr3+s7ucnqeEKMlnMyjrGw9gUpIDssg2CkW0gZj0K+2QR
- bn5PQzzJkOx0gGkrN6kUGt8W7u4y5/ef5NXgw3XfgyIM=
-X-Received: by 2002:a5d:5f87:0:b0:38f:2a49:f6a5 with SMTP id
- ffacd0b85a97d-38f6e9595demr11714579f8f.15.1740476494515; 
- Tue, 25 Feb 2025 01:41:34 -0800 (PST)
-X-Received: by 2002:a5d:5f87:0:b0:38f:2a49:f6a5 with SMTP id
- ffacd0b85a97d-38f6e9595demr11714546f8f.15.1740476494055; 
- Tue, 25 Feb 2025 01:41:34 -0800 (PST)
-Received: from ?IPV6:2003:cb:c73e:aa00:c9db:441d:a65e:6999?
- (p200300cbc73eaa00c9db441da65e6999.dip0.t-ipconnect.de.
- [2003:cb:c73e:aa00:c9db:441d:a65e:6999])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43ab14caa5esm20474505e9.0.2025.02.25.01.41.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2025 01:41:33 -0800 (PST)
-Message-ID: <4a589056-b331-4dde-aa77-9129106a14c0@redhat.com>
-Date: Tue, 25 Feb 2025 10:41:32 +0100
+ AJvYcCV5udlbWx4o4b/JDESAluyYVFES9F4Xrf8tDCxBIxBTgwpTqNoNRU7V+LAZbzC6MWRCzwAl3e8CVA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy09eMkQxfJ7PuQ3wQHrVNkkaueKm7rkLTTV1i3qB3DMQnBeZZa
+ +wVdrjjiB+aEMCGVx0Zf4N0z1QfL6YiKR4TbkAPjq1YQJdZraeZvKbTjz7ZEoiwfaQ0ahCwggUG
+ 3pU6Yzb3aMFab3dgVu//Ee/9GvfjdTr47Rj691cEWBI2kKHWxjQ==
+X-Gm-Gg: ASbGncsZa3iagq4BE8lnAv0WTjhpreWECtnn13EUxOm0nL0jXUL55F49RLfbwt2tugy
+ D21dC2Tac6PkiGtrXRkP+NHToCFvPBz8vCFUYVuzjfOM0YmkRO/m9b24H+A8B79PliIoD/uExkx
+ IhhJcAwdYYEj8iDu7UVfg7hfpa4iquNruQkmGMXNAqUtUc/x4Y40RL/QLTimCRJMkHuioqXcNla
+ 6io7Dyrr6/mPg+/XjOmQQYZcwrm5/07pIC63qKx7falSslGbU5a/GH1xDXqU20lt5cWsoucBq+K
+ 1FCxxvibQW+MYktEtIfZh5eMxaNNV8F4Uz9PWye6uec0hByqagiUe3CFZLKTzV8=
+X-Received: by 2002:a05:600c:3c87:b0:439:930a:58aa with SMTP id
+ 5b1f17b1804b1-43ab0ecc2f2mr24089265e9.0.1740476610522; 
+ Tue, 25 Feb 2025 01:43:30 -0800 (PST)
+X-Received: by 2002:a05:600c:3c87:b0:439:930a:58aa with SMTP id
+ 5b1f17b1804b1-43ab0ecc2f2mr24088975e9.0.1740476610069; 
+ Tue, 25 Feb 2025 01:43:30 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-439b02ce615sm134946725e9.5.2025.02.25.01.43.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Feb 2025 01:43:29 -0800 (PST)
+Date: Tue, 25 Feb 2025 10:43:27 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 03/14] acpi/ghes: Use HEST table offsets when
+ preparing GHES records
+Message-ID: <20250225104327.0a2d1cb4@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250221070221.329bdfb0@foz.lan>
+References: <cover.1738345063.git.mchehab+huawei@kernel.org>
+ <9610ff88cf6fdc59cbfc8871d653fd890391be1e.1738345063.git.mchehab+huawei@kernel.org>
+ <20250203153423.3e4de17c@imammedo.users.ipa.redhat.com>
+ <20250221070221.329bdfb0@foz.lan>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 1/2] system/memory: Allow creating IOMMU mappings from RAM
- discard populate notifiers
-To: Chenyi Qiang <chenyi.qiang@intel.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, philmd@linaro.org,
- peterx@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org,
- Alexey Kardashevskiy <aik@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20250220161320.518450-2-jean-philippe@linaro.org>
- <20250220161320.518450-3-jean-philippe@linaro.org>
- <0d761daf-174d-487f-80fe-09b04902006f@redhat.com>
- <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
- <ce2306f9-19a4-4979-80e6-29b1e8a92318@redhat.com>
- <108be3a5-cfc1-4268-a913-3a41d1e4451f@intel.com>
- <16cb9605-ba4c-441e-8709-369a37655b4a@intel.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <16cb9605-ba4c-441e-8709-369a37655b4a@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 7IeT-97Ff6H4AgVsxO5QEhW3_-IjykQmzuzflOJDdTs_1740476610
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YZE5x+SiIK/o
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SDd/qLzQBNzO
 
-On 25.02.25 03:00, Chenyi Qiang wrote:
+On Fri, 21 Feb 2025 07:02:21 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+
+> Em Mon, 3 Feb 2025 15:34:23 +0100
+> Igor Mammedov <imammedo@redhat.com> escreveu:
 > 
+> > On Fri, 31 Jan 2025 18:42:44 +0100
+> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> >   
+> > > There are two pointers that are needed during error injection:
+> > > 
+> > > 1. The start address of the CPER block to be stored;
+> > > 2. The address of the ack.
+> > > 
+> > > It is preferable to calculate them from the HEST table.  This allows
+> > > checking the source ID, the size of the table and the type of the
+> > > HEST error block structures.
+> > > 
+> > > Yet, keep the old code, as this is needed for migration purposes.
+> > > 
+> > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > > ---
+> > >  hw/acpi/ghes.c         | 132 ++++++++++++++++++++++++++++++++++++-----
+> > >  include/hw/acpi/ghes.h |   1 +
+> > >  2 files changed, 119 insertions(+), 14 deletions(-)
+> > > 
+> > > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > > index 27478f2d5674..8f284fd191a6 100644
+> > > --- a/hw/acpi/ghes.c
+> > > +++ b/hw/acpi/ghes.c
+> > > @@ -41,6 +41,12 @@
+> > >  /* Address offset in Generic Address Structure(GAS) */
+> > >  #define GAS_ADDR_OFFSET 4
+> > >  
+> > > +/*
+> > > + * ACPI spec 1.0b
+> > > + * 5.2.3 System Description Table Header
+> > > + */
+> > > +#define ACPI_DESC_HEADER_OFFSET     36
+> > > +
+> > >  /*
+> > >   * The total size of Generic Error Data Entry
+> > >   * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
+> > > @@ -61,6 +67,25 @@
+> > >   */
+> > >  #define ACPI_GHES_GESB_SIZE                 20
+> > >  
+> > > +/*
+> > > + * Offsets with regards to the start of the HEST table stored at
+> > > + * ags->hest_addr_le,    
+> > 
+> > If I read this literary, then offsets above are not what
+> > declared later in this patch.
+> > I'd really drop this comment altogether as it's confusing,
+> > and rather get variables/macro naming right
+> >   
+> > > according with the memory layout map at
+> > > + * docs/specs/acpi_hest_ghes.rst.
+> > > + */    
+> > 
+> > what we need is update to above doc, describing new and old ways.
+> > a separate patch.  
 > 
-> On 2/21/2025 6:04 PM, Chenyi Qiang wrote:
->>
->>
->> On 2/21/2025 4:09 PM, David Hildenbrand wrote:
->>> On 21.02.25 03:25, Chenyi Qiang wrote:
->>>>
->>>>
->>>> On 2/21/2025 3:39 AM, David Hildenbrand wrote:
->>>>> On 20.02.25 17:13, Jean-Philippe Brucker wrote:
->>>>>> For Arm CCA we'd like the guest_memfd discard notifier to call the
->>>>>> IOMMU
->>>>>> notifiers and create e.g. VFIO mappings. The default VFIO discard
->>>>>> notifier isn't sufficient for CCA because the DMA addresses need a
->>>>>> translation (even without vIOMMU).
->>>>>>
->>>>>> At the moment:
->>>>>> * guest_memfd_state_change() calls the populate() notifier
->>>>>> * the populate notifier() calls IOMMU notifiers
->>>>>> * the IOMMU notifier handler calls memory_get_xlat_addr() to get a VA
->>>>>> * it calls ram_discard_manager_is_populated() which fails.
->>>>>>
->>>>>> guest_memfd_state_change() only changes the section's state after
->>>>>> calling the populate() notifier. We can't easily invert the order of
->>>>>> operation because it uses the old state bitmap to know which pages need
->>>>>> the populate() notifier.
->>>>>
->>>>> I assume we talk about this code: [1]
->>>>>
->>>>> [1] https://lkml.kernel.org/r/20250217081833.21568-1-
->>>>> chenyi.qiang@intel.com
->>>>>
->>>>>
->>>>> +static int memory_attribute_state_change(MemoryAttributeManager *mgr,
->>>>> uint64_t offset,
->>>>> +                                         uint64_t size, bool
->>>>> shared_to_private)
->>>>> +{
->>>>> +    int block_size = memory_attribute_manager_get_block_size(mgr);
->>>>> +    int ret = 0;
->>>>> +
->>>>> +    if (!memory_attribute_is_valid_range(mgr, offset, size)) {
->>>>> +        error_report("%s, invalid range: offset 0x%lx, size 0x%lx",
->>>>> +                     __func__, offset, size);
->>>>> +        return -1;
->>>>> +    }
->>>>> +
->>>>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
->>>>> offset, size)) ||
->>>>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
->>>>> offset, size))) {
->>>>> +        return 0;
->>>>> +    }
->>>>> +
->>>>> +    if (shared_to_private) {
->>>>> +        memory_attribute_notify_discard(mgr, offset, size);
->>>>> +    } else {
->>>>> +        ret = memory_attribute_notify_populate(mgr, offset, size);
->>>>> +    }
->>>>> +
->>>>> +    if (!ret) {
->>>>> +        unsigned long first_bit = offset / block_size;
->>>>> +        unsigned long nbits = size / block_size;
->>>>> +
->>>>> +        g_assert((first_bit + nbits) <= mgr->bitmap_size);
->>>>> +
->>>>> +        if (shared_to_private) {
->>>>> +            bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
->>>>> +        } else {
->>>>> +            bitmap_set(mgr->shared_bitmap, first_bit, nbits);
->>>>> +        }
->>>>> +
->>>>> +        return 0;
->>>>> +    }
->>>>> +
->>>>> +    return ret;
->>>>> +}
->>>>>
->>>>> Then, in memory_attribute_notify_populate(), we walk the bitmap again.
->>>>>
->>>>> Why?
->>>>>
->>>>> We just checked that it's all in the expected state, no?
->>>>>
->>>>>
->>>>> virtio-mem doesn't handle it that way, so I'm curious why we would have
->>>>> to do it here?
->>>>
->>>> I was concerned about the case where the guest issues a request that
->>>> only partial of the range is in the desired state.
->>>> I think the main problem is the policy for the guest conversion request.
->>>> My current handling is:
->>>>
->>>> 1. When a conversion request is made for a range already in the desired
->>>>     state, the helper simply returns success.
->>>
->>> Yes.
->>>
->>>> 2. For requests involving a range partially in the desired state, only
->>>>     the necessary segments are converted, ensuring the entire range
->>>>     complies with the request efficiently.
->>>
->>>
->>> Ah, now I get:
->>>
->>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
->>> offset, size)) ||
->>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
->>> offset, size))) {
->>> +        return 0;
->>> +    }
->>> +
->>>
->>> We're not failing if it might already partially be in the other state.
->>>
->>>> 3. In scenarios where a conversion request is declined by other systems,
->>>>     such as a failure from VFIO during notify_populate(), the helper will
->>>>     roll back the request, maintaining consistency.
->>>>
->>>> And the policy of virtio-mem is to refuse the state change if not all
->>>> blocks are in the opposite state.
->>>
->>> Yes.
->>>
->>>>
->>>> Actually, this part is still a uncertain to me.
->>>>
->>>
->>> IIUC, the problem does not exist if we only convert a single page at a
->>> time.
->>>
->>> Is there a known use case where such partial conversions could happen?
->>
->> I don't see such case yet. Actually, I'm trying to follow the behavior
->> of KVM_SET_MEMORY_ATTRIBUTES ioctl during page conversion. In KVM, it
->> doesn't reject the request if the whole range isn't in the opposite
->> state. It just uses xa_store() to update it. Also, I don't see the spec
->> says how to handle such case. To be robust, I just allow this special case.
->>
->>>
->>>> BTW, per the status/bitmap track, the virtio-mem also changes the bitmap
->>>> after the plug/unplug notifier. This is the same, correct?
->>> Right. But because we reject these partial requests, we don't have to
->>> traverse the bitmap and could just adjust the bitmap operations.
->>
->> Yes, If we treat it as a guest error/bug, we can adjust it.
+> I can't see anything that should be changed at
+> docs/specs/acpi_hest_ghes.rst, as this series doesn't change the
+> firmware layout: we're still using two firmware tables:
 > 
-> Hi David, do you think which option is better? If prefer to reject the
-> partial requests, I'll change it in my next version.
+> - etc/acpi/tables, with HEST on it;
+> - etc/hardware_errors, with:
+> 	- error block addresses;
+> 	- read_ack registers;
+> 	- CPER records.
+> 
+> The only changes that this series introduce are related to how
+> the error generation logic navigates between HEST and hw_errors
+> firmware. This is not described at acpi_hest_ghes.rst, and both
+> ways follow ACPI specs to the letter.
+> 
+> The only difference is that the code which populates the CPER
+> record and the error/read offsets doesn't require to know how
+> the HEST table generation placed offsets, as it will basically
+> reproduce what OSPM firmware does when handling	HEST events.
 
-Hi,
+section 8 describes old way to get to address to record old CPER,
+so it needs to amended to also describe a new approach and say
+which way is used for which version.
 
-still scratching my head. Having to work around it as in this patch here is
-suboptimal.
-
-Could we simplify the whole thing while still allowing for (unexpected) partial
-conversions?
-
-Essentially: If states are mixed, fallback to a "1 block at a time" handling.
-
-The only problem is: what to do if we fail halfway through? Well, we can only have
-such partial completions for "populate", not for discard.
-
-Option a) Just leave it as "partially completed populate" and return the error. The
-bitmap and the notifiers are consistent.
-
-Option b) Just discard everything: someone tried to convert something "partial
-shared" to "shared". So maybe, if anything goes wrong, we can just have "all private".
-
-The question is also, what the expectation from the caller is: can the caller
-even make progress on failure or do we have to retry until it works?
-
-Both options would be compatible with "the caller must retry either way until it works".
-
-a) is probably easiest. Something like the following on top of your code:
+possibly section 11 might need some messaging as well.
 
 
-
- From 40c001a57c3c1350f3a44288ccb013d903d300cf Mon Sep 17 00:00:00 2001
-From: David Hildenbrand <david@redhat.com>
-Date: Tue, 25 Feb 2025 09:55:38 +0100
-Subject: [PATCH] tmp
-
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
-  system/memory-attribute-manager.c | 66 +++++++++++++++++--------------
-  1 file changed, 36 insertions(+), 30 deletions(-)
-
-diff --git a/system/memory-attribute-manager.c b/system/memory-attribute-manager.c
-index 17c70cf677..31960e4a54 100644
---- a/system/memory-attribute-manager.c
-+++ b/system/memory-attribute-manager.c
-@@ -274,9 +274,7 @@ static void memory_attribute_notify_discard(MemoryAttributeManager *mgr,
-          if (!memory_region_section_intersect_range(&tmp, offset, size)) {
-              continue;
-          }
--
--        memory_attribute_for_each_populated_section(mgr, &tmp, rdl,
--                                                    memory_attribute_notify_discard_cb);
-+        rdl->notify_discard(rdl, &tmp);
-      }
-  }
-  
-@@ -292,9 +290,7 @@ static int memory_attribute_notify_populate(MemoryAttributeManager *mgr,
-          if (!memory_region_section_intersect_range(&tmp, offset, size)) {
-              continue;
-          }
--
--        ret = memory_attribute_for_each_discarded_section(mgr, &tmp, rdl,
--                                                          memory_attribute_notify_populate_cb);
-+        ret = rdl->notify_populate(rdl, &tmp);
-          if (ret) {
-              break;
-          }
-@@ -311,9 +307,7 @@ static int memory_attribute_notify_populate(MemoryAttributeManager *mgr,
-              if (!memory_region_section_intersect_range(&tmp, offset, size)) {
-                  continue;
-              }
--
--            memory_attribute_for_each_discarded_section(mgr, &tmp, rdl2,
--                                                        memory_attribute_notify_discard_cb);
-+            rdl2->notify_discard(rdl2, &tmp);
-          }
-      }
-      return ret;
-@@ -348,7 +342,10 @@ static bool memory_attribute_is_range_discarded(MemoryAttributeManager *mgr,
-  static int memory_attribute_state_change(MemoryAttributeManager *mgr, uint64_t offset,
-                                           uint64_t size, bool shared_to_private)
-  {
--    int block_size = memory_attribute_manager_get_block_size(mgr);
-+    const int block_size = memory_attribute_manager_get_block_size(mgr);
-+    const unsigned long first_bit = offset / block_size;
-+    const unsigned long nbits = size / block_size;
-+    uint64_t cur_offset;
-      int ret = 0;
-  
-      if (!memory_attribute_is_valid_range(mgr, offset, size)) {
-@@ -357,32 +354,41 @@ static int memory_attribute_state_change(MemoryAttributeManager *mgr, uint64_t o
-          return -1;
-      }
-  
--    if ((shared_to_private && memory_attribute_is_range_discarded(mgr, offset, size)) ||
--        (!shared_to_private && memory_attribute_is_range_populated(mgr, offset, size))) {
--        return 0;
--    }
--
-      if (shared_to_private) {
--        memory_attribute_notify_discard(mgr, offset, size);
--    } else {
--        ret = memory_attribute_notify_populate(mgr, offset, size);
--    }
--
--    if (!ret) {
--        unsigned long first_bit = offset / block_size;
--        unsigned long nbits = size / block_size;
--
--        g_assert((first_bit + nbits) <= mgr->bitmap_size);
--
--        if (shared_to_private) {
-+        if (memory_attribute_is_range_discarded(mgr, offset, size)) {
-+            /* Already private. */
-+        } else if (!memory_attribute_is_range_populated(mgr, offset, size)) {
-+            /* Unexpected mixture: not completely shared. */
-+            for (cur_offset = 0; cur_offset < offset; cur_offset += block_size) {
-+               memory_attribute_state_change(mgr, cur_offset, block_size,
-+                                             true);
-+            }
-+        } else {
-+            /* Completely shared. */
-              bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
-+            memory_attribute_notify_discard(mgr, offset, size);
-+        }
-+    } else {
-+        if (memory_attribute_is_range_populated(mgr, offset, size)) {
-+            /* Already shared. */
-+        } else if (!memory_attribute_is_range_discarded(mgr, offset, size)) {
-+            /* Unexpected mixture: not completely private. */
-+            for (cur_offset = 0; cur_offset < offset; cur_offset += block_size) {
-+               ret = memory_attribute_state_change(mgr, cur_offset, block_size,
-+                                                   false);
-+               if (ret) {
-+                   break;
-+               }
-+            }
-          } else {
-+            /* Completely private. */
-              bitmap_set(mgr->shared_bitmap, first_bit, nbits);
-+            ret = memory_attribute_notify_populate(mgr, offset, size);
-+            if (ret) {
-+                bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
-+            }
-          }
--
--        return 0;
-      }
--
-      return ret;
-  }
-  
--- 
-2.48.1
-
-
--- 
-Cheers,
-
-David / dhildenb
+> 
+> Thanks,
+> Mauro
+> 
 

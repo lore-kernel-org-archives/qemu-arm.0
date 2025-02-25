@@ -1,444 +1,516 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp143551njg;
-        Tue, 25 Feb 2025 03:20:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXv8/O6YBYG/RcGVn9AUi1RpRgD35LdwbIbUeaLod4m0wzsKrd5iJxkqFBCl4epxRu/tu9zaOmjJukGTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHzgJpq/eBoFjLH+TED2Mm8py/nwJQpKwHMPeV3RjspLmWxInk5XhJpr4BUd63qpG9jy/iq
-X-Received: by 2002:a05:6214:d8a:b0:6e6:64a5:e18d with SMTP id 6a1803df08f44-6e6ae7f8290mr227828146d6.17.1740482427729;
-        Tue, 25 Feb 2025 03:20:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740482427; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp100506njg;
+        Tue, 25 Feb 2025 01:42:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWd4o5Bd1JFMEW0nLferoUEGl8/K7P+QBeKYDID33epEDLX/Fc/rVgyvT9ENyuhdhVuqhYpvYm1l35nHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHouUQPZbGcF93RK3LDRE5WXg+/YQDDhc0+hE64jRVA/eI0+TamdQx4M756A2MBcAR4cj68
+X-Received: by 2002:a05:622a:1447:b0:472:5ac:48bb with SMTP id d75a77b69052e-472228e2529mr211446361cf.29.1740476522837;
+        Tue, 25 Feb 2025 01:42:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740476522; cv=none;
         d=google.com; s=arc-20240605;
-        b=EBE0e+zEzM6PBQ/GI/UAzrPNp91zYeztgPkvUs7dsdgaEksXOz1EmtCTGvwIH5ieoR
-         eXNiFHUqWQWBdT7upnnO4cwQTdCE3om2ctyqk8JZc9BRAux4RgTUdyglhgdcbggI2Sdr
-         4zGgBNIlvJ5qguDi45T7mSF9S1DrJicxwUEt+EmCzQxL9o6YJeCqrSf2H2ZXdT0T29Qh
-         ynMK+TSbFfg0n/AxL4p+X2+lQAjc/ZMY58DqMCs0GxrTAQ+Q44ASHUt+49kg3vfpie8i
-         dtISmqZviidaH5+cwJxgQeU47NnJaOcfOksxiaenk3PR84Da8Eib2/9QS1IHwv5I0pkJ
-         MOAw==
+        b=DdfycyQjAtlsUxyfz4oLqVnjRbA5ACR3KxLWlLIvmKRurO/4lefQK4pw2QgZpgQ0z0
+         Ujhw27BxbI9WXkcya7fDI+A2++AvBlYJfCNwdpKhit6GL0/p3FTcgsD6kNPqLXccEsNr
+         HDlwBBvJ904KMElf/hWCzvU4DqfD1VEmBYa0SjwVus3ho7+fK1wpCNLr5+5cn8rKQjOj
+         mJqzCjz43nuVuzz79ZNL4iEDtwsEX+6UoxoOlFWr1QfG+NyjqaKtRLACjdzWI+y7uv0B
+         g60LeT5REp09wSCg6TeMTC/rd4F1bs5+3F1nb6y3YsasBz85vPbxYKUKgFfB1FlMw5vz
+         PiLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=zxY0dOAvvI9NSSk4hF/EMaQwGuxxBLeT3lHLJnZFT04=;
-        fh=CcpaOlxjsegGf+nYxbkupvFa8sSMJvxcex6xFRIgJAs=;
-        b=MZrUdCMXya97hOjmXvKHIZUTyJ0y3B6VGk5qsx8A0f3zgRK8IRr+283vyQD7rSTeo+
-         IObq95LvPsChj765oJS8XHskHMhhpMtp+7l6J1saNzWl1SxoHIzBAzwFYvHo7d8GvJVQ
-         ppYz2aPivZx9KkpBry2eChWS9Tbgm6i6aOUYU9SxFzImcDWkLk/vxnU0bkB3M+3V6tlB
-         UHKDsS7apm8Nz4oDqbC/ac3Vt1QaOGJ1m9yy33kIml+t5zp4cOmfvOI1glpY45102LxG
-         fvrEolF/KDGK8mc8nCGISsa8Xby9IAEjwI9u9HTCwoYtRUUuZa21tuVyMYJTl/iwKHgp
-         veVg==;
+         :in-reply-to:organization:autocrypt:content-language:from:references
+         :cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
+        fh=GdJ5GFJZqaiLiBPoJY6OnK2CFGsjdM6GW7/6+NitLQ8=;
+        b=JsJIpBxfJQBs7WfTk5VgjxGF5LRUVLHnLk4IwfZ9a/iDVloaea75SdKb8zk3stmi87
+         qpUMDTTJ1PbJSTPB3I4WF2x9LoYH4b23BkCPvCENuUznhqc8jl4WJbO84XFGWvtDLkD2
+         P5FIBu5rQm6BM4I4nku7XAtvxaMwdXLncUGoLMzlwiUsMI3LKvhyH6xPpAHQWNdOI1BM
+         WAS8L9o37jQjXlqx6coRCfzegB4VO5yUJfYawmp+EoW4oZOjwHIaknHkz6ljc0DecUC4
+         Kr1SPOc1hsZlJJbsEs/545U0BP50ACMuJK5nH6WtX8X4huKOMI+Tubi0ysZ1VBkL4KVD
+         Ur9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fhooA/K0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dIOxoyxx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b14664dsi14401606d6.507.2025.02.25.03.20.27
+        by mx.google.com with ESMTPS id d75a77b69052e-473780935d4si11909101cf.338.2025.02.25.01.42.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 03:20:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2025 01:42:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fhooA/K0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dIOxoyxx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmsyq-0001q0-NB; Tue, 25 Feb 2025 06:20:04 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tmrRi-0005Gp-9p; Tue, 25 Feb 2025 04:41:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tmsyi-0001oc-NG
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 06:19:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tmrRf-0005GT-1d
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2025 04:41:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tmsyZ-0000zS-2H
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 06:19:49 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tmrRc-0005TP-F3
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2025 04:41:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740482384;
+ s=mimecast20190719; t=1740476497;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zxY0dOAvvI9NSSk4hF/EMaQwGuxxBLeT3lHLJnZFT04=;
- b=fhooA/K0Q4MV+mAKHxpB3XNaUSNFsbLH34EP4RLFIPu5fd/MetBa+y5pPU9N5SPAvD/U3e
- tVzITF+tv6GIZDydKxZxurEHtokzSpG+gky/HqRWnfKo8uTRox9QwHXA5VPkgT+yVlzBL0
- KUkHLfgo06334rJduCo0Ntw1Lc2+BfQ=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
+ b=dIOxoyxxw80q/22+7k3IzSZP58wrP6g7N5srYuiwqsc6KJ5fqTf1RPxHPef2uG1Tls676L
+ vgYDEtt83hOGmE2N3m4hpJKLarpdF+3g10cW/XRe2UPUiOUkDutpHliMwKhMcme1oFQo2P
+ 5uUIEFmsPwCgpJcaDDeE1QmGVXIqhKw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-637-YSo6OldFPlaxHAIXUpW9sw-1; Tue, 25 Feb 2025 06:19:43 -0500
-X-MC-Unique: YSo6OldFPlaxHAIXUpW9sw-1
-X-Mimecast-MFC-AGG-ID: YSo6OldFPlaxHAIXUpW9sw_1740482382
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-38f42f21f54so2116830f8f.1
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 03:19:43 -0800 (PST)
+ us-mta-642-AlNNpOWxNi-j2nJ7CnDhtw-1; Tue, 25 Feb 2025 04:41:36 -0500
+X-MC-Unique: AlNNpOWxNi-j2nJ7CnDhtw-1
+X-Mimecast-MFC-AGG-ID: AlNNpOWxNi-j2nJ7CnDhtw_1740476495
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-38f4e6e004fso3980096f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 25 Feb 2025 01:41:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740482382; x=1741087182;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=o0io6ySSM5ej83Ld1cHgExCtQZQEElVh+dWV/5hGTYI=;
- b=qNFMPxvBAvPppOd9xKCHEn0feG8B7G6GLcwivevkvI3ckCtm/k+xaxH9ANENAkVCxT
- 0DGrZn8Wv0nr6lW5P8zUuNOY5zRqIg9G6RTjj+5g1TbWeuW9bM+72YQ520Y7IhCY8vIE
- YTQdOqBXhzWHflGTcETMNms99Dyu3Dl/JrQBVmNjnKsKI/q3hy+caOoIARtiyfLWrMQV
- gnzRffRyrAeYNFmFgorFlAcR5v2aFNsmXLbX54pqfrhbvpMd+m+8r2zAsKnVRIZqEiCx
- 2xGkcwBeOaKZzonbWYbmfUndRUhr6OyuvvhIOtUDXsqb8kHoLWE1xGXUqCSzYjqbdVJY
- bPew==
+ d=1e100.net; s=20230601; t=1740476494; x=1741081294;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=tFkUmkSDtkuHo3J8hZfs90GERVA3Av7WUJFHM1cfhpA=;
+ b=f3Qt/q5ggYTXarjouKkx7cvYsKRuE5ox426L6pj7vACZxkyydyHp1G7DaSuXJacv73
+ XMVzEgEwZbtKvVcdPit9ziutdS64eEBNOSF88fDClOu5BfIS5H63bT2QjLPeASKsIExH
+ t8wYm7mFjreHTOT6PbnVGiAcK3ZSMGYzC2j2pmb0/CMUhkdnGNKTx1JqyypWEqA+Cju2
+ bI2M/VjN6gk7lTQ2Ah258JyfWNQszGtgTSjXNo1N9sMuVkFwM+ngZFc/4WQTxjAjsJYr
+ cfeYA8UiLzq2SOk/Y+RK/G49jg62I5wvfNVt2gyfzYSY4BH1Lfr4lFZAUUlU1rBJ/2br
+ mBNA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWFKrEhtO6fUHelJBxzdzA859e7jS7iszY0JWJytbP9OJxdpRQmr1MvPuS5SIsS7fHkw3+8POZ2jg==@nongnu.org
-X-Gm-Message-State: AOJu0YwhgPpRqkSkAymiZokQk0cu2TjpBX2toP0/oS76XlgskmaHWyqi
- aSrR6cRfTXcFP8AR2QsO8nP5yjNTlhMYjvxCxkyeFBKcTn4x9/D8fHlYrm0rHkXzi17rtKdNi1j
- NkxViDZ1rQwK7mTxxMFey/wSvTEruO4rGNIPgPBnjX7BVLY7/6w==
-X-Gm-Gg: ASbGncuZ/tFXfi4rVLPLewJbtt4wsBUJJO4c5S5CVrZKTxibvJOnnztEEtgzByWeoIv
- oh2Bwm++PcIX3xqdmvuEKEcylbJdRtVVH8o2uJ9bVLoBvrFu9UThuJ0XPYOoTijFWzVlidkZjAY
- QVUknU4M/JdfWqY5zMxbrZMHgkz5/1c2k0zCGxmd86VWZfpnfIPt+kLd4CjOkhTZH+YHYkC1m6H
- TkFZ3KPSeVgp6DoAJb9K1mmZRohV52/PlMcwBXcc0akcsHTXNsXSgwN5MreAAvIcqyLlL+ySvzO
- EqnBmzP/NkCBoe0bN8gwzFUpxaiv+KBCIXUgTonoZeIdg79oUaZfhIz+XOYyKGQ=
-X-Received: by 2002:a5d:6dae:0:b0:38f:4b2c:2464 with SMTP id
- ffacd0b85a97d-38f708626c6mr13087752f8f.55.1740482382300; 
- Tue, 25 Feb 2025 03:19:42 -0800 (PST)
-X-Received: by 2002:a5d:6dae:0:b0:38f:4b2c:2464 with SMTP id
- ffacd0b85a97d-38f708626c6mr13087717f8f.55.1740482381764; 
- Tue, 25 Feb 2025 03:19:41 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390cd86cc6asm1968277f8f.35.2025.02.25.03.19.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Feb 2025 03:19:41 -0800 (PST)
-Date: Tue, 25 Feb 2025 12:19:39 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Gavin Shan <gshan@redhat.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <mst@redhat.com>, <anisinha@redhat.com>,
- <gengdongjiu1@gmail.com>, <peter.maydell@linaro.org>,
- <pbonzini@redhat.com>, <shan.gavin@gmail.com>, Mauro Carvalho Chehab
- <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH 4/4] target/arm: Retry pushing CPER error if necessary
-Message-ID: <20250225121939.7e0e2304@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250221110435.00004a3b@huawei.com>
-References: <20250214041635.608012-1-gshan@redhat.com>
- <20250214041635.608012-5-gshan@redhat.com>
- <20250219185518.767a48d9@imammedo.users.ipa.redhat.com>
- <7caa54df-abe1-4833-bb59-cb83f8241962@redhat.com>
- <20250221110435.00004a3b@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ AJvYcCWHlj+N9b0kITsTvRIXZT8ONN+hMkPlrI58AWX96lNZRVHWeHDmkyDujKy74NdlnevGkyKjjRscxlRx@nongnu.org
+X-Gm-Message-State: AOJu0YwvOP6/dg0UwqKDQi46awTObnwoh+DGYzPzdQpX4CQbKyWL26nC
+ lIVjBnkkl+E0gRWNmb7NIVFzp9/gwA2ISkr+zPAa8WvbaDztsaKxfRpwvV7wnqUeeB1b5we2uPZ
+ ZQ3CoBAbHCqmnEs1tHrpRaKD4VsZv4MYVw50qtU7akaJZMX16jiRz
+X-Gm-Gg: ASbGncu/D/xq8xXswSF74KqCHil/2PhtZFhiBcKb7jjlJ87aIAyXRtN7KhsFBkB/GKk
+ CIa1f+4cjkhrruhxijlvKD5w3Udiuoranlvdz/OWeD20sGo/bM8yz+hI5FbElKW5Jl0oosJoX7x
+ PDQVwyxw7oKJ363Xz7/IrnDZRGCvET1rCImgM+YK0sWtu7uAYJ5e6xa/e0lrlxTSKIauDmfnVNo
+ e7WxP1aQw2ixWqThol+iCvtYPyV4Vhbflhh/2MnKhCKJ6/nppdfQBjqKAI2Mmdxc4Ye9r81ZopZ
+ EqRLwX8csN+UwU0Sz07NbqKAd+20myIr3+s7ucnqeEKMlnMyjrGw9gUpIDssg2CkW0gZj0K+2QR
+ bn5PQzzJkOx0gGkrN6kUGt8W7u4y5/ef5NXgw3XfgyIM=
+X-Received: by 2002:a5d:5f87:0:b0:38f:2a49:f6a5 with SMTP id
+ ffacd0b85a97d-38f6e9595demr11714579f8f.15.1740476494515; 
+ Tue, 25 Feb 2025 01:41:34 -0800 (PST)
+X-Received: by 2002:a5d:5f87:0:b0:38f:2a49:f6a5 with SMTP id
+ ffacd0b85a97d-38f6e9595demr11714546f8f.15.1740476494055; 
+ Tue, 25 Feb 2025 01:41:34 -0800 (PST)
+Received: from ?IPV6:2003:cb:c73e:aa00:c9db:441d:a65e:6999?
+ (p200300cbc73eaa00c9db441da65e6999.dip0.t-ipconnect.de.
+ [2003:cb:c73e:aa00:c9db:441d:a65e:6999])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43ab14caa5esm20474505e9.0.2025.02.25.01.41.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Feb 2025 01:41:33 -0800 (PST)
+Message-ID: <4a589056-b331-4dde-aa77-9129106a14c0@redhat.com>
+Date: Tue, 25 Feb 2025 10:41:32 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9dOd909ihAd2YaPktIKYNXVh4mMBCYERBFgSuoVOZL4_1740482382
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 1/2] system/memory: Allow creating IOMMU mappings from RAM
+ discard populate notifiers
+To: Chenyi Qiang <chenyi.qiang@intel.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, philmd@linaro.org,
+ peterx@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org,
+ Alexey Kardashevskiy <aik@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20250220161320.518450-2-jean-philippe@linaro.org>
+ <20250220161320.518450-3-jean-philippe@linaro.org>
+ <0d761daf-174d-487f-80fe-09b04902006f@redhat.com>
+ <75d90f78-151f-4169-84f5-cc3c13180518@intel.com>
+ <ce2306f9-19a4-4979-80e6-29b1e8a92318@redhat.com>
+ <108be3a5-cfc1-4268-a913-3a41d1e4451f@intel.com>
+ <16cb9605-ba4c-441e-8709-369a37655b4a@intel.com>
+From: David Hildenbrand <david@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <16cb9605-ba4c-441e-8709-369a37655b4a@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Cc3z04lVHdbQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YZE5x+SiIK/o
 
-On Fri, 21 Feb 2025 11:04:35 +0000
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+On 25.02.25 03:00, Chenyi Qiang wrote:
+> 
+> 
+> On 2/21/2025 6:04 PM, Chenyi Qiang wrote:
+>>
+>>
+>> On 2/21/2025 4:09 PM, David Hildenbrand wrote:
+>>> On 21.02.25 03:25, Chenyi Qiang wrote:
+>>>>
+>>>>
+>>>> On 2/21/2025 3:39 AM, David Hildenbrand wrote:
+>>>>> On 20.02.25 17:13, Jean-Philippe Brucker wrote:
+>>>>>> For Arm CCA we'd like the guest_memfd discard notifier to call the
+>>>>>> IOMMU
+>>>>>> notifiers and create e.g. VFIO mappings. The default VFIO discard
+>>>>>> notifier isn't sufficient for CCA because the DMA addresses need a
+>>>>>> translation (even without vIOMMU).
+>>>>>>
+>>>>>> At the moment:
+>>>>>> * guest_memfd_state_change() calls the populate() notifier
+>>>>>> * the populate notifier() calls IOMMU notifiers
+>>>>>> * the IOMMU notifier handler calls memory_get_xlat_addr() to get a VA
+>>>>>> * it calls ram_discard_manager_is_populated() which fails.
+>>>>>>
+>>>>>> guest_memfd_state_change() only changes the section's state after
+>>>>>> calling the populate() notifier. We can't easily invert the order of
+>>>>>> operation because it uses the old state bitmap to know which pages need
+>>>>>> the populate() notifier.
+>>>>>
+>>>>> I assume we talk about this code: [1]
+>>>>>
+>>>>> [1] https://lkml.kernel.org/r/20250217081833.21568-1-
+>>>>> chenyi.qiang@intel.com
+>>>>>
+>>>>>
+>>>>> +static int memory_attribute_state_change(MemoryAttributeManager *mgr,
+>>>>> uint64_t offset,
+>>>>> +                                         uint64_t size, bool
+>>>>> shared_to_private)
+>>>>> +{
+>>>>> +    int block_size = memory_attribute_manager_get_block_size(mgr);
+>>>>> +    int ret = 0;
+>>>>> +
+>>>>> +    if (!memory_attribute_is_valid_range(mgr, offset, size)) {
+>>>>> +        error_report("%s, invalid range: offset 0x%lx, size 0x%lx",
+>>>>> +                     __func__, offset, size);
+>>>>> +        return -1;
+>>>>> +    }
+>>>>> +
+>>>>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+>>>>> offset, size)) ||
+>>>>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+>>>>> offset, size))) {
+>>>>> +        return 0;
+>>>>> +    }
+>>>>> +
+>>>>> +    if (shared_to_private) {
+>>>>> +        memory_attribute_notify_discard(mgr, offset, size);
+>>>>> +    } else {
+>>>>> +        ret = memory_attribute_notify_populate(mgr, offset, size);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (!ret) {
+>>>>> +        unsigned long first_bit = offset / block_size;
+>>>>> +        unsigned long nbits = size / block_size;
+>>>>> +
+>>>>> +        g_assert((first_bit + nbits) <= mgr->bitmap_size);
+>>>>> +
+>>>>> +        if (shared_to_private) {
+>>>>> +            bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
+>>>>> +        } else {
+>>>>> +            bitmap_set(mgr->shared_bitmap, first_bit, nbits);
+>>>>> +        }
+>>>>> +
+>>>>> +        return 0;
+>>>>> +    }
+>>>>> +
+>>>>> +    return ret;
+>>>>> +}
+>>>>>
+>>>>> Then, in memory_attribute_notify_populate(), we walk the bitmap again.
+>>>>>
+>>>>> Why?
+>>>>>
+>>>>> We just checked that it's all in the expected state, no?
+>>>>>
+>>>>>
+>>>>> virtio-mem doesn't handle it that way, so I'm curious why we would have
+>>>>> to do it here?
+>>>>
+>>>> I was concerned about the case where the guest issues a request that
+>>>> only partial of the range is in the desired state.
+>>>> I think the main problem is the policy for the guest conversion request.
+>>>> My current handling is:
+>>>>
+>>>> 1. When a conversion request is made for a range already in the desired
+>>>>     state, the helper simply returns success.
+>>>
+>>> Yes.
+>>>
+>>>> 2. For requests involving a range partially in the desired state, only
+>>>>     the necessary segments are converted, ensuring the entire range
+>>>>     complies with the request efficiently.
+>>>
+>>>
+>>> Ah, now I get:
+>>>
+>>> +    if ((shared_to_private && memory_attribute_is_range_discarded(mgr,
+>>> offset, size)) ||
+>>> +        (!shared_to_private && memory_attribute_is_range_populated(mgr,
+>>> offset, size))) {
+>>> +        return 0;
+>>> +    }
+>>> +
+>>>
+>>> We're not failing if it might already partially be in the other state.
+>>>
+>>>> 3. In scenarios where a conversion request is declined by other systems,
+>>>>     such as a failure from VFIO during notify_populate(), the helper will
+>>>>     roll back the request, maintaining consistency.
+>>>>
+>>>> And the policy of virtio-mem is to refuse the state change if not all
+>>>> blocks are in the opposite state.
+>>>
+>>> Yes.
+>>>
+>>>>
+>>>> Actually, this part is still a uncertain to me.
+>>>>
+>>>
+>>> IIUC, the problem does not exist if we only convert a single page at a
+>>> time.
+>>>
+>>> Is there a known use case where such partial conversions could happen?
+>>
+>> I don't see such case yet. Actually, I'm trying to follow the behavior
+>> of KVM_SET_MEMORY_ATTRIBUTES ioctl during page conversion. In KVM, it
+>> doesn't reject the request if the whole range isn't in the opposite
+>> state. It just uses xa_store() to update it. Also, I don't see the spec
+>> says how to handle such case. To be robust, I just allow this special case.
+>>
+>>>
+>>>> BTW, per the status/bitmap track, the virtio-mem also changes the bitmap
+>>>> after the plug/unplug notifier. This is the same, correct?
+>>> Right. But because we reject these partial requests, we don't have to
+>>> traverse the bitmap and could just adjust the bitmap operations.
+>>
+>> Yes, If we treat it as a guest error/bug, we can adjust it.
+> 
+> Hi David, do you think which option is better? If prefer to reject the
+> partial requests, I'll change it in my next version.
 
-> On Fri, 21 Feb 2025 15:27:36 +1000
-> Gavin Shan <gshan@redhat.com> wrote:
->=20
-> > On 2/20/25 3:55 AM, Igor Mammedov wrote: =20
-> > > On Fri, 14 Feb 2025 14:16:35 +1000
-> > > Gavin Shan <gshan@redhat.com> wrote:
-> > >    =20
-> > >> The error -1 is returned if the previously reported CPER error
-> > >> hasn't been claimed. The virtual machine is terminated due to
-> > >> abort(). It's conflicting to the ideal behaviour that the affected
-> > >> vCPU retries pushing the CPER error in this case since the vCPU
-> > >> can't proceed its execution.
-> > >>
-> > >> Move the chunk of code to push CPER error to a separate helper
-> > >> report_memory_errors() and retry the request when the return
-> > >> value from acpi_ghes_memory_errors() is greater than zero.
-> > >>
-> > >> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> > >> ---
-> > >>   target/arm/kvm.c | 31 +++++++++++++++++++++++++------
-> > >>   1 file changed, 25 insertions(+), 6 deletions(-)
-> > >>
-> > >> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > >> index 5c0bf99aec..9f063f6053 100644
-> > >> --- a/target/arm/kvm.c
-> > >> +++ b/target/arm/kvm.c
-> > >> @@ -2362,6 +2362,30 @@ int kvm_arch_get_registers(CPUState *cs, Erro=
-r **errp)
-> > >>       return ret;
-> > >>   }
-> > >>  =20
-> > >> +static void report_memory_error(CPUState *c, hwaddr paddr)
-> > >> +{
-> > >> +    int ret;
-> > >> +
-> > >> +    while (true) {
-> > >> +        /* Retry if the previously report error hasn't been claimed=
- */
-> > >> +        ret =3D acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr=
-, true);
-> > >> +        if (ret <=3D 0) {
-> > >> +            break;
-> > >> +        }
-> > >> +
-> > >> +        bql_unlock();
-> > >> +        g_usleep(1000);   =20
-> >=20
-> > Igor, thanks for the detailed comments. Sorry for a bit delay of the re=
-ply, I
-> > was checking the code to understand it better :) =20
->=20
-> This is moderately tricky stuff so I'm not 100% sure of some of the thing=
-s
-> I said below, but will be traveling for next few weeks so want to get som=
-e
-> comments out before that!
->=20
-> >  =20
-> > > even with bql released it's not safe to loop in here.
-> > > consider,
-> > >    a guest with 2 vcpus
-> > >      * vcpu 1 gets SIGBUS due to error
-> > >      * vcpu 2 trips over the same error and gets into this loop
-> > >      * on guest side vcpu 1 continues to run to handle SEA but
-> > >        might need to acquire a lock that vcpu 2 holds
-> > >    =20
-> >=20
-> > Agreed.
-> >  =20
-> > > GHESv2 error source we support, can report several errors,
-> > > currently QEMU supports only 1 'error status block' which
-> > > can hold several error records (CPER) (though storage size is limited=
-)
-> > >=20
-> > > 1:
-> > > We can potentially add support for more GHESv2 error sources
-> > > with their own Read ACK registers (let's say =3Dmax_cpus)
-> > > (that is under assumption that no other error will be
-> > > triggered while guest VCPUs handle their own SEA (upto clearing Read =
-ACK)) =20
->=20
-> This one seems straight forward but I'd kind of like to know if real syst=
-ems
-> do this (I'll try and find out about ours).  I don't think there is
-> any association available between a cpu and and SEA source, so linux at
-> least will just go looking for any that are active on each SEA.
-> Locking looks fine but it won't help with performance
->=20
-> > >=20
-> > > 2:
-> > > Another way could be for QEMU to allocate more error status _blocks_
-> > > for the only one error source it has now and try to find
-> > > empty status block to inject new error(s). =20
->=20
-> Let me try to get my head around this one...
->=20
-> Each GHESv2 entry points, indirectly, to a single error status block at a=
- time
-> (only one address to read that from)  Curious quirk is the length for tha=
-t
-> error status block is fixed as that's just a value in GHESv2 not an indir=
-ection
-> via a register - however I think you can just make it 'big'.
-> So what I think you are proposing here is that on read_ack write (which w=
-e would
-> need to monitor for, the value of the error status address register is up=
-dated
-> to point to next one of a queue of error blocks.
+Hi,
 
-All my suggestions here aren't recommendation, but rather thinking out loud
-to see if we can find a crorrect way to deal with the issue.
+still scratching my head. Having to work around it as in this patch here is
+suboptimal.
 
-The part I don't fancy doing on QEMU part is read_ack write intercept.
+Could we simplify the whole thing while still allowing for (unexpected) partial
+conversions?
 
->=20
-> That can work.  I'm not sure it actually gets us anything over just queui=
-ng in
-> qemu and writing the same error status block.  Those status blocks can co=
-ntain
+Essentially: If states are mixed, fallback to a "1 block at a time" handling.
 
-benefit would be that we won't have to maintain state on QEMU side
-and then migrate it.
+The only problem is: what to do if we fail halfway through? Well, we can only have
+such partial completions for "populate", not for discard.
 
-> multiple Generic Error Data entries, but unless we have a load of them ga=
-thered
-> up at time of first notifying the guest, I'm not sure that helps us.
->=20
-> One thing that I'm nervous about is that I can't actually find spec langu=
-age
-> that says that the OS 'must' reread the error status address register on
-> each event. That isn't mentioned in the GHESv2 flow description which jus=
-t says:
+Option a) Just leave it as "partially completed populate" and return the error. The
+bitmap and the notifiers are consistent.
 
-that bothers me as well.
+Option b) Just discard everything: someone tried to convert something "partial
+shared" to "shared". So maybe, if anything goes wrong, we can just have "all private".
 
-> "
-> These are the steps the OS must take once detecting an error from a parti=
-cular GHESv2 error source:
-> =E2=80=A2 OSPM detects error (via interrupt/exception or polling the bloc=
-k status)
-> =E2=80=A2 OSPM copies the error status block
-> =E2=80=A2 OSPM clears the block status field of the error status block
-> =E2=80=A2 OSPM acknowledges the error via Read Ack register. For example:
-> =E2=80=93 OSPM reads the Read Ack register =E2=80=93> X
-> =E2=80=93 OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite)
-> "
->=20
-> The linux code is confusing me, but I think it wonderfully changes
-> the fixmap on every access as it needs to do an ioremap type operation
-> in NMI conditions.
->=20
-> > >   * it can be saturated with high rate of errors (so what do we do in=
- case it happens?) =20
->=20
-> Make it big :)  But sure big just makes the condition unlikely rather tha=
-n solving it.
->=20
-> > >   * subject to race between clearing/setting Read ACK
-> > >      (maybe it can dealt with that on side by keeping internal read_a=
-ck counter) =20
->=20
-> I don't think there are any races as long as we update the register only =
-on clear which
-> should I think happen before the next SEA can happen? My understanding, w=
-hich may
-> be wrong, is the OS must just take a copy of the error status block and s=
-et the
-> read_ack all in the exception handler.
->=20
-> > >=20
-> > > 3:
-> > > And alternatively, queue incoming errors until read ack is cleared
-> > > and then inject pending errors in one go.
-> > > (problem with that is that at the moment QEMU doesn't monitor
-> > > read ack register memory so it won't notice guest clearing that) =20
->=20
-> We'd need to monitor it definitely.  Injecting all we have queued up
-> in one go here seems like a reasonable optimization over doing them
-> one at a time.
->=20
-> > >=20
-> > >=20
-> > > Given spec has provision for multiple error status blocks/error data =
-entries
-> > > it seems that #2 is an expected way to deal with the problem.
-> > >    =20
-> >=20
-> > I would say #1 is the ideal model because the read_ack_register is the =
-bottleneck
-> > and it should be scaled up to max_cpus. In that way, the bottleneck can=
- be avoided
-> > from the bottom. Another benefit with #1 is the error can be delivered =
-immediately
-> > to the vCPU where the error was raised. This matches with the syntax of=
- SEA to me. =20
->=20
-> I don't think it helps for the bottleneck in linux at least.  A whole bun=
-ch of locks
-> are taken on each SEA because of the novel use of the fixmap.  There is o=
-nly one
-> VA ever used to access the error status blocks we just change what PA it =
-points to
-> under a spin lock. Maybe that can be improved on if we can persuade peopl=
-e that error
-> handling performance is a thing to care about!
->=20
-> >=20
-> > #2 still has the risk to saturate the multiple error status blocks if t=
-here are
-> > high rate of errors as you said. Besides, the vCPU where read_ack_regis=
-ter is acknoledged
-> > can be different from the vCPU where the error is raised, violating the=
- syntax of
-> > SEA.
-> >=20
-> > #3's drawback is to violate the syntax of SEA, similar to #2.
-> >=20
-> > However, #2/#3 wouldn't be that complicated to #1. I didn't expect big =
-surgery to
-> > GHES module, but it seems there isn't perfect solution without a big su=
-rgery.
-> > I would vote for #1 to resolve the issue from the ground. What do you t=
-hink, Igor?
-> > I'm also hoping Jonathan and Mauro can provide their preference. =20
->=20
-> Ideally I'd like whatever we choose to look like what a bare metal machin=
-e
-> does - mostly because we are less likely to hit untested OS paths.
+The question is also, what the expectation from the caller is: can the caller
+even make progress on failure or do we have to retry until it works?
 
-Ack for that but,
-that would need someone from hw/firmware side since error status block
-handling is done by firmware.=20
+Both options would be compatible with "the caller must retry either way until it works".
 
-right now we are just making things up based on spec interpretation.
+a) is probably easiest. Something like the following on top of your code:
 
-> > > PS:
-> > > I'd prefer Mauro's series being merged 1st (once it's resplit),
-> > > for it refactors a bunch of original code and hopefully makes
-> > > code easier to follow/extend.
-> > >    =20
-> >=20
-> > Sure. I won't start the coding until the solution is confirmed. All the=
- followup
-> > work will base on Mauro's series.
-> >  =20
-> > >> +        bql_lock();
-> > >> +    }
-> > >> +
-> > >> +    if (ret =3D=3D 0) {
-> > >> +        kvm_inject_arm_sea(c);
-> > >> +    } else {
-> > >> +        error_report("Error %d to report memory error", ret);
-> > >> +        abort();
-> > >> +    }
-> > >> +}
-> > >> +
-> > >>   void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-> > >>   {
-> > >>       ram_addr_t ram_addr;
-> > >> @@ -2387,12 +2411,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int=
- code, void *addr)
-> > >>                */
-> > >>               if (code =3D=3D BUS_MCEERR_AR) {
-> > >>                   kvm_cpu_synchronize_state(c);
-> > >> -                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, =
-paddr, false)) {
-> > >> -                    kvm_inject_arm_sea(c);
-> > >> -                } else {
-> > >> -                    error_report("failed to record the error");
-> > >> -                    abort();
-> > >> -                }
-> > >> +                report_memory_error(c, paddr);
-> > >>               }
-> > >>               return;
-> > >>           }   =20
-> > >    =20
-> >=20
-> > Thanks,
-> > Gavin
-> >=20
-> >  =20
->=20
+
+
+ From 40c001a57c3c1350f3a44288ccb013d903d300cf Mon Sep 17 00:00:00 2001
+From: David Hildenbrand <david@redhat.com>
+Date: Tue, 25 Feb 2025 09:55:38 +0100
+Subject: [PATCH] tmp
+
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+  system/memory-attribute-manager.c | 66 +++++++++++++++++--------------
+  1 file changed, 36 insertions(+), 30 deletions(-)
+
+diff --git a/system/memory-attribute-manager.c b/system/memory-attribute-manager.c
+index 17c70cf677..31960e4a54 100644
+--- a/system/memory-attribute-manager.c
++++ b/system/memory-attribute-manager.c
+@@ -274,9 +274,7 @@ static void memory_attribute_notify_discard(MemoryAttributeManager *mgr,
+          if (!memory_region_section_intersect_range(&tmp, offset, size)) {
+              continue;
+          }
+-
+-        memory_attribute_for_each_populated_section(mgr, &tmp, rdl,
+-                                                    memory_attribute_notify_discard_cb);
++        rdl->notify_discard(rdl, &tmp);
+      }
+  }
+  
+@@ -292,9 +290,7 @@ static int memory_attribute_notify_populate(MemoryAttributeManager *mgr,
+          if (!memory_region_section_intersect_range(&tmp, offset, size)) {
+              continue;
+          }
+-
+-        ret = memory_attribute_for_each_discarded_section(mgr, &tmp, rdl,
+-                                                          memory_attribute_notify_populate_cb);
++        ret = rdl->notify_populate(rdl, &tmp);
+          if (ret) {
+              break;
+          }
+@@ -311,9 +307,7 @@ static int memory_attribute_notify_populate(MemoryAttributeManager *mgr,
+              if (!memory_region_section_intersect_range(&tmp, offset, size)) {
+                  continue;
+              }
+-
+-            memory_attribute_for_each_discarded_section(mgr, &tmp, rdl2,
+-                                                        memory_attribute_notify_discard_cb);
++            rdl2->notify_discard(rdl2, &tmp);
+          }
+      }
+      return ret;
+@@ -348,7 +342,10 @@ static bool memory_attribute_is_range_discarded(MemoryAttributeManager *mgr,
+  static int memory_attribute_state_change(MemoryAttributeManager *mgr, uint64_t offset,
+                                           uint64_t size, bool shared_to_private)
+  {
+-    int block_size = memory_attribute_manager_get_block_size(mgr);
++    const int block_size = memory_attribute_manager_get_block_size(mgr);
++    const unsigned long first_bit = offset / block_size;
++    const unsigned long nbits = size / block_size;
++    uint64_t cur_offset;
+      int ret = 0;
+  
+      if (!memory_attribute_is_valid_range(mgr, offset, size)) {
+@@ -357,32 +354,41 @@ static int memory_attribute_state_change(MemoryAttributeManager *mgr, uint64_t o
+          return -1;
+      }
+  
+-    if ((shared_to_private && memory_attribute_is_range_discarded(mgr, offset, size)) ||
+-        (!shared_to_private && memory_attribute_is_range_populated(mgr, offset, size))) {
+-        return 0;
+-    }
+-
+      if (shared_to_private) {
+-        memory_attribute_notify_discard(mgr, offset, size);
+-    } else {
+-        ret = memory_attribute_notify_populate(mgr, offset, size);
+-    }
+-
+-    if (!ret) {
+-        unsigned long first_bit = offset / block_size;
+-        unsigned long nbits = size / block_size;
+-
+-        g_assert((first_bit + nbits) <= mgr->bitmap_size);
+-
+-        if (shared_to_private) {
++        if (memory_attribute_is_range_discarded(mgr, offset, size)) {
++            /* Already private. */
++        } else if (!memory_attribute_is_range_populated(mgr, offset, size)) {
++            /* Unexpected mixture: not completely shared. */
++            for (cur_offset = 0; cur_offset < offset; cur_offset += block_size) {
++               memory_attribute_state_change(mgr, cur_offset, block_size,
++                                             true);
++            }
++        } else {
++            /* Completely shared. */
+              bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
++            memory_attribute_notify_discard(mgr, offset, size);
++        }
++    } else {
++        if (memory_attribute_is_range_populated(mgr, offset, size)) {
++            /* Already shared. */
++        } else if (!memory_attribute_is_range_discarded(mgr, offset, size)) {
++            /* Unexpected mixture: not completely private. */
++            for (cur_offset = 0; cur_offset < offset; cur_offset += block_size) {
++               ret = memory_attribute_state_change(mgr, cur_offset, block_size,
++                                                   false);
++               if (ret) {
++                   break;
++               }
++            }
+          } else {
++            /* Completely private. */
+              bitmap_set(mgr->shared_bitmap, first_bit, nbits);
++            ret = memory_attribute_notify_populate(mgr, offset, size);
++            if (ret) {
++                bitmap_clear(mgr->shared_bitmap, first_bit, nbits);
++            }
+          }
+-
+-        return 0;
+      }
+-
+      return ret;
+  }
+  
+-- 
+2.48.1
+
+
+-- 
+Cheers,
+
+David / dhildenb
 

@@ -1,107 +1,108 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp251629njg;
-        Tue, 25 Feb 2025 06:29:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXZJNJjx6dEL0Dqb6APvC75DHrGH39nFhGb5fJ179i3terq+J0VUeiuNeDRF1ND470w40WwDbptg+5kcw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGriFnxVnCBQupv5Wvghp2lf+X4IsvSw34LrdqKgNoLveJFqzHE9gYMP2YknTIUIboFuQ/T
-X-Received: by 2002:ac8:7f0e:0:b0:471:ef27:a316 with SMTP id d75a77b69052e-472228d9611mr239179591cf.25.1740493788214;
-        Tue, 25 Feb 2025 06:29:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740493788; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp260661njg;
+        Tue, 25 Feb 2025 06:44:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUOPpKY6Jdx3CoNG0E54LC5wRTB/VcJ6W2+UUqWyP6y1+J7KWECTyVn1BLEA5Nl+IgJXnaswxU+bSlH5g==@linaro.org
+X-Google-Smtp-Source: AGHT+IF+GYl6+GcvM1tFEwevv5LYNLvDRjud6X4UFFkCI17xfYFf9ICK/Cp1EbTmoldVozwz6csM
+X-Received: by 2002:a05:620a:269b:b0:7c0:a431:6c5e with SMTP id af79cd13be357-7c0cef1313amr2204392785a.31.1740494659055;
+        Tue, 25 Feb 2025 06:44:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740494659; cv=none;
         d=google.com; s=arc-20240605;
-        b=AqK3n5j87WrwNvKFzRfAITcqFxJ7VsvNg19ku/3X8KU7X9+Lz19yj7UZjEAKNIQ68w
-         4DwC/QpPfvxXQewEMKwstTU++r3iUbualxTC9ohMbd5yuJKLqLuDSkwG5m9PcErUyzy2
-         oyQ3jnlOWeOCNP5Wv6AMmeOxxQFgBXB5u/yQY4PaCmjk2XGlLDQi29CQEzfxj+/G0aJr
-         +QKb6dIdXiiksy/KiJKFKOnEdZSmJsfdQ2JpGMB6VLZUNTXhYh2rDLn34EMYWCfJvNIp
-         6Q2Pm481q3EsyfevVmjWMplBYfKYnrsxrE4Lni2vpaOErCEqUDial5TvYoDojykfVZva
-         M3Pg==
+        b=QVktb4HNDbnYSb9Ckim8g7c5c4+eBv/AMfqONwPrcOv8Yid4gf2D3uWHnE6WdvEcc4
+         HhdsmEC7yTX9tuQz/sSDVbGTO8yVPniu9PMi+NhRqhRHWmBoc8KP8DLS+rR8X+ZD4PXn
+         8FVbZVwRrfsfdmhZvqzrUhMY9zmzIUBjXaRmE8FTs/L4gsn3dnfrdArShXA+g/QPgeNe
+         gCBviox7Rvb5kSv2DwPPje3Cj6ed638uPlGZa+RMT7UgnjVLGfkMOaoQ1G0dqqyZ9L37
+         bPcd5cmN1o2SBkq7cMl4WHh4w/3J9uDfU4CFkwFPrx2e++0HZ+JKkQCFczLmtT0NbroL
+         A0uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=lPHujlsLhltShdBoB8PvpgOtSi2hhPzbNlYdJCzOuL0=;
-        fh=K2uuYXxa5jtBsARDq+pNklcK4gg1Cxr84+AD2eKuwcI=;
-        b=YUhQoxvIn4Q/p5cXPtHL/8yZgjI8IC323SEOZrAF74ysRr0eVIumTLjWwn5ZhkIyMH
-         dpJL9etgSFbFkJWclxnWS4IYHAXGc5iP71K7ASRwSDkaIwysvK28M4BjN4Rn+sp5UE8S
-         3lNSMQ0Mf4TSBMUjmmepk2daxT7xR0TtkN8O4RS/qgR+viEkXGCe8gsKkzcbs41k/VxU
-         DoqEMwd3Rrs1b/maMAo57Iai657z9S4wP24+jlvOOXml0JueBCDflGlsW9XQF6Ni8glw
-         bl4Ry8iwA0RzuD5d6o9vQ0ZUCeJwB1A6RmYchwMf0ao44iEHu5a0JHyatpwBAa4ovtTG
-         R/WQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=HBNy19b/C2sAJP/mSokGEuCO6HlNPkFcNqQI5DINW4c=;
+        fh=sgVfRVyc1JW/Jqy/bCy+b1p55JJe+EsxHtApeFhWR7o=;
+        b=N+QFIXKQg2rregQlOBOLcD+4HjIgNiyatJbDL7vJ3EjOZh8ij9aG6hXHGnJwW1lzkZ
+         NrCuLg6bLbNbsxYts4B3sYrkIBuqW2HXEW+GM+M57UnuiZT3rBS1cOE4kYj9xT8mFHfD
+         SL05wDlBFL+FQkOPz1nk0rnilgbp6gi7/dEKXzf9X4XnQ2gRLFx2Tnw1bZa3qMeeVcHq
+         9/dzmuUWtt/Jj+ND5CCgxi1fBnZiWl9cUhdVjqaJSIqc1DkfNLBpaTdoHmWDyvaJ04Jd
+         n3felAEJ8QVxSUrRNcWNd1fbDT9aRxFKEc/tlzsUNX+U/UPEi4yUk8EN0luf6jUJK3hZ
+         s7cQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LWDazoYD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yu0x1eAM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-473780abf35si16280541cf.566.2025.02.25.06.29.48
+        by mx.google.com with ESMTPS id af79cd13be357-7c23c2e2aa5si175497785a.529.2025.02.25.06.44.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 06:29:48 -0800 (PST)
+        Tue, 25 Feb 2025 06:44:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LWDazoYD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yu0x1eAM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmvwF-0000m2-Iu; Tue, 25 Feb 2025 09:29:35 -0500
+	id 1tmwA9-0003sE-A4; Tue, 25 Feb 2025 09:44:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tmvw9-0000kz-RH
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 09:29:29 -0500
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1tmwA1-0003rj-0F
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 09:43:50 -0500
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tmvw8-0008KI-2P
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 09:29:29 -0500
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-6ef9b8b4f13so49557057b3.2
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 06:29:27 -0800 (PST)
+ id 1tmw9y-0001Av-MK
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 09:43:48 -0500
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-6ef9b8b4f13so49719787b3.2
+ for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 06:43:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740493766; x=1741098566; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=lPHujlsLhltShdBoB8PvpgOtSi2hhPzbNlYdJCzOuL0=;
- b=LWDazoYDAPe2NKeaq0P4RqNwEccWIYjmsVxSwea0yBLCIh7u/T+nHO9gLkoi68NODQ
- Ek1tPPT08FOL9BV0OrpvdRwXnrwI7tgb/SOspukG1Bl1iuvu0+tg6gQYTwr5Zm3QrkaS
- km39bRlpKMR/hDkaoXzx9JTBWADYn0GBJ8jLUj+7O99it1DAWAinSXL9NeL1sdyB6m3d
- FWUFIBf7u9P3MJyKUV/g8XSdw021TEltVLk9iEzWfP7yq/S3iHceSPcf9pfdBvK6Cvoy
- DblOKxm9WdR/xNUzw0eAIpVPAJh/1+vS4uefUziP2Yulw+RuFS9hb+nLB8UHh7w6eS3V
- Ey7Q==
+ d=linaro.org; s=google; t=1740494625; x=1741099425; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HBNy19b/C2sAJP/mSokGEuCO6HlNPkFcNqQI5DINW4c=;
+ b=yu0x1eAMAg3xp5hEcwOzvArQY+6o4gLOeuOYwSTY3at7adAGk5iTcbvuvnBIHy54GV
+ IaNCFCWCF2puWrdlZYmTaRjEEqmJahg+b2UWWxfMpTf9H+YVidvXhD66kFIi67g7pkV2
+ MDan1N5BJE+1Aqu/x97jf5gWQuZpHrzZwsturEaOz//v/QQSW1MXXQ0rSaWTT6cozJqa
+ WV7GHt7rwAMvsdDSYeIKu7StDAd0fmJue0W55aGUfmoYPRw+BnpL/ZPPE/mCqJsIPc8S
+ I06iTA91+KenNYyWUnXJ91m6kkT9RYWuYPZlwGjK96X2VxkD5aWSZR6/C3rVNyeh7HhA
+ NSwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740493766; x=1741098566;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=lPHujlsLhltShdBoB8PvpgOtSi2hhPzbNlYdJCzOuL0=;
- b=AP1BtcDBSMlpQMFvXpdcNYk53PIk+sJvP8fiRRu1jiuzcQaRknGe61XGlJ+HlUFPJd
- /P7XaR4wHOYGj1I18sAV1pbar3vRVxLZ4r3cobmq8MGIRZENywfSwjUObqVIMDoUmk9w
- khb2RIvRS8hGXPzBd95LliGm28oqcooB2GSU0DTkrtaCTCXCmdmJy+DPKiwgFGRKOVQx
- +zjtC8dkKbHxPfAIx/ORcN2Enyf78uCciC0Zk7nZQMtpGuBSnLGxUxOZuNlq2gev8CRh
- zZScSV+/G2RGCxQ6y6jiOfp800jjXYRUNBklCDN/POjyThDOlYvK3LPJeMKZa2AppGRi
- NyfA==
+ d=1e100.net; s=20230601; t=1740494625; x=1741099425;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HBNy19b/C2sAJP/mSokGEuCO6HlNPkFcNqQI5DINW4c=;
+ b=cC3doXlklCzL74z164lW+vDBh/y489NbhIJQNmWxW5KcQ4moRLxD6+fh33g+DL6aP3
+ qBECF1KG92IwGS/XEU+wVgggNQYjiaV3MAoV1RtfPXbhHtxZueyjumrg7NqQU7OmUTUf
+ MYETuhhXOc4iVJ12wyWg9ENX2Mt3oJENSpsJIa6AXIlYeqbXt6Df8m9Jm4g3pRlMZG89
+ 4F9AEKjB0U87ENT6TlpCjIprIteLWk5OrBWlTldEInMbe2IIFQ4LrtStt+X3F0Ki6Hre
+ CNeXgcE88/gkayig0HVeDGee/x3ykiH4CWhcYnnV1+sV4Y7Aqyzx5d08NB2Y+UVO4vrS
+ Uehw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWXRlfKxfexL+yORhwmQ2DlPutXh8mNiz6laAPTFINuc74gEfO52fzSLwwKbLAJxWkmDu15qOGAVQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxxUX6Vg91ARVf2xaU7j0anG/HU4XcmbdeFUvTmOpU4MmzA/bJe
- yS/prS3obhvLkPk3VTgBnKrvjqhF56se5fEYEY21r6fsyykXXNie43VKDtj7EFX2fmzvQhrr8S4
- leOnDYLzqA0jHid+XJaicLHGipKGCoWahZGixUg==
-X-Gm-Gg: ASbGncte81QE7L7zN3ynLvVaT7WZ/U08mWrR/oybGpguQ26si08XmHQq3+THPL+EdHf
- xTTRzDKgrnsXBYvR4fBHPquJu+7hey2FA3enRMKrmj1M9M9V48H46y1veB+7yQgSDRe8GpViyP5
- kbrEXhOqhI
-X-Received: by 2002:a05:690c:6f85:b0:6f9:7b99:8a29 with SMTP id
- 00721157ae682-6fbcc3a3ee3mr150342067b3.34.1740493766452; Tue, 25 Feb 2025
- 06:29:26 -0800 (PST)
+ AJvYcCVXF/KC187NPZrkxAcl/JQtSUvGXQxU4mPaemvSq3Sy5oTsT635unQjnJOHsR2lJe0Z1Jmqi3LnBw==@nongnu.org
+X-Gm-Message-State: AOJu0YyW6E3LngH6ftJcEOanexvr2SdDPHJz2LWH2/N7ipS/ME0yekPa
+ L7zp4T+b9Fk/HI014g+A1ZZ6CT2zp9jaYpeVnlfnMPODvpLyoLq0gJ7roBMS4lWSCTuEo5Bmdcw
+ +8CpVymi+QrE3Sa05bPW+fQVy62HUyfcBCA6dsw==
+X-Gm-Gg: ASbGncuzLZrB+KzHLYOhelXxTtwGBdnH/NS1MkJ2VpjOsPhxKJH0mmy37sEGmPknGbr
+ 2RPz/ZX7kpbkn4aOyAcMPma4kn23pveBC+h/L5zKLVWE6lVeyhZ5nKvxPlDmteaCSa8+PbnAw9M
+ hs4zto0Imm
+X-Received: by 2002:a05:690c:6c04:b0:6ef:4fba:8153 with SMTP id
+ 00721157ae682-6fbcc23498dmr149955887b3.10.1740494625275; Tue, 25 Feb 2025
+ 06:43:45 -0800 (PST)
 MIME-Version: 1.0
 References: <20250223114708.1780-1-shentey@gmail.com>
- <20250223114708.1780-17-shentey@gmail.com>
-In-Reply-To: <20250223114708.1780-17-shentey@gmail.com>
+In-Reply-To: <20250223114708.1780-1-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2025 14:29:15 +0000
-X-Gm-Features: AWEUYZkQXFmCUgjaGJfkSE_kqM2ygGc7gci1ahus-kgRhkWasr957dmm07STbk8
-Message-ID: <CAFEAcA8L6CFvuTC+UqG7r5R27Yohc9vSVtPBHttBKKj-s-L0oA@mail.gmail.com>
-Subject: Re: [PATCH v2 16/18] hw/arm/fsl-imx8mp: Add boot ROM
+Date: Tue, 25 Feb 2025 14:43:32 +0000
+X-Gm-Features: AWEUYZmhBOOPqyuhlExC7SyMb1-fy4JbTYnKLYVcxsVePox3tnXcSJaCGp_CyHo
+Message-ID: <CAFEAcA-2KXeCVKrx0VQ1axA+nbTKV2fpy--Mti1Q+yFL5XC5KA@mail.gmail.com>
+Subject: Re: [PATCH v2 00/18] Add i.MX 8M Plus EVK machine
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
@@ -111,8 +112,9 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,39 +136,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ch2U6A57QYH0
+X-TUID: lsyHV53eNNK2
 
 On Sun, 23 Feb 2025 at 11:47, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> On a real device, the boot ROM contains the very first instructions the CPU
-> executes. Also, U-Boot calls into the ROM to determine the boot device. While
-> we're not actually implementing this here, let's create the infrastructure and
-> add a dummy ROM with all zeros. This allows for implementing a ROM later without
-> touching the source code and even allows for users to provide their own ROMs.
+> This series adds a new aarch64 machine to QEMU: i.MX 8M Plus EVK [1]. It =
+allows
+> for running Linux distributions such as Buildroot
+> (freescale_imx8mpevk_defconfig) and Arch Linux [2] via direct kernel boot=
+.
+> U-Boot does not work yet. I plan to use this machine in CI and I also wan=
+t to
+> make it available to a bigger audience, so I propose to add it to QEMU. M=
+y goal
+> would be to have it added for 10.0. For this, a Changelog entry could be =
+added
+> under https://wiki.qemu.org/ChangeLog/10.0 such as:
+>   * New board model "imx8mp-evk": i.MX 8M Plus Evaluation Kit
 >
-> The imx8mp-boot.rom was created with
-> `dd if=/dev/zero of=imx8mp-boot.rom bs=1 count=258048`.
+> The series is structured as follows: The first three patches fix some iss=
+ues in
+> device models reused by the new machine. Patches 4-17 add the machine ste=
+p by
+> step which includes documentation. The last patch adds an I=C2=B2C RTC wh=
+ich I'd like
+> to use along with the new machine.
 >
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> I've based some code on existing one (see "Based on" in file headers) and=
+ I'm
+> unsure how to handle the licensing and attribution correctly -- advice we=
+lcome.
 
-Hi; I've thought about this a bit, and I think we should just
-postpone having code to load a rom blob until we have an
-actual rom blob that's not all zeroes. This makes this
-board the same as e.g. imx7 which also doesn't try to load
-a ROM blob. You can create a memory region for the ROM,
-like imx7; just don't load anything into it, and that's
-exactly the same as if there was an all-zeroes file that
-got loaded.
-
-This doesn't prevent users from experimenting with providing
-their own ROM code, because they can do that with the
-generic loader (passing it either an ELF file set up to
-load to the ROM area or else a binary blob plus the
-start address of 0).
-
-That way we aren't carrying code we aren't using and an
-awkward binary blob in git; we can add those when we need
-them.
+Hi; I've applied most of this series to target-arm.next:
+patches 1 to 15 and 17. I've left a comment about what
+I think we should do about patch 16 (the bootrom).
+Patch 18 (the RTC i2c device) I don't have any objection to,
+I just didn't have time to review it now and didn't want to delay
+getting the new board model in until I did find that time.
+Since the board code doesn't instantiate the i2c device,
+the RTC is kind of a separate thing from the board series
+anyway.
 
 thanks
 -- PMM

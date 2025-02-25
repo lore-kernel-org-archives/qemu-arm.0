@@ -1,120 +1,85 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp219358njg;
-        Tue, 25 Feb 2025 05:41:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVO8N3NC/51Fdo6LtwTc0O6Y5UVObzTeIOUUNKAa1ZXkPDoeaPROzR/G2wdBWnLVJA3Iz0ZmDpuTavf4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGwc+q9KPeQuY9XR7KnSpEbIl1wgRxo52CWqs05/mJNNdnIRhZpmeYpwSZSfk0KFCcQ53ei
-X-Received: by 2002:a05:620a:4606:b0:7c0:7d34:6a7b with SMTP id af79cd13be357-7c0ceefe59cmr2432096685a.19.1740490903973;
-        Tue, 25 Feb 2025 05:41:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740490903; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp242001njg;
+        Tue, 25 Feb 2025 06:15:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVVN29hmEyAsZChAAsW5Qtrzqw0CCpPbumOv6/IfDSkLdr/vMRZZaE4uVDoYThqsnsXG+MHwkeDjGhUIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFCUPHj6xnl8T/gZoNwedSyeb/UpsiS5XAKdi5uM5Dc9gpkp3Ru7fchSjOwE3L8H6LDXK7V
+X-Received: by 2002:ac8:574c:0:b0:472:6c9:3741 with SMTP id d75a77b69052e-4722289f2a5mr202546061cf.9.1740492920509;
+        Tue, 25 Feb 2025 06:15:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740492920; cv=none;
         d=google.com; s=arc-20240605;
-        b=CjvctnoM16EuCDKKMpJnIyiYz3epRX2BUGbD05/yMp5frZSiNbZgkPerXTNAF8yxRG
-         JXCahsNVybywv2n3bJO6le8PWQWmTfWpTg4eeY6FfM6FdVtzaYwOpSrVtCNLkB1rYJlv
-         AfTtHCyfh6QXFugSc1fUYWYkpdUqFKggYs/7cW95nTtdesR6dqvgY1pT1B14UMdtQ9uk
-         IM7D436W6/lvoLdRSM2fMUrkuDeMiXoErJVZSuY/7GXReh1ed3/evMMU7B+/4kNeVT1k
-         uD5lN6JLeO6hQ+wKfNFO2Kk2/7Th3g71v/GAurqRl9SaSZHoc3pB1mTfJj15bEJ0iNlC
-         D4eQ==
+        b=bxXsoaBR+2hb1LVvXxItWNg67ngBW2OnMpE/enALl0vJYHMQ7/G0iUHtk9T3XukKE0
+         CVeE1wq6ouTk6HYPQPyuOBxUPquKHTMu+8s74pxeFqTi9wbqU0hhHZCg/0G1geojJHYe
+         0PbUFnnS8qWRkb/hDi74hQfUFgOQ4oIzAcgdvAqJEU9wifHjsEpe6Qod9+Hj8fbMo9nh
+         2DmIMWg3wcikVWLEnRc7drGodZZZPF001aLcL0HEFF+7KS1TCiyxj7eWz/F97DTeed+w
+         39/9BvEgibVMmDVJloMeSRmJVzjMgWqugdxUvYaWBdl4VHwTNDud/pUBh9M4rd1wJd8p
+         ITWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=0Pi79nxp9yRcvsypxDsQKDeReeaW2VFDHpsIWhblTY4=;
-        fh=FghvMk1I0xHXFsPOEvGPlQglbpl3NzUVtPeDk9N2VRk=;
-        b=cVxBzXhMHw9VlpuHoT9JwSgPHjbRKWBHkuMoZ0w3FLcbNO+98+381IBFNsNgusgKo/
-         ZKImRgEcBc82D3uhRgfPodwbBtB+DBOwJjtsXhtz1Tfm3Z7b8H9Naeq2alOcCpA0FrEa
-         WoZMnxascYcm2R+Fm0z6tpo93uFTMc1uvbGVE2jc9Igstr8Gu0l8/qdQrkUWoSNwsJWH
-         lRIgfnIkDWMn92bu8igHrTfJm3OWubT/D2i+AP0OIXv7rScREhZa/U5mJPaeHLdNXeMo
-         HoI/bWDMvsvP+Af7xIwlFmeQId+979/Ww9kHrEn1BiGkQnOxMrOuSbC2LjtkXatVtsc+
-         harg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:to;
+        bh=jgRNEFWGA9dBYaLSLVYR+sma+ham3tlV1KoBqRQje4c=;
+        fh=5JL7mqVb0xJPQxAe5ZtlV0oPd81juhKpcMs9GAwoilE=;
+        b=gVBR88rkcov8YFAIQ3qlGfkgSdd/4h9Z1X4raRLxDZsvZuAeJG0ykbOM5pJJtV0E7f
+         KWr4bmuyboAQaa1OWurNz5dkWk1ATR73ez5rheTjgTSXyUwyIekpYalL3gNMcreVX0px
+         Gkft3jKpDNWe0+W0tqyquYhjfMCJDcQBJrwMNkf4LhszfhClU/pViBiW0F8vwXmFEwCy
+         ssCOAX+QAJ0C/Otd1M7WFA85H2kajHNlM5gSfCzW2Fydbyaklewkxwq6Ku3lIqXSXd1k
+         2F/WRYGe3awJ/Lgb/Yu+3OGAWwLsKTGUe0xD6chPeaT7s5MgA0fbZiJs/egKFRmCIKKw
+         Ohbw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PR1pVtwf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2d8da3si172759085a.401.2025.02.25.05.41.43
+        by mx.google.com with ESMTPS id d75a77b69052e-473780b4e4esi15672111cf.610.2025.02.25.06.15.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 05:41:43 -0800 (PST)
+        Tue, 25 Feb 2025 06:15:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PR1pVtwf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmvBp-0001T6-JJ; Tue, 25 Feb 2025 08:41:37 -0500
+	id 1tmviC-0007Ba-VS; Tue, 25 Feb 2025 09:15:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tmvBl-0001Sc-74
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 08:41:34 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tmvBj-0002SL-Lv
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 08:41:32 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-6ef9b8b4f13so49017987b3.2
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 05:41:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740490889; x=1741095689; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=0Pi79nxp9yRcvsypxDsQKDeReeaW2VFDHpsIWhblTY4=;
- b=PR1pVtwfQzMczGrAHTMp7/UPqsfR/+MP1RulRFS2cPEc0m4JaC7chBeXGAGb+D+FoS
- AdArjnd7bLdMWAac6QCgFsdmSfBs2MNG+NSuyDQ773GNWUAeXcyU2Ahgot/eji2KR5Du
- 6kJu2MovjIw13NfUonFc2ttdpVW0GCCL0zYsl1i9MM1Ab9uqNveQ5FzTlHfJxXPyV7bk
- i9prh45dlEHz2fyb657a55PuD1XZXB7/y+K4XYKkNnFS4EcEMlerXT3F9g2iGrTHphEV
- dkIEqvNlTPKtvdnw8BRrlzjiTPX0ODaNyIQGpqJnyut+am+EVo0RsckeH51ooE7wrdXl
- vvLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740490889; x=1741095689;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0Pi79nxp9yRcvsypxDsQKDeReeaW2VFDHpsIWhblTY4=;
- b=pqNTV9lk3Xr6pXxvrZu4LL00xO3pW97tzdsu00iVOy5O31EURQ92XCHzEtJBW+APBq
- N/aKguseTUHBUcVPj1J8ZEFfuQWFgWJIpKesZwDFV3dB5DDRgIDhmKvmMISdinjMpTZb
- x9zZqNg5CzxctCp1mElu8ZHPGt17CrzfJqpNoiW8a+4qYXLij/4eD0QFB9oBQGep7xvS
- RZdQQuQGweCxfZIf0mqyIYqpmlauGWyGaONos+BUz0rlVdzyIfM4ysDaTrxIMz7arjUi
- mVjL58PhhR3hU8HbeN7GkarSA4Xu76put3de/3Z9P71sYiHW3xl8qiRR/KnBpyp61fIg
- m4QQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWb94aZ35/j5VqIhz3++zEMDmuf8nzhiy/hZTCEMYmrxwSbSg7qKQqDEiwU/V6s7KiQgTSOrLmwZA==@nongnu.org
-X-Gm-Message-State: AOJu0YyOhUhE2NVZTAmsYsn4U8VGBTyl4sbZtc3w/fMMrrRW3XZnZs6I
- Qs+nsY31GvLc7Q5jj9knqGQxi/fvBNitp8H8S+Of4EnpQEJhGSVN0SzUt54JsYIrFs48UCf4Jtf
- USrE6o/kad6BEBChgTIK5WAbpcOkHspDCM//TJw==
-X-Gm-Gg: ASbGnctuITxiPC/K9NTs5K+PxV6k2nGbR2jb+YbQFk8l/EBdlCenKC75AYd+KccAteD
- vD9m667CzS3T6kCthYpyiVAeiqblDUicFVmKxxI0yuHtwjKMqWzcVMOJzoidZUrPvXAGBozDxA4
- 1vc3qL5jBe
-X-Received: by 2002:a05:690c:7306:b0:6f8:cedc:570d with SMTP id
- 00721157ae682-6fbcc1ec613mr157750227b3.6.1740490889274; Tue, 25 Feb 2025
- 05:41:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <cy_liu@aspeedtech.com>)
+ id 1tmpWp-0006b6-Fx; Tue, 25 Feb 2025 02:38:55 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cy_liu@aspeedtech.com>)
+ id 1tmpWn-0008HP-4I; Tue, 25 Feb 2025 02:38:55 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 25 Feb
+ 2025 15:33:42 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 25 Feb 2025 15:33:42 +0800
+To: <cyliu0926@gmail.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v4 0/4] Support HACE to AST2700
+Date: Tue, 25 Feb 2025 15:33:37 +0800
+Message-ID: <20250225073342.2960966-1-cy_liu@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
-In-Reply-To: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2025 13:41:18 +0000
-X-Gm-Features: AWEUYZn2_0AGYG0NJBtP21sNGm1KEn1x-rzEPAgZUmackG5pDveJCDIo4syuXXQ
-Message-ID: <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, titusr@google.com, hskinnemoen@google.com, 
- wuhaotsh@google.com, qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72; envelope-from=cy_liu@aspeedtech.com;
+ helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 25 Feb 2025 09:15:03 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,43 +91,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  cy_liu <cy_liu@aspeedtech.com>
+From:  cy_liu via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UT+vuCDBSpkG
+X-TUID: TpCDpnz3pSJ3
 
-On Mon, 24 Feb 2025 at 20:51, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> Regression introduced by cf76c4
-> (hw/misc: Add nr_regs and cold_reset_values to NPCM CLK)
->
-> cold_reset_values has a different size, depending on device used
-> (NPCM7xx vs NPCM8xx). However, s->regs has a fixed size, which matches
-> NPCM8xx. Thus, when initializing a NPCM7xx, we go past cold_reset_values
-> ending.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
+This patch series is from https://patchwork.kernel.org/project/qemu-devel/cover/20250213033531.3367697-1-jamin_lin@aspeedtech.com/. 
+To expedite the review process, I have separated the HACE patches portion from
+the https://patchwork.kernel.org/project/qemu-devel/cover/20250213033531.3367697-1-jamin_lin@aspeedtech.com/ patch series into this new patch series.
 
-> diff --git a/hw/misc/npcm_clk.c b/hw/misc/npcm_clk.c
-> index d1f29759d59..0e85974cf96 100644
-> --- a/hw/misc/npcm_clk.c
-> +++ b/hw/misc/npcm_clk.c
-> @@ -964,8 +964,9 @@ static void npcm_clk_enter_reset(Object *obj, ResetType type)
->      NPCMCLKState *s = NPCM_CLK(obj);
->      NPCMCLKClass *c = NPCM_CLK_GET_CLASS(s);
->
-> -    g_assert(sizeof(s->regs) >= c->nr_regs * sizeof(uint32_t));
-> -    memcpy(s->regs, c->cold_reset_values, sizeof(s->regs));
-> +    size_t sizeof_regs = c->nr_regs * sizeof(uint32_t);
-> +    g_assert(sizeof(s->regs) >= sizeof_regs);
-> +    memcpy(s->regs, c->cold_reset_values, sizeof_regs);
->      s->ref_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->      npcm7xx_clk_update_all_clocks(s);
->      /*
+v4: Support HACE to AST2700
 
-Whoops, thanks for catching this. Applied to target-arm.next, thanks.
+Jamin Lin (4):
+  hw/misc/aspeed_hace: Fix coding style
+  hw/misc/aspeed_hace: Add AST2700 support
+  hw/arm/aspeed_ast27x0: Add HACE support for AST2700
+  hw/misc/aspeed_hace: Fix boot issue in the Crypto Manager Self Test
 
-(Looking more closely at the cold_reset_values handling
-in npcm_gcr.c, that looks not quite right in a different
-way; I'll send a reply to that patch email about that.)
+ include/hw/misc/aspeed_hace.h |  2 ++
+ hw/arm/aspeed_ast27x0.c       | 15 ++++++++++
+ hw/misc/aspeed_hace.c         | 55 ++++++++++++++++++++++++++++++++---
+ 3 files changed, 68 insertions(+), 4 deletions(-)
 
--- PMM
+-- 
+2.34.1
+

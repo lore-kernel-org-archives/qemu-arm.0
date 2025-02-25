@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp335890njg;
-        Tue, 25 Feb 2025 08:33:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU2AdHSJqZj4w+khDeUJBaLLQ0eMVgP8GCkhLZb2S7sKIyfT3hXpqnX+w4WHxJYXVrW9sDo7V320mBnFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE/+0x/mkn2Ual28mfjL3oEJNg+hxeFut1Evw/Ks8IhE3PnEHfDDnnbJPlqiC8BEfmZK8ad
-X-Received: by 2002:a05:620a:4607:b0:7c0:abe0:ce40 with SMTP id af79cd13be357-7c23bdff60fmr621702585a.5.1740501180837;
-        Tue, 25 Feb 2025 08:33:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740501180; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp335909njg;
+        Tue, 25 Feb 2025 08:33:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNm7IJ4gMbrIEz5pAAvxXX+oohT/nOfW/iBwXwJRTo+ObhptbXIxDQvrUQ490yERH6qv6AXrMV2AZvhw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHWtoe2xXuZ5UFd0nPsI+Qou5v3A8hgY3wGuNKzawu20ubVlomkaBX4NduZm32ao/eSS1zQ
+X-Received: by 2002:a05:620a:1a8c:b0:7c0:a1ca:93ac with SMTP id af79cd13be357-7c0cf9507ffmr2401306485a.40.1740501183399;
+        Tue, 25 Feb 2025 08:33:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740501183; cv=none;
         d=google.com; s=arc-20240605;
-        b=cF8JDu++02TY63uRsJ723KQmEoKX+iIIjTgG9bs/A4Gj0oYxHiBZHs1+uJwa+BtSoC
-         e/B4w/jC7iT7cd4ML/lQV5Nxz42od8frhFiAxE/PvmuVMvZi/aR0+AJrLKPabQKkmUFE
-         6/Qyq9LZ7Ydeufh9haKeWsxW9LXFrNv2Rz2bIqO75snxMiUsKZEuA4fLmsUll8daut/W
-         M17MKI09QS91ghu+z7AvfgJY3gtwoajVRzoH9RBoNq4q3lYq42NN4qCBUYqeLdrUqxB1
-         Xdla3GFQqWhd6/NRVXl9lIQ4+ZPFxQngtfGJOX2nRQfjiSGnlAYpJvou9jTXD5m3XMTD
-         td6w==
+        b=kIxKlgJTbTi3ImWGsPHfOpQYSULtezgjXbsbxuShSiWdkbg7+RIPmgctaIh3g6jUjp
+         fg6BkkSMoVzI7LQa6ThZhkhurWCGdFTyZRwEOhbYHpnXwOEQVYbM/RNmbxWfUkj6WT+s
+         gYpZDSZBMBM5vWAVGt+zpIAdrbETdgxOTshNW469UVzZQF8WlLbzORKufdltfOvpNMFn
+         Xo+IXw/WbmyyfLs0vnqVeNHzx94yARb1BDomOKI2DWF91uFDSxg5aZYqNKHTVvLVS/06
+         hK5zcl/fyzCzfJGZGKGeoZ/hdvOZqsvnBx/fBpFwHfcyVwwmh02xGXXkrOIuaqaLGUXK
+         3/mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UV88xJJUfAvrw/fc/mg8vRoOkEyBrTNQ3OXAJ9SV/Ic=;
+        bh=0LerVMLCO2g0uxpoATuHSnU0aK0p7jxOiA6jhHk9aNQ=;
         fh=mrCErM5HzBZPMbWrfhKaLB6Op7DKxeI6me6fB6ug8DQ=;
-        b=KtKzfgGb/TnTjyyb1TE9ITyNdOL57DK1rcc0IWmI//BYrh8hUOkIO0Ms0JvoU3HZ5X
-         vvFYeWLiopmXQE1pANrDXA6jOLaKU+dcd06d8VU4oeqnQUVuYEhcDlsNTGNRF9CDQKJ9
-         YiB01aLvpkaS2A/cXDWPcnyS2BlZDAIvXV3FhzDyBX28TKsj3KvF6k7xL9ey0R63iczP
-         CcoWDNjCO9LZNejO2Pj/OXIfVsR5K5bOzuivvGr/miMF0kTUswWHRX/tCpjLF+0c49ap
-         6x8aLw6RJdciYEjvp/d2+4qvcHVMXqOJf4GbB/SF3tZegMlNThM121ZcEZ+wCdMf+MpD
-         xWIg==;
+        b=itB0R4r35R8nYFIifFXDPvdn8NwRFxaBksIjn6iV9NR6wM7fgwOtbO8q/6SF0IGmfn
+         cGbLXs6dSjOB5sx+Z4z4kQFr6gVxCiAyqAapyM26JJd7Xjxo0VjHvkza95Sjj/hB9rbP
+         TAEReZQK6aJ/Dv9nykiz0G6sT5lIffm9Y/SyU+Zd06U93cvrCOR4/S7OZedutez2/SWe
+         9r0is6/97plT0JvL2e8OQZ2K54kfSUdk0p2ZJBnqmu+P7Jw6eUOtOJAcXLpZe4/lfOVI
+         EvlJEqVgrd2lUmDpoCHjBuHivoLWh6Lovptri2UYLGa3yf/hGi5741og9JqQYL5ijOrs
+         v+eQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F2t3CpK7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P5rZt0rP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2e32b6si198508085a.541.2025.02.25.08.33.00
+        by mx.google.com with ESMTPS id af79cd13be357-7c23c2daceasi215592885a.451.2025.02.25.08.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 08:33:00 -0800 (PST)
+        Tue, 25 Feb 2025 08:33:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F2t3CpK7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P5rZt0rP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmxqB-0001De-8M; Tue, 25 Feb 2025 11:31:27 -0500
+	id 1tmxqO-0001dW-1C; Tue, 25 Feb 2025 11:31:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxpw-00012V-HG
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:15 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxq8-00019H-4c
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:24 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxps-0006Zt-VW
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:11 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxq3-0006cJ-CK
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740501068;
+ s=mimecast20190719; t=1740501077;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UV88xJJUfAvrw/fc/mg8vRoOkEyBrTNQ3OXAJ9SV/Ic=;
- b=F2t3CpK7uObvL50jyfKFSRwx81Ur6ouSufhs8eHsg1bAS5XLiTns435dTs66wWOvheOZ6M
- +wtJ2ZIcvCYP/NhqxkrMUhhOtcj5KgpTlAcVhjY/omynHmU+JzkkHJlvP5WNDRueQaJkeR
- BiiRE2QVLHdUOyuMfJWjMpMtIHyAuK4=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=0LerVMLCO2g0uxpoATuHSnU0aK0p7jxOiA6jhHk9aNQ=;
+ b=P5rZt0rP37kHzGDJmng+U4G915lCYkCVsT/Zr49mhsUb4pgEwhsiavmJDNWdL0sVKpv5f3
+ YCsVJHEtVo/PRTYQ+yXwqP2xRoP92TJ+IFfwLk3/uMuhIFQoOJ3P6Mg3vbCvR7F5eWdWqZ
+ jVld17yJ4VHsK4mDgTOIngPt/nH5buw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-683-cuTw9aLtN_eVuYzazV5bag-1; Tue,
- 25 Feb 2025 11:31:04 -0500
-X-MC-Unique: cuTw9aLtN_eVuYzazV5bag-1
-X-Mimecast-MFC-AGG-ID: cuTw9aLtN_eVuYzazV5bag_1740501059
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-l3WcQJdJO5u_z4qVFDJxmg-1; Tue,
+ 25 Feb 2025 11:31:13 -0500
+X-MC-Unique: l3WcQJdJO5u_z4qVFDJxmg-1
+X-Mimecast-MFC-AGG-ID: l3WcQJdJO5u_z4qVFDJxmg_1740501071
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 354871809C9F; Tue, 25 Feb 2025 16:30:55 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7EFA418E6952; Tue, 25 Feb 2025 16:31:11 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.45.224.219])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 726BE19560AE; Tue, 25 Feb 2025 16:30:54 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2CD3E1800367; Tue, 25 Feb 2025 16:31:11 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 405B4180063E; Tue, 25 Feb 2025 17:30:32 +0100 (CET)
+ id 14A1318007A1; Tue, 25 Feb 2025 17:30:33 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -96,14 +96,14 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v5 11/24] hw/uefi: add var-service-pkcs7.c
-Date: Tue, 25 Feb 2025 17:30:15 +0100
-Message-ID: <20250225163031.1409078-12-kraxel@redhat.com>
+Subject: [PATCH v5 22/24] hw/uefi-vars-sysbus: allow for pc and q35
+Date: Tue, 25 Feb 2025 17:30:26 +0100
+Message-ID: <20250225163031.1409078-23-kraxel@redhat.com>
 In-Reply-To: <20250225163031.1409078-1-kraxel@redhat.com>
 References: <20250225163031.1409078-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -128,459 +128,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uS5AAqSZG7v3
+X-TUID: 4R7Ok8ggqYGP
 
-This implements pkcs7 signature verification using gnutls.
-Needed to check authenticated variable updates.
+Allow the device being added to x86_64 pc and q35 VMs.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-pkcs7.c | 436 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 436 insertions(+)
- create mode 100644 hw/uefi/var-service-pkcs7.c
+ hw/i386/pc_piix.c | 2 ++
+ hw/i386/pc_q35.c  | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/hw/uefi/var-service-pkcs7.c b/hw/uefi/var-service-pkcs7.c
-new file mode 100644
-index 000000000000..32accf4e44e0
---- /dev/null
-+++ b/hw/uefi/var-service-pkcs7.c
-@@ -0,0 +1,436 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * uefi vars device - pkcs7 verification
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "system/dma.h"
-+
-+#include <gnutls/gnutls.h>
-+#include <gnutls/pkcs7.h>
-+#include <gnutls/crypto.h>
-+
-+#include "hw/uefi/var-service.h"
-+
-+#define AUTHVAR_DIGEST_ALGO GNUTLS_DIG_SHA256
-+#define AUTHVAR_DIGEST_SIZE 32
-+
-+/*
-+ * Replicate the signed data for signature verification.
-+ */
-+static gnutls_datum_t *build_signed_data(mm_variable_access *va, void *data)
-+{
-+    variable_auth_2 *auth = data;
-+    uint64_t data_offset = sizeof(efi_time) + auth->hdr_length;
-+    uint16_t *name = (void *)va + sizeof(mm_variable_access);
-+    gnutls_datum_t *sdata;
-+    uint64_t pos = 0;
-+
-+    sdata = g_new(gnutls_datum_t, 1);
-+    sdata->size = (va->name_size - 2
-+                   + sizeof(QemuUUID)
-+                   + sizeof(va->attributes)
-+                   + sizeof(auth->timestamp)
-+                   + va->data_size - data_offset);
-+    sdata->data = g_malloc(sdata->size);
-+
-+    /* Variable Name (without terminating \0) */
-+    memcpy(sdata->data + pos, name, va->name_size - 2);
-+    pos += va->name_size - 2;
-+
-+    /* Variable Namespace Guid */
-+    memcpy(sdata->data + pos, &va->guid, sizeof(va->guid));
-+    pos += sizeof(va->guid);
-+
-+    /* Attributes */
-+    memcpy(sdata->data + pos, &va->attributes, sizeof(va->attributes));
-+    pos += sizeof(va->attributes);
-+
-+    /* TimeStamp */
-+    memcpy(sdata->data + pos, &auth->timestamp, sizeof(auth->timestamp));
-+    pos += sizeof(auth->timestamp);
-+
-+    /* Variable Content */
-+    memcpy(sdata->data + pos, data + data_offset, va->data_size - data_offset);
-+    pos += va->data_size - data_offset;
-+
-+    assert(pos == sdata->size);
-+    return sdata;
-+}
-+
-+/*
-+ * See WrapPkcs7Data() in edk2.
-+ *
-+ * UEFI spec allows pkcs7 signatures being used without the envelope which
-+ * identifies them as pkcs7 signatures.  openssl and gnutls will not parse them
-+ * without the envelope though.  So add it if needed.
-+ */
-+static void wrap_pkcs7(gnutls_datum_t *pkcs7)
-+{
-+    static uint8_t signed_data_oid[9] = {
-+        0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02
-+    };
-+    gnutls_datum_t wrap;
-+
-+    if (pkcs7->data[4] == 0x06 &&
-+        pkcs7->data[5] == 0x09 &&
-+        memcmp(pkcs7->data + 6, signed_data_oid, sizeof(signed_data_oid)) == 0 &&
-+        pkcs7->data[15] == 0x0a &&
-+        pkcs7->data[16] == 0x82) {
-+        return;
-+    }
-+
-+    wrap.size = pkcs7->size + 19;
-+    wrap.data = g_malloc(wrap.size);
-+
-+    wrap.data[0] = 0x30;
-+    wrap.data[1] = 0x82;
-+    wrap.data[2] = (wrap.size - 4) >> 8;
-+    wrap.data[3] = (wrap.size - 4) & 0xff;
-+    wrap.data[4] = 0x06;
-+    wrap.data[5] = 0x09;
-+    memcpy(wrap.data + 6, signed_data_oid, sizeof(signed_data_oid));
-+
-+    wrap.data[15] = 0xa0;
-+    wrap.data[16] = 0x82;
-+    wrap.data[17] = pkcs7->size >> 8;
-+    wrap.data[18] = pkcs7->size & 0xff;
-+    memcpy(wrap.data + 19, pkcs7->data, pkcs7->size);
-+
-+    g_free(pkcs7->data);
-+    *pkcs7 = wrap;
-+}
-+
-+static gnutls_datum_t *build_pkcs7(void *data)
-+{
-+    variable_auth_2 *auth = data;
-+    gnutls_datum_t *pkcs7;
-+
-+    pkcs7 = g_new(gnutls_datum_t, 1);
-+    pkcs7->size = auth->hdr_length - 24;
-+    pkcs7->data = g_malloc(pkcs7->size);
-+    memcpy(pkcs7->data, data + 16 + 24, pkcs7->size);
-+
-+    wrap_pkcs7(pkcs7);
-+
-+    return pkcs7;
-+}
-+
-+/*
-+ * Read UEFI signature database, store x509 all certificates found in
-+ * gnutls_x509_trust_list_t.
-+ */
-+static gnutls_x509_trust_list_t build_trust_list_sb(uefi_variable *var)
-+{
-+    gnutls_x509_trust_list_t tlist;
-+    gnutls_datum_t cert_data;
-+    gnutls_x509_crt_t cert;
-+    uefi_vars_siglist siglist;
-+    uefi_vars_cert *c;
-+    int rc;
-+
-+    rc = gnutls_x509_trust_list_init(&tlist, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_trust_list_init error: %s",
-+                     gnutls_strerror(rc));
-+        return NULL;
-+    }
-+
-+    uefi_vars_siglist_init(&siglist);
-+    uefi_vars_siglist_parse(&siglist, var->data, var->data_size);
-+
-+    QTAILQ_FOREACH(c, &siglist.x509, next) {
-+        cert_data.size = c->size;
-+        cert_data.data = c->data;
-+
-+        rc = gnutls_x509_crt_init(&cert);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+            break;
-+        }
-+        rc = gnutls_x509_crt_import(cert, &cert_data, GNUTLS_X509_FMT_DER);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_import error: %s",
-+                        gnutls_strerror(rc));
-+            gnutls_x509_crt_deinit(cert);
-+            break;
-+        }
-+        rc = gnutls_x509_trust_list_add_cas(tlist, &cert, 1, 0);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_import error: %s",
-+                        gnutls_strerror(rc));
-+            gnutls_x509_crt_deinit(cert);
-+            break;
-+        }
-+    }
-+
-+    uefi_vars_siglist_free(&siglist);
-+
-+    return tlist;
-+}
-+
-+static int build_digest_authvar(gnutls_x509_crt_t signer,
-+                                gnutls_x509_crt_t root,
-+                                uint8_t *hash_digest)
-+{
-+    char *cn;
-+    size_t cn_size = 0;
-+    uint8_t fp[AUTHVAR_DIGEST_SIZE];
-+    size_t fp_size = sizeof(fp);
-+    gnutls_hash_hd_t hash;
-+    int rc;
-+
-+    /* get signer CN */
-+    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
-+                                       0, 0, NULL, &cn_size);
-+    if (rc != GNUTLS_E_SHORT_MEMORY_BUFFER) {
-+        warn_report("gnutls_x509_crt_get_dn_by_oid error #1: %s",
-+                    gnutls_strerror(rc));
-+        return rc;
-+    }
-+
-+    cn = g_malloc(cn_size);
-+    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
-+                                       0, 0, cn, &cn_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_get_dn_by_oid error #2: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+
-+    /* get root certificate fingerprint */
-+    rc = gnutls_x509_crt_get_fingerprint(root, AUTHVAR_DIGEST_ALGO,
-+                                         fp, &fp_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_get_fingerprint error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+
-+    /* digest both items */
-+    rc = gnutls_hash_init(&hash, AUTHVAR_DIGEST_ALGO);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash_init error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    rc = gnutls_hash(hash, cn, cn_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    rc = gnutls_hash(hash, fp, fp_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    gnutls_hash_deinit(hash, hash_digest);
-+
-+    return 0;
-+
-+err:
-+    g_free(cn);
-+    return rc;
-+}
-+
-+/*
-+ * uefi spec 2.9, section 8.2.2
-+ *
-+ * For EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS variables which are
-+ * NOT secure boot variables we should track the root certificate of the trust
-+ * chain, and the subject CN of the signer certificate.
-+ *
-+ * So we'll go store a digest of these two items so we can verify this.  Also
-+ * create a gnutls_x509_trust_list_t with the root certificate, so
-+ * gnutls_pkcs7_verify() will pass (assuming the signature is otherwise
-+ * correct).
-+ */
-+static gnutls_x509_trust_list_t build_trust_list_authvar(gnutls_pkcs7_t pkcs7,
-+                                                         uint8_t *hash_digest)
-+{
-+    gnutls_datum_t signer_data = { 0 };
-+    gnutls_datum_t root_data = { 0 };
-+    gnutls_x509_crt_t signer = NULL;
-+    gnutls_x509_crt_t root = NULL;
-+    gnutls_x509_trust_list_t tlist = NULL;
-+    int n, rc;
-+
-+    n = gnutls_pkcs7_get_crt_count(pkcs7);
-+
-+    /* first is signer certificate */
-+    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, 0, &signer_data);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_get_crt_raw2(0) error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_crt_init(&signer);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_crt_import(signer, &signer_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        gnutls_x509_crt_deinit(signer);
-+        goto done;
-+    }
-+
-+    /* last is root-of-trust certificate (can be identical to signer) */
-+    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, n - 1, &root_data);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_get_crt_raw2(%d) error: %s",
-+                    n - 1, gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_crt_init(&root);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_crt_import(root, &root_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
-+    }
-+
-+    /* calc digest for signer CN + root cert */
-+    rc = build_digest_authvar(signer, root, hash_digest);
-+    if (rc < 0) {
-+        goto done;
-+    }
-+
-+    /* add root to trust list */
-+    rc = gnutls_x509_trust_list_init(&tlist, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_trust_list_init error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_trust_list_add_cas(tlist, &root, 1, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        gnutls_x509_trust_list_deinit(tlist, 1);
-+        tlist = NULL;
-+        goto done;
-+    } else {
-+        /* ownership passed to tlist */
-+        root = NULL;
-+    }
-+
-+done:
-+    if (signer_data.data) {
-+        gnutls_free(signer_data.data);
-+    }
-+    if (root_data.data) {
-+        gnutls_free(root_data.data);
-+    }
-+    if (signer) {
-+        gnutls_x509_crt_deinit(signer);
-+    }
-+    if (root) {
-+        gnutls_x509_crt_deinit(root);
-+    }
-+    return tlist;
-+}
-+
-+static void free_datum(gnutls_datum_t *ptr)
-+{
-+    if (!ptr) {
-+        return;
-+    }
-+    g_free(ptr->data);
-+    g_free(ptr);
-+}
-+
-+static void gnutls_log_stderr(int level, const char *msg)
-+{
-+    if (strncmp(msg, "ASSERT:", 7) == 0) {
-+        return;
-+    }
-+    fprintf(stderr, "    %d: %s", level, msg);
-+}
-+
-+/*
-+ * pkcs7 signature verification (EFI_VARIABLE_AUTHENTICATION_2).
-+ */
-+efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
-+                                   void **digest, uint32_t *digest_size,
-+                                   mm_variable_access *va, void *data)
-+{
-+    gnutls_x509_trust_list_t tlist = NULL;
-+    gnutls_datum_t *signed_data = NULL;
-+    gnutls_datum_t *pkcs7_data = NULL;
-+    gnutls_pkcs7_t pkcs7 = NULL;
-+    efi_status status = EFI_SECURITY_VIOLATION;
-+    int rc;
-+
-+    if (0) {
-+        /* gnutls debug logging */
-+        static bool first = true;
-+
-+        if (first) {
-+            first = false;
-+            gnutls_global_set_log_function(gnutls_log_stderr);
-+            gnutls_global_set_log_level(99);
-+        }
-+    }
-+
-+    signed_data = build_signed_data(va, data);
-+    pkcs7_data = build_pkcs7(data);
-+
-+    rc = gnutls_pkcs7_init(&pkcs7);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_init error: %s", gnutls_strerror(rc));
-+        goto out;
-+    }
-+
-+    rc = gnutls_pkcs7_import(pkcs7, pkcs7_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_import error: %s", gnutls_strerror(rc));
-+        goto out;
-+    }
-+
-+    if (siglist) {
-+        /* secure boot variables */
-+        tlist = build_trust_list_sb(siglist);
-+    } else if (digest && digest_size) {
-+        /* other authenticated variables */
-+        *digest_size = AUTHVAR_DIGEST_SIZE;
-+        *digest = g_malloc(*digest_size);
-+        tlist = build_trust_list_authvar(pkcs7, *digest);
-+    } else {
-+        /* should not happen */
-+        goto out;
-+    }
-+
-+    rc = gnutls_pkcs7_verify(pkcs7, tlist,
-+                             NULL, 0,
-+                             0, signed_data,
-+                             GNUTLS_VERIFY_DISABLE_TIME_CHECKS |
-+                             GNUTLS_VERIFY_DISABLE_TRUSTED_TIME_CHECKS);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_verify error: %s", gnutls_strerror(rc));
-+        goto out;
-+    }
-+
-+    /* check passed */
-+    status = EFI_SUCCESS;
-+
-+out:
-+    free_datum(signed_data);
-+    free_datum(pkcs7_data);
-+    if (tlist) {
-+        gnutls_x509_trust_list_deinit(tlist, 1);
-+    }
-+    if (pkcs7) {
-+        gnutls_pkcs7_deinit(pkcs7);
-+    }
-+    return status;
-+}
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 04d2957adcd7..6c91e2d29298 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -65,6 +65,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -468,6 +469,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+ 
+     object_class_property_add_enum(oc, "x-south-bridge", "PCSouthBridgeOption",
+                                    &PCSouthBridgeOption_lookup,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 77536dd697f5..fd96d0345c7d 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -58,6 +58,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -355,6 +356,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+     compat_props_add(m->compat_props,
+                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);
+ }
 -- 
 2.48.1
 

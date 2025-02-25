@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp341644njg;
-        Tue, 25 Feb 2025 08:42:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWnmqcZ8FJ01cHo1tHeFtqmPK1jJBfPwrVF3GCiEcmDS6hX18Hqq/JLmsS4Z95lvNOw2NpaA8dIqtRyPQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHl+6q3NzJTvo06jeMiN4gd1l17U9/Lp7CcZQj6LENG18XSiSNYer/lhCGb6KHn/S4MiPjF
-X-Received: by 2002:a05:620a:40d5:b0:7c0:86c7:1a46 with SMTP id af79cd13be357-7c247f2537amr5419785a.23.1740501757357;
-        Tue, 25 Feb 2025 08:42:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740501757; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp335196njg;
+        Tue, 25 Feb 2025 08:32:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWhbzeMHK0AV7jVTOvcYkNIg2DqIhcmtycEPeqv0msBKww+QCXXVJUvViAhxccOBw/5WiWOPZ/fBBWVJg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfWYs+fOQaeIqmffsobE8DcFuZeMVc60yX8cvZFi/Z/UNo5SJXI9bLFRdn0TyfyPafL3c1
+X-Received: by 2002:a05:6102:c0d:b0:4bb:d062:44e with SMTP id ada2fe7eead31-4c00ad0e4f7mr2383624137.1.1740501122216;
+        Tue, 25 Feb 2025 08:32:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740501122; cv=none;
         d=google.com; s=arc-20240605;
-        b=HRHRN9uuo2recRJtqR35TTVDsD1HSm0/FyzK9465N5k5MZx4iY8Wrj75qfZFRZ0Qni
-         VQnDYhLbxAL54wqpePT6oT7tLq6joyR/bhQxoH/a4EtWcWhsXpCy8ykzPEtZa5N79Gaj
-         fdKgDeYfNoTUdDZiZ4+e5npaZgPhRQOjTb/bXaGULsqYimoewO0aLrAU+7O5YkjM+H0+
-         gZOJ9V1mORVZDBkY5HtOI5FvEbiMMHLDhjACEW6AyaZ8UZTitqj1/cluMd0EOZECK5Rk
-         bjszUheqZMtG9JjrjwcPZyZTvlUTbHx+VtmKAFgtYLPk9mPClUtRq7w1qnx5jNw0dkeK
-         Hmcg==
+        b=GgWOT/9dFAxp52l7u1gH+owoDBOVgIW7yPfo+lOdEtT7ZHZdv+GFOZJaHeBh3glcMI
+         Nw7RbqVvXPZ0YIvtoeZumCvS2rnTgP8ceyiX8Q3QRyQyVg1QlXgxn+DH/JBTRzgsctLq
+         B788M2uOWt4QOLwXCYUTd7p/Xmaz1t4lM880jroBqNkJvhuqTLAhe8+Xwu2sr3Q9Ybb5
+         Vw628AHTY2T7Plyaa7Weafn3sQ3ag10MRaZ+/WS6ATjUbXw+zuUn5Gvk/rGJaAILmABy
+         KPOsKyJ6r7r+bPxnZpkParN3nrsyv1PVrPVs6KmlrgM+bk3fvPjfz4jgP0Zj5/S14m0H
+         glnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
+        bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
         fh=mrCErM5HzBZPMbWrfhKaLB6Op7DKxeI6me6fB6ug8DQ=;
-        b=kCMK4tGZ7jpuhILjVz7NfYAVtPpzoasii1sU3cRBXfsmBAjw3015p1hiNVi6AoWYgz
-         GoN7nL0Z30XIXsU4v0O8FfKv/sCI0mGH4cgLipHBtHUdRPVEtiKAhlHqi78YOtvK1YTQ
-         chWJ6mSxbr3dnD3+BDObyY/SvYAtJ0hLUtzXtNA4vb8LQd8hFUxY3ykzkWd9WE1yJpag
-         PT8/wXUG9N7UWPF86vyo29toHneo7F70IPQkQqLMkJtq2i/8wOL/bs/HbQKXtjAuj6Kt
-         SwkemxIsxQQEZDRl300fKvYLxASjBNHZ2mUqNnOxAFTWCy7mo824Vqn9+ehMxIWUOl30
-         pH3Q==;
+        b=kFLYoTr9TqoW3Lq4dgIdAjxM/FEzzMYz8FvVhy0vrQuv3LXPp7TLHZW8h/WxCY2/qN
+         owtVQwf4ksizCTbDifpX3x/yeDc+zbUqzk3MR06SUl0igQp6gXyRaqv12OpjNCh7EQ7h
+         1NTHblXOPcKvUGNeu8b0LV+Jd92nzs5XHODWgZ3t/p/7NM2ytMlrRIYhP/L67V745JxM
+         aKTmhSUtdcabDzlMhlQTFXicNOIV2nkT2hWHpw0uRG3N9AqbC2lo1JQXYGgl7CY4Ji9G
+         zTLBwpiGcj7N+rTpldHAIlmrbWTM2ugNW7N6yQ96L0kLJeAil4osU6czeIk5fAoyaFZL
+         5mew==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="A+PH/HvJ";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HchtVsTV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2e38bfsi196648385a.568.2025.02.25.08.42.37
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c00c6d6568si450539137.261.2025.02.25.08.32.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 08:42:37 -0800 (PST)
+        Tue, 25 Feb 2025 08:32:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="A+PH/HvJ";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HchtVsTV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmxq8-00018f-6m; Tue, 25 Feb 2025 11:31:24 -0500
+	id 1tmxpo-0000zO-JO; Tue, 25 Feb 2025 11:31:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxpq-00010L-Sq
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:07 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxph-0000ry-DJ
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:30:57 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxpo-0006YV-U7
- for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:31:06 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tmxpf-0006Vu-Ks
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2025 11:30:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740501064;
+ s=mimecast20190719; t=1740501054;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n92pvF6nCL5CjkeU6AZsN7p4gpUk1K+VSSkUzXeRW6g=;
- b=A+PH/HvJh7y5dwjGZR9TXQqh1lNJW3SSQdy4LsqY2V3gMix9YvWQ+lNlPjqdp8TrtPLp/Q
- jqXSEXthTC0HZa0Yen64gfZ8HichyEtDgACZJbcmgQtPEJWaVBNlt0tg221+U628FMpL4P
- RUVI+x3EVso7h6dUhdpUbwPiRaOKNPw=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=ae3RfQDslfS0/+8r8eChjkfDFE+d3A19Q0XLW28/4XI=;
+ b=HchtVsTVp10L4J/5FIshMhDzjb5sdxmHQ7A8FB0WCPYuccr7dABWMORsVVP/uSypWZDvZU
+ gCZ1bm+cQUSm8jWhDDwoz0Qdl1avUh18nUh9p6nGZgZpmwv+EHla8l2YW0ISkcA4x4pDKA
+ +MjBusNF953gosfgjW3AXg8tiP3DGLQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-186-AlpWaztNPUePC4geEoCfiA-1; Tue,
- 25 Feb 2025 11:31:00 -0500
-X-MC-Unique: AlpWaztNPUePC4geEoCfiA-1
-X-Mimecast-MFC-AGG-ID: AlpWaztNPUePC4geEoCfiA_1740501059
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-Gfd1QqCoP7igKLMuAlIZrA-1; Tue,
+ 25 Feb 2025 11:30:49 -0500
+X-MC-Unique: Gfd1QqCoP7igKLMuAlIZrA-1
+X-Mimecast-MFC-AGG-ID: Gfd1QqCoP7igKLMuAlIZrA_1740501043
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 045B019560B9; Tue, 25 Feb 2025 16:30:59 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ED4231979061; Tue, 25 Feb 2025 16:30:42 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.45.224.219])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 978C81800357; Tue, 25 Feb 2025 16:30:57 +0000 (UTC)
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2D3DA19560B9; Tue, 25 Feb 2025 16:30:42 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 5F4E01800786; Tue, 25 Feb 2025 17:30:32 +0100 (CET)
+ id CC75A1800635; Tue, 25 Feb 2025 17:30:31 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -96,14 +96,14 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v5 13/24] hw/uefi: add var-service-siglist.c
-Date: Tue, 25 Feb 2025 17:30:17 +0100
-Message-ID: <20250225163031.1409078-14-kraxel@redhat.com>
+Subject: [PATCH v5 05/24] hw/uefi: add var-service-guid.c
+Date: Tue, 25 Feb 2025 17:30:09 +0100
+Message-ID: <20250225163031.1409078-6-kraxel@redhat.com>
 In-Reply-To: <20250225163031.1409078-1-kraxel@redhat.com>
 References: <20250225163031.1409078-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -128,237 +128,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TjT/RWllfw4b
+X-TUID: bO8JbcnHDpxc
 
-Functions to serialize and de-serialize EFI signature databases.  This
-is needed to merge signature databases (happens in practice when
-appending dbx updates) and also to extract the certificates for
-pkcs7 signature verification.
+Add variables for a bunch of UEFI GUIDs we will need.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-siglist.c | 212 ++++++++++++++++++++++++++++++++++
- 1 file changed, 212 insertions(+)
- create mode 100644 hw/uefi/var-service-siglist.c
+ hw/uefi/var-service-guid.c | 99 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 99 insertions(+)
+ create mode 100644 hw/uefi/var-service-guid.c
 
-diff --git a/hw/uefi/var-service-siglist.c b/hw/uefi/var-service-siglist.c
+diff --git a/hw/uefi/var-service-guid.c b/hw/uefi/var-service-guid.c
 new file mode 100644
-index 000000000000..8948f1b78471
+index 000000000000..eba3655c8d30
 --- /dev/null
-+++ b/hw/uefi/var-service-siglist.c
-@@ -0,0 +1,212 @@
++++ b/hw/uefi/var-service-guid.c
+@@ -0,0 +1,99 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - parse and generate efi signature databases
++ * uefi vars device - GUIDs
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
 +#include "system/dma.h"
 +
 +#include "hw/uefi/var-service.h"
 +
-+/*
-+ * Add x509 certificate to list (with duplicate check).
-+ */
-+static void uefi_vars_siglist_add_x509(uefi_vars_siglist *siglist,
-+                                       QemuUUID *owner,
-+                                       void *data, uint64_t size)
-+{
-+    uefi_vars_cert *c;
++/* variable namespaces */
 +
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        if (c->size != size) {
-+            continue;
-+        }
-+        if (memcmp(c->data, data, size) != 0) {
-+            continue;
-+        }
-+        return;
-+    }
++const QemuUUID EfiGlobalVariable = {
++    .data = UUID_LE(0x8be4df61, 0x93ca, 0x11d2, 0xaa, 0x0d,
++                    0x00, 0xe0, 0x98, 0x03, 0x2b, 0x8c)
++};
 +
-+    c = g_malloc(sizeof(*c) + size);
-+    c->owner = *owner;
-+    c->size = size;
-+    memcpy(c->data, data, size);
-+    QTAILQ_INSERT_TAIL(&siglist->x509, c, next);
-+}
++const QemuUUID EfiImageSecurityDatabase = {
++    .data = UUID_LE(0xd719b2cb, 0x3d3a, 0x4596, 0xa3, 0xbc,
++                    0xda, 0xd0, 0x0e, 0x67, 0x65, 0x6f)
++};
 +
-+/*
-+ * Add sha256 hash to list (with duplicate check).
-+ */
-+static void uefi_vars_siglist_add_sha256(uefi_vars_siglist *siglist,
-+                                         QemuUUID *owner,
-+                                         void *data)
-+{
-+    uefi_vars_hash *h;
++const QemuUUID EfiCustomModeEnable = {
++    .data = UUID_LE(0xc076ec0c, 0x7028, 0x4399, 0xa0, 0x72,
++                    0x71, 0xee, 0x5c, 0x44, 0x8b, 0x9f)
++};
 +
-+    QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+        if (memcmp(h->data, data, 32) != 0) {
-+            continue;
-+        }
-+        return;
-+    }
++const QemuUUID EfiSecureBootEnableDisable = {
++    .data = UUID_LE(0xf0a30bc7, 0xaf08, 0x4556, 0x99, 0xc4,
++                    0x0, 0x10, 0x9, 0xc9, 0x3a, 0x44)
++};
 +
-+    h = g_malloc(sizeof(*h) + 32);
-+    h->owner = *owner;
-+    memcpy(h->data, data, 32);
-+    QTAILQ_INSERT_TAIL(&siglist->sha256, h, next);
-+}
++/* signatures */
 +
-+void uefi_vars_siglist_init(uefi_vars_siglist *siglist)
-+{
-+    memset(siglist, 0, sizeof(*siglist));
-+    QTAILQ_INIT(&siglist->x509);
-+    QTAILQ_INIT(&siglist->sha256);
-+}
++const QemuUUID EfiCertSha256Guid = {
++    .data = UUID_LE(0xc1c41626, 0x504c, 0x4092, 0xac, 0xa9,
++                    0x41, 0xf9, 0x36, 0x93, 0x43, 0x28)
++};
 +
-+void uefi_vars_siglist_free(uefi_vars_siglist *siglist)
-+{
-+    uefi_vars_cert *c, *cs;
-+    uefi_vars_hash *h, *hs;
++const QemuUUID EfiCertSha384Guid = {
++    .data = UUID_LE(0xff3e5307, 0x9fd0, 0x48c9, 0x85, 0xf1,
++                    0x8a, 0xd5, 0x6c, 0x70, 0x1e, 0x1)
++};
 +
-+    QTAILQ_FOREACH_SAFE(c, &siglist->x509, next, cs) {
-+        QTAILQ_REMOVE(&siglist->x509, c, next);
-+        g_free(c);
-+    }
-+    QTAILQ_FOREACH_SAFE(h, &siglist->sha256, next, hs) {
-+        QTAILQ_REMOVE(&siglist->sha256, h, next);
-+        g_free(h);
-+    }
-+}
++const QemuUUID EfiCertSha512Guid = {
++    .data = UUID_LE(0x93e0fae, 0xa6c4, 0x4f50, 0x9f, 0x1b,
++                    0xd4, 0x1e, 0x2b, 0x89, 0xc1, 0x9a)
++};
++
++const QemuUUID EfiCertRsa2048Guid = {
++    .data = UUID_LE(0x3c5766e8, 0x269c, 0x4e34, 0xaa, 0x14,
++                    0xed, 0x77, 0x6e, 0x85, 0xb3, 0xb6)
++};
++
++const QemuUUID EfiCertX509Guid = {
++    .data = UUID_LE(0xa5c059a1, 0x94e4, 0x4aa7, 0x87, 0xb5,
++                    0xab, 0x15, 0x5c, 0x2b, 0xf0, 0x72)
++};
++
++const QemuUUID EfiCertTypePkcs7Guid = {
++    .data = UUID_LE(0x4aafd29d, 0x68df, 0x49ee, 0x8a, 0xa9,
++                    0x34, 0x7d, 0x37, 0x56, 0x65, 0xa7)
++};
 +
 +/*
-+ * Parse UEFI signature list.
++ * mm_header.guid values that the guest DXE/BDS phases use for
++ * sending requests to management mode
 + */
-+void uefi_vars_siglist_parse(uefi_vars_siglist *siglist,
-+                             void *data, uint64_t size)
-+{
-+    efi_siglist *efilist;
-+    uint64_t start;
 +
-+    while (size) {
-+        if (size < sizeof(*efilist)) {
-+            break;
-+        }
-+        efilist = data;
-+        if (size < efilist->siglist_size) {
-+            break;
-+        }
++const QemuUUID EfiSmmVariableProtocolGuid = {
++    .data = UUID_LE(0xed32d533, 0x99e6, 0x4209, 0x9c, 0xc0,
++                    0x2d, 0x72, 0xcd, 0xd9, 0x98, 0xa7)
++};
 +
-+        if (uadd64_overflow(sizeof(*efilist), efilist->header_size, &start)) {
-+            break;
-+        }
-+        if (efilist->sig_size <= sizeof(QemuUUID)) {
-+            break;
-+        }
-+
-+        if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertX509Guid)) {
-+            if (start + efilist->sig_size != efilist->siglist_size) {
-+                break;
-+            }
-+            uefi_vars_siglist_add_x509(siglist,
-+                                       (QemuUUID *)(data + start),
-+                                       data + start + sizeof(QemuUUID),
-+                                       efilist->sig_size - sizeof(QemuUUID));
-+
-+        } else if (qemu_uuid_is_equal(&efilist->guid_type, &EfiCertSha256Guid)) {
-+            if (efilist->sig_size != sizeof(QemuUUID) + 32) {
-+                break;
-+            }
-+            if (start + efilist->sig_size > efilist->siglist_size) {
-+                break;
-+            }
-+            while (start <= efilist->siglist_size - efilist->sig_size) {
-+                uefi_vars_siglist_add_sha256(siglist,
-+                                             (QemuUUID *)(data + start),
-+                                             data + start + sizeof(QemuUUID));
-+                start += efilist->sig_size;
-+            }
-+
-+        } else {
-+            QemuUUID be = qemu_uuid_bswap(efilist->guid_type);
-+            char *str_uuid = qemu_uuid_unparse_strdup(&be);
-+            warn_report("%s: unknown type (%s)", __func__, str_uuid);
-+            g_free(str_uuid);
-+        }
-+
-+        data += efilist->siglist_size;
-+        size -= efilist->siglist_size;
-+    }
-+}
-+
-+uint64_t uefi_vars_siglist_blob_size(uefi_vars_siglist *siglist)
-+{
-+    uefi_vars_cert *c;
-+    uefi_vars_hash *h;
-+    uint64_t size = 0;
-+
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        size += sizeof(efi_siglist) + sizeof(QemuUUID) + c->size;
-+    }
-+
-+    if (!QTAILQ_EMPTY(&siglist->sha256)) {
-+        size += sizeof(efi_siglist);
-+        QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+            size += sizeof(QemuUUID) + 32;
-+        }
-+    }
-+
-+    return size;
-+}
++const QemuUUID VarCheckPolicyLibMmiHandlerGuid = {
++    .data = UUID_LE(0xda1b0d11, 0xd1a7, 0x46c4, 0x9d, 0xc9,
++                    0xf3, 0x71, 0x48, 0x75, 0xc6, 0xeb)
++};
 +
 +/*
-+ * Generate UEFI signature list.
++ * mm_header.guid values that the guest DXE/BDS phases use for
++ * reporting event groups being signaled to management mode
 + */
-+void uefi_vars_siglist_blob_generate(uefi_vars_siglist *siglist,
-+                                     void *data, uint64_t size)
-+{
-+    uefi_vars_cert *c;
-+    uefi_vars_hash *h;
-+    efi_siglist *efilist;
-+    uint64_t pos = 0, start;
-+    uint32_t i;
 +
-+    QTAILQ_FOREACH(c, &siglist->x509, next) {
-+        efilist = data + pos;
-+        efilist->guid_type = EfiCertX509Guid;
-+        efilist->sig_size = sizeof(QemuUUID) + c->size;
-+        efilist->header_size = 0;
++const QemuUUID EfiEndOfDxeEventGroupGuid = {
++    .data = UUID_LE(0x02ce967a, 0xdd7e, 0x4FFc, 0x9e, 0xe7,
++                    0x81, 0x0c, 0xF0, 0x47, 0x08, 0x80)
++};
 +
-+        start = pos + sizeof(efi_siglist);
-+        memcpy(data + start,
-+               &c->owner, sizeof(QemuUUID));
-+        memcpy(data + start + sizeof(QemuUUID),
-+               c->data, c->size);
++const QemuUUID EfiEventReadyToBootGuid = {
++    .data = UUID_LE(0x7ce88Fb3, 0x4bd7, 0x4679, 0x87, 0xa8,
++                    0xa8, 0xd8, 0xde, 0xe5, 0x0d, 0x2b)
++};
 +
-+        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size;
-+        pos += efilist->siglist_size;
-+    }
-+
-+    if (!QTAILQ_EMPTY(&siglist->sha256)) {
-+        efilist = data + pos;
-+        efilist->guid_type = EfiCertSha256Guid;
-+        efilist->sig_size = sizeof(QemuUUID) + 32;
-+        efilist->header_size = 0;
-+
-+        i = 0;
-+        start = pos + sizeof(efi_siglist);
-+        QTAILQ_FOREACH(h, &siglist->sha256, next) {
-+            memcpy(data + start + efilist->sig_size * i,
-+                   &h->owner, sizeof(QemuUUID));
-+            memcpy(data + start + efilist->sig_size * i + sizeof(QemuUUID),
-+                   h->data, 32);
-+            i++;
-+        }
-+
-+        efilist->siglist_size = sizeof(efi_siglist) + efilist->sig_size * i;
-+        pos += efilist->siglist_size;
-+    }
-+
-+    assert(pos == size);
-+}
++const QemuUUID EfiEventExitBootServicesGuid = {
++    .data = UUID_LE(0x27abF055, 0xb1b8, 0x4c26, 0x80, 0x48,
++                    0x74, 0x8F, 0x37, 0xba, 0xa2, 0xdF)
++};
 -- 
 2.48.1
 

@@ -1,225 +1,165 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp243141njg;
-        Tue, 25 Feb 2025 06:16:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVeb1/lXmeY3pX+qwouJQN1lN4EmZ4yeR7P6u51fquP1rVcAAnB+zSelj/FxiRH4bs/IFdYgIQ1AruCFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcXoLOMA2KJS13r3LwtRvdQPaag5CDfCaM0INToNHD/PQyQTJ1ff5LLCxPLvA23Uldt4x0
-X-Received: by 2002:ac8:574e:0:b0:472:133f:93b3 with SMTP id d75a77b69052e-47224923383mr257152851cf.47.1740492998255;
-        Tue, 25 Feb 2025 06:16:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740492998; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp243373njg;
+        Tue, 25 Feb 2025 06:16:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWY9XnZejiennL6dl9S8HlCXYyvfqtELQMWjsqzriZpp7PphT4My5UM0t+lV+q4lxcWx/3d2AYHr+rpzQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbekqhcFyRm+aXsGWq3RMotcMjE2F35CjLne4c+7/ebtUJ9nwE1V/GoGdJ8iYQrGoUXQ1k
+X-Received: by 2002:a05:6102:1607:b0:4bb:c24b:b61a with SMTP id ada2fe7eead31-4bfc023dfedmr10305868137.19.1740493017246;
+        Tue, 25 Feb 2025 06:16:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740493017; cv=none;
         d=google.com; s=arc-20240605;
-        b=INX+N3OcT6AFR90NzjE559L/Ca9OPYAzzOhIWdz/9vPmneisgufe2sjJyWsVlZQZmZ
-         ru3Oj3GYClEQ2x3Bc+eu0+A9BwSlSvXgoThzb7QVCeedHuqyYlbRKKzf+/CdBnxhFbo8
-         CFWbSG38dF507t1lrw+z31ZnARSmpWZU97+odltPx740kkgiciqZCeurwzxVE62FkXGv
-         Ufpos8cDpOagxD6NWbAQgXCkHofcJ+8JKuPwVta5L2dx/N7zJgELPkfKrzk+qCnou4Io
-         1KLmYot9rF3fxa0tgof8e73fLVosnqC4DiIsqSbBZkHAu/IVQfN6xnF5GUS7xpNENQqa
-         L/7w==
+        b=IU+KQFkbFIg9C+Iqvev+1VYTPteO/pRNi1vwY3oPChAsvXoC/yw0pb/zIxhY+U6vE6
+         erzbSCyG8vvSIYgWtEIOp9ZgFQDy+v9cSgWM8y3DttuTp+zA+gYKYJqcXpaFn5ZzyhX4
+         xHBuNZKE+43Q23/oxLRx/7GP1L1xqWZ3zEQxhcdQR/TFeAEPcmLs+Tw+8zYHI9MG3kFo
+         GFAtkz1BF3QagmLaEsX0bkcGFJqf5ptDCRuigV6ACAtD/lIAdUxzTx0E7Y3v+pSgVW5C
+         GB3itkYf27EXjNhR2dCv5OCJJpE8saVD/Wjzr23VuzhiBQ2yWUxGv4QfKYGYxtlHh8ef
+         b3PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Kf1MrtaHC0wZM7XLXful0rxVzkTNo8/SZGUPpzDEZh0=;
-        fh=yfupsdmj6tqkIe1AnbaASHoEAktxP1o8nfBGvHmoQOU=;
-        b=RCueHZDessEKZmcvjMjMnkuFWGp5506tKdrlE2Mrhtqf5KoEOndtbAg6qZbIP2YsAE
-         yobU0+RXxVClzjDamCbjrKnKyXI33dAMI8IOAKpuTaC4IDo6KObbDhAT/Lkpq5TGxokk
-         Ar/N/AKE0qeedD4Sryzz4x2uvCoVnlti1zgrICjhuF4qhwc3XjIre87s/h2JZ8t+Mzwg
-         QcyI7hPPDliRXF62Lf0KWJ06yaZoRGiNXf90AxEMoHQSW39m+YRjhu3zlSppuyP80vSP
-         VZN3dNAqduNhVGDui0jp0v0Atsg9SV5GrQimBH9BXJqp4EF1dHjTzlXNmTmLfvQ0KFn8
-         0ZEw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to;
+        bh=y9GqPcRQY5gOxdygmgPDihRYKdTeHA8EAkx9MLRhizk=;
+        fh=5JL7mqVb0xJPQxAe5ZtlV0oPd81juhKpcMs9GAwoilE=;
+        b=YSu/Dc8xnm7YMqi+IXwwpTqAYxuiQkAHQcPJ63cn80+34pgJYkJS17WQUxCNWB1NDd
+         Cpz41hUS+SC58Wg/fYHlxY8hSJICQUgyMC4AcRSH8cEotcXxDOdfooTjm3q2D2wL3ndG
+         6ixD6oQvHv2JTPkqBJhktpvImx1g1lEYXJtkJlv6dNsIGVO1ff/k+ucALnyfgnae6Ndo
+         OG8D9ug0kDxwe+/xActpW3tdV1CpcIdMVU23tE1ClyzkXeQheQ8v5laVaqLTmXRAHNGs
+         t813jkFN6bz0fND1QMcP0woUyNahW3TscBl/WX0MsLX2Nxu2nvfpdGFHDgNFZC/sHS+z
+         YdoQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jJOnGc58;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-473780819d1si17182281cf.308.2025.02.25.06.16.38
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c00c747af8si304398137.492.2025.02.25.06.16.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 06:16:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2025 06:16:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jJOnGc58;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tmviS-0007KX-8j; Tue, 25 Feb 2025 09:15:20 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tmvjQ-0008BL-Kj; Tue, 25 Feb 2025 09:16:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
- id 1tmpZa-0007D4-MP; Tue, 25 Feb 2025 02:41:46 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
- id 1tmpZY-0000M3-R8; Tue, 25 Feb 2025 02:41:46 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-22113560c57so21385575ad.2; 
- Mon, 24 Feb 2025 23:41:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1740469302; x=1741074102; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Kf1MrtaHC0wZM7XLXful0rxVzkTNo8/SZGUPpzDEZh0=;
- b=jJOnGc58m976wEKYWEb78TmIOJvRiyGknWZQ+IZb/Z6GytgT9pmRkURUeHFHVpi/07
- GqBiiDW260MIraofyeqoiY061DjzLEyxLl9wddOE/gircI29lZS11MNsaZGgHT69oFZC
- 4orBB0ABIl5TwGATW05x+i9JguCYHdJygForgBtQgsPpmBbPTBwnYdVLg9qDs/I5KlVu
- qulr7LdUkuJdX32F26C8RHzEdKvZSYInk6Tj0a2wyaIUUcchiJm9vxbNc0SJIwyCfqIh
- a1tV0X7SrN+H/opysPMHGa5EaC2fkoVj0z85U/X4n6lfpq6/q9Y2FmiJJtGV8rXurCnV
- RCVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740469302; x=1741074102;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Kf1MrtaHC0wZM7XLXful0rxVzkTNo8/SZGUPpzDEZh0=;
- b=NzgRNSzYvt9C9gah2dAp+BZREJsfox9yYEcacvzYOvcOXfFvAfVxVRLn+xbtsEfiuE
- lyJRoP5b5G+dXSfnacLfrXnRiFZrhbR+Tls5vcMtmTpO3B6CUB3YC0d6NJ1zw0ppwcfm
- hRtLnlLrUqBWEDXU6W14+E1iO79THyAKlOixhh4tJkUIr79RKPSLsejmNbA7CKy2aKPy
- 75sPimwvDI4KIhT1TTAU9RaFIPD6qEYbbpmYwE4iJaNljqwIKfV2s6dzk5r0yoDTc2qf
- Qgaqt2jcIhMERIEsCJ+ghDXi/BTTrMvzjupTcz5Sapk6s8fArvQWX7kvo94N5bLl7MAJ
- XlXQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUoNKgomZQKSWvpTRyMPvIoPWt0MpHt2f0rG2AC/fQ2HMjnmlQ2KHNqiTjjEsCjuk7L3HYYWqmmJg==@nongnu.org
-X-Gm-Message-State: AOJu0YxcWJypm3bNs0pT12OEcqxA6MHDI2M94YbIYNnky1kdcJ7ARWYM
- vju7sqgr0mNlZITDZlZuZlmIhtUvKdoRFAWpfFKmq58TyPm9tzYnjQt/wQ==
-X-Gm-Gg: ASbGncsi6YHdwgMiCKRmY517F8i85fuRxSCdLYSowT1i83cMN/9NXsEly9zmnEzmUXf
- OU8wBMDm15uisJGOvfUYZ6HjMdp5O+ce+u/DSNl1VBj9OL2wix3BGG+A4sd5KPB0uj7rUjJLCQk
- a46cURgdfxOH01eO956Nl9cwJD/GArG2NMtUJ0AQUY0zy9ywrz3H9SL0r1CsAhpz+KMmfod00pZ
- IxobDJeZPd/kGMjXbstv3P4XWHXsH0rQqvU0xnyXTlyps5RyRVVsisyHXl267TJChSgq2cxzm0w
- EuRrf+MAzpw+q+x6qlsBeXIUoS1vxnJB85flRzX5crSi3scG0zPmLdYOQ9bnpqrx
-X-Received: by 2002:a17:902:f68d:b0:216:1543:195e with SMTP id
- d9443c01a7336-221a0ec33c2mr286435205ad.5.1740469302541; 
- Mon, 24 Feb 2025 23:41:42 -0800 (PST)
-Received: from MININT-QD064TT.redmond.corp.microsoft.com ([131.107.160.232])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2230a0a6041sm7856265ad.175.2025.02.24.23.41.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Feb 2025 23:41:41 -0800 (PST)
-From: Kun Qin <kuqin12@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
- Kun Qin <kuqin@microsoft.com>, Kun Qin <kuqin12@gmail.com>
-Subject: [PATCH 1/1] hw/arm/sbsa-ref: Adding TPM support for ARM SBSA-Ref
- machine
-Date: Mon, 24 Feb 2025 23:41:33 -0800
-Message-ID: <20250225074133.6827-2-kuqin12@gmail.com>
+ (Exim 4.90_1) (envelope-from <cy_liu@aspeedtech.com>)
+ id 1tmpWu-0006bu-3B; Tue, 25 Feb 2025 02:39:00 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cy_liu@aspeedtech.com>)
+ id 1tmpWs-0008HP-HN; Tue, 25 Feb 2025 02:38:59 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 25 Feb
+ 2025 15:33:42 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 25 Feb 2025 15:33:42 +0800
+To: <cyliu0926@gmail.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v4 2/4] hw/misc/aspeed_hace: Add AST2700 support
+Date: Tue, 25 Feb 2025 15:33:39 +0800
+Message-ID: <20250225073342.2960966-3-cy_liu@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250225074133.6827-1-kuqin12@gmail.com>
-References: <20250225074133.6827-1-kuqin12@gmail.com>
+In-Reply-To: <20250225073342.2960966-1-cy_liu@aspeedtech.com>
+References: <20250225073342.2960966-1-cy_liu@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=kuqin12@gmail.com; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72; envelope-from=cy_liu@aspeedtech.com;
+ helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 25 Feb 2025 09:15:03 -0500
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Tue, 25 Feb 2025 09:16:07 -0500
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nLLijcFtPupx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  cy_liu <cy_liu@aspeedtech.com>
+From:  cy_liu via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TYrKCsyQNCVD
 
-From: Kun Qin <kuqin@microsoft.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2625
+Introduce a new ast2700 class to support AST2700.
 
-This change aims to add a TPM device for SBSA ref machine.
-
-The implementation adds a TPM create routine during machine
-initialization.
-
-The backend can be the same as the rest of TPM support, by using swtpm.
-
-Signed-off-by: Kun Qin <kuqin12@gmail.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 ---
- hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ include/hw/misc/aspeed_hace.h |  1 +
+ hw/misc/aspeed_hace.c         | 20 ++++++++++++++++++++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index e720de306419..93eb3d1e363b 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -28,6 +28,8 @@
- #include "system/numa.h"
- #include "system/runstate.h"
- #include "system/system.h"
-+#include "system/tpm.h"
-+#include "system/tpm_backend.h"
- #include "exec/hwaddr.h"
- #include "kvm_arm.h"
- #include "hw/arm/boot.h"
-@@ -94,6 +96,7 @@ enum {
-     SBSA_SECURE_MEM,
-     SBSA_AHCI,
-     SBSA_XHCI,
-+    SBSA_TPM,
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+index 4af9919195..d13fd3da07 100644
+--- a/include/hw/misc/aspeed_hace.h
++++ b/include/hw/misc/aspeed_hace.h
+@@ -18,6 +18,7 @@
+ #define TYPE_ASPEED_AST2500_HACE TYPE_ASPEED_HACE "-ast2500"
+ #define TYPE_ASPEED_AST2600_HACE TYPE_ASPEED_HACE "-ast2600"
+ #define TYPE_ASPEED_AST1030_HACE TYPE_ASPEED_HACE "-ast1030"
++#define TYPE_ASPEED_AST2700_HACE TYPE_ASPEED_HACE "-ast2700"
+ 
+ OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
+ 
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 18b85081c7..86422cb3be 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -552,12 +552,32 @@ static const TypeInfo aspeed_ast1030_hace_info = {
+     .class_init = aspeed_ast1030_hace_class_init,
  };
  
- struct SBSAMachineState {
-@@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     /* Space here reserved for more SMMUs */
-     [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
-     [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-+    [SBSA_TPM] =                { 0x60120000, 0x00010000 },
-     /* Space here reserved for other devices */
-     [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
-     /* 32-bit address PCIE MMIO space */
-@@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
-     }
- }
- 
-+static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)
++static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
 +{
-+    Error *errp = NULL;
-+    DeviceState *dev;
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
 +
-+    TPMBackend *be = qemu_find_tpm_be("tpm0");
-+    if (be == NULL) {
-+        error_report("Couldn't find tmp0 backend");
-+        return;
-+    }
++    dc->desc = "AST2700 Hash and Crypto Engine";
 +
-+    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
-+    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
-+    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_TPM].base);
++    ahc->src_mask = 0x7FFFFFFF;
++    ahc->dest_mask = 0x7FFFFFF8;
++    ahc->key_mask = 0x7FFFFFF8;
++    ahc->hash_mask = 0x00147FFF;
 +}
 +
- static void create_pcie(SBSAMachineState *sms)
- {
-     hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-@@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms)
-     pci_create_simple(pci->bus, -1, "bochs-display");
- 
-     create_smmu(sms, pci->bus);
++static const TypeInfo aspeed_ast2700_hace_info = {
++    .name = TYPE_ASPEED_AST2700_HACE,
++    .parent = TYPE_ASPEED_HACE,
++    .class_init = aspeed_ast2700_hace_class_init,
++};
 +
-+    create_tpm(sms, pci->bus);
+ static void aspeed_hace_register_types(void)
+ {
+     type_register_static(&aspeed_ast2400_hace_info);
+     type_register_static(&aspeed_ast2500_hace_info);
+     type_register_static(&aspeed_ast2600_hace_info);
+     type_register_static(&aspeed_ast1030_hace_info);
++    type_register_static(&aspeed_ast2700_hace_info);
+     type_register_static(&aspeed_hace_info);
  }
  
- static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
 -- 
-2.43.0
+2.34.1
 

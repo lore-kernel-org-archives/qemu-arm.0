@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba5710c2sm22311775e9.32.2025.02.26.06.03.48
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba57145esm22493425e9.30.2025.02.26.06.03.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 26 Feb 2025 06:03:52 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4BC05604F0;
+	by draig.lan (Postfix) with ESMTP id 38416603F4;
 	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,41 +27,60 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 14/25] tests/tcg: enable -fwrapv for test-i386-bmi
-Date: Wed, 26 Feb 2025 14:03:32 +0000
-Message-Id: <20250226140343.3907080-15-alex.bennee@linaro.org>
+Subject: [PATCH 13/25] tests/tcg: fix constraints in test-i386-adcox
+Date: Wed, 26 Feb 2025 14:03:31 +0000
+Message-Id: <20250226140343.3907080-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: D9p6xnS+K0cb
+X-TUID: JwrEviz6fPwA
 
-We allow things like:
+Clang complains:
 
-  tests/tcg/i386/test-i386-bmi2.c:124:35: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-      assert(result == (mask & ~(-1 << 30)));
+  clang -O2 -m64 -mcx16 /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c -o test-i386-adcox -static
+  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:32:26: error: invalid input constraint '0' in asm
+          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
+                           ^
+  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:57:26: error: invalid input constraint '0' in asm
+          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
+                           ^
+  2 errors generated.
 
-in the main code, so allow it for the test.
+Pointing out a numbered input constraint can't point to a read/write
+output [1]. Convert to a read-only input constraint to allow this.
+
+[1] https://lists.llvm.org/pipermail/cfe-commits/Week-of-Mon-20101101/036036.html
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- tests/tcg/i386/Makefile.target | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/i386/test-i386-adcox.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index bbe2c44b2a..f1df40411b 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -22,7 +22,7 @@ run-test-i386-sse-exceptions: QEMU_OPTS += -cpu max
- test-i386-pcmpistri: CFLAGS += -msse4.2
- run-test-i386-pcmpistri: QEMU_OPTS += -cpu max
+diff --git a/tests/tcg/i386/test-i386-adcox.c b/tests/tcg/i386/test-i386-adcox.c
+index 16169efff8..b56dbc00f2 100644
+--- a/tests/tcg/i386/test-i386-adcox.c
++++ b/tests/tcg/i386/test-i386-adcox.c
+@@ -28,7 +28,7 @@ void test_adox_adcx(uint32_t in_c, uint32_t in_o, REG adcx_operand, REG adox_ope
+         "adox %3, %2;"
+         "adcx %3, %1;"
+         "pushf; pop %0"
+-        : "+r" (flags), "+r" (out_adcx), "+r" (out_adox)
++        : "=r"(flags), "=r"(out_adcx), "=r"(out_adox)
+         : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
  
--test-i386-bmi2: CFLAGS=-O2
-+test-i386-bmi2: CFLAGS=-O2 -fwrapv
- run-test-i386-bmi2: QEMU_OPTS += -cpu max
+     assert(out_adcx == in_c + adcx_operand - 1);
+@@ -53,7 +53,7 @@ void test_adcx_adox(uint32_t in_c, uint32_t in_o, REG adcx_operand, REG adox_ope
+         "adcx %3, %1;"
+         "adox %3, %2;"
+         "pushf; pop %0"
+-        : "+r" (flags), "+r" (out_adcx), "+r" (out_adox)
++        : "=r"(flags), "=r"(out_adcx), "=r"(out_adox)
+         : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
  
- test-i386-adcox: CFLAGS=-O2
+     assert(out_adcx == in_c + adcx_operand - 1);
 -- 
 2.39.5

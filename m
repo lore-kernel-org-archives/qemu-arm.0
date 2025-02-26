@@ -1,125 +1,115 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1116105njg;
-        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX/h6fetrq1ZKKztckiyrycooSKBQcNgS9Xwq5BZanee8G1iqQ7JFgMTkQFDXzYQQduBz1iUv9rRcWR3A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHpr8wVFZC4I/uKYqwHJrb2sYrISzCnca5Rn++kE7H7HPmY/r9xXvFQL4lTwe1UhB1e6hOI
-X-Received: by 2002:a05:6122:3718:b0:518:8753:34b0 with SMTP id 71dfb90a1353d-523496045cbmr377503e0c.4.1740596650408;
-        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740596650; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1170422njg;
+        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXXgsts+gNJHzCCbBeZKwSdsjQ410hW30Bk2xR7hNhggg5inYKiYmItviI5+b2vFR1H2Iz09RE75uYTZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHBAjC5+KAfHHj8j8GbgLt2iWw/gBdvuFxEcD+OLpzKPv1pKp2sfNAED2BR361qAv5tiv1j
+X-Received: by 2002:a0c:ea8c:0:b0:6e8:916b:8c49 with SMTP id 6a1803df08f44-6e8916b8f7dmr27650766d6.31.1740603041526;
+        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740603041; cv=none;
         d=google.com; s=arc-20240605;
-        b=AkCStSQq1QMjyqfFvAx/1wkNLwSu+7TZhUogryXl67eVyv2uHr7e/dGUR2egaIzcvg
-         NaMXnP+T5vlV2UQ+TJzto1+8WzQvbpng4HB6f/i4qBeA6bGVbZyu53/EA9DUXUOcpvFX
-         L+Pypi6lOlwk7jWKRJI6GiGSiGWLwv8m4QT5W0CxqoAnp2pCJ8ryXbVQru0OOS02a8ht
-         FdeTJh2lyXZvJ9eV1DdqsKnt9sIhW7MwDrGo2405dsrQfOni7gMWtZwHRz0SYrfuJwbG
-         nDJSQ6Pt4rbO4yte9MXyebj61K+8+d8LnZn3Mq+B6vku8NBxjTpAv/jkJZw9FK69mEfm
-         zljA==
+        b=Qe4VRF+Lw+Eu7hDKeUUNospRIL0eP+VEInqfDq3HmW56M8tJo6bCNDlvQ7n9uhCco6
+         7xVwYX9w1yatLAR/32w4gD5DyMs8w2ffI3gKBdlz5j7IZR9YvfCrx+J+/73aUNd7dE9N
+         mOSST2robZiDQTb8SnJ2uOOrUquRxbs1+7E211dR692hh4erYZOPI6ifJFcEIzQyf+KR
+         LiBVTaUiLz7ZNIkQSmzAOx7Va8dSKsQr7c8Y+BU4Rg4nSRV1vozUfa1owBn64wYkkjJ7
+         KzHBeCdV+8LPzzCrZJlmbq9ykEPSJiT1zaLH9KNVmmsjbn5Z4f6kJBK+ag/cYmBZ7ehI
+         VkZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
-        fh=Dr80umQSy8R6nhyZKCGFC79ea5XWgpAGhMJjF/onp/Q=;
-        b=G+igQs7+qS9HC7ev/yaKrk8YBp+SAzcYihcEkSCeNgXWSyiKZH+uFZLNzEAxkCrHBc
-         xESYfcAdGq/U6yWSdmNsJPxZyOEN/eeJM2Yxu22YxYiQnoGepeHmg8E6r2xZ0jjL8UtO
-         dYX0ZFUq0f1yEXEGiaesh8yT2PmmmsGwVrYOF6SwwOavSHpobZ7kYVgtcQwVc9palf1g
-         kaRH5YjmO7ImOoBtz32VP/Ci+rZj53P5H6QGwfrLfHwei0V0rqcA7zXqovBO5x7apFdq
-         N3WXmJzD9i8Q3nMCR0059sevWEFo+P0WuuSndcgu+RGbDB+OuhPIPQ++cmFQ13yOSxYy
-         kirA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
+        fh=yqqA7bbJQhscj3+9FqQDd6hthFy0f2ko5yWPYAjLgck=;
+        b=O1Rf3piVdMHma6taQJkVW6T3+kzTVi8AwjKTy4bvanDHEepa6J1D4dLgBHIYjfS+2k
+         VIZOEw+fFpg08svdoVc4bIlFf2tbriTR6huNe7HN3/FWoM1J0H2GmQN+ptOtWx3ZBe6K
+         6VeKiOV+d9sjO7lxKCk5UVYCQeisZSjh1XwW6NZJeR+ekSH8z6XPYyueHwBqKfO5k8w8
+         wHHswkwfOQ0gILNswnIc2KaM7v4y6w2EQ77z11cmJj7ufd2bYRagPVpHFgUG1iy9OkYZ
+         hUOri8EIhDGs61/b2wmbwwYvksUD2cPy5Nu38KlGaYTZ5/a1c3afHgX8PygRl13i8xPd
+         R9mQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b54lC6b1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JWtCvJ0t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5223e2115c9si855672e0c.181.2025.02.26.11.04.10
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8976c0a18si649926d6.218.2025.02.26.12.50.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
+        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b54lC6b1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JWtCvJ0t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnMgv-0000Uj-SM; Wed, 26 Feb 2025 14:03:33 -0500
+	id 1tnOMU-0002dc-MF; Wed, 26 Feb 2025 15:50:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tnMgu-0000US-F3
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 14:03:32 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnOMS-0002dN-TT
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 15:50:32 -0500
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tnMgs-0006uj-Jz
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 14:03:32 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-2f83a8afcbbso354456a91.1
- for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 11:03:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnOMQ-0001qU-JQ
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 15:50:32 -0500
+Received: by mail-yb1-xb2c.google.com with SMTP id
+ 3f1490d57ef6-e609cff9927so125051276.3
+ for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 12:50:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740596609; x=1741201409; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
- b=b54lC6b1w2Luaa/6pSUv5/DiFXjEq4jkvIe9pcYkfjNtwfVgeqgwdSi5GG/fJSINRA
- nHW2F0b9oN81YpIDjGnjSPH93mBMw3YTcqI4KLN72tvk50v61+V+n69K0qrVopdLtd10
- EEea3Kv6yrAXaeShMgdSPt7/JrotOEcbUWiReew1ECk0Dk9b7HGe0CmekYzrJo8xQJhd
- kjz+83ATDd7vOyPAuuSmKCRg1G61lKBib2yBbdhMcfQ1ePaFqbnY3f7Uf9iNaaMVoLcj
- 8OL5Tuhy/DkDdWs0tFitqFbGcVKIsvEAhTGNbtz10DRYmSE58XcpYOT7JWYTRc89+qwd
- Fvwg==
+ d=linaro.org; s=google; t=1740603028; x=1741207828; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
+ b=JWtCvJ0tr6Yqn6UAZhRIld6KVpkm7VX8metW2iXtpG8mVwlNdLLsmM3LQnWPsi+nqE
+ C9Qu+dj7kfMM4NK86zmHRtmKV+MBcrf9wZ6TwLpO2LqEPwuBa5skuUKbDwbIJWjBaw4O
+ LMzkJV4SBWOejNfmLRZwdDuqhnXlyCJy/E3m9ZAKN9HwN5Ejq/Va5mi7m6445J760yjG
+ 28whrj+rGMoiStA/j38JtxMB34MSyQqcIL0sAGRGCTdOEWpBWo7QBk7L5SfnfXuvJyTv
+ kkRYZBAv9VNEusl7VMNoxwr2hX/CxPDjvvqOGhGgubBtx5vSbjDtFWO0HXCONhIm0h7g
+ nj9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740596609; x=1741201409;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
- b=lI2e6xxJxP7byV0V/rfASv2X3KmTGQd74afyNF8Om7hnmI9Uwem6xwhCBtjFTcJ+eC
- dRhUXvKKMWDk6qVleNBx1KfwhsoO/C4GDCjZmUtNoYMtAT2qMJ0w607kEqaYZEr6toD5
- l9utJ/uq6Rnhf96LQ83/Z+VAu6S+JMxt8hd4bDoLTZH/r/ZzTvGfNfJ1dzf9Id3UbuY1
- f+Th58JMEGC7msdimhacXYvNzheM20pY5mUo6XFy4wWsxOql8dW9BVtEQPQgVKo2t7gz
- F7+AHYipBZJixgickCgTVfaFMzF2HwlvO0O3GqQ+3eCY2TyNfXBsY1q9hKmou2DBPyYV
- N6kg==
+ d=1e100.net; s=20230601; t=1740603028; x=1741207828;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
+ b=iIeRLziAjF1FQd9KN7XYn13eIcqidTLBwZq/O1Yy8taClV8cpoBkyMQAW01SVkgCh+
+ 0VPPoLgv2vfOpXitQFZNnfB7bDT346HdlS/1aHVZw53rlOqSTUInhKLhmtcv/vGpzGhn
+ Lfn+AckhLwEwCGyEjeHTcUnm59I1v3hFO/lHzA02HaFi3WxgCJDBy9gV+tfLc2MAGU1j
+ TIwcXuM4L7r/oK3dTZ4IsKBPz5wxbbXj0pM8lWl/DqqGiZS0+kCClGKkK/R4CUYs6UZE
+ iQfC/SuIizK5DYTOJ2VaJLoo8pAm2KQ+xD981b+wCi1Wq055xdOKibLVngSmZVTgJg0d
+ 3CPw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW5gAP02rdiFjnOA0hhHw2gzqM7J55j3N2yHbAp/7XOMYxWBDxTxG22g7xSIzgjMrIY0Ud1/OyCKg==@nongnu.org
-X-Gm-Message-State: AOJu0YxN2ysTpFAoX8UgclWqJjqRF47DYp8mppf09SK+6z20PdRL0+m4
- ANksBZj8V4/+EW2W9lySqiIfHXSPyTGeLwuZH1onld8xd5SFWk3IQRB5LEDgcTA=
-X-Gm-Gg: ASbGnctnM+ZZkRuVUtkbkPLUst+Ma3jyhHAt858ZwHWKn9tQJ+wYIQzUg4RA3/Swalp
- dQd0sBTHycM5BCI7plqccQoF6F9nnFdoKWAFiCaAXmiUQk879NmlPCvDhcM5R/K5sLUy13QfF2A
- zJU9WaMW25gfZ6EZeXRVrRms28ofwKJ+KUqlU1b+Jp2cq9TyNnqp/KzF/4A6gJb36mFK/4NwWCE
- 15+hgg7qdELinuKb9nfb6KtmavQk9DGuKMmKqIlJ/scfs44H/5EcBsJfdyYM6a+egsRo/MhLh4+
- HWpUaIwKTPUtlgqviCfjrPPjP9etgQeVkMO2UYk=
-X-Received: by 2002:a17:90a:d408:b0:2fa:603e:905c with SMTP id
- 98e67ed59e1d1-2fea12683b9mr797904a91.2.1740596608738; 
- Wed, 26 Feb 2025 11:03:28 -0800 (PST)
-Received: from [192.168.1.67] ([38.39.164.180])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2230a09d819sm36563495ad.163.2025.02.26.11.03.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Feb 2025 11:03:28 -0800 (PST)
-Message-ID: <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
-Date: Wed, 26 Feb 2025 11:03:27 -0800
+ AJvYcCUvmFtTnxJbOnFUG7rraYdoW55MpWUc5mQNzinE8iAnGBThbFSH9G96LmZ4EVUx5o628lzBg19hfQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy83I9F4cTaxdo+e9L7OwfIR7kP1fVRg0fQKWnoxE4P6iZ90vNL
+ tBQmI19WhrH9Y2HWb99hO2We7iXXM1iZ/RFF14GseAagWIZh9npJsyDLSDYt+kP2U4DHwIaq4Kf
+ eFHZhjjgbPiazUZUZgBBlAPoe4PFHJoPtBF/9xg==
+X-Gm-Gg: ASbGncuYuYeXqdpilumpVbs9JEcBN7lM9Ow3xlROb1WWqa4d7aES9N7e5Y+oNZVTSHL
+ Y43ChA5flsEZcs/VvsShbVWJujwxTNPPecoY3/PBH0IqAkvXOVuLpakep56Ggmu6qvpoVnikf5B
+ MZP3gs+SLp
+X-Received: by 2002:a05:6902:2748:b0:e5d:d6b8:2318 with SMTP id
+ 3f1490d57ef6-e607a54eb03mr7771616276.34.1740603028638; Wed, 26 Feb 2025
+ 12:50:28 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, titusr@google.com, hskinnemoen@google.com,
- wuhaotsh@google.com, qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>
 References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
  <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
  <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
  <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1029.google.com
+ <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
+In-Reply-To: <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 26 Feb 2025 20:50:17 +0000
+X-Gm-Features: AWEUYZlSUyybVdgAACEr0gQtv_ujFwhK5De7RqbKJE6ZH21vOsXfQ1pZGzHtdVw
+Message-ID: <CAFEAcA8jzYvCLxDTybE34K5DxQqOG4-m8_-oNwiATVBHYbEV9A@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,74 +131,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZIP09F86N6Ar
+X-TUID: qcoXlidzi9r6
 
-On 2/26/25 03:50, Peter Maydell wrote:
-> On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> On 2/25/25 05:41, Peter Maydell wrote:
->>> (Looking more closely at the cold_reset_values handling
->>> in npcm_gcr.c, that looks not quite right in a different
->>> way; I'll send a reply to that patch email about that.)
->>>
->>
->> It may be a hole in our CI right now.
->> Would that be interesting for CI to run all tests (check-functional +
->> check w/o functional) with both ubsan and asan?
-> 
-> We do have at least some ubsan tests in our CI right now
-> (eg the "clang-system" job). The problem with ubsan coverage
-> is the usual one that we already have too much CI going on,
-> and it takes forever and we don't have that much headroom
-> for adding more jobs.
+(edited cc list since it's moved away from a discussion of this
+particular patch and on to a testing/ci coverage issue)
 
-I understand the problem behind spending more minutes on this.
-
-However, looking at our CI, we already duplicate functional testing a lot:
-buildtest.yml:functional-system-alpine:
-buildtest.yml:functional-system-ubuntu:
-buildtest.yml:functional-system-debian:
-buildtest.yml:functional-system-fedora:
-buildtest.yml:functional-system-centos:
-buildtest.yml:functional-system-opensuse:
-
-Would that hurt so much to have one configuration enabled with ubsan and 
-asan, which catches *real* bugs, and potential security issues?
-Yes, it adds overhead, but it should not be x10. Around x2 to x3.
-
-On github running, running -j2, running all functional tests with 
-sanitizers takes less than 1 hour, and the build takes the same amount 
-in time (-j2 as well). Hopefully we have more cores available on our own 
-runners.
-
-> 
-> On the asan front, also, yes, coverage would be a good idea.
-> Here I think we will probably have to gradually ratchet
-> up the coverage because I'm pretty sure that at the moment
-> we will find we don't get a clean pass (mostly for "uninteresting"
-> memory leaks).
-> 
-
-Yes, I run with ASAN_OPTIONS=detect_leaks=0, and I deactivate any test 
-that is flaky.
-
-Two of them related to asan are tcg tests:
-- munmap-pthread
-- follow-fork-mode
-I didn't have time to investigate, so I just removed them in my tree.
-
-At this point, this whole list of tests concerned is:
-https://github.com/search?q=repo%3Apbo-linaro%2Fqemu-ci+%22ci+fix%22+author%3Apbo-linaro&type=commits
-
-> (I do also usually run a local
-> ubsan test build when doing my acculumation of patches in
-> target-arm, but since that's a manual step it is fallible :-))
+On Wed, 26 Feb 2025 at 19:03, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
 >
+> On 2/26/25 03:50, Peter Maydell wrote:
+> > On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
+> > <pierrick.bouvier@linaro.org> wrote:
+> >>
+> >> On 2/25/25 05:41, Peter Maydell wrote:
+> >>> (Looking more closely at the cold_reset_values handling
+> >>> in npcm_gcr.c, that looks not quite right in a different
+> >>> way; I'll send a reply to that patch email about that.)
+> >>>
+> >>
+> >> It may be a hole in our CI right now.
+> >> Would that be interesting for CI to run all tests (check-functional +
+> >> check w/o functional) with both ubsan and asan?
+> >
+> > We do have at least some ubsan tests in our CI right now
+> > (eg the "clang-system" job). The problem with ubsan coverage
+> > is the usual one that we already have too much CI going on,
+> > and it takes forever and we don't have that much headroom
+> > for adding more jobs.
+>
+> I understand the problem behind spending more minutes on this.
+>
+> However, looking at our CI, we already duplicate functional testing a lot:
+> buildtest.yml:functional-system-alpine:
+> buildtest.yml:functional-system-ubuntu:
+> buildtest.yml:functional-system-debian:
+> buildtest.yml:functional-system-fedora:
+> buildtest.yml:functional-system-centos:
+> buildtest.yml:functional-system-opensuse:
 
-It's always said that "Maintainer time is precious", shouldn't that be 
-CI job to catch this?
-I guess CI minutes are cheaper than engineer ones those days.
+I think that these are mostly testing different target
+architectures, e.g. functional-system-alpine tests what
+build-system-alpine built, which covers avr, loongarch64,
+mips64 and mipsel targets; functional-system-ubuntu
+tests what build-system-ubuntu bulit, which is alpha,
+microblazeel, mips64el, and so on. So there is less overlap
+than it might appear.
 
-> -- PMM
+(Some of them complete pretty quickly because we have very few
+functional tests for some archs; some are slower where we're
+running more tests. e.g.
+https://gitlab.com/qemu-project/qemu/-/jobs/9213571833
+is functional-system-fedora completing in 7 mins because we
+only have a few ppc tests, but this is functional-system-opensuse
+https://gitlab.com/qemu-project/qemu/-/jobs/9213571852
+taking 27 mins because it's testing x86 and aarch64. The
+corresponding build jobs take about 30 mins each.)
 
+> Would that hurt so much to have one configuration enabled with ubsan and
+> asan, which catches *real* bugs, and potential security issues?
+> Yes, it adds overhead, but it should not be x10. Around x2 to x3.
+
+You'd need to have a duplicate of all of the above
+functional-system-* test jobs if you wanted
+to test all the guest architectures, I think. So it's
+30 mins build * six configs plus 60 mins total for testing.
+Or we could convert (some of?) the existing jobs to use the
+sanitisers if we needed to economise on CI time.
+
+> I guess CI minutes are cheaper than engineer ones those days.
+
+You could make an argument that it's the other way around:
+from the project's point of view engineer minutes are cheap
+because we never pay engineers, whereas CI minutes are
+expensive because we must pay for them out of our project
+donations :-)
+
+-- PMM

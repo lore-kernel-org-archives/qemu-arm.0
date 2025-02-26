@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd86ca0asm5841115f8f.32.2025.02.26.06.03.50
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba53961csm22477935e9.17.2025.02.26.06.03.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 26 Feb 2025 06:03:52 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BBF8C60689;
-	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 507DD608D4;
+	Wed, 26 Feb 2025 14:03:46 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -27,39 +27,64 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 19/25] plugins/plugin.h: include queue.h
-Date: Wed, 26 Feb 2025 14:03:37 +0000
-Message-Id: <20250226140343.3907080-20-alex.bennee@linaro.org>
+Subject: [PATCH 24/25] plugins/api: build only once
+Date: Wed, 26 Feb 2025 14:03:42 +0000
+Message-Id: <20250226140343.3907080-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3vXqN6gSmy+X
+X-TUID: /1xsjowcNtWF
 
-Headers should bring in what they need so don't rely on getting
-queue.h by side effects. This will help with clean-ups in the
-following patches.
+Now all the softmmu/user-mode stuff has been split out we can build
+this compilation unit only once.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250225110844.3296991-6-alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20250225110844.3296991-11-alex.bennee@linaro.org>
 ---
- plugins/plugin.h | 1 +
- 1 file changed, 1 insertion(+)
+ plugins/api.c       | 11 -----------
+ plugins/meson.build |  3 +--
+ 2 files changed, 1 insertion(+), 13 deletions(-)
 
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 30e2299a54..9ed20b5c41 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -13,6 +13,7 @@
- #define PLUGIN_H
+diff --git a/plugins/api.c b/plugins/api.c
+index 832bf6ee5e..604ce06802 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -46,17 +46,6 @@
+ #include "exec/translator.h"
+ #include "disas/disas.h"
+ #include "plugin.h"
+-#ifndef CONFIG_USER_ONLY
+-#include "qapi/error.h"
+-#include "migration/blocker.h"
+-#include "qemu/plugin-memory.h"
+-#include "hw/boards.h"
+-#else
+-#include "qemu.h"
+-#ifdef CONFIG_LINUX
+-#include "loader.h"
+-#endif
+-#endif
  
- #include <gmodule.h>
-+#include "qemu/queue.h"
- #include "qemu/qht.h"
+ /* Uninstall and Reset handlers */
  
- #define QEMU_PLUGIN_MIN_VERSION 2
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 942b59e904..d27220d5ff 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -61,9 +61,8 @@ endif
+ user_ss.add(files('user.c', 'api-user.c'))
+ system_ss.add(files('system.c', 'api-system.c'))
+ 
+-common_ss.add(files('loader.c'))
++common_ss.add(files('loader.c', 'api.c'))
+ 
+ specific_ss.add(files(
+   'core.c',
+-  'api.c',
+ ))
 -- 
 2.39.5

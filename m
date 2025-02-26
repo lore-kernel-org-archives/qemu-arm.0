@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba52b591sm23363995e9.6.2025.02.26.06.03.49
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba5710c2sm22311775e9.32.2025.02.26.06.03.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 26 Feb 2025 06:03:52 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6417560593;
+	by draig.lan (Postfix) with ESMTP id 4BC05604F0;
 	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,50 +27,41 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 15/25] plugins/api: use qemu_target_page_mask() to get value
-Date: Wed, 26 Feb 2025 14:03:33 +0000
-Message-Id: <20250226140343.3907080-16-alex.bennee@linaro.org>
+Subject: [PATCH 14/25] tests/tcg: enable -fwrapv for test-i386-bmi
+Date: Wed, 26 Feb 2025 14:03:32 +0000
+Message-Id: <20250226140343.3907080-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oqTtc6fXhZt3
+X-TUID: D9p6xnS+K0cb
 
-Requiring TARGET_PAGE_MASK to be defined gets in the way of building
-this unit once. qemu_target_page_mask() will tell us what it is.
+We allow things like:
+
+  tests/tcg/i386/test-i386-bmi2.c:124:35: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+      assert(result == (mask & ~(-1 << 30)));
+
+in the main code, so allow it for the test.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250225110844.3296991-2-alex.bennee@linaro.org>
-
 ---
-v2
-  - use the proper qemu_target_page_mask() api
----
- plugins/api.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests/tcg/i386/Makefile.target | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/plugins/api.c b/plugins/api.c
-index cf8cdf076a..fa4d495277 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -43,6 +43,7 @@
- #include "tcg/tcg.h"
- #include "exec/exec-all.h"
- #include "exec/gdbstub.h"
-+#include "exec/target_page.h"
- #include "exec/translation-block.h"
- #include "exec/translator.h"
- #include "disas/disas.h"
-@@ -287,7 +288,7 @@ uint64_t qemu_plugin_insn_vaddr(const struct qemu_plugin_insn *insn)
- void *qemu_plugin_insn_haddr(const struct qemu_plugin_insn *insn)
- {
-     const DisasContextBase *db = tcg_ctx->plugin_db;
--    vaddr page0_last = db->pc_first | ~TARGET_PAGE_MASK;
-+    vaddr page0_last = db->pc_first | ~qemu_target_page_mask();
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index bbe2c44b2a..f1df40411b 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -22,7 +22,7 @@ run-test-i386-sse-exceptions: QEMU_OPTS += -cpu max
+ test-i386-pcmpistri: CFLAGS += -msse4.2
+ run-test-i386-pcmpistri: QEMU_OPTS += -cpu max
  
-     if (db->fake_insn) {
-         return NULL;
+-test-i386-bmi2: CFLAGS=-O2
++test-i386-bmi2: CFLAGS=-O2 -fwrapv
+ run-test-i386-bmi2: QEMU_OPTS += -cpu max
+ 
+ test-i386-adcox: CFLAGS=-O2
 -- 
 2.39.5

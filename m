@@ -1,121 +1,131 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp842845njg;
-        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUPTYl2C6jIGk69FVvXsHQU3iM+evACYdJUjffC+4JaUPNVKGYkCrFEiQWgMOhqrQfGqpKl/Bg9SbrjAA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGwCmxGUMT2+6wdfv7pgdub1OoG8v2646XlTTm3Zomxi6mY6SgONnlmrcONyrFHll74LKuh
-X-Received: by 2002:ac8:5fc6:0:b0:472:6c9:3741 with SMTP id d75a77b69052e-47381317105mr35935281cf.9.1740570649239;
-        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740570649; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp844020njg;
+        Wed, 26 Feb 2025 03:53:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUzN/oouUu8yb2HIvQFsikqeKxUvhc5D574V8QwJpYmM57mcwfwCn6gqORFvLz6elTrKwIfqwmW9mcglQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOUhKVkpsYT51JA8UlV5rOw2x+wDLYip/fIWNUbiIJE7YAt/T9DNQ2omlp/ASHbdGOkOgP
+X-Received: by 2002:a05:622a:20f:b0:472:1517:cb3d with SMTP id d75a77b69052e-473771186famr77144551cf.7.1740570822879;
+        Wed, 26 Feb 2025 03:53:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740570822; cv=none;
         d=google.com; s=arc-20240605;
-        b=DVRWXbMvlLXStc2nVHr1Bc8731fUpNrRLwWZ7r1GkkLeQbNawMsyTG/IVFZkW7G/7u
-         OfiMR/0j57muf6L4beoC8XV6a8P/XpfaIsGuZEj+iBGNAMDWzh4rumG58Q63L84vsVYi
-         5toRdtxOvPTfr3OgqNZiB+2++U43UVBcGkNYWjBcOQGSYdbER8BQqyoA++E6TQMmrxKn
-         cqYzTojB/EI2J3+cd3IYamaZCm6Hun4w2ac4diMYQz3VHaVSOZPjODXgkcpZAFrKPIaD
-         v4QFTE2vjqdWobmjcWx1wncJaidtYf1PVVHNDw/WKBt8GuCQNEllk/4D8I5PW9nGVvk3
-         9Ycw==
+        b=Uibxi4QFA9J7RkoMGjzrErCvqyvKqZQnZjFmNjoq/VtzMR1Mf40h8Pag9MOPomgn7X
+         FsWz/ekKzuiG8Pf++LY4wePvjgfRBkbX5yZnxrkbH+5szMixnR/dN4lwyQeTy91YslBp
+         M5JDMa11YVTvukBy4+3U+s7L9LvY3ElgYPdPHoJWYm7dnaxWOCCJmBsc+/SH4PFXsmlu
+         07a1BkDUwz34XaPra/SXzknF+WkjEYYvr5Ch8gVyms8zcUkYvdkl5k1xZWDmVq9kTap9
+         YoYNQ0nUQllhqusv5tU45rFNpiwbCPS0WGrqVcXj3ChcSqOOpzPm90Brmx6xJGeMuBs1
+         1yng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
-        fh=uWFHx5QPGdO4IVzlJg5PH5GptM7suwSk+d0vY0vP8Gs=;
-        b=C1toDsyiXU5x4zks4N3csyfYZx1mG8bgQwTrXwNcWsGz7Qpg0jwFNo9ugcTNEibfO2
-         1zBe9hbW9OHhC+SNw+cqokHI8u95HSe0aFRwtBjbX8jMw1e5ACiyc38kdSTvOVFGrabh
-         h9gTpAqpXmDgWQdI9vTOZE6RilbDTn/HVG/WEg6EWYeFyq4RoCdH0rrvD2uL+0u50ZUF
-         cWYcN5kZy3i1XdW9xYetbVte8+Fcr8KBLn8EQDLTO2s4Vmw/jhAlbOFtnb3VvpyrXsFU
-         yVvL3XGUXS3CcZXvPFOToqgoZE8TYi3QOEySrjkA+ksxayUxcGb3+gAv8mkg2jy54vJu
-         cjoA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=YqPvyMOeEHsZyMMg3Pi86QbyPypugS3EcHBB4E9kGas=;
+        fh=6QSQCb6V610IihTmZEE57XXb7RIdbL/8JLlR9LQ+z9M=;
+        b=gymF9T9tUZTtWZthy2aeqp5C1PBrgua/BzEwkhJmAZYYOtGwE+I2+L57VHc0K2gJdh
+         CG1+KTjCjBX/mMcqxMLaeJZDf5U5zTITTpcW8Vt60Ej3/G8/w1RlW5wuC/I1lYt3bPtF
+         TBXzgDqB+MfCWu5EGAyK7t/AjktvEYBV6qo1WvCnrd7C/+/jkS0DORnXQtY4gnPzzUgP
+         iAN5M8kTMTT6BaMA7fFoS5/FYpbdrOOZD/IVLvrtFUUJANgRm25D8vBcrqDr6JWXkHHI
+         F1ZyGV64/WftG/mN2vIz40VNkcAK3tpl6aCkxNr31+Pz5yjUQtk9VxyOm7scr9OTaXIv
+         iNYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IowpKkvq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S2BI3dk1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-473780813acsi33901231cf.223.2025.02.26.03.50.49
+        by mx.google.com with ESMTPS id d75a77b69052e-473780a8db3si32633201cf.538.2025.02.26.03.53.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
+        Wed, 26 Feb 2025 03:53:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IowpKkvq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S2BI3dk1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnFvv-0001u0-6F; Wed, 26 Feb 2025 06:50:35 -0500
+	id 1tnFyh-0002hB-T7; Wed, 26 Feb 2025 06:53:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnFvt-0001tb-Dp
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:50:33 -0500
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ id 1tnFyf-0002gF-85
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:53:25 -0500
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnFvr-0005S4-Je
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:50:33 -0500
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e5df8468d6eso5524971276.0
- for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 03:50:30 -0800 (PST)
+ id 1tnFyd-0005nJ-5E
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:53:24 -0500
+Received: by mail-yb1-xb36.google.com with SMTP id
+ 3f1490d57ef6-e549be93d5eso7257741276.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 03:53:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740570630; x=1741175430; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
- b=IowpKkvqGHOdI76X1Ws3Ed2ahFLjft6Y633VX6ZKQOamvL2yZjyELZrH1q2fEBkina
- Rq052b1mIDlEEvX8pRhIgPr3IAcygXl6NPQV27DXqFVecCejH0VVUQ21zxgSOMMYGSkQ
- 1GR3/7Ql9/0f5zPRh2xsSGwWqKWRU87+r9/pylszNgUwC7t2j8C8f9BwMyUN5gJoF9bX
- 6TrweDRE23rNQSFhvAGxoudj1YGaXk1JoOmHbQ7S3eZ2VegaI73lniZhRvJteDLreSkP
- 25pyeJQG7h6MjFb03LvcAVpfG/GFFSdrCnuraAez0B+Sj6AtQ+juXu6NdUU+u3uFDu51
- 9NtQ==
+ d=linaro.org; s=google; t=1740570802; x=1741175602; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YqPvyMOeEHsZyMMg3Pi86QbyPypugS3EcHBB4E9kGas=;
+ b=S2BI3dk1agpo5OjK0NKPAhgNNKNgVJRC7jYMKLV5A2/qd723h1S21b+LHF8cBu1gnB
+ 08EFWaalj7Q6zdW416nsKD62BfRWfrZfUtRr2cfWmmaEP4DL4+a4ICqgQDZwkaEvTszg
+ LygEOBmGL0YqSwJGkHrNHhx1chqX/TAb08+PR4oa7SNzwn7bc0AdQNUnzImaaiqn3eYV
+ 7Epfc41bEBgif2HpstIBvh7wmub1nh2HR/zeqLrjpkOTEowvdZB8KQ2fM1wKuo9AJGV8
+ YXhnVKDd32dt9Wjkah6fW3V60nJheMPU2PlyjY2Ifa3OKPd9VXbvRRmLrYHtF4KZTxT1
+ tl8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740570630; x=1741175430;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
- b=SqCRSUMNN8uYfrvgL2kjDKp6GF/0m02ao/mHccHze6isC4C8jg/1ioXHB+EWtMxbf4
- 4mOw1BD/XjbcXcBzKfrkw9dq1f3dqpKuPLe8wl6EKleBzVuUvhe+mrpI7WZhk/4JVa4C
- W7WafUXqmWfw06TzTGtNA6S6hVT0UnbAWBg6Hc5c4UQmlVXNLNxqsAIaymGX7ltPk8qC
- 1/b3a59MYHuDpcSzu3HFhqZOTmjNn3C62iVXUbrABdFz+hpAR8kBLHUuc3jmNBGppeHR
- r5bC/emrZB6s4/ysMR0D4ohYs+qDYy55mudb1H06Evw5FWFgzrFAxRl9glRsQ01WYA+W
- E12w==
+ d=1e100.net; s=20230601; t=1740570802; x=1741175602;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YqPvyMOeEHsZyMMg3Pi86QbyPypugS3EcHBB4E9kGas=;
+ b=gVR9cxd5Kn5gZ64CQk/mis0iIB4DLjqhXWnkSL4YyQVoZ+wYSnyDTwaQjWutVv9fN0
+ ej18V2TZXO47hiyxQeJZuT6h5X1UjUHQIlfEpNO5BcL72TenjtMj/334JMVD6AEWcRmc
+ bLyfTU50YmK1/qY1qzHeW+iIHiZ/+ujjh/+ZPJWVd3aDSTyawAPviuohAZToG8wcytg3
+ ZAhmVfJIY8qRpGubd/UOmzjHGYcrv8RSlCfRGprOqwIIjCJ4ulmZ9EyelIr2BIndZWvz
+ Bf4HWspRaK8CV5DKPms18TrprrBlsK4KWExR8zUcHINqYHRSCNZ2PDqcw3hCsXDSJFK0
+ Z8FA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5FzB49BNFjItVMT3iLE+X4dJjgPzqW9jMWEQDXlthtFLxtl1ZYYaOt8Tcz3KekZaxsv5UTeQ0pA==@nongnu.org
-X-Gm-Message-State: AOJu0YxY2JeBmSyYEDZhpqN90GywOkfI60cZZxkeZg4kJBewvBM2NK54
- QGfS7OVR+hrT07L+31Afjd9C6EJ8LK4np7xAXpOf6rHhR3MM/44QNJ57rzWaRhNW0hlZ/qxYZG5
- AuiE79M/D5/JK2SgV/WRIXtMlCW+ScdlnQk/PNw==
-X-Gm-Gg: ASbGncu9HfJRB60lqGngGrGfG/K2CfXCuO+ALQdfnv7oPNMjGYPgfLLtXLkB1BD8f8c
- j42kzRbBPb1EhlecWDB5r1jCpqIVGIL/7EG34AUmgEOWI+JTAU7WRCIxLqFqG+MV/ci0wGO0WtS
- cd0uXb9SDn
-X-Received: by 2002:a05:6902:1b04:b0:e58:30dc:615b with SMTP id
- 3f1490d57ef6-e608a56d282mr3011080276.22.1740570629981; Wed, 26 Feb 2025
- 03:50:29 -0800 (PST)
+ AJvYcCWDPOZ19l2kBhTmj4LJ2BeItkihkDbiXJWOBSu889bYK4drbRAoeKl/dmUXpA4lCr4oXYuXwCgVzA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyh8Fa1V6ZZQkw9JXv/4rflKuII5O9bwcZjwiQTzDfU40JYxHuL
+ 2IsNPaGqultbSY+2pgTtaLI2UcepptZRg6d2VX27p8HaPXiJ2M5gpJlsPXSUw6xBF7tIuca0wCI
+ WwnU3cewQz2W0GCAlCd3AUorf233x55DdP3wRbGfNP+LEjAcf
+X-Gm-Gg: ASbGncvbzF9TEJs76M5NSHqDppKF2wBxEFiIAmXmyf7X/joui1M7CDjytE6sHvCC31K
+ uaopkp0Cey3O/nhoXtHrkvHyiVbGzPADOF97voKK02Er27PNIrPjQ64IyHkmH0lN3PpQ5OTzNhj
+ kvoPt3OrBs
+X-Received: by 2002:a05:6902:a81:b0:e5b:1710:d3d0 with SMTP id
+ 3f1490d57ef6-e607a5693f4mr5117458276.43.1740570801872; Wed, 26 Feb 2025
+ 03:53:21 -0800 (PST)
 MIME-Version: 1.0
-References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
- <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
- <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
-In-Reply-To: <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
+References: <20250223114708.1780-1-shentey@gmail.com>
+ <20250223114708.1780-5-shentey@gmail.com>
+ <CAFEAcA_XJfAVEe3cgHiXgcewTL3kF3SEevrnMh-Edvfk56G6sQ@mail.gmail.com>
+ <CAFEAcA9e5FBrKLZrKRsw=wPThbwx3+gyVt9rv4_vx9OKfZ8qiQ@mail.gmail.com>
+ <3AC73313-B9B5-423D-9E01-189E9010556C@gmail.com>
+In-Reply-To: <3AC73313-B9B5-423D-9E01-189E9010556C@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 26 Feb 2025 11:50:18 +0000
-X-Gm-Features: AWEUYZkTC4CfXKM-iA9oHWkGexNeyUEl9CBDtKNHRCHZbKN9AzbswPYxU6-joBU
-Message-ID: <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, titusr@google.com, hskinnemoen@google.com, 
- wuhaotsh@google.com, qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>
+Date: Wed, 26 Feb 2025 11:53:10 +0000
+X-Gm-Features: AWEUYZkZzCodTHS8hKuXsa_I_7_0oaMVEPbahytCXcKZsaBFJBK-yr9rSvlk3uk
+Message-ID: <CAFEAcA83wAdgkaFL5oOvVNuWYYFW=ffgsqKF8OcDQh49XDryNA@mail.gmail.com>
+Subject: Re: [PATCH v2 04/18] hw/arm: Add i.MX 8M Plus EVK board
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Fabiano Rosas <farosas@suse.de>, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,35 +140,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9TE8Ov13gq4i
+X-TUID: XY9fba/9KweA
 
-On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
+On Wed, 26 Feb 2025 at 06:36, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> On 2/25/25 05:41, Peter Maydell wrote:
-> > (Looking more closely at the cold_reset_values handling
-> > in npcm_gcr.c, that looks not quite right in a different
-> > way; I'll send a reply to that patch email about that.)
+>
+>
+> Am 25. Februar 2025 17:00:53 UTC schrieb Peter Maydell <peter.maydell@lin=
+aro.org>:
+> >On Tue, 25 Feb 2025 at 15:42, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> >> The C compiler for the OpenSUSE CI job doesn't seem to like this:
+> >> https://gitlab.com/pm215/qemu/-/jobs/9239416833
+> >>
+> >> ../hw/arm/fsl-imx8mp.c: In function =E2=80=98fsl_imx8mp_realize=E2=80=
+=99:
+> >> ../hw/arm/fsl-imx8mp.c:382:15: error: initializer element is not const=
+ant
+> >>              { fsl_imx8mp_memmap[FSL_IMX8MP_UART1].addr, FSL_IMX8MP_UA=
+RT1_IRQ },
+> >>                ^~~~~~~~~~~~~~~~~
+> >> ../hw/arm/fsl-imx8mp.c:382:15: note: (near initialization for
+> >> =E2=80=98serial_table[0].addr=E2=80=99)
+> >> ../hw/arm/fsl-imx8mp.c:383:15: error: initializer element is not const=
+ant
+> >>              { fsl_imx8mp_memmap[FSL_IMX8MP_UART2].addr, FSL_IMX8MP_UA=
+RT2_IRQ },
+> >>                ^~~~~~~~~~~~~~~~~
+> >>
+> >> This is (gcc 7.5.0 "cc (SUSE Linux) 7.5.0") apparently. That's
+> >> a pretty old compiler, only just within the bounds of our
+> >> version requirements (which are 7.4 or better), so I'm guessing
+> >> it's just not as smart about figuring out that the
+> >> initializer here really is a constant value.
+> >>
+> >> I'll fix this up by dropping the "const" from the serial_table[]
+> >> etc definitions.
 > >
+> >More specifically, you have to drop 'static const', leaving just 'struct=
+'.
+> >Minimal repro: https://godbolt.org/z/5css4hv67
 >
-> It may be a hole in our CI right now.
-> Would that be interesting for CI to run all tests (check-functional +
-> check w/o functional) with both ubsan and asan?
+> I haven't checked, but this might be caused by the multiplications (... *=
+ KiB)
 
-We do have at least some ubsan tests in our CI right now
-(eg the "clang-system" job). The problem with ubsan coverage
-is the usual one that we already have too much CI going on,
-and it takes forever and we don't have that much headroom
-for adding more jobs.
-
-On the asan front, also, yes, coverage would be a good idea.
-Here I think we will probably have to gradually ratchet
-up the coverage because I'm pretty sure that at the moment
-we will find we don't get a clean pass (mostly for "uninteresting"
-memory leaks).
-
-(I do also usually run a local
-ubsan test build when doing my acculumation of patches in
-target-arm, but since that's a manual step it is fallible :-))
+The godbolt repro case just uses plain constant values in the memmap
+array, so it's not the multiplication that's at fault.
 
 -- PMM

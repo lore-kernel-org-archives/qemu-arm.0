@@ -1,127 +1,122 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp724642njg;
-        Tue, 25 Feb 2025 23:04:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWGj3UoIHQGjhyPezB2InoTkIiX6d4PR8xiAY83Gk7waFuM430N0AtJxwiDq9gLDQns52e6U3NetPuwEw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEZKVBmjS8RRrYBs/RICTvtqxviHk9rJtLxIdzvafOYt599ju4VpYLnE5IKBnUs5vZU0PtT
-X-Received: by 2002:a05:622a:1387:b0:472:744:e27c with SMTP id d75a77b69052e-4737725c67amr111310801cf.35.1740553465992;
-        Tue, 25 Feb 2025 23:04:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740553465; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp740676njg;
+        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW98P88FSh4forCjxZz+nCDS+F6ay2t+uy6KD7vWcTqSYXq1LqA2wfLVg0OsKSWHaKcwPd4ezq6/GkW/w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEILFxMYS4NrOpjH6UIGFwzg3388eU9NCe9QqC+q9S7zOGSGWKkeeDk393Uto121scj3lNh
+X-Received: by 2002:a05:6214:413:b0:6e6:6936:6b06 with SMTP id 6a1803df08f44-6e87ab3163cmr99589796d6.16.1740556097523;
+        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740556097; cv=none;
         d=google.com; s=arc-20240605;
-        b=J1UYKESxuxz6V9BWK8T/YMemDh2q3jo/6Q1M2j8WOra21zTOAnGYfdfiv8p575dxZV
-         tae+Ja0WJl6OT5iQa4wMQ/pC58GMNBB4t7nZ2K8ux9HDyx7MGFIzaCxnUTUtdwxlJuF1
-         bLoqH0Hms22WLqqO4KD8ald6nNtLrqJ9LZ81a1/AbbJaauyZnJOAymLi24tnqVRuzbey
-         3xyuQY85I846ydTSQQ21XQ42QwFRKZIffnbOEyXKTzjGFJ507np8GbddofOizKuwTKgV
-         MULZ82kaoP2cjVVLCP/LqdURklCdsOZAAS5hT1LZk8R6hSp3umrJRs/ZgbBXo8YW7QeW
-         A49Q==
+        b=PbAmMPRzLr845Ftc5rB0jxFaWt7JSV/nnime7umiiGKoIIBRr9C5yNG14vAFakIU2t
+         mnDO3AI3fkLOckKDmFPI+NbZbC23JQLPnNUhyC1MNe055MidgBk1SNkqBrbvUFlGERYq
+         7ZgbSwGscQFeMPr00SAmjoT5VKeNboIUdYNWijijPKvFUlOw+o0j5YQgHD8tN58HUi+z
+         HOu0jtOF1OdiJthkPbJugePORxA3cI/PJtFdzueiBb6/HL5cr6h8qQ8QZnPeC42rbdHy
+         FfJrS1howgOyCHfNYdKB2o1GDGfRrk2SsXBtdBLbidiqvQk9WHbA6z7PnZ0W3s83Y7Ol
+         Bi4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=x3+rDLr1IYC/sg2FsAeyY72QCdeKakGfIfnvwJ6M5A8=;
-        fh=JoALJx11yMHv/XpyT76MBU7PP4wyGsRciwGal1SNRgg=;
-        b=LcTWQXb0Q7SdqPBfopZLVJQCUrCVajVdam60K3YHNQnkYrP3C4kRjHkCKdD70sYkc2
-         4DO2gG7aoO2c7AwS4yskWhgidmIdUxwybsFXjlkBxKlPRrEcviiVVV8GliudQIQ6sZVH
-         GlqVrzWIglZ5p31ecI1VU/fz2jR6donmrpu0B/dsnqBbZ2tjlofdZ/2/lYLNWUJGD5z4
-         3UFIptxGSglfvobQ2AEAfvG3bTZUjJw0GIy3R3QIgKwa6oSd7amVoIY39MhjsTG8uP+f
-         z8JAaoa+pCxpSzpVNhuhomAcS/o9wBg1KHLIV7F9E6aJ1TpZDCFbawA+RfHK7CasWT9w
-         EKUA==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=nbBOJoc/hYi/TbtRJ3CkGAC1erM0h3qUj9etGg1ef44=;
+        fh=nlPdI7O67F+1qVcQ1UEYjMxg9VOWR9dmvTjbm7tVlsw=;
+        b=LWSSwYf1uLB32gXt/QuCy1adL00Ss9/0U0HXduzrUlSKPY1IiIdnmgxeBs87KQw5MV
+         C/jbQhPTXxMDDxZ6TUKuA3r+M8qxZxlOtrwqsmX3DJufdWU1E8SrQnMVU7W0auQozkfK
+         N6w7wBjjz23rKkM9FfGjYZKBlXLlbI2SufXkEpel00Q6hIfCZ6TueMBVylyWITTRiCO/
+         6TrldB/StZaU5Yo7rlG+BMZEoXtRfur7uBTVKWrsDI7LupAbCGdnApGLn7x5VLOnkE+X
+         MhlmUMMJLzQX+ssN0NtGfEPfV65Nyp1Zd6NymadATYFUEWnDUXmu2qPevE/9yIjbnDpv
+         1hSQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DGEId8EO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apA3XC6e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47377e1cbd7si29925081cf.124.2025.02.25.23.04.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b01a68esi32098286d6.3.2025.02.25.23.48.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 23:04:25 -0800 (PST)
+        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DGEId8EO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apA3XC6e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnBSi-0006YW-4r; Wed, 26 Feb 2025 02:04:08 -0500
+	id 1tnC9N-0003yo-0a; Wed, 26 Feb 2025 02:48:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tnBSd-0006Xp-3g
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:04:05 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tnBSb-0006iA-BK
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:04:02 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-390d6b29ba4so128811f8f.2
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2025 23:04:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740553439; x=1741158239; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=x3+rDLr1IYC/sg2FsAeyY72QCdeKakGfIfnvwJ6M5A8=;
- b=DGEId8EOArJwEziTm92xeKQ7AKR42OriI6d3Bq7+2y5HPT8G3Myzsne/9zks7zXH2Z
- kh3Ek9bBprBvKJoGRXynL4xgmXTlrBCwrpdmfPOHNe/oWxz9qWaKbi049MkkkCMWN/iS
- pSejCGilZZo5awIzRA6WcYiBC+Oixs9kpyfFNPAGiWmeEoFe448iJD+qvEwpmT5Y+omQ
- 2gvOkY+nq0GYHF3+ShTgIQAoeQcts2Im7rVKBtCmQhar21pROjcp8pKwsA9Z3X5RcAxA
- al0vbbx2luD3D17hK36ZLU4fr7HjZ/2sx1WRDtMl9XORnqrdFLmT+2/KP53U6kdOfdk+
- /ung==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740553439; x=1741158239;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=x3+rDLr1IYC/sg2FsAeyY72QCdeKakGfIfnvwJ6M5A8=;
- b=qT0V3sZtVrbRuwtEakPyV7P6EsNOpZhxMQ6Bx6vn2gQSJW3VkTOJLo+HagBvMBq0NC
- H4HuZp/db85b/Au0WkADlsGWltLAdqs9MREc5gnybHMHU4HxhKS2oTLmfl24WkQOt5Ub
- 17gx+Yo4YK8sBR8+oAUNxXaG2wfuv2f6tqXeO4RivlfW0C0iTRqj/V9woe06SA8wqBsi
- Il0G/59tQq4lD1WNHqx9eXYha1GrNMp0fETcgzYNhfBxQOS+wp5gjATFOlf9MZ3I7CH5
- a1HdO6UZxD9ZgQGC+LSVtViYCAXKWvtUeME03OqtkvODJ1QePyWDDtOCuhPIP9HdnLew
- G11w==
-X-Gm-Message-State: AOJu0YxV7VQG9/hJNHd6YhvOS8k3VpgqC/ffn7gDjJ8qkaBaPT/VH4yU
- 9PlnOw/SPEUcNkij3Qn9pdLEi7Cf7+lYEqWz55N1V45idi5NLs6Rsgx9GioROmGLPVRYNYnYcGa
- gvBo=
-X-Gm-Gg: ASbGncsjCEHlxIB6awEwlXCrT68nmxN3YDXoMsN02zZhx/SrRVtsnQRrGdWpX4W1HUA
- tkkbfO6RV8SjM9Ts2Ve7+kPfc2xLGuAjq3jaqwwljFdiBy4mGl0tq/xg08OUHGwNBIXrrQT0XWU
- 7qGQutbMCwuAlQFa1Ho2Byb74PYiaq6s75sCXRfFtudeWMjC7PRQeTmwzny5Nuf+481IZFEyES3
- +o7eGpMUswKVE8trV3r6uZe4WVYiLc74TnTk4Sm+KdZfORygxKSkIYdLUZpJeS5+GWLuz/1TyKI
- 6IkW4BBw6HWO6Ze1jWliTPm4mrgLe+2AU5tuLJ8WMN0elY/sF0CHxqQ2tGob1b3FAOvtTALmDXc
- =
-X-Received: by 2002:a5d:65d0:0:b0:38f:2f9c:affa with SMTP id
- ffacd0b85a97d-38f707aabe9mr14657230f8f.33.1740553439515; 
- Tue, 25 Feb 2025 23:03:59 -0800 (PST)
-Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390cd866f79sm4618286f8f.17.2025.02.25.23.03.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2025 23:03:59 -0800 (PST)
-Message-ID: <f4b1dfc6-5265-400b-8842-349668c8e972@linaro.org>
-Date: Wed, 26 Feb 2025 08:03:58 +0100
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tnC9L-0003yH-Go
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:48:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tnC9J-0005nN-Sh
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:48:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1740556088;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=nbBOJoc/hYi/TbtRJ3CkGAC1erM0h3qUj9etGg1ef44=;
+ b=apA3XC6epNDFdqBfYt4GGsWgDGh0Dypy1NuZdbeVcKE5HQDjBfvTxp0DaVq+9htIzf1uLX
+ uNl0pTPZwWXfc7xUesnsZu+dh9ggFoGHmXKTnATihNZzVkd1eAiDWOAoSySkaKyI5rCsif
+ y4VWJyn6dFTHBRvpsEE+LNs6yigMooo=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-gWxH8c8IMASaB1eQhnE19w-1; Wed,
+ 26 Feb 2025 02:48:04 -0500
+X-MC-Unique: gWxH8c8IMASaB1eQhnE19w-1
+X-Mimecast-MFC-AGG-ID: gWxH8c8IMASaB1eQhnE19w_1740556083
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D4FBE1800877; Wed, 26 Feb 2025 07:48:02 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.45.224.219])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4BD45300018D; Wed, 26 Feb 2025 07:48:00 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id CE1E91800091; Wed, 26 Feb 2025 08:47:57 +0100 (CET)
+Date: Wed, 26 Feb 2025 08:47:57 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, 
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
+ Ard Biesheuvel <ardb@kernel.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, graf@amazon.com, 
+ Eric Blake <eblake@redhat.com>, Michael Roth <michael.roth@amd.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v5 14/24] hw/uefi: add var-service-json.c + qapi for NV
+ vars.
+Message-ID: <wyrnw2ur2xp7e6yr7f7hdbn3zbvolnvjojjrlaoax7hb2psxzo@xw7arzdtroer>
+References: <20250225163031.1409078-1-kraxel@redhat.com>
+ <20250225163031.1409078-15-kraxel@redhat.com>
+ <87zfi95khl.fsf@pond.sub.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/gpio: npcm7xx: fixup out-of-bounds access
-To: Patrick Venture <venture@google.com>, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
- wuhaotsh@google.com
-References: <20250226024603.493148-1-venture@google.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250226024603.493148-1-venture@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87zfi95khl.fsf@pond.sub.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,26 +131,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LPn83Fp9N1OB
+X-TUID: HgxNPmABXvVD
 
-On 26/2/25 03:46, Patrick Venture wrote:
-> The reg isn't validated to be a possible register before
-> it's dereferenced for one case.  The mmio space registered
-> for the gpio device is 4KiB but there aren't that many
-> registers in the struct.
+  Hi,
+
+> > +# @data: variable value, encoded as hex string.
 > 
-> Google-Bug-Id: 397469048
-> Change-Id: I2fb8d0d3d41422baab22e8fc7e9fadd0f2ee7068
+> I understand this is a blob.  We commonly use base64 for that.  Why not
+> here?
 
-^ Both lines are irrelevant on mainstream git history, otherwise:
+It's an existing format already supported by other tools.  Guess I
+should add that to the preamble.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> > +# @digest: variable certificate digest.  Used to verify the signature
+> > +#     of updates for authenticated variables.
+> 
+> How to create and verify these digests will be obvious enough to users
+> of this interface?
 
-Cc: qemu-stable@nongnu.org
-Fixes: 526dbbe0874 ("hw/gpio: Add GPIO model for Nuvoton NPCM7xx")
+Well, no.  It's a somewhat complicated story ...
 
-> Signed-off-by: Patrick Venture <venture@google.com>
-> ---
->   hw/gpio/npcm7xx_gpio.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
+UEFI has two kinds of authenticated variables.  First, the secure boot
+variables (PK, KEK, db, dbx).  These have hard-coded rules, the rule
+most relevant in practice is that signed update requests for the 'db'
+and 'dbx' variables are checked against the 'KEK' certificate database.
+
+For other authenticated variables UEFI essentially remembers the
+certificate when the variable is created, and any update / delete
+requests need a signature from the same certificate (simplified a
+bit to keep it short, the actual rules are more complicated, details
+are in the UEFI spec).
+
+This digest handles the "remembers the certificate" part.
+
+In practice the second kind of authenticated variables is rarely used.
+I have yet to see a piece of software actually using that in practice
+(other than the test case I have written).
+
+
+Also note that this is *not* part of the QMP interface.  The driver uses
+this to store the efi variable store in json format on disk (see
+var-service-json.c in this patch).
+
+Adding support for reading/writing uefi variables is something we might
+add to the monitor in the future.   Should that happen it is not clear
+whenever such an interface would actually use the raw 'UefiVariable'
+struct or if higher-level interfaces would be more useful.  For example
+a command to query whenever the guest has secure boot turned on.
+
+take care,
+  Gerd
 

@@ -1,98 +1,99 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1012503njg;
-        Wed, 26 Feb 2025 08:15:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBcHhVZNEF86/XUQkwUbWVDPYaqpcuGpa2kvq/HwyJruJCswAuY1dzO6fHInjMEyCoUyoS
-X-Received: by 2002:a05:6122:2683:b0:520:98ec:b25c with SMTP id 71dfb90a1353d-5224cbbaccdmr2306882e0c.1.1740586550280;
-        Wed, 26 Feb 2025 08:15:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740586550; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1013837njg;
+        Wed, 26 Feb 2025 08:17:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGEfk8nAPZfGMQ9fyhZpDByAZ61WDzHG/mwcLH6aOX+2iT93tRzMuhFHcatD2y5Dr5d0mv3
+X-Received: by 2002:a05:620a:44ca:b0:7c0:b0d4:e12f with SMTP id af79cd13be357-7c0cf95484bmr2814020885a.41.1740586664615;
+        Wed, 26 Feb 2025 08:17:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740586664; cv=none;
         d=google.com; s=arc-20240605;
-        b=cv3bowmqYCKr/qliyvkV+shchHFhE9ktxGNyXutBNQUQ7UO56B+AysomsvVUdtKOVr
-         mAk8buFBE+kTIIZFdpvl1v3d5wyxfMkbrJx6USH7HQqxQRjBYHA/1muOGEML1SoUhc1L
-         DQJRaHGG5ACBBI6hfFu2iqjYb0zVcdNbHu0jHxStugBYvip1lXP5S3IIkG4q/CVWw2Yq
-         u0yDDSRU3Hg2OYpWeXzqFeyH7HG/hStfBmv1L/7MlR7RJijo6B2rF43MTleOvgffq9SP
-         YU6QnMmKD3mR6P3WSUYBohTu4YGw5taGFm3fljj+6hUaslSsSpsq7i7UUl8DoeD3URC9
-         uMJQ==
+        b=UKJoUgBcaFk+lb4WL3CgitavpP/KdrGIh2CFKmkb05rKIAIJgIZjYVvYyARdpznItT
+         PbFW3kxa4gRxthbSnHvG18BVZ4PYDNej7PFjy9DUCOhm8w6v9rZ+lQM/E6OVrQN+mIdz
+         si6qAcT+gkdAiCwB3mK9q0Rh8IHxGQ/+GWaVljZR9f0QTndMJlO4Tkqefnl4VtPmFGAc
+         1tGGvKEsE9fxC0VZK4kqBfp3seJ+L9THH5s5mfSixFGjdCmfEvVjhtn+RmKy+BF5m+6I
+         WexBHx4/0mx+7c1w7+TB0g69pz11nFhvopEzTgqmGCYdbY1TSre91PyJeJF7E6fLjegC
+         KjzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=cgVCleQy6VV36R+FJeQRA3lc/wl+PQVefuez+MAXM3g=;
+        bh=rfC2A6kasbTFFVmo6oaGbjK3+zjtJv/rd2YzI/ABI5c=;
         fh=kMuyKEDVLpXx+n9GsiCpA1spgm27ONyskfB4MRxywKY=;
-        b=ZZMljTCo/Ex3KA5KUiDRhuIGOsKmUFrLQ/5vQcJmnonu/VhT9oPUlEqyDZzZTtIX6X
-         YJivW943e6rRbT8uARjVoE+i2xXi5QFK9Ws1Kkvz3YNU5t0Xf5B2/UD8Rc+KZiCMjw6V
-         RCFNeC+AmgCWEv31AgfkBUXKnvTAhKeuNwBovetkzvMg8513b12lGzSO6Pv/+/U2t7F6
-         OO4X3LPx+ngZFst5OZnvBd+bocZaKdRmoreV56tvV+xwDci1WTxmJjVMzLtC1m4zLcAl
-         SKwOG60/RDHGyALngNOrKKLgiZIPqVfwbo1jkPPKgcctHlzPcOJvl3NBETJ/y6+0F+6/
-         RvJQ==;
+        b=KasfVwaTEFEbktSLh6E61eyHu9mm0TrKUzTMhm9xpvxX8grMREAzxbLMV1CZdYolVz
+         FATgRFbPVNNiNfCYMURPmYaklAIcUXxtG8kGo9LaAiyOleAMWaqE+ICp9FarRHMqpfcR
+         57fMfx/DfQIINwf3N74LQv68UfOP0ZFHvWNE8ePdAnvMznBvKp6seSvEZP6qox1cJCWi
+         1Hg8y/gP7m1zbO2xNc2J3+/9Dk/k2EubMIAsSLebql+XRhA1jDLgW1tY7yhQworOCXhx
+         Q1NIKYSayCPUQrGJ9IMielhCLxzEhxXWdJ103nSqkch/8XWPUa+BJs96VMQsD4dbe/uQ
+         sSJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h5weErOw;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GMuaPLn/";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5223e06dc6esi757322e0c.68.2025.02.26.08.15.50
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c23c2d9677si379466785a.446.2025.02.26.08.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 08:15:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Wed, 26 Feb 2025 08:17:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h5weErOw;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GMuaPLn/";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740586549;
+	s=mimecast20190719; t=1740586664;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=cgVCleQy6VV36R+FJeQRA3lc/wl+PQVefuez+MAXM3g=;
-	b=h5weErOwp0zBsiaoho2ElBZEKQymXlYdSWQDUwm+bkyG6P0fXiRDCCWaLM30kZG4fwQqqz
-	02CpkB1dcnGk2CkYwjxNAedD9ztVQq+Nt9iyvEP5erfjnvn+dRaLuowYsTCg3rFnAJyYXo
-	xswdtVzoCF6eoXh4GAQGxjoFuz071fc=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=rfC2A6kasbTFFVmo6oaGbjK3+zjtJv/rd2YzI/ABI5c=;
+	b=GMuaPLn/1NpTB8LbtabjTm299+llBoXPW+RBwiwHc7tqtox25dPVKG/aISCeohMH/3KHZp
+	5Jp0v8Az+QtP3zi/DPbLX59+O5mmymWB/SANlEQ+NMgxeUiaVFr92NtSp2vllggqtjSWsI
+	yrXKtvxyXSGTW9QCXKpFfDm/zOEiS6U=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-125-mXl_xjFbMtW2PIqu5_MeRQ-1; Wed, 26 Feb 2025 11:15:48 -0500
-X-MC-Unique: mXl_xjFbMtW2PIqu5_MeRQ-1
-X-Mimecast-MFC-AGG-ID: mXl_xjFbMtW2PIqu5_MeRQ_1740586547
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4399c5ba9e4so38255765e9.3
-        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 08:15:48 -0800 (PST)
+ us-mta-342-YCYHOJZ1PnqjF-yk37aXoA-1; Wed, 26 Feb 2025 11:17:42 -0500
+X-MC-Unique: YCYHOJZ1PnqjF-yk37aXoA-1
+X-Mimecast-MFC-AGG-ID: YCYHOJZ1PnqjF-yk37aXoA_1740586662
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4398ed35b10so35569145e9.1
+        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 08:17:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740586547; x=1741191347;
+        d=1e100.net; s=20230601; t=1740586661; x=1741191461;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=cgVCleQy6VV36R+FJeQRA3lc/wl+PQVefuez+MAXM3g=;
-        b=rQyRb17/IzfBao1v+vl7lU64JsZ/AAIcDRfB1plGAWbOakESaZjCet+LAjKNUqXiXC
-         9Wfj9vuFHlOuH5g4tw53JuecjXPRT9DkGWqkOFF9Mgg3+2IhSTuYO45hOuQZZfq98lCd
-         5JtHNPq3Ea6SzqCp3QoQBxEiC78BU383bSw+W4+Dhgd1Yv3BYMuInUJT8ouQufpIUJiV
-         IuAynmMmI59dKDEtxI9BVoZllV651b3GzctKJSUfel7aBVVbLX4BcOfFL8/lsxv46ni7
-         Qr2Zjw1cowjR1A123FaerW0klgoFYUfqh8nmq0LqTS1roy/fQdPJXW1/rJ1h8SOOth2x
-         nEAA==
-X-Gm-Message-State: AOJu0YxoIKRSZLfUJuVGfG683anb6CcHGqZRPTnakA2k1UqfvHqMVlpp
-	y8Gad6//ZK4jeqltQWlS/4zWFTv1A2TALBh6hln4JfITPyL12GdxEOgdImEzC+ZLZWsdDPLxU7O
-	GXLGJtPczjJlwPj+YfQJQACNF4yBs9sUzqG+tMCnt7fwEktgEPFjNbCDELaNEkAluZFevo5z9/m
-	Lz+A8dz3cPntMW1kl+Hn2OkA56u9DEEIju4g==
-X-Gm-Gg: ASbGncsAjURtP7bn5FmFa3vko+XUm+ELYZocLUJB6eI+67KLvTge+8liE9PBYG+jIV0
-	hNhzADpOIcpFIl0eMRsEgYPlAu+tIsjffqdKnj9PCp/7wSfhySywwtq0Y4vNjbkkaTrFeFU0+QE
-	8Nd2ZixQTk+vjJcqxe2xkMzZ5Eii3IeFjyeplClfLzAMx5cWYyrFiil5HCSqvYA0ATvrT20hCpD
-	dujSEZy6hfMvJVYuHFeedVIU5ISuchzje7TKo7fSq/AsDKD2KF1kyNCwDqiO+557ajb3vPA4vpR
-	4XFWUON5TQ/0l1ezyCTNJlEVugRT57/8Df2VIqBKWm97ZCk=
-X-Received: by 2002:a05:600c:3b8e:b0:439:99ab:6178 with SMTP id 5b1f17b1804b1-43ab0f2883dmr70599975e9.6.1740586547252;
-        Wed, 26 Feb 2025 08:15:47 -0800 (PST)
-X-Received: by 2002:a05:600c:3b8e:b0:439:99ab:6178 with SMTP id 5b1f17b1804b1-43ab0f2883dmr70599475e9.6.1740586546878;
-        Wed, 26 Feb 2025 08:15:46 -0800 (PST)
+        bh=rfC2A6kasbTFFVmo6oaGbjK3+zjtJv/rd2YzI/ABI5c=;
+        b=HHFYfGIBegw6oI4WddIBnB8hprYgh+ONEnRgKbZmvph7yC8WYsVwIR/1cYq3ryo44D
+         9EjUCaT2Rx1nfrtmtcvmOg3QsxOZt5F4QPKOQ/SKrmjfi1VKhXLK5REPDK+lQeIo3F2s
+         nySUV3zsMmkLT+AEPR18HuH94fYepwekxtWqwBwRt10w33lbQubLLhiAtQ4G/X3YBMgo
+         28RSuiG+WcDSo6ASaHGk3Wf5vZUoebip7sbyjmh1AtZGkzfEaJBzf0qbRHXk1Wis4ZGJ
+         Pcpoi8Zwa4zuthj1lP+nwSRLhu1pRG6V4FUsdAbrSq2ZULJCyVrUOeb6T8e7RcIcVUj8
+         348A==
+X-Gm-Message-State: AOJu0YwSjxALUqDl0bUCK6lFM7LYMFUV6X/2A3KcugnyhTp4RYItFORN
+	3SlBA8RRka8BcVCj9DN8qNA5Ek+w6JzLYMTKH/A0mgovR6+sDLnBNZIgjM59rRTiRvCCsMNWpZg
+	poIgLCxM9SOpvjeFJKv2tJLmyujSy9A4wliVa/d8hIe1RdEx4i/eTN1wQWPjER9uDl+dhxU33rm
+	4+H3soU1WbXMa/o650rEdXxxyBYvb4ek4agA==
+X-Gm-Gg: ASbGncvfynW0s9RyzqQ3BDNmkISaXcuvHhqL6rjVu9xHlE4LAu7V6q83U35/5DKlAO3
+	GpX3IVaZywzLMQvPU9XYKuW3177kghPqsQYBkhQxQOd+vz3MFGcL8176iEIEtOePRsJ2UyXK0jr
+	ffrmnMIs3fNdWjs4A3f6Lu8RvUQEtswONcBAla4bQEgJDON8vkkffp0YRLylDQiygQiVN4QMWrR
+	m6iR52FiDyipTzU2QX8MBGVaPj+ddUl+H0q2DmVdaHHKbQij+DhP9qtr19Rx0+ZrPPBcN49CBL0
+	6saQ+TedLp47YqbttAMXlbPc8gWrSofxSkIBM5DjKLJL2pU=
+X-Received: by 2002:a05:600c:3c95:b0:439:a88f:8523 with SMTP id 5b1f17b1804b1-439aebc2d5fmr151331435e9.21.1740586661700;
+        Wed, 26 Feb 2025 08:17:41 -0800 (PST)
+X-Received: by 2002:a05:600c:3c95:b0:439:a88f:8523 with SMTP id 5b1f17b1804b1-439aebc2d5fmr151331065e9.21.1740586661261;
+        Wed, 26 Feb 2025 08:17:41 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-49-245.web.vodafone.de. [109.42.49.245])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba539445sm26580685e9.22.2025.02.26.08.15.44
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba532bb1sm26546405e9.9.2025.02.26.08.17.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Feb 2025 08:15:46 -0800 (PST)
-Message-ID: <cc8802a7-20fd-446d-ac15-e593333360b1@redhat.com>
-Date: Wed, 26 Feb 2025 17:15:44 +0100
+        Wed, 26 Feb 2025 08:17:40 -0800 (PST)
+Message-ID: <9a730bdf-9d91-4839-8e45-06b9648baa25@redhat.com>
+Date: Wed, 26 Feb 2025 17:17:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/25] tests/vm: bump timeout for shutdown
+Subject: Re: [PATCH 12/25] tests/tcg: add message to _Static_assert in
+ test-avx
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
@@ -108,7 +109,7 @@ Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  Richard Henderson <richard.henderson@linaro.org>,
  Ed Maste <emaste@freebsd.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
- <20250226140343.3907080-11-alex.bennee@linaro.org>
+ <20250226140343.3907080-13-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -152,40 +153,41 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250226140343.3907080-11-alex.bennee@linaro.org>
+In-Reply-To: <20250226140343.3907080-13-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oDOcYP0NO2y5JVJ-M88xbBA3Y-VvOOJ_W2Y2ooxfmE0_1740586547
+X-Mimecast-MFC-PROC-ID: g56NeLQvpkAa7b2QiLfMoiMCrRFOTO_WtZ_6H_VgYxg_1740586662
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: wGox4v7nYDNE
+X-TUID: Fqzf3dOSBBEL
 
 On 26/02/2025 15.03, Alex Bennée wrote:
-> On my fairly beefy machine the timeout was triggering leaving a
-> corrupted disk image due to power being pulled before the disk had
-> synced. Double the timeout to avoid this.
+> In preparation for enabling clang and avoiding:
+> 
+>    error: '_Static_assert' with no message is a C2x extension [-Werror,-Wc2x-extensions]
+> 
+> lets just add the message.
 
-Triple the timeout?
+let's ?
 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/vm/basevm.py | 2 +-
+>   tests/tcg/i386/test-avx.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
-> index 6d41ac7574..9e879e966a 100644
-> --- a/tests/vm/basevm.py
-> +++ b/tests/vm/basevm.py
-> @@ -83,7 +83,7 @@ class BaseVM(object):
->       # command to halt the guest, can be overridden by subclasses
->       poweroff = "poweroff"
->       # Time to wait for shutdown to finish.
-> -    shutdown_timeout_default = 30
-> +    shutdown_timeout_default = 90
->       # enable IPv6 networking
->       ipv6 = True
->       # This is the timeout on the wait for console bytes.
+> diff --git a/tests/tcg/i386/test-avx.c b/tests/tcg/i386/test-avx.c
+> index 230e6d84b8..43df2226b9 100644
+> --- a/tests/tcg/i386/test-avx.c
+> +++ b/tests/tcg/i386/test-avx.c
+> @@ -244,7 +244,7 @@ v4di indexd = {0x00000002ffffffcdull, 0xfffffff500000010ull,
+>                  0x0000003afffffff0ull, 0x000000000000000eull};
+>   
+>   v4di gather_mem[0x20];
+> -_Static_assert(sizeof(gather_mem) == 1024);
+> +_Static_assert(sizeof(gather_mem) == 1024, "gather_mem not defined size");
 
-With the commit description fixed:
+s/defined/expected/ ?
+
+Anyway,
 Reviewed-by: Thomas Huth <thuth@redhat.com>

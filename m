@@ -1,74 +1,244 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd8e7322sm5923166f8f.64.2025.02.26.06.11.43
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp931661njg;
+        Wed, 26 Feb 2025 06:17:12 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVPvrZkogHiV/VtOAkgeItBDzPVHvSvfqPFhTh6t7ic3nBih2nVop7TxFhAHv6TvbpZ9coY0Np7yEHEgw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFRLUnC1Zf+qpwwPDivyHypCJHcpfBzofhI7H8R+BD+FXhYLq6d7CQ3wLFrRPl/93qh5NKS
+X-Received: by 2002:a17:907:7759:b0:ab7:5cc9:66fc with SMTP id a640c23a62f3a-abeeef701eemr421010466b.50.1740579432009;
+        Wed, 26 Feb 2025 06:17:12 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740579431; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=W6EekCCHvhn3z6nbK6vZaH1x64zcYabeu/kfw6yiPdVOPfJ5Jsagpf12N9ru4gQr9Y
+         96h7jIh10t3K3OmXsrhctvCZvwSjH9YU2N1EsTyp0mU4T9Qq3kVffpISPoXxwR5jthu5
+         SJUVER9K4PD0SWwR6R4/wS4wXnV+e2Z2dhatxrzKM5xETiMDODetM32siLVubxRbyDwd
+         i/kNHQvSd1X6580MQ+U8It7wHmnx/km8NZ9I0zsbmSWczkC9jDwvorMHlxwukeFiO2rv
+         FpcGornwNZJ7e9tUq7tRzqPeRBKa70DKgjPHqbaKtcvkhp3sTr3qbt+1Noh0zopVF/JD
+         E+8A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=U47VA7bQAyReFmXTz+SvCcW2YjnEudaZ9f05EVRkBHw=;
+        fh=dsoklPG7gJvpUlqcSMmbDyMzTE3Q/8tf73/n4j+hMhw=;
+        b=AR/ATSThudqP4nC4lHA1BFItHoEbwsBMik1/9XqkGfAENpecOMIYYqGVHLBN9c7Zy/
+         VSjpKZhVEyg5mVTSJgNfSw2XXfSfMbKaIe+VnCvlOjUnw/ouO2juKaead/K4hS2k/V2s
+         LgRJGJzk0McdCWQ5a4P1eqYI3I64KN7XkL0yXqrh5PMObdW3I8XEyAo3EzPATqtNqDWf
+         ocZmGtNS67CPDj7PvKtoHDCE/o4EgQvyirfubgVFluYDtREunrQLdABZuysikUvVXEUR
+         /Gxs+nODouk3ho1YeNSZG+JExkX/BIqDLukaNx5LsLfnxPNve3fR7h6+MpJy+cwRdzPR
+         QXxw==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OVcnoHyt;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-abed1bda1besi349190566b.5.2025.02.26.06.17.11
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 06:11:45 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A633260624;
-	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Kyle Evans <kevans@freebsd.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Warner Losh <imp@bsdimp.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Ed Maste <emaste@freebsd.org>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 18/25] plugins/api: clean-up the includes
-Date: Wed, 26 Feb 2025 14:03:36 +0000
-Message-Id: <20250226140343.3907080-19-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
-References: <20250226140343.3907080-1-alex.bennee@linaro.org>
+        Wed, 26 Feb 2025 06:17:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OVcnoHyt;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-534050-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 7E2A918958EE
+	for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 14:17:18 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A5350218AC8;
+	Wed, 26 Feb 2025 14:17:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="OVcnoHyt"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9D7C6191F6A
+	for <linux-kernel@vger.kernel.org>; Wed, 26 Feb 2025 14:17:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740579424; cv=none; b=LKRLp4uSTbfPVexvREOLm9BDG7P3V6LNR72SvEfT9mVkgfny/gVf0r0Gg3D4FTQ7Htl2dvBq1Pe+B5HwR4+nCF5ze+2nGGC1MMSnLEUoG47/oT/MPAWbsAbWKhranzSQnJM+ctE+FC5JvLDBpq80FyOu/zv7yrm+qRYHCKQ8qGI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740579424; c=relaxed/simple;
+	bh=tHXWRUcfC/Uu4A9QJGcvpZQXhOm64uKap9xDNT5NsNk=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=XJ6plkEpo4y8qxKLlqokOQiFISfF7NrU5ALllbAwkGaKgjwE+M+8sOHIM7rh9vuVfA8SC4mW3g28I9pI68A/VUzquszUI9QsfsHC67tfNwILXK9tMT/XBOWnv6cxGMjHDboNAXAl0Yja1ZxzKMZ10zYlUHnLYuZP3bjz6aEvmPo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=OVcnoHyt; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1740579421;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=U47VA7bQAyReFmXTz+SvCcW2YjnEudaZ9f05EVRkBHw=;
+	b=OVcnoHyt0ec6xHiN1RUFJmZlzyeHGE7rzfByghIMmyykydOHk/Rmado59zAadYY+nds1lL
+	Ei1q3PGRHbQy5POCEppJ9SXEgKUHSck7I+aCNki73tqAPcmfXIcZGJr1QnWeDvmqEJ/OQb
+	jzThAkTvvnl/ft+/sHstW+2zwjePUrY=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-240-eWb-gutpO56V_A2Hj_ke_A-1; Wed, 26 Feb 2025 09:16:59 -0500
+X-MC-Unique: eWb-gutpO56V_A2Hj_ke_A-1
+X-Mimecast-MFC-AGG-ID: eWb-gutpO56V_A2Hj_ke_A_1740579418
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-38f34b3f9f1so4714631f8f.0
+        for <linux-kernel@vger.kernel.org>; Wed, 26 Feb 2025 06:16:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740579418; x=1741184218;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=U47VA7bQAyReFmXTz+SvCcW2YjnEudaZ9f05EVRkBHw=;
+        b=H+bHZPxCztI1YA846vuEieOSQ5/fevK6R6OEp69rm0J7TaGVCKrVcwjfPM/PVcjVbT
+         kzajcmct10bvXWh5LAtlifkPJsKzr9E3D+z4k5ETBnke5+e+CNBayQMSu6Ry4wZ1DAT0
+         L/aJKt0Pg/mviyWkfO5ik8bLt40u6v6Fd/x4O6v8fU7/gsF8SNcZotC0fLz1Jd2k/N/F
+         10Q7LP97i4Z2mtgSSwVntjE40mI3l3O34W4OXSrpSi6eMJAMteTEO6A9CQuK0Cnx97N7
+         rLsz/STYCGmNwy2Y6ikRd22DYPLOkXoxqddva945e6eZRjlvP8x3K0bFDhTDLcIfeM71
+         gGew==
+X-Forwarded-Encrypted: i=1; AJvYcCUSt8mxhBEBKx3oqUl6v1fVITblsqf0A78LXzCpi/Em2z+ZUjI2LVQX16G3/55uB5tE/7zpVKn+4zEkk/M=@vger.kernel.org
+X-Gm-Message-State: AOJu0YzggTRwJGIkg6vYEmWMuQyqHomzLzrZSRzzubKncF+RnKr31O/t
+	1yAxKSWEc9w0YuX1nBM/YuNLYxiPstepIgfUwtKNA3AlkSOh3OJUth6EHE9pRTrBoprxGZEMaM2
+	1UxHUfoND6d5BeWY1jQo6rUKm2dhEx1L/6yXpRok05t9RIzvUrddDwRf3xR+Bdw==
+X-Gm-Gg: ASbGnct5RybcRu1fNdowkFQrDK6V3wJIgIuMtZ0HKeyL/U9YupPUI0D79n+TPmRnYDr
+	buPsB1+MA5+zOXI6hATrEQwo4tkd6XSZxll1r8wZNRqVqsmB5KCssF+/N5ochGHqKr7J1+6JVDm
+	Qm3ztKZ5ivZdaO1+WuP0QELObHPDalveDTCodJ82z41KSNQAKtTtlGgNcfmD3OpP7B6PqDenl9Q
+	pfz3IFBPec7oAhgkF1EPkEpVAG2Pi9mMZ4xCfk2P7YJpLc4i6ju/dPgmQELD+/ucL172+q3pKQA
+	6XnaOxapGRMgES/mafe8NNPTMhS1xbD195+jGVEbTkfy3IbPiaD+lThNPiZSY1A=
+X-Received: by 2002:a05:6000:1ac8:b0:38f:39e5:6b5d with SMTP id ffacd0b85a97d-390d4f8b64bmr2980512f8f.44.1740579418275;
+        Wed, 26 Feb 2025 06:16:58 -0800 (PST)
+X-Received: by 2002:a05:6000:1ac8:b0:38f:39e5:6b5d with SMTP id ffacd0b85a97d-390d4f8b64bmr2980477f8f.44.1740579417874;
+        Wed, 26 Feb 2025 06:16:57 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390de5a5b5esm1102094f8f.89.2025.02.26.06.16.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Feb 2025 06:16:57 -0800 (PST)
+Date: Wed, 26 Feb 2025 15:16:56 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 00/14] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250226151656.10665bc9@imammedo.users.ipa.redhat.com>
+In-Reply-To: <cover.1740148260.git.mchehab+huawei@kernel.org>
+References: <cover.1740148260.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: h/UNIuNR0uHz
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: KALUa+IOPjsx
 
-Thanks to re-factoring and clean-up work (especially to exec-all) we
-no longer need such broad headers for the api.
+On Fri, 21 Feb 2025 15:35:09 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250225110844.3296991-5-alex.bennee@linaro.org>
----
- plugins/api.c | 3 ---
- 1 file changed, 3 deletions(-)
+> Now that the ghes preparation patches were merged, let's add support
+> for error injection.
+> 
+> On this series, the first 6 patches chang to the math used to calculate offsets at HEST
+> table and hardware_error firmware file, together with its migration code. Migration tested
+> with both latest QEMU released kernel and upstream, on both directions.
+> 
+> The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+>    to inject ARM Processor Error records.
 
-diff --git a/plugins/api.c b/plugins/api.c
-index fa4d495277..c3ba1e98e8 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -39,9 +39,7 @@
- #include "qemu/main-loop.h"
- #include "qemu/plugin.h"
- #include "qemu/log.h"
--#include "qemu/timer.h"
- #include "tcg/tcg.h"
--#include "exec/exec-all.h"
- #include "exec/gdbstub.h"
- #include "exec/target_page.h"
- #include "exec/translation-block.h"
-@@ -51,7 +49,6 @@
- #ifndef CONFIG_USER_ONLY
- #include "qapi/error.h"
- #include "migration/blocker.h"
--#include "exec/ram_addr.h"
- #include "qemu/plugin-memory.h"
- #include "hw/boards.h"
- #else
--- 
-2.39.5
+please, run ./scripts/checkpatch on patches before submitting them.
+as it stands now series cannot be merged due to failing checkpatch
+
+> 
+> ---
+> v4:
+> - added an extra comment for AcpiGhesState structure;
+> - patches reordered;
+> - no functional changes, just code shift between the patches in this series.
+> 
+> v3:
+> - addressed more nits;
+> - hest_add_le now points to the beginning of HEST table;
+> - removed HEST from tests/data/acpi;
+> - added an extra patch to not use fw_cfg with virt-10.0 for hw_error_le
+> 
+> v2: 
+> - address some nits;
+> - improved ags cleanup patch and removed ags.present field;
+> - added some missing le*_to_cpu() calls;
+> - update date at copyright for new files to 2024-2025;
+> - qmp command changed to: inject-ghes-v2-error ans since updated to 10.0;
+> - added HEST and DSDT tables after the changes to make check target happy.
+>   (two patches: first one whitelisting such tables; second one removing from
+>    whitelist and updating/adding such tables to tests/data/acpi)
+> 
+> 
+> 
+> Mauro Carvalho Chehab (14):
+>   acpi/ghes: prepare to change the way HEST offsets are calculated
+>   acpi/ghes: add a firmware file with HEST address
+>   acpi/ghes: Use HEST table offsets when preparing GHES records
+>   acpi/ghes: don't hard-code the number of sources for HEST table
+>   acpi/ghes: add a notifier to notify when error data is ready
+>   acpi/ghes: create an ancillary acpi_ghes_get_state() function
+>   acpi/generic_event_device: Update GHES migration to cover hest addr
+>   acpi/generic_event_device: add logic to detect if HEST addr is
+>     available
+>   acpi/generic_event_device: add an APEI error device
+>   tests/acpi: virt: allow acpi table changes for a new table: HEST
+>   arm/virt: Wire up a GED error device for ACPI / GHES
+>   tests/acpi: virt: add a HEST table to aarch64 virt and update DSDT
+>   qapi/acpi-hest: add an interface to do generic CPER error injection
+>   scripts/ghes_inject: add a script to generate GHES error inject
+> 
+>  MAINTAINERS                                   |  10 +
+>  hw/acpi/Kconfig                               |   5 +
+>  hw/acpi/aml-build.c                           |  10 +
+>  hw/acpi/generic_event_device.c                |  43 ++
+>  hw/acpi/ghes-stub.c                           |   7 +-
+>  hw/acpi/ghes.c                                | 231 ++++--
+>  hw/acpi/ghes_cper.c                           |  38 +
+>  hw/acpi/ghes_cper_stub.c                      |  19 +
+>  hw/acpi/meson.build                           |   2 +
+>  hw/arm/virt-acpi-build.c                      |  37 +-
+>  hw/arm/virt.c                                 |  19 +-
+>  hw/core/machine.c                             |   2 +
+>  include/hw/acpi/acpi_dev_interface.h          |   1 +
+>  include/hw/acpi/aml-build.h                   |   2 +
+>  include/hw/acpi/generic_event_device.h        |   1 +
+>  include/hw/acpi/ghes.h                        |  54 +-
+>  include/hw/arm/virt.h                         |   2 +
+>  qapi/acpi-hest.json                           |  35 +
+>  qapi/meson.build                              |   1 +
+>  qapi/qapi-schema.json                         |   1 +
+>  scripts/arm_processor_error.py                | 476 ++++++++++++
+>  scripts/ghes_inject.py                        |  51 ++
+>  scripts/qmp_helper.py                         | 702 ++++++++++++++++++
+>  target/arm/kvm.c                              |   7 +-
+>  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
+>  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
+>  29 files changed, 1677 insertions(+), 79 deletions(-)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/acpi-hest.json
+>  create mode 100644 scripts/arm_processor_error.py
+>  create mode 100755 scripts/ghes_inject.py
+>  create mode 100755 scripts/qmp_helper.py
+> 
+

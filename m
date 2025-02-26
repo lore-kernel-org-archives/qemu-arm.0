@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba53961csm22477935e9.17.2025.02.26.06.03.52
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390dfab57b9sm371164f8f.68.2025.02.26.06.03.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 06:03:52 -0800 (PST)
+        Wed, 26 Feb 2025 06:04:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 507DD608D4;
+	by draig.lan (Postfix) with ESMTP id 36ECE601A1;
 	Wed, 26 Feb 2025 14:03:46 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,64 +27,151 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 24/25] plugins/api: build only once
-Date: Wed, 26 Feb 2025 14:03:42 +0000
-Message-Id: <20250226140343.3907080-25-alex.bennee@linaro.org>
+Subject: [PATCH 23/25] plugins/api: split out time control helpers
+Date: Wed, 26 Feb 2025 14:03:41 +0000
+Message-Id: <20250226140343.3907080-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /1xsjowcNtWF
+X-TUID: wjo5lUkFso6N
 
-Now all the softmmu/user-mode stuff has been split out we can build
-this compilation unit only once.
+These are only usable in system mode where we control the timer. For
+user-mode make them NOPs.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20250225110844.3296991-11-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20250225110844.3296991-10-alex.bennee@linaro.org>
 ---
- plugins/api.c       | 11 -----------
- plugins/meson.build |  3 +--
- 2 files changed, 1 insertion(+), 13 deletions(-)
+ plugins/api-system.c | 34 ++++++++++++++++++++++++++++++++++
+ plugins/api-user.c   | 17 +++++++++++++++++
+ plugins/api.c        | 41 -----------------------------------------
+ 3 files changed, 51 insertions(+), 41 deletions(-)
 
+diff --git a/plugins/api-system.c b/plugins/api-system.c
+index 38560de342..cc190b167e 100644
+--- a/plugins/api-system.c
++++ b/plugins/api-system.c
+@@ -95,3 +95,37 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
+         return g_intern_static_string("RAM");
+     }
+ }
++
++/*
++ * Time control
++ */
++static bool has_control;
++static Error *migration_blocker;
++
++const void *qemu_plugin_request_time_control(void)
++{
++    if (!has_control) {
++        has_control = true;
++        error_setg(&migration_blocker,
++                   "TCG plugin time control does not support migration");
++        migrate_add_blocker(&migration_blocker, NULL);
++        return &has_control;
++    }
++    return NULL;
++}
++
++static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
++{
++    int64_t new_time = data.host_ulong;
++    qemu_clock_advance_virtual_time(new_time);
++}
++
++void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++{
++    if (handle == &has_control) {
++        /* Need to execute out of cpu_exec, so bql can be locked. */
++        async_run_on_cpu(current_cpu,
++                         advance_virtual_time__async,
++                         RUN_ON_CPU_HOST_ULONG(new_time));
++    }
++}
+diff --git a/plugins/api-user.c b/plugins/api-user.c
+index 867b420339..28704a89e8 100644
+--- a/plugins/api-user.c
++++ b/plugins/api-user.c
+@@ -12,6 +12,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/plugin.h"
++#include "exec/log.h"
+ 
+ /*
+  * Virtual Memory queries - these are all NOPs for user-mode which
+@@ -38,3 +39,19 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
+ {
+     return g_intern_static_string("Invalid");
+ }
++
++/*
++ * Time control - for user mode the only real time is wall clock time
++ * so realistically all you can do in user mode is slow down execution
++ * which doesn't require the ability to mess with the clock.
++ */
++
++const void *qemu_plugin_request_time_control(void)
++{
++    return NULL;
++}
++
++void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++{
++    qemu_log_mask(LOG_UNIMP, "user-mode can't control time");
++}
 diff --git a/plugins/api.c b/plugins/api.c
-index 832bf6ee5e..604ce06802 100644
+index 82241699a5..832bf6ee5e 100644
 --- a/plugins/api.c
 +++ b/plugins/api.c
-@@ -46,17 +46,6 @@
- #include "exec/translator.h"
- #include "disas/disas.h"
- #include "plugin.h"
--#ifndef CONFIG_USER_ONLY
--#include "qapi/error.h"
--#include "migration/blocker.h"
--#include "qemu/plugin-memory.h"
--#include "hw/boards.h"
--#else
--#include "qemu.h"
--#ifdef CONFIG_LINUX
--#include "loader.h"
+@@ -526,44 +526,3 @@ uint64_t qemu_plugin_u64_sum(qemu_plugin_u64 entry)
+     return total;
+ }
+ 
+-/*
+- * Time control
+- */
+-static bool has_control;
+-#ifdef CONFIG_SOFTMMU
+-static Error *migration_blocker;
 -#endif
+-
+-const void *qemu_plugin_request_time_control(void)
+-{
+-    if (!has_control) {
+-        has_control = true;
+-#ifdef CONFIG_SOFTMMU
+-        error_setg(&migration_blocker,
+-                   "TCG plugin time control does not support migration");
+-        migrate_add_blocker(&migration_blocker, NULL);
 -#endif
- 
- /* Uninstall and Reset handlers */
- 
-diff --git a/plugins/meson.build b/plugins/meson.build
-index 942b59e904..d27220d5ff 100644
---- a/plugins/meson.build
-+++ b/plugins/meson.build
-@@ -61,9 +61,8 @@ endif
- user_ss.add(files('user.c', 'api-user.c'))
- system_ss.add(files('system.c', 'api-system.c'))
- 
--common_ss.add(files('loader.c'))
-+common_ss.add(files('loader.c', 'api.c'))
- 
- specific_ss.add(files(
-   'core.c',
--  'api.c',
- ))
+-        return &has_control;
+-    }
+-    return NULL;
+-}
+-
+-#ifdef CONFIG_SOFTMMU
+-static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
+-{
+-    int64_t new_time = data.host_ulong;
+-    qemu_clock_advance_virtual_time(new_time);
+-}
+-#endif
+-
+-void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+-{
+-#ifdef CONFIG_SOFTMMU
+-    if (handle == &has_control) {
+-        /* Need to execute out of cpu_exec, so bql can be locked. */
+-        async_run_on_cpu(current_cpu,
+-                         advance_virtual_time__async,
+-                         RUN_ON_CPU_HOST_ULONG(new_time));
+-    }
+-#endif
+-}
 -- 
 2.39.5

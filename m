@@ -1,122 +1,136 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp740676njg;
-        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW98P88FSh4forCjxZz+nCDS+F6ay2t+uy6KD7vWcTqSYXq1LqA2wfLVg0OsKSWHaKcwPd4ezq6/GkW/w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEILFxMYS4NrOpjH6UIGFwzg3388eU9NCe9QqC+q9S7zOGSGWKkeeDk393Uto121scj3lNh
-X-Received: by 2002:a05:6214:413:b0:6e6:6936:6b06 with SMTP id 6a1803df08f44-6e87ab3163cmr99589796d6.16.1740556097523;
-        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740556097; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp750487njg;
+        Wed, 26 Feb 2025 00:11:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXAvsBSAJvtzujfopKxvk9edMNa+l6qkrWPV+jkd/Fgu068sYu8RVcNgYZfu16kFzKNttiYwX8iBTqgIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHqQ9IxIXstvgy3tEXZnjV6JLXfBYkP+fs4kby8+oVizrgQnhHIRf2+fgE9AAjEMMtkhSUh
+X-Received: by 2002:a05:6214:1c44:b0:6e6:5aa2:4e4a with SMTP id 6a1803df08f44-6e87abacf46mr86202566d6.28.1740557503425;
+        Wed, 26 Feb 2025 00:11:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740557503; cv=none;
         d=google.com; s=arc-20240605;
-        b=PbAmMPRzLr845Ftc5rB0jxFaWt7JSV/nnime7umiiGKoIIBRr9C5yNG14vAFakIU2t
-         mnDO3AI3fkLOckKDmFPI+NbZbC23JQLPnNUhyC1MNe055MidgBk1SNkqBrbvUFlGERYq
-         7ZgbSwGscQFeMPr00SAmjoT5VKeNboIUdYNWijijPKvFUlOw+o0j5YQgHD8tN58HUi+z
-         HOu0jtOF1OdiJthkPbJugePORxA3cI/PJtFdzueiBb6/HL5cr6h8qQ8QZnPeC42rbdHy
-         FfJrS1howgOyCHfNYdKB2o1GDGfRrk2SsXBtdBLbidiqvQk9WHbA6z7PnZ0W3s83Y7Ol
-         Bi4w==
+        b=P4b7FEXrqHO+l7YNP5bsbvQmIRzu4+uz4vumkLrRPg4gMGUNxjZ1B+5WpU8VqCpMMV
+         IXLfHva1x0m3METvThFFVitQR5b4jckd1tHdxqkP+cgBAqViwU3ggv+QBVQ3oOuZVdiJ
+         7xgfbWujcgYT28eXlGaSD4RlmJOPmRWpQOYWG06KpZYKTgavI/f0L9n4lb/vRi9pzD35
+         33usUhT22sZNXT2Mi3WRsAhiinV/3RAxd6Zm7IUBiGl+QES/RsOtvOjB7S4wEhI+f5W+
+         qZtnzDmSoVoTx5atPQpYHVGOEtj/E7tfTcaTohKPGMVWwhANqYTdPDz91DSDCMiNd4i+
+         43uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=nbBOJoc/hYi/TbtRJ3CkGAC1erM0h3qUj9etGg1ef44=;
-        fh=nlPdI7O67F+1qVcQ1UEYjMxg9VOWR9dmvTjbm7tVlsw=;
-        b=LWSSwYf1uLB32gXt/QuCy1adL00Ss9/0U0HXduzrUlSKPY1IiIdnmgxeBs87KQw5MV
-         C/jbQhPTXxMDDxZ6TUKuA3r+M8qxZxlOtrwqsmX3DJufdWU1E8SrQnMVU7W0auQozkfK
-         N6w7wBjjz23rKkM9FfGjYZKBlXLlbI2SufXkEpel00Q6hIfCZ6TueMBVylyWITTRiCO/
-         6TrldB/StZaU5Yo7rlG+BMZEoXtRfur7uBTVKWrsDI7LupAbCGdnApGLn7x5VLOnkE+X
-         MhlmUMMJLzQX+ssN0NtGfEPfV65Nyp1Zd6NymadATYFUEWnDUXmu2qPevE/9yIjbnDpv
-         1hSQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=dw56ExMDIKPAuVXb5dh0JrFupWmQmeLfOPIJIRcT57U=;
+        fh=tTOhPNvF14n352IBRMPjWNyzoB+1QYfaT7hBkEJmA2c=;
+        b=W3++MurYgVik6WagWzXe4wGs4qXA0u7PnYFW3wWMQp6psxVIMgkPEiE/H0TWHT6ODD
+         J4+kHoNW5rpyiyyPAtsfbDQVW9x4ROS3IOQmuXAz1u6mx8XDAdUqP9kQWwupjLg4VeGd
+         7LR5/UwcDVe0n/EXXQuKs77h9SMz7Sishp30PVyPnaZo/v8Bv9rKZAPsHYn4n7kGZSxs
+         3IKwauuT62Z86dztEcZQYpeHRppQb0BRa7eZ3qTIS+69AoLcCAE0GPvmnBOOlcBmE/wr
+         VzAZU5YD+lFGQvJB969WLUTLA4X1NObrjRS4tcT5E8x4k++6aZbxfkRoO7/+w1OaIuWw
+         CEFQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apA3XC6e;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="P/+Q8ImD";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b01a68esi32098286d6.3.2025.02.25.23.48.17
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b1213f5si31617996d6.463.2025.02.26.00.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2025 23:48:17 -0800 (PST)
+        Wed, 26 Feb 2025 00:11:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apA3XC6e;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="P/+Q8ImD";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnC9N-0003yo-0a; Wed, 26 Feb 2025 02:48:13 -0500
+	id 1tnCVf-0005VW-02; Wed, 26 Feb 2025 03:11:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tnC9L-0003yH-Go
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:48:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tnC9J-0005nN-Sh
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 02:48:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740556088;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=nbBOJoc/hYi/TbtRJ3CkGAC1erM0h3qUj9etGg1ef44=;
- b=apA3XC6epNDFdqBfYt4GGsWgDGh0Dypy1NuZdbeVcKE5HQDjBfvTxp0DaVq+9htIzf1uLX
- uNl0pTPZwWXfc7xUesnsZu+dh9ggFoGHmXKTnATihNZzVkd1eAiDWOAoSySkaKyI5rCsif
- y4VWJyn6dFTHBRvpsEE+LNs6yigMooo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-gWxH8c8IMASaB1eQhnE19w-1; Wed,
- 26 Feb 2025 02:48:04 -0500
-X-MC-Unique: gWxH8c8IMASaB1eQhnE19w-1
-X-Mimecast-MFC-AGG-ID: gWxH8c8IMASaB1eQhnE19w_1740556083
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D4FBE1800877; Wed, 26 Feb 2025 07:48:02 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.45.224.219])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4BD45300018D; Wed, 26 Feb 2025 07:48:00 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id CE1E91800091; Wed, 26 Feb 2025 08:47:57 +0100 (CET)
-Date: Wed, 26 Feb 2025 08:47:57 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
- Ard Biesheuvel <ardb@kernel.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, graf@amazon.com, 
- Eric Blake <eblake@redhat.com>, Michael Roth <michael.roth@amd.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v5 14/24] hw/uefi: add var-service-json.c + qapi for NV
- vars.
-Message-ID: <wyrnw2ur2xp7e6yr7f7hdbn3zbvolnvjojjrlaoax7hb2psxzo@xw7arzdtroer>
-References: <20250225163031.1409078-1-kraxel@redhat.com>
- <20250225163031.1409078-15-kraxel@redhat.com>
- <87zfi95khl.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tnCVb-0005UG-3c; Wed, 26 Feb 2025 03:11:11 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tnCVY-00014K-Ci; Wed, 26 Feb 2025 03:11:10 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5dee1626093so1119890a12.1; 
+ Wed, 26 Feb 2025 00:11:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1740557465; x=1741162265; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dw56ExMDIKPAuVXb5dh0JrFupWmQmeLfOPIJIRcT57U=;
+ b=P/+Q8ImD2FgFvIFkQ3aEwVRcjz8OqOTAowQqacYP8zACYXPHR4d3H4D+CUDFwMWdz8
+ Cm5AMWhYI2Sw3gfUFvD7WCYJLj2DInGWTHUdD7OF4DoNhD58TGVZJ9Fmlyud9TLL0whn
+ qsEspBiapOlrRF9jB+jFYrlOi0IKWQ0Yxt2PosJvDIPiaMNY47WNuw129a92O5KMaqNQ
+ AQetoKeaYeyPwgIYQ/NdRSCovziIsMrmIQ6UyWgalucuNC0gk6xVDsEJciajELc+q/i6
+ Rab+XFjyoo50u+PnLsAhvCBr49Q6I9FApND2bdDMi1/bTUNfoWFZOp8Kz8dP9rBhchtu
+ +d7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740557465; x=1741162265;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dw56ExMDIKPAuVXb5dh0JrFupWmQmeLfOPIJIRcT57U=;
+ b=YNby7+D5Pv6gE+UBxwmiPMg3/X3oNgMICK7x+yr++WDDiRcBwqg/NdL3Z9hEvX6+6A
+ YqidzWN3fiP/h+xJSCYQWx0KDAx8FqfyvYv1vs/vNk793Tqy3F7P5F/sFxas+s72uyhk
+ U4Tg2abNJbhBD8R40vlV6Z8RMxFvjt5NyDMs9aMd9HrJfXOWS+G6DaxgmO0cHWt5nfW6
+ LFchMY7axw7IBSrXmhG2Etodpp9/62QOMrpkMjM+MKqoGVes5fOh5Df054e+kcHnbxMW
+ LUGV7g3bWhSq5zqxv/cI6cc64YbhrWREWXOckCJ+dOQBzOHLndIiNo9U3207kwv9ALSG
+ uejQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUPIAb3/TN7BKf9AdrqqFK+q+sylS+otGTdODHkwzpiSvArlBZPDZQ7yrICCdp3dyD5aqeWMo6wSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyG+3S2I/hfvU5/kNhx4ePqgo0xQCTzKfh+8/waH5ivVuzZIo0E
+ TOFUiayZUN/Ja5jjFxKNTQ7hK0M2ZWEB8rqFurYn89zS+fPNfEO7ELY1dA==
+X-Gm-Gg: ASbGncs64sn+uLdn8SiyU0MZkSfnBWluFq4LNcpqNBRUQqnwDiM3OLWlXS1s3lgA8np
+ sKhZAlXapJbrVodtn98W4a/seR71d5RwmG9003lOvCJYy6yQABlLQz1JIBGlxvNQo/bXSQV9x0q
+ KR4OgzTqbeyLa4BAWzkOh9B/fK66D21aWopGqzoWuJIYP+F1RRBE/yiOCDkNWeur4BXqklBimq+
+ Q5+shffIdgTZN9xcwOlyXYs6Dg/5l+Sg+LeAeBorqw3n7QY74h66R4FvK0m0W9iMbRF9pO2WPbu
+ cTcbDHrA9nwxonpfAyV44GmQpllRBvxxN6Fn5+GydBe041iVjdHtHYMaNN3zVG9mR6fXO9/jerT
+ OlQ==
+X-Received: by 2002:a17:907:a2cd:b0:abb:b154:c064 with SMTP id
+ a640c23a62f3a-abbeded95e3mr2583751066b.18.1740557463751; 
+ Wed, 26 Feb 2025 00:11:03 -0800 (PST)
+Received: from [127.0.0.1] (dslb-002-207-251-119.002.207.pools.vodafone-ip.de.
+ [2.207.251.119]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-abed1da453dsm283334266b.85.2025.02.26.00.11.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Feb 2025 00:11:03 -0800 (PST)
+Date: Wed, 26 Feb 2025 06:55:01 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PATCH v2 04/18] hw/arm: Add i.MX 8M Plus EVK board
+In-Reply-To: <CAFEAcA9e5FBrKLZrKRsw=wPThbwx3+gyVt9rv4_vx9OKfZ8qiQ@mail.gmail.com>
+References: <20250223114708.1780-1-shentey@gmail.com>
+ <20250223114708.1780-5-shentey@gmail.com>
+ <CAFEAcA_XJfAVEe3cgHiXgcewTL3kF3SEevrnMh-Edvfk56G6sQ@mail.gmail.com>
+ <CAFEAcA9e5FBrKLZrKRsw=wPThbwx3+gyVt9rv4_vx9OKfZ8qiQ@mail.gmail.com>
+Message-ID: <4FAB75C2-8140-48E6-AD54-77884C3004EF@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87zfi95khl.fsf@pond.sub.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,54 +145,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HgxNPmABXvVD
-
-  Hi,
-
-> > +# @data: variable value, encoded as hex string.
-> 
-> I understand this is a blob.  We commonly use base64 for that.  Why not
-> here?
-
-It's an existing format already supported by other tools.  Guess I
-should add that to the preamble.
-
-> > +# @digest: variable certificate digest.  Used to verify the signature
-> > +#     of updates for authenticated variables.
-> 
-> How to create and verify these digests will be obvious enough to users
-> of this interface?
-
-Well, no.  It's a somewhat complicated story ...
-
-UEFI has two kinds of authenticated variables.  First, the secure boot
-variables (PK, KEK, db, dbx).  These have hard-coded rules, the rule
-most relevant in practice is that signed update requests for the 'db'
-and 'dbx' variables are checked against the 'KEK' certificate database.
-
-For other authenticated variables UEFI essentially remembers the
-certificate when the variable is created, and any update / delete
-requests need a signature from the same certificate (simplified a
-bit to keep it short, the actual rules are more complicated, details
-are in the UEFI spec).
-
-This digest handles the "remembers the certificate" part.
-
-In practice the second kind of authenticated variables is rarely used.
-I have yet to see a piece of software actually using that in practice
-(other than the test case I have written).
+X-TUID: ueBiHTxWYNhV
 
 
-Also note that this is *not* part of the QMP interface.  The driver uses
-this to store the efi variable store in json format on disk (see
-var-service-json.c in this patch).
 
-Adding support for reading/writing uefi variables is something we might
-add to the monitor in the future.   Should that happen it is not clear
-whenever such an interface would actually use the raw 'UefiVariable'
-struct or if higher-level interfaces would be more useful.  For example
-a command to query whenever the guest has secure boot turned on.
+Am 25=2E Februar 2025 17:00:53 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>On Tue, 25 Feb 2025 at 15:42, Peter Maydell <peter=2Emaydell@linaro=2Eorg=
+> wrote:
+>> The C compiler for the OpenSUSE CI job doesn't seem to like this:
+>> https://gitlab=2Ecom/pm215/qemu/-/jobs/9239416833
+>>
+>> =2E=2E/hw/arm/fsl-imx8mp=2Ec: In function =E2=80=98fsl_imx8mp_realize=
+=E2=80=99:
+>> =2E=2E/hw/arm/fsl-imx8mp=2Ec:382:15: error: initializer element is not =
+constant
+>>              { fsl_imx8mp_memmap[FSL_IMX8MP_UART1]=2Eaddr, FSL_IMX8MP_U=
+ART1_IRQ },
+>>                ^~~~~~~~~~~~~~~~~
+>> =2E=2E/hw/arm/fsl-imx8mp=2Ec:382:15: note: (near initialization for
+>> =E2=80=98serial_table[0]=2Eaddr=E2=80=99)
+>> =2E=2E/hw/arm/fsl-imx8mp=2Ec:383:15: error: initializer element is not =
+constant
+>>              { fsl_imx8mp_memmap[FSL_IMX8MP_UART2]=2Eaddr, FSL_IMX8MP_U=
+ART2_IRQ },
+>>                ^~~~~~~~~~~~~~~~~
+>>
+>> This is (gcc 7=2E5=2E0 "cc (SUSE Linux) 7=2E5=2E0") apparently=2E That'=
+s
+>> a pretty old compiler, only just within the bounds of our
+>> version requirements (which are 7=2E4 or better), so I'm guessing
+>> it's just not as smart about figuring out that the
+>> initializer here really is a constant value=2E
+>>
+>> I'll fix this up by dropping the "const" from the serial_table[]
+>> etc definitions=2E
+>
+>More specifically, you have to drop 'static const', leaving just 'struct'=
+=2E
+>Minimal repro: https://godbolt=2Eorg/z/5css4hv67
 
-take care,
-  Gerd
+I haven't checked, but this is probably caused by the multiplications (=2E=
+=2E=2E * KiB) which the old compiler might not perform at compile time=2E T=
+hanks for looking into it without another iteration of the series!
 
+Best regards,
+Bernhard
+
+>
+>-- PMM

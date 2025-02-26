@@ -1,99 +1,98 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp998816njg;
-        Wed, 26 Feb 2025 07:59:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEa7EVrKC/XXRqgYy0WSilw19yXPrsmfPT5jHxB31V4iVVRnWdAg+68O1nl/HMX/eiPunJG
-X-Received: by 2002:a05:622a:292:b0:472:82b:72ae with SMTP id d75a77b69052e-4722473f31cmr262801891cf.22.1740585554289;
-        Wed, 26 Feb 2025 07:59:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740585554; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1003022njg;
+        Wed, 26 Feb 2025 08:03:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQRzG21navYpVU7apaqweLwSTLFf2dkxmmo4l+/ydMho6n/hqTY2Wmz4ns36WaeVj4o1M+
+X-Received: by 2002:a2e:8197:0:b0:308:f92e:625d with SMTP id 38308e7fff4ca-30b79163261mr24900121fa.15.1740585828698;
+        Wed, 26 Feb 2025 08:03:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740585828; cv=none;
         d=google.com; s=arc-20240605;
-        b=KZ7FSkvL9JsWBAKuHRR97FZMylK3DOaPoPf/XLLFRJNg1SXgUdzyHBQ31icN8sKq5r
-         EC4jkuW0XZZpeoogFX1BBTXSs8D7sbz250fDm7NQ6UpRF4GDvFvqScjNaD1CcIpKGNJT
-         Gv3sZtHrYfx2yGXfe7upaVrE6XfIfYHIDm1/bDauTho2LpOScTwwv6dMaScc1euzzKg3
-         GKYCZNBLI8n2bzwvWr/dy4bSmJdg4yNsseQuCgdrgw8dV66votdtIZGAfIDyZCjBdDxy
-         LkQ+XNL9WOXfQWXsP7FwWDxJosD2TTlYll6MwT6IOHTo8jjxwm1SjiCzjPIXvcZUJNt6
-         2fcQ==
+        b=flmhZqESI2zbYKuizgDV9tOGBh3RPcq7iF+BMUO1vvHmvJtiGoi7qv1h6CdsBRsp8w
+         vYDUNy8q3RAMJglsvxOHexN3NRjEX6EnjA6tdRDA+5x1sRiD9arza6BSOaHtOY/ZKkPr
+         j8xPv22T7kitaG3fzOd9Dd6fB8yG4ltmE/2clUeB/nCGzSET4ZQUO6dcDdIWyWDGAMDe
+         na1W8HvUOid2QmwMPrwdj7vtbYlcb2etEdfGjawRWtKn1UakSGRlI90Hi8670f4p14xN
+         nWJkx/nYHXKY+8puguQWMfYuanSdrdaPe20eQb+YSzVSPzMP+KgjkjeIlCktBjELmSQ/
+         yUGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=EvpMW5Us6iFxENm8iddIRKVCa+k3xzr2ebPkQ9K6Lhk=;
+        bh=Vys1crufxgV8URf90WVmjfVw0TwUnvqSFz1bm5BPLPw=;
         fh=kMuyKEDVLpXx+n9GsiCpA1spgm27ONyskfB4MRxywKY=;
-        b=Oopv/mlxoIEKiL4BgDez76+wMhccUASyuhrvBBI/AUVPeLuhYQDMSNqwoxr38ZfhWj
-         dgqKm4XJIzXUSPdN0DvaFuPIDNR4Ni9z3+8H4qX880eBqkLqo1Sxc/IG+wjmU8Z2YEFK
-         2p0bWm52VtBeVg44PehGe/HOXCS+823QJa2jN3g0lvN5PjrMJdRmeA0/g6XVbnpxzWDq
-         6UkzprXUDYkhYP2nfm75srOeyDDx2tNMtG5E5vMVnRbqUrevgtaMttq7K5ii2gS1EBsO
-         CGIdtbwOVNjSJye5QO4/DOPI6cM7HGETWhAJByV4HPQ4z4rqWqMg6DJrO1rdwULmYD8o
-         wONA==;
+        b=V1VdKiANXdsMWnDb589ZzouK1vMY8wV31Owui2S56Ytgi4l4aVjuh76r8rN6VLd6yB
+         RwdIKgtVCf8/aIep+Rtn/nZJd4JEoPDGx1Zs5qPfxmCcUfiaIcWjW4w9hQFA/wYoLpbe
+         ZAMhWeWCxGveiVGQgzEdp+cQ4AW2PFvRSuxDYjDPVnMPPwZ7uKR1bCYJV6BeYH1vSCf1
+         OXQnB1NKbqnMU/YnozLjL4N+ndco3Pm8V0xNi3z17xC/45AiDhSkWrs6VGzBRu2yim89
+         arShDJrAmcE4Nn0T9egZCphX+ArycNuiXWvskxY3Y3ZuwWhdl96FOEe52LQWmOqSBPdU
+         VltA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=efEYL+pa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMP7O8wd;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-47377e2f2d3si39046311cf.154.2025.02.26.07.59.14
+        by mx.google.com with ESMTPS id 38308e7fff4ca-30a81a80a1bsi39174561fa.492.2025.02.26.08.03.48
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 07:59:14 -0800 (PST)
+        Wed, 26 Feb 2025 08:03:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=efEYL+pa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMP7O8wd;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740585553;
+	s=mimecast20190719; t=1740585827;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=EvpMW5Us6iFxENm8iddIRKVCa+k3xzr2ebPkQ9K6Lhk=;
-	b=efEYL+pa1AIyee0AQy21JeKpme25mKbJn8jbN6pj1nrnwFkqQWM3325ToQSCfQuvzODylL
-	SPV+uv9x89L1X1BsGpxjw55nM0s2p1Y6TRafxo1XFI8l/CKg7tWTymuRjxa2wEiH7j+Ev7
-	AYnt0pYOWtPl9PEXpgE1J+cg51oTo6s=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=Vys1crufxgV8URf90WVmjfVw0TwUnvqSFz1bm5BPLPw=;
+	b=FMP7O8wdf6de+EiCQ8vl9zVCOauwpAxW8E1+7Fhrci3Rgu8GdtZpHMCYMtQF7MmyJXiC8k
+	wcObcfPejqdBs05iDpy5SL+Vh/3q1+jLTiHA+30klFFNOlS+C8QYweGg4DdcMSSnsUkeN0
+	gu8Sh4hiewwusc06SDJhv/4vaUX0slk=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-358-o2xAgIx2N2yK9DSUovDgqg-1; Wed, 26 Feb 2025 10:59:12 -0500
-X-MC-Unique: o2xAgIx2N2yK9DSUovDgqg-1
-X-Mimecast-MFC-AGG-ID: o2xAgIx2N2yK9DSUovDgqg_1740585552
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43947979ce8so29948405e9.0
-        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 07:59:12 -0800 (PST)
+ us-mta-548-xpFRlvTKNo2cQCVsp9JT3g-1; Wed, 26 Feb 2025 11:03:43 -0500
+X-MC-Unique: xpFRlvTKNo2cQCVsp9JT3g-1
+X-Mimecast-MFC-AGG-ID: xpFRlvTKNo2cQCVsp9JT3g_1740585822
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-439858c5911so33256805e9.2
+        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 08:03:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740585551; x=1741190351;
+        d=1e100.net; s=20230601; t=1740585822; x=1741190622;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=EvpMW5Us6iFxENm8iddIRKVCa+k3xzr2ebPkQ9K6Lhk=;
-        b=isY2Bv4KfNE7hrj0cTWkELFECAK7jEdMCVziRS86zeiFr/Ig9j4ig44Rd/636kv+hc
-         y5hKTSuU8iXIjhOX8+F2ytvu4Q1ZTic878aiKn1IVG8togbeKd7cl+wGnfQhnr0GPpjM
-         N8na5SOqexFGAKkOvGgAnMWPU4NcWvkYTpTPmjxmeXR6rO/n3A6G6NpeiQ9HkX+2IYm6
-         JQ5nnzGJptW1k/DszJx//mF7OY1TXtzrd/UKyQP0WHtZVeNk4NMUMa1G05I48Mr6iSHW
-         f5a804v6ULY+aSU70vJ2eKRJiDhu4HPgyi7sY6sxWZ05mwqwQc9je8sahIjGdo8QQTeu
-         Gmnw==
-X-Gm-Message-State: AOJu0YwXiTJOWnDgMhy8nrouRbalXFdc3RvBHq8Gtm4dDnNcS9mXTspT
-	dbYwkusYGnS5FPw48YCMJGoZSOMb9ql2ExQ+hDB3aJJMgbNZifzH5V9d2BnLxnMAn8taCu6R0fi
-	VCD0lnC7Hdrmio2YBGqAeeB3UMbIXiug7h3KQ5UsWzSLBzYcKcRt0pekEYq6NyCVQIR60zNZ3n8
-	zbMUtHIjEneS37qOE/l7bvcVMPoxOa8dPBgg==
-X-Gm-Gg: ASbGncvGf13XPgex47xtqvjTTL8Xe1jdkNG2tjnYDpFQCVzMRCnXspUfd/MLWW0v2wh
-	tqz6FwZIcSsns/1RD08QvU/WMpsQf2OIJXnT5b30ORX8g1j1uxfnYj3P3o5UOQ1IMDT5+kAqDmK
-	lQXBYg66ksemYhG/vELTUp1YzbMCte2ed1Dw55jZnP8g7l6sPIY4tMMnE/u7txPEVD/pj5RkUjw
-	X0XU7k87GTuwM3rKJ6P2F0yHKY9GwFef26KRkdCbhOV5StdEX8PKZOSIV9avoMkCaw+zvXV1gLG
-	ZD3+qMH9hB9rFJ1NxUpe1HxnG16J3y+URZYltovrTTF8OIU=
-X-Received: by 2002:a05:600c:3c86:b0:439:9d75:9e7d with SMTP id 5b1f17b1804b1-439ae21d1d0mr164544465e9.22.1740585551543;
-        Wed, 26 Feb 2025 07:59:11 -0800 (PST)
-X-Received: by 2002:a05:600c:3c86:b0:439:9d75:9e7d with SMTP id 5b1f17b1804b1-439ae21d1d0mr164544095e9.22.1740585550989;
-        Wed, 26 Feb 2025 07:59:10 -0800 (PST)
+        bh=Vys1crufxgV8URf90WVmjfVw0TwUnvqSFz1bm5BPLPw=;
+        b=HzI8hyo0EKC7LnSSErec+o6udyxVfJLPud/OhUm44YZ8UH2dB9v/BQH0r7YIgLC1pc
+         A7HRI6cEcbPJSaptwck4eskYXkwVX1hB073GVA0nm7qO6C8ko01U5yIXYj1XEiRT/pVW
+         tEQ4j4OIK+mlUwXaseEcGxVZ78BVIq43K7Ik+rkh38i+2LUF8sCl2CbjWu+XhVxWW2B+
+         7riSxtMOTy0gWLok3+Cr5mfXA16hJ3S71psuZGZSGDEW+vgw7xMC/s9PdlA3DkZqUmkM
+         sAsmXW8GtYq+OTJfkIZ0JjDctGube/irJSwolc60nxcN4HS64PWsGUpizSgrA3vUlBCe
+         DLFQ==
+X-Gm-Message-State: AOJu0YwdeOX8bcSRW7ncDql5j2YPKKDprATtCJrE9NN4oSFDmMkH1kzb
+	LuD7+M+HVFAWoW9FWW61njlI67JN/F47rgc/f4AJ851ysZxnQLQKmPKnkk0yCsqMfS3E1RD7rnA
+	8Rf7pIuBx9IStuQIJ+gNyb2oiLkA0/4kdLGHOScsPXqtgwtByPmMwobcz7wr0huzrsMJzXgkmSk
+	2ICVOUmOPtV7wJyOkJV0mWO4s1lKmuO+SPZg==
+X-Gm-Gg: ASbGncvzCSplislC7kh7zLYFfDOzmwULON5wMxLPzplwWbikTltEoTI0gRlSMnBl8uK
+	QlVKB2BkuRK7Ygfkp5H+cWnLfxKivF3W5wxteualbCD0Oy1tUNzBYzgfKn/HAQCs39P6jspdu7T
+	VzfjWAFUWPlFAmVO7eR59qO+vA93f3D4EF6CFd3WyyN/UW2WXP+EI5hjkpOokRkK6vr+3INUMcd
+	lOt6fJ+V8AJ45DAoLMNzIx8FAlovcqFyvVVS5KaI6IVKpw6T8Ps0FaIkS7xU9BJe225ax0gFjM4
+	XyfFyNKV+Q10uB9sx7qocGJQkHfbiAznL0Eq/rBcmNy4ZP0=
+X-Received: by 2002:a05:600c:35c3:b0:439:8a8c:d3ca with SMTP id 5b1f17b1804b1-43ab903c452mr38624075e9.29.1740585822437;
+        Wed, 26 Feb 2025 08:03:42 -0800 (PST)
+X-Received: by 2002:a05:600c:35c3:b0:439:8a8c:d3ca with SMTP id 5b1f17b1804b1-43ab903c452mr38623105e9.29.1740585821875;
+        Wed, 26 Feb 2025 08:03:41 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-49-245.web.vodafone.de. [109.42.49.245])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba549db4sm25816175e9.35.2025.02.26.07.59.09
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba52b97bsm26608115e9.8.2025.02.26.08.03.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Feb 2025 07:59:10 -0800 (PST)
-Message-ID: <7a7c5550-898b-4ed1-a74b-c2bb9c9d8272@redhat.com>
-Date: Wed, 26 Feb 2025 16:59:08 +0100
+        Wed, 26 Feb 2025 08:03:41 -0800 (PST)
+Message-ID: <e5339f5d-aaf5-4b90-a14f-b73e9af294bc@redhat.com>
+Date: Wed, 26 Feb 2025 17:03:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/25] tests/functional: ensure we have a GPU device for
- tests
+Subject: Re: [PATCH 04/25] tests/functional: expand tests to cover virgl
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
@@ -109,7 +108,7 @@ Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  Richard Henderson <richard.henderson@linaro.org>,
  Ed Maste <emaste@freebsd.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
- <20250226140343.3907080-4-alex.bennee@linaro.org>
+ <20250226140343.3907080-5-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -153,38 +152,60 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250226140343.3907080-4-alex.bennee@linaro.org>
+In-Reply-To: <20250226140343.3907080-5-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: SZJjfN9xzLr5wesohF9XQA7jlmhHXFXihKfekY4QuGc_1740585552
+X-Mimecast-MFC-PROC-ID: U0_RdaW_2yY6YWRJYL9CMgA1o6qFtWe0EvnzaDMNVmI_1740585822
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: rGkrvNEPMj41
+X-TUID: HiJVPi6bD9qz
 
 On 26/02/2025 15.03, Alex Bennée wrote:
-> It's possible to build QEMU without support for the GL enabled GPU
-> devices and we can catch that earlier with an explicit check.
+> Add two more test modes using glmark2-wayland to exercise the OpenGL
+> pass-through modes with virgl. Virgl can run with or without the
+> hostmem blob support.
+> 
+> We might want to eventually add more directed tests and individual
+> features later on but the glmark/vkmark tests are a good general
+> smoke test for accelerated 3D.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20250219150009.1662688-4-alex.bennee@linaro.org>
+> Message-Id: <20250219150009.1662688-5-alex.bennee@linaro.org>
 > ---
->   tests/functional/test_aarch64_virt_gpu.py | 3 +++
->   1 file changed, 3 insertions(+)
+>   tests/functional/test_aarch64_virt_gpu.py | 20 ++++++++++++++++++++
+>   1 file changed, 20 insertions(+)
 > 
 > diff --git a/tests/functional/test_aarch64_virt_gpu.py b/tests/functional/test_aarch64_virt_gpu.py
-> index 06093c6b60..c9463d7285 100755
+> index c9463d7285..7a8471d1ca 100755
 > --- a/tests/functional/test_aarch64_virt_gpu.py
 > +++ b/tests/functional/test_aarch64_virt_gpu.py
-> @@ -91,6 +91,9 @@ def _run_virt_gpu_test(self, gpu_device,  weston_cmd, weston_pattern):
+> @@ -89,6 +89,26 @@ def _run_virt_gpu_test(self, gpu_device,  weston_cmd, weston_pattern):
+>           full_cmd = f"weston -B headless --renderer gl --shell kiosk -- {weston_cmd}"
+>           exec_command_and_wait_for_pattern(self, full_cmd, weston_pattern)
 >   
->       @skipIfMissingCommands('zstd')
->       def test_aarch64_virt_with_vulkan_gpu(self):
+> +    @skipIfMissingCommands('zstd')
+> +    def test_aarch64_virt_with_virgl_gpu(self):
 > +
 > +        self.require_device('virtio-gpu-gl-pci')
 > +
->           gpu_device = "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on"
->           weston_cmd = "vkmark -b:duration=1.0"
->           weston_pattern = "vkmark Score"
+> +        gpu_device = "virtio-gpu-gl-pci"
+> +        weston_cmd = "glmark2-wayland -b:duration=1.0"
+> +        weston_pattern = "glmark2 Score"
+> +        self._run_virt_gpu_test(gpu_device, weston_cmd, weston_pattern)
+> +
+> +    @skipIfMissingCommands('zstd')
+> +    def test_aarch64_virt_with_virgl_blobs_gpu(self):
+> +
+> +        self.require_device('virtio-gpu-gl-pci')
+> +
+> +        gpu_device = "virtio-gpu-gl-pci,hostmem=4G,blob=on"
+> +        weston_cmd = "glmark2-wayland -b:duration=1.0"
+> +        weston_pattern = "glmark2 Score"
+> +        self._run_virt_gpu_test(gpu_device, weston_cmd, weston_pattern)
+> +
+>       @skipIfMissingCommands('zstd')
+>       def test_aarch64_virt_with_vulkan_gpu(self):
+>   
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

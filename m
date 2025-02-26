@@ -1,239 +1,284 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp824417njg;
-        Wed, 26 Feb 2025 03:11:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXh3BhuDUPk6sBnyZ7NUx46u7F+oSEhUXaze99LGZ6XCF0tBJVfD+tD6EQUjKCF08wV14L/CHLMRSYXPQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFT/grIHU1hMHF6rWun8OxvyWOFaf35vhmsuCCM6q+bWUphAIIF+/oqxxw9LPfFFIIF6JQ5
-X-Received: by 2002:a05:620a:d95:b0:7c0:82cb:f430 with SMTP id af79cd13be357-7c247f42e6dmr353659085a.27.1740568281478;
-        Wed, 26 Feb 2025 03:11:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740568281; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp830064njg;
+        Wed, 26 Feb 2025 03:23:16 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVWLMzA6VgYMZvbeMwEUeolKrpesVGoEcm5qeSSzcVg3Y+jpCGIe/tQ2L3SSIc5nhXTGGwAyrIh4WXvhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF+7CErTH0rzC+IY5mHQJVGFh5xVxdtVKV2BnokNSJfXz+pF1xQxHckBbGSjSVY8OCcSucW
+X-Received: by 2002:a05:622a:c:b0:472:1ee7:d25 with SMTP id d75a77b69052e-4722473c34bmr259608261cf.12.1740568996740;
+        Wed, 26 Feb 2025 03:23:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740568996; cv=pass;
         d=google.com; s=arc-20240605;
-        b=FZju+IU7CEw4/dWwukT80KrRvQqG5o8JFV8d6m8ithxive0dYhcvfTOQGDm/2Dqy7s
-         k/4AY9gGjxJVQLOYsU+SEbJiDxjBsEftP0KSl4T5Ak3Q/dTJdFcwIqXVhXXg2QzmjbOJ
-         /bZztZqxWcwDynQlpxzoRXtmNCsp8JXP8l7CuAY2XSK9hnxbyEaVNHF2NJr4J+GGosk7
-         hdMcLjuB/9jOs3PjzOlZ1kM5+qCUf9LTTGltbclfVc9L/1CBzjM9urQUmUDhVyOxFE78
-         iYIbu0WxaQaxMHi9bYEblLMuIv2P5XqexGktX4NeAM5ng0fMGEjc6z4OXnjCvx19Q9N8
-         LQ4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=aVcLI2F79oA5VpKyYwKaCV7+PnY0bsRktpKSFx3zLW4=;
-        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=eCove87FdhvG1IV+38E7Sik/LACPx4KCJ5c/u9nEoZ6kFjqOH2im9ork9YgxCgtfCq
-         rNov5uXSlQB8VKh7TiObveOOnGoCNS61euDKZ+IJSkPa105XX/Z9b32C0goxIcuHyaV0
-         ewegZvmr1yeJwJ1Yyksf/v8eXvvYaRldnFRlPt2l/vGE6cnEAlVi9m6rlbpZE2UPXai8
-         fa2FQfIum2Ln0Kpz62dXfe08/KPGLgWmc9TAoE1qmk4APqk04I0CQqpHY37nJJB7zTDw
-         A2Oepu2SfU686OjyeMhWehC2wDkAWOwGloa1REpJ4DCU+I40YwRpvi0Nk6EacPP8xiTR
-         OiwA==;
+        b=eg4vHKtzi8EpaU3VXbtsD225MiCEhiKhQVyHUrmZYESzwreFYqufseJ5p8MaLmG8id
+         OjMgzhMjQuWwia8+IgLHHW7InFfYlEAd6aSDQCKc6Fm5gJxUSyZp9XGsQ0BACVYVOtu2
+         ARz8IWY5zD+nAW5yV568D6/Mg7Cz1317ZKrx76Gb9EHYr1URDhggIQctNozVXh8xsflv
+         QbpjK1Y9fZtmo3DAXPNc2El/iY60UGvfsTJHxtj4MjhKfxker/hZlvo/OqVlDmxBwkWs
+         EKA4K0kj7AYLcl9n56NXgaiM1av/J8KyHj3eiWAUNJv/8J8oYf3TkXIX9hKdMymLAmno
+         TPPw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=KXta+UoolBFQTz35uMPtZFYSxNO5ceu8OFYgB/CXhto=;
+        fh=MmlQpIPkhVUlS3/mEhdPQiFKN9SiEZ2B0eZQD2EOsYU=;
+        b=OjKiPetfSM4M785LronUvG9A3kEz4gitWa55+uQ/iUhp51hW6I3nrH/qXUhz0NR8Na
+         L65riEIVrr7qtBWNs8D8O2LefDA4UCvyqiCgz5+pLvyijWTA2yl935e5Wa0U9deMxF44
+         iMmm6DojOpYxgM7bbqeJc1TCA9wDZ+zkcp+U+9CdR54f7lfuXlMD1iGgaBNtGquP/YiM
+         D+OxIraQhphnAuwXd+51QFT/6UXir3hQGQKohtHPhnXNIfCO9jPzMZPO0/RUlwa19NTy
+         40wT1T0QgJh+wjP3Krl9C7/zAwOjLFaGksFsEU0RgKodDSV70n3Z/g1DIRCaRg36sG7j
+         Vvgg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2d8bd2si362782885a.412.2025.02.26.03.11.21
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tJE2M1d5;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id d75a77b69052e-473780ac6b4si32973041cf.595.2025.02.26.03.23.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2025 03:11:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Feb 2025 03:23:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnFJV-0000Or-Ml; Wed, 26 Feb 2025 06:10:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7zlN=VR=kaod.org=clg@ozlabs.org>)
- id 1tnFJT-0000Oc-B4; Wed, 26 Feb 2025 06:10:51 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7zlN=VR=kaod.org=clg@ozlabs.org>)
- id 1tnFJQ-0000RV-Cx; Wed, 26 Feb 2025 06:10:51 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z2sFy1dTQz4x2g;
- Wed, 26 Feb 2025 22:10:30 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z2sFt29Pkz4x1V;
- Wed, 26 Feb 2025 22:10:23 +1100 (AEDT)
-Message-ID: <598b3498-267a-44de-98a3-1a0e4ac39d86@kaod.org>
-Date: Wed, 26 Feb 2025 12:10:20 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tJE2M1d5;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-533636-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 35E221652BF
+	for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 11:23:16 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1CF55214A82;
+	Wed, 26 Feb 2025 11:23:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="tJE2M1d5"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C479F18C034;
+	Wed, 26 Feb 2025 11:23:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740568991; cv=none; b=kOtnX9465zkce/gaGCQv3otRgovEJA6YEsWlPergXMr6zKDGyI/+Dhibru5xO8RVepxpkU+RNEb6j1s0f0SFQ4xEoqmoHWNOImis40S1cyPEoMZP6jBE8RPy29AnJpXU5gLmQs+F8D0GmbLfxGALD8CBzRLnIUepNXhHa+SwSr8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740568991; c=relaxed/simple;
+	bh=703UKprGGQpR0HDpKp0gIymTag7yafrb372oYXJMNek=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=OSp4oP+e+98jGhwkwfOQYRJiNUCAI6K8iyPvuyvbGphb7nqmxog1SfvoGvdnr61lopeFghRh/jwZgsgv0NOE/tn6TwXe5C2r7OYbbEqAoit98ETIi3oZZjzG6+W2Telu6yHwLwWNqhDmFvey9CadOir+IJ46eBAhZaQ6U1aYtmA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=tJE2M1d5; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9482C4CED6;
+	Wed, 26 Feb 2025 11:23:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740568991;
+	bh=703UKprGGQpR0HDpKp0gIymTag7yafrb372oYXJMNek=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=tJE2M1d5GdnKvGF1N6IS1+Fqs1+GkWn5HTPUN6deuWEkUOsv0NgY2U39dE4euzCCO
+	 j8dfBEa0jwmGlt0krOdObiwyBGBdDDmloHLuZ1HvGdVOCLwJB4Il3EglaBJlkPEQvJ
+	 dFPMUGmqiCLkYv3962YSxSKGbCvxylhsOD4nIGk4gvMqVNsJtQy9Z02dWsbINWT5r1
+	 t3HO5ktlT8unHlHTEwPZZ4CxaW4nCRv5P4hC3QbXPaFD3Gkg3E62jvLcFBtBKnGZCr
+	 Xt+RS1egXezY0+IMHLnten5h19ick8VZbbP7nopvWMjHhulkfX560MYKIxn5IFw3l/
+	 lvTm09yD7EQ4g==
+Date: Wed, 26 Feb 2025 12:23:03 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
+ =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250226122303.0131ce8b@foz.lan>
+In-Reply-To: <20250226105628.7e60f952@foz.lan>
+References: <cover.1738345063.git.mchehab+huawei@kernel.org>
+	<20250203110934.000038d8@huawei.com>
+	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
+	<20250221073823.061a1039@foz.lan>
+	<20250221102127.000059e6@huawei.com>
+	<20250225110115.6090e416@imammedo.users.ipa.redhat.com>
+	<20250226105628.7e60f952@foz.lan>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/4] hw/misc/aspeed_hace: Fix boot issue in the Crypto
- Manager Self Test
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250225075622.305515-1-jamin_lin@aspeedtech.com>
- <20250225075622.305515-5-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250225075622.305515-5-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=7zlN=VR=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dNGK9WkFn/0C
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: fDInM7mTZTc9
 
-On 2/25/25 08:56, Jamin Lin wrote:
-> Currently, it does not support the CRYPT command. Instead, it only sends an
-> interrupt to notify the firmware that the crypt command has completed.
-> It is a temporary workaround to resolve the boot issue in the Crypto Manager
-> Self Test.
+Em Wed, 26 Feb 2025 10:56:28 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
+
+> Em Tue, 25 Feb 2025 11:01:15 +0100
+> Igor Mammedov <imammedo@redhat.com> escreveu:
 > 
-> Introduce a new "use_crypt_workaround" class attribute and set it to true in
-> the AST2700 HACE model to enable this workaround by default for AST2700.
+> > On Fri, 21 Feb 2025 10:21:27 +0000
+> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> >   
+> > > On Fri, 21 Feb 2025 07:38:23 +0100
+> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > >     
+> > > > Em Mon, 3 Feb 2025 16:22:36 +0100
+> > > > Igor Mammedov <imammedo@redhat.com> escreveu:
+> > > >       
+> > > > > On Mon, 3 Feb 2025 11:09:34 +0000
+> > > > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+> > > > >         
+> > > > > > On Fri, 31 Jan 2025 18:42:41 +0100
+> > > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > > > >           
+> > > > > > > Now that the ghes preparation patches were merged, let's add support
+> > > > > > > for error injection.
+> > > > > > > 
+> > > > > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
+> > > > > > > table and hardware_error firmware file, together with its migration code. Migration tested
+> > > > > > > with both latest QEMU released kernel and upstream, on both directions.
+> > > > > > > 
+> > > > > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+> > > > > > >    to inject ARM Processor Error records.
+> > > > > > > 
+> > > > > > > If I'm counting well, this is the 19th submission of my error inject patches.            
+> > > > > > 
+> > > > > > Looks good to me. All remaining trivial things are in the category
+> > > > > > of things to consider only if you are doing another spin.  The code
+> > > > > > ends up how I'd like it at the end of the series anyway, just
+> > > > > > a question of the precise path to that state!          
+> > > > > 
+> > > > > if you look at series as a whole it's more or less fine (I guess you
+> > > > > and me got used to it)
+> > > > > 
+> > > > > however if you take it patch by patch (as if you've never seen it)
+> > > > > ordering is messed up (the same would apply to everyone after a while
+> > > > > when it's forgotten)
+> > > > > 
+> > > > > So I'd strongly suggest to restructure the series (especially 2-6/14).
+> > > > > re sum up my comments wrt ordering:
+> > > > > 
+> > > > > 0  add testcase for HEST table with current HEST as expected blob
+> > > > >    (currently missing), so that we can be sure that we haven't messed
+> > > > >    existing tables during refactoring.        
+> > > 
+> > > To potentially save time I think Igor is asking that before you do anything
+> > > at all you plug the existing test hole which is that we don't test HEST
+> > > at all.   Even after this series I think we don't test HEST.  You add
+> > > a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
+> > > it should be replaced with the example data for the test.    
+> > 
+> > that's what I was saying.
+> > HEST table should be in DSDT, but it's optional and one has to use
+> > 'ras=on' option to enable that, which we aren't doing ATM.
+> > So whatever changes are happening we aren't seeing them in tests
+> > nor will we see any regression for the same reason.
+> > 
+> > While white listing tables before change should happen and then updating them
+> > is the right thing to do, it's not sufficient since none of tests
+> > run with 'ras' enabled, hence code is not actually executed.   
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Ok. Well, again we're not modifying HEST table structure on this
+> changeset. The only change affecting HEST is when the number of entries
+> increased from 1 to 2.
+> 
+> Now, looking at bios-tables-test.c, if I got it right, I should be doing
+> something similar to the enclosed patch, right?
+> 
+> If so, I have a couple of questions:
+> 
+> 1. from where should I get the HEST table? dumping the table from the
+>    running VM?
+> 
+> 2. what values should I use to fill those variables:
+> 
+> 	int hest_offset = 40 /* HEST */;
+> 	int hest_entry_size = 4;
 
 Thanks,
+Mauro
 
-C.
+As a reference, this is the HEST table before the patch series:
+
+/*
+ * Intel ACPI Component Architecture
+ * AML/ASL+ Disassembler version 20240927 (64-bit version)
+ * Copyright (c) 2000 - 2023 Intel Corporation
+ * 
+ * Disassembly of hest.dat
+ *
+ * ACPI Data Table [HEST]
+ *
+ * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+ */
+
+[000h 0000 004h]                   Signature : "HEST"    [Hardware Error Source Table]
+[004h 0004 004h]                Table Length : 00000084
+[008h 0008 001h]                    Revision : 01
+[009h 0009 001h]                    Checksum : E0
+[00Ah 0010 006h]                      Oem ID : "BOCHS "
+[010h 0016 008h]                Oem Table ID : "BXPC    "
+[018h 0024 004h]                Oem Revision : 00000001
+[01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+[020h 0032 004h]       Asl Compiler Revision : 00000001
+
+[024h 0036 004h]          Error Source Count : 00000001
+
+[028h 0040 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
+[02Ah 0042 002h]                   Source Id : 0000
+[02Ch 0044 002h]           Related Source Id : FFFF
+[02Eh 0046 001h]                    Reserved : 00
+[02Fh 0047 001h]                     Enabled : 01
+[030h 0048 004h]      Records To Preallocate : 00000001
+[034h 0052 004h]     Max Sections Per Record : 00000001
+[038h 0056 004h]         Max Raw Data Length : 00000400
+
+[03Ch 0060 00Ch]        Error Status Address : [Generic Address Structure]
+[03Ch 0060 001h]                    Space ID : 00 [SystemMemory]
+[03Dh 0061 001h]                   Bit Width : 40
+[03Eh 0062 001h]                  Bit Offset : 00
+[03Fh 0063 001h]        Encoded Access Width : 04 [QWord Access:64]
+[040h 0064 008h]                     Address : 0000000139E40000
+
+[048h 0072 01Ch]                      Notify : [Hardware Error Notification Structure]
+[048h 0072 001h]                 Notify Type : 08 [SEA]
+[049h 0073 001h]               Notify Length : 1C
+[04Ah 0074 002h]  Configuration Write Enable : 0000
+[04Ch 0076 004h]                PollInterval : 00000000
+[050h 0080 004h]                      Vector : 00000000
+[054h 0084 004h]     Polling Threshold Value : 00000000
+[058h 0088 004h]    Polling Threshold Window : 00000000
+[05Ch 0092 004h]       Error Threshold Value : 00000000
+[060h 0096 004h]      Error Threshold Window : 00000000
+
+[064h 0100 004h]   Error Status Block Length : 00000400
+[068h 0104 00Ch]           Read Ack Register : [Generic Address Structure]
+[068h 0104 001h]                    Space ID : 00 [SystemMemory]
+[069h 0105 001h]                   Bit Width : 40
+[06Ah 0106 001h]                  Bit Offset : 00
+[06Bh 0107 001h]        Encoded Access Width : 04 [QWord Access:64]
+[06Ch 0108 008h]                     Address : 0000000139E40008
+
+[074h 0116 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
+[07Ch 0124 008h]              Read Ack Write : 0000000000000001
+
+Raw Table Data: Length 132 (0x84)
+
+    0000: 48 45 53 54 84 00 00 00 01 E0 42 4F 43 48 53 20  // HEST......BOCHS 
+    0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+    0020: 01 00 00 00 01 00 00 00 0A 00 00 00 FF FF 00 01  // ................
+    0030: 01 00 00 00 01 00 00 00 00 04 00 00 00 40 00 04  // .............@..
+    0040: 00 00 E4 39 01 00 00 00 08 1C 00 00 00 00 00 00  // ...9............
+    0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+    0060: 00 00 00 00 00 04 00 00 00 40 00 04 08 00 E4 39  // .........@.....9
+    0070: 01 00 00 00 FE FF FF FF FF FF FF FF 01 00 00 00  // ................
+    0080: 00 00 00 00  
 
 
-> ---
->   include/hw/misc/aspeed_hace.h |  1 +
->   hw/misc/aspeed_hace.c         | 23 +++++++++++++++++++++++
->   2 files changed, 24 insertions(+)
-> 
-> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-> index d13fd3da07..5d4aa19cfe 100644
-> --- a/include/hw/misc/aspeed_hace.h
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -50,6 +50,7 @@ struct AspeedHACEClass {
->       uint32_t dest_mask;
->       uint32_t key_mask;
->       uint32_t hash_mask;
-> +    bool raise_crypt_interrupt_workaround;
->   };
->   
->   #endif /* ASPEED_HACE_H */
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 86422cb3be..32a5dbded3 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -59,6 +59,7 @@
->   /* Other cmd bits */
->   #define  HASH_IRQ_EN                    BIT(9)
->   #define  HASH_SG_EN                     BIT(18)
-> +#define  CRYPT_IRQ_EN                   BIT(12)
->   /* Scatter-gather data list */
->   #define SG_LIST_LEN_SIZE                4
->   #define SG_LIST_LEN_MASK                0x0FFFFFFF
-> @@ -343,6 +344,15 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->                   qemu_irq_lower(s->irq);
->               }
->           }
-> +        if (ahc->raise_crypt_interrupt_workaround) {
-> +            if (data & CRYPT_IRQ) {
-> +                data &= ~CRYPT_IRQ;
-> +
-> +                if (s->regs[addr] & CRYPT_IRQ) {
-> +                    qemu_irq_lower(s->irq);
-> +                }
-> +            }
-> +        }
->           break;
->       case R_HASH_SRC:
->           data &= ahc->src_mask;
-> @@ -388,6 +398,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->       case R_CRYPT_CMD:
->           qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
->                          __func__);
-> +        if (ahc->raise_crypt_interrupt_workaround) {
-> +            s->regs[R_STATUS] |= CRYPT_IRQ;
-> +            if (data & CRYPT_IRQ_EN) {
-> +                qemu_irq_raise(s->irq);
-> +            }
-> +        }
->           break;
->       default:
->           break;
-> @@ -563,6 +579,13 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
->       ahc->dest_mask = 0x7FFFFFF8;
->       ahc->key_mask = 0x7FFFFFF8;
->       ahc->hash_mask = 0x00147FFF;
-> +
-> +    /*
-> +     * Currently, it does not support the CRYPT command. Instead, it only
-> +     * sends an interrupt to notify the firmware that the crypt command
-> +     * has completed. It is a temporary workaround.
-> +     */
-> +    ahc->raise_crypt_interrupt_workaround = true;
->   }
->   
->   static const TypeInfo aspeed_ast2700_hace_info = {
 

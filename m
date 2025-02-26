@@ -1,102 +1,132 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1011916njg;
-        Wed, 26 Feb 2025 08:15:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU9Rxg5LljryHcwDsFhAgGZFC4pP2AJZAC0XlElHGTub62+a+XksQyAIL99MVf/Ym88ijlxTDsleCNiJw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFBreF1zVfBb3oBODe/CWmYu/IqEO5qBMPZ4uv41aI+E1JS69LLNxL4nn3/pi5QehjBTQQY
-X-Received: by 2002:a05:620a:2488:b0:7c0:9be5:301 with SMTP id af79cd13be357-7c23bdffb31mr1122256885a.1.1740586506383;
-        Wed, 26 Feb 2025 08:15:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740586506; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1116105njg;
+        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX/h6fetrq1ZKKztckiyrycooSKBQcNgS9Xwq5BZanee8G1iqQ7JFgMTkQFDXzYQQduBz1iUv9rRcWR3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHpr8wVFZC4I/uKYqwHJrb2sYrISzCnca5Rn++kE7H7HPmY/r9xXvFQL4lTwe1UhB1e6hOI
+X-Received: by 2002:a05:6122:3718:b0:518:8753:34b0 with SMTP id 71dfb90a1353d-523496045cbmr377503e0c.4.1740596650408;
+        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740596650; cv=none;
         d=google.com; s=arc-20240605;
-        b=G1mCrjDc5FGlznzJQ3A1D4vviEhTf/DwJqdWmKZze48/2z688Y/malC8SHTnWXIKYk
-         /+FV2JBpSBb6eLnmulJP7Lih5jKJxvLF/S8IayH+vl1PpO7oeq5imiRLDHf284N+mPPC
-         SXx3qvZ6F3kT4MH/ZMx5A0JoepgO0t2ZnRCmYOxLQxfNP2Pbkvd7PQSZF0p/zkXAkL+b
-         lxL4f5Pmm1jLLjgVFjnU3ma2weQ43LowXuzlhkFuNgERYk0+oI8Prcot8x8IADdRRmN6
-         KIbBxlDIgjfuWIH7ZUIbEcYKgaBQy+bNtbc0J5iqA8d4YXARn+g0venQkGLs3IWpaAg9
-         QUkw==
+        b=AkCStSQq1QMjyqfFvAx/1wkNLwSu+7TZhUogryXl67eVyv2uHr7e/dGUR2egaIzcvg
+         NaMXnP+T5vlV2UQ+TJzto1+8WzQvbpng4HB6f/i4qBeA6bGVbZyu53/EA9DUXUOcpvFX
+         L+Pypi6lOlwk7jWKRJI6GiGSiGWLwv8m4QT5W0CxqoAnp2pCJ8ryXbVQru0OOS02a8ht
+         FdeTJh2lyXZvJ9eV1DdqsKnt9sIhW7MwDrGo2405dsrQfOni7gMWtZwHRz0SYrfuJwbG
+         nDJSQ6Pt4rbO4yte9MXyebj61K+8+d8LnZn3Mq+B6vku8NBxjTpAv/jkJZw9FK69mEfm
+         zljA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=6RZHl1il9kSRiVPaDIzaogBuM/uOhgquipZd7UEVfHQ=;
-        fh=+IIZYibM3VqPU5vc5LSAgrCj2PY9BY2dnDrMb9YCvSE=;
-        b=GoxxA8BwVj27jjO5GRXbXx5eOmL47GGHIiHVEBrNcrQ1oBG4RkrpMba9J136DthH3D
-         KuSpe1EGsbBejbw2/FeevUtpQoa7mQ3DbmOzsa8yDTVlkztng7S5ZmPQAM/UPK/PXQPL
-         O7DUSYZmutIXf69kr2dn9Hx5brILfQ+ghh9H21UgxprAOPuqy4jHZTFMiocoTEldbn2t
-         PGixebpTIVBHeSScxBjoOB5H744hvwhx/k6jorcPO59SIJyfTrSWczrzotA9tHgbxQUI
-         gF/ylOKKE432oS54DrFmSr2LbDTW33//G0GS93DDpEGFLJ9OCfLzfqGUknaafwIsIfBU
-         Ui5Q==;
+         :in-reply-to:content-language:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
+        fh=Dr80umQSy8R6nhyZKCGFC79ea5XWgpAGhMJjF/onp/Q=;
+        b=G+igQs7+qS9HC7ev/yaKrk8YBp+SAzcYihcEkSCeNgXWSyiKZH+uFZLNzEAxkCrHBc
+         xESYfcAdGq/U6yWSdmNsJPxZyOEN/eeJM2Yxu22YxYiQnoGepeHmg8E6r2xZ0jjL8UtO
+         dYX0ZFUq0f1yEXEGiaesh8yT2PmmmsGwVrYOF6SwwOavSHpobZ7kYVgtcQwVc9palf1g
+         kaRH5YjmO7ImOoBtz32VP/Ci+rZj53P5H6QGwfrLfHwei0V0rqcA7zXqovBO5x7apFdq
+         N3WXmJzD9i8Q3nMCR0059sevWEFo+P0WuuSndcgu+RGbDB+OuhPIPQ++cmFQ13yOSxYy
+         kirA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=TDvZO4Y9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b54lC6b1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c23c2c4a9bsi377406385a.249.2025.02.26.08.15.06
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5223e2115c9si855672e0c.181.2025.02.26.11.04.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2025 08:15:06 -0800 (PST)
+        Wed, 26 Feb 2025 11:04:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=TDvZO4Y9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b54lC6b1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnK3K-0004Cm-4Z; Wed, 26 Feb 2025 11:14:30 -0500
+	id 1tnMgv-0000Uj-SM; Wed, 26 Feb 2025 14:03:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tnK3F-0004B4-G4; Wed, 26 Feb 2025 11:14:25 -0500
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tnK3C-0007Se-Ek; Wed, 26 Feb 2025 11:14:24 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 7502F611EA;
- Wed, 26 Feb 2025 16:14:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B976EC4CED6;
- Wed, 26 Feb 2025 16:14:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1740586456;
- bh=VWgjdVCCAYLfAMVoQ7sn9DmErxaB7SJqb0egoUiHw1o=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=TDvZO4Y9kztbbQJcuHJk1nAzPQRlbfmXQwy7E0kI3ypexpyGO+jGa+Vs1lhwnGdwL
- DxeVr5o7kjQ7OTLqMmbYi1MdEvX5HHcrBJxurqx9qzETplHq/zRF+R8GYdV3sBUM5k
- n+fNwO0zCAqkUKsOPa0Fer73E5ytusz9jEa9IJhajmT7cpPewUlTgm+yyTRbljyhTa
- 5vvxPYGZ27nIdz1dM/XRF1BscBP6RPv9sSL0LH4+SO+GRKHj+Ga8aUV3ES/pr2RnJ4
- FTXkbloQPHuG0vw4vkEgp+vYgFpL9rN/2Qbb7Igy7+mICtRFfA8TQGu0p2r+TvCeNM
- FXX5b9yV6Pp8Q==
-Date: Wed, 26 Feb 2025 17:14:06 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 03/14] acpi/ghes: Use HEST table offsets when
- preparing GHES records
-Message-ID: <20250226171406.19c2de6b@sal.lan>
-In-Reply-To: <20250225104327.0a2d1cb4@imammedo.users.ipa.redhat.com>
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
- <9610ff88cf6fdc59cbfc8871d653fd890391be1e.1738345063.git.mchehab+huawei@kernel.org>
- <20250203153423.3e4de17c@imammedo.users.ipa.redhat.com>
- <20250221070221.329bdfb0@foz.lan>
- <20250225104327.0a2d1cb4@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tnMgu-0000US-F3
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 14:03:32 -0500
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tnMgs-0006uj-Jz
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 14:03:32 -0500
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-2f83a8afcbbso354456a91.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 11:03:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1740596609; x=1741201409; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
+ b=b54lC6b1w2Luaa/6pSUv5/DiFXjEq4jkvIe9pcYkfjNtwfVgeqgwdSi5GG/fJSINRA
+ nHW2F0b9oN81YpIDjGnjSPH93mBMw3YTcqI4KLN72tvk50v61+V+n69K0qrVopdLtd10
+ EEea3Kv6yrAXaeShMgdSPt7/JrotOEcbUWiReew1ECk0Dk9b7HGe0CmekYzrJo8xQJhd
+ kjz+83ATDd7vOyPAuuSmKCRg1G61lKBib2yBbdhMcfQ1ePaFqbnY3f7Uf9iNaaMVoLcj
+ 8OL5Tuhy/DkDdWs0tFitqFbGcVKIsvEAhTGNbtz10DRYmSE58XcpYOT7JWYTRc89+qwd
+ Fvwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740596609; x=1741201409;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cMn4a8nyJ6yi+Vap1pbdQF6+GDXZEQnoN32oZDsRlPg=;
+ b=lI2e6xxJxP7byV0V/rfASv2X3KmTGQd74afyNF8Om7hnmI9Uwem6xwhCBtjFTcJ+eC
+ dRhUXvKKMWDk6qVleNBx1KfwhsoO/C4GDCjZmUtNoYMtAT2qMJ0w607kEqaYZEr6toD5
+ l9utJ/uq6Rnhf96LQ83/Z+VAu6S+JMxt8hd4bDoLTZH/r/ZzTvGfNfJ1dzf9Id3UbuY1
+ f+Th58JMEGC7msdimhacXYvNzheM20pY5mUo6XFy4wWsxOql8dW9BVtEQPQgVKo2t7gz
+ F7+AHYipBZJixgickCgTVfaFMzF2HwlvO0O3GqQ+3eCY2TyNfXBsY1q9hKmou2DBPyYV
+ N6kg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW5gAP02rdiFjnOA0hhHw2gzqM7J55j3N2yHbAp/7XOMYxWBDxTxG22g7xSIzgjMrIY0Ud1/OyCKg==@nongnu.org
+X-Gm-Message-State: AOJu0YxN2ysTpFAoX8UgclWqJjqRF47DYp8mppf09SK+6z20PdRL0+m4
+ ANksBZj8V4/+EW2W9lySqiIfHXSPyTGeLwuZH1onld8xd5SFWk3IQRB5LEDgcTA=
+X-Gm-Gg: ASbGnctnM+ZZkRuVUtkbkPLUst+Ma3jyhHAt858ZwHWKn9tQJ+wYIQzUg4RA3/Swalp
+ dQd0sBTHycM5BCI7plqccQoF6F9nnFdoKWAFiCaAXmiUQk879NmlPCvDhcM5R/K5sLUy13QfF2A
+ zJU9WaMW25gfZ6EZeXRVrRms28ofwKJ+KUqlU1b+Jp2cq9TyNnqp/KzF/4A6gJb36mFK/4NwWCE
+ 15+hgg7qdELinuKb9nfb6KtmavQk9DGuKMmKqIlJ/scfs44H/5EcBsJfdyYM6a+egsRo/MhLh4+
+ HWpUaIwKTPUtlgqviCfjrPPjP9etgQeVkMO2UYk=
+X-Received: by 2002:a17:90a:d408:b0:2fa:603e:905c with SMTP id
+ 98e67ed59e1d1-2fea12683b9mr797904a91.2.1740596608738; 
+ Wed, 26 Feb 2025 11:03:28 -0800 (PST)
+Received: from [192.168.1.67] ([38.39.164.180])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2230a09d819sm36563495ad.163.2025.02.26.11.03.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Feb 2025 11:03:28 -0800 (PST)
+Message-ID: <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
+Date: Wed, 26 Feb 2025 11:03:27 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, titusr@google.com, hskinnemoen@google.com,
+ wuhaotsh@google.com, qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>
+References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
+ <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
+ <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
+ <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2600:3c04::f03c:95ff:fe5e:7468;
- envelope-from=mchehab+huawei@kernel.org; helo=tor.source.kernel.org
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1029.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.44,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,159 +141,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zjhTBlVk/kd4
+X-TUID: ZIP09F86N6Ar
 
-Em Tue, 25 Feb 2025 10:43:27 +0100
-Igor Mammedov <imammedo@redhat.com> escreveu:
-
-> On Fri, 21 Feb 2025 07:02:21 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On 2/26/25 03:50, Peter Maydell wrote:
+> On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
+> <pierrick.bouvier@linaro.org> wrote:
+>>
+>> On 2/25/25 05:41, Peter Maydell wrote:
+>>> (Looking more closely at the cold_reset_values handling
+>>> in npcm_gcr.c, that looks not quite right in a different
+>>> way; I'll send a reply to that patch email about that.)
+>>>
+>>
+>> It may be a hole in our CI right now.
+>> Would that be interesting for CI to run all tests (check-functional +
+>> check w/o functional) with both ubsan and asan?
 > 
-> > Em Mon, 3 Feb 2025 15:34:23 +0100
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Fri, 31 Jan 2025 18:42:44 +0100
-> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > >     
-> > > > There are two pointers that are needed during error injection:
-> > > > 
-> > > > 1. The start address of the CPER block to be stored;
-> > > > 2. The address of the ack.
-> > > > 
-> > > > It is preferable to calculate them from the HEST table.  This allows
-> > > > checking the source ID, the size of the table and the type of the
-> > > > HEST error block structures.
-> > > > 
-> > > > Yet, keep the old code, as this is needed for migration purposes.
-> > > > 
-> > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > ---
-> > > >  hw/acpi/ghes.c         | 132 ++++++++++++++++++++++++++++++++++++-----
-> > > >  include/hw/acpi/ghes.h |   1 +
-> > > >  2 files changed, 119 insertions(+), 14 deletions(-)
-> > > > 
-> > > > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > > > index 27478f2d5674..8f284fd191a6 100644
-> > > > --- a/hw/acpi/ghes.c
-> > > > +++ b/hw/acpi/ghes.c
-> > > > @@ -41,6 +41,12 @@
-> > > >  /* Address offset in Generic Address Structure(GAS) */
-> > > >  #define GAS_ADDR_OFFSET 4
-> > > >  
-> > > > +/*
-> > > > + * ACPI spec 1.0b
-> > > > + * 5.2.3 System Description Table Header
-> > > > + */
-> > > > +#define ACPI_DESC_HEADER_OFFSET     36
-> > > > +
-> > > >  /*
-> > > >   * The total size of Generic Error Data Entry
-> > > >   * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-> > > > @@ -61,6 +67,25 @@
-> > > >   */
-> > > >  #define ACPI_GHES_GESB_SIZE                 20
-> > > >  
-> > > > +/*
-> > > > + * Offsets with regards to the start of the HEST table stored at
-> > > > + * ags->hest_addr_le,      
-> > > 
-> > > If I read this literary, then offsets above are not what
-> > > declared later in this patch.
-> > > I'd really drop this comment altogether as it's confusing,
-> > > and rather get variables/macro naming right
-> > >     
-> > > > according with the memory layout map at
-> > > > + * docs/specs/acpi_hest_ghes.rst.
-> > > > + */      
-> > > 
-> > > what we need is update to above doc, describing new and old ways.
-> > > a separate patch.    
-> > 
-> > I can't see anything that should be changed at
-> > docs/specs/acpi_hest_ghes.rst, as this series doesn't change the
-> > firmware layout: we're still using two firmware tables:
-> > 
-> > - etc/acpi/tables, with HEST on it;
-> > - etc/hardware_errors, with:
-> > 	- error block addresses;
-> > 	- read_ack registers;
-> > 	- CPER records.
-> > 
-> > The only changes that this series introduce are related to how
-> > the error generation logic navigates between HEST and hw_errors
-> > firmware. This is not described at acpi_hest_ghes.rst, and both
-> > ways follow ACPI specs to the letter.
-> > 
-> > The only difference is that the code which populates the CPER
-> > record and the error/read offsets doesn't require to know how
-> > the HEST table generation placed offsets, as it will basically
-> > reproduce what OSPM firmware does when handling	HEST events.  
+> We do have at least some ubsan tests in our CI right now
+> (eg the "clang-system" job). The problem with ubsan coverage
+> is the usual one that we already have too much CI going on,
+> and it takes forever and we don't have that much headroom
+> for adding more jobs.
+
+I understand the problem behind spending more minutes on this.
+
+However, looking at our CI, we already duplicate functional testing a lot:
+buildtest.yml:functional-system-alpine:
+buildtest.yml:functional-system-ubuntu:
+buildtest.yml:functional-system-debian:
+buildtest.yml:functional-system-fedora:
+buildtest.yml:functional-system-centos:
+buildtest.yml:functional-system-opensuse:
+
+Would that hurt so much to have one configuration enabled with ubsan and 
+asan, which catches *real* bugs, and potential security issues?
+Yes, it adds overhead, but it should not be x10. Around x2 to x3.
+
+On github running, running -j2, running all functional tests with 
+sanitizers takes less than 1 hour, and the build takes the same amount 
+in time (-j2 as well). Hopefully we have more cores available on our own 
+runners.
+
 > 
-> section 8 describes old way to get to address to record old CPER,
-> so it needs to amended to also describe a new approach and say
-> which way is used for which version.
+> On the asan front, also, yes, coverage would be a good idea.
+> Here I think we will probably have to gradually ratchet
+> up the coverage because I'm pretty sure that at the moment
+> we will find we don't get a clean pass (mostly for "uninteresting"
+> memory leaks).
 > 
-> possibly section 11 might need some messaging as well.
 
-Ok, I'll modify it and place at the end of the series. Please
-see below if the new text is ok for you.
+Yes, I run with ASAN_OPTIONS=detect_leaks=0, and I deactivate any test 
+that is flaky.
 
----
+Two of them related to asan are tcg tests:
+- munmap-pthread
+- follow-fork-mode
+I didn't have time to investigate, so I just removed them in my tree.
 
-[PATCH] docs/specs/acpi_hest_ghes.rst: update it to reflect some changes
+At this point, this whole list of tests concerned is:
+https://github.com/search?q=repo%3Apbo-linaro%2Fqemu-ci+%22ci+fix%22+author%3Apbo-linaro&type=commits
 
-While the HEST layout didn't change, there are some internal
-changes related to how offsets are calculated and how memory error
-events are triggered.
+> (I do also usually run a local
+> ubsan test build when doing my acculumation of patches in
+> target-arm, but since that's a manual step it is fallible :-))
+>
 
-Update specs to reflect such changes.
+It's always said that "Maintainer time is precious", shouldn't that be 
+CI job to catch this?
+I guess CI minutes are cheaper than engineer ones those days.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index c3e9f8d9a702..f22d2eefdec7 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -89,12 +89,21 @@ Design Details
-     addresses in the "error_block_address" fields with a pointer to the
-     respective "Error Status Data Block" in the "etc/hardware_errors" blob.
- 
--(8) QEMU defines a third and write-only fw_cfg blob which is called
--    "etc/hardware_errors_addr". Through that blob, the firmware can send back
--    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
--    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
--    for the firmware. The firmware will write back the start address of
--    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
-+(8) QEMU defines a third and write-only fw_cfg blob to store the location
-+    where the error block offsets, read ack registers and CPER records are
-+    stored.
-+
-+    Up to QEMU 9.2, the location was at "etc/hardware_errors_addr", and
-+    contains an offset for the beginning of "etc/hardware_errors".
-+
-+    Newer versions place the location at "etc/acpi_table_hest_addr",
-+    pointing to the beginning of the HEST table.
-+
-+    Through that such offsets, the firmware can send back the guest-side
-+    allocation addresses to QEMU. They contain a 8-byte entry. QEMU generates
-+    a single WRITE_POINTER command for the firmware. The firmware will write
-+    back the start address of either "etc/hardware_errors" or HEST table at
-+    the correspoinding address firmware.
- 
- (9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
-     "Error Status Data Block", guest memory, and then injects platform specific
-@@ -105,8 +114,6 @@ Design Details
-      kernel, on receiving notification, guest APEI driver could read the CPER error
-      and take appropriate action.
- 
--(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
--     find out "Error Status Data Block" entry corresponding to error source. So supported
--     source_id values should be assigned here and not be changed afterwards to make sure
--     that guest will write error into expected "Error Status Data Block" even if guest was
--     migrated to a newer QEMU.
-+(11) kvm_arch_on_sigbus_vcpu() report RAS errors via a SEA notifications,
-+     when a SIGBUS event is triggered. The logic to convert a SEA notification
-+     into a source ID is defined inside ghes.c source file.
-
-
+> -- PMM
 

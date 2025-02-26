@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ab2cb1063sm33002425e9.2.2025.02.26.06.03.48
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd86ca0asm5841115f8f.32.2025.02.26.06.03.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 26 Feb 2025 06:03:52 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0E0DF603D2;
+	by draig.lan (Postfix) with ESMTP id BBF8C60689;
 	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,30 +27,39 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 11/25] tests/tcg: mark test-vma as a linux-only test
-Date: Wed, 26 Feb 2025 14:03:29 +0000
-Message-Id: <20250226140343.3907080-12-alex.bennee@linaro.org>
+Subject: [PATCH 19/25] plugins/plugin.h: include queue.h
+Date: Wed, 26 Feb 2025 14:03:37 +0000
+Message-Id: <20250226140343.3907080-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: LtC0ujjiKNZ6
+X-TUID: 3vXqN6gSmy+X
 
-The main multiarch tests should compile for any POSIX system, however
-test-vma's usage of MAP_NORESERVE makes it a linux-only test. Simply
-moving the source file is enough for the build logic to skip on BSD's.
+Headers should bring in what they need so don't rely on getting
+queue.h by side effects. This will help with clean-ups in the
+following patches.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20250225110844.3296991-6-alex.bennee@linaro.org>
 ---
- tests/tcg/multiarch/{ => linux}/test-vma.c | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- rename tests/tcg/multiarch/{ => linux}/test-vma.c (100%)
+ plugins/plugin.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/tcg/multiarch/test-vma.c b/tests/tcg/multiarch/linux/test-vma.c
-similarity index 100%
-rename from tests/tcg/multiarch/test-vma.c
-rename to tests/tcg/multiarch/linux/test-vma.c
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 30e2299a54..9ed20b5c41 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -13,6 +13,7 @@
+ #define PLUGIN_H
+ 
+ #include <gmodule.h>
++#include "qemu/queue.h"
+ #include "qemu/qht.h"
+ 
+ #define QEMU_PLUGIN_MIN_VERSION 2
 -- 
 2.39.5

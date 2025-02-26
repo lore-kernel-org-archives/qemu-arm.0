@@ -1,333 +1,164 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp833895njg;
-        Wed, 26 Feb 2025 03:31:44 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUgoGH8Z9XOfLwfRx4BIhNqQuWiP1Fflfa5SMR9EK/HfoSlh/ODC3crlucJC9W20Dm3Zj6Kp/bKNzhFbw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcK92UwkAmy0YKH3eBAQkR7H7wnnpic5/vCLQ3aQf7ytFIKd0YNi9OkXT9CaFv3vxkX32+
-X-Received: by 2002:ad4:5bcf:0:b0:6cb:d1ae:27a6 with SMTP id 6a1803df08f44-6e6b010e18bmr245049756d6.24.1740569503944;
-        Wed, 26 Feb 2025 03:31:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740569503; cv=pass;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp842845njg;
+        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUPTYl2C6jIGk69FVvXsHQU3iM+evACYdJUjffC+4JaUPNVKGYkCrFEiQWgMOhqrQfGqpKl/Bg9SbrjAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGwCmxGUMT2+6wdfv7pgdub1OoG8v2646XlTTm3Zomxi6mY6SgONnlmrcONyrFHll74LKuh
+X-Received: by 2002:ac8:5fc6:0:b0:472:6c9:3741 with SMTP id d75a77b69052e-47381317105mr35935281cf.9.1740570649239;
+        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740570649; cv=none;
         d=google.com; s=arc-20240605;
-        b=YMNdKl3plCKK7gVujSOCRiJIv1fXfmG5ozTlGDzRgm1S1eYJPtQ51kMFM0qnted/xL
-         tnX2YvLzQU//TZLORT3ITJNV24DbP8ZBgOnHnNkRZR8t+2tVvfLYxVhGBRMJ1KhQMSms
-         Z4oTm0RraHuQLvFxK3/ClyXNrX0gI+uAZlTOmPtUnu0NIfGZVz+UKnyT9IW1tbZG1guk
-         GuLgg0zxisIJ+2iXra/4XyVkoX45ycHuNuSxvgPVm7gISUAOSJ40CrnzBxsnSam4zyZB
-         VmhuRMWxJ+8Idzl6bgs/rXuUnQuFL0Tq2Trw/w6Y/s/d7cn/upfxjBmVAEZjoBCxTStv
-         YyCg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=cOzyVLMfemwx2XDjOuQIknVHvDDYWXlcOl7PRwhPByM=;
-        fh=MmlQpIPkhVUlS3/mEhdPQiFKN9SiEZ2B0eZQD2EOsYU=;
-        b=IDg0e16I915flwVF+m2RdCIcnARZgs1BVAkxmi2uf4RHbV59URb3ZHcVp9uvtwCEpD
-         VpzpgJ1UdiP+/mc+tsK0+fodGxFmZUzuk57o7QU0FqBAEn8dF6yzIYBv1ZjftNVVs8PL
-         hFlLiAXZQGXgNiqNMy9s9/t4FcBIth9OStDwYmnYO592FhmGSMu7qjuH87YmLzkhcpeh
-         lOxFpoxjF6vx0+EdE+gL7j4smTrbp5C7zQEYQ8pfiXSUGVgfvJvgEFFerU4Inx2UE8Xn
-         V0Cd0m0anQQ9QeHdzZ79KnzKisOuIl3lKcmn2umEM4423Adcbc4QeWzpqH5VmeztkVLB
-         HxzQ==;
+        b=DVRWXbMvlLXStc2nVHr1Bc8731fUpNrRLwWZ7r1GkkLeQbNawMsyTG/IVFZkW7G/7u
+         OfiMR/0j57muf6L4beoC8XV6a8P/XpfaIsGuZEj+iBGNAMDWzh4rumG58Q63L84vsVYi
+         5toRdtxOvPTfr3OgqNZiB+2++U43UVBcGkNYWjBcOQGSYdbER8BQqyoA++E6TQMmrxKn
+         cqYzTojB/EI2J3+cd3IYamaZCm6Hun4w2ac4diMYQz3VHaVSOZPjODXgkcpZAFrKPIaD
+         v4QFTE2vjqdWobmjcWx1wncJaidtYf1PVVHNDw/WKBt8GuCQNEllk/4D8I5PW9nGVvk3
+         9Ycw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
+        fh=uWFHx5QPGdO4IVzlJg5PH5GptM7suwSk+d0vY0vP8Gs=;
+        b=C1toDsyiXU5x4zks4N3csyfYZx1mG8bgQwTrXwNcWsGz7Qpg0jwFNo9ugcTNEibfO2
+         1zBe9hbW9OHhC+SNw+cqokHI8u95HSe0aFRwtBjbX8jMw1e5ACiyc38kdSTvOVFGrabh
+         h9gTpAqpXmDgWQdI9vTOZE6RilbDTn/HVG/WEg6EWYeFyq4RoCdH0rrvD2uL+0u50ZUF
+         cWYcN5kZy3i1XdW9xYetbVte8+Fcr8KBLn8EQDLTO2s4Vmw/jhAlbOFtnb3VvpyrXsFU
+         yVvL3XGUXS3CcZXvPFOToqgoZE8TYi3QOEySrjkA+ksxayUxcGb3+gAv8mkg2jy54vJu
+         cjoA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Izt1h1lk;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e87b01a83csi33276496d6.66.2025.02.26.03.31.43
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IowpKkvq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-473780813acsi33901231cf.223.2025.02.26.03.50.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 03:31:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 26 Feb 2025 03:50:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Izt1h1lk;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-39272-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 83E2417417D
-	for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 11:31:31 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 37890215171;
-	Wed, 26 Feb 2025 11:31:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Izt1h1lk"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E61D017BB35;
-	Wed, 26 Feb 2025 11:31:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740569477; cv=none; b=W+lSOxDaEefh1d99yT1aVNT8uDr/5FrvvrgG3j8iYDESVvEV/SGn8bm0Xf/JduXDERgsDnE624ifWIqsrkKZIVCUg1uN+yeAoa7+HJVMC4NRoZ0dSDRuufnquLFA6HAdnVgQjHOOwPF4pDuCUATidVl/+xgN2QLzQMwNmQZEtlU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740569477; c=relaxed/simple;
-	bh=AqaQc47KScGcVr3eESFC0LndEz0Dr5eNjmVGnvzicIk=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=RxeRXf//5UeowglVpZljL0lM+u/18zf0KIhQP5N4DunWHUhGcHYA1a3p25/AL2h2CEK9pOjPxTpdikjnOA+OrGmioXHSQpD4fglmyRC5UGRn1H9ZM3ud8oEVEOxdCloWO8xuYdYSsNlZlSiIAalWRTFA3QAgPyaHGf+UzHCWDpM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Izt1h1lk; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF3D5C4CED6;
-	Wed, 26 Feb 2025 11:31:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740569475;
-	bh=AqaQc47KScGcVr3eESFC0LndEz0Dr5eNjmVGnvzicIk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Izt1h1lkeViZUXbX7cUqtNidC2hDYndE19VlJ7nGxVdqiwfFPZNThnALtoJ1mRWTv
-	 FE9n1R8I9Mgvq/nb+A53gSSg7gD4Ds67aUoWH3FCViVhbUq86OVIoPt4kXRp+YkWpS
-	 vGa7GoOWEQ93bedM7Y/MQQSShgCM47hyqZ7eN3RLwUIJGWW1HVAGtni1ppEqEtgsR4
-	 B1I7LDg6NM+yebNMf71VyoizsgFUp/Av92aKxUzQ0Dv0pXEe/ZMQ4XyhjWcYMySBoa
-	 ASmUSChsBrLtBLtXPu24jxH4NJuPkpv2+W2LVXjUFOJHPd9YkEdhJXn65VJMkJAVgs
-	 Pxj052z2bRgrQ==
-Date: Wed, 26 Feb 2025 12:31:07 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Philippe =?UTF-8?B?TWF0?=
- =?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, "Markus Armbruster" <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, <kvm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v3 00/14] Change ghes to use HEST-based offsets and add
- support for error inject
-Message-ID: <20250226123107.0cdb2e17@foz.lan>
-In-Reply-To: <20250226122303.0131ce8b@foz.lan>
-References: <cover.1738345063.git.mchehab+huawei@kernel.org>
-	<20250203110934.000038d8@huawei.com>
-	<20250203162236.7d5872ff@imammedo.users.ipa.redhat.com>
-	<20250221073823.061a1039@foz.lan>
-	<20250221102127.000059e6@huawei.com>
-	<20250225110115.6090e416@imammedo.users.ipa.redhat.com>
-	<20250226105628.7e60f952@foz.lan>
-	<20250226122303.0131ce8b@foz.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=IowpKkvq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tnFvv-0001u0-6F; Wed, 26 Feb 2025 06:50:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnFvt-0001tb-Dp
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:50:33 -0500
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnFvr-0005S4-Je
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2025 06:50:33 -0500
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-e5df8468d6eso5524971276.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 03:50:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1740570630; x=1741175430; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
+ b=IowpKkvqGHOdI76X1Ws3Ed2ahFLjft6Y633VX6ZKQOamvL2yZjyELZrH1q2fEBkina
+ Rq052b1mIDlEEvX8pRhIgPr3IAcygXl6NPQV27DXqFVecCejH0VVUQ21zxgSOMMYGSkQ
+ 1GR3/7Ql9/0f5zPRh2xsSGwWqKWRU87+r9/pylszNgUwC7t2j8C8f9BwMyUN5gJoF9bX
+ 6TrweDRE23rNQSFhvAGxoudj1YGaXk1JoOmHbQ7S3eZ2VegaI73lniZhRvJteDLreSkP
+ 25pyeJQG7h6MjFb03LvcAVpfG/GFFSdrCnuraAez0B+Sj6AtQ+juXu6NdUU+u3uFDu51
+ 9NtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740570630; x=1741175430;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=h2Vatto6nSrvODRy+Qu/VnnAtl5w9cRYwpnb27LlFdw=;
+ b=SqCRSUMNN8uYfrvgL2kjDKp6GF/0m02ao/mHccHze6isC4C8jg/1ioXHB+EWtMxbf4
+ 4mOw1BD/XjbcXcBzKfrkw9dq1f3dqpKuPLe8wl6EKleBzVuUvhe+mrpI7WZhk/4JVa4C
+ W7WafUXqmWfw06TzTGtNA6S6hVT0UnbAWBg6Hc5c4UQmlVXNLNxqsAIaymGX7ltPk8qC
+ 1/b3a59MYHuDpcSzu3HFhqZOTmjNn3C62iVXUbrABdFz+hpAR8kBLHUuc3jmNBGppeHR
+ r5bC/emrZB6s4/ysMR0D4ohYs+qDYy55mudb1H06Evw5FWFgzrFAxRl9glRsQ01WYA+W
+ E12w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV5FzB49BNFjItVMT3iLE+X4dJjgPzqW9jMWEQDXlthtFLxtl1ZYYaOt8Tcz3KekZaxsv5UTeQ0pA==@nongnu.org
+X-Gm-Message-State: AOJu0YxY2JeBmSyYEDZhpqN90GywOkfI60cZZxkeZg4kJBewvBM2NK54
+ QGfS7OVR+hrT07L+31Afjd9C6EJ8LK4np7xAXpOf6rHhR3MM/44QNJ57rzWaRhNW0hlZ/qxYZG5
+ AuiE79M/D5/JK2SgV/WRIXtMlCW+ScdlnQk/PNw==
+X-Gm-Gg: ASbGncu9HfJRB60lqGngGrGfG/K2CfXCuO+ALQdfnv7oPNMjGYPgfLLtXLkB1BD8f8c
+ j42kzRbBPb1EhlecWDB5r1jCpqIVGIL/7EG34AUmgEOWI+JTAU7WRCIxLqFqG+MV/ci0wGO0WtS
+ cd0uXb9SDn
+X-Received: by 2002:a05:6902:1b04:b0:e58:30dc:615b with SMTP id
+ 3f1490d57ef6-e608a56d282mr3011080276.22.1740570629981; Wed, 26 Feb 2025
+ 03:50:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: 2KJnnIDHMNym
+References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
+ <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
+ <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
+In-Reply-To: <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 26 Feb 2025 11:50:18 +0000
+X-Gm-Features: AWEUYZkTC4CfXKM-iA9oHWkGexNeyUEl9CBDtKNHRCHZbKN9AzbswPYxU6-joBU
+Message-ID: <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, titusr@google.com, hskinnemoen@google.com, 
+ wuhaotsh@google.com, qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9TE8Ov13gq4i
 
-Em Wed, 26 Feb 2025 12:23:03 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
+On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> On 2/25/25 05:41, Peter Maydell wrote:
+> > (Looking more closely at the cold_reset_values handling
+> > in npcm_gcr.c, that looks not quite right in a different
+> > way; I'll send a reply to that patch email about that.)
+> >
+>
+> It may be a hole in our CI right now.
+> Would that be interesting for CI to run all tests (check-functional +
+> check w/o functional) with both ubsan and asan?
 
-> Em Wed, 26 Feb 2025 10:56:28 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
-> 
-> > Em Tue, 25 Feb 2025 11:01:15 +0100
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Fri, 21 Feb 2025 10:21:27 +0000
-> > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> > >     
-> > > > On Fri, 21 Feb 2025 07:38:23 +0100
-> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > >       
-> > > > > Em Mon, 3 Feb 2025 16:22:36 +0100
-> > > > > Igor Mammedov <imammedo@redhat.com> escreveu:
-> > > > >         
-> > > > > > On Mon, 3 Feb 2025 11:09:34 +0000
-> > > > > > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> > > > > >           
-> > > > > > > On Fri, 31 Jan 2025 18:42:41 +0100
-> > > > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > > > > >             
-> > > > > > > > Now that the ghes preparation patches were merged, let's add support
-> > > > > > > > for error injection.
-> > > > > > > > 
-> > > > > > > > On this series, the first 6 patches chang to the math used to calculate offsets at HEST
-> > > > > > > > table and hardware_error firmware file, together with its migration code. Migration tested
-> > > > > > > > with both latest QEMU released kernel and upstream, on both directions.
-> > > > > > > > 
-> > > > > > > > The next patches add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
-> > > > > > > >    to inject ARM Processor Error records.
-> > > > > > > > 
-> > > > > > > > If I'm counting well, this is the 19th submission of my error inject patches.              
-> > > > > > > 
-> > > > > > > Looks good to me. All remaining trivial things are in the category
-> > > > > > > of things to consider only if you are doing another spin.  The code
-> > > > > > > ends up how I'd like it at the end of the series anyway, just
-> > > > > > > a question of the precise path to that state!            
-> > > > > > 
-> > > > > > if you look at series as a whole it's more or less fine (I guess you
-> > > > > > and me got used to it)
-> > > > > > 
-> > > > > > however if you take it patch by patch (as if you've never seen it)
-> > > > > > ordering is messed up (the same would apply to everyone after a while
-> > > > > > when it's forgotten)
-> > > > > > 
-> > > > > > So I'd strongly suggest to restructure the series (especially 2-6/14).
-> > > > > > re sum up my comments wrt ordering:
-> > > > > > 
-> > > > > > 0  add testcase for HEST table with current HEST as expected blob
-> > > > > >    (currently missing), so that we can be sure that we haven't messed
-> > > > > >    existing tables during refactoring.          
-> > > > 
-> > > > To potentially save time I think Igor is asking that before you do anything
-> > > > at all you plug the existing test hole which is that we don't test HEST
-> > > > at all.   Even after this series I think we don't test HEST.  You add
-> > > > a stub hest and exclusion but then in patch 12 the HEST stub is deleted whereas
-> > > > it should be replaced with the example data for the test.      
-> > > 
-> > > that's what I was saying.
-> > > HEST table should be in DSDT, but it's optional and one has to use
-> > > 'ras=on' option to enable that, which we aren't doing ATM.
-> > > So whatever changes are happening we aren't seeing them in tests
-> > > nor will we see any regression for the same reason.
-> > > 
-> > > While white listing tables before change should happen and then updating them
-> > > is the right thing to do, it's not sufficient since none of tests
-> > > run with 'ras' enabled, hence code is not actually executed.     
-> > 
-> > Ok. Well, again we're not modifying HEST table structure on this
-> > changeset. The only change affecting HEST is when the number of entries
-> > increased from 1 to 2.
-> > 
-> > Now, looking at bios-tables-test.c, if I got it right, I should be doing
-> > something similar to the enclosed patch, right?
-> > 
-> > If so, I have a couple of questions:
-> > 
-> > 1. from where should I get the HEST table? dumping the table from the
-> >    running VM?
-> > 
-> > 2. what values should I use to fill those variables:
-> > 
-> > 	int hest_offset = 40 /* HEST */;
-> > 	int hest_entry_size = 4;  
-> 
-> Thanks,
-> Mauro
-> 
-> As a reference, this is the HEST table before the patch series:
+We do have at least some ubsan tests in our CI right now
+(eg the "clang-system" job). The problem with ubsan coverage
+is the usual one that we already have too much CI going on,
+and it takes forever and we don't have that much headroom
+for adding more jobs.
 
-This is the diff of the HEST table before/after this series.
+On the asan front, also, yes, coverage would be a good idea.
+Here I think we will probably have to gradually ratchet
+up the coverage because I'm pretty sure that at the moment
+we will find we don't get a clean pass (mostly for "uninteresting"
+memory leaks).
 
-As already commented, the diff is basically:
+(I do also usually run a local
+ubsan test build when doing my acculumation of patches in
+target-arm, but since that's a manual step it is fallible :-))
 
-	-[024h 0036 004h]          Error Source Count : 00000001
-	+[024h 0036 004h]          Error Source Count : 00000002
-
-Plus the new entry for source ID 1 using notify type 7 (GPIO):
-
-	+[084h 0132 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
-	+[086h 0134 002h]                   Source Id : 0001
-	+[088h 0136 002h]           Related Source Id : FFFF
-	...
-	+[0A4h 0164 001h]                 Notify Type : 07 [GPIO]
-	...
-	+[0D0h 0208 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
-	+[0D8h 0216 008h]              Read Ack Write : 0000000000000001
-
-Complete diff follows.
-
-Regards,
-Mauro
-
----
-
-diff -u hest-before-changes.dsl hest-after-changes.dsl
---- hest-before-changes.dsl     2025-02-26 11:23:30.845089077 +0000
-+++ hest-after-changes.dsl      2025-02-26 11:25:29.095066026 +0000
-@@ -11,16 +11,16 @@
-  */
- 
- [000h 0000 004h]                   Signature : "HEST"    [Hardware Error Source Table]
--[004h 0004 004h]                Table Length : 00000084
-+[004h 0004 004h]                Table Length : 000000E0
- [008h 0008 001h]                    Revision : 01
--[009h 0009 001h]                    Checksum : E0
-+[009h 0009 001h]                    Checksum : 68
- [00Ah 0010 006h]                      Oem ID : "BOCHS "
- [010h 0016 008h]                Oem Table ID : "BXPC    "
- [018h 0024 004h]                Oem Revision : 00000001
- [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
- [020h 0032 004h]       Asl Compiler Revision : 00000001
- 
--[024h 0036 004h]          Error Source Count : 00000001
-+[024h 0036 004h]          Error Source Count : 00000002
- 
- [028h 0040 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
- [02Ah 0042 002h]                   Source Id : 0000
-@@ -55,19 +55,62 @@
- [069h 0105 001h]                   Bit Width : 40
- [06Ah 0106 001h]                  Bit Offset : 00
- [06Bh 0107 001h]        Encoded Access Width : 04 [QWord Access:64]
--[06Ch 0108 008h]                     Address : 0000000139E40008
-+[06Ch 0108 008h]                     Address : 0000000139E40010
- 
- [074h 0116 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
- [07Ch 0124 008h]              Read Ack Write : 0000000000000001
- 
--Raw Table Data: Length 132 (0x84)
-+[084h 0132 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
-+[086h 0134 002h]                   Source Id : 0001
-+[088h 0136 002h]           Related Source Id : FFFF
-+[08Ah 0138 001h]                    Reserved : 00
-+[08Bh 0139 001h]                     Enabled : 01
-+[08Ch 0140 004h]      Records To Preallocate : 00000001
-+[090h 0144 004h]     Max Sections Per Record : 00000001
-+[094h 0148 004h]         Max Raw Data Length : 00000400
-+
-+[098h 0152 00Ch]        Error Status Address : [Generic Address Structure]
-+[098h 0152 001h]                    Space ID : 00 [SystemMemory]
-+[099h 0153 001h]                   Bit Width : 40
-+[09Ah 0154 001h]                  Bit Offset : 00
-+[09Bh 0155 001h]        Encoded Access Width : 04 [QWord Access:64]
-+[09Ch 0156 008h]                     Address : 0000000139E40008
-+
-+[0A4h 0164 01Ch]                      Notify : [Hardware Error Notification Structure]
-+[0A4h 0164 001h]                 Notify Type : 07 [GPIO]
-+[0A5h 0165 001h]               Notify Length : 1C
-+[0A6h 0166 002h]  Configuration Write Enable : 0000
-+[0A8h 0168 004h]                PollInterval : 00000000
-+[0ACh 0172 004h]                      Vector : 00000000
-+[0B0h 0176 004h]     Polling Threshold Value : 00000000
-+[0B4h 0180 004h]    Polling Threshold Window : 00000000
-+[0B8h 0184 004h]       Error Threshold Value : 00000000
-+[0BCh 0188 004h]      Error Threshold Window : 00000000
-+
-+[0C0h 0192 004h]   Error Status Block Length : 00000400
-+[0C4h 0196 00Ch]           Read Ack Register : [Generic Address Structure]
-+[0C4h 0196 001h]                    Space ID : 00 [SystemMemory]
-+[0C5h 0197 001h]                   Bit Width : 40
-+[0C6h 0198 001h]                  Bit Offset : 00
-+[0C7h 0199 001h]        Encoded Access Width : 04 [QWord Access:64]
-+[0C8h 0200 008h]                     Address : 0000000139E40018
- 
--    0000: 48 45 53 54 84 00 00 00 01 E0 42 4F 43 48 53 20  // HEST......BOCHS 
-+[0D0h 0208 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
-+[0D8h 0216 008h]              Read Ack Write : 0000000000000001
-+
-+Raw Table Data: Length 224 (0xE0)
-+
-+    0000: 48 45 53 54 E0 00 00 00 01 68 42 4F 43 48 53 20  // HEST.....hBOCHS 
-     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
--    0020: 01 00 00 00 01 00 00 00 0A 00 00 00 FF FF 00 01  // ................
-+    0020: 01 00 00 00 02 00 00 00 0A 00 00 00 FF FF 00 01  // ................
-     0030: 01 00 00 00 01 00 00 00 00 04 00 00 00 40 00 04  // .............@..
-     0040: 00 00 E4 39 01 00 00 00 08 1C 00 00 00 00 00 00  // ...9............
-     0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
--    0060: 00 00 00 00 00 04 00 00 00 40 00 04 08 00 E4 39  // .........@.....9
-+    0060: 00 00 00 00 00 04 00 00 00 40 00 04 10 00 E4 39  // .........@.....9
-     0070: 01 00 00 00 FE FF FF FF FF FF FF FF 01 00 00 00  // ................
--    0080: 00 00 00 00                                      // ....
-+    0080: 00 00 00 00 0A 00 01 00 FF FF 00 01 01 00 00 00  // ................
-+    0090: 01 00 00 00 00 04 00 00 00 40 00 04 08 00 E4 39  // .........@.....9
-+    00A0: 01 00 00 00 07 1C 00 00 00 00 00 00 00 00 00 00  // ................
-+    00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-+    00C0: 00 04 00 00 00 40 00 04 18 00 E4 39 01 00 00 00  // .....@.....9....
-+    00D0: FE FF FF FF FF FF FF FF 01 00 00 00 00 00 00 00  // ................
-
-
-Thanks,
-Mauro
+-- PMM

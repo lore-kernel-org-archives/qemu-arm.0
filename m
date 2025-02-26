@@ -1,98 +1,99 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1006773njg;
-        Wed, 26 Feb 2025 08:07:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHjU5V4bdg+hTuqdWa/CW16o1X0SNJeXfIX/uiuSMWG0CxQcmYBiwAJSPMrKpGdWXv1po1D
-X-Received: by 2002:a17:906:6a13:b0:ab7:d66f:c86d with SMTP id a640c23a62f3a-abeeee5cb23mr564013266b.34.1740586071485;
-        Wed, 26 Feb 2025 08:07:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740586071; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1011558njg;
+        Wed, 26 Feb 2025 08:14:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEoX559kGzZMDgFXOU9b4Ix5CpTYg9JM1TGl4qqYMjE135xfBDPvvZIBstK7fVYIbsRT4WU
+X-Received: by 2002:a17:907:7f26:b0:aba:5f40:7f2e with SMTP id a640c23a62f3a-abc0de0de78mr2631334166b.45.1740586475529;
+        Wed, 26 Feb 2025 08:14:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740586475; cv=none;
         d=google.com; s=arc-20240605;
-        b=BBDcSa7cFLCaOSSdC0AhQJpPuGup9Adtg56ZLGXJio7+q6PlGh0i+aaP2NOtu6zDic
-         y+G/7hLgzS7tB/bHN5tGn4PmSacFr0gQHrW4y7oRsio/q0JbuN/fh6EM3RZBrphGiBkF
-         5s5ZwVatNIyvKOtzTPUz/Ri9ZnEr3jkIkOWGsfQ0Pn3+Io+dWkT61yJD5ny/tiq0bgUZ
-         o1N1gQJOxYy/btue2Co6whw4lAsm4xC4uHKxdLFWwq8452SXQzgRcdPG1RYA8l0mZeW/
-         w4w2XB0SsMm0RjjSNMzUtDj07x5gjP24W/MK+67ilS9/4PxXt5VDcDln2xIRMxiE6wJ3
-         Xf4A==
+        b=boixtHuWFH3BYEef7rYzG4+NrCQRbTc17LgBxY7tWXJafKDU5tSLJOLKP7japr1Y/S
+         GC6SskFzjoJIHIxxxwhQ7eV9qO0TOV3Ft+yszga6zNYbxpZhel7b7qeuuoei31gX0bZq
+         wBQ1JHG2VnH8biYC85x+UjbPVGGgSMDEd1s3XC5QDNuHDZnT9fpqzcFlTFg4VYTcflU1
+         hhq/BSUmQscebUV8WH/w2oPCy1IQXAGUD4RcR97c7khjCEg5oDItRErkBZIDw88D4XIB
+         B0iY8C/ErqJEDFCwHBAgP8FlmwZ7PZhCR/eqLrwZvBvBDSKnmIIWuHLF06ME5K9BFsXQ
+         ywkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=3wg6ZOCd43MRSnPl1PnnELQdbYFw1kzSUG4St9Z3JEA=;
-        fh=y0cQKj8/08TrnNh0z5pGGMyMTD2FDYzEBQaunNWHxik=;
-        b=QuJyN4f3X5yRP08rHQLofA+f8PDoz8A5YJxA53GfxMf/24b1zJKJdNswV4VUWfeVpT
-         A2jtKLUeeGuUB2lhE2++MvsXF5HeSv+XerN0d59tyNlRGNT81JGZLA1jbjF3GlxKm4kP
-         NXPfMckQgn8U2XF5cXFypZy47j8Rg5ILJoom73HNsaVOccNeazDR1rPXYgDLLf5raBr8
-         aHiAS9D74ogdfgnH4g4rMpqeh1V3UqXl3+wW7ANUwVzn5XOTQlrITqAsP/7VcVAYRhIv
-         cjb+dk0rYPX7HC1vMTNoJn2QjMJle68phpFR0yoSeDq9WGonl7IqjdfsEs23QlKAAKDz
-         ig9g==;
+        bh=e6WptTDB312s9O4jIKbscZ5uDMmB+gpUnuK5GkWtL50=;
+        fh=kMuyKEDVLpXx+n9GsiCpA1spgm27ONyskfB4MRxywKY=;
+        b=YCf2CKIQCpUQNHsyQY6OpycEV0DsBgLgP2x+lY+4Ge3PxMMSsobwJJZsnr9HJVM0If
+         SAgQqsyT3IOQXzm+dGMquXn6Tf5TVn6zJmP2nVRrSBc77hT8sik/hHxZclkFoY1BHEJ8
+         3TwjTQC4lH9Ojytjl+EoHMBYj8Y9wi0igZLuU1ufxToC6RoDVSABp/h3/GFnkSd9HR88
+         g0Ta387qbtFWCBkpgQ2zWujX5MUoBZx9s9GRD2Y5t9LdQsHgf4RjixydfPmZY4pehESM
+         n1YOIrqyCWZHTCSmzzU6uzcMaLbv1nKHEqbOtQ853WLxZNFcKuQpfcdsZDnIZbmIha5u
+         RUXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MHuavBx4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WMDCWr22;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a640c23a62f3a-abed20d9e84si383394066b.825.2025.02.26.08.07.51
+        by mx.google.com with ESMTPS id a640c23a62f3a-abed1bd9b2asi386757366b.41.2025.02.26.08.14.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 08:07:51 -0800 (PST)
+        Wed, 26 Feb 2025 08:14:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MHuavBx4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WMDCWr22;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740586070;
+	s=mimecast20190719; t=1740586474;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=3wg6ZOCd43MRSnPl1PnnELQdbYFw1kzSUG4St9Z3JEA=;
-	b=MHuavBx4FUDxoDK9OgrfM79/oMTcgSw6pYQ6x8/VeIDaSJt9DsrSnKGemQdaQ7RGe0cb59
-	nQ3n9RKJBnf67dUqmkbf4/0p+/TYbtjkYvXRCZRykCAi46Bh+as3TTTBzWo8e3khfv2w+2
-	tgzbAXplUYaM4CN6ftnE7MT5GC/KJJk=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=e6WptTDB312s9O4jIKbscZ5uDMmB+gpUnuK5GkWtL50=;
+	b=WMDCWr22cmFw/sv0xsYYnZATKpaOgEeTxTBPqTgRisinR4ErKpI+nPpG6gLWlfPM0BWhTd
+	H1hpukkL5E/qyum4XvM1vTrVKGWNYEK1W0ckmnyqVyrs3HaHd4tBuUgdSf4TEqiOIOlHvD
+	vCvEanmBjRA9YQqX43c2CUZFXTnCu5o=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-678-i-3B3VybPv6xapBTuZIp2A-1; Wed, 26 Feb 2025 11:07:49 -0500
-X-MC-Unique: i-3B3VybPv6xapBTuZIp2A-1
-X-Mimecast-MFC-AGG-ID: i-3B3VybPv6xapBTuZIp2A_1740586065
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-38f4bf0d5faso3655031f8f.0
-        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 08:07:46 -0800 (PST)
+ us-mta-298-A9dj-1v9PJiUsUKiCDy-kw-1; Wed, 26 Feb 2025 11:14:31 -0500
+X-MC-Unique: A9dj-1v9PJiUsUKiCDy-kw-1
+X-Mimecast-MFC-AGG-ID: A9dj-1v9PJiUsUKiCDy-kw_1740586470
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-438e4e9a53fso53347575e9.1
+        for <alex.bennee@linaro.org>; Wed, 26 Feb 2025 08:14:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740586065; x=1741190865;
+        d=1e100.net; s=20230601; t=1740586470; x=1741191270;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=3wg6ZOCd43MRSnPl1PnnELQdbYFw1kzSUG4St9Z3JEA=;
-        b=rlwXF9A867PW8nSfJCj9oI2QKcXLrWg43GXt02LNo3ZztKg98CIIVDjgTLQbeWUWsL
-         0+eh02P+IYxnuuNR3WR9BNGK1xRm8LWQUpVHYYD72JTs+3hxKwElkr08nD4+k/7PiRUI
-         TJ0zC/k+oOTSKldPrSO/cEPBhg0CXIOuik3C4BWuyf7bY5Y4eOshMBgsKdTLnIXvSw6i
-         6jIX4kw3gDNX0WvK8xPVSFiWbQRvgInj73NBhNGbErRfbF5tk4NQLcPm8hrveF/NnGHc
-         yXkzGqaPwK4j4nK+XEccV4+zTMygtctszjqgvcn/aM101WKv19H12xh9FBVeqpKz9oPW
-         vpXQ==
-X-Gm-Message-State: AOJu0YxcxQUL+9QrPiLVF6TaQqONn3N46rBAe0q2aS4xyFe6ZR+3uRx+
-	MrJuouB6lpDgocNprZ4jzwR3kd4OsUtI5ThvV+p49s86icxX9+CumbZKyE3YLmdpXLNjtmI8cKY
-	rQteQJhYVpFYRcg+EhteLDCbeGw6mQqMhdy3Px0+7mP6FbROaCvGVyhsWNEloXht8M9pbKbCHyD
-	QKMsn8opZwD71pheQxMMeOWGFefCTVlgLNAg==
-X-Gm-Gg: ASbGnctBnQ1yYc57R95X0bmHAIXNWXhGrC8LD3zA/iUFo57HTcIwgbL/PbuZwDvx/Z5
-	oSNn5JaT7EXLCpd3sRJpUaRlgXZB7ncOnrF+EabPZZ/eFZ4hTAj6HM2bEzDLU7rUHSpcztylZEV
-	IXmQskzkP2V/YO6owah+z65O1KO48jMHhiV25bsJEo+QUVwt7ZwZjuu92YhY7tAEkFu0AUCTW0j
-	lt5eMdBwAe9ygMy/0k6aa/IieWQFQLUgicoOifbQoYAfcwvcAzFPHtZZoSkXzozZbDH3RBqUBE1
-	/TJ0q5MxD8tARenJDt8G/sSnz3SyYlPxVS1LA3aQ55C7tuI=
-X-Received: by 2002:a05:6000:1103:b0:38f:3d74:9af with SMTP id ffacd0b85a97d-390d4f9bfcbmr2751484f8f.45.1740586065074;
-        Wed, 26 Feb 2025 08:07:45 -0800 (PST)
-X-Received: by 2002:a05:6000:1103:b0:38f:3d74:9af with SMTP id ffacd0b85a97d-390d4f9bfcbmr2751436f8f.45.1740586064575;
-        Wed, 26 Feb 2025 08:07:44 -0800 (PST)
+        bh=e6WptTDB312s9O4jIKbscZ5uDMmB+gpUnuK5GkWtL50=;
+        b=VCNfriKJ2z4qnD7beYDhRw1sC0JCxUkyWs8xD4fyYyrJg7zU9vX6+ZZW3VpPDxQmDW
+         jZjdoXd4fo0/tZrL9UScLaTHwvsZ0ZGkN0f6TWJABxBFMCfAS6q8aWL5BMQpLZAQ5CBc
+         p9HnRwwwezJoEWEKFTwOIo+9qEGRGh4c5XtMP6J8y5QN+B8CVfTrgcOmYjspSMFAqYhA
+         Pm1Hbu2DJdS6cI+XCkqkQviY0If6UFdGQPevlVSuayZ4XfwKpMs6cMR/Sc7mFwYYdQab
+         AGBaBSfLomYNtVWE+WGG0k9jQAWRb7ZDKLyHndZdqq3OiC+J0Xa+60En6sbIlYD+KR6Y
+         tASw==
+X-Gm-Message-State: AOJu0YzVgP9MOOXaa7Ub2CunBKaP07dxaUchVHq598gA8XQ21b8Uy8i+
+	+BcLY8FdHrrhx4v5LqClyfzkn3ZxJKf+d7UtlhLu6mYhnjdWIlxvHlZaThp+7FJRzb/xAD5DjP1
+	81VV4pUVIx4dzikXqER6LuoDXljpdC4tkelpqhZsdVbcVIJnojDbgv5YgTbuYZjHObsqFnlxdWC
+	RLbqG2Iv9wyDusuKyvMT9UKzAAc9nuRncZcA==
+X-Gm-Gg: ASbGnctCXPTADwl0J5T5Jp8J3BZyfxMaagV7wIUS6wArMDOluPgLDL/pvo4rZNAzR9A
+	JCYVgaZG4EmVrd/sanWvfHtQNyxvmNdhSdtYluuzVca+RBhSMaS4OqOTzmtp2vzJy7U4BchacNM
+	3LSmyykAdzJB1jAp4Y64wg+VnBoYUNlhoTVDVAT7X+p5eIPLWPMsuMM53qIS/w3G/6Qso3+GFkC
+	zkMPj5LRT24oLP78Jnv3fyuQwNN3BhGZVtJi45ATCjkdQKYA9Ap0XeAHSU7Svx/ds793kS8niTG
+	TAkH8NTL58CK/JlEpIPhLFJfbhMngepH95MkvktibzntX/w=
+X-Received: by 2002:a05:600c:1550:b0:439:a1b8:a246 with SMTP id 5b1f17b1804b1-439aeb0d445mr162357785e9.8.1740586470006;
+        Wed, 26 Feb 2025 08:14:30 -0800 (PST)
+X-Received: by 2002:a05:600c:1550:b0:439:a1b8:a246 with SMTP id 5b1f17b1804b1-439aeb0d445mr162357405e9.8.1740586469609;
+        Wed, 26 Feb 2025 08:14:29 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-49-245.web.vodafone.de. [109.42.49.245])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390db1aa6c8sm2062307f8f.72.2025.02.26.08.07.43
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ab2c4051bsm45127055e9.0.2025.02.26.08.14.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Feb 2025 08:07:44 -0800 (PST)
-Message-ID: <13ffd935-9b26-4a43-8009-834220b709a1@redhat.com>
-Date: Wed, 26 Feb 2025 17:07:42 +0100
+        Wed, 26 Feb 2025 08:14:29 -0800 (PST)
+Message-ID: <46bd3693-6883-4a80-aa52-e7d89f752806@redhat.com>
+Date: Wed, 26 Feb 2025 17:14:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/25] tests/functional: skip vulkan tests with nVidia
+Subject: Re: [PATCH 09/25] libvirt-ci: bump to latest for vulkan-tools
+ (libvirt MR 525)
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
@@ -106,10 +107,9 @@ Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Ed Maste <emaste@freebsd.org>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>
+ Ed Maste <emaste@freebsd.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
- <20250226140343.3907080-9-alex.bennee@linaro.org>
+ <20250226140343.3907080-10-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -153,81 +153,20 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250226140343.3907080-9-alex.bennee@linaro.org>
+In-Reply-To: <20250226140343.3907080-10-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 7Jcid7vVytcHBXHwfL67-MQRkeokxCPjslRNd6cGFdg_1740586065
+X-Mimecast-MFC-PROC-ID: MHBwMMNf4WCIZ6telSkeuAr18RkpbkJOk665BR3bD1Y_1740586470
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Ct5TlnkL76Pt
+X-TUID: JtYN/x8gkl/i
 
 On 26/02/2025 15.03, Alex Bennée wrote:
-> While running the new GPU tests it was noted that the proprietary
-> nVidia driver barfed when run under the sanitiser:
+> The alpine baseline has also been updated in the meantime so we need
+> to address that while we are at it.
 > 
->    2025-02-20 11:13:08,226: [11:13:07.782] Output 'headless' attempts
->    EOTF mode SDR and colorimetry mode default.
->    2025-02-20 11:13:08,227: [11:13:07.784] Output 'headless' using color
->    profile: stock sRGB color profile
-> 
->    and that's the last thing it outputs.
-> 
->    The sanitizer reports that when the framework sends the SIGTERM
->    because of the timeout we get a write to a NULL pointer (but
->    interesting not this time in an atexit callback):
-> 
->    UndefinedBehaviorSanitizer:DEADLYSIGNAL
->    ==471863==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
->    0x000000000000 (pc 0x7a18ceaafe80 bp 0x000000000000 sp 0x7ffe8e3ff6d0
->    T471863)
->    ==471863==The signal is caused by a WRITE memory access.
->    ==471863==Hint: address points to the zero page.
->        #0 0x7a18ceaafe80
->    (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x16afe80)
->    (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
->        #1 0x7a18ce9e72c0
->    (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15e72c0)
->    (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
->        #2 0x7a18ce9f11bb
->    (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15f11bb)
->    (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
->        #3 0x7a18ce6dc9d1
->    (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x12dc9d1)
->    (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
->        #4 0x7a18e7d15326 in vrend_renderer_create_fence
->    /usr/src/virglrenderer-1.0.0-1ubuntu2/obj-x86_64-linux-gnu/../src/vrend_renderer.c:10883:26
->        #5 0x55bfb6621871 in virtio_gpu_virgl_process_cmd
-> 
-> The #dri-devel channel confirmed:
-> 
->    <digetx> stsquad: nv driver is known to not work with venus, don't use
->        it for testing
-> 
-> So lets skip running the test to avoid known failures.
-> 
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> 
 > ---
-> v2
->    - implement block at the test level
-> ---
->   tests/functional/test_aarch64_virt_gpu.py | 12 ++++++++++--
->   1 file changed, 10 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tests/functional/test_aarch64_virt_gpu.py b/tests/functional/test_aarch64_virt_gpu.py
-> index 7a8471d1ca..a4ae5777e6 100755
-> --- a/tests/functional/test_aarch64_virt_gpu.py
-> +++ b/tests/functional/test_aarch64_virt_gpu.py
-> @@ -9,8 +9,6 @@
->   #
->   # SPDX-License-Identifier: GPL-2.0-or-later
->   
-> -import logging
 
-That hunk should likely be squashed into patch 1 instead?
-
-With that change:
 Reviewed-by: Thomas Huth <thuth@redhat.com>

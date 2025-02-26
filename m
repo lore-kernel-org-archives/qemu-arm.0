@@ -1,115 +1,121 @@
-Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1170422njg;
-        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXXgsts+gNJHzCCbBeZKwSdsjQ410hW30Bk2xR7hNhggg5inYKiYmItviI5+b2vFR1H2Iz09RE75uYTZw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHBAjC5+KAfHHj8j8GbgLt2iWw/gBdvuFxEcD+OLpzKPv1pKp2sfNAED2BR361qAv5tiv1j
-X-Received: by 2002:a0c:ea8c:0:b0:6e8:916b:8c49 with SMTP id 6a1803df08f44-6e8916b8f7dmr27650766d6.31.1740603041526;
-        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740603041; cv=none;
+Received: by 2002:a17:504:4644:b0:1be9:327d:8ee3 with SMTP id d4csp1215502njg;
+        Wed, 26 Feb 2025 14:27:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVv1hCBNG8or1Mc8tVE9wKmtImt0/f50zTJkKtWEOL98OSwX7CdYexfN9J8q2ihfQ2+7rpvWnKCnNJfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF583D13AU/qpMymy4S4hsHm8dzPXbZxmClojZUsoaYWJ+J4hItwLKf1vDsBkMNF8HFEfzU
+X-Received: by 2002:a05:620a:25c9:b0:7c2:4b6c:3c1b with SMTP id af79cd13be357-7c24b6c4704mr442388685a.24.1740608822112;
+        Wed, 26 Feb 2025 14:27:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740608822; cv=none;
         d=google.com; s=arc-20240605;
-        b=Qe4VRF+Lw+Eu7hDKeUUNospRIL0eP+VEInqfDq3HmW56M8tJo6bCNDlvQ7n9uhCco6
-         7xVwYX9w1yatLAR/32w4gD5DyMs8w2ffI3gKBdlz5j7IZR9YvfCrx+J+/73aUNd7dE9N
-         mOSST2robZiDQTb8SnJ2uOOrUquRxbs1+7E211dR692hh4erYZOPI6ifJFcEIzQyf+KR
-         LiBVTaUiLz7ZNIkQSmzAOx7Va8dSKsQr7c8Y+BU4Rg4nSRV1vozUfa1owBn64wYkkjJ7
-         KzHBeCdV+8LPzzCrZJlmbq9ykEPSJiT1zaLH9KNVmmsjbn5Z4f6kJBK+ag/cYmBZ7ehI
-         VkZA==
+        b=K854tO4X5PTtSLMtcurqZccmiy69BWLxsiErSrDblkk4Uq3gnIrSYK7x6TkTluEr88
+         O6mZ4LiiHCRYRpaCZXATZOpRoxp6mZp48QsZgCxY9I7tyW57nUcvj4oHml/LLOS9OcdX
+         4013dmIeP5aJ74N5MwzHHnHFWuF7DUUaeU7grAhJMTNrkkRJfk5ARZtDLk8dYosBrs+w
+         Vb4CalAMRfmceeJQdKQz/pXkeJh44H4WvlDsXXFiz414VaTKXmubRcD49ETZLI2e7Wpo
+         XFEVSasWItpLoYZta4N77wHcTqixB7oMDwYBEyZkEsRI965ItwQfyO7VfcG4BCsjz9NK
+         Qepg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
-        fh=yqqA7bbJQhscj3+9FqQDd6hthFy0f2ko5yWPYAjLgck=;
-        b=O1Rf3piVdMHma6taQJkVW6T3+kzTVi8AwjKTy4bvanDHEepa6J1D4dLgBHIYjfS+2k
-         VIZOEw+fFpg08svdoVc4bIlFf2tbriTR6huNe7HN3/FWoM1J0H2GmQN+ptOtWx3ZBe6K
-         6VeKiOV+d9sjO7lxKCk5UVYCQeisZSjh1XwW6NZJeR+ekSH8z6XPYyueHwBqKfO5k8w8
-         wHHswkwfOQ0gILNswnIc2KaM7v4y6w2EQ77z11cmJj7ufd2bYRagPVpHFgUG1iy9OkYZ
-         hUOri8EIhDGs61/b2wmbwwYvksUD2cPy5Nu38KlGaYTZ5/a1c3afHgX8PygRl13i8xPd
-         R9mQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=onGhEuhiFf7mZ5I/v/m30+rNq+Jtn6AKzRpbfgvQL2s=;
+        fh=yQKIrDtZlsW5mptFNUMQ44ntGtpGUZwwakSHSM87JwY=;
+        b=IC5xSjdQ8X+/6Ywhh99BuHL/b9Bm/rmZR11NazPaLviLrNuHq1aK/ptaq44etaCcLX
+         eISv0RJ9qTxmlJU65bIsJGwj+2xXL1jCmc9K0T6lT5BkhdjDCq/dspeKSPP3jWmID6zY
+         1ec7jP9dvHCcNeqa+cODulF2aJdv5hRSB1dK53yXhnhlDNuR2DhyBVaoevrfBPdOJceH
+         Wdq/tHymNRIHYj3WNI8EX8uuwcMCpnyRUiYAkiI00MWyp2OBU5GRv2cWWrWRhF893TG9
+         5MFw1Qi0mEIFjaPem54AlZagOQVBi7kvBQ3si1FGdIXJN75oDXOH0XgT11BcfnHCfsHg
+         d1xA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JWtCvJ0t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RVLuhAzE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8976c0a18si649926d6.218.2025.02.26.12.50.41
+        by mx.google.com with ESMTPS id af79cd13be357-7c378db4824si15743585a.631.2025.02.26.14.27.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2025 12:50:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Feb 2025 14:27:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JWtCvJ0t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RVLuhAzE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnOMU-0002dc-MF; Wed, 26 Feb 2025 15:50:35 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tnPrW-0005tG-Qx; Wed, 26 Feb 2025 17:26:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnOMS-0002dN-TT
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 15:50:32 -0500
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tnPrV-0005sf-2E
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2025 17:26:41 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnOMQ-0001qU-JQ
- for qemu-arm@nongnu.org; Wed, 26 Feb 2025 15:50:32 -0500
-Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-e609cff9927so125051276.3
- for <qemu-arm@nongnu.org>; Wed, 26 Feb 2025 12:50:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tnPrT-0006i3-AH
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2025 17:26:40 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-43948021a45so2864045e9.1
+ for <qemu-devel@nongnu.org>; Wed, 26 Feb 2025 14:26:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740603028; x=1741207828; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
- b=JWtCvJ0tr6Yqn6UAZhRIld6KVpkm7VX8metW2iXtpG8mVwlNdLLsmM3LQnWPsi+nqE
- C9Qu+dj7kfMM4NK86zmHRtmKV+MBcrf9wZ6TwLpO2LqEPwuBa5skuUKbDwbIJWjBaw4O
- LMzkJV4SBWOejNfmLRZwdDuqhnXlyCJy/E3m9ZAKN9HwN5Ejq/Va5mi7m6445J760yjG
- 28whrj+rGMoiStA/j38JtxMB34MSyQqcIL0sAGRGCTdOEWpBWo7QBk7L5SfnfXuvJyTv
- kkRYZBAv9VNEusl7VMNoxwr2hX/CxPDjvvqOGhGgubBtx5vSbjDtFWO0HXCONhIm0h7g
- nj9w==
+ d=linaro.org; s=google; t=1740608797; x=1741213597; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=onGhEuhiFf7mZ5I/v/m30+rNq+Jtn6AKzRpbfgvQL2s=;
+ b=RVLuhAzEXd6ohxS54BEnFATfSn+EAyN7FA+3/j7V5F2Fa439mgoOpM6MdGzyVoCDwv
+ M9YtzPp0ZLEV8hLDQVxaImDbyFHc5xSaKKv3WAqGQLDRGGGxVt7g76ctMz4cg2tOAFb4
+ 3guPmGUZbHk8OFRRn4YJ4C08dsbtUouukvErTBJ4BQKZP9b8kLgoyuzE0SdHpSpl1fyu
+ Hrqb3DrduLRIaqPsWutGhIa/8IDEhDD1IzrCxPeLTq1wUXrQrEKrL6NxdyeMdYJcTrR3
+ CAJpo57hp+OCHSs83CFvOzsQoLUAi62Tzw+DJQE9107MYZexZG0F0Z0M98j5U1iFvrzm
+ /fHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740603028; x=1741207828;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=U0A6IXzS8YnKUNw5E47iu+Kpl2ECdYRHrLl8CUekn60=;
- b=iIeRLziAjF1FQd9KN7XYn13eIcqidTLBwZq/O1Yy8taClV8cpoBkyMQAW01SVkgCh+
- 0VPPoLgv2vfOpXitQFZNnfB7bDT346HdlS/1aHVZw53rlOqSTUInhKLhmtcv/vGpzGhn
- Lfn+AckhLwEwCGyEjeHTcUnm59I1v3hFO/lHzA02HaFi3WxgCJDBy9gV+tfLc2MAGU1j
- TIwcXuM4L7r/oK3dTZ4IsKBPz5wxbbXj0pM8lWl/DqqGiZS0+kCClGKkK/R4CUYs6UZE
- iQfC/SuIizK5DYTOJ2VaJLoo8pAm2KQ+xD981b+wCi1Wq055xdOKibLVngSmZVTgJg0d
- 3CPw==
+ d=1e100.net; s=20230601; t=1740608797; x=1741213597;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=onGhEuhiFf7mZ5I/v/m30+rNq+Jtn6AKzRpbfgvQL2s=;
+ b=P22Q/GlOE7uQ32wacD+sPa0gM0Kag0CtwFgLi0Q1NXEp+/ByDS5Xb7G6r0TN3BTlbx
+ RSRhjnqDYBSBP1rlfvCznI84+55xnBxGifDpO1GN6taoQS8zp+JHSPgvvF2JQUBtaRUI
+ mEa6/r7jS0VfXLC41OPI0udjjB++iiCQvtivKqD5fi4AMaiRbTGTxHZCjqhdI32KZb1u
+ TrAxceFzBBaYnHR6NAH9fRNxvJaO4Pwy/653aO0CT7jwq2+sk63MX4a6joZwdLCZV2SL
+ 1yhA4zsVib/Q6r84yPBiS1Fwvy+32nz/eFue762BahuaFb9o3m4qKxqgwRRudcWL1pzx
+ llVA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUvmFtTnxJbOnFUG7rraYdoW55MpWUc5mQNzinE8iAnGBThbFSH9G96LmZ4EVUx5o628lzBg19hfQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy83I9F4cTaxdo+e9L7OwfIR7kP1fVRg0fQKWnoxE4P6iZ90vNL
- tBQmI19WhrH9Y2HWb99hO2We7iXXM1iZ/RFF14GseAagWIZh9npJsyDLSDYt+kP2U4DHwIaq4Kf
- eFHZhjjgbPiazUZUZgBBlAPoe4PFHJoPtBF/9xg==
-X-Gm-Gg: ASbGncuYuYeXqdpilumpVbs9JEcBN7lM9Ow3xlROb1WWqa4d7aES9N7e5Y+oNZVTSHL
- Y43ChA5flsEZcs/VvsShbVWJujwxTNPPecoY3/PBH0IqAkvXOVuLpakep56Ggmu6qvpoVnikf5B
- MZP3gs+SLp
-X-Received: by 2002:a05:6902:2748:b0:e5d:d6b8:2318 with SMTP id
- 3f1490d57ef6-e607a54eb03mr7771616276.34.1740603028638; Wed, 26 Feb 2025
- 12:50:28 -0800 (PST)
+ AJvYcCUvEF4h57XKrtQtOZJum89pX4AMfKi7PvH13gaUW3RUzf2OUD3T0c4BS5eNBuLeBc/f+Yu/GeQRnnR+@nongnu.org
+X-Gm-Message-State: AOJu0YzDhMH3IhIM0qJy7l3oNvyMTh8HeXc1YRSfkwdyrmXAfKKczR9d
+ hBCDo1vhZonCDVUq93DOOpNpXk786d/fGjAZdX7gANlwA0Egvl4+OpI09g9pJ1U=
+X-Gm-Gg: ASbGnctTdAHXadZG1LAckAvj5uzJS46ISJO5v1HodI2jPMrfXA1KFcd2tbWoN/taHte
+ w8QM+TE03DGeDYemvo9tbkxMq4rVVY+quuGnqeQRP3t3b9vcT3dX5TO2UcJxlEMKzP5b52BN3Jv
+ MPajrKD/FsZLXOzVgGCiUgRCupArhZOEDyiykOhE1YDUEmIMw3bAea+m32P3xpC92koE5xIyDfq
+ uUPhO1LQGwNRn66YA+W2b50Nf6WdHmIGfSGubNsRAyihx+TEJ5wgUVVR+cPxdl2rMB4BJCqDqB+
+ bp2bwVcbX3XQ6NLLBVnVkH9nf31qE78NTvNjGTvNQ4uRYrgKfidaUl9rSOMHwLzCsHBpWQ==
+X-Received: by 2002:a05:600c:a08:b0:439:60ef:ce94 with SMTP id
+ 5b1f17b1804b1-43ab901d6f3mr37087175e9.21.1740608797405; 
+ Wed, 26 Feb 2025 14:26:37 -0800 (PST)
+Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43aba52b947sm35227965e9.2.2025.02.26.14.26.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Feb 2025 14:26:36 -0800 (PST)
+Message-ID: <3a2c6943-c49c-4ce1-be7f-c306a9309c00@linaro.org>
+Date: Wed, 26 Feb 2025 23:26:36 +0100
 MIME-Version: 1.0
-References: <20250224205053.104959-1-pierrick.bouvier@linaro.org>
- <CAFEAcA_sz-_6WGCQ=4kC2vtK2RUBXbAtMVzh3iZsp0xmNbgaxQ@mail.gmail.com>
- <829e9fd0-2d0f-45e6-ab89-d933d344cfe2@linaro.org>
- <CAFEAcA8BHzA_P7yX+cDMb1WiyGTzkh6xjvam4RHs5aoM1X6mkw@mail.gmail.com>
- <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
-In-Reply-To: <5c25f67a-2677-4162-9477-f51f230403b0@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 26 Feb 2025 20:50:17 +0000
-X-Gm-Features: AWEUYZlSUyybVdgAACEr0gQtv_ujFwhK5De7RqbKJE6ZH21vOsXfQ1pZGzHtdVw
-Message-ID: <CAFEAcA8jzYvCLxDTybE34K5DxQqOG4-m8_-oNwiATVBHYbEV9A@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/npcm_clk: fix buffer-overflow
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/functional/test_arm_sx1: Check whether the serial
+ console is working
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+References: <20250226104833.1176253-1-thuth@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250226104833.1176253-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,92 +124,37 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qcoXlidzi9r6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yIHuM8cZUxdz
 
-(edited cc list since it's moved away from a discussion of this
-particular patch and on to a testing/ci coverage issue)
+On 26/2/25 11:48, Thomas Huth wrote:
+> The kernel that is used in the sx1 test prints the usual Linux log
+> onto the serial console, but this test currently ignores it. To
+> make sure that the serial device is working properly, let's check
+> for some strings in the output here.
+> 
+> While we're at it, also add the test to the corresponding section
+> in the MAINTAINERS file.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   Based-on: <20250221140640.786341-1-peter.maydell@linaro.org>
+> 
+>   MAINTAINERS                      | 1 +
+>   tests/functional/test_arm_sx1.py | 7 ++++---
+>   2 files changed, 5 insertions(+), 3 deletions(-)
 
-On Wed, 26 Feb 2025 at 19:03, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> On 2/26/25 03:50, Peter Maydell wrote:
-> > On Tue, 25 Feb 2025 at 20:57, Pierrick Bouvier
-> > <pierrick.bouvier@linaro.org> wrote:
-> >>
-> >> On 2/25/25 05:41, Peter Maydell wrote:
-> >>> (Looking more closely at the cold_reset_values handling
-> >>> in npcm_gcr.c, that looks not quite right in a different
-> >>> way; I'll send a reply to that patch email about that.)
-> >>>
-> >>
-> >> It may be a hole in our CI right now.
-> >> Would that be interesting for CI to run all tests (check-functional +
-> >> check w/o functional) with both ubsan and asan?
-> >
-> > We do have at least some ubsan tests in our CI right now
-> > (eg the "clang-system" job). The problem with ubsan coverage
-> > is the usual one that we already have too much CI going on,
-> > and it takes forever and we don't have that much headroom
-> > for adding more jobs.
->
-> I understand the problem behind spending more minutes on this.
->
-> However, looking at our CI, we already duplicate functional testing a lot:
-> buildtest.yml:functional-system-alpine:
-> buildtest.yml:functional-system-ubuntu:
-> buildtest.yml:functional-system-debian:
-> buildtest.yml:functional-system-fedora:
-> buildtest.yml:functional-system-centos:
-> buildtest.yml:functional-system-opensuse:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-I think that these are mostly testing different target
-architectures, e.g. functional-system-alpine tests what
-build-system-alpine built, which covers avr, loongarch64,
-mips64 and mipsel targets; functional-system-ubuntu
-tests what build-system-ubuntu bulit, which is alpha,
-microblazeel, mips64el, and so on. So there is less overlap
-than it might appear.
-
-(Some of them complete pretty quickly because we have very few
-functional tests for some archs; some are slower where we're
-running more tests. e.g.
-https://gitlab.com/qemu-project/qemu/-/jobs/9213571833
-is functional-system-fedora completing in 7 mins because we
-only have a few ppc tests, but this is functional-system-opensuse
-https://gitlab.com/qemu-project/qemu/-/jobs/9213571852
-taking 27 mins because it's testing x86 and aarch64. The
-corresponding build jobs take about 30 mins each.)
-
-> Would that hurt so much to have one configuration enabled with ubsan and
-> asan, which catches *real* bugs, and potential security issues?
-> Yes, it adds overhead, but it should not be x10. Around x2 to x3.
-
-You'd need to have a duplicate of all of the above
-functional-system-* test jobs if you wanted
-to test all the guest architectures, I think. So it's
-30 mins build * six configs plus 60 mins total for testing.
-Or we could convert (some of?) the existing jobs to use the
-sanitisers if we needed to economise on CI time.
-
-> I guess CI minutes are cheaper than engineer ones those days.
-
-You could make an argument that it's the other way around:
-from the project's point of view engineer minutes are cheap
-because we never pay engineers, whereas CI minutes are
-expensive because we must pay for them out of our project
-donations :-)
-
--- PMM

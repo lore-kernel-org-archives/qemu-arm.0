@@ -1,42 +1,52 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd86caa8sm4789219f8f.25.2025.02.26.01.06.01
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba532d7asm13929045e9.13.2025.02.26.01.07.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 01:06:02 -0800 (PST)
+        Wed, 26 Feb 2025 01:07:17 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5983B5F87C;
-	Wed, 26 Feb 2025 09:06:01 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 94F305F87C;
+	Wed, 26 Feb 2025 09:07:16 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-stable@nongnu.org
-Subject: Re: [PATCH v3 4/9] target/arm: Always apply CNTVOFF_EL2 for
- CNTV_TVAL_EL02 accesses
-In-Reply-To: <20250204125009.2281315-5-peter.maydell@linaro.org> (Peter
-	Maydell's message of "Tue, 4 Feb 2025 12:50:04 +0000")
+Subject: Re: [PATCH v3 5/9] target/arm: Refactor handling of timer offset
+ for direct register accesses
+In-Reply-To: <20250204125009.2281315-6-peter.maydell@linaro.org> (Peter
+	Maydell's message of "Tue, 4 Feb 2025 12:50:05 +0000")
 References: <20250204125009.2281315-1-peter.maydell@linaro.org>
-	<20250204125009.2281315-5-peter.maydell@linaro.org>
+	<20250204125009.2281315-6-peter.maydell@linaro.org>
 User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Wed, 26 Feb 2025 09:06:01 +0000
-Message-ID: <87ikox3wjq.fsf@draig.linaro.org>
+Date: Wed, 26 Feb 2025 09:07:16 +0000
+Message-ID: <87cyf53whn.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: TeEbGw1hPLOt
+X-TUID: yT9Is2Cuj9CX
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Currently we handle CNTV_TVAL_EL02 by calling gt_tval_read() for the
-> EL1 virt timer.  This is almost correct, but the underlying
-> CNTV_TVAL_EL0 register behaves slightly differently.  CNTV_TVAL_EL02
-> always applies the CNTVOFF_EL2 offset; CNTV_TVAL_EL0 doesn't do so if
-> we're at EL2 and HCR_EL2.E2H is 1.
+> When reading or writing the timer registers, sometimes we need to
+> apply one of the timer offsets.  Specifically, this happens for
+> direct reads of the counter registers CNTPCT_EL0 and CNTVCT_EL0 (and
+> their self-synchronized variants CNTVCTSS_EL0 and CNTPCTSS_EL0).  It
+> also applies for direct reads and writes of the CNT*_TVAL_EL*
+> registers that provide the 32-bit downcounting view of each timer.
 >
-> We were getting this wrong, because we ended up in
-> gt_virt_cnt_offset() and did the E2H check.
+> We currently do this with duplicated code in gt_tval_read() and
+> gt_tval_write() and a special-case in gt_virt_cnt_read() and
+> gt_cnt_read().  Refactor this so that we handle it all in a single
+> function gt_direct_access_timer_offset(), to parallel how we handle
+> the offset for indirect accesses.
 >
-> Factor out the tval read/write calculation from the selection of the
-> offset, so that we can special case gt_virt_tval_read() and
-> gt_virt_tval_write() to unconditionally pass CNTVOFF_EL2.
+> The call in the WFIT helper previously to gt_virt_cnt_offset() is
+> now to gt_direct_access_timer_offset(); this is the correct
+> behaviour, but it's not immediately obvious that it shouldn't be
+> considered an indirect access, so we add an explanatory comment.
+>
+> This commit should make no behavioural changes.
+>
+> (Cc to stable because the following bugfix commit will
+> depend on this one.)
 >
 > Cc: qemu-stable@nongnu.org
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>

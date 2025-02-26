@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390dfab57b9sm371164f8f.68.2025.02.26.06.03.51
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd8e70c8sm5673538f8f.76.2025.02.26.06.11.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Feb 2025 06:04:07 -0800 (PST)
+        Wed, 26 Feb 2025 06:11:42 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 36ECE601A1;
-	Wed, 26 Feb 2025 14:03:46 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id D869D606FE;
+	Wed, 26 Feb 2025 14:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -27,151 +27,154 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ed Maste <emaste@freebsd.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 23/25] plugins/api: split out time control helpers
-Date: Wed, 26 Feb 2025 14:03:41 +0000
-Message-Id: <20250226140343.3907080-24-alex.bennee@linaro.org>
+Subject: [PATCH 20/25] plugins/loader: compile loader only once
+Date: Wed, 26 Feb 2025 14:03:38 +0000
+Message-Id: <20250226140343.3907080-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250226140343.3907080-1-alex.bennee@linaro.org>
 References: <20250226140343.3907080-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wjo5lUkFso6N
+X-TUID: quTCtj+YdLgl
 
-These are only usable in system mode where we control the timer. For
-user-mode make them NOPs.
+There is very little in loader that is different between builds save
+for a tiny user/system mode difference in the plugin_info structure.
+Create two new files, user and system to hold mode specific helpers
+and move loader into common_ss.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250225110844.3296991-10-alex.bennee@linaro.org>
+Message-Id: <20250225110844.3296991-7-alex.bennee@linaro.org>
 ---
- plugins/api-system.c | 34 ++++++++++++++++++++++++++++++++++
- plugins/api-user.c   | 17 +++++++++++++++++
- plugins/api.c        | 41 -----------------------------------------
- 3 files changed, 51 insertions(+), 41 deletions(-)
+ plugins/plugin.h    |  6 ++++++
+ plugins/loader.c    | 13 ++-----------
+ plugins/system.c    | 24 ++++++++++++++++++++++++
+ plugins/user.c      | 19 +++++++++++++++++++
+ plugins/meson.build |  7 ++++++-
+ 5 files changed, 57 insertions(+), 12 deletions(-)
+ create mode 100644 plugins/system.c
+ create mode 100644 plugins/user.c
 
-diff --git a/plugins/api-system.c b/plugins/api-system.c
-index 38560de342..cc190b167e 100644
---- a/plugins/api-system.c
-+++ b/plugins/api-system.c
-@@ -95,3 +95,37 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
-         return g_intern_static_string("RAM");
-     }
- }
-+
-+/*
-+ * Time control
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 9ed20b5c41..6fbc443b96 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -119,4 +119,10 @@ struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
+ 
+ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
+ 
++/**
++ * qemu_plugin_fillin_mode_info() - populate mode specific info
++ * info: pointer to qemu_info_t structure
 + */
-+static bool has_control;
-+static Error *migration_blocker;
++void qemu_plugin_fillin_mode_info(qemu_info_t *info);
 +
-+const void *qemu_plugin_request_time_control(void)
-+{
-+    if (!has_control) {
-+        has_control = true;
-+        error_setg(&migration_blocker,
-+                   "TCG plugin time control does not support migration");
-+        migrate_add_blocker(&migration_blocker, NULL);
-+        return &has_control;
-+    }
-+    return NULL;
-+}
-+
-+static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
-+{
-+    int64_t new_time = data.host_ulong;
-+    qemu_clock_advance_virtual_time(new_time);
-+}
-+
-+void qemu_plugin_update_ns(const void *handle, int64_t new_time)
-+{
-+    if (handle == &has_control) {
-+        /* Need to execute out of cpu_exec, so bql can be locked. */
-+        async_run_on_cpu(current_cpu,
-+                         advance_virtual_time__async,
-+                         RUN_ON_CPU_HOST_ULONG(new_time));
-+    }
-+}
-diff --git a/plugins/api-user.c b/plugins/api-user.c
-index 867b420339..28704a89e8 100644
---- a/plugins/api-user.c
-+++ b/plugins/api-user.c
-@@ -12,6 +12,7 @@
+ #endif /* PLUGIN_H */
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 827473c8b6..7523d554f0 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -31,9 +31,6 @@
+ #include "qemu/memalign.h"
+ #include "hw/core/cpu.h"
+ #include "exec/tb-flush.h"
+-#ifndef CONFIG_USER_ONLY
+-#include "hw/boards.h"
+-#endif
  
- #include "qemu/osdep.h"
- #include "qemu/plugin.h"
-+#include "exec/log.h"
+ #include "plugin.h"
  
- /*
-  * Virtual Memory queries - these are all NOPs for user-mode which
-@@ -38,3 +39,19 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
- {
-     return g_intern_static_string("Invalid");
- }
+@@ -300,14 +297,8 @@ int qemu_plugin_load_list(QemuPluginList *head, Error **errp)
+     info->target_name = target_name();
+     info->version.min = QEMU_PLUGIN_MIN_VERSION;
+     info->version.cur = QEMU_PLUGIN_VERSION;
+-#ifndef CONFIG_USER_ONLY
+-    MachineState *ms = MACHINE(qdev_get_machine());
+-    info->system_emulation = true;
+-    info->system.smp_vcpus = ms->smp.cpus;
+-    info->system.max_vcpus = ms->smp.max_cpus;
+-#else
+-    info->system_emulation = false;
+-#endif
 +
++    qemu_plugin_fillin_mode_info(info);
+ 
+     QTAILQ_FOREACH_SAFE(desc, head, entry, next) {
+         int err;
+diff --git a/plugins/system.c b/plugins/system.c
+new file mode 100644
+index 0000000000..b3ecc33ba5
+--- /dev/null
++++ b/plugins/system.c
+@@ -0,0 +1,24 @@
 +/*
-+ * Time control - for user mode the only real time is wall clock time
-+ * so realistically all you can do in user mode is slow down execution
-+ * which doesn't require the ability to mess with the clock.
++ * QEMU Plugin system-emulation helpers
++ *
++ * Helpers that are specific to system emulation.
++ *
++ * Copyright (C) 2017, Emilio G. Cota <cota@braap.org>
++ * Copyright (C) 2019-2025, Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+const void *qemu_plugin_request_time_control(void)
-+{
-+    return NULL;
-+}
++#include "qemu/osdep.h"
++#include "qemu/plugin.h"
++#include "hw/boards.h"
 +
-+void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++#include "plugin.h"
++
++void qemu_plugin_fillin_mode_info(qemu_info_t *info)
 +{
-+    qemu_log_mask(LOG_UNIMP, "user-mode can't control time");
++    MachineState *ms = MACHINE(qdev_get_machine());
++    info->system_emulation = true;
++    info->system.smp_vcpus = ms->smp.cpus;
++    info->system.max_vcpus = ms->smp.max_cpus;
 +}
-diff --git a/plugins/api.c b/plugins/api.c
-index 82241699a5..832bf6ee5e 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -526,44 +526,3 @@ uint64_t qemu_plugin_u64_sum(qemu_plugin_u64 entry)
-     return total;
- }
- 
--/*
-- * Time control
-- */
--static bool has_control;
--#ifdef CONFIG_SOFTMMU
--static Error *migration_blocker;
--#endif
--
--const void *qemu_plugin_request_time_control(void)
--{
--    if (!has_control) {
--        has_control = true;
--#ifdef CONFIG_SOFTMMU
--        error_setg(&migration_blocker,
--                   "TCG plugin time control does not support migration");
--        migrate_add_blocker(&migration_blocker, NULL);
--#endif
--        return &has_control;
--    }
--    return NULL;
--}
--
--#ifdef CONFIG_SOFTMMU
--static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
--{
--    int64_t new_time = data.host_ulong;
--    qemu_clock_advance_virtual_time(new_time);
--}
--#endif
--
--void qemu_plugin_update_ns(const void *handle, int64_t new_time)
--{
--#ifdef CONFIG_SOFTMMU
--    if (handle == &has_control) {
--        /* Need to execute out of cpu_exec, so bql can be locked. */
--        async_run_on_cpu(current_cpu,
--                         advance_virtual_time__async,
--                         RUN_ON_CPU_HOST_ULONG(new_time));
--    }
--#endif
--}
+diff --git a/plugins/user.c b/plugins/user.c
+new file mode 100644
+index 0000000000..250d542502
+--- /dev/null
++++ b/plugins/user.c
+@@ -0,0 +1,19 @@
++/*
++ * QEMU Plugin user-mode helpers
++ *
++ * Helpers that are specific to user-mode.
++ *
++ * Copyright (C) 2017, Emilio G. Cota <cota@braap.org>
++ * Copyright (C) 2019-2025, Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/plugin.h"
++#include "plugin.h"
++
++void qemu_plugin_fillin_mode_info(qemu_info_t *info)
++{
++    info->system_emulation = false;
++}
+diff --git a/plugins/meson.build b/plugins/meson.build
+index d60be2a4d6..f7820806d3 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -57,8 +57,13 @@ if host_os == 'windows'
+     command: dlltool_cmd
+   )
+ endif
++
++user_ss.add(files('user.c'))
++system_ss.add(files('system.c'))
++
++common_ss.add(files('loader.c'))
++
+ specific_ss.add(files(
+-  'loader.c',
+   'core.c',
+   'api.c',
+ ))
 -- 
 2.39.5

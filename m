@@ -1,167 +1,246 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp247559njb;
-        Thu, 27 Feb 2025 06:13:47 -0800 (PST)
-X-Received: by 2002:a05:600c:19cd:b0:439:8340:637 with SMTP id 5b1f17b1804b1-43ab0fa248bmr116813865e9.30.1740665627489;
-        Thu, 27 Feb 2025 06:13:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740665627; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp258695njb;
+        Thu, 27 Feb 2025 06:29:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUYXS9Q30NFOSrAO3HWEQWRIKBUmu6bnrUvsh1Id94FG9SkmbYFV5NaY11M+Zd9wPaGAYPuXP7Blaumsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfZsEhssFwFfm1Tk9eKHgpELnz4i5G8ovl99xOQO+LDULgSkgeM5qnj/KAv2WCbU/7jV6J
+X-Received: by 2002:a05:6102:26c3:b0:4ba:9689:872e with SMTP id ada2fe7eead31-4c01e1d052bmr4086398137.10.1740666560168;
+        Thu, 27 Feb 2025 06:29:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740666560; cv=none;
         d=google.com; s=arc-20240605;
-        b=cJsdYsaFrdkKFTsActfsjNv4EfYTyCIfUzk7A87G/XqTpkXEYpTIu0FOpQcF8a3onP
-         DkOG/jdepa3FdEBl9Vhl0VaH2t3YUW1s3ibfzqse8lvBacdqEXa/SCvyt+mrRT8FR9vx
-         MIHZiHUv4t6CN1bwnozo0kLWHEYz6mSSWiyJLOJsnUl8KfDYBVOj8uGkmDMt3l0IWe9i
-         /8wPIbvBTkUovwdi2O+b56s9I6tjRDZBM5HgBrL8DSRDCrWohQAl5Ga9Dr+QAnogho34
-         zbdoJs5pUWSQZ7hSgZ8+xZfy2qd2VQhlZLCcd8uK+UIF7nJQkBKMuPDpqMw51gXwqvFq
-         uWLg==
+        b=Ij+C6h2WkSWwB/WKq1tAoV113RbIuXc6W40+5hWyEKx1/viYz/N4P5t71NdyBkpY3K
+         tHP2K4el8AD6hh1lM53uvLNYTHT3pwinMnsZHspPs0cbsjsxErXnHvMOcOnNbCVVBwSK
+         YGeT2NE2MepH0N70cPio7Ikk6/IFu0oPDQ9RUdP7ycrlnACk3CTXVKVuVsepdqrxmMTN
+         9x+KXJR8vjyYNPdyvoCCXcHopDANyuIhbxqLi3u2G+RyG9mKLF6UjB2gG9KuZqH9eTHt
+         ABGclhL/1leLk3/Q5QCk1aVzNp1ZyGWGNHerBnffXoHUTWSLDx9YLZ7is5/i0RYmde2D
+         z3Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
-        fh=RiJSNyFv98ecbYckNQx9NKP2dJchb+KjtIrNazRBKjc=;
-        b=ShiysipdAUNhqkuCx/uIy8clqJzFV3WvJ/MHDwfByXINlmdjk7T5EiDJne+KA90w0J
-         /NUrVNVBAiIRF9VnUYXTJ091ixHAZLQ/+t3bWOIKSLmZdybVRA1QgZMCNWw19Ic7Ufdf
-         jNF5/rkQzpyZmcG8eDGfOH6bVIbw8qjp4IPgs869K35ApfDqiTjUPejcB5HTaPlgHJSV
-         q7RMkoIuSWipsIO8jONKZNOUAH2JpHT16yPbE7eSi1nIr7+Va2bMfyXTH/EQvDqpxuGF
-         m7Vjuxb6HTYPc4vZsWLdt9y+54Vrq3zBzsPOPu4xCU19k/N7wvT+WrEG5xN7+lD70d6X
-         OraA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Qe4aJgheLC+WLLda+xlMEOvgcnf2Z7Yw6J5SwaqcyMo=;
+        fh=8jtQQ9rIFhb6WXcGWbSZ+38+ho3yMyxkjbPhkPg23gA=;
+        b=I6N89VyBQPmkI+NTDx6ySTZqkQUnkGw86WX0ek9U44668YDwBdJOVPP6eJ+zLDGp4l
+         f3TKfCYaTvQb7H8ahkGgZ46GJ6wbCA6iybcUJBrF67VC/ohYxrH2xAYt0J8XS88xoi5q
+         ypJr/i3i1FyO9ppGu71GTAqkY6WUfCMlO1huKBQmcVT8ftHWUc6tNMgnL+EuQfQpShG5
+         CIKSFppjtHJ1Hg94xBSbvkBhbPtiUmTj+ssdIbwutvbIZlEbZGXbJyccpssnYvsz8ul4
+         lKN+Me5UnCXAaOgO47tbCt7x+8iW2eqH8NAWnfr4YsZpYkNe5wv7i5XGwspc83Bi8VxB
+         lYeQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NZpIryMv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CGLwn7x8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43b737020fdsor3535815e9.2.2025.02.27.06.13.46
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c0348ba45fsi240525137.504.2025.02.27.06.29.20
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Feb 2025 06:13:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Feb 2025 06:29:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NZpIryMv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CGLwn7x8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tnesC-0007BQ-9n; Thu, 27 Feb 2025 09:28:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnern-0005aM-Kx
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2025 09:28:00 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnerj-0004v6-Rx
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2025 09:27:59 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-439a4fc2d65so10717655e9.3
+ for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 06:27:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740665626; x=1741270426; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
-        b=NZpIryMv+yqsayKxb+SveshqUZdYmWXQyAB1Qbql5bJQC09E6+oMXvYCn59fosXrMB
-         dQh4tNsq13ZPKTWTZZNQmKPD3dCTvChtoAFXiJYCMoT40n9XOriqV47KM/U0xzSBrVgq
-         Sxc3rhjvicmltWUTyAc3YSWZJ2TCrY1sn3mn4S5tTvOxVsJnjzmiBmpl/a9cg16b3B/t
-         K9yBnC3nxDuKXVyvoeXarASAnbjGIOcKgpfYej6SrjqYd17fSKMOONgNVmdlEODSGyCL
-         LZ+3kdXLRcc42p02D77uRouiwcRWKgwmQJowGVL2C/32TD/pwQs3zu3v+zRr/+vF+UF7
-         2J8A==
+ d=linaro.org; s=google; t=1740666470; x=1741271270; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=Qe4aJgheLC+WLLda+xlMEOvgcnf2Z7Yw6J5SwaqcyMo=;
+ b=CGLwn7x8yw+yL6mTLa1jg4a3zaxYhlHdWUFv6MC4K/YJ6evKK8X7edUSPmISQdCgvg
+ vNj2yu/WUTtaye+yitDW7j8Axd90OBL1ZNMGvzgzZapD6vPjdiROQO9+DMPHHWdlA53C
+ MjptXRI/7uzmIkaKs0+mV+UFaBNDupD3v7WvMRntfzWoXdDZnjxLbdP/bGv5DuzvtOGU
+ s76HL5GHvMO1rsIkFAPifv+IcIBW4JL3eXkLrdgGqpctgrprSTsTv/6Bb2Z/0H+pawFl
+ SFOeYgdYrD4zUbwPIZGfrUs6v8ZOiu1RpxRbKk2g6y0AGhbDNhpCDrAnFw6TssjVKg6F
+ xe8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740665626; x=1741270426;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
-        b=HnrDjsJ9EY1BcrFEOsz6F7L0PDcdI7n2tKORtZ+3uKtdooPJNalCVAXhkoq1KomJuV
-         MuRh54YMbu8+cfV/SCCq++Ws4PmqEsIrU3k0U7yH6WWhoVhYbJ/aQTls8vxPTjoz0siB
-         5vNsA2HyykYQkkHzpm/BnNPMHNyNPHwRq5l+xzZku7rBx7x0VRNGM3ZL8+krnqOYF5l6
-         UXopR/ju0QKP5iFlvsETkkn7ew4IcljZ4w9ybGPxCV4KQqZInNwdNgWti51R0QiEWXE/
-         6LnwadWeZEzOQyCb7sVXzdPa3xbc5nWui7guM/GanpxqkwL8T5PrTnuvHBTvNGpTboLS
-         eotw==
-X-Gm-Message-State: AOJu0YwAyxek5zuXcfDu4sQtzOURktX8puS4hXkaA/9A3M0g0MLwVHww
-	E8W1WIjQrummaZIFelYiz7/gr/stjKhIzPNgP6BOt8MTa3DQeenaZxa/tNbaOYEuuSbKYvOqxx0
-	wV9Q=
-X-Gm-Gg: ASbGncvgypRZONIiOIuSitAi+njbxhieohuE8NnhiMv9NhWmI/c69LUxhQLVLV2Mk7W
-	IcaKDlZn0a8Ky6vUN6aIhLOrQ1nsLIk/U/vNo/7c6auzggmSuUO9STvxTCbyp+Kj9Hwy8PLzIRP
-	BsLOlpltar7bOp0pRb36iqgOFMsHt8oi7Ghf0W3g5CP0rv//IGwDg1ZF4anyJP27wX0okxeOXBx
-	QuWioKjtT+dqFUgG6Hlf0gz8puAjXU1+X5Frm/CDOi1coeQbI62WKP+y+Es6A+N6X1kjWz1iNrT
-	INIv0RWGgDnWD4aIRoJO82nSRTgBVxox
-X-Google-Smtp-Source: AGHT+IEC3HLDlTAUEEd5q4LK4EsKjzPSas92qirYxdC5mCLGqvWQZlB7Y4+IazefhaaoW0UDCOaxSw==
-X-Received: by 2002:a5d:4b51:0:b0:38f:2bd2:45d0 with SMTP id ffacd0b85a97d-390cc638d9emr7952897f8f.51.1740665625906;
-        Thu, 27 Feb 2025 06:13:45 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1740666470; x=1741271270;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Qe4aJgheLC+WLLda+xlMEOvgcnf2Z7Yw6J5SwaqcyMo=;
+ b=i8ltbFRu+ig7J1FBnNook/3TVywfXPibIoxQnIIfR5YBJJkGGnbJcKITMLRGvn0OiA
+ FEAVPWzbljeeKojJp9G4heFpvk6KRYJ7K7r9/oYyEyGe7zkkO8VKO/Ruemp1lwucJDPa
+ nBhps+ubxqxDWvPIzp0+WK5NNsk7I5bTyZSxzt6Mq+snmPIYV9qRevP/7O5s4v0KLEpG
+ IR/W8sKMD/gtnb7yeICx5e47RdqW22yJdEMQNyIZrrD3la442hX6wSAdv1ESsNIL4iPB
+ lUaClH3L0v/lv+sYDIy57lzU8FpH6k7gLEGq3Az8QuyhwouNpLnhNoYNrJy1VpeXbcVB
+ roYQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU5RbhDdII4/NHwc/yiBrhA+DNMe2n//zWtDsZvaPul0SEYnPCHY3I1j/mMwJayaPvdZziY8MVB2awW@nongnu.org
+X-Gm-Message-State: AOJu0Ywh57uEnRwgDs44hpWU91K4Qi4j4WlEyXdAkTCvM70Ywm6+XRil
+ f3IbsGA0g1AASNwfudqHc4A6w3myXOESf/IP7S1eCjzVbICr9vCiIn1Met3FYO8=
+X-Gm-Gg: ASbGncv81KPGT7r3Kw5kymaspL1uHCHtrEoKu9G3TAmUqp+I02kxzqLXEuAUxACwjY2
+ 1csQkVsPQbo7jXiLv+GfFP4q6Hdi640oQF3TYsp/PGNMLp8c+Pfeic+8mvLIY6Vg4r0U3VRiaC6
+ N2q7WT2o8v328+QWvZLDbYMSjnAARosTAtad1Aq0MNitgEB8xaqsYp/DX1KWDyTGqinK64EI4jx
+ CVdeg7EQ2MNZbkKTUZiFL3uQF3tOWGvg+uHJTvNBNbxKOcfnt+SMJQnCHldAIQweUtTcYyaDBo3
+ KfyV/TRgHIlzVnovJ1OIXbPZrbxRm3CM
+X-Received: by 2002:a05:600c:5252:b0:439:88bb:d025 with SMTP id
+ 5b1f17b1804b1-43ab0f26e5fmr110547285e9.1.1740666470162; 
+ Thu, 27 Feb 2025 06:27:50 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e47a6a9fsm2219764f8f.36.2025.02.27.06.13.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 06:13:45 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43aba532b8dsm55968335e9.14.2025.02.27.06.27.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Feb 2025 06:27:49 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] tests/tcg: Suppress compiler false-positive warning on sha1.c
-Date: Thu, 27 Feb 2025 14:13:43 +0000
-Message-ID: <20250227141343.1675415-1-peter.maydell@linaro.org>
+Subject: [PATCH 2/3] target/arm: Correct STRD atomicity
+Date: Thu, 27 Feb 2025 14:27:45 +0000
+Message-ID: <20250227142746.1698904-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250227142746.1698904-1-peter.maydell@linaro.org>
+References: <20250227142746.1698904-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8wPn9e7m/xZe
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TI6bIiRUnXaD
 
-GCC versions at least 12 through 15 incorrectly report a warning
-about code in sha1.c:
+Our STRD implementation doesn't correctly implement the requirement:
+ * if the address is 8-aligned the access must be a 64-bit
+   single-copy atomic access, not two 32-bit accesses
 
-tests/tcg/multiarch/sha1.c:161:13: warning: ‘SHA1Transform’ reading 64 bytes from a region of size 0 [-Wstringop-overread]
-  161 |             SHA1Transform(context->state, &data[i]);
-      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Rewrite the handling of STRD to use a single tcg_gen_qemu_st_i64()
+of a value produced by concatenating the two 32 bit source registers.
+This allows us to get the atomicity right.
 
-This is a piece of stock library code for doing SHA1 which we've
-simply copied, rather than writing ourselves. The bug has been
-reported to upstream GCC (about a different library's use of this
-code):
- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
+As with the LDRD change, now that we don't update 'addr' in the
+course of performing the store we need to adjust the offset
+we pass to op_addr_ri_post() and op_addr_rr_post().
 
-For our test case, since this isn't our original code and there isn't
-actually a bug in it, suppress the incorrect warning rather than
-trying to modify the code to work around the compiler issue.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2328
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.target   | 3 ++-
- tests/tcg/arm/Makefile.target       | 3 ++-
- tests/tcg/multiarch/Makefile.target | 8 ++++++++
- 3 files changed, 12 insertions(+), 2 deletions(-)
+ target/arm/tcg/translate.c | 55 ++++++++++++++++++++++++--------------
+ 1 file changed, 35 insertions(+), 20 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 9efe2f81adf..16ddcf4f883 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -83,7 +83,8 @@ test-aes: CFLAGS += -O -march=armv8-a+aes
- test-aes: test-aes-main.c.inc
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index e10a1240c17..2020d18f019 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -5057,10 +5057,38 @@ static bool trans_LDRD_rr(DisasContext *s, arg_ldst_rr *a)
+     return true;
+ }
  
- # Vector SHA1
--sha1-vector: CFLAGS=-O3
-+# Work around compiler false-positive warning, as we do for the 'sha1' test
-+sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
- sha1-vector: sha1.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- run-sha1-vector: sha1-vector run-sha1
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 99a953b6671..6189d7a0e24 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -61,7 +61,8 @@ endif
- ARM_TESTS += commpage
- 
- # Vector SHA1
--sha1-vector: CFLAGS=-O3
-+# Work around compiler false-positive warning, as we do for the 'sha1' test
-+sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
- sha1-vector: sha1.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- run-sha1-vector: sha1-vector run-sha1
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index 688a6be203c..c769a7d69d9 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -45,6 +45,14 @@ vma-pthread: LDFLAGS+=-pthread
- sigreturn-sigmask: CFLAGS+=-pthread
- sigreturn-sigmask: LDFLAGS+=-pthread
- 
-+# GCC versions 12/13/14/15 at least incorrectly complain about
-+# "'SHA1Transform' reading 64 bytes from a region of size 0"; see the gcc bug
-+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
-+# Since this is just a standard piece of library code we've borrowed for a
-+# TCG test case, suppress the warning rather than trying to modify the
-+# code to work around the compiler.
-+sha1: CFLAGS+=-Wno-stringop-overread
++static void do_strd_store(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
++{
++    /*
++     * STRD is required to be an atomic 64-bit access if the
++     * address is 8-aligned, two atomic 32-bit accesses if
++     * it's only 4-aligned, and to give an alignemnt fault
++     * if it's not 4-aligned.
++     * Rt is always the word from the lower address, and Rt2 the
++     * data from the higher address, regardless of endianness.
++     * So (like gen_store_exclusive) we avoid gen_aa32_ld_i64()
++     * so we don't get its SCTLR_B check, and instead do a 64-bit access
++     * using MO_BE if appropriate, using a value constructed
++     * by putting the two halves together in the right order.
++     */
++    int mem_idx = get_mem_index(s);
++    MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
++    TCGv taddr = gen_aa32_addr(s, addr, opc);
++    TCGv_i32 t1 = load_reg(s, rt);
++    TCGv_i32 t2 = load_reg(s, rt2);
++    TCGv_i64 t64 = tcg_temp_new_i64();
 +
- # The vma-pthread seems very sensitive on gitlab and we currently
- # don't know if its exposing a real bug or the test is flaky.
- ifneq ($(GITLAB_CI),)
++    if (s->be_data == MO_BE) {
++        tcg_gen_concat_i32_i64(t64, t2, t1);
++    } else {
++        tcg_gen_concat_i32_i64(t64, t1, t2);
++    }
++    tcg_gen_qemu_st_i64(t64, taddr, mem_idx, opc);
++}
++
+ static bool trans_STRD_rr(DisasContext *s, arg_ldst_rr *a)
+ {
+-    int mem_idx = get_mem_index(s);
+-    TCGv_i32 addr, tmp;
++    TCGv_i32 addr;
+ 
+     if (!ENABLE_ARCH_5TE) {
+         return false;
+@@ -5071,15 +5099,9 @@ static bool trans_STRD_rr(DisasContext *s, arg_ldst_rr *a)
+     }
+     addr = op_addr_rr_pre(s, a);
+ 
+-    tmp = load_reg(s, a->rt);
+-    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
++    do_strd_store(s, addr, a->rt, a->rt + 1);
+ 
+-    tcg_gen_addi_i32(addr, addr, 4);
+-
+-    tmp = load_reg(s, a->rt + 1);
+-    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+-
+-    op_addr_rr_post(s, a, addr, -4);
++    op_addr_rr_post(s, a, addr, 0);
+     return true;
+ }
+ 
+@@ -5207,20 +5229,13 @@ static bool trans_LDRD_ri_t32(DisasContext *s, arg_ldst_ri2 *a)
+ 
+ static bool op_strd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
+ {
+-    int mem_idx = get_mem_index(s);
+-    TCGv_i32 addr, tmp;
++    TCGv_i32 addr;
+ 
+     addr = op_addr_ri_pre(s, a);
+ 
+-    tmp = load_reg(s, a->rt);
+-    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
++    do_strd_store(s, addr, a->rt, rt2);
+ 
+-    tcg_gen_addi_i32(addr, addr, 4);
+-
+-    tmp = load_reg(s, rt2);
+-    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+-
+-    op_addr_ri_post(s, a, addr, -4);
++    op_addr_ri_post(s, a, addr, 0);
+     return true;
+ }
+ 
 -- 
 2.43.0
+

@@ -1,306 +1,333 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp369294njb;
-        Thu, 27 Feb 2025 09:05:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU0FOQBXtnePs8i43DMs4sFVslt7ErB/tfiejaW+T8wCl1hhvRcjK8pNSWYN3lH6/I/EnDe0ZY0hJWhwA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMR9BxyLsTMvB5LFcR+nLnMDfIIr/muQLbULzVcz+GFDFvZZwscvU1YTpVo6IYkIt6Oj77
-X-Received: by 2002:a05:600c:1546:b0:439:6b57:c68 with SMTP id 5b1f17b1804b1-43ab8fe7687mr75126855e9.17.1740675914716;
-        Thu, 27 Feb 2025 09:05:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740675914; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp415785njb;
+        Thu, 27 Feb 2025 10:13:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWXgdi/y2+vY83YsIK7n49A4wt+UoAzaUAH35QYgHql6gthoWUHCDxLP3IVSA1i6zQpPL0upCEUN/pX2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/nsHvbmx7h65dncQlGd/O/rfyssMK6r31QS20vlpxxJ66p2QyaRNtMY7wumRRs7d2VhLp
+X-Received: by 2002:a05:622a:a19:b0:471:fb5f:4393 with SMTP id d75a77b69052e-472228c8d61mr339245311cf.22.1740680003402;
+        Thu, 27 Feb 2025 10:13:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740680003; cv=none;
         d=google.com; s=arc-20240605;
-        b=Anv2a3hUx5k9PP/cQf6ZNjuW/0W5TQk1uBP/UEStJq98Ck9WD94FTpMusNi0H9yX76
-         ERXQcJiDo5KeJ/LuRptWdPtJRhMrH8Oz5aHmIL0pi7VAfjb5UXGjN6I+0wIfqDQwZ5bo
-         OPfRtfJ+MjWt+DMx2tMzCSQVqSbBFi0DFnuuq3H5cSMSkm3dYbSp9d1p7ZWpRTVCAS0a
-         VShpNKegcdd1z1zFOwvzLFfl3KfLC0HUEE6RmHwubQk92Si2J1/S3P5rWEZhVL41kxtS
-         kXOGN3jk2i6lysN2Ye4FSTQGhjr66X/bTPBAxCG8vjBdKgrcDdk+rWfFNIHev/zpC6fH
-         MU2g==
+        b=ISV078hZjwKJ/M+37ini67v+k4skSo4dcrCKNFHFVvO2ZPiYXVM/ClpHRSSPxoeIzj
+         YjJ3o4wQY704KkgM8pOK0UWx5WsQ8TS/LGer4yDB6Xche0aV3bi5m0ectt/v8fEiwdSA
+         OcnMdeXvcZUuwjqRpgQcVJG+HC+wKWB1dA+dllMpd1hu+84BrQdrj9PlZYizEysfO/Ha
+         fPL1piptW22vS3xnEH13cTvNmzbfBBOWeJl0IVn6DktnB46OT7GBqbt3uQfKoylO5BHA
+         fuhb8Jh1owo2S8wKK0lKerpKjd48UsuAdLWslLYYzRJPd0IMjMg99yDvsT63JO15pERB
+         Fkhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=UF02YER6LE6cA8Ff3jhsAUNNOFSeF4BeX3fGvUwDcr8=;
-        fh=kMV9Gf03Gytdui1wNFIYiPtWHZ5s+jsuC1BVPpLEkys=;
-        b=EyIf23GZbH0Ed1gm4IYAzdO52FQDFREd2yUP0u+rm3i3dPNQZSl3EUJuDrR74437qh
-         IUGH3RHCh8moYZ2q45O/lmv3QlVzg+js8zwQ1QHYL3TfyuVdsj2yCu/ZXDTybvH/xw+U
-         M1pF3dHpUjgFvbimFQ9XUHSrkbk4ZWMzAKLOl0mV2du+abndJ7i4CBFBw9idMTE50PNR
-         ZP+EkdNfLBjpdqwdfa3k8seHSe6BEm830bzWISIzpmNmuWYXSqK3zkriVUlZMbzl9UbJ
-         EGHYqUVOhxBKpsCppsVo52mrHa1isyB1WPTZivv33Em7s506eYg5rffPS0uB8fgs/fme
-         EO8A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=2MLgPcoWN1rjM+lw/xMIBwTa10ujDuMKXxMFFUlvkoE=;
+        fh=11AwYAEVMx9yJbh19Alu46J8NF0mU50oAWZIRlp1N0g=;
+        b=ZWkqK/bfO/LUPqmDJ8KP93Va8/ISGjUck5vdUYIqQNytW4So2d1TmAr+NsplBWzLzd
+         W6QHv1wej67lUkkrrZ6EsgftwIbcmqgvCS1v8etecX/tonvB9EaVKNNbjg3SR1OhzB7q
+         NKkEu38zixVIhB8NJeiMiY6bqSZEm+ud1XnW/HVjrbCtQMkv+B1oWYWHtki174xhN7/0
+         mEkr+9Ul5ufu7uoXO2rHjg5Kj1TPN1GNhSDI+WT1jzO6ftDaFOO7x0AlLwYT176Zcttk
+         TSN2AKiKUzQ+OX304w71e1MT83LtfDDtQHd/Byx4ewuESfiTEjwpVL15W/KKGbmXJGXA
+         GLzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IMnlzyQm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=pNfQ9l5a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43aba52b930si28962735e9.72.2025.02.27.09.05.14
+        by mx.google.com with ESMTPS id d75a77b69052e-4747240dda6si16623971cf.452.2025.02.27.10.13.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 09:05:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Feb 2025 10:13:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IMnlzyQm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=pNfQ9l5a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tnhId-0007RF-0m; Thu, 27 Feb 2025 12:03:51 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tniNc-00015b-Ih; Thu, 27 Feb 2025 13:13:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnhGV-0005Ce-AC
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 12:01:44 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1tniNH-00013m-6L
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 13:12:49 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnhGQ-0002LP-Vs
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 12:01:37 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-439a331d981so11384095e9.3
- for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 09:01:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1tniND-0006p9-4M
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 13:12:40 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-38f378498b0so999751f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 10:12:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740675684; x=1741280484; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=UF02YER6LE6cA8Ff3jhsAUNNOFSeF4BeX3fGvUwDcr8=;
- b=IMnlzyQmRu9NFTY2Qpxd0zuu5otFx63Qt4HenisymcW7FIyvbVQUOWr4wic1qWWFxe
- kY6CW9ux/1BQWMQoAhICh/6HgT7cBEtOelUI5WrER+JULyC0AnxhSrODcntPCRsLinJ+
- Sz3P7EiPeIDnudxqQTx7OHH1sYJc3ENu7S2mmBhLMtpHL7reRQ7ZWODKFzcxl28/0vXN
- 8mxEv7CLeMwercJvcs2ulZ6MX/973iZ7/S9dVZmoULkKK+DV6XkY7KeScd0i6jhqCyzC
- o4UWMk0nvU+ZdQbHVctf36aDa+XWBJE9ZWIWKKXNV2iYfkuoAVVfKx9Vt0vDi5X8fM6g
- mNnA==
+ d=google.com; s=20230601; t=1740679955; x=1741284755; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2MLgPcoWN1rjM+lw/xMIBwTa10ujDuMKXxMFFUlvkoE=;
+ b=pNfQ9l5as9G0OmDmC3YRhbAmYbCsmQFtyxWL5DC0KZDhXlxp9FcIJDqRKQG14Ea2D1
+ kaRb8MeknKKhyW61nYjR+hVKyykCQwD+xbYoOILxAM9T5U5NMtrlXc/krH4ZMxM4VRNi
+ NB0I45nGjFoOGTYeWHMnSXAiW99lRo977N1MFxo6LP/TFJJm9538KJLBvzmX/8zIp4pr
+ Mu2l5CGHdN6Kus2XBlKBOqPEbke0jKldOy87JCGGWTdEyKRoDIY93SNMU7Bz9CHBtDaL
+ lXh1crpolpJZo+aYSi8pCgezjyaSROQ58Af4fS+9Kcw4JYY/OwDb2261rndQMlKG2i9x
+ WtfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740675684; x=1741280484;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UF02YER6LE6cA8Ff3jhsAUNNOFSeF4BeX3fGvUwDcr8=;
- b=F94BnXMC6sRDA9PRhYPHee+zTAr7T4YPRCBC2ivwyorN/arMVWbEhsCfnjcBG0p3jP
- ySOGdVPfj+eLXP36GabLqpoOf6J9WUcchy4Q2thUjRnEQB5iC6Sqm8uy8akwJAlPdru0
- 3ov56S9PyqWCKQ3LazFd5bwGo08jAjaKiXwdlw5TAzQBcJC9P6K5PoTRBhwJ3VvFavF4
- ZFvYasqN3CaJIwaO4OhOu2Y2OJn4fRNlKlo6W6+hGpJ0U/mhlvKcmdWL+dHqRTDHKFqO
- xJMa1OMWY1lXego+KUOmFre+99TLMWfmdD//YA+Gky0vjQJzwZdNanuI0bHkiQ36QbNh
- iZUw==
+ d=1e100.net; s=20230601; t=1740679955; x=1741284755;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2MLgPcoWN1rjM+lw/xMIBwTa10ujDuMKXxMFFUlvkoE=;
+ b=w3/BWErmfydBIzWkjmZF8nvTce2DesS4iqoPxf6N/8M1Na9VAJd6OL7uJvMn7y3uQx
+ 9QyFszYMZBmbHmJcAh1rI2eJlQFwiJhkS5FJ+67+Fqbgh7Z9Gx3GD82yseftYBD1nqCp
+ Vqd7qgOY1d1azOqeGboOpsnOtngUmE3FtOSWTStYLDW6HcPcjIdav9uchIY03pgOgOCG
+ a3+ksyBNccJzfCyPQV+fJ8/0QUNS/kaS+zdC4WKPuiqSGdnJPY2SiASdvbPFfbOEpjx0
+ yKpYjHRi4QLLMALPwto6dTfOzAkjZ1Z0tuINF5O4YEe255A4xvN75m/C1FMZhrmFqqQs
+ 6Jpg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXrSnFdmIPDbeZmoRzpYYs/krwiXTwGOs97IdRZZugdqNvvnyGl1Zq4Q46ODhbq8uuqf0PcUmAv+Cff@nongnu.org
-X-Gm-Message-State: AOJu0YzN+zxaGCI6TI1PXsH4S8GcOFKV7EaWyR1ENPeFJ5VA6Sq/tSH3
- DQJ8uuDUHFpfGzhHfYbl4Yz8niYOEyga2FHfm2oCm0HIbpREFycn+t5VNK14ZiKAYEm4uyjfpPn
- o
-X-Gm-Gg: ASbGnctzSWf/UlgPA6P9JAjp/EmCSHRNP6H5EhGThiR7JvB9qwpQPIxLAvGQKqwEF48
- iFUUdLcgBiLgSdM80wTkyUhIDsqWTVLFVKVuI6l7o6PDhcaZdWzyzbCwW73a3Kl9xw4RKC02C6L
- o2+Cs2F7nUgbcf16Rey+O0ao9Q5O4AgM4cx0kUYoApsJW72Bm3SoRQfUQsC/Pln6C1v8ZNrogY9
- cILrZI9fPGMKWV7Z8fhCGNWtlXKzpNu65SvsQUuGv5LGX0Icm82279N0k6zjZYT9kdLlbNpGkT4
- WtWhwoYz0VApUg+kiLGTCjxUu9DOlRHl
-X-Received: by 2002:a05:600c:5103:b0:439:5da7:8e0 with SMTP id
- 5b1f17b1804b1-43ab8fe2fe9mr83751495e9.16.1740675682878; 
- Thu, 27 Feb 2025 09:01:22 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43aba5871f4sm62747565e9.39.2025.02.27.09.01.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Feb 2025 09:01:21 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/5] hw/arm/omap1: Drop ALMDEBUG ifdeffed out code
-Date: Thu, 27 Feb 2025 17:01:14 +0000
-Message-ID: <20250227170117.1726895-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250227170117.1726895-1-peter.maydell@linaro.org>
-References: <20250227170117.1726895-1-peter.maydell@linaro.org>
+ AJvYcCVgm0y5OVJ6rgZKvhPg9PTvXqvihFMBnP9cGZ+NjLtHUSoM3Y2Emqkyw7ymo0tuVN4eGXsVFDyeXw==@nongnu.org
+X-Gm-Message-State: AOJu0YyJMmylDpfkG0TmUlE/aGt+/LbgNVEO7TlHRlgKns+CSY4Scey+
+ 4Bpodvb6+9X32vKjVmFKMlFeKw//ow/oZX88czU2VsoiWk3MWyEEJ2gN4X0xbfDF00gx8WhIyup
+ fMajNQMm5ziUYQsSSKqHN8dOYiv6VXbKTGbgf
+X-Gm-Gg: ASbGncsF0bcsSD8mr4fB9SK3p2nYf/fnVY728ZKd2TJV64mMBmChsjck9rNvXP2J/U6
+ +BmUwyakCIFDdIWwYZHUQUwccYdfA7WBYfBIsJPKQbLLvCQZQoPWgpkg6vR1MiBfDeRwRNjxH4X
+ 6AZOG+xx0ggOgZJ5l0BfzJki+ppEg+WM9Z6FIBEg==
+X-Received: by 2002:a5d:47cd:0:b0:38d:e481:c680 with SMTP id
+ ffacd0b85a97d-390ec9bb569mr160835f8f.18.1740679955448; Thu, 27 Feb 2025
+ 10:12:35 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250227154003.1646017-1-venture@google.com>
+ <CAFEAcA_wR-M3+BhZY0MFjv3OfoyL2gvukduvKZ6ksKwUKmdB6Q@mail.gmail.com>
+ <CAO=noty89OsH=vGmemL7eLcR2wV6n4XG9a2HfT7Uzo8EPRy4PQ@mail.gmail.com>
+ <CAFEAcA-gyMTz-KpmamyXcKX9QOL=yYHDMPRF2Xji_uJbG02WpA@mail.gmail.com>
+ <CAO=notwcXTU9v4c_Hz=Si=QLrM5HNymYEO0ry4Td30GYUZqBwg@mail.gmail.com>
+In-Reply-To: <CAO=notwcXTU9v4c_Hz=Si=QLrM5HNymYEO0ry4Td30GYUZqBwg@mail.gmail.com>
+From: Patrick Venture <venture@google.com>
+Date: Thu, 27 Feb 2025 10:12:21 -0800
+X-Gm-Features: AQ5f1JpSRxJEd2_mP2Yj6ogaXvr7U2RsJigm3QDaHwaF3Ll7AJu6RDsk-6BUC3s
+Message-ID: <CAO=notxXT3m26=GxryTwJSqLQBfxrCCXV9ffdBGdYokxxnHz=A@mail.gmail.com>
+Subject: Re: [PATCH] hw/net: npcm7xx_emc: fix alignment to eth_hdr
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: kfting@nuvoton.com, wuhaotsh@google.com, jasowang@redhat.com, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000069fe6f062f23a29e"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=venture@google.com; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R+j4Nj/e0RYd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Wfi799gF1Cb+
 
-In omap1.c, there are some debug printfs in the omap_rtc_write()
-function that are guardad by ifdef ALMDEBUG. ALMDEBUG is never
-set, so this is all dead code.
+--00000000000069fe6f062f23a29e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-It's not worth the effort of converting all of these to tracepoints;
-a modern tracepoint approach would probably have a single tracepoint
-covering all the register writes anyway. Just delete the printf()s.
+On Thu, Feb 27, 2025 at 8:08=E2=80=AFAM Patrick Venture <venture@google.com=
+> wrote:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/omap1.c | 51 --------------------------------------------------
- 1 file changed, 51 deletions(-)
+>
+>
+> On Thu, Feb 27, 2025 at 8:01=E2=80=AFAM Peter Maydell <peter.maydell@lina=
+ro.org>
+> wrote:
+>
+>> On Thu, 27 Feb 2025 at 15:55, Patrick Venture <venture@google.com> wrote=
+:
+>> >
+>> >
+>> >
+>> > On Thu, Feb 27, 2025 at 7:52=E2=80=AFAM Peter Maydell <peter.maydell@l=
+inaro.org>
+>> wrote:
+>> >>
+>> >> On Thu, 27 Feb 2025 at 15:40, Patrick Venture <venture@google.com>
+>> wrote:
+>> >> >
+>> >> > 'const struct eth_header', which requires 2 byte alignment
+>> >> >
+>> >> > Signed-off-by: Patrick Venture <venture@google.com>
+>> >> > ---
+>> >> >  hw/net/npcm7xx_emc.c | 7 ++++++-
+>> >> >  1 file changed, 6 insertions(+), 1 deletion(-)
+>> >> >
+>> >> > diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+>> >> > index e06f652629..11ed4a9e6a 100644
+>> >> > --- a/hw/net/npcm7xx_emc.c
+>> >> > +++ b/hw/net/npcm7xx_emc.c
+>> >> > @@ -424,7 +424,12 @@ static bool emc_can_receive(NetClientState *nc=
+)
+>> >> >  static bool emc_receive_filter1(NPCM7xxEMCState *emc, const uint8_=
+t
+>> *buf,
+>> >> >                                  size_t len, const char
+>> **fail_reason)
+>> >> >  {
+>> >> > -    eth_pkt_types_e pkt_type =3D
+>> get_eth_packet_type(PKT_GET_ETH_HDR(buf));
+>> >> > +    struct eth_header eth_hdr =3D {};
+>> >> > +    eth_pkt_types_e pkt_type;
+>> >> > +
+>> >> > +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
+>> >> > +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
+>> >> > +    pkt_type =3D get_eth_packet_type(&eth_hdr);
+>> >>
+>> >> Maybe better to mark struct eth_header as QEMU_PACKED?
+>> >> Compare commit f8b94b4c5201 ("net: mark struct ip_header as
+>> >> QEMU_PACKED"). The handling of these header structs in eth.h
+>> >> is in general pretty suspect IMHO. We do the same
+>> >> "get_eth_packet_type(PKT_GET_ETH_HDR(buf))" in other devices,
+>> >> so this isn't just this device's bug.
+>>
+>> > Roger that. We saw this in the two NICs we happened to be testing that
+>> day, and yeah, I grepped and just figured that those other NICs were doi=
+ng
+>> something with their buffer allocations that we didn't. I'll give
+>> QEMU_PACKED  whirl.
+>>
+>> You might find you need to make some fixes to other
+>> devices to get the QEMU_PACKED change to compile (do an
+>> all-targets build to test that). For instance for the
+>> ip_header change I had to first fix virtio-net.c in commit
+>> 5814c0846793715. The kind of thing that will need fixing is
+>> if there are places where code takes the address of the
+>> h_proto field and puts it into a uint16_t* : the compiler
+>> will complain about that. A quick grep suggests that the
+>> rocker_of_dpa.c code might be doing something like this, but
+>> hopefully that's it.
+>>
+>
+Ok, so digging, and I see that vlanhdr is used similarly in the
+rocker_of_dpa.c code, so, without trying to bit off the yak shave of fixing
+all ethernet headers, but in reality ethernet packets are packed
+structures, should we just make them all packed and bite that bullet?
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 3c0ce5e0979..8f5bb81c96a 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -2660,25 +2660,16 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
- 
-     switch (offset) {
-     case 0x00:	/* SECONDS_REG */
--#ifdef ALMDEBUG
--        printf("RTC SEC_REG <-- %02x\n", value);
--#endif
-         s->ti -= s->current_tm.tm_sec;
-         s->ti += from_bcd(value);
-         return;
- 
-     case 0x04:	/* MINUTES_REG */
--#ifdef ALMDEBUG
--        printf("RTC MIN_REG <-- %02x\n", value);
--#endif
-         s->ti -= s->current_tm.tm_min * 60;
-         s->ti += from_bcd(value) * 60;
-         return;
- 
-     case 0x08:	/* HOURS_REG */
--#ifdef ALMDEBUG
--        printf("RTC HRS_REG <-- %02x\n", value);
--#endif
-         s->ti -= s->current_tm.tm_hour * 3600;
-         if (s->pm_am) {
-             s->ti += (from_bcd(value & 0x3f) & 12) * 3600;
-@@ -2688,17 +2679,11 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
-         return;
- 
-     case 0x0c:	/* DAYS_REG */
--#ifdef ALMDEBUG
--        printf("RTC DAY_REG <-- %02x\n", value);
--#endif
-         s->ti -= s->current_tm.tm_mday * 86400;
-         s->ti += from_bcd(value) * 86400;
-         return;
- 
-     case 0x10:	/* MONTHS_REG */
--#ifdef ALMDEBUG
--        printf("RTC MTH_REG <-- %02x\n", value);
--#endif
-         memcpy(&new_tm, &s->current_tm, sizeof(new_tm));
-         new_tm.tm_mon = from_bcd(value);
-         ti[0] = mktimegm(&s->current_tm);
-@@ -2715,9 +2700,6 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
-         return;
- 
-     case 0x14:	/* YEARS_REG */
--#ifdef ALMDEBUG
--        printf("RTC YRS_REG <-- %02x\n", value);
--#endif
-         memcpy(&new_tm, &s->current_tm, sizeof(new_tm));
-         new_tm.tm_year += from_bcd(value) - (new_tm.tm_year % 100);
-         ti[0] = mktimegm(&s->current_tm);
-@@ -2737,25 +2719,16 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
-         return;	/* Ignored */
- 
-     case 0x20:	/* ALARM_SECONDS_REG */
--#ifdef ALMDEBUG
--        printf("ALM SEC_REG <-- %02x\n", value);
--#endif
-         s->alarm_tm.tm_sec = from_bcd(value);
-         omap_rtc_alarm_update(s);
-         return;
- 
-     case 0x24:	/* ALARM_MINUTES_REG */
--#ifdef ALMDEBUG
--        printf("ALM MIN_REG <-- %02x\n", value);
--#endif
-         s->alarm_tm.tm_min = from_bcd(value);
-         omap_rtc_alarm_update(s);
-         return;
- 
-     case 0x28:	/* ALARM_HOURS_REG */
--#ifdef ALMDEBUG
--        printf("ALM HRS_REG <-- %02x\n", value);
--#endif
-         if (s->pm_am)
-             s->alarm_tm.tm_hour =
-                     ((from_bcd(value & 0x3f)) % 12) +
-@@ -2766,33 +2739,21 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
-         return;
- 
-     case 0x2c:	/* ALARM_DAYS_REG */
--#ifdef ALMDEBUG
--        printf("ALM DAY_REG <-- %02x\n", value);
--#endif
-         s->alarm_tm.tm_mday = from_bcd(value);
-         omap_rtc_alarm_update(s);
-         return;
- 
-     case 0x30:	/* ALARM_MONTHS_REG */
--#ifdef ALMDEBUG
--        printf("ALM MON_REG <-- %02x\n", value);
--#endif
-         s->alarm_tm.tm_mon = from_bcd(value);
-         omap_rtc_alarm_update(s);
-         return;
- 
-     case 0x34:	/* ALARM_YEARS_REG */
--#ifdef ALMDEBUG
--        printf("ALM YRS_REG <-- %02x\n", value);
--#endif
-         s->alarm_tm.tm_year = from_bcd(value);
-         omap_rtc_alarm_update(s);
-         return;
- 
-     case 0x40:	/* RTC_CTRL_REG */
--#ifdef ALMDEBUG
--        printf("RTC CONTROL <-- %02x\n", value);
--#endif
-         s->pm_am = (value >> 3) & 1;
-         s->auto_comp = (value >> 2) & 1;
-         s->round = (value >> 1) & 1;
-@@ -2802,32 +2763,20 @@ static void omap_rtc_write(void *opaque, hwaddr addr,
-         return;
- 
-     case 0x44:	/* RTC_STATUS_REG */
--#ifdef ALMDEBUG
--        printf("RTC STATUSL <-- %02x\n", value);
--#endif
-         s->status &= ~((value & 0xc0) ^ 0x80);
-         omap_rtc_interrupts_update(s);
-         return;
- 
-     case 0x48:	/* RTC_INTERRUPTS_REG */
--#ifdef ALMDEBUG
--        printf("RTC INTRS <-- %02x\n", value);
--#endif
-         s->interrupts = value;
-         return;
- 
-     case 0x4c:	/* RTC_COMP_LSB_REG */
--#ifdef ALMDEBUG
--        printf("RTC COMPLSB <-- %02x\n", value);
--#endif
-         s->comp_reg &= 0xff00;
-         s->comp_reg |= 0x00ff & value;
-         return;
- 
-     case 0x50:	/* RTC_COMP_MSB_REG */
--#ifdef ALMDEBUG
--        printf("RTC COMPMSB <-- %02x\n", value);
--#endif
-         s->comp_reg &= 0x00ff;
-         s->comp_reg |= 0xff00 & (value << 8);
-         return;
--- 
-2.43.0
 
+>
+> Thanks for the head's up.
+>
+>>
+>> thanks
+>> -- PMM
+>>
+>
+
+--00000000000069fe6f062f23a29e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 27,=
+ 2025 at 8:08=E2=80=AFAM Patrick Venture &lt;<a href=3D"mailto:venture@goog=
+le.com">venture@google.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb=
+ 27, 2025 at 8:01=E2=80=AFAM Peter Maydell &lt;<a href=3D"mailto:peter.mayd=
+ell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex=
+;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 27 Feb 20=
+25 at 15:55, Patrick Venture &lt;<a href=3D"mailto:venture@google.com" targ=
+et=3D"_blank">venture@google.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; On Thu, Feb 27, 2025 at 7:52=E2=80=AFAM Peter Maydell &lt;<a href=3D"m=
+ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
+/a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; On Thu, 27 Feb 2025 at 15:40, Patrick Venture &lt;<a href=3D"mailt=
+o:venture@google.com" target=3D"_blank">venture@google.com</a>&gt; wrote:<b=
+r>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; &#39;const struct eth_header&#39;, which requires 2 byte alig=
+nment<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@=
+google.com" target=3D"_blank">venture@google.com</a>&gt;<br>
+&gt;&gt; &gt; ---<br>
+&gt;&gt; &gt;=C2=A0 hw/net/npcm7xx_emc.c | 7 ++++++-<br>
+&gt;&gt; &gt;=C2=A0 1 file changed, 6 insertions(+), 1 deletion(-)<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c<br>
+&gt;&gt; &gt; index e06f652629..11ed4a9e6a 100644<br>
+&gt;&gt; &gt; --- a/hw/net/npcm7xx_emc.c<br>
+&gt;&gt; &gt; +++ b/hw/net/npcm7xx_emc.c<br>
+&gt;&gt; &gt; @@ -424,7 +424,12 @@ static bool emc_can_receive(NetClientSta=
+te *nc)<br>
+&gt;&gt; &gt;=C2=A0 static bool emc_receive_filter1(NPCM7xxEMCState *emc, c=
+onst uint8_t *buf,<br>
+&gt;&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 size_t len, const =
+char **fail_reason)<br>
+&gt;&gt; &gt;=C2=A0 {<br>
+&gt;&gt; &gt; -=C2=A0 =C2=A0 eth_pkt_types_e pkt_type =3D get_eth_packet_ty=
+pe(PKT_GET_ETH_HDR(buf));<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 struct eth_header eth_hdr =3D {};<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 eth_pkt_types_e pkt_type;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 memcpy(&amp;eth_hdr, PKT_GET_ETH_HDR(buf),<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(sizeof(eth_hdr) &g=
+t; len) ? len : sizeof(eth_hdr));<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 pkt_type =3D get_eth_packet_type(&amp;eth_hdr)=
+;<br>
+&gt;&gt;<br>
+&gt;&gt; Maybe better to mark struct eth_header as QEMU_PACKED?<br>
+&gt;&gt; Compare commit f8b94b4c5201 (&quot;net: mark struct ip_header as<b=
+r>
+&gt;&gt; QEMU_PACKED&quot;). The handling of these header structs in eth.h<=
+br>
+&gt;&gt; is in general pretty suspect IMHO. We do the same<br>
+&gt;&gt; &quot;get_eth_packet_type(PKT_GET_ETH_HDR(buf))&quot; in other dev=
+ices,<br>
+&gt;&gt; so this isn&#39;t just this device&#39;s bug.<br>
+<br>
+&gt; Roger that. We saw this in the two NICs we happened to be testing that=
+ day, and yeah, I grepped and just figured that those other NICs were doing=
+ something with their buffer allocations that we didn&#39;t. I&#39;ll give =
+QEMU_PACKED=C2=A0 whirl.<br>
+<br>
+You might find you need to make some fixes to other<br>
+devices to get the QEMU_PACKED change to compile (do an<br>
+all-targets build to test that). For instance for the<br>
+ip_header change I had to first fix virtio-net.c in commit<br>
+5814c0846793715. The kind of thing that will need fixing is<br>
+if there are places where code takes the address of the<br>
+h_proto field and puts it into a uint16_t* : the compiler<br>
+will complain about that. A quick grep suggests that the<br>
+rocker_of_dpa.c code might be doing something like this, but<br>
+hopefully that&#39;s it.<br></blockquote></div></div></blockquote><div><br>=
+</div><div>Ok, so digging, and I see that vlanhdr is used similarly in the =
+rocker_of_dpa.c code, so, without trying to bit off the yak shave of fixing=
+ all ethernet headers, but in reality ethernet packets are packed structure=
+s, should we just make them all packed and bite that bullet?</div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x"></blockquote><div><br></div><div>Thanks for the head&#39;s up.=C2=A0</di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+</blockquote></div></div>
+
+--00000000000069fe6f062f23a29e--

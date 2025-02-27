@@ -1,195 +1,136 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp311299njb;
-        Thu, 27 Feb 2025 07:43:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXRIykVb2c29aYyCo4WbFJmjYh54CLYOCcOFjbSB3yXUV2R8QazwLoBIGeYvVwz4eEbSFlQwitljWhNPQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEN1cS0NOdTeUY5VV7L9ndO467jYmXbA5DPBpFg3pJjQizS/iRCaoR99k0BH3geqV64VY4k
-X-Received: by 2002:a05:622a:252:b0:472:d35:6004 with SMTP id d75a77b69052e-472249072afmr429257451cf.50.1740670996414;
-        Thu, 27 Feb 2025 07:43:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740670996; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp316375njb;
+        Thu, 27 Feb 2025 07:51:36 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCU8r6oG+h/8J00Sz4mz4F2/WcgpGZJOgTQ/KgabsqEIcA5tPbuvZb9DrAAlJ8MzRoLGtkZTvCl9hZR5VA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHeR4LSj9868RMWH+wgC8DVMN82ARV0NOoF/gf82sQbtwzhu1AIhT/IG+YR97h3eA+gKMDQ
+X-Received: by 2002:a05:6a00:228c:b0:730:8ad5:90c1 with SMTP id d2e1a72fcca58-73479101286mr19537696b3a.14.1740671496606;
+        Thu, 27 Feb 2025 07:51:36 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740671496; cv=pass;
         d=google.com; s=arc-20240605;
-        b=YNAzrKYf9IJZMJgifvAzQLWf3CE+V1PeemSiCcOAIKuMXWmCeHthKmfpGpmOaA5YKU
-         URXKNkmEg2DDqQTx8EB/s4H2gSQi+B0AuqrnJOyrD/J7S57pz+8HO4DunukN1NGYNWoZ
-         Rlos3jEQK3e71i8gYVzapkzv1WM4XRuPrjhgYVd8iFXp+9OJ9JkHJhEcXrYqi3H4sqFM
-         MH7ZN38IXTu+z47Nq9ztK/fuisp99KBUmz7EVNW7CNbjfH8fAWPjce0wbF8R0CNVToht
-         fCfypjZdlorHe0VOis9dvP1ucGXA+4xQLi3Lnc+OF+fbQUtUhEQZbWlrejAG62/FZXJC
-         wAaA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=CBpQXoGnkk/N4rkAFSURDip0LkKazKlgtMnD0NIaRRM=;
-        fh=0WByoNTUekgjXEqnioPgbgSYpR7l7UI5ZFLBdEoURik=;
-        b=VCjAmGkFjcfponPJw3fdak0RtKvBuPfOOnEAsJeNARF9d/yMpVcDEx81tMiJnFMumZ
-         0oOqeLdnSWewFvV+4fSKkiJ+pqXXcP0a0hXDHnJGRAGjgVggaUxF7xN7oq8vBM9jsH9Z
-         jaH3WK1m2uLtG4fO9uIkcck+uQJhvX4wCg0TvPy8RhqJ7DmCTR6IVE3C0wO7ze/DfWp9
-         oSqz8cGaxIt9zaMfFKfE1eWFyamSBgRPr1V0B3maTIBxbrxI3CfalatbzLvslmfAH/qw
-         opIVoyx3WFUQutzM/jTpsKEvVIDZ9iqG4exPzwAqxXHDx4IXJqd0nrvZ+5RkTFf/fSlw
-         PKkQ==;
+        b=CLLl54jWp2FmnY0cqZ1Vg3y9cMGGbVE8kldf28jWTu08aOLb5RRJnE8kVvBlwnrCPi
+         3+OM8+FOUTiGhdxSbvBY1/bAU+4Zi+YwZ9fNFAIt1HgUi+MAoxUvP2N9OXv+4dLU49BN
+         Eys9Xyw6ZnI4t71CsWEByhJ0QlSI0KiGpriRMg5md54lx3w1E5CXMKh48viXmtHBuLnC
+         /dLuqp7Svzyy3e9tJq3JEsENT91yP+gDfFZrrS/OO/D9SsigLAwbwIFsKiZH6QUqWKRZ
+         TI2KiVcW0ovqn4LCAVRpFfEqjPfMFiC33p309uFBiQMf0HBQn5rmfuoyU5GlphYqYXoX
+         9ceg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=GBOZo1OYXLFTgw9scfIGbEjzc35W1vPTsa38B4QCRtI=;
+        fh=M1mtX7cZi0t85VQR/mcECo+lXmLxQopat7cygInhRIE=;
+        b=UH0i0AmnRq/+qJbvfZ0lNPk8ARjPtThFCrkG9jKVyuQ+N0EdhfIBJwp+/s3jmwCU7n
+         RQgG1VurJVoCNLYLkQlDUZojezanNsSZS7RRh0c7oaGg7gXCaWH3ecRMeSGIxYN03e/Q
+         0hc00E6odbsxJmpa307V49XU+YfvOIBEKXGUH0ZArTNDxpkpnarOU4SG89uG4KeIzSrK
+         zdU45uZsMiqilGYJZkEtMz0GHYiubIfaD+/p625OZa5e7ZPSr4bdENoWFGd0jZuxAXXP
+         xc9BFn5vzy+YefkE7taC5VhncRq9Cdgu1snP5Yvun757ED2BEu1vm3kJ/aG5Ge+Ng1je
+         UG0Q==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=anVV6k0d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47472436429si14229331cf.486.2025.02.27.07.43.16
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=vI9s8NCS;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-734a0060141si2526085b3a.275.2025.02.27.07.51.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 07:43:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 07:51:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=anVV6k0d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tng2R-0006ej-2z; Thu, 27 Feb 2025 10:43:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3_4fAZwcKClYJ2BHIF24CC492.0CAE2AI-12J29BCB4BI.CF4@flex--venture.bounces.google.com>)
- id 1tng2P-0006eB-OU
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:43:01 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3_4fAZwcKClYJ2BHIF24CC492.0CAE2AI-12J29BCB4BI.CF4@flex--venture.bounces.google.com>)
- id 1tng2N-0003oA-St
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:43:01 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2feb5cd04a0so504699a91.2
- for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 07:42:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1740670976; x=1741275776; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=CBpQXoGnkk/N4rkAFSURDip0LkKazKlgtMnD0NIaRRM=;
- b=anVV6k0dVL96Whn+5C9CPUe7SWDA/7nR03cVCTqRGzI4u+am9VMrAgDDCKt/L9ryV3
- vqmpj5V9LmuDizTuWXyjo6ts31ARTS6PWMOIEf5XHT7X1/R5LX05G/PM4fmiakTSOQe8
- l8PqOM5sKV62cZJ3BE0adgEuTNCL1P1VkD5qe9/8lm16UPcstQN0GCRs2AQzWb4kMBNa
- ZClPzR04XYAFso7bkrj0AViSQkNOQ/5BBOo/uCD6AG/LlCBF8WJzWzvDj4IdUGwLlVdM
- I/z1txF+r722T7kBlgFe1XUnWKyn1JUfRLxGGh447ikSfPJfYBGOozN0llLxi0+dWMcY
- zs0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740670976; x=1741275776;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=CBpQXoGnkk/N4rkAFSURDip0LkKazKlgtMnD0NIaRRM=;
- b=xQCkXUJrUj2L7vhI2qDdqtNpLxuc+mlMHdaeVlm2Y0s1UIykBbDb+84cyD2SKTNA/p
- veN+JW+4nqBDHDUQEznud0B2AqtA1C8XF+NWgpZfKMohdVG9IaHPmHSwWtILCdyk//yw
- FJFgiPJo8MhYTG2dPSXKI/UoOlW1IyhtGDBEICA47E8YglzhMyGcUJpoD2GVNOZC+vtl
- GzXvWkJfh+uqdDsy0FhWfkYOhkuh7HoKDoYFSocQBRaw5cDwGcQ/ZhnGrtg4R7FZ395b
- 1zG5QrzeSywrXA6gbt4T9AbEZbrB11dGBtiJGfzY6gSNrk5QA+5tEzdr/uW7lllqT6NE
- r7ow==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGGxz8nCBSxdp2w3l64hqbKBvLVaFpjfkflWmLY8lh7/D58NDfh5x97wWs67puKDGJxztgKVwFE7jM@nongnu.org
-X-Gm-Message-State: AOJu0YzTcRT8R+oNd9ERBw/vDa5S6T1xRVu5y1/N99K92atCIR9ghb5a
- lWVLO31aUMIaNHNobrDJ26qJGD9GQx/JLr+9Im73ONU+VqEme6+nkYUK8buTQ15OFThJ7MUveLj
- lZtfscA==
-X-Received: from pjh15.prod.google.com ([2002:a17:90b:3f8f:b0:2fa:e9b:33b7])
- (user=venture job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:254e:b0:2f9:c144:9d13
- with SMTP id 98e67ed59e1d1-2fe7e36c6d7mr12739472a91.24.1740670975832; Thu, 27
- Feb 2025 07:42:55 -0800 (PST)
-Date: Thu, 27 Feb 2025 15:42:53 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.48.1.658.g4767266eb4-goog
-Message-ID: <20250227154253.1653236-1-venture@google.com>
-Subject: [PATCH] hw/net: ftgmac100: copy eth_hdr for alignment
-From: Patrick Venture <venture@google.com>
-To: peter.maydell@linaro.org, clg@kaod.org, steven_lee@aspeedtech.com, 
- leetroy@gmail.com, jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au, 
- joel@jms.id.au
-Cc: jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3_4fAZwcKClYJ2BHIF24CC492.0CAE2AI-12J29BCB4BI.CF4@flex--venture.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0QgILm5n2Ugo
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=vI9s8NCS;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536732-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 1FD523AC4EA
+	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 15:51:26 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 305F718E743;
+	Thu, 27 Feb 2025 15:51:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="vI9s8NCS"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5CDB27002F
+	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 15:51:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740671490; cv=none; b=gPvGCZf+r2rsocMRcCTCIY5zi1Ft+HiXj+SCiEfJq5px5yE8EEafavIKAPlLZ1TMLdfWd7GhMcVnhqthSP/Ii28ExWBnDSG7T0SXjLsXIFESsZ/Rc+BW47jT2gk87lEkSY/Q2rDOzpwEXoA2CQXx4nHTmDJeMTaTcghNpMHfIhg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740671490; c=relaxed/simple;
+	bh=PHJN1RpbO9GMEWPKvKo8ZGNRDOt2AAgARtGo6eeodlE=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=uTyhkIQf4hkiaU5myHg4dt/bQ+w58NkK6gSlRDMiZcmAgPG8OLpQKdwhRWQDvyMFBgaW15Ibn+AdsO/Y9zfEMUGl0Ix5tPI6exQt9Qhr736tDjGstXGiX2o4sSOpOdkbUVxCe/RKkBnqgr43IzXD67qk4JEZYgi6VEFs+GFOMQE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=vI9s8NCS; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE05FC4CEDD;
+	Thu, 27 Feb 2025 15:51:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740671489;
+	bh=PHJN1RpbO9GMEWPKvKo8ZGNRDOt2AAgARtGo6eeodlE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=vI9s8NCSEzDAoFvgPzU1qh5MCL9IOBnnspb+eNUrxnLkhf8JsddPi7oSkjFfPjdI1
+	 36YsEp8HvfILAwdOPXaN6DLjMezy2xilcZCbXtAeR2VTO2bGL4Vlo5oPsrGw+kjDfH
+	 2a02Gg/aPOJixzHrYEWwHxo1pG9SL9NFuHTfqLNrf3qeQ4Cw+MRZAO26/K3CBstNGb
+	 M/Dp6nvD8ugZZS4rF4ZjvIWh7qXSrtMjTIqGI8mSBdlLm4HqHtcxLJQnT3JGPrzb1U
+	 wS1A9QkcES7PtlX2rGtFKxjWtkDryIF9jLsXaW+NLE9Ee0QB9ZuqdHi05X1ndpA9I6
+	 I3VH7J7Ec9jwA==
+Date: Thu, 27 Feb 2025 16:51:24 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 17/21] tests/acpi: virt: update HEST table to accept
+ two sources
+Message-ID: <20250227165124.221ef1b2@foz.lan>
+In-Reply-To: <20250227141603.3957e78b@imammedo.users.ipa.redhat.com>
+References: <cover.1740653898.git.mchehab+huawei@kernel.org>
+	<9d57e2a6ec3f523eb7691347403f05ad40782b94.1740653898.git.mchehab+huawei@kernel.org>
+	<20250227141038.28501d73@imammedo.users.ipa.redhat.com>
+	<20250227141603.3957e78b@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: f74jQiB6MOND
 
-eth_hdr requires 2 byte alignment
+Em Thu, 27 Feb 2025 14:16:03 +0100
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Signed-off-by: Patrick Venture <venture@google.com>
----
- hw/net/ftgmac100.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+> On Thu, 27 Feb 2025 14:10:38 +0100
+> Igor Mammedov <imammedo@redhat.com> wrote:
+> 
+> > On Thu, 27 Feb 2025 12:03:47 +0100
+> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > 
+> > squash this patch into the next one
+> > 
+> > Also at this point there is no visible HEST changes yet, so a soon as you remove
+> > white-list without enabling new HEST, the tests should start failing.
+> > 
+> > I suggest to move 20/21 before this patch,
+> > as result one would see dsdt and hest diffs when running tests
+> > and then you can use rebuild-expected-aml.sh to generate updated
+> > tables and update them in one patch (that's what we typically do,
+> > we don't split updates in increments).  
+> 
+> on top of that,
+> it seems the patch doesn't apply for some reason.
 
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 1f524d7a01..a33aaa01ee 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -989,12 +989,16 @@ static void ftgmac100_high_write(void *opaque, hwaddr addr,
- static int ftgmac100_filter(FTGMAC100State *s, const uint8_t *buf, size_t len)
- {
-     unsigned mcast_idx;
-+    struct eth_header eth_hdr = {};
- 
-     if (s->maccr & FTGMAC100_MACCR_RX_ALL) {
-         return 1;
-     }
- 
--    switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf))) {
-+    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
-+           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
-+
-+    switch (get_eth_packet_type(&eth_hdr)) {
-     case ETH_PKT_BCAST:
-         if (!(s->maccr & FTGMAC100_MACCR_RX_BROADPKT)) {
-             return 0;
-@@ -1028,6 +1032,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
- {
-     FTGMAC100State *s = FTGMAC100(qemu_get_nic_opaque(nc));
-     FTGMAC100Desc bd;
-+    struct eth_header eth_hdr = {};
-     uint32_t flags = 0;
-     uint64_t addr;
-     uint32_t crc;
-@@ -1036,7 +1041,11 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
-     uint32_t buf_len;
-     size_t size = len;
-     uint32_t first = FTGMAC100_RXDES0_FRS;
--    uint16_t proto = be16_to_cpu(PKT_GET_ETH_HDR(buf)->h_proto);
-+    uint16_t proto;
-+
-+    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
-+           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
-+    proto = be16_to_cpu(eth_hdr.h_proto);
-     int max_frame_size = ftgmac100_max_frame_size(s, proto);
- 
-     if ((s->maccr & (FTGMAC100_MACCR_RXDMA_EN | FTGMAC100_MACCR_RXMAC_EN))
-@@ -1061,7 +1070,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
-         flags |= FTGMAC100_RXDES0_FTL;
-     }
- 
--    switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf))) {
-+    switch (get_eth_packet_type(&eth_hdr)) {
-     case ETH_PKT_BCAST:
-         flags |= FTGMAC100_RXDES0_BROADCAST;
-         break;
--- 
-2.48.1.658.g4767266eb4-goog
+Hmm... perhaps the diffstat that I place here (produced by bios-tables-test
+output) is causing some confusion when you're trying to apply the patch.
 
+Any suggestions to avoid that?
+
+
+Thanks,
+Mauro

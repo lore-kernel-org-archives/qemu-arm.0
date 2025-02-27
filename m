@@ -1,213 +1,167 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp95596njb;
-        Thu, 27 Feb 2025 01:15:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXSAYueuVNIyAyic4vmXzEZmqbgJC96zZBCfJ3IkNbPosnYW/upsOvYdGFx6cn+vAs3yQ036hFZlRfgZA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTfkD4xmMIEkpDQKx+EnnxjVSrlad9GuRrXAXROPDPctqF+jDf7dGUUvmfBHtdRManm+79
-X-Received: by 2002:a05:620a:2416:b0:7c0:b3cd:9bc5 with SMTP id af79cd13be357-7c0cf8ea715mr3429919485a.32.1740647741620;
-        Thu, 27 Feb 2025 01:15:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740647741; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp247559njb;
+        Thu, 27 Feb 2025 06:13:47 -0800 (PST)
+X-Received: by 2002:a05:600c:19cd:b0:439:8340:637 with SMTP id 5b1f17b1804b1-43ab0fa248bmr116813865e9.30.1740665627489;
+        Thu, 27 Feb 2025 06:13:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740665627; cv=none;
         d=google.com; s=arc-20240605;
-        b=YmrkoujKXyLJlfnBFlxurciOA4ns7w22q8gGssLo3iJdLBddms0IMxVEZVcIJ1O+KC
-         pTFnkEJUtrtoYiwIr+r0Tb5PURvMuZd1nxE1sfBN/TxZV+S8XAIKIr3gUO7Su62ufBz6
-         WKSQ14wvcVtyiqpmev9Qf337NODlHYfQIN8S26Pc4wrXeS9+yCcoFTB2vShs7afsJL7Q
-         Sz0Ggn7fzrGoKFAPwjPlNE3NsyDX1W79yRENEqnBygHYMXU43vAPweH20g1G7h2Dhxv3
-         7V43HxYlcf1fGlrry4gyP14eGowOOORzS6VRTIfM9hFXeWBlcf+BIsMVXcx+pJjqVISj
-         RSgA==
+        b=cJsdYsaFrdkKFTsActfsjNv4EfYTyCIfUzk7A87G/XqTpkXEYpTIu0FOpQcF8a3onP
+         DkOG/jdepa3FdEBl9Vhl0VaH2t3YUW1s3ibfzqse8lvBacdqEXa/SCvyt+mrRT8FR9vx
+         MIHZiHUv4t6CN1bwnozo0kLWHEYz6mSSWiyJLOJsnUl8KfDYBVOj8uGkmDMt3l0IWe9i
+         /8wPIbvBTkUovwdi2O+b56s9I6tjRDZBM5HgBrL8DSRDCrWohQAl5Ga9Dr+QAnogho34
+         zbdoJs5pUWSQZ7hSgZ8+xZfy2qd2VQhlZLCcd8uK+UIF7nJQkBKMuPDpqMw51gXwqvFq
+         uWLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :mime-version:date:message-id:dkim-signature:dkim-signature;
-        bh=05TWXLxxSWxWzqa01vyGWnLisLLuEypTrNYSHFlkzvI=;
-        fh=l+wIeQBZTt6KFGuWRaAJw87gr97xKXD8a3jQIkSXRjc=;
-        b=JU2MwAZlEVkfLAI0m0TGwbZ4urR6LvMpep/Nq3EO8IQBLY8K+7T96QdbxdQ7zw6jJ8
-         No1an0FBVURDHVtTfdrkIv3xlRj7vO9EXp6HphfEIDIOYyDMb33MPntch8zNQNq+H1ZN
-         xIcGYwkF3Ic3LsmW+I861rtGiV7F2N4EE0NQf0TM3iP662I4BO+PQAkrVgEPL6drGEj3
-         SChP9YLtuJW8/KVoF3F2YJIfr0jkfyF79cZKgkhwg6I9dtxI36cPGkUFuR1JAhEL3ca1
-         av/dtQJVsEBnvFqGMTosLv52ombRkHe/gJZRl7NYCe12K/ltpVFLBdpb0I+cxBE+Ek8B
-         y4NA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
+        fh=RiJSNyFv98ecbYckNQx9NKP2dJchb+KjtIrNazRBKjc=;
+        b=ShiysipdAUNhqkuCx/uIy8clqJzFV3WvJ/MHDwfByXINlmdjk7T5EiDJne+KA90w0J
+         /NUrVNVBAiIRF9VnUYXTJ091ixHAZLQ/+t3bWOIKSLmZdybVRA1QgZMCNWw19Ic7Ufdf
+         jNF5/rkQzpyZmcG8eDGfOH6bVIbw8qjp4IPgs869K35ApfDqiTjUPejcB5HTaPlgHJSV
+         q7RMkoIuSWipsIO8jONKZNOUAH2JpHT16yPbE7eSi1nIr7+Va2bMfyXTH/EQvDqpxuGF
+         m7Vjuxb6HTYPc4vZsWLdt9y+54Vrq3zBzsPOPu4xCU19k/N7wvT+WrEG5xN7+lD70d6X
+         OraA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=NSQnSJHO;
-       dkim=neutral (no key) header.i=@csclub.uwaterloo.ca;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c378da6797si88737485a.481.2025.02.27.01.15.41
+       dkim=pass header.i=@linaro.org header.s=google header.b=NZpIryMv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43b737020fdsor3535815e9.2.2025.02.27.06.13.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 01:15:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 27 Feb 2025 06:13:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=NSQnSJHO;
-       dkim=neutral (no key) header.i=@csclub.uwaterloo.ca;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnZzS-0006wA-Lb; Thu, 27 Feb 2025 04:15:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
- id 1tnZzE-0006vH-TI; Thu, 27 Feb 2025 04:15:22 -0500
-Received: from mail.csclub.uwaterloo.ca ([2620:101:f000:4901:c5c::5e2d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
- id 1tnZzB-0005CH-5X; Thu, 27 Feb 2025 04:15:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
- s=csc; t=1740647712;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=05TWXLxxSWxWzqa01vyGWnLisLLuEypTrNYSHFlkzvI=;
- b=NSQnSJHObOmkg0NMiWBNDa0/zo+QN26qNhRPINcLIi1IXuehiw/QxkEIfYT+ct/fQ0X7IV
- VBOJtAS3wOezDdUUlmVr1GL8yrg7tAdA1TH0y+4oBfZsZGpVH4yUwS0h9trwXCqnifh0Ps
- 4F73yW3AdlTvtgjPd/5wO/AKFWYqHoI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
- s=202502e; t=1740647712;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=05TWXLxxSWxWzqa01vyGWnLisLLuEypTrNYSHFlkzvI=;
- b=W0Kizpd0v24IqcbJ71QmGP6wofLDSzhCBh1u0+nX0ZGncmIQf6nUBQbBNRWPdJgjVVf1mJ
- uEpAcAbIYb73ibAQ==
-Message-ID: <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
-Date: Thu, 27 Feb 2025 04:15:11 -0500
+       dkim=pass header.i=@linaro.org header.s=google header.b=NZpIryMv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1740665626; x=1741270426; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
+        b=NZpIryMv+yqsayKxb+SveshqUZdYmWXQyAB1Qbql5bJQC09E6+oMXvYCn59fosXrMB
+         dQh4tNsq13ZPKTWTZZNQmKPD3dCTvChtoAFXiJYCMoT40n9XOriqV47KM/U0xzSBrVgq
+         Sxc3rhjvicmltWUTyAc3YSWZJ2TCrY1sn3mn4S5tTvOxVsJnjzmiBmpl/a9cg16b3B/t
+         K9yBnC3nxDuKXVyvoeXarASAnbjGIOcKgpfYej6SrjqYd17fSKMOONgNVmdlEODSGyCL
+         LZ+3kdXLRcc42p02D77uRouiwcRWKgwmQJowGVL2C/32TD/pwQs3zu3v+zRr/+vF+UF7
+         2J8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740665626; x=1741270426;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qzJpewvz9X+JB4NWBVhEFyUkbwWtvrwjCE7+wIb8f1A=;
+        b=HnrDjsJ9EY1BcrFEOsz6F7L0PDcdI7n2tKORtZ+3uKtdooPJNalCVAXhkoq1KomJuV
+         MuRh54YMbu8+cfV/SCCq++Ws4PmqEsIrU3k0U7yH6WWhoVhYbJ/aQTls8vxPTjoz0siB
+         5vNsA2HyykYQkkHzpm/BnNPMHNyNPHwRq5l+xzZku7rBx7x0VRNGM3ZL8+krnqOYF5l6
+         UXopR/ju0QKP5iFlvsETkkn7ew4IcljZ4w9ybGPxCV4KQqZInNwdNgWti51R0QiEWXE/
+         6LnwadWeZEzOQyCb7sVXzdPa3xbc5nWui7guM/GanpxqkwL8T5PrTnuvHBTvNGpTboLS
+         eotw==
+X-Gm-Message-State: AOJu0YwAyxek5zuXcfDu4sQtzOURktX8puS4hXkaA/9A3M0g0MLwVHww
+	E8W1WIjQrummaZIFelYiz7/gr/stjKhIzPNgP6BOt8MTa3DQeenaZxa/tNbaOYEuuSbKYvOqxx0
+	wV9Q=
+X-Gm-Gg: ASbGncvgypRZONIiOIuSitAi+njbxhieohuE8NnhiMv9NhWmI/c69LUxhQLVLV2Mk7W
+	IcaKDlZn0a8Ky6vUN6aIhLOrQ1nsLIk/U/vNo/7c6auzggmSuUO9STvxTCbyp+Kj9Hwy8PLzIRP
+	BsLOlpltar7bOp0pRb36iqgOFMsHt8oi7Ghf0W3g5CP0rv//IGwDg1ZF4anyJP27wX0okxeOXBx
+	QuWioKjtT+dqFUgG6Hlf0gz8puAjXU1+X5Frm/CDOi1coeQbI62WKP+y+Es6A+N6X1kjWz1iNrT
+	INIv0RWGgDnWD4aIRoJO82nSRTgBVxox
+X-Google-Smtp-Source: AGHT+IEC3HLDlTAUEEd5q4LK4EsKjzPSas92qirYxdC5mCLGqvWQZlB7Y4+IazefhaaoW0UDCOaxSw==
+X-Received: by 2002:a5d:4b51:0:b0:38f:2bd2:45d0 with SMTP id ffacd0b85a97d-390cc638d9emr7952897f8f.51.1740665625906;
+        Thu, 27 Feb 2025 06:13:45 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e47a6a9fsm2219764f8f.36.2025.02.27.06.13.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 06:13:45 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] tests/tcg: Suppress compiler false-positive warning on sha1.c
+Date: Thu, 27 Feb 2025 14:13:43 +0000
+Message-ID: <20250227141343.1675415-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
-References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
- <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
-Content-Language: en-US
-From: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-In-Reply-To: <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2620:101:f000:4901:c5c::5e2d;
- envelope-from=s23adhik@csclub.uwaterloo.ca; helo=mail.csclub.uwaterloo.ca
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ecRGD2EVCg3f
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 8wPn9e7m/xZe
 
-Hello, thank you for taking the time to review the patch,
-and tell us what we could improve.
+GCC versions at least 12 through 15 incorrectly report a warning
+about code in sha1.c:
 
-> The values passed to qdev_get_gpio_in(DEVICE(&s->gic), ...)
-> should be GIC_SPI_INTERRUPT_* values, which we define in
-> include/hw/arm/bcm2838_peripherals.h. You can add new ones for
-> the four timers.
->
-Hm, I'll make those changes (hopefully) by Wednesday next week.
-I'm a bit busy, so it might take a bit of time to do it.
+tests/tcg/multiarch/sha1.c:161:13: warning: ‘SHA1Transform’ reading 64 bytes from a region of size 0 [-Wstringop-overread]
+  161 |             SHA1Transform(context->state, &data[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-> The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
-> being wired up in the function bcm_soc_peripherals_common_realize()
-> in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
-> interrupt controller), and it isn't valid to wire one input
-> directly to multiple outputs.
->
-> In fact it looks like we are currently getting this wrong for
-> all of the interrupts that need to be wired to both the
-> "legacy interrupt controller" and the GIC. I think at the moment
-> what happens is that the wiring to the GIC will happen last
-> and this overrides the earlier wiring to the legacy interrupt
-> controller, so code using the latter won't work correctly.
-I'll try reading through the relevant sections and send an
-updated patch later next week. From what I can tell it falls
-under the bcm2835_pheripherals.c file, right?
+This is a piece of stock library code for doing SHA1 which we've
+simply copied, rather than writing ourselves. The bug has been
+reported to upstream GCC (about a different library's use of this
+code):
+ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
 
+For our test case, since this isn't our original code and there isn't
+actually a bug in it, suppress the incorrect warning rather than
+trying to modify the code to work around the compiler issue.
 
-On 2025-02-24 08:22, Peter Maydell wrote:
-> On Sun, 16 Feb 2025 at 03:54, Sourojeet Adhikari
-> <s23adhik@csclub.uwaterloo.ca> wrote:
->> Hello everyone,
->>
->> This patch adds support for the system timer interrupts
->> in QEMU's BCM2838 model. It defines a new constant
->> called GIC400_TIMER_INT, and connects 4 timer interupts
->> to the GIC-400.
->> Previously timer interupts were not being routed to the
->> interupt controller, causing scheduling, and some other
->> stuff to have issues (me and a few friends bumped into
->> this, and that's why this was written lol).
->>
->> Signed-off-by: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-> Hi; thanks for sending this patch, but I'm afraid this doesn't
-> look like a correct fix for the bug you've run into.
->
->> ---
->>    hw/arm/bcm2838.c | 11 +++++++++++
->>    1 file changed, 11 insertions(+)
->>
->> diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
->> index ddb7c5f..0a4179f 100644
->> --- a/hw/arm/bcm2838.c
->> +++ b/hw/arm/bcm2838.c
->> @@ -21,6 +21,8 @@
->>    #define GIC400_TIMER_S_EL1_IRQ      13
->>    #define GIC400_TIMER_NS_EL1_IRQ     14
->>    #define GIC400_LEGACY_IRQ           15
->> +#define GIC400_TIMER_INT            (96 - 32)
->> +
->>
->>    /* Number of external interrupt lines to configure the GIC with */
->>    #define GIC_NUM_IRQS                192
->> @@ -176,6 +178,15 @@ static void bcm2838_realize(DeviceState *dev, Error
->> **errp)
->>                        qdev_get_gpio_in(gicdev, PPI(n, VIRTUAL_PMU_IRQ)));
->>        }
->>
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 0,
->> +        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT +
->> INTERRUPT_TIMER0));
-> The values passed to qdev_get_gpio_in(DEVICE(&s->gic), ...)
-> should be GIC_SPI_INTERRUPT_* values, which we define in
-> include/hw/arm/bcm2838_peripherals.h. You can add new ones for
-> the four timers.
->
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 1,
->> +        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT +
->> INTERRUPT_TIMER1));
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 2,
->> +        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT +
->> INTERRUPT_TIMER2));
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->systmr), 3,
->> +        qdev_get_gpio_in(DEVICE(&s->gic), GIC400_TIMER_INT +
->> INTERRUPT_TIMER3));
-> The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
-> being wired up in the function bcm_soc_peripherals_common_realize()
-> in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
-> interrupt controller), and it isn't valid to wire one input
-> directly to multiple outputs.
->
-> In fact it looks like we are currently getting this wrong for
-> all of the interrupts that need to be wired to both the
-> "legacy interrupt controller" and the GIC. I think at the moment
-> what happens is that the wiring to the GIC will happen last
-> and this overrides the earlier wiring to the legacy interrupt
-> controller, so code using the latter won't work correctly.
->
-> thanks
-> -- PMM
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2328
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/tcg/aarch64/Makefile.target   | 3 ++-
+ tests/tcg/arm/Makefile.target       | 3 ++-
+ tests/tcg/multiarch/Makefile.target | 8 ++++++++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 9efe2f81adf..16ddcf4f883 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -83,7 +83,8 @@ test-aes: CFLAGS += -O -march=armv8-a+aes
+ test-aes: test-aes-main.c.inc
+ 
+ # Vector SHA1
+-sha1-vector: CFLAGS=-O3
++# Work around compiler false-positive warning, as we do for the 'sha1' test
++sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
+ sha1-vector: sha1.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ run-sha1-vector: sha1-vector run-sha1
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 99a953b6671..6189d7a0e24 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -61,7 +61,8 @@ endif
+ ARM_TESTS += commpage
+ 
+ # Vector SHA1
+-sha1-vector: CFLAGS=-O3
++# Work around compiler false-positive warning, as we do for the 'sha1' test
++sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
+ sha1-vector: sha1.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ run-sha1-vector: sha1-vector run-sha1
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 688a6be203c..c769a7d69d9 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -45,6 +45,14 @@ vma-pthread: LDFLAGS+=-pthread
+ sigreturn-sigmask: CFLAGS+=-pthread
+ sigreturn-sigmask: LDFLAGS+=-pthread
+ 
++# GCC versions 12/13/14/15 at least incorrectly complain about
++# "'SHA1Transform' reading 64 bytes from a region of size 0"; see the gcc bug
++# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
++# Since this is just a standard piece of library code we've borrowed for a
++# TCG test case, suppress the warning rather than trying to modify the
++# code to work around the compiler.
++sha1: CFLAGS+=-Wno-stringop-overread
++
+ # The vma-pthread seems very sensitive on gitlab and we currently
+ # don't know if its exposing a real bug or the test is flaky.
+ ifneq ($(GITLAB_CI),)
+-- 
+2.43.0

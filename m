@@ -1,234 +1,139 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp140971njb;
-        Thu, 27 Feb 2025 03:05:00 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUifw0IMPJAqgrSDGtJMLbKRvpzxSqsaWBLx8q9kI+HyfopPSpLi6PEIOelNyXj8vkM3Vf/XScaW6Mbbw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHfnDJlkbogAm1gJgFRJc36RrAgxdhJmMnZ9rBP9xaYEKIGJDHaV9Tyx4Xd9Io3uGPly4jR
-X-Received: by 2002:a05:6e02:1aa3:b0:3cf:cd3c:bdfd with SMTP id e9e14a558f8ab-3d304866a47mr115384965ab.12.1740654300182;
-        Thu, 27 Feb 2025 03:05:00 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740654300; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp141007njb;
+        Thu, 27 Feb 2025 03:05:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWExZJA8tN+MkWuPGlPVRFhsPLmbg+efR21J+PmWykGsGyMlExNWPpW3GnW7FAuOLRSGfjCnIsPXXWx7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGR6lq9NDz0dFcfUY5Xri0vhicR8WCnlJ8I7h4XlNiR/5j0Ea90bN4x7eySHZUuLrMoLLkz
+X-Received: by 2002:a05:622a:b:b0:472:1886:ead7 with SMTP id d75a77b69052e-4722485d3b6mr317773641cf.27.1740654306919;
+        Thu, 27 Feb 2025 03:05:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740654306; cv=none;
         d=google.com; s=arc-20240605;
-        b=T9F8OyY3DRnDxNExotue0NZ3IJCnjnXHuHNozgPANtj1FQdkYKmSXuOF0LCKDMR3gh
-         AtMupEvDY2pxdCL+HRT4NBbbUB+bvGWc2mHnl+eAoT1Vtf1g893SdmPeOfwrT32nFNkq
-         bDXi3khaytDJdlkRRudCVwBrHjAN4XfgFjbXkaL80oCvy9tNAIV+KIfk2D+b6M8nM3ZG
-         oTKeufDQUFsfH45xP0Nt2mNf2xazX57+51aMzmMl/DLELm6zPrzYa84UOadS2sQqAKmB
-         gCM2eWHkeuH2FhXp/YOfuaZGoEb+bIcUif95wfCguKBR4l0OmLW10jwMe8ZPUMnXT6Cy
-         Wf4A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=n7It3CyShOyPipEfY54lTuYKn/o95zLFTuoCGylu40Q=;
+        b=QMFpSgbbq/oyk3/eSuUCnyXy6EfFQbPjLMR4Vm7wC+XatRhj5I6KQCxzQ3w9nbhblJ
+         x/Mk21EEMncZ2UBuF4XwMCQxVW/zavn7B3SPey2o22mP8h3tVMLt2RMj8yfi4h00pnHa
+         U4hotNL3n4N7AOfEx8L0THtCUuporyamLtohz91tLXTE3SAICoEXI+hyRtt2JGwY0zGS
+         XrUwgBER2LRBaF5FowMNKHMyNxNSVruP4LcuVZ3SZXndtv/KOauFaunDngKOpm3dEnjj
+         /26THKrUwdsNoogpvpLDPs36k8K87b0hKYH3kDa4ATV6KFagIq/7frwPaaA84yW+Jw7C
+         /I+A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=aAFdPXGS8tt3OBdgZdhXHZihEPlbIMjlQ7L/GC4DRKU=;
         fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
-        b=jHovOjRkUSC9zUQCIdk5H3lKh6dJ2S0isMIDOFj2xfuWrFp0fTAKiShymwvDIj6pC0
-         06LzkbQKEPGjuPP/dOJ0DnuKn0D1PbBkhXybHba1GCVPzKjjrX1L0ARpXzvrqKutO/Eh
-         Hrl3bXQB9+bcG6zBaB9XiJENLW7Bp74dVzETe5xFGemyuJUSMdHmbWBnh+MqqrpAkpVa
-         jJlk35kaYBqdwzoDHRmfSO/ivNaAboUcHfCJWxFIz92srXrtlvtTsDIY5bnPqj6ML061
-         BIGnReH2vwpObD2EC0R66TiMio6ffRA0OBOH5GD8uUMmhZ9j+XiO5wZ2sPuUr+F5S/tX
-         jxwg==;
+        b=UY5pCCDO0DBedCiE4/cxT+RcKdUbYp1/0CuOnjU9o3crcVzX5ZzqEedEAvijpWZyGU
+         h41Ea5iJwtf2bS77oabl+pD/iAJQvYspXJba8de8fFkjCvfRpQzf/HZb7aejV9i2juUG
+         DO+M7JM9fQ7LfF3OaOxpQs3qWVYSRvLiY0xBrx2u7CW0lMKLqN2AHSMpsObCjhpJrEWX
+         o8iLt9p5fgNCiSwHJLx1ABkNJOsotBxC9QibcE8MXk3rlVitp2u3UhnyuJy9Rie01mmI
+         m2sqkzwdUjASUHGlwJHPwj2YL4AOYfL2JPbSWLFD5UC0ruxbVREsaxyJ/iwo9eKoRmv4
+         5YsA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="rT5oR/Kn";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=kFaRHEdp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3d3dee5dca8si9664795ab.9.2025.02.27.03.05.00
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-474723fe1f9si10874111cf.254.2025.02.27.03.05.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 03:05:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Feb 2025 03:05:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="rT5oR/Kn";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536070-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=kFaRHEdp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 1B2703B1951
-	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 11:04:42 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 29EC322CBFE;
-	Thu, 27 Feb 2025 11:04:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="rT5oR/Kn"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB16322B584
-	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 11:03:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740654238; cv=none; b=pPpM9tiLOvS8+8I4iuImQBDQ6/cIcyBMIY4SquJzEsFrhUxBlEV/HU6dHiJbRO9x6DqijlZ7JjXndd2ljwDq7/am+k3w8BLLiDFER2jv6YEZHYfD01OMFmaaSwktJ1puLWNq+RtcsGqBdo503P1hzyuiBScgfPl9I5oM8qIVLOI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740654238; c=relaxed/simple;
-	bh=iTWv02XduxVTJBka8dnzXbJmi4AP+/5iq3KOXWgtlpA=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=Ts4jF3yoXuE9yr0KHmx42eaUk+yFHRyVpLJYr6PvNZrm9x+p6TKWmbClsSLVtofTvPAPPBJsdRzqpQuIXRQQL6vCci0aumVGpa5f4WNZ6qQyP8SB/F7orhriABpX6WBosuON5CmufSXol8aYLzN143oHZNkru3Kt+bw0nCCvWXQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=rT5oR/Kn; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C24DC4CEF4;
-	Thu, 27 Feb 2025 11:03:58 +0000 (UTC)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tnbh3-0005A4-Hu; Thu, 27 Feb 2025 06:04:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tnbgb-0004pD-KK; Thu, 27 Feb 2025 06:04:17 -0500
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tnbgV-0007Vr-6S; Thu, 27 Feb 2025 06:04:11 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id D68695C4AA1;
+ Thu, 27 Feb 2025 11:03:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28656C4AF0C;
+ Thu, 27 Feb 2025 11:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740654238;
-	bh=iTWv02XduxVTJBka8dnzXbJmi4AP+/5iq3KOXWgtlpA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=rT5oR/KnvvtMk0H3PDCxXojvKoDGvZ1gHcIE5CTqCEdn9IyRTZa4zZ08K8l5aAJjP
-	 CpqDqtiRiFTrrcYjil5V0qpXH1Fi0rguVIt/QqT3Pm6bN9Ltpn34gWDo0BhFCsZCRy
-	 ZVK4kuLxRlwbt8GhFloOLOC4Hg/Jd7HsywCIJUR/py7+YHhmwlndpwPlyW3MhE7xHu
-	 TT8soKzFPr/Cx4ZtqbDsctbtOSmz3Igjc5yL37DqF23nIrtLQuH2tISrS5gWkGVZQf
-	 wmAgE1pN6j4BNroUBiibW5oS54iwbMj+gwQEw0Wv7BDgGinfheIc8gJGuJb/mkJODS
-	 24ZqKb5eKFLXg==
+ s=k20201202; t=1740654238;
+ bh=IzD7ej6+MnEhTQSr1xYZdmpq2RxnkugunFxTJOIMeHU=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=kFaRHEdp7iJdv8YpnN1KKmuln6cq14aVqrlrccAm5jSIeUyf3zMYM54ALHen26Ox6
+ iVxe9orcWsLRt6h655KtSiIZ2OYwhHqpK3XJIS6mqAtX1tNalyuCb4QpPU2GYzB2td
+ bc67ody9D8UlbsAWh2l+rsNHYevjns6NKh/Xi+1qrdmV8a+Awq0is2w0fgXEOTJ0vO
+ 0BZJoWrgOekqNO2auHjgcZYW35Biso8JqU1x6vI3RWxVVH2EYdHS8uCB4hqr0olojV
+ Ghdx8VYahw/0O65P0kwlCiw2t9ESTZrvjsV6QrjZvME7vQbLV7pcpTJmvzKw1csJTE
+ nm+/QcTPy6Fxw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tnbgK-00000001mRM-1Slo;
-	Thu, 27 Feb 2025 12:03:56 +0100
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tnbgK-00000001mRQ-1Zg5; Thu, 27 Feb 2025 12:03:56 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	Ani Sinha <anisinha@redhat.com>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 13/21] acpi/generic_event_device: add an APEI error device
-Date: Thu, 27 Feb 2025 12:03:43 +0100
-Message-ID: <b847d1b1eb536085baaf1d7be48427073be1784c.1740653898.git.mchehab+huawei@kernel.org>
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ani Sinha <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: [PATCH v5 14/21] tests/acpi: virt: allow acpi table changes at DSDT
+ and HEST tables
+Date: Thu, 27 Feb 2025 12:03:44 +0100
+Message-ID: <11f37e677592494c7e73b2ff5fad700e8726205f.1740653898.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <cover.1740653898.git.mchehab+huawei@kernel.org>
 References: <cover.1740653898.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: eSxd2SCfwJ1n
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.44,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: v2KP0xLOnOLM
 
-Adds a generic error device to handle generic hardware error
-events as specified at ACPI 6.5 specification at 18.3.2.7.2:
-https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#event-notification-for-generic-error-sources
-using HID PNP0C33.
+We'll be adding a new GED device for HEST GPIO notification and
+increasing the number of entries at the HEST table.
 
-The PNP0C33 device is used to report hardware errors to
-the guest via ACPI APEI Generic Hardware Error Source (GHES).
+Blocklist testing HEST and DSDT tables until such changes
+are completed.
 
-Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/aml-build.c                    | 10 ++++++++++
- hw/acpi/generic_event_device.c         | 13 +++++++++++++
- include/hw/acpi/acpi_dev_interface.h   |  1 +
- include/hw/acpi/aml-build.h            |  2 ++
- include/hw/acpi/generic_event_device.h |  1 +
- 5 files changed, 27 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index f8f93a9f66c8..e4bd7b611372 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -2614,3 +2614,13 @@ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source)
- 
-     return var;
- }
-+
-+/* ACPI 5.0b: 18.3.2.6.2 Event Notification For Generic Error Sources */
-+Aml *aml_error_device(void)
-+{
-+    Aml *dev = aml_device(ACPI_APEI_ERROR_DEVICE);
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+
-+    return dev;
-+}
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 14d8513a5440..180eebbce1cd 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -26,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
-     ACPI_GED_PWR_DOWN_EVT,
-     ACPI_GED_NVDIMM_HOTPLUG_EVT,
-     ACPI_GED_CPU_HOTPLUG_EVT,
-+    ACPI_GED_ERROR_EVT,
- };
- 
- /*
-@@ -116,6 +117,16 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
-                            aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
-                                       aml_int(0x80)));
-                 break;
-+            case ACPI_GED_ERROR_EVT:
-+                /*
-+                 * ACPI 5.0b: 5.6.6 Device Object Notifications
-+                 * Table 5-135 Error Device Notification Values
-+                 * Defines 0x80 as the value to be used on notifications
-+                 */
-+                aml_append(if_ctx,
-+                           aml_notify(aml_name(ACPI_APEI_ERROR_DEVICE),
-+                                      aml_int(0x80)));
-+                break;
-             case ACPI_GED_NVDIMM_HOTPLUG_EVT:
-                 aml_append(if_ctx,
-                            aml_notify(aml_name("\\_SB.NVDR"),
-@@ -295,6 +306,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_MEM_HOTPLUG_EVT;
-     } else if (ev & ACPI_POWER_DOWN_STATUS) {
-         sel = ACPI_GED_PWR_DOWN_EVT;
-+    } else if (ev & ACPI_GENERIC_ERROR) {
-+        sel = ACPI_GED_ERROR_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-     } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
-index 68d9d15f50aa..8294f8f0ccca 100644
---- a/include/hw/acpi/acpi_dev_interface.h
-+++ b/include/hw/acpi/acpi_dev_interface.h
-@@ -13,6 +13,7 @@ typedef enum {
-     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
-     ACPI_VMGENID_CHANGE_STATUS = 32,
-     ACPI_POWER_DOWN_STATUS = 64,
-+    ACPI_GENERIC_ERROR = 128,
- } AcpiEventStatusBits;
- 
- #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index c18f68134246..f38e12971932 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -252,6 +252,7 @@ struct CrsRangeSet {
- /* Consumer/Producer */
- #define AML_SERIAL_BUS_FLAG_CONSUME_ONLY        (1 << 1)
- 
-+#define ACPI_APEI_ERROR_DEVICE   "GEDD"
- /**
-  * init_aml_allocator:
-  *
-@@ -382,6 +383,7 @@ Aml *aml_dma(AmlDmaType typ, AmlDmaBusMaster bm, AmlTransferSize sz,
-              uint8_t channel);
- Aml *aml_sleep(uint64_t msec);
- Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source);
-+Aml *aml_error_device(void);
- 
- /* Block AML object primitives */
- Aml *aml_scope(const char *name_format, ...) G_GNUC_PRINTF(1, 2);
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index d2dac87b4a9f..1c18ac296fcb 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -101,6 +101,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
- #define ACPI_GED_PWR_DOWN_EVT      0x2
- #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
- #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
-+#define ACPI_GED_ERROR_EVT          0x10
- 
- typedef struct GEDState {
-     MemoryRegion evt;
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8bf4..0a1a26543ba2 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,7 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/HEST",
++"tests/data/acpi/aarch64/virt/DSDT",
++"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
++"tests/data/acpi/aarch64/virt/DSDT.memhp",
++"tests/data/acpi/aarch64/virt/DSDT.pxb",
++"tests/data/acpi/aarch64/virt/DSDT.topology",
 -- 
 2.48.1
 

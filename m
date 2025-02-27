@@ -1,99 +1,132 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp160095njb;
-        Thu, 27 Feb 2025 03:45:47 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUJSsevJM5l52jl3CwOmzn7eUUS7kEhN77dFnK6cidVN6kAkuQfKuvq0zc4d/nErlh4hxqTzr8Wr7lokg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFFs4DTwZJsOvoHIrORkhnoWI4C9NTrO1VfafDFEzCZg7Zh/x7f6m0ZylwB0D9lONwzc4+
-X-Received: by 2002:a05:620a:450d:b0:7c0:c803:4e2 with SMTP id af79cd13be357-7c23c039861mr1617705085a.46.1740656747359;
-        Thu, 27 Feb 2025 03:45:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740656747; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp167689njb;
+        Thu, 27 Feb 2025 04:02:40 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVdS3koX84tZqbMbYLfryKbR0x8fuejVDXqjNBMqUwhEf8kHdFnue60GzDATfDuv5iRA9YB2ByMFk5Piw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEBe2PJgsG2orpAEI1xk9EuNRNT4PtOPjWOW7Q/pr8zr6sX56q+25y0YD9xLJCzOOD4w4Ln
+X-Received: by 2002:a05:6808:6c2:b0:3f5:50f3:4a6b with SMTP id 5614622812f47-3f550f35156mr637336b6e.17.1740657760571;
+        Thu, 27 Feb 2025 04:02:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740657760; cv=pass;
         d=google.com; s=arc-20240605;
-        b=WXIrtc6rmo7Oy+YNDB/GnysFvEcHGjdzU7oH6WGjAdlhuyVcBgz/4pVZksjB5iIPhs
-         IcM0smbgGeYcJ++uho2RhfpJx3nZM+v4vg0p2eM+UPvHTzGppwVdV5Qp816fUJJ39Gce
-         KNm8SanCe2VarEsjDNtcq+h7ZZIBFhSyZdjtqzVP/WVrIsU6DfG+GKuaULFOZy7HcP7C
-         4yzSBLLqC0oTqBx/3jccabC/AqkPLmB4Y69g+jhgSrBk4H1eTt7+Q0a+v3qOoy5kFNNt
-         5gEizg9Y7zay5L8peBDInvz9lNOlS7RrMyRo64iwnmTE8urAvSvQ000zAoYLiglHeQzK
-         fOfg==
+        b=N5Ae8oRIGG0P7K4wkZ+bF5VzFRpIlH/dF2t0adneII7XedsHJLfme01clZ0s+wmeWN
+         ALuHkpqyjqo/foTzeE6NdkImq44NASNl2529X63YotC0fCf6nOoo8Yu15FylORKuNQQy
+         3cDL0mC6HDLHfqfePHvNbOfEzHM1f7s+OwvHcyXmSyjUzYTNxvJlmRVJaAWwz1hGw3d+
+         /PN0zEsvyUBZgcs9Y/IJbwMtRCPP9h7efc/CRyacy+J9WNTog6QOT4j/xtBTqAKAj3sh
+         05Zut5Wv1PJKUzVi5WGhg1L6+CKcm8iUojY4CLcPKvnhHQ322A2BT7un7YP4s+WznDNL
+         YyHg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=PewvevDqay+LktSBQKjnCLJSIkeUyu+/FH3sOw4PWcE=;
-        fh=/geDTtlbDe49OwRpuW/IxJZo5qtNtDrUv9L/h6sQdxA=;
-        b=KhSjNsqEM7w8tB6DBnUEt7OVP5Drm5VgNmuiVBFX8aHhjsHfMGJFptwSq2R5r4sMi4
-         JDXannthQSnsIGYUm0Ev5DltvvN3inbmE/rpP8C6Y0044KbAEqTZ+mEdz5l0jv39TdG+
-         T7b/aA+kJ9N+mMhpbxUh95F5453yufolGWGfBdB6+oAo0IGV+Er8OPVSI/LpkzzG/pX1
-         UgRUG2REFQq7XOVKeCdcsOqhFl1P3b7fuXTT8ObWtR1cDsM7I6KxwLjwhz2UQOwQTSCZ
-         jbdgIAT8opGd/lT9tH4Z7onbloae/Jxii2+VAkyq1k4CniUHg78blN+fxXYweegs+QF/
-         TK1Q==;
+        bh=DRugfuFghPEgI0qvuOa5TFgOLvAsHNbtLdSfrep5L8M=;
+        fh=O2qtQ1PktzNO/mWjYNTp1Qt/CwyovJyi6/6A/JJqTVA=;
+        b=PeweRVdd0wyJNI3qTZAvD0wf+sWXkFLh6N23SupSSEghkxXdScKjH7k9OCMC+3m8Sy
+         LgRGjFy1a0H3+Vh2AxnG06e7GHsIQLs/L3DNAcCC71PsypJX7ZMdz9Vjvpcm7sJ7JMb5
+         tgyYXKMfSYjD1JJHz/Li9ka7182vscii0Aj5a2ya8xf32YffyusAoK5quKfpdqAvEOUB
+         lC7QoHZ4pXBmOsjW87aAbJbEgQb1guPh3O6dNTFFEU5SHXtF2ChlqM8W0sB8Wda7lRv/
+         4o2snC8w/Se5374aS7shG5gk1GhMftTkK7lFiy/0PKN2gcwMEh8kVV+qt8QR+OkJvKfV
+         LZcw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=e11cxfxT;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7c36fee871fsi112357585a.27.2025.02.27.03.45.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f4nC7htN;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 5614622812f47-3f550790fc0si817683b6e.211.2025.02.27.04.02.40
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 03:45:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Thu, 27 Feb 2025 04:02:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=e11cxfxT;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536178-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f4nC7htN;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536207-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D4C4116AB35
-	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 11:45:46 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4D4013AD4FA
+	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 12:02:30 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1E00542A97;
-	Thu, 27 Feb 2025 11:45:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E9D4A42AA5;
+	Thu, 27 Feb 2025 12:02:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="e11cxfxT"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="f4nC7htN"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D36366FB0
-	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 11:45:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F0051270020
+	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 12:02:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740656743; cv=none; b=rQtcmdOyiWoWHeYTtJcU9U3czpqoxzxAwu5wfuHuXkOLH5El66XYQq4z01lnTaJL1AltGt5U0xerYD87lrUPyACPnPUTMpOHzjz/FWdu6trGtIDEWJRk9+zWm7WcFuspsfwkGEPShZJzCb3soyO059QE/oDJtnpkMRIqIlLOOe0=
+	t=1740657756; cv=none; b=QX0WfIMhzwOzzxWG4F1G/kUW+bFcA0NWAJdp7UkKPG0xyJ+MXIklx9hE5daaEvA7/VFFXTQsv2oA9fy7glvOJb115EHwnpUm1kx1A/RdOpyfcu6y9qNEHkJQc2xuAUM9lM2va74UjAGiHd2vZabv45kWgD6AL8ihfySTEqpDyTs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740656743; c=relaxed/simple;
-	bh=RbApozzYBuV1XvJ4VezhGxrAHX++zrZ0W8FPqStcTYw=;
+	s=arc-20240116; t=1740657756; c=relaxed/simple;
+	bh=sIv6btbCBsAsSIbPfrtYRtcbJOBVH1rc6NeySocU1q8=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=aClfxBnAgy5H9/8d4TGKSNFNrDs+4JXxv5jTa0tToo8zZybQQ7AE6gCecbUN/yVeY4vIJgiZieXVj983KVIkMoldmaH4vUqr7VvXcwA9QMeD43icL8JzLCrbjERYOI+VWoS1wc2gMEgEnwUZVCK4hXioK4sVsWZlDRxRegVaMIU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=e11cxfxT; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2270C4CEDD;
-	Thu, 27 Feb 2025 11:45:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740656743;
-	bh=RbApozzYBuV1XvJ4VezhGxrAHX++zrZ0W8FPqStcTYw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=e11cxfxTuj0kBUHpM7kvJNlAipl9h2iRj2UT7uCU9ruFW2Rs6bCYfNlyZt6vheCcI
-	 DN4KpT3iXyxK/kjMHyQnkCF1+GJ3dzDZ6oj00cJdy3e0GcsxDXPwr0G6H9ICLFjE4G
-	 OP8KMKsftjEjSEPS4a2AxfyNM0ca30+9e+xan4fj76tFiPKVM+FfNvPCF2Wtx/kvt+
-	 MsK69+5xk8wYgoc4C7sdshO017fxp/GhXAYqMyTN3MORws3w9mEEyeO1A7yXJ6Lt7m
-	 fQzHsmJwwfJOExrghLZ6jdxjWnydspoWlpGT9BqD+vDjHZ4fYR+eFd1t0/dcl08hcm
-	 IOCG038XBbvHw==
-Date: Thu, 27 Feb 2025 12:45:38 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
+	 MIME-Version:Content-Type; b=UTYa6o21jnWScSszzZVfJYechz3Y8LWlC5tzxOyl7WKk9d0pJDxZfjPlVbSwLNaorJlSaEsZp2cJsMEKRz1RG5dlt+ip7GV+56rE25lwT2iPsSDkUW3t2CYphWnkspdI1mC6Cu/OFQR5o1WQL34vrU71d9+5Yt3m24FMmP3AjUU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=f4nC7htN; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1740657753;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DRugfuFghPEgI0qvuOa5TFgOLvAsHNbtLdSfrep5L8M=;
+	b=f4nC7htNCrn8SYLeMljLmwbUYRpwmI4dgIw2HUV0xqUGJn7HiBgOlb4Q7gtcaeI/qdT6Xg
+	aVHWqB2+0Tx1MVn7wdP6Iass9NIm2ldLfOP9n4SfQZ8faadST21K5Phg7wEY7qPgDA3TRx
+	KY4e3tjmvF3vaiREnyu2RK68JZnTO60=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-488-JJgG7OKvOE2zROxuRLEA2g-1; Thu, 27 Feb 2025 07:02:32 -0500
+X-MC-Unique: JJgG7OKvOE2zROxuRLEA2g-1
+X-Mimecast-MFC-AGG-ID: JJgG7OKvOE2zROxuRLEA2g_1740657751
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43943bd1409so6808075e9.3
+        for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 04:02:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740657751; x=1741262551;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DRugfuFghPEgI0qvuOa5TFgOLvAsHNbtLdSfrep5L8M=;
+        b=kO/nABXljdQWYGbH+Y9+1FqjY5JnqB849taAZvpimPy4OzNsuuGDl1p+x9asZ4947K
+         1QN5kNGrnlS/RMx7AYKLAFVHKZNrz5mTWq4uzxSD0PcBuX7n9pL6DpL+ABGa3/MVaGZd
+         yxdURhTT6NcAS5DP7XkF/NX3gRWRi4rELlSZv+kwQE/OLzrXiFKwdaTKsNyokipuECK4
+         ilJ+RuFQ+Tq9nTSU5Wa4W8ZuawKIJ/GZH7es0fBnV8LxwITUH9JZ6KpnvFarcOkxoVul
+         KPpE8vpIit83jQityF8pGXH0KCZ3Ur1tRReg35+McI1s1GTiNiIuGUnPbp8aqfUtPFAz
+         qMAQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWGfBpSpJlxfxSP5AU/Adr4ABM3hWG8B5E9PAy80OUKmMVYWFEAXTsxdcw3YGwW5aOkd+QCMpOt9CwC1ZA=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxzmJH9JNaP661HGVHWpMnRYZerD9YXssaRW1CoLkTWn/I7ilsA
+	bKq+VNtl9hTDwEL8zMMwaA9nXAy2hCxtw9GX2gwP7mUxkY6DednLnzphM4b919NqFuIjOscseBl
+	OxLvQc+RAeUoy5D4m6q551PGvqt1RdYzlhb2h1FA7dwcgEg836G0f7TfNuuzdHQ==
+X-Gm-Gg: ASbGncvqHV33bpaAHNtPdvTLoC9VzfCRpxvwFTe6xqA2r9zPzW3/51TSu+PMWvgoLRG
+	rUueLzQ9DwwElLGn6P/sI+pzQjRxHpNf+BVGFKsWLgZcps2FuV4ZSUrZVlu2vhJ7lxcrxVh4SUw
+	Ljiey4TgwQEikgTRevOXP0ZS1JqE+KB4NVU5WT2Un2VN1aAIbln5xFvEdAzMjMbajkh38QPN7Be
+	cImz9L4GNJyEcfpGBXtaNRONWaKepPr7pI4jMRUxVzF1PIVvZYWUS4kLCX86YKkzYaX8W4COqe6
+	wdXpBGMxUFcuafPaSfPpLrxB8QZLswM2ZkxSi2KDcCsFjH3JbcJFxNbw75yIYBw=
+X-Received: by 2002:a05:600c:3b13:b0:439:8bc3:a697 with SMTP id 5b1f17b1804b1-43ab8fd1f46mr63821675e9.4.1740657750922;
+        Thu, 27 Feb 2025 04:02:30 -0800 (PST)
+X-Received: by 2002:a05:600c:3b13:b0:439:8bc3:a697 with SMTP id 5b1f17b1804b1-43ab8fd1f46mr63821235e9.4.1740657750568;
+        Thu, 27 Feb 2025 04:02:30 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43b7a27b1c6sm21022525e9.27.2025.02.27.04.02.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 04:02:29 -0800 (PST)
+Date: Thu, 27 Feb 2025 13:02:29 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
  <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 01/14] acpi/ghes: prepare to change the way HEST
- offsets are calculated
-Message-ID: <20250227124538.7a2191e0@foz.lan>
-In-Reply-To: <20250226153714.20c57efe@imammedo.users.ipa.redhat.com>
-References: <cover.1740148260.git.mchehab+huawei@kernel.org>
-	<9eeaabf88e7ddc4884633702b7bc419075975bc8.1740148260.git.mchehab+huawei@kernel.org>
-	<20250226153714.20c57efe@imammedo.users.ipa.redhat.com>
+ <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 01/21] tests/acpi: virt: add an empty HEST file
+Message-ID: <20250227130229.2a0251f0@imammedo.users.ipa.redhat.com>
+In-Reply-To: <3da2d197610ada25dacaee54d113fb87c5448b04.1740653898.git.mchehab+huawei@kernel.org>
+References: <cover.1740653898.git.mchehab+huawei@kernel.org>
+	<3da2d197610ada25dacaee54d113fb87c5448b04.1740653898.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -103,60 +136,34 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: jt1oiriDtWpa
+X-TUID: I6ibZMtzrOqa
 
-Em Wed, 26 Feb 2025 15:37:14 +0100
-Igor Mammedov <imammedo@redhat.com> escreveu:
+On Thu, 27 Feb 2025 12:03:31 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On Fri, 21 Feb 2025 15:35:10 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> Such file will be used to track HEST table changes.
 > 
-
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 3ac8f8e17861..8ab8d11b6536 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -946,9 +946,18 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >      build_dbg2(tables_blob, tables->linker, vms);
-> >  
-> >      if (vms->ras) {
-> > -        acpi_add_table(table_offsets, tables_blob);
-> > -        acpi_build_hest(tables_blob, tables->hardware_errors, tables->linker,
-> > -                        vms->oem_id, vms->oem_table_id);
-> > +        AcpiGedState *acpi_ged_state;
-> > +        AcpiGhesState *ags;
-> > +
-> > +        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,  
->                             ^^^ will explode if object_resolve_path_type() returns NULL
-> > +                                                       NULL));  
+> For now, disallow HEST table check until we update it to the
+> current data.
 > 
-> it's also expensive load-wise.
-> You have access to vms with ged pointer here, use that
-> (search for 'acpi_ged_state = ACPI_GED' example)
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-Ok, but the state binding on ghes were designed to use ACPI_GED. I moved
-the code that it is using ACPI_GED() to the beginning of v5 series,
-just after the HEST table test addition.
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-With that, ACPI_GED() is now used only on two places inside ghes:
-
-- at virt_acpi_build(), during VM initialization;
-- at acpi_ghes_get_state().
-
-If you want to replace it by some other solution, IMO we should do
-it on some separate series, as this is not related to neither error
-injection nor with offset calculation to get read ack address. 
-
-> > +        if (acpi_ged_state) {  
+> ---
+>  tests/data/acpi/aarch64/virt/HEST           | 0
+>  tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+>  2 files changed, 1 insertion(+)
+>  create mode 100644 tests/data/acpi/aarch64/virt/HEST
 > 
->                 hence, this check is not really needed,
->                 we have to have GED at this point or abort
-> 
->                 earlier code that instantiates GED should take care of
->                 cleanly exiting if it failed to create GED so we would never get
->                 to missing GED here
+> diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
+> new file mode 100644
+> index 000000000000..e69de29bb2d1
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index dfb8523c8bf4..39901c58d647 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1 +1,2 @@
+>  /* List of comma-separated changed AML files to ignore */
+> +"tests/data/acpi/aarch64/virt/HEST",
 
-I dropped this check on v5.
-
-Thanks,
-Mauro

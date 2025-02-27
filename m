@@ -1,309 +1,177 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp234855njb;
-        Thu, 27 Feb 2025 05:59:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWp3A3IinC99igvNTpTcsHc7rPCb8mAg+9RwgFs7vZrxjIiHaqbvPSst1zenevIYGEzQwlt2O0D6AqDFA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVbXGUGZbqK0gXqO8vhh7VBLELvZ/M+jfU5vivAkvi8+KEVcNF6OcXJxjzV4/pBpYcdg8q
-X-Received: by 2002:a05:620a:17ac:b0:7c0:a70e:b936 with SMTP id af79cd13be357-7c247efee7emr1269391585a.8.1740664785987;
-        Thu, 27 Feb 2025 05:59:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740664785; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp268052njb;
+        Thu, 27 Feb 2025 06:43:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXKIlwgdOpCJdAJP9wzHcP/hENeACwmxlBzzz9OLgXznw+MTm8CmJHtRTNWTSplC1eNhSLp8FP98BgKAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IET8dhuQIGnM/D2xaFRmQu0vaVODr8apKes2VZBiGE2TiYxvZLrEzmJKUDlwFeuaLl2jMpZ
+X-Received: by 2002:ac8:5893:0:b0:471:edf0:8366 with SMTP id d75a77b69052e-473813647dcmr90172091cf.42.1740667384791;
+        Thu, 27 Feb 2025 06:43:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740667384; cv=none;
         d=google.com; s=arc-20240605;
-        b=eE/DOPkM1L/YY9TrGf3olNQOyX0RDtnXcs726a01W7NQqvYhXZ/5ApXiaYE1OoAC4R
-         y31nhgP/JKKGP982Ip7eciGi8H4HcYIV6hKvPiWmc6jfhZ5q638kbP/lIlxpJbw3zco3
-         XsQJw3Mb5+ttfIdwh0Jt/rdmXCgh6qA1UNbndNMq28zlu9Nx3gf/YS+4YUFZl/GNJ7GC
-         EGkn7lg0c6mUg55M/Hos42b82t2lsT99mdrUAYp+jt/vpvushs+nzdaqocJIgz7PMAAR
-         DxTd8N8qri9kSv6e+f0bHvJQ4W0Lu5i9CJXsAMjXvJ5z/4IAeA6YuN+2SJMsX40NSZet
-         CobA==
+        b=VSld6AcGr7Q3pDZmZjPXO8hYARsOaaQF75dh2ihn7ZX53Q9OwCkTVYgEbLZqiifRp4
+         APOY+TA9KQsNHkAbPLbtfRuBe6XWNVkqku+auSZaHVJ4a3LMxlTFCue7nbZQRJoP3ntC
+         FFZ1SovCfOmwAXHR210At8Mkda1qN/eV6776D13KlaDDUsmFmyrv9hw/zeiD/ikpph06
+         2M3QHXxt9XBm10EVC4XeiIwoOo+Q4xSY54cJc9fpmrWBptlLJIo3MjQ4rZuSsUYSzoE0
+         GcmPB0++n/LT2zYDohgLo3qorQMQ36A9NBP78flCmlZv4R0YShcbvRgH2sY641mFe7DK
+         jWDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=pl6ecwuwNAq4GurPYG+n+Gv46zl2dCc56pniwaicPPE=;
-        fh=AoM1rbRFg4tHLOw3AN8OHKGEyfkZ2PIgox2GPz/S0VQ=;
-        b=VlQ3q67Wdw9A4mjdt9T+/Ijg9lV3L+o8xXmmymwpwOoCIFLzNLyJC2s6Veib2TY/gd
-         78QF9sQLXiascz4WKRaFEP6DXKMhRtNOP+XBxzD01xnH2IybtXjrKQ46V3C6FdZUzFSa
-         6LXRr0N6d7jbb6+L+bvwb8F2HoF0qWDfT3mNhUCUpBP8JbVupFu+2SdrDC4bhjFYjWeh
-         ukCtygBkINsi79enupFzXP0s5rf62wZOulxke8SryGuDpQhATt3cyl7V7/9tBGVQSN9V
-         clkdGj7jZwO9sFn2/xZW1jMW5DFcSG0hlaBaQd4T6FvvOj9iZuZ//iekmHqe//tAUFhr
-         H9Mw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Ocn/d1/FX1YV6bfS7ORusoHXK2VvAcMUIDGKps4AlVc=;
+        fh=INHftBK+eErPMA/c1qJSnbmgqy9cZkH7tn0L+zL1vN0=;
+        b=iVk3vsJVcZaCX3WBuLRLT8uci+JSZdFnJ744MejtgdstTg3UOP8vzvMPhZr38J7DYL
+         R+AkkZg4W6mv29Rnb02TBibUfc88xCA6oipaXzOw4yDtxUNxWfcsNOWGaFydtlTYYpX0
+         oio37vYNYNckS/vRBJqPxWOjq2TuOy0xTH37mlV2Htor8IjS2T2hAX/e4Wnwu06SJyOj
+         tZl+2z60yb7cz/cZUSkYlUvItKF+M72Ln1mB/OYXMz8dkQdvr9CmXL766ZeLr75bEfpl
+         H9jWt4ikettFlzPJyBaw9MeTNr16Xynr2Oq+ldFWiFBY4kx3tvJo4YBmiT8iYJ6m0AWl
+         5rVg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H+76djMU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=HNPFpwcV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c36fef6e67si125758585a.166.2025.02.27.05.59.45
+        by mx.google.com with ESMTPS id d75a77b69052e-4746919c9f8si14200391cf.41.2025.02.27.06.43.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 05:59:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Feb 2025 06:43:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H+76djMU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=HNPFpwcV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tnePY-0003yl-IQ; Thu, 27 Feb 2025 08:58:48 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tnf6B-0001qk-I7; Thu, 27 Feb 2025 09:42:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tnePU-0003vz-1n
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 08:58:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tnePR-000806-TX
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 08:58:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740664720;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pl6ecwuwNAq4GurPYG+n+Gv46zl2dCc56pniwaicPPE=;
- b=H+76djMUfQ5rh3iAbht8YWS97yACE4TcIJeiDyn4I5eRdSL39CHehc2ZL+OAhW7zBR0Hx9
- sZNs93bWTSw40k/+qYzesIp777v8TgxJ3KlUu+7ooq1o0QUa5mfDRkO0Kg6NkdIu9S99XH
- wiIDKHRpKXg5iJ1/0UHpdU6PvrlDtGs=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-53-QvEuhrM6Pn2E-LKiVv42Nw-1; Thu, 27 Feb 2025 08:58:38 -0500
-X-MC-Unique: QvEuhrM6Pn2E-LKiVv42Nw-1
-X-Mimecast-MFC-AGG-ID: QvEuhrM6Pn2E-LKiVv42Nw_1740664717
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4399a5afcb3so8857005e9.3
- for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 05:58:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnf5z-0001nr-3i
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 09:42:40 -0500
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tnf5w-0008SE-L0
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 09:42:38 -0500
+Received: by mail-yb1-xb2b.google.com with SMTP id
+ 3f1490d57ef6-e573136107bso931703276.3
+ for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 06:42:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1740667354; x=1741272154; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ocn/d1/FX1YV6bfS7ORusoHXK2VvAcMUIDGKps4AlVc=;
+ b=HNPFpwcV+MYen3EEVvhCzp7gTPT/I8YR/ZTvZhqQJjP1z2Z0Ob7ROT7MRmcl07fExu
+ 5DigGZulpBx8C3gymxcCm1Zkskc7AA85GQwxLei3xGxB9kIN5D4vk2Q8+tVl9TEhCH1/
+ wsKWjwZmfWwIvd0Pk+JZKYhDrhHza7cKU/GeogfTB8zveTJLPOieK3al3gwgdS//qawa
+ X9repq6FrjrQBTWm/fOMf4/7FKqg/iDFi7DAIXH8wF8frziX4D1unRLXn8JRyTOotdWi
+ k5pb/UTz9XS297iaTQ37LHouZhWdHUkhJyWgOaLN76r4NvOX998MEobpn10rLCSRpmD7
+ PqdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740664717; x=1741269517;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1740667354; x=1741272154;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=pl6ecwuwNAq4GurPYG+n+Gv46zl2dCc56pniwaicPPE=;
- b=wUiYKkTMWv6C7MO9uTHL9yOyzIpG0Gk/p32H8S8YeC8LI2pWxG0j9b2P5GpdwrWC5m
- 1HEoSbYh8zwL5s+M5ufdmEG9q69MLQ18kiWysuvVCP2AaQkdKuK7B12bslPIVfqp0hok
- uNke0KAF18Pl8XTcbW8SJGHABSWyN2BVD3UiY5+QDmPgcpi5oSQGVYOVJuK2X7AbsRhs
- 7EMEPCeIvRO0V84HtZ19nmDmmrf5Tn3nV9NLlV73qSgGVGdJvNp3+gplzarDjAo2ZtlC
- /PEoBChUeD1nfRvoV1xhpw5tcoCKWUd/j+flSDR0B2DhFEykqOUi5RZaH0ArtzgflVy1
- XFvg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUDmcyfGsy7mf2ED/v8FvGFBuNWR07XO9c6Qgzmmia3tkSnE3UgfD+VtWjktZEBJuFHR/bXmdoL2h+F@nongnu.org
-X-Gm-Message-State: AOJu0YxmfZr/TyWr7NTkvSvfhb9gRfOAUt2gjzZbHLaUjV0DxtHT9RTp
- r0fnwG9oi4yygK8/ngO59UuttsmdlCojIKUBMy5rOpnymDZwK31vJbtfylEbxiDfQBvz+m1140h
- VaabyJkV4Cz5a+dsftSf5nGtLsSBbqPWfYEFb/llDerRapV9JFJAc
-X-Gm-Gg: ASbGnctgKrD9AMSykLddje0p8n42AQGsitB6MF8dPwSJzcjN+LIMw3orPH2XO1yb1DJ
- tb1UV+DPCKRgrnL8GMkD5LZr6Zgnr/7shf2XoJRQ1h4nLK9sjJ2K+NjWw8O6uRMgRlYbwiYu4h5
- XGQZiyKJqaMD0p7Sw6lRGKKrAKiG+19C+1wls4pdH7FFLlkQHjvaZxNp34yPBa84gerxVjPfYdh
- Ejy5VAcKJj8a8E5+XfN9oq89oxc4y970mbjyCqtPORsR2D2WrcmGiYBpy/jMvlz/ThKOtpcinhQ
- KgB2wdXjdFbcPH9V26nR34SUKs8Semiy2jSxWoEtbGinEbxUps707uNLCzQmfeU=
-X-Received: by 2002:a05:600c:1ca9:b0:439:94f8:fc79 with SMTP id
- 5b1f17b1804b1-43ab7ae46efmr102740715e9.0.1740664717522; 
- Thu, 27 Feb 2025 05:58:37 -0800 (PST)
-X-Received: by 2002:a05:600c:1ca9:b0:439:94f8:fc79 with SMTP id
- 5b1f17b1804b1-43ab7ae46efmr102740465e9.0.1740664717120; 
- Thu, 27 Feb 2025 05:58:37 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43b7a27ab9fsm23789115e9.25.2025.02.27.05.58.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Feb 2025 05:58:36 -0800 (PST)
-Message-ID: <40b0deac-17ed-4720-9cfd-95c4de363182@redhat.com>
-Date: Thu, 27 Feb 2025 14:58:35 +0100
+ bh=Ocn/d1/FX1YV6bfS7ORusoHXK2VvAcMUIDGKps4AlVc=;
+ b=FguHslVop0lBGQ81bA06Ri+jpwS1/KsAuwcBvGPFIkUlvpz8CXSVFkSXckD+wCtDXq
+ 7TL76c4v2/h/M7cWbdmMpSHLLdKUJE56eKbB+fCeyQcIu5GfMloJg/bmxfdazuBdpVch
+ WCACrr46A4v2qrNGfvZgFrPP2jtVK3H2P7HwT7pDjpPCyhuwIufldA57hGCQi7bQ4UKo
+ 6xPsXNoiDGKs2LivXCzr7+d47BbxZktk3+4ymb0pbDqQaxNPwx5IeEPQp8v2rhqBNta4
+ g9sLRuFjjhcungHi4r4FKeLYEk25gKyRNdFUOco32szagmnMmhnGCbYlXVD+kQ2CtDNH
+ 6pWQ==
+X-Gm-Message-State: AOJu0Yy6iKs3xqMfEwX0Ol3TYFpKSCa/3RYCYh/wQWPfHAy36Xx48MvH
+ o6IIdRh6WA2Qu1iryDVfEN1sbNfuuaDrVHB9S3/O9pMirWBaxFZNNzg4Ns5bybg9w4kPe4Z6IYk
+ /89EmdFJNDkB2eQZ+aj4g3YiMJh7bMBqUUS9/Lw==
+X-Gm-Gg: ASbGncs0OcI/G77/gX2vR7ahIobY24s70p8ontdLTsWcOPNhr6dO7LtRzJlX0t2aPWo
+ Em26nLWgKXjGGhnTMEJ+RWg87237cKCenwBlCRGWbYUNS9goL1Q6HlFAgrZpocC2uQQMiGJgtKM
+ JNnBKI167v
+X-Received: by 2002:a05:6902:150e:b0:e5e:85:a9f0 with SMTP id
+ 3f1490d57ef6-e608a6a09c0mr7332624276.6.1740667353910; Thu, 27 Feb 2025
+ 06:42:33 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/arm/smmu: Add invalidating function of config data
-Content-Language: en-US
-To: JianChunfu <jansef.jian@hj-micro.com>, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20250221031741.69946-1-jansef.jian@hj-micro.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250221031741.69946-1-jansef.jian@hj-micro.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <6866d6b6-24af-4743-8407-26ae2998dd21@gmail.com>
+ <CAFEAcA9B40F21r9RgeDd7k09juy35k9QWewzgkmyNkYVK_K0-g@mail.gmail.com>
+ <CAFEAcA-U3QTWKhNr4Nd39hX7e+i+HDEyu8EZfSOm37GvvaH-hw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-U3QTWKhNr4Nd39hX7e+i+HDEyu8EZfSOm37GvvaH-hw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Feb 2025 14:42:22 +0000
+X-Gm-Features: AQ5f1JqPj_GeB6VHJUzEIepiQLN3FpontCJ0wn56yXuIhxbHnGaNgJ4jOfCz6TQ
+Message-ID: <CAFEAcA8SFHQGdhSo0UGtSPFyuuJZWPDRMCROQHMBvLSVtQ2mBQ@mail.gmail.com>
+Subject: Re: ldrd implementation issue?
+To: Stu Grossman <stu.grossman@gmail.com>
+Cc: qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zD4rNkXlShc0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dG342PiJ+iDD
 
-Hi,
-
-
-On 2/21/25 4:17 AM, JianChunfu wrote:
-> Uniform the removal judgement of g_hash_table_foreach_remove(), previous
-> name seems to perform the actual action while it just returns a Boolean.
-I had difficulties to understand the commit msg.
-
-IIUC you meant smmuv3_invalidate_ste() name is not self explanatory and
-you would prefer to use a similar terminology as the one being used for
-other hash table matching functions, ie. "remove_by" and introduce a
-helper that invokes the g_hash_table_foreach_remove with the renamed
-function. + add "No functional change intended".
+On Mon, 17 Feb 2025 at 13:03, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Signed-off-by: JianChunfu <jansef.jian@hj-micro.com>
-> ---
-> v2: - move smmuv3_invalidate_ste() to smmu_hash_remove_by_sid_range()
->     - add function smmu_configs_inv_sid_range()
-> v1: - Rename smmuv3_invalidate_ste to smmuv3_hash_remove_by_sid_range
-> ---
->  hw/arm/smmu-common.c         | 21 +++++++++++++++++++++
->  hw/arm/smmu-internal.h       |  5 -----
->  hw/arm/smmuv3.c              | 17 +----------------
->  hw/arm/trace-events          |  1 +
->  include/hw/arm/smmu-common.h |  6 ++++++
->  5 files changed, 29 insertions(+), 21 deletions(-)
+> On Tue, 11 Feb 2025 at 10:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > (added qemu-devel to the cc list)
+> >
+> > On Mon, 10 Feb 2025 at 17:26, Stu Grossman <stu.grossman@gmail.com> wrote:
+> > >
+> > > I've been getting SIGBUS cores with a bunch of user apps running under
+> > > linux 5.15 and qemu-system-aarch64.  These happen to be 32 bit (T32?)
+> > > programs.
 >
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 3f8272875..69544392a 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -225,6 +225,27 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
->             ((entry->iova & ~info->mask) == info->iova);
->  }
->  
-> +static gboolean
-> +smmu_hash_remove_by_sid_range(gpointer key, gpointer value, gpointer user_data)
-> +{
-> +    SMMUDevice *sdev = (SMMUDevice *)key;
-> +    uint32_t sid = smmu_get_sid(sdev);
-> +    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
-> +
-> +    if (sid < sid_range->start || sid > sid_range->end) {
-> +        return false;
-> +    }
-> +    trace_smmuv3_config_cache_inv(sid);
-now the code has been moved to smmu-common, would be better to rename
-the trace into
+> > > The fix is to defer the register stores till after both words have been
+> > > read from memory.
+> > >
+> > > Here is my fix:
+>
+> [snip patch]
+>
+> > Yes, this fix looks correct to me. Can you provide a
+> > Signed-off-by: tag for it? We can't accept it as a patch
+> > without that. (I can do the other administrative tidying
+> > up of it into a commit, but the signed-off-by is what says
+> > you have the legal right and are happy to submit it to QEMU
+> > under our license (LGPLv2.1+ in this case)).
+>
+> Hi -- this is just a nudge about whether you can provide
+> a signed-off-by line for this fix. I'd love to take it,
+> but can't without a signed-off-by. (Otherwise I'll have to
+> reimplement it from scratch, which I'll do at some point.)
 
-trace_smmu_config_cache_inv and move it into the 
-# smmu-common.c section in trace-events.
+I had a closer look at our LDRD code, and I noticed that we also
+have another bug where we're not implementing the "must be 64-bit
+atomic if the address is 8-aligned" requirement. So I wrote some
+patches which fix that, and also will fix the page-crossing bug
+(because they mean we now ask the memory system to load 64 bits
+and then split it out into the two destination registers, rather
+than doing two separate 32-bit loads, so we will take the fault
+before updating either register).
 
-> +    return true;
-> +}
-> +
-> +void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range)
-> +{
-> +    trace_smmu_configs_inv_sid_range(sid_range.start, sid_range.end);
-> +    g_hash_table_foreach_remove(s->configs, smmu_hash_remove_by_sid_range,
-> +                                &sid_range);
-> +}
-> +
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl)
->  {
-> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-> index 843bebb18..d143d296f 100644
-> --- a/hw/arm/smmu-internal.h
-> +++ b/hw/arm/smmu-internal.h
-> @@ -141,9 +141,4 @@ typedef struct SMMUIOTLBPageInvInfo {
->      uint64_t mask;
->  } SMMUIOTLBPageInvInfo;
->  
-> -typedef struct SMMUSIDRange {
-> -    uint32_t start;
-> -    uint32_t end;
-> -} SMMUSIDRange;
-> -
->  #endif
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 4c49b5a88..9da3b6df0 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1277,20 +1277,6 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
->      }
->  }
->  
-> -static gboolean
-> -smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
-> -{
-> -    SMMUDevice *sdev = (SMMUDevice *)key;
-> -    uint32_t sid = smmu_get_sid(sdev);
-> -    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
-> -
-> -    if (sid < sid_range->start || sid > sid_range->end) {
-> -        return false;
-> -    }
-> -    trace_smmuv3_config_cache_inv(sid);
-> -    return true;
-> -}
-> -
->  static int smmuv3_cmdq_consume(SMMUv3State *s)
->  {
->      SMMUState *bs = ARM_SMMU(s);
-> @@ -1373,8 +1359,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              sid_range.end = sid_range.start + mask;
->  
->              trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
-> -            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
-> -                                        &sid_range);
-> +            smmu_configs_inv_sid_range(bs, sid_range);
->              break;
->          }
->          case SMMU_CMD_CFGI_CD:
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index c64ad344b..95f523361 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -15,6 +15,7 @@ smmu_iotlb_inv_asid_vmid(int asid, int vmid) "IOTLB invalidate asid=%d vmid=%d"
->  smmu_iotlb_inv_vmid(int vmid) "IOTLB invalidate vmid=%d"
->  smmu_iotlb_inv_vmid_s1(int vmid) "IOTLB invalidate vmid=%d"
->  smmu_iotlb_inv_iova(int asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
-> +smmu_configs_inv_sid_range(uint32_t start, uint32_t end) "Config cache INV SID range from 0x%x to 0x%x"
->  smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
->  smmu_iotlb_lookup_hit(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
->  smmu_iotlb_lookup_miss(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index e5ad55bba..e5e2d0929 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -142,6 +142,11 @@ typedef struct SMMUIOTLBKey {
->      uint8_t level;
->  } SMMUIOTLBKey;
->  
-> +typedef struct SMMUSIDRange {
-> +    uint32_t start;
-> +    uint32_t end;
-> +} SMMUSIDRange;
-> +
->  struct SMMUState {
->      /* <private> */
->      SysBusDevice  dev;
-> @@ -219,6 +224,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl);
->  void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
->                          uint64_t num_pages, uint8_t ttl);
-> +void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
->  /* Unmap the range of all the notifiers registered to any IOMMU mr */
->  void smmu_inv_notifiers_all(SMMUState *s);
->  
-Otherwise it looks good.
+If you're interested in testing those patches you can find them here:
+https://patchew.org/QEMU/20250227142746.1698904-1-peter.maydell@linaro.org/
 
-Thanks
+Thanks again for reporting this bug.
 
-Eric
-
+-- PMM

@@ -1,204 +1,181 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp294146njb;
-        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXT+qUsW3ADa7jitY5nrgdXXwcGcxE2cYmGfcI8Fhf+UFyZ5Ozi11AXWGKJG5pjS9oC+xyoVrB3BaASfg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEvhl2aZD8ZSpXaSlz+9KDjhbxIycQgF4w6sh+VtFrB7z5t0Kccw1K5ZFZo5uXfGupFTAkY
-X-Received: by 2002:a05:622a:1a90:b0:472:6aa:d6be with SMTP id d75a77b69052e-4737721bcbemr133286591cf.17.1740669495600;
-        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740669495; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp312726njb;
+        Thu, 27 Feb 2025 07:45:35 -0800 (PST)
+X-Received: by 2002:a05:6a20:9e4a:b0:1ee:d317:4411 with SMTP id adf61e73a8af0-1f0fb429740mr22729431637.0.1740671135425;
+        Thu, 27 Feb 2025 07:45:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740671135; cv=none;
         d=google.com; s=arc-20240605;
-        b=M52d9IzmelaX6rm2OUWqDKiSOevK1xP/Hz/fb9pmJdezJNm5UjUjWtqi4AoRPEA60m
-         3zBeqiMsN+wbWyHXx988aNXC6wh9Caob1Xh8YASlj71N3FZJ9uv6/CIoFFf5tbAM4fQ+
-         B/s6H6rVQAhW60OpcnjMSDJ9Dgzsb1BdyUevDJURdeZUhv9Fm3eQ5Dig7L7FUodjJyaq
-         fwx5loHlKecc9WQl/LBGpBdVXrL5ezP01WWWDNNtgmO3qM6Axu//IIwlZ7U880WFdWHc
-         mvddl1Azh6+avRjuCurRTQlC0eTFBOjdrWam7BaBEoawZ/6Vm2YJU9qiU5W0GnmNmubA
-         WseQ==
+        b=JhrtDxoBifJPZsW4eo/IhnjW/VKzI/UOi9Bghv8Tu1L2Llf28C5NhsAy0/nvwq3lcI
+         Gu7YaRPXcvADdxNvm7/BsLPGWRc1lryOD4nt8yTIMrzTbJf74pOpa622qYrNYQ5hqQfD
+         prS+Ne6kJ1HdIpukOisINyQl8HlkbqK/9VvM++iiTPp2ku4mtM4FGgzBzvqpIO1+ryXe
+         dofA1UoqfOlcS1LnYLYDA9U0fVKfdcvMMGl9pRXNM18ZBmsF7aOoeMtoOvmtLW7sL2dQ
+         sLrH1EcF68x/MhsdtuCq923Par04vfVCGMapS2gxWB2/sBaq7i5XRy5mCmYfb4EcbIN1
+         67qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
-        fh=l1OBCuwuD8jh4Qnd7Xc9VvHFicE9zxdUKNUaOxak0/4=;
-        b=TZqaUziQZ74J29fL+MIkvWqh6Qpz3COW1mM93XVfeuoXrgaI7pUMxO/fQl8xQ3Z6c8
-         w/DmhZhTJeF57dmN24vnW8yYHQ0zsuE+WlBHz9NEvnKKc0ogUW2Tk4C/VAFrwZmsuRre
-         cDecOfbBISVwHJM3SIEO87EQKphhwlhbnhNOeXMxzqf/c1wx95cI2M34pfuqaoqpDkz9
-         Badq/Zj/qsk5gfUWGNC3SZ1ZE4SK8pOmf1Wxt4Ai6veQs59XKdFLfvk7i3uoqRY5hdR7
-         vjb0XfVCTQr2lk6nbC0AGC8eJKxqnJkgDBCZWqicDuvCeKi5/mcCDej4Q/fmIlaqO2tW
-         dSaw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=kJ8rK0FFD6iEbjuP1Yv2J4L4iSn5M9Hv9g172C7QGlI=;
+        fh=yloooj7WQ37Gm85nNDMkKFmIGwKWKnVT8qyqXTwAq1Q=;
+        b=lFyKFT50BPiPl9LSjRjwubvE6KekOeLJk8aZn27Wgdv2hJeeaI+xBkpVT7RzfjPclC
+         YbmuXzAES9MjIjzliToHy1NWYOPGhcqDM9fHqK76ICXjDxgnsUPQKenNC7QekMeWxlO1
+         J9el1hyl1kEziL3CfggHrlZJ483ay6nZrb83uqRQVFj0wgDdS4q8/0IfERVEQFMSgLUv
+         Uo2bJ830sy8N0JRQUCNZyNFr7BOgrRVsVIOAZuNIZgQrF97a1H5yar/0gduRKgFOHc4I
+         f1JvJ3XYfzF0GSseHGkKadOe5P/tyK2rPsp4V7DuT5UGz4mh0UvP2TvFQnYRymNF5skg
+         nd6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jprxz0d7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="Qr/rxHrc";
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47469b37dbfsi14363081cf.200.2025.02.27.07.18.15
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-734a001e5b5sor1310175b3a.5.2025.02.27.07.45.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 27 Feb 2025 07:45:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jprxz0d7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="Qr/rxHrc";
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tnfe7-0005aL-N7; Thu, 27 Feb 2025 10:17:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnfe5-0005T6-BR
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:17:54 -0500
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnfe3-00072L-IF
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:17:53 -0500
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e5372a2fbddso742353276.3
- for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 07:17:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740669470; x=1741274270; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
- b=Jprxz0d7bgTbAenZCDV+ekwznfrj7GQ/uC7KVFdtaE5gKR/Yl/GiDCJ/NtCgxLFT0P
- dTNSU0sO4pZ39HhPtoSDMqJYxgdRZNhzZ5tGXOeGTqPUNEVYt4d3S41cjL3zqB35PnwK
- fjX6JUdojlfEVSkS9zogYIwFkuvPCRDCGeU1mFrndkr9tYurBuvhn8YYBYwD8SKNSP1h
- 1jsvzrXZl+6NpL+JWthRk4h2yOG/NgHUgkHklvZd40e9cmJ8o1c+xTb6saUY0GhqUHb3
- 4rHRa77tC8/eZgM4TMCmEVW+bRWxBNyZKSJ+uS7NgQq/moOo6W5HBXeY9tvaLioZc3jC
- ZbEA==
+        d=ventanamicro.com; s=google; t=1740671134; x=1741275934; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kJ8rK0FFD6iEbjuP1Yv2J4L4iSn5M9Hv9g172C7QGlI=;
+        b=Qr/rxHrc9J2y1ITLPCksO5leGtb+DE+3Wb15oG1CJW8nWYVJtmCgb8TymJSZf25amu
+         bv8U/2ZQy47zjR6B71syLuoku9HkTqC//YfjCLV9AB5zMdP1YcSEzdHVbGKQYl48UC5g
+         4zzM+qohghSxZtl23p61iZitCGh9BjOOYY3fYdidJKRF86t1WIYOon31lN7MKNuFdISk
+         AgotmCRRB6BdUpD3pkwtmOe1LFL4TFZJP9UHzl52qRU92LBCgIqygBReZrvArHYE4S5g
+         C0pMatD0JOXIFtoMxj82wNDVe03GNdkDU1L8V8JRzomLJ2yZPDsm9++N38Mf41Bd0nX+
+         zrsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740669470; x=1741274270;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
- b=fAyTbRNiYJLDnTzBMipKqefVjJ/kfESJc981tGq9Dq6Znj7XyyyK8MF3I7a2gx3Ovu
- oAuFTfSsPJlzXR1qUqoC8F4iTshTOSUeJ4DVo1R8JzgCJf5fi3xOzN3/yqN9QQYYyNjV
- Xwvv6qKSFC8xYxvCAiwGfCgQVLnO+B96CaP6t/0JIZN65LwXxrRlSocm0QSty6SDREaK
- tzh31ICQ7ySgZENHw6GG6RkuD7mnuK0EvBbrjmtqoQvn1doP4+E0NjgLtvOtRtPnTy19
- hTAzc+oSDmrfCG4/qDiyLC4i0TO1JjwDeBXRFTqrbsrzLa5odel5ZbnrWfz8aJLtZSq+
- TzMw==
-X-Gm-Message-State: AOJu0Yy2H4zxPA9CFkHyPhfQX6lSpVuQqFYwe+rClVXfdtiNXJgiar9n
- uDRjBLgJbBuyrnwDWbDTsG4aolQokDQSYMbcdRlCsafOXHNUfgyKdb3Z9WPm+VQLv9ZMJTzzRvA
- FOoGbE/00c9PY1yRiGwLLSuFenSPn9dWaa4lszg==
-X-Gm-Gg: ASbGncv1Ty75IikjcWmfP3lj1bB7vFybSa/OzQzTY5F+FQ742vCjvyJdGxipbojlKJI
- vzDc6a6Ii4TBnWOXQ7lleYTTnRdIF+Q+F0wdnUZfepvh63lF6HRX2MqpmvTBEO6HVB3VigWqTky
- F5OPG8irkB
-X-Received: by 2002:a05:6902:708:b0:e60:a525:264e with SMTP id
- 3f1490d57ef6-e60a5252d60mr2768269276.43.1740669470074; Thu, 27 Feb 2025
- 07:17:50 -0800 (PST)
+        d=1e100.net; s=20230601; t=1740671134; x=1741275934;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kJ8rK0FFD6iEbjuP1Yv2J4L4iSn5M9Hv9g172C7QGlI=;
+        b=WuQ45yY7gz2rH4i6nVmWFCUFyJi8aIcgmFKecRce+yX5N/Md3ULFL/TwTe/Yw+sZbL
+         2IXI5S/h8ZUSZfQLRgzdnGIBRBvKFS5gikDzllbuRvofvChYNuxV3xXk7WJuSWx6+egM
+         u8P8LxAfi2Qf7O5rop4RRTxtluosVZP6FmejMaXiSc9eFzSOkbevqWQf1UOyTvFaYRiA
+         qzKsv1fODDPDyp/uyQxcrpW6QFv5HITldFpl7kd/Suvt7fb1655q/ubnS7aX6cvEUYSb
+         T1a/0bWyQYuy+RmhmmP1uLogqWDwdyLy7Wzfgtz5dhalrUY3gDQoH1bzKC6CKAlbSXfG
+         I0fg==
+X-Gm-Message-State: AOJu0Yy/f37CM8YLGM/9sY4n+X/rMVIeIBOa7hMtci1+jrPhr8bZN/OQ
+	/A6f7F5tnMDX8g/qlO4P8XvbfAOU0aHt3ay4jygatcf0zzlELCR3tWRGua/iaoyC1/SWcR1z3RM
+	/
+X-Gm-Gg: ASbGncuO5DmVde/XF1FgpjLGZJgZKVXSm7eSmde+JyY3Oik0ykfaVTI7eg9iSkodXlK
+	pcg4TTnKVegH9Mzq/6a7F3LuKyIZlJOQAOJcZ/GTIAWlesOcNzM8WOYePnAarnPHCygR670krFy
+	v9tt27by8TuvWEn1en4AA+jOrey4eH8jYAvKYofXaaaROOjmqyma7X93uZgBSKB761rHznIv7Se
+	ddc+m5t8iZ8mTpkbrSt0C4O8Tj+zzqNr/yOS7P66jai3vp0dIJ5rlW2ZnI72wR902dLE2WCXUKW
+	7bkhOQ/k7nx6LOGJp5ulRRdA21xW0WRyl/rAVU4RcA==
+X-Google-Smtp-Source: AGHT+IHFXIBpNBlGID65V8Gr7B4vd0ksr4mJHJ2zXHzdeQkUaKcamY4ln8eA3BPha/IgegU/x6wV1A==
+X-Received: by 2002:a05:6a21:6b0f:b0:1f0:e708:56e2 with SMTP id adf61e73a8af0-1f0fc24b3fcmr20780042637.22.1740671134486;
+        Thu, 27 Feb 2025 07:45:34 -0800 (PST)
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from [192.168.68.110] ([177.170.227.219])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-aee7de1f7a6sm1583674a12.30.2025.02.27.07.45.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Feb 2025 07:45:33 -0800 (PST)
+Message-ID: <a069dbfb-c0bf-417d-9925-e419c071eb4c@ventanamicro.com>
+Date: Thu, 27 Feb 2025 12:45:27 -0300
 MIME-Version: 1.0
-References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
- <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
- <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
-In-Reply-To: <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Feb 2025 15:17:37 +0000
-X-Gm-Features: AQ5f1Jofy-N_7pw4vI_CvfZeM5uZwIFAlKkw3eflyH-Tod0AOeIM5rkUn0f-1k4
-Message-ID: <CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com>
-Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
-To: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FoOlhA2LEdTI
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 25/25] MAINTAINERS: remove widely sanctioned entities
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Kyle Evans <kevans@freebsd.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Riku Voipio <riku.voipio@iki.fi>, Warner Losh <imp@bsdimp.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ed Maste <emaste@freebsd.org>, Thomas Huth <thuth@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20250226140343.3907080-1-alex.bennee@linaro.org>
+ <20250226140343.3907080-26-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20250226140343.3907080-26-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: HzN7lHRLN0rB
 
-On Thu, 27 Feb 2025 at 09:15, Sourojeet Adhikari
-<s23adhik@csclub.uwaterloo.ca> wrote:
-> > The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
-> > being wired up in the function bcm_soc_peripherals_common_realize()
-> > in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
-> > interrupt controller), and it isn't valid to wire one input
-> > directly to multiple outputs.
-> >
-> > In fact it looks like we are currently getting this wrong for
-> > all of the interrupts that need to be wired to both the
-> > "legacy interrupt controller" and the GIC. I think at the moment
-> > what happens is that the wiring to the GIC will happen last
-> > and this overrides the earlier wiring to the legacy interrupt
-> > controller, so code using the latter won't work correctly.
+Hi,
 
-> I'll try reading through the relevant sections and send an
-> updated patch later next week. From what I can tell it falls
-> under the bcm2835_pheripherals.c file, right?
+A bit offtopic: we just received patches from Syntacore [1]. Syntacore
+does not appear in the US sanction list website, but in a Google search
+I found out that Syntacore was acquired by Yadro in 2019, i.e. Yadro is
+its parent organization. And Yadro has been sanctioned.
 
-Yes. To expand a bit, QEMU's qemu_irq abstraction must
-always be wired exactly 1-to-1, from a single output to
-a single input. Wiring either one input to multiple outputs
-or one output to multiple inputs will not behave correctly
-(and unfortunately we don't have an easy way to assert()
-if code in QEMU gets this wrong).
+Does anybody know the rule in this case? If a parent company is sanctioned
+does that cascade to all its subsidiaries? I have no idea whether we can engage
+with these patches or not.
 
-So for cases where you want the one-to-many behaviour you need
-to create an object of TYPE_SPLIT_IRQ. This has one input and
-multiple outputs, so you can connect your wire from device A's
-output to the splitter's input, and then connect outputs
-from the splitter to devices B, C, etc. (In this case A
-would be the timer, and B, C the two interrupt controllers.)
-Searching the source code for TYPE_SPLIT_IRQ will give some
-places where it's used. (Ignore the qdev_new(TYPE_SPLIT_IRQ)
-ones, those are a code pattern we use in board models, not
-in SoC device models.)
 
-In this specific bcm2838 case, it's a little more awkward,
-because one of the two interrupt controllers is created inside
-bcm2835_peripherals.c and one of them is created outside it.
-Since bcm2838 is already reaching inside the bcm2835_peripherals
-object I guess the simplest thing is:
- * create a splitter object in bcm2835_peripherals.c for
-   every IRQ line that needs to be connected to both
-   interrupt controllers (probably easiest to have an array
-   of splitter objects, irq_splitter[])
- * in bcm2835_peripherals.c, connect the device's outbound
-   IRQ to the input of the appropriate splitter, and
-   connect output 0 of that splitter to the BCM2835_IC
-   correct interrupt controller input
- * in bcm2838.c, connect output 0 of ps_base->irq_splitter[n]
-   to the correct GIC input
+Thanks,
 
-(This is kind of breaking the abstraction layer that ideally
-exists where the code that creates and uses a device doesn't
-try to look "inside" it at any subparts it might have. We
-could, for instance, instead make the bcm2835_peripherals
-object expose its own qemu_irq outputs which were the second
-outputs of the splitters, so that the bcm2838.c code wasn't
-looking inside and finding the splitters directly. But I
-think that's more awkward than it's worth. It's also possible
-that we have the split between the main SoC and the
-peripheral object wrong and either both interrupt controllers
-or neither should be inside the peripheral object; but
-reshuffling things like that would be a lot of work too.)
+Daniel
 
-(PS: for the other "not 1:1" case, where you want to connect
-many qemu_irqs outputs together into one input, the usual semantics
-you want is to logically-OR the interrupt lines together, and
-so you use TYPE_OR_IRQ for that.)
 
-thanks
--- PMM
+[1] https://lore.kernel.org/qemu-riscv/20250227144200.69270-1-saveliy.motov@syntacore.com/
+
+
+
+On 2/26/25 11:03 AM, Alex Bennée wrote:
+> The following organisations appear on the US sanctions list:
+> 
+>    Yadro: https://sanctionssearch.ofac.treas.gov/Details.aspx?id=41125
+>    ISPRAS: https://sanctionssearch.ofac.treas.gov/Details.aspx?id=50890
+> 
+> As a result maintainers interacting with such entities would face
+> legal risk in a number of jurisdictions. To reduce the risk of
+> inadvertent non-compliance remove entries from these organisations
+> from the MAINTAINERS file.
+> 
+> Mark the pcf8574 system as orphaned until someone volunteers to step
+> up as a maintainer. Add myself as a second reviewer to record/replay
+> so I can help with what odd fixes I can.
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20250221161443.2321327-1-alex.bennee@linaro.org>
+> ---
+>   MAINTAINERS | 7 +++----
+>   1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1911949526..9cdfe19115 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2529,8 +2529,7 @@ F: hw/i2c/i2c_mux_pca954x.c
+>   F: include/hw/i2c/i2c_mux_pca954x.h
+>   
+>   pcf8574
+> -M: Dmitrii Sharikhin <d.sharikhin@yadro.com>
+> -S: Maintained
+> +S: Orphaned
+>   F: hw/gpio/pcf8574.c
+>   F: include/gpio/pcf8574.h
+>   
+> @@ -3627,10 +3626,10 @@ F: net/filter-mirror.c
+>   F: tests/qtest/test-filter*
+>   
+>   Record/replay
+> -M: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+>   R: Paolo Bonzini <pbonzini@redhat.com>
+> +R: Alex Bennée <alex.bennee@linaro.org>
+>   W: https://wiki.qemu.org/Features/record-replay
+> -S: Supported
+> +S: Odd Fixes
+>   F: replay/*
+>   F: block/blkreplay.c
+>   F: net/filter-replay.c

@@ -1,133 +1,133 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp168134njb;
-        Thu, 27 Feb 2025 04:03:14 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUcY5KuAIlTTxQJzJNF7L6KjLRktIGokwOED24uSGIQTM2ePeletl1P4zJhNXHPoMxKHBTIeVEBv5BDGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH5lBbs0CgTtWf4+gMTsANgsOv4Ou1KoBt1mwnCXn2ko6vDFLyXuYas8eodkW8ys7d8qe3h
-X-Received: by 2002:a05:6e02:1fc4:b0:3d3:e191:71bd with SMTP id e9e14a558f8ab-3d3e191731emr14531485ab.16.1740657794602;
-        Thu, 27 Feb 2025 04:03:14 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740657794; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp168566njb;
+        Thu, 27 Feb 2025 04:03:48 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXa+wyFrh7KQ6opea5Tpuyro01tw8rB1gmWE2/efkxjt58/vsXt7lJG6HeJoqAJpR1PNdu98Aw/561RWw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG6OS5uFim4hqEo0V6tMPB0754O73e60EJyhac1CF/7zD7fTVauJyHv0plrJoLE3h6qctVr
+X-Received: by 2002:a05:620a:448e:b0:7bc:db7a:4f78 with SMTP id af79cd13be357-7c29f410f72mr439497185a.4.1740657828533;
+        Thu, 27 Feb 2025 04:03:48 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740657828; cv=pass;
         d=google.com; s=arc-20240605;
-        b=NKznKp5i8TkD7LCWsykwj5oHqdkYeuTLu++090cJJK53uCc9Y28o/bMG8OOvOUrCB1
-         aY353SVqUOA1CtU6UWTBIb4RL6adPkKsTikcRc1adDc2vqj16C5mJIHGNm3k/SDPKJw3
-         ICDpBnqIhaHR+4SWXdgQ8zczGkcBc9KDq82fzDyynz4s/sKoy40VU/QJVYlE55pmcY9m
-         tGc/my7A3Ffody9ca5ddD401nGYvO/SRHkBuClW3atT0p9O1aXx1zqnkL9zOcZNKIDen
-         5pbUosQhXsVHM+oX8/MCVW9tNKpJsnYZ7cVm5gfHGXs34p7PlqsCsnBx3mtS2a8WSKzQ
-         GfXQ==
+        b=TYrqvKu0wyYXEyFvnVX1Vy+Ikjs1lfsl6cckeBXfxAg0HofcDV/6KiPKKwsODGPQeE
+         VI7G5a+9gwr6/FigNNc9H1naKaGUr1adh0/2mJq3aG6DqXfXIghlziQtxV9cw7rvEHHR
+         aSO+HKAZYbfZgxbx+JgGkJdN+RtH88el7JBq4/U460lkQ+f+K0oKYeg7Qt5Y8J2WNi1I
+         NuMO0ljqECSZhj+iD7oXhYzf7vG4nxkW1muzhXaUanjkU0IMhfNT21XIzlYSun5hT3pd
+         BQ0sBlFcIkp3crz8jRt+Th7R/D6VHZACRAcFZ1LqfDMh8C49x7BO2YND1uoXtWPV290b
+         Df0w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=v5xj3BC1T+wGPDd2kj9+gKjm5LAXNQxtfhll0pXUlUM=;
-        fh=AtYg/xFoWsy74i9hjeGmQn2X8xQe/c8xQSEJNVaCsCY=;
-        b=RDEEVVNtuosK/qnCH1R/ns+sqSUkupS1+mdvnyLT/Zo7tEQjy41na8vk134LW4OmWG
-         J5DcJVW7Lr1oVd4QaVBmqNJIZpZCsP5bYmKQvQmUtET2ehukA5pRjlXt8Bpb/ff1gSWw
-         15LIFWkoH1ifVjC9sHCHYD8xPQ3z0J25oHKyGnSo/uI3w7G4WbIBFOYQLvDx3v3eo2l4
-         iL65/fsgXjdnzLy6in6blZvkrQDhhIE9V6YiLZARWudw4qOyYDLmHE14o40kVIL0qLHz
-         D/jddvaj5sIunLyiScRZS0wzst+u0IxuLjLimnJ0VukNlavE2QdssLmw8xOq5Km2suDc
-         UqRw==;
+        bh=A3IIRWTfz/eEhKgTnFWptplWM8F1KHYcG7w57dEy7Ao=;
+        fh=dG9qBIzyZszBxLY7sP2LUJ6aOj9RwaRqn+qDeH9zlfo=;
+        b=QZnuGerfSxiQ2LGxjTEgA8gfxdUIlomfCmf8D+1n4qWE90G8i7CBCO+NTFTccz/+vV
+         5gnaCYZ5OnyWqioBQFILzl/InxIaN1u2uPHHqgwcE8SDBorZwXDReMoW5N2NIXFhYNeu
+         VJaw09Sj/KplyNXbDoNb1i3GNbTLd3UCvuSSH1reFJSnT0GLh+vmhoFSLRV+G1zyQv/D
+         or1F9xeDOMBT/6Q/kUeHuGH3r0OVCCsKEhf/jjX1YpxFSH5PsjBLDnLXWYBUW9AYA2Ol
+         bTux6y6Xs3ll+h+f4xcWD0UYZIREDuw5oqnbF38So7E4JLKsUHhUys30At6wBhsykrSJ
+         PbyA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WefDE7Jd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZRcioiBa;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3d3dee689c7si8370465ab.61.2025.02.27.04.03.14
+Return-Path: <linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c0345fdc67si165310137.106.2025.02.27.04.03.48
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 04:03:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Thu, 27 Feb 2025 04:03:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WefDE7Jd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZRcioiBa;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536208-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536209-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 9932E7A34A2
-	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 12:02:14 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 16BC816A753
+	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 12:03:48 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 45E03270048;
-	Thu, 27 Feb 2025 12:03:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3D02527005C;
+	Thu, 27 Feb 2025 12:03:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="WefDE7Jd"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ZRcioiBa"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64F14270020
-	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 12:03:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65C8B270020
+	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 12:03:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740657788; cv=none; b=Lzt1GE2gkw/bWH6I2Fj4STSTrdK+gNqvalRzlrebkYMLRt3SriD7jxvKryiRwAB/Oq9o1AIfgVE5/CX2kbWEtKD1/FWpq89B7m1bXPSK4Q3Q1ZY3tp9+TgF7MsMsCKbRVltHgtwUIhtgEzRywmUhaB575KTmPDHjl5F5jri62fY=
+	t=1740657824; cv=none; b=PHEpwaPz3UfTQ7AOkC0eiI20khlxUe9dQJou+PpnYEDB9jZlutc/OAqQOYAUPuUuaUdijME4M4k/tkUw8vm7OfQ3r+zUxTn2wv5cBtlC8SDSh+49HatomyGnSPw+xBsT2SG7X/FHKaLQzMZ+qkYHHxdBXUCB0/nBZTEbDqvmzXU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740657788; c=relaxed/simple;
-	bh=NQiCDHbc4sv+CR/8zk750oE11oq5a4gIIvmi+RsiEbY=;
+	s=arc-20240116; t=1740657824; c=relaxed/simple;
+	bh=0JcGUGWv/7VPrsNOKRs5pmneC4ffhJsXc+GlzSN6K8g=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=l8fYWDyz+x5c5gLqRZUEvXUPZj5i9qQsaTDJFT9EZ/im08/J4lSamXR9SWklJNTeJaXoLO+yS4libx/Hoatd9QxhkcmdaukKXyBD+f/OBP+5qXrsV4f6Yqz5X5ATaSqldfB7GY+G0QKxTsThh+6/CrcaU+Oz76XL72PtbySo8OU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=WefDE7Jd; arc=none smtp.client-ip=170.10.133.124
+	 MIME-Version:Content-Type; b=KjjHEuw8pJVnyXHL7oksb1/Ql8CZdn2jeW/w3N7t9nVUlugC9DC5mNNyR6x0JuBHjKR3m2zNLvfogMH76wbE2n0X6+r18Vkivt1OI2sGSXhhFhs7tWJFKXexFI9e67bCH6uuovyluBw+IJyw+QFGhVedcZSXBox44mrPdYI3ozk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ZRcioiBa; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740657785;
+	s=mimecast20190719; t=1740657821;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=v5xj3BC1T+wGPDd2kj9+gKjm5LAXNQxtfhll0pXUlUM=;
-	b=WefDE7Jd0VtbQSmd2bmud5SQxEic7jWBhNIW6VlGgsenebssU0KulonD38lPrK3+K+0UJC
-	LLAXh2FMrwCQiMoehkm0e77FihImfU5QVCBX+fPNqE/M6t6xm+yTTIYdaGEh1UtJvKX6+4
-	1c19O+r3jWesTrmQkvY1CpRJjFjPSgI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=A3IIRWTfz/eEhKgTnFWptplWM8F1KHYcG7w57dEy7Ao=;
+	b=ZRcioiBaQb/3Mbs3rZwi36BozewxVjqS50MmvC5myrZLP3rcW26Ufou5p1D+2vwGdScDYf
+	dcBT2bF9jODEenga6poZVI1qcl77tgV17xr7wq9OGHslpO7EbfEQHhNksjXbiyCCbnzEQM
+	LlimMZ0IynggVB5XF5EC4Cl2fkjXIxU=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-454-fzxF29BJP_yLlJONcnRCIg-1; Thu, 27 Feb 2025 07:03:03 -0500
-X-MC-Unique: fzxF29BJP_yLlJONcnRCIg-1
-X-Mimecast-MFC-AGG-ID: fzxF29BJP_yLlJONcnRCIg_1740657783
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-38f55ccb04bso521369f8f.3
-        for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 04:03:03 -0800 (PST)
+ us-mta-529-xCn70UYKPl-R4UTTBE-O2A-1; Thu, 27 Feb 2025 07:03:40 -0500
+X-MC-Unique: xCn70UYKPl-R4UTTBE-O2A-1
+X-Mimecast-MFC-AGG-ID: xCn70UYKPl-R4UTTBE-O2A_1740657819
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-390e27150dbso651741f8f.3
+        for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 04:03:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740657782; x=1741262582;
+        d=1e100.net; s=20230601; t=1740657819; x=1741262619;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=v5xj3BC1T+wGPDd2kj9+gKjm5LAXNQxtfhll0pXUlUM=;
-        b=w4o7C/V4m+fr0j4I4keOvIL18wJv2GFXQotI3sXsm55LsjcSXDzMuduapROspPO/fw
-         PE5QP2LaeEkVbeX1VoR+murCmhptTgZ/8S2qL53GWpF2ZX9Qt0+sc164txp4m4hMpWOB
-         fn99aVDlZSek/zp11/Py4CNC3yXrjuKuwkA3AYxKC7b6i4RWUUO99mlBxA7mPUDrzl5U
-         Y5Skl7LVg6/9ygsLFCzJzxOw+lJ9/44UUwhdYLs7hyGRSKJRRnlrMsXVadtWODYWkVb1
-         cFt6LOHNrv60fxHVI68ZFjLLLwu5cqmlQ117jVSOyP1lwaDY5T/IVDukgi4TEnNduPMx
-         5Mcw==
-X-Forwarded-Encrypted: i=1; AJvYcCUl4j+yxcaRkm7r7KNTNHKC9g4PqWdblQ6wTSgKN6/QYH8uYf8qYZAAP28oyX3NyNja0Wk/HmFh5kMIwG0=@vger.kernel.org
-X-Gm-Message-State: AOJu0YxxWvxxQR6wbn0M8DdMAOdkk/4loPbTME924Hre/ug4xObSMj4E
-	ZY9lCF3kxhqqzdF8NxilwDC/ogYLWxjp10TaiVJw/KmmTJ/L9EGD9hqP5p9QWSJ2d3yS+tQrmXK
-	ZRs8aGSI+yrbRyrqtm1iDdIYAe/F9sYutBBM8lD+IKKx9WkmEVN5wfm7EJIbkxw==
-X-Gm-Gg: ASbGncudpGLzLnRqYBIUabz2xaM3JQt/BN8PYP4qb4UYF3wnAVfu2DykxlD/1c39nlA
-	Hg5zCkC1+N/8JUyeUR1n0KcqMWy5NQbdifIrtYL+rRn5LzMTbQmZX86GSxY/YOlhWwXQAqG4YJW
-	6Tk1tg+EXhE4crFpNGyusoimvhhbQfdNMNcqQ+7eBohSNkR1H+MxzOx3xEN2LaCswv3v0zCyTk2
-	uLVhGqOVSS6+Pkqwda5PoRiun5mpjB9CmqjesSb3iwFohp1twMBQUV3h2qm37eUa43U9spZ4kx3
-	4G4qoFuC2BWLr4SqyoWenS3IXvhgli6Te+5mbZbxIVLy+MES3SsXhJPxBtDWWPk=
-X-Received: by 2002:a05:600c:5123:b0:439:8ef6:5782 with SMTP id 5b1f17b1804b1-43ab8fd7acemr66726375e9.10.1740657782490;
-        Thu, 27 Feb 2025 04:03:02 -0800 (PST)
-X-Received: by 2002:a05:600c:5123:b0:439:8ef6:5782 with SMTP id 5b1f17b1804b1-43ab8fd7acemr66725875e9.10.1740657782065;
-        Thu, 27 Feb 2025 04:03:02 -0800 (PST)
+        bh=A3IIRWTfz/eEhKgTnFWptplWM8F1KHYcG7w57dEy7Ao=;
+        b=OZxYRNMHLLpnrIUF/xUnaxi+MXj4ubni46l5K/ooPViKsWT3oBAE9iBzWh1KSGFr2s
+         v+18MYuKsfA3X5vXMLhAYxjrtd727AiEevLWEAjEMGP97Lv493IDULI+ADvGUMHTJuhg
+         b5hwwXH6h72q5lb24WZfLARz2DlSkvuwcJahMCBEtB2BWwNZrhRIuHH7DH1x2S2sXRL7
+         m9kLBvc+TuFx1HXPp7+zqKMe/kchUB/ht19gVIgkjsT4idsOTXkKy0YCYQoulhs9qjJO
+         xHZ8SHd54Hnm7QtWrH581GQZUpA5MesKYhbQQtYNX5WNDQSrePqUKVpQ9FjArO47Dset
+         yeIg==
+X-Forwarded-Encrypted: i=1; AJvYcCV1C2n0y1RMlm6rq5bp+PZJf8BleNrC+Y0+i4hNWfup/YhaCNN8bY/ZiDtUtyNxYcPbyDspL5tSm/4NXpc=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxbpJja3vaLSDzfyNua+54ZHrDjI9/7qov0XAWrzyQTa/wmCTO/
+	STwUvOaHi8IDAlVMXMvME6lj8BQmkPBKt+YjKAM+ndvri/La4ueprJBS7V3fh3SXtEsaCaSM8FN
+	CgP6DX42x7+Nldw+OYt4Rghms8rs2RK4UZbXV8cVnRr5RvQ2Lo+mQcHQaC97EHA==
+X-Gm-Gg: ASbGnctQpN1KfHMRLVZ97aadcITjvLTicqQax94rTSKMlOtXrxKXWnDJQvuacSoNqj7
+	DekWmIgw+S3HfcaHOiWzKfcnEU9tD0j1oGeou1/GejtqCmRZhCWV32XtXoi4DvOsJdHhNV2nk0V
+	cIVIvhBdYK4zIXz1RBfko3SL7+TTox5ECMY/TTznhkwQtX6+e3eGw31Tvpy8rOpCCPyuTwtpJIY
+	xth1hMuAz93M8xKRl4wXp8xo558wwPu9xp8zMYC1kJpgwwahQnMGqWc5ftxkpqN8lfrD0eH66Tn
+	B0zd1+nWljfw3Xgl7niDIW+ZCGQZ+PkWb0KT8ZrwQ51tzlrQeN0PjvqE6OQ+Efg=
+X-Received: by 2002:a05:6000:18a5:b0:390:de58:d7fe with SMTP id ffacd0b85a97d-390de58dbc6mr4083582f8f.51.1740657818812;
+        Thu, 27 Feb 2025 04:03:38 -0800 (PST)
+X-Received: by 2002:a05:6000:18a5:b0:390:de58:d7fe with SMTP id ffacd0b85a97d-390de58dbc6mr4083544f8f.51.1740657818495;
+        Thu, 27 Feb 2025 04:03:38 -0800 (PST)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e485ddd1sm1827170f8f.94.2025.02.27.04.03.01
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e485d906sm1828794f8f.90.2025.02.27.04.03.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 04:03:01 -0800 (PST)
-Date: Thu, 27 Feb 2025 13:03:00 +0100
+        Thu, 27 Feb 2025 04:03:38 -0800 (PST)
+Date: Thu, 27 Feb 2025 13:03:37 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
  <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
  <anisinha@redhat.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 02/21] tests/qtest/bios-tables-test: extend to also
- check HEST table
-Message-ID: <20250227130300.607bbc27@imammedo.users.ipa.redhat.com>
-In-Reply-To: <3ebde58416b8be1140c569538192399feeccf412.1740653898.git.mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v5 03/21] tests/acpi: virt: update HEST file with its
+ current data
+Message-ID: <20250227130337.31f2a285@imammedo.users.ipa.redhat.com>
+In-Reply-To: <5bb163b260d6a29b082d12cbae31035fa68342df.1740653898.git.mchehab+huawei@kernel.org>
 References: <cover.1740653898.git.mchehab+huawei@kernel.org>
-	<3ebde58416b8be1140c569538192399feeccf412.1740653898.git.mchehab+huawei@kernel.org>
+	<5bb163b260d6a29b082d12cbae31035fa68342df.1740653898.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -137,33 +137,38 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: 8u1dKvtgg+fq
+X-TUID: sJRIqoVEn54V
 
-On Thu, 27 Feb 2025 12:03:32 +0100
+On Thu, 27 Feb 2025 12:03:33 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Currently, aarch64 can generate a HEST table when loaded with
-> -machine ras=on. Add support for it.
+> Now that HEST table is checked for aarch64, add the current
+> firmware file.
 > 
 > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
 > ---
->  tests/qtest/bios-tables-test.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  tests/data/acpi/aarch64/virt/HEST           | Bin 0 -> 132 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+>  2 files changed, 1 deletion(-)
 > 
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> index 0a333ec43536..8d41601cc9e9 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -2122,7 +2122,7 @@ static void test_acpi_aarch64_virt_tcg(void)
->  
->      data.smbios_cpu_max_speed = 2900;
->      data.smbios_cpu_curr_speed = 2700;
-> -    test_acpi_one("-cpu cortex-a57 "
-> +    test_acpi_one("-cpu cortex-a57 -machine ras=on "
->                    "-smbios type=4,max-speed=2900,current-speed=2700", &data);
->      free_test_data(&data);
->  }
+> diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4c5d8c5b5da5b3241f93cd0839e94272bf6b1486 100644
+> GIT binary patch
+> literal 132
+> zcmeZp4Gw8xU|?W;<mB({5v<@85#X$#prF9Wz`y`vgJ=-uVqjqS|DS;o#%Ew*U|?_n
+> dk++-~7#J8hWI!Yi09DHYRr~Kh1c1x}0RY>66afGL
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index 39901c58d647..dfb8523c8bf4 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,2 +1 @@
+>  /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/aarch64/virt/HEST",
 

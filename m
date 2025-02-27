@@ -1,121 +1,102 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp318441njb;
-        Thu, 27 Feb 2025 07:55:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXzi4Rof3uQhRbzq5Azo68mIy4RASTbvNAYOao0SujZNHGMB6qImP4tGY1qkyyOL5Fx0xqyRDJ0tt4chQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHCPrOtj1gkoG9zgWARcnmHnIlsXl0MiKf4BOhnTFDQ/KbdfqDH/dFr/bp1Vy2EvRPFhPye
-X-Received: by 2002:a05:6214:c88:b0:6e6:68d6:3932 with SMTP id 6a1803df08f44-6e88690405amr80086116d6.40.1740671729818;
-        Thu, 27 Feb 2025 07:55:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740671729; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp318899njb;
+        Thu, 27 Feb 2025 07:56:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU34tNet0LhSWe2WvOXeFI28PZeuDqoqK54Z6yRVXH55kLpW3+zCGgG2I4ZAWB36lnZzpTBB/+TS6jiIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkHXIScc6/RJ12X38tOMfrXdjrOtHujC6zCpfkHiAM1nhm+PnBZz/SMh4NfKSOQ4dZZbBY
+X-Received: by 2002:a05:622a:1b87:b0:472:744:e273 with SMTP id d75a77b69052e-4722293a95amr332600411cf.42.1740671781110;
+        Thu, 27 Feb 2025 07:56:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740671781; cv=none;
         d=google.com; s=arc-20240605;
-        b=QGoBlhBaE6zI1JMNmRPTFNduuaY8h+OntLwsv5xz93LXlRm5+cdrh7MKvjA/QFbFrq
-         9ho8aJ/xxqpFXeNlPGT/dtIbKUPbNXXMODRZ6J+0rHBYz3sytAeawpatQyzRAgGkybdw
-         VDcl4vZOfTle1j0/EadyxFbDNpCoMLW+3PpxYEjQU8tP1vhPDRLf+mmKiraa9WtLvR+o
-         eflL5+TjXHtsWsg9NwhjPWzPTvw6dPmpuUbVmxF6LR8B1RERiXG+BdfX7cYs82zDfMtQ
-         Ywre8oQZ4Kau1Quk07/9H91qo8VWBZqabr1MWwFxpuTPupU1Kt9Wquzjqpytzv5AhAiI
-         ThAQ==
+        b=UK2Vry/OSn6GhrTnYvPQba1yCkLM2HnqNv/ecahXos72nHLm3c2EI4kf7Q7D7/EgkS
+         WYbvIEUW7GOzHadEC4FzHtk80UkdD/63PrdQPd57HZNhKcNl5+a/ClvWW/q5nqTEJEK2
+         VHq+i5fxjqg2lkYnhlHbiS2IOjzvDgFcGd1/ya4WWrQVpp69pBJATSxM9Er13vs8V9bF
+         K8N99Fx4MLzm/o944K0gv7MlDc/Dv1ltde/40hgBgM2xs+MmOnvvjXGHWre+ID1HFQnf
+         E3dTJ5PHNr0uxEn5uTc7TK6kPJcLgHC6sL2xEbaHHM30w88qxbMpVuUehZVp2k6ojPAA
+         wCjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8EBKKc+NGmz+nxKhwxS+ad/54Ly1TceVJMjVayrPz9o=;
-        fh=ZTvHbZR2iCke5Bb+4wgDMz6YqFILjX0ysIq95AyJGJ8=;
-        b=ao45g3FZRVS8/b6BpC1U83+w2RIQ8Br5TtFF0faAKQnFaCTdPPzSygipvHdI/pcHsl
-         Q+92KSj4apnp8WgRGoYQ5dUUqLA1cbgnjjMszoSpP7JZkKjz/qaGqvCzhE+xJij4+nGt
-         HHMw2gQcBcwjue7J5MZPqLZYora3ROHIRAWVcrerarPFMHP5rqctgSUzC0zr9Ed1GTfG
-         GZtcDYGZtAHfvglN7trWkTS9rrA35XfttZ49OKFXoAaHr3J7ugRA16AN0+0CWDIGjr6v
-         J+pDR3BSr4hs25vVfnAUPe+zIExMicIzT+A7mHRtLm4XzFlHodTLsBRa11zNt6oJDgKT
-         gMVA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Qbc1RTpiTlsZjmODYqN+tFi5LmbCJjaUexqtiFaBtR4=;
+        fh=M1mtX7cZi0t85VQR/mcECo+lXmLxQopat7cygInhRIE=;
+        b=UCtQSMfSx83trqnH+m7ZAcrBDSpPVZ3sGUQEPW5J9VbgwsR/xK6X4OLCdF0mc4fGvH
+         nCRULg2LtIGoMqSLsK7LtJWwsc6lk82RTxfFLbenkg4iGxTgijlMpiuYLLT6SbLQdwPa
+         fT+SolXwbvb0KdKXzUt2zlfbVsA4JdMMPcKWAAtOy18qciATzRORg7kep3b8B4JqIllU
+         88cWCgQtt/Yo+a/ENphBhDHxPQS5JwZ666pOmIArwO8wm1dKB3E+hEVqRlqkHS9WTcDv
+         56FQBmoBH8GQ8As6EwpUCVZQ2KqMyKBir+OR77YmVgu/cPR8PFJ3c1+7XCC1kK0R2+EI
+         Et4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=bd8T2aue;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DJVvX8bg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8976cf9c3si14272526d6.301.2025.02.27.07.55.29
+        by mx.google.com with ESMTPS id d75a77b69052e-47472439f0asi15184591cf.568.2025.02.27.07.56.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 07:55:29 -0800 (PST)
+        Thu, 27 Feb 2025 07:56:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=bd8T2aue;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DJVvX8bg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tngEQ-00016P-Jq; Thu, 27 Feb 2025 10:55:26 -0500
+	id 1tngFC-0002Jo-85; Thu, 27 Feb 2025 10:56:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1tngEO-00011k-Sl
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 10:55:24 -0500
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1tngEM-0006E2-Qs
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 10:55:24 -0500
-Received: by mail-ua1-x932.google.com with SMTP id
- a1e0cc1a2514c-86b31db3c3bso445173241.3
- for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 07:55:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1740671721; x=1741276521; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8EBKKc+NGmz+nxKhwxS+ad/54Ly1TceVJMjVayrPz9o=;
- b=bd8T2aueR6H4GjllreJGq2kFUqQAjVlkkMNxu0d7U9sIq2SR1A7jPjitRDfJL8Og/a
- MJhDgQJjERIDgyCwWskGnP6FHbF8Rf0F7l9QxoFt3JqwUksJ9kaNgtBDRx1oiUq21k4n
- aJGnFQ0wyWOpw76iTkHlH8mJcT6AkeD86T8xPhsEgzmNvHcfzqDLt5jhrJ2eEC/wFLNl
- XBTWcXdob4phrJS5GZVC2gicfjhvyaGiiIdD2jjv5G1A94eA9jC+pRmU4OOEMadosDu0
- nghkZhunnItN2K1zusgLofxLLqeUA2G9s+nWT5r0ckSl1xjSKpufdtOZdgZ3vBBuw2Av
- CICw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740671721; x=1741276521;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8EBKKc+NGmz+nxKhwxS+ad/54Ly1TceVJMjVayrPz9o=;
- b=kczFMMHhYD7JyFn+W+AU4gTBm/jGk/yc2jbnEBrMEqPsgQ+u4XgRIfeDbcP5GSGXTH
- y0oYVmNflNfn7YzthI3OQ6jrJkhd/SJ+SzspPhZCttNdgoIEZrBHYXSSjOtUfzeHnLlW
- FLTF0E4KeCeZTXAZLIM0zDBaBKyzhM8oLZ7HVt5UKM3KsH4hhfLsIw/ARXRqyIsbKD7l
- wewG4dLlGyI6k7SgajWQbp4DH0thjg+nycETlK+Y0/DxJEM8ZI/QbpHc89AXWywEXo9C
- iO4mkl33dI/cHlWVyONob+qIl2mhPaJShN6P71FTjREjWGTxN8rcvMm+CI/JyT9l7ASj
- vvKA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVCN5wlAByGUwB2q4oUqYBaNDFTtwRWAsM4O9qSUnlg51FAID+WGRc7moeXjutFRfGknE44dPBOaA==@nongnu.org
-X-Gm-Message-State: AOJu0YyIyE79Qld+I0w0bNmPvIJRF6Dp+13Tn73RJobflr2Y/YS5MgZr
- WUACyRbqO/VveGGjSfOlcnm6/8frc+Ki1kPNi1g8k12I5K1zeN03K7rhhhvGnNnhRilCEHWsetT
- Ny4hr5EPeLmCzDkpZWKIp4LBfD3r0a1NOak5U
-X-Gm-Gg: ASbGncth5p/xEavAinjlGGnrDtUhsued/jAo8wuj7W8Ix4C01GN+hpVLlTJS0RTyJbk
- 14gHWlsk249718BvNI+JYWuk7ZF/1iCwomdkwLioM6WFLyskdhOfuhQjl2gulpA256JPb+NP5DN
- nslslAyk2qKFmrb3njy7bgslK9+zAGEVqliH/Yvw==
-X-Received: by 2002:a05:6102:c51:b0:4af:c519:4e7f with SMTP id
- ada2fe7eead31-4c01e2cdcc0mr4665692137.18.1740671721447; Thu, 27 Feb 2025
- 07:55:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tngFB-0002Jc-CI; Thu, 27 Feb 2025 10:56:13 -0500
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tngF8-0006JZ-FL; Thu, 27 Feb 2025 10:56:13 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 864215C54FF;
+ Thu, 27 Feb 2025 15:55:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F349C4CEDD;
+ Thu, 27 Feb 2025 15:56:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1740671765;
+ bh=4XS/w8try2ACKldK10vEqyRkeuzlJ94ggQX1TVhimIo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=DJVvX8bgnM1Jhf6pxMjjppij2hlo+Src2FEWjX/NJSALnw9Kzrb6D7q5NI4qjoJdQ
+ gBXgDlvII2zh0LKKIS7Qay3V5+RIacVvXtWDRxD5ueL9hnXV8+w5LJRv+jH1grSB78
+ E5ebxNYzkuRKk0C19f96t77Upv4lAYzodoC8/troFcn6NDvtjQFnjMwI7prp/iO/EX
+ Ah34a152RATvOfXSZIrXmoHSVFnC3FZwb3h8ikzfVvO8atpUjI0YUAUfvZNLql4Car
+ b6tnRpVFwYBUttXx/yXPFnik6FIqL6odEH/gbjJAn09XcAWmUBjj+GFwT5T1ossxGg
+ tscYM0guOszGw==
+Date: Thu, 27 Feb 2025 16:56:00 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 17/21] tests/acpi: virt: update HEST table to accept
+ two sources
+Message-ID: <20250227165600.16a74895@foz.lan>
+In-Reply-To: <20250227165124.221ef1b2@foz.lan>
+References: <cover.1740653898.git.mchehab+huawei@kernel.org>
+ <9d57e2a6ec3f523eb7691347403f05ad40782b94.1740653898.git.mchehab+huawei@kernel.org>
+ <20250227141038.28501d73@imammedo.users.ipa.redhat.com>
+ <20250227141603.3957e78b@imammedo.users.ipa.redhat.com>
+ <20250227165124.221ef1b2@foz.lan>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20250227154003.1646017-1-venture@google.com>
- <CAFEAcA_wR-M3+BhZY0MFjv3OfoyL2gvukduvKZ6ksKwUKmdB6Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA_wR-M3+BhZY0MFjv3OfoyL2gvukduvKZ6ksKwUKmdB6Q@mail.gmail.com>
-From: Patrick Venture <venture@google.com>
-Date: Thu, 27 Feb 2025 07:55:09 -0800
-X-Gm-Features: AQ5f1JoyLXPKEQiUJVQtJnblaKFmD_s1AoD4Ggsw3T6bH-90WX3XiDL1Kb3Bh9k
-Message-ID: <CAO=noty89OsH=vGmemL7eLcR2wV6n4XG9a2HfT7Uzo8EPRy4PQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: npcm7xx_emc: fix alignment to eth_hdr
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: kfting@nuvoton.com, wuhaotsh@google.com, jasowang@redhat.com, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000a12b71062f21b7c6"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::932;
- envelope-from=venture@google.com; helo=mail-ua1-x932.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -74
+X-Spam_score: -7.5
+X-Spam_bar: -------
+X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,119 +111,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XypGTaQBNfVN
+X-TUID: oDVc+0akyLwz
 
---000000000000a12b71062f21b7c6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Em Thu, 27 Feb 2025 16:51:24 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
 
-On Thu, Feb 27, 2025 at 7:52=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
+> Em Thu, 27 Feb 2025 14:16:03 +0100
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+> 
+> > On Thu, 27 Feb 2025 14:10:38 +0100
+> > Igor Mammedov <imammedo@redhat.com> wrote:
+> >   
+> > > On Thu, 27 Feb 2025 12:03:47 +0100
+> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > 
+> > > squash this patch into the next one
+> > > 
+> > > Also at this point there is no visible HEST changes yet, so a soon as you remove
+> > > white-list without enabling new HEST, the tests should start failing.
+> > > 
+> > > I suggest to move 20/21 before this patch,
+> > > as result one would see dsdt and hest diffs when running tests
+> > > and then you can use rebuild-expected-aml.sh to generate updated
+> > > tables and update them in one patch (that's what we typically do,
+> > > we don't split updates in increments).    
+> > 
+> > on top of that,
+> > it seems the patch doesn't apply for some reason.  
+> 
+> Hmm... perhaps the diffstat that I place here (produced by bios-tables-test
+> output) is causing some confusion when you're trying to apply the patch.
+> 
+> Any suggestions to avoid that?
 
-> On Thu, 27 Feb 2025 at 15:40, Patrick Venture <venture@google.com> wrote:
-> >
-> > 'const struct eth_header', which requires 2 byte alignment
-> >
-> > Signed-off-by: Patrick Venture <venture@google.com>
-> > ---
-> >  hw/net/npcm7xx_emc.c | 7 ++++++-
-> >  1 file changed, 6 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
-> > index e06f652629..11ed4a9e6a 100644
-> > --- a/hw/net/npcm7xx_emc.c
-> > +++ b/hw/net/npcm7xx_emc.c
-> > @@ -424,7 +424,12 @@ static bool emc_can_receive(NetClientState *nc)
-> >  static bool emc_receive_filter1(NPCM7xxEMCState *emc, const uint8_t
-> *buf,
-> >                                  size_t len, const char **fail_reason)
-> >  {
-> > -    eth_pkt_types_e pkt_type =3D
-> get_eth_packet_type(PKT_GET_ETH_HDR(buf));
-> > +    struct eth_header eth_hdr =3D {};
-> > +    eth_pkt_types_e pkt_type;
-> > +
-> > +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
-> > +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
-> > +    pkt_type =3D get_eth_packet_type(&eth_hdr);
->
-> Maybe better to mark struct eth_header as QEMU_PACKED?
-> Compare commit f8b94b4c5201 ("net: mark struct ip_header as
-> QEMU_PACKED"). The handling of these header structs in eth.h
-> is in general pretty suspect IMHO. We do the same
-> "get_eth_packet_type(PKT_GET_ETH_HDR(buf))" in other devices,
-> so this isn't just this device's bug.
->
-> thanks
->
+Nevermind. I fixed by removing the name of the file before the diff, e.g.
+the description is now:
 
-Roger that. We saw this in the two NICs we happened to be testing that day,
-and yeah, I grepped and just figured that those other NICs were doing
-something with their buffer allocations that we didn't. I'll give
-QEMU_PACKED  whirl.
+  tests/acpi: virt: update HEST and DSDT tables
+    
+    - The HEST table now accept two sources;
+    - The DSDT tables now have a GED error device.
+    
+    @@ -1,39 +1,39 @@
+     /*
+      * Intel ACPI Component Architecture
+      * AML/ASL+ Disassembler version 20240322 (64-bit version)
+      * Copyright (c) 2000
 
+...
 
-> -- PMM
->
-
---000000000000a12b71062f21b7c6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 27,=
- 2025 at 7:52=E2=80=AFAM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
-linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">On Thu, 27 Feb 2025 at 15:40, Patrick V=
-enture &lt;<a href=3D"mailto:venture@google.com" target=3D"_blank">venture@=
-google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; &#39;const struct eth_header&#39;, which requires 2 byte alignment<br>
-&gt;<br>
-&gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.co=
-m" target=3D"_blank">venture@google.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/net/npcm7xx_emc.c | 7 ++++++-<br>
-&gt;=C2=A0 1 file changed, 6 insertions(+), 1 deletion(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c<br>
-&gt; index e06f652629..11ed4a9e6a 100644<br>
-&gt; --- a/hw/net/npcm7xx_emc.c<br>
-&gt; +++ b/hw/net/npcm7xx_emc.c<br>
-&gt; @@ -424,7 +424,12 @@ static bool emc_can_receive(NetClientState *nc)<b=
-r>
-&gt;=C2=A0 static bool emc_receive_filter1(NPCM7xxEMCState *emc, const uint=
-8_t *buf,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 size_t len, const char **f=
-ail_reason)<br>
-&gt;=C2=A0 {<br>
-&gt; -=C2=A0 =C2=A0 eth_pkt_types_e pkt_type =3D get_eth_packet_type(PKT_GE=
-T_ETH_HDR(buf));<br>
-&gt; +=C2=A0 =C2=A0 struct eth_header eth_hdr =3D {};<br>
-&gt; +=C2=A0 =C2=A0 eth_pkt_types_e pkt_type;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 memcpy(&amp;eth_hdr, PKT_GET_ETH_HDR(buf),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(sizeof(eth_hdr) &gt; len) ?=
- len : sizeof(eth_hdr));<br>
-&gt; +=C2=A0 =C2=A0 pkt_type =3D get_eth_packet_type(&amp;eth_hdr);<br>
-<br>
-Maybe better to mark struct eth_header as QEMU_PACKED?<br>
-Compare commit f8b94b4c5201 (&quot;net: mark struct ip_header as<br>
-QEMU_PACKED&quot;). The handling of these header structs in eth.h<br>
-is in general pretty suspect IMHO. We do the same<br>
-&quot;get_eth_packet_type(PKT_GET_ETH_HDR(buf))&quot; in other devices,<br>
-so this isn&#39;t just this device&#39;s bug.<br>
-<br>
-thanks<br></blockquote><div><br></div><div>Roger that. We saw this in the t=
-wo NICs we happened to be testing that day, and yeah, I grepped and just fi=
-gured that those other NICs were doing something with their buffer allocati=
-ons that we didn&#39;t. I&#39;ll give QEMU_PACKED=C2=A0 whirl.</div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
--- PMM<br>
-</blockquote></div></div>
-
---000000000000a12b71062f21b7c6--
+Regards,
+Mauro

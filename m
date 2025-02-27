@@ -1,117 +1,111 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp261247njb;
-        Thu, 27 Feb 2025 06:32:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWwzuLeXdnGAwgX7j235kwR9Zt0mSxDi/uIOJV47/b9cq9xeg+SdqYPkXehjskuPAnxuxim5OPTVnd3+A==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9ImfqnPDlKkMbC1t6GXQyPJFJ1ApANhR/+iKiToIGiMofFVwqPogOIeBAWZMHZadHn69G
-X-Received: by 2002:a05:6102:3581:b0:4bb:baa0:371d with SMTP id ada2fe7eead31-4c01e30721fmr4301497137.24.1740666762276;
-        Thu, 27 Feb 2025 06:32:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740666762; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp294146njb;
+        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXT+qUsW3ADa7jitY5nrgdXXwcGcxE2cYmGfcI8Fhf+UFyZ5Ozi11AXWGKJG5pjS9oC+xyoVrB3BaASfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvhl2aZD8ZSpXaSlz+9KDjhbxIycQgF4w6sh+VtFrB7z5t0Kccw1K5ZFZo5uXfGupFTAkY
+X-Received: by 2002:a05:622a:1a90:b0:472:6aa:d6be with SMTP id d75a77b69052e-4737721bcbemr133286591cf.17.1740669495600;
+        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740669495; cv=none;
         d=google.com; s=arc-20240605;
-        b=EVYkiKERz3bWoZ/WaQUF4v0g5YnOJqS0HNEQ+rPKZcSuUpQGAbgKbySrnSkD8lIDvQ
-         3e/0sPY9vcLtWMgAZT3hpnFsjEw0e+6LasfAAxuME6QnqAnyeHLjKPznTQMIz9gFW2N1
-         erKvRB53nRXlnN5zkZQVU3/SmJrQduB24IWzRjjjA0TiF3bLW8bazbz5qT5d2p9Is4tp
-         bvHWtiPtu5cUfunQIpcrdVNpxT06MuVbYRLcwpRL825vFNrdaLO0vRkXseyxGqvU12Sy
-         4/NWXU3mv799STwILQzV5xvI38wLtUh98ehfzbsJ5ffquoIKcUFVKysRD2aKz8O+ZA7l
-         6bMg==
+        b=M52d9IzmelaX6rm2OUWqDKiSOevK1xP/Hz/fb9pmJdezJNm5UjUjWtqi4AoRPEA60m
+         3zBeqiMsN+wbWyHXx988aNXC6wh9Caob1Xh8YASlj71N3FZJ9uv6/CIoFFf5tbAM4fQ+
+         B/s6H6rVQAhW60OpcnjMSDJ9Dgzsb1BdyUevDJURdeZUhv9Fm3eQ5Dig7L7FUodjJyaq
+         fwx5loHlKecc9WQl/LBGpBdVXrL5ezP01WWWDNNtgmO3qM6Axu//IIwlZ7U880WFdWHc
+         mvddl1Azh6+avRjuCurRTQlC0eTFBOjdrWam7BaBEoawZ/6Vm2YJU9qiU5W0GnmNmubA
+         WseQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wGTNFxYDOBY5OQaGDmBAuOxvbJwhsg8/Ld9YxzxYgfA=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=CxsCqz8Q1Konj/gYdTo8ifGcseBkWQJsWfutUJzxqlw7AMke001iOKBQ+TwWxNS6QB
-         dpuT+0Wg+b8gi/YjZsDiDM1Ij08i/YB+kPShyINu0XYoxBa93gPAd8mP87f64QTYD0DL
-         1fiRyxYHG2ko2/tuVJiutj0pKfkzd3xEQo51NQwTupQyTfH1gsPmYi+cV/keqvZH8Tz2
-         P2jG8PfRrA2OBTLDZJY3UbJZiIF6qymEOKxUdiliOkl5RlEoAEUR8DrFLAZv1Io+ePSM
-         GHsRL5Ru7mBh/FMG+c7/I1un9TX2R890naLuNCfRldK8U3DZnE7O58za97fkmVQxdToA
-         N33Q==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
+        fh=l1OBCuwuD8jh4Qnd7Xc9VvHFicE9zxdUKNUaOxak0/4=;
+        b=TZqaUziQZ74J29fL+MIkvWqh6Qpz3COW1mM93XVfeuoXrgaI7pUMxO/fQl8xQ3Z6c8
+         w/DmhZhTJeF57dmN24vnW8yYHQ0zsuE+WlBHz9NEvnKKc0ogUW2Tk4C/VAFrwZmsuRre
+         cDecOfbBISVwHJM3SIEO87EQKphhwlhbnhNOeXMxzqf/c1wx95cI2M34pfuqaoqpDkz9
+         Badq/Zj/qsk5gfUWGNC3SZ1ZE4SK8pOmf1Wxt4Ai6veQs59XKdFLfvk7i3uoqRY5hdR7
+         vjb0XfVCTQr2lk6nbC0AGC8eJKxqnJkgDBCZWqicDuvCeKi5/mcCDej4Q/fmIlaqO2tW
+         dSaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N13qwBjX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jprxz0d7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c0347d9ca2si237639137.298.2025.02.27.06.32.42
+        by mx.google.com with ESMTPS id d75a77b69052e-47469b37dbfsi14363081cf.200.2025.02.27.07.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 06:32:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Feb 2025 07:18:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N13qwBjX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jprxz0d7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tnerr-0005nk-0q; Thu, 27 Feb 2025 09:28:03 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tnfe7-0005aL-N7; Thu, 27 Feb 2025 10:17:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnerk-0005Mc-Ck
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 09:27:56 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1tnfe5-0005T6-BR
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:17:54 -0500
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnerg-0004us-NA
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 09:27:56 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4399d14334aso9726125e9.0
- for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 06:27:50 -0800 (PST)
+ id 1tnfe3-00072L-IF
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2025 10:17:53 -0500
+Received: by mail-yb1-xb32.google.com with SMTP id
+ 3f1490d57ef6-e5372a2fbddso742353276.3
+ for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 07:17:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740666469; x=1741271269; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=wGTNFxYDOBY5OQaGDmBAuOxvbJwhsg8/Ld9YxzxYgfA=;
- b=N13qwBjXmsDZtvx1sLihLtLTN39Kmc2gvV5e4OwAN2+vGPXMQ/kxb/khIbVR58JI6H
- VzUWealKNoY1FELiFLX9jrZQtMaPORVlrjIBYAlCGcW8b48xcqYG3a+w80egHM9O7IR4
- mAKMA46X0BiN/8QvLiK/mmrem9i2QDA/hjkR2lphRH2bIEdFSmj4ChMpMVwMbAEFKWlD
- Gvlsos2LoE8FhYFLL0n3585W5w4xwCqVcOzCTqDsnJPKOMddF3pryP9JcZf36ZWk3hJz
- R8nPHm8AvegicmFJiaJXc0xro+1kX1hRyUnnV/Rd5MYXDsFRReHhcLmFD2UlOSc1x02P
- Ce3w==
+ d=linaro.org; s=google; t=1740669470; x=1741274270; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
+ b=Jprxz0d7bgTbAenZCDV+ekwznfrj7GQ/uC7KVFdtaE5gKR/Yl/GiDCJ/NtCgxLFT0P
+ dTNSU0sO4pZ39HhPtoSDMqJYxgdRZNhzZ5tGXOeGTqPUNEVYt4d3S41cjL3zqB35PnwK
+ fjX6JUdojlfEVSkS9zogYIwFkuvPCRDCGeU1mFrndkr9tYurBuvhn8YYBYwD8SKNSP1h
+ 1jsvzrXZl+6NpL+JWthRk4h2yOG/NgHUgkHklvZd40e9cmJ8o1c+xTb6saUY0GhqUHb3
+ 4rHRa77tC8/eZgM4TMCmEVW+bRWxBNyZKSJ+uS7NgQq/moOo6W5HBXeY9tvaLioZc3jC
+ ZbEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740666469; x=1741271269;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wGTNFxYDOBY5OQaGDmBAuOxvbJwhsg8/Ld9YxzxYgfA=;
- b=e3M8mXTkwke1npIqILx2SyFR54n+NdBkIdr2dQ6nEl4p3oBq5Z0ok6MNtc8EOnLtei
- PCd1zSSCPEwDVeYyTh1AhHuCB8cjprhAvPzDWeD4LDycZ/gA5w0LajLsos3FGJFyl6HD
- LByEvwlw2UrIryj3x+G5fcYmAP8Jz3OVmKyhoh/RK8DH9iBP132vhO5i79XDwUqxlJRC
- uX4FWMrtUrphBA8H58es7QdSVlmqSI+zMpUcJK8ucCEGbuht8OhZLLLTEjgiAmhCQGga
- uO3MxfCN4WhDzbtInEsoQKvS3orD2MlY1f5J40mV08cO72tVl4iuFPcfmSTjNQy1m6Ux
- C77A==
-X-Gm-Message-State: AOJu0YzvijGlI9M+nkxriktyG2NuXrFbWAWc7sIhYjLswWeF8pl7f9be
- dyNvQ6SimBmcRpKow1li6QCWF4mN+Dsvecxvrv9SewjDV0lnaFo46p2JfzTpSTa72+fIckEq0yA
- I
-X-Gm-Gg: ASbGncspxHWYqFrIrcb0fNWn5aQCoQOznhnyh4CRozof5Ss6C5OaHc5HofFsghPfRCL
- rrFTM9fQ1ipjeUagYSijOyxSDZ9OaRGUq7Gh8iCzqJcVnY4z12rpaALLaifr8VRqSUZfAcOattO
- NJFi1VgZ9fLLm69M8t/WsCPx+9mXVYqkg7H+lLN78QpD9ui7z6+qnQ5xg47Fb7rsk2ODAhHWhRO
- nb/3g3UDHczVrKIF1J/Ar1MFVs26MSLPyszoJz+enWHKhRovohr+91H0Xa13hbg1W0yLwqlpfNZ
- 1HDlovfuUo41LiydAG5lcjqEbpoXN7j6
-X-Received: by 2002:a05:600c:5123:b0:439:8ef6:5782 with SMTP id
- 5b1f17b1804b1-43ab8fd7acemr72056025e9.10.1740666469262; 
- Thu, 27 Feb 2025 06:27:49 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43aba532b8dsm55968335e9.14.2025.02.27.06.27.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Feb 2025 06:27:48 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 1/3] target/arm: Correct LDRD atomicity and fault behaviour
-Date: Thu, 27 Feb 2025 14:27:44 +0000
-Message-ID: <20250227142746.1698904-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250227142746.1698904-1-peter.maydell@linaro.org>
-References: <20250227142746.1698904-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1740669470; x=1741274270;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uCNOXy199FhXHMWM/2yxrJDCJEORr4pnLCkiOhqKb5M=;
+ b=fAyTbRNiYJLDnTzBMipKqefVjJ/kfESJc981tGq9Dq6Znj7XyyyK8MF3I7a2gx3Ovu
+ oAuFTfSsPJlzXR1qUqoC8F4iTshTOSUeJ4DVo1R8JzgCJf5fi3xOzN3/yqN9QQYYyNjV
+ Xwvv6qKSFC8xYxvCAiwGfCgQVLnO+B96CaP6t/0JIZN65LwXxrRlSocm0QSty6SDREaK
+ tzh31ICQ7ySgZENHw6GG6RkuD7mnuK0EvBbrjmtqoQvn1doP4+E0NjgLtvOtRtPnTy19
+ hTAzc+oSDmrfCG4/qDiyLC4i0TO1JjwDeBXRFTqrbsrzLa5odel5ZbnrWfz8aJLtZSq+
+ TzMw==
+X-Gm-Message-State: AOJu0Yy2H4zxPA9CFkHyPhfQX6lSpVuQqFYwe+rClVXfdtiNXJgiar9n
+ uDRjBLgJbBuyrnwDWbDTsG4aolQokDQSYMbcdRlCsafOXHNUfgyKdb3Z9WPm+VQLv9ZMJTzzRvA
+ FOoGbE/00c9PY1yRiGwLLSuFenSPn9dWaa4lszg==
+X-Gm-Gg: ASbGncv1Ty75IikjcWmfP3lj1bB7vFybSa/OzQzTY5F+FQ742vCjvyJdGxipbojlKJI
+ vzDc6a6Ii4TBnWOXQ7lleYTTnRdIF+Q+F0wdnUZfepvh63lF6HRX2MqpmvTBEO6HVB3VigWqTky
+ F5OPG8irkB
+X-Received: by 2002:a05:6902:708:b0:e60:a525:264e with SMTP id
+ 3f1490d57ef6-e60a5252d60mr2768269276.43.1740669470074; Thu, 27 Feb 2025
+ 07:17:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
+ <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
+ <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
+In-Reply-To: <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Feb 2025 15:17:37 +0000
+X-Gm-Features: AQ5f1Jofy-N_7pw4vI_CvfZeM5uZwIFAlKkw3eflyH-Tod0AOeIM5rkUn0f-1k4
+Message-ID: <CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com>
+Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
+To: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,150 +114,91 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9taDyGRyxidb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FoOlhA2LEdTI
 
-Our LDRD implementation is wrong in two respects:
+On Thu, 27 Feb 2025 at 09:15, Sourojeet Adhikari
+<s23adhik@csclub.uwaterloo.ca> wrote:
+> > The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
+> > being wired up in the function bcm_soc_peripherals_common_realize()
+> > in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
+> > interrupt controller), and it isn't valid to wire one input
+> > directly to multiple outputs.
+> >
+> > In fact it looks like we are currently getting this wrong for
+> > all of the interrupts that need to be wired to both the
+> > "legacy interrupt controller" and the GIC. I think at the moment
+> > what happens is that the wiring to the GIC will happen last
+> > and this overrides the earlier wiring to the legacy interrupt
+> > controller, so code using the latter won't work correctly.
 
- * if the address is 4-aligned and the load crosses a page boundary
-   and the second load faults and the first load was to the
-   base register (as in cases like "ldrd r2, r3, [r2]", then we
-   must not update the base register before taking the fault
- * if the address is 8-aligned the access must be a 64-bit
-   single-copy atomic access, not two 32-bit accesses
+> I'll try reading through the relevant sections and send an
+> updated patch later next week. From what I can tell it falls
+> under the bcm2835_pheripherals.c file, right?
 
-Rewrite the handling of the loads in LDRD to use a single
-tcg_gen_qemu_ld_i64() and split the result into the destination
-registers. This allows us to get the atomicity requirements
-right, and also implicitly means that we won't update the
-base register too early for the page-crossing case.
+Yes. To expand a bit, QEMU's qemu_irq abstraction must
+always be wired exactly 1-to-1, from a single output to
+a single input. Wiring either one input to multiple outputs
+or one output to multiple inputs will not behave correctly
+(and unfortunately we don't have an easy way to assert()
+if code in QEMU gets this wrong).
 
-Note that because we no longer increment 'addr' by 4 in the course of
-performing the LDRD we must change the adjustment value we pass to
-op_addr_ri_post() and op_addr_rr_post(): it no longer needs to
-subtract 4 to get the correct value to use if doing base register
-writeback.
+So for cases where you want the one-to-many behaviour you need
+to create an object of TYPE_SPLIT_IRQ. This has one input and
+multiple outputs, so you can connect your wire from device A's
+output to the splitter's input, and then connect outputs
+from the splitter to devices B, C, etc. (In this case A
+would be the timer, and B, C the two interrupt controllers.)
+Searching the source code for TYPE_SPLIT_IRQ will give some
+places where it's used. (Ignore the qdev_new(TYPE_SPLIT_IRQ)
+ones, those are a code pattern we use in board models, not
+in SoC device models.)
 
-STRD has the same problem with not getting the atomicity right;
-we will deal with that in the following commit.
+In this specific bcm2838 case, it's a little more awkward,
+because one of the two interrupt controllers is created inside
+bcm2835_peripherals.c and one of them is created outside it.
+Since bcm2838 is already reaching inside the bcm2835_peripherals
+object I guess the simplest thing is:
+ * create a splitter object in bcm2835_peripherals.c for
+   every IRQ line that needs to be connected to both
+   interrupt controllers (probably easiest to have an array
+   of splitter objects, irq_splitter[])
+ * in bcm2835_peripherals.c, connect the device's outbound
+   IRQ to the input of the appropriate splitter, and
+   connect output 0 of that splitter to the BCM2835_IC
+   correct interrupt controller input
+ * in bcm2838.c, connect output 0 of ps_base->irq_splitter[n]
+   to the correct GIC input
 
-Cc: qemu-stable@nongnu.org
-Reported-by: Stu Grossman <stu.grossman@gmail.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/translate.c | 64 ++++++++++++++++++++++++--------------
- 1 file changed, 40 insertions(+), 24 deletions(-)
+(This is kind of breaking the abstraction layer that ideally
+exists where the code that creates and uses a device doesn't
+try to look "inside" it at any subparts it might have. We
+could, for instance, instead make the bcm2835_peripherals
+object expose its own qemu_irq outputs which were the second
+outputs of the splitters, so that the bcm2838.c code wasn't
+looking inside and finding the splitters directly. But I
+think that's more awkward than it's worth. It's also possible
+that we have the split between the main SoC and the
+peripheral object wrong and either both interrupt controllers
+or neither should be inside the peripheral object; but
+reshuffling things like that would be a lot of work too.)
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index d8225b77c8c..e10a1240c17 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -5003,10 +5003,43 @@ static bool op_store_rr(DisasContext *s, arg_ldst_rr *a,
-     return true;
- }
- 
-+static void do_ldrd_load(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
-+{
-+    /*
-+     * LDRD is required to be an atomic 64-bit access if the
-+     * address is 8-aligned, two atomic 32-bit accesses if
-+     * it's only 4-aligned, and to give an alignemnt fault
-+     * if it's not 4-aligned.
-+     * Rt is always the word from the lower address, and Rt2 the
-+     * data from the higher address, regardless of endianness.
-+     * So (like gen_load_exclusive) we avoid gen_aa32_ld_i64()
-+     * so we don't get its SCTLR_B check, and instead do a 64-bit access
-+     * using MO_BE if appropriate and then split the two halves.
-+     *
-+     * This also gives us the correct behaviour of not updating
-+     * rt if the load of rt2 faults; this is required for cases
-+     * like "ldrd r2, r3, [r2]" where rt is also the base register.
-+     */
-+    int mem_idx = get_mem_index(s);
-+    MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
-+    TCGv taddr = gen_aa32_addr(s, addr, opc);
-+    TCGv_i64 t64 = tcg_temp_new_i64();
-+    TCGv_i32 tmp = tcg_temp_new_i32();
-+    TCGv_i32 tmp2 = tcg_temp_new_i32();
-+
-+    tcg_gen_qemu_ld_i64(t64, taddr, mem_idx, opc);
-+    if (s->be_data == MO_BE) {
-+        tcg_gen_extr_i64_i32(tmp2, tmp, t64);
-+    } else {
-+        tcg_gen_extr_i64_i32(tmp, tmp2, t64);
-+    }
-+    store_reg(s, rt, tmp);
-+    store_reg(s, rt2, tmp2);
-+}
-+
- static bool trans_LDRD_rr(DisasContext *s, arg_ldst_rr *a)
- {
--    int mem_idx = get_mem_index(s);
--    TCGv_i32 addr, tmp;
-+    TCGv_i32 addr;
- 
-     if (!ENABLE_ARCH_5TE) {
-         return false;
-@@ -5017,18 +5050,10 @@ static bool trans_LDRD_rr(DisasContext *s, arg_ldst_rr *a)
-     }
-     addr = op_addr_rr_pre(s, a);
- 
--    tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
--    store_reg(s, a->rt, tmp);
--
--    tcg_gen_addi_i32(addr, addr, 4);
--
--    tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
--    store_reg(s, a->rt + 1, tmp);
-+    do_ldrd_load(s, addr, a->rt, a->rt + 1);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
--    op_addr_rr_post(s, a, addr, -4);
-+    op_addr_rr_post(s, a, addr, 0);
-     return true;
- }
- 
-@@ -5152,23 +5177,14 @@ static bool op_store_ri(DisasContext *s, arg_ldst_ri *a,
- 
- static bool op_ldrd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
- {
--    int mem_idx = get_mem_index(s);
--    TCGv_i32 addr, tmp;
-+    TCGv_i32 addr;
- 
-     addr = op_addr_ri_pre(s, a);
- 
--    tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
--    store_reg(s, a->rt, tmp);
--
--    tcg_gen_addi_i32(addr, addr, 4);
--
--    tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
--    store_reg(s, rt2, tmp);
-+    do_ldrd_load(s, addr, a->rt, rt2);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
--    op_addr_ri_post(s, a, addr, -4);
-+    op_addr_ri_post(s, a, addr, 0);
-     return true;
- }
- 
--- 
-2.43.0
+(PS: for the other "not 1:1" case, where you want to connect
+many qemu_irqs outputs together into one input, the usual semantics
+you want is to logically-OR the interrupt lines together, and
+so you use TYPE_OR_IRQ for that.)
 
+thanks
+-- PMM

@@ -1,197 +1,309 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp331531njb;
-        Thu, 27 Feb 2025 08:10:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVeO2T1Z03STl9DG+GSDIK1zRVhFY/HtmXHFrPQT1tEQZntsBnAlRjc395fTSXINXo8LyHy1Pr4YKi0AQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH7TmAQFi+OoRDWgAZbAD95RpbT2t3zQHF6KFTqRRzp0VAI9t79N3Ylcd1tGlu3KnL8UHNV
-X-Received: by 2002:a05:600c:4687:b0:439:9aca:3285 with SMTP id 5b1f17b1804b1-439b6ad5cbfmr197281535e9.6.1740672616675;
-        Thu, 27 Feb 2025 08:10:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740672616; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp354326njb;
+        Thu, 27 Feb 2025 08:43:47 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVoCH1FzenUigMUBhdj2Ex4YOrSXz/hI+b9ULjr1ExdRkgYAvOFmLITIxO9FrDpJ+RDTlS0omklajhvhA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFyYUuaVdzx9ihQY2Xwu9xhUfTxyYxqL/nNm3iB04MZGjcD3BqVnBLqMm/6yEghCrnHbdjq
+X-Received: by 2002:a05:6808:189b:b0:3f4:98f:1fdf with SMTP id 5614622812f47-3f547de88d3mr4853885b6e.8.1740674627252;
+        Thu, 27 Feb 2025 08:43:47 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740674627; cv=pass;
         d=google.com; s=arc-20240605;
-        b=hjIDmlQ9957IaHngKwU95apRBHyJb+5MOoELULJ4Gcw00bySWYZm++MThCSpKkI1HI
-         SqWrdNlifa/nPRT6c1NHsLY1PtyKflD+htFARTh8KlTObdA5GVU4YUyHsfnX6zABITjm
-         WGFR6RTVxC8TEfU/uLx2b9rXypo9RqS4ewXNWHmc8EtzKuWPZDI5OWMJOptS92Z2uLDY
-         dtpNm/zOIH9QO12b9LjYagPPOfXuoTToUvnzIQVjrbyPE3UHxVgeCJEuNKqWNIMggMgj
-         jlGsSB5TlPxroqs3IWt1aUdsTfBSwzPdFF3ANw04CljOvIXdB7YBON0Tip188GpzeV1V
-         ydxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=6KeP6LOaPnp3jRIIoz0WXOkqKl2xTX9I/6K/ONhVA9Y=;
-        fh=h0gRN3vOwxsEfZLqdAPNqOSOUJP06yDtDjmouPR5WUU=;
-        b=beobNvG9pjFpI4nRQ55pg+A31JULJfh5bU5+phBjP+R9oJeKVPjUCAFDv0RnGrIflR
-         pgBKoxU49mBXd+bEB//oi+6vr9QquLSZ8bj63fCDFYnGcFflbuZoDh1lXGGx+CJpKlh8
-         CV27VFd3ccgZbuvZbO7bqjsOZ5InjNMnjuLYLDoK20A/B7jk+z69Y+AQy9WIl03vsCOj
-         xafdCn0O/R60VU6YQwqwmI28YttZ+txVDvNXQm3c9lHrGbgowG7FW9y9TlhP5ZFKkn+z
-         ahF182Hx5YH74ivtVjAb/YCRC2w4DWYqzc6xLSIuabJQJY3E4frm13AwKvztS1Zvune3
-         7cLA==;
+        b=KTyd5rFe/a1MslyoEbUN6ZZSFw9JZznNI/Fc+YK+9NuIWQNeKAlScjh9BIN8LUV2BN
+         qLeaDEDlxF0qGSotUHRV8TnbaoebXAcCuFiGawTivqJ9+Mu9rjjMnzsSXqjmUbCbsa1K
+         aOYNXBv2YVraUMbEM6XA7KrQ0jf95+HULCEIuVtICFzCL/htDOKQMRS/glv6KoyubnrK
+         NsVAuTlR6jkxmA1dnyzeYkFaUwyvcOAPUUBnwdCSESJvpT/vz1f4oN98/PE8TjTmrVAP
+         tU5RwqWBgDe/VXspwO5eRMZdrA9qNQ56vHxLa6UGGq3uwkO1ZA9eD8S8qj5HZpIaJ7NF
+         6fvw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=TQNCbBxi7eD7idYstTcVVTcDcXqJ3+FMvik+jAH6Dos=;
+        fh=Frf7NbxPoFxXVy6SstEkJFlfULlXibBfwxW7XZ4tAQs=;
+        b=FqItCynjKj63n5y+Yku8uyEflSP6iTaUTojVhgRMYtApWCXLTXucwUmU3khY2TlmiV
+         c9cUlqALTQtFyvSKC4cCdQjj1v2VhsVUDy0VGPg6SyGGiQJs1rIPhzXUSU0SgtlRSiHx
+         saYYSzdjmgYEoV+/xXrc2hV9XD8i8zbjEhq5as1nlbzhrakdQCReVJhec+len/6+ubzI
+         nUSHoMUTvuU2V1LfjUiXREzlCrKZNWNhdHRP6a7eZlaRHxgGoj+xMnNy6hXqOLQxEY/w
+         MokFaEb1WmfzNhMDIui9U1At8RKSY36w6O9dauUumzHb/VIEab/a+NuW33tTzVwf7C6u
+         dTOw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CTy70L7X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43aba52b930si28280065e9.72.2025.02.27.08.10.16
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q6fPEnZx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 5614622812f47-3f550790795si1386313b6e.199.2025.02.27.08.43.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 08:10:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 08:43:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CTy70L7X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tngKt-00081a-8D; Thu, 27 Feb 2025 11:02:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tngKY-0007kN-F1
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 11:01:55 -0500
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tngKT-0007Pm-UK
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 11:01:45 -0500
-Received: by mail-yb1-xb2e.google.com with SMTP id
- 3f1490d57ef6-e573136107bso1031166276.3
- for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 08:01:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740672099; x=1741276899; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6KeP6LOaPnp3jRIIoz0WXOkqKl2xTX9I/6K/ONhVA9Y=;
- b=CTy70L7XX0htERVoai4K+KXne2UiosY9q75gVoa+/1gAmQ6nZkjCqljSclUrW8gf6t
- CIj4VKKQD80chm4CijzfKrRXoYUl9pyHzqKin7BBZCJkELeMlpmJBzYDCz4SV9PiPNWU
- h8UBmxmw+6wxQLUnTZYGBL3DPIgQqoUECUooeFbOCJyH67lDauAt9t9G5/Pvx1p9ibRZ
- RyCWiCWPzpVM4xLWLI4YzZQKERc1+mQGBQJm7CGnT0ff3/BvEgju4GGd8ZH1IxeCgW5t
- TvlUV2HS826Rox9XpXcSMHOoGgjo//VgcotjTlrSChy7Gyh1FOff5O0sXJlVQdJyqmdk
- 8aBA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q6fPEnZx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-536893-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 7879B3A6CFB
+	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 16:43:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 50DA61B4250;
+	Thu, 27 Feb 2025 16:43:32 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Q6fPEnZx"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 343381B21B7
+	for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 16:43:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740674612; cv=none; b=dh2/RyifazhfWtsguDVo46DbpNcv0eKY1rTTOcskcTI+s9J5cevBBjgVZ+hV164SQXjsgptT3EFi4nW/Z2NvCBa1sQidsRFfxD71zYtId3xcj3kXlIVugVUAn4xIUPgmHcsulqJQ64zGmpCHLnG5jHSKVeFIQazfWYHyC1JrJ5w=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740674612; c=relaxed/simple;
+	bh=N2U6Xyj+9lJkd79UADYQfgAlIIyD7zVtVL/LKmWPx0g=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=h/3xOgxvUQBqpF9f2O/3Xp9U+PngKXxn618iiuqkWrw3rrPslabbSbJBomh2ZtYNiTPMoNizWrU+FkbmZV55JxyJnLIsPEs366gtSJe8WUyvpgmwg3y5upj8J760J/HG22hPO/V7BSv42kepsPJokQsdxMFfyjkv76nIGcAEDVo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Q6fPEnZx; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1740674607;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TQNCbBxi7eD7idYstTcVVTcDcXqJ3+FMvik+jAH6Dos=;
+	b=Q6fPEnZx8nLEFQPAzBX7CCyKjB0JIFhgqsLYEMbMBhX8iq9ds9berfAbIIavAvAV9OlMHT
+	dOkvXaoyGN1BCwy4K+YgLRYQtxbv7i0/B7bK9izLbf/u9Bw1tXxJPRfaKuuX2QiAbYOeNo
+	Gq/7EZ3SLkqZsV4G0WLkRG/TISrqt70=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-141-rOjCYrpLPeG5hum8F66PKg-1; Thu, 27 Feb 2025 11:43:26 -0500
+X-MC-Unique: rOjCYrpLPeG5hum8F66PKg-1
+X-Mimecast-MFC-AGG-ID: rOjCYrpLPeG5hum8F66PKg_1740674605
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43988b9ecfbso6015295e9.0
+        for <linux-kernel@vger.kernel.org>; Thu, 27 Feb 2025 08:43:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740672099; x=1741276899;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=6KeP6LOaPnp3jRIIoz0WXOkqKl2xTX9I/6K/ONhVA9Y=;
- b=P6Mn1n4A9w0+YlN/eUyCJ0WczEdpQwDpUs6JlsJrDtyt9/KSYDA2UtwC1/Dq7oOtHF
- IoxOfTOlYWXyH7w1CeexLrazQKOylobfa8e09h8GSkh9SChCcaFfQUEHtSP0o5r8sli6
- x/4a8+39j0H5T4RY9kPrFUYMKFgG4LZa8qXHW5Rq1zeq1hERfDj3WChRQAFhPKyzq9Oo
- t250cWxuSoR7buMAwscd+lNXURtDokWZXdpsIiTTXhAdf4O35kiiWG7+cL1fqhENm+Xv
- 9x7GUMDPGmtX5adVxmnN4D3gX3U712megOtNuBBdoXnkEuNj7XVai9ghZu006FmWRR7l
- gfNA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUV9xcNGW1Bj57IY7MGgIjFaQIfNAaZlSkwHJrgApXjvEOlaWovrCkrlZRFyucsYiXg+JoOFxDysA==@nongnu.org
-X-Gm-Message-State: AOJu0YyHEk17d0CPsNeezdUljaSn7gTSbRlzByP3FFYrZC1yOqoy1Msc
- hQJ3dpr1B4Yl9Vj5SLZY1RUq6f6SQyEvzuWbL3Hd6WUzVJtLqxoooEDKNMRx8hyAgvvr61DVHzz
- wNw7qFd/I2rG7Ned9ZEy2hWte1TTOgx1WksUkWQ==
-X-Gm-Gg: ASbGncu+LeTeKdKLFbja1wdQ14h+sua8Yn40XmYJiRxCjyASuCyycP1IAh4AfROG6YH
- ypx/zDhiHTDSUdjEIPOL0NF7Vs3Az8hDhcYJpclrF21d5HjM+GBLKuDQFQNkC4f8kAKsoMTkhQZ
- KhZ+DsGzOu
-X-Received: by 2002:a05:6902:12c5:b0:e5a:e774:d238 with SMTP id
- 3f1490d57ef6-e608a6a17d9mr7395085276.2.1740672097916; Thu, 27 Feb 2025
- 08:01:37 -0800 (PST)
+        d=1e100.net; s=20230601; t=1740674605; x=1741279405;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TQNCbBxi7eD7idYstTcVVTcDcXqJ3+FMvik+jAH6Dos=;
+        b=HvBDoR3TdGNKF3d9DRzRblfkIzkaYEoI6oOA/ycLm7bSngPsN7MJr3zrynZTv22ExK
+         gnN/fTLnVB4baTHAii8c33P3wSmAh1bfoEFUWXcJXbT5jPlFYnapC0fQIGPGedzks9LG
+         1iQsGUSVV5OwT1oc2Kh0XJPViS6yd1DSGPFzWI41uo/KffBCosd4JLtpn0h6Xy9UbI37
+         OY0Z56gpFpNEngXnuOqqyHbAZqwXHWq19leF8muV/PuwAaY5e1ZKwe4tn6IQrGKkoAdl
+         uLkz3uMiQsgsGVFC8cNupmgLZk2IG02JPBsLmaGEEO0c+1geMd/s02fH3x+/tgLPCHjd
+         GAiw==
+X-Forwarded-Encrypted: i=1; AJvYcCUODI8QrM/0VbO6jZPj/jl1IJ9Y9d8UcChiVj+2jG/+ch8d/JWvTOQ1xPsswGxtF74HAe0+kXKAlsgLJqY=@vger.kernel.org
+X-Gm-Message-State: AOJu0Ywi76/lqBQuyfaTtZZZ4Eel0BgOYD0JMH6TId9QYoLizLvG1lGC
+	IaekfQ8fInuVwRztI8V69MmMvf9vzchQjBV2cOiqgqQV35XEEbb6Z12MZk+GO16qr0tkGHLt9WS
+	WTpLmY4wWEgaqsM8xSVnnOy14vb00A+Om7KqTjMZ9wjfcpiwU/+SMFTjKmtzkrg==
+X-Gm-Gg: ASbGnct8a9R85YHkjHdm+MRKLHzxJ5DM9PboQ8q/o1/BR+pSVZ2LZ1cEVjZloBAiDjY
+	NDNpehRtl3RaveFGt/jwLGq67MoY+IhReELsGXoG7arDWvgAN6Bbq/muu8mTtlvz5cwMb5NDxnE
+	jPkioumFd1om+GV0jFqXaSjn2csvzRiuxVtWNJc8kqZ+tWiFZSspNjdsLJsiYxkMixE64x2qoKJ
+	SgzTNoLirFvCw5e1HjV9hxKKDNBFFxPctz614Hf9uaSbyhFAlWYP0ffVhptJTckVMp5V/hzGNIq
+	Fes9O+qElP9Ci4mcdZFTSgZyld3tEq6KsPAmu6Uu1cWTRcQE5fRM53MSkCbG+HU=
+X-Received: by 2002:a05:600c:3c83:b0:439:82de:9166 with SMTP id 5b1f17b1804b1-43ab8fd1e8dmr64031145e9.1.1740674605052;
+        Thu, 27 Feb 2025 08:43:25 -0800 (PST)
+X-Received: by 2002:a05:600c:3c83:b0:439:82de:9166 with SMTP id 5b1f17b1804b1-43ab8fd1e8dmr64030785e9.1.1740674604620;
+        Thu, 27 Feb 2025 08:43:24 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43b737074d8sm29172345e9.16.2025.02.27.08.43.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 08:43:24 -0800 (PST)
+Date: Thu, 27 Feb 2025 17:43:21 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 00/19] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250227174321.0162a10f@imammedo.users.ipa.redhat.com>
+In-Reply-To: <cover.1740671863.git.mchehab+huawei@kernel.org>
+References: <cover.1740671863.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250227154003.1646017-1-venture@google.com>
- <CAFEAcA_wR-M3+BhZY0MFjv3OfoyL2gvukduvKZ6ksKwUKmdB6Q@mail.gmail.com>
- <CAO=noty89OsH=vGmemL7eLcR2wV6n4XG9a2HfT7Uzo8EPRy4PQ@mail.gmail.com>
-In-Reply-To: <CAO=noty89OsH=vGmemL7eLcR2wV6n4XG9a2HfT7Uzo8EPRy4PQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Feb 2025 16:01:25 +0000
-X-Gm-Features: AQ5f1JpdX-BJ2ftWF8KTni0lYlT_dpMnvPWSa2ybbaJ5v_e_lnPcTguNtDdg9o8
-Message-ID: <CAFEAcA-gyMTz-KpmamyXcKX9QOL=yYHDMPRF2Xji_uJbG02WpA@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: npcm7xx_emc: fix alignment to eth_hdr
-To: Patrick Venture <venture@google.com>
-Cc: kfting@nuvoton.com, wuhaotsh@google.com, jasowang@redhat.com, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6tavlDmaTiG2
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: Nzshfj+J2/NP
 
-On Thu, 27 Feb 2025 at 15:55, Patrick Venture <venture@google.com> wrote:
->
->
->
-> On Thu, Feb 27, 2025 at 7:52=E2=80=AFAM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
->>
->> On Thu, 27 Feb 2025 at 15:40, Patrick Venture <venture@google.com> wrote=
-:
->> >
->> > 'const struct eth_header', which requires 2 byte alignment
->> >
->> > Signed-off-by: Patrick Venture <venture@google.com>
->> > ---
->> >  hw/net/npcm7xx_emc.c | 7 ++++++-
->> >  1 file changed, 6 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
->> > index e06f652629..11ed4a9e6a 100644
->> > --- a/hw/net/npcm7xx_emc.c
->> > +++ b/hw/net/npcm7xx_emc.c
->> > @@ -424,7 +424,12 @@ static bool emc_can_receive(NetClientState *nc)
->> >  static bool emc_receive_filter1(NPCM7xxEMCState *emc, const uint8_t *=
-buf,
->> >                                  size_t len, const char **fail_reason)
->> >  {
->> > -    eth_pkt_types_e pkt_type =3D get_eth_packet_type(PKT_GET_ETH_HDR(=
-buf));
->> > +    struct eth_header eth_hdr =3D {};
->> > +    eth_pkt_types_e pkt_type;
->> > +
->> > +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
->> > +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
->> > +    pkt_type =3D get_eth_packet_type(&eth_hdr);
->>
->> Maybe better to mark struct eth_header as QEMU_PACKED?
->> Compare commit f8b94b4c5201 ("net: mark struct ip_header as
->> QEMU_PACKED"). The handling of these header structs in eth.h
->> is in general pretty suspect IMHO. We do the same
->> "get_eth_packet_type(PKT_GET_ETH_HDR(buf))" in other devices,
->> so this isn't just this device's bug.
+On Thu, 27 Feb 2025 17:00:38 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Roger that. We saw this in the two NICs we happened to be testing that da=
-y, and yeah, I grepped and just figured that those other NICs were doing so=
-mething with their buffer allocations that we didn't. I'll give QEMU_PACKED=
-  whirl.
+> Now that the ghes preparation patches were merged, let's add support
+> for error injection.
+> 
+> On this version, HEST table got added to ACPI tables testing for aarch64 virt.
+> 
+> There are also some patch reorder to help reviewers to check the changes.
+> 
+> The code itself is almost identical to v4, with just a few minor nits addressed.
+checkpatch on my machine still complains
 
-You might find you need to make some fixes to other
-devices to get the QEMU_PACKED change to compile (do an
-all-targets build to test that). For instance for the
-ip_header change I had to first fix virtio-net.c in commit
-5814c0846793715. The kind of thing that will need fixing is
-if there are places where code takes the address of the
-h_proto field and puts it into a uint16_t* : the compiler
-will complain about that. A quick grep suggests that the
-rocker_of_dpa.c code might be doing something like this, but
-hopefully that's it.
+0007-acpi-ghes-Use-HEST-table-offsets-when-preparing-GHES.patch has no obvious style problems and is ready for submission.
+Checking 0008-acpi-ghes-don-t-hard-code-the-number-of-sources-for-.patch...
+WARNING: line over 80 characters
+#170: FILE: hw/acpi/ghes.c:390:
++        build_ghes_v2_entry(table_data, linker, &notif_source[i], i, num_sources);
 
-thanks
--- PMM
+total: 0 errors, 1 warnings, 159 lines checked
+
+0008-acpi-ghes-don-t-hard-code-the-number-of-sources-for-.patch has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+Checking 0009-acpi-ghes-add-a-notifier-to-notify-when-error-data-i.patch...
+total: 0 errors, 0 warnings, 26 lines checked
+
+0009-acpi-ghes-add-a-notifier-to-notify-when-error-data-i.patch has no obvious style problems and is ready for submission.
+Checking 0010-acpi-generic_event_device-Update-GHES-migration-to-c.patch...
+total: 0 errors, 0 warnings, 41 lines checked
+
+0010-acpi-generic_event_device-Update-GHES-migration-to-c.patch has no obvious style problems and is ready for submission.
+Checking 0011-acpi-generic_event_device-add-logic-to-detect-if-HES.patch...
+total: 0 errors, 0 warnings, 59 lines checked
+
+0011-acpi-generic_event_device-add-logic-to-detect-if-HES.patch has no obvious style problems and is ready for submission.
+Checking 0012-acpi-generic_event_device-add-an-APEI-error-device.patch...
+total: 0 errors, 0 warnings, 72 lines checked
+
+0012-acpi-generic_event_device-add-an-APEI-error-device.patch has no obvious style problems and is ready for submission.
+Checking 0013-tests-acpi-virt-allow-acpi-table-changes-at-DSDT-and.patch...
+total: 0 errors, 0 warnings, 7 lines checked
+
+0013-tests-acpi-virt-allow-acpi-table-changes-at-DSDT-and.patch has no obvious style problems and is ready for submission.
+Checking 0014-arm-virt-Wire-up-a-GED-error-device-for-ACPI-GHES.patch...
+WARNING: line over 80 characters
+#68: FILE: hw/arm/virt.c:1015:
++    VirtMachineState *s = container_of(n, VirtMachineState, generic_error_notifier);
+
+total: 0 errors, 1 warnings, 44 lines checked
+
+0014-arm-virt-Wire-up-a-GED-error-device-for-ACPI-GHES.patch has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+Checking 0015-qapi-acpi-hest-add-an-interface-to-do-generic-CPER-e.patch...
+total: 0 errors, 0 warnings, 178 lines checked
+
+
+
+> ---
+> v6:
+> - some minor nits addressed:
+>    - use GPA instead of offset;
+>    - merged two patches;
+>    - fixed a couple of long line coding style issues;
+>    - the HEST/DSDT diff inside a patch was changed to avoid troubles
+>      applying it.
+> 
+> v5:
+> - make checkpatch happier;
+> - HEST table is now tested;
+> - some changes at HEST spec documentation to align with code changes;
+> - extra care was taken with regards to git bisectability.
+> 
+> v4:
+> - added an extra comment for AcpiGhesState structure;
+> - patches reordered;
+> - no functional changes, just code shift between the patches in this series.
+> 
+> v3:
+> - addressed more nits;
+> - hest_add_le now points to the beginning of HEST table;
+> - removed HEST from tests/data/acpi;
+> - added an extra patch to not use fw_cfg with virt-10.0 for hw_error_le
+> 
+> v2: 
+> - address some nits;
+> - improved ags cleanup patch and removed ags.present field;
+> - added some missing le*_to_cpu() calls;
+> - update date at copyright for new files to 2024-2025;
+> - qmp command changed to: inject-ghes-v2-error ans since updated to 10.0;
+> - added HEST and DSDT tables after the changes to make check target happy.
+>   (two patches: first one whitelisting such tables; second one removing from
+>    whitelist and updating/adding such tables to tests/data/acpi)
+> 
+> 
+> 
+> Mauro Carvalho Chehab (19):
+>   tests/acpi: virt: add an empty HEST file
+>   tests/qtest/bios-tables-test: extend to also check HEST table
+>   tests/acpi: virt: update HEST file with its current data
+>   acpi/ghes: Cleanup the code which gets ghes ged state
+>   acpi/ghes: prepare to change the way HEST offsets are calculated
+>   acpi/ghes: add a firmware file with HEST address
+>   acpi/ghes: Use HEST table offsets when preparing GHES records
+>   acpi/ghes: don't hard-code the number of sources for HEST table
+>   acpi/ghes: add a notifier to notify when error data is ready
+>   acpi/generic_event_device: Update GHES migration to cover hest addr
+>   acpi/generic_event_device: add logic to detect if HEST addr is
+>     available
+>   acpi/generic_event_device: add an APEI error device
+>   tests/acpi: virt: allow acpi table changes at DSDT and HEST tables
+>   arm/virt: Wire up a GED error device for ACPI / GHES
+>   qapi/acpi-hest: add an interface to do generic CPER error injection
+>   acpi/generic_event_device.c: enable use_hest_addr for QEMU 10.x
+>   tests/acpi: virt: update HEST and DSDT tables
+>   docs: hest: add new "etc/acpi_table_hest_addr" and update workflow
+>   scripts/ghes_inject: add a script to generate GHES error inject
+> 
+>  MAINTAINERS                                   |  10 +
+>  docs/specs/acpi_hest_ghes.rst                 |  28 +-
+>  hw/acpi/Kconfig                               |   5 +
+>  hw/acpi/aml-build.c                           |  10 +
+>  hw/acpi/generic_event_device.c                |  44 ++
+>  hw/acpi/ghes-stub.c                           |   7 +-
+>  hw/acpi/ghes.c                                | 231 ++++--
+>  hw/acpi/ghes_cper.c                           |  38 +
+>  hw/acpi/ghes_cper_stub.c                      |  19 +
+>  hw/acpi/meson.build                           |   2 +
+>  hw/arm/virt-acpi-build.c                      |  35 +-
+>  hw/arm/virt.c                                 |  19 +-
+>  hw/core/machine.c                             |   2 +
+>  include/hw/acpi/acpi_dev_interface.h          |   1 +
+>  include/hw/acpi/aml-build.h                   |   2 +
+>  include/hw/acpi/generic_event_device.h        |   1 +
+>  include/hw/acpi/ghes.h                        |  51 +-
+>  include/hw/arm/virt.h                         |   2 +
+>  qapi/acpi-hest.json                           |  35 +
+>  qapi/meson.build                              |   1 +
+>  qapi/qapi-schema.json                         |   1 +
+>  scripts/arm_processor_error.py                | 476 ++++++++++++
+>  scripts/ghes_inject.py                        |  51 ++
+>  scripts/qmp_helper.py                         | 703 ++++++++++++++++++
+>  target/arm/kvm.c                              |   7 +-
+>  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
+>  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
+>  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
+>  tests/data/acpi/aarch64/virt/HEST             | Bin 0 -> 224 bytes
+>  tests/qtest/bios-tables-test.c                |   2 +-
+>  32 files changed, 1692 insertions(+), 91 deletions(-)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/acpi-hest.json
+>  create mode 100644 scripts/arm_processor_error.py
+>  create mode 100755 scripts/ghes_inject.py
+>  create mode 100755 scripts/qmp_helper.py
+>  create mode 100644 tests/data/acpi/aarch64/virt/HEST
+> 
+

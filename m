@@ -1,261 +1,242 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp262052njb;
-        Thu, 27 Feb 2025 06:33:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVXxzrZ3leMEzcMfvzJJgB7c3gTP/PAkVT3fg+x9niWsZdU4Aoq+xDDQdpKA3n5CxoTa4K1JKaZKtE2Lg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGoGHvraDUry6Cs6APCuJxtVX4k7jVOXCKleF9DqVzvVIx2c1uWX/Zytkaiiv8GJ2PJNcgi
-X-Received: by 2002:a05:6122:886:b0:518:773b:39f with SMTP id 71dfb90a1353d-5224cbd9e3emr4479767e0c.4.1740666826919;
-        Thu, 27 Feb 2025 06:33:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740666826; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp290688njb;
+        Thu, 27 Feb 2025 07:13:56 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXsgGQAF7BY02kP6gR7ofharUexkJBVtLbZGwgqoHTgfFRJLdXUEBswjar24ExydEfCO/7UqFpHJvTDog==@linaro.org
+X-Google-Smtp-Source: AGHT+IEHZ6J6lMXZ5C8ja2gJVKalApWCOGWjpML0QIdeJE8W7qkiRTGOn1u5+3nZ3lq0LgoHDNNN
+X-Received: by 2002:a05:6e02:13ad:b0:3d3:deee:de2f with SMTP id e9e14a558f8ab-3d3deeee2cdmr29532305ab.7.1740669235903;
+        Thu, 27 Feb 2025 07:13:55 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740669235; cv=pass;
         d=google.com; s=arc-20240605;
-        b=CUqmzb2PeJasGqe0EokN58jN4lcATJblkq5OOfkkTZANQCYrtMIJ4JmeA9H/BGfFJ7
-         gUPjuwFPnavCAN5HTuLLXsG5qoxMAMllIG5fnA9YYfwZrPvr1DgxF+kwM6ckKAv2XZgd
-         UXWC45H0FVZ+iMYXzmFsBQQBJh5PdM+IOr9WMDy0hsCUEKFqIT6OpXJPgxcKp12oXxIj
-         zC/+zMQUXs3ws9jVoux/vEbcDt5NWG9c+qKeQOVTFRgmtO3GAKc2lU+2AlRAMFDkRooM
-         +m0TzTq/i8D29znX5M9pLUZD0FDH8+cJODK0aEQvYjSzr3D25TX8oI6FwdnAqjOJninN
-         i3sQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=bBTqTkCG2mdnnfefXGlINhtGqt3fpl8EJ4NhuP7TlgE=;
-        fh=C0LcFUn9ZAGbnIqzTo1qt8BRSikDi7ysmofZ51ZAZD0=;
-        b=IGLVO0rr69q3FHsyNOB6lgwU0p4AiMn/XbgyqgAxF/Vwkln4T3V/pFmKNjz8NY65ct
-         i2RE3CLkmKkDk09YvFbtVk6/V2pJF5KIM8d7oHZGdWQGCVx11yb4YUUjPBrlTnJ9Ex2q
-         dtxSi1xngwSaLuYggxUyLTOODXeAYmVCiDrYEAcou4Q/deSnzFvy9MVJez1LE49odKwO
-         SZ6OMGO+0fbMzwUp7NrJigqP9li7RykhvBVPsXDiofPWx5Tk+jOvX1hEhBPq+Kb5FYdz
-         EOak91rOlnCz/W6iL7mJvliWru6cZ4aIugrmd1IyCpvl6ozK7B9If0Zyv6cRwmpvtULp
-         FrXQ==;
+        b=VWnYbYrgyzujyBLj2Rg58hlmv+PYJWmWxmE2Ky5ft5mIV169KiVYWbfTKuQ5UKqU5Z
+         kChueyfMrj1pm9uxlG+HH11pA3Ab9NFHqsIhc/npWDHD+1WSAf+mUP05TCysvn+0oZbA
+         3qr+fTHrIOhQjNMy3/1oYg+EYXzBI3dTK6lMU5ZvR3ipNFavpRXlujbi853WlgRtdwDw
+         YC1TGLT6H4nt7G7CWuoBBB4YzaxGv5Nbw/ltDbor6HiEuMhCezf7wu+hN4xJcqo++Cu4
+         M+nQjJZylozQFLAriH3YNIBSR0FXzoXwFREV1UsC667mNiXuQqvJ0UPNOgCJ+kO+dC/6
+         +sJQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=NCT1FsgBsFDsO6J69bYu4LmdnDrahuuC0AOJtjqOlJ0=;
+        fh=P4RS9JukmZ21CQvKZobEDPuTf7aagFpCfdcx6mggSE4=;
+        b=HhSnLF2bP73EiFexXcAjRKXe38GO5GEePIxSaYoBhgua/qoDQabc1AMvw0o9dOw54K
+         j8VAP0ETPNuvXpQtViKYdV9Udwr6mUWQ+PKL2Dgno9FIMNFQPUbsgLkB+R1zp76ZMhPc
+         sGBsb4qyOKlAcAQYIcb0coPHIMonua+hN76iuPx6HuTLRLtUbC3rcurwpi8rhpguKZUh
+         jGLCOpd3Cu1F+e9b8Cx5ERmozk78L5acrspo49L/fNgEJUkkTVUmd4oSsKLwFfqIrNFm
+         19LqEV5dLilacH+0ot1Clu94r0Tq2yazseihGMZIF3HbIhCsgdohdCNCSrzimG6alqDC
+         TVJA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZbdKsjwi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5234bec96edsi300516e0c.51.2025.02.27.06.33.46
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KlMV9lS3;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id e9e14a558f8ab-3d3dee5dbf4si11703035ab.12.2025.02.27.07.13.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 06:33:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 07:13:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZbdKsjwi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=fail header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tnerv-0006I7-Lt; Thu, 27 Feb 2025 09:28:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnerm-0005QF-1H
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 09:27:58 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tnerj-0004vE-B6
- for qemu-devel@nongnu.org; Thu, 27 Feb 2025 09:27:57 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-390dd3403fdso820514f8f.0
- for <qemu-devel@nongnu.org>; Thu, 27 Feb 2025 06:27:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740666471; x=1741271271; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=bBTqTkCG2mdnnfefXGlINhtGqt3fpl8EJ4NhuP7TlgE=;
- b=ZbdKsjwilmoZKMi29fpz2olgtlExlSzC6mm3ZkjmPUonBf2eX2WDvZ2eMqo+yjzUW2
- vVa4pEtZNQO1OEiNGW4MkNfPyVny+jZGi4fGe4KCGdC+MXgPJOMu2wkCXHMvbt+7p63x
- 4xM2Zz9MSQO5cFh2ryrZC4JRxEmpiB5etktJne/1Mrt0+KOXSYTKAQkVgIUJPkXFXaLW
- 1aXwA2ZDpYOk9VoV8io3bcM/f17yWwSpceNAziu34pnXEJnMBHSWiQsC5vmrNJ8nQZqK
- +zYtfroDO5CYSsjBOiyOxsiYiLU5iqshx6cc4dcZVas4TqfQ8W6BBB8nBOr/cy6LxJBf
- f0SQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740666471; x=1741271271;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bBTqTkCG2mdnnfefXGlINhtGqt3fpl8EJ4NhuP7TlgE=;
- b=Y+IEoOkxURk+aYUsCan8dYfpFYgEptpjrIk//z5map8pEYF+lUJhwsP47AKLsvNM3T
- 6PFpK5wAl4ZWEo2c99nQZTMSXt+j5VzZiTYUptaCHm163XHNnGoIroPbJAW9/R6itINo
- sVo/22TZ1mu5GnLmxAKNRVp5hGTP39uuyl+sj2hdaXWf8C7kF2/urbW/EnxvH78ajw5w
- tayOG0aJ3ebLAXfsJvN/F+rTroCIXZSk96awUNVcTnED1K5tYwTM81QO+twNQD+11iBu
- 2CVAtpdOhfiBIjJgxyM9EY7IC/gCfYXVcit3XiHOfUv/uQ42WArOI+ELLR4h4FGXfUyL
- wmBA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX1wYXKIvIR1FtZTPCktwqA1gYDqv+mxVPZOHu48u22oIpy11mwLg0F+gd/umKFn7/QQgmWjmatlK94@nongnu.org
-X-Gm-Message-State: AOJu0YybkF3OfsbPotVraBKy+FzQB1wYomWv+45mHlcjwDMKiZn2dzOx
- zRQPXbq/ShM5s47WF/e8SfDb+P8yQU9XlqTG6xbJBWmlEdJA7G+b9T+6xd6Bsq0=
-X-Gm-Gg: ASbGnct6uKN5QAMFUnl9rTneW9T/K1vJnX672Bos22hS5vqT6rcMWX8hjsJOiV1lItj
- gZ+KdcUdSogOUZrPDqZFXge15dWoL/vrS7OaNR4GAy66W75RmjmmAqWR2O6HZg9ASz8ssUR0R3K
- 2ewRuNg2u52b8+qE5XZHMNpjrAvf58pxFHF6z8y+RFAsMmR/ROHqkhA2+zJMVb/u75/Wfk725/L
- /aNHoXwFH1uQrQSQug3r16A5ih9wpzORqK4Llv033bjIZ8d7XbDaskmisSNO1HbVAjXIdvZaStZ
- qM4bEb32ZreQAhCsJamhI5bgKpus0S+G
-X-Received: by 2002:a5d:47a3:0:b0:385:fc70:7f6 with SMTP id
- ffacd0b85a97d-390d4f377eemr6243064f8f.7.1740666471076; 
- Thu, 27 Feb 2025 06:27:51 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43aba532b8dsm55968335e9.14.2025.02.27.06.27.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Feb 2025 06:27:50 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 3/3] target/arm: Drop unused address_offset from op_addr_{rr,
- ri}_post()
-Date: Thu, 27 Feb 2025 14:27:46 +0000
-Message-ID: <20250227142746.1698904-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250227142746.1698904-1-peter.maydell@linaro.org>
-References: <20250227142746.1698904-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KlMV9lS3;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-39591-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 992423AAF94
+	for <alex.bennee@linaro.org>; Thu, 27 Feb 2025 15:13:45 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6F98A26A0E8;
+	Thu, 27 Feb 2025 15:13:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="KlMV9lS3"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BBF3259493;
+	Thu, 27 Feb 2025 15:13:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740669231; cv=none; b=ZFoBiNfLTvS9TLVv17juMvHOKNEjwbJYfPlLVQBT65UWy6G7941AAgfznAboaCRiUuXltG9NZSoOHiHipKC2G/cYTgzn9HGEwq+cZdxqniYh4eMqcC1rhcBFwx/xLXUc/mi3IFgDIs0Zt4eRHFjgOKo/eAxs4ORpzJF90yvrEqU=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740669231; c=relaxed/simple;
+	bh=iRdlLeLNV1v/SdkmRrf//HdDAGmEp0/h9w4ViUssNHI=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=exN1RCs0lp4ENaaBQem+kSoEH7iQSjqlxbiVexLaK28lafCvNNsFAMdL8y4ZCJZdxB3krIBdiSVKoP+Z2Li6xlPrXH3kSzGKJiNvk7RqPaTrYEIKvjYNfOggVEUhDmnpjWEM/4dyt9ZMn6etUYMOuK3EqceNAt9ewRrDrSSG3+k=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=KlMV9lS3; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12A22C4CEDD;
+	Thu, 27 Feb 2025 15:13:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740669230;
+	bh=iRdlLeLNV1v/SdkmRrf//HdDAGmEp0/h9w4ViUssNHI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=KlMV9lS37dpdw08l0ZO9yoYTuDxJ4zhPda/N50v/03oY2/UWS9pwfZc8fajaTrV11
+	 uYsB7hW9K9j6tYE4pcLxuha5pJp0rYMOuaZdUEQfLKeQ+v0OnQeMOPYTGmLYe1GwJ8
+	 8D/PtrCKkKjCNupk0/u0ha6GvrEZLlf6hixpN9MCfzc4O0NGAQIGDf6mPYbyLpCR8c
+	 7n25zAJcN1SF6DSQVnLZF2XS5bLjBeLRGDKX3o8laLNBPnhHOGVChdf78Kk1m8PxXY
+	 Gu6hygs/eIQMK2jeqKggfMzN74Yfw/J+t/XQkFVsToGsT27SwWuhNrybsKQI0ZuKCP
+	 8vMe+5FUiBLNQ==
+Date: Thu, 27 Feb 2025 16:13:43 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 00/21]Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250227161343.5249e9b8@foz.lan>
+In-Reply-To: <20250227143028.22372363@imammedo.users.ipa.redhat.com>
+References: <cover.1740653898.git.mchehab+huawei@kernel.org>
+	<20250227143028.22372363@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3W28TiVvgdVR
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: rfxnj5yPB3pE
 
-All the callers of op_addr_rr_post() and op_addr_ri_post() now pass in
-zero for the address_offset, so we can remove that argument.
+Em Thu, 27 Feb 2025 14:30:28 +0100
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/translate.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+> On Thu, 27 Feb 2025 12:03:30 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > Now that the ghes preparation patches were merged, let's add support
+> > for error injection.
+> > 
+> > On this version, HEST table got added to ACPI tables testing for aarch64 virt.
+> > 
+> > There are also some patch reorder to help reviewers to check the changes.
+> > 
+> > The code itself is almost identical to v4, with just a few minor nits addressed.  
+> 
+> series still has checkpatch errors 'line over 80' which are not false positive,
+> it needs to be fixed
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 2020d18f019..bd3838d68e3 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -4941,7 +4941,7 @@ static TCGv_i32 op_addr_rr_pre(DisasContext *s, arg_ldst_rr *a)
- }
- 
- static void op_addr_rr_post(DisasContext *s, arg_ldst_rr *a,
--                            TCGv_i32 addr, int address_offset)
-+                            TCGv_i32 addr)
- {
-     if (!a->p) {
-         TCGv_i32 ofs = load_reg(s, a->rm);
-@@ -4954,7 +4954,6 @@ static void op_addr_rr_post(DisasContext *s, arg_ldst_rr *a,
-     } else if (!a->w) {
-         return;
-     }
--    tcg_gen_addi_i32(addr, addr, address_offset);
-     store_reg(s, a->rn, addr);
- }
- 
-@@ -4974,7 +4973,7 @@ static bool op_load_rr(DisasContext *s, arg_ldst_rr *a,
-      * Perform base writeback before the loaded value to
-      * ensure correct behavior with overlapping index registers.
-      */
--    op_addr_rr_post(s, a, addr, 0);
-+    op_addr_rr_post(s, a, addr);
-     store_reg_from_load(s, a->rt, tmp);
-     return true;
- }
-@@ -4999,7 +4998,7 @@ static bool op_store_rr(DisasContext *s, arg_ldst_rr *a,
-     gen_aa32_st_i32(s, tmp, addr, mem_idx, mop);
-     disas_set_da_iss(s, mop, issinfo);
- 
--    op_addr_rr_post(s, a, addr, 0);
-+    op_addr_rr_post(s, a, addr);
-     return true;
- }
- 
-@@ -5053,7 +5052,7 @@ static bool trans_LDRD_rr(DisasContext *s, arg_ldst_rr *a)
-     do_ldrd_load(s, addr, a->rt, a->rt + 1);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
--    op_addr_rr_post(s, a, addr, 0);
-+    op_addr_rr_post(s, a, addr);
-     return true;
- }
- 
-@@ -5101,7 +5100,7 @@ static bool trans_STRD_rr(DisasContext *s, arg_ldst_rr *a)
- 
-     do_strd_store(s, addr, a->rt, a->rt + 1);
- 
--    op_addr_rr_post(s, a, addr, 0);
-+    op_addr_rr_post(s, a, addr);
-     return true;
- }
- 
-@@ -5137,13 +5136,14 @@ static TCGv_i32 op_addr_ri_pre(DisasContext *s, arg_ldst_ri *a)
- }
- 
- static void op_addr_ri_post(DisasContext *s, arg_ldst_ri *a,
--                            TCGv_i32 addr, int address_offset)
-+                            TCGv_i32 addr)
- {
-+    int address_offset = 0;
-     if (!a->p) {
-         if (a->u) {
--            address_offset += a->imm;
-+            address_offset = a->imm;
-         } else {
--            address_offset -= a->imm;
-+            address_offset = -a->imm;
-         }
-     } else if (!a->w) {
-         return;
-@@ -5168,7 +5168,7 @@ static bool op_load_ri(DisasContext *s, arg_ldst_ri *a,
-      * Perform base writeback before the loaded value to
-      * ensure correct behavior with overlapping index registers.
-      */
--    op_addr_ri_post(s, a, addr, 0);
-+    op_addr_ri_post(s, a, addr);
-     store_reg_from_load(s, a->rt, tmp);
-     return true;
- }
-@@ -5193,7 +5193,7 @@ static bool op_store_ri(DisasContext *s, arg_ldst_ri *a,
-     gen_aa32_st_i32(s, tmp, addr, mem_idx, mop);
-     disas_set_da_iss(s, mop, issinfo);
- 
--    op_addr_ri_post(s, a, addr, 0);
-+    op_addr_ri_post(s, a, addr);
-     return true;
- }
- 
-@@ -5206,7 +5206,7 @@ static bool op_ldrd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
-     do_ldrd_load(s, addr, a->rt, rt2);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
--    op_addr_ri_post(s, a, addr, 0);
-+    op_addr_ri_post(s, a, addr);
-     return true;
- }
- 
-@@ -5235,7 +5235,7 @@ static bool op_strd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
- 
-     do_strd_store(s, addr, a->rt, rt2);
- 
--    op_addr_ri_post(s, a, addr, 0);
-+    op_addr_ri_post(s, a, addr);
-     return true;
- }
- 
--- 
-2.43.0
+The long line warnings are at the patch adding the Python script. IMO,
+all but one are false positives:
 
+1. Long lines at patch description because of the tool output example added
+   inside the commit description:
+
+	ERROR: line over 90 characters
+	#148: FILE: scripts/arm_processor_error.py:83:
+	+[Hardware Error]:     bus error, operation type: Generic read (type of instruction or data request cannot be determined)
+
+	ERROR: line over 90 characters
+	#153: FILE: scripts/arm_processor_error.py:88:
+	+[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
+
+	WARNING: line over 80 characters
+	#170: FILE: scripts/arm_processor_error.py:105:
+	+[Hardware Error]:    00000000: 13 7b 04 05 01                                   .{...
+
+	WARNING: line over 80 characters
+	#174: FILE: scripts/arm_processor_error.py:109:
+	+[Firmware Warn]: GHES: Unhandled processor error type 0x10: micro-architectural error
+
+	ERROR: line over 90 characters
+	#175: FILE: scripts/arm_processor_error.py:110:
+	+[Firmware Warn]: GHES: Unhandled processor error type 0x14: TLB error|micro-architectural error
+
+   IMO, breaking command output at the description is a bad practice.
+
+2. Big strings at help message:
+
+	WARNING: line over 80 characters
+	#261: FILE: scripts/arm_processor_error.py:196:
+	+                           help="Power State Coordination Interface - PSCI state")
+
+	ERROR: line over 90 characters
+	#276: FILE: scripts/arm_processor_error.py:211:
+	+                        help="Number of errors: 0: Single error, 1: Multiple errors, 2-65535: Error count if known")
+
+	WARNING: line over 80 characters
+	#278: FILE: scripts/arm_processor_error.py:213:
+	+                        help="Error information (UEFI 2.10 tables N.18 to N.20)")
+
+	ERROR: line over 90 characters
+	#287: FILE: scripts/arm_processor_error.py:222:
+	+                        help="Type of the context (0=ARM32 GPR, 5=ARM64 EL1, other values supported)")
+
+
+	WARNING: line over 80 characters
+	#1046: FILE: scripts/qmp_helper.py:442:
+	+                           help="Marks the timestamp as precise if --timestamp is used")
+
+	WARNING: line over 80 characters
+	#1048: FILE: scripts/qmp_helper.py:444:
+	+                           help=f"General Error Data Block flags: {gedb_flags_bits}")
+
+   Those might be changed if we add one variable per string to store the
+   help lines, at the expense of doing some code obfuscation.
+
+   I don't think doing it is a good idea.
+
+3. Long class function names that are part of Python's standard library:
+
+	ERROR: line over 90 characters
+	#576: FILE: scripts/ghes_inject.py:29:
+	+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+
+   We can't change the big name of the argparse formatter. The only
+   possible fix would be to obfuscate it by doing:
+
+	format = argparse.ArgumentDefaultsHelpFormatter,
+	parser = argparse.ArgumentParser(formatter_class=format,
+
+   IMO this is a bad practice.
+
+4. False-positive warning disable for pylint coding style tool:
+
+	ERROR: line over 90 characters
+	#805: FILE: scripts/qmp_helper.py:201:
+	+        data.extend(value.to_bytes(num_bytes, byteorder="little"))  # pylint: disable=E1101
+
+	WARNING: line over 80 characters
+	#1028: FILE: scripts/qmp_helper.py:424:
+	+        g_gen = parser.add_argument_group("Generic Error Data")  # pylint: disable=E1101
+
+   AFAIKT, those need to be at the same line for pylint to process them
+   properly.
+
+5. A long name inside an indented block:
+
+	WARNING: line over 80 characters
+	#1109: FILE: scripts/qmp_helper.py:505:
+	+                                                   value=args.gen_err_valid_bits,
+
+   Again the only solution would be to obfuscate the argument, like:
+
+	a = args.gen_err_valid_bits
+
+							    value=a,
+
+   Not nice, IMHO.
+
+Now, there is one warning that I is not a false positive, which I ended
+missing:
+
+	WARNING: line over 80 characters
+	#1227: FILE: scripts/qmp_helper.py:623:
+	+            ret = self.send_cmd("qom-get", args, may_open=True, return_error=False)
+
+I'll fix it at the next respin.
+
+Regards,
+Mauro

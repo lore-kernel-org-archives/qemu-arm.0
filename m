@@ -1,149 +1,147 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp219429njb;
-        Thu, 27 Feb 2025 05:30:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWExAKfnHKCbtx1nX2yjEpxNfJnV0e3Ybpfd7KRLx+NKd3PyGs4pyPLf6+2m9DtvVEu/+PQ5QcW5lBcNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH+sK9uK6aO08vqrEUeRUIntwidpy9N6G5C26ubIyiA7kxcyXvhVONmJlHpr4sBoRu5BT2j
-X-Received: by 2002:ac8:59c4:0:b0:471:f08e:d661 with SMTP id d75a77b69052e-4722473c3e4mr427919181cf.13.1740663057244;
-        Thu, 27 Feb 2025 05:30:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740663057; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp221234njb;
+        Thu, 27 Feb 2025 05:33:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpKm4c+ESDYCZ23ZcTTZU71VsyKirLsDZVXup12iCwRbOnFD9P6ZiezWDsiJeRWnZ6jDpd78P6a5Ngaw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGG9L49VRGcp+Yi07vp0xtzTxBmuZ26AqTnYF9jRr9ehuaOJr4qDoxWzMZY/i9LZkL6bi08
+X-Received: by 2002:a05:620a:2a0f:b0:7c0:c24a:ccab with SMTP id af79cd13be357-7c23be2410dmr1479674685a.28.1740663233695;
+        Thu, 27 Feb 2025 05:33:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740663233; cv=none;
         d=google.com; s=arc-20240605;
-        b=iLwD3JMyW2Nqgmkf+AOOQAXq8dPI/4V6JA2CaUk7F4a4/g3VpQ4ZvKQdl2y170ZMT9
-         sHH7zvl8yxQrZn5ITv1uPGQgt/8MeFOFV7Z3sMICogOsSNRALHB8wBlaR73kXn3X0mRB
-         wLnCuue2CCYGt+Z4YI/YPLM0UOfXMGGH6bSrHdfu5IdmU2bzbk+QhH652WmH6vacjFuO
-         LDxLvAzlOEmlwaKMTNqBtx30nSnW+NFfUj9R7QslN9QrmNO3piu6AaMb+j1ktVARrXSk
-         PmUhxsyXSROhic4EY9do4osjy8a3Zuz3wWHYYS1fau+arG7TSmfVTwcHgU41kAApfcRd
-         jErw==
+        b=ih86Yz7GE6LZuVFdJFFI1uKS/RdXCiTz2c1TV7C9ZLob8Q3RlCN+D5zym0K61TXOz0
+         rK3SHuo/kX3kNf/8QTr8NbZWIUk9GXDtqSAF/QVrMFP1Z2QLKAAPToesT/YkAK/vDupC
+         150kC5ah72LxqAFGjs5hnqz0dXwgjpiOW8r+/P8xTz+nJxjdyoiEcw7mJ+jZUC8skIlh
+         NLHqGHU22I7vKhjFMj6OAS+596XD5k6fX1nokMkShpEPwegJMuXpGGW5/3d0A0HMA2a3
+         inFhnbYb8GkiYe20sIKvl9xYag0RZCGM2twmWmahrerJv56qHd9z7/R9ef+RUTwqREkz
+         LB+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=10kUSJV4EUd1FzHZvX0wjBLQDNiAVBrIFn/OMdDmjA4=;
-        fh=8O5xUjBFqdWI65tDBaG7b/9U3zm0U8oyC74cBpwqIwg=;
-        b=REdBcFUpnHvuQqWwLdgwEsLRVHpFV45x5gWeRb4+FKwYwwHOg1zfOKv9tLj3c6G7Ui
-         8DNwNLm1xmePXAKgZ4Du3uD1wxuLQTSbGAQq751+y3cYDJnrVaNZrrIR5cTn0bll7+Sf
-         miEn2SNGCsQnXy1Z7NrnBKjNKOVugXqZNj/7wj5CaJ5yNaeQvAy1BqQMPP+9nAw1ZX/s
-         p+NimUY/+96eFIqckuMyUjlDXJaerd5ckxH4d0YxSl6Seur+1U0uCmw6LsXEblos2Hjh
-         D4X+LJwPNDLt0biSSIDRi/h1aGws/s/uOpEHt95I+x9Ys9HobF8QnuieiHsWx3kfXuRr
-         WOuA==;
+        bh=HuW0BIbjNJWghJa21XE54H5m1b+Yluf4uBw+NY/1p34=;
+        fh=OwFzZro0STMSd2PkVy513TJUecD+oyoA7lQ5XhPa65M=;
+        b=VFER9j7vN6R84CWNnZgkjQLa6iQQwWQbChcRZ4l3A+u8CpCyyCK1z56u8iKuvf19/z
+         Fj8Tn7GYGVoS6YipiGg7UHkfFLBVahRm4MKWR3uXrQgHSucBsa2wreJ9q9CZu4C3gU6W
+         JRknwgN3KqLLBdLP3z92kvtgkKH50lM4lz38KvgPaC2iz2gO2JZe7wKdpKPepWlWiRwU
+         RQl0Sxo601ZGFZzOYZ0OZguD56/ZxsqDZIX5YxavRC98gL7Cgi5wbMqhpbWLuZy3NUJM
+         Z2gpm634J38XPWopjkh6Wp5DY3+G73+1+ck0aCg5Z4zngzMMMaTU6KeO/yTDmy9iS6mN
+         4b6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q0dYoV8W;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0MKc0GM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4747240ddc9si12337731cf.372.2025.02.27.05.30.57
+        by mx.google.com with ESMTPS id af79cd13be357-7c378db3a7asi125563485a.629.2025.02.27.05.33.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 05:30:57 -0800 (PST)
+        Thu, 27 Feb 2025 05:33:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q0dYoV8W;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0MKc0GM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tndyS-0003Rm-Dz; Thu, 27 Feb 2025 08:30:48 -0500
+	id 1tne10-0004P1-5l; Thu, 27 Feb 2025 08:33:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tndyJ-0003QY-3v
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 08:30:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1tne0t-0004OC-36
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 08:33:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tndyF-0002hn-FH
- for qemu-arm@nongnu.org; Thu, 27 Feb 2025 08:30:38 -0500
+ id 1tne0r-0003B2-F1
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2025 08:33:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1740663032;
+ s=mimecast20190719; t=1740663195;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=10kUSJV4EUd1FzHZvX0wjBLQDNiAVBrIFn/OMdDmjA4=;
- b=Q0dYoV8W4ZvDE2RFBqnv6RzyT3Hf7zLGwcYK4o6O0wrAkPyyrUqQEgMHAlfmTmvulBOHYw
- 7BzaVhdMyTtbABwce524SVwiss0rcKVOU0yjNiIFGyrnn+dkFKCApBE4yAlAQZJNfJVQ3Y
- SG45MMTbOebTPma+e7noniW9EpSAbek=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=HuW0BIbjNJWghJa21XE54H5m1b+Yluf4uBw+NY/1p34=;
+ b=S0MKc0GMHmat4pszZAw83BLkTnSEPd0xWvLoqrpObLEeta0+8MZMsIZuPr2C+GSLTIVbFK
+ yR/PWIwn3QYmPwEaMxKysflqWzIU9y/TDWucJ+jmXSYUjjTM9IapLcgRpQSg9jTKFqm4r+
+ A9Bm8C2jkffOlo6xZUhKBheoqkwBGZs=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-281-kSG2106cOhWSgRA-gy-1qg-1; Thu, 27 Feb 2025 08:30:31 -0500
-X-MC-Unique: kSG2106cOhWSgRA-gy-1qg-1
-X-Mimecast-MFC-AGG-ID: kSG2106cOhWSgRA-gy-1qg_1740663030
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-390e8df7ab6so182677f8f.3
- for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 05:30:31 -0800 (PST)
+ us-mta-168-33Hbi0kbNvGcJvNIYn58kA-1; Thu, 27 Feb 2025 08:33:14 -0500
+X-MC-Unique: 33Hbi0kbNvGcJvNIYn58kA-1
+X-Mimecast-MFC-AGG-ID: 33Hbi0kbNvGcJvNIYn58kA_1740663193
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-abb61c30566so88338666b.2
+ for <qemu-arm@nongnu.org>; Thu, 27 Feb 2025 05:33:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740663030; x=1741267830;
+ d=1e100.net; s=20230601; t=1740663192; x=1741267992;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=10kUSJV4EUd1FzHZvX0wjBLQDNiAVBrIFn/OMdDmjA4=;
- b=gB2FMgsKEvm8LCTJIDg0RFu7yJceII7tw9YVzi3NAvnZJgoCJISj4IBrKhrTh97bwy
- QYJ6onzonxU6F04sOz8felHdXXgiJ3Pt8OIW/ZDNQOi2F5YXnkIMRkEIT/cYBqRFdtfh
- siRl3cHyjrXQk2voXdX90WscqFlQ9YwzWGhf/DJCJdTlz2E5vhpbt6SdUZmopO+R9JjA
- zlCLrk4fx0JKkPDoknIDJDF3fFKXDtLXH5ZLDedyzVUm1H6c/rkYlFy0niV75HzrPqCb
- Yyw5p8OAfIhE9nqyW/wwm654wwn3OOpuvGAHUxHwsbjZj2tQsI4J+94HfF0qVT1+d+ba
- keRw==
+ bh=HuW0BIbjNJWghJa21XE54H5m1b+Yluf4uBw+NY/1p34=;
+ b=mGTO8nzmxaP6zLvuN5emSviLe/HbBh3DffeV4N6ajGjXDfcPG6xmVHOiq3+xzDWncG
+ os7triCMQkcvzd94CXZfJ7QAx5vRL9cFsbD31NMbrZq+DoXWSyK6SDCch5zMJ9alTC0z
+ ngoad+vzzYrp+J0oAvHvpROCJ2TvtEMDY88xR55kF8upI6clkDTr0eWnjWyqyD/6JxuR
+ SS7tKhsazfJ1UXiU9N4Nw7OMQZTuCmNRpVi/X3DFhiSkAx7xNWukNKFr7fxfqxSNg+eA
+ Tgr7vUVXE+RdcmGwKHSG1v1yRhMofgu/qoFG+wN5PJyp53A2t+RbZDGpztFuS0rTbNH5
+ hF2w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWjxKMWMU5wqm/sGOapYLNCmKfGln8yabR/n4+RjGGU1Fao1hOOyC1rY8KjfuTEEl3+W/b0S5/alw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz+m5/cxo8JV5dyEKnurd+LGRVnG/5WlQcgW2d2nffk6agz1wdS
- F7lvpCCss7+6DUPZAE7PuByYwrVLox/hxiky5Dc8m0bsjP8f4SzNVULf4xo5hEhHlYUkth/rmE2
- 40Zs4t5pBy6zPWJMuwcfs76DNmikqRaYeMOunrHMPPrZppnINGQ==
-X-Gm-Gg: ASbGncsjiD+swhgG26oYxcxU7KHi9yoppT2DaJdcwZsMp7gxbDY/hg/qCd1l94J285f
- uk8lZMwwltG9VOKwegsGcrDiQZAgR9KwrSxrptJqSS9F/aAL+JJM03APbP/INmj2Mu7QTmKAJ7N
- zBJRnS7n0cgwNV+Spf2bwEoLbZrnTy5GiPHTBRvA5phwGvlfNjr/hhrkxVmYlyxTBOUFTgGPdjr
- gO9mh3yC4E8HYfvQ/casfCq5C2xuM42VkXQU85xIFpK68/Or5RW+SXc+URnOIpAARCIoYwKb9nm
- GXlsFZvhFXRDvPxefyJxxQyVXrxUd3SCMYTOqvn/lYyKwxV9yiQQkTC4Bl64SRk=
-X-Received: by 2002:a05:6000:1a89:b0:390:e9e7:ca70 with SMTP id
- ffacd0b85a97d-390e9e7cc41mr530489f8f.30.1740663030077; 
- Thu, 27 Feb 2025 05:30:30 -0800 (PST)
-X-Received: by 2002:a05:6000:1a89:b0:390:e9e7:ca70 with SMTP id
- ffacd0b85a97d-390e9e7cc41mr530476f8f.30.1740663029647; 
- Thu, 27 Feb 2025 05:30:29 -0800 (PST)
+ AJvYcCUldOQs7eKJ0udvFGkf00IYn7PF8Z3Ks8TvGpkkN/KTsxIwKqOBfzyq5psWJbFcOA32rTk04UZYSw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxurl9qYk71+B7hrtYgsBlEj+DMTMG3foJdugTI0+sFMuYHIIiT
+ 63ugQThPAbMnpKzm5FjGdpP4glsP6+2evpWycIRYKCWgAypve/2e5Wp3ZgGZ1uS8dAxaZetpPtW
+ vky3CFIlp4lf0g1DPTvBX2MrdqPuqeuUhp3IOC+NFo2b/1WmBKCkwOXgwnA==
+X-Gm-Gg: ASbGncu21JomZO3sRC4lJzo9zt85a5bbXI2u1PLkoGbBV66CGe36aag7kro75wK1jHN
+ okKD1X7pT65OUj0Rcp883YxJiZ7Nv06SRxLLo4T8ERyTuMvHcsfotvpepRbNNUeJjMMOfn1Ggcb
+ 8yN9vCJQIarQ4VRRiancxDCJbWO9WM1q3WeJj9/Rtvgc8tEm1e3v9VHSAIFbAN4vTYev7341Nm+
+ T+hAp4/mG01NFunXLiTA2GxmhMNXCuX5ZZ9ctmxaPyUf+41MoZQWpxd05WrqRDoneX4fNZQ0f5w
+ 5Z3NNwZ2kOCTos2MdJcAdBG4bxps8c7+XvlCWCdjKu+5VcqjM2ximq4ka8fkQEM=
+X-Received: by 2002:a17:906:c102:b0:abf:692:40bd with SMTP id
+ a640c23a62f3a-abf069269e7mr507684666b.43.1740663192436; 
+ Thu, 27 Feb 2025 05:33:12 -0800 (PST)
+X-Received: by 2002:a17:906:c102:b0:abf:692:40bd with SMTP id
+ a640c23a62f3a-abf069269e7mr507680666b.43.1740663191987; 
+ Thu, 27 Feb 2025 05:33:11 -0800 (PST)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390e47b7ddesm2094064f8f.57.2025.02.27.05.30.28
+ a640c23a62f3a-abf1bef130esm57685066b.40.2025.02.27.05.33.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Feb 2025 05:30:29 -0800 (PST)
-Date: Thu, 27 Feb 2025 14:30:28 +0100
+ Thu, 27 Feb 2025 05:33:11 -0800 (PST)
+Date: Thu, 27 Feb 2025 14:33:10 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
  <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
  =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 00/21]Change ghes to use HEST-based offsets and add
- support for error inject
-Message-ID: <20250227143028.22372363@imammedo.users.ipa.redhat.com>
-In-Reply-To: <cover.1740653898.git.mchehab+huawei@kernel.org>
+ <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan
+ Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 12/21] acpi/generic_event_device: add logic to detect
+ if HEST addr is available
+Message-ID: <20250227143310.3df0687f@imammedo.users.ipa.redhat.com>
+In-Reply-To: <73e0b70ed4125dc07a85fb43281a7731f452750e.1740653898.git.mchehab+huawei@kernel.org>
 References: <cover.1740653898.git.mchehab+huawei@kernel.org>
+ <73e0b70ed4125dc07a85fb43281a7731f452750e.1740653898.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: NUriunNDBvZJFLsblTa3LnkW9dJogK3PGM-MjwfboTM_1740663030
+X-Mimecast-MFC-PROC-ID: dVPkyadf0Al5hV87tA59H46QiMv1aQQvV0komUxv3qY_1740663193
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,116 +156,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qi25fK5+in9M
+X-TUID: fQa0/o8yku+m
 
-On Thu, 27 Feb 2025 12:03:30 +0100
+On Thu, 27 Feb 2025 12:03:42 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Now that the ghes preparation patches were merged, let's add support
-> for error injection.
+> Create a new property (x-has-hest-addr) and use it to detect if
+> the GHES table offsets can be calculated from the HEST address
+> (qemu 10.0 and upper) or via the legacy way via an offset obtained
+> from the hardware_errors firmware file.
 > 
-> On this version, HEST table got added to ACPI tables testing for aarch64 virt.
-> 
-> There are also some patch reorder to help reviewers to check the changes.
-> 
-> The code itself is almost identical to v4, with just a few minor nits addressed.
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-series still has checkpatch errors 'line over 80' which are not false positive,
-it needs to be fixed
+with checkpatch issues fixed
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-> 
 > ---
-> v5:
-> - make checkpatch happier;
-> - HEST table is now tested;
-> - some changes at HEST spec documentation to align with code changes;
-> - extra care was taken with regards to git bisectability.
+>  hw/acpi/generic_event_device.c |  1 +
+>  hw/arm/virt-acpi-build.c       | 18 ++++++++++++++++--
+>  hw/core/machine.c              |  2 ++
+>  3 files changed, 19 insertions(+), 2 deletions(-)
 > 
-> v4:
-> - added an extra comment for AcpiGhesState structure;
-> - patches reordered;
-> - no functional changes, just code shift between the patches in this series.
-> 
-> v3:
-> - addressed more nits;
-> - hest_add_le now points to the beginning of HEST table;
-> - removed HEST from tests/data/acpi;
-> - added an extra patch to not use fw_cfg with virt-10.0 for hw_error_le
-> 
-> v2: 
-> - address some nits;
-> - improved ags cleanup patch and removed ags.present field;
-> - added some missing le*_to_cpu() calls;
-> - update date at copyright for new files to 2024-2025;
-> - qmp command changed to: inject-ghes-v2-error ans since updated to 10.0;
-> - added HEST and DSDT tables after the changes to make check target happy.
->   (two patches: first one whitelisting such tables; second one removing from
->    whitelist and updating/adding such tables to tests/data/acpi)
-> 
-> 
-> Mauro Carvalho Chehab (21):
->   tests/acpi: virt: add an empty HEST file
->   tests/qtest/bios-tables-test: extend to also check HEST table
->   tests/acpi: virt: update HEST file with its current data
->   acpi/ghes: Cleanup the code which gets ghes ged state
->   acpi/ghes: prepare to change the way HEST offsets are calculated
->   acpi/ghes: add a firmware file with HEST address
->   acpi/ghes: Use HEST table offsets when preparing GHES records
->   acpi/ghes: don't hard-code the number of sources for HEST table
->   acpi/ghes: add a notifier to notify when error data is ready
->   acpi/ghes: create an ancillary acpi_ghes_get_state() function
->   acpi/generic_event_device: Update GHES migration to cover hest addr
->   acpi/generic_event_device: add logic to detect if HEST addr is
->     available
->   acpi/generic_event_device: add an APEI error device
->   tests/acpi: virt: allow acpi table changes at DSDT and HEST tables
->   arm/virt: Wire up a GED error device for ACPI / GHES
->   qapi/acpi-hest: add an interface to do generic CPER error injection
->   tests/acpi: virt: update HEST table to accept two sources
->   tests/acpi: virt: and update DSDT table to add the new GED device
->   docs: hest: add new "etc/acpi_table_hest_addr" and update workflow
->   acpi/generic_event_device.c: enable use_hest_addr for QEMU 10.x
->   scripts/ghes_inject: add a script to generate GHES error inject
-> 
->  MAINTAINERS                                   |  10 +
->  docs/specs/acpi_hest_ghes.rst                 |  28 +-
->  hw/acpi/Kconfig                               |   5 +
->  hw/acpi/aml-build.c                           |  10 +
->  hw/acpi/generic_event_device.c                |  43 ++
->  hw/acpi/ghes-stub.c                           |   7 +-
->  hw/acpi/ghes.c                                | 231 ++++--
->  hw/acpi/ghes_cper.c                           |  38 +
->  hw/acpi/ghes_cper_stub.c                      |  19 +
->  hw/acpi/meson.build                           |   2 +
->  hw/arm/virt-acpi-build.c                      |  36 +-
->  hw/arm/virt.c                                 |  19 +-
->  hw/core/machine.c                             |   2 +
->  include/hw/acpi/acpi_dev_interface.h          |   1 +
->  include/hw/acpi/aml-build.h                   |   2 +
->  include/hw/acpi/generic_event_device.h        |   1 +
->  include/hw/acpi/ghes.h                        |  52 +-
->  include/hw/arm/virt.h                         |   2 +
->  qapi/acpi-hest.json                           |  35 +
->  qapi/meson.build                              |   1 +
->  qapi/qapi-schema.json                         |   1 +
->  scripts/arm_processor_error.py                | 476 ++++++++++++
->  scripts/ghes_inject.py                        |  51 ++
->  scripts/qmp_helper.py                         | 702 ++++++++++++++++++
->  target/arm/kvm.c                              |   7 +-
->  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
->  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
->  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
->  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
->  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
->  tests/data/acpi/aarch64/virt/HEST             | Bin 0 -> 224 bytes
->  tests/qtest/bios-tables-test.c                |   2 +-
->  32 files changed, 1692 insertions(+), 91 deletions(-)
->  create mode 100644 hw/acpi/ghes_cper.c
->  create mode 100644 hw/acpi/ghes_cper_stub.c
->  create mode 100644 qapi/acpi-hest.json
->  create mode 100644 scripts/arm_processor_error.py
->  create mode 100755 scripts/ghes_inject.py
->  create mode 100755 scripts/qmp_helper.py
->  create mode 100644 tests/data/acpi/aarch64/virt/HEST
-> 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 5346cae573b7..14d8513a5440 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -318,6 +318,7 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>  
+>  static const Property acpi_ged_properties[] = {
+>      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
+> +    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState, ghes_state.use_hest_addr, false),
+>  };
+>  
+>  static const VMStateDescription vmstate_memhp_state = {
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index af5056201c22..03ee30b3b3f0 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -897,6 +897,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+>      { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
+>  };
+>  
+> +static const AcpiNotificationSourceId hest_ghes_notify_9_2[] = {
+> +    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
+> +};
+> +
+>  static
+>  void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  {
+> @@ -951,6 +955,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  
+>      if (vms->ras) {
+>          AcpiGedState *acpi_ged_state;
+> +        static const AcpiNotificationSourceId *notify;
+> +        unsigned int notify_sz;
+>          AcpiGhesState *ags;
+>  
+>          acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> @@ -958,9 +964,17 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>          ags = &acpi_ged_state->ghes_state;
+>          if (ags) {
+>              acpi_add_table(table_offsets, tables_blob);
+> +
+> +            if (!ags->use_hest_addr) {
+> +                notify = hest_ghes_notify_9_2;
+> +                notify_sz = ARRAY_SIZE(hest_ghes_notify_9_2);
+> +            } else {
+> +                notify = hest_ghes_notify;
+> +                notify_sz = ARRAY_SIZE(hest_ghes_notify);
+> +            }
+> +
+>              acpi_build_hest(ags, tables_blob, tables->hardware_errors,
+> -                            tables->linker, hest_ghes_notify,
+> -                            ARRAY_SIZE(hest_ghes_notify),
+> +                            tables->linker, notify, notify_sz,
+>                              vms->oem_id, vms->oem_table_id);
+>          }
+>      }
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 02cff735b3fb..7a11e0f87b11 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -34,6 +34,7 @@
+>  #include "hw/virtio/virtio-pci.h"
+>  #include "hw/virtio/virtio-net.h"
+>  #include "hw/virtio/virtio-iommu.h"
+> +#include "hw/acpi/generic_event_device.h"
+>  #include "audio/audio.h"
+>  
+>  GlobalProperty hw_compat_9_2[] = {
+> @@ -43,6 +44,7 @@ GlobalProperty hw_compat_9_2[] = {
+>      { "virtio-balloon-pci-non-transitional", "vectors", "0" },
+>      { "virtio-mem-pci", "vectors", "0" },
+>      { "migration", "multifd-clean-tls-termination", "false" },
+> +    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
+>  };
+>  const size_t hw_compat_9_2_len = G_N_ELEMENTS(hw_compat_9_2);
+>  
 

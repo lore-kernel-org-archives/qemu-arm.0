@@ -1,98 +1,99 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp324380njb;
-        Thu, 27 Feb 2025 08:03:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVtdiQJr54b0c1AM8FjQ0iFtBmalDbs44XirWwDsjkEEVfLxAbHE9tYOKMfhFj5fzQKxxMBSO+OO4qD1g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGqALB5ccsCKdxd8MVL7llS2s8nTlmYr88Da62gj1KCazohcHGNBZ0VFeeNFReCTJOwU/re
-X-Received: by 2002:a05:620a:24c4:b0:7c0:b185:a952 with SMTP id af79cd13be357-7c0ceee6234mr3177490085a.2.1740672188531;
-        Thu, 27 Feb 2025 08:03:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740672188; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp324573njb;
+        Thu, 27 Feb 2025 08:03:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVIsIMUpXWUbDTEaenFIBX/9ktLcfREqgmHwe34pLA1+Wiq5ZBlnwflIqY/VL/y1enKVWvQOYm4Flsa7A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEpsVErKSVPqSbBh2IWCXjPWZha4g1zLU1Xx+caxkmhV+6yEbvZRGBwXhkxCSFU8tNO5Gzv
+X-Received: by 2002:ac8:5d4b:0:b0:472:28d:62b0 with SMTP id d75a77b69052e-473813652d9mr107977141cf.41.1740672200409;
+        Thu, 27 Feb 2025 08:03:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740672200; cv=none;
         d=google.com; s=arc-20240605;
-        b=b7x/vaHuD4+JkyKP8uRRaunEWxLwVXAUmn8sA94KwlifAJekOj2XCPAWaYsTqALTrd
-         MZBPACcQ0PlClyUmJbU8oz1gX9KaMjsCmXA9gF8WAP4qql3KEDXRyakxZB39x+dc2LhC
-         T0LvivZkEErCJSCIw+n3eeZ+ltlpYxqV1N5LKa2MCnWQC5VYRM/6WevCrDEQjBJfKcR6
-         Egx2rTg9RvsCj8ZEEL5TEBcoY2YuVpx2GIg8p51UFtdLF5+r+ihWfiS6S4TU8hyn/stC
-         g9xeslyXEbVhrpT8iKogzIEvED3sBlEmIcPqvmqFWLY7LAhm5T5XZpj6dgTk+VepaGbn
-         3DQA==
+        b=fCR9fAzVsZ4WJgL7PP05NIeqGK/m42lxg2+nQVOukddgtgkzXeMr2MnLPsRad2mduw
+         DM5hwOPlGwfamvpazhkyaNPPgchQrcIm94CaMYZK3NRFtagPFeU/KtlMWYgxxC6h90Sw
+         dffb/2tsUdR+WkIjbLsAFtVAPr9xrUjfGozWJPsmI3GF33Tl4XdFz/3BRl40fWE0/MPh
+         NHpxUtMb2JKTfEN+oGq3qAlwDHrbufiqPeCXSRc71BiNIteE6JKE7nOG2eudFMnxZ22/
+         CTYskKHalMMyjIdIozno/aHTsX90mdPMn2GicVX7EkNOAxd2C+GoZ4NJu82u/Yqr0z05
+         giYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=sMLu4AUsJgKwUuY+74zcuobRNgDOH49lkeD+ovyQYFg=;
-        fh=XcviKWAv15CvAgnyQyizsjZv6212yvUpVNhmcTByU9E=;
-        b=C4c7rbdTSqPpKjH51wDLR+WoJrCiNfPZ2VlG9LlNNNgJTiBY6oXLS91WepKnKqyTbA
-         oxLc7ozXJ9Wu+KOjGS/6sYr/6pWyaOB54uHZEdrcZ3xHKqKrrHdy9gMZ4AD99SON3RLZ
-         j0mV6cChdutIUl+nObRiwRtDNBoNK9kG2VUD+/cdDCSxFv79c/dd4yKBv4+4UypwrWe+
-         l600xTTmNDZ+1rGnW5tRo/M8mnxCZp9dCQfVewCyT4SjysHR74D5SwmWUbi/Og7d3MzW
-         trBWl0Ar8wTeJVi0zJ/DKk64W28nWauvMX2TnrrrhFFPw+KXP67tWjgYP2spd4uG8fPA
-         TgTg==;
+        bh=0z6zPqdiPiBw8AI1magqaaUWXFZreXvboapSLU5/2lI=;
+        fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
+        b=jxlzU1uHrSLxvHJgLCYvQOfhtPEM7MQyOzfNNmYjNKW1qoPr9mjq9tOkEorr8h5Hvx
+         M3NfghucjYsX9MumIwJ52Wy3mr0kB7JjeH1XiKkFQfNRkLA1XPeraO8g4TVBEvhxQ87C
+         TkV4uJzdSiHKnyT34Fm1f4Cj94Fy3e+h7HOuvzOa//BrvnKnDOpTWc6D+yxfACJtz0P3
+         BKE1QLQYtIwOghRtCN9xmzXcge9VYZO4Wuk/WX5zUmtE6jR8S7VcjQq0iE+ZYDKYqAlf
+         Qprv1wMaLMkbUWlDWIbX3qZk0GQQIofuCbphNZGRCbtWO3W77ZcSFFi4SixYqdNz8qiS
+         kUoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ey7RwX5u;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=usLEb5qU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c36fee9675si140496285a.48.2025.02.27.08.03.08
+        by mx.google.com with ESMTPS id d75a77b69052e-4746919d91csi15243901cf.42.2025.02.27.08.03.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2025 08:03:08 -0800 (PST)
+        Thu, 27 Feb 2025 08:03:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ey7RwX5u;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=usLEb5qU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tngKI-0007Jk-N5; Thu, 27 Feb 2025 11:01:30 -0500
+	id 1tngK8-00078y-Qa; Thu, 27 Feb 2025 11:01:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tngK2-00073i-I5; Thu, 27 Feb 2025 11:01:14 -0500
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+ id 1tngK0-00071s-Sh; Thu, 27 Feb 2025 11:01:13 -0500
+Received: from tor.source.kernel.org ([172.105.4.254])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tngJy-0007Ig-51; Thu, 27 Feb 2025 11:01:14 -0500
+ id 1tngJx-0007Hx-IP; Thu, 27 Feb 2025 11:01:12 -0500
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 35DDA61F43;
+ by tor.source.kernel.org (Postfix) with ESMTP id 25E3A61F3F;
  Thu, 27 Feb 2025 16:00:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 149A3C113D0;
- Thu, 27 Feb 2025 16:01:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DABC5C4CEF6;
+ Thu, 27 Feb 2025 16:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1740672063;
- bh=bxK9Et1UjLido8TcaM0YtPM1EGz6KNWSFKPtGUAIaGc=;
+ s=k20201202; t=1740672062;
+ bh=DA6h6NCIFzbHc/LBuE5Nc7E6U4uAC+b5NlL7eVnRDsU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Ey7RwX5uYigzJuDdeBDBXHhjx2+oD7DhU0XnlvLVuXcnICl2v+ztVZqLXR0B9s3Mr
- NF9yngAHJ4OdGd8+YuC/OeU/3O8uuZxMNlDwvOUJdmSbiKeQbgMsry2iyZwMxKOUnJ
- yQGdeoQ/FYCbQvC3A8LdNHpkBWaohJw2d87ZBgmQi7Rywx47jWqekQHVI3KYJHZ9Zc
- W1Hbrr+lbJR9G1AKOS8r4NSHoc89q0+Y7LcApvdfHAC0uVhDGMxqYuW33cJ9SxVyqU
- Daox1uiMXivZBZXgRkaqzV63xALQPHyMs6yksUKyAIYgbH+fu3pq13GAGJdWymCITP
- 4RBeR2DfVs1Qw==
+ b=usLEb5qU1wRv+o2+n2D8TlO/RwEBj3VXtUlYZ5NNABe+2jYbgfLtQnFI6A7Aq4W6P
+ puDv2UD2lwXEum5jc4RmvjrLgxdubv4tD6Stk5VrVMg+7KKYSLO+TNVPh6cy7ZULII
+ d4ZQgw9rUi0Hea2k5bfKumqumALF0f1OmSKxLhOG04Jbw71cgJN0cgEOjLyt18opjg
+ cICATzPZaopFlQN+/biu1SlZurnD854etUTsLCIctJRK+j4DaWbFQEKjZjul9lPPfN
+ RcKdOvUOhxN9pCjuXNT8soe1pxiji8iXjvPndEy2Wm8abT8cVtIljoqddS61QIzr2x
+ eoKhzv21uSy8A==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1tngJp-000000023bt-0vId; Thu, 27 Feb 2025 17:01:01 +0100
+ id 1tngJp-000000023bX-0L9q; Thu, 27 Feb 2025 17:01:01 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org
-Subject: [PATCH v6 18/19] docs: hest: add new "etc/acpi_table_hest_addr" and
- update workflow
-Date: Thu, 27 Feb 2025 17:00:56 +0100
-Message-ID: <445f7d41b01ffc5bd79d6fd83bc7c4c621bcbc85.1740671863.git.mchehab+huawei@kernel.org>
+ Ani Sinha <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+Subject: [PATCH v6 13/19] tests/acpi: virt: allow acpi table changes at DSDT
+ and HEST tables
+Date: Thu, 27 Feb 2025 17:00:51 +0100
+Message-ID: <9b15b83ec3726b6f29583d419e0c6c6aa01a9447.1740671863.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <cover.1740671863.git.mchehab+huawei@kernel.org>
 References: <cover.1740671863.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2600:3c04::f03c:95ff:fe5e:7468;
+Received-SPF: pass client-ip=172.105.4.254;
  envelope-from=mchehab+huawei@kernel.org; helo=tor.source.kernel.org
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,62 +109,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PyYj/JCtz6rF
+X-TUID: lphlHZPRrAp1
 
-While the HEST layout didn't change, there are some internal
-changes related to how offsets are calculated and how memory error
-events are triggered.
+We'll be adding a new GED device for HEST GPIO notification and
+increasing the number of entries at the HEST table.
 
-Update specs to reflect such changes.
+Blocklist testing HEST and DSDT tables until such changes
+are completed.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
- docs/specs/acpi_hest_ghes.rst | 28 +++++++++++++++++-----------
- 1 file changed, 17 insertions(+), 11 deletions(-)
+ tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index c3e9f8d9a702..4311a9536b21 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -89,12 +89,21 @@ Design Details
-     addresses in the "error_block_address" fields with a pointer to the
-     respective "Error Status Data Block" in the "etc/hardware_errors" blob.
- 
--(8) QEMU defines a third and write-only fw_cfg blob which is called
--    "etc/hardware_errors_addr". Through that blob, the firmware can send back
--    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
--    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
--    for the firmware. The firmware will write back the start address of
--    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
-+(8) QEMU defines a third and write-only fw_cfg blob to store the location
-+    where the error block offsets, read ack registers and CPER records are
-+    stored.
-+
-+    Up to QEMU 9.2, the location was at "etc/hardware_errors_addr", and
-+    contains a GPA for the beginning of "etc/hardware_errors".
-+
-+    Newer versions place the location at "etc/acpi_table_hest_addr",
-+    pointing to the GPA of the HEST table.
-+
-+    Through that such GPA values, the firmware can send back the guest-side
-+    allocation addresses to QEMU. They contain a 8-byte entry. QEMU generates
-+    a single WRITE_POINTER command for the firmware. The firmware will write
-+    back the start address of either "etc/hardware_errors" or HEST table at
-+    the corresponding fw_cfg file.
- 
- (9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
-     "Error Status Data Block", guest memory, and then injects platform specific
-@@ -105,8 +114,5 @@ Design Details
-      kernel, on receiving notification, guest APEI driver could read the CPER error
-      and take appropriate action.
- 
--(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
--     find out "Error Status Data Block" entry corresponding to error source. So supported
--     source_id values should be assigned here and not be changed afterwards to make sure
--     that guest will write error into expected "Error Status Data Block" even if guest was
--     migrated to a newer QEMU.
-+(11) kvm_arch_on_sigbus_vcpu() report RAS errors via a SEA notifications,
-+     when a SIGBUS event is triggered.
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8bf4..0a1a26543ba2 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,7 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/HEST",
++"tests/data/acpi/aarch64/virt/DSDT",
++"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
++"tests/data/acpi/aarch64/virt/DSDT.memhp",
++"tests/data/acpi/aarch64/virt/DSDT.pxb",
++"tests/data/acpi/aarch64/virt/DSDT.topology",
 -- 
 2.48.1
 

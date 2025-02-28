@@ -1,134 +1,134 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp901311njb;
-        Fri, 28 Feb 2025 05:04:53 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUcLIp9I7J71rWNJhkhWLSqq8NS1wjr64b+yPPy96Wvbuyyl/nPyYqhHDAVg6SuH+gPsV+9XL7O8sS52Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFcLLPD1zhLeRSviteQTiiYU2eB2PMdviTBNuJovhZHQ6IGjkXlQlTwXmRX19hSW170GKUi
-X-Received: by 2002:a05:6122:f8f:b0:520:60c2:3fb with SMTP id 71dfb90a1353d-5235a8e57efmr1762828e0c.0.1740747893543;
-        Fri, 28 Feb 2025 05:04:53 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740747893; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp904439njb;
+        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCU+a3UySTEiwAcgVcz4sUYGy/LOKchkLTmzTd5Pb8EDLQQu0SQ4FLf24gOzAZTEvSTbt9hMuFRC8jNhIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgDI6ssXSYAsrXNaQ3ugJ0GFVwi4zvpFIdFDnVDCGBhIG/AQSaWTJENQVVFmuHUL+5t7Go
+X-Received: by 2002:a05:620a:4145:b0:7c0:a28e:4963 with SMTP id af79cd13be357-7c39c4aef7emr438393085a.14.1740748110589;
+        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740748110; cv=pass;
         d=google.com; s=arc-20240605;
-        b=XGvWCKMiAHoij1VLF/LpTdyL5bxQjcBBt9Y4+k6YLk3pdTHvnR/GmxY4Mrj3LYcTYe
-         lxHdvTCuLFi0NGhL9tL8GSwOJp6CRuXVqAMbgtE2o1qDDn50/tkGUcJ+mMeu/A+FKEAl
-         xAhbYr/p/B37CiFIGjlUP/HhMp7cwQevJw+PATIe4L5jJMRYskWyHANLjDAPGlY1YKJ1
-         4NyKj/fj9s/t3dYXaNGUR6OeifQQQyvoANBj0y9nfwM9n2qeAb1NaqZbLtiCWrj4BhAg
-         /b4H5IRmwpDpN/ltvGfQgoBHP5BIG9jlIReFq30P/nyFWQdOp4XzotKNS82vNLMzoR5B
-         AMKg==
+        b=hwVyGBpJnXO9mqJeJGNNpI7uu/VBDtS1VxnxNp5KPBgqmtmKZxbUwqR0OnM/IpdkLF
+         m32Tw+5iVACvtpPS70kWmGJ0IAgzkFk1genkALgnxaSJbJbcVNPJWe5bAIvgAH59cfSp
+         8eW3qjtXAHN2HEwJBDxjQ2qNk8qo/saS6Gs5z/cgMeVTKGLFe1Epvif6ygm3HRtGpiMw
+         QIiDWT8e2dncyvBYaNekinuQ2KCZaAOSxxG7wnL8Ol+mWmZdfTTqna7Vt6/mTKnnzLw5
+         gYxMJW0QOCOa6CEYTYTwozZKvck1CZZDy7afbiKbMudb+R2ney9HaFreydUamFlzoBnz
+         K+3A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=mu9FPPsmEvEks/3/xAxXVst93bcV5zsiog/7waQuz+E=;
-        fh=ZCcchL8DjkVLnELh20r+gPB27KmMbpmRTRl3+TgxvdA=;
-        b=FBsp6woLGQjiWCSqRbmeyKuw/XeLdnl4x9Iy7leBmxMxz+2gQPJNg2iXFP/tSVQmu7
-         LmGJ50qH70w85sB7gL+y7BQNbXGlfgr6777949QBnojAxE8h6vyzHhJiPEfe1zJmGs6U
-         iChs2IvZQad8HFUP/a+jgztDEsNcVx58JPpojJAOsKLGI9Fra+tKfKktuy+j1W6pIiRq
-         eRY5wUbozlEbSSByJ1H5IbaZTdkNQXdW+6azEhX2WkeHqUwBL2rjoeihh/mjjWVH7ATa
-         ssPqDQl//ugXWJhjNdrSsZOxAbujpqMpaoCvjBgl4/x2RuMx6vlonSRUOY4ibXXb/Y9S
-         nndw==;
+        bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
+        fh=XB+BH8+q99K/BNmZdWQFpXc7CrGjfhtZ7I+nR0bqJgw=;
+        b=QZiM0UfxJBKJsKlpNRJ2I46NHXoU4KPvC6hllPZ0kS5HdHk04oDudcc36hRaFbVO4I
+         3hoyYUV9n8aX+x6bhvsYuJsd08QLujxfDT1B+FAqrSGuyaxO2Z/FWsPc5VPbZJ8TkBf3
+         G8r6VPf5I2fPGrEqEljX6mk8P4Rl9N+pbkv0dvaedRRpliXu2EIGELYdO8BSCiUsTK7h
+         4BofEQY9V9K2hTS6kNbrAzbX6mllWezbW9iu+uPLrRI40J8YCSypbKusailqyLo/rBaY
+         j9BBHD+f4mKe5+TutHnrUoA/nZToGSQJC/v1PEWd5RIuddMnQsF4fMNlqehoZPMa0APt
+         ABAQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g0Pdu54/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fsE0TZGY;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org>
 Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-86b3dbede1dsi563429241.9.2025.02.28.05.04.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e7339si31538056d6.52.2025.02.28.05.08.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Feb 2025 05:04:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g0Pdu54/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fsE0TZGY;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538555-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D934C166EEE
-	for <alex.bennee@linaro.org>; Fri, 28 Feb 2025 13:04:52 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 1680816F5C5
+	for <alex.bennee@linaro.org>; Fri, 28 Feb 2025 13:08:30 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 776D326B2AA;
-	Fri, 28 Feb 2025 13:04:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5D016261579;
+	Fri, 28 Feb 2025 13:08:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="g0Pdu54/"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fsE0TZGY"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF1FC1C3029
-	for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 13:04:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8302D1D88DB
+	for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 13:08:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740747889; cv=none; b=T4RzwSlRIYKhEwMVvZupNp8AOSWL5iyGnUOljJgpd/4uALsuWuTqpOp6yaU5xX1r+fYWTj9qV3WvEGBqx1cuzt2RxZ4qZJDS6jGn261Y30yZYSBeV709wynB4uh5Na4OHsafFzwck2Tl+ezG6mRlCY49dPSP/jxz50j7ru7uVUw=
+	t=1740748106; cv=none; b=knaaRsNFtSgDWF6mQLs1+PYZVb23QZ6hG0MYypQXew4fMhgArDQAVud0BijSGphaylHrskand5bq6c7hrrVBdUjOqlq+9Dqnr7UmQwU7iqyrwHNYmxe93SaPkK/wnbcf9FxlwCGPVOrtkvZBjkreUQCW61wjNyQfLOUrh44V+0A=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740747889; c=relaxed/simple;
-	bh=tinYoFUDnSoJv83Xdv0Ojlm/TOuCnsQi6lk8rGtnM3Y=;
+	s=arc-20240116; t=1740748106; c=relaxed/simple;
+	bh=/Gy2ZdSWyHE27aBHIMdrnJMk4Y3nBgqwXBNnhLPrgmk=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=gYdzUky2BTPgNmPYkyvFQL1TJd5RlJen79IesnKURVPdEc8K1HmkytGzFDttF1CXPpHqGXqnV9B3BrQtdIkshOb5B1coSmTfwXzVpPh1LNWV3A9nkGPzpcOmxRdaXq7pOJrI2O7YjzpLFTyAZcip5t9/a+YNemF1K+fFpSPGq9w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=g0Pdu54/; arc=none smtp.client-ip=170.10.129.124
+	 MIME-Version:Content-Type; b=coAtkd4i+LMqZ9juPwnEcUuvUL0b8n+G0vYkW29Z0F4YsONeUnr2T0zDFUHALW5I/lPWA7PqshP5XVy2D5FtqkPRdWvo0cF3LzLLqDiSR3K3PGrJLlThEmJp3tGv1jbMvYnPv301ovJKhc0IHxE/59rvl9sIvL0D4zzCCZOGlRA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fsE0TZGY; arc=none smtp.client-ip=170.10.133.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740747886;
+	s=mimecast20190719; t=1740748103;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mu9FPPsmEvEks/3/xAxXVst93bcV5zsiog/7waQuz+E=;
-	b=g0Pdu54/sk59t+s9lRV3JDER139fk9g2NI1OUtbn2z74lWMngPVfNulTyip3wzOe185LoA
-	LgbuNyPJ2UrErTY1dKmphICe7nihYyJDsu3zLyMQwfWuG6m5rcMJ/ARl348VwYPlU65vwx
-	RdsqcliEEWYphutO3TX1e4aFtuSHyqs=
+	bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
+	b=fsE0TZGYc1q7pu2qoyQBtbuKF2Hp8d7TEStZgIoTJ2qRJhtTqj7k+7Q5Auqbo33VooLekh
+	cz4Csp5FtOa+8JZbKrdwCXqhiIOaHml5lzw9Y35kWdXNnAJvBVeXO9yvljRe/pwR+pEfqJ
+	7252mgzZxULCyASOXEZ3Zjfd+7HxVLk=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-455-Sy3OzYv-OxqBt-dtKmo9Lw-1; Fri, 28 Feb 2025 08:04:43 -0500
-X-MC-Unique: Sy3OzYv-OxqBt-dtKmo9Lw-1
-X-Mimecast-MFC-AGG-ID: Sy3OzYv-OxqBt-dtKmo9Lw_1740747882
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4398e841963so13426825e9.3
-        for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 05:04:42 -0800 (PST)
+ us-mta-640-Y8loqDcNPwu4BwPjkZmyWQ-1; Fri, 28 Feb 2025 08:08:22 -0500
+X-MC-Unique: Y8loqDcNPwu4BwPjkZmyWQ-1
+X-Mimecast-MFC-AGG-ID: Y8loqDcNPwu4BwPjkZmyWQ_1740748101
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4394c489babso12347935e9.1
+        for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 05:08:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740747882; x=1741352682;
+        d=1e100.net; s=20230601; t=1740748101; x=1741352901;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mu9FPPsmEvEks/3/xAxXVst93bcV5zsiog/7waQuz+E=;
-        b=ZkmobPVDJzVSqynv4xexqFzNidQEXHl27BYDQZnqRA2HH+ooqqd5QFNJVn/l7lH1xe
-         1+dzD5hFqMN8zfIz5jRigdlU/hId0TgnSG7xnrsjB8Yb4a8+c8AgbZX4m8op6L4mkL0C
-         mjP20IMb5WKmPoRr5L4q406zhaFiSN+G/fPEfZ6Y3ws0VsRgSHTpKP36zixIHaknXtGS
-         AkWH1iIMQm9WfOFKProEDqdfMAiXnWFiv8wSEv1T2ZRPVN6EoShE92vXc/sQqNxq53X2
-         yNX7f3sF8WRPxe6Mc1Psd9mD36eQqQYetjhJLhY2qkB5vzFJWdwaXiLPYFLN6/Vd9TlK
-         24Uw==
-X-Forwarded-Encrypted: i=1; AJvYcCX75R9avD/m5goqv3LgKdSfr3Rg8B2Dv6ZPqYi6Yhb1S2beARDrwXBDPQmSdtlYWIsq10IgnZWqEhF6/vo=@vger.kernel.org
-X-Gm-Message-State: AOJu0YyyiLCn+k+Ql7wHCKWLQBlyIrH7/KL7Hm9TCR8TLo8/n1tl40dt
-	0xxmhmdi7ByRbRW+8/ZLkgg7XhtXFyoai+kHBJcXCrIzJaz8O2VamRUDsgh1Dqqajr+fFXILacE
-	I3EO8AZG2nakjYNLtohFhDK+78Rae1U7R0w6p/SP9vzwynDijzzJ3xVgDkKqdKQ==
-X-Gm-Gg: ASbGncviDJS5R3ePfBai/llplxxAM8EmO0nEWn/mQycBL6829KnYJY+ZWO3JOg751CA
-	n9+0O+hDztE8q0klQsI7YN8XvvfU8zTQTmE5du1EVsiPpSW6oRc2kFXJUJgqIN1Xdb1xvzEB7Ez
-	QI00S6hk8knmKDfftuo/O5nZ+cWXGHe7p+sbzMZuJyjJFrOfn4wP+EZrLmUa5vnwy/mQ5xA1mSV
-	kx3PQ5umK9FVH80s2x0hn7j9ECE3/NXNzKp/78lSrkAIr3jGVqCPCFCQHlILY8Ek7r8J+WlWrpJ
-	pJ04h6xInRkrg/Dtz70hB3Ig3871WipeTKoMJnKFxA7ypIUXkOUXuqqwsBVWjj0=
-X-Received: by 2002:a05:600c:1912:b0:439:a1b8:a246 with SMTP id 5b1f17b1804b1-43ba66f9643mr29722475e9.8.1740747881717;
-        Fri, 28 Feb 2025 05:04:41 -0800 (PST)
-X-Received: by 2002:a05:600c:1912:b0:439:a1b8:a246 with SMTP id 5b1f17b1804b1-43ba66f9643mr29721915e9.8.1740747881242;
-        Fri, 28 Feb 2025 05:04:41 -0800 (PST)
+        bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
+        b=lIGWB5Wm473trILQwclvSs9L68aAqk8UwZjWipdqL7d1Xz1W02FpdUGKlBNZ2mIWhN
+         QMbL9nRwN48c3VgA3O3lCsHIo+CYYNbL2/6sq+ZqdhYnIFGSQvTgN4cFF3fLEHjPyVbj
+         p/8uPl6lgA1Uei8/Lthv1nUhJzUnrcqmNEmcUBU/8TJ1Tu1h6i0/zx3erceEHbeeH0RR
+         IBKGxy/Luu8LmSxryAkVRbtuCEsIHELhWNGoJwvMmLMzMeUzwtR6L8YgSvVRlNtc+9eQ
+         c2Eexbd3P47Apj0wsVJNhMDcNkyji7STeNL2PoTqprpSU23MdEPOL36h6dd/VP248mdM
+         CRWw==
+X-Forwarded-Encrypted: i=1; AJvYcCXgONju0B/RhXThZdkILGoXK524m9P4piWi1MUqW1DleXGRf658dxsrdzRJH8L9vkrqHLBlMrjiMjJQcOA=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxKGCM08P0SnOdoEOzYhGYQgituV+BD3j06W59Ti+Q28JpjVXTz
+	sUl6t6an6osoKgDC4h2ViaC1ToRDA32vAuf41Yk7Nqnq+JwrPN6tQfc0qLZC5bMlHMnFpkRftOh
+	oxc3ot4wZaJYX7K/cRlElv6BR7Juh8X3i0u83mVx8fLvBz820FCWc32fA3cq1zA==
+X-Gm-Gg: ASbGncsvI6cJP5oofYIREXhi/so8HccOxFUKZjVxMTSsFc21zpw/jt0XsV0UMK7MiPU
+	NfsprahS5TlaLog1e8jxIThx2bouAyFhABuauATKdz0p1xmrH47oXlVUXPXG1R2tvW3/qAjxWPu
+	zQ5iEfqrDBZO8sP1di61KuFARRHnjdVE5raLHnE5kx2a+N0+iZAJtQs8cU3hpAetxQWh22S5HN3
+	iWroEMCoTXFo0htuBxENbMjKxy6rjVkSZCZB4xQYEgFxzRmfJNSV9ekPQjTEPy6HI1DeV4AMJtg
+	7YPuxJlkSh8uF+Ide2CFevVKC7YRIUmLG5oG1VhHvYa8TrYSYwrqvf2CatrVs44=
+X-Received: by 2002:a05:600c:1c93:b0:439:a1ef:c238 with SMTP id 5b1f17b1804b1-43ba6704511mr27965415e9.13.1740748100812;
+        Fri, 28 Feb 2025 05:08:20 -0800 (PST)
+X-Received: by 2002:a05:600c:1c93:b0:439:a1ef:c238 with SMTP id 5b1f17b1804b1-43ba6704511mr27964775e9.13.1740748100341;
+        Fri, 28 Feb 2025 05:08:20 -0800 (PST)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba5710f6sm91962555e9.29.2025.02.28.05.04.40
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e47b7ddesm5239888f8f.57.2025.02.28.05.08.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Feb 2025 05:04:40 -0800 (PST)
-Date: Fri, 28 Feb 2025 14:04:39 +0100
+        Fri, 28 Feb 2025 05:08:19 -0800 (PST)
+Date: Fri, 28 Feb 2025 14:08:19 +0100
 From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Michael S . Tsirkin"
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, "Michael S . Tsirkin"
  <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Ani Sinha
- <anisinha@redhat.com>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v6 17/19] tests/acpi: virt: update HEST and DSDT tables
-Message-ID: <20250228140439.450611bd@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250228104400.5ac2f7b1@foz.lan>
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v6 18/19] docs: hest: add new "etc/acpi_table_hest_addr"
+ and update workflow
+Message-ID: <20250228140819.322e6390@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250228173608.0000779c@huawei.com>
 References: <cover.1740671863.git.mchehab+huawei@kernel.org>
-	<7a6a1a1ba78f7dac2be6b7335280c1d0b380a175.1740671863.git.mchehab+huawei@kernel.org>
-	<20250228173318.00000f9d@huawei.com>
-	<20250228104400.5ac2f7b1@foz.lan>
+	<445f7d41b01ffc5bd79d6fd83bc7c4c621bcbc85.1740671863.git.mchehab+huawei@kernel.org>
+	<20250228173608.0000779c@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -138,52 +138,83 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: iM74amfwAfzu
+X-TUID: upUu5aWcybgd
 
-On Fri, 28 Feb 2025 10:44:22 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Fri, 28 Feb 2025 17:36:08 +0800
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-> Em Fri, 28 Feb 2025 17:33:18 +0800
-> Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
+> On Thu, 27 Feb 2025 17:00:56 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> > On Thu, 27 Feb 2025 17:00:55 +0100
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > - The HEST table now accept two sources;
-> > > - The DSDT tables now have a GED error device.
-> > > 
-> > > @@ -1,39 +1,39 @@
-> > >  /*
-> > >   * Intel ACPI Component Architecture
-> > >   * AML/ASL+ Disassembler version 20240322 (64-bit version)
-> > >   * Copyright (c) 2000 - 2023 Intel Corporation
-> > >   *
-> > > - * Disassembly of tests/data/acpi/aarch64/virt/HEST
-> > > + * Disassembly of /tmp/aml-DMPE22    
-> > This is an artifact of where you happened to get file
-> > from so if we are being really fussy drop the change 
-> > diff in the patch description for it.  I don't really care though.  
-> > >   *    
-> 
-> True, but on the other hand, this is the only place at the diff
-> saying what table the diff is against (HEST, in this case), as I had to
-> remove the information before @@, as it was causing troubles when Igor
-> were trying to apply the patch (plus on checkpatch).
-> 
-> That' why I opted to keep this hunk.
+> > While the HEST layout didn't change, there are some internal
+> > changes related to how offsets are calculated and how memory error
+> > events are triggered.
+> > 
+> > Update specs to reflect such changes.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> One minor editorial suggestion. With that or similar tidy up,
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-I'd drop this up to '* ACPI Data Table [HEST]' line.
-But doesn't really matter, as long as reader can get what 's going on.
-(there were precedents just putting snippets of diff)
+with nit below fixed,
 
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > 
-> Regards,
-> Mauro
+> > ---
+> >  docs/specs/acpi_hest_ghes.rst | 28 +++++++++++++++++-----------
+> >  1 file changed, 17 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
+> > index c3e9f8d9a702..4311a9536b21 100644
+> > --- a/docs/specs/acpi_hest_ghes.rst
+> > +++ b/docs/specs/acpi_hest_ghes.rst
+> > @@ -89,12 +89,21 @@ Design Details
+> >      addresses in the "error_block_address" fields with a pointer to the
+> >      respective "Error Status Data Block" in the "etc/hardware_errors" blob.
+> >  
+> > -(8) QEMU defines a third and write-only fw_cfg blob which is called
+> > -    "etc/hardware_errors_addr". Through that blob, the firmware can send back
+> > -    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
+> > -    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
+> > -    for the firmware. The firmware will write back the start address of
+> > -    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
+> > +(8) QEMU defines a third and write-only fw_cfg blob to store the location
+> > +    where the error block offsets, read ack registers and CPER records are
+> > +    stored.
+> > +
+> > +    Up to QEMU 9.2, the location was at "etc/hardware_errors_addr", and
+> > +    contains a GPA for the beginning of "etc/hardware_errors".
+> > +
+> > +    Newer versions place the location at "etc/acpi_table_hest_addr",
+> > +    pointing to the GPA of the HEST table.
+> > +
+> > +    Through that such GPA values, the firmware can send back the guest-side  
+> This confuses me.
+>  Via those GPA values...? (maybe?)
+
+it's not GPA here, it should be fwcfg.
+Maybe something like this
+ "Using above mentioned 'fwcfg' files,"
+
 > 
-> 
-> Thanks,
-> Mauro
+> > +    allocation addresses to QEMU. They contain a 8-byte entry. QEMU generates
+> > +    a single WRITE_POINTER command for the firmware. The firmware will write
+> > +    back the start address of either "etc/hardware_errors" or HEST table at
+> > +    the corresponding fw_cfg file.
+> >  
+> >  (9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
+> >      "Error Status Data Block", guest memory, and then injects platform specific
+> > @@ -105,8 +114,5 @@ Design Details
+> >       kernel, on receiving notification, guest APEI driver could read the CPER error
+> >       and take appropriate action.
+> >  
+> > -(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
+> > -     find out "Error Status Data Block" entry corresponding to error source. So supported
+> > -     source_id values should be assigned here and not be changed afterwards to make sure
+> > -     that guest will write error into expected "Error Status Data Block" even if guest was
+> > -     migrated to a newer QEMU.
+> > +(11) kvm_arch_on_sigbus_vcpu() report RAS errors via a SEA notifications,
+> > +     when a SIGBUS event is triggered.  
 > 
 

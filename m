@@ -1,186 +1,330 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1104422njb;
-        Fri, 28 Feb 2025 09:49:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV8BmKTovL0uiT4hlHffq1T/x2HpX6cl0RQyyS2yDngeQKKIGwypXCgb+yJ90dmPrTWeYz5qCzfwOdunA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGkYrfcWjUJXxyJEJ7coUrDpJ3KhJ9M20pgff9SYP7/BBO/I+nt4BxgZW5/m9QaTMqH4HLg
-X-Received: by 2002:a05:6214:2462:b0:6e6:5d9a:9171 with SMTP id 6a1803df08f44-6e8a0d38fb7mr69434586d6.23.1740764950579;
-        Fri, 28 Feb 2025 09:49:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740764950; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1125539njb;
+        Fri, 28 Feb 2025 10:18:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWKrDIxJa+yj3GPa26NroAmXOHflaMt6mT9vS6K5bN8+dmziAp/LCKpaadhg/3O+t1XDL6aOIaua/4Xzw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFjaxULdPraIeuqlHwT6X3zW6OTCroQAyM0q+KVc4FaM1mT45O7swv7osthKH5G4C9nu/+A
+X-Received: by 2002:a05:620a:1a0a:b0:7c0:a389:f25e with SMTP id af79cd13be357-7c39c4a24e5mr748610085a.7.1740766726979;
+        Fri, 28 Feb 2025 10:18:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740766726; cv=none;
         d=google.com; s=arc-20240605;
-        b=FP58lto6+rwqQz7w8MrHFTl5W7dRxr2dmTWUaM/Q7aAIASD3X8oNZsd/OA+ZaxgaxP
-         zn/7oNM10eHqvp57e9MZcbYmJsNTw+BdiefaKPYy5902JUH5PKXglf07qHip8CWz7quV
-         OgDS0cBDn32iTEsvVni374uWcr9xbtEvY7otvPDr1Un5lJiF04Ciy0du+q0xROre3TMt
-         7EgOW366lDBvZ8x4NoRSj+cVeT0q/B7Oa8RNegpdDr/kgnAr19vsxXQuDqbwGmqZ6Ths
-         HErG36nrNb0hYsQOrs9dTbGA0H8AxtiXh9Or2lCTmsfrV4hW2+3GyVrUzTBCRc6XI4S+
-         rfKQ==
+        b=hGSl1pjd/eP7zxbl8txF9kg0YJ0YXvipl0TDeO54HY62u+P15rTRs3KcGIxuMkTcAO
+         o9YnSjftyNORBIc0/hiMItVrhKYQbl7LbuiEf00Zn/yz1B/LxTk88VRZUn4PVRpyM1CL
+         aLYBHPJDeBEVQZo+l3Akmik3gzFL3eobt9u9/5lG6LLl2x3SSc9fAo+aIPY9slifB7tr
+         5hCZ9tbz7/TnxN4QjnbdFatKuxKPgqVFuIQYbXtMZ8uwf/7U7hULw6uqkFvbun3N/EBD
+         zZ9CUFElVyZi/XkDGcWuiTdr2hIbXpxUWuBUetpAlxVVXMF14hxZQkz+kSVFYvnYci9c
+         NbQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=IrK81ur78/kd+G6F3kTwFNDWhB4gkURHyE9BpPtQ7cw=;
-        fh=MLHM+gxpjdRCX46UmlsHJq+wyb7s5ougP82NtFt1JKc=;
-        b=LR0rOFRamS9G4dLOd4GDu6TiNqlwHYYxKbkC4M/VAC6PYrVzr2jhvAm+LerLXabNx0
-         tStP+uSUFxhJ9NtW71e0NfduDqxjwz37TDMJ/5fR1CSfeMfez7lXbzUjfbcO6FWVSrnj
-         9poTelCele7Ibdn4+adGNqTHgKvXRQmW6GySe0Zr2YFR1P6rywES8FouJ949zEPYynCA
-         avk7ociI9D/FjjhVi7iF+PRN0e/G/d283WyfaEKtkBze5MmPJsB1mT8AtOUyzUXkO6WW
-         z8c8+LBlMoiWQuv1Pse48zXNsOiIXppJ/MiaEUMfkHfW0aNnWY1DOqXFWiov75CdWX3u
-         86hQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=srTJO2lNzFZqSDvzVH7guSxSjqkeUYfInuYUGuu8/Qs=;
+        fh=Mg9fsUlLji1He7KTVUx+vvozEMqTtNOVa9SHqLpjG2c=;
+        b=bdHP4b0CmMkC6lp0IA8S3Hy4M6JcBH/jtDFQKi11UvFIAfoR9bipxr9ig+9+NMdBOz
+         omrAF6uy4cjHaDzjTgikEwb/hiMt7NvXO3ebpQdmfhpg6sYpFTTcUNSFdR6zy1CdBIq/
+         8wlqI1HmepTtpSeloXNtiwb4LucVPMP8jZmIS1DuurWtl/eQrXn32FI6YC3z6A/aWPWz
+         M1dq/sDacytUJEZCQf/DttOhvq5yMXfspTv0ENF7fFdwaSYXqmSTdTwdhRJxz8g9OOAX
+         e1OuzUvwbIuxwse//y6mH/RtBkBhS4/PTcaXvOLuHC/MaOvBzgdWbmd83jFeR96zYxiW
+         qF7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QBOc97TG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=sPHqYl71;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e897600992si35718806d6.131.2025.02.28.09.49.09
+        by mx.google.com with ESMTPS id af79cd13be357-7c3749dff45si363985785a.368.2025.02.28.10.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2025 09:49:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2025 10:18:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QBOc97TG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=sPHqYl71;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1to4TU-0007hR-R4; Fri, 28 Feb 2025 12:48:36 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1to4wY-0002zL-9A; Fri, 28 Feb 2025 13:18:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to4TA-0007V6-PG
- for qemu-arm@nongnu.org; Fri, 28 Feb 2025 12:48:17 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1to4wO-0002mI-8k
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2025 13:18:29 -0500
+Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to4T7-0005Nv-Bp
- for qemu-arm@nongnu.org; Fri, 28 Feb 2025 12:48:16 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4399deda4bfso16306615e9.0
- for <qemu-arm@nongnu.org>; Fri, 28 Feb 2025 09:48:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1to4wJ-0004Bq-C4
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2025 13:18:26 -0500
+Received: by mail-vk1-xa36.google.com with SMTP id
+ 71dfb90a1353d-51eb1818d4fso2284850e0c.1
+ for <qemu-devel@nongnu.org>; Fri, 28 Feb 2025 10:18:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740764889; x=1741369689; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IrK81ur78/kd+G6F3kTwFNDWhB4gkURHyE9BpPtQ7cw=;
- b=QBOc97TGU8coZO044vEU6iTAKItSwICwtQISKtLa2GOW+8OnQ6+ul9FvydAtewPPsp
- msjB1qbA6ctTPeyqdwjcj6qHTmoibwd/UnejUaXOmmnMxDHSHbWH3teOm2kE0U/0OzI/
- xk/G6guV21LwMdpWFz+nxnJl8eIdw9lHQQSogQC7IB6mgyR79XRNqghRcx6EWnHc9G/O
- KA2MqBta7ERHat740P5iILxL+eQNIX+UkhpzxqlOqNBqmV9dzOwBfDJwb0cT0K4IO5Wj
- /8z/HY5YLKQ8SrxD/37jr8yAuGqjjnLLzU1hiV4wiA1E8olV7b1bT1wjVa+OwtXgU29c
- zADw==
+ d=google.com; s=20230601; t=1740766698; x=1741371498; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=srTJO2lNzFZqSDvzVH7guSxSjqkeUYfInuYUGuu8/Qs=;
+ b=sPHqYl71sqmTOShFXtw7cSqCyHFxWK7J9oe4Ss5EVSa/5u9JqEZy86zIh0OX7jfmsM
+ 0jKQRiu55X3Kl5VxtSgZp3uuXkVcITPNLmOiJqSFtxHgDCa214wLnWbP0S2QzlrbNnqe
+ exGGVLYn4EpJx2qDV3tzzL2SvVi3pVymbf+UXumD2Sd4sKJi76fgTBH0DpoaxNFcY+lJ
+ zFcSJ3FAj9UI9Ao1MLSxhWYCJEGj/2AQhkp3bhPH4pvO5HOJtqkaTsWNqwiuv3WxdlC/
+ OqWKalmfooqG58mX+DTe+w2O5ErcW4JSt8z3OvP2vs3ZA+dTX0nS9d2cvqhKqnzdICbI
+ OHFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740764889; x=1741369689;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IrK81ur78/kd+G6F3kTwFNDWhB4gkURHyE9BpPtQ7cw=;
- b=bPHAEQJpf/Kq94HijKPMtNzeyMuK54QbZh9/16ohNL3Zo5zlzbntZ2fRc1tZQtap7z
- Fb+hGZ2OCX7tJ/6VBzUQIliZV010qOu520TIaIPX4rSNBtbSlEU+fr2gFSpIZmenbYYC
- mIzdH8JdNhY9aLxxHgLMz8iCK0PItsLE4hJm4ODzApWa9xZ+9f0UFgrSZ2e3kmcDn6BL
- kIbTrfd5wDmNdXB5tCnYWDXrSndF5G38+r7jnl7/vCGD1jX9TUPMx/oJVLtryHCbQX0K
- zjRTjcm6xZuAkc7KRURKqj5VLeff2Cz7km3TRRh4rmwnVS1/X52UlZ73bGNCMnoRdt+T
- arow==
-X-Gm-Message-State: AOJu0YyvU+2tPmTVxgqiuvNhSwvWygyFmTg3hZV8zGCqSJA1DZk2CKJs
- Bxpl7DmJ/9oyKxsnEBP79pXRJ/YjgN29NsGZ8JRC88hCI7gdGQkm97i66s5ocVKxsFXQ/HeLYf0
- a
-X-Gm-Gg: ASbGncuJWNuEvzThzaRpxjS6WC34vKuRvpOajPJU8/ixQ0mA6Fv688ANWqY7QUs5bsM
- 32Xm76rq5e9rFj5WCGEJT9waBI2a5qz2qKYhEg0P26pyHvhkzZo6AJ1jVHrVyh65kM9ocCUEccY
- h1gARHZctg3Z9jPNbi2Wrr6A0EPRW1t0VFJLdv/bqU8mIevmabs2HoLpUSfW5Ry8h+e/sBSLXtd
- QWZjRVI2L8TVcKNhmvo8bvTz8HBQJ/MXwLm9UZxNZI91uNA7cj7OG8j+rLFs1hLaCCJHczUL6FB
- 2pVQF2Pm7nN1D4OVtRt1/htrzZwjMajt
-X-Received: by 2002:a05:6000:401f:b0:38f:38eb:fcfc with SMTP id
- ffacd0b85a97d-390ec7c7fefmr3526755f8f.7.1740764889367; 
- Fri, 28 Feb 2025 09:48:09 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390e4795da5sm5979556f8f.15.2025.02.28.09.48.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2025 09:48:08 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
-	Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 3/3] hw/net/smc91c111: Use MAX_PACKET_SIZE instead of magic
- numbers
-Date: Fri, 28 Feb 2025 17:48:01 +0000
-Message-ID: <20250228174802.1945417-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250228174802.1945417-1-peter.maydell@linaro.org>
-References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1740766698; x=1741371498;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=srTJO2lNzFZqSDvzVH7guSxSjqkeUYfInuYUGuu8/Qs=;
+ b=wTcXxybedZQocbOOGvjZM3pGr8GIbzI4A1XCsS70FA1UCBuNlCHpXTD5HVZ2pgszpI
+ e68uQVVHcd5ky49+2bVLbBzRLTNI6n+Ge/hjk0PGhS/uuhhNo4ErgZuQPNxvl3TYwU19
+ ak+9c7VK9n0gwzY99xnSNY27hpju+hr+eg1abm88UOxh4Z3hvRmHdTH1izR8UOF88zX+
+ tz8czavL8fia6amaTHZMrid2JqXZxNgoeNORLqm3KFunWt2JEpHbDO4QawXkRieVPIq5
+ jAbCZu9jcDxN23NfJfI6Ij5vk8OqSfGhKatqCp9UKYTkxhoebUhosrsxX4eYzc+Dmk6G
+ DmPQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUOOgtNJDJuZoL3DngxdLXIm3LzWE0sXH5mI14cD6OHY5JZjxW9rcef3SYfc+FLYgYxXa63/E3ZHIYB@nongnu.org
+X-Gm-Message-State: AOJu0YzpdY+caHtZyqFqUpe8wi/XuobMwCu7JmGbxpwABdklJuzV1VDy
+ cFILavCWmIepn4ujD27T+zKczutiPHoAsO5NX3GZxUg8oJUDwdrugBkM36cqKtXMbM8w7iAbpc4
+ aNCUYma0f/fYdgDmjxIHRsr+y3eA95heQf7lV
+X-Gm-Gg: ASbGncsVtl4TM+I57D/rLFyj1Qs0e97/PuwnVX8vxYjPKXawBtDa7jwdFrZMadmGS9A
+ tIZdXoFcCDWOYdzq8Re7Sp8GIBFu6vO5hN7S0RE2NnDxkHnZne8R9U4MhshD4IJC3ryv/wCsc+I
+ GvgUepncKMYLzCYmVMUB0P81YgSbx8dggDZPHRAncMQg==
+X-Received: by 2002:a05:6122:da2:b0:520:98ec:b25c with SMTP id
+ 71dfb90a1353d-5235b63ff89mr2661022e0c.1.1740766698058; Fri, 28 Feb 2025
+ 10:18:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20250227154253.1653236-1-venture@google.com>
+ <b300117fa0fc207eadccb663cdb043663ca79025.camel@codeconstruct.com.au>
+In-Reply-To: <b300117fa0fc207eadccb663cdb043663ca79025.camel@codeconstruct.com.au>
+From: Patrick Venture <venture@google.com>
+Date: Fri, 28 Feb 2025 10:18:03 -0800
+X-Gm-Features: AQ5f1Jou_OjKXf2GmIoJdtyUqqs1yiR9ECeQUL6tBl0URcVDVT-e7Vq8GYQREN0
+Message-ID: <CAO=notw30NKaFtXSookieod-GQb_NeXiSU3MfT1BjYryPmSMew@mail.gmail.com>
+Subject: Re: [PATCH] hw/net: ftgmac100: copy eth_hdr for alignment
+To: Andrew Jeffery <andrew@codeconstruct.com.au>
+Cc: peter.maydell@linaro.org, clg@kaod.org, steven_lee@aspeedtech.com, 
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, joel@jms.id.au, 
+ jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000ad302c062f37d4eb"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a36;
+ envelope-from=venture@google.com; helo=mail-vk1-xa36.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VnV1ZW0dhnsN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9aJ1ggQvAzd9
 
-Now we have a constant for the maximum packet size, we can use it
-to replace various hardcoded 2048 values.
+--000000000000ad302c062f37d4eb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/net/smc91c111.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+On Thu, Feb 27, 2025 at 9:54=E2=80=AFPM Andrew Jeffery <andrew@codeconstruc=
+t.com.au>
+wrote:
 
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index 23ca99f926a..4a8f867d96e 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -58,7 +58,7 @@ struct smc91c111_state {
-     int tx_fifo_done_len;
-     int tx_fifo_done[NUM_PACKETS];
-     /* Packet buffer memory.  */
--    uint8_t data[NUM_PACKETS][2048];
-+    uint8_t data[NUM_PACKETS][MAX_PACKET_SIZE];
-     uint8_t int_level;
-     uint8_t int_mask;
-     MemoryRegion mmio;
-@@ -86,7 +86,8 @@ static const VMStateDescription vmstate_smc91c111 = {
-         VMSTATE_INT32_ARRAY(rx_fifo, smc91c111_state, NUM_PACKETS),
-         VMSTATE_INT32(tx_fifo_done_len, smc91c111_state),
-         VMSTATE_INT32_ARRAY(tx_fifo_done, smc91c111_state, NUM_PACKETS),
--        VMSTATE_BUFFER_UNSAFE(data, smc91c111_state, 0, NUM_PACKETS * 2048),
-+        VMSTATE_BUFFER_UNSAFE(data, smc91c111_state, 0,
-+                              NUM_PACKETS * MAX_PACKET_SIZE),
-         VMSTATE_UINT8(int_level, smc91c111_state),
-         VMSTATE_UINT8(int_mask, smc91c111_state),
-         VMSTATE_END_OF_LIST()
-@@ -773,8 +774,9 @@ static ssize_t smc91c111_receive(NetClientState *nc, const uint8_t *buf, size_t
-     if (crc)
-         packetsize += 4;
-     /* TODO: Flag overrun and receive errors.  */
--    if (packetsize > 2048)
-+    if (packetsize > MAX_PACKET_SIZE) {
-         return -1;
-+    }
-     packetnum = smc91c111_allocate_packet(s);
-     if (packetnum == 0x80)
-         return -1;
--- 
-2.43.0
+> Hi Patrick,
+>
+> On Thu, 2025-02-27 at 15:42 +0000, Patrick Venture wrote:
+> > eth_hdr requires 2 byte alignment
+> >
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > ---
+> >  hw/net/ftgmac100.c | 15 ++++++++++++---
+> >  1 file changed, 12 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> > index 1f524d7a01..a33aaa01ee 100644
+> > --- a/hw/net/ftgmac100.c
+> > +++ b/hw/net/ftgmac100.c
+> > @@ -989,12 +989,16 @@ static void ftgmac100_high_write(void *opaque,
+> hwaddr addr,
+> >  static int ftgmac100_filter(FTGMAC100State *s, const uint8_t *buf,
+> size_t len)
+> >  {
+> >      unsigned mcast_idx;
+> > +    struct eth_header eth_hdr =3D {};
+> >
+> >      if (s->maccr & FTGMAC100_MACCR_RX_ALL) {
+> >          return 1;
+> >      }
+> >
+> > -    switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf))) {
+> > +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
+> > +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
+>
+> I don't think truncating the memcpy() in this way is what we want? The
+> switched value may not be meaningful for small values of len.
+>
+> Perhaps return an error?
+>
+> > +
+> > +    switch (get_eth_packet_type(&eth_hdr)) {
+> >      case ETH_PKT_BCAST:
+> >          if (!(s->maccr & FTGMAC100_MACCR_RX_BROADPKT)) {
+> >              return 0;
+> > @@ -1028,6 +1032,7 @@ static ssize_t ftgmac100_receive(NetClientState
+> *nc, const uint8_t *buf,
+> >  {
+> >      FTGMAC100State *s =3D FTGMAC100(qemu_get_nic_opaque(nc));
+> >      FTGMAC100Desc bd;
+> > +    struct eth_header eth_hdr =3D {};
+> >      uint32_t flags =3D 0;
+> >      uint64_t addr;
+> >      uint32_t crc;
+> > @@ -1036,7 +1041,11 @@ static ssize_t ftgmac100_receive(NetClientState
+> *nc, const uint8_t *buf,
+> >      uint32_t buf_len;
+> >      size_t size =3D len;
+> >      uint32_t first =3D FTGMAC100_RXDES0_FRS;
+> > -    uint16_t proto =3D be16_to_cpu(PKT_GET_ETH_HDR(buf)->h_proto);
+> > +    uint16_t proto;
+> > +
+> > +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
+> > +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
+>
+> Again here.
+>
+> > +    proto =3D be16_to_cpu(eth_hdr.h_proto);
+> >      int max_frame_size =3D ftgmac100_max_frame_size(s, proto);
+> >
+> >      if ((s->maccr & (FTGMAC100_MACCR_RXDMA_EN |
+> FTGMAC100_MACCR_RXMAC_EN))
+> > @@ -1061,7 +1070,7 @@ static ssize_t ftgmac100_receive(NetClientState
+> *nc, const uint8_t *buf,
+> >          flags |=3D FTGMAC100_RXDES0_FTL;
+> >      }
+> >
+> > -    switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf))) {
+> > +    switch (get_eth_packet_type(&eth_hdr)) {
+> >      case ETH_PKT_BCAST:
+> >          flags |=3D FTGMAC100_RXDES0_BROADCAST;
+> >          break;
+>
+>
+Thanks, I've been asked to fix eth_header to be correctly packed instead
+and I'm still fixing the implications of that.
 
+--000000000000ad302c062f37d4eb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 27,=
+ 2025 at 9:54=E2=80=AFPM Andrew Jeffery &lt;<a href=3D"mailto:andrew@codeco=
+nstruct.com.au">andrew@codeconstruct.com.au</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex">Hi Patrick,<br>
+<br>
+On Thu, 2025-02-27 at 15:42 +0000, Patrick Venture wrote:<br>
+&gt; eth_hdr requires 2 byte alignment<br>
+&gt; <br>
+&gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.co=
+m" target=3D"_blank">venture@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt; =C2=A0hw/net/ftgmac100.c | 15 ++++++++++++---<br>
+&gt; =C2=A01 file changed, 12 insertions(+), 3 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c<br>
+&gt; index 1f524d7a01..a33aaa01ee 100644<br>
+&gt; --- a/hw/net/ftgmac100.c<br>
+&gt; +++ b/hw/net/ftgmac100.c<br>
+&gt; @@ -989,12 +989,16 @@ static void ftgmac100_high_write(void *opaque, h=
+waddr addr,<br>
+&gt; =C2=A0static int ftgmac100_filter(FTGMAC100State *s, const uint8_t *bu=
+f, size_t len)<br>
+&gt; =C2=A0{<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 unsigned mcast_idx;<br>
+&gt; +=C2=A0=C2=A0=C2=A0 struct eth_header eth_hdr =3D {};<br>
+&gt; =C2=A0<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 if (s-&gt;maccr &amp; FTGMAC100_MACCR_RX_ALL)=
+ {<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 1;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 }<br>
+&gt; =C2=A0<br>
+&gt; -=C2=A0=C2=A0=C2=A0 switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf)))=
+ {<br>
+&gt; +=C2=A0=C2=A0=C2=A0 memcpy(&amp;eth_hdr, PKT_GET_ETH_HDR(buf),<br>
+&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (sizeof(=
+eth_hdr) &gt; len) ? len : sizeof(eth_hdr));<br>
+<br>
+I don&#39;t think truncating the memcpy() in this way is what we want? The<=
+br>
+switched value may not be meaningful for small values of len.<br>
+<br>
+Perhaps return an error?<br>
+<br>
+&gt; +<br>
+&gt; +=C2=A0=C2=A0=C2=A0 switch (get_eth_packet_type(&amp;eth_hdr)) {<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 case ETH_PKT_BCAST:<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!(s-&gt;maccr &am=
+p; FTGMAC100_MACCR_RX_BROADPKT)) {<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 return 0;<br>
+&gt; @@ -1028,6 +1032,7 @@ static ssize_t ftgmac100_receive(NetClientState =
+*nc, const uint8_t *buf,<br>
+&gt; =C2=A0{<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 FTGMAC100State *s =3D FTGMAC100(qemu_get_nic_=
+opaque(nc));<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 FTGMAC100Desc bd;<br>
+&gt; +=C2=A0=C2=A0=C2=A0 struct eth_header eth_hdr =3D {};<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t flags =3D 0;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 uint64_t addr;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t crc;<br>
+&gt; @@ -1036,7 +1041,11 @@ static ssize_t ftgmac100_receive(NetClientState=
+ *nc, const uint8_t *buf,<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t buf_len;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 size_t size =3D len;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t first =3D FTGMAC100_RXDES0_FRS;<br>
+&gt; -=C2=A0=C2=A0=C2=A0 uint16_t proto =3D be16_to_cpu(PKT_GET_ETH_HDR(buf=
+)-&gt;h_proto);<br>
+&gt; +=C2=A0=C2=A0=C2=A0 uint16_t proto;<br>
+&gt; +<br>
+&gt; +=C2=A0=C2=A0=C2=A0 memcpy(&amp;eth_hdr, PKT_GET_ETH_HDR(buf),<br>
+&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (sizeof(=
+eth_hdr) &gt; len) ? len : sizeof(eth_hdr));<br>
+<br>
+Again here.<br>
+<br>
+&gt; +=C2=A0=C2=A0=C2=A0 proto =3D be16_to_cpu(eth_hdr.h_proto);<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 int max_frame_size =3D ftgmac100_max_frame_si=
+ze(s, proto);<br>
+&gt; =C2=A0<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 if ((s-&gt;maccr &amp; (FTGMAC100_MACCR_RXDMA=
+_EN | FTGMAC100_MACCR_RXMAC_EN))<br>
+&gt; @@ -1061,7 +1070,7 @@ static ssize_t ftgmac100_receive(NetClientState =
+*nc, const uint8_t *buf,<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 flags |=3D FTGMAC100_=
+RXDES0_FTL;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 }<br>
+&gt; =C2=A0<br>
+&gt; -=C2=A0=C2=A0=C2=A0 switch (get_eth_packet_type(PKT_GET_ETH_HDR(buf)))=
+ {<br>
+&gt; +=C2=A0=C2=A0=C2=A0 switch (get_eth_packet_type(&amp;eth_hdr)) {<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0 case ETH_PKT_BCAST:<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 flags |=3D FTGMAC100_=
+RXDES0_BROADCAST;<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
+<br></blockquote><div><br></div><div>Thanks, I&#39;ve been asked to fix eth=
+_header to be correctly packed instead and I&#39;m still fixing the implica=
+tions of that.</div><div>=C2=A0</div></div></div>
+
+--000000000000ad302c062f37d4eb--

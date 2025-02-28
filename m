@@ -1,220 +1,133 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp904439njb;
-        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCU+a3UySTEiwAcgVcz4sUYGy/LOKchkLTmzTd5Pb8EDLQQu0SQ4FLf24gOzAZTEvSTbt9hMuFRC8jNhIQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgDI6ssXSYAsrXNaQ3ugJ0GFVwi4zvpFIdFDnVDCGBhIG/AQSaWTJENQVVFmuHUL+5t7Go
-X-Received: by 2002:a05:620a:4145:b0:7c0:a28e:4963 with SMTP id af79cd13be357-7c39c4aef7emr438393085a.14.1740748110589;
-        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1740748110; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1023900njb;
+        Fri, 28 Feb 2025 07:59:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWFimDAzPK++nBfxy4tushbsEXobg9yAN4u2NHfrvV+XmQK08KhvvSURdq173U+1V66WrLzXqdHIiTMEA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG2WAv4tnb7buV1YCoxmBjDJ+w0YYM06C49H+s97TFZzU84Ls/erMIV0CpAzRZ5zrIL9kFK
+X-Received: by 2002:ad4:5f07:0:b0:6e6:5caa:e5d with SMTP id 6a1803df08f44-6e8a0c8038dmr57076366d6.4.1740758344904;
+        Fri, 28 Feb 2025 07:59:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740758344; cv=none;
         d=google.com; s=arc-20240605;
-        b=hwVyGBpJnXO9mqJeJGNNpI7uu/VBDtS1VxnxNp5KPBgqmtmKZxbUwqR0OnM/IpdkLF
-         m32Tw+5iVACvtpPS70kWmGJ0IAgzkFk1genkALgnxaSJbJbcVNPJWe5bAIvgAH59cfSp
-         8eW3qjtXAHN2HEwJBDxjQ2qNk8qo/saS6Gs5z/cgMeVTKGLFe1Epvif6ygm3HRtGpiMw
-         QIiDWT8e2dncyvBYaNekinuQ2KCZaAOSxxG7wnL8Ol+mWmZdfTTqna7Vt6/mTKnnzLw5
-         gYxMJW0QOCOa6CEYTYTwozZKvck1CZZDy7afbiKbMudb+R2ney9HaFreydUamFlzoBnz
-         K+3A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
-        fh=XB+BH8+q99K/BNmZdWQFpXc7CrGjfhtZ7I+nR0bqJgw=;
-        b=QZiM0UfxJBKJsKlpNRJ2I46NHXoU4KPvC6hllPZ0kS5HdHk04oDudcc36hRaFbVO4I
-         3hoyYUV9n8aX+x6bhvsYuJsd08QLujxfDT1B+FAqrSGuyaxO2Z/FWsPc5VPbZJ8TkBf3
-         G8r6VPf5I2fPGrEqEljX6mk8P4Rl9N+pbkv0dvaedRRpliXu2EIGELYdO8BSCiUsTK7h
-         4BofEQY9V9K2hTS6kNbrAzbX6mllWezbW9iu+uPLrRI40J8YCSypbKusailqyLo/rBaY
-         j9BBHD+f4mKe5+TutHnrUoA/nZToGSQJC/v1PEWd5RIuddMnQsF4fMNlqehoZPMa0APt
-         ABAQ==;
+        b=ViKTMdIwLD4UhRENuV9SFxCw18QeMYaA7/sW9Yb1W3ZBX6V4M+SJdPNY9sE6AvIE/M
+         uVQ9PhjsqXudqy2jOSHGsgZ+4y7tsxPcBANxm5T61zBuEB8KruDlw2EjCP5WZobGBagh
+         UPm/JRUBFLqruhSLxt5NVIO9i4nwO7mG3G3bGnK98pKQDLh67KWfQuGlBArvo9kBpZta
+         ZvFBY79wWNTo5jNaGidRs1TkeP34yF3aQ3hoLgJQ62Lll2WhQAwBMmIhIhpkbJU/DbJE
+         g+hLSq0fbC+BFvXVU3IRHpD0Ug/Teymb+7thUoByfV+PxfEzsX5zWPoynJqbhPYym7wE
+         2uPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nHA8ovX/AnL9D5+TISfoctk/YRXX3ujmkQkd7hhpVeo=;
+        fh=aJp6FguB1k+1UK3MlBQR3TmJ6V+Ti/upV33RAZmdtII=;
+        b=EuFTfxwNleDk3izBh95ua2027DzHI0zqFiMwzsL3XtCKnyMxubUB4UKJxtbU71De0l
+         jMsb6RdysCx4Iu1mbO/85nBSMkeQjwVR9tSHoob/H5c1iTxFTv2jEF6hRwlRmRMES8f4
+         LaXlZWWvRcDSawRsSmWi3/5IZuyrC7revCapS302Sa7WTX2EPTUMPaMI96qHcKaI6lmc
+         P+HCjCgDSMupsjgbkd0fwGhaucciqeg0QGpYLk4GA/oQ9cngLOztmFk9OOgK54BxlNOS
+         W4y4h1f5Q95N3MigP2JJRdsczP4Sv5OkTs0mXTwG8QN2Wd00GsWclycI9UM0usAXlj2u
+         WTrQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fsE0TZGY;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e7339si31538056d6.52.2025.02.28.05.08.30
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@xenproject.org header.s=20200302mail header.b=hbuwI5QU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xenproject.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e73d3si33776726d6.62.2025.02.28.07.59.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Feb 2025 05:08:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 28 Feb 2025 07:59:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fsE0TZGY;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-538559-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 1680816F5C5
-	for <alex.bennee@linaro.org>; Fri, 28 Feb 2025 13:08:30 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5D016261579;
-	Fri, 28 Feb 2025 13:08:26 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fsE0TZGY"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8302D1D88DB
-	for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 13:08:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1740748106; cv=none; b=knaaRsNFtSgDWF6mQLs1+PYZVb23QZ6hG0MYypQXew4fMhgArDQAVud0BijSGphaylHrskand5bq6c7hrrVBdUjOqlq+9Dqnr7UmQwU7iqyrwHNYmxe93SaPkK/wnbcf9FxlwCGPVOrtkvZBjkreUQCW61wjNyQfLOUrh44V+0A=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1740748106; c=relaxed/simple;
-	bh=/Gy2ZdSWyHE27aBHIMdrnJMk4Y3nBgqwXBNnhLPrgmk=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=coAtkd4i+LMqZ9juPwnEcUuvUL0b8n+G0vYkW29Z0F4YsONeUnr2T0zDFUHALW5I/lPWA7PqshP5XVy2D5FtqkPRdWvo0cF3LzLLqDiSR3K3PGrJLlThEmJp3tGv1jbMvYnPv301ovJKhc0IHxE/59rvl9sIvL0D4zzCCZOGlRA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fsE0TZGY; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740748103;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
-	b=fsE0TZGYc1q7pu2qoyQBtbuKF2Hp8d7TEStZgIoTJ2qRJhtTqj7k+7Q5Auqbo33VooLekh
-	cz4Csp5FtOa+8JZbKrdwCXqhiIOaHml5lzw9Y35kWdXNnAJvBVeXO9yvljRe/pwR+pEfqJ
-	7252mgzZxULCyASOXEZ3Zjfd+7HxVLk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-640-Y8loqDcNPwu4BwPjkZmyWQ-1; Fri, 28 Feb 2025 08:08:22 -0500
-X-MC-Unique: Y8loqDcNPwu4BwPjkZmyWQ-1
-X-Mimecast-MFC-AGG-ID: Y8loqDcNPwu4BwPjkZmyWQ_1740748101
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4394c489babso12347935e9.1
-        for <linux-kernel@vger.kernel.org>; Fri, 28 Feb 2025 05:08:21 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740748101; x=1741352901;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jivrn7Vdp6x4GL1b5ZxyJQKIN05Kj60F1xupGwdydvs=;
-        b=lIGWB5Wm473trILQwclvSs9L68aAqk8UwZjWipdqL7d1Xz1W02FpdUGKlBNZ2mIWhN
-         QMbL9nRwN48c3VgA3O3lCsHIo+CYYNbL2/6sq+ZqdhYnIFGSQvTgN4cFF3fLEHjPyVbj
-         p/8uPl6lgA1Uei8/Lthv1nUhJzUnrcqmNEmcUBU/8TJ1Tu1h6i0/zx3erceEHbeeH0RR
-         IBKGxy/Luu8LmSxryAkVRbtuCEsIHELhWNGoJwvMmLMzMeUzwtR6L8YgSvVRlNtc+9eQ
-         c2Eexbd3P47Apj0wsVJNhMDcNkyji7STeNL2PoTqprpSU23MdEPOL36h6dd/VP248mdM
-         CRWw==
-X-Forwarded-Encrypted: i=1; AJvYcCXgONju0B/RhXThZdkILGoXK524m9P4piWi1MUqW1DleXGRf658dxsrdzRJH8L9vkrqHLBlMrjiMjJQcOA=@vger.kernel.org
-X-Gm-Message-State: AOJu0YxKGCM08P0SnOdoEOzYhGYQgituV+BD3j06W59Ti+Q28JpjVXTz
-	sUl6t6an6osoKgDC4h2ViaC1ToRDA32vAuf41Yk7Nqnq+JwrPN6tQfc0qLZC5bMlHMnFpkRftOh
-	oxc3ot4wZaJYX7K/cRlElv6BR7Juh8X3i0u83mVx8fLvBz820FCWc32fA3cq1zA==
-X-Gm-Gg: ASbGncsvI6cJP5oofYIREXhi/so8HccOxFUKZjVxMTSsFc21zpw/jt0XsV0UMK7MiPU
-	NfsprahS5TlaLog1e8jxIThx2bouAyFhABuauATKdz0p1xmrH47oXlVUXPXG1R2tvW3/qAjxWPu
-	zQ5iEfqrDBZO8sP1di61KuFARRHnjdVE5raLHnE5kx2a+N0+iZAJtQs8cU3hpAetxQWh22S5HN3
-	iWroEMCoTXFo0htuBxENbMjKxy6rjVkSZCZB4xQYEgFxzRmfJNSV9ekPQjTEPy6HI1DeV4AMJtg
-	7YPuxJlkSh8uF+Ide2CFevVKC7YRIUmLG5oG1VhHvYa8TrYSYwrqvf2CatrVs44=
-X-Received: by 2002:a05:600c:1c93:b0:439:a1ef:c238 with SMTP id 5b1f17b1804b1-43ba6704511mr27965415e9.13.1740748100812;
-        Fri, 28 Feb 2025 05:08:20 -0800 (PST)
-X-Received: by 2002:a05:600c:1c93:b0:439:a1ef:c238 with SMTP id 5b1f17b1804b1-43ba6704511mr27964775e9.13.1740748100341;
-        Fri, 28 Feb 2025 05:08:20 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e47b7ddesm5239888f8f.57.2025.02.28.05.08.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Feb 2025 05:08:19 -0800 (PST)
-Date: Fri, 28 Feb 2025 14:08:19 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v6 18/19] docs: hest: add new "etc/acpi_table_hest_addr"
- and update workflow
-Message-ID: <20250228140819.322e6390@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250228173608.0000779c@huawei.com>
-References: <cover.1740671863.git.mchehab+huawei@kernel.org>
-	<445f7d41b01ffc5bd79d6fd83bc7c4c621bcbc85.1740671863.git.mchehab+huawei@kernel.org>
-	<20250228173608.0000779c@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@xenproject.org header.s=20200302mail header.b=hbuwI5QU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xenproject.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1to2lK-0004Jm-96; Fri, 28 Feb 2025 10:58:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anthony@xenproject.org>)
+ id 1to2lH-0004Iq-OX; Fri, 28 Feb 2025 10:58:51 -0500
+Received: from mail.xenproject.org ([104.130.215.37])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anthony@xenproject.org>)
+ id 1to2lG-0007Kl-A1; Fri, 28 Feb 2025 10:58:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=xenproject.org; s=20200302mail; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date;
+ bh=nHA8ovX/AnL9D5+TISfoctk/YRXX3ujmkQkd7hhpVeo=; b=hbuwI5QUNI272RkhIqC2aL50wY
+ pgXR1oV4O7Zhl7NuJAUhYW8DgqZtWsJlGIvBG13mfN04t+KNTRcGrhq2sivflsdikOW6+TKBsVOYR
+ 91e0XwClSD6Uz+mJgmBZOrn26yXXkpyOAhd9/T1zHEJoHnCWCyJ2gLixzkK2DLM03J8Q=;
+Received: from xenbits.xenproject.org ([104.239.192.120])
+ by mail.xenproject.org with esmtp (Exim 4.96)
+ (envelope-from <anthony@xenproject.org>) id 1to2lE-00AMUu-0c;
+ Fri, 28 Feb 2025 15:58:47 +0000
+Received: from [2a01:e0a:1da:8420:b77:bd5:6e45:7633] (helo=l14)
+ by xenbits.xenproject.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <anthony@xenproject.org>) id 1to2lD-00FOOQ-1z;
+ Fri, 28 Feb 2025 15:58:47 +0000
+Date: Fri, 28 Feb 2025 16:58:44 +0100
+From: Anthony PERARD <anthony@xenproject.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
+ Andrew Cooper <andrew.cooper3@citrix.com>, Juergen Gross <jgross@suse.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Thomas Huth <thuth@redhat.com>, Jan Beulich <jbeulich@suse.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH 7/8] hw/xen/xen-legacy-backend: Remove unused 'net/net.h'
+ header
+Message-ID: <Z8HdNAgLfa5JE5AN@l14>
+References: <20250218162618.46167-1-philmd@linaro.org>
+ <20250218162618.46167-8-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: upUu5aWcybgd
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250218162618.46167-8-philmd@linaro.org>
+Received-SPF: pass client-ip=104.130.215.37;
+ envelope-from=anthony@xenproject.org; helo=mail.xenproject.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: S6xw6tfQAGXz
 
-On Fri, 28 Feb 2025 17:36:08 +0800
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+On Tue, Feb 18, 2025 at 05:26:17PM +0100, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> On Thu, 27 Feb 2025 17:00:56 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > While the HEST layout didn't change, there are some internal
-> > changes related to how offsets are calculated and how memory error
-> > events are triggered.
-> > 
-> > Update specs to reflect such changes.
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
-> One minor editorial suggestion. With that or similar tidy up,
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Anthony PERARD <anthony.perard@vates.tech>
 
-with nit below fixed,
+Thanks,
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> 
-> > ---
-> >  docs/specs/acpi_hest_ghes.rst | 28 +++++++++++++++++-----------
-> >  1 file changed, 17 insertions(+), 11 deletions(-)
-> > 
-> > diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-> > index c3e9f8d9a702..4311a9536b21 100644
-> > --- a/docs/specs/acpi_hest_ghes.rst
-> > +++ b/docs/specs/acpi_hest_ghes.rst
-> > @@ -89,12 +89,21 @@ Design Details
-> >      addresses in the "error_block_address" fields with a pointer to the
-> >      respective "Error Status Data Block" in the "etc/hardware_errors" blob.
-> >  
-> > -(8) QEMU defines a third and write-only fw_cfg blob which is called
-> > -    "etc/hardware_errors_addr". Through that blob, the firmware can send back
-> > -    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
-> > -    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
-> > -    for the firmware. The firmware will write back the start address of
-> > -    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
-> > +(8) QEMU defines a third and write-only fw_cfg blob to store the location
-> > +    where the error block offsets, read ack registers and CPER records are
-> > +    stored.
-> > +
-> > +    Up to QEMU 9.2, the location was at "etc/hardware_errors_addr", and
-> > +    contains a GPA for the beginning of "etc/hardware_errors".
-> > +
-> > +    Newer versions place the location at "etc/acpi_table_hest_addr",
-> > +    pointing to the GPA of the HEST table.
-> > +
-> > +    Through that such GPA values, the firmware can send back the guest-side  
-> This confuses me.
->  Via those GPA values...? (maybe?)
-
-it's not GPA here, it should be fwcfg.
-Maybe something like this
- "Using above mentioned 'fwcfg' files,"
-
-> 
-> > +    allocation addresses to QEMU. They contain a 8-byte entry. QEMU generates
-> > +    a single WRITE_POINTER command for the firmware. The firmware will write
-> > +    back the start address of either "etc/hardware_errors" or HEST table at
-> > +    the corresponding fw_cfg file.
-> >  
-> >  (9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
-> >      "Error Status Data Block", guest memory, and then injects platform specific
-> > @@ -105,8 +114,5 @@ Design Details
-> >       kernel, on receiving notification, guest APEI driver could read the CPER error
-> >       and take appropriate action.
-> >  
-> > -(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
-> > -     find out "Error Status Data Block" entry corresponding to error source. So supported
-> > -     source_id values should be assigned here and not be changed afterwards to make sure
-> > -     that guest will write error into expected "Error Status Data Block" even if guest was
-> > -     migrated to a newer QEMU.
-> > +(11) kvm_arch_on_sigbus_vcpu() report RAS errors via a SEA notifications,
-> > +     when a SIGBUS event is triggered.  
-> 
-
+-- 
+Anthony PERARD

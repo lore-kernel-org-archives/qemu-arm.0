@@ -1,120 +1,111 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1104552njb;
-        Fri, 28 Feb 2025 09:49:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXfjKnzQiVKs2qHbg9NhUq0Y9KJynBMpM/VHee9Hyd6bRDBbOo0kXR8SgI0kklsryq99ao7TKgfj+jG+Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHt96aDO4N4lEqpLtHdIcwXsk9pJYjbrAdo2isiXwXrS77YfLS/7byqBJ+ppaubyF4ftRvt
-X-Received: by 2002:a05:622a:15c9:b0:472:2df:6ff1 with SMTP id d75a77b69052e-474bc06a303mr68037561cf.13.1740764961521;
-        Fri, 28 Feb 2025 09:49:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740764961; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1164216njb;
+        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUxzJ7iyy8f38WpUAiTCRFLDIaA03SEDex4dGWQZKnT1eI0YLgy7B0lKB/NmtX/780zVhGVTZSQMNNyfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHcNysUWAWg2y4ajmbcSdiZwpMNfn3JY3Wh/PGCcrj1B6rs4/nPJZ+3hiZzajXo+2Rb0F5S
+X-Received: by 2002:a05:622a:1a03:b0:471:f141:c53 with SMTP id d75a77b69052e-474bc0558b1mr64297011cf.5.1740770563358;
+        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740770563; cv=none;
         d=google.com; s=arc-20240605;
-        b=k78GgmGrS0LvTmlqq18eQ+ZA3Ro8Uc/79zk9HHgV/x9QytYGlxz8Z5q+bnGAguIRxP
-         Juz9ylazU51mAJR7WlKNI5n3BVBydyT3Sj7U9GCzR1eYFrPqHyS/eH6/qFFf5YtrVU4d
-         70RlBm03LcN6sVAs6+QfyJNUzauckw8pB501LwZD/Lo/ymphbhh+RFI6XECg2RBsG3tK
-         sOBRj6CQH6ntG9gJlP764uag5vueOfP/Yi1dKA4VqoHp5uT11q3mcd8pgGpGdvl5U3ZD
-         exatIYwSzpQQnQV92fBKT0YEuQW6ZJ1Qu3TB6qUFxcWE5Lks0tCUUgyms/kJtVa/MnnZ
-         2wJA==
+        b=g2DRtXYFHlC1b9UoctkcmOtgSA1tGJ1Lpd7jNbDHhxOswR3a2FTf1ZyGlix2viUwnd
+         jc0VugJT3r4ihzeHLxk9pgeid9SFREVwVB3jBEWPAQmLgEZEp5as42Iab8hrJREaOOYB
+         gq0vZE0JikkX5GGOQ64R6SoK1sXTF/dG5loDWbAVo2CFrYkDL4HejL2D1PUDprqUUMZp
+         vtRJN97LlA41I+A6BvLuQSplc+xorw4X+vAA2TYPPjCLkZwXmeutqwjIVTL3icUWHQPU
+         7gthEHfNL3n6gu3UTeYRqF8+g5cqonZyg/4WA+q+UT+lC8JrCcCudgzgwSq8+NkBmvmh
+         tYPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=bK4QMP2l/mN25359h/sPhHBhlHOYz8CuG9/oUAWNxfg=;
-        fh=MLHM+gxpjdRCX46UmlsHJq+wyb7s5ougP82NtFt1JKc=;
-        b=BBo+0u+kPPA5K/hJlq9EVBXKUNIuXjBO9JbHpqAHZpPBoh92MEwT67m94uP9EVNmea
-         thd9fyN1mOwm3Fzyv/AShFFtAHqkndyX7yDBrJVMo0wVH/Y/0TwcbRwBl5q8jJCtbAiv
-         SziJ+kFe0FNafifBF50KVOGR7B0lzy2Y+DJLp+2ATh46LQ59h/0mADcqwwiz3cOri1vl
-         M93LxIxgWumO0CbDiopb8YKQVtxqCAZ/2FG2M6qcLbuc2JE21bhhdjX62SnpmG2qLiLv
-         1C6iznZQZjJhcUwtEfYRIqGsQ6NefWgmKzq0ei6cPT2C6r2lP5GRZHrOlg6I0oTfbHca
-         EpgA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
+        fh=2c0Jts9+mWI1SPFDVDbusippLseW49OJShug5Bg7WIQ=;
+        b=Gx26SyXN5wLsVYKAJ3tvR1G+eqHAD8eBirhkJiioRFEGFB/NrH/9AazFLnvFHaccQX
+         PlQKu5EzRu0VgsITpFmnR7cU7ao96DD16qQJS22GE8uWwQqJj6WUlD8FJuo8e0QcuYDK
+         4CPUgQb7vQfeu2hjEha/vGpm9n1rn23ed7ROs6UEOKbatX5ytCtQJ9CSyqNYSc/NIJBj
+         13bdYa6Z/eT7k32198ANZZRBzSmCOZsOlDUSJu1BrAHZbxteYHxoeWQ+4LZsnI5sM3VU
+         Jxp0U5Ia7gjFbynUkOeFluzR1AALtdq/p/++XnK0mjzYx6ARbrn/LrxbgmAridu8bFME
+         ycpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sw+Ks4yz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b9XbiCWR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-474723fe377si35009521cf.216.2025.02.28.09.49.21
+        by mx.google.com with ESMTPS id d75a77b69052e-4747357d544si36368471cf.645.2025.02.28.11.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2025 09:49:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sw+Ks4yz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b9XbiCWR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1to4TY-0007sP-LJ; Fri, 28 Feb 2025 12:48:40 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1to5wG-0000YM-Gd; Fri, 28 Feb 2025 14:22:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to4TB-0007VU-Ab
- for qemu-arm@nongnu.org; Fri, 28 Feb 2025 12:48:17 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1to5wF-0000UB-4t
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2025 14:22:23 -0500
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to4T8-0005ND-7M
- for qemu-arm@nongnu.org; Fri, 28 Feb 2025 12:48:16 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4398c8c8b2cso25715045e9.2
- for <qemu-arm@nongnu.org>; Fri, 28 Feb 2025 09:48:09 -0800 (PST)
+ id 1to5wD-00041v-5M
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2025 14:22:22 -0500
+Received: by mail-yb1-xb2a.google.com with SMTP id
+ 3f1490d57ef6-e60c4e83cd3so211384276.0
+ for <qemu-devel@nongnu.org>; Fri, 28 Feb 2025 11:22:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740764888; x=1741369688; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bK4QMP2l/mN25359h/sPhHBhlHOYz8CuG9/oUAWNxfg=;
- b=sw+Ks4yzndvavcUuaKIA8jcek9EtBFjwE2jeOYr9w0MdiwDFDExBkbGT++Ye1wsrRJ
- 1x5TJSpyHZITrR6HX4ymq2qSxdcCOb9AXsIChXUKb3am99FCBzO8eO+rvflDrt31rl0d
- Lszhx3ytxBde4DZqXZ8MlRATkwL1gFrUaMtylIFO8GDV8YdCDF17RbVmxeEbDjVQFZdN
- MIaUZgqctt9FXQNOJd5M0MI2F+7UVf/5p0dsK1GX5W6UhLIE3C2QRkqnPqQ4q9nI1YR3
- q9lGTlnsW/zVutDosijHjMh9ohDmVXS4sHCeI1qHm0f/V4Shujnv77CXpSbkSdUTBjei
- m3wQ==
+ d=linaro.org; s=google; t=1740770539; x=1741375339; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
+ b=b9XbiCWRrmDHKolCxsy4A6RjOFs5Uu1CowY1yHD+eNsMFYX17Pzc3XplTdMK58Q0MY
+ lOPmFdTPC5xQuX6kWMtYelm1rgH6fHpWo68jBBH7PEjKJq93LYxlKzBUjznhHXZK2oMg
+ pU0WXVlytHaJs3donv3K4oZOMOog11XIdPm8lL405pYZECAgo/vSDLNz9aoIy8+feDph
+ 3GdzF44PznPeRbLK4m61qIhx3D0xtOyZE9IocmVHnL001okkWMYilTrM2qDQkfwM126t
+ HPzSXhcBOsH0uiO/pWlKhv8cCUOYb8G64HTBT1GZNDdKvMbblxrQBFTyf3Xm9u64W0xM
+ /tEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740764888; x=1741369688;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bK4QMP2l/mN25359h/sPhHBhlHOYz8CuG9/oUAWNxfg=;
- b=UORoetZunRRjBu08kRVIQE1eYVCT4FwEZcqD+zy3DIai8iSdZybUhUwRB5K8cniA2V
- Z1GJ89rFT3Pxm8bbsOtxM6GZi/ty3CI/EnkjLfEbD0uLc4fMkJ60JJfeZ8t6y4nPkrpl
- g5U4n4sFApUJDJAfDbKc1g8wbydzfKaGV/yoObvQnogWGDxw9F/0NQVfSObycdFctu24
- dqWf1oE8tTsAm5wFSeh7D19b8VJyzVVFT3S2ViiKy8rkJkHoqgo5Ncs2DeYXLhuLDHyD
- HnJOqkmG/391Mq9p58w+7nacNrJwCKDYWfkGWUQAxGrjtvYhuk81CNZ0K7CVTu6TwlBi
- mSdw==
-X-Gm-Message-State: AOJu0YwxO8TFErRpkqtUIVni/tjSfRBBDm5JOl/2xFpxAfs7kRQvNUV4
- PklY9u3cjIkVfm91Vc9VyQ9DSrr5LZalNx4/+5scVZDj96JwhEJvqlM4NONpE4a4QddOXdVK0jM
- d
-X-Gm-Gg: ASbGncsnax0hpOmJsQf47poxtIaeVmC109N3dE/FrpaC7LsBz2TrxRv3hau/xA2eYqx
- lwLWFA4Wl58LsYS83o5RlrmSqrsPndVCxiVeCdjaNhpUaKRwK9j8mkXd7849N1QqMMSAy31LBZ7
- anCO9rJtVFn9BW8ucp3UT51ThJ95G9vNZ8GvEHENkYjZyrYyuZHAz5z4vFhCZOxK8yuZtxslWnE
- 5OTXMCoWIb1Dqfv+qj+MEhHFUOhfMdlXwtqD4RF/t/KDb96eOsHOEotz9Xn1bg1VymEewKLx188
- oNXOed0zpMRRWwo6500YK6XCc8qq4ReO
-X-Received: by 2002:a05:600c:1c1f:b0:439:9eba:93bb with SMTP id
- 5b1f17b1804b1-43ba67049b8mr48330735e9.18.1740764887948; 
- Fri, 28 Feb 2025 09:48:07 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390e4795da5sm5979556f8f.15.2025.02.28.09.48.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2025 09:48:06 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
-	Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 2/3] hw/net/smc91c111: Sanitize packet length on tx
-Date: Fri, 28 Feb 2025 17:48:00 +0000
-Message-ID: <20250228174802.1945417-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250228174802.1945417-1-peter.maydell@linaro.org>
-References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1740770539; x=1741375339;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
+ b=vIHS6SaL4V3ICCeh/pnmioVoeG/dp0DKGbubTZRTh++J9c7dxExqUGQZmb/PmMZQOU
+ 78yeUNAwdk4vsRo1NQvo9WqU58k/eXeyEe9l7wy1OIUjQ4c+ctAPK+9kJXMPlVHpr9hf
+ EInGXcXibVBhOkQIAn4bRTFLTGtE6tlE76RgNFzWE94eYaGsllfvH8prCiiDStaC0fPA
+ vGGU+OjQU05Ub9LzdorTTLiA6jvfxsSLJ2pKqYkOPvHuaRjRvGUwnZNYkMDGgwb1fccX
+ Q+xo7zQESFQn1Gaj5dnukkeubKT5soeVLJuyCH59mpwxXBoWYDNiN3QKPd8mr2aQ1s5N
+ Bvsw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU66OHdollPL7RI9yog5fbn9sp6HxXQIJ19KgmrxemdfzBjToIw3pmtla4PAci/tth4q5/bp+n9vYok@nongnu.org
+X-Gm-Message-State: AOJu0YzAvI28+WwIZKS2g0dlEAI3BshTKePbb/CSUfTuu3cHV1W6YcE2
+ QRpI7vuhHwWNRQixWDcwFzsHZPR25m9K6293w/dGZUTXTlLZ32SoosHUMZL8g6HvapL5QLAvO32
+ quymiBS4mVhF5Tp/gODg286QNqCiKosvqq7EwRA==
+X-Gm-Gg: ASbGncvsRIKWXpx81imRSWkdo7iUGoFyQ9BNDR8NsLso4c7h9Gt0winQY5ym/d0QeiP
+ N2F5gZOQIKD0nPmHpC6oBOap0ztvJ0TMKI5+aSSppxdOA9hXWdbFrA8l5AUUd9qF5fmk97K4/gL
+ we6/UYooMK
+X-Received: by 2002:a05:6902:1502:b0:e57:4db7:6d51 with SMTP id
+ 3f1490d57ef6-e60b2f04369mr5333020276.32.1740770539618; Fri, 28 Feb 2025
+ 11:22:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+In-Reply-To: <20250228174802.1945417-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 28 Feb 2025 19:22:07 +0000
+X-Gm-Features: AQ5f1Jo8sJTi94Zbulz0ZSHaEDQ0Jd4nUWmOUKFHAh4khB4q_CiFyy-Y8oTkW3U
+Message-ID: <CAFEAcA9RPnZdf5zqFwu255-LdJ5inFbjtCA8SJ4o89aiUuabpA@mail.gmail.com>
+Subject: Re: [PATCH 0/3] hw/net/smc91c111: Fix potential array overflows
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,109 +114,47 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hpIirFbFA5Ls
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GSCx78/eSWcI
 
-When the smc91c111 transmits a packet, it must read a control byte
-which is at the end of the data area and CRC.  However, we don't
-sanitize the length field in the packet buffer, so if the guest sets
-the length field to something large we will try to read past the end
-of the packet data buffer when we access the control byte.
+On Fri, 28 Feb 2025 at 17:48, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset fixes some potential array overflows in the
+> smc91c111 ethernet device model, including the one found in
+> https://gitlab.com/qemu-project/qemu/-/issues/2742
+>
+> There are two classes of bugs:
+>  * we accept packet numbers from the guest, but we were not
+>    validating that they were in range before using them as an
+>    index into the data[][] array
+>  * we didn't sanitize the length field read from the data
+>    frame on tx before using it as an index to find the
+>    control byte at the end of the frame, so we could read off
+>    the end of the buffer
+>
+> This patchset fixes both of these. The datasheet is sadly
+> silent on the h/w behaviour for these errors, so I opted to
+> LOG_GUEST_ERROR and silently ignore the invalid operations.
+>
+> Patch 3 tidies up the existing code to use a constant defined
+> in patch 2; I put it last so we can cc the first two patches
+> to stable without having to also backport that patch.
 
-As usual, the datasheet says nothing about the behaviour of the
-hardware if the guest misprograms it in this way.  It says only that
-the maximum valid length is 2048 bytes.  We choose to log the guest
-error and silently drop the packet.
+See also the other smc91c111 fuzzer fix patch:
+https://patchew.org/QEMU/20250228191652.1957208-1-peter.maydell@linaro.org/
 
-This requires us to factor out the "mark the tx packet as complete"
-logic, so we can call it for this "drop packet" case as well as at
-the end of the loop when we send a valid packet.
+(if I need to do a v2 of this series I'll put that one in too)
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2742
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/net/smc91c111.c | 34 +++++++++++++++++++++++++++++-----
- 1 file changed, 29 insertions(+), 5 deletions(-)
-
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index 2295c6acf25..23ca99f926a 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -22,6 +22,13 @@
- 
- /* Number of 2k memory pages available.  */
- #define NUM_PACKETS 4
-+/*
-+ * Maximum size of a data frame, including the leading status word
-+ * and byte count fields and the trailing CRC, last data byte
-+ * and control byte (per figure 8-1 in the Microchip Technology
-+ * LAN91C111 datasheet).
-+ */
-+#define MAX_PACKET_SIZE 2048
- 
- #define TYPE_SMC91C111 "smc91c111"
- OBJECT_DECLARE_SIMPLE_TYPE(smc91c111_state, SMC91C111)
-@@ -240,6 +247,16 @@ static void smc91c111_release_packet(smc91c111_state *s, int packet)
-     smc91c111_flush_queued_packets(s);
- }
- 
-+static void smc91c111_complete_tx_packet(smc91c111_state *s, int packetnum)
-+{
-+    if (s->ctr & CTR_AUTO_RELEASE) {
-+        /* Race?  */
-+        smc91c111_release_packet(s, packetnum);
-+    } else if (s->tx_fifo_done_len < NUM_PACKETS) {
-+        s->tx_fifo_done[s->tx_fifo_done_len++] = packetnum;
-+    }
-+}
-+
- /* Flush the TX FIFO.  */
- static void smc91c111_do_tx(smc91c111_state *s)
- {
-@@ -263,6 +280,17 @@ static void smc91c111_do_tx(smc91c111_state *s)
-         *(p++) = 0x40;
-         len = *(p++);
-         len |= ((int)*(p++)) << 8;
-+        if (len >= MAX_PACKET_SIZE) {
-+            /*
-+             * Datasheet doesn't say what to do here, and there is no
-+             * relevant tx error condition listed. Log, and drop the packet.
-+             */
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "smc91c111: tx packet with bad length %d, dropping\n",
-+                          len);
-+            smc91c111_complete_tx_packet(s, packetnum);
-+            continue;
-+        }
-         len -= 6;
-         control = p[len + 1];
-         if (control & 0x20)
-@@ -291,11 +319,7 @@ static void smc91c111_do_tx(smc91c111_state *s)
-             }
-         }
- #endif
--        if (s->ctr & CTR_AUTO_RELEASE)
--            /* Race?  */
--            smc91c111_release_packet(s, packetnum);
--        else if (s->tx_fifo_done_len < NUM_PACKETS)
--            s->tx_fifo_done[s->tx_fifo_done_len++] = packetnum;
-+        smc91c111_complete_tx_packet(s, packetnum);
-         qemu_send_packet(qemu_get_queue(s->nic), p, len);
-     }
-     s->tx_fifo_len = 0;
--- 
-2.43.0
-
+-- PMM

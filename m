@@ -1,160 +1,323 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1164216njb;
-        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUxzJ7iyy8f38WpUAiTCRFLDIaA03SEDex4dGWQZKnT1eI0YLgy7B0lKB/NmtX/780zVhGVTZSQMNNyfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHcNysUWAWg2y4ajmbcSdiZwpMNfn3JY3Wh/PGCcrj1B6rs4/nPJZ+3hiZzajXo+2Rb0F5S
-X-Received: by 2002:a05:622a:1a03:b0:471:f141:c53 with SMTP id d75a77b69052e-474bc0558b1mr64297011cf.5.1740770563358;
-        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740770563; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1333042njb;
+        Fri, 28 Feb 2025 17:47:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUQi661sEOoZbUvWAx0YM4FtOu84UkaombJM1dO1Uc1u0hHUVqyuW8nA3GrnbC7QfFwr7EzBBv+zBM/sQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVm0T/PMMP3qo8KXFycAf9Fj2Ov3DpnCnz16b89KbASZcKCetSCeNtr3wHYraEEc6uy1iW
+X-Received: by 2002:a05:622a:c6:b0:472:1ee7:d41 with SMTP id d75a77b69052e-474bc056e20mr68245921cf.9.1740793676341;
+        Fri, 28 Feb 2025 17:47:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740793676; cv=none;
         d=google.com; s=arc-20240605;
-        b=g2DRtXYFHlC1b9UoctkcmOtgSA1tGJ1Lpd7jNbDHhxOswR3a2FTf1ZyGlix2viUwnd
-         jc0VugJT3r4ihzeHLxk9pgeid9SFREVwVB3jBEWPAQmLgEZEp5as42Iab8hrJREaOOYB
-         gq0vZE0JikkX5GGOQ64R6SoK1sXTF/dG5loDWbAVo2CFrYkDL4HejL2D1PUDprqUUMZp
-         vtRJN97LlA41I+A6BvLuQSplc+xorw4X+vAA2TYPPjCLkZwXmeutqwjIVTL3icUWHQPU
-         7gthEHfNL3n6gu3UTeYRqF8+g5cqonZyg/4WA+q+UT+lC8JrCcCudgzgwSq8+NkBmvmh
-         tYPg==
+        b=AfQAF8PQKksE/kkpywWbA5EgdQaR2Q52Slih7VgAxGRS0NJvik7jVis1FjJsc8iLpq
+         hd3eyMaw6CSdp67yQOx2UoMK3qhyjoX+z5no3iOcVmI7bV89aXBTxn1o3QxoxgGtALOe
+         hYfR8wWjQTxxQ/5cf0PZpk/wAcpo7uIaPAg1AW2RiOcaPW5SjSXFmR6/EksUWER098kW
+         GQWZabObz63IqRvFRRRBuhhGPq4PQmH65NGyrOWj+c793b3SMa58vZy7+bdjI4hQzb23
+         d4heRMSumZccG+bm7ZUV4wcZjZTe/ka2JJihQyj5oMgEXPFj0ZrnrsxUzgJPHuhHY3DQ
+         1BBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
-        fh=2c0Jts9+mWI1SPFDVDbusippLseW49OJShug5Bg7WIQ=;
-        b=Gx26SyXN5wLsVYKAJ3tvR1G+eqHAD8eBirhkJiioRFEGFB/NrH/9AazFLnvFHaccQX
-         PlQKu5EzRu0VgsITpFmnR7cU7ao96DD16qQJS22GE8uWwQqJj6WUlD8FJuo8e0QcuYDK
-         4CPUgQb7vQfeu2hjEha/vGpm9n1rn23ed7ROs6UEOKbatX5ytCtQJ9CSyqNYSc/NIJBj
-         13bdYa6Z/eT7k32198ANZZRBzSmCOZsOlDUSJu1BrAHZbxteYHxoeWQ+4LZsnI5sM3VU
-         Jxp0U5Ia7gjFbynUkOeFluzR1AALtdq/p/++XnK0mjzYx6ARbrn/LrxbgmAridu8bFME
-         ycpQ==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:from
+         :content-language:references:cc:to:subject:mime-version:date
+         :message-id:dkim-signature:dkim-signature;
+        bh=DMQU+hwf/6FXpGH8QjvHBZ5Uf4cfHzZgiKwQI3ENW2A=;
+        fh=l+wIeQBZTt6KFGuWRaAJw87gr97xKXD8a3jQIkSXRjc=;
+        b=NzVTSpcatZSbkVCi84SVrNNrOvMvpjs0WhaqqEiH51hPxSfShiYfzlfntVQSxPYyK1
+         NNr+kjdHBmQsM30onu8klzIz6kIia4yiTmp3PT68ww/wMEYScn4gBeFB1qGNBcRwSVZ0
+         DsHP7mCMEQ4Y5Ex2IVAxoIpOdcYz3CZWIsm3dg8L8uuZHyMAq9/oT88q+C1CN3EWp348
+         +nLimnGWV62msy9h9fIV/bR0jhiv3sfjsfO9mz6WqWrstmCsFOtMZd+tIexm+OImsdfI
+         Vg7x2TpXrMRgwYFFMzTvREyduRb8SQFCs0UmZqWN0ZTHbh9ZyuOxVtJDaGh9DPGIjMbW
+         m1CA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b9XbiCWR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=QW3AetzM;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=202502e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4747357d544si36368471cf.645.2025.02.28.11.22.43
+        by mx.google.com with ESMTPS id d75a77b69052e-4747240baa1si44654421cf.338.2025.02.28.17.47.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2025 11:22:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2025 17:47:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b9XbiCWR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@csclub.uwaterloo.ca header.s=csc header.b=QW3AetzM;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=202502e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=csclub.uwaterloo.ca
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1to5wG-0000YM-Gd; Fri, 28 Feb 2025 14:22:24 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1toBxF-0001Wr-QS; Fri, 28 Feb 2025 20:47:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to5wF-0000UB-4t
- for qemu-devel@nongnu.org; Fri, 28 Feb 2025 14:22:23 -0500
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+ (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
+ id 1toBx3-0001Tr-GR; Fri, 28 Feb 2025 20:47:40 -0500
+Received: from mail.csclub.uwaterloo.ca ([129.97.134.52])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1to5wD-00041v-5M
- for qemu-devel@nongnu.org; Fri, 28 Feb 2025 14:22:22 -0500
-Received: by mail-yb1-xb2a.google.com with SMTP id
- 3f1490d57ef6-e60c4e83cd3so211384276.0
- for <qemu-devel@nongnu.org>; Fri, 28 Feb 2025 11:22:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740770539; x=1741375339; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
- b=b9XbiCWRrmDHKolCxsy4A6RjOFs5Uu1CowY1yHD+eNsMFYX17Pzc3XplTdMK58Q0MY
- lOPmFdTPC5xQuX6kWMtYelm1rgH6fHpWo68jBBH7PEjKJq93LYxlKzBUjznhHXZK2oMg
- pU0WXVlytHaJs3donv3K4oZOMOog11XIdPm8lL405pYZECAgo/vSDLNz9aoIy8+feDph
- 3GdzF44PznPeRbLK4m61qIhx3D0xtOyZE9IocmVHnL001okkWMYilTrM2qDQkfwM126t
- HPzSXhcBOsH0uiO/pWlKhv8cCUOYb8G64HTBT1GZNDdKvMbblxrQBFTyf3Xm9u64W0xM
- /tEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740770539; x=1741375339;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CGo1UVYt0ObEV9vcbF/d+aMoY5qsaz8RtqPlWaCXiWA=;
- b=vIHS6SaL4V3ICCeh/pnmioVoeG/dp0DKGbubTZRTh++J9c7dxExqUGQZmb/PmMZQOU
- 78yeUNAwdk4vsRo1NQvo9WqU58k/eXeyEe9l7wy1OIUjQ4c+ctAPK+9kJXMPlVHpr9hf
- EInGXcXibVBhOkQIAn4bRTFLTGtE6tlE76RgNFzWE94eYaGsllfvH8prCiiDStaC0fPA
- vGGU+OjQU05Ub9LzdorTTLiA6jvfxsSLJ2pKqYkOPvHuaRjRvGUwnZNYkMDGgwb1fccX
- Q+xo7zQESFQn1Gaj5dnukkeubKT5soeVLJuyCH59mpwxXBoWYDNiN3QKPd8mr2aQ1s5N
- Bvsw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU66OHdollPL7RI9yog5fbn9sp6HxXQIJ19KgmrxemdfzBjToIw3pmtla4PAci/tth4q5/bp+n9vYok@nongnu.org
-X-Gm-Message-State: AOJu0YzAvI28+WwIZKS2g0dlEAI3BshTKePbb/CSUfTuu3cHV1W6YcE2
- QRpI7vuhHwWNRQixWDcwFzsHZPR25m9K6293w/dGZUTXTlLZ32SoosHUMZL8g6HvapL5QLAvO32
- quymiBS4mVhF5Tp/gODg286QNqCiKosvqq7EwRA==
-X-Gm-Gg: ASbGncvsRIKWXpx81imRSWkdo7iUGoFyQ9BNDR8NsLso4c7h9Gt0winQY5ym/d0QeiP
- N2F5gZOQIKD0nPmHpC6oBOap0ztvJ0TMKI5+aSSppxdOA9hXWdbFrA8l5AUUd9qF5fmk97K4/gL
- we6/UYooMK
-X-Received: by 2002:a05:6902:1502:b0:e57:4db7:6d51 with SMTP id
- 3f1490d57ef6-e60b2f04369mr5333020276.32.1740770539618; Fri, 28 Feb 2025
- 11:22:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <s23adhik@csclub.uwaterloo.ca>)
+ id 1toBx1-00078L-0e; Fri, 28 Feb 2025 20:47:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
+ s=csc; t=1740793651;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DMQU+hwf/6FXpGH8QjvHBZ5Uf4cfHzZgiKwQI3ENW2A=;
+ b=QW3AetzMfn73VdZqe/RrTWxdwuKQtnUEk7iFApG/OqeFDIcen6KnMeWa3HmyKAqUphRpNB
+ /aEFQ0Bug1cdKbbE8ePjY/N4jY96Jw5YUEabNEaB4GohBKLBfk6dnT4qWB0EA+CTh3OfDo
+ RcPi7imSXNP3pAOq11Xoharra895ZCU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
+ s=202502e; t=1740793651;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DMQU+hwf/6FXpGH8QjvHBZ5Uf4cfHzZgiKwQI3ENW2A=;
+ b=3pxsCk8SE+Xxk8Yd7lFr4QEcwh8uUZKi1U0uGDPc6GmABSrMIVuOQ/uIwfgvRWc9kBPjfD
+ fPUyLtwGBVf1MrDg==
+Content-Type: multipart/alternative;
+ boundary="------------iOMpxdDDldQXtDQ0AfPpaIqr"
+Message-ID: <d714a7c2-2291-4a85-abcc-81648da1ef57@csclub.uwaterloo.ca>
+Date: Fri, 28 Feb 2025 20:47:31 -0500
 MIME-Version: 1.0
-References: <20250228174802.1945417-1-peter.maydell@linaro.org>
-In-Reply-To: <20250228174802.1945417-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 28 Feb 2025 19:22:07 +0000
-X-Gm-Features: AQ5f1Jo8sJTi94Zbulz0ZSHaEDQ0Jd4nUWmOUKFHAh4khB4q_CiFyy-Y8oTkW3U
-Message-ID: <CAFEAcA9RPnZdf5zqFwu255-LdJ5inFbjtCA8SJ4o89aiUuabpA@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/net/smc91c111: Fix potential array overflows
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Jason Wang <jasowang@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
+References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
+ <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
+ <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
+ <CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com>
+Content-Language: en-US
+From: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
+In-Reply-To: <CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com>
+Received-SPF: pass client-ip=129.97.134.52;
+ envelope-from=s23adhik@csclub.uwaterloo.ca; helo=mail.csclub.uwaterloo.ca
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GSCx78/eSWcI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ElzSR+hkvK/o
 
-On Fri, 28 Feb 2025 at 17:48, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> This patchset fixes some potential array overflows in the
-> smc91c111 ethernet device model, including the one found in
-> https://gitlab.com/qemu-project/qemu/-/issues/2742
->
-> There are two classes of bugs:
->  * we accept packet numbers from the guest, but we were not
->    validating that they were in range before using them as an
->    index into the data[][] array
->  * we didn't sanitize the length field read from the data
->    frame on tx before using it as an index to find the
->    control byte at the end of the frame, so we could read off
->    the end of the buffer
->
-> This patchset fixes both of these. The datasheet is sadly
-> silent on the h/w behaviour for these errors, so I opted to
-> LOG_GUEST_ERROR and silently ignore the invalid operations.
->
-> Patch 3 tidies up the existing code to use a constant defined
-> in patch 2; I put it last so we can cc the first two patches
-> to stable without having to also backport that patch.
+This is a multi-part message in MIME format.
+--------------iOMpxdDDldQXtDQ0AfPpaIqr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-See also the other smc91c111 fuzzer fix patch:
-https://patchew.org/QEMU/20250228191652.1957208-1-peter.maydell@linaro.org/
+On 2025-02-27 10:17, Peter Maydell wrote:
 
-(if I need to do a v2 of this series I'll put that one in too)
+> On Thu, 27 Feb 2025 at 09:15, Sourojeet Adhikari
+> <s23adhik@csclub.uwaterloo.ca> wrote:
+>>> The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
+>>> being wired up in the function bcm_soc_peripherals_common_realize()
+>>> in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
+>>> interrupt controller), and it isn't valid to wire one input
+>>> directly to multiple outputs.
+>>>
+>>> In fact it looks like we are currently getting this wrong for
+>>> all of the interrupts that need to be wired to both the
+>>> "legacy interrupt controller" and the GIC. I think at the moment
+>>> what happens is that the wiring to the GIC will happen last
+>>> and this overrides the earlier wiring to the legacy interrupt
+>>> controller, so code using the latter won't work correctly.
+>> I'll try reading through the relevant sections and send an
+>> updated patch later next week. From what I can tell it falls
+>> under the bcm2835_pheripherals.c file, right?
+> Yes. To expand a bit, QEMU's qemu_irq abstraction must
+> always be wired exactly 1-to-1, from a single output to
+> a single input. Wiring either one input to multiple outputs
+> or one output to multiple inputs will not behave correctly
+> (and unfortunately we don't have an easy way to assert()
+> if code in QEMU gets this wrong).
+>
+> So for cases where you want the one-to-many behaviour you need
+> to create an object of TYPE_SPLIT_IRQ. This has one input and
+> multiple outputs, so you can connect your wire from device A's
+> output to the splitter's input, and then connect outputs
+> from the splitter to devices B, C, etc. (In this case A
+> would be the timer, and B, C the two interrupt controllers.)
+> Searching the source code for TYPE_SPLIT_IRQ will give some
+> places where it's used. (Ignore the qdev_new(TYPE_SPLIT_IRQ)
+> ones, those are a code pattern we use in board models, not
+> in SoC device models.)
+>
+> In this specific bcm2838 case, it's a little more awkward,
+> because one of the two interrupt controllers is created inside
+> bcm2835_peripherals.c and one of them is created outside it.
+> Since bcm2838 is already reaching inside the bcm2835_peripherals
+> object I guess the simplest thing is:
+>   * create a splitter object in bcm2835_peripherals.c for
+>     every IRQ line that needs to be connected to both
+>     interrupt controllers (probably easiest to have an array
+>     of splitter objects, irq_splitter[])
+>   * in bcm2835_peripherals.c, connect the device's outbound
+>     IRQ to the input of the appropriate splitter, and
+>     connect output 0 of that splitter to the BCM2835_IC
+>     correct interrupt controller input
+>   * in bcm2838.c, connect output 0 of ps_base->irq_splitter[n]
+>     to the correct GIC input
+>
+> (This is kind of breaking the abstraction layer that ideally
+> exists where the code that creates and uses a device doesn't
+> try to look "inside" it at any subparts it might have. We
+> could, for instance, instead make the bcm2835_peripherals
+> object expose its own qemu_irq outputs which were the second
+> outputs of the splitters, so that the bcm2838.c code wasn't
+> looking inside and finding the splitters directly. But I
+> think that's more awkward than it's worth. It's also possible
+> that we have the split between the main SoC and the
+> peripheral object wrong and either both interrupt controllers
+> or neither should be inside the peripheral object; but
+> reshuffling things like that would be a lot of work too.)
 
--- PMM
+This weekend I'll try my best to mess around, and get the solution
+you proposed working. From what I can tell, I (personally) think , the not-reshuffling things approach might be a bit better here. Since otherwise it'd turn into a somewhat sizeable patch pretty quick, and is a lot of work, for something that's not *too* big of an issue. I do have access to a raspberry pi if you think I should do any kind of testing before doing the reshuffling.
+
+On another note, do you think it's reasonable to add what you said here into the development documentation (paraphrased, and if not already documented). If I do write a patch to the documentation, can/should I cc you on it?
+
+> (PS: for the other "not 1:1" case, where you want to connect
+> many qemu_irqs outputs together into one input, the usual semantics
+> you want is to logically-OR the interrupt lines together, and
+> so you use TYPE_OR_IRQ for that.)
+
+(oh oki, I'll make sure to do that on the upcoming patch then,
+thank you!)
+
+(P.S the patch probably won't be coming till next week since I have quite a bit of work outside of my programming stuff to do. Should hopfully be done by Wednesday next week though?)
+
+--------------iOMpxdDDldQXtDQ0AfPpaIqr
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p><font face="monospace">On 2025-02-27 10:17, Peter Maydell wrote:</font></p>
+    <blockquote type="cite"
+cite="mid:CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">On Thu, 27 Feb 2025 at 09:15, Sourojeet Adhikari
+<a class="moz-txt-link-rfc2396E" href="mailto:s23adhik@csclub.uwaterloo.ca">&lt;s23adhik@csclub.uwaterloo.ca&gt;</a> wrote:
+</pre>
+      <blockquote type="cite">
+        <blockquote type="cite">
+          <pre wrap="" class="moz-quote-pre">The systmr INTERRUPT_TIMER0..3 sysbus IRQ outputs are already
+being wired up in the function bcm_soc_peripherals_common_realize()
+in hw/arm/bcm2835_peripherals.c (to the TYPE_BCM2835_IC
+interrupt controller), and it isn't valid to wire one input
+directly to multiple outputs.
+
+In fact it looks like we are currently getting this wrong for
+all of the interrupts that need to be wired to both the
+"legacy interrupt controller" and the GIC. I think at the moment
+what happens is that the wiring to the GIC will happen last
+and this overrides the earlier wiring to the legacy interrupt
+controller, so code using the latter won't work correctly.
+</pre>
+        </blockquote>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">I'll try reading through the relevant sections and send an
+updated patch later next week. From what I can tell it falls
+under the bcm2835_pheripherals.c file, right?
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+Yes. To expand a bit, QEMU's qemu_irq abstraction must
+always be wired exactly 1-to-1, from a single output to
+a single input. Wiring either one input to multiple outputs
+or one output to multiple inputs will not behave correctly
+(and unfortunately we don't have an easy way to assert()
+if code in QEMU gets this wrong).
+
+So for cases where you want the one-to-many behaviour you need
+to create an object of TYPE_SPLIT_IRQ. This has one input and
+multiple outputs, so you can connect your wire from device A's
+output to the splitter's input, and then connect outputs
+from the splitter to devices B, C, etc. (In this case A
+would be the timer, and B, C the two interrupt controllers.)
+Searching the source code for TYPE_SPLIT_IRQ will give some
+places where it's used. (Ignore the qdev_new(TYPE_SPLIT_IRQ)
+ones, those are a code pattern we use in board models, not
+in SoC device models.)
+
+In this specific bcm2838 case, it's a little more awkward,
+because one of the two interrupt controllers is created inside
+bcm2835_peripherals.c and one of them is created outside it.
+Since bcm2838 is already reaching inside the bcm2835_peripherals
+object I guess the simplest thing is:
+ * create a splitter object in bcm2835_peripherals.c for
+   every IRQ line that needs to be connected to both
+   interrupt controllers (probably easiest to have an array
+   of splitter objects, irq_splitter[])
+ * in bcm2835_peripherals.c, connect the device's outbound
+   IRQ to the input of the appropriate splitter, and
+   connect output 0 of that splitter to the BCM2835_IC
+   correct interrupt controller input
+ * in bcm2838.c, connect output 0 of ps_base-&gt;irq_splitter[n]
+   to the correct GIC input
+
+(This is kind of breaking the abstraction layer that ideally
+exists where the code that creates and uses a device doesn't
+try to look "inside" it at any subparts it might have. We
+could, for instance, instead make the bcm2835_peripherals
+object expose its own qemu_irq outputs which were the second
+outputs of the splitters, so that the bcm2838.c code wasn't
+looking inside and finding the splitters directly. But I
+think that's more awkward than it's worth. It's also possible
+that we have the split between the main SoC and the
+peripheral object wrong and either both interrupt controllers
+or neither should be inside the peripheral object; but
+reshuffling things like that would be a lot of work too.)
+</pre>
+    </blockquote>
+    <p><font face="monospace">This weekend I'll try my best to mess
+        around, and get the solution<br>
+        you proposed working<span style="white-space: pre-wrap">. From what I can tell, I (personally) think
+, the not-reshuffling things approach might be a bit better here.
+Since otherwise it'd turn into a somewhat sizeable patch pretty
+quick, and is a lot of work, for something that's not *too* big
+of an issue.
+I do have access to a raspberry pi if you think I should do any
+kind of testing before doing the reshuffling. </span></font></p>
+    <p><font face="monospace"><span style="white-space: pre-wrap">On another note, do you think it's reasonable to add what you said
+here into the development documentation (paraphrased, and if not 
+already documented). If I do write a patch to the documentation,
+can/should I cc you on it?
+</span></font></p>
+    <blockquote type="cite"
+cite="mid:CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com">
+      <pre wrap="" class="moz-quote-pre">(PS: for the other "not 1:1" case, where you want to connect
+many qemu_irqs outputs together into one input, the usual semantics
+you want is to logically-OR the interrupt lines together, and
+so you use TYPE_OR_IRQ for that.)</pre>
+    </blockquote>
+    <p><font face="monospace">(oh oki, I'll make sure to do that on the
+        upcoming patch then, <br>
+        thank you!)</font></p>
+    <p><span style="white-space: pre-wrap"><font face="monospace">(P.S the patch probably won't be coming till next week since I have 
+quite a bit of work outside of my programming stuff to do.
+Should hopfully be done by Wednesday next week though?)
+</font></span></p>
+  </body>
+</html>
+
+--------------iOMpxdDDldQXtDQ0AfPpaIqr--

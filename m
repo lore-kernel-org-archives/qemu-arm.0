@@ -1,369 +1,138 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1317189njb;
-        Fri, 28 Feb 2025 17:03:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWXfYLngBmeapP/bMrcW5Vd/k7Z3Flzp558/T5vt/zYYQVUIxg+gpiyaZKv0itf8rGZzSroYsqHNxFKNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGNdi3eIh6viL+G289rudcEOzgbN6D0IfLfKqULIhWBCQrodwExUpXi/87G9C459YjHYk1I
-X-Received: by 2002:a05:620a:3915:b0:7c0:97d4:556c with SMTP id af79cd13be357-7c39c677a5bmr722805985a.52.1740790985983;
-        Fri, 28 Feb 2025 17:03:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740790985; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp1960275njb;
+        Sun, 2 Mar 2025 00:22:23 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWbVJHgQxwSuAm+A7wBu4hMyaEIn65rneVhCSmQr+NJiWgPr42MBbhYgJCaRixjruffX8LklKAug773uw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFe+QkEPPPlz7MuWc6WNZAjf/0IPWVYnDJzUEjJqZHA3i8JHCbHI9Lbe+oWlK9p2RnB5mtV
+X-Received: by 2002:a05:620a:170e:b0:7c0:a70e:b934 with SMTP id af79cd13be357-7c39c498f96mr1673407585a.7.1740903743416;
+        Sun, 02 Mar 2025 00:22:23 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1740903743; cv=pass;
         d=google.com; s=arc-20240605;
-        b=ZE0WwoFE8EV+4MLxIB/MaMEdMPwAnmSskRyeFk4InR1TsH50REKS26ucmRrdSRfRwz
-         uuvaXhySl06TkrSMmEzs+LUVBqPYLGdVFAreBJrMNZbTx8CShO6QdOYn/T0f/9T3BIlg
-         JbKJS5tNerp1iiUtaGGB42/hXfLlNAgdkPPclp5IKv1reexuoSFm5XZ9HJz6wc2ShWq8
-         0xJyYwbkgwfM31ReHHO95O0zKdhOj2u6XWq9NdlpZ+d0KooxBjOKOC3OvFH/z4v8ET/s
-         CoIQjtWk+AoI7Y8B9RaXOSfQYZ8SoQxdz9b+/+gPEzBd5JQCxsbqf6Z4kminPxBKq3sf
-         Dy3g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=SQlSNoHmWACKiW0B8FvbEITjcLevPe4EgEizJSu8Ex0=;
-        fh=HfgWokAMbstRnCmsXIBms3CbWs9tGlE21ThQfNQxjts=;
-        b=ZdlOXdk48DgvkcIvHiRDxTTZzRQG4B/Q/iA72HeJzzMfXi9RV6s8ZViwtyl9ea9kKB
-         0ZO2MQBr0hy4fyfSGHqV5E/2K6os322375VufQ56U2I2BIb4Ui8huzCkWmzdD2jJtnOa
-         92cq5J7gsi0mPHLK1lNab6gLTbBCFmwxi3DXiy8Jnw2iGwsjdRhM7yeFcnoVtQdqJFgi
-         qBJPhl/YHnTTczQy7l7m075fpKdMmlkOw8goA/nJ4bimCyTcsuaSHbeE2AtAQBJwoEjW
-         PT6k+KBMti/Qe/kT2OSCKrF2/eEmzJ3PJJu4JSvvmTjAJPgkBY0tD78hmdVuRDuy4D7b
-         uFww==;
+        b=c5YV6Tbu7PfYtTAptWELf1iGFOzAexqyr8ceFKUdhs2bVCLjESsMMtTtvNWuNnJszs
+         1VLS1aS1xbBIfa5NbOP8aZiKRkPQ55b3qhVcDtDhlpBER0n2m3O841n0Y3HsvREsDTe0
+         /Vx6xz2ZOQkaNr9GSBlcaIxMvmp7J2yzuL/rhi/foY7k1MeqSW5F/ZhvlMXbHGuyCuCG
+         tCuAxJmnv6lIxSp+iBXs3UzyZTmIa3JAvlwzBAKJuHJ8WtxULp62IFPRShvogB/S4mB7
+         Vxnk1UoHQDyv2MoZ7kNJKh5svluqWt8Uqx/3hkLNFZ0yNX85nKE98PPPZjEb6UHoGs5M
+         am0g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=tlMFKNywuwsnGRyliUKsDYPpVTeyaqJgrVhkY/F2wnc=;
+        fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
+        b=bGn3E6cV3x1DAWaRJfzeR32mKxmcBn3joqrz36h0KgKMFEd3GcD88D8TkqUYR2Fx7Y
+         PoFv1ple3hdPiAzTuwZ4IeitCX1e/oXypSO696LHD9S1JLoHEwSaeljGPsRqNSy5FS3u
+         WAUZBaGtMjw5y0ndEEUlBeeeqJuADTl2UAPDUjyG+DYT1pj8JGUgnEfuNoGq4M19MZHR
+         Hh1/cEx176KmRZ5VjX1ZVamHHt5xdG2caVD1LFpSY1RV8XwImgSK05TqN6l3+EQrDdi4
+         LVopoLj75lDwgz3Ak5aRr8iJoej55S4aX/8BcjlfeSiPRAJjTLu0Smt4X96+CStZvI8j
+         x1PA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="h/F20yOH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c36fef6b1asi415373585a.163.2025.02.28.17.03.05
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dPL3OAI5;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7c378db3be4si657653785a.597.2025.03.02.00.22.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2025 17:03:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 02 Mar 2025 00:22:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="h/F20yOH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1toBFU-0001Rc-86; Fri, 28 Feb 2025 20:02:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
- id 1toBFS-0001RC-G3; Fri, 28 Feb 2025 20:02:34 -0500
-Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
- id 1toBFQ-0002Np-E6; Fri, 28 Feb 2025 20:02:34 -0500
-Received: by mail-qv1-xf34.google.com with SMTP id
- 6a1803df08f44-6e8992f9a45so16874186d6.0; 
- Fri, 28 Feb 2025 17:02:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1740790949; x=1741395749; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SQlSNoHmWACKiW0B8FvbEITjcLevPe4EgEizJSu8Ex0=;
- b=h/F20yOHRSL/x+Q2/TwJmJERPjmO7CsyEgZU+GB6FCzqj1A/InaHfCj620uk6Np6S2
- jfLUxntNTJXBQ8Q9nvMV7G9TdRF6r2H16zMPreW3GLpa0GWCMArmr6MWO5ANrsZBsPW6
- DOpLx8ywLhm4M4/utS+adaBFrDaSRdTAZKtq8Oejezykv4cDwN0OhUhzr+4cleZGYjaQ
- 55OtnkxrgLrg4Q/Zmfsi3C+b0+2mgpEz/Rt4nYthNjdy1FSTPx4EWmEIqNpe5M08qHQS
- Sx14gIbG1Rnfbvgi/xCK62+RodOd5q14KIR9MhnCPwfiRMmLsOK/iRVLaw5M7E/Z9V6e
- GjKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740790949; x=1741395749;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=SQlSNoHmWACKiW0B8FvbEITjcLevPe4EgEizJSu8Ex0=;
- b=RQNON7I5sNTCrbw84js7/XVAz/EcEP/ivkGlCr0LlaO1bKe03CjwwJTcXeOQpe0qQL
- uzVpOwYTyh72Woq56YQh4gP5r43Pmvs7Scjcfe0ngNCsu2IehPVaMdPh9C9zv4l2oY21
- +j2hSRYPdgL9ehpFB7gZH882Es4y99+CTZ0VqVQ5fjleyo1BOxPRKwKGz1QjaCabgVJH
- Mmlm+upW36d9WMDTNFXxW6RgjgXeu3/jalKQJRI7vkMJZKO5eL8iE9lnDoI6ItVEnVZM
- YhL+9KBo3TWT6syHfHje7FTfgEWkQ9eb1MV9a6iDzAuTjHlcWpUylQmd6hAu3/hvG2CK
- ifdA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVBh52AZepecbO/bw/93ifNXfHFN48kbA53V0RlIQxyphlpWfI2Fy8as9CJ5l84QvZss3MRq/TQGw==@nongnu.org
-X-Gm-Message-State: AOJu0YwI+YV0UXEQCtotUbp2/8/r9jPH3EIB+98mAcVVYqa/P+H5Juqw
- AkORu4uKYPdr1lkZq8vTxGvl7UvgITEUSw1TpllPOiccrojedytQ9+v/K44knFCG5QiaGaL9iss
- iX3xFTlfxDyJDib4MLxjRuVJw0us=
-X-Gm-Gg: ASbGncv/12H52gY5g3fBB/bSKS2JvkzZjruXiMP0eD6DKZuwInONbfMnU93nwHOAYfV
- VPBIlxBrLJQhYBeFdLUGnXa60ZP4rq6ccBY2fabolY6UfU8qOw2/xjzbNCPhh1wK+TwCLuNyHnB
- hleTsZouF/MG2wtkawwHB6AXZ5YOdbAyqHErgXqB9rUfh9yzVCuf9TURI=
-X-Received: by 2002:ad4:5ba3:0:b0:6e4:4274:aaf8 with SMTP id
- 6a1803df08f44-6e8a0d01c27mr84585336d6.17.1740790948794; Fri, 28 Feb 2025
- 17:02:28 -0800 (PST)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dPL3OAI5;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-540430-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 0E7DA16DC95
+	for <alex.bennee@linaro.org>; Sun,  2 Mar 2025 08:22:23 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C6F4C1D86C3;
+	Sun,  2 Mar 2025 08:22:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="dPL3OAI5"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 83DBFA944
+	for <linux-kernel@vger.kernel.org>; Sun,  2 Mar 2025 08:22:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740903737; cv=none; b=kxxfxKaZ/3lDpdYnKqutTCrISC4F//UaSK6m4Y3On07AGt77KRXMJOBdCO5ke5jyDNMD4XKSmS7d/cgW2DlmiVcPTcr6W0RKrgkq1ecmWOm2MVgpHVnwR2L1mxdeRoG2OuEM1WOX3v24ZUKnm9vdgKE4/I6kKj3rSX/fKQqudqI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740903737; c=relaxed/simple;
+	bh=Oy1d1NtjIuq8rVPzyJSOrQ/KFfdLC18cbst4NO1Tvbg=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=DMofVc1N0f72KF4QpJahTwrT5hBs9LMAhNJJWBDVF6E+yK0hc5KjZ2LAfrIC7MUYgRnUVYz0XekRNTkdF2gRwxQT2GvLDu6oofmQEx7FQrtGSZ3lFdDlAEdbxaqOJVUAro0SWzp330t7XMFruCaWMdWuIdBk4kDTB0vE0M9xp1E=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=dPL3OAI5; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 064C5C4AF0C;
+	Sun,  2 Mar 2025 08:22:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740903737;
+	bh=Oy1d1NtjIuq8rVPzyJSOrQ/KFfdLC18cbst4NO1Tvbg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dPL3OAI5kGobdUdUiX9iD77UqxgeGSq+Cf6Z3uIzjKjtq53kWzzozZd3XMJmeaB58
+	 FYsNugDJ5raqp4nWqjO8rQG0G0MEAwzucQstClaZbywd5r9FU4yLR/cQ6i0mmqrdtL
+	 6+CFutkGquLPFThot1a3M5otXyi0StLi4cdD2lPaEvWCG5P3SMzqZkelqCD3mbKfwb
+	 +k31XmWj86ZPqEXIs98F6Rag9GiyFw5Jem8pp9Z9UavN3teZTHUC4d3PyOgFSiMWRO
+	 +N0iIWgbGlWd/K61k8vvfARQL5zxTs8kdJN1Jt9htx3Atr3dSmPvYi7me8Wgy5LTUM
+	 AKvGIbesZyyBg==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1toeaU-000000043SK-3QUW;
+	Sun, 02 Mar 2025 09:22:14 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v7 13/19] tests/acpi: virt: allow acpi table changes at DSDT and HEST tables
+Date: Sun,  2 Mar 2025 09:22:00 +0100
+Message-ID: <414fba74b2c9fb50169f7a3a3f05d87d2eb1f783.1740903110.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <cover.1740903110.git.mchehab+huawei@kernel.org>
+References: <cover.1740903110.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250225074133.6827-1-kuqin12@gmail.com>
- <20250225074133.6827-2-kuqin12@gmail.com>
- <f9400b1e-e36d-486c-bea7-115a742befd4@xora.org.uk>
-In-Reply-To: <f9400b1e-e36d-486c-bea7-115a742befd4@xora.org.uk>
-From: Kun Qin <kuqin12@gmail.com>
-Date: Fri, 28 Feb 2025 17:02:18 -0800
-X-Gm-Features: AQ5f1JqtxKaMBG7_Pq0Mi83aeI5dJwWzfKv_RatWiITqQd3YR2Q--s_6MQFw1dc
-Message-ID: <CABhrWrSwD8b-CapYsogwKkab08NDoDZc8t6HoxMROCK6uWPLUg@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Adding TPM support for ARM SBSA-Ref
- machine
-To: Graeme Gregory <graeme@xora.org.uk>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Kun Qin <kuqin@microsoft.com>
-Content-Type: multipart/alternative; boundary="000000000000219af1062f3d7a5c"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
- envelope-from=kuqin12@gmail.com; helo=mail-qv1-xf34.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z7XIl/IxUMUs
+Content-Transfer-Encoding: 8bit
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: nijHAnX9F8Je
 
---000000000000219af1062f3d7a5c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+We'll be adding a new GED device for HEST GPIO notification and
+increasing the number of entries at the HEST table.
 
-Hi Graeme,
+Blocklist testing HEST and DSDT tables until such changes
+are completed.
 
-Thank you for your review. Could you please let me know if there is
-anything else I need to do or wait on before merging the change?
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Any input is appreciated.
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8bf4..0a1a26543ba2 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,7 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/HEST",
++"tests/data/acpi/aarch64/virt/DSDT",
++"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
++"tests/data/acpi/aarch64/virt/DSDT.memhp",
++"tests/data/acpi/aarch64/virt/DSDT.pxb",
++"tests/data/acpi/aarch64/virt/DSDT.topology",
+-- 
+2.48.1
 
-Regards,
-Kun
-
-
-
-On Thu, Feb 27, 2025 at 7:16=E2=80=AFAM Graeme Gregory <graeme@xora.org.uk>=
- wrote:
-
->
-> On 25/02/2025 07:41, Kun Qin wrote:
-> > From: Kun Qin <kuqin@microsoft.com>
-> >
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2625
-> >
-> > This change aims to add a TPM device for SBSA ref machine.
-> >
-> > The implementation adds a TPM create routine during machine
-> > initialization.
-> >
-> > The backend can be the same as the rest of TPM support, by using swtpm.
->
-> This looks sensible to me.
->
-> Reviewed-by: Graeme Gregory <graeme@xora.org.uk>
->
-> > Signed-off-by: Kun Qin <kuqin12@gmail.com>
-> > ---
-> >   hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++
-> >   1 file changed, 24 insertions(+)
-> >
-> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> > index e720de306419..93eb3d1e363b 100644
-> > --- a/hw/arm/sbsa-ref.c
-> > +++ b/hw/arm/sbsa-ref.c
-> > @@ -28,6 +28,8 @@
-> >   #include "system/numa.h"
-> >   #include "system/runstate.h"
-> >   #include "system/system.h"
-> > +#include "system/tpm.h"
-> > +#include "system/tpm_backend.h"
-> >   #include "exec/hwaddr.h"
-> >   #include "kvm_arm.h"
-> >   #include "hw/arm/boot.h"
-> > @@ -94,6 +96,7 @@ enum {
-> >       SBSA_SECURE_MEM,
-> >       SBSA_AHCI,
-> >       SBSA_XHCI,
-> > +    SBSA_TPM,
-> >   };
-> >
-> >   struct SBSAMachineState {
-> > @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {
-> >       /* Space here reserved for more SMMUs */
-> >       [SBSA_AHCI] =3D               { 0x60100000, 0x00010000 },
-> >       [SBSA_XHCI] =3D               { 0x60110000, 0x00010000 },
-> > +    [SBSA_TPM] =3D                { 0x60120000, 0x00010000 },
-> >       /* Space here reserved for other devices */
-> >       [SBSA_PCIE_PIO] =3D           { 0x7fff0000, 0x00010000 },
-> >       /* 32-bit address PCIE MMIO space */
-> > @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState
-> *sms, PCIBus *bus)
-> >       }
-> >   }
-> >
-> > +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)
-> > +{
-> > +    Error *errp =3D NULL;
-> > +    DeviceState *dev;
-> > +
-> > +    TPMBackend *be =3D qemu_find_tpm_be("tpm0");
-> > +    if (be =3D=3D NULL) {
-> > +        error_report("Couldn't find tmp0 backend");
-> > +        return;
-> > +    }
-> > +
-> > +    dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
-> > +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp)=
-;
-> > +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
-> > +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
-> sbsa_ref_memmap[SBSA_TPM].base);
-> > +}
-> > +
-> >   static void create_pcie(SBSAMachineState *sms)
-> >   {
-> >       hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-> > @@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms)
-> >       pci_create_simple(pci->bus, -1, "bochs-display");
-> >
-> >       create_smmu(sms, pci->bus);
-> > +
-> > +    create_tpm(sms, pci->bus);
-> >   }
-> >
-> >   static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int
-> *fdt_size)
->
-
---000000000000219af1062f3d7a5c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi=C2=A0Graeme,<div><br></div><div>Thank you for=C2=A0your=
- review. Could you please let me know if there=C2=A0is anything else I need=
- to do or wait on before merging the change?</div><div><br></div><div>Any i=
-nput is=C2=A0appreciated.</div><div><br></div><div>Regards,</div><div>Kun<b=
-r><div><br></div><div><br></div></div></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 27,=
- 2025 at 7:16=E2=80=AFAM Graeme Gregory &lt;<a href=3D"mailto:graeme@xora.o=
-rg.uk">graeme@xora.org.uk</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex"><br>
-On 25/02/2025 07:41, Kun Qin wrote:<br>
-&gt; From: Kun Qin &lt;<a href=3D"mailto:kuqin@microsoft.com" target=3D"_bl=
-ank">kuqin@microsoft.com</a>&gt;<br>
-&gt;<br>
-&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/262=
-5" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qem=
-u/-/issues/2625</a><br>
-&gt;<br>
-&gt; This change aims to add a TPM device for SBSA ref machine.<br>
-&gt;<br>
-&gt; The implementation adds a TPM create routine during machine<br>
-&gt; initialization.<br>
-&gt;<br>
-&gt; The backend can be the same as the rest of TPM support, by using swtpm=
-.<br>
-<br>
-This looks sensible to me.<br>
-<br>
-Reviewed-by: Graeme Gregory &lt;<a href=3D"mailto:graeme@xora.org.uk" targe=
-t=3D"_blank">graeme@xora.org.uk</a>&gt;<br>
-<br>
-&gt; Signed-off-by: Kun Qin &lt;<a href=3D"mailto:kuqin12@gmail.com" target=
-=3D"_blank">kuqin12@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A01 file changed, 24 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c<br>
-&gt; index e720de306419..93eb3d1e363b 100644<br>
-&gt; --- a/hw/arm/sbsa-ref.c<br>
-&gt; +++ b/hw/arm/sbsa-ref.c<br>
-&gt; @@ -28,6 +28,8 @@<br>
-&gt;=C2=A0 =C2=A0#include &quot;system/numa.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;system/runstate.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;system/system.h&quot;<br>
-&gt; +#include &quot;system/tpm.h&quot;<br>
-&gt; +#include &quot;system/tpm_backend.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;exec/hwaddr.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;kvm_arm.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/arm/boot.h&quot;<br>
-&gt; @@ -94,6 +96,7 @@ enum {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0SBSA_SECURE_MEM,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0SBSA_AHCI,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0SBSA_XHCI,<br>
-&gt; +=C2=A0 =C2=A0 SBSA_TPM,<br>
-&gt;=C2=A0 =C2=A0};<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0struct SBSAMachineState {<br>
-&gt; @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Space here reserved for more SMMUs */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[SBSA_AHCI] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x60100000, 0x00010000 },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[SBSA_XHCI] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x60110000, 0x00010000 },<br>
-&gt; +=C2=A0 =C2=A0 [SBSA_TPM] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 { 0x60120000, 0x00010000 },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Space here reserved for other devices */<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[SBSA_PCIE_PIO] =3D=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0{ 0x7fff0000, 0x00010000 },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* 32-bit address PCIE MMIO space */<br>
-&gt; @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState *s=
-ms, PCIBus *bus)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 Error *errp =3D NULL;<br>
-&gt; +=C2=A0 =C2=A0 DeviceState *dev;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 TPMBackend *be =3D qemu_find_tpm_be(&quot;tpm0&quot;);<=
-br>
-&gt; +=C2=A0 =C2=A0 if (be =3D=3D NULL) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Couldn&#39;t find tmp0=
- backend&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);<br>
-&gt; +=C2=A0 =C2=A0 object_property_set_link(OBJECT(dev), &quot;tpmdev&quot=
-;, OBJECT(be), &amp;errp);<br>
-&gt; +=C2=A0 =C2=A0 object_property_set_str(OBJECT(dev), &quot;tpmdev&quot;=
-, be-&gt;id, &amp;errp);<br>
-&gt; +=C2=A0 =C2=A0 sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &amp;erro=
-r_fatal);<br>
-&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap=
-[SBSA_TPM].base);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0static void create_pcie(SBSAMachineState *sms)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PC=
-IE_ECAM].base;<br>
-&gt; @@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0pci_create_simple(pci-&gt;bus, -1, &quot;boc=
-hs-display&quot;);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0create_smmu(sms, pci-&gt;bus);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 create_tpm(sms, pci-&gt;bus);<br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static void *sbsa_ref_dtb(const struct arm_boot_info *binf=
-o, int *fdt_size)<br>
-</blockquote></div>
-
---000000000000219af1062f3d7a5c--

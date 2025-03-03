@@ -1,78 +1,78 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2611702njb;
-        Mon, 3 Mar 2025 05:31:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUXeiWSlLdjt9BGCUxk2utTujX/nYdfemg8vHt7Bvo23q8S8Drp6VFlPUeeJIm8R6b6AnHiM802URn5iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFVNbMK+KweqhsGvOkhLVJ6xE4GzS/tmdT1jwzIz/zYPW1u6P8vvXGwnvIjXFB08ziIR2oo
-X-Received: by 2002:a05:620a:1983:b0:7c0:9c07:377a with SMTP id af79cd13be357-7c39c49f553mr1709976585a.10.1741008716760;
-        Mon, 03 Mar 2025 05:31:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741008716; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2624375njb;
+        Mon, 3 Mar 2025 05:54:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVU/aHnL74tCyVlUwQJOfxw+nHjjhYHC1g8ru/Atwxxllzvp0aE+ZkfJ8h1DIeyBZ/tepSapjEd99Pm5Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFDF0orAqMU1C22J4pbC7W8zj+rbnntCa9n84WYUIXHDzPgvnpLGc1BsEqTYy/N5vwqGVbJ
+X-Received: by 2002:a05:620a:4492:b0:7c3:9541:2701 with SMTP id af79cd13be357-7c39c49f1d2mr1635171585a.11.1741010092852;
+        Mon, 03 Mar 2025 05:54:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741010092; cv=none;
         d=google.com; s=arc-20240605;
-        b=EwNdinY/SXdcFf0tS5tO+67kfYeRlFmwvE1GbGjPvNvuVS88R35jvnkzV1u4+GWLsI
-         Oodb20MCc/F9Fz6qOgqfP4xk5mxNWQNzJTL57TEpIi3HWXIMGpBwFoEFYJ8hSRj3tlQF
-         AM5woX8CqP3eZE1B+n0E1BuzuBharxerL9/QsXFj6y5074sjf0jgyOJPF7a96SNe7AJL
-         MpApuzC2BvLeVL2qZzbwS4I759gknkjwp0zpJ1v+DxYUjBzTmE9oqd+uqigeE09lMmPI
-         c2nZaUNgcYrIvlW84shOzmm2Fz1E+eoixKcQOoH049Kwq5YUdYFVg4Km1vz0fwoadxiB
-         t1ww==
+        b=TbHXe/Y5E3lR1AZGlVWowjs+lzwDMEetVIhE2pr4GDFzbhh3zGkCHShYeFpPBfQY4x
+         sBI7KbQyyVbW4hBlBPD9EHtc3wGToWw6n7NJgvGXoJw3nESCUfqBZERtH6hLQiNgaLsu
+         cGLXOcTV5OmRBnq42dppoXv9uTOF2q1rWWhfbd/wWVHUl043B8SJT5iQOlxI78/JjtNH
+         wkM0r0oJ3pjZYD+XaYSRX9CMmJHnSbzCd0PwrNeo5CgSur6RJYVeCOUE4fUiZXxPGzcO
+         Z2OprCXPm3B4amW5hZxUEzvmKHdTGR7xI8Df8vklNeVs0/z3VEbdyAmOXap23z5egZTZ
+         dV8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=ZBloNb5+lrwf2rPkz/5hjnbL1HNTTKIrggoxZjJGIjw=;
-        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=Hk41Bs1jyxOudga/QXX4QSlwO9tYUT2zkqnkfCONdNIIzfBvT4gjKQER7YazWKx+T9
-         XcRtKQj8fSWZx7DwZSS2Xkk37ufJWgHs/rfV4nnJxJotzLHQIojzCd7S/zmnOlgwNa/l
-         qjnVu2brfPcz/akSU2QjL1SYLsVPPknnfZFR0AnqkDu/U6/vczjTXB3rzVHT3bFRxUvl
-         HMQ7XCSCd+VdQwsw4defSaNd6knfYvi3h5RpNCqzz3en8+gQNjko2HCG8/dbU3DmPrRo
-         DzE4SKmNtsLgpdOHDxUOeRaB307mOyxVvCcnFy0MHUfOurp1MY9PFvxiXjVy9hQHqyr3
-         cgHg==;
+        bh=rNGzd4tjPepPF2BXFc3VWepUec/BQQ5VC1KJMwIvurI=;
+        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
+        b=PXxGgdd2rPTqfgMGRq/TcVxDn9YwWtlaLn/8kmiY4LlrK2L5mWLqkr2Y/U0HwgemcD
+         DccH38bcMm/N0SP+71P6+c4vDZhnLvQnB4rWqWMFKPFZ29BmfseUJKjwLyEA4Ww9AD+K
+         y+1HeYoGdQcbhJYWQ9hMkbmchPZqNHmIwY+KzFqvdlbxpi39YD/rE6SroL65fStpZNr8
+         VvbRIpg/QjeR/LmFN8JRL4BliVg8py2mmEPF1XKOqpQ/y6baxJVwqR4E4HLl2KonoJ3I
+         ZZf4FNfkd27CQOMEHq3nCZrga/EKVWpSjJ2Cym231wPB/R07zGGpmPS7WCCwrUqhQY4k
+         NGCg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3bcb35032si203773785a.516.2025.03.03.05.31.56
+        by mx.google.com with ESMTPS id af79cd13be357-7c3c031159fsi159548885a.207.2025.03.03.05.54.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 05:31:56 -0800 (PST)
+        Mon, 03 Mar 2025 05:54:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp5tO-0004vS-Lu; Mon, 03 Mar 2025 08:31:36 -0500
+	id 1tp6Fp-0000jE-KV; Mon, 03 Mar 2025 08:54:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp5tB-0004mJ-CR; Mon, 03 Mar 2025 08:31:21 -0500
+ id 1tp6Fe-0000gq-0W; Mon, 03 Mar 2025 08:54:34 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp5t9-0008SG-7K; Mon, 03 Mar 2025 08:31:21 -0500
+ id 1tp6Fb-0003wD-Ho; Mon, 03 Mar 2025 08:54:33 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z608453RYz4x3S;
- Tue,  4 Mar 2025 00:31:16 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z60fn74yRz4x1w;
+ Tue,  4 Mar 2025 00:54:25 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z608135Ccz4whq;
- Tue,  4 Mar 2025 00:31:12 +1100 (AEDT)
-Message-ID: <3397f032-7186-410e-822a-eaef8a312825@kaod.org>
-Date: Mon, 3 Mar 2025 14:31:10 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z60fk2WHjz4wbx;
+ Tue,  4 Mar 2025 00:54:22 +1100 (AEDT)
+Message-ID: <91f57db1-515c-4594-84a6-cdfd776ef2c9@kaod.org>
+Date: Mon, 3 Mar 2025 14:54:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/6] hw/misc/aspeed_scu: Fix the hw-strap1 cannot be
- set in the SOC layer for AST2700
+Subject: Re: [PATCH v4 02/23] hw/intc/aspeed: Support setting different
+ register sizes
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: troy_lee@aspeedtech.com
-References: <20250303073547.1145080-1-jamin_lin@aspeedtech.com>
- <20250303073547.1145080-5-jamin_lin@aspeedtech.com>
+References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
+ <20250303095457.2337631-3-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +117,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250303073547.1145080-5-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250303095457.2337631-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=Robu=VW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -142,61 +142,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qLtUPQNZkiPn
+X-TUID: 8wgCzw/ZWC1K
 
-On 3/3/25 08:35, Jamin Lin wrote:
-> There is one hw_strap1 register in the SCU (CPU DIE) and another hw_strap1
-> register in the SCUIO (IO DIE).
-> 
-> In the "ast2700_a0_resets" function, the hardcoded value "0x00000800" is set in
-> SCU hw-strap1 (CPU DIE), and in "ast2700_a0_resets_io" the hardcoded value
-> "0x00000504" is set in SCUIO hw-strap1 (IO DIE). Both values cannot be set via
-> the SOC layer.
-> 
-> The value of "s->hw_strap1" is set by the SOC layer via the "hw-strap1" property.
-> Update the "aspeed_ast2700_scu_reset" function to set the value of "s->hw_strap1"
-> in both the SCU and SCUIO hw-strap1 registers.
+On 3/3/25 10:54, Jamin Lin wrote:
+> Currently, the size of the regs array is 0x2000, which is too large. So far,
+> it only use GICINT128 - GICINT134, and the offsets from 0 to 0x1000 are unused.
+> To save code size, introduce a new class attribute "reg_size" to set the
+> different register sizes for the INTC models in AST2700 and add a regs
+> sub-region in the memory container.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/intc/aspeed_intc.h | 1 +
+>   hw/intc/aspeed_intc.c         | 8 +++++---
+>   2 files changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+> index 03324f05ab..ecaeb15aea 100644
+> --- a/include/hw/intc/aspeed_intc.h
+> +++ b/include/hw/intc/aspeed_intc.h
+> @@ -42,6 +42,7 @@ struct AspeedINTCClass {
+>       uint32_t num_lines;
+>       uint32_t num_ints;
+>       uint64_t mem_size;
+> +    uint64_t reg_size;
+>   };
+>   
+>   #endif /* ASPEED_INTC_H */
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 033b574c1e..316885a27a 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -117,10 +117,11 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>   static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+>   {
+>       AspeedINTCState *s = ASPEED_INTC(opaque);
+> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+>       uint32_t addr = offset >> 2;
 
+'addr' is a confusing name. As it is used as a register index, I think
+'reg' would be more appropriate.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+>       uint32_t value = 0;
+>   
+> -    if (addr >= ASPEED_INTC_NR_REGS) {
+> +    if (offset >= aic->reg_size) {
+
+This is a useless test since the memory region 's->iomem' is
+initialized below with size 'aic->reg_size'.
+
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+> @@ -143,7 +144,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>       uint32_t change;
+>       uint32_t irq;
+>   
+> -    if (addr >= ASPEED_INTC_NR_REGS) {
+> +    if (offset >= aic->reg_size) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+> @@ -308,7 +309,7 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+>       sysbus_init_mmio(sbd, &s->iomem_container);
+>   
+>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
+> -                          TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
+> +                          TYPE_ASPEED_INTC ".regs", aic->reg_size);>   
+>       memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
+>   
+> @@ -351,6 +352,7 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+>       aic->num_lines = 32;
+>       aic->num_ints = 9;
+>       aic->mem_size = 0x4000;
+> +    aic->reg_size = 0x2000;
+
+the model still uses ASPEED_INTC_NR_REGS in :
+
+     struct AspeedINTCState {
+         ...
+         uint32_t regs[ASPEED_INTC_NR_REGS];
+         ...
+
+which is redundant and error prone IMO.
 
 Thanks,
 
 C.
 
 
-> ---
->   hw/misc/aspeed_scu.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 545d004749..0581c744f1 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -910,7 +910,6 @@ static const MemoryRegionOps aspeed_ast2700_scu_ops = {
->   };
->   
->   static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
-> -    [AST2700_HW_STRAP1]             = 0x00000800,
->       [AST2700_HW_STRAP1_CLR]         = 0xFFF0FFF0,
->       [AST2700_HW_STRAP1_LOCK]        = 0x00000FFF,
->       [AST2700_HW_STRAP1_SEC1]        = 0x000000FF,
-> @@ -940,6 +939,7 @@ static void aspeed_ast2700_scu_reset(DeviceState *dev)
->   
->       memcpy(s->regs, asc->resets, asc->nr_regs * 4);
->       s->regs[AST2700_SILICON_REV] = s->silicon_rev;
-> +    s->regs[AST2700_HW_STRAP1] = s->hw_strap1;
->   }
->   
->   static void aspeed_2700_scu_class_init(ObjectClass *klass, void *data)
-> @@ -1032,7 +1032,6 @@ static const MemoryRegionOps aspeed_ast2700_scuio_ops = {
->   };
->   
->   static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
-> -    [AST2700_HW_STRAP1]                 = 0x00000504,
->       [AST2700_HW_STRAP1_CLR]             = 0xFFF0FFF0,
->       [AST2700_HW_STRAP1_LOCK]            = 0x00000FFF,
->       [AST2700_HW_STRAP1_SEC1]            = 0x000000FF,
-
+C.

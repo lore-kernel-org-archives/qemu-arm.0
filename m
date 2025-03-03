@@ -1,252 +1,260 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp681075njc;
-        Fri, 1 Nov 2024 12:30:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW1BrrSj4krlcLIfeaA9QakrcBI+g5fBsEEfSR192/CCz/gkb0iPtjupI75dstiRvWZbec2XuNbF78ftA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVaG6DrGLDW31XpAb1XXMHEZ1PMnwTW7xLbKArofbOVg1aHkyqUmCmsrJHWzMruU4W1OhK
-X-Received: by 2002:a05:620a:2493:b0:7a9:d14f:2374 with SMTP id af79cd13be357-7b2fb9cc196mr593919885a.44.1730489413947;
-        Fri, 01 Nov 2024 12:30:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1730489413; cv=pass;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2870772njb;
+        Mon, 3 Mar 2025 12:31:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWsSHKQ9xjq04P2HSe8ClFJjDOGOMgR0cr3fM+EQIeV07N1H2bWdJZXyd6M3p12qXQLTwx/wqzES8jN2g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFitr+6Srzpk4lQmB3tzDo7nSZN8SG9kj0Tf8Qnsg8LdBVO2dka0JCZeU8uUOdtH3gVAQhn
+X-Received: by 2002:a05:6214:226c:b0:6e5:bc9:95f8 with SMTP id 6a1803df08f44-6e8a0cc5ee6mr234390736d6.17.1741033891154;
+        Mon, 03 Mar 2025 12:31:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741033891; cv=none;
         d=google.com; s=arc-20240605;
-        b=VuvgO5x8KD/4hv+foEQ+wrllVZr9LNe1AGZGFUMMiHMILiNGSVRTaSltg8Y2qtBaQW
-         Kxd4ZJgwkXBsDeBKJSHXe4Uk0IqZyMJ1vGBXTahpHUf594WzH4dSHBNGvg4KxJ8AFQPE
-         Z3BYlQxTx1gF8Q/nzt3pYEbB/BiOudqBvu1MJvTkWKYl3hCcS+zHBAZ3nvVyQNufSRGo
-         XbjoGaFb75K5oB6G/3B5U70XCjFxv6jqFQFroNnhtdpIbxO5S1xNPRRTwlJMOd0dZI3U
-         2EvdvXP4whH26ZdWbhK0Q7qVV10XjIlI/o6I534nIne/M7/tmjzByGjOI5B/p1JiXEwS
-         1Sgw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=lWVv6yIo2ZzBxzksgyTSpPEKPQCH1QrcoVnZW7e4KubUc1VXshcxyH17fqFyO60quo
+         sdxCRufDnXzS7MT9T/xmb9szxtfRfwBh4MtwEBzUCJBoy2/4eP9jjrB6oG7KjCMKHl83
+         3B7TqBEOdM+tndO+XQl/0kuM3cFdiVSv4Ay+Hpo3y6HYp0mf+bB0F4z/r5AWGZnbH/5P
+         ikrwIaAj3xUjSGHtm/4HZXBrGgH3mR2sd8YX+cJcVEgLOGMh4TocTWH7rxN6gsDCVKIA
+         pe05VGzSNVtFKQeNPajcE4u9ZdF/lH4RGtVHKTvLq0qfKsb0T5tvIFbPMcoN96JLHX/o
+         xi3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ePeUa30+yR0Pi3qhfyLSj3LrFdn06UX0PVhQqVxTCSE=;
-        fh=BarvRgAtyM+C3d/4HdNhtFbvZl0YeGlGUaSETwpnvFw=;
-        b=KKw/5ByMmigjOx/Jymhg1vehFNpJU1GEjgITjmxdhyEMdV8HMLCIeShttNoMyonwhM
-         MHldtKs87WNBGj50f2SQpZf1FvzOEjFZzvSgdhqt6/z2iWPzEQV+6L5qG1+tcT9mjHBu
-         xvJE9VXpSW2okFCnmS9iYtbxtAxuE01s3iSnBkLSOzjd2Mn/73bYN3Yl4GZk1g39D3Nq
-         WaaygXQwyiCFLx3B1wvMJvbUaNtdi2795SBJLcNerEDsz0HAcFP4cSOrT0UpzIw4onMc
-         Fgg7oVqTadt0MAPeyBlOQSsGW+bjP/6TVybR2AVVny5H0J3VGoeNBCnNmjI5bSNww4YM
-         tz6Q==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=pOsp2vY13k2XExgGYfdVVsmGZinD+jyXkzh+Sq28GQc=;
+        fh=cz2A66T3qfDV9IXmhZsuN6TaWWVo81D/Z9ehzoHi84I=;
+        b=VaE58acGN7e8S1oy83hN04dAUQfsOgWc0MAT/EwvDyl+UGR5N9sfkSGFduz+nmRZVb
+         jfADYqbhA0cSHmNCHm3628oVYq3sztZvawyw86UgNwIVWg4VzxFNE63n6CsLwzTBlXWm
+         NVLGY7h/xfX/OAXWypXd5x8HP654Hr2TA1OFBLiATn3E0XqQ+5i91kqKvJdLjnFoB5ed
+         f7Eo5rD4+OQDyNlyFQ4lAOYyuFJRjkgopHNODgiEbnrlmJirdHmFPuxvYdQ4UHZM3wEJ
+         ETo2H+DIT412/GkCzT6J07H6xva3kX5RHjhG3S2lKxmdkjt/3dwgXUeclyEkDfaxeE/U
+         OUyQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=JJdjGbjp;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=gIXPY8za;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ab1468si505503085a.586.2024.11.01.12.30.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8a0d094adsi80109006d6.4.2025.03.03.12.31.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Nov 2024 12:30:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Mar 2025 12:31:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=JJdjGbjp;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=gIXPY8za;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t6xLD-000186-OJ; Fri, 01 Nov 2024 15:29:51 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tpCR8-0007Fu-Py; Mon, 03 Mar 2025 15:30:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1t6xLB-00017W-Es; Fri, 01 Nov 2024 15:29:49 -0400
-Received: from mail-co1nam11on2061c.outbound.protection.outlook.com
- ([2a01:111:f403:2416::61c]
- helo=NAM11-CO1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1t6xL9-0003nK-FZ; Fri, 01 Nov 2024 15:29:49 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UkkH0Z07u+ODVE7zYuo0c2xMRx+eS6klqOb50ou/bkrGZUDvcZZtSbs3naJzl1RFxldyVgiw4zOIIYIg14oDzlsbPQcuXbo8ZZCzFySTkBTxIoQSrMNGHBummUHlJAMYAfnjZctWeHMxgHu/FKzNyipGnRFIArA+ckONdNwvhqMOMcOShocDBfn/AtFCV9KralEzsPONEYCg9KCT4liiZaBoUiAoUHVM8gmw2OAwax2qxRWZTxly5bp+iwcnPrrtDIw3hvBAKqWCelT0Q6kPUq7DIwDsy0PY5zIhNMQXan2L4HNCp3YeCz6ToVbWBh08WG7uwKUzShBvoC2VvQq9aQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ePeUa30+yR0Pi3qhfyLSj3LrFdn06UX0PVhQqVxTCSE=;
- b=bxe02r+OBg+FTSHZyXXDoVBEfAOfP7WGCRU3XcukmIPY9CLcaK8/nOlgZXa7pfWikvgL+542PdCu8VFneV3v3bQ+MfGrEjP9ScTk8MjJkN+Bc8UZDO1ASTCqt44HYLFIv0AxJfZVpHQAFIigT/cGVrCbRNt81nw4HcnwHh6gl3wuJw1loqEgUObFlzZaFAyQSDYwv76/31zoLoNLkoRPirZ9h7Kld8LI6+eg7ayMhVTOb5dPSdwn3YNBmfXBbXm7OakghV9QTpvI5+Dj8iTNsOq6+1tFQQhJBVSds+lt5lzaZd5GbMc/QHY2VXq8V7ShSPBGUDfezmkRcNHXf5Mpog==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ePeUa30+yR0Pi3qhfyLSj3LrFdn06UX0PVhQqVxTCSE=;
- b=JJdjGbjp515At2e2TI12cUI5NxnrPvd0Ws336ignc8k+YTMusn58KUuasRENcNsL2Jsvv/i3QzEpvETL449iRRu/aI1V7FlqjoyL7T2KCaISj801LvxYTbAdDenmxQPtVGQsA1C70CDWl4B0Wz3knH2DDVjj+G399e8/71zjGkUKk/BN980IXBi9XPMxzEquVJms4opObmDixS8qidHGjMJB1+aw2024RmoJlVUCo4OCbaVH6aqxNKNCtjiTIID8R3/x6/HVZLXnQqXssIYdsdcL0X3Hl+6MvKSGcMnaAOqYrxICSm5d8AbuThXaVaqOXaGl+2C11D6zxmPmZ6uuTA==
-Received: from BN9PR03CA0902.namprd03.prod.outlook.com (2603:10b6:408:107::7)
- by PH7PR12MB6394.namprd12.prod.outlook.com (2603:10b6:510:1fe::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.20; Fri, 1 Nov
- 2024 19:29:35 +0000
-Received: from BN2PEPF00004FBE.namprd04.prod.outlook.com
- (2603:10b6:408:107:cafe::7) by BN9PR03CA0902.outlook.office365.com
- (2603:10b6:408:107::7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.23 via Frontend
- Transport; Fri, 1 Nov 2024 19:29:35 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BN2PEPF00004FBE.mail.protection.outlook.com (10.167.243.184) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8114.16 via Frontend Transport; Fri, 1 Nov 2024 19:29:34 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Fri, 1 Nov 2024
- 12:29:18 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Fri, 1 Nov 2024
- 12:29:17 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Fri, 1 Nov 2024 12:29:16 -0700
-Date: Fri, 1 Nov 2024 12:29:14 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-CC: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
- Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
- <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
- <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>, Zhangfei Gao
- <zhangfei.gao@linaro.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "arighi@nvidia.com" <arighi@nvidia.com>, "ianm@nvidia.com" <ianm@nvidia.com>, 
- "jan@nvidia.com" <jan@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>
-Subject: Re: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
-Message-ID: <ZyUsClNQwcIkjdZo@Asurada-Nvidia>
-References: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
- <cf4359b18f0d44f09b8901141b678a09@huawei.com>
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tpCR6-0007FO-Ff
+ for qemu-devel@nongnu.org; Mon, 03 Mar 2025 15:30:48 -0500
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tpCQy-0001GH-AB
+ for qemu-devel@nongnu.org; Mon, 03 Mar 2025 15:30:48 -0500
+Received: by mail-ua1-x929.google.com with SMTP id
+ a1e0cc1a2514c-86b5515dd5fso1177103241.1
+ for <qemu-devel@nongnu.org>; Mon, 03 Mar 2025 12:30:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1741033837; x=1741638637;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=pOsp2vY13k2XExgGYfdVVsmGZinD+jyXkzh+Sq28GQc=;
+ b=gIXPY8zaPmcfJIw2McvSi4wLkQablTq0VjzvAhhZCr/iY7cntrsclt4gTpFdXEf1L+
+ kQOGt8o6I6DLerE38U/HX1FXNcnfLsKq0L97QLT1PpnnBF5aC6EmSEkusBF/WvDDdy3+
+ eqwIXOM5Bj3u3/m2LeoMXinfi1GXAsgL4iC4PAhfuI+GU68pr5JUD+kE2TYrzARlLvRF
+ o0HFCcu1dTTapVQW9Y0YipCmH/lvEsga0QHxdtyao6kiNUaV/blB2bZ4Gj310VWufgSd
+ wVPH4OKT/RD6pSKbs3s4Dp7HXXYwBj9HwAIgkhJskXmZSebN3Nap3FtYg49Y2/nrZ+k/
+ THCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741033837; x=1741638637;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pOsp2vY13k2XExgGYfdVVsmGZinD+jyXkzh+Sq28GQc=;
+ b=rVrkjk1e+yg0oG7jc5+jSYXENl7zmwdLNQwdXTxFIekiDCM0scFFPmoZiWpiEjr0Fi
+ /+ISoVgr9bD3OZlOeY25z/0HpdaoKBk3A9rgvwzyb7AcZN7q55EYldklxyC8Hk6k+js4
+ JWtOlQsKgQrbLiCG3MM1FTwCPhQkMapmCkPK9vxOQeBVhHLfqqJNe0yOsGaxYwxi9W36
+ EcuRn3AMqhkcNdwd7CyTzZ0Osy8gRTjLX+2Dz0v79MdqD7xUKqoPuJJOh3BTIvTqDhx2
+ 4Ko4WWXw0vpXql3nrmEe5lnATDN0SflvpvCL84F2P1esSaijO9s4xZO7fW6Okw4QsgHr
+ iv5w==
+X-Gm-Message-State: AOJu0Yw1v+8LIZxda143OdL/VAoTaOtrz4A1iE/EDRgZKT3nRrmMcf+o
+ nzImAUhD4wilRbRcWpLW6qS87xJglQMFWX6uVUYWOFacw98yGWBPljYw4yAj9v7HTSwYm44XDbK
+ MdKGMuod07J8w2Feup6wWkJsRf/WytaoBP63l
+X-Gm-Gg: ASbGnctdiIXloqzfWf+RQPFAMiXL1ijjA60nVMKnyZ5lJ8sgPLOgJNB4bFEETCEOm6O
+ wV8masnL2684ip5zFeWLfOT9jFZzBoD3MxRndCsNDOmQjyPFCMeBVOn7Rt1BtS3vLs2OzdGh3dv
+ V7ECSPL0mSMhGCSS+B5nKkNbtNEQ==
+X-Received: by 2002:a05:6102:1514:b0:4b9:bd00:454b with SMTP id
+ ada2fe7eead31-4c044992ebemr10252175137.13.1741033836979; Mon, 03 Mar 2025
+ 12:30:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <cf4359b18f0d44f09b8901141b678a09@huawei.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF00004FBE:EE_|PH7PR12MB6394:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4c8d8e09-0dca-47f0-8baf-08dcfaab8459
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|1800799024|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CA1RfFK4aoUCNwe2P+jXKuGdwy3q5wtj0ks6X3vKYQvsJ2rEakAaB3CdVzBR?=
- =?us-ascii?Q?72VMTEe/fhZugdEh6fxYNLNLa62DFq5xQS0moms30M2SzCGp78bT5BVmxYwl?=
- =?us-ascii?Q?t0RAa2SCn2QRKsM5B3DtevrNuWXOJbeCFwtAsAc5WrSEduyIBVIZVWTdaOcy?=
- =?us-ascii?Q?N6NqZFpGdt3JiVAZg9c9eYKS7flOAa9LF/II3y3lBYCMdokxfTkyZtAm/D1p?=
- =?us-ascii?Q?DDN2JhrAcS5OHiymncjr/Jwr33GlV2bJjtGahu/A2u1oEpG1clNAFbDRgVXM?=
- =?us-ascii?Q?iXCCUMpZY4HUd0M0bpsn7usRg0PH46g++zxNxZ/SdXK4Xf38QjBEckvAu+zk?=
- =?us-ascii?Q?dpn6ONMcxaPf1vU2Ytl2ODhRuitqkTW+UX7eJOAPGQPoTSdMcRESRNVk52I1?=
- =?us-ascii?Q?36rJeyrIwmrYOBuvq/23H14Vo6gTuaIUGVVW2CDe7F/L8Gowdgu2dn0jYPRW?=
- =?us-ascii?Q?iuZhLf5k3Kw6AzUeBWy6fYJK5vUxmreFoHcjjHRcH8lyEp0VE2NRck5F4QZs?=
- =?us-ascii?Q?3AmOk6+LWyw8OtX2YRTLWnEdezo9fMG99i3QUGvDNzDxJj4zGcseo5o+AyXW?=
- =?us-ascii?Q?6xqinnKaNm77R5xh5y3sTwDuBZYVc0242nlDSvQSAZ7uqPv7C7oVWP6+RJmU?=
- =?us-ascii?Q?CligaomR27ZI5/iZlHS0cwQsAfNuFApEJrl3nnqThsRIgSs5iwsWCTt0LmdC?=
- =?us-ascii?Q?4scKbEdj0xDrKhtiFPz7uxmSTlkREFRVpCjFv0+evTuePgdCLqAnCTc119Zi?=
- =?us-ascii?Q?3LM0pTAQYJavcyRx2EuZQiax9OLz6pH3mIgc1PH528nlqiJrvUcNI8GgLWSv?=
- =?us-ascii?Q?Nw2xE8GVcwUt9W8WLHILZjrX19q15Vq8J52Z71D95Hm78d3Rvwjs0ZexmzJD?=
- =?us-ascii?Q?Gl+hqYwNuRj5KSc+Bd6ZbEvCRzdSRKzev5hEU5F0YEWEVnMYcYygEHW0Sqjn?=
- =?us-ascii?Q?Hvb3lvw7Z7skpql2gNB3QRWuCL4j9aRRLe3XSzCI8SMKxAFI/2Iy8t6JGgg2?=
- =?us-ascii?Q?cIeEKF6/fAiH/QOtGZu+OjOXyPVFgoenx6i+p6jWF/B1kQhJcbeADEhsV4I+?=
- =?us-ascii?Q?/Z0aLyi9tdK13sqnD3989dBLgAcMWkXhLZFoE5QYP9Yjm1vQPlq03QTe4RKx?=
- =?us-ascii?Q?05M5s5iZTZ+s/eGxy2UHCblYq2fb5mSR1QqebrMFXH1nYf5GUc2AjSk3AtcA?=
- =?us-ascii?Q?X9aV4C9T0KLleJnHpOzXpinNKWFvudcsfSIPCY6Y5Wh951ffGp+ypvRMKmvq?=
- =?us-ascii?Q?Z5mfkvBErlVaSkQInu0pNu83h+0JO2iiPt2fxLQ1aShFrmstTlGERhGwpoCq?=
- =?us-ascii?Q?+PaT0fswmFSkMdH+t1kFmY6LZJOmq7/tmBtd96fd4KuK0frhnc2LVoOYEKJA?=
- =?us-ascii?Q?nQJCpGYip0fENC52BwENgESGUtp+mmpOWnvGauTLtpYRSpnHXg=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(1800799024)(7416014)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2024 19:29:34.4549 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c8d8e09-0dca-47f0-8baf-08dcfaab8459
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF00004FBE.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6394
-Received-SPF: softfail client-ip=2a01:111:f403:2416::61c;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250112210056.16658-1-phil@philjordan.eu>
+ <20250112210056.16658-5-phil@philjordan.eu>
+ <54399bc5-2dc8-4494-a501-ddfbabf4699b@linaro.org>
+In-Reply-To: <54399bc5-2dc8-4494-a501-ddfbabf4699b@linaro.org>
+From: Phil Dennis-Jordan <phil@philjordan.eu>
+Date: Mon, 3 Mar 2025 21:30:26 +0100
+X-Gm-Features: AQ5f1JrgLalRMkVTanhSl-m0hNK6cKQEjxCcHZ7AF8-8oKPFzBvWx70gHoMYhZ8
+Message-ID: <CAAibmn0kUmh9dUZs5kK1zr-itLEj2ds3J34nYhYFvHH+BwiEYw@mail.gmail.com>
+Subject: Re: [PATCH v17 04/11] hw/misc/pvpanic: Add MMIO interface
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org, 
+ pbonzini@redhat.com, mst@redhat.com, stefanha@redhat.com, kwolf@redhat.com, 
+ hreitz@redhat.com, berrange@redhat.com, eduardo@habkost.net, 
+ marcel.apfelbaum@gmail.com, marcandre.lureau@redhat.com, eblake@redhat.com, 
+ armbru@redhat.com, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+ Alexander Graf <graf@amazon.com>, Akihiko Odaki <akihiko.odaki@daynix.com>
+Content-Type: multipart/alternative; boundary="00000000000065466f062f7607a9"
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::929;
+ envelope-from=phil@philjordan.eu; helo=mail-ua1-x929.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B9BIgFIffr0z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UDqwbfP8U7G/
 
-On Fri, Nov 01, 2024 at 06:35:23PM +0000, Shameerali Kolothum Thodi wrote:
-> > @Shameer,
-> > Do you have some update on the pluggable smmuv3 module?
-> 
-> I have a bare minimum prototype code that works with a pluggable smmuv3.
-> 
-> ...
-> -device pxb-pcie,id=pcie.1,bus_nr=2,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port1,bus=pcie.1 \
-> -device arm-smmuv3-nested,id=smmuv1,pci-bus=pcie.1 \
-> -device vfio-pci-nohotplug,host=0000:75:00.1,bus=pcie.port1,iommufd=iommufd0 \
-> -device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=8 \
-> -device arm-smmuv3-nested,id=smmuv2,pci-bus=pcie.2 \
-> -device vfio-pci-nohotplug,host=0000:7d:02.1,bus=pcie.port2,iommufd=iommufd0 \
-> ...
-> 
-> Something like above can now boot a Guest with the latest kernel. But I am not
-> sure it actually works correctly. I need a bit more time to update this and carry
-> out some tests. Will target that in Nov.
+--00000000000065466f062f7607a9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-That looks nice to me! Thanks for the update.
+On Mon, 3 Mar 2025 at 18:54, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+>
+wrote:
 
-> > Updates on my side:
-> > 1) I have kept uAPI updated to the latest version and verified too.
-> >    There should be some polishing changes depending on how the basic
-> >    nesting infrastructure would look like from Intel/Duan's work.
-> > 2) I got some help from NVIDIA folks for the libvirt task. And they
-> >    have done some drafting and are now verifying the PCI topology
-> >    with "iommu=none".
+> On 12/1/25 22:00, Phil Dennis-Jordan wrote:
+> > From: Alexander Graf <graf@amazon.com>
 > >
-> > Once the pluggable smmuv3 module is ready to test, we will make some
-> > change to libvirt for that and drop the auto-assigning patches from
-> > the VIRT code, so as to converge for a libvirt+QEMU test.
-> 
-> One query I have is, do Qemu still need to check whether the VFIO devices are
-> assigned correctly behind the nested vSMMUv3 w.r.t the phys SMMUv3s or not?
-> Or we can just trust whatever the user/libvirt specifies?
+> > In addition to the ISA and PCI variants of pvpanic, let's add an MMIO
+> > platform device that we can use in embedded arm environments.
+> >
+> > Signed-off-by: Alexander Graf <graf@amazon.com>
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> > Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> > Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > ---
+> >
+> > v3:
+> >   * Rebased on upstream, updated a header path
+> >
+> > v15:
+> >   * Constified the property table.
+> >
+> > v16:
+> >   * Removed the DEFINE_PROP_END_OF_LIST marker to match recent upstream
+> >     changes.
+> >
+> >   hw/misc/Kconfig           |  4 +++
+> >   hw/misc/meson.build       |  1 +
+> >   hw/misc/pvpanic-mmio.c    | 60 ++++++++++++++++++++++++++++++++++++++=
++
+>
+> Missing MAINTAINERS update, who is going to maintain this file?
 
-That's a good point. I assume ideally QEMU should do something,
-though that would be somewhat duplicated with libvirt.
 
-> (I think even if we don't explicitly check, at present  it will eventually fail in s2
-> HWPT attach  for the viommu if it belongs to a different phys SMMUv3).
+Good spot!
 
-Yes. That's what we have. Perhaps simply print something like:
-"is the device assigned to the correct arm-smmuv3-nested/pxb?"
-?
 
-Thanks
-Nicolin
+> I could add it within the vmapple section in the next patch, but I'd
+> rather pvpanic have its own entry covering all variants.
+
+
+You're welcome to put me down as a maintainer on this.
+
+Thanks for taking another look at this series and helping to get it merged!
+
+
+> >   include/hw/misc/pvpanic.h |  1 +
+> >   4 files changed, 66 insertions(+)
+> >   create mode 100644 hw/misc/pvpanic-mmio.c
+>
+>
+
+--00000000000065466f062f7607a9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 3 Mar 2=
+025 at 18:54, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lina=
+ro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">On 12/1/25 22:00, Phil Dennis-Jordan wrote:<br>
+&gt; From: Alexander Graf &lt;<a href=3D"mailto:graf@amazon.com" target=3D"=
+_blank">graf@amazon.com</a>&gt;<br>
+&gt; <br>
+&gt; In addition to the ISA and PCI variants of pvpanic, let&#39;s add an M=
+MIO<br>
+&gt; platform device that we can use in embedded arm environments.<br>
+&gt; <br>
+&gt; Signed-off-by: Alexander Graf &lt;<a href=3D"mailto:graf@amazon.com" t=
+arget=3D"_blank">graf@amazon.com</a>&gt;<br>
+&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@=
+linaro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
+&gt; Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@li=
+naro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
+&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjorda=
+n.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
+&gt; Reviewed-by: Akihiko Odaki &lt;<a href=3D"mailto:akihiko.odaki@daynix.=
+com" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt;<br>
+&gt; Tested-by: Akihiko Odaki &lt;<a href=3D"mailto:akihiko.odaki@daynix.co=
+m" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt;<br>
+&gt; ---<br>
+&gt; <br>
+&gt; v3:<br>
+&gt;=C2=A0 =C2=A0* Rebased on upstream, updated a header path<br>
+&gt; <br>
+&gt; v15:<br>
+&gt;=C2=A0 =C2=A0* Constified the property table.<br>
+&gt; <br>
+&gt; v16:<br>
+&gt;=C2=A0 =C2=A0* Removed the DEFINE_PROP_END_OF_LIST marker to match rece=
+nt upstream<br>
+&gt;=C2=A0 =C2=A0 =C2=A0changes.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 4 +++<br>
+&gt;=C2=A0 =C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 1 +<=
+br>
+&gt;=C2=A0 =C2=A0hw/misc/pvpanic-mmio.c=C2=A0 =C2=A0 | 60 +++++++++++++++++=
+++++++++++++++++++++++<br>
+<br>
+Missing MAINTAINERS update, who is going to maintain this file?</blockquote=
+><div><br></div><div>Good spot!</div><div>=C2=A0</div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex">
+I could add it within the vmapple section in the next patch, but I&#39;d<br=
+>
+rather pvpanic have its own entry covering all variants.</blockquote><div><=
+br></div><div>You&#39;re welcome to put me down as a maintainer on this.</d=
+iv><div><br></div><div>Thanks for taking another look at this series and he=
+lping to get it merged!</div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">
+&gt;=C2=A0 =C2=A0include/hw/misc/pvpanic.h |=C2=A0 1 +<br>
+&gt;=C2=A0 =C2=A04 files changed, 66 insertions(+)<br>
+&gt;=C2=A0 =C2=A0create mode 100644 hw/misc/pvpanic-mmio.c<br>
+<br>
+</blockquote></div></div>
+
+--00000000000065466f062f7607a9--

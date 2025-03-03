@@ -1,123 +1,142 @@
-Received: by 2002:a05:7022:4195:b0:99:f831:508e with SMTP id i21csp864289dli;
-        Mon, 3 Mar 2025 12:37:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVatGVKoqDUed9ED9KmrdbsNF9UvvkPUN/yFBKRB910Sk7cE8s882oaEux7NrfXby7OBszrwcYsLeEDPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IELIDuyXfUCpHoN5Op36W5uuxxrQJ+IQaH9KXEnJtNqL7cgk8vCeMgOP4AIYENp+Y2UgaGk
-X-Received: by 2002:a05:620a:2b44:b0:7c3:cc10:1f00 with SMTP id af79cd13be357-7c3cc102017mr121578785a.33.1741034249322;
-        Mon, 03 Mar 2025 12:37:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741034249; cv=none;
+Received: by 2002:a05:7022:4195:b0:99:f831:508e with SMTP id i21csp867397dli;
+        Mon, 3 Mar 2025 12:45:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWgv26EJJqb4BG984NT8o8vXjdcr+qjBYtbtbr8zrZ4/1zmupk829HSJlkEJwRSuTysf5XQiTCTT6rHuA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHiDCVQvVNUNtXgiXmUxORriRsqPZbN5HF7v10yQEaIYj/roHRqko0jZbhBCl2teIbZCxsM
+X-Received: by 2002:ac8:53c2:0:b0:474:dc44:28c4 with SMTP id d75a77b69052e-474dc44399amr83206151cf.38.1741034707486;
+        Mon, 03 Mar 2025 12:45:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741034707; cv=none;
         d=google.com; s=arc-20240605;
-        b=Jc+Vb4TW8dPIkTVmiI+1J2bVahpGDivTOplY+KxysMgGQyH2xRw9c0LtCc0y8SXFJB
-         d0Rf7lNBFDcBxIVUZoUdQ0yofJvXI6tcMDvXiD+6AQDPQC0ELlvJ/nvRHoXXDwrLx1Xg
-         FOYWK4YddigES+39c+v4YVJiWM+fOJuXKBGkg9rBVKg4XV7PENHkdS1NknT0cRKO8TGL
-         x//GDNCGW4tnt1ssbWkFRupulHm6X7nzSDnYG+9IvfNNy842TnXaHfkxfDkAk0S23Rmn
-         cJWWVycWXEpPjNZStcBHWBStnLPMTC7YhgjOLKyugrI6kOLqhx6eoyj3/q2f6FPFJke7
-         1kBA==
+        b=Pb09/le5N+STjNtp9B0YiBTf1Dkg47boIEH7x7A4hj2i+3+GejVtWKUZwKJZdpc2vE
+         uRY15lgY2v+PGN82g0Rk61dxgGI6p0z/vFy7H8omzkj6opNT2XtDhWDRVmv7ddSkbZKg
+         nGdAHcp7H/R+mm7OLOJvQU+hi0IPNfn4gyvQ4mCixhUiKysjGXdRhOFcNWMW6PthGRQ/
+         qOrEaKxt/lpy8oZT2JZ970q/MNSsxU5EDU+uid3WPQq8BySAt0fhhLlicXXtaOlNMOC2
+         4IRlGZ8bSIbO4ePBXEP86RtAyHGN2nwEAEAIC67cWYey9OrxgkkdIKANVbu1niYL6yfs
+         orfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=xQX+F52CrZxT5IYsWze/C+tjqJhaI6g7hnLoS8jTaVs=;
-        fh=8yfENsFVvJOLXWTBWR2sTm3A8bVodNCBgojjFH8cBX0=;
-        b=YfdyRL5+2ztquWhK4Ay9j5U6js6ATKQ0mMu8/Y34nNyWg1UemCneN9L48MPOgrud/6
-         NTTFH8R2d2FQyGJM0SxfOdkHt72XMd02V9UnJadZhS4Zg+ULp7fcDTXkwcLeOjrzJGY3
-         bChq6EZohK3a1rzxU62Ph+AFvwPGgwAPpfWaTBVy6++gIe+L3xiIPrBinP/fMXD/3Cb5
-         zyxP9PUat1reZm1a8OxxAZrXiDEGzxgc9iSu1Ihg8WxSWZzJ3hr1ZMQouksX9i9jvN83
-         ya2vI9qaX0KhRz0e65nC4rzrfO2zvSz0S9oeRh5BYqkQqne2DCa3Aovx/LIY3NThSbZv
-         f0Ag==;
+        bh=Eb+8IeIfgwFwqfNpEBukyROOFzwPNkiWo0719T+6Xmw=;
+        fh=u+YiaU80A92EQZrg9k9tmDG94Yv/AULoF5XbyewtLUo=;
+        b=ad68TemHsGXG+NMLfhsi3BfWRkzJi92DAyzMWDi0jVxUzWKAgq7op3rI90xHrqwcP0
+         tNID3DXajTPgA8qymmyB+xZNbaZnMdL5yd14uanM4LDsnliwicA1InP846JKVcY/fB8j
+         slc8ierttKiCiUo8v9E9ijjGZqisXkJXuOazSMjTUxrtaRUzDLY/ZC8DVs6a5nhzrGdx
+         Wq+DLGS+fClx06Nuw9n5PKcYHNxrZNSz5FYysLaXrZZczdmXHj9rte+aajm7Q/cB1o2n
+         N++Qe0VG/2ZQLjpUX3f2b0IYITVD7PMSLv5tsMMd3H8uq32RS/dfLnk5MNjVzMDqszOq
+         ILBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=KFrQ183a;
+       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=apsaAYvs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3c18f8855si192279685a.645.2025.03.03.12.37.28
+        by mx.google.com with ESMTPS id d75a77b69052e-474fc1e48e3si2690251cf.77.2025.03.03.12.45.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 12:37:29 -0800 (PST)
+        Mon, 03 Mar 2025 12:45:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=KFrQ183a;
+       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=apsaAYvs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpCX2-0000iB-Pl; Mon, 03 Mar 2025 15:36:56 -0500
+	id 1tpCeg-0003l5-4F; Mon, 03 Mar 2025 15:44:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tpCWr-0000hd-7l
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 15:36:47 -0500
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tpCWh-0002LS-T4
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 15:36:43 -0500
-Received: by mail-ua1-x934.google.com with SMTP id
- a1e0cc1a2514c-86b2cc89e4aso4324141241.1
- for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 12:36:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1741034194; x=1741638994;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xQX+F52CrZxT5IYsWze/C+tjqJhaI6g7hnLoS8jTaVs=;
- b=KFrQ183aZEs7qlpDwuBqK9J4ntmrJGv2ZeLhKKqS3bfPzUP69aQ8KcujywxfZ+6627
- mZXZfav6V9FZsd7CtyBp2dQBXyJzT0cv8an/ZGq/FQMZB7oRKUCOJ7bBJY2SBEgxkksW
- a54xOu3bIyy8I7FKjigeA/wTkhlpv51s5obNtw7cZ0WZymXGTP8lroNcJazj1cWLr0DD
- eRp7552SROCVxkyghe2OlE8WBCmn6SPj5vf7WZ9GfA6Yhv///fiY3kipA34UT/gDk9wP
- MJtSmTXDWHASkVOse1aCLTqeNsdZCmPKZeKoBV2jv61JJrfutxl+4ls15TaEQBkf7Nkh
- eOQg==
+ (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
+ id 1tpCeX-0003io-2G
+ for qemu-arm@nongnu.org; Mon, 03 Mar 2025 15:44:43 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
+ id 1tpCeU-0003H3-R4
+ for qemu-arm@nongnu.org; Mon, 03 Mar 2025 15:44:40 -0500
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 523AmPeB018110
+ for <qemu-arm@nongnu.org>; Mon, 3 Mar 2025 20:44:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=Eb+8IeIfgwFwqfNpEBukyROO
+ FzwPNkiWo0719T+6Xmw=; b=apsaAYvs1LyKR+r3+4lXq0jPoVqB221iNEfDi+qq
+ SxJFLFdfSqCpVV87wHvFoDqX6lMTb1NA2KNNJHTS6pKjMQBQAWlotIJDhDjUePEL
+ PH2M+slnxJNmRR5VPGlAPVZtz/KS6odtxTYBnJGp3xJa/nqRtrJup02l0psWz/Tu
+ ePRd7Xc1D9TvrRq7RDtNO4jxbXAeKConF9nkJTd6wLqFos5UXM7YhQZspt4vhGA9
+ exRJwgjClS3jS2Yf2UJPSttq5F2x7M3ynU4JTyXGyScnGi5XN08bLs+b7GzheX7Q
+ ldBRVDYb3sfcFNf6W8bJOzNd0e4CDl6VqnpFb8oOy7Eebw==
+Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
+ [209.85.128.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 453tf0nwcn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 20:44:34 +0000 (GMT)
+Received: by mail-yw1-f199.google.com with SMTP id
+ 00721157ae682-6fd541f4b43so38859557b3.0
+ for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 12:44:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741034194; x=1741638994;
+ d=1e100.net; s=20230601; t=1741034674; x=1741639474;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=xQX+F52CrZxT5IYsWze/C+tjqJhaI6g7hnLoS8jTaVs=;
- b=b6ACBwVMA1qftiqE26I6lWGRpl59kBeSW3618+XSptN2f4qKOma8fP3aYhQTWl0DOd
- Ec0hQUJKDsnTA+Ab7fL8BitJoSiiSIGK8veXveLLBCGLEo9pHotvSjZAX3Wl9vrjHoKX
- lRcmJ7IhPsPUAcdp+wFPl8sQvHN0qOvUyHILGZFwjKm6hFWMw8mWA3iHnf/35hJmQdmE
- Fk99yhA9Exn1xRnPwYjRLwdYOrDW5R22ZpYFq4rmFI1AIn6tAy4FbSFwbhPkBBhcfHPq
- vALYaLzl9bN1X0vSSKdlj9pGa3FTr5xacg/ioWfGCZ1wc3P7lBpcwsurb7F/PdfjCWjh
- 3fCA==
+ bh=Eb+8IeIfgwFwqfNpEBukyROOFzwPNkiWo0719T+6Xmw=;
+ b=bc1KGFaGVYIOvBbsTGTPAwyJE0085lZlm/VtAmro0uivy7zTT41bpKQGd6S8fBMSmf
+ w+YzyxF3TwAxxj+xVQq/o5hjCfDcKIU6gNv22Oo9PrhpxfWYw967UplBTOcOOwuD5QVN
+ NENx0yTSLPy3talVnFOsLznLrhosvG99zBFoHemEWybLPXNenYgfLB3grHvvBIvNx/ax
+ BrMv8Ahlh8dNffLPZtXkVQQgxJtLZHL5CESO4e7dLDvngKjMPLf8oqrk4sq3kZ4VX5Ii
+ dCIogoWPWcKdj4v1yT1z4X5l+hDt9FNOvOXD9ccXwMfL1OlRx51dGc7h40jNQ4Fv8imn
+ Rwmw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU9+4CjbfUnSyRvrmE82aBI+XK3W2damynCcu/lei1MZGMo087MZJX8OvwRVA9lO43n1kV2EFXhPg==@nongnu.org
-X-Gm-Message-State: AOJu0YwAX/VAA45cLNlkqPHTLbIyMUAq4frke9HhUL/JoXODYw7on9Nv
- OZf75H9zX/RJhRVURP43JaCBF/3Zf3dVrTerJeN36E8pQmDgWmhXQqFTgsPOP/y6ylR5+F98D2i
- 2+BeELqJZDH6zbbX8owHW6U+EL9l4gza9DFZr
-X-Gm-Gg: ASbGncvTEqZldKqtJjlbCZWC/EhLte8Mw7x4TSTnSgj1UTqiCog+aJCwVIIOTAbqvwD
- mVkePcfZaEkg+Kr+6QmxW3ZtSQHvz3Ld4mMKI+fvh/tqMsvcvieiYS8dlnB8THn2RCY7Z1ciPYY
- WBRkFhraHWX+OsaIQPfDcbc1tx0w==
-X-Received: by 2002:a05:6102:2b8a:b0:4c1:7c38:135 with SMTP id
- ada2fe7eead31-4c17c3807dfmr5751166137.0.1741034194092; Mon, 03 Mar 2025
- 12:36:34 -0800 (PST)
+ AJvYcCWRzSOx3z0yE6Z3c2L5gGWFjC//UjiEdNvTCPdo7cCuCXNZALbTfWr7JOmmz01wi00gtoT++nsFgQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyVTvdYuyKuX4k5jQvr0cIOZkdnEReIiTde4V0bnsNaEKmGCn7m
+ wwASVoo8VH1NSzDhjZFZ6a+xwFNNBHGxtUubVfDyqdM5w3RuHX4hA3WwJ8ezvwQct6sI1vGVyiT
+ 1IIrl0cw7cYlMG2E96jBkIR6i0jvkHSSTB6jhpPl5qDkzpeduXPKls9N+ejremorhxOf1bmZ0Gb
+ qKyJ3BBgHg6oTN0mqNaWw+D4m6ug==
+X-Gm-Gg: ASbGncs+f6Iilt7TMBUiUUKogsNFxN0/1ScFBJ7Ih9Ghi9hMGr9eBmUVtq42LOxjaqH
+ QJRJaeS0Je98N5c5q/2hLAkHRYm9k24teGDJtD9jUkr6OBpbADZUrwzA5TPM6ff4+kILt2v0/JD
+ vonqrQA9pUJHCR8gxNUl8Lbw6YDWIn6A==
+X-Received: by 2002:a05:690c:74c9:b0:6fd:369c:635e with SMTP id
+ 00721157ae682-6fd4a0fba64mr221123807b3.16.1741034673736; 
+ Mon, 03 Mar 2025 12:44:33 -0800 (PST)
+X-Received: by 2002:a05:690c:74c9:b0:6fd:369c:635e with SMTP id
+ 00721157ae682-6fd4a0fba64mr221123567b3.16.1741034673406; Mon, 03 Mar 2025
+ 12:44:33 -0800 (PST)
 MIME-Version: 1.0
-References: <20250112210056.16658-1-phil@philjordan.eu>
- <20250112210056.16658-12-phil@philjordan.eu>
- <2a4229cf-c789-41ed-ab46-0f0fd9efd19a@linaro.org>
-In-Reply-To: <2a4229cf-c789-41ed-ab46-0f0fd9efd19a@linaro.org>
-From: Phil Dennis-Jordan <phil@philjordan.eu>
-Date: Mon, 3 Mar 2025 21:36:23 +0100
-X-Gm-Features: AQ5f1JrtsqY2pzWLxRwusDISkqaLgddLICBPQy9d-zcfE57kCSx3Hp9stnwL4RE
-Message-ID: <CAAibmn0tV_YLwJwcgfy5sZiPyeaBWE_FPOPEEE_0aZ7mMANFig@mail.gmail.com>
-Subject: Re: [PATCH v17 11/11] hw/vmapple/vmapple: Add vmapple machine type
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org, 
- pbonzini@redhat.com, mst@redhat.com, stefanha@redhat.com, kwolf@redhat.com, 
- hreitz@redhat.com, berrange@redhat.com, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, marcandre.lureau@redhat.com, eblake@redhat.com, 
- armbru@redhat.com, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- Alexander Graf <graf@amazon.com>, Akihiko Odaki <akihiko.odaki@daynix.com>
-Content-Type: multipart/alternative; boundary="000000000000ae6287062f761c1e"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::934;
- envelope-from=phil@philjordan.eu; helo=mail-ua1-x934.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+References: <20250225074133.6827-1-kuqin12@gmail.com>
+ <20250225074133.6827-2-kuqin12@gmail.com>
+ <CAD=n3R2kuvUzyE7nKPmpyELozdo_+eAKVr_CxA5HQ_jLL25stw@mail.gmail.com>
+In-Reply-To: <CAD=n3R2kuvUzyE7nKPmpyELozdo_+eAKVr_CxA5HQ_jLL25stw@mail.gmail.com>
+From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Date: Mon, 3 Mar 2025 20:44:21 +0000
+X-Gm-Features: AQ5f1JprlG5Sgu7UcZuHcTwErsEB0-U0S3xSc2buB1mmfQIoDfpU4ZFqvaFi8rU
+Message-ID: <CAD=n3R0ntWYNN9LxJWVXApY3s_LRddx4YVQPYRzRojXcL-BDug@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Adding TPM support for ARM SBSA-Ref
+ machine
+To: Kun Qin <kuqin12@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Graeme Gregory <graeme@xora.org.uk>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Proofpoint-GUID: d9TBvq3qNX9ndUdEMiLWf6kU31v0st2B
+X-Proofpoint-ORIG-GUID: d9TBvq3qNX9ndUdEMiLWf6kU31v0st2B
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-03_10,2025-03-03_04,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ suspectscore=0 malwarescore=0 lowpriorityscore=0 mlxlogscore=999
+ phishscore=0 adultscore=0 spamscore=0 clxscore=1015 mlxscore=0 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2502100000 definitions=main-2503030159
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=leif.lindholm@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,468 +151,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RPz1/DLzQSPR
+X-TUID: 9DLfpJHpwEho
 
---000000000000ae6287062f761c1e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Doh! Add the lists back in. (No idea how I dropped them off.)
 
-On Mon, 3 Mar 2025 at 19:20, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+On Mon, 3 Mar 2025 at 17:02, Leif Lindholm
+<leif.lindholm@oss.qualcomm.com> wrote:
 >
-wrote:
-
-> On 12/1/25 22:00, Phil Dennis-Jordan wrote:
-> > From: Alexander Graf <graf@amazon.com>
+> Hi Kun,
+>
+> Apologies for delay in responding - I was out last week.
+> I agree with this addition, since a TPM is a requirement for servers.
+>
+> However, to help simplify review, could you add some detail in the
+> commit message
+> as to which SystemReady requirements this resolves and whether this
+> implementation
+> fulfills all requirements across BSA/SBSA/BBSA?
+>
+> I agree with Peter that since this is a non-discoverable component, it
+> would make sense
+> to step the machine minor version number. A major version bump would
+> not be required
+> since simply adding this component will not break any existing
+> firmware (which will have
+> no way of knowing it even exists).
+>
+> Regards,
+>
+> Leif
+>
+> On Tue, 25 Feb 2025 at 07:41, Kun Qin <kuqin12@gmail.com> wrote:
 > >
-> > Apple defines a new "vmapple" machine type as part of its proprietary
-> > macOS Virtualization.Framework vmm. This machine type is similar to the
-> > virt one, but with subtle differences in base devices, a few special
-> > vmapple device additions and a vastly different boot chain.
+> > From: Kun Qin <kuqin@microsoft.com>
 > >
-> > This patch reimplements this machine type in QEMU. To use it, you
-> > have to have a readily installed version of macOS for VMApple,
-> > run on macOS with -accel hvf, pass the Virtualization.Framework
-> > boot rom (AVPBooter) in via -bios, pass the aux and root volume as pfla=
-sh
-> > and pass aux and root volume as virtio drives. In addition, you also
-> > need to find the machine UUID and pass that as -M vmapple,uuid=3D
-> parameter:
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2625
 > >
-> > $ qemu-system-aarch64 -accel hvf -M vmapple,uuid=3D0x1234 -m 4G \
-> >      -bios
-> /System/Library/Frameworks/Virtualization.framework/Versions/A/Resources/=
-AVPBooter.vmapple2.bin
-> >      -drive file=3Daux,if=3Dpflash,format=3Draw \
-> >      -drive file=3Droot,if=3Dpflash,format=3Draw \
-> >      -drive file=3Daux,if=3Dnone,id=3Daux,format=3Draw \
-> >      -device vmapple-virtio-blk-pci,variant=3Daux,drive=3Daux \
-> >      -drive file=3Droot,if=3Dnone,id=3Droot,format=3Draw \
-> >      -device vmapple-virtio-blk-pci,variant=3Droot,drive=3Droot
+> > This change aims to add a TPM device for SBSA ref machine.
 > >
-> > With all these in place, you should be able to see macOS booting
-> > successfully.
+> > The implementation adds a TPM create routine during machine
+> > initialization.
 > >
-> > Known issues:
-> >   - Currently only macOS 12 guests are supported. The boot process for
-> >     13+ will need further investigation and adjustment.
+> > The backend can be the same as the rest of TPM support, by using swtpm.
 > >
-> > Signed-off-by: Alexander Graf <graf@amazon.com>
-> > Co-authored-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> > Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > Signed-off-by: Kun Qin <kuqin12@gmail.com>
 > > ---
->
->
-> >   MAINTAINERS                 |   1 +
-> >   contrib/vmapple/uuid.sh     |   9 +
-> >   docs/system/arm/vmapple.rst |  63 ++++
-> >   docs/system/target-arm.rst  |   1 +
-> >   hw/vmapple/Kconfig          |  20 ++
-> >   hw/vmapple/meson.build      |   1 +
-> >   hw/vmapple/vmapple.c        | 618 +++++++++++++++++++++++++++++++++++=
-+
-> >   7 files changed, 713 insertions(+)
-> >   create mode 100755 contrib/vmapple/uuid.sh
-> >   create mode 100644 docs/system/arm/vmapple.rst
-> >   create mode 100644 hw/vmapple/vmapple.c
+> >  hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++
+> >  1 file changed, 24 insertions(+)
 > >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index e220744abf..3a3d9e19f4 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -2791,6 +2791,7 @@ M: Phil Dennis-Jordan <phil@philjordan.eu>
-> >   S: Maintained
-> >   F: hw/vmapple/*
-> >   F: include/hw/vmapple/*
-> > +F: docs/system/arm/vmapple.rst
+> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > index e720de306419..93eb3d1e363b 100644
+> > --- a/hw/arm/sbsa-ref.c
+> > +++ b/hw/arm/sbsa-ref.c
+> > @@ -28,6 +28,8 @@
+> >  #include "system/numa.h"
+> >  #include "system/runstate.h"
+> >  #include "system/system.h"
+> > +#include "system/tpm.h"
+> > +#include "system/tpm_backend.h"
+> >  #include "exec/hwaddr.h"
+> >  #include "kvm_arm.h"
+> >  #include "hw/arm/boot.h"
+> > @@ -94,6 +96,7 @@ enum {
+> >      SBSA_SECURE_MEM,
+> >      SBSA_AHCI,
+> >      SBSA_XHCI,
+> > +    SBSA_TPM,
+> >  };
 > >
-> >   Subsystems
-> >   ----------
-> > diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh
-> > new file mode 100755
-> > index 0000000000..956e8c3afe
-> > --- /dev/null
-> > +++ b/contrib/vmapple/uuid.sh
-> > @@ -0,0 +1,9 @@
-> > +#!/bin/sh
-> > +# Used for converting a guest provisioned using Virtualization.framewo=
-rk
-> > +# for use with the QEMU 'vmapple' aarch64 machine type.
-> > +#
-> > +# Extracts the Machine UUID from Virtualization.framework VM JSON file=
-.
-> > +# (as produced by 'macosvm', passed as command line argument)
-> > +
-> > +plutil -extract machineId raw "$1" | base64 -d | plutil -extract ECID
-> raw -
-> > +
-> > diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst
-> > new file mode 100644
-> > index 0000000000..5090a8997c
-> > --- /dev/null
-> > +++ b/docs/system/arm/vmapple.rst
-> > @@ -0,0 +1,63 @@
->
-> Alex, Phil, we now mandate a SPDX tag. Due to the license used in
-> vmapple.c in this patch, are you OK with me squashing here:
-
-
-Sorry about that, I forgot all about the SPDX tags in scripts and docs -
-yes, please add that SPDX on uuid.sh. The vmapple.rst is Alex's creation (I
-think I tweaked a few lines max) - but if that's the usual license we use
-for documentation as well then it seems a reasonable assumption to use
-GPL2+ there too if we don't hear from him.
-
-Thanks for the doc syntax fix as well.
-
--- >8 --
-> diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst
-> index 5090a8997c3..c5b1bcf45ea 100644
-> --- a/docs/system/arm/vmapple.rst
-> +++ b/docs/system/arm/vmapple.rst
-> @@ -0,0 +1,2 @@
-> +.. SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh
-> index 956e8c3afed..f5637221d23 100755
-> --- a/contrib/vmapple/uuid.sh
-> +++ b/contrib/vmapple/uuid.sh
-> @@ -1,0 +2 @@
-> +#
-> @@ -6,0 +8,2 @@
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> ---
->
-> ?
->
-> > +VMApple machine emulation
+> >  struct SBSAMachineState {
+> > @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+> >      /* Space here reserved for more SMMUs */
+> >      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
+> >      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
+> > +    [SBSA_TPM] =                { 0x60120000, 0x00010000 },
+> >      /* Space here reserved for other devices */
+> >      [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
+> >      /* 32-bit address PCIE MMIO space */
+> > @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+> >      }
+> >  }
 > >
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)
+> > +{
+> > +    Error *errp = NULL;
+> > +    DeviceState *dev;
 > > +
-> > +VMApple is the device model that the macOS built-in hypervisor called
-> "Virtualization.framework"
-> > +exposes to Apple Silicon macOS guests. The "vmapple" machine model in
-> QEMU implements the same
-> > +device model, but does not use any code from Virtualization.Framework.
+> > +    TPMBackend *be = qemu_find_tpm_be("tpm0");
+> > +    if (be == NULL) {
+> > +        error_report("Couldn't find tmp0 backend");
+> > +        return;
+> > +    }
 > > +
-> > +Prerequisites
-> > +-------------
+> > +    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
+> > +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
+> > +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+> > +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_TPM].base);
+> > +}
 > > +
-> > +To run the vmapple machine model, you need to
+> >  static void create_pcie(SBSAMachineState *sms)
+> >  {
+> >      hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
+> > @@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms)
+> >      pci_create_simple(pci->bus, -1, "bochs-display");
+> >
+> >      create_smmu(sms, pci->bus);
 > > +
-> > + * Run on Apple Silicon
-> > + * Run on macOS 12.0 or above
-> > + * Have an already installed copy of a Virtualization.Framework macOS
-> 12 virtual
-> > +   machine. Note that newer versions than 12.x are currently NOT
-> supported on
-> > +   the guest side. I will assume that you installed it using the
-> > +   `macosvm <https://github.com/s-u/macosvm>` CLI.
-> > +
-> > +First, we need to extract the UUID from the virtual machine that you
-> installed. You can do this
-> > +by running the shell script in contrib/vmapple/uuid.sh on the
-> macosvm.json file.
-> > +
-> > +.. code-block:: bash
-> > +  :caption: uuid.sh script to extract the UUID from a macosvm.json fil=
-e
-> > +
-> > +  $ contrib/vmapple/uuid.sh "path/to/macosvm.json"
-> > +
-> > +Now we also need to trim the aux partition. It contains metadata that
-> we can just discard:
-> > +
-> > +.. code-block:: bash
-> > +  :caption: Command to trim the aux file
-> > +
-> > +  $ dd if=3D"aux.img" of=3D"aux.img.trimmed" bs=3D$(( 0x4000 )) skip=
-=3D1
-> > +
-> > +How to run
-> > +----------
-> > +
-> > +Then, we can launch QEMU with the Virtualization.Framework pre-boot
-> environment and the readily
-> > +installed target disk images. I recommend to port forward the VM's ssh
-> and vnc ports to the host
-> > +to get better interactive access into the target system:
-> > +
-> > +.. code-block:: bash
-> > +  :caption: Example execution command line
-> > +
-> > +  $ UUID=3D"$(contrib/vmapple/uuid.sh 'macosvm.json')"
-> > +  $
-> AVPBOOTER=3D"/System/Library/Frameworks/Virtualization.framework/Resource=
-s/AVPBooter.vmapple2.bin"
-> > +  $ AUX=3D"aux.img.trimmed"
-> > +  $ DISK=3D"disk.img"
-> > +  $ qemu-system-aarch64 \
-> > +       -serial mon:stdio \
-> > +       -m 4G \
-> > +       -accel hvf \
-> > +       -M vmapple,uuid=3D"$UUID" \
-> > +       -bios "$AVPBOOTER" \
-> > +       -drive file=3D"$AUX",if=3Dpflash,format=3Draw \
-> > +       -drive file=3D"$DISK",if=3Dpflash,format=3Draw \
-> > +       -drive file=3D"$AUX",if=3Dnone,id=3Daux,format=3Draw \
-> > +       -drive file=3D"$DISK",if=3Dnone,id=3Droot,format=3Draw \
-> > +       -device vmapple-virtio-blk-pci,variant=3Daux,drive=3Daux \
-> > +       -device vmapple-virtio-blk-pci,variant=3Droot,drive=3Droot \
-> > +       -netdev
-> user,id=3Dnet0,ipv6=3Doff,hostfwd=3Dtcp::2222-:22,hostfwd=3Dtcp::5901-:59=
-00 \
-> > +       -device virtio-net-pci,netdev=3Dnet0
-> > +
->
-
---000000000000ae6287062f761c1e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 3 Mar 2=
-025 at 19:20, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lina=
-ro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">On 12/1/25 22:00, Phil Dennis-Jordan wrote:<br>
-&gt; From: Alexander Graf &lt;<a href=3D"mailto:graf@amazon.com" target=3D"=
-_blank">graf@amazon.com</a>&gt;<br>
-&gt; <br>
-&gt; Apple defines a new &quot;vmapple&quot; machine type as part of its pr=
-oprietary<br>
-&gt; macOS Virtualization.Framework vmm. This machine type is similar to th=
-e<br>
-&gt; virt one, but with subtle differences in base devices, a few special<b=
-r>
-&gt; vmapple device additions and a vastly different boot chain.<br>
-&gt; <br>
-&gt; This patch reimplements this machine type in QEMU. To use it, you<br>
-&gt; have to have a readily installed version of macOS for VMApple,<br>
-&gt; run on macOS with -accel hvf, pass the Virtualization.Framework<br>
-&gt; boot rom (AVPBooter) in via -bios, pass the aux and root volume as pfl=
-ash<br>
-&gt; and pass aux and root volume as virtio drives. In addition, you also<b=
-r>
-&gt; need to find the machine UUID and pass that as -M vmapple,uuid=3D para=
-meter:<br>
-&gt; <br>
-&gt; $ qemu-system-aarch64 -accel hvf -M vmapple,uuid=3D0x1234 -m 4G \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -bios /System/Library/Frameworks/Virtualization.fr=
-amework/Versions/A/Resources/AVPBooter.vmapple2.bin<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -drive file=3Daux,if=3Dpflash,format=3Draw \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -drive file=3Droot,if=3Dpflash,format=3Draw \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -drive file=3Daux,if=3Dnone,id=3Daux,format=3Draw =
-\<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -device vmapple-virtio-blk-pci,variant=3Daux,drive=
-=3Daux \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -drive file=3Droot,if=3Dnone,id=3Droot,format=3Dra=
-w \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -device vmapple-virtio-blk-pci,variant=3Droot,driv=
-e=3Droot<br>
-&gt; <br>
-&gt; With all these in place, you should be able to see macOS booting<br>
-&gt; successfully.<br>
-&gt; <br>
-&gt; Known issues:<br>
-&gt;=C2=A0 =C2=A0- Currently only macOS 12 guests are supported. The boot p=
-rocess for<br>
-&gt;=C2=A0 =C2=A0 =C2=A013+ will need further investigation and adjustment.=
-<br>
-&gt; <br>
-&gt; Signed-off-by: Alexander Graf &lt;<a href=3D"mailto:graf@amazon.com" t=
-arget=3D"_blank">graf@amazon.com</a>&gt;<br>
-&gt; Co-authored-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjord=
-an.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjorda=
-n.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt; Reviewed-by: Akihiko Odaki &lt;<a href=3D"mailto:akihiko.odaki@daynix.=
-com" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt;<br>
-&gt; ---<br>
-<br>
-<br>
-&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 =C2=A0contrib/vmapple/uuid.sh=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A09=
- +<br>
-&gt;=C2=A0 =C2=A0docs/system/arm/vmapple.rst |=C2=A0 63 ++++<br>
-&gt;=C2=A0 =C2=A0docs/system/target-arm.rst=C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 =C2=A0hw/vmapple/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 20 ++<br>
-&gt;=C2=A0 =C2=A0hw/vmapple/meson.build=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01=
- +<br>
-&gt;=C2=A0 =C2=A0hw/vmapple/vmapple.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 618 ++++=
-++++++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A07 files changed, 713 insertions(+)<br>
-&gt;=C2=A0 =C2=A0create mode 100755 contrib/vmapple/uuid.sh<br>
-&gt;=C2=A0 =C2=A0create mode 100644 docs/system/arm/vmapple.rst<br>
-&gt;=C2=A0 =C2=A0create mode 100644 hw/vmapple/vmapple.c<br>
-&gt; <br>
-&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
-&gt; index e220744abf..3a3d9e19f4 100644<br>
-&gt; --- a/MAINTAINERS<br>
-&gt; +++ b/MAINTAINERS<br>
-&gt; @@ -2791,6 +2791,7 @@ M: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil=
-@philjordan.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt;=C2=A0 =C2=A0S: Maintained<br>
-&gt;=C2=A0 =C2=A0F: hw/vmapple/*<br>
-&gt;=C2=A0 =C2=A0F: include/hw/vmapple/*<br>
-&gt; +F: docs/system/arm/vmapple.rst<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0Subsystems<br>
-&gt;=C2=A0 =C2=A0----------<br>
-&gt; diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh<br>
-&gt; new file mode 100755<br>
-&gt; index 0000000000..956e8c3afe<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/contrib/vmapple/uuid.sh<br>
-&gt; @@ -0,0 +1,9 @@<br>
-&gt; +#!/bin/sh<br>
-&gt; +# Used for converting a guest provisioned using Virtualization.framew=
-ork<br>
-&gt; +# for use with the QEMU &#39;vmapple&#39; aarch64 machine type.<br>
-&gt; +#<br>
-&gt; +# Extracts the Machine UUID from Virtualization.framework VM JSON fil=
-e.<br>
-&gt; +# (as produced by &#39;macosvm&#39;, passed as command line argument)=
-<br>
-&gt; +<br>
-&gt; +plutil -extract machineId raw &quot;$1&quot; | base64 -d | plutil -ex=
-tract ECID raw -<br>
-&gt; +<br>
-&gt; diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst=
-<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..5090a8997c<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/docs/system/arm/vmapple.rst<br>
-&gt; @@ -0,0 +1,63 @@<br>
-<br>
-Alex, Phil, we now mandate a SPDX tag. Due to the license used in<br>
-vmapple.c in this patch, are you OK with me squashing here:</blockquote><di=
-v><br></div><div>Sorry about that, I forgot all about the SPDX tags in scri=
-pts and docs - yes, please add that SPDX on uuid.sh. The vmapple.rst is Ale=
-x&#39;s creation (I think I tweaked a few lines max) - but if that&#39;s th=
-e usual license we use for documentation as well then it seems a reasonable=
- assumption to use GPL2+ there too if we don&#39;t hear from him.</div><div=
->=C2=A0</div><div>Thanks for the doc syntax fix as well.</div><div><br></di=
-v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
-r-left:1px solid rgb(204,204,204);padding-left:1ex">
--- &gt;8 --<br>
-diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst<br>
-index 5090a8997c3..c5b1bcf45ea 100644<br>
---- a/docs/system/arm/vmapple.rst<br>
-+++ b/docs/system/arm/vmapple.rst<br>
-@@ -0,0 +1,2 @@<br>
-+.. SPDX-License-Identifier: GPL-2.0-or-later<br>
-+<br>
-diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh<br>
-index 956e8c3afed..f5637221d23 100755<br>
---- a/contrib/vmapple/uuid.sh<br>
-+++ b/contrib/vmapple/uuid.sh<br>
-@@ -1,0 +2 @@<br>
-+#<br>
-@@ -6,0 +8,2 @@<br>
-+#<br>
-+# SPDX-License-Identifier: GPL-2.0-or-later<br>
----<br>
-<br>
-?<br>
-<br>
-&gt; +VMApple machine emulation<br>
-&gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
-&gt; +<br>
-&gt; +VMApple is the device model that the macOS built-in hypervisor called=
- &quot;Virtualization.framework&quot;<br>
-&gt; +exposes to Apple Silicon macOS guests. The &quot;vmapple&quot; machin=
-e model in QEMU implements the same<br>
-&gt; +device model, but does not use any code from Virtualization.Framework=
-.<br>
-&gt; +<br>
-&gt; +Prerequisites<br>
-&gt; +-------------<br>
-&gt; +<br>
-&gt; +To run the vmapple machine model, you need to<br>
-&gt; +<br>
-&gt; + * Run on Apple Silicon<br>
-&gt; + * Run on macOS 12.0 or above<br>
-&gt; + * Have an already installed copy of a Virtualization.Framework macOS=
- 12 virtual<br>
-&gt; +=C2=A0 =C2=A0machine. Note that newer versions than 12.x are currentl=
-y NOT supported on<br>
-&gt; +=C2=A0 =C2=A0the guest side. I will assume that you installed it usin=
-g the<br>
-&gt; +=C2=A0 =C2=A0`macosvm &lt;<a href=3D"https://github.com/s-u/macosvm" =
-rel=3D"noreferrer" target=3D"_blank">https://github.com/s-u/macosvm</a>&gt;=
-` CLI.<br>
-&gt; +<br>
-&gt; +First, we need to extract the UUID from the virtual machine that you =
-installed. You can do this<br>
-&gt; +by running the shell script in contrib/vmapple/uuid.sh on the macosvm=
-.json file.<br>
-&gt; +<br>
-&gt; +.. code-block:: bash<br>
-&gt; +=C2=A0 :caption: uuid.sh script to extract the UUID from a macosvm.js=
-on file<br>
-&gt; +<br>
-&gt; +=C2=A0 $ contrib/vmapple/uuid.sh &quot;path/to/macosvm.json&quot;<br>
-&gt; +<br>
-&gt; +Now we also need to trim the aux partition. It contains metadata that=
- we can just discard:<br>
-&gt; +<br>
-&gt; +.. code-block:: bash<br>
-&gt; +=C2=A0 :caption: Command to trim the aux file<br>
-&gt; +<br>
-&gt; +=C2=A0 $ dd if=3D&quot;aux.img&quot; of=3D&quot;aux.img.trimmed&quot;=
- bs=3D$(( 0x4000 )) skip=3D1<br>
-&gt; +<br>
-&gt; +How to run<br>
-&gt; +----------<br>
-&gt; +<br>
-&gt; +Then, we can launch QEMU with the Virtualization.Framework pre-boot e=
-nvironment and the readily<br>
-&gt; +installed target disk images. I recommend to port forward the VM&#39;=
-s ssh and vnc ports to the host<br>
-&gt; +to get better interactive access into the target system:<br>
-&gt; +<br>
-&gt; +.. code-block:: bash<br>
-&gt; +=C2=A0 :caption: Example execution command line<br>
-&gt; +<br>
-&gt; +=C2=A0 $ UUID=3D&quot;$(contrib/vmapple/uuid.sh &#39;macosvm.json&#39=
-;)&quot;<br>
-&gt; +=C2=A0 $ AVPBOOTER=3D&quot;/System/Library/Frameworks/Virtualization.=
-framework/Resources/AVPBooter.vmapple2.bin&quot;<br>
-&gt; +=C2=A0 $ AUX=3D&quot;aux.img.trimmed&quot;<br>
-&gt; +=C2=A0 $ DISK=3D&quot;disk.img&quot;<br>
-&gt; +=C2=A0 $ qemu-system-aarch64 \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-serial mon:stdio \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-m 4G \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-accel hvf \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-M vmapple,uuid=3D&quot;$UUID&quot; \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-bios &quot;$AVPBOOTER&quot; \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-drive file=3D&quot;$AUX&quot;,if=3Dpflash=
-,format=3Draw \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-drive file=3D&quot;$DISK&quot;,if=3Dpflas=
-h,format=3Draw \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-drive file=3D&quot;$AUX&quot;,if=3Dnone,i=
-d=3Daux,format=3Draw \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-drive file=3D&quot;$DISK&quot;,if=3Dnone,=
-id=3Droot,format=3Draw \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-device vmapple-virtio-blk-pci,variant=3Da=
-ux,drive=3Daux \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-device vmapple-virtio-blk-pci,variant=3Dr=
-oot,drive=3Droot \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-netdev user,id=3Dnet0,ipv6=3Doff,hostfwd=
-=3Dtcp::2222-:22,hostfwd=3Dtcp::5901-:5900 \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-device virtio-net-pci,netdev=3Dnet0<br>
-&gt; +<br>
-</blockquote></div></div>
-
---000000000000ae6287062f761c1e--
+> > +    create_tpm(sms, pci->bus);
+> >  }
+> >
+> >  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+> > --
+> > 2.43.0
+> >

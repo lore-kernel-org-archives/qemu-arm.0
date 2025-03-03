@@ -1,321 +1,425 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2917381njb;
-        Mon, 3 Mar 2025 14:11:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVE0GhPg/293cZYDidymYWdeFPmJMlWDN0Gi9z+4hmnRurNs2LgWkrcboptMZQ9avyQNwOTvyXOokkdyQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGMA0ZsINI52pXr2nh4MixH1mwLkm6cZ+PJqdG4n5qwQbtYUPhI9zdd7SLICJv6YwNGtV6+
-X-Received: by 2002:a05:622a:4d1:b0:474:d052:43bc with SMTP id d75a77b69052e-474fbc2bcf1mr14353171cf.1.1741039895948;
-        Mon, 03 Mar 2025 14:11:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741039895; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2934440njb;
+        Mon, 3 Mar 2025 14:56:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWPXqilIDrFk9wjtk0ZnnKBu6AX3gmKzfMBBfWE8G/DvYxU0XQ6sKmE3J9k1axE4ip7XbZqt4T0jLWkLA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbSHSqUipCSIUr+Wf7Jhg7aWgGgae6VJy4Gd45dLPVmgLH+zpb6dC0KH9+J1rgwkHMjgFK
+X-Received: by 2002:a05:620a:3946:b0:7b6:d826:40ab with SMTP id af79cd13be357-7c39c6778edmr2479702085a.51.1741042587332;
+        Mon, 03 Mar 2025 14:56:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741042587; cv=none;
         d=google.com; s=arc-20240605;
-        b=RrMOSiR+e/sl8/avzoBjED1c5KpMHFT5+xxeJOBPjxianN7a/SpCsbqyN1Ls5zBnHL
-         dtuPt8mxmzq4OPT858RC49iP8/+64X1N+Fm+9igrQjQntDp/aa6bi8uiO2qdj3tzIn9p
-         UlLFLlryaLACvHpw4NiCB1z8s6Pd0KWRjD6KnmXLGbU90CffncL4ACqGlOT4ZzAhzbLa
-         S908c2suDXU22Oc3UYrCeFaqwerTQH3UVXg6SABygMEwH4QInFpKhbxoZv3NsFoIeAdD
-         pRRYmkj006gKW/wBGRqwAAVHuK3S48mq6zr3pn51XMX1HyYFUh72zA600i/L9TwY68zf
-         sJag==
+        b=kLakF4hPm6xDjnLs6JNcfchEbfor58yfq1QYMyi93BdxM8nV3Y2gaMt6mXaTb9swVj
+         EPP7N515OqsnvtGXiPgPsD5bu3VVY4NkSjvp5OLkPgER8kllK4Gkczs4NaYEirI56nJR
+         ICH0A8ffMdUGci6O90CHLRalqeYEjduOhox7WBzekg6jwdZQt1J+IYcpCd/DOP29M7Ah
+         wlgn3ov712Tpbx1KHt6ipvghuP5+2G723XOyLApI9fCZvC4CEJRv+mOwl8mmmNk3Kxe7
+         L05h6igDRGbyyltN7Td+Hx2TOSmDdcosaxu50sn3c85Gg04z54klRM8EOV1xPBr1X10O
+         z5Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=QXfRL2pEQ2VY0ApLfWiY8JKsViq47NIBx28EgH8l5Nw=;
-        fh=rU/7tvwMIIkMNQLCAlxIuZq5KqZC+Mdf+QP5mfHU+q8=;
-        b=ifNXoWWN6uxKZpLqNRIRgPY+QNF1jhHk8A7gxROWl6xqqNsn+PQZQdoq01HW9RO4kP
-         aFauheKlshhS02tsgFknnkUxBubGTA/r8HVXud7zQZecokvmWVal+x0D3jkt9bk8UESH
-         id6fqGdU19+5pFGahVDIfJdCUIJSjeBeRqCHMHIt6QwVbjzzGx5QpKH82yrmMJGQNfmL
-         KcpVqCqUbQBt76NUAAJ4ajZZiR1nBPVI3wIkHgQoK0B1QD2ZF0UfEjE3SHu6ta1VI+5y
-         Yh3Bj2AOBcWRnY8RTFoFXCpFCwQZ07r1SEwwdnRbK3/bYNO5swny04TQX/ODDVG9h2JE
-         nmdQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=nZZHQZN2L4HaMwIKCYtrRNom5hDTxawWs/qZxfArXl4=;
+        fh=HyR1jSozpgmOPg1XsBdK3Yq0KCZ3qSU/yPLzP9drjhQ=;
+        b=H1o2fJilirlK96GKKLhcZkw7emswU9Odk1wRFInZi7HPhtlT3dsCupSX/Xn/WufZXx
+         HYmZbIZ3En/gxZ84b1Ko+LnXH2laO+G7SkAh8poUingDtZ/Fg3F3kS7sxaCl7K09QWAI
+         qkTvX8ytuxG1Er9iBj78qT7JdqK1oFGe9LwFU8q0qO7JaWoM3J+NGJDokcVN879yRKN1
+         nffGyufH7b+lGX0AnwBqjL4cJLubn+ey0Rb4mRHTYPJZ7YfTmW4eWMQVtdizPvAuRG/q
+         cfq5M9QVU6wGAd8/15GHtQZO3wn55O60fde2P59lTpyFE1YUK2fZpPZ4YbjM1eOnXzz2
+         EUHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5odp2ei;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="b7FZ/k2G";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4746919e492si95903301cf.126.2025.03.03.14.11.35
+        by mx.google.com with ESMTPS id af79cd13be357-7c3c5473db1si162500885a.127.2025.03.03.14.56.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 14:11:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Mar 2025 14:56:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5odp2ei;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="b7FZ/k2G";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpE0K-0006U9-OZ; Mon, 03 Mar 2025 17:11:16 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tpEhT-00063T-D4; Mon, 03 Mar 2025 17:55:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tpE0I-0006TN-CM
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 17:11:14 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
+ id 1tpEhS-000633-EF; Mon, 03 Mar 2025 17:55:50 -0500
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tpE0F-0005DY-UZ
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 17:11:14 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4398e3dfc66so44852985e9.0
- for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 14:11:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <kuqin12@gmail.com>)
+ id 1tpEhQ-0001c3-8W; Mon, 03 Mar 2025 17:55:50 -0500
+Received: by mail-qv1-xf30.google.com with SMTP id
+ 6a1803df08f44-6e8992f9a45so35810376d6.0; 
+ Mon, 03 Mar 2025 14:55:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741039863; x=1741644663; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QXfRL2pEQ2VY0ApLfWiY8JKsViq47NIBx28EgH8l5Nw=;
- b=p5odp2eiUNfcg4UTQQczOMhJ9Ez1Q6ugpS43I/HWzJ95VkQNfgABEGVUm3qulrlewC
- sfSQldzbKMiNSTO5UvezjFGDv4gvf70dzPK6h9T5xcA6OnnZBvj6XuJitoqh9WUeBmYs
- 0VGLPZJRKH+NgDClbVCkj3kUBBMtD78z3vyDN3fknV2qQKjWM0yRzAwNlLawpUQXZLL8
- 9qLt2vxsl9ybhhC15J+f2fSzjeTd0cCghT2GkcP/tR1dJ9ry63/djMP6eMw31gF0s3X6
- Z2naP89dbe9sh6/6cmxhY2gxGfr9SMdZar/sYjBAiIWg8kX2NyKXowPTSwIBCjmS9+lQ
- gDAw==
+ d=gmail.com; s=20230601; t=1741042546; x=1741647346; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=nZZHQZN2L4HaMwIKCYtrRNom5hDTxawWs/qZxfArXl4=;
+ b=b7FZ/k2Ge73de9J76qoYE7msrDqk+neMvjSkYlctwKRAfBJzH6BhE200iauH28jAzx
+ CpmKTEt4FL3rptRDxVRbWRyAGga+EHuhFbiDKYs6rcZiG98ehD4+oeIpX6mGYdtB5i/+
+ 6zoMfCEsA/UXLPxxCpei0sv3WVvCInuasXgwMZKdQTnKm3zWtDvKW00Pn4JcHyIVGB90
+ MijdSBtm05/jEpQm7zMNkMetjCmNo1l1gBGYsZVGKT5E/yFov/UgprCD+tX/b5mb3pzB
+ tde/Ql9xRwg/NxDMm6G27HwBScZ/iHz2SZy/L6ShDc8PAuNfsoDLuCBYOVK+RANcDcJX
+ 7jRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741039863; x=1741644663;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QXfRL2pEQ2VY0ApLfWiY8JKsViq47NIBx28EgH8l5Nw=;
- b=WMbhGJZ7NCvlI1/yhzpF5XaiJwq6/VYLgY9bCfQNRr1w5CnUxv6WXh4ksv6KlgS6EQ
- z9mcheqrVf7Rlt8ctIy4iC/VN9CjYnYULcAesEOHMF8v6IBSTvDdBScHMiuOn/zJeK0B
- CTFMlskJY1w3UhxJLWkq5q3KVKMnvpoUMKX2e7bXsJkzbR5L9G+SagsnNebOs5gZkgUg
- fUbV0JDpEBpdZSIJXg2GMT+GG4zexY4MbzpsgRpv9IF93igCekn/K1EGyBNn+noIlPNe
- H5K5vhihdG7pJnvAdE7d8djYRgb46wr/TC+qDA87AvYGQO5WuenruotO22P2d2qFR8oV
- n/rw==
+ d=1e100.net; s=20230601; t=1741042546; x=1741647346;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nZZHQZN2L4HaMwIKCYtrRNom5hDTxawWs/qZxfArXl4=;
+ b=JWj7cLSNezl7UnMZ45J+CK2i1L7Zv+1kLhBMtcxOzOwwVg3iT7wHKBFPoAxGFjijey
+ s74fGvKBxwYq3v6tbcD2X9O8uAxEadFMH0kKNVkoLBmwPUfKs9HloF1bryWjVcTjgUPf
+ GWngaohkhAM5U9WhIw/nwakiwteM72QBM0GSnInjFkKrH4bGje4MFLmPRCIxPuyHuNaK
+ htOYZTbruODKF8UpaLH6GlDuUFbSJDLMd7Bun5hUp0SjPU4l6ANFGSPmqVkVF5dvclVw
+ 0Wx9cKhLS5qY06D+WcLxjkprR8IcH74emVJyHA/5lv4gZq+6r/1zFs2u1x6te0JvKM7w
+ 13cA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVz8LwHwhx0zrueMemytaSKAgmtEs0TZgDi79X+7ONns2AO3NSThwf/Kaj7Q98GShE6nGaxwt+6Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YwzkSpfoif3VaQzKXdRoo+xjkF7K8azSx2mOjPqFOdStJA8b/dD
- 4yP0Gi02+tApDp5BlNipowJ7SvTx0M/bMkSorIdkoz2fWFGCW+eR8RKa2mN/vHY=
-X-Gm-Gg: ASbGnctkqC1bFiT/wpj9BcXiRL7rtw0rapcc0IWKkIfHmcAiD4FRlX8Kon1MwmCCJnD
- zzRBs1skK7NoSPNlD4BgDC9dKOZ9Bh5SPxmye4VLGJLAd7gTplx2VU9wMuO+VVP7ez2RuTEbuKa
- PjAXek4sMlLRqh8ZZZYdmoDA7vt5voPNp5RHeOdQ2cDCoawHBe1n+kWpw4iea/mgv/7oanJL3iG
- Ab/lfh+8IIbUv3wESEo1fcatHNcjqYgHmPLVUWQ7XPDuH+WvQNyMOuR5M2OUt68nZ1ozfu8b0M0
- PQM4Q/E84Du2OtKqonk3Z24ll0yTY2ZHIbCduMMLWz+HbvjyVYVO2oj/0Y7JtxhssWh2BPcDPUm
- 0E8unYH72+BJB
-X-Received: by 2002:a05:600c:1392:b0:439:6ab6:5d45 with SMTP id
- 5b1f17b1804b1-43ba6747775mr106759585e9.28.1741039862862; 
- Mon, 03 Mar 2025 14:11:02 -0800 (PST)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43bbbff18b3sm65292105e9.24.2025.03.03.14.11.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Mar 2025 14:11:02 -0800 (PST)
-Message-ID: <81390b0b-bae7-43bc-84d4-7447805a1a83@linaro.org>
-Date: Mon, 3 Mar 2025 23:11:01 +0100
+ AJvYcCV4rHU10lxT0FLYbJlXe5i5S1+GyunMSNTlSA8ehxob2I7sfoSLdQIbwXanSLHI3bIgsE4yWutdbhLmuA==@nongnu.org,
+ AJvYcCVE7M0B2OqZz34so7nN5DEGKJAnMN2ziC3MMa9/lvZD9ZuQIHsiS6ZzDPsv1EZxj9xLVlfwKB64Ww==@nongnu.org
+X-Gm-Message-State: AOJu0YzSOtc3StEqbF7sBEykpGX86iXvCMiIUp3nNrM77wX8EBU46eCz
+ a798LjnEZzx+MdPlfR/FGnSP5L2btPpZcQhwqVbuVJhRe5+5O+bxOshhmij/oTCTrOhPzyx0vwT
+ lsvQRWmKmC+Sa7sRhv6pylgiRCIs=
+X-Gm-Gg: ASbGnctdhyi1p5jsa143WxStN8tydIGxv9NdFsV7XTvbg7c8sK4wS/+f/rZibZVPZF4
+ bfSW9bCr5qSS6MLXjgwZr6Pyr4LjcziBvquauYdR5ZXmQ2ieAVoRwFRVaoJehP2vI3sKz+ScNu5
+ P/uJgkgfvIavMtkfE6/0EO9DKXFhjmcxg1wpvt+ZUo7hlDs0YGcyEl+Js=
+X-Received: by 2002:a05:6214:21e7:b0:6e8:9525:2ac3 with SMTP id
+ 6a1803df08f44-6e8a0d83296mr226855436d6.34.1741042546342; Mon, 03 Mar 2025
+ 14:55:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v17 11/11] hw/vmapple/vmapple: Add vmapple machine type
-To: Phil Dennis-Jordan <phil@philjordan.eu>, peter.maydell@linaro.org,
- berrange@redhat.com, pbonzini@redhat.com, John Snow <jsnow@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, mst@redhat.com,
- stefanha@redhat.com, kwolf@redhat.com, hreitz@redhat.com,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- marcandre.lureau@redhat.com, eblake@redhat.com, armbru@redhat.com,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, Alexander Graf
- <graf@amazon.com>, Akihiko Odaki <akihiko.odaki@daynix.com>
-References: <20250112210056.16658-1-phil@philjordan.eu>
- <20250112210056.16658-12-phil@philjordan.eu>
- <2a4229cf-c789-41ed-ab46-0f0fd9efd19a@linaro.org>
- <CAAibmn0tV_YLwJwcgfy5sZiPyeaBWE_FPOPEEE_0aZ7mMANFig@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAAibmn0tV_YLwJwcgfy5sZiPyeaBWE_FPOPEEE_0aZ7mMANFig@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20250225074133.6827-1-kuqin12@gmail.com>
+ <20250225074133.6827-2-kuqin12@gmail.com>
+ <CAD=n3R2kuvUzyE7nKPmpyELozdo_+eAKVr_CxA5HQ_jLL25stw@mail.gmail.com>
+ <CAD=n3R0ntWYNN9LxJWVXApY3s_LRddx4YVQPYRzRojXcL-BDug@mail.gmail.com>
+In-Reply-To: <CAD=n3R0ntWYNN9LxJWVXApY3s_LRddx4YVQPYRzRojXcL-BDug@mail.gmail.com>
+From: Kun Qin <kuqin12@gmail.com>
+Date: Mon, 3 Mar 2025 14:55:34 -0800
+X-Gm-Features: AQ5f1JryAsYm99-ks7_wJd7nzxXryqGfZsxfHIbfiMWN7JI5XKWOR01icnfXtws
+Message-ID: <CABhrWrRTFF1f7akWJ-jDZ7MGZGz4cBLq-yjf0vD5baBFc_XgtA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Adding TPM support for ARM SBSA-Ref
+ machine
+To: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Graeme Gregory <graeme@xora.org.uk>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000837f1d062f780ea8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
+ envelope-from=kuqin12@gmail.com; helo=mail-qv1-xf30.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: blWMELjzYL8x
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fq02OCmB8zc8
 
-On 3/3/25 21:36, Phil Dennis-Jordan wrote:
-> 
-> 
-> On Mon, 3 Mar 2025 at 19:20, Philippe Mathieu-Daudé <philmd@linaro.org 
-> <mailto:philmd@linaro.org>> wrote:
-> 
->     On 12/1/25 22:00, Phil Dennis-Jordan wrote:
->      > From: Alexander Graf <graf@amazon.com <mailto:graf@amazon.com>>
->      >
->      > Apple defines a new "vmapple" machine type as part of its proprietary
->      > macOS Virtualization.Framework vmm. This machine type is similar
->     to the
->      > virt one, but with subtle differences in base devices, a few special
->      > vmapple device additions and a vastly different boot chain.
->      >
->      > This patch reimplements this machine type in QEMU. To use it, you
->      > have to have a readily installed version of macOS for VMApple,
->      > run on macOS with -accel hvf, pass the Virtualization.Framework
->      > boot rom (AVPBooter) in via -bios, pass the aux and root volume
->     as pflash
->      > and pass aux and root volume as virtio drives. In addition, you also
->      > need to find the machine UUID and pass that as -M vmapple,uuid=
->     parameter:
->      >
->      > $ qemu-system-aarch64 -accel hvf -M vmapple,uuid=0x1234 -m 4G \
->      >      -bios /System/Library/Frameworks/Virtualization.framework/
->     Versions/A/Resources/AVPBooter.vmapple2.bin
->      >      -drive file=aux,if=pflash,format=raw \
->      >      -drive file=root,if=pflash,format=raw \
->      >      -drive file=aux,if=none,id=aux,format=raw \
->      >      -device vmapple-virtio-blk-pci,variant=aux,drive=aux \
->      >      -drive file=root,if=none,id=root,format=raw \
->      >      -device vmapple-virtio-blk-pci,variant=root,drive=root
->      >
->      > With all these in place, you should be able to see macOS booting
->      > successfully.
->      >
->      > Known issues:
->      >   - Currently only macOS 12 guests are supported. The boot
->     process for
->      >     13+ will need further investigation and adjustment.
->      >
->      > Signed-off-by: Alexander Graf <graf@amazon.com
->     <mailto:graf@amazon.com>>
->      > Co-authored-by: Phil Dennis-Jordan <phil@philjordan.eu
->     <mailto:phil@philjordan.eu>>
->      > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu
->     <mailto:phil@philjordan.eu>>
->      > Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com
->     <mailto:akihiko.odaki@daynix.com>>
->      > ---
-> 
-> 
->      >   MAINTAINERS                 |   1 +
->      >   contrib/vmapple/uuid.sh     |   9 +
->      >   docs/system/arm/vmapple.rst |  63 ++++
->      >   docs/system/target-arm.rst  |   1 +
->      >   hw/vmapple/Kconfig          |  20 ++
->      >   hw/vmapple/meson.build      |   1 +
->      >   hw/vmapple/vmapple.c        | 618 +++++++++++++++++++++++++++++
->     +++++++
->      >   7 files changed, 713 insertions(+)
->      >   create mode 100755 contrib/vmapple/uuid.sh
->      >   create mode 100644 docs/system/arm/vmapple.rst
->      >   create mode 100644 hw/vmapple/vmapple.c
->      >
->      > diff --git a/MAINTAINERS b/MAINTAINERS
->      > index e220744abf..3a3d9e19f4 100644
->      > --- a/MAINTAINERS
->      > +++ b/MAINTAINERS
->      > @@ -2791,6 +2791,7 @@ M: Phil Dennis-Jordan <phil@philjordan.eu
->     <mailto:phil@philjordan.eu>>
->      >   S: Maintained
->      >   F: hw/vmapple/*
->      >   F: include/hw/vmapple/*
->      > +F: docs/system/arm/vmapple.rst
->      >
->      >   Subsystems
->      >   ----------
->      > diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh
->      > new file mode 100755
->      > index 0000000000..956e8c3afe
->      > --- /dev/null
->      > +++ b/contrib/vmapple/uuid.sh
->      > @@ -0,0 +1,9 @@
->      > +#!/bin/sh
->      > +# Used for converting a guest provisioned using
->     Virtualization.framework
->      > +# for use with the QEMU 'vmapple' aarch64 machine type.
->      > +#
->      > +# Extracts the Machine UUID from Virtualization.framework VM
->     JSON file.
->      > +# (as produced by 'macosvm', passed as command line argument)
->      > +
->      > +plutil -extract machineId raw "$1" | base64 -d | plutil -extract
->     ECID raw -
->      > +
->      > diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/
->     vmapple.rst
->      > new file mode 100644
->      > index 0000000000..5090a8997c
->      > --- /dev/null
->      > +++ b/docs/system/arm/vmapple.rst
->      > @@ -0,0 +1,63 @@
-> 
->     Alex, Phil, we now mandate a SPDX tag. Due to the license used in
->     vmapple.c in this patch, are you OK with me squashing here:
-> 
-> 
-> Sorry about that, I forgot all about the SPDX tags in scripts and docs - 
-> yes, please add that SPDX on uuid.sh. The vmapple.rst is Alex's creation 
-> (I think I tweaked a few lines max) - but if that's the usual license we 
-> use for documentation as well then it seems a reasonable assumption to 
-> use GPL2+ there too if we don't hear from him.
+--000000000000837f1d062f780ea8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-TBH IDK and IANAL :) "GPL-2.0-or-later" is about *program*, is it
-relevant for documentation? This is the single license used with SPDX
-in docs/:
+Hi Leif & Peter,
 
-$ git grep SPDX docs
-docs/system/devices/igb.rst:1:.. SPDX-License-Identifier: GPL-2.0-or-later
-docs/system/devices/virtio-gpu.rst:2:   SPDX-License-Identifier: 
-GPL-2.0-or-later
+Thanks for the comments. I will address them in a v2 patch.
 
-Note we also use the FreeBSD-DOC in bitmaps.rst (not as SPDX tag):
+Regards,
+Kun
 
-docs/interop/bitmaps.rst:5:   This file is licensed via The FreeBSD 
-Documentation License, the full
+On Mon, Mar 3, 2025 at 12:44=E2=80=AFPM Leif Lindholm <
+leif.lindholm@oss.qualcomm.com> wrote:
 
-Per commit 2b96c1a4931 ("scripts: validate SPDX license choices"):
+> Doh! Add the lists back in. (No idea how I dropped them off.)
+>
+> On Mon, 3 Mar 2025 at 17:02, Leif Lindholm
+> <leif.lindholm@oss.qualcomm.com> wrote:
+> >
+> > Hi Kun,
+> >
+> > Apologies for delay in responding - I was out last week.
+> > I agree with this addition, since a TPM is a requirement for servers.
+> >
+> > However, to help simplify review, could you add some detail in the
+> > commit message
+> > as to which SystemReady requirements this resolves and whether this
+> > implementation
+> > fulfills all requirements across BSA/SBSA/BBSA?
+> >
+> > I agree with Peter that since this is a non-discoverable component, it
+> > would make sense
+> > to step the machine minor version number. A major version bump would
+> > not be required
+> > since simply adding this component will not break any existing
+> > firmware (which will have
+> > no way of knowing it even exists).
+> >
+> > Regards,
+> >
+> > Leif
+> >
+> > On Tue, 25 Feb 2025 at 07:41, Kun Qin <kuqin12@gmail.com> wrote:
+> > >
+> > > From: Kun Qin <kuqin@microsoft.com>
+> > >
+> > > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2625
+> > >
+> > > This change aims to add a TPM device for SBSA ref machine.
+> > >
+> > > The implementation adds a TPM create routine during machine
+> > > initialization.
+> > >
+> > > The backend can be the same as the rest of TPM support, by using swtp=
+m.
+> > >
+> > > Signed-off-by: Kun Qin <kuqin12@gmail.com>
+> > > ---
+> > >  hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++
+> > >  1 file changed, 24 insertions(+)
+> > >
+> > > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > > index e720de306419..93eb3d1e363b 100644
+> > > --- a/hw/arm/sbsa-ref.c
+> > > +++ b/hw/arm/sbsa-ref.c
+> > > @@ -28,6 +28,8 @@
+> > >  #include "system/numa.h"
+> > >  #include "system/runstate.h"
+> > >  #include "system/system.h"
+> > > +#include "system/tpm.h"
+> > > +#include "system/tpm_backend.h"
+> > >  #include "exec/hwaddr.h"
+> > >  #include "kvm_arm.h"
+> > >  #include "hw/arm/boot.h"
+> > > @@ -94,6 +96,7 @@ enum {
+> > >      SBSA_SECURE_MEM,
+> > >      SBSA_AHCI,
+> > >      SBSA_XHCI,
+> > > +    SBSA_TPM,
+> > >  };
+> > >
+> > >  struct SBSAMachineState {
+> > > @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {
+> > >      /* Space here reserved for more SMMUs */
+> > >      [SBSA_AHCI] =3D               { 0x60100000, 0x00010000 },
+> > >      [SBSA_XHCI] =3D               { 0x60110000, 0x00010000 },
+> > > +    [SBSA_TPM] =3D                { 0x60120000, 0x00010000 },
+> > >      /* Space here reserved for other devices */
+> > >      [SBSA_PCIE_PIO] =3D           { 0x7fff0000, 0x00010000 },
+> > >      /* 32-bit address PCIE MMIO space */
+> > > @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState
+> *sms, PCIBus *bus)
+> > >      }
+> > >  }
+> > >
+> > > +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)
+> > > +{
+> > > +    Error *errp =3D NULL;
+> > > +    DeviceState *dev;
+> > > +
+> > > +    TPMBackend *be =3D qemu_find_tpm_be("tpm0");
+> > > +    if (be =3D=3D NULL) {
+> > > +        error_report("Couldn't find tmp0 backend");
+> > > +        return;
+> > > +    }
+> > > +
+> > > +    dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
+> > > +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be),
+> &errp);
+> > > +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+> > > +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> > > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
+> sbsa_ref_memmap[SBSA_TPM].base);
+> > > +}
+> > > +
+> > >  static void create_pcie(SBSAMachineState *sms)
+> > >  {
+> > >      hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
+> > > @@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms)
+> > >      pci_create_simple(pci->bus, -1, "bochs-display");
+> > >
+> > >      create_smmu(sms, pci->bus);
+> > > +
+> > > +    create_tpm(sms, pci->bus);
+> > >  }
+> > >
+> > >  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int
+> *fdt_size)
+> > > --
+> > > 2.43.0
+> > >
+>
 
-+    my $prefer = "GPL-2.0-or-later";
-+    my @valid = qw(
-+       GPL-2.0-only
-+       LGPL-2.1-only
-+       LGPL-2.1-or-later
-+       BSD-2-Clause
-+       BSD-3-Clause
-+       MIT
-+       );
+--000000000000837f1d062f780ea8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-GPL: "program"
-LGPL: "library"
-BSD/MIT: "software"
+<div dir=3D"ltr">Hi Leif &amp; Peter,<div><br></div><div>Thanks for the com=
+ments. I will address them in a v2 patch.</div><div><br></div><div>Regards,=
+</div><div>Kun</div></div><br><div class=3D"gmail_quote gmail_quote_contain=
+er"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 3, 2025 at 12:44=E2=
+=80=AFPM Leif Lindholm &lt;<a href=3D"mailto:leif.lindholm@oss.qualcomm.com=
+">leif.lindholm@oss.qualcomm.com</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">Doh! Add the lists back in. (No idea how I=
+ dropped them off.)<br>
+<br>
+On Mon, 3 Mar 2025 at 17:02, Leif Lindholm<br>
+&lt;<a href=3D"mailto:leif.lindholm@oss.qualcomm.com" target=3D"_blank">lei=
+f.lindholm@oss.qualcomm.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hi Kun,<br>
+&gt;<br>
+&gt; Apologies for delay in responding - I was out last week.<br>
+&gt; I agree with this addition, since a TPM is a requirement for servers.<=
+br>
+&gt;<br>
+&gt; However, to help simplify review, could you add some detail in the<br>
+&gt; commit message<br>
+&gt; as to which SystemReady requirements this resolves and whether this<br=
+>
+&gt; implementation<br>
+&gt; fulfills all requirements across BSA/SBSA/BBSA?<br>
+&gt;<br>
+&gt; I agree with Peter that since this is a non-discoverable component, it=
+<br>
+&gt; would make sense<br>
+&gt; to step the machine minor version number. A major version bump would<b=
+r>
+&gt; not be required<br>
+&gt; since simply adding this component will not break any existing<br>
+&gt; firmware (which will have<br>
+&gt; no way of knowing it even exists).<br>
+&gt;<br>
+&gt; Regards,<br>
+&gt;<br>
+&gt; Leif<br>
+&gt;<br>
+&gt; On Tue, 25 Feb 2025 at 07:41, Kun Qin &lt;<a href=3D"mailto:kuqin12@gm=
+ail.com" target=3D"_blank">kuqin12@gmail.com</a>&gt; wrote:<br>
+&gt; &gt;<br>
+&gt; &gt; From: Kun Qin &lt;<a href=3D"mailto:kuqin@microsoft.com" target=
+=3D"_blank">kuqin@microsoft.com</a>&gt;<br>
+&gt; &gt;<br>
+&gt; &gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issue=
+s/2625" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-projec=
+t/qemu/-/issues/2625</a><br>
+&gt; &gt;<br>
+&gt; &gt; This change aims to add a TPM device for SBSA ref machine.<br>
+&gt; &gt;<br>
+&gt; &gt; The implementation adds a TPM create routine during machine<br>
+&gt; &gt; initialization.<br>
+&gt; &gt;<br>
+&gt; &gt; The backend can be the same as the rest of TPM support, by using =
+swtpm.<br>
+&gt; &gt;<br>
+&gt; &gt; Signed-off-by: Kun Qin &lt;<a href=3D"mailto:kuqin12@gmail.com" t=
+arget=3D"_blank">kuqin12@gmail.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++<br>
+&gt; &gt;=C2=A0 1 file changed, 24 insertions(+)<br>
+&gt; &gt;<br>
+&gt; &gt; diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c<br>
+&gt; &gt; index e720de306419..93eb3d1e363b 100644<br>
+&gt; &gt; --- a/hw/arm/sbsa-ref.c<br>
+&gt; &gt; +++ b/hw/arm/sbsa-ref.c<br>
+&gt; &gt; @@ -28,6 +28,8 @@<br>
+&gt; &gt;=C2=A0 #include &quot;system/numa.h&quot;<br>
+&gt; &gt;=C2=A0 #include &quot;system/runstate.h&quot;<br>
+&gt; &gt;=C2=A0 #include &quot;system/system.h&quot;<br>
+&gt; &gt; +#include &quot;system/tpm.h&quot;<br>
+&gt; &gt; +#include &quot;system/tpm_backend.h&quot;<br>
+&gt; &gt;=C2=A0 #include &quot;exec/hwaddr.h&quot;<br>
+&gt; &gt;=C2=A0 #include &quot;kvm_arm.h&quot;<br>
+&gt; &gt;=C2=A0 #include &quot;hw/arm/boot.h&quot;<br>
+&gt; &gt; @@ -94,6 +96,7 @@ enum {<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 SBSA_SECURE_MEM,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 SBSA_AHCI,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 SBSA_XHCI,<br>
+&gt; &gt; +=C2=A0 =C2=A0 SBSA_TPM,<br>
+&gt; &gt;=C2=A0 };<br>
+&gt; &gt;<br>
+&gt; &gt;=C2=A0 struct SBSAMachineState {<br>
+&gt; &gt; @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] =
+=3D {<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 /* Space here reserved for more SMMUs */<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_AHCI] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x60100000, 0x00010000 },<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_XHCI] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x60110000, 0x00010000 },<br>
+&gt; &gt; +=C2=A0 =C2=A0 [SBSA_TPM] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 { 0x60120000, 0x00010000 },<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 /* Space here reserved for other devices */<b=
+r>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_PCIE_PIO] =3D=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0{ 0x7fff0000, 0x00010000 },<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 /* 32-bit address PCIE MMIO space */<br>
+&gt; &gt; @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineSta=
+te *sms, PCIBus *bus)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; &gt;=C2=A0 }<br>
+&gt; &gt;<br>
+&gt; &gt; +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)<br>
+&gt; &gt; +{<br>
+&gt; &gt; +=C2=A0 =C2=A0 Error *errp =3D NULL;<br>
+&gt; &gt; +=C2=A0 =C2=A0 DeviceState *dev;<br>
+&gt; &gt; +<br>
+&gt; &gt; +=C2=A0 =C2=A0 TPMBackend *be =3D qemu_find_tpm_be(&quot;tpm0&quo=
+t;);<br>
+&gt; &gt; +=C2=A0 =C2=A0 if (be =3D=3D NULL) {<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Couldn&#39;t find=
+ tmp0 backend&quot;);<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+&gt; &gt; +=C2=A0 =C2=A0 }<br>
+&gt; &gt; +<br>
+&gt; &gt; +=C2=A0 =C2=A0 dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);<br>
+&gt; &gt; +=C2=A0 =C2=A0 object_property_set_link(OBJECT(dev), &quot;tpmdev=
+&quot;, OBJECT(be), &amp;errp);<br>
+&gt; &gt; +=C2=A0 =C2=A0 object_property_set_str(OBJECT(dev), &quot;tpmdev&=
+quot;, be-&gt;id, &amp;errp);<br>
+&gt; &gt; +=C2=A0 =C2=A0 sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &amp=
+;error_fatal);<br>
+&gt; &gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_m=
+emmap[SBSA_TPM].base);<br>
+&gt; &gt; +}<br>
+&gt; &gt; +<br>
+&gt; &gt;=C2=A0 static void create_pcie(SBSAMachineState *sms)<br>
+&gt; &gt;=C2=A0 {<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCI=
+E_ECAM].base;<br>
+&gt; &gt; @@ -686,6 +708,8 @@ static void create_pcie(SBSAMachineState *sms=
+)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci-&gt;bus, -1, &quot;boch=
+s-display&quot;);<br>
+&gt; &gt;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 create_smmu(sms, pci-&gt;bus);<br>
+&gt; &gt; +<br>
+&gt; &gt; +=C2=A0 =C2=A0 create_tpm(sms, pci-&gt;bus);<br>
+&gt; &gt;=C2=A0 }<br>
+&gt; &gt;<br>
+&gt; &gt;=C2=A0 static void *sbsa_ref_dtb(const struct arm_boot_info *binfo=
+, int *fdt_size)<br>
+&gt; &gt; --<br>
+&gt; &gt; 2.43.0<br>
+&gt; &gt;<br>
+</blockquote></div>
 
-In doubt I'll stick with $prefer except if someone has a better clue /
-suggestion.
-
-> Thanks for the doc syntax fix as well.
-> 
->     -- >8 --
->     diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst
->     index 5090a8997c3..c5b1bcf45ea 100644
->     --- a/docs/system/arm/vmapple.rst
->     +++ b/docs/system/arm/vmapple.rst
->     @@ -0,0 +1,2 @@
->     +.. SPDX-License-Identifier: GPL-2.0-or-later
->     +
->     diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh
->     index 956e8c3afed..f5637221d23 100755
->     --- a/contrib/vmapple/uuid.sh
->     +++ b/contrib/vmapple/uuid.sh
->     @@ -1,0 +2 @@
->     +#
->     @@ -6,0 +8,2 @@
->     +#
->     +# SPDX-License-Identifier: GPL-2.0-or-later
->     ---
-> 
->     ?
-
+--000000000000837f1d062f780ea8--

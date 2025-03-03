@@ -1,128 +1,133 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2596357njb;
-        Mon, 3 Mar 2025 05:07:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVzzSGPFU6epgi20qpPu/hIRBNTAL495ex3/Qvy9YCqzkUe2QB6ZVlcFYocp56LzFd1aHEVzGdIWMGcSQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHHR7C5aBM5KibTa91MhlFve9J17E8U51ipTLqh9bofm/VUSwuC2J67uPxmM2eHGaT3TU85
-X-Received: by 2002:a67:fd15:0:b0:4c0:494a:6677 with SMTP id ada2fe7eead31-4c0494a7542mr4952236137.7.1741007225835;
-        Mon, 03 Mar 2025 05:07:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741007225; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2607972njb;
+        Mon, 3 Mar 2025 05:26:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUD+u+EwlH6U1da0RQSXIhPM4RKHq6bh+AoQaS8pzMmZv2zN9qv5fDztXoYzd87FsrhSNjzEiIhMBRv7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFHkUHipmrCYlb1H29ggogv0kA28yNi3Hh7EPwP8aDTEr296OVfTILllHneoEDatcEYV/7d
+X-Received: by 2002:a05:6214:19cd:b0:6d8:b371:6a0f with SMTP id 6a1803df08f44-6e8a0d8f94fmr218544676d6.31.1741008377271;
+        Mon, 03 Mar 2025 05:26:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741008377; cv=none;
         d=google.com; s=arc-20240605;
-        b=KAtCzGEOAzLCRWJ8P6HkYBQW9bN3T7n5mF1yO9eHuHLjDH1e4HrzAGj/97VnKwDVGm
-         kvabrXGZTYVvtDJU0aZzO43e3L2Yks/YfCPD8eBxSlRH9wTdOyTu/vIexsE01sUI/xyP
-         NpUK39qfl6u2YTlxSp+9H+v4jWkrucmELGfBbSVQ46SzklazMfBMl3q5r40eZDPsostR
-         g1ooYokNsEf9PSEjU3vmy/sAtdeXafaIYzrNsvjZfeKbuzzmlqfc0OJ3cEZJ9i4nnzNo
-         VBtr/9/U27Ed3yNy9yhfT8/QwlnA4Qz3/cuU6KW8qV5i9ulj+w0Y9x8YAYyJUM/+sMNx
-         7L7Q==
+        b=llvhDoV97XJ/MSuyxXVUvKrTpXZPMuPp9Hsaas8ppVGLP0t0ITsqOlE1QtYK5xSPK1
+         83dW+b146qlDXb8k04/ne9J+JyWtBrsvveAMUgOEBjmKMcrD5DUhcb0dolLXVWA1trLU
+         BX4WnwD5xTcFtxjrvEFNbdWUYie9oNwGwdKqZ8ty1ngrQ5Lf5dI5nIFwO/ArHM+UaUEd
+         4ee4bH6PihXtPI3JDQ5ktNct7xg+VynQnUnwXIkc8RMWf7c8kAuOSEybz8K0h9Q28sp2
+         xPYXQuM7OtmKoKR0zsrRK3FQlcSshnFVSUynVvyy9V+nHNBfEL38TFJ5C2UDK5C5Jz2d
+         v1pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=RyLZCqNSpgnRk0wvUnEiBPuTTrec3Ig7km3xSg0ZUgY=;
-        fh=+ZXIxdizvVLDan7uVPBGrL20z3bNwKxRODdC/v8EVxU=;
-        b=iDzK+/4ftMKRfVFQM42wlR/WBADKCJpkBFGhvOHtM7xPefJ8y6bV6vNkdWGj2Xfl07
-         QTRyzjYjLzHr4XkgBi6rnOLCpJEzHMu307X0E+XaluHR5CtPk0L7AQUqXw/o922LyJlf
-         y/yjT0mnMeW6InTXn0maBUHTVKWVcMY/mJYpRigyROJkfpLalOuBMf3IhS6usBvSWstL
-         YzfJtovPYE5Qb4lk2QX/TPzGMYGPI1sTetIaWVottfwPKWy/YJ74LeGEzGPfyiuSzeiu
-         VKT/41oWXupT+3IPs0AUHvF2kMSB5GdOEmgBnxPkb3Nnhz/aKFWtx+J+Ekpec3hAxwGk
-         d2Sw==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=/WxW5WdY1lld3iwZhaNE6hdjrrA1zkXjdPYrHjWgxwk=;
+        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
+        b=MIZCnh4Hz7wN7QqoQwpdZ95AmaABrAJjiTtsWXZhGmtDAs7RO/j+sIZ42URlUyzjeL
+         iFdG40D7Q1xrAtc/vcbuC+WHcEKjkSIPHPQqhQboCNiMFIsoc2toILe1KGofc+DpNEMc
+         m+zGAx6Ln+nMPXSU/nxvbGJLp/kn+f35GsZpRX+ZN2TpLacJhGvDqvBSPGXh1pvBp11Z
+         D/8SdZ/IRBxhdoCZB0qoIpCP5LVHDfYKpwM/BPC+o+aa5jByOfVFq3ePiBwTD55dMXrH
+         wQybjn+P6rABUwExMNQESjjevGsJfVwncebou6AQ3u9v71naN2iaSUvVlaeX24ln8tcb
+         Kv4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JMsDlF8k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c176e51d3bsi897749137.527.2025.03.03.05.07.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e897701fd4si87626606d6.489.2025.03.03.05.26.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 05:07:05 -0800 (PST)
+        Mon, 03 Mar 2025 05:26:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JMsDlF8k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp5Ut-0008VO-3w; Mon, 03 Mar 2025 08:06:15 -0500
+	id 1tp5o9-0001cS-Ne; Mon, 03 Mar 2025 08:26:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp5Ug-0008SO-L3
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 08:06:03 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp5Uc-0004Sf-Gj
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 08:06:01 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-390f5556579so1428890f8f.1
- for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 05:05:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741007156; x=1741611956; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=RyLZCqNSpgnRk0wvUnEiBPuTTrec3Ig7km3xSg0ZUgY=;
- b=JMsDlF8ktTJx6MKvaId6tgcZq44L4zSUR7+DZxQuaRcyUtf/SP6+dKu/BRkp5ufZho
- sHnmgJT4kNsrzpwXL9Xs7QndkV5ApDqiKZh6HRvpPeK5Ejc9W4Tse9PkaokdslxdJO+R
- jXVpcHpVzfNKu2pJeGmtrkd7kS0SgsP8sMWRBmpDCXyRgKKPBdsijt5ZI+bWMS3GU791
- hVf7hP/9iFPGBpaGei3GBUdmGoGgWRWPrXBj0UGmoz2tqM14BwoDIQeRUt5p0x3O/gJN
- 8GSEUjXymGpLL90pRLzCi42So5+f8gtMFT4r0E69yJPc6ZQ21DwBjATRmH3gNB476zqa
- FBHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741007156; x=1741611956;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RyLZCqNSpgnRk0wvUnEiBPuTTrec3Ig7km3xSg0ZUgY=;
- b=G+eJKLeVPd7vFVDXDRexGIWo8W9o5cntnV/7u7CKIitaSkbr3KQ8jrjbkY7k52+Wht
- inrMAcdMZEIr5d2DH4u1WR+JaVOKS1uIUb2tFCC4MdN5XfJ5NKJc8wRykkqpKjXGxXPn
- SfmtdP0ZGo6R/IrA+z88CXcS3cnsPY5K5NRiR+ciivvKGoaebu5jXItqVvozQEtV3oTB
- DaxyIezzhH0pT4bQP9Y3qfz9XF7unUdjgXf+sGTlbb07YjM4y647BS5HoxHY9F65eijr
- MobByVub1KublFyDeSxWrdslCR2//p0Ga7Fdm0dN/uTxfnISsnpY7in2wB3dNHMIQ0bx
- LCUQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWhFLxAtlwfOIcOJp77rUxU9LWlEbETSrHF9m8TL0eszDS4ORs+RB9RIWGvwdr9Vk/8Y77jFSCtBg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzm+q2wHsugf03GYB3ua1GV1ki7REpL2RSlODgAd0oAtUHmE2l9
- JcOqnIxfft0zFYCrJcPb33/bxIVq0YInDkPPEjXdePNV7Chs6uinA2W5o+XoYNWCbdrpd/8wSfy
- ROxb0zA==
-X-Gm-Gg: ASbGncuDNeC4DbBSAYxdBqdy9o4GfoUQp1hhrMISNyTX8xglhqmMyTElJR7e0qUjrbX
- DGt0sizvToZmoH3lI1k4cYP9u4agjEFawOZ/Z8/GtDSU5o12sKskkFaMbC8CAydMDxjL5qPqtBX
- RjSwt7W2CRgS9BvSuHIV0j5sDIVwAUMP0lzhJzZ6GuN8ua+tzaNIMCnb6/McKe13VPCRLeqmQkm
- A04DkrDI1Hu8LjIwSDiHMiaJ3SDEvtclPW45DQZQ/eCVQq9nK8GCQnFQLVj8RUXzIJ2LUQoZukk
- VynU2A5dCM2pU7FWNFw02ZQCMmBp9O1UCLQgmmHK7BiLMuGGKSe71yETsrm/Rar76qDhhpPvfS1
- IF4xr3Zt+O9Ss
-X-Received: by 2002:a05:6000:2b04:b0:390:df7f:c20a with SMTP id
- ffacd0b85a97d-390ec9c19a2mr8384507f8f.33.1741007155871; 
- Mon, 03 Mar 2025 05:05:55 -0800 (PST)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390e484489esm14771600f8f.68.2025.03.03.05.05.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Mar 2025 05:05:55 -0800 (PST)
-Message-ID: <46c17165-35c7-4e21-968a-40968c4d50d5@linaro.org>
-Date: Mon, 3 Mar 2025 14:05:54 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
+ id 1tp5nm-0001aU-4A; Mon, 03 Mar 2025 08:25:54 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
+ id 1tp5nj-0007eW-5i; Mon, 03 Mar 2025 08:25:45 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z601X6nfVz4wvb;
+ Tue,  4 Mar 2025 00:25:36 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z601T4pRGz4wd0;
+ Tue,  4 Mar 2025 00:25:33 +1100 (AEDT)
+Message-ID: <e5d26865-2ee7-40a5-b79b-c63067d894ee@kaod.org>
+Date: Mon, 3 Mar 2025 14:25:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] hw/arm: Remove printf() calls
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20250227170117.1726895-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250227170117.1726895-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH v4 2/6] hw/misc/aspeed_scu: Fix the revision ID cannot be
+ set in the SOC layer for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250303073547.1145080-1-jamin_lin@aspeedtech.com>
+ <20250303073547.1145080-3-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250303073547.1145080-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Robu=VW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,21 +142,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9keJEUshf2qQ
+X-TUID: xVq8a93RNS8r
 
-On 27/2/25 18:01, Peter Maydell wrote:
+On 3/3/25 08:35, Jamin Lin wrote:
+> According to the design of the AST2600, it has a Silicon Revision ID Register,
+> specifically SCU004 and SCU014, to set the Revision ID for the AST2600.
+> For the AST2600 A3, SCU004 is set to 0x05030303 and SCU014 is set to 0x05030303.
+> In the "aspeed_ast2600_scu_reset" function, the hardcoded value
+> "AST2600_A3_SILICON_REV" is set in SCU004, and "s->silicon_rev" is set in
+> SCU014. The value of "s->silicon_rev" is set by the SOC layer via the
+> "silicon-rev" property.
+> 
+> However, the design of the AST2700 is different. There are two SCU controllers:
+> SCU0 (CPU Die) and SCU1 (IO Die). In the AST2700, the firmware reads the
+> SCU Silicon Revision ID register (SCU0_000) and the SCUIO Silicon Revision ID
+> register (SCU1_000) and combines them into a 64-bit value.
+> The combined value of SCU0_000[23:16] and SCU1_000[23:16] represents the silicon
 
-> Peter Maydell (5):
->    hw/arm/omap1: Convert raw printfs to qemu_log_mask()
->    hw/arm/omap1: Drop ALMDEBUG ifdeffed out code
->    hw/arm/omap1: Convert information printfs to tracepoints
->    hw/arm/omap_sx1.c: Remove ifdeffed out debug printf
->    hw/arm/versatilepb: Convert printfs to LOG_GUEST_ERROR
+Why are you mentioning bitfield [23:16] of both registers ? I thought
+the silicon revision ID was 64-bit value.
 
-Thanks, series queued to hw-misc (with the suggested trace event
-name changes in patch 3).
-
-Regards,
-
-Phil.
+> revision. For example, the AST2700-A1 revision is "0x0601010306010103", where
+> SCU0_000 should be 06010103 and SCU1_000 should be 06010103.
+> 
+> Reference:
+> https://github.com/AspeedTech-BMC/u-boot/blob/aspeed-master-v2023.10/arch/arm/mach-aspeed/ast2700/cpu-info.c
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> --->   hw/misc/aspeed_scu.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 50f74fbabd..545d004749 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -910,7 +910,6 @@ static const MemoryRegionOps aspeed_ast2700_scu_ops = {
+>   };
+>   
+>   static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
+> -    [AST2700_SILICON_REV]           = AST2700_A0_SILICON_REV,
+>       [AST2700_HW_STRAP1]             = 0x00000800,
+>       [AST2700_HW_STRAP1_CLR]         = 0xFFF0FFF0,
+>       [AST2700_HW_STRAP1_LOCK]        = 0x00000FFF,
+> @@ -940,6 +939,7 @@ static void aspeed_ast2700_scu_reset(DeviceState *dev)
+>       AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(dev);
+>   
+>       memcpy(s->regs, asc->resets, asc->nr_regs * 4);
+> +    s->regs[AST2700_SILICON_REV] = s->silicon_rev;
+>   }
+>   
+>   static void aspeed_2700_scu_class_init(ObjectClass *klass, void *data)
+> @@ -1032,7 +1032,6 @@ static const MemoryRegionOps aspeed_ast2700_scuio_ops = {
+>   };
+>   
+>   static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
+> -    [AST2700_SILICON_REV]               = 0x06000003,
+>       [AST2700_HW_STRAP1]                 = 0x00000504,
+>       [AST2700_HW_STRAP1_CLR]             = 0xFFF0FFF0,
+>       [AST2700_HW_STRAP1_LOCK]            = 0x00000FFF,
 

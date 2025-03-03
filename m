@@ -1,243 +1,252 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2645548njb;
-        Mon, 3 Mar 2025 06:24:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV5Obc3Pq6ECL+N8VTTXVBF5ZJGmXGowY8SAsqXQQofloST0hsGr2Iknm01WJzMaL/JUyU9yogP45tM8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEtO8XIftUvzZANcM6y1m7WGZ2wkF59DBkV8yLFSMXRaxFfbgqdS4BuCeDEdSzY8IukJ1Rc
-X-Received: by 2002:a05:6214:21e7:b0:6e1:9126:4d15 with SMTP id 6a1803df08f44-6e8a0c9e8bfmr183118986d6.11.1741011845408;
-        Mon, 03 Mar 2025 06:24:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741011845; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2650465njb;
+        Mon, 3 Mar 2025 06:31:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnBywmCPaHoS5FdUTv/636UVgIqgxySbTw9gGlkgbFSu4NC6n8RZro6lPF+I6yO/1jQziTn9J1nc7Jlw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEpMijZkvJ5beYIyERsaVzwwMs1sU9R+rqwILMVkI930mEDEGFONSU9stN3+Rkm1D10ZRBa
+X-Received: by 2002:a05:6102:32d2:b0:4c1:9acb:a572 with SMTP id ada2fe7eead31-4c19acba6d4mr1757591137.21.1741012311488;
+        Mon, 03 Mar 2025 06:31:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741012311; cv=none;
         d=google.com; s=arc-20240605;
-        b=Woa1iF7S64pnr4imdMmu+N0UxMvRovDQKJsShbihSx/lXUO2TSUj/gA6xpOp1xjR/I
-         8mVvVT2W9bFiFe0JpuM2SedHpRFcYzjqUjGXeihxNIO93sR9/+xEumfq3iZHjKzaoTEz
-         cu9YOlmc35CKRoqggUU/54kqv7bu+xfjt1pfkr/3+gVWD4F0VjIDLgdJcoVAwFnkUimh
-         qBLIXXfLPMX2VLcr5y2NlxzYTdZIEKeT92lJsqQJZPZbFEmrZSeFQjqVOAO769nakYJv
-         8CAOd+p73P2l8G4EGOzyXF9IMSGRXPDWfJB87GAYYY+B7Dh79+X/L7LZ7mDuldDa7qUY
-         bRdg==
+        b=iU4JRgvfAbIPC/a5UWFuOtQuiViWWZ2DBYuoWUIlYi2WJSuv2E1tndgWOtYsD5YjKH
+         vK7VZje7QW3lNoXGNSRVIjYVhBTUDobR8kPS8BfzphOJl8uiHIJQA3K0rpPelVmu14IR
+         pKQ6o8BbZdRD7HfUk4KcDks3ULcwHhnJ2298xnHZLuHJ8guWetnbDcFbG9MC4OUxnooZ
+         jVNcMgzvyhkpLMJQRcrz4EKoe3o2cLVF3qO0teXkysV9Pffq3nWV3Y4UUpGCqDBVO/Pc
+         qwER6lo21oSpUZitSYPuGBE82OXwFQA00biD1PMabbpvvuBehXm1EFUXASviRUkTl/C3
+         0xng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=IfDdsqBP/sxtZAhV56DuHla4+AH/kX+SBcC1B0vh14c=;
-        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=LrBk03kdPK0ulYePyWypXR7oID08UvqLeoN6gH9YykUQD62LI5AEwU2yle2CUnJbde
-         jgT2pTBSkYGXZ77TEGE2E5jxQyYV+i0TxGKNStcgk0wIQCYildt+Fu3OJPcwSvu5c+Bp
-         fDmcaf2lqoyaelgUYKhcM4kFTww7Fpui5gUJ4sxqdvMTf+erT/eNDOId3y4adlY+fGGF
-         ciSOs0w8PT2gsowqX+04KmB1cvV8V5wprS1Qnc2EesAqcGIkxQZ91frlZ3D3AJr3iug+
-         cjDI3m5R6m1axSjuc3zv95RH5apk+4Dc3wYZvK/x6yCtOjJa5AgiqmqsYPhao2PM4bJU
-         9PVQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=4WWGlZgIPr0lgPhg6+eCF/xpe4T/85rWPCF6kQZ17yQ=;
+        fh=qNXBIlB+91SLtXnnNYxTGY4Ta9ZLQ+Tgz8L1svGLDvI=;
+        b=T8PWD88x5rZaNUEJNx3/0cfjFzFo2U7iBMEBCRZU1XAS6eHDbDkJo0ThsxGVP4KUbA
+         YJyDkUqfUSEd/80AQDhxZZPCi/VsciG1pP58zCMj+YGz/e6Sv7DcXe46xKpwXbwwOzob
+         86Q6B7Kb6/7Ba5Jv6OQHsMyRabwUxv+zRlBwc7FIzy4p31gqdLlemmV9fdMHaZP3fCVU
+         cNoz2RNCTIZ/pFUms33v+wMKGt/BK/1jEnutoSHusug8HudFAq52/B4I429wXQh2TYiX
+         l9TjmJmduizG67r7mrHm6oS/GxgCfQbP3C9FZ8IsfU6AsYjKvhP8clfoAYpJwVwnGXOz
+         ZBEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=GQXulXWV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e744asi89462666d6.8.2025.03.03.06.24.05
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-86b3dc172e5si1451329241.43.2025.03.03.06.31.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 06:24:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Mar 2025 06:31:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=GQXulXWV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp6i6-0000fp-4X; Mon, 03 Mar 2025 09:24:00 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tp6pQ-0004KM-Oa; Mon, 03 Mar 2025 09:31:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp6hr-0000ea-JR; Mon, 03 Mar 2025 09:23:43 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp6hp-0000DO-0Z; Mon, 03 Mar 2025 09:23:43 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z61JV3lBXz4x0L;
- Tue,  4 Mar 2025 01:23:38 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z61JR1V32z4wcD;
- Tue,  4 Mar 2025 01:23:34 +1100 (AEDT)
-Message-ID: <ee616fe5-280d-4afa-84db-9896b39fcb7a@kaod.org>
-Date: Mon, 3 Mar 2025 15:23:32 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tp6p8-0004C8-Ok
+ for qemu-devel@nongnu.org; Mon, 03 Mar 2025 09:31:15 -0500
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tp6p6-0002Mg-Ej
+ for qemu-devel@nongnu.org; Mon, 03 Mar 2025 09:31:14 -0500
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-6fd3b6a6a24so29824577b3.3
+ for <qemu-devel@nongnu.org>; Mon, 03 Mar 2025 06:31:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741012271; x=1741617071; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=4WWGlZgIPr0lgPhg6+eCF/xpe4T/85rWPCF6kQZ17yQ=;
+ b=GQXulXWV7Z5x85BFb0wee/uzhyrofROSS3SUTcg783lKGkWMEPnJHgdzRPtIlZ+Zh8
+ 9ReBAwuyB/3aacoRpfG/YSbnuDlIxfl6JE7MzPvtmaoItBuAsKf9Eiw+R4pca8uUA712
+ Ff7Mts9hvq2tqDHfo+jLoXlHdkjZ75qM3fyrrjFhTXwAOJEbnpirjvABR7sAJFSCmO2y
+ n79aU6FsdsdNrZ5lqeJ0TXoYaZld30S+DmxtFQFYcwMSIKhKZc+bLsaK3rSx/ubKQgRt
+ xf2zmTpkjgy+mdFNBfNId8N8MKvBpKptShW+TmB0mfxgsOPiE4dHjwkKPjFIEzYfl7wp
+ tnBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741012271; x=1741617071;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4WWGlZgIPr0lgPhg6+eCF/xpe4T/85rWPCF6kQZ17yQ=;
+ b=dTO3BQgHYJTbiHqvUfIBcwVjQJopKOgaKuW/FTlB+0nqilUIIJzm/SDEnOoEo7IQlI
+ 6gekZvoD51CIJj34k+JzsQ0YDTSYM2h662NzR2UYEu3PzNdQo0d6eK5g9JD+JxKpcwts
+ cU+6mjmfI+UZgRGf9QJZYSMca/25dRx80m19rcb1JCkug6XvJswlhQbeq5oWVYv0O1Pq
+ 0QJoDFOm/SU+r2ddkQljkXziQZqXAeeEyY0uE+/uuKpg4EC55jgXYThm2WeWeAcLdIFo
+ Fw2OqchosJ6ZZGLx4gFb8HJzJlgzVQswQYWhiEDWtkv4V3amMBFPY0HIYFmyYYgDLqvg
+ 5+Kw==
+X-Gm-Message-State: AOJu0Yy7gIzx2iIm94SU6plb7EaPl/eOWTeo+/wCe9TDUSCoCuPG+0/e
+ MBwR9xEGmpVqC82BEKs9LViC9czNnElB2iC366htJ8x2nt20p8wItPvSOuoA0hA+rNVjjlFEbPo
+ WNtH8SwnZvCfP03qQBskkPeHJVf74U9T7Jz/q3w==
+X-Gm-Gg: ASbGncvW/nYcYHskgfdNP/blOABfuritdHSlklh1ZhV5ihgX5ckiHwMZ3CEYEnXc2A+
+ rDXfBfrA8ISK6P4WyLfusDvc/C5GBtsCO3RZGzxyPnF4Gw5JH8cOHOZFNZ7nd+MOS18Lihp4MrZ
+ /1FGpgfxXH6lx4QcPLkUYnJWqlb8M=
+X-Received: by 2002:a05:690c:368f:b0:6fb:24e1:2d03 with SMTP id
+ 00721157ae682-6fd49fb6054mr168020777b3.10.1741012270492; Mon, 03 Mar 2025
+ 06:31:10 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/23] hw/arm/aspeed: Rename IRQ table and machine name
- for AST2700 A0
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
- <20250303095457.2337631-7-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250303095457.2337631-7-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=Robu=VW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250225074133.6827-1-kuqin12@gmail.com>
+ <20250225074133.6827-2-kuqin12@gmail.com>
+In-Reply-To: <20250225074133.6827-2-kuqin12@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 3 Mar 2025 14:30:59 +0000
+X-Gm-Features: AQ5f1JpXVwpHZFSxG8_qCSgKDev0Udz5O-ll0NkcX1e358yZkueN3uGI8G1Qg3k
+Message-ID: <CAFEAcA9QEftV3BRdqTTXMvttZUZ2pQHuFMF8uHEK0HX7BvOMyQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Adding TPM support for ARM SBSA-Ref
+ machine
+To: Kun Qin <kuqin12@gmail.com>
+Cc: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>, 
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+ Kun Qin <kuqin@microsoft.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DZg/YGNjrUcH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5FDa5j6TQy1w
 
-On 3/3/25 10:54, Jamin Lin wrote:
-> Currently, AST2700 SoC only supports A0. To support AST2700 A1, rename its IRQ
-> table and machine name.
-> 
-> To follow the machine deprecation rule, the initial machine "ast2700-evb" is
-> aliased to "ast2700a0-evb." In the future, we will alias "ast2700-evb" to new
-> SoCs, such as "ast2700a1-evb."
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+On Tue, 25 Feb 2025 at 07:41, Kun Qin <kuqin12@gmail.com> wrote:
+>
+> From: Kun Qin <kuqin@microsoft.com>
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2625
+>
+> This change aims to add a TPM device for SBSA ref machine.
+>
+> The implementation adds a TPM create routine during machine
+> initialization.
+>
+> The backend can be the same as the rest of TPM support, by using swtpm.
+
+sbsa-ref is a standard reference platform, so my main
+question here is: does the firmware and the rest of
+the reference platform expect and correctly handle the
+new device we're adding here ? Changes to the QEMU
+model I would expect are typically done in concert with
+changes to the software stack.
+
+I think a new device also would merit at least a
+bumping of the machine-version-minor number. Depending
+on the behaviour of the software stack it might need
+a major version bump.
+
+This kind of thing is a question that hopefully
+Radoslaw and/or Leif can help with. I'd like to see
+review by one of them before I merge this patch.
+
+I also have some more minor comments below on the
+code changes.
+
+> Signed-off-by: Kun Qin <kuqin12@gmail.com>
+
+(minor commit message style thing: typically the
+"Resolves:" line and similar "foo:" standard lines go
+immediately above the "Signed-off-by:" line.)
+
 > ---
->   hw/arm/aspeed.c         | 9 +++++----
->   hw/arm/aspeed_ast27x0.c | 8 ++++----
->   2 files changed, 9 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index c6c18596d6..2482f05154 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1673,12 +1673,13 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
->                               TYPE_TMP105, 0x4d);
->   }
->   
-> -static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
-> +static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc, void *data)
->   {
->       MachineClass *mc = MACHINE_CLASS(oc);
->       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->   
-> -    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
-> +    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
-> +    mc->alias = "ast2700-evb";
+>  hw/arm/sbsa-ref.c | 24 ++++++++++++++++++++++++
 
-please put the ->alias assignment line first. So that it is
-easily identified.
+docs/system/arm/sbsa.rst also needs to be updated.
 
-Thanks,
+>  1 file changed, 24 insertions(+)
+>
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index e720de306419..93eb3d1e363b 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -28,6 +28,8 @@
+>  #include "system/numa.h"
+>  #include "system/runstate.h"
+>  #include "system/system.h"
+> +#include "system/tpm.h"
+> +#include "system/tpm_backend.h"
+>  #include "exec/hwaddr.h"
+>  #include "kvm_arm.h"
+>  #include "hw/arm/boot.h"
+> @@ -94,6 +96,7 @@ enum {
+>      SBSA_SECURE_MEM,
+>      SBSA_AHCI,
+>      SBSA_XHCI,
+> +    SBSA_TPM,
+>  };
+>
+>  struct SBSAMachineState {
+> @@ -132,6 +135,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+>      /* Space here reserved for more SMMUs */
+>      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
+>      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
+> +    [SBSA_TPM] =                { 0x60120000, 0x00010000 },
+>      /* Space here reserved for other devices */
+>      [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
+>      /* 32-bit address PCIE MMIO space */
+> @@ -629,6 +633,24 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+>      }
+>  }
+>
+> +static void create_tpm(SBSAMachineState *sbsa, PCIBus *bus)
 
-C.
+Why do you pass in a pointer to the PCI bus when this isn't
+a PCI device? It looks like the 'bus' argument is unused.
 
+> +{
+> +    Error *errp = NULL;
+> +    DeviceState *dev;
+> +
+> +    TPMBackend *be = qemu_find_tpm_be("tpm0");
+> +    if (be == NULL) {
+> +        error_report("Couldn't find tmp0 backend");
+> +        return;
+> +    }
+> +
+> +    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
+> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
+> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 
+Why use &errp here twice and &error_fatal once? Passing in
+an errp and then not doing anything with it is effectively
+throwing away the error report. If you know that the function
+you're calling can't in practice fail, you can use
+&error_abort (which is like an assert() that the function
+didn't fail). If the function might fail and you want to
+print an error message and exit(1) then you can use &error_fatal.
+If you want to pass the error status up to a calling function,
+or do more complicated things in the failure case, you can
+use an Error* variable. The comments in include/qapi/error.h
+have an extended discussion with various standard usage
+patterns.
 
->       amc->soc_name  = "ast2700-a0";
->       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
->       amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
-> @@ -1817,9 +1818,9 @@ static const TypeInfo aspeed_machine_types[] = {
->           .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
->   #ifdef TARGET_AARCH64
->       }, {
-> -        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
-> +        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
->           .parent        = TYPE_ASPEED_MACHINE,
-> -        .class_init    = aspeed_machine_ast2700_evb_class_init,
-> +        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
->   #endif
->       }, {
->           .name          = TYPE_ASPEED_MACHINE,
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 527a5f8245..f1beea7ece 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -73,7 +73,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->   #define AST2700_MAX_IRQ 256
->   
->   /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
-> -static const int aspeed_soc_ast2700_irqmap[] = {
-> +static const int aspeed_soc_ast2700a0_irqmap[] = {
->       [ASPEED_DEV_UART0]     = 132,
->       [ASPEED_DEV_UART1]     = 132,
->       [ASPEED_DEV_UART2]     = 132,
-> @@ -762,7 +762,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
->   }
->   
-> -static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
-> +static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
->   {
->       static const char * const valid_cpu_types[] = {
->           ARM_CPU_TYPE_NAME("cortex-a35"),
-> @@ -785,7 +785,7 @@ static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
->       sc->uarts_num    = 13;
->       sc->num_cpus     = 4;
->       sc->uarts_base   = ASPEED_DEV_UART0;
-> -    sc->irqmap       = aspeed_soc_ast2700_irqmap;
-> +    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
->       sc->memmap       = aspeed_soc_ast2700_memmap;
->       sc->get_irq      = aspeed_soc_ast2700_get_irq;
->   }
-> @@ -800,7 +800,7 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
->           .name           = "ast2700-a0",
->           .parent         = TYPE_ASPEED27X0_SOC,
->           .instance_init  = aspeed_soc_ast2700_init,
-> -        .class_init     = aspeed_soc_ast2700_class_init,
-> +        .class_init     = aspeed_soc_ast2700a0_class_init,
->       },
->   };
->   
+In this case I think &error_fatal on all three lines is
+probably what you want.
 
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_TPM].base);
+> +}
+
+thanks
+-- PMM

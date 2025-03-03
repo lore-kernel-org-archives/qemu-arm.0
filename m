@@ -1,69 +1,68 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2575850njb;
-        Mon, 3 Mar 2025 04:31:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVaZEG7uVQPLmodKGowXyjnWZJVDMeblcSB9znCisDw9HC/awBOvZ4MiCV1Ij9vOlVXFDROwfkTk2Rs1A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEtyGYCGy8DuDKhENt/VLQOJMembjkRryNuHVpzEtWoIU1+O/hSMwCaBcc2IAEcAeQlEDc5
-X-Received: by 2002:ad4:5c66:0:b0:6e6:5e66:770f with SMTP id 6a1803df08f44-6e8a0d0d5efmr230134776d6.16.1741005081213;
-        Mon, 03 Mar 2025 04:31:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741005081; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2577278njb;
+        Mon, 3 Mar 2025 04:33:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXXr1PDiS2h7IoexNRuK6LLTYvHXY922QgppNljDE2LCPjuHbjlOI3OuunsOTpIzU1LiXZ/W3l92G3bmw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEU3PLFfVX1Se5TfXyyEGFwAbXLt74XRGEdj5/OwBrD2p8cH1JZhUtH1Y3jwldAqxZc5p3F
+X-Received: by 2002:a05:620a:4114:b0:7be:72e2:90a2 with SMTP id af79cd13be357-7c39c4a240emr2125644685a.6.1741005229103;
+        Mon, 03 Mar 2025 04:33:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741005229; cv=none;
         d=google.com; s=arc-20240605;
-        b=PRNacGx7tq0nWt8PrsVA0tov5g2iNzpr+rhZQGF7O2NUIBB91veJNEdj6IP5Zu9op/
-         O2SPTsJoms2MtzcdxTMylnJ+uu5LBBZT1+DE45CdJbW40LEPE12GeogQlNDPOyUM9XOH
-         fAj8sHgh88PJ13kKab1WAYkb5mQyVrgWFklCcjcpBD/rGdSwwH2Pnvh0cnhpLaMyLXTB
-         ivrW5A4Pfa+A6oWgKqJPlwVgQ4T5cGoq/XZX7c3JwpaWfxtCwRALnpncZH3UMT7qy+LD
-         ZEyD81hVhIRSmTP9tnKsobMhpUawXN7xd5AeS3akv1RfJaaA1T6NqTqBkRuOUNwM9hoe
-         md7Q==
+        b=AdtDHvBI0aGWHbiV2SWVc7+QG4mHUXlVckBHYbSrQM/SxIQ96ZGnhh26na9pQQWRN0
+         4zQIpNnFtpqT+Eo2VUtfdfL+kUTvPJ93Yu09S7pqwgEl0Ggea0KkQLWHolwT+5gR2zZ7
+         /xbPty89afpFituGF8r/S6ao5Eg4OHMMGbpzCU1rgl1/gJYfMMizQhCo6a6BRUE56kgx
+         q0XsO7XRw8Z3c2kmCMw8DLRimE/Ietf0YupvWLbC/eAyIXU7suhV5TW+gYfR/g8ctQFe
+         alsGnOyFObiscf8dkr52oSXBzcHjSnWWJ/WKevPIcxh1J7X+UyB51NHQRj4FokClb3rl
+         vH/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=iMq/RK8hu2CrDNMcc2mFJdz42pTdlrIPY6Yo8ylv76U=;
+        bh=717uaI3uCfNYihxKvtfymdoaCxJlFogIYZfNB+r4JRA=;
         fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=KScl/XP03z4ahRdWxFruM/TSCkulSZ0B1NPiEg+PFuUZbUH6ssAjAVGzsOzXIYhERn
-         +hZ3s3UtIGgIVqz5Pv+B0i2PG5XcG/25DHpJpRUDps+qun5YBS77JnhygDNcX4rPBPKl
-         KILfemwHHoMwurR3kCKaiMuaZBL5D8B7gZVtx74aa7LttYiYi4dul8c2N8kO0fDMsqsO
-         JLq8iKQZZQpjzgPMz/9a/38/8nLyof4cFJ6Dvo0IW4w/vlxoWr9Bv8lATKuMjs+PUaLE
-         cEZdYj2Y3H1vAndNuYzr7rAKaog4YgLy68aXKM3oslaGHeJllI0EpY453/eKewbhPiS0
-         3l1A==;
+        b=BPYLpo+ZlGDVNEc2apTu7iW9qakrmz2SlItLfCXcgVwGWUP4PkRJo1KmmaXGtkcMzL
+         oUxuKSSBMApu43R+0uhAD0ncjLXX2IAGdaA4I/2CNBiSfp/GTpkMgWEYvaRQpBlzJgG8
+         E15D3A/thm5qgFBDylIRFf3GjkQGkGpGsjlEx+X+lDHEbShXBrXH91dNWRNaXnO4VJrL
+         pKiuo2lyl37z3OYmMb/Ds0CulRp5Ps6+MS2hvH0dmJQ+Opb8K7FiQE/LB25QOOr8VG7D
+         FhIYIKYUyDiBJfvoAQDna9VPFXN2JlW/Rj2zcLhS4Nl7ZiePxnTZrTlDBFPZB8iDTTg3
+         6Mvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e7901si87868686d6.22.2025.03.03.04.31.21
+        by mx.google.com with ESMTPS id af79cd13be357-7c378db5b4asi844893685a.638.2025.03.03.04.33.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 04:31:21 -0800 (PST)
+        Mon, 03 Mar 2025 04:33:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp4ww-0003MO-7n; Mon, 03 Mar 2025 07:31:10 -0500
+	id 1tp4zK-0004gq-Gu; Mon, 03 Mar 2025 07:33:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp4wd-0003KK-Px; Mon, 03 Mar 2025 07:30:57 -0500
+ id 1tp4yS-0004Pi-3n; Mon, 03 Mar 2025 07:32:46 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp4wa-0008Ro-Fr; Mon, 03 Mar 2025 07:30:51 -0500
+ id 1tp4yM-0000Gq-U2; Mon, 03 Mar 2025 07:32:43 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z5yp92sQZz4wvb;
- Mon,  3 Mar 2025 23:30:41 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z5yrN3MGCz4wvb;
+ Mon,  3 Mar 2025 23:32:36 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z5yp50KDvz4wcD;
- Mon,  3 Mar 2025 23:30:35 +1100 (AEDT)
-Message-ID: <86768e84-a4d9-4c20-b34d-0b82bf27e43c@kaod.org>
-Date: Mon, 3 Mar 2025 13:30:33 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z5yrK0QWZz4wj2;
+ Mon,  3 Mar 2025 23:32:32 +1100 (AEDT)
+Message-ID: <37368928-1519-4d79-8657-a38cf161c981@kaod.org>
+Date: Mon, 3 Mar 2025 13:32:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/6] hw/arm/aspeed Update HW Strap Default Values for
- AST2700
+Subject: Re: [PATCH v4 6/6] hw/arm/aspeed_ast27x0.c Fix boot issue for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +71,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250303073547.1145080-1-jamin_lin@aspeedtech.com>
- <20250303073547.1145080-4-jamin_lin@aspeedtech.com>
+ <20250303073547.1145080-7-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,7 +116,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250303073547.1145080-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250303073547.1145080-7-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -143,14 +142,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p65SOi/crSTX
+X-TUID: MqP6p6y68fRP
 
 On 3/3/25 08:35, Jamin Lin wrote:
-> Separate HW Strap Registers for SCU and SCUIO.
-> AST2700_EVB_HW_STRAP1 is used for the SCU (CPU Die) hw-strap1.
-> AST2700_EVB_HW_STRAP2 is used for the SCUIO (IO Die) hw-strap1.
+> Currently, ASPEED_DEV_SPI_BOOT is set to "0x400000000", which is the DRAM start
+> address, and the QEMU loader is used to load the U-Boot binary into this address.
 > 
-> Additionally, both default values are updated based on the dump from the EVB.
+> However, if users want to install FMC flash contents as a boot ROM, the DRAM
+> address 0x400000000 would be overwritten with Boot ROM data. This causes the
+> AST2700 to fail to boot because the U-Boot data becomes incorrect.
+> 
+> To fix this, change the ASPEED_DEV_SPI_BOOT address to "0x100000000", which is
+> the FMC0 memory-mapped start address in the AST2700.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -163,24 +166,20 @@ C.
 
 
 > ---
->   hw/arm/aspeed.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
+>   hw/arm/aspeed_ast27x0.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 98bf071139..c6c18596d6 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -181,8 +181,10 @@ struct AspeedMachineState {
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 8c225d4f90..527a5f8245 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -24,7 +24,7 @@
+>   #include "qemu/log.h"
 >   
->   #ifdef TARGET_AARCH64
->   /* AST2700 evb hardware value */
-> -#define AST2700_EVB_HW_STRAP1 0x000000C0
-> -#define AST2700_EVB_HW_STRAP2 0x00000003
-> +/* SCU HW Strap1 */
-> +#define AST2700_EVB_HW_STRAP1 0x00000800
-> +/* SCUIO HW Strap1 */
-> +#define AST2700_EVB_HW_STRAP2 0x00000700
->   #endif
->   
->   /* Rainier hardware value: (QEMU prototype) */
+>   static const hwaddr aspeed_soc_ast2700_memmap[] = {
+> -    [ASPEED_DEV_SPI_BOOT]  =  0x400000000,
+> +    [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+>       [ASPEED_DEV_SRAM]      =  0x10000000,
+>       [ASPEED_DEV_SDMC]      =  0x12C00000,
+>       [ASPEED_DEV_SCU]       =  0x12C02000,
 

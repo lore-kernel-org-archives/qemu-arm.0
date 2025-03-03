@@ -1,191 +1,257 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2743041njb;
-        Mon, 3 Mar 2025 08:52:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU1721Crzzqz7Pdp2IRhuotIMu+jUBLfAQWnw3Bxs3E3a2sHNx0WtYmGTWlXH8AjZ7rwpoA9oWw5FpA6A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGsKkilYLIUXxoYkmUuNDD6Br6P6bs+mcN+pjnFFrLIjkj5O4DDh4HW7KX0JtoV356e2x9z
-X-Received: by 2002:a05:620a:4088:b0:7c0:bc63:7b76 with SMTP id af79cd13be357-7c39c64d631mr2513058785a.36.1741020732090;
-        Mon, 03 Mar 2025 08:52:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741020732; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2752734njb;
+        Mon, 3 Mar 2025 09:05:36 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVCTZcox6grZaX6IaePWA28Z+sIDuGKebFp23+iR6/wM+8MGStxwyZeQvxNNAkufgShPj52e8JB9h4NVg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE3Kcc1/MebqP15Cldwna4buETvbaV9IjbukwwnZZOYWyCrpshpvIBOiA+cnBcLZSaJZGLD
+X-Received: by 2002:a2e:9f45:0:b0:300:4107:6294 with SMTP id 38308e7fff4ca-30b933139damr49209051fa.35.1741021536488;
+        Mon, 03 Mar 2025 09:05:36 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1741021536; cv=pass;
         d=google.com; s=arc-20240605;
-        b=AKAqHO8NeteGnB5ASwfTozcxt+gF2WHeG8tMFbOoM7rnMK1yd6yGgNAfwr6HAgs45Q
-         c+Ou2V+NbobK0SbgE+D27Cmj+7je9s86iKS9fn548M7YaA/HEpTdMRY3P3pOfr4AZoBT
-         M2CgRd3Gmlt4FaXJtrnuXY9g6T9ulRLm+vsnXDc06Pj2mN41Q6np1LIGb9nTRigMWjid
-         Meqj4hXl85nBehDb7G+bcrj4qxXxb9dS52ny5eF0GZ1yD3DoFo2p2j+3OWGwyog8DBqA
-         rJJCIu6/aFtUs2cXhjky0189th2bkA8H0n9dI7SIYgn16u5ZbosD8A2+yOtdsNSBRWEd
-         72Kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=PfRtvO4cK3S1OTEu1rTrE/mbOTEBjHtCWdP+XRPimLx9+slCi0QWLNQF8xZxnqpVvI
+         kaQ8tsNpOKx3LS0Gv6Og0EzfLmmNQtZ0BeXaoOmiWfoooMqiG2NxmVcgX/GFaIlvE1eo
+         12lp5Q/cGa/xROrE1zaYtyc5XWUNe2IByAJ/Hien63GUGKuS6iq8rfyIO9ixfFCSU+lp
+         gfGD6041NGjEKPtnCG+zmxDGirtRFN3cQXZspDO3mXTg5xC1BwwT4A5n0fk8czqBkjlS
+         H21hEM7HeWzSLtKnucPGFaarJhzSp681KYzqBZFGM3+Wpi+DSEQyoVPn6FLCtjeGvB+L
+         0D8g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=L5aWyY5OpweEEGryRvlmLhzUiJTsbLlKi0nvJAbAo6I=;
-        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=evu+2AtI1j+jMR4ltf1q6HwnfY0+VV1+2U+gzOJlnZogkfZa4cRQMDrlvkRV8it1jd
-         YjICImngfKMriZw4B98JrzwM2YgmizlxSWUFxFyclkhiNPe5g3jJxeDO6KdHAGejoosH
-         qIBQRckJALxU0TpE6FqO65ZzpPpqS1cIaJj43IkXZER9F1pq+a6UdK5RHLHXi1Hum9sS
-         MfmvFjPmeDrJu1G64g/mnNHnrw3sge5kTET2w37lu+mZgWqIqQ/Z+282rpPhAw95Tumz
-         e3fxNJ26TZ/SmdCWli04pcsVYWPcb4UWApWuM3Ap/pPymzUnAbNm4Jk5VfF0LhoJHZY2
-         Nblg==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=DAurUJhbhOyZze5Y79LS98Ivkx2aqd4b5rwViJRZbqQ=;
+        fh=5r1fQaznWNcXLUVq+a/2kTc94VwFiSdZ8xzWK/j7mvw=;
+        b=eoJ6oK4d02TNGjU+f2esenc3j3Tr5Tap/WmSXFgRyWELcWSIv+0MhqdFmer2jNTfnt
+         7ond39s3UKorItzD4U0rkhcsNB9bEDnvsf/j0eQx3+CH+n1YHBs8PtsKteti1xeuV4LE
+         xpM8X9WkUKOxqYbADh+oayKIfezbwE51EFHD5yFBKMNFzGpg2B71G+zUOoXr+/4AkZaT
+         aaRkbohKCfp5n9VM9unIidyVecGS3YfGVL6tA9HqEAbkFAmIwfFM+osxXIRaVkY8YYdL
+         EKJDiKZYkhx5gTK4FKoLhx96M1hp3yt5C9WucLnyv2PLGCWBjv5kc02cWNj1rtzZXAqo
+         m6Xg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=P9E+IEGp;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3749e026dsi938119985a.378.2025.03.03.08.52.12
+        by mx.google.com with ESMTPS id 38308e7fff4ca-30ba954318fsi23662861fa.344.2025.03.03.09.05.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 08:52:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Mar 2025 09:05:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=P9E+IEGp;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tp91E-0005Ql-Oh; Mon, 03 Mar 2025 11:51:52 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tp9EJ-00032u-CV; Mon, 03 Mar 2025 12:05:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp90l-0004wl-Sn; Mon, 03 Mar 2025 11:51:26 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tp9EC-0002vS-Um; Mon, 03 Mar 2025 12:05:18 -0500
+Received: from mail-dm6nam12on20604.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::604]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
- id 1tp90g-0003Tn-Kl; Mon, 03 Mar 2025 11:51:21 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z64ZX6xwGz4x3d;
- Tue,  4 Mar 2025 03:51:00 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z64ZS3ywyz4x0t;
- Tue,  4 Mar 2025 03:50:56 +1100 (AEDT)
-Message-ID: <00e40ce2-1ce6-49e9-8cae-42780366adb9@kaod.org>
-Date: Mon, 3 Mar 2025 17:50:56 +0100
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tp9E9-0008LU-0Y; Mon, 03 Mar 2025 12:05:16 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NcmWTEnsXSBT4zf78lUugcjeJwr4l0FEuqWWiCImqnB/F1WHNqOqetkbcuuCEtDUJFTPhca3ZV0293+U4OYu8i5MY91SkaLqdSPN8SgqTevUtev6vNdgehHKR3AP1wCqk0Od+hKG3lj42SIEeTdkKT/Kk/y1JOZRxci2tmG2SnRNHVuNnYrT+U3aoTDDBKLxX0rIJGi4lberNUcDq1ZAz1arTuFHGn8hO3KiXQw0Ryb1znnN5QVeA0AysNTE9NwENzk+pgm9Rf6RT4b1P35Tm03K0IUwgWu6cHXHuU4WSO+gpLbsC2znlAVsXOhlVy5/8GP22eT/i3f3SsC7oXeV9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DAurUJhbhOyZze5Y79LS98Ivkx2aqd4b5rwViJRZbqQ=;
+ b=uzcQ35gzYDJnbEO8pF8iUzfavuFCWSsu7zapapQLrrXEDg/23EXE697B3X+vXOQF5LD/+UaN7W1DuedOKvOn6Sv7DFVRGvYhp6erj6wEXBF9qqoYQcbp1wx/rR/0V++ty9UAe8iLujvQeUltHzT/RcMrLRvMuwct/7zgtj57yIEq2dpndGstQrcLpM7XhLM3OhVb/X9ATK2jiJn9NO9u8vITlKP39OhrjhYE5xL7UbSUZaDJDD6wbiISxf7K0bW4zNI0dSj07PzEQL2uQm+TQgwr0hrXh4EONmoO+6Gx1hN8LSz22rbkxNZ9yed5t2A2IsmJHIHqlDO/TcNMvelgyQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DAurUJhbhOyZze5Y79LS98Ivkx2aqd4b5rwViJRZbqQ=;
+ b=P9E+IEGppFyp1rn9nSwNKi8eggdj0OwNpaSH8RwkMncqQ9ggRu4weedeB+6drvWfMPalBmwAWm/EMRtH/bqMSe7iSU2tbBrYYSlhLLxGoQ68EcZOQTRHBe8wIlbRnKqjcUuiWKMLcKQQ68NUdJqJygHf/0YyoEsiQxlbcnliijQMDX3KE8dHFaLcPI8XMv0noO+14e8s9dSgUWFcrcnoXT+tvnuecC+tGHyUQt40HlOQPtCKMEenWMXxFBFDV76nCVXLoJcKzD98J4UoAVPX3sOFseGJyoRm2AVJYec4OLuYJ/vBLxD8/guRvkNiHsfFBAlN39KHRn5yEIlpkbrgNg==
+Received: from DM6PR03CA0046.namprd03.prod.outlook.com (2603:10b6:5:100::23)
+ by CY8PR12MB7147.namprd12.prod.outlook.com (2603:10b6:930:5d::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8489.25; Mon, 3 Mar
+ 2025 17:05:01 +0000
+Received: from DS1PEPF00017092.namprd03.prod.outlook.com
+ (2603:10b6:5:100:cafe::1a) by DM6PR03CA0046.outlook.office365.com
+ (2603:10b6:5:100::23) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8489.27 via Frontend Transport; Mon,
+ 3 Mar 2025 17:05:01 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DS1PEPF00017092.mail.protection.outlook.com (10.167.17.135) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8511.15 via Frontend Transport; Mon, 3 Mar 2025 17:04:59 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 3 Mar 2025
+ 09:04:45 -0800
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 3 Mar
+ 2025 09:04:45 -0800
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Mon, 3 Mar 2025 09:04:44 -0800
+Date: Mon, 3 Mar 2025 09:04:43 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+CC: Eric Auger <eric.auger@redhat.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, "Jason
+ Gunthorpe" <jgg@nvidia.com>, Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?=
+ <berrange@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Linuxarm
+ <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Message-ID: <Z8XhKyxHwsZo2eBK@Asurada-Nvidia>
+References: <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
+ <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
+ <77f736f6-9ef9-462b-916e-c8cfff279044@redhat.com>
+ <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
+ <8224c38797344d1a9c0f453774925db3@huawei.com>
+ <Z6UGVP3olKvakHUh@Asurada-Nvidia>
+ <48e3ac70f9fb4867a9ef835c22d4fda8@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/23] tests/functional/aspeed: Add test case for
- AST2700 A1
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
- <20250303095457.2337631-23-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250303095457.2337631-23-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=Robu=VW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+In-Reply-To: <48e3ac70f9fb4867a9ef835c22d4fda8@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF00017092:EE_|CY8PR12MB7147:EE_
+X-MS-Office365-Filtering-Correlation-Id: fb3e66e9-6b13-413a-930b-08dd5a758814
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|7416014|36860700013|1800799024|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aGZhUjA4R0tWQzNwc2Q5dEVQWjFJZFk0aGhXWG1YOWV2MGRlVnVVejZFalRR?=
+ =?utf-8?B?TitWa0hDTkRqVUlWb1VrWFA5aGZPcVZOZUlJK3JtRlNDZHoyT1pOYVZWcEFZ?=
+ =?utf-8?B?b1ZkRG9xNUtpVlZiekxiS2RBNTZlL1RSV0lPb2pxTmV2QXVUSE44eUJHV0g2?=
+ =?utf-8?B?NFFPQXp3U3J2UzROYUxSdW5XN1hGZFZibDkxR2xuQ0NRd1I4NG80eS9DS1dr?=
+ =?utf-8?B?TzI4OUhiWkhaRWp0YWROTngyaENRZ0pHb3dHVllrSVZIalBBbm9HWmR6VW9L?=
+ =?utf-8?B?cGhBaUxHdU42OU1lOWk4MDVCK1UyRW5qRFlUTitNSXAxZVVNNkh6YW5NWnEv?=
+ =?utf-8?B?YWJWVlgvSThPT1Z6V0ZsOVUyeDd1c2s5TnkzLzkrYXlYT2JCeFVrM1krM3p0?=
+ =?utf-8?B?N2dXcUt2MG55UTVWM1JKdTZIeE9JVHo0djhWSi9hQURwanI0MVJGcENIdEYz?=
+ =?utf-8?B?ZmNjLzNVYU5MMjJDemhMUldZQ2pzdjBkSFJIdnR0cW9SNkcwUFN2aTgvSlh6?=
+ =?utf-8?B?T3pYc1k5ZkxRRER6ZXUrR3dUVEhINldLMXEyMEUyVVRWUlVYc3hnUk1ST3Ax?=
+ =?utf-8?B?byttUTI2Z1hrRHhGQ2hNSmhMejI1b0Z5OUJIV2IwenM1RjY3MVFWVzk3WFhD?=
+ =?utf-8?B?V3VwVDcrVTd5NitDN0JUQ3NmLzV3ZlI5VXVERmRnTWtHVkdiS2s0b1VUNEtU?=
+ =?utf-8?B?VnQ4VW55Yi85bW1KUnljMFkwUk8xZXhWZjk0N2JxdTM3OUFYalhUNE1jN2tB?=
+ =?utf-8?B?bkphQTFUd0VMUFA2bWF0d0tOeURWM1dtZk9NeTJvU0N2YWE2bXIvMXNhNnBU?=
+ =?utf-8?B?c3pCT05RWmp0bDlTTS9Dano2N09HNnRGRWdaQVZRa2tkakdNRDJFK0RRYmpm?=
+ =?utf-8?B?VWwxZEdEZUFqMkNzVGcxZXl2YXJBU2pib2FBTk0xTElWL2dGck02SnNYQVFp?=
+ =?utf-8?B?d0RBd3ZoV0c2RkVHSnBudWNwTGpNd0NuYkwvUFk3TVNaN2l0eisyUmtKcjQ1?=
+ =?utf-8?B?UXBUb0hVOE1RaXd4eG5YRlZsRmdETTZnWkwvaHdzVFFsSS9ialhQbW1zRUto?=
+ =?utf-8?B?bUMrb2JIMXoyeFVlRDFmNENmZFV3cjJwS20xcnRjZ2xCQ2tDcFA4S0N4SGhO?=
+ =?utf-8?B?a3VuWkt5cGJSaHhqRUs5Y0NUMWRyM2RTa1lzUWxWYWU2RU52Y25STXRlSmNL?=
+ =?utf-8?B?R2NyVnZDV0NIT3h6WDBmM2sxbGxyVjQzRmhNMmFkUVFRdzAyMEVES3pvOTdY?=
+ =?utf-8?B?cXhiYUl0ekhVS3dpUTJxMWRjMjlKd2FhamdmbXJVZHdvcDF4Y2tzd29EZGla?=
+ =?utf-8?B?eC9VMTdWb1A3YS9zUDRRUlNHSWovbk03dFBXT3BDS1JreWU3MENyMDg1bHVi?=
+ =?utf-8?B?RlZGSGUxazE2QWhMaW91ZXJTVUNhUkwraXN5VGh2anVTV0ZpNTZSMWhIK2tw?=
+ =?utf-8?B?VnpKRGJwTTlNL21ndFU0OHJ5VWx5blFCMUtwNGIrTytOT0JoUEJDazMwRFY0?=
+ =?utf-8?B?S2FMNWpJL3Y1OGIwNmNUKyticjBjZGlkV2pRNFhWRjlNZkhNdFY5ZHo1aWFG?=
+ =?utf-8?B?Y1JrajVoKzVkdUtBV2JyMlNUbW43ZXMzMHR0RjUyTDNiUVBvUWg2UVVOdUVZ?=
+ =?utf-8?B?QmJYTmF6b1AxU21wQ2ZFVDFTNW5SSHV5cDdXMUVXdEVpbzF2N0svV3NLMUZh?=
+ =?utf-8?B?MW56d0ZxNHNCbmRGY2o0VS9HaHR0TlhrckxKdUxjYkg3OG1xcnhFUWVKTk04?=
+ =?utf-8?B?SlkyV2RkMVMwY3NESmNBSm9NVnRNK0h6eHI2Ymx0a1BtMHpmcWZZQ25EbFZX?=
+ =?utf-8?B?VlFuMmRxaEVQaUs4QnpEQnNZWGprUzJJWUMvM0RsaE1lUkdyOUdZR1JFRWxD?=
+ =?utf-8?B?ZWdFZ2pPMzNZQmZnYW5UdmZ5WmFrQUpaMXFkeDRiRDB0Szk2RUtDOUphUnVn?=
+ =?utf-8?B?RkJsRFJhUXFYS3pRRWtML3JmVy9DRklMUkN2Vi9pTXphWitUVXdNSk5lVVg2?=
+ =?utf-8?Q?yjjrVw0OTpYygeRt4MUG9Xy6lb7u6E=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(36860700013)(1800799024)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2025 17:04:59.5326 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb3e66e9-6b13-413a-930b-08dd5a758814
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF00017092.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7147
+Received-SPF: softfail client-ip=2a01:111:f403:2417::604;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PzobIMJlxM/M
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Rk/Wi8Gl0LJH
 
-On 3/3/25 10:54, Jamin Lin wrote:
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-> ---
->   tests/functional/test_aarch64_aspeed.py | 10 ++++++++++
->   1 file changed, 10 insertions(+)
+On Mon, Mar 03, 2025 at 03:21:57PM +0000, Shameerali Kolothum Thodi wrote:
+> I am working on the above now and have quick question to you😊.
 > 
-> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
-> index 8df6a97a28..c25c966278 100755
-> --- a/tests/functional/test_aarch64_aspeed.py
-> +++ b/tests/functional/test_aarch64_aspeed.py
-> @@ -31,6 +31,10 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
->               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz',
->               'cfbbd1cce72f2a3b73b9080c41eecdadebb7077fba4f7806d72ac99f3e84b74a')
->   
-> +    ASSET_SDK_V905_AST2700A1 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz',
-> +            'c1f4496aec06743c812a6e9a1a18d032f34d62f3ddb6956e924fef62aa2046a5')
-> +
->       def start_ast2700_test(self, name):
->           num_cpu = 4
->           uboot_size = os.path.getsize(self.scratch_file(name,
-> @@ -95,6 +99,12 @@ def test_aarch64_ast2700_evb_sdk_v09_05(self):
->           self.archive_extract(self.ASSET_SDK_V905_AST2700)
->           self.start_ast2700_test('ast2700-a0-default')
->   
-> +    def test_aarch64_ast2700a1_evb_sdk_v09_05(self):
-> +        self.set_machine('ast2700a1-evb')
-> +
-> +        self.archive_extract(self.ASSET_SDK_V905_AST2700A1)
-> +        self.start_ast2700_test('ast2700-default')
-> +
->   
->   if __name__ == '__main__':
->       QemuSystemTest.main()
+> Looking at the smmu_dev_attach_viommu() fn here[0],
+> it appears to do the following:
+> 
+> 1. Alloc a s2_hwpt if not allocated already and attach it.
+> 2. Allocate abort and bypass hwpt
+> 3. Attach bypass hwpt.
+> 
+> I didn't get why we are doing the step 3 here. To me it looks like,
+> when we attach the s2_hwpt(ie, the nested parent domain attach), 
+> the kernel will do,
+> 
+> arm_smmu_attach_dev()
+>   arm_smmu_make_s2_domain_ste()
+> 
+> It appears through step 3, we achieve the same thing again.
+> 
+> Or it is possible I missed something obvious here.
 
+Because a device cannot attach to a vIOMMU object directly, but
+only via a proxy hwpt_nested. So, this bypass hwpt gives us the
+port to associate the device to the vIOMMU, before a vDEVICE or
+a "translate" hwpt_nested is allocated.
+
+Currently it's the same because an S2 parent hwpt holds a VMID,
+so we could just attach the device to the S2 hwpt for the same
+STE configuration as attaching the device to the proxy bypass
+hwpt. Yet, this will change in the future after letting vIOMMU
+objects hold their own VMIDs to share a common S2 parent hwpt
+that won't have a VMID, i.e. arm_smmu_make_s2_domain_ste() will
+need the vIOMMU object to get the VMID for STE.
+
+I should have added a few lines of comments there :)
+
+Thanks
+Nicolin

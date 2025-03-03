@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2503473njb;
-        Mon, 3 Mar 2025 01:55:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU10VTLtJXKrPspNj1TiFt7snv4SeDrHRMg0eoNqEIkNrg3sJhG6/3+srY99685lgURqKa0coDk7zNyBA==@linaro.org
-X-Google-Smtp-Source: AGHT+IERHdk7ey0QeF0/g4sz7OIRYpndYKbc6TTjX+B1SCtc/ZsY59fPEmcpZeuDEBo+P+0XfnGQ
-X-Received: by 2002:ac8:7d0a:0:b0:472:1ee7:d3f with SMTP id d75a77b69052e-474bc0518b9mr148716201cf.10.1740995730965;
-        Mon, 03 Mar 2025 01:55:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740995730; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2503609njb;
+        Mon, 3 Mar 2025 01:55:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUC1XLoOn3fNGWHydHFt273vrsT+7EO6UTQisCQ8CNHr/ixYjor76sNrGUuYGnS53xRaTGOZHJRu72DHw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWgAwt4MO3Av3n4A6shnqp8CBc82bLrbMWVhH2Y0S9PoXCYZhCd9ZIxbOmHCl2JdiKREyS
+X-Received: by 2002:a05:6214:2462:b0:6e6:69d8:6c16 with SMTP id 6a1803df08f44-6e8a0d6d8f5mr204380066d6.35.1740995752167;
+        Mon, 03 Mar 2025 01:55:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740995752; cv=none;
         d=google.com; s=arc-20240605;
-        b=CPWw/CGvl1JKGEKFTun2EJSKIG6XMTlsgonDaoKZRSSzZPPjRjuYPnpcSqwiWz61pT
-         o8dz20SlSVcz8tNYZ1rn96S/NSWZsLXwP63eF9Bkom1+J5NzNfE1xx/CqwPCYwdHGUwm
-         IQ9gjLNqfdFCx4wtdDRjm+09KafqG49vYzVgKxKf/GN5+BGOItKQDHIGG/X5XDOMymSE
-         vfU75dDHfrYRS3pAFCwEwg8uM/RLdHbph1SOSMrM4BEBBb5ap1b7YMIGVbhbagSSKsR5
-         jc1rVp0XRTznay95JjMa1p34aXnKyWaH4ewSI9S9/3C8lFDH+b3s3HhW2wu3J0+kouRy
-         S74w==
+        b=Eea/5wJU1mAbqigPFGLgFFJnyQ6F3Tr7uKw+zUEkWZrxJvSn8pQT+jyXeVXhtxzB9d
+         66O/3AbYWhuzIvUzCfBloyduNG2aDk1b6TAox554xgM18SX4Y3UfTH/m/LaaLUReRlbn
+         V9Hc8nU+CpPnmTS2RqMvcPTxrapT+1QUBWdaG0sPnI2+HnJQstENi1V7ecJHteOsdSev
+         OMfAgqRJ9mrV4ypcYLeHlLaZ66Lwqw2h8yK+ouZcRF/Q6TC6SBDEllhtZ+ltole6IYbO
+         4rHxYIDiEizfzyBzLIROm/nHjYaKYcPAeJjVTWgjp4Cw/tr7tufw7TlKRheSZAvjauGV
+         ywcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=ml79pGbdB7IDNsKeXvxrMWODt51JknhlBcs1sQwZXsQ=;
-        fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
-        b=PGyx5rdjCaFyAgmLUPXnbwMag9s5EP/r93HrnvpdUSoPJk7rylwcqtOPa9+jgnm2bD
-         Gqmr9NEyN77uRmqjlQvMv8l9PEIyrx5xEvBsl/CtlYO32iZJZo9pKyH6X7BVvfEDevid
-         1+EWh8TD57jFZOsosLvEtESUlqhf5sFmZpQgDuuPwz+2jC9bYOSEwDZeZfQ3JBF6JE8g
-         XwRGqvfkbtkbjdtHJFkWMC/myuX6FiQIbH0p+KRqqdPxoFlY6MMxU+5E66He4VyL4rt7
-         K6HQBydm9W9YVZCTY6aleI4sA7x8FDR5NewEJueYtwAO9LFzBtRRe2uA+aF01SedqG2m
-         EYXQ==;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=vt8/+FHVubOIbr5M8Ot3A1mCMg3t1WyYeWHQLbv4Dzk=;
+        fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
+        b=DqG10pifPJ1zAyVajrx5gbScDpHQlopjVe1VmAgdCGHJaikaQJG3RYgWV1rEiLDobU
+         FNT6pz0cqv00Nxz1z9OttxAOsOpxhyRxvTl5IKx+3CB6WQ8VdKirBekUQF4FlrY+wv7t
+         gUFno6YzWt/k0U4fkysEL2v5uMdi5bMrXit6Q2NxuCdaHH3xcOL8nhciz471HB45uUFR
+         QqjfgQwFOKl0jTPF3B9XuMBYqNj+tfgAhM9GWixRsoLytHxZphLAzJKhNmoYH7ziV7nF
+         rCPTnkhPWA/maP8MGSiNdzhXb0UK3r504UHsi/nccspAy08CpJAEP0TSwvL9A0bq2lj5
+         /Scw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-474691acf55si85985971cf.147.2025.03.03.01.55.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8976e3779si84205946d6.402.2025.03.03.01.55.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 01:55:30 -0800 (PST)
+        Mon, 03 Mar 2025 01:55:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,32 +42,36 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp2Vy-0007pA-CN; Mon, 03 Mar 2025 04:55:10 -0500
+	id 1tp2W5-0007s8-HC; Mon, 03 Mar 2025 04:55:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp2Vw-0007oY-5W; Mon, 03 Mar 2025 04:55:08 -0500
+ id 1tp2W4-0007rV-28; Mon, 03 Mar 2025 04:55:16 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp2Vt-0001gH-HD; Mon, 03 Mar 2025 04:55:07 -0500
+ id 1tp2W1-0001s3-5T; Mon, 03 Mar 2025 04:55:14 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 3 Mar
- 2025 17:54:58 +0800
+ 2025 17:54:59 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 3 Mar 2025 17:54:58 +0800
+ Transport; Mon, 3 Mar 2025 17:54:59 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 00/23] Support AST2700 A1
-Date: Mon, 3 Mar 2025 17:54:28 +0800
-Message-ID: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 04/23] hw/intc/aspeed: Introduce helper functions for
+ enable and status registers
+Date: Mon, 3 Mar 2025 17:54:32 +0800
+Message-ID: <20250303095457.2337631-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
+References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -95,98 +99,242 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gZD7/01OEFZG
+X-TUID: bMta0a2Ef+1c
 
-v1:
- 1. Refactor INTC model to support both INTC0 and INTC1.
- 2. Support AST2700 A1.
- 3. Create ast2700a0-evb machine.
+The behavior of the enable and status registers is almost identical between
+INTC(CPU Die) and INTCIO(IO Die). To reduce duplicated code, adds
+"aspeed_intc_enable_handler" functions to handle enable register write
+behavior and "aspeed_intc_status_handler" functions to handle status
+register write behavior. No functional change.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/intc/aspeed_intc.c | 190 ++++++++++++++++++++++++------------------
+ 1 file changed, 108 insertions(+), 82 deletions(-)
+
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index 0f630ffab7..906331fa32 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -120,6 +120,112 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     }
+ }
  
-v2:
-  To streamline the review process, split the following patch series into
-  three parts.
-  https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.2465942-1-jamin_lin@aspeedtech.com/
-  This patch series focuses on cleaning up the INTC model to
-  facilitate future support for the INTC_IO model.
-
-v3:
- 1. Update and add functional test for AST2700
- 2. Add AST2700 INTC design guidance and its block diagram.
- 3. Retaining the INTC naming and introducing a new INTCIO model to support the AST2700 A1.
- 4. Create ast2700a1-evb machine and rename ast2700a0-evb machine
- 5. Fix silicon revision issue and support AST2700 A1.
-
-v4:
- 1. rework functional test for AST2700
- 2. the initial machine "ast2700-evb" is aliased to "ast2700a0-evb.
- 3. intc: Reduce regs array size by adding a register sub-region
- 4. intc: split patch for Support setting different register sizes
- 5. update ast2700a1-evb machine parent to TYPE_ASPEED_MACHINE
-
-With the patch applied, QEMU now supports two machines for running AST2700 SoCs:
-ast2700a0-evb: Designed for AST2700 A0
-ast2700a1-evb: Designed for AST2700 A1
-
-Test information
-1. QEMU version: https://github.com/qemu/qemu/commit/50d38b8921837827ea397d4b20c8bc5efe186e53
-2. ASPEED SDK v09.05 pre-built image
-   https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
-   ast2700-default-obmc.tar.gz (AST2700 A1)
-   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz
-   ast2700-a0-default-obmc.tar.gz (AST2700 A0)
-   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz
-   
-This patch series depends on the following patch series:
-https://patchwork.kernel.org/project/qemu-devel/cover/20250303073547.1145080-1-jamin_lin@aspeedtech.com/
-https://patchwork.kernel.org/project/qemu-devel/cover/20250225075622.305515-1-jamin_lin@aspeedtech.com/
-
-Jamin Lin (23):
-  hw/intc/aspeed: Support setting different memory size
-  hw/intc/aspeed: Support setting different register sizes
-  hw/intc/aspeed: Reduce regs array size by adding a register sub-region
-  hw/intc/aspeed: Introduce helper functions for enable and status
-    registers
-  hw/intc/aspeed: Add object type name to trace events for better
-    debugging
-  hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
-  hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
-  hw/intc/aspeed: Support different memory region ops
-  hw/intc/aspeed: Rename num_ints to num_inpins for clarity
-  hw/intc/aspeed: Add support for multiple output pins in INTC
-  hw/intc/aspeed: Refactor INTC to support separate input and output pin
-    indices
-  hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
-    index and register address
-  hw/intc/aspeed: Introduce IRQ handler function to reduce code
-    duplication
-  hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
-  hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
-  hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
-    Revisions
-  hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC Interrupt Mapping
-  hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
-    AST2700 A1
-  hw/arm/aspeed: Add SoC and Machine Support for AST2700 A1
-  tests/functional/aspeed: Introduce start_ast2700_test API and update
-    hwmon path
-  tests/functional/aspeed: Update test ASPEED SDK v09.05
-  tests/functional/aspeed: Add test case for AST2700 A1
-  docs/specs: Add aspeed-intc
-
- docs/specs/aspeed-intc.rst              | 136 +++++
- docs/specs/index.rst                    |   1 +
- include/hw/arm/aspeed_soc.h             |   3 +-
- include/hw/intc/aspeed_intc.h           |  35 +-
- include/hw/misc/aspeed_scu.h            |   2 +
- hw/arm/aspeed.c                         |  33 +-
- hw/arm/aspeed_ast27x0.c                 | 276 +++++++---
- hw/intc/aspeed_intc.c                   | 636 ++++++++++++++++++------
- hw/misc/aspeed_scu.c                    |   2 +
- hw/intc/trace-events                    |  25 +-
- tests/functional/test_aarch64_aspeed.py |  47 +-
- 11 files changed, 942 insertions(+), 254 deletions(-)
- create mode 100644 docs/specs/aspeed-intc.rst
-
++static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
++                                       uint64_t data)
++{
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
++    uint32_t addr = offset >> 2;
++    uint32_t old_enable;
++    uint32_t change;
++    uint32_t irq;
++
++    irq = (offset & 0x0f00) >> 8;
++
++    if (irq >= aic->num_ints) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++                      __func__, irq);
++        return;
++    }
++
++    /*
++     * The enable registers are used to enable source interrupts.
++     * They also handle masking and unmasking of source interrupts
++     * during the execution of the source ISR.
++     */
++
++    /* disable all source interrupt */
++    if (!data && !s->enable[irq]) {
++        s->regs[addr] = data;
++        return;
++    }
++
++    old_enable = s->enable[irq];
++    s->enable[irq] |= data;
++
++    /* enable new source interrupt */
++    if (old_enable != s->enable[irq]) {
++        trace_aspeed_intc_enable(s->enable[irq]);
++        s->regs[addr] = data;
++        return;
++    }
++
++    /* mask and unmask source interrupt */
++    change = s->regs[addr] ^ data;
++    if (change & data) {
++        s->mask[irq] &= ~change;
++        trace_aspeed_intc_unmask(change, s->mask[irq]);
++    } else {
++        s->mask[irq] |= change;
++        trace_aspeed_intc_mask(change, s->mask[irq]);
++    }
++
++    s->regs[addr] = data;
++}
++
++static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
++                                       uint64_t data)
++{
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
++    uint32_t addr = offset >> 2;
++    uint32_t irq;
++
++    if (!data) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid data 0\n", __func__);
++        return;
++    }
++
++    irq = (offset & 0x0f00) >> 8;
++
++    if (irq >= aic->num_ints) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++                      __func__, irq);
++        return;
++    }
++
++    /* clear status */
++    s->regs[addr] &= ~data;
++
++    /*
++     * These status registers are used for notify sources ISR are executed.
++     * If one source ISR is executed, it will clear one bit.
++     * If it clear all bits, it means to initialize this register status
++     * rather than sources ISR are executed.
++     */
++    if (data == 0xffffffff) {
++        return;
++    }
++
++    /* All source ISR execution are done */
++    if (!s->regs[addr]) {
++        trace_aspeed_intc_all_isr_done(irq);
++        if (s->pending[irq]) {
++            /*
++             * handle pending source interrupt
++             * notify firmware which source interrupt are pending
++             * by setting status register
++             */
++            s->regs[addr] = s->pending[irq];
++            s->pending[irq] = 0;
++            trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
++            aspeed_intc_update(s, irq, 1);
++        } else {
++            /* clear irq */
++            trace_aspeed_intc_clear_irq(irq, 0);
++            aspeed_intc_update(s, irq, 0);
++        }
++    }
++}
++
+ static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+ {
+     AspeedINTCState *s = ASPEED_INTC(opaque);
+@@ -146,9 +252,6 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     AspeedINTCState *s = ASPEED_INTC(opaque);
+     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     uint32_t addr = offset >> 2;
+-    uint32_t old_enable;
+-    uint32_t change;
+-    uint32_t irq;
+ 
+     if (offset >= aic->reg_size) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -169,45 +272,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT134_EN:
+     case R_GICINT135_EN:
+     case R_GICINT136_EN:
+-        irq = (offset & 0x0f00) >> 8;
+-
+-        if (irq >= aic->num_ints) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
+-                          __func__, irq);
+-            return;
+-        }
+-
+-        /*
+-         * These registers are used for enable sources interrupt and
+-         * mask and unmask source interrupt while executing source ISR.
+-         */
+-
+-        /* disable all source interrupt */
+-        if (!data && !s->enable[irq]) {
+-            s->regs[addr] = data;
+-            return;
+-        }
+-
+-        old_enable = s->enable[irq];
+-        s->enable[irq] |= data;
+-
+-        /* enable new source interrupt */
+-        if (old_enable != s->enable[irq]) {
+-            trace_aspeed_intc_enable(s->enable[irq]);
+-            s->regs[addr] = data;
+-            return;
+-        }
+-
+-        /* mask and unmask source interrupt */
+-        change = s->regs[addr] ^ data;
+-        if (change & data) {
+-            s->mask[irq] &= ~change;
+-            trace_aspeed_intc_unmask(change, s->mask[irq]);
+-        } else {
+-            s->mask[irq] |= change;
+-            trace_aspeed_intc_mask(change, s->mask[irq]);
+-        }
+-        s->regs[addr] = data;
++        aspeed_intc_enable_handler(s, offset, data);
+         break;
+     case R_GICINT128_STATUS:
+     case R_GICINT129_STATUS:
+@@ -218,46 +283,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT134_STATUS:
+     case R_GICINT135_STATUS:
+     case R_GICINT136_STATUS:
+-        irq = (offset & 0x0f00) >> 8;
+-
+-        if (irq >= aic->num_ints) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
+-                          __func__, irq);
+-            return;
+-        }
+-
+-        /* clear status */
+-        s->regs[addr] &= ~data;
+-
+-        /*
+-         * These status registers are used for notify sources ISR are executed.
+-         * If one source ISR is executed, it will clear one bit.
+-         * If it clear all bits, it means to initialize this register status
+-         * rather than sources ISR are executed.
+-         */
+-        if (data == 0xffffffff) {
+-            return;
+-        }
+-
+-        /* All source ISR execution are done */
+-        if (!s->regs[addr]) {
+-            trace_aspeed_intc_all_isr_done(irq);
+-            if (s->pending[irq]) {
+-                /*
+-                 * handle pending source interrupt
+-                 * notify firmware which source interrupt are pending
+-                 * by setting status register
+-                 */
+-                s->regs[addr] = s->pending[irq];
+-                s->pending[irq] = 0;
+-                trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
+-                aspeed_intc_update(s, irq, 1);
+-            } else {
+-                /* clear irq */
+-                trace_aspeed_intc_clear_irq(irq, 0);
+-                aspeed_intc_update(s, irq, 0);
+-            }
+-        }
++        aspeed_intc_status_handler(s, offset, data);
+         break;
+     default:
+         s->regs[addr] = data;
 -- 
 2.34.1
 

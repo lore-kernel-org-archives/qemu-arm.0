@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2451364njb;
-        Sun, 2 Mar 2025 23:36:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUyOTScwiAfAvFyk3DWC8MD6BQ9LKZ54qaculMUa0RX0YfcLmqwZV2mjDOTBpyYoh5bPjQpY8THNXg0qQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHN5oRsTAOR6RAI89BXe1mrLnnN674tHHvFAyrWiYf8loKBrBz2fHpVQrCIpFpU7gcXXhOR
-X-Received: by 2002:a05:620a:444e:b0:7c0:b1aa:ba5a with SMTP id af79cd13be357-7c39c4ce19cmr1657057685a.33.1740987401213;
-        Sun, 02 Mar 2025 23:36:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740987401; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2451478njb;
+        Sun, 2 Mar 2025 23:37:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGSdhMIlVD39TslIzV9bkc6Ie2VBzcYMRPxIWrxho6yJ2P8HfMTaDncattDUFvWQWofhXORg7vNPQftA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHV44eAaElRXpn4uNCk2RmnU1rBDfQwBPspT/kdiHKEZ6IjU+jEw7px1pd/+oni5ihlGE91
+X-Received: by 2002:a05:6214:5098:b0:6e6:698f:cb00 with SMTP id 6a1803df08f44-6e8a0d95cc9mr181590306d6.42.1740987425131;
+        Sun, 02 Mar 2025 23:37:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740987425; cv=none;
         d=google.com; s=arc-20240605;
-        b=FPEhr1zji+CFI515dt72v2SpVF3ubq7QCmpUtOkdQDlHNPPBbYDjZe7ZkAr3A70GRS
-         KXXX4yNVSnaoZC/D0CubSokvnHn4L2PummeHE5Pmzx/u4fl7xgTmVZkq79E1A7BVY29U
-         nwdOOYtpDovrBbwRaVyDyLA9Gp6K4qeiUHIjALZzFymvsjN8G/fWjsyDe7E3c4E3BI6q
-         hShSCLgBRRnZ7TBhHUqObwFpdyUXWRmEp/kaY1sgbdGFzXU3Qlc7ap5gBvnPDaENfOmG
-         2fZOIUawvI6roPDNJoqmXY1Hjh/aOAVOdZYyqR6U7ZTpvdPclYRBSYIOe1rQnMPZzIL3
-         twZg==
+        b=bYNseY+YpoMJ7okhnc+oaEiLX/0XiIhzKRqtzRDshUZOkpZrtfqiGX+Sjwhf0GDXWI
+         kdyagVJI9D+o9WQdCgRtrLlPbBCoHLDjYvedl2CxvJ60o5pqvwyaA5n1NIvRpxGk8xcN
+         xno46dqeR9C196qRpSGGzt13Gs48lRSO4kjXT9dyjnYhTLJm2OzAq1xS3/i8cRpCl1b1
+         B5UMqAhqyqgLz5QOUW+5wGrfwggT0h+j04QzLuKtpPAmIY1d+HJiSqqJgZpehEDGF1fq
+         SXoT3qnKcR5/M0yp+eqWZbWViLf1lAqeSZfDu5q2kJ2JQr2hJDf/GJpgeDdpzNuqeI3U
+         bA+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=z891I2MVfqjTK55VxVmQ016mBxsDvXMEMipMXaAbXt0=;
+        bh=9NBmuUn1h38MuT8FxzNS8lJ+RJ1AdW4fs1amrFyahw4=;
         fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=gfjcert79H4FDZbwID8gHpTk4o4Zc/tgWJWQNzqpsJKJWzrcvaZU9KK7hGegkXNwdQ
-         xjIDkSnI9/NRzfFmAdqYTzPvV94d9qfEcvWCvLj5FJutOa0DQiBrk/vCFIgefnSyfIyE
-         qwu18yqb9Z4qlGCzf6wkvuJuWr0c+jnIzvK8hBxquGhNou2wfawU37eHflbVeVR/QGrJ
-         d4zh58aFTeI9JUfVWWD78KRQv0cCFKc6fCNLxYnY8xcS7S7g4IPPBE55ufKuHEAkM1ox
-         4OqltUSCJbMA5cYQCOPTInXku0PW1KQNCPdyB3ktECpCREThSjA6RYHt1IE3jBMGa0/v
-         dr4A==;
+        b=EMzUGNFsS9CPSKkenvzAyYheGDdomnUj1AGaBujNHcOiTX9r/AnNggDSC8xegDRm99
+         8SWFhVbsF6BJ1KYHwbhi/UqwrcvyxfvCEoA0DrXWIxhBpXcGNEpV4UsAIq30zc2SaR7G
+         SEHMOB1gcpXVUanu9TGVrjnr+T883QBTjtsJzqr3kaVMwNkknK35OygioudBir7HSGeI
+         v3zPc7KGWx7Ekn9DEtBU/ou5QCW03pZpkBVEiPt8Om1gUcav31vrq5hN3q0WiauHKqqP
+         9CbJNibVIvXO0ncfFeoDVEivvlPt7IuH9aQjQNXEf42WVKD7o7VxowMxsLPhx+psQIS9
+         qqew==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3749e0179si834790285a.416.2025.03.02.23.36.41
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e7339si81057576d6.52.2025.03.02.23.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Mar 2025 23:36:41 -0800 (PST)
+        Sun, 02 Mar 2025 23:37:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp0Lm-0000rF-56; Mon, 03 Mar 2025 02:36:30 -0500
+	id 1tp0M5-00018z-Dk; Mon, 03 Mar 2025 02:36:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp0LT-0000nX-Eu; Mon, 03 Mar 2025 02:36:13 -0500
+ id 1tp0LN-0000mv-JF; Mon, 03 Mar 2025 02:36:05 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp0LO-0001xL-Mu; Mon, 03 Mar 2025 02:36:08 -0500
+ id 1tp0LM-0001xL-19; Mon, 03 Mar 2025 02:36:05 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 3 Mar
@@ -64,10 +64,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 4/6] hw/misc/aspeed_scu: Fix the hw-strap1 cannot be set in
- the SOC layer for AST2700
-Date: Mon, 3 Mar 2025 15:35:44 +0800
-Message-ID: <20250303073547.1145080-5-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 3/6] hw/arm/aspeed Update HW Strap Default Values for
+ AST2700
+Date: Mon, 3 Mar 2025 15:35:43 +0800
+Message-ID: <20250303073547.1145080-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250303073547.1145080-1-jamin_lin@aspeedtech.com>
 References: <20250303073547.1145080-1-jamin_lin@aspeedtech.com>
@@ -98,53 +98,36 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ySOf7605YPN+
+X-TUID: SXQJwwiXwGVR
 
-There is one hw_strap1 register in the SCU (CPU DIE) and another hw_strap1
-register in the SCUIO (IO DIE).
+Separate HW Strap Registers for SCU and SCUIO.
+AST2700_EVB_HW_STRAP1 is used for the SCU (CPU Die) hw-strap1.
+AST2700_EVB_HW_STRAP2 is used for the SCUIO (IO Die) hw-strap1.
 
-In the "ast2700_a0_resets" function, the hardcoded value "0x00000800" is set in
-SCU hw-strap1 (CPU DIE), and in "ast2700_a0_resets_io" the hardcoded value
-"0x00000504" is set in SCUIO hw-strap1 (IO DIE). Both values cannot be set via
-the SOC layer.
-
-The value of "s->hw_strap1" is set by the SOC layer via the "hw-strap1" property.
-Update the "aspeed_ast2700_scu_reset" function to set the value of "s->hw_strap1"
-in both the SCU and SCUIO hw-strap1 registers.
+Additionally, both default values are updated based on the dump from the EVB.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/misc/aspeed_scu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/arm/aspeed.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 545d004749..0581c744f1 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -910,7 +910,6 @@ static const MemoryRegionOps aspeed_ast2700_scu_ops = {
- };
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 98bf071139..c6c18596d6 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -181,8 +181,10 @@ struct AspeedMachineState {
  
- static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
--    [AST2700_HW_STRAP1]             = 0x00000800,
-     [AST2700_HW_STRAP1_CLR]         = 0xFFF0FFF0,
-     [AST2700_HW_STRAP1_LOCK]        = 0x00000FFF,
-     [AST2700_HW_STRAP1_SEC1]        = 0x000000FF,
-@@ -940,6 +939,7 @@ static void aspeed_ast2700_scu_reset(DeviceState *dev)
+ #ifdef TARGET_AARCH64
+ /* AST2700 evb hardware value */
+-#define AST2700_EVB_HW_STRAP1 0x000000C0
+-#define AST2700_EVB_HW_STRAP2 0x00000003
++/* SCU HW Strap1 */
++#define AST2700_EVB_HW_STRAP1 0x00000800
++/* SCUIO HW Strap1 */
++#define AST2700_EVB_HW_STRAP2 0x00000700
+ #endif
  
-     memcpy(s->regs, asc->resets, asc->nr_regs * 4);
-     s->regs[AST2700_SILICON_REV] = s->silicon_rev;
-+    s->regs[AST2700_HW_STRAP1] = s->hw_strap1;
- }
- 
- static void aspeed_2700_scu_class_init(ObjectClass *klass, void *data)
-@@ -1032,7 +1032,6 @@ static const MemoryRegionOps aspeed_ast2700_scuio_ops = {
- };
- 
- static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
--    [AST2700_HW_STRAP1]                 = 0x00000504,
-     [AST2700_HW_STRAP1_CLR]             = 0xFFF0FFF0,
-     [AST2700_HW_STRAP1_LOCK]            = 0x00000FFF,
-     [AST2700_HW_STRAP1_SEC1]            = 0x000000FF,
+ /* Rainier hardware value: (QEMU prototype) */
 -- 
 2.34.1
 

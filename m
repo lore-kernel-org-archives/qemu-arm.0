@@ -1,130 +1,133 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2694444njb;
-        Mon, 3 Mar 2025 07:35:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXrILqq2Pmhb56T4zYZRTTyt+ldHx+cm9Ezf4LNoh5SHjyAw4yxiZ6EOW0F6UYhbBqI45CTva2vIpDssQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFoDtXppPhab1GTc7n/+1dFd6eQAhY0icu9fAd2fKv5cFIa38KOXLtOA9Z0FTiH0E0TbOci
-X-Received: by 2002:a05:6214:500f:b0:6e6:5e66:7706 with SMTP id 6a1803df08f44-6e8a0ccd0ecmr192069146d6.1.1741016144665;
-        Mon, 03 Mar 2025 07:35:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741016144; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2740610njb;
+        Mon, 3 Mar 2025 08:47:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU6bLIqjU5DI7XvO3MNUyAH4PwwmPu5BAnfyjhqnnZC503WSQ2hbhkmnnqZs8HcpkhzFOOCkExSCr1x6w==@linaro.org
+X-Google-Smtp-Source: AGHT+IETJ1Dti+hEmo12VUDEgbR0lfkOv9V3wMQF3JfpDa8mwaSU76XldURcGtFO8y35n4RhnkJA
+X-Received: by 2002:a05:622a:1988:b0:471:c7d7:ca80 with SMTP id d75a77b69052e-474bc08d18emr231922971cf.31.1741020466172;
+        Mon, 03 Mar 2025 08:47:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741020466; cv=none;
         d=google.com; s=arc-20240605;
-        b=E8+Jxs100yrFK8yPiN0B45BvRI7kG3mEb0srIImH4RQiT+jkYPM66Zakht62vIkosw
-         j46lsvKpVD4JHC9Hft59WAcvobbfTzjMdjRIIO/GWd+xa0DvBvQSDCQRF8sCAE99bPZ5
-         i79Uy8JLBa7LrVIgONXy/M7gvHjQr/LGEUkMKhG8KstSRgM4ZUIlLLdQ1eI+GR/jwca5
-         Zkt7hOJznQPoRwyK2sIKa/nr+z5TVEKInfPAc49dmSPC/FYSU18miAcc6N2ESk1ECHip
-         LfmmlLt9XGrjgsTy87RSX8PJHKQnB+FzZoMGz/pO6iFKOCQbJfs6LEm7u7Bargn9hVH1
-         Z/2w==
+        b=eIfwQ1gzMWOkuS4Z8Itm42TRyMTeCFeRu7NQ3HWdLo3sg+CASG9AlWyERJGXDwela6
+         G0dAe40l8d+zsfbAATOBy8FDbY1aFbJTnqBwHbRsafsbfrTZF+kcqhmTAYfMuDbHhFrK
+         SrXKpoq4V0goldRKyzjJkjMGKbHeYlt20nZLBheBk4MxqLVNVMVp9THtTLxEBdoNhRxs
+         iRxMLZR6vqi9DJkmrhIJpex/cHIRzcOomQ5TB7wIrCL+4zrLjV8844FUrpdvMAlZ6laK
+         6NxlIRu7atu6E8/OepGQ541oYhzFIM3ZLbDohwNgyIXGOFTtbo2LFMz3syrFqe5kWcBs
+         GDlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zIOZk3wDIbg6mQhTEtf61Fb6ROhIRArMbpF/7UU5I28=;
-        fh=nJ08/unrFIxieTSK5drv911hop27+ltk/JO9Dnc5qTg=;
-        b=b46Psyze9yjHoa7AmAycydKqvRyQ8bhtqIAIWRPIZ7l585nTFTpQwI6nhsR3sWP6dV
-         bLhANplivhJhTBJXuiM6MofXVqRGKDf3/fXhD0Tmt/Cm4rZcXI35THQkcGob9OPDNQj1
-         Feps9OHXrISyaemca0Nxqmb9PwWW6JjV0VY3F6c+kk4X0aUTFRRmTiChmee7n0bg+UAn
-         FZXH8hoxbtNOTgCrT1Lem3mzFd+wAaGpYyikZC2WTNaFJp5P/4c6JojYI2g/XmH2z5EW
-         wzCd6VBP4y4sUh1LGjxRTDb2HVO097MC5EQ1BVpqU9zALyTDGZZhsztJWxEFFmvb5tFo
-         aHGQ==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=dtv7iVwgSlfSDoW4RLD4wS3Lr3R3yA/FYRq7OBb2qfE=;
+        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
+        b=FtHrEFh85ahjTMPeE1+E1U32w5q+c9bWZ3pDF7/hmx1jtgT08wPOcMftJ0R4VG8eMj
+         rJdmntywACUr5qzpGIsv9HiiNMNLTmZjz4nTabV1l3uhe4noWJkYTbxxJsCKlOEBHaow
+         srAZpfCLG3QAlqn6ejnM2wxPHMH+a8Z4nTQqbBEwyoJGrhV7Y+Nl0bWCko72O0I9+Tcm
+         oR6RHuQp94kESY1pPQzJSKCf0KXvSbbB7BYyZ2N1tqVwYS5h7qk8Gbt23l52NUmUNgEI
+         Z1FjAFPe2GPYU1JW+8adje/6475FfNH3MtxYMSELWzEWMLtSrnp9qyu2XZiHO4w0KU+L
+         fDPg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o5yy5hr4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3bf17b1d5si186308185a.526.2025.03.03.07.35.44
+        by mx.google.com with ESMTPS id d75a77b69052e-474db85178fsi31470121cf.643.2025.03.03.08.47.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 07:35:44 -0800 (PST)
+        Mon, 03 Mar 2025 08:47:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o5yy5hr4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp7pA-0002Pu-EN; Mon, 03 Mar 2025 10:35:20 -0500
+	id 1tp8x3-0003gm-Th; Mon, 03 Mar 2025 11:47:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp7oA-0002Cm-9I
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 10:34:27 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp7o5-00066F-4z
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 10:34:17 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-43948f77f1aso30018835e9.0
- for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 07:34:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741016050; x=1741620850; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zIOZk3wDIbg6mQhTEtf61Fb6ROhIRArMbpF/7UU5I28=;
- b=o5yy5hr4nOshFrhvGex5uGKMOBfYDrHo/4FXS7PwTzuAy9OFX6+/kWrtyw0/TGsVSk
- MJtc91f+soas4gSLRFtJ4T4lDMNN4MZMvzFT0o3f1WaKiZLSPH+gSbLWY+UOFORDGe3g
- lOFLDjd2skL6vvbLUet+bL+mhqoHsZieYq9AjTMsl6YF5TSNQfMTRtFazEiWjjisNXYp
- bHdtR+pXGKUuQa5rIQNqs1GIC15+4WaMXsfqmLdBuLO9QqsK5pSpnYixb8uOHt9tD+Zv
- uZtOLVp5lyKPJ92+zRu0601LxqIrCefmeYXDDNA68M+8bSqCPJgRFTG0SnNfy91nyz+z
- VpPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741016050; x=1741620850;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zIOZk3wDIbg6mQhTEtf61Fb6ROhIRArMbpF/7UU5I28=;
- b=hZbfAhBQb/Pe6i6oP/8jmTY1hi6SeFIbdv+8Wsmo/go5IUgE0BtcAvzfvO5MLo0NhD
- wTIWnfo5gn3XAw9jAYEPVoB8+G9Krjl5xSBcYq8/YLsFY+4Vg3TTFsdZyRHvivDy6GDY
- +U+6lJSimcrywwGxCBacDBuxI+GaxiYZUOUZIqRSEbKO//cr7c1oChqAPgvMNDCmxj8u
- 0Uj5g7S3gKtN0oeSWm9V61Vbwe64R/PAFBGVvWhLctOnAijF2xqzGKFStSVfJz88yTCs
- KvPirAn87LuUSba0ZTM3tmFKlllZ+Sz/Y4n0yBN+l+OglhLwTj8NrBziDCR2Y7ogORYW
- 028g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV2tTmhqIa22xGdI09uPnrX6i69R8kCFLpvxUduOvkyJLEhCya0LsqW1fHpSlYI1QcM7bjznIJ/IA==@nongnu.org
-X-Gm-Message-State: AOJu0YyVv+FnxySLuoXzbLtdenR6Npi8fH2DYZCA9DTSY4CyX2fi4UHv
- Zsbs9d9cQ+NHWfPB+WZ59RAGR/Z741dS+4/p+ocES/AmjtUI7tzevjO5YxY7o6I=
-X-Gm-Gg: ASbGnctNck+kJP9A+crPVoMddTocNJe/24WZORoVsoyIfiOkjPwYh5yJDmCULF2QkQn
- aRXkv+w7t8iY9RA3gV0wkIBA8XsZGPxAkHZPEHlFhWA/rtRDOp75Q1POTNPrfaSRu1lcOhNt9wT
- 7JUz0M81/Ev5fJVzyQOqXKT2xdZuwaqJJExA/qDefkzvwI6elJtlF9T906qUvjeu3SBoMAGbPq1
- /qk+MZogdlQcs31WTQzYTyqbnG0/iHKlnuwpIYs4a+x4K9QleXjLEXoimogpYdEax9Cfg9IoVfD
- HTR8BlUiuf4oxFaTsPHOQWXyr+G2IZ0hg6rQULaGEyWbSFQIlDgar/xpEbSC7bUgnCHAJqo40BO
- tlxE00vFdQORy
-X-Received: by 2002:a05:600c:3516:b0:43b:c528:d0b8 with SMTP id
- 5b1f17b1804b1-43bc528d48bmr27284525e9.5.1741016050644; 
- Mon, 03 Mar 2025 07:34:10 -0800 (PST)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43bc63877desm17074825e9.1.2025.03.03.07.34.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Mar 2025 07:34:09 -0800 (PST)
-Message-ID: <f6b74258-1dd5-4d50-92f5-bcc8d7f015b1@linaro.org>
-Date: Mon, 3 Mar 2025 16:34:09 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
+ id 1tp8wv-0003gQ-1W; Mon, 03 Mar 2025 11:47:25 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Robu=VW=kaod.org=clg@ozlabs.org>)
+ id 1tp8ws-0001xf-6f; Mon, 03 Mar 2025 11:47:24 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z64VC0qNlz4x3d;
+ Tue,  4 Mar 2025 03:47:15 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z64V74kvNz4wcy;
+ Tue,  4 Mar 2025 03:47:10 +1100 (AEDT)
+Message-ID: <20cb2466-4f61-4544-b8b2-c92c51bcc8a9@kaod.org>
+Date: Mon, 3 Mar 2025 17:47:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] hw/intc: Select generic ARM_GICV3 when KVM is not
- available
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org
-References: <20241227202435.48055-1-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241227202435.48055-1-philmd@linaro.org>
+Subject: Re: [PATCH v4 20/23] tests/functional/aspeed: Introduce
+ start_ast2700_test API and update hwmon path
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
+ <20250303095457.2337631-21-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20250303095457.2337631-21-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Robu=VW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,18 +142,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oDPxyuzHv1my
+X-TUID: IWFGtRjiB4am
 
-Hi,
-
-On 27/12/24 21:24, Philippe Mathieu-Daudé wrote:
-> ARM_GICV3 is not restricted to TCG and can be used on HVF.
+On 3/3/25 10:54, Jamin Lin wrote:
+> Added a new method "start_ast2700_test" to the "AST2x00MachineSDK" class and
+> this method centralizes the logic for starting the AST2700 test, making it
+> reusable for different test cases.
 > 
-> Philippe Mathieu-Daudé (2):
->    hw/intc: Remove TCG dependency on ARM_GICV3
+> Modified the hwmon path to use a wildcard to handle different SDK versions:
+> "cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input".
 
-First reviewed/tested patch queued via hw-misc tree.
+Please split in two patches.
+
 
 Thanks,
 
-Phil.
+C.
+
+
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/functional/test_aarch64_aspeed.py | 33 +++++++++++++------------
+>   1 file changed, 17 insertions(+), 16 deletions(-)
+> 
+> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
+> index 9595498ace..07b0c7c1fd 100755
+> --- a/tests/functional/test_aarch64_aspeed.py
+> +++ b/tests/functional/test_aarch64_aspeed.py
+> @@ -31,33 +31,29 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
+>               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.03/ast2700-default-obmc.tar.gz',
+>               '91225f50d255e2905ba8d8e0c80b71b9d157c3609770c7a740cd786370d85a77')
+>   
+> -    def test_aarch64_ast2700_evb_sdk_v09_03(self):
+> -        self.set_machine('ast2700-evb')
+> -
+> -        self.archive_extract(self.ASSET_SDK_V903_AST2700)
+> -
+> +    def start_ast2700_test(self, name):
+>           num_cpu = 4
+> -        uboot_size = os.path.getsize(self.scratch_file('ast2700-default',
+> +        uboot_size = os.path.getsize(self.scratch_file(name,
+>                                                          'u-boot-nodtb.bin'))
+>           uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
+>   
+>           load_images_list = [
+>               {
+>                   'addr': '0x400000000',
+> -                'file': self.scratch_file('ast2700-default',
+> +                'file': self.scratch_file(name,
+>                                             'u-boot-nodtb.bin')
+>               },
+>               {
+>                   'addr': str(uboot_dtb_load_addr),
+> -                'file': self.scratch_file('ast2700-default', 'u-boot.dtb')
+> +                'file': self.scratch_file(name, 'u-boot.dtb')
+>               },
+>               {
+>                   'addr': '0x430000000',
+> -                'file': self.scratch_file('ast2700-default', 'bl31.bin')
+> +                'file': self.scratch_file(name, 'bl31.bin')
+>               },
+>               {
+>                   'addr': '0x430080000',
+> -                'file': self.scratch_file('ast2700-default', 'optee',
+> +                'file': self.scratch_file(name, 'optee',
+>                                             'tee-raw.bin')
+>               }
+>           ]
+> @@ -76,23 +72,28 @@ def test_aarch64_ast2700_evb_sdk_v09_03(self):
+>           self.vm.add_args('-device',
+>                            'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
+>           self.do_test_aarch64_aspeed_sdk_start(
+> -            self.scratch_file('ast2700-default', 'image-bmc'))
+> +            self.scratch_file(name, 'image-bmc'))
+>   
+> -        wait_for_console_pattern(self, 'ast2700-default login:')
+> +        wait_for_console_pattern(self, f'{name} login:')
+>   
+>           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+> -        exec_command_and_wait_for_pattern(self,
+> -            '0penBmc', 'root@ast2700-default:~#')
+> +        exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+>   
+>           exec_command_and_wait_for_pattern(self,
+>               'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
+>               'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
+>           exec_command_and_wait_for_pattern(self,
+> -            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
+> +            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
+>           self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+>                       property='temperature', value=18000)
+>           exec_command_and_wait_for_pattern(self,
+> -            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
+> +            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
+> +
+> +    def test_aarch64_ast2700_evb_sdk_v09_03(self):
+> +        self.set_machine('ast2700-evb')
+> +
+> +        self.archive_extract(self.ASSET_SDK_V903_AST2700)
+> +        self.start_ast2700_test('ast2700-default')
+>   
+>   
+>   if __name__ == '__main__':
+

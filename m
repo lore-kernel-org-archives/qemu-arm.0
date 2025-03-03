@@ -1,129 +1,126 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2539513njb;
-        Mon, 3 Mar 2025 03:17:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVrDjaxT56IGOpS3HZatVTNO3XI9Z2dOV7zBsAH5pGCVnJ052oo7sqSevcSwwmWovG18Iifn9PdsJEdqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IETFmUGqesDyAoxMd4Ke1vxdWv4Ku/sD8PtW2aHOx+EBwKzaBDqIV6fHGQOaJ11kMzpiArA
-X-Received: by 2002:a05:6214:2462:b0:6e6:6964:ca77 with SMTP id 6a1803df08f44-6e8a0d84b69mr207226506d6.28.1741000673859;
-        Mon, 03 Mar 2025 03:17:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741000673; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2552579njb;
+        Mon, 3 Mar 2025 03:47:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV28gO553Ci3uNIcT8fSgMveyDDOzM8Ui//rMWuTrHk+2alkwTSUPzo+heVFduERgnJI8l97ixgYjBlQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHP/jDux3W7Xv9tS6rwG8tRRLwwcdochaq7DQXP1BwfI57dT9aywDDCt9gWhRdfLDLUsIE+
+X-Received: by 2002:ac8:59d5:0:b0:474:e664:691f with SMTP id d75a77b69052e-474e6646d71mr51852171cf.39.1741002436882;
+        Mon, 03 Mar 2025 03:47:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741002436; cv=none;
         d=google.com; s=arc-20240605;
-        b=fHVldyeM14tWL3+KpyLEzy1HrZQy6UD7UJ5+qLfyhcC2b4dPxd9k7lon0XttLYzA6s
-         SRV0BWZyOGRZu9X2F+WRirZmoQNzHeo8Wg/2pE6x1xYQf2DWm80koUIcZhBnBbm+W2rc
-         z6UZNUazLvN9xy6lg/tONAa1m6OXmgvJrTFDWh5wDsGixANGCfeM+UYhfN79idd554h/
-         a5bIEG4mKfZ6P5aSfzmAGc5NzZE/iKkSZdTHtrvG0nx1lBlD/e/eYYJLusuipFfD1/ZC
-         Pm3Ke2h3dcnTETXXs7X6O+tfQt2OQsKUlihvygHoYSbfJLeuI0NzOdFcnELtgMf6vEiC
-         FbHA==
+        b=MASRsurNAdJ7xpDGj63jQo4eiR8tCmG27LP9UBiQujPjWAuOGybrF1UB3E3yxkQhC6
+         PWJ8KrRIVjvL0IRaFZUQHn+ofqLMm3naoZIHSNd4qMcRJrm39JUFjdHuz9tqX47DrEFa
+         lkr0tcz2MW7RWJ8qNhtGPsNLZsiPAHRXai2ggBO+ZswVYbcoNOcQYJm3k+z8JPB0OaNT
+         IUgspgm0HiYGFFzskjU3Uo0nm5isdDHSnGnRu6rzf1cUSAFZeSr5DaBoikU/hrNIiGKf
+         n3DSIXnLtGv7jguXd+ELF5CSZvhr5tEjVxraG02ngZaVMpYXqZvPfDC7plmJG6+xo2et
+         lSCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ksoU/1VaaUZoU4mlJMyeK7SgX3TqGsl9Aloetr5IUqE=;
-        fh=99NamT6/GSFpWONPz2MITBNF9v/cCxhT5M//LL6TN2o=;
-        b=ZHbCDlOzxHrytLF5VIRd5kFvIe7lssQx27uRqBr6lWTiAVtBWLx2PFWPRJT6xEfnzQ
-         +wCqpY5ZemxbHXN9uuhJYd8zLWK63wglPqsNkOdt+yIHw7s8OeJxewM8ETJARu03ZZIJ
-         dcSAO80uUF8E9Kh2BDe7+Kgi7vCjfiGNelxbSiFc6suksumR/2xfmKoEY1NxVqitUjUc
-         xJHpq+SwaL9j50hnP1PL1nlyNC0jKTOf847k5Twm9y0dZGYaVtwatY90JSZEbAj7qHas
-         aNZ4lnwW9sWay16du/P4jWuQ3hZf5ukkuzY490dC1fLKwoZMKcmeHq5hKQZ6hDJfv3W/
-         b8AA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=sdlPbpIFj0/t7ED+bsr0Srbzkrk3Qt3hyYAAzB4XwNA=;
+        fh=ZR7NnUyVEIeaqfok2Jljmdzc4yBHJCh0sTYk1IrcPwE=;
+        b=hzKVPp6/ZOfwTvvtOS/GtMbdR9NRcnhEXYTSw+6Vz8nEuS13fdcUJ3BQYF2+zb+dxd
+         WG3l1PkleLDDshRvP+o8sNKWLIm7tmYL4vDJ5euAG2oviJ2cSWpsjW5/jgDHwLU7yhnv
+         gCEjgLsRHLXmkQ88u80fIPTiGFFxQftdOrKdVqPEE+IlzZPBhZ288Z82Jh6tm02AjkG1
+         6Lzq1qETSGWtFV4oRTND9Do7cSBaKz7ZySJMVQG25W9oonK6I2wiSH21Afk1qRGyj/5o
+         3oF24KzXUNrYta1IsNeUzG+9lMQ+ciqkBoocY7M4kgD3klGQIoJ4FgNW0eEalYWgwlZw
+         YWeg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFmX87Ed;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XDsfCyFb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e897701db0si86222356d6.472.2025.03.03.03.17.53
+        by mx.google.com with ESMTPS id d75a77b69052e-474e4eafd56si21513061cf.330.2025.03.03.03.47.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 03:17:53 -0800 (PST)
+        Mon, 03 Mar 2025 03:47:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFmX87Ed;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XDsfCyFb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tp3no-0005z2-0y; Mon, 03 Mar 2025 06:17:40 -0500
+	id 1tp4GF-000457-PZ; Mon, 03 Mar 2025 06:47:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp3nm-0005yF-7c
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 06:17:38 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tp4G3-00041u-Id
+ for qemu-arm@nongnu.org; Mon, 03 Mar 2025 06:46:51 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tp3nk-0005zn-Eo
- for qemu-arm@nongnu.org; Mon, 03 Mar 2025 06:17:37 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-390eebcc371so1454775f8f.0
- for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 03:17:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tp4G1-0001XM-KR
+ for qemu-arm@nongnu.org; Mon, 03 Mar 2025 06:46:51 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id
+ 3f1490d57ef6-e4419a47887so3192607276.0
+ for <qemu-arm@nongnu.org>; Mon, 03 Mar 2025 03:46:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741000654; x=1741605454; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ksoU/1VaaUZoU4mlJMyeK7SgX3TqGsl9Aloetr5IUqE=;
- b=CFmX87EdCKf4fzqJRH5wWeOMua3JCSlhTjdp8mTpKXmfrB1po8B8uEiVzC0w935UhR
- qM0zJcGyM+b9aN4qvgyRmlaqLnNbue1ZUQVIuntGjEsPnY/dXfbz2j9MrxvGpUzMvPTV
- nJVkVKX8L/CP4WAVKWKiVt3zR82c65/en6b4KOmQE2rtPT/tOGe9yKuXpzdlgvr+pvXd
- HZD6mYz7QDCAIm2FvJDNp2Wbxn4iOMOgqODpGx39LjR7q3/5vGzq4knQcgiy2FNnb9r7
- oAHFyH5qZHw4RFHLBJvCRI2ccdMA1cAdvknls5h9DlkjG+Ti2NN1YAYk+tTRxktIL7hI
- mexw==
+ d=linaro.org; s=google; t=1741002408; x=1741607208; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sdlPbpIFj0/t7ED+bsr0Srbzkrk3Qt3hyYAAzB4XwNA=;
+ b=XDsfCyFbUxG6K0qiD+8q8dCzKIXUCIIQF0V7rKePsNDQ50wc+lYiQNuIztzBuVDRfo
+ W6dpuFnwWa+aoh349SdyENfl76km20uadT++9FoLpvR+7EMEn1XVUm/jJupbavS/FTZO
+ 0XqmYh9RjInXELW8apV+TMNMJBd+toG25b4dxiHqrq11rDnVv/dMn87owqUrpvrJ07eV
+ ehoqdUqON7gNnu0vptiOMal1MErbF9mQnNDHtP8FOJyuhpTycsZ7aOMV8vIk2Q+OkFWv
+ YG9cOIjTeEumvYdYus1nW9iNynXFEY55bcu4rbQDEttC3ENxPQZ33G8OQTb9HF/PJWP0
+ 8ZaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741000654; x=1741605454;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ksoU/1VaaUZoU4mlJMyeK7SgX3TqGsl9Aloetr5IUqE=;
- b=qUSI3jbXM9gceLSuXlrbwifaucVKzsFcHaJ0eLiD8VExFuUJXRWcychHS40KNdm5pu
- csYcfAs8xXP+s5f7D0h2iQ/HuVdyFUQqRbb+P1Yxdk8v3Bp3Ly3tRRaYqaeJiZjwiyul
- f69HEdTff4yUkc2CsIJFmXRc0Upne3X0UtVQ1Ct0DYf7pCG/IljJVbKtc42Fi1HgOe5/
- 3Pqr07DVafXM4dM1fMc01AqvHe07j8TwHkvywNn62ODqUWZUzAW4onht7/xyT4TlPmpq
- t5bNKZ3ZZS6ETqdWtBjFii2RswpZ5cD1xewKWnIdYNP1qbwRM+LnKL4k3AswvJla+x0z
- mWRQ==
+ d=1e100.net; s=20230601; t=1741002408; x=1741607208;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sdlPbpIFj0/t7ED+bsr0Srbzkrk3Qt3hyYAAzB4XwNA=;
+ b=dO4IFG4k77Zw0jkxwVae1msI2ZASnaOFdWw6crs8Esn4Gkg28/amCFAdPuxTCdugaz
+ bo+iGyWmEseg10PSuyyRfwaDBAvTaD67xgaae2i8SdiohLu9yEDUj0QpErBID9A20pq0
+ zU9UKNLkhR0jsrpBnSJnTLMJWTvbFX+3DPVnq5c1pIPTy01NpcRb5YEwaRoXv1tJYrpm
+ AFnfRSdI+f4XwFwTCLUkaP2ATQrWQz5FvgyhZ4dHklPQeusdVvkcaOBWxauur1pT1Uss
+ eOciQrQYLt8gEn/iLpvB1HeylcFkPjraX70gsNzHEry7qlnfW7f09aH7m46rj/m3k7BJ
+ YQug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWd7y1SD00Tvl7LVJvUNUrEux3fRj3dP/tbxRg8UbWjZiqSs8THPtLHEFraPUmB8CU23w28KqrtFg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/SJNrF0Lcg4zaFygd5EAzy+uPHjM0Pn4zU4cM/QKLNX52H+h2
- SRDw5Q1uHCqlvhffpHBOCsGYeWu7Rwd0RTHm5VcHLaGvLqGQQJixoUkDOhap8cQ=
-X-Gm-Gg: ASbGncuAFp/hEa/QgriX59MC9Ss/HPtuRID6NFA698Ly4DCe6iwHyPC4k4m8S3rvzX9
- dvKmhUb3vEeqiXMG47dY0BWsA8AeVZs3Q38JJavxdBpqo2AXR4QkKuYE7sTEVy8HDsUzfIB0OFP
- bckh6ye5Z+anX40rf7x2erjADbkP3bVK8v3KQuSatEtNEJsll2NJMpTjMWDztMbwHVf+ur9yFie
- p5TIL32jzA/EW4XAvBfeMSN9jOqXg3gfV9Sg5AZlGZq2+ZhQBSYh3hspuoIgq5I0eA2m+61lo67
- hgCmElrthvFwaOQxLvyma/oCvrSyz56rTztLQkDBgh5Oy0UGKnFy6QCfjeo2EOUr0oPsNJxtITx
- vqYpgzwIWTfen
-X-Received: by 2002:a05:6000:1864:b0:390:f2f1:2a17 with SMTP id
- ffacd0b85a97d-390f2f12bd3mr11302562f8f.53.1741000654333; 
- Mon, 03 Mar 2025 03:17:34 -0800 (PST)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-390e47b6d31sm13949369f8f.42.2025.03.03.03.17.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Mar 2025 03:17:33 -0800 (PST)
-Message-ID: <0256b5de-12f9-4c13-bbff-e7fcf593f542@linaro.org>
-Date: Mon, 3 Mar 2025 12:17:32 +0100
+ AJvYcCUyg/XQeTQ/cgle/3C4r04/O+rrov/FJM8u2Vzj1UC7CzW1BV1TqloQu0+1sY6AuFbW6TQuUn8yMg==@nongnu.org
+X-Gm-Message-State: AOJu0YwBAnFfuZHPmMXYUh4c8vmh8BGKenDyVarKhkWrkCgPE6guWbjC
+ SSnclIWUW7RzdnzAe6TD6lFn0qlv4sCEqTdaTWsxIWnuoNUcDISXqS+OnVxxeqt1ifIAeWPH1xD
+ 7P5UavMhPB0lmL+XKj5CRz1bruryZx1012n1Jhw==
+X-Gm-Gg: ASbGncuxMO71mEnxdSI8cFNyZWaAlk0diiHE3NETxdXg03p3HJW5ZG51M3YyYm2s9px
+ axeRDdoE07p/mYTLeEAXFe0shGTyduLJitFOmgqy5im+K6UunJv6XEoavW8ZLo1lQgUg5b+sRfT
+ 4rjcTu88qVvzvN0LH1ONpZ9/tgzbo=
+X-Received: by 2002:a05:6902:320c:b0:e4d:25c6:c3b2 with SMTP id
+ 3f1490d57ef6-e60b2e8eebamr14126733276.7.1741002406456; Mon, 03 Mar 2025
+ 03:46:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net: ftgmac100: copy eth_hdr for alignment
-To: Patrick Venture <venture@google.com>, peter.maydell@linaro.org,
- clg@kaod.org, steven_lee@aspeedtech.com, leetroy@gmail.com,
- jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au, joel@jms.id.au
-Cc: jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20250227154253.1653236-1-venture@google.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250227154253.1653236-1-venture@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+ <0256b5de-12f9-4c13-bbff-e7fcf593f542@linaro.org>
+In-Reply-To: <0256b5de-12f9-4c13-bbff-e7fcf593f542@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 3 Mar 2025 11:46:34 +0000
+X-Gm-Features: AQ5f1JoT1W_H4e6n5y4BHc9aO1_Ev2Ffmy_o_HzhF6r-k0kvQCgRzT3ZgQSivCw
+Message-ID: <CAFEAcA89sSmXEBTUbt2x7sPmqQZsqPkMedLbsn0dqhx+b=advg@mail.gmail.com>
+Subject: Re: [PATCH] hw/net: ftgmac100: copy eth_hdr for alignment
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Patrick Venture <venture@google.com>, clg@kaod.org,
+ steven_lee@aspeedtech.com, 
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au, 
+ joel@jms.id.au, jasowang@redhat.com, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,41 +135,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LMeq1r6D1Lk4
+X-TUID: 0pO7YNmKEWrh
 
-Hi Patrick,
+On Mon, 3 Mar 2025 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> Hi Patrick,
+>
+> On 27/2/25 16:42, Patrick Venture wrote:
+> > eth_hdr requires 2 byte alignment
+> >
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > ---
+> >   hw/net/ftgmac100.c | 15 ++++++++++++---
+> >   1 file changed, 12 insertions(+), 3 deletions(-)
+>
+>
+> > @@ -1028,6 +1032,7 @@ static ssize_t ftgmac100_receive(NetClientState *=
+nc, const uint8_t *buf,
+> >   {
+> >       FTGMAC100State *s =3D FTGMAC100(qemu_get_nic_opaque(nc));
+> >       FTGMAC100Desc bd;
+> > +    struct eth_header eth_hdr =3D {};
+> >       uint32_t flags =3D 0;
+> >       uint64_t addr;
+> >       uint32_t crc;
+> > @@ -1036,7 +1041,11 @@ static ssize_t ftgmac100_receive(NetClientState =
+*nc, const uint8_t *buf,
+> >       uint32_t buf_len;
+> >       size_t size =3D len;
+> >       uint32_t first =3D FTGMAC100_RXDES0_FRS;
+> > -    uint16_t proto =3D be16_to_cpu(PKT_GET_ETH_HDR(buf)->h_proto);
+>
+> The LD/ST API deals with unaligned fields, would that help?
+>
+>      uint16_t proto =3D lduw_be_p(&PKT_GET_ETH_HDR(buf)->h_proto);
 
-On 27/2/25 16:42, Patrick Venture wrote:
-> eth_hdr requires 2 byte alignment
-> 
-> Signed-off-by: Patrick Venture <venture@google.com>
-> ---
->   hw/net/ftgmac100.c | 15 ++++++++++++---
->   1 file changed, 12 insertions(+), 3 deletions(-)
+No, it doesn't, unfortunately -- I forget the details, but
+if the struct is unaligned but its definition says it is
+aligned then you get UB even with our accessor functions.
+This is why in commit f8b94b4c520126 I had to fix this for
+struct ip_header by marking it as QEMU_PACKED, even though
+the actual access there was a uint8_t*.
 
+(See also the other thread where I suggested to Patrick that
+the best approach here is to mark eth_hdr as QEMU_PACKED,
+and fix up anything we need to do to make that change.)
 
-> @@ -1028,6 +1032,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
->   {
->       FTGMAC100State *s = FTGMAC100(qemu_get_nic_opaque(nc));
->       FTGMAC100Desc bd;
-> +    struct eth_header eth_hdr = {};
->       uint32_t flags = 0;
->       uint64_t addr;
->       uint32_t crc;
-> @@ -1036,7 +1041,11 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
->       uint32_t buf_len;
->       size_t size = len;
->       uint32_t first = FTGMAC100_RXDES0_FRS;
-> -    uint16_t proto = be16_to_cpu(PKT_GET_ETH_HDR(buf)->h_proto);
-
-The LD/ST API deals with unaligned fields, would that help?
-
-     uint16_t proto = lduw_be_p(&PKT_GET_ETH_HDR(buf)->h_proto);
-
-> +    uint16_t proto;
-> +
-> +    memcpy(&eth_hdr, PKT_GET_ETH_HDR(buf),
-> +           (sizeof(eth_hdr) > len) ? len : sizeof(eth_hdr));
-> +    proto = be16_to_cpu(eth_hdr.h_proto);
->       int max_frame_size = ftgmac100_max_frame_size(s, proto);
-
+thanks
+-- PMM

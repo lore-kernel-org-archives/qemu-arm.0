@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2504518njb;
-        Mon, 3 Mar 2025 01:58:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUDYmoB8LyJeZ8SJUvV+mYfPLC8NgH5Wr+osFQrBrYw/B26ZW1yHxzM8qiq8+JJ4Et0ZF1JzPnDx9iKVA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHTtVVWp5DAxM2NJyFHGq1IouhurRbH2EkUxv8Kd2ufi6UqDFo8jV/tY/3V5wqrLCQVggPO
-X-Received: by 2002:ad4:5ba3:0:b0:6e6:5f28:9874 with SMTP id 6a1803df08f44-6e8a0c88683mr207464736d6.2.1740995901453;
-        Mon, 03 Mar 2025 01:58:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740995901; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp2504541njb;
+        Mon, 3 Mar 2025 01:58:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXImshoCbmog9rEpRjR4Z9umoZ1x/XVUTs4v/DrpLFgxQwJE8RIbyqt4eB6MSaS94CkO6y2tNxJx537Xg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHrR8XkMo4wITGy31PIy3u8tiWPOhxXUkgMhyOjNhk7mfJ5sbm4BKWLud0/2zu8DhLQfBFc
+X-Received: by 2002:a05:622a:199f:b0:472:17e5:62ff with SMTP id d75a77b69052e-474bc09baa9mr203378991cf.27.1740995906383;
+        Mon, 03 Mar 2025 01:58:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740995906; cv=none;
         d=google.com; s=arc-20240605;
-        b=iYZOJs1GGr3afPS/60oNrlWX4fcH0BowIOaXf1qTImb/yLUxRoSd9emCsFHLdRRjh7
-         /WUioITSaZwtILAmnYB+PFeM1H/hmV4BGwh2onBlumxavVtwDgrwBvzEFL+p1e1e5pDk
-         vgdbnPHQUeYvaG411BkDE+9ouM/44kQHFQGhXIVrUGm/46XfXYyDesCoHU4NjNFVyQAg
-         /zcf1SeTzwRTNPIKPPfNwfHFVMevGtzsBH1YdXtg7HcWsCQq+YvpYUQ7E4+eGDGdC2jH
-         riiTyvBe2Lt2CALYMeaLAXxFjQm8x5kA0Akr8toKmFj0kpRcS4IkC+pUDVx9xCxyjWnR
-         8rdQ==
+        b=ZPEvsL0pE9hg1NO6e7KrPghWCZTA7ejzLxzxqKSph67e08UHy3FS7BTZ6hFQmDWOnJ
+         1IxqwXnWTJu8XZhATw+q93fULtch0JRKfR6sy7XsvglQbFNJ2e4/xYJJueXpqUS1Vc++
+         F6PbOF0StLCUWuSCZm9sOmyWBhGfOALFeTYBJ7YZLwDG1FiAnrVlQpFAsoUKuI6kVLu0
+         01QQJSbXknmFzWkgS3DQfn1aovRUwijznRYocKk7I50SPNHKuWEEU3vKyDUx4QWmeIr5
+         /f8rVw7TWe7e1cIHljyD5vpqui7kOwBF3QLJkb/C/uyyPr9bLe0IBklN/tWcZSN9bdjc
+         JWMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=7USSOE/YVVKXAFqc8iEyeBppkHCTgIhWa97PRuc7FfI=;
-        fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
-        b=H6JYF9Dx96gdts4tu6h4+14hcabt9IejDQGt7BO+wXxJb1h5N6ZVW6t9dlLeBcSqKc
-         kotttdSXmjXUIFpbvY7PJYtSSddb7dH5xJ12r3l/FcqzkRBJoUEdlqArBmqNcqaGPQ0K
-         xBwRdFv8xAVLbDLi4EoCJO2PMxKuvi2JyIKTCaHdby5nCnJotvy28GP45FzZ7OuwxpJL
-         ovgdzJSKrAbZTXZFBF/DBxxYMXi5O+3CSEYmGUxe5BLKk8QmNWUgeuwxaqLGixxTtJma
-         7NDsINflstR9aYwfz7EolM0Bd1QcUQNDktCZlYdiL6gWUca7EahOJDp8BT+Wn6WZnoNq
-         /4gQ==;
+        bh=3QZIYxvxQBpac2Q4un/8Am+yWgVPjG8T6UeCNnvSKY0=;
+        fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
+        b=bhSrjixs+I3CE6PKM/8tnPxqf9c+OTTWfZzPOJ3jc/6A/xtPRlh3w0ZU/+AfTGqSVK
+         +PnLsnU0LXk75V2AbBy+WHg6cix95CDp2rsNHf7uKdEMHgHN4lmjDxkB39MuZvdsUAzC
+         BbJwiKN4f1JB5I2SIiDBE60yDQqkDpf0Z0TuG5UKAPZ3CT0eG4QtId+iVRwtoEWACc6C
+         LwCiTIAgoAJfrWAT4Z+Sc2/AJ2LWqthTq7vnTVKyKVCaqsKQfep97chQYIBUdQ7IgQgS
+         SajPK3yIxOlXnGJ2d+kklYoBTdsCEcJHxdBuRtnPmNAnK2dpFF8krXTnwn3I04UKd6D/
+         I9aA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c378da6820si824667985a.501.2025.03.03.01.58.21
+        by mx.google.com with ESMTPS id d75a77b69052e-474f2980e53si6455391cf.407.2025.03.03.01.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 01:58:21 -0800 (PST)
+        Mon, 03 Mar 2025 01:58:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,38 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tp2Xi-0002EH-0H; Mon, 03 Mar 2025 04:56:58 -0500
+	id 1tp2XY-0001H1-Nq; Mon, 03 Mar 2025 04:56:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp2Wn-000843-JD; Mon, 03 Mar 2025 04:56:04 -0500
+ id 1tp2Wq-00084I-CE; Mon, 03 Mar 2025 04:56:04 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tp2Wl-0001vN-JB; Mon, 03 Mar 2025 04:56:01 -0500
+ id 1tp2Wp-0001vN-1K; Mon, 03 Mar 2025 04:56:04 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 3 Mar
- 2025 17:55:03 +0800
+ 2025 17:55:04 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 3 Mar 2025 17:55:03 +0800
+ Transport; Mon, 3 Mar 2025 17:55:04 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 15/23] hw/intc/aspeed: Add Support for AST2700 INTCIO
- Controller
-Date: Mon, 3 Mar 2025 17:54:43 +0800
-Message-ID: <20250303095457.2337631-16-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 16/23] hw/misc/aspeed_scu: Add Support for AST2700/AST2750
+ A1 Silicon Revisions
+Date: Mon, 3 Mar 2025 17:54:44 +0800
+Message-ID: <20250303095457.2337631-17-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
 References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -98,216 +99,44 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ohDByOI5mWFn
+X-TUID: mnveeV9a2Lhr
 
-Introduce a new ast2700 INTCIO class to support AST2700 INTCIO.
-Added new register definitions for INTCIO, including enable and status
-registers for IRQs GICINT192 through GICINT197.
-Created a dedicated IRQ array for INTCIO, supporting six input pins and six
-output pins, aligning with the newly defined registers.
-Implemented "aspeed_intcio_read" and "aspeed_intcio_write" to handle
-INTCIO-specific register access.
-
- To GICINT196                                                                                |
-
-       ETH1    |-----------|                    |--------------------------|
-      -------->|0          |                    |         INTCIO           |
-       ETH2    |          4|   orgates[0]------>|inpin[0]-------->outpin[0]|
-      -------->|1         5|   orgates[1]------>|inpin[1]-------->outpin[1]|
-       ETH3    |          6|   orgates[2]------>|inpin[2]-------->outpin[2]|
-      -------->|2        19|   orgates[3]------>|inpin[3]-------->outpin[3]|
-       UART0   |         20|-->orgates[4]------>|inpin[4]-------->outpin[4]|
-      -------->|7        21|   orgates[5]------>|inpin[5]-------->outpin[5]|
-       UART1   |         22|                    |--------------------------|
-      -------->|8        23|
-       UART2   |         24|
-      -------->|9        25|
-       UART3   |         26|
-      ---------|10       27|
-       UART5   |         28|
-      -------->|11       29|
-       UART6   |           |
-      -------->|12       30|
-       UART7   |         31|
-      -------->|13         |
-       UART8   |  OR[0:31] |
-      -------->|14         |
-       UART9   |           |
-      -------->|15         |
-       UART10  |           |
-      -------->|16         |
-       UART11  |           |
-      -------->|17         |
-       UART12  |           |
-      -------->|18         |
-               |-----------|
+Added new definitions for AST2700_A1_SILICON_REV and AST2750_A1_SILICON_REV to
+identify the A1 silicon revisions.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/intc/aspeed_intc.h |   1 +
- hw/intc/aspeed_intc.c         | 112 ++++++++++++++++++++++++++++++++++
- 2 files changed, 113 insertions(+)
+ include/hw/misc/aspeed_scu.h | 2 ++
+ hw/misc/aspeed_scu.c         | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-index 21d9398933..fd7529137b 100644
---- a/include/hw/intc/aspeed_intc.h
-+++ b/include/hw/intc/aspeed_intc.h
-@@ -14,6 +14,7 @@
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 356be95e45..684b48b722 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -54,6 +54,8 @@ struct AspeedSCUState {
+ #define AST2700_A0_SILICON_REV   0x06000103U
+ #define AST2720_A0_SILICON_REV   0x06000203U
+ #define AST2750_A0_SILICON_REV   0x06000003U
++#define AST2700_A1_SILICON_REV   0x06010103U
++#define AST2750_A1_SILICON_REV   0x06010003U
  
- #define TYPE_ASPEED_INTC "aspeed.intc"
- #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
-+#define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
- OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
  
- #define ASPEED_INTC_NR_REGS (0xB08 >> 2)
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 18521d3eb0..da721a6066 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -42,6 +42,26 @@ REG32(GICINT136_STATUS,     0x804)
- REG32(GICINT192_201_EN,         0xB00)
- REG32(GICINT192_201_STATUS,     0xB04)
- 
-+/*
-+ * INTCIO Registers
-+ *
-+ * values below are offset by - 0x100 from datasheet
-+ * because its memory region is start at 0x100
-+ *
-+ */
-+REG32(GICINT192_EN,         0x00)
-+REG32(GICINT192_STATUS,     0x04)
-+REG32(GICINT193_EN,         0x10)
-+REG32(GICINT193_STATUS,     0x14)
-+REG32(GICINT194_EN,         0x20)
-+REG32(GICINT194_STATUS,     0x24)
-+REG32(GICINT195_EN,         0x30)
-+REG32(GICINT195_STATUS,     0x34)
-+REG32(GICINT196_EN,         0x40)
-+REG32(GICINT196_STATUS,     0x44)
-+REG32(GICINT197_EN,         0x50)
-+REG32(GICINT197_STATUS,     0x54)
-+
- static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
-                                                 uint32_t addr)
- {
-@@ -456,6 +476,55 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-     return;
- }
- 
-+static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
-+                                   unsigned int size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+    uint32_t value = 0;
-+
-+    value = s->regs[reg];
-+    trace_aspeed_intc_read(name, offset, size, value);
-+
-+    return value;
-+}
-+
-+static void aspeed_intcio_write(void *opaque, hwaddr offset, uint64_t data,
-+                                unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+
-+    trace_aspeed_intc_write(name, offset, size, data);
-+
-+    switch (reg) {
-+    case R_GICINT192_EN:
-+    case R_GICINT193_EN:
-+    case R_GICINT194_EN:
-+    case R_GICINT195_EN:
-+    case R_GICINT196_EN:
-+    case R_GICINT197_EN:
-+        aspeed_intc_enable_handler(s, offset, data);
-+        break;
-+    case R_GICINT192_STATUS:
-+    case R_GICINT193_STATUS:
-+    case R_GICINT194_STATUS:
-+    case R_GICINT195_STATUS:
-+    case R_GICINT196_STATUS:
-+    case R_GICINT197_STATUS:
-+        aspeed_intc_status_handler(s, offset, data);
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+        break;
-+    }
-+
-+    return;
-+}
-+
-+
- static const MemoryRegionOps aspeed_intc_ops = {
-     .read = aspeed_intc_read,
-     .write = aspeed_intc_write,
-@@ -466,6 +535,16 @@ static const MemoryRegionOps aspeed_intc_ops = {
-     }
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 0581c744f1..76cfd91671 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -560,6 +560,8 @@ static uint32_t aspeed_silicon_revs[] = {
+     AST2700_A0_SILICON_REV,
+     AST2720_A0_SILICON_REV,
+     AST2750_A0_SILICON_REV,
++    AST2700_A1_SILICON_REV,
++    AST2750_A1_SILICON_REV,
  };
  
-+static const MemoryRegionOps aspeed_intcio_ops = {
-+    .read = aspeed_intcio_read,
-+    .write = aspeed_intcio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
- static void aspeed_intc_instance_init(Object *obj)
- {
-     AspeedINTCState *s = ASPEED_INTC(obj);
-@@ -580,10 +659,43 @@ static const TypeInfo aspeed_2700_intc_info = {
-     .class_init = aspeed_2700_intc_class_init,
- };
- 
-+static AspeedINTCIRQ aspeed_2700_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-+    {0, 0, 1, R_GICINT192_EN, R_GICINT192_STATUS},
-+    {1, 1, 1, R_GICINT193_EN, R_GICINT193_STATUS},
-+    {2, 2, 1, R_GICINT194_EN, R_GICINT194_STATUS},
-+    {3, 3, 1, R_GICINT195_EN, R_GICINT195_STATUS},
-+    {4, 4, 1, R_GICINT196_EN, R_GICINT196_STATUS},
-+    {5, 5, 1, R_GICINT197_EN, R_GICINT197_STATUS},
-+};
-+
-+static void aspeed_2700_intcio_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 INTC IO Controller";
-+    aic->num_lines = 32;
-+    aic->num_inpins = 6;
-+    aic->num_outpins = 6;
-+    aic->mem_size = 0x400;
-+    aic->reg_size = 0x58;
-+    aic->reg_offset = 0x100;
-+    aic->reg_ops = &aspeed_intcio_ops;
-+    aic->irq_table = aspeed_2700_intcio_irqs;
-+    aic->irq_table_count = ARRAY_SIZE(aspeed_2700_intcio_irqs);
-+}
-+
-+static const TypeInfo aspeed_2700_intcio_info = {
-+    .name = TYPE_ASPEED_2700_INTCIO,
-+    .parent = TYPE_ASPEED_INTC,
-+    .class_init = aspeed_2700_intcio_class_init,
-+};
-+
- static void aspeed_intc_register_types(void)
- {
-     type_register_static(&aspeed_intc_info);
-     type_register_static(&aspeed_2700_intc_info);
-+    type_register_static(&aspeed_2700_intcio_info);
- }
- 
- type_init(aspeed_intc_register_types);
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
 -- 
 2.34.1
 

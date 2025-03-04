@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp98012njm;
-        Tue, 4 Mar 2025 04:52:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXrxQyygKSBWED5ait9eDXXlYYZPA0iMQ65wdvUhjlPnhOfrSfGKKPHeC4TLqdkKUti1eO/zppTY27aHA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFUw2RUCYrQSid6shmC6o0OlTvSWy131a0N41QbB3uCKU4aiqJa222KpASsp3SmgsnhAkUC
-X-Received: by 2002:a05:6214:500f:b0:6e8:9d00:3d71 with SMTP id 6a1803df08f44-6e8a0d127e6mr267465006d6.21.1741092726432;
-        Tue, 04 Mar 2025 04:52:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741092726; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp98097njm;
+        Tue, 4 Mar 2025 04:52:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXqWUjTl9APfl7fq8AwE397gsd72slLydZLuVlLgyhLBGkcqhIer+7g2Je0lyNVDQPDlzM/fUZIMn9WZA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMVnwEXaj0c983EfmiYHRiIUIAGQKNIkNY4iE9ejyRQsiujMhIoruNmkuy2nCYO+b8UAkN
+X-Received: by 2002:a05:620a:63c7:b0:7c3:cbf9:ac9f with SMTP id af79cd13be357-7c3cbf9afe8mr545835985a.56.1741092737357;
+        Tue, 04 Mar 2025 04:52:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741092737; cv=none;
         d=google.com; s=arc-20240605;
-        b=UiAaseg1RP2mckNTNlJJthCSfKLNGhQTAZx7wV0YaWoDkSLboWloxEosEDJ0pzCTwa
-         MSnQLJYq1xjDkBu+BRvU6RoLeOIVyw+AvIhcUdrqA6QafPFrkilMAX1+apGy9IxnJuKk
-         WaBWRuoJSbR6oUTS+Y3D9vw5V/nrkNH/TLOnHBaN7V1f92rIGyFcYO5mOkThHHNQzYkq
-         qTdZGT0KPAQBGrmYKzaWZ6gzP+TT3LcHM9v3ymi1vvhVgPQkXmbjXW401CEg62BoR+pV
-         L7uAb7B1uy/3rut/9OV4oLV5t49A/xv829Qr+AZf5Rxg5Rpw9cNjHaLwaRUoe28NSHTg
-         eDEw==
+        b=W5EdbqaMZmjHHqN0BGQOO2M3NWbVe5iNkFXCa+vOduWRQqeHgXZXvwTW8MckBJJbJy
+         C7TitBlZ56V3hRm2aTU4JMblaUWhwaRNAzNvZS6CzyyaPf+xJl5+7MXSfs6MBvID4odT
+         EzUWT7tQ/wCiOG9xFUvA16J3QfSHhdAbop0+Xh1kF+iXBUB4ahoRLMyMa5yuTwSFeJfU
+         xrgrUXBk+f/S7fmmBddECjzAD/ElyJ3zMzmLLCHaMPGv09cTcv2nebO4eF+9rDW2zxbD
+         JoiWF6xLLEv8JRPWcN6c7aK+oqUnH57fPgfpqeh7UR+6qsHZDPIXccr9M92mRK360XC+
+         CI0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UH+gxr284seD1s6rKwaAfaRG6h2gEVK2XY5pxCJ+vbU=;
+        bh=SAdiIJiUwrj5gQVF9Cv0rcwpZOldLe7N7G1jvU/ZJZw=;
         fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
-        b=SFfmpC+j+WGScYusmw1spr7JDdahJHG4SMOtvmHSawWOVEu2RFBrH8ZKdn4couKCIz
-         73ExJZc59GFHefS3bIUJKkuzg3qFcwX0mCLF+uS1v3Gz4SQEFXER4ZW1evgzaY05lp7e
-         ANbLj42rSsCyUnEDVbXL/8ZNWhxbZV9J44dK5Tjgc/5hCKsPvMiRaVYdzVhCUSdtoMXa
-         bLwHlpWE8Q0F1U8yhyuTDi9kq/t77rU5imxNOVq8mGc82jAwQAgYjvRvMefSDBaIqe81
-         almc2li0eFfD4OnnCwE6TX0VsELEHFunRRz7fZTlQG8jDnoDs5+fgeAf6aNicPItl65t
-         8GBQ==;
+        b=D6pbkDJ6OFNA8Cecc9RjzrjAQ2W7K8fUHkfDfUSdIDbkMjrcvTaQvEH95l1D7aUNrB
+         Ogxwarn3SkfY94UJ2A2AS+pGRGx/tOKzPfL7iUhFyQtKa5xROrthCseGKl2f7g0YszR/
+         qGrDwGfgay/ixiVFWQEPfOKu7dB/9qf1xy14FA70u0HXMarA3nwzIIbyfP2aWjm9bCri
+         nOhIWu0dgeR4QDUQdDyRX+3UshCBQb5mVJaJoZzolOPdEpVJ0vVcvtKj2vWHemEjW9Q0
+         eI1kLd86+XFwON6Hc/HLsYSdCeBNF/rNHOGcdjrqhcRT2SMIQHycWxP1/jdo7o3270RU
+         5f5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SITt3R9e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PLgP4LFg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8976d09a5si108643476d6.349.2025.03.04.04.52.06
+        by mx.google.com with ESMTPS id af79cd13be357-7c3c2705221si316973285a.190.2025.03.04.04.52.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Mar 2025 04:52:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Mar 2025 04:52:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SITt3R9e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PLgP4LFg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpRjc-0008FT-V7; Tue, 04 Mar 2025 07:51:04 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tpRjJ-00070e-7M; Tue, 04 Mar 2025 07:50:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhs-0004wa-TH
- for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhu-0004wo-GM
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhq-0007Uv-As
- for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:08 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhs-0007Y8-Fw
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741092545;
+ s=mimecast20190719; t=1741092547;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UH+gxr284seD1s6rKwaAfaRG6h2gEVK2XY5pxCJ+vbU=;
- b=SITt3R9eX58QkK/y2FYLuSdOAbyHs3Df3zAPgffwQv5rT0BgBbU20haRCbHbm6eDVz0B15
- XNh1OknMjikCaeCT87zvBiUurc22EOK99BUD832rZKntKBCu/WBRMJ+KFa9xDkBXOHs/pn
- wqkcjcvJxW5+Edx8Mr8MGI4DFyuCVDQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=SAdiIJiUwrj5gQVF9Cv0rcwpZOldLe7N7G1jvU/ZJZw=;
+ b=PLgP4LFgcdJtJPnspT4sCeLjnKDhf4ErGBmJ8NJsL9Rs4zjKQfI9iKnSd9gKHCIHBJRyQA
+ hss+aoUs1R0La0VOV0nbNChDGbT7ZeWQ82Y5JdLgFkPvHW1e3EjX0c/3k/8zKn56zcVrkP
+ GtwM/79lphFU3w5TLOP5qXwLDAKd25U=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-414-113AWx1yMaCdY1yyN-bLrg-1; Tue,
- 04 Mar 2025 07:48:52 -0500
-X-MC-Unique: 113AWx1yMaCdY1yyN-bLrg-1
-X-Mimecast-MFC-AGG-ID: 113AWx1yMaCdY1yyN-bLrg_1741092530
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-633-G8FJ5tHHNliirB2-PViYjQ-1; Tue,
+ 04 Mar 2025 07:48:54 -0500
+X-MC-Unique: G8FJ5tHHNliirB2-PViYjQ-1
+X-Mimecast-MFC-AGG-ID: G8FJ5tHHNliirB2-PViYjQ_1741092533
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8F7C7193585F; Tue,  4 Mar 2025 12:48:50 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 26E041800264; Tue,  4 Mar 2025 12:48:53 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4D29D180087C; Tue,  4 Mar 2025 12:48:49 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D010C1800361; Tue,  4 Mar 2025 12:48:52 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 5A44D1800605; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
+ id 824A81800609; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -94,99 +94,111 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 17/24] hw/uefi: add to meson
-Date: Tue,  4 Mar 2025 13:48:05 +0100
-Message-ID: <20250304124815.591749-18-kraxel@redhat.com>
+Subject: [PULL 19/24] hw/uefi-vars-sysbus: qemu platform bus support
+Date: Tue,  4 Mar 2025 13:48:07 +0100
+Message-ID: <20250304124815.591749-20-kraxel@redhat.com>
 In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
 References: <20250304124815.591749-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DRkEJQ9KO0I6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qCSmVd1LKh88
 
-Wire up uefi-vars in the build system.
+Add and register function to create an device tree entry when
+the device is added to the qemu platform bus.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20250225163031.1409078-18-kraxel@redhat.com>
+Message-ID: <20250225163031.1409078-20-kraxel@redhat.com>
 ---
- hw/meson.build      |  1 +
- hw/uefi/meson.build | 19 +++++++++++++++++++
- meson.build         |  1 +
- 3 files changed, 21 insertions(+)
+ hw/core/sysbus-fdt.c         | 24 ++++++++++++++++++++++++
+ hw/uefi/var-service-sysbus.c |  1 +
+ 2 files changed, 25 insertions(+)
 
-diff --git a/hw/meson.build b/hw/meson.build
-index b827c82c5d7b..138f5d59e178 100644
---- a/hw/meson.build
-+++ b/hw/meson.build
-@@ -35,6 +35,7 @@ subdir('smbios')
- subdir('ssi')
- subdir('timer')
- subdir('tpm')
-+subdir('uefi')
- subdir('ufs')
- subdir('usb')
- subdir('vfio')
-diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
-index a8b168941255..e63708aa164f 100644
---- a/hw/uefi/meson.build
-+++ b/hw/uefi/meson.build
-@@ -1 +1,20 @@
- system_ss.add(files('hardware-info.c'))
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index 774c0aed41b5..e85066b90563 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -36,6 +36,7 @@
+ #include "hw/vfio/vfio-calxeda-xgmac.h"
+ #include "hw/vfio/vfio-amd-xgbe.h"
+ #include "hw/display/ramfb.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/arm/fdt.h"
+ 
+ /*
+@@ -471,6 +472,28 @@ static int add_tpm_tis_fdt_node(SysBusDevice *sbdev, void *opaque)
+ }
+ #endif
+ 
++static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
++{
++    PlatformBusFDTData *data = opaque;
++    PlatformBusDevice *pbus = data->pbus;
++    const char *parent_node = data->pbus_node_name;
++    void *fdt = data->fdt;
++    uint64_t mmio_base;
++    char *nodename;
 +
-+uefi_vars_ss = ss.source_set()
-+if (config_all_devices.has_key('CONFIG_UEFI_VARS'))
-+  uefi_vars_ss.add(files('var-service-core.c',
-+                         'var-service-json.c',
-+                         'var-service-vars.c',
-+                         'var-service-auth.c',
-+                         'var-service-guid.c',
-+                         'var-service-utils.c',
-+                         'var-service-policy.c'))
-+  uefi_vars_ss.add(when: gnutls,
-+                   if_true: files('var-service-pkcs7.c'),
-+                   if_false: files('var-service-pkcs7-stub.c'))
-+  uefi_vars_ss.add(files('var-service-siglist.c'))
-+endif
++    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
++                               UEFI_VARS_FDT_NODE, mmio_base);
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename,
++                            "compatible", UEFI_VARS_FDT_COMPAT);
++    qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
++                                 1, mmio_base,
++                                 1, UEFI_VARS_REGS_SIZE);
++    g_free(nodename);
++    return 0;
++}
 +
-+modules += { 'hw-uefi' : {
-+    'vars'     : uefi_vars_ss,
-+}}
-diff --git a/meson.build b/meson.build
-index 0a2c61d2bfa0..1c1982dac3b0 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3601,6 +3601,7 @@ if have_system
-     'hw/ssi',
-     'hw/timer',
-     'hw/tpm',
-+    'hw/uefi',
-     'hw/ufs',
-     'hw/usb',
-     'hw/vfio',
+ static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
+ {
+     return 0;
+@@ -495,6 +518,7 @@ static const BindingEntry bindings[] = {
+     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
+ #endif
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
++    TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
+diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
+index 60072c8815cd..28572981c2af 100644
+--- a/hw/uefi/var-service-sysbus.c
++++ b/hw/uefi/var-service-sysbus.c
+@@ -69,6 +69,7 @@ static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = uefi_vars_sysbus_realize;
+     dc->vmsd = &vmstate_uefi_vars_sysbus;
++    dc->user_creatable = true;
+     device_class_set_legacy_reset(dc, uefi_vars_sysbus_reset);
+     device_class_set_props(dc, uefi_vars_sysbus_properties);
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
 -- 
 2.48.1
 

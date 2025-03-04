@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac165223834sm342885866b.165.2025.03.04.14.24.43
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1e46949aasm275752566b.145.2025.03.04.14.24.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 04 Mar 2025 14:24:45 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5873F5FD7E;
-	Tue,  4 Mar 2025 22:24:40 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id D40AF5FCD8;
+	Tue,  4 Mar 2025 22:24:39 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -27,101 +27,100 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 10/32] tests/functional: Allow running TCG plugins tests on non-Linux/BSD hosts
-Date: Tue,  4 Mar 2025 22:24:17 +0000
-Message-Id: <20250304222439.2035603-11-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: [PATCH v2 05/32] tests/functional: skip vulkan tests with nVidia
+Date: Tue,  4 Mar 2025 22:24:12 +0000
+Message-Id: <20250304222439.2035603-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5TAQmp+BU7vy
+X-TUID: 8AR9R1WL82Uy
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+While running the new GPU tests it was noted that the proprietary
+nVidia driver barfed when run under the sanitiser:
 
-Not all platforms use the '.so' suffix for shared libraries,
-which is how plugins are built. Use the recently introduced
-dso_suffix() helper to get the proper host suffix.
+  2025-02-20 11:13:08,226: [11:13:07.782] Output 'headless' attempts
+  EOTF mode SDR and colorimetry mode default.
+  2025-02-20 11:13:08,227: [11:13:07.784] Output 'headless' using color
+  profile: stock sRGB color profile
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2804
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+  and that's the last thing it outputs.
+
+  The sanitizer reports that when the framework sends the SIGTERM
+  because of the timeout we get a write to a NULL pointer (but
+  interesting not this time in an atexit callback):
+
+  UndefinedBehaviorSanitizer:DEADLYSIGNAL
+  ==471863==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
+  0x000000000000 (pc 0x7a18ceaafe80 bp 0x000000000000 sp 0x7ffe8e3ff6d0
+  T471863)
+  ==471863==The signal is caused by a WRITE memory access.
+  ==471863==Hint: address points to the zero page.
+      #0 0x7a18ceaafe80
+  (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x16afe80)
+  (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+      #1 0x7a18ce9e72c0
+  (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15e72c0)
+  (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+      #2 0x7a18ce9f11bb
+  (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x15f11bb)
+  (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+      #3 0x7a18ce6dc9d1
+  (/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.183.01+0x12dc9d1)
+  (BuildId: 24b0d0b90369112e3de888a93eb8d7e00304a6db)
+      #4 0x7a18e7d15326 in vrend_renderer_create_fence
+  /usr/src/virglrenderer-1.0.0-1ubuntu2/obj-x86_64-linux-gnu/../src/vrend_renderer.c:10883:26
+      #5 0x55bfb6621871 in virtio_gpu_virgl_process_cmd
+
+The #dri-devel channel confirmed:
+
+  <digetx> stsquad: nv driver is known to not work with venus, don't use
+      it for testing
+
+So lets skip running the test to avoid known failures.
+
+Message-Id: <20250226140343.3907080-9-alex.bennee@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20250220080215.49165-4-philmd@linaro.org>
-[AJB: moved plugin_file into testcase.py]
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
 ---
 v2
-  - move the plugin_file helper to testcase.py with the other path helpers
+  - implement block at the test level
 ---
- tests/functional/qemu_test/testcase.py       | 12 +++++++++++-
- tests/functional/test_aarch64_tcg_plugins.py |  5 +++--
- 2 files changed, 14 insertions(+), 3 deletions(-)
+ tests/functional/test_aarch64_virt_gpu.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index 869f3949fe..9e1839586b 100644
---- a/tests/functional/qemu_test/testcase.py
-+++ b/tests/functional/qemu_test/testcase.py
-@@ -27,7 +27,7 @@
+diff --git a/tests/functional/test_aarch64_virt_gpu.py b/tests/functional/test_aarch64_virt_gpu.py
+index 7d7749e243..55957dae0a 100755
+--- a/tests/functional/test_aarch64_virt_gpu.py
++++ b/tests/functional/test_aarch64_virt_gpu.py
+@@ -17,6 +17,9 @@
  
- from .archive import archive_extract
- from .asset import Asset
--from .config import BUILD_DIR
-+from .config import BUILD_DIR, dso_suffix
- from .uncompress import uncompress
+ from qemu_test.linuxkernel import LinuxKernelTest
  
- 
-@@ -184,6 +184,16 @@ def scratch_file(self, *args):
-     def log_file(self, *args):
-         return str(Path(self.outputdir, *args))
- 
-+    '''
-+    @params plugin name
++from re import search
++from subprocess import check_output
 +
-+    Return the full path to the plugin taking into account any host OS
-+    specific suffixes.
-+    '''
-+    def plugin_file(self, plugin_name):
-+        sfx = dso_suffix()
-+        return os.path.join('tests', 'tcg', 'plugins', f'{plugin_name}.{sfx}')
+ class Aarch64VirtGPUMachine(LinuxKernelTest):
+ 
+     ASSET_VIRT_GPU_KERNEL = Asset(
+@@ -94,6 +97,11 @@ def test_aarch64_virt_with_vulkan_gpu(self):
+ 
+         self.require_device('virtio-gpu-gl-pci')
+ 
++        vk_info = check_output(["vulkaninfo", "--summary"], encoding="utf-8")
 +
-     def assets_available(self):
-         for name, asset in vars(self.__class__).items():
-             if name.startswith("ASSET_") and type(asset) == Asset:
-diff --git a/tests/functional/test_aarch64_tcg_plugins.py b/tests/functional/test_aarch64_tcg_plugins.py
-index 7e8beacc83..4ea71f5f88 100755
---- a/tests/functional/test_aarch64_tcg_plugins.py
-+++ b/tests/functional/test_aarch64_tcg_plugins.py
-@@ -13,6 +13,7 @@
- 
- import tempfile
- import mmap
-+import os
- import re
- 
- from qemu.machine.machine import VMLaunchFailure
-@@ -74,7 +75,7 @@ def test_aarch64_virt_insn(self):
-                                                  suffix=".log")
- 
-         self.run_vm(kernel_path, kernel_command_line,
--                    "tests/tcg/plugins/libinsn.so", plugin_log.name,
-+                    self.plugin_file('libinsn'), plugin_log.name,
-                     console_pattern)
- 
-         with plugin_log as lf, \
-@@ -100,7 +101,7 @@ def test_aarch64_virt_insn_icount(self):
-                                                  suffix=".log")
- 
-         self.run_vm(kernel_path, kernel_command_line,
--                    "tests/tcg/plugins/libinsn.so", plugin_log.name,
-+                    self.plugin_file('libinsn'), plugin_log.name,
-                     console_pattern,
-                     args=('-icount', 'shift=1'))
- 
++        if search(r"driverID\s+=\s+DRIVER_ID_NVIDIA_PROPRIETARY", vk_info):
++            self.skipTest("Test skipped on NVIDIA proprietary driver")
++
+         self._launch_virt_gpu("virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
+         self._run_virt_weston_test("vkmark -b:duration=1.0",
+                                    "debug: stuck in fence wait with iter at")
 -- 
 2.39.5

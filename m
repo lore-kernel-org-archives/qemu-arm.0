@@ -1,107 +1,117 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2514984njk;
-        Mon, 27 Jan 2025 07:27:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX4MPMD16bvCwd04TQPOunzbU1qZvPojAU16hE46Gek0jD6eWLWm9BsDw+M1ZrHPLi0+aGGfV9yOvPBAw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFr8eFRFTAACUjVfxu9UWFpUyh3x+tP/CZqaR2QuVCScIU8oWl7wMrPBQ5vocN99ZsHCB25
-X-Received: by 2002:a05:622a:38b:b0:46c:7646:4a1e with SMTP id d75a77b69052e-46e12a62966mr700795721cf.13.1737991636179;
-        Mon, 27 Jan 2025 07:27:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737991636; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp100593njm;
+        Tue, 4 Mar 2025 04:58:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW3e1v7DRtOLDVi/rpAbvPB8sy+nCqqUMyZH3wQdAQ+g1PicSkvs0p+JAy/G8aTxigX5GDdfv066JwhVw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHuwRU5fgx6U5UZOomvUr5+ZvPc8xK5d7mgUHAUOZzvaQtOCpRnN4JLNnwABjrmc1s1Z05R
+X-Received: by 2002:ac8:5a55:0:b0:474:efcd:535 with SMTP id d75a77b69052e-474efcd1166mr88158491cf.16.1741093086800;
+        Tue, 04 Mar 2025 04:58:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741093086; cv=none;
         d=google.com; s=arc-20240605;
-        b=K+VaWF5HXBU6m3cSTPPmgk736vgqfMYy4y2d+bSV+tGK1zIaJZUBmmwTawaSi8oBCr
-         ej96FEfLyGbzh+SNNJ68lb+pVd2nQfLwMExNu1bGVSMp/Do9srKs5pQ68+q05uCWRVRn
-         btAK5eXWBqtBv+THoS+j8Dth40cIeHW+7kszmXCroD4KDjiKLipcgoW/fI9+2G263LAd
-         7KRbyBEkuO6BXlFK6D4zjmcdSl+8k4CZ5tpbbojwgcUo9I7U4Apzkb+ysj+stXu3z/ZP
-         s9zegzHQ3pcqtrGLJ8ufKxqG3hOsTtYLtAY7aIqhg8rcg+dL/0O1H3X5BPIoNuGhITGk
-         T7ew==
+        b=B0P0PyRFhILI2DUesUKuwJTPSAweUooiC825G7y7r70/udD5rV+7d0J5N/rXLTw1LN
+         x6yhMpH97yQXNIrknPHiWPIA2fHObrf5OIWRGhnR0ZMF+JMu/XvQjoGNK2qktgV67hks
+         LXIYjMo0+sPuzZoZ+MA9t3WTpu0Ps0AcaxL/SvBlfWDkCfXDWyKHP/2DjhnDBjzW+GVE
+         sM+CBTsx2U6r1EU3zderiReVp/6oLrtHtdTrZSaoquGayfbhGXnhz9p7o1CCYig3waAH
+         zLaZLuOZSWogOUWfJixzr1dwASh+cbQASpL1Zt8mNftxrAD9XpSddPXXJC/Q88Sp0xBX
+         EyOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=mNHul5Rh0+UYWHkQQBdWqjSF9Yb2HOpXv7Q7Uxs1tjE=;
-        fh=I/2pie+2hJwuaI87yiLrizxl13kBKtz5Uugg7BIdS/4=;
-        b=TJi15lCDyH8hnPlVXMtXRdsXvqY3f8meOllVliYLyqcAdd7EI9hOxEEPeBUMhz0VMJ
-         zDSHTNfw9ktU2KNzHsp681Za8e/Ftw6dPEsW+ArRB7R1hjgOlNWVOGbCHSOF3TOeTBtN
-         bVyhNGPx5Tp3lDxErjYL35Pd2yUqHbxoqouAr4gFMfR1SvnSEcKFJOsT5R+JKggXUcFK
-         wPZI/Kr0xDmRxkvTZdYAQxK880QigDNYYy/t1sS0uP4hi4wb5O+Fz21R2sq70sbAzbJr
-         1fnxgT2qplp+NqSXxLSrstvA5lLGP0YQo8TNLZ3VO4WXuzNocqvZ9bpvCpKCeBwfodZk
-         wUow==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=WCfTLGK5BCPPyuAOyalwI7XVH4IGkc4LkKHa1QF2XYI=;
+        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
+        b=KA+l4tt6Heoneoz7UWY3RJ7EK64nEDxyB4w76WbGRq0deV+lWZ0IEcIvOZXpQzvfgF
+         HM8HN7I+6wi8zN3fsHpjUAHfA2khjq2Wm6+Bh/l+2K3rje5SsYzjUEnWR7S6rp0MVvOj
+         RMjZ9J943yifYH3FFaR804ShWBi7dN/+TtMbTG2NKlHbSV6Z76nxg5OEwiMg+w9Yo9Je
+         OwfgpOGtuQ2wMfyT8STnHT/r9GpxzAtxZvWejnTTV7OrkUhoZEIkTAUPh3ceKJEJI9vC
+         e8qPln6WpiQFwctxdLQRRiEjpj3ouG/5T+ihzXQluHO3dcyC9eddHXpiIMaRdQI47S3w
+         njDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PNS+Z5UA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e20525e16esi102469966d6.43.2025.01.27.07.27.16
+        by mx.google.com with ESMTPS id d75a77b69052e-474f7719e3fsi23862391cf.125.2025.03.04.04.58.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 07:27:16 -0800 (PST)
+        Tue, 04 Mar 2025 04:58:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PNS+Z5UA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tcR0x-0005zu-NF; Mon, 27 Jan 2025 10:27:04 -0500
+	id 1tpRjE-0006ju-Gr; Tue, 04 Mar 2025 07:50:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tcR0f-0005xL-4y; Mon, 27 Jan 2025 10:26:46 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhp-0004vT-W6
+ for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tcR0c-0003a0-Ji; Mon, 27 Jan 2025 10:26:44 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YhXJm6w1lz6L51M;
- Mon, 27 Jan 2025 23:24:24 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
- by mail.maildlp.com (Postfix) with ESMTPS id 940DF1400D4;
- Mon, 27 Jan 2025 23:26:34 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 27 Jan 2025 16:26:34 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Mon, 27 Jan 2025 16:26:34 +0100
-To: Nathan Chen <nathanc@nvidia.com>
-CC: "ddutile@redhat.com" <ddutile@redhat.com>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- Linuxarm <linuxarm@huawei.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rK0OI0AgAyjUACAIpIKgIAAEq8AgAVS2bCAPl33AIAECLLQ
-Date: Mon, 27 Jan 2025 15:26:34 +0000
-Message-ID: <0b281d2f8ebf4368b7e7b97aa0a4cfd3@huawei.com>
-References: <31db1f75110e46ccaffffb801e894605@huawei.com>
- <a80c78fd-6203-4aca-a3d3-d67a68b8e595@nvidia.com>
-In-Reply-To: <a80c78fd-6203-4aca-a3d3-d67a68b8e595@nvidia.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhm-0007JM-O2
+ for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741092541;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WCfTLGK5BCPPyuAOyalwI7XVH4IGkc4LkKHa1QF2XYI=;
+ b=PNS+Z5UADwZrhea631wB5cFnJHs7taKtTVtofU1sh1W9pUZj+/u3BwXanS5MeR4X8lXWep
+ 07Ndewur1aT08YgTgVX0t4Ab+aeTpC5txcAEOCgMi+3Up0FE6SEzMHmDYqVC171Mcr28JC
+ lLni/ZXKxfA1YdsQ2hVJyZfr/RTMSH8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-137-E2cBlXwAMnGUepkLmjbCdg-1; Tue,
+ 04 Mar 2025 07:48:58 -0500
+X-MC-Unique: E2cBlXwAMnGUepkLmjbCdg-1
+X-Mimecast-MFC-AGG-ID: E2cBlXwAMnGUepkLmjbCdg_1741092536
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 964F11944D01; Tue,  4 Mar 2025 12:48:56 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2004819560AA; Tue,  4 Mar 2025 12:48:56 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 91455180060A; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PULL 20/24] hw/uefi-vars-sysbus: add x64 variant
+Date: Tue,  4 Mar 2025 13:48:08 +0100
+Message-ID: <20250304124815.591749-21-kraxel@redhat.com>
+In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
+References: <20250304124815.591749-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,54 +124,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /m647Z4JxRZD
+X-TUID: 4WFx3Nuqbd56
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTmF0aGFuIENoZW4gPG5h
-dGhhbmNAbnZpZGlhLmNvbT4NCj4gU2VudDogU2F0dXJkYXksIEphbnVhcnkgMjUsIDIwMjUgMjo0
-NCBBTQ0KPiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFsaS5rb2xvdGh1
-bS50aG9kaUBodWF3ZWkuY29tPg0KPiBDYzogZGR1dGlsZUByZWRoYXQuY29tOyBlcmljLmF1Z2Vy
-QHJlZGhhdC5jb207IGpnZ0BudmlkaWEuY29tOw0KPiBqaWFuZ2t1bmt1biA8amlhbmdrdW5rdW5A
-aHVhd2VpLmNvbT47IEpvbmF0aGFuIENhbWVyb24NCj4gPGpvbmF0aGFuLmNhbWVyb25AaHVhd2Vp
-LmNvbT47IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsNCj4gbmF0aGFuY0BudmlkaWEu
-Y29tOyBuaWNvbGluY0BudmlkaWEuY29tOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7DQo+IHFl
-bXUtYXJtQG5vbmdudS5vcmc7IFdhbmd6aG91IChCKSA8d2FuZ3pob3UxQGhpc2lsaWNvbi5jb20+
-Ow0KPiB6aGFuZ2ZlaS5nYW9AbGluYXJvLm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+IFN1
-YmplY3Q6IFJFOiBbUkZDIFBBVENIIDAvNV0gaHcvYXJtL3ZpcnQ6IEFkZCBzdXBwb3J0IGZvciB1
-c2VyLWNyZWF0YWJsZQ0KPiBuZXN0ZWQgU01NVXYzDQo+IA0KPiA+PiAgPndpdGggYW4gZXJyb3Ig
-bWVzc2FnZSBpbmRpY2F0aW5nIERNQSBtYXBwaW5nIGZhaWxlZCBmb3IgdGhlDQo+ID4+IHBhc3N0
-aHJvdWdoID5kZXZpY2VzLg0KPiA+Pg0KPiA+PiBBIGNvcnJlY3Rpb24gLSB0aGUgbWVzc2FnZSBp
-bmRpY2F0ZXMgVUVGSSBmYWlsZWQgdG8gZmluZCBhIG1hcHBpbmcgZm9yDQo+ID4+IHRoZSBib290
-IHBhcnRpdGlvbiAoIm1hcDogbm8gbWFwcGluZyBmb3VuZCIpLCBub3QgdGhhdCBETUEgbWFwcGlu
-Zw0KPiA+PiBmYWlsZWQuIEJ1dCBlYXJsaWVyIEVESyBkZWJ1ZyBsb2dzIHN0aWxsIHNob3cgUENJ
-IGhvc3QgYnJpZGdlIHJlc291cmNlDQo+ID4+IGNvbmZsaWN0cyBmb3IgdGhlIHBhc3N0aHJvdWdo
-IGRldmljZXMgdGhhdCBzZWVtIHJlbGF0ZWQgdG8gdGhlIFZNIGJvb3QNCj4gPj4gZmFpbHVyZS4N
-Cj4gPg0KPiA+IEkgaGF2ZSB0cmllZCBhIDIwMjMgdmVyc2lvbiBFRkkgd2hpY2ggd29ya3MuIEFu
-ZCBmb3IgbW9yZSByZWNlbnQgdGVzdHMgSQ0KPiBhbQ0KPiA+IHVzaW5nIGEgb25lIGJ1aWx0IGRp
-cmVjdGx5IGZyb20sDQo+ID4gaHR0cHM6Ly9naXRodWIuY29tL3RpYW5vY29yZS9lZGsyLmdpdCBt
-YXN0ZXINCj4gPg0KPiA+IENvbW1pdDogMGYzODY3ZmE2ZWYwKCJVZWZpUGF5bG9hZFBrZy9VZWZp
-UGF5bG9hZEVudHJ5OiBGaXggUFQNCj4gcHJvdGVjdGlvbg0KPiA+IGluIDUgbGV2ZWwgcGFnaW5n
-Ig0KPiA+DQo+ID4gV2l0aCBib3RoLCBJIGRvbuKAmXQgcmVtZW1iZXIgc2VlaW5nIGFueSBib290
-IGZhaWx1cmUgYW5kIHRoZSBhYm92ZSBVRUZJDQo+ID4gcmVsYXRlZCAibWFwOiBubyBtYXBwaW5n
-IGZvdW5kIiBlcnJvci4gQnV0IHRoZSBHdWVzdCBrZXJuZWwgYXQgdGltZXMNCj4gPiBjb21wbGFp
-bnRzIGFib3V0IHBjaSBicmlkZ2Ugd2luZG93IG1lbW9yeSBhc3NpZ25tZW50IGZhaWx1cmVzLg0K
-PiA+IC4uLg0KPiA+IHBjaSAwMDAwOjEwOjAxLjA6IGJyaWRnZSB3aW5kb3cgW21lbSBzaXplIDB4
-MDAyMDAwMDAgNjRiaXQgcHJlZl06IGNhbid0DQo+IGFzc2lnbjsgbm8gc3BhY2UNCj4gPiBwY2kg
-MDAwMDoxMDowMS4wOiBicmlkZ2Ugd2luZG93IFttZW0gc2l6ZSAweDAwMjAwMDAwIDY0Yml0IHBy
-ZWZdOiBmYWlsZWQNCj4gdG8gYXNzaWduDQo+ID4gcGNpIDAwMDA6MTA6MDAuMDogYnJpZGdlIHdp
-bmRvdyBbaW8gIHNpemUgMHgxMDAwXTpjYW4ndCBhc3NpZ247IG5vIHNwYWNlDQo+ID4gLi4uDQo+
-ID4NCj4gPiBCdXQgR3Vlc3Qgc3RpbGwgYm9vdHMgYW5kIHdvcmtlZCBmaW5lIHNvIGZhci4NCj4g
-DQo+IEhpIFNoYW1lZXIsDQo+IA0KPiBKdXN0IGxldHRpbmcgeW91IGtub3cgSSByZXNvbHZlZCB0
-aGlzIGJ5IGluY3JlYXNpbmcgdGhlIE1NSU8gcmVnaW9uIHNpemUNCj4gaW4gaHcvYXJtL3ZpcnQu
-YyB0byBzdXBwb3J0IHBhc3NpbmcgdGhyb3VnaCBHUFVzIHdpdGggbGFyZ2UgQkFSIHJlZ2lvbnMN
-Cj4gKFZJUlRfSElHSF9QQ0lFX01NSU8pLiBUaGFua3MgZm9yIHRha2luZyBhIGxvb2suDQo+IA0K
-DQpPay4gVGhhbmtzIGZvciB0aGF0LiBEb2VzIHRoYXQgbWVhbiBtYXkgYmUgYW4gb3B0aW9uYWwg
-cHJvcGVydHkgdG8gc3BlY2lmeQ0KdGhlIHNpemUgZm9yIFZJUlRfSElHSF9QQ0lFX01NSU8gaXMg
-d29ydGggYWRkaW5nPw0KDQpBbmQgZm9yIHRoZSBQQ0kgYnJpZGdlIHdpbmRvdyBzcGVjaWZpYyBl
-cnJvcnMgdGhhdCBJIG1lbnRpb25lZCBhYm92ZSwNCg0KPj5wY2kgMDAwMDoxMDowMS4wOiBicmlk
-Z2Ugd2luZG93IFttZW0gc2l6ZSAweDAwMjAwMDAwIDY0Yml0IHByZWZdOiBjYW4ndCBhc3NpZ247
-IG5vIHNwYWNlDQoNCmFkZGluZyAgIiJtZW0tcmVzZXJ2ZT1YIiBhbmQgImlvLXJlc2VydmU9WCIg
-dG8gcGNpZS1yb290LXBvcnQgaGVscHMuDQoNClRoYW5rcywNClNoYW1lZXINCg0KDQo=
+The x86 variant of the device is mapped on the fixed address 0xfef10000
+and uses etc/hardware-info instead of FDT to pass the mapping location
+to the edk2 firmware.  The latter allows to move the device to a
+different location should that turn out to be necessary in the future.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20250225163031.1409078-21-kraxel@redhat.com>
+---
+ hw/uefi/var-service-sysbus.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
+index 28572981c2af..97da8672ee95 100644
+--- a/hw/uefi/var-service-sysbus.c
++++ b/hw/uefi/var-service-sysbus.c
+@@ -9,6 +9,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+ 
++#include "hw/uefi/hardware-info.h"
+ #include "hw/uefi/var-service.h"
+ #include "hw/uefi/var-service-api.h"
+ 
+@@ -75,6 +76,7 @@ static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
++/* generic: hardware discovery via FDT */
+ static const TypeInfo uefi_vars_sysbus_info = {
+     .name          = TYPE_UEFI_VARS_SYSBUS,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+@@ -84,9 +86,39 @@ static const TypeInfo uefi_vars_sysbus_info = {
+ };
+ module_obj(TYPE_UEFI_VARS_SYSBUS);
+ 
++static void uefi_vars_x64_realize(DeviceState *dev, Error **errp)
++{
++    HARDWARE_INFO_SIMPLE_DEVICE hwinfo = {
++        .mmio_address = cpu_to_le64(0xfef10000),
++    };
++    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
++
++    uefi_vars_sysbus_realize(dev, errp);
++
++    hardware_info_register(HardwareInfoQemuUefiVars,
++                           &hwinfo, sizeof(hwinfo));
++    sysbus_mmio_map(sysbus, 0, hwinfo.mmio_address);
++}
++
++static void uefi_vars_x64_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = uefi_vars_x64_realize;
++}
++
++/* x64: hardware discovery via etc/hardware-info fw_cfg */
++static const TypeInfo uefi_vars_x64_info = {
++    .name          = TYPE_UEFI_VARS_X64,
++    .parent        = TYPE_UEFI_VARS_SYSBUS,
++    .class_init    = uefi_vars_x64_class_init,
++};
++module_obj(TYPE_UEFI_VARS_X64);
++
+ static void uefi_vars_sysbus_register_types(void)
+ {
+     type_register_static(&uefi_vars_sysbus_info);
++    type_register_static(&uefi_vars_x64_info);
+ }
+ 
+ type_init(uefi_vars_sysbus_register_types)
+-- 
+2.48.1
+

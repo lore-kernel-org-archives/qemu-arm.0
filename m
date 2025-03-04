@@ -1,122 +1,585 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2098373njk;
-        Sun, 26 Jan 2025 13:37:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWhtJdow03f9tirtL55Vv1D6tu8zx5VOFpcPs4LKMacdhlbpSBWpwnW/iFcm2geBP36+ANGHY3Dsr3DDw==@linaro.org
-X-Received: by 2002:a17:902:f70a:b0:215:a7e4:8475 with SMTP id d9443c01a7336-21c35557a0bmr666988225ad.24.1737927447852;
-        Sun, 26 Jan 2025 13:37:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737927447; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp100493njm;
+        Tue, 4 Mar 2025 04:57:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXG0sDubBy37hybunOjUqdA7ItGsHjKkVbskzZUmEHDgfOKgfLvNJ4nNkzGHBzvadA08r/ogHvXyDT3ng==@linaro.org
+X-Google-Smtp-Source: AGHT+IHrrypFz9egZKWdAwfNaaa7qR9S5E5S1kz3512ih0krYtgjf+YOTkPcGn35rn1UwShCJ+Vp
+X-Received: by 2002:ac8:5a0a:0:b0:475:7c0:9390 with SMTP id d75a77b69052e-47507c09b4dmr4303141cf.48.1741093074192;
+        Tue, 04 Mar 2025 04:57:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741093074; cv=none;
         d=google.com; s=arc-20240605;
-        b=baaeuZ5oADpZjTGsP49/EZ8Qvk1Ej1lPTY4PC0C2o/IL8nVerSlRvB50fjw4DeXP5Q
-         juA1svLmwCG2W0pyk+zhB44PuwBLUKbKw3SBeKy42LB8lRH47SRzrSf24DJ7T7472di8
-         yDENUyDJd4zkwySB/8m+6Wp4OTmO2oO07JVfVlOPgI76hoMAs3KHvNbVbohdRjGbz91w
-         uqd1gWl/8glWRmIn1a5GeBB8V8xJgujHSHU9yabbiInMkeOwr71IACSmmv2SfD4QmutR
-         +ntl8O3hv34OCwnIW0T+kRlKkRyxedFvZLT5b6bNjL3hSU99IqJXoKA4aQDtU9CzaXIY
-         R7HQ==
+        b=TOQKSt9TlVWpeJ8Y1NBWBYRzydpxS/KuVt7FpS9M7nRtThy0BMlwF4k0yfROzLETGu
+         +Gd9fTnGvHLmbWjfHZg53V5XbeBfwsxntTgKKsQ9dGQIgKjyHEfP52ysPm8Y8ND7FO7y
+         ydo7lQ3GIBUfkrPXzMlTAFgAxLt5B3uC9C8dCjw76LcOglKABKczOhaCdKsM41Pjjkq2
+         3mvksJ2ZwnS0MlBy0z2vpyjtXcuqboHF9j7FQDZS43jdYKo28++aETlccv15xLmN7XCn
+         LeLi3bpKq6RY+YqZFE5NhNKX4sPlf8+o0305G6OjKBkJLxhxO6iSHde3VuokCmWEg+AG
+         OgJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=MbN5ftkFW90qPVFMQN7kThRB1jW5R9e9lwVcXv22rrA=;
-        fh=yCVvFriSVQdpXFLtQPSDiBh3/HA3hsJ5nmRAgBhAgBc=;
-        b=cGKYLeG3aXc8lYXc3Xy5Yb1o5t6ZxzkOZpgZNpSHX5cxs2xY6mRDcO1uPpezPhnF89
-         34Ge6vWaYNB87T2hFx6o2YaW+pX3QYxAnXlrTivb8oHlMJYyqUizj1eBx5RUShFqodpE
-         jTR/sbDEL6BA6PuN4OuddaBhwidVDJOmi+27KLzET0tREsQ2tHDSJ7hdljlkihlWDgqo
-         0dHTeD/8f1Xx7/8ENLYauB4ctZgI/tz50P67+kyo1KDhDRNffmUFCP5YaRm1WR3vf1ze
-         h2d6+QekBkaIJGwJPvX4MaAoZ/GxwWN8rJkT7avifTJ7R3r4WQiH/PX1uSiXBp9Ecz1U
-         +sGw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=TekiRy230m6fXrzIpS8SrOi2EMfP9enRBb5+yH9gjMs=;
+        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
+        b=S7g+m9+gyATH5c6PthvZcmiQmtY4nYvr5gclLdLuzmAya5ux217Rxld9Hmebrf26FM
+         DHs5m2KZDN1mRPrfRrgaJaFv3cO7iXw0e82qX3Lz2zzZp9XnH6PCoKRZuTnZ6V/lJDFP
+         86d5j0duYoth+Xgj3l6eWyc3suwArrvrRqtj6W7ZWZ4HiqMtVuoUiWqYzjZEwg5OuCdr
+         Pp9FH6BFKDs2T2IXyNW6qSPdRYWrqL2+RqZZY03ZYz5B/87ifPT5vya70r09aKYDDdOJ
+         VSHaS7nz17/Pi0Id0yCrVKX8y3rG+vwCf4+rEh6wDyom6pZoAk5bmFi49NMsOvuj69/9
+         DBXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VsXdTIE2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-21da3da444csor37963555ad.1.2025.01.26.13.37.27
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d7KyIpxe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-474efb4f7fcsi32714601cf.468.2025.03.04.04.57.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 26 Jan 2025 13:37:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Mar 2025 04:57:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VsXdTIE2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737927447; x=1738532247; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MbN5ftkFW90qPVFMQN7kThRB1jW5R9e9lwVcXv22rrA=;
-        b=VsXdTIE25VqsYq5ujA0SCl+xnMr2PnneipTPcJpNA044yMeAZ34sleervax+cZAd8q
-         UdJl3K8lqCoqB2pzUOF095PK53qCIolNSGkf2Cl4FAFFzfLExJ7VwXg9avPRiZ7R59TT
-         nWK5HoDuhhakcbXkSV5htTEN4hAFjdtPXQOHIOd4OB40E1ezOlXfjShwL8ZmhD57qijV
-         G1ckIMXi5J2diMnb5+KXMo+USnBn9efnnvO2jJTuvF5EJ2iL+QnG06fdgpcejPmELgMB
-         LaAQDg3so2EOlSmK5vL7k4Zy8pmVAlwkk5v5WyW/ITjwN5JyYAz2RPco8lqezxanHABV
-         WLDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737927447; x=1738532247;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MbN5ftkFW90qPVFMQN7kThRB1jW5R9e9lwVcXv22rrA=;
-        b=R4FwAjIGj5TcfBjdnqViGR50S8yVbjPs5UNF+CVsCNz+irfo8g999Kcud43xHkU8O8
-         U9sgHhww+rarbYaRsw41vdovwFt2EAgaA0/YExUWfsPZvE9Z/vJaBfBIDB91H96ZjUYv
-         uTbjN+6C43upHZGM0m4RaFCHV9nBVppuHLC/w/DAX9vUdYCNOQLhv6S4qjH+d4MzQn8Q
-         OUVyAx6zeo73A6EMuOUtragU3slQ/kzqX6XqHxkQ+B/CsBsduGiukN2L9Uj4v01g1ES5
-         JwkmxsdDY7xhFc9Moh13so/t4nIbCeuuo9K+tMTWqOAbcbAV+hOX2wrxDO6FgjL56CM8
-         3biA==
-X-Forwarded-Encrypted: i=1; AJvYcCW7yDSYoyy0D8bu0ZOUU49ihX24cKwVyz945JSE9EcZvVl4d7Q8dRlI6ikF3/43Vd9oUlcwKF8GtG9ktw==@linaro.org
-X-Gm-Message-State: AOJu0YzTKr5F8ClzILPnERlzfBTK/wqbwtQFNMDnO+Xcdq2c1LMIxJjw
-	/R+QgelSktwjQqIR/Nv5FrFQASx9kgN6OZ/RTIGdIdg7IqDXqSs4Aj5hiJ8+ycN+mg==
-X-Gm-Gg: ASbGncvzXzFFFNuEdCwCbqXMUcLYkdWXSERh0p4mRlhKrjoWd8jZLUdPutHHHXatF9U
-	204tW5qSt7U/kiDUw3QECpLqaamJz+sAe/gLo4AVeqkpY/2V2mocPvF1IqBAftjsunxrr/gtl4P
-	/dHizVzzXWTF7dlduCt5owlMgo+//uVOCtZ7A5BxjpU1+lqeYtZvpI6678djuAwJV14pA6m1yov
-	bapITRby2LXHfbSVbsnvowZbp3pir/spbKhTeBV3k3ovKonfYAwu4BHEexiA4sJbEOr+GuCTu1O
-	/OJAwglElSS4TePrWiwyT8HHgkLAYZgkEF5dyGBUn+1+Y2Q=
-X-Google-Smtp-Source: AGHT+IFiuSNxM6E2NLFZz0UKT8aL9HnJkIEUZ+PxBPmebPJCN8+PDu1ajnV9q5XziLSw+N+w1RiQzQ==
-X-Received: by 2002:a17:90a:c888:b0:2ee:f687:6ad5 with SMTP id 98e67ed59e1d1-2f782c5174emr59291165a91.2.1737927447421;
-        Sun, 26 Jan 2025 13:37:27 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f7ffaf896csm5651556a91.34.2025.01.26.13.37.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Jan 2025 13:37:26 -0800 (PST)
-Message-ID: <46ab28c5-d417-4b83-97d2-b2ba49f7abfa@linaro.org>
-Date: Sun, 26 Jan 2025 13:37:24 -0800
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d7KyIpxe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tpRhn-0004uD-5P; Tue, 04 Mar 2025 07:49:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhW-0004iZ-M2
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:48:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhT-0006lV-UJ
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:48:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741092523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TekiRy230m6fXrzIpS8SrOi2EMfP9enRBb5+yH9gjMs=;
+ b=d7KyIpxeUefYgclpSuUFgixr7lv/XR4SKc0POz0EPfV8bBQRcxokp9L/ZEHXxbDh82PRCe
+ dMLIaA4Z60Y6oUxegAjkdmIIpf56k5zthYOw4IAhmpIQGZOipODi7e5LNsalyAG562rveo
+ 42SoXryZhQncDwbNIH3Yr4ekiKDdl/s=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-413-XJR9CKONNtyLErloDS68ew-1; Tue,
+ 04 Mar 2025 07:48:38 -0500
+X-MC-Unique: XJR9CKONNtyLErloDS68ew-1
+X-Mimecast-MFC-AGG-ID: XJR9CKONNtyLErloDS68ew_1741092516
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8566C180087B; Tue,  4 Mar 2025 12:48:36 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 382A6180087C; Tue,  4 Mar 2025 12:48:35 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id E277518003B4; Tue, 04 Mar 2025 13:48:15 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PULL 11/24] hw/uefi: add var-service-pkcs7.c
+Date: Tue,  4 Mar 2025 13:47:59 +0100
+Message-ID: <20250304124815.591749-12-kraxel@redhat.com>
+In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
+References: <20250304124815.591749-1-kraxel@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 20/20] cpus: Build cpu_exec_[un]realizefn() methods once
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
- qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
-References: <20250123234415.59850-1-philmd@linaro.org>
- <20250123234415.59850-21-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250123234415.59850-21-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: a1JYiNfkxRp9
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zCCR7OGOcyA8
 
-On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
-> Now that cpu_exec_realizefn() and cpu_exec_unrealizefn()
-> methods don't use any target specific definition anymore,
-> we can move them to cpu-common.c to be able to build them
-> once.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
-> Eventually they'll be absorbed within cpu_common_[un]realizefn().
-> ---
->   cpu-target.c         | 30 ------------------------------
->   hw/core/cpu-common.c | 26 ++++++++++++++++++++++++++
->   2 files changed, 26 insertions(+), 30 deletions(-)
+This implements pkcs7 signature verification using gnutls.
+Needed to check authenticated variable updates.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20250225163031.1409078-12-kraxel@redhat.com>
+---
+ hw/uefi/var-service-pkcs7.c | 436 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 436 insertions(+)
+ create mode 100644 hw/uefi/var-service-pkcs7.c
 
-r~
+diff --git a/hw/uefi/var-service-pkcs7.c b/hw/uefi/var-service-pkcs7.c
+new file mode 100644
+index 000000000000..32accf4e44e0
+--- /dev/null
++++ b/hw/uefi/var-service-pkcs7.c
+@@ -0,0 +1,436 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * uefi vars device - pkcs7 verification
++ */
++#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "system/dma.h"
++
++#include <gnutls/gnutls.h>
++#include <gnutls/pkcs7.h>
++#include <gnutls/crypto.h>
++
++#include "hw/uefi/var-service.h"
++
++#define AUTHVAR_DIGEST_ALGO GNUTLS_DIG_SHA256
++#define AUTHVAR_DIGEST_SIZE 32
++
++/*
++ * Replicate the signed data for signature verification.
++ */
++static gnutls_datum_t *build_signed_data(mm_variable_access *va, void *data)
++{
++    variable_auth_2 *auth = data;
++    uint64_t data_offset = sizeof(efi_time) + auth->hdr_length;
++    uint16_t *name = (void *)va + sizeof(mm_variable_access);
++    gnutls_datum_t *sdata;
++    uint64_t pos = 0;
++
++    sdata = g_new(gnutls_datum_t, 1);
++    sdata->size = (va->name_size - 2
++                   + sizeof(QemuUUID)
++                   + sizeof(va->attributes)
++                   + sizeof(auth->timestamp)
++                   + va->data_size - data_offset);
++    sdata->data = g_malloc(sdata->size);
++
++    /* Variable Name (without terminating \0) */
++    memcpy(sdata->data + pos, name, va->name_size - 2);
++    pos += va->name_size - 2;
++
++    /* Variable Namespace Guid */
++    memcpy(sdata->data + pos, &va->guid, sizeof(va->guid));
++    pos += sizeof(va->guid);
++
++    /* Attributes */
++    memcpy(sdata->data + pos, &va->attributes, sizeof(va->attributes));
++    pos += sizeof(va->attributes);
++
++    /* TimeStamp */
++    memcpy(sdata->data + pos, &auth->timestamp, sizeof(auth->timestamp));
++    pos += sizeof(auth->timestamp);
++
++    /* Variable Content */
++    memcpy(sdata->data + pos, data + data_offset, va->data_size - data_offset);
++    pos += va->data_size - data_offset;
++
++    assert(pos == sdata->size);
++    return sdata;
++}
++
++/*
++ * See WrapPkcs7Data() in edk2.
++ *
++ * UEFI spec allows pkcs7 signatures being used without the envelope which
++ * identifies them as pkcs7 signatures.  openssl and gnutls will not parse them
++ * without the envelope though.  So add it if needed.
++ */
++static void wrap_pkcs7(gnutls_datum_t *pkcs7)
++{
++    static uint8_t signed_data_oid[9] = {
++        0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02
++    };
++    gnutls_datum_t wrap;
++
++    if (pkcs7->data[4] == 0x06 &&
++        pkcs7->data[5] == 0x09 &&
++        memcmp(pkcs7->data + 6, signed_data_oid, sizeof(signed_data_oid)) == 0 &&
++        pkcs7->data[15] == 0x0a &&
++        pkcs7->data[16] == 0x82) {
++        return;
++    }
++
++    wrap.size = pkcs7->size + 19;
++    wrap.data = g_malloc(wrap.size);
++
++    wrap.data[0] = 0x30;
++    wrap.data[1] = 0x82;
++    wrap.data[2] = (wrap.size - 4) >> 8;
++    wrap.data[3] = (wrap.size - 4) & 0xff;
++    wrap.data[4] = 0x06;
++    wrap.data[5] = 0x09;
++    memcpy(wrap.data + 6, signed_data_oid, sizeof(signed_data_oid));
++
++    wrap.data[15] = 0xa0;
++    wrap.data[16] = 0x82;
++    wrap.data[17] = pkcs7->size >> 8;
++    wrap.data[18] = pkcs7->size & 0xff;
++    memcpy(wrap.data + 19, pkcs7->data, pkcs7->size);
++
++    g_free(pkcs7->data);
++    *pkcs7 = wrap;
++}
++
++static gnutls_datum_t *build_pkcs7(void *data)
++{
++    variable_auth_2 *auth = data;
++    gnutls_datum_t *pkcs7;
++
++    pkcs7 = g_new(gnutls_datum_t, 1);
++    pkcs7->size = auth->hdr_length - 24;
++    pkcs7->data = g_malloc(pkcs7->size);
++    memcpy(pkcs7->data, data + 16 + 24, pkcs7->size);
++
++    wrap_pkcs7(pkcs7);
++
++    return pkcs7;
++}
++
++/*
++ * Read UEFI signature database, store x509 all certificates found in
++ * gnutls_x509_trust_list_t.
++ */
++static gnutls_x509_trust_list_t build_trust_list_sb(uefi_variable *var)
++{
++    gnutls_x509_trust_list_t tlist;
++    gnutls_datum_t cert_data;
++    gnutls_x509_crt_t cert;
++    uefi_vars_siglist siglist;
++    uefi_vars_cert *c;
++    int rc;
++
++    rc = gnutls_x509_trust_list_init(&tlist, 0);
++    if (rc < 0) {
++        warn_report("gnutls_x509_trust_list_init error: %s",
++                     gnutls_strerror(rc));
++        return NULL;
++    }
++
++    uefi_vars_siglist_init(&siglist);
++    uefi_vars_siglist_parse(&siglist, var->data, var->data_size);
++
++    QTAILQ_FOREACH(c, &siglist.x509, next) {
++        cert_data.size = c->size;
++        cert_data.data = c->data;
++
++        rc = gnutls_x509_crt_init(&cert);
++        if (rc < 0) {
++            warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
++            break;
++        }
++        rc = gnutls_x509_crt_import(cert, &cert_data, GNUTLS_X509_FMT_DER);
++        if (rc < 0) {
++            warn_report("gnutls_x509_crt_import error: %s",
++                        gnutls_strerror(rc));
++            gnutls_x509_crt_deinit(cert);
++            break;
++        }
++        rc = gnutls_x509_trust_list_add_cas(tlist, &cert, 1, 0);
++        if (rc < 0) {
++            warn_report("gnutls_x509_crt_import error: %s",
++                        gnutls_strerror(rc));
++            gnutls_x509_crt_deinit(cert);
++            break;
++        }
++    }
++
++    uefi_vars_siglist_free(&siglist);
++
++    return tlist;
++}
++
++static int build_digest_authvar(gnutls_x509_crt_t signer,
++                                gnutls_x509_crt_t root,
++                                uint8_t *hash_digest)
++{
++    char *cn;
++    size_t cn_size = 0;
++    uint8_t fp[AUTHVAR_DIGEST_SIZE];
++    size_t fp_size = sizeof(fp);
++    gnutls_hash_hd_t hash;
++    int rc;
++
++    /* get signer CN */
++    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
++                                       0, 0, NULL, &cn_size);
++    if (rc != GNUTLS_E_SHORT_MEMORY_BUFFER) {
++        warn_report("gnutls_x509_crt_get_dn_by_oid error #1: %s",
++                    gnutls_strerror(rc));
++        return rc;
++    }
++
++    cn = g_malloc(cn_size);
++    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
++                                       0, 0, cn, &cn_size);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_get_dn_by_oid error #2: %s",
++                    gnutls_strerror(rc));
++        goto err;
++    }
++
++    /* get root certificate fingerprint */
++    rc = gnutls_x509_crt_get_fingerprint(root, AUTHVAR_DIGEST_ALGO,
++                                         fp, &fp_size);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_get_fingerprint error: %s",
++                    gnutls_strerror(rc));
++        goto err;
++    }
++
++    /* digest both items */
++    rc = gnutls_hash_init(&hash, AUTHVAR_DIGEST_ALGO);
++    if (rc < 0) {
++        warn_report("gnutls_hash_init error: %s",
++                    gnutls_strerror(rc));
++        goto err;
++    }
++    rc = gnutls_hash(hash, cn, cn_size);
++    if (rc < 0) {
++        warn_report("gnutls_hash error: %s",
++                    gnutls_strerror(rc));
++        goto err;
++    }
++    rc = gnutls_hash(hash, fp, fp_size);
++    if (rc < 0) {
++        warn_report("gnutls_hash error: %s",
++                    gnutls_strerror(rc));
++        goto err;
++    }
++    gnutls_hash_deinit(hash, hash_digest);
++
++    return 0;
++
++err:
++    g_free(cn);
++    return rc;
++}
++
++/*
++ * uefi spec 2.9, section 8.2.2
++ *
++ * For EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS variables which are
++ * NOT secure boot variables we should track the root certificate of the trust
++ * chain, and the subject CN of the signer certificate.
++ *
++ * So we'll go store a digest of these two items so we can verify this.  Also
++ * create a gnutls_x509_trust_list_t with the root certificate, so
++ * gnutls_pkcs7_verify() will pass (assuming the signature is otherwise
++ * correct).
++ */
++static gnutls_x509_trust_list_t build_trust_list_authvar(gnutls_pkcs7_t pkcs7,
++                                                         uint8_t *hash_digest)
++{
++    gnutls_datum_t signer_data = { 0 };
++    gnutls_datum_t root_data = { 0 };
++    gnutls_x509_crt_t signer = NULL;
++    gnutls_x509_crt_t root = NULL;
++    gnutls_x509_trust_list_t tlist = NULL;
++    int n, rc;
++
++    n = gnutls_pkcs7_get_crt_count(pkcs7);
++
++    /* first is signer certificate */
++    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, 0, &signer_data);
++    if (rc < 0) {
++        warn_report("gnutls_pkcs7_get_crt_raw2(0) error: %s",
++                    gnutls_strerror(rc));
++        goto done;
++    }
++    rc = gnutls_x509_crt_init(&signer);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
++        goto done;
++    }
++    rc = gnutls_x509_crt_import(signer, &signer_data, GNUTLS_X509_FMT_DER);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_import error: %s",
++                    gnutls_strerror(rc));
++        gnutls_x509_crt_deinit(signer);
++        goto done;
++    }
++
++    /* last is root-of-trust certificate (can be identical to signer) */
++    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, n - 1, &root_data);
++    if (rc < 0) {
++        warn_report("gnutls_pkcs7_get_crt_raw2(%d) error: %s",
++                    n - 1, gnutls_strerror(rc));
++        goto done;
++    }
++    rc = gnutls_x509_crt_init(&root);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
++        goto done;
++    }
++    rc = gnutls_x509_crt_import(root, &root_data, GNUTLS_X509_FMT_DER);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_import error: %s",
++                    gnutls_strerror(rc));
++        goto done;
++    }
++
++    /* calc digest for signer CN + root cert */
++    rc = build_digest_authvar(signer, root, hash_digest);
++    if (rc < 0) {
++        goto done;
++    }
++
++    /* add root to trust list */
++    rc = gnutls_x509_trust_list_init(&tlist, 0);
++    if (rc < 0) {
++        warn_report("gnutls_x509_trust_list_init error: %s",
++                    gnutls_strerror(rc));
++        goto done;
++    }
++    rc = gnutls_x509_trust_list_add_cas(tlist, &root, 1, 0);
++    if (rc < 0) {
++        warn_report("gnutls_x509_crt_import error: %s",
++                    gnutls_strerror(rc));
++        gnutls_x509_trust_list_deinit(tlist, 1);
++        tlist = NULL;
++        goto done;
++    } else {
++        /* ownership passed to tlist */
++        root = NULL;
++    }
++
++done:
++    if (signer_data.data) {
++        gnutls_free(signer_data.data);
++    }
++    if (root_data.data) {
++        gnutls_free(root_data.data);
++    }
++    if (signer) {
++        gnutls_x509_crt_deinit(signer);
++    }
++    if (root) {
++        gnutls_x509_crt_deinit(root);
++    }
++    return tlist;
++}
++
++static void free_datum(gnutls_datum_t *ptr)
++{
++    if (!ptr) {
++        return;
++    }
++    g_free(ptr->data);
++    g_free(ptr);
++}
++
++static void gnutls_log_stderr(int level, const char *msg)
++{
++    if (strncmp(msg, "ASSERT:", 7) == 0) {
++        return;
++    }
++    fprintf(stderr, "    %d: %s", level, msg);
++}
++
++/*
++ * pkcs7 signature verification (EFI_VARIABLE_AUTHENTICATION_2).
++ */
++efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
++                                   void **digest, uint32_t *digest_size,
++                                   mm_variable_access *va, void *data)
++{
++    gnutls_x509_trust_list_t tlist = NULL;
++    gnutls_datum_t *signed_data = NULL;
++    gnutls_datum_t *pkcs7_data = NULL;
++    gnutls_pkcs7_t pkcs7 = NULL;
++    efi_status status = EFI_SECURITY_VIOLATION;
++    int rc;
++
++    if (0) {
++        /* gnutls debug logging */
++        static bool first = true;
++
++        if (first) {
++            first = false;
++            gnutls_global_set_log_function(gnutls_log_stderr);
++            gnutls_global_set_log_level(99);
++        }
++    }
++
++    signed_data = build_signed_data(va, data);
++    pkcs7_data = build_pkcs7(data);
++
++    rc = gnutls_pkcs7_init(&pkcs7);
++    if (rc < 0) {
++        warn_report("gnutls_pkcs7_init error: %s", gnutls_strerror(rc));
++        goto out;
++    }
++
++    rc = gnutls_pkcs7_import(pkcs7, pkcs7_data, GNUTLS_X509_FMT_DER);
++    if (rc < 0) {
++        warn_report("gnutls_pkcs7_import error: %s", gnutls_strerror(rc));
++        goto out;
++    }
++
++    if (siglist) {
++        /* secure boot variables */
++        tlist = build_trust_list_sb(siglist);
++    } else if (digest && digest_size) {
++        /* other authenticated variables */
++        *digest_size = AUTHVAR_DIGEST_SIZE;
++        *digest = g_malloc(*digest_size);
++        tlist = build_trust_list_authvar(pkcs7, *digest);
++    } else {
++        /* should not happen */
++        goto out;
++    }
++
++    rc = gnutls_pkcs7_verify(pkcs7, tlist,
++                             NULL, 0,
++                             0, signed_data,
++                             GNUTLS_VERIFY_DISABLE_TIME_CHECKS |
++                             GNUTLS_VERIFY_DISABLE_TRUSTED_TIME_CHECKS);
++    if (rc < 0) {
++        warn_report("gnutls_pkcs7_verify error: %s", gnutls_strerror(rc));
++        goto out;
++    }
++
++    /* check passed */
++    status = EFI_SUCCESS;
++
++out:
++    free_datum(signed_data);
++    free_datum(pkcs7_data);
++    if (tlist) {
++        gnutls_x509_trust_list_deinit(tlist, 1);
++    }
++    if (pkcs7) {
++        gnutls_pkcs7_deinit(pkcs7);
++    }
++    return status;
++}
+-- 
+2.48.1
+

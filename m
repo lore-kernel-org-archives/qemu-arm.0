@@ -1,192 +1,339 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp4559987njn;
-        Fri, 17 Jan 2025 09:24:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXPAJ55oVUml4hEgpEjD0QkieTKpdZ82yLCS9SVv6KGAVaJxTc9CU93sICGAnqxz0EJTE1c7/Powhk+aQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHeuy0p4mb1Ji7yNoIhh0Y71ESz8B44gEUFs1vzBBzEr9kRurczIPtA9hJSVCSglXfi9iZh
-X-Received: by 2002:a05:622a:120c:b0:46c:7647:2ace with SMTP id d75a77b69052e-46e1287038bmr58331961cf.0.1737134692921;
-        Fri, 17 Jan 2025 09:24:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737134692; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp96589njm;
+        Tue, 4 Mar 2025 04:49:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVoNNYa8WnaScLgYOcQifmu3chlsTzovNHbqd7hSeARp+5Sv815Px1k/pqkLudatEGjx4vcWZEwDvQMPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGrHH2FhD/qDHuQo4MFkb1sZqEKF0NYZu4TaecHgPP3lT9prNyP8PtKD56zg5K69z9s9gqY
+X-Received: by 2002:a05:620a:3916:b0:7c0:abe0:ce4b with SMTP id af79cd13be357-7c39c4a2a9amr2343662485a.12.1741092558764;
+        Tue, 04 Mar 2025 04:49:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741092558; cv=none;
         d=google.com; s=arc-20240605;
-        b=OqE0CMywfNdQwjzfXr56sSeDtoCyb+c/4z5EWYxnfsPYRwhUND70h/zHjtRr8+hVL4
-         qc/RZFwNprL53ML/Rn9S/dacTVn7GA1AYihqDCBvvK5WKN1WjHBtfhRgTBWTQ0MGghqI
-         99fMm5GOtU9/kbgswDcyBkDxSZzAv43jzHqSTr58hv2ACmFlxPmdPpUM3ArHpYSH5aMW
-         4lp04vT7TUcgfkSdNx/eT0H+QllhgftIqvC4TOBPa4M8ZDddG/oTPUYfUSK9joNv6Cz9
-         Hy1OYYPnNntDAz5dvcOxGKWn9QJ9UT+zZQk8N5n97V4juR+ujx+6xxa16vC/ykjQLH4b
-         tgkA==
+        b=QbljxScz2SsS0ySalCRzGziPj22pYlZrdMV7btKTaV3RiPHBeV0Q5HpkWwtIk8SkFB
+         prYTcLTsoaOP6n8scfY9s3Uq0aI8BbgnXKaTHGNGvzYixIVvNOFBDOojcRXAUZPA8jmV
+         QPdB350+D6LUnJ1LlxiUMlfVe0FyJTT0Q55K71mHvMBccVbjs77CJXTjfXO4KE7EYZEy
+         ttcz/Gfr1zhW1+8d1YBB1Y091mlNiRx+ApGKlKrzc2GCK8ufNB7lj+a6IELocmSVxN8t
+         HUFjo85AgmUwQ5NmdSMm+pglooRrVQ8YlbK3fEYCFU0wycvdelxT2Q7KVHlAyY6GrnUk
+         T9pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=0pLsAWDJOraFG88EG1SozRkXs1n2DWuvNRJ2Y9eAxkU=;
-        fh=qh5pOmdGdw32qE+8Bm+bFV/Jm5BhR0S/gXu9JZ9XC4k=;
-        b=geWerk5MGP8D86x3qtm5jHCB4foNEEQSuaVUf/ASvFkB5PvX2eJev4A7gQj+DdSuCS
-         WzgXd+xhv9VQfyzJgky7kwrbGLaaP+kvswcyYV8vcB/KrqeAwl7m1XI4wVp1CsTRHuu1
-         K5jysxxKUSND8+fIhUHaWqeQKfx5uW8akLP9MV5KEBxiP8hQEe0il7z2x+LZ03i4X2M3
-         uRhfvr9DoU6C/qzky/AT87xt1KDfOh/YKhHmNSmMy68DzuzGug5PHT5vecDBn1eM8+Oq
-         tq1wTpcNjp7xyZ2ChxcLV+s01SuGgqGGbluRlAzqdDIyK/6l5IuYLAXfQsgilRSn+4VB
-         uwWQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=j86CDYwtI9X55e5axt64TTQ0qTTEZPdFKpQF5ux0Uso=;
+        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
+        b=jSkYaLd/asL3fd7fXsu3j+dVnKGqw7neJ1j4BeIkoRijYg0Mi/nYBsVrP9LgFR6aFR
+         HSYd81ZzYuaRc1pigwvhzUYZxKMf7qm8RkNvOXT1UR46YwihPIugIbeE2LLYANkMjNz2
+         kkmGuAFb04tLeZp8F3V+q8MvL2Rss//A0ZZ410SWR4yeG6EXqlNNTpgbNUTQBp9XpsVO
+         Gdq3/lSm5S/aulKZzqUi3wljdLY77XZHny2I6x+Vi+Z1jG0kL8cb0vCEOPgRkn5DuPYA
+         bbEKaN09rFbyce6vc1ajRuLsgPLNiJJfZm0IoAv7chuXXCAKA7e0APQst7uHAkvbFIvx
+         9aAg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bbTqKbRf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U08AzIC6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e1043e155si27312541cf.370.2025.01.17.09.24.52
+        by mx.google.com with ESMTPS id af79cd13be357-7c3c880f002si229112585a.209.2025.03.04.04.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2025 09:24:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Mar 2025 04:49:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bbTqKbRf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U08AzIC6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tYq5O-0001gp-Bl; Fri, 17 Jan 2025 12:24:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tpRhc-0004oH-Ow; Tue, 04 Mar 2025 07:48:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYq5J-0001Qw-V7
- for qemu-devel@nongnu.org; Fri, 17 Jan 2025 12:24:42 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYq5C-0006Cp-4Y
- for qemu-devel@nongnu.org; Fri, 17 Jan 2025 12:24:36 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3862d161947so1329112f8f.3
- for <qemu-devel@nongnu.org>; Fri, 17 Jan 2025 09:24:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737134672; x=1737739472; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=0pLsAWDJOraFG88EG1SozRkXs1n2DWuvNRJ2Y9eAxkU=;
- b=bbTqKbRf9+UaEb8DlBlzCuL7xElcp9Lqo4sIIjmmyYaxuRnns9nMBjfVY5UBoQSWW3
- d0+i+nqkSrrOtrN2/kkUmFdtk2bthBvEH9VbXlEzdtTDgVAor0a2rG9UfVXe+j2RjEpI
- zjsjShEyXKhrrujFb6mJTVAzntcGya3vz0DNwE+D+lO5KIe3xIE7Fs+GbDAyqIOmsOnH
- 3ca7CvcsAB+KKkufLRPvCNv1+qt+vRNjNZ68KeD9TT1EYRA/7v6WCfmfnewwDPKRDf0i
- 5BEzqiC2glJtNFDpwH2ouxS0ZikSfXHRdJCyBeSCW50/IjJKb+NrAdosOGHefQ0k4dP3
- GD6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737134672; x=1737739472;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0pLsAWDJOraFG88EG1SozRkXs1n2DWuvNRJ2Y9eAxkU=;
- b=S7U8TRkCL1I0TazQVl2B/byYGGtCt8NBy2DYfKOE3ElZAp9eKR1rQCImCSxczGMWhh
- rBiPTUFm4IEzWnNxDBvaREO74VmYVJrE+ZgjTtcoYvbYG6MuDo9tLdFMgAFvwIcpEuwY
- pRAfhXUeJ/gGeqEhTKRstpVqo6M/d33l0NXwRJWPC8LwW9NviW2qCLQxvrRm17hYfaTM
- GGhbZUvFUAXyT4LsTsJNFHD6FtMG9B4ZaYIyOmDQ0h21Fv67NPgZu7UK1B4nf4zjeyVI
- MYU3SEoUxbibf4LBHiFtg6yOyPetSDJXIXgtRbfLMpOT4GC9qjmd1Gn9UNcx1WUE9nSl
- I0wA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWnp0NabUK7oT09AhRqhIIy8CyY8EI4vMJRd5ZRlw4RCUwfTk/g5PKlldPAPBT2PMJZVPEaI5pNs2rD@nongnu.org
-X-Gm-Message-State: AOJu0YxKAt8HXzAR/F14D1FlgtsrDO2LIAclvFrQNHklYoL1jgCWLkf6
- fw4XkqhvRZRaLAh6JtGzo8DDYFsXGLcAKeXPVmCYHTjpBhaPzohluxN91S0ZpDw=
-X-Gm-Gg: ASbGncsfAwVYOZPj3Z+xsbyJvVkNILIxATTvyPSIUJe5OsNY/WusAWuA204tBIwC1EM
- mcagONNCJhfZu5hUiEe/fszJ/gz9Fr6L5m/BMoAerxlNa6EAbGoZl5PrKEHRgaO7zEHttQ9fnHl
- KCG8ywSQ6p+QrjGomP5iIM36JuqWzfHcvvFXHnM511jlEB01RE4BxbSsXIwizUSBAYapaklk3pS
- RXL1ze8g9oFmcM06a7MOPkT8AO+PTt3QJ148dZZ2eidC+gY9wv0FWnkHM+8nOaRWSAb9lh2M/cm
- sicLKoM8cBHEXw0t77iiWM5S
-X-Received: by 2002:a05:6000:1548:b0:38b:e32a:10aa with SMTP id
- ffacd0b85a97d-38bf565521bmr3404553f8f.5.1737134672157; 
- Fri, 17 Jan 2025 09:24:32 -0800 (PST)
-Received: from [192.168.69.151] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43890420412sm41035045e9.18.2025.01.17.09.24.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Jan 2025 09:24:31 -0800 (PST)
-Message-ID: <da1630f6-f25c-45ff-a69c-a2d9a5e0eeb6@linaro.org>
-Date: Fri, 17 Jan 2025 18:24:30 +0100
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhQ-0004gk-Cp
+ for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:48:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhO-0006ja-0Q
+ for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:48:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741092517;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=j86CDYwtI9X55e5axt64TTQ0qTTEZPdFKpQF5ux0Uso=;
+ b=U08AzIC6AlvmGjEDB8XQTYNwkWrgqgjHzTY5xT4vkdept0ZlZwmbVdW9mzqpefsBoM1ldx
+ m7TjowOMLsnCNlCWQ2fU+bY9iTBHooWNezkFPepu/lIV00CU1qEMBGjhjf4/k3yjxVIuxB
+ MfxCl2LMjYkd3mgCqTU3B+IqNkadvGo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-0sxTaEkJNuyxZ1UhbpOcIQ-1; Tue,
+ 04 Mar 2025 07:48:27 -0500
+X-MC-Unique: 0sxTaEkJNuyxZ1UhbpOcIQ-1
+X-Mimecast-MFC-AGG-ID: 0sxTaEkJNuyxZ1UhbpOcIQ_1741092506
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 401D91944F05; Tue,  4 Mar 2025 12:48:26 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2949F19560AB; Tue,  4 Mar 2025 12:48:25 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 6B556180039B; Tue, 04 Mar 2025 13:48:15 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PULL 04/24] hw/uefi: add include/hw/uefi/var-service.h
+Date: Tue,  4 Mar 2025 13:47:52 +0100
+Message-ID: <20250304124815.591749-5-kraxel@redhat.com>
+In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
+References: <20250304124815.591749-1-kraxel@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/14] hw/sd/sd: Allow for inverting polarities of
- presence and write-protect GPIOs
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
- Guenter Roeck <linux@roeck-us.net>, Andrey Smirnov
- <andrew.smirnov@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20250108092538.11474-1-shentey@gmail.com>
- <20250108092538.11474-9-shentey@gmail.com>
- <342ca371-3e14-4108-9c45-e15cda51b9ca@linaro.org>
- <FBA535B4-8191-4CEB-905F-FA4C3416048C@gmail.com>
- <e202623e-eac7-4ed3-87fb-002491ddf745@linaro.org>
- <6AF83F55-5BFF-438D-AB05-5403D619B403@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <6AF83F55-5BFF-438D-AB05-5403D619B403@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nj5l60opHPUL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sO0mgw4JBso0
 
-On 17/1/25 00:20, Bernhard Beschow wrote:
-> 
-> 
-> Am 12. Januar 2025 18:06:04 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->> On 9/1/25 17:20, Bernhard Beschow wrote:
->>>
->>>
->>> Am 9. Januar 2025 11:40:10 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->>>> Hi Bernhard,
->>>>
->>>> On 8/1/25 10:25, Bernhard Beschow wrote:
->>>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>>>> ---
->>>>>     hw/sd/sd.c | 12 ++++++++----
->>>>>     1 file changed, 8 insertions(+), 4 deletions(-)
->>>>
->>>>
->>>>> @@ -876,8 +878,8 @@ static void sd_reset(DeviceState *dev)
->>>>>         sd->cmd_line = true;
->>>>>         sd->multi_blk_cnt = 0;
->>>>>     -    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd));
->>>>> -    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd));
->>>>> +    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd) ^ sd->readonly_active_low);
->>>>
->>>> Please embed in sd_get_readonly(),
->>>>
->>>>> +    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd) ^ sd->inserted_active_low);
->>>>
->>>> and sd_get_inserted().
->>>
->>> Are you sure? I deliberately implemented it as is because embedding would change the internal logic of the device as well as SDCardClass::{get_inserted, get_readonly}.
->>
->> Yes, this is why I requested that change. Why don't you think it is correct?
-> 
-> I'm asking because I think that moving the xor inside the methods would break the device model.
-> 
-> The goal of the active_low attributes is to invert the polarity of the GPIOs only which allows to model boards where these are inverted. IOW they are intended to influence the wiring. That is in contrast to the two methods which determine the internal logic of the device model. They are also used as virtual method implementations of SDCardClass::{get_inserted, get_readonly} which determine the logic of the sd bus. Moving the xor inside inverts their return values if s->*_active_low are true, effectively flipping every if statement, which seems wrong to me. What do I miss?
+Add state structs and function declarations for the uefi-vars device.
 
-Right... Then maybe we should model polarity in qemu_irq.
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20250225163031.1409078-5-kraxel@redhat.com>
+---
+ include/hw/uefi/var-service.h | 191 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 191 insertions(+)
+ create mode 100644 include/hw/uefi/var-service.h
 
-Patches 7 & 8 queued, thanks!
+diff --git a/include/hw/uefi/var-service.h b/include/hw/uefi/var-service.h
+new file mode 100644
+index 000000000000..f7ceac4ce243
+--- /dev/null
++++ b/include/hw/uefi/var-service.h
+@@ -0,0 +1,191 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * uefi-vars device - state struct and function prototypes
++ */
++#ifndef QEMU_UEFI_VAR_SERVICE_H
++#define QEMU_UEFI_VAR_SERVICE_H
++
++#include "qemu/uuid.h"
++#include "qemu/queue.h"
++
++#include "hw/uefi/var-service-edk2.h"
++
++#define MAX_BUFFER_SIZE (64 * 1024)
++
++typedef struct uefi_variable uefi_variable;
++typedef struct uefi_var_policy uefi_var_policy;
++typedef struct uefi_vars_state uefi_vars_state;
++
++typedef struct uefi_vars_cert uefi_vars_cert;
++typedef struct uefi_vars_hash uefi_vars_hash;
++typedef struct uefi_vars_siglist uefi_vars_siglist;
++
++struct uefi_variable {
++    QemuUUID                          guid;
++    uint16_t                          *name;
++    uint32_t                          name_size;
++    uint32_t                          attributes;
++    void                              *data;
++    uint32_t                          data_size;
++    efi_time                          time;
++    void                              *digest;
++    uint32_t                          digest_size;
++    QTAILQ_ENTRY(uefi_variable)       next;
++};
++
++struct uefi_var_policy {
++    variable_policy_entry             *entry;
++    uint32_t                          entry_size;
++    uint16_t                          *name;
++    uint32_t                          name_size;
++
++    /* number of hashmarks (wildcard character) in name */
++    uint32_t                          hashmarks;
++
++    QTAILQ_ENTRY(uefi_var_policy)     next;
++};
++
++struct uefi_vars_state {
++    MemoryRegion                      mr;
++    uint16_t                          sts;
++    uint32_t                          buf_size;
++    uint32_t                          buf_addr_lo;
++    uint32_t                          buf_addr_hi;
++    uint8_t                           *buffer;
++    QTAILQ_HEAD(, uefi_variable)      variables;
++    QTAILQ_HEAD(, uefi_var_policy)    var_policies;
++
++    /* pio transfer buffer */
++    uint32_t                          pio_xfer_offset;
++    uint8_t                           *pio_xfer_buffer;
++
++    /* boot phases */
++    bool                              end_of_dxe;
++    bool                              ready_to_boot;
++    bool                              exit_boot_service;
++    bool                              policy_locked;
++
++    /* storage accounting */
++    uint64_t                          max_storage;
++    uint64_t                          used_storage;
++
++    /* config options */
++    char                              *jsonfile;
++    int                               jsonfd;
++    bool                              force_secure_boot;
++    bool                              disable_custom_mode;
++    bool                              use_pio;
++};
++
++struct uefi_vars_cert {
++    QTAILQ_ENTRY(uefi_vars_cert)  next;
++    QemuUUID                      owner;
++    uint64_t                      size;
++    uint8_t                       data[];
++};
++
++struct uefi_vars_hash {
++    QTAILQ_ENTRY(uefi_vars_hash)  next;
++    QemuUUID                      owner;
++    uint8_t                       data[];
++};
++
++struct uefi_vars_siglist {
++    QTAILQ_HEAD(, uefi_vars_cert)  x509;
++    QTAILQ_HEAD(, uefi_vars_hash)  sha256;
++};
++
++/* vars-service-guid.c */
++extern const QemuUUID EfiGlobalVariable;
++extern const QemuUUID EfiImageSecurityDatabase;
++extern const QemuUUID EfiCustomModeEnable;
++extern const QemuUUID EfiSecureBootEnableDisable;
++
++extern const QemuUUID EfiCertSha256Guid;
++extern const QemuUUID EfiCertSha384Guid;
++extern const QemuUUID EfiCertSha512Guid;
++extern const QemuUUID EfiCertRsa2048Guid;
++extern const QemuUUID EfiCertX509Guid;
++extern const QemuUUID EfiCertTypePkcs7Guid;
++
++extern const QemuUUID EfiSmmVariableProtocolGuid;
++extern const QemuUUID VarCheckPolicyLibMmiHandlerGuid;
++
++extern const QemuUUID EfiEndOfDxeEventGroupGuid;
++extern const QemuUUID EfiEventReadyToBootGuid;
++extern const QemuUUID EfiEventExitBootServicesGuid;
++
++/* vars-service-utils.c */
++gboolean uefi_str_is_valid(const uint16_t *str, size_t len,
++                           gboolean must_be_null_terminated);
++size_t uefi_strlen(const uint16_t *str, size_t len);
++gboolean uefi_str_equal_ex(const uint16_t *a, size_t alen,
++                           const uint16_t *b, size_t blen,
++                           gboolean wildcards_in_a);
++gboolean uefi_str_equal(const uint16_t *a, size_t alen,
++                        const uint16_t *b, size_t blen);
++char *uefi_ucs2_to_ascii(const uint16_t *ucs2, uint64_t ucs2_size);
++int uefi_time_compare(efi_time *a, efi_time *b);
++void uefi_trace_variable(const char *action, QemuUUID guid,
++                         const uint16_t *name, uint64_t name_size);
++void uefi_trace_status(const char *action, efi_status status);
++
++/* vars-service-core.c */
++extern const VMStateDescription vmstate_uefi_vars;
++void uefi_vars_init(Object *obj, uefi_vars_state *uv);
++void uefi_vars_realize(uefi_vars_state *uv, Error **errp);
++void uefi_vars_hard_reset(uefi_vars_state *uv);
++
++/* vars-service-json.c */
++void uefi_vars_json_init(uefi_vars_state *uv, Error **errp);
++void uefi_vars_json_save(uefi_vars_state *uv);
++void uefi_vars_json_load(uefi_vars_state *uv, Error **errp);
++
++/* vars-service-vars.c */
++extern const VMStateDescription vmstate_uefi_variable;
++uefi_variable *uefi_vars_find_variable(uefi_vars_state *uv, QemuUUID guid,
++                                       const uint16_t *name,
++                                       uint64_t name_size);
++void uefi_vars_set_variable(uefi_vars_state *uv, QemuUUID guid,
++                            const uint16_t *name, uint64_t name_size,
++                            uint32_t attributes,
++                            void *data, uint64_t data_size);
++void uefi_vars_clear_volatile(uefi_vars_state *uv);
++void uefi_vars_clear_all(uefi_vars_state *uv);
++void uefi_vars_update_storage(uefi_vars_state *uv);
++uint32_t uefi_vars_mm_vars_proto(uefi_vars_state *uv);
++
++/* vars-service-auth.c */
++bool uefi_vars_is_sb_pk(uefi_variable *var);
++bool uefi_vars_is_sb_any(uefi_variable *var);
++efi_status uefi_vars_check_auth_2(uefi_vars_state *uv, uefi_variable *var,
++                                  mm_variable_access *va, void *data);
++efi_status uefi_vars_check_secure_boot(uefi_vars_state *uv, uefi_variable *var);
++void uefi_vars_auth_init(uefi_vars_state *uv);
++
++/* vars-service-pkcs7.c */
++efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
++                                   void **digest, uint32_t *digest_size,
++                                   mm_variable_access *va, void *data);
++
++/* vars-service-siglist.c */
++void uefi_vars_siglist_init(uefi_vars_siglist *siglist);
++void uefi_vars_siglist_free(uefi_vars_siglist *siglist);
++void uefi_vars_siglist_parse(uefi_vars_siglist *siglist,
++                             void *data, uint64_t size);
++uint64_t uefi_vars_siglist_blob_size(uefi_vars_siglist *siglist);
++void uefi_vars_siglist_blob_generate(uefi_vars_siglist *siglist,
++                                     void *data, uint64_t size);
++
++/* vars-service-policy.c */
++extern const VMStateDescription vmstate_uefi_var_policy;
++efi_status uefi_vars_policy_check(uefi_vars_state *uv,
++                                  uefi_variable *var,
++                                  gboolean is_newvar);
++void uefi_vars_policies_clear(uefi_vars_state *uv);
++uefi_var_policy *uefi_vars_add_policy(uefi_vars_state *uv,
++                                      variable_policy_entry *pe);
++uint32_t uefi_vars_mm_check_policy_proto(uefi_vars_state *uv);
++
++#endif /* QEMU_UEFI_VAR_SERVICE_H */
+-- 
+2.48.1
+

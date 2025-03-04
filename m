@@ -1,186 +1,185 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp832870njk;
-        Fri, 29 Nov 2024 07:51:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXPJ/QF5SVTfKRrCYbtmaPQI7ejoMf8h3rwivuopRL0cQZc0b0x0PgfPo6LPf+AxhUuiDCqKtHWu7ghyw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGEutpO/XoPb7t2WG0EFjbEJ284W0PZdFi0BHpMWke+ghhaICJHPwxgfeFkWRM8kJjbrd0j
-X-Received: by 2002:a05:6214:48c:b0:6d4:3437:d858 with SMTP id 6a1803df08f44-6d864d78871mr164233526d6.25.1732895487641;
-        Fri, 29 Nov 2024 07:51:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732895487; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp4754njm;
+        Tue, 4 Mar 2025 01:31:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNK90TfjaqwHdc7ZE1xs0RxNvsF5WdbcFg0cAo3eiuLkz9r8O4vCopUTUlwHiyPsrHvw8ssO4eA0Q4vg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG0cJf0QNxlzRwCROgEsugx6aCxSXFz3L5FWUW9vIv852/gNLmg//Tzx65nH+agSYSlfvqH
+X-Received: by 2002:ac8:5810:0:b0:472:789:4702 with SMTP id d75a77b69052e-474fbb1fb60mr39399951cf.0.1741080692402;
+        Tue, 04 Mar 2025 01:31:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741080692; cv=none;
         d=google.com; s=arc-20240605;
-        b=Zmdru7XrVwdXyCx6gSkK/4rFjcJo7CVXYetUIyiZZ6cQnkI+E6bNAyNUDIZdb01d+Z
-         HpfeX0ktDicOntBPj4DEhTtLykeTooU8xyc0DXn9BreYXTx3ce+l/jHZqe8TjW9g2V5e
-         2W9No4y7Nh5mqZPpc/RpVC/VHFnytAndflkgh7697bY4JdMJkajuPOBTsMMhrQxXiF63
-         PXPJmg4V1LOpYeUO9pXSR7b1JJ/KH/gGNoY8KXkc+5n/fUIes8PQhesKwcEalmjpuaDW
-         CdriwkmgMvPLWty5bFEeS1cKNBAtxDb1Tui0fddNBC4/eTQGfPsR7H1mSgs/lU9/Ols5
-         YrQA==
+        b=YCm9V+Nc3/REbEhfnU19SOAHE+/oX3dPAHFp/WLLwGIxSYlDfMTJErmCwOVvaAjhZI
+         h8qNnu4Pzb4nlyhoIG6I9kdd0sZOxz9WZOQlfmboHoN1LKNPCFm1ymnlSphhxUZh4j2O
+         T1Wsg5ZOIyQDO9yjLtgu82SzDBXkEw1zTxCQegzVHame6yHDy1HSoe30h5fCB/YONql3
+         UJrd+vqNtfFFnDmkk10fg8DpUgmdYlh/gsRXzbQQuar9AIJrhyyntCWSxy/nFjweAvXM
+         dg2Os16pHp5jba/1u5X9wHTQPaW1LQKC9yeTEjqJKA+YxmK7Uf3aOVonv0zBiBC+LDB4
+         B66g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=8GJVdazRf21ux4iTl+yQ/9gjpKS7isQK/8RyegOC2SY=;
-        fh=ivifGPtySI5PgeUe8DQsLWRCJCGPzk5kVf1nKYxm4bM=;
-        b=DID/Vj7yTFIsKeWmB2lH+1w9VAJmrsIkY+zEOGicvq4uiyw5UbDxcOVJkDnMve9HB0
-         BpWGNwDKKegj2ScumQhwe4sCNFxKVJTfsabgEPeGjYVuhAsUBuCoqmET0lSEZY7fSuuF
-         51FpCYxd6wT2aAlPa43pkCI6V+VcddETxUA+e830HmAb44XpXeyH1WBGqgPoGz9w8+7b
-         gqMXWcQjkg0ixzVKJyDvglzyZS9xly7o/ildQTCIwRTvv44wIBni+m4hUa/JOw512Fv0
-         jtOzxCAGW/J/Afw1Gs44Pz67J8PtcBdGI3VxIjaYLEXyMKVUxvpOGnKkp9lE2ukPR66w
-         IHMg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=LTTjVnk4n19d1S0Faf27ZdmFMnuSmnwK3nvL2jTViYM=;
+        fh=4YOhO6KN08aRrdiU784eUvNkbTs/LxF3rH+Mj/SWrwc=;
+        b=f0IPCS6+UpEswVEvN2GQRHztTaf8OQjc+RTL69/cRz2zuIG4LuT/OboPYsLoG0GJ51
+         4MqdUnKgPUQ4nAJWHUXkN9hip96nmtTVl73XoA11gnSIrgGVscw9CFt1ltUJtliAilM0
+         tfD6QGoySKip4pxG9aC8U/Qn/zsrYnrpyojuh3/66MeUAHwA72yREF9jHwEe7+GlxAL4
+         MyIRncha89CLt0+54Ukuvj2wumQcCHh8M5jKCBUhlkxrLAniHYsVr010BLmoi/k6oFYD
+         5cL7hnOmHMTQ+u19K9OGc5ohm35+afIhH9Lem7lw+P8AVhsKa3cqBxt+2KqY3cKPdpdK
+         M4VA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h7zP6nQt;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8751ac174si47676326d6.99.2024.11.29.07.51.27
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-474e6743514si40021121cf.325.2025.03.04.01.31.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Nov 2024 07:51:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Mar 2025 01:31:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h7zP6nQt;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732895487;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8GJVdazRf21ux4iTl+yQ/9gjpKS7isQK/8RyegOC2SY=;
-	b=h7zP6nQtgUkpDrmZlPJoC1JCD2l4oVVVkGa0y3kp6le8+49ZjX/jvIBSIuGErcT7wBCGt0
-	FeyWSXiuvfc0Tyh5HqXadeIs4sFoTRGBP0Ixm6sXQDrXZmm25J4RDc1v8QlFGkApSgNSWb
-	FOk5fm3lfsmo7CEY0bH2CJ2m6qDRix0=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-644-Zf6NAUy_PLaWPTeSmpfhhQ-1; Fri,
- 29 Nov 2024 10:51:24 -0500
-X-MC-Unique: Zf6NAUy_PLaWPTeSmpfhhQ-1
-X-Mimecast-MFC-AGG-ID: Zf6NAUy_PLaWPTeSmpfhhQ
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A74DE19560B7;
-	Fri, 29 Nov 2024 15:51:20 +0000 (UTC)
-Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 16249195605A;
-	Fri, 29 Nov 2024 15:51:17 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger@redhat.com, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
-In-Reply-To: <CAFEAcA-Pi4GRXyY3Lf-rCYk0CDZ5cT22orHT6JDxK14k9JMkng@mail.gmail.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-19-eric.auger@redhat.com>
- <ZxuX4i9NjVRizB72@redhat.com>
- <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
- <Zxub7ol4p8P_sWF8@redhat.com>
- <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
- <Zx-9WxXkmkMuGIlQ@redhat.com>
- <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
- <Zx_EGxj2aqc_2-kY@redhat.com>
- <63c232c2-a325-48d6-8ed4-753a7c6e3b4e@redhat.com>
- <87ikstn8sc.fsf@redhat.com> <87frnwmn2v.fsf@redhat.com>
- <b7f25d3b-6ba7-4924-9383-74c1169dfe86@redhat.com>
- <87ldx2krdp.fsf@redhat.com>
- <CAFEAcA-Pi4GRXyY3Lf-rCYk0CDZ5cT22orHT6JDxK14k9JMkng@mail.gmail.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 29 Nov 2024 16:51:15 +0100
-Message-ID: <87frnakpho.fsf@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tpOcF-00078w-62; Tue, 04 Mar 2025 04:31:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tpOcA-00078X-AN; Tue, 04 Mar 2025 04:31:02 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tpOc6-0003EG-95; Tue, 04 Mar 2025 04:31:02 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Z6Vjf4JXgz6D91G;
+ Tue,  4 Mar 2025 17:28:38 +0800 (CST)
+Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
+ by mail.maildlp.com (Postfix) with ESMTPS id 6874E140A79;
+ Tue,  4 Mar 2025 17:30:50 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 4 Mar 2025 10:30:50 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Tue, 4 Mar 2025 10:30:50 +0100
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: Eric Auger <eric.auger@redhat.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, "Jason
+ Gunthorpe" <jgg@nvidia.com>, =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?=
+ <berrange@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Linuxarm
+ <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rLkOMCAgAAM2QCAAAz2gIAEhqeggCVVAYCAI176AIAE12cAgAGBGYCAAGn5AIACTjRQgAB/1ACAJxm5oIAAEMeAgAEfbGA=
+Date: Tue, 4 Mar 2025 09:30:49 +0000
+Message-ID: <db59c28747834acf9c1a5cc80d30df81@huawei.com>
+References: <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <f4e64a3a-5c1d-49f2-ac72-b84ecd353c9d@redhat.com>
+ <Z6EQENkHJy7TrkYy@Asurada-Nvidia>
+ <77f736f6-9ef9-462b-916e-c8cfff279044@redhat.com>
+ <Z6KsAE9wnjWU0xMs@Asurada-Nvidia>
+ <8224c38797344d1a9c0f453774925db3@huawei.com>
+ <Z6UGVP3olKvakHUh@Asurada-Nvidia>
+ <48e3ac70f9fb4867a9ef835c22d4fda8@huawei.com>
+ <Z8XhKyxHwsZo2eBK@Asurada-Nvidia>
+In-Reply-To: <Z8XhKyxHwsZo2eBK@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: 51+cg48+yfck
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m5Ff/Igxf3hN
 
-On Fri, Nov 29 2024, Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On Fri, 29 Nov 2024 at 15:10, Cornelia Huck <cohuck@redhat.com> wrote:
->> The good news is that in many cases we only have differences in bits
->> that map to a feature (and are actually writable in current KVM.) The
->> bad news is that we have a number of exceptions.
->>
->> Comparison #1:
->>
->> ID_AA64DFR0
->> f010307009      #of breakpoints:7
->> f010305009      #of breakpoints:5
->>
->> BRPs does not match to any feature (but has a different meaning when we
->> have FEAT_Debugv8p9 and 16+ breakpoints)
->> [this is a whole can of worms in general]
->>
->> ID_AA64MMFR0
->> 2100022200101026        FEAT_ECV, FEAT_FGT, 4PB
->> 0000022200101125        mixed endian, 256TB
->>
->> FEAT_ECV -> may be 1 or 2 in ECV, with different capabilities (I guess
->> we would need to allow something like FEAT_ECV=2 to expess this?)
->
-> This one was an unfortunate oversight; I expect that there
-> will be a separate feature name for the =2 case in some future
-> spec release. But as you note for FEAT_BBM below, not
-> every different ID field value always has its own FEAT_ name.
-> (FEAT_HAFDBS is another -- it allows ID_AA64MMFR1_EL1.HAFDBS to
-> be 1 or 2.)
-
-Ah yes, I actually noticed FEAT_HAFDBS as well.
-
->
->> support for mixed endian -> indicated in BigEnd, no feature (how
->> relevant is this in practice?)
->
-> ID_AA64MMFR0_EL1.BigEnd == 1 is FEAT_MixedEnd. Relevant if your
-> guest or its userspace wants to use big-endian, which is probably
-> approximately nobody in a KVM context but is theoretically possible.
-
-Ok, that one I missed in the list; if there's a feature, we should be
-able to use it.
-
->
->> PARange (52 bits/4PB vs 48 bits/256TB) -> no feature, but some values
->> depend on other features -- we care about this when creating a cpu, but
->> migrating to another system with a mismatched range would be
->> problematic, unless configuration outside of the cpu model would take
->> care of it
->>
->> Comparison #2:
->>
->> ID_AA64PFR0
->> 1101011021111111        FEAT_AMUv1, GIC v3.0/4.0
->> 1101001020111111
->>
->> GIC == 1 indicates GIC CPU sysreg interface for 3.0/4.0, but no feature
->> (I'm not quite sure how we handle this in QEMU)
->
-> We basically defer GIC emulation almost entirely to the
-> kernel (which will set the GIC bit in the ID registers
-> according to whether userspace asked it for a GIC or not).
->
->> ID_AA64MMFR1
->> 1000000010312122        FEAT_ECBHB, !FEAT_ETS2, FEAT_PAN3, FEAT_HPDS2, FEAT_HAFDBS
->> 0000001010211120        !FEAT_ETS2, FEAT_PAN2, FEAT_HPDS
->>
->> both ETS == 0 and ETS == 1 indicate that FEAT_ETS2 is not implememented
->> (ETS == 2 would indicate FEAT_ETS2) -- I guess we would want to
->> standardize on ETS == 0
->> FEAT_PAN3 implies FEAT_PAN2, and FEAT_HPDS2 implies FEAT_HPDS2, so
->> probably fine
->
-> Yes, in general if the number in the field gets bigger
-> this should be a backwards-compatible improvement in
-> the feature.
-
-Indeed, I hope that this will be the case for new features.
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTmljb2xpbiBDaGVuIDxu
+aWNvbGluY0BudmlkaWEuY29tPg0KPiBTZW50OiBNb25kYXksIE1hcmNoIDMsIDIwMjUgNTowNSBQ
+TQ0KPiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFsaS5rb2xvdGh1bS50
+aG9kaUBodWF3ZWkuY29tPg0KPiBDYzogRXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29t
+PjsgZGR1dGlsZUByZWRoYXQuY29tOyBQZXRlcg0KPiBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxp
+bmFyby5vcmc+OyBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPjsNCj4gRGFuaWVsIFAu
+IEJlcnJhbmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT47IHFlbXUtYXJtQG5vbmdudS5vcmc7DQo+
+IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+OyBX
+YW5nemhvdQ0KPiAoQikgPHdhbmd6aG91MUBoaXNpbGljb24uY29tPjsgamlhbmdrdW5rdW4gPGpp
+YW5na3Vua3VuQGh1YXdlaS5jb20+Ow0KPiBKb25hdGhhbiBDYW1lcm9uIDxqb25hdGhhbi5jYW1l
+cm9uQGh1YXdlaS5jb20+Ow0KPiB6aGFuZ2ZlaS5nYW9AbGluYXJvLm9yZw0KPiBTdWJqZWN0OiBS
+ZTogW1JGQyBQQVRDSCAwLzVdIGh3L2FybS92aXJ0OiBBZGQgc3VwcG9ydCBmb3IgdXNlci1jcmVh
+dGFibGUNCj4gbmVzdGVkIFNNTVV2Mw0KPiANCj4gT24gTW9uLCBNYXIgMDMsIDIwMjUgYXQgMDM6
+MjE6NTdQTSArMDAwMCwgU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaQ0KPiB3cm90ZToNCj4gPiBJ
+IGFtIHdvcmtpbmcgb24gdGhlIGFib3ZlIG5vdyBhbmQgaGF2ZSBxdWljayBxdWVzdGlvbiB0byB5
+b3Xwn5iKLg0KPiA+DQo+ID4gTG9va2luZyBhdCB0aGUgc21tdV9kZXZfYXR0YWNoX3Zpb21tdSgp
+IGZuIGhlcmVbMF0sDQo+ID4gaXQgYXBwZWFycyB0byBkbyB0aGUgZm9sbG93aW5nOg0KPiA+DQo+
+ID4gMS4gQWxsb2MgYSBzMl9od3B0IGlmIG5vdCBhbGxvY2F0ZWQgYWxyZWFkeSBhbmQgYXR0YWNo
+IGl0Lg0KPiA+IDIuIEFsbG9jYXRlIGFib3J0IGFuZCBieXBhc3MgaHdwdA0KPiA+IDMuIEF0dGFj
+aCBieXBhc3MgaHdwdC4NCj4gPg0KPiA+IEkgZGlkbid0IGdldCB3aHkgd2UgYXJlIGRvaW5nIHRo
+ZSBzdGVwIDMgaGVyZS4gVG8gbWUgaXQgbG9va3MgbGlrZSwNCj4gPiB3aGVuIHdlIGF0dGFjaCB0
+aGUgczJfaHdwdChpZSwgdGhlIG5lc3RlZCBwYXJlbnQgZG9tYWluIGF0dGFjaCksDQo+ID4gdGhl
+IGtlcm5lbCB3aWxsIGRvLA0KPiA+DQo+ID4gYXJtX3NtbXVfYXR0YWNoX2RldigpDQo+ID4gICBh
+cm1fc21tdV9tYWtlX3MyX2RvbWFpbl9zdGUoKQ0KPiA+DQo+ID4gSXQgYXBwZWFycyB0aHJvdWdo
+IHN0ZXAgMywgd2UgYWNoaWV2ZSB0aGUgc2FtZSB0aGluZyBhZ2Fpbi4NCj4gPg0KPiA+IE9yIGl0
+IGlzIHBvc3NpYmxlIEkgbWlzc2VkIHNvbWV0aGluZyBvYnZpb3VzIGhlcmUuDQo+IA0KPiBCZWNh
+dXNlIGEgZGV2aWNlIGNhbm5vdCBhdHRhY2ggdG8gYSB2SU9NTVUgb2JqZWN0IGRpcmVjdGx5LCBi
+dXQNCj4gb25seSB2aWEgYSBwcm94eSBod3B0X25lc3RlZC4gU28sIHRoaXMgYnlwYXNzIGh3cHQg
+Z2l2ZXMgdXMgdGhlDQo+IHBvcnQgdG8gYXNzb2NpYXRlIHRoZSBkZXZpY2UgdG8gdGhlIHZJT01N
+VSwgYmVmb3JlIGEgdkRFVklDRSBvcg0KPiBhICJ0cmFuc2xhdGUiIGh3cHRfbmVzdGVkIGlzIGFs
+bG9jYXRlZC4NCj4gDQo+IEN1cnJlbnRseSBpdCdzIHRoZSBzYW1lIGJlY2F1c2UgYW4gUzIgcGFy
+ZW50IGh3cHQgaG9sZHMgYSBWTUlELA0KPiBzbyB3ZSBjb3VsZCBqdXN0IGF0dGFjaCB0aGUgZGV2
+aWNlIHRvIHRoZSBTMiBod3B0IGZvciB0aGUgc2FtZQ0KPiBTVEUgY29uZmlndXJhdGlvbiBhcyBh
+dHRhY2hpbmcgdGhlIGRldmljZSB0byB0aGUgcHJveHkgYnlwYXNzDQo+IGh3cHQuIFlldCwgdGhp
+cyB3aWxsIGNoYW5nZSBpbiB0aGUgZnV0dXJlIGFmdGVyIGxldHRpbmcgdklPTU1VDQo+IG9iamVj
+dHMgaG9sZCB0aGVpciBvd24gVk1JRHMgdG8gc2hhcmUgYSBjb21tb24gUzIgcGFyZW50IGh3cHQN
+Cj4gdGhhdCB3b24ndCBoYXZlIGEgVk1JRCwgaS5lLiBhcm1fc21tdV9tYWtlX3MyX2RvbWFpbl9z
+dGUoKSB3aWxsDQo+IG5lZWQgdGhlIHZJT01NVSBvYmplY3QgdG8gZ2V0IHRoZSBWTUlEIGZvciBT
+VEUuDQo+IA0KPiBJIHNob3VsZCBoYXZlIGFkZGVkIGEgZmV3IGxpbmVzIG9mIGNvbW1lbnRzIHRo
+ZXJlIDopDQoNCk9rLiBUaGFua3MgZm9yIHRoZSBleHBsYW5hdGlvbi4gSSB3aWxsIGtlZXAgaXQg
+dGhlbiBhbmQgYWRkIGZldyBjb21tZW50cw0KdG8gbWFrZSBpdCBjbGVhci4NCg0KRG8geW91IGhh
+dmUgYW4gaW5pdGlhbCBpbXBsZW1lbnRhdGlvbiBvZiB0aGUgYWJvdmUgd2l0aCB2SU9NTVUgb2Jq
+ZWN0DQpob2xkaW5nIHRoZSBWTUlEcyB0byBzaGFyZT8gQWN0dWFsbHkgSSBkbyBoYXZlIGEgZGVw
+ZW5kZW5jeSBvbiB0aGF0IGZvcg0KbXkgS1ZNIHBpbm5lZCBWTUlEIHNlcmllc1swXSB3aGVyZSBp
+dCB3YXMgc3VnZ2VzdGVkIHRoYXQgdGhlIFZNSUQNCnNob3VsZCBhc3NvY2lhdGVkIHdpdGggYSB2
+SU9NTVUgb2JqZWN0IHJhdGhlciB0aGFuIHRoZSBJT01NVUZEDQpjb250ZXh0IEkgdXNlZCBpbiB0
+aGVyZS4NCg0KQW5kIEphc29uIG1lbnRpb25lZCBhYm91dCB0aGUgd29yayBpbnZvbHZlZCB0byBk
+byB0aGF0IGhlcmVbMV0uIEFwcHJlY2lhdGUNCmlmIHlvdSBjb3VsZCBzaGFyZSBpZiBhbnkgcHJv
+Z3Jlc3MgaXMgbWFkZSBvbiB0aGF0IHNvIHRoYXQgSSBjYW4gdHJ5IHRvIHJlYmFzZQ0KdGhhdCBL
+Vk0gIFBpbm5lZCBzZXJpZXMgb24gdG9wIG9mIHRoYXQgYW5kIGdpdmUgaXQgYSB0cnkuDQoNClRo
+YW5rcywNClNoYW1lZXINClswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1pb21tdS8y
+MDI0MDIwODE1MTgzNy4zNTA2OC0xLXNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNv
+bS8NClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjQxMTI5
+MTUwNjI4LkdHMTI1MzM4OEBudmlkaWEuY29tLw0KDQoNCg0KDQoNCg==

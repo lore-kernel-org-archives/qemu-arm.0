@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e4c3b6dac5sm8726271a12.19.2025.03.04.14.24.44
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf692b6b44sm523833166b.112.2025.03.04.14.24.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Mar 2025 14:24:45 -0800 (PST)
+        Tue, 04 Mar 2025 14:24:51 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CFCA75FE3A;
-	Tue,  4 Mar 2025 22:24:40 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 1E28C5FCAA;
+	Tue,  4 Mar 2025 22:24:41 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -28,47 +28,108 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 14/32] tests/tcg: add message to _Static_assert in test-avx
-Date: Tue,  4 Mar 2025 22:24:21 +0000
-Message-Id: <20250304222439.2035603-15-alex.bennee@linaro.org>
+Subject: [PATCH v2 17/32] tests/tcg: Suppress compiler false-positive warning on sha1.c
+Date: Tue,  4 Mar 2025 22:24:24 +0000
+Message-Id: <20250304222439.2035603-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TVhxKLTQ1n4A
+X-TUID: psQFEG3yZfhH
 
-In preparation for enabling clang and avoiding:
+From: Peter Maydell <peter.maydell@linaro.org>
 
-  error: '_Static_assert' with no message is a C2x extension [-Werror,-Wc2x-extensions]
+GCC versions at least 12 through 15 incorrectly report a warning
+about code in sha1.c:
 
-let us just add the message to silence the warning.
+tests/tcg/multiarch/sha1.c:161:13: warning: ‘SHA1Transform’ reading 64 bytes from a region of size 0 [-Wstringop-overread]
+  161 |             SHA1Transform(context->state, &data[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Message-Id: <20250226140343.3907080-13-alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+This is a piece of stock library code for doing SHA1 which we've
+simply copied, rather than writing ourselves. The bug has been
+reported to upstream GCC (about a different library's use of this
+code):
+ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
+
+For our test case, since this isn't our original code and there isn't
+actually a bug in it, suppress the incorrect warning rather than
+trying to modify the code to work around the compiler issue.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2328
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20250227141343.1675415-1-peter.maydell@linaro.org>
+[AJB: -Wno-unknown-warning-option for clang's sake]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - /defined/expected/
-  - let us
----
- tests/tcg/i386/test-avx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/aarch64/Makefile.target   | 3 ++-
+ tests/tcg/arm/Makefile.target       | 3 ++-
+ tests/tcg/hexagon/Makefile.target   | 2 +-
+ tests/tcg/multiarch/Makefile.target | 8 ++++++++
+ 4 files changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/tests/tcg/i386/test-avx.c b/tests/tcg/i386/test-avx.c
-index 230e6d84b8..80fe363cfc 100644
---- a/tests/tcg/i386/test-avx.c
-+++ b/tests/tcg/i386/test-avx.c
-@@ -244,7 +244,7 @@ v4di indexd = {0x00000002ffffffcdull, 0xfffffff500000010ull,
-                0x0000003afffffff0ull, 0x000000000000000eull};
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 9efe2f81ad..16ddcf4f88 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -83,7 +83,8 @@ test-aes: CFLAGS += -O -march=armv8-a+aes
+ test-aes: test-aes-main.c.inc
  
- v4di gather_mem[0x20];
--_Static_assert(sizeof(gather_mem) == 1024);
-+_Static_assert(sizeof(gather_mem) == 1024, "gather_mem not expected size");
+ # Vector SHA1
+-sha1-vector: CFLAGS=-O3
++# Work around compiler false-positive warning, as we do for the 'sha1' test
++sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
+ sha1-vector: sha1.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ run-sha1-vector: sha1-vector run-sha1
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 99a953b667..6189d7a0e2 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -61,7 +61,8 @@ endif
+ ARM_TESTS += commpage
  
- void init_f16reg(v4di *r)
- {
+ # Vector SHA1
+-sha1-vector: CFLAGS=-O3
++# Work around compiler false-positive warning, as we do for the 'sha1' test
++sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
+ sha1-vector: sha1.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ run-sha1-vector: sha1-vector run-sha1
+diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
+index e5182c01d8..4dfc39bc98 100644
+--- a/tests/tcg/hexagon/Makefile.target
++++ b/tests/tcg/hexagon/Makefile.target
+@@ -18,7 +18,7 @@
+ # Hexagon doesn't support gdb, so skip the EXTRA_RUNS
+ EXTRA_RUNS =
+ 
+-CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
++CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal -Wno-unknown-warning-option
+ CFLAGS += -fno-unroll-loops -fno-stack-protector
+ 
+ HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 688a6be203..c769a7d69d 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -45,6 +45,14 @@ vma-pthread: LDFLAGS+=-pthread
+ sigreturn-sigmask: CFLAGS+=-pthread
+ sigreturn-sigmask: LDFLAGS+=-pthread
+ 
++# GCC versions 12/13/14/15 at least incorrectly complain about
++# "'SHA1Transform' reading 64 bytes from a region of size 0"; see the gcc bug
++# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106709
++# Since this is just a standard piece of library code we've borrowed for a
++# TCG test case, suppress the warning rather than trying to modify the
++# code to work around the compiler.
++sha1: CFLAGS+=-Wno-stringop-overread
++
+ # The vma-pthread seems very sensitive on gitlab and we currently
+ # don't know if its exposing a real bug or the test is flaky.
+ ifneq ($(GITLAB_CI),)
 -- 
 2.39.5

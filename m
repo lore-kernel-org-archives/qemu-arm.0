@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp99185njm;
-        Tue, 4 Mar 2025 04:54:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUBY9fHRAagek8SR/Mer+suwxEDzEclPV/BnwpO9D3/WX0jPxczeLD8rrqhSKBF9Fyk8duGSZ8tDJf1Xw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHvx4bbKgYTZ8PL6Ab+WJHH9N+9KVu9sTilsHsHQMZ/KjGhuQZATnlF2wqVVmi60m0FvKUh
-X-Received: by 2002:a05:620a:2a05:b0:7c0:c09a:bac0 with SMTP id af79cd13be357-7c39c4b76edmr2343003585a.15.1741092882488;
-        Tue, 04 Mar 2025 04:54:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741092882; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp100027njm;
+        Tue, 4 Mar 2025 04:56:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWHXOJl0Qu5CvEHu5kcS3eR1vZiGh7Nd35Jvhb/5P2QBNc9fEjcspFqQhnnO3fRPP/By9G71+8nzXrUEg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGwS+uMHpz4Uwaly14XfekgZxR0uuBZQDt1wewIFS5iRev58rQt1tmAO5XIQj+CyLxBqh0c
+X-Received: by 2002:ac8:7d0e:0:b0:471:f185:cdcf with SMTP id d75a77b69052e-474bc1163e3mr244336921cf.51.1741093003415;
+        Tue, 04 Mar 2025 04:56:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741093003; cv=none;
         d=google.com; s=arc-20240605;
-        b=XCsaDimbcdoSzu/LEXgu30iULXmDaBkde6trYNnSPERH6mJzfnIR5HcUqhaYwLXj+V
-         3enROWYVt3WBsQ3bcyAnlQFjj5Qqx+7SkkVFddFR7k7PXIpCSNiMc/FmPn4QtJ9mK7lt
-         bAKY2MaTypxY8hbkWDUO/ND12zDI8AxVgNWsdP3GzVgZbMtzp+yU1N3zmC5OWXlr53JV
-         6KTDrD684EK953HuAkCUUvh/E59vJ1iETZFD4XsylWsk9dCYYdirmMFtUFArnE4s3EaT
-         z5taREgP2V8fwLZvint0tKnY6L5/lJgNwSlK2vJ6vxcc41DLzA9Mocd9v2NSQjtxWP4p
-         UuHw==
+        b=QToQJfc7mrFeVOVB6ovQS5siHqDmlLLOwLag8QlZdOoFTjVu+hNulcwNbBkbLJkI2/
+         /GVFrQX+4klPrKdCv+uxRYaIoV2qh7sdE7oVaNpGPVEv9R4LzfUvtTjrgHG0sc95KcDK
+         dIQ5CpkB1/s3w4LR/+c7eI+MlYOvklR753v6nzr4HdpcRGM2DQmm4HN6BwVD8Obn7aon
+         Hvfk7umDSEO0OjFUF1382wkSDA/D8Xsx4+aYVE7p6X21XhBl9rfnksWS9qvhBW4aE4cW
+         4FQaGmVAuyVQo02bLrrRTgPy9G06WQs6UtiYIOx/VItkDgQpRLSISsH3TwWCf7U8Xi8f
+         7xxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MeGTPtM30ba86rMRX4J7QzRLY9n745SbXLhW4mrJkQ4=;
+        bh=zVp+0VC3CI/pTYGir7lOjrfKbLyjEB7fzi9n2GPzZtg=;
         fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
-        b=N65XI5lYwwbRe7utMKNxrD8XGi2h1VW4xzo3KJUJfdZlBtz7Fv5ljDlkOlL98n9GDg
-         NAJnXDDk0MrOCACrZpB8+5IPLLur6KUP4LA8pg9OlQMSId9g29dUjCGPYJ6k0x3eOi8W
-         hUzBMV3C7nF6PH5W59dbFtObKzu+oYN84hLNR8ezU2aGJl9URQqQBxTy6YG/ljFdx8rq
-         aRL6NFlt6j7nWiT3+6+dgJJtZnTuoMddgTtva6GNdQWb5iFMXhB2NjGv0TLKJYTuptCO
-         loQwm1CxDtUksEQpRIKF4NL2/Lie8CCX0kCPaFcMAUJVlm5v0YXME2qazczxvcOgPq7/
-         sBrg==;
+        b=CC63cNgvWnPzE6SEa+fDUSZVYq8hcALRO9u4KPIa8C+shBA4sVxZiXExu93WDNOuTO
+         nmIlse0TS5PMyUuXoQX8+2d5AogFhJqtPL4LpalFiQDLISN7E7LARemXP8btEjwSH0XX
+         iKR43vESMj5dgSeZPvHYagQNYNbfVLcOvtTfdZPl1CYihN9LmsnHUrB1O0HDy2h9ge9U
+         njg5FSNYBmzbb2gtzsnLwoy1ZHeyeCoHwgTAwN4KW3dtwHTWvh8ZDuSKQUSNQVVf10xm
+         s4MrZxPvEyZWSEwfGT316AMVwdxoi8an5mlmJODtNjSqBuTd1wWh4oX+STzkTANiE9yw
+         ftYg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FK3vrrw2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIFR6H4s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8afe5f34fsi70352056d6.389.2025.03.04.04.54.42
+        by mx.google.com with ESMTPS id d75a77b69052e-474fe6a4b6bsi11317811cf.365.2025.03.04.04.56.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Mar 2025 04:54:42 -0800 (PST)
+        Tue, 04 Mar 2025 04:56:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FK3vrrw2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIFR6H4s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpRmJ-0003CK-8z; Tue, 04 Mar 2025 07:53:44 -0500
+	id 1tpRm9-0002wZ-I5; Tue, 04 Mar 2025 07:53:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhu-0004wm-Fu
- for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhr-0007XX-9e
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhs-0004wZ-Sk
  for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhq-0007V2-AX
+ for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741092546;
+ s=mimecast20190719; t=1741092545;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MeGTPtM30ba86rMRX4J7QzRLY9n745SbXLhW4mrJkQ4=;
- b=FK3vrrw27A8T5iloB5VVjv4iLGAxBMADPUxzhD+ihYNytZoAqvFHHho3giXHv1qbUV5QEI
- qCHrs+DPtz/CZm04oN9T5eUr0iOYtUfBrEKKR4SncKOGe43mg1fgAPaqcOJK4JiEv9p16m
- 2ahLSwsMMUUi/he06SJdW/EQ0gZ7UfQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=zVp+0VC3CI/pTYGir7lOjrfKbLyjEB7fzi9n2GPzZtg=;
+ b=QIFR6H4s4Zr5VpbwAhyeYJrFDABhQ6zqh6ZsyczMYC/+hSW2acFJ8cqXiSyDHkFXKDoksY
+ 36gWYyzxS6E7PmTJf3wbz6Gwec2dWw5l6G+4ocfhV6uUpdqsYFxhL/LxES3eFTvYaiit36
+ 56VQ516AbbdU0QZOKU0MmXuFqwSESoI=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-91-lmKxBvfHMEy7BxjH_HzVWQ-1; Tue,
- 04 Mar 2025 07:48:43 -0500
-X-MC-Unique: lmKxBvfHMEy7BxjH_HzVWQ-1
-X-Mimecast-MFC-AGG-ID: lmKxBvfHMEy7BxjH_HzVWQ_1741092521
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-122-ctaTKCBmOt2smEoWQJqxOw-1; Tue,
+ 04 Mar 2025 07:49:02 -0500
+X-MC-Unique: ctaTKCBmOt2smEoWQJqxOw-1
+X-Mimecast-MFC-AGG-ID: ctaTKCBmOt2smEoWQJqxOw_1741092541
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8F1C41944CFD; Tue,  4 Mar 2025 12:48:41 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 17EE7180087B; Tue,  4 Mar 2025 12:49:01 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A12DB1800359; Tue,  4 Mar 2025 12:48:39 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BFA7719560A3; Tue,  4 Mar 2025 12:48:59 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id F1EF218003B7; Tue, 04 Mar 2025 13:48:15 +0100 (CET)
+ id B22A31800610; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -94,24 +94,24 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 12/24] hw/uefi: add var-service-pkcs7-stub.c
-Date: Tue,  4 Mar 2025 13:48:00 +0100
-Message-ID: <20250304124815.591749-13-kraxel@redhat.com>
+Subject: [PULL 22/24] hw/uefi-vars-sysbus: allow for pc and q35
+Date: Tue,  4 Mar 2025 13:48:10 +0100
+Message-ID: <20250304124815.591749-23-kraxel@redhat.com>
 In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
 References: <20250304124815.591749-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,42 +126,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oEQtFOXwgdd/
+X-TUID: ChgcsitCfyCM
 
-pkcs7 stub which is used in case gnutls is not available.
-
-It throws EFI_WRITE_PROTECTED errors unconditionally, so all
-authenticated variables are readonly for the guest.
+Allow the device being added to x86_64 pc and q35 VMs.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20250225163031.1409078-13-kraxel@redhat.com>
+Message-ID: <20250225163031.1409078-23-kraxel@redhat.com>
 ---
- hw/uefi/var-service-pkcs7-stub.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
- create mode 100644 hw/uefi/var-service-pkcs7-stub.c
+ hw/i386/pc_piix.c | 2 ++
+ hw/i386/pc_q35.c  | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/hw/uefi/var-service-pkcs7-stub.c b/hw/uefi/var-service-pkcs7-stub.c
-new file mode 100644
-index 000000000000..118cba446d4b
---- /dev/null
-+++ b/hw/uefi/var-service-pkcs7-stub.c
-@@ -0,0 +1,16 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * uefi vars device - pkcs7 stubs
-+ */
-+#include "qemu/osdep.h"
-+#include "system/dma.h"
-+
-+#include "hw/uefi/var-service.h"
-+
-+efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
-+                                   void **digest, uint32_t *digest_size,
-+                                   mm_variable_access *va, void *data)
-+{
-+    return EFI_WRITE_PROTECTED;
-+}
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 04d2957adcd7..6c91e2d29298 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -65,6 +65,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -468,6 +469,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+ 
+     object_class_property_add_enum(oc, "x-south-bridge", "PCSouthBridgeOption",
+                                    &PCSouthBridgeOption_lookup,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 77536dd697f5..fd96d0345c7d 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -58,6 +58,7 @@
+ #include "system/numa.h"
+ #include "hw/hyperv/vmbus-bridge.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/uefi/var-service-api.h"
+ #include "hw/i386/acpi-build.h"
+ #include "target/i386/cpu.h"
+ 
+@@ -355,6 +356,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+     compat_props_add(m->compat_props,
+                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);
+ }
 -- 
 2.48.1
 

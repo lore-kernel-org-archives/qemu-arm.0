@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1e382a04bsm277988166b.163.2025.03.04.14.24.45
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac0e1fb5588sm357045766b.18.2025.03.04.14.24.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 04 Mar 2025 14:24:45 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E509B6007F;
+	by draig.lan (Postfix) with ESMTP id A1D5D5FE0C;
 	Tue,  4 Mar 2025 22:24:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,57 +28,40 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 15/32] tests/tcg: fix constraints in test-i386-adcox
-Date: Tue,  4 Mar 2025 22:24:22 +0000
-Message-Id: <20250304222439.2035603-16-alex.bennee@linaro.org>
+Subject: [PATCH v2 12/32] tests/vm: bump timeout for shutdown
+Date: Tue,  4 Mar 2025 22:24:19 +0000
+Message-Id: <20250304222439.2035603-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: frhW/rdIZGqz
+X-TUID: hLrU+uwE9TJL
 
-Clang complains:
+On my fairly beefy machine the timeout was triggering leaving a
+corrupted disk image due to power being pulled before the disk had
+synced. Triple the timeout to avoid this.
 
-  clang -O2 -m64 -mcx16 /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c -o test-i386-adcox -static
-  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:32:26: error: invalid input constraint '0' in asm
-          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
-                           ^
-  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:57:26: error: invalid input constraint '0' in asm
-          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
-                           ^
-  2 errors generated.
-
-Pointing out a numbered input constraint can't point to a read/write
-output [1]. Convert to a read-only input constraint to allow this.
-
-[1] https://lists.llvm.org/pipermail/cfe-commits/Week-of-Mon-20101101/036036.html
-
+Message-Id: <20250226140343.3907080-11-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
-
 ---
-v2
-  - followed rth's suggestion and removed additional matches.
----
- tests/tcg/i386/test-i386-adcox.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/vm/basevm.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/i386/test-i386-adcox.c b/tests/tcg/i386/test-i386-adcox.c
-index 16169efff8..d653fa86a7 100644
---- a/tests/tcg/i386/test-i386-adcox.c
-+++ b/tests/tcg/i386/test-i386-adcox.c
-@@ -53,8 +53,8 @@ void test_adcx_adox(uint32_t in_c, uint32_t in_o, REG adcx_operand, REG adox_ope
-         "adcx %3, %1;"
-         "adox %3, %2;"
-         "pushf; pop %0"
--        : "+r" (flags), "+r" (out_adcx), "+r" (out_adox)
--        : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
-+        : "+r"(flags), "+r"(out_adcx), "+r"(out_adox)
-+        : "r" ((REG)-1));
- 
-     assert(out_adcx == in_c + adcx_operand - 1);
-     assert(out_adox == in_o + adox_operand - 1);
+diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
+index 6d41ac7574..9e879e966a 100644
+--- a/tests/vm/basevm.py
++++ b/tests/vm/basevm.py
+@@ -83,7 +83,7 @@ class BaseVM(object):
+     # command to halt the guest, can be overridden by subclasses
+     poweroff = "poweroff"
+     # Time to wait for shutdown to finish.
+-    shutdown_timeout_default = 30
++    shutdown_timeout_default = 90
+     # enable IPv6 networking
+     ipv6 = True
+     # This is the timeout on the wait for console bytes.
 -- 
 2.39.5

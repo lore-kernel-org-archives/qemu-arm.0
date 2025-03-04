@@ -1,197 +1,230 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2079541njk;
-        Sun, 26 Jan 2025 12:36:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXwkOb9QccFs1rWSpXHWPSxmkGZG+khVfNK+Ok7nfGSzDUUhvrBbaxAtcpU27cdsvKbO/XbguHYx3SW1Q==@linaro.org
-X-Received: by 2002:a05:6a20:2447:b0:1e0:ce11:b0ce with SMTP id adf61e73a8af0-1eb215adabfmr66485199637.35.1737923807977;
-        Sun, 26 Jan 2025 12:36:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737923807; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp97450njm;
+        Tue, 4 Mar 2025 04:50:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU9EGWw/05qwDKAVmEAxZ1WnzoVIhxJjBEwNzsZe8lNfpirwwxpd5mCh1w8fQa6x+MBt+aFnCa8A4vcJA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHicUSjkv/okJSgU/plDF+1IjMbBd0Ig7AzVL7k5axDpLSzdyXGAjNWojWZkdAUT5YLDvIv
+X-Received: by 2002:a05:620a:808e:b0:7c3:c8fa:7aed with SMTP id af79cd13be357-7c3c8fa7c58mr616349785a.3.1741092657072;
+        Tue, 04 Mar 2025 04:50:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741092657; cv=none;
         d=google.com; s=arc-20240605;
-        b=lB9SfE52l5jhPng0avO2UdeE2BJsoRKNAl6Ta8+wki+8jiPsIKr023Zx2XZGbesQFN
-         BDwTKj/m5Yv31/s+anUmedy35cH5HfGUFBCjw01X95S2LKRdpN3W7DD3OSxIQP7EXCwE
-         3Lh266jGLJsODlrvooQZb/ywIEnru4t4Gq5RCnxMS1mC73kn3aonIDeqkytAa6/d+MoO
-         r3ObsBGnGFK/MNhPJlZr5PjV40WDyQR6uuEFcqI0RyO6bvcON9UALtGKwTri4jbyLhrZ
-         CETPBkuHSjaNgQpLHruJr+Z//6fBrTdtJX0fHpzAaYFX4ElzEWOs2hm6lvag9as/etGo
-         g50g==
+        b=NKGAUW13UJwjmIdcpqzsOmrl1BVrUq0uqtWNGiTW/zwIeNvTISx3nX3BwN81yI5n1r
+         hlAFDpmvgS/9/e9G9b0EDBeMyk55v1rpsY1CIx6QhiuMSMVCqal6RF3O29cldM0ViIVT
+         rf4xw0MFL1nOKSGxRFEfAdR2SvL8UbFn8euySBEyC+1yYgfhhXdZZvvd0Snz8nC99mse
+         BEEzV16hidurz7/mXSTXFbgTB3SoLXpI0ASvQtHu1Q1AOimJvFYfNnKoX705QS38SdnU
+         tdT6R67ICpDkbiIKdFmvCbRc/IwvxEZeVFDiPkQec2E9mOYD6uCmrynW8gJoZOUDwP51
+         4Lxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=g2WeP5q4hv+K1Hr21O956YlU/gBG9YtJDHMFPAKuFc4=;
-        fh=Xlk1s1i8o8e3tQOywu2/sJS26HKYJ1MeyJfXxRmVLts=;
-        b=UcbpovOjFH9zZG4CTqpZYMt8cRIvJdc15XcedZNPyTQPy5C8LhqZac8IpMGnEjGCww
-         mLJIhazxfAtLygi8fPLtBXOl4Y4kSO5t4GLqAiBzS4u2f2ZslQS0bMcxX+e403vMb34u
-         aL0UgoCRSGJuSce6G8PhZHw1y1U5c8Ns5vBmiWyZQyf4zPRuUH3ETCpm0O7Zg7coNN9n
-         QOrJZssjwmWeaZsGeJb7cBWje3hwiVxp++ZjdApE53bNN1dmY4oOcLo6/RHrLQpGpQVd
-         0TQH++MWDPkwbdkdQNz69mkmg3LRGwATLrN0GDYaGe/o2uTSSJmcKf42wjydNjpX/I7W
-         nmUA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HFuM3vvluFlXbR3RV3CtB0B3KpsdU4TGzdRskupJVuk=;
+        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
+        b=DHotiYOuzQZrd8rHHHNOMHuRAw8O6zLtf/v3w9gSqzIFELPKdsqLDNsTdoNhE1y2P9
+         q3hdoE2nFeinQAFw/bpR/jxhhNLr14sI9BJe0z1TqWW7jE6BvTS/B0LON2Jd256PDkAh
+         E7HuBJfMD1mZeMvoERqpf5RoCOBEd8VYr3j8M2eCe4o3GRGAZeIn4B5jYyYdk5T1Uwqo
+         4xD/VAaIPcVPiBu0cvm+eEIBVp2tzCEjTadCJWpXak6DPnpkk+CjcTa5hO80hBBNHIxA
+         AQFuWKpBubDp0tK4+NIcSRhZJeYayQK+60r0ElCw+4Al2zWJDO3yjLdgFxR2RbVUpEAS
+         RA+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qRfLvKh9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-ac493f8bdc8sor3185967a12.3.2025.01.26.12.36.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bf4wynTm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c3caefb036si184915985a.472.2025.03.04.04.50.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 26 Jan 2025 12:36:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Mar 2025 04:50:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qRfLvKh9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737923807; x=1738528607; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=g2WeP5q4hv+K1Hr21O956YlU/gBG9YtJDHMFPAKuFc4=;
-        b=qRfLvKh9WfSd0R07A00sQK03IViHtXjEtoN8HfN2566/ezr3lV2IsD554r8dOqtZ59
-         t/x+jJYkRGm82pv/MPNBKALnQ40BkqMd72Lp6exAFh3m+G0D57DisVNQL6Fz91cYO/4E
-         kDSI5gIeb+GkypslMC/LsEyk42hLsM1EeCbHXA1oavFpNh2VKXSdFf5WJhxTLqs9DgIq
-         n4O9NeqZl6iXr5XrN0q9ttXFNdmCOov9ZN0OluVsb++uFx2dV4JfxZ3VC/rwPTcA4/+F
-         qzymKHeWvzXrX9SLmSmfmD6j+85KIv8OfzhYkY/dkHwcUrq4v2CX7NqbdzQ71OwKqK52
-         bf2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737923807; x=1738528607;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=g2WeP5q4hv+K1Hr21O956YlU/gBG9YtJDHMFPAKuFc4=;
-        b=Jd45riE0ZcqVgpI5DoJderWq0q5dxS5RyyVLN8BE38VcG33JXee6RJ/IEWzaN6QGIg
-         e+a2aMWisReN1qn7ICHwq/2kzyI8A5uFnZ2tzGxtX+kxKO8r+FiBCtq25I4sDbEnAi7c
-         LOOfYyaFllzo646AUGVLvcYns3CAJBOEer6E6IH4FfLnoCcCKF+1V+4xlsoNVr93FcP7
-         LWbqilUgCfH7j4BvmJYugCrzaiswlT/wLqp/qzPlC9PUCWpfj/USVmedYGXBuZn/oIJ6
-         Wu4gZSntYRRv7LmnedsQQ5liUsMeBvfwUevU5yzOOSkXGxQjfLH+3sNLEzU2bnRYOfPk
-         xahw==
-X-Forwarded-Encrypted: i=1; AJvYcCX0aqTQGL3d+V742V5Ien0f+PoCRp+KWjdvqNlJOYKY05uMW1Hfj+NO28L78wM8LBZUkGL1EB0cXRQA8A==@linaro.org
-X-Gm-Message-State: AOJu0YzpCjd0WRrrXTo79Q5YSiQqVQeXzEeqJW8x3c/hynHqMRC0zadW
-	NC41pH9YpP+nEzji8ZVIWpaM7Hjt0LWpAbTbuoNHa7oY2wzd9jUkNjTgXN0XUQGBBw==
-X-Gm-Gg: ASbGncsREYpcYRajnjzXAqG0d8+3SpMXaHU9xrVIb8PTn7vmeifx+IF8RhQJ9NKhRlb
-	PZy8LR/a9K4TpUynFgucvnhE+2ynimY1tF4yJaiOMGKjYyz4Khk3JfvVAqD3mvclS6+RUM1HbcM
-	Kb6o8FQY3a65M554xJeFzDXsAjyQfGZCSLkvsxxsUXg4EUa5zeRLK0ZbmSpdc/vQMWwj5E3jGPO
-	kNAmSNBmPTqMvrhllK2uK8ayQ+2kWB/FSj8MCWxdom855JGiw/bXTk5+JlW8QwuDcxbYl+sMBHb
-	C72B+HX94MvFIIq2F954o38TLcRWk0J9yO0xdAkq+cmbFws=
-X-Google-Smtp-Source: AGHT+IG7QHEN6N12IEj7HpZ8+9ISOfMpvPDzHND+sb7CKsQVCW2Siz1JbFKV0CJ4CarsM9/PXCPftw==
-X-Received: by 2002:a05:6a20:2447:b0:1e0:ce11:b0ce with SMTP id adf61e73a8af0-1eb215adabfmr66485176637.35.1737923807521;
-        Sun, 26 Jan 2025 12:36:47 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72f8a6b18b5sm5645530b3a.39.2025.01.26.12.36.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Jan 2025 12:36:47 -0800 (PST)
-Message-ID: <d81542e9-bebf-4f5f-a911-8ab7b6180d4e@linaro.org>
-Date: Sun, 26 Jan 2025 12:36:45 -0800
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bf4wynTm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tpRhY-0004ix-90; Tue, 04 Mar 2025 07:48:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhO-0004fz-Kq
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:48:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhM-0006j5-MQ
+ for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:48:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741092514;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=HFuM3vvluFlXbR3RV3CtB0B3KpsdU4TGzdRskupJVuk=;
+ b=Bf4wynTmWt86ctXXXtroBsAVuMgxnr+OAraFXw5+N3GVDzKnqQ3py7WkVoNQI5V1wUNa/g
+ rWVuBNyH1rzqO4s9MDVTVMRF2JRnnQYth/g50S0lynCFc/d/sBXy36xNQikhdBttbypvVG
+ TbaW1RKCWhWBERvwA3qGDYdrYGv4efE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-524-t-SJcrhxOqCP2G7BHvUZwg-1; Tue,
+ 04 Mar 2025 07:48:21 -0500
+X-MC-Unique: t-SJcrhxOqCP2G7BHvUZwg-1
+X-Mimecast-MFC-AGG-ID: t-SJcrhxOqCP2G7BHvUZwg_1741092499
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5C249180087B; Tue,  4 Mar 2025 12:48:19 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A1ED0180087D; Tue,  4 Mar 2025 12:48:17 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 27CB2180038F; Tue, 04 Mar 2025 13:48:15 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PULL 00/24] Firmware 20250304 patches
+Date: Tue,  4 Mar 2025 13:47:48 +0100
+Message-ID: <20250304124815.591749-1-kraxel@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/20] accel/tcg: Rename 'hw/core/tcg-cpu-ops.h' ->
- 'accel/tcg/cpu-ops.h'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
- qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
-References: <20250123234415.59850-1-philmd@linaro.org>
- <20250123234415.59850-11-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250123234415.59850-11-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 6GLw0UYoJwBo
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: obI7Ag0Z2K8V
 
-On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
-> TCGCPUOps structure makes more sense in the accelerator context
-> rather than hardware emulation. Move it under the accel/tcg/ scope.
-> 
-> Mechanical change doing:
-> 
->   $  sed -i -e 's,hw/core/tcg-cpu-ops.h,accel/tcg/cpu-ops.h,g' \
->     $(git grep -l hw/core/tcg-cpu-ops.h)
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   MAINTAINERS                                            | 2 +-
->   include/{hw/core/tcg-cpu-ops.h => accel/tcg/cpu-ops.h} | 0
->   accel/tcg/cpu-exec.c                                   | 4 ++--
->   accel/tcg/cputlb.c                                     | 2 +-
->   accel/tcg/translate-all.c                              | 2 +-
->   accel/tcg/user-exec.c                                  | 2 +-
->   accel/tcg/watchpoint.c                                 | 2 +-
->   bsd-user/signal.c                                      | 2 +-
->   hw/mips/jazz.c                                         | 2 +-
->   linux-user/signal.c                                    | 2 +-
->   system/physmem.c                                       | 2 +-
->   target/alpha/cpu.c                                     | 2 +-
->   target/arm/cpu.c                                       | 2 +-
->   target/arm/tcg/cpu-v7m.c                               | 2 +-
->   target/arm/tcg/cpu32.c                                 | 2 +-
->   target/arm/tcg/mte_helper.c                            | 2 +-
->   target/arm/tcg/sve_helper.c                            | 2 +-
->   target/avr/cpu.c                                       | 2 +-
->   target/avr/helper.c                                    | 2 +-
->   target/hexagon/cpu.c                                   | 2 +-
->   target/hppa/cpu.c                                      | 2 +-
->   target/i386/tcg/tcg-cpu.c                              | 2 +-
->   target/loongarch/cpu.c                                 | 2 +-
->   target/m68k/cpu.c                                      | 2 +-
->   target/microblaze/cpu.c                                | 2 +-
->   target/mips/cpu.c                                      | 2 +-
->   target/openrisc/cpu.c                                  | 2 +-
->   target/ppc/cpu_init.c                                  | 2 +-
->   target/riscv/tcg/tcg-cpu.c                             | 2 +-
->   target/rx/cpu.c                                        | 2 +-
->   target/s390x/cpu.c                                     | 2 +-
->   target/s390x/tcg/mem_helper.c                          | 2 +-
->   target/sh4/cpu.c                                       | 2 +-
->   target/sparc/cpu.c                                     | 2 +-
->   target/tricore/cpu.c                                   | 2 +-
->   target/xtensa/cpu.c                                    | 2 +-
->   36 files changed, 36 insertions(+), 36 deletions(-)
->   rename include/{hw/core/tcg-cpu-ops.h => accel/tcg/cpu-ops.h} (100%)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7be3d8f431a..fa46d077d30 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -175,7 +175,7 @@ F: include/exec/helper-info.c.inc
->   F: include/exec/page-protection.h
->   F: include/system/cpus.h
->   F: include/system/tcg.h
-> -F: include/hw/core/tcg-cpu-ops.h
-> +F: include/accel/tcg/cpu-ops.h
->   F: host/include/*/host/cpuinfo.h
->   F: util/cpuinfo-*.c
->   F: include/tcg/
-> diff --git a/include/hw/core/tcg-cpu-ops.h b/include/accel/tcg/cpu-ops.h
-> similarity index 100%
-> rename from include/hw/core/tcg-cpu-ops.h
-> rename to include/accel/tcg/cpu-ops.h
-> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-> index be2ba199d3d..8ee76e14b0d 100644
-> --- a/accel/tcg/cpu-exec.c
-> +++ b/accel/tcg/cpu-exec.c
-> @@ -22,7 +22,7 @@
->   #include "qapi/error.h"
->   #include "qapi/type-helpers.h"
->   #include "hw/core/cpu.h"
-> -#include "hw/core/tcg-cpu-ops.h"
-> +#include "accel/tcg/cpu-ops.h"
->   #include "trace.h"
->   #include "disas/disas.h"
->   #include "exec/cpu-common.h"
-> @@ -39,7 +39,7 @@
->   #include "exec/replay-core.h"
->   #include "system/tcg.h"
->   #include "exec/helper-proto-common.h"
-> -#include "tb-jmp-cache.h"
-> +//#include "tb-jmp-cache.h"
+The following changes since commit 661c2e1ab29cd9c4d268ae3f44712e8d421c0e56:
 
-What's this?
+  scripts/checkpatch: Fix a typo (2025-03-04 09:30:26 +0800)
 
+are available in the Git repository at:
 
-r~
+  https://gitlab.com/kraxel/qemu.git tags/firmware-20250304-pull-request
+
+for you to fetch changes up to 2bc10b15deb4b29391628e10b18701bfbcf4be17:
+
+  docs: add uefi variable service documentation (2025-03-04 12:07:05 +0100)
+
+----------------------------------------------------------------
+- add uefi variable store support
+
+----------------------------------------------------------------
+
+Gerd Hoffmann (24):
+  Add support for etc/hardware-info fw_cfg file
+  hw/uefi: add include/hw/uefi/var-service-api.h
+  hw/uefi: add include/hw/uefi/var-service-edk2.h
+  hw/uefi: add include/hw/uefi/var-service.h
+  hw/uefi: add var-service-guid.c
+  hw/uefi: add var-service-utils.c
+  hw/uefi: add var-service-vars.c
+  hw/uefi: add var-service-auth.c
+  hw/uefi: add var-service-policy.c
+  hw/uefi: add var-service-core.c
+  hw/uefi: add var-service-pkcs7.c
+  hw/uefi: add var-service-pkcs7-stub.c
+  hw/uefi: add var-service-siglist.c
+  hw/uefi: add var-service-json.c + qapi for NV vars.
+  hw/uefi: add trace-events
+  hw/uefi: add UEFI_VARS to Kconfig
+  hw/uefi: add to meson
+  hw/uefi: add uefi-vars-sysbus device
+  hw/uefi-vars-sysbus: qemu platform bus support
+  hw/uefi-vars-sysbus: add x64 variant
+  hw/uefi-vars-sysbus: allow for arm virt
+  hw/uefi-vars-sysbus: allow for pc and q35
+  hw/uefi: add MAINTAINERS entry
+  docs: add uefi variable service documentation
+
+ include/hw/uefi/hardware-info.h    |  35 ++
+ include/hw/uefi/var-service-api.h  |  48 ++
+ include/hw/uefi/var-service-edk2.h | 227 +++++++++
+ include/hw/uefi/var-service.h      | 191 ++++++++
+ hw/arm/virt.c                      |   2 +
+ hw/core/sysbus-fdt.c               |  24 +
+ hw/i386/pc_piix.c                  |   2 +
+ hw/i386/pc_q35.c                   |   2 +
+ hw/uefi/hardware-info.c            |  31 ++
+ hw/uefi/var-service-auth.c         | 361 ++++++++++++++
+ hw/uefi/var-service-core.c         | 321 +++++++++++++
+ hw/uefi/var-service-guid.c         |  99 ++++
+ hw/uefi/var-service-json.c         | 243 ++++++++++
+ hw/uefi/var-service-pkcs7-stub.c   |  16 +
+ hw/uefi/var-service-pkcs7.c        | 436 +++++++++++++++++
+ hw/uefi/var-service-policy.c       | 370 +++++++++++++++
+ hw/uefi/var-service-siglist.c      | 212 +++++++++
+ hw/uefi/var-service-sysbus.c       | 124 +++++
+ hw/uefi/var-service-utils.c        | 241 ++++++++++
+ hw/uefi/var-service-vars.c         | 725 +++++++++++++++++++++++++++++
+ MAINTAINERS                        |   6 +
+ docs/devel/index-internals.rst     |   1 +
+ docs/devel/uefi-vars.rst           |  68 +++
+ hw/Kconfig                         |   1 +
+ hw/meson.build                     |   1 +
+ hw/uefi/Kconfig                    |   3 +
+ hw/uefi/LIMITATIONS.md             |   7 +
+ hw/uefi/meson.build                |  21 +
+ hw/uefi/trace-events               |  17 +
+ meson.build                        |   1 +
+ qapi/meson.build                   |   1 +
+ qapi/qapi-schema.json              |   1 +
+ qapi/uefi.json                     |  64 +++
+ 33 files changed, 3902 insertions(+)
+ create mode 100644 include/hw/uefi/hardware-info.h
+ create mode 100644 include/hw/uefi/var-service-api.h
+ create mode 100644 include/hw/uefi/var-service-edk2.h
+ create mode 100644 include/hw/uefi/var-service.h
+ create mode 100644 hw/uefi/hardware-info.c
+ create mode 100644 hw/uefi/var-service-auth.c
+ create mode 100644 hw/uefi/var-service-core.c
+ create mode 100644 hw/uefi/var-service-guid.c
+ create mode 100644 hw/uefi/var-service-json.c
+ create mode 100644 hw/uefi/var-service-pkcs7-stub.c
+ create mode 100644 hw/uefi/var-service-pkcs7.c
+ create mode 100644 hw/uefi/var-service-policy.c
+ create mode 100644 hw/uefi/var-service-siglist.c
+ create mode 100644 hw/uefi/var-service-sysbus.c
+ create mode 100644 hw/uefi/var-service-utils.c
+ create mode 100644 hw/uefi/var-service-vars.c
+ create mode 100644 docs/devel/uefi-vars.rst
+ create mode 100644 hw/uefi/Kconfig
+ create mode 100644 hw/uefi/LIMITATIONS.md
+ create mode 100644 hw/uefi/meson.build
+ create mode 100644 hw/uefi/trace-events
+ create mode 100644 qapi/uefi.json
+
+-- 
+2.48.1
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1e87587basm253720166b.66.2025.03.04.14.29.51
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e4c43a66b1sm8643141a12.71.2025.03.04.14.29.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 04 Mar 2025 14:29:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 657FD5FC87;
+	by draig.lan (Postfix) with ESMTP id DC3E1625C3;
 	Tue,  4 Mar 2025 22:24:41 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,80 +28,154 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 20/32] plugins/api: use qemu_target_page_mask() to get value
-Date: Tue,  4 Mar 2025 22:24:27 +0000
-Message-Id: <20250304222439.2035603-21-alex.bennee@linaro.org>
+Subject: [PATCH v2 25/32] plugins/loader: compile loader only once
+Date: Tue,  4 Mar 2025 22:24:32 +0000
+Message-Id: <20250304222439.2035603-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2OeA78NBaJVb
+X-TUID: 2i+7PhTmz5zp
 
-Requiring TARGET_PAGE_MASK to be defined gets in the way of building
-this unit once. qemu_target_page_mask() will tell us what it is.
+There is very little in loader that is different between builds save
+for a tiny user/system mode difference in the plugin_info structure.
+Create two new files, user and system to hold mode specific helpers
+and move loader into common_ss.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20250226140343.3907080-16-alex.bennee@linaro.org>
-
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20250225110844.3296991-7-alex.bennee@linaro.org>
 ---
-v2
-  - use the proper qemu_target_page_mask() api
----
- plugins/api.c                       | 3 ++-
- tests/tcg/hexagon/Makefile.target   | 2 +-
- tests/tcg/multiarch/Makefile.target | 2 +-
- 3 files changed, 4 insertions(+), 3 deletions(-)
+ plugins/plugin.h    |  6 ++++++
+ plugins/loader.c    | 13 ++-----------
+ plugins/system.c    | 24 ++++++++++++++++++++++++
+ plugins/user.c      | 19 +++++++++++++++++++
+ plugins/meson.build |  7 ++++++-
+ 5 files changed, 57 insertions(+), 12 deletions(-)
+ create mode 100644 plugins/system.c
+ create mode 100644 plugins/user.c
 
-diff --git a/plugins/api.c b/plugins/api.c
-index cf8cdf076a..fa4d495277 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -43,6 +43,7 @@
- #include "tcg/tcg.h"
- #include "exec/exec-all.h"
- #include "exec/gdbstub.h"
-+#include "exec/target_page.h"
- #include "exec/translation-block.h"
- #include "exec/translator.h"
- #include "disas/disas.h"
-@@ -287,7 +288,7 @@ uint64_t qemu_plugin_insn_vaddr(const struct qemu_plugin_insn *insn)
- void *qemu_plugin_insn_haddr(const struct qemu_plugin_insn *insn)
- {
-     const DisasContextBase *db = tcg_ctx->plugin_db;
--    vaddr page0_last = db->pc_first | ~TARGET_PAGE_MASK;
-+    vaddr page0_last = db->pc_first | ~qemu_target_page_mask();
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 9ed20b5c41..6fbc443b96 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -119,4 +119,10 @@ struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
  
-     if (db->fake_insn) {
-         return NULL;
-diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
-index 4dfc39bc98..e5182c01d8 100644
---- a/tests/tcg/hexagon/Makefile.target
-+++ b/tests/tcg/hexagon/Makefile.target
-@@ -18,7 +18,7 @@
- # Hexagon doesn't support gdb, so skip the EXTRA_RUNS
- EXTRA_RUNS =
+ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
  
--CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal -Wno-unknown-warning-option
-+CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
- CFLAGS += -fno-unroll-loops -fno-stack-protector
++/**
++ * qemu_plugin_fillin_mode_info() - populate mode specific info
++ * info: pointer to qemu_info_t structure
++ */
++void qemu_plugin_fillin_mode_info(qemu_info_t *info);
++
+ #endif /* PLUGIN_H */
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 827473c8b6..7523d554f0 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -31,9 +31,6 @@
+ #include "qemu/memalign.h"
+ #include "hw/core/cpu.h"
+ #include "exec/tb-flush.h"
+-#ifndef CONFIG_USER_ONLY
+-#include "hw/boards.h"
+-#endif
  
- HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index c769a7d69d..45c9cfe18c 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -51,7 +51,7 @@ sigreturn-sigmask: LDFLAGS+=-pthread
- # Since this is just a standard piece of library code we've borrowed for a
- # TCG test case, suppress the warning rather than trying to modify the
- # code to work around the compiler.
--sha1: CFLAGS+=-Wno-stringop-overread
-+sha1: CFLAGS+=-Wno-stringop-overread -Wno-unknown-warning-option
+ #include "plugin.h"
  
- # The vma-pthread seems very sensitive on gitlab and we currently
- # don't know if its exposing a real bug or the test is flaky.
+@@ -300,14 +297,8 @@ int qemu_plugin_load_list(QemuPluginList *head, Error **errp)
+     info->target_name = target_name();
+     info->version.min = QEMU_PLUGIN_MIN_VERSION;
+     info->version.cur = QEMU_PLUGIN_VERSION;
+-#ifndef CONFIG_USER_ONLY
+-    MachineState *ms = MACHINE(qdev_get_machine());
+-    info->system_emulation = true;
+-    info->system.smp_vcpus = ms->smp.cpus;
+-    info->system.max_vcpus = ms->smp.max_cpus;
+-#else
+-    info->system_emulation = false;
+-#endif
++
++    qemu_plugin_fillin_mode_info(info);
+ 
+     QTAILQ_FOREACH_SAFE(desc, head, entry, next) {
+         int err;
+diff --git a/plugins/system.c b/plugins/system.c
+new file mode 100644
+index 0000000000..b3ecc33ba5
+--- /dev/null
++++ b/plugins/system.c
+@@ -0,0 +1,24 @@
++/*
++ * QEMU Plugin system-emulation helpers
++ *
++ * Helpers that are specific to system emulation.
++ *
++ * Copyright (C) 2017, Emilio G. Cota <cota@braap.org>
++ * Copyright (C) 2019-2025, Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/plugin.h"
++#include "hw/boards.h"
++
++#include "plugin.h"
++
++void qemu_plugin_fillin_mode_info(qemu_info_t *info)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    info->system_emulation = true;
++    info->system.smp_vcpus = ms->smp.cpus;
++    info->system.max_vcpus = ms->smp.max_cpus;
++}
+diff --git a/plugins/user.c b/plugins/user.c
+new file mode 100644
+index 0000000000..250d542502
+--- /dev/null
++++ b/plugins/user.c
+@@ -0,0 +1,19 @@
++/*
++ * QEMU Plugin user-mode helpers
++ *
++ * Helpers that are specific to user-mode.
++ *
++ * Copyright (C) 2017, Emilio G. Cota <cota@braap.org>
++ * Copyright (C) 2019-2025, Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/plugin.h"
++#include "plugin.h"
++
++void qemu_plugin_fillin_mode_info(qemu_info_t *info)
++{
++    info->system_emulation = false;
++}
+diff --git a/plugins/meson.build b/plugins/meson.build
+index d60be2a4d6..f7820806d3 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -57,8 +57,13 @@ if host_os == 'windows'
+     command: dlltool_cmd
+   )
+ endif
++
++user_ss.add(files('user.c'))
++system_ss.add(files('system.c'))
++
++common_ss.add(files('loader.c'))
++
+ specific_ss.add(files(
+-  'loader.c',
+   'core.c',
+   'api.c',
+ ))
 -- 
 2.39.5

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf5453f468sm663503566b.51.2025.03.04.14.24.41
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1e382a04bsm277988166b.163.2025.03.04.14.24.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Mar 2025 14:24:41 -0800 (PST)
+        Tue, 04 Mar 2025 14:24:45 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id ECB705FCF6;
-	Tue,  4 Mar 2025 22:24:39 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id E509B6007F;
+	Tue,  4 Mar 2025 22:24:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -28,70 +28,57 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 06/32] tests/functional: expand tests to cover virgl
-Date: Tue,  4 Mar 2025 22:24:13 +0000
-Message-Id: <20250304222439.2035603-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 15/32] tests/tcg: fix constraints in test-i386-adcox
+Date: Tue,  4 Mar 2025 22:24:22 +0000
+Message-Id: <20250304222439.2035603-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ni+DSXIooUAP
+X-TUID: frhW/rdIZGqz
 
-Add two more test modes using glmark2-wayland to exercise the OpenGL
-pass-through modes with virgl. Virgl can run with or without the
-hostmem blob support. To avoid repeating ourselves too much we make
-the initial pass a simple --validate pass.
+Clang complains:
 
-We might want to eventually add more directed tests and individual
-features later on but the glmark/vkmark tests are a good general
-smoke test for accelerated 3D.
+  clang -O2 -m64 -mcx16 /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c -o test-i386-adcox -static
+  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:32:26: error: invalid input constraint '0' in asm
+          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
+                           ^
+  /home/alex/lsrc/qemu.git/tests/tcg/i386/test-i386-adcox.c:57:26: error: invalid input constraint '0' in asm
+          : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
+                           ^
+  2 errors generated.
+
+Pointing out a numbered input constraint can't point to a read/write
+output [1]. Convert to a read-only input constraint to allow this.
+
+[1] https://lists.llvm.org/pipermail/cfe-commits/Week-of-Mon-20101101/036036.html
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20250226140343.3907080-5-alex.bennee@linaro.org>
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 
 ---
 v2
-  - re-base with re-factor and don't run whole suite of glmark on both
-  virgl builds
+  - followed rth's suggestion and removed additional matches.
 ---
- tests/functional/test_aarch64_virt_gpu.py | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ tests/tcg/i386/test-i386-adcox.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_virt_gpu.py b/tests/functional/test_aarch64_virt_gpu.py
-index 55957dae0a..3fdb31f034 100755
---- a/tests/functional/test_aarch64_virt_gpu.py
-+++ b/tests/functional/test_aarch64_virt_gpu.py
-@@ -92,6 +92,28 @@ def _run_virt_weston_test(self, cmd, fail = None):
-         full_cmd = f"weston -B headless --renderer gl --shell kiosk -- {cmd}"
-         ec_and_wait(self, full_cmd, OK_CMD, fail)
+diff --git a/tests/tcg/i386/test-i386-adcox.c b/tests/tcg/i386/test-i386-adcox.c
+index 16169efff8..d653fa86a7 100644
+--- a/tests/tcg/i386/test-i386-adcox.c
++++ b/tests/tcg/i386/test-i386-adcox.c
+@@ -53,8 +53,8 @@ void test_adcx_adox(uint32_t in_c, uint32_t in_o, REG adcx_operand, REG adox_ope
+         "adcx %3, %1;"
+         "adox %3, %2;"
+         "pushf; pop %0"
+-        : "+r" (flags), "+r" (out_adcx), "+r" (out_adox)
+-        : "r" ((REG)-1), "0" (flags), "1" (out_adcx), "2" (out_adox));
++        : "+r"(flags), "+r"(out_adcx), "+r"(out_adox)
++        : "r" ((REG)-1));
  
-+    @skipIfMissingCommands('zstd')
-+    def test_aarch64_virt_with_virgl_gpu(self):
-+
-+        self.require_device('virtio-gpu-gl-pci')
-+
-+        self._launch_virt_gpu("virtio-gpu-gl-pci")
-+
-+        # subset of the glmark tests
-+        tests = " ".join([f"-b {test}" for test in
-+                          ["build", "texture", "shading",
-+                           "bump", "desktop", "buffer"]])
-+
-+        self._run_virt_weston_test("glmark2-wayland --validate " + tests)
-+
-+    @skipIfMissingCommands('zstd')
-+    def test_aarch64_virt_with_virgl_blobs_gpu(self):
-+
-+        self.require_device('virtio-gpu-gl-pci')
-+
-+        self._launch_virt_gpu("virtio-gpu-gl-pci,hostmem=4G,blob=on")
-+        self._run_virt_weston_test("glmark2-wayland -b:duration=1.0")
-+
-     @skipIfMissingCommands('zstd')
-     def test_aarch64_virt_with_vulkan_gpu(self):
- 
+     assert(out_adcx == in_c + adcx_operand - 1);
+     assert(out_adox == in_o + adox_operand - 1);
 -- 
 2.39.5

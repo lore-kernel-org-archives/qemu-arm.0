@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1e57faa1dsm274634466b.95.2025.03.04.14.29.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf0c0b9956sm1037106766b.16.2025.03.04.14.29.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Mar 2025 14:29:49 -0800 (PST)
+        Tue, 04 Mar 2025 14:29:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 94B9F619A7;
+	by draig.lan (Postfix) with ESMTP id 4D4A860853;
 	Tue,  4 Mar 2025 22:24:41 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,37 +28,60 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 22/32] include/qemu: plugin-memory.h doesn't need cpu-defs.h
-Date: Tue,  4 Mar 2025 22:24:29 +0000
-Message-Id: <20250304222439.2035603-23-alex.bennee@linaro.org>
+Subject: [PATCH v2 19/32] tests/functional: add boot error detection for RME tests
+Date: Tue,  4 Mar 2025 22:24:26 +0000
+Message-Id: <20250304222439.2035603-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: D+yt1gxa1CQi
+X-TUID: Vmxbsw1QEiZt
 
-hwaddr is a fixed size on all builds.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+It was identified that those tests randomly fail with a synchronous
+exception at boot (reported by EDK2).
+While we solve this problem, report failure immediately so tests don't
+timeout in CI.
+
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20250303185745.2504842-1-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250225110844.3296991-4-alex.bennee@linaro.org>
 ---
- include/qemu/plugin-memory.h | 1 -
- 1 file changed, 1 deletion(-)
+ tests/functional/test_aarch64_rme_sbsaref.py | 3 ++-
+ tests/functional/test_aarch64_rme_virt.py    | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/include/qemu/plugin-memory.h b/include/qemu/plugin-memory.h
-index 71c1123308..6065ec7aaf 100644
---- a/include/qemu/plugin-memory.h
-+++ b/include/qemu/plugin-memory.h
-@@ -9,7 +9,6 @@
- #ifndef PLUGIN_MEMORY_H
- #define PLUGIN_MEMORY_H
+diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
+index 93bb528338..ddcc9493a6 100755
+--- a/tests/functional/test_aarch64_rme_sbsaref.py
++++ b/tests/functional/test_aarch64_rme_sbsaref.py
+@@ -60,7 +60,8 @@ def test_aarch64_rme_sbsaref(self):
  
--#include "exec/cpu-defs.h"
- #include "exec/hwaddr.h"
+         self.vm.launch()
+         # Wait for host VM boot to complete.
+-        wait_for_console_pattern(self, 'Welcome to Buildroot')
++        wait_for_console_pattern(self, 'Welcome to Buildroot',
++                                 failure_message='Synchronous Exception at')
+         exec_command_and_wait_for_pattern(self, 'root', '#')
  
- struct qemu_plugin_hwaddr {
+         test_realms_guest(self)
+diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
+index 42b9229b4c..38e01721a4 100755
+--- a/tests/functional/test_aarch64_rme_virt.py
++++ b/tests/functional/test_aarch64_rme_virt.py
+@@ -89,7 +89,8 @@ def test_aarch64_rme_virt(self):
+ 
+         self.vm.launch()
+         # Wait for host VM boot to complete.
+-        wait_for_console_pattern(self, 'Welcome to Buildroot')
++        wait_for_console_pattern(self, 'Welcome to Buildroot',
++                                 failure_message='Synchronous Exception at')
+         exec_command_and_wait_for_pattern(self, 'root', '#')
+ 
+         test_realms_guest(self)
 -- 
 2.39.5

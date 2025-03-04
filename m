@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e4c3bb5ad8sm8715799a12.34.2025.03.04.14.24.45
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf6166d3f7sm583129566b.57.2025.03.04.14.24.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Mar 2025 14:24:51 -0800 (PST)
+        Tue, 04 Mar 2025 14:24:52 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 32B946082D;
-	Tue,  4 Mar 2025 22:24:41 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 3E0AC625E2;
+	Tue,  4 Mar 2025 22:24:42 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -28,136 +28,151 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2 18/32] gitlab: add a new build_unit job to track build size
-Date: Tue,  4 Mar 2025 22:24:25 +0000
-Message-Id: <20250304222439.2035603-19-alex.bennee@linaro.org>
+Subject: [PATCH v2 28/32] plugins/api: split out time control helpers
+Date: Tue,  4 Mar 2025 22:24:35 +0000
+Message-Id: <20250304222439.2035603-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250304222439.2035603-1-alex.bennee@linaro.org>
 References: <20250304222439.2035603-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PF9yZp5Hc6/j
+X-TUID: b16Y4JSLqd8c
 
-We want to reduce the total number of build units in the system to get
-on our way to a single binary. It will help to have some numbers so
-lets add a job to gitlab to track our progress.
+These are only usable in system mode where we control the timer. For
+user-mode make them NOPs.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-
+Message-Id: <20250225110844.3296991-10-alex.bennee@linaro.org>
 ---
-v2
-  - do all json in python
----
- .gitlab-ci.d/check-units.py    | 66 ++++++++++++++++++++++++++++++++++
- .gitlab-ci.d/static_checks.yml | 22 ++++++++++++
- 2 files changed, 88 insertions(+)
- create mode 100755 .gitlab-ci.d/check-units.py
+ plugins/api-system.c | 34 ++++++++++++++++++++++++++++++++++
+ plugins/api-user.c   | 17 +++++++++++++++++
+ plugins/api.c        | 41 -----------------------------------------
+ 3 files changed, 51 insertions(+), 41 deletions(-)
 
-diff --git a/.gitlab-ci.d/check-units.py b/.gitlab-ci.d/check-units.py
-new file mode 100755
-index 0000000000..268a4118d5
---- /dev/null
-+++ b/.gitlab-ci.d/check-units.py
-@@ -0,0 +1,66 @@
-+#!/usr/bin/env python3
-+#
-+# check-units.py: check the number of compilation units and identify
-+#                 those that are rebuilt multiple times
-+#
-+# Copyright (C) 2025 Linaro Ltd.
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/plugins/api-system.c b/plugins/api-system.c
+index 38560de342..cc190b167e 100644
+--- a/plugins/api-system.c
++++ b/plugins/api-system.c
+@@ -95,3 +95,37 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
+         return g_intern_static_string("RAM");
+     }
+ }
 +
-+from os import access, R_OK, path
-+from sys import argv, exit
-+import json
-+from collections import Counter
++/*
++ * Time control
++ */
++static bool has_control;
++static Error *migration_blocker;
 +
++const void *qemu_plugin_request_time_control(void)
++{
++    if (!has_control) {
++        has_control = true;
++        error_setg(&migration_blocker,
++                   "TCG plugin time control does not support migration");
++        migrate_add_blocker(&migration_blocker, NULL);
++        return &has_control;
++    }
++    return NULL;
++}
 +
-+def extract_build_units(cc_path):
-+    """
-+    Extract the build units and their counds from compile_commands.json file.
++static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
++{
++    int64_t new_time = data.host_ulong;
++    qemu_clock_advance_virtual_time(new_time);
++}
 +
-+    Returns:
-+        Hash table of ["unit"] = count
-+    """
++void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++{
++    if (handle == &has_control) {
++        /* Need to execute out of cpu_exec, so bql can be locked. */
++        async_run_on_cpu(current_cpu,
++                         advance_virtual_time__async,
++                         RUN_ON_CPU_HOST_ULONG(new_time));
++    }
++}
+diff --git a/plugins/api-user.c b/plugins/api-user.c
+index 867b420339..28704a89e8 100644
+--- a/plugins/api-user.c
++++ b/plugins/api-user.c
+@@ -12,6 +12,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/plugin.h"
++#include "exec/log.h"
+ 
+ /*
+  * Virtual Memory queries - these are all NOPs for user-mode which
+@@ -38,3 +39,19 @@ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h)
+ {
+     return g_intern_static_string("Invalid");
+ }
 +
-+    j = json.load(open(cc_path, 'r'))
-+    files = [f['file'] for f in j]
-+    build_units = Counter(files)
++/*
++ * Time control - for user mode the only real time is wall clock time
++ * so realistically all you can do in user mode is slow down execution
++ * which doesn't require the ability to mess with the clock.
++ */
 +
-+    return build_units
++const void *qemu_plugin_request_time_control(void)
++{
++    return NULL;
++}
 +
-+
-+def analyse_units(build_units):
-+    """
-+    Analyse the build units and report stats and the top 10 rebuilds
-+    """
-+
-+    print(f"Total source files: {len(build_units.keys())}")
-+    print(f"Total build units: {sum(units.values())}")
-+
-+    # Create a sorted list by number of rebuilds
-+    sorted_build_units = sorted(build_units.items(),
-+                                key=lambda item: item[1],
-+                                reverse=True)
-+
-+    print("Most rebuilt units:")
-+    for unit, count in sorted_build_units[:20]:
-+        print(f"  {unit} built {count} times")
-+
-+    print("Least rebuilt units:")
-+    for unit, count in sorted_build_units[-10:]:
-+        print(f"  {unit} built {count} times")
-+
-+
-+if __name__ == "__main__":
-+    if len(argv) != 2:
-+        script_name = path.basename(argv[0])
-+        print(f"Usage: {script_name} <path_to_compile_commands.json>")
-+        exit(1)
-+
-+    cc_path = argv[1]
-+    if path.isfile(cc_path) and access(cc_path, R_OK):
-+        units = extract_build_units(cc_path)
-+        analyse_units(units)
-+        exit(0)
-+    else:
-+        print(f"{cc_path} doesn't exist or isn't readable")
-+        exit(1)
-diff --git a/.gitlab-ci.d/static_checks.yml b/.gitlab-ci.d/static_checks.yml
-index c0ba453382..c3ed6de453 100644
---- a/.gitlab-ci.d/static_checks.yml
-+++ b/.gitlab-ci.d/static_checks.yml
-@@ -70,3 +70,25 @@ check-rust-tools-nightly:
-     expire_in: 2 days
-     paths:
-       - rust/target/doc
-+
-+check-build-units:
-+  extends: .base_job_template
-+  stage: build
-+  image: $CI_REGISTRY_IMAGE/qemu/debian:$QEMU_CI_CONTAINER_TAG
-+  needs:
-+    job: amd64-debian-container
-+  before_script:
-+    - source scripts/ci/gitlab-ci-section
-+    - section_start setup "Install Tools"
-+    - apt install --assume-yes --no-install-recommends jq
-+    - section_end setup
-+  script:
-+    - mkdir build
-+    - cd build
-+    - section_start configure "Running configure"
-+    - ../configure
-+    - cd ..
-+    - section_end configure
-+    - section_start analyse "Analyse"
-+    - .gitlab-ci.d/check-units.py build/compile_commands.json
-+    - section_end analyse
++void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++{
++    qemu_log_mask(LOG_UNIMP, "user-mode can't control time");
++}
+diff --git a/plugins/api.c b/plugins/api.c
+index 82241699a5..832bf6ee5e 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -526,44 +526,3 @@ uint64_t qemu_plugin_u64_sum(qemu_plugin_u64 entry)
+     return total;
+ }
+ 
+-/*
+- * Time control
+- */
+-static bool has_control;
+-#ifdef CONFIG_SOFTMMU
+-static Error *migration_blocker;
+-#endif
+-
+-const void *qemu_plugin_request_time_control(void)
+-{
+-    if (!has_control) {
+-        has_control = true;
+-#ifdef CONFIG_SOFTMMU
+-        error_setg(&migration_blocker,
+-                   "TCG plugin time control does not support migration");
+-        migrate_add_blocker(&migration_blocker, NULL);
+-#endif
+-        return &has_control;
+-    }
+-    return NULL;
+-}
+-
+-#ifdef CONFIG_SOFTMMU
+-static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
+-{
+-    int64_t new_time = data.host_ulong;
+-    qemu_clock_advance_virtual_time(new_time);
+-}
+-#endif
+-
+-void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+-{
+-#ifdef CONFIG_SOFTMMU
+-    if (handle == &has_control) {
+-        /* Need to execute out of cpu_exec, so bql can be locked. */
+-        async_run_on_cpu(current_cpu,
+-                         advance_virtual_time__async,
+-                         RUN_ON_CPU_HOST_ULONG(new_time));
+-    }
+-#endif
+-}
 -- 
 2.39.5

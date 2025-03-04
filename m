@@ -1,77 +1,78 @@
-Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp3111939njb;
-        Mon, 3 Mar 2025 23:26:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUCIf3GaM1HvxabhwC63XS+mzJ4XKbjzqtySOjaDKk8H0dw+XAKQfDb1XTnE5TpGx/r6+/tjScHAEnotQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFjX119IrE9TmzB1LR3riImWohV3pH0xg74R2/fe8p6RUHfPBsnVxC4hg5rPYgBPLs5Kgu2
-X-Received: by 2002:a05:620a:890a:b0:7c0:a264:4de1 with SMTP id af79cd13be357-7c3cc379bbcmr255688985a.24.1741073202661;
-        Mon, 03 Mar 2025 23:26:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741073202; cv=none;
+Received: by 2002:a17:504:76a5:b0:1be9:327d:8ee3 with SMTP id sy5csp3112120njb;
+        Mon, 3 Mar 2025 23:27:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWilLx4rRcKF28a8Hscg95TPZogf3mWV7+Ct0+0mv7kuv/kNde4sm0OnlKcXmg2JwYe22PoS831UlEtdw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9TpPyXjv0GVUyc8dJPzA+z1iSPkSmrfsACyVZk33uENIZv/7Dw8dmIzEovEs3zINF7Pcp
+X-Received: by 2002:a05:6214:2482:b0:6e5:a0fc:f65d with SMTP id 6a1803df08f44-6e8da857273mr28052266d6.10.1741073243703;
+        Mon, 03 Mar 2025 23:27:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741073243; cv=none;
         d=google.com; s=arc-20240605;
-        b=OvSEJiwVE7jnTRpRnxf4FDnlLqD5gn3gPngO8BkUjGPr4rjENpofK0mR1rIDrOKB4e
-         iT1a6CpGMUfQsXCXnjtqd3E8eUV8kYXzTx0PpY888Mxzoi7Qo+Fyir2K7JypPgTrRBsv
-         f0mCzuW7CtZt/tKnKkop6d9Y68YfxCEIiE3cpqySEzDoR+Ptmoq/zF/d8H31K7r1uNno
-         ufbjj9PVpvQ1aYr/pepuTOhUg/1UofUaihcFMJdWcDMzXV2YdyHOzFNeP2qdC+qb9+zg
-         Oh6OYfKdmTrNJJ93TeOnqpJc0bfBrB6W2E4SblAdbvNx4rJNTqaMpzul+jHebvEHXrj6
-         4Pjw==
+        b=io1BhnPqdtUU6+U/7CBe0X8NtOkmHbirckXOVxuWpubneBSai0S0RysxICaO9r1xKH
+         sHSGJrPyMBbhKODiCqQTnTGcainPXzSxbIlIr5dsIMwhpxktTt5oXCZX6/l2vQTQPheE
+         aJwZh3MkNUjtV+oskC1AdrN1yOPE04hNxlKqJdfUoL3m0kAfB9LDFX3LQPQP+JiT9eCt
+         3+yi9mwcJXP1eQ/vmv/sQzuFL/dMZj6UBuASoNYNkxaWwLSJpyikWwywXO1Hzlf8Y9dV
+         FbXxtcO6y3qqYgefo4eC5Q+jPw16FlGB45GwUHg5fvZXPgYUdbVg+qSUO0STwc8N4tYj
+         l1rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=8IoArQwqInDPHWgWJJgUWchTLJ/9TyRcGRqTgLV9bO8=;
-        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
-        b=gR24wQd2f9/yQ6R1i7O/NaoIjk5cHr9FcmO9C9oKnXv4AKlGDaj7RlQm0fNBqAsx9d
-         rXKY5rQOhZzScpUz+opH2BuuYytbNXU0xL6oUb0I/Kh7FbA1qsLq2B6TyTH8d/gvcCtD
-         g5mKSKVm95362udQkEkF7RnvmqH0j6qtspaflfwP6XsSswH4c1P6BRyP3cQoqdtowpHR
-         uO/FMyLxu7WSs2j2fRwli6QeQw5Gh4E2h2N9tI42lzf/B/UynevUgQe3a2d/jBLgJLDf
-         od7tZkKFFVgmjQU6Kshd4VFKmfq8WsDQXcjGQ4FZOOaTb0FXS27a5dMmX8xdgTUxaWqL
-         mVOg==;
+        bh=lqmQFifaw6bmeVydkg7hkWMazz6R0WMCluVxccIN1sc=;
+        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
+        b=kEj0mT+yNpLkhYKE7t6omrr/xmoMQnaUoupj0sOS/N+FKdsho48DQLeGSgzI70wQgs
+         FLR1tPjWT33RJzoS+REf1PJLF++klH2DEkfXVUX4WxkUxqL6g/E+mwT7w6Nr/dlAxJc6
+         mxJbBTvwJQPv/l7SGGW8q4wk8aRPMlGKPzEaR4GCUDUrWzGrjxuXsdyiynDEPZocyrdR
+         X3+7yURkK0CDwIoZvnU4BS9ANR/BbfsjknzwqnFY10StniautMY+m4kvPUELJ52Pl4Td
+         7gnzwsBjOUnOpgsEx94B0DccFIgCUnfEYJef/74c9l7+mulfH8jTlyqSxMMB1Pde9vKr
+         Z5yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8975e7cecsi101537706d6.93.2025.03.03.23.26.42
+        by mx.google.com with ESMTPS id af79cd13be357-7c36fee985bsi1074384785a.37.2025.03.03.23.27.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Mar 2025 23:26:42 -0800 (PST)
+        Mon, 03 Mar 2025 23:27:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpMfn-00061z-Fd; Tue, 04 Mar 2025 02:26:39 -0500
+	id 1tpMgN-0006hq-7a; Tue, 04 Mar 2025 02:27:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=B2sr=VX=kaod.org=clg@ozlabs.org>)
- id 1tpMfd-0005xK-1t; Tue, 04 Mar 2025 02:26:29 -0500
+ id 1tpMgI-0006gS-9g; Tue, 04 Mar 2025 02:27:11 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=B2sr=VX=kaod.org=clg@ozlabs.org>)
- id 1tpMfX-0007E9-La; Tue, 04 Mar 2025 02:26:27 -0500
+ id 1tpMgG-0007Rh-3z; Tue, 04 Mar 2025 02:27:09 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z6S0V13yLz4x8P;
- Tue,  4 Mar 2025 18:26:18 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z6S1P4f8Mz4x89;
+ Tue,  4 Mar 2025 18:27:05 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z6S0Q0y3Vz4x3q;
- Tue,  4 Mar 2025 18:26:13 +1100 (AEDT)
-Message-ID: <d15c851e-355c-4abf-a97b-63df517b31be@kaod.org>
-Date: Tue, 4 Mar 2025 08:26:11 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z6S1L26Bnz4wd0;
+ Tue,  4 Mar 2025 18:27:01 +1100 (AEDT)
+Message-ID: <6c168a3c-f6f8-4454-b559-1202fea8a495@kaod.org>
+Date: Tue, 4 Mar 2025 08:26:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 23/23] docs/specs: Add aspeed-intc
+Subject: Re: [PATCH v5 5/6] hw/arm/aspeed_ast27x0.c Separate HW Strap
+ Registers for SCU and SCUIO
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
-References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
- <20250303095457.2337631-24-jamin_lin@aspeedtech.com>
+References: <20250304064710.2128993-1-jamin_lin@aspeedtech.com>
+ <20250304064710.2128993-6-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,7 +117,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250303095457.2337631-24-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250304064710.2128993-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -142,10 +143,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xvpgAo9/Tiy3
+X-TUID: FNFRyfdFf47+
 
-On 3/3/25 10:54, Jamin Lin wrote:
-> Add AST2700 INTC design guidance and its block diagram.
+On 3/4/25 07:47, Jamin Lin wrote:
+> There is one hw-strap1 register in the SCU (CPU DIE) and another hw-strap1
+> register in the SCUIO (IO DIE). The values of these two registers should not be
+> the same. To reuse the current design of hw-strap, hw-strap1 is assigned to the
+> SCU and sets the value in the SCU hw-strap1 register, while hw-strap2 is
+> assigned to the SCUIO and sets the value in the SCUIO hw-strap1 register.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -158,160 +163,35 @@ C.
 
 
 > ---
->   docs/specs/aspeed-intc.rst | 136 +++++++++++++++++++++++++++++++++++++
->   docs/specs/index.rst       |   1 +
->   2 files changed, 137 insertions(+)
->   create mode 100644 docs/specs/aspeed-intc.rst
+>   hw/arm/aspeed_ast27x0.c | 11 +++++++++--
+>   1 file changed, 9 insertions(+), 2 deletions(-)
 > 
-> diff --git a/docs/specs/aspeed-intc.rst b/docs/specs/aspeed-intc.rst
-> new file mode 100644
-> index 0000000000..9cefd7f37f
-> --- /dev/null
-> +++ b/docs/specs/aspeed-intc.rst
-> @@ -0,0 +1,136 @@
-> +===========================
-> +ASPEED Interrupt Controller
-> +===========================
-> +
-> +AST2700
-> +-------
-> +There are a total of 480 interrupt sources in AST2700. Due to the limitation of
-> +interrupt numbers of processors, the interrupts are merged every 32 sources for
-> +interrupt numbers greater than 127.
-> +
-> +There are two levels of interrupt controllers, INTC (CPU Die) and INTCIO
-> +(I/O Die).
-> +
-> +Interrupt Mapping
-> +-----------------
-> +- INTC: Handles interrupt sources 0 - 127 and integrates signals from INTCIO.
-> +- INTCIO: Handles interrupt sources 128 - 319 independently.
-> +
-> +QEMU Support
-> +------------
-> +Currently, only GIC 192 to 201 are supported, and their source interrupts are
-> +from INTCIO and connected to INTC at input pin 0 and output pins 0 to 9 for
-> +GIC 192-201.
-> +
-> +Design for GICINT 196
-> +---------------------
-> +The orgate has interrupt sources ranging from 0 to 31, with its output pin
-> +connected to INTCIO "T0 GICINT_196". The output pin is then connected to INTC
-> +"GIC_192_201" at bit 4, and its bit 4 output pin is connected to GIC 196.
-> +
-> +INTC GIC_192_201 Output Pin Mapping
-> +-----------------------------------
-> +The design of INTC GIC_192_201 have 10 output pins, mapped as following:
-> +
-> +====  ====
-> +Bit   GIC
-> +====  ====
-> +0     192
-> +1     193
-> +2     194
-> +3     195
-> +4     196
-> +5     197
-> +6     198
-> +7     199
-> +8     200
-> +9     201
-> +====  ====
-> +
-> +AST2700 A0
-> +----------
-> +It has only one INTC controller, and currently, only GIC 128-136 is supported.
-> +To support both AST2700 A1 and AST2700 A0, there are 10 OR gates in the INTC,
-> +with gates 1 to 9 supporting GIC 128-136.
-> +
-> +Design for GICINT 132
-> +---------------------
-> +The orgate has interrupt sources ranging from 0 to 31, with its output pin
-> +connected to INTC. The output pin is then connected to GIC 132.
-> +
-> +Block Diagram of GICINT 196 for AST2700 A1 and GICINT 132 for AST2700 A0
-> +------------------------------------------------------------------------
-> +
-> +.. code-block::
-> +
-> +   |-------------------------------------------------------------------------------------------------------|
-> +   |                                                   AST2700 A1 Design                                   |
-> +   |           To GICINT196                                                                                |
-> +   |                                                                                                       |
-> +   |   ETH1    |-----------|                    |--------------------------|        |--------------|       |
-> +   |  -------->|0          |                    |         INTCIO           |        |  orgates[0]  |       |
-> +   |   ETH2    |          4|   orgates[0]------>|inpin[0]-------->outpin[0]|------->| 0            |       |
-> +   |  -------->|1         5|   orgates[1]------>|inpin[1]-------->outpin[1]|------->| 1            |       |
-> +   |   ETH3    |          6|   orgates[2]------>|inpin[2]-------->outpin[2]|------->| 2            |       |
-> +   |  -------->|2        19|   orgates[3]------>|inpin[3]-------->outpin[3]|------->| 3  OR[0:9]   |-----| |
-> +   |   UART0   |         20|-->orgates[4]------>|inpin[4]-------->outpin[4]|------->| 4            |     | |
-> +   |  -------->|7        21|   orgates[5]------>|inpin[5]-------->outpin[5]|------->| 5            |     | |
-> +   |   UART1   |         22|   orgates[6]------>|inpin[6]-------->outpin[6]|------->| 6            |     | |
-> +   |  -------->|8        23|   orgates[7]------>|inpin[7]-------->outpin[7]|------->| 7            |     | |
-> +   |   UART2   |         24|   orgates[8]------>|inpin[8]-------->outpin[8]|------->| 8            |     | |
-> +   |  -------->|9        25|   orgates[9]------>|inpin[9]-------->outpin[9]|------->| 9            |     | |
-> +   |   UART3   |         26|                    |--------------------------|        |--------------|     | |
-> +   |  ---------|10       27|                                                                             | |
-> +   |   UART5   |         28|                                                                             | |
-> +   |  -------->|11       29|                                                                             | |
-> +   |   UART6   |           |                                                                             | |
-> +   |  -------->|12       30|     |-----------------------------------------------------------------------| |
-> +   |   UART7   |         31|     |                                                                         |
-> +   |  -------->|13         |     |                                                                         |
-> +   |   UART8   |  OR[0:31] |     |                |------------------------------|           |----------|  |
-> +   |  -------->|14         |     |                |            INTC              |           |     GIC  |  |
-> +   |   UART9   |           |     |                |inpin[0:0]--------->outpin[0] |---------->|192       |  |
-> +   |  -------->|15         |     |                |inpin[0:1]--------->outpin[1] |---------->|193       |  |
-> +   |   UART10  |           |     |                |inpin[0:2]--------->outpin[2] |---------->|194       |  |
-> +   |  -------->|16         |     |                |inpin[0:3]--------->outpin[3] |---------->|195       |  |
-> +   |   UART11  |           |     |--------------> |inpin[0:4]--------->outpin[4] |---------->|196       |  |
-> +   |  -------->|17         |                      |inpin[0:5]--------->outpin[5] |---------->|197       |  |
-> +   |   UART12  |           |                      |inpin[0:6]--------->outpin[6] |---------->|198       |  |
-> +   |  -------->|18         |                      |inpin[0:7]--------->outpin[7] |---------->|199       |  |
-> +   |           |-----------|                      |inpin[0:8]--------->outpin[8] |---------->|200       |  |
-> +   |                                              |inpin[0:9]--------->outpin[9] |---------->|201       |  |
-> +   |-------------------------------------------------------------------------------------------------------|
-> +   |-------------------------------------------------------------------------------------------------------|
-> +   |  ETH1    |-----------|     orgates[1]------->|inpin[1]----------->outpin[10]|---------->|128       |  |
-> +   | -------->|0          |     orgates[2]------->|inpin[2]----------->outpin[11]|---------->|129       |  |
-> +   |  ETH2    |          4|     orgates[3]------->|inpin[3]----------->outpin[12]|---------->|130       |  |
-> +   | -------->|1         5|     orgates[4]------->|inpin[4]----------->outpin[13]|---------->|131       |  |
-> +   |  ETH3    |          6|---->orgates[5]------->|inpin[5]----------->outpin[14]|---------->|132       |  |
-> +   | -------->|2        19|     orgates[6]------->|inpin[6]----------->outpin[15]|---------->|133       |  |
-> +   |  UART0   |         20|     orgates[7]------->|inpin[7]----------->outpin[16]|---------->|134       |  |
-> +   | -------->|7        21|     orgates[8]------->|inpin[8]----------->outpin[17]|---------->|135       |  |
-> +   |  UART1   |         22|     orgates[9]------->|inpin[9]----------->outpin[18]|---------->|136       |  |
-> +   | -------->|8        23|                       |------------------------------|           |----------|  |
-> +   |  UART2   |         24|                                                                                |
-> +   | -------->|9        25|                       AST2700 A0 Design                                        |
-> +   |  UART3   |         26|                                                                                |
-> +   | -------->|10       27|                                                                                |
-> +   |  UART5   |         28|                                                                                |
-> +   | -------->|11       29| GICINT132                                                                      |
-> +   |  UART6   |           |                                                                                |
-> +   | -------->|12       30|                                                                                |
-> +   |  UART7   |         31|                                                                                |
-> +   | -------->|13         |                                                                                |
-> +   |  UART8   |  OR[0:31] |                                                                                |
-> +   | -------->|14         |                                                                                |
-> +   |  UART9   |           |                                                                                |
-> +   | -------->|15         |                                                                                |
-> +   |  UART10  |           |                                                                                |
-> +   | -------->|16         |                                                                                |
-> +   |  UART11  |           |                                                                                |
-> +   | -------->|17         |                                                                                |
-> +   |  UART12  |           |                                                                                |
-> +   | -------->|18         |                                                                                |
-> +   |          |-----------|                                                                                |
-> +   |                                                                                                       |
-> +   |-------------------------------------------------------------------------------------------------------|
-> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-> index d7675cebc2..f19d73c9f6 100644
-> --- a/docs/specs/index.rst
-> +++ b/docs/specs/index.rst
-> @@ -38,3 +38,4 @@ guest hardware that is specific to QEMU.
->      rocker
->      riscv-iommu
->      riscv-aia
-> +   aspeed-intc
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index a48f47b74e..92487bf229 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -333,14 +333,21 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>                            sc->silicon_rev);
+>       object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
+>                                 "hw-strap1");
+> -    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
+> -                              "hw-strap2");
+>       object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
+>                                 "hw-prot-key");
+>   
+>       object_initialize_child(obj, "scuio", &s->scuio, TYPE_ASPEED_2700_SCUIO);
+>       qdev_prop_set_uint32(DEVICE(&s->scuio), "silicon-rev",
+>                            sc->silicon_rev);
+> +    /*
+> +     * There is one hw-strap1 register in the SCU (CPU DIE) and another
+> +     * hw-strap1 register in the SCUIO (IO DIE). To reuse the current design
+> +     * of hw-strap, hw-strap1 is assigned to the SCU and sets the value in the
+> +     * SCU hw-strap1 register, while hw-strap2 is assigned to the SCUIO and
+> +     * sets the value in the SCUIO hw-strap1 register.
+> +     */
+> +    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scuio),
+> +                                  "hw-strap1");
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+>       object_initialize_child(obj, "fmc", &s->fmc, typename);
 

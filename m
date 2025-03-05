@@ -1,254 +1,238 @@
-Received: by 2002:a05:7022:90e:b0:99:f831:508e with SMTP id bs14csp1031554dlb;
-        Wed, 5 Mar 2025 11:07:22 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUJfMqD7tSa77oyHtnHi/kCdH3pkgW2kR3NqTif1IW5mjr6nC/nOf5rXREH6p9dZ/gSJslpv3xOCMRwqA==@linaro.org
-X-Received: by 2002:a05:6000:4183:b0:391:2991:bdcd with SMTP id ffacd0b85a97d-3912991bf35mr287411f8f.39.1741201642375;
-        Wed, 05 Mar 2025 11:07:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741201642; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1073152njm;
+        Wed, 5 Mar 2025 12:42:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVWqe86wumBFTsoRe1J9+8NB645mITF4GoHwgAxG8U7jxQyOYUkrLdEdJQGpj6fus/BqM9lZnTcumaIDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFojE5VLfCKnVQTbV+OgMtuD2TWr7cF/HZJNLtvVpxhje/cc74RWyCRbhjJM9hBjm8ZQQjV
+X-Received: by 2002:a05:6000:1449:b0:390:f2f1:2a21 with SMTP id ffacd0b85a97d-3911f7c3348mr3975569f8f.37.1741207320416;
+        Wed, 05 Mar 2025 12:42:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741207320; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZJRLvUVj4g8DFxHMxhOeYsDh5Zx3vaDwReDr8bpjaW5W7TFbZuuLvHuYN8XRJWMvHv
-         EVc4ZzLoMZCisXHOZT177NgComIrINUnGvkGnydNk9PB7r+jjnryU3i4N3xNjUwr95QW
-         QqF5INjG1w+EsYuxNrZxSFrJ5rd+ZzL7j+bYXTpXRBPT93hJYwyFeUbP8Rcj3Z6tMzrx
-         vmbjSbsaDdo3ONzOnUgXkQtKEy20h2pT0M4yBJ2da7LaRenc7YtM98c4y3veRxM82bGq
-         dNGhOkX3DNiAh8eyR8JlhBTpkurVAMrrnqZgiaQqC3aLmGDxYOSPwW6QMm+prr1GhCW4
-         +tNA==
+        b=GjHLG/wOI2EK75JH7DefQFDF2GuD40lUPnkXdRE7M3xttZX72tegsQDJVsvB8MEc6/
+         lxC0mjazub4axhpW8x3//kOM6SqQ6xeTkFYd088o4XYP1FH0WkUoPz5uN0arJjjunXyX
+         DCnU5m2oAHWmRPbwOdZMqEgAzt4BwO2vJp6zKTdO3f339dVIx4DDNsPbloUlx3DwvCr5
+         oG8MRzKVDkthbor3pipNVkOsVU6I3WXtVQzWGN0pQvgAj+McgRIFB+p2dJBvmhFE3QfW
+         KT/D4vIlZ6ycCY/OoH1UhUhRq9XR78f50Vi/y4gFiuVz0V86AzgyFFfXsZE231yn+BIX
+         Om1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ZtdD5y0qJbaboVZ+z+JoOmQrhUsPGBNbUP1wWXiYCx0=;
-        fh=KYcc0uGU+lku6aymTN2Zs56QzUMoAG1P6udwPfDVskU=;
-        b=XpOtNPy09Wu5ayk7OaCEinp9O2EVTXyZtK1qBxSOCbZ8S2yZ/JGIQiuk0DEEEF0v8s
-         eKay2pABAi5LRVT6TGAPgZJ1R4YrpiVJghwxOAda2XLx1+Rzou2gvTviZZDnpFW18NOz
-         mZh7cqilarCZBSgyPoe6AD7+uUO7n29Kq1f4lk5svXqLo7aTMbC1YsSvPvl9pFVus9Ph
-         y9WtgjiM7WPTbiRwu+M0pNzJBwAz4eT7x4gEbk5rq78FVRHrFT9dLolKJGXMUAu5XW/4
-         +cV/M8vk46X5Ae7ht+VwqemMQR5XVv/+aO7UtX7omJE46Q+75eazen4qHgMXWwF6lbf2
-         dkUw==;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date;
+        bh=vQUt9o03S2lTU5j0Ph8VhDhNKGFKCIZpMaAiw2mgbKA=;
+        fh=68yi0AmT8m1kU47x4ejuTNww9x8axbcjBPrc/WWfeFk=;
+        b=EZ4IK6lJ6aXeaXThQZXM1tgFjy/zBtQVd9CBQ1yzpD9A07kjySxmo5YNVdlf4qzAtJ
+         CydeewFfg4/A60vRROcGJXwDN9d9DQXwNp3JTuPX39Iud5J/MwQtV9plShTt8AvKS/zm
+         eW1uwxYeArp6lBMabzl+zFIqbTiUJOBbL47vy+Iankl05PzHIx4TJ2u+9r3hof5Pqzvq
+         LGIDTCnSrLdAEaEIw8PfnVm7Mbr/H9JOg1qNgwP1PEb+7enAjm0pnuBlvSTZk4wY+Prn
+         crPZ4hZwcyYw1YDEEoLO3C8IfVTO6Vy0V5J+Mg+U/lLsm8L6h8teAFbUGFwX7puW/7yU
+         O65Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="gj/oSM8O";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3912886dcbesor248951f8f.0.2025.03.05.11.07.22
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 05 Mar 2025 11:07:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <balaton@eik.bme.hu>
+Received: from zero.eik.bme.hu (zero.eik.bme.hu. [152.66.115.2])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-390e4859132si11625958f8f.888.2025.03.05.12.42.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Mar 2025 12:42:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) client-ip=152.66.115.2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="gj/oSM8O";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741201642; x=1741806442; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZtdD5y0qJbaboVZ+z+JoOmQrhUsPGBNbUP1wWXiYCx0=;
-        b=gj/oSM8OCHZnpmhoPxo+PSLX96oGoKU2hg029JXnKuFpgrGoEpBOPcMNdZUbbIJo1/
-         i2l/Tg7qrUzEiWMRQRFV/DVEHoEYqbXfXZI+JE/XQ26+qxsTU5lYBQHVL60XMxZtnKH4
-         Pf927qAcr/s1QJNiMLf/tHBkD6An6Iv3GRQ1wNb+PUOGWGrJ1bUHMU+WhTX3tTpBorJh
-         LlBYv9OtVM8cGx1lRt1/pYv4KWIHIP5v6u4ZlS+wMLyj66KsfCArA/sWL6qwi7dzHPcS
-         Yqos9arMNDPe+ULaEvBEdgaEQ7VTJjcXDtECLgoZg4aevJCyH7nXBQ47V+r0oWtvZ0OY
-         Qmiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741201642; x=1741806442;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZtdD5y0qJbaboVZ+z+JoOmQrhUsPGBNbUP1wWXiYCx0=;
-        b=NttpP0f6qrcDJ9SkExwnCUndzTGBNCcX2LjSt/FEmOCeAM4xVQtTbYkzetamyMf2/o
-         96r0esNU1JFpXNiCFZaOSgu4KDwtH3GajFd/CIqy2QtF/98+937HvBEbvTEEStwbZbvA
-         OfKguOWizt2Emn6QeHlSYFDSYjyR6tZmfNOSBlKoQzSUWdom8zsN104bc8Y+HR4CYS5H
-         0xH1aYh7PWUz+zbSaJ4BVjUjti9wtsKTIYtgsxsIoFmxX4uXoItOhaNj++/zPOUt1GnP
-         YQF9YNILu6H1yZdFcPRZNehJUFmNhBIrMogm5kH43OL8PELQs6MLuNxf8Siq83wqFy1y
-         pDVA==
-X-Forwarded-Encrypted: i=1; AJvYcCVOyJ4cAhpMPH9eM+Tk0c4Ktd4gO4+O0tpo9KuoKn0cIc+8+m4Q0UWw4Nhkjix7ioh1Ws3m3LXauwHzUQ==@linaro.org
-X-Gm-Message-State: AOJu0YwOoHjajres+2M1wDpzY5k9ztaxT6/8mOSxtVTit/RbKHzgsUna
-	vepthEQGaZ8MwfRRyQ9OTtqNRdFnAGMTWlplB+z0EH0/WXitWoNTtpA/tnaK04anAZxGILdedWv
-	iOO3YVQ==
-X-Gm-Gg: ASbGnctRj5ELFs+J2gdp6UdOIMjEQPox5RD1YThwo+I/AS3NRESLXIh1AXSJispzqj6
-	uVWFqiDUnxK1bkeJhzApiaVZl9RQEQAaWxH4Tzfg24K3jndgbvlGKVHHpbISM0VH5FWBtGwnE/Z
-	0cN9LAiJOeQXvUB9yHzOueOx61vEgoSetUtjXm2ZLSVf2AQGJjlDTK1ETDZIVbhfQ4CWKa+R0od
-	RGl92Npw1G4Dp6MAIDeZlT3yj0ki3CBVH7MBNpw19sXZmTYZWvUoLn+lnvohJVe6xh2t8BwbfX0
-	aAfUz3KDzKcL/b4tnSabnHWhEUvrYzcuhRxA2iMqG/xBOtVqGLX1d1HAsgrp2rcKYdVZda1mQ/R
-	KWSu9weHvkCmg
-X-Google-Smtp-Source: AGHT+IF1tyIvWQEqaytTr5lfDw/2LBx0D9zKv+y66JO+KxkKQu3LvLpROEqwZDmuqF5abWXX9hh0uQ==
-X-Received: by 2002:a5d:5846:0:b0:391:2353:8a57 with SMTP id ffacd0b85a97d-39123538ab5mr2765932f8f.34.1741201641745;
-        Wed, 05 Mar 2025 11:07:21 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43bd4293250sm25706645e9.16.2025.03.05.11.07.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Mar 2025 11:07:21 -0800 (PST)
-Message-ID: <1b76a7fc-e79b-4f32-9657-b87fb7761c95@linaro.org>
-Date: Wed, 5 Mar 2025 20:07:20 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 152.66.115.2 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id B12FD4E600F;
+	Wed, 05 Mar 2025 21:41:59 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id PjYwf-AWy0HM; Wed,  5 Mar 2025 21:41:57 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 9757D4E6001; Wed, 05 Mar 2025 21:41:57 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 946D674577C;
+	Wed, 05 Mar 2025 21:41:57 +0100 (CET)
+Date: Wed, 5 Mar 2025 21:41:57 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: Thomas Huth <thuth@redhat.com>, 
+    =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org, 
+    Paolo Bonzini <pbonzini@redhat.com>, 
+    =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Peter Maydell <peter.maydell@linaro.org>, 
+    Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org, 
+    =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
 Subject: Re: [RFC PATCH 2/4] hw/arm/raspi: Replace TARGET_AARCH64 by
  legacy_binary_is_64bit()
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250305161248.54901-1-philmd@linaro.org>
- <20250305161248.54901-3-philmd@linaro.org>
- <91882e5b-bd0f-4f84-9c03-c40b5e3d3e3f@redhat.com>
- <9d7283b7-9d05-4dc0-8e80-3c565376a812@kaod.org>
- <0561d400-6e0b-40e0-a616-bd0d9fd4feec@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <0561d400-6e0b-40e0-a616-bd0d9fd4feec@redhat.com>
+In-Reply-To: <1b76a7fc-e79b-4f32-9657-b87fb7761c95@linaro.org>
+Message-ID: <9d0eb259-ec66-28ab-7cb1-8dcced230f0d@eik.bme.hu>
+References: <20250305161248.54901-1-philmd@linaro.org> <20250305161248.54901-3-philmd@linaro.org> <91882e5b-bd0f-4f84-9c03-c40b5e3d3e3f@redhat.com> <9d7283b7-9d05-4dc0-8e80-3c565376a812@kaod.org> <0561d400-6e0b-40e0-a616-bd0d9fd4feec@redhat.com>
+ <1b76a7fc-e79b-4f32-9657-b87fb7761c95@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="3866299591-1915168761-1741207317=:28911"
+X-TUID: W+rT0fj3mS/u
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-1915168761-1741207317=:28911
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 0v8OC0NzfZ6k
+Content-Transfer-Encoding: 8BIT
 
-On 5/3/25 19:35, Thomas Huth wrote:
-> On 05/03/2025 19.12, Cédric Le Goater wrote:
->> On 3/5/25 18:40, Thomas Huth wrote:
->>> On 05/03/2025 17.12, Philippe Mathieu-Daudé wrote:
->>>> For legacy ARM binaries, legacy_binary_is_64bit() is
->>>> equivalent of the compile time TARGET_AARCH64 definition.
->>>>
->>>> Use it as TypeInfo::registerable() callback to dynamically
->>>> add Aarch64 specific types in qemu-system-aarch64 binary,
->>>> removing the need of TARGET_AARCH64 #ifdef'ry.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>>   hw/arm/bcm2836.c | 6 ++----
->>>>   hw/arm/raspi.c   | 7 +++----
->>>>   2 files changed, 5 insertions(+), 8 deletions(-)
->>>>
->>>> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
->>>> index 95e16806fa1..88a32e5fc20 100644
->>>> --- a/hw/arm/bcm2836.c
->>>> +++ b/hw/arm/bcm2836.c
->>>> @@ -12,6 +12,7 @@
->>>>   #include "qemu/osdep.h"
->>>>   #include "qapi/error.h"
->>>>   #include "qemu/module.h"
->>>> +#include "qemu/legacy_binary_info.h"
->>>>   #include "hw/arm/bcm2836.h"
->>>>   #include "hw/arm/raspi_platform.h"
->>>>   #include "hw/sysbus.h"
->>>> @@ -195,7 +196,6 @@ static void bcm2836_class_init(ObjectClass *oc, 
->>>> void *data)
->>>>       dc->realize = bcm2836_realize;
->>>>   };
->>>> -#ifdef TARGET_AARCH64
->>>>   static void bcm2837_class_init(ObjectClass *oc, void *data)
->>>>   {
->>>>       DeviceClass *dc = DEVICE_CLASS(oc);
->>>> @@ -208,7 +208,6 @@ static void bcm2837_class_init(ObjectClass *oc, 
->>>> void *data)
->>>>       bc->clusterid = 0x0;
->>>>       dc->realize = bcm2836_realize;
->>>>   };
->>>> -#endif
->>>>   static const TypeInfo bcm283x_types[] = {
->>>>       {
->>>> @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] = {
->>>>           .name           = TYPE_BCM2836,
->>>>           .parent         = TYPE_BCM283X,
->>>>           .class_init     = bcm2836_class_init,
->>>> -#ifdef TARGET_AARCH64
->>>>       }, {
->>>>           .name           = TYPE_BCM2837,
->>>>           .parent         = TYPE_BCM283X,
->>>> +        .registerable   = legacy_binary_is_64bit,
->>>>           .class_init     = bcm2837_class_init,
->>>> -#endif
->>>>       }, {
->>>>           .name           = TYPE_BCM283X,
->>>>           .parent         = TYPE_BCM283X_BASE,
->>>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->>>> index dce35ca11aa..f7e647a9cbf 100644
->>>> --- a/hw/arm/raspi.c
->>>> +++ b/hw/arm/raspi.c
->>>> @@ -15,6 +15,7 @@
->>>>   #include "qemu/osdep.h"
->>>>   #include "qemu/units.h"
->>>>   #include "qemu/cutils.h"
->>>> +#include "qemu/legacy_binary_info.h"
->>>>   #include "qapi/error.h"
->>>>   #include "hw/arm/boot.h"
->>>>   #include "hw/arm/bcm2836.h"
->>>> @@ -367,7 +368,6 @@ static void 
->>>> raspi2b_machine_class_init(ObjectClass *oc, void *data)
->>>>       raspi_machine_class_init(mc, rmc->board_rev);
->>>>   };
->>>> -#ifdef TARGET_AARCH64
->>>>   static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
->>>>   {
->>>>       MachineClass *mc = MACHINE_CLASS(oc);
->>>> @@ -387,7 +387,6 @@ static void 
->>>> raspi3b_machine_class_init(ObjectClass *oc, void *data)
->>>>       rmc->board_rev = 0xa02082;
->>>>       raspi_machine_class_init(mc, rmc->board_rev);
->>>>   };
->>>> -#endif /* TARGET_AARCH64 */
->>>>   static const TypeInfo raspi_machine_types[] = {
->>>>       {
->>>> @@ -402,16 +401,16 @@ static const TypeInfo raspi_machine_types[] = {
->>>>           .name           = MACHINE_TYPE_NAME("raspi2b"),
->>>>           .parent         = TYPE_RASPI_MACHINE,
->>>>           .class_init     = raspi2b_machine_class_init,
->>>> -#ifdef TARGET_AARCH64
->>>>       }, {
->>>>           .name           = MACHINE_TYPE_NAME("raspi3ap"),
->>>>           .parent         = TYPE_RASPI_MACHINE,
->>>> +        .registerable   = legacy_binary_is_64bit,
->>>>           .class_init     = raspi3ap_machine_class_init,
->>>>       }, {
->>>>           .name           = MACHINE_TYPE_NAME("raspi3b"),
->>>>           .parent         = TYPE_RASPI_MACHINE,
->>>> +        .registerable   = legacy_binary_is_64bit,
->>>>           .class_init     = raspi3b_machine_class_init,
->>>> -#endif
->>>>       }, {
->>>>           .name           = TYPE_RASPI_MACHINE,
->>>>           .parent         = TYPE_RASPI_BASE_MACHINE,
->>>
->>> Uh, this (together with patch 1) looks very cumbersome. Why don't you 
->>> simply split the array into two, one for 32-bit and one for 64-bit, 
->>> and then use a simply "if (legacy_binary_is_64bit())" in the 
->>> type_init function instead?
->>
->> Sounds like a good idea.
->>
->> So we would have DEFINE_TYPES() and DEFINE_TYPES64() macros ?
-> 
-> Either that - or simply use type_init() directly here for the time being.
+On Wed, 5 Mar 2025, Philippe Mathieu-Daudé wrote:
+> On 5/3/25 19:35, Thomas Huth wrote:
+>> On 05/03/2025 19.12, Cédric Le Goater wrote:
+>>> On 3/5/25 18:40, Thomas Huth wrote:
+>>>> On 05/03/2025 17.12, Philippe Mathieu-Daudé wrote:
+>>>>> For legacy ARM binaries, legacy_binary_is_64bit() is
+>>>>> equivalent of the compile time TARGET_AARCH64 definition.
+>>>>> 
+>>>>> Use it as TypeInfo::registerable() callback to dynamically
+>>>>> add Aarch64 specific types in qemu-system-aarch64 binary,
+>>>>> removing the need of TARGET_AARCH64 #ifdef'ry.
+>>>>> 
+>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>> ---
+>>>>>   hw/arm/bcm2836.c | 6 ++----
+>>>>>   hw/arm/raspi.c   | 7 +++----
+>>>>>   2 files changed, 5 insertions(+), 8 deletions(-)
+>>>>> 
+>>>>> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+>>>>> index 95e16806fa1..88a32e5fc20 100644
+>>>>> --- a/hw/arm/bcm2836.c
+>>>>> +++ b/hw/arm/bcm2836.c
+>>>>> @@ -12,6 +12,7 @@
+>>>>>   #include "qemu/osdep.h"
+>>>>>   #include "qapi/error.h"
+>>>>>   #include "qemu/module.h"
+>>>>> +#include "qemu/legacy_binary_info.h"
+>>>>>   #include "hw/arm/bcm2836.h"
+>>>>>   #include "hw/arm/raspi_platform.h"
+>>>>>   #include "hw/sysbus.h"
+>>>>> @@ -195,7 +196,6 @@ static void bcm2836_class_init(ObjectClass *oc, void 
+>>>>> *data)
+>>>>>       dc->realize = bcm2836_realize;
+>>>>>   };
+>>>>> -#ifdef TARGET_AARCH64
+>>>>>   static void bcm2837_class_init(ObjectClass *oc, void *data)
+>>>>>   {
+>>>>>       DeviceClass *dc = DEVICE_CLASS(oc);
+>>>>> @@ -208,7 +208,6 @@ static void bcm2837_class_init(ObjectClass *oc, void 
+>>>>> *data)
+>>>>>       bc->clusterid = 0x0;
+>>>>>       dc->realize = bcm2836_realize;
+>>>>>   };
+>>>>> -#endif
+>>>>>   static const TypeInfo bcm283x_types[] = {
+>>>>>       {
+>>>>> @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] = {
+>>>>>           .name           = TYPE_BCM2836,
+>>>>>           .parent         = TYPE_BCM283X,
+>>>>>           .class_init     = bcm2836_class_init,
+>>>>> -#ifdef TARGET_AARCH64
+>>>>>       }, {
+>>>>>           .name           = TYPE_BCM2837,
+>>>>>           .parent         = TYPE_BCM283X,
+>>>>> +        .registerable   = legacy_binary_is_64bit,
+>>>>>           .class_init     = bcm2837_class_init,
+>>>>> -#endif
+>>>>>       }, {
+>>>>>           .name           = TYPE_BCM283X,
+>>>>>           .parent         = TYPE_BCM283X_BASE,
+>>>>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+>>>>> index dce35ca11aa..f7e647a9cbf 100644
+>>>>> --- a/hw/arm/raspi.c
+>>>>> +++ b/hw/arm/raspi.c
+>>>>> @@ -15,6 +15,7 @@
+>>>>>   #include "qemu/osdep.h"
+>>>>>   #include "qemu/units.h"
+>>>>>   #include "qemu/cutils.h"
+>>>>> +#include "qemu/legacy_binary_info.h"
+>>>>>   #include "qapi/error.h"
+>>>>>   #include "hw/arm/boot.h"
+>>>>>   #include "hw/arm/bcm2836.h"
+>>>>> @@ -367,7 +368,6 @@ static void raspi2b_machine_class_init(ObjectClass 
+>>>>> *oc, void *data)
+>>>>>       raspi_machine_class_init(mc, rmc->board_rev);
+>>>>>   };
+>>>>> -#ifdef TARGET_AARCH64
+>>>>>   static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
+>>>>>   {
+>>>>>       MachineClass *mc = MACHINE_CLASS(oc);
+>>>>> @@ -387,7 +387,6 @@ static void raspi3b_machine_class_init(ObjectClass 
+>>>>> *oc, void *data)
+>>>>>       rmc->board_rev = 0xa02082;
+>>>>>       raspi_machine_class_init(mc, rmc->board_rev);
+>>>>>   };
+>>>>> -#endif /* TARGET_AARCH64 */
+>>>>>   static const TypeInfo raspi_machine_types[] = {
+>>>>>       {
+>>>>> @@ -402,16 +401,16 @@ static const TypeInfo raspi_machine_types[] = {
+>>>>>           .name           = MACHINE_TYPE_NAME("raspi2b"),
+>>>>>           .parent         = TYPE_RASPI_MACHINE,
+>>>>>           .class_init     = raspi2b_machine_class_init,
+>>>>> -#ifdef TARGET_AARCH64
+>>>>>       }, {
+>>>>>           .name           = MACHINE_TYPE_NAME("raspi3ap"),
+>>>>>           .parent         = TYPE_RASPI_MACHINE,
+>>>>> +        .registerable   = legacy_binary_is_64bit,
+>>>>>           .class_init     = raspi3ap_machine_class_init,
+>>>>>       }, {
+>>>>>           .name           = MACHINE_TYPE_NAME("raspi3b"),
+>>>>>           .parent         = TYPE_RASPI_MACHINE,
+>>>>> +        .registerable   = legacy_binary_is_64bit,
+>>>>>           .class_init     = raspi3b_machine_class_init,
+>>>>> -#endif
+>>>>>       }, {
+>>>>>           .name           = TYPE_RASPI_MACHINE,
+>>>>>           .parent         = TYPE_RASPI_BASE_MACHINE,
+>>>> 
+>>>> Uh, this (together with patch 1) looks very cumbersome. Why don't you 
+>>>> simply split the array into two, one for 32-bit and one for 64-bit, and 
+>>>> then use a simply "if (legacy_binary_is_64bit())" in the type_init 
+>>>> function instead?
+>>> 
+>>> Sounds like a good idea.
+>>> 
+>>> So we would have DEFINE_TYPES() and DEFINE_TYPES64() macros ?
+>> 
+>> Either that - or simply use type_init() directly here for the time being.
+>
+> As Pierrick noted on private chat, my approach doesn't scale, I should
+> use smth in the lines of:
+>
+>    }, {
+>        .name           = MACHINE_TYPE_NAME("raspi2b"),
+>        .parent         = TYPE_RASPI_MACHINE,
+>        .registerable   = qemu_binary_has_target_arm,
+>        .class_init     = raspi2b_machine_class_init,
+>    }, {
+>        .name           = MACHINE_TYPE_NAME("raspi3ap"),
+>        .parent         = TYPE_RASPI_MACHINE,
+>        .registerable   = qemu_binary_has_target_aarch64,
+>        .class_init     = raspi3ap_machine_class_init,
+>    }, {
+>
+> Having:
+>
+> bool qemu_binary_has_target_arm(void)
+> {
+>    return qemu_arch_available(QEMU_ARCH_ARM);
+> }
 
-As Pierrick noted on private chat, my approach doesn't scale, I should
-use smth in the lines of:
+I don't know where this is going and what are the details here but why add 
+yet another one line function that calls another one that's identical to a 
+third one. Why not put in TypeInfo .arch = QEMU_ARCH_ARM then compare to 
+that when needed? Although it's questionable if arch belongs to QOM 
+TypeInfo and not in Device or Machine instead this may be needed if you 
+have to decide on this when registering types. I'm not sure about what 
+.registerable means here but more common spelling might be .registrable 
+(which suggests this could be problematic in practice so maybe try to find 
+a better name for this).
 
-     }, {
-         .name           = MACHINE_TYPE_NAME("raspi2b"),
-         .parent         = TYPE_RASPI_MACHINE,
-         .registerable   = qemu_binary_has_target_arm,
-         .class_init     = raspi2b_machine_class_init,
-     }, {
-         .name           = MACHINE_TYPE_NAME("raspi3ap"),
-         .parent         = TYPE_RASPI_MACHINE,
-         .registerable   = qemu_binary_has_target_aarch64,
-         .class_init     = raspi3ap_machine_class_init,
-     }, {
+Regards,
+BALATON Zoltan
 
-Having:
-
-bool qemu_binary_has_target_arm(void)
-{
-     return qemu_arch_available(QEMU_ARCH_ARM);
-}
-
-Now back to Thomas suggestion, we could define 2 TypeInfo arrays,
-but I foresee lot of code churn when devices has to be made
-available on different setup combinations; so with that in mind
-the QOM registerable() callback appears a bit more future proof.
+> Now back to Thomas suggestion, we could define 2 TypeInfo arrays,
+> but I foresee lot of code churn when devices has to be made
+> available on different setup combinations; so with that in mind
+> the QOM registerable() callback appears a bit more future proof.
+>
+>
+--3866299591-1915168761-1741207317=:28911--

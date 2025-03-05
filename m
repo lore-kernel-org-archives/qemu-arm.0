@@ -1,99 +1,99 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp970648njm;
-        Wed, 5 Mar 2025 09:40:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXM+YXN4SwznApVWzUXxAu5dzncVK1IAw6xqRQy42WjI5+om4LeJHgzwJE13TkOWGeD+RrWi3hqsHSV8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHGJYLNU23znfz5V76g2bGHwmCXYoNAmwL4CMl6W128f0oiN2VvDbUHJxOULVe31gh5cD0E
-X-Received: by 2002:a05:6902:705:b0:e5d:d9e4:532e with SMTP id 3f1490d57ef6-e611e1b87f9mr4545984276.24.1741196407521;
-        Wed, 05 Mar 2025 09:40:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741196407; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp972585njm;
+        Wed, 5 Mar 2025 09:43:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXc9D1OMo1U18yZeUSiuPJoLz+7YGytbtkEByOnQRgp9l9QBsI6/Thi+JNXYZo95l927A4IAqOI+C8Z/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9MlFJF9/8oF2WFCF3DW9PvBl6wNyQDh/uQsYXv1VwUs8T1FHCmEYKpBrHUZjGSL47GB0v
+X-Received: by 2002:a05:690c:3589:b0:6f7:5a46:fe5f with SMTP id 00721157ae682-6fda30379a6mr57857297b3.1.1741196610318;
+        Wed, 05 Mar 2025 09:43:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741196610; cv=none;
         d=google.com; s=arc-20240605;
-        b=iiUdahBUavajnICdzsY9cPFO/yUb07v0wxVfCP6wEC840ntE223wPkhgUWMHlLlD4V
-         p0ZSSEFbi7YZB9np5n5WX38TV7wYnoTirch47f54juF3MAFhp9HP2PeI/h8DjX2202+u
-         UMtko1XOkKW1ryQUuFig7DiWrAsb6gIdY2omeAiiFA7gx5vGEkFRXNG6aQiIM8OEy5p+
-         oF27Ip/OyrKi8NxqdMFoBqE7AMqms6UhZS/i5XyUZJ/aIEC5HYvmDVK8i732ZFUSdijo
-         3WW0kq1DCRvV1Y5t6rMRaQQ1u4SzkLVzCU63Uga5xwu6eUnbY9M1qpep4lNfz8AOzF6O
-         lfPw==
+        b=J6MjbyjXd+A88ih5zjRTVaqAj4UMydQNsCI+Sw3NGQ/SP8pnaJOax2bRXEGxqccsDa
+         BedcuHQ1xTYgTxLgcVNtNqjHUnXXYhm7jSoIjg4CboSLkQ1nF72opB8yFPw+4HzHPufR
+         rc28/5Yca6DBXovPIoM2ywc96k7eghNZtYGxNXK+mxKlJlYJ64VmfeKjO4ChX5kMSTg6
+         9EZ9UQk1gTiyyg52IS+xTP1ZsCWhaX8j9wWfXeMDPNIOfp7E7EVRd9QFPjWWhW5PKliM
+         S8C+05PzKF3do5mqVyzbj/H8ZhpbdViCqpb84Dq1BoBSqNvt7vuWzf22eAY4fzf3dNFP
+         QR3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=sCOzi0wXsAtvsUqY3ZLmyoS2Rh+ikV6GVuS1+H9G6wM=;
-        fh=RT/PgtVLfFiYaC2J+JeYPgrvba8+1a/tBw6+fxGxwiU=;
-        b=LyiQxsLYYkyCWA4FuALJt8kg71ilRhr9Tg9a5glfnqff/qqRvzngBX73wwTnfL9JTx
-         ExCE+5Ku3SSjddtR2pPv23E+1Kuu8168Md43ryjfOeEr6X1dPysUi1QLegCxsAyfkEy2
-         KztpLIMU+7MMa1wNlxHK5JCCgHsw86fuTcZY2DxhxgjjSTHm2j3w7V1YrmEvrNNcvJH2
-         jpyOASo2GssZu1gGtDeaJl9F4qWG/npfBAa4ZzVo288iEgedHrYhfRRwNxlgy6xdYo4F
-         QYdtJjjRJjOWbsCuBTTOOWB2IWv6D7K2C9/P5PVuBm1LaRxUE2x09vCHTnSxE8ojFuSX
-         mr3g==;
+        bh=0io+YkR5jeMpVFQxenjogAXZmb91RzAb6Htvhb2NFNs=;
+        fh=A/OwDQ9RWUQARpKY3ORZ2zdAWYtuEXd13nB7JJN/T6I=;
+        b=kG9mtY1FmweFIQcKYPN9B26QU2Oa7/j+xD4ZYS9IdTVVOU5wh++meXY08SoTx5Z5ad
+         Ry1qGusr1T8V6yHa4RyKZ1Y99HA6kKZtkWMfIy8V33xvdX7gAAlop/ZI6hc7UWMf6Lqn
+         11z4IcfP3kn6HTMSZibZ8tfUZSSZkL9JDfrfDbriN9Szn2YGdaTvhYFW4GxNb5RYszGQ
+         c45V5UGeS1MqfDrB0dhP3MDe0ZQzLRCGqU1iViO6y/Z9XQ/iY8S/RaypQvW7J8PC4Fte
+         CMqqtiXNw3qPPF73WnTeNIdVgqZhtFW02+7LCu2xNibP13PtJ8Uum3G7SO7tiYCZpiot
+         IkZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=feXKgds9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSRn8nXA;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-e60a3a1f13fsi11882950276.30.2025.03.05.09.40.07
+        by mx.google.com with ESMTPS id 00721157ae682-6fd3cb5d546si123303697b3.219.2025.03.05.09.43.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Mar 2025 09:40:07 -0800 (PST)
+        Wed, 05 Mar 2025 09:43:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=feXKgds9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSRn8nXA;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1741196407;
+	s=mimecast20190719; t=1741196609;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=sCOzi0wXsAtvsUqY3ZLmyoS2Rh+ikV6GVuS1+H9G6wM=;
-	b=feXKgds9F1GzKsp2jKxUdWbwIXVrQ/azjY+TCCqGYyfZmuLhq0QCDx+jfZGiLlkPyA2Ah6
-	kspZ8Yt4ISB/ADuPnlaKB3fCtn74qpNhCRuEJM+JSzSNGJFMZtJhBqjwf0FqKc0kniIszQ
-	tcVbdL271G4xaYhg0fP+59jwdCmXmT4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=0io+YkR5jeMpVFQxenjogAXZmb91RzAb6Htvhb2NFNs=;
+	b=iSRn8nXAcfKdjkXjs3DUmD8tzgcn3Q12Mw4BdFq8GsJhzvCJBa4WjZmzCGMFpoXbifbZME
+	6WkXFryivGPHh4bsHcwMOT9FaLBDveXayyqH7kIG96cMEF5v8jIq4BzxeiPc7iy7lzwkET
+	/xnGbaP3VlFjYkknnU40muupHY7QFcU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-288-RgjWsB8wNTmqwuTDaWWyOQ-1; Wed, 05 Mar 2025 12:40:05 -0500
-X-MC-Unique: RgjWsB8wNTmqwuTDaWWyOQ-1
-X-Mimecast-MFC-AGG-ID: RgjWsB8wNTmqwuTDaWWyOQ_1741196404
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43bcc04d2ebso16549885e9.1
-        for <alex.bennee@linaro.org>; Wed, 05 Mar 2025 09:40:05 -0800 (PST)
+ us-mta-120-MyEtrErpN9agTCj9pRUdcA-1; Wed, 05 Mar 2025 12:43:23 -0500
+X-MC-Unique: MyEtrErpN9agTCj9pRUdcA-1
+X-Mimecast-MFC-AGG-ID: MyEtrErpN9agTCj9pRUdcA_1741196603
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-390e27150dbso6821267f8f.3
+        for <alex.bennee@linaro.org>; Wed, 05 Mar 2025 09:43:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741196404; x=1741801204;
+        d=1e100.net; s=20230601; t=1741196602; x=1741801402;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=sCOzi0wXsAtvsUqY3ZLmyoS2Rh+ikV6GVuS1+H9G6wM=;
-        b=o2f34P9lbfeUSQpxJIbxw42nRUrbGwIdRvOtA7VNEYgfBlqDu/u60zSeUubMmyDrny
-         mwPbwTgRv/WbuMzt6it1Vj6CLZU0gAn/w8CPgdnRvgbt6iauDLppNFZInxg5CYAdRzuo
-         UQbTud+4g4NXRwPWoNFS5Nl+f9UePOYxJG8sT00WlLkjitHTbRdT5ti5LBOaIXWxIye4
-         /MDZjGhug7nwiwGf+7sRnMCQVvF1WLoLs9X65lXSY7pKYzAgXIFpcTZXcgduTOM7jw+l
-         f4jSzUXinZr+APEmwxLf6KoukwwI/GFCi0P7JxCecuwE0lGOwkVQI/11GAB37Fvw9chb
-         Zlow==
-X-Forwarded-Encrypted: i=1; AJvYcCXDibAD/WnwzRILX5DAVNdMm856dwOmu4A40aWBa93ZIsHFUFvBuPsVRS2mcd5B9FA8W74cr5y+/Ld/uA==@linaro.org
-X-Gm-Message-State: AOJu0YzPJc+akEkw02mDaK8KnQKaQhJ19PP+3F06OlnZmorU2PajOCsC
-	wYi56mbkfZmH2temC0/OUTJPJBStX98XmZkn4iTJHAJuXCWBCjMuJID8p6CPcXoyfzwc7mKeO9b
-	Wrqlnl0P1j51d1PPalWGrsAVj7mWPxHAZoH3hKumVbApQXUifFXzRAQ==
-X-Gm-Gg: ASbGnctMxNf6b1pDVyvZny7S0V3Snr+/hyek/Ygy2UzB63xVkxiLSdGvBrY+SoN9Vs3
-	FEoofxpQQSA8Glm7Ict7Dsc0c5sAKoxsn3MtTDwVO9qP5RszxGdu45eTfrb39PAj6ZsSSgNiyER
-	yKeBo/qg1mK1TJH/cFdznM/F1XQdA4AzoOFVYtUWFPr2FmQljtdWYRvYJynpgXSRavaz7GELTq4
-	wuF5EtLEq82LOCnll7q+fZaVZLdB0UXtIVqQQjgepPeC5RQYClyg5qVHYQwlQW9yfAzz69WKRQD
-	On+nv4Gd77m0Q3DAqshk2PALCIrGXjzVGdZrqDHtnxxbUb0=
-X-Received: by 2002:a05:600c:354c:b0:43b:b67f:6802 with SMTP id 5b1f17b1804b1-43bd289edcbmr37089345e9.0.1741196404373;
-        Wed, 05 Mar 2025 09:40:04 -0800 (PST)
-X-Received: by 2002:a05:600c:354c:b0:43b:b67f:6802 with SMTP id 5b1f17b1804b1-43bd289edcbmr37088945e9.0.1741196403940;
-        Wed, 05 Mar 2025 09:40:03 -0800 (PST)
+        bh=0io+YkR5jeMpVFQxenjogAXZmb91RzAb6Htvhb2NFNs=;
+        b=QefO5B3aQ8pAaxK1tck/byWnqxdNCzfxFYXJba5yItCpw/fBWD1HNvejcUX0wW5GLY
+         podsuhMow8AsgKYdZ99h1fsGEXic8ByMt6h+URET6fsW5lZH1cC4VipcoIhSYU9kbvwx
+         b9o2hSJcrRCSy3zmIk35nuol0DJADjjA+t9o9GKQhFp95zgiZJjqHOc1olkTAy2kXZNx
+         ogUS7kZkJtOBfgCiSG36Bm6KQLkUUhg+UZfQtKiUcz2/4t4UOx//byRZ2vyG6NE9YYV7
+         xUikvGqTXvUzmOXAgL7LegT5jhow4jv2yCj9kjSQCR3O+2hBlkt06h2CNkyFJTElqooc
+         crzQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUFzQC9Nvj0ht//YGpkXNK66+3sYCbS6b6ucsbyolz4ws6+qSV5paEt1zdkBWffcbEAcKSrrOdc5iO1cw==@linaro.org
+X-Gm-Message-State: AOJu0YxXNi2oLieygNj1kCND19AMYdC31L8dquGmPWfyVVbkYWqUP6MD
+	w5hVzCQRKTEA83YLZRYlqqX+yx8QKnkHbDCnXMjMSKs+urMULMmrfusg7SeQz/hZSUsLKmCfyqs
+	4floLhZS60pxY26ayikIEANWSm0W2cjDtoiio+tTNAtE5ci4WwgqwfA==
+X-Gm-Gg: ASbGncuDhaILh98fJ+1f/FOzy2LzTCjNTzeeLJOpqcLBR1WLGqixFX6Rtjo7+YE/Zns
+	KNOv7WJJQvVl2JdfmJM+Sa5kZ5xrFzA9/Sd85nPo4y3136X99io5/zis/3ZHSZkNeQc8zcmVHN0
+	kNrZMFaf7WK8L+4leIGN69plkspti4CPxbXqT5RnGsrwwtxCHxa6rXJvhZj+N3YMdlyt5tBwZPe
+	jtNhQwwl5qf7hOx2Uo21ikzEOz2o5riiq80wiyWGLOu9VigPSo69k0hQhifvkrfRNXoNwWUPdE7
+	TstnPDjFC34NbBFpU5LMgZqtpsnIt7VAUxxpwc7oAyuDNwI=
+X-Received: by 2002:a5d:47a7:0:b0:38f:6697:af6e with SMTP id ffacd0b85a97d-3911f720584mr3015128f8f.1.1741196602541;
+        Wed, 05 Mar 2025 09:43:22 -0800 (PST)
+X-Received: by 2002:a5d:47a7:0:b0:38f:6697:af6e with SMTP id ffacd0b85a97d-3911f720584mr3015109f8f.1.1741196602117;
+        Wed, 05 Mar 2025 09:43:22 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-51-231.web.vodafone.de. [109.42.51.231])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390e484451fsm22079426f8f.63.2025.03.05.09.40.02
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-391241bd151sm1859318f8f.21.2025.03.05.09.43.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Mar 2025 09:40:03 -0800 (PST)
-Message-ID: <91882e5b-bd0f-4f84-9c03-c40b5e3d3e3f@redhat.com>
-Date: Wed, 5 Mar 2025 18:40:01 +0100
+        Wed, 05 Mar 2025 09:43:21 -0800 (PST)
+Message-ID: <97c614a5-9de0-4615-ba84-207affcaf54a@redhat.com>
+Date: Wed, 5 Mar 2025 18:43:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 2/4] hw/arm/raspi: Replace TARGET_AARCH64 by
+Subject: Re: [RFC PATCH 3/4] hw/arm/aspeed: Replace TARGET_AARCH64 by
  legacy_binary_is_64bit()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -103,7 +103,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 References: <20250305161248.54901-1-philmd@linaro.org>
- <20250305161248.54901-3-philmd@linaro.org>
+ <20250305161248.54901-4-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -147,14 +147,14 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250305161248.54901-3-philmd@linaro.org>
+In-Reply-To: <20250305161248.54901-4-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 1SfBeN4X4PWzM_DpwIN2miypagZegJXaBmfrspwyQZk_1741196404
+X-Mimecast-MFC-PROC-ID: eN8Sjws_lTsvT0R-PsOhtPjWym_poLpi-5Mjs5gdr6c_1741196603
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 29CFWaDAqcLO
+X-TUID: hWx82f7eppDU
 
 On 05/03/2025 17.12, Philippe Mathieu-Daudé wrote:
 > For legacy ARM binaries, legacy_binary_is_64bit() is
@@ -166,102 +166,65 @@ On 05/03/2025 17.12, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/bcm2836.c | 6 ++----
->   hw/arm/raspi.c   | 7 +++----
->   2 files changed, 5 insertions(+), 8 deletions(-)
+>   hw/arm/aspeed.c | 8 ++------
+>   1 file changed, 2 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> index 95e16806fa1..88a32e5fc20 100644
-> --- a/hw/arm/bcm2836.c
-> +++ b/hw/arm/bcm2836.c
-> @@ -12,6 +12,7 @@
->   #include "qemu/osdep.h"
->   #include "qapi/error.h"
->   #include "qemu/module.h"
-> +#include "qemu/legacy_binary_info.h"
->   #include "hw/arm/bcm2836.h"
->   #include "hw/arm/raspi_platform.h"
->   #include "hw/sysbus.h"
-> @@ -195,7 +196,6 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
->       dc->realize = bcm2836_realize;
->   };
->   
-> -#ifdef TARGET_AARCH64
->   static void bcm2837_class_init(ObjectClass *oc, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(oc);
-> @@ -208,7 +208,6 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
->       bc->clusterid = 0x0;
->       dc->realize = bcm2836_realize;
->   };
-> -#endif
->   
->   static const TypeInfo bcm283x_types[] = {
->       {
-> @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] = {
->           .name           = TYPE_BCM2836,
->           .parent         = TYPE_BCM283X,
->           .class_init     = bcm2836_class_init,
-> -#ifdef TARGET_AARCH64
->       }, {
->           .name           = TYPE_BCM2837,
->           .parent         = TYPE_BCM283X,
-> +        .registerable   = legacy_binary_is_64bit,
->           .class_init     = bcm2837_class_init,
-> -#endif
->       }, {
->           .name           = TYPE_BCM283X,
->           .parent         = TYPE_BCM283X_BASE,
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index dce35ca11aa..f7e647a9cbf 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -15,6 +15,7 @@
->   #include "qemu/osdep.h"
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 98bf071139b..3f18a4501e0 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -28,6 +28,7 @@
+>   #include "hw/loader.h"
+>   #include "qemu/error-report.h"
 >   #include "qemu/units.h"
->   #include "qemu/cutils.h"
 > +#include "qemu/legacy_binary_info.h"
->   #include "qapi/error.h"
->   #include "hw/arm/boot.h"
->   #include "hw/arm/bcm2836.h"
-> @@ -367,7 +368,6 @@ static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
->       raspi_machine_class_init(mc, rmc->board_rev);
->   };
+>   #include "hw/qdev-clock.h"
+>   #include "system/system.h"
+>   
+> @@ -179,11 +180,9 @@ struct AspeedMachineState {
+>   #define AST2600_EVB_HW_STRAP1 0x000000C0
+>   #define AST2600_EVB_HW_STRAP2 0x00000003
 >   
 > -#ifdef TARGET_AARCH64
->   static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
+>   /* AST2700 evb hardware value */
+>   #define AST2700_EVB_HW_STRAP1 0x000000C0
+>   #define AST2700_EVB_HW_STRAP2 0x00000003
+> -#endif
+>   
+>   /* Rainier hardware value: (QEMU prototype) */
+>   #define RAINIER_BMC_HW_STRAP1 (0x00422016 | SCU_AST2600_HW_STRAP_BOOT_SRC_EMMC)
+> @@ -1661,7 +1660,6 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+>       aspeed_machine_class_init_cpus_defaults(mc);
+>   }
+>   
+> -#ifdef TARGET_AARCH64
+>   static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
 >   {
->       MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -387,7 +387,6 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
->       rmc->board_rev = 0xa02082;
->       raspi_machine_class_init(mc, rmc->board_rev);
->   };
-> -#endif /* TARGET_AARCH64 */
+>       AspeedSoCState *soc = bmc->soc;
+> @@ -1690,7 +1688,6 @@ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
+>       mc->default_ram_size = 1 * GiB;
+>       aspeed_machine_class_init_cpus_defaults(mc);
+>   }
+> -#endif
 >   
->   static const TypeInfo raspi_machine_types[] = {
->       {
-> @@ -402,16 +401,16 @@ static const TypeInfo raspi_machine_types[] = {
->           .name           = MACHINE_TYPE_NAME("raspi2b"),
->           .parent         = TYPE_RASPI_MACHINE,
->           .class_init     = raspi2b_machine_class_init,
+>   static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+>                                                        void *data)
+> @@ -1813,12 +1810,11 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+>           .parent         = TYPE_ASPEED_MACHINE,
+>           .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
 > -#ifdef TARGET_AARCH64
 >       }, {
->           .name           = MACHINE_TYPE_NAME("raspi3ap"),
->           .parent         = TYPE_RASPI_MACHINE,
+>           .name          = MACHINE_TYPE_NAME("ast2700-evb"),
+>           .parent        = TYPE_ASPEED_MACHINE,
 > +        .registerable   = legacy_binary_is_64bit,
->           .class_init     = raspi3ap_machine_class_init,
->       }, {
->           .name           = MACHINE_TYPE_NAME("raspi3b"),
->           .parent         = TYPE_RASPI_MACHINE,
-> +        .registerable   = legacy_binary_is_64bit,
->           .class_init     = raspi3b_machine_class_init,
+>           .class_init    = aspeed_machine_ast2700_evb_class_init,
 > -#endif
 >       }, {
->           .name           = TYPE_RASPI_MACHINE,
->           .parent         = TYPE_RASPI_BASE_MACHINE,
+>           .name          = TYPE_ASPEED_MACHINE,
+>           .parent        = TYPE_MACHINE,
 
-Uh, this (together with patch 1) looks very cumbersome. Why don't you simply 
-split the array into two, one for 32-bit and one for 64-bit, and then use a 
-simply "if (legacy_binary_is_64bit())" in the type_init function instead?
+Same as with previous patch, I'd prefer to split the array, and replace the 
+DEFINE_TYPES() with a dynamic type_init() function.
 
   Thomas

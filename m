@@ -1,94 +1,211 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1283665njm;
-        Wed, 5 Mar 2025 22:08:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXPFqgKNrEgnfs7Rajk7OBfNzzCNHxOE36WCTyTxxWhzdhfm1TRfC9o56UF2J7omLUe8o6gvAXNgV3xBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFceyZp98VWkopx/iwSYTdXzNByUTtl3YxqNJm6jhQSMtyTzUjILL9596dhwugkKei+KPv2
-X-Received: by 2002:a05:6214:2684:b0:6e8:f905:aff0 with SMTP id 6a1803df08f44-6e8f905b2bdmr7893266d6.35.1741241284883;
-        Wed, 05 Mar 2025 22:08:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741241284; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1291557njm;
+        Wed, 5 Mar 2025 22:33:54 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCV3GOJUmiKC/SRETJTbo4rXS/yhYXecPY95vSBPT/ZSBc+ODGjhOCtG9iLH14jh6JCJZJxIK2pHkRdb7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEwTNduHvPC7PzDQ7O0hxsUgvmVfoDaSy7FiEePgkNQBzXv5VNG3sJCZHWDkFcaCcbgpHrT
+X-Received: by 2002:a05:622a:1348:b0:471:f1f1:ae71 with SMTP id d75a77b69052e-4750b4e1eaamr69210041cf.52.1741242834582;
+        Wed, 05 Mar 2025 22:33:54 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1741242834; cv=pass;
         d=google.com; s=arc-20240605;
-        b=laBbEfO2JJYJ8JkX0R1CxMB4cvZVHYPzR/S7ppCrvK8JT2UDsIUeMwcRxztSbAjBhV
-         pZvLCg+QE6lQ6mznHIcZb1rCerE/G9jVzeA9khrtU1IuIzplnUUP/zb9p6wMyXuL3FyU
-         IV0mCRuW0qwCk1RCjV6PuUCJ0PaANdqUnHzEBWiplZZRYcb0RmnVWtR7NofHbMT7aQi1
-         F7HE94ni335b27zd4jKTQyEdptLEGgOfzedH4q6iPi7m6TsFsz7XrSyULmy2AOu9mqu3
-         kfzPHc8QKbUOej2kdV08qYEl5mhFyBkQpAFTKMFC8OmkDC3J84jIxeNoI+0ogO25XJxl
-         il6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=GPHalco4fuK/mbBdnk7+Fg3HW8LgfnYMTnEkLCGx3EM=;
-        fh=0fAOdSjQv2x0RtOeWxHNS2tjJ6G6B4ms5PFLA9mBK/Y=;
-        b=iOBTvKmudbz8IcGoh5X6R4IbQIPoVdC+gYBg/sSu49aCpnWQQLZLhmJZpWDqkLlezK
-         FjHg2WzxxwzySoa31hfgs+lO2xa/n4oavh08RPvjt4vCScosqXavrnhaJ3Ct1eF7l8Jr
-         Cs3CwBGau02ULS7m5AyWhLgGTMovB8ETt2NoAgj07UO0u+/mpm88cSBjkuucH5cOFEWh
-         Pjxd6WHUdM0+STmOF4V1hL1cliumnb+ZzvhFTBO2XahwTgSZJZrUTE8tCNbbsQkaxAD0
-         vfFFaCKliBlwn2Ae/Uh/amZx7ZjEfJWKGyvJsuZ1EV8l+EtOcCExuyndx4lForEkhltx
-         IoSg==;
+        b=ET/FFP1IpPXzcNAIO9A3EuoOJSHTl0m4gVEaY0CC8lhbkAq7ygT5pDIMp7ahz9+zH7
+         0dXM6dinuh22aBFQG5hNHlcHnrRaB8mWUxVfRMEIaHzt4XL3aavasxCAOucuCj/CoI8B
+         gJhYiKjveRNxe+5CTim30ygE43HLr/SbPUzqgodcWNh0PU3J2xT2RNArYtxEQ9z+RzhX
+         ClEID6/RaDx/NorGpMcWDohiOSk2GY9VndW5bxG1scGENw8mtbBSoRqx1GPpu85IEvrv
+         5TeiKXvJAQ+3Tm5iZccdLR9+wCv9KBpRN84J1xe1h8yIvsmE/1KTPnTv7Sjxh4t2YR9n
+         YjUg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=9LXY6uALLIfLEZhfknMpVfJrmfQNpAyzzvxQ7HGShUw=;
+        fh=qU9EoYgF8/VnXIqQo4Z8KAcyoUm9AhaJB4Ka8tc+QFY=;
+        b=Yfswlt4qeeV31/aC47S6MX0/rD1etjzsd7sDExbS2UZiQZ7HuVB/c+EI5TuYkFBAQC
+         hmQ3uzEVsMKtvdUh6I66Mlb+nAgJz+2pdiH+g9H5QOqaLw+HbVPLnyFXHxrpWechYpKI
+         Nk6tbaR+BSUtfGwK7La3CeKuThBowmNuEMHrnsNfm4L48FHYJRzkMloVEa4+nhJJ64NQ
+         zH4xVVpRn68A0G6BVKD/h30CnLy0tXp/IcBhLpx+FiEjlsn2Qmw00PRzaKEQPDkMdCQu
+         s86bEFxVXwSoy6n69FEkFclb1EZgu9kAMpprIKwSBFCbLbUopLbt5rzFfhoF1wW+ugWi
+         OHdA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=KOnaIUgU;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f717595dsi5741106d6.332.2025.03.05.22.08.04
+        by mx.google.com with ESMTPS id d75a77b69052e-4751db1e219si6293021cf.434.2025.03.05.22.33.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Mar 2025 22:08:04 -0800 (PST)
+        Wed, 05 Mar 2025 22:33:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=KOnaIUgU;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tq4Ol-0006Yl-E2; Thu, 06 Mar 2025 01:08:00 -0500
+	id 1tq4n1-0005WR-Ex; Thu, 06 Mar 2025 01:33:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tq4Ob-0006Qf-EJ; Thu, 06 Mar 2025 01:07:50 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tq4mu-0005VC-ST; Thu, 06 Mar 2025 01:32:57 -0500
+Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tq4OY-0002MP-Lb; Thu, 06 Mar 2025 01:07:49 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Z7f6F5Jjtz6K91Z;
- Thu,  6 Mar 2025 14:05:25 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 280F0140CB9;
- Thu,  6 Mar 2025 14:07:43 +0800 (CST)
-Received: from a2303103017.china.huawei.com (10.96.233.98) by
- frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 6 Mar 2025 07:07:37 +0100
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <mst@redhat.com>, <zhao1.liu@intel.com>, <dapeng1.mi@linux.intel.com>,
- <armbru@redhat.com>, <farman@linux.ibm.com>, <peter.maydell@linaro.org>,
- <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
- <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
- <shameerali.kolothum.thodi@huawei.com>, <jonathan.cameron@huawei.com>,
- <jiangkunkun@huawei.com>, <yangyicong@hisilicon.com>, <linuxarm@huawei.com>
-Subject: [PATCH v7 6/6] Update the ACPI tables according to the acpi aml_build
- change, also empty bios-tables-test-allowed-diff.h.
-Date: Thu, 6 Mar 2025 06:03:52 +0000
-Message-ID: <20250306060352.907-7-alireza.sanaee@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250306060352.907-1-alireza.sanaee@huawei.com>
-References: <20250306060352.907-1-alireza.sanaee@huawei.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tq4mr-0005Er-Ut; Thu, 06 Mar 2025 01:32:56 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XKbWi0nMvtT9aSGYCUSTHWU83InUPsMAwH26M8mXnBvQYYGehPy/BzEGWadxr91sSUWspPAhjiluEykH3C/BX0dmImO1Q82S1qlk+Oco7yZo3/ndf7xVLrGKvzBThnNWQ0AxGSBqC27T8FD1VqvYfBJzLHRvlk7ZJPtlOlRjee/7tRajZOMvUCZWh5BGvJJJ3Y7HI1ZbAWdlSmrpjaWmFpwpuD5D+6BNJI3FJ5M0HtcQ38DQBPZaEIqnZOWS9oNV4grzTylsHg5eH0s82s9hV1nbwXqD3WByJWZ46f7vd09EwNPy+yzAffX26w4G4zZ8ZJIqI4JUZZuXWX15RSzrQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9LXY6uALLIfLEZhfknMpVfJrmfQNpAyzzvxQ7HGShUw=;
+ b=NLExm1aAd5fz8K+AcE5naqB47jikvEB/sxExUFs6VCPQJuXJdJ/2aBy2+yR2mbQFLh6S1Cj2JW6gMOU6b/iaoGWYmT0NarokRv6H3kKjA9xnsB7L3BITezpJu3B5bNrYiNr+7jSFJ7uHYTFfPXQiT+GL4X35CHXaCZv6KEo2g9FbOLCJd07UjLzXPNSwSbnHCbmOFMMGLowkIpMydn2BPeS+kAy2bcR4blZD+jQILUZSKFxZBBEOYgkDpxc0WsVCesV1Ssc3zvHRrlfwhjuloXppbqRURxizyKqwWmTjrbVJAn3g9xOrdLezxG9DI6j1DHLJZADJiNh8riVaf+ODQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9LXY6uALLIfLEZhfknMpVfJrmfQNpAyzzvxQ7HGShUw=;
+ b=KOnaIUgUidrWAzlddw5qy9E9YSClT8hdSzPKOSpErIdLhhKCe2QpZEZ47q42YGKbKGvf7n3B/mJpvZx/OCYCB/05fkZei9VY71vtaH/wp7oL1JmvCPfndnJ/78g55t9/vnJ8DWRQzlLmYPGmT8rkZs79MSpbKpkrbLZf4Cf7HnuLTgKYtBKBwT17nTw5Fk9b7lKJxUzrO4bCqRo2F33qAuZxAT1d2X6efXpjkV58ilV80mRPwwbsJICHXg3Z54EIv4cHysyNBys51rZbDAyYogu4n9Dg/qDTNfz3bpKHIVedr2jNaWLlb2RHLpAhYvQEOOv1IxYfzp4S0FOksyDDxw==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ SEYPR06MB5325.apcprd06.prod.outlook.com (2603:1096:101:80::13) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8489.28; Thu, 6 Mar 2025 06:32:37 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8489.025; Thu, 6 Mar 2025
+ 06:32:37 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v4 17/23] hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC
+ Interrupt Mapping
+Thread-Topic: [PATCH v4 17/23] hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC
+ Interrupt Mapping
+Thread-Index: AQHbjCJjlU4/ILTKAkK3gQa57+/qNrNikS8AgAMZbaA=
+Date: Thu, 6 Mar 2025 06:32:37 +0000
+Message-ID: <SI2PR06MB5041C2ADE41671A0D0325ADCFCCA2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20250303095457.2337631-1-jamin_lin@aspeedtech.com>
+ <20250303095457.2337631-18-jamin_lin@aspeedtech.com>
+ <93676cc7-8801-42a5-9b53-a8006bcb1eb7@kaod.org>
+In-Reply-To: <93676cc7-8801-42a5-9b53-a8006bcb1eb7@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SEYPR06MB5325:EE_
+x-ms-office365-filtering-correlation-id: 4aceba67-2d82-4e69-58b5-08dd5c78afc2
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
+x-microsoft-antispam-message-info: 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
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: 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
+ =?utf-8?Q?nqLEKyxqP5GNz6nhW4Ot8FlYY?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.96.233.98]
-X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
- frapeml500003.china.huawei.com (7.182.85.28)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4aceba67-2d82-4e69-58b5-08dd5c78afc2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Mar 2025 06:32:37.0651 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Q7dHBqbCv2nq/+FBClsUL7jLCaJR/lwQ7rJ4hSf4clFoxNymSp9zqiT4GyufZu+CKSBXAgnSdbsIK3JFkPuxF1ZDFF4IdZ8OvWBU0O3ia9g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5325
+Received-SPF: pass client-ip=2a01:111:f403:c40f::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,445 +219,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KtC5+ps7p0zn
+X-TUID: zxe6DYDtVAT0
 
-The disassembled differences between actual and expected PPTT based on
-the following cache topology representation:
-
-- l1d and l1i shared at cluster level
-- l2 shared at cluster level
-- l3 shared at cluster level
-
-/*
- * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20200925 (64-bit version)
- * Copyright (c) 2000 - 2020 Intel Corporation
- *
- * Disassembly of ../../../tests/data/acpi/aarch64/virt/PPTT.topology, Mon Oct  7 16:57:29 2024
- *
- * ACPI Data Table [PPTT]
- *
- * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
- */
-
-[000h 0000   4]                    Signature : "PPTT"    [Processor Properties Topology Table]
-[004h 0004   4]                 Table Length : 0000021C
-[008h 0008   1]                     Revision : 03
-[009h 0009   1]                     Checksum : 4D
-[00Ah 0010   6]                       Oem ID : "BOCHS "
-[010h 0016   8]                 Oem Table ID : "BXPC    "
-[018h 0024   4]                 Oem Revision : 00000001
-[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-[020h 0032   4]        Asl Compiler Revision : 00000001
-
-[024h 0036   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[025h 0037   1]                       Length : 14
-[026h 0038   2]                     Reserved : 0000
-[028h 0040   4]        Flags (decoded below) : 00000011
-                            Physical package : 1
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[02Ch 0044   4]                       Parent : 00000000
-[030h 0048   4]            ACPI Processor ID : 00000000
-[034h 0052   4]      Private Resource Number : 00000000
-
-[038h 0056   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[039h 0057   1]                       Length : 14
-[03Ah 0058   2]                     Reserved : 0000
-[03Ch 0060   4]        Flags (decoded below) : 00000011
-                            Physical package : 1
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[040h 0064   4]                       Parent : 00000024
-[044h 0068   4]            ACPI Processor ID : 00000000
-[048h 0072   4]      Private Resource Number : 00000000
-
-[04Ch 0076   1]                Subtable Type : 01 [Cache Type]
-[04Dh 0077   1]                       Length : 1C
-[04Eh 0078   2]                     Reserved : 0000
-[050h 0080   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[054h 0084   4]          Next Level of Cache : 00000000
-[058h 0088   4]                         Size : 00200000
-[05Ch 0092   4]               Number of Sets : 00000800
-[060h 0096   1]                Associativity : 10
-[061h 0097   1]                   Attributes : 0F
-                             Allocation Type : 3
-                                  Cache Type : 3
-                                Write Policy : 0
-[062h 0098   2]                    Line Size : 0040
-
-[068h 0104   1]                Subtable Type : 01 [Cache Type]
-[069h 0105   1]                       Length : 1C
-[06Ah 0106   2]                     Reserved : 0000
-[06Ch 0108   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[070h 0112   4]          Next Level of Cache : 0000004C
-[074h 0116   4]                         Size : 00008000
-[078h 0120   4]               Number of Sets : 00000080
-[07Ch 0124   1]                Associativity : 04
-[07Dh 0125   1]                   Attributes : 03
-                             Allocation Type : 3
-                                  Cache Type : 0
-                                Write Policy : 0
-[07Eh 0126   2]                    Line Size : 0040
-
-[084h 0132   1]                Subtable Type : 01 [Cache Type]
-[085h 0133   1]                       Length : 1C
-[086h 0134   2]                     Reserved : 0000
-[088h 0136   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[08Ch 0140   4]          Next Level of Cache : 0000004C
-[090h 0144   4]                         Size : 0000C000
-[094h 0148   4]               Number of Sets : 00000100
-[098h 0152   1]                Associativity : 03
-[099h 0153   1]                   Attributes : 07
-                             Allocation Type : 3
-                                  Cache Type : 1
-                                Write Policy : 0
-[09Ah 0154   2]                    Line Size : 0040
-
-[0A0h 0160   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[0A1h 0161   1]                       Length : 1C
-[0A2h 0162   2]                     Reserved : 0000
-[0A4h 0164   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[0A8h 0168   4]                       Parent : 00000038
-[0ACh 0172   4]            ACPI Processor ID : 00000000
-[0B0h 0176   4]      Private Resource Number : 00000002
-[0B4h 0180   4]             Private Resource : 00000084
-[0B8h 0184   4]             Private Resource : 00000068
-
-[0BCh 0188   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[0BDh 0189   1]                       Length : 14
-[0BEh 0190   2]                     Reserved : 0000
-[0C0h 0192   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[0C4h 0196   4]                       Parent : 000000A0
-[0C8h 0200   4]            ACPI Processor ID : 00000000
-[0CCh 0204   4]      Private Resource Number : 00000000
-
-[0D0h 0208   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[0D1h 0209   1]                       Length : 14
-[0D2h 0210   2]                     Reserved : 0000
-[0D4h 0212   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[0D8h 0216   4]                       Parent : 000000BC
-[0DCh 0220   4]            ACPI Processor ID : 00000000
-[0E0h 0224   4]      Private Resource Number : 00000000
-
-[0E4h 0228   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[0E5h 0229   1]                       Length : 14
-[0E6h 0230   2]                     Reserved : 0000
-[0E8h 0232   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[0ECh 0236   4]                       Parent : 000000BC
-[0F0h 0240   4]            ACPI Processor ID : 00000001
-[0F4h 0244   4]      Private Resource Number : 00000000
-
-[0F8h 0248   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[0F9h 0249   1]                       Length : 14
-[0FAh 0250   2]                     Reserved : 0000
-[0FCh 0252   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[100h 0256   4]                       Parent : 000000A0
-[104h 0260   4]            ACPI Processor ID : 00000001
-[108h 0264   4]      Private Resource Number : 00000000
-
-[10Ch 0268   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[10Dh 0269   1]                       Length : 14
-[10Eh 0270   2]                     Reserved : 0000
-[110h 0272   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[114h 0276   4]                       Parent : 000000F8
-[118h 0280   4]            ACPI Processor ID : 00000002
-[11Ch 0284   4]      Private Resource Number : 00000000
-
-[120h 0288   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[121h 0289   1]                       Length : 14
-[122h 0290   2]                     Reserved : 0000
-[124h 0292   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[128h 0296   4]                       Parent : 000000F8
-[12Ch 0300   4]            ACPI Processor ID : 00000003
-[130h 0304   4]      Private Resource Number : 00000000
-
-[134h 0308   1]                Subtable Type : 01 [Cache Type]
-[135h 0309   1]                       Length : 1C
-[136h 0310   2]                     Reserved : 0000
-[138h 0312   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[13Ch 0316   4]          Next Level of Cache : 00000000
-[140h 0320   4]                         Size : 00200000
-[144h 0324   4]               Number of Sets : 00000800
-[148h 0328   1]                Associativity : 10
-[149h 0329   1]                   Attributes : 0F
-                             Allocation Type : 3
-                                  Cache Type : 3
-                                Write Policy : 0
-[14Ah 0330   2]                    Line Size : 0040
-
-[150h 0336   1]                Subtable Type : 01 [Cache Type]
-[151h 0337   1]                       Length : 1C
-[152h 0338   2]                     Reserved : 0000
-[154h 0340   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[158h 0344   4]          Next Level of Cache : 00000134
-[15Ch 0348   4]                         Size : 00008000
-[160h 0352   4]               Number of Sets : 00000080
-[164h 0356   1]                Associativity : 04
-[165h 0357   1]                   Attributes : 03
-                             Allocation Type : 3
-                                  Cache Type : 0
-                                Write Policy : 0
-[166h 0358   2]                    Line Size : 0040
-
-[16Ch 0364   1]                Subtable Type : 01 [Cache Type]
-[16Dh 0365   1]                       Length : 1C
-[16Eh 0366   2]                     Reserved : 0000
-[170h 0368   4]        Flags (decoded below) : 000000FF
-                                  Size valid : 1
-                        Number of Sets valid : 1
-                         Associativity valid : 1
-                       Allocation Type valid : 1
-                            Cache Type valid : 1
-                          Write Policy valid : 1
-                             Line Size valid : 1
-[174h 0372   4]          Next Level of Cache : 00000134
-[178h 0376   4]                         Size : 0000C000
-[17Ch 0380   4]               Number of Sets : 00000100
-[180h 0384   1]                Associativity : 03
-[181h 0385   1]                   Attributes : 07
-                             Allocation Type : 3
-                                  Cache Type : 1
-                                Write Policy : 0
-[182h 0386   2]                    Line Size : 0040
-
-[188h 0392   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[189h 0393   1]                       Length : 1C
-[18Ah 0394   2]                     Reserved : 0000
-[18Ch 0396   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[190h 0400   4]                       Parent : 00000038
-[194h 0404   4]            ACPI Processor ID : 00000001
-[198h 0408   4]      Private Resource Number : 00000002
-[19Ch 0412   4]             Private Resource : 0000016C
-[1A0h 0416   4]             Private Resource : 00000150
-
-[1A4h 0420   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[1A5h 0421   1]                       Length : 14
-[1A6h 0422   2]                     Reserved : 0000
-[1A8h 0424   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[1ACh 0428   4]                       Parent : 00000188
-[1B0h 0432   4]            ACPI Processor ID : 00000000
-[1B4h 0436   4]      Private Resource Number : 00000000
-
-[1B8h 0440   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[1B9h 0441   1]                       Length : 14
-[1BAh 0442   2]                     Reserved : 0000
-[1BCh 0444   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[1C0h 0448   4]                       Parent : 000001A4
-[1C4h 0452   4]            ACPI Processor ID : 00000004
-[1C8h 0456   4]      Private Resource Number : 00000000
-
-[1CCh 0460   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[1CDh 0461   1]                       Length : 14
-[1CEh 0462   2]                     Reserved : 0000
-[1D0h 0464   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[1D4h 0468   4]                       Parent : 000001A4
-[1D8h 0472   4]            ACPI Processor ID : 00000005
-[1DCh 0476   4]      Private Resource Number : 00000000
-
-[1E0h 0480   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[1E1h 0481   1]                       Length : 14
-[1E2h 0482   2]                     Reserved : 0000
-[1E4h 0484   4]        Flags (decoded below) : 00000010
-                            Physical package : 0
-                     ACPI Processor ID valid : 0
-                       Processor is a thread : 0
-                              Node is a leaf : 0
-                    Identical Implementation : 1
-[1E8h 0488   4]                       Parent : 00000188
-[1ECh 0492   4]            ACPI Processor ID : 00000001
-[1F0h 0496   4]      Private Resource Number : 00000000
-
-[1F4h 0500   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[1F5h 0501   1]                       Length : 14
-[1F6h 0502   2]                     Reserved : 0000
-[1F8h 0504   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[1FCh 0508   4]                       Parent : 000001E0
-[200h 0512   4]            ACPI Processor ID : 00000006
-[204h 0516   4]      Private Resource Number : 00000000
-
-[208h 0520   1]                Subtable Type : 00 [Processor Hierarchy Node]
-[209h 0521   1]                       Length : 14
-[20Ah 0522   2]                     Reserved : 0000
-[20Ch 0524   4]        Flags (decoded below) : 0000000E
-                            Physical package : 0
-                     ACPI Processor ID valid : 1
-                       Processor is a thread : 1
-                              Node is a leaf : 1
-                    Identical Implementation : 0
-[210h 0528   4]                       Parent : 000001E0
-[214h 0532   4]            ACPI Processor ID : 00000007
-[218h 0536   4]      Private Resource Number : 00000000
-
-Raw Table Data: Length 540 (0x21C)
-
-    0000: 50 50 54 54 1C 02 00 00 03 4D 42 4F 43 48 53 20  // PPTT.....MBOCHS
-    0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-    0020: 01 00 00 00 00 14 00 00 11 00 00 00 00 00 00 00  // ................
-    0030: 00 00 00 00 00 00 00 00 00 14 00 00 11 00 00 00  // ................
-    0040: 24 00 00 00 00 00 00 00 00 00 00 00 01 1C 00 00  // $...............
-    0050: FF 00 00 00 00 00 00 00 00 00 20 00 00 08 00 00  // .......... .....
-    0060: 10 0F 40 00 00 00 02 02 01 1C 00 00 FF 00 00 00  // ..@.............
-    0070: 4C 00 00 00 00 80 00 00 80 00 00 00 04 03 40 00  // L.............@.
-    0080: 00 00 01 00 01 1C 00 00 FF 00 00 00 4C 00 00 00  // ............L...
-    0090: 00 C0 00 00 00 01 00 00 03 07 40 00 00 00 01 01  // ..........@.....
-    00A0: 00 1C 00 00 10 00 00 00 38 00 00 00 00 00 00 00  // ........8.......
-    00B0: 02 00 00 00 84 00 00 00 68 00 00 00 00 14 00 00  // ........h.......
-    00C0: 10 00 00 00 A0 00 00 00 00 00 00 00 00 00 00 00  // ................
-    00D0: 00 14 00 00 0E 00 00 00 BC 00 00 00 00 00 00 00  // ................
-    00E0: 00 00 00 00 00 14 00 00 0E 00 00 00 BC 00 00 00  // ................
-    00F0: 01 00 00 00 00 00 00 00 00 14 00 00 10 00 00 00  // ................
-    0100: A0 00 00 00 01 00 00 00 00 00 00 00 00 14 00 00  // ................
-    0110: 0E 00 00 00 F8 00 00 00 02 00 00 00 00 00 00 00  // ................
-    0120: 00 14 00 00 0E 00 00 00 F8 00 00 00 03 00 00 00  // ................
-    0130: 00 00 00 00 01 1C 00 00 FF 00 00 00 00 00 00 00  // ................
-    0140: 00 00 20 00 00 08 00 00 10 0F 40 00 04 00 02 02  // .. .......@.....
-    0150: 01 1C 00 00 FF 00 00 00 34 01 00 00 00 80 00 00  // ........4.......
-    0160: 80 00 00 00 04 03 40 00 04 00 01 00 01 1C 00 00  // ......@.........
-    0170: FF 00 00 00 34 01 00 00 00 C0 00 00 00 01 00 00  // ....4...........
-    0180: 03 07 40 00 04 00 01 01 00 1C 00 00 10 00 00 00  // ..@.............
-    0190: 38 00 00 00 01 00 00 00 02 00 00 00 6C 01 00 00  // 8...........l...
-    01A0: 50 01 00 00 00 14 00 00 10 00 00 00 88 01 00 00  // P...............
-    01B0: 00 00 00 00 00 00 00 00 00 14 00 00 0E 00 00 00  // ................
-    01C0: A4 01 00 00 04 00 00 00 00 00 00 00 00 14 00 00  // ................
-    01D0: 0E 00 00 00 A4 01 00 00 05 00 00 00 00 00 00 00  // ................
-    01E0: 00 14 00 00 10 00 00 00 88 01 00 00 01 00 00 00  // ................
-    01F0: 00 00 00 00 00 14 00 00 0E 00 00 00 E0 01 00 00  // ................
-    0200: 06 00 00 00 00 00 00 00 00 14 00 00 0E 00 00 00  // ................
-    0210: E0 01 00 00 07 00 00 00 00 00 00 00              // ............
-
-Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- tests/data/acpi/aarch64/virt/PPTT.topology  | Bin 356 -> 540 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/PPTT.topology b/tests/data/acpi/aarch64/virt/PPTT.topology
-index d0e5e11e90f33cbbbc231f9ad0bd48419e0fea65..f5f07b87c3777106e74f380de7941e1c01fc3447 100644
-GIT binary patch
-literal 540
-zcmZvXI}XAy5JV>*2o(g0GDQlGKtUNL4F!luq~Hh?93lk;$DrUC6gdjVpo1A>2S;LM
-z%e!y9_D)?lO%?*tuH09fLtY;1DrW=$l<UL-nCtYzvZcp@40!i-4orY_R*;0D)3(xE
-zvk*rGivR<yGYC;)v;cfFC0cVUI4UmOCl#DQ+D*9&vMKY2t95$J__56O`b@nqZvA7z
-z_KHOoxp}{3-usL_pDR7u{(Q!sPos6zc}G5}4ScFq|DT!EDy+||au;^4J6ZgPjXWlw
-S>h0TY?~`Ec-II5*#Ig@|86g1x
-
-literal 356
-zcmWFt2nk7HWME*P=H&0}5v<@85#X!<1VAAM5F11@h%hh+f@ov_6;nYI69Dopu!#Af
-ziSYsX2{^>Sc7o)9c7V(S=|vU;>74__Oh60<Ky@%NW+X9~TafjF#BRXUfM}@RH$Wx}
-cOdLs!6-f-H7uh_Jy&6CPHY9a0F?OgJ00?*x0RR91
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index ba2a8180e9..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/PPTT.topology",
--- 
-2.43.0
-
+SGkgQ2VkcmljLA0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMTcvMjNdIGh3L2FybS9hc3Bl
+ZWRfYXN0Mjd4MC5jIFN1cHBvcnQgQVNUMjcwMCBBMQ0KPiBHSUMgSW50ZXJydXB0IE1hcHBpbmcN
+Cj4gDQo+IE9uIDMvMy8yNSAxMDo1NCwgSmFtaW4gTGluIHdyb3RlOg0KPiA+IEN1cnJlbnRseSwg
+dGhlc2UgSVJRIHRhYmxlcyBzdXBwb3J0IGZyb20gR0lDIDEyOCAtIDEzNiBmb3IgQVNUMjcwMCBB
+MC4NCj4gPiBUaGVzZSBJUlEgdGFibGVzIGNhbiBiZSByZXVzZWQgZm9yIEFTVDI3MDAgQTEgZnJv
+bSBHSUMgMTkyIC0gMTk3Lg0KPiA+IFVwZGF0ZXMgdGhlIGludGVycnVwdCBtYXBwaW5nIHRvIGlu
+Y2x1ZGUgc3VwcG9ydCBmb3IgQVNUMjcwMCBBMSBieQ0KPiA+IGV4dGVuZGluZyB0aGUgZXhpc3Rp
+bmcgbWFwcGluZ3MgdG8gdGhlIG5ldyBHSUMgcmFuZ2UuDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5
+OiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT4NCj4gPiAtLS0NCj4gPiAgIGh3
+L2FybS9hc3BlZWRfYXN0Mjd4MC5jIHwgODINCj4gKysrKysrKysrKysrKysrKysrKysrKysrKyst
+LS0tLS0tLS0tLS0tLS0NCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA1MiBpbnNlcnRpb25zKCspLCAz
+MCBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9hcm0vYXNwZWVkX2FzdDI3
+eDAuYyBiL2h3L2FybS9hc3BlZWRfYXN0Mjd4MC5jIGluZGV4DQo+ID4gMDlhYWQ2OWUzYy4uZWFi
+OTY3NGI2YyAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vYXNwZWVkX2FzdDI3eDAuYw0KPiA+ICsr
+KyBiL2h3L2FybS9hc3BlZWRfYXN0Mjd4MC5jDQo+ID4gQEAgLTEyMCwyMSArMTIwLDI3IEBAIHN0
+YXRpYyBjb25zdCBpbnQgYXNwZWVkX3NvY19hc3QyNzAwYTBfaXJxbWFwW10gPQ0KPiB7DQo+ID4g
+ICB9Ow0KPiA+DQo+ID4gICAvKiBHSUNJTlQgMTI4ICovDQo+ID4gLXN0YXRpYyBjb25zdCBpbnQg
+YXNwZWVkX3NvY19hc3QyNzAwX2dpYzEyOF9pbnRjbWFwW10gPSB7DQo+ID4gKy8qIEdJQ0lOVCAx
+OTIgKi8NCj4gPiArc3RhdGljIGNvbnN0IGludCBhc3QyNzAwX2dpYzEyOF9naWMxOTJfaW50Y21h
+cFtdID0gew0KPiA+ICAgICAgIFtBU1BFRURfREVWX0xQQ10gICAgICAgPSAwLA0KPiA+ICAgICAg
+IFtBU1BFRURfREVWX0lCVF0gICAgICAgPSAyLA0KPiA+ICAgICAgIFtBU1BFRURfREVWX0tDU10g
+ICAgICAgPSA0LA0KPiA+ICAgfTsNCj4gPg0KPiA+ICsvKiBHSUNJTlQgMTI5ICovDQo+ID4gKy8q
+IEdJQ0lOVCAxOTMgKi8NCj4gPiArDQo+ID4gICAvKiBHSUNJTlQgMTMwICovDQo+ID4gLXN0YXRp
+YyBjb25zdCBpbnQgYXNwZWVkX3NvY19hc3QyNzAwX2dpYzEzMF9pbnRjbWFwW10gPSB7DQo+ID4g
+Ky8qIEdJQ0lOVCAxOTQgKi8NCj4gPiArc3RhdGljIGNvbnN0IGludCBhc3QyNzAwX2dpYzEzMF9n
+aWMxOTRfaW50Y21hcFtdID0gew0KPiA+ICAgICAgIFtBU1BFRURfREVWX0kyQ10gICAgICAgID0g
+MCwNCj4gPiAgICAgICBbQVNQRUVEX0RFVl9BRENdICAgICAgICA9IDE2LA0KPiA+ICAgICAgIFtB
+U1BFRURfREVWX0dQSU9dICAgICAgID0gMTgsDQo+ID4gICB9Ow0KPiA+DQo+ID4gICAvKiBHSUNJ
+TlQgMTMxICovDQo+ID4gLXN0YXRpYyBjb25zdCBpbnQgYXNwZWVkX3NvY19hc3QyNzAwX2dpYzEz
+MV9pbnRjbWFwW10gPSB7DQo+ID4gKy8qIEdJQ0lOVCAxOTUgKi8NCj4gPiArc3RhdGljIGNvbnN0
+IGludCBhc3QyNzAwX2dpYzEzMV9naWMxOTVfaW50Y21hcFtdID0gew0KPiA+ICAgICAgIFtBU1BF
+RURfREVWX0kzQ10gICAgICAgPSAwLA0KPiA+ICAgICAgIFtBU1BFRURfREVWX1dEVF0gICAgICAg
+PSAxNiwNCj4gPiAgICAgICBbQVNQRUVEX0RFVl9GTUNdICAgICAgID0gMjUsDQo+ID4gQEAgLTE0
+Miw3ICsxNDgsOCBAQCBzdGF0aWMgY29uc3QgaW50DQo+IGFzcGVlZF9zb2NfYXN0MjcwMF9naWMx
+MzFfaW50Y21hcFtdID0gew0KPiA+ICAgfTsNCj4gPg0KPiA+ICAgLyogR0lDSU5UIDEzMiAqLw0K
+PiA+IC1zdGF0aWMgY29uc3QgaW50IGFzcGVlZF9zb2NfYXN0MjcwMF9naWMxMzJfaW50Y21hcFtd
+ID0gew0KPiA+ICsvKiBHSUNJTlQgMTk2ICovDQo+ID4gK3N0YXRpYyBjb25zdCBpbnQgYXN0Mjcw
+MF9naWMxMzJfZ2ljMTk2X2ludGNtYXBbXSA9IHsNCj4gPiAgICAgICBbQVNQRUVEX0RFVl9FVEgx
+XSAgICAgID0gMCwNCj4gPiAgICAgICBbQVNQRUVEX0RFVl9FVEgyXSAgICAgID0gMSwNCj4gPiAg
+ICAgICBbQVNQRUVEX0RFVl9FVEgzXSAgICAgID0gMiwNCj4gPiBAQCAtMTYxLDI0ICsxNjgsMjYg
+QEAgc3RhdGljIGNvbnN0IGludA0KPiBhc3BlZWRfc29jX2FzdDI3MDBfZ2ljMTMyX2ludGNtYXBb
+XSA9IHsNCj4gPiAgIH07DQo+ID4NCj4gPiAgIC8qIEdJQ0lOVCAxMzMgKi8NCj4gPiAtc3RhdGlj
+IGNvbnN0IGludCBhc3BlZWRfc29jX2FzdDI3MDBfZ2ljMTMzX2ludGNtYXBbXSA9IHsNCj4gPiAr
+LyogR0lDSU5UIDE5NyAqLw0KPiA+ICtzdGF0aWMgY29uc3QgaW50IGFzdDI3MDBfZ2ljMTMzX2dp
+YzE5N19pbnRjbWFwW10gPSB7DQo+ID4gICAgICAgW0FTUEVFRF9ERVZfU0RIQ0ldICAgICA9IDEs
+DQo+ID4gICAgICAgW0FTUEVFRF9ERVZfUEVDSV0gICAgICA9IDQsDQo+ID4gICB9Ow0KPiA+DQo+
+ID4gICAvKiBHSUNJTlQgMTI4IH4gMTM2ICovDQo+ID4gKy8qIEdJQ0lOVCAxOTIgfiAyMDEgKi8N
+Cj4gPiAgIHN0cnVjdCBnaWNfaW50Y19pcnFfaW5mbyB7DQo+ID4gICAgICAgaW50IGlycTsNCj4g
+PiAgICAgICBjb25zdCBpbnQgKnB0cjsNCj4gPiAgIH07DQo+ID4NCj4gPiAtc3RhdGljIGNvbnN0
+IHN0cnVjdCBnaWNfaW50Y19pcnFfaW5mbyBhc3BlZWRfc29jX2FzdDI3MDBfZ2ljX2ludGNtYXBb
+XSA9IHsNCj4gPiAtICAgIHsxMjgsICBhc3BlZWRfc29jX2FzdDI3MDBfZ2ljMTI4X2ludGNtYXB9
+LA0KPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGdpY19pbnRjX2lycV9pbmZvIGFzdDI3MDBfZ2lj
+X2ludGNtYXBbXSA9IHsNCj4gPiArICAgIHsxMjgsICBhc3QyNzAwX2dpYzEyOF9naWMxOTJfaW50
+Y21hcH0sDQo+ID4gICAgICAgezEyOSwgIE5VTEx9LA0KPiA+IC0gICAgezEzMCwgIGFzcGVlZF9z
+b2NfYXN0MjcwMF9naWMxMzBfaW50Y21hcH0sDQo+ID4gLSAgICB7MTMxLCAgYXNwZWVkX3NvY19h
+c3QyNzAwX2dpYzEzMV9pbnRjbWFwfSwNCj4gPiAtICAgIHsxMzIsICBhc3BlZWRfc29jX2FzdDI3
+MDBfZ2ljMTMyX2ludGNtYXB9LA0KPiA+IC0gICAgezEzMywgIGFzcGVlZF9zb2NfYXN0MjcwMF9n
+aWMxMzNfaW50Y21hcH0sDQo+ID4gKyAgICB7MTMwLCAgYXN0MjcwMF9naWMxMzBfZ2ljMTk0X2lu
+dGNtYXB9LA0KPiA+ICsgICAgezEzMSwgIGFzdDI3MDBfZ2ljMTMxX2dpYzE5NV9pbnRjbWFwfSwN
+Cj4gPiArICAgIHsxMzIsICBhc3QyNzAwX2dpYzEzMl9naWMxOTZfaW50Y21hcH0sDQo+ID4gKyAg
+ICB7MTMzLCAgYXN0MjcwMF9naWMxMzNfZ2ljMTk3X2ludGNtYXB9LA0KPiA+ICAgICAgIHsxMzQs
+ICBOVUxMfSwNCj4gPiAgICAgICB7MTM1LCAgTlVMTH0sDQo+ID4gICAgICAgezEzNiwgIE5VTEx9
+LA0KPiA+IEBAIC0xOTAsMTEgKzE5OSwxMSBAQCBzdGF0aWMgcWVtdV9pcnENCj4gYXNwZWVkX3Nv
+Y19hc3QyNzAwX2dldF9pcnEoQXNwZWVkU29DU3RhdGUgKnMsIGludCBkZXYpDQo+ID4gICAgICAg
+QXNwZWVkU29DQ2xhc3MgKnNjID0gQVNQRUVEX1NPQ19HRVRfQ0xBU1Mocyk7DQo+ID4gICAgICAg
+aW50IGk7DQo+ID4NCj4gPiAtICAgIGZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKGFzcGVlZF9z
+b2NfYXN0MjcwMF9naWNfaW50Y21hcCk7IGkrKykgew0KPiA+IC0gICAgICAgIGlmIChzYy0+aXJx
+bWFwW2Rldl0gPT0gYXNwZWVkX3NvY19hc3QyNzAwX2dpY19pbnRjbWFwW2ldLmlycSkgew0KPiA+
+IC0gICAgICAgICAgICBhc3NlcnQoYXNwZWVkX3NvY19hc3QyNzAwX2dpY19pbnRjbWFwW2ldLnB0
+cik7DQo+ID4gKyAgICBmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShhc3QyNzAwX2dpY19pbnRj
+bWFwKTsgaSsrKSB7DQo+ID4gKyAgICAgICAgaWYgKHNjLT5pcnFtYXBbZGV2XSA9PSBhc3QyNzAw
+X2dpY19pbnRjbWFwW2ldLmlycSkgew0KPiA+ICsgICAgICAgICAgICBhc3NlcnQoYXN0MjcwMF9n
+aWNfaW50Y21hcFtpXS5wdHIpOw0KPiA+ICAgICAgICAgICAgICAgcmV0dXJuIHFkZXZfZ2V0X2dw
+aW9faW4oREVWSUNFKCZhLT5pbnRjLm9yZ2F0ZXNbaV0pLA0KPiA+IC0gICAgICAgICAgICAgICAg
+YXNwZWVkX3NvY19hc3QyNzAwX2dpY19pbnRjbWFwW2ldLnB0cltkZXZdKTsNCj4gPiArICAgICAg
+ICAgICAgICAgIGFzdDI3MDBfZ2ljX2ludGNtYXBbaV0ucHRyW2Rldl0pOw0KPiA+ICAgICAgICAg
+ICB9DQo+ID4gICAgICAgfQ0KPiA+DQo+ID4gQEAgLTIwOCwxNiArMjE3LDE3IEBAIHN0YXRpYyBx
+ZW11X2lycQ0KPiBhc3BlZWRfc29jX2FzdDI3MDBfZ2V0X2lycV9pbmRleChBc3BlZWRTb0NTdGF0
+ZSAqcywgaW50IGRldiwNCj4gPiAgICAgICBBc3BlZWRTb0NDbGFzcyAqc2MgPSBBU1BFRURfU09D
+X0dFVF9DTEFTUyhzKTsNCj4gPiAgICAgICBpbnQgaTsNCj4gPg0KPiA+IC0gICAgZm9yIChpID0g
+MDsgaSA8IEFSUkFZX1NJWkUoYXNwZWVkX3NvY19hc3QyNzAwX2dpY19pbnRjbWFwKTsgaSsrKSB7
+DQo+ID4gLSAgICAgICAgaWYgKHNjLT5pcnFtYXBbZGV2XSA9PSBhc3BlZWRfc29jX2FzdDI3MDBf
+Z2ljX2ludGNtYXBbaV0uaXJxKSB7DQo+ID4gLSAgICAgICAgICAgIGFzc2VydChhc3BlZWRfc29j
+X2FzdDI3MDBfZ2ljX2ludGNtYXBbaV0ucHRyKTsNCj4gPiArICAgIGZvciAoaSA9IDA7IGkgPCBB
+UlJBWV9TSVpFKGFzdDI3MDBfZ2ljX2ludGNtYXApOyBpKyspIHsNCj4gPiArICAgICAgICBpZiAo
+c2MtPmlycW1hcFtkZXZdID09IGFzdDI3MDBfZ2ljX2ludGNtYXBbaV0uaXJxKSB7DQo+ID4gKyAg
+ICAgICAgICAgIGFzc2VydChhc3QyNzAwX2dpY19pbnRjbWFwW2ldLnB0cik7DQo+ID4gICAgICAg
+ICAgICAgICByZXR1cm4gcWRldl9nZXRfZ3Bpb19pbihERVZJQ0UoJmEtPmludGMub3JnYXRlc1tp
+XSksDQo+ID4gLSAgICAgICAgICAgICAgICBhc3BlZWRfc29jX2FzdDI3MDBfZ2ljX2ludGNtYXBb
+aV0ucHRyW2Rldl0gKyBpbmRleCk7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIGFzdDI3MDBfZ2ljX2ludGNtYXBbaV0ucHRyW2Rldl0NCj4gKw0KPiA+ICsgaW5kZXgp
+Ow0KPiA+ICAgICAgICAgICB9DQo+ID4gICAgICAgfQ0KPiA+DQo+ID4gICAgICAgLyoNCj4gPiAt
+ICAgICAqIEludmFsaWQgb3JnYXRlIGluZGV4LCBkZXZpY2UgaXJxIHNob3VsZCBiZSAxMjggdG8g
+MTM2Lg0KPiA+ICsgICAgICogSW52YWxpZCBPUiBnYXRlIGluZGV4LCBkZXZpY2UgSVJRIHNob3Vs
+ZCBiZSBiZXR3ZWVuIDEyOCB0byAxMzYNCj4gPiArICAgICAqIGFuZCAxOTIgdG8gMjAxLg0KPiA+
+ICAgICAgICAqLw0KPiA+ICAgICAgIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCk7DQo+ID4gICB9DQo+
+ID4gQEAgLTQ5Miw3ICs1MDIsNiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfc29jX2FzdDI3MDBfcmVh
+bGl6ZShEZXZpY2VTdGF0ZQ0KPiAqZGV2LCBFcnJvciAqKmVycnApDQo+ID4gICAgICAgQXNwZWVk
+Mjd4MFNvQ1N0YXRlICphID0gQVNQRUVEMjdYMF9TT0MoZGV2KTsNCj4gPiAgICAgICBBc3BlZWRT
+b0NTdGF0ZSAqcyA9IEFTUEVFRF9TT0MoZGV2KTsNCj4gPiAgICAgICBBc3BlZWRTb0NDbGFzcyAq
+c2MgPSBBU1BFRURfU09DX0dFVF9DTEFTUyhzKTsNCj4gPiAtICAgIEFzcGVlZElOVENDbGFzcyAq
+aWMgPSBBU1BFRURfSU5UQ19HRVRfQ0xBU1MoJmEtPmludGMpOw0KPiANCj4gSSB3b3VsZCBrZWVw
+IHRoaXMgaW50ZXJtZWRpYXRlIHZhcmlhYmxlLiBNaW5vci4NCj4gDQpUaGFua3MgZm9yIHN1Z2dl
+c3Rpb24gYW5kIHJldmlldy4NCldpbGwga2VlcCB0aGlzIHZhcmlhYmxlLg0KSmFtaW4NCj4gDQo+
+IFJldmlld2VkLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+DQo+IA0KPiBU
+aGFua3MsDQo+IA0KPiBDLg0KPiANCj4gDQo+IA0KPiA+ICAgICAgIGdfYXV0b2ZyZWUgY2hhciAq
+c3JhbV9uYW1lID0gTlVMTDsNCj4gPiAgICAgICBxZW11X2lycSBpcnE7DQo+ID4NCj4gPiBAQCAt
+NTMwLDE3ICs1MzksMTggQEAgc3RhdGljIHZvaWQNCj4gYXNwZWVkX3NvY19hc3QyNzAwX3JlYWxp
+emUoRGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0KPiA+ICAgICAgIGFzcGVlZF9tbWlv
+X21hcChzLCBTWVNfQlVTX0RFVklDRSgmYS0+aW50YyksIDAsDQo+ID4gICAgICAgICAgICAgICAg
+ICAgICAgIHNjLT5tZW1tYXBbQVNQRUVEX0RFVl9JTlRDXSk7DQo+ID4NCj4gPiAtICAgIC8qIHNv
+dXJjZSBvcmdhdGVzIC0+IElOVEMgKi8NCj4gPiAtICAgIGZvciAoaSA9IDA7IGkgPCBpYy0+bnVt
+X2lucGluczsgaSsrKSB7DQo+ID4gKyAgICAvKiBpcnEgc291cmNlcyAtPiBvcmdhdGVzIC0+IElO
+VEMgKi8NCj4gPiArICAgIGZvciAoaSA9IDA7IGkgPCBBU1BFRURfSU5UQ19HRVRfQ0xBU1MoJmEt
+PmludGMpLT5udW1faW5waW5zOyBpKyspDQo+ID4gKyB7DQo+ID4gICAgICAgICAgIHFkZXZfY29u
+bmVjdF9ncGlvX291dChERVZJQ0UoJmEtPmludGMub3JnYXRlc1tpXSksIDAsDQo+ID4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihERVZJQ0UoJmEtPmlu
+dGMpLA0KPiBpKSk7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHFkZXZfZ2V0
+X2dwaW9faW4oREVWSUNFKCZhLT5pbnRjKSwNCj4gaSkpOw0KPiA+ICAgICAgIH0NCj4gPg0KPiA+
+ICsgICAgLyogSU5UQyAtPiBHSUMxOTIgLSBHSUMyMDEgKi8NCj4gPiAgICAgICAvKiBJTlRDIC0+
+IEdJQzEyOCAtIEdJQzEzNiAqLw0KPiA+IC0gICAgZm9yIChpID0gMDsgaSA8IGljLT5udW1fb3V0
+cGluczsgaSsrKSB7DQo+ID4gKyAgICBmb3IgKGkgPSAwOyBpIDwgQVNQRUVEX0lOVENfR0VUX0NM
+QVNTKCZhLT5pbnRjKS0+bnVtX291dHBpbnM7DQo+ID4gKyBpKyspIHsNCj4gPiAgICAgICAgICAg
+c3lzYnVzX2Nvbm5lY3RfaXJxKFNZU19CVVNfREVWSUNFKCZhLT5pbnRjKSwgaSwNCj4gPiAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHFkZXZfZ2V0X2dwaW9faW4oREVWSUNFKCZhLT5naWMp
+LA0KPiA+IC0NCj4gYXNwZWVkX3NvY19hc3QyNzAwX2dpY19pbnRjbWFwW2ldLmlycSkpOw0KPiA+
+ICsNCj4gPiArIGFzdDI3MDBfZ2ljX2ludGNtYXBbaV0uaXJxKSk7DQo+ID4gICAgICAgfQ0KPiA+
+DQo+ID4gICAgICAgLyogU1JBTSAqLw0KPiA+IEBAIC02OTEsMTAgKzcwMSwyMiBAQCBzdGF0aWMg
+dm9pZA0KPiBhc3BlZWRfc29jX2FzdDI3MDBfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJv
+ciAqKmVycnApDQo+ID4gICAgICAgZm9yIChpID0gMDsgaSA8IEFTUEVFRF9JMkNfR0VUX0NMQVNT
+KCZzLT5pMmMpLT5udW1fYnVzc2VzOyBpKyspIHsNCj4gPiAgICAgICAgICAgLyoNCj4gPiAgICAg
+ICAgICAgICogVGhlIEFTVDI3MDAgSTJDIGNvbnRyb2xsZXIgaGFzIG9uZSBzb3VyY2UgSU5UQyBw
+ZXIgYnVzLg0KPiA+IC0gICAgICAgICAqIEkyQyBidXNlcyBpbnRlcnJ1cHQgYXJlIGNvbm5lY3Rl
+ZCB0byBHSUNJTlQxMzBfSU5UQw0KPiA+IC0gICAgICAgICAqIGZyb20gYml0IDAgdG8gYml0IDE1
+Lg0KPiA+IC0gICAgICAgICAqIEkyQyBidXMgMCBpcyBjb25uZWN0ZWQgdG8gR0lDSU5UMTMwX0lO
+VEMgYXQgYml0IDAuDQo+ID4gLSAgICAgICAgICogSTJDIGJ1cyAxNSBpcyBjb25uZWN0ZWQgdG8g
+R0lDSU5UMTMwX0lOVEMgYXQgYml0IDE1Lg0KPiA+ICsgICAgICAgICAqDQo+ID4gKyAgICAgICAg
+ICogRm9yIEFTVDI3MDAgQTA6DQo+ID4gKyAgICAgICAgICogSTJDIGJ1cyBpbnRlcnJ1cHRzIGFy
+ZSBjb25uZWN0ZWQgdG8gdGhlIE9SIGdhdGUgZnJvbSBiaXQgMCB0bw0KPiBiaXQNCj4gPiArICAg
+ICAgICAgKiAxNSwgYW5kIHRoZSBPUiBnYXRlIG91dHB1dCBwaW4gaXMgY29ubmVjdGVkIHRvIHRo
+ZSBpbnB1dCBwaW4gb2YNCj4gPiArICAgICAgICAgKiBHSUNJTlQxMzAgb2YgSU5UQyAoQ1BVIERp
+ZSkuIFRoZW4sIHRoZSBvdXRwdXQgcGluIGlzDQo+IGNvbm5lY3RlZCB0bw0KPiA+ICsgICAgICAg
+ICAqIHRoZSBHSUMuDQo+ID4gKyAgICAgICAgICoNCj4gPiArICAgICAgICAgKiBGb3IgQVNUMjcw
+MCBBMToNCj4gPiArICAgICAgICAgKiBJMkMgYnVzIGludGVycnVwdHMgYXJlIGNvbm5lY3RlZCB0
+byB0aGUgT1IgZ2F0ZSBmcm9tIGJpdCAwIHRvDQo+IGJpdA0KPiA+ICsgICAgICAgICAqIDE1LCBh
+bmQgdGhlIE9SIGdhdGUgb3V0cHV0IHBpbiBpcyBjb25uZWN0ZWQgdG8gdGhlIGlucHV0IHBpbiBv
+Zg0KPiA+ICsgICAgICAgICAqIEdJQ0lOVDE5NCBvZiBJTlRDSU8gKElPIERpZSkuIFRoZW4sIHRo
+ZSBvdXRwdXQgcGluIGlzDQo+IGNvbm5lY3RlZA0KPiA+ICsgICAgICAgICAqIHRvIHRoZSBJTlRD
+IChDUFUgRGllKSBpbnB1dCBwaW4sIGFuZCBpdHMgb3V0cHV0IHBpbiBpcyBjb25uZWN0ZWQNCj4g
+PiArICAgICAgICAgKiB0byB0aGUgR0lDLg0KPiA+ICsgICAgICAgICAqDQo+ID4gKyAgICAgICAg
+ICogSTJDIGJ1cyAwIGlzIGNvbm5lY3RlZCB0byB0aGUgT1IgZ2F0ZSBhdCBiaXQgMC4NCj4gPiAr
+ICAgICAgICAgKiBJMkMgYnVzIDE1IGlzIGNvbm5lY3RlZCB0byB0aGUgT1IgZ2F0ZSBhdCBiaXQg
+MTUuDQo+ID4gICAgICAgICAgICAqLw0KPiA+ICAgICAgICAgICBpcnEgPSBhc3BlZWRfc29jX2Fz
+dDI3MDBfZ2V0X2lycV9pbmRleChzLCBBU1BFRURfREVWX0kyQywgaSk7DQo+ID4gICAgICAgICAg
+IHN5c2J1c19jb25uZWN0X2lycShTWVNfQlVTX0RFVklDRSgmcy0+aTJjLmJ1c3Nlc1tpXSksIDAs
+DQo+ID4gaXJxKTsNCg0K

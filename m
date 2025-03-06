@@ -1,190 +1,161 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1354491njm;
-        Thu, 6 Mar 2025 01:21:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWVht4asjJAxJRg4uTUadBBtVYfjG97co5zEA861Chp3n8UJgYVg7Kj6PS50kwbZzT0KG38Q0SbHJM03Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHD+15MDDL8bYoFFZeenVmWG+PTcQgFkdIgHXi85aYo6ZSz0aQCXrcejoknIdbifV2x2ZfU
-X-Received: by 2002:a05:690c:9b0f:b0:6fd:4849:62da with SMTP id 00721157ae682-6fda2f87dd1mr102397357b3.22.1741252907911;
-        Thu, 06 Mar 2025 01:21:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741252907; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1376162njm;
+        Thu, 6 Mar 2025 02:13:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXwaVXYHryWMS0+dYSpFOc4kxeFrgZ/7G8EA2Inj7oUt4ENF2bNJwm9ddNm0wBvlWOFYxAIfLMCEojhxw==@linaro.org
+X-Received: by 2002:a05:690c:5a81:b0:6f9:c6e2:89a8 with SMTP id 00721157ae682-6feaee5e07emr29592527b3.6.1741256009236;
+        Thu, 06 Mar 2025 02:13:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741256009; cv=none;
         d=google.com; s=arc-20240605;
-        b=DR/p9WGoIwaZUK2RDNWW9+91FOBx+SsQ/DHgUrp2Jp1XyVgbIpOY3rvKo350SLujdZ
-         lYqGZrDQT2eZqUJBK14fqPHjQO+G4yTG2rh9RSk4MZwKH/14kRdmEzm93+m9tV/AGaG6
-         Rtzi0WlaPShpXBTqt2fKz3PrM+hWoTS28B4fBkbSdmESDfQxafPaI5rLGDbLWsMaeBcL
-         fQs/eyDGGrG2115QNym4s6AeLPifeXE9bzJ+SoNdpPWLlp8NrY6gh+pURMv7QC6jFZYe
-         QnLq7VdiaygiWDhRM1XYP4AiYUbieLn5NWfaC+kf7xxLVcHVR+9txtEQLYCONtqXT+u5
-         O7dA==
+        b=hzRe8s1OA7yWJ1E9c9MKV/Kd+me7tVgAqhFlyMzX+tWZrU0hANxWt/7Ex2Fqhb+qxO
+         vIgH9h5+Ksqpqq2B3bBlh+xOhPKVG6KEP3sMBLXTwo//28fwD1xblVsw77OudaxF2LGE
+         rv3obA1zu4WeRiWknxOlgfk+2AzCUvMqZEMWS0VJiCv3mELC/jCTy3hc1kzhy+eQL4DZ
+         lnydGyvIl3iSRD5gSSbzHaRQg4MOUMDcqzn/b5BA9XYLAULUG4XZ5tzx+DNyqNKppyaG
+         msaSrhx/k0ebGUnReeqOGoLIf9psSmb6wcZwITGqncOXLph8XJPfmGrKhSyBgeLSBlFO
+         /tgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=+fE7ocxEBIWLDJiLQCiXw6MUiosAmWceyhwxWZUHTzM=;
-        fh=SnT0fizqs/La+VRtqVXAmYUBOKuPB2xmIK/FkphvlPo=;
-        b=Wkg04MupdzZ7OREsH0+etbQ6S9gAeJncJYdu9+uGlXWBMmTBQW9CcfQ6umJYQFQvBi
-         TQefPmwRRoXW5y7Q5Fo+FS9zlvDNx9fDcPatcffxdHXtIFmWiCwJpVRA6aJGawv1uIy0
-         wMmeoMDRg/SpdnELJHV/D1YlMk7hCeO8tbXQalTpwc1TIHNEvZDq+JJsMe22y2zC0pqB
-         hggbNc2kb5BQUwsEHVTcK/bTwchHiX7DHPHXNDHzsA+2+i09hcS/UPFaEzXon+0SE+ck
-         X70Ollmfb7b4a9i0K+Eed728jk7BMsfkcUugvI/m3aKe+sVciGRBXswCfv1qWBGvg4zZ
-         qz3A==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
+        fh=X44DfZV54H7+rIgeK9PTMot/9y4aq4p2wFoLVY8BZ+0=;
+        b=C6urlB18dWeuKZTPuR5banTOBiVp4tTff+SlomiDsIvBkLfBpqACYf6VACV9BB+ixZ
+         UOL2w5Ex0UZU9kobbmpoxwvoTMZG9ZxWZL7emm3nROLYTFu9fuJVzpRp/Lx4WcGoLr0y
+         CxjY0LQaRDnw9B3KBGQHBVNb6YJ9ldvEDwiah1WllcbbwsHE1Isr1bC1fkymhwV2SEw7
+         OULuz3RNtoIDZ4JSGZd02ua7ltcSrX0MVJh9xROGYvBwxvgQpQkd/1IvkHwE6sSQbm46
+         WF8+wCA9rAr2zmyNrhIpTQjrZYXGghYjH9W3Olz9EdtlELbyQ+hY/cFSHP+kiqgSDF0I
+         NxDw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QgS7PXh/";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 00721157ae682-6feb2c11ca6si6526957b3.353.2025.03.06.01.21.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=RQKb+zY1;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-6feb2b97ee3sor4122917b3.7.2025.03.06.02.13.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Mar 2025 01:21:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Thu, 06 Mar 2025 02:13:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QgS7PXh/";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1741252907;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+fE7ocxEBIWLDJiLQCiXw6MUiosAmWceyhwxWZUHTzM=;
-	b=QgS7PXh/5RUUjt/tqZ1ivPZNZLgtS1ZNvKQlVvLXR3VMsac9Wqnlt4VUr0IiCAFR5T0ofm
-	otwcx80R+2v0MtIVbWWiGXHAkMVMfnH1wp0DHszDgxrButxvc3Qv+/DRSYVOIFXh7HdnFp
-	opW3cLdqWWzW12X/I8vjgtQetxW8Zww=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-668-xgyO-kMTN9GtFWtkMS4LtQ-1; Thu,
- 06 Mar 2025 04:21:21 -0500
-X-MC-Unique: xgyO-kMTN9GtFWtkMS4LtQ-1
-X-Mimecast-MFC-AGG-ID: xgyO-kMTN9GtFWtkMS4LtQ_1741252880
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E1BBD1800361;
-	Thu,  6 Mar 2025 09:21:19 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.112])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9719B300019E;
-	Thu,  6 Mar 2025 09:21:15 +0000 (UTC)
-Date: Thu, 6 Mar 2025 09:21:11 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [RFC PATCH 2/4] hw/arm/raspi: Replace TARGET_AARCH64 by
- legacy_binary_is_64bit()
-Message-ID: <Z8lpB6XdNPT8zyTa@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250305161248.54901-1-philmd@linaro.org>
- <20250305161248.54901-3-philmd@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=RQKb+zY1;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1741256009; x=1741860809; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
+        b=RQKb+zY17PsJ+/f3EBF2R6RJeCuahPFvqpSawlUJXNz5wI50MiLRIa+Pdk4L+X+e15
+         q6Z4sr91wwYCmcjkxfBtV3OEGozasEq560eCs8M5wZQ8CyBMrOYVo+RizyAKz/bzTsur
+         0xAu1wCMVazRAJjWl+1r08IhNEsMd6phi8wQjy4KYezgXTv7fbssi8JnreTpSf2427tj
+         nubz7PAHMJtJBiZ7W90GCAmAUebsQgAwZ8gfWYPnfTP6z6THfXEpV23Vn1UTrzrwET1+
+         t+iP8aQiLXfTWi82BMe0P2XBwu7cuAs/btbLIKfuyyEhfznKPFBss5l4qFaBL+93kntM
+         SD1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741256009; x=1741860809;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
+        b=PghsHQvf6hiJXBXEoLWr2f2N/h+auFxT80WIApCU8IT+J22ebr9qk49GN9ZIKKguk9
+         tdaErnCmhwhO1QEf7aPi2J52ilop5FiB1wtHyu+FgQh/jCW5xZ09Y6Zssi7cCfYxlPX4
+         o/GT+KOAJc4Aneq3UNKPNV2yGaQmUmGbRMWlzFpDh6BC0tquzrtx8mRyCxydIXa5f0M1
+         rcj78fFI8xIz5g+vli2MqqpmjVpvljT2Eh04RCvQEC8nqJWwZHNlrNq+lDM+Yx8enqX3
+         LFZsZEDcJBbtvXFqxynV9oyvIluM/3dx19oj7zv/nEjULEsq/sOm4ub0TzxH/ho6wR9g
+         3rPg==
+X-Forwarded-Encrypted: i=1; AJvYcCVsyXj+cfV5+k851JOTH9TwcioEKWZHEwWKMSpLzigtXBS91D1bn+q4uKSrfFEMrpd1UDzinuEyk5kOAA==@linaro.org
+X-Gm-Message-State: AOJu0YzZyIi1BVzJuNxlnM4X50m+prOXGLQLoXFfjwLREq9FWHLd1TSA
+	q705fJGV/GWrJh5dkPNCufgPNaV1axtWwaaj131rR/TLMybuogNJha6Vu5XciPmO0wGTftABlXC
+	WYjExCVn7KK+jDe3Z9lhF9S8TdC7vbFriqyAeGeHG
+X-Gm-Gg: ASbGncuTX8Dej9jQvAasdT+o2nq78/M8nyx/O148X6xxehnrwcTg/azQsN2t0xHGv2J
+	ll50eymP9A7gN6DUSQn2k67Vz21PjM8rgUf9TqWxnn4sZvVTdc2xY3hBFqfsnd8uUJRnCQBa9zd
+	NEOzikalnZ0AvpC0gcp2pWXe7fevg=
+X-Google-Smtp-Source: AGHT+IGAkHtVrhbM0rUIE+VF0q/zYEaQvPttC/adGGYQuG8e/lqVdReWfCOxNKL4LxUj14JV08rUtstqnYBbEZ++ko0=
+X-Received: by 2002:a05:690c:64c5:b0:6fa:fd85:a2b6 with SMTP id
+ 00721157ae682-6feaeeda024mr37834847b3.13.1741256008805; Thu, 06 Mar 2025
+ 02:13:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250305161248.54901-3-philmd@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: +GONmYbv4aoz
+References: <20250305161248.54901-1-philmd@linaro.org> <20250305161248.54901-3-philmd@linaro.org>
+ <Z8lpB6XdNPT8zyTa@redhat.com>
+In-Reply-To: <Z8lpB6XdNPT8zyTa@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Mar 2025 10:13:16 +0000
+X-Gm-Features: AQ5f1JrjmBIvYLT_jqvL_Q04vutWHCYlIcEFcz_IjkUx64YHVNTExNWlQGns4ZU
+Message-ID: <CAFEAcA9FuNJZwQ2NyJdBicoMMF=3Ua+qokrHu+-_uwnF9_tDNQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/4] hw/arm/raspi: Replace TARGET_AARCH64 by legacy_binary_is_64bit()
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org, 
+	Thomas Huth <thuth@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 4FusqMH0fOXM
 
-On Wed, Mar 05, 2025 at 05:12:46PM +0100, Philippe Mathieu-Daudé wrote:
-> For legacy ARM binaries, legacy_binary_is_64bit() is
-> equivalent of the compile time TARGET_AARCH64 definition.
-> 
-> Use it as TypeInfo::registerable() callback to dynamically
-> add Aarch64 specific types in qemu-system-aarch64 binary,
-> removing the need of TARGET_AARCH64 #ifdef'ry.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/arm/bcm2836.c | 6 ++----
->  hw/arm/raspi.c   | 7 +++----
->  2 files changed, 5 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> index 95e16806fa1..88a32e5fc20 100644
-> --- a/hw/arm/bcm2836.c
-> +++ b/hw/arm/bcm2836.c
+On Thu, 6 Mar 2025 at 09:21, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
+wrote:
+>
+> On Wed, Mar 05, 2025 at 05:12:46PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > For legacy ARM binaries, legacy_binary_is_64bit() is
+> > equivalent of the compile time TARGET_AARCH64 definition.
+> >
+> > Use it as TypeInfo::registerable() callback to dynamically
+> > add Aarch64 specific types in qemu-system-aarch64 binary,
+> > removing the need of TARGET_AARCH64 #ifdef'ry.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> > ---
+> >  hw/arm/bcm2836.c | 6 ++----
+> >  hw/arm/raspi.c   | 7 +++----
+> >  2 files changed, 5 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> > index 95e16806fa1..88a32e5fc20 100644
+> > --- a/hw/arm/bcm2836.c
+> > +++ b/hw/arm/bcm2836.c
+>
+>
+> > @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] =3D {
+> >          .name           =3D TYPE_BCM2836,
+> >          .parent         =3D TYPE_BCM283X,
+> >          .class_init     =3D bcm2836_class_init,
+> > -#ifdef TARGET_AARCH64
+> >      }, {
+> >          .name           =3D TYPE_BCM2837,
+> >          .parent         =3D TYPE_BCM283X,
+> > +        .registerable   =3D legacy_binary_is_64bit,
+> >          .class_init     =3D bcm2837_class_init,
+> > -#endif
+> >      }, {
+> >          .name           =3D TYPE_BCM283X,
+> >          .parent         =3D TYPE_BCM283X_BASE,
+>
+> So historically we have a subset of machines that are only exposed in
+> the qemu-system-aarch64 binary, and not qemu-system-arm.
+>
+> You're attempting to build a single binary to cover both 32 & 64 bit
+> arm, so need to be able to filter what machines are available to
+> create when the symlink indicates invokation of the 32-bit binary.
 
+What machines are there that we don't want to provide, though?
+We don't provide for instance raspi4b in today's qemu-system-arm,
+but that's because it wouldn't work there: qemu-system-arm
+doesn't have the 64-bit CPUs. But if we have a single binary
+that has both 32 and 64 bit arm in it, then the 64-bit CPUs
+will be in that combined binary. Do we actually need to explicitly
+forbid the user from saying 'qemu-system-arm -M raspi4b' when
+qemu-system-arm is a symlink and the command would work fine
+if it wasn't forbidden?
 
-> @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] = {
->          .name           = TYPE_BCM2836,
->          .parent         = TYPE_BCM283X,
->          .class_init     = bcm2836_class_init,
-> -#ifdef TARGET_AARCH64
->      }, {
->          .name           = TYPE_BCM2837,
->          .parent         = TYPE_BCM283X,
-> +        .registerable   = legacy_binary_is_64bit,
->          .class_init     = bcm2837_class_init,
-> -#endif
->      }, {
->          .name           = TYPE_BCM283X,
->          .parent         = TYPE_BCM283X_BASE,
+I had assumed that the motivation here was that we'd like to
+be able to build this C file only once. Currently we have to
+build it once for the aarch64 target and once for the arm target;
+to avoid that we would need to determine "does the binary I'm
+in have the AArch64 CPU types this type depends on" at runtime,
+not at compile time (which is what the ifdef is doing, effectively).
 
-So historically we have a subset of machines that are only exposed in
-the qemu-system-aarch64 binary, and not qemu-system-arm.
-
-You're attempting to build a single binary to cover both 32 & 64 bit
-arm, so need to be able to filter what machines are available to
-create when the symlink indicates invokation of the 32-bit binary.
-
-If we extend your approach into the future, we may eventually have
-a qemu-system-any with all targets, and symlinks from the legacy
-binary names, so need to filter based on target as well as on
-32/64-bit.
-
-
-The reason you want the .registerable callback is so that we can
-have a single static list of all machine types passed into
-DEFINE_TYPES in bulk, instead of implementing a manual constructor
-to do type registration and conditionally calling type_register()
-for each type.
-
-So I can understand why you took this approach, but conceptually I'm not
-comfortable with the semantics of 'type_register' being a method that
-registers a type, except when it doesn't register a type. That feels
-like dubious semantic design.
-
-If I step back a level, I would ask why do we need to skip the registration
-of machine types at all ?
-
-It is because existing code blindly assumes that if a machine class is
-registered, then it is valid to instantiate that machine class. IMHO this
-is where the current design limitation is.
-
-No matter what we do the code will exist in  memory in the binary. If we
-register a type that's a tiny bit of memory to hold the "Class" instance
-and ought to be logically harmless if we never instantiate a type.
-
-IMHO we should always unconditionally register all types for which we
-have code in memory. If there are types like machine types, where some
-Classes should be blocked from instantiation based on certain criteria,
-we should instead represent that with a check at that class level in
-some manner.
-
-i.e, we could have a helper
-
-    bool machine_is_available(MachineClass *mc)
-
-which we use as a filter when querying machine types that are available to
-instantiate (-M help, query-machines), and as a pre-condition prior to
-instiating a machine type (-M <name>).
-
-That may in turn imply a callback
-
-   bool (*is_available)(void)
-
-on the MachineClass, for which your legacy_binary_is_64bit() method would
-serve as an impl.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+thanks
+-- PMM

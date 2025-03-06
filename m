@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1386781njm;
-        Thu, 6 Mar 2025 02:40:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWo4Tie+S8rVLbMnAVLxGEuQtvOGcxjVSv1zPubHz7GJSOdjO7+eSURfFlOl5gzYjqhLpTpyIOj3Z5cfg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvCfv3bFTVVica9OUTtvlzF4Y/dZlc/sMmBSqLWMMPnKr1yCtjAikSE2uJGIO4dLuqXL2l
-X-Received: by 2002:a05:6214:2487:b0:6e6:646d:7550 with SMTP id 6a1803df08f44-6e8f4783ebamr45624186d6.19.1741257623514;
-        Thu, 06 Mar 2025 02:40:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741257623; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1386795njm;
+        Thu, 6 Mar 2025 02:40:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWaJbq70wXqPJ7b4AlnSPF3AKAlXybqm0MQ2Bj6yWqUoSwgYtwqlixVtJnZ7G+QI6twaLbnn0oNEvCvHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH0ULNJcVwukToVyl3ee/lCX7VmvBpcbt3tL4Vc7nd2Cfb1txLg1geG3XgkEkfP8CsP0F+v
+X-Received: by 2002:a05:622a:1ba0:b0:471:f272:985b with SMTP id d75a77b69052e-4750b4c6168mr84496951cf.42.1741257624755;
+        Thu, 06 Mar 2025 02:40:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741257624; cv=none;
         d=google.com; s=arc-20240605;
-        b=iENByTqeRKczk/8z2Ts/5ycONpd+npYLhcCRz8dcSPFxuNt2sgyYUk5BRNbGnPLhs8
-         mgoM7al8pEESi69JQIrQdJe1/rE0r3aky4uHn7GUdMCeLXUAQtP9lk9MOqPDnMhExWYz
-         Nh0N+DwKtSklSh2WCCRSNj8n8xmLOop3FjcMadthMKLBeiYUxvpxVSOuqtF2wglh+XIu
-         ySeefqR/5JS6qRdK9myqI4SS5gKmodOFCgehlv8NxERQBqO6TIeZjsVztZ1iWXiFOW/4
-         oK5U0wtRjogx5fPXsisH4BcFYYxE5VCb4RFL5An1RTh4VghQkPXS71PQ+bkauyzJKHRg
-         Higg==
+        b=V2lX9KGrldtw4uvqqbha2sooV0HnY4xCjZAfvAgdvY968n75Z/EH8f3fd7cKD/eFmr
+         WeIKIOv9+Rs5+GDchtlNSfMC6NHHbx0Z6FnV5gEA4YM5LwqU0f6rMYURxzexYkZtDb14
+         7FtO06sCDBAH9VKRLyTmDXMArKjwSMs5eezKxrz/t2CbfRWV37JWcwHurWKF0Bizk/vq
+         /hJVbvdn11wvvlZWCbNKxY1v/RvYDxZvc8R67CGx6LsxIYIgG/LoPKVb9BhJ/LwAXSiL
+         s6Luv9uSLU+8CWC9SeA38oR3g9jigcJHLEGsgKmsoD2Xq/G21XBA91XELWn7b4gqFt8D
+         qRAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=9wiI4d1WFGOkPlqftbfVq9uvv5+ythemDL5SAZ2rppo=;
-        fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
-        b=eYQJQMcXycPQFtnkgaja3moKDtN1nbP3Q8vzRfTnD1Mo9y2FvGjum7J0UmZcidA8c7
-         enLLV6aXij20Q0kQcqnsWGzne9hUTzCpbuMct+xx2d3BfJVfmbuJPHciRvj4haDjnHA1
-         klT9IDk3odr21KH2wUxOszrAHT4XNvRsvLlXvj3YfD7685NQR2lLG9Cq76s7o3slZgU7
-         C2RQhWhNQqk7iHr8QHDLieWar6dIcnXXzHH2h4gYE/G55uThFz3ihX7/1wpJYYjg6xXV
-         0QrGAFmk6TrDxQL3BM/FTjK1wufsCOpZTd4CcXBQ4/jw0w/WU/lQ+VLvOMiNXypQ1S61
-         dPEQ==;
+        bh=juS0YDGBGwrjsf+KAcS8oBj4ALbL9BR4zSrsPZrdMB0=;
+        fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
+        b=egmE0Jx17CyNviLiGVJH1DS4wfHF5lsQkSAj/Ht9BOhnLa1AoGQLffSTsMi3HUGY4x
+         9oGsxKyi8TMRmJMB4dfXSIhoM4hZXP82MB98jJHUJoT1WqORxLJxiUVPZkni81eORaxE
+         EMbv/jNcRHqtHwZ1EL39jacYlLglGyXu9U6EPa+i6RQBNqsIa8odnFMORyl8yRILvqbx
+         YfqvWxCg1RYFYHfok0v2OTKMagqkEi/JNgqxTntOrc/2YR9Jz+dSZYPtrIbAsEaT5eGu
+         hOh38AoLz803qX6Kc3QUvMGxUHL+eyyMbmqGVqTPkLi4QLPDKPpGVR75DD8ytbdQj3Hp
+         XM+g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f707cf00si9540166d6.24.2025.03.06.02.40.23
+        by mx.google.com with ESMTPS id d75a77b69052e-4751db3f5afsi8929251cf.539.2025.03.06.02.40.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 02:40:23 -0800 (PST)
+        Thu, 06 Mar 2025 02:40:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,38 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tq8dB-0004pO-6e; Thu, 06 Mar 2025 05:39:09 -0500
+	id 1tq8du-0005gU-1f; Thu, 06 Mar 2025 05:39:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tq8d8-0004oJ-RA; Thu, 06 Mar 2025 05:39:06 -0500
+ id 1tq8dn-0005Zs-HP; Thu, 06 Mar 2025 05:39:47 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tq8d6-0000St-Tf; Thu, 06 Mar 2025 05:39:06 -0500
+ id 1tq8dh-0000TZ-Ty; Thu, 06 Mar 2025 05:39:45 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 6 Mar
- 2025 18:38:47 +0800
+ 2025 18:38:50 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 6 Mar 2025 18:38:47 +0800
+ Transport; Thu, 6 Mar 2025 18:38:50 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v5 03/29] hw/intc/aspeed: Introduce dynamic allocation for
- regs array
-Date: Thu, 6 Mar 2025 18:38:11 +0800
-Message-ID: <20250306103846.429221-4-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v5 12/29] hw/intc/aspeed: Add support for multiple output pins
+ in INTC
+Date: Thu, 6 Mar 2025 18:38:20 +0800
+Message-ID: <20250306103846.429221-13-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250306103846.429221-1-jamin_lin@aspeedtech.com>
 References: <20250306103846.429221-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -98,81 +99,98 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lH+7kPN6YUd7
+X-TUID: OMSs9d10ViE7
 
-Currently, the size of the "regs" array is 0x2000, which is too large. To save
-code size and avoid mapping large unused gaps, will update it to only map the
-useful set of registers. This update will support multiple sub-regions with
-different sizes.
+Added support for multiple output pins in the INTC controller to
+accommodate the AST2700 A1.
 
-To address the redundant size issue, replace the static "regs" array with a
-dynamically allocated "regs" memory.
-
-Introduce a new "aspeed_intc_unrealize" function to free the allocated "regs"
-memory.
+Introduced "num_outpins" to represent the number of output pins. Updated the
+IRQ handling logic to initialize and connect output pins separately from input
+pins. Modified the "aspeed_soc_ast2700_realize" function to connect source
+orgates to INTC and INTC to GIC128 - GIC136. Updated the "aspeed_intc_realize"
+function to initialize output pins.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/intc/aspeed_intc.h |  2 +-
- hw/intc/aspeed_intc.c         | 12 +++++++++++-
- 2 files changed, 12 insertions(+), 2 deletions(-)
+ include/hw/intc/aspeed_intc.h | 5 +++--
+ hw/arm/aspeed_ast27x0.c       | 6 +++++-
+ hw/intc/aspeed_intc.c         | 4 ++++
+ 3 files changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-index 03324f05ab..47ea0520b5 100644
+index bb634d2b4a..41b1f82d73 100644
 --- a/include/hw/intc/aspeed_intc.h
 +++ b/include/hw/intc/aspeed_intc.h
-@@ -27,7 +27,7 @@ struct AspeedINTCState {
-     MemoryRegion iomem;
-     MemoryRegion iomem_container;
+@@ -16,8 +16,8 @@
+ #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+ OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
  
--    uint32_t regs[ASPEED_INTC_NR_REGS];
-+    uint32_t *regs;
-     OrIRQState orgates[ASPEED_INTC_NR_INTS];
-     qemu_irq output_pins[ASPEED_INTC_NR_INTS];
+-#define ASPEED_INTC_NR_INTS 9
+ #define ASPEED_INTC_MAX_INPINS 9
++#define ASPEED_INTC_MAX_OUTPINS 9
  
+ struct AspeedINTCState {
+     /*< private >*/
+@@ -29,7 +29,7 @@ struct AspeedINTCState {
+ 
+     uint32_t *regs;
+     OrIRQState orgates[ASPEED_INTC_MAX_INPINS];
+-    qemu_irq output_pins[ASPEED_INTC_NR_INTS];
++    qemu_irq output_pins[ASPEED_INTC_MAX_OUTPINS];
+ 
+     uint32_t enable[ASPEED_INTC_MAX_INPINS];
+     uint32_t mask[ASPEED_INTC_MAX_INPINS];
+@@ -41,6 +41,7 @@ struct AspeedINTCClass {
+ 
+     uint32_t num_lines;
+     uint32_t num_inpins;
++    uint32_t num_outpins;
+     uint64_t mem_size;
+     uint64_t reg_size;
+     uint64_t reg_offset;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 01a8e1d6b4..2d24361daa 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -530,10 +530,14 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->intc), 0,
+                     sc->memmap[ASPEED_DEV_INTC]);
+ 
+-    /* GICINT orgates -> INTC -> GIC */
++    /* source orgates -> INTC */
+     for (i = 0; i < ic->num_inpins; i++) {
+         qdev_connect_gpio_out(DEVICE(&a->intc.orgates[i]), 0,
+                                 qdev_get_gpio_in(DEVICE(&a->intc), i));
++    }
++
++    /* INTC -> GIC128 - GIC136 */
++    for (i = 0; i < ic->num_outpins; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(&a->intc), i,
+                            qdev_get_gpio_in(DEVICE(&a->gic),
+                                 aspeed_soc_ast2700_gic_intcmap[i].irq));
 diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 465f41e4fd..feb2c52441 100644
+index f062db5b72..4ce2904e0b 100644
 --- a/hw/intc/aspeed_intc.c
 +++ b/hw/intc/aspeed_intc.c
-@@ -289,7 +289,7 @@ static void aspeed_intc_reset(DeviceState *dev)
- {
-     AspeedINTCState *s = ASPEED_INTC(dev);
- 
--    memset(s->regs, 0, sizeof(s->regs));
-+    memset(s->regs, 0, ASPEED_INTC_NR_REGS);
-     memset(s->enable, 0, sizeof(s->enable));
-     memset(s->mask, 0, sizeof(s->mask));
-     memset(s->pending, 0, sizeof(s->pending));
-@@ -307,6 +307,7 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
- 
-     sysbus_init_mmio(sbd, &s->iomem_container);
- 
-+    s->regs = g_malloc0(ASPEED_INTC_NR_REGS);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
-                           TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
- 
-@@ -322,12 +323,21 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+@@ -347,6 +347,9 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+         if (!qdev_realize(DEVICE(&s->orgates[i]), NULL, errp)) {
+             return;
+         }
++    }
++
++    for (i = 0; i < aic->num_outpins; i++) {
+         sysbus_init_irq(sbd, &s->output_pins[i]);
      }
  }
- 
-+static void aspeed_intc_unrealize(DeviceState *dev)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(dev);
-+
-+    g_free(s->regs);
-+    s->regs = NULL;
-+}
-+
- static void aspeed_intc_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->desc = "ASPEED INTC Controller";
-     dc->realize = aspeed_intc_realize;
-+    dc->unrealize = aspeed_intc_unrealize;
-     device_class_set_legacy_reset(dc, aspeed_intc_reset);
-     dc->vmsd = NULL;
- }
+@@ -391,6 +394,7 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+     dc->desc = "ASPEED 2700 INTC Controller";
+     aic->num_lines = 32;
+     aic->num_inpins = 9;
++    aic->num_outpins = 9;
+     aic->mem_size = 0x4000;
+     aic->reg_size = 0x808 >> 2;
+     aic->reg_offset = 0x1000;
 -- 
 2.43.0
 

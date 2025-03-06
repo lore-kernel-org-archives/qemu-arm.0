@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1386676njm;
-        Thu, 6 Mar 2025 02:40:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6dC4OrO+wx3hAEzXp0v0daPbaF6Z2IdOixZ+ImZOADIxfJ9pCgGQXUB8GKmHPduHqxvxEBOUe0Ysnnw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHn/hBnnwlnUowFKF8AqH8RhMvmDIS13lEdqEgr4Gucwv41XyzjQYYhhcAJBZehYl5WnGyE
-X-Received: by 2002:a05:620a:880b:b0:7c3:97a8:901e with SMTP id af79cd13be357-7c3d8e2f907mr837620985a.14.1741257605059;
-        Thu, 06 Mar 2025 02:40:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741257605; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1386781njm;
+        Thu, 6 Mar 2025 02:40:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWo4Tie+S8rVLbMnAVLxGEuQtvOGcxjVSv1zPubHz7GJSOdjO7+eSURfFlOl5gzYjqhLpTpyIOj3Z5cfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvCfv3bFTVVica9OUTtvlzF4Y/dZlc/sMmBSqLWMMPnKr1yCtjAikSE2uJGIO4dLuqXL2l
+X-Received: by 2002:a05:6214:2487:b0:6e6:646d:7550 with SMTP id 6a1803df08f44-6e8f4783ebamr45624186d6.19.1741257623514;
+        Thu, 06 Mar 2025 02:40:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741257623; cv=none;
         d=google.com; s=arc-20240605;
-        b=RLL/ciEGvwn2ywrRTDxnglclm11470eLGpNP8NfunbMzdYZvsz6tYQRyMAN9z01TIg
-         /w0K9q3wNYZMrHnxSGHdAkJV1KfthxvufR0FHT23qOTujCgfkRxaPMPXQb6/GJt+o5k1
-         DJ+Ere7EMQ3lJ+Eh+npHUQvMkU0EEZw+qnDyZ7pQBys7c+B7oAk2XbU8A3m2NnBjl1yN
-         X4BQMkonL4aBgEVV7Z0gfeXmmuC83OjSgkOmRGXPiuideYm66GZ00poS8h5O9QBCZr03
-         eynEOVJZoCtxcitElttj84ygAqAuaiUMFcORAHBFLlrQFJJPuxGysc+P00FxqqFEAZ6z
-         X9uQ==
+        b=iENByTqeRKczk/8z2Ts/5ycONpd+npYLhcCRz8dcSPFxuNt2sgyYUk5BRNbGnPLhs8
+         mgoM7al8pEESi69JQIrQdJe1/rE0r3aky4uHn7GUdMCeLXUAQtP9lk9MOqPDnMhExWYz
+         Nh0N+DwKtSklSh2WCCRSNj8n8xmLOop3FjcMadthMKLBeiYUxvpxVSOuqtF2wglh+XIu
+         ySeefqR/5JS6qRdK9myqI4SS5gKmodOFCgehlv8NxERQBqO6TIeZjsVztZ1iWXiFOW/4
+         oK5U0wtRjogx5fPXsisH4BcFYYxE5VCb4RFL5An1RTh4VghQkPXS71PQ+bkauyzJKHRg
+         Higg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=rJ2kuoeVZVKCaDt4A2tq2VuQ3Hy4qBxQIl78B4qztvY=;
+        bh=9wiI4d1WFGOkPlqftbfVq9uvv5+ythemDL5SAZ2rppo=;
         fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
-        b=SHFuhdk/BOeSp/AvC81teKiXwSLNiwLcfFL6z7EVOzVyBecnjJXbGWQXiI9rNd4Zia
-         01BEDCaVTseFSDLr5loO/TiWBxITxT/eLI4DAHTjubHC2eXm5g2yt8aAVYmcPNVntQqo
-         Ap2FVYqK2JNm4O6TY3vhFUenOe3ufpDqj4Tef9PD/cTGyoBWt2vVpHa0Y3yYilnhKP86
-         9dN2cjZjS0m2wicmG/S7SEyiY+aEc+O+vaH2EgU+9oC4S8stoNBmk1Kpd3hkIdRdo6lt
-         K73KrB3YmWg9635FLWKN3TH5agzWD/SuqXHzahkRTganLcGpG6kksZmCx+rFZOImnbwY
-         8i9g==;
+        b=eYQJQMcXycPQFtnkgaja3moKDtN1nbP3Q8vzRfTnD1Mo9y2FvGjum7J0UmZcidA8c7
+         enLLV6aXij20Q0kQcqnsWGzne9hUTzCpbuMct+xx2d3BfJVfmbuJPHciRvj4haDjnHA1
+         klT9IDk3odr21KH2wUxOszrAHT4XNvRsvLlXvj3YfD7685NQR2lLG9Cq76s7o3slZgU7
+         C2RQhWhNQqk7iHr8QHDLieWar6dIcnXXzHH2h4gYE/G55uThFz3ihX7/1wpJYYjg6xXV
+         0QrGAFmk6TrDxQL3BM/FTjK1wufsCOpZTd4CcXBQ4/jw0w/WU/lQ+VLvOMiNXypQ1S61
+         dPEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e5546111si96028585a.570.2025.03.06.02.40.04
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f707cf00si9540166d6.24.2025.03.06.02.40.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 02:40:05 -0800 (PST)
+        Thu, 06 Mar 2025 02:40:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tq8dD-0004qE-74; Thu, 06 Mar 2025 05:39:11 -0500
+	id 1tq8dB-0004pO-6e; Thu, 06 Mar 2025 05:39:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tq8d9-0004os-3y; Thu, 06 Mar 2025 05:39:07 -0500
+ id 1tq8d8-0004oJ-RA; Thu, 06 Mar 2025 05:39:06 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tq8d4-0000TZ-52; Thu, 06 Mar 2025 05:39:06 -0500
+ id 1tq8d6-0000St-Tf; Thu, 06 Mar 2025 05:39:06 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 6 Mar
@@ -64,10 +64,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v5 02/29] hw/intc/aspeed: Rename status_addr and addr to
- status_reg and reg for clarity
-Date: Thu, 6 Mar 2025 18:38:10 +0800
-Message-ID: <20250306103846.429221-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 03/29] hw/intc/aspeed: Introduce dynamic allocation for
+ regs array
+Date: Thu, 6 Mar 2025 18:38:11 +0800
+Message-ID: <20250306103846.429221-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250306103846.429221-1-jamin_lin@aspeedtech.com>
 References: <20250306103846.429221-1-jamin_lin@aspeedtech.com>
@@ -98,167 +98,81 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l06CKp1ojKJX
+X-TUID: lH+7kPN6YUd7
 
-Rename the variables "status_addr" to "status_reg" and "addr" to "reg" because
-they are used as register index. This change makes the code more appropriate
-and improves readability.
+Currently, the size of the "regs" array is 0x2000, which is too large. To save
+code size and avoid mapping large unused gaps, will update it to only map the
+useful set of registers. This update will support multiple sub-regions with
+different sizes.
+
+To address the redundant size issue, replace the static "regs" array with a
+dynamically allocated "regs" memory.
+
+Introduce a new "aspeed_intc_unrealize" function to free the allocated "regs"
+memory.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/intc/aspeed_intc.c | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
+ include/hw/intc/aspeed_intc.h |  2 +-
+ hw/intc/aspeed_intc.c         | 12 +++++++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
 
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 03324f05ab..47ea0520b5 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -27,7 +27,7 @@ struct AspeedINTCState {
+     MemoryRegion iomem;
+     MemoryRegion iomem_container;
+ 
+-    uint32_t regs[ASPEED_INTC_NR_REGS];
++    uint32_t *regs;
+     OrIRQState orgates[ASPEED_INTC_NR_INTS];
+     qemu_irq output_pins[ASPEED_INTC_NR_INTS];
+ 
 diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 033b574c1e..465f41e4fd 100644
+index 465f41e4fd..feb2c52441 100644
 --- a/hw/intc/aspeed_intc.c
 +++ b/hw/intc/aspeed_intc.c
-@@ -60,7 +60,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+@@ -289,7 +289,7 @@ static void aspeed_intc_reset(DeviceState *dev)
  {
-     AspeedINTCState *s = (AspeedINTCState *)opaque;
-     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
--    uint32_t status_addr = GICINT_STATUS_BASE + ((0x100 * irq) >> 2);
-+    uint32_t status_reg = GICINT_STATUS_BASE + ((0x100 * irq) >> 2);
-     uint32_t select = 0;
-     uint32_t enable;
-     int i;
-@@ -92,7 +92,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     AspeedINTCState *s = ASPEED_INTC(dev);
  
-     trace_aspeed_intc_select(select);
+-    memset(s->regs, 0, sizeof(s->regs));
++    memset(s->regs, 0, ASPEED_INTC_NR_REGS);
+     memset(s->enable, 0, sizeof(s->enable));
+     memset(s->mask, 0, sizeof(s->mask));
+     memset(s->pending, 0, sizeof(s->pending));
+@@ -307,6 +307,7 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
  
--    if (s->mask[irq] || s->regs[status_addr]) {
-+    if (s->mask[irq] || s->regs[status_reg]) {
-         /*
-          * a. mask is not 0 means in ISR mode
-          * sources interrupt routine are executing.
-@@ -108,8 +108,8 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-          * notify firmware which source interrupt are coming
-          * by setting status register
-          */
--        s->regs[status_addr] = select;
--        trace_aspeed_intc_trigger_irq(irq, s->regs[status_addr]);
-+        s->regs[status_reg] = select;
-+        trace_aspeed_intc_trigger_irq(irq, s->regs[status_reg]);
-         aspeed_intc_update(s, irq, 1);
+     sysbus_init_mmio(sbd, &s->iomem_container);
+ 
++    s->regs = g_malloc0(ASPEED_INTC_NR_REGS);
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
+                           TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
+ 
+@@ -322,12 +323,21 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
      }
  }
-@@ -117,17 +117,17 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
- static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+ 
++static void aspeed_intc_unrealize(DeviceState *dev)
++{
++    AspeedINTCState *s = ASPEED_INTC(dev);
++
++    g_free(s->regs);
++    s->regs = NULL;
++}
++
+ static void aspeed_intc_class_init(ObjectClass *klass, void *data)
  {
-     AspeedINTCState *s = ASPEED_INTC(opaque);
--    uint32_t addr = offset >> 2;
-+    uint32_t reg = offset >> 2;
-     uint32_t value = 0;
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
--    if (addr >= ASPEED_INTC_NR_REGS) {
-+    if (reg >= ASPEED_INTC_NR_REGS) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-                       __func__, offset);
-         return 0;
-     }
- 
--    value = s->regs[addr];
-+    value = s->regs[reg];
-     trace_aspeed_intc_read(offset, size, value);
- 
-     return value;
-@@ -138,12 +138,12 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
- {
-     AspeedINTCState *s = ASPEED_INTC(opaque);
-     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
--    uint32_t addr = offset >> 2;
-+    uint32_t reg = offset >> 2;
-     uint32_t old_enable;
-     uint32_t change;
-     uint32_t irq;
- 
--    if (addr >= ASPEED_INTC_NR_REGS) {
-+    if (reg >= ASPEED_INTC_NR_REGS) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-                       __func__, offset);
-@@ -152,7 +152,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
- 
-     trace_aspeed_intc_write(offset, size, data);
- 
--    switch (addr) {
-+    switch (reg) {
-     case R_GICINT128_EN:
-     case R_GICINT129_EN:
-     case R_GICINT130_EN:
-@@ -177,7 +177,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
- 
-         /* disable all source interrupt */
-         if (!data && !s->enable[irq]) {
--            s->regs[addr] = data;
-+            s->regs[reg] = data;
-             return;
-         }
- 
-@@ -187,12 +187,12 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-         /* enable new source interrupt */
-         if (old_enable != s->enable[irq]) {
-             trace_aspeed_intc_enable(s->enable[irq]);
--            s->regs[addr] = data;
-+            s->regs[reg] = data;
-             return;
-         }
- 
-         /* mask and unmask source interrupt */
--        change = s->regs[addr] ^ data;
-+        change = s->regs[reg] ^ data;
-         if (change & data) {
-             s->mask[irq] &= ~change;
-             trace_aspeed_intc_unmask(change, s->mask[irq]);
-@@ -200,7 +200,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-             s->mask[irq] |= change;
-             trace_aspeed_intc_mask(change, s->mask[irq]);
-         }
--        s->regs[addr] = data;
-+        s->regs[reg] = data;
-         break;
-     case R_GICINT128_STATUS:
-     case R_GICINT129_STATUS:
-@@ -220,7 +220,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-         }
- 
-         /* clear status */
--        s->regs[addr] &= ~data;
-+        s->regs[reg] &= ~data;
- 
-         /*
-          * These status registers are used for notify sources ISR are executed.
-@@ -233,7 +233,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-         }
- 
-         /* All source ISR execution are done */
--        if (!s->regs[addr]) {
-+        if (!s->regs[reg]) {
-             trace_aspeed_intc_all_isr_done(irq);
-             if (s->pending[irq]) {
-                 /*
-@@ -241,9 +241,9 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-                  * notify firmware which source interrupt are pending
-                  * by setting status register
-                  */
--                s->regs[addr] = s->pending[irq];
-+                s->regs[reg] = s->pending[irq];
-                 s->pending[irq] = 0;
--                trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
-+                trace_aspeed_intc_trigger_irq(irq, s->regs[reg]);
-                 aspeed_intc_update(s, irq, 1);
-             } else {
-                 /* clear irq */
-@@ -253,7 +253,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-         }
-         break;
-     default:
--        s->regs[addr] = data;
-+        s->regs[reg] = data;
-         break;
-     }
- 
+     dc->desc = "ASPEED INTC Controller";
+     dc->realize = aspeed_intc_realize;
++    dc->unrealize = aspeed_intc_unrealize;
+     device_class_set_legacy_reset(dc, aspeed_intc_reset);
+     dc->vmsd = NULL;
+ }
 -- 
 2.43.0
 

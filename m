@@ -1,164 +1,317 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1494875njm;
-        Thu, 6 Mar 2025 06:01:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVqlpmAk6yoprXJasWOtPy2bM83kG/zAivtmVpCrgbfUXc5F5b5wK+vuvds3tBpjkOx5Vizwt0dqiwvkQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG3dxUgBcBqns+HKy6Y5N5mKw9+Eu5r5uandWwlqqt9fYOi44L9HvXQOgaRUPbq7yBNtKIS
-X-Received: by 2002:a17:907:3faa:b0:ac2:55e:c3bb with SMTP id a640c23a62f3a-ac20da495edmr721722466b.2.1741269701478;
-        Thu, 06 Mar 2025 06:01:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741269701; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1538111njm;
+        Thu, 6 Mar 2025 07:04:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWt/skcI0STYRCVT5KOphy8cLQCwX5G7SeIQZfSA5Ge/newmvBwB/dcWguSaONjDrTL6blKVP59EIIt+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnt5zmozzMfrZ0VEn7tIT2o00FWo7L5hwH7qeTWp244FMJvEOmQtTKn+j9wlSaHPoSL2aJ
+X-Received: by 2002:a05:622a:1446:b0:474:f16d:d668 with SMTP id d75a77b69052e-4750b4393camr104757561cf.19.1741273492198;
+        Thu, 06 Mar 2025 07:04:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741273492; cv=none;
         d=google.com; s=arc-20240605;
-        b=D8IgSKTbdQBSwM+VIROH8VRW5JIpvgsh1HkT6qGev9my7SbTq4m/TWV7ju+XMRseJp
-         rI5CNh6njY3nfd1iwz4QR8dcy5OAC263SHFcWFw7m/2/UD7bfmLGoEmgM9XjkzsPauEm
-         9r2KOqFccSz5vNvVKpgIYVqzw9ppk6+ZiS/LTYLDpKrQ/6ux2t27Nwb9iqakvoT47zcK
-         0yl0LdR3OyPHAoCyuBPBGnTVQ5nTOHH8cOb73iemuMLiFYdfBLWHSlQGRSRE4KE6O+/W
-         6pX4hnlbAD/e4+UMRRH/XHsa5rWZGHqW5ItEroioRcaxlUnH78GFzynAyHqdoCg4luhK
-         QxpQ==
+        b=eT0BzOvXTeaCrh2Lo9hUfwCoKmOmFgf2tt5/hb5KgbC0t2qCBdDiiRvGCZRozAB72c
+         /P60cdqVfRMmn+8HtzCL2GJ9pY/aMwNA1fXV81gFa+cD2LwHMKCFAMDyCJ1E3FRdGnoW
+         oyGyyoRhvXFXo6zGGvZF9hu4s+j/z+p3HnkXKIa1X++zdrIBZNLoYLSPwtYndoBZ4YT1
+         qixC5F/We6EjqdkSvXrls5zmu4lqfR8h27FLYWNmCp6f7hcXpuWKzOaHxN/t42vaJ9ck
+         swd7zD9SiCfov/dOVL0X8UKEBl5XAO6wY1xVW3GHD0wLlPwNxaf1bX/rvLsaDaT6+Yzr
+         hSuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=p8e+aTIsA5BuWm4hBuAs+wicLt1TmHRSHO0rAL2bOs8=;
-        fh=EjfirrQgFBlBzVd2t9XAz92aRAjD6VZhHCw5XnN7hSw=;
-        b=YxEEwTkhADaSO+ZqZYiaBzZWaYkbc/24MlkGqHZREBDNJzlODWC1D94oY7auoXBsSe
-         iaHj23/ffsVAjwbCWhPeT0cCML3ys8VX7FYPQikhslgjCvoElsAeLwCLxJp6NVeqYBHQ
-         g66WP9rsC2WJIJ1aD49pc+55Trs06PFjYRZT9GIYtOSkkaJtKMFtkOnlYm7C+EVGVCMc
-         IKy87hQEdCtr2/atGDQnhMG2cks4/NfmguNqfFJyTJvucy5IzEpwL6mhC0sxFIq35kwg
-         Lutz1IjVHWwc1yi8uR/Hv+IGk3VjM+DAcT0LubU3yX7xBiBcU9h+Izkd2oNhKd5Bo/uL
-         WddA==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=OdnB1RLQ2QhswDsSN7/pUNiRCdPkIL1pQmd7CWRU6Xg=;
+        fh=JUqExWdVyO9KjlFCuMigXej9m2rYeji+PtTsDk1BqAY=;
+        b=JNxNCy7/C8gXrYYwEGO56v3fFbEOAhvfQTb+ZDZvDd2OVPO4SDuenL8h/rcRLmaCwL
+         r8Ryjmv1uDTwGuhtmc4l9IUJg9Jr9hObHQYWD19A7FHEl4jQqaNmA6dJK/LzGCj7MUgI
+         Bgq7qABZaIgI8kk1N3hqfBiOuVE579l5SGCFP6hHbT3NC7/O/lwKHAFwtC7YkzOvy4L5
+         V7/U47n30GSQlElrouv1bw4dJrmaU9ef6sWRFVFhOpGkpHGjtX+9oXif5BX/bW5xLk+5
+         6zTKkX4/nP97lL7kWRpvmBgJkmJxAHCk6uhahNS8f+UAx5pFlUVElson5oP2UOSXHQdS
+         jTpw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KZVRO5kz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ac23984ce5csi102843266b.559.2025.03.06.06.01.40
+        by mx.google.com with ESMTPS id d75a77b69052e-4751db5bf69si12781321cf.624.2025.03.06.07.04.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 06:01:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Mar 2025 07:04:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KZVRO5kz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tqBmT-0000C0-PZ; Thu, 06 Mar 2025 09:00:57 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tqCm3-0004nm-L3; Thu, 06 Mar 2025 10:04:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqBmO-00009U-00
- for qemu-devel@nongnu.org; Thu, 06 Mar 2025 09:00:53 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqBmK-0008Hy-Vh
- for qemu-devel@nongnu.org; Thu, 06 Mar 2025 09:00:51 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-43bc4b1603fso4461765e9.0
- for <qemu-devel@nongnu.org>; Thu, 06 Mar 2025 06:00:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741269647; x=1741874447; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=p8e+aTIsA5BuWm4hBuAs+wicLt1TmHRSHO0rAL2bOs8=;
- b=KZVRO5kzWnia/KIVW7eA4bt+HYcUzgVK6sXxzqbwDsqM2uw/MGYGvoRfX8E+FURJEV
- 2A3IBq0IzlMaL67zPeU+ezV5r81Y5F2kd3EC9i7n5f7RXMfFQjjknerD+Pv1XanmryIL
- wD+Bk34D2nn1bqZbelqp80DABUWhfytlX6aedLATeHZcGV/GLdFSIAIzSct3OZaYEdqF
- UnLCRLmETO+wmbhTUm1s+HM+KJ2D/d/tgoaFmiaLZYDDBy0CyB/Kq5yh43R6WOQ6eiy2
- 4alBvekatkA4OpfJ8nM3+dd5o/qSVzDFc0DmougSug2/Z29nKGYJ7A24ZexaHIvjtsKv
- seVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741269647; x=1741874447;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=p8e+aTIsA5BuWm4hBuAs+wicLt1TmHRSHO0rAL2bOs8=;
- b=keWT94qsjVv5JeMEaVw7ov49U2YfOaEnTH+ZrQKsWryF2ynTv+kDaD69ipkMqhoucO
- qYqyUPxq7TsI3RQ1NEHlTwT3AqjJ8qPld1ybUejVxE5hWvMCmMGEpy8hCtFBHdlxy/Nv
- L4K8bXy4lu/V+H+fYLmwpFEiCYHZ1wsXsbAYGmYfZuusy0JxcyCf3ddqUUQNeXZU36N3
- Xjn+mqP6yHcC2XCMrAq9zVJKq94+Jvb+LjEpXaDwoFra4KCGH4hiuKINTU5LyI5L9ShF
- a8whFpXa8Ju3Yl/9Ziqv02VBUG+RNwoqwl93cVHg9m6De1otxQV2PATo1WjpvDatWYuS
- eE6g==
-X-Gm-Message-State: AOJu0YxLkStgccl33riew/Mit5+z+4Bwr9QXUIxAGAptsVDCjao9DeG5
- tEEURe0aF2Wj7LzjREoVLbUWx36umbkhoBAobS2kvs9esvcGUnQL+nGj/sL0p8W2iKUMth/lCey
- UJIY=
-X-Gm-Gg: ASbGncscralXVpRATepbFkH2a6gEVTQC/fbmSjM1JTjQa3j79kP5Ndqo68jPKVGua4h
- P6Jcv1lr6H7CtAN1YDabcE2lf1MVif9sDKL4gtz5f1wazdbx0AGak9a7N+xXEHKlbtqP3NYcYu7
- 22iJ4ljkyPidusK9b8uBVOY2qIt/46xagT+QFYghrvmWz6uTar8DjC/AqW7d8jqoKXV78tL/K0v
- D/rFtKHm7nsJ0x2weRPXLQl2GIwHJV7RuD4RQx1vaXMh+4iCjiboM4rzWEJDdp0m9ViNr6fDsmb
- idysGHtfzMCZYiRa4CgfBpzMQaWtCrjcBVtx0P85+l1lul/y9n7pUrpZ9c9qbquaR348yGb+xBL
- WGGNOHwp8WEk2
-X-Received: by 2002:a05:6000:2cd:b0:390:ea34:7d83 with SMTP id
- ffacd0b85a97d-3911f76f519mr7336775f8f.31.1741269646543; 
- Thu, 06 Mar 2025 06:00:46 -0800 (PST)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912bfdfcdasm2104332f8f.23.2025.03.06.06.00.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Mar 2025 06:00:46 -0800 (PST)
-Message-ID: <d400e5b0-530f-43b3-8a6e-8539672af60f@linaro.org>
-Date: Thu, 6 Mar 2025 15:00:45 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=VCYv=VZ=kaod.org=clg@ozlabs.org>)
+ id 1tqClp-0004kA-Tt; Thu, 06 Mar 2025 10:04:23 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=VCYv=VZ=kaod.org=clg@ozlabs.org>)
+ id 1tqCln-00086m-Df; Thu, 06 Mar 2025 10:04:21 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z7t4073gjz4x6n;
+ Fri,  7 Mar 2025 02:04:16 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z7t3x3jDpz4wcd;
+ Fri,  7 Mar 2025 02:04:13 +1100 (AEDT)
+Message-ID: <84dfe23f-d66d-4fa5-a87d-704ef2bb4d3e@kaod.org>
+Date: Thu, 6 Mar 2025 16:04:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/10] disas: Have CPUClass::disas_set_info() callback
- set the endianness
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Thomas Huth
- <thuth@redhat.com>, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org
-References: <20250210212931.62401-1-philmd@linaro.org>
- <8a185083-0459-4108-bd57-4bae75d871c6@linaro.org>
-Content-Language: en-US
-In-Reply-To: <8a185083-0459-4108-bd57-4bae75d871c6@linaro.org>
+Subject: Re: [PATCH v5 02/29] hw/intc/aspeed: Rename status_addr and addr to
+ status_reg and reg for clarity
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250306103846.429221-1-jamin_lin@aspeedtech.com>
+ <20250306103846.429221-3-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250306103846.429221-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=VCYv=VZ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q1snamdwHS1a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8efy7APE0aA9
 
-On 6/3/25 14:58, Philippe Mathieu-Daudé wrote:
-> On 10/2/25 22:29, Philippe Mathieu-Daudé wrote:
+On 3/6/25 11:38, Jamin Lin wrote:
+> Rename the variables "status_addr" to "status_reg" and "addr" to "reg" because
+> they are used as register index. This change makes the code more appropriate
+> and improves readability.
 > 
->> Philippe Mathieu-Daudé (10):
->>    target: Set disassemble_info::endian value for little-endian targets
->>    target: Set disassemble_info::endian value for big-endian targets
->>    target/arm: Set disassemble_info::endian value in disas_set_info()
->>    target/microblaze: Set disassemble_info::endian value in
->>      disas_set_info
->>    target/mips: Set disassemble_info::endian value in disas_set_info()
->>    target/ppc: Set disassemble_info::endian value in disas_set_info()
->>    target/riscv: Set disassemble_info::endian value in disas_set_info()
->>    target/sh4: Set disassemble_info::endian value in disas_set_info()
->>    target/xtensa: Set disassemble_info::endian value in disas_set_info()
->>    disas: Remove target_words_bigendian() call in
->>      initialize_debug_target()
-> 
-> Series queued with rth's comments addressed, thanks!
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Oops I meant to reply this on v3:
-https://lore.kernel.org/qemu-devel/20250210221830.69129-1-philmd@linaro.org/
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/intc/aspeed_intc.c | 38 +++++++++++++++++++-------------------
+>   1 file changed, 19 insertions(+), 19 deletions(-)
+> 
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 033b574c1e..465f41e4fd 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -60,7 +60,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>   {
+>       AspeedINTCState *s = (AspeedINTCState *)opaque;
+>       AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> -    uint32_t status_addr = GICINT_STATUS_BASE + ((0x100 * irq) >> 2);
+> +    uint32_t status_reg = GICINT_STATUS_BASE + ((0x100 * irq) >> 2);
+>       uint32_t select = 0;
+>       uint32_t enable;
+>       int i;
+> @@ -92,7 +92,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>   
+>       trace_aspeed_intc_select(select);
+>   
+> -    if (s->mask[irq] || s->regs[status_addr]) {
+> +    if (s->mask[irq] || s->regs[status_reg]) {
+>           /*
+>            * a. mask is not 0 means in ISR mode
+>            * sources interrupt routine are executing.
+> @@ -108,8 +108,8 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>            * notify firmware which source interrupt are coming
+>            * by setting status register
+>            */
+> -        s->regs[status_addr] = select;
+> -        trace_aspeed_intc_trigger_irq(irq, s->regs[status_addr]);
+> +        s->regs[status_reg] = select;
+> +        trace_aspeed_intc_trigger_irq(irq, s->regs[status_reg]);
+>           aspeed_intc_update(s, irq, 1);
+>       }
+>   }
+> @@ -117,17 +117,17 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>   static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+>   {
+>       AspeedINTCState *s = ASPEED_INTC(opaque);
+> -    uint32_t addr = offset >> 2;
+> +    uint32_t reg = offset >> 2;
+>       uint32_t value = 0;
+>   
+> -    if (addr >= ASPEED_INTC_NR_REGS) {
+> +    if (reg >= ASPEED_INTC_NR_REGS) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+>           return 0;
+>       }
+>   
+> -    value = s->regs[addr];
+> +    value = s->regs[reg];
+>       trace_aspeed_intc_read(offset, size, value);
+>   
+>       return value;
+> @@ -138,12 +138,12 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>   {
+>       AspeedINTCState *s = ASPEED_INTC(opaque);
+>       AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> -    uint32_t addr = offset >> 2;
+> +    uint32_t reg = offset >> 2;
+>       uint32_t old_enable;
+>       uint32_t change;
+>       uint32_t irq;
+>   
+> -    if (addr >= ASPEED_INTC_NR_REGS) {
+> +    if (reg >= ASPEED_INTC_NR_REGS) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+> @@ -152,7 +152,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>   
+>       trace_aspeed_intc_write(offset, size, data);
+>   
+> -    switch (addr) {
+> +    switch (reg) {
+>       case R_GICINT128_EN:
+>       case R_GICINT129_EN:
+>       case R_GICINT130_EN:
+> @@ -177,7 +177,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>   
+>           /* disable all source interrupt */
+>           if (!data && !s->enable[irq]) {
+> -            s->regs[addr] = data;
+> +            s->regs[reg] = data;
+>               return;
+>           }
+>   
+> @@ -187,12 +187,12 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>           /* enable new source interrupt */
+>           if (old_enable != s->enable[irq]) {
+>               trace_aspeed_intc_enable(s->enable[irq]);
+> -            s->regs[addr] = data;
+> +            s->regs[reg] = data;
+>               return;
+>           }
+>   
+>           /* mask and unmask source interrupt */
+> -        change = s->regs[addr] ^ data;
+> +        change = s->regs[reg] ^ data;
+>           if (change & data) {
+>               s->mask[irq] &= ~change;
+>               trace_aspeed_intc_unmask(change, s->mask[irq]);
+> @@ -200,7 +200,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>               s->mask[irq] |= change;
+>               trace_aspeed_intc_mask(change, s->mask[irq]);
+>           }
+> -        s->regs[addr] = data;
+> +        s->regs[reg] = data;
+>           break;
+>       case R_GICINT128_STATUS:
+>       case R_GICINT129_STATUS:
+> @@ -220,7 +220,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>           }
+>   
+>           /* clear status */
+> -        s->regs[addr] &= ~data;
+> +        s->regs[reg] &= ~data;
+>   
+>           /*
+>            * These status registers are used for notify sources ISR are executed.
+> @@ -233,7 +233,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>           }
+>   
+>           /* All source ISR execution are done */
+> -        if (!s->regs[addr]) {
+> +        if (!s->regs[reg]) {
+>               trace_aspeed_intc_all_isr_done(irq);
+>               if (s->pending[irq]) {
+>                   /*
+> @@ -241,9 +241,9 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>                    * notify firmware which source interrupt are pending
+>                    * by setting status register
+>                    */
+> -                s->regs[addr] = s->pending[irq];
+> +                s->regs[reg] = s->pending[irq];
+>                   s->pending[irq] = 0;
+> -                trace_aspeed_intc_trigger_irq(irq, s->regs[addr]);
+> +                trace_aspeed_intc_trigger_irq(irq, s->regs[reg]);
+>                   aspeed_intc_update(s, irq, 1);
+>               } else {
+>                   /* clear irq */
+> @@ -253,7 +253,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>           }
+>           break;
+>       default:
+> -        s->regs[addr] = data;
+> +        s->regs[reg] = data;
+>           break;
+>       }
+>   
+

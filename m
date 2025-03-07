@@ -1,165 +1,262 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2404848njm;
-        Fri, 7 Mar 2025 11:15:09 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXIJqr/tRA0mtaC2TSXK0KiytPg4k6CFpnv8D3xlNAqClh1p7Y9CVkCzraiHwOIqT9kBREva/JrbBlB4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSVtpTCasQ58EYv9G4kiVFdoBj/iioJpYjIORpjFKDnKXmFDAAGH2glgScV8WuMKRLAWDD
-X-Received: by 2002:a17:907:3f09:b0:abf:5aea:a584 with SMTP id a640c23a62f3a-ac252ba158amr566482966b.38.1741374908775;
-        Fri, 07 Mar 2025 11:15:08 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1741374908; cv=pass;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2398608njm;
+        Fri, 7 Mar 2025 11:05:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVjaunTc6twpJgEmQr3WPVJW68CC4dqbJKFtMbZ7g2EEPOeAM52s1EsD0w62OsTXGccMC+sG7Cv/N7kAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGd/7XUdX02/i89VKXIo64QaZtx0880jligtLQiUM6XMH28ET1rwaMR3m61M3bvK3f9i8uo
+X-Received: by 2002:a05:6102:2927:b0:4c1:a049:27c7 with SMTP id ada2fe7eead31-4c30a5ebd0bmr3395564137.13.1741374318956;
+        Fri, 07 Mar 2025 11:05:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741374318; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rrq5e0ViqSAcvAyS/3KG/POyryc4oS//NGDdVyYnCGirgxH6U9xYNmUoZzuqj4vNqB
-         gfG6Y8HQfsTY9CK64CeIcv916VZZqCI983tc/Bwj+yylUJZioYlqhIxHHocYABX0wPBM
-         G2/KvPxnQg9I1AEp4Dg1KFuvAEi1Q1qcWXR3b8991cuRIOHyBtsnlrnUyQuoNIhBq6uc
-         V0QgE9DwIzwEH0cPwv+ubdZ30k61ol21P1famfD3cDHFJruTZJar2Ep6HXsqs8AvCoZP
-         0ju5fPn2zIW4eA0zRXvDzDyiJHEDXDoHV4LfDgToCGj6qBr96j/93yGaOC7lk35OteM/
-         05Mw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=iiAlQo8jSE4dH8zc3hOBJJNAvYRgsBFmZCcF2Euq7oY=;
-        fh=+vpXYSEWrSgNP4dQgjYlDxda2LzEZLVGb5zrnFynz/M=;
-        b=ZmASGlrCMZRwkpTZCPr/K9Sqq345/3N+sh3LdR6Zd9+M/8qZ8Mal/fp0w/7cAHDpqg
-         4Jd7CEIXKXJ6O0zoHEt3vLe/WlgMRMtGSyjLJpqYcv9eU+zo5DB8eD0ndtO8o91AOiMy
-         41GwY0QuDERKNSTBCUfn5xuyV60MbrdLKvXAcJTSoo+M7V1UazKjDjbTtcUidBAEqWwL
-         pKmvRkG0mYjjuQ21gWJmDLYDp6Ym7NSx7EgydDCk9rPVy98E9vwa2pVNdtg9/WDRxBNT
-         Syf3GNi/lQpaYC9nSx0uWJBYcDVVwKMMXKZ/xuRtBsovj11befmOQws43iF79EY/me8M
-         RI6w==;
+        b=CQehVIXOaYcv0ocBcMvZeZf8Xwj+jPHAlhoMtdkT+YPcfEi/KZYD+nUB3Vpa4Z8c7b
+         QBAwTz1NCj/dVY2TPlfXBjREXiMOsPc3FBC7AtG8tZZuhIgz63Zea23bij3fQrjRosmU
+         MaUfH7Hb6q9J4ksB0GOlLiksIKArvZ+xtUHyNk75bA1oZ039TP0HWDC6/q40ZHKHEe5b
+         acEvQqZj2WUNgohlsXSvcO0MFDv+eNgGCLyH1Ei0OGmjbem4pRx0d73nJvKBj0yTTQuH
+         4UKBF8x2y6TsjjutgmeUjTmQ3/pUJZRbKd4fBr+GrBl1TOd0EgLJw4NIkCSAU9Cbd05O
+         hsfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
+        fh=quVKJN+JogokNzsp4kwoA7mheGRSBID5PxcC4hooSO8=;
+        b=dYnYSvEda+fwswTHuJAXBk6awA/9ZBZM90nCSB2YKEHUWBeMHwAGE0KM3vAWl5CAUN
+         qwNRa1l3vXwiKLDfdCLhkBUIhqqhVp7cdE89iarU2q2cMTkQ4t4CrOnwmSLo3ZbuPf6H
+         mz0zYiQrBKXT8XkEYlE7SlZxnPU6YNhPS45/Ls9l79Zk+aiFuPg526qOj2bcK2bGjGUv
+         JMlV0ZPqQ2JeVCsrkRf6pstRBX5lyh8C3juYRY3gtyz7ZNbjEpKgUvpXobCMguML0yR9
+         Ga7yj99Qq2N9Ke94pjXhrmksIGtq59kq9DeJeW4Yxh+fem5r1mZLYvv1vxk5ymrklSpD
+         oCWg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="cbt/xoxZ";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ac2396eef25si370734666b.417.2025.03.07.11.15.08
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=iF65nn8q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c2fbcc2f1dsi1062846137.381.2025.03.07.11.05.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Mar 2025 11:15:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Mar 2025 11:05:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="cbt/xoxZ";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551807-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 335BE1894824
-	for <alex.bennee@linaro.org>; Fri,  7 Mar 2025 19:15:16 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8A9DC2512C0;
-	Fri,  7 Mar 2025 19:14:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="cbt/xoxZ"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47C9F2505C4
-	for <linux-kernel@vger.kernel.org>; Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1741374898; cv=none; b=CXgqo+4Q+9BG4GH6NlfkCNO+/9ZFoQTV6pobseRlvv2o70nYl41o3B8ajep3M7B6u38lP8tDX8IloUjK6fDIc4lVEpOWBGmmA2UwWm+u9beI9o238AfUoY2XrERhuqIm5YgMrcZq9u4ZYDiS941U0kL77yvjN3uGlf2d2wQDGBs=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1741374898; c=relaxed/simple;
-	bh=LvlI96l+YbIl5MsIJDnbtQxU7YniO+B5OBQkHO2lJqA=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=HOslX2h2Nx5x53aNnPywdUA5rFSjqciAhoEdHPmvpaeq+MzDg3otVjUp126ynSHgr4bpnBtOh7oalqrbVRvpVEUHBq0VCR4+kjK809WhDPzagbBzfIncm4hh6u85mdZd589m1FHPtwYY+AixkMpefvYHQdPB8WWBdaCjKbg6r1I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=cbt/xoxZ; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B84B6C4CEEA;
-	Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741374897;
-	bh=LvlI96l+YbIl5MsIJDnbtQxU7YniO+B5OBQkHO2lJqA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cbt/xoxZQCzmWvuaKadzoWUZ6b+stlN+VllunKJ3ScaANDLd5HZLleyJbaRLUZ9X5
-	 8f2zTWtjEAa5stb15RzSVU+88KHcGy4J4+Zoy+J15xLWnX9TO7/v7G4Nn0oqx6ANzB
-	 g5CAvn14JzHSInSCXz/pusb34wVqTzDC+NTVJxmquCE8w4R5e31roNqjZUFEyPbyC6
-	 +4epYM0QPNnG4FUVJsHUHOCgpkhsrV78t67nDWj7wJ4CpkFKkL1DmdS/t9wsRFsOnK
-	 gCYIOzxQdp/JRcGz7mtJDbiisky1Z3ZiWjghdE1AC1ptwVYXu0QJTjgVwjz0Pvg2q4
-	 n86V6m4fDC4vw==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98.1)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tqd9r-0000000BQmv-3kKe;
-	Fri, 07 Mar 2025 20:14:55 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Gavin Shan" <gshan@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v8 10/20] acpi/ghes: add a notifier to notify when error data is ready
-Date: Fri,  7 Mar 2025 20:14:39 +0100
-Message-ID: <af2bb6dd484aca8fd8baf29200cf2a04e365befe.1741374594.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <cover.1741374594.git.mchehab+huawei@kernel.org>
-References: <cover.1741374594.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=iF65nn8q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tqczr-0004CK-7A; Fri, 07 Mar 2025 14:04:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tqczh-0003yE-Hy
+ for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:29 -0500
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tqczc-0003hn-KE
+ for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:23 -0500
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-224019ad9edso55535515ad.1
+ for <qemu-devel@nongnu.org>; Fri, 07 Mar 2025 11:04:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741374257; x=1741979057; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
+ b=iF65nn8qlykQ1ErcjKqIeV8dTlO+jAHhvE4dHd0cKKmiPRrwqEqPbf0ypTNNQPhZJI
+ zaD2ESBq4j/UIZFt7sVfduzA5W+3pKZm2p2bKct7XP7VblDtIThuFR5+Mhik8VGnzhkQ
+ CJNtDUW5jqOxBhUs/yUhYc46ZIxHEvpG9P/y1kUDVr+OpReee3TRMEQjpmhRoFH1iTuz
+ jpw16yR3IE9e3P57JIQxfboDaY4smNQ+l7Zp7nduesZ6iEmI+oBJWH/zgC+lgQYD78Xl
+ j9O8qagz+qC2rVCrnQ358Up2c4LMuJuMdG6hscn6GrFvz5oc09k1kYR5NWd6FkE8KEM4
+ 1igA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741374257; x=1741979057;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
+ b=Pj8M2122AYzcFeIOf6qR5v/BDk2+XIutDIYq0yxqcqnjaRQSgyKDqI/QlUKn5CG6CP
+ Su5165o7uezuwTZSJEaf/YSzoDtTrDsb+sQud1VWLpqfudRhComsBdp4CAs0OWdXv3CJ
+ M5/0wqwl/befkz9EBm8Fc3OyrGSIqvOfZYTLTsgDxqsr7KXVH1fqQE7FwquSC8egKx4N
+ 6UMgYDyIxV16VJyHpK6hLgdh0HqdgC7JXcRWsFAJcDNdVgqH2IKv6rvLIHFo25fM5dXm
+ 7q6JV6jOHGl3bBjUa6ynI26HkmjUPf6Bh8+9Fjav8HdRvSzY/qYay1eZT5zZjufiEvFx
+ kQyA==
+X-Gm-Message-State: AOJu0YyNh1JAg8pY2vXOE956nSxj5P89K1fbUNDc7XRy8yJ5V/fKR1oa
+ rwbBbnts+vHcli/2/AWjcL4e6YvufHMxVON0DDAu2+50lhk2UJD6gLj3rt6ZQKVufIZNvJbhbF4
+ e
+X-Gm-Gg: ASbGnctJGC9KQOeuomf/d+4tOWmS+PILdHgLb6ySQPM3eYeaIUR9pxruSe4sebySqQg
+ hq1PIS2+DBtVdvKjqFsV2wfj3G2LOaK6tQ9jwrwNmelW0x01P9n0iQDAuzEiHO8iODvYgBzXSzv
+ RPUN7g3FoL+Wn1/D61kkBkAQ7Xe3yXCchGqi+WQr29uzrR8+HoOHOoQIPs9P/AG2K+yLjEkGHh2
+ 3MTf1ciOW1je4elj1w+Zga63nSzMincp5FhT7q66qlHhDFbZmRGRfkvhrLGG9QlemZSBsG1MvfZ
+ UjEWFMLkDAuRwvNkjRbmNgOCXNjM1SK1horaK37Gx6aGeOGlNpEX0fqtsJOAiPAWx+dM1lMWm5d
+ A
+X-Received: by 2002:a17:903:22c8:b0:224:256e:5e3f with SMTP id
+ d9443c01a7336-22428993846mr74979675ad.25.1741374257197; 
+ Fri, 07 Mar 2025 11:04:17 -0800 (PST)
+Received: from stoup.. (174-21-74-48.tukw.qwest.net. [174.21.74.48])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-22410a91c5bsm33686335ad.186.2025.03.07.11.04.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Mar 2025 11:04:16 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH 1/2] target/arm: Make DisasContext.{fp,
+ sve}_access_checked tristate
+Date: Fri,  7 Mar 2025 11:04:14 -0800
+Message-ID: <20250307190415.982049-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250307190415.982049-1-richard.henderson@linaro.org>
+References: <20250307190415.982049-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: 4yGx2wcJRFDz
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wxENehl8qW6j
 
-Some error injection notify methods are async, like GPIO
-notify. Add a notifier to be used when the error record is
-ready to be sent to the guest OS.
+The check for fp_excp_el in assert_fp_access_checked is
+incorrect.  For SME, with StreamingMode enabled, the access
+is really against the streaming mode vectors, and access
+to the normal fp registers is allowed to be disabled.
+C.f. sme_enabled_check.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+Convert sve_access_checked to match, even though we don't
+currently check the exception state.
+
+Cc: qemu-stable@nongnu.org
+Fixes: 3d74825f4d6 ("target/arm: Add SME enablement checks")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/acpi/ghes.c         | 5 ++++-
- include/hw/acpi/ghes.h | 3 +++
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate-a64.h |  2 +-
+ target/arm/tcg/translate.h     | 10 +++++++---
+ target/arm/tcg/translate-a64.c | 17 +++++++++--------
+ 3 files changed, 17 insertions(+), 12 deletions(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index f49d0d628fc4..0135ac844bcf 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -510,6 +510,9 @@ static void get_ghes_source_offsets(uint16_t source_id,
-     *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
- }
- 
-+NotifierList acpi_generic_error_notifiers =
-+    NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
-+
- void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
+diff --git a/target/arm/tcg/translate-a64.h b/target/arm/tcg/translate-a64.h
+index 7d3b59ccd9..b2420f59eb 100644
+--- a/target/arm/tcg/translate-a64.h
++++ b/target/arm/tcg/translate-a64.h
+@@ -65,7 +65,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+ static inline void assert_fp_access_checked(DisasContext *s)
  {
-@@ -550,7 +553,7 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-     /* Write the generic error data entry into guest memory */
-     cpu_physical_memory_write(cper_addr, cper, len);
+ #ifdef CONFIG_DEBUG_TCG
+-    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
++    if (unlikely(s->fp_access_checked <= 0)) {
+         fprintf(stderr, "target-arm: FP access check missing for "
+                 "instruction 0x%08x\n", s->insn);
+         abort();
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index f8dc2f0d4b..53e485d28a 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -92,15 +92,19 @@ typedef struct DisasContext {
+     bool aarch64;
+     bool thumb;
+     bool lse2;
+-    /* Because unallocated encodings generate different exception syndrome
++    /*
++     * Because unallocated encodings generate different exception syndrome
+      * information from traps due to FP being disabled, we can't do a single
+      * "is fp access disabled" check at a high level in the decode tree.
+      * To help in catching bugs where the access check was forgotten in some
+      * code path, we set this flag when the access check is done, and assert
+      * that it is set at the point where we actually touch the FP regs.
++     *   0: not checked,
++     *   1: checked, access ok
++     *  -1: checked, access denied
+      */
+-    bool fp_access_checked;
+-    bool sve_access_checked;
++    int8_t fp_access_checked;
++    int8_t sve_access_checked;
+     /* ARMv8 single-step state (this is distinct from the QEMU gdbstub
+      * single-step support).
+      */
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 8bef391bb0..48e0ac75b1 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -1381,14 +1381,14 @@ static bool fp_access_check_only(DisasContext *s)
+ {
+     if (s->fp_excp_el) {
+         assert(!s->fp_access_checked);
+-        s->fp_access_checked = true;
++        s->fp_access_checked = -1;
  
--    return;
-+    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
+         gen_exception_insn_el(s, 0, EXCP_UDEF,
+                               syn_fp_access_trap(1, 0xe, false, 0),
+                               s->fp_excp_el);
+         return false;
+     }
+-    s->fp_access_checked = true;
++    s->fp_access_checked = 1;
+     return true;
  }
  
- int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 8c4b08433760..390943e46d99 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -24,6 +24,9 @@
+@@ -1465,13 +1465,13 @@ bool sve_access_check(DisasContext *s)
+                               syn_sve_access_trap(), s->sve_excp_el);
+         goto fail_exit;
+     }
+-    s->sve_access_checked = true;
++    s->sve_access_checked = 1;
+     return fp_access_check(s);
  
- #include "hw/acpi/bios-linker-loader.h"
- #include "qapi/error.h"
-+#include "qemu/notify.h"
-+
-+extern NotifierList acpi_generic_error_notifiers;
+  fail_exit:
+     /* Assert that we only raise one exception per instruction. */
+     assert(!s->sve_access_checked);
+-    s->sve_access_checked = true;
++    s->sve_access_checked = -1;
+     return false;
+ }
  
- /*
-  * Values for Hardware Error Notification Type field
+@@ -1500,8 +1500,9 @@ bool sme_enabled_check(DisasContext *s)
+      * sme_excp_el by itself for cpregs access checks.
+      */
+     if (!s->fp_excp_el || s->sme_excp_el < s->fp_excp_el) {
+-        s->fp_access_checked = true;
+-        return sme_access_check(s);
++        bool ret = sme_access_check(s);
++        s->fp_access_checked = (ret ? 1 : -1);
++        return ret;
+     }
+     return fp_access_check_only(s);
+ }
+@@ -10257,8 +10258,8 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     s->insn = insn;
+     s->base.pc_next = pc + 4;
+ 
+-    s->fp_access_checked = false;
+-    s->sve_access_checked = false;
++    s->fp_access_checked = 0;
++    s->sve_access_checked = 0;
+ 
+     if (s->pstate_il) {
+         /*
 -- 
-2.48.1
+2.43.0
 

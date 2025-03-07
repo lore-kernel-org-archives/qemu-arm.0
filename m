@@ -1,262 +1,157 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2398608njm;
-        Fri, 7 Mar 2025 11:05:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVjaunTc6twpJgEmQr3WPVJW68CC4dqbJKFtMbZ7g2EEPOeAM52s1EsD0w62OsTXGccMC+sG7Cv/N7kAA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGd/7XUdX02/i89VKXIo64QaZtx0880jligtLQiUM6XMH28ET1rwaMR3m61M3bvK3f9i8uo
-X-Received: by 2002:a05:6102:2927:b0:4c1:a049:27c7 with SMTP id ada2fe7eead31-4c30a5ebd0bmr3395564137.13.1741374318956;
-        Fri, 07 Mar 2025 11:05:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741374318; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2459105njm;
+        Fri, 7 Mar 2025 13:03:06 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWw2/nibE6zbTymDEd/OmZSE074P9ruLz3piNMXeSJnPjG82Q6HnTaNFAu2wj6i4L7kPozR0lgeocMRaA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEgbR7sL/y31vfy/kZczvRNKThJJs653/QhbBQZ031Pqv7Q4MXPDNCD0UJDNoasulh8u9SN
+X-Received: by 2002:a05:6871:5e04:b0:2c2:5be4:c01e with SMTP id 586e51a60fabf-2c260f79184mr2604842fac.1.1741381386034;
+        Fri, 07 Mar 2025 13:03:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1741381386; cv=pass;
         d=google.com; s=arc-20240605;
-        b=CQehVIXOaYcv0ocBcMvZeZf8Xwj+jPHAlhoMtdkT+YPcfEi/KZYD+nUB3Vpa4Z8c7b
-         QBAwTz1NCj/dVY2TPlfXBjREXiMOsPc3FBC7AtG8tZZuhIgz63Zea23bij3fQrjRosmU
-         MaUfH7Hb6q9J4ksB0GOlLiksIKArvZ+xtUHyNk75bA1oZ039TP0HWDC6/q40ZHKHEe5b
-         acEvQqZj2WUNgohlsXSvcO0MFDv+eNgGCLyH1Ei0OGmjbem4pRx0d73nJvKBj0yTTQuH
-         4UKBF8x2y6TsjjutgmeUjTmQ3/pUJZRbKd4fBr+GrBl1TOd0EgLJw4NIkCSAU9Cbd05O
-         hsfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
-        fh=quVKJN+JogokNzsp4kwoA7mheGRSBID5PxcC4hooSO8=;
-        b=dYnYSvEda+fwswTHuJAXBk6awA/9ZBZM90nCSB2YKEHUWBeMHwAGE0KM3vAWl5CAUN
-         qwNRa1l3vXwiKLDfdCLhkBUIhqqhVp7cdE89iarU2q2cMTkQ4t4CrOnwmSLo3ZbuPf6H
-         mz0zYiQrBKXT8XkEYlE7SlZxnPU6YNhPS45/Ls9l79Zk+aiFuPg526qOj2bcK2bGjGUv
-         JMlV0ZPqQ2JeVCsrkRf6pstRBX5lyh8C3juYRY3gtyz7ZNbjEpKgUvpXobCMguML0yR9
-         Ga7yj99Qq2N9Ke94pjXhrmksIGtq59kq9DeJeW4Yxh+fem5r1mZLYvv1vxk5ymrklSpD
-         oCWg==;
+        b=Z/O5VJJ+keKxVEHdIVRsM640iKdYf363slkR6JPcPz4Z+1OaZbEVQUUqMaFk/paQGq
+         Vk8YfJ5J6W6giqIfjSelpTuBa0KnOgCgzOaggrrmBoo0En9aQsnMClT6Bg2Dv3B5FsAA
+         86DUaWVLplALxaJUMqLmFKz1Frzq7Acnj6Vw5+FslD/5S5qUenqdbMQwMYNcO9+hBofZ
+         gvzfGL27H1ypyt1ERnApMoFgQoqqFE/YMEqwKS4kBWsWOonfzLdNoYZZrnd6Na9ftNkq
+         W1eHSnw1dqNbQStN4FzSvcGKyhplCaYvuP0VIUfGhs6B/zV0A8kjz9A5X98poL87QcGR
+         lX9A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=W1pIO3W6UHho5/y6qR/VqXNkL6ggB/e6+WfIGEybHyU=;
+        fh=sf62uh4d4Wd0IHVSMy6PG15DQZeK4xQTaA1iC4UQm/o=;
+        b=Ss4rsmjcLhl93vMEFNpDrlPUWzuokrbkls76YTJh4PEmcb4F78zSRB4UzQ+4e38DCc
+         yN/DrfsV8D78cU6OEmXfPjfF/HO2VvC47u0nPK+XUKjtk0ysxGBBRuPy/4ETvPkiz2SY
+         o0kYk+az0aSx1d3TGWK5CrW8mITvhUZmdLda9CHeQ5djpE/ealpRGZr5bc4eJlUbNcjC
+         qxHIyFKzfU3I+0TK4XsSch0UWhCTUDyAz8mMKjo99HGyHsCwyMvOpUfNpa9u+5NDM2Hz
+         ABu+20btDWRkWkRd5UKfxYBr2hQ3fj272I5OWyLth0xxy5lSOTEyRBAK8bArJPgpdwNb
+         O+hg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iF65nn8q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c2fbcc2f1dsi1062846137.381.2025.03.07.11.05.18
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d52wElvr;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 586e51a60fabf-2c248ca750asi2991101fac.130.2025.03.07.13.03.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Mar 2025 11:05:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Mar 2025 13:03:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iF65nn8q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=fail header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tqczr-0004CK-7A; Fri, 07 Mar 2025 14:04:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tqczh-0003yE-Hy
- for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:29 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tqczc-0003hn-KE
- for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:23 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-224019ad9edso55535515ad.1
- for <qemu-devel@nongnu.org>; Fri, 07 Mar 2025 11:04:18 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=d52wElvr;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551943-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D94263A5A16
+	for <alex.bennee@linaro.org>; Fri,  7 Mar 2025 21:02:54 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3324D21A430;
+	Fri,  7 Mar 2025 21:03:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="d52wElvr"
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B99A192B7F
+	for <linux-kernel@vger.kernel.org>; Fri,  7 Mar 2025 21:02:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.53
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1741381382; cv=none; b=ihK81DsdADdv5eRhpe2e77ln/o8rcNBQt/sJ6QYXtl5puP6Es4+BBX48AbgY/SpQFSkwErWAJyHOEZzrTXDrWFDagI5r76V4twC913LO+lK2d3Yfu2pSBIAzvaCGnFaS5hnrB3ZSXWiNCPBGRPl46lqLxRyCCAtgtKf9enc6sA8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1741381382; c=relaxed/simple;
+	bh=sg0V/ibZCyw+zHj/2Li32UQZH++dSgU/mySlElz8RZY=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=VBxHBOh/zEbwCpsNET0qudTSMKa3HpYAw5JuWP1ROZZYrpLNGvXUr58ZEfsgWYvT6TpxreGLZChluMQyFSsu+sZ5zfwQhfnHOzrzqCwycNe7/+TtDcBKO5YpxxT8TtD2/kPSSbQdDdev1aR2SYMBhEmAgDXqj/H7ns0WK8ZNlgo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=d52wElvr; arc=none smtp.client-ip=209.85.128.53
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-43bd03ed604so19439985e9.2
+        for <linux-kernel@vger.kernel.org>; Fri, 07 Mar 2025 13:02:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741374257; x=1741979057; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
- b=iF65nn8qlykQ1ErcjKqIeV8dTlO+jAHhvE4dHd0cKKmiPRrwqEqPbf0ypTNNQPhZJI
- zaD2ESBq4j/UIZFt7sVfduzA5W+3pKZm2p2bKct7XP7VblDtIThuFR5+Mhik8VGnzhkQ
- CJNtDUW5jqOxBhUs/yUhYc46ZIxHEvpG9P/y1kUDVr+OpReee3TRMEQjpmhRoFH1iTuz
- jpw16yR3IE9e3P57JIQxfboDaY4smNQ+l7Zp7nduesZ6iEmI+oBJWH/zgC+lgQYD78Xl
- j9O8qagz+qC2rVCrnQ358Up2c4LMuJuMdG6hscn6GrFvz5oc09k1kYR5NWd6FkE8KEM4
- 1igA==
+        d=linaro.org; s=google; t=1741381378; x=1741986178; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=W1pIO3W6UHho5/y6qR/VqXNkL6ggB/e6+WfIGEybHyU=;
+        b=d52wElvrDs0AKDV66Ntr0H3nO6TiRE8o0TnnS02sLafb/MKS2urjiyNBjkGz4v+/dn
+         F4WR90XWgWehmdd3SUYxXr56+T3EbLupzf2NeOAy5Uj7C1MA3IlryD9oHZn9FfBWdFI1
+         Ru7cxBFrdi7+qd7TUf/kZ7CMJvUm2DEqM1X+NIr9fcsC2v9cYVQFMl+9xK3KzjjmBgmZ
+         0OauEQ4GiGm+gRZD0b0R4gHqsWsruDu+TiWmlEGegmBBZUnr+Skab6ripUAMcZ3SBAWe
+         9biFSq2F+OkOjEZkdswVdZkLQiHeZWgO0uXoP9R3bv5ohkr83/t50LbDKrtSPLrK7ORx
+         Ll8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741374257; x=1741979057;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=z+zk524gYlZFNpfvm3PBpvMRD+qrtD7WnS20Nzkpdic=;
- b=Pj8M2122AYzcFeIOf6qR5v/BDk2+XIutDIYq0yxqcqnjaRQSgyKDqI/QlUKn5CG6CP
- Su5165o7uezuwTZSJEaf/YSzoDtTrDsb+sQud1VWLpqfudRhComsBdp4CAs0OWdXv3CJ
- M5/0wqwl/befkz9EBm8Fc3OyrGSIqvOfZYTLTsgDxqsr7KXVH1fqQE7FwquSC8egKx4N
- 6UMgYDyIxV16VJyHpK6hLgdh0HqdgC7JXcRWsFAJcDNdVgqH2IKv6rvLIHFo25fM5dXm
- 7q6JV6jOHGl3bBjUa6ynI26HkmjUPf6Bh8+9Fjav8HdRvSzY/qYay1eZT5zZjufiEvFx
- kQyA==
-X-Gm-Message-State: AOJu0YyNh1JAg8pY2vXOE956nSxj5P89K1fbUNDc7XRy8yJ5V/fKR1oa
- rwbBbnts+vHcli/2/AWjcL4e6YvufHMxVON0DDAu2+50lhk2UJD6gLj3rt6ZQKVufIZNvJbhbF4
- e
-X-Gm-Gg: ASbGnctJGC9KQOeuomf/d+4tOWmS+PILdHgLb6ySQPM3eYeaIUR9pxruSe4sebySqQg
- hq1PIS2+DBtVdvKjqFsV2wfj3G2LOaK6tQ9jwrwNmelW0x01P9n0iQDAuzEiHO8iODvYgBzXSzv
- RPUN7g3FoL+Wn1/D61kkBkAQ7Xe3yXCchGqi+WQr29uzrR8+HoOHOoQIPs9P/AG2K+yLjEkGHh2
- 3MTf1ciOW1je4elj1w+Zga63nSzMincp5FhT7q66qlHhDFbZmRGRfkvhrLGG9QlemZSBsG1MvfZ
- UjEWFMLkDAuRwvNkjRbmNgOCXNjM1SK1horaK37Gx6aGeOGlNpEX0fqtsJOAiPAWx+dM1lMWm5d
- A
-X-Received: by 2002:a17:903:22c8:b0:224:256e:5e3f with SMTP id
- d9443c01a7336-22428993846mr74979675ad.25.1741374257197; 
- Fri, 07 Mar 2025 11:04:17 -0800 (PST)
-Received: from stoup.. (174-21-74-48.tukw.qwest.net. [174.21.74.48])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22410a91c5bsm33686335ad.186.2025.03.07.11.04.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Mar 2025 11:04:16 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	qemu-stable@nongnu.org
-Subject: [PATCH 1/2] target/arm: Make DisasContext.{fp,
- sve}_access_checked tristate
-Date: Fri,  7 Mar 2025 11:04:14 -0800
-Message-ID: <20250307190415.982049-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250307190415.982049-1-richard.henderson@linaro.org>
-References: <20250307190415.982049-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20230601; t=1741381378; x=1741986178;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=W1pIO3W6UHho5/y6qR/VqXNkL6ggB/e6+WfIGEybHyU=;
+        b=b0hJrYtJ+wfDIXrBu7XnxOcDbEssljUrog62zz2+uzxB09E11E2AQuRMj/H3bLgCVe
+         sNcHLGoBKBtGZB5bKyWF1zPgM6nHQu8rX84yq+OgukJwEJYjy/3q1PhYuC5LMh+R4UUP
+         wP8MFNvMnh9vQR4LITkrMLvXLB9Y1Wgq1+QQD0OHnlFKxUT2xf5mLuDj7goDIsBvE/W+
+         jGizyrisV72pE3QJ05VYnU1d56lkaS84vo84AP0DB7aS9dorOPqvIqXvluFnFc/nig8j
+         cRHlwkvuBjkwAcUBqwtlmO/kB7k0AYILqrqTaw9J5TTvelT6inOILvLnQ1l/XwXNsfVo
+         xB+A==
+X-Forwarded-Encrypted: i=1; AJvYcCUzr3/6dkZ+pULFn2n3Q/ZrLaqYHcgWIWeAo/en6DV+EixqhpSoLdIFGwzzCCQgVKnDr/Vvl8rWLvR++M0=@vger.kernel.org
+X-Gm-Message-State: AOJu0YyycOKBv9e0vCpj584T6rZSBVgMzuqBvDuV70M0dFH8FtY210Eu
+	ipYs4hr7TbmsPyeVR4B8HL5GczFWCDY/uSG0vrCjg73uJpJ3qVkOMqBILk1HafujEh2TzHiOV53
+	w5ss=
+X-Gm-Gg: ASbGncvIP4iIVu8l9pka4QH5sgjpfIoZ1iMveWrtvxXCVbUcPtiI7hmDggF5jJ3BJ6W
+	7uIVnoNLpZHJhdctzumB/Dr70SWZMtKMpPbTxv6nXm9aFzsXfAZLKP3xvnbwkOSPQ/6SbrEpp0Y
+	xPIX6/mCrlMvBhS7QMtm/GjVHa3jThUpGyNrjIf2iHBZ/hEOSLnCuSa+F9JgQ1cX8WkKYJHuMZX
+	vfcTaesiBx2/IbA/UFfAXEXWy3oHEhlVAfeaVeOXBdCpJHl7oqnZtJdkxjfDU/baohx+6N892aO
+	4eDq9yjFyPy5FDlseudlhxWH2Cl1sgPporiiPz89+OeYAjiFWriE7uYqThzmIwCUFENKYpOaAl5
+	HPOTcbOpvz1Qg
+X-Received: by 2002:a05:600c:1c05:b0:439:6e08:f4 with SMTP id 5b1f17b1804b1-43c687014f2mr30261315e9.26.1741381377638;
+        Fri, 07 Mar 2025 13:02:57 -0800 (PST)
+Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c11e9desm6344762f8f.101.2025.03.07.13.02.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Mar 2025 13:02:57 -0800 (PST)
+Message-ID: <26709015-6fac-48c4-80a2-cc6a4150d3a4@linaro.org>
+Date: Fri, 7 Mar 2025 22:02:56 +0100
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 04/20] Revert "hw/acpi/ghes: Make
+ ghes_record_cper_errors() static"
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Gavin Shan <gshan@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ linux-kernel@vger.kernel.org
+References: <cover.1741374594.git.mchehab+huawei@kernel.org>
+ <9cb6c734f32f01206db562b9a406829bf81e19d9.1741374594.git.mchehab+huawei@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <9cb6c734f32f01206db562b9a406829bf81e19d9.1741374594.git.mchehab+huawei@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wxENehl8qW6j
+X-TUID: oXMDWFcLqU52
 
-The check for fp_excp_el in assert_fp_access_checked is
-incorrect.  For SME, with StreamingMode enabled, the access
-is really against the streaming mode vectors, and access
-to the normal fp registers is allowed to be disabled.
-C.f. sme_enabled_check.
+On 7/3/25 20:14, Mauro Carvalho Chehab wrote:
+> The ghes_record_cper_errors() function was introduced to be used
+> by other types of errors, as part of the error injection
+> patch series. That's why it is not static.
+> 
+> Make it non-static again to allow its usage outside ghes.c
+> 
+> This reverts commit 611f3bdb20f7828b0813aa90d47d1275ef18329b.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>   hw/acpi/ghes.c         | 6 ++++--
+>   include/hw/acpi/ghes.h | 2 ++
+>   2 files changed, 6 insertions(+), 2 deletions(-)
 
-Convert sve_access_checked to match, even though we don't
-currently check the exception state.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Cc: qemu-stable@nongnu.org
-Fixes: 3d74825f4d6 ("target/arm: Add SME enablement checks")
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate-a64.h |  2 +-
- target/arm/tcg/translate.h     | 10 +++++++---
- target/arm/tcg/translate-a64.c | 17 +++++++++--------
- 3 files changed, 17 insertions(+), 12 deletions(-)
-
-diff --git a/target/arm/tcg/translate-a64.h b/target/arm/tcg/translate-a64.h
-index 7d3b59ccd9..b2420f59eb 100644
---- a/target/arm/tcg/translate-a64.h
-+++ b/target/arm/tcg/translate-a64.h
-@@ -65,7 +65,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
- static inline void assert_fp_access_checked(DisasContext *s)
- {
- #ifdef CONFIG_DEBUG_TCG
--    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
-+    if (unlikely(s->fp_access_checked <= 0)) {
-         fprintf(stderr, "target-arm: FP access check missing for "
-                 "instruction 0x%08x\n", s->insn);
-         abort();
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index f8dc2f0d4b..53e485d28a 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -92,15 +92,19 @@ typedef struct DisasContext {
-     bool aarch64;
-     bool thumb;
-     bool lse2;
--    /* Because unallocated encodings generate different exception syndrome
-+    /*
-+     * Because unallocated encodings generate different exception syndrome
-      * information from traps due to FP being disabled, we can't do a single
-      * "is fp access disabled" check at a high level in the decode tree.
-      * To help in catching bugs where the access check was forgotten in some
-      * code path, we set this flag when the access check is done, and assert
-      * that it is set at the point where we actually touch the FP regs.
-+     *   0: not checked,
-+     *   1: checked, access ok
-+     *  -1: checked, access denied
-      */
--    bool fp_access_checked;
--    bool sve_access_checked;
-+    int8_t fp_access_checked;
-+    int8_t sve_access_checked;
-     /* ARMv8 single-step state (this is distinct from the QEMU gdbstub
-      * single-step support).
-      */
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 8bef391bb0..48e0ac75b1 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1381,14 +1381,14 @@ static bool fp_access_check_only(DisasContext *s)
- {
-     if (s->fp_excp_el) {
-         assert(!s->fp_access_checked);
--        s->fp_access_checked = true;
-+        s->fp_access_checked = -1;
- 
-         gen_exception_insn_el(s, 0, EXCP_UDEF,
-                               syn_fp_access_trap(1, 0xe, false, 0),
-                               s->fp_excp_el);
-         return false;
-     }
--    s->fp_access_checked = true;
-+    s->fp_access_checked = 1;
-     return true;
- }
- 
-@@ -1465,13 +1465,13 @@ bool sve_access_check(DisasContext *s)
-                               syn_sve_access_trap(), s->sve_excp_el);
-         goto fail_exit;
-     }
--    s->sve_access_checked = true;
-+    s->sve_access_checked = 1;
-     return fp_access_check(s);
- 
-  fail_exit:
-     /* Assert that we only raise one exception per instruction. */
-     assert(!s->sve_access_checked);
--    s->sve_access_checked = true;
-+    s->sve_access_checked = -1;
-     return false;
- }
- 
-@@ -1500,8 +1500,9 @@ bool sme_enabled_check(DisasContext *s)
-      * sme_excp_el by itself for cpregs access checks.
-      */
-     if (!s->fp_excp_el || s->sme_excp_el < s->fp_excp_el) {
--        s->fp_access_checked = true;
--        return sme_access_check(s);
-+        bool ret = sme_access_check(s);
-+        s->fp_access_checked = (ret ? 1 : -1);
-+        return ret;
-     }
-     return fp_access_check_only(s);
- }
-@@ -10257,8 +10258,8 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     s->insn = insn;
-     s->base.pc_next = pc + 4;
- 
--    s->fp_access_checked = false;
--    s->sve_access_checked = false;
-+    s->fp_access_checked = 0;
-+    s->sve_access_checked = 0;
- 
-     if (s->pstate_il) {
-         /*
--- 
-2.43.0
-
+And I apologize for missing to relate the 2 previous series.

@@ -1,211 +1,190 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2404842njm;
-        Fri, 7 Mar 2025 11:15:08 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUCQhOt4TzmK27QW7ReEsUtvetGKeE0NT6Ro8OhkIUT+3wYWDBjCXGDUvNAiUE0E4R4zNzIh1+lsw8f8g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHaCgkeHLFsdFDWU/ls0ZmJ46dC2xNLSBqr6d2vTFBR//XbskPYTeZEmFRwEUdYz5z+f9mE
-X-Received: by 2002:a05:6a21:3396:b0:1f3:47d6:aa08 with SMTP id adf61e73a8af0-1f544ad89c0mr8118732637.2.1741374908609;
-        Fri, 07 Mar 2025 11:15:08 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1741374908; cv=pass;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2398309njm;
+        Fri, 7 Mar 2025 11:05:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUl12yGnEhmR96KhFuCw0dfYWwaigIdVeLmivtMZs8KHobrmYPqN2RJpmXiwX0kKbXBd+m2VxlD22+/uw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVAQzZjBoCJd633IdIIfgdV8+hoc2NL2PrpElKIeq9CmOnxWfsvfBG+WqQdBJIe+egPpzh
+X-Received: by 2002:a5d:584e:0:b0:391:306f:57e4 with SMTP id ffacd0b85a97d-39132dc56b5mr2592174f8f.34.1741374300599;
+        Fri, 07 Mar 2025 11:05:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741374300; cv=none;
         d=google.com; s=arc-20240605;
-        b=iNRv2ENvUIaDQFidDiFFrkEH/RYxzHbxx8YEQH+ISOxL3Kt58W1KK6+TGP0JJzpOZ1
-         kWcDpfhPW1xPJGNOhJSai8rcmxSy96uU6w1ymWlDtf6uMh8Zu3isRTfsQ8MuvX84KSgK
-         rvqc8gycY7rc8oNdRQdfngf/EKfSwlVfMyENhqYXPJVu18XEz3SRsLgK1NtQh1GSqmVd
-         abELC8DEArogO8N6ysZc9znb1NfXxwI/PnN528RzSPjs37caI+Jot1RU1eruVJULsJmQ
-         qtmO4Z3cDMfCq3ugfiwq/hXPPzBCAqIRTXr7PYysspNRoJWEA+0M9em/aT2p2zHUQN3j
-         jPyA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=1x8ONiPj+BJ0cL3UzLV0knyR9S+eCgvxhLoj65pLvsA=;
-        fh=lqla2kPYHU+SxBmWJY6H7M6q1517DnIASMNkK19dDgM=;
-        b=DEOMkeVNIj6Up6eWYrAFGPqGkqDOYdSVJ8M30vGcKZOD32EvJaoU/R31P07ZsQ8Sgn
-         YYafPZ7Bf/oEqdFJcJjQhvFMnHy3Nkh6a0baoqToXL836BbP70j5V12Hpj/6WI1fxixO
-         SumQpsyv2/HZfoV2DavKd/R5LnFt0jV8UQLZ2g4dh69t1H57lcaUep0ksFN8xf3vo2Ds
-         wRNu+UvN1qoG+ICOzSzMpHSsQfhlTo9vwFvJWIIwL20AfSBzmd/pVD/0y9Q04ia/eX3+
-         qSOLW2pmBERH+HFJx51KjFwM5fIskTY8i24BrrMyBaCNKuExa9LK8yrsI5IOIPieKEyP
-         QSlw==;
+        b=BjXKELTBS/ycqLq1j88eDVYRiQlcV0Adupr1Fox0bJH71X8LSOP7s2EQZafmXa6hW8
+         Jzf4LIbe2gYnk93niicJS6TzFqYO86QKA6f0+KCVOKgPFVWWllWOL96WrKAIc5Wd0hGy
+         mI+8473Rxb7+CGQRqaQIJOfZM6shltad0QnJuhFVXmQ4mfQluovFu/o/0JLh+jKf1uy/
+         jilo/zrwdPtQI6w4zbHmw6UeLOW7xidtkj23vmMJZOQFGBmmF4iC7zyd5g89kUoF1sth
+         jyFBE1ZfYOrdYXw6SOIQb6A2bQi1lJFS7bv45tgd2reVsB7Xb3tDhyF+LNNGblN6ZOYD
+         VoyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=gWT0L4EBMx/nGFskBmpx115GbPBpRrubLUlCXG3QWrg=;
+        fh=quVKJN+JogokNzsp4kwoA7mheGRSBID5PxcC4hooSO8=;
+        b=hQmkfe3m5icE6NunnOcki86/iffKJBIG6ca7ixiBrwGIsRJWYrKcgIbQZC9I70kZZY
+         9xA7iwU1vhStxO9FNs8vwShWKqjXDO0nGZcbvcrv/zHIp2QV/K/sASsalOZQ7LLNsF7B
+         FdfWwiZspBeEgq/qc8FTnuk9Wqjg9FRzjwo9fWhlWt7B+xbi4sjQW9+8AVEqavWvyiyD
+         VJdMSpE6ygx0M1+TjgUlIRUw4UaSESxqtrONPKRDUhy+dzaRx9WaKEAqbpWwIk7h5aH0
+         BbO0tuV6ITWIvWCs0Cawziqa4iNChOwihnaUGaIAWnWUQ5H5WlE6WfWVE3vvx5GGUz3I
+         qB4A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=NWFyoN7o;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-af283e0d9d6si5929863a12.8.2025.03.07.11.15.08
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q+YlI7CN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3912c14d481si2889296f8f.871.2025.03.07.11.05.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Mar 2025 11:15:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Mar 2025 11:05:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=NWFyoN7o;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551805-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 761453B621A
-	for <alex.bennee@linaro.org>; Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8AC982512CD;
-	Fri,  7 Mar 2025 19:14:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="NWFyoN7o"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47C342505C2
-	for <linux-kernel@vger.kernel.org>; Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1741374898; cv=none; b=A/TE8i2hZ2B2Q/2E4XQtvR+yqo+t2D4HhL3zWyN0ahQ2niJAcW0LsdVG/JLf447iAt/qO+f+RAJp/j4vr+hgSEXkSciku7TKozQ7ua4G6+ypV94ou30wWD9G+lp/mkGMzMA9bnZ7BAGEw94DO3/eRTEseOCmkp+viR2Yr9S6Cg4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1741374898; c=relaxed/simple;
-	bh=Gj8pds6qQJyNoVx1JIwsKELvm2AAmJ9YGS0647jBI7g=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=E28HM+qD3wYu254tiKJjtMINpM41CDIFNt1pO/OIzJUkkMKEot2ru5xMkJNbczGjhXNfXIMwYL3sC7ksYbRLE2idsYgkWHp+JW5WiN05CkR5pObBgBXk/uc7oI/B+TB5gyFazbXmJ89dGzgAmR6NnHTLKtc1sdqYuUOSJQA8Yyg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=NWFyoN7o; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A91F1C4CED1;
-	Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741374897;
-	bh=Gj8pds6qQJyNoVx1JIwsKELvm2AAmJ9YGS0647jBI7g=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NWFyoN7o8sdxNFJZKS9h9VZ60nzPm4L0l7tQ3nfF+f1dCFGEhGbIG3u4uu9IAwxTO
-	 FVQUwj9utkFvvmvN4tE5PIi1yxsjKsPDKfmmV0IrxEPECdlh/8wvOCRUxqG/+VOqeA
-	 NrZa7kjfZqWCn2UzcJ7wVVbm8PfljnctRaUVM6j/au8ZM/6jI6bZzSkv2l3Lh9duHa
-	 o+qjiHiqwt9sWE6WEpZck90WwuBkEMfyLGz3NC5K6wl+mvHhESmtOFGiKSsqA7TZFe
-	 EIh3E9uKESdxS1yqtUVlx8S8DOtwQE6Pnyyp1LpgCf1hSd8a/HjGf/inO9ELqZGFU1
-	 wyH6qJY8DJ/tA==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98.1)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tqd9r-0000000BQn3-3xbI;
-	Fri, 07 Mar 2025 20:14:55 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Gavin Shan" <gshan@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Ani Sinha <anisinha@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v8 12/20] acpi/generic_event_device: add logic to detect if HEST addr is available
-Date: Fri,  7 Mar 2025 20:14:41 +0100
-Message-ID: <6bdd6596b8f5771a4ee41d66609cd2bd29a534b2.1741374594.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <cover.1741374594.git.mchehab+huawei@kernel.org>
-References: <cover.1741374594.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q+YlI7CN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tqczq-00047c-6v; Fri, 07 Mar 2025 14:04:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tqczf-0003xe-FP
+ for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:27 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tqczc-0003i2-Kx
+ for qemu-devel@nongnu.org; Fri, 07 Mar 2025 14:04:23 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-223594b3c6dso41871865ad.2
+ for <qemu-devel@nongnu.org>; Fri, 07 Mar 2025 11:04:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741374258; x=1741979058; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gWT0L4EBMx/nGFskBmpx115GbPBpRrubLUlCXG3QWrg=;
+ b=Q+YlI7CNkPltkxqzJG5qqgxjLzwX1nvBEHLJqGx6LtHitimJU6W6D4JK4aEdJhby9k
+ oOWTwIT0fUxx/QfABqyJQ+22rwr91/eHsH2BkYCQsm6e/Nfz/nSjgiCHYMQR50+1cWIS
+ dnUJvA0u59IRMpud4bZUtQQM+PM4dg56vbw3XTZkTP9frPy/ZK+yztAm3JpLK0plAtbv
+ uXaapQp7eol4/RoLny72zoMMZ6Jo8bqtVx8lXTxvGn1MMeMLodi3BA0u1ut0iqchKcly
+ LYyXObU5XCAaIWQXwmiCxD4X3FC3O9f2ACVCTWT9kvMhngL/f8n2O56FAl/4lHfdPQJI
+ FncA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741374258; x=1741979058;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gWT0L4EBMx/nGFskBmpx115GbPBpRrubLUlCXG3QWrg=;
+ b=jcpbD9NM7bLmLU+/KMk4uLtyJH3e5awb5h5jqB0ZdC1TeftDEdH1vpGOQiICjsGuay
+ 0oz3HVfWpLY3pnT2H2zjj/wx9kvmk8E3Tkh8TQF6zQeIw8rvpuz90T+77bRAZ+y5tTPO
+ dlAGSoL8kMeIiJHBbpTdzRjv9CIDdkoW0QcQrKoie/vXZcx2P6xgSAIhV5FUroqZxRKU
+ Sm2Ue3NkICTFRNtrKJ1PrNQ9EDsaE7NTxsFK1LUhOjAR0wwA7pl7BmHiIYTgzwiKSFQO
+ hFajyXKQ+DE8VdhideLxJL+aYPT+rF/GVaNoksQxpxcw3Dmy6Py1jxG7IfOmawNOvUrr
+ BtHw==
+X-Gm-Message-State: AOJu0YxJT3U6gosMWYbuxIPKs5zPP4R+gLa5/q4PGEH4rmx1ZLcumpAD
+ iqLFM3xfMgOY4M3PC2s0N6FyXQN3Wf2IvsmRd43E6Yq53qAKxzNZswVwK9WKa2D+DmqhRYC+4+R
+ 2
+X-Gm-Gg: ASbGncvp7Qn0wW1NgNPY3y5jsh1hbD5PXWRBNt9H7jYpoa2lOadAtUdunClbDiU/3P/
+ bRtMcIeOJdIALNF28dhqDqCU28VflS1PEmZGYjVxMxqQOHMQOL6KWs8kx6V/1rl/H+BLsniZfgt
+ 5q5+x1tsTXVjNySKc+yBx2rjvQeU5SJyssQNyRb5qF8e8ST9qOvDuZBZfrBMoxNicnzpqsq/T4K
+ /UdU/lejIe4iaLUIgErg4vwydRkki++AK0jj02AruRfgDzpe5ffdRT0i5TLAlFGmpckqzdO2XJY
+ yvXZm8BtIQV9PVkEtIe+CzNQ/Nrjrb/fd/jhSnKdQx4PjLhV3t7opKaG5bs7umVWlNxb20qcX21
+ W
+X-Received: by 2002:a17:903:2282:b0:224:2717:7992 with SMTP id
+ d9443c01a7336-22428be5a5amr62909535ad.33.1741374258002; 
+ Fri, 07 Mar 2025 11:04:18 -0800 (PST)
+Received: from stoup.. (174-21-74-48.tukw.qwest.net. [174.21.74.48])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-22410a91c5bsm33686335ad.186.2025.03.07.11.04.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Mar 2025 11:04:17 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH 2/2] target/arm: Simplify pstate_sm check in sve_access_check
+Date: Fri,  7 Mar 2025 11:04:15 -0800
+Message-ID: <20250307190415.982049-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250307190415.982049-1-richard.henderson@linaro.org>
+References: <20250307190415.982049-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: yHj1Mk+wxIcN
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9TYMOpLbVOHu
 
-Create a new property (x-has-hest-addr) and use it to detect if
-the GHES table offsets can be calculated from the HEST address
-(qemu 10.0 and upper) or via the legacy way via an offset obtained
-from the hardware_errors firmware file.
+In StreamingMode, fp_access_checked is handled already.
+We cannot fall through to fp_access_check lest we fall
+foul of the double-check assertion.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-stable@nongnu.org
+Fixes: 285b1d5fcef ("target/arm: Handle SME in sve_access_check")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/acpi/generic_event_device.c |  2 ++
- hw/arm/virt-acpi-build.c       | 18 ++++++++++++++++--
- hw/core/machine.c              |  2 ++
- 3 files changed, 20 insertions(+), 2 deletions(-)
+ target/arm/tcg/translate-a64.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 5346cae573b7..471d1a7afc76 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -318,6 +318,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
- 
- static const Property acpi_ged_properties[] = {
-     DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
-+    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState,
-+                     ghes_state.use_hest_addr, false),
- };
- 
- static const VMStateDescription vmstate_memhp_state = {
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ea9682ee2662..5443615d976d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -897,6 +897,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
-     { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
- };
- 
-+static const AcpiNotificationSourceId hest_ghes_notify_9_2[] = {
-+    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-+};
-+
- static
- void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 48e0ac75b1..723cb3f24a 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -1457,22 +1457,20 @@ bool sve_access_check(DisasContext *s)
  {
-@@ -951,15 +955,25 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- 
-     if (vms->ras) {
-         AcpiGedState *acpi_ged_state;
-+        static const AcpiNotificationSourceId *notify;
-+        unsigned int notify_sz;
-         AcpiGhesState *ags;
- 
-         acpi_ged_state = ACPI_GED(vms->acpi_dev);
-         ags = &acpi_ged_state->ghes_state;
-         if (ags) {
-             acpi_add_table(table_offsets, tables_blob);
-+
-+            if (!ags->use_hest_addr) {
-+                notify = hest_ghes_notify_9_2;
-+                notify_sz = ARRAY_SIZE(hest_ghes_notify_9_2);
-+            } else {
-+                notify = hest_ghes_notify;
-+                notify_sz = ARRAY_SIZE(hest_ghes_notify);
-+            }
-+
-             acpi_build_hest(ags, tables_blob, tables->hardware_errors,
--                            tables->linker, hest_ghes_notify,
--                            ARRAY_SIZE(hest_ghes_notify),
-+                            tables->linker, notify, notify_sz,
-                             vms->oem_id, vms->oem_table_id);
-         }
+     if (s->pstate_sm || !dc_isar_feature(aa64_sve, s)) {
+         assert(dc_isar_feature(aa64_sme, s));
+-        if (!sme_sm_enabled_check(s)) {
+-            goto fail_exit;
+-        }
+-    } else if (s->sve_excp_el) {
++        bool ret = sme_sm_enabled_check(s);
++        s->sve_access_checked = (ret ? 1 : -1);
++        return ret;
++    }
++    if (s->sve_excp_el) {
++        /* Assert that we only raise one exception per instruction. */
++        assert(!s->sve_access_checked);
+         gen_exception_insn_el(s, 0, EXCP_UDEF,
+                               syn_sve_access_trap(), s->sve_excp_el);
+-        goto fail_exit;
++        s->sve_access_checked = -1;
++        return false;
      }
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index b68b8b94a3c4..f5f0731e7062 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -35,6 +35,7 @@
- #include "hw/virtio/virtio-pci.h"
- #include "hw/virtio/virtio-net.h"
- #include "hw/virtio/virtio-iommu.h"
-+#include "hw/acpi/generic_event_device.h"
- #include "audio/audio.h"
+     s->sve_access_checked = 1;
+     return fp_access_check(s);
+-
+- fail_exit:
+-    /* Assert that we only raise one exception per instruction. */
+-    assert(!s->sve_access_checked);
+-    s->sve_access_checked = -1;
+-    return false;
+ }
  
- GlobalProperty hw_compat_9_2[] = {
-@@ -44,6 +45,7 @@ GlobalProperty hw_compat_9_2[] = {
-     { "virtio-balloon-pci-non-transitional", "vectors", "0" },
-     { "virtio-mem-pci", "vectors", "0" },
-     { "migration", "multifd-clean-tls-termination", "false" },
-+    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
- };
- const size_t hw_compat_9_2_len = G_N_ELEMENTS(hw_compat_9_2);
- 
+ /*
 -- 
-2.48.1
+2.43.0
 

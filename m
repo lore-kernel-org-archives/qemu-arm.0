@@ -1,161 +1,178 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1376162njm;
-        Thu, 6 Mar 2025 02:13:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXwaVXYHryWMS0+dYSpFOc4kxeFrgZ/7G8EA2Inj7oUt4ENF2bNJwm9ddNm0wBvlWOFYxAIfLMCEojhxw==@linaro.org
-X-Received: by 2002:a05:690c:5a81:b0:6f9:c6e2:89a8 with SMTP id 00721157ae682-6feaee5e07emr29592527b3.6.1741256009236;
-        Thu, 06 Mar 2025 02:13:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741256009; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2084288njm;
+        Fri, 7 Mar 2025 02:36:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW8i5UgDzGg5IMcBijGN7uwNQ5QtK8+KX5zKXRp2ThdedZsicgD5Y/FeR/ptkSlQTCNH05sGHR1RZBuEA==@linaro.org
+X-Received: by 2002:a05:6902:230d:b0:e60:a70b:23c9 with SMTP id 3f1490d57ef6-e635c1dc656mr3147386276.32.1741343780067;
+        Fri, 07 Mar 2025 02:36:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741343780; cv=none;
         d=google.com; s=arc-20240605;
-        b=hzRe8s1OA7yWJ1E9c9MKV/Kd+me7tVgAqhFlyMzX+tWZrU0hANxWt/7Ex2Fqhb+qxO
-         vIgH9h5+Ksqpqq2B3bBlh+xOhPKVG6KEP3sMBLXTwo//28fwD1xblVsw77OudaxF2LGE
-         rv3obA1zu4WeRiWknxOlgfk+2AzCUvMqZEMWS0VJiCv3mELC/jCTy3hc1kzhy+eQL4DZ
-         lnydGyvIl3iSRD5gSSbzHaRQg4MOUMDcqzn/b5BA9XYLAULUG4XZ5tzx+DNyqNKppyaG
-         msaSrhx/k0ebGUnReeqOGoLIf9psSmb6wcZwITGqncOXLph8XJPfmGrKhSyBgeLSBlFO
-         /tgw==
+        b=AwTLJ/3l+Vai0tp6j9ItCOni6XrwP5ADM2B9qYgyNC5ZRZuyVuXLygdpS1U218RV8M
+         SB41d3r0bKjv3qqELqbTIMNnwOm/eiNz2jKSm1mdCcwliou8ml/XHeJY6gtm9IQRMGyE
+         JeZJPN1/nltsNPe7W19LFJk4l2ceDqzVG+03toW6p/Qi7Do8qnhsg8XYNRBFAFr0wv+H
+         qrFYuywsdJvjwGOb2EyouCL78/HgzdELqzTeMH+tLt5+QmDWxMYQ8k5eLXZuY31CSf2S
+         ANT1fI1HzixPR+WwlfRz2bgS4smbbR/71M0qNLMrlzRrHVVTaVdCil6I4TuzeE8M1Rjk
+         kmQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
-        fh=X44DfZV54H7+rIgeK9PTMot/9y4aq4p2wFoLVY8BZ+0=;
-        b=C6urlB18dWeuKZTPuR5banTOBiVp4tTff+SlomiDsIvBkLfBpqACYf6VACV9BB+ixZ
-         UOL2w5Ex0UZU9kobbmpoxwvoTMZG9ZxWZL7emm3nROLYTFu9fuJVzpRp/Lx4WcGoLr0y
-         CxjY0LQaRDnw9B3KBGQHBVNb6YJ9ldvEDwiah1WllcbbwsHE1Isr1bC1fkymhwV2SEw7
-         OULuz3RNtoIDZ4JSGZd02ua7ltcSrX0MVJh9xROGYvBwxvgQpQkd/1IvkHwE6sSQbm46
-         WF8+wCA9rAr2zmyNrhIpTQjrZYXGghYjH9W3Olz9EdtlELbyQ+hY/cFSHP+kiqgSDF0I
-         NxDw==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=kLmPuTPkxAyKDm7E12J+r9WbRuBKoTnv4o0hMexvlcw=;
+        fh=SPGLGHHFhI4D+FiwIPvNMYs7hREY3MSatZ6H02KYT6s=;
+        b=kVBLv+hxbpH5A2bpIFazTC3KxNuoYdqA4c01CR8ZBCJIi0V15XFZGHC+PTdIlmjpbe
+         EXdIgio4ZU6LEDn0jPWMj2wfatHwpj+FEvVvFZZOUDE+NfXCcy1Fv1Rp4+mf3jyeIk+0
+         5t8/9djixDKzhxEdKbCGbiSdUcjzty2/uN2qp35DDOTTJ+NRlqgJPfWjucFVzn4LrC3C
+         PH+1+zT2WgyTJUcNCO7S7MhNPDYWR53I0F3jmZo6lxz9j4xjcDLF1SAaPLDKvN1TCpu6
+         sjmHX0OoMhQ8XsOGxQ0CWp3pl3iR3KwgClamdvz6Ae904TXUkwe2Mz/10SKCD1oAVs0h
+         2QOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RQKb+zY1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=W0EduUV7;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6feb2b97ee3sor4122917b3.7.2025.03.06.02.13.29
+        by mx.google.com with SMTPS id 3f1490d57ef6-e634b841f75sor1845939276.4.2025.03.07.02.36.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 06 Mar 2025 02:13:29 -0800 (PST)
+        Fri, 07 Mar 2025 02:36:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RQKb+zY1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=W0EduUV7;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741256009; x=1741860809; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
-        b=RQKb+zY17PsJ+/f3EBF2R6RJeCuahPFvqpSawlUJXNz5wI50MiLRIa+Pdk4L+X+e15
-         q6Z4sr91wwYCmcjkxfBtV3OEGozasEq560eCs8M5wZQ8CyBMrOYVo+RizyAKz/bzTsur
-         0xAu1wCMVazRAJjWl+1r08IhNEsMd6phi8wQjy4KYezgXTv7fbssi8JnreTpSf2427tj
-         nubz7PAHMJtJBiZ7W90GCAmAUebsQgAwZ8gfWYPnfTP6z6THfXEpV23Vn1UTrzrwET1+
-         t+iP8aQiLXfTWi82BMe0P2XBwu7cuAs/btbLIKfuyyEhfznKPFBss5l4qFaBL+93kntM
-         SD1g==
+        d=linaro.org; s=google; t=1741343779; x=1741948579; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=kLmPuTPkxAyKDm7E12J+r9WbRuBKoTnv4o0hMexvlcw=;
+        b=W0EduUV7wE+oTGWFnG/3uYXnQB8eOJvJ82KKXCP9ZxKyrJHhFcmJhp9vktruVAnyS8
+         27vqg9JaP8Ja3Is3KbyGtSbP5Aenl2z0dZzaggJP2ephEEQW/CHTQGB6YJDb6YN2OoBE
+         Yp9Ya3JG1axyPCJJpxSUT7jv+pbxrtWUSRQG6R6C6YpNU7q5lHq+KBQOFyNaYmPaAs6K
+         LIaDVU5DL9JDM0zPev6M7hBnLFhZV6ir3lJSAzEXFLnPsQvul+E443bt84FvpEzJHSRv
+         fqqGPGktSyw79BoFprWArpwe+LGf0/waez4Z2ccXMti0W9z6G6YLWUeA8GPeoMhwsxB3
+         xhXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741256009; x=1741860809;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5lJXKZf5zcYw5ohzoA4hRxGVuZ41Pla04bRM8TI0aM4=;
-        b=PghsHQvf6hiJXBXEoLWr2f2N/h+auFxT80WIApCU8IT+J22ebr9qk49GN9ZIKKguk9
-         tdaErnCmhwhO1QEf7aPi2J52ilop5FiB1wtHyu+FgQh/jCW5xZ09Y6Zssi7cCfYxlPX4
-         o/GT+KOAJc4Aneq3UNKPNV2yGaQmUmGbRMWlzFpDh6BC0tquzrtx8mRyCxydIXa5f0M1
-         rcj78fFI8xIz5g+vli2MqqpmjVpvljT2Eh04RCvQEC8nqJWwZHNlrNq+lDM+Yx8enqX3
-         LFZsZEDcJBbtvXFqxynV9oyvIluM/3dx19oj7zv/nEjULEsq/sOm4ub0TzxH/ho6wR9g
-         3rPg==
-X-Forwarded-Encrypted: i=1; AJvYcCVsyXj+cfV5+k851JOTH9TwcioEKWZHEwWKMSpLzigtXBS91D1bn+q4uKSrfFEMrpd1UDzinuEyk5kOAA==@linaro.org
-X-Gm-Message-State: AOJu0YzZyIi1BVzJuNxlnM4X50m+prOXGLQLoXFfjwLREq9FWHLd1TSA
-	q705fJGV/GWrJh5dkPNCufgPNaV1axtWwaaj131rR/TLMybuogNJha6Vu5XciPmO0wGTftABlXC
-	WYjExCVn7KK+jDe3Z9lhF9S8TdC7vbFriqyAeGeHG
-X-Gm-Gg: ASbGncuTX8Dej9jQvAasdT+o2nq78/M8nyx/O148X6xxehnrwcTg/azQsN2t0xHGv2J
-	ll50eymP9A7gN6DUSQn2k67Vz21PjM8rgUf9TqWxnn4sZvVTdc2xY3hBFqfsnd8uUJRnCQBa9zd
-	NEOzikalnZ0AvpC0gcp2pWXe7fevg=
-X-Google-Smtp-Source: AGHT+IGAkHtVrhbM0rUIE+VF0q/zYEaQvPttC/adGGYQuG8e/lqVdReWfCOxNKL4LxUj14JV08rUtstqnYBbEZ++ko0=
-X-Received: by 2002:a05:690c:64c5:b0:6fa:fd85:a2b6 with SMTP id
- 00721157ae682-6feaeeda024mr37834847b3.13.1741256008805; Thu, 06 Mar 2025
- 02:13:28 -0800 (PST)
+        d=1e100.net; s=20230601; t=1741343779; x=1741948579;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kLmPuTPkxAyKDm7E12J+r9WbRuBKoTnv4o0hMexvlcw=;
+        b=jMVHw9IfltvXBfcyekSYJbjAMn0bGbnmANli7fY1kbUDtfIWbkRoR9IZVTpTpyHbPP
+         5PBXftDqN1o6mS0rkyJvOBP+0kfpPowblOgq8COIeYGecD2i6QGbp3WdbujpyTWxA0Yf
+         NoK2offm6DPlETBx2lulhTuDe8QTGcWAZaJgWgjtXeZ5x2NAkGuky/xkPLv9wK6nqRiY
+         zzBxVgYolu3kM5US6Q6G0q4REawOgffiaJk8GA6lhqk94asAyLV6lt8FNsXP9y8dOhyV
+         VksLiEW8c27CdoXNAI+jAqLYQpMuhQdzEKcKBT8ERuId7bpODMNxR6BxIyDevF1KvKQb
+         TnbA==
+X-Forwarded-Encrypted: i=1; AJvYcCUnNyxzhw/lzr1p10ezMV4p2o7WqBh4aQZsfafzu0nb6AlGfLJCM8ZkGxFSC9n51OR0zjkoHbKX/a6eEA==@linaro.org
+X-Gm-Message-State: AOJu0YxkFPVlzQs1NeZYHh6jnendJqoUdNMYKVXMXxdb4WhRP73ajSAD
+	xDExYxgY4c7xWx5iFHlcVQWHKPcxlRrxo1ZoEOEmo4Y/aBX47Rkf7y3S9SPpkovTp2UKyjqEQpZ
+	KxmgEF0lXAs9+oa7cWo6OnIz5fs1C4ERXCETWzK+I
+X-Gm-Gg: ASbGnctcy0gE26nfhwNrc3U/XCUUzALhCKnN+y4+ODHD9ZtQR368+izUE9R+s2QTeHk
+	vVb0IuCY+mESn+5glPLl5bX6mP2gZc60Y4iAWnAjYiZpKPleGLLhU1XoAmo3ykoczCvg9+4EBxD
+	fhJzaoEPYx/PnBsEKm5iyjsJin36s=
+X-Google-Smtp-Source: AGHT+IEILKnMGvhXjFsl3Bp43vgXKpMYnA4edCIZqUOoUUYmzaBni70MZckDojlxOOtk2kUuSJmV+1FDTYAxhd5rSJ0=
+X-Received: by 2002:a05:6902:33c3:b0:e60:97b9:5a96 with SMTP id
+ 3f1490d57ef6-e635c100616mr3061783276.1.1741343779628; Fri, 07 Mar 2025
+ 02:36:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20250305161248.54901-1-philmd@linaro.org> <20250305161248.54901-3-philmd@linaro.org>
- <Z8lpB6XdNPT8zyTa@redhat.com>
-In-Reply-To: <Z8lpB6XdNPT8zyTa@redhat.com>
+References: <20250210135804.3526943-1-peter.maydell@linaro.org> <CAFEAcA-SbHjBu8xo8Uy11n2N22LtUejARHC7w8ucu24kg15Xog@mail.gmail.com>
+In-Reply-To: <CAFEAcA-SbHjBu8xo8Uy11n2N22LtUejARHC7w8ucu24kg15Xog@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Mar 2025 10:13:16 +0000
-X-Gm-Features: AQ5f1JrjmBIvYLT_jqvL_Q04vutWHCYlIcEFcz_IjkUx64YHVNTExNWlQGns4ZU
-Message-ID: <CAFEAcA9FuNJZwQ2NyJdBicoMMF=3Ua+qokrHu+-_uwnF9_tDNQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 2/4] hw/arm/raspi: Replace TARGET_AARCH64 by legacy_binary_is_64bit()
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org, 
-	Thomas Huth <thuth@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Fri, 7 Mar 2025 10:36:08 +0000
+X-Gm-Features: AQ5f1JoDA8Lw4OZdJgZwY9LksjpWrxU_IS5SPdObcl1E2VzQed9-Gjfno-pr_-A
+Message-ID: <CAFEAcA_bL-OR=RNvnWokjoz05AAM1d-eCjG_YtE=_s-LdcHMZw@mail.gmail.com>
+Subject: Re: [PATCH] util/qemu-timer.c: Don't warp timer from timerlist_rearm()
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 4FusqMH0fOXM
+X-TUID: L8n+k27nG+O6
 
-On Thu, 6 Mar 2025 at 09:21, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
-wrote:
->
-> On Wed, Mar 05, 2025 at 05:12:46PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > For legacy ARM binaries, legacy_binary_is_64bit() is
-> > equivalent of the compile time TARGET_AARCH64 definition.
-> >
-> > Use it as TypeInfo::registerable() callback to dynamically
-> > add Aarch64 specific types in qemu-system-aarch64 binary,
-> > removing the need of TARGET_AARCH64 #ifdef'ry.
-> >
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> > ---
-> >  hw/arm/bcm2836.c | 6 ++----
-> >  hw/arm/raspi.c   | 7 +++----
-> >  2 files changed, 5 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> > index 95e16806fa1..88a32e5fc20 100644
-> > --- a/hw/arm/bcm2836.c
-> > +++ b/hw/arm/bcm2836.c
->
->
-> > @@ -219,12 +218,11 @@ static const TypeInfo bcm283x_types[] =3D {
-> >          .name           =3D TYPE_BCM2836,
-> >          .parent         =3D TYPE_BCM283X,
-> >          .class_init     =3D bcm2836_class_init,
-> > -#ifdef TARGET_AARCH64
-> >      }, {
-> >          .name           =3D TYPE_BCM2837,
-> >          .parent         =3D TYPE_BCM283X,
-> > +        .registerable   =3D legacy_binary_is_64bit,
-> >          .class_init     =3D bcm2837_class_init,
-> > -#endif
-> >      }, {
-> >          .name           =3D TYPE_BCM283X,
-> >          .parent         =3D TYPE_BCM283X_BASE,
->
-> So historically we have a subset of machines that are only exposed in
-> the qemu-system-aarch64 binary, and not qemu-system-arm.
->
-> You're attempting to build a single binary to cover both 32 & 64 bit
-> arm, so need to be able to filter what machines are available to
-> create when the symlink indicates invokation of the 32-bit binary.
-
-What machines are there that we don't want to provide, though?
-We don't provide for instance raspi4b in today's qemu-system-arm,
-but that's because it wouldn't work there: qemu-system-arm
-doesn't have the 64-bit CPUs. But if we have a single binary
-that has both 32 and 64 bit arm in it, then the 64-bit CPUs
-will be in that combined binary. Do we actually need to explicitly
-forbid the user from saying 'qemu-system-arm -M raspi4b' when
-qemu-system-arm is a symlink and the command would work fine
-if it wasn't forbidden?
-
-I had assumed that the motivation here was that we'd like to
-be able to build this C file only once. Currently we have to
-build it once for the aarch64 target and once for the arm target;
-to avoid that we would need to determine "does the binary I'm
-in have the AArch64 CPU types this type depends on" at runtime,
-not at compile time (which is what the ifdef is doing, effectively).
+In the absence of any objections, I'm putting this into
+target-arm.next.
 
 thanks
 -- PMM
+
+On Mon, 24 Feb 2025 at 14:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This has been reviewed, but nobody's picked it up. Paolo,
+> MAINTAINERS says qemu-timer.c is part of your "Main loop"
+> responsibilities. Did you want to pick it up? Or I could
+> throw it in to target-arm.next if you prefer.
+>
+> thanks
+> -- PMM
+>
+> On Mon, 10 Feb 2025 at 13:58, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > Currently we call icount_start_warp_timer() from timerlist_rearm().
+> > This produces incorrect behaviour, because timerlist_rearm() is
+> > called, for instance, when a timer callback modifies its timer.  We
+> > cannot decide here to warp the timer forwards to the next timer
+> > deadline merely because all_cpu_threads_idle() is true, because the
+> > timer callback we were called from (or some other callback later in
+> > the list of callbacks being invoked) may be about to raise a CPU
+> > interrupt and move a CPU from idle to ready.5A
+> >
+> > The only valid place to choose to warp the timer forward is from the
+> > main loop, when we know we have no outstanding IO or timer callbacks
+> > that might be about to wake up a CPU.
+> >
+> > For Arm guests, this bug was mostly latent until the refactoring
+> > commit f6fc36deef6abc ("target/arm/helper: Implement
+> > CNTHCTL_EL2.CNT[VP]MASK"), which exposed it because it refactored a
+> > timer callback so that it happened to call timer_mod() first and
+> > raise the interrupt second, when it had previously raised the
+> > interrupt first and called timer_mod() afterwards.
+> >
+> > This call seems to have originally derived from the
+> > pre-record-and-replay icount code, which (as of e.g.  commit
+> > db1a49726c3c in 2010) in this location did a call to
+> > qemu_notify_event(), necessary to get the icount code in the vCPU
+> > round-robin thread to stop and recalculate the icount deadline when a
+> > timer was reprogrammed from the IO thread.  In current QEMU,
+> > everything is done on the vCPU thread when we are in icount mode, so
+> > there's no need to try to notify another thread here.
+> >
+> > I suspect that the other reason why this call was doing icount timer
+> > warping is that it pre-dates commit efab87cf79077a from 2015, which
+> > added a call to icount_start_warp_timer() to main_loop_wait().  Once
+> > the call in timerlist_rearm() has been removed, if the timer
+> > callbacks don't cause any CPU to be woken up then we will end up
+> > calling icount_start_warp_timer() from main_loop_wait() when the rr
+> > main loop code calls rr_wait_io_event().
+> >
+> > Remove the incorrect call from timerlist_rearm().
+> >
+> > Cc: qemu-stable@nongnu.org
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > As far as I can tell, this is the right thing, and it fixes the
+> > "icount warps the timer when it should not" bug I'm trying to
+> > address, but I'm not super familiar with the icount subsystem or its
+> > evolution, so it's possible I've accidentally broken some other setup
+> > here.  This does pass the tcg, functional and avocado tests,
+> > including the record-and-replay ones.  I've cc'd it to stable as a
+> > bugfix, but it definitely merits careful review first.
+> > ---
+> >  util/qemu-timer.c | 4 ----
+> >  1 file changed, 4 deletions(-)
+> >
+> > diff --git a/util/qemu-timer.c b/util/qemu-timer.c
+> > index 0e8a453eaa1..af6e1787e57 100644
+> > --- a/util/qemu-timer.c
+> > +++ b/util/qemu-timer.c
+> > @@ -409,10 +409,6 @@ static bool timer_mod_ns_locked(QEMUTimerList *timer_list,
+> >
+> >  static void timerlist_rearm(QEMUTimerList *timer_list)
+> >  {
+> > -    /* Interrupt execution to force deadline recalculation.  */
+> > -    if (icount_enabled() && timer_list->clock->type == QEMU_CLOCK_VIRTUAL) {
+> > -        icount_start_warp_timer();
+> > -    }
+> >      timerlist_notify(timer_list);
+> >  }
+> >
+> > --
+> > 2.34.1

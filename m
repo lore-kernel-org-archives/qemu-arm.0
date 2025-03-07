@@ -1,139 +1,132 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2449536njm;
-        Fri, 7 Mar 2025 12:41:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXms7qRBcAEMUoHuIwk85Tr8Frb0CmMMFZ2DQbLYQTknR40q+uBlQ10akZJ5rpFIx+q7DiEsBQmpUXwyg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGaS9N4qTSd8+VZv5dIodCoueFy9lExMZIz6yZBysWIieVxZc9fQY0hPP+8MSIiAteEi0Fs
-X-Received: by 2002:a05:620a:618f:b0:7c0:a3d5:488d with SMTP id af79cd13be357-7c4e1f21fcdmr683404185a.21.1741380088996;
-        Fri, 07 Mar 2025 12:41:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741380088; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2459955njm;
+        Fri, 7 Mar 2025 13:04:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU/Y+UcwJKvcZ04z/E9mMLONPzWRCLaJvJKk/V4GTXGdq+SOj/ywnzRZZqX04xUEcP4LtbghxtUtVGZPQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHOZIdu29XDqS670x/xJh90FPNvVNLNzga/xg5eqBqiFL6Sa5y3ixj1Q2fKC8/lffXo8i85
+X-Received: by 2002:a05:6102:f90:b0:4c1:8ded:2d66 with SMTP id ada2fe7eead31-4c31b759ad4mr1121126137.12.1741381458529;
+        Fri, 07 Mar 2025 13:04:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741381458; cv=none;
         d=google.com; s=arc-20240605;
-        b=Xm1j3IO/XaC9O3EhKTVxAf1A+i2v9iTW4dDoQNssPuI6cazyAvAZqdW2k6czTvCXSj
-         zrntWZ9hOTnTZDwpmwgu2zsFlC2h5h5GHRd1ZZX+da/EkMIaoJvVoMuZtG1L7UU/xocS
-         mHarV7F/HpF8S13oka8EKx4ktPYKi3hfTJv9IA2b4Ajl6mXMQm0dUsNVET3nhIhMNldl
-         idFJBc5qVtgFOJVSHeJHC6G0Y4BJHGlQf2cCEY433zshPuEl4VWtdKgwhwLEZbQQ8RAF
-         MeVutwciiBw9ioe3B0e8AJBjmb4H1G85MCgAF/vmKYyeycEb82Pega9yUeJJlm4eNjYl
-         UnQw==
+        b=YFNNgCE9QBoPAVEc0NvBA3Nsa8ACxTM1hgRZSj6axmSXfKwJlOettvseov7wu9amYr
+         +KSbmlGwsES/Pfr1ZVqcJtWAuLjhxHEcqVMXIJcfqAjyZYRPBGaOp1rNH3aUB6Ynoubd
+         x/2syjvK8Z6U/xEXc18+28QO0Sz08XcrOY5+eE4zXNK89a6E7RnGj+eawHj2Q1YLbLJa
+         wtXXfMjLAzoGHnNkb4cUQRDH1h4L/5RkM+jg4Zxlvd1i/Hok6ZURwjUMf17tSEUd8ZOD
+         VB/tVJnorSpMvqhCBbYLXjrMChUS1rKdmlcLVumW5PtctvXt0Nh8l1r4Q06GZ+jk2psm
+         Ww+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ohIL3BV/104Xh7k2LK2qauY0LQOX7g9NVibMeK73rWw=;
-        fh=xAeZ1nDGc8bcAjPg/akG/HfAOokMW9O5GJVBYiEy4RI=;
-        b=Zruhd1O7RLFNMA2vEHRXoGebL9lIlWA+J9VTtsjzHBz7R8qM/GJ8ObgvtnaEzDZhUl
-         aj9zbElUO9vE23vbANcb2MY3EV4CrALOoa3ckfQ6stDJiva0yMFbKeyitgzUxPnLuCaA
-         s9sPwIfBkKvnXd9KXlJHuK53l8B9CAygnrmr1LwNoe/SCHGExTaCgePOZD/HtwZ2RQI2
-         cZOpp+YOOhCuwY+yszjBnhguG6HQwkiIJf/hmdWB7jUeauW5iC1CUNj3xKpGm6sJhdff
-         MUaDhgs3sBHToyGXiXYvzPTZYTUaFxTVeZ1mSDKtTtYlXjr1mdGjzcrOZUwp39hgtGe2
-         SNNg==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=s7lIJgOA1tjiMK/XknTysFy21ttJ28wSLFCbPOi8VqE=;
+        fh=LVFufGs5OFV9F3goVf+QEVTCa2XHz9eJAx3KAZHhqG4=;
+        b=jjaFpWEYysoZ562yGCoMN4qLtFsZLkDwC9ktZ0l11QljRdtIvOUO+axNW02+K4L2ng
+         Vhdk56PKr5fMrKhWeP1kdGqw50UjceUuP1ANKq50xIGnBVep+0AvPzU+Bgel6VrI9KCX
+         R9xD0DOZikfy22h4tf4k2SxVgoQSOq833T5g9Y+0/lH0PvLAQ62ApBHpMeTMbyMgS+FF
+         JkkZ7o+T+l6B424WGoeFxsk1cVLboSiG4PKZ9pJnBvsZw66k8fbOUeo+cLVN6NMDjYm1
+         LhH/5ry9TD+pE/G/FoOeCPCFfIKn/nWjtONvHQoYL1v3kinaNTis2g7DCMA98E7jPmz2
+         8qEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=iKDatbPk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fSTF6UtX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c53c9ffa20si42884285a.64.2025.03.07.12.41.28
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c2fb427365si1195973137.50.2025.03.07.13.04.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Mar 2025 12:41:28 -0800 (PST)
+        Fri, 07 Mar 2025 13:04:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=iKDatbPk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fSTF6UtX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tqeV8-0004jl-1u; Fri, 07 Mar 2025 15:40:58 -0500
+	id 1tqerb-0002x1-51; Fri, 07 Mar 2025 16:04:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tqeUi-0004R3-4P
- for qemu-arm@nongnu.org; Fri, 07 Mar 2025 15:40:35 -0500
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqerY-0002w8-TN
+ for qemu-arm@nongnu.org; Fri, 07 Mar 2025 16:04:09 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tqeUg-0001wa-30
- for qemu-arm@nongnu.org; Fri, 07 Mar 2025 15:40:31 -0500
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-2ff80290e44so2233386a91.0
- for <qemu-arm@nongnu.org>; Fri, 07 Mar 2025 12:40:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqerW-0005sP-RG
+ for qemu-arm@nongnu.org; Fri, 07 Mar 2025 16:04:08 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-390eebcc371so1539896f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 07 Mar 2025 13:04:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1741380029; x=1741984829; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ohIL3BV/104Xh7k2LK2qauY0LQOX7g9NVibMeK73rWw=;
- b=iKDatbPkWhloT8eiSVVqPgSX4g+PdBwKJUPPTfzSgCM3Bd2A1YElwIkOlFxcslY4m5
- lT2VHt0juxfjn7C0OeYnXnofCxxlWM40nR5dFsl6myXbHa96/GZYED3VxyiImxVVF2jx
- ZNmZYcv9mRB2OBPbIgvVosNfHxfQQJKCF0rr23EXnOZ85pq2ZJL2x45Jo5AzlaotuoDL
- OaorC9EE1KgDg7mTdWwkvXwo5+PGLTvHtY/eCNpPml616NLVGM+A8C33k5RuW6tOL7Nx
- N9TNgRVCB3MpgY34WnddRdgJZuXb2lpcF+1tjx7ytHCRDOUBN06HWGqhrK4rfpiBBFew
- hPhA==
+ d=linaro.org; s=google; t=1741381445; x=1741986245; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=s7lIJgOA1tjiMK/XknTysFy21ttJ28wSLFCbPOi8VqE=;
+ b=fSTF6UtXr9Oh/5sFc2imDZc+Bpxxwnp14r0i8xg4gtLbA4vrh/o1a+8qlT4ZeDgt0q
+ pIobZg4WUsLcXsglca01GrulGJGiPVeMX/xrysiPOUshaXHUuMTU/GusQrggJrTr9CKa
+ IUyS7DeItTLItKGlTDLGJBC7ADyCEOQ7hz8OBL/Mc46/IiAzhB9K5e5ekL/6HH4UPXhw
+ sxeTJ6l3Cs3+DODqCGMUMQvGTUgAkPhOW3Lj+kRtDbwUi0Oni4C7QFI51iZMUEbwVyeK
+ jl1hMyx67inra066VDmS59qWaqmFTj9gLVHU+Tb3OJh7E3DQXb2Y5V9IQIaV78sPSgQk
+ yneA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741380029; x=1741984829;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ohIL3BV/104Xh7k2LK2qauY0LQOX7g9NVibMeK73rWw=;
- b=gQZb/La92YosxdMnBtvtiCaPDLn/10cO09WWXGxvpsJIpzabnc6Jkv0dO1m4tYBr/e
- AHHMZV73/Yv21FbsyxdD59xCWk4DetMKpgehU4OzO4aPoOFxMAb9fDqanLgdxp+GMwxn
- 6GnhcBwlDC18SlJWpIqi3uN8S9DJDOc07ztaVcpyKJmkWLTy3Aoa2G/I5EUbqEj8Uk4Q
- ZIT+BvIf9fEuSVZ2XtIXWxWaA2cmKn11pP2xz9TbpVDinud76pWp4HCojjt0sc8y/QVt
- m5yV8Cp9AbneSgbYU8HXlcIjnl7//+ddvC5gP/UG8KOBv/kDBc/aFp9f/J2mPD3E7wwy
- ifHw==
+ d=1e100.net; s=20230601; t=1741381445; x=1741986245;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=s7lIJgOA1tjiMK/XknTysFy21ttJ28wSLFCbPOi8VqE=;
+ b=c33tWt1WsdcZt6fjKeMkmJuFAcAiQJdSe1eSB0rLEx4yV6BBletRlywUswBa96QWRn
+ Up+yEIRJDeZjUgOwqmrE44YiNb4ePyYRI97pvis/Ktruux8p848mqHzc1uujCZAk1rft
+ KeeGwo5DzziF+2KkQd9PwPcKKmisz0ghOI3RQqWOby8w7hMT2PFiW6reHaGbjbtFK3iJ
+ HzjEENEF/xD7bY5sDGnfWTkte6/w1i6J4JjmVyvLmdkJXxq6bUwqgCNt8Q2Amh36kPbD
+ NKQKT6a0PaqxKBcWuPO2yyux+NSq5vRV4Q67f9UjVql8UyI51oXJZ+lEmfgjqDy1LHAk
+ EE5w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXrVG8KDYyGdGKhqCWopZbbdI9mpW+rugB03a9IxkEH2btP0PFs8f4O0TZNfofLNfLcYkizUVJgvA==@nongnu.org
-X-Gm-Message-State: AOJu0YwAAsadHmC8sl2txGqQeOhRSChre7dRWDPYp/mtURthULxgDyyk
- eoeM0/XG73qJ3oGZy6KbPpJ8546/Kuw2DMp/QJx8UN+E+loAWxXWVM4eTHka8zye4lAHRmDlZsH
- l
-X-Gm-Gg: ASbGncuZTIlrSfRPz62J4VMtxJvEemueqTJdWx12VGEa4DilewLBqzU9LqoqL5SEKHu
- 1T/4BphXmXQ7lNKDfBRMpTU5OER0XjFpmZCO2UTmFiVbIgCJiFcS/tMVt14xCbYavoKmMjOa0Gr
- YWZuFlcYMEQYgZlkLnJdYt847aicO6hkQ7IzUxHpIaDOliDLxAd9PgCoxM2rPugl3Y3obeaWTb9
- ATuYB5K3G82wuaugTW8nJIUt09MnwWLFVhVOacfypdS0URXSeZKMmee0Ce+CQaJE/hXmnkDcXnF
- ez7PCU8O6oNZVjgNcNDkI+B1r5l6DHqnb+56mp3MCU9R5VC15LIzbVfQcsdeoJIJaBFkzzVk
-X-Received: by 2002:a17:90b:2d83:b0:2ff:64a0:4a58 with SMTP id
- 98e67ed59e1d1-2ff7cf14552mr6416174a91.22.1741380028710; 
- Fri, 07 Mar 2025 12:40:28 -0800 (PST)
-Received: from hsinchu16.internal.sifive.com ([210.176.154.34])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2ff5aa3d3ccsm3270900a91.0.2025.03.07.12.40.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Mar 2025 12:40:28 -0800 (PST)
-From: Jason Chien <jason.chien@sifive.com>
-To: qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-arm@nongnu.org (open list:MCIMX7D SABRE / i...),
- Jason Chien <jason.chien@sifive.com>
-Subject: [PATCH 3/4] hw/pci-host/designware: Implement
- PCIIOMMUOps.set_downstream_mr()
-Date: Sat,  8 Mar 2025 04:39:36 +0800
-Message-ID: <20250307203952.13871-4-jason.chien@sifive.com>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20250307203952.13871-1-jason.chien@sifive.com>
-References: <20250307203952.13871-1-jason.chien@sifive.com>
+ AJvYcCUepSKUf8k47QDfX13z41wjd/NNRwGGiR5N48kV+pzmV/KdrsKVhHB3Y4VDvZhpsmT52e2nKo4l6A==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2HWJAbZaEEUJdz5qnW37rJ1onqhJ6tc5HvM8GCLcRH88t0JB7
+ b8X0B9tfopPGUQ5QOZBFKVAdzyX4Lj6UuBOq0gzvedK3zlKDFliPIroSTQdWffg=
+X-Gm-Gg: ASbGncu/C8LtFnuJAqc+q1IQIA9AIQsDRmP9ToX5ZVMrBAvSf4Ieaml+462HAy5cKFL
+ U1ajLKOW+aTSBD+G7kvilYe5k5cwLlXzxM5FQ1IMrBibhwhG+GOWVadnZ6buSKbRdfoBjoD2+GV
+ UqeeAsLjOAM3X9y2DtvepEYaHEFnhhC3H+99zzDGO7toM9kGGJJAzh2EqWRyHzS/aS+I/qv1A8A
+ jyi6FapCuwln0mVA1KIe8j5pvKB5EuyC7vJCBLOuYJ/HgIg+R98TlV1s1dKz4+FgWX7B10w0YTa
+ M+985medDoIgma82HhR0uvTGqzm+T+SJszPTaYCVPw3zhskf6orFeegqYM1lxGvXEfpn8dQPTGu
+ WC0uRJrnS4hhH
+X-Received: by 2002:a5d:47c8:0:b0:391:2889:4ea4 with SMTP id
+ ffacd0b85a97d-39132d06142mr3560982f8f.9.1741381445333; 
+ Fri, 07 Mar 2025 13:04:05 -0800 (PST)
+Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3912c01cd62sm6359734f8f.46.2025.03.07.13.04.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Mar 2025 13:04:04 -0800 (PST)
+Message-ID: <4eab7108-4e57-42df-9141-b213327395af@linaro.org>
+Date: Fri, 7 Mar 2025 22:04:03 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=jason.chien@sifive.com; helo=mail-pj1-x1033.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 18/20] tests/acpi: virt: update HEST and DSDT tables
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Gavin Shan <gshan@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, linux-kernel@vger.kernel.org
+References: <cover.1741374594.git.mchehab+huawei@kernel.org>
+ <c8f4dcf726b8813f00c917062184ad3348edd647.1741374594.git.mchehab+huawei@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <c8f4dcf726b8813f00c917062184ad3348edd647.1741374594.git.mchehab+huawei@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,94 +141,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KiyR/zn3uoO2
+X-TUID: psZijo+IdFVx
 
-The original DesignWare PCIe host implementation could not connect with
-an IOMMU, as both attempted to register PCIIOMMUOps.
+On 7/3/25 20:14, Mauro Carvalho Chehab wrote:
+> @@ -1,39 +1,39 @@
+>   /*
+>    * Intel ACPI Component Architecture
+>    * AML/ASL+ Disassembler version 20240322 (64-bit version)
+>    * Copyright (c) 2000 - 2023 Intel Corporation
+>    *
+> - * Disassembly of tests/data/acpi/aarch64/virt/HEST
+> + * Disassembly of /tmp/aml-DMPE22
 
-This commit resolves the conflict by hooking PCIIOMMUOps.set_downstream_mr()
-through designware_pcie_host_set_mr(), allowing the IOMMU to designate the
-PCIe host's downstream memory region via pci_setup_iommu_downstream_mr()
-without competing for PCIIOMMUOps.
+The other path is more meaningful IMHO.
 
-Signed-off-by: Jason Chien <jason.chien@sifive.com>
----
- hw/pci-host/designware.c         | 18 +++++++++++++++---
- include/hw/pci-host/designware.h |  2 ++
- 2 files changed, 17 insertions(+), 3 deletions(-)
-
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index c07740bfaa..fafbf90259 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -404,7 +404,6 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
- {
-     DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(dev);
-     DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
--    MemoryRegion *host_mem = get_system_memory();
-     MemoryRegion *address_space = &host->pci.memory;
-     PCIBridge *br = PCI_BRIDGE(dev);
-     DesignwarePCIEViewport *viewport;
-@@ -445,7 +444,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
-         viewport->cr[0]   = DESIGNWARE_PCIE_ATU_TYPE_MEM;
- 
-         source      = &host->pci.address_space_root;
--        destination = host_mem;
-+        destination = &host->bridge_mr;
-         direction   = "Inbound";
- 
-         /*
-@@ -470,7 +469,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
- 
-         destination = &host->pci.memory;
-         direction   = "Outbound";
--        source      = host_mem;
-+        source      = get_system_memory();
- 
-         /*
-          * Configure MemoryRegion implementing CPU -> PCI memory
-@@ -675,8 +674,16 @@ static AddressSpace *designware_pcie_host_set_iommu(PCIBus *bus, void *opaque,
-     return &s->pci.address_space;
- }
- 
-+static void designware_pcie_host_set_mr(void *opaque, MemoryRegion *mr)
-+{
-+    DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(opaque);
-+
-+    memory_region_add_subregion_overlap(&s->bridge_mr, 0, mr, INT32_MAX);
-+}
-+
- static const PCIIOMMUOps designware_iommu_ops = {
-     .get_address_space = designware_pcie_host_set_iommu,
-+    .set_downstream_mr = designware_pcie_host_set_mr,
- };
- 
- static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-@@ -713,6 +720,11 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-                                      TYPE_DESIGNWARE_PCIE_ROOT_BUS);
-     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
- 
-+    memory_region_init(&s->bridge_mr, OBJECT(s),
-+                       "pcie-bus-bridge-memory", UINT64_MAX);
-+    memory_region_add_subregion(&s->bridge_mr, 0x0, get_system_memory());
-+    address_space_init(&s->bridge_as, &s->bridge_mr, "pcie-bus-bridge-space");
-+
-     memory_region_init(&s->pci.address_space_root,
-                        OBJECT(s),
-                        "pcie-bus-address-space-root",
-diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
-index a35a3bd06c..30f1598dbe 100644
---- a/include/hw/pci-host/designware.h
-+++ b/include/hw/pci-host/designware.h
-@@ -97,6 +97,8 @@ struct DesignwarePCIEHost {
-     } pci;
- 
-     MemoryRegion mmio;
-+    AddressSpace bridge_as;
-+    MemoryRegion bridge_mr;
- };
- 
- #endif /* DESIGNWARE_H */
--- 
-2.43.2
+>    *
+>    * ACPI Data Table [HEST]
+>    *
+>    * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+>    */
 

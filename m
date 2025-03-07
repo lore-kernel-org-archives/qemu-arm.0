@@ -1,76 +1,76 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2405391njm;
-        Fri, 7 Mar 2025 11:15:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUSGq1iVtxQ2owaUX4F66bba85+XScWjeWSVehRhIiosn7qvc3z8mKl3BYivS934dSewkFzJm9HsOcEzg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHcyfroste3GN8wbo9rUliZYm7fGPt1lILMIc3q37ibmUhaKeaosFAQ0VZMdeTvDAi2Pt5z
-X-Received: by 2002:a05:6122:1809:b0:520:60c2:3f1 with SMTP id 71dfb90a1353d-523e3fd2c81mr3649366e0c.0.1741374956706;
-        Fri, 07 Mar 2025 11:15:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741374956; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2405520njm;
+        Fri, 7 Mar 2025 11:16:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXhRSRwynZL9VsNJZlaaR1Q6t/lwTC95diej3jD4TTucVJOegCrTt5GDTRSGh9ac31FCnWkPlxbYvzqgA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE8KpHA1wrR0/pqdrC/2KU7tPIUZJvAclEqNUHJJ800ntA5f96xAjAt/wmzmRyL0Ke31BE9
+X-Received: by 2002:a05:6122:8297:b0:520:42d3:91d2 with SMTP id 71dfb90a1353d-523e4031333mr3421935e0c.1.1741374970829;
+        Fri, 07 Mar 2025 11:16:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741374970; cv=none;
         d=google.com; s=arc-20240605;
-        b=VbPorBq8WBHm0dTDwAoHacs38MRZPfExuKs0HRA/0EhZkYhuUA4oKVGdBUdLC8mJgY
-         JnA14dTOYFVYX8gxK9mPIICSCMP0QvmhyJF4EpOvRzxGqf9OODjpXCoiE2TR83vaEH+l
-         Mju3R966mjknR8NKN/8OIW4rnNTy30Onij2a1QXB66I+7olna3+qeywoGXpGlR2VjkCc
-         FgrB0M4DszqBmCej1lAiubBxfI5LvTdjl6gYmZRwa3PC9mQIml3ZkNOK0/U3naWKIpHl
-         GEHsFC+0vRS7WsfCq+qxcIhJs0HJmUX+/4FshXQyuQRm2pPq9BPm3Scn+Pfkxo1fAIsP
-         OurQ==
+        b=QZHS+Rj9vku4vCD5sCp9wRCPgnfP54osgsHVMqEeTGrfu1uFL1qdth30UCn0mZIaE4
+         Bq1TLdu23hkLSDyijce3mkEnhyUl8R3LmNOahaYBoz+8TmQTO9xsNuhyOCnldEg9KmzP
+         UaN2DBagk2MdgPviH0zg8NybfoaY+czUPylJyDkC7im2rQ6eEYXaVCtDo1eKIOxpc9Jb
+         egOPM4p8LlJMoFhM2m1FBj23EAvum9/5znZvN1hRSUeAVY9fluhGrcqICcOVeBTp9Vbz
+         fpxqkhveJmLV0e9t3ZUsySd1YIrblOYrSpmYKf8FbU3NBXlYd0mUJ2sxSr/hkrRdFKZo
+         ZG3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Zex/InjMrVAnBUbETJRbgy1Kg/J1EmMC/hRlRjwUdTw=;
+        bh=On4l8+ephhyxnF5Sg2hS28mxdMItPRQFA8cbtmg/w4E=;
         fh=G/iztjpJmuf62QnY8qQLa8MWWC5y4XWz0BPBBAr0A/k=;
-        b=Gs7ew3QuTPA4RqOvXujtOo4tk7OnR8yskbl/F4HDWiv/uDx1wfEGwI1De5VNi19um4
-         3PBg3/O4d4+v/TtoMPS8elOWRkmvMzEZ6GmS3uj19c3Puev6z8DqMhkr0UWdg394MC4G
-         eoIw+IBfGatjSAifnS277PgkNHE1GlGniEVIIW+HL7dKeOHbaeziiVPkwQSCxLK37fhQ
-         mBGpZHbY9BIUP3rg/f9RlLvtQPtUgqk3V6HP2druoZeUVq0ozK3T3DR4ekQdJTe/1rVk
-         HR0VZHqvuMZ8Mz5ONwyJGRDl3cVRme0w/EvSzHSkyPSRLl1d91E/dIO89OKMM6hmCTos
-         7pxw==;
+        b=AbFHBVNjNEP7e6+s4o6JneGtjP0W3IruL7qjtiJdVp1UI/9s3tgLhv3zISmxrOo2jN
+         n57PApfqzsiOo8TyacB7xyBJ5U6zD+G8cYHS5d3c7v22HHDMmHY8Y9jUhpMPgDAnsjoL
+         RKAXH/Oo8fQFGwnSeXswXo+P6lrUNEJ939rQryqsd1cROkpj+O94GByVfhzysDrIpAFz
+         Zh9tkAJ0pTEZ0TJx83BF+v0H7i/PtpthNElhbiHDk8404TAvad6Uzgtgcm17kTv2q9R0
+         jVCmDSWeC+rVEFS13Y20bh0h6Ju3JwAkk3scDyv+G5qkunALHubTscUvv1wDeOueK8Ow
+         lHtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J9PQo93w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="S5M/BiAs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-86d33cd61aesi948968241.165.2025.03.07.11.15.56
+        by mx.google.com with ESMTPS id 71dfb90a1353d-523d8a85298si910326e0c.16.2025.03.07.11.16.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Mar 2025 11:15:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Mar 2025 11:16:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J9PQo93w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="S5M/BiAs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tqdAg-0006WX-Qq; Fri, 07 Mar 2025 14:15:49 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tqdAd-0006DV-W5; Fri, 07 Mar 2025 14:15:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tqdA6-0004vF-AD; Fri, 07 Mar 2025 14:15:10 -0500
+ id 1tqdA4-0004tC-7x; Fri, 07 Mar 2025 14:15:09 -0500
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tqdA2-0007za-5p; Fri, 07 Mar 2025 14:15:09 -0500
+ id 1tqdA1-0007wz-78; Fri, 07 Mar 2025 14:15:07 -0500
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id AE7D2A451A2;
+ by nyc.source.kernel.org (Postfix) with ESMTP id 70384A45182;
  Fri,  7 Mar 2025 19:09:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9754C4CEF5;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C754AC4CEF0;
  Fri,  7 Mar 2025 19:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1741374897;
- bh=Czz8Tt4JQ7OG2qz83DhQ/rDSfMDYdFVFtyoa2IaQ3O0=;
+ bh=AJ4q+ksNB/S+00rtzYs71awF+2iIilrq6aaRwUt1Pzg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=J9PQo93wTWocCkyWmbXCH4q4V9LjblhpJSUkKYNLeljPsy/sEVhzmgAtEHKVsxg52
- TtwDuUzmdqrJ+reiFHBKLPA7nDz0iLBa4qmK1EEEeZy2ErjZaVNw+JwFg2nu6Qq3ca
- u2CkON2612i1l7rTM0+zrq3DdY2nKV1l5po43FUef6zA2kVc4SapGLRJSfZBgtT12H
- zUh2X1irMwffvPHXuElCxupB7cn+ORVcl5GI7AfY/ZwMr8iZPsztsrNgH/ATgyTNJU
- ZvxrAoLnn9y6jNGOm0FvFWPykfAPE+KcuLNxzBSHImhCqP/909fnWadDOxpjvULnSv
- 0jOapOkgV4wVw==
+ b=S5M/BiAsKnzREVeCWrCdJDADY7iq1bCovnPnakVUuBQguNKzCDkcAwvwfzjUhC0S8
+ xGW90W2lvOjR0XFO4YhlTKB00Pe2QG4BgD/L0JOOe7S+1Z8pMBHWpLvC2C3b7x7Xkn
+ R6jdkef0x0rmDUwn/xLrmyp1a76hlmbnXt4ZXTLAs0kL41q5d5KiSoqS6IXjTAbm3B
+ pV7bBvwcg2AUGkU99UMbX1UMSonzfx++ZUFRvJAPitO2m9igNbG+115JeSMLXNdfh8
+ 128zFpOPown4igGulbo9z6IpokKv3JevS1l9z3GsQN7bo1MuiW+VRl2qKTJBA9TPll
+ 6eGWOgU8MV+Sg==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1tqd9s-0000000BQnO-0IbL; Fri, 07 Mar 2025 20:14:56 +0100
+ id 1tqd9r-0000000BQmJ-2qyw; Fri, 07 Mar 2025 20:14:55 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
@@ -79,10 +79,10 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  "Gavin Shan" <gshan@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ani Sinha <anisinha@redhat.com>, linux-kernel@vger.kernel.org
-Subject: [PATCH v8 17/20] acpi/generic_event_device.c: enable use_hest_addr
- for QEMU 10.x
-Date: Fri,  7 Mar 2025 20:14:46 +0100
-Message-ID: <d7b493784b36bf4fd856a217ae596b59ed522dda.1741374594.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v8 02/20] tests/qtest/bios-tables-test: extend to also check
+ HEST table
+Date: Fri,  7 Mar 2025 20:14:31 +0100
+Message-ID: <48dfa6e0c11faae34e63d6cbeb834fd9b6e9b095.1741374594.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <cover.1741374594.git.mchehab+huawei@kernel.org>
 References: <cover.1741374594.git.mchehab+huawei@kernel.org>
@@ -98,44 +98,44 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pjRYoIKPchYA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kjx1s5P+GPep
 
-Now that we have everything in place, enable using HEST GPA
-instead of etc/hardware_errors GPA.
+Currently, aarch64 can generate a HEST table when loaded with
+-machine ras=on. Add support for it.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/generic_event_device.c | 2 +-
+ tests/qtest/bios-tables-test.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index f029753ab709..9fe70b74bd42 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -332,7 +332,7 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
- static const Property acpi_ged_properties[] = {
-     DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
-     DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState,
--                     ghes_state.use_hest_addr, false),
-+                     ghes_state.use_hest_addr, true),
- };
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 0a333ec43536..8d41601cc9e9 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2122,7 +2122,7 @@ static void test_acpi_aarch64_virt_tcg(void)
  
- static const VMStateDescription vmstate_memhp_state = {
+     data.smbios_cpu_max_speed = 2900;
+     data.smbios_cpu_curr_speed = 2700;
+-    test_acpi_one("-cpu cortex-a57 "
++    test_acpi_one("-cpu cortex-a57 -machine ras=on "
+                   "-smbios type=4,max-speed=2900,current-speed=2700", &data);
+     free_test_data(&data);
+ }
 -- 
 2.48.1
 

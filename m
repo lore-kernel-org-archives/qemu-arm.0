@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1939614njm;
-        Thu, 6 Mar 2025 20:05:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUC8NWm8d9rtEGiRgNyT/ah9k2LqnaLPjgy7R9+JeV36gqY5apF5w8M7ZyjLajYlQYVNwf3I9/N7jF+8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFOA6/PxUHzFYq4oHZELeGlVgUJU6/jR9uMn5FZSqN6y7Gxt6gDuqpPhSV++4R1ggWLKZ4m
-X-Received: by 2002:a05:620a:63c4:b0:7c0:a8a5:81b6 with SMTP id af79cd13be357-7c4e61b7094mr250753585a.39.1741320323010;
-        Thu, 06 Mar 2025 20:05:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741320322; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1939749njm;
+        Thu, 6 Mar 2025 20:05:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWdXJ3zhWCtOWZDZ6kty8bnoLnPPtQQk2GXkYzq3kIr9r2HZQ3+Yw5Wkm2VbqWuwmkVmMTRGbGlssJ9hA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHG0LZ3Mk9lYM9rQTQHsysAyFPzpAKfIAEPntDG/xw1t4zgPPrthm+MCSyMlmSsUZZ1jj39
+X-Received: by 2002:a05:620a:269e:b0:7c0:c13d:c61b with SMTP id af79cd13be357-7c4e61ceb64mr331971685a.40.1741320347283;
+        Thu, 06 Mar 2025 20:05:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741320347; cv=none;
         d=google.com; s=arc-20240605;
-        b=Dx3BQczwgOtNePtr3c/MUvGRFVEAV2ToK8z8SZlyYSQNVjwMCOdXuguvLnMieOAG/u
-         m5fY/yN66N60sFTIez9tZ2frfl+Rd581O+8wwazFv4Ag3UEuo3DXS3NKBKkiN0QXttkJ
-         lWM3yViufaYKG/6PwX1BFiT2m4i3mVct3uAdLooidiW/l5X5iXD3GIQaefcrg7AXtO2T
-         ufWqgOki3EkUr8Om0ffilBAapKP7WcjKm1kGykO1oGWBfw0qYAf581otKOC0gpP+b2EZ
-         ydkQgZZJd7nQC0Mp2swr3v3KiCZrnL/uQUsXKznBwVcHPbztxcQtAffpRMOmtae+cvYR
-         ju7Q==
+        b=eiRmAhZWsMYcBC5Vnjg/7bBkrKYuM/46JDuhhslCuHqm1l9EQx/7ai80+tJJg4cHt3
+         CSGOIlmuNXbEmXc/neKyExP+6NwB2UhUxSPdbq6o0HoMso5p70qSwhCkYboJMhvwbZ3K
+         6DlI2OaHDKWkOkIhGPvIxSNEOkAWkmEbtivCL/bIKVBD8vlRCPcOAvL168hG61X4Dok3
+         ckuh+GwkIjksE4Pl1Y9Z6n9orFuR+156XIsUBa2ZRk8IbVPXz+SzDyWUR889WK1sYe6O
+         qnERqROCNxJ+JWSa4ktLWn1JtweoJOzWB34TGOP32Tw9E+Gl/x/82p1fVcuIh20cANLI
+         t1ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=gfXJGQ403jYYSpAuAfyb1HoL254GgKQIpNdPyQjzLJ4=;
+        bh=lLlDHym8fPK4mwCzlWym6FqZhzaiNoxUAaLcbffIcLE=;
         fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
-        b=il8gcX6bmJjkiLIM0mhbsx1vsKh0NSO4Bi+eyZ66u7Kb+o8q8L4KanwqD5xdKA5nrS
-         Wa0g+hEvKYXQl4CERJgQENt3O/zVHJ1k1fL2slFy6bYsdVv1XBwyvNP+moUYElFPEdjy
-         1adbjdnXCXccuV14sybC8zknhSiVoUbSF6IYLuVLtj6uP5kI8UmKSXVMXsPNOnJr/qGu
-         Y6NXmpg9nHrs48BC9kvdlzI+GUdGE7NBWvlfKPS6VbBXwSMtni7qIcIl9ziP++9zuxhX
-         8TBDnS6a9FbKoFwhI/amTt8EhoVfWtyFMTav/rae3zzJbDeRPoOyuefHSMGiKfPS0ueJ
-         FmPw==;
+        b=FNGmFbJNdB0jhhxpkB7dWMnHTrMTjGggxSstbciRwGaL+W0JRBLuD9fNa8JuN3uIF6
+         bbTJfEg7T55GN8+vkLSOkDFYjTZ6VPBm75PZQds6xQ5+w6Q655317SuEro30ucs18BDr
+         jSWNSi/ecnbkWS9lOC81JA1h3mI9Gl/m5gj3K7DP5lX4MPjFt4UbjYcJqXIthFCe9Wvt
+         gUewDir4KFCl8/XGvr8Sigh/nWYUfTCpTnmTI3rL7aokYJDYbjfiAuCKaW1FczThpKMW
+         a0ZeH25McK3ajudnn2J8gRmCBTpYiZfQZJsGnsqGps59VpxskDutWk9YWZuHq3JCIAJT
+         XUJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e54ff35fsi277193585a.318.2025.03.06.20.05.22
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e5566ff4si257415785a.600.2025.03.06.20.05.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 20:05:22 -0800 (PST)
+        Thu, 06 Mar 2025 20:05:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tqOuz-0004KN-Mh; Thu, 06 Mar 2025 23:02:37 -0500
+	id 1tqOuk-0003Ky-GR; Thu, 06 Mar 2025 23:02:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOuQ-0002y9-DS; Thu, 06 Mar 2025 23:02:03 -0500
+ id 1tqOuL-0002Vu-VW; Thu, 06 Mar 2025 23:01:58 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOuO-00056A-OQ; Thu, 06 Mar 2025 23:02:02 -0500
+ id 1tqOuJ-00056A-Gq; Thu, 06 Mar 2025 23:01:56 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 7 Mar
- 2025 11:59:55 +0800
+ 2025 11:59:54 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 7 Mar 2025 11:59:55 +0800
+ Transport; Fri, 7 Mar 2025 11:59:54 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -65,10 +65,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v6 26/29] tests/functional/aspeed: Update temperature hwmon
- path
-Date: Fri, 7 Mar 2025 11:59:35 +0800
-Message-ID: <20250307035945.3698802-27-jamin_lin@aspeedtech.com>
+Subject: [PATCH v6 24/29] hw/arm/aspeed_ast27x0: Sort the memmap table by
+ mapping address
+Date: Fri, 7 Mar 2025 11:59:33 +0800
+Message-ID: <20250307035945.3698802-25-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
 References: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
@@ -99,35 +99,97 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J9kmoATn6ZY0
+X-TUID: fu53VmCR6WaI
 
-Modified the temperature hwmon path to use a wildcard to handle different SDK
-versions: "cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input".
+To improve readability, sort the memmap table by mapping address
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/test_aarch64_aspeed.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/aspeed_ast27x0.c | 54 ++++++++++++++++++++---------------------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
-index e1ad7fd470..07b0c7c1fd 100755
---- a/tests/functional/test_aarch64_aspeed.py
-+++ b/tests/functional/test_aarch64_aspeed.py
-@@ -83,11 +83,11 @@ def start_ast2700_test(self, name):
-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
-             'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
-         exec_command_and_wait_for_pattern(self,
--            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
-+            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
-         self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-                     property='temperature', value=18000)
-         exec_command_and_wait_for_pattern(self,
--            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
-+            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 7439512b83..3330484bf5 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -24,16 +24,40 @@
+ #include "qemu/log.h"
  
-     def test_aarch64_ast2700_evb_sdk_v09_03(self):
-         self.set_machine('ast2700-evb')
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+-    [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+     [ASPEED_DEV_SRAM]      =  0x10000000,
++    [ASPEED_DEV_HACE]      =  0x12070000,
++    [ASPEED_DEV_EMMC]      =  0x12090000,
++    [ASPEED_DEV_INTC]      =  0x12100000,
++    [ASPEED_GIC_DIST]      =  0x12200000,
++    [ASPEED_GIC_REDIST]    =  0x12280000,
+     [ASPEED_DEV_SDMC]      =  0x12C00000,
+     [ASPEED_DEV_SCU]       =  0x12C02000,
++    [ASPEED_DEV_RTC]       =  0x12C0F000,
++    [ASPEED_DEV_TIMER1]    =  0x12C10000,
++    [ASPEED_DEV_SLI]       =  0x12C17000,
++    [ASPEED_DEV_UART4]     =  0X12C1A000,
++    [ASPEED_DEV_FMC]       =  0x14000000,
++    [ASPEED_DEV_SPI0]      =  0x14010000,
++    [ASPEED_DEV_SPI1]      =  0x14020000,
++    [ASPEED_DEV_SPI2]      =  0x14030000,
++    [ASPEED_DEV_MII1]      =  0x14040000,
++    [ASPEED_DEV_MII2]      =  0x14040008,
++    [ASPEED_DEV_MII3]      =  0x14040010,
++    [ASPEED_DEV_ETH1]      =  0x14050000,
++    [ASPEED_DEV_ETH2]      =  0x14060000,
++    [ASPEED_DEV_ETH3]      =  0x14070000,
++    [ASPEED_DEV_SDHCI]     =  0x14080000,
++    [ASPEED_DEV_ADC]       =  0x14C00000,
+     [ASPEED_DEV_SCUIO]     =  0x14C02000,
++    [ASPEED_DEV_GPIO]      =  0x14C0B000,
++    [ASPEED_DEV_I2C]       =  0x14C0F000,
++    [ASPEED_DEV_INTCIO]    =  0x14C18000,
++    [ASPEED_DEV_SLIIO]     =  0x14C1E000,
++    [ASPEED_DEV_VUART]     =  0X14C30000,
+     [ASPEED_DEV_UART0]     =  0X14C33000,
+     [ASPEED_DEV_UART1]     =  0X14C33100,
+     [ASPEED_DEV_UART2]     =  0X14C33200,
+     [ASPEED_DEV_UART3]     =  0X14C33300,
+-    [ASPEED_DEV_UART4]     =  0X12C1A000,
+     [ASPEED_DEV_UART5]     =  0X14C33400,
+     [ASPEED_DEV_UART6]     =  0X14C33500,
+     [ASPEED_DEV_UART7]     =  0X14C33600,
+@@ -43,32 +67,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_UART11]    =  0X14C33A00,
+     [ASPEED_DEV_UART12]    =  0X14C33B00,
+     [ASPEED_DEV_WDT]       =  0x14C37000,
+-    [ASPEED_DEV_VUART]     =  0X14C30000,
+-    [ASPEED_DEV_FMC]       =  0x14000000,
+-    [ASPEED_DEV_SPI0]      =  0x14010000,
+-    [ASPEED_DEV_SPI1]      =  0x14020000,
+-    [ASPEED_DEV_SPI2]      =  0x14030000,
++    [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+     [ASPEED_DEV_SDRAM]     =  0x400000000,
+-    [ASPEED_DEV_MII1]      =  0x14040000,
+-    [ASPEED_DEV_MII2]      =  0x14040008,
+-    [ASPEED_DEV_MII3]      =  0x14040010,
+-    [ASPEED_DEV_ETH1]      =  0x14050000,
+-    [ASPEED_DEV_ETH2]      =  0x14060000,
+-    [ASPEED_DEV_ETH3]      =  0x14070000,
+-    [ASPEED_DEV_EMMC]      =  0x12090000,
+-    [ASPEED_DEV_INTC]      =  0x12100000,
+-    [ASPEED_DEV_INTCIO]    =  0x14C18000,
+-    [ASPEED_DEV_SLI]       =  0x12C17000,
+-    [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+-    [ASPEED_GIC_DIST]      =  0x12200000,
+-    [ASPEED_GIC_REDIST]    =  0x12280000,
+-    [ASPEED_DEV_ADC]       =  0x14C00000,
+-    [ASPEED_DEV_I2C]       =  0x14C0F000,
+-    [ASPEED_DEV_GPIO]      =  0x14C0B000,
+-    [ASPEED_DEV_RTC]       =  0x12C0F000,
+-    [ASPEED_DEV_SDHCI]     =  0x14080000,
+-    [ASPEED_DEV_TIMER1]    =  0x12C10000,
+-    [ASPEED_DEV_HACE]      =  0x12070000,
+ };
+ 
+ #define AST2700_MAX_IRQ 256
 -- 
 2.43.0
 

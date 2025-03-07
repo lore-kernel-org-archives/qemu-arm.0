@@ -1,1426 +1,558 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2406940njm;
-        Fri, 7 Mar 2025 11:18:26 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVNpvbPw9yzqOQLV2037DwCcr5IVAbrZ1GQCInlf7PM3QesrGNnxLce853dkixyP3LEaG7IAIQlXW96HA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuK9BVwK9qW01At0LFhmZjs03zvxzM4937mNcCnQtPMktrv+OCkTeHEgE74QH8LQ7v1eo8
-X-Received: by 2002:a17:902:d488:b0:21f:45d:21fb with SMTP id d9443c01a7336-22428881ee4mr69667235ad.3.1741375106733;
-        Fri, 07 Mar 2025 11:18:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1741375106; cv=pass;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2409301njm;
+        Fri, 7 Mar 2025 11:22:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXarhFSvd6yexszGAYm34VDDI9//07JSWi/bl6FEhrKlwQGdBXhIKBq7q9ST6pDah3lWl4pm3GjBj/W6Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHeD8arPh42WRzwPzx2u5JcgHcOHZLkNNlgxVSGkG869MJnKFBjqD1DusLAyfwsEuDVgeOk
+X-Received: by 2002:ac8:5dd0:0:b0:472:82b:72ae with SMTP id d75a77b69052e-47610980dddmr54752751cf.22.1741375359382;
+        Fri, 07 Mar 2025 11:22:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741375359; cv=none;
         d=google.com; s=arc-20240605;
-        b=UDP2DBgnaw02wn4wsQ2yajCZjSFo1qvJ1QL1vPCgJtdG0/Dy3gw7QX+yt/Urt0Rxmu
-         9VU/KVhHxjrtDM9A39ahfWU/DX30yo+c1ViBPuyQuYpZGOIYAix2M8CzWmzG8hMoBMFf
-         FNpv+siUoWLgNTlIjsnxWf1VQWvHzCz9Cyo2MSvTL92oqvoj6tPZ6N1qU/a/em7Nm1Rs
-         tVBxUZSz6lmulWT++Fijv8qnjeibLuJroq7/4OSqLSVil99r+5JTwDLrCEgi9uQxRz6l
-         vXq+Oa0Wt2F5TKwvbYa9uUckaoRrykoaa4tjlMQ0bOHM6voj3GrJwTYOHn8xfgWiClyo
-         ou1Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=V/sq1IwRnmPeMgeh7ZVoYDZbuczcK/B6CfAMJFz/wxw=;
-        fh=2q5AUG1yotVkObSn+vfMXZRfRlr9kDw78hqV0S6PZSM=;
-        b=I/dS7umRXEDmRlnpQgTGrJoOv6a9sXjxj9UnmGcvKTA1t0EVSo+jBSs/xhYLTOkOig
-         j6xoOKr9vRSmzYklbmWK+ZgBtJ0mBjeZHTeYkioZyyQTnL5DxedECLqDwT8bJL6iJCj7
-         c9sFR7+KxbjdYusMFhmW5mhq4lU2mm8+hvSvaPnj7AUko1X4ptKBf0vusqfuT2JRhwPV
-         gyP0KIBmH9ainaAWd2HMGPnLGUF49xvxnXXIbYsMvOajAh7+wPgaMXwSJ50FxFVoVvrW
-         kxQ/kdCDaXX+BDIMhdVm+TC2gSYLyO4SymeM5pbGSTTBnylrh3eKbVXyn7Sq/7YWdmW6
-         P4kA==;
+        b=ZqLDLoEQmyqChyoKNlyuvzFfdvYNWK38JklVvg6GeGSgyzX5tRoJ8vg7PavFLFcbaC
+         bLjaNKDGVZGRQafUFoRkXWGj3Pv4YeO2712hrNR06rpZ+Aps2miyOhr6Lcu+zZKoxb+B
+         vHFmogrU95fEbBvss2gkUQVvI9vyixUChWmqKIGnFzccyMq6o4UXmF6nyOPQOY2WhyRf
+         txiQ3B7ZtdpJq4mBt+XTOHadwtoqs8PKpFuAj/WENeQ42BailESIbeAXL90sU+8dtBKe
+         PW14rKJ058nP0h505906RSaGRayfWhhHv2dsEUh6znvC4Q5n7uqmAmrMcBo5Oe8ZtLmt
+         s7jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=e0TGZwPpXGpFgUmI8cp6ZfGOfKyOFJFqC8p7fOsEvOY=;
+        fh=n+GAubQEywzpaCzxlP6PpEw7FsaGWAAdN0M38T235Kc=;
+        b=AJgX3p/rgjCzf7Lf3vx4iwEQ5Kccly42pxWzhLRfogUYvrfgRbg8deLfHGmVeGT2wV
+         0g6Hw/RAIWHfD/YaDsbueK5Psji0LkgfjZ2o0Hy3sPFgsLZBCNuezNbdlZY4mxfMMbYe
+         2gCednKXPPjdifevaPgGfx/Fv7f/uhsNfONFyGVA2wyudKYJyCbOJkxLtempmSpL07V6
+         HikXoS/nSTB8vmehs8qmS+3eIhp8rJovfKK0Sc9UqVCQhN0m6Y+VZj1iavWwIU4zABKx
+         YjfVIOtCyyojvVaWCRF2TRIt/jM/PrQ7nQ9SXQQzA80rJlMrq7ENGALxrjqQUxfhoN5E
+         7FKQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=cVHia82C;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-af2812ca6cfsi6417358a12.655.2025.03.07.11.18.26
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NR8IEXV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4751db5aac3si37664331cf.609.2025.03.07.11.22.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Mar 2025 11:18:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Mar 2025 11:22:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=cVHia82C;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-551824-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id DA9457A8E24
-	for <alex.bennee@linaro.org>; Fri,  7 Mar 2025 19:17:24 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4392A25A2CB;
-	Fri,  7 Mar 2025 19:15:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="cVHia82C"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CEBA7252912
-	for <linux-kernel@vger.kernel.org>; Fri,  7 Mar 2025 19:14:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1741374898; cv=none; b=Lq86NG4jLYBlsUPP7Efjw+0EQt2kUFbdd0gRa9+V7sMgMvOTZchCFwrdzoevT9WWgvx3cTGh1jBOW85cd8ON5S55XpR3jKidaBQQxGN6FF9SaUBDHbOhBBc5+n+O/kBoNwCYO//6Q4JNAqR9AFryVb+fwSODncpw5YEqL0xTcWg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1741374898; c=relaxed/simple;
-	bh=b41oDGwQ1zfXHIe6VxH8Cod9MW2V4r7MWCMqNc66jzo=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=jSBoGDedp4Q5RPy+1WrFHUj+9s5SRzLoEdDvBmjUjlD8fQnjo6aJEMEqw2YXjv75yMWJrmMRNOD49XhUVzFYdYZmI4+s5boQvJEtupl8Mj90OOGcEXaiPn9oUDpnoC2vGZo+Zntoup2TgS1as9HKIWA3x+yVaY0t8K0M36oiK5Y=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=cVHia82C; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22AAAC19421;
-	Fri,  7 Mar 2025 19:14:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741374898;
-	bh=b41oDGwQ1zfXHIe6VxH8Cod9MW2V4r7MWCMqNc66jzo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cVHia82C3PZ6nqBrsV7tPr+/NORd2G8/CbhXDEI2Be88LI6CIQHiDZ/RlU793x+bW
-	 dJA3PTNhtIsMGXEQpHhludWsheGGK76jge/0t2IytnrN4fgq5tL1CsvCp3i/M46Oz5
-	 435jFh9q1yRAkBx57lSlNj81vlq6FmbugND6J7uCvhWRvMeAMSZhXXKq7CLYeyESlI
-	 qA8GFBZSVRZ/w9Anr8ZdYZLUC3TdmS3MUezIrsJQ1Eq/KI3Sb9cg2QsHXjjnB0n4sU
-	 xzmS031kr+l7z4VWyBNCBP4Zl0NcEOZNnJlpvXYwk2MX1/IgBfr+MVuYzJ//wAeAaM
-	 tgouqwiU1+3Fg==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98.1)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tqd9s-0000000BQna-0dUh;
-	Fri, 07 Mar 2025 20:14:56 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Gavin Shan" <gshan@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v8 20/20] scripts/ghes_inject: add a script to generate GHES error inject
-Date: Fri,  7 Mar 2025 20:14:49 +0100
-Message-ID: <3045b51edaf2d07eb0c513249fd1c621562ee3d9.1741374594.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <cover.1741374594.git.mchehab+huawei@kernel.org>
-References: <cover.1741374594.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NR8IEXV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tqdGv-0001j7-CX; Fri, 07 Mar 2025 14:22:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tqdDV-0003ET-NX; Fri, 07 Mar 2025 14:18:42 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tqdDS-0005Ii-Q8; Fri, 07 Mar 2025 14:18:41 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-abf4b376f2fso409800766b.3; 
+ Fri, 07 Mar 2025 11:18:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1741375116; x=1741979916; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=e0TGZwPpXGpFgUmI8cp6ZfGOfKyOFJFqC8p7fOsEvOY=;
+ b=NR8IEXV2KNIWMhsjmJ3KR5h43+cFTu+NevG56ZtK+inj1lgsMpkb10/wtQ/Ks0mbG2
+ 8NIAlh9ACsz17cDzUqw/8K5u65Zq3/h6LEsM7+U24/MUI5hwnZCnmGPxwTg49Z+AvA2v
+ XDntkEsc/ZFqx7bT8bEEtRE/sYX+nuG7gRLYP/FYNkvGnEOoXtEBXhP++l+uLADLajFd
+ ITMcgbtFW3PfF3Eow5CFsj4GnT2Ag/9Js86U6hErXZZpy7rf6P3JRWtsoTL39mIy7+z3
+ V7mz6c06Dd/N7RCJ56hCLanAYnrab+ZCytxTQoA1ks2aZmB7T+7C8ottiJddK/iNhGzM
+ eCxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741375116; x=1741979916;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=e0TGZwPpXGpFgUmI8cp6ZfGOfKyOFJFqC8p7fOsEvOY=;
+ b=YtygURuEHWE/+gs7LHXTMty5P6Z4KAJYO1u2y9QCZGwtQKONBJgPXAthSQhAgwNcyN
+ 9cfOCZaoGb1L3nn+GitTTyCfS85hZtMD21KBY3yMu8k5NALgLXbHLhu3a+jty1VUbGGX
+ /C/AnzncgL3GAClgSI8nwsdSylNHM/efNTvNcILO+uXZtoYlX1lPSHzHS7VgvrbX6NVi
+ 1CBlkmNAfDXdYYPMfp494n8n9VfhRiR1iqVI395bIe1JrEOUiJ1KgzUICL5ujcrHxT3u
+ SShSL3S007VYYjSbceEhxTmTVCadt8ufjCeQ39M3TczZnIxWnpttDrfWVsy9okSbgmVT
+ F6bQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXwgksvAzNRuJZurYlUGy9Oo8SOQWEFJumasj0QbBCB1CKSuvhuaDNrS5LuCwY3vnSM3OWMQwOAlA==@nongnu.org
+X-Gm-Message-State: AOJu0YwdEK93I76Mh5LrWZE/q+WK21DzJMYWDap+8qr0UCgCLu8BPWCa
+ iIXc4kXIshaZ+EhK7tuAifjjtnZe059ZcoxfJPRXBSb6vKwvmNBGOKkmGw==
+X-Gm-Gg: ASbGnctrt3n8BbpH0epsJkEwChfUUBfV6bWbhjZ++YVDJOA2+BYZcGYMWV/R4xzve/X
+ CVm1YYOjLHsMoREwN/vTQrlFM07ARBhHLz229m5jGa5lvwS09GUfYERULYwqDc6fUvo9ZKbboDz
+ 5H7qI5PuI/S9rvgDSaTR0k0E7rsy3u7fOXH8GtpiCLAI4w2o8OSyYfmAe3nWntHetsMJywCxtZL
+ 8mgviqmzNQTluMgofiS5Ps5a3+l9l1Rj4lLnklPXwgK0o90fYKq1HsnpTKYS0l/2VUqg82IONZI
+ C83ys/vMLG1+GxH/19Ltc+TP2RT6DBFS/hMQPLIxCfTvZcYzEPn8T8YxeqIbuQ0382BFs8CCLTR
+ psthYgad6CfIvUGcEchWstgtQZuHgvfibiEdSY8hWA0PoD3IZMYcK
+X-Received: by 2002:a17:907:cb14:b0:ac2:269d:1248 with SMTP id
+ a640c23a62f3a-ac252732f67mr439872766b.4.1741375115545; 
+ Fri, 07 Mar 2025 11:18:35 -0800 (PST)
+Received: from ?IPv6:::1?
+ (dynamic-2a02-3100-25f3-2600-69d2-56f6-a5af-50a8.310.pool.telefonica.de.
+ [2a02:3100:25f3:2600:69d2:56f6:a5af:50a8])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ac2394826absm322016366b.55.2025.03.07.11.18.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Mar 2025 11:18:35 -0800 (PST)
+Date: Fri, 07 Mar 2025 19:18:34 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+CC: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
+In-Reply-To: <77E3F57E-95D0-4E2F-838E-5E0334651349@gmail.com>
+References: <20250223114708.1780-1-shentey@gmail.com>
+ <20250223114708.1780-19-shentey@gmail.com>
+ <77E3F57E-95D0-4E2F-838E-5E0334651349@gmail.com>
+Message-ID: <1FBD5091-2221-4815-85CB-D98BE4F6EA72@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: XTglVJlEXFig
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UICpoZLsuvhu
 
-Using the QMP GHESv2 API requires preparing a raw data array
-containing a CPER record.
 
-Add a helper script with subcommands to prepare such data.
 
-Currently, only ARM Processor error CPER record is supported, by
-using:
-	$ ghes_inject.py arm
+Am 4=2E M=C3=A4rz 2025 18:53:10 UTC schrieb Bernhard Beschow <shentey@gmai=
+l=2Ecom>:
+>
+>
+>Am 23=2E Februar 2025 11:47:08 UTC schrieb Bernhard Beschow <shentey@gmai=
+l=2Ecom>:
+>>The implementation just allows Linux to determine date and time=2E
+>>
+>>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>---
+>> MAINTAINERS                |   2 +
+>> hw/rtc/rs5c372=2Ec           | 236 ++++++++++++++++++++++++++++++++++++=
++
+>> tests/qtest/rs5c372-test=2Ec |  43 +++++++
+>> hw/rtc/Kconfig             |   5 +
+>> hw/rtc/meson=2Ebuild         |   1 +
+>> hw/rtc/trace-events        |   4 +
+>> tests/qtest/meson=2Ebuild    |   1 +
+>> 7 files changed, 292 insertions(+)
+>> create mode 100644 hw/rtc/rs5c372=2Ec
+>> create mode 100644 tests/qtest/rs5c372-test=2Ec
+>
+>Ping for just this patch=2E I'd like to have it merged for 10=2E0=2E
 
-which produces those warnings on Linux:
+Ping^2 -- just few days left before soft freeze=2E
 
-[  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-[  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  774.866583] {4}[Hardware Error]: event severity: recoverable
-[  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
-[  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
-[  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
-[  774.867189] {4}[Hardware Error]:   running state: 0x0
-[  774.867321] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-[  774.867511] {4}[Hardware Error]:   Error info structure 0:
-[  774.867679] {4}[Hardware Error]:   num errors: 2
-[  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
-[  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
-[  774.868124] {4}[Hardware Error]:     transaction type: Data Access
-[  774.868280] {4}[Hardware Error]:     cache error, operation type: Data write
-[  774.868465] {4}[Hardware Error]:     cache level: 2
-[  774.868592] {4}[Hardware Error]:     processor context not corrupted
-[  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
+AFAICS no open issues and I'd really like to have this RTC merged for 10=
+=2E0=2E What is holding it back?
 
-Such script allows customizing the error data, allowing to change
-all fields at the record. Please use:
+Best regards,
+Bernhard
 
-	$ ghes_inject.py arm -h
-
-For more details about its usage.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- MAINTAINERS                    |   3 +
- scripts/arm_processor_error.py | 476 ++++++++++++++++++++++
- scripts/ghes_inject.py         |  51 +++
- scripts/qmp_helper.py          | 703 +++++++++++++++++++++++++++++++++
- 4 files changed, 1233 insertions(+)
- create mode 100644 scripts/arm_processor_error.py
- create mode 100755 scripts/ghes_inject.py
- create mode 100755 scripts/qmp_helper.py
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 479664a4f6e8..d1d2b3fd5d44 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2097,6 +2097,9 @@ S: Maintained
- F: hw/arm/ghes_cper.c
- F: hw/acpi/ghes_cper_stub.c
- F: qapi/acpi-hest.json
-+F: scripts/ghes_inject.py
-+F: scripts/arm_processor_error.py
-+F: scripts/qmp_helper.py
- 
- ppc4xx
- L: qemu-ppc@nongnu.org
-diff --git a/scripts/arm_processor_error.py b/scripts/arm_processor_error.py
-new file mode 100644
-index 000000000000..1dd42e42a877
---- /dev/null
-+++ b/scripts/arm_processor_error.py
-@@ -0,0 +1,476 @@
-+#!/usr/bin/env python3
-+#
-+# pylint: disable=C0301,C0114,R0903,R0912,R0913,R0914,R0915,W0511
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+#
-+# Copyright (C) 2024-2025 Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-+
-+# TODO: current implementation has dummy defaults.
-+#
-+# For a better implementation, a QMP addition/call is needed to
-+# retrieve some data for ARM Processor Error injection:
-+#
-+#   - ARM registers: power_state, mpidr.
-+
-+"""
-+Generates an ARM processor error CPER, compatible with
-+UEFI 2.9A Errata.
-+
-+Injecting such errors can be done using:
-+
-+    $ ./scripts/ghes_inject.py arm
-+    Error injected.
-+
-+Produces a simple CPER register, as detected on a Linux guest:
-+
-+[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-+[Hardware Error]: event severity: recoverable
-+[Hardware Error]:  Error 0, type: recoverable
-+[Hardware Error]:   section_type: ARM processor error
-+[Hardware Error]:   MIDR: 0x0000000000000000
-+[Hardware Error]:   running state: 0x0
-+[Hardware Error]:   Power State Coordination Interface state: 0
-+[Hardware Error]:   Error info structure 0:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x02: cache error
-+[Hardware Error]:    error_info: 0x000000000091000f
-+[Hardware Error]:     transaction type: Data Access
-+[Hardware Error]:     cache error, operation type: Data write
-+[Hardware Error]:     cache level: 2
-+[Hardware Error]:     processor context not corrupted
-+[Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-+
-+The ARM Processor Error message can be customized via command line
-+parameters. For instance:
-+
-+    $ ./scripts/ghes_inject.py arm --mpidr 0x444 --running --affinity 1 \
-+        --error-info 12345678 --vendor 0x13,123,4,5,1 --ctx-array 0,1,2,3,4,5 \
-+        -t cache tlb bus micro-arch tlb,micro-arch
-+    Error injected.
-+
-+Injects this error, as detected on a Linux guest:
-+
-+[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-+[Hardware Error]: event severity: recoverable
-+[Hardware Error]:  Error 0, type: recoverable
-+[Hardware Error]:   section_type: ARM processor error
-+[Hardware Error]:   MIDR: 0x0000000000000000
-+[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000000000000
-+[Hardware Error]:   error affinity level: 0
-+[Hardware Error]:   running state: 0x1
-+[Hardware Error]:   Power State Coordination Interface state: 0
-+[Hardware Error]:   Error info structure 0:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x02: cache error
-+[Hardware Error]:    error_info: 0x0000000000bc614e
-+[Hardware Error]:     cache level: 2
-+[Hardware Error]:     processor context not corrupted
-+[Hardware Error]:   Error info structure 1:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x04: TLB error
-+[Hardware Error]:    error_info: 0x000000000054007f
-+[Hardware Error]:     transaction type: Instruction
-+[Hardware Error]:     TLB error, operation type: Instruction fetch
-+[Hardware Error]:     TLB level: 1
-+[Hardware Error]:     processor context not corrupted
-+[Hardware Error]:     the error has not been corrected
-+[Hardware Error]:     PC is imprecise
-+[Hardware Error]:   Error info structure 2:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x08: bus error
-+[Hardware Error]:    error_info: 0x00000080d6460fff
-+[Hardware Error]:     transaction type: Generic
-+[Hardware Error]:     bus error, operation type: Generic read (type of instruction or data request cannot be determined)
-+[Hardware Error]:     affinity level at which the bus error occurred: 1
-+[Hardware Error]:     processor context corrupted
-+[Hardware Error]:     the error has been corrected
-+[Hardware Error]:     PC is imprecise
-+[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-+[Hardware Error]:     participation type: Local processor observed
-+[Hardware Error]:     request timed out
-+[Hardware Error]:     address space: External Memory Access
-+[Hardware Error]:     memory access attributes:0x20
-+[Hardware Error]:     access mode: secure
-+[Hardware Error]:   Error info structure 3:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x10: micro-architectural error
-+[Hardware Error]:    error_info: 0x0000000078da03ff
-+[Hardware Error]:   Error info structure 4:
-+[Hardware Error]:   num errors: 2
-+[Hardware Error]:    error_type: 0x14: TLB error|micro-architectural error
-+[Hardware Error]:   Context info structure 0:
-+[Hardware Error]:    register context type: AArch64 EL1 context registers
-+[Hardware Error]:    00000000: 00000000 00000000
-+[Hardware Error]:   Vendor specific error info has 5 bytes:
-+[Hardware Error]:    00000000: 13 7b 04 05 01                                   .{...
-+[Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-+[Firmware Warn]: GHES: Unhandled processor error type 0x04: TLB error
-+[Firmware Warn]: GHES: Unhandled processor error type 0x08: bus error
-+[Firmware Warn]: GHES: Unhandled processor error type 0x10: micro-architectural error
-+[Firmware Warn]: GHES: Unhandled processor error type 0x14: TLB error|micro-architectural error
-+"""
-+
-+import argparse
-+import re
-+
-+from qmp_helper import qmp, util, cper_guid
-+
-+
-+class ArmProcessorEinj:
-+    """
-+    Implements ARM Processor Error injection via GHES
-+    """
-+
-+    DESC = """
-+    Generates an ARM processor error CPER, compatible with
-+    UEFI 2.9A Errata.
-+    """
-+
-+    ACPI_GHES_ARM_CPER_LENGTH = 40
-+    ACPI_GHES_ARM_CPER_PEI_LENGTH = 32
-+
-+    # Context types
-+    CONTEXT_AARCH32_EL1 = 1
-+    CONTEXT_AARCH64_EL1 = 5
-+    CONTEXT_MISC_REG = 8
-+
-+    def __init__(self, subparsers):
-+        """Initialize the error injection class and add subparser"""
-+
-+        # Valid choice values
-+        self.arm_valid_bits = {
-+            "mpidr":    util.bit(0),
-+            "affinity": util.bit(1),
-+            "running":  util.bit(2),
-+            "vendor":   util.bit(3),
-+        }
-+
-+        self.pei_flags = {
-+            "first":        util.bit(0),
-+            "last":         util.bit(1),
-+            "propagated":   util.bit(2),
-+            "overflow":     util.bit(3),
-+        }
-+
-+        self.pei_error_types = {
-+            "cache":        util.bit(1),
-+            "tlb":          util.bit(2),
-+            "bus":          util.bit(3),
-+            "micro-arch":   util.bit(4),
-+        }
-+
-+        self.pei_valid_bits = {
-+            "multiple-error":   util.bit(0),
-+            "flags":            util.bit(1),
-+            "error-info":       util.bit(2),
-+            "virt-addr":        util.bit(3),
-+            "phy-addr":         util.bit(4),
-+        }
-+
-+        self.data = bytearray()
-+
-+        parser = subparsers.add_parser("arm", description=self.DESC)
-+
-+        arm_valid_bits = ",".join(self.arm_valid_bits.keys())
-+        flags = ",".join(self.pei_flags.keys())
-+        error_types = ",".join(self.pei_error_types.keys())
-+        pei_valid_bits = ",".join(self.pei_valid_bits.keys())
-+
-+        # UEFI N.16 ARM Validation bits
-+        g_arm = parser.add_argument_group("ARM processor")
-+        g_arm.add_argument("--arm", "--arm-valid",
-+                           help=f"ARM valid bits: {arm_valid_bits}")
-+        g_arm.add_argument("-a", "--affinity",  "--level", "--affinity-level",
-+                           type=lambda x: int(x, 0),
-+                           help="Affinity level (when multiple levels apply)")
-+        g_arm.add_argument("-l", "--mpidr", type=lambda x: int(x, 0),
-+                           help="Multiprocessor Affinity Register")
-+        g_arm.add_argument("-i", "--midr", type=lambda x: int(x, 0),
-+                           help="Main ID Register")
-+        g_arm.add_argument("-r", "--running",
-+                           action=argparse.BooleanOptionalAction,
-+                           default=None,
-+                           help="Indicates if the processor is running or not")
-+        g_arm.add_argument("--psci", "--psci-state",
-+                           type=lambda x: int(x, 0),
-+                           help="Power State Coordination Interface - PSCI state")
-+
-+        # TODO: Add vendor-specific support
-+
-+        # UEFI N.17 bitmaps (type and flags)
-+        g_pei = parser.add_argument_group("ARM Processor Error Info (PEI)")
-+        g_pei.add_argument("-t", "--type", nargs="+",
-+                        help=f"one or more error types: {error_types}")
-+        g_pei.add_argument("-f", "--flags", nargs="*",
-+                        help=f"zero or more error flags: {flags}")
-+        g_pei.add_argument("-V", "--pei-valid", "--error-valid", nargs="*",
-+                        help=f"zero or more PEI valid bits: {pei_valid_bits}")
-+
-+        # UEFI N.17 Integer values
-+        g_pei.add_argument("-m", "--multiple-error", nargs="+",
-+                        help="Number of errors: 0: Single error, 1: Multiple errors, 2-65535: Error count if known")
-+        g_pei.add_argument("-e", "--error-info", nargs="+",
-+                        help="Error information (UEFI 2.10 tables N.18 to N.20)")
-+        g_pei.add_argument("-p", "--physical-address",  nargs="+",
-+                        help="Physical address")
-+        g_pei.add_argument("-v", "--virtual-address",  nargs="+",
-+                        help="Virtual address")
-+
-+        # UEFI N.21 Context
-+        g_ctx = parser.add_argument_group("Processor Context")
-+        g_ctx.add_argument("--ctx-type", "--context-type", nargs="*",
-+                        help="Type of the context (0=ARM32 GPR, 5=ARM64 EL1, other values supported)")
-+        g_ctx.add_argument("--ctx-size", "--context-size", nargs="*",
-+                        help="Minimal size of the context")
-+        g_ctx.add_argument("--ctx-array", "--context-array", nargs="*",
-+                        help="Comma-separated arrays for each context")
-+
-+        # Vendor-specific data
-+        g_vendor = parser.add_argument_group("Vendor-specific data")
-+        g_vendor.add_argument("--vendor", "--vendor-specific", nargs="+",
-+                        help="Vendor-specific byte arrays of data")
-+
-+        # Add arguments for Generic Error Data
-+        qmp.argparse(parser)
-+
-+        parser.set_defaults(func=self.send_cper)
-+
-+    def send_cper(self, args):
-+        """Parse subcommand arguments and send a CPER via QMP"""
-+
-+        qmp_cmd = qmp(args.host, args.port, args.debug)
-+
-+        # Handle Generic Error Data arguments if any
-+        qmp_cmd.set_args(args)
-+
-+        is_cpu_type = re.compile(r"^([\w+]+\-)?arm\-cpu$")
-+        cpus = qmp_cmd.search_qom("/machine/unattached/device",
-+                                  "type", is_cpu_type)
-+
-+        cper = {}
-+        pei = {}
-+        ctx = {}
-+        vendor = {}
-+
-+        arg = vars(args)
-+
-+        # Handle global parameters
-+        if args.arm:
-+            arm_valid_init = False
-+            cper["valid"] = util.get_choice(name="valid",
-+                                       value=args.arm,
-+                                       choices=self.arm_valid_bits,
-+                                       suffixes=["-error", "-err"])
-+        else:
-+            cper["valid"] = 0
-+            arm_valid_init = True
-+
-+        if "running" in arg:
-+            if args.running:
-+                cper["running-state"] = util.bit(0)
-+            else:
-+                cper["running-state"] = 0
-+        else:
-+            cper["running-state"] = 0
-+
-+        if arm_valid_init:
-+            if args.affinity:
-+                cper["valid"] |= self.arm_valid_bits["affinity"]
-+
-+            if args.mpidr:
-+                cper["valid"] |= self.arm_valid_bits["mpidr"]
-+
-+            if "running-state" in cper:
-+                cper["valid"] |= self.arm_valid_bits["running"]
-+
-+            if args.psci:
-+                cper["valid"] |= self.arm_valid_bits["running"]
-+
-+        # Handle PEI
-+        if not args.type:
-+            args.type = ["cache-error"]
-+
-+        util.get_mult_choices(
-+            pei,
-+            name="valid",
-+            values=args.pei_valid,
-+            choices=self.pei_valid_bits,
-+            suffixes=["-valid", "--addr"],
-+        )
-+        util.get_mult_choices(
-+            pei,
-+            name="type",
-+            values=args.type,
-+            choices=self.pei_error_types,
-+            suffixes=["-error", "-err"],
-+        )
-+        util.get_mult_choices(
-+            pei,
-+            name="flags",
-+            values=args.flags,
-+            choices=self.pei_flags,
-+            suffixes=["-error", "-cap"],
-+        )
-+        util.get_mult_int(pei, "error-info", args.error_info)
-+        util.get_mult_int(pei, "multiple-error", args.multiple_error)
-+        util.get_mult_int(pei, "phy-addr", args.physical_address)
-+        util.get_mult_int(pei, "virt-addr", args.virtual_address)
-+
-+        # Handle context
-+        util.get_mult_int(ctx, "type", args.ctx_type, allow_zero=True)
-+        util.get_mult_int(ctx, "minimal-size", args.ctx_size, allow_zero=True)
-+        util.get_mult_array(ctx, "register", args.ctx_array, allow_zero=True)
-+
-+        util.get_mult_array(vendor, "bytes", args.vendor, max_val=255)
-+
-+        # Store PEI
-+        pei_data = bytearray()
-+        default_flags  = self.pei_flags["first"]
-+        default_flags |= self.pei_flags["last"]
-+
-+        error_info_num = 0
-+
-+        for i, p in pei.items():        # pylint: disable=W0612
-+            error_info_num += 1
-+
-+            # UEFI 2.10 doesn't define how to encode error information
-+            # when multiple types are raised. So, provide a default only
-+            # if a single type is there
-+            if "error-info" not in p:
-+                if p["type"] == util.bit(1):
-+                    p["error-info"] = 0x0091000F
-+                if p["type"] == util.bit(2):
-+                    p["error-info"] = 0x0054007F
-+                if p["type"] == util.bit(3):
-+                    p["error-info"] = 0x80D6460FFF
-+                if p["type"] == util.bit(4):
-+                    p["error-info"] = 0x78DA03FF
-+
-+            if "valid" not in p:
-+                p["valid"] = 0
-+                if "multiple-error" in p:
-+                    p["valid"] |= self.pei_valid_bits["multiple-error"]
-+
-+                if "flags" in p:
-+                    p["valid"] |= self.pei_valid_bits["flags"]
-+
-+                if "error-info" in p:
-+                    p["valid"] |= self.pei_valid_bits["error-info"]
-+
-+                if "phy-addr" in p:
-+                    p["valid"] |= self.pei_valid_bits["phy-addr"]
-+
-+                if "virt-addr" in p:
-+                    p["valid"] |= self.pei_valid_bits["virt-addr"]
-+
-+            # Version
-+            util.data_add(pei_data, 0, 1)
-+
-+            util.data_add(pei_data,
-+                         self.ACPI_GHES_ARM_CPER_PEI_LENGTH, 1)
-+
-+            util.data_add(pei_data, p["valid"], 2)
-+            util.data_add(pei_data, p["type"], 1)
-+            util.data_add(pei_data, p.get("multiple-error", 1), 2)
-+            util.data_add(pei_data, p.get("flags", default_flags), 1)
-+            util.data_add(pei_data, p.get("error-info", 0), 8)
-+            util.data_add(pei_data, p.get("virt-addr", 0xDEADBEEF), 8)
-+            util.data_add(pei_data, p.get("phy-addr", 0xABBA0BAD), 8)
-+
-+        # Store Context
-+        ctx_data = bytearray()
-+        context_info_num = 0
-+
-+        if ctx:
-+            ret = qmp_cmd.send_cmd("query-target", may_open=True)
-+
-+            default_ctx = self.CONTEXT_MISC_REG
-+
-+            if "arch" in ret:
-+                if ret["arch"] == "aarch64":
-+                    default_ctx = self.CONTEXT_AARCH64_EL1
-+                elif ret["arch"] == "arm":
-+                    default_ctx = self.CONTEXT_AARCH32_EL1
-+
-+            for k in sorted(ctx.keys()):
-+                context_info_num += 1
-+
-+                if "type" not in ctx[k]:
-+                    ctx[k]["type"] = default_ctx
-+
-+                if "register" not in ctx[k]:
-+                    ctx[k]["register"] = []
-+
-+                reg_size = len(ctx[k]["register"])
-+                size = 0
-+
-+                if "minimal-size" in ctx:
-+                    size = ctx[k]["minimal-size"]
-+
-+                size = max(size, reg_size)
-+
-+                size = (size + 1) % 0xFFFE
-+
-+                # Version
-+                util.data_add(ctx_data, 0, 2)
-+
-+                util.data_add(ctx_data, ctx[k]["type"], 2)
-+
-+                util.data_add(ctx_data, 8 * size, 4)
-+
-+                for r in ctx[k]["register"]:
-+                    util.data_add(ctx_data, r, 8)
-+
-+                for i in range(reg_size, size):   # pylint: disable=W0612
-+                    util.data_add(ctx_data, 0, 8)
-+
-+        # Vendor-specific bytes are not grouped
-+        vendor_data = bytearray()
-+        if vendor:
-+            for k in sorted(vendor.keys()):
-+                for b in vendor[k]["bytes"]:
-+                    util.data_add(vendor_data, b, 1)
-+
-+        # Encode ARM Processor Error
-+        data = bytearray()
-+
-+        util.data_add(data, cper["valid"], 4)
-+
-+        util.data_add(data, error_info_num, 2)
-+        util.data_add(data, context_info_num, 2)
-+
-+        # Calculate the length of the CPER data
-+        cper_length = self.ACPI_GHES_ARM_CPER_LENGTH
-+        cper_length += len(pei_data)
-+        cper_length += len(vendor_data)
-+        cper_length += len(ctx_data)
-+        util.data_add(data, cper_length, 4)
-+
-+        util.data_add(data, arg.get("affinity-level", 0), 1)
-+
-+        # Reserved
-+        util.data_add(data, 0, 3)
-+
-+        if "midr-el1" not in arg:
-+            if cpus:
-+                cmd_arg = {
-+                    'path': cpus[0],
-+                    'property': "midr"
-+                }
-+                ret = qmp_cmd.send_cmd("qom-get", cmd_arg, may_open=True)
-+                if isinstance(ret, int):
-+                    arg["midr-el1"] = ret
-+
-+        util.data_add(data, arg.get("mpidr-el1", 0), 8)
-+        util.data_add(data, arg.get("midr-el1", 0), 8)
-+        util.data_add(data, cper["running-state"], 4)
-+        util.data_add(data, arg.get("psci-state", 0), 4)
-+
-+        # Add PEI
-+        data.extend(pei_data)
-+        data.extend(ctx_data)
-+        data.extend(vendor_data)
-+
-+        self.data = data
-+
-+        qmp_cmd.send_cper(cper_guid.CPER_PROC_ARM, self.data)
-diff --git a/scripts/ghes_inject.py b/scripts/ghes_inject.py
-new file mode 100755
-index 000000000000..9a235201418b
---- /dev/null
-+++ b/scripts/ghes_inject.py
-@@ -0,0 +1,51 @@
-+#!/usr/bin/env python3
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+#
-+# Copyright (C) 2024-2025 Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-+
-+"""
-+Handle ACPI GHESv2 error injection logic QEMU QMP interface.
-+"""
-+
-+import argparse
-+import sys
-+
-+from arm_processor_error import ArmProcessorEinj
-+
-+EINJ_DESC = """
-+Handle ACPI GHESv2 error injection logic QEMU QMP interface.
-+
-+It allows using UEFI BIOS EINJ features to generate GHES records.
-+
-+It helps testing CPER and GHES drivers at the guest OS and how
-+userspace applications at the guest handle them.
-+"""
-+
-+def main():
-+    """Main program"""
-+
-+    # Main parser - handle generic args like QEMU QMP TCP socket options
-+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-+                                     usage="%(prog)s [options]",
-+                                     description=EINJ_DESC)
-+
-+    g_options = parser.add_argument_group("QEMU QMP socket options")
-+    g_options.add_argument("-H", "--host", default="localhost", type=str,
-+                           help="host name")
-+    g_options.add_argument("-P", "--port", default=4445, type=int,
-+                           help="TCP port number")
-+    g_options.add_argument('-d', '--debug', action='store_true')
-+
-+    subparsers = parser.add_subparsers()
-+
-+    ArmProcessorEinj(subparsers)
-+
-+    args = parser.parse_args()
-+    if "func" in args:
-+        args.func(args)
-+    else:
-+        sys.exit(f"Please specify a valid command for {sys.argv[0]}")
-+
-+if __name__ == "__main__":
-+    main()
-diff --git a/scripts/qmp_helper.py b/scripts/qmp_helper.py
-new file mode 100755
-index 000000000000..c1e7e0fd80ce
---- /dev/null
-+++ b/scripts/qmp_helper.py
-@@ -0,0 +1,703 @@
-+#!/usr/bin/env python3
-+#
-+# pylint: disable=C0103,E0213,E1135,E1136,E1137,R0902,R0903,R0912,R0913,R0917
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+#
-+# Copyright (C) 2024-2025 Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-+
-+"""
-+Helper classes to be used by ghes_inject command classes.
-+"""
-+
-+import json
-+import sys
-+
-+from datetime import datetime
-+from os import path as os_path
-+
-+try:
-+    qemu_dir = os_path.abspath(os_path.dirname(os_path.dirname(__file__)))
-+    sys.path.append(os_path.join(qemu_dir, 'python'))
-+
-+    from qemu.qmp.legacy import QEMUMonitorProtocol
-+
-+except ModuleNotFoundError as exc:
-+    print(f"Module '{exc.name}' not found.")
-+    print("Try export PYTHONPATH=top-qemu-dir/python or run from top-qemu-dir")
-+    sys.exit(1)
-+
-+from base64 import b64encode
-+
-+class util:
-+    """
-+    Ancillary functions to deal with bitmaps, parse arguments,
-+    generate GUID and encode data on a bytearray buffer.
-+    """
-+
-+    #
-+    # Helper routines to handle multiple choice arguments
-+    #
-+    def get_choice(name, value, choices, suffixes=None, bitmask=True):
-+        """Produce a list from multiple choice argument"""
-+
-+        new_values = 0
-+
-+        if not value:
-+            return new_values
-+
-+        for val in value.split(","):
-+            val = val.lower()
-+
-+            if suffixes:
-+                for suffix in suffixes:
-+                    val = val.removesuffix(suffix)
-+
-+            if val not in choices.keys():
-+                if suffixes:
-+                    for suffix in suffixes:
-+                        if val + suffix in choices.keys():
-+                            val += suffix
-+                            break
-+
-+            if val not in choices.keys():
-+                sys.exit(f"Error on '{name}': choice '{val}' is invalid.")
-+
-+            val = choices[val]
-+
-+            if bitmask:
-+                new_values |= val
-+            else:
-+                if new_values:
-+                    sys.exit(f"Error on '{name}': only one value is accepted.")
-+
-+                new_values = val
-+
-+        return new_values
-+
-+    def get_array(name, values, max_val=None):
-+        """Add numbered hashes from integer lists into an array"""
-+
-+        array = []
-+
-+        for value in values:
-+            for val in value.split(","):
-+                try:
-+                    val = int(val, 0)
-+                except ValueError:
-+                    sys.exit(f"Error on '{name}': {val} is not an integer")
-+
-+                if val < 0:
-+                    sys.exit(f"Error on '{name}': {val} is not unsigned")
-+
-+                if max_val and val > max_val:
-+                    sys.exit(f"Error on '{name}': {val} is too little")
-+
-+                array.append(val)
-+
-+        return array
-+
-+    def get_mult_array(mult, name, values, allow_zero=False, max_val=None):
-+        """Add numbered hashes from integer lists"""
-+
-+        if not allow_zero:
-+            if not values:
-+                return
-+        else:
-+            if values is None:
-+                return
-+
-+            if not values:
-+                i = 0
-+                if i not in mult:
-+                    mult[i] = {}
-+
-+                mult[i][name] = []
-+                return
-+
-+        i = 0
-+        for value in values:
-+            for val in value.split(","):
-+                try:
-+                    val = int(val, 0)
-+                except ValueError:
-+                    sys.exit(f"Error on '{name}': {val} is not an integer")
-+
-+                if val < 0:
-+                    sys.exit(f"Error on '{name}': {val} is not unsigned")
-+
-+                if max_val and val > max_val:
-+                    sys.exit(f"Error on '{name}': {val} is too little")
-+
-+                if i not in mult:
-+                    mult[i] = {}
-+
-+                if name not in mult[i]:
-+                    mult[i][name] = []
-+
-+                mult[i][name].append(val)
-+
-+            i += 1
-+
-+
-+    def get_mult_choices(mult, name, values, choices,
-+                        suffixes=None, allow_zero=False):
-+        """Add numbered hashes from multiple choice arguments"""
-+
-+        if not allow_zero:
-+            if not values:
-+                return
-+        else:
-+            if values is None:
-+                return
-+
-+        i = 0
-+        for val in values:
-+            new_values = util.get_choice(name, val, choices, suffixes)
-+
-+            if i not in mult:
-+                mult[i] = {}
-+
-+            mult[i][name] = new_values
-+            i += 1
-+
-+
-+    def get_mult_int(mult, name, values, allow_zero=False):
-+        """Add numbered hashes from integer arguments"""
-+        if not allow_zero:
-+            if not values:
-+                return
-+        else:
-+            if values is None:
-+                return
-+
-+        i = 0
-+        for val in values:
-+            try:
-+                val = int(val, 0)
-+            except ValueError:
-+                sys.exit(f"Error on '{name}': {val} is not an integer")
-+
-+            if val < 0:
-+                sys.exit(f"Error on '{name}': {val} is not unsigned")
-+
-+            if i not in mult:
-+                mult[i] = {}
-+
-+            mult[i][name] = val
-+            i += 1
-+
-+
-+    #
-+    # Data encode helper functions
-+    #
-+    def bit(b):
-+        """Simple macro to define a bit on a bitmask"""
-+        return 1 << b
-+
-+
-+    def data_add(data, value, num_bytes):
-+        """Adds bytes from value inside a bitarray"""
-+
-+        data.extend(value.to_bytes(num_bytes, byteorder="little"))  # pylint: disable=E1101
-+
-+    def dump_bytearray(name, data):
-+        """Does an hexdump of a byte array, grouping in bytes"""
-+
-+        print(f"{name} ({len(data)} bytes):")
-+
-+        for ln_start in range(0, len(data), 16):
-+            ln_end = min(ln_start + 16, len(data))
-+            print(f"      {ln_start:08x}  ", end="")
-+            for i in range(ln_start, ln_end):
-+                print(f"{data[i]:02x} ", end="")
-+            for i in range(ln_end, ln_start + 16):
-+                print("   ", end="")
-+            print("  ", end="")
-+            for i in range(ln_start, ln_end):
-+                if data[i] >= 32 and data[i] < 127:
-+                    print(chr(data[i]), end="")
-+                else:
-+                    print(".", end="")
-+
-+            print()
-+        print()
-+
-+    def time(string):
-+        """Handle BCD timestamps used on Generic Error Data Block"""
-+
-+        time = None
-+
-+        # Formats to be used when parsing time stamps
-+        formats = [
-+            "%Y-%m-%d %H:%M:%S",
-+        ]
-+
-+        if string == "now":
-+            time = datetime.now()
-+
-+        if time is None:
-+            for fmt in formats:
-+                try:
-+                    time = datetime.strptime(string, fmt)
-+                    break
-+                except ValueError:
-+                    pass
-+
-+            if time is None:
-+                raise ValueError("Invalid time format")
-+
-+        return time
-+
-+class guid:
-+    """
-+    Simple class to handle GUID fields.
-+    """
-+
-+    def __init__(self, time_low, time_mid, time_high, nodes):
-+        """Initialize a GUID value"""
-+
-+        assert len(nodes) == 8
-+
-+        self.time_low = time_low
-+        self.time_mid = time_mid
-+        self.time_high = time_high
-+        self.nodes = nodes
-+
-+    @classmethod
-+    def UUID(cls, guid_str):
-+        """Initialize a GUID using a string on its standard format"""
-+
-+        if len(guid_str) != 36:
-+            print("Size not 36")
-+            raise ValueError('Invalid GUID size')
-+
-+        # It is easier to parse without separators. So, drop them
-+        guid_str = guid_str.replace('-', '')
-+
-+        if len(guid_str) != 32:
-+            print("Size not 32", guid_str, len(guid_str))
-+            raise ValueError('Invalid GUID hex size')
-+
-+        time_low = 0
-+        time_mid = 0
-+        time_high = 0
-+        nodes = []
-+
-+        for i in reversed(range(16, 32, 2)):
-+            h = guid_str[i:i + 2]
-+            value = int(h, 16)
-+            nodes.insert(0, value)
-+
-+        time_high = int(guid_str[12:16], 16)
-+        time_mid = int(guid_str[8:12], 16)
-+        time_low = int(guid_str[0:8], 16)
-+
-+        return cls(time_low, time_mid, time_high, nodes)
-+
-+    def __str__(self):
-+        """Output a GUID value on its default string representation"""
-+
-+        clock = self.nodes[0] << 8 | self.nodes[1]
-+
-+        node = 0
-+        for i in range(2, len(self.nodes)):
-+            node = node << 8 | self.nodes[i]
-+
-+        s = f"{self.time_low:08x}-{self.time_mid:04x}-"
-+        s += f"{self.time_high:04x}-{clock:04x}-{node:012x}"
-+        return s
-+
-+    def to_bytes(self):
-+        """Output a GUID value in bytes"""
-+
-+        data = bytearray()
-+
-+        util.data_add(data, self.time_low, 4)
-+        util.data_add(data, self.time_mid, 2)
-+        util.data_add(data, self.time_high, 2)
-+        data.extend(bytearray(self.nodes))
-+
-+        return data
-+
-+class qmp:
-+    """
-+    Opens a connection and send/receive QMP commands.
-+    """
-+
-+    def send_cmd(self, command, args=None, may_open=False, return_error=True):
-+        """Send a command to QMP, optinally opening a connection"""
-+
-+        if may_open:
-+            self._connect()
-+        elif not self.connected:
-+            return False
-+
-+        msg = { 'execute': command }
-+        if args:
-+            msg['arguments'] = args
-+
-+        try:
-+            obj = self.qmp_monitor.cmd_obj(msg)
-+        # Can we use some other exception class here?
-+        except Exception as e:                         # pylint: disable=W0718
-+            print(f"Command: {command}")
-+            print(f"Failed to inject error: {e}.")
-+            return None
-+
-+        if "return" in obj:
-+            if isinstance(obj.get("return"), dict):
-+                if obj["return"]:
-+                    return obj["return"]
-+                return "OK"
-+
-+            return obj["return"]
-+
-+        if isinstance(obj.get("error"), dict):
-+            error = obj["error"]
-+            if return_error:
-+                print(f"Command: {msg}")
-+                print(f'{error["class"]}: {error["desc"]}')
-+        else:
-+            print(json.dumps(obj))
-+
-+        return None
-+
-+    def _close(self):
-+        """Shutdown and close the socket, if opened"""
-+        if not self.connected:
-+            return
-+
-+        self.qmp_monitor.close()
-+        self.connected = False
-+
-+    def _connect(self):
-+        """Connect to a QMP TCP/IP port, if not connected yet"""
-+
-+        if self.connected:
-+            return True
-+
-+        try:
-+            self.qmp_monitor.connect(negotiate=True)
-+        except ConnectionError:
-+            sys.exit(f"Can't connect to QMP host {self.host}:{self.port}")
-+
-+        self.connected = True
-+
-+        return True
-+
-+    BLOCK_STATUS_BITS = {
-+        "uncorrectable":            util.bit(0),
-+        "correctable":              util.bit(1),
-+        "multi-uncorrectable":      util.bit(2),
-+        "multi-correctable":        util.bit(3),
-+    }
-+
-+    ERROR_SEVERITY = {
-+        "recoverable":  0,
-+        "fatal":        1,
-+        "corrected":    2,
-+        "none":         3,
-+    }
-+
-+    VALIDATION_BITS = {
-+        "fru-id":       util.bit(0),
-+        "fru-text":     util.bit(1),
-+        "timestamp":    util.bit(2),
-+    }
-+
-+    GEDB_FLAGS_BITS = {
-+        "recovered":    util.bit(0),
-+        "prev-error":   util.bit(1),
-+        "simulated":    util.bit(2),
-+    }
-+
-+    GENERIC_DATA_SIZE = 72
-+
-+    def argparse(parser):
-+        """Prepare a parser group to query generic error data"""
-+
-+        block_status_bits = ",".join(qmp.BLOCK_STATUS_BITS.keys())
-+        error_severity_enum = ",".join(qmp.ERROR_SEVERITY.keys())
-+        validation_bits = ",".join(qmp.VALIDATION_BITS.keys())
-+        gedb_flags_bits = ",".join(qmp.GEDB_FLAGS_BITS.keys())
-+
-+        g_gen = parser.add_argument_group("Generic Error Data")  # pylint: disable=E1101
-+        g_gen.add_argument("--block-status",
-+                           help=f"block status bits: {block_status_bits}")
-+        g_gen.add_argument("--raw-data", nargs="+",
-+                        help="Raw data inside the Error Status Block")
-+        g_gen.add_argument("--error-severity", "--severity",
-+                           help=f"error severity: {error_severity_enum}")
-+        g_gen.add_argument("--gen-err-valid-bits",
-+                           "--generic-error-validation-bits",
-+                           help=f"validation bits: {validation_bits}")
-+        g_gen.add_argument("--fru-id", type=guid.UUID,
-+                           help="GUID representing a physical device")
-+        g_gen.add_argument("--fru-text",
-+                           help="ASCII string identifying the FRU hardware")
-+        g_gen.add_argument("--timestamp", type=util.time,
-+                           help="Time when the error info was collected")
-+        g_gen.add_argument("--precise", "--precise-timestamp",
-+                           action='store_true',
-+                           help="Marks the timestamp as precise if --timestamp is used")
-+        g_gen.add_argument("--gedb-flags",
-+                           help=f"General Error Data Block flags: {gedb_flags_bits}")
-+
-+    def set_args(self, args):
-+        """Set the arguments optionally defined via self.argparse()"""
-+
-+        if args.block_status:
-+            self.block_status = util.get_choice(name="block-status",
-+                                                value=args.block_status,
-+                                                choices=self.BLOCK_STATUS_BITS,
-+                                                bitmask=False)
-+        if args.raw_data:
-+            self.raw_data = util.get_array("raw-data", args.raw_data,
-+                                           max_val=255)
-+            print(self.raw_data)
-+
-+        if args.error_severity:
-+            self.error_severity = util.get_choice(name="error-severity",
-+                                                  value=args.error_severity,
-+                                                  choices=self.ERROR_SEVERITY,
-+                                                  bitmask=False)
-+
-+        if args.fru_id:
-+            self.fru_id = args.fru_id.to_bytes()
-+            if not args.gen_err_valid_bits:
-+                self.validation_bits |= self.VALIDATION_BITS["fru-id"]
-+
-+        if args.fru_text:
-+            text = bytearray(args.fru_text.encode('ascii'))
-+            if len(text) > 20:
-+                sys.exit("FRU text is too big to fit")
-+
-+            self.fru_text = text
-+            if not args.gen_err_valid_bits:
-+                self.validation_bits |= self.VALIDATION_BITS["fru-text"]
-+
-+        if args.timestamp:
-+            time = args.timestamp
-+            century = int(time.year / 100)
-+
-+            bcd = bytearray()
-+            util.data_add(bcd, (time.second // 10) << 4 | (time.second % 10), 1)
-+            util.data_add(bcd, (time.minute // 10) << 4 | (time.minute % 10), 1)
-+            util.data_add(bcd, (time.hour // 10) << 4 | (time.hour % 10), 1)
-+
-+            if args.precise:
-+                util.data_add(bcd, 1, 1)
-+            else:
-+                util.data_add(bcd, 0, 1)
-+
-+            util.data_add(bcd, (time.day // 10) << 4 | (time.day % 10), 1)
-+            util.data_add(bcd, (time.month // 10) << 4 | (time.month % 10), 1)
-+            util.data_add(bcd,
-+                          ((time.year % 100) // 10) << 4 | (time.year % 10), 1)
-+            util.data_add(bcd, ((century % 100) // 10) << 4 | (century % 10), 1)
-+
-+            self.timestamp = bcd
-+            if not args.gen_err_valid_bits:
-+                self.validation_bits |= self.VALIDATION_BITS["timestamp"]
-+
-+        if args.gen_err_valid_bits:
-+            self.validation_bits = util.get_choice(name="validation",
-+                                                   value=args.gen_err_valid_bits,
-+                                                   choices=self.VALIDATION_BITS)
-+
-+    def __init__(self, host, port, debug=False):
-+        """Initialize variables used by the QMP send logic"""
-+
-+        self.connected = False
-+        self.host = host
-+        self.port = port
-+        self.debug = debug
-+
-+        # ACPI 6.1: 18.3.2.7.1 Generic Error Data: Generic Error Status Block
-+        self.block_status = self.BLOCK_STATUS_BITS["uncorrectable"]
-+        self.raw_data = []
-+        self.error_severity = self.ERROR_SEVERITY["recoverable"]
-+
-+        # ACPI 6.1: 18.3.2.7.1 Generic Error Data: Generic Error Data Entry
-+        self.validation_bits = 0
-+        self.flags = 0
-+        self.fru_id = bytearray(16)
-+        self.fru_text = bytearray(20)
-+        self.timestamp = bytearray(8)
-+
-+        self.qmp_monitor = QEMUMonitorProtocol(address=(self.host, self.port))
-+
-+    #
-+    # Socket QMP send command
-+    #
-+    def send_cper_raw(self, cper_data):
-+        """Send a raw CPER data to QEMU though QMP TCP socket"""
-+
-+        data = b64encode(bytes(cper_data)).decode('ascii')
-+
-+        cmd_arg = {
-+            'cper': data
-+        }
-+
-+        self._connect()
-+
-+        if self.send_cmd("inject-ghes-v2-error", cmd_arg):
-+            print("Error injected.")
-+
-+    def send_cper(self, notif_type, payload):
-+        """Send commands to QEMU though QMP TCP socket"""
-+
-+        # Fill CPER record header
-+
-+        # NOTE: bits 4 to 13 of block status contain the number of
-+        # data entries in the data section. This is currently unsupported.
-+
-+        cper_length = len(payload)
-+        data_length = cper_length + len(self.raw_data) + self.GENERIC_DATA_SIZE
-+
-+        #  Generic Error Data Entry
-+        gede = bytearray()
-+
-+        gede.extend(notif_type.to_bytes())
-+        util.data_add(gede, self.error_severity, 4)
-+        util.data_add(gede, 0x300, 2)
-+        util.data_add(gede, self.validation_bits, 1)
-+        util.data_add(gede, self.flags, 1)
-+        util.data_add(gede, cper_length, 4)
-+        gede.extend(self.fru_id)
-+        gede.extend(self.fru_text)
-+        gede.extend(self.timestamp)
-+
-+        # Generic Error Status Block
-+        gebs = bytearray()
-+
-+        if self.raw_data:
-+            raw_data_offset = len(gebs)
-+        else:
-+            raw_data_offset = 0
-+
-+        util.data_add(gebs, self.block_status, 4)
-+        util.data_add(gebs, raw_data_offset, 4)
-+        util.data_add(gebs, len(self.raw_data), 4)
-+        util.data_add(gebs, data_length, 4)
-+        util.data_add(gebs, self.error_severity, 4)
-+
-+        cper_data = bytearray()
-+        cper_data.extend(gebs)
-+        cper_data.extend(gede)
-+        cper_data.extend(bytearray(self.raw_data))
-+        cper_data.extend(bytearray(payload))
-+
-+        if self.debug:
-+            print(f"GUID: {notif_type}")
-+
-+            util.dump_bytearray("Generic Error Status Block", gebs)
-+            util.dump_bytearray("Generic Error Data Entry", gede)
-+
-+            if self.raw_data:
-+                util.dump_bytearray("Raw data", bytearray(self.raw_data))
-+
-+            util.dump_bytearray("Payload", payload)
-+
-+        self.send_cper_raw(cper_data)
-+
-+
-+    def search_qom(self, path, prop, regex):
-+        """
-+        Return a list of devices that match path array like:
-+
-+            /machine/unattached/device
-+            /machine/peripheral-anon/device
-+            ...
-+        """
-+
-+        found = []
-+
-+        i = 0
-+        while 1:
-+            dev = f"{path}[{i}]"
-+            args = {
-+                'path': dev,
-+                'property': prop
-+            }
-+            ret = self.send_cmd("qom-get", args, may_open=True,
-+                                return_error=False)
-+            if not ret:
-+                break
-+
-+            if isinstance(ret, str):
-+                if regex.search(ret):
-+                    found.append(dev)
-+
-+            i += 1
-+            if i > 10000:
-+                print("Too many objects returned by qom-get!")
-+                break
-+
-+        return found
-+
-+class cper_guid:
-+    """
-+    Contains CPER GUID, as per:
-+    https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html
-+    """
-+
-+    CPER_PROC_GENERIC =  guid(0x9876CCAD, 0x47B4, 0x4bdb,
-+                              [0xB6, 0x5E, 0x16, 0xF1,
-+                               0x93, 0xC4, 0xF3, 0xDB])
-+
-+    CPER_PROC_X86 = guid(0xDC3EA0B0, 0xA144, 0x4797,
-+                         [0xB9, 0x5B, 0x53, 0xFA,
-+                          0x24, 0x2B, 0x6E, 0x1D])
-+
-+    CPER_PROC_ITANIUM = guid(0xe429faf1, 0x3cb7, 0x11d4,
-+                             [0xbc, 0xa7, 0x00, 0x80,
-+                              0xc7, 0x3c, 0x88, 0x81])
-+
-+    CPER_PROC_ARM = guid(0xE19E3D16, 0xBC11, 0x11E4,
-+                         [0x9C, 0xAA, 0xC2, 0x05,
-+                          0x1D, 0x5D, 0x46, 0xB0])
-+
-+    CPER_PLATFORM_MEM = guid(0xA5BC1114, 0x6F64, 0x4EDE,
-+                             [0xB8, 0x63, 0x3E, 0x83,
-+                              0xED, 0x7C, 0x83, 0xB1])
-+
-+    CPER_PLATFORM_MEM2 = guid(0x61EC04FC, 0x48E6, 0xD813,
-+                              [0x25, 0xC9, 0x8D, 0xAA,
-+                               0x44, 0x75, 0x0B, 0x12])
-+
-+    CPER_PCIE = guid(0xD995E954, 0xBBC1, 0x430F,
-+                     [0xAD, 0x91, 0xB4, 0x4D,
-+                      0xCB, 0x3C, 0x6F, 0x35])
-+
-+    CPER_PCI_BUS = guid(0xC5753963, 0x3B84, 0x4095,
-+                        [0xBF, 0x78, 0xED, 0xDA,
-+                         0xD3, 0xF9, 0xC9, 0xDD])
-+
-+    CPER_PCI_DEV = guid(0xEB5E4685, 0xCA66, 0x4769,
-+                        [0xB6, 0xA2, 0x26, 0x06,
-+                         0x8B, 0x00, 0x13, 0x26])
-+
-+    CPER_FW_ERROR = guid(0x81212A96, 0x09ED, 0x4996,
-+                         [0x94, 0x71, 0x8D, 0x72,
-+                          0x9C, 0x8E, 0x69, 0xED])
-+
-+    CPER_DMA_GENERIC = guid(0x5B51FEF7, 0xC79D, 0x4434,
-+                            [0x8F, 0x1B, 0xAA, 0x62,
-+                             0xDE, 0x3E, 0x2C, 0x64])
-+
-+    CPER_DMA_VT = guid(0x71761D37, 0x32B2, 0x45cd,
-+                       [0xA7, 0xD0, 0xB0, 0xFE,
-+                        0xDD, 0x93, 0xE8, 0xCF])
-+
-+    CPER_DMA_IOMMU = guid(0x036F84E1, 0x7F37, 0x428c,
-+                         [0xA7, 0x9E, 0x57, 0x5F,
-+                          0xDF, 0xAA, 0x84, 0xEC])
-+
-+    CPER_CCIX_PER = guid(0x91335EF6, 0xEBFB, 0x4478,
-+                         [0xA6, 0xA6, 0x88, 0xB7,
-+                          0x28, 0xCF, 0x75, 0xD7])
-+
-+    CPER_CXL_PROT_ERR = guid(0x80B9EFB4, 0x52B5, 0x4DE3,
-+                             [0xA7, 0x77, 0x68, 0x78,
-+                              0x4B, 0x77, 0x10, 0x48])
--- 
-2.48.1
-
+>
+>Thanks,
+>Bernhard
+>
+>>
+>>diff --git a/MAINTAINERS b/MAINTAINERS
+>>index 489e426d85=2E=2E2552cfd65c 100644
+>>--- a/MAINTAINERS
+>>+++ b/MAINTAINERS
+>>@@ -828,10 +828,12 @@ F: hw/arm/imx8mp-evk=2Ec
+>> F: hw/arm/fsl-imx8mp=2Ec
+>> F: hw/misc/imx8mp_*=2Ec
+>> F: hw/pci-host/fsl_imx8m_phy=2Ec
+>>+F: hw/rtc/rs5c372=2Ec
+>> F: include/hw/arm/fsl-imx8mp=2Eh
+>> F: include/hw/misc/imx8mp_*=2Eh
+>> F: include/hw/pci-host/fsl_imx8m_phy=2Eh
+>> F: pc-bios/imx8mp*
+>>+F: tests/qtest/rs5c372-test=2Ec
+>> F: docs/system/arm/imx8mp-evk=2Erst
+>>=20
+>> MPS2 / MPS3
+>>diff --git a/hw/rtc/rs5c372=2Ec b/hw/rtc/rs5c372=2Ec
+>>new file mode 100644
+>>index 0000000000=2E=2E5542f74085
+>>--- /dev/null
+>>+++ b/hw/rtc/rs5c372=2Ec
+>>@@ -0,0 +1,236 @@
+>>+/*
+>>+ * Ricoh RS5C372, R222x I2C RTC
+>>+ *
+>>+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
+>>+ *
+>>+ * Based on hw/rtc/ds1338=2Ec
+>>+ *
+>>+ * SPDX-License-Identifier: GPL-2=2E0-or-later
+>>+ */
+>>+
+>>+#include "qemu/osdep=2Eh"
+>>+#include "hw/i2c/i2c=2Eh"
+>>+#include "hw/qdev-properties=2Eh"
+>>+#include "hw/resettable=2Eh"
+>>+#include "migration/vmstate=2Eh"
+>>+#include "qemu/bcd=2Eh"
+>>+#include "qom/object=2Eh"
+>>+#include "system/rtc=2Eh"
+>>+#include "trace=2Eh"
+>>+
+>>+#define NVRAM_SIZE 0x10
+>>+
+>>+/* Flags definitions */
+>>+#define SECONDS_CH 0x80
+>>+#define HOURS_PM   0x20
+>>+#define CTRL2_24   0x20
+>>+
+>>+#define TYPE_RS5C372 "rs5c372"
+>>+OBJECT_DECLARE_SIMPLE_TYPE(RS5C372State, RS5C372)
+>>+
+>>+struct RS5C372State {
+>>+    I2CSlave parent_obj;
+>>+
+>>+    int64_t offset;
+>>+    uint8_t wday_offset;
+>>+    uint8_t nvram[NVRAM_SIZE];
+>>+    uint8_t ptr;
+>>+    uint8_t tx_format;
+>>+    bool addr_byte;
+>>+};
+>>+
+>>+static void capture_current_time(RS5C372State *s)
+>>+{
+>>+    /*
+>>+     * Capture the current time into the secondary registers which will=
+ be
+>>+     * actually read by the data transfer operation=2E
+>>+     */
+>>+    struct tm now;
+>>+    qemu_get_timedate(&now, s->offset);
+>>+    s->nvram[0] =3D to_bcd(now=2Etm_sec);
+>>+    s->nvram[1] =3D to_bcd(now=2Etm_min);
+>>+    if (s->nvram[0xf] & CTRL2_24) {
+>>+        s->nvram[2] =3D to_bcd(now=2Etm_hour);
+>>+    } else {
+>>+        int tmp =3D now=2Etm_hour;
+>>+        if (tmp % 12 =3D=3D 0) {
+>>+            tmp +=3D 12;
+>>+        }
+>>+        if (tmp <=3D 12) {
+>>+            s->nvram[2] =3D to_bcd(tmp);
+>>+        } else {
+>>+            s->nvram[2] =3D HOURS_PM | to_bcd(tmp - 12);
+>>+        }
+>>+    }
+>>+    s->nvram[3] =3D (now=2Etm_wday + s->wday_offset) % 7 + 1;
+>>+    s->nvram[4] =3D to_bcd(now=2Etm_mday);
+>>+    s->nvram[5] =3D to_bcd(now=2Etm_mon + 1);
+>>+    s->nvram[6] =3D to_bcd(now=2Etm_year - 100);
+>>+}
+>>+
+>>+static void inc_regptr(RS5C372State *s)
+>>+{
+>>+    s->ptr =3D (s->ptr + 1) & (NVRAM_SIZE - 1);
+>>+}
+>>+
+>>+static int rs5c372_event(I2CSlave *i2c, enum i2c_event event)
+>>+{
+>>+    RS5C372State *s =3D RS5C372(i2c);
+>>+
+>>+    switch (event) {
+>>+    case I2C_START_RECV:
+>>+        /*
+>>+         * In h/w, capture happens on any START condition, not just a
+>>+         * START_RECV, but there is no need to actually capture on
+>>+         * START_SEND, because the guest can't get at that data
+>>+         * without going through a START_RECV which would overwrite it=
+=2E
+>>+         */
+>>+        capture_current_time(s);
+>>+        s->ptr =3D 0xf;
+>>+        break;
+>>+    case I2C_START_SEND:
+>>+        s->addr_byte =3D true;
+>>+        break;
+>>+    default:
+>>+        break;
+>>+    }
+>>+
+>>+    return 0;
+>>+}
+>>+
+>>+static uint8_t rs5c372_recv(I2CSlave *i2c)
+>>+{
+>>+    RS5C372State *s =3D RS5C372(i2c);
+>>+    uint8_t res;
+>>+
+>>+    res  =3D s->nvram[s->ptr];
+>>+
+>>+    trace_rs5c372_recv(s->ptr, res);
+>>+
+>>+    inc_regptr(s);
+>>+    return res;
+>>+}
+>>+
+>>+static int rs5c372_send(I2CSlave *i2c, uint8_t data)
+>>+{
+>>+    RS5C372State *s =3D RS5C372(i2c);
+>>+
+>>+    if (s->addr_byte) {
+>>+        s->ptr =3D data >> 4;
+>>+        s->tx_format =3D data & 0xf;
+>>+        s->addr_byte =3D false;
+>>+        return 0;
+>>+    }
+>>+
+>>+    trace_rs5c372_send(s->ptr, data);
+>>+
+>>+    if (s->ptr < 7) {
+>>+        /* Time register=2E */
+>>+        struct tm now;
+>>+        qemu_get_timedate(&now, s->offset);
+>>+        switch (s->ptr) {
+>>+        case 0:
+>>+            now=2Etm_sec =3D from_bcd(data & 0x7f);
+>>+            break;
+>>+        case 1:
+>>+            now=2Etm_min =3D from_bcd(data & 0x7f);
+>>+            break;
+>>+        case 2:
+>>+            if (s->nvram[0xf] & CTRL2_24) {
+>>+                now=2Etm_hour =3D from_bcd(data & 0x3f);
+>>+            } else {
+>>+                int tmp =3D from_bcd(data & (HOURS_PM - 1));
+>>+                if (data & HOURS_PM) {
+>>+                    tmp +=3D 12;
+>>+                }
+>>+                if (tmp % 12 =3D=3D 0) {
+>>+                    tmp -=3D 12;
+>>+                }
+>>+                now=2Etm_hour =3D tmp;
+>>+            }
+>>+            break;
+>>+        case 3:
+>>+            {
+>>+                /*
+>>+                 * The day field is supposed to contain a value in the =
+range
+>>+                 * 1-7=2E Otherwise behavior is undefined=2E
+>>+                 */
+>>+                int user_wday =3D (data & 7) - 1;
+>>+                s->wday_offset =3D (user_wday - now=2Etm_wday + 7) % 7;
+>>+            }
+>>+            break;
+>>+        case 4:
+>>+            now=2Etm_mday =3D from_bcd(data & 0x3f);
+>>+            break;
+>>+        case 5:
+>>+            now=2Etm_mon =3D from_bcd(data & 0x1f) - 1;
+>>+            break;
+>>+        case 6:
+>>+            now=2Etm_year =3D from_bcd(data) + 100;
+>>+            break;
+>>+        }
+>>+        s->offset =3D qemu_timedate_diff(&now);
+>>+    } else {
+>>+        s->nvram[s->ptr] =3D data;
+>>+    }
+>>+    inc_regptr(s);
+>>+    return 0;
+>>+}
+>>+
+>>+static void rs5c372_reset_hold(Object *obj, ResetType type)
+>>+{
+>>+    RS5C372State *s =3D RS5C372(obj);
+>>+
+>>+    /* The clock is running and synchronized with the host */
+>>+    s->offset =3D 0;
+>>+    s->wday_offset =3D 0;
+>>+    memset(s->nvram, 0, NVRAM_SIZE);
+>>+    s->ptr =3D 0;
+>>+    s->addr_byte =3D false;
+>>+}
+>>+
+>>+static const VMStateDescription rs5c372_vmstate =3D {
+>>+    =2Ename =3D "rs5c372",
+>>+    =2Eversion_id =3D 1,
+>>+    =2Eminimum_version_id =3D 1,
+>>+    =2Efields =3D (const VMStateField[]) {
+>>+        VMSTATE_I2C_SLAVE(parent_obj, RS5C372State),
+>>+        VMSTATE_INT64(offset, RS5C372State),
+>>+        VMSTATE_UINT8_V(wday_offset, RS5C372State, 2),
+>>+        VMSTATE_UINT8_ARRAY(nvram, RS5C372State, NVRAM_SIZE),
+>>+        VMSTATE_UINT8(ptr, RS5C372State),
+>>+        VMSTATE_UINT8(tx_format, RS5C372State),
+>>+        VMSTATE_BOOL(addr_byte, RS5C372State),
+>>+        VMSTATE_END_OF_LIST()
+>>+    }
+>>+};
+>>+
+>>+static void rs5c372_init(Object *obj)
+>>+{
+>>+    qdev_prop_set_uint8(DEVICE(obj), "address", 0x32);
+>>+}
+>>+
+>>+static void rs5c372_class_init(ObjectClass *klass, void *data)
+>>+{
+>>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>>+    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+>>+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+>>+
+>>+    k->event =3D rs5c372_event;
+>>+    k->recv =3D rs5c372_recv;
+>>+    k->send =3D rs5c372_send;
+>>+    dc->vmsd =3D &rs5c372_vmstate;
+>>+    rc->phases=2Ehold =3D rs5c372_reset_hold;
+>>+}
+>>+
+>>+static const TypeInfo rs5c372_types[] =3D {
+>>+    {
+>>+        =2Ename          =3D TYPE_RS5C372,
+>>+        =2Eparent        =3D TYPE_I2C_SLAVE,
+>>+        =2Einstance_size =3D sizeof(RS5C372State),
+>>+        =2Einstance_init =3D rs5c372_init,
+>>+        =2Eclass_init    =3D rs5c372_class_init,
+>>+    },
+>>+};
+>>+
+>>+DEFINE_TYPES(rs5c372_types)
+>>diff --git a/tests/qtest/rs5c372-test=2Ec b/tests/qtest/rs5c372-test=2Ec
+>>new file mode 100644
+>>index 0000000000=2E=2E0f6a9b68b9
+>>--- /dev/null
+>>+++ b/tests/qtest/rs5c372-test=2Ec
+>>@@ -0,0 +1,43 @@
+>>+/*
+>>+ * QTest testcase for the RS5C372 RTC
+>>+ *
+>>+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
+>>+ *
+>>+ * Based on ds1338-test=2Ec
+>>+ *
+>>+ * SPDX-License-Identifier: GPL-2=2E0-or-later
+>>+ */
+>>+
+>>+#include "qemu/osdep=2Eh"
+>>+#include "qemu/bcd=2Eh"
+>>+#include "libqos/i2c=2Eh"
+>>+
+>>+#define RS5C372_ADDR 0x32
+>>+
+>>+static void rs5c372_read_date(void *obj, void *data, QGuestAllocator *a=
+lloc)
+>>+{
+>>+    QI2CDevice *i2cdev =3D obj;
+>>+
+>>+    uint8_t resp[0x10];
+>>+    time_t now =3D time(NULL);
+>>+    struct tm *utc =3D gmtime(&now);
+>>+
+>>+    i2c_read_block(i2cdev, 0, resp, sizeof(resp));
+>>+
+>>+    /* check retrieved time against local time */
+>>+    g_assert_cmpuint(from_bcd(resp[5]), =3D=3D , utc->tm_mday);
+>>+    g_assert_cmpuint(from_bcd(resp[6]), =3D=3D , 1 + utc->tm_mon);
+>>+    g_assert_cmpuint(2000 + from_bcd(resp[7]), =3D=3D , 1900 + utc->tm_=
+year);
+>>+}
+>>+
+>>+static void rs5c372_register_nodes(void)
+>>+{
+>>+    QOSGraphEdgeOptions opts =3D { };
+>>+    add_qi2c_address(&opts, &(QI2CAddress) { RS5C372_ADDR });
+>>+
+>>+    qos_node_create_driver("rs5c372", i2c_device_create);
+>>+    qos_node_consumes("rs5c372", "i2c-bus", &opts);
+>>+    qos_add_test("read_date", "rs5c372", rs5c372_read_date, NULL);
+>>+}
+>>+
+>>+libqos_init(rs5c372_register_nodes);
+>>diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+>>index 2fe04ec1d0=2E=2E315b0e4ecc 100644
+>>--- a/hw/rtc/Kconfig
+>>+++ b/hw/rtc/Kconfig
+>>@@ -26,3 +26,8 @@ config GOLDFISH_RTC
+>>=20
+>> config LS7A_RTC
+>>     bool
+>>+
+>>+config RS5C372_RTC
+>>+    bool
+>>+    depends on I2C
+>>+    default y if I2C_DEVICES
+>>diff --git a/hw/rtc/meson=2Ebuild b/hw/rtc/meson=2Ebuild
+>>index 8ecc2d792c=2E=2E6c87864dc0 100644
+>>--- a/hw/rtc/meson=2Ebuild
+>>+++ b/hw/rtc/meson=2Ebuild
+>>@@ -13,3 +13,4 @@ system_ss=2Eadd(when: 'CONFIG_GOLDFISH_RTC', if_true: =
+files('goldfish_rtc=2Ec'))
+>> system_ss=2Eadd(when: 'CONFIG_LS7A_RTC', if_true: files('ls7a_rtc=2Ec')=
+)
+>> system_ss=2Eadd(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-=
+rtc=2Ec'))
+>> system_ss=2Eadd(when: 'CONFIG_MC146818RTC', if_true: files('mc146818rtc=
+=2Ec'))
+>>+system_ss=2Eadd(when: 'CONFIG_RS5C372_RTC', if_true: files('rs5c372=2Ec=
+'))
+>>diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+>>index 8012afe102=2E=2Eb9f2852d35 100644
+>>--- a/hw/rtc/trace-events
+>>+++ b/hw/rtc/trace-events
+>>@@ -35,3 +35,7 @@ m48txx_nvram_mem_write(uint32_t addr, uint32_t value) =
+"mem write addr:0x%04x val
+>> # goldfish_rtc=2Ec
+>> goldfish_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
+value 0x%08" PRIx64
+>> goldfish_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
+ value 0x%08" PRIx64
+>>+
+>>+# rs5c372=2Ec
+>>+rs5c372_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0x%02" P=
+RIx8
+>>+rs5c372_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0x%02" P=
+RIx8
+>>diff --git a/tests/qtest/meson=2Ebuild b/tests/qtest/meson=2Ebuild
+>>index 8a6243382a=2E=2E9e5380ba7a 100644
+>>--- a/tests/qtest/meson=2Ebuild
+>>+++ b/tests/qtest/meson=2Ebuild
+>>@@ -298,6 +298,7 @@ qos_test_ss=2Eadd(
+>>   'pca9552-test=2Ec',
+>>   'pci-test=2Ec',
+>>   'pcnet-test=2Ec',
+>>+  'rs5c372-test=2Ec',
+>>   'sdhci-test=2Ec',
+>>   'spapr-phb-test=2Ec',
+>>   'tmp105-test=2Ec',

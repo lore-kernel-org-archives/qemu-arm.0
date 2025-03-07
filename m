@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1938227njm;
-        Thu, 6 Mar 2025 20:02:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXmvKVUovxYmSmaFhZhgSbm1UZQ7OPVMK0slZkitr2OY0KfwEMjv8cEac69DvqCUdiFsvQ5T6hNAvvbDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHmREiNUZYkltTu1A2hKWw6ML83kZO1es9XesN1dVKB2b7kzeOzL6tLNfwzLcPxrr2zYLXA
-X-Received: by 2002:a05:6214:2425:b0:6e2:49d0:6897 with SMTP id 6a1803df08f44-6e90063f8a9mr20027236d6.24.1741320121806;
-        Thu, 06 Mar 2025 20:02:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741320121; cv=none;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1938244njm;
+        Thu, 6 Mar 2025 20:02:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX43hwRHzENnu6VJISvJk9pvjzQshP/3WC8FlfbtbuoQzbPxZXB8RFO+O9m96s5RSLaKQuVv2hAT/yuRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGc9qelTqCGHNT9ZDI5Mwxrb+iRLKBu4Dn2zzLWeb4MUjWlkJKvikvnPSe/R88LfLp428jf
+X-Received: by 2002:a05:620a:2855:b0:7c3:d701:f11d with SMTP id af79cd13be357-7c4e617ac3emr258390885a.38.1741320124417;
+        Thu, 06 Mar 2025 20:02:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741320124; cv=none;
         d=google.com; s=arc-20240605;
-        b=NTKdkWwDzuiisaYoOStSFO/BtBcPLjXuRD8eVk59KH4kff0wUrpBcrgvCiICv9U1/T
-         iy33GbiAz3uDaT8lTrDR3I8cgRERNdm5N2/1bzBHKe7rDq+PpeVyDum/8pmS1WnPGZdb
-         3A8R9kUg+9ItOORXG1PUKrSa35c4eGyYY2e7zcVaPhI8djanlMusgJ2WF5m969TgaGH/
-         mk1EplYpFofZrmJRv2IJ/7oOt6TPLp30aEliuq5TJFJm2SnbQc/1Go7yTV+ReFEI9CUp
-         gi9E0G2SKxqk2Z0rxX1RY2XWBq5omjOei1lNQI6ZsJh5VjREyZtNOxuao8aLawhKuzZk
-         3S8Q==
+        b=kNNhrM2FDDqLwgW6dZDateXQ1hPyTOk69Fn2u80zvVV81MPHlmV5wxL8Gu4M6O+GdW
+         h5dyYCsPNBaxpX9jqa+uFI28yPo8jBvw/SeCXP6oS1cIXuF6aLmk7Rs4xhzWaj9gfDlr
+         LAJ/Uow/WZrPVIlh/kfQFIPaKLa3/dVybeBDwxFhdGdtv6hwi3WM3dyl2fPyJ5Fq4rJJ
+         5/PAVbiB2C0Y92taJkYbeKAM4FwD2OSx7v8ne+AGOQjlKGB+TiZMRXG7CjUWA3aaAgwt
+         fO0RPhvQa9fHSnfGpP/CEkJcSD7mBSnCc8ipWVYfcCGMfJtdUHE4qonmsbWvb0T5sEXR
+         7MXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=rkA766Xmse0lnC8mVBT/8x+SIREd9uVk5CyXdfkcExo=;
+        bh=cCcx34yyYK+r73FmFKLs75xUTI3h8benvEn9bKKFdfc=;
         fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
-        b=DNYDkvIOKcXZSIv3a2I0FoexsDpl6RwqyGa0JRuaMUxZGpXfRsJKBvlvcmZE8NDkQV
-         vZsrVJnJY8i5AqxVOjZgOvHslFQ6HeQ5U4kE7kWVQijGbMA6rXaU0ZXCb5onQ2wBBV38
-         j0hERhXw1M4RWVbGnUSRurjBqWklzUQEQCmy+pJlwqgrXokD3kc/Zux64cVSs5iOmRlC
-         M4/bJafzQHFQBT6D3WXqsclrwgs2w8ZI/rNm+gGCtF4vpdEGrTAp2qLCkPQTiC/9gR8r
-         7c50in/Bu4YSQVdC7fpQ61iq1lvJNPBkM9VXz/eeHj94mRbsOTr6Lp7pgcHREYGUyEyu
-         xQKw==;
+        b=BUkuQ2NdD8BX97TovoUujyFL8/EspKR2GZQ9qVbQLpqENtAuHSQ84UeAZp7nM+C5ik
+         eU8RpDJhWBtK3fIuyoJaXY2LzvI26RcTVKClEvpse/7PdK6O8yc6k/Sx10eoK+TgHRz/
+         PPg0awqW0b3Y/CpF8FiT9W5SAIz+mXZgBmqYyx2SB+ei1qqHv48HiCKu9rZPMPpVZOnM
+         mxahpl0nqyI6B2TIy/8ckgG6pUSQpHFJ1IvFCZVUcmL+E4/KIyisxyaq13Oa5jKa71gF
+         Bx8Bkz8AfyxALFsmWCK9/jl7Cej2eCToPtpeut6pHwxO0/4QeXIxc2W3flRIC0HIhgcK
+         CFaA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f707cc23si26494156d6.81.2025.03.06.20.02.01
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e54fc907si270981785a.236.2025.03.06.20.02.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 20:02:01 -0800 (PST)
+        Thu, 06 Mar 2025 20:02:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tqOsg-0007nH-SN; Thu, 06 Mar 2025 23:00:15 -0500
+	id 1tqOta-0000l6-HV; Thu, 06 Mar 2025 23:01:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOsb-0007iN-6c; Thu, 06 Mar 2025 23:00:09 -0500
+ id 1tqOtF-00008z-6P; Thu, 06 Mar 2025 23:00:49 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOsY-0004jN-SY; Thu, 06 Mar 2025 23:00:08 -0500
+ id 1tqOtC-00050B-QZ; Thu, 06 Mar 2025 23:00:48 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 7 Mar
- 2025 11:59:48 +0800
+ 2025 11:59:51 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 7 Mar 2025 11:59:48 +0800
+ Transport; Fri, 7 Mar 2025 11:59:51 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -65,10 +65,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v6 08/29] hw/arm/aspeed: Rename IRQ table and machine name for
- AST2700 A0
-Date: Fri, 7 Mar 2025 11:59:17 +0800
-Message-ID: <20250307035945.3698802-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v6 16/29] hw/intc/aspeed: Add Support for Multi-Output IRQ
+ Handling
+Date: Fri, 7 Mar 2025 11:59:25 +0800
+Message-ID: <20250307035945.3698802-17-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
 References: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
@@ -99,94 +99,304 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4h+CE9L6hhnS
+X-TUID: pWGEZVcvpgKf
 
-Currently, AST2700 SoC only supports A0. To support AST2700 A1, rename its IRQ
-table and machine name.
+This update introduces support for handling multi-output IRQs in the AST2700
+interrupt controller (INTC), specifically for GICINT192_201. GICINT192_201 maps
+1:10 to input IRQ 0 and output IRQs 0 to 9. Each status bit corresponds to a
+specific IRQ.
 
-To follow the machine deprecation rule, the initial machine "ast2700-evb" is
-aliased to "ast2700a0-evb." In the future, we will alias "ast2700-evb" to new
-SoCs, such as "ast2700a1-evb."
+Implemented "aspeed_intc_set_irq_handler_multi_outpins" to handle IRQs with
+multiple output pins. Introduced "aspeed_intc_status_handler_multi_outpins"
+for managing status registers associated with multi-output IRQs.
+
+Added new IRQ definitions for GICINT192_201 in INTC.
+Adjusted the IRQ array to accommodate 10 input pins and 19 output pins,
+aligning with the new GICINT192_201 mappings.
+
+                   |------------------------------|
+                   |            INTC              |
+                   |inpin[0:0]--------->outpin[0] |
+                   |inpin[0:1]--------->outpin[1] |
+                   |inpin[0:2]--------->outpin[2] |
+                   |inpin[0:3]--------->outpin[3] |
+orgates[0]-------> |inpin[0:4]--------->outpin[4] |
+                   |inpin[0:5]--------->outpin[5] |
+                   |inpin[0:6]--------->outpin[6] |
+                   |inpin[0:7]--------->outpin[7] |
+                   |inpin[0:8]--------->outpin[8] |
+                   |inpin[0:9]--------->outpin[9] |
+                   |                              |
+ orgates[1]------> |inpin[1]----------->outpin[10]|
+ orgates[2]------> |inpin[2]----------->outpin[11]|
+ orgates[3]------> |inpin[3]----------->outpin[12]|
+ orgates[4]------> |inpin[4]----------->outpin[13]|
+ orgates[5]------> |inpin[5]----------->outpin[14]|
+ orgates[6]------> |inpin[6]----------->outpin[15]|
+ orgates[7]------> |inpin[7]----------->outpin[16]|
+ orgates[8]------> |inpin[8]----------->outpin[17]|
+ orgates[9]------> |inpin[9]----------->outpin[18]|
+                   |------------------------------|
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c         | 9 +++++----
- hw/arm/aspeed_ast27x0.c | 8 ++++----
- 2 files changed, 9 insertions(+), 8 deletions(-)
+ include/hw/intc/aspeed_intc.h |   4 +-
+ hw/intc/aspeed_intc.c         | 149 ++++++++++++++++++++++++++++++----
+ hw/intc/trace-events          |   1 +
+ 3 files changed, 137 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index c6c18596d6..18f7c450da 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1673,12 +1673,13 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
-                             TYPE_TMP105, 0x4d);
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index e6c3a27264..85df8c6be9 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -16,8 +16,8 @@
+ #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+ OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+ 
+-#define ASPEED_INTC_MAX_INPINS 9
+-#define ASPEED_INTC_MAX_OUTPINS 9
++#define ASPEED_INTC_MAX_INPINS 10
++#define ASPEED_INTC_MAX_OUTPINS 19
+ 
+ typedef struct AspeedINTCIRQ {
+     int inpin_idx;
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index 3aa97add8b..f2ca9237ea 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -39,6 +39,8 @@ REG32(GICINT135_EN,         0x700)
+ REG32(GICINT135_STATUS,     0x704)
+ REG32(GICINT136_EN,         0x800)
+ REG32(GICINT136_STATUS,     0x804)
++REG32(GICINT192_201_EN,         0xB00)
++REG32(GICINT192_201_STATUS,     0xB04)
+ 
+ static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
+                                                 uint32_t reg)
+@@ -112,9 +114,55 @@ static void aspeed_intc_set_irq_handler(AspeedINTCState *s,
+     }
  }
  
--static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
-+static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc, void *data)
++static void aspeed_intc_set_irq_handler_multi_outpins(AspeedINTCState *s,
++                                 const AspeedINTCIRQ *intc_irq, uint32_t select)
++{
++    const char *name = object_get_typename(OBJECT(s));
++    uint32_t status_reg;
++    int num_outpins;
++    int outpin_idx;
++    int inpin_idx;
++    int i;
++
++    num_outpins = intc_irq->num_outpins;
++    status_reg = intc_irq->status_reg;
++    outpin_idx = intc_irq->outpin_idx;
++    inpin_idx = intc_irq->inpin_idx;
++
++    for (i = 0; i < num_outpins; i++) {
++        if (select & BIT(i)) {
++            if (s->mask[inpin_idx] & BIT(i) ||
++                s->regs[status_reg] & BIT(i)) {
++                /*
++                 * a. mask bit is not 0 means in ISR mode sources interrupt
++                 * routine are executing.
++                 * b. status bit is not 0 means previous source interrupt
++                 * does not be executed, yet.
++                 *
++                 * save source interrupt to pending bit.
++                 */
++                 s->pending[inpin_idx] |= BIT(i);
++                 trace_aspeed_intc_pending_irq(name, inpin_idx,
++                                               s->pending[inpin_idx]);
++            } else {
++                /*
++                 * notify firmware which source interrupt are coming
++                 * by setting status bit
++                 */
++                s->regs[status_reg] |= BIT(i);
++                trace_aspeed_intc_trigger_irq(name, inpin_idx, outpin_idx + i,
++                                              s->regs[status_reg]);
++                aspeed_intc_update(s, inpin_idx, outpin_idx + i, 1);
++            }
++        }
++    }
++}
++
+ /*
+- * GICINT128 to GICINT136 map 1:1 to input and output IRQs 0 to 8.
+- * The value of input IRQ should be between 0 and the number of inputs.
++ * GICINT192_201 maps 1:10 to input IRQ 0 and output IRQs 0 to 9.
++ * GICINT128 to GICINT136 map 1:1 to input IRQs 1 to 9 and output
++ * IRQs 10 to 18. The value of input IRQ should be between 0 and
++ * the number of input pins.
+  */
+ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+@@ -124,12 +172,14 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     const AspeedINTCIRQ *intc_irq;
+     uint32_t select = 0;
+     uint32_t enable;
++    int num_outpins;
+     int inpin_idx;
+     int i;
  
--    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
-+    mc->alias = "ast2700-evb";
-+    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
-     amc->soc_name  = "ast2700-a0";
-     amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-     amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
-@@ -1817,9 +1818,9 @@ static const TypeInfo aspeed_machine_types[] = {
-         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
- #ifdef TARGET_AARCH64
-     }, {
--        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
-+        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_ast2700_evb_class_init,
-+        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
- #endif
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 10e1358166..de79724446 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -73,7 +73,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
- #define AST2700_MAX_IRQ 256
+     assert(irq < aic->num_inpins);
  
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
--static const int aspeed_soc_ast2700_irqmap[] = {
-+static const int aspeed_soc_ast2700a0_irqmap[] = {
-     [ASPEED_DEV_UART0]     = 132,
-     [ASPEED_DEV_UART1]     = 132,
-     [ASPEED_DEV_UART2]     = 132,
-@@ -762,7 +762,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
+     intc_irq = &aic->irq_table[irq];
++    num_outpins = intc_irq->num_outpins;
+     inpin_idx = intc_irq->inpin_idx;
+     trace_aspeed_intc_set_irq(name, inpin_idx, level);
+     enable = s->enable[inpin_idx];
+@@ -151,7 +201,11 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     }
+ 
+     trace_aspeed_intc_select(name, select);
+-    aspeed_intc_set_irq_handler(s, intc_irq, select);
++    if (num_outpins > 1) {
++        aspeed_intc_set_irq_handler_multi_outpins(s, intc_irq, select);
++    } else {
++        aspeed_intc_set_irq_handler(s, intc_irq, select);
++    }
  }
  
--static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
-+static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
+ static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
+@@ -261,6 +315,66 @@ static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
+     }
+ }
+ 
++static void aspeed_intc_status_handler_multi_outpins(AspeedINTCState *s,
++                                                hwaddr offset, uint64_t data)
++{
++    const char *name = object_get_typename(OBJECT(s));
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
++    const AspeedINTCIRQ *intc_irq;
++    uint32_t reg = offset >> 2;
++    int num_outpins;
++    int outpin_idx;
++    int inpin_idx;
++    int i;
++
++    if (!data) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid data 0\n", __func__);
++        return;
++    }
++
++    intc_irq = aspeed_intc_get_irq(aic, reg);
++    num_outpins = intc_irq->num_outpins;
++    outpin_idx = intc_irq->outpin_idx;
++    inpin_idx = intc_irq->inpin_idx;
++    assert(inpin_idx < aic->num_inpins);
++
++    /* clear status */
++    s->regs[reg] &= ~data;
++
++    /*
++     * The status registers are used for notify sources ISR are executed.
++     * If one source ISR is executed, it will clear one bit.
++     * If it clear all bits, it means to initialize this register status
++     * rather than sources ISR are executed.
++     */
++    if (data == 0xffffffff) {
++        return;
++    }
++
++    for (i = 0; i < num_outpins; i++) {
++        /* All source ISR executions are done from a specific bit */
++        if (data & BIT(i)) {
++            trace_aspeed_intc_all_isr_done_bit(name, inpin_idx, i);
++            if (s->pending[inpin_idx] & BIT(i)) {
++                /*
++                 * Handle pending source interrupt.
++                 * Notify firmware which source interrupt is pending
++                 * by setting the status bit.
++                 */
++                s->regs[reg] |= BIT(i);
++                s->pending[inpin_idx] &= ~BIT(i);
++                trace_aspeed_intc_trigger_irq(name, inpin_idx, outpin_idx + i,
++                                              s->regs[reg]);
++                aspeed_intc_update(s, inpin_idx, outpin_idx + i, 1);
++            } else {
++                /* clear irq for the specific bit */
++                trace_aspeed_intc_clear_irq(name, inpin_idx, outpin_idx + i, 0);
++                aspeed_intc_update(s, inpin_idx, outpin_idx + i, 0);
++            }
++        }
++    }
++}
++
+ static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
  {
-     static const char * const valid_cpu_types[] = {
-         ARM_CPU_TYPE_NAME("cortex-a35"),
-@@ -785,7 +785,7 @@ static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
-     sc->uarts_num    = 13;
-     sc->num_cpus     = 4;
-     sc->uarts_base   = ASPEED_DEV_UART0;
--    sc->irqmap       = aspeed_soc_ast2700_irqmap;
-+    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
-     sc->memmap       = aspeed_soc_ast2700_memmap;
-     sc->get_irq      = aspeed_soc_ast2700_get_irq;
- }
-@@ -800,7 +800,7 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
-         .name           = "ast2700-a0",
-         .parent         = TYPE_ASPEED27X0_SOC,
-         .instance_init  = aspeed_soc_ast2700_init,
--        .class_init     = aspeed_soc_ast2700_class_init,
-+        .class_init     = aspeed_soc_ast2700a0_class_init,
-     },
+     AspeedINTCState *s = ASPEED_INTC(opaque);
+@@ -293,6 +407,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT134_EN:
+     case R_GICINT135_EN:
+     case R_GICINT136_EN:
++    case R_GICINT192_201_EN:
+         aspeed_intc_enable_handler(s, offset, data);
+         break;
+     case R_GICINT128_STATUS:
+@@ -306,6 +421,9 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT136_STATUS:
+         aspeed_intc_status_handler(s, offset, data);
+         break;
++    case R_GICINT192_201_STATUS:
++        aspeed_intc_status_handler_multi_outpins(s, offset, data);
++        break;
+     default:
+         s->regs[reg] = data;
+         break;
+@@ -415,15 +533,16 @@ static const TypeInfo aspeed_intc_info = {
  };
  
+ static AspeedINTCIRQ aspeed_2700_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
+-    {0, 0, 1, R_GICINT128_EN, R_GICINT128_STATUS},
+-    {1, 1, 1, R_GICINT129_EN, R_GICINT129_STATUS},
+-    {2, 2, 1, R_GICINT130_EN, R_GICINT130_STATUS},
+-    {3, 3, 1, R_GICINT131_EN, R_GICINT131_STATUS},
+-    {4, 4, 1, R_GICINT132_EN, R_GICINT132_STATUS},
+-    {5, 5, 1, R_GICINT133_EN, R_GICINT133_STATUS},
+-    {6, 6, 1, R_GICINT134_EN, R_GICINT134_STATUS},
+-    {7, 7, 1, R_GICINT135_EN, R_GICINT135_STATUS},
+-    {8, 8, 1, R_GICINT136_EN, R_GICINT136_STATUS},
++    {0, 0, 10, R_GICINT192_201_EN, R_GICINT192_201_STATUS},
++    {1, 10, 1, R_GICINT128_EN, R_GICINT128_STATUS},
++    {2, 11, 1, R_GICINT129_EN, R_GICINT129_STATUS},
++    {3, 12, 1, R_GICINT130_EN, R_GICINT130_STATUS},
++    {4, 13, 1, R_GICINT131_EN, R_GICINT131_STATUS},
++    {5, 14, 1, R_GICINT132_EN, R_GICINT132_STATUS},
++    {6, 15, 1, R_GICINT133_EN, R_GICINT133_STATUS},
++    {7, 16, 1, R_GICINT134_EN, R_GICINT134_STATUS},
++    {8, 17, 1, R_GICINT135_EN, R_GICINT135_STATUS},
++    {9, 18, 1, R_GICINT136_EN, R_GICINT136_STATUS},
+ };
+ 
+ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+@@ -433,10 +552,10 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "ASPEED 2700 INTC Controller";
+     aic->num_lines = 32;
+-    aic->num_inpins = 9;
+-    aic->num_outpins = 9;
++    aic->num_inpins = 10;
++    aic->num_outpins = 19;
+     aic->mem_size = 0x4000;
+-    aic->nr_regs = 0x808 >> 2;
++    aic->nr_regs = 0xB08 >> 2;
+     aic->reg_offset = 0x1000;
+     aic->irq_table = aspeed_2700_intc_irqs;
+     aic->irq_table_count = ARRAY_SIZE(aspeed_2700_intc_irqs);
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index e97eea820b..913197a181 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -92,6 +92,7 @@ aspeed_intc_enable(const char *s, uint32_t value) "%s: Enable: 0x%x"
+ aspeed_intc_select(const char *s, uint32_t value) "%s: Select: 0x%x"
+ aspeed_intc_mask(const char *s, uint32_t change, uint32_t value) "%s: Mask: 0x%x: 0x%x"
+ aspeed_intc_unmask(const char *s, uint32_t change, uint32_t value) "%s: UnMask: 0x%x: 0x%x"
++aspeed_intc_all_isr_done_bit(const char *s, int inpin_idx, int bit) "%s: All source ISR execution are done from specific bit: %d-%d"
+ 
+ # arm_gic.c
+ gic_enable_irq(int irq) "irq %d enabled"
 -- 
 2.43.0
 

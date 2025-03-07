@@ -1,77 +1,78 @@
-Received: by 2002:a05:7022:90e:b0:99:f831:508e with SMTP id bs14csp2020135dlb;
-        Thu, 6 Mar 2025 23:41:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUsKVLquJS/+iwXMXMRnTL0eDGKvfrk9c4voO9XStViJ7JldVvfxIGg8gn9qZfs1MxQ4P07ib6suHD/gw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFLK6N2m3ATpZIS1uGNeJhPXm7EKTZDsw1KGiKmyXG+bTpdvTPw34dqZEt3X44sl0WIccde
-X-Received: by 2002:a05:622a:134a:b0:474:fb73:698b with SMTP id d75a77b69052e-47618b37e39mr25764271cf.48.1741333291259;
-        Thu, 06 Mar 2025 23:41:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741333291; cv=none;
+Received: by 2002:a05:7022:90e:b0:99:f831:508e with SMTP id bs14csp2021179dlb;
+        Thu, 6 Mar 2025 23:44:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUZWNXfR7cnqNxWI+PkAJg2jKfxTh2tey0E+Q0TLrcnM3V5u2tI3fwFzUdrgNfOjJhdSMEY1q78u9/fWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/lcrqB3o1+rkuKIXHgcmPuljgvEebTxvADLNxR+/WLS3PcdNPo4IkCX34kiOOeB7uRkg5
+X-Received: by 2002:ac8:570e:0:b0:474:fc6e:f7f9 with SMTP id d75a77b69052e-4761185522emr29088241cf.33.1741333491008;
+        Thu, 06 Mar 2025 23:44:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741333490; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZKbhbNfz54cqOtPXbf8SgaIUYyuUo2LJPAgfSdGxSvkjt/jqbnazTs9WXyIRp5lXBc
-         UK91UoYLSQYdDTtc1OGnmj6zL776cdCv1izApKgRRZyatEVFj4VjA3rHzbVhWXKfvhTk
-         PK0aj9AoYkT5yA35Rz7yr40jJzUtpy7Lvl/aWg33ynHSbIlNxcyeEFDzR51n9d0BxdP4
-         XDVdxDsg0q5qdMW2szQbs8LGxWiNEOcczOU/8MXD/nHBgi5xN2VFVrRoWGMzQnBNYn1R
-         p2L3Yw3YK5a8AgZ3mcBPGOFv+aHj0S3jbBpysl6JlAXOT50wXCIacFxYsbCbIkWpuQHK
-         sTSQ==
+        b=IeM3WikTrCm3UfXSZtDie1opkfnYsu4Gx6p2Vx5FNjwAmqniovQH/6mldWku+2Z7EZ
+         dVwF7Ps2XmsQ6Rh7/ZzD4n+g17R3ZXHy+l+kjgxVRZ7yCKyR8SLHD+NyRghHr+0vpLAl
+         nLzNhm/UBUng4g4MUG82Lsa6uQ12BlnhFoPxzrw6KXYJ0AWbt+QdTckQwVt05oAQyjOo
+         7dqsKzeEyGi73YLwxW4BIiO1n+sZum/xGNY3Yx13HCQ5fiWoD9VjSo7U7PoZTdEjBGRF
+         XUsVPIDk+0w4t/2DRKBFQffRe5a33r8amcf3fwnEE0j9Y+TNzVQCVi3XTdBuW+BAyXrv
+         F95A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=UTg4+r//cG7YzIaJNxDwRLlILusQ4/HD/nI33/e1+uQ=;
-        fh=fbqh+izptnC032W6w3e0wcNAGLB2wAQxPesFimT+vuM=;
-        b=dhwZzaVKawTY9Fp9PhuC336g9NbobRHt8BUUr12gaZhn/Q3g2JYPhN9bjtAdaDekpV
-         d9ulUxTdN+C27hVDw4nGbUBCotWQY1R/fZiiwa/y2NqwsTEvpGNz/p5REYxBNpDQ2gv6
-         7oS30cUWAmgoRqV3vGZysXwmt1G0aJXmbWp8wN01sFu5XX0HTpnf6AoDaKCHG4UpMJGi
-         nJP4Mu9ONV8mtlK8fjrDOtS1/nDpil2IqrYXI0haxGkmZ0UiJUDWpUVccmdfvz8m1rO0
-         tfeF2SO4l/uHOMY3BvAudDO81iD5Wb/HCEdeDevz1bV3pVyT4ehyFrNxL9dmeftBO41o
-         3THA==;
+        bh=hF0HYkvbeS6qVw+1HWL4hfi7HQy6P0/pbIOwD2/IcvY=;
+        fh=uYgLQ/RASatA36862a0CBA0fRsT+kExSFwR1sQIxk/c=;
+        b=LeZAcvRjlcUvzuP9NfuxkB3r8iiTg34yKPSAi5QhI6kYh1vDBGNWAPVO9Vjlf7PL2y
+         bh2QZ4wlk0L+8gLg8b9hkprkQNAydcZF4rdUQyQn6a6IWAAQAViNOytpRpzw6uVWndlv
+         GUeaXgK3SS5iMAqAXJQlz6wC1zwY53/KTGbo4HNdNbvVrFTLDGmcwsZIPARbx+Qb44pM
+         U1vnSwuPcQte8dJjzNbcJrzlz0Q8yseMOMkYxCPfbjoPE+Tf4KN/CN1X9LtXnOpFAZi6
+         ckWX1exDxQJK/J6PO/tyxMOEmVAGjpZV6Nnj/jyb7bQP+fT7NuSPmBKUk19m1WlVuFhv
+         3wdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4751db4278asi28443321cf.537.2025.03.06.23.41.31
+        by mx.google.com with ESMTPS id d75a77b69052e-4751db1dcacsi30300291cf.357.2025.03.06.23.44.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Mar 2025 23:41:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Mar 2025 23:44:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tqSKM-00054B-Iu; Fri, 07 Mar 2025 02:41:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tqSNg-0006LR-VY; Fri, 07 Mar 2025 02:44:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3Khh=V2=kaod.org=clg@ozlabs.org>)
- id 1tqSKL-00053u-9d; Fri, 07 Mar 2025 02:41:01 -0500
+ id 1tqSNb-0006KX-Jm; Fri, 07 Mar 2025 02:44:24 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3Khh=V2=kaod.org=clg@ozlabs.org>)
- id 1tqSKJ-0007C5-89; Fri, 07 Mar 2025 02:41:00 -0500
+ id 1tqSNZ-0007rF-5H; Fri, 07 Mar 2025 02:44:23 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z8J9z2j5Wz4x04;
- Fri,  7 Mar 2025 18:40:55 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Z8JFt3Kvwz4x04;
+ Fri,  7 Mar 2025 18:44:18 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z8J9w0v1xz4wcy;
- Fri,  7 Mar 2025 18:40:51 +1100 (AEDT)
-Message-ID: <4de0039c-16a9-4485-bfa9-dad5bc813c1f@kaod.org>
-Date: Fri, 7 Mar 2025 08:40:49 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Z8JFq0X5Zz4wgp;
+ Fri,  7 Mar 2025 18:44:14 +1100 (AEDT)
+Message-ID: <09cb40d5-dcba-40f5-916e-f303eba911cb@kaod.org>
+Date: Fri, 7 Mar 2025 08:44:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v5,1/6] hw/misc/aspeed_scu: Skipping dram_init in u-boot
-To: Nabih Estefan <nabihestefan@google.com>
-Cc: jamin_lin@aspeedtech.com, Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH v6 00/29] Support AST2700 A1
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20250306000408.2088020-1-nabihestefan@google.com>
- <310205a4-15b1-43b1-93ee-d20d47285478@kaod.org>
- <CA+QoejW15VztgKQ8f2a_ApA=P+eC70Et80pUVcd9rBR=j+cRAw@mail.gmail.com>
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
+ <3485cd84-2aab-45e7-a72c-ca1d85e007ec@kaod.org>
+ <SI2PR06MB5041DD86414B93AB1C77C759FCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,9 +117,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CA+QoejW15VztgKQ8f2a_ApA=P+eC70Et80pUVcd9rBR=j+cRAw@mail.gmail.com>
+In-Reply-To: <SI2PR06MB5041DD86414B93AB1C77C759FCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=3Khh=V2=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -128,40 +129,166 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VEvdmoqcYAfH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W3Tbdkm/boSQ
 
-Hello,
-
-On 3/6/25 19:05, Nabih Estefan wrote:
-> Hi Cédric,
+On 3/7/25 08:36, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> We have a custom machine and a custom image using the AST27x0 A0. I ran
-> some of our internal tests using these patches. They even fixed some of the
-> errors we’d been seeing recently!
+>> Subject: Re: [PATCH v6 00/29] Support AST2700 A1
+>>
+>> On 3/7/25 04:59, Jamin Lin wrote:
+>>> v1:
+>>>    1. Refactor INTC model to support both INTC0 and INTC1.
+>>>    2. Support AST2700 A1.
+>>>    3. Create ast2700a0-evb machine.
+>>>
+>>> v2:
+>>>     To streamline the review process, split the following patch series into
+>>>     three parts.
+>>>
+>> https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.246
+>> 5942-1-jamin_lin@aspeedtech.com/
+>>>     This patch series focuses on cleaning up the INTC model to
+>>>     facilitate future support for the INTC_IO model.
+>>>
+>>> v3:
+>>>    1. Update and add functional test for AST2700
+>>>    2. Add AST2700 INTC design guidance and its block diagram.
+>>>    3. Retaining the INTC naming and introducing a new INTCIO model to
+>> support the AST2700 A1.
+>>>    4. Create ast2700a1-evb machine and rename ast2700a0-evb machine
+>>>    5. Fix silicon revision issue and support AST2700 A1.
+>>>
+>>> v4:
+>>>    1. rework functional test for AST2700
+>>>    2. the initial machine "ast2700-evb" is aliased to "ast2700a0-evb.
+>>>    3. intc: Reduce regs array size by adding a register sub-region
+>>>    4. intc: split patch for Support setting different register sizes
+>>>    5. update ast2700a1-evb machine parent to TYPE_ASPEED_MACHINE
+>>>
+>>> v5:
+>>>    1. Rename status_addr and addr to status_reg and reg for clarity
+>>>    2. Introduce dynamic allocation for regs array
+>>>    3. Sort the memmap table by mapping address
+>>>    4. ast27x0.c split patch for Support two levels of INTC controllers for
+>> AST2700 A1
+>>>    5. tests/functional/aspped split patch for Introduce start_ast2700_test API
+>>>    6. keep variable naming for reviewer suggestion.
+>>>    7. Add reviewer suggestion and split patch to make more readable.
+>>>
+>>> v6:
+>>>     1. rename reg_size to nr_regs
+>>>     2. Fix clean regs size
+>>>     3. replace g_malloc with g_new
+>>>
+>>> With the patch applied, QEMU now supports two machines for running
+>> AST2700 SoCs:
+>>> ast2700a0-evb: Designed for AST2700 A0
+>>> ast2700a1-evb: Designed for AST2700 A1
+>>>
+>>> Test information
+>>> 1. QEMU version:
+>> https://github.com/qemu/qemu/commit/50d38b8921837827ea397d4b20c8bc
+>> 5efe186e53
+>>> 2. ASPEED SDK v09.05 pre-built image
+>>>      https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
+>>>      ast2700-default-obmc.tar.gz (AST2700 A1)
+>>>
+>> https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast
+>> 2700-default-obmc.tar.gz
+>>>      ast2700-a0-default-obmc.tar.gz (AST2700 A0)
+>>>
+>> https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast
+>> 2700-a0-default-obmc.tar.gz
+>>>
+>>> This patch series depends on the following patch series:
+>>>
+>> https://patchwork.kernel.org/project/qemu-devel/cover/20250304064710.212
+>> 8993-1-jamin_lin@aspeedtech.com/
+>>>
+>> https://patchwork.kernel.org/project/qemu-devel/cover/20250225075622.305
+>> 515-1-jamin_lin@aspeedtech.com/
+>>>
+>>> Jamin Lin (29):
+>>>     hw/intc/aspeed: Support setting different memory size
+>>>     hw/intc/aspeed: Rename status_addr and addr to status_reg and reg for
+>>>       clarity
+>>>     hw/intc/aspeed: Introduce dynamic allocation for regs array
+>>>     hw/intc/aspeed: Support setting different register size
+>>>     hw/intc/aspeed: Reduce regs array size by adding a register sub-region
+>>>     hw/intc/aspeed: Introduce helper functions for enable and status
+>>>       registers
+>>>     hw/intc/aspeed: Add object type name to trace events for better
+>>>       debugging
+>>>     hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
+>>>     hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
+>>>     hw/intc/aspeed: Support different memory region ops
+>>>     hw/intc/aspeed: Rename num_ints to num_inpins for clarity
+>>>     hw/intc/aspeed: Add support for multiple output pins in INTC
+>>>     hw/intc/aspeed: Refactor INTC to support separate input and output pin
+>>>       indices
+>>>     hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
+>>>       index and register address
+>>>     hw/intc/aspeed: Introduce IRQ handler function to reduce code
+>>>       duplication
+>>>     hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
+>>>     hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
+>>>     hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
+>>>       Revisions
+>>>     hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC Interrupt Mapping
+>>>     hw/arm/aspeed_ast27x0: Define an Array of AspeedINTCState with Two
+>>>       Instances
+>>>     hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
+>>>       AST2700 A1
+>>>     hw/arm/aspeed_ast27x0: Add SoC Support for AST2700 A1
+>>>     hw/arm/aspeed: Add Machine Support for AST2700 A1
+>>>     hw/arm/aspeed_ast27x0: Sort the memmap table by mapping address
+>>>     tests/functional/aspeed: Introduce start_ast2700_test API
+>>>     tests/functional/aspeed: Update temperature hwmon path
+>>>     tests/functional/aspeed: Update test ASPEED SDK v09.05
+>>>     tests/functional/aspeed: Add test case for AST2700 A1
+>>>     docs/specs: Add aspeed-intc
+>>>
+>>>    docs/specs/aspeed-intc.rst              | 136 +++++
+>>>    docs/specs/index.rst                    |   1 +
+>>>    include/hw/arm/aspeed_soc.h             |   3 +-
+>>>    include/hw/intc/aspeed_intc.h           |  36 +-
+>>>    include/hw/misc/aspeed_scu.h            |   2 +
+>>>    hw/arm/aspeed.c                         |  33 +-
+>>>    hw/arm/aspeed_ast27x0.c                 | 329 ++++++++----
+>>>    hw/intc/aspeed_intc.c                   | 667
+>> ++++++++++++++++++------
+>>>    hw/misc/aspeed_scu.c                    |   2 +
+>>>    hw/intc/trace-events                    |  25 +-
+>>>    tests/functional/test_aarch64_aspeed.py |  47 +-
+>>>    11 files changed, 978 insertions(+), 303 deletions(-)
+>>>    create mode 100644 docs/specs/aspeed-intc.rst
+>>>
+>>
+>> Applied to aspeed-next.
+>>
 > 
-> I’m also working on testing through the A1 patches, will reply to those soon.
+> I really appreciate your great help and support recently. Supporting 
+> AST2700 A1 is a significant milestone.
 
-I pushed them on the aspeed-next branch.
+yw.
 
-	https://github.com/legoater/qemu/commits/aspeed-next/
-
-and should send a PR around the week-end.
+What about the "AST27x0 multi-SoC machine" series ?
 
 Thanks,
 
 C.
-
 

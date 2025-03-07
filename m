@@ -1,37 +1,37 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1937581njm;
-        Thu, 6 Mar 2025 20:00:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX5eOs/bQYXxAGtiFiliyB8XHYNOpruyICxuibaMXkXnnDX17cPHxkJcsbsich/wnB1Er2ReAQPUWwY6g==@linaro.org
-X-Google-Smtp-Source: AGHT+IG/tWfe3AyhoZYdGCRRYoEVdWbFDvH1gmb9pU9t1L4PF9miT7gxkoHR6L2FoXEmklJLOJpB
-X-Received: by 2002:a05:620a:6881:b0:7c0:c00e:5913 with SMTP id af79cd13be357-7c4e61b88dcmr292777785a.48.1741320041211;
+Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp1937590njm;
+        Thu, 6 Mar 2025 20:00:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXz2dPkXCD5hzLzeW7pZ0kkg8iTc/xjU+04t5yaq/RO+kZ8VTKqffZUIoRu65wG8//cPnQvOsiyEQFBEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFCBVns+W1XOe9HITAHmw+qZmDtpP0fMNi+G0Ob4h4sKSSSTiU1o8QsO10qW1McaUc/ZAtu
+X-Received: by 2002:a05:620a:284e:b0:7c3:d7ef:f7f5 with SMTP id af79cd13be357-7c4e16829f5mr309574185a.18.1741320041994;
         Thu, 06 Mar 2025 20:00:41 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1741320041; cv=none;
         d=google.com; s=arc-20240605;
-        b=RkfMRMNQTO6j70FqScxKKttD4/wKG7sWHK99YiXUKJdRTOAYBm6f4oFKj2ZK9LdgMI
-         tDnzSSI1VhWCoo4pC7++2nsnMWkuFgs3owDdqquRARbyu6AEqeiUJTXSg/1UWVz6w2e3
-         5602B0ZCJN7gNeKd52ecgwyRToHi3ZrUf8HMuDOUB+VhQmR5h/M5dqs3YwMJKTFaQnL1
-         vIwglSVXtejuYFq5TEaBB4GULOjouIOBdiuzAez7Nbm5/dr2KxErEFrtM8+fBLwk3pT1
-         40G6Ubx13J4Uv9Ro7m5CRUBn12z/a5jiK2uIHR5OlQem98D6RWqhezjegQJwsB+JZSXU
-         HXhw==
+        b=LZTLs6k9mD2Oefsa/rnI8x+4LNRMNskOBN0m9bT8nQog7Vb9VCxecuR0fAF99Y0CM8
+         +h0awy0fiTTc0DUdKtWi2y9PfTQcPJTav/ihdS3jISIEW/+ODlWSxfCeSy0mTCiBkJVu
+         CcNWG2UYxGEaZsgcqiIB4+kj9Q+VIvmifWeOgRZBy8+fFBLkSwcgbPGrePj8WClD6vMS
+         Bz6lSLF3taoq+LhFX2wfefGOH7ICK8stiKH459QjT3uxO1BqHUXN7puSXLKtn2TquQFP
+         3DVPL2yfBD08/ZxhTTI606sfmj97lUBUy3YRr31AiQANFwA/Zt5cw9tRMw/adh/D0uH3
+         sdCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=G/FqBOCVIF9ma6GicFqYM/SLMCPfzuwOf0Jmg2AGYWE=;
-        fh=3cFqTtzBuOtpuAUHgGIZLk2EDwH0HGw77jNYFWHrQKI=;
-        b=j0J6tk4DdPe2jrB0sEcr6tYZ6O21dgkCDGleBdH0McuMr20L0XlvQsuuKf1L5hi7Dh
-         zQzoFYgka5Cr03fv/GL9PHxv+8jBOnG0/g2APPFxsOPr8HMFumxiajUBhbqJGikSrFCq
-         d0SH/pevu8fNPCGtfmnMdPPIwKH65rZ0kZUsYOEp+gk87v0K2Py4HZ8KFjIs2gRyHXdk
-         hILHGtTwF9AyOpUthqEnyFO7N3RwJxTZ+oNvfQzK6QNtwWjIfm7ySFeT+NZRPwgMsvV5
-         tAibJES2lSdFedT7SDbqQSr5zJ6qTFkf8b/xBg0yuSythnH9X/WQKHJMJ0jY8n+lEZvH
-         l90w==;
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=CpOxkulXCmek00PKn2DPYNY/bW7giwM/0+GM50EHFWQ=;
+        fh=08d/IJI4U+AnOjHRYBcV+/5HqY2oyeWSX1NtojG11zk=;
+        b=bUONgY4Uz+gfwk8NPuIEsq6xmYn3oKN8LPJJilQPTlgQ77zo4sECz4pQiLN9/FrB0m
+         n0DRgNzJNCFvbN5uCc7JVpe4Aq/cFnIjjDG9yVRY2K3pWM5JZRtildxxE+EBj9uryIX9
+         EX07OhdIH+/I6eofynbOTUdPycxOlu+ymXDiJhPzpqtzixN1g4Gtj3BCEVbYfA/joiOj
+         aQ73PhALW5W7myBHF/dU9PlOP1JwI+MEDDB16RuwPpadrRmDFgZ0MxETMF9F7zbv80eE
+         e7yiKs8Qixh4o6fA8ZFXkbXLoda3TN9xZV3NASpfdaWExqUQwXUu9OUOyLQISS6K+AS+
+         x5Aw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e5572f71si264789485a.636.2025.03.06.20.00.41
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f707ce9bsi25555726d6.99.2025.03.06.20.00.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 06 Mar 2025 20:00:41 -0800 (PST)
@@ -42,36 +42,32 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tqOsi-0007nt-4p; Thu, 06 Mar 2025 23:00:16 -0500
+	id 1tqOsQ-0007ZP-W9; Thu, 06 Mar 2025 22:59:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOsc-0007jd-0S; Thu, 06 Mar 2025 23:00:10 -0500
+ id 1tqOsO-0007X2-Gl; Thu, 06 Mar 2025 22:59:56 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tqOsa-0004iq-E6; Thu, 06 Mar 2025 23:00:09 -0500
+ id 1tqOsL-0004iq-Uw; Thu, 06 Mar 2025 22:59:56 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 7 Mar
- 2025 11:59:48 +0800
+ 2025 11:59:45 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 7 Mar 2025 11:59:48 +0800
+ Transport; Fri, 7 Mar 2025 11:59:45 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v6 09/29] hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ
- number
-Date: Fri, 7 Mar 2025 11:59:18 +0800
-Message-ID: <20250307035945.3698802-10-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
+Subject: [PATCH v6 00/29] Support AST2700 A1
+Date: Fri, 7 Mar 2025 11:59:09 +0800
+Message-ID: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
-References: <20250307035945.3698802-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -82,8 +78,7 @@ X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,93 +95,119 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /5NVAj9Q3ef6
+X-TUID: In9YvqBeDzvV
 
-To improve readability, sort the IRQ table by IRQ number.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
----
- hw/arm/aspeed_ast27x0.c | 50 ++++++++++++++++++++---------------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
-
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index de79724446..abd1f6b741 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -74,27 +74,13 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+v1:
+ 1. Refactor INTC model to support both INTC0 and INTC1.
+ 2. Support AST2700 A1.
+ 3. Create ast2700a0-evb machine.
  
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
- static const int aspeed_soc_ast2700a0_irqmap[] = {
--    [ASPEED_DEV_UART0]     = 132,
--    [ASPEED_DEV_UART1]     = 132,
--    [ASPEED_DEV_UART2]     = 132,
--    [ASPEED_DEV_UART3]     = 132,
--    [ASPEED_DEV_UART4]     = 8,
--    [ASPEED_DEV_UART5]     = 132,
--    [ASPEED_DEV_UART6]     = 132,
--    [ASPEED_DEV_UART7]     = 132,
--    [ASPEED_DEV_UART8]     = 132,
--    [ASPEED_DEV_UART9]     = 132,
--    [ASPEED_DEV_UART10]    = 132,
--    [ASPEED_DEV_UART11]    = 132,
--    [ASPEED_DEV_UART12]    = 132,
--    [ASPEED_DEV_FMC]       = 131,
-     [ASPEED_DEV_SDMC]      = 0,
--    [ASPEED_DEV_SCU]       = 12,
--    [ASPEED_DEV_ADC]       = 130,
-+    [ASPEED_DEV_HACE]      = 4,
-     [ASPEED_DEV_XDMA]      = 5,
--    [ASPEED_DEV_EMMC]      = 15,
--    [ASPEED_DEV_GPIO]      = 130,
-+    [ASPEED_DEV_UART4]     = 8,
-+    [ASPEED_DEV_SCU]       = 12,
-     [ASPEED_DEV_RTC]       = 13,
-+    [ASPEED_DEV_EMMC]      = 15,
-     [ASPEED_DEV_TIMER1]    = 16,
-     [ASPEED_DEV_TIMER2]    = 17,
-     [ASPEED_DEV_TIMER3]    = 18,
-@@ -103,19 +89,33 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
-     [ASPEED_DEV_TIMER6]    = 21,
-     [ASPEED_DEV_TIMER7]    = 22,
-     [ASPEED_DEV_TIMER8]    = 23,
--    [ASPEED_DEV_WDT]       = 131,
--    [ASPEED_DEV_PWM]       = 131,
-+    [ASPEED_DEV_DP]        = 28,
-     [ASPEED_DEV_LPC]       = 128,
-     [ASPEED_DEV_IBT]       = 128,
-+    [ASPEED_DEV_KCS]       = 128,
-+    [ASPEED_DEV_ADC]       = 130,
-+    [ASPEED_DEV_GPIO]      = 130,
-     [ASPEED_DEV_I2C]       = 130,
--    [ASPEED_DEV_PECI]      = 133,
-+    [ASPEED_DEV_FMC]       = 131,
-+    [ASPEED_DEV_WDT]       = 131,
-+    [ASPEED_DEV_PWM]       = 131,
-+    [ASPEED_DEV_I3C]       = 131,
-+    [ASPEED_DEV_UART0]     = 132,
-+    [ASPEED_DEV_UART1]     = 132,
-+    [ASPEED_DEV_UART2]     = 132,
-+    [ASPEED_DEV_UART3]     = 132,
-+    [ASPEED_DEV_UART5]     = 132,
-+    [ASPEED_DEV_UART6]     = 132,
-+    [ASPEED_DEV_UART7]     = 132,
-+    [ASPEED_DEV_UART8]     = 132,
-+    [ASPEED_DEV_UART9]     = 132,
-+    [ASPEED_DEV_UART10]    = 132,
-+    [ASPEED_DEV_UART11]    = 132,
-+    [ASPEED_DEV_UART12]    = 132,
-     [ASPEED_DEV_ETH1]      = 132,
-     [ASPEED_DEV_ETH2]      = 132,
-     [ASPEED_DEV_ETH3]      = 132,
--    [ASPEED_DEV_HACE]      = 4,
--    [ASPEED_DEV_KCS]       = 128,
--    [ASPEED_DEV_DP]        = 28,
--    [ASPEED_DEV_I3C]       = 131,
-+    [ASPEED_DEV_PECI]      = 133,
-     [ASPEED_DEV_SDHCI]     = 133,
- };
+v2:
+  To streamline the review process, split the following patch series into
+  three parts.
+  https://patchwork.kernel.org/project/qemu-devel/cover/20250121070424.2465942-1-jamin_lin@aspeedtech.com/
+  This patch series focuses on cleaning up the INTC model to
+  facilitate future support for the INTC_IO model.
+
+v3:
+ 1. Update and add functional test for AST2700
+ 2. Add AST2700 INTC design guidance and its block diagram.
+ 3. Retaining the INTC naming and introducing a new INTCIO model to support the AST2700 A1.
+ 4. Create ast2700a1-evb machine and rename ast2700a0-evb machine
+ 5. Fix silicon revision issue and support AST2700 A1.
+
+v4:
+ 1. rework functional test for AST2700
+ 2. the initial machine "ast2700-evb" is aliased to "ast2700a0-evb.
+ 3. intc: Reduce regs array size by adding a register sub-region
+ 4. intc: split patch for Support setting different register sizes
+ 5. update ast2700a1-evb machine parent to TYPE_ASPEED_MACHINE
+
+v5:
+ 1. Rename status_addr and addr to status_reg and reg for clarity
+ 2. Introduce dynamic allocation for regs array
+ 3. Sort the memmap table by mapping address
+ 4. ast27x0.c split patch for Support two levels of INTC controllers for AST2700 A1
+ 5. tests/functional/aspped split patch for Introduce start_ast2700_test API
+ 6. keep variable naming for reviewer suggestion.
+ 7. Add reviewer suggestion and split patch to make more readable.
  
+v6: 
+  1. rename reg_size to nr_regs
+  2. Fix clean regs size
+  3. replace g_malloc with g_new
+
+With the patch applied, QEMU now supports two machines for running AST2700 SoCs:
+ast2700a0-evb: Designed for AST2700 A0
+ast2700a1-evb: Designed for AST2700 A1
+
+Test information
+1. QEMU version: https://github.com/qemu/qemu/commit/50d38b8921837827ea397d4b20c8bc5efe186e53
+2. ASPEED SDK v09.05 pre-built image
+   https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
+   ast2700-default-obmc.tar.gz (AST2700 A1)
+   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz
+   ast2700-a0-default-obmc.tar.gz (AST2700 A0)
+   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz
+   
+This patch series depends on the following patch series:
+https://patchwork.kernel.org/project/qemu-devel/cover/20250304064710.2128993-1-jamin_lin@aspeedtech.com/
+https://patchwork.kernel.org/project/qemu-devel/cover/20250225075622.305515-1-jamin_lin@aspeedtech.com/
+
+Jamin Lin (29):
+  hw/intc/aspeed: Support setting different memory size
+  hw/intc/aspeed: Rename status_addr and addr to status_reg and reg for
+    clarity
+  hw/intc/aspeed: Introduce dynamic allocation for regs array
+  hw/intc/aspeed: Support setting different register size
+  hw/intc/aspeed: Reduce regs array size by adding a register sub-region
+  hw/intc/aspeed: Introduce helper functions for enable and status
+    registers
+  hw/intc/aspeed: Add object type name to trace events for better
+    debugging
+  hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
+  hw/arm/aspeed_ast27x0: Sort the IRQ table by IRQ number
+  hw/intc/aspeed: Support different memory region ops
+  hw/intc/aspeed: Rename num_ints to num_inpins for clarity
+  hw/intc/aspeed: Add support for multiple output pins in INTC
+  hw/intc/aspeed: Refactor INTC to support separate input and output pin
+    indices
+  hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
+    index and register address
+  hw/intc/aspeed: Introduce IRQ handler function to reduce code
+    duplication
+  hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
+  hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
+  hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
+    Revisions
+  hw/arm/aspeed_ast27x0.c Support AST2700 A1 GIC Interrupt Mapping
+  hw/arm/aspeed_ast27x0: Define an Array of AspeedINTCState with Two
+    Instances
+  hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
+    AST2700 A1
+  hw/arm/aspeed_ast27x0: Add SoC Support for AST2700 A1
+  hw/arm/aspeed: Add Machine Support for AST2700 A1
+  hw/arm/aspeed_ast27x0: Sort the memmap table by mapping address
+  tests/functional/aspeed: Introduce start_ast2700_test API
+  tests/functional/aspeed: Update temperature hwmon path
+  tests/functional/aspeed: Update test ASPEED SDK v09.05
+  tests/functional/aspeed: Add test case for AST2700 A1
+  docs/specs: Add aspeed-intc
+
+ docs/specs/aspeed-intc.rst              | 136 +++++
+ docs/specs/index.rst                    |   1 +
+ include/hw/arm/aspeed_soc.h             |   3 +-
+ include/hw/intc/aspeed_intc.h           |  36 +-
+ include/hw/misc/aspeed_scu.h            |   2 +
+ hw/arm/aspeed.c                         |  33 +-
+ hw/arm/aspeed_ast27x0.c                 | 329 ++++++++----
+ hw/intc/aspeed_intc.c                   | 667 ++++++++++++++++++------
+ hw/misc/aspeed_scu.c                    |   2 +
+ hw/intc/trace-events                    |  25 +-
+ tests/functional/test_aarch64_aspeed.py |  47 +-
+ 11 files changed, 978 insertions(+), 303 deletions(-)
+ create mode 100644 docs/specs/aspeed-intc.rst
+
 -- 
 2.43.0
 

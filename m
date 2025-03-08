@@ -1,231 +1,173 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp307920njc;
-        Sat, 8 Mar 2025 13:40:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVN+zYx370zt4uSe0nZS80pZ3ppi5kAxglVxIVrY68zAeegxwj4gxwN2db0M88sPMEWo38mSfEcR3MhaA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgZK9EdSRTaW4bzKmqvA3VIU7lsJTbB1zxg+Jh+QPb55g3cKxu9POYNwiwp0Bo9YABX9H1
-X-Received: by 2002:a05:622a:143:b0:472:1c67:c281 with SMTP id d75a77b69052e-476119592cdmr128705051cf.38.1741470038343;
-        Sat, 08 Mar 2025 13:40:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741470038; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp324631njc;
+        Sat, 8 Mar 2025 14:35:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU/aWp3do47+ZSceXHG3oCfduQwGnAd2+O+A1kPSwQJ6qrmNBEG49z76aFhyS/0oA8X6vJA8ot49jta4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IF4lyaF6X/f+4H5o6ShZTDNM9yXrd6LABOFfkYCeb7NGD4OOmeA4Kv41HCQhWVaQm0Ourdq
+X-Received: by 2002:ac8:5a09:0:b0:471:f9e7:5042 with SMTP id d75a77b69052e-476109812b4mr121341431cf.14.1741473302458;
+        Sat, 08 Mar 2025 14:35:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741473302; cv=none;
         d=google.com; s=arc-20240605;
-        b=B/dHuHPx4uPDJDsOSp7CCCpvNjFMT+3VpjV/U1A0lVUa6rflfCZgwffP3jEy65OFCk
-         05F8Tse+TTQA9GgDuYn9XqJO9prkuif4JVYfDfse12nIVbuGDhmt1nHBNwmRRYVxJWS6
-         AAhd2WyBAdPNc3wL9qwrvYa/yN2wUG9zKJEkp2XwnTK6vf0wZd2ilwqVlsj+3VKPKEDo
-         lgXKmyBQay1JrLOwTZKmoSUM2Mv9diVsrZq3542z2zidKgtIpdUwZcdMAnGlLoYpy4kF
-         E4WTr7CBNN0mdSy2CIbY0wRQH8oaa9lHmQXUoKHcnba7ApUiVy/NroS5nRQuvbItpbwn
-         SXpQ==
+        b=KfLbhhihupRdx88D9pQtmQXvAGwD+HtKqo0CCL2PKN2FEKhTprLNZ7baxoxjx9P8c9
+         dlk2rJ8F0SUKjdy6mB+8AC3sSFnpcDL61qo9utGGLakeQ7xEg6uMwRSOWLY+2CYPWQFu
+         uRSXA/mWGei8LDSvzNLlpSc81JVL9o6j0MjAZ6LWdFg/xNuipJvN3cmI4qy/UbWXEjPG
+         R6IN088Ye1XDMJXlepk0Q1bhC5amKQULt+dfmLPwV8EHUujpa1LclF9H6ka7+xkTMPbZ
+         mldm8yg4cJtuqUqZX9c50HKNQSOgDYRg/imL7bEYnayjl5Bcdd9rnL4dgenbOJ3pj6Xa
+         yLzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=m0Bj6u5XWk2deTKslAV1isfZbUtFm4cHL8zSvqgOqZ4=;
-        fh=0aqMpdNpISQJCzOYtHef9CdeEduyrfTLGfdd21icOMA=;
-        b=g0eCHEhxwf4LfeMHGQKjz59y4+lu1OCpmViF2sxN2tZCsZYw9IDS7Wqn6z2IiOFP1n
-         vfV4LS6yQU423qWii4JCw9Vfnnn0nqyP3h+OXOAaaIybW9w/J584bAK1/hDR2EkaI4Y+
-         1uOuA8NqKy7F61JzdyVJnBpURFbKgtpOLPbAw36YTeZ18vgpoRuDXvdgiIW9ErBJF0d/
-         owqwLQafNEs4hIMocBedIUqLTQ/ZXeQK+Cm6rp2EbpJXkpOmcv0+zA7RD1dSlypL3jAl
-         Ald1WAOLDpb/rwMtkhTjFJDTjSJlBKwuPe4aUKeAyibWZHVtSmZvReYHElGgNU0jD6sD
-         MO/g==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=gnAcCeeM5Dstty66aL2SWflmKsKQac9p58jhJ+Cv5W4=;
+        fh=g4IoZ6gARhmvvdqyrjYwV05NB5zXg6qgZind0UQ7Eok=;
+        b=ZJxfJneDuiF0Ur3q4EVwniOzHFQ1r2opEB/YlZXF76LI0SPXAWdxXzibiSMM9UvGMu
+         Ytrr5uy6h3Z+8Cc7xlRzOnVZtVGZJIELNwj8SXdYcHuPOvR79SmzpY3B9w7Kk+e0HaKN
+         Lc4IGkazh/SRDUIpaPBQBxvHud6H/ImbQISbuRY6WGCX95v9bgOOTmFydv5j8ejq5hoF
+         ypADP9Lun48fl8Uu7ifHd8RCzwqwUkRjAaZf5H1Or92d4YQW4zn5lIrQY1Lssq/bG5Ls
+         8xZ9OWw+3FT/uLqZ7hOFLaKadYoHIz6TVsKlXN4F6DPisPCow+tVbeJpp2OuVBHL8OYJ
+         QgDA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ICssHP8G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4767181a503si13632181cf.215.2025.03.08.13.40.38
+        by mx.google.com with ESMTPS id d75a77b69052e-47666bd70c9si22007761cf.217.2025.03.08.14.35.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Mar 2025 13:40:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 08 Mar 2025 14:35:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ICssHP8G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tr1tn-0001tR-Ck; Sat, 08 Mar 2025 16:40:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tr2l0-0000u7-IY; Sat, 08 Mar 2025 17:34:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1rp-0005sy-Fa
- for qemu-devel@nongnu.org; Sat, 08 Mar 2025 16:38:04 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1rl-00042d-DK
- for qemu-devel@nongnu.org; Sat, 08 Mar 2025 16:37:57 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43bc30adad5so17911745e9.1
- for <qemu-devel@nongnu.org>; Sat, 08 Mar 2025 13:37:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741469872; x=1742074672; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=m0Bj6u5XWk2deTKslAV1isfZbUtFm4cHL8zSvqgOqZ4=;
- b=ICssHP8GDR9s84FTt2chVMNbElp5iTX8Ec/9I22dK47yvv8BbaRXW3t6aA2dcQSSY/
- /KTeSM1JG5BLsP3BudR+veD5fHYR4JrTfNPFOllkwxe3sJH51pws/gGb8/yBrEu1bUk2
- gpw+yq9vKLtoW0yjOiv2boc7EvepSPp+qUUdT+mwOkYjVCsI3DyDZnMLPhXw83Jwe9a6
- vhzOh5Oiz6uW0M9QqpX6cLyMnqOEOXesRrIW8A7DDQVJQkige/9SHhI3/xRvxOm4cVS2
- UlugNRwZ1usYw6kQM1CpdXtLKaCjNFy552T6jVMM5fLDmKxkQLwI7VjhnKXsnx0l/dtE
- 4m3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741469872; x=1742074672;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=m0Bj6u5XWk2deTKslAV1isfZbUtFm4cHL8zSvqgOqZ4=;
- b=q5XEmWmMK5TKk49w2U5mPD4gW+EsXS6w/nCR+G1NzfGAF70f2fJ3jT3uSh8b5t16Sg
- YDMG9Qd1CYb775Gl5oNs9HwDfhragpccAGSQkOmX1G7/5BYsfGLMb+J3BVrLpoia7Uzj
- CHUe9Qogbm5Rox0tv1cblA2tCG8rSNDDbRCptvNKk0DSDXljI8dWDnHV48+cBifzfKuj
- lbuSJrW6LeR7tCBAj5uJvcGALJhyBY4gaFdT328XdCmue14q32DoL/BVhn6U9mmSnTub
- YOsdFzegW+DWeQdvdVLjTBLnV8Z7nu/bAldOs2nWcDY47fCq5q3uppX5GIc13pzt4MQW
- NJMg==
-X-Gm-Message-State: AOJu0Yzhz4BhTYb1k2zNPdOmwRrCPG9xTInn6PD2Kawpu0nZc3SqEHz/
- hfuMZnyIrdaIu9sC4T0tNv8qcSanSRWaaspHLbctPHfMVEzQUN2iJ+6tH/zyLvGvBQjTs62Al88
- UwZY=
-X-Gm-Gg: ASbGncs7VSvTXl7hm4ZNJfUFeyZaVzGBrLUI27QbEbaRhGY9MyKJweo/NUXDKUCmOX8
- ydUt8T8AqdgeojDQtPt8pStxgzDz+pLj5BpL1l8fe4JEFzIcuXAKlM87voqroF/o6xn48xrSuz0
- IsBMoo2EdgJg8wzDXmL38KdJqZli+5kurimI24megP+X01RLbEcxvJBnhLw53IXYhc54nc7a+VE
- 5iqGbK8Z518lqccOcuCFNZ0rQ+449MLlomUTNwGcIOySEDr2BgXDpzDwj2tYrRyGQMIWOf6AxQF
- L5tKaMS7BtxAXR4CGVYOfFdm6GQLbHyyrZbEcWWlCEENDrPZJ5vG2/7WZxdDbDwtPPKcz7zggVG
- 6N5WDtLn2oQ+7sNdzO3I=
-X-Received: by 2002:a5d:59af:0:b0:390:de66:cc0c with SMTP id
- ffacd0b85a97d-39132de1bbcmr5447541f8f.46.1741469871767; 
- Sat, 08 Mar 2025 13:37:51 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912c0e2b8bsm9963609f8f.64.2025.03.08.13.37.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Mar 2025 13:37:51 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	BALATON Zoltan <balaton@eik.bme.hu>
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Bernhard Beschow <shentey@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tr2kw-0000sc-Fu; Sat, 08 Mar 2025 17:34:54 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tr2kt-0007fV-Ow; Sat, 08 Mar 2025 17:34:53 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 8AC954E6019;
+ Sat, 08 Mar 2025 23:34:47 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id mUl9YcOaJ0Ul; Sat,  8 Mar 2025 23:34:45 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 91D8E4E600E; Sat, 08 Mar 2025 23:34:45 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 8F93C74577D;
+ Sat, 08 Mar 2025 23:34:45 +0100 (CET)
+Date: Sat, 8 Mar 2025 23:34:45 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>, 
+ Bernhard Beschow <shentey@gmail.com>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, 
+ Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org, 
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
-Subject: [PATCH v4 13/14] hw/sd/sdhci: Implement Freescale eSDHC as
- TYPE_FSL_ESDHC
-Date: Sat,  8 Mar 2025 22:36:39 +0100
-Message-ID: <20250308213640.13138-14-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250308213640.13138-1-philmd@linaro.org>
+Subject: Re: [PATCH v4 03/14] hw/sd/sdhci: Introduce SDHCIClass stub
+In-Reply-To: <20250308213640.13138-4-philmd@linaro.org>
+Message-ID: <1839f9de-2370-50bd-7003-ade92707f137@eik.bme.hu>
 References: <20250308213640.13138-1-philmd@linaro.org>
+ <20250308213640.13138-4-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1192097316-1741473285=:94708"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UGQi7F6n01wf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ivM0+2kmmqUY
 
-Per the MPC8569E reference manual, its SDHC I/O range is 4KiB
-wide, mapped in big endian order, and it only accepts 32-bit
-aligned access. Set the default register reset values.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/sd/sdhci.h |  2 ++
- hw/sd/sdhci.c         | 37 ++++++++++++++++++++++++++++++++++++-
- 2 files changed, 38 insertions(+), 1 deletion(-)
+--3866299591-1192097316-1741473285=:94708
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index eb8380187b5..966a1751f50 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -162,6 +162,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
- DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
-                        TYPE_SYSBUS_SDHCI)
- 
-+#define TYPE_FSL_ESDHC "fsl-esdhc"
-+
- #define TYPE_IMX_USDHC "imx-usdhc"
- 
- #define TYPE_S3C_SDHCI "s3c-sdhci"
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 234a6e4a1fe..d5cc0bf1458 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1653,7 +1653,37 @@ static void sdhci_bus_class_init(ObjectClass *klass, void *data)
-     sbc->set_readonly = sdhci_set_readonly;
- }
- 
--/* --- qdev i.MX eSDHC --- */
-+/* --- Freescale eSDHC (MPC8569ERM Rev.2 from 06/2011) --- */
-+
-+static const MemoryRegionOps fsl_esdhc_mmio_ops = {
-+    .read = sdhci_read,
-+    .write = sdhci_write,
-+    .valid = {
-+        .min_access_size = 4,
-+        .unaligned = false
-+    },
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsl_esdhc_class_init(ObjectClass *oc, void *data)
-+{
-+    SDHCIClass *sc = SYSBUS_SDHCI_CLASS(oc);
-+
-+    sc->iomem_size = 0x1000;
-+    sc->io_ops = &fsl_esdhc_mmio_ops;
-+    sc->ro.capareg = 0x01e30000;
-+    sc->reset.sdmasysad = 8;
-+    sc->reset.blkcnt = 8;
-+    sc->reset.prnsts = 0xff800000;
-+    sc->reset.hostctl1 = 0x20; /* Endian mode (address-invariant) */
-+    sc->reset.clkcon = 0x8000;
-+    sc->reset.norintstsen = 0x013f;
-+    sc->reset.errintstsen = 0x117f;
-+
-+    sdhci_common_class_init(oc, data);
-+}
-+
-+/* --- qdev i.MX uSDHC --- */
- 
- #define USDHC_MIX_CTRL                  0x48
- 
-@@ -1983,6 +2013,11 @@ static const TypeInfo sdhci_types[] = {
-         .class_size = sizeof(SDHCIClass),
-         .class_init = sdhci_sysbus_class_init,
-     },
-+    {
-+        .name = TYPE_FSL_ESDHC,
-+        .parent = TYPE_SYSBUS_SDHCI,
-+        .class_init = fsl_esdhc_class_init,
-+    },
-     {
-         .name = TYPE_IMX_USDHC,
-         .parent = TYPE_SYSBUS_SDHCI,
--- 
-2.47.1
+On Sat, 8 Mar 2025, Philippe Mathieu-Daudé wrote:
+> TYPE_SYSBUS_SDHCI is a bit odd because it uses an union
+> to work with both SysBus / PCI parent. As this is not a
+> normal use, introduce SDHCIClass in its own commit.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> include/hw/sd/sdhci.h | 9 +++++++++
+> hw/sd/sdhci.c         | 1 +
+> 2 files changed, 10 insertions(+)
+>
+> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+> index 48247e9a20f..c4b20db3877 100644
+> --- a/include/hw/sd/sdhci.h
+> +++ b/include/hw/sd/sdhci.h
+> @@ -107,6 +107,13 @@ struct SDHCIState {
+> };
+> typedef struct SDHCIState SDHCIState;
+>
+> +typedef struct SDHCIClass {
+> +    union {
+> +        PCIDeviceClass pci_parent_class;
+> +        SysBusDeviceClass sbd_parent_class;
+> +    };
+> +} SDHCIClass;
+> +
+> /*
+>  * Controller does not provide transfer-complete interrupt when not
+>  * busy.
+> @@ -123,6 +130,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
+> #define TYPE_SYSBUS_SDHCI "generic-sdhci"
+> DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
+>                          TYPE_SYSBUS_SDHCI)
+> +DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
+> +                       TYPE_SYSBUS_SDHCI)
 
+Are these two together just OBJECT_DECLARE_TYPE? Then the above typedefs 
+are also not needed just the struct definitions.
+
+Regards,
+BALATON Zoltan
+
+> #define TYPE_IMX_USDHC "imx-usdhc"
+>
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 149b748cbee..4917a9b3632 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -1960,6 +1960,7 @@ static const TypeInfo sdhci_types[] = {
+>         .instance_size = sizeof(SDHCIState),
+>         .instance_init = sdhci_sysbus_init,
+>         .instance_finalize = sdhci_sysbus_finalize,
+> +        .class_size = sizeof(SDHCIClass),
+>         .class_init = sdhci_sysbus_class_init,
+>     },
+>     {
+>
+--3866299591-1192097316-1741473285=:94708--

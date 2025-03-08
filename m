@@ -1,105 +1,103 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp251772njc;
-        Sat, 8 Mar 2025 11:03:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWkMOzJ7LrmG3SFolr4QpNdVKji5Y0DrjtE3otaLZe1m8m26CdUJhq/8ZUKC3NX5Z01ZeX91WD6TmjzfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPwcSraQT6qaaDmZBaJ/ehmF9Ci9EK+/aa39lViwU8zXoATtBrQMeeCE/3DDi+527kLigf
-X-Received: by 2002:ad4:5f85:0:b0:6e8:f9e6:c4e2 with SMTP id 6a1803df08f44-6e9006c9878mr124273396d6.32.1741460598826;
-        Sat, 08 Mar 2025 11:03:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741460598; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp251800njc;
+        Sat, 8 Mar 2025 11:03:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUYs/7ojywIJzWk1VIjTdIjzBR0epQ6TofA26VXXKTVyhtaAS+Gb7ksIRgYd8coaWZ3tz8tO3NfvvQUgg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGKZQvDy0cCSDgDb3KUojM9fBmA+e+pajGPV9omnrO9qVXbdUwUIZYXaM9WJOsObTViHZSz
+X-Received: by 2002:a05:6122:54b:b0:520:4996:7cf2 with SMTP id 71dfb90a1353d-523e417412amr5365149e0c.10.1741460602304;
+        Sat, 08 Mar 2025 11:03:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741460602; cv=none;
         d=google.com; s=arc-20240605;
-        b=eDRD2RyCFdGyoR5Pqs/SKGRpTZZuxPlSzqUA3r5xsnrhwqlCNYQPL5wImTWzuzBo+e
-         ZeRCZspXWexlXo0nfHIOc0tEMDYWOqLXxcgMos+K7mmyuF+dzWFaw56bk2frO6ktLCvA
-         magVuKjsMxS5mOLvLEiy8u0i0gVFVu3kevhunfwyjbOchVdanZHPTVBdNv3RN7kGXOy7
-         YtMLevysHptcbU/fw8S2wt/+R1YA5btT2Nn1JoXdCPaQiY87reE8io3jYSg5QFuC+aiX
-         6Dv6zm2tnzXXgesfcSy2uuHTIbhbianFdy6Ed0LhGu8NZnJ/0D7CsMvT3hTLPkJMUGxO
-         RBKw==
+        b=GruAa0mGDQDhC6AZACyB/dF8J05MBwsafuEqdlh1xGUqdUM+X8b9ugxgWTqygo0SBf
+         JWIBp7JuwyF5mSJFFaWqRdZcStb0bBaMkpOZxD181B9hkLTVzx6Yr6wHyVJLDw1bPBL3
+         HEnIam6tyF6EBzDMI5rFB/eVqQqJ09Wi4eNTmu3xKP6ypSH0XRCaIc5zIr4a/3GKT6zJ
+         lMf0xn4Yf+1W1cwbBz5AKZOegcEY0S0wMVjV24RoPGXYjVBdRNvSup3TjIcpP74Xs5lA
+         W9F2qaiFw7qwhXcY6T/V9nWsnc7TfeGuheqgNb7zhMJPPbazIYurqYPRiOMNMJfHQVPH
+         lWIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Tnj+mTi8s7/bMf+Ney6NYzMHgEQnS0OOPbvhz438H5o=;
-        fh=1kYHpdNsadmN4fFrnK2YR1v864tymHXETY3HWs2oRWs=;
-        b=PiH29NSeUPoKlJ2xpgS/ZWo2+WbKFw5SWiV9rk+zIb43i+sOITSCKh5ukTH54qcOvr
-         IOnudN/xq2jRa6DlYoMCmZ/dvCyX9vH/+CloPtZ4ryLCIj95X6BixenRTUhGG5KR1ToT
-         aingtx/te8K7jqjRQw/zUZZ+xZ+YkhFuENiYSPD4QoTG30hGgXwTnRgSD2aRgqAXXZkz
-         fcjAsintHvcFC0Fl6cav9Cdb4zEj4rFAvcRr4ex7Wt+isV/l9QLV4+SIZjriHmzK2hyu
-         EvwTM3f1nxpzH94dyIvYscFxzj0G8PGZwBENuNQrRtzJL4QdqEADlOlXT6UWfcAe8DMB
-         xYdg==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=aIqBM/TFApGI4yptbwhXjcFV6AOYWTNkUbNj3G3Lsk0=;
+        fh=pmtkCn/8v5Mwk9pec205w3RB/J6lCsDZpkTtSZF0KYs=;
+        b=NWM8cvm6IRKuXeHK4MyFw13nxNUFGvpMtE0z9beBWNaFVrLWctaOYM2WXgaEGP3Sga
+         EtwQPNBNuihm4vHEQvo5HOIk6zF79JjXBd9bcVc7FebE/2UodeF6e5n4YXDxU2Y+1pS/
+         fN8FRwC7WFsa0VZ+DX9cffEem53LR9bA2awO7XitgYkorXy5BrXG6i/gUG2ikLB+u0WT
+         kC3nH3+M746iBj57/ilLfsXtXlDVVSUE/tEmnxiNmXnS07pj7BMV7Y+KRNLmDps9dC4f
+         z9EWvliiV2+zP1HAiLHHbTWlJp2X+PusP4ZyS5TEev/byVrOAobcjk9GzYh5YlZLrpPc
+         B1Aw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q6Reit88;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DpyKKdRx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f7175914si59824076d6.321.2025.03.08.11.03.18
+        by mx.google.com with ESMTPS id 71dfb90a1353d-523d8c876e3si1397314e0c.200.2025.03.08.11.03.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Mar 2025 11:03:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 08 Mar 2025 11:03:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q6Reit88;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DpyKKdRx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tqzS3-00078c-5D; Sat, 08 Mar 2025 14:03:11 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tqzRn-0006tc-0f; Sat, 08 Mar 2025 14:02:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRy-00072V-Ij
- for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:03:07 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRi-0006kJ-LY
+ for qemu-devel@nongnu.org; Sat, 08 Mar 2025 14:02:51 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRw-0003a1-Ho
- for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:03:06 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-43bc48ff815so17229275e9.0
- for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 11:03:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRS-0003Tt-5e
+ for qemu-devel@nongnu.org; Sat, 08 Mar 2025 14:02:37 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-43cebe06e9eso2266005e9.3
+ for <qemu-devel@nongnu.org>; Sat, 08 Mar 2025 11:02:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741460581; x=1742065381; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Tnj+mTi8s7/bMf+Ney6NYzMHgEQnS0OOPbvhz438H5o=;
- b=Q6Reit88KFJXCxeDD20PQGv2eTkrorznqwF1/WQJamO7udYKooPocC2pWNdp1sGwQU
- JRHs6UuCKWO4KXG+OVqF4Fn1GxNFyvqSLXtq5zj3WuMLnPvFAeuKxkaDs2cPfglGMNWi
- uxwAwmEVcH9nyQqoRAkznX+RgS/mPZ/xwWappD5e0Sm8hbR6kQLa+5cZ4m3VE1+NgYCi
- Eqdm2dgnX82Y2XAx+QHg0laO/m3rzkhc0OKTiNS0BvcZueVE3DXjZxN5Yr5TORAmZ2TE
- 7PHaOA+oDNOYnojFtYIy5hJPxsNy3izKdeRAG6SO8X62ZURrM3FxA37OdJxu8BNy8Koq
- EaLw==
+ d=linaro.org; s=google; t=1741460552; x=1742065352; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=aIqBM/TFApGI4yptbwhXjcFV6AOYWTNkUbNj3G3Lsk0=;
+ b=DpyKKdRxiTNuO99YclSrteJvhfcBUh693X5sBLDDs2ph550tx5r7OE99hO661fwkCK
+ TPSggLve1+IfZ3UDz2FgEqOWkNcHlH0dliTE9/BOAbmf8Yeft4ciYl3f3G06+0uSAQTP
+ hT8XwLo6EgmnnLrDDCa5YNAODF70PYHLEWdk5RBH3QbLAW8Le5vRsPH2mfxbb3YiK8Xl
+ ha/1xhqptrnuF5zFVXtFuNgXXbAEn+RWyxfOq7891Hh5uhZ2p8ls5UW8t05nZx0Hqz32
+ 3qIDN/JbDV8VdsijBiQp3JjXSoA9XLI5Uub9woAV1PiSX5AlPUHProHu7sTQxHGXhTcJ
+ gaVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741460581; x=1742065381;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Tnj+mTi8s7/bMf+Ney6NYzMHgEQnS0OOPbvhz438H5o=;
- b=aBDGF7YByf92J5vtsLyB7R4WEU7LeG8mUCU9Ecsk6IkIkniaUjCX8C0iEqpB3cNI6l
- 6qvvw6XZRTTARv+zKNSFn8PAf4cuWP8/4dgVxEf/SJThRImtxZkMyZWXDr/Im6vG/ASm
- Xs2VZvpXzJslhofIFSx7AnfyEXrMAQuZN0n6OXV7eMIn5MHQ5Ejot51YHMAePPrguhPw
- sTowBoGrfr/XngbRgqm1214nJlLzbgiTU13gA0aMZpuDIfAdyJTkwCSsEX/tVCkC/a+3
- xhHOVZ93/mhwEjx1zeN+owxb8EKwaKaT8ZIszE3g5bVd+MsZ65I1ay+99RyJJOCxnkvA
- feKA==
+ d=1e100.net; s=20230601; t=1741460552; x=1742065352;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=aIqBM/TFApGI4yptbwhXjcFV6AOYWTNkUbNj3G3Lsk0=;
+ b=DnWpVVTscVAX/npimG/En+QwDsP/idXGtqBYzpaw53GGHn8tNILgeFYW5y++Bh33Xy
+ oGGVOP/BTkyT4ifcaBgvCeVzguK73kMnEMgXK6va6S/mxjtRvScn+fZyZt30A+oluxRL
+ yCDrEC+JVA/J/PqgNCJVT1SAZfVlpWlVUmAclAomY8hWt7vk/mwmsMmjutVVDE0cnPO6
+ 0Ru2+0nj4mCkT30b2uKfgSxDMdTiCYu9JRRq/PHeXC39jILijjo5JyB7YvPanCoBIWIF
+ KZeO04/hmMg+ezbzUdv8LuRrHXqOvYWytZbbNUxHB2eb4xvtOiS1D4+zaw1RSPAeDQJp
+ CY+A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU1iIRPsJP6Kik32OSGRTMxxF9qpTd+a86G53jIORetNjUIodw1z0/R9d/GRYAUmpprbFbOGrXStA==@nongnu.org
-X-Gm-Message-State: AOJu0YynswTZOphBbBatYOQi02vyJCe0HR7fgZZ1ZXTsgQkc2Y6Dz347
- /SS9gBfIQEbfxcSdsmCWu8yeiCIH+Gji2ghXwtAq7MWa8YEdKiuAHfoNYjVhdUA=
-X-Gm-Gg: ASbGncsJMdJAOsBH1tYaEpKupkLk1/Q2KmGrLA/bmNprL75gs1nfeSUeBmMmS5M1lVb
- j4DulxorTLOi+bfI4Wv0YRMkvOtlQ6x36guCSG/YZ48rFOAc1cDeP5vS2xfayuXfeweLDkdrRLr
- pSa2tLbL1vgm1k3R1WTWgqYMVyjdfCo6p+KaTkQuESulHyX0hRBapkA5k8q5TcAGKLCQrJJokHg
- MudJ5nekETM5uxPPUVgwON/nVdqbezhgKhkwIO6kDyPtRgvNuoibPXRkcSaF7771KkmtgzBi3pM
- G5z6kdkXjVqRVfE0fdY3s+ZUttSEU6mSuMG0eInfVHYUf5SV6+1YF+JesB5/ZSjMeUcS70IJXAB
- DU5uFONMaNMcfUHPF0vqY1xX2TAQ7aw==
-X-Received: by 2002:a05:600c:5118:b0:439:873a:1114 with SMTP id
- 5b1f17b1804b1-43ce4ac8229mr23840105e9.6.1741460581506; 
- Sat, 08 Mar 2025 11:03:01 -0800 (PST)
+ AJvYcCW2W6uYl0RoXGvDYi4DOOCQDZ2cp9U3zLRyQ7wBNIuUyYrXHRsbvg9eJZx4/p8N+jfa28GxiW12J+pL@nongnu.org
+X-Gm-Message-State: AOJu0Yzw85vAoaQPJkFPnYRGKFecQZvRQIc1WUD1NbYWKb9zZIDItApz
+ 9SN5E3rF8ohv4dVm4jmtNVsrwGsH272JJpfFe+JQ1NEB9y/DLTiaZrg7fXQoxwE=
+X-Gm-Gg: ASbGncsUofMbbW24i1A/Z60mWDHXtN6t0vwPXXiRY6C8HPIQEQNuPAu4aXGpNB+dodf
+ NEMn3cegC2w3HeYFsCPnOY/V2J6HMqT7HVH5quZhrBAJcW0UGSQ4C9ZLIgUNJO3bp7bRl6SW6xK
+ +StngP4UuKC2yYH8H/Kkjuse5clTVZPtxiU4oYIxQ9FpQEoie6JP+/LpA8PFlK3t0kRnzZrtYQN
+ qMo9DaLs9t9ARZeX7ad7s4o4cF0T63OaMcUUnXSJGd/DHp06b59M8Z6RgcDga8tLD8mXAt1crgz
+ XrGxMg9L6nM66j71Wzkgmegde66uhUfX5l51l9v1wLrEup9RvfEmiSBm+ukdl+MMSnH340/ldT5
+ MZV7i/sga9vT7xMF1WEY=
+X-Received: by 2002:a05:600c:1d2a:b0:439:89e9:4eff with SMTP id
+ 5b1f17b1804b1-43c601d91e9mr57679085e9.10.1741460552489; 
+ Sat, 08 Mar 2025 11:02:32 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43ce9f2d081sm27980775e9.21.2025.03.08.11.03.00
+ ffacd0b85a97d-3912bfdfddcsm9716966f8f.35.2025.03.08.11.02.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Mar 2025 11:03:00 -0800 (PST)
+ Sat, 08 Mar 2025 11:02:31 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: BALATON Zoltan <balaton@eik.bme.hu>,
 	qemu-devel@nongnu.org
@@ -110,135 +108,81 @@ Cc: Bernhard Beschow <shentey@gmail.com>,
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 06/12] hw/sd/sdhci: Allow SDHCI classes to register their
- own MemoryRegionOps
-Date: Sat,  8 Mar 2025 20:02:24 +0100
-Message-ID: <20250308190230.7508-7-philmd@linaro.org>
+Subject: [PATCH v3 00/12] hw/sd/sdhci: Set reset value of interrupt registers
+Date: Sat,  8 Mar 2025 20:02:18 +0100
+Message-ID: <20250308190230.7508-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250308190230.7508-1-philmd@linaro.org>
-References: <20250308190230.7508-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3Cp1/K+U3MKh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DZ1zT69Nlwz2
 
-Add MemoryRegionOps as a class property. For now it is only
-used by TYPE_IMX_USDHC.
-Otherwise the default remains in little endian.
+Rainy saturday, time for some hobbyist contributions :)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/sd/sdhci.h |  1 +
- hw/sd/sdhci.c         | 22 ++++++++--------------
- 2 files changed, 9 insertions(+), 14 deletions(-)
+In this series we try to address the issue Zoltan reported
+and try to fix in [*], but using a more generic approach.
+The SDHCI code ends up better consolidated and ready to
+scale for more vendor implementations.
 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index 2709a7a69d5..60a0442c805 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -112,6 +112,7 @@ typedef struct SDHCIClass {
-         SysBusDeviceClass sbd_parent_class;
-     };
- 
-+    const MemoryRegionOps *io_ops;
-     uint32_t quirks;
-     uint64_t iomem_size;
- } SDHCIClass;
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 59d506cafa3..d87a7bb45a4 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1427,8 +1427,6 @@ void sdhci_initfn(SDHCIState *s)
-                                    sdhci_raise_insertion_irq, s);
-     s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
-                                      sdhci_data_transfer, s);
--
--    s->io_ops = &sdhci_mmio_le_ops;
- }
- 
- void sdhci_uninitfn(SDHCIState *s)
-@@ -1445,6 +1443,7 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
-     ERRP_GUARD();
-     SDHCIClass *sc = SYSBUS_SDHCI_GET_CLASS(s);
- 
-+    s->io_ops = sc->io_ops ?: &sdhci_mmio_le_ops;
-     switch (s->endianness) {
-     case DEVICE_LITTLE_ENDIAN:
-         /* s->io_ops is little endian by default */
-@@ -1888,17 +1887,11 @@ static const MemoryRegionOps usdhc_mmio_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
--static void imx_usdhc_init(Object *obj)
--{
--    SDHCIState *s = SYSBUS_SDHCI(obj);
--
--    s->io_ops = &usdhc_mmio_ops;
--}
--
- static void imx_usdhc_class_init(ObjectClass *oc, void *data)
- {
-     SDHCIClass *sc = SYSBUS_SDHCI_CLASS(oc);
- 
-+    sc->io_ops = &usdhc_mmio_ops;
-     sc->quirks = SDHCI_QUIRK_NO_BUSY_IRQ;
- 
-     sdhci_common_class_init(oc, data);
-@@ -1955,11 +1948,13 @@ static const MemoryRegionOps sdhci_s3c_mmio_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
--static void sdhci_s3c_init(Object *obj)
-+static void sdhci_s3c_class_init(ObjectClass *oc, void *data)
- {
--    SDHCIState *s = SYSBUS_SDHCI(obj);
-+    SDHCIClass *sc = SYSBUS_SDHCI_CLASS(oc);
- 
--    s->io_ops = &sdhci_s3c_mmio_ops;
-+    sc->io_ops = &sdhci_s3c_mmio_ops;
-+
-+    sdhci_common_class_init(oc, data);
- }
- 
- static const TypeInfo sdhci_types[] = {
-@@ -1981,13 +1976,12 @@ static const TypeInfo sdhci_types[] = {
-     {
-         .name = TYPE_IMX_USDHC,
-         .parent = TYPE_SYSBUS_SDHCI,
--        .instance_init = imx_usdhc_init,
-         .class_init = imx_usdhc_class_init,
-     },
-     {
-         .name = TYPE_S3C_SDHCI,
-         .parent = TYPE_SYSBUS_SDHCI,
--        .instance_init = sdhci_s3c_init,
-+        .class_init = sdhci_s3c_class_init,
-     },
- };
- 
+I expect (with few QOM knowledge) this to be trivial to review.
+
+- Remove SDHCIState::vendor field
+- Convert state fields to class ones
+- Simplify endianness handling
+- Add default reset values as class fields
+
+[*] https://lore.kernel.org/qemu-devel/20250210160329.DDA7F4E600E@zero.eik.bme.hu/
+
+Philippe Mathieu-Daudé (12):
+  hw/sd/sdhci: Remove need for SDHCIState::vendor field
+  hw/sd/sdhci: Introduce SDHCIClass stub
+  hw/sd/sdhci: Make quirks a class property
+  hw/sd/sdhci: Make I/O region size a class property
+  hw/sd/sdhci: Enforce little endianness on PCI devices
+  hw/sd/sdhci: Allow SDHCI classes to register their own MemoryRegionOps
+  hw/sd/sdhci: Simplify MemoryRegionOps endianness check
+  hw/sd/sdhci: Unify default MemoryRegionOps
+  hw/sd/sdhci: Add SDHCIClass::ro::capareg field
+  hw/sd/sdhci: Allow SDHCI classes to have different register reset
+    values
+  hw/sd/sdhci: Implement Freescale eSDHC as TYPE_FSL_ESDHC
+  hw/ppc/e500: Replace generic SDHCI by Freescale eSDHC
+
+ hw/sd/sdhci-internal.h |  25 +++----
+ include/hw/sd/sdhci.h  |  43 ++++++++++-
+ hw/arm/fsl-imx25.c     |   2 -
+ hw/arm/fsl-imx6.c      |   2 -
+ hw/arm/fsl-imx6ul.c    |   2 -
+ hw/arm/fsl-imx7.c      |   2 -
+ hw/arm/fsl-imx8mp.c    |   2 -
+ hw/ppc/e500.c          |  10 +--
+ hw/sd/sdhci-pci.c      |   1 +
+ hw/sd/sdhci.c          | 163 ++++++++++++++++++++++++++---------------
+ 10 files changed, 155 insertions(+), 97 deletions(-)
+
 -- 
 2.47.1
 

@@ -1,105 +1,105 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp306945njc;
-        Sat, 8 Mar 2025 13:37:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUWzPWFHDn1abvvjQ8YNgHZcEoPlXlD5Uw18lCEx1AqDOtYSAyKZjX0fgWAxOVn7RLShmMQZuaJCaAEPA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEbbZRUqAK5kb5ky3v27dG1kJ/v4injvRvDi6szXmmf+cXSzbi9g5qGCESDq54tD20wT0AG
-X-Received: by 2002:a05:6214:da9:b0:6e6:5d61:4f01 with SMTP id 6a1803df08f44-6e900601587mr116706546d6.8.1741469834942;
-        Sat, 08 Mar 2025 13:37:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741469834; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp307281njc;
+        Sat, 8 Mar 2025 13:38:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU4CE5hhXco7DnN/X2vE7W08ZGtchgt0PpVLYKlxLaQCOwgxYlGG7dJkRyMtroZqEx7R7ZhzRNVCJDzQA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvEUk1IMvgNIol/HMhVF/ttTgpOog/KhF8xYIpR/GspUhmqOWBdCya9TxqZBen7ZaGBZ8D
+X-Received: by 2002:a05:622a:43:b0:474:f83e:9e73 with SMTP id d75a77b69052e-47618af3908mr125932571cf.50.1741469901978;
+        Sat, 08 Mar 2025 13:38:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741469901; cv=none;
         d=google.com; s=arc-20240605;
-        b=EcB6KHZt3/UDb0D5sqrRxVAinuMcNyYtmgkVQ8fn4xmVm02x5Va9bqx8TgV4ZM1qRN
-         OEImJaPsWY5HuK/lpJp0s8ff4W7gBdcYe1iy988mEDJhrv/rPI+1nJk8f+bMTiiajl7x
-         KuojROAie3mg1IpBy6sJ4B/Cr07MHSlzBUIH8jweIbzN3rRz9BxUbClmAmOdqTQ4APLd
-         Hn75+UFtV2sMMCOXyccP1Sd+1wKVDpzQox4QD5oSWrK7LAUTc2DBkZd4bxyHukf7pffx
-         Sn/KPgxwMXR3evvRyR5SvqjFizQ/aapx5nsUn5BYDeePNKVJve+KYbeSfR9PT7Wh6Mp/
-         oMCQ==
+        b=HP7Vy4SfptC6EGM/ylv9Qo5a4enFE74Y4dJigi1LXgRY0XeLa8F1uSXpNjlav1CoSS
+         sLIFu8ItpTUI9xepe1SjxipM2vM546YLORsIuqgxyIfhD1SNZhfi8Pu3Xjtcug30FywB
+         aXWHNGukFiSrct6bGj/CIoItV9KNjLDXKM+Fqy1PKnlD/EIVT7GtZoJ0zfyDJ/++cnA+
+         58RImzYB+CVA5qIjr+N9MrrAlNx1USWMB73Yxr7xc+ofQwGaKP+nO+UNu2kOA/IGST1a
+         a5VKXNDGbGhmtC/zU9NwA2HZQjGHeo4Oc1PCkE0Q96VKRnzU+wZFGZYtnflyAbgwZFts
+         5IsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
-        fh=WKXvBSHpi/OTkm5FiZFKutyjF8BHZHrOk/P7CQMO0Fo=;
-        b=DKHVTMuLuLOIxOY4425kTqGZ/KoXqw4DrY/gdZ0vy3reoma464yuzw7/UcejoDQfqZ
-         okChtt84Bpxvikd/Of0YjvZbHRYsidtZBiZaSBLnVS9+FE0cWtCV0L6ZzVmCSwMeDJUM
-         +F9wRFsHrlMcXPDAflzzUGcP4xv1UegOPki/nFxRslLXkiHzyB0kzr/R0ZM9cJP/OvQb
-         5TQ8geIE/w4FTdSPSd5QbaOqR8TQQbFipyNr6UQEWcaEdMYwm0LRhqWC/nNNWUX3cEXT
-         G07X/2tLr+WyKg62a9Do0nOZlkVeWcKij+y6a5LA7agnom7Qgd5MB97xCyPYVWdcNmfW
-         8eLQ==;
+        bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+        fh=scdmpjCc5XJX/JcsYqySkqy+ezvxeVUYGpJp1I0QVHA=;
+        b=CQu3jj3jT9ZDbVP+pFc6Pyz4zumSsojJzb62cYcEUi5ycqwMp9VbsDaSVns17ACFLX
+         Iq9BwJvH03HCRZ4yYp6ON3xCxp/aoQT9b9CKvi1A3rGeDFfNeKMj/jDqhy5gJmWToQMO
+         Cp07kzF0ak+PYExjltDzkGRqduGJa2FEFZmDtAdpQdvjF0ybFvGsQ70Aj28j+gWi2mKa
+         4JHj9vdhM/KacEeIvZAoTz5mL+Hfaqp79c12wVcnAorVd64E+LGQrzFq+/zFnLryipKt
+         nNb4/D6VhLQOuIzEQdyw6tuJsrFSrOKWclqrPegiAVZ9IgYvZWFYI3gIQgDufYmbbMkv
+         DZCg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UC18KpIM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BjCbZPjC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e91067ac43si11284506d6.424.2025.03.08.13.37.14
+        by mx.google.com with ESMTPS id d75a77b69052e-4751d9bab7asi62369931cf.143.2025.03.08.13.38.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Mar 2025 13:37:14 -0800 (PST)
+        Sat, 08 Mar 2025 13:38:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UC18KpIM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BjCbZPjC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tr1r1-0005OF-LU; Sat, 08 Mar 2025 16:37:10 -0500
+	id 1tr1rg-0005hc-MC; Sat, 08 Mar 2025 16:37:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1qm-0005Ks-77
- for qemu-arm@nongnu.org; Sat, 08 Mar 2025 16:36:55 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1qq-0005Ly-Ij
+ for qemu-arm@nongnu.org; Sat, 08 Mar 2025 16:36:57 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1qj-0003rW-NF
- for qemu-arm@nongnu.org; Sat, 08 Mar 2025 16:36:51 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43bc48ff815so17540465e9.0
- for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 13:36:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tr1qo-0003sI-Qv
+ for qemu-arm@nongnu.org; Sat, 08 Mar 2025 16:36:56 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4393dc02b78so17885195e9.3
+ for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 13:36:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741469808; x=1742074608; darn=nongnu.org;
+ d=linaro.org; s=google; t=1741469813; x=1742074613; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
- b=UC18KpIMYVewhQMRLfuFu9ytC+o5y2jG91K7piSEqDd08VVSLkqv2xTt0AmXhAtudp
- JDm6nyFYyXHW75GnxsI/1YrOMO+T/Lgc+M6HygKnYZPceffVf9yIxQV7nFsrWaWNik4y
- OY3FeIGUKT3Ync+K/RhVdda+hzqLrD8W+VMIfJ1AO05A9GrcU64+3Syra+6eUMhxT6wd
- iz6zO9eCsqUFQyHMf0uxxnUth++UuT1WQd+Lgox9VB6XcjlSL6FFFXby1tuwYf7SsZiW
- Jc6DJMOH9V/rLGeSEWlIbI9qroW8clC0IeG/adR8+XsPFoWb1/R7bYPVI1aQI5lzjDKn
- h4IQ==
+ bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+ b=BjCbZPjCwiRdfpWd2AJ8TCcOhjpi8MKu7taByejvKxvlnbmv4QiHkaqKXziS72QewF
+ bPIvVg6V+V8rFOHbCOgL7rO69AX4wWBzagddevAw+0d4xXA2r9PX187OCs7T4p6jMcYI
+ /7Z8doYz1PAjpqdzRyjMwrsxSc74bKbijphEsc7G54NzXVC+YpxF64ZoXV3/+H/zYCj1
+ 0GOMCDJeBV+sel9BFRF6JoQLcm2GPIK1JvW8ursl+CJ3ZsFBqlWyHMa+CJGKrxEU4wMu
+ bZVBNRoUYqVKGEdzrZ6pYMNhkEpJO2vNETrs/CnUu25hnt9N3JI7ytQsm5Vm9KQeTtl8
+ N1rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741469808; x=1742074608;
+ d=1e100.net; s=20230601; t=1741469813; x=1742074613;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
- b=bjUNkQbc0CQt5De0mjf8ycqmwd2rbCOyLC2BBEp6xKi/emX9DBZr3Rc8+xqDg0crB/
- htvJ28vrSDnVaoIbk0Z+rBmn6CyDkykbEONsyeMF1ghKNt+5AunUvWu72Mpkkbe/GdRe
- chujc4QizoYfGvtqtpTvZRQPDgQQKD0Lae6wYPTtz8Dixk0CbKCo2wSGEAI7zi/0Gnmz
- QjWtDgKuHjuTgRin0EKxmu7lAdOM4g0M4m+4g+tBpgmudj1r05XxiidqvYUtIgRrqV6o
- QdfEPrEM/NGuj2j9uG24IICSOZwRr9oLOO5hJibUQRK8HMTE2bBV7+U0gtvNDiiAbfsS
- k3SQ==
+ bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+ b=AvroPn3p+Ll2RFv5uylxrcgUSlnSosesNow4xPdMW61PvDWUTkdlTwHefPcBXhOA1P
+ qeKMrm+CdV/uXFeAiD8rfT6C47BR4Nn5wLTb6MB6kGaleqANfiiWBrtHngy845QwR+Ho
+ nTVlSLdUxRLu1gdNxULj7JRfC2TOIp+p+mNBX2c6tOr63GB86AXbLBe/T6KneSioHAUT
+ 5erWt2v6JxSpeT075GXEb+7JFxq+9eQ0ICfINJm8MVX0xYqUCaNWCdFoi/2nGjXxRJUW
+ 3Ixoshme9rRAx5gaoUCmWMTfMgtyHAu/qxggVt+MA8n/ZBOebPYqCo61msVapRqrN111
+ Ekqw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUZL0ewOP4vZqooHRJh5lQCu//IktJ2w6INbKP8BuJ0KrTfMMGVDH0fOfEoGWpip+CLRODxhwXgRw==@nongnu.org
-X-Gm-Message-State: AOJu0YwpjNUohsG1K5KYygJO70My/vTUfXsjOGh3tTr4gtnQcGXdHy1N
- wOdZKtIe6xOwh5Gnd5Q/4QDyBNiIoWTcF7FBTchttjNXaHkoN5vGxT75lwwpPlY=
-X-Gm-Gg: ASbGncuVGVDIspppszcjn9caYU+Yb4lt7Q27KDtGe0kPWwZ/GsQdheifFSNSSac1fA0
- v7Ld8dPEkvdrWe97BmDdoLA2SAxq1CdHK2x5PJO8ZVIyQ25fTrFHY51naq9xxydkU4RWZc1XgI2
- LYh1sM+zWkme4N2Ek5zpA+JFzUmSXY1dwxApYOXqgwp9aiXjGUBqO/89kCoC/RP9k/QtNs8fRuN
- ts7hQcOcHVVOW7CdiHqKE0mLzLOMql7jb+u7xeqXwXA/IWTDw588pUoFo828NfGYoJni47VBuQ+
- hJU0xZDTAd5qiw1Y7lNBqI4UbEN/WhjUF4tHP000OE5Vdo1pYWjT6kRpWY/e+b3bsEulKUTJ4s6
- T6nBiuelzB4lq3MEpkTY=
-X-Received: by 2002:a05:600c:3b0d:b0:43b:c7f0:6173 with SMTP id
- 5b1f17b1804b1-43ce4ac7369mr24625595e9.4.1741469808250; 
- Sat, 08 Mar 2025 13:36:48 -0800 (PST)
+ AJvYcCVHCBwmbgfbRK4HxcLtZPMruOhYr2ZZi3lMY78MQ0BYgUmIO8uwKmsZ6NnDY3HkgGXZH7o1tn60Yw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzj9savRixQGLKDHmwCHCcaSvxOkMNxft6SJ/BkW3u9izseHyzk
+ iuSp8tTS5+uZxZEXoaerNQDJzmR9Wag4X93RTx6QnHcLKoQNgpPwncLGjTcg0y0=
+X-Gm-Gg: ASbGnctwNDxioqeOWfW12NbSPnrL/PKOHsBFwZxGDI3jSSZd6XSFiIlQWfCjKWke3eF
+ KW03eFdrGW1aTAiKgCvp38qjw8WwtYTcWTmJ1agyscROCTnxD/1MlkLkTDuXpJU95MhKEyeIWtK
+ 6FVT9uMCrKo6RWzhm/avTqkaylEWLkjJtiHK5XAvEVWzAbuaLD9bPU2AHr+Vdw23y4AJxE39J2+
+ n+51QnSABKYTWei5jT2MQrusGSOS2AJB00mlR/rw+CvcVGNtNr9CYDJKqawr9JG8accUqz4tmtq
+ vRzr+/8bTTLQDbIRBvzSs/T6xV24Ic4kovoOwM3YOcpB4XFOdrumxtLsg0vdfFtwOpS2goD4lK1
+ BGK50U4NL29eBUcXr04O5eItkwGcyXA==
+X-Received: by 2002:a05:600c:4fc8:b0:43c:e9f7:d6a3 with SMTP id
+ 5b1f17b1804b1-43ce9f7da7emr21678035e9.13.1741469813197; 
+ Sat, 08 Mar 2025 13:36:53 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43bdd8c3aa8sm94423005e9.14.2025.03.08.13.36.47
+ ffacd0b85a97d-3912c0e3250sm9966420f8f.61.2025.03.08.13.36.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Mar 2025 13:36:47 -0800 (PST)
+ Sat, 08 Mar 2025 13:36:52 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
@@ -113,18 +113,17 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
-Subject: [PATCH v4 01/14] hw/qdev-properties-system: Include missing
- 'qapi/qapi-types-common.h'
-Date: Sat,  8 Mar 2025 22:36:27 +0100
-Message-ID: <20250308213640.13138-2-philmd@linaro.org>
+Subject: [PATCH v4 02/14] hw/sd/sdhci: Remove need for SDHCIState::vendor field
+Date: Sat,  8 Mar 2025 22:36:28 +0100
+Message-ID: <20250308213640.13138-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250308213640.13138-1-philmd@linaro.org>
 References: <20250308213640.13138-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,29 +145,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Czfm2FIQa26v
+X-TUID: g3PH9ojC7H4g
 
-DEFINE_PROP_ENDIAN_NODEFAULT() macro uses ENDIAN_MODE_UNSPECIFIED
-which is defined in "qapi/qapi-types-common.h".
+All instances of TYPE_IMX_USDHC set vendor=SDHCI_VENDOR_IMX.
+No need to special-case it.
 
-Fixes: 4ec96630f93 ("hw/qdev-properties-system: Introduce EndianMode QAPI enum")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/qdev-properties-system.h | 1 +
- 1 file changed, 1 insertion(+)
+ hw/sd/sdhci-internal.h |  1 -
+ include/hw/sd/sdhci.h  |  4 ----
+ hw/arm/fsl-imx25.c     |  2 --
+ hw/arm/fsl-imx6.c      |  2 --
+ hw/arm/fsl-imx6ul.c    |  2 --
+ hw/arm/fsl-imx7.c      |  2 --
+ hw/arm/fsl-imx8mp.c    |  2 --
+ hw/sd/sdhci.c          | 14 ++++----------
+ 8 files changed, 4 insertions(+), 25 deletions(-)
 
-diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
-index b921392c525..49a3825eb46 100644
---- a/include/hw/qdev-properties-system.h
-+++ b/include/hw/qdev-properties-system.h
-@@ -1,6 +1,7 @@
- #ifndef HW_QDEV_PROPERTIES_SYSTEM_H
- #define HW_QDEV_PROPERTIES_SYSTEM_H
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index 9f768c418e0..9072b06bdde 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -311,7 +311,6 @@ extern const VMStateDescription sdhci_vmstate;
+     DEFINE_PROP_UINT8("endianness", _state, endianness, DEVICE_LITTLE_ENDIAN), \
+     DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
+     DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
+-    DEFINE_PROP_UINT8("vendor", _state, vendor, SDHCI_VENDOR_NONE), \
+     \
+     /* Capabilities registers provide information on supported
+      * features of this specific host controller implementation */ \
+diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+index 38c08e28598..48247e9a20f 100644
+--- a/include/hw/sd/sdhci.h
++++ b/include/hw/sd/sdhci.h
+@@ -99,7 +99,6 @@ struct SDHCIState {
+     uint8_t endianness;
+     uint8_t sd_spec_version;
+     uint8_t uhs_mode;
+-    uint8_t vendor;        /* For vendor specific functionality */
+     /*
+      * Write Protect pin default active low for detecting SD card
+      * to be protected. Set wp_inverted to invert the signal.
+@@ -108,9 +107,6 @@ struct SDHCIState {
+ };
+ typedef struct SDHCIState SDHCIState;
  
-+#include "qapi/qapi-types-common.h"
- #include "hw/qdev-properties.h"
+-#define SDHCI_VENDOR_NONE       0
+-#define SDHCI_VENDOR_IMX        1
+-
+ /*
+  * Controller does not provide transfer-complete interrupt when not
+  * busy.
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 5359a6d8d3b..02214ca1a1c 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -243,8 +243,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                  &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+                                  IMX25_ESDHC_CAPABILITIES, &error_abort);
+-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index dc86338b3a5..a114dc0d63d 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -327,8 +327,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                  &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+                                  IMX6_ESDHC_CAPABILITIES, &error_abort);
+-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 34c4aa15cd0..ce8d3ef535f 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -531,8 +531,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+             FSL_IMX6UL_USDHC2_IRQ,
+         };
  
- bool qdev_prop_sanitize_s390x_loadparm(uint8_t *loadparm, const char *str,
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 3374018cde0..ed1f10bca26 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -471,8 +471,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+             FSL_IMX7_USDHC3_IRQ,
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 1ea98e14635..c3f6da63220 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -524,8 +524,6 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+             { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 1f45a77566c..149b748cbee 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1731,16 +1731,10 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+ 
+     case USDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+-        switch (s->vendor) {
+-        case SDHCI_VENDOR_IMX:
+-            if (value & USDHC_IMX_FRC_SDCLK_ON) {
+-                s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+-            } else {
+-                s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+-            }
+-            break;
+-        default:
+-            break;
++        if (value & USDHC_IMX_FRC_SDCLK_ON) {
++            s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
++        } else {
++            s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+         }
+         break;
+ 
 -- 
 2.47.1
 

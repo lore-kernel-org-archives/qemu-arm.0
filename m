@@ -1,105 +1,105 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp251671njc;
-        Sat, 8 Mar 2025 11:03:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCURsRrQY2Ig5h31qzXFdmxKv2IFfmZ/+f2PkDJjknZMUd4jFyUAZh9BzpLemEXNeeaJMRyBYmwxA1eMmg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMObaY5fPjvQ2n8cQ/KAHy89U39/hwykqZjOHuKmhbLTAZUKo2lXKGAKoanKPfBpV83cFh
-X-Received: by 2002:a05:6122:21a1:b0:520:42d3:91bc with SMTP id 71dfb90a1353d-523e403eaffmr6399435e0c.2.1741460589886;
-        Sat, 08 Mar 2025 11:03:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741460589; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp251731njc;
+        Sat, 8 Mar 2025 11:03:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXnQfvUSuc1anjkQHTajLLWWSmJnbxEk5WUPEjMiDVJUluFgR3CmOyrn6Zwg+cV73BIq0BgD5I6Q1xrZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHCHdVr6wif5VZ0BfhtQYCiTEajVdH0HdgB863ZkkcZRPsJdNkbrvM47WR7eAuzF4s4Bhfd
+X-Received: by 2002:a05:6214:250e:b0:6e8:f3c3:9806 with SMTP id 6a1803df08f44-6e9005bc9camr110777576d6.4.1741460594604;
+        Sat, 08 Mar 2025 11:03:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741460594; cv=none;
         d=google.com; s=arc-20240605;
-        b=HiSq16Hhb40n1cjhf/K/x2hKnTZHUSE6K7pBY3LXCzc8/VRIDn4LL7WAuRXnEjzgAm
-         goKDjHQt5kniqeiOkCpfF9Dmlt1EjDOBU4ZEAe+fXw89eaQou9xTRP/Gq5mS6GCmtPPG
-         2hNbC83k7zKenufh2uzJrE+HBt6QpNH0M+wGWa1jWuYi4eitb6/P497CmdntMi3m8RJ8
-         K3PwREIYd/C0qZ74DOHN9YQnbWwjZRNOZ5R8/XuP8cHIIgwRh/4HjZcq5Dtb5d+LRM2o
-         EcQsvaVhDd9XWeQfth8uum7dQ0uVWkP1tu8+m6IA4a3s0azVqNsFzOZYTYdc5ZrwUOdh
-         EEgw==
+        b=h5zsyXeewCblUC4+hysa9COYMXDxR4APltRycIpsdM1Mai0xTd77BC1TuDHdSD2LYY
+         X6z2I6fHiG59X8qLDQerPSI3wDMkGidAVau0nUSsk030l6Fb1Tlkm9C6Q6uTjtdNmizF
+         ZYaJzONHHhvQi+UD4/HvSYd+e7GQS2AiWOT1ZKgOxWz/+MmZrA0QIv2ljaBM4TKaIycP
+         fkGwivSw2PmkwDuHYuK8cFY7kTwGbdRlafF688ZJSU9Pe0Ze3PdyfDyoUQyGEwVuOOLC
+         67AUE0H4O6iO6OVrtkjk9FyMlDZ/Pv7HHu/V6mkpjlzjZTEl/6Xg4npRV6AqlgJIGdGW
+         zKAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
-        fh=SAtR36XA5V2ux0K41wMJR3JQJwaaF6PTUaAvfV9GAno=;
-        b=a839gIbP/O1vSj6g6B84E0Nodr9QapStsH7qQjWk/bc3iDTSL6YxApRExkTqYqHAjo
-         Q4CIp0JMjsbwnAvTxYWIKThEpAgnRneVSUl2uY6YzLt2ZW2lp+5c199lYgXsY/Boj6g2
-         JDxk/zmrGHH951cQoalc1XcYQ7t5888HUs7njDhOLZxudaOKz7SXAjzIVi0fM6mIBzsU
-         HRN/tHJJfjEdkYRtbeZ75tzyI2HbYu27cGTB5YhVGd/jtUhtYajy4cj878AkE2ti5NsQ
-         QeAgUeeH5sA9lWNJzkz/7m1vno5rdqerVGvKAw33EtRMkJfkddOib4p9KQJVuS3sR1LF
-         3d2A==;
+        bh=rGeGYkd/RvTeD7MNw4buaroHbkJmR8tAE2eHN3vxKfs=;
+        fh=QuB7c2Qlzqe37O5Zn2YtNFPLhlCjgi0cXdkTCgVcg6Y=;
+        b=Y2KauvmbdUOZ9YWrl8c8oTEGC1q810qQHslfPngbSy9uyVf0FVEcjPZo1RdCR77sW9
+         U6oe7uLXRmhL7R9sqe0ZszhJxNyRTZ9BkLu0bmiQ6BxC0+QxwDbQLMsxVi/JrmlMpy7I
+         1BCFazJUVrPYPB3fqBeEOCNO6i0Xk7vtfuUr14nLO27lfuBjdlzhnfz4mdalaPby3/oh
+         ifqfLYC39R9XF+aQdCF6zQrZKvE432Ns8szanymgzSkP89OAZ3ahHF7trF+mTvCECsMe
+         FyOX5mvRruxC1+SnMkCbovOUJQ0aRcW7MVnmKcpdbA1QeESDg1H/1b9w5Vg6X9+nPRRD
+         PgtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C1mePILG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A1o1VRyd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-523d8c59582si1386186e0c.159.2025.03.08.11.03.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f7175fbfsi59815806d6.347.2025.03.08.11.03.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Mar 2025 11:03:09 -0800 (PST)
+        Sat, 08 Mar 2025 11:03:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C1mePILG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A1o1VRyd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tqzRs-0006ul-89; Sat, 08 Mar 2025 14:03:02 -0500
+	id 1tqzRy-000703-Vr; Sat, 08 Mar 2025 14:03:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRi-0006m6-PY
- for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:02:52 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRi-0006m1-NV
+ for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:02:51 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRY-0003UJ-Gd
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRb-0003VD-Ou
  for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:02:45 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4393dc02b78so17536885e9.3
- for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 11:02:38 -0800 (PST)
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3913d129c1aso346065f8f.0
+ for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 11:02:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741460557; x=1742065357; darn=nongnu.org;
+ d=linaro.org; s=google; t=1741460562; x=1742065362; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
- b=C1mePILG8sVuHo/ueoqNt0XxoEcLFKwynu4L+UOvlWM4bTOyGzc2fHuWrzUJraQPOo
- sJQxQqhragwb13HwZ1sfzvXHqJqqIBanEz437szcfhBJL0C74bcTesquwkAjtxrzQJOi
- x9y1YvIZLvhSFTvG3C5TeNvHjTVdoPczQJqz3fKr/WLLuGa1332lvkiYkUTVchG8uBNz
- PwexHTZLi7YP5UA3J0JK48WODwyl6F3HcFk2xhsUYAMVph4YFJNet7uyrnPf9zYnPA/3
- Q7jK3G8QOoOJ8fF4HbhuSaVNvHnG2So9SlZvD1hmZwQ6pTDdGLDuboo8BYpvbjM3m9W+
- yy7Q==
+ bh=rGeGYkd/RvTeD7MNw4buaroHbkJmR8tAE2eHN3vxKfs=;
+ b=A1o1VRydyRsDAzvzUxpEwF3ebPzNa409/VY2s7KvKS5rr9X/c7rtlaQpQ3Jqs8mUAU
+ Ety96WWOgZ3iPCOY6vWg0nSrBGpqU4q8eGNKRubXJP8WrjxOEEqhAYGf1jwCSMdyNoEH
+ 7BpB2zptxhuVbp8R7wtF+zPYGnDEwZSqxv/cKqLHnKOP+W0X3W+l8qr/oNSfjZ5BXAxR
+ lDuWXQDSPBuXaxbUqdK/N+DSyVPm9IsMUw7WsHV1udbrasu9X9xBAOpSrFUh74ZIouon
+ 2LU5p92TsfcgdqAmYQnCyfyOZGlUHsB82WCz9MQjUIJ7FKtVwzlY5/cp/4KepmMFUXH5
+ BayQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741460557; x=1742065357;
+ d=1e100.net; s=20230601; t=1741460562; x=1742065362;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
- b=LJqc41JScdn3dXJv3PrYbqo9iQtXGBiNa3QZzOZlTsrV6ZJMX+tsGI87koJ9aZoH6P
- 5z0jU4G/nnCfVTVHkjBkEzwSM2S0dF2TZ1JhT4NHV7oNYBeMhR6jgLzLwcqkLuU+g3O1
- lC+/pny/irgs9qqXNpWgdRY4UTlOtd8mIXXfBpDR013TU+3AT7xl3WBii9S9g09EwRUJ
- sdyddiviMCHweykue0K7B0bAVSU45YV5U0OuzykAOHKyT3byjHV1fgs69SL+l8ibq6Eu
- cYsmCS6M62QtgOYQlt0juRMd3ZLcIaWLeHL9R0BEvSZJcPRGLw14tKbkEYXd1EGLA0k/
- Gm8Q==
+ bh=rGeGYkd/RvTeD7MNw4buaroHbkJmR8tAE2eHN3vxKfs=;
+ b=SBvAtNHAoY5GeBTvW5IvvkHVejBmtVzKsSJPXTT/dkFx/5a90MiJ2TX46YDU8oqOto
+ schspCN/U4ucQZSo99da+dZ1UDtXEpyL0OVwSYDEa3hVS3HIWZMlmFf+T4x0LhSa1ArU
+ k4P1IjRrfWKZ971Bb0uHFd7ieFzy880f/l+zmyNDiaUXp4n0cso0twqaxogYAmdRjk8l
+ u3zxsIhpD3Q4wVg9m3JSkfW68hXaEBt5lAmgj+2L4e3PqrnooXRo/ie0z75oneDNcbl3
+ l5yTTpOtaBtEQRfLTzEObDqkXMfH1mI0AWC6e82Q0DWC6meN4hXQWpPboUBdvbP86jFH
+ Mr3g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUJpRKCCE/iEoBbzEjlRmXq4nYFoFeKTIgq7jHxxLM/igGcja1AE5h/ZpaRuVt0w5yF9RQe+bunAQ==@nongnu.org
-X-Gm-Message-State: AOJu0YynWv+RYW+QFcKnbExJ60SEmioj9RzwnYK61PuhvdOyFtWKSuaw
- fr8ehTZp7Lnw+BmEmBZi7banc3tTnxe/mXQDM9/C9ZkwdLxq9beucndv5tHvmAg=
-X-Gm-Gg: ASbGncvH6ohuT/wao9l5QWG8ooN2BuRRsjLRdyIt6SBp/ds1Ptllv6KgDpQ7XqBET1s
- u2wrun4hKKqJAC3BcwFCoyV7hhPbnGD9lSfUYuKs94Fg+TRzZ4Qhhu8kiYXx04o68mUgsEuhcl3
- Ajo/fqVydhK0aOByLDgub31if0K55Ss+u5cSRnbtDR2D9SwuAw6V0JT9/JNXm1Hd5Tf629Ypi3H
- HIQFujM63KjZrNOjfTjclraUeczt05tLtZcYjqFqB1kU5Jq6Ed2CwQjFYsyOjKJI2+LsZN2ycea
- HzyN6o3O655lUoZR14tI9Rj6VVgfUXGT6YwqmSQoG8Zvzi8ySHBQOOPZNCgYMWEByfqRfElpmsd
- AE0vFLmhHpVP2M3NCqyU=
-X-Received: by 2002:a5d:6d05:0:b0:391:13d6:c9ec with SMTP id
- ffacd0b85a97d-39132d88ee1mr5624207f8f.20.1741460557363; 
- Sat, 08 Mar 2025 11:02:37 -0800 (PST)
+ AJvYcCX7H6hh12/gYqNJyuwKnc5iSGn/iXMaI024sytf0LyQqdsg7luZfZLEi0w0DCIOJ57xP4lSOiSdVg==@nongnu.org
+X-Gm-Message-State: AOJu0YzAEQ3AaoxYGYs69qfung86EO5gi22eEikiu0u86SYAFfFCaTo/
+ p1Vtl6X8cZR1CYfadV25UBF1oskb2fRt4A2mVlDWbRy7raQonQFQQUkk7HRYeYw=
+X-Gm-Gg: ASbGncv8+JTqVo4szb28hCMbc29+/3tHSyDo37cl/ENrsKF7+cetLr3CahwJVF0O72k
+ 2jEUJ87Wx+DVH1yzvzkathF3kq7/P4Y7SufIfusuFqgQ1qHVqF+H//bskE9h/YaMU7aBWr7wGyF
+ AhYzNcTd88WC/qoez+4JtefUl56mYyvKkcolHXo6OJG8tSJdQYsYH8SbwmBqTUKAsTInqexoR4c
+ lI1g8StugyQJgam8+l5LGKcL6TrMawsSBHv5NYPkq3gieRwTgZEWKlgxWtHGCz78D/uPkQ9JRV5
+ DVkEvOGzLMVKvL2+PpwIVnWGgV8sxJzRh7NQ5aL8Rj4gmf6qKLUd9lXARAsG1oqNahScL5W9bHT
+ EfNsDBbhcfbdMmY+cjLM=
+X-Received: by 2002:a5d:6c6a:0:b0:38d:dc03:a3d6 with SMTP id
+ ffacd0b85a97d-3913aed81aamr2276681f8f.4.1741460562232; 
+ Sat, 08 Mar 2025 11:02:42 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912c1037b4sm9653479f8f.92.2025.03.08.11.02.36
+ 5b1f17b1804b1-43ce9f2d081sm27971865e9.21.2025.03.08.11.02.41
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Mar 2025 11:02:36 -0800 (PST)
+ Sat, 08 Mar 2025 11:02:41 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: BALATON Zoltan <balaton@eik.bme.hu>,
 	qemu-devel@nongnu.org
@@ -110,24 +110,24 @@ Cc: Bernhard Beschow <shentey@gmail.com>,
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 01/12] hw/sd/sdhci: Remove need for SDHCIState::vendor field
-Date: Sat,  8 Mar 2025 20:02:19 +0100
-Message-ID: <20250308190230.7508-2-philmd@linaro.org>
+Subject: [PATCH v3 02/12] hw/sd/sdhci: Introduce SDHCIClass stub
+Date: Sat,  8 Mar 2025 20:02:20 +0100
+Message-ID: <20250308190230.7508-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250308190230.7508-1-philmd@linaro.org>
 References: <20250308190230.7508-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,147 +142,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mAPmkUHPxECz
+X-TUID: R1sdFEaNb2z6
 
-All instances of TYPE_IMX_USDHC set vendor=SDHCI_VENDOR_IMX.
-No need to special-case it.
+TYPE_SYSBUS_SDHCI is a bit odd because it uses an union
+to work with both SysBus / PCI parent. As this is not a
+normal use, introduce SDHCIClass in its own commit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/sd/sdhci-internal.h |  1 -
- include/hw/sd/sdhci.h  |  4 ----
- hw/arm/fsl-imx25.c     |  2 --
- hw/arm/fsl-imx6.c      |  2 --
- hw/arm/fsl-imx6ul.c    |  2 --
- hw/arm/fsl-imx7.c      |  2 --
- hw/arm/fsl-imx8mp.c    |  2 --
- hw/sd/sdhci.c          | 14 ++++----------
- 8 files changed, 4 insertions(+), 25 deletions(-)
+ include/hw/sd/sdhci.h | 9 +++++++++
+ hw/sd/sdhci.c         | 1 +
+ 2 files changed, 10 insertions(+)
 
-diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-index 9f768c418e0..9072b06bdde 100644
---- a/hw/sd/sdhci-internal.h
-+++ b/hw/sd/sdhci-internal.h
-@@ -311,7 +311,6 @@ extern const VMStateDescription sdhci_vmstate;
-     DEFINE_PROP_UINT8("endianness", _state, endianness, DEVICE_LITTLE_ENDIAN), \
-     DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
-     DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
--    DEFINE_PROP_UINT8("vendor", _state, vendor, SDHCI_VENDOR_NONE), \
-     \
-     /* Capabilities registers provide information on supported
-      * features of this specific host controller implementation */ \
 diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index 38c08e28598..48247e9a20f 100644
+index 48247e9a20f..c4b20db3877 100644
 --- a/include/hw/sd/sdhci.h
 +++ b/include/hw/sd/sdhci.h
-@@ -99,7 +99,6 @@ struct SDHCIState {
-     uint8_t endianness;
-     uint8_t sd_spec_version;
-     uint8_t uhs_mode;
--    uint8_t vendor;        /* For vendor specific functionality */
-     /*
-      * Write Protect pin default active low for detecting SD card
-      * to be protected. Set wp_inverted to invert the signal.
-@@ -108,9 +107,6 @@ struct SDHCIState {
+@@ -107,6 +107,13 @@ struct SDHCIState {
  };
  typedef struct SDHCIState SDHCIState;
  
--#define SDHCI_VENDOR_NONE       0
--#define SDHCI_VENDOR_IMX        1
--
++typedef struct SDHCIClass {
++    union {
++        PCIDeviceClass pci_parent_class;
++        SysBusDeviceClass sbd_parent_class;
++    };
++} SDHCIClass;
++
  /*
   * Controller does not provide transfer-complete interrupt when not
   * busy.
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 5359a6d8d3b..02214ca1a1c 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -243,8 +243,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                  &error_abort);
-         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
-                                  IMX25_ESDHC_CAPABILITIES, &error_abort);
--        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
--                                 SDHCI_VENDOR_IMX, &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
-             return;
-         }
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index dc86338b3a5..a114dc0d63d 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -327,8 +327,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                  &error_abort);
-         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
-                                  IMX6_ESDHC_CAPABILITIES, &error_abort);
--        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
--                                 SDHCI_VENDOR_IMX, &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
-             return;
-         }
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index 34c4aa15cd0..ce8d3ef535f 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -531,8 +531,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-             FSL_IMX6UL_USDHC2_IRQ,
-         };
+@@ -123,6 +130,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
+ #define TYPE_SYSBUS_SDHCI "generic-sdhci"
+ DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
+                          TYPE_SYSBUS_SDHCI)
++DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
++                       TYPE_SYSBUS_SDHCI)
  
--        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
--                                 SDHCI_VENDOR_IMX, &error_abort);
-         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+ #define TYPE_IMX_USDHC "imx-usdhc"
  
-         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-index 3374018cde0..ed1f10bca26 100644
---- a/hw/arm/fsl-imx7.c
-+++ b/hw/arm/fsl-imx7.c
-@@ -471,8 +471,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-             FSL_IMX7_USDHC3_IRQ,
-         };
- 
--        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
--                                 SDHCI_VENDOR_IMX, &error_abort);
-         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
- 
-         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 1ea98e14635..c3f6da63220 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -524,8 +524,6 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-             { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
-         };
- 
--        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
--                                 SDHCI_VENDOR_IMX, &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
-             return;
-         }
 diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 1f45a77566c..149b748cbee 100644
+index 149b748cbee..4917a9b3632 100644
 --- a/hw/sd/sdhci.c
 +++ b/hw/sd/sdhci.c
-@@ -1731,16 +1731,10 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
- 
-     case USDHC_VENDOR_SPEC:
-         s->vendor_spec = value;
--        switch (s->vendor) {
--        case SDHCI_VENDOR_IMX:
--            if (value & USDHC_IMX_FRC_SDCLK_ON) {
--                s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
--            } else {
--                s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
--            }
--            break;
--        default:
--            break;
-+        if (value & USDHC_IMX_FRC_SDCLK_ON) {
-+            s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
-+        } else {
-+            s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
-         }
-         break;
- 
+@@ -1960,6 +1960,7 @@ static const TypeInfo sdhci_types[] = {
+         .instance_size = sizeof(SDHCIState),
+         .instance_init = sdhci_sysbus_init,
+         .instance_finalize = sdhci_sysbus_finalize,
++        .class_size = sizeof(SDHCIClass),
+         .class_init = sdhci_sysbus_class_init,
+     },
+     {
 -- 
 2.47.1
 

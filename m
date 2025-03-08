@@ -1,229 +1,288 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp2707112njm;
-        Sat, 8 Mar 2025 01:22:41 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXS7zdXQ4Omszkx8LonPgKVMGDDZQVImro0ahUTQR0IvQIU2pQu1fAOMWK3NJlrseutSfVk9ntWAnsW9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IES6Fa1nVX9a3wGAoM+z9RXrPg6k8QVgMogKdqx3suyzTMYy7Sx2UKqXuatn7/mEYO5/w9s
-X-Received: by 2002:a05:620a:2605:b0:7c3:c869:1af8 with SMTP id af79cd13be357-7c4e1685d0amr1001658385a.18.1741425760798;
-        Sat, 08 Mar 2025 01:22:40 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1741425760; cv=pass;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp251671njc;
+        Sat, 8 Mar 2025 11:03:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCURsRrQY2Ig5h31qzXFdmxKv2IFfmZ/+f2PkDJjknZMUd4jFyUAZh9BzpLemEXNeeaJMRyBYmwxA1eMmg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFMObaY5fPjvQ2n8cQ/KAHy89U39/hwykqZjOHuKmhbLTAZUKo2lXKGAKoanKPfBpV83cFh
+X-Received: by 2002:a05:6122:21a1:b0:520:42d3:91bc with SMTP id 71dfb90a1353d-523e403eaffmr6399435e0c.2.1741460589886;
+        Sat, 08 Mar 2025 11:03:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741460589; cv=none;
         d=google.com; s=arc-20240605;
-        b=DRhy4egIsUcG2Ki7i0wbBNn9SYRLTaI3f0V3aFcJNAuVGUaiXdEbtKxyqf0CHElDEH
-         WEcxTcZ5XWmrZ804wDbkFdIQSEfPauKa9r4vuNEmr/z4skMJY5/uagyc1KVPaaOYc6W/
-         Y/z97sTjtfW5NllskvNfjcrKkLwVbFj8L6XT6fOvA0pD3Ks4o/KH6OiBHO0f5Y5q0G3k
-         ZSt287KrdHdE9RUdamlqU91wpEtT80g7JPGb6Aqs4tIKX0soRJxR36S38avzD4UC2LB+
-         v3lk5LjroE+jAOoxcSwK7sjh3I2Q5gSL6FzmiL0CWjv6YfV0E2dB/LtyLoRV5JJFxDbr
-         7JTA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=KnfRjvWtIcGa/j3sWVuvTeb5PPDhd0AaobM1NDIB4Zk=;
-        fh=YWlr+lkhrC8LRMtHPZS8Om6/EyGdyRO8rsAjsIfYGcA=;
-        b=kftAka690Z0XiCKfzpoXJYq6nV36WSmj15ZQif1uDpkOogs6u1uV/brrJDNL+bZjok
-         LxrCoH7H6MtRkMUgX+K1bJKxChWz08iRHGfzQ5FhqsIR3eJZtlTpJ+N1jcCJ/gEj0f6O
-         7fngzTfqqMIMbIKuGju9vukrq/jlfPkPmnWON5OTg4fTsIUyvLKnRbLq1sJlEsr22mhl
-         rBCl4Ktr/ayWdAaT/Jovyj9BnoGaRAoA8OTtGtQFIYN4AkGA2ODoStBq0oTGI/lVxrWB
-         ipAZj5+UTVuwTRE5TPFc4jxCEQ/Rzf4pKL22kuYnkQFoxzx6XNuWMM/KOPttR19vFnTL
-         dCnA==;
+        b=HiSq16Hhb40n1cjhf/K/x2hKnTZHUSE6K7pBY3LXCzc8/VRIDn4LL7WAuRXnEjzgAm
+         goKDjHQt5kniqeiOkCpfF9Dmlt1EjDOBU4ZEAe+fXw89eaQou9xTRP/Gq5mS6GCmtPPG
+         2hNbC83k7zKenufh2uzJrE+HBt6QpNH0M+wGWa1jWuYi4eitb6/P497CmdntMi3m8RJ8
+         K3PwREIYd/C0qZ74DOHN9YQnbWwjZRNOZ5R8/XuP8cHIIgwRh/4HjZcq5Dtb5d+LRM2o
+         EcQsvaVhDd9XWeQfth8uum7dQ0uVWkP1tu8+m6IA4a3s0azVqNsFzOZYTYdc5ZrwUOdh
+         EEgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+        fh=SAtR36XA5V2ux0K41wMJR3JQJwaaF6PTUaAvfV9GAno=;
+        b=a839gIbP/O1vSj6g6B84E0Nodr9QapStsH7qQjWk/bc3iDTSL6YxApRExkTqYqHAjo
+         Q4CIp0JMjsbwnAvTxYWIKThEpAgnRneVSUl2uY6YzLt2ZW2lp+5c199lYgXsY/Boj6g2
+         JDxk/zmrGHH951cQoalc1XcYQ7t5888HUs7njDhOLZxudaOKz7SXAjzIVi0fM6mIBzsU
+         HRN/tHJJfjEdkYRtbeZ75tzyI2HbYu27cGTB5YhVGd/jtUhtYajy4cj878AkE2ti5NsQ
+         QeAgUeeH5sA9lWNJzkz/7m1vno5rdqerVGvKAw33EtRMkJfkddOib4p9KQJVuS3sR1LF
+         3d2A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=bPPUhYy5;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e533b6d5si545560585a.93.2025.03.08.01.22.40
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=C1mePILG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-523d8c59582si1386186e0c.159.2025.03.08.11.03.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Mar 2025 01:22:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 08 Mar 2025 11:03:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=bPPUhYy5;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-552387-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 7FF8617238A
-	for <alex.bennee@linaro.org>; Sat,  8 Mar 2025 09:22:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1703D14A0B7;
-	Sat,  8 Mar 2025 09:22:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="bPPUhYy5"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8E68C2FA
-	for <linux-kernel@vger.kernel.org>; Sat,  8 Mar 2025 09:22:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1741425755; cv=none; b=sF+vCJ4WZMPwULXVFf4H95krkB0o6ga+BvbuZXf2hzDGG5Xy+RposUyDTWhYaPpF3ONlp5KR1Id/ZrmvlGe0B+BaXYrl1WYAGWZsX07IBkGWiNoNJNA6DXzLXvgYvbtY5QU3xP+8AvzQDqA3Ebb36/iAlLwkwCaBueIM+7jStfg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1741425755; c=relaxed/simple;
-	bh=Ej/ETKPHxuo5RpVLYbH3+Q1984+YqMNYqlfecOZ2L4o=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=RUTLg/43p28cku+LkrXxDB1YeelePOpVw7U52euJ4dedDXt3kb5uwdsyiFACe6vo3g5IvIpaqCzG66gYNi9xuJ3/0G74jt0SAd9ct7evGryqHMBfIvj2gbaS7tQNDhGxlese4H/O4i6Kx3CPqVPKeyXciQ8/ao2h9JHWklJ6pto=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=bPPUhYy5; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B19C4CEE0;
-	Sat,  8 Mar 2025 09:22:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741425755;
-	bh=Ej/ETKPHxuo5RpVLYbH3+Q1984+YqMNYqlfecOZ2L4o=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=bPPUhYy5j6jK6SFJqmyMvIRJtaqO/osXy8OXOp1+wXzZII9OxerW5YSq818FvzJ0Q
-	 h4QeQJe2tKC980sZdWpyY0x4jAsuNK6b7G+QJgOKK/Pqa0yOKEsvCImOEFK5PQWCHS
-	 XAOPI/zH5AKzhPc17IeKEFULEGCMOBAlDcMadrI00SjTTLeKeteTm82selNVu5/Wxi
-	 bN3KGBs3eBwc6BCIf37MoqBya9DXu97P2RpUeXz1+y0YrezgyTjvvpBl918u663NJW
-	 WF7rUbjNlFyeRjp2Jki4VNtdmNFDVyEWsqnunPPWVp1UMKpzcQJHHL1QMITViFWytB
-	 4GNoJWnJMmPJA==
-Date: Sat, 8 Mar 2025 10:22:28 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju
- Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Gavin Shan <gshan@redhat.com>, Cleber Rosa <crosa@redhat.com>, John Snow
- <jsnow@redhat.com>, linux-kernel@vger.kernel.org, Thomas Huth
- <thuth@redhat.com>
-Subject: Re: [PATCH v8 20/20] scripts/ghes_inject: add a script to generate
- GHES error inject
-Message-ID: <20250308102228.389e2537@foz.lan>
-In-Reply-To: <3f777e6a-01bc-44eb-8eac-7ff685a3fbee@linaro.org>
-References: <cover.1741374594.git.mchehab+huawei@kernel.org>
-	<3045b51edaf2d07eb0c513249fd1c621562ee3d9.1741374594.git.mchehab+huawei@kernel.org>
-	<3f777e6a-01bc-44eb-8eac-7ff685a3fbee@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=C1mePILG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tqzRs-0006ul-89; Sat, 08 Mar 2025 14:03:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRi-0006m6-PY
+ for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:02:52 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tqzRY-0003UJ-Gd
+ for qemu-arm@nongnu.org; Sat, 08 Mar 2025 14:02:45 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4393dc02b78so17536885e9.3
+ for <qemu-arm@nongnu.org>; Sat, 08 Mar 2025 11:02:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741460557; x=1742065357; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+ b=C1mePILG8sVuHo/ueoqNt0XxoEcLFKwynu4L+UOvlWM4bTOyGzc2fHuWrzUJraQPOo
+ sJQxQqhragwb13HwZ1sfzvXHqJqqIBanEz437szcfhBJL0C74bcTesquwkAjtxrzQJOi
+ x9y1YvIZLvhSFTvG3C5TeNvHjTVdoPczQJqz3fKr/WLLuGa1332lvkiYkUTVchG8uBNz
+ PwexHTZLi7YP5UA3J0JK48WODwyl6F3HcFk2xhsUYAMVph4YFJNet7uyrnPf9zYnPA/3
+ Q7jK3G8QOoOJ8fF4HbhuSaVNvHnG2So9SlZvD1hmZwQ6pTDdGLDuboo8BYpvbjM3m9W+
+ yy7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741460557; x=1742065357;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=F+yC7kcIFYBDlEb5elpDYxZqmpjHBPCkNQfWZnM7SA0=;
+ b=LJqc41JScdn3dXJv3PrYbqo9iQtXGBiNa3QZzOZlTsrV6ZJMX+tsGI87koJ9aZoH6P
+ 5z0jU4G/nnCfVTVHkjBkEzwSM2S0dF2TZ1JhT4NHV7oNYBeMhR6jgLzLwcqkLuU+g3O1
+ lC+/pny/irgs9qqXNpWgdRY4UTlOtd8mIXXfBpDR013TU+3AT7xl3WBii9S9g09EwRUJ
+ sdyddiviMCHweykue0K7B0bAVSU45YV5U0OuzykAOHKyT3byjHV1fgs69SL+l8ibq6Eu
+ cYsmCS6M62QtgOYQlt0juRMd3ZLcIaWLeHL9R0BEvSZJcPRGLw14tKbkEYXd1EGLA0k/
+ Gm8Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUJpRKCCE/iEoBbzEjlRmXq4nYFoFeKTIgq7jHxxLM/igGcja1AE5h/ZpaRuVt0w5yF9RQe+bunAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YynWv+RYW+QFcKnbExJ60SEmioj9RzwnYK61PuhvdOyFtWKSuaw
+ fr8ehTZp7Lnw+BmEmBZi7banc3tTnxe/mXQDM9/C9ZkwdLxq9beucndv5tHvmAg=
+X-Gm-Gg: ASbGncvH6ohuT/wao9l5QWG8ooN2BuRRsjLRdyIt6SBp/ds1Ptllv6KgDpQ7XqBET1s
+ u2wrun4hKKqJAC3BcwFCoyV7hhPbnGD9lSfUYuKs94Fg+TRzZ4Qhhu8kiYXx04o68mUgsEuhcl3
+ Ajo/fqVydhK0aOByLDgub31if0K55Ss+u5cSRnbtDR2D9SwuAw6V0JT9/JNXm1Hd5Tf629Ypi3H
+ HIQFujM63KjZrNOjfTjclraUeczt05tLtZcYjqFqB1kU5Jq6Ed2CwQjFYsyOjKJI2+LsZN2ycea
+ HzyN6o3O655lUoZR14tI9Rj6VVgfUXGT6YwqmSQoG8Zvzi8ySHBQOOPZNCgYMWEByfqRfElpmsd
+ AE0vFLmhHpVP2M3NCqyU=
+X-Received: by 2002:a5d:6d05:0:b0:391:13d6:c9ec with SMTP id
+ ffacd0b85a97d-39132d88ee1mr5624207f8f.20.1741460557363; 
+ Sat, 08 Mar 2025 11:02:37 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3912c1037b4sm9653479f8f.92.2025.03.08.11.02.36
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sat, 08 Mar 2025 11:02:36 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+	qemu-devel@nongnu.org
+Cc: Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 01/12] hw/sd/sdhci: Remove need for SDHCIState::vendor field
+Date: Sat,  8 Mar 2025 20:02:19 +0100
+Message-ID: <20250308190230.7508-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250308190230.7508-1-philmd@linaro.org>
+References: <20250308190230.7508-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: /rGkHa/EG9Jt
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mAPmkUHPxECz
 
-Hi Phillipe,
+All instances of TYPE_IMX_USDHC set vendor=SDHCI_VENDOR_IMX.
+No need to special-case it.
 
-Em Fri, 7 Mar 2025 22:05:27 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> escreveu:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/sd/sdhci-internal.h |  1 -
+ include/hw/sd/sdhci.h  |  4 ----
+ hw/arm/fsl-imx25.c     |  2 --
+ hw/arm/fsl-imx6.c      |  2 --
+ hw/arm/fsl-imx6ul.c    |  2 --
+ hw/arm/fsl-imx7.c      |  2 --
+ hw/arm/fsl-imx8mp.c    |  2 --
+ hw/sd/sdhci.c          | 14 ++++----------
+ 8 files changed, 4 insertions(+), 25 deletions(-)
 
-> Hi Mauro,
->=20
-> On 7/3/25 20:14, Mauro Carvalho Chehab wrote:
-> > Using the QMP GHESv2 API requires preparing a raw data array
-> > containing a CPER record.
-> >=20
-> > Add a helper script with subcommands to prepare such data.
-> >=20
-> > Currently, only ARM Processor error CPER record is supported, by
-> > using:
-> > 	$ ghes_inject.py arm
-> >=20
-> > which produces those warnings on Linux:
-> >=20
-> > [  705.032426] [Firmware Warn]: GHES: Unhandled processor error type 0x=
-02: cache error
-> > [  774.866308] {4}[Hardware Error]: Hardware error from APEI Generic Ha=
-rdware Error Source: 1
-> > [  774.866583] {4}[Hardware Error]: event severity: recoverable
-> > [  774.866738] {4}[Hardware Error]:  Error 0, type: recoverable
-> > [  774.866889] {4}[Hardware Error]:   section_type: ARM processor error
-> > [  774.867048] {4}[Hardware Error]:   MIDR: 0x00000000000f0510
-> > [  774.867189] {4}[Hardware Error]:   running state: 0x0
-> > [  774.867321] {4}[Hardware Error]:   Power State Coordination Interfac=
-e state: 0
-> > [  774.867511] {4}[Hardware Error]:   Error info structure 0:
-> > [  774.867679] {4}[Hardware Error]:   num errors: 2
-> > [  774.867801] {4}[Hardware Error]:    error_type: 0x02: cache error
-> > [  774.867962] {4}[Hardware Error]:    error_info: 0x000000000091000f
-> > [  774.868124] {4}[Hardware Error]:     transaction type: Data Access
-> > [  774.868280] {4}[Hardware Error]:     cache error, operation type: Da=
-ta write
-> > [  774.868465] {4}[Hardware Error]:     cache level: 2
-> > [  774.868592] {4}[Hardware Error]:     processor context not corrupted
-> > [  774.868774] [Firmware Warn]: GHES: Unhandled processor error type 0x=
-02: cache error
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index 9f768c418e0..9072b06bdde 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -311,7 +311,6 @@ extern const VMStateDescription sdhci_vmstate;
+     DEFINE_PROP_UINT8("endianness", _state, endianness, DEVICE_LITTLE_ENDIAN), \
+     DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
+     DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
+-    DEFINE_PROP_UINT8("vendor", _state, vendor, SDHCI_VENDOR_NONE), \
+     \
+     /* Capabilities registers provide information on supported
+      * features of this specific host controller implementation */ \
+diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+index 38c08e28598..48247e9a20f 100644
+--- a/include/hw/sd/sdhci.h
++++ b/include/hw/sd/sdhci.h
+@@ -99,7 +99,6 @@ struct SDHCIState {
+     uint8_t endianness;
+     uint8_t sd_spec_version;
+     uint8_t uhs_mode;
+-    uint8_t vendor;        /* For vendor specific functionality */
+     /*
+      * Write Protect pin default active low for detecting SD card
+      * to be protected. Set wp_inverted to invert the signal.
+@@ -108,9 +107,6 @@ struct SDHCIState {
+ };
+ typedef struct SDHCIState SDHCIState;
+ 
+-#define SDHCI_VENDOR_NONE       0
+-#define SDHCI_VENDOR_IMX        1
+-
+ /*
+  * Controller does not provide transfer-complete interrupt when not
+  * busy.
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 5359a6d8d3b..02214ca1a1c 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -243,8 +243,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                  &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+                                  IMX25_ESDHC_CAPABILITIES, &error_abort);
+-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index dc86338b3a5..a114dc0d63d 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -327,8 +327,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                  &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+                                  IMX6_ESDHC_CAPABILITIES, &error_abort);
+-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 34c4aa15cd0..ce8d3ef535f 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -531,8 +531,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+             FSL_IMX6UL_USDHC2_IRQ,
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 3374018cde0..ed1f10bca26 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -471,8 +471,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+             FSL_IMX7_USDHC3_IRQ,
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 1ea98e14635..c3f6da63220 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -524,8 +524,6 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+             { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+-                                 SDHCI_VENDOR_IMX, &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
+             return;
+         }
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 1f45a77566c..149b748cbee 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1731,16 +1731,10 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+ 
+     case USDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+-        switch (s->vendor) {
+-        case SDHCI_VENDOR_IMX:
+-            if (value & USDHC_IMX_FRC_SDCLK_ON) {
+-                s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+-            } else {
+-                s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+-            }
+-            break;
+-        default:
+-            break;
++        if (value & USDHC_IMX_FRC_SDCLK_ON) {
++            s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
++        } else {
++            s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+         }
+         break;
+ 
+-- 
+2.47.1
 
-Thanks for your review!
-
-> > Such script allows customizing the error data, allowing to change
-> > all fields at the record. Please use:
-> >=20
-> > 	$ ghes_inject.py arm -h =20
->=20
-> It should be easy enough to add a functional test covering this,
-> do you mind having a look?
-
-It is on my TODO plan to add some tests to check it, but instead of
-a functional test, I'm aiming to test the full stack.
-
-See, I'm one of the reviewers of the RAS subsystem at the Linux Kernel,=20
-and the author/maintainer of the userspace tool used to report and take
-actions in case of troubles [1]. So, I'm targeting a solution that
-will have rasdaemon installed on a Linux VM, testing all three
-components altogether.
-
-This will require to implement something at rasdaemon that will have
-an interface at the rasdaemon to report errors to the host OS. It
-currently have ABRT support, but it will likely need something
-different to output error report in a way that the same error will
-report the same over newer versions of the components inside the
-stack.
-
-For such purpose, I'm planning to implement a new feature on rasdaemon=20
-to allow reading the errors eithe via a TCP/IP socket with some
-simple text output interface, or maybe add a SQL interface[3].
-
-[1] https://github.com/mchehab/rasdaemon
-[2] https://docs.kernel.org/dev-tools/ktap.html
-[3] internally, rasdaemon has already a SQL interface, used with
-    SQLite. It shouldn't be hard to add PostgreSQL and/or
-    mariaDB/Mysql support on it.
-
-Before implementing it, we need to have this series merged.
-
-So, in summary, my plan to add tests for firmware-first error
-report is:
-
-1. Have this patch series merged;
-2. Add a new report mechanism on rasdaemon to report errors via
-   a TCP/IP socket;
-3. Setup a runner that would periodically test the full stack and
-   report regressions. Such runner would need to fetch from 3 different
-   sources (QEMU, Kernel, rasdaemon), so it would likely be triggered
-   by some scheduler.
-
-Btw, for the first version of the script, only ARM Processor Error is
-there, but my long term plan is to be able to test other type of
-GHESv2 errors, like this one [4]:
-
-	https://gitlab.com/mchehab_kernel/qemu/-/commit/8a774121750def2723ea59ce23=
-43a774a3f01ca6
-
-[3] I implemented PCIe bus error without checking first if the Kernel
-    supported it (when I tested, it didn't). I opted to add this one
-    to ensure that adding new subcommands to the ghes_inject.py script
-    would be trivial. It helped me to organize the code in a way that a
-    new error injection code means just a two lines change at the main
-    script. In this specific case, it is:
-
-	+ from pcie_bus_error import PcieBusError
-	...
-	+    PcieBusError(subparsers)
-
-    With the actual implementation handled on a separate .py module.
-
-    This way, we can add multiple handlers there, each one with its
-    own separate Python file.
-
-    After having this series merged, my TODO plan for GHES type support is
-    to add error injection code for the errors that are already implemented
-    inside the Kernel and rasdaemon, after checking that the support for
-    they are OK. Then, add support for it at the runner that will be
-    checking for potential regressions at the full stack.
-
-Regards,
-Mauro

@@ -1,94 +1,94 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606473njc;
-        Sun, 9 Mar 2025 06:53:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJbixMEYfLVNbmSd5OyCN+hFf+NAqvtSb3BLEOtskzLwGv47Q7PzdLuYLtA2WXA4LrQXceQ+F766MrLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGLbXre51z8HgI1mmJ9e4PV9WybBi4ln3/bZeopBUyQP4al+hqggrnBG+Ix3P9rHYbrZDA2
-X-Received: by 2002:ac8:598d:0:b0:472:3d:d317 with SMTP id d75a77b69052e-476109b131emr142291011cf.28.1741528391690;
-        Sun, 09 Mar 2025 06:53:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528391; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606554njc;
+        Sun, 9 Mar 2025 06:53:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX3lR4Rs+4oQKi/srBsPC4Awm9IlzMj0mOZBL90CiM7YCjxQmnyJ7IJem9pPKiBE02k3XTO7ldfghrGYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGPglfUCEhBRmSaeIx2D5cV3WzgDTl32ob9Ql5NmRyZ9ddOgxMWD5CytYjQR4Zctm99ONOH
+X-Received: by 2002:a05:6214:500f:b0:6e6:6c7f:111a with SMTP id 6a1803df08f44-6e9007022f2mr102517426d6.40.1741528402412;
+        Sun, 09 Mar 2025 06:53:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528402; cv=none;
         d=google.com; s=arc-20240605;
-        b=U2kj5pIHE2vv6cifSWJkWJJs4hMQZdTQUhU+qYLJRE2x5vFGUcn9KOkGgvzJbjWsDE
-         gPqPfOIcRqwf9MdEQqXZIX2wegd5XT2THvFSd9+YW991K/IpMXs7NLWE31qISIqEubKh
-         f4NPcO910XgCsti9Ptf4h4rwU8lillZRdNK14tCqhU7WVCdX8MpQ9M2AIR85NhX55Nze
-         QXHdMUxhBf2NbiADFUNNmD3Ra1NiYFNXT89RBubwvU8JX4ph0l6XBKy3bU06vjY/SNAt
-         UP9ADT9Fj6LYNNAXLsV1Rce5W0OZtJ/B8d8JurPzj9RhAyRb1/AFhPAr/6vFz9mzGxlx
-         exbQ==
+        b=iTzdoptnL2pO9ZwtJKPTThigxG2YNgYwdCqsoLbVDNSGTZ3ERVIg/QE5+ckf0Nz2Vc
+         KsBiUc5Zbsmx6icyTA/Xm1CUFQcWXaqf7/6uJG+jRRNiNidmZMvkPcWysFO6eP9jH3f0
+         khSDs+cMdZSLXK4Vw55WBg6sPoViTNZWCeobzAwMK0vKBj0AiM38ny0XT578B44gNwMF
+         qrhH3uVBKOGbGrRBAosyDqBoQZL6hGJkW1VuMyFPjxEN4j6KiRpvWE3lS3X5JRHnaB5u
+         wf6AeZ4YrFxfxTt6nt297hGiKNWQZU8er0ReAfOjdSqJ8FDf/5rLJACS7D2rPZRWmwZI
+         TEHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kSI4OOYTK441lwBQvB+VVbjfgVx14HM7h4TjjyU4yME=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=ZKr76ZIISwUnfGveUXabXk7Wag1oDMWNyGktkXb62jz5Zm9Gx729c7oOHZMku+TUo3
-         6N295bzX9Ps5ST+8IUD/JVAj4pW5iS1a2dVBH5lVq99dWLpUJLKG5SIDIAfci3PdAEJ/
-         mvKtKFG0sL/kXxr3iZw3X1OjK6TJN+L51jGVVMYuSgPOeIIop+AUr98XoJpvY60OscEk
-         d0o3z4jwxlSZ21EnKbo/e492hxw/yEMmzqRPF9OiRMvsby9tgSW/4E7XVEt/MHcXLN8e
-         2xiQC9d+W9IVxQBO5Wlk+Qj9ziXn8uTcGgRtJaGiZicPA2a202nR+9WBbMXfV8VgApyP
-         xTIw==;
+        bh=CN2CVZA9vvPoGf0w4k/HObD/a/RFgyk/5y0FTL6mAn8=;
+        fh=gIu7G1JN70NCpiHAwj66qqryR8wRCqauvqmhj52y0eQ=;
+        b=CTOlrM94Fz7zPJUerp2rwg6qr3idAlRl4p0T7QZjfRg9UxfoPBO6T73SjXfQBIgjq9
+         XSl1nYEL8Ib/C8g+cla+lmO2yWySrqnFn+li/SLYCXV4Ceb9J+NcGrvknCGgyMzbcsPS
+         YMt6B3tEYxZmkiEM3B+SoJk+PlewKYExfoib/Px7DS2cJlAzC39/rBU4WJZ/T/yvimS/
+         hAavGQpRzuOkukBdEWp8MmDxTFS/nwf4NzKV8yvQJX451N+r7kyv5tWDa0AYBKgviRg8
+         orwmhi/ocddLBWoV/Cag3DSPUsGqafVgurEmqMMRCYcCqqec70e9KwXIJmvDyMsL3L7c
+         opXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bXwIBGWT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P06a1uRt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47671fc1fa9si24681571cf.398.2025.03.09.06.53.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f71610bdsi73329756d6.242.2025.03.09.06.53.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:53:11 -0700 (PDT)
+        Sun, 09 Mar 2025 06:53:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bXwIBGWT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P06a1uRt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH5K-0000uX-Dd; Sun, 09 Mar 2025 09:52:55 -0400
+	id 1trH5C-0000Px-Pq; Sun, 09 Mar 2025 09:52:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH55-0008Ua-Ra
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:39 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4w-0008Nv-7x
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH51-0002ub-Bi
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4t-0002oK-Ae
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528354;
+ s=mimecast20190719; t=1741528346;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kSI4OOYTK441lwBQvB+VVbjfgVx14HM7h4TjjyU4yME=;
- b=bXwIBGWT8d2uIVc3xhRy/+CP6kGDLfqO1JcqTAamegjCKtNihFPZiV2ftzws/F/ynAA5IY
- 99aqgx+6KxLBqDmKYjfV/rEnMsBhwETys8Y/qkiftoV48kVgAW2FAEeSsiJGRLAW0uiHkm
- 5N+uv7W44hX8OnEebvrrkqMx1TJH+LA=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=CN2CVZA9vvPoGf0w4k/HObD/a/RFgyk/5y0FTL6mAn8=;
+ b=P06a1uRtkJ54R1MSn23OnRswjWbhl+Pa2lNkealadY8RwS1U6WEDJJkSWW/xlL4oSN5Izm
+ +rjR9U9VvLfyNKKIUx+ZxsOqTDYr3ExFZWm/1ddfX35S5+qbX4IGup9Wz8WqyaAcC1dh0U
+ o8N8Eg3JjXy/9o7yyQkf/S591/13S1c=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-594-PUK10XofOoG72XCEXwxprw-1; Sun,
- 09 Mar 2025 09:52:31 -0400
-X-MC-Unique: PUK10XofOoG72XCEXwxprw-1
-X-Mimecast-MFC-AGG-ID: PUK10XofOoG72XCEXwxprw_1741528350
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-74-BgOBGcezPEev7MiCKF4E1Q-1; Sun,
+ 09 Mar 2025 09:52:20 -0400
+X-MC-Unique: BgOBGcezPEev7MiCKF4E1Q-1
+X-Mimecast-MFC-AGG-ID: BgOBGcezPEev7MiCKF4E1Q_1741528339
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 59A331800EC5; Sun,  9 Mar 2025 13:52:30 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8D3EF195608A; Sun,  9 Mar 2025 13:52:19 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8EC981956094; Sun,  9 Mar 2025 13:52:28 +0000 (UTC)
+ id B13DE1956094; Sun,  9 Mar 2025 13:52:17 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 22/46] hw/intc/aspeed: Reduce regs array size by adding a
- register sub-region
-Date: Sun,  9 Mar 2025 14:51:06 +0100
-Message-ID: <20250309135130.545764-23-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Nabih Estefan <nabihestefan@google.com>
+Subject: [PULL 17/46] hw/arm/aspeed_ast27x0.c Fix boot issue for AST2700
+Date: Sun,  9 Mar 2025 14:51:01 +0100
+Message-ID: <20250309135130.545764-18-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -119,117 +119,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yE4zijDhjNbg
+X-TUID: 3oQ8PJykTZmK
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Currently, the size of the "regs" array is 0x2000, which is too large. So far,
-it only uses "GICINT128 to `GICINT134", and the offsets from 0 to 0x1000 are
-unused. To save code size and avoid mapping large unused gaps, update to only
-map the useful set of registers:
+Currently, ASPEED_DEV_SPI_BOOT is set to "0x400000000", which is the DRAM start
+address, and the QEMU loader is used to load the U-Boot binary into this address.
 
-INTC register [0x1000 – 0x1804]
+However, if users want to install FMC flash contents as a boot ROM, the DRAM
+address 0x400000000 would be overwritten with Boot ROM data. This causes the
+AST2700 to fail to boot because the U-Boot data becomes incorrect.
 
-Update "reg_size" to 0x808. Introduce a new class attribute "reg_offset" to set
-the start offset of a "INTC" sub-region. Set the "reg_offset" to 0x1000 for INTC
-registers.
+To fix this, change the ASPEED_DEV_SPI_BOOT address to "0x100000000", which is
+the FMC0 memory-mapped start address in the AST2700.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-6-jamin_lin@aspeedtech.com
+Tested-by: Nabih Estefan <nabihestefan@google.com>
+Link: https://lore.kernel.org/qemu-devel/20250304064710.2128993-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/intc/aspeed_intc.h |  1 +
- hw/intc/aspeed_intc.c         | 50 ++++++++++++++++++++---------------
- 2 files changed, 30 insertions(+), 21 deletions(-)
+ hw/arm/aspeed_ast27x0.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-index ec4936b3f486..208e764c4ade 100644
---- a/include/hw/intc/aspeed_intc.h
-+++ b/include/hw/intc/aspeed_intc.h
-@@ -42,6 +42,7 @@ struct AspeedINTCClass {
-     uint32_t num_ints;
-     uint64_t mem_size;
-     uint64_t nr_regs;
-+    uint64_t reg_offset;
- };
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 4cee6ddc0b57..f14d2ea1753d 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -24,7 +24,7 @@
+ #include "qemu/log.h"
  
- #endif /* ASPEED_INTC_H */
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 134922e46fdc..d684b4bb4fec 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -14,25 +14,31 @@
- #include "hw/registerfields.h"
- #include "qapi/error.h"
- 
--/* INTC Registers */
--REG32(GICINT128_EN,         0x1000)
--REG32(GICINT128_STATUS,     0x1004)
--REG32(GICINT129_EN,         0x1100)
--REG32(GICINT129_STATUS,     0x1104)
--REG32(GICINT130_EN,         0x1200)
--REG32(GICINT130_STATUS,     0x1204)
--REG32(GICINT131_EN,         0x1300)
--REG32(GICINT131_STATUS,     0x1304)
--REG32(GICINT132_EN,         0x1400)
--REG32(GICINT132_STATUS,     0x1404)
--REG32(GICINT133_EN,         0x1500)
--REG32(GICINT133_STATUS,     0x1504)
--REG32(GICINT134_EN,         0x1600)
--REG32(GICINT134_STATUS,     0x1604)
--REG32(GICINT135_EN,         0x1700)
--REG32(GICINT135_STATUS,     0x1704)
--REG32(GICINT136_EN,         0x1800)
--REG32(GICINT136_STATUS,     0x1804)
-+/*
-+ * INTC Registers
-+ *
-+ * values below are offset by - 0x1000 from datasheet
-+ * because its memory region is start at 0x1000
-+ *
-+ */
-+REG32(GICINT128_EN,         0x000)
-+REG32(GICINT128_STATUS,     0x004)
-+REG32(GICINT129_EN,         0x100)
-+REG32(GICINT129_STATUS,     0x104)
-+REG32(GICINT130_EN,         0x200)
-+REG32(GICINT130_STATUS,     0x204)
-+REG32(GICINT131_EN,         0x300)
-+REG32(GICINT131_STATUS,     0x304)
-+REG32(GICINT132_EN,         0x400)
-+REG32(GICINT132_STATUS,     0x404)
-+REG32(GICINT133_EN,         0x500)
-+REG32(GICINT133_STATUS,     0x504)
-+REG32(GICINT134_EN,         0x600)
-+REG32(GICINT134_STATUS,     0x604)
-+REG32(GICINT135_EN,         0x700)
-+REG32(GICINT135_STATUS,     0x704)
-+REG32(GICINT136_EN,         0x800)
-+REG32(GICINT136_STATUS,     0x804)
- 
- #define GICINT_STATUS_BASE     R_GICINT128_STATUS
- 
-@@ -298,7 +304,8 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
-                           TYPE_ASPEED_INTC ".regs", aic->nr_regs << 2);
- 
--    memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
-+    memory_region_add_subregion(&s->iomem_container, aic->reg_offset,
-+                                &s->iomem);
- 
-     qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_ints);
- 
-@@ -348,7 +355,8 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
-     aic->num_lines = 32;
-     aic->num_ints = 9;
-     aic->mem_size = 0x4000;
--    aic->nr_regs = 0x2000 >> 2;
-+    aic->nr_regs = 0x808 >> 2;
-+    aic->reg_offset = 0x1000;
- }
- 
- static const TypeInfo aspeed_2700_intc_info = {
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+-    [ASPEED_DEV_SPI_BOOT]  =  0x400000000,
++    [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+     [ASPEED_DEV_SRAM]      =  0x10000000,
+     [ASPEED_DEV_SDMC]      =  0x12C00000,
+     [ASPEED_DEV_SCU]       =  0x12C02000,
 -- 
 2.48.1
 

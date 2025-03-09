@@ -1,97 +1,139 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp547003njc;
-        Sun, 9 Mar 2025 04:34:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCyx/EtS0fN0Ubat0LfVeKDkHajzrLD4rqIJZYfST0N7iS7aRKhNkhdMtlAyhZBgJcX0oGeLULEp63WA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGrrIQUfbJIDkygfwuam+8LMxBsZuzi67nRwkTn5Rabj33rAE+bKk2J1h3mREv9wJa4IBSm
-X-Received: by 2002:a05:620a:2693:b0:7c0:add8:1759 with SMTP id af79cd13be357-7c53c8bf4e2mr1000228985a.18.1741520096889;
-        Sun, 09 Mar 2025 04:34:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741520096; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp564859njc;
+        Sun, 9 Mar 2025 05:17:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVpD4kecF1E7dRyThpdMDMmK+i5x9E7F/FgV3CeYTGQcrCp8WSA5cXdyjNb59/ig6+jZuu2NbAnVja3+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHiZhdYDjaazICUSM0NKx2fcbLIII36aFTRNHd/w+Rk1hACiuK0KeD/JZWyPAqlilnC3eyj
+X-Received: by 2002:a05:6214:2487:b0:6e6:6599:edf6 with SMTP id 6a1803df08f44-6e90067e17fmr165689786d6.34.1741522655111;
+        Sun, 09 Mar 2025 05:17:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741522655; cv=none;
         d=google.com; s=arc-20240605;
-        b=hlwcVyl7+Vf6npvLfU8kJEYsA1y3p5gL33EaubgYhLr6/OZ4Ocr8r24Ak+Ky41sPmo
-         Oi3LS+gJC8M5NM+VQzS4U4htUTqKspZfbnxtlC9JDn2hJqGK6ahoZbeT3Dhj0f8JTXSc
-         n5pjyffwtgrFPTGLY/+SG+Hi9KABtB1ytuleohHRgCIkWw+oj6xgcN1cNyP8//5zB64e
-         qnNCJKuhQ2eD8OBfeSWNCu46OYSB+yoaaPch+avmxnuntffiHjsJYPZ/VAIKLTiyV0EG
-         rooGgKG9GErDb74juZE5ONfPzsFSshDMg8cEui9Mouql3j5DiaZBUJM70KOVkbS/Dvl2
-         5z9A==
+        b=bVk4AXkraqTwandXAgRrvnIuDPtkVGT6KW53WABmvXvQiXXHNmrRW76A/5Yj6HTLvb
+         fVBDPgIrPFUM94qjESTiXb37c47qOd/wGc+2+mFfly7+Xx/wBqFMd7zqco31K9OSoBtc
+         E91t0R/GTB6EOh1UAxNqW5DWfS1F4tPmh0H/qTFY5kCRIweljGpz9tl2Y0exaZry35uJ
+         ETvvT24Ld1X+IVjRHmy5+jCsjTXRQI/I86p/UNPOHDcZK9T4OgKei5FVi4ByrN76B6HP
+         d/AuSvrUcx0TPBoyxXouO+RGwQulN9aoPFmSWMK3tL9hF4ZJMwFAsCYPO9DqaVZdi6yD
+         ix9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=29IBGKAH77NZK6xZY+5MYE8BEhD3gh5zsY5WOKh2bjc=;
-        fh=g4IoZ6gARhmvvdqyrjYwV05NB5zXg6qgZind0UQ7Eok=;
-        b=hY2FyxWI4CCBniSBM4/cREc4tl1d42D/iIN5pXn+UM2v3acEqZgLcj8VTYaM7MSFpt
-         4ht7g1dSIUElp3HzHMakKmAX0Ym1sxyIe3wBLu2BUvHAYDumcZu4zoI6cTBD7PEIC9uc
-         4aapht9OLpQZKYGvxsx7By31HOhBS9PnpsofAK9MxQnGY9dA99T9CUwt9q5OfhbKY1aO
-         nyoREMObvCIJGQ1+ELf73yN2OJCXzXgE7lHy4eb2bSmc+CB0P8mAzy0M4jQq23E/2NQy
-         Odx/+j80n4O2Clx+N93K7t0Wi5Y6HfDh25u8/s+6Q2Q2FD3ypoXLPpsGfFwTjeCuFzpV
-         NIqA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=r36St+rnaojSkYk5+iSomygtCQfeEMh2+rNy1K3V6bc=;
+        fh=1aHSHfoyqTNPQPF2mdJkq7sL5WCyMrwstHu3fcSYCbA=;
+        b=DyahcoapJG2CVJnz/BsR1xXag0YlSYlzoNIgl4exG6ghHw51vfkywUBjtBj7YUJJp9
+         mtsns4UVZjjhlYFyv8CnqTeuWGrkvJnRKMzCaf/dY9SjAGFzqFnhuCiKgO8ikkduUlfo
+         2gPoxDuOJ66fgG5gLUdy08/MxsvwQ6oCCZ+Ziw9PBqHRe/f+bQBRRctVT5IopJc7qrxz
+         Q/yRi98v0lWPTxPwTu8KSP1iVGfUvTDeksPGMG+m4IPzCzcSWSwDmaz2/Ne09tF/t6su
+         L5JQpcG3HBwCR7X7tUBEqJl9iC7XVAb35efA7yfEBaK2Jw29iJaQ05Njf3D8EDfoCaql
+         ZtIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7FlIhEr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e5511812si722932985a.343.2025.03.09.04.34.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f7173d0esi71757926d6.280.2025.03.09.05.17.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 04:34:56 -0700 (PDT)
+        Sun, 09 Mar 2025 05:17:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7FlIhEr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trEvi-0007ON-21; Sun, 09 Mar 2025 07:34:51 -0400
+	id 1trFaU-0006ih-5L; Sun, 09 Mar 2025 08:16:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trEvc-0007Kh-FY; Sun, 09 Mar 2025 07:34:44 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trEva-0005Yg-NX; Sun, 09 Mar 2025 07:34:44 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id EA5FA4E602D;
- Sun, 09 Mar 2025 12:34:37 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id UcD6v2CQQD1X; Sun,  9 Mar 2025 12:34:36 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id ED1834E6019; Sun, 09 Mar 2025 12:34:35 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id E7F7374577C;
- Sun, 09 Mar 2025 12:34:35 +0100 (CET)
-Date: Sun, 9 Mar 2025 12:34:35 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, 
- =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Bernhard Beschow <shentey@gmail.com>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org, 
- Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 12/14] hw/sd/sdhci: Allow SDHCI classes to have
- different register reset values
-In-Reply-To: <20250308213640.13138-13-philmd@linaro.org>
-Message-ID: <a915e927-81c2-96c0-1ef7-d641cd4bfdca@eik.bme.hu>
-References: <20250308213640.13138-1-philmd@linaro.org>
- <20250308213640.13138-13-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trFaO-0006hM-Fn
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 08:16:52 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trFaL-0001MG-2Q
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 08:16:51 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-43bcbdf79cdso19240845e9.2
+ for <qemu-arm@nongnu.org>; Sun, 09 Mar 2025 05:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741522607; x=1742127407; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=r36St+rnaojSkYk5+iSomygtCQfeEMh2+rNy1K3V6bc=;
+ b=t7FlIhErAvsvD3ibAKyzbD3ry8aHZ5KZkiErj3o9Ot+RbUMB+NrFJ6GydqAVspo38A
+ qGrqGbqQXpxvakigVh3M1SPjIB5tVV2h+v4JYIS+s3hQT+KuUPg7SMy2PEoBRZfrQ6uw
+ JCA39WbOs/GU8gFSIU3BqFmYr33pyEAi/IIMSjkveKjkd2RpcnGWtNWXmqiyOr1KzYNq
+ VolFk7HjffTr/xR9f9vS1hzZZjd+zr8ccySlrxMwqmiiYgYDU8FztalZP9wligUaB9zi
+ +WwjqsBpaTk78giSJyTOxmllsnay+uHlVjLDUmx9CEBA3A0dWVeADQRRuQ21W9Sn8cZi
+ mPXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741522607; x=1742127407;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=r36St+rnaojSkYk5+iSomygtCQfeEMh2+rNy1K3V6bc=;
+ b=Oh+bizoquKIc9mCGXsg1iU0hdJLJsiWTOFEzz4Zvqg7lzZOVOmxcooozl/M7cD2enG
+ 0jAXfgdcvLCV8LQ2+a6a+dGR4JKSFpGVq6YDopXVRMj33/GuJ+ZY2ZTkaBTG9QoyxDwV
+ uCY4nK1gtC8YaCZu6BkXe+Ob5okY9YLEk8QmeVcjovbmhgm2VK/mgao7JA6/RkVn8n88
+ KENKCvy2VsRiJWB08qRHawxLgHEO5ggIaPyoKJSvHB75DpNq9kvbBjEzh2k2uO1hKTKQ
+ K5boBWexoOIWvq73RCKSNJNQKsMO0YwssG9U6s3dNPCaw1htZ0JVB3CurOcPdJQ90ERO
+ imCw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXd5TnvDvBSUGSa29Q5dSwaknVHf4o7kVNXLFrPcIhVqIptbvDWXm3zBcQIDEcOkWZmkQ7gMV1Dkg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3Emrs8m9GQimus7h3FORpy8OteWuoVYhYTfIdedcmweVJvEGL
+ tzh7zJt+YRCRUYPJigE0EFX1TpBwkiizESp6x0q6DJJPwv17TQIUIHkUoge7y12khpWay2VgQmj
+ BixU=
+X-Gm-Gg: ASbGnctCxJ8ZXNuqcLUBgBhjV/AxOKBNKcOB2UXqTT5s5nhlbDKP4nZHvVndkQU8JQE
+ vDDdySb0ogQpRkjx2aJx0Ml1nxqKRQd+bChZ7g6NNipshHFQvNsDWDk900HLWDWg7qxNL5dzDCE
+ azACtx6XB3XkjhSx6P1aRZqk2HQIabIuhfpWpXdoHDF/C7N8Guhwqqsl2GSldnnIDN8Wv0oKRI7
+ fXI1zBpQvvD4MPkl3uVT1LhMUzHofabCNJ4WMQXGijy9U9AgTTaHwIcnTXROe77A/A8tS6ThzZx
+ OwCvLmDokeIJe8KqZ82G/rvG8RDxGvg7qK/wPgeASpn4rfeul0Ak5YdgrQ9VOWdW7Od3Iy+jHqu
+ OatzuXc6+iB7u
+X-Received: by 2002:a05:600c:3b1e:b0:43b:c965:954d with SMTP id
+ 5b1f17b1804b1-43c5a5e92f3mr53387315e9.1.1741522607104; 
+ Sun, 09 Mar 2025 05:16:47 -0700 (PDT)
+Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43bd426c56esm149167225e9.8.2025.03.09.05.16.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 09 Mar 2025 05:16:46 -0700 (PDT)
+Message-ID: <9d032d3b-7929-4a7f-b5a7-5338a0fc16cd@linaro.org>
+Date: Sun, 9 Mar 2025 13:16:45 +0100
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-2137444010-1741520075=:9805"
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 13/14] hw/sd/sdhci: Implement Freescale eSDHC as
+ TYPE_FSL_ESDHC
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
+ Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
+References: <20250308213640.13138-1-philmd@linaro.org>
+ <20250308213640.13138-14-philmd@linaro.org>
+ <9eb8f1a0-75c0-526a-869c-53d01551c97b@eik.bme.hu>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <9eb8f1a0-75c0-526a-869c-53d01551c97b@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,22 +148,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kwsxoBJyqJTV
+X-TUID: rYM1u1ntDXTV
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On 9/3/25 12:04, BALATON Zoltan wrote:
+> On Sat, 8 Mar 2025, Philippe Mathieu-Daudé wrote:
+>> Per the MPC8569E reference manual, its SDHC I/O range is 4KiB
+>> wide, mapped in big endian order, and it only accepts 32-bit
+>> aligned access. Set the default register reset values.
+>>
+>> Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> include/hw/sd/sdhci.h |  2 ++
+>> hw/sd/sdhci.c         | 37 ++++++++++++++++++++++++++++++++++++-
+>> 2 files changed, 38 insertions(+), 1 deletion(-)
 
---3866299591-2137444010-1741520075=:9805
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
 
-On Sat, 8 Mar 2025, Philippe Mathieu-Daudé wrote:
-> For the registers which are not zeroed at reset, allow the
-> different implementations to set particular reset values.
->
-> Remove the misleading values commented in sdhci-internal.h.
->
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> -/* --- qdev i.MX eSDHC --- */
+>> +/* --- Freescale eSDHC (MPC8569ERM Rev.2 from 06/2011) --- */
+>> +
+>> +static const MemoryRegionOps fsl_esdhc_mmio_ops = {
+>> +    .read = sdhci_read,
+>> +    .write = sdhci_write,
+>> +    .valid = {
+>> +        .min_access_size = 4,
+> 
+> Does this need max access too? Maybe it could work with 8 and likely 
+> nothing would try to access more than 4 so probably does not matter.
 
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
---3866299591-2137444010-1741520075=:9805--
+Per the reference manual (chapter 16):
+
+   All eSDHC registers must be accessed as aligned 4-byte quantities.
+   Accesses to the eSDHC registers that are less than 4-bytes are not
+   supported.
+
+There is no precision on max_access_size.
+
+> Regards,
+> BALATON Zoltan
+

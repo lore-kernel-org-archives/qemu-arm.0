@@ -1,93 +1,93 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp607097njc;
-        Sun, 9 Mar 2025 06:54:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXtam8wAzjb+l4yuu5DC5MLV1L3+lGGD6pbXgWleOGaQAPwq72nXqkTdtHyBtmLvmp2W8ikjvk+gnGmQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEC6p5rMw0ulYj4eC7EDosTsTiXhHSZ43rvLX4UfyTxpd99AvkMm6P7vjvJhwToWfq4rDqO
-X-Received: by 2002:ac8:7f42:0:b0:471:fde4:f0ae with SMTP id d75a77b69052e-476189e8118mr133207981cf.36.1741528479250;
-        Sun, 09 Mar 2025 06:54:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528479; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp607182njc;
+        Sun, 9 Mar 2025 06:54:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU092izbLG95MTSa5qDuc9gKljHTpCy+8mStmakDVPYukFRXurCSMTrCJCX8MDLQsC1joDGetLisurFlQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHqytg+AVfQuuxKLhudVCBS98mZjntgA0v5frBqIS5RllBV3liyWGRHCyQvScf4eAO+kda9
+X-Received: by 2002:a05:620a:4149:b0:7b1:7508:9f38 with SMTP id af79cd13be357-7c53c89c482mr894735085a.16.1741528492803;
+        Sun, 09 Mar 2025 06:54:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528492; cv=none;
         d=google.com; s=arc-20240605;
-        b=bdNn2oXJu0mXOjVOHRkOkWfVh1x+3OLY8Quaa+0dF/a2S72yc0xESBW/N6CEaJBCGE
-         Gg+por0I0wONKkkRYIOdBhbZOGvUpRDFufzQMBoTs2JWQwuHO+Ifw06V1rIxFz4TqKaJ
-         raY3vSd0KYQFieygabJpGBHeHviKymJyNlcOu5kN8Jsro2HPFJoYvE22ZtKgknG+VYQp
-         qq6TqXB+vvRIsAXZNjgxhJAQPkYPgIBhOxfuwq8Wy0pASyMVFnC5G72T5kMBqF+4Hc8n
-         uziXM7PWRS60BWjne5HXkU19makiptSy4Zges/TxfuLHHUcGkyu6hQ0eysB2ZU7VNEYu
-         E98g==
+        b=E+6pN7exr1A1hlRfzbAZPTblXpJ/mCxjjd53CPI2IqGGl7Y2REVDRnkRNGOmFOokSR
+         afg4bkhlD6q+F9tIdRP+5dEwP+duUpypWLfrakuZrW21JMXvuIN0uJ/wG4DYgNwDGXGH
+         EjJSyHh9mijgdY+O2lYYpeaUguH0lW2Kt0ypLJGc5PEN6HSwkHCwWcOm6fzEeBvDIBO8
+         4WYgSRF2p/fGWI1YPv7AcYTGLKYre7qiVEf+g27gBdrlbGXrc/mwisRql6mIjepQENqX
+         ks0Tu5T78FlWD5kecoKVkc61gYKhgTn9FSgyd2K7Ziuk2DczBMsDcfuCr5AoZeLj077P
+         lwbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=93oC26XmqibhZHwyuuMatuqVW8WjpFxwoG9WKju+BqI=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=OblWYs2b104i5ihoe0yhxgtgIz7GQXRLNhftLsustgmW2FTB7/UfdvOddf6PByg6TN
-         qvmOjko/rAZONaneDjExleMnEunOk6PFba3ryqxfzs78gCL0B8nORff9ihOdywF0ZfVJ
-         i4xGqqtSFood0twKjOeGFjKa6xiblIX9/9uNjK49nTTVIw1MALbLFA6WxsRwUyXi+tgl
-         zWi/6zmMnUA2/J2eHfflqeVADN33lGT5yzVgpP0zPe2gog5hEA8GVfBWAmD6zT6gmhev
-         0VoUNnYYY1Gl6Sp/w4/GtI7h3Wbfi7RZpiIS1j3hpeNvGztMHOBrpNLZq8Xp/ozs4e9P
-         opcQ==;
+        bh=2KfI8+iFL+27Va8wugF7Ja64Lc6TjMqYF+YS6aGCqw0=;
+        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
+        b=Ow8XU0dRTc+MIvHBupkFlIgb/eqbYJ+7wBHI2dwAUpWIvMknqFSciWQIecJv69Yr3r
+         Lsbkanote7vJ/OZh5DweI+jyBdnL0Xri9hMDkXS5vSJodaLhXoJQbcP/+pzpjVHk3Niw
+         VMNu1HCPkaRSes5CeTOwTD3kZq6sCml/LM+NoK9EZbmky9XGsnoMc4r2HFlE4FJoHdVy
+         13shNnoTDCBfuucnoUr6JFIoGiiZrWVg5DYPLj87HbSOq0Q3YuJstrNhVVzScJ1xh/H9
+         mRUFQw1LzllltULSgs+EklaLneAkVnFPHF515JmPn3xlo1TGaI7abEkMUkluA4W2s4PA
+         fIwg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IuKMhbzT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLmkJ5nX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4768a4d9788si752041cf.91.2025.03.09.06.54.39
+        by mx.google.com with ESMTPS id af79cd13be357-7c545ff4882si233430285a.40.2025.03.09.06.54.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:54:39 -0700 (PDT)
+        Sun, 09 Mar 2025 06:54:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IuKMhbzT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLmkJ5nX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH5o-0002XR-UX; Sun, 09 Mar 2025 09:53:25 -0400
+	id 1trH4M-0007Ur-Ke; Sun, 09 Mar 2025 09:51:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5Z-0001ZK-BO
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:53:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4I-0007T6-Lt
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5W-0003vK-JJ
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:53:08 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4G-00025J-TP
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528385;
+ s=mimecast20190719; t=1741528308;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=93oC26XmqibhZHwyuuMatuqVW8WjpFxwoG9WKju+BqI=;
- b=IuKMhbzTRwuqnfpcOxR6J3Sm70XppiiY9ULtYgef11O96nlVFnS1028wuYVDugaGJEfFH8
- ktwfMQSweqlTeG8sbwb/2H4If5vaincSqqcCZQdNrso7JAMUPe8ePb0sNDGfVIij9G8Usn
- 4dV2h59cgywVla5PXRwWW1bXIOyt+ro=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=2KfI8+iFL+27Va8wugF7Ja64Lc6TjMqYF+YS6aGCqw0=;
+ b=dLmkJ5nX1dfQionGbCxWB8Ox1fAZwNezOcvSFzlMBvGZEcneDR6DlqBwV9jUxDRC3c9CrD
+ PseDd75J0d/xQip4dS1uRMx5AtultRDatTUrfbw6DGvPLhjkihy802SO3NAC1P+/v5ne7q
+ 7IC0v6xMdEouJQdjEdoqPIb7PNbT4PQ=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-0gFepZ_tPHilFGr4WmNgww-1; Sun,
- 09 Mar 2025 09:53:02 -0400
-X-MC-Unique: 0gFepZ_tPHilFGr4WmNgww-1
-X-Mimecast-MFC-AGG-ID: 0gFepZ_tPHilFGr4WmNgww_1741528381
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-569-l0w2qkJWMx6zKFDyxoPBgQ-1; Sun,
+ 09 Mar 2025 09:51:44 -0400
+X-MC-Unique: l0w2qkJWMx6zKFDyxoPBgQ-1
+X-Mimecast-MFC-AGG-ID: l0w2qkJWMx6zKFDyxoPBgQ_1741528304
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B5379180025C; Sun,  9 Mar 2025 13:53:01 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DD20F180035D; Sun,  9 Mar 2025 13:51:43 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2335B1956094; Sun,  9 Mar 2025 13:52:59 +0000 (UTC)
+ id 435E81956095; Sun,  9 Mar 2025 13:51:41 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 34/46] hw/intc/aspeed: Add Support for AST2700 INTCIO Controller
-Date: Sun,  9 Mar 2025 14:51:18 +0100
-Message-ID: <20250309135130.545764-35-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 03/46] tests/functional: Update OpenBMC image of romulus machine
+Date: Sun,  9 Mar 2025 14:50:47 +0100
+Message-ID: <20250309135130.545764-4-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -103,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,221 +118,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MQlKQU9zz2bF
+X-TUID: VPrKnbOegbAn
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+Use the new do_test_arm_aspeed_openbmc() routine to run the latest
+OpenBMC firmware build of the romulus BMC. Remove the older routine
+which is now unused.
 
-Introduce a new ast2700 INTCIO class to support AST2700 INTCIO.
-Added new register definitions for INTCIO, including enable and status
-registers for IRQs GICINT192 through GICINT197.
-Created a dedicated IRQ array for INTCIO, supporting six input pins and six
-output pins, aligning with the newly defined registers.
-Implemented "aspeed_intcio_read" and "aspeed_intcio_write" to handle
-INTCIO-specific register access.
-
- To GICINT196                                                                                |
-
-       ETH1    |-----------|                    |--------------------------|
-      -------->|0          |                    |         INTCIO           |
-       ETH2    |          4|   orgates[0]------>|inpin[0]-------->outpin[0]|
-      -------->|1         5|   orgates[1]------>|inpin[1]-------->outpin[1]|
-       ETH3    |          6|   orgates[2]------>|inpin[2]-------->outpin[2]|
-      -------->|2        19|   orgates[3]------>|inpin[3]-------->outpin[3]|
-       UART0   |         20|-->orgates[4]------>|inpin[4]-------->outpin[4]|
-      -------->|7        21|   orgates[5]------>|inpin[5]-------->outpin[5]|
-       UART1   |         22|                    |--------------------------|
-      -------->|8        23|
-       UART2   |         24|
-      -------->|9        25|
-       UART3   |         26|
-      ---------|10       27|
-       UART5   |         28|
-      -------->|11       29|
-       UART6   |           |
-      -------->|12       30|
-       UART7   |         31|
-      -------->|13         |
-       UART8   |  OR[0:31] |
-      -------->|14         |
-       UART9   |           |
-      -------->|15         |
-       UART10  |           |
-      -------->|16         |
-       UART11  |           |
-      -------->|17         |
-       UART12  |           |
-      -------->|18         |
-               |-----------|
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-18-jamin_lin@aspeedtech.com
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20250129071820.1258133-4-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/intc/aspeed_intc.h |   1 +
- hw/intc/aspeed_intc.c         | 112 ++++++++++++++++++++++++++++++++++
- 2 files changed, 113 insertions(+)
+ tests/functional/aspeed.py                  | 16 ----------------
+ tests/functional/test_arm_aspeed_romulus.py | 13 +++++++------
+ 2 files changed, 7 insertions(+), 22 deletions(-)
 
-diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-index 85df8c6be94f..3727ba24be72 100644
---- a/include/hw/intc/aspeed_intc.h
-+++ b/include/hw/intc/aspeed_intc.h
-@@ -14,6 +14,7 @@
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index ea75939e05f9..77dc8930fa41 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -7,22 +7,6 @@
  
- #define TYPE_ASPEED_INTC "aspeed.intc"
- #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
-+#define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
- OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+ class AspeedTest(LinuxKernelTest):
  
- #define ASPEED_INTC_MAX_INPINS 10
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index f2ca9237ea9a..3fd417084f5b 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -42,6 +42,26 @@ REG32(GICINT136_STATUS,     0x804)
- REG32(GICINT192_201_EN,         0xB00)
- REG32(GICINT192_201_STATUS,     0xB04)
+-    def do_test_arm_aspeed(self, machine, image):
+-        self.set_machine(machine)
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic', '-snapshot')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern("U-Boot 2016.07")
+-        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
+-        self.wait_for_console_pattern("Starting kernel ...")
+-        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
+-        self.wait_for_console_pattern(
+-                "aspeed-smc 1e620000.spi: read control register: 203b0641")
+-        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+-        self.wait_for_console_pattern("systemd[1]: Set hostname to")
+-
+     def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+                                    cpu_id='0x0', soc='AST2500 rev A1'):
+         hostname = machine.removesuffix('-bmc')
+diff --git a/tests/functional/test_arm_aspeed_romulus.py b/tests/functional/test_arm_aspeed_romulus.py
+index 747b616201ce..b97ed951b1f3 100755
+--- a/tests/functional/test_arm_aspeed_romulus.py
++++ b/tests/functional/test_arm_aspeed_romulus.py
+@@ -7,18 +7,19 @@
+ from qemu_test import Asset
+ from aspeed import AspeedTest
  
-+/*
-+ * INTCIO Registers
-+ *
-+ * values below are offset by - 0x100 from datasheet
-+ * because its memory region is start at 0x100
-+ *
-+ */
-+REG32(GICINT192_EN,         0x00)
-+REG32(GICINT192_STATUS,     0x04)
-+REG32(GICINT193_EN,         0x10)
-+REG32(GICINT193_STATUS,     0x14)
-+REG32(GICINT194_EN,         0x20)
-+REG32(GICINT194_STATUS,     0x24)
-+REG32(GICINT195_EN,         0x30)
-+REG32(GICINT195_STATUS,     0x34)
-+REG32(GICINT196_EN,         0x40)
-+REG32(GICINT196_STATUS,     0x44)
-+REG32(GICINT197_EN,         0x50)
-+REG32(GICINT197_STATUS,     0x54)
 +
- static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
-                                                 uint32_t reg)
- {
-@@ -432,6 +452,55 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-     return;
- }
+ class RomulusMachine(AspeedTest):
  
-+static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
-+                                   unsigned int size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+    uint32_t value = 0;
-+
-+    value = s->regs[reg];
-+    trace_aspeed_intc_read(name, offset, size, value);
-+
-+    return value;
-+}
-+
-+static void aspeed_intcio_write(void *opaque, hwaddr offset, uint64_t data,
-+                                unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+
-+    trace_aspeed_intc_write(name, offset, size, data);
-+
-+    switch (reg) {
-+    case R_GICINT192_EN:
-+    case R_GICINT193_EN:
-+    case R_GICINT194_EN:
-+    case R_GICINT195_EN:
-+    case R_GICINT196_EN:
-+    case R_GICINT197_EN:
-+        aspeed_intc_enable_handler(s, offset, data);
-+        break;
-+    case R_GICINT192_STATUS:
-+    case R_GICINT193_STATUS:
-+    case R_GICINT194_STATUS:
-+    case R_GICINT195_STATUS:
-+    case R_GICINT196_STATUS:
-+    case R_GICINT197_STATUS:
-+        aspeed_intc_status_handler(s, offset, data);
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+        break;
-+    }
-+
-+    return;
-+}
-+
-+
- static const MemoryRegionOps aspeed_intc_ops = {
-     .read = aspeed_intc_read,
-     .write = aspeed_intc_write,
-@@ -442,6 +511,16 @@ static const MemoryRegionOps aspeed_intc_ops = {
-     }
- };
+     ASSET_ROMULUS_FLASH = Asset(
+-        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-         'obmc-phosphor-image-romulus.static.mtd'),
+-        '820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++        'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/romulus-bmc/openbmc-20250128071340/obmc-phosphor-image-romulus-20250128071340.static.mtd',
++        '6d031376440c82ed9d087d25e9fa76aea75b42f80daa252ec402c0bc3cf6cf5b');
  
-+static const MemoryRegionOps aspeed_intcio_ops = {
-+    .read = aspeed_intcio_read,
-+    .write = aspeed_intcio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
- static void aspeed_intc_instance_init(Object *obj)
- {
-     AspeedINTCState *s = ASPEED_INTC(obj);
-@@ -567,10 +646,43 @@ static const TypeInfo aspeed_2700_intc_info = {
-     .class_init = aspeed_2700_intc_class_init,
- };
+-    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++    def test_arm_ast2500_romulus_openbmc(self):
+         image_path = self.ASSET_ROMULUS_FLASH.fetch()
  
-+static AspeedINTCIRQ aspeed_2700_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-+    {0, 0, 1, R_GICINT192_EN, R_GICINT192_STATUS},
-+    {1, 1, 1, R_GICINT193_EN, R_GICINT193_STATUS},
-+    {2, 2, 1, R_GICINT194_EN, R_GICINT194_STATUS},
-+    {3, 3, 1, R_GICINT195_EN, R_GICINT195_STATUS},
-+    {4, 4, 1, R_GICINT196_EN, R_GICINT196_STATUS},
-+    {5, 5, 1, R_GICINT197_EN, R_GICINT197_STATUS},
-+};
-+
-+static void aspeed_2700_intcio_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 INTC IO Controller";
-+    aic->num_lines = 32;
-+    aic->num_inpins = 6;
-+    aic->num_outpins = 6;
-+    aic->mem_size = 0x400;
-+    aic->nr_regs = 0x58 >> 2;
-+    aic->reg_offset = 0x100;
-+    aic->reg_ops = &aspeed_intcio_ops;
-+    aic->irq_table = aspeed_2700_intcio_irqs;
-+    aic->irq_table_count = ARRAY_SIZE(aspeed_2700_intcio_irqs);
-+}
-+
-+static const TypeInfo aspeed_2700_intcio_info = {
-+    .name = TYPE_ASPEED_2700_INTCIO,
-+    .parent = TYPE_ASPEED_INTC,
-+    .class_init = aspeed_2700_intcio_class_init,
-+};
-+
- static void aspeed_intc_register_types(void)
- {
-     type_register_static(&aspeed_intc_info);
-     type_register_static(&aspeed_2700_intc_info);
-+    type_register_static(&aspeed_2700_intcio_info);
- }
+-        self.do_test_arm_aspeed('romulus-bmc', image_path)
+-
++        self.do_test_arm_aspeed_openbmc('romulus-bmc', image=image_path,
++                                        uboot='2019.04', cpu_id='0x0',
++                                        soc='AST2500 rev A1');
  
- type_init(aspeed_intc_register_types);
+ if __name__ == '__main__':
+     AspeedTest.main()
 -- 
 2.48.1
 

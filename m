@@ -1,150 +1,204 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp436360njc;
-        Sat, 8 Mar 2025 21:24:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU4o48J2dlxG0RvE5RElDXfymKSms49M5lTAL6mUlu+I79UMPfsqQSlLgX1uqDosLyPWwY+i4X90jwdkQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuKCDTccz2fgabkQMMwdV99UHRKtM0omj7RvBDFzvVJf7bRSkR9SXILlBWe32oyOrM91is
-X-Received: by 2002:a05:6512:39c7:b0:545:54b:6a05 with SMTP id 2adb3069b0e04-549910b7c1bmr3968411e87.45.1741497864929;
-        Sat, 08 Mar 2025 21:24:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741497864; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp486949njc;
+        Sun, 9 Mar 2025 00:32:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUHoVdHFSkV4A4FcUYwTJkiYcvxtXgw07TI27IFDG/CbtxYvBwnm1WPXeiTKfuFMj2trL7lmtPqA2gpUw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEZLFNWeOhmVbNqGlkH5fpN8toEF04WkMgsgSJkOAkvtntoZDzTPGsxA64agHVpHZdOXyVJ
+X-Received: by 2002:a05:620a:84ca:b0:7c5:4349:2f19 with SMTP id af79cd13be357-7c54349309emr663904085a.49.1741509157125;
+        Sun, 09 Mar 2025 00:32:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741509157; cv=none;
         d=google.com; s=arc-20240605;
-        b=FHHF08UCPEMwpkFMgPRippc+C6WuZNJN9X/RGONqqZmFA/5j5M8TWTd+TmOgypU+3Y
-         aVVaqoEPCUAo9SkODlpLv4PR6HvAH7dnU3GgcvbSpx1oowHcDXYkbDVOQpNFmv4JVxpW
-         2jeBjR0lKzdgPw8w4eiWf82TUyve4vd6AzSuhmW0Ym1/Y4JVRpc+K2plSXUN1eWFmtwB
-         HGfvddcCPj4eAZYmO4+6pdKs08hhmIgiDp+WikQ+7YlQN1mIIYTzr5P0ORQTKKB9BNA8
-         BcF5MRW0uWGm8NFGjhNRFWvZHXFCy1sY2XEAvPsdICudJ0wUhDePs82tIjDQyefwwthD
-         1U1Q==
+        b=kz/sxl6FIxZAdbwqGTX3Ipb/KOUl9MFrJ9D+Zs4KhsQUe6TdBO/wqjeGk6VdzX535K
+         Gp8at1loOETXLtxAZwOqx14ZiIYnquuydUjGt7EiDTj1IZ4P/Q4N7mRzwDNCi+V+oqR4
+         FwDCCD7KbpfP85OIdBdK/8N9RUicFLbsvoRV14QVu8lF+3C94eBDc44WqrAxi51L++HW
+         BOcYS8A5FOmsALAzckvRHSFamFPPJaF5yOksbhpTqKgJU3rYZXQvK5ZJ/2QWhpBNYdUh
+         tsm36tfX4oUaA7xoFyqDo8vyRWAjv/Ea6KuuJZidXzP01H2HFC5tUhWc6NSoM0kQifWD
+         ckSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id;
-        bh=NjXovxroH4NEfEc6kPT9O4mF+/feQF1ubGAIhi7t5cI=;
-        fh=bwNPwCdRufgAfv1G73BgInx0SXOI+C3FLI+33Trf+lU=;
-        b=aPExGC0rnWoHqO5c/WcxaLAAuPBC9j5QivR0CGQQFsz9bDcplUaVGzYaQUx4XFtZ7M
-         dEEE7DZMqIuQ/yn1O2WXYZ894rUkYaynDFgmGjWU1YXsv+ObkKSyfC58+bdXV4d6euEA
-         g+/+aHnM0eo6auHsOaKf/op39JYKeTaIzofYRzSpl13FXNBfnLART6Gv5MP4IdIORgHO
-         QYyKWQ/PmKhmXWmxeTnnGS3NWi2kAyVUNQ3I5UPq+Itd1Ya+cCvp5VgyehQHp1zbfZjB
-         tkdZzsLZe3UdXoe+aO1WUY4XJNZq9xFxeFOKrBVNJj5UE5pXVHhnSVVw7L9JbmFnWTYn
-         uNkg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
+        fh=QcoXPB7Mw73aeLIkdzR12e/S/yIVaOYrhw0rI0N0+o4=;
+        b=RHPchF3Qfvq+PCW0pRag5fHmp8DYBpelhZ20bKppi4bMKkSR3kmpdAh2VCwAC2uHoa
+         lcG370YiQGPXM6XbPyFxN/lulH7Ufh0URqM7bh27RKcaAU/bMfYz/mQWFjX/g1jjpa0I
+         ovyNq36WhjsGZDjV476iHUmFm1nbPVYPoiNLAiTYMYuObx2qq3nWN3Mhr7v90trtbBWk
+         JiRlWA3UXfRLO+mxZbN4JyiwJshqEL0I6iu4sOXAIcEhZQcfjOnleYfi8Jne9P2rgZ+g
+         o1em1i6x2gccEspJOFXtwEoKn7K68Tlqlav941yOgfoYa21aDks0DN/8BvbwhvZDAE8S
+         6X0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Return-Path: <mjt@tls.msk.ru>
-Received: from isrv.corpit.ru (isrv.corpit.ru. [86.62.121.231])
-        by mx.google.com with ESMTPS id 2adb3069b0e04-5498ae445dcsi3195307e87.34.2025.03.08.21.24.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Mar 2025 21:24:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) client-ip=86.62.121.231;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ly/LG7BB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e55462f4si702943985a.527.2025.03.09.00.32.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 09 Mar 2025 00:32:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 62ACDFB6B2;
-	Sun, 09 Mar 2025 08:23:39 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 83C371C70C1;
-	Sun,  9 Mar 2025 08:24:23 +0300 (MSK)
-Message-ID: <e5c5e542-f28c-4f4d-884d-ee3defd0a330@tls.msk.ru>
-Date: Sun, 9 Mar 2025 08:24:23 +0300
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ly/LG7BB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1trC5B-0005Vc-Ra; Sun, 09 Mar 2025 04:32:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1trC4I-0004p1-S5; Sun, 09 Mar 2025 04:31:33 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1trC4H-0001PA-Aq; Sun, 09 Mar 2025 04:31:30 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-abf45d8db04so494220566b.1; 
+ Sun, 09 Mar 2025 00:31:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1741509086; x=1742113886; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
+ b=ly/LG7BB3uwjmGD0v6EzLH6GrcbSl6jaEge1un55zU/OaBwKltwXeKL2/7ia1XBz5L
+ Jq1X7lAzBAk7FiwnK9Wgu+gtpo5DbfzUqczsxLjsPt/GWJfnvdcSp7WWueppkcylQYH2
+ P6NJSJmWoe7OkUvq9VdBESXbFBY9kTxUGQcm4j5MTAfnrBVWWpUWdQvAiy5uOqArWHyR
+ 3+MNun+qXvlaSRzpDPgEWH5crPjbGhxVns5DZgArVgqkqVscNANNOMBgbvOu407ekDVA
+ q4Qf1cW9J3f0ZJQGCwvurTDYpPt6otEr6bX1ANPNRU+ULnAgP1SSAaymRUNweG5xWjmp
+ v2Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741509086; x=1742113886;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
+ b=Hk+EWdk6pbPaA1EE1AugtETfilKOq9pgsmvWZD+zfkBaGr+lLgBd7lvVKfmzfY4b28
+ 4ZeRw133KvX+EJigK7YKtFx8xYzouL+lcZyn16mbTTsn2K0ssoYFWhuNsNAOlK+tgutZ
+ 8b8pqaedGCjfqHEtPQ2LJRRB2Ngkq61tjVuQB60fvFd8Q0VD5KpWqumvDmE/Y/WLs7O0
+ hOc8KH58gBL4/GlkhcUnWnheixJ1+FOxDTw8G7CXRYJhJJKgFROfDF7uuCzteTFfvdd0
+ Ae1JYet7zexS7nuJDnLg/SZDDAoSXsBuiXouiFBG7HYPQXCuFGSfeqzUSejbZ3qctD/q
+ Jlrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV0c7T6UaoxVi2ZWKNU20yVk+bAMrSZpl+HqXrMzJIiQNmaTmKgrHDY1jtf1CCnDl3PFTB182zURPQ=@nongnu.org,
+ AJvYcCV7JpY1VMg2T93DFaF3rhvIdv2cGDO2XmI87Tr83BhVkySnuSlb8wHgPFw3hukvTB1espUqpwbAS3m5iA==@nongnu.org,
+ AJvYcCVPn7M2iG4hxmyc8M5gMUJLqud1YmjvqrhudZQmxbmn752H2Ea4EktiQ4Y0q2iA20V5YEQkeMYfZjWEYw==@nongnu.org,
+ AJvYcCX6b30P6lfh2SlxEsBeQsCGj6wZfg0jKMJPitXucEP2sYmeJPEt99B8IzqBmK5t+NHCzVsk3cebEA==@nongnu.org
+X-Gm-Message-State: AOJu0YyUFtUW3a/DbLf9ACArgYAja+Ft1WgxY6ZmE9YA5ouleSwaBQbG
+ 84NtAD38fJdhtLnld/ri4s3Cnt12BflbgAkrkg1Y3x4SJkb+WeoM
+X-Gm-Gg: ASbGnctW3LRh4x4B9OVCRfsWyqq0zmZ0K7ZCgEmrv5Mvnz1xvOaaFFtx21k4Fe3nXmW
+ 0POss/FWjoQ35LtFOK1RuTAJYP4by2l1lrDQUDuGD+jyqTiWeYd1Su146zoc7dr5o3L6UuWdXHL
+ GeIWMCqD3xlAy3bPI73mKzwRpTfDYtst5R3mhb3waXlUW3j4DzyHg8Bi5x6Rh86FFFwJFU3DnGi
+ LFcDaso9aoS9p/aVjkibXKW0RIXFVUA010Wx8UdaUaMgb3dCPUbhmkuPh6FLz4EydESRrUjaiur
+ 1IeMaesS3SUNmPxhNKydiWbzp2q91vSPbTqiPaOciHORq+/UwJfbfiXp0hsUjQiQgOFD518yJgj
+ invvlwhk5j+xAH2Ufg6jqIdH0e7EJw7dwaPS5gm+n0qW5xVssJf/oNX88jvE98z0=
+X-Received: by 2002:a17:906:b39a:b0:abf:7a26:c486 with SMTP id
+ a640c23a62f3a-ac252e9ceaamr904557066b.40.1741509085648; 
+ Sun, 09 Mar 2025 00:31:25 -0800 (PST)
+Received: from ?IPv6:::1?
+ (dynamic-2a02-3100-1a10-8c00-69d2-56f6-a5af-50a8.310.pool.telefonica.de.
+ [2a02:3100:1a10:8c00:69d2:56f6:a5af:50a8])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ac254b805f6sm410824866b.88.2025.03.09.00.31.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 09 Mar 2025 00:31:24 -0800 (PST)
+Date: Sun, 09 Mar 2025 08:31:24 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>
+CC: =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
+ Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_14/14=5D_hw/ppc/e500=3A_Rep?=
+ =?US-ASCII?Q?lace_generic_SDHCI_by_Freescale_eSDHC?=
+In-Reply-To: <20250308213640.13138-15-philmd@linaro.org>
+References: <20250308213640.13138-1-philmd@linaro.org>
+ <20250308213640.13138-15-philmd@linaro.org>
+Message-ID: <6C65764B-E579-4361-94B5-5D217363AC05@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/9] target/arm: Implement SEL2 physical and virtual
- timers
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-References: <20250204125009.2281315-1-peter.maydell@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250204125009.2281315-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ucqgHr2RoTaW
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jcyCT+eEA6WT
 
-04.02.2025 15:50, Peter Maydell wrote:
-> This patchset is a respin of Alex's patches, with some extra fixes
-> for bugs I discovered along the way in our existing code (and
-> a bit of refactoring to make the fixes straightforward). It is:
-> 
-> Based-on: 20250130182309.717346-1-peter.maydell@linaro.org
-> ("target/arm: Clean up some corner cases of sysreg traps")
-> 
-> because it wants to use the renamed CP_ACCESS_* constants that
-> that patchset introduced.
-> 
-> The bugfixes are not super exciting as they mostly are oddball
-> corner cases, but I've cc'd them to stable anyway. The actual
-> implementation of the missing SEL2 timers also should go to stable.
-> 
-> Alex Bennée (4):
->    target/arm: Implement SEL2 physical and virtual timers
->    target/arm: document the architectural names of our GTIMERs
->    hw/arm: enable secure EL2 timers for virt machine
->    hw/arm: enable secure EL2 timers for sbsa machine
-> 
-> Peter Maydell (5):
->    target/arm: Apply correct timer offset when calculating deadlines
->    target/arm: Don't apply CNTVOFF_EL2 for EL2_VIRT timer
->    target/arm: Make CNTPS_* UNDEF from Secure EL1 when Secure EL2 is
->      enabled
->    target/arm: Always apply CNTVOFF_EL2 for CNTV_TVAL_EL02 accesses
->    target/arm: Refactor handling of timer offset for direct register
->      accesses
 
-Hi!
 
-Which stable series this patchset is supposed to be applied to?
-(Current active stable series are 7.2, 8.2 and 9.2)
+Am 8=2E M=C3=A4rz 2025 21:36:40 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>As Zoltan reported, some U-Boot versions seem to expect
+>correctly initialized registers before expecting interrupts=2E
+>
+>Now than we have a proper Freescale eSDHC implementation,
+>use it=2E
+>
+>Reported-by: BALATON Zoltan <balaton@eik=2Ebme=2Ehu>
+>Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>---
+> hw/ppc/e500=2Ec | 10 +---------
+> 1 file changed, 1 insertion(+), 9 deletions(-)
+>
+>diff --git a/hw/ppc/e500=2Ec b/hw/ppc/e500=2Ec
+>index e85e000f054=2E=2E7d15c926887 100644
+>--- a/hw/ppc/e500=2Ec
+>+++ b/hw/ppc/e500=2Ec
+>@@ -1027,20 +1027,12 @@ void ppce500_init(MachineState *machine)
+>=20
+>     /* eSDHC */
+>     if (pmc->has_esdhc) {
+>-        dev =3D qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
 
-Or put it in other words, is it supposed to go earlier than the
-most recent stable series, 9.2?
+"hw/misc/unimp=2Eh" include is now unused and should therefore be removed=
+=2E
 
-For example, the very first patch, "Apply correct timer offset when calculating
-deadlines", does not apply to 8.2 because it lacks v8.2.0-2122-g2808d3b38a
-"target/arm: Implement FEAT_ECV CNTPOFF_EL2 handling" which touches the same
-line in target/arm/helper.c:gt_recalc_timer().
+With that fixed:
+Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
 
-Thanks,
-
-/mjt
+>-        qdev_prop_set_string(dev, "name", "esdhc");
+>-        qdev_prop_set_uint64(dev, "size", MPC85XX_ESDHC_REGS_SIZE);
+>-        s =3D SYS_BUS_DEVICE(dev);
+>-        sysbus_realize_and_unref(s, &error_fatal);
+>-        memory_region_add_subregion(ccsr_addr_space, MPC85XX_ESDHC_REGS_=
+OFFSET,
+>-                                    sysbus_mmio_get_region(s, 0));
+>-
+>         /*
+>          * Compatible with:
+>          * - SD Host Controller Specification Version 2=2E0 Part A2
+>          * (See MPC8569E Reference Manual)
+>          */
+>-        dev =3D qdev_new(TYPE_SYSBUS_SDHCI);
+>+        dev =3D qdev_new(TYPE_FSL_ESDHC);
+>         qdev_prop_set_uint8(dev, "sd-spec-version", 2);
+>         qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_BIG);
+>         s =3D SYS_BUS_DEVICE(dev);

@@ -1,139 +1,141 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp622511njc;
-        Sun, 9 Mar 2025 07:21:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUVrDa/UX9OK4hG8F8vNhiE9VVqnqBfKYIc3NnIRV6Rn+EqC6Dm//9ge/hZc0uP6W8mssCY4QVd5P2GQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE6TFM8qV+SSlQcY9rnv1ETxHsY3rpGxyPzVyDwmMDyd++zinKdKwuP8/WCMHVYSwlE0BAJ
-X-Received: by 2002:a05:622a:199e:b0:476:86bc:8b41 with SMTP id d75a77b69052e-47686bc8e7emr14217311cf.52.1741530073429;
-        Sun, 09 Mar 2025 07:21:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741530073; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp608551njc;
+        Sun, 9 Mar 2025 06:58:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXESIsgenMfT7UHRZQscqli32oj3Mq0fODCGJRfX4vC1QaZn0xXYJeuN7YtXhu/J0wO/1+puiHKHkPEeQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEAedlznB8PM3HO0kGL+q8cS0OUO/OZQzJKWNAUqi+MBWHkad/nkxMGfw3v4S675l0ATNHf
+X-Received: by 2002:a05:620a:1b98:b0:7c5:4711:dc56 with SMTP id af79cd13be357-7c54711dd6bmr605076685a.48.1741528700583;
+        Sun, 09 Mar 2025 06:58:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528700; cv=none;
         d=google.com; s=arc-20240605;
-        b=BOz7uoz2JunnxBAbRSaFBa/tATO+yyk5CBb1BN4UcNT4HghYYhOiyDGgpOsJddJCa3
-         75drE/kWd+0lJrCZFR606M+NPPRDRX/2TbYqr0woHzWbxfPfr5PqXq+B8dSvgqpUTONw
-         IOAjSLUbcQFKY1zdgekEwYib3sP+Jo1IzwzBNFOC6jrR26lAWwlAiJ4C6In/oJzsqVFn
-         /V7XTz3P/k/EpC+KiyGZYCslYuvdPoQXWfulikP1oWnB9XpTBnrS1+FAEa35ofz4ag0q
-         V/autfMTLEm7qPo57dV4aAzAYDyxE9va3C+PiRWvFEcp2zI3QUeZ5nTZ+BeiUYCPSJd5
-         4P3Q==
+        b=hwNwijuskfCoH50qhGZUxYRbbFJ71v2Xzn/MkRoxYEg5BQ8rz4fIZ8n5xnFM74APjx
+         D6/wIPTwNe6bVJCTxfhFpOnwu8yogdo7K8rEQ/Gu/Z516vLXrvHOODe//6Yck4rvPgXM
+         KmWgVBH4+pRTj3DQJFUk9Qr7T+EtUBxLleFRIXTAhKm79p/JH9MBrgZ3+02OdRmlD3VW
+         jwoUxDU3Gn+iVdVFvehjHLHRuP+uGUF42lbgZ2+Y137eiRYNnA1YKpiyDIEqLgJ/mOX1
+         BniO5SzxRtFujqwFvSZJ7305usBnCaEW8cjWeAcvUZQ9JL35zCsuTGIKXRUfG6BqTwAM
+         L3mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3D+54oeVa7Fu6Truwxl080HVFieDV+B30R54rKr/+W4=;
-        fh=5gHzqdwjri3xWn6PUmKo6yT4i24kOuT/zHBCSejBx+0=;
-        b=eBJiQCdRTjI6a6PtxG9NiGPN+d0norj5pIKqp+wxPHGMY9w7TMde69CY7WjKsHpQJS
-         g7+ExTPickj3lvST8ENofK5mhDsslvTn0iyIpfe7955csy8ABK5+EKtcJx6xuhT7RGF1
-         TIYNcIZ3rjVO0Q6+BeFWQ4FmOnykslrb0+oZ/Ay6JIgAKvBx6s84dg25y+cd3+8Oo3MS
-         3PcAYx2hAt5t4FL4FlOUgqFO0rspxqHLio/yjGqZFM3ZWxuSXcuQaXNncMYXmMgvYbVN
-         qR+30S5mfZtGJaWNXrh+oij0PQGqXmiwW0XlVwEEyAiZESsxMb+DAcv9nbctD5Szbgqo
-         v/+A==;
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=MGOFhqq8xZjLJLZpXBpqOLMSlDZOmUGoy6LwPZ9M/0U=;
+        fh=3s6D10DMRblCA6p0nnG7pEW5TsptY0O821lw9H1NrbE=;
+        b=AXDTNPWlAkgBIWlxG6VHzlZWYijF9ZwZShEIcpBwFNzCybPK0dW0PZCVisQR1Wne3f
+         S+Wu1OE9Kyt1a0zt8aC09E+UO9ObK3mI8FkvWN6uKtoYNn74enD4sZ5qMfQFyhcCMf6/
+         m+2gUc5Me7RsHr24b8M4b7oq8Evn1iKxV7HnLF9CyhDVN40qelU8WJ32pyAsULHYTj8I
+         awuSK4UNb8dg3JhV+06cBrDOpN5TdRgMI9AlVu5ESz/Ml6w9+V7blUWpb1hpSSa0oP/H
+         rVNsXt01zpHTZcouzpPW4FTq+CTryLUQTvgBsI43qf8EBlE/kTAp8JRnKk3+rkhEPuF5
+         f1dA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a9Yz3cy4;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XBz8bSHS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4768a0aa6d0si1496511cf.438.2025.03.09.07.21.13
+        by mx.google.com with ESMTPS id af79cd13be357-7c549e67221si157906985a.27.2025.03.09.06.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 07:21:13 -0700 (PDT)
+        Sun, 09 Mar 2025 06:58:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a9Yz3cy4;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XBz8bSHS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trHWB-0002lx-JP; Sun, 09 Mar 2025 10:20:39 -0400
+	id 1trHAQ-0000mz-4T; Sun, 09 Mar 2025 09:58:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trHW9-0002kD-2R
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 10:20:37 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1trHAG-0008M0-0v; Sun, 09 Mar 2025 09:58:00 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trHW6-0002bN-Dm
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 10:20:36 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-43cebe06e9eso4664635e9.3
- for <qemu-arm@nongnu.org>; Sun, 09 Mar 2025 07:20:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1trHAD-0004cs-HZ; Sun, 09 Mar 2025 09:57:59 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5e686d39ba2so731667a12.2; 
+ Sun, 09 Mar 2025 06:57:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741530032; x=1742134832; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3D+54oeVa7Fu6Truwxl080HVFieDV+B30R54rKr/+W4=;
- b=a9Yz3cy4yZ902pGjaiITV2icFnbS/CMgzU9q9eVnCfueyqXypGN8L2jJfCQ9vTSjOT
- U9YH6lm8iQ1cRxwRoUFhBNmj521rikksggwSam/VeR8DZs7yps/2uAONv7qnRCaCBSu2
- 6S3upfjbVOkuyRZ4UbBQjlEVDBJThoDOMWYqfblv3YsMbblcKJisNdTyTFtyqV1M7qgE
- ebuq8JRNNbjHaERoOCXfmR03hdCwgD74d924kJrR2JvfOh4Q9zNwG4BXAVYSv6wtuqzu
- YnO5M0H+mr9oPuH7QDBp17ZO1DHHLuTU2EXo4Ybdt+ydKMOQjPjn8aOf9FbU0mDyMoQm
- yd6A==
+ d=gmail.com; s=20230601; t=1741528674; x=1742133474; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MGOFhqq8xZjLJLZpXBpqOLMSlDZOmUGoy6LwPZ9M/0U=;
+ b=XBz8bSHSgJ93iKWezQtGnHaBN0N8QVCVbmKe1gqFRpyPkGUTzI5wPeNMRQ7brUvqrP
+ U2+LNtZPmaDUNKQqQ+ylR+La3K0ple3mW+turRZA4hZpSn9ug4XZkt7ZQT8JZZ77+UWJ
+ +i5XG/wwaTLKhYY0O0qt94pmJtZn4aHgBNEtdGolF2CTb5OUxMO7ZZ2ezHhCz8MN6A5t
+ 1+2P/N/vAMBPaWlBf9Q3nfWIpbYIafSQxAKGI9ZfSY/PGYVm1WURsiUwBuAXGb2LnMsm
+ t4aePKrWbubAo2mBwEsYHhwx562sCHSboozPg6g+pCWCpw7X59Oa6QnWbf4xuwH0O9Vv
+ /uVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741530032; x=1742134832;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3D+54oeVa7Fu6Truwxl080HVFieDV+B30R54rKr/+W4=;
- b=w0WsNm1K7CoXsrt2IQE2CfT/kggPDCYCXYodxoMHC4jDCdYgNaF9RtcNI8efVvSzeo
- 19VNaI7b5B2tRQEFup9x5N3lOOXF/SthiWQgiLRGCGib8OGqxErKipEiHRj1Sx5vmuOu
- syhjZgpbwFk7P1qzCeDWMqYVWPrO/6CsTs49xDo5xRZ7jDxibZ5X2BtM0/j4/HkXc02s
- VU4wj0CBXC0OOp3qsQEpwlihj+RNOi8mgfpCzMnxQafHpz3Wi5TcSlQ5EIQNCT8kWHjt
- hplBRa71HsOU6AMj/tkCYSu17W8sC5VjpCmVOlpS3bWdC3xCJ6o9JAZEKW9UM0sqqO7W
- EhDQ==
+ d=1e100.net; s=20230601; t=1741528674; x=1742133474;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MGOFhqq8xZjLJLZpXBpqOLMSlDZOmUGoy6LwPZ9M/0U=;
+ b=m3eWChjmwsmn7kh3vwy0zCC9az9Pa0rw2YOdcHkiBbTKNpBZHdjDLh0gfAMMqTxzS0
+ atRESesWtsdPEQo+vKxrtAXECGDXoVm94k/8phPQkRoenAQzHUhNeU05rtCv59q9sDu5
+ 3bqUps4GuuIU3tPTsQ4w83VLJnVpfF/ZlmR07XZTSGo95wFnMdTs8GuCD7zjjcPF4tus
+ o1j12l1JFlVLDOW1N6ngYlyQoShcD2NASMpgDPgvvzyE9ObogdiYOxL1ySGUzCn/qLGN
+ X5PalPTQVWCQAbecDnd3w3iiIyeMw8omF9gpIDywgP/CyFTNcsuIGod7sAUzHJcVrQ0b
+ QiOQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWJAN0wbd541t+4F8LOLtkPHQ3+LJCpROwEupnekb/2v9CAJgeixW01ZOXS++geaT2rt6rp2TTc3A==@nongnu.org
-X-Gm-Message-State: AOJu0YyzKl/p1QVoW4esPjOffP/0agx2WManceTtEqyffu1el02/dDm0
- 9i5FfBLfn0sNGld5OGePyPsvYrbu0D+seWW5Y7IcL6MtzgriDNAFNZm/7XMp+LI=
-X-Gm-Gg: ASbGncun+cgzslRs9t9E8uiitso9SZcznbseXaZDz4jTCUeUzxhvbdR4F4aPX8HsKJb
- LMUHpl7IZdCcqV4G+md2wJcInNroklpB+PZY+lqhWwUxiAxn85IRTzvmedVHxpQfeQg11cz88AV
- qMLoixoBW/sgIt+LUKP749RWXZP21otyLr8MTeCFcMAc15X/ExnDpOfp5vEb31+jCz6VTovFgwZ
- tevSPwyfKSt9K3gHEy/8FMhgUX7eF1jZNBJVo/Yc2qBIRjWVKTonRftUBpShAfCoUJ1IfELtX4A
- vJi15d1puqn7vxfeyfxw9OSa1rOMqBtp+BXrGcpjjsbIh13LfyTqovj0+LAGjOtpYC9eBE6E0rC
- 28ZyiC/iNhZQa
-X-Received: by 2002:a05:6000:1fab:b0:390:f476:81c3 with SMTP id
- ffacd0b85a97d-39132d51364mr5599054f8f.20.1741530032141; 
- Sun, 09 Mar 2025 07:20:32 -0700 (PDT)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43cf1b36d14sm22790515e9.37.2025.03.09.07.20.30
+ AJvYcCW/Rkt/D2ux4QpYFZImYF5qnLpFkYPHZ9Hs6XIB5SQHgcyDb3cqMYW0L/697HOrN4u5VZX091qCA+nHoQ==@nongnu.org,
+ AJvYcCXXE0Dgh4MC0rgs0+EN+7f/HaMk1OK8UO/KQ5e/xpoIGUfjBD/zs1B6f7neFEWNZhIkLDQFi6hQbSk=@nongnu.org,
+ AJvYcCXfkA+aRqCRABrcefS8O6JloFZAMp1Dr6A72qC6zMHiFEfq6kZdgmyWPF0nB+duwsrOndJfw3NCIw==@nongnu.org,
+ AJvYcCXq/fBfcJRRXPQfNr99c2lmVbCaOaBrmaz9xG4RR/Oa5lhfDigv8hkJOqDXEipGXuKyRbF9n5V9dUyZCQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwO0ulRv4hA08bViu9/UrxnMx/AQRtWY2rMt+O+Q8FAyEKYipwH
+ eCBkcqDIkO9toZs3dZ9IMeLPY7Y/jqMFGLtdWi4VInn0yaAD5QGS
+X-Gm-Gg: ASbGncuTGXOsxd0WB0pI3UJWM/+U2PqDpnxTFkB+N1qB+moXHmJDtaIKO6ewqxqDeh+
+ 8NGDaYoZFkPu1r8AgKs5JkJqlMnNhx7Tqs0VgODisI9RZxwSKpVK/8ivbJWBRmIHxNDzbHQRVar
+ c/M7HXwh6+yyOpvMigshT7OoLZtRsbYiwpKIOfKjCwE3Xxfrxs/Xmf39tnkWUQi7emzqSccKYQU
+ Rx7+JZu3n47fHfTx8HC+Icrb6MpK8hyid8UZ1upmkGTJ+D/ucsBwCtDM5nfo0hn8R26cjvd0QVU
+ JFJLY+LsgWON4WhvAW25/R9vOlCcLNvGz0HuZS6GfHjS8MhQaQO8BgB7xxI0EvRrdh+gNJhSJEn
+ DKtXuqvAIAgTFRQ4AbyYo/duj/OHWYYDDC/pS0tDex+R3OHLT7COP
+X-Received: by 2002:a17:907:9691:b0:ac2:4db0:1d22 with SMTP id
+ a640c23a62f3a-ac252f49992mr1167459366b.42.1741528673533; 
+ Sun, 09 Mar 2025 06:57:53 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (dynamic-2a02-3100-1a10-8c00-69d2-56f6-a5af-50a8.310.pool.telefonica.de.
+ [2a02:3100:1a10:8c00:69d2:56f6:a5af:50a8])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ac23948432dsm594052866b.44.2025.03.09.06.57.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 09 Mar 2025 07:20:31 -0700 (PDT)
-Message-ID: <33b01373-6046-4b96-9407-66966c5b7f36@linaro.org>
-Date: Sun, 9 Mar 2025 15:20:30 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/14] hw/sd/sdhci: Introduce SDHCIClass stub
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Sun, 09 Mar 2025 06:57:53 -0700 (PDT)
+Date: Sun, 09 Mar 2025 13:57:51 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>
+CC: =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
- Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_02/14=5D_hw/sd/sdhci=3A_Rem?=
+ =?US-ASCII?Q?ove_need_for_SDHCIState=3A=3Avendor_field?=
+In-Reply-To: <20250308213640.13138-3-philmd@linaro.org>
 References: <20250308213640.13138-1-philmd@linaro.org>
- <20250308213640.13138-4-philmd@linaro.org>
- <1839f9de-2370-50bd-7003-ade92707f137@eik.bme.hu>
- <142807a2-9536-4483-80ab-5f24793c841f@linaro.org>
- <670a5a3c-3476-5b8d-775a-ebff83acc33d@eik.bme.hu>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <670a5a3c-3476-5b8d-775a-ebff83acc33d@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+ <20250308213640.13138-3-philmd@linaro.org>
+Message-ID: <4587F1C4-D846-4158-9755-2F913B5A0ED9@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,93 +150,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KDmnTzPXe5TK
+X-TUID: MPHLxa5YAvOz
 
-On 9/3/25 01:08, BALATON Zoltan wrote:
-> On Sun, 9 Mar 2025, Philippe Mathieu-Daudé wrote:
->> On 8/3/25 23:34, BALATON Zoltan wrote:
->>> On Sat, 8 Mar 2025, Philippe Mathieu-Daudé wrote:
->>>> TYPE_SYSBUS_SDHCI is a bit odd because it uses an union
->>>> to work with both SysBus / PCI parent. As this is not a
->>>> normal use, introduce SDHCIClass in its own commit.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>> include/hw/sd/sdhci.h | 9 +++++++++
->>>> hw/sd/sdhci.c         | 1 +
->>>> 2 files changed, 10 insertions(+)
->>>>
->>>> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
->>>> index 48247e9a20f..c4b20db3877 100644
->>>> --- a/include/hw/sd/sdhci.h
->>>> +++ b/include/hw/sd/sdhci.h
->>>> @@ -107,6 +107,13 @@ struct SDHCIState {
->>>> };
->>>> typedef struct SDHCIState SDHCIState;
->>>>
->>>> +typedef struct SDHCIClass {
->>>> +    union {
->>>> +        PCIDeviceClass pci_parent_class;
->>>> +        SysBusDeviceClass sbd_parent_class;
->>>> +    };
->>>> +} SDHCIClass;
->>>> +
->>>> /*
->>>>  * Controller does not provide transfer-complete interrupt when not
->>>>  * busy.
->>>> @@ -123,6 +130,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
->>>> #define TYPE_SYSBUS_SDHCI "generic-sdhci"
->>>> DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
->>>>                          TYPE_SYSBUS_SDHCI)
->>>> +DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
->>>> +                       TYPE_SYSBUS_SDHCI)
->>>
->>> Are these two together just OBJECT_DECLARE_TYPE? Then the above 
->>> typedefs are also not needed just the struct definitions.
->>
->> I'd like to but it isn't possible because the same object state/class is
->> used by distinct types (PCI & SysBus).
->>
->> The following (expected to be correct) change ...:
->> -- >8 --
->> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
->> index 966a1751f50..341b130995b 100644
->> --- a/include/hw/sd/sdhci.h
->> +++ b/include/hw/sd/sdhci.h
->> @@ -155,10 +155,6 @@ typedef struct SDHCIClass {
->> #define TYPE_PCI_SDHCI "sdhci-pci"
->> -DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
->> -                         TYPE_PCI_SDHCI)
->> +OBJECT_DECLARE_TYPE(SDHCIState, SDHCIClass, PCI_SDHCI)
-> 
-> It would be same as the original patch if you omit this one and only use 
-> OBJECT_DECLARE_TYPE below.
 
-Indeed that works. Kind of a kludge. Not worth than what we have, so
-I'll take it.
 
-> You didn't add CLASS_CHECKER to the PCI 
-> version in the original patch either. But I see now it's more complex 
-> and so maybe it's not so easy.
+Am 8=2E M=C3=A4rz 2025 21:36:28 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>All instances of TYPE_IMX_USDHC set vendor=3DSDHCI_VENDOR_IMX=2E
+>No need to special-case it=2E
+>
+>Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>---
+> hw/sd/sdhci-internal=2Eh |  1 -
+> include/hw/sd/sdhci=2Eh  |  4 ----
+> hw/arm/fsl-imx25=2Ec     |  2 --
+> hw/arm/fsl-imx6=2Ec      |  2 --
+> hw/arm/fsl-imx6ul=2Ec    |  2 --
+> hw/arm/fsl-imx7=2Ec      |  2 --
+> hw/arm/fsl-imx8mp=2Ec    |  2 --
+> hw/sd/sdhci=2Ec          | 14 ++++----------
+> 8 files changed, 4 insertions(+), 25 deletions(-)
+>
+>diff --git a/hw/sd/sdhci-internal=2Eh b/hw/sd/sdhci-internal=2Eh
+>index 9f768c418e0=2E=2E9072b06bdde 100644
+>--- a/hw/sd/sdhci-internal=2Eh
+>+++ b/hw/sd/sdhci-internal=2Eh
+>@@ -311,7 +311,6 @@ extern const VMStateDescription sdhci_vmstate;
+>     DEFINE_PROP_UINT8("endianness", _state, endianness, DEVICE_LITTLE_EN=
+DIAN), \
+>     DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
+>     DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
+>-    DEFINE_PROP_UINT8("vendor", _state, vendor, SDHCI_VENDOR_NONE), \
+>     \
+>     /* Capabilities registers provide information on supported
+>      * features of this specific host controller implementation */ \
+>diff --git a/include/hw/sd/sdhci=2Eh b/include/hw/sd/sdhci=2Eh
+>index 38c08e28598=2E=2E48247e9a20f 100644
+>--- a/include/hw/sd/sdhci=2Eh
+>+++ b/include/hw/sd/sdhci=2Eh
+>@@ -99,7 +99,6 @@ struct SDHCIState {
+>     uint8_t endianness;
+>     uint8_t sd_spec_version;
+>     uint8_t uhs_mode;
+>-    uint8_t vendor;        /* For vendor specific functionality */
+>     /*
+>      * Write Protect pin default active low for detecting SD card
+>      * to be protected=2E Set wp_inverted to invert the signal=2E
+>@@ -108,9 +107,6 @@ struct SDHCIState {
+> };
+> typedef struct SDHCIState SDHCIState;
+>=20
+>-#define SDHCI_VENDOR_NONE       0
+>-#define SDHCI_VENDOR_IMX        1
+>-
+> /*
+>  * Controller does not provide transfer-complete interrupt when not
+>  * busy=2E
+>diff --git a/hw/arm/fsl-imx25=2Ec b/hw/arm/fsl-imx25=2Ec
+>index 5359a6d8d3b=2E=2E02214ca1a1c 100644
+>--- a/hw/arm/fsl-imx25=2Ec
+>+++ b/hw/arm/fsl-imx25=2Ec
+>@@ -243,8 +243,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error=
+ **errp)
+>                                  &error_abort);
+>         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+>                                  IMX25_ESDHC_CAPABILITIES, &error_abort)=
+;
+>-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+>-                                 SDHCI_VENDOR_IMX, &error_abort);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+>             return;
+>         }
+>diff --git a/hw/arm/fsl-imx6=2Ec b/hw/arm/fsl-imx6=2Ec
+>index dc86338b3a5=2E=2Ea114dc0d63d 100644
+>--- a/hw/arm/fsl-imx6=2Ec
+>+++ b/hw/arm/fsl-imx6=2Ec
+>@@ -327,8 +327,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error =
+**errp)
+>                                  &error_abort);
+>         object_property_set_uint(OBJECT(&s->esdhc[i]), "capareg",
+>                                  IMX6_ESDHC_CAPABILITIES, &error_abort);
+>-        object_property_set_uint(OBJECT(&s->esdhc[i]), "vendor",
+>-                                 SDHCI_VENDOR_IMX, &error_abort);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), errp)) {
+>             return;
+>         }
+>diff --git a/hw/arm/fsl-imx6ul=2Ec b/hw/arm/fsl-imx6ul=2Ec
+>index 34c4aa15cd0=2E=2Ece8d3ef535f 100644
+>--- a/hw/arm/fsl-imx6ul=2Ec
+>+++ b/hw/arm/fsl-imx6ul=2Ec
+>@@ -531,8 +531,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Erro=
+r **errp)
+>             FSL_IMX6UL_USDHC2_IRQ,
+>         };
+>=20
+>-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+>-                                 SDHCI_VENDOR_IMX, &error_abort);
+>         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+>=20
+>         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+>diff --git a/hw/arm/fsl-imx7=2Ec b/hw/arm/fsl-imx7=2Ec
+>index 3374018cde0=2E=2Eed1f10bca26 100644
+>--- a/hw/arm/fsl-imx7=2Ec
+>+++ b/hw/arm/fsl-imx7=2Ec
+>@@ -471,8 +471,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error =
+**errp)
+>             FSL_IMX7_USDHC3_IRQ,
+>         };
+>=20
+>-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+>-                                 SDHCI_VENDOR_IMX, &error_abort);
+>         sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), &error_abort);
+>=20
+>         sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
+>diff --git a/hw/arm/fsl-imx8mp=2Ec b/hw/arm/fsl-imx8mp=2Ec
+>index 1ea98e14635=2E=2Ec3f6da63220 100644
+>--- a/hw/arm/fsl-imx8mp=2Ec
+>+++ b/hw/arm/fsl-imx8mp=2Ec
+>@@ -524,8 +524,6 @@ static void fsl_imx8mp_realize(DeviceState *dev, Erro=
+r **errp)
+>             { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3]=2Eaddr, FSL_IMX8MP_US=
+DHC3_IRQ },
+>         };
+>=20
+>-        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
+>-                                 SDHCI_VENDOR_IMX, &error_abort);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
+>             return;
+>         }
+>diff --git a/hw/sd/sdhci=2Ec b/hw/sd/sdhci=2Ec
+>index 1f45a77566c=2E=2E149b748cbee 100644
+>--- a/hw/sd/sdhci=2Ec
+>+++ b/hw/sd/sdhci=2Ec
+>@@ -1731,16 +1731,10 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t=
+ val, unsigned size)
+>=20
+>     case USDHC_VENDOR_SPEC:
+>         s->vendor_spec =3D value;
+>-        switch (s->vendor) {
+>-        case SDHCI_VENDOR_IMX:
+>-            if (value & USDHC_IMX_FRC_SDCLK_ON) {
+>-                s->prnsts &=3D ~SDHC_IMX_CLOCK_GATE_OFF;
+>-            } else {
+>-                s->prnsts |=3D SDHC_IMX_CLOCK_GATE_OFF;
+>-            }
+>-            break;
+>-        default:
+>-            break;
+>+        if (value & USDHC_IMX_FRC_SDCLK_ON) {
+>+            s->prnsts &=3D ~SDHC_IMX_CLOCK_GATE_OFF;
+>+        } else {
+>+            s->prnsts |=3D SDHC_IMX_CLOCK_GATE_OFF;
+>         }
+>         break;
+>=20
 
-Yeah, I'll postpone the QOM parentship cleanup for later.
-
-> 
->> #define TYPE_SYSBUS_SDHCI "generic-sdhci"
->> -DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
->> -                         TYPE_SYSBUS_SDHCI)
->> -DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
->> -                       TYPE_SYSBUS_SDHCI)
->> +OBJECT_DECLARE_TYPE(SDHCIState, SDHCIClass, SYSBUS_SDHCI)
->> ---
-> 
-> [...]
-> 
->> Meanwhile the current legacy macros seems good enough for soft freeze ;)
-> 
-> Good enough for me. I was also happy with my way simpler solution. This 
-> is much more clean up already.
-> 
-> Regards,
-> BALATON Zoltan
-
+Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>

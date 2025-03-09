@@ -1,245 +1,366 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606577njc;
-        Sun, 9 Mar 2025 06:53:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzTyt4Zo1hN0mXDT7+TsjWZDWQyvayl/RXJSwkojQl5IR6ShY3NrdZZ4S0RttkfiWFDUpUv1Xlq/Sl8A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEfCTgZjiq6v9yyRcAnnamYIMWKQZqrApIToC9rHgflDVAimtKwOqd0l8cxziYVT2aBmBL8
-X-Received: by 2002:a05:620a:2607:b0:7c0:b24c:c3c8 with SMTP id af79cd13be357-7c4e617ac54mr1349594385a.42.1741528405603;
-        Sun, 09 Mar 2025 06:53:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528405; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606613njc;
+        Sun, 9 Mar 2025 06:53:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjQEmjt2aSb/CwQCTRhO0y1VxzJ/FYii1vMhg8Z6qdzuLmQ664CU5PQ1NGldPYcGv65qEUMeUO7GMoRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE1Cra2OzR40H2bhbb7ex8bZ6qbeNhc/yu/OIM8iLzBJ//2LGg701/SfH4gJQq22FsaJXZ2
+X-Received: by 2002:a05:6214:5096:b0:6e6:5d61:4efd with SMTP id 6a1803df08f44-6e9005b6abcmr128361276d6.9.1741528410410;
+        Sun, 09 Mar 2025 06:53:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528410; cv=none;
         d=google.com; s=arc-20240605;
-        b=bksV1csabWzWlSW26htHiTnH+KSfLiBA4hf2/XLJz9B2Ym4Mvevtg7KqeZfuCbDrJO
-         2Y+9fnCPC7cID9Xjp1T7Jx5MJ2MKrMck68/IrPcV95lm7/01s6TaTXu7PIDC+o3h+hTz
-         a3fpAUjj5k+cz71gD4cQfSvA8YXPmiCv/iW+kWWLJ4UX7GLwOZ02SUk9vF7ierXKdDI3
-         U6Uw/sUbpi9vhiAAQbDzoLorTT3LBgI0qnoiy1P5BvVN1/UfBP+u4/NfUCmYAVLCuoHZ
-         iDVte9IKXjXSXdAMLH1uL+RU/mVXRolicS5pjfFQnCmxF10aKvjomGkbeF3l2kPQ8JXg
-         Wdiw==
+        b=adqgY6rHqTUsf8TFsudtB6kibO8bcMFgSdz026SqaXNy8cyajGTcohfeaEcVpnWnLh
+         T9ioWHoAJo2qWGoxOEpgACqZ1kjxL9UScjESQLagr9vAgGvLWhDYLpiMlNqUe5w6o9Qd
+         QYqvJ9rHuL6TC4jcGdXzk377RPdwtdqDzbkxrmHhxB04mtiotOHANXwkcQmyQWryN959
+         xlXQupCCWnjRA1x3qgplN9VLTkPq+R+BoetmAv6eC0CdFRInT6Kan/xkBydi+sEErdxh
+         5ecnXRbBjLLsH9YYHE4kAUTiQo5fJyIFIg55Q++7weI0k9HgxwSQmgSGTpnCEvDYVELa
+         qSPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uAYS6UE+iNIB0Ha5J/YqcdKq8LDQBgAql8yfolCh9P0=;
+        bh=W3qddrphikrctdRzthvUWfNEMlLVU9dLAl+gbee0EHU=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=DN+HKB1IY9dc7g9FwHTZ/RT8/ZMLzKmfnrec3ei80YYAoYsqa8jP6uioC8ktsUSOOV
-         NdPw9gR5GR0hHJEGX/RgRtG22KqhbKStGHT4de2B7eno9LyLn8sw2gPmLOeuZnBc5f1/
-         Wn5pG6h3cVsu9+ArLsFrn0wkTTbW7HHzztOKHP2NGMT0H1xCOHRktn/0GMlHKksN8BgU
-         +oCIYCsLG9fAQ9krGOe8trlFQwS/pM26/IEud7QXN7UmAN/+SD9+OXKXQerI+ahS//kG
-         G5rKYVmSQwaquzVW6PN/BZYJbgGNm7TJ70BPSvYj8plDYE6jbWnqhA2vfJGOiuGKYqey
-         d5pQ==;
+        b=ZMbm6fKJ3hXZvVbjJeaeOOfD+wpba+OU1Af56vX+laLxfmbPVieP3dANDfpwZlbaFe
+         JkYst44aSKMNR0Skct1Mp/VXARJ+d3v8EBGqyEui3RQFGjqY2MSy6ydfXMhJKY3w+w0f
+         mrRH9dgwH9yin6cqxnjh2rO8JZ/4hFtFiGlNsOZbk8mAW1dDFLITVNEt8Ue7AYIxxEfJ
+         wbsG5dqswyuMcKqfQccPRgAn++6gpmThE05aUaNsFJsPJtkK9yZmM4YCyhaHexd7pmAq
+         eAaeqpR5xVI6WRfO48t87ok5BxIVQyT6FRoQ5P35VPLHRkkSDPJTaRAQqANNmSel/jSd
+         6wZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HXDPIbeG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MYxP1s4J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c54aa87fcesi135840985a.263.2025.03.09.06.53.24
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e9083c180esi35967626d6.401.2025.03.09.06.53.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:53:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 09 Mar 2025 06:53:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HXDPIbeG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MYxP1s4J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trH5n-0002Ol-Ek; Sun, 09 Mar 2025 09:53:23 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1trH59-0000Bu-S9; Sun, 09 Mar 2025 09:52:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5W-0001WE-Bb
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 09:53:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH57-00005X-Lo
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5T-0003na-Hz
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 09:53:05 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH52-0002uo-S4
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528382;
+ s=mimecast20190719; t=1741528355;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uAYS6UE+iNIB0Ha5J/YqcdKq8LDQBgAql8yfolCh9P0=;
- b=HXDPIbeGzp2H0B6JTf0Rg2xWV62xVyjB90fE6p+7qxUmUto5x0ONOQtMlM7fZXRJK7wIba
- FaUDVFxyMQYdW3WcuAt54iYijnf2crS9ntiYd8uyAh/iGjtm5kZ+FZvYgLnzKTNly1ASY1
- ffvIuG6B8XEulMdc+nTbhYyhGhRS478=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=W3qddrphikrctdRzthvUWfNEMlLVU9dLAl+gbee0EHU=;
+ b=MYxP1s4Jfm5xsYqu27VhzJmsmMooIvXtVCoge4VwbDrkIWYrXbKMIEIbhMDMw9hxXYloHE
+ 6BQz9i24YYe58PUJ6hOcKBhPqqfBvvuVhlmQJo5MZ7pEHcM25K25qHT2guIaqa8fGfYM/C
+ 4uW62M+UaSoFdQ1cBgzLcpd1Q+LCzGQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-BA3CHkHsNf2YBHM0dZxetQ-1; Sun,
- 09 Mar 2025 09:52:58 -0400
-X-MC-Unique: BA3CHkHsNf2YBHM0dZxetQ-1
-X-Mimecast-MFC-AGG-ID: BA3CHkHsNf2YBHM0dZxetQ_1741528377
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-HO02V1EuNWqt36lApMhoRQ-1; Sun,
+ 09 Mar 2025 09:52:33 -0400
+X-MC-Unique: HO02V1EuNWqt36lApMhoRQ-1
+X-Mimecast-MFC-AGG-ID: HO02V1EuNWqt36lApMhoRQ_1741528352
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 85EA519560BB; Sun,  9 Mar 2025 13:52:57 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 428BA1956080; Sun,  9 Mar 2025 13:52:32 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E8FF71956094; Sun,  9 Mar 2025 13:52:55 +0000 (UTC)
+ id A6A251956094; Sun,  9 Mar 2025 13:52:30 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 32/46] hw/intc/aspeed: Introduce IRQ handler function to reduce
- code duplication
-Date: Sun,  9 Mar 2025 14:51:16 +0100
-Message-ID: <20250309135130.545764-33-clg@redhat.com>
+Subject: [PULL 23/46] hw/intc/aspeed: Introduce helper functions for enable
+ and status registers
+Date: Sun,  9 Mar 2025 14:51:07 +0100
+Message-ID: <20250309135130.545764-24-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m9vVy5zgszhM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BiF6xPySV0KV
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The behavior of the INTC set IRQ is almost identical between INTC and INTCIO.
-To reduce duplicated code, introduce the "aspeed_intc_set_irq_handler" function
-to handle both INTC and INTCIO IRQ behavior. No functional change.
+The behavior of the enable and status registers is almost identical between
+INTC(CPU Die) and INTCIO(IO Die). To reduce duplicated code, adds
+"aspeed_intc_enable_handler" functions to handle enable register write
+behavior and "aspeed_intc_status_handler" functions to handle status
+register write behavior. No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-16-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/intc/aspeed_intc.c | 70 ++++++++++++++++++++++++-------------------
- 1 file changed, 39 insertions(+), 31 deletions(-)
+ hw/intc/aspeed_intc.c | 191 ++++++++++++++++++++++++------------------
+ 1 file changed, 108 insertions(+), 83 deletions(-)
 
 diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index be24516ec970..3aa97add8bd0 100644
+index d684b4bb4fec..b58a7ee7126e 100644
 --- a/hw/intc/aspeed_intc.c
 +++ b/hw/intc/aspeed_intc.c
-@@ -76,11 +76,45 @@ static void aspeed_intc_update(AspeedINTCState *s, int inpin_idx,
-     qemu_set_irq(s->output_pins[outpin_idx], level);
+@@ -120,6 +120,112 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     }
  }
  
-+static void aspeed_intc_set_irq_handler(AspeedINTCState *s,
-+                                        const AspeedINTCIRQ *intc_irq,
-+                                        uint32_t select)
++static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
++                                       uint64_t data)
 +{
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t status_reg;
-+    int outpin_idx;
-+    int inpin_idx;
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
++    uint32_t reg = offset >> 2;
++    uint32_t old_enable;
++    uint32_t change;
++    uint32_t irq;
 +
-+    status_reg = intc_irq->status_reg;
-+    outpin_idx = intc_irq->outpin_idx;
-+    inpin_idx = intc_irq->inpin_idx;
++    irq = (offset & 0x0f00) >> 8;
 +
-+    if (s->mask[inpin_idx] || s->regs[status_reg]) {
-+        /*
-+         * a. mask is not 0 means in ISR mode
-+         * sources interrupt routine are executing.
-+         * b. status register value is not 0 means previous
-+         * source interrupt does not be executed, yet.
-+         *
-+         * save source interrupt to pending variable.
-+         */
-+        s->pending[inpin_idx] |= select;
-+        trace_aspeed_intc_pending_irq(name, inpin_idx, s->pending[inpin_idx]);
++    if (irq >= aic->num_ints) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++                      __func__, irq);
++        return;
++    }
++
++    /*
++     * The enable registers are used to enable source interrupts.
++     * They also handle masking and unmasking of source interrupts
++     * during the execution of the source ISR.
++     */
++
++    /* disable all source interrupt */
++    if (!data && !s->enable[irq]) {
++        s->regs[reg] = data;
++        return;
++    }
++
++    old_enable = s->enable[irq];
++    s->enable[irq] |= data;
++
++    /* enable new source interrupt */
++    if (old_enable != s->enable[irq]) {
++        trace_aspeed_intc_enable(s->enable[irq]);
++        s->regs[reg] = data;
++        return;
++    }
++
++    /* mask and unmask source interrupt */
++    change = s->regs[reg] ^ data;
++    if (change & data) {
++        s->mask[irq] &= ~change;
++        trace_aspeed_intc_unmask(change, s->mask[irq]);
 +    } else {
-+        /*
-+         * notify firmware which source interrupt are coming
-+         * by setting status register
-+         */
-+        s->regs[status_reg] = select;
-+        trace_aspeed_intc_trigger_irq(name, inpin_idx, outpin_idx,
-+                                      s->regs[status_reg]);
-+        aspeed_intc_update(s, inpin_idx, outpin_idx, 1);
++        s->mask[irq] |= change;
++        trace_aspeed_intc_mask(change, s->mask[irq]);
++    }
++
++    s->regs[reg] = data;
++}
++
++static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
++                                       uint64_t data)
++{
++    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
++    uint32_t reg = offset >> 2;
++    uint32_t irq;
++
++    if (!data) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid data 0\n", __func__);
++        return;
++    }
++
++    irq = (offset & 0x0f00) >> 8;
++
++    if (irq >= aic->num_ints) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++                      __func__, irq);
++        return;
++    }
++
++    /* clear status */
++    s->regs[reg] &= ~data;
++
++    /*
++     * These status registers are used for notify sources ISR are executed.
++     * If one source ISR is executed, it will clear one bit.
++     * If it clear all bits, it means to initialize this register status
++     * rather than sources ISR are executed.
++     */
++    if (data == 0xffffffff) {
++        return;
++    }
++
++    /* All source ISR execution are done */
++    if (!s->regs[reg]) {
++        trace_aspeed_intc_all_isr_done(irq);
++        if (s->pending[irq]) {
++            /*
++             * handle pending source interrupt
++             * notify firmware which source interrupt are pending
++             * by setting status register
++             */
++            s->regs[reg] = s->pending[irq];
++            s->pending[irq] = 0;
++            trace_aspeed_intc_trigger_irq(irq, s->regs[reg]);
++            aspeed_intc_update(s, irq, 1);
++        } else {
++            /* clear irq */
++            trace_aspeed_intc_clear_irq(irq, 0);
++            aspeed_intc_update(s, irq, 0);
++        }
 +    }
 +}
 +
- /*
-- * The address of GICINT128 to GICINT136 are from 0x1000 to 0x1804.
-- * Utilize "address & 0x0f00" to get the irq and irq output pin index
-- * The value of irq should be 0 to num_inpins.
-- * The irq 0 indicates GICINT128, irq 1 indicates GICINT129 and so on.
-+ * GICINT128 to GICINT136 map 1:1 to input and output IRQs 0 to 8.
-+ * The value of input IRQ should be between 0 and the number of inputs.
-  */
- static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+ static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
  {
-@@ -88,20 +122,15 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
-     const char *name = object_get_typename(OBJECT(s));
-     const AspeedINTCIRQ *intc_irq;
--    uint32_t status_reg;
-     uint32_t select = 0;
-     uint32_t enable;
--    int outpin_idx;
-     int inpin_idx;
-     int i;
+     AspeedINTCState *s = ASPEED_INTC(opaque);
+@@ -136,11 +242,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+                                         unsigned size)
+ {
+     AspeedINTCState *s = ASPEED_INTC(opaque);
+-    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     uint32_t reg = offset >> 2;
+-    uint32_t old_enable;
+-    uint32_t change;
+-    uint32_t irq;
  
-     assert(irq < aic->num_inpins);
+     trace_aspeed_intc_write(offset, size, data);
  
-     intc_irq = &aic->irq_table[irq];
--    status_reg = intc_irq->status_reg;
--    outpin_idx = intc_irq->outpin_idx;
-     inpin_idx = intc_irq->inpin_idx;
+@@ -154,45 +256,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT134_EN:
+     case R_GICINT135_EN:
+     case R_GICINT136_EN:
+-        irq = (offset & 0x0f00) >> 8;
 -
-     trace_aspeed_intc_set_irq(name, inpin_idx, level);
-     enable = s->enable[inpin_idx];
- 
-@@ -122,28 +151,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-     }
- 
-     trace_aspeed_intc_select(name, select);
+-        if (irq >= aic->num_ints) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
+-                          __func__, irq);
+-            return;
+-        }
 -
--    if (s->mask[inpin_idx] || s->regs[status_reg]) {
 -        /*
--         * a. mask is not 0 means in ISR mode
--         * sources interrupt routine are executing.
--         * b. status register value is not 0 means previous
--         * source interrupt does not be executed, yet.
--         *
--         * save source interrupt to pending variable.
+-         * These registers are used for enable sources interrupt and
+-         * mask and unmask source interrupt while executing source ISR.
 -         */
--        s->pending[inpin_idx] |= select;
--        trace_aspeed_intc_pending_irq(name, inpin_idx, s->pending[inpin_idx]);
--    } else {
+-
+-        /* disable all source interrupt */
+-        if (!data && !s->enable[irq]) {
+-            s->regs[reg] = data;
+-            return;
+-        }
+-
+-        old_enable = s->enable[irq];
+-        s->enable[irq] |= data;
+-
+-        /* enable new source interrupt */
+-        if (old_enable != s->enable[irq]) {
+-            trace_aspeed_intc_enable(s->enable[irq]);
+-            s->regs[reg] = data;
+-            return;
+-        }
+-
+-        /* mask and unmask source interrupt */
+-        change = s->regs[reg] ^ data;
+-        if (change & data) {
+-            s->mask[irq] &= ~change;
+-            trace_aspeed_intc_unmask(change, s->mask[irq]);
+-        } else {
+-            s->mask[irq] |= change;
+-            trace_aspeed_intc_mask(change, s->mask[irq]);
+-        }
+-        s->regs[reg] = data;
++        aspeed_intc_enable_handler(s, offset, data);
+         break;
+     case R_GICINT128_STATUS:
+     case R_GICINT129_STATUS:
+@@ -203,46 +267,7 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     case R_GICINT134_STATUS:
+     case R_GICINT135_STATUS:
+     case R_GICINT136_STATUS:
+-        irq = (offset & 0x0f00) >> 8;
+-
+-        if (irq >= aic->num_ints) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
+-                          __func__, irq);
+-            return;
+-        }
+-
+-        /* clear status */
+-        s->regs[reg] &= ~data;
+-
 -        /*
--         * notify firmware which source interrupt are coming
--         * by setting status register
+-         * These status registers are used for notify sources ISR are executed.
+-         * If one source ISR is executed, it will clear one bit.
+-         * If it clear all bits, it means to initialize this register status
+-         * rather than sources ISR are executed.
 -         */
--        s->regs[status_reg] = select;
--        trace_aspeed_intc_trigger_irq(name, inpin_idx, outpin_idx,
--                                      s->regs[status_reg]);
--        aspeed_intc_update(s, inpin_idx, outpin_idx, 1);
--    }
-+    aspeed_intc_set_irq_handler(s, intc_irq, select);
- }
- 
- static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
+-        if (data == 0xffffffff) {
+-            return;
+-        }
+-
+-        /* All source ISR execution are done */
+-        if (!s->regs[reg]) {
+-            trace_aspeed_intc_all_isr_done(irq);
+-            if (s->pending[irq]) {
+-                /*
+-                 * handle pending source interrupt
+-                 * notify firmware which source interrupt are pending
+-                 * by setting status register
+-                 */
+-                s->regs[reg] = s->pending[irq];
+-                s->pending[irq] = 0;
+-                trace_aspeed_intc_trigger_irq(irq, s->regs[reg]);
+-                aspeed_intc_update(s, irq, 1);
+-            } else {
+-                /* clear irq */
+-                trace_aspeed_intc_clear_irq(irq, 0);
+-                aspeed_intc_update(s, irq, 0);
+-            }
+-        }
++        aspeed_intc_status_handler(s, offset, data);
+         break;
+     default:
+         s->regs[reg] = data;
 -- 
 2.48.1
 

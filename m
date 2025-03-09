@@ -1,111 +1,111 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp486949njc;
-        Sun, 9 Mar 2025 00:32:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUHoVdHFSkV4A4FcUYwTJkiYcvxtXgw07TI27IFDG/CbtxYvBwnm1WPXeiTKfuFMj2trL7lmtPqA2gpUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEZLFNWeOhmVbNqGlkH5fpN8toEF04WkMgsgSJkOAkvtntoZDzTPGsxA64agHVpHZdOXyVJ
-X-Received: by 2002:a05:620a:84ca:b0:7c5:4349:2f19 with SMTP id af79cd13be357-7c54349309emr663904085a.49.1741509157125;
-        Sun, 09 Mar 2025 00:32:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741509157; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp508403njc;
+        Sun, 9 Mar 2025 01:39:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXmVamvi/n1Ey/n8wuG5BWfxTk0jj79vWGjS1XYKVrdMldgR4+LHjAnmaZuikrjWAj+nmfFtoUNTgYxJQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFvGeE1AVkg2k0+j32GIfRm//QfnX4XkRITJzQ3MVqfrx33XCZTqyTuN3equ+CLr6LzLPur
+X-Received: by 2002:a05:622a:11c9:b0:476:8595:fa09 with SMTP id d75a77b69052e-4768596039dmr4537001cf.40.1741513192720;
+        Sun, 09 Mar 2025 01:39:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741513192; cv=none;
         d=google.com; s=arc-20240605;
-        b=kz/sxl6FIxZAdbwqGTX3Ipb/KOUl9MFrJ9D+Zs4KhsQUe6TdBO/wqjeGk6VdzX535K
-         Gp8at1loOETXLtxAZwOqx14ZiIYnquuydUjGt7EiDTj1IZ4P/Q4N7mRzwDNCi+V+oqR4
-         FwDCCD7KbpfP85OIdBdK/8N9RUicFLbsvoRV14QVu8lF+3C94eBDc44WqrAxi51L++HW
-         BOcYS8A5FOmsALAzckvRHSFamFPPJaF5yOksbhpTqKgJU3rYZXQvK5ZJ/2QWhpBNYdUh
-         tsm36tfX4oUaA7xoFyqDo8vyRWAjv/Ea6KuuJZidXzP01H2HFC5tUhWc6NSoM0kQifWD
-         ckSg==
+        b=UBTIalb250MGyWtklQy1rS++QJb6Dp6jypznj7NJ0gbpHz6eO0p3CsUBKnf2DX+rCy
+         AIi+NM2T8ePKzfgvDIr0fN/N7Dz/ju43q6946GG1/hfRp/KxpIvzc1cmixQOtbcyduYF
+         dTlCNxRImVxK4La55v9Qixrh+wg2y9LP5ngYP88NqJbQ0ZFVsyS2qZlEq0fiEtX6/3P/
+         MAOtW5R7aLqbT1FJ/U8p80Gf8dC9B6CfJweJBLWSKe25+OVIvnqhI1UqB9+FO6fE4t/6
+         oMWK0FQRza0o61yIvdmJ0KNTcVlbpTRB857WBhBlbJ9/hwlH2wkGPCUhg/FGGGIhKw6M
+         K6tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:references:in-reply-to:subject:cc:to:from
          :date:dkim-signature;
-        bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
-        fh=QcoXPB7Mw73aeLIkdzR12e/S/yIVaOYrhw0rI0N0+o4=;
-        b=RHPchF3Qfvq+PCW0pRag5fHmp8DYBpelhZ20bKppi4bMKkSR3kmpdAh2VCwAC2uHoa
-         lcG370YiQGPXM6XbPyFxN/lulH7Ufh0URqM7bh27RKcaAU/bMfYz/mQWFjX/g1jjpa0I
-         ovyNq36WhjsGZDjV476iHUmFm1nbPVYPoiNLAiTYMYuObx2qq3nWN3Mhr7v90trtbBWk
-         JiRlWA3UXfRLO+mxZbN4JyiwJshqEL0I6iu4sOXAIcEhZQcfjOnleYfi8Jne9P2rgZ+g
-         o1em1i6x2gccEspJOFXtwEoKn7K68Tlqlav941yOgfoYa21aDks0DN/8BvbwhvZDAE8S
-         6X0w==;
+        bh=ax5IGd/4eNrwA4i2MUZdcYcXCJmnFhS/qG7yJ/UodEE=;
+        fh=n39CKkSDZlUySfUcoI8b8D1cpo1iXV9BKuoT4lgh3UY=;
+        b=OZcx6EJw0o0NpvreQbysa6w5xwF8coQy/gw1hsJyOrkQ5Se6cII0kCh5HV8pPaczod
+         FSCtWKLMJL9IpOwtZaaigI1uAAVuD46huuWGjF7FQrxtwAw0WvxaAtduWca32mHxixpD
+         8de1ZS7pqWxokftROmiuPtSk7aHmzf/fVZkT7wbQpoOx+lkXJGHnXY+M9p7Qq9R3oLlG
+         w3hTInbQH4i8YbQzWaOxWGO/oc6rHba17WgJomq0jHYSVAV8EBFuJVhV8EnJ53V+Yio/
+         Cf0Z/a27aSHCwMxcg/Fosm0G+vhlIghvNBTnG6/OY8Vz9E+egtTs4tE22AyQHdLkh3ze
+         QRRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ly/LG7BB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EEhiOvJN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c3e55462f4si702943985a.527.2025.03.09.00.32.37
+        by mx.google.com with ESMTPS id d75a77b69052e-4766527c2d9si30303251cf.649.2025.03.09.01.39.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 00:32:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 09 Mar 2025 01:39:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ly/LG7BB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EEhiOvJN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trC5B-0005Vc-Ra; Sun, 09 Mar 2025 04:32:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1trD7l-00068D-Da; Sun, 09 Mar 2025 05:39:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1trC4I-0004p1-S5; Sun, 09 Mar 2025 04:31:33 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ id 1trD7Y-00065f-1a; Sun, 09 Mar 2025 05:38:57 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1trC4H-0001PA-Aq; Sun, 09 Mar 2025 04:31:30 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-abf45d8db04so494220566b.1; 
- Sun, 09 Mar 2025 00:31:27 -0800 (PST)
+ id 1trD7V-0003Km-CG; Sun, 09 Mar 2025 05:38:54 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5e5b572e45cso5655671a12.0; 
+ Sun, 09 Mar 2025 01:38:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1741509086; x=1742113886; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1741513118; x=1742117918; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
- b=ly/LG7BB3uwjmGD0v6EzLH6GrcbSl6jaEge1un55zU/OaBwKltwXeKL2/7ia1XBz5L
- Jq1X7lAzBAk7FiwnK9Wgu+gtpo5DbfzUqczsxLjsPt/GWJfnvdcSp7WWueppkcylQYH2
- P6NJSJmWoe7OkUvq9VdBESXbFBY9kTxUGQcm4j5MTAfnrBVWWpUWdQvAiy5uOqArWHyR
- 3+MNun+qXvlaSRzpDPgEWH5crPjbGhxVns5DZgArVgqkqVscNANNOMBgbvOu407ekDVA
- q4Qf1cW9J3f0ZJQGCwvurTDYpPt6otEr6bX1ANPNRU+ULnAgP1SSAaymRUNweG5xWjmp
- v2Ww==
+ bh=ax5IGd/4eNrwA4i2MUZdcYcXCJmnFhS/qG7yJ/UodEE=;
+ b=EEhiOvJNDaIADPjKkeqQQ1P3/Q/aULVUHB/dRfKfc80P49DnMR0QgVD2+m/X9YzcqO
+ hykVQ4o96tqRJKyaV4yjPyR3PFFK6YUHLoJIS/zeGoV3zrSmF4NbHuenGnvufEGtx5Ci
+ vui0XjEm7N53KPhYLEIoMAJs5Jn8AiGLn+NGWlzspNJ5LA8euT6mWooom3bZS90JyngQ
+ HHWJBFHnzpePJ0uRME35dL5Df8kL7JB470fLKsrhb9taNCRS2yseRNWLD/SknN0ZLmkS
+ oan9RcqfKDx9ymoQS3TJqqu5DOTSkX96l1zOwHxK5WMckP+TtWrHXI//x1ZpCDyykHiS
+ 20Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741509086; x=1742113886;
+ d=1e100.net; s=20230601; t=1741513118; x=1742117918;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Bw/UdLloc25XSKtFzgJIxRsEEw6Y8ybT4ArThY2gBs0=;
- b=Hk+EWdk6pbPaA1EE1AugtETfilKOq9pgsmvWZD+zfkBaGr+lLgBd7lvVKfmzfY4b28
- 4ZeRw133KvX+EJigK7YKtFx8xYzouL+lcZyn16mbTTsn2K0ssoYFWhuNsNAOlK+tgutZ
- 8b8pqaedGCjfqHEtPQ2LJRRB2Ngkq61tjVuQB60fvFd8Q0VD5KpWqumvDmE/Y/WLs7O0
- hOc8KH58gBL4/GlkhcUnWnheixJ1+FOxDTw8G7CXRYJhJJKgFROfDF7uuCzteTFfvdd0
- Ae1JYet7zexS7nuJDnLg/SZDDAoSXsBuiXouiFBG7HYPQXCuFGSfeqzUSejbZ3qctD/q
- Jlrw==
+ bh=ax5IGd/4eNrwA4i2MUZdcYcXCJmnFhS/qG7yJ/UodEE=;
+ b=ulsN40s/2xCJgJP01iQ5f1DBLceOIsQAz44cf1uR/Uh+DAmIjO/ZFplez3q5hGeSTr
+ G5BDv+ez6KjeV/tM+YH+/p8Dnv7mJwmRa2M9LKrWsOG0uhZ1c95EtolyFj587IjnKPti
+ jJAm9O7HznuzFWyaCnKiCVQZVCI7I87/Jg1vtzg1Uj8tFjakDQeBYrOsvKwb4THy4mvK
+ uUQsuchrG/JpDF6kmVKCbTofKVW+YgAadP0Ry/3pgDoLWMtsSSfEQvjV78UMAl4SuetJ
+ n1X3kC3XvzPGwbnk3bFKbSMn/qFuKjUj5kLyp2R8Noyp7u0EW/5m16U1vn/UFLcos2dm
+ UqAQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0c7T6UaoxVi2ZWKNU20yVk+bAMrSZpl+HqXrMzJIiQNmaTmKgrHDY1jtf1CCnDl3PFTB182zURPQ=@nongnu.org,
- AJvYcCV7JpY1VMg2T93DFaF3rhvIdv2cGDO2XmI87Tr83BhVkySnuSlb8wHgPFw3hukvTB1espUqpwbAS3m5iA==@nongnu.org,
- AJvYcCVPn7M2iG4hxmyc8M5gMUJLqud1YmjvqrhudZQmxbmn752H2Ea4EktiQ4Y0q2iA20V5YEQkeMYfZjWEYw==@nongnu.org,
- AJvYcCX6b30P6lfh2SlxEsBeQsCGj6wZfg0jKMJPitXucEP2sYmeJPEt99B8IzqBmK5t+NHCzVsk3cebEA==@nongnu.org
-X-Gm-Message-State: AOJu0YyUFtUW3a/DbLf9ACArgYAja+Ft1WgxY6ZmE9YA5ouleSwaBQbG
- 84NtAD38fJdhtLnld/ri4s3Cnt12BflbgAkrkg1Y3x4SJkb+WeoM
-X-Gm-Gg: ASbGnctW3LRh4x4B9OVCRfsWyqq0zmZ0K7ZCgEmrv5Mvnz1xvOaaFFtx21k4Fe3nXmW
- 0POss/FWjoQ35LtFOK1RuTAJYP4by2l1lrDQUDuGD+jyqTiWeYd1Su146zoc7dr5o3L6UuWdXHL
- GeIWMCqD3xlAy3bPI73mKzwRpTfDYtst5R3mhb3waXlUW3j4DzyHg8Bi5x6Rh86FFFwJFU3DnGi
- LFcDaso9aoS9p/aVjkibXKW0RIXFVUA010Wx8UdaUaMgb3dCPUbhmkuPh6FLz4EydESRrUjaiur
- 1IeMaesS3SUNmPxhNKydiWbzp2q91vSPbTqiPaOciHORq+/UwJfbfiXp0hsUjQiQgOFD518yJgj
- invvlwhk5j+xAH2Ufg6jqIdH0e7EJw7dwaPS5gm+n0qW5xVssJf/oNX88jvE98z0=
-X-Received: by 2002:a17:906:b39a:b0:abf:7a26:c486 with SMTP id
- a640c23a62f3a-ac252e9ceaamr904557066b.40.1741509085648; 
- Sun, 09 Mar 2025 00:31:25 -0800 (PST)
+ AJvYcCUhOlxMtHAU8MInElw185Mk4S+M4jguYlRpGKD6zcXZMMFLv5K5C+fuAgsXMhvpwv8eEpZfc6fq78DfRg==@nongnu.org,
+ AJvYcCWl/gWZplBkfITkQveX75goUpAmX4HFaGJmMW51m4PF6RD10z7nNlLYn0JdEOM40fdUlX/BkQ+xY9a5UQ==@nongnu.org,
+ AJvYcCWq4fYhoOtB7UUY6k/hdJVN0LqilF6vncdgD8tlBr+yw5emMjK/I7/vHr2chg/HcJPMFMzwWRw53Q==@nongnu.org,
+ AJvYcCXheXhvwgfB9orBe2kSXcKbDwXuStKrf1Mgj20Vbbt48xXm7XN3kKssy1SRqUnSrSY5vTdJnHjRgeI=@nongnu.org
+X-Gm-Message-State: AOJu0Yw+ntLoeCZgwxRexDy8f1/az6sFgtfFuUhB3eGbpcR23aRCm+rv
+ s8ca8lK1Q6o1aSApcEzJXL2X3e2t7b61tB6eaWYlg6XrVaghCU3p
+X-Gm-Gg: ASbGncsm095FM7IliNcuORTqEEGHwvM4A728hrC/OFSCrggTvh/ywrvgbhe/2KfJjsx
+ +BJ3GlcfI7oVj4mv7z75jMzRL7fZC4/3bpVc80vt860G89mw4oioEWfq6cFfhqC0f0o7EdbVwak
+ y+miGA4mRj2lb90dVTvKf38FjJd8/a5osEctIoaWtJIizfalzOGXDhQbM4YLumD6U30sKsMCVN0
+ YUzwYl02U2khCyNB0Bgga1pUZRWRWBqyAZc1QYEx9EpLJVTLYBdfC5AtRTr9UivsAIauIPPtFSJ
+ 8gaKmMVyuIqcw61QiffcrzMdEkolJllRFoSw+lXiNlCjJSx7QvGGj4HfvMhjwxZWErx8qcCHMe/
+ LPDyVwNxDNpAvKJsswhX1xrcjvh1zdQhZr7q5kjCCJRLK4RQe36uF
+X-Received: by 2002:a17:907:c302:b0:ac2:4b70:cb97 with SMTP id
+ a640c23a62f3a-ac2526ce371mr1005320066b.28.1741513118066; 
+ Sun, 09 Mar 2025 01:38:38 -0800 (PST)
 Received: from ?IPv6:::1?
  (dynamic-2a02-3100-1a10-8c00-69d2-56f6-a5af-50a8.310.pool.telefonica.de.
  [2a02:3100:1a10:8c00:69d2:56f6:a5af:50a8])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac254b805f6sm410824866b.88.2025.03.09.00.31.24
+ a640c23a62f3a-ac23973a756sm573848466b.94.2025.03.09.01.38.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 09 Mar 2025 00:31:24 -0800 (PST)
-Date: Sun, 09 Mar 2025 08:31:24 +0000
+ Sun, 09 Mar 2025 01:38:37 -0800 (PST)
+Date: Sun, 09 Mar 2025 09:27:12 +0000
 From: Bernhard Beschow <shentey@gmail.com>
 To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>
@@ -117,18 +117,17 @@ CC: =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org,
  Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_14/14=5D_hw/ppc/e500=3A_Rep?=
- =?US-ASCII?Q?lace_generic_SDHCI_by_Freescale_eSDHC?=
-In-Reply-To: <20250308213640.13138-15-philmd@linaro.org>
+Subject: Re: [PATCH v4 09/14] hw/sd/sdhci: Unify default MemoryRegionOps
+In-Reply-To: <20250308213640.13138-10-philmd@linaro.org>
 References: <20250308213640.13138-1-philmd@linaro.org>
- <20250308213640.13138-15-philmd@linaro.org>
-Message-ID: <6C65764B-E579-4361-94B5-5D217363AC05@gmail.com>
+ <20250308213640.13138-10-philmd@linaro.org>
+Message-ID: <6FAA573C-D92D-451B-B69B-F4B9095F9F0C@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -137,68 +136,117 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jcyCT+eEA6WT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5Xd5k8FZ3DNC
 
 
 
-Am 8=2E M=C3=A4rz 2025 21:36:40 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+Am 8=2E M=C3=A4rz 2025 21:36:35 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
 <philmd@linaro=2Eorg>:
->As Zoltan reported, some U-Boot versions seem to expect
->correctly initialized registers before expecting interrupts=2E
+>Note, sdhci_mmio_le_ops[] was missing =2Eimpl=2Eaccess_size =3D 4=2E
 >
->Now than we have a proper Freescale eSDHC implementation,
->use it=2E
->
->Reported-by: BALATON Zoltan <balaton@eik=2Ebme=2Ehu>
 >Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
 >---
-> hw/ppc/e500=2Ec | 10 +---------
-> 1 file changed, 1 insertion(+), 9 deletions(-)
+> hw/sd/sdhci=2Ec | 46 ++++++++++++++++++++--------------------------
+> 1 file changed, 20 insertions(+), 26 deletions(-)
 >
->diff --git a/hw/ppc/e500=2Ec b/hw/ppc/e500=2Ec
->index e85e000f054=2E=2E7d15c926887 100644
->--- a/hw/ppc/e500=2Ec
->+++ b/hw/ppc/e500=2Ec
->@@ -1027,20 +1027,12 @@ void ppce500_init(MachineState *machine)
+>diff --git a/hw/sd/sdhci=2Ec b/hw/sd/sdhci=2Ec
+>index a2e7162e289=2E=2E23af3958a1d 100644
+>--- a/hw/sd/sdhci=2Ec
+>+++ b/hw/sd/sdhci=2Ec
+>@@ -1372,30 +1372,22 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t=
+ val, unsigned size)
+>                        value >> shift, value >> shift);
+> }
 >=20
->     /* eSDHC */
->     if (pmc->has_esdhc) {
->-        dev =3D qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
+>-static const MemoryRegionOps sdhci_mmio_le_ops =3D {
+>-    =2Eread =3D sdhci_read,
+>-    =2Ewrite =3D sdhci_write,
+>-    =2Evalid =3D {
+>-        =2Emin_access_size =3D 1,
+>-        =2Emax_access_size =3D 4,
+>-        =2Eunaligned =3D false
+>+static const MemoryRegionOps sdhci_mmio_ops[2] =3D {
+>+    [0 =2E=2E=2E 1] =3D {
+>+        =2Eread =3D sdhci_read,
+>+        =2Ewrite =3D sdhci_write,
+>+        =2Eimpl =3D {
+>+            =2Emin_access_size =3D 4,
+>+            =2Emax_access_size =3D 4,
+>+        },
+>+        =2Evalid =3D {
+>+            =2Emin_access_size =3D 1,
+>+            =2Emax_access_size =3D 4,
+>+            =2Eunaligned =3D false
+>+        },
+>     },
+>-    =2Eendianness =3D DEVICE_LITTLE_ENDIAN,
+>-};
+>-
+>-static const MemoryRegionOps sdhci_mmio_be_ops =3D {
+>-    =2Eread =3D sdhci_read,
+>-    =2Ewrite =3D sdhci_write,
+>-    =2Eimpl =3D {
+>-        =2Emin_access_size =3D 4,
+>-        =2Emax_access_size =3D 4,
+>-    },
+>-    =2Evalid =3D {
+>-        =2Emin_access_size =3D 1,
+>-        =2Emax_access_size =3D 4,
+>-        =2Eunaligned =3D false
+>-    },
+>-    =2Eendianness =3D DEVICE_BIG_ENDIAN,
+>+    [0]=2Eendianness =3D DEVICE_LITTLE_ENDIAN,
+>+    [1]=2Eendianness =3D DEVICE_BIG_ENDIAN,
+> };
 
-"hw/misc/unimp=2Eh" include is now unused and should therefore be removed=
+We introduced sdhci_mmio_be_ops and the endianness property specifically f=
+or the e500 machine=2E We always lied about the endianness property to be i=
+mplemented for all SDHC types, e=2Eg=2E USDHC doesn't implement it=2E Since=
+ you'll introduce a dedicated FSL_ESDHC type a few commits later, along wit=
+h its own MemoryRegionOps, I think we should drop the endianness property a=
+nd sdhci_mmio_ops doesn't need to become an array=2E Dropping the endiannes=
+s property also results in avoiding the error conditions you have to deal w=
+ith in the realize method=2E
+
+Best regards,
+Bernhard
+
+P=2ES=2E: IIRC, the Layerscape SoCs also use the fsl,esdhc IP core and the=
+ir endianness can be switched at runtime(!)=2E Since we don't model Layersc=
+ape we can simplify, i=2Ee=2E hardcode the endianness to big endian for now=
 =2E
 
-With that fixed:
-Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
-
->-        qdev_prop_set_string(dev, "name", "esdhc");
->-        qdev_prop_set_uint64(dev, "size", MPC85XX_ESDHC_REGS_SIZE);
->-        s =3D SYS_BUS_DEVICE(dev);
->-        sysbus_realize_and_unref(s, &error_fatal);
->-        memory_region_add_subregion(ccsr_addr_space, MPC85XX_ESDHC_REGS_=
-OFFSET,
->-                                    sysbus_mmio_get_region(s, 0));
->-
->         /*
->          * Compatible with:
->          * - SD Host Controller Specification Version 2=2E0 Part A2
->          * (See MPC8569E Reference Manual)
->          */
->-        dev =3D qdev_new(TYPE_SYSBUS_SDHCI);
->+        dev =3D qdev_new(TYPE_FSL_ESDHC);
->         qdev_prop_set_uint8(dev, "sd-spec-version", 2);
->         qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_BIG);
->         s =3D SYS_BUS_DEVICE(dev);
+>=20
+> static void sdhci_init_readonly_registers(SDHCIState *s, Error **errp)
+>@@ -1443,10 +1435,12 @@ void sdhci_common_realize(SDHCIState *s, Error **=
+errp)
+>     ERRP_GUARD();
+>     SDHCIClass *sc =3D SYSBUS_SDHCI_GET_CLASS(s);
+>     const char *class_name =3D object_get_typename(OBJECT(s));
+>+    unsigned ops_index;
+>=20
+>-    s->io_ops =3D sc->io_ops ?: (s->endianness =3D=3D DEVICE_BIG_ENDIAN =
+?
+>-                               &sdhci_mmio_be_ops : &sdhci_mmio_le_ops);
+>-    if (s->io_ops->endianness !=3D s->endianness) {
+>+    ops_index =3D s->endianness =3D=3D DEVICE_BIG_ENDIAN ? 1 : 0;
+>+
+>+    s->io_ops =3D sc->io_ops ?: &sdhci_mmio_ops[ops_index];
+>+    if (s->io_ops->endianness !=3D sdhci_mmio_ops[ops_index]=2Eendiannes=
+s) {
+>         error_setg(errp, "Invalid endianness for SD controller");
+>         return;
+>     }

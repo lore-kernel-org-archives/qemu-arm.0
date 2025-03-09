@@ -1,108 +1,108 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606350njc;
-        Sun, 9 Mar 2025 06:52:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWecyrAoPYUwIVSHGibw+K3mdl6kPlSCybGXonkDjXnhrpMh0Ukm6fqKucedJzk1i9Ex+ggW7E57P7C4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQwqGm3dPVnVVI82fcvOpwRYdG1sMOc8aESzVxKCuf2M0EZbZAQw//1XtNaBcT/hm4AMfD
-X-Received: by 2002:a05:620a:28d0:b0:7c2:f39d:d0e0 with SMTP id af79cd13be357-7c53c83f030mr900706885a.3.1741528372807;
-        Sun, 09 Mar 2025 06:52:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528372; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606413njc;
+        Sun, 9 Mar 2025 06:53:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvNwL42qlriUx/0rTEoJYg1MSppkeL++bXvvqvKRu5HBp6n0rYaSmJawx1ypJZqNX3jJ8Rth06elotlw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEycv5PQm7Rwno+itf0cDHpSMTKnK4Yigxit8GSaOGMuNf/sapLDUVAK7U5vydqIn/hWDAo
+X-Received: by 2002:a05:620a:86c1:b0:7c5:428a:bca8 with SMTP id af79cd13be357-7c5428abd88mr697323985a.56.1741528381841;
+        Sun, 09 Mar 2025 06:53:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528381; cv=none;
         d=google.com; s=arc-20240605;
-        b=VDJEEzRw4zuuZunZfmetq70hMj1ee6lM5dhutrAbv/CjTq+6TZ5lSwHY3LqQq+6tqN
-         avYUzg7DBKHhxmZvTjDWgq7z6wdMK4QuapbbMe73eil1D/L24kXG4s8SwlE48naXcdCp
-         pJqy/sdncui5mUP+mTfAAsnGxMgFnGtAT2sAZDEQQ7QwOSnlI4yFPeDHjqez0AIptZOc
-         HxwpV4VOaXNP+x6JTKL56vTE8pV40gT4IeQfEmbwxlPo/fwRhE1vwVD/58kVkQUTiS3j
-         aHvNNOsvguYPRH+oLzvKHy2uA0z0BYNBwMd6ari4U/l/yzM8VvUAz9qfaO6PHwU1iLPZ
-         0VIA==
+        b=ad1R+FojSWMdBUiU2IIALmBiXMh8dX8ry3DKcOod+Rb7slgJ1xrM0/Q657HfYkWU+S
+         dVKsrLf/QmmkSJ3ufmBC/zb3JX9af2DpMONos3iHtNCNdlExlR69IvPJUUHYeqUuqalD
+         kv138lr5nREt8bI85rjRghJZkns/J+6ElqMGX1eQhJhIHnKpXkpV1m4ld04jiPPt5AnR
+         boDnuz6ePNpHcQsGvsCGo1ZS1qMQjbit1KpJMOkYLTRd1c4sEctkfsqUb7X9rz8PX10R
+         Voe4SgedrnYzrpo8PwceSkIXuSa28hG2OvAbD8Y//7j2fXXn2UQS93qdf5B0zvG2XBH9
+         6KHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=NJX8XSF2yxWfiuRuPAfWR6tQopGzS5p7kpjqzqKzVUs=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=XlZ419s7Vy0bxw2cj28E/ov9mTfu5KjHnOhylXQPir+YTeGX1XfejJCaE2Az9Nao6F
-         3WnCZ4Suw42a/13gfQtstpTv+L8Pgk3qfSwgBiDFjxsCUg/1c1brGhXcb4CSGXTKSmr3
-         rc3Z/jelty/sCzttTI0wjaAfY2qn0vZApoZMGHxQO/mTs6O6ktUNCQIFZE6gMIQFlElD
-         j+FlFRI3ueJ7HQl9XMR+SSGUBroDgvqo/jKLZFzkVInoTBtORq01kbaJXoDEMwXba43W
-         +doKBVeNLV2Jxs53REFSCmj9niylm9UPBzoXgIlhog/DBTNFv5FWNKxB/B2TjZIOroFz
-         WLiw==;
+        bh=NinCooOU+btpsiXSouxXo5cx7+CM7BrXvxrG483zxiw=;
+        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
+        b=bDMzN1N9D7ZNz78mtsE0s5KjVpRA3laCdZZ7FHWkX/9bRZBA/fsrSz7SE8gXuW73+L
+         vkFYt8+9LlktaGLGPOfdziCrzzhssgwif891PqSO9PeLioOp3854Lbfex+nITCUDfp0p
+         BTkbdoPeWpzbubpVSA+3ZpPjoNuZAkGQ2yPX9Sta9u4g2bBxhreeq07P7ZI+53PQiWW2
+         r3WwXBChsCR33u6rVgdbXeqKviOk4mG3tuwD1J8j+AFbRniBJVjSXmFwEQQF0VQWbnF+
+         Yx0aP5WHtsUcYLvZHNhgdU1xShXqYmZfh5k4JFrNmkoDRby8OsIRap68wWUSu0IvJ9Jh
+         Voew==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sl26+qKc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMNpxnPc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c54a70b79asi147105485a.137.2025.03.09.06.52.52
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e554609bsi725158985a.556.2025.03.09.06.53.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:52:52 -0700 (PDT)
+        Sun, 09 Mar 2025 06:53:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sl26+qKc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMNpxnPc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH4g-0007lh-3M; Sun, 09 Mar 2025 09:52:14 -0400
+	id 1trH4K-0007T5-9Z; Sun, 09 Mar 2025 09:51:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4e-0007k7-Ak
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4E-0007Rp-Ii
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4c-0002Rz-KC
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:12 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4C-00020i-Ie
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528330;
+ s=mimecast20190719; t=1741528303;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NJX8XSF2yxWfiuRuPAfWR6tQopGzS5p7kpjqzqKzVUs=;
- b=Sl26+qKcB5eFCgV0+9fahD0a+GQb/9yMv1LqLQHDR7n5OKjAlCSLuvZ1jVFPMLjbIAFsyi
- +6bZNr9vYEQSgzqcdiw/YGJsT9sVVwKMkV+m2r7HkSao3klCHCTRKhKEeKdOA/rJO9rux0
- s6sqz4L1b8XIhHGKt82GsVrsNmc3U90=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=NinCooOU+btpsiXSouxXo5cx7+CM7BrXvxrG483zxiw=;
+ b=bMNpxnPcNFmAiNRUqGRwr7/NnjPh89A9liVdRod4DVHNGCyXxS9WzCgJtHETZ3WsZQFIS6
+ uX9kdsLH6pNWRUerlATEmRDgqtJT0v57slc0Lo+7jORKvtdMxAoC8iupNsKLuM+XIUwwjr
+ lMwuvODlcyGPKgQ7SUOjOJEIviYmTeA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-10-ZWKiQTlPMRGjI9mxTgPMtQ-1; Sun,
- 09 Mar 2025 09:52:05 -0400
-X-MC-Unique: ZWKiQTlPMRGjI9mxTgPMtQ-1
-X-Mimecast-MFC-AGG-ID: ZWKiQTlPMRGjI9mxTgPMtQ_1741528324
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-117-034Vzle9OQeXQNbRfYOXQg-1; Sun,
+ 09 Mar 2025 09:51:40 -0400
+X-MC-Unique: 034Vzle9OQeXQNbRfYOXQg-1
+X-Mimecast-MFC-AGG-ID: 034Vzle9OQeXQNbRfYOXQg_1741528299
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3B32D180AB1C; Sun,  9 Mar 2025 13:52:04 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8FD3E180034D; Sun,  9 Mar 2025 13:51:39 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7F67B1956094; Sun,  9 Mar 2025 13:52:02 +0000 (UTC)
+ id A9F1A1956095; Sun,  9 Mar 2025 13:51:37 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 11/46] hw/misc/aspeed_hace: Fix boot issue in the Crypto
- Manager Self Test
-Date: Sun,  9 Mar 2025 14:50:55 +0100
-Message-ID: <20250309135130.545764-12-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 01/46] tests/functional: Introduce a new test routine for
+ OpenBMC images
+Date: Sun,  9 Mar 2025 14:50:45 +0100
+Message-ID: <20250309135130.545764-2-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -119,94 +119,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7JXJZbiUpDE6
+X-TUID: KlWAu5xmFB3S
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The OpenBMC images currently used by QEMU to test the Aspeed machines
+are rather old. To prepare an update to the latest builds, we need to
+adjust the console patterns. Introduce a new routine to preserve the
+current tests.
 
-Currently, it does not support the CRYPT command. Instead, it only sends an
-interrupt to notify the firmware that the crypt command has completed.
-It is a temporary workaround to resolve the boot issue in the Crypto Manager
-Self Test.
-
-Introduce a new "use_crypt_workaround" class attribute and set it to true in
-the AST2700 HACE model to enable this workaround by default for AST2700.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250225075622.305515-5-jamin_lin@aspeedtech.com
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20250129071820.1258133-2-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_hace.h |  1 +
- hw/misc/aspeed_hace.c         | 23 +++++++++++++++++++++++
- 2 files changed, 24 insertions(+)
+ tests/functional/aspeed.py | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index d13fd3da078c..5d4aa19cfecb 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -50,6 +50,7 @@ struct AspeedHACEClass {
-     uint32_t dest_mask;
-     uint32_t key_mask;
-     uint32_t hash_mask;
-+    bool raise_crypt_interrupt_workaround;
- };
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index b52358bb8c61..ea75939e05f9 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -23,6 +23,24 @@ def do_test_arm_aspeed(self, machine, image):
+         self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+         self.wait_for_console_pattern("systemd[1]: Set hostname to")
  
- #endif /* ASPEED_HACE_H */
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 86422cb3be70..32a5dbded3c6 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -59,6 +59,7 @@
- /* Other cmd bits */
- #define  HASH_IRQ_EN                    BIT(9)
- #define  HASH_SG_EN                     BIT(18)
-+#define  CRYPT_IRQ_EN                   BIT(12)
- /* Scatter-gather data list */
- #define SG_LIST_LEN_SIZE                4
- #define SG_LIST_LEN_MASK                0x0FFFFFFF
-@@ -343,6 +344,15 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-                 qemu_irq_lower(s->irq);
-             }
-         }
-+        if (ahc->raise_crypt_interrupt_workaround) {
-+            if (data & CRYPT_IRQ) {
-+                data &= ~CRYPT_IRQ;
++    def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
++                                   cpu_id='0x0', soc='AST2500 rev A1'):
++        hostname = machine.removesuffix('-bmc')
 +
-+                if (s->regs[addr] & CRYPT_IRQ) {
-+                    qemu_irq_lower(s->irq);
-+                }
-+            }
-+        }
-         break;
-     case R_HASH_SRC:
-         data &= ahc->src_mask;
-@@ -388,6 +398,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-     case R_CRYPT_CMD:
-         qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
-                        __func__);
-+        if (ahc->raise_crypt_interrupt_workaround) {
-+            s->regs[R_STATUS] |= CRYPT_IRQ;
-+            if (data & CRYPT_IRQ_EN) {
-+                qemu_irq_raise(s->irq);
-+            }
-+        }
-         break;
-     default:
-         break;
-@@ -563,6 +579,13 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
-     ahc->dest_mask = 0x7FFFFFF8;
-     ahc->key_mask = 0x7FFFFFF8;
-     ahc->hash_mask = 0x00147FFF;
++        self.set_machine(machine)
++        self.vm.set_console()
++        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
++                         '-snapshot')
++        self.vm.launch()
 +
-+    /*
-+     * Currently, it does not support the CRYPT command. Instead, it only
-+     * sends an interrupt to notify the firmware that the crypt command
-+     * has completed. It is a temporary workaround.
-+     */
-+    ahc->raise_crypt_interrupt_workaround = true;
- }
- 
- static const TypeInfo aspeed_ast2700_hace_info = {
++        self.wait_for_console_pattern(f'U-Boot {uboot}')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
++        self.wait_for_console_pattern(f'ASPEED {soc}')
++        self.wait_for_console_pattern('/init as init process')
++        self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
++
+     def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+         self.require_netdev('user')
+         self.vm.set_console()
 -- 
 2.48.1
 

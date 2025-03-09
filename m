@@ -1,172 +1,168 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp608394njc;
-        Sun, 9 Mar 2025 06:57:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV3uI5/LAvD8MYXCjyQIaDe2BJMrh0PQoPQe16KeWFWXl9gsZnrbhzfDpuKsN60ctou8S4kSRtDxUwtOg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHGRemOzSDLZ9Nqzp6bdaesxHAbAhRdutB15p9k8piwTO4bysXDgpu38Z2CUJy5ZZVaIJMR
-X-Received: by 2002:ac8:5d52:0:b0:476:7327:383e with SMTP id d75a77b69052e-4767327436emr63766491cf.13.1741528674963;
-        Sun, 09 Mar 2025 06:57:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528674; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp736018njc;
+        Sun, 9 Mar 2025 11:52:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXqO+US0j4OGMm+/Uq8i6zuffuzu863w0YCFisL5M0gd+9UFYQ2oZKW2UrTXvgmQnIcBnq9zcQsVTTBcg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF8BaeUXBG39oI3WHgRadCcIZjrZP81Y7w8z1t2FFGcJHhYjtq1/wbDNVGXGL7curhh0+Ba
+X-Received: by 2002:ac8:5dd2:0:b0:471:bbd5:aff2 with SMTP id d75a77b69052e-476109551a2mr141141121cf.10.1741546373382;
+        Sun, 09 Mar 2025 11:52:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741546373; cv=none;
         d=google.com; s=arc-20240605;
-        b=IhWViTn4FfCdXM/IhuHOmstPJj2VJlGWvbsbqhQfi4HbH+7z5a5US5h4QlfTz2LZAr
-         nao4ZsuEJ1LrHFOt4vv2WhvJsvEAsPhaoMIpYTnraK3NtHmPjxJ7AjvvtFWRhOuuJLJ2
-         Ma578EPL3ESsRHOwwqfM6Fd5uk5cC3kw9r16rTntYuGAoWvpwuFHBNVjvfaaO/xjSC6Z
-         cjZ2fe/pEjNaNcWd4zRPoEIOFBn0pVZm2jegS7n+qr3FBZ78PT+GJRiD+bICwDiBBPG+
-         50d6/Yplcdax30/IYQy6fAdRsAcN7ZVGKUrToVkEqg9ByvGyjxDozJJA6gAsBdAZKbyM
-         kl1Q==
+        b=W6GqzjuFdqjoTaghtE8+F01lKuCrSU07uZ9gykD6YljZ0v5AEWFWYZEbplm3Xcy8LO
+         kAjok/GU8UXxs0JAoDHtLpdTpLej2xzrE3+7ASH/vVrAr80gNZVm7kvCRUeTyS4FiX71
+         OajxHFJRajhHs9Di++Czn5NfYCKemNYCGK7BFl8TZvEitdyaw42zXT0un1cFQfIjsMV0
+         NRGuRrAeT6j3FYa9/URkLGGZNpl9te7CsfNY7oZisnyVOOU5om/CsivV+Urc6MRdQTVN
+         vK/PfhtJz7YCLEICb1yUWRh+ur8d15ouNmkGWdFf2jk8wOP134XVU8kkzMAvcPYINm4F
+         nVtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=JmUhIz0pU1pz6YGmXB7wCr8A1w9Dx1XLPXmsJziuv5w=;
-        fh=T0srg4NBQRu22oFjMK4XHQySpCI66Qi9dZIWpS9x1iM=;
-        b=G06KIDKGJpHOYl2bS63x8+n2TtMUZcO7HZIscFvNw0frSTFeXgqtYhUIpVfIW0UFf7
-         v07NZlILHP+cvQrV3P7XR99cifTnqakg4OfxOGnH5dfYQ+wZs91i7lT3qW940Zbhx/t0
-         1L7LAY7LNolz2BgndrQIpOkyiJWA+b+JCxfGfjDmkweGxBJuchDhCBOfq4ok2bG0XdN9
-         18lbdw0Ksd6Nu2Ru1LrqhbE8vJpPXZEJzW+t34pLWRwF9H1hLZ0q2Pz2LNgjscnbE5Fa
-         FXnC3vqByiSASb+uwmMEzZktRHs2wnwYXvLBCBi3gmbfQC0W7O4S8S48DFEwqUUoqC/J
-         zK7g==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=PYr/SvqZEdUOMqOgX0098OzvfED2AvZPVLedou7WRAw=;
+        fh=jxaz5+ObpppqZt4kMhNDbFcrD4m6kJh/CtcsSzpQydE=;
+        b=GMVpAx8rTJHIdyd7Qu0ZWE+rwEElEKyVsPA09zPNY0MJMg4Uixf6Hz3WN9N53NXJi7
+         6xFdMEZOTuhM/U033vB85BQXAJPDaItyDXZEU7vcEgjm7CWsI5CEsQ96hRGY00S9xbOb
+         CoM0puQ0OQd2V6/yp3lzNnYe1jyXxTrKJAO/J7/uVHvzOmSLf1y09Pr4G6nXCvd6843y
+         5IVWtgFr5D6nL3LF/iAqFSwtKpdadFJC1rKjepjlUEkl/yWLJjkiBkUwY9Nn/G3rZn/C
+         yAGWtAC2McktZvQtjHWAlQknRiN2EBSjFf/vyc+/X3bNKY/umoEqMi0I7PL4LXQ5LiHR
+         MXjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DTDAXsbx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="DU/j0Ixs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4767b376f25si15334971cf.382.2025.03.09.06.57.54
+        by mx.google.com with ESMTPS id d75a77b69052e-4767beff93dsi18496101cf.103.2025.03.09.11.52.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:57:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 09 Mar 2025 11:52:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DTDAXsbx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="DU/j0Ixs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH4v-0008Jj-QV; Sun, 09 Mar 2025 09:52:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1trLlU-0006yu-6Q; Sun, 09 Mar 2025 14:52:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4t-0008B2-8q
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4q-0002gI-2k
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528342;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JmUhIz0pU1pz6YGmXB7wCr8A1w9Dx1XLPXmsJziuv5w=;
- b=DTDAXsbxngj98NtWdktiUuPboOaoCUaCXUW7sMC28FWXqkyqLWVW8lkXLCs5mRjK22j03N
- O6+y19mF9C2LyDJMqiNhMSlmoj3Bo0nR9dnJj99k7fCkx5SYO4L+RruSJ4E2rlO0Vgt76B
- ZVFu1QycV/RqHVuWECFw9fp+6oFmSvM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-224-bTA39x9JPrmx8EmsBptNqw-1; Sun,
- 09 Mar 2025 09:52:18 -0400
-X-MC-Unique: bTA39x9JPrmx8EmsBptNqw-1
-X-Mimecast-MFC-AGG-ID: bTA39x9JPrmx8EmsBptNqw_1741528337
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 377D518004A9; Sun,  9 Mar 2025 13:52:17 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.32.17])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5B58D1956094; Sun,  9 Mar 2025 13:52:15 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Nabih Estefan <nabihestefan@google.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 16/46] hw/arm/aspeed_ast27x0.c Separate HW Strap Registers for
- SCU and SCUIO
-Date: Sun,  9 Mar 2025 14:51:00 +0100
-Message-ID: <20250309135130.545764-17-clg@redhat.com>
-In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
-References: <20250309135130.545764-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trLlS-0006y5-5R
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 14:52:42 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trLlP-0002lD-CR
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 14:52:41 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3913cf69784so1287155f8f.1
+ for <qemu-arm@nongnu.org>; Sun, 09 Mar 2025 11:52:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741546357; x=1742151157; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=PYr/SvqZEdUOMqOgX0098OzvfED2AvZPVLedou7WRAw=;
+ b=DU/j0Ixsq+w2HU1F6dzbGods3FRjyAVsciDSlMnwyLW4+TnqFngjs3aIgAT9wHPllw
+ 8NsRbNLJptzBzu332kobbSSjGe6yOGnj9WnKbtPNdr6PR1GpugLKGj8KZx9ngsAzmyJ8
+ EnpqcRCjX4BqJoY/1jIqxVPxTHZ+IbajO1j+HUnceQR+DCL39CihG327QYPdpUtRzvXD
+ RwJouD/R6HqdeOTlS8/fzSHdqSABTMWUymDu87cXOp+hPv8liDSxpGH9qWYV/yyDOJVy
+ EzF5Lfd5cKBejBJvZ7aYDKeqKb+r4ybSIPO/NIMwjiFUv0QZLqvw5oCKbTGmGRklZgDL
+ tqGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741546357; x=1742151157;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=PYr/SvqZEdUOMqOgX0098OzvfED2AvZPVLedou7WRAw=;
+ b=byxBR8nWyxVR9SI51YqCYmuf/OVRIQB1iXsCBSHFiS0zwTpFb0zJ72J+aRO028S5A8
+ xLNQmDa0Ls3RaRAcQOm74VIhmGxf6CYZCjp8yzFj0EWr3m/obQvn2JiivvcyqwMS1J5v
+ 65DFPfFeGDdhU6I9MUZGUpp71y9cQNwJZiGSqyLVmHRAnlg4N5hezoAOLn7THk94fz7K
+ YiNN1kAJJ//Cg1TldMgC2PH6H4R/w/9wGNkJgxOTHEEwzMfCENBA5ZWTBuZucpAjxH2Y
+ TzgfhDZ7WDVslQ/FkjvkpTUvmvvxrMsEmYkw6tqnRcRTRw5x6bpp7sdVgk+fpuMF0cky
+ bwmQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDXqEOaoAqjZNiQxNDsuQoGbBxfV5dNDKtSJAZ6batbWRlO1W4DwkwpFgWFXn+bzWeBwHFdHycTg==@nongnu.org
+X-Gm-Message-State: AOJu0YzkF0UxBiS82fS/4UKdtIiQqsNT0peysl6YGAC3AgeTgIr0wR3Y
+ 8FDkFsFapjC8S/BuDuJza6GCuztkmw6bUtDoU6bscNLciuh+X8PO0lulfHOBwWo=
+X-Gm-Gg: ASbGnctl3+bhCGlVJCAXGVgcOA8A9PwlmIh1eENIWmqBND2Fb2+qZx+wTZaubheeona
+ EjyYcYyIg2eTFDMEwu1GkGpHZDUCBTofpWQmMbixR/D8eKFJ4X0w5Rg6cz6P1MKVg45T7Rrd5Rx
+ qLhHhBtZU1tiVg0FCqwwGspG4ZRIt7FQh4tFvch+rnTKNMqL3f711nwk7ykm4rovYVq10znhB7p
+ 2l4EgLuMaeF/L/6ThvvQ2DZVsUGnrcViHnT1F1amTQu/IodrSOnNRz9whvYybWWUGr3UlEzekZn
+ gRuc8oA6LoioG2T2j62ZkVIJds5JiJ2oMd0m4tO1s+2DuETuqRI/COhb17u2zDlKCZbTXJ9ZI1o
+ Da4LsyJshCSORWla4QHxI+Ks=
+X-Received: by 2002:a5d:59a8:0:b0:391:328d:65a2 with SMTP id
+ ffacd0b85a97d-39132da24ddmr8685921f8f.38.1741546357385; 
+ Sun, 09 Mar 2025 11:52:37 -0700 (PDT)
+Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3912c103808sm12736990f8f.97.2025.03.09.11.52.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 09 Mar 2025 11:52:36 -0700 (PDT)
+Message-ID: <a80f3d0f-2f74-41a3-96e3-c3fb9c0b7440@linaro.org>
+Date: Sun, 9 Mar 2025 19:52:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] hw/net/smc91c111: Sanitize packet numbers
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Jason Wang <jasowang@redhat.com>
+References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+ <20250228174802.1945417-2-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250228174802.1945417-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hZglqWV8ZH6+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +5aaSvsGhsqJ
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+On 28/2/25 18:47, Peter Maydell wrote:
+> The smc91c111 uses packet numbers as an index into its internal
+> s->data[][] array. Valid packet numbers are between 0 and 3, but
+> the code does not generally check this, and there are various
+> places where the guest can hand us an arbitrary packet number
+> and cause an out-of-bounds access to the data array.
+> 
+> Add validation of packet numbers. The datasheet is not very
+> helpful about how guest errors like this should be handled:
+> it says nothing on the subject, and none of the documented
+> error conditions are relevant. We choose to log the situation
+> with LOG_GUEST_ERROR and silently ignore the attempted operation.
+> 
+> In the places where we are about to access the data[][] array
+> using a packet number and we know the number is valid because
+> we got it from somewhere that has already validated, we add
+> an assert() to document that belief.
+> 
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/net/smc91c111.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 45 insertions(+)
 
-There is one hw-strap1 register in the SCU (CPU DIE) and another hw-strap1
-register in the SCUIO (IO DIE). The values of these two registers should not be
-the same. To reuse the current design of hw-strap, hw-strap1 is assigned to the
-SCU and sets the value in the SCU hw-strap1 register, while hw-strap2 is
-assigned to the SCUIO and sets the value in the SCUIO hw-strap1 register.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250304064710.2128993-6-jamin_lin@aspeedtech.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- hw/arm/aspeed_ast27x0.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 56e43d45ad22..4cee6ddc0b57 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -333,14 +333,21 @@ static void aspeed_soc_ast2700_init(Object *obj)
-                          sc->silicon_rev);
-     object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
-                               "hw-strap1");
--    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
--                              "hw-strap2");
-     object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
-                               "hw-prot-key");
- 
-     object_initialize_child(obj, "scuio", &s->scuio, TYPE_ASPEED_2700_SCUIO);
-     qdev_prop_set_uint32(DEVICE(&s->scuio), "silicon-rev",
-                          sc->silicon_rev);
-+    /*
-+     * There is one hw-strap1 register in the SCU (CPU DIE) and another
-+     * hw-strap1 register in the SCUIO (IO DIE). To reuse the current design
-+     * of hw-strap, hw-strap1 is assigned to the SCU and sets the value in the
-+     * SCU hw-strap1 register, while hw-strap2 is assigned to the SCUIO and
-+     * sets the value in the SCUIO hw-strap1 register.
-+     */
-+    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scuio),
-+                                  "hw-strap1");
- 
-     snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
-     object_initialize_child(obj, "fmc", &s->fmc, typename);
--- 
-2.48.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

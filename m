@@ -1,94 +1,93 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606568njc;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp606564njc;
         Sun, 9 Mar 2025 06:53:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0hTUSxvXft57eTvgp3uxC4ALRUS49k2r488V+gyEY4Ns2CV30dymCkNn9ZS8qU8srYvB0n9N+54ogHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGTfoYNec5m+Zv7GWKuV4Zls0Ko+MGMAJ4s/g+6Jr4S/qO5gXihG9zH7ttY/epiNpqlWvXo
-X-Received: by 2002:ac8:5701:0:b0:472:bbb:1bab with SMTP id d75a77b69052e-476109a31a3mr135362781cf.24.1741528404378;
-        Sun, 09 Mar 2025 06:53:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528404; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCXqMNl45I08cvFKXUgrrK2X4IiXQvWJgC7fqYGdCT+N3EAB98WHqDV72fDEUEh7MC16Ozl34ioEx/z0xQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGyEaYT3XDaLnhDpgGjadd6AxYYbO5Nc4eBruY32fg9ejwtfhD6TFxrcXLfkKFLJR8FrEMR
+X-Received: by 2002:a05:622a:1985:b0:476:7327:383a with SMTP id d75a77b69052e-47673274326mr62918701cf.23.1741528403922;
+        Sun, 09 Mar 2025 06:53:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528403; cv=none;
         d=google.com; s=arc-20240605;
-        b=cQ2nWsti/dseoF4Ox57D023J9/CDxEeJuq4hrw2LwnrFPHn8DonWkZVO5ma7Y2do/d
-         CaVtCLQshXiuDqL1aA2Wd/AurNmz4p+wnavpaV3GxoytqBQrcLRjju4E6Kx3I7erpa47
-         Yq1XI5JDbp2WStWkVpdNUJ8HPFdoTngUlz9iN9zFJBppRbLK2wslbJNmaQzdVng4uXXN
-         fD2z94AFbFoVEVWOr4nym1tW/K9XBys/we6ifM06sf0QuqC8YAG7AQljKec5jIWCaRf6
-         QbvaQWVJK1QS64xVkw5t2tk+KrZd1v+oOEBHLo0WyzUcFdDXcCn8CI8OxY57kO34f0uo
-         Ed4A==
+        b=Jhfrskr9wceIQjuPJICvVTodJ8PZlg/M0D2qUnbq8vGZ5DbY2FjEL25Aly6AsdQVhS
+         a2+ciS45ApU0pH5FBwUSEsMN4PJk7dljomX4qO+w7tj3qyEdJYnYjEMuNwFNdio14+cT
+         4ycV+yWzSccsRsCZq5CX6RInhysiYOJtB+8Kt1s+aAqbnxq97PvgeMmFPkUdQStuuoLf
+         G54VCbNUcqwdkeRxLkMeay9bzvMfucmzlFHny7DD8oZ22grnXBfXEQleYo6Vmr0p9+tJ
+         JK54fa6dkl/D7U6k/O6dm51kV4uK6ar69mLngekVF7A6jn8zx4DL2EY9XOZ4HkqKNPwO
+         REwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JwFxSyWTITBoQgA4dZTSfBimbMefFeDdtwL7om0gW0g=;
-        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
-        b=lqzzqn/Tp+7os5kVnGl+6UbUdiosvEk+G5yCKG6MMZkmzyJ7JgDtKj5/wEGK8NU57F
-         gqB6TqsI2p3P/+lAlocYxxLskXRfCO/s4OAmWrtlFVg/oKdJ9BxIdfFVOy7QdZ00rOEw
-         zrwqmD1bFfAf49td+e4y07M3V6rkkysw2XhTc1dYjHagDIfg+HfPs/i1aFHbDacU8hmF
-         q/F1Tt+0tjeGQqO1R/7rZbuLaH7QGZ2AjnmB7pzMFXU03Cspp/sPQlXF6ZIp2S1bscoL
-         BSN3ev48oIRDOGfPOhwIWYhlEAMg8ISatHtMiKzBD0o8QY2PpVhcIAJ39UVPSZBCIu7U
-         0NUg==;
+        bh=0TeyI2ZvNoOQ+1/3m4h1/bu3rnf8Ko87ZNeYweXrzg0=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=XGOld5vQuNcBiIQvB0zhy4xXMz3G4k23e3xeEis65mON9+4BUCeU+/A1cLplGR25s1
+         vd2y6Dxk1Q9lmjDs+a8lhw3NC2A8EKQAgM3A4gVlYxHRTAylUrsoAdliEIxrL1LvS6Cm
+         jSKv2XGyj4hyLPMZAxE2dqxijFfBT4r/C88rDWdN3n5ZKiLyJ1ENGLeoXbXNthsbXN4p
+         HOqLW6rC5F2z1GiAxr/YnBaAZw6Xbe8egyWQ7y8ogIakz3OURwSENZ9pnlKG/bLhgnW8
+         a1xgu5LdF4B6m7U5cwZiO1WZYoPWKnMYvhnNlXb+DXWOUGfImNLS2/HfHLC0ZaU0DLRO
+         sYqQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FWC2Lu8D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UCwZdj80;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4751db40de7si71956371cf.567.2025.03.09.06.53.24
+        by mx.google.com with ESMTPS id d75a77b69052e-4751daf9ab8si76591481cf.275.2025.03.09.06.53.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:53:24 -0700 (PDT)
+        Sun, 09 Mar 2025 06:53:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FWC2Lu8D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UCwZdj80;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH4L-0007UE-J0; Sun, 09 Mar 2025 09:51:53 -0400
+	id 1trH5R-0001Fa-Cc; Sun, 09 Mar 2025 09:53:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4H-0007Sl-3V
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:50 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5L-00013S-OG
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH4F-00023d-BX
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:51:48 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5J-0003Wf-Q4
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528306;
+ s=mimecast20190719; t=1741528373;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JwFxSyWTITBoQgA4dZTSfBimbMefFeDdtwL7om0gW0g=;
- b=FWC2Lu8DOpbPmpmvO/9lpp79qrjct3D8MxsHgcraFW3Z6Hng8BehbsT+7QpEiaQG1kfYYS
- oXci3WFEAAvjwJy1EMU2hW9zfgMJUb889QZudDeVW4LJQOkrG+ecO9K/rHo5GE5WhX6gTk
- AET2OUl/0EXTkq0mAcAwsLPc+X5nmkw=
+ bh=0TeyI2ZvNoOQ+1/3m4h1/bu3rnf8Ko87ZNeYweXrzg0=;
+ b=UCwZdj80/5c43NfF8jhUT2Ug34fP31nK2NkSoa5BgkGsF9f9aIxqULXyISVh1SeSXU/WXi
+ fj3oEHZviOKaxCJ3ROBLXfvNPvCyCErZcUAmpBb9vp/hFYSnQ5JibCSR8AoqWekcvKclUU
+ XLl9p0KDFG1tGGGU2A9w0wu7Y2tQghI=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-1b7nSySPOsWhCirGMJ2GpQ-1; Sun,
- 09 Mar 2025 09:51:43 -0400
-X-MC-Unique: 1b7nSySPOsWhCirGMJ2GpQ-1
-X-Mimecast-MFC-AGG-ID: 1b7nSySPOsWhCirGMJ2GpQ_1741528302
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-646-_19AyY2UPZmcU2Ypng1V4g-1; Sun,
+ 09 Mar 2025 09:52:50 -0400
+X-MC-Unique: _19AyY2UPZmcU2Ypng1V4g-1
+X-Mimecast-MFC-AGG-ID: _19AyY2UPZmcU2Ypng1V4g_1741528369
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B470F1801A07; Sun,  9 Mar 2025 13:51:41 +0000 (UTC)
+ id 02CD0180035D; Sun,  9 Mar 2025 13:52:49 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 14D631956094; Sun,  9 Mar 2025 13:51:39 +0000 (UTC)
+ id 254F01956094; Sun,  9 Mar 2025 13:52:40 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 02/46] tests/functional: Update OpenBMC image of palmetto
- machine
-Date: Sun,  9 Mar 2025 14:50:46 +0100
-Message-ID: <20250309135130.545764-3-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 28/46] hw/intc/aspeed: Rename num_ints to num_inpins for clarity
+Date: Sun,  9 Mar 2025 14:51:12 +0100
+Message-ID: <20250309135130.545764-29-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -104,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,48 +118,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: en5jYyuSH8Wm
+X-TUID: QMHqKFFDcen0
 
-Use the new do_test_arm_aspeed_openbmc() routine to run the latest
-OpenBMC firmware build of the palmetto BMC.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250129071820.1258133-3-clg@redhat.com
+To support AST2700 A1, some registers of the INTC(CPU Die) support one input
+pin to multiple output pins. Renamed "num_ints" to "num_inpins" in the INTC
+controller code for better clarity and consistency in naming conventions.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-12-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/test_arm_aspeed_palmetto.py | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ include/hw/intc/aspeed_intc.h | 11 ++++++-----
+ hw/arm/aspeed_ast27x0.c       |  2 +-
+ hw/intc/aspeed_intc.c         | 31 +++++++++++++++++--------------
+ 3 files changed, 24 insertions(+), 20 deletions(-)
 
-diff --git a/tests/functional/test_arm_aspeed_palmetto.py b/tests/functional/test_arm_aspeed_palmetto.py
-index 6588c02aad79..35d832bc98ec 100755
---- a/tests/functional/test_arm_aspeed_palmetto.py
-+++ b/tests/functional/test_arm_aspeed_palmetto.py
-@@ -7,18 +7,19 @@
- from qemu_test import Asset
- from aspeed import AspeedTest
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 3433277d8715..58be5b3e1323 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -17,6 +17,7 @@
+ OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
  
-+
- class PalmettoMachine(AspeedTest):
+ #define ASPEED_INTC_NR_INTS 9
++#define ASPEED_INTC_MAX_INPINS 9
  
-     ASSET_PALMETTO_FLASH = Asset(
--        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
--         'obmc-phosphor-image-palmetto.static.mtd'),
--        '3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d');
-+        'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/palmetto-bmc/openbmc-20250128071432/obmc-phosphor-image-palmetto-20250128071432.static.mtd',
-+        'bce7c392eec75c707a91cfc8fad7ca9a69d7e4f10df936930d65c1cb9897ac81');
+ struct AspeedINTCState {
+     /*< private >*/
+@@ -27,19 +28,19 @@ struct AspeedINTCState {
+     MemoryRegion iomem_container;
  
--    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
-+    def test_arm_ast2400_palmetto_openbmc(self):
-         image_path = self.ASSET_PALMETTO_FLASH.fetch()
+     uint32_t *regs;
+-    OrIRQState orgates[ASPEED_INTC_NR_INTS];
++    OrIRQState orgates[ASPEED_INTC_MAX_INPINS];
+     qemu_irq output_pins[ASPEED_INTC_NR_INTS];
  
--        self.do_test_arm_aspeed('palmetto-bmc', image_path)
--
-+        self.do_test_arm_aspeed_openbmc('palmetto-bmc', image=image_path,
-+                                        uboot='2019.04', cpu_id='0x0',
-+                                        soc='AST2400 rev A1');
+-    uint32_t enable[ASPEED_INTC_NR_INTS];
+-    uint32_t mask[ASPEED_INTC_NR_INTS];
+-    uint32_t pending[ASPEED_INTC_NR_INTS];
++    uint32_t enable[ASPEED_INTC_MAX_INPINS];
++    uint32_t mask[ASPEED_INTC_MAX_INPINS];
++    uint32_t pending[ASPEED_INTC_MAX_INPINS];
+ };
  
- if __name__ == '__main__':
-     AspeedTest.main()
+ struct AspeedINTCClass {
+     SysBusDeviceClass parent_class;
+ 
+     uint32_t num_lines;
+-    uint32_t num_ints;
++    uint32_t num_inpins;
+     uint64_t mem_size;
+     uint64_t nr_regs;
+     uint64_t reg_offset;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 642a8f55212f..1a3eb02af3bf 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -535,7 +535,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                     sc->memmap[ASPEED_DEV_INTC]);
+ 
+     /* GICINT orgates -> INTC -> GIC */
+-    for (i = 0; i < ic->num_ints; i++) {
++    for (i = 0; i < ic->num_inpins; i++) {
+         qdev_connect_gpio_out(DEVICE(&a->intc.orgates[i]), 0,
+                                 qdev_get_gpio_in(DEVICE(&a->intc), i));
+         sysbus_connect_irq(SYS_BUS_DEVICE(&a->intc), i,
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index d8ee6e1c0406..217fda6fe001 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -47,8 +47,9 @@ static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
+     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     const char *name = object_get_typename(OBJECT(s));
+ 
+-    if (irq >= aic->num_ints) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++    if (irq >= aic->num_inpins) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Invalid input pin index: %d\n",
+                       __func__, irq);
+         return;
+     }
+@@ -60,7 +61,7 @@ static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
+ /*
+  * The address of GICINT128 to GICINT136 are from 0x1000 to 0x1804.
+  * Utilize "address & 0x0f00" to get the irq and irq output pin index
+- * The value of irq should be 0 to num_ints.
++ * The value of irq should be 0 to num_inpins.
+  * The irq 0 indicates GICINT128, irq 1 indicates GICINT129 and so on.
+  */
+ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+@@ -73,8 +74,8 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+     uint32_t enable;
+     int i;
+ 
+-    if (irq >= aic->num_ints) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++    if (irq >= aic->num_inpins) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid input pin index: %d\n",
+                       __func__, irq);
+         return;
+     }
+@@ -134,8 +135,9 @@ static void aspeed_intc_enable_handler(AspeedINTCState *s, hwaddr offset,
+ 
+     irq = (offset & 0x0f00) >> 8;
+ 
+-    if (irq >= aic->num_ints) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++    if (irq >= aic->num_inpins) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Invalid input pin index: %d\n",
+                       __func__, irq);
+         return;
+     }
+@@ -190,8 +192,9 @@ static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
+ 
+     irq = (offset & 0x0f00) >> 8;
+ 
+-    if (irq >= aic->num_ints) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
++    if (irq >= aic->num_inpins) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Invalid input pin index: %d\n",
+                       __func__, irq);
+         return;
+     }
+@@ -299,8 +302,8 @@ static void aspeed_intc_instance_init(Object *obj)
+     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+     int i;
+ 
+-    assert(aic->num_ints <= ASPEED_INTC_NR_INTS);
+-    for (i = 0; i < aic->num_ints; i++) {
++    assert(aic->num_inpins <= ASPEED_INTC_MAX_INPINS);
++    for (i = 0; i < aic->num_inpins; i++) {
+         object_initialize_child(obj, "intc-orgates[*]", &s->orgates[i],
+                                 TYPE_OR_IRQ);
+         object_property_set_int(OBJECT(&s->orgates[i]), "num-lines",
+@@ -338,9 +341,9 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->iomem_container, aic->reg_offset,
+                                 &s->iomem);
+ 
+-    qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_ints);
++    qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_inpins);
+ 
+-    for (i = 0; i < aic->num_ints; i++) {
++    for (i = 0; i < aic->num_inpins; i++) {
+         if (!qdev_realize(DEVICE(&s->orgates[i]), NULL, errp)) {
+             return;
+         }
+@@ -387,7 +390,7 @@ static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "ASPEED 2700 INTC Controller";
+     aic->num_lines = 32;
+-    aic->num_ints = 9;
++    aic->num_inpins = 9;
+     aic->mem_size = 0x4000;
+     aic->nr_regs = 0x808 >> 2;
+     aic->reg_offset = 0x1000;
 -- 
 2.48.1
 

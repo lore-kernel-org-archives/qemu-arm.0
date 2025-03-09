@@ -1,198 +1,150 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp353135njc;
-        Sat, 8 Mar 2025 16:08:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+4dHlYw2rxv20vnxB+VQpsqTEaWO/53NRbp5d8GLg4w1HW9QGr/5NfkQQLd4PvYSarXnv0Fa11aOLEg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHg5wG6fWK4KH/3UZZmBKklHvYZ57C20iVJ136f6yEJcxwTi35anyEju1YvSMoF/w1mTKJm
-X-Received: by 2002:a05:622a:a70a:b0:476:653d:5aea with SMTP id d75a77b69052e-476653d5f09mr51346161cf.4.1741478922630;
-        Sat, 08 Mar 2025 16:08:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741478922; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp436360njc;
+        Sat, 8 Mar 2025 21:24:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU4o48J2dlxG0RvE5RElDXfymKSms49M5lTAL6mUlu+I79UMPfsqQSlLgX1uqDosLyPWwY+i4X90jwdkQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHuKCDTccz2fgabkQMMwdV99UHRKtM0omj7RvBDFzvVJf7bRSkR9SXILlBWe32oyOrM91is
+X-Received: by 2002:a05:6512:39c7:b0:545:54b:6a05 with SMTP id 2adb3069b0e04-549910b7c1bmr3968411e87.45.1741497864929;
+        Sat, 08 Mar 2025 21:24:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1741497864; cv=none;
         d=google.com; s=arc-20240605;
-        b=Z6c854bSSAfEeiJtxGc9DnZGXTP6gsZMTxFO4BJZ+SO8kIYV+8PMmWaramChnA0L0i
-         7KlL7R0oAMcXh6UvSnNMwr/vSLj6GMaobD0fbJXYcplpIX/bk05GXMzouFC21DpAwpmp
-         qb2Pr9ybiCpaiy5GJ1Q4+ruGXwMZKeYr8XsWWHs8DO67sGCRL200GiaKmgP9BNVoCObI
-         OcLTWUedaQ1EZzFRxbwX+sWB+1EoOhAKelacvxrclyUD5msHltxaysNjKLojQnwjdHGH
-         QC6yDSk+lpI8rJAEDJkRrqx+LSks2U6VN52VA7C7nAE4aGMayZoyWGJdTjFIEIvacX/9
-         ufEg==
+        b=FHHF08UCPEMwpkFMgPRippc+C6WuZNJN9X/RGONqqZmFA/5j5M8TWTd+TmOgypU+3Y
+         aVVaqoEPCUAo9SkODlpLv4PR6HvAH7dnU3GgcvbSpx1oowHcDXYkbDVOQpNFmv4JVxpW
+         2jeBjR0lKzdgPw8w4eiWf82TUyve4vd6AzSuhmW0Ym1/Y4JVRpc+K2plSXUN1eWFmtwB
+         HGfvddcCPj4eAZYmO4+6pdKs08hhmIgiDp+WikQ+7YlQN1mIIYTzr5P0ORQTKKB9BNA8
+         BcF5MRW0uWGm8NFGjhNRFWvZHXFCy1sY2XEAvPsdICudJ0wUhDePs82tIjDQyefwwthD
+         1U1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-id:mime-version
-         :references:message-id:in-reply-to:subject:cc:to:from:date;
-        bh=dxAyAkfmB2e7VEhPOHpbJrYheuOmlrvetC1dTLznypo=;
-        fh=FcMcKsrZdu6eLGvurY9elD/xb9f1Uh8K4+/cxreiEbw=;
-        b=Vdlz1d7dUskOwzDdoTzYmYhb6V3aPzVnnPGt8A8+7juofQOdzOkCRnhOC6oNpJ7jGU
-         pir5G2L3E8ouYdlRZ6jo6ax9g/4U1dqFrjyqvfOZHA1mSPCKB8zOyEE49/S1UG6/YO0C
-         wKvd0sK9VnaNjOh3iNMDKYGXwyIULCOhOQz8SKmY3EFckrTPp54Hvcw7m8vLpgevjib+
-         DKYEZeBKiYwr2yGedXvZoPm9Hz++esvBYSUNpNYjKezdFRRNXSwVHfu8rhHveXsPtm2s
-         X/xqU8EWo1zoUQf1R1BfYLbwu0dm/Q15eT7O2J0GPci/X6r0Ondqmbgqp+DS3PyFCMwC
-         UGfw==;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id;
+        bh=NjXovxroH4NEfEc6kPT9O4mF+/feQF1ubGAIhi7t5cI=;
+        fh=bwNPwCdRufgAfv1G73BgInx0SXOI+C3FLI+33Trf+lU=;
+        b=aPExGC0rnWoHqO5c/WcxaLAAuPBC9j5QivR0CGQQFsz9bDcplUaVGzYaQUx4XFtZ7M
+         dEEE7DZMqIuQ/yn1O2WXYZ894rUkYaynDFgmGjWU1YXsv+ObkKSyfC58+bdXV4d6euEA
+         g+/+aHnM0eo6auHsOaKf/op39JYKeTaIzofYRzSpl13FXNBfnLART6Gv5MP4IdIORgHO
+         QYyKWQ/PmKhmXWmxeTnnGS3NWi2kAyVUNQ3I5UPq+Itd1Ya+cCvp5VgyehQHp1zbfZjB
+         tkdZzsLZe3UdXoe+aO1WUY4XJNZq9xFxeFOKrBVNJj5UE5pXVHhnSVVw7L9JbmFnWTYn
+         uNkg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47676fc4d90si11155001cf.12.2025.03.08.16.08.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Mar 2025 16:08:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
+Return-Path: <mjt@tls.msk.ru>
+Received: from isrv.corpit.ru (isrv.corpit.ru. [86.62.121.231])
+        by mx.google.com with ESMTPS id 2adb3069b0e04-5498ae445dcsi3195307e87.34.2025.03.08.21.24.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 08 Mar 2025 21:24:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) client-ip=86.62.121.231;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tr4DY-0004xV-EY; Sat, 08 Mar 2025 19:08:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tr4DW-0004wo-1m; Sat, 08 Mar 2025 19:08:30 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tr4DT-0003ug-KM; Sat, 08 Mar 2025 19:08:29 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 902514E6019;
- Sun, 09 Mar 2025 01:08:22 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id VbmAVbkL4Wvx; Sun,  9 Mar 2025 01:08:20 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 921B34E600E; Sun, 09 Mar 2025 01:08:20 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 8F53174577C;
- Sun, 09 Mar 2025 01:08:20 +0100 (CET)
-Date: Sun, 9 Mar 2025 01:08:20 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Bernhard Beschow <shentey@gmail.com>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Guenter Roeck <linux@roeck-us.net>, qemu-block@nongnu.org, 
- Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 03/14] hw/sd/sdhci: Introduce SDHCIClass stub
-In-Reply-To: <142807a2-9536-4483-80ab-5f24793c841f@linaro.org>
-Message-ID: <670a5a3c-3476-5b8d-775a-ebff83acc33d@eik.bme.hu>
-References: <20250308213640.13138-1-philmd@linaro.org>
- <20250308213640.13138-4-philmd@linaro.org>
- <1839f9de-2370-50bd-7003-ade92707f137@eik.bme.hu>
- <142807a2-9536-4483-80ab-5f24793c841f@linaro.org>
+       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 62ACDFB6B2;
+	Sun, 09 Mar 2025 08:23:39 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+	by tsrv.corpit.ru (Postfix) with ESMTP id 83C371C70C1;
+	Sun,  9 Mar 2025 08:24:23 +0300 (MSK)
+Message-ID: <e5c5e542-f28c-4f4d-884d-ee3defd0a330@tls.msk.ru>
+Date: Sun, 9 Mar 2025 08:24:23 +0300
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- BOUNDARY="3866299591-506894546-1741478647=:25248"
-Content-ID: <448b264e-e1d4-492e-e4e1-068729623c90@eik.bme.hu>
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8+8Sws25ikXd
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/9] target/arm: Implement SEL2 physical and virtual
+ timers
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+References: <20250204125009.2281315-1-peter.maydell@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250204125009.2281315-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: ucqgHr2RoTaW
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+04.02.2025 15:50, Peter Maydell wrote:
+> This patchset is a respin of Alex's patches, with some extra fixes
+> for bugs I discovered along the way in our existing code (and
+> a bit of refactoring to make the fixes straightforward). It is:
+> 
+> Based-on: 20250130182309.717346-1-peter.maydell@linaro.org
+> ("target/arm: Clean up some corner cases of sysreg traps")
+> 
+> because it wants to use the renamed CP_ACCESS_* constants that
+> that patchset introduced.
+> 
+> The bugfixes are not super exciting as they mostly are oddball
+> corner cases, but I've cc'd them to stable anyway. The actual
+> implementation of the missing SEL2 timers also should go to stable.
+> 
+> Alex BennÃ©e (4):
+>    target/arm: Implement SEL2 physical and virtual timers
+>    target/arm: document the architectural names of our GTIMERs
+>    hw/arm: enable secure EL2 timers for virt machine
+>    hw/arm: enable secure EL2 timers for sbsa machine
+> 
+> Peter Maydell (5):
+>    target/arm: Apply correct timer offset when calculating deadlines
+>    target/arm: Don't apply CNTVOFF_EL2 for EL2_VIRT timer
+>    target/arm: Make CNTPS_* UNDEF from Secure EL1 when Secure EL2 is
+>      enabled
+>    target/arm: Always apply CNTVOFF_EL2 for CNTV_TVAL_EL02 accesses
+>    target/arm: Refactor handling of timer offset for direct register
+>      accesses
 
---3866299591-506894546-1741478647=:25248
-Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 8BIT
-Content-ID: <8c000124-2e48-adbe-0a7f-53e142bd2287@eik.bme.hu>
+Hi!
 
-On Sun, 9 Mar 2025, Philippe Mathieu-Daudé wrote:
-> On 8/3/25 23:34, BALATON Zoltan wrote:
->> On Sat, 8 Mar 2025, Philippe Mathieu-Daudé wrote:
->>> TYPE_SYSBUS_SDHCI is a bit odd because it uses an union
->>> to work with both SysBus / PCI parent. As this is not a
->>> normal use, introduce SDHCIClass in its own commit.
->>> 
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>> include/hw/sd/sdhci.h | 9 +++++++++
->>> hw/sd/sdhci.c         | 1 +
->>> 2 files changed, 10 insertions(+)
->>> 
->>> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
->>> index 48247e9a20f..c4b20db3877 100644
->>> --- a/include/hw/sd/sdhci.h
->>> +++ b/include/hw/sd/sdhci.h
->>> @@ -107,6 +107,13 @@ struct SDHCIState {
->>> };
->>> typedef struct SDHCIState SDHCIState;
->>> 
->>> +typedef struct SDHCIClass {
->>> +    union {
->>> +        PCIDeviceClass pci_parent_class;
->>> +        SysBusDeviceClass sbd_parent_class;
->>> +    };
->>> +} SDHCIClass;
->>> +
->>> /*
->>>  * Controller does not provide transfer-complete interrupt when not
->>>  * busy.
->>> @@ -123,6 +130,8 @@ DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
->>> #define TYPE_SYSBUS_SDHCI "generic-sdhci"
->>> DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
->>>                          TYPE_SYSBUS_SDHCI)
->>> +DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
->>> +                       TYPE_SYSBUS_SDHCI)
->> 
->> Are these two together just OBJECT_DECLARE_TYPE? Then the above typedefs 
->> are also not needed just the struct definitions.
->
-> I'd like to but it isn't possible because the same object state/class is
-> used by distinct types (PCI & SysBus).
->
-> The following (expected to be correct) change ...:
-> -- >8 --
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index 966a1751f50..341b130995b 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -155,10 +155,6 @@ typedef struct SDHCIClass {
-> #define TYPE_PCI_SDHCI "sdhci-pci"
-> -DECLARE_INSTANCE_CHECKER(SDHCIState, PCI_SDHCI,
-> -                         TYPE_PCI_SDHCI)
-> +OBJECT_DECLARE_TYPE(SDHCIState, SDHCIClass, PCI_SDHCI)
+Which stable series this patchset is supposed to be applied to?
+(Current active stable series are 7.2, 8.2 and 9.2)
 
-It would be same as the original patch if you omit this one and only use 
-OBJECT_DECLARE_TYPE below. You didn't add CLASS_CHECKER to the PCI version 
-in the original patch either. But I see now it's more complex and so maybe 
-it's not so easy.
+Or put it in other words, is it supposed to go earlier than the
+most recent stable series, 9.2?
 
-> #define TYPE_SYSBUS_SDHCI "generic-sdhci"
-> -DECLARE_INSTANCE_CHECKER(SDHCIState, SYSBUS_SDHCI,
-> -                         TYPE_SYSBUS_SDHCI)
-> -DECLARE_CLASS_CHECKERS(SDHCIClass, SYSBUS_SDHCI,
-> -                       TYPE_SYSBUS_SDHCI)
-> +OBJECT_DECLARE_TYPE(SDHCIState, SDHCIClass, SYSBUS_SDHCI)
-> ---
+For example, the very first patch, "Apply correct timer offset when calculating
+deadlines", does not apply to 8.2 because it lacks v8.2.0-2122-g2808d3b38a
+"target/arm: Implement FEAT_ECV CNTPOFF_EL2 handling" which touches the same
+line in target/arm/helper.c:gt_recalc_timer().
 
-[...]
+Thanks,
 
-> Meanwhile the current legacy macros seems good enough for soft freeze ;)
-
-Good enough for me. I was also happy with my way simpler solution. This is 
-much more clean up already.
-
-Regards,
-BALATON Zoltan
---3866299591-506894546-1741478647=:25248--
+/mjt

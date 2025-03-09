@@ -1,109 +1,109 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp607521njc;
-        Sun, 9 Mar 2025 06:55:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUmYI/fAwojdCsLKlwzCgcpIaDnej46sH54JrB5AQfixiN5luMJWsmYFwR2Q+yC7N6xzvAAZjPrY+ROIA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFY6fNR92ucN52XpePruFv62w8N7D1ZQpvCnK+GMSQoxfi9AXny5O0TDaPikJ35Q0RzL7lh
-X-Received: by 2002:a05:6214:21cb:b0:6e8:9fcb:5f7d with SMTP id 6a1803df08f44-6e9006913cdmr157853656d6.36.1741528545799;
-        Sun, 09 Mar 2025 06:55:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741528545; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp607637njc;
+        Sun, 9 Mar 2025 06:56:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUVAag37txlT3F55YjQKDXHNesVS8c5m20jsHl0/X4ASORrxaVg1TPqap1UV0RkwsL66Bhtz1yMhVMQYA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnpjo0wa3rRSHJML3mDwaPPC4UE/kRrgZe5SHa5WWi69UFrBczPDcYo/BnwIovMWTCOAdo
+X-Received: by 2002:ac8:7f10:0:b0:476:884e:52f4 with SMTP id d75a77b69052e-476884e55aemr9060961cf.12.1741528561628;
+        Sun, 09 Mar 2025 06:56:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741528561; cv=none;
         d=google.com; s=arc-20240605;
-        b=jhhN4w0Wr/coM5//p1I+7PYkHsVlGvi4jWQrMwA36s/TIQ9oq8SiqPAehCUOn8F55w
-         FF2nK3lA02vfvJ8iMiffhFd5VHl/MfZSPUEcZpgqacMUB/Vfl1NGEqm4rt3hZuP1RvPU
-         Y4LfuS9g0Xtg83+S3LSepXDiQuO4w0sMyP9EXFZUmOiyLPnbSUNUy4qnDfVfINNPqLMw
-         a7U3LvNuccQB/Z3FA6LZ8TSWNhqTmzsk/89zchtuok9AlR38QRmoL58p5IpblHkJLvp2
-         H20WYKnzuPWrowP5TqZcHrlWcLyuUSV6JB4F7mTk99/VTkAoy2OJNGAQk96uYDPb52Tb
-         dBvg==
+        b=VVMwoFb2GE1HofSKMVd2YEmVi33liwKCFPaL2gQ8wudCDsMUesAAuTacI8ntcCBQFE
+         4arVbCIWv6amkhHWW2owqmJ+KCrddGrUh1cxTQRuHM7e4VjXE4oqISLBC7zn4T42uUfC
+         5WBupU6ASGcAvw1/Qwc8ES3JguiqxbUVE/NkXGfhAAdbZrmOnpIdB2lFBCMBcI+03sDS
+         qQNIS7D5LS7O+SZgAZVJIc6FX4EzQ3MSAjlXzlwyySaFEe8/LUuaMXUY5xdd52/xMq68
+         tgz8blqFHanregucblic463A8rthCV7EB3bI8Mns1BufeoqDSfvdTNx/lXmgFvrSzOc1
+         B8dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=olzfJb6+UaL228zLNa34I/aENf2JDKBA8raySJwn7bQ=;
+        bh=ZILZxH//9yn/g2fOnN0KfFlhn2GnvQe89qPfzDlhjUE=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=Z7euzQaMWqjXLUww8RYU+7JWRocA9U+wJAXA7TZuWq2IRGECXECqvTssX3WSUX/uM7
-         YVXamS8JDjKzz4OpUPRpRJBV0fh5Z/moomPOEwfv0VgaI4mYDUYWHb5bM9MuzqACpHTz
-         OdNMDADAtgjfrTG25oN9aE65qKWyrJ0/BLjCPcBjFJ8xW98oWx26hjC/KKX3sXyRCkhV
-         Pvfa82zRnVeWa0HSswrNkjaQsm2O+Unjw7toQbYCdCQbLUyeKwvt22s1KjjQvuMrv1H6
-         btpbvfzi4OEIGs+GTx503EjAwE2Bu5WCbVlwb7LbYYXSII/CSrwQO35oW+KSRVKIC6/V
-         /LYg==;
+        b=RK1H06o7IRh7zjvUYfVU0HdfFS6hqMywnWC0X1Zgd/2REn0Kv3oBTgnWCADfkYm2rP
+         M4VmxwxksHk1zH8/Bd6WyPmlOdE5IvFGOFb7W1mWvMW0mvDQr+MQf5T5H6IqTymZ5snS
+         vSTixHYu/w3B/FMgisYQIPGuVidojDJes2PcRdNPIa3ffgl6BECn17RN7BxLUrpBXd2z
+         xJF+aQ8WIZCuZm5RtBiWFCIuJ/SejMSWRdyQadq1iFInzRA25BcogtD70yMhIikhTw/E
+         uo6UlCB5WziG4ztLVICoHSLuwroIlfg3JD/GGFkA3FcJ5F0trgBeJjg81k+RJxa3YmOx
+         4beg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GexZ74Ww;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHvgayEQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4768066b1bfsi10855951cf.400.2025.03.09.06.55.45
+        by mx.google.com with ESMTPS id d75a77b69052e-4768755ae0asi4292311cf.56.2025.03.09.06.56.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 06:55:45 -0700 (PDT)
+        Sun, 09 Mar 2025 06:56:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GexZ74Ww;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHvgayEQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1trH6n-0006Qn-Qv; Sun, 09 Mar 2025 09:54:25 -0400
+	id 1trH5S-0001L2-7r; Sun, 09 Mar 2025 09:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5w-00034W-25
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:53:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5J-0000s6-3E
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5u-00040k-CM
- for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:53:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1trH5H-0003Jr-76
+ for qemu-devel@nongnu.org; Sun, 09 Mar 2025 09:52:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741528409;
+ s=mimecast20190719; t=1741528367;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=olzfJb6+UaL228zLNa34I/aENf2JDKBA8raySJwn7bQ=;
- b=GexZ74WwiYI81aKJMOyBRgeAFwxzyLcCxDuzKkdYA54Tgqc4GWWOjwZ7wXPY+3D+QDschl
- xe/LUX96AKd/f46sRdrNYqvhwIfKGlNA4C4P0G49rVkr9Qkr/1W6bV0UBo8WFfTKaaSonI
- xuFJjbbDH37suwU2t1W64THZDRSbM5c=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=ZILZxH//9yn/g2fOnN0KfFlhn2GnvQe89qPfzDlhjUE=;
+ b=SHvgayEQHMFh0i1vtim0omqh5HUgjEVgkWBN7vmMVsoaZsROxbB7ww61ODyZp66ECk7PlK
+ jWKYlWvvMDIpRsw07C4l3eli5DAg9Bb5t/db6QuWVf5EtehqCMqXLTC1m+g+LjORn1ZQ7R
+ JCGaJ3r8m2V+Hm8QIn6DEcnSGZQoSGM=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-i29xKa7KMPCzUf4DO-2_FQ-1; Sun,
- 09 Mar 2025 09:53:24 -0400
-X-MC-Unique: i29xKa7KMPCzUf4DO-2_FQ-1
-X-Mimecast-MFC-AGG-ID: i29xKa7KMPCzUf4DO-2_FQ_1741528403
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-327-jkouy0OMPpGPoi_viehCiw-1; Sun,
+ 09 Mar 2025 09:52:43 -0400
+X-MC-Unique: jkouy0OMPpGPoi_viehCiw-1
+X-Mimecast-MFC-AGG-ID: jkouy0OMPpGPoi_viehCiw_1741528360
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CEA551956048; Sun,  9 Mar 2025 13:53:23 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9F4691956080; Sun,  9 Mar 2025 13:52:40 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.17])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1ECD31956094; Sun,  9 Mar 2025 13:53:21 +0000 (UTC)
+ id 0DA4A1956094; Sun,  9 Mar 2025 13:52:38 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 44/46] tests/functional/aspeed: Update test ASPEED SDK v09.05
-Date: Sun,  9 Mar 2025 14:51:28 +0100
-Message-ID: <20250309135130.545764-45-clg@redhat.com>
+Subject: [PULL 27/46] hw/intc/aspeed: Support different memory region ops
+Date: Sun,  9 Mar 2025 14:51:11 +0100
+Message-ID: <20250309135130.545764-28-clg@redhat.com>
 In-Reply-To: <20250309135130.545764-1-clg@redhat.com>
 References: <20250309135130.545764-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,54 +118,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U4i2qBtMKXxV
+X-TUID: ahX4kbTH4twT
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-In ASPEED SDK v09.05, the naming convention for pre-built images has been
-updated. The pre-built image for AST2700 A0 has been renamed to
-ast2700-a0-default, while ast2700-default is now used for AST2700 A1.
+The previous implementation set the "aspeed_intc_ops" struct, containing read
+and write callbacks, to be used when I/O is performed on the INTC region.
+Both "aspeed_intc_read" and "aspeed_intc_write" callback functions were used
+for INTC (CPU Die).
+
+To support the INTCIO (IO Die) model, introduces a new "reg_ops" class
+attribute. This allows setting different memory region operations to support
+different INTC models.
+
+Will introduce "aspeed_intcio_read" and "aspeed_intcio_write" callback
+functions are used for INTCIO.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-28-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250307035945.3698802-11-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/test_aarch64_aspeed.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ include/hw/intc/aspeed_intc.h | 1 +
+ hw/intc/aspeed_intc.c         | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
-index 07b0c7c1fd27..8df6a97a2852 100755
---- a/tests/functional/test_aarch64_aspeed.py
-+++ b/tests/functional/test_aarch64_aspeed.py
-@@ -27,9 +27,9 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
-         wait_for_console_pattern(self, '## Loading kernel from FIT Image')
-         wait_for_console_pattern(self, 'Starting kernel ...')
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 208e764c4ade..3433277d8715 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -43,6 +43,7 @@ struct AspeedINTCClass {
+     uint64_t mem_size;
+     uint64_t nr_regs;
+     uint64_t reg_offset;
++    const MemoryRegionOps *reg_ops;
+ };
  
--    ASSET_SDK_V903_AST2700 = Asset(
--            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.03/ast2700-default-obmc.tar.gz',
--            '91225f50d255e2905ba8d8e0c80b71b9d157c3609770c7a740cd786370d85a77')
-+    ASSET_SDK_V905_AST2700 = Asset(
-+            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz',
-+            'cfbbd1cce72f2a3b73b9080c41eecdadebb7077fba4f7806d72ac99f3e84b74a')
+ #endif /* ASPEED_INTC_H */
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index d06e697ecc2f..d8ee6e1c0406 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -332,7 +332,7 @@ static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(sbd, &s->iomem_container);
  
-     def start_ast2700_test(self, name):
-         num_cpu = 4
-@@ -89,11 +89,11 @@ def start_ast2700_test(self, name):
-         exec_command_and_wait_for_pattern(self,
-             'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
+     s->regs = g_new(uint32_t, aic->nr_regs);
+-    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
++    memory_region_init_io(&s->iomem, OBJECT(s), aic->reg_ops, s,
+                           TYPE_ASPEED_INTC ".regs", aic->nr_regs << 2);
  
--    def test_aarch64_ast2700_evb_sdk_v09_03(self):
-+    def test_aarch64_ast2700_evb_sdk_v09_05(self):
-         self.set_machine('ast2700-evb')
+     memory_region_add_subregion(&s->iomem_container, aic->reg_offset,
+@@ -359,12 +359,15 @@ static void aspeed_intc_unrealize(DeviceState *dev)
+ static void aspeed_intc_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
  
--        self.archive_extract(self.ASSET_SDK_V903_AST2700)
--        self.start_ast2700_test('ast2700-default')
-+        self.archive_extract(self.ASSET_SDK_V905_AST2700)
-+        self.start_ast2700_test('ast2700-a0-default')
+     dc->desc = "ASPEED INTC Controller";
+     dc->realize = aspeed_intc_realize;
+     dc->unrealize = aspeed_intc_unrealize;
+     device_class_set_legacy_reset(dc, aspeed_intc_reset);
+     dc->vmsd = NULL;
++
++    aic->reg_ops = &aspeed_intc_ops;
+ }
  
- 
- if __name__ == '__main__':
+ static const TypeInfo aspeed_intc_info = {
 -- 
 2.48.1
 

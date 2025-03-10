@@ -1,157 +1,173 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1119106njc;
-        Mon, 10 Mar 2025 05:30:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXF2PxVOs8wWgPafqhWlPZ/A/VlZvVbOR5z9ToImxMkm6oEFHy/prkb4NsXOrs0RET67lXuBYxJdZRvfw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGp6cnpjkFEZTUV2k1HqrNPZTOO2p//v+mrp+72OJlLUoLi7ZcMdXDtOaPclWJG4PWNLGr8
-X-Received: by 2002:a5d:5849:0:b0:391:47a7:299c with SMTP id ffacd0b85a97d-39147a72b4bmr2912659f8f.40.1741609859316;
-        Mon, 10 Mar 2025 05:30:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741609859; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1049233njc;
+        Mon, 10 Mar 2025 03:28:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8qW+5umL/2jzgpgW07gRJRYq/+0Ou/qcSdP6gAQj3bvT0YOyomlnuE2a/uV2DLZvXCbKX86AXIvYN4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IESeEJIecPISj2LMtbcjsaDuAK4L9lewN14OliDyuxV0P8eU9MR1KamiU/mTa9hTeU4uh/G
+X-Received: by 2002:a05:6214:29ef:b0:6e8:9d00:3d71 with SMTP id 6a1803df08f44-6e90063cdc2mr163768086d6.21.1741602526867;
+        Mon, 10 Mar 2025 03:28:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741602526; cv=none;
         d=google.com; s=arc-20240605;
-        b=SETxYhF1Sp74iF5JvIQaHQNaPyl4PGf281GbnbW+3fEr+4X530f5jm5Ght4EiTtxd0
-         64C6u6UwpbFm1GWMdZcmahfX7ObGmKwbgjE5WiS9BnNTrQSzCGyYWP19CvuImUS2dNKi
-         PeDD1RWFHs9f7p+NsakpwBulU6FnLFFtUMbjXW//n65nbA5WX/lZOkVpfilf94JAgTT5
-         +dzxv2glFgtru66E4Ku6b4yZRaMLj4AJbvzDwoLPt5/yF1EiARLm9EbaAJHOdx5VwGxF
-         9ZrFoYpYIOViNdjl/Ls9WONeuvckuTrQFUoE9R2pqMeo1mWVzxCYSdhYnRMdSTORQWS2
-         wxeA==
+        b=guZ82E3R05/diGknEkntrELmZRx9O9LTuiVBQgwbSw2xu2nrb2XCNzEvHAubIget8F
+         HAdc46ursP4Qv5XI4Tj0rdKjnoviSv9PgK2RtVJRHU1WxpSm0d7V7Vdeb3ErKedhxZW1
+         M1KH0smcV/hdAmv3IO5ZQ6SCSM9ZKl4cngsuGNnHttQKLr3v1Bxcb16DJRx2ABcF9O9Z
+         d/dOkjWMK8NeeGlu8zkmxZBwSaw0YpylS+2XucAbOmWtRlknv/a8eF8dknunysZx3opm
+         rxiNoCyw7pa09v9RSKwyzajfldyUk3GksCQhllIfQlwgtyoU9zbLmXmvCq/QBvW4NDN8
+         cJXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=PC2rKpsiEjh3Imi2o4iS3KshXmSKtchm8Wk7PK3Ltuw=;
-        fh=JIC9H5eoF914wjf19XzQeJK73GW0xzH9XPUJH42nhlY=;
-        b=Cz6+/6d73wnljOUKuTt0xCmmU7h7fqewpNZ2Jvi9OrCcgtMSjmTiBG5fA9Op75GNE5
-         GzudXDZTohD/fr2YFmLH6l3cJGLCrBingnlAEWrc1gOqi7YH/3vv+zaLchVjA+5G68X0
-         IUwRGJSnMmkXIEs7sT8xhKmvsRLhpo1unoGERIKS2R2FY04tK0IH/MK1MDSLy9O73tsX
-         EnhD/AsHFZZX5jn8Fvg/lr9C5jx5bSLzIR5zW6plafCoP5mUIE3KL6KoT3NSZ2B4ZGRs
-         fPknsn+YktpBZIJC1dMTNEc6v5wN3an+ghkdm1esqN+g8zSA2WwyZS/ThqVZFZuI71/6
-         jzrg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Ha06NxopoyqRvQI/XZs/BZ1HMCeMvHjmNb/s5Nuvw1o=;
+        fh=6ygh8lbf+XvspWpGPd8xbHB0rPIUJcrgvR9vA5/qhQM=;
+        b=Wfjjlxzs/6FOjI0b6XXlrxIz5O+cEnSXtmTtfDJL7kRe7/YtNCegyRsxHcXTx5d667
+         cXuYqXAFRn1VtzcNCInTTa4E2xmEapuolnHf0B5UEAuTMVmyRjw1UoIsFDx8RY2YJee0
+         VHDk+cS+IGm6lek06QchkEo+/AdBKKiHkII5Ag7/E4wJ/eXmRzRm6p7XofDpHzZcv9Ko
+         COC7waf370QWz5IZHHXEFaPhrCWD2aFomHLiMeuXvJarD5bwRXjRnl3bjyIZN2glXPnZ
+         XXzJHgM7riCDYBAILBhEhu/JQpjEJ7fqfAU6ev9XNpN+GEO3+JqE8D4ivNE25T7+goMV
+         2sIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b="LOJ/6Fv/";
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-Return-Path: <dg@treblig.org>
-Received: from mx.treblig.org (mx.treblig.org. [2a00:1098:5b::1])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3912c0e1614si5652869f8f.340.2025.03.10.05.30.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Mar 2025 05:30:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) client-ip=2a00:1098:5b::1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="S6rHeCM/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f717599asi88652456d6.313.2025.03.10.03.28.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 10 Mar 2025 03:28:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b="LOJ/6Fv/";
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
-	:Subject; bh=PC2rKpsiEjh3Imi2o4iS3KshXmSKtchm8Wk7PK3Ltuw=; b=LOJ/6Fv/1H6s3jZt
-	8umbukbLuu/8MAvfCgZiG7uSis8niRCH8I2YwQdAvMN991ULazJtmidj56Kds8DcVUImzFahzmWyW
-	/3H378AgIXHFRIdDeWEuTYuLFdO8GsHKa7GOoWoUA+7c42cS+rgkZGiw+qwmRT/nBRS7sPyj0rYu/
-	/GBST2pyzA0PPdsvcaT1w8X19QDApCdxrEcRd2lKb5hjItGb5s4LU9iK+ofeuel4Yqlkzm2Eyo0Rm
-	GtlKAt/Sz4y0tuHI9aUhLgEpWHdwXd1k7yhAnH9jF1LtcVyxMm7Le9kv4/ea1wmkMYjlmXYu46QsX
-	WlfWR2GaJbmCO2Ic9A==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
-	(envelope-from <dg@treblig.org>)
-	id 1trcHZ-003s4L-0F;
-	Mon, 10 Mar 2025 12:30:57 +0000
-Date: Mon, 10 Mar 2025 12:30:57 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
-	Eric Farman <farman@linux.ibm.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
-	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
- deprecate
-Message-ID: <Z87bgdM4uJLR6RWS@gallifrey>
-References: <20240530074544.25444-1-philmd@linaro.org>
- <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
- <Zl20rAjHLJlZkwxE@redhat.com>
- <fda186da-2e31-42d6-8dd6-0ea3141a73e6@linaro.org>
- <d74d3ff3-3830-4682-87e3-a42ed57068d9@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="S6rHeCM/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1traNE-0007fF-I2; Mon, 10 Mar 2025 06:28:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1traNB-0007e2-Mv
+ for qemu-arm@nongnu.org; Mon, 10 Mar 2025 06:28:38 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1traN8-0000xP-Nl
+ for qemu-arm@nongnu.org; Mon, 10 Mar 2025 06:28:37 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-38a25d4b9d4so2106679f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 10 Mar 2025 03:28:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1741602512; x=1742207312; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ha06NxopoyqRvQI/XZs/BZ1HMCeMvHjmNb/s5Nuvw1o=;
+ b=S6rHeCM/SIKEpG/GiV01bxgrzg+QLYAq+nNqS924lq69YLNm5sGtmKXSHm5vZmL2r5
+ i6gCm3CB3HJa8ZSTCeuZcVdDNOivdUnr+4C3rgRFJ+eqD5PR/i9fbhMiFSZ4y97yH//X
+ egrH+M1IBGbVAvBlRnjLUl/K2Y439kyQ4/A369477vbndqN8zIcxqmHDRSom+SiQM2dB
+ 5h6lxuEwISAtjFzNfEG/iNf+r2G/SCc8w+Mg8Yn4GqZNLyAcL5sH1eIcPatIAArW6mFX
+ VQuSJuLMqnIZa2yN/fhZJpF7UjxK4prmXvP3PFIM100SxN2gagQf5CrGS6ImfdpBHsDr
+ N7Sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741602512; x=1742207312;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Ha06NxopoyqRvQI/XZs/BZ1HMCeMvHjmNb/s5Nuvw1o=;
+ b=ZBoV8VE8PFjvua4reSClANIs/PeHQ2OAELXQy8zNcFowGAV5FiZp8j6wGAcvKaz8+P
+ cp1oO7rgcey6WW+pd0ZXz2UKOuDXCVZrcn529aSy1L0yQ3UNNxq5rsPd6NZKc06u7SsD
+ 2R9pds0V2TN8bRQJ/XyVvXh6tUlCE6FgCaBmc4kmoTvom62g800xGmqvVrBDsaYPRrif
+ 74UH8gRCUZsQG8e4ioNBDdCTqhtqmUtUxBGO2cUudeQcSkQiOIqQJBx84/W/cg/dv63P
+ IOo0BgT4QppaYwnYvoH08aaEpDlKWT69yKHpLf2KjD+zyiXt3DvceUnNw0eSfR0WmlGr
+ 5dHA==
+X-Gm-Message-State: AOJu0YzBtQnhR4qxz9CrUc4zjZW13qgiEaoIlknA/uVhjlQabJTSU+HM
+ whtEtnMc35pBuNFcVtMG0cNa+4arDvakC3Ix8SVvcq2hWq/DIqV91PalgzPFLftaM3jXmwZyQ/Y
+ y
+X-Gm-Gg: ASbGncurMeMh9UysXkVR1bFW80r6AcOvmiqMwbihPq0b94ZjiwtcOHvG9SWX4BFDsDs
+ OGVCr+usyaJBvtqq+A21M/joU2PZRVtc002yb3GWvb/wpSxbILOxEv8e0m42vpLieCY5s9GzF8G
+ IckBZ6VazqJxcI1tsmVeX5sWHnKjbscmGiUUe6tPMPmEk/crHhuNOoCZjH6i4YLZQfnA7skXm0+
+ uzMWwyEVHZ1bJtn5mAfonFePmNrugFKWEbLL9ximTVfIRmx9kr5WBr8x6pg1LJAYiVazsR8B9df
+ 2zE2z9CZBLzOj50XZsQNGt5ObfsAlGXoySCXd3y83TxOhY5k8v4=
+X-Received: by 2002:a5d:64a8:0:b0:391:23e7:968d with SMTP id
+ ffacd0b85a97d-39132db703cmr6853563f8f.47.1741602512520; 
+ Mon, 10 Mar 2025 03:28:32 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3912bfb79fbsm14684029f8f.13.2025.03.10.03.28.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Mar 2025 03:28:31 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] tests/functional: Bump up arm_replay timeout
+Date: Mon, 10 Mar 2025 10:28:30 +0000
+Message-ID: <20250310102830.3752440-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <d74d3ff3-3830-4682-87e3-a42ed57068d9@redhat.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 12:20:24 up 305 days, 23:34,  1 user,  load average: 0.03, 0.01,
- 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-TUID: St4ewZWpltX6
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ceGfp29B/HHO
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> On 09/03/2025 19.55, Pierrick Bouvier wrote:
-> > On 6/3/24 05:18, Daniel P. Berrangé wrote:
-> > > On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
-> > > > On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
-> > > > > We are trying to unify all qemu-system-FOO to a single binary.
-> > > > > In order to do that we need to remove QAPI target specific code.
-> > > > > 
-> > > > > @dump-skeys is only available on qemu-system-s390x. This series
-> > > > > rename it as @dump-s390-skey, making it available on other
-> > > > > binaries. We take care of backward compatibility via deprecation.
-> > > > > 
-> > > > > Philippe Mathieu-Daudé (4):
-> > > > >     hw/s390x: Introduce the @dump-s390-skeys QMP command
-> > > > >     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
-> > > > >     hw/s390x: Deprecate the HMP 'dump_skeys' command
-> > > > >     hw/s390x: Deprecate the QMP @dump-skeys command
-> > > > 
-> > > > Why do we have to rename the command? Just for the sake of it? I think
-> > > > renaming HMP commands is maybe ok, but breaking the API in QMP is something
-> > > > you should consider twice.
-> > > 
-> > > That was going to be my question too. Seems like its possible to simply
-> > > stub out the existing command for other targets.
-> > > 
-> > > The renaming is just window dressing.
-> > > 
-> > 
-> > Working on single-binary topic means specificities from every qemu
-> > binary/ architecture has to be merged together. Despite appearing has a
-> > bad thing now, it's definitely a step forward for QEMU, and will allow
-> > to enable new usages.
-> > 
-> > The hard way is to trigger a deep refactoring, involving lengthy
-> > conversations where compromises have to be found ("let's implement this
-> > for all arch"). The pragmatic way is to eliminate obvious stuff.
-> > 
-> > This command is specific to an arch, so renaming is a good and obvious
-> > strategy. For the backward compatible anxious developer, another
-> > strategy would be to simply declare this command if the running target
-> > is s390x. But then, you create a precedent to do something that should
-> > not have existed in the first place.
-> > 
-> > +1 for the renaming, and hope that users of this command are able to
-> > change a line in their script to adapt to the new command.
-> 
-> Sorry, but no: We've got plenty of other target specific commands...
-> rtc-reset-reinjection , query-sev, query-gic-capabilities, just to name some
-> few. So unless you provide a patch series to rename *all* of them and
-> deprecate the previous names, I don't see the point why changing just one
-> single s390x command is necessary.
+On my machine the arm_replay test takes over 2 minutes to run
+in a config with Rust enabled and debug enabled:
 
-I'd probably agree; mind you, it wouldn't be a bad convention to
-adopt in general.
-For HMP, since there's no need to have a fixed schema for a command,
-it would be fine to have a generic command for all architectures
-that have a similar idea even if their data is very different.
+$ time (cd build/rust ; PYTHONPATH=../../python:../../tests/functional
+QEMU_TEST_QEMU_BINARY=./qemu-system-arm ./pyvenv/bin/python3
+../../tests/functional/test_arm_replay.py)
+TAP version 13
+ok 1 test_arm_replay.ArmReplay.test_cubieboard
+ok 2 test_arm_replay.ArmReplay.test_vexpressa9
+ok 3 test_arm_replay.ArmReplay.test_virt
+1..3
 
-Dave
+real    2m16.564s
+user    2m13.461s
+sys     0m3.523s
 
->  Thomas
-> 
+Bump up the timeout to 4 minutes.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/functional/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 97c3f4ad4e9..608732bec63 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -31,6 +31,7 @@ test_timeouts = {
+   'arm_orangepi' : 540,
+   'arm_quanta_gsj' : 240,
+   'arm_raspi2' : 120,
++  'arm_replay' : 240,
+   'arm_tuxrun' : 240,
+   'arm_sx1' : 360,
+   'intel_iommu': 300,
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.43.0
+

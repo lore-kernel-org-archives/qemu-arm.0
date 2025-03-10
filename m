@@ -1,124 +1,122 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1059061njc;
-        Mon, 10 Mar 2025 03:50:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuy1x7eEiIOcq1skXxFGjOVZiLsPWjSRrzd0AuX8EABWKNh+l7BcexL75VJATUAHd2oe4kAsK6IOP37A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTTqfF9ScOcXQZ20EQUOH9SROY/IhyhAZBwDtQTJ2T8+hk2cTqqWnVqnkSCyDAGdDbnDU7
-X-Received: by 2002:a05:622a:47ca:b0:474:bc32:41e7 with SMTP id d75a77b69052e-476623891b3mr118242971cf.1.1741603814238;
-        Mon, 10 Mar 2025 03:50:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741603814; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1068621njc;
+        Mon, 10 Mar 2025 04:07:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWIMyGNfxPSGO4g5od3V0lz4Qy8vEQqE0PEMgmzgQ6z0ip6W9GqX+wXMwqfKrtKifBtSAZWyrMWhnInWQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1PGKhwKxOiDOmelV79c+27hPbZAJq7qII2CpDTPlBWRb0SRMXcOPIj2fbeZWmX1gdbC/P
+X-Received: by 2002:a05:620a:284e:b0:7c3:d280:a67c with SMTP id af79cd13be357-7c4e168b415mr1648435785a.17.1741604846864;
+        Mon, 10 Mar 2025 04:07:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741604846; cv=none;
         d=google.com; s=arc-20240605;
-        b=DA0Wwrx2SP6G6CPgpR5wRcya1JR+El1+yhZoWndNjY24kJGEda+DbI5/OJGDQ+vl40
-         TdGgCGv8Oh7ep5dc8GdbwUl7wIqmBqx/LIzDPJQxO8Sai+mOY1VuDczZv2Pe3n5gphvL
-         uN+lWDArUlhktF1XgK3EW7iCpGMcRaAtX3GAhOFNzp1kNB7BJTRW5DR2ipg/JmQTWxEe
-         Y7ia4TEi5mrY8LNg9/a91EszUl0jJ/kj6+H2sz1A9o8K3lcfO5aQEbBNX8cbT3v8q2Cf
-         CyOlW3OS3yLxhOP4egmnV16KNxujzfBKlziM0F1w4xsUGW9Z7QQwv98xV1soLPk9W/ob
-         2iJA==
+        b=DOgmic10Q2awqm9FVsLwShhndfbcLltGBekYJZ8aARzWtDF7sfzPOJROYNz8DSBace
+         4bXkdJQDZrsNeBtrlZnDRzy+QpuIA2InLRavlThoVkEN790wxtTnr8pB0zfiYHlRWV3E
+         KOa3Iai3FOkaKilTPJwPtPK7lZpXzzoDzHMH6lmFBJ++CrwQcXSAmZzX47kqxIr31pB4
+         92U+tulweW2qZht4QqdBZrNGddFFIvmS9Hxc/0L9Pg/clEv/WBSx3PZDe1421yJlgU8z
+         DXoaaS+cmKXVVoAD4UTjWRakaUCO9KKd5OJkrtbnbC01o7NQ/9aur2tIM+R7SOLanH1B
+         4jPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=lPdgGObt3I9W5H3oCG0ujbSqzvoCHpdJpv7djxg/VTY=;
-        fh=FvLmK+ASwa/udN3BYzpHvOI3vAVGVgdWPOeLx1ouiPI=;
-        b=IXlzhsMueSJ0W8U+n83Dhsd8sEYW4ypGq4sDyVZpJOOLD1xUDGm15SU3zL8F7CAVhh
-         vpT94N66yIAnSdVpdlVyTDHm8kcikzaDFrqMkNny3MJm5qLYYJ5tn8VtU6J2ZPiw77kG
-         xeRLGfmBveZ/qrxlazsbUZ5v5GAcrm0oOhlCywpQ9ZRHkuhd2sE1dlD5S6GHlEX4JgJe
-         sst8HIy4/U5LbZUhkGHwXR6ZoPGBePWAWFb+kvhoLf5a8VED4ri1TbYbqwC0FkpXBorF
-         Ipxeu9bKYp++hXhn0k7X2Iy66VyNvcA4+WNDo2TJc5lAXDHOjNF1Q6fOpNRBylydYsE7
-         qvbA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=j6mQmd6Njjt2p1jxk5g9NsE0d0ki07qN+wzTeEd4ugg=;
+        fh=mEUvjThYVKlS4+Hmb0ArngSGAaiLJiDc4y5w81IQwHk=;
+        b=bAuEacreXEpTcLXbgY/PU/wW20wVNgoFjHQTiNxhQ9ckqTFwxdTvAFwu8Zv5HKlfdi
+         tpIqgmGx70sEvrqv+50bEOiJ/YJQSZKhnWDpl0pJXvr6dugIywx/zsfo74u2rkuGDLuf
+         Tku4dkp/dJoB+RzCjVwLKjdzqk7s/ZyF+c7JcEEOBhm+bERYOBbpmV225eSuE0Wsw0jq
+         FLPtMKPxurr3tYiej/yIZHYx9Ja01lLqumnZVSdje7hVqsIRa+lpj++ZFFxyZI9Gizbm
+         7jONalpJWLHdXkAhRgf/lmmCemc0hKwWJkUwlqmxIMfaU6pRhsMsERCSMpggHhjdloVO
+         0LEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mAm6Icyp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GzaWwJHM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476704ef45csi41894471cf.566.2025.03.10.03.50.14
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e5511c8asi899386585a.367.2025.03.10.04.07.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Mar 2025 03:50:14 -0700 (PDT)
+        Mon, 10 Mar 2025 04:07:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mAm6Icyp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GzaWwJHM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trahs-0006de-Ie; Mon, 10 Mar 2025 06:50:00 -0400
+	id 1trayS-00010L-SK; Mon, 10 Mar 2025 07:07:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1trahg-0006Ue-RL
- for qemu-arm@nongnu.org; Mon, 10 Mar 2025 06:49:50 -0400
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+ id 1trayG-0000xv-Gh
+ for qemu-arm@nongnu.org; Mon, 10 Mar 2025 07:06:57 -0400
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1trahd-0004wL-UW
- for qemu-arm@nongnu.org; Mon, 10 Mar 2025 06:49:48 -0400
-Received: by mail-yb1-xb33.google.com with SMTP id
- 3f1490d57ef6-e6341e4d0b4so3719694276.0
- for <qemu-arm@nongnu.org>; Mon, 10 Mar 2025 03:49:45 -0700 (PDT)
+ id 1trayD-0008QR-Jk
+ for qemu-arm@nongnu.org; Mon, 10 Mar 2025 07:06:56 -0400
+Received: by mail-yb1-xb2c.google.com with SMTP id
+ 3f1490d57ef6-e461015fbd4so2970566276.2
+ for <qemu-arm@nongnu.org>; Mon, 10 Mar 2025 04:06:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741603784; x=1742208584; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=lPdgGObt3I9W5H3oCG0ujbSqzvoCHpdJpv7djxg/VTY=;
- b=mAm6IcypiywWxMzJSct1xCVvVVfSWy+P/kfRDLiMa1tRxjHyQobOjGMKs0UXyddazh
- d7S2gjQ8gyRFiJjR1iooZh50qzA4CBCjnrMAaZApYXHGg+ZUli1oY5TE8sE6LXIjks6M
- QVmlOrz0VK+hDuLveOFHvEKwROATcV4KqSCH3UksW5+c1axuCQ2vrhTQAqXYGFLm38MG
- k9LjgEvh8Kp/bctKTRzdiZ+VnsEDUXjUwNYcWzmcZxDlSNB1AuNHfhVqZjPdPGtArXvJ
- 7QjHnntllOhuNg0uVsBPyZeoEsuBzJJU+v7IPyktwvwyN9Qjcg9o0QUr7+LcLjjSK7Dt
- Lmgw==
+ d=linaro.org; s=google; t=1741604810; x=1742209610; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=j6mQmd6Njjt2p1jxk5g9NsE0d0ki07qN+wzTeEd4ugg=;
+ b=GzaWwJHMAFBnGug6CZxjD6Hf3kmSiPHdB9myzlNHo/vA0qc5uSLDgM/D/e/8pyRy7F
+ Ww/QEqVnoUkhT/bBSUGHJTtP31b37TokzvtZibwqYpBWYjpB/8lv/ILIqYO1V8QuqgJe
+ AoK1N1s380Ar6oRSw4FSkLLh1OyIgeE7kir9MmCoP7fUDhhqcrNNnuHI8XbwASMB1GKt
+ DbrvUM9v+holpL/Rx2+T0x2ApimJUipnzx7uVsWvLX+AnDS8J7FpGMQXViiCdPagUiHB
+ udsr3xERUI7ROjEZFGCH2tFSJ5x0x6wY+UEUtUfABzZi1dMbtvPKVAHtQrBqEBMFUqv4
+ pDvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741603784; x=1742208584;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=lPdgGObt3I9W5H3oCG0ujbSqzvoCHpdJpv7djxg/VTY=;
- b=dDhvKn6t6BuBY4W4ALocKJcNxdGoVKC9jrWNTEOT5aQWx2BIyBP8xNrDVhIxzrJA4t
- +ojgiF3iWSfcppcVFGrSvbZibWuwOr4jlomqfhuaUCaRzeoNOyeZhcOdAZ1EpHAJ8RUj
- 4ohHCd7QTVS5IukJl8WtZxAUItV5YrX9wO1ZeW/jIJrNbsCop/pZ867GXiynpkvnzU1M
- 87cBSTdvCAclGmwucS4z7oD3Ilo0y6z0/TeZcID5mqIQSkLECvSn9WWRYYKG5Kudyga5
- 3g9qLLE61P6rb/1M/6WdZA91ReJ/6KZ69S1HTW1vBl64FEdzwmaDFP/oZ/CCpbj5Ehqz
- tB7w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7c7WINbK7q2VLiF+RjME2/5VuP7mIRHl0MoVJHSHygddVmX+HgpkIXlOrdmaOtBcwTeLy6h6Www==@nongnu.org
-X-Gm-Message-State: AOJu0Yxyri0szaG2JORw2ZJZjhJdXDHsJQQan0mYLdxwpvSROd7zd5TN
- n3VWJCxwm/GR352EJxMSiM+tEUvuVJ4CMuIZIkP8gaL3HsMFvRnEk2pjmUbSLNcWQfvuRigSwi/
- JTMpvR2ucRo/WMKTIYttU756Q56xr4R/o6aNk5w==
-X-Gm-Gg: ASbGncs7oQDvuCnUT2yyNgWe8iIRiS5hHiFUckBsuKJ6OV0o+FM0fp3T98PhG2IPPDY
- HKZZ6LEhZbRp7wc+rCvw+Taw1ZEjPe2J8rVkhfxTur0vDHZ5zjiHyqzsRaQwuaDTJWOdes8Ddsj
- 52VwZqqrzLQ+fVGlqD2CnZ/Xagjx4=
-X-Received: by 2002:a05:6902:70f:b0:e60:915b:188 with SMTP id
- 3f1490d57ef6-e636f7e9a04mr10189653276.18.1741603784612; Mon, 10 Mar 2025
- 03:49:44 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1741604810; x=1742209610;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=j6mQmd6Njjt2p1jxk5g9NsE0d0ki07qN+wzTeEd4ugg=;
+ b=k/Ygq9bwwXj8PcP0be8+5i7NDPKbu8QoibYk8DaTq7ph822QA7oxoy1H1Q7P7MQaMf
+ r2G3gfdpamwm4P1Bb//PQHd4IWFfDLdph36i8zY/Sue/pgHLlVD/vlGy01Hgumvo4RZI
+ GeDVibclpvI1EXL+cm5AKN2qXz2LwsPw/xaGU3vBWdkfHAM9MnEzWkDwPCpDRoL6Yw9h
+ BSiEznV4adjNUDkx4dbyDd7j3gFGNSsBWkh3btg17ZKx7ATt3SRZjKuGxbW9BsWSqBA+
+ rq3WvUfjDn9RR3HB7dXqCWRTRNdPEUrWask+Q/DBMt4SR27Wnfrfs+Uim92gM53CunCZ
+ c4Tg==
+X-Gm-Message-State: AOJu0YxTpf2BFl2ERjp2JYU6k67FMj27I/nKxQydAvHJNEQlyAKhd2Op
+ tSZkQJ2GAivBtCXwVZ2d6Q4/JqFJzSANiFDiEAbw//OGVYn6zkmhhP3AoD9dBV9zIYWdd+ZRneO
+ EGxJwGWHRbEBL3kDvzaKgIkzFOn8AL6Xqo8LCMg==
+X-Gm-Gg: ASbGnctCjO85nOc94lmNU7+GcgZJ9J6g8xVAuz3IEVZEk+6Ja8R13WECMpXlmNU7uN0
+ nlur3kFgR22XlBk68NnoXBOMXkOmu/zE9G6f/ACTCcoJg7mSA+akUg8WxYA2i+xqOO34pcYTYdR
+ mixN/eSKqyehnHzAJXpNuoh4Vh96k=
+X-Received: by 2002:a05:6902:1886:b0:e5d:b88a:5536 with SMTP id
+ 3f1490d57ef6-e635c1f9fb3mr16200610276.44.1741604810304; Mon, 10 Mar 2025
+ 04:06:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
- <CAFEAcA9kED+fB1repp2+r-zMfZ_5ZeAkZq2ChyxjSUo1j5gAFQ@mail.gmail.com>
- <aef79501-b99f-4e84-b6fe-14dec1e030e6@csclub.uwaterloo.ca>
- <CAFEAcA9ht=T_XqKaKB-PaNK9joQFYgks37JHjqUO-qkaNe7YUQ@mail.gmail.com>
- <d714a7c2-2291-4a85-abcc-81648da1ef57@csclub.uwaterloo.ca>
- <CAFEAcA-9Nj9KrcPwoBBT88wK=NUPsorT71XbBbyLJYOemmkojQ@mail.gmail.com>
- <3660e47b-0f37-4e6d-8bbd-7d646eb67207@csclub.uwaterloo.ca>
-In-Reply-To: <3660e47b-0f37-4e6d-8bbd-7d646eb67207@csclub.uwaterloo.ca>
+References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+ <20250228174802.1945417-3-peter.maydell@linaro.org>
+ <f4262519-017d-4ed7-8c17-5d4d72a219a6@linaro.org>
+In-Reply-To: <f4262519-017d-4ed7-8c17-5d4d72a219a6@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 10 Mar 2025 10:49:33 +0000
-X-Gm-Features: AQ5f1JrK2AJr7PnVsjxXkms3FcAS4rRuyNa3gw_NEhUjC6t3NN5Lnc8cXvVU0Sc
-Message-ID: <CAFEAcA87OntUbW+CnebWZirnrHw4ZwFwROeRs4qJd91O6B3U4w@mail.gmail.com>
-Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
-To: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
+Date: Mon, 10 Mar 2025 11:06:38 +0000
+X-Gm-Features: AQ5f1JowbqcIWeYiHaUbzMJc59rQGzmFNqDmmWjPgHGKu3KiEmwo_SjiT1OlBQw
+Message-ID: <CAFEAcA9vw-Qgt4MBd=g-RTC1joHsHYBmtASHpL=SBnBjoW0nWA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/net/smc91c111: Sanitize packet length on tx
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org, 
+ Jason Wang <jasowang@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,51 +131,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T39fmESfSwYn
+X-TUID: lpaefqcKWIog
 
-On Mon, 10 Mar 2025 at 06:29, Sourojeet Adhikari
-<s23adhik@csclub.uwaterloo.ca> wrote:
+On Sun, 9 Mar 2025 at 19:01, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+> On 28/2/25 18:48, Peter Maydell wrote:
+> > --- a/hw/net/smc91c111.c
+> > +++ b/hw/net/smc91c111.c
+> > @@ -22,6 +22,13 @@
+> >
+> >   /* Number of 2k memory pages available.  */
+> >   #define NUM_PACKETS 4
+> > +/*
+> > + * Maximum size of a data frame, including the leading status word
+> > + * and byte count fields and the trailing CRC, last data byte
+> > + * and control byte (per figure 8-1 in the Microchip Technology
 >
-> Hello,
+> If control byte is included, ...
 >
-> So far I've figured out that I need to add a member called SplitIRQ
-> in the BCMSocPeripheralBaseState struct, which is of size defined
-> by `BCM2835_NUM_SPLITTERS`. Then from what I can tell through
-> reading through the codebase, I should do something similar to
-> what happens in `exynos4210.c` in the `exynos4210_init_board_irqs`
-> function?
+> > + * LAN91C111 datasheet).
+> > + */
+> > +#define MAX_PACKET_SIZE 2048
+> >
+> >   #define TYPE_SMC91C111 "smc91c111"
+> >   OBJECT_DECLARE_SIMPLE_TYPE(smc91c111_state, SMC91C111)
+> > @@ -240,6 +247,16 @@ static void smc91c111_release_packet(smc91c111_sta=
+te *s, int packet)
+> >       smc91c111_flush_queued_packets(s);
+> >   }
+> >
+> > +static void smc91c111_complete_tx_packet(smc91c111_state *s, int packe=
+tnum)
+> > +{
+> > +    if (s->ctr & CTR_AUTO_RELEASE) {
+> > +        /* Race?  */
+> > +        smc91c111_release_packet(s, packetnum);
+> > +    } else if (s->tx_fifo_done_len < NUM_PACKETS) {
+> > +        s->tx_fifo_done[s->tx_fifo_done_len++] =3D packetnum;
+> > +    }
+> > +}
+> > +
+> >   /* Flush the TX FIFO.  */
+> >   static void smc91c111_do_tx(smc91c111_state *s)
+> >   {
+> > @@ -263,6 +280,17 @@ static void smc91c111_do_tx(smc91c111_state *s)
+> >           *(p++) =3D 0x40;
+> >           len =3D *(p++);
+> >           len |=3D ((int)*(p++)) << 8;
+> > +        if (len >=3D MAX_PACKET_SIZE) {
+>
+> isn't MAX_PACKET_SIZE valid? I'm not sure at all but I'd expect:
+>
+>             if (len > MAX_PACKET_SIZE) {
 
-QEMU qdev devices have a multiple-stage initialization process:
- (1) 'init', which in this case means calling object_initialize_child().
-     In this case you should do this in raspi_peripherals_base_init(),
-     where we do this for the other child devices of the common
-     peripheral base object.
- (2) set properties (in this case the "num-lines" property, which
-     needs to be set to 2). You do this in the parent object's 'realize'
-     method, in this case bcm_soc_peripherals_common_realize().
-     There are several different equivalent APIs to set a simple
-     integer property; using qdev_prop_set_uint16() like the exynos
-     code does is fine.
- (3) realize the device by calling qdev_realize(); this has to be
-     done after all properties are set.
- (4) wire up the input and output GPIO lines (you want to wire up
-     a GPIO only once the devices on both ends have been realized).
-     For this case, in the bcm_soc_peripherals_common_realize()
-     function we're going to wire up the the device's outbound
-     IRQ to the input of the appropriate splitter, and connect
-     output 0 of that splitter to the BCM2835_IC correct interrupt
-     controller input.
- (5) The last bit of wiring, where we connect splitter output 1 to
-     the correct GIC input, we do in bcm2838.c, and only after
-     we've called 'realize' for both the bcm2835_peripherals object
-     and the GIC object.
+Yes, thanks, good catch. The max value in the byte count
+field is 2048. We subtract 6, and then look at p[len + 1],
+which will be p[2048 - 6 + 1] =3D p[2043], where the value of
+p is data+4 (because we incremented it 4 times as we dealt
+with the status and byte count fields).
+So p[2043] is data[2047], which is the last in-bounds byte,
+and a byte-count field of 2048 is not an overrun.
 
-> Sorry for taking a while to get back and still having quite a few
-> questions about this. Thank you for helping me out with writting
-> this patch.
-
-No worries; this stuff is all quite complicated and we don't
-really document it very well.
+(Also, I just noticed that the data sheet says that for tx
+frames the transmit byte count least significant bit will be
+assumed 0 by the controller regardless of the value written
+in memory. So we ought to zero out the LSB of 'len' after we
+read it from the packet. That's not an overflow, though
+(since we already subtracted 6 from len), just a bug...
+Plus it looks like we don't handle the case of "odd-length
+frame and CRC field present" right, since we don't do anything
+about the last-data-byte being behind the CRC field. I think
+that given the unimportance of this device model I'll settle
+for just fixing the overruns and leave these other nominal
+bugs alone.)
 
 thanks
 -- PMM

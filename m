@@ -1,97 +1,91 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1188956njc;
-        Mon, 10 Mar 2025 07:11:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXklA4mP/M0pCpzCq6KgWNfJctmpDtefbQr9yLDH4V15/lmP4GUoCmjiS7BbY/vzMT8hiUznIdsyujUrQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNxX4hcUynqLtH47l07f0rRzfx82pN9aRrPSgWmqKV8vOqtLLkgECMT0chvbT5VVTEn7xR
-X-Received: by 2002:a05:622a:134a:b0:474:fb73:698b with SMTP id d75a77b69052e-47618b37e39mr175597301cf.48.1741615866328;
-        Mon, 10 Mar 2025 07:11:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741615866; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1288452njc;
+        Mon, 10 Mar 2025 09:24:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW82t0x8JtUnTRnbo5D1u/+HYX6In2yRk20xxpHQ9NA0IVHbvn7NjTrJtDxyPOocSfJ4Agrxk1oEAbr5Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFsQ7UzkAptmAIB4HaUjgff2/B0tLlActpIs5W3hokbDOUpj6I0QpIUpadzYrt8dllcHgRe
+X-Received: by 2002:a05:622a:34a:b0:472:2077:827a with SMTP id d75a77b69052e-4761097cab3mr171647361cf.14.1741623853261;
+        Mon, 10 Mar 2025 09:24:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741623853; cv=none;
         d=google.com; s=arc-20240605;
-        b=Z8+79lv98OXMUYWdTx0Sc9H+QmHgiWSFeJJHusErqtLEbveGVwX8IKezeXVigVJKoH
-         c0MN9mmRRThF/gDuTiKIbJsarPb142mTukBmOy2ZFF9uYBtcKqcDtca+1FaS9Jtya9ug
-         y00OKoo8yitejYglEAJggXUMZbF9B8Q8lrgPEIPhm+Npukvl7ZLtuDWnx6T4W2g9BUjH
-         iUZEtJAI0SZ1dIJNJw/0k9erbLabfMi8Cakb+bwBnu0qvql1pcFXNRL3z9jk3LqJut9J
-         3sETiLN1Ud4PWoRmybjPjtlqZ7BmKyCr4pu11N2MsZrM4x3wUr+blc9zFUrb4DGHbUKE
-         JQtw==
+        b=IoInSkMWcW5JKb9jddP8fTOXhmxfCGaXUjLBdXZuV6lAzN6I0fAXBdIoX3ohOPh6io
+         3FkiWna90w1cFjw15qlTrpaGQSOkV4jTS9BYBxfvZBs7+NT5F/+YOukjakCMlrcomMir
+         I+sTYHi4Jwy3CGzUmmuV1YnpMC9+dLlr3QHMIT5t6zLFtW1LO0crEjlpZPMIcr0vIqF2
+         lVfiV+hOUIkeyqIxsueCo5yTp5ysLCJR4pZ7RIGAA/X32zJxKOy4dF5TJMWSIqIoH+3b
+         P/U2Pm7j0/4MHiGhENA8YyYjqJ1Biv6f1ry/SMevQHfQf5V9efa5UTyFVzeq/UzZTlOl
+         1hbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=BQC6Ctdbzwd+iw22zOJN/rXU3cGuESBrdBkDkZ26bUA=;
-        fh=ImVjXUmxm1K/HOh+W3367LQKrDIwn8+Oh4oP52bXSXE=;
-        b=fSqe5WP0NvyIc9DTeQIk4cp6rZPn8bUS08qYT6LIL3D7gzHz3a0vG7XTNIgX5LB6FQ
-         OUKdqt6cc3dEjlTOdYlZ2Td8+0CG9TAhokyapqqg3Fj5cohFZmo3EJ60AwzKp99MzkoA
-         o9HnSd9qUfgcXptZWNQJGe7ucuwM4sNhHFLyD5uxWIMKtnI9W7KjCDuDTTG8kKGmP3Ox
-         UWtx0VGaAe6sqyvykI9iCGuLp1mTRKX2oMuaQnaKVWKJb1LEY42mQjRAxDdDq99KmqQJ
-         H76PuTXuw868ZS1769VH+x93jd42OUOsgdVYSRCFMhw2g7wENcvrSBAwQeSwfQ/zUmFS
-         MXZA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=e9th4OpHtwbqdSGaCjm7GU9Ptc60rbplxNbsq0oMXms=;
+        fh=0fAOdSjQv2x0RtOeWxHNS2tjJ6G6B4ms5PFLA9mBK/Y=;
+        b=ipCzXCqh7HDrl0yHesfvnJYlxKcyUBiYI216Bt7H/QzY9pO4s8pQP2ZRE2pBcufdOa
+         rCINgbAn+wJMFR4vxLKZ36GU3OkrdTarTHKntAlax+zmMJFsEnZAhuM80wAd2etFvf9h
+         oJBrrh5VMh7Gt0S0aC+m3rx/DYExSxZ7sQkBavHuamd7Gpu+cWgrtqD0J7+NAKMnwUK9
+         sVZMKSgSgjhjptd3K9KZgzYXToaQ8Zu09LUHRkO44pB3tRmE9NspxbxPJmILVJS/mCnZ
+         VUCQWAoo5YTFanxqtfapHopCMiQ+bqtY1yv1dbofui/50Bx6De0uVBKtwBuo3lHC3yWq
+         vbLw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47675d994d7si41597621cf.49.2025.03.10.07.11.06
+        by mx.google.com with ESMTPS id d75a77b69052e-4766f87cab1si46679271cf.395.2025.03.10.09.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Mar 2025 07:11:06 -0700 (PDT)
+        Mon, 10 Mar 2025 09:24:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trdpa-0007YO-QL; Mon, 10 Mar 2025 10:10:11 -0400
+	id 1trfv6-0007ly-Em; Mon, 10 Mar 2025 12:24:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trdpY-0007Us-HU; Mon, 10 Mar 2025 10:10:08 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1trfv0-0007lZ-J3; Mon, 10 Mar 2025 12:23:55 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trdpW-0005KA-0Z; Mon, 10 Mar 2025 10:10:08 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 463A44E6032;
- Mon, 10 Mar 2025 15:10:00 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id XOEKomB5uHDl; Mon, 10 Mar 2025 15:09:58 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4327F4E6029; Mon, 10 Mar 2025 15:09:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 40CC574577C;
- Mon, 10 Mar 2025 15:09:58 +0100 (CET)
-Date: Mon, 10 Mar 2025 15:09:58 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>, 
- Joel Stanley <joel@jms.id.au>, Bernhard Beschow <shentey@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bmeng.cn@gmail.com>, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org, 
- =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Guenter Roeck <linux@roeck-us.net>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-block@nongnu.org, 
- Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: Re: [PATCH v5 14/14] hw/sd/sdhci: Remove unnecessary 'endianness'
- property
-In-Reply-To: <20250310000620.70120-15-philmd@linaro.org>
-Message-ID: <d97b9dd5-e569-636d-8ee7-b1a48c402429@eik.bme.hu>
-References: <20250310000620.70120-1-philmd@linaro.org>
- <20250310000620.70120-15-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1trfuv-0001xC-KY; Mon, 10 Mar 2025 12:23:54 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBMXl1Mw4z6L4s6;
+ Tue, 11 Mar 2025 00:19:19 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id D050814011F;
+ Tue, 11 Mar 2025 00:23:41 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.47.68.114) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 10 Mar 2025 17:23:40 +0100
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <mst@redhat.com>, <zhao1.liu@intel.com>, <dapeng1.mi@linux.intel.com>,
+ <armbru@redhat.com>, <farman@linux.ibm.com>, <peter.maydell@linaro.org>,
+ <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
+ <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
+ <shameerali.kolothum.thodi@huawei.com>, <jonathan.cameron@huawei.com>,
+ <jiangkunkun@huawei.com>, <yangyicong@hisilicon.com>, <linuxarm@huawei.com>
+Subject: [PATCH v8 0/6] Specifying cache topology on ARM
+Date: Mon, 10 Mar 2025 16:23:31 +0000
+Message-ID: <20250310162337.844-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-983117665-1741615798=:72286"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.47.68.114]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,148 +99,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: frWFvJ4Xi0GJ
+X-TUID: K5wAypqc05ey
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. This patch enables
+the specification of cache layout through a command line parameter,
+building on a patch set by Intel [1,2,3]. It uses this set as a
+foundation.  The device tree and ACPI/PPTT table, and device tree are
+populated based on user-provided information and CPU topology.
 
---3866299591-983117665-1741615798=:72286
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Example:
 
-On Mon, 10 Mar 2025, Philippe Mathieu-Daudé wrote:
-> The previous commit removed the single use of instance
-> setting the "endianness" property.
->
-> Since classes can register their io_ops with correct
-> endianness, no need to support different ones.
->
-> Remove the code related to SDHCIState::endianess field.
->
-> Remove the now unused SDHCIState::io_ops field, since we
-> directly use the class one.
->
-> Suggested-by: Bernhard Beschow <shentey@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> hw/sd/sdhci-internal.h |  1 -
-> include/hw/sd/sdhci.h  |  2 --
-> hw/sd/sdhci.c          | 33 +++------------------------------
-> 3 files changed, 3 insertions(+), 33 deletions(-)
->
-> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-> index d99a8493db2..e4da6c831d1 100644
-> --- a/hw/sd/sdhci-internal.h
-> +++ b/hw/sd/sdhci-internal.h
-> @@ -308,7 +308,6 @@ extern const VMStateDescription sdhci_vmstate;
-> #define SDHC_CAPAB_REG_DEFAULT 0x057834b4
->
-> #define DEFINE_SDHCI_COMMON_PROPERTIES(_state) \
-> -    DEFINE_PROP_UINT8("endianness", _state, endianness, DEVICE_LITTLE_ENDIAN), \
->     DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
->     DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
->     \
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index e8fced5eedc..1016a5b5b77 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -54,7 +54,6 @@ struct SDHCIState {
->     AddressSpace sysbus_dma_as;
->     AddressSpace *dma_as;
->     MemoryRegion *dma_mr;
-> -    const MemoryRegionOps *io_ops;
->
->     QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
->     QEMUTimer *transfer_timer;
-> @@ -105,7 +104,6 @@ struct SDHCIState {
->
->     /* Configurable properties */
->     uint32_t quirks;
-> -    uint8_t endianness;
->     uint8_t sd_spec_version;
->     uint8_t uhs_mode;
-> };
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 47e4bd1a610..cbb9f4ae8c0 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -1391,17 +1391,6 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-> }
->
-> static const MemoryRegionOps sdhci_mmio_le_ops = {
-> -    .read = sdhci_read,
-> -    .write = sdhci_write,
-> -    .valid = {
-> -        .min_access_size = 1,
-> -        .max_access_size = 4,
-> -        .unaligned = false
-> -    },
-> -    .endianness = DEVICE_LITTLE_ENDIAN,
-> -};
-> -
-> -static const MemoryRegionOps sdhci_mmio_be_ops = {
->     .read = sdhci_read,
->     .write = sdhci_write,
->     .impl = {
-> @@ -1413,7 +1402,7 @@ static const MemoryRegionOps sdhci_mmio_be_ops = {
->         .max_access_size = 4,
->         .unaligned = false
->     },
-> -    .endianness = DEVICE_BIG_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> };
->
-> static void sdhci_init_readonly_registers(SDHCIState *s, Error **errp)
-> @@ -1467,23 +1456,6 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
->     SDHCIClass *sc = s->sc;
->     const char *class_name = object_get_typename(OBJECT(s));
->
-> -    s->io_ops = sc->io_ops ?: &sdhci_mmio_le_ops;
-> -    switch (s->endianness) {
-> -    case DEVICE_LITTLE_ENDIAN:
-> -        /* s->io_ops is little endian by default */
-> -        break;
-> -    case DEVICE_BIG_ENDIAN:
-> -        if (s->io_ops != &sdhci_mmio_le_ops) {
-> -            error_setg(errp, "SD controller doesn't support big endianness");
-> -            return;
-> -        }
-> -        s->io_ops = &sdhci_mmio_be_ops;
-> -        break;
-> -    default:
-> -        error_setg(errp, "Incorrect endianness");
-> -        return;
-> -    }
-> -
->     sdhci_init_readonly_registers(s, errp);
->     if (*errp) {
->         return;
-> @@ -1493,7 +1465,7 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
->     s->fifo_buffer = g_malloc0(s->buf_maxsz);
->
->     assert(sc->iomem_size >= SDHC_REGISTERS_MAP_SIZE);
-> -    memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, class_name,
-> +    memory_region_init_io(&s->iomem, OBJECT(s), sc->io_ops, s, class_name,
->                           sc->iomem_size);
-> }
->
-> @@ -1578,6 +1550,7 @@ void sdhci_common_class_init(ObjectClass *klass, const void *data)
->     dc->vmsd = &sdhci_vmstate;
->     device_class_set_legacy_reset(dc, sdhci_poweron_reset);
->
-> +    sc->io_ops = &sdhci_mmio_le_ops;
 
-You call common_class_init in subclass class_inits last so this would 
-overwrite what subclass has set, doesn't it? I think you either have to 
-change order in subclass class_init methods or not set this here.
++----------------+                            +----------------+
+|    Socket 0    |                            |    Socket 1    |
+|    (L3 Cache)  |                            |    (L3 Cache)  |
++--------+-------+                            +--------+-------+
+         |                                             |
++--------+--------+                            +--------+--------+
+|   Cluster 0     |                            |   Cluster 0     |
+|   (L2 Cache)    |                            |   (L2 Cache)    |
++--------+--------+                            +--------+--------+
+         |                                             |
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+         |                   |                       |                   |
++--------+              +--------+              +--------+          +--------+
+|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
++--------+              +--------+              +--------+          +--------+
+|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
++--------+              +--------+              +--------+          +--------+
 
-Regards,
-BALATON Zoltan
 
->     sc->iomem_size = SDHC_REGISTERS_MAP_SIZE;
-> }
->
->
---3866299591-983117665-1741615798=:72286--
+The following command will represent the system relying on **ACPI PPTT tables**.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
+
+The following command will represent the system relying on **the device tree**.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
+
+Failure cases:
+    1) There are scenarios where caches exist in systems' registers but
+    left unspecified by users. In this case qemu returns failure.
+
+    2) SMT threads cannot share caches which is not very common. More
+    discussions here [4].
+
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket right now. Hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+
+TODO:
+  1) Making the code to work with arbitrary levels
+  2) Separated data and instruction cache at L2 and L3.
+  3) Additional cache controls.  e.g. size of L3 may not want to just
+  match the underlying system, because only some of the associated host
+  CPUs may be bound to this VM.
+
+[1] https://lore.kernel.org/kvm/20240908125920.1160236-1-zhao1.liu@intel.com/
+[2] https://lore.kernel.org/qemu-devel/20241101083331.340178-1-zhao1.liu@intel.com/
+[3] https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+[4] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Depends-on: Building PPTT with root node and identical implementation flag
+Depends-on: Msg-id: 20250306023342.508-1-alireza.sanaee@huawei.com
+
+Alireza Sanaee (6):
+  target/arm/tcg: increase cache level for cpu=max
+  arm/virt.c: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  hw/acpi/aml-build.c: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables according to the acpi aml_build change, also
+    empty bios-tables-test-allowed-diff.h.
+
+ hw/acpi/aml-build.c                        | 205 +++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 350 +++++++++++++++++++++
+ hw/cpu/core.c                              |  92 ++++++
+ hw/loongarch/virt-acpi-build.c             |   2 +-
+ include/hw/acpi/aml-build.h                |   4 +-
+ include/hw/arm/virt.h                      |   4 +
+ include/hw/cpu/core.h                      |  27 ++
+ target/arm/tcg/cpu64.c                     |  13 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 540 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 11 files changed, 701 insertions(+), 8 deletions(-)
+
+-- 
+2.34.1
+

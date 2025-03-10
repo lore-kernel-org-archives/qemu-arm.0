@@ -1,105 +1,105 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp842277njc;
-        Sun, 9 Mar 2025 17:07:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUYKu+GObINT894X2M4I9QsNN1ndk8RHABvGW5tW/Pq6w7HZMQsjPcygGCWxNpYkmEhBqGhTboZNujtXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvSUBn6I/NNs5h3/OitVnxDfgbcuILVIYvxVjGlbo7Xiwn4M4UicBwM2Rs1B6dLlcy1zOu
-X-Received: by 2002:a05:622a:c7:b0:476:76bc:cfc4 with SMTP id d75a77b69052e-47676bce157mr87571171cf.21.1741565237398;
-        Sun, 09 Mar 2025 17:07:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741565237; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp842287njc;
+        Sun, 9 Mar 2025 17:07:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXJQkrVjE7IW1q/fUnDqc5dKHXhsGB5MYn9ZS3V6bYgPVavYnezsgvSq9F9OCgJ8ZPq1jGkeflcMxKAdQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFhoLcZOkDJKH+LTBTT3KCk10A2kCI1Yc4Ba3jN0z2XUdpTX1R/3U8PVvh18QRwas2owcT8
+X-Received: by 2002:a05:620a:6605:b0:7b1:3c0e:3289 with SMTP id af79cd13be357-7c53c8bfae2mr1201322685a.22.1741565238451;
+        Sun, 09 Mar 2025 17:07:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741565238; cv=none;
         d=google.com; s=arc-20240605;
-        b=dbODuHI76Qs80opIGwwiD7hdSNa9RCtcmqKNOnGFhZG2THMFfmgF7NlRr1x/b2lai9
-         LISL6AoGhdg20C62IuLDSFRzqJjiLDuf3l9+alR7HMLTyikEUhnMYkycVfQ+hyafI/zB
-         heXbBFbHizE9nvKMfm8FU1ok/D3fDELfYPkMvn7sISy3THf1zfvQdAiJs3I1hiF0nofe
-         MU1wMfiTs0RoZWvmBnyjrXBW37omQfjXtf43mLwHSGb8UqGpSlaDUNYG6obkaoHRhPr2
-         V674z8YuT+xhArqRRKS4o/4EEetPjc7HxP2qBOCYImqTlD78nJtkpB5gbG3AYOlEm5++
-         R8zQ==
+        b=Fz+aKryVY/uBEqUfWYb1ZFzxTpBJ9K2zbdFZcvY3ktWTMgObHh2dTsLx95Ca9ndIwR
+         qalpTlKaaQy1ru18GXMxWcUUIorE5cZ6/7zz+QAzqRCxeYQRio4gIb8LoizK9ITmOCH5
+         Qks8qt81qfksesbk3haQZBZq/NnwkZ5GDRcrdv4FSdiVDbqZsZKKGsKIEzdlaMxXCO14
+         5ER6buOB5JNROkf9HgJ37J3SxzoLdGjWFLH2jc2Thl2Fkwlka8U8HU6d63m18dajMEc/
+         H3HuJ1JlK/adFzjCtcunDGBbfqpqO57HEn/C6iPADayQAfawgz+OMEfUAEaGKHx76lD+
+         CtqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vtO10CroBFmuxTQ9PueWoinPmmKwM9K54hdlvVGKzAE=;
-        fh=U4b/Remv/jSq9oj2ZY8MTXJ6/fMqL5iqbIT4bTH4XfI=;
-        b=UD3q/R7qyZ9eke3hmvsGoN0MPu2BJur8K+OEnxWeJTpGSH7YFKLnx4FCZrnF5i6mBD
-         VbDzMyLzl8iLFpmw+cRl7dF0yAKyQjg+wE7AGNVDEwegDWUk4UNVyDnLPwioTQXK5jMj
-         9qeTQ2cRMbpCfYL798cQDM1SfYHXPp4R7xN7WlmBSt9dp0L+811cpJDI678hO/Cv9fTi
-         D50OHWVTauDUyoZmjhGcifGG6uOU3FODVxgcBeJIFRDYlGxHjhCyp/xzvLpkYg/AeZZX
-         eMk8ZHStSA485nWZaleR9jRccz2f/Q6mKwD8rF/A9Ma2X/NeOeLEM5nKXTiOfStYQ7h0
-         va0A==;
+        bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
+        fh=lh7dIkwM440QnFjjKL3HQS5yRP3Fd6VkR8LoXpSE+Sc=;
+        b=X2Ji835RJMOuvQwZnrTq/RigNL3aPK8lAs0gRoPwC1sbFtI0/TIo05PLQ+DCo0WDat
+         QGFxS7lv9gjif5H6joRxn+EKI4nex2Fxp0vixjcBjbbmlg7UpIQy46Ls+5AzwEMwTJgC
+         ko9GyH715R9L+b77zuublr2H8w9ioRWM24mkfAWb3xnjFfroKbAkqG0jfw9d3f4jWHJG
+         sBpq9lTLnbRVVQayhBKs60Iql3wfmVcBzb3Lp0zefQ+7dUKqnWDH+irpvLrbAODMZCOv
+         Xld/tT1ueAwbDhFwVfjaRnyNRb5XjhBHGXshsL1BAYVswCIwkE0cehLUxdwhGTptmMBO
+         z7Pw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCNszlUo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rwDxUUNh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4751db5b499si78389061cf.615.2025.03.09.17.07.17
+        by mx.google.com with ESMTPS id af79cd13be357-7c3e551186bsi830828285a.366.2025.03.09.17.07.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Mar 2025 17:07:17 -0700 (PDT)
+        Sun, 09 Mar 2025 17:07:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCNszlUo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rwDxUUNh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trQfa-00022O-NU; Sun, 09 Mar 2025 20:06:59 -0400
+	id 1trQfF-0001ns-HU; Sun, 09 Mar 2025 20:06:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trQfX-00020d-60
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 20:06:55 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trQfA-0001mQ-AG
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 20:06:33 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trQfT-0007MH-U8
- for qemu-arm@nongnu.org; Sun, 09 Mar 2025 20:06:54 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-43948021a45so31329805e9.1
- for <qemu-arm@nongnu.org>; Sun, 09 Mar 2025 17:06:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trQf8-0007HH-K0
+ for qemu-arm@nongnu.org; Sun, 09 Mar 2025 20:06:32 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-43cef035a3bso4984685e9.1
+ for <qemu-arm@nongnu.org>; Sun, 09 Mar 2025 17:06:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741565210; x=1742170010; darn=nongnu.org;
+ d=linaro.org; s=google; t=1741565189; x=1742169989; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vtO10CroBFmuxTQ9PueWoinPmmKwM9K54hdlvVGKzAE=;
- b=BCNszlUosgkoC0FflU7TUIVgnJwJEjU70ZlfSChey97FnYKWjbcnJp9hHIL7ob7nCj
- i3IIeLieE4oX0uMr/tR6xKqrxucI0mHWiptKlx2P4SoAa6aYa+DW3CJYgAU7fkwRGrwq
- TThsrhVIgN69nP4V6ibRomM4QQPJodZptrrHN5oaD+vLuDft+xl3cQGvtltjLPWJD/8D
- 4FJZbDIFhefL9f9wkJ1IwcGJ2YQUi1CRkh0vxOcEJWfpHxpaeAy/WI/c9wfyKkATciTa
- kir5AylEdZqfTzw81u3jKHDTMX7FfbAryDFpHZsuFph6C5zx2frdD/YwGMfN0X0Glnu0
- 240w==
+ bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
+ b=rwDxUUNhP9klUCNLQKYifXTQNLSCekAG0Z2mfQd4l5jHrbNQbHlBSN1X1a29+s88hl
+ fTk/eO7fOwQdGkIxnydrlKS9BABWnB/y/mm4HyX8vbEttazWT1CavjT9wulK9+mGIvLo
+ jlAZwDWl62IklOAyX+7a5bT5SPbL/OSHTevWi7NzK831sxzwK404DhWDe4gQRv3JvlzN
+ juzPIrrpJnMQVQeLiA0W8m0ZK0TAM9CGhqPgcyXxwWBcb6EyxBDHuJPdb47cgT26NP2Z
+ NlmwkZ3sidro1Za+ZGhtKzQ7xuXje3y5p/+ksd+nRGDFh0fqEYqDsJeYlFVlZsGT8jEo
+ aPjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741565210; x=1742170010;
+ d=1e100.net; s=20230601; t=1741565189; x=1742169989;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vtO10CroBFmuxTQ9PueWoinPmmKwM9K54hdlvVGKzAE=;
- b=J8hg7JTZyU8Jmf50wP3hr8wMaDhGS7+PKlN5eAbYDo3CgV0zSxUu5PbixLlcrSncpc
- FLQEX9ImUawbNcyeGfBxdnSdSmdwFsFPEm/WRuzTIaMwWnUCr0iDyyR2VCVKsnF8fWKa
- HrewBl1ffqNP+LtVtItDQRXm1+gfQk0EEBk1m8xKaulORJtN9luUm1TFXItFkni6G9fv
- 26tmaN9YSO+XoAvICcNkf+AFMv58SbAlU2YCZTmTdBhEYTYr7yqszS26ycR96TGTLjs0
- 4e+f6UdkDY3JYar41ijR1aJyCOnNYhmgUd2Tw6J5Qg4lw/bzT7c3arFuYJrsHX5uumbB
- Hs2w==
+ bh=WDbWzQ3TRhfqcCdGrWE6Ka+gW+QxOu8dbIYkiLZFWgQ=;
+ b=gNIfmgILCD40GbDSspH1g4aGonyF/ky0R3rVmt6b8w/LgHWvOleiQAz6a/3QQ9RN0y
+ Wia3sm/0av/ZpZ1P8RWn+gFK18y1sRRPwC10kxUWbcT2XroAVh3sd9z83laWVLhOEIqM
+ MEms29NhDChRLT5aW9EmdtQkpnStvlSpgGoj3stZdW4OfstNdwXNRPEw11iXnWaPUe4r
+ Lee5e2felBmcr0ChvHHb8xZtqDaSYES1/cqVzS3VO0XQ3sIpa3y2kvt6rlYIFgGxQFlY
+ eIgsm5SUDXV6I2LCYvQTxTd2oQ/OF7Dr98zNNP0h/0GwCWpLclyq3MjSHQpBPKJbbX/S
+ mOUw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVLvu6WTh/nGPFUKmhusJavU3J2yftZIHuIldfAtR10ZYHyfXXxCn+ll/ZfGWgR1DOFadCXB0bQ/w==@nongnu.org
-X-Gm-Message-State: AOJu0Yys31eP8jQ0RXaZ68wxhk/GPSdBwTRVl2FwizKLbBN/1omtngjP
- T9I4ViYcSAAsGc8uEIJMGRKBISGPYFn3fC4WhWUN+H3hRLNDK3K6E8h3GD3qjOI=
-X-Gm-Gg: ASbGncsbtfG6TEreM2J7GTx4TvM9QEmJwmCUuBQ1/Mz3XUpkVvA8QXjMQ5eWfyvqsDW
- 2/CxoGkRs9mKwe1FJjh3PmTT10xmx8mJvw/fuIaYeT09Z5YvDU2skWTwMKzgtHUBmKwglSZfTFH
- msk3Q5v0/7t2v9OTiPr1C9THbrEeg24e3Px8WOB8ugf9rSB3lZqKzjCeIC3w9F/r+7QrP8n+6ls
- jlqywVAlC8WY/HwmBPlAx1l4T6HIl2mV6KD+IxfIYChTKrB+CEap9Jwk35XRzmA3AOYYWlw0g/s
- gsRNZuGZIw6p8hl/i3tJsdLhWs+2Ge4cXdQTwAX/TeoSLZVjWIqXra0WCAdMmOYEaBxBSza3gd+
- a8Ur+saG87I/Yc3jblQo=
-X-Received: by 2002:a05:600c:3ba1:b0:43c:fbbf:7bf1 with SMTP id
- 5b1f17b1804b1-43cfbbf7eb2mr1844265e9.30.1741565210286; 
- Sun, 09 Mar 2025 17:06:50 -0700 (PDT)
+ AJvYcCWI5OFnr+/Es+cWj+ouk0QBsx16x0lXN3hWVDWNOm2DuZHM+XYY4rhk57AejASqpReQNFcHMbFUGQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzqnduNKrM5wQAayiysVSJNpjyXdleFvjXFNo/REERKM33j5Gr+
+ iCKvlZLhnlfcHeKp0KIIMj1ZIgTtb3NAbwX/zsJvtzt7HW9sy3AxY9Wb5jFY/rU=
+X-Gm-Gg: ASbGnctWzuoWMiuBSLqD2KvcLIj+rrNzi8fM2nvP2tcyDRAnwaT1gYg49DSPuhpY9ph
+ 0pZ8cj1GUgJ9/0K+528vN6iBWGmbzopInSLC4w7C72P/OxTejCIkIWNeT+L54kxb18TSRlHbfuJ
+ AmomyAyAiVIzjQ0q5bhSEPLoea2VF4sQ5vVIbFmlrJs+dgIa6BKeTam5jcCeRyG1dO041QoVMTT
+ KDP5dr1KXi3GhJEezq0BUh362fi83R2Rskgh427+QEhssYnBzQ5T85MBGcOksj99snkNcQJRbkj
+ vFXKGRwN8KrRJFbdqVUM4e0BfollU0UAT5KnQS3qa6gZEc49eR9ksok2GvjPdNFLeHxb5MBdi63
+ 0wrj4Ohjlz2eQM+K4soI=
+X-Received: by 2002:a05:6000:2c6:b0:391:31f2:b99e with SMTP id
+ ffacd0b85a97d-39132d1fc45mr7670552f8f.2.1741565188972; 
+ Sun, 09 Mar 2025 17:06:28 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912bfdfad7sm13082199f8f.26.2025.03.09.17.06.48
+ 5b1f17b1804b1-43cfbae50aasm4331045e9.8.2025.03.09.17.06.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 09 Mar 2025 17:06:48 -0700 (PDT)
+ Sun, 09 Mar 2025 17:06:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: BALATON Zoltan <balaton@eik.bme.hu>,
 	qemu-devel@nongnu.org
@@ -116,25 +116,25 @@ Cc: Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-block@nongnu.org, Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PATCH v5 05/14] hw/sd/sdhci: Include 'pending-insert-quirk' property
- in quirk bitmask
-Date: Mon, 10 Mar 2025 01:06:11 +0100
-Message-ID: <20250310000620.70120-6-philmd@linaro.org>
+Subject: [PATCH v5 01/14] hw/qdev-properties-system: Include missing
+ 'qapi/qapi-types-common.h'
+Date: Mon, 10 Mar 2025 01:06:07 +0100
+Message-ID: <20250310000620.70120-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250310000620.70120-1-philmd@linaro.org>
 References: <20250310000620.70120-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,83 +149,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r0zR8hJOfk0O
+X-TUID: aelyeTSRi9oa
 
-Import Linux's SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET quirk definition.
+DEFINE_PROP_ENDIAN_NODEFAULT() macro uses ENDIAN_MODE_UNSPECIFIED
+which is defined in "qapi/qapi-types-common.h".
 
-Replace 'pending_insert_quirk' boolean (originally introduce in commit
-0a7ac9f9e72 "sdhci: quirk property for card insert interrupt status
-on Raspberry Pi") by a bit in quirk bitmask.
-
+Fixes: 4ec96630f93 ("hw/qdev-properties-system: Introduce EndianMode QAPI enum")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/sd/sdhci.h | 5 ++++-
- hw/sd/sdhci.c         | 8 ++++----
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ include/hw/qdev-properties-system.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index d2e4f0f0050..2e6e719df7b 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -34,6 +34,8 @@
-  * SD/MMC host controller state
-  *
-  * QEMU interface:
-+ *  + QOM property "pending-insert-quirk" re-enables pending "card inserted"
-+ *    IRQ after reset (used by the Raspberry Pi controllers).
-  *  + QOM property "wp-inverted-quirk" inverts the Write Protect pin
-  *    polarity (by default the polarity is active low for detecting SD
-  *    card to be protected).
-@@ -101,7 +103,6 @@ struct SDHCIState {
-     /* RO Host Controller Version Register always reads as 0x2401 */
+diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
+index b921392c525..49a3825eb46 100644
+--- a/include/hw/qdev-properties-system.h
++++ b/include/hw/qdev-properties-system.h
+@@ -1,6 +1,7 @@
+ #ifndef HW_QDEV_PROPERTIES_SYSTEM_H
+ #define HW_QDEV_PROPERTIES_SYSTEM_H
  
-     /* Configurable properties */
--    bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int */
-     uint32_t quirks;
-     uint8_t endianness;
-     uint8_t sd_spec_version;
-@@ -118,6 +119,8 @@ enum {
-     SDHCI_QUIRK_NO_BUSY_IRQ                     = 14,
-     /* Controller reports inverted write-protect state */
-     SDHCI_QUIRK_INVERTED_WRITE_PROTECT          = 16,
-+    /* Controller losing signal/interrupt enable states after reset */
-+    SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET        = 19,
- };
++#include "qapi/qapi-types-common.h"
+ #include "hw/qdev-properties.h"
  
- #define TYPE_PCI_SDHCI "sdhci-pci"
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 19c600d5bfc..d1b1b187874 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -320,7 +320,7 @@ static void sdhci_poweron_reset(DeviceState *dev)
- 
-     sdhci_reset(s);
- 
--    if (s->pending_insert_quirk) {
-+    if (s->quirks & BIT(SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET)) {
-         s->pending_insert_state = true;
-     }
- }
-@@ -1307,7 +1307,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-          * appears when first enabled after power on
-          */
-         if ((s->norintstsen & SDHC_NISEN_INSERT) && s->pending_insert_state) {
--            assert(s->pending_insert_quirk);
-+            assert(s->quirks & BIT(SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET));
-             s->norintsts |= SDHC_NIS_INSERT;
-             s->pending_insert_state = false;
-         }
-@@ -1557,8 +1557,8 @@ static const Property sdhci_sysbus_properties[] = {
-     DEFINE_SDHCI_COMMON_PROPERTIES(SDHCIState),
-     DEFINE_PROP_BIT("wp-inverted-quirk", SDHCIState, quirks,
-                     SDHCI_QUIRK_INVERTED_WRITE_PROTECT, false),
--    DEFINE_PROP_BOOL("pending-insert-quirk", SDHCIState, pending_insert_quirk,
--                     false),
-+    DEFINE_PROP_BIT("pending-insert-quirk", SDHCIState, quirks,
-+                    SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET, false),
-     DEFINE_PROP_LINK("dma", SDHCIState,
-                      dma_mr, TYPE_MEMORY_REGION, MemoryRegion *),
- };
+ bool qdev_prop_sanitize_s390x_loadparm(uint8_t *loadparm, const char *str,
 -- 
 2.47.1
 

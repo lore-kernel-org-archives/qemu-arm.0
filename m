@@ -1,39 +1,39 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1166166njc;
-        Mon, 10 Mar 2025 06:39:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrKq6BBlbZ3Zkr8SGWzk7HDHh1oUUcQqQH6R79iVRyx3kq7xv1kCKe0SJvDSenjDEEkSRr1udc0RNeFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEekKUaLwdPSkqDh9+RJydxuEmTCm1qmpZbcHmC8+hRcwhO/RMR50KNrobOVDq43WuwlHNn
-X-Received: by 2002:a05:620a:660a:b0:7c5:48bc:8c89 with SMTP id af79cd13be357-7c548bc8ecfmr1013395285a.27.1741613990917;
-        Mon, 10 Mar 2025 06:39:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741613990; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1173094njc;
+        Mon, 10 Mar 2025 06:50:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU2YhhwSQDFWnxMNQG5FGaFjC+BcNy0HD03Jhwa1wCmxpafJKZ60F9rNYNZ7zEQCJX0WthtiWfOdWiomg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFuh4GV6sCgCY4eIurwqLqSWNttrLM5Caj7l3DA3SO2H5ZSHkoSR7FbT2HBia8YjA9SEs/P
+X-Received: by 2002:a05:620a:6292:b0:7c5:4c49:76a6 with SMTP id af79cd13be357-7c54c4980d7mr910027885a.8.1741614658934;
+        Mon, 10 Mar 2025 06:50:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741614658; cv=none;
         d=google.com; s=arc-20240605;
-        b=LA0Ebqz+wnq250MEd2Mb13duZMF/DCHX4uMjm0lxxeQ6sxnAczVCtXYYHhE8wtv33M
-         UOsRGu+xqb/qh4SziHUA3OH7M4EDaktOGaD1I2l9kqdnmQNhNLWD//QbpY9p/10ICCzM
-         zqA0vkISqipKHE0yQ2fO/xQlduUuFfUCJpCR6i858cfxbIEtKNo9FCk/W/mCRvfLp897
-         wMXupPNY4gzSaMN6xWrNQQZnViJHVjRlH029/VbrKKnDuFZwkMWdXtkPS4opzX1A8ro1
-         ZhP7QurUEcDxtEXIxwUMVNxygLc9PAVMxRAynqibFukFckuJpJH4gRY8bqkifQZb+QMD
-         g/ZA==
+        b=lAkbQkMHkbdDkkvzLplzl3ETDP0Vmc4A3CbIw+W7pLLL0WFl1sy/+XjEzxNirqPVim
+         rNBE3Wb4tkOSnJZup1pE9PjnqW6GQsi76ixO67/LVLmIlRXBU9YcoemLCED+/MfdSqbo
+         A5L50TtVtU0AW7tF8lCOmo7HaphbrdG+km3spEK3IqcyQoVJqo7AuF8Ox3Qv0pFjfxId
+         vbTgaISPhrMobQuda1qcGdU2dVDAYbdDBnDA+Fp34k4Y32iAM1Z5I4ptTnC8RFS0XyjF
+         UjB/yI/JfvGcUDvD7kKlYmE6/JhA/abDY0dekQ8b6oMABIulDS50kueGvCU4Ok4fRYJD
+         WKyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=Swp0oeieA4ui+Nr6CbSn7NMQ3IcXdtuJlbv2y9Sxt1w=;
+        bh=ZX91aK3pAwhcAFVskrqVbsDh9UwqGt4kF3XbouidiVM=;
         fh=ImVjXUmxm1K/HOh+W3367LQKrDIwn8+Oh4oP52bXSXE=;
-        b=aktn7t23vk6rZSDKYzFQ8aq4dYp3bEBRMqQ5eV2zFVe5+MhtJjG2JVHlNVDGVZkpeH
-         0E69iu3HD5tWxZxB0LFzqCk+FfLopL31Ytwl9Sy4FQi2xTUmXusk++h4Zca4xVRzwQqV
-         TE80oa5umrTahKIzrJ87tghkOhcS2h6bAc2OxzUH2K9dYu5mEce6tbuQoNLHuAOFpxj5
-         lzYnN3XJIawngohn7ElB/OQHxxD9GdXGgha8eKdzwU7kPnpFuC9dZLJh8SO4Rzice38K
-         DwolTVfljH/j2gpdXLdjB6rRnddxyYqA0Af3opyhEQiL6dw8LSUk7cZYPR4zKAjy/C2V
-         l37A==;
+        b=FMo7rivsrgnpL+1h5j/SBof/FxR3ngLGMjUyE9bSKhR9d9tHbxJFuK6fvjoTWVo7/e
+         Qa/3A6wHiKTDolGT1b6PdVff4pmhlPXbu6guTBcZUnsZpkzPDG/ma1cVpNxjIzTfDced
+         kbFhKDfiBe5dPSO/dAiB+qskL95HxzFXxnhziv9E6Aj9K7FVMhZhO5ygEJPgKtv3shi+
+         4q/1REqcFOzJ8P1AtUI7zMc7mWC99F62xCXkgdKyvzN7wEen0iNtyH3SPT3TeDDUSO+M
+         8IYrBxLijQSIlrHOMcHpGGVTAzuvlM9NA8lQMeJNmDJBVxq3L/Tx5fmQ8HIzXSNHKmNr
+         wnVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47677433b07si39033811cf.586.2025.03.10.06.39.50
+        by mx.google.com with ESMTPS id af79cd13be357-7c550a4b89asi235912085a.510.2025.03.10.06.50.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Mar 2025 06:39:50 -0700 (PDT)
+        Mon, 10 Mar 2025 06:50:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -41,28 +41,28 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trdLy-00057t-DD; Mon, 10 Mar 2025 09:39:34 -0400
+	id 1trdWt-0007rH-9U; Mon, 10 Mar 2025 09:50:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trdLu-0004za-6q; Mon, 10 Mar 2025 09:39:30 -0400
+ id 1trdWp-0007r4-2e; Mon, 10 Mar 2025 09:50:47 -0400
 Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1trdLs-0008CZ-7v; Mon, 10 Mar 2025 09:39:29 -0400
+ id 1trdWm-0002BI-N1; Mon, 10 Mar 2025 09:50:46 -0400
 Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0517E4E6030;
- Mon, 10 Mar 2025 14:39:24 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 28C314E6030;
+ Mon, 10 Mar 2025 14:50:40 +0100 (CET)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from zero.eik.bme.hu ([127.0.0.1])
  by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id 97p4AlsmDV-y; Mon, 10 Mar 2025 14:39:22 +0100 (CET)
+ with ESMTP id Amo_kyIDHFmI; Mon, 10 Mar 2025 14:50:38 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 0D5944E6029; Mon, 10 Mar 2025 14:39:22 +0100 (CET)
+ id 29CAE4E602E; Mon, 10 Mar 2025 14:50:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0A87F74577C;
- Mon, 10 Mar 2025 14:39:22 +0100 (CET)
-Date: Mon, 10 Mar 2025 14:39:22 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 271C074577C;
+ Mon, 10 Mar 2025 14:50:38 +0100 (CET)
+Date: Mon, 10 Mar 2025 14:50:38 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
 cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>, 
@@ -77,15 +77,15 @@ cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-block@nongnu.org, 
  Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: Re: [PATCH v5 05/14] hw/sd/sdhci: Include 'pending-insert-quirk'
- property in quirk bitmask
-In-Reply-To: <20250310000620.70120-6-philmd@linaro.org>
-Message-ID: <6eefe61e-d663-16cb-3cbb-8450f7ddfdd9@eik.bme.hu>
+Subject: Re: [PATCH v5 09/14] hw/sd/sdhci: Allow SDHCI classes to register
+ their own MemoryRegionOps
+In-Reply-To: <20250310000620.70120-10-philmd@linaro.org>
+Message-ID: <962d917a-d583-38a4-6338-3c0c1cb096a3@eik.bme.hu>
 References: <20250310000620.70120-1-philmd@linaro.org>
- <20250310000620.70120-6-philmd@linaro.org>
+ <20250310000620.70120-10-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="3866299591-1284192835-1741613962=:72286"
+ boundary="3866299591-1660091918-1741614638=:72286"
 Received-SPF: pass client-ip=2001:738:2001:2001::2001;
  envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
 X-Spam_score_int: -18
@@ -107,100 +107,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LxlNnj7or+ME
+X-TUID: 62X2Ws6oxxTa
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-1284192835-1741613962=:72286
+--3866299591-1660091918-1741614638=:72286
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8BIT
 
 On Mon, 10 Mar 2025, Philippe Mathieu-Daudé wrote:
-> Import Linux's SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET quirk definition.
->
-> Replace 'pending_insert_quirk' boolean (originally introduce in commit
-> 0a7ac9f9e72 "sdhci: quirk property for card insert interrupt status
-> on Raspberry Pi") by a bit in quirk bitmask.
->
+> Add MemoryRegionOps as a class property. For now it is only
+> used by TYPE_IMX_USDHC.
+> Otherwise the default remains in little endian.
+
+I still don't see why you need to do this via the class and not just set 
+it init or realize as it's done already but it should work so
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> include/hw/sd/sdhci.h | 5 ++++-
-> hw/sd/sdhci.c         | 8 ++++----
-> 2 files changed, 8 insertions(+), 5 deletions(-)
+> include/hw/sd/sdhci.h |  1 +
+> hw/sd/sdhci.c         | 22 ++++++++--------------
+> 2 files changed, 9 insertions(+), 14 deletions(-)
 >
 > diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index d2e4f0f0050..2e6e719df7b 100644
+> index dfa0c214036..108bc1993c6 100644
 > --- a/include/hw/sd/sdhci.h
 > +++ b/include/hw/sd/sdhci.h
-> @@ -34,6 +34,8 @@
->  * SD/MMC host controller state
->  *
->  * QEMU interface:
-> + *  + QOM property "pending-insert-quirk" re-enables pending "card inserted"
-> + *    IRQ after reset (used by the Raspberry Pi controllers).
->  *  + QOM property "wp-inverted-quirk" inverts the Write Protect pin
->  *    polarity (by default the polarity is active low for detecting SD
->  *    card to be protected).
-> @@ -101,7 +103,6 @@ struct SDHCIState {
->     /* RO Host Controller Version Register always reads as 0x2401 */
+> @@ -117,6 +117,7 @@ struct SDHCIClass {
+>         SysBusDeviceClass sbd_parent_class;
+>     };
 >
->     /* Configurable properties */
-> -    bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int */
+> +    const MemoryRegionOps *io_ops;
 >     uint32_t quirks;
->     uint8_t endianness;
->     uint8_t sd_spec_version;
-> @@ -118,6 +119,8 @@ enum {
->     SDHCI_QUIRK_NO_BUSY_IRQ                     = 14,
->     /* Controller reports inverted write-protect state */
->     SDHCI_QUIRK_INVERTED_WRITE_PROTECT          = 16,
-> +    /* Controller losing signal/interrupt enable states after reset */
-> +    SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET        = 19,
+>     uint64_t iomem_size;
 > };
->
-> #define TYPE_PCI_SDHCI "sdhci-pci"
 > diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 19c600d5bfc..d1b1b187874 100644
+> index 3467385490d..6868bf68285 100644
 > --- a/hw/sd/sdhci.c
 > +++ b/hw/sd/sdhci.c
-> @@ -320,7 +320,7 @@ static void sdhci_poweron_reset(DeviceState *dev)
->
->     sdhci_reset(s);
->
-> -    if (s->pending_insert_quirk) {
-> +    if (s->quirks & BIT(SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET)) {
->         s->pending_insert_state = true;
->     }
+> @@ -1428,8 +1428,6 @@ void sdhci_initfn(SDHCIState *s)
+>     s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+>                                      sdhci_data_transfer, s);
+>     s->quirks = s->sc->quirks;
+> -
+> -    s->io_ops = &sdhci_mmio_le_ops;
 > }
-> @@ -1307,7 +1307,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
->          * appears when first enabled after power on
->          */
->         if ((s->norintstsen & SDHC_NISEN_INSERT) && s->pending_insert_state) {
-> -            assert(s->pending_insert_quirk);
-> +            assert(s->quirks & BIT(SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET));
->             s->norintsts |= SDHC_NIS_INSERT;
->             s->pending_insert_state = false;
->         }
-> @@ -1557,8 +1557,8 @@ static const Property sdhci_sysbus_properties[] = {
->     DEFINE_SDHCI_COMMON_PROPERTIES(SDHCIState),
->     DEFINE_PROP_BIT("wp-inverted-quirk", SDHCIState, quirks,
->                     SDHCI_QUIRK_INVERTED_WRITE_PROTECT, false),
-> -    DEFINE_PROP_BOOL("pending-insert-quirk", SDHCIState, pending_insert_quirk,
-> -                     false),
-> +    DEFINE_PROP_BIT("pending-insert-quirk", SDHCIState, quirks,
-> +                    SDHCI_QUIRK_RESTORE_IRQS_AFTER_RESET, false),
-
-Now I see why you need bit defines instead of mask value. Other comments 
-about renaming and adjusting comment still apply. I'm not sure if adding 
-and enum for bit numbers and keeping the defines for the QUIRK to avoid 
-mistake of forgetting BIT at usage might be better. Otherwise this looks 
-good.
-
-Regards,
-BALATON Zoltan
-
->     DEFINE_PROP_LINK("dma", SDHCIState,
->                      dma_mr, TYPE_MEMORY_REGION, MemoryRegion *),
+>
+> void sdhci_uninitfn(SDHCIState *s)
+> @@ -1447,6 +1445,7 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
+>     SDHCIClass *sc = s->sc;
+>     const char *class_name = object_get_typename(OBJECT(s));
+>
+> +    s->io_ops = sc->io_ops ?: &sdhci_mmio_le_ops;
+>     switch (s->endianness) {
+>     case DEVICE_LITTLE_ENDIAN:
+>         /* s->io_ops is little endian by default */
+> @@ -1890,17 +1889,11 @@ static const MemoryRegionOps usdhc_mmio_ops = {
+>     .endianness = DEVICE_LITTLE_ENDIAN,
 > };
 >
---3866299591-1284192835-1741613962=:72286--
+> -static void imx_usdhc_init(Object *obj)
+> -{
+> -    SDHCIState *s = SYSBUS_SDHCI(obj);
+> -
+> -    s->io_ops = &usdhc_mmio_ops;
+> -}
+> -
+> static void imx_usdhc_class_init(ObjectClass *oc, void *data)
+> {
+>     SDHCIClass *sc = SYSBUS_SDHCI_CLASS(oc);
+>
+> +    sc->io_ops = &usdhc_mmio_ops;
+>     sc->quirks = BIT(SDHCI_QUIRK_NO_BUSY_IRQ);
+>
+>     sdhci_common_class_init(oc, data);
+> @@ -1957,11 +1950,13 @@ static const MemoryRegionOps sdhci_s3c_mmio_ops = {
+>     .endianness = DEVICE_LITTLE_ENDIAN,
+> };
+>
+> -static void sdhci_s3c_init(Object *obj)
+> +static void sdhci_s3c_class_init(ObjectClass *oc, void *data)
+> {
+> -    SDHCIState *s = SYSBUS_SDHCI(obj);
+> +    SDHCIClass *sc = SYSBUS_SDHCI_CLASS(oc);
+>
+> -    s->io_ops = &sdhci_s3c_mmio_ops;
+> +    sc->io_ops = &sdhci_s3c_mmio_ops;
+> +
+> +    sdhci_common_class_init(oc, data);
+> }
+>
+> static const TypeInfo sdhci_types[] = {
+> @@ -1983,13 +1978,12 @@ static const TypeInfo sdhci_types[] = {
+>     {
+>         .name = TYPE_IMX_USDHC,
+>         .parent = TYPE_SYSBUS_SDHCI,
+> -        .instance_init = imx_usdhc_init,
+>         .class_init = imx_usdhc_class_init,
+>     },
+>     {
+>         .name = TYPE_S3C_SDHCI,
+>         .parent = TYPE_SYSBUS_SDHCI,
+> -        .instance_init = sdhci_s3c_init,
+> +        .class_init = sdhci_s3c_class_init,
+>     },
+> };
+>
+>
+--3866299591-1660091918-1741614638=:72286--

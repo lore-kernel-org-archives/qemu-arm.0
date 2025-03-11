@@ -1,39 +1,39 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1883225njc;
-        Tue, 11 Mar 2025 07:14:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVYW/MQE6ryhokz6bSaNRK4ALXQqtQBv2L+RxLWRWkJFTn7Kk0HcQJArP9yXZVHpM9A4a/riLM+8bs9dw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEA0461TQS1siqsHhlqdLBY6WPDUGVevw7vwwpvxV0mJmP+msiA+GS4sKKCZfzhrPPSBPdT
-X-Received: by 2002:a05:6402:1e88:b0:5e5:cb92:e770 with SMTP id 4fb4d7f45d1cf-5e75de575cfmr4567302a12.1.1741702466463;
-        Tue, 11 Mar 2025 07:14:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741702466; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1884341njc;
+        Tue, 11 Mar 2025 07:15:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXN6n/A7XhaLOCfSoncH14Ob7baiQV7T3ngxcPIx0h1kJv5/uzn0xYq1M1RJTXNiM+PfK2SGHVS48Cnsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHai0YhUaOMkl10ppnBSZJpuM7kmhpoY8eo3sChkpIBf2+5pSSyfMsbPrt7vIvF1oW7JCB/
+X-Received: by 2002:a5d:59a9:0:b0:390:ff25:79c8 with SMTP id ffacd0b85a97d-392641c034amr5830513f8f.20.1741702535692;
+        Tue, 11 Mar 2025 07:15:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741702535; cv=none;
         d=google.com; s=arc-20240605;
-        b=F5K1rwkmNtFgiHP0eaAG86ipqSS6T3K+1kCO9ESQPQLLZr5gnhYZVAqScKvRoGiecZ
-         m21ldnAI59HMYWycYEK7st9SkG0SdmgBCCUStELSjs4lsp/rROEs1XpAu9cXrKxNqOAn
-         Q8/gkGS9ncI8VDsz32vQ1qdOSC0nSuqyU1orQLL5AhdMqoRj771Kk6aGaLeeE2UV8Qub
-         furtj2giz2oLtxEAy1IF2sk8s9SnZEY8GLz19jURIQebzNr40WU8u7iEKtdh+FT6rUDR
-         JMjkxWjDun1YiHetKNMmxyn0sG42387Jno6cr+tgH6mJyahj8iYlqB7bOfxvysZNuVxT
-         ImgA==
+        b=AbXG2ghOJGKRM2YzXS5kuAvpvbd1WMKp9Z5DgDA8faskg2B3C2A/zLyKjhSHMRZpA7
+         OtAkjgc65FnpUJ020tpSnrvPx4eDkTRXjnE3+cK76mrublrjvb7Zn7nc6oDGsucFoe8e
+         Zn0eorn3+btI/b0i+6L7hrvwUuANGdT7C4idN3A4T1+fmmfGfv8KWpTaOduY4+aLwWDy
+         y5ai2zzEiuxRotjJyX8EurYPYQicbEMtYCNSM9sO8plYjIng7cizS51BsGQPw1Gbcg7y
+         +IuxXX9yCYNGOb8uszRkvKpccsJwGtpt4UhTsA1eSzATdP9ZvshZetWPjBbyVtBu/aMz
+         v2+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=QSmj17fJs5isJ7Fs6a824Wwz+3mO/vX9p1nqrJlx27M=;
+        bh=gqa0U2U6RqpxvpCeKSMdvvjt8+6I7Uz8ghtLrE24qaU=;
         fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
-        b=BYCoPbR/lI8sO8U0NP1rmtlEFfId3Jj7NY8kJnDp5d4FqKfTPy272maMlOO8odAtY+
-         1K9RQwa1KAtcifxGPqLM3UV0lNtavGDdI2TeHJQVTNzj04OufrfDDttFg1nW9CjCdICi
-         S9CkBUVMjektLSLSyvaQP9tXClRSrh0PDo7U8Vcl/2DNgwv8zZcGqz6BXDm7NhKWUh9l
-         eaEys435VatsENjcGRqhLPibcRZCbK8qpJSvAOWZkUP6qlBGsr6mW7sfSJ7ik0B89ips
-         CpWiqoJ4ErYXF4Wi7in/ptHW1Q7jK376tYQe/5FKh0c53WSfqItQf7TsemHZ5HUEu49z
-         Np8A==;
+        b=ElppiME8TKS1FvmiYN5gxxq9UBZUE6pd+I9cHHuLdJDtOdQGYDNzc+KRpIMYsjKV2X
+         eMQxeV9hBsmLZnlkt/r7NhPtJWzr1tWbvbrOgtl48qCoPvIJod91Dqa/yLAiZjWQsrXY
+         U6eJs94/oWd24hWXRw3LkZ5FHm46n9DAjgyIayGF/3q6bA9ZGqhQ9JSta9o18sZTpjy3
+         lbiIf0z4GkuKEZMyXeSeg6tszuygtN0bupW5Kv1cpTKxiFJ3DXxSDAjMPGeeViHm43JA
+         RuQIWrj0LZVTPUFUqn8JUilln/4UxbWKwsgdC5JPdRs+HpSOF2oz2ePqRocpWi96Uzhk
+         gZcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5e5c7472910si10663410a12.159.2025.03.11.07.14.26
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3912c103229si9067031f8f.510.2025.03.11.07.15.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 07:14:26 -0700 (PDT)
+        Tue, 11 Mar 2025 07:15:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -41,34 +41,35 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ts0N2-0007Uh-Iq; Tue, 11 Mar 2025 10:14:12 -0400
+	id 1ts0NT-0001yX-IF; Tue, 11 Mar 2025 10:14:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ts0Mz-0007Bh-7v; Tue, 11 Mar 2025 10:14:09 -0400
+ id 1ts0NS-0001rn-75; Tue, 11 Mar 2025 10:14:38 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ts0Mw-0007At-Px; Tue, 11 Mar 2025 10:14:08 -0400
+ id 1ts0NQ-0007FO-AR; Tue, 11 Mar 2025 10:14:37 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBwf96gGNz6D9js;
- Tue, 11 Mar 2025 22:10:57 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBwdD1rGQz6F9Cc;
+ Tue, 11 Mar 2025 22:10:08 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id C5DCF140DB0;
- Tue, 11 Mar 2025 22:14:04 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id C95A8140D26;
+ Tue, 11 Mar 2025 22:14:33 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 11 Mar 2025 15:13:57 +0100
+ 15.1.2507.39; Tue, 11 Mar 2025 15:14:26 +0100
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
  <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
  <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [RFC PATCH v2 14/20] hw/arm/smmuv3: Install nested ste for CFGI_STE
-Date: Tue, 11 Mar 2025 14:10:39 +0000
-Message-ID: <20250311141045.66620-15-shameerali.kolothum.thodi@huawei.com>
+Subject: [RFC PATCH v2 17/20] hw/arm/smmuv3: Check idr registers for
+ STE_S1CDMAX and STE_S1STALLD
+Date: Tue, 11 Mar 2025 14:10:42 +0000
+Message-ID: <20250311141045.66620-18-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
@@ -103,35 +104,73 @@ Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gRV9D9ILStmt
+X-TUID: yn8nbjNnYdKl
 
-Make use of smmuv3_accel provided _install_nested_ste() for CFGI_STE.
+From: Nicolin Chen <nicolinc@nvidia.com>
 
+With nested translation, the underlying HW could support those two fields.
+Allow them according to the updated idr registers after the hw_info ioctl.
+
+When substreams are enabled (S1CDMax != 0), S1DSS field determines
+the behavior of a transaction.
+
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/smmuv3.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/smmuv3-internal.h |  1 +
+ hw/arm/smmuv3.c          | 15 +++++++++++++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index 546f8faac0..530284a9c0 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -612,6 +612,7 @@ static inline void smmuv3_accel_install_nested_ste(SMMUDevice *sdev, int sid)
+ 
+ #define STE_S1FMT(x)       extract32((x)->word[0], 4 , 2)
+ #define STE_S1CDMAX(x)     extract32((x)->word[1], 27, 5)
++#define STE_S1DSS(x)       extract32((x)->word[2], 0,  2)
+ #define STE_S1STALLD(x)    extract32((x)->word[2], 27, 1)
+ #define STE_EATS(x)        extract32((x)->word[2], 28, 2)
+ #define STE_STRW(x)        extract32((x)->word[2], 30, 2)
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ea63731d61..83159db1d4 100644
+index e0f225d0df..e8a6c50056 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1286,6 +1286,7 @@ smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
-     if (sid < sid_range->start || sid > sid_range->end) {
-         return false;
+@@ -561,6 +561,16 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+ 
+     decode_ste_config(cfg, config);
+ 
++      /* S1DSS.Terminate is same as Config.abort for default stream */
++    if (STE_CFG_S1_ENABLED(config) && STE_S1DSS(ste) == 0) {
++        cfg->aborted = true;
++    }
++
++    /* S1DSS.Bypass is same as Config.bypass for default stream */
++    if (STE_CFG_S1_ENABLED(config) && STE_S1DSS(ste) == 0x1) {
++        cfg->bypassed = true;
++    }
++
+     if (cfg->aborted || cfg->bypassed) {
+         return 0;
      }
-+    smmuv3_accel_install_nested_ste(sdev, sid);
-     trace_smmuv3_config_cache_inv(sid);
-     return true;
- }
-@@ -1353,6 +1354,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
- 
-             trace_smmuv3_cmdq_cfgi_ste(sid);
-             smmuv3_flush_config(sdev);
-+            smmuv3_accel_install_nested_ste(sdev, sid);
- 
-             break;
+@@ -598,13 +608,14 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
          }
+     }
+ 
+-    if (STE_S1CDMAX(ste) != 0) {
++    if (!FIELD_EX32(s->idr[1], IDR1, SSIDSIZE) && STE_S1CDMAX(ste) != 0) {
+         qemu_log_mask(LOG_UNIMP,
+                       "SMMUv3 does not support multiple context descriptors yet\n");
+         goto bad_ste;
+     }
+ 
+-    if (STE_S1STALLD(ste)) {
++    /* STALL_MODEL being 0b01 means "stall is not supported" */
++    if ((FIELD_EX32(s->idr[0], IDR0, STALL_MODEL) & 0x1) && STE_S1STALLD(ste)) {
+         qemu_log_mask(LOG_UNIMP,
+                       "SMMUv3 S1 stalling fault model not allowed yet\n");
+         goto bad_ste;
 -- 
 2.34.1
 

@@ -1,141 +1,129 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1682772njc;
-        Tue, 11 Mar 2025 01:00:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJTAqYpXyabT1fF+s9mO9HRIPYEr4iLgQcYzV6pFUlYUq3It2HBCqKtmQcPHcmtIoHqn3yT68BjFU+wA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVHDF0MWHPqSKWELS/Fn/wneNxS5H/w8lDFBbD5SOALPRGcotQJtStmXSUzWWawSSxBHiM
-X-Received: by 2002:a05:6214:194b:b0:6d8:9be9:7d57 with SMTP id 6a1803df08f44-6e9006cb12emr257010126d6.37.1741680010326;
-        Tue, 11 Mar 2025 01:00:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741680010; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1691684njc;
+        Tue, 11 Mar 2025 01:20:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWAQoqZOzMFQIQJKjVwUJdDA1s6UHqh0zM+vZvENjpMDYppD44u9Equ6qLyNceZ/JkIKHY/iDD0tvhK7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFV+gxiplaaV8kan+E2NmIrNPD2TsEFci/BUIGr1enWDYaouIUmQqBSRo3Yj+3j0rlkNHfH
+X-Received: by 2002:a05:620a:2841:b0:7c5:464b:671a with SMTP id af79cd13be357-7c55e911cedmr385966885a.42.1741681252563;
+        Tue, 11 Mar 2025 01:20:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741681252; cv=none;
         d=google.com; s=arc-20240605;
-        b=IcIPdsUL+4H2V9YsgMuMRYfHylJ6Tyoicp0nL7NjoTK/20svURHwpPHdr/pb7VRa//
-         MALL8IrcqyMOM+WtdXre5Bwq1OcmepSLF3Zsv7QSZjUwkbZV21WvSvvBNcr204bUD9kv
-         z3ue1GqXtlJnkpM5WhUr7v2eWLdPAI9TcUlWLOcAED/PBwExUT7iksniGTlclIk9Q22C
-         rmmej4SEOxAFMcfcbB5PpYI/xW+v2opzLniSpH1YtOzKad6cDY1mN5ZY5TEAvIB13slO
-         /rTfwOY3J8Br5eHn4e5QAo7DU/IIw1HkiYy8T0VgKkJDnq5qZ66sYVIBb8UR/d/KqQTi
-         4Kbw==
+        b=ZKiZsZjWCzO5h6CaolqbU95Eg3obBLkpg5MA2/JyP2X87mlXHZ/24DFPIqNtcxIlh7
+         iFRfVr37pP6KhpuD/kFyeFEBeuv6l9wvJYHzsjCEBy/vXk7mLwc0OXedeo/OzgmK9fmU
+         K9wmcGB5NpRoppsLozTd+slPgXD/U3mvLB59PAazLeptnFa9BO41s81cjhz28X0zKmx9
+         ILKXljp4uK9K+5FUuU/AEDWYFVDkrYCcqg0aKX56ru7GTrooNMjbfHuFlKmrLAg9QKuV
+         C+QAzIvSNzHnyXn27K+ShZcwO70tEeA6qzhUWcq+FS24kkeIY0XNHXX0Wrn6Akj+6oGU
+         MVQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=lsAXkVU4PqTyZV4VExPcU6clrv2gU9fj+UlA7H1nc24=;
-        fh=hkllP/zt9NZ7KUYE9oAhYp+rNaT4FRPLYVM3DdYnrl0=;
-        b=ArJ7zNMM6SRTeaQJtCgksTYzhTyC8VP7BRoq1u772aQVRBiBse8gSx5hWRMn03C/kQ
-         dLnBP4tQtORBl/8hI8kYotcK0wrfZTg1hOCpkXUrteEJ5uUF59Mp26xt6Ne65sxjKssD
-         FAyiIuLVYROZAoprk/W3lOq8kgtVZA0PY5sMRsHKTq1N9EbhlAY/6mA8WSgRWuwsXSIu
-         kZiBdo5KFBTbsCnBh3S2owj0eIzp/3QoLQ9wDYCA+9PdloDPbE1hyHlMc4Qm3Quq8GsE
-         BUqadfdv+7SBGsUBNJvovVli3skMo6ZDzu1vPYRJWnI04OkX8lHaOztTC6CKICJ9w9ub
-         9cag==;
+        bh=dKpI07T4/YTgz2s/hDdMabe9A+22Lp9DW33+N6JzTKs=;
+        fh=BYgdQw4GZpiDtgp6rAPfEmum+9Z9ZuxzPM9zPjCvHCg=;
+        b=TW5vM5BM499JacZln+ZX4cT4j29aMzS7IKwgu59Z/bE7en2Oyh/hTZOWF/QiptnVHE
+         YN4+nHJ5EAaNG9gIaxPPVmBKAElXkCRjq2Ji3jxU9oTiIIQBve5H7UzOITAWsPnUCCKO
+         e1olg4KRdlQi/fUvogldvuFOTYp/pLQplGjhfej6D4KiBsSCX8eFdHIilPi7nEwTMetD
+         QGo8kkfX/2tmHA4o4Smoc2IgntVoG3iv+Q6isXHhJ5V5J2GdPxyN2xpCSD4Ig/+NHsCl
+         cINiab37EtWtdBjJ4PgRAmUd1fa0Efz5z9HFSxZYsOnCRmngWK/YZh+rUYHyZzUGp3/4
+         95eA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mACvpSkV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vno5EbYb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f7175738si105489196d6.356.2025.03.11.01.00.10
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f716361csi105275736d6.255.2025.03.11.01.20.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 01:00:10 -0700 (PDT)
+        Tue, 11 Mar 2025 01:20:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mACvpSkV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vno5EbYb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1truWo-0001yb-Qc; Tue, 11 Mar 2025 03:59:54 -0400
+	id 1truqe-00045f-U6; Tue, 11 Mar 2025 04:20:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1truWk-0001vZ-6w
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 03:59:52 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1truqZ-00044g-AP
+ for qemu-arm@nongnu.org; Tue, 11 Mar 2025 04:20:19 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1truWe-0004xK-Oo
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 03:59:49 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-43cf06eabdaso23883345e9.2
- for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 00:59:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1truqW-0001le-K1
+ for qemu-arm@nongnu.org; Tue, 11 Mar 2025 04:20:19 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-43cf680d351so11162205e9.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 01:20:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741679982; x=1742284782; darn=nongnu.org;
+ d=linaro.org; s=google; t=1741681214; x=1742286014; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=lsAXkVU4PqTyZV4VExPcU6clrv2gU9fj+UlA7H1nc24=;
- b=mACvpSkVPcFzTRlOx0QcphTXziIAL5VIwwx/yAbYdMN3LgoGSZDn/iOCegEjfsXGpS
- AL1mQJ97sVUsq8NnwnQMeasJ1QGeqXdnBOr7l6h8HHH6yVXl2/Fbvebuolq2xpXCTswG
- tnQPx5Rtm3EwTaN+hy1nit/ZlSYL79VtZvdx0KS5zf/Uay8SVy9RBL72waX/VdW6np1v
- 8yUZDPf4BFTsQsbn63tKJBu+QcX6Y9PRDhZp6lCjwHovUcPyBwsGFhoZimgYb84umZLk
- NSG2AoYsUcQEsBUwifj1+/8VhpZKSyNOrLwoshFJcXVRXbWnKdcbJQ2Wjk9C+tonauo6
- xKfA==
+ bh=dKpI07T4/YTgz2s/hDdMabe9A+22Lp9DW33+N6JzTKs=;
+ b=Vno5EbYbk/BbgrK7StOKb915xDghwJWl2wjxBspAUMNcPCh5uBvm+RvlNR6TlIQQ6U
+ jrAUmMn+WrlQ3LRoVF2cnQlBxauxUpINLtojzuLmuH6b4pwR/mQkaZqXR8ZFLaSi7ZrP
+ t4QGICPQginIt7a6S1BZsfZBdbwa6DKM7RXTCQeVrzfcUq46fgHutNAftUQNZHrITnPx
+ 3SdArS86cKJw8mbH3x9GJUxtrAbBkSCo+0OamNhgNzmKs7JL7g77DJed8IRQt/uHhvh5
+ vot/CT9jgXI8jJTOtgdd7BTuh39GS/jJXMXeHS7whp6yfge7pZMJH4AS5hfqojjJW9EQ
+ 1Q9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741679982; x=1742284782;
+ d=1e100.net; s=20230601; t=1741681214; x=1742286014;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=lsAXkVU4PqTyZV4VExPcU6clrv2gU9fj+UlA7H1nc24=;
- b=q9ESlNvgy6gtIGeOIUdIXzoendpYidh9m59dr+a9T/TBmbYN5LgUq/LMP65V8vImdK
- o9ux5Y8ki+CV2STIdFiwecXVRzmVk6zFhILTJHeayT+TlwtE0KfapvDWLqgkJfje4UMh
- IxpP1II1W6aLTd+2WtVUJTNoOxDzfDxEFXu7wzqETV+m2tkulT0T3aWzxkoJo0u7tu1g
- x0RarfcrzFz66TvqipZeMCmIS/JmbkoOLC92LJWhAeFReN5gQpXZu6pQtgA9PgRNYKf1
- PNxoktmGZSDJtIXqmXSJq7+25zaMS2QyU5XVkAzqI9McH5pbMFD3RyjSed7ZwW/62vYh
- kXqQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV8eZO7Sd+2BtvCC9FeCv8qlL5rLiiR9brffn95ny0wE8AzpY/xSiHijCijG2+j6gz2GqSWOGpahw==@nongnu.org
-X-Gm-Message-State: AOJu0YzJYrc3unuIyO1McdTcNpH8g2FQ3h1hszliAzwzKp7NqPu+KJqa
- DsZqJP8UDiMlWkaypEXU5qjLD9srhzXDztFkVeAX5QoojLUsIu/g2hToKrGlllc=
-X-Gm-Gg: ASbGncsZ9yyyLRwXQ8fPNl8FqgpdvjKgkeqcyICyBMPLiMd1gIZD9a2xziv57HSwvjG
- O2/nzuJSVTVxI4sA9K+0efOcMcnpiy22OINxDzsqA3VStbz5ivu136QBjAcY6Mr2GAB2iZxKG47
- 3CGeEEAid9G/mCumrZI9+1ScghopcPOEJhfjF7hw4dDkR9SmstE+Mbf0Qpx4Y1mChcLuMVTMKnn
- Q3647tKdzuP8m9Itot96NSYsAiPZWRcUklDhBazOG9ZztKScyKSZHoRAy+jmzvYlhMgMfYg5lXN
- vBQ+bJAbdE7N1DMJHbTVbtoWZrm8bDDdFe9KSLIfUWTA+HsPkpms2xZvNxY9A44eVMgwEOzEHct
- oTADS9snb810Wp5fQmNy0qu8=
-X-Received: by 2002:a05:600c:45c4:b0:43d:1f1:8cd with SMTP id
- 5b1f17b1804b1-43d01f10c46mr25744805e9.24.1741679982087; 
- Tue, 11 Mar 2025 00:59:42 -0700 (PDT)
+ bh=dKpI07T4/YTgz2s/hDdMabe9A+22Lp9DW33+N6JzTKs=;
+ b=CLBHrb8JlHPTLgfqjI62G4t92qKVLz8rMidJFmS0ydVWoHNmZiMrn9nitdBqZiZwaP
+ /oVmCVYJsevINZGVapdYB/Z+EP81ARbxjPmvknPMMDyQ0AwsPCDgk2ii+aa/wZouJ9Qd
+ 2WqF5itkrYkvY6MHn5elvsDewmr3tD4VavKssiGQxc3X80skA82RQsCD8ijS2n9GvRCx
+ QS3HDfPGAnUAG/QIMxZj7OsCR/8ixWUWVG/hp1NAli2gsjLRVMdvBl22UMRQNjXO7Pd6
+ qp3BZGGBhTt2fvcHsTHMrw2+x+LnQOgM+83Y4UZADvfeF2YGncLTyKLbNCe4fLMfMZ3K
+ NaEg==
+X-Gm-Message-State: AOJu0YxpPTbLT4XyODU5dBDFJCauTM7DH8iN1nURR79wWeRpZC79iDHd
+ uun8bQD0g90l0xsdEcuaP5ITRPJ50LKMNOZmuGQ2wC8VGXpIntvPJdRh/4tC08Q=
+X-Gm-Gg: ASbGncvSx9ZXQv7uotH3PlaVwGOdzeT0cHtOXAnEUGzGQPbZTRxRWnolbTo4bZ5leOF
+ Gg60kykCAeKaIYORkHZOZ+rnPAd+pACklgw4oShrJhNBzNC0jRoyex7R0x6/qqNJe0YU8zdDBlo
+ Jue/+UU2pcCYHy8qhIZE3AFY5n4UAEPLO3UkbNA8sOyQKS/JUmYZqtQfJMNfpO8S9s6sS3ZBno5
+ 18qFdJhVaJsIF03fH13XAeu0fAW7OIjxgNbAohaCU6qkbCiEt4e94loDofKRTP3w0lmYnh0zF45
+ xMCv/vCaQ49orEvqvSGC3qgWUYI1Pos81ZOn1ieBR5WDRRxjbfAiFJIFaMN/yY1RUuqus0uJBn8
+ E8zkNSw9MsUK1
+X-Received: by 2002:a05:600c:1c22:b0:439:8634:9909 with SMTP id
+ 5b1f17b1804b1-43d01d50313mr30915695e9.14.1741681214471; 
+ Tue, 11 Mar 2025 01:20:14 -0700 (PDT)
 Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912c015d2bsm16877067f8f.43.2025.03.11.00.59.40
+ 5b1f17b1804b1-43ce3d5a0e2sm119808045e9.12.2025.03.11.01.20.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Mar 2025 00:59:41 -0700 (PDT)
-Message-ID: <8a6e833b-a5a3-4c87-942d-488d1a5d9fe1@linaro.org>
-Date: Tue, 11 Mar 2025 08:59:40 +0100
+ Tue, 11 Mar 2025 01:20:13 -0700 (PDT)
+Message-ID: <47b847a2-0547-49cb-9291-20c25c3f4376@linaro.org>
+Date: Tue, 11 Mar 2025 09:20:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 14/14] hw/sd/sdhci: Remove unnecessary 'endianness'
- property
-To: Bernhard Beschow <shentey@gmail.com>, BALATON Zoltan
- <balaton@eik.bme.hu>, qemu-devel@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Guenter Roeck <linux@roeck-us.net>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-block@nongnu.org,
- Jamin Lin <jamin_lin@aspeedtech.com>
-References: <20250310000620.70120-1-philmd@linaro.org>
- <20250310000620.70120-15-philmd@linaro.org>
- <D6E3A7E5-7FF3-49AC-910F-02214E8E15AF@gmail.com>
+Subject: Re: [PATCH 2/3] hw/net/smc91c111: Sanitize packet length on tx
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org,
+ Jason Wang <jasowang@redhat.com>
+References: <20250228174802.1945417-1-peter.maydell@linaro.org>
+ <20250228174802.1945417-3-peter.maydell@linaro.org>
+ <f4262519-017d-4ed7-8c17-5d4d72a219a6@linaro.org>
+ <CAFEAcA9vw-Qgt4MBd=g-RTC1joHsHYBmtASHpL=SBnBjoW0nWA@mail.gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <D6E3A7E5-7FF3-49AC-910F-02214E8E15AF@gmail.com>
+In-Reply-To: <CAFEAcA9vw-Qgt4MBd=g-RTC1joHsHYBmtASHpL=SBnBjoW0nWA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,32 +138,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BoK6gN7HRESI
+X-TUID: Hb3w80NYxkGO
 
-On 11/3/25 08:31, Bernhard Beschow wrote:
+On 10/3/25 12:06, Peter Maydell wrote:
+> On Sun, 9 Mar 2025 at 19:01, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>> On 28/2/25 18:48, Peter Maydell wrote:
+>>> --- a/hw/net/smc91c111.c
+>>> +++ b/hw/net/smc91c111.c
+>>> @@ -22,6 +22,13 @@
+>>>
+>>>    /* Number of 2k memory pages available.  */
+>>>    #define NUM_PACKETS 4
+>>> +/*
+>>> + * Maximum size of a data frame, including the leading status word
+>>> + * and byte count fields and the trailing CRC, last data byte
+>>> + * and control byte (per figure 8-1 in the Microchip Technology
+>>
+>> If control byte is included, ...
+>>
+>>> + * LAN91C111 datasheet).
+>>> + */
+>>> +#define MAX_PACKET_SIZE 2048
+>>>
+>>>    #define TYPE_SMC91C111 "smc91c111"
+>>>    OBJECT_DECLARE_SIMPLE_TYPE(smc91c111_state, SMC91C111)
+>>> @@ -240,6 +247,16 @@ static void smc91c111_release_packet(smc91c111_state *s, int packet)
+>>>        smc91c111_flush_queued_packets(s);
+>>>    }
+>>>
+>>> +static void smc91c111_complete_tx_packet(smc91c111_state *s, int packetnum)
+>>> +{
+>>> +    if (s->ctr & CTR_AUTO_RELEASE) {
+>>> +        /* Race?  */
+>>> +        smc91c111_release_packet(s, packetnum);
+>>> +    } else if (s->tx_fifo_done_len < NUM_PACKETS) {
+>>> +        s->tx_fifo_done[s->tx_fifo_done_len++] = packetnum;
+>>> +    }
+>>> +}
+>>> +
+>>>    /* Flush the TX FIFO.  */
+>>>    static void smc91c111_do_tx(smc91c111_state *s)
+>>>    {
+>>> @@ -263,6 +280,17 @@ static void smc91c111_do_tx(smc91c111_state *s)
+>>>            *(p++) = 0x40;
+>>>            len = *(p++);
+>>>            len |= ((int)*(p++)) << 8;
+>>> +        if (len >= MAX_PACKET_SIZE) {
+>>
+>> isn't MAX_PACKET_SIZE valid? I'm not sure at all but I'd expect:
+>>
+>>              if (len > MAX_PACKET_SIZE) {
 > 
-> 
-> Am 10. März 2025 00:06:20 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->> The previous commit removed the single use of instance
->> setting the "endianness" property.
->>
->> Since classes can register their io_ops with correct
->> endianness, no need to support different ones.
->>
->> Remove the code related to SDHCIState::endianess field.
->>
->> Remove the now unused SDHCIState::io_ops field, since we
->> directly use the class one.
->>
->> Suggested-by: Bernhard Beschow <shentey@gmail.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> hw/sd/sdhci-internal.h |  1 -
->> include/hw/sd/sdhci.h  |  2 --
->> hw/sd/sdhci.c          | 33 +++------------------------------
->> 3 files changed, 3 insertions(+), 33 deletions(-)
-> 
-> I don't have the code in front of me right now. IIRC, the PCI subclass sets the "endianness" property as well, but doesn't need to. This has to be removed, otherwise creation of the PCI device will fail.
+> Yes, thanks, good catch. The max value in the byte count
+> field is 2048. We subtract 6, and then look at p[len + 1],
+> which will be p[2048 - 6 + 1] = p[2043], where the value of
+> p is data+4 (because we incremented it 4 times as we dealt
+> with the status and byte count fields).
+> So p[2043] is data[2047], which is the last in-bounds byte,
+> and a byte-count field of 2048 is not an overrun.
 
-There was a patch in v4 doing that, but I dropped it in v5 :)
+OK, so using '>':
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+> (Also, I just noticed that the data sheet says that for tx
+> frames the transmit byte count least significant bit will be
+> assumed 0 by the controller regardless of the value written
+> in memory. So we ought to zero out the LSB of 'len' after we
+> read it from the packet. That's not an overflow, though
+> (since we already subtracted 6 from len), just a bug...
+> Plus it looks like we don't handle the case of "odd-length
+> frame and CRC field present" right, since we don't do anything
+> about the last-data-byte being behind the CRC field. I think
+> that given the unimportance of this device model I'll settle
+> for just fixing the overruns and leave these other nominal
+> bugs alone.)
+
+While agreeing it is not worth fixing ASAP, a patch adding a pair
+of comments with your findings could save time to future contributors
+and not make your analysis in vain :)
+
+Regards,
+
+Phil.

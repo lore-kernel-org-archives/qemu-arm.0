@@ -1,179 +1,183 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1804776njc;
-        Tue, 11 Mar 2025 05:19:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8Vsekh+VlB4VT8r9X6RrRV9aQzyKcmljFvo8QgdPYKCujTHh6FoljbeXZnFGKRo+Wvmp20dJ5VvtdWQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFZgWYeEM+BAetmoc8vE92bg0vr0DGK/lpYZL2zBq3miGwCZKZ4oly1X2Bm6F7OTIAyt0QD
-X-Received: by 2002:a05:620a:480b:b0:7c3:9cc2:7825 with SMTP id af79cd13be357-7c55eec0bffmr459566885a.4.1741695589568;
-        Tue, 11 Mar 2025 05:19:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741695589; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1881372njc;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWDERSyBbeDCnsK5584E2RTlnq3W01mpBo3D//9nTUM/LuZ0nkkzZGkvp5/m59R2PKk3HmIcM7AFLY00w==@linaro.org
+X-Google-Smtp-Source: AGHT+IE2Dj5FWUKopOp7GTeyBkdUt7yTcf7Z/SFRIbsaFVpb+MAPjXKcCfllZAnpw+e5UML6/vcf
+X-Received: by 2002:a05:6402:27cc:b0:5e6:44d8:eced with SMTP id 4fb4d7f45d1cf-5e644d8eebemr31193536a12.12.1741702338438;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741702338; cv=none;
         d=google.com; s=arc-20240605;
-        b=XFK8n0QZ8ApVhWe0jb4eHcHAcX222DJUWtgPhd6ssivSf+UIyVS3hSiS3zl9f9qSlD
-         5VMjwkPqSHdda3zm5qWpF7wdXOe5pvlELkun3GlY3ajKcbyWdrC8sWYvJwuekX+W2hLO
-         xNdecWEYIhURxxwaBvv/TCeeuK6xQIp5VWGeFd2NnfYvFPPDeWFNZKpx9EA8/RS4oFGw
-         +E6Jha+rUhIw5erJnX6qxlgU1Fwc1E5UkIeVB8z7MkguBfbpxEyKlPKi/x7DypYYLRQx
-         LaWSe9/j7fiGKkRRWv41vBlfI5Ubpct1HME3ZZh9tOgZ9mSVNYH6v0llK8YXJTV84lDW
-         3Ukg==
+        b=dOPgXsb4dg26HzD+wd1yezkW2k0gsXWuFA3+Ch51mZ2edlmVvR3pBB7+i1m490wVQu
+         vrfdvZqT0KBkkLTSiaSug3XEuWTklqyzuOaw+4Kf9IadkuB01FU2RzrrNbd+0HT9Rd3y
+         ZHO5HPlLa3qqsqNObimTVC9Qgum2mpB9keakafWDHdM5oGit+RO6fmoT+6ACjFf7dbuS
+         gicIAcEvGqh6Zpga2OxhtRSzl0O4dquzf7acTKMGQtmL9AMAbbgt2uhISTF/Rma5ilPI
+         O8siX6eQyxROCFyu0APLTYSNdPPAAYO/eiYrKCwjn+OtZ6WTPyT3s9k5HuZCLHh2n5pL
+         mNUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=EiZpeww4Mx7Gj7kfyq2EUg7U9JiLWA7WC20++itRYxQ=;
-        fh=sOohlxHJFAeXqewB6ffSrGy3epZCBMM07NE6ykD/1CE=;
-        b=VHOCCMhhGsS0C2s62pSkzQMjCrFrEZWoy/PVTNT+ZCJvw2LqIh/M1mPfzIAtKnPX+e
-         /DMCPLuMbuxW6PkT6nAtWH8cSZObd0lkeHOTCryvoi/IN+Y7lIB+DOtwKsO3BfXuJn9J
-         9WPsO4bnMBND07YKpc/3ktcU0jSwkSE5RESXWnZ45UkVjsfTxwmLrlo7S+/p0q0GwYks
-         4ZlZJxDw6Qffx78EAYR8A0zJTmgbsB2O3xoCppNlCpLMqq8tLyRKpEPWspT2TJLn7LK+
-         erx13iUbPKdQ+HWn9tgQoO1nVhvc14WXFWJOJYH2sUYM8kqMh2+2lBy9qtf7gPft3XmH
-         Bclw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to;
+        bh=CawNJVP/7ZlOL296MedQQS1yoXCFM/S857FlCi6csVs=;
+        fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
+        b=AikTw530Ql2GOpPY7USoiLC8Tou233Pcwo2JsXW7piLeGU/uwiRjcLMYYDIKEA12m6
+         lRXyQnbb7hG8uHr7oq6ROqO8ZyyaMXLNrRWxlHjOFv5aeITbAbeDMVeQnxD8GD0iCUmM
+         fiF99uxrQLO787mNyJ5VRXys5/7sQL27nerfpb6rNDVQd1WtHu4c9iLpmVJ4u0uPjkz5
+         PHQTjMmdlSoxuZGopBfn7dtQhShxAUX0n7GUbEdnmdPHkTkxjElH9l5v9Su46eatWnuJ
+         7qxBedWilCiIW4R3jwpTI0gKS/WeFJSGcpb+IWZ/BIDbzN1A7l28CKewH0SkfBzyHjj0
+         To2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W30Hb2wg;
-       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W30Hb2wg;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c54780bd75si603149185a.412.2025.03.11.05.19.49
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5e5c765d60asi10628875a12.321.2025.03.11.07.12.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 05:19:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W30Hb2wg;
-       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W30Hb2wg;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tryZd-0006zs-Om; Tue, 11 Mar 2025 08:19:05 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ts0Kv-0008R8-RL; Tue, 11 Mar 2025 10:12:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1tryZZ-0006zP-6c
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 08:19:04 -0400
-Received: from smtp-out1.suse.de ([195.135.223.130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1tryZP-0008G1-3s
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 08:18:57 -0400
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id CE90B21175;
- Tue, 11 Mar 2025 12:18:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1741695526; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EiZpeww4Mx7Gj7kfyq2EUg7U9JiLWA7WC20++itRYxQ=;
- b=W30Hb2wgX1/zn+2pgWtwHHQ02fjaaD30CtFqL3HQS1FG1RMPiqXDHSsVa2p92Kjyy5y4rb
- z/5TECd7DnDPfdEt0iP5C8l2Q/Hn5fcIUrJj9IzG4zBG6VPViI/M5IJoyKoXQ08bcQnJ00
- Fu9bEk8ohj4SQulVyKgDNI1Y2uWqbJo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1741695526;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EiZpeww4Mx7Gj7kfyq2EUg7U9JiLWA7WC20++itRYxQ=;
- b=EGIclWKoo6DxbPK2qPWty0xOSoEyDW7/kf8W3gB/del/nGsU8sCyJUhFkXqhfPFZyQGqpq
- YdETIpc5X5z86ADA==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1741695526; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EiZpeww4Mx7Gj7kfyq2EUg7U9JiLWA7WC20++itRYxQ=;
- b=W30Hb2wgX1/zn+2pgWtwHHQ02fjaaD30CtFqL3HQS1FG1RMPiqXDHSsVa2p92Kjyy5y4rb
- z/5TECd7DnDPfdEt0iP5C8l2Q/Hn5fcIUrJj9IzG4zBG6VPViI/M5IJoyKoXQ08bcQnJ00
- Fu9bEk8ohj4SQulVyKgDNI1Y2uWqbJo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1741695526;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EiZpeww4Mx7Gj7kfyq2EUg7U9JiLWA7WC20++itRYxQ=;
- b=EGIclWKoo6DxbPK2qPWty0xOSoEyDW7/kf8W3gB/del/nGsU8sCyJUhFkXqhfPFZyQGqpq
- YdETIpc5X5z86ADA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3C10C132CB;
- Tue, 11 Mar 2025 12:18:45 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id nypLOiUq0GeFLgAAD6G6ig
- (envelope-from <farosas@suse.de>); Tue, 11 Mar 2025 12:18:45 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Jean-Christophe Dubois
- <jcd@tribudubois.net>, qemu-arm@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Andrey
- Smirnov <andrew.smirnov@gmail.com>, Bernhard Beschow <shentey@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
-In-Reply-To: <20250223114708.1780-19-shentey@gmail.com>
-References: <20250223114708.1780-1-shentey@gmail.com>
- <20250223114708.1780-19-shentey@gmail.com>
-Date: Tue, 11 Mar 2025 09:18:43 -0300
-Message-ID: <878qpbahgc.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ts0Kt-0008M9-Qu; Tue, 11 Mar 2025 10:12:00 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ts0Ks-0006of-0S; Tue, 11 Mar 2025 10:11:59 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBwcM4DR0z6D8Yh;
+ Tue, 11 Mar 2025 22:09:23 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 30EE014034E;
+ Tue, 11 Mar 2025 22:11:56 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 11 Mar 2025 15:11:48 +0100
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [RFC PATCH v2 01/20] backends/iommufd: Introduce
+ iommufd_backend_alloc_viommu
+Date: Tue, 11 Mar 2025 14:10:26 +0000
+Message-ID: <20250311141045.66620-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Spam-Score: -2.04
-X-Spamd-Result: default: False [-2.04 / 50.00]; BAYES_HAM(-2.24)[96.41%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; FUZZY_BLOCKED(0.00)[rspamd.com];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- FREEMAIL_TO(0.00)[gmail.com,nongnu.org]; MIME_TRACE(0.00)[0:+];
- ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[13];
- FREEMAIL_ENVRCPT(0.00)[gmail.com]; RCVD_TLS_ALL(0.00)[];
- TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FREEMAIL_CC(0.00)[redhat.com,tribudubois.net,nongnu.org,linaro.org,gmail.com,alistair23.me];
- MID_RHS_MATCH_FROM(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- TAGGED_RCPT(0.00)[]; MISSING_XM_UA(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo, suse.de:mid,
- suse.de:email]
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Njw9Bv9GbvAR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZZZRv+1maVoe
 
-Bernhard Beschow <shentey@gmail.com> writes:
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-> The implementation just allows Linux to determine date and time.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Add a helper to allocate a viommu object.
 
-For qtest:
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+ backends/iommufd.c       | 25 +++++++++++++++++++++++++
+ backends/trace-events    |  1 +
+ include/system/iommufd.h |  4 ++++
+ 3 files changed, 30 insertions(+)
 
-Acked-by: Fabiano Rosas <farosas@suse.de>
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 3c23caef96..3fac08c96e 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -341,6 +341,31 @@ int iommufd_backend_invalidate_cache(IOMMUFDBackend *be, uint32_t hwpt_id,
+     return ret;
+ }
+ 
++bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
++                                  uint32_t viommu_type, uint32_t hwpt_id,
++                                  uint32_t *out_viommu_id, Error **errp)
++{
++    int ret, fd = be->fd;
++    struct iommu_viommu_alloc alloc_viommu = {
++        .size = sizeof(alloc_viommu),
++        .type = viommu_type,
++        .dev_id = dev_id,
++        .hwpt_id = hwpt_id,
++    };
++
++    ret = ioctl(fd, IOMMU_VIOMMU_ALLOC, &alloc_viommu);
++
++    trace_iommufd_backend_alloc_viommu(fd, viommu_type, dev_id, hwpt_id,
++                                       alloc_viommu.out_viommu_id, ret);
++    if (ret) {
++        error_setg_errno(errp, errno, "IOMMU_VIOMMU_ALLOC failed");
++        return false;
++    }
++
++    *out_viommu_id = alloc_viommu.out_viommu_id;
++    return true;
++}
++
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+                                            uint32_t hwpt_id, Error **errp)
+ {
+diff --git a/backends/trace-events b/backends/trace-events
+index 5a23db6c8a..a835827540 100644
+--- a/backends/trace-events
++++ b/backends/trace-events
+@@ -19,3 +19,4 @@ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%
+ iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
+ iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
+ iommufd_backend_invalidate_cache(int iommufd, uint32_t hwpt_id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d hwpt_id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
++iommufd_backend_alloc_viommu(int iommufd, uint32_t type, uint32_t dev_id, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index b93421ac7c..7e5507f2db 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -55,6 +55,10 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t data_type, uint32_t data_len,
+                                 void *data_ptr, uint32_t *out_hwpt,
+                                 Error **errp);
++bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
++                                  uint32_t viommu_type, uint32_t hwpt_id,
++                                  uint32_t *out_hwpt, Error **errp);
++
+ bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+                                         bool start, Error **errp);
+ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+-- 
+2.34.1
+

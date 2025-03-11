@@ -1,217 +1,218 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1967416njc;
-        Tue, 11 Mar 2025 09:12:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUbLjO0dovPnGqe4TlyBhDBGjteicMQvCv6V8fz3S+jBmmCV8xV85kl7dKPPbiCkLGNoBpGdVlDQvil0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHpsZMaq8epJ/9HcJRknuvH0aCuOsFwGW/yuZvJ1g3CuqnpKTO+qhcmPLIU8Ft9bp88meZ2
-X-Received: by 2002:a5d:6dae:0:b0:391:2ba9:4c59 with SMTP id ffacd0b85a97d-3926beec12dmr6348232f8f.43.1741709557023;
-        Tue, 11 Mar 2025 09:12:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741709557; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1977858njc;
+        Tue, 11 Mar 2025 09:28:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUBm60i3xmU0gi5BQx5yBM7Jz4S+sw6OjdRfD+t8dCP14R9NxqqbCWupO+dnJc7C8GG77crER46g/QRNA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHpfhSiI9nDxOU1RsM585QGQI3yOso+Waz9ZIBanYPmcn9xSP9wnu7dZKunp60bUZksPwsr
+X-Received: by 2002:a05:620a:268e:b0:7c5:55f9:4bcb with SMTP id af79cd13be357-7c555f94df7mr1222196085a.31.1741710532812;
+        Tue, 11 Mar 2025 09:28:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741710532; cv=none;
         d=google.com; s=arc-20240605;
-        b=WpTneiO6Ckt9BTob7l+3VuxjTvrvio6niDuy8yzTNOjdfcMTV+BljCYMGOfQhQjOUe
-         8gZlD8GQ+ZtBXVj6q54mImfSeuw9UbNmD/NH+Wxeq7auFVnx366eQ9VAeOnAloZjgS0n
-         QVQKwyNS5y07JkW//VOOo1T7xay7N+pv7aV/XMWE9dvBoLuPqDoa77P/8PzIJaaYumiA
-         zWdcDc/mscL5LcW6XSv662qiRphzSRYr34NnEzMcNq2YAXkSZnUzSNUCUqrOlRveEUgi
-         XB1aWRVOZ5ln1ahR6huQqHQD86XcLGEgNk1cKfvtCcvooXQT1rzQCXHpJMMvSE2c9kEl
-         VR5g==
+        b=SpJ8C8Tkyk/hax5XvMdn4h8ZA5fnYWrcr/rW9QqFPaEA2POI3TS6bgrWHULskCE/Q9
+         px5+2CMPN/6U0r/dm4u8yva2LmiuPr+VSI4FmaM8+t0HMCQT+6PsgD6WPr8N/94NZ7OQ
+         d2xsypUEm8dFSZ3GbPuM0TBzlwG+cMZe6rInVUK/2AsdODFAah1M8CoKeih/9IA/i6HH
+         j5hlHsxBEyxqBooZX50NNta3rT4lFT7QZB1ayMxc/HfbcUxq0h+1rTAzNaOGV8DKGP5J
+         edL2dHMz7ItJU2LLvPsTNYttSiOMhlfmJ4aVYM2zf8E45ufkEKHOfEXLdFhhAlLq0HN/
+         Z4cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=P5bTxtXaZ8OvnQwJsXnxYAuIVZke0nDI0BltRhNRW6A=;
-        fh=/ewVcD89vLVEemYgeMXDgjcTUYOn/4HgPdCHnlejR3I=;
-        b=WpsiPhdbG+XN0QUEJ8sUgrzAafw1ePsy6aYbtakz/CEDU6WkcVaINcTJt31JSigckz
-         bgevXMC31tQrMoTbt23fzRLwWDEqWlGN/UJXRcGAhtP3tSf9mHukRGlYTFSIi6GAKMjs
-         RLMUdwrCogIIZFK/j3wdk3Ck/wD55iu/fKZOuGEFZIaDLDkK3n9+KHs13GwQ7AM+UZfx
-         Tmr/VuP88A45iptvIsB4mgpEe0X4bOAAGSt776uHZ8iLxqxoxyfDQ5z8upaAdSRBlXzd
-         wx9Pb+KLMmK8hlCyaPyY7UhN9fgIp73NkexKC8EiCFemeBIs9fujRPaw2U3L+lA0EaDB
-         a0/w==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=33EdfHLprdQwnDuPYJApqfDsfF3IC6bILGhZ3HL93Wc=;
+        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
+        b=I5yPsIWLDuCOj/RLqXHsNylta+choxtIc75jpB8Ia1rhsECABeu7qMXOoUCyqHJZ6V
+         Kv2Z0QfGgJsu3dYo1sZEj4wDY7gWEkzhV0hANNKzPHMPhtcuXvGVCVJbjGsy3o4LPmYo
+         zu+V4t6k37Mj+ZV20nxilNQDFRb7yK8ppBjF50RdPWw3eaXwsleYbuoVi7vYiBFSkRJ1
+         eqnk5AMa/KpuOT9zcv1nT2KRMyC1xjhrB4wjWk22061SoE3hjOrUBANBji6GbfchcVdV
+         V/5Gw6i1z+nYU2RPD5owydKG65GXMc5JY6GpbWWhKSln/5RfN0oKQ4yamx59G9Jo1UOs
+         IL0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YpRUuA3l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3912c1425aesi9452131f8f.797.2025.03.11.09.12.36
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dLrFfeg/";
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c55008440dsi475578185a.294.2025.03.11.09.28.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 09:12:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Mar 2025 09:28:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YpRUuA3l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ts287-0001wO-RV; Tue, 11 Mar 2025 12:06:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ts22w-0004bf-92
- for qemu-devel@nongnu.org; Tue, 11 Mar 2025 12:01:38 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ts22o-0005qm-DT
- for qemu-devel@nongnu.org; Tue, 11 Mar 2025 12:01:28 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3912c09bea5so4760005f8f.1
- for <qemu-devel@nongnu.org>; Tue, 11 Mar 2025 09:01:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741708882; x=1742313682; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=P5bTxtXaZ8OvnQwJsXnxYAuIVZke0nDI0BltRhNRW6A=;
- b=YpRUuA3lbgyHq1oOpFDyIlxOs7n3EXKzP2WrJq2GwA/xl35m/JyXubMpWOlAON1Mw/
- rmF8NgwOTgJ1NXyzzE37XBgsc1jX6I1AWNhnG29onFudcVVelGlidkYCG+m0sbavNDSh
- SPJ/VCMXsJrVDUvUW02h4u0EMqOOkEvCgZxDmIf+xSAWVhXy5iGw6db/NQfLKeK9aZ65
- 5RBavGs8aiLyEqWKPvPKsJQB8XuCJ5ya8gHr0As+yGYBoQZvg0TMn2dLZrvBEsEg0O6z
- xXiBuliDQmgEhJHmBwkaiekC8YWcqEG2elMZLCT6iC/dFFqWBfHovfaDbd/vL0Da8gUm
- YT7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741708882; x=1742313682;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=P5bTxtXaZ8OvnQwJsXnxYAuIVZke0nDI0BltRhNRW6A=;
- b=BveHFiGtY2abQYbJRTFfFnfGWuRxuTjZY+TH0lxsLp8tlCurqhcF6HUKj2/XMoq4bg
- 0oZf4ITI9APmNiy/fOkHwYUmJTFmYuP+VxrX8fNJ0a9halUJWlxdUlhdP0X126A2miO3
- MvqPkV+F7ToMjDfgNcDtJosvQrnJLJ5r/ixK/E5nFQgH1oVbdQOqD5cKlM57xbWs5S/z
- mC3c6sJZpNj3+f3N9WKVIcAurLJm0epeX41/dHhDAkvcETi8X3iF+ZOOjSKfyM8uY3eN
- kM3EsX2p4M1AiG2vkOu7WyxxDSC8Q7hpK3ZXnta1J+hMELggR3mpKy/SCXnBhQ/ROOm+
- a/Kw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW1RV3rz8s1WfhtPgLWZgNmsXG8IcGlSKFUwPkMQycye/pZzhp9EOrko0LZOP7bBXw2j3Ay5JH6npcb@nongnu.org
-X-Gm-Message-State: AOJu0Ywc/T8nzV6rYHR/GsIB7CL34dKJZW2C/akEGJgXjbrGNSVXaPFG
- 1YtIyRF7Im5PycvxpBx0aVELmw8cV2PrwLPsvdfD+/roTmam223wwJpVKOnVAsg=
-X-Gm-Gg: ASbGncstEbL7n8XtW33K7Mo1aF8T8RSFZbayaPYsT/3KOBI5CDUk5BevnyaQLzAHOg5
- BOSkxA3Xr+ctNhNCi8hSYLlkAOpP2HiBBzGFUelo13OfmGSJetxXMck4WgvweaI3YfcD6u3lw1p
- aofR/T6oTBJCmU1tl5RV3fXaA0LD5np2DxQ2Y19MlQosaVGIs+i8rOPPtFfpTe7O6ntMlLCrDBM
- lUd0HFjW1PqvlbdzUaRx1OhJhAJW1NveIM6S0TnVkdJNMP7ZMz3z/yIpiX1nqc1/3Xjeo6Wgqzj
- Iy55/XUgSe2iUU5KqRuLDT9vAqziitQcAd+U/kEC5XuyorMHF2KZgqNifEuBPuLI0KTSwiBeapr
- ZJ5qNuB0Jt/Ik
-X-Received: by 2002:a5d:64c9:0:b0:391:4835:d89f with SMTP id
- ffacd0b85a97d-39263ceba32mr4573713f8f.8.1741708881769; 
- Tue, 11 Mar 2025 09:01:21 -0700 (PDT)
-Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912bfb79adsm18309357f8f.7.2025.03.11.09.01.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Mar 2025 09:01:21 -0700 (PDT)
-Message-ID: <efa9ef1e-6a3a-44e0-9732-762c1bfb4857@linaro.org>
-Date: Tue, 11 Mar 2025 17:01:19 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dLrFfeg/";
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1741710532;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=33EdfHLprdQwnDuPYJApqfDsfF3IC6bILGhZ3HL93Wc=;
+	b=dLrFfeg/31Rf1yH8ECmmr3X9qy97yVkF/IeOUAZkpmR5cPT0jXdtGX32Y7r3HfE+ehdId4
+	fZUNfiKFfDR2LbyyzGTbI4mpP38LmsXbL9avHHnHitoBd8TlXQHD1W9Ezj0fBaPhLcPwBw
+	X0ec8q2JMJey769fhDwEwhyGuNIAWzc=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-333-AEIAndjVOzOgBo49IEsabg-1; Tue,
+ 11 Mar 2025 12:28:49 -0400
+X-MC-Unique: AEIAndjVOzOgBo49IEsabg-1
+X-Mimecast-MFC-AGG-ID: AEIAndjVOzOgBo49IEsabg_1741710527
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 374771800263;
+	Tue, 11 Mar 2025 16:28:46 +0000 (UTC)
+Received: from gondolin.redhat.com (unknown [10.67.24.185])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id E8B851800373;
+	Tue, 11 Mar 2025 16:28:29 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com,
+	agraf@csgraf.de
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v3 00/14] arm: rework id register storage
+Date: Tue, 11 Mar 2025 17:28:10 +0100
+Message-ID: <20250311162824.199721-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
-To: cminyard@mvista.com
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Fabiano Rosas <farosas@suse.de>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20250223114708.1780-1-shentey@gmail.com>
- <20250223114708.1780-19-shentey@gmail.com>
- <77E3F57E-95D0-4E2F-838E-5E0334651349@gmail.com>
- <1FBD5091-2221-4815-85CB-D98BE4F6EA72@gmail.com>
- <F2594DA2-F703-4F82-B07F-2D665329E1CF@gmail.com>
- <fa40fbaa-df39-40e4-8845-fd516df10b41@linaro.org>
- <Z9BbfyNSPBkH-gaf@mail.minyard.net>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <Z9BbfyNSPBkH-gaf@mail.minyard.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YdZ1Gh8WePgj
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: VgdbQ7bMh7Em
 
-On 11/3/25 16:49, Corey Minyard wrote:
-> On Tue, Mar 11, 2025 at 10:20:03AM +0100, Philippe Mathieu-Daudé wrote:
->> On 11/3/25 08:34, Bernhard Beschow wrote:
->>>
->>>
->>> Am 7. März 2025 19:18:34 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>>>
->>>>
->>>> Am 4. März 2025 18:53:10 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>>>>
->>>>>
->>>>> Am 23. Februar 2025 11:47:08 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>>>>> The implementation just allows Linux to determine date and time.
->>>>>>
->>>>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>>>>> ---
->>>>>> MAINTAINERS                |   2 +
->>>>>> hw/rtc/rs5c372.c           | 236 +++++++++++++++++++++++++++++++++++++
->>>>>> tests/qtest/rs5c372-test.c |  43 +++++++
->>>>>> hw/rtc/Kconfig             |   5 +
->>>>>> hw/rtc/meson.build         |   1 +
->>>>>> hw/rtc/trace-events        |   4 +
->>>>>> tests/qtest/meson.build    |   1 +
->>>>>> 7 files changed, 292 insertions(+)
->>>>>> create mode 100644 hw/rtc/rs5c372.c
->>>>>> create mode 100644 tests/qtest/rs5c372-test.c
->>>>>
->>>>> Ping for just this patch. I'd like to have it merged for 10.0.
->>>>
->>>> Ping^2 -- just few days left before soft freeze.
->>>
->>> Last ping before the freeze
->>>
->>> It would really be nice to have this device model in 10.0 since this would allow me to use upstream QEMU.
->>
->> Apparently I2C maintainer wasn't Cc'ed (now is):
->>
->>    Corey Minyard <cminyard@mvista.com> (maintainer:I2C and SMBus)
->>
->> At a glance patch LGTM, so:
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> Well, it's fairly hard to read this way :-).  But this looks good.  My
-> only comment is on:
-> 
->>>>> +#define NVRAM_SIZE 0x10
->>>>> +
->>>>> +/* Flags definitions */
->>>>> +#define SECONDS_CH 0x80
->>>>> +#define HOURS_PM   0x20
->>>>> +#define CTRL2_24   0x20
-> 
-> Those are fairly generic names; when I see things like that I worry
-> about conflicting with other generic names that might come into an
-> include later.  Not a huge deal, though.
-> 
-> Acked-by: Corey Minyard <cminyard@mvista.com>
+Yet another update of the id register series, less changes this time
+around.
 
-Thank you! Patch queued via my hw-misc tree then.
+Changed from v2:
+- changed generation of the various register defines via the "DEF"
+  magic suggested by Richard
+- some kvm-only code moved to kvm.c; some code potentially useful to
+  non-kvm code stayed out of there (the cpu model code will make use
+  of it, and that one should be extendable outside of kvm -- a
+  revised version of those patches is still in the works, but I'll be
+  off for a few days and rather wanted to get this one out first)
 
-Regards,
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v3
 
-Phil.
+<v2 cover letter>
+
+Changed from v1:
+- Noticed that we missed the hvf code. Converted, compiled, but not tested
+  as I'm lacking an environment for testing.
+- Hopefully incorporated most of the suggested changes -- if I missed
+  something, it was unintentional unless mentioned below.
+  - fixed repeated inclusion of definitions
+  - hopefully made macros more robust
+  - removed distinction between reading 32/64 values, which was mostly
+    adding churn for little value
+  - postponed generating property definitions to the cpu model patches,
+    where they are actually used
+  - juggled hunks and moved them to the right patches
+  - fixed some typos
+- rebased to a more recent code base
+
+NOT changed from v1:
+- definitions are still generated from the Linux sysregs file
+  - I still think updating the generated files on demand (so that we can
+    double check the result) is the right thing to do
+  - I'm open to changing the source of the definitions from the sysregs
+    file to the JSON definitions published by Arm; however, I first wanted
+    to get the code using it right -- we can switch out the code generating
+    the file to use a different source easily later on, and I'd also like
+    to steal parts of the script from Linux once integrated (which I think
+    hasn't happened yet?)
+
+<v1 cover letter>
+
+[Note: I've kept the cc list from the last round of cpu model patches;
+so if you're confused as to why you're cc:ed here, take it as a
+heads-up that a new cpu model series will come along soon]
+
+This patch series contains patches extracted from the larger cpu model
+series (RFC v2 last posted at
+https://lore.kernel.org/qemu-devel/20241206112213.88394-1-cohuck@redhat.com/)
+and aims at providing a base upon which we can continue with building
+support for cpu models, but which is hopefully already an improvement
+on its own.
+
+Main changes from the patches in that series include:
+- post-pone the changes to handle KVM writable ID registers for cpu models
+  (I have a series including that on top of this one)
+- change how we store the list of ID registers, and access them
+  basically, use an enum for indexing, and an enum doing encodings in a
+  pattern similar to cpregs
+- move some hunks to different patches
+- update the scripts to generate the register descriptions, and run
+  them against a recent Linux sysregs file
+
+What I've kept:
+- generating the register descriptions from the Linux sysregs file
+  I think that file is still our best bet to generate the descriptions
+  easily, and updating the definitions is a manual step that can be checked
+  for unintended changes
+- most of the hard work that Eric had been doing; all new bugs in there
+  are my own :)
+
+</v1 cover letter>
+</v2 cover letter>
+
+Cornelia Huck (2):
+  arm/kvm: add accessors for storing host features into idregs
+  arm/cpu: switch to a generated cpu-sysregs.h.inc
+
+Eric Auger (12):
+  arm/cpu: Add sysreg definitions in cpu-sysregs.h
+  arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
+  arm/cpu: Store aa64isar1/2 into the idregs array
+  arm/cpu: Store aa64pfr0/1 into the idregs array
+  arm/cpu: Store aa64mmfr0-3 into the idregs array
+  arm/cpu: Store aa64dfr0/1 into the idregs array
+  arm/cpu: Store aa64smfr0 into the idregs array
+  arm/cpu: Store id_isar0-7 into the idregs array
+  arm/cpu: Store id_pfr0/1/2 into the idregs array
+  arm/cpu: Store id_dfr0/1 into the idregs array
+  arm/cpu: Store id_mmfr0-5 into the idregs array
+  arm/cpu: Add sysreg generation scripts
+
+ hw/intc/armv7m_nvic.c                 |  27 +-
+ scripts/gen-cpu-sysregs-header.awk    |  39 +++
+ scripts/update-aarch64-sysreg-code.sh |  25 ++
+ target/arm/cpu-features.h             | 317 +++++++++---------
+ target/arm/cpu-sysregs.h              |  41 +++
+ target/arm/cpu-sysregs.h.inc          | 170 ++++++++++
+ target/arm/cpu.c                      | 111 +++----
+ target/arm/cpu.h                      |  80 +++--
+ target/arm/cpu64.c                    | 128 +++----
+ target/arm/helper.c                   |  68 ++--
+ target/arm/hvf/hvf.c                  |  36 +-
+ target/arm/internals.h                |   6 +-
+ target/arm/kvm.c                      | 129 ++++----
+ target/arm/ptw.c                      |   6 +-
+ target/arm/tcg/cpu-v7m.c              | 174 +++++-----
+ target/arm/tcg/cpu32.c                | 320 +++++++++---------
+ target/arm/tcg/cpu64.c                | 460 +++++++++++++-------------
+ 17 files changed, 1218 insertions(+), 919 deletions(-)
+ create mode 100755 scripts/gen-cpu-sysregs-header.awk
+ create mode 100755 scripts/update-aarch64-sysreg-code.sh
+ create mode 100644 target/arm/cpu-sysregs.h
+ create mode 100644 target/arm/cpu-sysregs.h.inc
+
+-- 
+2.48.1

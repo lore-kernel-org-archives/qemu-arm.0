@@ -1,282 +1,134 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1979114njc;
-        Tue, 11 Mar 2025 09:30:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7ixTIQ/XLy4oqIJLlIlcb0qBC3OjiESSZ6DKTekvlsYKowTfgb87SqMfuCeu1+p3fdePgWN0IQm7Itg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFd/CVeGXoviJWG28DPFP4OgBZu7+ChJN4KgIur0CRaSVmLI+QYRf3QN5YE1yAJW2GSUKv9
-X-Received: by 2002:a05:6122:801:b0:523:e9d2:404d with SMTP id 71dfb90a1353d-523e9d2414cmr7897532e0c.11.1741710650116;
-        Tue, 11 Mar 2025 09:30:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741710650; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp2055089njc;
+        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCRk5taAKgBwnui0OqHkK/ljSgWz5WN0tcwvLOgOPVkJwGCKEhDGlywobvZjkB4qI+xY1KMlor1/GRBw==@linaro.org
+X-Received: by 2002:a05:690c:3201:b0:6fe:d759:b178 with SMTP id 00721157ae682-6fed759b5e0mr127003747b3.6.1741718227604;
+        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741718227; cv=none;
         d=google.com; s=arc-20240605;
-        b=Gq4WimQLhG6YOQaodgrOIg9HYwYT8fam5iDY7YMyjoY+DzO1uTc2IfPg+IeDegyLyz
-         DoHWPlahA+qxsnZFx/OAYk69DoaY0gVxcxvz1sl6NbavRgNckZUYzgaghXIlYlwN5i6s
-         m8JJMqkvm7R1Rx70JqyvZNr7i81PHoVQ78qjYyYOzh/hvHn1QpROngU7E7g2w/W1mcP6
-         NsQdkRh8qgT8f3VFqTwRb9+mD27vI04Weua6Hwvba8jzPpKulyyU1rKV+AdrRuimJnGp
-         16YkoaCQdnd/XdRDLxOwwKI+I7EpYcUVB1GTWMIvi004i8cSBu4ZY4I/yOx6XHebHTry
-         A/xg==
+        b=eHPsEp1bghbyChW3mKXlIxf0yJYRFU8zcx2SeU8bvZovOg/jh+hiP8TtBTWcuVcb5K
+         fz4eliOFt4TcFBsYIYQRIIak9J1w3c+w0Q7XjbILC+MSj0bfb7TLW5hAFWrNLJ7YwPXa
+         nO7cjjlLu9DWPrXZHiRvBD9LEZLArEI3eEZ1PGQqPT0qj+40pZjxh1XmjfrwA1AQlEIi
+         3arglFMysqg5Z2DY1O/ZtvpVRwO12e3uZiv6IoE9oksTq4TUpCOZETjEjSGwzrwqHudu
+         v/fuwNLgJukj4TK09xLmHZw8BajlBwhbSZU//ba+ccZDym8z54CKGhAW0Sj4m17Ubm2k
+         aTQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=gvW/5G6Q0o35IFHWkI1ctZoRXpbF5XVgT4Z39z0aScA=;
-        fh=e4oaLR6JeAwNfZ07Y46RG/PZ1MmpIJUUz63JxHQe3tM=;
-        b=fXgz3kwX8GA5j3gCbFxbo2tPvKlbLqbPmxor9cVA/8Ml4o9NS0juqT6nxixFwc0Fks
-         PbLJfWFUJI0XD60p1xjhao9C0Qjz0iCoZrIN1Jr+AfK05fJbqrVGbep5bW58p94lFlZy
-         IXVyKVvuFJYnHRuWw1/Q69FxUspp1InoMvkMCqYBvT5W3cVXknapY3BNfNgOVPDCHaA1
-         DsPDGovlO8XTS9NMV5XtZSNwTntvFuM/OkCdPLe9Nw8OSmEqShjzaG+KfWFPfGNKZ0Cv
-         o2nenwdozuKH1VbN4OeGwp9OHvONZPk1XBXXS7NVir3JL7K4abbNMyk9Jparf/YNpUDs
-         VhhA==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
+        fh=2l/5I4cU8s1hb7bWvBTK0dbcQhtF5XyNEqCP0k+GLEw=;
+        b=JxJ+AJFubZBMzLh39XAyxIRo5ktfQ2TWCIpeajnPHo93/3Va7kiQTxopnYXeQZt5yh
+         YbPCnpY3IVSauReJmCsa4GbT4XHdXHBEyjRsxTfRUS1TztFY1lvjh9wJN/2WjJeldn6N
+         WkZBNJ08XWIxcIGdWNj+d9yUfYOFSeBD2YkbIUwQ7AnxBYWWNWl7qSeBEkRnKoG+Wb+t
+         PGFI1XxU5UE1WQMR/EOp83KXR2wf+gjmy7PL31UVp3LkmMsKHM0vIeIDf70oQxxHzP0L
+         uKDYavzelIq202q7Yf5r0Qom4hv+r9Qy5gpxQlZuwhHh35DQTIYMr1lCRjrGNqH+55+D
+         WcgA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bZpDrMSN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5240073eba7si1357400e0c.106.2025.03.11.09.30.49
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dmwpw2Vt;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 3f1490d57ef6-e634b86599asor7188913276.6.2025.03.11.11.37.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 09:30:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bZpDrMSN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ts2V6-0004bs-NE; Tue, 11 Mar 2025 12:30:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ts2Ui-0004FM-65
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 12:30:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ts2Uf-0003AQ-Br
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 12:30:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741710610;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gvW/5G6Q0o35IFHWkI1ctZoRXpbF5XVgT4Z39z0aScA=;
- b=bZpDrMSNcuAHkWoc7iGoiXxUUCaiQtmytW0ogGKKXr4cT9gWDg7JDpCveHxOGPfVMG7LLl
- CxbPrsl5C3T3S0JVKxS/Xu8k3Q5s7PJwCv15sg5tHtmwL2kqKlYcNOHigGfCRDuxdGF1fF
- Pfmgqoxp6c99mbv91tUNKLjLyF3D6rs=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-191-fE0UnZDdN_KYSDt1pcIR5w-1; Tue, 11 Mar 2025 12:30:09 -0400
-X-MC-Unique: fE0UnZDdN_KYSDt1pcIR5w-1
-X-Mimecast-MFC-AGG-ID: fE0UnZDdN_KYSDt1pcIR5w_1741710609
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-7c0c1025a6cso1764801485a.0
- for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 09:30:09 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dmwpw2Vt;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1741718227; x=1742323027; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
+        b=Dmwpw2VtEOjwH+0iYmqony2yj+vP5/RZeHBXHAbYoa4fBupgjf72rSGzrUGwPkZRB2
+         s9vdmSxZ7co5BMmF6ajJUkJDBm57OjriB3eeUuKGz7xnVziQ90XJQFvPDWmMRP+oIsw4
+         oNbxLWLElpTU/p44jRt/Fhbdm9OcuPEHfYmptfiAymLZ3oLXoLRZKaWjAFqdvMHVgDmx
+         w6F12xn4Yq7g2cddsyrTkJUOZgoKUN18ojqkmZt5EgZLYvtdY/kTprS23Nyaoi5sJAdq
+         IiIgR0IdEd2U3MpDgQKvHfUMk88Ml2bVaEEqwoQYre5AbLNh7FZn6pD+eKK4dqOKZV3+
+         YlSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741710609; x=1742315409;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gvW/5G6Q0o35IFHWkI1ctZoRXpbF5XVgT4Z39z0aScA=;
- b=NdxLdtlmUDEXGWE7mbdacQ8u9k5Fy+QlMFVeHmbp5u8z+R9mPF6QrtXcn10U4+QAdU
- bIlBI6rWgwFAfaUw5+jS4xfip3Zd7fSPeqPsPB8MC3T6Gu9LLOSiPeaDvMbLOiy6quL0
- fsFXCb8omU2gWFPoYAkYhepjWe5/7/oX0Ug5A8PaBHTWjdmU4GeVC7PGz9fYUanCmf+2
- zRyOII5Zah6p9y9TwEeDa54yE4OaIE2L4lwKUxcZxTaPKHoAp8nQx5Id8c1LIN//sVPK
- gLQncE1JBaMM09GvBrEtfCYEBDZ7+Mv5+Y5gE0wuUlEXqxoLnrw0C5gEHRB+O8I5kaJu
- hRRQ==
-X-Gm-Message-State: AOJu0YwllNGwVnamPR339do6zaeMBmweqejDcWeQIeSMVRGF2FZFW/g5
- VaDLWB4UrFbUH0Ggcte2UVsThCPcudS6IQkxVBJK4oNenLz6lahG7Zgyk/PYX69L/zZif5by99n
- ITpeM65LngVxPK9CHg1ZLpZ3C7A0ufm6Fe4abwVRlil8/gJfZgw==
-X-Gm-Gg: ASbGncvjAgm3g11Xxbbcvez/2XeVLxZ4OLJRfhna4412NArsd6+tYry6IqfS3LcjyZV
- WfWIXlx+c/Q/TtglzcpfZz1CQTbAvJx/d5Ez9fNDP6NEOJgD5+5dv+2rqsL1fVE1AzRepcunusx
- pbvcpGA+ed4SiZrLLRGaLpIXiDgJ0D72avDZ+bXJvSQqBC6qMTqSWwgVNsfEZF2swuG6mgLePO2
- ItykVZqtJQTWG0pg/iltVTaB4+02oSniPA8SKY8D5X8UUWofwOB3LuKO7TLwjo4j3DZHFoeaTI+
- 4XlVk4XPTUWah3Jb3k7/f27MHpYUoqFiSKyOyWuYX+wCY0h0OAcgctrH4Nm5h1s=
-X-Received: by 2002:a05:620a:660a:b0:7c5:48bc:8c89 with SMTP id
- af79cd13be357-7c548bc8ecfmr1706849085a.27.1741710609383; 
- Tue, 11 Mar 2025 09:30:09 -0700 (PDT)
-X-Received: by 2002:a05:620a:660a:b0:7c5:48bc:8c89 with SMTP id
- af79cd13be357-7c548bc8ecfmr1706845385a.27.1741710609067; 
- Tue, 11 Mar 2025 09:30:09 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7c5414c8067sm542616585a.59.2025.03.11.09.30.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Mar 2025 09:30:08 -0700 (PDT)
-Message-ID: <baf96cd3-2434-444a-8a16-87abd6e14bcd@redhat.com>
-Date: Tue, 11 Mar 2025 17:30:06 +0100
+        d=1e100.net; s=20230601; t=1741718227; x=1742323027;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
+        b=u9XrhEaTb1xW+GBtfMUu2ri9IrbM7nY6A6x/mqdWdEPEg6Xm6tkbDR4sbTgwGw9a7l
+         jmOQFXMpVq1xR15Fd1n/oKY7EQGRK3BoDSL0WvN2+mAgKTTgiwGiAL7EKncWG81T3Lfb
+         A2BmKuKw9qiTfljW0AlEcLRw9LGjjRYPC8VdQlEgFWB+HbVKEip8J1rum0GBJ4SqADAk
+         XVQAbmSxV9PhUgZGGSJ2l7f1tZrJIzKxV7he22toJ9VohEDJGFBiAbv+I+Tm7NWZ2k88
+         J7YBISBW84AJeN1ESENvQsUZ4om3KlzlISAnGJ/fI/KKw+1m2rE884OJWkU7IpyKDn8M
+         wO+w==
+X-Forwarded-Encrypted: i=1; AJvYcCXTmOYmez7T6KFie4xw06BV/LSn6uAO3I6fxQR56S65Z+oOPNZry5hwhf0mhl2yZDFNRAX7l1pGesVR0Q==@linaro.org
+X-Gm-Message-State: AOJu0Ywr+BKiPxcUoRKcLA2GMu+3qJKaznx9eKaK9PTRcuFuk0s1+diN
+	285HQMt5kvTNwLI0fDbooTPGdLIUXWuZCJ2nx+jSzYMN0+VtlQGyZyTyL8rWPhNObbswrsuhB8d
+	ls8zE/p4GbgIDpDtqg25yXVN1wPtvIxsgvKAZ4On0
+X-Gm-Gg: ASbGncsO+i7N5SUoo3u695ZuK4N6VMZJ5+sEwZ/eMeK1Dcy9IxJqtaYrzlCDeAJ69qq
+	JYm+qPD53NdnT9gtFMHXH2C/GQ491q7Ht9CTWIRBEwsSBKSoJLj63EZXD8ZBIagw7LmnyTR/xrL
+	sM963rlsd/vG/dLPUYbL3kQT1RZ7E=
+X-Google-Smtp-Source: AGHT+IF/5Z50eBBrV2TrE7YsRKS/qUtD0B5qOOn/yDurn2aOxkMF1P3zHWfzVvFPoJcJx0TcR68GTaEtqI8G9XKn8s8=
+X-Received: by 2002:a05:6902:2086:b0:e60:a068:a14b with SMTP id
+ 3f1490d57ef6-e635c0f9b05mr22983993276.4.1741718227112; Tue, 11 Mar 2025
+ 11:37:07 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1] tests/functional: Convert the SMMU test to the
- functional framework
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250311104920.364102-1-thuth@redhat.com>
- <4b7d75f1-12df-44ab-9435-df517beff716@redhat.com>
- <39ad1fef-f5cc-44f6-be4d-84a597b3f9f6@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <39ad1fef-f5cc-44f6-be4d-84a597b3f9f6@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: i1jLhJsm4Al2hTwGwrFMRZlUKsP5leQ__yFrYK2znqI_1741710609
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D1UTlrMfP0R9
+References: <20250310012825.79614-1-philmd@linaro.org> <CAFEAcA_fRWgntwbiFiDJqAkthR8vBzrkLOLkp5GeHD9O8xTMCA@mail.gmail.com>
+ <CAFEAcA_kEndvNtw4EHySXWwQPoGs029yAzZGGBcV=zGHaj7KUQ@mail.gmail.com> <6f4a3582-f3e2-4f0c-8ab6-eeddd1064793@linaro.org>
+In-Reply-To: <6f4a3582-f3e2-4f0c-8ab6-eeddd1064793@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Mar 2025 18:36:55 +0000
+X-Gm-Features: AQ5f1JqytoFakCllyYae0_YaX-PbqFdorB8TUeotHeg0V71ppFWFo44bbBjv82U
+Message-ID: <CAFEAcA8j-JAVC=VK0YHoyB9dBH6Rj7aGpmZtCGPbc5Usdy6yhA@mail.gmail.com>
+Subject: Re: [PATCH v7 0/7] hw/char/pl011: Implement TX (async) FIFO to avoid
+ blocking the main loop
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: oEtDOAuC/0ys
 
-Hi Thomas,
+On Tue, 11 Mar 2025 at 10:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+> On 10/3/25 18:28, Peter Maydell wrote:
+> > This seems to be because the pl011 code and the chardev
+> > code disagree about how "couldn't write anything" is
+> > reported. pl011 here is looking for "0 means wrote nothing",
+> > but the chardev code reports it as "-1 and errno is EAGAIN".
+> >
+> > I think the chardev code is actually what we need to fix here,
+> > because it makes basically no effort to guarantee that the
+> > errno from the underlying write is still in 'errno' by the
+> > time qemu_chr_fe_write() returns. In particular it may
+> > call qemu_chr_write_log() or replay_char_write_event_save(),
+> > both of which will happily trash errno if something fails
+> > during their execution.
+>
+> IIUC when retrying qemu_chr_write_buffer(s, buf, len, ofs) could
+> write less than @len (but still writing few bytes, that information
+> is stored in @offset) and return -errno, discarding @offset partial
+> write len.
 
+I thought that too when I first read the code, because it's
+been written in a way that didn't match what I was expecting
+for a "write until you would block, then stop" loop, but on
+second reading I decided it could not, at least in the case
+where write_all is false. If we write any data at all on the
+first cc->chr_write call, we will then break out of the loop
+without trying to send any more, so there's no code path
+that will then set res to a negative number. (If write_all
+is true, then yeah I think we can return an errno rather
+than a partial-write count if chr_write fails on the second
+time through the loop, but all the callers of that version
+of the function ignore errors of any kind anyway, and
+certainly don't have any means to handle "only wrote half
+the data", otherwise they'd be using the non-blocking
+version.)
 
-On 3/11/25 4:24 PM, Thomas Huth wrote:
-> On 11/03/2025 15.00, Eric Auger wrote:
->> Hi Thomas,
->>
->>
->> On 3/11/25 11:49 AM, Thomas Huth wrote:
->>> This test was using cloudinit and a "dnf install" command in the guest
->>> to exercise the NIC with SMMU enabled. Since we don't have the
->>> cloudinit
->>> stuff in the functional framework and we should not rely on having
->>> access
->>> to external networks (once our ASSETs have been cached), we rather boot
->>> into the initrd first, manually mount the root disk and then use the
->>> check_http_download() function from the functional framework here
->>> instead
->>> for testing whether the network works as expected.
->>>
->>> Unfortunately, there seems to be a small race when using the files
->>> from Fedora 33: To enter the initrd shell, we have to send a "return"
->>> once. But it does not seem to work if we send it too early. Using a
->>> sleep(0.2) makes it work reliably for me, but to make it even more
->>> unlikely to trigger this situation, let's better limit the Fedora 33
->>> tests to only run with KVM.
->>>
->>> Finally, while we're at it, we also add some lines for testing writes
->>> to the hard disk, as we already do it in the test_intel_iommu test.
->>
->> for your info it does not apply anymore on mainline after latest appied
->> functional test additions.
-> ...
->>> +    ASSET_KERNEL_F31 = Asset(
->>> +       
->>> ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
->>> +         'releases/31/Server/aarch64/os/images/pxeboot/vmlinuz'),
->>> +       
->>> '413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120')
->> the hash seems wrong for the vmlinuz. I get
->> Exception: Hash of
->> https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/31/Server/aarch64/os/images/pxeboot/vmlinuz
->>
->> does not match
->> 413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120
->
-> D'oh, I got tricked by "wget". I used wget to download the asset to
-> manually calculate the sha256sum, then manually copied the asset into
-> my cache to avoid a second download.
-> But wget apparently unzips the kernel:
->
-> $ wget
-> https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/31/Server/aarch64/os/images/pxeboot/vmlinuz
-> $ sha256sum vmlinuz
-> 413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120  vmlinuz
-> $ ls -l vmlinuz
-> -rw-r--r--. 1 thuth thuth 25885184 Oct 21  2019 vmlinuz
->
-> While curl gives the correct results:
->
-> $ curl -O
-> https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/31/Server/aarch64/os/images/pxeboot/vmlinuz
-> $ sha256sum vmlinuz
-> 3ae07fcafbfc8e4abeb693035a74fe10698faae15e9ccd48882a9167800c1527  vmlinuz
-> $ ls -l vmlinuz
-> -rw-r--r--. 1 thuth thuth  9027813 Mar 11 16:13 vmlinuz
->
-> This should fix the issue:
->
-> diff --git a/tests/functional/test_aarch64_smmu.py
-> b/tests/functional/test_aarch64_smmu.py
-> index bba8599401c..4f0492ca50d 100755
-> --- a/tests/functional/test_aarch64_smmu.py
-> +++ b/tests/functional/test_aarch64_smmu.py
-> @@ -123,7 +123,7 @@ def run_and_check(self, filename, hashsum):
->      ASSET_KERNEL_F31 = Asset(
->          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
->           'releases/31/Server/aarch64/os/images/pxeboot/vmlinuz'),
-> -       
-> '413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120')
-> +       
-> '3ae07fcafbfc8e4abeb693035a74fe10698faae15e9ccd48882a9167800c1527')
->
->      ASSET_INITRD_F31 = Asset(
->          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-> @@ -165,7 +165,7 @@ def test_smmu_noril_nostrict(self):
->      ASSET_KERNEL_F33 = Asset(
->          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
->           'releases/33/Server/aarch64/os/images/pxeboot/vmlinuz'),
-> -       
-> '0ef9e34f80b49fa2ac098899b27075e95c11d5b646f6ca4df2e89237a40f9e4f')
-> +       
-> 'd8b1e6f7241f339d8e7609c456cf0461ffa4583ed07e0b55c7d1d8a0c154aa89')
->
->      ASSET_INITRD_F33 = Asset(
->          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-
-yep it fixes the issue
-
-python3.9 ../tests/functional/test_aarch64_smmu.py
-TAP version 13
-ok 1 test_aarch64_smmu.SMMU.test_smmu_noril
-ok 2 test_aarch64_smmu.SMMU.test_smmu_noril_nostrict
-ok 3 test_aarch64_smmu.SMMU.test_smmu_noril_passthrough
-ok 4 test_aarch64_smmu.SMMU.test_smmu_ril
-ok 5 test_aarch64_smmu.SMMU.test_smmu_ril_nostrict
-ok 6 test_aarch64_smmu.SMMU.test_smmu_ril_passthrough
-1..6
-
-The conversion looks good to me. thank you for doing it!
-
-With above fix and straightforward rebase on top of mainline, feel free
-to add
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-
->
-> Sorry for the confusion.
->
->  Thomas
->
-
+-- PMM

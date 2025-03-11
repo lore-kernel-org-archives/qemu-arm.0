@@ -1,267 +1,683 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1885440njc;
-        Tue, 11 Mar 2025 07:16:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXq8scnCCKeWTIgm/zUWy11frNQHD7jmOy5YLQDStY0voz65b4lFqOafnh+3BFjfrRvytOM0YH/TQQb9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGNdFpSrbuuLNZljrinWdP3szCnDdkNzHhJgqG53i6kOfDao3Ws1xaYjMAvvT+H0hlHzcMi
-X-Received: by 2002:a05:6000:4023:b0:390:f116:d220 with SMTP id ffacd0b85a97d-3926cb66576mr4158224f8f.17.1741702614763;
-        Tue, 11 Mar 2025 07:16:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741702614; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1950973njc;
+        Tue, 11 Mar 2025 08:50:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgiJLhkTlMitFIP2zKTf1hry3kG4Rr1XHRjcMc9WWk9A/csGMV9NodzbwYTBMTQshpBRqBIHm5TOYZ9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IH0LZ9o432Q+f6dP8GVuKYpzGLrMhWh6COFK8hZclujxNlxXLU4j+gl82cnngNLoWOsnzwt
+X-Received: by 2002:a05:620a:27d5:b0:7c0:6419:8bd3 with SMTP id af79cd13be357-7c4e4fc59d3mr2438738585a.22.1741708199736;
+        Tue, 11 Mar 2025 08:49:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741708199; cv=none;
         d=google.com; s=arc-20240605;
-        b=UxTqbqYch5tuHKn5XkmUEUkbZbraaD+RWxEixjkjh+DHVApCI8YMjiqJ5698tc1MgY
-         O3+e+FO4u9pjiL10z0SOrqtbbeOTQU5dwt8Ut39/RYoC7jtbb4aLiNI0Xu4xdedsiGXu
-         tIfrBQW11Thn9oYejjYOVFZn04jItnyNMTc0OJXWkaiqcPmOInSIkr9bczHUTANkuiYS
-         gzheNNqCLP985OwyNp31kuKUXjWFPweLpkR9rBvCOQ9Uxg+vVUJ+PzxBjwi3JN0XsuNi
-         lVK257sUVbPh97J+KGKo2sY6a9hM5wUzSKuG1TJIQXzcjRKWX/EKwFhdtdgCKA8+AEEl
-         aE/A==
+        b=Rm34eRA6a5Sak8bCYmJEwpCMudYFmjadlEA55+X06bVtWyIIkWzt18hrG55TXeudXt
+         6q/iezZqe9FD1Dnjgnq2Or3glc8Pv0qc+2I74/qpiev8CKzhdNUR7ymIBj2VNbDabZor
+         fE2KTh+23C9IQLICdw9jBdepXFobnleWo1Ha0EvKDbx0SOZNxVn6m++WpPL3WKnnoNyk
+         UQja30fp2HfwRyACaAYPrjdvcyqNGJOZfbS8ovR1y3C4wYkSUpwGruJ3vHdy8opLUoNC
+         D3Ch9uTPvQVWUCHyZxZhncuOmOqgblgp9Ld4R6eYQKoQZ9Ik+GMKwyRAiREj9gjX66s4
+         huFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=Ui0lAPaQu7Mc64GMat30OvqdY77G58dawGdVkfSsIuE=;
-        fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
-        b=lOVTAJCRIaGT6g8++BR+02Ryi9qANUwjXpGb1937SFa3/jEuLg1Mx2Zb0S1H3c4twi
-         Vy49Gx7+EwddLdEN2FoUx08fEw2MFZxTh2W2wKvpEdQbUcCM4w/M1FWTEo92nyML9SqV
-         Pjf9tr4Gd9CBJabzosLEa9MlljsE0o518dvTueq7RTh1pHXZJwzhe6+gp2bpP28VN0gd
-         SJjXIVI4ShYqNa+tVQiHeD1CKNa46YiWG1m4binw+5tn6OBbLkSEyiY0jaHXe0nUXRDl
-         Q9JzsP0n4j7HfhkquiTshzgRrjEgaW/jsaWI0w3t69FOqGsA29j1/C4Q3X3e1g59o/eG
-         1czQ==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=sMkKO7lQctPh0fmKdB96NorrH4IhFqqMxyHqDBUCVn0=;
+        fh=jig4urRWYsaQpy1e4WqylhF+B2nCSP1BrTymNgU8iuA=;
+        b=I7Tpg5oYRpNgjWvZvrTIWvTUFgrwgCFHzuFXVjThXyXSGuM4tEx4FKpxaIVx4FM3ui
+         nPy3FgtqHkbRgWntI3V1GhkYrFDmOudMXZ8yrhojRwYhwxL0dauduqk3qKQPcfg3fZhu
+         eQzJvrIf9iOU+BpfL1o+6hEctdB9bUKNQL1uXEJgZPTK9nJVui9TMDk2ehA+4jc5LlMj
+         yrD+ldtCeZ9eonhF3bCNmOLV3i0SNig/swMdjRGBTsZ02tFSbBKeljHUKbf+Aq4EayX5
+         EMHwGn2TFnW/jhuqhQ1EBHyKnKutEqdJi0wppt5vxBhITSBnsTQoMRDDjQggkMVjUpU1
+         kxTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@mvista.com header.s=google header.b=id11lOjW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mvista.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3912c11e3a1si8901482f8f.617.2025.03.11.07.16.54
+        by mx.google.com with ESMTPS id d75a77b69052e-47673aa38b8si63794811cf.325.2025.03.11.08.49.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 07:16:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Mar 2025 08:49:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@mvista.com header.s=google header.b=id11lOjW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mvista.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ts0NG-0000mZ-QK; Tue, 11 Mar 2025 10:14:26 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ts1rK-0007u4-1x; Tue, 11 Mar 2025 11:49:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ts0NE-0000Ze-Le; Tue, 11 Mar 2025 10:14:25 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ts0NC-0007DF-Gy; Tue, 11 Mar 2025 10:14:24 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBwcs0dtrz6FGXG;
- Tue, 11 Mar 2025 22:09:49 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id A058F14038F;
- Tue, 11 Mar 2025 22:14:14 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 11 Mar 2025 15:14:07 +0100
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [RFC PATCH v2 15/20] hw/arm/smmuv3: Forward invalidation commands to
- hw
-Date: Tue, 11 Mar 2025 14:10:40 +0000
-Message-ID: <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1ts1rH-0007td-ON
+ for qemu-devel@nongnu.org; Tue, 11 Mar 2025 11:49:31 -0400
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1ts1rD-0003W3-C4
+ for qemu-devel@nongnu.org; Tue, 11 Mar 2025 11:49:31 -0400
+Received: by mail-oa1-x2b.google.com with SMTP id
+ 586e51a60fabf-2bcca6aae0bso3807669fac.1
+ for <qemu-devel@nongnu.org>; Tue, 11 Mar 2025 08:49:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista.com; s=google; t=1741708164; x=1742312964; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sMkKO7lQctPh0fmKdB96NorrH4IhFqqMxyHqDBUCVn0=;
+ b=id11lOjW7ZyqQLczg39uq0HuhiS9w1QduMVMHPEqLYQQvwFGzEswIROuYFg6dSs5Wg
+ GYVWyoBrLIQcA//jYF/OLv3bKlTCIUW8WVIQ64wBhCLErgEesExndQIS6AQmRG9ftNFC
+ 7jFlSVd6K9BiDcFkzbJVmXmcLOj6XsVnQ7/aE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741708164; x=1742312964;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sMkKO7lQctPh0fmKdB96NorrH4IhFqqMxyHqDBUCVn0=;
+ b=RQwVN+Ncfh1J+eyaMXmo0KVBwUtJ9EM0XeJwBZ/vd28Vm9Nuu6tWITZ0SKHhbWHSYc
+ jBJufaXaUPbW4uJJ51VeMcM0794YQbhslekyAXghl6tWrlhN4DqeanoDPX2EPuW2To0o
+ 2gvm2LgIPIYiWY9v2P/QbLUOID2bWzomy8dVDnB5dET6oHzy2PbTPoghzvmMAJkb6Vst
+ BLXYt8pbdywnB5OV+PheUIMUjnYzJcle0Qrbyz15KUVMXaR8FMlPxdMf6sQiRkNZB0ns
+ 4pybdo2o2+GdF1s4K/Ey1K1edjuRt5ny50+6SdEW/RB6L9v1fO2G2EFpGAJf6I9NRdjf
+ Mo5A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUBb1IerToGQ6iWMIV5F5u/aAM02v98SigCYjzGB6g8iULYLRpMenOkgtzmvE0b86gZha+p9qQGNuBp@nongnu.org
+X-Gm-Message-State: AOJu0YxqO/qC1jLXbaOXy6eEGU7b4SQRvs4QOCqQrMHkaXWDbUHa3Kdh
+ pxDcSLIrdlIBY5CFylMCMBA1q8K0cGh2lfn6rdaDQ/zYILd0KDNWP3LGBXLIt7k=
+X-Gm-Gg: ASbGncsyerI/i9wlxg57OyyHv93HYM+ZY5xnuCjc9+jBzulopt5UD7n7d1R265pS2tV
+ HmC0oYyl48JjQl3ZaCpspbCjBMwqp4jr/BYRPil7DYHagQmq9jx8MfNWxKm0bDwN9kD3GgcZMB+
+ aoMqtvSUCTo7rJBZX+u/Vy4gsaj2I2dh6NRfKRUK92FQT2jShznlF6hBaZvRFd4KqWThLWk4SEU
+ MJ/FTIQ4MLO4RwrCi43yZQOIHXiXtf5xmp/ed+QTdQRaUAEV7zJJcFyTkw5EWpGnc+FjqN8I0WV
+ 6LH7vCdXjb0WYuzyAZgFolgKQyfoq7WSf77+Bfk/2Lb1LRocAQ==
+X-Received: by 2002:a05:6871:e082:b0:2c2:2d0f:40a3 with SMTP id
+ 586e51a60fabf-2c2612f7582mr10423751fac.31.1741708164053; 
+ Tue, 11 Mar 2025 08:49:24 -0700 (PDT)
+Received: from mail.minyard.net ([2001:470:b8f6:1b:4e56:397e:6a88:169])
+ by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-72b7c8e98dasm1383669a34.56.2025.03.11.08.49.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Mar 2025 08:49:22 -0700 (PDT)
+Date: Tue, 11 Mar 2025 10:49:19 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
+Message-ID: <Z9BbfyNSPBkH-gaf@mail.minyard.net>
+References: <20250223114708.1780-1-shentey@gmail.com>
+ <20250223114708.1780-19-shentey@gmail.com>
+ <77E3F57E-95D0-4E2F-838E-5E0334651349@gmail.com>
+ <1FBD5091-2221-4815-85CB-D98BE4F6EA72@gmail.com>
+ <F2594DA2-F703-4F82-B07F-2D665329E1CF@gmail.com>
+ <fa40fbaa-df39-40e4-8845-fd516df10b41@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
+ micalg=sha-256; boundary="Jat1ixbgLK/8tm3M"
+Content-Disposition: inline
+In-Reply-To: <fa40fbaa-df39-40e4-8845-fd516df10b41@linaro.org>
+Received-SPF: pass client-ip=2001:4860:4864:20::2b;
+ envelope-from=cminyard@mvista.com; helo=mail-oa1-x2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4mhy9LLtyTPB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zUnSBthivI8B
 
-From: Nicolin Chen <nicolinc@nvidia.com>
 
-Use the provided smmuv3-accel helper functions to issue the
-command to physical SMMUv3.
+--Jat1ixbgLK/8tm3M
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- hw/arm/smmuv3-internal.h | 11 ++++++++
- hw/arm/smmuv3.c          | 58 +++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 68 insertions(+), 1 deletion(-)
+On Tue, Mar 11, 2025 at 10:20:03AM +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 11/3/25 08:34, Bernhard Beschow wrote:
+> >=20
+> >=20
+> > Am 7. M=C3=A4rz 2025 19:18:34 UTC schrieb Bernhard Beschow <shentey@gma=
+il.com>:
+> > >=20
+> > >=20
+> > > Am 4. M=C3=A4rz 2025 18:53:10 UTC schrieb Bernhard Beschow <shentey@g=
+mail.com>:
+> > > >=20
+> > > >=20
+> > > > Am 23. Februar 2025 11:47:08 UTC schrieb Bernhard Beschow <shentey@=
+gmail.com>:
+> > > > > The implementation just allows Linux to determine date and time.
+> > > > >=20
+> > > > > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> > > > > ---
+> > > > > MAINTAINERS                |   2 +
+> > > > > hw/rtc/rs5c372.c           | 236 ++++++++++++++++++++++++++++++++=
++++++
+> > > > > tests/qtest/rs5c372-test.c |  43 +++++++
+> > > > > hw/rtc/Kconfig             |   5 +
+> > > > > hw/rtc/meson.build         |   1 +
+> > > > > hw/rtc/trace-events        |   4 +
+> > > > > tests/qtest/meson.build    |   1 +
+> > > > > 7 files changed, 292 insertions(+)
+> > > > > create mode 100644 hw/rtc/rs5c372.c
+> > > > > create mode 100644 tests/qtest/rs5c372-test.c
+> > > >=20
+> > > > Ping for just this patch. I'd like to have it merged for 10.0.
+> > >=20
+> > > Ping^2 -- just few days left before soft freeze.
+> >=20
+> > Last ping before the freeze
+> >=20
+> > It would really be nice to have this device model in 10.0 since this wo=
+uld allow me to use upstream QEMU.
+>=20
+> Apparently I2C maintainer wasn't Cc'ed (now is):
+>=20
+>   Corey Minyard <cminyard@mvista.com> (maintainer:I2C and SMBus)
+>=20
+> At a glance patch LGTM, so:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 4602ae6728..546f8faac0 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -235,6 +235,17 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
- #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
- #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
- 
-+static inline int smmuv3_q_ncmds(SMMUQueue *q)
-+{
-+        uint32_t prod = Q_PROD(q);
-+        uint32_t cons = Q_CONS(q);
-+
-+        if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
-+                return prod - cons;
-+        else
-+                return WRAP_MASK(q) - cons + prod;
-+}
-+
- static inline bool smmuv3_q_full(SMMUQueue *q)
- {
-     return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 83159db1d4..e0f225d0df 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1297,10 +1297,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-     SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-     SMMUQueue *q = &s->cmdq;
-     SMMUCommandType type = 0;
-+    SMMUCommandBatch batch = {};
-+    uint32_t ncmds = 0;
-+
- 
-     if (!smmuv3_cmdq_enabled(s)) {
-         return 0;
-     }
-+
-+    ncmds = smmuv3_q_ncmds(q);
-+    batch.cmds = g_new0(Cmd, ncmds);
-+    batch.cons = g_new0(uint32_t, ncmds);
-+
-     /*
-      * some commands depend on register values, typically CR0. In case those
-      * register values change while handling the command, spec says it
-@@ -1395,6 +1403,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
- 
-             trace_smmuv3_cmdq_cfgi_cd(sid);
-             smmuv3_flush_config(sdev);
-+
-+            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
-+                                        &q->cons, true)) {
-+                cmd_error = SMMU_CERROR_ILL;
-+                break;
-+            }
-+
-             break;
-         }
-         case SMMU_CMD_TLBI_NH_ASID:
-@@ -1418,6 +1433,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-             smmu_inv_notifiers_all(&s->smmu_state);
-             smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-+
-+            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-+                                        false)) {
-+                cmd_error = SMMU_CERROR_ILL;
-+                break;
-+            }
-+
-             break;
-         }
-         case SMMU_CMD_TLBI_NH_ALL:
-@@ -1445,6 +1467,12 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             trace_smmuv3_cmdq_tlbi_nsnh();
-             smmu_inv_notifiers_all(&s->smmu_state);
-             smmu_iotlb_inv_all(bs);
-+
-+            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-+                                        false)) {
-+                cmd_error = SMMU_CERROR_ILL;
-+                break;
-+            }
-             break;
-         case SMMU_CMD_TLBI_NH_VAA:
-         case SMMU_CMD_TLBI_NH_VA:
-@@ -1453,7 +1481,24 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-                 break;
-             }
-             smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
-+
-+            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-+                                        false)) {
-+                cmd_error = SMMU_CERROR_ILL;
-+                break;
-+            }
-+            break;
-+        case SMMU_CMD_ATC_INV:
-+        {
-+            SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
-+
-+            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
-+                                        &q->cons, true)) {
-+                cmd_error = SMMU_CERROR_ILL;
-+                break;
-+            }
-             break;
-+        }
-         case SMMU_CMD_TLBI_S12_VMALL:
-         {
-             int vmid = CMD_VMID(&cmd);
-@@ -1485,7 +1530,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_TLBI_EL2_ASID:
-         case SMMU_CMD_TLBI_EL2_VA:
-         case SMMU_CMD_TLBI_EL2_VAA:
--        case SMMU_CMD_ATC_INV:
-         case SMMU_CMD_PRI_RESP:
-         case SMMU_CMD_RESUME:
-         case SMMU_CMD_STALL_TERM:
-@@ -1511,12 +1555,24 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         queue_cons_incr(q);
-     }
- 
-+    qemu_mutex_lock(&s->mutex);
-+    if (!cmd_error && batch.ncmds) {
-+        if (smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-+            q->cons = batch.cons[batch.ncmds];
-+            cmd_error = SMMU_CERROR_ILL;
-+        }
-+    }
-+    qemu_mutex_unlock(&s->mutex);
-+
-     if (cmd_error) {
-         trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-         smmu_write_cmdq_err(s, cmd_error);
-         smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
-     }
- 
-+    g_free(batch.cmds);
-+    g_free(batch.cons);
-+
-     trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
-                                   Q_PROD_WRAP(q), Q_CONS_WRAP(q));
- 
--- 
-2.34.1
+Well, it's fairly hard to read this way :-).  But this looks good.  My
+only comment is on:
 
+>>>> +#define NVRAM_SIZE 0x10
+>>>> +
+>>>> +/* Flags definitions */
+>>>> +#define SECONDS_CH 0x80
+>>>> +#define HOURS_PM   0x20
+>>>> +#define CTRL2_24   0x20
+
+Those are fairly generic names; when I see things like that I worry
+about conflicting with other generic names that might come into an
+include later.  Not a huge deal, though.
+
+Acked-by: Corey Minyard <cminyard@mvista.com>
+
+>=20
+> >=20
+> > Thanks,
+> > Bernhard
+> >=20
+> > >=20
+> > > AFAICS no open issues and I'd really like to have this RTC merged for=
+ 10.0. What is holding it back?
+> > >=20
+> > > Best regards,
+> > > Bernhard
+> > >=20
+> > > >=20
+> > > > Thanks,
+> > > > Bernhard
+> > > >=20
+> > > > >=20
+> > > > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > > > index 489e426d85..2552cfd65c 100644
+> > > > > --- a/MAINTAINERS
+> > > > > +++ b/MAINTAINERS
+> > > > > @@ -828,10 +828,12 @@ F: hw/arm/imx8mp-evk.c
+> > > > > F: hw/arm/fsl-imx8mp.c
+> > > > > F: hw/misc/imx8mp_*.c
+> > > > > F: hw/pci-host/fsl_imx8m_phy.c
+> > > > > +F: hw/rtc/rs5c372.c
+> > > > > F: include/hw/arm/fsl-imx8mp.h
+> > > > > F: include/hw/misc/imx8mp_*.h
+> > > > > F: include/hw/pci-host/fsl_imx8m_phy.h
+> > > > > F: pc-bios/imx8mp*
+> > > > > +F: tests/qtest/rs5c372-test.c
+> > > > > F: docs/system/arm/imx8mp-evk.rst
+> > > > >=20
+> > > > > MPS2 / MPS3
+> > > > > diff --git a/hw/rtc/rs5c372.c b/hw/rtc/rs5c372.c
+> > > > > new file mode 100644
+> > > > > index 0000000000..5542f74085
+> > > > > --- /dev/null
+> > > > > +++ b/hw/rtc/rs5c372.c
+> > > > > @@ -0,0 +1,236 @@
+> > > > > +/*
+> > > > > + * Ricoh RS5C372, R222x I2C RTC
+> > > > > + *
+> > > > > + * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
+> > > > > + *
+> > > > > + * Based on hw/rtc/ds1338.c
+> > > > > + *
+> > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > + */
+> > > > > +
+> > > > > +#include "qemu/osdep.h"
+> > > > > +#include "hw/i2c/i2c.h"
+> > > > > +#include "hw/qdev-properties.h"
+> > > > > +#include "hw/resettable.h"
+> > > > > +#include "migration/vmstate.h"
+> > > > > +#include "qemu/bcd.h"
+> > > > > +#include "qom/object.h"
+> > > > > +#include "system/rtc.h"
+> > > > > +#include "trace.h"
+> > > > > +
+> > > > > +#define NVRAM_SIZE 0x10
+> > > > > +
+> > > > > +/* Flags definitions */
+> > > > > +#define SECONDS_CH 0x80
+> > > > > +#define HOURS_PM   0x20
+> > > > > +#define CTRL2_24   0x20
+> > > > > +
+> > > > > +#define TYPE_RS5C372 "rs5c372"
+> > > > > +OBJECT_DECLARE_SIMPLE_TYPE(RS5C372State, RS5C372)
+> > > > > +
+> > > > > +struct RS5C372State {
+> > > > > +    I2CSlave parent_obj;
+> > > > > +
+> > > > > +    int64_t offset;
+> > > > > +    uint8_t wday_offset;
+> > > > > +    uint8_t nvram[NVRAM_SIZE];
+> > > > > +    uint8_t ptr;
+> > > > > +    uint8_t tx_format;
+> > > > > +    bool addr_byte;
+> > > > > +};
+> > > > > +
+> > > > > +static void capture_current_time(RS5C372State *s)
+> > > > > +{
+> > > > > +    /*
+> > > > > +     * Capture the current time into the secondary registers whi=
+ch will be
+> > > > > +     * actually read by the data transfer operation.
+> > > > > +     */
+> > > > > +    struct tm now;
+> > > > > +    qemu_get_timedate(&now, s->offset);
+> > > > > +    s->nvram[0] =3D to_bcd(now.tm_sec);
+> > > > > +    s->nvram[1] =3D to_bcd(now.tm_min);
+> > > > > +    if (s->nvram[0xf] & CTRL2_24) {
+> > > > > +        s->nvram[2] =3D to_bcd(now.tm_hour);
+> > > > > +    } else {
+> > > > > +        int tmp =3D now.tm_hour;
+> > > > > +        if (tmp % 12 =3D=3D 0) {
+> > > > > +            tmp +=3D 12;
+> > > > > +        }
+> > > > > +        if (tmp <=3D 12) {
+> > > > > +            s->nvram[2] =3D to_bcd(tmp);
+> > > > > +        } else {
+> > > > > +            s->nvram[2] =3D HOURS_PM | to_bcd(tmp - 12);
+> > > > > +        }
+> > > > > +    }
+> > > > > +    s->nvram[3] =3D (now.tm_wday + s->wday_offset) % 7 + 1;
+> > > > > +    s->nvram[4] =3D to_bcd(now.tm_mday);
+> > > > > +    s->nvram[5] =3D to_bcd(now.tm_mon + 1);
+> > > > > +    s->nvram[6] =3D to_bcd(now.tm_year - 100);
+> > > > > +}
+> > > > > +
+> > > > > +static void inc_regptr(RS5C372State *s)
+> > > > > +{
+> > > > > +    s->ptr =3D (s->ptr + 1) & (NVRAM_SIZE - 1);
+> > > > > +}
+> > > > > +
+> > > > > +static int rs5c372_event(I2CSlave *i2c, enum i2c_event event)
+> > > > > +{
+> > > > > +    RS5C372State *s =3D RS5C372(i2c);
+> > > > > +
+> > > > > +    switch (event) {
+> > > > > +    case I2C_START_RECV:
+> > > > > +        /*
+> > > > > +         * In h/w, capture happens on any START condition, not j=
+ust a
+> > > > > +         * START_RECV, but there is no need to actually capture =
+on
+> > > > > +         * START_SEND, because the guest can't get at that data
+> > > > > +         * without going through a START_RECV which would overwr=
+ite it.
+> > > > > +         */
+> > > > > +        capture_current_time(s);
+> > > > > +        s->ptr =3D 0xf;
+> > > > > +        break;
+> > > > > +    case I2C_START_SEND:
+> > > > > +        s->addr_byte =3D true;
+> > > > > +        break;
+> > > > > +    default:
+> > > > > +        break;
+> > > > > +    }
+> > > > > +
+> > > > > +    return 0;
+> > > > > +}
+> > > > > +
+> > > > > +static uint8_t rs5c372_recv(I2CSlave *i2c)
+> > > > > +{
+> > > > > +    RS5C372State *s =3D RS5C372(i2c);
+> > > > > +    uint8_t res;
+> > > > > +
+> > > > > +    res  =3D s->nvram[s->ptr];
+> > > > > +
+> > > > > +    trace_rs5c372_recv(s->ptr, res);
+> > > > > +
+> > > > > +    inc_regptr(s);
+> > > > > +    return res;
+> > > > > +}
+> > > > > +
+> > > > > +static int rs5c372_send(I2CSlave *i2c, uint8_t data)
+> > > > > +{
+> > > > > +    RS5C372State *s =3D RS5C372(i2c);
+> > > > > +
+> > > > > +    if (s->addr_byte) {
+> > > > > +        s->ptr =3D data >> 4;
+> > > > > +        s->tx_format =3D data & 0xf;
+> > > > > +        s->addr_byte =3D false;
+> > > > > +        return 0;
+> > > > > +    }
+> > > > > +
+> > > > > +    trace_rs5c372_send(s->ptr, data);
+> > > > > +
+> > > > > +    if (s->ptr < 7) {
+> > > > > +        /* Time register. */
+> > > > > +        struct tm now;
+> > > > > +        qemu_get_timedate(&now, s->offset);
+> > > > > +        switch (s->ptr) {
+> > > > > +        case 0:
+> > > > > +            now.tm_sec =3D from_bcd(data & 0x7f);
+> > > > > +            break;
+> > > > > +        case 1:
+> > > > > +            now.tm_min =3D from_bcd(data & 0x7f);
+> > > > > +            break;
+> > > > > +        case 2:
+> > > > > +            if (s->nvram[0xf] & CTRL2_24) {
+> > > > > +                now.tm_hour =3D from_bcd(data & 0x3f);
+> > > > > +            } else {
+> > > > > +                int tmp =3D from_bcd(data & (HOURS_PM - 1));
+> > > > > +                if (data & HOURS_PM) {
+> > > > > +                    tmp +=3D 12;
+> > > > > +                }
+> > > > > +                if (tmp % 12 =3D=3D 0) {
+> > > > > +                    tmp -=3D 12;
+> > > > > +                }
+> > > > > +                now.tm_hour =3D tmp;
+> > > > > +            }
+> > > > > +            break;
+> > > > > +        case 3:
+> > > > > +            {
+> > > > > +                /*
+> > > > > +                 * The day field is supposed to contain a value =
+in the range
+> > > > > +                 * 1-7. Otherwise behavior is undefined.
+> > > > > +                 */
+> > > > > +                int user_wday =3D (data & 7) - 1;
+> > > > > +                s->wday_offset =3D (user_wday - now.tm_wday + 7)=
+ % 7;
+> > > > > +            }
+> > > > > +            break;
+> > > > > +        case 4:
+> > > > > +            now.tm_mday =3D from_bcd(data & 0x3f);
+> > > > > +            break;
+> > > > > +        case 5:
+> > > > > +            now.tm_mon =3D from_bcd(data & 0x1f) - 1;
+> > > > > +            break;
+> > > > > +        case 6:
+> > > > > +            now.tm_year =3D from_bcd(data) + 100;
+> > > > > +            break;
+> > > > > +        }
+> > > > > +        s->offset =3D qemu_timedate_diff(&now);
+> > > > > +    } else {
+> > > > > +        s->nvram[s->ptr] =3D data;
+> > > > > +    }
+> > > > > +    inc_regptr(s);
+> > > > > +    return 0;
+> > > > > +}
+> > > > > +
+> > > > > +static void rs5c372_reset_hold(Object *obj, ResetType type)
+> > > > > +{
+> > > > > +    RS5C372State *s =3D RS5C372(obj);
+> > > > > +
+> > > > > +    /* The clock is running and synchronized with the host */
+> > > > > +    s->offset =3D 0;
+> > > > > +    s->wday_offset =3D 0;
+> > > > > +    memset(s->nvram, 0, NVRAM_SIZE);
+> > > > > +    s->ptr =3D 0;
+> > > > > +    s->addr_byte =3D false;
+> > > > > +}
+> > > > > +
+> > > > > +static const VMStateDescription rs5c372_vmstate =3D {
+> > > > > +    .name =3D "rs5c372",
+> > > > > +    .version_id =3D 1,
+> > > > > +    .minimum_version_id =3D 1,
+> > > > > +    .fields =3D (const VMStateField[]) {
+> > > > > +        VMSTATE_I2C_SLAVE(parent_obj, RS5C372State),
+> > > > > +        VMSTATE_INT64(offset, RS5C372State),
+> > > > > +        VMSTATE_UINT8_V(wday_offset, RS5C372State, 2),
+> > > > > +        VMSTATE_UINT8_ARRAY(nvram, RS5C372State, NVRAM_SIZE),
+> > > > > +        VMSTATE_UINT8(ptr, RS5C372State),
+> > > > > +        VMSTATE_UINT8(tx_format, RS5C372State),
+> > > > > +        VMSTATE_BOOL(addr_byte, RS5C372State),
+> > > > > +        VMSTATE_END_OF_LIST()
+> > > > > +    }
+> > > > > +};
+> > > > > +
+> > > > > +static void rs5c372_init(Object *obj)
+> > > > > +{
+> > > > > +    qdev_prop_set_uint8(DEVICE(obj), "address", 0x32);
+> > > > > +}
+> > > > > +
+> > > > > +static void rs5c372_class_init(ObjectClass *klass, void *data)
+> > > > > +{
+> > > > > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > > > > +    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+> > > > > +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+> > > > > +
+> > > > > +    k->event =3D rs5c372_event;
+> > > > > +    k->recv =3D rs5c372_recv;
+> > > > > +    k->send =3D rs5c372_send;
+> > > > > +    dc->vmsd =3D &rs5c372_vmstate;
+> > > > > +    rc->phases.hold =3D rs5c372_reset_hold;
+> > > > > +}
+> > > > > +
+> > > > > +static const TypeInfo rs5c372_types[] =3D {
+> > > > > +    {
+> > > > > +        .name          =3D TYPE_RS5C372,
+> > > > > +        .parent        =3D TYPE_I2C_SLAVE,
+> > > > > +        .instance_size =3D sizeof(RS5C372State),
+> > > > > +        .instance_init =3D rs5c372_init,
+> > > > > +        .class_init    =3D rs5c372_class_init,
+> > > > > +    },
+> > > > > +};
+> > > > > +
+> > > > > +DEFINE_TYPES(rs5c372_types)
+> > > > > diff --git a/tests/qtest/rs5c372-test.c b/tests/qtest/rs5c372-tes=
+t.c
+> > > > > new file mode 100644
+> > > > > index 0000000000..0f6a9b68b9
+> > > > > --- /dev/null
+> > > > > +++ b/tests/qtest/rs5c372-test.c
+> > > > > @@ -0,0 +1,43 @@
+> > > > > +/*
+> > > > > + * QTest testcase for the RS5C372 RTC
+> > > > > + *
+> > > > > + * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
+> > > > > + *
+> > > > > + * Based on ds1338-test.c
+> > > > > + *
+> > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > + */
+> > > > > +
+> > > > > +#include "qemu/osdep.h"
+> > > > > +#include "qemu/bcd.h"
+> > > > > +#include "libqos/i2c.h"
+> > > > > +
+> > > > > +#define RS5C372_ADDR 0x32
+> > > > > +
+> > > > > +static void rs5c372_read_date(void *obj, void *data, QGuestAlloc=
+ator *alloc)
+> > > > > +{
+> > > > > +    QI2CDevice *i2cdev =3D obj;
+> > > > > +
+> > > > > +    uint8_t resp[0x10];
+> > > > > +    time_t now =3D time(NULL);
+> > > > > +    struct tm *utc =3D gmtime(&now);
+> > > > > +
+> > > > > +    i2c_read_block(i2cdev, 0, resp, sizeof(resp));
+> > > > > +
+> > > > > +    /* check retrieved time against local time */
+> > > > > +    g_assert_cmpuint(from_bcd(resp[5]), =3D=3D , utc->tm_mday);
+> > > > > +    g_assert_cmpuint(from_bcd(resp[6]), =3D=3D , 1 + utc->tm_mon=
+);
+> > > > > +    g_assert_cmpuint(2000 + from_bcd(resp[7]), =3D=3D , 1900 + u=
+tc->tm_year);
+> > > > > +}
+> > > > > +
+> > > > > +static void rs5c372_register_nodes(void)
+> > > > > +{
+> > > > > +    QOSGraphEdgeOptions opts =3D { };
+> > > > > +    add_qi2c_address(&opts, &(QI2CAddress) { RS5C372_ADDR });
+> > > > > +
+> > > > > +    qos_node_create_driver("rs5c372", i2c_device_create);
+> > > > > +    qos_node_consumes("rs5c372", "i2c-bus", &opts);
+> > > > > +    qos_add_test("read_date", "rs5c372", rs5c372_read_date, NULL=
+);
+> > > > > +}
+> > > > > +
+> > > > > +libqos_init(rs5c372_register_nodes);
+> > > > > diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+> > > > > index 2fe04ec1d0..315b0e4ecc 100644
+> > > > > --- a/hw/rtc/Kconfig
+> > > > > +++ b/hw/rtc/Kconfig
+> > > > > @@ -26,3 +26,8 @@ config GOLDFISH_RTC
+> > > > >=20
+> > > > > config LS7A_RTC
+> > > > >      bool
+> > > > > +
+> > > > > +config RS5C372_RTC
+> > > > > +    bool
+> > > > > +    depends on I2C
+> > > > > +    default y if I2C_DEVICES
+> > > > > diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
+> > > > > index 8ecc2d792c..6c87864dc0 100644
+> > > > > --- a/hw/rtc/meson.build
+> > > > > +++ b/hw/rtc/meson.build
+> > > > > @@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_RTC', if_t=
+rue: files('goldfish_rtc.c'))
+> > > > > system_ss.add(when: 'CONFIG_LS7A_RTC', if_true: files('ls7a_rtc.c=
+'))
+> > > > > system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwin=
+ner-rtc.c'))
+> > > > > system_ss.add(when: 'CONFIG_MC146818RTC', if_true: files('mc14681=
+8rtc.c'))
+> > > > > +system_ss.add(when: 'CONFIG_RS5C372_RTC', if_true: files('rs5c37=
+2.c'))
+> > > > > diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+> > > > > index 8012afe102..b9f2852d35 100644
+> > > > > --- a/hw/rtc/trace-events
+> > > > > +++ b/hw/rtc/trace-events
+> > > > > @@ -35,3 +35,7 @@ m48txx_nvram_mem_write(uint32_t addr, uint32_t =
+value) "mem write addr:0x%04x val
+> > > > > # goldfish_rtc.c
+> > > > > goldfish_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRI=
+x64 " value 0x%08" PRIx64
+> > > > > goldfish_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PR=
+Ix64 " value 0x%08" PRIx64
+> > > > > +
+> > > > > +# rs5c372.c
+> > > > > +rs5c372_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0=
+x%02" PRIx8
+> > > > > +rs5c372_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0=
+x%02" PRIx8
+> > > > > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> > > > > index 8a6243382a..9e5380ba7a 100644
+> > > > > --- a/tests/qtest/meson.build
+> > > > > +++ b/tests/qtest/meson.build
+> > > > > @@ -298,6 +298,7 @@ qos_test_ss.add(
+> > > > >    'pca9552-test.c',
+> > > > >    'pci-test.c',
+> > > > >    'pcnet-test.c',
+> > > > > +  'rs5c372-test.c',
+> > > > >    'sdhci-test.c',
+> > > > >    'spapr-phb-test.c',
+> > > > >    'tmp105-test.c',
+>=20
+
+--Jat1ixbgLK/8tm3M
+Content-Type: application/x-pkcs7-signature
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIINIQYJKoZIhvcNAQcCoIINEjCCDQ4CAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0B
+BwGgggpVMIIFXzCCBEegAwIBAgIQD/rh8xorQzw9muFtZDtYizANBgkqhkiG9w0BAQsFADBl
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGln
+aWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTkw
+OTIzMTIyNTMyWhcNMzQwOTIzMTIyNTMyWjBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGln
+aUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2Vy
+dCBBc3N1cmVkIElEIENsaWVudCBDQSBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAOqxRa06rLwKBvrDb/qQ8RtXfeKA9o0A42oZbLF4GYr4Xdt9JE8r3PJRIOUZD1U3mEln
+4S/aZoS54Q+5Ecs3q2GGT/Z82VeAPLeGvJoT0LS5t/zXeUcbMuDFWgyj33kiesnuusnOWvpI
+SoxN+oBH4oo0+oUiHI65mMjMAlb93x6sabh9kKvHQvHC4x2u7wYv5+NXjnbOhJS/1NjGq+ug
+LMXeldFMz0O5qFIDpn3aQGU0htyJQ2SZyxEqlUrgunsrYj9wgfW7XuhAi2j0y5d9oMT0SuVe
+KFFnQhTEk5B3fq+OBOW0AU2JdW1r929UtRbAr8RpLt05WI2G2RNVVlHYaU0CAwEAAaOCAgQw
+ggIAMB0GA1UdDgQWBBSlYiBQ3LtbV5etI4814lRsqX75TjAfBgNVHSMEGDAWgBTOw0q5mVXy
+uNtgv6l+vVa1lzan1jAOBgNVHQ8BAf8EBAMCAYYwTAYDVR0lBEUwQwYIKwYBBQUHAwIGCCsG
+AQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMMBgkqhkiG9y8BAQUw
+EgYDVR0TAQH/BAgwBgEB/wIBADA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAGGGGh0dHA6
+Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3JsMy5kaWdp
+Y2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290RzIuY3JsMIHOBgNVHSAEgcYwgcMwgcAG
+BFUdIAAwgbcwKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwgYoG
+CCsGAQUFBwICMH4MfEFueSB1c2Ugb2YgdGhpcyBDZXJ0aWZpY2F0ZSBjb25zdGl0dXRlcyBh
+Y2NlcHRhbmNlIG9mIHRoZSBSZWx5aW5nIFBhcnR5IEFncmVlbWVudCBsb2NhdGVkIGF0IGh0
+dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9ycGEtdWEwDQYJKoZIhvcNAQELBQADggEBAHZrbCQC
+o3MAIqR0kekGYrC70EAGRDRq11COufNEXhcpv3YH6BMhUoVinPPNgfo5HPrZAFrLK/KPXYdJ
+dgkASGsINabAfY2ljUaJwKlpIewwjS6KuGEn59MgidaAUPh6lbetIoRsLhCqCzAnX1aL99fj
+CMf4NMWLUC8TqotnnrKNuw4JSjx4fcQs+U5T1bbgnyDx+8ybONuIEDvinHdKDu2VjoECzez2
+y/1IVTPlh57zBfjHJQFqLWzHdou8M+ucdJtr2swXII6s3nkq4pfEn7KnbzMS9quFSuyOGILc
+g/3qVwaHNLM5R+8nB5gPI5+u5Uh56w1i+9Ds1pjYAiTHdeUwggTuMIID1qADAgECAhAImztE
+U4o9odkEsuVgiJc8MA0GCSqGSIb3DQEBCwUAMGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxE
+aWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lD
+ZXJ0IEFzc3VyZWQgSUQgQ2xpZW50IENBIEcyMB4XDTI0MDUwMzAwMDAwMFoXDTI2MDUwNjIz
+NTk1OVowQjEcMBoGA1UEAwwTY21pbnlhcmRAbXZpc3RhLmNvbTEiMCAGCSqGSIb3DQEJARYT
+Y21pbnlhcmRAbXZpc3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJm1
+ZE9brEiQnF7EKiV+aYzHyqPFJ+z1wwdJ4wvNiwUCgXJejBxFj04Z7A62Yx6Sp59vfjbo05eA
+IOyaLOFp3vbMBQAe8Qe4XrFv7wPcKZxwS+sgCuBvNs4NVGKYGjiKZW8WPq9ZcEl5BM8BLMrl
+rchAUHJJcMdcEJUsed6rIB//EtnGOe74/vR1Tz3sN1WzC1Wa9COvcbLgVvWC/o4WysUfC9+f
+9/5JzAiib7U7S/iRigkmEahibZgYKB7y6F1v9hxUwHxfa7GtJ8cv6LtRcPLhAO86GgXMfpgq
+k3fxzQu8uwACpINbmQNLcRzg6mHFDYRK3mFp4puUnHO5EUJ8RgUCAwEAAaOCAbYwggGyMB8G
+A1UdIwQYMBaAFKViIFDcu1tXl60jjzXiVGypfvlOMB0GA1UdDgQWBBQiHrUOKuj1vJe3OXAz
+gOP5Qbl2FTAeBgNVHREEFzAVgRNjbWlueWFyZEBtdmlzdGEuY29tMBQGA1UdIAQNMAswCQYH
+Z4EMAQUBATAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwME
+MIGLBgNVHR8EgYMwgYAwPqA8oDqGOGh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dEFzc3VyZWRJRENsaWVudENBRzIuY3JsMD6gPKA6hjhodHRwOi8vY3JsNC5kaWdpY2VydC5j
+b20vRGlnaUNlcnRBc3N1cmVkSURDbGllbnRDQUcyLmNybDB9BggrBgEFBQcBAQRxMG8wJAYI
+KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBHBggrBgEFBQcwAoY7aHR0cDov
+L2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0QXNzdXJlZElEQ2xpZW50Q0FHMi5jcnQw
+DQYJKoZIhvcNAQELBQADggEBADkBdRyx41eUGmsYXBXt3WCsYeDr26rJL7lbx2PvqaZyRCJm
+J9CN2TljF0YHsXSPU+un1RfUlYz+PtcNFIqNuSf3N5fGU0bEpSzXozd/nZ32yWFLkd5CzYyN
+F1xrpbyP2a87jKM0uqEHXZFl7NPiAfEchjFCddciHTOXjN66L+kJ/ZsOoNJLG8yFN401EGew
+Nk8z/hJjWqR7DG0/YWn9h7jQ5SmqkqyhLwTO9s6KoByacWuKpKWSc/DaOuWmROlROrOA1hD8
+0sKqC6jGeLxNpiYzSwBy8qKF0weZdhcHUeO1HOm1csrvWl1UghnlR7SLir3bb5LiesTVvSuR
+Q3aDywAxggKQMIICjAIBATB+MGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
+bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lDZXJ0IEFzc3Vy
+ZWQgSUQgQ2xpZW50IENBIEcyAhAImztEU4o9odkEsuVgiJc8MA0GCWCGSAFlAwQCAQUAoIHk
+MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI1MDMxMTE1NDkx
+OVowLwYJKoZIhvcNAQkEMSIEID/l4BqlLJNkiLTdARtzC7ZpvW9XEYBJkvLC2Hu0Vs/VMHkG
+CSqGSIb3DQEJDzFsMGowCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIw
+CgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIHMA0G
+CCqGSIb3DQMCAgEoMA0GCSqGSIb3DQEBAQUABIIBAF1UD2M3zvSYlJIIn/6piB0KLqsSUFWL
+l4t171loNxnglVODI+vCzZbz7llpHXAr5MHZm8JUGOibw6cyOGiq+eFufJUDt3MpE30xGmwa
+W7goZx5n5PHfJGgtP+mzMk3gLdEd0fkmZctHy0Yd/WIP61vGFCEte2z0X8qN/Qgm58e1AJ6g
+3QP4dw6cuBhbDPVkKjkcxxor8pkF+mRx1lKO+oSqZXj4cpwRJKUaft8liJiCxkbdEfL0vcFA
+rnSqdtRv2GkxfWtnWvG57xODTH38I62N0PD9+CKuqB3CVftaX4H6k6l28rrBA4qxsCqe7QP/
+vJUdnAxTq4Iri1SW7BKP+nc=
+
+--Jat1ixbgLK/8tm3M--

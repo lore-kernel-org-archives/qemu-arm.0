@@ -1,540 +1,288 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1870698njc;
-        Tue, 11 Mar 2025 07:01:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrW+s+Eo2E+tMBg5NvgGF5tr9c3k0f3yJjnP5Cwc++ObC+DGYkx69dTii6060o5EK8CY7KPHTYvZWF+g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGCGA64HQJlY5fbV9O+Lzai32IahhDE9BN67ZYa/7mKdrD6qLtUj+yBbpQckCop1oxlHT7v
-X-Received: by 2002:a05:651c:1689:b0:30b:d656:1485 with SMTP id 38308e7fff4ca-30bf4632c50mr59461261fa.32.1741701667095;
-        Tue, 11 Mar 2025 07:01:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741701667; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1881367njc;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXvFpMGIGpkp4Eb+EGUyjEkQKH+Sq4+PfumwXMLsTURqbrBWrZQbwpJRh8Q6kr7KgmKDch7+ZG1kCKpRg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeU/trUWt1QwqI+OPXfWY25EJ3Xx0HAwYVHL/v4QyRaIhPOCfbjKrIOKA6sOYIexG742D0
+X-Received: by 2002:a50:9fcf:0:b0:5d3:e99c:6bda with SMTP id 4fb4d7f45d1cf-5e7632ef6a5mr3349138a12.16.1741702338144;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741702338; cv=none;
         d=google.com; s=arc-20240605;
-        b=dKfQW0lzbNDfRWNpzE6AxR/7KH73UTrHHlm9n2bM1nR7zfkzlN0z3i+1f/xK01K0m8
-         OIzKZG6tCapK3kpOeRkFPti6dkqKDI+7Pe80vjTG2WEoVn/978kRC/OC+5bwLuM4MUv1
-         zE43XMofukKz3VJ3EzUAauLwxV+xDzdwQVqaXQoRGUFj4ChyXxkj5NjM8ocvbkcP7Z+V
-         Px3VBs+7S4m0YG414c0jN0yH7/daUoMcWCsgnqxKCKpLmIEYf3av0WQZEUct1Zqs/X1H
-         MJsLOFWqKsdciZH1OvOSBCpJ41D9Wtiy+taTcyPINsmwl2qe5VpL/IvoJrVldoTOUXWX
-         bMWA==
+        b=KglPTXpiiMLJ4d06JKJSje9/qE/NKHmYMPaBNWfZMT+I+8qu8cHCj8gdr7ewjXpv/p
+         13roouiyGAQ86TbwGEMWjX8B4S4JrkFJ413svUx3H5TmN/g8Kle0ou7hLQQK65B965Ql
+         TFEi6/pMBA6jcU9KwG8lAPBqfHDmglS6AS1ZSfkNeTqOhjeBnh7mx1jj2gRaL3RKVyrW
+         IEKhQF2DftgzTfH6fbpTtlbk3F2XVnKSg4q/CtkpfvOzP9AjRz44DS+3ZZfCUzXaCNvU
+         A1PWyg1XAfmlxO8byPu/8vey+ZMSXyfSKmUClSfKwJ1ekrZM1JEqnA2vbdPEKCA+2/iV
+         ASgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Zeq58+/422ZaJvT/EPO/gkv6fz0KNgQz2Hu+FNcwLXw=;
-        fh=e4oaLR6JeAwNfZ07Y46RG/PZ1MmpIJUUz63JxHQe3tM=;
-        b=ZcsdedtGgUxpwaiX6vlebWyFYxn4qOYh8v3bAgc7PkpQxwaCYD/yihGGQXvALse58p
-         0PPZKeBpOft/o9bPNofTqe6Q9mEkleSA1yx7gNf6WrzCr5Oow9S6zaIQSTqsQap+tUSC
-         MaPLre6E66Djbf0EKK+Ig1EdPD14t091XX5MXFcHHyPtK2CMQBWj1rG4DW7KDMYgg6UF
-         H1uXJ4oRo8YFQJgtUwE2rLn0V2bZFlT6bhcohMT7djOnsfShZNP1PWuLcUldqm6XBkwm
-         lokg9oPznrTrqtwfOiFmGl4EcqAOPDi/oGoIJirJGRiolFrVKHFbg/K4HLCblqKxR1nL
-         v0Fg==;
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=fqQkBCVgsBYX8PEXbDxN/QR0otnN5IphTzJY34FcZ98=;
+        fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
+        b=aHqYhlHVVdU+uKHWrID5UK7fS3l5nyQ7FDC1Alu6AAEnIBzm3q1OCg/LcrJdmrKYJE
+         +8ThpgINta2VmbquOV+ROCJ3zNJTbpmHRo3qY2NawaANYcngsSTCk+1m92P/SF4Sn4gz
+         jgR41SB1Z2hK1GY0JWm0FkY4wcRIfZqLQienyN2YMufFQ74tUQmk/4bwCwHt3f3KqMQj
+         i8UAeYrpEpSw1KVylxbWgyG5kF+PIA7A+0Q/TcYmYn+rL8/L9342U4NTYfPKIJa7D/h7
+         NrtkkhedGR4hRdk0iv53xflmlGZdCv54VWAT1Cq2b+PWH3Aa6LjL/A/u5NtT8fSU5KAM
+         vQ5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V1AdNVBd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 38308e7fff4ca-30be9a41c1dsi51254161fa.456.2025.03.11.07.01.05
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5e5c76b67ecsi10834310a12.542.2025.03.11.07.12.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 07:01:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Mar 2025 07:12:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V1AdNVBd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ts09s-0001tL-Kf; Tue, 11 Mar 2025 10:00:36 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ts0Ku-0008MP-MI; Tue, 11 Mar 2025 10:12:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ts09q-0001sZ-6x
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 10:00:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ts0Kt-0008Lh-3u; Tue, 11 Mar 2025 10:11:59 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ts09m-0003LY-MP
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 10:00:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741701625;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Zeq58+/422ZaJvT/EPO/gkv6fz0KNgQz2Hu+FNcwLXw=;
- b=V1AdNVBdm6tiz9v8bf/GgJI3menJNWSJFUGckCkuM4wIT3BlRcLHnqZTSz/qhlMohqD+8P
- Oo0z7QU5kUZpNrzRdNizw7wA2oT1uVJjX0JGAAJeX6p2gngjgiiVM16xdlRVyKYAZvCbky
- HageWDhV1HAoIiLuZViwUn/9h77sXU0=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-175-al_9xRCRMG-pssbA35MgAg-1; Tue, 11 Mar 2025 10:00:24 -0400
-X-MC-Unique: al_9xRCRMG-pssbA35MgAg-1
-X-Mimecast-MFC-AGG-ID: al_9xRCRMG-pssbA35MgAg_1741701623
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-7c3c8f8ab79so985044885a.2
- for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 07:00:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741701623; x=1742306423;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Zeq58+/422ZaJvT/EPO/gkv6fz0KNgQz2Hu+FNcwLXw=;
- b=xLZ8rbTNYHP8cs1lfhC24notRoxm++o0Z8BCrpZDBeiD/Fj/vcaNBFaZjocA4dJoLT
- 3L1MBPx+RKX7a1Yfhko7+IsVWNjXapu0pqvw6JH2ihpHvp4sT88jSFgRS/y8iiGxbHmN
- m1ociMIAa6K2FwV7T7+y2xCPcuBiCab/oO3sv1KsonO41LUMtmASw8f2LASrfwKUrwND
- 66Ympn1Qfh/hPPxOpEBkE1FD8tfXS3ij2CcbH30UwOXDB6DuP4MpJtLdNDE1IPaDw6qX
- N2/ZYuhW0KgQW/9MyD48nnkkXx641A/8dZ+IqS4dyV/3pEcfFYdwnddhZu6xp4rvWdln
- pttw==
-X-Gm-Message-State: AOJu0YxrctOlX5r13Oi1ceUXwfLFGqpZu/beTSQDCKmNFN+dvZ7k9ufh
- SxP33sBVXxze3gtXEVfzMZHCzUbn2tyEF0bIMYsZRjiCBIDGiFGyZmHvXLCwC8YlYg89L43e1GB
- Vmv0/DrthRuaiqSVIcxY+PL+r1czRgaYecfyKejXjaK7ZOY9AOA==
-X-Gm-Gg: ASbGncsbX+esT0a1VsepgWCBNyy2LuJbcosS4A8uYdxFh3SN+7QdxQVLGHe/wwAC5yP
- yivFMN4xALAjCYCA2KDOmZcWOetMf1Ss3CeVC+2OJYDpIccl1N9ZLnm1mFLlkGNoll0VcorOONG
- bBvUi8AlBDe8f98gcfVY5t9nUkewQTu3CTnLxfSK4xK/1ySm1KY+SofM7oLa908eVJ8WuisYOYm
- 4mMBkFUHuP6MaT2lNsi6hBzA/29YXySyCQkAB9/dW8OlQFQFNbcMN6CgePO04Zg3baDTanU8p1M
- TdMm0Bz+JPoIPl0ZHCJTMjiUGtYkZFep/8nRFjJ7m1iMXP0lKdxqTnYgr9q2iX0=
-X-Received: by 2002:a05:620a:2691:b0:7c5:4eee:5403 with SMTP id
- af79cd13be357-7c55e92b780mr468075785a.38.1741701621529; 
- Tue, 11 Mar 2025 07:00:21 -0700 (PDT)
-X-Received: by 2002:a05:620a:2691:b0:7c5:4eee:5403 with SMTP id
- af79cd13be357-7c55e92b780mr468067985a.38.1741701620854; 
- Tue, 11 Mar 2025 07:00:20 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7c55212d8c8sm354984585a.42.2025.03.11.07.00.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Mar 2025 07:00:20 -0700 (PDT)
-Message-ID: <4b7d75f1-12df-44ab-9435-df517beff716@redhat.com>
-Date: Tue, 11 Mar 2025 15:00:17 +0100
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ts0Kq-0006m2-6v; Tue, 11 Mar 2025 10:11:58 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZBwc83MBMz6D8bX;
+ Tue, 11 Mar 2025 22:09:12 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 09E61140D26;
+ Tue, 11 Mar 2025 22:11:45 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 11 Mar 2025 15:11:37 +0100
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [RFC PATCH v2 00/20] hw/arm/virt: Add support for user-creatable
+ accelerated SMMUv3
+Date: Tue, 11 Mar 2025 14:10:25 +0000
+Message-ID: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1] tests/functional: Convert the SMMU test to the
- functional framework
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250311104920.364102-1-thuth@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250311104920.364102-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: DXzTQz9Ws7IX3Tr7711St4Tf-aVwr6JsN3Bm_B3hccE_1741701623
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) AC_FROM_MANY_DOTS=2.499, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7EJc+L66Y5GC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JF/Z8RE5I86S
 
-Hi Thomas,
+Hi All,
+
+This patch series introduces initial support for a user-creatable
+accelerated SMMUv3 device (-device arm-smmuv3-accel) in QEMU.
+
+Why this is needed:
+
+Currently, QEMU’s ARM SMMUv3 emulation (iommu=smmuv3) is tied to the
+machine and does not support configuring the host SMMUv3 in nested
+mode.This limitation prevents its use with vfio-pci passthrough
+devices.
+
+The new pluggable smmuv3-accel device enables host SMMUv3 configuration
+with nested stage support (Stage 1 owned by the Guest and Stage 2 by the
+host) via the new IOMMUFD APIs. Additionally, it allows multiple 
+accelerated vSMMUv3 instances for guests running on hosts with multiple
+physical SMMUv3s.
+
+This will benefit in:
+-Reduced invalidation broadcasts and lookups for devices behind multiple
+ physical SMMUv3s.
+-Simplifies handling of host SMMUv3s with differing feature sets.
+-Lays the groundwork for additional capabilities like vCMDQ support.
 
 
-On 3/11/25 11:49 AM, Thomas Huth wrote:
-> This test was using cloudinit and a "dnf install" command in the guest
-> to exercise the NIC with SMMU enabled. Since we don't have the cloudinit
-> stuff in the functional framework and we should not rely on having access
-> to external networks (once our ASSETs have been cached), we rather boot
-> into the initrd first, manually mount the root disk and then use the
-> check_http_download() function from the functional framework here instead
-> for testing whether the network works as expected.
->
-> Unfortunately, there seems to be a small race when using the files
-> from Fedora 33: To enter the initrd shell, we have to send a "return"
-> once. But it does not seem to work if we send it too early. Using a
-> sleep(0.2) makes it work reliably for me, but to make it even more
-> unlikely to trigger this situation, let's better limit the Fedora 33
-> tests to only run with KVM.
->
-> Finally, while we're at it, we also add some lines for testing writes
-> to the hard disk, as we already do it in the test_intel_iommu test.
+Changes from RFCv1[0]:
 
-for your info it does not apply anymore on mainline after latest appied
-functional test additions.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  MAINTAINERS                                   |   2 +-
->  tests/functional/meson.build                  |   2 +
->  .../test_aarch64_smmu.py}                     | 243 +++++++++++-------
->  3 files changed, 159 insertions(+), 88 deletions(-)
->  rename tests/{avocado/smmu.py => functional/test_aarch64_smmu.py} (17%)
->  mode change 100644 => 100755
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 90e48b26715..211e70c6942 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -218,7 +218,7 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/smmu*
->  F: include/hw/arm/smmu*
-> -F: tests/avocado/smmu.py
-> +F: tests/functional/test_aarch64_smmu.py
->  
->  AVR TCG CPUs
->  M: Michael Rolnik <mrolnik@gmail.com>
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 43a34c6447e..e8bf0e4a6bc 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -18,6 +18,7 @@ test_timeouts = {
->    'aarch64_rme_sbsaref' : 1200,
->    'aarch64_sbsaref_alpine' : 1200,
->    'aarch64_sbsaref_freebsd' : 720,
-> +  'aarch64_smmu' : 720,
->    'aarch64_tuxrun' : 240,
->    'aarch64_virt' : 720,
->    'acpi_bits' : 420,
-> @@ -84,6 +85,7 @@ tests_aarch64_system_thorough = [
->    'aarch64_sbsaref',
->    'aarch64_sbsaref_alpine',
->    'aarch64_sbsaref_freebsd',
-> +  'aarch64_smmu',
->    'aarch64_tcg_plugins',
->    'aarch64_tuxrun',
->    'aarch64_virt',
-> diff --git a/tests/avocado/smmu.py b/tests/functional/test_aarch64_smmu.py
-> old mode 100644
-> new mode 100755
-> similarity index 17%
-> rename from tests/avocado/smmu.py
-> rename to tests/functional/test_aarch64_smmu.py
-> index 83fd79e922e..bba8599401c
-> --- a/tests/avocado/smmu.py
-> +++ b/tests/functional/test_aarch64_smmu.py
-> @@ -1,3 +1,5 @@
-> +#!/usr/bin/env python3
-> +#
->  # SMMUv3 Functional tests
->  #
->  # Copyright (c) 2021 Red Hat, Inc.
-> @@ -7,44 +9,48 @@
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or
->  # later.  See the COPYING file in the top-level directory.
-> +
->  import os
-> +import time
-> +
-> +from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
-> +from qemu_test import BUILD_DIR
-> +from qemu.utils import kvm_available
->  
-> -from avocado import skipUnless
-> -from avocado_qemu import BUILD_DIR
-> -from avocado_qemu.linuxtest import LinuxTest
-> -
-> -@skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
-> -class SMMU(LinuxTest):
-> -    """
-> -    :avocado: tags=accel:kvm
-> -    :avocado: tags=cpu:host
-> -    :avocado: tags=arch:aarch64
-> -    :avocado: tags=machine:virt
-> -    :avocado: tags=distro:fedora
-> -    :avocado: tags=smmu
-> -    :avocado: tags=flaky
-> -    """
->  
-> +class SMMU(LinuxKernelTest):
-> +
-> +    default_kernel_params = ('earlyprintk=pl011,0x9000000 no_timer_check '
-> +                             'printk.time=1 rd_NO_PLYMOUTH net.ifnames=0 '
-> +                             'console=ttyAMA0 rd.rescue')
->      IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
->      kernel_path = None
->      initrd_path = None
->      kernel_params = None
->  
-> -    def set_up_boot(self):
-> -        path = self.download_boot()
-> +    GUEST_PORT = 8080
-> +
-> +    def set_up_boot(self, path):
->          self.vm.add_args('-device', 'virtio-blk-pci,bus=pcie.0,' +
->                           'drive=drv0,id=virtio-disk0,bootindex=1,'
->                           'werror=stop,rerror=stop' + self.IOMMU_ADDON)
->          self.vm.add_args('-drive',
-> -                         'file=%s,if=none,cache=writethrough,id=drv0' % path)
-> -
-> -    def setUp(self):
-> -        super(SMMU, self).setUp(None, 'virtio-net-pci' + self.IOMMU_ADDON)
-> -
-> -    def common_vm_setup(self, custom_kernel=False):
-> -        self.require_accelerator("kvm")
-> -        self.vm.add_args("-accel", "kvm")
-> -        self.vm.add_args("-cpu", "host")
-> +                f'file={path},if=none,cache=writethrough,id=drv0,snapshot=on')
-> +
-> +        self.vm.add_args('-netdev',
-> +                         'user,id=n1,hostfwd=tcp:127.0.0.1:0-:%d' %
-> +                         self.GUEST_PORT)
-> +        self.vm.add_args('-device', 'virtio-net,netdev=n1' + self.IOMMU_ADDON)
-> +
-> +    def common_vm_setup(self, kernel, initrd, disk):
-> +        self.set_machine("virt")
-> +        self.require_netdev('user')
-> +        if kvm_available(qemu_bin=self.qemu_bin):
-> +            self.vm.add_args("-accel", "kvm")
-> +            self.vm.add_args("-cpu", "host")
-> +        else:
-> +            self.vm.add_args("-cpu", "cortex-a57")
-> +        self.vm.add_args('-m', '1G')
->          self.vm.add_args("-machine", "iommu=smmuv3")
->          self.vm.add_args("-d", "guest_errors")
->          self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
-> @@ -53,87 +59,150 @@ def common_vm_setup(self, custom_kernel=False):
->          self.vm.add_args('-object',
->                           'rng-random,id=rng0,filename=/dev/urandom')
->  
-> -        if custom_kernel is False:
-> -            return
-> +        self.kernel_path = kernel.fetch()
-> +        self.initrd_path = initrd.fetch()
-> +        self.set_up_boot(disk.fetch())
-> +
-> +    def run_and_check(self, filename, hashsum):
-> +        self.vm.add_args('-initrd', self.initrd_path)
-> +        self.vm.add_args('-append', self.kernel_params)
-> +        self.launch_kernel(self.kernel_path, initrd=self.initrd_path,
-> +                           wait_for='attach it to a bug report.')
-> +        prompt = '# '
-> +        # Fedora 33 requires 'return' to be pressed to enter the shell.
-> +        # There seems to be a small race between detecting the previous ':'
-> +        # and sending the newline, so we need to add a small delay here.
-> +        self.wait_for_console_pattern(':')
-> +        time.sleep(0.2)
-> +        exec_command_and_wait_for_pattern(self, '\n', prompt)
-> +        exec_command_and_wait_for_pattern(self, 'cat /proc/cmdline',
-> +                                          self.kernel_params)
-> +
-> +        # Checking for SMMU enablement:
-> +        self.log.info("Checking whether SMMU has been enabled...")
-> +        exec_command_and_wait_for_pattern(self, 'dmesg | grep smmu',
-> +                                          'arm-smmu-v3')
-> +        self.wait_for_console_pattern(prompt)
-> +        exec_command_and_wait_for_pattern(self,
-> +                                    'find /sys/kernel/iommu_groups/ -type l',
-> +                                    'devices/0000:00:')
-> +        self.wait_for_console_pattern(prompt)
-> +
-> +        # Copy a file (checked later), umount afterwards to drop disk cache:
-> +        self.log.info("Checking hard disk...")
-> +        exec_command_and_wait_for_pattern(self,
-> +                        "while ! (dmesg -c | grep vda:) ; do sleep 1 ; done",
-> +                        "vda2")
-> +        exec_command_and_wait_for_pattern(self, 'mount /dev/vda2 /sysroot',
-> +                                          'mounted filesystem')
-> +        exec_command_and_wait_for_pattern(self, 'cp /bin/vi /sysroot/root/vi',
-> +                                          prompt)
-> +        exec_command_and_wait_for_pattern(self, 'umount /sysroot', prompt)
-> +        # Switch from initrd to the cloud image filesystem:
-> +        exec_command_and_wait_for_pattern(self, 'mount /dev/vda2 /sysroot',
-> +                                          prompt)
-> +        exec_command_and_wait_for_pattern(self,
-> +                ('for d in dev proc sys run ; do '
-> +                 'mount -o bind /$d /sysroot/$d ; done'), prompt)
-> +        exec_command_and_wait_for_pattern(self, 'chroot /sysroot', prompt)
-> +        # Check files on the hard disk:
-> +        exec_command_and_wait_for_pattern(self,
-> +            ('if diff -q /root/vi /usr/bin/vi ; then echo "file" "ok" ; '
-> +             'else echo "files differ"; fi'), 'file ok')
-> +        self.wait_for_console_pattern(prompt)
-> +        exec_command_and_wait_for_pattern(self, f'sha256sum {filename}',
-> +                                          hashsum)
-> +
-> +        # Check virtio-net via HTTP:
-> +        exec_command_and_wait_for_pattern(self, 'dhclient eth0', prompt)
-> +        self.check_http_download(filename, hashsum, self.GUEST_PORT)
->  
-> -        kernel_url = self.distro.pxeboot_url + 'vmlinuz'
-> -        initrd_url = self.distro.pxeboot_url + 'initrd.img'
-> -        self.kernel_path = self.fetch_asset(kernel_url)
-> -        self.initrd_path = self.fetch_asset(initrd_url)
->  
-> -    def run_and_check(self):
-> -        if self.kernel_path:
-> -            self.vm.add_args('-kernel', self.kernel_path,
-> -                             '-append', self.kernel_params,
-> -                             '-initrd', self.initrd_path)
-> -        self.launch_and_wait()
-> -        self.ssh_command('cat /proc/cmdline')
-> -        self.ssh_command('dnf -y install numactl-devel')
-> +    # 5.3 kernel without RIL #
->  
-> +    ASSET_KERNEL_F31 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-> +         'releases/31/Server/aarch64/os/images/pxeboot/vmlinuz'),
-> +        '413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120')
-the hash seems wrong for the vmlinuz. I get
-Exception: Hash of
-https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/31/Server/aarch64/os/images/pxeboot/vmlinuz
-does not match
-413c7f95e7f40cfa3e73290ffae855c88fae54cccc46123a4b4ed2db7d5c2120
+Thanks to everyone who provided feedback on RFCv1!. 
 
->  
-> -    # 5.3 kernel without RIL #
-> +    ASSET_INITRD_F31 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-> +         'releases/31/Server/aarch64/os/images/pxeboot/initrd.img'),
-> +        '9f3146b28bc531c689f3c5f114cb74e4bd7bd548e0ba19fa77921d8bd256755a')
-> +
-> +    ASSET_DISK_F31 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/releases'
-> +         '/31/Cloud/aarch64/images/Fedora-Cloud-Base-31-1.9.aarch64.qcow2'),
-> +        '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf16fe49')
-> +
-> +    F31_FILENAME = '/boot/initramfs-5.3.7-301.fc31.aarch64.img'
-> +    F31_HSUM = '1a4beec6607d94df73d9dd1b4985c9c23dd0fdcf4e6ca1351d477f190df7bef9'
->  
->      def test_smmu_noril(self):
-> -        """
-> -        :avocado: tags=smmu_noril
-> -        :avocado: tags=smmu_noril_tests
-> -        :avocado: tags=distro_version:31
-> -        """
-> -        self.common_vm_setup()
-> -        self.run_and_check()
-> +        self.common_vm_setup(self.ASSET_KERNEL_F31, self.ASSET_INITRD_F31,
-> +                             self.ASSET_DISK_F31)
-> +        self.kernel_params = self.default_kernel_params
-> +        self.run_and_check(self.F31_FILENAME, self.F31_HSUM)
->  
->      def test_smmu_noril_passthrough(self):
-> -        """
-> -        :avocado: tags=smmu_noril_passthrough
-> -        :avocado: tags=smmu_noril_tests
-> -        :avocado: tags=distro_version:31
-> -        """
-> -        self.common_vm_setup(True)
-> -        self.kernel_params = (self.distro.default_kernel_params +
-> +        self.common_vm_setup(self.ASSET_KERNEL_F31, self.ASSET_INITRD_F31,
-> +                             self.ASSET_DISK_F31)
-> +        self.kernel_params = (self.default_kernel_params +
->                                ' iommu.passthrough=on')
-> -        self.run_and_check()
-> +        self.run_and_check(self.F31_FILENAME, self.F31_HSUM)
->  
->      def test_smmu_noril_nostrict(self):
-> -        """
-> -        :avocado: tags=smmu_noril_nostrict
-> -        :avocado: tags=smmu_noril_tests
-> -        :avocado: tags=distro_version:31
-> -        """
-> -        self.common_vm_setup(True)
-> -        self.kernel_params = (self.distro.default_kernel_params +
-> +        self.common_vm_setup(self.ASSET_KERNEL_F31, self.ASSET_INITRD_F31,
-> +                             self.ASSET_DISK_F31)
-> +        self.kernel_params = (self.default_kernel_params +
->                                ' iommu.strict=0')
-> -        self.run_and_check()
-> +        self.run_and_check(self.F31_FILENAME, self.F31_HSUM)
-> +
->  
->      # 5.8 kernel featuring range invalidation
->      # >= v5.7 kernel
->  
-> +    ASSET_KERNEL_F33 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-> +         'releases/33/Server/aarch64/os/images/pxeboot/vmlinuz'),
-> +        '0ef9e34f80b49fa2ac098899b27075e95c11d5b646f6ca4df2e89237a40f9e4f')
-same here I get
-Exception: Hash of
-https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/33/Server/aarch64/os/images/pxeboot/vmlinuz
-does not match
-0ef9e34f80b49fa2ac098899b27075e95c11d5b646f6ca4df2e89237a40f9e4f
+–The device is now called arm-smmuv3-accel instead of arm-smmuv3-nested
+ to better reflect its role in using the host's physical SMMUv3 for page
+ table setup and cache invalidations.
+-Includes patches for VIOMMU and VDEVICE IOMMUFD APIs (patches 1,2).
+-Merges patches from Nicolin’s GitHub repository that add accelerated
+ functionalityi for page table setup and cache invalidations[1]. I have
+ modified these a bit, but hopefully has not broken anything.
+-Incorporates various fixes and improvements based on RFCv1 feedback.
+–Adds support for vfio-pci hotplug with smmuv3-accel.
 
-> +
-> +    ASSET_INITRD_F33 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-> +         'releases/33/Server/aarch64/os/images/pxeboot/initrd.img'),
-> +        '92513f55295c2c16a777f7b6c35ccd70a438e9e1e40b6ba39e0e60900615b3df')
-> +
-> +    ASSET_DISK_F33 = Asset(
-> +        ('https://archives.fedoraproject.org/pub/archive/fedora/linux/releases'
-> +         '/33/Cloud/aarch64/images/Fedora-Cloud-Base-33-1.2.aarch64.qcow2'),
-> +        'e7f75cdfd523fe5ac2ca9eeece68edc1a81f386a17f969c1d1c7c87031008a6b')
-> +
-> +    F33_FILENAME = '/boot/initramfs-5.8.15-301.fc33.aarch64.img'
-> +    F33_HSUM = '079cfad0caa82e84c8ca1fb0897a4999dd769f262216099f518619e807a550d9'
-> +
->      def test_smmu_ril(self):
-> -        """
-> -        :avocado: tags=smmu_ril
-> -        :avocado: tags=smmu_ril_tests
-> -        :avocado: tags=distro_version:33
-> -        """
-> -        self.common_vm_setup()
-> -        self.run_and_check()
-> +        self.require_accelerator("kvm")
-> +        self.common_vm_setup(self.ASSET_KERNEL_F33, self.ASSET_INITRD_F33,
-> +                             self.ASSET_DISK_F33)
-> +        self.kernel_params = self.default_kernel_params
-> +        self.run_and_check(self.F33_FILENAME, self.F33_HSUM)
->  
->      def test_smmu_ril_passthrough(self):
-> -        """
-> -        :avocado: tags=smmu_ril_passthrough
-> -        :avocado: tags=smmu_ril_tests
-> -        :avocado: tags=distro_version:33
-> -        """
-> -        self.common_vm_setup(True)
-> -        self.kernel_params = (self.distro.default_kernel_params +
-> +        self.require_accelerator("kvm")
-> +        self.common_vm_setup(self.ASSET_KERNEL_F33, self.ASSET_INITRD_F33,
-> +                             self.ASSET_DISK_F33)
-> +        self.kernel_params = (self.default_kernel_params +
->                                ' iommu.passthrough=on')
-> -        self.run_and_check()
-> +        self.run_and_check(self.F33_FILENAME, self.F33_HSUM)
->  
->      def test_smmu_ril_nostrict(self):
-> -        """
-> -        :avocado: tags=smmu_ril_nostrict
-> -        :avocado: tags=smmu_ril_tests
-> -        :avocado: tags=distro_version:33
-> -        """
-> -        self.common_vm_setup(True)
-> -        self.kernel_params = (self.distro.default_kernel_params +
-> +        self.require_accelerator("kvm")
-> +        self.common_vm_setup(self.ASSET_KERNEL_F33, self.ASSET_INITRD_F33,
-> +                             self.ASSET_DISK_F33)
-> +        self.kernel_params = (self.default_kernel_params +
->                                ' iommu.strict=0')
-> -        self.run_and_check()
-> +        self.run_and_check(self.F33_FILENAME, self.F33_HSUM)
-> +
-> +
-> +if __name__ == '__main__':
-> +    LinuxKernelTest.main()
-Thanks
+Note: IORT RMR patches for MSI setup are currently excluded as we may
+adopt a different approach for MSI handling in the future [2].
 
-Eric
+Also this has dependency on the common iommufd/vfio patches from
+Zhenzhong's series here[3]
+
+ToDos:
+
+–At least one vfio-pci device must currently be cold-plugged to a
+ pxb-pcie bus associated with the arm-smmuv3-accel. This is required both
+ to associate a vSMMUv3 with a host SMMUv3 and also needed to
+ retrieve the host SMMUv3 IDR registers for guest export.
+ Future updates will remove this restriction by adding the
+ necessary kernel support.
+ Please find the discussion here[4]
+-This version does not yet support host SMMUv3 fault handling or
+ other event notifications. These will be addressed in a
+ future patch series.
+
+
+The complete branch can be found here:
+https://github.com/hisilicon/qemu/tree/master-smmuv3-accel-rfcv2-ext
+
+I have done basic sanity testing on a Hisilicon Platform using the kernel
+branch here:
+https://github.com/nicolinc/iommufd/tree/iommufd_msi-rfcv2
+
+Usage Eg:
+
+On a HiSilicon platform that has multiple host SMMUv3s, the ACC ZIP VF
+devices and HNS VF devices are behind different host SMMUv3s. So for a
+Guest, specify two arm-smmuv3-accel devices each behind a pxb-pcie as below,
+
+
+./qemu-system-aarch64 -machine virt,accel=kvm,gic-version=3 \
+-cpu host -smp cpus=4 -m size=4G,slots=4,maxmem=256G \
+-bios QEMU_EFI.fd \
+-object iommufd,id=iommufd0 \
+-device virtio-blk-device,drive=fs \
+-drive if=none,file=rootfs.qcow2,id=fs \
+-device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0 \
+-device arm-smmuv3-accel,bus=pcie.1 \
+-device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,pref64-reserve=2M,io-reserve=1K \
+-device vfio-pci,host=0000:7d:02.1,bus=pcie.port1,iommufd=iommufd0 \
+-device pcie-root-port,id=pcie.port2,bus=pcie.1,chassis=2,pref64-reserve=2M,io-reserve=1K \
+-device vfio-pci,host=0000:7d:02.2,bus=pcie.port2,iommufd=iommufd0 \
+-device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
+-device arm-smmuv3-accel,bus=pcie.2 \
+-device pcie-root-port,id=pcie.port3,bus=pcie.2,chassis=3,pref64-reserve=2M,io-reserve=1K \
+-device vfio-pci,host=0000:75:00.1,bus=pcie.port3,iommufd=iommufd0 \
+-kernel Image \
+-append "rdinit=init console=ttyAMA0 root=/dev/vda2 rw earlycon=pl011,0x9000000" \
+-device virtio-9p-pci,fsdev=p9fs,mount_tag=p9,bus=pcie.0 \
+-fsdev local,id=p9fs,path=p9root,security_model=mapped \
+-net none \
+-nographic
+
+Guest will boot with two SMMUv3s,
+...
+arm-smmu-v3 arm-smmu-v3.0.auto: option mask 0x0
+arm-smmu-v3 arm-smmu-v3.0.auto: ias 44-bit, oas 44-bit (features 0x00008325)
+arm-smmu-v3 arm-smmu-v3.0.auto: allocated 65536 entries for cmdq
+arm-smmu-v3 arm-smmu-v3.0.auto: allocated 32768 entries for evtq
+arm-smmu-v3 arm-smmu-v3.1.auto: option mask 0x0
+arm-smmu-v3 arm-smmu-v3.1.auto: ias 44-bit, oas 44-bit (features 0x00008325)
+arm-smmu-v3 arm-smmu-v3.1.auto: allocated 65536 entries for cmdq
+arm-smmu-v3 arm-smmu-v3.1.auto: allocated 32768 entries for evtq
+
+With a pci topology like below,
+
+[root@localhost ~]# lspci -tv
+-+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
+ |           +-01.0  Red Hat, Inc. QEMU PCIe Expander bridge
+ |           +-02.0  Red Hat, Inc. QEMU PCIe Expander bridge
+ |           \-03.0  Virtio: Virtio filesystem
+ +-[0000:01]-+-00.0-[02]----00.0  Huawei Technologies Co., Ltd. HNS Network Controller (Virtual Function)
+ |           \-01.0-[03]----00.0  Huawei Technologies Co., Ltd. HNS Network Controller (Virtual Function)
+ \-[0000:08]---00.0-[09]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine(Virtual Function)
+
+Further tests are always welcome.
+
+Please take a look and let me know your feedback!
+
+Thanks,
+Shameer
+
+[0] https://lore.kernel.org/qemu-devel/20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com/
+[1] https://github.com/nicolinc/qemu/commit/3acbb7f3d114d6bb70f4895aa66a9ec28e6561d6
+[2] https://lore.kernel.org/linux-iommu/cover.1740014950.git.nicolinc@nvidia.com/
+[3] https://lore.kernel.org/qemu-devel/20250219082228.3303163-1-zhenzhong.duan@intel.com/
+[4] https://lore.kernel.org/qemu-devel/Z6TLSdwgajmHVmGH@redhat.com/
+
+Nicolin Chen (11):
+  backends/iommufd: Introduce iommufd_backend_alloc_viommu
+  backends/iommufd: Introduce iommufd_vdev_alloc
+  hw/arm/smmuv3-accel: Add set/unset_iommu_device callback
+  hw/arm/smmuv3-accel: Support nested STE install/uninstall support
+  hw/arm/smmuv3-accel: Allocate a vDEVICE object for device
+  hw/arm/smmuv3-accel: Return sysmem if stage-1 is bypassed
+  hw/arm/smmuv3-accel: Introduce helpers to batch and issue cache
+    invalidations
+  hw/arm/smmuv3: Forward invalidation commands to hw
+  hw/arm/smmuv3-accel: Read host SMMUv3 device info
+  hw/arm/smmuv3: Check idr registers for STE_S1CDMAX and STE_S1STALLD
+  hw/arm/smmu-common: Bypass emulated IOTLB for a accel SMMUv3
+
+Shameer Kolothum (9):
+  hw/arm/smmuv3-accel: Add initial infrastructure for smmuv3-accel
+    device
+  hw/arm/virt: Add support for smmuv3-accel
+  hw/arm/smmuv3-accel: Associate a pxb-pcie bus
+  hw/arm/smmu-common: Factor out common helper functions and export
+  hw/arm/smmu-common: Introduce callbacks for PCIIOMMUOps
+  hw/arm/smmuv3-accel: Provide get_address_space callback
+  hw/arm/smmuv3: Install nested ste for CFGI_STE
+  hw/arm/virt-acpi-build: Update IORT with multiple smmuv3-accel nodes
+  hw/arm/smmuv3-accel: Enable smmuv3-accel creation
+
+ backends/iommufd.c            |  51 +++
+ backends/trace-events         |   2 +
+ hw/arm/Kconfig                |   5 +
+ hw/arm/meson.build            |   1 +
+ hw/arm/smmu-common.c          |  95 +++++-
+ hw/arm/smmuv3-accel.c         | 616 ++++++++++++++++++++++++++++++++++
+ hw/arm/smmuv3-internal.h      |  54 +++
+ hw/arm/smmuv3.c               |  80 ++++-
+ hw/arm/trace-events           |   6 +
+ hw/arm/virt-acpi-build.c      | 113 ++++++-
+ hw/arm/virt.c                 |  12 +
+ hw/core/sysbus-fdt.c          |   1 +
+ include/hw/arm/smmu-common.h  |  14 +
+ include/hw/arm/smmuv3-accel.h |  75 +++++
+ include/hw/arm/virt.h         |   1 +
+ include/system/iommufd.h      |  14 +
+ 16 files changed, 1101 insertions(+), 39 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel.c
+ create mode 100644 include/hw/arm/smmuv3-accel.h
+
+-- 
+2.34.1
 

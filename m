@@ -1,131 +1,134 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1715272njc;
-        Tue, 11 Mar 2025 02:21:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWpa9tbGb7F40G0i3Nn5T+ohpafwgWC9L4Z+y3sPO4Dc+iZFpK9L3J7Am8dkvTkl4uCekwLCzPcS+jL7A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFkY7yzqgpStlU5+PMJLaKW1ruUy1NZyGB5jzqJg0EYLI5LKH06w/HdepUtKDJdSsg6AZGG
-X-Received: by 2002:a05:620a:261f:b0:7c5:407e:1ff8 with SMTP id af79cd13be357-7c5407e2041mr1366208885a.2.1741684861269;
-        Tue, 11 Mar 2025 02:21:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741684861; cv=none;
+Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp1756289njc;
+        Tue, 11 Mar 2025 03:57:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/qtwMEIAHp6XpggxnyweYuMUDGBFYq0/LfVTiCbWO6fveZMMasrGuFxQdBVYAlCk0mnsCnbrWMX99IQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFC3H2x1qfJwUgEAHCi3jeX5RUHuUFc/gFUJO/m+iOhj2p9pB29cWoI0tP8CjHo32oQONuv
+X-Received: by 2002:ad4:5c4b:0:b0:6e6:9ce0:da9d with SMTP id 6a1803df08f44-6e9006516b7mr189472156d6.27.1741690638912;
+        Tue, 11 Mar 2025 03:57:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741690638; cv=none;
         d=google.com; s=arc-20240605;
-        b=Td8iUTOUT8SABe4K0pkHd6wkhDmC2+EtZm/tw+1U7XE0DEtaUVJknzrAH4prc5kl7t
-         ckZhX6SfKQXFtPKBEG1tGDdNqpBSP1MamMobDqcKFEnD2iHqKa2B62g9skxudBuncJH/
-         2nNaHbmc9Skewll4BoP75pixknm7xBnQpv+MX0mVMcqyNVV1yQP7Z0S9cTeLkM4904e5
-         rszSGeOz838+v0Nv7G7V7VBJf6JVr/Yi3alPlzHqR511yjqcpkfQOvCd1wvxFIOMd6UE
-         avxF2FS6MG30dqgR3JHPNkcdltaUzF60tW6KpEvDR07z8AUAK1a1uKZ1PyH1IuIRVFxN
-         PnpA==
+        b=Aeles2NRvcRB/vPLnb4ucc8VN+vB6+O7NJGsB6BSe3cAkg4O483qcrZigAXrEJOYw+
+         GXFoIpyEs1FaI0/fCa045Bx6XdVaU8yHGW8O5DSAv0WvhmWfpbVxLjgJVQp9c+L/QgfP
+         VydyNGYvnTvn6t0dIsE9YiQB1Fr8xd08dYsvrBsCDKNJCAyPgg5fQlRYC2xbEWv2HIAf
+         Z/SeHQNvMaMf7GXfmx6QUGwwYmtdmL2wfxz3wFoLLRNbh04nQDceGRvzJSveDyCKonL8
+         QqlwLA4WXBeNNkmO+kf8+Y4oz8AQRf3fjcveiqrmmBmx6QnIikfJdxRTt8qFU/WmqDmX
+         Jfxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=md1fBAHyWyhysYQ4WBwQaeHQRoMQBQ5/JQZM5C5bscc=;
-        fh=mR3eATyT5FH+59U9PVDv5A39DlmEfgp/IYq6g9v5/Tg=;
-        b=g/fwq+WjuqAw2/n6O5sS1DnRBcYcUWN0YsfYLDlo2dkPyiHRfgQ7MM58yVYo+M5Gzo
-         66KWNvraqZBPyBHN6yxExpHflw4Ae+BiZaYGJJle5eJcD8Y27I7l0S7y8Xvlf/kp6HhE
-         FF47vabaYlzdQT+a7rph7wTOhqllF8iWr7lSZFue2JcylbheaxXlmxTu13SqeJhnXflu
-         VvFeD6GNa9D8y1ahBzD47smtfj1dpqL6OV6CDhNxpoTM253J/Mr9UMs6cMP9XPD1cKdb
-         Ny28Tus3Bwh18l6/PziBf0+G3niAuzUXCg3kquI31My4wgd8oNr7pFXUM/jr2vv1NM4y
-         jTgQ==;
+        bh=YE+ZDF6UAZoVlD98S7SWWUuJGHiCd8738dOU83mR/Cc=;
+        fh=jshlg5U3ua1vNkZ7E4Xews5iemX67yqKQ6Bhawsoppg=;
+        b=XJkzfHc2CXp/DocuZCmKYQRagu8vERXKASu8N/8RQi5LetvkeLF7G0MDLJ0jGCf5zs
+         ksSLr9/6OJ9mboH7QJ6DRU6n9MiFTrnfiyyyLoTqpiEm8TheXWCIutYko21XiZqdYSzM
+         37br2GWZf0/p/Hce862jqv18VlU4CAhjvxz5AFm60Xm2oJRJOQka/Stx2b+2pXXUOF+X
+         QkD1gp7nd/kpw8EGhRlYpPSCkgAXEg+S9Rr5jyskMJCsZZHd1q+5kXWJ+Wvw4/WuFfxG
+         IsmPeYUw+vDxMpTNxEHcVAdTibhInISUO5Myc8bdqVNPOK3CCATzhMs9kk5D4+G+/8uP
+         vx9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYUylZgr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M6CITMOH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476a1cd1759si5352451cf.275.2025.03.11.02.21.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f717599asi109946206d6.313.2025.03.11.03.57.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Mar 2025 02:21:01 -0700 (PDT)
+        Tue, 11 Mar 2025 03:57:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYUylZgr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M6CITMOH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1trvmk-0004tQ-PP; Tue, 11 Mar 2025 05:20:26 -0400
+	id 1trxHu-0008QQ-8Y; Tue, 11 Mar 2025 06:56:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trvmi-0004su-JY
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 05:20:24 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trxHs-0008Nd-8W
+ for qemu-arm@nongnu.org; Tue, 11 Mar 2025 06:56:40 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trvmX-0005qm-H5
- for qemu-arm@nongnu.org; Tue, 11 Mar 2025 05:20:24 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-43cebe06e9eso15866415e9.3
- for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 02:20:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1trxHq-0005qP-5m
+ for qemu-arm@nongnu.org; Tue, 11 Mar 2025 06:56:39 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-39127512371so2959381f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Mar 2025 03:56:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1741684806; x=1742289606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1741690596; x=1742295396; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=md1fBAHyWyhysYQ4WBwQaeHQRoMQBQ5/JQZM5C5bscc=;
- b=bYUylZgrYUF46xOwvwFR8FJgGKtn8OmJXIuJ6gPjW36LIAHlhvBdwBNEvsAicSV80w
- hVTrTnVNWWHNQ8V1FaNUekGjDN+uAI2l63kWbrS8mTNiB9tRQIEvlcVN1+u4wButpUA5
- DE/KjgqUHcYdnl90htAGMwL0PsfsxmU0i4forS1z1voqhrU5uHgO6tLUyzmt10VAReXr
- fpStsevNXnfxk3E2Bbex4IDT0BoUrmMXcBTkRUmNxFTPv4CDQfuKq5eyksR9Toap2oTb
- oBLWVRsEjZBqNmfAciWl9o+AAnCLvIrbsrT4F1EnXfzLNaorwLTOY/KrsFmaeDt4TesN
- Slwg==
+ bh=YE+ZDF6UAZoVlD98S7SWWUuJGHiCd8738dOU83mR/Cc=;
+ b=M6CITMOH4kB5hs0TI+87+hNtEQjaJVAslLQ2qDgKGMNSBH0QW7MPHaznC7Qo2Ds+Yl
+ pthpwpStzJ/Ju0iPbWCySs+l4OPvd+jcnK9Ftx97zwGahSHHhVeo33nPhmVUB5reOdp0
+ H9O61nScAAGmDKp0XCDdm3E8R/4JDqhbe9OeWfAt/GtBK0WG1I9KEckafAyETk/AKvGL
+ wXsOA/RRusl6hJc77Tc4pFhy9W+dESnEG5QyzelXwZEj2GW3xagmHCj33pMlmd3ueFza
+ IK6nGKRiDKcjOE//95CIsgBbQ1c9euZP0RAp4EBkTQ/dK9YEdvjEIxtDXYhxGFzLn5ew
+ 3vHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741684806; x=1742289606;
+ d=1e100.net; s=20230601; t=1741690596; x=1742295396;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=md1fBAHyWyhysYQ4WBwQaeHQRoMQBQ5/JQZM5C5bscc=;
- b=wPNQOZKrUoIN3rrjWJtH2FbKl403HgxI7Kb9ebx4o/hycSZePAO7Wn7h9kyVk21ZAp
- ZQnL+L60NMdFR8Hi5o2lP9750LTM3qxBLoKJ1MbwnOEfvFanrpfFzd/pxhASAltdaofM
- GbY1xnA3jGdJktEjAPe1bRU1Civ+ZlBtEbW4wMU8z4E8SM/WxIAjnIAFMeTvJQN07KBO
- HYOwUvBVDefnXE8vuZ0pLGLlSX9EoNQGZk+SFCpWz2I48geLkVp1JXa/LRYcMQ4Ipfxv
- mbm31k3LwFTAlJjQhF0eZv42NoX+cfOYgHrJ21LqT+FXdLVKrPBpWhTW7xQJ9sniRDv7
- oS0g==
+ bh=YE+ZDF6UAZoVlD98S7SWWUuJGHiCd8738dOU83mR/Cc=;
+ b=vFfoRj+wRdgsW8tk8OAVmieJkPgT4AxbjE3uihegQwQ0j6RMmfGTq81UuJYjKsZVU2
+ 624wP+Z5vhV5cDjg/+Mss3zpYrG5fM22LFth3sbvewTbScJ1488CnZCdrf59PRbbtWtG
+ yDifZ0ZHvgpNRkOSk6h/VaOdD35o02s/9/ZOj6YPSB9N3qw4gw77BnHvht+U1lDhJCms
+ AupzaYKz5ugSJjEMNOWozbtEJX8s1tUxSi8pSjjIe8d+PZ8DXZ9Ss9QUSGatN27bqj1P
+ WisJWU1lkjGv96isiXtdeUVpViNHvGi4qbb8SDLXjMHp+c7NLNpN259EoUlV74yZ9LpX
+ dZJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXuJ78BxmVIPJ/HMENTrR/8ymT901zStJa8lBvk8Em/n1fWjRnB0RgIGwx/iZ80ZxE39uCkYol5pg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyod9HrlT/DXXNceYwCpRBKLPRaHGs0eIP8RSCdDAY/gKHllOsG
- aHSw3n9C/dznGG1PYDxkSWm5k2gAX075YR27KuIC1W46nSUmSXezMPaVQRNAEgo=
-X-Gm-Gg: ASbGncuQbbTISMiZhPeaKrM9te+bJ1M7eWutPq0TQ+yPPxfPrEfKpBnVv9LDbH7DSMs
- RD9cDkZ3FPDldfi+FxKSA8W4oF91/v2mUsVeJtBpOSvtgvEChO7FPt65Wzj0OUO3ZmUoDMiBVMV
- LX805lLQWRFAoB+fys3a9PfxsOtJqa3AcJ4kxd8myjV7raSxf+OsK41gTDF34JC2BQJJ4ZR4yDZ
- mrDIZIol3eMH0lEwu13Hso6a8A8KOfmqIMuZIalCDmddqOsDYqnVwXbAetuvQa4a5LTdU2ybnMv
- xVH7Vm7pEC1c6JzNerG78JAak35b88dqNyVmpLCz13nTXk4y9414RHayVjH28mDhfKCjh+Ufk09
- dsch/dEjBuMVb
-X-Received: by 2002:a05:600c:3512:b0:43c:fded:9654 with SMTP id
- 5b1f17b1804b1-43cfded98b3mr48063665e9.19.1741684806359; 
- Tue, 11 Mar 2025 02:20:06 -0700 (PDT)
+ AJvYcCXuAlbQTwNv+QvZBH9/JMH+8T1bmcTKbXaj3D5KmCnkLZHUc9IeXvfApDv/UOKvwhjC0glgCTxZoQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+3nXYliseC9yZkx1SsGSqIxwqey17TXg0lTh1L7/5/tvolXB+
+ YLL5VfNJQJh9YY5HmkvTR+/3OGwQ5fM9AtSolTjdcvLnY6bGeL0P7zLPc+C151s=
+X-Gm-Gg: ASbGncuqLBn3/g7XDFUTVBX8co/9OthcMxMeYdrWMMjOtmaVXD98eZX+L/w66QwF6uf
+ 6VKPUyDODPlWkhihvwGwj/aEv3hphoV9BxvRJ1sR7WcT5dg07ruiSeNZ/GCN7iDaPaWdCwe+xm1
+ ZHiHCODjgsmMicw+jwK37Ffup1/hlRfx110hNWiy/y1KWSNtlTjCMYDBo7JFTALzdH6fmwWWyZM
+ cJK/IfRLWV5JzQs1JLEx+K/WKNpFWv8c0sGU8wYkKDnIQeiIWq6gIvNpc+sBEyJVUVz8l1y13VQ
+ nf9SAU6JGZtoz2GQFppMTKZfUwXLw8J2Z0BP08KV9fh2JvhC4JitpA1B4jZio0omY1o2KOKA93N
+ s0M21hDNQFNpE
+X-Received: by 2002:a05:6000:156a:b0:391:3fd2:610f with SMTP id
+ ffacd0b85a97d-392641bcbfcmr4022361f8f.13.1741690595884; 
+ Tue, 11 Mar 2025 03:56:35 -0700 (PDT)
 Received: from [192.168.69.199] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43cf519867csm75316625e9.3.2025.03.11.02.20.04
+ ffacd0b85a97d-3912c1030cfsm18089026f8f.90.2025.03.11.03.56.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Mar 2025 02:20:05 -0700 (PDT)
-Message-ID: <fa40fbaa-df39-40e4-8845-fd516df10b41@linaro.org>
-Date: Tue, 11 Mar 2025 10:20:03 +0100
+ Tue, 11 Mar 2025 03:56:35 -0700 (PDT)
+Message-ID: <29acae00-8bf7-4347-b803-d86caee26e76@linaro.org>
+Date: Tue, 11 Mar 2025 11:56:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 18/18] hw/rtc: Add Ricoh RS5C372 RTC emulation
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Corey Minyard <cminyard@mvista.com>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Fabiano Rosas <farosas@suse.de>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20250223114708.1780-1-shentey@gmail.com>
- <20250223114708.1780-19-shentey@gmail.com>
- <77E3F57E-95D0-4E2F-838E-5E0334651349@gmail.com>
- <1FBD5091-2221-4815-85CB-D98BE4F6EA72@gmail.com>
- <F2594DA2-F703-4F82-B07F-2D665329E1CF@gmail.com>
+Subject: Re: [PATCH v5 01/14] hw/qdev-properties-system: Include missing
+ 'qapi/qapi-types-common.h'
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+Cc: Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-block@nongnu.org,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+References: <20250310000620.70120-1-philmd@linaro.org>
+ <20250310000620.70120-2-philmd@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <F2594DA2-F703-4F82-B07F-2D665329E1CF@gmail.com>
+In-Reply-To: <20250310000620.70120-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -147,415 +150,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2YG1vdf2ynp3
+X-TUID: BASqPlx6FUNf
 
-On 11/3/25 08:34, Bernhard Beschow wrote:
-> 
-> 
-> Am 7. März 2025 19:18:34 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>
->>
->> Am 4. März 2025 18:53:10 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>>
->>>
->>> Am 23. Februar 2025 11:47:08 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>>> The implementation just allows Linux to determine date and time.
->>>>
->>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>>> ---
->>>> MAINTAINERS                |   2 +
->>>> hw/rtc/rs5c372.c           | 236 +++++++++++++++++++++++++++++++++++++
->>>> tests/qtest/rs5c372-test.c |  43 +++++++
->>>> hw/rtc/Kconfig             |   5 +
->>>> hw/rtc/meson.build         |   1 +
->>>> hw/rtc/trace-events        |   4 +
->>>> tests/qtest/meson.build    |   1 +
->>>> 7 files changed, 292 insertions(+)
->>>> create mode 100644 hw/rtc/rs5c372.c
->>>> create mode 100644 tests/qtest/rs5c372-test.c
->>>
->>> Ping for just this patch. I'd like to have it merged for 10.0.
->>
->> Ping^2 -- just few days left before soft freeze.
-> 
-> Last ping before the freeze
-> 
-> It would really be nice to have this device model in 10.0 since this would allow me to use upstream QEMU.
++Markus
 
-Apparently I2C maintainer wasn't Cc'ed (now is):
-
-   Corey Minyard <cminyard@mvista.com> (maintainer:I2C and SMBus)
-
-At a glance patch LGTM, so:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+On 10/3/25 01:06, Philippe Mathieu-Daudé wrote:
+> DEFINE_PROP_ENDIAN_NODEFAULT() macro uses ENDIAN_MODE_UNSPECIFIED
+> which is defined in "qapi/qapi-types-common.h".
 > 
-> Thanks,
-> Bernhard
+> Fixes: 4ec96630f93 ("hw/qdev-properties-system: Introduce EndianMode QAPI enum")
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/qdev-properties-system.h | 1 +
+>   1 file changed, 1 insertion(+)
 > 
->>
->> AFAICS no open issues and I'd really like to have this RTC merged for 10.0. What is holding it back?
->>
->> Best regards,
->> Bernhard
->>
->>>
->>> Thanks,
->>> Bernhard
->>>
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index 489e426d85..2552cfd65c 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -828,10 +828,12 @@ F: hw/arm/imx8mp-evk.c
->>>> F: hw/arm/fsl-imx8mp.c
->>>> F: hw/misc/imx8mp_*.c
->>>> F: hw/pci-host/fsl_imx8m_phy.c
->>>> +F: hw/rtc/rs5c372.c
->>>> F: include/hw/arm/fsl-imx8mp.h
->>>> F: include/hw/misc/imx8mp_*.h
->>>> F: include/hw/pci-host/fsl_imx8m_phy.h
->>>> F: pc-bios/imx8mp*
->>>> +F: tests/qtest/rs5c372-test.c
->>>> F: docs/system/arm/imx8mp-evk.rst
->>>>
->>>> MPS2 / MPS3
->>>> diff --git a/hw/rtc/rs5c372.c b/hw/rtc/rs5c372.c
->>>> new file mode 100644
->>>> index 0000000000..5542f74085
->>>> --- /dev/null
->>>> +++ b/hw/rtc/rs5c372.c
->>>> @@ -0,0 +1,236 @@
->>>> +/*
->>>> + * Ricoh RS5C372, R222x I2C RTC
->>>> + *
->>>> + * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
->>>> + *
->>>> + * Based on hw/rtc/ds1338.c
->>>> + *
->>>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>>> + */
->>>> +
->>>> +#include "qemu/osdep.h"
->>>> +#include "hw/i2c/i2c.h"
->>>> +#include "hw/qdev-properties.h"
->>>> +#include "hw/resettable.h"
->>>> +#include "migration/vmstate.h"
->>>> +#include "qemu/bcd.h"
->>>> +#include "qom/object.h"
->>>> +#include "system/rtc.h"
->>>> +#include "trace.h"
->>>> +
->>>> +#define NVRAM_SIZE 0x10
->>>> +
->>>> +/* Flags definitions */
->>>> +#define SECONDS_CH 0x80
->>>> +#define HOURS_PM   0x20
->>>> +#define CTRL2_24   0x20
->>>> +
->>>> +#define TYPE_RS5C372 "rs5c372"
->>>> +OBJECT_DECLARE_SIMPLE_TYPE(RS5C372State, RS5C372)
->>>> +
->>>> +struct RS5C372State {
->>>> +    I2CSlave parent_obj;
->>>> +
->>>> +    int64_t offset;
->>>> +    uint8_t wday_offset;
->>>> +    uint8_t nvram[NVRAM_SIZE];
->>>> +    uint8_t ptr;
->>>> +    uint8_t tx_format;
->>>> +    bool addr_byte;
->>>> +};
->>>> +
->>>> +static void capture_current_time(RS5C372State *s)
->>>> +{
->>>> +    /*
->>>> +     * Capture the current time into the secondary registers which will be
->>>> +     * actually read by the data transfer operation.
->>>> +     */
->>>> +    struct tm now;
->>>> +    qemu_get_timedate(&now, s->offset);
->>>> +    s->nvram[0] = to_bcd(now.tm_sec);
->>>> +    s->nvram[1] = to_bcd(now.tm_min);
->>>> +    if (s->nvram[0xf] & CTRL2_24) {
->>>> +        s->nvram[2] = to_bcd(now.tm_hour);
->>>> +    } else {
->>>> +        int tmp = now.tm_hour;
->>>> +        if (tmp % 12 == 0) {
->>>> +            tmp += 12;
->>>> +        }
->>>> +        if (tmp <= 12) {
->>>> +            s->nvram[2] = to_bcd(tmp);
->>>> +        } else {
->>>> +            s->nvram[2] = HOURS_PM | to_bcd(tmp - 12);
->>>> +        }
->>>> +    }
->>>> +    s->nvram[3] = (now.tm_wday + s->wday_offset) % 7 + 1;
->>>> +    s->nvram[4] = to_bcd(now.tm_mday);
->>>> +    s->nvram[5] = to_bcd(now.tm_mon + 1);
->>>> +    s->nvram[6] = to_bcd(now.tm_year - 100);
->>>> +}
->>>> +
->>>> +static void inc_regptr(RS5C372State *s)
->>>> +{
->>>> +    s->ptr = (s->ptr + 1) & (NVRAM_SIZE - 1);
->>>> +}
->>>> +
->>>> +static int rs5c372_event(I2CSlave *i2c, enum i2c_event event)
->>>> +{
->>>> +    RS5C372State *s = RS5C372(i2c);
->>>> +
->>>> +    switch (event) {
->>>> +    case I2C_START_RECV:
->>>> +        /*
->>>> +         * In h/w, capture happens on any START condition, not just a
->>>> +         * START_RECV, but there is no need to actually capture on
->>>> +         * START_SEND, because the guest can't get at that data
->>>> +         * without going through a START_RECV which would overwrite it.
->>>> +         */
->>>> +        capture_current_time(s);
->>>> +        s->ptr = 0xf;
->>>> +        break;
->>>> +    case I2C_START_SEND:
->>>> +        s->addr_byte = true;
->>>> +        break;
->>>> +    default:
->>>> +        break;
->>>> +    }
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static uint8_t rs5c372_recv(I2CSlave *i2c)
->>>> +{
->>>> +    RS5C372State *s = RS5C372(i2c);
->>>> +    uint8_t res;
->>>> +
->>>> +    res  = s->nvram[s->ptr];
->>>> +
->>>> +    trace_rs5c372_recv(s->ptr, res);
->>>> +
->>>> +    inc_regptr(s);
->>>> +    return res;
->>>> +}
->>>> +
->>>> +static int rs5c372_send(I2CSlave *i2c, uint8_t data)
->>>> +{
->>>> +    RS5C372State *s = RS5C372(i2c);
->>>> +
->>>> +    if (s->addr_byte) {
->>>> +        s->ptr = data >> 4;
->>>> +        s->tx_format = data & 0xf;
->>>> +        s->addr_byte = false;
->>>> +        return 0;
->>>> +    }
->>>> +
->>>> +    trace_rs5c372_send(s->ptr, data);
->>>> +
->>>> +    if (s->ptr < 7) {
->>>> +        /* Time register. */
->>>> +        struct tm now;
->>>> +        qemu_get_timedate(&now, s->offset);
->>>> +        switch (s->ptr) {
->>>> +        case 0:
->>>> +            now.tm_sec = from_bcd(data & 0x7f);
->>>> +            break;
->>>> +        case 1:
->>>> +            now.tm_min = from_bcd(data & 0x7f);
->>>> +            break;
->>>> +        case 2:
->>>> +            if (s->nvram[0xf] & CTRL2_24) {
->>>> +                now.tm_hour = from_bcd(data & 0x3f);
->>>> +            } else {
->>>> +                int tmp = from_bcd(data & (HOURS_PM - 1));
->>>> +                if (data & HOURS_PM) {
->>>> +                    tmp += 12;
->>>> +                }
->>>> +                if (tmp % 12 == 0) {
->>>> +                    tmp -= 12;
->>>> +                }
->>>> +                now.tm_hour = tmp;
->>>> +            }
->>>> +            break;
->>>> +        case 3:
->>>> +            {
->>>> +                /*
->>>> +                 * The day field is supposed to contain a value in the range
->>>> +                 * 1-7. Otherwise behavior is undefined.
->>>> +                 */
->>>> +                int user_wday = (data & 7) - 1;
->>>> +                s->wday_offset = (user_wday - now.tm_wday + 7) % 7;
->>>> +            }
->>>> +            break;
->>>> +        case 4:
->>>> +            now.tm_mday = from_bcd(data & 0x3f);
->>>> +            break;
->>>> +        case 5:
->>>> +            now.tm_mon = from_bcd(data & 0x1f) - 1;
->>>> +            break;
->>>> +        case 6:
->>>> +            now.tm_year = from_bcd(data) + 100;
->>>> +            break;
->>>> +        }
->>>> +        s->offset = qemu_timedate_diff(&now);
->>>> +    } else {
->>>> +        s->nvram[s->ptr] = data;
->>>> +    }
->>>> +    inc_regptr(s);
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static void rs5c372_reset_hold(Object *obj, ResetType type)
->>>> +{
->>>> +    RS5C372State *s = RS5C372(obj);
->>>> +
->>>> +    /* The clock is running and synchronized with the host */
->>>> +    s->offset = 0;
->>>> +    s->wday_offset = 0;
->>>> +    memset(s->nvram, 0, NVRAM_SIZE);
->>>> +    s->ptr = 0;
->>>> +    s->addr_byte = false;
->>>> +}
->>>> +
->>>> +static const VMStateDescription rs5c372_vmstate = {
->>>> +    .name = "rs5c372",
->>>> +    .version_id = 1,
->>>> +    .minimum_version_id = 1,
->>>> +    .fields = (const VMStateField[]) {
->>>> +        VMSTATE_I2C_SLAVE(parent_obj, RS5C372State),
->>>> +        VMSTATE_INT64(offset, RS5C372State),
->>>> +        VMSTATE_UINT8_V(wday_offset, RS5C372State, 2),
->>>> +        VMSTATE_UINT8_ARRAY(nvram, RS5C372State, NVRAM_SIZE),
->>>> +        VMSTATE_UINT8(ptr, RS5C372State),
->>>> +        VMSTATE_UINT8(tx_format, RS5C372State),
->>>> +        VMSTATE_BOOL(addr_byte, RS5C372State),
->>>> +        VMSTATE_END_OF_LIST()
->>>> +    }
->>>> +};
->>>> +
->>>> +static void rs5c372_init(Object *obj)
->>>> +{
->>>> +    qdev_prop_set_uint8(DEVICE(obj), "address", 0x32);
->>>> +}
->>>> +
->>>> +static void rs5c372_class_init(ObjectClass *klass, void *data)
->>>> +{
->>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>>> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->>>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->>>> +
->>>> +    k->event = rs5c372_event;
->>>> +    k->recv = rs5c372_recv;
->>>> +    k->send = rs5c372_send;
->>>> +    dc->vmsd = &rs5c372_vmstate;
->>>> +    rc->phases.hold = rs5c372_reset_hold;
->>>> +}
->>>> +
->>>> +static const TypeInfo rs5c372_types[] = {
->>>> +    {
->>>> +        .name          = TYPE_RS5C372,
->>>> +        .parent        = TYPE_I2C_SLAVE,
->>>> +        .instance_size = sizeof(RS5C372State),
->>>> +        .instance_init = rs5c372_init,
->>>> +        .class_init    = rs5c372_class_init,
->>>> +    },
->>>> +};
->>>> +
->>>> +DEFINE_TYPES(rs5c372_types)
->>>> diff --git a/tests/qtest/rs5c372-test.c b/tests/qtest/rs5c372-test.c
->>>> new file mode 100644
->>>> index 0000000000..0f6a9b68b9
->>>> --- /dev/null
->>>> +++ b/tests/qtest/rs5c372-test.c
->>>> @@ -0,0 +1,43 @@
->>>> +/*
->>>> + * QTest testcase for the RS5C372 RTC
->>>> + *
->>>> + * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
->>>> + *
->>>> + * Based on ds1338-test.c
->>>> + *
->>>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>>> + */
->>>> +
->>>> +#include "qemu/osdep.h"
->>>> +#include "qemu/bcd.h"
->>>> +#include "libqos/i2c.h"
->>>> +
->>>> +#define RS5C372_ADDR 0x32
->>>> +
->>>> +static void rs5c372_read_date(void *obj, void *data, QGuestAllocator *alloc)
->>>> +{
->>>> +    QI2CDevice *i2cdev = obj;
->>>> +
->>>> +    uint8_t resp[0x10];
->>>> +    time_t now = time(NULL);
->>>> +    struct tm *utc = gmtime(&now);
->>>> +
->>>> +    i2c_read_block(i2cdev, 0, resp, sizeof(resp));
->>>> +
->>>> +    /* check retrieved time against local time */
->>>> +    g_assert_cmpuint(from_bcd(resp[5]), == , utc->tm_mday);
->>>> +    g_assert_cmpuint(from_bcd(resp[6]), == , 1 + utc->tm_mon);
->>>> +    g_assert_cmpuint(2000 + from_bcd(resp[7]), == , 1900 + utc->tm_year);
->>>> +}
->>>> +
->>>> +static void rs5c372_register_nodes(void)
->>>> +{
->>>> +    QOSGraphEdgeOptions opts = { };
->>>> +    add_qi2c_address(&opts, &(QI2CAddress) { RS5C372_ADDR });
->>>> +
->>>> +    qos_node_create_driver("rs5c372", i2c_device_create);
->>>> +    qos_node_consumes("rs5c372", "i2c-bus", &opts);
->>>> +    qos_add_test("read_date", "rs5c372", rs5c372_read_date, NULL);
->>>> +}
->>>> +
->>>> +libqos_init(rs5c372_register_nodes);
->>>> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
->>>> index 2fe04ec1d0..315b0e4ecc 100644
->>>> --- a/hw/rtc/Kconfig
->>>> +++ b/hw/rtc/Kconfig
->>>> @@ -26,3 +26,8 @@ config GOLDFISH_RTC
->>>>
->>>> config LS7A_RTC
->>>>      bool
->>>> +
->>>> +config RS5C372_RTC
->>>> +    bool
->>>> +    depends on I2C
->>>> +    default y if I2C_DEVICES
->>>> diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
->>>> index 8ecc2d792c..6c87864dc0 100644
->>>> --- a/hw/rtc/meson.build
->>>> +++ b/hw/rtc/meson.build
->>>> @@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_RTC', if_true: files('goldfish_rtc.c'))
->>>> system_ss.add(when: 'CONFIG_LS7A_RTC', if_true: files('ls7a_rtc.c'))
->>>> system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-rtc.c'))
->>>> system_ss.add(when: 'CONFIG_MC146818RTC', if_true: files('mc146818rtc.c'))
->>>> +system_ss.add(when: 'CONFIG_RS5C372_RTC', if_true: files('rs5c372.c'))
->>>> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
->>>> index 8012afe102..b9f2852d35 100644
->>>> --- a/hw/rtc/trace-events
->>>> +++ b/hw/rtc/trace-events
->>>> @@ -35,3 +35,7 @@ m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%04x val
->>>> # goldfish_rtc.c
->>>> goldfish_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
->>>> goldfish_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
->>>> +
->>>> +# rs5c372.c
->>>> +rs5c372_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0x%02" PRIx8
->>>> +rs5c372_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0x%02" PRIx8
->>>> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
->>>> index 8a6243382a..9e5380ba7a 100644
->>>> --- a/tests/qtest/meson.build
->>>> +++ b/tests/qtest/meson.build
->>>> @@ -298,6 +298,7 @@ qos_test_ss.add(
->>>>    'pca9552-test.c',
->>>>    'pci-test.c',
->>>>    'pcnet-test.c',
->>>> +  'rs5c372-test.c',
->>>>    'sdhci-test.c',
->>>>    'spapr-phb-test.c',
->>>>    'tmp105-test.c',
+> diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
+> index b921392c525..49a3825eb46 100644
+> --- a/include/hw/qdev-properties-system.h
+> +++ b/include/hw/qdev-properties-system.h
+> @@ -1,6 +1,7 @@
+>   #ifndef HW_QDEV_PROPERTIES_SYSTEM_H
+>   #define HW_QDEV_PROPERTIES_SYSTEM_H
+>   
+> +#include "qapi/qapi-types-common.h"
+>   #include "hw/qdev-properties.h"
+>   
+>   bool qdev_prop_sanitize_s390x_loadparm(uint8_t *loadparm, const char *str,
 

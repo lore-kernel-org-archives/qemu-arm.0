@@ -1,122 +1,122 @@
-Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp347982njc;
-        Wed, 12 Mar 2025 08:37:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdzOJyx47juTWoD/gGZmyC5pzieiG3mqaS8IGdeQ8oODz6zp7QUnHGxaqCqcBJ4DXvz3eTbNgRhpqcvg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEP+tc3ZQCkF4OBzHudQLyddOi5Yac3O2makd5K3Ha68jUG2CkOK67m6DsTE48w9wwrxhiD
-X-Received: by 2002:a05:6214:d62:b0:6e6:5b8e:7604 with SMTP id 6a1803df08f44-6eadb848fd3mr152666d6.12.1741793834127;
-        Wed, 12 Mar 2025 08:37:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741793834; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp340395njc;
+        Wed, 12 Mar 2025 08:25:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU9cIBoxBRyzwJgDMySNk4A0FxByuKebOsUwvOwLJ2TLsnG3gI0T/Gy34N8zcm8GD4NrPzQHOI6I1Eyzw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5nv5lMmwVfi2eX/7rZoelhEjm+9OCe+Wz0oXEntVou5/kCdtXBR/JwHhfa0yPgSMNr+Ae
+X-Received: by 2002:a05:620a:2b86:b0:7c5:47c6:b880 with SMTP id af79cd13be357-7c57110fe65mr15762685a.2.1741793150044;
+        Wed, 12 Mar 2025 08:25:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741793150; cv=none;
         d=google.com; s=arc-20240605;
-        b=dhKSh1ybMLkOA0ErIzPuCBKU1hbqElJ3ParyPEueFqBc60rzNPNzqIoj5NDxJc+wyi
-         mtLGti6Tzhs5OIfot5ot6PrucxB+zPRY4ykzoz6a0h9Mn3IaLGZwxdW0ZbjtIHG16pj3
-         XvKv5PmrehIaQjfRmJHXhZdgjjuIfwRpzRWw1Wft83jRzelYcslRxYCyadifoW90bvxA
-         nxYb3ibZOTMhPzjGwylT/xC8kK3vQQ9oO2chqxJEVHEMp1yBeSbBaLW/FKVYzG05ZPPo
-         KvPeIC8US76Um2TTUAF6nwhJeMegZIkugxeLCpomrXDe0lLXhR1nKL3nKDFJOQcsh06u
-         zK9A==
+        b=ZEnZNur4iaUR75wa9POe7q0qTK9ImodEMYm5jmCx1PMmjW1Rx8KB1lenp+CV9NB0+1
+         DJ1QUl5B9kCA6HMPWj08i/dCMNrulMYCCOdEK3qZQSs2Cm/I4x2+ue3M7ZfD2x0+ylEB
+         U/4WzIwZAmMXTc74kK7GZHxXUmvCei5GUEC+2x+370ZWyx29DXOZMyVgZBep20G8Lyh7
+         rFYgNC+sM/1lQHrm8MakLAH+FxCVmZ79XvBE/3rQ5ioaE8u/zhOUiULKctyHY/fp2tYE
+         rSf93TQO0zEeENLnuH0I/NZBaPSbkzdsilvkqEwqcByVoNU4l1ZmiPIjfkSoKwYuwSD1
+         bouA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=nrl5hdPrHKRG86mu1gtfivNP4aYY6RWf6n/HBWLbb/E=;
-        fh=VLCN6ykH2FeAEYIPzT0EF5m4cqz2T3sr7ypQ6xUBqek=;
-        b=XpQTuqapFB8nDUWm/CItjyFUeaqq5YfvSLXQ9c6iSQn8/WO8JJfb2vp/5wfYStpL7m
-         dgmEvjd1XtYU32rTNNGS1wT8G0G59ynBbtiK/ZPZVo+iICbl1iIwR22jwVPbsZSBuneI
-         Ub9zEG/1OqdmbxChiCU5BUEnxuhWgZQWgJ9XNlHe/1Ild3zk6priYiNNR7vjkcbx5OlS
-         jNmvQDfmEaWbXL5ueEk+RwLcXMOOeUoj131nhJpB04jkUAYW2sk1WoypQLSVGdwFCg9j
-         H0sfH14mxTao2+rXQ8KEZz8mxBa3I12UfKfISwIAPSRc7sdUdRDanyS1yCj1tG4H3GYK
-         3hXw==;
+        bh=rW+zj2edgGhgvM5O8G2t42DNKGJdQnzrsKNbBJcSZtk=;
+        fh=xAw67rB94bcGCRzyb85p8G4h/OVnemS8xL+su+v9Orc=;
+        b=NT6x8J5Jf5mLH4sy3Jg3vDTJ6IVFQf4Spw3tUmCHSaAh17bP2x3Rkklqap5KQrl0Yr
+         bnwb4Y1kID50vlndmMGTIdOvwbYtVH/mu0Qn44lOpFNiz8PWE3kAdHJQjCrO8Rhnw058
+         9hqzqqzLqQUqufwT3F3qS4IYOH00pbyfD2cyOu707DwEXYKerW61ASXvwdW/G4wbnF0h
+         hupyvFfSibHN3DKSobRkCbYSngyvz6K6XB7UO/U3Uz5xKDhG2FuPmLvID0C3ccCCSuAd
+         BrgGoFYdNXc5SrwxqJoeR3NvQ/L4wE60PE07FzfPBrhaLJv+0HX+DuhLZO7IAw6Uba4z
+         NkNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjuRrl66;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C/WkWPlO";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f7094214si140354936d6.156.2025.03.12.08.37.14
+        by mx.google.com with ESMTPS id af79cd13be357-7c54653385fsi894515585a.597.2025.03.12.08.25.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Mar 2025 08:37:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Mar 2025 08:25:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjuRrl66;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C/WkWPlO";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tsO8O-0002Xu-Oh; Wed, 12 Mar 2025 11:36:41 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tsNxk-0008JJ-OU; Wed, 12 Mar 2025 11:25:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tsO8L-0002SX-AH
- for qemu-devel@nongnu.org; Wed, 12 Mar 2025 11:36:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1tsNxi-0008FM-1W
+ for qemu-arm@nongnu.org; Wed, 12 Mar 2025 11:25:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tsO8J-0002xp-2H
- for qemu-devel@nongnu.org; Wed, 12 Mar 2025 11:36:36 -0400
+ id 1tsNxc-0001Bu-9M
+ for qemu-arm@nongnu.org; Wed, 12 Mar 2025 11:25:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741793792;
+ s=mimecast20190719; t=1741793131;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nrl5hdPrHKRG86mu1gtfivNP4aYY6RWf6n/HBWLbb/E=;
- b=EjuRrl66rRdLyUBy+ID0aJCx2QeKFEKmmPm5ks01tdciWWNGBNC50kbKzV1qKGtY4Im9Lv
- +lPobgqRgeu47ZOhU4El/5TX+EGc9gKbToDcKrI5U0ii22NzC0AnAjX3UVQnr/B1DZJ3qW
- 2Mhfu5FKFebtDvfKA/8FiydtY/qQagA=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=rW+zj2edgGhgvM5O8G2t42DNKGJdQnzrsKNbBJcSZtk=;
+ b=C/WkWPlOtIiL1k6+LZERPc6pn5zzj1fgfRwyITOfgShvLgSVIA/13giJjQcmaVLkRI/VCl
+ IzKQ7zZQx1BQx02tmY2227+nGbKd5MiPdoPpj6Zi+pN7ymMp5DeZD4ivKDrb0/ZqLY13VW
+ DkH2ZYNOJ+PQ/T0z0gvsf9VqrtcIb0M=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-680-eJkuWpVJMwus2PPpcH8tBg-1; Wed, 12 Mar 2025 11:36:31 -0400
-X-MC-Unique: eJkuWpVJMwus2PPpcH8tBg-1
-X-Mimecast-MFC-AGG-ID: eJkuWpVJMwus2PPpcH8tBg_1741793791
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-6e8f9450b19so234306d6.1
- for <qemu-devel@nongnu.org>; Wed, 12 Mar 2025 08:36:31 -0700 (PDT)
+ us-mta-193-KT9guMvpMfKIy5N29evvww-1; Wed, 12 Mar 2025 11:25:26 -0400
+X-MC-Unique: KT9guMvpMfKIy5N29evvww-1
+X-Mimecast-MFC-AGG-ID: KT9guMvpMfKIy5N29evvww_1741793126
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-6e90788e2a7so357516d6.0
+ for <qemu-arm@nongnu.org>; Wed, 12 Mar 2025 08:25:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741793791; x=1742398591;
+ d=1e100.net; s=20230601; t=1741793126; x=1742397926;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=nrl5hdPrHKRG86mu1gtfivNP4aYY6RWf6n/HBWLbb/E=;
- b=efU3wi4H09LxstKUH9valQyJM4DfevYEMDzSlhWVRs+yBba2HvSHdYfGq8l6UJkHXv
- ZRIp9BAgMkZfX9icDvmpxx/8Y0fTpn40h17hwrQ6ZMmraW6ODkmo5GdPOqZnZ5lP/SRn
- US9d0S9QvFPcRhhYmp/8LQm4xIDKzcbecl4U882xskhGC4lk1sHH54fNVk880Y7BdW8X
- bQkNEk7jzQPhvfGjd6QpQJ3JzezGebOEMkhHUaDcigNc49C1zTGn65F4v/JXtfKCZIbH
- NW3gRvHZ+6k4X333viq6Mtk9nUPoRddvqDop9o/HNytTqzAIlio2RwDe3leD1VBjWYPU
- 0Emg==
+ bh=rW+zj2edgGhgvM5O8G2t42DNKGJdQnzrsKNbBJcSZtk=;
+ b=LZFMj4yhfHOAZQ6O62BbEZN/dlH1V1aYI9z9zr/Nm2EeTiNuaTF0ycsVzNvbG5bJ2W
+ PTLtWiccSLgPiD3wvCU8fcCupR7gRH3l748LCTPYgYHlJFz0ORh9E43b3/fHDz5OqwHo
+ 4tGBpGlDBF4QF6mQstbJh7bpqZRhD55H8AiO7RxEBH4asawHnkpX0JgU+VQq8aJOcD+Z
+ Q4SI7o/PSJl6IoWoik511ZuxRKlssgC2M6QRPVAgVAFxhfdpfTSJlo7iZ3nMmfFbQmXR
+ 3Llj+aF7hSnMoBYH6A5A/PDrmFs7FKaQY8KIiO2+o53KW/qh5ZpdhcqMOt1ajCXbX3Mx
+ TOwA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXqm3SP+LCR2Rp51RB6/mxpwd4qgajk6UxlMqqKThV+rLqmpP5YvSsHk7uMVPS9JCOgBpOJjDFVETwn@nongnu.org
-X-Gm-Message-State: AOJu0YygYs6TPL9AuvNBUOV2aJtcdbDsN0Sp+G4k+RPjSqFCF+M2b6md
- djeImxzoOyuRjoYRYjEDD9Hro92KADWgJAhpOJiT5kOA4nh3HWhn0uGCpNuhq/VeqzEKxLEttP8
- jAS9WvlTSaGm4JUXLewUQxw+JNgbb+5Jr4KJzgqkgJGa978AHeG0Y
-X-Gm-Gg: ASbGncsJyAiofGEhevrZ25a8FGfShheJMqGZEBjmjeZl1OF5mBb6Fvbv9cmyB5ufAEA
- wxIXnG5LrPJ2oq2JuV+SwiRcLC0Tvp+RCyIRnnROVRmgnNlQEBTbgLWynhlEC31uc2o01rHmj31
- oI9jjnRRXMkAQCfFQToR0xNvvCmeUp+UoiD3SUrd76zxFUHQpFp41ZEz6+Q79Hf26TaR5TUVrPB
- X8q/xMZScmnQlaAwjnTmkA1hAYBsWUG5wy7PaQ5vODbIHA0shtdjYhj713hoh6b2MxU2hrV3RLU
- yiQ7e5ZqnIOFGowz3beWcdP6grc+CjhHIdoDqUAGt6D6IYe1MChM3OdyOcrGaUQ=
-X-Received: by 2002:a05:6214:2a88:b0:6e4:3478:8ea7 with SMTP id
- 6a1803df08f44-6eadb7b2086mr273396d6.4.1741793790772; 
- Wed, 12 Mar 2025 08:36:30 -0700 (PDT)
-X-Received: by 2002:a05:6214:2a88:b0:6e4:3478:8ea7 with SMTP id
- 6a1803df08f44-6eadb7b2086mr272876d6.4.1741793790410; 
- Wed, 12 Mar 2025 08:36:30 -0700 (PDT)
+ AJvYcCXK0FYgjVPy+LqL4y/lWHlHLew1v/GjrKLT4j78STicN0NBe9qoXSFkG3gWL5N3cPpNlArs1RL9Zw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxo3f+KB5yegSq9Ey3vr/MDaXniaspZ7vrye8DsRzNearTSFheW
+ IxXHLC3VG6IulfZMVLkXF6HhFE6ptFKgpNNlt2lCJWNTK9oQG+xCfJxcyGmGwojDzD8ts8E48Hl
+ kA+3Yg5nEpdhCVOzg/QWcub6WEho/2WIbXS4F7gRUTJVy/P/b5w==
+X-Gm-Gg: ASbGncvr4ZhxmKg+hZ0e6PldCwjmhCSQa6Fa/DIuR233Cf8umWs+kYbE22ZRreZEUy5
+ ZVCIaDszB47IjqovQwJzZ7b3lXafQejOnGsXzy+Hoz5ueLtQRlmgrlEnMLqDgF4Kwluv9QCQyrg
+ /AT5kvwNP9BOeh0ecOb6YzEQZQzZS0jJ0I9GKNnmLyFVvKFQJ3LSirx2dacqLJxeto1p/Fxuw68
+ F9cv/DzL9LSFmzyMsj+Pq6UJyEzXMwC/lVd01PdZj50YCSR0Pwd25OZrQvF/rAGsfqNBViCn72u
+ VVeoRXRn9nyASHYmqc4HjorscWDc9VHcxmSrPzMO044kEhI1SuhRsa/ZosYCIXs=
+X-Received: by 2002:a05:6214:224e:b0:6e8:9053:825e with SMTP id
+ 6a1803df08f44-6eadb56a10bmr662426d6.17.1741793125877; 
+ Wed, 12 Mar 2025 08:25:25 -0700 (PDT)
+X-Received: by 2002:a05:6214:224e:b0:6e8:9053:825e with SMTP id
+ 6a1803df08f44-6eadb56a10bmr661996d6.17.1741793125574; 
+ Wed, 12 Mar 2025 08:25:25 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6e8f71709aesm85440226d6.116.2025.03.12.08.36.27
+ 6a1803df08f44-6e8f707c3dfsm85973996d6.7.2025.03.12.08.25.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Mar 2025 08:36:29 -0700 (PDT)
-Message-ID: <547f961e-380c-4ffe-8b8b-3e9d543aa702@redhat.com>
-Date: Wed, 12 Mar 2025 16:36:26 +0100
+ Wed, 12 Mar 2025 08:25:24 -0700 (PDT)
+Message-ID: <0574747f-7fee-4657-9a74-2d6f6f46c2c0@redhat.com>
+Date: Wed, 12 Mar 2025 16:25:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 04/20] hw/arm/virt: Add support for smmuv3-accel
-Content-Language: en-US
+Subject: Re: [RFC PATCH v2 02/20] backends/iommufd: Introduce
+ iommufd_vdev_alloc
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
@@ -125,131 +125,121 @@ Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <20250311141045.66620-5-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-3-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250311141045.66620-5-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20250311141045.66620-3-shameerali.kolothum.thodi@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: d4nohsn3NfCyeCkNVqCX4DhVrtL37h1p8yExek4F2tY_1741793126
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5ni3dMyGkxjH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ECBPmx//fiFS
+
 
 Hi Shameer,
 
-
 On 3/11/25 3:10 PM, Shameer Kolothum wrote:
-> Allow cold-plug smmuv3-accel to virt If the machine wide smmuv3
-> is not specified.
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> No FDT support is added for now.
+> Add a helper to allocate an iommufd device's virtual device (in the user
+> space) per a viommu instance.
 >
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/virt.c         | 12 ++++++++++++
->  hw/core/sysbus-fdt.c  |  1 +
->  include/hw/arm/virt.h |  1 +
->  3 files changed, 14 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 4a5a9666e9..84a323da55 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -73,6 +73,7 @@
->  #include "qobject/qlist.h"
->  #include "standard-headers/linux/input.h"
->  #include "hw/arm/smmuv3.h"
-> +#include "hw/arm/smmuv3-accel.h"
->  #include "hw/acpi/acpi.h"
->  #include "target/arm/cpu-qom.h"
->  #include "target/arm/internals.h"
-> @@ -2911,6 +2912,16 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
->                                       SYS_BUS_DEVICE(dev));
->          }
-> +        if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_ACCEL)) {
-> +            if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-maybe just check whether it is != VIRT_IOMMU_NONE?
-> +                error_setg(errp,
-> +                           "iommu=smmuv3 is already specified. can't create smmuv3-accel dev");
-I would clearly state "iommu=smmuv3 virt machine option is alreadt set"
-and use an error hint to say both are not compatible.
-> +                return;
-> +            }
-> +            if (vms->iommu != VIRT_IOMMU_SMMUV3_ACCEL) {
-> +                vms->iommu = VIRT_IOMMU_SMMUV3_ACCEL;
-
-I know there were quite a lot of dicussions on the 1st multi
-instantiation series related to the way we instanatiate that device and
-maybe I missed some blockers but why wouldn't we allow the instantiation
-of the legacy smmu device with -device too. I think this would be
-simpler for libvirt and we would somehow deprecate the machine option
-method? would that make a problem if you were to use -device smmu,accel
-or something alike?
-> +            }
-> +        }
->      }
->  
->      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> @@ -3120,6 +3131,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_ACCEL);
->  #ifdef CONFIG_TPM
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
->  #endif
-> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-> index 774c0aed41..c8502ad830 100644
-> --- a/hw/core/sysbus-fdt.c
-> +++ b/hw/core/sysbus-fdt.c
-> @@ -489,6 +489,7 @@ static const BindingEntry bindings[] = {
->  #ifdef CONFIG_LINUX
->      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
->      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
-> +    TYPE_BINDING("arm-smmuv3-accel", no_fdt_node),
-use the define instead.
-
-to me this patch should be moved at the end of the series when the
-device is fully functional.
->      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
->  #endif
->  #ifdef CONFIG_TPM
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index c8e94e6aed..849d1cd5b5 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -92,6 +92,7 @@ enum {
->  typedef enum VirtIOMMUType {
->      VIRT_IOMMU_NONE,
->      VIRT_IOMMU_SMMUV3,
-> +    VIRT_IOMMU_SMMUV3_ACCEL,
->      VIRT_IOMMU_VIRTIO,
->  } VirtIOMMUType;
->  
-Thanks
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Eric
+> ---
+>  backends/iommufd.c       | 26 ++++++++++++++++++++++++++
+>  backends/trace-events    |  1 +
+>  include/system/iommufd.h |  4 ++++
+>  3 files changed, 31 insertions(+)
+>
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index 3fac08c96e..3511dd32ab 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -366,6 +366,32 @@ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+>      return true;
+>  }
+>  
+> +bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+> +                                uint32_t viommu_id, uint64_t virt_id,
+> +                                uint32_t *out_vdev_id, Error **errp)
+> +{
+> +    int ret, fd = be->fd;
+> +    struct iommu_vdevice_alloc alloc_vdev = {
+> +        .size = sizeof(alloc_vdev),
+> +        .viommu_id = viommu_id,
+> +        .dev_id = dev_id,
+> +        .virt_id = virt_id,
+> +    };
+> +
+> +    ret = ioctl(fd, IOMMU_VDEVICE_ALLOC, &alloc_vdev);
+> +
+> +    trace_iommufd_backend_alloc_vdev(fd, dev_id, viommu_id, virt_id,
+> +                                     alloc_vdev.out_vdevice_id, ret);
+> +
+> +    if (ret) {
+> +        error_setg_errno(errp, errno, "IOMMU_VDEVICE_ALLOC failed");
+> +        return false;
+> +    }
+> +
+> +    *out_vdev_id = alloc_vdev.out_vdevice_id;
+> +    return true;
+> +}
+> +
+>  bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>                                             uint32_t hwpt_id, Error **errp)
+>  {
+> diff --git a/backends/trace-events b/backends/trace-events
+> index a835827540..86c8f89e8a 100644
+> --- a/backends/trace-events
+> +++ b/backends/trace-events
+> @@ -20,3 +20,4 @@ iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) "
+>  iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
+>  iommufd_backend_invalidate_cache(int iommufd, uint32_t hwpt_id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d hwpt_id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
+>  iommufd_backend_alloc_viommu(int iommufd, uint32_t type, uint32_t dev_id, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
+> +iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index 7e5507f2db..53920bae5b 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -59,6 +59,10 @@ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+>                                    uint32_t viommu_type, uint32_t hwpt_id,
+>                                    uint32_t *out_hwpt, Error **errp);
+>  
+> +bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+> +                                uint32_t viommu_id, uint64_t virt_id,
+> +                                uint32_t *out_vdev_id, Error **errp);
+> +
+>  bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+>                                          bool start, Error **errp);
+>  bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
 

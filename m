@@ -1,134 +1,188 @@
-Received: by 2002:a17:505:8f44:b0:1be9:327d:8ee3 with SMTP id jy4csp2055089njc;
-        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUCRk5taAKgBwnui0OqHkK/ljSgWz5WN0tcwvLOgOPVkJwGCKEhDGlywobvZjkB4qI+xY1KMlor1/GRBw==@linaro.org
-X-Received: by 2002:a05:690c:3201:b0:6fe:d759:b178 with SMTP id 00721157ae682-6fed759b5e0mr127003747b3.6.1741718227604;
-        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741718227; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp389968njc;
+        Wed, 12 Mar 2025 09:40:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8W8SQYZsPjIXUHkFgkQbmkieq4zRQTQ1DXNWRNN4t20x5W2K6AFngMpTtw4W5wVZW+JHzNBSPBCiUCw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOU268PI+GbcNdOCoXJhgibyqGbxFz2y3kIMCRC19o4+Lud6allLw2uHcG1rPUGFC0gLHZ
+X-Received: by 2002:a05:6122:2189:b0:520:652b:ce18 with SMTP id 71dfb90a1353d-523e3d9b6b5mr14260628e0c.0.1741797601294;
+        Wed, 12 Mar 2025 09:40:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741797601; cv=none;
         d=google.com; s=arc-20240605;
-        b=eHPsEp1bghbyChW3mKXlIxf0yJYRFU8zcx2SeU8bvZovOg/jh+hiP8TtBTWcuVcb5K
-         fz4eliOFt4TcFBsYIYQRIIak9J1w3c+w0Q7XjbILC+MSj0bfb7TLW5hAFWrNLJ7YwPXa
-         nO7cjjlLu9DWPrXZHiRvBD9LEZLArEI3eEZ1PGQqPT0qj+40pZjxh1XmjfrwA1AQlEIi
-         3arglFMysqg5Z2DY1O/ZtvpVRwO12e3uZiv6IoE9oksTq4TUpCOZETjEjSGwzrwqHudu
-         v/fuwNLgJukj4TK09xLmHZw8BajlBwhbSZU//ba+ccZDym8z54CKGhAW0Sj4m17Ubm2k
-         aTQA==
+        b=fVX8nhpzF9NzwFQ/9/nJU7XctMfopsgy3QijMFRQ3JzSgBVARwOEfDHBhQLVZaai8p
+         ni7KnlYl0xnnXBbGcV4RG7wWRE45SX/4EV81wzfUkFjVwj4AmTPRZKD8EriY6ev59crc
+         ew8Qq33ERqJWojwlTkcN22LEXXSbHo0fRAPC3cv8jabSeyEjCr0p2Ax/AgNu2gPHLd3x
+         AZkm9PNIhYxE6QEjplv+G9p+8iChybBnFXn1G8ECLiKTE7OQfdJJ+EverY4GIcfzIFNw
+         qSS5FJu/GUi0KZX7zqudGcoW5ira/FQtjOrNQ0iIS/r7NcUSFMCRTrrli9LCJsPzdsDg
+         yd0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
-        fh=2l/5I4cU8s1hb7bWvBTK0dbcQhtF5XyNEqCP0k+GLEw=;
-        b=JxJ+AJFubZBMzLh39XAyxIRo5ktfQ2TWCIpeajnPHo93/3Va7kiQTxopnYXeQZt5yh
-         YbPCnpY3IVSauReJmCsa4GbT4XHdXHBEyjRsxTfRUS1TztFY1lvjh9wJN/2WjJeldn6N
-         WkZBNJ08XWIxcIGdWNj+d9yUfYOFSeBD2YkbIUwQ7AnxBYWWNWl7qSeBEkRnKoG+Wb+t
-         PGFI1XxU5UE1WQMR/EOp83KXR2wf+gjmy7PL31UVp3LkmMsKHM0vIeIDf70oQxxHzP0L
-         uKDYavzelIq202q7Yf5r0Qom4hv+r9Qy5gpxQlZuwhHh35DQTIYMr1lCRjrGNqH+55+D
-         WcgA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=hpe2W+Dkw0YBLMVG1GZ0GpT5m6A3qjGlwirPj3HlREs=;
+        fh=gINP4y0wZQcfqJLEH0z5iO6QoH6KNYdYSm0KND27/Hk=;
+        b=ZkmHIi+2K/9WCwMst0AEyE1Tphe+ek6SNozl1a40rtnrBG2dnioToroaoOSaq49I8U
+         U0VtmllZEXZUUMxisn+MbVAfAWwhQOK1h2iyjhihOFg3iR0Gh/uaGIlwGirMmPEEsu6F
+         ZurDQ0ocKMWjWUB0kec7tMOgG6l4pbQomIHaiGKV8dWILgMiMDIjE6NDepmznAZEDwrE
+         c/7MR6+52Ad9YC4354SkT1WiGTBzWOD+fDL28iFxdofZdE9sK57rGfzRCtCMUUaAiFnV
+         B1SNeKnZZRW0hE4rj1rh7Z4U+4Deo09AlQOzsup7uPSpZGx5li89x6m6q0qCpmBq1oyP
+         yEKw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dmwpw2Vt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 3f1490d57ef6-e634b86599asor7188913276.6.2025.03.11.11.37.07
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E5tOd0iT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-523ef2f8de2si2602773e0c.207.2025.03.12.09.40.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 11 Mar 2025 11:37:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 12 Mar 2025 09:40:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dmwpw2Vt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741718227; x=1742323027; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
-        b=Dmwpw2VtEOjwH+0iYmqony2yj+vP5/RZeHBXHAbYoa4fBupgjf72rSGzrUGwPkZRB2
-         s9vdmSxZ7co5BMmF6ajJUkJDBm57OjriB3eeUuKGz7xnVziQ90XJQFvPDWmMRP+oIsw4
-         oNbxLWLElpTU/p44jRt/Fhbdm9OcuPEHfYmptfiAymLZ3oLXoLRZKaWjAFqdvMHVgDmx
-         w6F12xn4Yq7g2cddsyrTkJUOZgoKUN18ojqkmZt5EgZLYvtdY/kTprS23Nyaoi5sJAdq
-         IiIgR0IdEd2U3MpDgQKvHfUMk88Ml2bVaEEqwoQYre5AbLNh7FZn6pD+eKK4dqOKZV3+
-         YlSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741718227; x=1742323027;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wayN4RoaoenIpriSr88NoZR+64V8zFecBLi1Mteb1h4=;
-        b=u9XrhEaTb1xW+GBtfMUu2ri9IrbM7nY6A6x/mqdWdEPEg6Xm6tkbDR4sbTgwGw9a7l
-         jmOQFXMpVq1xR15Fd1n/oKY7EQGRK3BoDSL0WvN2+mAgKTTgiwGiAL7EKncWG81T3Lfb
-         A2BmKuKw9qiTfljW0AlEcLRw9LGjjRYPC8VdQlEgFWB+HbVKEip8J1rum0GBJ4SqADAk
-         XVQAbmSxV9PhUgZGGSJ2l7f1tZrJIzKxV7he22toJ9VohEDJGFBiAbv+I+Tm7NWZ2k88
-         J7YBISBW84AJeN1ESENvQsUZ4om3KlzlISAnGJ/fI/KKw+1m2rE884OJWkU7IpyKDn8M
-         wO+w==
-X-Forwarded-Encrypted: i=1; AJvYcCXTmOYmez7T6KFie4xw06BV/LSn6uAO3I6fxQR56S65Z+oOPNZry5hwhf0mhl2yZDFNRAX7l1pGesVR0Q==@linaro.org
-X-Gm-Message-State: AOJu0Ywr+BKiPxcUoRKcLA2GMu+3qJKaznx9eKaK9PTRcuFuk0s1+diN
-	285HQMt5kvTNwLI0fDbooTPGdLIUXWuZCJ2nx+jSzYMN0+VtlQGyZyTyL8rWPhNObbswrsuhB8d
-	ls8zE/p4GbgIDpDtqg25yXVN1wPtvIxsgvKAZ4On0
-X-Gm-Gg: ASbGncsO+i7N5SUoo3u695ZuK4N6VMZJ5+sEwZ/eMeK1Dcy9IxJqtaYrzlCDeAJ69qq
-	JYm+qPD53NdnT9gtFMHXH2C/GQ491q7Ht9CTWIRBEwsSBKSoJLj63EZXD8ZBIagw7LmnyTR/xrL
-	sM963rlsd/vG/dLPUYbL3kQT1RZ7E=
-X-Google-Smtp-Source: AGHT+IF/5Z50eBBrV2TrE7YsRKS/qUtD0B5qOOn/yDurn2aOxkMF1P3zHWfzVvFPoJcJx0TcR68GTaEtqI8G9XKn8s8=
-X-Received: by 2002:a05:6902:2086:b0:e60:a068:a14b with SMTP id
- 3f1490d57ef6-e635c0f9b05mr22983993276.4.1741718227112; Tue, 11 Mar 2025
- 11:37:07 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E5tOd0iT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tsP7L-0002Mn-47; Wed, 12 Mar 2025 12:39:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tsP7H-0002MB-I0
+ for qemu-arm@nongnu.org; Wed, 12 Mar 2025 12:39:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tsP7F-0004n2-Bv
+ for qemu-arm@nongnu.org; Wed, 12 Mar 2025 12:39:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741797571;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hpe2W+Dkw0YBLMVG1GZ0GpT5m6A3qjGlwirPj3HlREs=;
+ b=E5tOd0iT9MFdpBGS6U53A02M/lzsuIefwtR5GngfSa2uiW8VjgYZuAKlyeyyIdR9+4Hr9w
+ 4jtDuLWzj5GHqyLrWbFrvGVbolYfSV7Ib5dcYgGgXVAmcjaepzRfP1YEOeeEOzEjtXhw5Z
+ E7Dgyzu81RlqzhNVCTzlDQe/X17ve0Q=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-323-ILaNx7quPZ6PLyUsjPAsQw-1; Wed,
+ 12 Mar 2025 12:39:27 -0400
+X-MC-Unique: ILaNx7quPZ6PLyUsjPAsQw-1
+X-Mimecast-MFC-AGG-ID: ILaNx7quPZ6PLyUsjPAsQw_1741797565
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2A18319560B2; Wed, 12 Mar 2025 16:39:24 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.57])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DAA9A19560AD; Wed, 12 Mar 2025 16:39:17 +0000 (UTC)
+Date: Wed, 12 Mar 2025 16:39:14 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [RFC PATCH v2 05/20] hw/arm/smmuv3-accel: Associate a pxb-pcie bus
+Message-ID: <Z9G4sj9sHNYb1t78@redhat.com>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-6-shameerali.kolothum.thodi@huawei.com>
+ <79bcc36c-1a12-4b18-a54c-afe734d6bef0@redhat.com>
+ <9ffee8119fc441aeb760073c5f152fa4@huawei.com>
 MIME-Version: 1.0
-References: <20250310012825.79614-1-philmd@linaro.org> <CAFEAcA_fRWgntwbiFiDJqAkthR8vBzrkLOLkp5GeHD9O8xTMCA@mail.gmail.com>
- <CAFEAcA_kEndvNtw4EHySXWwQPoGs029yAzZGGBcV=zGHaj7KUQ@mail.gmail.com> <6f4a3582-f3e2-4f0c-8ab6-eeddd1064793@linaro.org>
-In-Reply-To: <6f4a3582-f3e2-4f0c-8ab6-eeddd1064793@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Mar 2025 18:36:55 +0000
-X-Gm-Features: AQ5f1JqytoFakCllyYae0_YaX-PbqFdorB8TUeotHeg0V71ppFWFo44bbBjv82U
-Message-ID: <CAFEAcA8j-JAVC=VK0YHoyB9dBH6Rj7aGpmZtCGPbc5Usdy6yhA@mail.gmail.com>
-Subject: Re: [PATCH v7 0/7] hw/char/pl011: Implement TX (async) FIFO to avoid
- blocking the main loop
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: oEtDOAuC/0ys
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9ffee8119fc441aeb760073c5f152fa4@huawei.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZHgp40RVZWCk
 
-On Tue, 11 Mar 2025 at 10:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
-> On 10/3/25 18:28, Peter Maydell wrote:
-> > This seems to be because the pl011 code and the chardev
-> > code disagree about how "couldn't write anything" is
-> > reported. pl011 here is looking for "0 means wrote nothing",
-> > but the chardev code reports it as "-1 and errno is EAGAIN".
-> >
-> > I think the chardev code is actually what we need to fix here,
-> > because it makes basically no effort to guarantee that the
-> > errno from the underlying write is still in 'errno' by the
-> > time qemu_chr_fe_write() returns. In particular it may
-> > call qemu_chr_write_log() or replay_char_write_event_save(),
-> > both of which will happily trash errno if something fails
-> > during their execution.
->
-> IIUC when retrying qemu_chr_write_buffer(s, buf, len, ofs) could
-> write less than @len (but still writing few bytes, that information
-> is stored in @offset) and return -errno, discarding @offset partial
-> write len.
+On Wed, Mar 12, 2025 at 04:34:18PM +0000, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+> 
+> > -----Original Message-----
+> > From: Eric Auger <eric.auger@redhat.com>
+> > Sent: Wednesday, March 12, 2025 4:08 PM
+> > To: Shameerali Kolothum Thodi
+> > <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+> > qemu-devel@nongnu.org
+> > Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+> > ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+> > mochs@nvidia.com; smostafa@google.com; Linuxarm
+> > <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> > <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+> > Subject: Re: [RFC PATCH v2 05/20] hw/arm/smmuv3-accel: Associate a pxb-
+> > pcie bus
+> > 
+> > Hi Shameer,
+> > 
+> > 
+> > On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+> > > User must associate a pxb-pcie root bus to smmuv3-accel
+> > > and that is set as the primary-bus for the smmu dev.
+> > why do we require a pxb-pcie root bus? why can't pci.0 root bus be used
+> > for simpler use cases (ie. I just want to passthough a NIC in
+> > accelerated mode). Or may pci.0 is also called a pax-pcie root bus?
+> 
+> The idea was since pcie.0 is the default RC with virt, leave that to cases where
+> we want to attach any emulated devices and use pxb-pcie based RCs for vfio-pci.
 
-I thought that too when I first read the code, because it's
-been written in a way that didn't match what I was expecting
-for a "write until you would block, then stop" loop, but on
-second reading I decided it could not, at least in the case
-where write_all is false. If we write any data at all on the
-first cc->chr_write call, we will then break out of the loop
-without trying to send any more, so there's no code path
-that will then set res to a negative number. (If write_all
-is true, then yeah I think we can return an errno rather
-than a partial-write count if chr_write fails on the second
-time through the loop, but all the callers of that version
-of the function ignore errors of any kind anyway, and
-certainly don't have any means to handle "only wrote half
-the data", otherwise they'd be using the non-blocking
-version.)
+The majority of management applications will never do anything other
+than a flat PCI(e) topology by default. Some might enable pxb-pcie as
+an optional but plenty won't ever support it. If you want to maximise
+the potential usefulness of the ssmmuv3-accel, and it is technically
+viable, it would be worth permitting choice of attachment to the root
+bus as an alteranative to the pxb.
 
--- PMM
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

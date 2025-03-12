@@ -1,268 +1,261 @@
-Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp372319njc;
-        Wed, 12 Mar 2025 09:12:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrPaIFLjiVfjnr3IVGek7xS34WP2ZlcUGj/lPaswQ/VMYpB/BITRwkEX5Hs962IfnI8ciLxfupjIlawQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE6Ts1fbEGBM3KuMidwNPGkw+Bhzd0GWLkK/XB04qd+91+oyGvhDmNH/MSFJwSM2HtSI/Up
-X-Received: by 2002:ac8:7d16:0:b0:476:949b:8c5e with SMTP id d75a77b69052e-476949b963fmr138168481cf.27.1741795963705;
-        Wed, 12 Mar 2025 09:12:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741795963; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp373172njc;
+        Wed, 12 Mar 2025 09:13:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWsYq9dFZpR7MWfvTmk7RzDttc4cKdxiQHE4cGBpIbLPDFWyGRV29+60NktF+vYOK5mUiV59CmQ066MJw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE25UWlbPy3SLefrR7u8MYGXD2HTCPXjBJN8hXmvGc5LjEmTsC5/a0ZOVycWkxqcMkIa052
+X-Received: by 2002:a05:6214:cc3:b0:6e4:2e12:3a0c with SMTP id 6a1803df08f44-6e900691fbbmr312046706d6.39.1741796034729;
+        Wed, 12 Mar 2025 09:13:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741796034; cv=none;
         d=google.com; s=arc-20240605;
-        b=cLO/gZLKQvYWC8a4NGTY6qKRwr43Qe85pYn2N1Yex3d3orSxZNfmu1L/jDlh5BcLZN
-         l+ro4+Wz/UlI/mYI19q0UgoeG/qWAqLpV/lZbp1wjFA+S1ylbkpDvCeUXMXWcylL1D/N
-         KwD/D0BqXUqha3bQcBxFyMKw0yuLxgW49DtRO61tastTzT2aTLQbg4EBetatfGuiA/+d
-         3cFD5x9sRhkc/dvL2/ySYW8zIbaD5spXd/z0a7lqKblc2o6w4Hs6J4KtrPVggV38yUh6
-         oWAEd0upEB1hjv14L2mabZDHD4hEhPtSvd4qiCICGaAAdyWbJFSC/C4kVwr0tLcenGOa
-         x2Jw==
+        b=Yd7alJALZ6fE7pQtOlFuD8yDSOEdAr4b0yb7IsTj1+v4+gmp0KzegoVpmYI1DFfXBi
+         caFdk99hc0Nj0Hv37nI0IdfU0trYQ01BEfv8G6i1mQxpHSo3D+9wwro43iHIRa6898Yl
+         qnPn+/eT/SudQn0qgjYS5Khu2IlK3gvb8LMKKj/dCgIwBFxQeLYGa75L1LfkouefdBk0
+         OFfNXDx2/7wMc/UVfZRwOy4rZYUaynFj9IvV6926ZVCwlV7dkT7KjS00EVsrkaw8ylz9
+         SK7Z4SoBAe+tEC2rLzMa3HHQTokwxVOF5bLbBN4q95M0wtK8vq4W4BO37pWqaP7dvOFt
+         iPzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=iNI+Vf2IaG7FEwoAQmbTMxEbb9D+xyxcHf70UzDQj0A=;
-        fh=W+vqOVPWuhy94A4Ld/yjHj1Kpq82YBE9zzIKWrz+LEM=;
-        b=Rng/pSWq/4oPlpH6YmjGE0OPs+hnI6Gk0kiI05SUolC/oNBMjExVyr5wuXRAWoCfNB
-         p2bLQZT7JIAH1InTJbS7Yc8F++NOt20/wb5RBQWaY9lGtfCU/9Yqi6YVSd2eaWjgX7gg
-         aoIp3E8ISH9RypG9np4e+m41wDdt4kkjjjJKN8py3NxPFsJuqqLYrPYshIjqFWbgGs7a
-         ilwkIWWd7XsN2WkJwFTMkB7K8gZu8QO+zR0m0QDqmCgPVcDfAcG68wfDsR6t5Xc4/LUR
-         MzC0Lb/K9KoNeebareVtrbY4AWwf9v6d5b91xyGvC04/B1Ss4/gkzyptacMV7/CX97vz
-         7jAA==;
+        bh=tXdYkiDiF96+isnvOpDD4U8i4rrBdoq5tobkI0Svnb8=;
+        fh=BK8CHI0uILj4cE28/glUJIrDzlW1wdVV5VRUXofYWu4=;
+        b=aRAVxNwiGWMlffy5kPhJWSkg9itrnx6H86SCEkeRAXS+PoJb4Int6hBClprVxwT9ne
+         HBfe089bZGKV5aJ+580FhYzJ+RO/jLFwJXXduWFRSeJoFquxmhk0OjFVYxGpOgQH6vaS
+         Wn3BGeSvLCoMGNWo33RyOdT4bRr2DPGojXnmdR0lDw/gZVZXAUMghw+l5mMxNprcUQbG
+         XnQ3JSsW8XuZxQajfPW2h2Hp2EBUvR5XDR5OQ6E/Vu7LRW2OEzK2dndcC5dDYcNktITU
+         HcrarTZE3fcxUsOXmwFas8h1hNbnVY7HFBPdKTL6M4s3aE96Q1z6I44tHNin75/vJFz5
+         wF2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X+q0uWHD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IB2HbpJw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4766fb298f8si91136661cf.163.2025.03.12.09.12.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e8f717580asi137333636d6.352.2025.03.12.09.13.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Mar 2025 09:12:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Mar 2025 09:13:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X+q0uWHD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IB2HbpJw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tsOh6-0005Kg-JY; Wed, 12 Mar 2025 12:12:36 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tsOi8-0005pk-6G; Wed, 12 Mar 2025 12:13:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tsOgp-0005Id-Ke
- for qemu-arm@nongnu.org; Wed, 12 Mar 2025 12:12:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1tsOi5-0005lK-Ax
+ for qemu-devel@nongnu.org; Wed, 12 Mar 2025 12:13:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tsOgn-0000Ph-O1
- for qemu-arm@nongnu.org; Wed, 12 Mar 2025 12:12:15 -0400
+ id 1tsOi3-0000VD-DY
+ for qemu-devel@nongnu.org; Wed, 12 Mar 2025 12:13:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741795928;
+ s=mimecast20190719; t=1741796009;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iNI+Vf2IaG7FEwoAQmbTMxEbb9D+xyxcHf70UzDQj0A=;
- b=X+q0uWHDSwqbYtR/MsWtDqIOFUdqszXwf6ZMUL7tsiWJenUfN76J6ADGJRUyQSJpIKtQiP
- AuKsgycgiBrOUUw6cl6EpDNrtTHP+JiXU/eZVAB+R/SD42mshtex5G+B8ajKRsrE6t2ZZR
- 45eTRpc1ZcNiYchE7vBDKXHssmsloZ0=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=tXdYkiDiF96+isnvOpDD4U8i4rrBdoq5tobkI0Svnb8=;
+ b=IB2HbpJwCagOfx7f6TYLcJXH/CGDrQoOT/0OabYr5EgbIIp0XwbJo/7InruDy5dmcHdG55
+ xcXai4FPrTO55mqYnWGvaP1hUHB/zlGlx4cam9RAmAo+pWY5k0GdEb+BgD+wz15U0U0zld
+ siIOhTyMRReaf2fREjV5K21CXtLB+NQ=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-96-yixCI3vkOxKQiEkIAHhi4A-1; Wed, 12 Mar 2025 12:12:07 -0400
-X-MC-Unique: yixCI3vkOxKQiEkIAHhi4A-1
-X-Mimecast-MFC-AGG-ID: yixCI3vkOxKQiEkIAHhi4A_1741795926
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-7c54767e507so698603485a.1
- for <qemu-arm@nongnu.org>; Wed, 12 Mar 2025 09:12:07 -0700 (PDT)
+ us-mta-507-bCmCfkEBOpazuBZYR3AX3A-1; Wed, 12 Mar 2025 12:13:28 -0400
+X-MC-Unique: bCmCfkEBOpazuBZYR3AX3A-1
+X-Mimecast-MFC-AGG-ID: bCmCfkEBOpazuBZYR3AX3A_1741796008
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-7c0b9242877so594358285a.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Mar 2025 09:13:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741795926; x=1742400726;
+ d=1e100.net; s=20230601; t=1741796008; x=1742400808;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=iNI+Vf2IaG7FEwoAQmbTMxEbb9D+xyxcHf70UzDQj0A=;
- b=lZ/xrWC/DN+64MXDZDuiLli3zmERcTsa5XiRXiv4nixUNgd1eHO8xOF9XhQqh71DTC
- 1FO5cKZ16bUaq+LHeybAM8ypf7CHwPVUYxnx3y4H8PsM0UclGXuEiJN2yYRAWiAG84Bk
- FNh6si8ilIKvoAR3SuL5+NN8XzEekmNCkcTpgu9e+eszUrfq149St5QQXgqDt1a/vTS8
- +X3Mm1v75Cdjoh61qwf8YPeKaMy5IhuRzrNkajFx49PreQ1UG5UrJNxc2bAkmBMdsYzX
- ZiMpbM+8q2cDT1YXKjG9UEZ30JeKqVyaHa5IZ6czkgRVNs2u2+c7zzxzI1qDgEkcuWuC
- L5OQ==
+ bh=tXdYkiDiF96+isnvOpDD4U8i4rrBdoq5tobkI0Svnb8=;
+ b=W9EV3RkHX6LtMxUySK2Hzx+EPXy9Ca5Z8qcJ8fWJ88UO26LDHQPyDtml2pQeM1sKv4
+ z5mSs6ZxCfDspaqwy9lqTL2alqSqNHjF7CTakWcrHm2Y5YLC71QznMbox2oNVUT0odYP
+ +ehv2iyLR1DXQRRUnrJwba8pLXRXP13IZQKa8sO48l2+vLJIgDdaj0A71FgoL5U5hXyL
+ SE74O0O8T48BV5f5CsLgG93N0i4tp/+WapBN7+mbZ7pCK4rd4u1K3w9ZkPl1uxfp2Phf
+ sZ4LJARlVKUl2J9+t+QwKIKcKZN+1I1MqGEidLdpciUa2CyGgrZDGU1LpMPk9oz3EOxH
+ anFQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTorWwmz/lReqtKj+ssROVyQj/P9E60NbFTVDSE+qii4+R7tY6MfHIrmcOIQSHtNdeIVoibum1Ng==@nongnu.org
-X-Gm-Message-State: AOJu0YwYSfvI9nh4Pp20VmdbWQxoK4LZlkisKXriSJetCxio8UVP7mrK
- 03+hudZhAC1OlFthdNw2nkfLXx1mh1vvXkPPKN0zaz96l+Sh+rM5RnpqF/LBC6UMgRjgcF1AtLJ
- 4nGvNlDCNRD40hMXNFPSX8tmcUVVJZ6dUhXdT1CxT/zPIXl/+Kw==
-X-Gm-Gg: ASbGnctW/Szkb1ung9gnpuQN0tJy012efw7Xoh/LLxw41tt+RO5ByMnyudf5iu4UmVb
- JHyVjByXAeiG4I8jkDt3MLUUUvGsArXbEy+w1JZRCClVolMrWwmElzrnUc+e+l4h75BdPDpTaLp
- vMj8hVkmTj/rsjG+vY+KI9nZMrD3Gk5VjI8kWMnPqF16foO/92smjIZHdMAG2Xv9E6QX+Ayqx1P
- zj7mUQVFdvUSsbC9MEIwQoUBBC0dY2MNCq2yLoQclerdi0AOKXjN9on/DWmvrpgdLA2c5BsFMxI
- Y8jcfA3dyC5e4zYHwh1518hmgK/POWWEydNpwKpbGww4KE1LAHCD9Jr9HPmCDnI=
-X-Received: by 2002:a05:620a:260a:b0:7c5:5cc4:ca5a with SMTP id
- af79cd13be357-7c55cc4cc68mr1528320885a.4.1741795926516; 
- Wed, 12 Mar 2025 09:12:06 -0700 (PDT)
-X-Received: by 2002:a05:620a:260a:b0:7c5:5cc4:ca5a with SMTP id
- af79cd13be357-7c55cc4cc68mr1528316885a.4.1741795926207; 
- Wed, 12 Mar 2025 09:12:06 -0700 (PDT)
+ AJvYcCVhVNu9wuCO1giDY1tle6xzlrZoRSwWYd3E+GLN10DW/2alW8VaXflmNJO1O6vcdTbrZy0+8Bm/Izn3@nongnu.org
+X-Gm-Message-State: AOJu0Ywl41GTJHHTMljy2NzWLhHcNWmi8yYqXXHPApn+LYQbfFbw2dPH
+ axO1GBkT3QUgEkM7Ju9UDJcJn0LeazINCY0SfKZRFepq0laoKYyuwzcx9I0kSQ+MAZ9ES3YCIYZ
+ 3v3Lx/Qh+5wzzNUX2m+bUaIDl2Wovb/u81s8myaA1YwHKYXi1jheL
+X-Gm-Gg: ASbGncskMlK7SNwL2bv99/TJgm67BSGV9aWgakDdouNOzZ7sYHfr/vxQAthKFjNRSq+
+ bvYKlExWMvQj8qOvqGeroBa+O03gkQgo+4qYktzus1CpqShmYHMkj55qozxtpFpI0DFvTuyBqIM
+ LNBD5uggx1GGkUASNvRMQe+dLU5V9ag3o8c94cbejkokFT7FiLpGUpDQXUtL8uRbWW/+0R1GgjC
+ 0AnJb4fdmh7VcpDoZPUfMLk5r4oclLKS31xLwJtZbwHMVwV889zumxHHSyWCJAjwtb7ZEoGLljs
+ MW9C6w//Dop6hEBcTWgvUteV4dIIRhwQVqstHdjyeHB3h73LaXNrQUYgqPccPdo=
+X-Received: by 2002:a05:620a:2842:b0:7c5:3ef2:8c40 with SMTP id
+ af79cd13be357-7c53ef28f53mr2335462485a.12.1741796008054; 
+ Wed, 12 Mar 2025 09:13:28 -0700 (PDT)
+X-Received: by 2002:a05:620a:2842:b0:7c5:3ef2:8c40 with SMTP id
+ af79cd13be357-7c53ef28f53mr2335459285a.12.1741796007760; 
+ Wed, 12 Mar 2025 09:13:27 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7c55f112215sm285720085a.109.2025.03.12.09.12.02
+ af79cd13be357-7c559e11134sm374158185a.12.2025.03.12.09.13.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Mar 2025 09:12:05 -0700 (PDT)
-Message-ID: <0ac24089-9a5e-48e8-bcdd-60e63aa3f34f@redhat.com>
-Date: Wed, 12 Mar 2025 17:12:01 +0100
+ Wed, 12 Mar 2025 09:13:27 -0700 (PDT)
+Message-ID: <5b29ea01-1b86-4b48-a769-14986751a0f1@redhat.com>
+Date: Wed, 12 Mar 2025 17:13:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 06/20] hw/arm/smmu-common: Factor out common helper
- functions and export
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <20250311141045.66620-7-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250311141045.66620-7-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CjBiiQvz4B-FNa2iLkVIICqO60-87cXP4JhyNw09Hi0_1741795926
-X-Mimecast-Originator: redhat.com
+Subject: Re: [RFC PATCH v2 04/20] hw/arm/virt: Add support for smmuv3-accel
 Content-Language: en-US
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-5-shameerali.kolothum.thodi@huawei.com>
+ <547f961e-380c-4ffe-8b8b-3e9d543aa702@redhat.com>
+ <58c9c37876c64584b0c7961ec61696a3@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <58c9c37876c64584b0c7961ec61696a3@huawei.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D01ZOMQDkJPL
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xsU23maohmq+
+
+Hi Shameer,
 
 
-
-
-On 3/11/25 3:10 PM, Shameer Kolothum wrote:
-> Subsequent patches for smmuv3-accel will make use of this
+On 3/12/25 4:46 PM, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
 >
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> -----Original Message-----
+>> From: qemu-devel-
+>> bounces+shameerali.kolothum.thodi=huawei.com@nongnu.org <qemu-
+>> devel-bounces+shameerali.kolothum.thodi=huawei.com@nongnu.org> On
+>> Behalf Of Eric Auger
+>> Sent: Wednesday, March 12, 2025 3:36 PM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+>> mochs@nvidia.com; smostafa@google.com; Linuxarm
+>> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+>> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH v2 04/20] hw/arm/virt: Add support for smmuv3-
+>> accel
+>>
+>> Hi Shameer,
+>>
+>>
+>> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+>>> Allow cold-plug smmuv3-accel to virt If the machine wide smmuv3
+>>> is not specified.
+>>>
+>>> No FDT support is added for now.
+>>>
+>>> Signed-off-by: Shameer Kolothum
+>> <shameerali.kolothum.thodi@huawei.com>
+>>> ---
+>>>  hw/arm/virt.c         | 12 ++++++++++++
+>>>  hw/core/sysbus-fdt.c  |  1 +
+>>>  include/hw/arm/virt.h |  1 +
+>>>  3 files changed, 14 insertions(+)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 4a5a9666e9..84a323da55 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -73,6 +73,7 @@
+>>>  #include "qobject/qlist.h"
+>>>  #include "standard-headers/linux/input.h"
+>>>  #include "hw/arm/smmuv3.h"
+>>> +#include "hw/arm/smmuv3-accel.h"
+>>>  #include "hw/acpi/acpi.h"
+>>>  #include "target/arm/cpu-qom.h"
+>>>  #include "target/arm/internals.h"
+>>> @@ -2911,6 +2912,16 @@ static void
+>> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>>>              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms-
+>>> platform_bus_dev),
+>>>                                       SYS_BUS_DEVICE(dev));
+>>>          }
+>>> +        if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_ACCEL))
+>> {
+>>> +            if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+>> maybe just check whether it is != VIRT_IOMMU_NONE?
+>>> +                error_setg(errp,
+>>> +                           "iommu=smmuv3 is already specified. can't create
+>> smmuv3-accel dev");
+>> I would clearly state "iommu=smmuv3 virt machine option is alreadt set"
+>> and use an error hint to say both are not compatible.
+>>> +                return;
+>>> +            }
+>>> +            if (vms->iommu != VIRT_IOMMU_SMMUV3_ACCEL) {
+>>> +                vms->iommu = VIRT_IOMMU_SMMUV3_ACCEL;
+>> I know there were quite a lot of dicussions on the 1st multi
+>> instantiation series related to the way we instanatiate that device and
+>> maybe I missed some blockers but why wouldn't we allow the instantiation
+>> of the legacy smmu device with -device too. I think this would be
+>> simpler for libvirt and we would somehow deprecate the machine option
+>> method? would that make a problem if you were to use -device smmu,accel
+>> or something alike?
+> Thanks for taking a look. I am just jumping on this one for now.  Yes, there
+> were discussions around that. But I was not sure we concluded on deprecating
+> the machine option. So if I get you correctly the idea is,
+>
+> if we have, 
+> -device smmuv3 it will instantiate the current machine wide smmuv3 and for
+> -device smmuv3,accel this device?
+yes that would be my preference.
 
 Eric
-> ---
->  hw/arm/smmu-common.c         | 48 ++++++++++++++++++++++--------------
->  include/hw/arm/smmu-common.h |  6 +++++
->  2 files changed, 36 insertions(+), 18 deletions(-)
 >
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index f5caf1665c..83c0693f5a 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -826,12 +826,28 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num)
->      return NULL;
->  }
->  
-> -static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-> +void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev,
-> +                    PCIBus *bus, int devfn)
->  {
-> -    SMMUState *s = opaque;
-> -    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_pcibus_by_busptr, bus);
-> -    SMMUDevice *sdev;
->      static unsigned int index;
-> +    char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-> +
-> +    sdev->smmu = s;
-> +    sdev->bus = bus;
-> +    sdev->devfn = devfn;
-> +
-> +    memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-> +                             s->mrtypename,
-> +                             OBJECT(s), name, UINT64_MAX);
-> +    address_space_init(&sdev->as,
-> +                       MEMORY_REGION(&sdev->iommu), name);
-> +    trace_smmu_add_mr(name);
-> +    g_free(name);
-> +}
-> +
-> +SMMUPciBus *smmu_get_sbus(SMMUState *s, PCIBus *bus)
-> +{
-> +    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_pcibus_by_busptr, bus);
->  
->      if (!sbus) {
->          sbus = g_malloc0(sizeof(SMMUPciBus) +
-> @@ -840,23 +856,19 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
->          g_hash_table_insert(s->smmu_pcibus_by_busptr, bus, sbus);
->      }
->  
-> +    return sbus;
-> +}
-> +
-> +static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-> +{
-> +    SMMUDevice *sdev;
-> +    SMMUState *s = opaque;
-> +    SMMUPciBus *sbus = smmu_get_sbus(s, bus);
-> +
->      sdev = sbus->pbdev[devfn];
->      if (!sdev) {
-> -        char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-> -
->          sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
-> -
-> -        sdev->smmu = s;
-> -        sdev->bus = bus;
-> -        sdev->devfn = devfn;
-> -
-> -        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-> -                                 s->mrtypename,
-> -                                 OBJECT(s), name, UINT64_MAX);
-> -        address_space_init(&sdev->as,
-> -                           MEMORY_REGION(&sdev->iommu), name);
-> -        trace_smmu_add_mr(name);
-> -        g_free(name);
-> +        smmu_init_sdev(s, sdev, bus, devfn);
->      }
->  
->      return &sdev->as;
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index b5c63cfd5d..80ff2ef6aa 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -178,6 +178,12 @@ OBJECT_DECLARE_TYPE(SMMUState, SMMUBaseClass, ARM_SMMU)
->  /* Return the SMMUPciBus handle associated to a PCI bus number */
->  SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
->  
-> +/* Return the SMMUPciBus handle associated to a PCI bus */
-> +SMMUPciBus *smmu_get_sbus(SMMUState *s, PCIBus *bus);
-> +
-> +/* Initialize SMMUDevice handle associated to a SMMUPCIBus */
-> +void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev, PCIBus *bus, int devfn);
-> +
->  /* Return the stream ID of an SMMU device */
->  static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
->  {
+> Thanks,
+> Shameer
 

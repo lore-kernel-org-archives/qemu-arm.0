@@ -1,136 +1,156 @@
-Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp912216njc;
-        Thu, 13 Mar 2025 05:45:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW3w2uAIghjOCjyiU6+LmTUukDd7tTX/kxztb+yn9eMZQI/kPrP0uuF7yA179KxxAA5IuehqqChq/GtIA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEUJgooIwKUYBT0NlSH3xYxECc7bbW6TmEEu/Ippm1ZpCWEXSRRJwiTlSiSroCSYDQF+Wfa
-X-Received: by 2002:a05:622a:438a:b0:476:b7cf:4d42 with SMTP id d75a77b69052e-476b7cf50cfmr40056071cf.27.1741869911467;
-        Thu, 13 Mar 2025 05:45:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741869911; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp1016842njc;
+        Thu, 13 Mar 2025 08:22:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVXq8KmKfPQ5HtaF5miydXwLNfjzzet52YKyxrSo4oYCEB6kM/YJjwh4PRWMUWSetW0W/+dxRR3xTOEbA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHPUH9ARtKc0UtXc5PTNatN3SM+Og2AJ0cgAyfNObupLLC5ut26g2cIE67RolCtf6ySkJcw
+X-Received: by 2002:ad4:576b:0:b0:6e8:97f6:3229 with SMTP id 6a1803df08f44-6ea2dd135b3mr221174726d6.16.1741879332964;
+        Thu, 13 Mar 2025 08:22:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741879332; cv=none;
         d=google.com; s=arc-20240605;
-        b=AbufxybFlvT77tTWGKRP2kQxbh2kxtpocwlGucFPtE1b4R8pxnkHFlOK8Yzv33+h64
-         sBfXp49tzJELEiT71ZnuDrtAv7PNWg2edkIyh/4/nvQH4hf/1R1gATgz4m5kGJiqi+Sc
-         a3znxIIW5bvHKnBjV//Z6fV79iElCACsNcqPdvvKQIo/ghLN5GcTt2NXDgCQ0K42wJmu
-         JH8x60MX3ct11E3qc9R0TUNiGdSvKYtMXS4Lc3zMiOTdf/HbtWfL0gt/P6QP4n24SPne
-         fyFKXKnKbZP5ERHDcixM8VZ8WcOsTeUNM+8mgdmoEHAg1jVX2M3HuigtV2hGw5FdWAxh
-         +1Rg==
+        b=eYL+NJUdf7zivBXwI7yFqn9NaBTt6m6LETIdBtKrrQPCQl7tg63C2OYnEfk77EHZYz
+         COEdbnY/v1Jb/MeiJLAAyC0tNz/GFlsAPq+VWOyxvZviTXNZ7hQj9SbNipBMtS2W1R4e
+         pn1jslcjoDByUolLq1Z/JSPdx8sBN+2Xj8DYJFMGCBTj1u9t3WlFScZyhwXDiP4XCEb9
+         yiL5l8KaQHQ75FXbn+NmqADXl+e28nPxrK1W2vnH+o0FzpyV1aIn9xWAOELkgqVM3DBa
+         0K2M76m9yaXqiWjFcd7E9XAQoVwHqIJQ3aFg2ZJor9Q31AZYx9+sl1iXKvxRkWOTpOaH
+         9Ffg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=D6feM5Xy+zarRq9YhH8FI7IPuKUW/t+Or20kqkXx3d8=;
-        fh=GNzchdwjKQ9GMPtT48yeq6gGE5nN46O/reQiUVphTjs=;
-        b=PFU8HeivXSNODOFELz7OvgQi21ILeX5hZr2klAIOTP0OrLqnJDsXZ7qriP+axNPhQE
-         hvmEurikJAC6KGg/c4AopF1E7ZPiNgNJitetoWbGiGD2U/k6Acm2/QO3Av5kUQ4zBC8f
-         8Ls+Gy7HjpsUronUyATEPSFZm3NIVnKVrM4KwSKEEJWnEXjU6fj7tuV7pLXhYlZilWo2
-         NO22c93jChgF89rbu/8tfluOr6bDRhHhUUkqmUYf1O5MYqq8Tvg2/CoWiUsaPcB1tQGT
-         I07s6lDy8U+HPJyHV3cTfinL8qSeUBO/UMVkXCJrCk3o3aGzc7k1O7bYGKtbHF6IzYl+
-         fhuA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=USMSyPlnCMSsFnbzxMQqWxLyP2V8Xer7t4cUAjErJVo=;
+        fh=YVPTeh7sblhZTTTM01YE6F4qkEkC60K7fZlD8YI8cRU=;
+        b=fUt00owOAeJa1J5SiNVYCiohjRF4WHt/iZ1kvluhj6IcH7B9rVlVi90OxDVN4lFyT5
+         HLGsFOeDAMgP69aHM5S4JP+skQkfU9Rd2FmLvIicmyiIcDF5DqetuDvnZs8D2senB4hy
+         rESO9fDSqt9b0bPEzdcRxIUbN6e0HMc3pohaZNd48srx46+6B4yeZnBH9EKKp7GWVt5y
+         TWusvXNVkQjw408PZTA3r1WLNH5M6buOKceDnjA8vZBQNb+Nlj5cpNc274w6GNllCdVD
+         d7Lktx30P3DoTfgBaht1k0ko3WpKxJC66AYCRQ/vpPH1+ydo2I2hW3kYrXnQyPHy4z2C
+         5Kag==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jLmZUqyk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EPLVEs+p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb615061si16195531cf.133.2025.03.13.05.45.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eade370a34si19249836d6.453.2025.03.13.08.22.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Mar 2025 05:45:11 -0700 (PDT)
+        Thu, 13 Mar 2025 08:22:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jLmZUqyk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EPLVEs+p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tshvo-0003cH-9l; Thu, 13 Mar 2025 08:45:00 -0400
+	id 1tskNg-00062o-SX; Thu, 13 Mar 2025 11:21:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1tshvn-0003bg-2G
- for qemu-arm@nongnu.org; Thu, 13 Mar 2025 08:44:59 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1tshvk-0003m3-4n
- for qemu-arm@nongnu.org; Thu, 13 Mar 2025 08:44:58 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-2ff6a98c638so2010966a91.0
- for <qemu-arm@nongnu.org>; Thu, 13 Mar 2025 05:44:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1741869894; x=1742474694; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=D6feM5Xy+zarRq9YhH8FI7IPuKUW/t+Or20kqkXx3d8=;
- b=jLmZUqykW51Ha6Bnqnpcg0C90p1j8gsZlpnWO+PaNEHG1/HY9iYqduAt24ODYjSh42
- l2ylgGm6Fz9LAc1sNhqcyA+pYiHAO9hHgZYAosL/eRrrb+jDxLFhR/2JAyAFALp4AsHd
- QDdVAfa1r1Kb0lAWMyb/o5Tog60l0Cdwwxgp3hsWgQ+XU4Ew17RFQyEfE8Tfm9NxijUW
- S2I/KhU1CrAEJA87iCxLBbF5viUgU4NGHyNrkPrRGRoWIx8KwmrMJ+uaEXaQyjxQHAQJ
- 9H9QzeQlDnqKcG4YMu3Z5EOr7rnSgKEoMr5rzf8m9C+uV3GIBXpXYP8bpG/6RWhT1N5D
- Ne6w==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tskNY-00061s-9Z
+ for qemu-arm@nongnu.org; Thu, 13 Mar 2025 11:21:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tskNW-0001Ip-Gk
+ for qemu-arm@nongnu.org; Thu, 13 Mar 2025 11:21:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1741879301;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=USMSyPlnCMSsFnbzxMQqWxLyP2V8Xer7t4cUAjErJVo=;
+ b=EPLVEs+piC6N2dup3tTwh0OJuFjhWxCsgNvVPIQ76LiNPyrkt/Qt3uE5ZkKarxbLxHMLNJ
+ OkPnIJq4J/bn666E5k+4jmIDlw3/6og3bLflvAZTE0zFrMHsogGOAZ/XfvuD3bTjy/OKte
+ 0e52P8R4Zb1nLS1JzFlFXuBZrSnF4HE=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-324-gQr5Vsk5N9GJezw_5Ru_ng-1; Thu, 13 Mar 2025 11:21:39 -0400
+X-MC-Unique: gQr5Vsk5N9GJezw_5Ru_ng-1
+X-Mimecast-MFC-AGG-ID: gQr5Vsk5N9GJezw_5Ru_ng_1741879299
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-7c3b6450ef0so167006385a.3
+ for <qemu-arm@nongnu.org>; Thu, 13 Mar 2025 08:21:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741869894; x=1742474694;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=D6feM5Xy+zarRq9YhH8FI7IPuKUW/t+Or20kqkXx3d8=;
- b=X104vymirrJnZkCsjso368AWxFibwcMO9BPBrfDjkq9flJHl1QCB7+t9itMgpvO5rn
- CR4ZlEChM8qf7A2JOqjumq8bFthOu84F17cIrSocVBju6xTv5L1QWygksj4GxYtdJKhy
- j30s5OSjjCUEs5b1oHcPZxtN6OePDcG+kKhe90fMV8Cpiw4oJ81RHQAUAB/+KBox0RZA
- xxDX2R5fiSIKEZGK7rVkno6CqjKD3PZ+D2zeVihPqrEdaDhwC9Sa9/zYZE0lRxeM9Ehx
- nlvYqI658hix/eXbC4M+OjqRL2nuekBMtM52w4vQy4HmXlDa2yW5yqF4gQU4OKcBB0TP
- EFSA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV+CPcYpNdiwiro0d6v3yKqQcMMAlvGQlm27H8UT7XAXvcvHHgJBTInXelzIDrBMJgZ18zLKNU29g==@nongnu.org
-X-Gm-Message-State: AOJu0YwrBK/FoqZyKx8SNa1e8NFrI2xLCXfLCO82g2czXliHQcXEUtQ9
- XOrN0/v9WMWy8DaebYO09x3NMoUp9XyycwbAR6iWJKPW2K4LMffyNgbbo15XGEE=
-X-Gm-Gg: ASbGnctKWFmL7nQbF/7wfEYGtnJnNxAXIg9qB3xK0jNRV5PH4mJMk1ch4y4zsyZi6mH
- abR/DLcflFYMS0sB5g854tpBO78zMNucopyxzUcK1ROik/8lZpHTaXJ+OvlaWAq6qsPqxFmFZp9
- bdtsJdfw7qydSb9TKMMjS8Lx9SVfGYib3CKZO95DJr7xSeJVZ2RIqc0UyNW5pOUopQ8B1UAgiXa
- knlRMGRAD2u7FNljnUV3kNIVeWtmFWDug54xXgdObKQK7Zr2R7UUrBOpYx7ATh0mezdutl0MfZf
- VU3+nKTOB2keJ6ETf2M5f3HyFdLYhYiuOGng7+EFuCJl9VpiZ5XcO4epmxM=
-X-Received: by 2002:a05:6a21:1519:b0:1f5:7280:1cdb with SMTP id
- adf61e73a8af0-1f572802b7amr25495560637.16.1741869894263; 
- Thu, 13 Mar 2025 05:44:54 -0700 (PDT)
-Received: from [192.168.68.110] ([177.170.117.79])
+ d=1e100.net; s=20230601; t=1741879299; x=1742484099;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=USMSyPlnCMSsFnbzxMQqWxLyP2V8Xer7t4cUAjErJVo=;
+ b=QRe2yGeTWb8HZSDTdJgE+vuElpuAbgCofh16/b+G0PKjjXueD4cDRSW0um96RTJypt
+ ShchBvFEJUF16yHD3A5g6vYngUC+sRRSjMOyqbOvdZWDeZzD1LHQTbNQTO1z6ua8BIiS
+ gWaALd1bcGJMOTQ98txRitShKNJYGANqfROEn0dDXgUsbnsVzZ+izOcu6b8SsVB+v1mJ
+ +mfcdK5nwpKRpAgD4R4ClxqYifl+gQnLLbJyS+wCp/NINWYOI6JXzriNoHi3bFP6a67o
+ IWK+lV783zpGDCm/90wk36wM/7KPromjPVUMI8GMKMT7N2LDQBOCb7/5kyrIUMtc8lu5
+ Px8g==
+X-Gm-Message-State: AOJu0YzhxMEVv5EBU44oEbu5tMP6ZR4yyYAVWjlCo+jfxd0+NAfh222G
+ UseQooWZGNiF8Fi9qRXw43aH6QdwM+dAOIP7gC+iN4F2sLFjGG6w/7dI8Z3L7NpbusL6MxhAtl0
+ Y2ClBOLeIOITp+4pJn0Ju64PRUkYIEBcToA/vjbuqu5wx6DHAmQ==
+X-Gm-Gg: ASbGncufFT0jfNJYkM/x5TP8993ixCmNpEYehEmmyOppJ9HSU08Y6Ta9fm162gx2Rg7
+ 1pJlOiWD/6AmfLs0R8HLkKLty1w4eurkZF8TGHdp+v2q6DytAcQVS1xhXhrIBdCBljWeAdjENAl
+ 3qOCRXCP4F/TPPOGM51QfhXLyqBWmvXKQOWs6cA41yvnqMICpCvm/s2m5YXvz01OrC1eSi4Usxo
+ 4nhAXnsD0EekzBPPtSMLIEYBigg88jycWdshPiT269DtR4Jwf2BeSuo5YyXHew+rx4fuczsyzx0
+ kmJHUzaeLjPtxvZ+VjKuJhsk2Xpv2X2PfNo+MECf0YDXCp2J0gZeSoIAfmvcqSE=
+X-Received: by 2002:a05:620a:26a2:b0:7c5:444e:3f5f with SMTP id
+ af79cd13be357-7c55e85d77dmr1921427885a.15.1741879299387; 
+ Thu, 13 Mar 2025 08:21:39 -0700 (PDT)
+X-Received: by 2002:a05:620a:26a2:b0:7c5:444e:3f5f with SMTP id
+ af79cd13be357-7c55e85d77dmr1921423785a.15.1741879299078; 
+ Thu, 13 Mar 2025 08:21:39 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-af56ea95651sm1162523a12.73.2025.03.13.05.44.50
+ af79cd13be357-7c573d89b9asm108637085a.99.2025.03.13.08.21.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Mar 2025 05:44:53 -0700 (PDT)
-Message-ID: <f08a8ad9-186a-4983-9c7e-3976668ae8fd@ventanamicro.com>
-Date: Thu, 13 Mar 2025 09:44:49 -0300
+ Thu, 13 Mar 2025 08:21:38 -0700 (PDT)
+Message-ID: <64152d6c-4125-426e-9102-ec3e3afef1d4@redhat.com>
+Date: Thu, 13 Mar 2025 16:21:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] hw/riscv/riscv-iommu: Connect the IOMMU with PCI
- hosts that have ATUs
-To: Jason Chien <jason.chien@sifive.com>, qemu-devel@nongnu.org,
- qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- "open list:MCIMX7D SABRE / i..." <qemu-arm@nongnu.org>
-References: <20250307203952.13871-1-jason.chien@sifive.com>
- <20250307203952.13871-5-jason.chien@sifive.com>
+Subject: Re: [RFC PATCH v2 05/20] hw/arm/smmuv3-accel: Associate a pxb-pcie bus
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-6-shameerali.kolothum.thodi@huawei.com>
+ <79bcc36c-1a12-4b18-a54c-afe734d6bef0@redhat.com>
+ <9ffee8119fc441aeb760073c5f152fa4@huawei.com> <Z9G4sj9sHNYb1t78@redhat.com>
+ <2f44b284cb854844889b9ee8b6239e0a@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <2f44b284cb854844889b9ee8b6239e0a@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fxava_yHJhInO16ItlThtkiGzlBs2gOYDlYdyLJXMHc_1741879299
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20250307203952.13871-5-jason.chien@sifive.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pj1-x1033.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,51 +163,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yPKcOcNJWpWM
+X-TUID: wygSuSNRSCcs
 
 
+Hi Shameer,
 
-On 3/7/25 5:39 PM, Jason Chien wrote:
-> When the IOMMU detects that bus->iommu_ops has been registered, indicating
-> the presence of an ATU, it sets the bus's downstream memory region to ensure
-> transactions are directed to the IOMMU.
-> 
-> Signed-off-by: Jason Chien <jason.chien@sifive.com>
-> ---
+On 3/12/25 6:28 PM, Shameerali Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Daniel P. Berrangé <berrange@redhat.com>
+>> Sent: Wednesday, March 12, 2025 4:39 PM
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+>> Cc: eric.auger@redhat.com; qemu-arm@nongnu.org; qemu-
+>> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+>> nicolinc@nvidia.com; ddutile@redhat.com; nathanc@nvidia.com;
+>> mochs@nvidia.com; smostafa@google.com; Linuxarm
+>> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+>> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH v2 05/20] hw/arm/smmuv3-accel: Associate a pxb-
+>> pcie bus
+>>
+>> On Wed, Mar 12, 2025 at 04:34:18PM +0000, Shameerali Kolothum Thodi
+>> wrote:
+>>> Hi Eric,
+>>>
+>>>> -----Original Message-----
+>>>> From: Eric Auger <eric.auger@redhat.com>
+>>>> Sent: Wednesday, March 12, 2025 4:08 PM
+>>>> To: Shameerali Kolothum Thodi
+>>>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>>>> qemu-devel@nongnu.org
+>>>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>>>> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+>>>> mochs@nvidia.com; smostafa@google.com; Linuxarm
+>>>> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+>>>> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+>>>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>>>> Subject: Re: [RFC PATCH v2 05/20] hw/arm/smmuv3-accel: Associate a
+>> pxb-
+>>>> pcie bus
+>>>>
+>>>> Hi Shameer,
+>>>>
+>>>>
+>>>> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+>>>>> User must associate a pxb-pcie root bus to smmuv3-accel
+>>>>> and that is set as the primary-bus for the smmu dev.
+>>>> why do we require a pxb-pcie root bus? why can't pci.0 root bus be used
+>>>> for simpler use cases (ie. I just want to passthough a NIC in
+>>>> accelerated mode). Or may pci.0 is also called a pax-pcie root bus?
+>>> The idea was since pcie.0 is the default RC with virt, leave that to cases
+>> where
+>>> we want to attach any emulated devices and use pxb-pcie based RCs for
+>> vfio-pci.
+>>
+>> The majority of management applications will never do anything other
+>> than a flat PCI(e) topology by default. Some might enable pxb-pcie as
+>> an optional but plenty won't ever support it. If you want to maximise
+>> the potential usefulness of the ssmmuv3-accel, and it is technically
+>> viable, it would be worth permitting choice of attachment to the root
+>> bus as an alteranative to the pxb.
+> Ok. I will look into this. Though I am not sure when we have smmuv3-accel
+> to pcie.0 we can still have additional smmuv3-accel with pxb-pcie or not.
+> It looks like pxb-pcie will be plugged into pcie.0. And if that is the case
+> IORT mappings will be difficult I guess. I need to double check.
 
+Indeed it makes things more difficult in terms of id mapping but I think
+it would bring some benefits to be able to plug the accel smmu on pci.0 too.
 
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+some logic should be there already because you can bypass the SMMU on a
+given pxb while enabled on pci.0:
+see
 
+[PATCH v5 0/9] IOMMU: Add support for IOMMU Bypass Feature <https://lore.kernel.org/all/1625748919-52456-1-git-send-email-wangxingang5@huawei.com/#r>
+https://lore.kernel.org/all/1625748919-52456-1-git-send-email-wangxingang5@huawei.com/
 
->   hw/riscv/riscv-iommu.c | 15 ++++++++++-----
->   1 file changed, 10 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
-> index d46beb2d64..9701fe3831 100644
-> --- a/hw/riscv/riscv-iommu.c
-> +++ b/hw/riscv/riscv-iommu.c
-> @@ -2628,11 +2628,16 @@ static const PCIIOMMUOps riscv_iommu_ops = {
->   void riscv_iommu_pci_setup_iommu(RISCVIOMMUState *iommu, PCIBus *bus,
->           Error **errp)
->   {
-> -    if (bus->iommu_ops &&
-> -        bus->iommu_ops->get_address_space == riscv_iommu_find_as) {
-> -        /* Allow multiple IOMMUs on the same PCIe bus, link known devices */
-> -        RISCVIOMMUState *last = (RISCVIOMMUState *)bus->iommu_opaque;
-> -        QLIST_INSERT_AFTER(last, iommu, iommus);
-> +    if (bus->iommu_ops) {
-> +        if (bus->iommu_ops->get_address_space == riscv_iommu_find_as) {
-> +            /* Allow multiple IOMMUs on the same PCIe bus, link known devices */
-> +            RISCVIOMMUState *last = (RISCVIOMMUState *)bus->iommu_opaque;
-> +            QLIST_INSERT_AFTER(last, iommu, iommus);
-> +        } else {
-> +            /* The bus has an ATU. Set its downsteam memory region. */
-> +            AddressSpace *as = riscv_iommu_space(iommu, 0);
-> +            pci_setup_iommu_downstream_mr(bus, as->root);
-> +        }
->       } else if (!bus->iommu_ops && !bus->iommu_opaque) {
->           pci_setup_iommu(bus, &riscv_iommu_ops, iommu);
->       } else {
+Eric
+
+>
+> Thanks,
+> Shameer
 

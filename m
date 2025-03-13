@@ -1,40 +1,41 @@
-Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp729931njc;
-        Wed, 12 Mar 2025 22:50:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGv79H1kKNRR5zWdOjVNfRqkVZfsb0vTa0JcxYqg/oGTeuhtmjX5DjvWt6REo9+S76dZToEpLWDf290w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFjgRib7182YEL0ZBBi5+F88ArhHb0qCScn2kL71dkUYk5QA2DQqyMtoxy9iPpiJR41/j2Z
-X-Received: by 2002:a05:620a:2b95:b0:7c5:3cf6:7838 with SMTP id af79cd13be357-7c55e939508mr2020147185a.49.1741845023988;
-        Wed, 12 Mar 2025 22:50:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741845023; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp777917njc;
+        Thu, 13 Mar 2025 01:09:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzQ8jVGrIGkYZDB+q4yWSo7MNbChYJADILXQPwwqculc+r/HDfhWz7hqun9jzA08Bx86wlRDTEtE/bLQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEkw9Oeo9yOcFQAzvT8C/OBkxOwlmaK54AYAhKHu10saHfoIVc3EdsEbFakUU4j4uqJ5bAV
+X-Received: by 2002:a05:6214:5014:b0:6e5:a0fc:f65c with SMTP id 6a1803df08f44-6e9004dc909mr360307736d6.0.1741853373950;
+        Thu, 13 Mar 2025 01:09:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741853373; cv=none;
         d=google.com; s=arc-20240605;
-        b=Xy8r5vAdKELEGZZ5gaGqoX06xc214fsmvRB4kCt+WbEZ3KfpI7o4pEpsB/YS9QPqhs
-         cT1SCp/p5yQu4HCbp8G41mAAfhue/I4E45OxCIH5ybP34NzxJr1rkghkHde5jDHcM5Wb
-         vGe3eUpMRSpu3iUdfs1msrN0+zsSq6nv5G72SWB/1igf8d8G2/gdNqfZ6Gqh+CmHZFGv
-         reWnhss6TRi2MAzI1enH9hseH+PO+uv4/xoFkKtcQB3RoyLuosd8JqFSgm0k7ymWQZNP
-         a2COCHuA/+zX5vo3vStZ0oiqMxfxBQb98jrPDRZMRJN5L6VbMzxN+Df4Kt9k9efmQe2/
-         GtRg==
+        b=izgBr0o9t41yaZC31UjiUTe24HCbUed6pau6mTVvMu736PKw0HiR7TCnTCYsK367N1
+         wgZsM64yGFQeNf7LKpPI91cma4aDBx60b95J5x2hcQyQ8b+V8GtP4j1GyB1RE5W5T3pW
+         ckmpGJkYSdVrgx6Q4mQuY6vfFG5GFOvOwXyMHPe6aeR0yvvpmNchPVD/Y0Zv/p59Ga62
+         jwoKcxYDI6+Cp7TbKOiDsFvvhDaQ80UGME3/os0aUTKjkUmI2o7WrUUtDaP3H0qGVA5E
+         HeaFqIvu9mPcU8u1MITwmOL2CSA2RZmjxre+yCFhKk4Aqm1PW787pyz4/I75jF6NWbD1
+         Bj3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=q3thgdwOep2uHpwr2aY/kVgQfzrsb5IyVRLkACrAe1Q=;
-        fh=NwMdySSevMv+4zB5gT5UiU9uLqpwDS+7odbjbNLg6yI=;
-        b=cm43q7LcinXd69H/+ru11EKupdIR2sCUTuq2d3OmuajG7NhPqElKzmmDNlbbH0fRM5
-         +MvuaN//YESAZUTajGwfzHHecMmjdj80HowZtfb/4isL49gnhhcUFXQyCFFFuEyy1+vn
-         PrRVBux2tBbdkJocSkzPb3L/c3t2L9gWsMTnXURv/OB5HhzooQMKygRKJyahorATT0sg
-         XUiK/RDh1BnSl/O54fkhWK4UeW3UsL+HSfdGGtu0XOqyYQzBH+wOhcmVMX365VzZQVDZ
-         cmSAfXbBnx0JNXK/ZTW4zIe81B/8Q1E+8gnqAMFS1LoklLbp9ikTi4sBm54ehO1rjp/x
-         M2EA==;
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=f67QomDpjfCq10ljNKcaq/4kxuvkkXMkwc0b17dn02g=;
+        fh=O6X2BWEQtTCF1UGIaMMuTYtr58ukGNU/CQyZ48iW9Cs=;
+        b=Rh4n+Erpy3hOhEkGKHWnNDLml+dhDcoapiPNKNOoXf8oZtyqg95aH1+gYouqDMlCS8
+         POyAQ+7xiNwzjl1H6c0iZvfn6By2jIzJFTUltGhjs7SCo3c+wYj7dx7RCmyaEBRCU4za
+         wUZ0GkIXLmVCNIhPjGZcuAyLAkmb6vCVka+ZcS67qon+bdXJe3Ji1iSnAJ0EcelieAwk
+         5RYBdGQ+/uFzapcCy+tTLL53bJklclq/dXWolX67sLUIHu1lgIWIE6sUHiz2razymfWj
+         E+5OqT65+w7UHzhwPxNhRasOpjhdNevmo6RWySOqbLlUHckAGwod0K4KW76JB2O24JNK
+         NVSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573d33bd6si92430585a.620.2025.03.12.22.50.23
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eade3555d9si12696486d6.312.2025.03.13.01.09.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Mar 2025 22:50:23 -0700 (PDT)
+        Thu, 13 Mar 2025 01:09:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,45 +43,68 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tsbOu-00056M-8I; Thu, 13 Mar 2025 01:46:36 -0400
+	id 1tsdcz-0001WN-AZ; Thu, 13 Mar 2025 04:09:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1tsbOb-0004t0-6g; Thu, 13 Mar 2025 01:46:17 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tsdcw-0001W7-VN; Thu, 13 Mar 2025 04:09:15 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1tsbOZ-0005Ve-Cb; Thu, 13 Mar 2025 01:46:16 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 13 Mar
- 2025 13:40:24 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 13 Mar 2025 13:40:24 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <yunlin.tang@aspeedtech.com>
-Subject: [PATCH 10/13] hw/arm: Introduce ASPEED AST2700 a1 full core machine
-Date: Thu, 13 Mar 2025 13:40:14 +0800
-Message-ID: <20250313054020.2583556-11-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
-References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1tsdct-0008Sl-JG; Thu, 13 Mar 2025 04:09:14 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZD0QT5qZrz6J6FS;
+ Thu, 13 Mar 2025 16:04:33 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1DA791403A8;
+ Thu, 13 Mar 2025 16:09:05 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 13 Mar 2025 09:09:04 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Thu, 13 Mar 2025 09:09:04 +0100
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
+ <berrange@redhat.com>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>, "smostafa@google.com"
+ <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
+ <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
+ Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>
+Subject: RE: [RFC PATCH v2 07/20] hw/arm/smmu-common: Introduce callbacks for
+ PCIIOMMUOps
+Thread-Topic: [RFC PATCH v2 07/20] hw/arm/smmu-common: Introduce callbacks for
+ PCIIOMMUOps
+Thread-Index: AQHbkqnXk2A5Q1HeeUCFKLsnwwQVo7NvoCEAgAEVsnA=
+Date: Thu, 13 Mar 2025 08:09:04 +0000
+Message-ID: <2606bc1d06f24495a8f382b3d1af3fc6@huawei.com>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-8-shameerali.kolothum.thodi@huawei.com>
+ <fe047856-b564-4776-8651-daa65c02133b@redhat.com>
+In-Reply-To: <fe047856-b564-4776-8651-daa65c02133b@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,272 +117,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
-From:  Steven Lee via <qemu-arm@nongnu.org>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XC6fBhO0e4NI
+X-TUID: 1Rfp3aS/Ka0v
 
-- Added new machine type `ast2700fc-a1` with full core support.
-- Defined `Ast2700a1FCState` structure for the new machine type.
-- Implemented initialization functions for CA35, SSP, and TSP components.
-- Updated `ast2700fc_types` to include the new machine type.
-- Set machine class properties for `ast2700fc-a1`.
-- Add alias `ast2700fc` for a1 machine.
-
-Test Step:
-- Download ast2700-default-obmc.tar.gz from AspeedTech-BMC OpenBmc
-  release page.
-- Run the following QEMU command:
-
-  ```
-  IMGDIR=~/path/to/image
-  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-
-  ./qemu-system-aarch64 -machine ast2700fc \
-  -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-  -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-  -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-  -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
-  -device loader,cpu-num=0,addr=0x430000000 \
-  -device loader,cpu-num=1,addr=0x430000000 \
-  -device loader,cpu-num=2,addr=0x430000000 \
-  -device loader,cpu-num=3,addr=0x430000000 \
-  -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
-  -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
-  -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-  -serial pty -serial pty -serial pty \
-  -snapshot \
-  -S -nographic
-  ```
-
-- After starting QEMU, serial devices will be redirected:
-
-  char device redirected to /dev/pts/51 (label serial0)
-  char device redirected to /dev/pts/52 (label serial1)
-  char device redirected to /dev/pts/53 (label serial2)
-
-- serial0 is the console for the four Cortex-A35 primary processors,
-  serial1 and serial2 are the consoles for the two Cortex-M4 coprocessors.
-
-- Connect to the consoles using a terminal emulator.
-
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: I1e7645a4689859fdd41be2a734909975ba04a1f9
----
- hw/arm/aspeed_ast27x0-fc.c | 150 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 150 insertions(+)
-
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index d03a1b5f1e..1c4895e9d1 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -25,6 +25,8 @@
- 
- #define TYPE_AST2700A0FC MACHINE_TYPE_NAME("ast2700fc-a0")
- OBJECT_DECLARE_SIMPLE_TYPE(Ast2700a0FCState, AST2700A0FC);
-+#define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc-a1")
-+OBJECT_DECLARE_SIMPLE_TYPE(Ast2700a1FCState, AST2700A1FC);
- 
- static struct arm_boot_info ast2700fc_board_info = {
-     .board_id = -1, /* device-tree-only board */
-@@ -48,6 +50,24 @@ struct Ast2700a0FCState {
-     bool mmio_exec;
- };
- 
-+struct Ast2700a1FCState {
-+    MachineState parent_obj;
-+
-+    MemoryRegion ca35_memory;
-+    MemoryRegion ca35_dram;
-+    MemoryRegion ssp_memory;
-+    MemoryRegion tsp_memory;
-+
-+    Clock *ssp_sysclk;
-+    Clock *tsp_sysclk;
-+
-+    Aspeed27x0SoCState ca35;
-+    Aspeed27x0SSPSoCState ssp;
-+    Aspeed27x0TSPSoCState tsp;
-+
-+    bool mmio_exec;
-+};
-+
- #define AST2700FC_BMC_RAM_SIZE (2 * GiB)
- #define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
- 
-@@ -112,6 +132,63 @@ static void ast2700a0fc_ca35_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
- }
- 
-+static void ast2700a1fc_ca35_init(MachineState *machine)
-+{
-+    Ast2700a1FCState *s = AST2700A1FC(machine);
-+    AspeedSoCState *soc;
-+    AspeedSoCClass *sc;
-+
-+    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
-+    soc = ASPEED_SOC(&s->ca35);
-+    sc = ASPEED_SOC_GET_CLASS(soc);
-+
-+    memory_region_init(&s->ca35_memory, OBJECT(&s->ca35), "ca35-memory",
-+                       UINT64_MAX);
-+
-+    if (!memory_region_init_ram(&s->ca35_dram, OBJECT(&s->ca35), "ca35-dram",
-+                                AST2700FC_BMC_RAM_SIZE, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_link(OBJECT(&s->ca35), "memory",
-+                                  OBJECT(&s->ca35_memory),
-+                                  &error_abort)) {
-+        return;
-+    };
-+    if (!object_property_set_link(OBJECT(&s->ca35), "dram",
-+                                  OBJECT(&s->ca35_dram), &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "ram-size",
-+                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
-+                                 AST2700FC_HW_STRAP1, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
-+                                 AST2700FC_HW_STRAP2, &error_abort)) {
-+        return;
-+    }
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
-+    if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
-+        return;
-+    }
-+
-+    /*
-+     * AST2700 EVB has a LM75 temperature sensor on I2C bus 0 at address 0x4d.
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "tmp105", 0x4d);
-+
-+    aspeed_board_init_flashes(&soc->fmc, AST2700FC_FMC_MODEL, 2, 0);
-+    aspeed_board_init_flashes(&soc->spi[0], AST2700FC_SPI_MODEL, 1, 2);
-+
-+    ast2700fc_board_info.ram_size = machine->ram_size;
-+    ast2700fc_board_info.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
-+
-+    arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
-+}
-+
- static void ast2700a0fc_ssp_init(MachineState *machine)
- {
-     AspeedSoCState *soc;
-@@ -136,6 +213,30 @@ static void ast2700a0fc_ssp_init(MachineState *machine)
-     }
- }
- 
-+static void ast2700a1fc_ssp_init(MachineState *machine)
-+{
-+    AspeedSoCState *soc;
-+    Ast2700a1FCState *s = AST2700A1FC(machine);
-+    s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
-+    clock_set_hz(s->ssp_sysclk, 200000000ULL);
-+
-+    object_initialize_child(OBJECT(s), "ssp", &s->ssp, "ast2700ssp-a1");
-+    memory_region_init(&s->ssp_memory, OBJECT(&s->ssp), "ssp-memory",
-+                       UINT64_MAX);
-+
-+    qdev_connect_clock_in(DEVICE(&s->ssp), "sysclk", s->ssp_sysclk);
-+    if (!object_property_set_link(OBJECT(&s->ssp), "memory",
-+                                  OBJECT(&s->ssp_memory), &error_abort)) {
-+        return;
-+    }
-+
-+    soc = ASPEED_SOC(&s->ssp);
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART4, serial_hd(1));
-+    if (!qdev_realize(DEVICE(&s->ssp), NULL, &error_abort)) {
-+        return;
-+    }
-+}
-+
- static void ast2700a0fc_tsp_init(MachineState *machine)
- {
-     AspeedSoCState *soc;
-@@ -160,6 +261,30 @@ static void ast2700a0fc_tsp_init(MachineState *machine)
-     }
- }
- 
-+static void ast2700a1fc_tsp_init(MachineState *machine)
-+{
-+    AspeedSoCState *soc;
-+    Ast2700a1FCState *s = AST2700A1FC(machine);
-+    s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
-+    clock_set_hz(s->tsp_sysclk, 200000000ULL);
-+
-+    object_initialize_child(OBJECT(s), "tsp", &s->tsp, "ast2700tsp-a1");
-+    memory_region_init(&s->tsp_memory, OBJECT(&s->tsp), "tsp-memory",
-+                       UINT64_MAX);
-+
-+    qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
-+    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
-+                                  OBJECT(&s->tsp_memory), &error_abort)) {
-+        return;
-+    }
-+
-+    soc = ASPEED_SOC(&s->tsp);
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
-+    if (!qdev_realize(DEVICE(&s->tsp), NULL, &error_abort)) {
-+        return;
-+    }
-+}
-+
- static void ast2700a0fc_init(MachineState *machine)
- {
-     ast2700a0fc_ca35_init(machine);
-@@ -167,6 +292,13 @@ static void ast2700a0fc_init(MachineState *machine)
-     ast2700a0fc_tsp_init(machine);
- }
- 
-+static void ast2700a1fc_init(MachineState *machine)
-+{
-+    ast2700a1fc_ca35_init(machine);
-+    ast2700a1fc_ssp_init(machine);
-+    ast2700a1fc_tsp_init(machine);
-+}
-+
- static void ast2700a0fc_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -178,6 +310,18 @@ static void ast2700a0fc_class_init(ObjectClass *oc, void *data)
-     mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
- }
- 
-+static void ast2700a1fc_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->alias = "ast2700fc";
-+    mc->desc = "ast2700-a1 full core support";
-+    mc->init = ast2700a1fc_init;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
-+}
-+
- static const TypeInfo ast2700fc_types[] = {
-     {
-         .name           = MACHINE_TYPE_NAME("ast2700fc-a0"),
-@@ -185,6 +329,12 @@ static const TypeInfo ast2700fc_types[] = {
-         .class_init     = ast2700a0fc_class_init,
-         .instance_size  = sizeof(Ast2700a0FCState),
-     },
-+    {
-+        .name           = MACHINE_TYPE_NAME("ast2700fc-a1"),
-+        .parent         = TYPE_MACHINE,
-+        .class_init     = ast2700a1fc_class_init,
-+        .instance_size  = sizeof(Ast2700a1FCState),
-+    },
- };
- 
- DEFINE_TYPES(ast2700fc_types)
--- 
-2.34.1
-
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
+Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IFdlZG5lc2RheSwgTWFyY2ggMTIs
+IDIwMjUgNDoyNCBQTQ0KPiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaQ0KPiA8c2hhbWVl
+cmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPjsgcWVtdS1hcm1Abm9uZ251Lm9yZzsNCj4g
+cWVtdS1kZXZlbEBub25nbnUub3JnDQo+IENjOiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IGpn
+Z0BudmlkaWEuY29tOyBuaWNvbGluY0BudmlkaWEuY29tOw0KPiBkZHV0aWxlQHJlZGhhdC5jb207
+IGJlcnJhbmdlQHJlZGhhdC5jb207IG5hdGhhbmNAbnZpZGlhLmNvbTsNCj4gbW9jaHNAbnZpZGlh
+LmNvbTsgc21vc3RhZmFAZ29vZ2xlLmNvbTsgTGludXhhcm0NCj4gPGxpbnV4YXJtQGh1YXdlaS5j
+b20+OyBXYW5nemhvdSAoQikgPHdhbmd6aG91MUBoaXNpbGljb24uY29tPjsNCj4gamlhbmdrdW5r
+dW4gPGppYW5na3Vua3VuQGh1YXdlaS5jb20+OyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhh
+bi5jYW1lcm9uQGh1YXdlaS5jb20+OyB6aGFuZ2ZlaS5nYW9AbGluYXJvLm9yZw0KPiBTdWJqZWN0
+OiBSZTogW1JGQyBQQVRDSCB2MiAwNy8yMF0gaHcvYXJtL3NtbXUtY29tbW9uOiBJbnRyb2R1Y2UN
+Cj4gY2FsbGJhY2tzIGZvciBQQ0lJT01NVU9wcw0KPiANCj4gDQo+IA0KPiANCj4gT24gMy8xMS8y
+NSAzOjEwIFBNLCBTaGFtZWVyIEtvbG90aHVtIHdyb3RlOg0KPiA+IFN1YnNlcXVlbnRseSBzbW11
+djMtYWNjZWwgd2lsbCBwcm92aWRlwqB0aGVzZSBjYWxsYmFja3MNCj4gPg0KPiA+IFNpZ25lZC1v
+ZmYtYnk6IFNoYW1lZXIgS29sb3RodW0NCj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVh
+d2VpLmNvbT4NCj4gPiAtLS0NCj4gPiAgaHcvYXJtL3NtbXUtY29tbW9uLmMgICAgICAgICB8IDI3
+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiA+ICBpbmNsdWRlL2h3L2FybS9zbW11LWNv
+bW1vbi5oIHwgIDUgKysrKysNCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAzMiBpbnNlcnRpb25zKCsp
+DQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3NtbXUtY29tbW9uLmMgYi9ody9hcm0vc21t
+dS1jb21tb24uYyBpbmRleA0KPiA+IDgzYzA2OTNmNWEuLjlmZDQ1NWJhYTAgMTAwNjQ0DQo+ID4g
+LS0tIGEvaHcvYXJtL3NtbXUtY29tbW9uLmMNCj4gPiArKysgYi9ody9hcm0vc21tdS1jb21tb24u
+Yw0KPiA+IEBAIC04NjUsNiArODY1LDEwIEBAIHN0YXRpYyBBZGRyZXNzU3BhY2UgKnNtbXVfZmlu
+ZF9hZGRfYXMoUENJQnVzDQo+ICpidXMsIHZvaWQgKm9wYXF1ZSwgaW50IGRldmZuKQ0KPiA+ICAg
+ICAgU01NVVN0YXRlICpzID0gb3BhcXVlOw0KPiA+ICAgICAgU01NVVBjaUJ1cyAqc2J1cyA9IHNt
+bXVfZ2V0X3NidXMocywgYnVzKTsNCj4gPg0KPiA+ICsgICAgaWYgKHMtPmFjY2VsICYmIHMtPmdl
+dF9hZGRyZXNzX3NwYWNlKSB7DQo+ID4gKyAgICAgICAgcmV0dXJuIHMtPmdldF9hZGRyZXNzX3Nw
+YWNlKGJ1cywgb3BhcXVlLCBkZXZmbik7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiB3aHkgZG8gd2Ug
+cmVxdWlyZSB0aGF0IG5ldyBjYWxsIHNpdGU/IFRoaXMgbmVlZHMgdG8gYmUgZG9jdW1lbnRlZCBp
+biB0aGUNCj4gY29tbWl0IG1zZyBlc3AuIGJlY2F1c2Ugd2UgZG9uJ3Qga25vdyB3aGF0IHRoaXMg
+Y2Igd2lsbCBkby4NCg0KQ3VycmVudGx5LCB0aGlzIGlzIHdoZXJlIHRoZSBmaXJzdCB0aW1lIFNN
+TVVEZXZpY2Ugc2RldiBpcyBhbGxvY2F0ZWQuIEFuZCBmb3Igc21tdXYzLWFjY2VsDQpjYXNlcyB3
+ZSBhcmUgaW50cm9kdWNpbmcgYSBuZXcgU01NVXYzQWNjZWxEZXZpY2UgYWNjZWxfZGV2IGZvciBo
+b2xkaW5nIGFkZGl0aW9uYWwNCmFjY2VsIHNwZWNpZmljIGluZm9ybWF0aW9uLiBJbiBvcmRlciB0
+byBkbyB0aGF0IHRoZSBhYm92ZSBjYiBpcyB1c2VkLiBTYW1lIGZvciBvdGhlciBjYWxsYmFja3MN
+CmFzIHdlbGwuDQoNCkFub3RoZXIgd2F5IG9mIGF2b2lkaW5nIHRoZSBjYWxsYmFja3Mgd291bGQg
+YmUgdG8gIG1vdmUgdGhlIHBjaV9zZXR1cF9pb21tdShidXMsIG9wcykgDQpjYWxsIGZyb20gdGhl
+IHNtbXUtY29tbW9uLmMgdG8gc21tdXYzL3NtbXV2My1hY2NlbCBhbmQgaGFuZGxlIGl0IGRpcmVj
+dGx5IHRoZXJlLg0KDQpPciBpcyB0aGVyZSBhIGJldHRlciBpZGVhPw0KDQo+ID4gICAgICBzZGV2
+ID0gc2J1cy0+cGJkZXZbZGV2Zm5dOw0KPiA+ICAgICAgaWYgKCFzZGV2KSB7DQo+ID4gICAgICAg
+ICAgc2RldiA9IHNidXMtPnBiZGV2W2RldmZuXSA9IGdfbmV3MChTTU1VRGV2aWNlLCAxKTsgQEAg
+LTg3NCw4DQo+ID4gKzg3OCwzMSBAQCBzdGF0aWMgQWRkcmVzc1NwYWNlICpzbW11X2ZpbmRfYWRk
+X2FzKFBDSUJ1cyAqYnVzLCB2b2lkDQo+ICpvcGFxdWUsIGludCBkZXZmbikNCj4gPiAgICAgIHJl
+dHVybiAmc2Rldi0+YXM7DQo+ID4gIH0NCj4gPg0KPiA+ICtzdGF0aWMgYm9vbCBzbW11X2Rldl9z
+ZXRfaW9tbXVfZGV2aWNlKFBDSUJ1cyAqYnVzLCB2b2lkICpvcGFxdWUsDQo+IGludCBkZXZmbiwN
+Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBIb3N0SU9NTVVEZXZp
+Y2UgKmhpb2QsIEVycm9yDQo+ID4gKyoqZXJycCkgew0KPiA+ICsgICAgU01NVVN0YXRlICpzID0g
+b3BhcXVlOw0KPiA+ICsNCj4gPiArICAgIGlmIChzLT5hY2NlbCAmJiBzLT5zZXRfaW9tbXVfZGV2
+aWNlKSB7DQo+ID4gKyAgICAgICAgcmV0dXJuIHMtPnNldF9pb21tdV9kZXZpY2UoYnVzLCBvcGFx
+dWUsIGRldmZuLCBoaW9kLCBlcnJwKTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICByZXR1
+cm4gZmFsc2U7DQo+ID4gK30NCj4gPiArDQo+ID4gK3N0YXRpYyB2b2lkIHNtbXVfZGV2X3Vuc2V0
+X2lvbW11X2RldmljZShQQ0lCdXMgKmJ1cywgdm9pZCAqb3BhcXVlLA0KPiA+ICtpbnQgZGV2Zm4p
+IHsNCj4gPiArICAgIFNNTVVTdGF0ZSAqcyA9IG9wYXF1ZTsNCj4gPiArDQo+ID4gKyAgICBpZiAo
+cy0+YWNjZWwgJiYgcy0+dW5zZXRfaW9tbXVfZGV2aWNlKSB7DQo+ID4gKyAgICAgICAgcy0+dW5z
+ZXRfaW9tbXVfZGV2aWNlKGJ1cywgb3BhcXVlLCBkZXZmbik7DQo+ID4gKyAgICB9DQo+ID4gK30N
+Cj4gPiArDQo+ID4gIHN0YXRpYyBjb25zdCBQQ0lJT01NVU9wcyBzbW11X29wcyA9IHsNCj4gPiAg
+ICAgIC5nZXRfYWRkcmVzc19zcGFjZSA9IHNtbXVfZmluZF9hZGRfYXMsDQo+ID4gKyAgICAuc2V0
+X2lvbW11X2RldmljZSA9IHNtbXVfZGV2X3NldF9pb21tdV9kZXZpY2UsDQo+ID4gKyAgICAudW5z
+ZXRfaW9tbXVfZGV2aWNlID0gc21tdV9kZXZfdW5zZXRfaW9tbXVfZGV2aWNlLA0KPiA+ICB9Ow0K
+PiA+DQo+ID4gIFNNTVVEZXZpY2UgKnNtbXVfZmluZF9zZGV2KFNNTVVTdGF0ZSAqcywgdWludDMy
+X3Qgc2lkKSBkaWZmIC0tZ2l0DQo+ID4gYS9pbmNsdWRlL2h3L2FybS9zbW11LWNvbW1vbi5oIGIv
+aW5jbHVkZS9ody9hcm0vc21tdS1jb21tb24uaA0KPiBpbmRleA0KPiA+IDgwZmYyZWY2YWEuLjdi
+MDU2NDAxNjcgMTAwNjQ0DQo+ID4gLS0tIGEvaW5jbHVkZS9ody9hcm0vc21tdS1jb21tb24uaA0K
+PiA+ICsrKyBiL2luY2x1ZGUvaHcvYXJtL3NtbXUtY29tbW9uLmgNCj4gPiBAQCAtMTYwLDYgKzE2
+MCwxMSBAQCBzdHJ1Y3QgU01NVVN0YXRlIHsNCj4gPg0KPiA+ICAgICAgLyogRm9yIHNtbXV2My1h
+Y2NlbCAqLw0KPiA+ICAgICAgYm9vbCBhY2NlbDsNCj4gPiArDQo+ID4gKyAgICBBZGRyZXNzU3Bh
+Y2UgKiAoKmdldF9hZGRyZXNzX3NwYWNlKShQQ0lCdXMgKmJ1cywgdm9pZCAqb3BhcXVlLCBpbnQN
+Cj4gZGV2Zm4pOw0KPiA+ICsgICAgYm9vbCAoKnNldF9pb21tdV9kZXZpY2UpKFBDSUJ1cyAqYnVz
+LCB2b2lkICpvcGFxdWUsIGludCBkZXZmbiwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBIb3N0SU9NTVVEZXZpY2UgKmRldiwgRXJyb3IgKiplcnJwKTsNCj4gPiArICAgIHZvaWQg
+KCp1bnNldF9pb21tdV9kZXZpY2UpKFBDSUJ1cyAqYnVzLCB2b2lkICpvcGFxdWUsIGludCBkZXZm
+bik7DQo+IEkgdGhpbmsgdGhpcyBzaG91bGQgYmUgZXhwb3NlZCBieSBhIGNsYXNzIGFuZCBvbmx5
+IGltcGxlbWVudGVkIGluIHRoZQ0KPiBzbW11djMgYWNjZWwgZGV2aWNlLiBBZGRpbmcgdGhvc2Ug
+Y2JzIGRpcmVjdGx5IGluIHRoZSBTdGF0ZSBsb29rcyBub3QgdGhlDQo+IHN0ZCB3YXkuDQoNCk9r
+LiBZb3UgbWVhbiB3ZSBjYW4gZGlyZWN0bHkgcGxhY2UgIFBDSUlPTU1VT3BzICpvcHMgaGVyZSB0
+aGVuPyANCg0KVGhhbmtzLA0KU2hhbWVlcg0K

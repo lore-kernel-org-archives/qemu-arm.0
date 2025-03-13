@@ -1,89 +1,84 @@
-Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp615798njc;
-        Wed, 12 Mar 2025 16:58:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUiA07YWcdyYyCJNZ1/hrzdrYsZvO0HGe9wDtYAGNO7wgOuDdduBC7UoWmVGg1UIijJrkvUG4rjoYnNLw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGLMvRXUEpxka2BzFONN1k7gox00baH40gtnoP4ZB3j7vt+axO8TKNmEI6Sgncg3FR9E47l
-X-Received: by 2002:a05:622a:355:b0:476:8db0:8cc3 with SMTP id d75a77b69052e-4768db0910amr163325661cf.10.1741823921516;
-        Wed, 12 Mar 2025 16:58:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741823921; cv=none;
+Received: by 2002:a17:505:840c:b0:1be9:327d:8ee3 with SMTP id lq12csp728746njc;
+        Wed, 12 Mar 2025 22:46:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUI9sbQWRROudqbEcNbgC76jV/Ve2zvOJJ/nUOHsActHSwn2G2D2xXQevkd43dKLg0X5q3lGQk573UfGA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHCVl+FR/YvTu3ezNxk3fJeL6HoLBBLzc05yAJyeSQs4GaA/4E3mx5jA8KXgcoADWiNZqGX
+X-Received: by 2002:a0c:fc46:0:b0:6e8:fee2:aadf with SMTP id 6a1803df08f44-6e9006752ebmr274993516d6.31.1741844779436;
+        Wed, 12 Mar 2025 22:46:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741844779; cv=none;
         d=google.com; s=arc-20240605;
-        b=Azsj6k4+HeSnAGuvS6RUZmZJTcatQ3ECi+xYU+SHaBaxok6I4L/ETI6O9rCl+EkEE5
-         z+rM6vHuIJrGZtx9LuFVx2PEw2gjMENwA1nnpjXUJ/BFyUPBiJ3EyFes+U0/izo1zM1n
-         nsrvUTSgenZuKi1zBgdZKrFhN/VIVuiBjxDvN6GfCUH06RNJ2ezclwr/rdm1o/Bk9PE2
-         AihWRAuNQAFip2xLc6cVxhS3jmFdvD3aUcr8xJsTg+vsjb2ohBLYPuWwSifel4gIwSbV
-         +Z1edwdWoQaElZFnVkPzRuHmzjcID4CTEXGdIasYlYVx4lD17CvRm9wgU0t6UkbYH3Vy
-         TMRg==
+        b=UUDKm/V7xRW3qEO46rGuWsA8xByt5vqXK8H50nkiq6hN8jprG1srEZX8AzYaoyKx72
+         aavsNwpmx/99DFLEVRPc6692I85q7twSr8NTTx2xX2YCSIVM10pns84cmccwZXZBxYyo
+         X10ciuxqvtNTOAWz+D5KV5ALo3rrLR6KkhoFGJWRPaUhqRiEDizCTRziJhQh8nsL0tz+
+         ZZlRraXVPeN6EU61UbDQNRDATDt32wrlSUtPxgHkRXQuhXk8+HtybFYLnnIxmjwMatF3
+         8+d0L8XmcmZTePcbx4siIgvHpcDwlxj8fmjFvkDnCPSyGrt6YS+FndGSGxVKpI1Q7cCt
+         li4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=cIV3aizfBLlcFLUOvGOwkDR0PfS5g1sDS1kMh06ygac=;
-        fh=LOGikM04SvFjVUbohhbHX8dWebz3vFc+BtgU7UUJSTk=;
-        b=MUn/7s7shUn+mHo4EpTwNKBxBbCkCQcwFpV20cvkP3A4jS3WcsnIrjX9u/TE58OJDn
-         GgGj5vKjRmD38WDU9KjTpXP2W59lT2c8SxVBSbdXLA5S9jmJWraVr1Smtw+Zl3w/aDeT
-         bJ8V7otXQT/Jgap+vqWsqN70DS1gDPAxU9bWm5bDQr/mpa9sf51ofu2NfXGl1aa8VGGe
-         AAOn4V83P6K4nnSsxqwU5ziGgyT/WpRNxit34K4FscWd0GPS78FjOzppNv0rGI0C4kFN
-         sK8Tkm5Cpiwfr9du516rO4Zc9xbXfsSAKYkHEF5AEn54h/fdiSVgas2++93BsqaQnvq1
-         dqkw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=U2FM7Hm1bUEc9b14H78qFeBQ8j3hgqfxDBjDvcL/KuE=;
+        fh=NwMdySSevMv+4zB5gT5UiU9uLqpwDS+7odbjbNLg6yI=;
+        b=HUe0urwg2COK/m6HYNu6Abzu1UKQ3O0nT/BvQAwe8ecDrkxSEmiIQTlgzVM4/9l9/l
+         D+YlU8n7aXsDtUMlWhJ16oP7vP2/0Al2SOSjKa+zoW3lMqTAtfMIOAPg9MsaO/i5O4aE
+         OS02bhR5PRD89/4vJijfv0kRQMYqQDZEYi0h87bBgadueDjLSzM4eT3IuMTthXtDBjYc
+         +vAsJXI5PXWN/MTuvsEs6/+oCm+suymgFpUctODUm8dQ8nUd/lhlUSuPemlKIumQJNNB
+         AjxD887GSLJcQwZBId0j2PcHO8DVXuDxnTbkWDzL+zbyieYpDRlyPbJ6b13wMJv2nUKe
+         hGhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb815326si2720521cf.343.2025.03.12.16.58.41
+        by mx.google.com with ESMTPS id af79cd13be357-7c573caa773si89180385a.324.2025.03.12.22.46.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Mar 2025 16:58:41 -0700 (PDT)
+        Wed, 12 Mar 2025 22:46:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tsVxv-0005wH-5M; Wed, 12 Mar 2025 19:58:24 -0400
+	id 1tsbOM-0004om-LC; Thu, 13 Mar 2025 01:46:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tsVxm-0005sE-Qz; Wed, 12 Mar 2025 19:58:16 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1tsbNz-0004mp-CT; Thu, 13 Mar 2025 01:45:47 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tsVxh-0004EB-8h; Wed, 12 Mar 2025 19:58:14 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id A984B4E6033;
- Thu, 13 Mar 2025 00:58:02 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id rdJsfmTbSWm2; Thu, 13 Mar 2025 00:58:00 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id A99B04E6032; Thu, 13 Mar 2025 00:58:00 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id A79CD74577D;
- Thu, 13 Mar 2025 00:58:00 +0100 (CET)
-Date: Thu, 13 Mar 2025 00:58:00 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 1/2] hw/arm/fsl-imx8mp: Make SoC not user-creatable,
- derive from TYPE_SYS_BUS_DEVICE
-In-Reply-To: <20250312212611.51667-2-shentey@gmail.com>
-Message-ID: <065c6990-d2dc-7b03-cd0c-344ee6b6a619@eik.bme.hu>
-References: <20250312212611.51667-1-shentey@gmail.com>
- <20250312212611.51667-2-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1tsbNv-0005Ve-C3; Thu, 13 Mar 2025 01:45:37 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 13 Mar
+ 2025 13:40:20 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 13 Mar 2025 13:40:20 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
+Date: Thu, 13 Mar 2025 13:40:04 +0800
+Message-ID: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,96 +91,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
+From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uOnkF7+zXhOC
+X-TUID: Tg+YC7YWmcsB
 
-On Wed, 12 Mar 2025, Bernhard Beschow wrote:
-> Fixes a crash when creating the SoC object on the command line:
->
->  $ ./qemu-system-aarch64  -M virt -device fsl-imx8mp
->  **
->  ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread: assertion failed:
->  (n < tcg_max_ctxs)
->  Bail out! ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread:
->  assertion failed: (n < tcg_max_ctxs)
->  Aborted (core dumped)
->
-> Furthermore, the SoC object should be derived from TYPE_SYS_BUS_DEVICE such that
-> it gets properly reset.
->
-> Fixes: a4eefc69b237 "hw/arm: Add i.MX 8M Plus EVK board"
-> Reported-by: Thomas Huth <thuth@redhat.com>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
-> include/hw/arm/fsl-imx8mp.h | 3 ++-
-> hw/arm/fsl-imx8mp.c         | 4 +++-
-> hw/arm/imx8mp-evk.c         | 2 +-
-> 3 files changed, 6 insertions(+), 3 deletions(-)
->
-> diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-> index bc97fc416e..22fdc0d67c 100644
-> --- a/include/hw/arm/fsl-imx8mp.h
-> +++ b/include/hw/arm/fsl-imx8mp.h
-> @@ -26,6 +26,7 @@
-> #include "hw/timer/imx_gpt.h"
-> #include "hw/usb/hcd-dwc3.h"
-> #include "hw/watchdog/wdt_imx2.h"
-> +#include "hw/sysbus.h"
-> #include "qom/object.h"
-> #include "qemu/units.h"
->
-> @@ -49,7 +50,7 @@ enum FslImx8mpConfiguration {
-> };
->
-> struct FslImx8mpState {
-> -    DeviceState    parent_obj;
-> +    SysBusDevice   parent_obj;
->
->     ARMCPU             cpu[FSL_IMX8MP_NUM_CPUS];
->     GICv3State         gic;
-> diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-> index 1ea98e1463..9133d49383 100644
-> --- a/hw/arm/fsl-imx8mp.c
-> +++ b/hw/arm/fsl-imx8mp.c
-> @@ -698,13 +698,15 @@ static void fsl_imx8mp_class_init(ObjectClass *oc, void *data)
->     device_class_set_props(dc, fsl_imx8mp_properties);
->     dc->realize = fsl_imx8mp_realize;
->
-> +    /* Reason: SoC can only be instantiated from a board */
-> +    dc->user_creatable = false;
+This patch series introduces full core support for the AST27x0 SoC, along with necessary updates to the ASPEED AST27x0 SOC.
+The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35 cores and 2 Cortex-M4 cores.
 
-I think sysbus devices are not user creatable by default (that's why 
-dynamic sysbus device was introduced) so either this or the .parent change 
-below is enough. You can have both just in case but maybe not necessary as 
-other sysbus devices usually don't set user_createble either.
+v1:
+  - Map unimplemented devices in SoC memory
+  - Intruduce AST2700 CM4 SoC
+  - Introduce AST27x0FC Machine
 
-Regards,
-BALATON Zoltan
+v2:
+  - Remove unused functions
+  - Correct hex notation for device addresses in AST27x0 SoC
+  - Add AST2700 SSP INTC and AST2700 TSP INTC
+  - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
+  - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
+  - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
+  - Add functional tests for AST2700FC A0 and AST2700FC A1
+  - Add Documentation for AST2700FC
 
->     dc->desc = "i.MX 8M Plus SoC";
-> }
->
-> static const TypeInfo fsl_imx8mp_types[] = {
->     {
->         .name = TYPE_FSL_IMX8MP,
-> -        .parent = TYPE_DEVICE,
-> +        .parent = TYPE_SYS_BUS_DEVICE,
->         .instance_size = sizeof(FslImx8mpState),
->         .instance_init = fsl_imx8mp_init,
->         .class_init = fsl_imx8mp_class_init,
-> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-> index e1a7892fd7..f17d5db466 100644
-> --- a/hw/arm/imx8mp-evk.c
-> +++ b/hw/arm/imx8mp-evk.c
-> @@ -37,7 +37,7 @@ static void imx8mp_evk_init(MachineState *machine)
->     s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
->     object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
->     object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
-> -    qdev_realize(DEVICE(s), NULL, &error_fatal);
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
->
->     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
->                                 machine->ram);
->
+Steven Lee (13):
+  aspeed: ast27x0: Map unimplemented devices in SoC memory
+  aspeed: ast27x0: Correct hex notation for device addresses
+  hw/intc/aspeed: Add support for AST2700 SSP INTC
+  hw/intc/aspeed: Add support for AST2700 TSP INTC
+  hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A0 SSP SoC
+  hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
+  hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A0 TSP SoC
+  hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
+  hw/arm: Introduce ASPEED AST2700 a0 full core machine
+  hw/arm: Introduce ASPEED AST2700 a1 full core machine
+  tests/function/aspeed: Add functional test for AST2700FC
+  tests/function/aspeed: Add functional test for AST2700FC A1
+  docs: Add support for ast2700fc machine
+
+ docs/system/arm/aspeed.rst                 |  61 ++-
+ include/hw/arm/aspeed_soc.h                |  32 ++
+ include/hw/intc/aspeed_intc.h              |   5 +
+ hw/arm/aspeed_ast27x0-fc.c                 | 340 +++++++++++++++++
+ hw/arm/aspeed_ast27x0-ssp.c                | 400 +++++++++++++++++++
+ hw/arm/aspeed_ast27x0-tsp.c                | 400 +++++++++++++++++++
+ hw/arm/aspeed_ast27x0.c                    |  79 +++-
+ hw/intc/aspeed_intc.c                      | 424 +++++++++++++++++++++
+ hw/arm/meson.build                         |   6 +-
+ tests/functional/test_aarch64_ast2700fc.py | 161 ++++++++
+ 10 files changed, 1884 insertions(+), 24 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast27x0-fc.c
+ create mode 100644 hw/arm/aspeed_ast27x0-ssp.c
+ create mode 100644 hw/arm/aspeed_ast27x0-tsp.c
+ create mode 100755 tests/functional/test_aarch64_ast2700fc.py
+
+-- 
+2.34.1
+

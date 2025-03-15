@@ -1,132 +1,115 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp802507njb;
-        Fri, 14 Mar 2025 11:33:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVqmDk/JhcVqJ1udC4dBYLH7N8PixvExPoDMed1FrH290j2wAL+0e5Mn3IfX9m3gwmpDONgIvnD39ktWg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEb3+jkycSSypJGgG5Vyo77lUgb7j7gLZSR2ejHj3aN4ljasMOjFWkogqC5/Q8jI60OC7pP
-X-Received: by 2002:a05:6214:238e:b0:6e6:5b8e:7604 with SMTP id 6a1803df08f44-6eaeac41eb8mr46539216d6.12.1741977239804;
-        Fri, 14 Mar 2025 11:33:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1741977239; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp1062280njb;
+        Fri, 14 Mar 2025 23:38:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWiormIhVqARW1BZNqWDkTX0iQG7v+OcRwSXveNvMm27es1mnCCZoUPA9OyDtJ7NoN4RK3fuQxlKDCBlw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEAJ0ywHNMXxxooVNhxl3afBxTvqqSSzsHr6FTkEC4mJJMwyZqa1ABBTMHzFrAClUU0ubHb
+X-Received: by 2002:a05:622a:19a9:b0:476:79d2:af5e with SMTP id d75a77b69052e-476c8130c49mr74501311cf.3.1742020723901;
+        Fri, 14 Mar 2025 23:38:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742020723; cv=none;
         d=google.com; s=arc-20240605;
-        b=bLR0NT1Kv0ekGin03qJYWW8GOld0HUYxgYqBjKNHodlh5eD//5XBlNOjMKcH8ItACE
-         0z81LkAPX49E6TZ4da7nq5ey1Q3uL/Svp19QpOLCiA6Vxw2LtrtMM+EaEGDq046VFH1d
-         8BtJwY9X9kOI+jAX+xQwzSejuRxWNMTG422BicrOQu8ftVLtM76iUXhW6VCjj2qMUdAT
-         cQBbKQ80FCh4s6xrbJSqtodyOH/ohTMvEv/1kf78MR4w1LTpIQJ2wN/lOePXDKvTjo5x
-         UPEyATEUo4q7vM7qNyzHXK1sG2NpLXI3uRLGjfbkaDL7drEpJW6CZpdSU6PWSKIxjiRe
-         sMfw==
+        b=SC4K6RVi1tps6mEboxM4jSVh7OJJ53472cwmaOqhBAiWziFzpnJvErJp4bLb7a9DK4
+         RNXKgBV6wk1enz1m/PgyjgYEgaR6rFWGkTHb57Rw2GTXxSMuXkkw/0hI1pxFp/9ccrit
+         R52Cxo2OUwuzVZZyvzoBL86d/LQiTU7e5rcaNNS/ODMwOL3HMeb/eqGmWwNfGKiF1Bln
+         +WbF3ja4PAulwIK1Sq7ECJn5NQ6xTjvKCf0gYplDZgnboYZoQntzXE+gdDB7XjQGX2iy
+         3OUhCevD9ux85YQvH+YBib0K3HvVqlAGuTIWiMfWmTlcb/VEapWsOCgEYtzMnlGQ/XQc
+         YRcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=zAO3S/7q0ZinhoijfNeacj7mj7W5fG+tqzSOImMUvxo=;
-        fh=R2mfzuppG7DIN0mXWsOc448MTmR8f8PVUxTZmMJfNm0=;
-        b=CEkGKt3M6+v95H8e8+39u+OosfBEwTns9uv0L+dRVvttYpYS7Vkf2/nsOHhoetcUzn
-         UajzXYHM9cxt5INwbxoEtA7GHaAO3BQhIKeMFn7AZGQN+kAuMle2xtesOKjRLMaL01lA
-         PM67JjUn4GiKceXaG/uPR5za968djeGJ3z4jMXWWWvW/jsP30/+ARVeDicIxmlHJMsI4
-         i8I61CusbHpSQmLRsroi1VfE7eRO9YM+2S3bEugIt95AlGYHmFphmz8XRGr72/QoYmJr
-         p3Wndd59DylVzBMIb8OUudd+bYykNlC5Me1fj8dQ5N7RobfzBdVNROK8MFOvP3dsaFJL
-         CrLg==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=HevAM/q01A1CrqwNLDZlG+V7E04sS7ZJBUX/Nw4ShKo=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=eq0s2Rz6d0fjOSiQwTkI8eM3ttArnG1VRKhHG+p7zstw34d9VK4uPqOtpuBA5miXIX
+         tnF5Me5R588CTKll/tceyZLJ5icWMKvO6N98Ja+knKlhUFl/gMrKFvxqMbxmzjWsyRnF
+         a2NmYH2aMMBVauDbBcLtIXC8ucxgyGx+OgZMDDWhk9R7fQu4dnh33TzpXmJLntplzKn5
+         OHzWZJtfHHkOtVS2C81HGC+Sp5SdhkWCV4QhUxj/a+jEvq4ycGP/gIppxYZIfZvu0US2
+         VTXFxp9DZp/M4V44qgJo8/QcyO2n5CYuwwyvzGmVcsYz+wae4lH57MtOPzgpKbeoIbEY
+         YXlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UBNy9Po5;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D+3stk+6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eade33caccsi40924446d6.222.2025.03.14.11.33.59
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb617b8esi52831421cf.49.2025.03.14.23.38.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Mar 2025 11:33:59 -0700 (PDT)
+        Fri, 14 Mar 2025 23:38:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UBNy9Po5;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D+3stk+6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tt9py-00089p-6l; Fri, 14 Mar 2025 14:32:50 -0400
+	id 1ttLAH-0004vU-Km; Sat, 15 Mar 2025 02:38:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tt9pv-00088H-BT; Fri, 14 Mar 2025 14:32:47 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ (Exim 4.90_1) (envelope-from <psswdrcvrygml@gmail.com>)
+ id 1ttFhm-0000Zf-5u
+ for qemu-arm@nongnu.org; Fri, 14 Mar 2025 20:48:46 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tt9ps-0007gp-Se; Fri, 14 Mar 2025 14:32:46 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5e5deb6482cso6283173a12.1; 
- Fri, 14 Mar 2025 11:32:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <psswdrcvrygml@gmail.com>)
+ id 1ttFhk-0000ys-Eu
+ for qemu-arm@nongnu.org; Fri, 14 Mar 2025 20:48:45 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-54298ec925bso4164307e87.3
+ for <qemu-arm@nongnu.org>; Fri, 14 Mar 2025 17:48:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1741977162; x=1742581962; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zAO3S/7q0ZinhoijfNeacj7mj7W5fG+tqzSOImMUvxo=;
- b=UBNy9Po5sRLFhbVUglPCpubKp09vhuv1+nJ+ere/bomrOcXaNM+nFaUaVefCrE1nrO
- gBVTfoQjKHTco6uR43XKxG9tdm24r6nb7Of2jHjiOiur6IUxer9qIgrCQOMpqQ24AMu7
- ve7FapXgTdQ0VGun9Sz3rKn8cIzy0rSplxhyGUK7jpDf1v6Viq0lY/HP969BcYTyX6aj
- faKSS+o8BrLjeVuocut0ikPHe3dsI6b53rw4a2yHLzK4dszTvijVMCcNgAUeaSAI0K91
- Z6YfH6DUXGjzKHhf+yE5jXeDytmQ5NHJP+84MT0/TsNOL6vaJztBU0GVGPaBO5nRQbOA
- 8t1g==
+ d=gmail.com; s=20230601; t=1741999719; x=1742604519; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=HevAM/q01A1CrqwNLDZlG+V7E04sS7ZJBUX/Nw4ShKo=;
+ b=D+3stk+6dywqg58s+1wHEwVjmgnWHCMu5n9NWS7UXLDERPv9I3iXgCPYtdCz6mmLjI
+ qITFMyG44OgaT5/S/5d/oh0f+9lF2e+Y4UgzaEk8uZmQkcaoH9Sex7i4X/MlckQXA5bo
+ 4OTpob3Ba9lptee9ShGjN2d6KaOv4Mec4oZfhWcut8QG+m58M3tSeG6898XPBIrsqklv
+ jzyY/CLcIuhLAeRGXu2VlpMagZaRoS9To7lWAgsrQa2Wd/s2KtId2AOMnhgJB7ihZA2V
+ FfCVUuBXv6WDnKj+8NpruBQj6In3hy2HR1CTXK3ef8L7/hSjD5+upL9bQHMJdMzb5CDz
+ sszw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741977162; x=1742581962;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zAO3S/7q0ZinhoijfNeacj7mj7W5fG+tqzSOImMUvxo=;
- b=Arb7EsOwwvD7urKzMO/Z2r3o2ZpEutMNRQNkAh3rlxlOJnePbOS8DDOJWB30SpGV3v
- ZnND893zh/1VXcqq6Tl9PK82p/0/QbxztGp7ZxNqnYHPzSL8+xujMpygLdn8LoB9r7qI
- kah9szs5yhLenyOrQ2ApGyDEJZgmohfzUNRxG4HrAtSUcKhwUKbt7KpOKa7WO7dW0fwX
- Cp7pvSKHhr87zQurbTWuczO3qOOsDbtBdtb4e+9sFNUVKtrZcYm1z3wher16O6eIfzQC
- 3q7ulb3Ae9RyM6Cga2P/bKuXPbFAs/6pIshugdVcceJnokpFbWtYJfeRn1VmeMXwk9sa
- j5wg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWH2rjkT6+FdO0fy0nQq+ncWD8kFF4fi5zWXIkVvnt01PXXnARCb96gixJ0hO7mf/Nt7fdMBfygmw==@nongnu.org
-X-Gm-Message-State: AOJu0YxsRVwdVZPLZQcFwizf9oXAd0K2KGytoqfFojR8NfXjGH1ULRdl
- GnXjCgeU6UifEOqX/jWJfE3gz7Sd7Z6QEPgHalVCgkTDrQgwFFn1ptuDWA==
-X-Gm-Gg: ASbGncvYqF666Uel2tL/rVowi1yTN/FSCPCTO1RgO1WdXZv10c2ueP3Wwcy6lKjgbou
- 0JYIYaUYg9d9wzqZcTktHtrwFevCTgxhIl5SGHIfxvn7jbly180Muc1aRwEvT41V5uUbfE3rRlT
- EBD1HddaprH6w/rhmk4XotakUThSbKn9nIKzvK+taMFtHW2OAZERE6+bd+vYTCENThNCzIv4Cg1
- /4mcntBejYFX8+oNlq1W3rps2/Af3xrG16DdEw2+lA1Po2yJy36828YDzmKQba/9HYSHFZoBDzU
- r/cb+3mvCQa1RTaVimiYzkgD9T+yVoH4InBrqNlCTtFUhiLzHbLKeq6yNKWlCbNktr7m2yQffBS
- PYgSdyQxIHaXuxYdvoQ+apAf8eryXyA93dFtHRWvAWlgtq1vsb70Mp70/QuD8Si/2
-X-Received: by 2002:a17:907:178c:b0:ac2:b813:ac25 with SMTP id
- a640c23a62f3a-ac3123415b4mr880350066b.14.1741977161610; 
- Fri, 14 Mar 2025 11:32:41 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-2a02-3100-1ac1-f400-0219-99ff-feb2-2458.310.pool.telefonica.de.
- [2a02:3100:1ac1:f400:219:99ff:feb2:2458])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac3147f0ca7sm262104466b.60.2025.03.14.11.32.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Mar 2025 11:32:41 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 1/2] hw/arm/fsl-imx8mp: Derive struct FslImx8mpState from
- TYPE_SYS_BUS_DEVICE
-Date: Fri, 14 Mar 2025 19:32:23 +0100
-Message-ID: <20250314183224.21822-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250314183224.21822-1-shentey@gmail.com>
-References: <20250314183224.21822-1-shentey@gmail.com>
+ d=1e100.net; s=20230601; t=1741999719; x=1742604519;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=HevAM/q01A1CrqwNLDZlG+V7E04sS7ZJBUX/Nw4ShKo=;
+ b=WgvBA0zZl/oLTJ/oUQsJCvWztQFV5OsvGyTUlQ2hL2cp22jFDbi6SHFM1MIUIX1kSY
+ XLl5061XPZOrjRV0QO1d24ZM9ijv1DkbP1L/Z23hdzvDKd63gBLrXQ66X68TByYCOE5e
+ BfRk0wj6pSmjzGBzu13aQPh4tMHI/Xo0jVpnEBGtv8cwbh9pkp/LP/nySqdhCvIvd4ze
+ 7Wx83QihOjTWFTZocNua9KcnoYyc9eH4qc94JnoxZGLZHqRd2fqVCLG0u684GPMAe8QB
+ kNyjGKj3oMOYslC5bDlHbNcSSu5nT8o3hvfoyqSKN8KOqbyH1Drvz51eKDk68w1ssXrJ
+ m4qA==
+X-Gm-Message-State: AOJu0YzDO9MSxPK2gkc6YklTMk8/CakD2MWBsJYlSawMxSXVaTcqYmaC
+ X/pXmqstFwl6G9X70JU/EcvVMAeQgtMzB6wMtziCg1lrFHb/dbdJR76+zNZ0JTZvxzaCZ8/0C7L
+ 8D56C3TPunNTdxcvEWqqtqANNlGi6ZJPD
+X-Gm-Gg: ASbGncsZlnsgn5ZwGuhSVQIqgaMareDCD19fdHr8zh4g33mC8Lpd4sp8tCnHWpNS8cc
+ BX5Zkz7eMdj8hunvuhyyP6r50HgNXTmTcrqjuv1fbHTJgUD6tmFEx0nK20G5nuzWdfWmeM3LKSK
+ r87gHGtGNrXIKWwkv8+cP9l6zPQQFG
+X-Received: by 2002:a05:6512:3e24:b0:549:74a7:12de with SMTP id
+ 2adb3069b0e04-549c39894b0mr1563448e87.48.1741999719221; Fri, 14 Mar 2025
+ 17:48:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+From: Peanut Password <psswdrcvrygml@gmail.com>
+Date: Fri, 14 Mar 2025 17:48:28 -0700
+X-Gm-Features: AQ5f1JqBybMbHaBqWTsHNDErsZAVIVmCFoSyCsSEa_7S-nluiRCiA3T6tIAQY3c
+Message-ID: <CAJP3cEFQSyTsK2tOwZGLtfNHPmvK=P-z17nfCa0P-S02BQc0cw@mail.gmail.com>
+Subject: Native arm64 Linux kernel build on QEMU
+To: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=psswdrcvrygml@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 15 Mar 2025 02:38:31 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,78 +123,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Nz8U4UP/QKDI
+X-TUID: /kV0EgiwbLkK
 
-Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon machine
-reset. It also makes the SoC implementation not user-creatable which can trigger
-the following crash:
+Hello, apologies if this isn't the right venue; this is a beginner's
+question (just for play/learning).
 
-  $ ./qemu-system-aarch64  -M virt -device fsl-imx8mp
-  **
-  ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread: assertion failed:
-  (n < tcg_max_ctxs)
-  Bail out! ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread:
-  assertion failed: (n < tcg_max_ctxs)
-  Aborted (core dumped)
+On native x86 machines, I can build the Linux kernel, take the
+`bzImage` output file, and plug it straight into QEMU with
+`qemu-system-x86_64 -kernel path/to/bzImage`. The readout will be a
+kernel panic complaining about no initrd.
 
-Fixes: a4eefc69b237 "hw/arm: Add i.MX 8M Plus EVK board"
-Reported-by: Thomas Huth <thuth@redhat.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- include/hw/arm/fsl-imx8mp.h | 3 ++-
- hw/arm/fsl-imx8mp.c         | 2 +-
- hw/arm/imx8mp-evk.c         | 2 +-
- 3 files changed, 4 insertions(+), 3 deletions(-)
+I would like to get to the same stage on a native arm64 machine. I
+believe I want to use `-M virt`, and I'm not sure of any further
+settings that need to be passed in. As far as I can tell, the Linux
+kernel detects the arm64 environment and builds successfully. My naive
+guess is that the output file `Image.gz` is analogous to x86's
+`bzImage`. However, running `qemu-system-aarch64 -M virt -kernel
+path/to/Image.gz` just opens the QEMU monitor (the same result as
+running `qemu-system-aarch64 -M virt` alone) with no further output
+(e.g., no kernel panic). Unpacking the gz file to `Image` doesn't work
+either.
 
-diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index bc97fc416e..22fdc0d67c 100644
---- a/include/hw/arm/fsl-imx8mp.h
-+++ b/include/hw/arm/fsl-imx8mp.h
-@@ -26,6 +26,7 @@
- #include "hw/timer/imx_gpt.h"
- #include "hw/usb/hcd-dwc3.h"
- #include "hw/watchdog/wdt_imx2.h"
-+#include "hw/sysbus.h"
- #include "qom/object.h"
- #include "qemu/units.h"
- 
-@@ -49,7 +50,7 @@ enum FslImx8mpConfiguration {
- };
- 
- struct FslImx8mpState {
--    DeviceState    parent_obj;
-+    SysBusDevice   parent_obj;
- 
-     ARMCPU             cpu[FSL_IMX8MP_NUM_CPUS];
-     GICv3State         gic;
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index c3f6da6322..82edf61082 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -702,7 +702,7 @@ static void fsl_imx8mp_class_init(ObjectClass *oc, void *data)
- static const TypeInfo fsl_imx8mp_types[] = {
-     {
-         .name = TYPE_FSL_IMX8MP,
--        .parent = TYPE_DEVICE,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-         .instance_size = sizeof(FslImx8mpState),
-         .instance_init = fsl_imx8mp_init,
-         .class_init = fsl_imx8mp_class_init,
-diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-index e1a7892fd7..f17d5db466 100644
---- a/hw/arm/imx8mp-evk.c
-+++ b/hw/arm/imx8mp-evk.c
-@@ -37,7 +37,7 @@ static void imx8mp_evk_init(MachineState *machine)
-     s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-     object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
--    qdev_realize(DEVICE(s), NULL, &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
-                                 machine->ram);
--- 
-2.48.1
-
+What am I missing?

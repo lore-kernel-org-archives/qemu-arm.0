@@ -1,169 +1,175 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2160894njb;
-        Mon, 17 Mar 2025 04:17:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV69jxk5ACsWehVGDBpD9LULiX1yDaVuJEHzjmkMIV/+dWG+61xKpg8r6PCwVeUwOZJshDy7tt1JChSxA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF6x8bfm9urRYFBOgLV5D7fTTcfucMWjJqrvZf52G9lk+U07g0x4U+QbR8955YcCGBk75nj
-X-Received: by 2002:ac8:5a13:0:b0:476:823f:5f6c with SMTP id d75a77b69052e-476c8149ce3mr180423571cf.15.1742210241196;
-        Mon, 17 Mar 2025 04:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742210241; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2180668njb;
+        Mon, 17 Mar 2025 04:54:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXblfVS+L+5ApW08Z3dPG1YvkVbtaw+ZpJZu8yp4EmHeVriwK5PPEkYKwTyBOxgFSisaYcvdtnrbmHXRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFDSTSYYQ0bWq43uHV7E6CVle7v3x67z9SwbrDECPlQaAOq+7Y7ZKHRLIk+ZcHjehfvCdaA
+X-Received: by 2002:a05:620a:260b:b0:7c5:3d60:7f8d with SMTP id af79cd13be357-7c57c7d46f9mr1668204085a.19.1742212459205;
+        Mon, 17 Mar 2025 04:54:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742212459; cv=none;
         d=google.com; s=arc-20240605;
-        b=EKeDh39jXRwBoVxzfb/d5UjGx/GemnJ4ZiM3E5Cuc6y7FNetnuEul/zIbuDJTIVbV/
-         AE/OmeXAAH8Y3gtZkzImAitJg23VgQBcN2UpZpm9XZK2tKE5d83TUwiZJYnDhj4WIyDL
-         CrJPkQpy2Nw0G/74Y2C5OXY9srh93/WHkea3EI6uK/xNpFtEHMbBvXcBtd0R4kqWWPJ2
-         +7r2OAc/89RagygCMgxF1c2vRNbQzwG3awPkPrhblbh8aHkSktAVxbZkNZWCUqqxNNWI
-         WjBqMGhQ1t3Qyelyx7ZiOqquHzEpPpTVzbp1pF8EMKwKoFVmAE37Ev6qH6QXyWX+Pkiw
-         1SSQ==
+        b=JNWTKP/lP+NKuYl/4dEf8fRE0W6Ue+HGjMineQZYA4aaS0bl+Axduphq74TZszNjyz
+         jwEw9dYwwSHOIvfSwrDy9OON8/436Mhbv8AbH7UCBwirnZT+LrZlntcJTUOoMc9t9ZUo
+         GlNhrCKs/FJ8ChcZJPSGTXVtyMlnuiDyXmnobn8qY9LIbGAWHYSp26mDEJEjxRPvsApk
+         V+IH7zzWJvc2wlhU1X3dJHlayLrulzpMlh+KLp/lbE0JOd+lvL10qaBsQ+KRTjazIV4z
+         ZM+zYISztlea0+GInztCdotIPsh9HtH6C2UwXgAsnXmWKxeWyIj0gruJ2lQboYVKJoN5
+         tLMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
-         :message-id:content-transfer-encoding:mime-version:subject:date:from
-         :dkim-signature;
-        bh=n00C0NGiRsylPrGNrVbaRTDfd35POgbU+yC+rvmTlgo=;
-        fh=Y6491rFhbW+ThdGAYvBdUzBHN3wlmEpy4KQSmFkoKH8=;
-        b=Kq7n7OAl5JFohhJo1DDA/7HS5G6HY2YTvrF19iu/rq4l4UJbHb6lRgbCImTuBUkML+
-         fg2L5fVWHci8arP+blFlFw+bRcD4PZ8KvkE5ZkOq9MFY+21rKm+rHAoBkTLu3Oh74G0u
-         WJRFTIQBr4tfhWD0x4kRAAlwhv3DtdouUIi4AGnzLrKWwGjOabtQIfl64vfxQuUjcH6F
-         LQ+bbbR4G5GNQD0urxjtCShtatp5Vig2o/ECrQhHBl3/urMeklek9CJbd9gNVd8x0q/A
-         aVPpNTUP+rIMf1O2m/FGSmtKOkKSLOeH1OnNbyvqehBTc85JVrliAzSlijBd3MLVUS4s
-         VtUw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=pPe/7/yUQFRB8Elsl01jkfv7Oja5Bi+E+6DbLmo998k=;
+        fh=lGt5eB7PAvT0cnVMwV+7aMbBCu5TP53EZU3wuO7iyHs=;
+        b=jqE4syKkwaiMsZC4+GPOnSQbabGbZpe36BlMES/JXMiPKez8vEq8lhwNOkSwjs5MhR
+         y73HNvn4qQQZe46jj2dYjAmamX+uJs3nCDdFwFvslhMsTt336GPWAxwFxSJsREQJ6+w7
+         F15NB1C2TIm6SF5Ne5pAqg0M92KvFMgxykATirE/in1Q/hSGN22p0ruNnd/VpiSrUZhW
+         HOxBZAyLCgi95kOyeCUuTEYV6JFUSrYZJB3zBYpSpw8paWL7qev1jriMdB7F3VPENm4D
+         9exFVW0GK6ThXBq16wYmv/rp/wBpr86uirTJZR2GYv7ODZyxxgg7ZR6Rx8S2ttuCPEss
+         cDYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=A8LPcIbg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bwZjc2wB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb7d9203si101893331cf.271.2025.03.17.04.17.21
+        by mx.google.com with ESMTPS id af79cd13be357-7c573cf0a92si969188885a.451.2025.03.17.04.54.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Mar 2025 04:17:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Mar 2025 04:54:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=A8LPcIbg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bwZjc2wB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tu8Sk-0003Hu-Tp; Mon, 17 Mar 2025 07:16:54 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tu92n-0005Dr-JX; Mon, 17 Mar 2025 07:54:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tu8Sb-0003EC-06
- for qemu-devel@nongnu.org; Mon, 17 Mar 2025 07:16:45 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tu92d-0005DS-18
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 07:53:59 -0400
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tu8SY-0003lg-Vm
- for qemu-devel@nongnu.org; Mon, 17 Mar 2025 07:16:44 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-22435603572so64283695ad.1
- for <qemu-devel@nongnu.org>; Mon, 17 Mar 2025 04:16:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tu92a-0007yU-EQ
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 07:53:58 -0400
+Received: by mail-yb1-xb2d.google.com with SMTP id
+ 3f1490d57ef6-e53a91756e5so3918405276.1
+ for <qemu-arm@nongnu.org>; Mon, 17 Mar 2025 04:53:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1742210201; x=1742815001;
- darn=nongnu.org; 
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=n00C0NGiRsylPrGNrVbaRTDfd35POgbU+yC+rvmTlgo=;
- b=A8LPcIbgN/ydIJcFU58qheueIGIUZvBWNgXqoihK24JL9tVa52sTlXwz+XKXta87kH
- 9xvwY15jseuBFD4eDM6sgpIFcAQ9hPBxr4Hjgdkn2niZGXknqOwUOu+Y7M6+pny/bqgK
- Dbk9UCJzt/RZRLTNXsO5dvQYEtfsjb3dEPkMXgJgMPY3hEO8NbkiTTGye5mAfRYeKVKq
- c0yEjm0ohd6PpOgQqpmms/jDdKux0WMPIcNPJqPrWzDz0CLrxQotMw+Bsi/XrBrXZ17y
- b1GcKIILiw/Jsl3HxNN0uZc3Ym3eTg8XlymgnCD0vbGMi4uswSHFJz3DfORo0i+hIiPd
- c7wg==
+ d=linaro.org; s=google; t=1742212434; x=1742817234; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=pPe/7/yUQFRB8Elsl01jkfv7Oja5Bi+E+6DbLmo998k=;
+ b=bwZjc2wBo1X7q6keHAQ+1KDi7RLK+x8o0KG5SEZzKdXwdG/ScKRanUoCICYj4K49Go
+ xbFLeyKxJEHDWjsUqQ/AA1RGwuy0A1ASpLTjwXxYOwq433p/OcLdgo7QJ3bGAqqfgo7F
+ UmkGltjjF2KOhpGoGa3CS15SIPlv48T98b97nEgV+IPSnZmdALs/ELZiCnSUKmdbHv0/
+ YXJ6qn/JWNiOtGTHbSkatlTxgv5S2tsZ6V/9o1C/3/qsfdOJ4i+tg0ihj3Qc3CJzv6EF
+ TeWN3C8m1LvrTijGHyX76p/I2mGTEPjJJqk9SvPB5ZHdxEqtzZPBImBBZBcnrTEczuiq
+ ecTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742210201; x=1742815001;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=n00C0NGiRsylPrGNrVbaRTDfd35POgbU+yC+rvmTlgo=;
- b=Vx+nULosh2DyHE0549X7nhPNXdr/Vf2reeyy96xkhW4NodPhHdRIabmM4D7YQHP1DH
- foGfbxFl70Ol+Ggz1/dOZkzFkzPEz6/RsJh/LNOd2k9xmQjCYv4dycmaHuf96UM5JRsO
- 7X9rqDpeSytempxSahQfG6KQRJKRwn3ek0W7I8LX4kPOo+Mz0n8QvY6os5L+bgwcwMgr
- 0Rqq38AHCsm8z9ZsSooaBIoojP8fdSzm/wiN4Q9ocSguc/jhoi8KF7CEV2xjONcl8btK
- ksdWZWe6pLGnFPXkt9KMQwWxxxQ/B0AU2SwwJTjEUcvmxeDzc8vGRyPvOUiRzv/enwxp
- ymtQ==
-X-Gm-Message-State: AOJu0YxJUIzph6m/3pVhryjcTDwZteCw7w72NhUUHEkGuSyy5OksYAtd
- j0r4mDLMSkTaDW9WnIVoy3ugEDLXiILDduewrBPhpp1a+uxW8M6Zt2kHdhTv2AE=
-X-Gm-Gg: ASbGnctY9krf1XFTac/c8+LChVWs/Lrr6kGJQYdHlPi7rfKRVff4xMYb2J0B9nK+3ma
- 08BiKj6o642u5RqZ7y3HiQ1psvCOJXjJiNmarL5qQ/jSmRDEZkO56pr8ny3k0ytp3GWey8eq3ju
- bPu+Ino9jtjviOocrOocxZI9mx+d2LpMug+OS5aNscjGlpQ5dNUNq7yAGUBTbobW8T7X8ElrCBd
- 0Bmjq7UEGVl4YdLHltEE8IMo1zhocRHRwRIO4vhe3qaZ/RbtYeCtc/Wd+cAMwurw0OAquYShREy
- 1FMyoPdQ/oQrPu9rNhPswuzJrf2j6stm9UeU+NQRsKARUS0m
-X-Received: by 2002:a17:902:ea07:b0:224:1eab:97b5 with SMTP id
- d9443c01a7336-225e0a1969dmr147611725ad.1.1742210201344; 
- Mon, 17 Mar 2025 04:16:41 -0700 (PDT)
-Received: from localhost ([157.82.207.107])
- by smtp.gmail.com with UTF8SMTPSA id
- d2e1a72fcca58-7371155e3a9sm7317149b3a.71.2025.03.17.04.16.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Mar 2025 04:16:41 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Mon, 17 Mar 2025 20:16:24 +0900
-Subject: [PATCH 3/4] target/arm: Expose PMINTENCLR to GDB
+ d=1e100.net; s=20230601; t=1742212434; x=1742817234;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pPe/7/yUQFRB8Elsl01jkfv7Oja5Bi+E+6DbLmo998k=;
+ b=WNXpjmMAAr/KfrylpTd3MqtVwuxKx1AVIys52s9lCoaS/7xtazZOvviY0cZegZHv66
+ umgMNum5im6ttHTB9aMoqybW76gGq5fXONTUsdBZe9kM9mrdv+YJ5QYIuxh3X3e9420f
+ nPRlcwCvJ5YFwPQERsvNvo/v/4SwAf0e9AFkbPOsTjOOnob+N57mg2Av4GBVZk6bik8i
+ 5lvysHeGIkpiHWHpx1Cp5NRnHW7wifqPCI9eiUj/1nvXj9z18BGDc8SMV4x5dX5Kgost
+ R1uT0j6Nf2FCUkvhMAyqqOUir8lNc6hTGeCE33qgO6c3DsPYE83W0imCrJYOu016n9Rz
+ 10CA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUbzSz9IYoo4CzlEG5WaFlvxEqh5qfCNHPU84SauDDjYopCNaI8DoCWuEDIWS8bExp1THT4pNFi7A==@nongnu.org
+X-Gm-Message-State: AOJu0Yz/rOZPqGX8x6cXE6kPZJFAA6HB9cHk+siIa+x+tnWxTBjIFlZh
+ 1UCFaXJOY+ZASUxhekM8qyNWjoxQebV2DShn9Lbn82KL2ATpUg6fsC3rPb6eN7CQqYiThi/Mu09
+ ckriFNpXoP4EMzSD6rs/uge+zejE02TxFUViCUg==
+X-Gm-Gg: ASbGnctLblIRigeANqZteF3fM520Q1ZWKPIOghi7U3JsJUZyNMMnbsYQ3K5cY84YPnD
+ wiGxmo/7RxypS513p+i7ShvbL4U2oBteHzMTUn+FBKQ/pRxAKkIR8f8jRRnHcHdDYIx7MZT+H/u
+ fFOKE80L9MSzva0YBAyQ7zWvN3zI0=
+X-Received: by 2002:a05:6902:2807:b0:e5d:aeb7:6e62 with SMTP id
+ 3f1490d57ef6-e63f64d236emr14202391276.7.1742212432444; Mon, 17 Mar 2025
+ 04:53:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250317-raw-v1-3-09e2dfff0e90@daynix.com>
 References: <20250317-raw-v1-0-09e2dfff0e90@daynix.com>
 In-Reply-To: <20250317-raw-v1-0-09e2dfff0e90@daynix.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- devel@daynix.com, Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mailer: b4 0.15-dev-edae6
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Mar 2025 11:53:40 +0000
+X-Gm-Features: AQ5f1Jo5nBE7BSVUIahWWqdqD8IY585B7lrGv5MupP0LJ7p1lUOZobD71SQzxls
+Message-ID: <CAFEAcA9Cy_870gxNmPFykzTjXOfi0raotmA1NRpZEQKfFfB=0g@mail.gmail.com>
+Subject: Re: [PATCH 0/4] target/arm: Flag PMCNTENCLR with ARM_CP_NO_RAW
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, devel@daynix.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SkLYu60W32p6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 97Yk5juZ0+Me
 
-PMINTENCLR and PMINTENCLR_EL1 are aliases of PMINTENSET_EL1. Expose them
-as we do for other alias registers.
+On Mon, 17 Mar 2025 at 11:16, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>
+> Supersedes: <20250314-clr-v2-1-7c7220c177c9@daynix.com>
+> ("[PATCH v2] target/arm: Define raw write for PMU CLR registers")
+>
+> A normal write to PMCNTENCLR clears written bits so it is not
+> appropriate for writing a raw value. This kind of situation is usually
+> handled by setting a raw write function, but flag the register with
+> ARM_CP_NO_RAW instead to workaround a problem with KVM.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I'm not sure there's a "problem with KVM" here -- it implements the
+write to PMCNTENCLR to have the semantics the architecture specifies.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5ce468ac2693..2dd8f4d56a1e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2025,14 +2025,14 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-     { .name = "PMINTENCLR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tpm,
-       .fgt = FGT_PMINTEN,
--      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW | ARM_CP_NO_GDB,
-+      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
-       .writefn = pmintenclr_write, },
-     { .name = "PMINTENCLR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tpm,
-       .fgt = FGT_PMINTEN,
--      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW | ARM_CP_NO_GDB,
-+      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
-       .writefn = pmintenclr_write },
-     { .name = "CCSIDR", .state = ARM_CP_STATE_BOTH,
+> KVM also has the same problem with PMINTENSET so add a comment to
+> note that. This register is already flagged with ARM_CP_NO_RAW.
 
--- 
-2.48.1
+What are we trying to achieve with this patchset?
+You can't write to registers from gdb, and reading PMCNTENCLR
+just gives you the same value as PMCNTENSET, so you might as
+well read that, which we already expose.
 
+More generally, the gdb-stub access to system registers is
+something we put in on a "this is a minimal amount of code
+to provide something that more or less works" basis. If we
+want it to work better (i.e. more comprehensively, possibly
+with write support) then we should address that by looking at
+the design of doing that more holistically, not by making
+tweaks to address individual registers.
+
+Specifically, I'm not really happy with adding explicit
+ARM_CP_NO_GDB flags to everything we currently mark as
+ARM_CP_NO_RAW. Either we stick with our existing
+"minimal changes to produce something that works" approach,
+in which case we deny gdb access to NO_RAW registers because
+that's easy and most of them it won't work or doesn't make
+sense. Or else we do the actual design work. That might turn
+out to mean "we explicitly mark no-gdb registers rather than
+overloading NO_RAW for this", or it might mean something else.
+But we won't know until we actually do that design work.
+
+(see also https://gitlab.com/qemu-project/qemu/-/issues/2760 )
+
+thanks
+-- PMM

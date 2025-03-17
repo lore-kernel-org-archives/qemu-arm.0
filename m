@@ -1,127 +1,158 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2231219njb;
-        Mon, 17 Mar 2025 06:12:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWHASgbSVGa0bKYGofvPo5YyiLR5cmtZhqOVONmenTgvwf1ui9KgWO4h86tYIH8M4QWWhY4jq7Dk7duTQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQKDGtnFQnAr6Uc0RZYuqjdw6ABGNmZLseVsMMf1DZ5Ob6uzQQSAXMsB0YLoBNNIS+3vzw
-X-Received: by 2002:a5d:6d05:0:b0:391:12a5:3cb3 with SMTP id ffacd0b85a97d-3971cd57c91mr13041478f8f.3.1742217176143;
-        Mon, 17 Mar 2025 06:12:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742217176; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2383310njb;
+        Mon, 17 Mar 2025 09:53:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUgvVrU7dWWkjfVt+19Z6UAUIityTAK5WRs2kBy38KjG+6VmYw/jd98txQvJ/xdjVEdCV6P48/GmK0Leg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwjzWZ6bodUtG2jlpfE0pV005sMw0rPtBmNI1oXnQRGeWrw5zcj/+G3S3sZxsJd12O3nSW
+X-Received: by 2002:ac8:590b:0:b0:476:8a83:9617 with SMTP id d75a77b69052e-476c8142fa2mr203929901cf.21.1742230383987;
+        Mon, 17 Mar 2025 09:53:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742230383; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ow5zVY0v5VmN2iOMt+E8PGyExiDKmsk9CEc25T8OVOyXN2zFGCH0WuOEEt74uTeGIj
-         pw66UVHHb7E42Zp/mYLhv+FsXUkklCG+Jlob2mcRlleGZqrIVR8hDyJXLczK+dXfy226
-         /HKy+mm3giGSELjigmrwAjO7xdUEZxa7boGNE5VH0eRoWoc/gNYvEmDVRrnQkeNr8F8u
-         G06Lt3yjYOThWz7Js4OwEecOzp6Pz3yF4MdSOkyq917iG9V55xRIoB9XeKghvsgB0eCQ
-         /DDm8nNwWgC1z2PPKiMdstZfjM7ntGaXf2F5n/GOwVBdMXnwKFeNVek9iian3L55Voss
-         oATA==
+        b=dAACSRqgHkt0O4ai2Qj1bwHYBZVi8dmhoeFd32ZepkKN+OUaLipfqgFMNGQdoicjXh
+         JNqLuP230Ly7woXS9YxOvb6OZCgIGqQhp1E5869pRkeyhgX1+Z3vfOkRp8f4D/JlB7L6
+         FgqLn9oxBJrbamrjwTVSyz+lhvTD5iFUO9f9z9fplrrmiEGhxz+OLL1v0OkprQo+IQlI
+         19LdZgl7XB5MPpV7588xPftX0kpd+rVV2J7H6kFkZcLEDu8h/MoRT6uvCRfz6EtEKd1O
+         lCDeNIIuX0GtnVwXj8L3mbfZiCyjTNwV6eSUgLKnfnAjUt5y5/5QBej4CNrsu9brsu1g
+         SsSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2Jeu1KTlsKhwm7xWBMBDC+MDS3XtetflS5MPkv/qg4A=;
-        fh=bi3KEZMOocjdIMPd9UnGkL37vyyjWq+QhbnFGr4qbhc=;
-        b=RcczVY0mp84cmh1Eajnu8usCO6zrEOKGeF2SxEn56L16a2jLoT8QShjxUZRaJ0LTOg
-         nFrpoiZ5oXYDgOVhKm5A/YRPWVi3/bqqk8wZCYrdLe1szazol2XLr4dNJsx3yJUPD2O+
-         9o9lQqJH0D88zpGlsxtG5wMz68+CijxCsb9MM6xFc1lBmJdxXML0wZwIrM9+uDBU3vU8
-         dYFUXaw4qa1s5SMYG4+FK5vq7OEDlAYi5NQ2T+vDyHGG3i/j7exQC2JEzC8uUHvU/YWz
-         R7FfuZCRpjllLKYJ7yYMJNndwu4aq7TECs3n3qOZYl2BW+BN9mGMW3Uio/+7ftLbaZHL
-         Awlg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=IAXbsGZdNS+8G7A18KwymoDmijmgppjTiy6zvWv7VKc=;
+        fh=eAU9IAEMaCuy2l9gW/+49BWVwbmD3kOC7VkX9XeTZ2w=;
+        b=cvUzhSrIjIVt0sgV1WpevGhk8wWz8sOr77IODdW5xRI1auGP4KvO/C9Svlt6XktdhA
+         DG1VqNqZpoOtFzoNYPVvvMx6HBnsZYiOhI2gJ404ZLZDJawiMCP4co0vPJtVS6kEAgjy
+         Yrju8FnN1sxQDxT0k8zXv1RLEE2uHsyyZiVA1qd5R7tQqsP7MjuNUEliq+ejLIPdcW3s
+         /fKWxC6HS/jT9iTn8Fl3vPTyy422BNYnHV2E0JmZgMsHvQXef7tF7hyCZVplirU4V6lX
+         kA7yxEA+aYwzDSztHuN1ncKDyiKAiU4qftIWNH2mV2t7WxWHdpM+KYcjMxdcy2ALoNEw
+         khVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Nuh09LdT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vqg7YIFZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-395ca969b01si9528180f8f.587.2025.03.17.06.12.55
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb7e1b3esi103870491cf.226.2025.03.17.09.53.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Mar 2025 06:12:56 -0700 (PDT)
+        Mon, 17 Mar 2025 09:53:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Nuh09LdT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vqg7YIFZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuAGv-0007FQ-8v; Mon, 17 Mar 2025 09:12:49 -0400
+	id 1tuDhm-0006qZ-Md; Mon, 17 Mar 2025 12:52:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tuAGZ-00078f-Bp
- for qemu-arm@nongnu.org; Mon, 17 Mar 2025 09:12:30 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tuAGW-0004Y0-MX
- for qemu-arm@nongnu.org; Mon, 17 Mar 2025 09:12:27 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-2ff6a98c638so3552111a91.0
- for <qemu-arm@nongnu.org>; Mon, 17 Mar 2025 06:12:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1742217143; x=1742821943;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2Jeu1KTlsKhwm7xWBMBDC+MDS3XtetflS5MPkv/qg4A=;
- b=Nuh09LdTnz42U2Fs8wlLqy9Js2Wju3+1l+Uk2CMjoi2XM7xEUtvxOQly0id5Gdtund
- IhJLye6T70iH+XTYV5iCaDeJRWIbqK0tYod34+HolBdJCvzdAHknZpR+aCpXjxyTfH09
- q54dSgNxtnyVb/EkOMHN4Npy1UTY/Yk3iLowWaeCnq3KV+DSv3CjQfFbNhyqg5Ghnp7l
- VlrUKMUCEvFLqY1OibauRAGXmwndoAyOSiD7Cvcxa+g/ipyApMjj49EbZ+NxcIogqrMU
- FnX+ZrVHTz6WyLcq/slY3pSk6vsE4aqGl0tSQAsNwVbHBCLSrmJFAFkh0SPWD38ijMfR
- iRJg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tuDhl-0006qE-OH
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 12:52:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tuDhg-00037G-Jy
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 12:52:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742230353;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IAXbsGZdNS+8G7A18KwymoDmijmgppjTiy6zvWv7VKc=;
+ b=Vqg7YIFZ9ubJ+xl1VFNMnBp3ATG0fZ2e9NeAclbf6nHJohFoheshAmDOH6HJkwMc8lUTRH
+ Su0K370fIvgHLhubBV4rz3UzFVBGlzLwX8zfSy4v2D2sDGoOEIuy6KLk9bwQr9g/uiEwkJ
+ lz7uD6yXZYGR0OwZH7AmeeegU8G3obY=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-638-kJYvrAujMgC1OrdZQJBaPA-1; Mon, 17 Mar 2025 12:52:31 -0400
+X-MC-Unique: kJYvrAujMgC1OrdZQJBaPA-1
+X-Mimecast-MFC-AGG-ID: kJYvrAujMgC1OrdZQJBaPA_1742230351
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-6e8f184b916so145418186d6.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Mar 2025 09:52:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742217143; x=1742821943;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2Jeu1KTlsKhwm7xWBMBDC+MDS3XtetflS5MPkv/qg4A=;
- b=bdbrEq5wW3lf4nVXrEmI9egqqSkNLFbsgXLF+uwZzd3jczSItSpVaOdayPQp16NpyN
- y+yQBeYv3r0TeTkT7V073yu3M6chCiC2blsYKfU2qYiIXnu43v+ptS6c2nsuY8UGpT+v
- 9tFPEaFriB3vsOoRl6EA9dqE0XE0Yrx1buuUVrLIrmVlf7wJ7cU7pjz+0PHRAJWD1LDg
- HA/ADDp0e1wC57gCIOnedsGFkFt83jWhVhx36p8DTF7TsnvNja2vIH6d+gpk9LdKVL2Q
- E10beAIXJJq9s2VtFdewolgW4LRKDbUvc/KBr7A+xlg15QH++zf6i0XrxTnIgKIAkUeI
- UfGQ==
+ d=1e100.net; s=20230601; t=1742230351; x=1742835151;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=IAXbsGZdNS+8G7A18KwymoDmijmgppjTiy6zvWv7VKc=;
+ b=FcQsH15uyWXsjB4GYGYOpImp/USI9zoD2Amvf/64RcUGbjinIJXqjbqLE9zyXzKuSD
+ 0ZF8C0IOvFf5oSaLt18QQVBVlil0OA4YBmIwzmuhgnM06KtjHytDvZ2GAhOIoDmItv4H
+ ovJegIsCOaKXgm2tyupvCp9hv4lfiMIaK9mizzxYBMMOrdZ8U5vkjOnnWVBa0Z9mnDzr
+ b8+qpt0PjZdSrCC1QE5xDzOKSmr5jwTdrmh+8LG5TLzUGukaHBuVdK6xI44r5h19vopP
+ d3yvSXcX3SeXsk6BPj/TDtboecrGpJmdoIXrtZsk5/XXlsK2xlg67UhlBMdjPhksC5k7
+ 9SpA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXZq/44CJAlhZGwhbDRIvahGy1RNNP/PG8mAnl0cVqVAyHIFrH6yU9nUh0UkzgLDFfIPZSN1EF7fQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzMgOzMihJh23O1bg7NoH077tda/jmoDiH/hMZh0FWDZzlO54+F
- VszdnfQyRQrmFEUZFBRlEo/vOASGeNImNLhmoHwzkk+wrhcAi3yhFyK/qhxnx0c=
-X-Gm-Gg: ASbGncuAHUAtO9sDKnzx19Lo/8RGYJBSfnms2cAVZCEIYPf8rxVhdSbsE+4vX3s42US
- EdTifrvQS4IgqBFtsgYrNIbBgg5LquOaW+JfW90hhjQE3QrRIZo5DUapqzOfBW4odR6qHsRPxRN
- /wPlMZ9MU/Wl7D3/B2FwK7vhWWywc8K8Re0/mpUPusXsA4tZRBP4WrJVY0O3Gs0Oakmuf6G4alC
- W77vWXbfv9BKhJo8W49rebl98UMdOkQI42tGF2CEl+hXpyx5h6VxhUeStNhKRmYr3/cn7aproPV
- yLkwRj7opCU0w5SnUar5TJxeMn9aukr9fsOnAmPwUCxTDN6w+wt25/0r2w==
-X-Received: by 2002:a17:90b:1f90:b0:2f8:49ad:4079 with SMTP id
- 98e67ed59e1d1-30151c5df91mr13074562a91.6.1742217142914; 
- Mon, 17 Mar 2025 06:12:22 -0700 (PDT)
-Received: from [157.82.207.107] ([157.82.207.107])
+ AJvYcCVqCM67DAOMRJXRGK3oRcj5RTZ5wh/ehdENoMN5heuqM5WWCnQGkue1n+eChh3H3dCOLpOxiLlXUw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywvpu1NTWtT28AzhpyPSdC40putpBG3p5AYYjWBqDll92Fd/NZH
+ 52HO4UzSeIUac7e6qZdeq8g60jFtIyQj2dqbONr03e0atANFZ//Etrr9HBJ3O8NE64zN4N0zCL0
+ k++8+tnNMirXoguhMi6nD/aNlKJWv3oRWaJNjtcm+JlxZ0KVrjQ==
+X-Gm-Gg: ASbGncvfFzpPimQiPqmxwpaoXJOMcU1SZEqgiH6YJonU3vwN54RKCVwRjeKHJa+TYN1
+ 7rNA5pJw5YFRbRYPqCgw1oQmb2I3elaV/A/+BJQ/N7G+pIJtbd6vYdjZgcUP8pk6VBBjqN7mZRn
+ D9Ferzb29YgchwAGru330NnnGYWqabOXR8dMyeFHXKQSSn+JbBK5iGDsG7TQ08Ewc4q5QkTUXSK
+ KcyuWAKuw6IM30yIIMs4MZ85Kvz2Gy5lXbMLM/As0VkhGRgIFbQOAuFwjHm5axj42wbJBdLtnRy
+ zeflK7Bd5swehBZ5lnAHJef+e7N4bkX6izjsUzmi4KLgquO0/I4q5q0+IszONUU=
+X-Received: by 2002:a05:6214:29ea:b0:6e8:f133:3795 with SMTP id
+ 6a1803df08f44-6eaeaaa12c3mr204511486d6.32.1742230351191; 
+ Mon, 17 Mar 2025 09:52:31 -0700 (PDT)
+X-Received: by 2002:a05:6214:29ea:b0:6e8:f133:3795 with SMTP id
+ 6a1803df08f44-6eaeaaa12c3mr204510916d6.32.1742230350772; 
+ Mon, 17 Mar 2025 09:52:30 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-301535a53f1sm6091413a91.1.2025.03.17.06.12.21
+ 6a1803df08f44-6eb036e8b00sm21684966d6.17.2025.03.17.09.52.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Mar 2025 06:12:22 -0700 (PDT)
-Message-ID: <b3ec57eb-30c3-4692-b262-184381090c44@daynix.com>
-Date: Mon, 17 Mar 2025 22:12:19 +0900
+ Mon, 17 Mar 2025 09:52:30 -0700 (PDT)
+Message-ID: <1105d100-dd1e-4aca-b518-50f903967416@redhat.com>
+Date: Mon, 17 Mar 2025 17:52:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] target/arm: Flag PMCNTENCLR with ARM_CP_NO_RAW
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, devel@daynix.com
-References: <20250317-raw-v1-0-09e2dfff0e90@daynix.com>
- <CAFEAcA9Cy_870gxNmPFykzTjXOfi0raotmA1NRpZEQKfFfB=0g@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 07/20] hw/arm/smmu-common: Introduce callbacks for
+ PCIIOMMUOps
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-8-shameerali.kolothum.thodi@huawei.com>
+ <fe047856-b564-4776-8651-daa65c02133b@redhat.com>
+ <2606bc1d06f24495a8f382b3d1af3fc6@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <2606bc1d06f24495a8f382b3d1af3fc6@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: CEZWvEG774K-giBdhs-Jp6Dy9xmfVJn7YXAipN4mhvY_1742230351
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAFEAcA9Cy_870gxNmPFykzTjXOfi0raotmA1NRpZEQKfFfB=0g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x1033.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,141 +165,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jb7CMBLQWFQE
+X-TUID: Vq2oMrdWjyO1
 
-On 2025/03/17 20:53, Peter Maydell wrote:
-> On Mon, 17 Mar 2025 at 11:16, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+
+Hi Shameer,
+
+On 3/13/25 9:09 AM, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Wednesday, March 12, 2025 4:24 PM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+>> mochs@nvidia.com; smostafa@google.com; Linuxarm
+>> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+>> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH v2 07/20] hw/arm/smmu-common: Introduce
+>> callbacks for PCIIOMMUOps
 >>
->> Supersedes: <20250314-clr-v2-1-7c7220c177c9@daynix.com>
->> ("[PATCH v2] target/arm: Define raw write for PMU CLR registers")
 >>
->> A normal write to PMCNTENCLR clears written bits so it is not
->> appropriate for writing a raw value. This kind of situation is usually
->> handled by setting a raw write function, but flag the register with
->> ARM_CP_NO_RAW instead to workaround a problem with KVM.
-> 
-> I'm not sure there's a "problem with KVM" here -- it implements the
-> write to PMCNTENCLR to have the semantics the architecture specifies.
+>>
+>>
+>> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+>>> Subsequently smmuv3-accel will provide these callbacks
+>>>
+>>> Signed-off-by: Shameer Kolothum
+>> <shameerali.kolothum.thodi@huawei.com>
+>>> ---
+>>>  hw/arm/smmu-common.c         | 27 +++++++++++++++++++++++++++
+>>>  include/hw/arm/smmu-common.h |  5 +++++
+>>>  2 files changed, 32 insertions(+)
+>>>
+>>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c index
+>>> 83c0693f5a..9fd455baa0 100644
+>>> --- a/hw/arm/smmu-common.c
+>>> +++ b/hw/arm/smmu-common.c
+>>> @@ -865,6 +865,10 @@ static AddressSpace *smmu_find_add_as(PCIBus
+>> *bus, void *opaque, int devfn)
+>>>      SMMUState *s = opaque;
+>>>      SMMUPciBus *sbus = smmu_get_sbus(s, bus);
+>>>
+>>> +    if (s->accel && s->get_address_space) {
+>>> +        return s->get_address_space(bus, opaque, devfn);
+>>> +    }
+>>> +
+>> why do we require that new call site? This needs to be documented in the
+>> commit msg esp. because we don't know what this cb will do.
+> Currently, this is where the first time SMMUDevice sdev is allocated. And for smmuv3-accel
+> cases we are introducing a new SMMUv3AccelDevice accel_dev for holding additional
+> accel specific information. In order to do that the above cb is used. Same for other callbacks
+> as well.
+>
+> Another way of avoiding the callbacks would be to  move the pci_setup_iommu(bus, ops) 
+> call from the smmu-common.c to smmuv3/smmuv3-accel and handle it directly there.
+>
+> Or is there a better idea?
+>
+>>>      sdev = sbus->pbdev[devfn];
+>>>      if (!sdev) {
+>>>          sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1); @@ -874,8
+>>> +878,31 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void
+>> *opaque, int devfn)
+>>>      return &sdev->as;
+>>>  }
+>>>
+>>> +static bool smmu_dev_set_iommu_device(PCIBus *bus, void *opaque,
+>> int devfn,
+>>> +                                      HostIOMMUDevice *hiod, Error
+>>> +**errp) {
+>>> +    SMMUState *s = opaque;
+>>> +
+>>> +    if (s->accel && s->set_iommu_device) {
+>>> +        return s->set_iommu_device(bus, opaque, devfn, hiod, errp);
+>>> +    }
+>>> +
+>>> +    return false;
+>>> +}
+>>> +
+>>> +static void smmu_dev_unset_iommu_device(PCIBus *bus, void *opaque,
+>>> +int devfn) {
+>>> +    SMMUState *s = opaque;
+>>> +
+>>> +    if (s->accel && s->unset_iommu_device) {
+>>> +        s->unset_iommu_device(bus, opaque, devfn);
+>>> +    }
+>>> +}
+>>> +
+>>>  static const PCIIOMMUOps smmu_ops = {
+>>>      .get_address_space = smmu_find_add_as,
+>>> +    .set_iommu_device = smmu_dev_set_iommu_device,
+>>> +    .unset_iommu_device = smmu_dev_unset_iommu_device,
+>>>  };
+>>>
+>>>  SMMUDevice *smmu_find_sdev(SMMUState *s, uint32_t sid) diff --git
+>>> a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+>> index
+>>> 80ff2ef6aa..7b05640167 100644
+>>> --- a/include/hw/arm/smmu-common.h
+>>> +++ b/include/hw/arm/smmu-common.h
+>>> @@ -160,6 +160,11 @@ struct SMMUState {
+>>>
+>>>      /* For smmuv3-accel */
+>>>      bool accel;
+>>> +
+>>> +    AddressSpace * (*get_address_space)(PCIBus *bus, void *opaque, int
+>> devfn);
+>>> +    bool (*set_iommu_device)(PCIBus *bus, void *opaque, int devfn,
+>>> +                             HostIOMMUDevice *dev, Error **errp);
+>>> +    void (*unset_iommu_device)(PCIBus *bus, void *opaque, int devfn);
+>> I think this should be exposed by a class and only implemented in the
+>> smmuv3 accel device. Adding those cbs directly in the State looks not the
+>> std way.
+> Ok. You mean we can directly place  PCIIOMMUOps *ops here then? 
+When I first skimmed through the series I assumed you would use 2
+seperate devices, in which case that would use 2 different
+implementations of the same class. You may have a look at
+docs/devel/qom.rst and Methods and class there.
 
-The inline comment includes a reference:
- > KVM applies bit operations that prevents writing back raw values
- > since Linux 6.7:
- > 
-https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a45f41d754e0b37de4b7dc1fb3c6b7a1285882fc
+Now as I commented earlier I think the end user shall instantiate the
+same device for non accel and accel. I would advocate for passing an
+option telling whether we want accel modality. Then it rather looks like
+what was done for vfio device with either legacy or iommufd backend.
 
-> 
->> KVM also has the same problem with PMINTENSET so add a comment to
->> note that. This register is already flagged with ARM_CP_NO_RAW.
-> 
-> What are we trying to achieve with this patchset?
-> You can't write to registers from gdb, and reading PMCNTENCLR
-> just gives you the same value as PMCNTENSET, so you might as
-> well read that, which we already expose.
+depending on whether the iommufd option is passed you select the right
+class implementation:
+see hw/vfio/common.c and vfio_attach_device
 
-That's also true for other registers marked with ARM_CP_ALIAS and 
-exposed to GDB so I followed those examples. It's up to user what 
-register to choose after all.
 
-> 
-> More generally, the gdb-stub access to system registers is
-> something we put in on a "this is a minimal amount of code
-> to provide something that more or less works" basis. If we
-> want it to work better (i.e. more comprehensively, possibly
-> with write support) then we should address that by looking at
-> the design of doing that more holistically, not by making
-> tweaks to address individual registers.
-> 
-> Specifically, I'm not really happy with adding explicit
-> ARM_CP_NO_GDB flags to everything we currently mark as
-> ARM_CP_NO_RAW. Either we stick with our existing
-> "minimal changes to produce something that works" approach,
-> in which case we deny gdb access to NO_RAW registers because
-> that's easy and most of them it won't work or doesn't make
-> sense. Or else we do the actual design work. That might turn
-> out to mean "we explicitly mark no-gdb registers rather than
-> overloading NO_RAW for this", or it might mean something else.
-> But we won't know until we actually do that design work.
-> 
-> (see also https://gitlab.com/qemu-project/qemu/-/issues/2760 )
+    const VFIOIOMMUClass *ops =
+        VFIO_IOMMU_CLASS(object_class_by_name(TYPE_VFIO_IOMMU_LEGACY));
 
-I suspect that some registers with ARM_CP_NO_RAW cannot be determined as 
-GDB-visible or GDB-invisible based on the current ARMCPRegInfo fields, 
-and explicit marking with some flag is inevitable for them.
+    if (vbasedev->iommufd) {
+        ops =
+VFIO_IOMMU_CLASS(object_class_by_name(TYPE_VFIO_IOMMU_IOMMUFD));
+    }
 
-That said, I understand explicit markings with ARM_CP_NO_GDB may 
-interfere with the future design work, and I think I can still solve the 
-problem with PMCNTENCLR and similar registers without it. Below is a 
-detailed explanation:
+I would doing something similar for selecting the right ops depending on
+the passed option.
 
-The underlying problem here is that the current definitions of 
-ARM_CP_ALIAS and ARM_CP_NO_RAW are contradicting and incompatible.
+I hope this helps
 
-Now let me describe characteristics of PMCNTENCLR with yes/no table:
-1) It has a state - yes
-2) It will handle migration and reset - no
-3) The state can be synchronized with KVM - no
-4) The state is shared with another register - yes
+Eric
 
-1) the presence of the state usually implies it is visible to GDB.
 
-The documentation of ARM_CP_ALIAS says:
- > Register is an alias view of some underlying state which is also
- > visible via another register, and that the other register is handling
- > migration and reset; registers marked ARM_CP_ALIAS will not be
- > migrated but may have their state set by syncing of register state
- > from KVM.
-
-So ARM_CP_ALIAS implies:
-1) It has a state - yes
-2) It will handle migration and reset - no
-3) The state can be synchronized with KVM - yes
-4) The state is shared with another register - yes
-
-1) is implied from 3) and 4); if there is no state, the state cannot be 
-synchronized and cannot be shared with another register.
-
-The documentation of ARM_CP_NO_RAW says:
- > Register has no underlying state and does not support raw access for
- > state saving/loading; it will not be used for either migration or KVM
- > state synchronization. Typically this is for "registers" which are
- > actually used as instructions for cache maintenance and so on.
-
-So ARM_CP_NO_RAW implies:
-1) It has a state - no
-2) It will handle migration and reset - no
-3) The state can be synchronized with KVM - no
-4) The state is shared with another register - n/a (there is no state)
-
-It also makes the register invisible from GDB since there is no 
-underlying state.
-
-As you can see, ARM_CP_ALIAS and ARM_CP_NO_RAW have contradicting 
-semantics. A minimal change to make them compatible is to explicitly 
-define what (ARM_CP_ALIAS | ARM_CP_NO_RAW) implies:
-1) It has a state - yes (it has a state shared with its alias)
-2) It will handle migration and reset - no
-3) The state can be synchronized with KVM - no (due to no raw access)
-4) The state is shared with another register - yes
-
-More concretely, the documentation of ARM_CP_NO_RAW can be changed as 
-follows:
-"Register does not support raw access for state saving/loading; it will 
-not be used for either migration of KVM state synchronization. It also 
-implies reading the register does not expose a state and hides it from 
-GDB unless ARM_CP_ALIAS is set."
-
-With this change, we can express the semantics of PMCNTENCLR without 
-extra explicit markings of ARM_CP_NO_GDB and any contradiction in code. 
-This explanation is long but the code change should be minimal.
-
-What do you think?
-
-Regards,
-Akihiko Odaki
-
-> 
-> thanks
-> -- PMM
+>
+> Thanks,
+> Shameer
 

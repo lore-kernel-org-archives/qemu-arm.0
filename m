@@ -1,118 +1,182 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp1863001njb;
-        Sun, 16 Mar 2025 13:22:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+jL09e0pPikryAHs07dqg61BEbprs4xfadtUfTkPFJ7VeQvEHaWfIneoPxRyx2MFoETd6JeommbNwEw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSVWV5p8vDbgjX2f7x95owwF7GhGeMbjS+swbAsIR9/KkvVMAbNwLVZwEs7M7djCEak4AU
-X-Received: by 2002:ad4:5c65:0:b0:6e8:86d3:be73 with SMTP id 6a1803df08f44-6eaeaaeca0amr179923136d6.37.1742156555338;
-        Sun, 16 Mar 2025 13:22:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742156555; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2048801njb;
+        Sun, 16 Mar 2025 23:50:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJDHQHS9tLVAvFm/roZbGqxREDY44fr3BuPEPgKMl6rL1vnyD+tFLssjGRcBpRUxUcBoBjozyQ488n8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGQlljtt+GEZOXNtIN+kMA4JHvTgx+pjUngq4QAh9HoHbu9qVlkbbZrIDY64ZAwXwoHmVoL
+X-Received: by 2002:a05:622a:1113:b0:472:801:3e74 with SMTP id d75a77b69052e-476c81c8addmr163583541cf.41.1742194229033;
+        Sun, 16 Mar 2025 23:50:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742194229; cv=none;
         d=google.com; s=arc-20240605;
-        b=QRbxdy5XDqL+7FuWeD999LR2DZ3my13QvFpp/MNplgJPkS2taFl0rAQic6eyrxRYq1
-         LSn5LzOthmEjIdIXaK5pGhGlEQo+3AnmhqEVc3fWYNmvoIYjW+0QRCqcS9p+AppRna3r
-         giIDchaODtiPKvFc5yKy3Zjr2Jbv/0SpS2B0ueluOvH3HfEkkopRcdB5WCIakpDiMCTB
-         B1PsufNm4W84pm/2iPSHyHgActnuJaWDLG4wkzejo57yG0ONiHXBQlQuMNfbhI9w7aln
-         cnn5i5Kae7E3LimXrUICxfugx4zwknbV1WjlKdtSqsEUGIqndj7fB0NRuxXwSGnnCzwf
-         8piA==
+        b=P31g1S9Y9lgR6HLLNTQxrUYYztjxjzljoh/blt28YTtBEG/sLBGxpaQQj95zQVJFqw
+         GGOBzzaziwnFwltIQC6w7IjHTV4OSYOTBxlv53RhYzHDNSvzI0UbRi1XaTyh7mlWWF6C
+         /vX7F8PW9N0X57VavvixWsuehpYP78+8L3zBdXrFT8CsHrdUJ8o1MCv3hZYD4Q3UVZbt
+         meyvXYw/j1khZMWO6rswWzLL67yORDLA316iYL3qnUuzXWvrstTmPsD1DkQ41Pl2cvAq
+         dD61pZEU05mCC8GSQf7ZdBBsRel0Is/thZL9Mciwc6KvCUS22nAQ+X60eOJs2AycLfD9
+         FOnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=VUKKF8KqU6DFKbMo9MQQd+ILSeTusNpPyKw0j2wt3Xs=;
-        fh=oTSUJDSBzG0Z6U03c4ffRpSIc46Bn4o54Xubmd2iDK4=;
-        b=Ixqxwo1nx5ylWPc4aqhMi6M3bXFs5skuWjmPKaiqimSw43QXkp+4oHBkHEKo8+66k+
-         BYT9NoTPo2fykErSg1j1/YQMGPz6/W1pcP6upL/9z2v6fQMq788bzQYuTP9oOXAoSC7u
-         a33j5dIys38UrPBoEonMkujbhpGCbzKcMm36dG3ZSNXmfHxbRUG1bmyHeXBJSjjx8wKK
-         /VD3O9DVCp7mfpFGbfp1PY+GoH3NbrRaqYgWUhCLsQ/5q0Xz8uolKOzoblb3LI/XfvhF
-         J9xk7AOB8rzYi+NjvkTKYEw8eqHbkTs3PpOANyuzqN9pJYHZwqrMDedYt2rYn8c8xsK3
-         wPFQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kdnn8FkUZO4a6qwLoBeEecTRo9TL7EwfSuxKTPZVTLg=;
+        fh=9YQsQVqQhOivQtVKFvSUmaYFherVSdMSkbB06o6JqQM=;
+        b=DLm5myARSNoK1eJ2cmXlQZ2RApYFOFkPTGq1sOtJ/xl9Cd9N4jvKWCjuOzJKsHvw4+
+         UKkpTRTjWslyrTWJGbLS1vKMX00OYKsHdPSA7g/VTxvf79FXtBCU5Z4uSUD3HpYXkX/6
+         EdpYQSXEN+jFEroQwYpxaGeCwiKBCF+FGkuiJlQy+qPpLt0kBInjzaeb9hULodEfRn4o
+         g6j3B2br2Js75aQDyVxwyRXnUbs86Ftro6RC6kW7WHJF3s52b7QVrCcVxku+BOcu0MTp
+         rnAXLnwf+smPKwFMOulztVKRdxpvpjVPFWKRDPLeMoKqUclH/nYe246DseFcmLJd9bTy
+         0KiQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TU2moJKJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBN7IQtf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eade1db2c7si85619516d6.8.2025.03.16.13.22.35
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb819e5esi96365091cf.365.2025.03.16.23.50.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Mar 2025 13:22:35 -0700 (PDT)
+        Sun, 16 Mar 2025 23:50:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TU2moJKJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBN7IQtf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ttuV7-0007bD-IZ; Sun, 16 Mar 2025 16:22:26 -0400
+	id 1tu4Im-0005x4-8S; Mon, 17 Mar 2025 02:50:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ttuUu-0007ZP-Sk; Sun, 16 Mar 2025 16:22:13 -0400
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ttuUr-0000jO-Bf; Sun, 16 Mar 2025 16:22:11 -0400
-Received: by mail-oo1-xc32.google.com with SMTP id
- 006d021491bc7-6003d977ab7so2111278eaf.2; 
- Sun, 16 Mar 2025 13:22:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742156527; x=1742761327; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VUKKF8KqU6DFKbMo9MQQd+ILSeTusNpPyKw0j2wt3Xs=;
- b=TU2moJKJudh6YLA10TQ4b7YcT5hK+tCM1UNiZLXYrGZ8msSPdLfhKaNa3G66X9WZB9
- mfKqIbo4y801djXoRYV4knAdLulKrdeFtP6EKT+73oTBvfvGVt67lji8LLPJO9Pfnw+C
- mIDmTLquAaLgYBuFUJUhpCMiKM/vuvtsvMxhiPkVlcpf9CEz+NoQvoanGgnjbpaWDebX
- ZO/1XtDYJ+8wQxc+9zaHPj4vaeacBEIxEyEbXkcAf2oYGiYeugHgRSrTQcJRPArEfm0E
- i20w1b0mxAh5C4l8WNtno3prM+2plESGKVc86Ov7Xnhh7NqK3FUNDaZ2fFzjDQfjNXgC
- j62A==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tu4Id-0005o0-Ju
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 02:50:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tu4IZ-0000lt-CU
+ for qemu-arm@nongnu.org; Mon, 17 Mar 2025 02:50:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742194204;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=kdnn8FkUZO4a6qwLoBeEecTRo9TL7EwfSuxKTPZVTLg=;
+ b=FBN7IQtfabkLAlscNYGFFI1qvJhxvT0jB4Cfn3dDfZrHn2aBE6LuntyhnhcDuNHirvKP+m
+ R+ZV7I7Ci0tOY8UEITZVs1wk0/pXE66yxe7E9QoJ+v7U5oA6YHC5srNQytiAGcVlkc9X8D
+ kiDcHY6QNGSIDLhmVl0+irw3b9brIkk=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-512-O5wFXPj2NOGoSbwr5_GbBg-1; Mon, 17 Mar 2025 02:50:03 -0400
+X-MC-Unique: O5wFXPj2NOGoSbwr5_GbBg-1
+X-Mimecast-MFC-AGG-ID: O5wFXPj2NOGoSbwr5_GbBg_1742194202
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3914608e90eso2661700f8f.2
+ for <qemu-arm@nongnu.org>; Sun, 16 Mar 2025 23:50:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742156527; x=1742761327;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1742194202; x=1742799002;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=VUKKF8KqU6DFKbMo9MQQd+ILSeTusNpPyKw0j2wt3Xs=;
- b=sVrGEhY7cd4tiR8Q4oJXYC7TVY6NDbfwzuK86CqgOFwZUEMI5OmtEd83+kkTX/kpHL
- fy0UKIXQyw5dRlnpSDxcY+d7QJB37+ckYAKstBegBZoaZD39Wm69bRJb2jQ1yGfCQcB3
- 9dhMiv31fB85kRTuNQBcC2+UYwADSMaUbsOpKU9sfvakHpUedBSW1H7BxObkVfsQptzu
- 6sZikAxBSnYBamCPbYNnvYCwmNysBzCtyWmmtyMAU3pOCF1xoQaP+azpEGZIXTPkkSKw
- YG/yv+K2sG7DzVA3eS7+Ukzk+U63Zq0/190hE9KHq0yPNQ/6yNO1bIUtU/In83s/IBve
- y9pQ==
+ bh=kdnn8FkUZO4a6qwLoBeEecTRo9TL7EwfSuxKTPZVTLg=;
+ b=ZWCCQhaBEpkfnX3SKfWtUvJrRD+COCp4L2wmQ+SOgD2RJFiHeDBqCUcfSA1O8gvlVw
+ rwbUrb2cdvaRm3hMcuE+jpi8kwivBGty7jJ+iQDutLxv9OU25aw4K5tNrgbzlLLdt4Z5
+ saYosO0/Q318VI51HMN4d0oKQtEzzUnZoysuj2FUyn0U9xwXrK1nOQqtDRv4dBYWi7vR
+ EK3zfJ7Ev/2wmfi7E/qV1Dy+IZ+13LcvJTzJ36VqZ2Rd8yCsARkgVIBs3EM5dx0ULWm3
+ ajH9Eg1COmRkufDV24e4gXyVoS74hUYL+3+0kPJHeVCdywT3j7iMcw2k7mHvDevj5u4F
+ HOKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUgRJAwhz5ivI+zhT2Qlh2Ed+s6TVoyxiXjONvGYLHDu8LfTWCzCGZ43QIW39KFTf+if3xyTOjIrA==@nongnu.org
-X-Gm-Message-State: AOJu0YxW45TU3KGw/1n2tZj2UxhouOKUiKin/MWmADziDl0fnvbfm3Pw
- tetCBFF6ix7uYA1yUR+DpXyT6el/dywlLYM0i6TH4tHyjcrDtsjjn8qv/2z/1PupMtF8L+O6MBT
- 4vgQ9kXBiff83s2x6274WfhJvpGo=
-X-Gm-Gg: ASbGncs8krSRO05ebPmR2rflhQ/Ys422+XUDNWyjRrfWoKiEPeKKOOLK/PX4FSQTvMs
- QT42gYozqaXZXt5YT3rlkUBvA9+h4EUTHodXtzfJxc50jj7VKEAnbSoyiiL3o67fknn9tLJgw55
- 6q0u7z4wdIcXCYZiDPETo+EMJVKPWbwZRK0KjtSLskqg4x95vNo9+P6r+F
-X-Received: by 2002:a05:6820:1e11:b0:601:a677:d126 with SMTP id
- 006d021491bc7-601e45692bcmr5137782eaf.2.1742156527440; Sun, 16 Mar 2025
- 13:22:07 -0700 (PDT)
+ AJvYcCXUkzz44XUwQEqkrZZuuUlKkL4WHwaNiBWSGpiCbH8iSLs//wsI/orMS2lquYaYbUIIgP/kw3xlnA==@nongnu.org
+X-Gm-Message-State: AOJu0YwLE6rEtdnGRfTvZgo/oS5QMc6qkiKjBdYuT+lB/eOZQxT0MfCw
+ n5M2oFB/EVf6WU6bP6ymksTSCT2ehtd21l9owwNggkTvC0mVRJJXxNHLqVawT0vSz+8UNz9Z3+r
+ /E5mYJCsDXq40U7aFFUsvnsnkpdoH5FWoAU5h51UkIyQ5WLECaNo4xgUBFQ==
+X-Gm-Gg: ASbGncs1PJKCiTREZID20IiVcI7z8/HfGqUZjN9ANV7bch9qudUDFYKq8K9BJcFz7Rb
+ 12o2GfUdbF5cFU+B85g2ca4y7tA/B8gbaYlduUAkfPviSCmR91z8r4MqZ50doBi0qOgL6tprwbh
+ +sI8Je/T7g/Xa8ZWa4ROg4iY9tqv7tvqKqEzyFB/UdRtahnL5FTFBgLhX/QR5Zx73ZITLtn2jfq
+ zNrUX8kaXnf7p0I/M1XQlI/y5C43HAXCUQFxQZoKgmhlUjwLW2E8chkpEJgrL0yr6CXLgLzR7YN
+ UAqNSoSab3RQDTYGYEb3KxWBrJXX/mcO9oW2g3kJO9nepUM=
+X-Received: by 2002:a5d:648a:0:b0:391:2dea:c98d with SMTP id
+ ffacd0b85a97d-3971dce07e1mr12207201f8f.8.1742194202090; 
+ Sun, 16 Mar 2025 23:50:02 -0700 (PDT)
+X-Received: by 2002:a5d:648a:0:b0:391:2dea:c98d with SMTP id
+ ffacd0b85a97d-3971dce07e1mr12207183f8f.8.1742194201756; 
+ Sun, 16 Mar 2025 23:50:01 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-51-207.web.vodafone.de.
+ [109.42.51.207]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-395cb318a3dsm14084626f8f.74.2025.03.16.23.50.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 Mar 2025 23:50:01 -0700 (PDT)
+Message-ID: <982cba8b-72e6-49d9-80bb-05053c00819c@redhat.com>
+Date: Mon, 17 Mar 2025 07:49:59 +0100
 MIME-Version: 1.0
-References: <20250311160847.388670-1-thuth@redhat.com>
-In-Reply-To: <20250311160847.388670-1-thuth@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 16 Mar 2025 21:21:55 +0100
-X-Gm-Features: AQ5f1JrYAHop8lShftr7SM_f19bO-5NdvSa45LiJFQE54YUJwRdHMAt3Wfsk6dU
-Message-ID: <CAPan3WqXwAWeAqbQypF7PCXh_pjDUgbbiWwXkPSbXrFetfMZAQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] docs/system: Fix the information on how to run certain
  functional tests
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>, 
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>,
  Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000f61d2306307b6c7d"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c32;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-oo1-xc32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20250311160847.388670-1-thuth@redhat.com>
+ <CAPan3WqXwAWeAqbQypF7PCXh_pjDUgbbiWwXkPSbXrFetfMZAQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+In-Reply-To: <CAPan3WqXwAWeAqbQypF7PCXh_pjDUgbbiWwXkPSbXrFetfMZAQ@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: BJxcummJeFcwUqcYy9A24DfAb9FzEnW5OG_VZIjnOcY_1742194202
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.333,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,236 +191,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ALIfJrKziDAJ
+X-TUID: kaRRdPamY07B
 
---000000000000f61d2306307b6c7d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+  Hi!
 
-Hi Thomas,
+On 16/03/2025 21.21, Niek Linnenbank wrote:
+> Hi Thomas,
+> 
+> On Tue, Mar 11, 2025 at 5:08 PM Thomas Huth <thuth@redhat.com 
+> <mailto:thuth@redhat.com>> wrote:
+> 
+>     The tests have been converted to the functional framework, so
+>     we should not talk about Avocado here anymore.
+...
+>     diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+>     index db87e81fec4..8b9448ca7b0 100644
+>     --- a/docs/system/arm/orangepi.rst
+>     +++ b/docs/system/arm/orangepi.rst
+>     @@ -257,9 +257,9 @@ Orange Pi PC integration tests
+> 
+> Perhaps for consistency, we can also rename to 'functional tests' here.
 
-On Tue, Mar 11, 2025 at 5:08=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
+Agreed, we don't use the term "integration tests" for this anymore.
 
-> The tests have been converted to the functional framework, so
-> we should not talk about Avocado here anymore.
->
-> Fixes: f7d6b772200 ("tests/functional: Convert BananaPi tests to the
-> functional framework")
-> Fixes: 380f7268b7b ("tests/functional: Convert the OrangePi tests to the
-> functional framework")
-> Fixes: 4c0a2df81c9 ("tests/functional: Convert some tests that download
-> files via fetch_asset()")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  docs/system/arm/bananapi_m2u.rst | 5 ++---
->  docs/system/arm/orangepi.rst     | 6 +++---
->  docs/system/devices/igb.rst      | 4 ++--
->  3 files changed, 7 insertions(+), 8 deletions(-)
->
-> diff --git a/docs/system/arm/bananapi_m2u.rst
-> b/docs/system/arm/bananapi_m2u.rst
-> index 587b4886553..d30db8d04c3 100644
-> --- a/docs/system/arm/bananapi_m2u.rst
-> +++ b/docs/system/arm/bananapi_m2u.rst
-> @@ -135,6 +135,5 @@ provide the following command:
->  .. code-block:: bash
->
->    $ cd qemu-build-dir
-> -  $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \
-> -    --verbose --show=3Dapp,console run -t machine:bpim2u \
-> -    ../tests/avocado/boot_linux_console.py
-> +  $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \
-> +    meson test --suite thorough func-arm-arm_bpim2u
-> diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
-> index db87e81fec4..8b9448ca7b0 100644
-> --- a/docs/system/arm/orangepi.rst
-> +++ b/docs/system/arm/orangepi.rst
-> @@ -257,9 +257,9 @@ Orange Pi PC integration tests
->
-Perhaps for consistency, we can also rename to 'functional tests' here.
+> 
+>       The Orange Pi PC machine has several integration tests included.
+> 
+> And same on this line.
+> 
+>       To run the whole set of tests, build QEMU from source and simply
+>     -provide the following command:
+>     +provide the following command from the build directory:
+> 
+>       .. code-block:: bash
+> 
+>     -  $ AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run \
+>     -     -t machine:orangepi-pc tests/avocado/boot_linux_console.py
+>     +  $ QEMU_TEST_ALLOW_LARGE_STORAGE=1 \
+>     +    meson test --suite thorough func-arm-arm_orangepi
+> 
+> I've tried to run on my Ubuntu 24.04.1 LTS based system using this exact 
+> same command, but got this error:
+> 
+> $ QEMU_TEST_ALLOW_LARGE_STORAGE=1 meson test --suite thorough func-arm- 
+> arm_orangepi
+> 
+> ERROR: Build data file '/home/user/qemu/build/meson-private/build.dat' 
+> references functions or classes that don't exist. This probably means that 
+> it was generated with an old version of meson. Consider reconfiguring the 
+> directory with "meson setup --reconfigure".
+> 
+> The meson version I have installed via apt-get is 1.3.2-1ubuntu1. Only when 
+> running using the 'meson' command from the pyvenv, it runs OK:
+> 
+> $ QEMU_TEST_ALLOW_LARGE_STORAGE=1 ./pyvenv/bin/meson test --suite thorough 
+> func-arm-arm_orangepi
 
+Oh, you're right! Thanks for catching it!
 
->
->  The Orange Pi PC machine has several integration tests included.
->
-And same on this line.
+I guess I still had a "export PYTHONPATH=$HOME/qemu/python" in my 
+environment, so I did not notice. Would you like to send a patch, or want me 
+to do it?
 
+  Thomas
 
->  To run the whole set of tests, build QEMU from source and simply
-> -provide the following command:
-> +provide the following command from the build directory:
->
->  .. code-block:: bash
->
-> -  $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=3Dapp,console run \
-> -     -t machine:orangepi-pc tests/avocado/boot_linux_console.py
-> +  $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \
-> +    meson test --suite thorough func-arm-arm_orangepi
->
-I've tried to run on my Ubuntu 24.04.1 LTS based system using this exact
-same command, but got this error:
-
-$ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 meson test --suite thorough
-func-arm-arm_orangepi
-
-ERROR: Build data file '/home/user/qemu/build/meson-private/build.dat'
-references functions or classes that don't exist. This probably means that
-it was generated with an old version of meson. Consider reconfiguring the
-directory with "meson setup --reconfigure".
-
-The meson version I have installed via apt-get is 1.3.2-1ubuntu1. Only when
-running using the 'meson' command from the pyvenv, it runs OK:
-
-$ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 ./pyvenv/bin/meson test --suite thoroug=
-h
-func-arm-arm_orangepi
-ninja: Entering directory `/home/user/qemu/build'
-[1/6] Generating qemu-version.h with a custom command (wrapped by meson to
-capture output)
-1/1 qemu:func-thorough+func-arm-thorough+thorough / func-arm-arm_orangepi
-     OK             165.81s   5 subtests passed
-
-
-
-> diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst
-> index 04e79dfe549..9145af5c757 100644
-> --- a/docs/system/devices/igb.rst
-> +++ b/docs/system/devices/igb.rst
-> @@ -57,11 +57,11 @@ directory:
->    meson test qtest-x86_64/qos-test
->
->  ethtool can test register accesses, interrupts, etc. It is automated as =
-an
-> -Avocado test and can be ran with the following command:
-> +functional test and can be ran with the following command:
->
->  .. code:: shell
->
-> -  make check-avocado AVOCADO_TESTS=3Dtests/avocado/netdev-ethtool.py
-> +  meson test --suite thorough func-x86_64-netdev_ethtool
->
->  References
->  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --
-> 2.48.1
->
->
-
---=20
-Niek Linnenbank
-
---000000000000f61d2306307b6c7d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Thomas,</div><br><div class=3D"gmail_quote gmail_q=
-uote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 11, 2025 =
-at 5:08=E2=80=AFPM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thut=
-h@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex">The tests have been converted to the functional framework, so<b=
-r>
-we should not talk about Avocado here anymore.<br>
-<br>
-Fixes: f7d6b772200 (&quot;tests/functional: Convert BananaPi tests to the f=
-unctional framework&quot;)<br>
-Fixes: 380f7268b7b (&quot;tests/functional: Convert the OrangePi tests to t=
-he functional framework&quot;)<br>
-Fixes: 4c0a2df81c9 (&quot;tests/functional: Convert some tests that downloa=
-d files via fetch_asset()&quot;)<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0docs/system/arm/bananapi_m2u.rst | 5 ++---<br>
-=C2=A0docs/system/arm/orangepi.rst=C2=A0 =C2=A0 =C2=A0| 6 +++---<br>
-=C2=A0docs/system/devices/igb.rst=C2=A0 =C2=A0 =C2=A0 | 4 ++--<br>
-=C2=A03 files changed, 7 insertions(+), 8 deletions(-)<br>
-<br>
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2=
-u.rst<br>
-index 587b4886553..d30db8d04c3 100644<br>
---- a/docs/system/arm/bananapi_m2u.rst<br>
-+++ b/docs/system/arm/bananapi_m2u.rst<br>
-@@ -135,6 +135,5 @@ provide the following command:<br>
-=C2=A0.. code-block:: bash<br>
-<br>
-=C2=A0 =C2=A0$ cd qemu-build-dir<br>
--=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \<br>
--=C2=A0 =C2=A0 --verbose --show=3Dapp,console run -t machine:bpim2u \<br>
--=C2=A0 =C2=A0 ../tests/avocado/boot_linux_console.py<br>
-+=C2=A0 $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \<br>
-+=C2=A0 =C2=A0 meson test --suite thorough func-arm-arm_bpim2u<br>
-diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst<br=
->
-index db87e81fec4..8b9448ca7b0 100644<br>
---- a/docs/system/arm/orangepi.rst<br>
-+++ b/docs/system/arm/orangepi.rst<br>
-@@ -257,9 +257,9 @@ Orange Pi PC integration tests<br></blockquote><div>Per=
-haps for consistency, we can also rename to &#39;functional tests&#39; here=
-.</div><div>=C2=A0<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-<br>
-=C2=A0The Orange Pi PC machine has several integration tests included.<br><=
-/blockquote><div>And same on this line.</div><div>=C2=A0<br></div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">
-=C2=A0To run the whole set of tests, build QEMU from source and simply<br>
--provide the following command:<br>
-+provide the following command from the build directory:<br>
-<br>
-=C2=A0.. code-block:: bash<br>
-<br>
--=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=3Dapp,console ru=
-n \<br>
--=C2=A0 =C2=A0 =C2=A0-t machine:orangepi-pc tests/avocado/boot_linux_consol=
-e.py<br>
-+=C2=A0 $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \<br>
-+=C2=A0 =C2=A0 meson test --suite thorough func-arm-arm_orangepi<br></block=
-quote><div>I&#39;ve tried to run on my Ubuntu 24.04.1 LTS based system usin=
-g this exact same command, but got this error:</div><div><br></div><div>$ Q=
-EMU_TEST_ALLOW_LARGE_STORAGE=3D1 meson test --suite thorough func-arm-arm_o=
-rangepi<br><br>ERROR: Build data file &#39;/home/user/qemu/build/meson-priv=
-ate/build.dat&#39; references functions or classes that don&#39;t exist. Th=
-is probably means that it was generated with an old version of meson. Consi=
-der reconfiguring the directory with &quot;meson setup --reconfigure&quot;.=
-</div><div><br></div><div><div>The meson version I have installed via apt-g=
-et is 1.3.2-1ubuntu1. Only when running using the &#39;meson&#39; command f=
-rom the pyvenv, it runs OK:</div></div><div><br></div><div>$ QEMU_TEST_ALLO=
-W_LARGE_STORAGE=3D1 ./pyvenv/bin/meson test --suite thorough func-arm-arm_o=
-rangepi<br>ninja: Entering directory `/home/user/qemu/build&#39;<br>[1/6] G=
-enerating qemu-version.h with a custom command (wrapped by meson to capture=
- output)<br>1/1 qemu:func-thorough+func-arm-thorough+thorough / func-arm-ar=
-m_orangepi =C2=A0 =C2=A0 =C2=A0 =C2=A0OK =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 165.81s =C2=A0 5 subtests passed</div><div><br></div><div>=C2=A0</d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst<br>
-index 04e79dfe549..9145af5c757 100644<br>
---- a/docs/system/devices/igb.rst<br>
-+++ b/docs/system/devices/igb.rst<br>
-@@ -57,11 +57,11 @@ directory:<br>
-=C2=A0 =C2=A0meson test qtest-x86_64/qos-test<br>
-<br>
-=C2=A0ethtool can test register accesses, interrupts, etc. It is automated =
-as an<br>
--Avocado test and can be ran with the following command:<br>
-+functional test and can be ran with the following command:<br>
-<br>
-=C2=A0.. code:: shell<br>
-<br>
--=C2=A0 make check-avocado AVOCADO_TESTS=3Dtests/avocado/netdev-ethtool.py<=
-br>
-+=C2=A0 meson test --suite thorough func-x86_64-netdev_ethtool<br>
-<br>
-=C2=A0References<br>
-=C2=A0=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
--- <br>
-2.48.1<br>
-<br>
-</blockquote></div><div><br clear=3D"all"></div><br><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
-iv dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
-
---000000000000f61d2306307b6c7d--

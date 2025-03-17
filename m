@@ -1,44 +1,170 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d1fe524ccsm107485935e9.0.2025.03.17.07.58.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Mar 2025 07:58:18 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 90B4F5F892;
-	Mon, 17 Mar 2025 14:58:17 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org
-Subject: Re: [PATCH for-10.1 1/9] core/cpu.h: gdb_arch_name string should
- not be freed
-In-Reply-To: <20250317142819.900029-2-peter.maydell@linaro.org> (Peter
-	Maydell's message of "Mon, 17 Mar 2025 14:28:11 +0000")
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2284490njb;
+        Mon, 17 Mar 2025 07:29:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVHTCgeC+GhKEo7OWAdEEmCXfDwQHUYMh2Hu82yngPbxPOdNlWhj+t5DxBdjQ+JckLvA4Rwvm7fTcdDMw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGy9vTs4i7jQqGgwfHTa27FTLQPc4I5KoyO/Yw92U6NHdvZCFFJHxDDdiB7EcpDKmAYECws
+X-Received: by 2002:a05:6122:3c54:b0:520:5f0a:b5a5 with SMTP id 71dfb90a1353d-524499ca734mr7369878e0c.6.1742221766416;
+        Mon, 17 Mar 2025 07:29:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742221766; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XCaObIV1ghrTumxAsPlFQzi4ObpowaSLNvC/Tjk6LGkMBUYWQBYHbnvur753fovT+y
+         IBaKJZqxyYLcqMTIMsc4KsJVbbHHRQSNcdiI0CwEZr3cjlm9RxF1OG7rCTk18QieuR5Z
+         juMSd5LnCsRuqdZC/8hqv6O/WalOVTFf5D8Qf1yq+LWAE2JjAMZ7sxO3xC5rSshbgc8Q
+         9UtKsyuLchHDtYTj2zuLLlRGvqMQT80ev+2q2boB0X0kpZn6Tps6aMErXAOJsZCDoIgz
+         n106E8tjJTh7nIAEHr8aRLWLaVu6jNOhp3vmr7tYyeADSOmoqGwqKs+/v1iZvwJCRc33
+         MrHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=w7WKqYLy7NEpjkefHXnJSfu6zGOyWq7eC8uKJPQR8rk=;
+        fh=XYIE6afpLnlC/3PuV9dJeTQWHa5w6hZ+l5CjAXEjdZw=;
+        b=SbsNFyXSxHaZddCu8fUMeiq5/FZ5jmdKP60DYmZEy9ySPGIyXh4K+hjPPRfrWTQmEC
+         IVtK3nnsNurR6M/E8CqDw3vSF10eRIDRXQlPFmoY7cAC6Esm/WYbtSgljA+r47lwMndy
+         yljCqHSrF1l9giC85+OV+TDtd7RucraAePOTAAwyBN8pDe3F9lZeVgU5cHcA/J/U1Mpn
+         KbIvePIEoNExLOrU2hnu6s6dzsZZUkMhqlvtsdVtM+jyDHQliz2gfJ4Nczle0z7yKY8P
+         dFmK92AlCHGyEjQTKAUlrCVqNgQEoEDT1ci0DMfCkC4P9SKJIGNqosnsyc81VuGtUuJP
+         P83A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PezYq2v3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5243a728ebdsi2638153e0c.229.2025.03.17.07.29.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Mar 2025 07:29:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PezYq2v3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tuBSW-0000q2-Qw; Mon, 17 Mar 2025 10:28:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tuBSF-0000es-FW
+ for qemu-devel@nongnu.org; Mon, 17 Mar 2025 10:28:35 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tuBSB-0001Ck-6l
+ for qemu-devel@nongnu.org; Mon, 17 Mar 2025 10:28:35 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-43cef035a3bso15639525e9.1
+ for <qemu-devel@nongnu.org>; Mon, 17 Mar 2025 07:28:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1742221709; x=1742826509; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=w7WKqYLy7NEpjkefHXnJSfu6zGOyWq7eC8uKJPQR8rk=;
+ b=PezYq2v3+2uzC+l3+J7jMyxj4kb/fdEgmf75MIuQ+e11TMJVtOQ4QUdjQ1tC3tvRxY
+ aXNN+mtLgqqviVhfsLt+yyiozLTTSeFojRPLKXtjHEX6nVAQmpT0rW0QzXLqB9Tyxs4q
+ PYqgU+AjJaMBUwiLn2pW8ub6gzIh2Bv4xx2l1I4JCPrzYXvHxZChOKcIT/gVilBc7CMz
+ ntFOuYbKgUfH8giBunbYoMLfmoG3Klz32dufecUk75JgK0koi5f/1QqMQKzOJK8KB3fw
+ uJXH+zeZUb7xSKmUbmJFuDK9nWGGFunugDtPBiEGgqyduinBX1aSJX8qzq7mOHJhGIck
+ wOcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1742221709; x=1742826509;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=w7WKqYLy7NEpjkefHXnJSfu6zGOyWq7eC8uKJPQR8rk=;
+ b=bl/sb3Sao9nOi87UliPDvPIqYlf/kdtc8XSTC7OR785Fo/tbJvcEcAFt1Bm4CtdBl1
+ tOu8wgJA0pxzStiFX1tHILn9R/V5q7m+rmTBhCcENcG4ML5p546n3+PomdCDky4e8aXd
+ x9RvGLXXjtOuPurhy70PoOwhr1+l4xc5BXu3cjFvlDU/4KcSAgrcClZXzeR5ehINtFiR
+ KujoON1gGeivHD/AyVk3jb8/+jXrTmg5WYO4D+9i461opk2w1fyQ8ex42mkl2H88iV5D
+ EPaZhFAdgf+8xdEqPiLay7s9/LpWLRv0qj9IhIMTKudvX/hM92VjrqhFI1ta08Wp8fcv
+ Rtog==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVF2hHDOYRt3bq7ECGeBRsb5zli1bhHe6ImwT5DpJ1iw/GyziXx9RtqoHib5AXAMFS9TQzClJcikjMC@nongnu.org
+X-Gm-Message-State: AOJu0Yzee9YKNGmFm87RyxjQv0ozAG1rH/Ck7225RlLunej/GfiXvutQ
+ rC/hbemO58rRWr8zxs5pMfeKUK51qAyNqSWliPWgGgqX5WxKzV7KJns+n3qkhtU=
+X-Gm-Gg: ASbGncsyLJQSezeA5K+y3e5315cts6oGe5FvRXh97pP2jb9GtvmWy16+NcIHFYhcVte
+ Zg6V8uUwiF22tciRLcvT9qitcrgRJd383BIw6KYSSLAnWXCXLUIW4w+DZ+4Y0kouOPCwHtM4a4H
+ 4uwyX6korqEoyzKt1h2jpaj0U5h+XJiK2svTQenY7H9VnHpjeHck/ifkN6HN5fySWhzbnE75QWf
+ 4BsAK6ZZ7V7N6ONcHKShBd6nfjrrbs18/3KgjDWyOJ07JliBejSV9rHDA4YfC/YuhwtfSCO/80U
+ 5o8Lj6MNbu3CvIiOpmMHPnohRNLcbeUN4W1Iiyjl/RHY7PjOWbk=
+X-Received: by 2002:a05:600c:3c9e:b0:43d:ea:51d2 with SMTP id
+ 5b1f17b1804b1-43d1ecc380dmr145325795e9.14.1742221709423; 
+ Mon, 17 Mar 2025 07:28:29 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43d1fe60ad4sm107914985e9.29.2025.03.17.07.28.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Mar 2025 07:28:28 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-10.1 8/9] target/arm/kvm: don't check TYPE_AARCH64_CPU
+Date: Mon, 17 Mar 2025 14:28:18 +0000
+Message-ID: <20250317142819.900029-9-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250317142819.900029-1-peter.maydell@linaro.org>
 References: <20250317142819.900029-1-peter.maydell@linaro.org>
-	<20250317142819.900029-2-peter.maydell@linaro.org>
-User-Agent: mu4e 1.12.9; emacs 30.1
-Date: Mon, 17 Mar 2025 14:58:17 +0000
-Message-ID: <87o6xzogae.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: IDeenP1ROjDX
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m8VgKgPZsix1
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+We want to merge TYPE_AARCH64_CPU with TYPE_ARM_CPU, so enforcing in
+kvm_arch_init_vcpu() that the CPU class is a subclass of
+TYPE_AARCH64_CPU will no longer be possible.
 
-> The documentation for the CPUClass::gdb_arch_name method claims that
-> the returned string should be freed with g_free().  This is not
-> correct: in commit a650683871ba728 we changed this method to
-> instead return a simple constant string, but forgot to update
-> the documentation.
->
-> Make the documentation match the new semantics.
->
-> Fixes: a650683871ba728 ("hw/core/cpu: Return static value with gdb_arch_n=
-ame()")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+It's safe to just remove this test, because any purely-AArch32 CPU
+will fail the "kvm_target isn't set" check, because we no longer
+support the old AArch32-host KVM setup and so CPUs like the Cortex-A7
+no longer set cpu->kvm_target. Only the 'host', 'max', and the
+odd special cases 'cortex-a53' and 'cortex-a57' set kvm_target.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/kvm.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index da30bdbb234..7418eb57537 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1882,8 +1882,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint64_t psciver;
+ 
+-    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+-        !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
++    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
+         error_report("KVM is not supported for this guest CPU type");
+         return -EINVAL;
+     }
+-- 
+2.43.0
+

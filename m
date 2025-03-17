@@ -1,219 +1,199 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2423535njb;
-        Mon, 17 Mar 2025 10:55:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVP6Omm1egWuHCvm4tOwmKukJA4121AdGCSwAT2AHhqM5f7hImTvRivpKz0u/zilnXXpoCvNLVoYnfmUg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG1W0RP2+JFn32NP1MN5wzF9z2NPzharzrJd35FD6XAMMh2vrf663zgPZnXJvHFtYyucetE
-X-Received: by 2002:a05:620a:459f:b0:7c5:54c9:3b94 with SMTP id af79cd13be357-7c59b1e60dfmr58711685a.28.1742234135785;
-        Mon, 17 Mar 2025 10:55:35 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1742234135; cv=pass;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2432705njb;
+        Mon, 17 Mar 2025 11:08:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUz9I4PjkrhrFUDibVUNlisFOgRie5djmNk1JdcME5AoJCisiAls8WLaO9pd+GY1xD3oguebYXxPw3f/A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEZXd+NhPV8Ri5M9RDG/uEPW44lFuH6wSg5OTHTS3NHH45tK50wXEk9htscLXhtUNsxV2Qc
+X-Received: by 2002:a05:620a:2955:b0:7c5:6ef2:275d with SMTP id af79cd13be357-7c57c93011cmr2031457785a.52.1742234899421;
+        Mon, 17 Mar 2025 11:08:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742234899; cv=none;
         d=google.com; s=arc-20240605;
-        b=UMLvcz5AvsmPZ6jQ+JCxrAIdlwvwzU5JnHlmcmXnosCA1uWY9OA9poyvyuBwagPV++
-         8ygJTxnq0zK6O1sPNcWPF40a/ufWX1b/LMhMBu2C0LaRGpo8OX8gVBOsDm+U5ur9cQUf
-         bfMtMrftZureDNOcNGzyHlSRH3R+hUsIVO6oCGAGtoGvP46BK1/n2YjexAi7/i7E/BKp
-         8Satf2zopCOkFC6T/VuLjwjgBknj6GxKlYgmnf3KpQMnTMtr7mMi2KGyq73YO0+7EmHa
-         O9rBlDrErhcl4bmd0voLzHikh+2hlAs63G6AYQvmpobWHp3y53kRZSlLYd4FS2xybre0
-         KQsw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        b=Mizc6hD3+p92AQV8sBtIwb4HyUvnQu1T3fqDEyIeRlbvK7ESZCqzk4S+WkWPi0qWGe
+         GMmIi8oy40YwfpKFjTTC/VtCq74ZLSRidLesGcteA9DEtU6Dc3IeNVdy57PNol4ZXGHA
+         dfmIPwyfJP8+kOLtj8MTO4+kiVv6DMGUbeIpgR722vLA5/xSYAwYXzuNciNnJY1u/oZl
+         0V40WOblpprSM+zokX/zBy5hX2TyUhdxr9jYKx+Sv6QTk4isNFyDJP4m1WNV8Ndb7Eim
+         2ZaO4HkMbcprrRGY6D/6csxcoZ/bVHUX47vHKMoZ+yJlhlaOiGDIx/PjYm/zBHflT/Pk
+         +4vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=7qjJz7nIeS58hIdRg5gDqDwJX7FexKD3q9bIl5YwvLc=;
-        fh=2rogdRHQGBnLsnF43BtzbJVu8JVADCgbNQ4PvFSxoAI=;
-        b=k6bYI5FE5CY0MTXFQU5WByE+2Pwv0nDu6E4XgVsR69YNPY6gfbwfr2Uu6lXGlt4dQq
-         Jr//PBOeRbtqygt5H9bk5F6lzDHD4q2hBh0aqktJmcUClMMmUtD8YGcwnlOLi/Ejo9CB
-         QLtrWj18r79rAd+TvE7hdItNEtaHsn9nDJEGsu8i6YdX4XN21uWjouoIFlx4bSDdb/SX
-         AcCEEs34UHrbbCvFs5nx2cqFNJq4jNcmNr8yrmKBKVC2N6VTVNbRnQ4B+zmx2tjknN1l
-         Q0wpz4bP+oaCP0Qu08Kk8wR5ur+JAGmIxpOkoiGGyaI0xIQ3H0oA+6ay72ABS39vr5/v
-         qjkQ==;
+        bh=1dZQSG9QVTqJh0M8+zktW9DJ3Coh0zKQ6iynN8QqYQE=;
+        fh=K0sJSG7HXqSXtk1mqq2jPGfSLg6qH8nP8tvhEYER0Ww=;
+        b=SZIudEsl3ODwA/Lqxw6VKW+4H3uYMrtlvdnBS9QrBymE5qUh6kV7rA+sNFGoo/HvoM
+         21HrS/qwx2eHLP2FLVabU/R+CxM29O30TpucOxEe5QQ0Fhow0rsJTy5YYy1AFaE5PImJ
+         bBhgZYePb2r3dsekrG2jPH8y+uY1QW1X/FBqba3eTo8V9MZvis81iPvFd/MwHpcZJBBA
+         ZDw0nUpI2L6uNZg5Acgwn2lycDi5f/cahwYmCEn4fPUc6nf0FODN2n6oYebLIaBpSP9/
+         bU5cGMGYNBXiz2/Igz8qNUUGYlNSPe957aAN4aAAikCDi2XX0hhvg3E/vrAQojW8ls1p
+         Zl7A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ARRdAqEc;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RR6Kxf3q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573d19720si1010439885a.525.2025.03.17.10.55.35
+        by mx.google.com with ESMTPS id af79cd13be357-7c573cef05csi1022516785a.390.2025.03.17.11.08.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Mar 2025 10:55:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Mar 2025 11:08:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ARRdAqEc;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RR6Kxf3q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuEgV-0000Xw-AU; Mon, 17 Mar 2025 13:55:31 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tuEsj-0005nq-31; Mon, 17 Mar 2025 14:08:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tuEgM-0000Wb-AG; Mon, 17 Mar 2025 13:55:26 -0400
-Received: from mail-bn7nam10on20624.outbound.protection.outlook.com
- ([2a01:111:f403:2009::624]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tuEsg-0005jf-QB
+ for qemu-devel@nongnu.org; Mon, 17 Mar 2025 14:08:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tuEgK-0007u7-1c; Mon, 17 Mar 2025 13:55:22 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pA7J/0Trm6bV8ZeA8Xs6TVuC8nXMitkW18TVLng6WEPykKAf6swewAmTfX8jmrpHvcel0QkSDYAczfAPW0JkJume5RYB6DpCAaZ7CC+3cDLr8fuF0Szbx7XSzQYxkoLY2p6Vpbp6+umBmK4Bq7boXfkz/0hcdyk/uTrtNTMiyPUPTyqazfFJgH5Lu7TjiXRP61hhX5KH8uO1WpMUOwAsOLtfw7W8fYL7IoTMvhFe45L2GIG0XG62mlV/M4AQeej4txf/JVK/+B2KQoAQVB5hMXdg6Ov3O8EFjTSExx5Z9EUcmE3MAsN6/BICISG1yZv9kDBx9q7fsdvKzp9d3KAWcg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7qjJz7nIeS58hIdRg5gDqDwJX7FexKD3q9bIl5YwvLc=;
- b=y94TTKkejXhNqIFUzVhXBTlmQB+iOghhfHLhcEqbk9v08UNewcuQ8mbXkXMirTXgwXeTUIWQuqexqHce6/x9179eZHBboghuVFhS1e8kwkS+7+eBR5Vdshlr4t7oHmZh72dt1rRSHndz6/Yjmv3l+xGh7S2ACYbBL8tPbjr+Cm56+nFsBYmJLUxAHKhdIkM10Y4VvTm+3S+nDJzcmqN0aKD+dD1Sw6Y5eHqOsnbLZlD5sgtUs6weSWLb7ofdzzK0kThtA1Nx6F2B/d9HkOL4d1RhxjXmUic8/oxohatcaHVAplUNWfHK5m63MhcWdYKSCAs9KrISk2+nM0j1Ht5HYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7qjJz7nIeS58hIdRg5gDqDwJX7FexKD3q9bIl5YwvLc=;
- b=ARRdAqEcCcOuR9EiKtk/NSO031TEJcGXSkif73Ae1ARSsyK7TxGHoI6G0xFevP/5RjBPKBo+Tw6Jr6LXpcq3GfIX9vGgtPcoj+JTM7QUe9G/p4O8SD4N4zuCnzJlApKdwdgiw+foGOh/swcU3+4cu2WN1DLlouire3r4dGRgam86+de1n3PcjFG1zlO8xSlyXvO2DHmRpteyd4Pwa3oqyAjsImfad0w8XSzw4LyjqMCf/hjdDTznsuh2XtM3BaRNxNofdtD+c8t6Uq4v2xhIMdLS5etF3GjuIcoEr055V7Hpublzk+dmoWVDnTKiO1GQivOL7MTimhp6KqNYLSS/ag==
-Received: from SJ0PR03CA0176.namprd03.prod.outlook.com (2603:10b6:a03:338::31)
- by DM6PR12MB4435.namprd12.prod.outlook.com (2603:10b6:5:2a6::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.33; Mon, 17 Mar
- 2025 17:55:14 +0000
-Received: from MWH0EPF000989EB.namprd02.prod.outlook.com
- (2603:10b6:a03:338:cafe::37) by SJ0PR03CA0176.outlook.office365.com
- (2603:10b6:a03:338::31) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.27 via Frontend Transport; Mon,
- 17 Mar 2025 17:55:14 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- MWH0EPF000989EB.mail.protection.outlook.com (10.167.241.138) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8534.20 via Frontend Transport; Mon, 17 Mar 2025 17:55:14 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 17 Mar
- 2025 10:54:59 -0700
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 17 Mar
- 2025 10:54:59 -0700
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com (10.129.68.6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Mon, 17 Mar 2025 10:54:57 -0700
-Date: Mon, 17 Mar 2025 10:54:56 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
- <jgg@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tuEsf-0001ZA-3S
+ for qemu-devel@nongnu.org; Mon, 17 Mar 2025 14:08:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742234882;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1dZQSG9QVTqJh0M8+zktW9DJ3Coh0zKQ6iynN8QqYQE=;
+ b=RR6Kxf3qsye/Kkomc8mgAOkXvnsIv+umzvlNwoUYsENPZbFosacbF5n68kyIWRiqailAbo
+ ubw4tQA6nL/W/Wd8ABDaCkGTrmiVxhjV3FCvv5jK7VN7VwTakAfKGDsO/smFYhhIInAh9m
+ 1ENp06zCXHI+pzaHyrUmpwneSvPob+0=
+Received: from mail-io1-f72.google.com (mail-io1-f72.google.com
+ [209.85.166.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-159-WsE9wlcyMEmkUTM6CytAOw-1; Mon, 17 Mar 2025 14:07:59 -0400
+X-MC-Unique: WsE9wlcyMEmkUTM6CytAOw-1
+X-Mimecast-MFC-AGG-ID: WsE9wlcyMEmkUTM6CytAOw_1742234879
+Received: by mail-io1-f72.google.com with SMTP id
+ ca18e2360f4ac-85b5a7981ccso448540239f.2
+ for <qemu-devel@nongnu.org>; Mon, 17 Mar 2025 11:07:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1742234879; x=1742839679;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1dZQSG9QVTqJh0M8+zktW9DJ3Coh0zKQ6iynN8QqYQE=;
+ b=mhI+glx7cbvd4cql6NxWgi5D3lu6Cc2OYUS4Hw+jWbefdG/wDA+nfvUjF0sycsJChz
+ tR+WEl8G4UEzxfChesYBJzMOVaGTnO4xAlq3rj39qVinpY7wLIINtXEW1SQhZTGOQ0+7
+ V2EyPsxHsuddPfIGPP7zwlzsg79GirW7hv/WCbrFTlET0t1dHxHH/GQeuntyaoVnaIF8
+ vBmdvwu9g3pQ+Ms15SHUhXBd1AY5f8lZBKp98gK12ZeLRJWUgEoWSgRWV9U9NnzPJlei
+ OcLtWRU/hkvcYWBvYLp8OyJ/syeK3B9rQx3or0EAMDN3V+8Z3krwspgMon2ySNzWH46L
+ 7YTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCViwtjL8vymBGhZPs59LcJd7L/po5FCWe17lOyGJYkoOpuRFF0jcUifScYjPaT6IJtfz+ixN1Bp6g0x@nongnu.org
+X-Gm-Message-State: AOJu0Yx3BL2ZYf+6zPM3sKRGr71pfUGQWqt5K5Mnk4aQhbYMa/3V2xzz
+ oe6ltASvHcQMEF3zBrP7ZU7As2+CXMAEh5NHn7bfWXvJjYCiGuLAw4HPUV7oJAqsfquVPaWnxS0
+ D18v9GRi4U1o01+sMtPjoxAPKjCZXZcpap1L+Gy5T+/niu0cT5C/Q
+X-Gm-Gg: ASbGncu+anj6hNfLtRL+bNbMwc7zenSiCjRVB3xWZ/BoGE3TYAq7g4Ktpvrd8cQa6ky
+ R0kN74uJV/fn95mAHV4fLUXGrfLYTV2SSQnFbVT74ty/Uq5EAAisGMLOx10wwkA8Ift/5bHc2c4
+ 3OwToWf9wTWqTmQQET+tru+M4QEBnQi955AmZ47JHt0MnSTZKL0VSrwaWlv5CTikDTqA35sX8cc
+ vhYWHaAZangk6EK8c92dtaAo5W73vRDkvb2+lxSsaQWAio16m2YypDCK7oXxjLT7XRDqskMwPEQ
+ roDljDFZ/l8wlELCYYcn4PStrtSRlFjmjkOfuIDPOqq0Yhlg+GrDRrrsnlIi5jQ=
+X-Received: by 2002:a05:6602:3a15:b0:85b:3fda:7dbf with SMTP id
+ ca18e2360f4ac-85dc48570fcmr1746513639f.9.1742234878715; 
+ Mon, 17 Mar 2025 11:07:58 -0700 (PDT)
+X-Received: by 2002:a05:6602:3a15:b0:85b:3fda:7dbf with SMTP id
+ ca18e2360f4ac-85dc48570fcmr1746510439f.9.1742234878424; 
+ Mon, 17 Mar 2025 11:07:58 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ca18e2360f4ac-85db8750862sm224814739f.9.2025.03.17.11.07.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Mar 2025 11:07:57 -0700 (PDT)
+Message-ID: <71b73212-3d8f-4c9d-93a4-bf07c0f169e3@redhat.com>
+Date: Mon, 17 Mar 2025 19:07:52 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH v2 03/20] hw/arm/smmuv3-accel: Add initial
  infrastructure for smmuv3-accel device
-Message-ID: <Z9hh8MIAQNQcvNlG@Asurada-Nvidia>
+Content-Language: en-US
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
  <20250311141045.66620-4-shameerali.kolothum.thodi@huawei.com>
  <d75feb00-72d3-4d79-a7ac-2548eadb6a77@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <d75feb00-72d3-4d79-a7ac-2548eadb6a77@redhat.com>
-X-NV-OnPremToCloud: AnonymousSubmission
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWH0EPF000989EB:EE_|DM6PR12MB4435:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8e12aef1-84b5-412c-145c-08dd657cdea3
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700013|82310400026|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?HkRlga6nK5E7CWR/s6RvHqsBbN7+xUoRguEJwg9I0olm4lW1HQgGQhDRUFeA?=
- =?us-ascii?Q?6qnG2xtaZnAuT7bYcT+Xoi1jvXAGFhr7OrswppTal8etkRIstVl+BPLBQ56p?=
- =?us-ascii?Q?GN5jCnGrIAdQDF9/4bKpeHrGrCAjht76cJr+gLLr5658O1IHcpcqEw0Q3QjL?=
- =?us-ascii?Q?YHV//6x3gWcvyozLVdbCVJCZfl3Qqnk/7ExTCSkKhvheJaJnVKUBvQLhXOI5?=
- =?us-ascii?Q?AX1Kp1FQeFkylO0HZr83sDiW3yZg/d+xjhQz7RB85wi+fs8wHmszs+zQdcUK?=
- =?us-ascii?Q?DokA1Q1GvUb1gsdX0JyyRIBtzv9reL81loAwX79ifb/ZvUsPehyi9PcSwsh2?=
- =?us-ascii?Q?us4c2RfuwbYLhjl/RT4+JvM8neq7U5cRs5NIkdsvQfYK2i+jmDsXCgbE24fP?=
- =?us-ascii?Q?OCLgZZi3EstpUSkcPC0toSR6wHkFkN1fusnVX+W4FW3Xu6PbVjVYPCDySaiX?=
- =?us-ascii?Q?iH4R1Y3Hfvou0s8lGM0+tbbFqJStH7wur9vc/kS8bmfp7eUFWPO64+OLHH+6?=
- =?us-ascii?Q?TzP2RZ88LjDh57dkq3cTAissOw+hhkofhZwsCHMvXSpYVqas+6TrwghgGOQl?=
- =?us-ascii?Q?4JXxKOcgQ0+ZMol0m+tMsbkL4TdlraLTobJX/+QZQHKoBzmDinDjwV1NWJSc?=
- =?us-ascii?Q?GYQFowKKLtLxIvMyxRlUMj7M0qWHWyzuVd5xHQ6nVvqeo2GmQNxDHDcXoJeI?=
- =?us-ascii?Q?SOhOfE5mf2wZbKWtaEmMtiDn2jIlTvbnWEl+z6fbOPI5p6lqxAVfIEichnNG?=
- =?us-ascii?Q?zKtUtzYSRJhtLyvA87sAHuOu6pzT1Z8EYc8LxMTn5dN2IoNPXhv9ZkNoqC3s?=
- =?us-ascii?Q?XyzPehC+hMnqGqsKF5xeDunRIXajrIwi3j+ZQBv40RZMeTWZ96UMZ4QjE0np?=
- =?us-ascii?Q?wirL9ZJzAlrSeTRdgDZySYZYE3l21JonIMr4Y9TRYy5JzhpXf3lmUg5hofMX?=
- =?us-ascii?Q?ACW0K9mR7mTb4mrR6hLOd3UT8/y3+dDtluL2C0KiwvIlNzvTDxm8M56HlUId?=
- =?us-ascii?Q?PfTVGQTapPBCO7KhFZXmpm7TWM5mwvrnuHaD/h/19zdLs6GqF57yWQjqlIrP?=
- =?us-ascii?Q?lyCCNXE8ENz07Jfb7j/3Xd75WsdymPg28N295mS0867sfMr+28rvMlqJ8nUG?=
- =?us-ascii?Q?cte+2dD21vuNOHjBLcUVmcZcnHaEPRwdD80Xjd3WquojKdGVpo6goe2p9JE3?=
- =?us-ascii?Q?oCpRAVh7j71J5ZnFhZmf77F9AHoHYRsda9afku1LnlcLyL73h/P37piwIpA3?=
- =?us-ascii?Q?Y+rCRxt6EFI6bDOpe+DoMsTYrPMXNCV3JHcWlP2Pqvwv6niscecFQuluIlSn?=
- =?us-ascii?Q?FuZC8FAwuIHJGnlU6EgEOpflPeZvNmDZbX4qUV6YrFd4DLvm8xd4MKsRpAHo?=
- =?us-ascii?Q?30iNXNurakPTcLeUJd5AyyIe316Oei/J8dOKiL8i8yt2ShWACmdgRnPKgt0W?=
- =?us-ascii?Q?UhIMDogU+b59RRBTpcRgsz0Cbk2L+swGedu6DR2rbOOrUGw5QbQ2DQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700013)(82310400026)(7416014)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2025 17:55:14.0495 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e12aef1-84b5-412c-145c-08dd657cdea3
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000989EB.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4435
-Received-SPF: permerror client-ip=2a01:111:f403:2009::624;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
+ <Z9hh8MIAQNQcvNlG@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <Z9hh8MIAQNQcvNlG@Asurada-Nvidia>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.335,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +4okPcQ934Kf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: M+CYcLN3clOv
 
-On Wed, Mar 12, 2025 at 04:15:10PM +0100, Eric Auger wrote:
-> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
-> > Based on SMMUv3 as a parent device, add a user-creatable smmuv3-accel
-> > device. In order to support vfio-pci dev assignment with a Guest
-> guest
-> > SMMUv3, the physical SMMUv3 has to be configured in nested(S1+s2)
-> nested (s1+s2)
-> > mode, with Guest owning the S1 page tables. Subsequent patches will
-> the guest
-> > add support for smmuv3-accel to provide this.
->
-> Can't this -accel smmu also works with emulated devices? Do we want an
-> exclusive usage?
 
-Is there any benefit from emulated devices working in the HW-
-accelerated nested translation mode?
+
+
+On 3/17/25 6:54 PM, Nicolin Chen wrote:
+> On Wed, Mar 12, 2025 at 04:15:10PM +0100, Eric Auger wrote:
+>> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+>>> Based on SMMUv3 as a parent device, add a user-creatable smmuv3-accel
+>>> device. In order to support vfio-pci dev assignment with a Guest
+>> guest
+>>> SMMUv3, the physical SMMUv3 has to be configured in nested(S1+s2)
+>> nested (s1+s2)
+>>> mode, with Guest owning the S1 page tables. Subsequent patches will
+>> the guest
+>>> add support for smmuv3-accel to provide this.
+>> Can't this -accel smmu also works with emulated devices? Do we want an
+>> exclusive usage?
+> Is there any benefit from emulated devices working in the HW-
+> accelerated nested translation mode?
+
+Not really but do we have any justification for using different device
+name in accel mode? I am not even sure that accel option is really
+needed. Ideally the qemu device should be able to detect it is
+protecting a VFIO device, in which case it shall check whether nested is
+supported by host SMMU and then automatically turn accel mode?
+
+I gave the example of the vfio device which has different class
+implementration depending on the iommufd option being set or not.
 
 Thanks
-Nicolin
+
+Eric
+
+>
+> Thanks
+> Nicolin
+>
+

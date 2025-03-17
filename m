@@ -1,122 +1,87 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp1242517njb;
-        Sat, 15 Mar 2025 07:21:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcrlVt3SdlWQROkBb8kkwneaaZzbIfBH/g0edIDXfe1zLqILKwaTb5dMN8n/PxmPCHH5J+/L8L1Xv0OQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF8Ed8y+JNtnPQQdH4dPW+cR1aigu40eZ8Qq0HpWTEI9EUeWfka6SJna1EvHmdzHUPpsyNR
-X-Received: by 2002:a05:620a:1920:b0:7c5:405e:e88f with SMTP id af79cd13be357-7c57c7d6cf6mr995015085a.21.1742048469541;
-        Sat, 15 Mar 2025 07:21:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742048469; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2053977njb;
+        Mon, 17 Mar 2025 00:05:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWvTalP/r3R435qIlZfttsVkilBuHxz0WT3RBsGBqq/ZNW3e95B+gwd8/3BVUsSz1A4hwzXzKf523aNew==@linaro.org
+X-Google-Smtp-Source: AGHT+IGzWwhmBHRh8acQA+NJmOGiLBjNKBm1TL+eTf5bs2oKP3MX0nhfs6nefesamgr6GdkM/E7C
+X-Received: by 2002:ad4:5cc7:0:b0:6d4:19a0:202 with SMTP id 6a1803df08f44-6eaeaae38dbmr166365516d6.33.1742195131254;
+        Mon, 17 Mar 2025 00:05:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742195131; cv=none;
         d=google.com; s=arc-20240605;
-        b=MHDUWL01qCAUMnUuWrSYL4zlqG7qyTobYJ5CY0h0/gbtEuHWEEoykVDBW7CQqfTmiQ
-         wygp4fY8P4r6iWXa/SFyNh8cfPi2/yRuLzvdzs9x17awVoNADyd7veQZ5To0+iijZ1Ve
-         Yc80mNZF3CE7xuwiVjgfmZiHanCptXtvIResf96Xhz6XzA4uPQD7gfoP6HKzUTEH7gMT
-         o2i6wgHy3oqPOEA9PoEXeE1uGvFDEiKH4dGipFismhk7dU9YPvjanObUMNSt6xEPMs0+
-         WkIOXmKYuHLnsZza8dC7zQqsCFBPO525w+3I/zWXlJwUAtrKt6qjdwPf0wEA7ApTtE8p
-         N/qw==
+        b=hzkMRmHbQ1YHy19eNnCDEmFXNTEZwqY8R1lEdTBLaSiaR/AwjTANMdoLMazV8AlU3w
+         /rq1u24kucAiAvnK9PbG0ydMJIvxKE7Ed0xhDcAQtrVYwzQPjCMzZAsDVPm4/66nKgKn
+         fKp+3QqFmT75Rv5sEG9dcKtlynqAwdYCQjheKeemfZraz3YWzdW3HnKcm8w2r97T8jJF
+         CMQa8d8Mha66B42y56wuxUMS9k4zE2t4YQ3Ctxlc+11IokavyRslyp3RsUGFdsBXbOpW
+         IMgcIJJbiuv22McUxgqudcOAmi968zrB1x13pIMgX/SMHodukXGC+qD6piUUVTRSx42H
+         Fr8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xn/+9kBxvehWJDBB6ljJ3rR9p+GCHUYGWHwwq30XmP4=;
-        fh=dDP743QSP/eMHxfa4FauTUnwxs76lHO0TBJ8pMflS30=;
-        b=FpT7YCWbp6hZMqA8vNKA2HYpTWaYULdSNkX8xfuc0azXlhQkrJ4pKTWgYW5zQlkgaC
-         qAgzGv4zu2J8Drdg39bAn8H1GeWus0mXEYrf9ad+L9/camemZ41ZyTUb+ptKnjn3yHMd
-         8sSSs4EvyJAOPF6j6ygIX8VPpTrfZ8J0dk1uCLSqR+GEVVmwEqGw1Dmd5vjuRXfXoo3O
-         Qs49Y7ovW5LQolBITPl0OJ/oDSEPfJPj0dH4QWm6eQqg/WBf5MpzEDqyBPMc+Jhs98vA
-         PHhOTp5H92dJywZUqBjsvTTXwb750HPzYVFb/8kB877SxJmFnESS7b125fmP9YGMGaid
-         PQMw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=t5pHnZJp5lXDtnmpoM4RmezeTu9G9qFD3Pu3fKWqZn8=;
+        fh=3pwoN2jATzlbrF1hdgMWpXpxIEomk4/s3GQqt40kaGI=;
+        b=HM14yeI0S+Qb4KWozRlNMNkYX7/rWIi9OnlMuvdfYTlzjXrO1jrjPLdrZej0r3HuLw
+         8sz/OrmJG6fltGPHLUfXKOV+u33YKmb9BME9dw/t98eP0i1hb+8hBOr8On6RxV7hmqpM
+         Rk2oiH6NujLdxl/xbvlwCYR78F1cownbesTubdIoO/zsA2VkufNZbEVjnDG8xiQypwia
+         d4v0L8E4D2WFXcXeG9MW3djJOdwU5WoTQ9rCtSPFB5R4gzu220W6xFply8pG+d5yBfhu
+         QNCSHMsEO4F1cBd+uTmu3Jm8F2qvnCB7GlalEfs8eoXi4xHtYmUXMhH5rJt+pjDohy4/
+         4nAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=YoLd9lqh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573d35315si622371485a.619.2025.03.15.07.21.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eade1de2b8si93704006d6.88.2025.03.17.00.05.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Mar 2025 07:21:09 -0700 (PDT)
+        Mon, 17 Mar 2025 00:05:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=YoLd9lqh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ttSNm-0003kv-Tb; Sat, 15 Mar 2025 10:20:58 -0400
+	id 1tu4XI-0002Ai-6x; Mon, 17 Mar 2025 03:05:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1ttSNl-0003kb-GO; Sat, 15 Mar 2025 10:20:57 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1ttSNj-0003G4-KN; Sat, 15 Mar 2025 10:20:57 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-224171d6826so1813405ad.3; 
- Sat, 15 Mar 2025 07:20:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742048453; x=1742653253; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=xn/+9kBxvehWJDBB6ljJ3rR9p+GCHUYGWHwwq30XmP4=;
- b=YoLd9lqhXOFGwNl21fE+Z+gL16QsnB9I/DtZUoGWcuy3sdgfBFu9SETd7yoi0yNkKl
- r/hp4eada0oBtDrNh3OjUe7TljcQTuHQ8vcfwfZmjA0lH0eJfoHbdsV/IhlsOmPMm1Yc
- mpj5IRF288T9ZmxDMLtgrrSjomITqRM5exIZozDtmdPdJbq2MHxlH5ocF4vB0rs0Gp8Q
- +YrZp1a+6ivPLBw4Sg65JtVaXu47JXLjhAqybCuLBjk59ldP6AgGePX0AC1z2JJdcBG9
- m+E41xNYxawo8J0Myug+CFrdlQuAG7AtvhoggFpDRDh83hjhavaI/NV70jPQWCx/E+It
- Xj5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742048453; x=1742653253;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xn/+9kBxvehWJDBB6ljJ3rR9p+GCHUYGWHwwq30XmP4=;
- b=PgxS5C2izCCwsy9WCzcblzgpWCO6H6l7M7o8IF+8cigzD2qEV4/g9aAQF+hO0+gw9y
- gjQfbiwEu8I7pcgccZGhlJKzFOWnDmHVaKBXiaQKK+H0VF5O0SrV/VrgfNm4D5l+dsKM
- Ax+Ia8SEEY5NyLoJn9iG9DNn68pc8IG0Zt9wzNf7JIs4BABT8/hJFlEMcrmQKOYI5KiZ
- 1iTxBSrGme2wzN17rQhZz/qDV+DMQ1oBPFoNxKhzooJo0ReMF4EUPLJX3AFBnBoKDjmJ
- ggc9CraM4esICk7eQgYM9BAJjEFExBfkpY+8Lsk1F9c4fHchmMbwxpsG+Tciw9UlwfXh
- 2Mgw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUIEpBPPqQB2uSekJ69vQ/dfVcsvN+pS3mEts2Fds1giIH5bHJKpmVdy1Ec3PeWH+gGBqZaOiF2oECitw==@nongnu.org,
- AJvYcCVAxc92+SXJb1Z7UR1YqRvHXvQVG5nTqVSmRYzJ4yRE2pnTzurlTQadaqYookOHwCR9Uw7AecoMwA==@nongnu.org
-X-Gm-Message-State: AOJu0YzvjFsDFDh+Fs/876858ZM1CekdVFmu/3pH1AfqenHNn8BqZzn9
- pBxhyPl7Nqmx4ydF/w52oAJ7DxsoTajMyrxeoN91jNPBlzyHKc0JVF8DfA==
-X-Gm-Gg: ASbGncu4tKytoqGp9hL3DzIO0ducgAcjjOAdX+n7dmpDIwTnsAXeQn80mfXMetFjaq9
- oskZEUTV3dZW4lDwdi0TqQh8QNb8D61iOJUIvyz5R6+MRMK+cTWcRaysLs3McsuMzb/30Sr6oc1
- xCePeZNkeAFWGGZkEnKtKt9vAxxmHZAaQT/knzEL98X8ivPDT0p51fl3TCB6SGGBysSY1gI59mm
- YR/IxlNLeTObfvcXt/OEATM88A6klDjxbMEPo5fj0OluUXH7Wk2gilj0KxjTPOdfMKXN6oUIQ8U
- SJF3eZ3dUvHsXRu7bCpBqqayfa55o5YBul2TQA/mtLpNc8HvZNC3wASFAQ==
-X-Received: by 2002:a05:6a00:1301:b0:736:5c8e:baaa with SMTP id
- d2e1a72fcca58-7372236c8a2mr6960235b3a.2.1742048453139; 
- Sat, 15 Mar 2025 07:20:53 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-737116b114asm4493164b3a.164.2025.03.15.07.20.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Mar 2025 07:20:52 -0700 (PDT)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Tyrone Ting <kfting@nuvoton.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
- Hao Wu <wuhaotsh@google.com>
-Subject: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
-Date: Sat, 15 Mar 2025 07:20:50 -0700
-Message-ID: <20250315142050.3642741-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.45.2
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1tu4X3-00026J-7l; Mon, 17 Mar 2025 03:05:05 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1tu4X1-00027F-Bs; Mon, 17 Mar 2025 03:05:04 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 17 Mar
+ 2025 14:59:39 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Mon, 17 Mar 2025 14:59:39 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <yunlin.tang@aspeedtech.com>
+Subject: [PATCH 2/2] hw/arm: ast27x0: Wire up EHCI controllers
+Date: Mon, 17 Mar 2025 14:59:38 +0800
+Message-ID: <20250317065938.1902272-2-troy_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250317065938.1902272-1-troy_lee@aspeedtech.com>
+References: <20250317065938.1902272-1-troy_lee@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=troy_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,35 +94,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Troy Lee <troy_lee@aspeedtech.com>
+From:  Troy Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DEzK/2EIBrDc
+X-TUID: uymwvAdupHQY
 
-Without psci_conduit, the Linux kernel crashes almost immediately.
+AST27x0 has 4 EHCI controllers, where each CPU and I/O die has 2
+instances. This patch use existing TYPE_PLATFORM_EHCI. After wiring up
+the EHCI controller, the ast2700a1-evb can find up to 4 USB EHCI
+interfaces.
 
-    psci: probing for conduit method from DT.
-    Internal error: Oops - Undefined instruction: 0000000002000000 [#1] PREEMPT SMP
+ehci-platform 12061000.usb: EHCI Host Controller
+ehci-platform 12061000.usb: new USB bus registered, assigned bus number 2
+ehci-platform 12063000.usb: EHCI Host Controller
+ehci-platform 12063000.usb: new USB bus registered, assigned bus number 3
+ehci-platform 12061000.usb: irq 88, io mem 0x12061000
+ehci-platform 12063000.usb: irq 90, io mem 0x12063000
+ehci-platform 14121000.usb: EHCI Host Controller
+ehci-platform 14123000.usb: EHCI Host Controller
+ehci-platform 12061000.usb: USB 2.0 started, EHCI 1.00
+ehci-platform 14121000.usb: new USB bus registered, assigned bus number 5
+ehci-platform 14123000.usb: new USB bus registered, assigned bus number 6
+ehci-platform 14121000.usb: irq 91, io mem 0x14121000
+ehci-platform 14123000.usb: irq 92, io mem 0x14123000
+ehci-platform 12063000.usb: USB 2.0 started, EHCI 1.00
+usb usb2: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+usb usb3: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+ehci-platform 14121000.usb: USB 2.0 started, EHCI 1.00
+usb usb5: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+ehci-platform 14123000.usb: USB 2.0 started, EHCI 1.00
+usb usb6: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
 
-Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
-Cc: Hao Wu <wuhaotsh@google.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Note that, AST27x0A0 only has 2 EHCI controllers due to hw issue.
+
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 ---
- hw/arm/npcm8xx.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/aspeed_ast27x0.c     | 28 ++++++++++++++++++++++++++++
+ include/hw/arm/aspeed_soc.h |  4 +++-
+ 2 files changed, 31 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-index f182accc47..e5a1929ed7 100644
---- a/hw/arm/npcm8xx.c
-+++ b/hw/arm/npcm8xx.c
-@@ -346,6 +346,7 @@ static struct arm_boot_info npcm8xx_binfo = {
-     .secure_boot            = false,
-     .board_id               = -1,
-     .board_setup_addr       = NPCM8XX_BOARD_SETUP_ADDR,
-+    .psci_conduit           = QEMU_PSCI_CONDUIT_SMC,
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index dce7255a2c..4ff4462ec1 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -25,6 +25,8 @@
+ 
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_SRAM]      =  0x10000000,
++    [ASPEED_DEV_EHCI1]     =  0x12061000,
++    [ASPEED_DEV_EHCI2]     =  0x12063000,
+     [ASPEED_DEV_HACE]      =  0x12070000,
+     [ASPEED_DEV_EMMC]      =  0x12090000,
+     [ASPEED_DEV_INTC]      =  0x12100000,
+@@ -47,6 +49,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_ETH2]      =  0x14060000,
+     [ASPEED_DEV_ETH3]      =  0x14070000,
+     [ASPEED_DEV_SDHCI]     =  0x14080000,
++    [ASPEED_DEV_EHCI3]     =  0x14121000,
++    [ASPEED_DEV_EHCI4]     =  0x14123000,
+     [ASPEED_DEV_ADC]       =  0x14C00000,
+     [ASPEED_DEV_SCUIO]     =  0x14C02000,
+     [ASPEED_DEV_GPIO]      =  0x14C0B000,
+@@ -91,6 +95,8 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
+     [ASPEED_DEV_TIMER7]    = 22,
+     [ASPEED_DEV_TIMER8]    = 23,
+     [ASPEED_DEV_DP]        = 28,
++    [ASPEED_DEV_EHCI1]     = 33,
++    [ASPEED_DEV_EHCI2]     = 37,
+     [ASPEED_DEV_LPC]       = 128,
+     [ASPEED_DEV_IBT]       = 128,
+     [ASPEED_DEV_KCS]       = 128,
+@@ -137,6 +143,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+     [ASPEED_DEV_TIMER7]    = 22,
+     [ASPEED_DEV_TIMER8]    = 23,
+     [ASPEED_DEV_DP]        = 28,
++    [ASPEED_DEV_EHCI1]     = 33,
++    [ASPEED_DEV_EHCI2]     = 37,
+     [ASPEED_DEV_LPC]       = 192,
+     [ASPEED_DEV_IBT]       = 192,
+     [ASPEED_DEV_KCS]       = 192,
+@@ -212,6 +220,8 @@ static const int ast2700_gic132_gic196_intcmap[] = {
+     [ASPEED_DEV_UART10]    = 16,
+     [ASPEED_DEV_UART11]    = 17,
+     [ASPEED_DEV_UART12]    = 18,
++    [ASPEED_DEV_EHCI3]     = 28,
++    [ASPEED_DEV_EHCI4]     = 29,
  };
  
- void npcm8xx_load_kernel(MachineState *machine, NPCM8xxState *soc)
+ /* GICINT 133 */
+@@ -434,6 +444,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
+         object_initialize_child(obj, "spi[*]", &s->spi[i], typename);
+     }
+ 
++    for (i = 0; i < sc->ehcis_num; i++) {
++        object_initialize_child(obj, "ehci[*]", &s->ehci[i],
++                                TYPE_PLATFORM_EHCI);
++    }
++
+     snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
+     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+@@ -709,6 +724,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                         ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
+     }
+ 
++    /* EHCI */
++    for (i = 0; i < sc->ehcis_num; i++) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), errp)) {
++            return;
++        }
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ehci[i]), 0,
++                        sc->memmap[ASPEED_DEV_EHCI1 + i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
++                           aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
++    }
++
+     /*
+      * SDMC - SDRAM Memory Controller
+      * The SDMC controller is unlocked at SPL stage.
+@@ -900,6 +926,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
+     sc->silicon_rev  = AST2700_A0_SILICON_REV;
+     sc->sram_size    = 0x20000;
+     sc->spis_num     = 3;
++    sc->ehcis_num    = 2;
+     sc->wdts_num     = 8;
+     sc->macs_num     = 1;
+     sc->uarts_num    = 13;
+@@ -927,6 +954,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, void *data)
+     sc->silicon_rev  = AST2700_A1_SILICON_REV;
+     sc->sram_size    = 0x20000;
+     sc->spis_num     = 3;
++    sc->ehcis_num    = 4;
+     sc->wdts_num     = 8;
+     sc->macs_num     = 3;
+     sc->uarts_num    = 13;
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index f069d17d16..c1e80c8908 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -43,7 +43,7 @@
+ #include "hw/intc/arm_gicv3.h"
+ 
+ #define ASPEED_SPIS_NUM  3
+-#define ASPEED_EHCIS_NUM 2
++#define ASPEED_EHCIS_NUM 4
+ #define ASPEED_WDTS_NUM  8
+ #define ASPEED_CPUS_NUM  4
+ #define ASPEED_MACS_NUM  4
+@@ -192,6 +192,8 @@ enum {
+     ASPEED_DEV_SPI2,
+     ASPEED_DEV_EHCI1,
+     ASPEED_DEV_EHCI2,
++    ASPEED_DEV_EHCI3,
++    ASPEED_DEV_EHCI4,
+     ASPEED_DEV_VIC,
+     ASPEED_DEV_INTC,
+     ASPEED_DEV_INTCIO,
 -- 
-2.45.2
+2.43.0
 

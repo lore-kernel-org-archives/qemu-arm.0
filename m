@@ -1,104 +1,105 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2914915njb;
-        Tue, 18 Mar 2025 06:11:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVR7V3+3s/gQncdRWGxk2N/Et2Zv71L/AJcUxsVvHpi4rquRg8koDXtoU8fuEc05Me49C6deF+4YPgHUQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9WL79zHWjfxkVyySzwlOgVfMZGN0rwmebyOqOm4cLqBIfAsM/reXI05Et9cDC/D4SUrOs
-X-Received: by 2002:a05:6122:d89:b0:520:61ee:c7f9 with SMTP id 71dfb90a1353d-52480f09f0bmr3192883e0c.7.1742303458537;
-        Tue, 18 Mar 2025 06:10:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742303458; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2915013njb;
+        Tue, 18 Mar 2025 06:11:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkqJLYIBWokbZCKwk8rDHxYhx97eYCvPXVqA7T2S2HFZVw6L6qnaruAlMwsq8DOa1Wix7jEpmsmBPgzA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEGgtEL3R/UmoqCIJDRC16gtuL7/DgLAeyo9eTopZUd3sPi1MUuMWARMBcnvPEZWqoFdGKa
+X-Received: by 2002:ac8:7d4b:0:b0:476:8d3d:adb6 with SMTP id d75a77b69052e-476c814df00mr234824631cf.23.1742303471129;
+        Tue, 18 Mar 2025 06:11:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742303471; cv=none;
         d=google.com; s=arc-20240605;
-        b=JK6mjnIVfmm1sQvWwWNnqKF1pHBxrM7AlZqkUDlRNvFpSW40L25nWDBYr9XuOI0LYT
-         P2PlNbO3SJgALTUEtZMVLUUmq7HsOz1rhUrKAc/rnQEHd2MAOFFCyQq7JFtK0Lw5Pl8W
-         lQ/MT1mVoJxpBhVHgyDQ8EKjunYVPM3r1GnN5nWzmOnmuP5AeGoRN6i7hyEQLedIN8HC
-         fs+09LfT4J36l9U3bU2Kv2F5bV6OSyArkZCp3uHdKTWVKFKqWTwA5v4jisFn63Yhv4zG
-         oJNdWUvDXClsUi1lGTm+CL3OS6PAgqJhAYFIRZuagFOWU20SAY59Lg/rIcMFq+edtmxD
-         ksCQ==
+        b=QK1CRX2J76mBBq0K0R/0bEsNuByOjUyzsXDq5YaKFKUWz3zNQWBAPThDG8iAnw3ZSQ
+         YD100GGF/Veno1ofhmofFfShdBONeRi/oAS9sTJULGRh0nKo++aDoU3XfRUURyXnHI4x
+         RxcslOUgFWnp5iwbGYnbVbR31l84xY7RFEfPYmVoLDM0KYm9uqkjJ1pmBOMHsNqHleQm
+         CMf6HVG7mBPrj5q78AvBF4CZjDEjHjuAt2O2Lhc+JzvNh+V8qiqnikMmRKeLKQfucm32
+         kHnafQ1/DEzqVHWv7HzgIt1DiR3ORKWlCk9s7IllCJ74D8bSvNHL/bhJxrrO5fKkDM3B
+         FmLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mggqB81grCqRlFJug6lfjJdqHWYTQWBu9Z0EKFmQF74=;
-        fh=OOHP+gK2t4ekA3EoZDfI63z6+9N0pbEqK7Yt6MVnCPE=;
-        b=ALFfFJT9yQqb6JkPXraNmUL6giZWGdtjIYFYLdmjQsNuIuRZ1f2+dUhppGB7AHMtkI
-         B26LFT+sZmoZ38/YXQu6PUd73/O+vZ4qLy/5LpkaNvqi/MVNJeCGgwcHQCLt3bJNBwNf
-         MoKGnN18OlUhhZVhWkJZSZWS+FJH2Ti4E6DWGN1m3I8Obh/lee2OX7/T6o/guk8laY/E
-         eyEWL1tGgESbTUgdWI9Jjk/hrEgMWL8FI8TSpJuLC4cYl7QVmvOKz0kMRrYLTgoiB6+6
-         rSseWFhoxKMGEEJycw0ZI9zSyB+WeNFtbcmQjKWISQyE/o7kD71qqFVVafWHRP9g0agG
-         2KdA==;
+        bh=mCS//sQC/Pd3mJsOjU1j+UGkPkKFk8gzbUC/mzKDYOc=;
+        fh=wj7c80R9B228vMQ35Rkbi5r8dKBMdKP8xOlh5cFAuLE=;
+        b=TK7Y2w3RMN2j1fLb+0Vg7gsI4m+/gvnRdVCapLzs98tCvE1ijPxMYBikHnvTLbGyM6
+         1ptAulNlx7j0iDQ6Jv+ePJyYJtDE1MhrNq+aBy5Zo2ABYvFJIQDKM69rhaBrzQdaOMa1
+         /l39RbLUM3NXFbxXLSfu4ZRMOSZBX2O5xxUT1XVXD0IxH5aPyV2mVZTAe4tdCWQhATeP
+         NTk2KPHXpDbvd8Xeq+kI9rJIKPdONu7Tmy8gr+Agz2cDZ41MMhkUuqvHg0AWTTxlVIO5
+         XHj9DELgdDG2LiU+BqtAPGgTgxTPDURP9MBJnL7mpyY+7KuVIy7b3sfOb29ktFLtgKRy
+         2DZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Da2N9IWk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kgHvL0MY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5243a7260fesi2902239e0c.221.2025.03.18.06.10.58
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb887ed2si114639741cf.659.2025.03.18.06.11.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 06:10:58 -0700 (PDT)
+        Tue, 18 Mar 2025 06:11:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Da2N9IWk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kgHvL0MY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tuWiW-0008Pd-Ng; Tue, 18 Mar 2025 09:10:49 -0400
+	id 1tuWgv-00062t-AY; Tue, 18 Mar 2025 09:09:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWiE-00083h-Gy; Tue, 18 Mar 2025 09:10:41 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1tuWgq-0005mN-0H; Tue, 18 Mar 2025 09:09:04 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWiB-0003f9-3C; Tue, 18 Mar 2025 09:10:30 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-ac25d2b2354so956551266b.1; 
- Tue, 18 Mar 2025 06:10:25 -0700 (PDT)
+ id 1tuWgm-00037E-Uz; Tue, 18 Mar 2025 09:09:03 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-aaf0f1adef8so513033066b.3; 
+ Tue, 18 Mar 2025 06:09:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742303424; x=1742908224; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1742303339; x=1742908139; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mggqB81grCqRlFJug6lfjJdqHWYTQWBu9Z0EKFmQF74=;
- b=Da2N9IWkV5mD4hbrTGHJGRlb2qWphmlol0ymnU0pEBCy3tGaVLt4RXYe/dwPHCOVNB
- w5cGQedJvsuo/4ANxSZzTv2QO9fhltI3S8dXVTL9LEhfgS0/N8PVNeFagx1M3npPkaOT
- QDCBNO31zLXh597UT4UUKhE3IXhi/fZXHrRSisbQPolevJ+FvGKaapWrOvOq3DFhfjpx
- SczLKrPs3jfQkrGQqYPadcnUeC3pJ7NCg9gcr/ETBMqTIQCy+zcYQTl6NbKpeZLOHLiq
- m3/TM/aTIw3W++4eg6QUijjJKK2289UXbz+xSJGvimAe4htCtK6UDW+zMUzDdcwY6EKD
- gIRA==
+ bh=mCS//sQC/Pd3mJsOjU1j+UGkPkKFk8gzbUC/mzKDYOc=;
+ b=kgHvL0MYi4zAf/Dk0++e8t+MubG60EzFUHfEGen7OrfenXx6hrvk8z0hEPNeqJOGR6
+ MZCQOvkVvOIXtWDQ6B6mY1xRGLslIpu+hiDXrC/sAYdmNrnKEer7KfSHWB49/E/4Ea1L
+ W9/4eqWMFwo3HtmqDaUnH8MeTXT1DgISEZlpBt85EX2XEkLE0MBuCx+D1OnS3U4NP1Wc
+ nnurCUtPNK4JMT469VZ+bs24cE4eleVoz0AEk7xeTaoZ7i6dedpSTwCUoDweWwmLBgMg
+ 4e9Tbi/FZsc3twwix4kGW88G5xlG++l2iUIkjCfP+KP7rTUse2XEe5oH8okIiCqSNEDw
+ tsyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742303424; x=1742908224;
+ d=1e100.net; s=20230601; t=1742303339; x=1742908139;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mggqB81grCqRlFJug6lfjJdqHWYTQWBu9Z0EKFmQF74=;
- b=ERffCxemPuFF5t98FmQOuXNYlJo/OTJS4Bmsa4ZJfNQKUzv/ix4SGq+fhhh8nV3dnK
- zPAwDMD90o+N9cMC8h2uMwuTpjQdAdesBmB+uRRFCr9zAduqAbmOMHJV0zybpxm3G/bo
- 4D25m30YSkukDrEPkIgTlx0rv/tXrDK7GMyb+wvG/+lWyuiJU+C0S156IF7t0SFl/wXs
- BCrx7KsFYhpz4vO9i2G2KzRImdioBcWpaU8U0x6W1jsjvabHR0z19uQIfaKAeBf1+p68
- ywor5FG4onY/omQaCcj75SAyUPeXcS06IogeO3nNRV91Go+Oc1eULirYLEiSafSI6egk
- 7GpA==
+ bh=mCS//sQC/Pd3mJsOjU1j+UGkPkKFk8gzbUC/mzKDYOc=;
+ b=p0r1W+pUB6oAHGiJD+KuZCwRCAOiAmzxjwcu0Uqvpyqq3lN8/soyC5wO06zjUAIRko
+ QLH3PyCMBm3ihRQ9t14uobWW0WaZItOQhf5U7WVSjZ0O7zKiHuPlpW2XXIF4G2dIzYJg
+ Up99bpITXYNzWDkl2AyvRXGhME1gh30OaeeDK+ju4vUS4n88V5OP73wZ/U5Ao1oqCVPb
+ 23wxzilmH7SDM4EuuVfP2q9p1r3zcIRxCMQ3Hd9QPx9BUV2ZpN1vsnrBE2EPCxOUxBho
+ xt+fhoZcQ/FodBhJC95E4eXHA40otW1XUpqf/xvwsh9GWDgWnHi1umDxMQOgtdp2Hw4K
+ R66Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVsbU7fGbwoI0+oHelcX8pnKVavmhOhVzgIPyGOUEEb8bI6P8LMwgp6vE6Q9yPtFa2HJZ2dB22mAA==@nongnu.org
-X-Gm-Message-State: AOJu0YxYRavG/BFb6TDhj6GBT9uC7Er8EkdWeopJFPQCPdVVA6vnoKpF
- rbNtxyWEXymVLZtKa44T3DrBa/g8U0MKN7+JG0yHjc4F++NpUvsLd6cJ/hJe
-X-Gm-Gg: ASbGncuzxxZnau1+V/QQpRKITb0mWkACD7hZKBDbm2dAeT/YsrwL3QSIQ8SCjv0nkAb
- cqW4x62syqFXYMPlcesWygV5bZSCIAnjsNMScRRcI8CoPgP37LmPEZtQVZqVdyz+NHhdX/x/4p/
- QHs+qgy8Jci9ueLvsEYpMmFYIuJkSQVDkrSqkbIzDlU/wiS6opQ00VXlIkVNLhd9l+KzbZ/YXW0
- vhYQWRXpZ751xf5h3kwqjAT+Jp4kfV+ZZXyqaxFgQk189rw2xG6hC1UFZz+7MxSLyAFctMGojly
- SElBR9EPR9JpzEKNXG3SF3iNE66q+aVr1TfloLXKT1NDkXdaX7gx/EegUh8evg7wMVk=
-X-Received: by 2002:a17:906:6a0b:b0:ac3:4489:7910 with SMTP id
- a640c23a62f3a-ac344897c1fmr1423080466b.49.1742303400739; 
- Tue, 18 Mar 2025 06:10:00 -0700 (PDT)
+ AJvYcCWtUCJYtjNE5+0XJdB3z1CLrqOCp31NExDvQkIZiQTh44SCNhcMtlovCA7XrMBKbEftqYhVEJXpYA==@nongnu.org
+X-Gm-Message-State: AOJu0YzDO3s5z0hB8UklA2yBR1AUbBHM3+QvGbVSsIvvBOesHoPKfsY8
+ ozkBfGMtE6Szck3tGiUB+oLgVkFdPLXTFXintTkVuZrAaNFnRMyTZU+YJg8S
+X-Gm-Gg: ASbGncuc2cCdWsOjxxhX1crc93L/Ho5N5LRsfaQMSNGsDAbNPdaOnWQoRAq7qdQ+4Js
+ AJ3iz6tRaYd2oCrEkFZpBlea73nL6wqnPEbwCdWWREjV5VerOxpFniqxtK/YU90NvEPuoGFYGSv
+ FRCrO9p1WxRFZ8T4aQcBCUuIbqZsnlYmDz4MCYsj+8XcfMNAwnpP31ujyzrlKRskbfmzHhvgE+d
+ 3TNgUL9oZaxWBl9Ly2EGMLCZJK3DjSUaLTTHYK4AaoLT8KgFxpbGFLbwcetlRn/nHOtT6nE0sJA
+ MF+dkF+IHE9+p63Cxb+Sqx0qUJS375hCRnC5NeoqqqQ7DUR0rj/87Uls0U89PIcuoAGhU0XzuBr
+ qog==
+X-Received: by 2002:a17:906:6a27:b0:ac2:7be7:95c5 with SMTP id
+ a640c23a62f3a-ac3303225c3mr1741297866b.33.1742303327933; 
+ Tue, 18 Mar 2025 06:08:47 -0700 (PDT)
 Received: from corvink-nb.beckhoff.com ([195.226.174.194])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.09.57
+ a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.08.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Mar 2025 06:09:57 -0700 (PDT)
+ Tue, 18 Mar 2025 06:08:46 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -108,18 +109,17 @@ Cc: =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
  Paolo Bonzini <pbonzini@redhat.com>, YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH 04/21] hw/arm/zynq-devcfg: Prevent unintended unlock during
- initialization
-Date: Tue, 18 Mar 2025 14:07:55 +0100
-Message-ID: <20250318130817.119636-5-corvin.koehne@gmail.com>
+Subject: [PATCH 01/21] hw/timer: Make frequency configurable
+Date: Tue, 18 Mar 2025 14:07:52 +0100
+Message-ID: <20250318130817.119636-2-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250318130817.119636-1-corvin.koehne@gmail.com>
 References: <20250318130817.119636-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,68 +141,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zhJL+44B9q3h
+X-TUID: gJaG37I9+qSZ
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-During the emulation startup, all registers are reset, which triggers the
-`r_unlock_post_write` function with a value of 0. This led to an
-unintended memory access disable, making the devcfg unusable.
+The a9 global timer and arm mp timers rely on the PERIPHCLK as
+their clock source. The current implementation does not take
+that into account. That causes problems for applications assuming
+other frequencies than 1 GHz.
 
-To address this, a property 'is_initialized' is introduced. It is set
-to false during reset and updated to true once the initialization is
-complete. The unlock function is simply ignored while 'is_initialized'
-is false.
+We can now configure frequencies for the a9 global timer and
+arm mp timer. By allowing these values to be set according to
+the application's needs, we ensure that the timers behave
+consistently with the expected system configuration.
 
-I have no idea how this ever worked. Nevertheless, this restores the
-correct behavior.
+The frequency can also be set via the command line, for example
+for the a9 global timer:
+-global driver=arm.cortex-a9-global-timer,
+	property=cpu-freq,value=1000000000
+
+Information can be found in the Zynq 7000 SoC Technical
+Reference Manual under Timers.
+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
 
 Signed-off-by: Yannick Voßen <y.vossen@beckhoff.com>
 ---
- hw/dma/xlnx-zynq-devcfg.c         | 6 +++++-
- include/hw/dma/xlnx-zynq-devcfg.h | 2 ++
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ hw/timer/a9gtimer.c            |  8 +++++---
+ hw/timer/arm_mptimer.c         | 15 +++++++++++----
+ include/hw/timer/a9gtimer.h    |  1 +
+ include/hw/timer/arm_mptimer.h |  2 ++
+ 4 files changed, 19 insertions(+), 7 deletions(-)
 
-diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index b838c1c0d0..03b5280228 100644
---- a/hw/dma/xlnx-zynq-devcfg.c
-+++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -143,9 +143,11 @@ static void xlnx_zynq_devcfg_reset(DeviceState *dev)
-     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(dev);
-     int i;
- 
-+    s->is_initialized = false;
-     for (i = 0; i < XLNX_ZYNQ_DEVCFG_R_MAX; ++i) {
-         register_reset(&s->regs_info[i]);
-     }
-+    s->is_initialized = true;
+diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+index 9835c35483..a1f5540e75 100644
+--- a/hw/timer/a9gtimer.c
++++ b/hw/timer/a9gtimer.c
+@@ -63,9 +63,9 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
+ static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
+ {
+     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
+-                                  R_CONTROL_PRESCALER_LEN);
+-
+-    return (prescale + 1) * 10;
++                                  R_CONTROL_PRESCALER_LEN) + 1;
++    uint64_t ret = NANOSECONDS_PER_SECOND * prescale * 10;
++    return (uint32_t) (ret / s->cpu_clk_freq_hz);
  }
  
- static void xlnx_zynq_devcfg_dma_go(XlnxZynqDevcfg *s)
-@@ -221,7 +223,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
- {
-     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
-     const char *device_prefix = object_get_typename(OBJECT(s));
--
-+    if (!s->is_initialized) {
-+        return;
-+    }
-     if (val == R_UNLOCK_MAGIC) {
-         DB_PRINT("successful unlock\n");
-         s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
-diff --git a/include/hw/dma/xlnx-zynq-devcfg.h b/include/hw/dma/xlnx-zynq-devcfg.h
-index e4cf085d70..2ab054e598 100644
---- a/include/hw/dma/xlnx-zynq-devcfg.h
-+++ b/include/hw/dma/xlnx-zynq-devcfg.h
-@@ -55,6 +55,8 @@ struct XlnxZynqDevcfg {
-     XlnxZynqDevcfgDMACmd dma_cmd_fifo[XLNX_ZYNQ_DEVCFG_DMA_CMD_FIFO_LEN];
-     uint8_t dma_cmd_fifo_num;
- 
-+    bool is_initialized;
-+
-     uint32_t regs[XLNX_ZYNQ_DEVCFG_R_MAX];
-     RegisterInfo regs_info[XLNX_ZYNQ_DEVCFG_R_MAX];
+ static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
+@@ -374,6 +374,8 @@ static const VMStateDescription vmstate_a9_gtimer = {
  };
+ 
+ static const Property a9_gtimer_properties[] = {
++    DEFINE_PROP_UINT64("cpu-freq", A9GTimerState, cpu_clk_freq_hz,
++                       NANOSECONDS_PER_SECOND),
+     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
+ };
+ 
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index 803dad1e8a..a748b6ab1a 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -59,9 +59,11 @@ static inline void timerblock_update_irq(TimerBlock *tb)
+ }
+ 
+ /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
+-static inline uint32_t timerblock_scale(uint32_t control)
++static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
+ {
+-    return (((control >> 8) & 0xff) + 1) * 10;
++    uint64_t prescale = (((control >> 8) & 0xff) + 1);
++    uint64_t ret = NANOSECONDS_PER_SECOND * prescale * 10;
++    return (uint32_t) (ret / tb->freq_hz);
+ }
+ 
+ /* Must be called within a ptimer transaction block */
+@@ -155,7 +157,7 @@ static void timerblock_write(void *opaque, hwaddr addr,
+             ptimer_stop(tb->timer);
+         }
+         if ((control & 0xff00) != (value & 0xff00)) {
+-            ptimer_set_period(tb->timer, timerblock_scale(value));
++            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
+         }
+         if (value & 1) {
+             uint64_t count = ptimer_get_count(tb->timer);
+@@ -222,7 +224,8 @@ static void timerblock_reset(TimerBlock *tb)
+         ptimer_transaction_begin(tb->timer);
+         ptimer_stop(tb->timer);
+         ptimer_set_limit(tb->timer, 0, 1);
+-        ptimer_set_period(tb->timer, timerblock_scale(0));
++        ptimer_set_period(tb->timer,
++            timerblock_scale(tb, tb->control));
+         ptimer_transaction_commit(tb->timer);
+     }
+ }
+@@ -269,6 +272,7 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
+      */
+     for (i = 0; i < s->num_cpu; i++) {
+         TimerBlock *tb = &s->timerblock[i];
++        tb->freq_hz = s->clk_freq_hz;
+         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
+         sysbus_init_irq(sbd, &tb->irq);
+         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
+@@ -283,6 +287,7 @@ static const VMStateDescription vmstate_timerblock = {
+     .minimum_version_id = 3,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32(control, TimerBlock),
++        VMSTATE_UINT64(freq_hz, TimerBlock),
+         VMSTATE_UINT32(status, TimerBlock),
+         VMSTATE_PTIMER(timer, TimerBlock),
+         VMSTATE_END_OF_LIST()
+@@ -301,6 +306,8 @@ static const VMStateDescription vmstate_arm_mptimer = {
+ };
+ 
+ static const Property arm_mptimer_properties[] = {
++    DEFINE_PROP_UINT64("clk-freq", ARMMPTimerState, clk_freq_hz,
++                       NANOSECONDS_PER_SECOND),
+     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
+ };
+ 
+diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
+index 6ae9122e4b..8ce507a793 100644
+--- a/include/hw/timer/a9gtimer.h
++++ b/include/hw/timer/a9gtimer.h
+@@ -76,6 +76,7 @@ struct A9GTimerState {
+ 
+     MemoryRegion iomem;
+     /* static props */
++    uint64_t cpu_clk_freq_hz;
+     uint32_t num_cpu;
+ 
+     QEMUTimer *timer;
+diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
+index 65a96e2a0d..8b936cceac 100644
+--- a/include/hw/timer/arm_mptimer.h
++++ b/include/hw/timer/arm_mptimer.h
+@@ -31,6 +31,7 @@ typedef struct {
+     uint32_t control;
+     uint32_t status;
+     struct ptimer_state *timer;
++    uint64_t freq_hz;
+     qemu_irq irq;
+     MemoryRegion iomem;
+ } TimerBlock;
+@@ -43,6 +44,7 @@ struct ARMMPTimerState {
+     SysBusDevice parent_obj;
+     /*< public >*/
+ 
++    uint64_t clk_freq_hz;
+     uint32_t num_cpu;
+     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
+     MemoryRegion iomem;
 -- 
 2.49.0
 

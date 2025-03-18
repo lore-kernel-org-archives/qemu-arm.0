@@ -1,133 +1,177 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694580njb;
-        Mon, 17 Mar 2025 21:51:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2gTiycKUZw9RKDU11IEj8Bb9PcbOCkhBqZ8z+BDn9tsEWIig48qx6xu7rZhuVsTtLDQIklLAUk3qerQ==@linaro.org
-X-Received: by 2002:a05:6a21:789a:b0:1f5:51d5:9ef3 with SMTP id adf61e73a8af0-1f5c127a618mr22071908637.20.1742273495567;
-        Mon, 17 Mar 2025 21:51:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742273495; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2714489njb;
+        Mon, 17 Mar 2025 22:55:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXt8hGMPUWFVPA8YMmERQ7oYiZc9xT8aXXyvI6jD6SPj2woYthu89kjfeC2R5pvRBWonnq70hgLSPrlCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJYZPCnGBEJIYxDcTkBh/mQ1FD8pTDOobc5alH9QyYvJOoMnFXpKsH26GJUujLwgNTYr3i
+X-Received: by 2002:a5d:648a:0:b0:390:f460:77b0 with SMTP id ffacd0b85a97d-3971ddd9877mr14299960f8f.26.1742277310324;
+        Mon, 17 Mar 2025 22:55:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742277310; cv=none;
         d=google.com; s=arc-20240605;
-        b=lt77mwdkqUPVWQcpCL0QhINUeBCmEVDBfXAaxE2eehi1/NlWqHUqfLQVrvurthfZtw
-         7VXZBDk98LZWywfo7arPOpTEh19yPQBfb6HbV/0HdmXrhJFIg0wkkIE7MJ/3+FnuIzeD
-         tA4l1SckI/qsli8YyNJwEB8qMFDey4xa3PdHNoN6HEdOiuXbIvFHN4gylNlLpFwA60eK
-         qGlkQ98e0IQvsjHSDsRYCdSCTxGNLc33lwWFSIdatPGRtYSo5x6aRkH2tJAYX+nkXgDt
-         6uyXtJ1X4cw/ORJq3sv/3DbZDesMwkhCkkZaZOVmxC7urkWQvB8uNEsB++iWq4IBnmZ6
-         8p4Q==
+        b=kUYj6Y1/T0MWh/V/R/PiH5NbiLQWAenkQh8yYoHV3ZhmaqnhPp+HR1QJau0I7U5F+i
+         iXH0ogcPP1kRUqHka5Ulz12QxRUFDv3WRwcNlP8HUpjdBdxRT0FJeeZL7xvDWb1CtvIu
+         BOBgz65XjrHvCbdrTqPUNbMSDBOsjXUGflPLw8TssJ0W4LotUyfgKAhjDVLlSR2jtL5L
+         cSbebU5cz0Nes1bELbfDy/Z1zFPfHZSLT6chOEPqT8eqG0bVPrvi7YdX/GbV5P9OVosw
+         oQFLU4pRS0LEzVQME26ziwxkuuTsdR17ziXuy4X4QHWi4cluHjNERBdDZVxj00jeeBNQ
+         ierQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OAWROUlIn7auIWdaE5em6TVb2NvztQjiLgpJIDrbZCE=;
-        fh=4J2+9pdapsl4eVhz/Np4AKfCUwDvid7+GQJoUvDeEh8=;
-        b=Z7jdPj45GgWlZIBfnoXBLnv9wNKKt0c9ixL0/MdMOpAQxOaA1Ya+IdedVE4Mg+1uvX
-         lciLs2lnaGOV9IHHS9uzDffGJgzy+oFloJv4kePxt+UzMgFeuIgTMxGog2dKNsTfmXKI
-         3w1Chz9Z/NZ/8zYYbVpynQ68mwtffcRgSbrHE5XKVmLkD3T3U1Cne0l6pVg763NW7cYA
-         80ODeViCe9+QQSCoyJrSpImlwGSgS8T15WOYRQ+3GGxzd+gw9fg41bNlaxcjB8DWVhLS
-         QSq+w69/aE0Tt0exQsNmAJiDcbpS7v5fimftuAtGePlHNzyNanzqiFdsraAIuHgN4vaB
-         vzXw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=CE259BpaNvuidCqDkrVqSHZvjw0om3Zlq8id+yeozUQ=;
+        fh=QN8IGD8aHW7xi1XYW6KCE2KBE2fihwpZprj60/ZjQag=;
+        b=NkdJ2nvhgcKbsQEUXv9eT1kuZgbSqXqcF4ATrRgeSi8etxNAU2dYSbIffvtPMAOGfD
+         +qr5GI/v8j58A0PAe64HIwZM0+5z2EPwFbRCWWE0peetEvdsY5fjg1Eih2dlXFZ384cF
+         CZKJSXZja8i7MSEYAbZVBbotc6vfEaqPdDDSmo6qmO9kC5JT7FsH3lA+t+8tWZ1YSYpw
+         rIyMrC6xJ11CHTy3tKJB+WWgn77q6qKKJNE6L1hikL4fV7YbvseYfrsi1GtbPf/ADMDb
+         tP7M9VxWaYmusul0LQLXm6mVONccAbAlYH7sexKnwp486i9cfuA4/PXbv5gfApTZQZMi
+         g0lA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ibTkFWdU;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-737113d771fsor5241431b3a.0.2025.03.17.21.51.35
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WthM2NXn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-395c85a1098si10845284f8f.225.2025.03.17.22.55.10
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Mar 2025 21:51:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Mar 2025 22:55:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ibTkFWdU;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742273495; x=1742878295; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OAWROUlIn7auIWdaE5em6TVb2NvztQjiLgpJIDrbZCE=;
-        b=ibTkFWdUIhmiyb+5no9pqAy84ss/eGHosN36IOzjFl23qRR28fefb5s6IBkVRnMpG6
-         503mrWUHm6X82Sxg4GJXQc9Pm7W3ab81oqnUcVpRQ4j4m3ftZHbvhOOFUVDhkXEXKWd2
-         FxnDgwgIU6aF496yVXDtzURYpEfMZhUb3XWuIPQSiuSvHhUmlbmyUX9aH+jJaUTbW+BC
-         ccPN9PnGH7AHt0mhP1+EmuMari/Z3+bXYK9c22GDBVCmmEn8218w+G8ivFdQSSFXMIBc
-         2WOQP89J61jJynUBZ7Spu/oGc9/kk55lSXtoBPenQoaJwyEmmQDzvzteIlXR/TfukvWr
-         PFfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742273495; x=1742878295;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OAWROUlIn7auIWdaE5em6TVb2NvztQjiLgpJIDrbZCE=;
-        b=YDNViL6FpdOEM4tcUu6q2rwV4IdDQv85bBhjPdg1NvpWA/Nc9nReawRXJ2mVtDPlX3
-         H/7ZCT3l5XDifLf1M3WHAzHZpJINmCimcULVCpg5er0YGh/CxhudKZMMzN+PN0MaJBFH
-         GGKtOj62mr0SfA/CGZh6ybgoVg/IuppbQzKb+61Gvaa/BrWYcvDWOEtlZBKJchqT0Ep+
-         9oAn7w7VMxLlPxTRPTDUr6iY6zK/Mh7wTF1ZbjF56yH7CdTZ2A6MqK5mvWGNbqUUbLwd
-         B71HFskT1jN3IMoycjV+kkj/PNtsTZ9IGnfS6oDJEDzXNqpv980Pen534scYr1NSVUdE
-         Ujyw==
-X-Forwarded-Encrypted: i=1; AJvYcCXO2DsPcbEV1s2jFRa7KaMp1FBOsliEjxffZtkIunSlfhQB5e8EFDxoAvq02ZI/TFE9TyA1St9fZ75BxQ==@linaro.org
-X-Gm-Message-State: AOJu0YzljG2NN1WyVR421dfgQtadoEymOxyfWJcuGOj3aACFzz0wi3oO
-	LbjkOCiFxZkiWXdDa+oL/osf6tigElmiitAjZxuC/jRnt7vuwSUKRVEnvqOmHpoovQ==
-X-Gm-Gg: ASbGncu+XKlp0IdSDB4JKGGoZB1I6toc1sN23csHdavS2I4KkMUaNNL2RNxC3tP5DpJ
-	kZy8jIyQinz0IaZ0FQS6PHwK+6QTheYc1MNsJFWCPsXpZn6nOZyuoiog8La8L1Zrhr6JV8ymoLJ
-	LgJpayBN/Wivq4nqQ0xr27C28ryR9bLEkewuEVvVu/R4/MVcSCwpPwd2Ya/WgUadbP13rFx0T+Q
-	NqVSHncKsqEtLfW1HETW9tXj2kI6XMlllG7DL0Yuj2bQGJe+m9Qft2EGzA1xbMLLGtqVOJ6Sij7
-	/bxHqW3ALVStwuv7kExyOz9QuheQ/I4W8eHEXliyKeOd
-X-Google-Smtp-Source: AGHT+IEt46y/1QHMt9sgoOzblTQOO/Vh992GC9mrguK0N9zijMCVTkkxREI+0zrgLP1cwHkaSo90Bw==
-X-Received: by 2002:a05:6a00:b95:b0:736:3d7c:2368 with SMTP id d2e1a72fcca58-73722353269mr17764448b3a.7.1742273495053;
-        Mon, 17 Mar 2025 21:51:35 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Mar 2025 21:51:34 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	kvm@vger.kernel.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 02/13] exec/cpu-all: restrict compile time assert to target specific code
-Date: Mon, 17 Mar 2025 21:51:14 -0700
-Message-Id: <20250318045125.759259-3-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
-References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WthM2NXn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tuPuI-0005o2-8o; Tue, 18 Mar 2025 01:54:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tuPuH-0005na-6s
+ for qemu-arm@nongnu.org; Tue, 18 Mar 2025 01:54:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tuPuF-0004BP-NJ
+ for qemu-arm@nongnu.org; Tue, 18 Mar 2025 01:54:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742277265;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=CE259BpaNvuidCqDkrVqSHZvjw0om3Zlq8id+yeozUQ=;
+ b=WthM2NXn9YedVzmCQtlDW00cBRC8OQK/NLSQXaAdvUeWdVFhZAMOogedDhADr5zQlHkFXt
+ gQ5y/7h+IltDaRUAJz9f3J2e+1I2SSkEWE1eNg6mihR1+e7E9usCaGTn8eZy4uEHoZkkcA
+ HrSkIVkWrKhzEGquKbr7Qur++tFHamc=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-227-O0-sr1KmM8eJDcjUDJO5dw-1; Tue,
+ 18 Mar 2025 01:54:22 -0400
+X-MC-Unique: O0-sr1KmM8eJDcjUDJO5dw-1
+X-Mimecast-MFC-AGG-ID: O0-sr1KmM8eJDcjUDJO5dw_1742277261
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BD9C5195609F; Tue, 18 Mar 2025 05:54:20 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.224.69])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2940C1956095; Tue, 18 Mar 2025 05:54:16 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-arm@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>
+Subject: [PATCH] docs/system: Use the meson binary from the pyvenv
+Date: Tue, 18 Mar 2025 06:54:15 +0100
+Message-ID: <20250318055415.16501-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: wpD6bENu5uQc
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.335,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ezRutYgmSkz7
 
-TLB_FLAGS defines are based on TARGET_PAGE_BITS_MIN, which is defined
-for every target.
+From: Thomas Huth <thuth@redhat.com>
 
-In the next commit, we'll introduce a non-static define for
-TARGET_PAGE_BITS_MIN in common code, thus, we can't check this at
-compile time, except in target specific code.
+To avoid problems with the meson installation from the host
+system, we should always use the meson from our venv instead.
+Thus use this in the documentation, too.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+While we're at it, also mention that it has to be run from
+the build folder (in the igb.rst file; the other two files
+were already fine).
+
+Suggested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- include/exec/cpu-all.h | 2 ++
- 1 file changed, 2 insertions(+)
+ docs/system/arm/bananapi_m2u.rst | 2 +-
+ docs/system/arm/orangepi.rst     | 2 +-
+ docs/system/devices/igb.rst      | 5 +++--
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 6dd71eb0de9..7c6c47c43ed 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -112,8 +112,10 @@ static inline int cpu_mmu_index(CPUState *cs, bool ifetch)
+diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
+index d30db8d04c3..6efa222c16f 100644
+--- a/docs/system/arm/bananapi_m2u.rst
++++ b/docs/system/arm/bananapi_m2u.rst
+@@ -136,4 +136,4 @@ provide the following command:
  
- #define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT | TLB_CHECK_ALIGNED)
+   $ cd qemu-build-dir
+   $ QEMU_TEST_ALLOW_LARGE_STORAGE=1 \
+-    meson test --suite thorough func-arm-arm_bpim2u
++    pyvenv/bin/meson test --suite thorough func-arm-arm_bpim2u
+diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+index 8b9448ca7b0..716062fca9c 100644
+--- a/docs/system/arm/orangepi.rst
++++ b/docs/system/arm/orangepi.rst
+@@ -262,4 +262,4 @@ provide the following command from the build directory:
+ .. code-block:: bash
  
-+#ifdef COMPILING_PER_TARGET
- /* The two sets of flags must not overlap. */
- QEMU_BUILD_BUG_ON(TLB_FLAGS_MASK & TLB_SLOW_FLAGS_MASK);
-+#endif
+   $ QEMU_TEST_ALLOW_LARGE_STORAGE=1 \
+-    meson test --suite thorough func-arm-arm_orangepi
++    pyvenv/bin/meson test --suite thorough func-arm-arm_orangepi
+diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst
+index 9145af5c757..71f31cb1160 100644
+--- a/docs/system/devices/igb.rst
++++ b/docs/system/devices/igb.rst
+@@ -57,11 +57,12 @@ directory:
+   meson test qtest-x86_64/qos-test
  
- #endif /* !CONFIG_USER_ONLY */
+ ethtool can test register accesses, interrupts, etc. It is automated as an
+-functional test and can be ran with the following command:
++functional test and can be run from the build directory with the following
++command:
  
+ .. code:: shell
+ 
+-  meson test --suite thorough func-x86_64-netdev_ethtool
++  pyvenv/bin/meson test --suite thorough func-x86_64-netdev_ethtool
+ 
+ References
+ ==========
 -- 
-2.39.5
+2.48.1
+

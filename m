@@ -1,93 +1,92 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3244263njb;
-        Tue, 18 Mar 2025 15:19:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWChbb3JjCzYu/gRle2BGn3x8534a3J5UzpAfNJxeTPeBSgozbdwXbaqSCe5YRXLL+NqTB0+L/9XAGEsQ==@linaro.org
-X-Received: by 2002:a05:6a20:2d09:b0:1f5:87dc:a315 with SMTP id adf61e73a8af0-1fbeb8967ebmr516892637.12.1742336387953;
-        Tue, 18 Mar 2025 15:19:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742336387; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3244957njb;
+        Tue, 18 Mar 2025 15:21:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV41ssvvuShuZ+63jRMFsqpiEVwCIxRtWPThfUNo3aVboG7XORLjVe8uydAu/DlAagS9jO4Fi7HYUqyqg==@linaro.org
+X-Received: by 2002:a05:6a00:2d95:b0:736:51a6:78b1 with SMTP id d2e1a72fcca58-7376d62b6b0mr697385b3a.11.1742336476168;
+        Tue, 18 Mar 2025 15:21:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742336476; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ma/+Q8pou3nAEuZZSZi5EMqlLxaP3Pl6nl2jbx2INJppUsHAKPKkOVpVFqoun47+sd
-         7rKv/A3Bh4fpNILgxem54cn3gmiwKiTo69xk+fu5wzzOtte3II/5wnMnEihZY7ukPZug
-         w3S4OrziVUsTzT24R/dWrnd2jOS5QncLCXVHaFEzRB1h2pY22KzUCjQcLYVzA9r8/fm5
-         dGaNxsFWgrP4N1dVZEwAsQCh3ZGcnGOPu7UK8azHNBprv2ytwODUYDDA11ZrX7pArvV7
-         RsYAlSgfGoJtihfW1KSN0cL+Zo1BErUgCCrot3lqBzs73lTiOJHEAJk+65w+Oumgn5tV
-         lJYA==
+        b=P/9fq8CXR2Ow6cD/fR3kPTCnOv65Ee0oOP92YlQiYhKu6k0pgY1IQJutlITm0epwlj
+         8pfXE6gFhRTj3QvxevD/AWYtmKQ4Op9OI2Ku7IJ1jxqLpLHRwz9g2/TpfDQFPp2Q6TaZ
+         Kkcl7h92a7f0Z/okxr/OcBtpjxXvAnQMKeibPnXAQV32lnvcRvjSkLPnqo8cOZbJfMH8
+         surzrax/ehKMukyZk53dvsiteMFgueAowCdwNCe8neIR+ew8GCvc8QCT9OPg7JdGUizm
+         2tireJ1uKnvXobuiOwJFYbGQUqe/T8sRn94Z9D3RJZT6VZ+Oi3lRFKCAaMNnkZ0ZlL4m
+         qV/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=VTGGUtCqvaeyCv5ha1EwY7WPOyRwsuePzUbQ67x00IU=;
-        fh=DM4UoJrwszj0iKBbuyCuknN69LkWb7NS8ZN+8Lno3FQ=;
-        b=fCGBlxbmUFnuW2OvsxFuyLkAV+ev3qHJV1rIpOEfrIsiWVwJ01waQTiBq9QY+e0pZO
-         fvMS5PEd8ikCSezE2BXIGdlG3LfypAN+zm87BKFIcQmBzkb99sJU4w/XqBjfWGnicYrt
-         oaAsG3UrHYYF82XgcMwHAU0aNYmoCEt0fhbsTWGIzaOZe08zkiCKN7bnY+h/B4QlwzoB
-         C2uG/BCsnh9TH/oSQAetgAk1+NM59arILmHV/C098p2D3HtoNeJ+syIcm9Rofcqj91r1
-         gJ3T7yZOOitRWxgE46WgA7gheCI/W9zwxZ/1KmARWQFGz0uXb7ONlv6tB4DWI0moARaP
-         IAYw==;
+        bh=oMWyKhFjYGpE1Bc3+5PVG/lcM9O7ug1FTKJVkXkKJkQ=;
+        fh=WQQKgeuWz7Yd9aHpof2nRcPDQ1aYywgjPEGVlpTCiEg=;
+        b=CfYIL1u2sEf2hKSKVsBV4dX/xaxV3aFXB3TU6y6DhNLO1MB2IYIfBzUE4lj/W9aMKp
+         0nFfhM7Pnmf0hg9sn9jlOLuuiOTHtAXhPFPe1DtzvMIir9Jrh1yE0VpJGQz3GvWEeSjz
+         Lbw7LoRP2evscq8ZjHEUENgwHzbN7NXe4r7wMlVXFmpaiUFeudLjex1LdrTwOnpJ6x5A
+         roLlK1ctGwWYq/1X9ug3GmreObC1hT9WNS0EzFCV27wmWSDNLZ7jG/LU6v+jZwcKqzkv
+         TGYdZ2oUftqAtfRRx2OVH449gALu8SYkoWzsSjBgbsM2bk51FQXE/4f0ocrrUOEeFp6e
+         qMGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mcpUGzLs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D2dw96TD;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7376d526fc8sor210692b3a.5.2025.03.18.15.19.47
+        by mx.google.com with SMTPS id d2e1a72fcca58-7376d47ad80sor146116b3a.2.2025.03.18.15.21.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 18 Mar 2025 15:19:47 -0700 (PDT)
+        Tue, 18 Mar 2025 15:21:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mcpUGzLs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D2dw96TD;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742336387; x=1742941187; darn=linaro.org;
+        d=linaro.org; s=google; t=1742336476; x=1742941276; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=VTGGUtCqvaeyCv5ha1EwY7WPOyRwsuePzUbQ67x00IU=;
-        b=mcpUGzLsia/bNBGJypjGWl7qK89wmEz3KqkbQY/JVKoYnX41gsWlHAUr7x4QXMA8lh
-         yQpe3VPRrX7Nd7zj1Zfu3GxDfDFEJTP8lUX61gt10Cm4QCm7iq1Po/Re4mgqhfBsuB9v
-         eQdPf2pzTDnxM5CJk4COT006TxoLx4CpGMQn/QVJIYg46yqbQarfL7dhq5d8Q+B/HSXW
-         KcIvaCYWeeIZqwpP0X8aIOj3m+fVE9Y87U7jX+ePAr70cRqVdyZ+Va49zhkxx+vEgqbU
-         rh3FrQ/KFZE2LKV8AaOdEuW59DtLX6sgg08+ACDsarSc+J74O62c7Di9TUcUVHt9Smgj
-         0ZhQ==
+        bh=oMWyKhFjYGpE1Bc3+5PVG/lcM9O7ug1FTKJVkXkKJkQ=;
+        b=D2dw96TD6HFPCUj3rvCWX7qhwGmPuE1TYt5oTO+yxC3ekWuc4NiA5oOYSVltxvGCWl
+         FTS80r2R/Nu94BmyFFtkOvew98LE3Zz3q98ABdjWEQCe5xlIHEuh6d5PyHST4xZdIqOT
+         9o8mlBVH7A7Ga1cAE4lQALtOqYF0iQDL+YFDn2II0zNPMEWUEEM18GXJ8vpkp/dFzu8W
+         Cgts+M0PxJ5TLgKRCU52XMOPYKP/bmqp/syW+x8wNvH9+fPjpB1mA7SiA6SFaPuVl6Yx
+         o7puGO/mqlm8rzAu1W4HvlMSfrOd78RYlCggP+bJ23NEDaqQ7AI81X4dk8hRDZN3QpMd
+         Pukg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742336387; x=1742941187;
+        d=1e100.net; s=20230601; t=1742336476; x=1742941276;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VTGGUtCqvaeyCv5ha1EwY7WPOyRwsuePzUbQ67x00IU=;
-        b=ZgtVrz7+3vKzgF6n2PqbatiYAw1Jziy0iG5hyvth7RDS4gX/DYKjTo0OZvBUQHRSBr
-         JT7Dgm8ZqR+5qW7/nioT19XJetMxpEkgQMPYfYGN0apqBUB54axOwImXHhLwuDVEyHom
-         NaXoJSAGn/bUaVLa197G1Ex47tsheOBY4liZnyegwSuplVrahopQzP03SmZXqBcyGhIn
-         iEtJGMfpLCjv3REKU5rrL5D22Y0bWDbNy+fwc8C7Yla4phW2ewNjSL3+csEaaCv1QaMB
-         1q/WBmcUprh/cl3y7xqrYbwwsxMVbNCpkK4AiyuyNZnzHiS0R5S5Hu5Ux+tO0aVRWq3C
-         QtBw==
-X-Forwarded-Encrypted: i=1; AJvYcCUc4OVIfq0Q7TsdQ31tva+Zop4QIgzhkWSCPh7eYdto5rfhPX/Bq0ZyWzAbIcIVUfI+p08m3rM1vKQkXw==@linaro.org
-X-Gm-Message-State: AOJu0YwO/Wd2Y3gTSOFbRVkrAxt27Ggapef8vh93uR5dM5APFE3bXgeU
-	lx4F095ycCNtT3Al3bu3XBE81WzDdy5/uRmh0VAqyHR5yI78L/rG5arwUS2GUtJfdQ==
-X-Gm-Gg: ASbGncs0KqlgtK7ny0ugWrlqNwuk7g33zmNSQlucPo15kNbZZtLpkoGTOPnqXA1cF7E
-	ORU/mSI9E9JhWul1sj94zbr1p2KIk9wsi2ytcqmHwiIlIWm/+u0ksWfbOMkkwI2Zg6Fnlf+v0+O
-	YmEB5T/Y1UWrHZpXTEvKNQL1lypthmkVi4/8XGEoKjycAQrqstQfWNmlP474ezCwVqClWdTBvLD
-	7O8K9VfCNj+BWiPHi4+UWh3v2W+RBi4IDUARClGUurhjWM9U2Iqj52e2Aqi7H0wNV1dE9phD3pM
-	MjgUzx++lL+X/fBXtcLNHlo19zzuuOdN5QCmiDw8wZ0AB5qdLRlSMc9ayoBLVg8s4ZK9Tlkq4eh
-	udSRsvmJK
-X-Google-Smtp-Source: AGHT+IG3WL2UZjLRcBSxDIrHyiZ799+Zj+pvjdJn5gm7VGBFlAyVOVO0vmRFXWt9lA78bwybkCPvEw==
-X-Received: by 2002:a05:6a21:168b:b0:1f5:9cb2:28a2 with SMTP id adf61e73a8af0-1fbebc846e5mr518960637.19.1742336387525;
-        Tue, 18 Mar 2025 15:19:47 -0700 (PDT)
+        bh=oMWyKhFjYGpE1Bc3+5PVG/lcM9O7ug1FTKJVkXkKJkQ=;
+        b=Nzo+4fYKovdUs8WuQ7xkknpVbe7GpbskEbZJGr6Iqj4Z8Oxn+PCWzJU9qCuaQTapcC
+         ExcfjoY3TuMXQamJd+acmzhpxWneDZWTw2yA/cWUqtiN9vV60uMj35wKvLPRpnc+Ml99
+         RxHGjHQHWZOvjCcG4rvsRkfcM+Oa4GxKRmDnbBMObYmIfo8MRFtHngDCVzDasr0/9r8B
+         pj8MehFmdCxKjLsnha+jp+8JnEmIpQeviaBLUWxjGTM83YO7fTK+rjmBk2PQsqHS3hV9
+         WbdG/t8JfpBlwS92GrEtakGsC82q2HqtpXBMTyqY6Ul61p6bdk5muMLYM5NSl9Bu3Mlx
+         AtJA==
+X-Forwarded-Encrypted: i=1; AJvYcCXfCk5pkQx3bXpflt2dej4Jvsro2O7RCd42Jziyd2dlkFVxy32q6Th63YFBXP56AgBDo/Rc42lKJMJvzQ==@linaro.org
+X-Gm-Message-State: AOJu0Yy54KjfDq0jA2ZC/UjmhPO5JDWf0g2ZFsaRV+2JC1RF8XeP3bdQ
+	+SxHqwoZs6FmcplkEacWZa89mdd+2fOeHbpD4M26Ad3zvnybTKlDGg//qUVyKHQ46A==
+X-Gm-Gg: ASbGncue7ioZBkai8jMsu12ETgwDty5rVv1q0vvFnCFPIjRpfZeQL00JMAcrJNcH/bY
+	g2b6nQq5GoAaLE8i4I4zdaqBjiylkgCxz+WdhIh0/IucjYLWdzTs/LKE5n4ISkHF3YUdGkkguVA
+	XTC2oIXXa07THQMMuJL9fPGVRr+8kWT8knaz4Kw7As0O9wYUjq2gbDxg63BmgYT+9AEGO4iBvsv
+	6ET0IgigAiz3u67PapZj/x0go0UX6TZ356F9dgnfGs52mGRXonw45Dwy1wCBomF08J8AacJS62m
+	PTwFPAgcpKaSTmnm7Ir28EggcdPmw7d0Sh/B143KhuCw+OL2++A/2XsfqvXvfZDSIBDAXyjkLkU
+	IlltAo9Ir
+X-Google-Smtp-Source: AGHT+IHyyJCsiABK+wwwJ/lgyfO1ls36ZQt3JXsVmvsivUDUtxpenS401D2LRtb8OdsmEgQFuXJjhg==
+X-Received: by 2002:a05:6a00:13a7:b0:730:9801:d3e2 with SMTP id d2e1a72fcca58-7376d5fee6emr654299b3a.8.1742336475698;
+        Tue, 18 Mar 2025 15:21:15 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.0.4] (174-21-74-48.tukw.qwest.net. [174.21.74.48])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56e9ca494sm8061555a12.5.2025.03.18.15.19.46
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711559269sm10478181b3a.65.2025.03.18.15.21.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Mar 2025 15:19:47 -0700 (PDT)
-Message-ID: <f1ce73a6-717b-4230-95cd-45505fecf039@linaro.org>
-Date: Tue, 18 Mar 2025 15:19:45 -0700
+        Tue, 18 Mar 2025 15:21:15 -0700 (PDT)
+Message-ID: <0c6f23d5-d220-4fa7-957e-8721f1aa732f@linaro.org>
+Date: Tue, 18 Mar 2025 15:21:13 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/13] target/arm/cpu: move KVM_HAVE_MCE_INJECTION to
- kvm-all.c file directly
+Subject: Re: [PATCH 04/13] exec/cpu-all: allow to include specific cpu
 To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-arm@nongnu.org, alex.bennee@linaro.org,
@@ -96,38 +95,25 @@ Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
- <20250318045125.759259-6-pierrick.bouvier@linaro.org>
+ <20250318045125.759259-5-pierrick.bouvier@linaro.org>
+ <35c90e78-2c2c-4bbb-9996-4031c9eef08a@linaro.org>
+ <7202c9e9-1002-4cdc-9ce4-64785aac5de4@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250318045125.759259-6-pierrick.bouvier@linaro.org>
+In-Reply-To: <7202c9e9-1002-4cdc-9ce4-64785aac5de4@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: SblRgcA/e1rx
+Content-Transfer-Encoding: 8bit
+X-TUID: a5nxkPZB36Zp
 
-On 3/17/25 21:51, Pierrick Bouvier wrote:
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index f89568bfa39..28de3990699 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -13,6 +13,10 @@
->    *
->    */
->   
-> +#ifdef TARGET_AARCH64
-> +#define KVM_HAVE_MCE_INJECTION 1
-> +#endif
-> +
->   #include "qemu/osdep.h"
->   #include <sys/ioctl.h>
->   #include <poll.h>
+On 3/18/25 15:16, Pierrick Bouvier wrote:
+>> This doesn't make any sense to me.  CPU_INCLUDE is defined within the very file that
+>> you're trying to include by avoiding "cpu.h".
+>>
+> 
+> Every target/X/cpu.h includes cpu-all.h, which includes "cpu.h" itself, relying on per 
+> target include path set by build system.
 
-I think this define should go after all #includes, emphasizing that it only affects this file.
-
-I think the #ifdef should use __aarch64__.  KVM is explicitly only for the host, so 
-TARGET_AARCH64 really means the host is also AArch64.
-
-I think you should go ahead and adjust x86_64 either with the same patch or immediately 
-afterward.  There are only two users after all.
+So, another solution would be to fix the silly include loop?
 
 
 r~

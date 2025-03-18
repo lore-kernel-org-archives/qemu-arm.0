@@ -1,210 +1,159 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3060220njb;
-        Tue, 18 Mar 2025 09:40:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4esAECua/7zutbg2jwoetnnu1smaVimgIoYzYmxCpDHNcWWOQlLx91ZJQzN5f8Mv63Tnu6PwhBVH7Mg==@linaro.org
-X-Google-Smtp-Source: AGHT+IESXo2PEpRDkav22vJ4u6OrNgg1zdy/unYMnYGgYZkj3j/GRG18+wAs5xyANTGbF3EyXRzR
-X-Received: by 2002:ac8:5d4b:0:b0:476:9017:bbf1 with SMTP id d75a77b69052e-476c81edf1emr214859981cf.46.1742316008139;
-        Tue, 18 Mar 2025 09:40:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742316008; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3099592njb;
+        Tue, 18 Mar 2025 10:42:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV0iXbKUKFpIdKezM+QfCSgKncLg6NFx0lKktS2iiEWBLuJCgIQzB8ZRcJri9mAvCtCsvomNTH3b0x/GA==@linaro.org
+X-Received: by 2002:a05:600c:1986:b0:43d:4e9:27f3 with SMTP id 5b1f17b1804b1-43d41af7144mr88745e9.9.1742319754565;
+        Tue, 18 Mar 2025 10:42:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742319754; cv=none;
         d=google.com; s=arc-20240605;
-        b=U+dJ0PDbfFD+kRtz9zHNRZnyUo+Uy36lg6ufwJOVeR9Ze8e0c6ROBFfLZvar6Jabmk
-         tQ+oeO4FMX/9RaKI1BlMXczW36HYHyBrSNg8neJ15lvrcQRxXjp53OCWWTkQzWod5OX2
-         ddR+4gycRFa1cIg6cLx47UTuryuOPDkx9Fbiw8zjlljtfAWj7yY8cZew+vRRdPsHQrFD
-         FyYj5bELelHOhn7axieE7C8jFesFe7VcUCUJTAgwO5gvwKIw70jFXbpKH7jdbei6DIYk
-         hSx64dfuemgrDWszGhfU/uaOSlQlI4Tcs7WD9Mn825i/9F5Arv0HJKL+9RS8q3YNzZlJ
-         fX8Q==
+        b=WLZzrLqtx9RQuL5l4dmKL8LJlC0TOatOFz8Iqm1DYuUIUDoC0hbDIK3I+Jc9qGIDy7
+         BxFv2l8OLej/Zryo+f5Vk9dFhOQEqkrHSjlAr5IF0GPgOLAq1pp7t8dF8rLnvMYzrxnQ
+         LNmZZQ5oWqX+65LYIR0p9keE1MkgXNt1qp/xFUeKQ+KEPSWnQpVZJBbSRm3fLVpZR5tN
+         l+GA7bZtpdgMhDCARmh+fe/pawKLJ/3jVYfdBEEs+b/l2CvLdh9suni1tHRHYmvZlUwH
+         6bd1D2AQ/IZ68FnfWgW/i79q0HJOY/FgGwVAWkVyGzYs9deqKLrAP9ngGgbhuPaPk2Jj
+         4Dxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=rbNQxrWPKgNC03cG8BVFNXAwV21VUReGzLMEZsXe10g=;
-        fh=jhSPwfrXBiuvj0IF3g/7JJ47NtQpmBvREIkzJNLXVoY=;
-        b=EGwDI1kOPGcs7wVMDHelS4UxbaGrfzuKGMrMU8kG1oeVmHQdU4HEJeEWYrIJD6kw1s
-         IPxESDjPoFK/21jzz2QetTlBsDWgi5x0t9DmfxnqCKDcIX4Eooty0DZ4wJte3J1vBjr8
-         mMl15F7b6eTJMfuEzIOmf2yvIYNr8kcaCP/DJO7txT5YPJ5T2s8/wgqoGCtW+NKCC/fv
-         nqFwPr+lgKOrEkMVnpZlUmMHlC7tTeHTFKnsoe6aRl3xr4IG+iHyLY4F6IquQ/xZ7w40
-         pTQ8f5YoSkf9IlNMEnBQiGAuSPM6qsW4ioz5NRpLBkR7QxkagRpsaWjUpGsWBavcoz2t
-         lGbA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=17SVMOF/Nhdsp+4dVpqTL9OX4gq5t4F3wmy4D//jp7U=;
+        fh=v3NkGEL7KUpsrBkB05befBedvWtVvoGvnQsPnoSYD+s=;
+        b=c4aQ4FA54CYXL6amBCENKHM6krTkTw9d3SkyuUblZdQH3ALQVtChBFXFnkUjDv25Ag
+         fKVHPHbd2ESWo485PbdzqfUfLIBPxvnIdhX4EpD3+RyERqKaiHwUvzOmkhKtdmyWeeiC
+         seDr7mfYt7dredHXuxmTj1gCLCsTzBYynecAfRX3bzrh28+cPbVuN8rxav2jhxE80L2t
+         hGA0DlIgQCwQJFQXQf0cphoKOnuqVaZ9dkNoNdvhi6L4XGagii+LxTaHEm7u2GQKcpzM
+         hSnlaZQMmCb/Baqcvx/Z67IaVMdR20dYHTrsXNMhejPcsc3ConxDXgZO6/eQ4nRJJbhT
+         1RWA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FA2WFSpJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MOLnjtcc;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb88269bsi123966761cf.633.2025.03.18.09.40.08
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43d1fe553b7sor35455145e9.2.2025.03.18.10.42.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 09:40:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 18 Mar 2025 10:42:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FA2WFSpJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MOLnjtcc;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuZya-00010H-Qx; Tue, 18 Mar 2025 12:39:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tuZyY-0000zp-QI
- for qemu-arm@nongnu.org; Tue, 18 Mar 2025 12:39:34 -0400
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tuZyV-0005Tz-Ip
- for qemu-arm@nongnu.org; Tue, 18 Mar 2025 12:39:34 -0400
-Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-e64165ae78cso2177772276.0
- for <qemu-arm@nongnu.org>; Tue, 18 Mar 2025 09:39:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1742315970; x=1742920770; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=rbNQxrWPKgNC03cG8BVFNXAwV21VUReGzLMEZsXe10g=;
- b=FA2WFSpJ/D7qnqW8foSl8bqXmYcAvGyBZtKcFfpLWGcSGTZd1u+Vo5A6KosF870Pvm
- uyTzpSgZp1o2u5kRnY5z6g/V2U37wCPmKc9N1B8nJyx4c8ESWmT1/sTiPhZdP5VjszZg
- EW96f+6FGweGdh7ssNNOUa4wUcbWj5PlZ1LJqu19HmwJcU0xNcgawHAeCOXufYNXW/nn
- SFRqxPN+Yzvpo5ahD+XeFulvZegL7QY6t12tQX6EsX6EnWoXSXsKS11KtXHu5gv5aTqR
- 6xt1VjlVSVynebWACG3tx91332CkTYjYS8oTSI9bRRd0yYVAzPNlAEx7YvFc8b3vRxxc
- v5zA==
+        d=linaro.org; s=google; t=1742319754; x=1742924554; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=17SVMOF/Nhdsp+4dVpqTL9OX4gq5t4F3wmy4D//jp7U=;
+        b=MOLnjtccrvAAiwpgUZDq38shLqVSseNpjx7xQmY2TmLHS6RHCayz419xMD1ma7/Gbo
+         H1H8jG9INFOj0k3v1vEXrivQbN97cxSWBvZBuEhSNJ7eAUbnDvR4W7JOVu47KA3GF146
+         /7vL61/E7b4nDlTm1M5BRrCIknWA/5hpFn/6sJyDSZIa0jAOatc93RBmB0FhcgmkBvrZ
+         XA7+cmo6F7tr22qGxArAbVDCrd4hVP8LgchbrpWf5Dg1bu7MlgP/mgBiWGtuMY3aatPC
+         8nYWpq/10fYMBSKGVMNny+sMCWvhOl6Pe7tT4I29rGmRM/0G2Kum+xdP8UQ4CCKnCgQy
+         IS/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742315970; x=1742920770;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=rbNQxrWPKgNC03cG8BVFNXAwV21VUReGzLMEZsXe10g=;
- b=ceFdSYuawEx5JQZHo7G0neXxuj5o1OWy/Apub4urFi2Buufj9Z1cl6rukXKWzLdJAE
- e0iMS7aDCDZKARErsbpGeDP/m1xYIvxSZ45OQO+jhfNWKo3fYp8k00y6zFgBpyUzQQVv
- r21/eRmFJGEBuyuXRiaDWg7OhbPYwBf+p6ch0ongcKKU+dDuw0rcWzAqri2QZRZZ4cHX
- +sKZkFv3HrMCBFR4Oh1nJnUY/KuNj8RTuGwQeOrlNQSldL1JR8VHtmD3glpDPA55vjhz
- 1wOKFC6Fk3LMzwJSYccgDZRumS0CCvi28gW2pmT6vdhnm2M/y+UNmXNEhVbSoUyhXR69
- 35Dg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUO1U/kgfpJ9JNEMuZyePefslXzRLLX50T/5k+OUhJAFfS0W81dBXBUotal3hwfARgbR4NUH/OekA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw4ZRP3cIKwiUtu7LZe5BoWfcKF/koVWBwCOIifqarBO79oD6CH
- 7W+Kh7j/fdPBUoFmYHkT4Tynl/PzD46GbPmufxYaS8+QAY3BckuPiWyuuvrDXcbSn8FMlcmqL3A
- v30l99SacPrONvdmxy/pONLSCB/S1mPSAuQl39g==
-X-Gm-Gg: ASbGncu3O6O9AcZtbxfHewrufIx3Cll1pAlu+THoQmi9eYWP1IMoAXwEl1Ekb4vlkNu
- 6LNS8ruR585kY90RK/f9Z6rPp9dMQJHfIc31XEoQMqYhn1JakMX8hBLjPyaepogw/kxmO4sXEfd
- gupT48qjTFZauv3RGapqjC8OhDYX4yGoqhDdXsfA==
-X-Received: by 2002:a05:6902:2701:b0:e60:85ed:8ceb with SMTP id
- 3f1490d57ef6-e63f6512b33mr22050871276.22.1742315970334; Tue, 18 Mar 2025
- 09:39:30 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742319754; x=1742924554;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=17SVMOF/Nhdsp+4dVpqTL9OX4gq5t4F3wmy4D//jp7U=;
+        b=W2z1l0uzhuNSF9El3RIjbita22FvCaSM3SRpX1uVeQJKqZ1QLcYi6qm5VewxZpiepe
+         X4jot0eOM5skq8ugxpanAv83dten6xDC3T7ta5qUXv1ZSJT8cOsPnfYaLbfp6w/62Pq1
+         4OJnuexi+eu6xVnT2AOHBKrfdPhUksso/cHHD8tb9NFdSAXJyK3tvOa3b+8xgqSDOaJy
+         /y2B0ExRwmbfzuFr0GNjESPLK59owGgFFLcBnGfys0JEGFPrTJNjoTyR3Ssopq+TmBql
+         ATNeUk199YPWOCqJMu3AVN2oLnYjJNSZSa8K73NGvD7EjrnB9/wO2IR4diaT7TpRd32+
+         o3/A==
+X-Forwarded-Encrypted: i=1; AJvYcCUUc3worDfb5uD0leQZTu1SFeZFPo9r10GvayZBsji1hEWtxbsh1JlTYRGf+Wr3RoFZpChZ3ycjKwZy4w==@linaro.org
+X-Gm-Message-State: AOJu0YzxHcTI/Qv0asGyLFcJfMl1HJCeu9QAKpPaSlZHKMhGHihH2y8j
+	n2W/9D93oee4YURlIW3+dnuKAh/7WfLHjMFmQtV3C75lPO6KkpSFYFmtB9ZL2mqmNA==
+X-Gm-Gg: ASbGnct/Nob5YnVvb+Qs/K3RXJGtHm/1Qut6H0HWmgFo2+wKz1z4t9UEnViVY3gB5ub
+	SQXXVzE3guy1hJ7+5cQqy/w5bo2T09bN4gd66J2tOwdwLBXM7GK+QOXLTkk5Z1O/VVGQ4HEZjBQ
+	WjpdH85JdvRfsOSHgebE6vfajR6zm0mzL84f8nFkBCDeP8bQP+Jj51Jags4aArj9EcfZ57y4LdM
+	FcxWvk2+ux2a5ycpvv9v6TMhlC4vimy7l66oL/5UgQLdd4bvuTcMSCHHzKCMnIVg1TDs826otN0
+	3sjGHByegR0rl6AkKKTDZdZ6iHokOcUXSXP470OpqKXXT/y8M7FJhcX0nlvnUxJft6qB+SeQ0h8
+	dLibG4OTU71Hh
+X-Google-Smtp-Source: AGHT+IHNhODWTF+JiipsrlWDdQ9MdXQw/X10v5jVQIbHnGx/mcJwin8Hy3ZzvMzwWdXdLV4Tkjm9qw==
+X-Received: by 2002:a5d:6da2:0:b0:390:f394:6271 with SMTP id ffacd0b85a97d-39720966395mr18326969f8f.43.1742319753993;
+        Tue, 18 Mar 2025 10:42:33 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395cb40cdafsm18871927f8f.62.2025.03.18.10.42.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Mar 2025 10:42:33 -0700 (PDT)
+Message-ID: <8a24a29c-9d2a-47c9-a183-c92242c82bd9@linaro.org>
+Date: Tue, 18 Mar 2025 18:42:32 +0100
 MIME-Version: 1.0
-References: <20250304124815.591749-1-kraxel@redhat.com>
- <20250304124815.591749-15-kraxel@redhat.com>
-In-Reply-To: <20250304124815.591749-15-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Mar 2025 16:39:18 +0000
-X-Gm-Features: AQ5f1Jruzr4RzXaG_o4fgU4CuCcLtIcR63x8pV0RKxi79gIv6eTCbFbGDSqECr8
-Message-ID: <CAFEAcA9_rb321OBOfv9v84ZLO7aw_8t8pTDMUYxj2SNnSBfRmg@mail.gmail.com>
-Subject: Re: [PULL 14/24] hw/uefi: add var-service-json.c + qapi for NV vars.
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, 
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BkP8lvVkr6js
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 11/13] target/arm/cpu: remove inline stubs for aarch32
+ emulation
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+ <20250318045125.759259-12-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250318045125.759259-12-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: fTtDAAZyD3cB
 
-On Tue, 4 Mar 2025 at 12:49, Gerd Hoffmann <kraxel@redhat.com> wrote:
->
-> Define qapi schema for the uefi variable store state.
->
-> Use it and the generated visitor helper functions to store persistent
-> (EFI_VARIABLE_NON_VOLATILE) variables in JSON format on disk.
->
-> Acked-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> Message-ID: <20250225163031.1409078-15-kraxel@redhat.com>
-> [ incremental fix squashed in ]
-> Message-ID: <pji24p6oag7cn2rovus7rquo7q2c6tokuquobfro2sqorky7vu@tk7cxud6jw7f>
+On 18/3/25 05:51, Pierrick Bouvier wrote:
+> Directly condition associated calls in target/arm/helper.c for now.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   target/arm/cpu.h    | 8 --------
+>   target/arm/helper.c | 6 ++++++
+>   2 files changed, 6 insertions(+), 8 deletions(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 51b6428cfec..9205cbdec43 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1222,7 +1222,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+>    */
+>   void arm_emulate_firmware_reset(CPUState *cpustate, int target_el);
+>   
+> -#ifdef TARGET_AARCH64
+>   int aarch64_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>   int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+>   void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+> @@ -1254,13 +1253,6 @@ static inline uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
+>   #endif
+>   }
+>   
+> -#else
+> -static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
+> -static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+> -                                         int n, bool a)
+> -{ }
+> -#endif
+> -
+>   void aarch64_sync_32_to_64(CPUARMState *env);
+>   void aarch64_sync_64_to_32(CPUARMState *env);
+>   
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index b46b2bffcf3..774e1ee0245 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6562,7 +6562,9 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>        */
+>       new_len = sve_vqm1_for_el(env, cur_el);
+>       if (new_len < old_len) {
+> +#ifdef TARGET_AARCH64
 
-Hi; Coverity points out some problems in this code
-(CID 1593154, 1593157):
+What about using runtime check instead?
 
+  if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && new_len < old_len) {
 
-> +void uefi_vars_json_load(uefi_vars_state *uv, Error **errp)
-> +{
-> +    UefiVarStore *vs;
-> +    QObject *qobj;
-> +    Visitor *v;
-> +    char *str;
-> +    size_t len;
-> +    int rc;
-> +
-> +    if (uv->jsonfd == -1) {
-> +        return;
-> +    }
-> +
-> +    len = lseek(uv->jsonfd, 0, SEEK_END);
-
-lseek() can return -1 on error, but we don't check that
-here, so we can proceed forward with a negative length...
-
-> +    if (len == 0) {
-> +        return;
-> +    }
-> +
-> +    str = g_malloc(len + 1);
-
-...so we might try to malloc(0) here...
-
-> +    lseek(uv->jsonfd, 0, SEEK_SET);
-> +    rc = read(uv->jsonfd, str, len);
-
-...and read() will treat -1 as a very large positive
-value, overrunning the buffer.
-
-> +    if (rc != len) {
-> +        warn_report("%s: read error", __func__);
-
-If the read failed to read all the data, we need to
-bail out now, not proceed to pass the uninitialized
-buffer to qobject_from_json().
-
-Coverity doesn't notice it, but the code in
-uefi_vars_json_save() is also not handling errors
-from lseek() etc correctly.
-
-Do we absolutely need to be operating on a continuously open
-filedescriptor here rather than a filename? If we could make
-these functions use uv->jsonfile each time then we could use
-the glib functions g_file_get_contents() and
-g_file_set_contents(), which get all the pesky details of the
-error handling right for you.
-
-thanks
--- PMM
+>           aarch64_sve_narrow_vq(env, new_len + 1);
+> +#endif
+>       }
+>   }

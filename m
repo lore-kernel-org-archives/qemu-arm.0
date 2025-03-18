@@ -1,295 +1,126 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3252341njb;
-        Tue, 18 Mar 2025 15:38:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXbvlzEQSns5O8yVF6WmwG2Z/FhpsFATsqiOKPSmQ7LduZ7v/dTgWSKtlI9uzP/N1p3L5oYxrLkbd5vaQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDbrJZkHsHk8lwvjdwGFTt6Jw9/3mqg0Xf2TH4CJxtwOTAuI2zbJ6k0lmHEeY2T8rtH6sZ
-X-Received: by 2002:a05:620a:1987:b0:7c5:6678:ab18 with SMTP id af79cd13be357-7c5a84a8e6dmr51331685a.42.1742337509999;
-        Tue, 18 Mar 2025 15:38:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742337509; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3253197njb;
+        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXuXd3eGwQpsx5D+6KoaDq8RVUDYvarzukIkRmdlC4dmDI6gElP9Dm4V194j5L6rEZFXFyaYgr+OiqlJQ==@linaro.org
+X-Received: by 2002:a17:902:ce0f:b0:224:584:6f05 with SMTP id d9443c01a7336-22649c89560mr6594285ad.41.1742337622290;
+        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742337622; cv=none;
         d=google.com; s=arc-20240605;
-        b=kbLCz6nI1fQEOiVl8ymJkAKjSlCjQSLPwZVNmDmPrSICNwigM/GqFX7J6naQWzrPKg
-         KlAByzUl3sP2G29S/aTbB/INZfRSDSmD8BEo2NkX6oueZRpr7TgJBVRS+ZmFQ+G3Imnp
-         0aU2k/0a1d3rYvhuSN6VMcKjJ12iwHP/BiIV0+CAbmxkdaYm38rpNIiimuDzzuiGH+5g
-         kzzhpX27NKPU/G4nKNyaNg6L2qouQOvM8ux0UN4sVM+3pMt+ZC3qzic+sYB9wycE0KLu
-         zs16KPd4XdyzrUZtCGyoBU6xc839PALgLcSi9XTtCuB5e7VoCkicpWSwyakNsT3++pi4
-         87Dg==
+        b=ZLGM6kByOdYRHtwJOO81e4LZCf9XrVxbsJH+Yb0yeYbJZwwWOdg4ljBwKGoBl4gF6D
+         LjvJan/h/t+kUNS2SNCcxB0kdhh5aSM7BMjDvzc5QzMST4CMEQpr1SIzqdhagGc4vanV
+         1fE5a60nhNMbRplH1WusJyUJZwPUZtjr8GYmvx8i1U7lUJj8FpoA/0TA4ehYEljcNEVA
+         pFM99YMH6NgzanD5sgANds9g1iZBtbjUZMZuDrAvTANONgF0BTBcgPZdGFiPCNfp14tv
+         7gILcJv7SaWReaU6JnORCSiDthuijAHhgG+BS1rIhepNU+3Caf8eYTDcdm8a6romewXs
+         GoNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ur2+UR2faoF2snFORmP8GukCGRDJPf/ZNZug1dv0E2E=;
-        fh=LFcHrbHm0LXYVMFwyCX72WiAwyLl9LVSpLD51bE9VV8=;
-        b=gM3+9HMYnfRp3sBM30peZZCKkWU3SPPZhjYRqTOZGDmSyzzzXh8ZQXdxrf9KgL11n5
-         CEyLhJLPmxQBRVRR+j1UNtRdB98m/18ysencbIXQ1aGkD2vavoEoVKcLuHZyoeTf+5II
-         PTYNbmHh2r+V2pa0GSEF0uaX5nSpfoBrqACHLhZ2d8NsSByTdjYXW1PjEQXbb5rMPwVg
-         qvUAHgUe6DMiQTU7uePKV4llc25Guz4AnwGHU2L1OytA03G0+NY+p9QsTFBaEGucbS18
-         1m5Qe9AqIB/iW/JGsJRge+Fr36wNrGBI8Bku6LsDhLBgf7xWgo5wjEwLUZAislDkpj6M
-         t7Fg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
+        fh=aww2Rf2c8XVGKif7OrYTA7NPZogG7OUG541ik6FD5tU=;
+        b=lj7vx/pMYDHU4S+AWwozjkXe+jknidBfqNbEfDzuLmDDSbn74Hzyc+wCQbuO39njjH
+         mTSODP+zzqx+ArkiSgZae7Keo6d61fOUJ8HdDMlpBDdMQlA4xJl7zgIc1mHoapkacEhY
+         CxyEXuXGTb0gXkQ26ZZPxNFsgNsD/56BA6K7f3LiMDAKIF677N41fJDg3LbrlZVn4STi
+         yloFDvNamTXPp31En8UjPqqSy9DWffsohpB0XbG2PHnb6m6BClUsu0njWSXL2uz9seK4
+         4JCD0MeMA7eVhuZbwk+zUraDWuhztVUCxfsRe99IFJ8YVrLPloa0aj1vnXCfsAgzFLlO
+         QRXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=e2uPeMJH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=U6RUUwQ9;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573b981fdsi1366551785a.182.2025.03.18.15.38.29
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737116c1d7asor8699787b3a.8.2025.03.18.15.40.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 15:38:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=e2uPeMJH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=U6RUUwQ9;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tufZm-00026E-Jg; Tue, 18 Mar 2025 18:38:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1tufZf-00020g-2R; Tue, 18 Mar 2025 18:38:16 -0400
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1tufZc-0000ze-J6; Tue, 18 Mar 2025 18:38:14 -0400
-Received: by mail-oi1-x22c.google.com with SMTP id
- 5614622812f47-3fea67e64caso583599b6e.2; 
- Tue, 18 Mar 2025 15:38:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742337487; x=1742942287; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ur2+UR2faoF2snFORmP8GukCGRDJPf/ZNZug1dv0E2E=;
- b=e2uPeMJHrsVhdVMDVmySPfqVX8gK5mdDiimdaYWg1Bi6V4NpXRodc5nC8XnB+4viQ4
- ZqjA8zVNZoU/Adzr4SKNnh4iKsucEDWNBgwX8wlaez27blCROG2GO9MSzd0/6bccAiSq
- bfa6536SZAoVcKrEvPEjPXF7OdyJB0eBlqOcY1Xg8JXw0+jseCY/858/n9BTRf43SZXc
- b293mLzMbCdmVDJX6RsMWlZKHJCOqOqSSoY+cQXiaZBTAvw2/hRAfzGIOQCuhB4//1gV
- tvxfcqHjxWHC9sFNWQZkxdWAUDcyzUoFic+kaGGQ8AM9JhusPtB5CTCkR9vGsDxGaXAo
- jtxA==
+        d=linaro.org; s=google; t=1742337622; x=1742942422; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
+        b=U6RUUwQ9uCf27Rm90cBVdN1nAwSE8j2BodsHF9bsn1Gj4wXNSiClB4kVbQWrupJHqa
+         7ctTo/T+OaDGauDXUHJf4DZYc4kv3IW2utls65BlwXw7i9SVb2ybVTXdjcx7ajYwhJ3j
+         v7fSpE7maFTaYSD5xWuLwcYXXjzsgFBOpSqwVN7alRudSdJC2RkXgYgJVO2cqdob7pMG
+         u2NaWG7WhnTL8WsSN5l3Xdi0aalNriXPtCW6l98gjsqCq6DYL7ZLOqrobCyYbWZ86nLg
+         z9ak6JwcxzlBNiiTCwzOsQ0Py+s3P/vMEP7OTVzjV8sBOTHXI3nRES/AYeDraZ1Elu5V
+         3wmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742337487; x=1742942287;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ur2+UR2faoF2snFORmP8GukCGRDJPf/ZNZug1dv0E2E=;
- b=ZdxRfVvt1O0RBwwi7eb5yznO+ggXFFHfmLDip4GjYqwNTm5YOfRP+HtcxsoM1AM/lj
- L2MYLqLf4C0yXEBi6J1p4ArtpfIKMtvYQp0cH17sj2JLI0FBkL/tn5WzCS1LU+ptgmgV
- 8mWWxJj9F9CvpNEBkpPCfbjw4OUqSjatonyzvcmcpVRscXZY0nY5mtT58nwLwDwUKQ5u
- /c9ouohx9jMt+czB0YTFbtQmNOYguPtnzmRfpBJaeYjaEJ2mPBhjlYfIaBYC51up9Hjq
- 3D52invt9LF09J8QfDYpiEpdESsOMJ8qMPSBTRzKjMChYFd5SWCbZScaqgTc89g1944t
- yz6A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVigXdBvt1KaS09M7k2uCaOYy2fCYn8JFPdbBaEOW7vV8XCDnodO+Oe6ezsVmrmWKdaVfJHNhhmtw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/H8IQfqxwPBbp50Za8GDFEpahug+NGNXFT3OEgTlVkxrlHNDg
- Zbse9f7mZ1HtYBB8xgni3BR9dPKlpLb8dGwJmzuhPW9aqBPzWo+4qrSMA/7+Ls7XXYfNL5SkfeD
- vonbU+7pCExeRQ88G3DqsJL3XG6Q=
-X-Gm-Gg: ASbGncv/itlFhVRvDP71CAO5wZbIzGrNZ8Kz4OUZGnJRiK4DVMayakghK0gMWch2Oi8
- dGW/0LlKceYnR80sJuXh4kupuUA+RKr5uDY+g5prShiw9TpBAhsfppGHwNiXV2J2vtsWJ1aOtw/
- dNzRxCJI+XN/mvuAnJq7h2p08i8NkY7PffvMo3BE3F3bYJG+r3TZYeam6+
-X-Received: by 2002:a05:6808:1645:b0:3f9:56ff:1468 with SMTP id
- 5614622812f47-3fead5b65cbmr238934b6e.24.1742337486775; Tue, 18 Mar 2025
- 15:38:06 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742337622; x=1742942422;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
+        b=kZHKoaaQHKRt7zSw3NfJdgXQaqWDtlAWk1mJ+rw/u05UvZaJZdpAMjaoQRpQhwTRUO
+         SH/D3lBMA7ZNUS7s1wh7h958L5pC+Jf/hXq7lLiBBCGdBKdagaf905YP6BHR4qSvhPBB
+         xbqVKndsJdtOjPgii7vcxAulR3BGnuoEPx/3Sdd9Yycoedy6FKYKKKdHOwasbv2B71V9
+         bsiWEu02CH1bZWRFYYy/1kAj8BG7Yg/0C1dW9aatd1XI0C/fdipCveyu2L+9WUUFWBU4
+         eVg0tVW+BRoEtnAAFoZ/btteB5r0l8CSQA9PqVSz1MKZsOlawSWnDwR1MIS8E9YdQcTb
+         Nesw==
+X-Forwarded-Encrypted: i=1; AJvYcCUPk1mpVEPnzrB0TezP7jsFmCAFNqxIcTX5SD/xZjFAZ4epc/U2z4lxofmru9ykvmWnpX4xKgbAQWqhkQ==@linaro.org
+X-Gm-Message-State: AOJu0YygsbaW2LbXwF7guQL2w6BXKCWhQ0kKENOeqEvwKd3CWTdxeiex
+	DFPnOX4dCSr10xVJC89tLmulA9SRM+C0Iny1Q1d9aB2Czg4znAUmEYzfFNXG/+iIGg==
+X-Gm-Gg: ASbGncuDaM5k/0fkLNJLsUvFzOLvuextovrZcp1BHlLk0wOIhNjVXbN6KVZUWNst5UX
+	WG7+A/E9UaEcBCz6FEYMbpjUwcN5Fm0lrzZGwotjvjYFgjq+BNCj7NmV3e9/pmJ6aLFbAxoRcdP
+	3zpy65xqgnwXmt66VcbYGIZzJp8gscQJQ3zuBw20QO1b9JyHA9PUfikgc/6x28ckmhyhyu08gzX
+	tApDqmM7Qntm4GnT/LUc57ZUtIDuTcT8qEl6TAs0rysBScopwseqE4zPxWa+dSNUQMsR3IA02JL
+	S6hb+UweyizMIOcNqvU6nUIXg5cOUikHaAFYwU8ydiwOn7WYVPMt/oh73y5MkfUQHpORB5/WUbl
+	67DMdQnFJOSA2VEDpHiQ=
+X-Google-Smtp-Source: AGHT+IHhbx4zrSFVC9Erry5Z56X+U/eo+aBTKB3hU0AYmsuCxAbdXsclAmXZcf+supeAECu7ukRqHQ==
+X-Received: by 2002:a05:6a00:80c:b0:736:ff65:3fd0 with SMTP id d2e1a72fcca58-7376d6ead4dmr711477b3a.16.1742337621894;
+        Tue, 18 Mar 2025 15:40:21 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-74-48.tukw.qwest.net. [174.21.74.48])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711529531sm10202523b3a.2.2025.03.18.15.40.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Mar 2025 15:40:21 -0700 (PDT)
+Message-ID: <9556c183-c103-403c-b400-0942d42785d7@linaro.org>
+Date: Tue, 18 Mar 2025 15:40:19 -0700
 MIME-Version: 1.0
-References: <20250318055415.16501-1-thuth@redhat.com>
-In-Reply-To: <20250318055415.16501-1-thuth@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 18 Mar 2025 23:37:55 +0100
-X-Gm-Features: AQ5f1JppQe0Fdq14vsW5zFBD8ORE_6qkzwDUUl7MVyB4WdZLKY2HsZnj6jCYMZY
-Message-ID: <CAPan3Wr=Td9EK3F5XgMkPeWyDEWfKbKocbsNew9Jf7gsjTppAQ@mail.gmail.com>
-Subject: Re: [PATCH] docs/system: Use the meson binary from the pyvenv
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Akihiko Odaki <akihiko.odaki@daynix.com>, 
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>
-Content-Type: multipart/alternative; boundary="000000000000fa6dc70630a58ea7"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22c;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-oi1-x22c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m2zW6srBEt44
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/13] target/arm/cpu: flags2 is always uint64_t
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+ <20250318045125.759259-9-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250318045125.759259-9-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: rhAge5erhi7E
 
---000000000000fa6dc70630a58ea7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
-On Tue, Mar 18, 2025 at 6:54=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
-e:
-
-> From: Thomas Huth <thuth@redhat.com>
->
-> To avoid problems with the meson installation from the host
-> system, we should always use the meson from our venv instead.
-> Thus use this in the documentation, too.
->
-> While we're at it, also mention that it has to be run from
-> the build folder (in the igb.rst file; the other two files
-> were already fine).
->
-> Suggested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 3/17/25 21:51, Pierrick Bouvier wrote:
+> Do not rely on target dependent type, but use a fixed type instead.
+> Since the original type is unsigned, it should be safe to extend its
+> size without any side effect.
+> 
+> Signed-off-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
 > ---
->  docs/system/arm/bananapi_m2u.rst | 2 +-
->  docs/system/arm/orangepi.rst     | 2 +-
->  docs/system/devices/igb.rst      | 5 +++--
->  3 files changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/docs/system/arm/bananapi_m2u.rst
-> b/docs/system/arm/bananapi_m2u.rst
-> index d30db8d04c3..6efa222c16f 100644
-> --- a/docs/system/arm/bananapi_m2u.rst
-> +++ b/docs/system/arm/bananapi_m2u.rst
-> @@ -136,4 +136,4 @@ provide the following command:
->
->    $ cd qemu-build-dir
->    $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \
-> -    meson test --suite thorough func-arm-arm_bpim2u
-> +    pyvenv/bin/meson test --suite thorough func-arm-arm_bpim2u
-> diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
-> index 8b9448ca7b0..716062fca9c 100644
-> --- a/docs/system/arm/orangepi.rst
-> +++ b/docs/system/arm/orangepi.rst
-> @@ -262,4 +262,4 @@ provide the following command from the build director=
-y:
->  .. code-block:: bash
->
->    $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \
-> -    meson test --suite thorough func-arm-arm_orangepi
-> +    pyvenv/bin/meson test --suite thorough func-arm-arm_orangepi
-> diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst
-> index 9145af5c757..71f31cb1160 100644
-> --- a/docs/system/devices/igb.rst
-> +++ b/docs/system/devices/igb.rst
-> @@ -57,11 +57,12 @@ directory:
->    meson test qtest-x86_64/qos-test
->
->  ethtool can test register accesses, interrupts, etc. It is automated as =
-an
-> -functional test and can be ran with the following command:
-> +functional test and can be run from the build directory with the followi=
-ng
-> +command:
->
->  .. code:: shell
->
-> -  meson test --suite thorough func-x86_64-netdev_ethtool
-> +  pyvenv/bin/meson test --suite thorough func-x86_64-netdev_ethtool
->
->  References
->  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --
-> 2.48.1
->
->
+>   target/arm/cpu.h        | 2 +-
+>   target/arm/tcg/hflags.c | 4 ++--
+>   2 files changed, 3 insertions(+), 3 deletions(-)
 
---=20
-Niek Linnenbank
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
---000000000000fa6dc70630a58ea7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+We can also remove the comment lower down about cs_base being
+based on target_ulong, since that was changed some time ago:
 
-<div dir=3D"ltr">Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklin=
-nenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><br><div class=3D"=
-gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On=
- Tue, Mar 18, 2025 at 6:54=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailto:thu=
-th@redhat.com">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">From: Thomas Huth &lt;<a href=3D"mailto:th=
-uth@redhat.com" target=3D"_blank">thuth@redhat.com</a>&gt;<br>
-<br>
-To avoid problems with the meson installation from the host<br>
-system, we should always use the meson from our venv instead.<br>
-Thus use this in the documentation, too.<br>
-<br>
-While we&#39;re at it, also mention that it has to be run from<br>
-the build folder (in the igb.rst file; the other two files<br>
-were already fine).<br>
-<br>
-Suggested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.co=
-m" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0docs/system/arm/bananapi_m2u.rst | 2 +-<br>
-=C2=A0docs/system/arm/orangepi.rst=C2=A0 =C2=A0 =C2=A0| 2 +-<br>
-=C2=A0docs/system/devices/igb.rst=C2=A0 =C2=A0 =C2=A0 | 5 +++--<br>
-=C2=A03 files changed, 5 insertions(+), 4 deletions(-)<br>
-<br>
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2=
-u.rst<br>
-index d30db8d04c3..6efa222c16f 100644<br>
---- a/docs/system/arm/bananapi_m2u.rst<br>
-+++ b/docs/system/arm/bananapi_m2u.rst<br>
-@@ -136,4 +136,4 @@ provide the following command:<br>
-<br>
-=C2=A0 =C2=A0$ cd qemu-build-dir<br>
-=C2=A0 =C2=A0$ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \<br>
--=C2=A0 =C2=A0 meson test --suite thorough func-arm-arm_bpim2u<br>
-+=C2=A0 =C2=A0 pyvenv/bin/meson test --suite thorough func-arm-arm_bpim2u<b=
-r>
-diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst<br=
->
-index 8b9448ca7b0..716062fca9c 100644<br>
---- a/docs/system/arm/orangepi.rst<br>
-+++ b/docs/system/arm/orangepi.rst<br>
-@@ -262,4 +262,4 @@ provide the following command from the build directory:=
-<br>
-=C2=A0.. code-block:: bash<br>
-<br>
-=C2=A0 =C2=A0$ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \<br>
--=C2=A0 =C2=A0 meson test --suite thorough func-arm-arm_orangepi<br>
-+=C2=A0 =C2=A0 pyvenv/bin/meson test --suite thorough func-arm-arm_orangepi=
-<br>
-diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst<br>
-index 9145af5c757..71f31cb1160 100644<br>
---- a/docs/system/devices/igb.rst<br>
-+++ b/docs/system/devices/igb.rst<br>
-@@ -57,11 +57,12 @@ directory:<br>
-=C2=A0 =C2=A0meson test qtest-x86_64/qos-test<br>
-<br>
-=C2=A0ethtool can test register accesses, interrupts, etc. It is automated =
-as an<br>
--functional test and can be ran with the following command:<br>
-+functional test and can be run from the build directory with the following=
-<br>
-+command:<br>
-<br>
-=C2=A0.. code:: shell<br>
-<br>
--=C2=A0 meson test --suite thorough func-x86_64-netdev_ethtool<br>
-+=C2=A0 pyvenv/bin/meson test --suite thorough func-x86_64-netdev_ethtool<b=
-r>
-<br>
-=C2=A0References<br>
-=C2=A0=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
--- <br>
-2.48.1<br>
-<br>
-</blockquote></div><div><br clear=3D"all"></div><br><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
-iv dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div>
+exec/translation-block.h:    uint64_t cs_base;
 
---000000000000fa6dc70630a58ea7--
+
+
+r~

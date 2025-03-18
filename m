@@ -1,522 +1,131 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2460391njb;
-        Mon, 17 Mar 2025 12:00:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWuoEKTW3uFE11YwV+sf5egGncU1p9Lq8ZQwPTHRt07z2rdKfpePzDV6tTNr1kGUMNDfc2KFG1lZ+ExBw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGESwjuurubeZtdOpLRHnx1Y0zp5uDYlF+zMYccsdPxyzj1NJ0B0gkqX2sI51e0gQQp8DZr
-X-Received: by 2002:a05:6102:304c:b0:4c3:6215:9f86 with SMTP id ada2fe7eead31-4c3831f69d2mr10308409137.19.1742238050870;
-        Mon, 17 Mar 2025 12:00:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742238050; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694575njb;
+        Mon, 17 Mar 2025 21:51:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUezj1G9QY26DGx1hxOr2olVblYb4mRtCKVplNy3+Eg+NelWD7Ob+bP1MKLGMzFSpaoZAsZDEb3GUfwvA==@linaro.org
+X-Received: by 2002:a05:6a00:1950:b0:736:53bc:f1ab with SMTP id d2e1a72fcca58-737223b908dmr18185249b3a.12.1742273494450;
+        Mon, 17 Mar 2025 21:51:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742273494; cv=none;
         d=google.com; s=arc-20240605;
-        b=g/Lr8ofMQlJN5Qy4f7O+FzGKtBCXncfDAZp6ZI7V5U+pzUGeuuHa4zeAn6aF/1Jy2/
-         x2EuoeNmQptkJbTu0p6FUnSj+s+AdKWGZ5VsV8zM16qdkTJHw9vseZCFp1DQwy2EAcPv
-         yQbIq1jGaGh8g/7VwQwEaKo0FWlNFMcTvVL9/UYDXNh8MK5JshlAXKx35HKtbtVke+lh
-         dsmtB4D0f2sGAvbgm8x4/9AN+gFMrC1DLkKYmr7wr4XOPHn2qdDYQ8vWlaxydBr4FIDh
-         fzc+gBguy2Bo5NZu4vckThrmt5vl9ezzKAZPFHKWWPv8fmBxE+fETq3tpIoembkLeqaf
-         U1hQ==
+        b=P//0sKJqu0G+PJcRJX5Dg+BaRkSrZlA7VL4W1JCl8gpHJ+qWso9iWs5nYPodHUmOYy
+         KbCFQhnj+oowboC1ONxNQ9S8788R9bZRK0AX5Pdic3E47xr6sJMUPzwz7K75J2EJeL9S
+         YWJAYXCfMr9TarmRHmUWW7stfGvTesigm0wC0nLcShep5dcDIPzKK3T7JI/MkaSyA/vW
+         Kbo3jZ6tbPSlVwsH0Ky/NwUUmdKZMblV8fXEHUtbvQ9ugFhheIw/zV7OBnVUeKOOzgjy
+         qBvsX0SNfCZzO+AjSQ2Qh73OjpRBx3oOGvEt86X587+JfCqrivQeyNQkNb2U4rjziTGN
+         RGhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=35xefrH8xe7t1pSO8PfgmdbymaVag22N+2YXnyOKM/4=;
-        fh=4yjExnyc+rO6t1EQFw3oJK8R7fGJ1RylpulJxkFF7fU=;
-        b=VYgr9pw66P0EmJy9ykndy0XGaya+FGOux02GSfrLz4X0g/BW6t/alhTZ7W85M2CPBT
-         VqUSb4umeRt3Uoh0O5Kf8xgQAmtDUcQSZGEreKiTMeJJoIfGeYqir1M4zL93PTLvmPfy
-         srp7ASJRM04AfsCGWJ0LSG2VlSrb7paHT6ZiW851X8615vTwuuZScOmAJEOqCgIWeVqt
-         2DmCreVWzhhmCpDRo4dt0mKbhT8XZDZ7vk6Hpz3hYKs4g33jyQhP6LDRYeuvRBv05iKT
-         lrqZXEdmLRBWltPx0L4dS5wZUGe8lNzsAE92IKkMAIB873d8A6DthFPO6cO2pzFno4/A
-         asUQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qcqbwr1tVieUFzv+VyvLW43sytu+qG57UDVEiNckHsM=;
+        fh=XkOa7HZAbl772HwbK5c00feuSmDxjUApEZ4HtRHqsK4=;
+        b=lo7+Hw90Au7ZDVRu8y1ODRASOfknhYUSz+ypc2kr61Cc25TBPEF6CQq4I0vrFvUuIt
+         UYWdVGldQY2eBlu/FvqJ7eDVLLzLqxE4RWhijaeZUVPGridP2mnn6sMYE/IYXRUmgoGV
+         iqQKZO/lGOwqkJkm0P9piPAlqZnDIr5YjuFjBdj+4KsFxRdPKHAj9MawkNs03FmFslLI
+         GUYtJPLA0k7TRlRrOTtlufZ3+RacDldbB+dr52QkptMaIewfV/Mxsc9UqQ+mYV4nV75A
+         781eyBfbmB7DLRmHUyNPevYIKFJI7N+l34DiGUNTa+ZQaEIo2BaaaYtMD5sLQHFdeKBe
+         IWDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hd+K5Q9V;
-       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c374b05bf3si2576076137.529.2025.03.17.12.00.50
+       dkim=pass header.i=@linaro.org header.s=google header.b=XMCxba1Z;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73712bcf73asor4905594b3a.5.2025.03.17.21.51.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Mar 2025 12:00:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 17 Mar 2025 21:51:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hd+K5Q9V;
-       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-rust-bounces@nongnu.org>)
-	id 1tuFhC-0008VQ-2h; Mon, 17 Mar 2025 15:00:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tuFhA-0008UN-SH
- for qemu-rust@nongnu.org; Mon, 17 Mar 2025 15:00:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tuFh7-00033F-IQ
- for qemu-rust@nongnu.org; Mon, 17 Mar 2025 15:00:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742238005;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=35xefrH8xe7t1pSO8PfgmdbymaVag22N+2YXnyOKM/4=;
- b=Hd+K5Q9VngOzTezaZWDm0TOhoU/8eUtIJTY/zCy1ylGh4upJdXU7JBWqIz4O3VOrrTTt9D
- 60MXK7+vpZDiNUcrzUCRM3YBIqtCFDNhUD1nJqhCEcuyKimBTup2aaSBIYzFNPTitC6zGn
- gTW8R1Q2+zxff/AGG2Sz0Zc+xxalhjc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-212-TvT3-mhYOeafWWnoJ39p7Q-1; Mon,
- 17 Mar 2025 14:59:57 -0400
-X-MC-Unique: TvT3-mhYOeafWWnoJ39p7Q-1
-X-Mimecast-MFC-AGG-ID: TvT3-mhYOeafWWnoJ39p7Q_1742237996
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6002D1956089; Mon, 17 Mar 2025 18:59:55 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.27])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 94A1E18001DE; Mon, 17 Mar 2025 18:59:52 +0000 (UTC)
-Date: Mon, 17 Mar 2025 18:59:49 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-rust@nongnu.org
-Subject: Re: [PATCH] rust: pl011: Cut down amount of text quoted from PL011 TRM
-Message-ID: <Z9hxJZhDO17SjYPS@redhat.com>
-References: <20250317173239.941034-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XMCxba1Z;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1742273494; x=1742878294; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qcqbwr1tVieUFzv+VyvLW43sytu+qG57UDVEiNckHsM=;
+        b=XMCxba1ZFX9M/iqJZ74+2VvmqDIpaHbIAffTaqLZ5ajsUx3EN8f4shjlytTNjtkzYb
+         rAWNh/UrTHOaQK5FsOJUmrcb4XYboi405mkL+lxnpS9k57JarxYFk2Y8/DMof0f7VX5t
+         QvKsr8eF8X/TEjMGHP5Nj9vGVzKU40qOOBpW/HaFF/YtiVJoFI57r3Pr6KYJsiYSHO0o
+         ZsS2kmXlvIsO0JN8vRC0OGphDJ6/Qmo9Ir8p6BQxOcbz8NSgbzptDBGxwsmSsbsjuwx+
+         20jMJ6TIRZ5qtm4Pn6xQv+KWeCn1PhzO0437agxCB7W8v6qe/nIOjB8d/ggL0PTUz2Z9
+         LuSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742273494; x=1742878294;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qcqbwr1tVieUFzv+VyvLW43sytu+qG57UDVEiNckHsM=;
+        b=ZdmvRXccTbocBtCbmjMfLFstVis2yip+5jcPn+KyiRopxARGPVUZacjfUP+lWvXkjI
+         Rm41epwFeHXOagOciJAftTJEu6WWqOgmRTansN5/LHnKzIwGVJj9jlRDoA7zOM+uOR+T
+         PuNX5Sc3eMf0eolqPbpVBormyxJDp1et76y86iQG5hi7btXovci3Yp4eHhLkaRqGkrCY
+         wVKJ643Xi8nRtlBVcAuTyuE5fycXbJXqW43+h6x3HRGkm1O1IxWRhcghSbefS8x33pjD
+         kJrpPyqN7Bf1AlEQMqoK2pf9uflmkvPrfgJRlC9LK7Spy8q1cIOTO5cAF4mhKO/v+M4C
+         JbXg==
+X-Forwarded-Encrypted: i=1; AJvYcCVT6lTs3Vmu9bxqVPf3dyKPWDMyylKN73mJeEUyk4S+m5NN769uVmgEnrN7TG2ZmQtdZW7+WsLSdlyG3w==@linaro.org
+X-Gm-Message-State: AOJu0YztR7dncCWtcvHzkVcteyii6VwatOOvevUeECwMHB4QNX7J1LMT
+	0fposX1MnrCj7GAGaNMrKkXLkQdUWGZ+7jVpzX5DM1Xm8tQN0ndo21hb4mNYACKWKw==
+X-Gm-Gg: ASbGnct0I+69bJEU4oPJnk8pcDEeyboVBuVL+vocpTLPQFBKAjSQq3avHzbezsBeBAn
+	toRhRHsRkHdn4Xj4qjH3HkGXdPDTZ4yDyBo4ukSh4EGsFYKzHevMDOB3T5NFT0V8/LjC/s++sph
+	5HPrSgASl/0C0BUZ+U72+W+Pae6Ab8zDICbxmTN4eb7SeHC+SPudnKOJXxePCW8n2j++nzGUhQs
+	Z5EoM9eXziLd0nS1ra+/d1qV9ja7d/SMYZHMQJNEJKPjPVcNGEtbCkwiEp6EVyjcuEtHgRUXVBs
+	Ijwlom7i4yTvZC5/A7LKgD5EfQi5YEQ669UBi8SxdGfW
+X-Google-Smtp-Source: AGHT+IFfMoeTTqls6zY+hsXszh3yHhLtBiG+rzEGqdr9nPsWVicrdsS6kI4KP9BQloEuNsUFe9nCuw==
+X-Received: by 2002:a05:6a20:d81b:b0:1f5:6c94:2cce with SMTP id adf61e73a8af0-1f5c12cd664mr22674037637.30.1742273494052;
+        Mon, 17 Mar 2025 21:51:34 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 21:51:33 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	kvm@vger.kernel.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 01/13] exec/cpu-all: restrict BSWAP_NEEDED to target specific code
+Date: Mon, 17 Mar 2025 21:51:13 -0700
+Message-Id: <20250318045125.759259-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250317173239.941034-1-peter.maydell@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.335,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-rust@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: QEMU Rust-related patches and discussion <qemu-rust.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-rust>,
- <mailto:qemu-rust-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-rust>
-List-Post: <mailto:qemu-rust@nongnu.org>
-List-Help: <mailto:qemu-rust-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-rust>,
- <mailto:qemu-rust-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0RIUGrlBk2lT
+X-TUID: yMPP+tScrU6/
 
-On Mon, Mar 17, 2025 at 05:32:39PM +0000, Peter Maydell wrote:
-> Currently the comments in the Rust pl011 register.rs file include
-> large amounts of text from the PL011 TRM.  This is much more
-> commentary than we typically quote from a device reference manual,
-> and much of it is not relevant to QEMU.  Compress and rephrase the
-> comments so that we are not quoting such a large volume of TRM text.
+This identifier is already poisoned, so it can't be used from common
+code anyway.
 
-Is there any significant amount of quoted text remaining after
-this patch ?
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ include/exec/cpu-all.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-AFAICT, we shouldn't be directly quoting any non-trivial parts
-of the text as it is not license compatible.
-
-> 
-> We add a URL for the TRM; readers who need more detail on the
-> function of the register bits can find it there, presented in
-> context with the overall description of the hardware.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  rust/hw/char/pl011/src/registers.rs | 261 ++++++----------------------
->  1 file changed, 51 insertions(+), 210 deletions(-)
-> 
-> diff --git a/rust/hw/char/pl011/src/registers.rs b/rust/hw/char/pl011/src/registers.rs
-> index cd92fa2c300..690feb63785 100644
-> --- a/rust/hw/char/pl011/src/registers.rs
-> +++ b/rust/hw/char/pl011/src/registers.rs
-> @@ -5,13 +5,13 @@
->  //! Device registers exposed as typed structs which are backed by arbitrary
->  //! integer bitmaps. [`Data`], [`Control`], [`LineControl`], etc.
->  
-> +// For more detail see the PL011 Technical Reference Manual DDI0183:
-> +// https://developer.arm.com/documentation/ddi0183/latest/
-> +
->  use bilge::prelude::*;
->  use qemu_api::impl_vmstate_bitsized;
->  
->  /// Offset of each register from the base memory address of the device.
-> -///
-> -/// # Source
-> -/// ARM DDI 0183G, Table 3-1 p.3-3
->  #[doc(alias = "offset")]
->  #[allow(non_camel_case_types)]
->  #[repr(u64)]
-> @@ -87,48 +87,11 @@ pub struct Errors {
->      _reserved_unpredictable: u4,
->  }
->  
-> -// TODO: FIFO Mode has different semantics
->  /// Data Register, `UARTDR`
->  ///
-> -/// The `UARTDR` register is the data register.
-> -///
-> -/// For words to be transmitted:
-> -///
-> -/// - if the FIFOs are enabled, data written to this location is pushed onto the
-> -///   transmit
-> -/// FIFO
-> -/// - if the FIFOs are not enabled, data is stored in the transmitter holding
-> -///   register (the
-> -/// bottom word of the transmit FIFO).
-> -///
-> -/// The write operation initiates transmission from the UART. The data is
-> -/// prefixed with a start bit, appended with the appropriate parity bit
-> -/// (if parity is enabled), and a stop bit. The resultant word is then
-> -/// transmitted.
-> -///
-> -/// For received words:
-> -///
-> -/// - if the FIFOs are enabled, the data byte and the 4-bit status (break,
-> -///   frame, parity,
-> -/// and overrun) is pushed onto the 12-bit wide receive FIFO
-> -/// - if the FIFOs are not enabled, the data byte and status are stored in the
-> -///   receiving
-> -/// holding register (the bottom word of the receive FIFO).
-> -///
-> -/// The received data byte is read by performing reads from the `UARTDR`
-> -/// register along with the corresponding status information. The status
-> -/// information can also be read by a read of the `UARTRSR/UARTECR`
-> -/// register.
-> -///
-> -/// # Note
-> -///
-> -/// You must disable the UART before any of the control registers are
-> -/// reprogrammed. When the UART is disabled in the middle of
-> -/// transmission or reception, it completes the current character before
-> -/// stopping.
-> -///
-> -/// # Source
-> -/// ARM DDI 0183G 3.3.1 Data Register, UARTDR
-> +/// The `UARTDR` register is the data register; write for TX and
-> +/// read for RX. It is a 12-bit register, where bits 7..0 are the
-> +/// character and bits 11..8 are error bits.
->  #[bitsize(32)]
->  #[derive(Clone, Copy, Default, DebugBits, FromBits)]
->  #[doc(alias = "UARTDR")]
-> @@ -144,30 +107,17 @@ impl Data {
->      pub const BREAK: Self = Self { value: 1 << 10 };
->  }
->  
-> -// TODO: FIFO Mode has different semantics
->  /// Receive Status Register / Error Clear Register, `UARTRSR/UARTECR`
->  ///
-> -/// The UARTRSR/UARTECR register is the receive status register/error clear
-> -/// register. Receive status can also be read from the `UARTRSR`
-> -/// register. If the status is read from this register, then the status
-> -/// information for break, framing and parity corresponds to the
-> -/// data character read from the [Data register](Data), `UARTDR` prior to
-> -/// reading the UARTRSR register. The status information for overrun is
-> -/// set immediately when an overrun condition occurs.
-> +/// This register provides a different way to read the four receive
-> +/// status error bits that can be found in bits 11..8 of the UARTDR
-> +/// on a read. It gets updated when the guest reads UARTDR, and the
-> +/// status bits correspond to that character that was just read.
->  ///
-> -///
-> -/// # Note
-> -/// The received data character must be read first from the [Data
-> -/// Register](Data), `UARTDR` before reading the error status associated
-> -/// with that data character from the `UARTRSR` register. This read
-> -/// sequence cannot be reversed, because the `UARTRSR` register is
-> -/// updated only when a read occurs from the `UARTDR` register. However,
-> -/// the status information can also be obtained by reading the `UARTDR`
-> -/// register
-> -///
-> -/// # Source
-> -/// ARM DDI 0183G 3.3.2 Receive Status Register/Error Clear Register,
-> -/// UARTRSR/UARTECR
-> +/// The TRM confusingly describes this offset as UARTRSR for reads
-> +/// and UARTECR for writes, but really it's a single error status
-> +/// register where writing anything to the register clears the error
-> +/// bits.
->  #[bitsize(32)]
->  #[derive(Clone, Copy, DebugBits, FromBits)]
->  pub struct ReceiveStatusErrorClear {
-> @@ -196,54 +146,29 @@ fn default() -> Self {
->  #[bitsize(32)]
->  #[derive(Clone, Copy, DebugBits, FromBits)]
->  /// Flag Register, `UARTFR`
-> +///
-> +/// This has the usual inbound RS232 modem-control signals, plus flags
-> +/// for RX and TX FIFO fill levels and a BUSY flag.
->  #[doc(alias = "UARTFR")]
->  pub struct Flags {
-> -    /// CTS Clear to send. This bit is the complement of the UART clear to
-> -    /// send, `nUARTCTS`, modem status input. That is, the bit is 1
-> -    /// when `nUARTCTS` is LOW.
-> +    /// CTS: Clear to send
->      pub clear_to_send: bool,
-> -    /// DSR Data set ready. This bit is the complement of the UART data set
-> -    /// ready, `nUARTDSR`, modem status input. That is, the bit is 1 when
-> -    /// `nUARTDSR` is LOW.
-> +    /// DSR: Data set ready
->      pub data_set_ready: bool,
-> -    /// DCD Data carrier detect. This bit is the complement of the UART data
-> -    /// carrier detect, `nUARTDCD`, modem status input. That is, the bit is
-> -    /// 1 when `nUARTDCD` is LOW.
-> +    /// DCD: Data carrier detect
->      pub data_carrier_detect: bool,
-> -    /// BUSY UART busy. If this bit is set to 1, the UART is busy
-> -    /// transmitting data. This bit remains set until the complete
-> -    /// byte, including all the stop bits, has been sent from the
-> -    /// shift register. This bit is set as soon as the transmit FIFO
-> -    /// becomes non-empty, regardless of whether the UART is enabled
-> -    /// or not.
-> +    /// BUSY: UART busy. In real hardware, set while the UART is
-> +    /// busy transmitting data. QEMU's implementation never sets BUSY.
->      pub busy: bool,
-> -    /// RXFE Receive FIFO empty. The meaning of this bit depends on the
-> -    /// state of the FEN bit in the UARTLCR_H register. If the FIFO
-> -    /// is disabled, this bit is set when the receive holding
-> -    /// register is empty. If the FIFO is enabled, the RXFE bit is
-> -    /// set when the receive FIFO is empty.
-> +    /// RXFE: Receive FIFO empty
->      pub receive_fifo_empty: bool,
-> -    /// TXFF Transmit FIFO full. The meaning of this bit depends on the
-> -    /// state of the FEN bit in the UARTLCR_H register. If the FIFO
-> -    /// is disabled, this bit is set when the transmit holding
-> -    /// register is full. If the FIFO is enabled, the TXFF bit is
-> -    /// set when the transmit FIFO is full.
-> +    /// TXFF: Transmit FIFO full
->      pub transmit_fifo_full: bool,
-> -    /// RXFF Receive FIFO full. The meaning of this bit depends on the state
-> -    /// of the FEN bit in the UARTLCR_H register. If the FIFO is
-> -    /// disabled, this bit is set when the receive holding register
-> -    /// is full. If the FIFO is enabled, the RXFF bit is set when
-> -    /// the receive FIFO is full.
-> +    /// RXFF: Receive FIFO full
->      pub receive_fifo_full: bool,
-> -    /// Transmit FIFO empty. The meaning of this bit depends on the state of
-> -    /// the FEN bit in the [Line Control register](LineControl),
-> -    /// `UARTLCR_H`. If the FIFO is disabled, this bit is set when the
-> -    /// transmit holding register is empty. If the FIFO is enabled,
-> -    /// the TXFE bit is set when the transmit FIFO is empty. This
-> -    /// bit does not indicate if there is data in the transmit shift
-> -    /// register.
-> +    /// TXFE: Transmit FIFO empty
->      pub transmit_fifo_empty: bool,
-> -    /// `RI`, is `true` when `nUARTRI` is `LOW`.
-> +    /// RI: Ring indicator
->      pub ring_indicator: bool,
->      _reserved_zero_no_modify: u23,
->  }
-> @@ -270,54 +195,23 @@ fn default() -> Self {
->  /// Line Control Register, `UARTLCR_H`
->  #[doc(alias = "UARTLCR_H")]
->  pub struct LineControl {
-> -    /// BRK Send break.
-> -    ///
-> -    /// If this bit is set to `1`, a low-level is continually output on the
-> -    /// `UARTTXD` output, after completing transmission of the
-> -    /// current character. For the proper execution of the break command,
-> -    /// the software must set this bit for at least two complete
-> -    /// frames. For normal use, this bit must be cleared to `0`.
-> +    /// BRK: Send break
->      pub send_break: bool,
-> -    /// 1 PEN Parity enable:
-> -    ///
-> -    /// - 0 = parity is disabled and no parity bit added to the data frame
-> -    /// - 1 = parity checking and generation is enabled.
-> -    ///
-> -    /// See Table 3-11 on page 3-14 for the parity truth table.
-> +    /// PEN: Parity enable
->      pub parity_enabled: bool,
-> -    /// EPS Even parity select. Controls the type of parity the UART uses
-> -    /// during transmission and reception:
-> -    /// - 0 = odd parity. The UART generates or checks for an odd number of 1s
-> -    ///   in the data and parity bits.
-> -    /// - 1 = even parity. The UART generates or checks for an even number of 1s
-> -    ///   in the data and parity bits.
-> -    /// This bit has no effect when the `PEN` bit disables parity checking
-> -    /// and generation. See Table 3-11 on page 3-14 for the parity
-> -    /// truth table.
-> +    /// EPS: Even parity select
->      pub parity: Parity,
-> -    /// 3 STP2 Two stop bits select. If this bit is set to 1, two stop bits
-> -    /// are transmitted at the end of the frame. The receive
-> -    /// logic does not check for two stop bits being received.
-> +    /// STP2: Two stop bits select
->      pub two_stops_bits: bool,
-> -    /// FEN Enable FIFOs:
-> -    /// 0 = FIFOs are disabled (character mode) that is, the FIFOs become
-> -    /// 1-byte-deep holding registers 1 = transmit and receive FIFO
-> -    /// buffers are enabled (FIFO mode).
-> +    /// FEN: Enable FIFOs
->      pub fifos_enabled: Mode,
-> -    /// WLEN Word length. These bits indicate the number of data bits
-> -    /// transmitted or received in a frame as follows: b11 = 8 bits
-> +    /// WLEN: Word length in bits
-> +    /// b11 = 8 bits
->      /// b10 = 7 bits
->      /// b01 = 6 bits
->      /// b00 = 5 bits.
->      pub word_length: WordLength,
-> -    /// 7 SPS Stick parity select.
-> -    /// 0 = stick parity is disabled
-> -    /// 1 = either:
-> -    /// • if the EPS bit is 0 then the parity bit is transmitted and checked
-> -    /// as a 1 • if the EPS bit is 1 then the parity bit is
-> -    /// transmitted and checked as a 0. This bit has no effect when
-> -    /// the PEN bit disables parity checking and generation. See Table 3-11
-> -    /// on page 3-14 for the parity truth table.
-> +    /// SPS Stick parity select
->      pub sticky_parity: bool,
->      /// 31:8 - Reserved, do not modify, read as zero.
->      _reserved_zero_no_modify: u24,
-> @@ -342,11 +236,7 @@ fn default() -> Self {
->  /// `EPS` "Even parity select", field of [Line Control
->  /// register](LineControl).
->  pub enum Parity {
-> -    /// - 0 = odd parity. The UART generates or checks for an odd number of 1s
-> -    ///   in the data and parity bits.
->      Odd = 0,
-> -    /// - 1 = even parity. The UART generates or checks for an even number of 1s
-> -    ///   in the data and parity bits.
->      Even = 1,
->  }
->  
-> @@ -381,88 +271,39 @@ pub enum WordLength {
->  
->  /// Control Register, `UARTCR`
->  ///
-> -/// The `UARTCR` register is the control register. All the bits are cleared
-> -/// to `0` on reset except for bits `9` and `8` that are set to `1`.
-> -///
-> -/// # Source
-> -/// ARM DDI 0183G, 3.3.8 Control Register, `UARTCR`, Table 3-12
-> +/// The `UARTCR` register is the control register. It contains various
-> +/// enable bits, and the bits to write to set the usual outbound RS232
-> +/// modem control signals. All bits reset to 0 except TXE and RXE.
->  #[bitsize(32)]
->  #[doc(alias = "UARTCR")]
->  #[derive(Clone, Copy, DebugBits, FromBits)]
->  pub struct Control {
-> -    /// `UARTEN` UART enable: 0 = UART is disabled. If the UART is disabled
-> -    /// in the middle of transmission or reception, it completes the current
-> -    /// character before stopping. 1 = the UART is enabled. Data
-> -    /// transmission and reception occurs for either UART signals or SIR
-> -    /// signals depending on the setting of the SIREN bit.
-> +    /// `UARTEN` UART enable: 0 = UART is disabled.
->      pub enable_uart: bool,
-> -    /// `SIREN` `SIR` enable: 0 = IrDA SIR ENDEC is disabled. `nSIROUT`
-> -    /// remains LOW (no light pulse generated), and signal transitions on
-> -    /// SIRIN have no effect. 1 = IrDA SIR ENDEC is enabled. Data is
-> -    /// transmitted and received on nSIROUT and SIRIN. UARTTXD remains HIGH,
-> -    /// in the marking state. Signal transitions on UARTRXD or modem status
-> -    /// inputs have no effect. This bit has no effect if the UARTEN bit
-> -    /// disables the UART.
-> +    /// `SIREN` `SIR` enable: disable or enable IrDA SIR ENDEC.
-> +    /// QEMU does not model this.
->      pub enable_sir: bool,
-> -    /// `SIRLP` SIR low-power IrDA mode. This bit selects the IrDA encoding
-> -    /// mode. If this bit is cleared to 0, low-level bits are transmitted as
-> -    /// an active high pulse with a width of 3/ 16th of the bit period. If
-> -    /// this bit is set to 1, low-level bits are transmitted with a pulse
-> -    /// width that is 3 times the period of the IrLPBaud16 input signal,
-> -    /// regardless of the selected bit rate. Setting this bit uses less
-> -    /// power, but might reduce transmission distances.
-> +    /// `SIRLP` SIR low-power IrDA mode. QEMU does not model this.
->      pub sir_lowpower_irda_mode: u1,
->      /// Reserved, do not modify, read as zero.
->      _reserved_zero_no_modify: u4,
-> -    /// `LBE` Loopback enable. If this bit is set to 1 and the SIREN bit is
-> -    /// set to 1 and the SIRTEST bit in the Test Control register, UARTTCR
-> -    /// on page 4-5 is set to 1, then the nSIROUT path is inverted, and fed
-> -    /// through to the SIRIN path. The SIRTEST bit in the test register must
-> -    /// be set to 1 to override the normal half-duplex SIR operation. This
-> -    /// must be the requirement for accessing the test registers during
-> -    /// normal operation, and SIRTEST must be cleared to 0 when loopback
-> -    /// testing is finished. This feature reduces the amount of external
-> -    /// coupling required during system test. If this bit is set to 1, and
-> -    /// the SIRTEST bit is set to 0, the UARTTXD path is fed through to the
-> -    /// UARTRXD path. In either SIR mode or UART mode, when this bit is set,
-> -    /// the modem outputs are also fed through to the modem inputs. This bit
-> -    /// is cleared to 0 on reset, to disable loopback.
-> +    /// `LBE` Loopback enable: feed UART output back to the input
->      pub enable_loopback: bool,
-> -    /// `TXE` Transmit enable. If this bit is set to 1, the transmit section
-> -    /// of the UART is enabled. Data transmission occurs for either UART
-> -    /// signals, or SIR signals depending on the setting of the SIREN bit.
-> -    /// When the UART is disabled in the middle of transmission, it
-> -    /// completes the current character before stopping.
-> +    /// `TXE` Transmit enable
->      pub enable_transmit: bool,
-> -    /// `RXE` Receive enable. If this bit is set to 1, the receive section
-> -    /// of the UART is enabled. Data reception occurs for either UART
-> -    /// signals or SIR signals depending on the setting of the SIREN bit.
-> -    /// When the UART is disabled in the middle of reception, it completes
-> -    /// the current character before stopping.
-> +    /// `RXE` Receive enable
->      pub enable_receive: bool,
-> -    /// `DTR` Data transmit ready. This bit is the complement of the UART
-> -    /// data transmit ready, `nUARTDTR`, modem status output. That is, when
-> -    /// the bit is programmed to a 1 then `nUARTDTR` is LOW.
-> +    /// `DTR` Data transmit ready
->      pub data_transmit_ready: bool,
-> -    /// `RTS` Request to send. This bit is the complement of the UART
-> -    /// request to send, `nUARTRTS`, modem status output. That is, when the
-> -    /// bit is programmed to a 1 then `nUARTRTS` is LOW.
-> +    /// `RTS` Request to send
->      pub request_to_send: bool,
-> -    /// `Out1` This bit is the complement of the UART Out1 (`nUARTOut1`)
-> -    /// modem status output. That is, when the bit is programmed to a 1 the
-> -    /// output is 0. For DTE this can be used as Data Carrier Detect (DCD).
-> +    /// `Out1` UART Out1 signal; can be used as DCD
->      pub out_1: bool,
-> -    /// `Out2` This bit is the complement of the UART Out2 (`nUARTOut2`)
-> -    /// modem status output. That is, when the bit is programmed to a 1, the
-> -    /// output is 0. For DTE this can be used as Ring Indicator (RI).
-> +    /// `Out2` UART Out2 signal; can be used as RI
->      pub out_2: bool,
-> -    /// `RTSEn` RTS hardware flow control enable. If this bit is set to 1,
-> -    /// RTS hardware flow control is enabled. Data is only requested when
-> -    /// there is space in the receive FIFO for it to be received.
-> +    /// `RTSEn` RTS hardware flow control enable
->      pub rts_hardware_flow_control_enable: bool,
-> -    /// `CTSEn` CTS hardware flow control enable. If this bit is set to 1,
-> -    /// CTS hardware flow control is enabled. Data is only transmitted when
-> -    /// the `nUARTCTS` signal is asserted.
-> +    /// `CTSEn` CTS hardware flow control enable
->      pub cts_hardware_flow_control_enable: bool,
->      /// 31:16 - Reserved, do not modify, read as zero.
->      _reserved_zero_no_modify2: u16,
-> -- 
-> 2.43.0
-> 
-> 
-
-With regards,
-Daniel
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 902ca1f3c7b..6dd71eb0de9 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -34,8 +34,10 @@
+  * TARGET_BIG_ENDIAN : same for the target cpu
+  */
+ 
+-#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
+-#define BSWAP_NEEDED
++#ifdef COMPILING_PER_TARGET
++# if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
++#  define BSWAP_NEEDED
++# endif
+ #endif
+ 
+ /* page related stuff */
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+2.39.5

@@ -1,164 +1,169 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694705njb;
-        Mon, 17 Mar 2025 21:51:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXisSkl3R8+o1Kc1fp6kBlrox9O8g8+yvUn0W5OLCjlHZouQ6+QunOMl9RLdjvxwx/ImvxOSEjliPN3JA==@linaro.org
-X-Received: by 2002:a05:6a00:1398:b0:736:3e50:bfec with SMTP id d2e1a72fcca58-737572301a9mr3542177b3a.8.1742273515320;
-        Mon, 17 Mar 2025 21:51:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742273498; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2721650njb;
+        Mon, 17 Mar 2025 23:14:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVltox79vIfqHpDBS+7XlKoacEhvElqLQb8uPlogGTFX46iwWyLJXvj83CqQkH8yit4N70lm+CfXlXvoA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEYbqeT18JiYxCxzAVNald/CcbHH7g322zeg7++nyW2d9h5d7HFAXcPcJMuqU6LjYdU3ztm
+X-Received: by 2002:a05:6214:5084:b0:6e4:42c2:dd91 with SMTP id 6a1803df08f44-6eaeaabadbcmr288939136d6.37.1742278496082;
+        Mon, 17 Mar 2025 23:14:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742278496; cv=none;
         d=google.com; s=arc-20240605;
-        b=V2+rxGZRQ2uyzq7gaGzYXT5GnOQCY+YbNI6WbFbe0uAPHnOUtQm0hfFLNqZsySm7Nw
-         o5Bd5vv59SeB4GGmZPj2y3cBujVOPGzZuhPBS6wW4AhKIh2BHyNRv4EHazvAo2UP5dPx
-         q/vH3MjiTl8SxW8grAPVkfkhGsPfsB8Og21kf20TevbEBS5JKy+OXSDcEBULZIegumhd
-         pKrQ9V2aHirfwo7DhQN+cPML3Dkxdu9L84fLQbG6Gtmxrx3yxYK1ur0+bxR/tVMXiXxi
-         Q9LxLwdai0sgaBIoipLuSFHe++2KB6DrBq/w1QULG+rqpoGp1tV2wFFoxwmT8jrq+7kH
-         PXJA==
+        b=eOD2qQi7HWUX6pyRa4ZjgNqqMpm4NCoRZA2668iTX4Rh4GF/TGLzW8p1h/m+iG2YqR
+         F3VF++hpAd9D9siyZUEi8k0DqarlFNdm8D76TXgGI/+dzYcGfeevLDXILD6UcHZAs0l7
+         sHwdUFf2QoSZcD/fF41UCBT4g1IUsMwzatPIUwsuBXwYYF/EGNqQ7x8zKwVITV6Vz1qd
+         yREmydm9YD3wS106+nVV87XMVpY4XPfHf9W0s2sg2HhUa8qEAou09RuvW+EvG21vQM1Q
+         G1oZZgsdrJ9O43FdNEe/ng1mTetxq9Qla1wx5Fet/FxKf7iF9LMPUn4fqnPHkCQyXOIa
+         Cung==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OcGAZaWPVIysHTdBCRYBHO7NUCxy0k+KHYN46Zgiu4k=;
-        fh=IgQXc9yQrHwRUxuOD4L+aFbl2zdQ7rLolmWwbmFelO4=;
-        b=PuRAI74feoGDBl1hOaFqLmLmTX0s8g7L8zSF5wYOxxj+IKnUzddyUjUnxAjk3EhN9r
-         ZiQyTK6joTOe0lUdh1ytRqemx+XbMwTkCNUw6g/KvTrhOrN33DItBWn5zdO/BpZVP93x
-         xRPrS7OxtwzoZ7HNOaHvYFd8wcWq32GPYP9Nyc02pwncudrrzj933RUvY8B/jyw3erj1
-         SaajBcx+IMO9Y5zsoA3SExjcIbvGYk3YTHUHQuTLomAvCZHUXVKMXdCq9zuVKEqdZNuh
-         YShR/42xFb4z9cpZQ+rYjJ5N2CdxPkAR63wZ4bZyp+f+K0FYO5xayYy4EzvlJ1m/+LmF
-         92VQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=g4IlVi8Kd9FpdmuECV5xmTf5TXrxvHsvm/wM2NRvvsU=;
+        fh=61PlRB7QxkpIPEvlkUx32rVdkm6wKgreh1phalvsJ4M=;
+        b=QlEfUWE1rr/k3KG9hJKAJM+QEB36hYOvqS+1ycNYK459p/pXX3lgWOQpaECicZpVsb
+         VCaw9w2T0AUxUymuqBm24sYn15fai6MkW/1Y+08rAcEKFZW7kie4jmJaZ1SXWqzFE5ht
+         3tMu5FF+lh6a3eKKqBbqn5WNLHFMz5VYLscbdkY0npvH3TmSIKM3Zbr0u/ngSjpYv7AT
+         zY/XrbpGvwbI01Kp4eejjjaVDY54rNBhsI5DqHkvCjedctYvWVkoZwJmxCNxaSbQtKc7
+         TxC5dR4S556hK4mlHMCzZa8xR9SWzXbKGXjMmdWR2745MHYmn73eIrSBrZJSCY34fXpI
+         Yhmw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKmasMFe;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-737116a3e70sor8507951b3a.9.2025.03.17.21.51.38
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="is7gYL/p";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eade36cd83si112020926d6.389.2025.03.17.23.14.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Mar 2025 21:51:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Mar 2025 23:14:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKmasMFe;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742273498; x=1742878298; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OcGAZaWPVIysHTdBCRYBHO7NUCxy0k+KHYN46Zgiu4k=;
-        b=gKmasMFea1n6Xvj09Uon9o/4y5eGcvIvf+sXR2Yeb5C8R1joNgfUWg6LUMY3pBwx/O
-         Um4ttkf/fXxCLuBTnyqikwEdVt9V+nIkFWyS7h8hJf6mvVPwAeLX3fNdD5iwFQzD8F0H
-         QI2cofpbtALpf0pqJL884P9a9SRn+P415nZHKsqbMnIIQ4VB+XGQQGuJWAqbWi4zrf82
-         SwuOZEAZfzTrmLnnyAKGJQSC+yonWJ19RoOJjJEHPfFpk6cSPm3sQG2Q0C5/AdK3SLQR
-         lGSBG4gJlLKMRvN+dOmf+ytdAVBnyCC69A4StaP0vAjAXVdE3j8+qGmqQyh+PvFiTG/K
-         cgWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742273498; x=1742878298;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OcGAZaWPVIysHTdBCRYBHO7NUCxy0k+KHYN46Zgiu4k=;
-        b=p8MqTtp7VlsmozRL1IcJLk9Q02x4oVJXGIkbZX2BNmn0z+lkEFcJw4pRKbflpvDy+f
-         WoAkt4WEIwboj8dKquKG1/lqiox2g5RUXGDAQMNhPAWkz4ryirT045UimL7c9MSY+e7a
-         7DF4T4qCPTx+FTgzCWUYGVDLwqNSH+tbRa/x7weQuxXPI+yv2TPAXE9iqjLZxa1ISo/n
-         oKuMJwNt+au6kHwt/NruKyJ3EOZUcMKER/2XQYP4aebQCnvdnIRkjnDxnkZcLSp/eQAS
-         QXVQEsQJQ2Fv7HO48syaWSRDdhwtoboHmnlV4mb7yisBKQdgjEF9AUqrVVsyFTibmEJ4
-         9zrw==
-X-Forwarded-Encrypted: i=1; AJvYcCVNGWjclBzL7JUDjuJSD8eqBdJ54DhdPGjfVlnFyNnsePHs5uO4PQXbRe8Lrl23gHEMkR9O1q8M3e+eqw==@linaro.org
-X-Gm-Message-State: AOJu0YxhSDkBLcy7qxr81Fk/W0BQbSuS2JifAUx17wXrRoyWNYn+40H8
-	nBVHVlYCc/lI6K+GTUitJ3i3o09jcMhGH84jPimDVoT67z1ZFoElktAMzkPPFbCvNg==
-X-Gm-Gg: ASbGncslcgYO30TTC962in0izVVBvhSyU26FCNZK7eWgyjCvxIKM2XQjZrJcC7G3Ei7
-	RLdK/L7J8BnpuolJHOhgEOyamWM7LtXHMLmnghlyymk6ZVSRV2JjDu2DUOS8AhUUoPIXSBfOhjq
-	woPut6mU+pIrUHKTwBi4tXRbnE+kuftTopqRkr/0V5ZnGS6PtyJRGjdq/o8FtJL4BMGEGA6VlHI
-	FdalN8nQkvT2klL7aiSPmAh/35Lt0+c4OmO7hylsUT1ke2/WLL998Z1Wm9JfZdM3KLuRqNr3R/8
-	DtanO262spnVjOTiyIzuchFVD9Gq/AZPKyHHjttu3Rw1
-X-Google-Smtp-Source: AGHT+IGd5D4o5uKL9Q2v7Y3e6Bm9G+stqVZhHdXsULQqp3gKY9DtvnzsLjdYrwnF2yMZJulAsCZvKw==
-X-Received: by 2002:a05:6a00:1954:b0:736:fff2:99b with SMTP id d2e1a72fcca58-737572df1b9mr2862896b3a.23.1742273497827;
-        Mon, 17 Mar 2025 21:51:37 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Mar 2025 21:51:37 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	kvm@vger.kernel.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 05/13] target/arm/cpu: move KVM_HAVE_MCE_INJECTION to kvm-all.c file directly
-Date: Mon, 17 Mar 2025 21:51:17 -0700
-Message-Id: <20250318045125.759259-6-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
-References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="is7gYL/p";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tuQDr-0002eP-5b; Tue, 18 Mar 2025 02:14:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tuQDn-0002cK-Lk
+ for qemu-arm@nongnu.org; Tue, 18 Mar 2025 02:14:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tuQDk-0002pC-Rn
+ for qemu-arm@nongnu.org; Tue, 18 Mar 2025 02:14:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742278473;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=g4IlVi8Kd9FpdmuECV5xmTf5TXrxvHsvm/wM2NRvvsU=;
+ b=is7gYL/p6MiGUmHUxaLD4RBWT2Rh/LWOKrLKYzD+9lv3fP/6NModDMxp0X1pVYzJfTB00L
+ Bcl9tZt0IsBYQ6Y7XN8kQA2VeMIeXv36rnk3jmxVcsoCUzHrLeifyhFC8B6fWKUF2UXKvh
+ j20DRS4BYEd2s4GQi/Wy9O+LYh/SYO0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-610-_1-WI3NxPM6Nwa0oONP44A-1; Tue,
+ 18 Mar 2025 02:14:26 -0400
+X-MC-Unique: _1-WI3NxPM6Nwa0oONP44A-1
+X-Mimecast-MFC-AGG-ID: _1-WI3NxPM6Nwa0oONP44A_1742278465
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1FAAA180035E; Tue, 18 Mar 2025 06:14:24 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.224.69])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EF5A41828A80; Tue, 18 Mar 2025 06:14:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH] docs/system/arm: Use "functional tests" instead of
+ "integration tests"
+Date: Tue, 18 Mar 2025 07:14:20 +0100
+Message-ID: <20250318061420.20378-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 2Q0ZQQglJ9rO
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.335,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Mrr4kcLprsGf
 
-This define is used only in accel/kvm/kvm-all.c, so we push directly the
-definition there. Add more visibility to kvm_arch_on_sigbus_vcpu() to
-allow removing this define from any header.
+From: Thomas Huth <thuth@redhat.com>
 
-The only other architecture defining KVM_HAVE_MCE_INJECTION is i386,
-which we can cleanup later.
+We don't use the term "integration tests" for these kind of tests
+anymore, it's "functional tests" nowadays.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Suggested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- include/system/kvm.h | 2 --
- target/arm/cpu.h     | 4 ----
- accel/kvm/kvm-all.c  | 4 ++++
- 3 files changed, 4 insertions(+), 6 deletions(-)
+ docs/system/arm/bananapi_m2u.rst | 6 +++---
+ docs/system/arm/orangepi.rst     | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/system/kvm.h b/include/system/kvm.h
-index 716c7dcdf6b..b690dda1370 100644
---- a/include/system/kvm.h
-+++ b/include/system/kvm.h
-@@ -392,9 +392,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
+diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
+index 6efa222c16f..03cc5618c38 100644
+--- a/docs/system/arm/bananapi_m2u.rst
++++ b/docs/system/arm/bananapi_m2u.rst
+@@ -125,10 +125,10 @@ And then boot it.
  
--#ifdef KVM_HAVE_MCE_INJECTION
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
--#endif
+   $ qemu-system-arm -M bpim2u -nographic -sd sd.img
  
- void kvm_arch_init_irq_routing(KVMState *s);
+-Banana Pi M2U integration tests
+-"""""""""""""""""""""""""""""""
++Banana Pi M2U functional tests
++""""""""""""""""""""""""""""""
  
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 7aeb012428c..23c2293f7d1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -33,10 +33,6 @@
+-The Banana Pi M2U machine has several integration tests included.
++The Banana Pi M2U machine has several functional tests included.
+ To run the whole set of tests, build QEMU from source and simply
+ provide the following command:
  
- #define CPU_INCLUDE "target/arm/cpu.h"
+diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+index 716062fca9c..d81f6c3bfd2 100644
+--- a/docs/system/arm/orangepi.rst
++++ b/docs/system/arm/orangepi.rst
+@@ -252,10 +252,10 @@ and set the following environment variables before booting:
+ Optionally you may save the environment variables to SD card with 'saveenv'.
+ To continue booting simply give the 'boot' command and NetBSD boots.
  
--#ifdef TARGET_AARCH64
--#define KVM_HAVE_MCE_INJECTION 1
--#endif
--
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f89568bfa39..28de3990699 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -13,6 +13,10 @@
-  *
-  */
+-Orange Pi PC integration tests
+-""""""""""""""""""""""""""""""
++Orange Pi PC functional tests
++"""""""""""""""""""""""""""""
  
-+#ifdef TARGET_AARCH64
-+#define KVM_HAVE_MCE_INJECTION 1
-+#endif
-+
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
- #include <poll.h>
+-The Orange Pi PC machine has several integration tests included.
++The Orange Pi PC machine has several functional tests included.
+ To run the whole set of tests, build QEMU from source and simply
+ provide the following command from the build directory:
+ 
 -- 
-2.39.5
+2.48.1
+

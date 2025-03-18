@@ -1,126 +1,281 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3253197njb;
-        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuXd3eGwQpsx5D+6KoaDq8RVUDYvarzukIkRmdlC4dmDI6gElP9Dm4V194j5L6rEZFXFyaYgr+OiqlJQ==@linaro.org
-X-Received: by 2002:a17:902:ce0f:b0:224:584:6f05 with SMTP id d9443c01a7336-22649c89560mr6594285ad.41.1742337622290;
-        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742337622; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3253216njb;
+        Tue, 18 Mar 2025 15:40:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtAfhWI2yX0hbvFs/OEO/Xh1lX7BdYvbwKaNi6w8SqVkoCa/4omfP3KIF7J4YGx09Im9RsWaf+OotjIw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9BUn1IW6BCo5PgoEpOfgr3TLtyoVKCrrXK2yeu0c7g6qrW2xRmBY3bn4Kf/bPyYMVTvHJ
+X-Received: by 2002:a05:622a:540c:b0:476:add4:d2cf with SMTP id d75a77b69052e-47708381f92mr12492251cf.16.1742337625368;
+        Tue, 18 Mar 2025 15:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742337625; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZLGM6kByOdYRHtwJOO81e4LZCf9XrVxbsJH+Yb0yeYbJZwwWOdg4ljBwKGoBl4gF6D
-         LjvJan/h/t+kUNS2SNCcxB0kdhh5aSM7BMjDvzc5QzMST4CMEQpr1SIzqdhagGc4vanV
-         1fE5a60nhNMbRplH1WusJyUJZwPUZtjr8GYmvx8i1U7lUJj8FpoA/0TA4ehYEljcNEVA
-         pFM99YMH6NgzanD5sgANds9g1iZBtbjUZMZuDrAvTANONgF0BTBcgPZdGFiPCNfp14tv
-         7gILcJv7SaWReaU6JnORCSiDthuijAHhgG+BS1rIhepNU+3Caf8eYTDcdm8a6romewXs
-         GoNQ==
+        b=lYVMGL4G+avzGWkObN2YICIxLJxRqUxSHAvIlUbgPVuTZCYwkUvp0FXXJe/IgrlE59
+         teeTkeyWK6eCTXvml+GmnCMAqHQESQ3zqLuYlH12To5IWFAPpStb2XF8VogGBhyeC1+E
+         0/p/NXgbZ9UDNHS7SrO0wxIOuBXY016vLK90oLeIRsSXS0Wjc+E1fmC4ztpwGzjuG3q8
+         1Gcyr3pAEqIylDSt60apTpCHE/Ov4Hb11I1VZNiTcR3vnv9dzqiHRqxWfYbDk9MS+o7H
+         +Jui0X4jrGRIpDOTD1+oDgPArYwAH+IukdMyihTsPYNQjpOTvAI6/zqZjtvxAgtQTd0D
+         01/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
-        fh=aww2Rf2c8XVGKif7OrYTA7NPZogG7OUG541ik6FD5tU=;
-        b=lj7vx/pMYDHU4S+AWwozjkXe+jknidBfqNbEfDzuLmDDSbn74Hzyc+wCQbuO39njjH
-         mTSODP+zzqx+ArkiSgZae7Keo6d61fOUJ8HdDMlpBDdMQlA4xJl7zgIc1mHoapkacEhY
-         CxyEXuXGTb0gXkQ26ZZPxNFsgNsD/56BA6K7f3LiMDAKIF677N41fJDg3LbrlZVn4STi
-         yloFDvNamTXPp31En8UjPqqSy9DWffsohpB0XbG2PHnb6m6BClUsu0njWSXL2uz9seK4
-         4JCD0MeMA7eVhuZbwk+zUraDWuhztVUCxfsRe99IFJ8YVrLPloa0aj1vnXCfsAgzFLlO
-         QRXA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=JHtAOQUQZTKmeIASbuQa+FlALNIbFaRPOL6lzW0Xv/g=;
+        fh=7L+NqO1uB/aAjXHqgelEyLRj8mr7e9S5i28e1kydUUg=;
+        b=RcLzT5/LXZYO6MlemivotzQw1Wb8TOF0oMvaMcVe3tkIbO6mPziELc2bOPdtGJMDAG
+         qconVZkzXaCP/cikbiglKuh4vfcGsRxAR38yET6fKCXEGlBqxmQhcgKXrxxYT8IG59Ch
+         8fzZNFEluQCajtoMqFDEJyRIKywuhsQ4+5RoCAYZOHju/T2y7rH4caT6J8rN2nVr5HQC
+         tMu14cCHE7MYcZBMc7rMs1fkCCvyyQGKBoVgtowv3UK9LWrxZj8g4RDIuOIrRVYJrRVr
+         +jl85BNE/NV7gyfln+dLPZ/8NfphR9XVriaGrHSXAsvy9d+VYvKZRUP0BfvY8Ea6FaTO
+         +dEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U6RUUwQ9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iGppbB6t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-737116c1d7asor8699787b3a.8.2025.03.18.15.40.22
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb7da18csi124987091cf.206.2025.03.18.15.40.25
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 18 Mar 2025 15:40:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Mar 2025 15:40:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U6RUUwQ9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iGppbB6t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tufbQ-0003EM-4Q; Tue, 18 Mar 2025 18:40:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1tufb6-0003AE-Hq; Tue, 18 Mar 2025 18:39:49 -0400
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1tufb3-00017o-1U; Tue, 18 Mar 2025 18:39:44 -0400
+Received: by mail-oi1-x22e.google.com with SMTP id
+ 5614622812f47-3fab0bc2f51so1449963b6e.1; 
+ Tue, 18 Mar 2025 15:39:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742337622; x=1742942422; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
-        b=U6RUUwQ9uCf27Rm90cBVdN1nAwSE8j2BodsHF9bsn1Gj4wXNSiClB4kVbQWrupJHqa
-         7ctTo/T+OaDGauDXUHJf4DZYc4kv3IW2utls65BlwXw7i9SVb2ybVTXdjcx7ajYwhJ3j
-         v7fSpE7maFTaYSD5xWuLwcYXXjzsgFBOpSqwVN7alRudSdJC2RkXgYgJVO2cqdob7pMG
-         u2NaWG7WhnTL8WsSN5l3Xdi0aalNriXPtCW6l98gjsqCq6DYL7ZLOqrobCyYbWZ86nLg
-         z9ak6JwcxzlBNiiTCwzOsQ0Py+s3P/vMEP7OTVzjV8sBOTHXI3nRES/AYeDraZ1Elu5V
-         3wmg==
+ d=gmail.com; s=20230601; t=1742337579; x=1742942379; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=JHtAOQUQZTKmeIASbuQa+FlALNIbFaRPOL6lzW0Xv/g=;
+ b=iGppbB6tXbD4x2atiUhaP1a1nMGboSboYATdatVMJ3O9UPtNP4lk5w/bOGFY1rYHAe
+ DrQkKUYaHEg+aEapNqGKZtEpx53/4Dvc2zstTZvuxv+B+DdoXDVCo8eQVHM8ENQ77327
+ Y0PJhHApingr3xhM34RM216m0DSZr12TBjMl0goX+I2W3UulrOKc4c8wNLPa1SO1YL7W
+ dwbJt6E+mY4ysBzSaopGlVELNi+OW3ZgCzT6dBQGtmYKWO+Nkf4XeuQwCGg2yRvqByqv
+ jSIOB7LbLz4GoFtypNrIxdZlgr6vNTGnluFyT5zH8ioaa7uo/+tlTH2fciHGvzRQbTka
+ PtIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742337622; x=1742942422;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=S2UPpQLFKR1qr5/RvZ9zNkJfGHI2MCRLeltsmk729qU=;
-        b=kZHKoaaQHKRt7zSw3NfJdgXQaqWDtlAWk1mJ+rw/u05UvZaJZdpAMjaoQRpQhwTRUO
-         SH/D3lBMA7ZNUS7s1wh7h958L5pC+Jf/hXq7lLiBBCGdBKdagaf905YP6BHR4qSvhPBB
-         xbqVKndsJdtOjPgii7vcxAulR3BGnuoEPx/3Sdd9Yycoedy6FKYKKKdHOwasbv2B71V9
-         bsiWEu02CH1bZWRFYYy/1kAj8BG7Yg/0C1dW9aatd1XI0C/fdipCveyu2L+9WUUFWBU4
-         eVg0tVW+BRoEtnAAFoZ/btteB5r0l8CSQA9PqVSz1MKZsOlawSWnDwR1MIS8E9YdQcTb
-         Nesw==
-X-Forwarded-Encrypted: i=1; AJvYcCUPk1mpVEPnzrB0TezP7jsFmCAFNqxIcTX5SD/xZjFAZ4epc/U2z4lxofmru9ykvmWnpX4xKgbAQWqhkQ==@linaro.org
-X-Gm-Message-State: AOJu0YygsbaW2LbXwF7guQL2w6BXKCWhQ0kKENOeqEvwKd3CWTdxeiex
-	DFPnOX4dCSr10xVJC89tLmulA9SRM+C0Iny1Q1d9aB2Czg4znAUmEYzfFNXG/+iIGg==
-X-Gm-Gg: ASbGncuDaM5k/0fkLNJLsUvFzOLvuextovrZcp1BHlLk0wOIhNjVXbN6KVZUWNst5UX
-	WG7+A/E9UaEcBCz6FEYMbpjUwcN5Fm0lrzZGwotjvjYFgjq+BNCj7NmV3e9/pmJ6aLFbAxoRcdP
-	3zpy65xqgnwXmt66VcbYGIZzJp8gscQJQ3zuBw20QO1b9JyHA9PUfikgc/6x28ckmhyhyu08gzX
-	tApDqmM7Qntm4GnT/LUc57ZUtIDuTcT8qEl6TAs0rysBScopwseqE4zPxWa+dSNUQMsR3IA02JL
-	S6hb+UweyizMIOcNqvU6nUIXg5cOUikHaAFYwU8ydiwOn7WYVPMt/oh73y5MkfUQHpORB5/WUbl
-	67DMdQnFJOSA2VEDpHiQ=
-X-Google-Smtp-Source: AGHT+IHhbx4zrSFVC9Erry5Z56X+U/eo+aBTKB3hU0AYmsuCxAbdXsclAmXZcf+supeAECu7ukRqHQ==
-X-Received: by 2002:a05:6a00:80c:b0:736:ff65:3fd0 with SMTP id d2e1a72fcca58-7376d6ead4dmr711477b3a.16.1742337621894;
-        Tue, 18 Mar 2025 15:40:21 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (174-21-74-48.tukw.qwest.net. [174.21.74.48])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711529531sm10202523b3a.2.2025.03.18.15.40.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Mar 2025 15:40:21 -0700 (PDT)
-Message-ID: <9556c183-c103-403c-b400-0942d42785d7@linaro.org>
-Date: Tue, 18 Mar 2025 15:40:19 -0700
+ d=1e100.net; s=20230601; t=1742337579; x=1742942379;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JHtAOQUQZTKmeIASbuQa+FlALNIbFaRPOL6lzW0Xv/g=;
+ b=YdCwW25SqG0tzKKCbl7qwjYVLgenpfjBiTggVdVbXjxyvhNhPFxFLwaLiPvVyYVNs+
+ XQx41j72oiHfLlKTj6ZWVX3gemB3FsdjKoygiMteP0Gc34BOlAEEV8EpV6ALy6q5pGUl
+ FVJqCq/a2hO4S82XRY0lG0Ry64ej+3f0/TIXlHKNDwpTBH559WbYxAJttuE14jPsKw5Z
+ L2XxW6xcRGf5YQIE/yMoRFZ9iaK2tctaL7IuL0J44lY6IKZUwz8ctCWOGvlGrXfqQ1Yj
+ gr02n63cwft2j3oumLRrJYAMSL86oADAzNt6CVhFmtEsWMvINPUBuALQzfzXm9NqKR1N
+ Ro2A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVFK4AdBMX3TFVUdYDdmtPjvsld48WKN6wRq8Xg6phl5Fw7GsMGjDqBj4Y4cUAk+jsfyFHwC46gTw==@nongnu.org
+X-Gm-Message-State: AOJu0YyN93em6RumbGXcRWCZW/svSYj7aQzcR4uPcsjsETYHEajsCw1p
+ upgVaQthkZ/ld34b7onqDt4jak7oVOC/MxgaQzXjfU405bMbSMA3F3yAJnTmnUxILt/5bVQeh75
+ dSD66327AegG4Y+sgtuTkZCn7LpvRWw==
+X-Gm-Gg: ASbGncuFlWea0bGm9woqZbanaVNkfviYg0TW9tEO4njNFyQTmfw7jCiOm3kcD+FHW+r
+ bXTKXRpzdkPlZ8xm1uRC4RhfiTU2MWJebRCGxI6eRilQFHl+aykM+SPpN6eocm+gimwdvQGIWcy
+ 8aKNO6Yn1XyStuNHHKWmqJYvni5ioBtPbJPcIqXu7NY9jxwxQYOGNEb3J3ykrGzZWFbPI=
+X-Received: by 2002:a05:6808:1a12:b0:3f6:a889:59c6 with SMTP id
+ 5614622812f47-3fead5b8a1amr252824b6e.26.1742337578855; Tue, 18 Mar 2025
+ 15:39:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/13] target/arm/cpu: flags2 is always uint64_t
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-arm@nongnu.org, alex.bennee@linaro.org,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
- <20250318045125.759259-9-pierrick.bouvier@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250318045125.759259-9-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: rhAge5erhi7E
+References: <20250318061420.20378-1-thuth@redhat.com>
+In-Reply-To: <20250318061420.20378-1-thuth@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 18 Mar 2025 23:39:26 +0100
+X-Gm-Features: AQ5f1JolfDRaPkGSblr53vYMU7YR1tVqBaEWUHfH6W6mw8GX6keQ9HVwyZEa4_4
+Message-ID: <CAPan3WpZrouYnzXSF991nQ=mYdkt+BKdBS2_4B4u7vESMYtUHw@mail.gmail.com>
+Subject: Re: [PATCH] docs/system/arm: Use "functional tests" instead of
+ "integration tests"
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000007773c80630a5947a"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22e;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-oi1-x22e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VzXbGFZKyMHx
 
-On 3/17/25 21:51, Pierrick Bouvier wrote:
-> Do not rely on target dependent type, but use a fixed type instead.
-> Since the original type is unsigned, it should be safe to extend its
-> size without any side effect.
-> 
-> Signed-off-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
+--0000000000007773c80630a5947a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+On Tue, Mar 18, 2025 at 7:14=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
+e:
+
+> From: Thomas Huth <thuth@redhat.com>
+>
+> We don't use the term "integration tests" for these kind of tests
+> anymore, it's "functional tests" nowadays.
+>
+> Suggested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   target/arm/cpu.h        | 2 +-
->   target/arm/tcg/hflags.c | 4 ++--
->   2 files changed, 3 insertions(+), 3 deletions(-)
+>  docs/system/arm/bananapi_m2u.rst | 6 +++---
+>  docs/system/arm/orangepi.rst     | 6 +++---
+>  2 files changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/docs/system/arm/bananapi_m2u.rst
+> b/docs/system/arm/bananapi_m2u.rst
+> index 6efa222c16f..03cc5618c38 100644
+> --- a/docs/system/arm/bananapi_m2u.rst
+> +++ b/docs/system/arm/bananapi_m2u.rst
+> @@ -125,10 +125,10 @@ And then boot it.
+>
+>    $ qemu-system-arm -M bpim2u -nographic -sd sd.img
+>
+> -Banana Pi M2U integration tests
+> -"""""""""""""""""""""""""""""""
+> +Banana Pi M2U functional tests
+> +""""""""""""""""""""""""""""""
+>
+> -The Banana Pi M2U machine has several integration tests included.
+> +The Banana Pi M2U machine has several functional tests included.
+>  To run the whole set of tests, build QEMU from source and simply
+>  provide the following command:
+>
+> diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+> index 716062fca9c..d81f6c3bfd2 100644
+> --- a/docs/system/arm/orangepi.rst
+> +++ b/docs/system/arm/orangepi.rst
+> @@ -252,10 +252,10 @@ and set the following environment variables before
+> booting:
+>  Optionally you may save the environment variables to SD card with
+> 'saveenv'.
+>  To continue booting simply give the 'boot' command and NetBSD boots.
+>
+> -Orange Pi PC integration tests
+> -""""""""""""""""""""""""""""""
+> +Orange Pi PC functional tests
+> +"""""""""""""""""""""""""""""
+>
+> -The Orange Pi PC machine has several integration tests included.
+> +The Orange Pi PC machine has several functional tests included.
+>  To run the whole set of tests, build QEMU from source and simply
+>  provide the following command from the build directory:
+>
+> --
+> 2.48.1
+>
+>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+--=20
+Niek Linnenbank
 
-We can also remove the comment lower down about cs_base being
-based on target_ulong, since that was changed some time ago:
+--0000000000007773c80630a5947a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-exec/translation-block.h:    uint64_t cs_base;
+<div dir=3D"ltr"><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:ni=
+eklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><br><div clas=
+s=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_att=
+r">On Tue, Mar 18, 2025 at 7:14=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailt=
+o:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">From: Thomas Huth &lt;<a href=3D"mailto=
+:thuth@redhat.com" target=3D"_blank">thuth@redhat.com</a>&gt;<br>
+<br>
+We don&#39;t use the term &quot;integration tests&quot; for these kind of t=
+ests<br>
+anymore, it&#39;s &quot;functional tests&quot; nowadays.<br>
+<br>
+Suggested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.co=
+m" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
+=3D"_blank">thuth@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0docs/system/arm/bananapi_m2u.rst | 6 +++---<br>
+=C2=A0docs/system/arm/orangepi.rst=C2=A0 =C2=A0 =C2=A0| 6 +++---<br>
+=C2=A02 files changed, 6 insertions(+), 6 deletions(-)<br>
+<br>
+diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2=
+u.rst<br>
+index 6efa222c16f..03cc5618c38 100644<br>
+--- a/docs/system/arm/bananapi_m2u.rst<br>
++++ b/docs/system/arm/bananapi_m2u.rst<br>
+@@ -125,10 +125,10 @@ And then boot it.<br>
+<br>
+=C2=A0 =C2=A0$ qemu-system-arm -M bpim2u -nographic -sd sd.img<br>
+<br>
+-Banana Pi M2U integration tests<br>
+-&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
+uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot=
+;&quot;&quot;&quot;&quot;&quot;&quot;<br>
++Banana Pi M2U functional tests<br>
++&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
+uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot=
+;&quot;&quot;&quot;&quot;&quot;<br>
+<br>
+-The Banana Pi M2U machine has several integration tests included.<br>
++The Banana Pi M2U machine has several functional tests included.<br>
+=C2=A0To run the whole set of tests, build QEMU from source and simply<br>
+=C2=A0provide the following command:<br>
+<br>
+diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst<br=
+>
+index 716062fca9c..d81f6c3bfd2 100644<br>
+--- a/docs/system/arm/orangepi.rst<br>
++++ b/docs/system/arm/orangepi.rst<br>
+@@ -252,10 +252,10 @@ and set the following environment variables before bo=
+oting:<br>
+=C2=A0Optionally you may save the environment variables to SD card with &#3=
+9;saveenv&#39;.<br>
+=C2=A0To continue booting simply give the &#39;boot&#39; command and NetBSD=
+ boots.<br>
+<br>
+-Orange Pi PC integration tests<br>
+-&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
+uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot=
+;&quot;&quot;&quot;&quot;&quot;<br>
++Orange Pi PC functional tests<br>
++&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
+uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot=
+;&quot;&quot;&quot;&quot;<br>
+<br>
+-The Orange Pi PC machine has several integration tests included.<br>
++The Orange Pi PC machine has several functional tests included.<br>
+=C2=A0To run the whole set of tests, build QEMU from source and simply<br>
+=C2=A0provide the following command from the build directory:<br>
+<br>
+-- <br>
+2.48.1<br>
+<br>
+</blockquote></div><div><br clear=3D"all"></div><br><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
 
-
-
-r~
+--0000000000007773c80630a5947a--

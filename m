@@ -1,116 +1,111 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3011815njb;
-        Tue, 18 Mar 2025 08:30:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjqQ1pnj3i4R2NlhaTulgP99R5vP7rpPQhfsjPZJPd71YDYq7yeQ7LLj3GwjAhwut5P+WwxQzVOANmOQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHRNLsQeOleoclzKPcTaGZ9a9oRwgrQddaLDDxutksgwT6gmatfzbZZ1RlR4+sS/8m3QPTB
-X-Received: by 2002:ad4:5946:0:b0:6e8:fe60:fdeb with SMTP id 6a1803df08f44-6eaeaa08163mr240066486d6.17.1742311812426;
-        Tue, 18 Mar 2025 08:30:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742311812; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3070342njb;
+        Tue, 18 Mar 2025 09:58:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWNO9ijkn8eXlqK9sFafDuVVewkf2Zvx8iCgqctVd2KHIXzhfDF/BW/eLoDcX7FPJ6q3UW9FqVCCpQwOQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG19uY778T6TJJf3ulYSLAqN7d1pMh81dUDrhx6W7MSoEom9I4AsiuVieQX0JoUOYgQ0J3S
+X-Received: by 2002:a05:620a:458c:b0:7c5:6cf5:9446 with SMTP id af79cd13be357-7c57c7d46ecmr2348947185a.19.1742317118664;
+        Tue, 18 Mar 2025 09:58:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742317118; cv=none;
         d=google.com; s=arc-20240605;
-        b=SCCOgpj7vfybfTEYY9beWisFBfcdKU6xFVH+CaiYnx7RX4pm7ZNFfsHOvdfviL282e
-         hD881EZm6izRfzq5QdPMxUvPd8IQYdyYO9Wp7SPRYvvo+RomYWr21dGi9v0HG719t6Mg
-         PbjKNGWFhCJ4XuCT/BA7rFg/IVEjLDFJ0rYpc5gWAbB7Gn+5wT2TvOjRfJr7cPrCtRIg
-         5lPiWCUc9h1OEfxzGoTFsdJ8cIP91H8s22eF6s71Zixu33gDMY7kgnZZ1K/2UJGWn0+e
-         SWagzjUssBipNRvZJIavNaBeGmmtnXCRxYNz4E/jaE4aJY6yVWVAdBAjape98BR2c3Gk
-         eKmg==
+        b=ceYL9v6r0wG4s3rT2iSo+9Z+CMjWzJoG7S23Kk+DRtzDIeRYNBLApSoSPX/CsNCoug
+         eG1J8u8vHM1A6iF7ny7nzxWspe9Wa0QQXb5YX3+K/GA07aOJrU0fYSNaB/ZSQKef83s7
+         KQII0b4ZXzm2OYzk9UOBwku8wBuqY/J8B8QDo+HiQ2mFUJVEed+QmEeIscvcGdDgdbqf
+         Gik2pxsDvt563Qtmyubm3RWmDn2n7hRafavNCiyEvOqhbAawe4zOKk4vrhLnuJbACHeG
+         FmyZW1i60H4aWphGhHmi/gaqwuY5sSw6I35qTTcm3RTflDT70IRi/83FAp69C+822wzU
+         bztw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=RzcYsby2Qz/PBO2uDcctGpE87+/O7tdb9aGwayLSNF4=;
-        fh=OeY/Jd4dXIC/Npz2Xzh/QoORivkf/qQ1OMy1PJF75kc=;
-        b=WY39XVJZU32lX2FkNO8fXlAVm03gXLtoEy4VAPFVZfLIMfMhvOI/GfxrZdRtDKTRjI
-         JQWZVaw79dt7CzqWiWyZMJK4EnlgfebcWgem5R2BCN1BejU6d+G2BKbzHPJJe5iDwH2I
-         mU3tB8GaDiJxO3rfU4GaGN3KhEnlpVgUy4IQKD67wlDsvh8y5ujJliiQUVw6X1piEzTQ
-         AhpPyNAjz6S9naQLVhIjdvXWm8OXqFB0rg6+l6uwhbG8Vi0SM4zh6W5yyUJZCC+fNg1y
-         DMYLJ9g1uGx5K0eUuot2glWeZJSPRL74XCPmdxtxroE2zndC0+g7d9x6bio1DhVnEr/M
-         B8Cg==;
+        bh=FIGb67/7AZLB1KuL7OpgzdcNpN7qc0dd1bxQgjTt6FA=;
+        fh=su8/1hAufvr5NNuIY/5/FRvOUQxjIeBVsLorlwzQSA4=;
+        b=hATwzuaAqZ8JqPtm5nCH1DvYxyRBzxn547lhxjh2iZsx9Ep1afE6FrdVuIjHArcRAh
+         5cq/BG6kYyXxNZzuN7R6KTkkcrh4vjN7/lhP/rH8M1rT81VI3Ri+iV/J1zRb9Hdrw85q
+         QnUEpZ5FgBtj2An7B8wIkyJffZnxJ90AWvdaeyuQu+m0SZkkfOZp88ZcVv1WGHOcx/+9
+         rJA1JCoizpXlpvoD/b4ZbYHYdndwef9FYXTJwS6pJlsdx8zcNQL7qNbpUc+gtiMLxtj9
+         SgP5ssoOgcSlGjl7EWhtsnQYK8KT620cuI8WL3hhsXSR/38rOyutNRVJD2srKL4d+gxk
+         WY4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a7FuoUcq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aXH2u7yF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eade36f30dsi124020216d6.442.2025.03.18.08.30.12
+        by mx.google.com with ESMTPS id af79cd13be357-7c573d14683si1203750085a.469.2025.03.18.09.58.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 08:30:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Mar 2025 09:58:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a7FuoUcq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aXH2u7yF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuYt1-0004vB-TU; Tue, 18 Mar 2025 11:29:48 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tuaGn-0007AB-DI; Tue, 18 Mar 2025 12:58:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tuYsm-0004pk-5R
- for qemu-arm@nongnu.org; Tue, 18 Mar 2025 11:29:34 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ id 1tuaGk-00077u-W1
+ for qemu-devel@nongnu.org; Tue, 18 Mar 2025 12:58:23 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tuYsk-0003WV-EZ
- for qemu-arm@nongnu.org; Tue, 18 Mar 2025 11:29:31 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e573136107bso5435304276.3
- for <qemu-arm@nongnu.org>; Tue, 18 Mar 2025 08:29:30 -0700 (PDT)
+ id 1tuaGi-0002tV-S5
+ for qemu-devel@nongnu.org; Tue, 18 Mar 2025 12:58:22 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-6fd80f30ba5so39327627b3.3
+ for <qemu-devel@nongnu.org>; Tue, 18 Mar 2025 09:58:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1742311769; x=1742916569; darn=nongnu.org;
+ d=linaro.org; s=google; t=1742317098; x=1742921898; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RzcYsby2Qz/PBO2uDcctGpE87+/O7tdb9aGwayLSNF4=;
- b=a7FuoUcqfd3GF0TDpfbOjEoYwOCnyXQtoDytqgPxCg57YY/dFcSH0vBfDCnqyvg2B5
- WFleic9yV0O4Hil3zBG8Af5DNmqD2Ut/ZO+Po3uRiszl3pjRhMpQAT1W6geVfVlg75vO
- rnp0mWNt0c4dliwKJQBg89XIhgVI9/gCeB/KFN8pGrvaLU9qvsJOs1zS4wYlhCENVnQi
- 332q0TGretzTD7o7iO7LcWjYZibYr5pGRohQwZ9zLAhb3oJYK1uUbSAAwcYOM9PCvYe3
- 0Pm7hDaou/gQhjYpb/Zig6ojyXPGtD7VbM/8xUkrkDVEseAUBrsSeWdRCQF2Abjk8M9O
- FMPQ==
+ bh=FIGb67/7AZLB1KuL7OpgzdcNpN7qc0dd1bxQgjTt6FA=;
+ b=aXH2u7yFmwt0txxpHeaBseS8XYq/w5pv+IwgbONZSSR/QYOLf20M8nEweMCL1nd6hK
+ dCnrLQkhRSUvCJUAZbZmBBbGR+oXxym8M5avmxHxT4rQOjIHhLtIWdJexury1y981ZE0
+ ed3T0Tzr9nd8/4rLa/Fo9VlZKKE5n4ClBTzL7ZlCbs0dRcA2g2+Vo+6OhtvNjhhZJd4n
+ Q5aLwWF+tY3zsZnT8ULWxKrmGHuQKxOXs4wKOYVVIh76ys24P3HqYQMHqat49C9tJgM9
+ O+ah1ezXRofiTCMVcVloYqdteUYpP85liRVPbHxDnso3eV1x9lWkxUgpgANb5gPyI7eQ
+ 2z8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742311769; x=1742916569;
+ d=1e100.net; s=20230601; t=1742317098; x=1742921898;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=RzcYsby2Qz/PBO2uDcctGpE87+/O7tdb9aGwayLSNF4=;
- b=ZxwJ3Cf/xt04bCuPgpJYznZzMDkPa5y2do5Q47kjL856CFpTWjLjfR5Ow4vDRN4bh8
- tGgXDsyRiU/z0lPW78VqYuNxppPHb2pr4N64Fm7nQF1hdjRMXq3nAqkXpH3KTepgaVhW
- vqyVx5AuZmwHPz4rkYbVn2p3Bcxqz0QQGNhOkpNCOnWmXT3dC8eumaA5WFj6B/kRCZ8b
- lqIAKTQFlQnPHNy6/KPEsgLxp5J1CkRI0nMkqVwguz5/TBqCnYF5NSWs26UusmEgQBTj
- 4xrO5DYby3hJA7odrkNf6GlKHYuCld0iRmm53NFzaxG/A6n09eYEkPVQW9A7yIk5MWHR
- 07hQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVOW3XqJJjL6vworsfktxiYlzuumrroZmgmrOLdku33lxoYcwxr1gZOGB8KMIgaoJXj0K3dU7J9kg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy5rGFjjKG2APAnYJnidYxrt6prjfi0Rfph6zIneupoi5bRihyD
- DQpwBVr2vsA8QUjpWUzkSfvfh8Vmc/vV5J7vhLupWwPp0vLcBskJ7sMzxrefGLPWjYIaAArF3u0
- ZGWody5TQWENWnpRyss0nJoYltRs4+nyWkFkuuBlTp6HFbqT3
-X-Gm-Gg: ASbGncvBh7aupGgsWKrNI+yET0vVVXldA3wKleN/LIIxo58+ynmEh/vk00fGM/0t7zx
- /5Na7jXtjHWmUn3slIBmh+8tu6Mha9KPN60fjdGXp7UhRAF65FJJfJ/1s563QDPqH7ge1TI2GC8
- 6yjJK5JYDz19uZt1A3sAPryKnS9ls=
-X-Received: by 2002:a05:6902:2213:b0:e63:efc9:721c with SMTP id
- 3f1490d57ef6-e63f650d07amr20959132276.16.1742311769321; Tue, 18 Mar 2025
- 08:29:29 -0700 (PDT)
+ bh=FIGb67/7AZLB1KuL7OpgzdcNpN7qc0dd1bxQgjTt6FA=;
+ b=oPCHaEmZfsrgvqP4JRSyVh9bJkHJwkrxO5P8l5NYiNjiY4GqRkiVnU4So2ANyBnOiS
+ Z7PIEnhFzU48210sgFrw3zhno9RdT42KHvOPpF7UCZEjxKbXAgoJyKWM0h4d4UidOE3o
+ +qtNwcPGPOpnjHecuWBWECeBjXklzUfFVfQwQkS06mPHeeczgPXGJpVoOaQGvBQgDQk5
+ +l5Kht48khVE7C2/8sl/w0ssjw4l5/u6xjiLKIeDK26x5qn/zxtbCiake1i7TZzm1xh/
+ IAgFe/34wDO0nIoj0Wq0zSgfcSozRpOpBz2JW0JHH/ei2sFnpMK+DdXOxdDWqwBAj8Jw
+ DKQg==
+X-Gm-Message-State: AOJu0YzxVNHExW13KStdNrZIhQhth0wUWIQccu+Z+HoUJHeguGQKgP3z
+ qPSpY+7dN1Oipzc4NMqscMkt3UDzguIR8opYHZjxPhNG+Kpu2NKPE8h7ND1VbQq3sXpZY18Jw49
+ 3OR6lrq763gAR5rDZfpw18XpqVqG23vN/XQIjUQ==
+X-Gm-Gg: ASbGncsHuTuvoSSknZA0dDVujo8ejFfehPxKgi6JUKjDcpnXuAWqh63kh3vOE57MIDf
+ BgtKE2FpgFvm21Ix4Q4uEuLViTXoBvgbZlRDNDdY+Jxgavkx94OpZegRy+hp3GpRxGZXwLjAHdj
+ MrPMN4xUcV4vue94iJ+4xmmuEabhQ=
+X-Received: by 2002:a05:6902:220d:b0:e5d:b9a0:a14a with SMTP id
+ 3f1490d57ef6-e63f6533d03mr19926023276.24.1742317097852; Tue, 18 Mar 2025
+ 09:58:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250314183224.21822-1-shentey@gmail.com>
- <20250314183224.21822-2-shentey@gmail.com>
- <CAFEAcA8DPonw1+GsBJ079AfeSyO9=3B93P1yj3uLTBzF4uf0Ug@mail.gmail.com>
-In-Reply-To: <CAFEAcA8DPonw1+GsBJ079AfeSyO9=3B93P1yj3uLTBzF4uf0Ug@mail.gmail.com>
+References: <20250318061420.20378-1-thuth@redhat.com>
+In-Reply-To: <20250318061420.20378-1-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Mar 2025 15:29:17 +0000
-X-Gm-Features: AQ5f1JqgozX_Qt0rSTlFI0R_XebNnbZswWr4Hx8WBcVJh61Tq8gbY4hWYaMypSg
-Message-ID: <CAFEAcA-jbRt7x7w-gA5KEBRK8_kHgHRcX4ri+vn-umz2wAsGxA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hw/arm/fsl-imx8mp: Derive struct FslImx8mpState
- from TYPE_SYS_BUS_DEVICE
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org
+Date: Tue, 18 Mar 2025 16:58:06 +0000
+X-Gm-Features: AQ5f1JrMe_AZqZ2w4wIPUxyKBCnMWSAad3ROqzh2YR5L9GxQZI9LPBxcPcRXknI
+Message-ID: <CAFEAcA8+5pdLYeXGP7orv1cH6AscuJ-tDadQUAdSEcVptWtuXA@mail.gmail.com>
+Subject: Re: [PATCH] docs/system/arm: Use "functional tests" instead of
+ "integration tests"
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,68 +114,37 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WwKafgEbhYrO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hrs/2LhBx/e+
 
-On Tue, 18 Mar 2025 at 15:27, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 18 Mar 2025 at 06:14, Thomas Huth <thuth@redhat.com> wrote:
 >
-> On Fri, 14 Mar 2025 at 18:32, Bernhard Beschow <shentey@gmail.com> wrote:
-> >
-> > Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon machine
-> > reset. It also makes the SoC implementation not user-creatable which can trigger
-> > the following crash:
-> >
-> >   $ ./qemu-system-aarch64  -M virt -device fsl-imx8mp
-> >   **
-> >   ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread: assertion failed:
-> >   (n < tcg_max_ctxs)
-> >   Bail out! ERROR:../../devel/qemu/tcg/tcg.c:1006:tcg_register_thread:
-> >   assertion failed: (n < tcg_max_ctxs)
-> >   Aborted (core dumped)
+> From: Thomas Huth <thuth@redhat.com>
 >
-> > diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-> > index c3f6da6322..82edf61082 100644
-> > --- a/hw/arm/fsl-imx8mp.c
-> > +++ b/hw/arm/fsl-imx8mp.c
-> > @@ -702,7 +702,7 @@ static void fsl_imx8mp_class_init(ObjectClass *oc, void *data)
-> >  static const TypeInfo fsl_imx8mp_types[] = {
-> >      {
-> >          .name = TYPE_FSL_IMX8MP,
-> > -        .parent = TYPE_DEVICE,
-> > +        .parent = TYPE_SYS_BUS_DEVICE,
-> >          .instance_size = sizeof(FslImx8mpState),
-> >          .instance_init = fsl_imx8mp_init,
-> >          .class_init = fsl_imx8mp_class_init,
-> > diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-> > index e1a7892fd7..f17d5db466 100644
-> > --- a/hw/arm/imx8mp-evk.c
-> > +++ b/hw/arm/imx8mp-evk.c
-> > @@ -37,7 +37,7 @@ static void imx8mp_evk_init(MachineState *machine)
-> >      s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
-> >      object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-> >      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
-> > -    qdev_realize(DEVICE(s), NULL, &error_fatal);
-> > +    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+> We don't use the term "integration tests" for these kind of tests
+> anymore, it's "functional tests" nowadays.
 >
-> You want sysbus_realize() here, not the _and_unref() variant,
-> because the device was created with object_initialize_child().
+> Suggested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  docs/system/arm/bananapi_m2u.rst | 6 +++---
+>  docs/system/arm/orangepi.rst     | 6 +++---
+>  2 files changed, 6 insertions(+), 6 deletions(-)
 
-No, that's wrong, we create it with object_new(). So
-the _and_unref() *is* correct, but this is a separate bug fix
-from the "should be sysbus, not qdev" bug this patch says
-it is fixing. Can it be in a separate patch, please?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
 
 thanks
 -- PMM

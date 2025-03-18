@@ -1,68 +1,68 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2884967njb;
-        Tue, 18 Mar 2025 05:23:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8fLVXMU9/FILRU4u83+n/eqIltNLuI5BT+jd6CBAnauuAdwbS7L1k6l0yzMSi+3Nu/3z9cCwzI84+ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IHAOvdcbz3RfKPuzqCupN2t4aC9a5OOg22A1zxkhR0bg26nfKoImpYFPobBnv8QrUl9n84h
-X-Received: by 2002:a05:6214:20ee:b0:6e8:f5db:d78d with SMTP id 6a1803df08f44-6eaeaa5a6b7mr275049366d6.23.1742300602310;
-        Tue, 18 Mar 2025 05:23:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742300601; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2894344njb;
+        Tue, 18 Mar 2025 05:39:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYCz4uWszNl5UzGS+A7ssqZniUsPlCDMdSEYnovFwYlVi9tlArbc5Nm2VONwm53YCd74yTOZiSUTdSWw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFoJxWJm7RXtNlQBjI1XEkPVW/rFlTp5zngA9GpUzfeDPohPIeBlkub3GcbKV3K1B+C1Tw6
+X-Received: by 2002:a05:620a:389a:b0:7c0:a264:4de1 with SMTP id af79cd13be357-7c59b8d7e55mr302262585a.24.1742301555490;
+        Tue, 18 Mar 2025 05:39:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742301555; cv=none;
         d=google.com; s=arc-20240605;
-        b=JsKuF+3tK+7trlBfJSTy6eOnB0/paMfdCwXe/4re2Ju/ERIdyBu76WrvAhUpb20qpG
-         jBxOLwJj9KSSMceMSzT0V9jFfWAKaVO0gJTma1CkOjKx8ig/2NToH9FTrZp7/nN6NX4A
-         p+bSLAWff2T2+lN7ghuMDf3UnZEdr6RE5C2YmhzUdOulO5LQ2WSL/hEqHL9YI4hyLOo6
-         zDVDOo5vwOMm+txFnCbUkPr/CAuEPgmvuchLz1huZW75cF6srRYXK+Zc6dXtbLK2VY+V
-         ZyhWwXmSoVOHAljZbBD5MseJjA1CsQEUYZaIMz96ZRfbM7ISojXbSs0fQ7/r/SbN7tyG
-         QEbw==
+        b=V+gTnqzqWTK49WuHAnNcbLI+iZpFFeUHPnDXqC/YHcO67juPhpB93IGAeZrkTn8c4h
+         avBRGqsU3OkzlMbm3gGzVpzX0kxHEdqUY0ePei+TvvAAkC4SZRgvEN7THzJYflDFqtlm
+         iOomGf/McNlaWAzdjfPatQODj4zMB6IRXEWFGCfPR4J+5VhDcW+Jzb+T4kjhbP/UlSy4
+         XASsYgrJ+5uONmguQPKA+uNvDdavAohOmswAuqCVj6GNWGYd9xlGE73/RLUpk1RwLZ3f
+         J2KIC8+bOAsnjuSuTgbXzKMm+2jmPAGcbluAkkqL2YBXII1SlZom3Vc+RSyAVwN9yM93
+         yVKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=jnDrN3KVxz9k+usQQsFOTCCr5Jz2GqZxAB1/jvk3Zss=;
+        bh=h+MDnzbOwj5+ebp7ph0EVGZLVQmlBdRymY3W7gC+5pk=;
         fh=L3Svj+omHilz9RbFziD3wUBtTLcUrR4FR0XsT5Ue1m4=;
-        b=i7o/X+TF8p444Lllson0J1O2FDFMUC59K3uPnFqN312VlLUoCuLBfhCitbNokffhPL
-         vTUVHF63FjBzCD4tNsK6V3syMYXqCfyGD48SZgYjYxn1rc+GJQgiO48T/vHNOIu6Z6yM
-         j1arWOsOc49pZcE7gEz2R20EIsGLxx0x5w+wY16deiaAt3U94kX1NJc/+C19K0D15H6Q
-         YPgFvj130D+yU1P8SzJuuyW6FkjqCaPTj+A6gFuYa68TCme0pzBK8TDeNcfe6By4epE5
-         0yhb3Qfz8x8KYpmZjDmY+4sNKZILqwS21tGDn0U8bGQF8+9obtFkUC42BEuX8B8mwatM
-         Pa3A==;
+        b=JMUP/mCwYvZ3TtW8sw2fu8j5l0lSzgjJ5iRX+39n5VubdUsXRdsvx2aFGwsOdmgWpF
+         dgsFeNNYv2zBzLSbNPwwpCNinVmDhMEDDkipDrpJ4sM/Uw+C6ZuUlMkeE4pADhTmAnZ+
+         lrBTs6vuu3Jx5/a7TgeqVAzVJ0A97FWGmpcQ4tRhjy5ixYQJOZiufb7GJI3mFz/zIdaY
+         BwzsJYZFOyAYsRLA+h+/I5tpF9Cz7FTOpCQSfCeK11h3+Z2lJsCmhgWuz/arBdIJPWAs
+         dM+MQVZwtfqgBVvfchV3EP8OzykSFlPTc0jEoUPWgKlG56ZqeSuYsCfduF3s9alCrufd
+         DFOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eade38758bsi126156606d6.505.2025.03.18.05.23.20
+        by mx.google.com with ESMTPS id af79cd13be357-7c573d19214si1163037085a.501.2025.03.18.05.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 05:23:20 -0700 (PDT)
+        Tue, 18 Mar 2025 05:39:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuVyM-0005Ib-GM; Tue, 18 Mar 2025 08:23:08 -0400
+	id 1tuWDZ-0002EN-IT; Tue, 18 Mar 2025 08:38:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7qUH=WF=kaod.org=clg@ozlabs.org>)
- id 1tuVy9-0005HG-6Y; Tue, 18 Mar 2025 08:22:54 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1tuWDX-0002Dd-JQ; Tue, 18 Mar 2025 08:38:47 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7qUH=WF=kaod.org=clg@ozlabs.org>)
- id 1tuVy7-0002cC-5H; Tue, 18 Mar 2025 08:22:52 -0400
+ id 1tuWDU-0006UO-R7; Tue, 18 Mar 2025 08:38:47 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZH9vz6SDvz4xM2;
- Tue, 18 Mar 2025 23:22:39 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZHBGQ2Z7nz4xM3;
+ Tue, 18 Mar 2025 23:38:38 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZH9vv5DjWz4x8p;
- Tue, 18 Mar 2025 23:22:35 +1100 (AEDT)
-Message-ID: <1782129a-0d67-4388-b2d8-d1a053155a1b@kaod.org>
-Date: Tue, 18 Mar 2025 13:22:31 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZHBGL4FZrz4x8p;
+ Tue, 18 Mar 2025 23:38:34 +1100 (AEDT)
+Message-ID: <fdd14fbe-57c9-4c8a-be90-4492dfe1ab02@kaod.org>
+Date: Tue, 18 Mar 2025 13:38:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] aspeed: Fix maximum number of spi controller
+Subject: Re: [PATCH 2/2] hw/arm: ast27x0: Wire up EHCI controllers
 To: Troy Lee <troy_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,6 +72,7 @@ To: Troy Lee <troy_lee@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: yunlin.tang@aspeedtech.com
 References: <20250317065938.1902272-1-troy_lee@aspeedtech.com>
+ <20250317065938.1902272-2-troy_lee@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,16 +117,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250317065938.1902272-1-troy_lee@aspeedtech.com>
+In-Reply-To: <20250317065938.1902272-2-troy_lee@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=7qUH=WF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,18 +143,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zswW21JHXjPw
+X-TUID: +u7+7swmcNA7
 
 On 3/17/25 07:59, Troy Lee wrote:
-> Commit 6de4aa8dc544 ("hw/arm/aspeed_ast27x0: Add SoC Support for AST2700
-> A1") extends ast2700a1 spis_num to 3, but ASPEED_SPIS_NUM defines the
-> maximum number of spi controller to 2, result in ehci[0] is being
-> overwritten in runtime.
+> AST27x0 has 4 EHCI controllers, where each CPU and I/O die has 2
+> instances. This patch use existing TYPE_PLATFORM_EHCI. After wiring up
+> the EHCI controller, the ast2700a1-evb can find up to 4 USB EHCI
+> interfaces.
 > 
+> ehci-platform 12061000.usb: EHCI Host Controller
+> ehci-platform 12061000.usb: new USB bus registered, assigned bus number 2
+> ehci-platform 12063000.usb: EHCI Host Controller
+> ehci-platform 12063000.usb: new USB bus registered, assigned bus number 3
+> ehci-platform 12061000.usb: irq 88, io mem 0x12061000
+> ehci-platform 12063000.usb: irq 90, io mem 0x12063000
+> ehci-platform 14121000.usb: EHCI Host Controller
+> ehci-platform 14123000.usb: EHCI Host Controller
+> ehci-platform 12061000.usb: USB 2.0 started, EHCI 1.00
+> ehci-platform 14121000.usb: new USB bus registered, assigned bus number 5
+> ehci-platform 14123000.usb: new USB bus registered, assigned bus number 6
+> ehci-platform 14121000.usb: irq 91, io mem 0x14121000
+> ehci-platform 14123000.usb: irq 92, io mem 0x14123000
+> ehci-platform 12063000.usb: USB 2.0 started, EHCI 1.00
+> usb usb2: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+> usb usb3: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+> ehci-platform 14121000.usb: USB 2.0 started, EHCI 1.00
+> usb usb5: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+> ehci-platform 14123000.usb: USB 2.0 started, EHCI 1.00
+> usb usb6: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
+
+This is a custom image ? and not the SDK v09.05.
+  
+> Note that, AST27x0A0 only has 2 EHCI controllers due to hw issue.
+>
 > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-
-Fixes: 6de4aa8dc544 ("hw/arm/aspeed_ast27x0: Add SoC Support for AST2700 A1")
-
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
@@ -162,20 +186,125 @@ C.
 
 
 > ---
->   include/hw/arm/aspeed_soc.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/arm/aspeed_ast27x0.c     | 28 ++++++++++++++++++++++++++++
+>   include/hw/arm/aspeed_soc.h |  4 +++-
+>   2 files changed, 31 insertions(+), 1 deletion(-)
 > 
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index dce7255a2c..4ff4462ec1 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -25,6 +25,8 @@
+>   
+>   static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_SRAM]      =  0x10000000,
+> +    [ASPEED_DEV_EHCI1]     =  0x12061000,
+> +    [ASPEED_DEV_EHCI2]     =  0x12063000,
+>       [ASPEED_DEV_HACE]      =  0x12070000,
+>       [ASPEED_DEV_EMMC]      =  0x12090000,
+>       [ASPEED_DEV_INTC]      =  0x12100000,
+> @@ -47,6 +49,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_ETH2]      =  0x14060000,
+>       [ASPEED_DEV_ETH3]      =  0x14070000,
+>       [ASPEED_DEV_SDHCI]     =  0x14080000,
+> +    [ASPEED_DEV_EHCI3]     =  0x14121000,
+> +    [ASPEED_DEV_EHCI4]     =  0x14123000,
+>       [ASPEED_DEV_ADC]       =  0x14C00000,
+>       [ASPEED_DEV_SCUIO]     =  0x14C02000,
+>       [ASPEED_DEV_GPIO]      =  0x14C0B000,
+> @@ -91,6 +95,8 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
+>       [ASPEED_DEV_TIMER7]    = 22,
+>       [ASPEED_DEV_TIMER8]    = 23,
+>       [ASPEED_DEV_DP]        = 28,
+> +    [ASPEED_DEV_EHCI1]     = 33,
+> +    [ASPEED_DEV_EHCI2]     = 37,
+>       [ASPEED_DEV_LPC]       = 128,
+>       [ASPEED_DEV_IBT]       = 128,
+>       [ASPEED_DEV_KCS]       = 128,
+> @@ -137,6 +143,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+>       [ASPEED_DEV_TIMER7]    = 22,
+>       [ASPEED_DEV_TIMER8]    = 23,
+>       [ASPEED_DEV_DP]        = 28,
+> +    [ASPEED_DEV_EHCI1]     = 33,
+> +    [ASPEED_DEV_EHCI2]     = 37,
+>       [ASPEED_DEV_LPC]       = 192,
+>       [ASPEED_DEV_IBT]       = 192,
+>       [ASPEED_DEV_KCS]       = 192,
+> @@ -212,6 +220,8 @@ static const int ast2700_gic132_gic196_intcmap[] = {
+>       [ASPEED_DEV_UART10]    = 16,
+>       [ASPEED_DEV_UART11]    = 17,
+>       [ASPEED_DEV_UART12]    = 18,
+> +    [ASPEED_DEV_EHCI3]     = 28,
+> +    [ASPEED_DEV_EHCI4]     = 29,
+>   };
+>   
+>   /* GICINT 133 */
+> @@ -434,6 +444,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>           object_initialize_child(obj, "spi[*]", &s->spi[i], typename);
+>       }
+>   
+> +    for (i = 0; i < sc->ehcis_num; i++) {
+> +        object_initialize_child(obj, "ehci[*]", &s->ehci[i],
+> +                                TYPE_PLATFORM_EHCI);
+> +    }
+> +
+>       snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
+>       object_initialize_child(obj, "sdmc", &s->sdmc, typename);
+>       object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+> @@ -709,6 +724,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
+>       }
+>   
+> +    /* EHCI */
+> +    for (i = 0; i < sc->ehcis_num; i++) {
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), errp)) {
+> +            return;
+> +        }
+> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                        sc->memmap[ASPEED_DEV_EHCI1 + i]);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                           aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
+> +    }
+> +
+>       /*
+>        * SDMC - SDRAM Memory Controller
+>        * The SDMC controller is unlocked at SPL stage.
+> @@ -900,6 +926,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
+>       sc->silicon_rev  = AST2700_A0_SILICON_REV;
+>       sc->sram_size    = 0x20000;
+>       sc->spis_num     = 3;
+> +    sc->ehcis_num    = 2;
+>       sc->wdts_num     = 8;
+>       sc->macs_num     = 1;
+>       sc->uarts_num    = 13;
+> @@ -927,6 +954,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, void *data)
+>       sc->silicon_rev  = AST2700_A1_SILICON_REV;
+>       sc->sram_size    = 0x20000;
+>       sc->spis_num     = 3;
+> +    sc->ehcis_num    = 4;
+>       sc->wdts_num     = 8;
+>       sc->macs_num     = 3;
+>       sc->uarts_num    = 13;
 > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index f899356ed9..f069d17d16 100644
+> index f069d17d16..c1e80c8908 100644
 > --- a/include/hw/arm/aspeed_soc.h
 > +++ b/include/hw/arm/aspeed_soc.h
-> @@ -42,7 +42,7 @@
->   #include "hw/char/serial-mm.h"
+> @@ -43,7 +43,7 @@
 >   #include "hw/intc/arm_gicv3.h"
 >   
-> -#define ASPEED_SPIS_NUM  2
-> +#define ASPEED_SPIS_NUM  3
->   #define ASPEED_EHCIS_NUM 2
+>   #define ASPEED_SPIS_NUM  3
+> -#define ASPEED_EHCIS_NUM 2
+> +#define ASPEED_EHCIS_NUM 4
 >   #define ASPEED_WDTS_NUM  8
 >   #define ASPEED_CPUS_NUM  4
+>   #define ASPEED_MACS_NUM  4
+> @@ -192,6 +192,8 @@ enum {
+>       ASPEED_DEV_SPI2,
+>       ASPEED_DEV_EHCI1,
+>       ASPEED_DEV_EHCI2,
+> +    ASPEED_DEV_EHCI3,
+> +    ASPEED_DEV_EHCI4,
+>       ASPEED_DEV_VIC,
+>       ASPEED_DEV_INTC,
+>       ASPEED_DEV_INTCIO,
 

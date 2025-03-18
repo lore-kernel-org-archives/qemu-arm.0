@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694635njb;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694640njb;
+        Mon, 17 Mar 2025 21:51:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXGHEZavvsh1kd6U4hII7WIFcmMU9FEJirvBeTT0V1slvSnUJMP35LsXGrgptTBVz++G8Q8dOavxOYRvg==@linaro.org
+X-Received: by 2002:a05:6a00:181e:b0:736:5e28:cfba with SMTP id d2e1a72fcca58-7372243e746mr17160162b3a.18.1742273504839;
         Mon, 17 Mar 2025 21:51:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOJyIwqY5Gchf7ur0E22ovMKkuvERM8ZoFHPB1/z9gYmbZcN89OJmFaHAPHE6phAQxednAU1b3d6syOg==@linaro.org
-X-Received: by 2002:a05:6a20:d043:b0:1f5:7ba7:69d3 with SMTP id adf61e73a8af0-1f5c1175149mr20942992637.15.1742273503881;
-        Mon, 17 Mar 2025 21:51:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742273503; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1742273504; cv=none;
         d=google.com; s=arc-20240605;
-        b=S+iLP6BkzNjuVv9MONHyoCvyPj5TCIJfyqDThTprHKyimUb/NoBBklTdowOklda+G+
-         IByr+lHRiZtMKteoUFex2OW1pO1bmZCZl18ZMJ8CjGDq0yjDteh4bvybmNQMGMxORnfs
-         jYv16C6Zya9ngg+fPbvX34r1nMBn+VKiQ6hSl9ke0iLBuqcHz41LD0Kd0HSnC5rCaenG
-         VU4Ac74R718q/GCFu4Si/sVFoKsVhB32GlZS5btl0OuzSY2FuuQOQrkqLm3OrH44zHof
-         sCEtYYzTdjSSZQVDxMSx1IbOOHVvzDK7oMftdky4cr5ayqgBdPopGRS59U9Rql9DnNV9
-         qkmw==
+        b=LPLNh4S/c2XxQpmev+/Vo5++1P4EgemngCNM64qyP41SGSPBTKmAABrULWNnf6alQr
+         EemJk062ilkJK1sw38amoVzCLi7cdrstbwPI8n9YxaEUP7Z9NKIyyltm+JHAqe5+GnVz
+         V6Bbsx/xpnNiZEUHBaGD3IS33N84cJpm8QjPbAdQrbJgbGigRZYpRM/Vskxu+I49bM7l
+         WIky0RPa5cgEpoKYQmVnAdLDG2BRuiHt8e8si5sXCajYSzPbKgjxIuaTe2fTt259Y+cc
+         fyy8DlPrtDuSB3Yz2ASBWG0/fi+tC8Mh8zMl6q82fbZSjaNhRXNzsapChOup0TJMgYcN
+         Z3Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ff4if22Q9C7/aUOyimjBXuhprbDC9BPiONo3GzzeMnI=;
-        fh=2BLgl0E/1QhkdHvLb4unMlFKUJB07o/f3DS2R3gygCc=;
-        b=So0lj5KVf5EwBFWjTNEAgNRAJq7yWT0s4XNuuG4P+V5rQPoj9/+sSSPZFRnz04rBps
-         hJxAciYsCgwB7NCECyeRwbAhgkVn6vsCH8iwd6rcfBWLtOyptsPSJVsYQJJ0acxBCNcc
-         AXtWq+qqSs8MLG1aWEqO3aftm+r0Yu+mCbbw+7aPzCYdcxQZ7vYWJ3LBuB9Kln5Q54LO
-         Qd/1Rn3+qNBJ2v9CvMVNO0dnhYj6/gZiXjDSaIs0618llnzpL2vOCsHVgsbS2f3AQHdt
-         SvXJcfSEFrBnmapHurFt1occ8pzHX+4/Wm5zHBZ3lk69dFpLaiwk+Upf7o9TfoH/bVgP
-         I0pQ==;
+        bh=Ek8XPpj4hrtyNGDcqo+uXNBksQzSJC0Hy5Yo4DqMKUU=;
+        fh=W+mntSYrNq7ln05sdo1eK0/5APCQ3ipeQuLGb0QxQWw=;
+        b=GXuyLeraszFz98a7qrEUzAr9r5XIKmLQd7QPQ1wh5letn+yMvMFY0faTZ/aoDyPZd2
+         odxarjf8IeDONqnff3BgflJx2cMMYqyPx1Ndzvq8ZRo5jm/tc0hl9+uKs+KoLjIyK6y3
+         qq6/20oH95TaGhTEmKBpeiiX2/xB2sldk+csi+x9qUzYhr6SS20ogC/ktmhP7AQ7p/qq
+         +Y81Nph9bTBgTeRNA20xhCpRKzPvm6uvICc+6E3Td5hIRo64cYbHvBwAGy1Q5TtSNz2Q
+         zbIPoTM7Uvd2XST1cFkMBwKbODPDl2A5V5hKgGAWoQ0BTY6gqnbIqRnqsz7JKrtfkv0s
+         lI7Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E2adwllY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IQvg2xWf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-af56ea5d5f2sor5065155a12.4.2025.03.17.21.51.43
+        by mx.google.com with SMTPS id d2e1a72fcca58-73712bed668sor5428558b3a.7.2025.03.17.21.51.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 17 Mar 2025 21:51:43 -0700 (PDT)
+        Mon, 17 Mar 2025 21:51:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E2adwllY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IQvg2xWf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742273503; x=1742878303; darn=linaro.org;
+        d=linaro.org; s=google; t=1742273504; x=1742878304; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ff4if22Q9C7/aUOyimjBXuhprbDC9BPiONo3GzzeMnI=;
-        b=E2adwllYpSqWTVWexh5bKYUpP86F9ELxJC1x05d4oBMLTif6IARGGiFwL7ZFI+Sbhe
-         iDDgKxgYjpv/XSvTpxcr5x5rT+GhsZ9omiILDOU0kL15akER43UBOVeNFCG2Ibo8GOZp
-         eH9U/5UKK23hrTcnLBVA4Rl4fXDz8xS5GlmUYTocL1Ln64QoXg9kaLw/ATf30CNMTKhV
-         JsmvMVz1S/2xRFIUnENR1mJ70eLI5R09CUSGz+syE6DRHGLL44H7q1gLZZXbSBvEJpMB
-         U9mPVVQSuA4N5X7mJYhmWxSthuXLb6N/yCqhwMuYS8N50MtqWo7Jhn5y1wKrp4OHu7UT
-         zVhQ==
+        bh=Ek8XPpj4hrtyNGDcqo+uXNBksQzSJC0Hy5Yo4DqMKUU=;
+        b=IQvg2xWfsxlU2yWq35en+iuNumNfkVpak3D2iKpKllbymNRhycxJwhw93Zu0MH94ZT
+         R1NQkDZLvJBzr8Cb6iC/T1fewZIu5ruYj4z898TK4DNR9Epew2XazCT/+TT5sYQVTloA
+         jaffbZtXrR/pvr+1QBTAYGEIfrRgykLTo7ly48GrslP4WxgDpjoC3KTMlKWVJhYmTcYi
+         XLkGAjA8XLBqVAtXeVClE9yG/YtHOJeoMNmhQ2nmKW426vjAf28FtA863eW2o7s3rV+g
+         XS4yZK8+bsj7M9kVuTGDd+gIZZI/8ETs79oTLQglkvwycVPLJrZvrcfaVMYeEUfV0UTl
+         MxYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742273503; x=1742878303;
+        d=1e100.net; s=20230601; t=1742273504; x=1742878304;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ff4if22Q9C7/aUOyimjBXuhprbDC9BPiONo3GzzeMnI=;
-        b=mWbpDCTMAH1dA/j3zgbnzT0CwwNH7Hl3NcNN5Y2Mjz48YEfXfBkcKoJZPAwqZJWxse
-         8a0urLw5FVyMQYv95zceFauot0gdhqGQH1u0UeIhEGfxKaf+UPyvZoKsqwlJK2GfGmWa
-         bbw7IancxQb8rl2xk6kdCs8d1tQtvpd3C/85wGdogNJuSUDOqUHqwyxJ6QPAfHn1iCU9
-         4KLwmEHUph5IT5HO3y+2Px61qcRh7c5cd7/MYqyGAP9ExKCUbkasFQ0d5HdyLn41LkaG
-         cl/m8BC8b8Y5syFola6on/+7OAfva6BeriKOl0Lg2nKg5o5/EbYsyfoEvNmvvGQPKfgd
-         LnQA==
-X-Forwarded-Encrypted: i=1; AJvYcCXSWLzvZp4FhKDNk947nhDLi8vtBwaZ3PdyXLg6S0mKHvVmir7OuvsXGFTsOYKRZRklGDBEEECFQky8KQ==@linaro.org
-X-Gm-Message-State: AOJu0YzK/VbedkrSAPc4T+59onI/2cFzZcfhCmRXv0eoxsZ+F0fARDZ0
-	fD32ALw3GC1RVX0BUL5fxaueQz9lBRZ9Tld+yF5LVZWm2So8o3bbXpLAp6YlvM2e1Q==
-X-Gm-Gg: ASbGncvl6ynBHIZXQjZM/AwR+l7+KQ4sRR7xIY13+taNvQ7qUXDyf1hzAp5jB2e65QK
-	F+8M5dlzEYhHATFzvAGN6TpKAof5mSh7Rxh6PLenuar37LDyb1CllJhPdpWkXgkSSnrCmhAaJJR
-	esI5HmPHfBi5j0zbNDgr/K0Y4Q2xt8oKevjYQ3RBlPzh4KiJGegbVbCoH8OoC0r/aljF76E8Dcu
-	KTAl8Hz+4047ZcsXzBfYmSF3pN7aj3hEEm5gpupNKjTiFkPhYs3WhfcnrAR83pbFE28uqUvZhMr
-	iFQtXc0nZwhJrjnVjY1Nd0tqPCgHHZuGIC+lj7jl8a+y
-X-Google-Smtp-Source: AGHT+IGwUIS/3wXKGJBQGhbVlXqqVjdKfsJ7yt0C5ebmRfs4P5+hmmLEk6TOEURFfJtw+igxyOPO3Q==
-X-Received: by 2002:a05:6a20:244a:b0:1f3:2e85:c052 with SMTP id adf61e73a8af0-1f5c1327783mr23658501637.35.1742273503447;
-        Mon, 17 Mar 2025 21:51:43 -0700 (PDT)
+        bh=Ek8XPpj4hrtyNGDcqo+uXNBksQzSJC0Hy5Yo4DqMKUU=;
+        b=ubdNyd+wAE8Y3fDhX+y3CX0kLOjKRrVwInF0AT/V4VSE/A6jdVGDWg77hCl7hiYYMx
+         hxSwwDpdiBJoV6LvkBH5rW9PxBaNm5fUhCrm3pCnorBmFJhzqDkXotM/DQ1WbTcYjSJb
+         Mgf/xl5vaUpN8wkt39vxFQfi3Q1xIYmEye3+MAjvxQcJ9MyD6T61Bmb2z4wPzB04K+KS
+         HbfOT3c3YVyx8Srgjg7AhgIBRhs3CAxIcYzyj2NGw9M2ZbR7jGdX+GEdxYWWVj6ozTgY
+         6Atxt6wzSY9LlLmJyjZXo23+QBNaszEhkVyOCy/UeJFDFpRFgEZYE/Yh4k6IdpN8nlBe
+         56Cw==
+X-Forwarded-Encrypted: i=1; AJvYcCWD+ZX5RHQwHfmUi6EH6EHLua7wPnDlKv74uvlKFFGtdUw+E5SkFG1a2GQnqPdvG6ZehicM+D7rc7xUEA==@linaro.org
+X-Gm-Message-State: AOJu0Yyq/l8CeaRtJYbGhhIjgBwp2N+hVWb/hasJ92F79kWXSuL6I8gV
+	st9qvbPXOoseoG4MyBwi4Z/Lt6YlkmZEjuBPxArK3LoMg7zChRZz0F4cawmlhUHToA==
+X-Gm-Gg: ASbGnctNj5nWLOo6xSO/UwMql0/891Srog7K+OQLdcxODinquDVLgELUWX4FeV0v7oR
+	AycSSIalFnT6CShU9PVYzvIY/BXC5LcBAE3iy/jpbt7J36U60uRmu/xm1I3zGhmrgxH3LsGoq8J
+	D9xU0sJk3CBnlaa6/YaeyXUz9owpplu/hUREGYOccNbVcc0wHTlWyaYdqN8+/ZTsA64gab1wCuB
+	RUe9sJOsMhFMqiX0LlmUkalnsu8V2FD+bvGzjg/uPj+Pr32QHlDtSZ8VaJWeIXf96Fdc428eymL
+	kT05BV8c4vBMZWLTfmoIl9/GpFZwzYheEFx+ky102yrs
+X-Google-Smtp-Source: AGHT+IGT3hRB7cgRAOTfF6ymEpowIUFgQzMXE5GAC2ISpsBZy5NX8Js4RVALQRBZLAuQQLxc3QHe/w==
+X-Received: by 2002:a05:6a21:68e:b0:1f5:82ae:69d1 with SMTP id adf61e73a8af0-1f5c12098fcmr21810295637.20.1742273504481;
+        Mon, 17 Mar 2025 21:51:44 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.42
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Mar 2025 21:51:43 -0700 (PDT)
+        Mon, 17 Mar 2025 21:51:44 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -92,83 +92,94 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 11/13] target/arm/cpu: remove inline stubs for aarch32 emulation
-Date: Mon, 17 Mar 2025 21:51:23 -0700
-Message-Id: <20250318045125.759259-12-pierrick.bouvier@linaro.org>
+Subject: [PATCH 12/13] meson: add common hw files
+Date: Mon, 17 Mar 2025 21:51:24 -0700
+Message-Id: <20250318045125.759259-13-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
 References: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: GE2BQJXtb4X2
+X-TUID: e1YPEErETFqg
 
-Directly condition associated calls in target/arm/helper.c for now.
+Those files will be compiled once per base architecture ("arm" in this
+case), instead of being compiled for every variant/bitness of
+architecture.
+
+We make sure to not include target cpu definitions (exec/cpu-defs.h) by
+defining header guard directly. This way, a given compilation unit can
+access a specific cpu definition, but not access to compile time defines
+associated.
+
+Previous commits took care to clean up some headers to not rely on
+cpu-defs.h content.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu.h    | 8 --------
- target/arm/helper.c | 6 ++++++
- 2 files changed, 6 insertions(+), 8 deletions(-)
+ meson.build | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 51b6428cfec..9205cbdec43 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1222,7 +1222,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-  */
- void arm_emulate_firmware_reset(CPUState *cpustate, int target_el);
+diff --git a/meson.build b/meson.build
+index 672a0f79d11..0dec7d9750e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3689,6 +3689,7 @@ hw_arch = {}
+ target_arch = {}
+ target_system_arch = {}
+ target_user_arch = {}
++hw_common_arch = {}
  
--#ifdef TARGET_AARCH64
- int aarch64_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
-@@ -1254,13 +1253,6 @@ static inline uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
- #endif
- }
+ # NOTE: the trace/ subdirectory needs the qapi_trace_events variable
+ # that is filled in by qapi/.
+@@ -4065,6 +4066,33 @@ common_all = static_library('common',
+                             implicit_include_directories: false,
+                             dependencies: common_ss.all_dependencies())
  
--#else
--static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
--static inline void aarch64_sve_change_el(CPUARMState *env, int o,
--                                         int n, bool a)
--{ }
--#endif
--
- void aarch64_sync_32_to_64(CPUARMState *env);
- void aarch64_sync_64_to_32(CPUARMState *env);
++# construct common libraries per base architecture
++hw_common_arch_libs = {}
++foreach target : target_dirs
++  config_target = config_target_mak[target]
++  target_base_arch = config_target['TARGET_BASE_ARCH']
++
++  # check if already generated
++  if target_base_arch in hw_common_arch_libs
++    continue
++  endif
++
++  if target_base_arch in hw_common_arch
++    src = hw_common_arch[target_base_arch]
++    lib = static_library(
++      'hw_' + target_base_arch,
++      build_by_default: false,
++      sources: src.all_sources() + genh,
++      include_directories: common_user_inc,
++      implicit_include_directories: false,
++      # prevent common code to access cpu compile time
++      # definition, but still allow access to cpu.h
++      c_args: ['-DCPU_DEFS_H', '-DCONFIG_SOFTMMU'],
++      dependencies: src.all_dependencies())
++    hw_common_arch_libs += {target_base_arch: lib}
++  endif
++endforeach
++
+ if have_rust
+   # We would like to use --generate-cstr, but it is only available
+   # starting with bindgen 0.66.0.  The oldest supported versions
+@@ -4230,8 +4258,14 @@ foreach target : target_dirs
+   arch_deps += t.dependencies()
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b46b2bffcf3..774e1ee0245 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6562,7 +6562,9 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      */
-     new_len = sve_vqm1_for_el(env, cur_el);
-     if (new_len < old_len) {
-+#ifdef TARGET_AARCH64
-         aarch64_sve_narrow_vq(env, new_len + 1);
-+#endif
-     }
- }
+   target_common = common_ss.apply(config_target, strict: false)
+-  objects = common_all.extract_objects(target_common.sources())
++  objects = [common_all.extract_objects(target_common.sources())]
+   arch_deps += target_common.dependencies()
++  if target_type == 'system' and target_base_arch in hw_common_arch_libs
++    src = hw_common_arch[target_base_arch].apply(config_target, strict: false)
++    lib = hw_common_arch_libs[target_base_arch]
++    objects += lib.extract_objects(src.sources())
++    arch_deps += src.dependencies()
++  endif
  
-@@ -10646,7 +10648,9 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-          * Note that new_el can never be 0.  If cur_el is 0, then
-          * el0_a64 is is_a64(), else el0_a64 is ignored.
-          */
-+#ifdef TARGET_AARCH64
-         aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
-+#endif
-     }
- 
-     if (cur_el < new_el) {
-@@ -11663,7 +11667,9 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
- 
-     /* When changing vector length, clear inaccessible state.  */
-     if (new_len < old_len) {
-+#ifdef TARGET_AARCH64
-         aarch64_sve_narrow_vq(env, new_len + 1);
-+#endif
-     }
- }
- #endif
+   target_specific = specific_ss.apply(config_target, strict: false)
+   arch_srcs += target_specific.sources()
 -- 
 2.39.5

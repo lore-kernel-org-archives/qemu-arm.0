@@ -1,104 +1,104 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2917198njb;
-        Tue, 18 Mar 2025 06:14:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVowKWc1YVmHN4008budf6r1ufIaTCWcpxUPPcLpS06GgNB/o0HL4TUkDRMlYZJbwVFVBy3r21KDcs6FQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHNXqD9nkUc2j0p4lPYqYwcSl4NdemoeJXnrUJOKdw/WVU2wWDBAs/NgJ6ESQVfas1fVPD5
-X-Received: by 2002:a05:620a:c55:b0:7c5:a463:397b with SMTP id af79cd13be357-7c5a4633a51mr86732985a.20.1742303666091;
-        Tue, 18 Mar 2025 06:14:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742303666; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2917494njb;
+        Tue, 18 Mar 2025 06:14:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVpuhQFnOJf2Lw8VKIC2Ukw6bXMwjJGvWDpWUPi0dODZDHaglwuy3y10jieJPLZrvrzF3LSrw3Y+t7F5A==@linaro.org
+X-Google-Smtp-Source: AGHT+IG46TNcqrR2n6acNAu+s7Eh86QtiFmq+ULVU3dIGYLqfs/Hf52Acd9xYIgrrviGP4OsZg3R
+X-Received: by 2002:a05:6102:1607:b0:4bb:e1c9:80c6 with SMTP id ada2fe7eead31-4c382f93c0emr11303626137.0.1742303694726;
+        Tue, 18 Mar 2025 06:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742303694; cv=none;
         d=google.com; s=arc-20240605;
-        b=GKSjAxxYDUkabdm5PDPYLj8M6F33I8vPZz1Hv3p9G+RfMMRbYejNm8fyIPm1e2jxnw
-         NT1gT5vhvU7Al1Ws7C/JxtQZt0JKmsPzNbRtYwaXE35AgjsJ4XlyvgN329bzT86bDLIh
-         xcLSEJInlmWwbrB2BaJfjQVpAYzSqzjmkhbQjOTlg94kilzkhbs4KcVgRLT8Wr02V9AI
-         PWDzya0HI5QIe8BaFAwaJWVLId69vx1w3jKrBdgTw3/8iHNaQ1FCVYmYqX3mmSj4Is+W
-         zYUSKwx6+o+uoE4LBL/M8qI7x5/DxBRN9ENFqofKtlYrKBRCysDwhAsjGtA5c7CW2byf
-         +jZA==
+        b=NWR+3WOEkYnT+f7Tq9ybSNxA5pYFCKLgMOM4s7j8bDH6O0s+c8/geB576WTLMjjUTK
+         SfT7pyeUvdlhI0/J9LqDhJ/vgnnlrQV+ibd4+oEfHTmLorg1NnkAzutxsZV71B+ygTYi
+         WHnNBt/tnqYyC4dhpUfmvU3kdam9X8SysWGTgvsu/HWpP0qUjY8/+lCEsvN4iXcUJrAk
+         0/94pcJE2P7HAfIepr2MuQsXTF9mvP9dS5ml5aIgWTHJHb89/MUDAsKlAutXr2mBnq7w
+         yyXBt8BauWCxnVuxSQfx0DRblH0OMiD9pqlAznVeDUZvX7uQxZ61wzNWHL0D8DLF7eZG
+         xeCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ufr+Ojap1d/6dhqxl/dlT+APPSOlWATmZs8iR5dzTzY=;
-        fh=upCATJ1LXu5Wm8SjIhw2m6wXn6qyvKMddDHUQWhalcg=;
-        b=CzYBPw2CSdWCTQcfn/tlVATT4fwBVmJJmR8cjA4FkANNzzPT0Fty9PXBJ3/B2oVrtu
-         DpYjg1wmeBahGyuvc8M8bsDAJZyxW88J4y2X+GN/vjG7rzFA6BbM4WvkW3qmw886Rbpi
-         lg5QLpKgTilLo6bsgQ4Vs45ZD133T5xcZjctrW3NrrokgfvSoP36mwIOSf/az+1IDkjJ
-         jCr8du8wfmSah6ttdUnlyhmSdLAXk8UREjbrIdElNn8iZAADUtMMT/V2z/jBPitl3wSM
-         hhDn2+eL9M3McqFfhiyjUEII8mKHauW7dwBHPZEiv+9GysE3JA0q3DTrSWDsXZwrtPOq
-         eEMw==;
+        bh=dLy6aE/EeuI5uid3VlN7jU07cW6eNahLR7Xv7H+Vk24=;
+        fh=L7R6zOFuaZZF47kMh2HWD0Gh5Mcyhq8ai+KiT+oJHfo=;
+        b=lrqRF6iMcyPF8LvqEOhatXMAOrSIrWDH6lAU0KsmSVtEOd6ilwJXTnN9flt3/JSj5T
+         RO1jTs/cRrQc33dq9HJxrmDGnqmSBMWfgytiTbS2dFDFvHi/5dQH/O0s1KpYOA5TS1Se
+         Rcd7e67UDKRjWdNmQypCyYcdFy6GKrrrV+rdWmXlMXbqca9BSnplLZtXsnhWhRXODjtU
+         HSGcazsULqKgLmCz7PGvU5O3Th/iplxeV8leTxf1UQEKXveSokKpZGbVTDmAqGFsMg21
+         1l50HemY9xdZoD2NHgw221Ty9LCMobar4gC7VgdO9/RcF9YhwgaCEucpbyMj+5DZekuk
+         Eaqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="OzWRk/7/";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FDzFZywH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573d33976si1168193685a.627.2025.03.18.06.14.25
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-86d90eb9024si2930206241.120.2025.03.18.06.14.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 06:14:26 -0700 (PDT)
+        Tue, 18 Mar 2025 06:14:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="OzWRk/7/";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FDzFZywH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tuWlv-0005ux-CK; Tue, 18 Mar 2025 09:14:20 -0400
+	id 1tuWkq-0003b0-PK; Tue, 18 Mar 2025 09:13:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWjl-0002VA-B0; Tue, 18 Mar 2025 09:12:05 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1tuWjR-0002Q6-U5; Tue, 18 Mar 2025 09:11:52 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWjh-0003x0-PO; Tue, 18 Mar 2025 09:12:03 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-ac29fd22163so988631466b.3; 
- Tue, 18 Mar 2025 06:12:00 -0700 (PDT)
+ id 1tuWjI-0003rf-4S; Tue, 18 Mar 2025 09:11:41 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-5dccaaca646so9911224a12.0; 
+ Tue, 18 Mar 2025 06:11:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742303519; x=1742908319; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1742303493; x=1742908293; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ufr+Ojap1d/6dhqxl/dlT+APPSOlWATmZs8iR5dzTzY=;
- b=OzWRk/7/O2o781aCa9rj0eDHeghw1PRDR/wEbv4YwG2X3NqrHTEV634qJwZgi6J6KF
- 8Uo0UKZqgZ4JFLZIEwnBNc8Mk3WaxyEWxSoGdC0S71YUueu786kaxlXBUccrcBoTtlGG
- 50PcQtqG8rIgqcyw1oPwMLFe9ZtHovp1BCEPQiy1KlIYD5LHk09ZQ6ZFJaSm6iSSmZ6r
- rPW87bwSu3ndTGjAvzQa1VCsTkkN29ud6+THSEUl15Jc7lrES69q/0B643mOJAkHGnyb
- nSCTsZ5Us+pBJH/DIK+UQYhxcRk6Ly3CeTiVvcFtDIzNJfyTCnLKKLrdG52fmN/qb7uP
- iUZg==
+ bh=dLy6aE/EeuI5uid3VlN7jU07cW6eNahLR7Xv7H+Vk24=;
+ b=FDzFZywHonNvFweKH/Fv/YuaLT1ujiZlttpSjAFtLf6hHc2QxgosbjYKimjUGl4wzf
+ FH49JA5mCZkjR+3L4JRfG/uWU+1ehLdxVlgGH3me+8jKrYaD2Qoc0dE6nErFcwODuR49
+ PCE91EkcUBXYdSq38RFPiZ4URd3TeYipo9h6i/1RvqPcBUL5plbM+B2/CBrA9N688cK+
+ jKmu3HJ76017dbsSM04Uz4c5DWOLxmtq1MMrGHzOD9LpNFQMxleKN4buC65LMKjmSrJD
+ uWyzhL1HOmDkaMHtNmHRjV9D4w4bzzjzZLNMdTrIe0uv2Z44j3z4JvQctsmKQAGRLU6C
+ Zkaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742303519; x=1742908319;
+ d=1e100.net; s=20230601; t=1742303493; x=1742908293;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ufr+Ojap1d/6dhqxl/dlT+APPSOlWATmZs8iR5dzTzY=;
- b=aA0+h8/vhkiPnqF+d44Ii4jjyCl5J+JjMRJ6T9p3hCGN4R+kMjALMsP9BU8xzM6+gc
- /yGUvvVtb6NOJ8k2xmGFSQ1jWKyUbHEvhWJ94FCpA3nQUdZ7s0PZLrf2D0ukWjPGWH21
- pu4B1ZlHTy0drhutSomyUYzJ9E08v5DJWp+iEQdroXkz0QUPeHHH3tR/DkHtWo8MZc4j
- 9Enhf6Fgsoil7f/RCAJ35MIeeSsOR3GL6m7aJlRvCpuhZQXM1qxHycQaubmTdC5JDzoN
- p9AX4wPy8ROhd2HMytMCTlW46jaOtNVfgG+zcM7bv4rSuZT76DKXv5ng7DRgNVxk8HT+
- dswA==
+ bh=dLy6aE/EeuI5uid3VlN7jU07cW6eNahLR7Xv7H+Vk24=;
+ b=Aoa4HI7gG/HZcb2SChgTJdwGE3lLOuLtMwMtbHM6WguaJVOtGFkqPdYfRFB/zdY1Of
+ /umucnBA9HCB6mwpn0OtpTuRIBdlNRHN/ugzccRlHfQDxcQ5kwkvU0KKeNLUeOInMhD8
+ rJwfHUF8gt2ZU0+Lwm0moS1/hNjAO9cJ+7yLy2OdqRdErny8Trh/UH+yaerY9LyaczhH
+ 3YK11VexfAZsb4DLMMX3YCyie5y7+W6sdkyjAggIfD2d5ELX8hNROn1uHXrPisTfnM4Y
+ nV7j9ht4wCWSBefgMVIcBC3fi6mnvSNLZMNaDB3jgZQqbe4wfEoF5vJi/eZwovelNQu2
+ 7utg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUJhVC7bkhxuIu2eJCxfMK/aaBU/nZucpcR1wArzotpincOwG0qHCBggh0bTGGYdfaBjPlFucuFUg==@nongnu.org
-X-Gm-Message-State: AOJu0YxBlW3bOgnBd6upNmwgcFVz3jQsYxOCMV0Aj6ZkaPuNwDhfo3wf
- EqsLKSOvLv0aQ4BjDiqF9URdehnFJhYEWVetEtJHvcOCQFJnw7qINTwcOh35
-X-Gm-Gg: ASbGncuvRsYPwvsQ9fKWnHdCTfGBqGXrdM6Ejp1wZSvwPub31wl7RuQXHIz13zDBM6H
- HBoFdfVj4yEvjoY/IGKXTrksn5L9S5SmjZYQvXpLHOFZC1Yu6bYEfVXRxDmp1xexDIR3ookA4nl
- xoHgbIqz0ZZi5Tv4xhjlXO6d1v0meSUTC6mYi4eN4ijZvx9OVbMgitU+j4KZuLqrxNwreLd1Rz2
- vQObtXfwFGajv523LwZct8jgtWLUf3ZcfSlpscdrqegYUmpw4gGSokj++o0copYdSVS8O5ql+rs
- 9dkBmkIcGu+Vn2XU6eBwYvoIz/Stb6VF2blRO6BSovREpQ+foh+S1rAT/+A++bnrb9U=
-X-Received: by 2002:a17:906:6a0a:b0:ac1:ed96:56d9 with SMTP id
- a640c23a62f3a-ac330445091mr1695805166b.40.1742303517481; 
- Tue, 18 Mar 2025 06:11:57 -0700 (PDT)
+ AJvYcCXLOb3R+d/pE8NzDRoUJSxe8SFJ38glJl0LkD3qx2bSWM0APJSJ6saNBLtmVNphMCYXVUDUMKX0xw==@nongnu.org
+X-Gm-Message-State: AOJu0YyRJCfXKxOtRLi25XOcyjh2jZBK2iKRkuN+76371cbK+DKsB/br
+ FZiQ1Y9IYTDKTSWTXcmNawGz7bF2wY0mw/tf0mxg/QFPWiF3qMoFZejrIU0w
+X-Gm-Gg: ASbGncu7fn7Z1gEq1/O/j9gKwIBTyKv5edQIAQFDSaSp1rxQSSUP95KkEYgYbifrtUU
+ d7eBhZrjwb/UGtHdfJaWGbP9C20c0aKlNETQqZRdEDD1jojfK2VIiZY86KiFjOKD0Vp8/ypL6wE
+ qnLTwezcTEqjVUx4/0kOVcbMRZOrquac0KQQ8Jr5v7PoDtiMmX5Arb7C8eqAyx5xdW6drCZh++3
+ JD9kesWgfbpzSlXOHpJCjigKgxyS7JfrP0XK1Czk79YFmlC4E4IyJlNNhT+Tahh5lp1fB/30YRN
+ z3eMug2up/C9BjvjaXuUBBXnOwnprhnvE7413TzVz7fGghgDDkP21VNJ2oN8o5bUyX8=
+X-Received: by 2002:a05:6402:3491:b0:5e6:102a:c30 with SMTP id
+ 4fb4d7f45d1cf-5eb1efcbee0mr3955471a12.2.1742303482100; 
+ Tue, 18 Mar 2025 06:11:22 -0700 (PDT)
 Received: from corvink-nb.beckhoff.com ([195.226.174.194])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.11.56
+ a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.11.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Mar 2025 06:11:56 -0700 (PDT)
+ Tue, 18 Mar 2025 06:11:12 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org,
  =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
@@ -108,17 +108,17 @@ Cc: =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  Paolo Bonzini <pbonzini@redhat.com>, YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH 17/21] hw/arm/beckhoff_CX7200: Remove unimplemented devices
-Date: Tue, 18 Mar 2025 14:08:08 +0100
-Message-ID: <20250318130817.119636-18-corvin.koehne@gmail.com>
+Subject: [PATCH 14/21] hw/arm/beckhoff_CX7200: Remove second GEM
+Date: Tue, 18 Mar 2025 14:08:05 +0100
+Message-ID: <20250318130817.119636-15-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250318130817.119636-1-corvin.koehne@gmail.com>
 References: <20250318130817.119636-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,99 +140,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xVjmZUbObafH
+X-TUID: /y13LSChN8ep
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-Some unimplemented devices do not exist for the CX7200. All
-unimplemented devices have been removed for better overview
-and the fact that they are not necessary for a CX7200 emulation.
+The CX7200 has one Gigabit Ethernet MAC connected to address
+0xE000C000. The one connected to address 0xE000B000 can be
+removed.
 
 Signed-off-by: Yannick Voßen <y.vossen@beckhoff.com>
 ---
- hw/arm/beckhoff_CX7200.c | 69 ----------------------------------------
- 1 file changed, 69 deletions(-)
+ hw/arm/beckhoff_CX7200.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/hw/arm/beckhoff_CX7200.c b/hw/arm/beckhoff_CX7200.c
-index efce3be395..a3f4045560 100644
+index bf3c66e5a4..3ceccaa9e6 100644
 --- a/hw/arm/beckhoff_CX7200.c
 +++ b/hw/arm/beckhoff_CX7200.c
-@@ -357,75 +357,6 @@ static void beckhoff_cx7200_init(MachineState *machine)
-     sysbus_connect_irq(busdev, 0, pic[40 - IRQ_OFFSET]);
-     sysbus_mmio_map(busdev, 0, 0xF8007000);
+@@ -317,7 +317,6 @@ static void beckhoff_cx7200_init(MachineState *machine)
+     sysbus_create_varargs("cadence_ttc", 0xF8002000, pic[69 - IRQ_OFFSET],
+                           pic[70 - IRQ_OFFSET], pic[71 - IRQ_OFFSET], NULL);
  
--    /*
--     * Refer to the ug585-Zynq-7000-TRM manual B.3 (Module Summary) and
--     * the zynq-7000.dtsi. Add placeholders for unimplemented devices.
--     */
--    create_unimplemented_device("zynq.i2c0", 0xE0004000, 4 * KiB);
--    create_unimplemented_device("zynq.i2c1", 0xE0005000, 4 * KiB);
--    create_unimplemented_device("zynq.can0", 0xE0008000, 4 * KiB);
--    create_unimplemented_device("zynq.can1", 0xE0009000, 4 * KiB);
--    create_unimplemented_device("zynq.gpio", 0xE000A000, 4 * KiB);
--    create_unimplemented_device("zynq.smcc", 0xE000E000, 4 * KiB);
--
--    /* Direct Memory Access Controller, PL330, Non-Secure Mode */
--    create_unimplemented_device("zynq.dma_ns", 0xF8004000, 4 * KiB);
--
--    /* System Watchdog Timer Registers */
--    create_unimplemented_device("zynq.swdt", 0xF8005000, 4 * KiB);
--
--    /* DDR memory controller */
--    create_unimplemented_device("zynq.ddrc", 0xF8006000, 4 * KiB);
--
--    /* AXI_HP Interface (AFI) */
--    create_unimplemented_device("zynq.axi_hp0", 0xF8008000, 0x28);
--    create_unimplemented_device("zynq.axi_hp1", 0xF8009000, 0x28);
--    create_unimplemented_device("zynq.axi_hp2", 0xF800A000, 0x28);
--    create_unimplemented_device("zynq.axi_hp3", 0xF800B000, 0x28);
--
--    create_unimplemented_device("zynq.efuse", 0xF800d000, 0x20);
--
--    /* Embedded Trace Buffer */
--    create_unimplemented_device("zynq.etb", 0xF8801000, 4 * KiB);
--
--    /* Cross Trigger Interface, ETB and TPIU */
--    create_unimplemented_device("zynq.cti_etb_tpiu", 0xF8802000, 4 * KiB);
--
--    /* Trace Port Interface Unit */
--    create_unimplemented_device("zynq.tpiu", 0xF8803000, 4 * KiB);
--
--    /* CoreSight Trace Funnel */
--    create_unimplemented_device("zynq.funnel", 0xF8804000, 4 * KiB);
--
--    /* Instrumentation Trace Macrocell */
--    create_unimplemented_device("zynq.itm", 0xF8805000, 4 * KiB);
--
--    /* Cross Trigger Interface, FTM */
--    create_unimplemented_device("zynq.cti_ftm", 0xF8809000, 4 * KiB);
--
--    /* Fabric Trace Macrocell */
--    create_unimplemented_device("zynq.ftm", 0xF880B000, 4 * KiB);
--
--    /* Cortex A9 Performance Monitoring Unit, CPU */
--    create_unimplemented_device("cortex-a9.pmu0", 0xF8891000, 4 * KiB);
--    create_unimplemented_device("cortex-a9.pmu1", 0xF8893000, 4 * KiB);
--
--    /* Cross Trigger Interface, CPU */
--    create_unimplemented_device("zynq.cpu_cti0", 0xF8898000, 4 * KiB);
--    create_unimplemented_device("zynq.cpu_cti1", 0xF8899000, 4 * KiB);
--
--    /* CoreSight PTM-A9, CPU */
--    create_unimplemented_device("cortex-a9.ptm0", 0xF889c000, 4 * KiB);
--    create_unimplemented_device("cortex-a9.ptm1", 0xF889d000, 4 * KiB);
--
--    /* AMBA NIC301 TrustZone */
--    create_unimplemented_device("zynq.trustZone", 0xF8900000, 0x20);
--
--    /* AMBA Network Interconnect Advanced Quality of Service (QoS-301) */
--    create_unimplemented_device("zynq.qos301_cpu", 0xF8946000, 0x130);
--    create_unimplemented_device("zynq.qos301_dmac", 0xF8947000, 0x130);
--    create_unimplemented_device("zynq.qos301_iou", 0xF8948000, 0x130);
--
-     beckhoff_cx7200_binfo.ram_size = machine->ram_size;
-     beckhoff_cx7200_binfo.board_id = 0xd32;
-     beckhoff_cx7200_binfo.loader_start = 0;
+-    gem_init(0xE000B000, pic[54 - IRQ_OFFSET]);
+     gem_init(0xE000C000, pic[77 - IRQ_OFFSET]);
+ 
+     /*
 -- 
 2.49.0
 

@@ -1,124 +1,124 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2917786njb;
-        Tue, 18 Mar 2025 06:15:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVWKlNJM3wAbiMad72VHgepdhO/3dpT8f9Nb4/Gh9uNPSiSDhUcxmw0WLbbngwHJbQVQ4IywMn5pT2mig==@linaro.org
-X-Google-Smtp-Source: AGHT+IHjKMb6jfrb1iffgz2tXaLQ0ZuBfZpNyNHytpSa60CjcM2baAEONaKJdnW4TK8dz7xfaOtw
-X-Received: by 2002:a05:6122:829a:b0:524:2f10:8bc8 with SMTP id 71dfb90a1353d-524499f7478mr9204293e0c.11.1742303716742;
-        Tue, 18 Mar 2025 06:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742303716; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2917938njb;
+        Tue, 18 Mar 2025 06:15:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUWBeJHUU0aGUhRtID2pII3IsI08XuT8Wz1ycF2cjRGqAudvx9yArbofp4ty5+EaQ/6DB0fmw6Xx4LFsA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE5EVWkAY88n5p2iYyAqVkxnm3pBgrSMAMifj8chn+zR/Ed0eylPoZQI/YS2odHP17Il1Ah
+X-Received: by 2002:a05:6102:304c:b0:4c1:749b:2c27 with SMTP id ada2fe7eead31-4c38316daf5mr10150274137.14.1742303729038;
+        Tue, 18 Mar 2025 06:15:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742303729; cv=none;
         d=google.com; s=arc-20240605;
-        b=iTfohzP0fyAVxTemDHUAwRoTsorQ4n0qA8wB2MdqEz8S7xBFR2iSrDRfv7ZbsrRuJF
-         6zKCmg7SBU31ufSoSsiEYmwBkJPjHyURqrJfHNLfCu24uQzaclvMMCmb0Ml6ZpunsOXK
-         WtHSqHXVHsl6d6yNjvRVq+sYw/Mj6Jnw3khYlZPswnaN3qA37jKTrlCDutwNZeQ+76A7
-         EgFMDqsK0aLxN8gVICiKIOcFIwcRjZPjdl68y5oYTySZVUBB/gp+TYspMXX8foGw4sYq
-         Ii5S4mszLa0VvXbohRjvB9E4akjef/EgD1mb/nDbQTeDvr7O0oD6yQDXW7ySPERQErkI
-         BFYQ==
+        b=NoI65n+QQdKS0l3DE1sHDkGvJE8mVucE57fJEphE08Lfbf+KCX8qpchYN1yVCodXFM
+         JLjldHz7hqsUImzcynXWdaEjymzUSQhxgpDmn6biJ0IxJxAJQuAM8seJafC/MjDWrAgv
+         6zsS9H1df8EXfz6cjC8pSVdUvWmtAfjVOtpWd1SiK3QZj9TCldNAJskBHQmEsv8cnS/R
+         D5CfFTL9QL6QB7JJ3jVRBsVuuwX34HMYAmPDlb9fRdSfhoAb08K+TmUH29DRwb/aL4fL
+         Bv0IVGb9UuYA4Dtz+P7Jtclc1W1V1XPs9BLJhhyNZEKdgQpYqkSjqIC7wj9aRxoVsu25
+         LhCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=j23N8vOYcpKi67Cqo7/zZHv4kG2whHLTAlH6+ZbQMt4=;
-        fh=/rUM0DBjPLgYEHOKN0NSXi7QhbeXky75YFbUDaVHcYo=;
-        b=UmWn7wdcMgn1N+84WlCRxz4TSFhR6oTH6zELBwTMT8JM3fuGRnIGFrpI1T7K0kkzYE
-         4s6RcafRNvSejEI8saM2uif4C1z9ikCB6Lb/FjWfZr2vv4/5JB2kt9GPSEAv3CcxeWeb
-         bolqvIJVnBCnlCZOafLe5M+wvJUqYpwLWtmEeATLwRPkhE7vyrdQrh+e/LVHrRXmpEMJ
-         bGbJ7CUl/dUdfJGi3ySCzbx1R/PHZAtdSxlKlI9uLLEc/zdeqHZsQkfiwKc8coXH+NLV
-         QmPTbda6F0X3N6cDb101RcaNx0Ph3S2oq3HLRLC2W0BaHTgfCljAEBTHfW5T2oDonraN
-         DmkQ==;
+        bh=oN7dAT9g7/fjnpZ+M8hoExjMTodoQm0LPLrEZ/BgbuM=;
+        fh=TUT+2OkUhULaozVCCaThJugm8Q4ZyM3737XCW5Nc+Fg=;
+        b=Hc2eLmb9Zr2a4p5YqGQ14hsLepdhs/ajKKLauvCUku4eI0BcFVB4HYtaQBdRafo4jG
+         DagmynsTObmPmTptsWOXfYvBKemoKlXm5BmPSxCkgXgO1jvM6XfeK+Tg/vDLT33Bc4pv
+         7eDniDbApTtzNCKbul/gC78V7UL5cwZCj1Nps2u0TE/pgvSvR9IQTWFKTIlx2H00tuOb
+         HgvwakQjFxei3ItoPitzoQ5Wj3FAKeK9mzWNDI8vJzrgrWQqlSUiAKrjbTud90sw5HVL
+         i61VkLgSreorD0GZ/ShzOeiaXImhhXKj0H6WHXBl7MmGifS0bVcJLQRH6cr++lefj/Jn
+         fLQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OHyI+t1Z;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Jn/s4hDt";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5243a5a149fsi3137941e0c.74.2025.03.18.06.15.16
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c374ac9e27si3460766137.447.2025.03.18.06.15.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 06:15:16 -0700 (PDT)
+        Tue, 18 Mar 2025 06:15:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OHyI+t1Z;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Jn/s4hDt";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tuWkk-00034y-Vp; Tue, 18 Mar 2025 09:13:07 -0400
+	id 1tuWlh-0004o8-8j; Tue, 18 Mar 2025 09:14:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWji-0002Rw-NZ; Tue, 18 Mar 2025 09:12:04 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1tuWiz-0002GK-99; Tue, 18 Mar 2025 09:11:31 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1tuWje-0003wE-SC; Tue, 18 Mar 2025 09:12:00 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-ac2b10bea16so488193166b.0; 
- Tue, 18 Mar 2025 06:11:57 -0700 (PDT)
+ id 1tuWit-0003n2-Uj; Tue, 18 Mar 2025 09:11:14 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-ac25520a289so979857566b.3; 
+ Tue, 18 Mar 2025 06:11:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742303516; x=1742908316; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1742303470; x=1742908270; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=j23N8vOYcpKi67Cqo7/zZHv4kG2whHLTAlH6+ZbQMt4=;
- b=OHyI+t1Z1z6qmjTOVhElGWF1DdNhKsWTYn55QGpZ8wWCnXr+0i8wfKdrdJo5uPPBHW
- eowWM2MgP3l0fiLEDS91cI0Bo1F7spSdyGUCnRv4z53S3TE3/yTTOYGdX9/IMoLJQYCT
- mcn+GROXhSka3NVc4+W15adFcSmJLu8MdPmSPSS+OvN0VfeN6PqEI9RXDBkRXUtUYRqO
- QQIon+2kmOI3h7+JgeeDVN+RltcTIseNL+97ji1PpXkZS/AuZjvvbvOUEdvgqL0ypatB
- pqxs0ASFcc8t3wPtGVSwMeEzdVFo8Kqpt1N4S8dY+HYzFI/AZ5y03Esl7UXNn+rmoBMY
- nktA==
+ bh=oN7dAT9g7/fjnpZ+M8hoExjMTodoQm0LPLrEZ/BgbuM=;
+ b=Jn/s4hDtZWndGif2mN8saYn51ToCIx10DQVmiqhasVlWbltrpBhkP9JS+QsAa76rwB
+ pf/hNodQ63h876fmtGaJWuxWk+/EO0BNeeX+2ctyvlnEeytE7sTDgsg+bskg/PcToUnr
+ H4S4LaCO2MCV1ztpS5sKals2ozadYfG3sZEAZmfUDt/IAOyYh9ABFt2u8szps5XD5xoF
+ QytvdUL+NDOYxDHSvTxxkTY2zVFvtmFDLxu/K+Fer/DtVQU3cmQtpDO8jrgmP+Cbc2X+
+ gpyTW2TZKtlpdnDhB5eS+I+daKlvQKFIHhMG0qr88eNTVGpRhp9YmQxc5hkAjjPo8Tyx
+ yHog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742303516; x=1742908316;
+ d=1e100.net; s=20230601; t=1742303470; x=1742908270;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=j23N8vOYcpKi67Cqo7/zZHv4kG2whHLTAlH6+ZbQMt4=;
- b=hOsTXYOOG1N4tWU0oyZ8728Qg/XsVEvWgp7fuqBR302GTvcwr9mlWuKvQxYMTGGU4G
- qWcjPGzIHTSrtRc/cn2FDQl9GOb8p4Xio06h4yNzHFdcZBF+uzAatfHyC/UVF1CMeRtm
- vqaUzuC5P1SYH0pzMnjHGTaKZFI5c2GsSv+gBdjTB168rFnbVMTB76WyHmN7N70z5W0k
- 4j1wPrLZfGjLEFzNP1pJbAh3Sk69dbkKUG6nCvNCa258KEoTfDmYr/FdFpmdcmKOivCL
- qk0WVXJT0CzpCQSl64bFfjpu74Ii13OvBVYOcYmRUqjh7p4C/EWRVOw/zFE1VZYF9Psj
- dyEw==
+ bh=oN7dAT9g7/fjnpZ+M8hoExjMTodoQm0LPLrEZ/BgbuM=;
+ b=GHCNkScFLEdhJnwxQ5i1bV9KCfWkwMtt6HgS5VvoQxbFMh2ZZTpb55zHKo2gHvXXwP
+ d3qGUPqVU9r/ixDlalcesBskNtah/KLJsVvPMWGZ1KON/QoqyKm9ZTXUAuEVddc0n25w
+ Zx/k27K+2I2brYRetVgadM0jVIHHwI2TRTzwzzJnMae4nva0Eod3lmp58iGiHNPKnn6d
+ kTzxRA1OJfBdwlxNb100+VU2/RVfhGG5ADScYNqS7N9umAnihcYzqe0kiVSPEJ474EkW
+ H6zUZ4rlZidTwtchjJreiqmROROVfFo+cfOCit3vKfk0eo+Xc1jQ4TuGSBc/dEw4euLs
+ U29g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU2Yt/c7a8r0nk+9McJgx0Bp2AjJz2vA92xnsKXYN5j6i35cI7JBIFYJ1gp7OtZolm0eppct2Efgg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/nlYkAU1l6dTglQtKgIhY0TIQStUHpBABbBF2zYtbQMuLzFXw
- 8x7cD+4fSjr4sMCRe9cu7oCKL/S+zoCrt0zYTJbU/JQGcHbd1daRj0/7qKDT
-X-Gm-Gg: ASbGncv6dfX0icDAfTanyr05/T8tWaYLj4hp2iNJ59s4BQP7hfyJfghkYYuw/D/PHCS
- QxJAjlpW0GDQr0DZ6bnZHKeQwddeZyvqE8Og9EE2qmOBD9ynAqrbKEifahNHcBmI4Q4gTgc7AuX
- t9zB6frdV01W3G76v/H68VK0DIy/VCIWjSX0bCIaLAUIFORVBpNFErgJXG/tCbhzufPE1m6lStQ
- t7DO+TmVkZFc/lTNQiUYUT4XsabOJXZotBWnPjTZibu3Vbck9lsQ3dtBCtBFkALzU2zk4TgDLCS
- f1Bhn9gTgGEXh5Y6YDLj3arwnHKOxVIg38Pd93lHAj6mEq1UBO3XAuSp4QUOFQxpZxQ=
-X-Received: by 2002:a17:906:d554:b0:ac1:def4:ce20 with SMTP id
- a640c23a62f3a-ac330188c47mr1531992666b.18.1742303505310; 
- Tue, 18 Mar 2025 06:11:45 -0700 (PDT)
+ AJvYcCUdOhmKmDezOVu9JdyTfcOjCkKV7BaNpy0Hg4hiu9JTNFQbkOPk6WjhJcs0Br6eTynjQhbxrPDuIA==@nongnu.org
+X-Gm-Message-State: AOJu0YzGdEAzyUb1zrtcW9LxURhA/PZYnuZR/QA99GXamyRaTvwdOmxY
+ 51uU6EDZkfVJQPg4r/P+sUFhwP506Q9kK54xb4OYm4WVDacW7cJ0mX4KI1Vo
+X-Gm-Gg: ASbGncuBJpwFZZ3PpRraMTF7KF9wSQanfmtlj1qrRhQaMg5WqCnwtxiyp0lOHDB6dF3
+ 77BkpiEbs4V7LcaGroX8D6Z7MwOmHi7HfeaFIKIf7hBvyEHOFxBkLQJAImGfMvsLceIU8CtpoCD
+ fiSx8vG3U6VASQL+UElXvnObec15uDm/xfn0ft22IH8dsDIiY80N1CwWCuAVX9KKH6uybCyQm2l
+ JGJpxAWcoOT3mBY8N6kjwz6ChQiLtUz7bgG0fL+l9dcexn3fmAEE4bi9uUOAcHI2m26ltw1WjRT
+ mi9qCJ4Llfnq5EcQ0/Ox9P3jN3F/RNkOoTX/93Gc6rVU1Iq+W59rJ77J1QDjHdmtjaE=
+X-Received: by 2002:a17:906:c10d:b0:ac2:cae8:e153 with SMTP id
+ a640c23a62f3a-ac3301dd86bmr1955854366b.4.1742303457867; 
+ Tue, 18 Mar 2025 06:10:57 -0700 (PDT)
 Received: from corvink-nb.beckhoff.com ([195.226.174.194])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.11.44
+ a640c23a62f3a-ac3147f3101sm850678066b.69.2025.03.18.06.10.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Mar 2025 06:11:44 -0700 (PDT)
+ Tue, 18 Mar 2025 06:10:57 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org,
- =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
- qemu-arm@nongnu.org
+	qemu-arm@nongnu.org
 Cc: =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
  Paolo Bonzini <pbonzini@redhat.com>, YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH 16/21] hw/arm/beckhoff_CX7200: Remove usb interfaces
-Date: Tue, 18 Mar 2025 14:08:07 +0100
-Message-ID: <20250318130817.119636-17-corvin.koehne@gmail.com>
+Subject: [PATCH 10/21] hw/misc/zynq_slcr: Add logic for DCI configuration
+Date: Tue, 18 Mar 2025 14:08:01 +0100
+Message-ID: <20250318130817.119636-11-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250318130817.119636-1-corvin.koehne@gmail.com>
 References: <20250318130817.119636-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,53 +140,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gk6KaV+egb26
+X-TUID: /WIig+WX5bJm
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-The CX7200 does not support usb interfaces. That is why they
-are removed.
+The registers for the digitally controlled impedance (DCI) clock are
+part of the system level control registers (SLCR). The DONE bit in
+the status register indicates a successfull DCI calibration. An
+description of the calibration process can be found here:
+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/DDR-IOB-Impedance-Calibration
+
+The DCI control register and status register have been added. As soon
+as the ENABLE and RESET bit are set, the RESET bit has also been toggled
+to 0 before and the UPDATE_CONTROL is not set, the DONE bit in the status
+register is set. If these bits change the DONE bit is reset. Note that the
+option bits are not taken into consideration.
 
 Signed-off-by: Yannick Voßen <y.vossen@beckhoff.com>
 ---
- hw/arm/Kconfig           | 1 -
- hw/arm/beckhoff_CX7200.c | 4 ----
- 2 files changed, 5 deletions(-)
+ hw/misc/zynq_slcr.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 8727b3e837..a8648b9edf 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -322,7 +322,6 @@ config BECK_CX7200
-     select PL330
-     select SDHCI
-     select SSI_M25P80
--    select USB_EHCI_SYSBUS
-     select XILINX # UART
-     select XILINX_AXI
-     select XILINX_SPI
-diff --git a/hw/arm/beckhoff_CX7200.c b/hw/arm/beckhoff_CX7200.c
-index 1e7152e871..efce3be395 100644
---- a/hw/arm/beckhoff_CX7200.c
-+++ b/hw/arm/beckhoff_CX7200.c
-@@ -28,7 +28,6 @@
- #include "hw/loader.h"
- #include "hw/adc/zynq-xadc.h"
- #include "hw/ssi/ssi.h"
--#include "hw/usb/chipidea.h"
- #include "qemu/error-report.h"
- #include "hw/sd/sdhci.h"
- #include "hw/char/cadence_uart.h"
-@@ -280,9 +279,6 @@ static void beckhoff_cx7200_init(MachineState *machine)
-     n = beckhoff_cx7200_init_spi_flashes(0xE000D000, pic[51 - IRQ_OFFSET],
-                                          true, n);
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index 9b3220f354..10ef8ecee8 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -181,6 +181,12 @@ REG32(GPIOB_CFG_HSTL, 0xb14)
+ REG32(GPIOB_DRVR_BIAS_CTRL, 0xb18)
  
--    sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - IRQ_OFFSET]);
--    sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - IRQ_OFFSET]);
--
-     dev = qdev_new(TYPE_CADENCE_UART);
-     busdev = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+ REG32(DDRIOB, 0xb40)
++REG32(DDRIOB_DCI_CTRL, 0xb70)
++    FIELD(DDRIOB_DCI_CTRL, RESET, 0, 1)
++    FIELD(DDRIOB_DCI_CTRL, ENABLE, 1, 1)
++    FIELD(DDRIOB_DCI_CTRL, UPDATE_CONTROL, 20, 1)
++REG32(DDRIOB_DCI_STATUS, 0xb74)
++    FIELD(DDRIOB_DCI_STATUS, DONE, 13, 1)
+ #define DDRIOB_LENGTH 14
+ 
+ #define ZYNQ_SLCR_MMIO_SIZE     0x1000
+@@ -194,6 +200,8 @@ struct ZynqSLCRState {
+ 
+     MemoryRegion iomem;
+ 
++    bool ddriob_dci_ctrl_reset_toggled;
++
+     uint32_t regs[ZYNQ_SLCR_NUM_REGS];
+ 
+     Clock *ps_clk;
+@@ -332,6 +340,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+ 
+     DB_PRINT("RESET\n");
+ 
++    s->ddriob_dci_ctrl_reset_toggled = false;
++
+     s->regs[R_LOCKSTA] = 1;
+     /* 0x100 - 0x11C */
+     s->regs[R_ARM_PLL_CTRL]   = 0x0001A008;
+@@ -419,6 +429,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+     s->regs[R_DDRIOB + 4] = s->regs[R_DDRIOB + 5] = s->regs[R_DDRIOB + 6]
+                           = 0x00000e00;
+     s->regs[R_DDRIOB + 12] = 0x00000021;
++
++    s->regs[R_DDRIOB_DCI_CTRL] = 0x00000020;
+ }
+ 
+ static void zynq_slcr_reset_hold(Object *obj, ResetType type)
+@@ -555,6 +567,25 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+                 (int)offset, (unsigned)val & 0xFFFF);
+         }
+         return;
++
++    case R_DDRIOB_DCI_CTRL:
++        if (!FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) && 
++            FIELD_EX32(s->regs[R_DDRIOB_DCI_CTRL], DDRIOB_DCI_CTRL, RESET)) {
++
++            s->ddriob_dci_ctrl_reset_toggled = true;
++            DB_PRINT("DDRIOB DCI CTRL RESET was toggled\n");
++        }
++
++        if (FIELD_EX32(val, DDRIOB_DCI_CTRL, ENABLE) &&
++            FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) &&
++            !FIELD_EX32(val, DDRIOB_DCI_CTRL, UPDATE_CONTROL) &&
++            s->ddriob_dci_ctrl_reset_toggled) {
++
++            s->regs[R_DDRIOB_DCI_STATUS] |= R_DDRIOB_DCI_STATUS_DONE_MASK;
++        } else {
++            s->regs[R_DDRIOB_DCI_STATUS] &= ~R_DDRIOB_DCI_STATUS_DONE_MASK;
++        }
++        break;
+     }
+ 
+     if (s->regs[R_LOCKSTA]) {
 -- 
 2.49.0
 

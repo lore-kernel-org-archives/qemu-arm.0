@@ -1,334 +1,150 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2530693njb;
-        Mon, 17 Mar 2025 14:19:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWx9hRCUuDKjWpOZ/ZlkP+vqlqeGL+Sw7EiOxK775nvlsKV+L8Tg7SSZ3U4A78uhXep3AOMYFA8tnwD5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHk6qQ/yD/fFvEUwsF+OMWLVn/66dvMISfLQRozWSemJC0ztUPzuzkxQsGOZ3BozBYyjVfY
-X-Received: by 2002:a05:620a:2992:b0:7c5:7a04:ef04 with SMTP id af79cd13be357-7c57c7d7ffdmr2095171485a.30.1742246353548;
-        Mon, 17 Mar 2025 14:19:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742246353; cv=none;
+Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp2694565njb;
+        Mon, 17 Mar 2025 21:51:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+1SxBqlccZ2SrCOTsJnqZQBotMSW3Ny8sj1Ubo1ZRo9QS4nswlC54OyJHZGikXOWFoZhYixg2vahq2Q==@linaro.org
+X-Received: by 2002:a17:903:19ed:b0:223:2aab:4626 with SMTP id d9443c01a7336-225e0a15b42mr211655695ad.11.1742273493649;
+        Mon, 17 Mar 2025 21:51:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742273493; cv=none;
         d=google.com; s=arc-20240605;
-        b=UKjaKLzUybkCxelsuSYtlnWNyUMs5m70ZUaHEXtAcSb0WnPUP2/hCcImWM63sqrM2q
-         Nrbdt8jjLYj7v3ESBg49OrV9TsXe4F4vtO43Uou7VIx3BL6gcrvf4oe0AgXzIo1QQTjH
-         6eQxoPNCYAE+CpPHF373srUyFqhVQIaud9DK0syQI2w84Tu7nKyGyAiwr1I8wDFcJn6G
-         YOHo+YWWxpz/eN7wKR2Zxg8SY0pQvqSCSCylEKi6U++Hp7ObnELrT0tFqGUOF0Ui9iVZ
-         Pt1MA1CjAbDEbVAS2Yk0SImwo4gha1kEExaES3hbD1Y3xsuBNt3qT9y5QBO/75I2O+UU
-         fyew==
+        b=T9+jqjhbSaVGXoCll9ynHxCd886uRBhbTkFgMDcbc82QLINThTIWJ+Xc8cB+RXh7J4
+         xKCj/5ZAGYNyO+hcL9OSPyFq4dpDCOjo6xUfolpwqWsIWiOY9N55o29Yk3uSh5kJ1I/Q
+         6WwMPclqWc4LTOWBgqyCTtZH8YF/ArHU4a0V8i/6XTvnifGvo2GzVD91qiDzjg+GmHU2
+         ku5h7irLpM5c7o+5dbF0zJMfBJYNZCvoc1NJzcQ57Acar/NyYDZVvfb081b6fW6NaXfN
+         TPUuqFQ885RKocjMw6ilZTO/8CIEW3Pb5VlHKeyWCrXk4B6k2W1c/YmqevUDhTTFcnKS
+         zihg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=06I0e5AXCnkyb4geHwy9FcehtId2AEXCfogzWLbrbio=;
-        fh=RKw5y7kZkxj5UmHJZQHlLMwAiQiotbUr1BODDtGsRFE=;
-        b=eLZQVs18XYtThPVtNtNG2/3+tqLCEO3MgetYjRR9vxWGvc2zpATnM6bR4lzB7O3Stn
-         BhD537Yjb8l90pMR8NHxSmmY2ymfzuiPvak7bdH+QsQbvipBMV7oroQoWrcDKEf509il
-         stCbnmQ4VG3NVD1id9wXDVxyAyeBrfUJOSod1/rKpp7Nz5BrHZ7i+JY4EYAWsMa4zEr9
-         wbM/B6MT1q9qxKCl7jPGLPFmvxIUPADVMqD8T32EZ3YqZnLv4A4f6A05rvxv1zJrnZy/
-         /JsgTYaQNH5rUQIqRNgxbx2riFjrAYkenSyRqFH10ZxAEY62z1chhOoRxHR+kE/9bNBB
-         W2fQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Zu9103r8oTjAUXk/0jU4XMC8f8kUJ8IRY2kEKbMxwAQ=;
+        fh=WqTimibrmYKT+TsJohQhTnjQWbphGdlTAr6Fz5aiBjU=;
+        b=Vc5Qm8tkTtd0K7KRYHVoYB4UBvpoAsCvLl902ctLTuiy6n1dchdpRJe71ThUyd9TYX
+         rpIx+8rGuX4k8QqY2257I7K7TiNEQbEVPvwl97d7+jTV4vkB4ZRIft0spfTxaMAUlbUK
+         Evo2wE930tQ9YRtS8+HZC0n8y+99RA9FzlaoksOmbR3VXICl0Q7bUfr+Oy8JESvQbxJ+
+         rRzTO4AAlPd5UneZr38O63PsZaZQhQs3imxoZNGg/Rlhe7qMnRKiBRgcY6ncQ8UhymkX
+         bNrLhfHd1fw4pBM/VqG2D5DXCUPpQu5HO6AZ2yMte7eJp/EMz8VQPbg4Q7RuT6orOGBI
+         OmnA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="UWO0Ic/7";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UJHPZzi2;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c573caf64esi1068736285a.216.2025.03.17.14.19.13
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6c13d41sor80971665ad.15.2025.03.17.21.51.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Mar 2025 14:19:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 17 Mar 2025 21:51:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="UWO0Ic/7";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UJHPZzi2;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tuHrK-00007t-7f; Mon, 17 Mar 2025 17:18:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1tuHr9-000066-Mk; Mon, 17 Mar 2025 17:18:46 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1tuHr5-0006IT-Du; Mon, 17 Mar 2025 17:18:41 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-3fa5d864b7fso2490722b6e.1; 
- Mon, 17 Mar 2025 14:18:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742246315; x=1742851115; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=06I0e5AXCnkyb4geHwy9FcehtId2AEXCfogzWLbrbio=;
- b=UWO0Ic/7pC5UOsKcBjDBCi0HOLcLsmN3UzWJT/8GNGQeC6daR9KYA4z5RCZHhSqoj1
- FpiUbqDhzonmgvwUYqAvINlqdJk+X9vFKen4lTubEnGDqxU7m+oyw0P5hTHIidCwy5Ra
- zRdMFBCyE63onX7xguEI53dvniAq2EKxzUdOhlYTb1zwFV+UmpZ28m6LPLw2k0HZDdDV
- Naa02HewrZgb+tgk5aoEvLLc0J5oMrComjytk+EvG4gQOyAsA0EbbK5eoLKt969bo1IY
- iAv6vLn6GcWDZA5idt2A9AkpIoc3wAcilTB9EO3BtbOEeO+qAySuimfK5swRCFMjAucM
- MdvQ==
+        d=linaro.org; s=google; t=1742273493; x=1742878293; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Zu9103r8oTjAUXk/0jU4XMC8f8kUJ8IRY2kEKbMxwAQ=;
+        b=UJHPZzi25/RNnLIj8dy82wF59FZY/c6n1YEDE4Q4JHJAr6OfHYMfvUJwZ7nUjDWLVM
+         2sqmwfUN5I6PrKAYUVCTMJdx1eeuUoJ//zlVCrY/MGl1455SjAgHSuWM7Jt500lIjPjj
+         k2HhaQu+b5TfVaU1Ee9jM3lrPz0wvpBkS7tBYvAVYNEtsNv48pcewdEWBhHGl2EME93V
+         /lQTMwAbngIKV25vjhHrKOBIQAQw6fmeRh3Dscxq2AoFbItV0hey4XuUyRpMn7a+DvBi
+         o7ecBNbNCCKvRM2A+LKg/iuwtJ6YsM5b3gRyjWL+c+7gM3lj/oskjV65yvSEo13zc/Ph
+         TAIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742246315; x=1742851115;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=06I0e5AXCnkyb4geHwy9FcehtId2AEXCfogzWLbrbio=;
- b=fZ7codab05U0vjwlqJzthpOE8v+CfhSGPZoi1z1U4F1tp1luI28xUOX4Ckl0HZ3I3g
- T+gDmfAOZwtLyHNe0Dr42SvFB7SLtg7QER5gOh4JcBQA9IAf6olbqJC2V7oQiU1AY6fO
- lUydB/P4QSsaRKegfT8sxY8tMtuFlY3/C0VpmES3WW8Jntj35YQUgDB90YHSdAPpndXy
- MmCQBvlNifZTfCppPeKW1r7AP513y3EpGjTkkL6vxYzSaha0iNZhOsmNmpV1Y+Q9Ij/O
- 8o7IbmguyZY5QzC5dgUIjCs2pSFh5CPXjFVtG+ZbjkaK/PN5xMyaI9tgRwKC63twhlW/
- amPA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWchFV33rae7ETYUKv5J+5dRMOi/yNeXt3BERAk/YzOY1gy3yJyTyQSlC/9bpt832IqDNj0OlAsTg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx9ZxVtJtX6MoibHqDjLuyPezB7mINQw+WiDuOZ7vo8gcrAuzz0
- ChRiiq0bueXr0WzL6H6wHCUT1u9kGrLFt5dhcrk4iA2kv7enccr4l18jRMNBilnZBLqYzLhvOPU
- QL9nMuKfzJAQvf9gzgTaj2sbPZs8=
-X-Gm-Gg: ASbGncsfVKt29rnv6VUusxvXtBcqYwsgwaLFWf7RAtE9b4dDkdSBxnGNA/hdIgSD5h6
- KwWQXNoq5mYHPZKn5TIbbhC1mnhfTGu9CeNhM4uw+pPQpdNKVuVyDwxmz5TZtLiI21dX6icb+dG
- LTN7I+26lvS7TU860ZJINAAkiVrbuNORZQLV5xfkCFPhrZ3XiLbyJt30r7
-X-Received: by 2002:a05:6808:2289:b0:3f8:3489:d949 with SMTP id
- 5614622812f47-3fdf026e003mr7259028b6e.24.1742246315168; Mon, 17 Mar 2025
- 14:18:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742273493; x=1742878293;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Zu9103r8oTjAUXk/0jU4XMC8f8kUJ8IRY2kEKbMxwAQ=;
+        b=EmeuXDhPLhYIX0OnWVZiBKC8hT9LOis10DyLNJbWDzz7qMlmGvTlE5zOA3HdOaPnNB
+         4MqqLBu/fgaVU9JYVZW9Z4dY+Z2yO+A39sd08Q+sADPRTE5QfDEdR7LFIKRFics94OAM
+         K8+l3Q5BGYLd8FtmP2chrWA0629rq72Bm9A36QYSBNaNoDSDAiLS1hJyHPDbVYMsbCl2
+         BpV3IJEHnYQzfYBHoV+7SltIYSrOjbqFCfLDARNtSsnYDTp6LlJzsSjK3E/zWXH3SVeq
+         Unqt+6Y74s+4y20vTcjcTz/MPh4oCgm+GerED1ab/UUJRaRQD6hn/Vu4sl1GWpPWisP3
+         LsjA==
+X-Forwarded-Encrypted: i=1; AJvYcCUC26CfOnDA3fcg0ayiTywAZK8Mwempmm4ITnUKF38u38T1PqiyrNgowqN+6oyIJrrdcAhuV2uLEtXr4A==@linaro.org
+X-Gm-Message-State: AOJu0YweCa9VXJZ8X6lPWsQVHsoyVToCDk3lFL4Ho/yoeYooc0JPPKw1
+	xFaabPsoiWQkTG8rmN3TjT30lfT1Bc0Rm/NbeCkZA42eZis0DyDJJwYEKhhGvMhcGw==
+X-Gm-Gg: ASbGnctvR8x3dbCUGk5qCMh+TeMUbEYWpdMfvqzoEO6IKTKrrXcauJzMw5IhVV5As4i
+	l2PH9DQRyF3KeV9utRglIIol7GS3VXvmUh5bsHxcAWjnji3/aO83phwJOG1d0am64uEE0C3qx4P
+	g/hHsnnZ3hRlz5IIqjYe9xVSdJf808O8SrVEqMZptj2Cmuqw5Lb0x/EgZ6P9ArtYYa2Cc/bHn9C
+	CN2vo4dJSib4049Mb+YExlOqZSR1eOR+21PFjkdmq6FnIG320TSj7cUgqOCCTS/3KjEv1QSxxy0
+	XU9o4ZXDz/eZN4OustP+5iX0FAtdYs9rMFI52yqxh8gZUEsOrUjhdDE=
+X-Google-Smtp-Source: AGHT+IGjVevdOxVZtllqsOzTh2kSPli9+2FoEMdQ20zfQwf4sZc4Mag5ZWZo6Cn4913jSf5K9IBO+g==
+X-Received: by 2002:a17:903:2b0f:b0:224:194c:6942 with SMTP id d9443c01a7336-225e0aee904mr229423185ad.34.1742273493096;
+        Mon, 17 Mar 2025 21:51:33 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711694b2csm8519195b3a.129.2025.03.17.21.51.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 21:51:32 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	kvm@vger.kernel.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 00/13] single-binary: start make hw/arm/ common (boot.c)
+Date: Mon, 17 Mar 2025 21:51:12 -0700
+Message-Id: <20250318045125.759259-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250311160847.388670-1-thuth@redhat.com>
- <CAPan3WqXwAWeAqbQypF7PCXh_pjDUgbbiWwXkPSbXrFetfMZAQ@mail.gmail.com>
- <982cba8b-72e6-49d9-80bb-05053c00819c@redhat.com>
-In-Reply-To: <982cba8b-72e6-49d9-80bb-05053c00819c@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 17 Mar 2025 22:18:23 +0100
-X-Gm-Features: AQ5f1JrzzM8eBil77ABbygPTCRQeY7ZbX8UZrTOOZRme9MpqOQjfb2sC6kS_QPo
-Message-ID: <CAPan3Wr=+Vrx9wi0JLjSP_ZU_Gxr+d3g_6PBSK7KePZjjSFJGg@mail.gmail.com>
-Subject: Re: [PATCH] docs/system: Fix the information on how to run certain
- functional tests
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>, 
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ba1c880630905496"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M+kRdMIbj+H0
+Content-Transfer-Encoding: 8bit
+X-TUID: UcgsMotwjb+G
 
---000000000000ba1c880630905496
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This series focuses on removing compilation units duplication in hw/arm. We
+start with this architecture because it should not be too hard to transform it,
+and should give us some good hints on the difficulties we'll meet later.
 
-Hi Thomas,
+We first start by making changes in global headers to be able to not rely on
+specific target defines. We then focus on removing those defines from
+target/arm/cpu.h.
 
-On Mon, Mar 17, 2025 at 7:50=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
-e:
+From there, we modify build system to create a new hw common library (per base
+architecture, "arm" in this case), instead of compiling the same files for every
+target.
 
->   Hi!
->
-> On 16/03/2025 21.21, Niek Linnenbank wrote:
-> > Hi Thomas,
-> >
-> > On Tue, Mar 11, 2025 at 5:08=E2=80=AFPM Thomas Huth <thuth@redhat.com
-> > <mailto:thuth@redhat.com>> wrote:
-> >
-> >     The tests have been converted to the functional framework, so
-> >     we should not talk about Avocado here anymore.
-> ...
-> >     diff --git a/docs/system/arm/orangepi.rst
-> b/docs/system/arm/orangepi.rst
-> >     index db87e81fec4..8b9448ca7b0 100644
-> >     --- a/docs/system/arm/orangepi.rst
-> >     +++ b/docs/system/arm/orangepi.rst
-> >     @@ -257,9 +257,9 @@ Orange Pi PC integration tests
-> >
-> > Perhaps for consistency, we can also rename to 'functional tests' here.
->
-> Agreed, we don't use the term "integration tests" for this anymore.
->
-> >
-> >       The Orange Pi PC machine has several integration tests included.
-> >
-> > And same on this line.
-> >
-> >       To run the whole set of tests, build QEMU from source and simply
-> >     -provide the following command:
-> >     +provide the following command from the build directory:
-> >
-> >       .. code-block:: bash
-> >
-> >     -  $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=3Dapp,console=
- run \
-> >     -     -t machine:orangepi-pc tests/avocado/boot_linux_console.py
-> >     +  $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \
-> >     +    meson test --suite thorough func-arm-arm_orangepi
-> >
-> > I've tried to run on my Ubuntu 24.04.1 LTS based system using this exac=
-t
-> > same command, but got this error:
-> >
-> > $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 meson test --suite thorough func-ar=
-m-
-> > arm_orangepi
-> >
-> > ERROR: Build data file '/home/user/qemu/build/meson-private/build.dat'
-> > references functions or classes that don't exist. This probably means
-> that
-> > it was generated with an old version of meson. Consider reconfiguring
-> the
-> > directory with "meson setup --reconfigure".
-> >
-> > The meson version I have installed via apt-get is 1.3.2-1ubuntu1. Only
-> when
-> > running using the 'meson' command from the pyvenv, it runs OK:
-> >
-> > $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 ./pyvenv/bin/meson test --suite
-> thorough
-> > func-arm-arm_orangepi
->
-> Oh, you're right! Thanks for catching it!
->
-> I guess I still had a "export PYTHONPATH=3D$HOME/qemu/python" in my
-> environment, so I did not notice. Would you like to send a patch, or want
-> me
-> to do it?
->
+Finally, we can declare hw/arm/boot.c common as a first step for this subsystem.
 
-Yes please feel free to go ahead with the patch. With the above minor
-remarks resolved, it looks fine to me:
+This series needs to be applied on top of
+https://lore.kernel.org/qemu-devel/20250317183417.285700-19-pierrick.bouvier@linaro.org/
+to compile.
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Pierrick Bouvier (13):
+  exec/cpu-all: restrict BSWAP_NEEDED to target specific code
+  exec/cpu-all: restrict compile time assert to target specific code
+  exec/target_page: runtime defintion for TARGET_PAGE_BITS_MIN
+  exec/cpu-all: allow to include specific cpu
+  target/arm/cpu: move KVM_HAVE_MCE_INJECTION to kvm-all.c file directly
+  exec/poison: KVM_HAVE_MCE_INJECTION can now be poisoned
+  target/arm/cpu: always define kvm related registers
+  target/arm/cpu: flags2 is always uint64_t
+  target/arm/cpu: define ARM_MAX_VQ once for aarch32 and aarch64
+  target/arm/cpu: define same set of registers for aarch32 and aarch64
+  target/arm/cpu: remove inline stubs for aarch32 emulation
+  meson: add common hw files
+  hw/arm/boot: make compilation unit hw common
 
-Regards,
-Niek
+ meson.build                | 36 +++++++++++++++++++++++++++++++++++-
+ include/exec/cpu-all.h     | 12 ++++++++++--
+ include/exec/poison.h      |  2 ++
+ include/exec/target_page.h |  3 +++
+ include/system/kvm.h       |  2 --
+ target/arm/cpu.h           | 28 +++-------------------------
+ accel/kvm/kvm-all.c        |  4 ++++
+ hw/arm/boot.c              |  1 +
+ target/arm/helper.c        |  6 ++++++
+ target/arm/tcg/hflags.c    |  4 ++--
+ hw/arm/meson.build         |  5 ++++-
+ 11 files changed, 70 insertions(+), 33 deletions(-)
 
-
->
->   Thomas
->
->
-
---=20
-Niek Linnenbank
-
---000000000000ba1c880630905496
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Thomas,</div><br><div class=3D"gmail_quote gmail_q=
-uote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 17, 2025 =
-at 7:50=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thut=
-h@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex">=C2=A0 Hi!<br>
-<br>
-On 16/03/2025 21.21, Niek Linnenbank wrote:<br>
-&gt; Hi Thomas,<br>
-&gt; <br>
-&gt; On Tue, Mar 11, 2025 at 5:08=E2=80=AFPM Thomas Huth &lt;<a href=3D"mai=
-lto:thuth@redhat.com" target=3D"_blank">thuth@redhat.com</a> <br>
-&gt; &lt;mailto:<a href=3D"mailto:thuth@redhat.com" target=3D"_blank">thuth=
-@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0The tests have been converted to the functional fra=
-mework, so<br>
-&gt;=C2=A0 =C2=A0 =C2=A0we should not talk about Avocado here anymore.<br>
-...<br>
-&gt;=C2=A0 =C2=A0 =C2=A0diff --git a/docs/system/arm/orangepi.rst b/docs/sy=
-stem/arm/orangepi.rst<br>
-&gt;=C2=A0 =C2=A0 =C2=A0index db87e81fec4..8b9448ca7b0 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0--- a/docs/system/arm/orangepi.rst<br>
-&gt;=C2=A0 =C2=A0 =C2=A0+++ b/docs/system/arm/orangepi.rst<br>
-&gt;=C2=A0 =C2=A0 =C2=A0@@ -257,9 +257,9 @@ Orange Pi PC integration tests<=
-br>
-&gt; <br>
-&gt; Perhaps for consistency, we can also rename to &#39;functional tests&#=
-39; here.<br>
-<br>
-Agreed, we don&#39;t use the term &quot;integration tests&quot; for this an=
-ymore.<br>
-<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0The Orange Pi PC machine has several integra=
-tion tests included.<br>
-&gt; <br>
-&gt; And same on this line.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0To run the whole set of tests, build QEMU fr=
-om source and simply<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-provide the following command:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0+provide the following command from the build direc=
-tory:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.. code-block:: bash<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0-=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado=
- --show=3Dapp,console run \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-=C2=A0 =C2=A0 =C2=A0-t machine:orangepi-pc tests/a=
-vocado/boot_linux_console.py<br>
-&gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 meson test --suite thorough func-arm=
--arm_orangepi<br>
-&gt; <br>
-&gt; I&#39;ve tried to run on my Ubuntu 24.04.1 LTS based system using this=
- exact <br>
-&gt; same command, but got this error:<br>
-&gt; <br>
-&gt; $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 meson test --suite thorough func-a=
-rm- <br>
-&gt; arm_orangepi<br>
-&gt; <br>
-&gt; ERROR: Build data file &#39;/home/user/qemu/build/meson-private/build.=
-dat&#39; <br>
-&gt; references functions or classes that don&#39;t exist. This probably me=
-ans that <br>
-&gt; it was generated with an old version of meson. Consider reconfiguring =
-the <br>
-&gt; directory with &quot;meson setup --reconfigure&quot;.<br>
-&gt; <br>
-&gt; The meson version I have installed via apt-get is 1.3.2-1ubuntu1. Only=
- when <br>
-&gt; running using the &#39;meson&#39; command from the pyvenv, it runs OK:=
-<br>
-&gt; <br>
-&gt; $ QEMU_TEST_ALLOW_LARGE_STORAGE=3D1 ./pyvenv/bin/meson test --suite th=
-orough <br>
-&gt; func-arm-arm_orangepi<br>
-<br>
-Oh, you&#39;re right! Thanks for catching it!<br>
-<br>
-I guess I still had a &quot;export PYTHONPATH=3D$HOME/qemu/python&quot; in =
-my <br>
-environment, so I did not notice. Would you like to send a patch, or want m=
-e <br>
-to do it?<br></blockquote><div><br></div><div>Yes please feel free to go ah=
-ead with the patch. With the above minor remarks resolved, it looks fine to=
- me:</div><div><br></div><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"m=
-ailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><div>=
-<br></div><div>Regards,</div><div>Niek</div><div>=C2=A0</div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">
-<br>
-=C2=A0 Thomas<br>
-<br>
-</blockquote></div><div><br clear=3D"all"></div><br><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
-iv dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
-
---000000000000ba1c880630905496--
+-- 
+2.39.5

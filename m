@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d43f32fcdsm26234845e9.7.2025.03.19.11.22.56
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d48f60cc5sm3790175e9.36.2025.03.19.11.22.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Mar 2025 11:22:56 -0700 (PDT)
+        Wed, 19 Mar 2025 11:22:58 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 356E55F93F;
-	Wed, 19 Mar 2025 18:22:55 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 0C860603EA;
+	Wed, 19 Mar 2025 18:22:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -33,63 +33,39 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 00/10] gdbstub: conversion to runtime endianess helpers
-Date: Wed, 19 Mar 2025 18:22:45 +0000
-Message-Id: <20250319182255.3096731-1-alex.bennee@linaro.org>
+Subject: [PATCH 09/10] include/exec: fix assert in size_memop
+Date: Wed, 19 Mar 2025 18:22:54 +0000
+Message-Id: <20250319182255.3096731-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250319182255.3096731-1-alex.bennee@linaro.org>
+References: <20250319182255.3096731-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Qkko42mzXQB8
+X-TUID: rxVcQona+aBk
 
-The aim of this work is to get rid of the endian aware helpers in
-gdbstub/helpers.h which due to their use of tswap() mean target
-gdbstubs need to be built multiple times. While this series doesn't
-actually build each stub once it introduces a new helper -
-gdb_get_register_value() which takes a MemOp which can describe the
-current endian state of the system. This will be a lot easier to
-dynamically feed from a helper function.
+We can handle larger sized memops now, expand the range of the assert.
 
-The most complex example is PPC which has a helper called
-ppc_maybe_bswap_register() which was doing this.
+Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/exec/memop.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-This is still an RFC so I'm interested in feedback:
-
-  - is the API sane
-  - can we avoid lots of (uint8_t *) casting?
-  - should we have a reverse helper for setting registers
-
-If this seems like the right approach I can have a go at more of the
-frontends later.
-
-There are a few other misc clean-ups I did on the way which might be
-worth cherry picking for 10.0 but I'll leave that up to maintainers.
-
-Alex.
-
-Alex Bennée (10):
-  include/gdbstub: fix include guard in commands.h
-  gdbstub: introduce target independent gdb register helper
-  target/arm: convert 32 bit gdbstub to new helper
-  target/arm: convert 64 bit gdbstub to new helper
-  target/ppc: expand comment on FP/VMX/VSX access functions
-  target/ppc: make ppc_maybe_bswap_register static
-  target/ppc: convert gdbstub to new helper (!hacky)
-  gdbstub: assert earlier in handle_read_all_regs
-  include/exec: fix assert in size_memop
-  target/microblaze: convert gdbstub to new helper
-
- include/exec/memop.h        |   4 +-
- include/gdbstub/commands.h  |   2 +-
- include/gdbstub/registers.h |  30 ++++++
- target/ppc/cpu.h            |   8 +-
- gdbstub/gdbstub.c           |  24 ++++-
- target/arm/gdbstub.c        |  57 +++++++----
- target/arm/gdbstub64.c      |  53 ++++++----
- target/microblaze/gdbstub.c |  44 ++++----
- target/ppc/gdbstub.c        | 194 ++++++++++++++++++++----------------
- 9 files changed, 257 insertions(+), 159 deletions(-)
- create mode 100644 include/gdbstub/registers.h
-
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index 407a47d82c..faed3ff902 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -162,8 +162,8 @@ static inline unsigned memop_size(MemOp op)
+ static inline MemOp size_memop(unsigned size)
+ {
+ #ifdef CONFIG_DEBUG_TCG
+-    /* Power of 2 up to 8.  */
+-    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
++    /* Power of 2 up to 128.  */
++    assert((size & (size - 1)) == 0 && size >= 1 && size <= 128);
+ #endif
+     return (MemOp)ctz32(size);
+ }
 -- 
 2.39.5

@@ -1,235 +1,266 @@
-Received: by 2002:a17:504:5906:b0:1be9:327d:8ee3 with SMTP id nn6csp3172295njb;
-        Tue, 18 Mar 2025 12:55:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUwAbHmn7PpU7cIKkC13wdU4BAJtqFhmQEBFUFLI+aUriE22NxF4dbGk7o24/2WmI+VDiCPIRkh19y48Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IF1QgdrJx0Fzx4PxoI7XsuI2UtOlWklhUtrAYzcpJJK4KFvl6kqjQVJJ+sxkIhGfFxansZe
-X-Received: by 2002:a05:622a:22a5:b0:476:fcfa:62a2 with SMTP id d75a77b69052e-477081c970dmr3731801cf.0.1742327700383;
-        Tue, 18 Mar 2025 12:55:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742327700; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp158092njc;
+        Wed, 19 Mar 2025 04:25:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/V162cq6iUPvFoq94xtPfftz8+122xXesxgv6bFqujbbMJHxP3CzWj8wB+R4pX5BxKFt23c1h15eHKQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEtChpVwrwPceuSvKVYT21qEsGAlQ5yVPHSl9LxlpVB5dH+RIfZYrMxZ4l+eOzrwjvrFOjT
+X-Received: by 2002:a05:622a:5793:b0:474:fa6b:c402 with SMTP id d75a77b69052e-476fcecd39dmr102010771cf.18.1742383543598;
+        Wed, 19 Mar 2025 04:25:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742383543; cv=none;
         d=google.com; s=arc-20240605;
-        b=QjI0HfaPB71I6VIieTzbZWsXMwil2KqaGMCpvaEft2acMideoaw9R8hzKwb5/fqBIc
-         l5zfaL0yOeHK51KTCVm4A9pFsokvlowwZSEYpP1TpBV/UIpjeWwTWCi8+odPxLi2jLXF
-         FgqyTK1xuhuvB7ek4kOBo/a3N6kvVhUL+2GRMfJYa+x0iXSq6PEGnPRD3uqWNsb/GFn3
-         PlGSDKW2o7oYyumNwYy49QNCQtzQ+Ur32IxViJEucHlNip6IC1oAXsVn/bVLe2p4xRMk
-         GxD3HrwjXwnahylPTXRm7sQnx8XqbvvY+nL2e1tOa/ViAfjiTh8oD4QatIMIjlhqS++T
-         /Kpg==
+        b=knIJD236sbi2QghUNdCsiiHyNQ4qVMznztIdOyiSef1NRPOFFZ1K1en+YzVyOl3UAt
+         n/b3Am+ybY7PxiR+p2SUM7yXc03NfbNsUADDFgW6yVploUV1VRn0Slkb2sb+moMDfxDw
+         wGbYa6euxCaCGFSunOiUfb7r9WeuvFLkMIYNG0enXnNsbgaSsplloUPwRYH2f6ATXT55
+         +vHR7nSHEnoe11f6NkpLnUHRLDE6LaTzun6WA8tx3OuD9WWNFNXbH7BIMW5b2+58HAnG
+         Ljrb/AkLoPLdPqXbxBr+2b0AETRn7HgBlcfyl951zSN4vPsA60vAng9i27nNpSW4Lbs2
+         SMLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=P5E2Zmxz/6aGrB8WoLLQBruVOcoIwFL3ANTJ5maRSag=;
-        fh=dMZuxb3AdPjXq7Qk4nWR6cv3RmeTX6cuNwJupUekyyw=;
-        b=NafbfFOt1nzZIxJsjdpF8A5IiCmAoUrtdhzI0HrL8kYexggUtjJIkmNIb5U6m7rXT6
-         PCby2lcbQRLuxGc77GYINBn6SG05v1SZOtllv/wI852vzUYtzGEnBFxo31SyxB2BAa+j
-         K6b4aLH1A4SGFcYlVoStw6Je7uYi8OEPdP/EsFJb19qdiQm8p+FYBTraee40NwMt9/3+
-         ktW154T7M+8xrb8Za95XS9nYvwSKPEpSm0t3hl0YROJC4IOxBqRcEnzuvYWWZ/f/UzIb
-         IkdzXbeJwjbCaZ3/jJtl0t8Pr2S/55Qj3Ebnw28hxwv5mPApKJvSttc/Ftm6xfok+UoA
-         7nnQ==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=C1w8kgAFq/a4lRFCTW6J283Rau1D7/rkcE+jQX8KfME=;
+        fh=2Y5Yj3di3V3DscdWBw1KC24bV6YDN8L45ZWmxzhAkMY=;
+        b=U7FsAv/FvZesRHOjkXOSTe7tXE+KCs3MiiQIYze70mPeHnGu01cvd/HK27PtgBry9T
+         crR41yM6/Asq9WL4jB1unve8yM14AQ/lSH6wXhSFj1nEE63iZRDxbaM06nz0NfAbujah
+         2chHkQhLRSyUjXPsGPOguPovEBDU9/dGfj/pqyKcbpjv1fPtkn/4opuSqB2btECCYrw/
+         dEooGghL4PPuobtxMr+9BUgV59XjhbLFttO12pgB4Nt1vtJGr8I8SYwfRfD3wcbZ9JrC
+         lrEjrfY6L2rO7IFS7nJ0abE51hDc2nmXvBSJzOS/d1ylAVabAsBK25g8lPRL2U35wCpL
+         UGsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=SQoMqJFS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZTJRdiVW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb856521si125909821cf.510.2025.03.18.12.55.00
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb85d7fasi139248811cf.598.2025.03.19.04.25.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Mar 2025 12:55:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Mar 2025 04:25:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=SQoMqJFS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZTJRdiVW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tud1J-0002a8-Ty; Tue, 18 Mar 2025 15:54:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1turY2-00022J-QC; Wed, 19 Mar 2025 07:25:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tud1I-0002Zn-DI; Tue, 18 Mar 2025 15:54:36 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tud1G-00050i-Ai; Tue, 18 Mar 2025 15:54:36 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-22359001f1aso3129265ad.3; 
- Tue, 18 Mar 2025 12:54:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742327672; x=1742932472; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=P5E2Zmxz/6aGrB8WoLLQBruVOcoIwFL3ANTJ5maRSag=;
- b=SQoMqJFSntxZhotcYfhTHINrN7QBTpJdY1SVj9KVHMo5sXhiN8lq+gHX038iCDJbaD
- l5vInJ44a5qaDkyGzZiKH16VgJ0HDHDAWn5uDnH7XPxC2yajqmVgWYAiRcXk9F/V6oWR
- WemAgMB1U3Hdt3VI1pkyuDqLT3wS8/WS1UHMftfUYvTUw3NtGP04WgPKC0E05z8XTKJq
- wqsV3/vAeW6BgUNb6Ht1+790OeSuLWLC5fzGcDf6b/HW+y39n7kXJPaXRiMCl4e+ohHz
- ofrNOsuBgie/Eyq03qqEydN8IsgYUicIWZbKZodnQ9RuoNjEV5ldMumQy5U9zujzgrW/
- /ckQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742327672; x=1742932472;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=P5E2Zmxz/6aGrB8WoLLQBruVOcoIwFL3ANTJ5maRSag=;
- b=Bx7PRbgIS1336TMM0CzJb2P6MKItIDaRcJoAayM5qv8gU2GbaXtwOvL5n2WDTdbLXd
- 3DP4rZqIN8Ceege6AXGw3vB7KdtOu0ymW+viU1gxbCQ4yl9g5FS3XOND5M4aQRPhQkrG
- WZ5l9Ggg3L/UsdmshZrFHpBTjLw4szQmOMZN6+NISefIn8DQinshhxKeZJOZbcJ8PL2t
- tRhouPNRSknpJCGyzER+zT7pOFJVarH9mJ0uDhIspliEV1TejTxg0mAFifMlNK0r3oSZ
- gseKz/Daw0guyVc3xU37wZRGIAmohiEuwHqZPqeQteLA+Km5phUNBtmOXlUVrMzCXahQ
- itFQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU6jtsXCIeP3M6xzJxJibqnHdWS2iKMA0wTCUnfBEfys/jd91ENQkta/L6JUY8cQua09JVoNMxASVDDFw==@nongnu.org,
- AJvYcCXsNC9f2hxv6OJb1q5JORevyw34jZ1SckqHpR+2XVrzxnUddOgT7w/wS0mnrwTjlVva3xYepr5maQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzGs0Da0nd9eNjbVLBVQag6M2fL+eAioQiMbgG9RsbxBlKbfTWd
- Amt8osr30YDkpbyCne2abtKOMBQLR38murOY+Uog5uPKi/s3xgBi
-X-Gm-Gg: ASbGncsjKCCcwcjpTqbNqyTe0SOoHmgYlFkN4uH3RDO3dqnyorY0GNGViVsE9q0oPX1
- XaV2KyXxQgAsIE7IBh/aRTVaHadFkU+B6woII8dGRBhlzSZov2iNS0QUtZANREMDi2fdW7sS/NB
- p8OhH6/fjdZBC/Uah0M9JFDeX1Oad19hogEo7nImv50JklvzJ+iTAXqQYw6laSqfzSdOd07PEsm
- VVaL1Cbf/b5tWjvKBH6nM9UqimNNUakL1eM9ZXoWk/YXv1/CLTtaPoGqW1BKPZKIZGlOy4rtB7G
- +Q2/8yFEo+9mm2O4kffSTPQKov4QrXzGXQLmgUr09o8iEx0i9w55kRKjPcoFos4fOQJC+7xILAy
- gWhysoVNodu+ooSvFaw==
-X-Received: by 2002:a05:6a21:c94:b0:1f5:7c6f:6c96 with SMTP id
- adf61e73a8af0-1fa4487382emr7751172637.22.1742327672057; 
- Tue, 18 Mar 2025 12:54:32 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5?
- ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-737115295dasm10004812b3a.30.2025.03.18.12.54.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Mar 2025 12:54:31 -0700 (PDT)
-Message-ID: <5d350a95-886e-420c-8b0d-a3be57b9490d@roeck-us.net>
-Date: Tue, 18 Mar 2025 12:54:30 -0700
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1turXz-0001z8-HF
+ for qemu-arm@nongnu.org; Wed, 19 Mar 2025 07:25:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1turXv-0004SM-H7
+ for qemu-arm@nongnu.org; Wed, 19 Mar 2025 07:25:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742383514;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=C1w8kgAFq/a4lRFCTW6J283Rau1D7/rkcE+jQX8KfME=;
+ b=ZTJRdiVWx9da4MKdfm/g5rvLK3hWxXK01PqYhbAhuF0E5WTfOYwreWXFT4yuXbkH9/meWH
+ FAePKt2xKO1zUdTTm3hK026HtIft2lPtnmrhLD5y5P0n1/EMa7RhAHy7DZItToHqbHBXZk
+ SNOAkdg8Gfa5HqGRUnVoUeedWlILEvk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-221-GY9be_JqP72Fprzkb37gfA-1; Wed,
+ 19 Mar 2025 07:25:08 -0400
+X-MC-Unique: GY9be_JqP72Fprzkb37gfA-1
+X-Mimecast-MFC-AGG-ID: GY9be_JqP72Fprzkb37gfA_1742383506
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 87EB319560B7; Wed, 19 Mar 2025 11:25:03 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.112])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4B36B3001D0E; Wed, 19 Mar 2025 11:24:46 +0000 (UTC)
+Date: Wed, 19 Mar 2025 11:24:40 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: n.shubin@yadro.com
+Cc: qemu-devel@nongnu.org, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ "Enrico Weigelt, metux IT consult" <info@metux.net>,
+ Viresh Kumar <vireshk@kernel.org>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ Nikita Shubin <nikita.shubin@maquefel.me>,
+ Nikita Shubin <nshubin@yadro.com>
+Subject: Re: [PATCH PoC 1/7] QAPI: gpio JSON
+Message-ID: <Z9qpeF9-LNLk_nON@redhat.com>
+References: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
+ <20250319-gpiodev-v1-1-76da4e5800a1@yadro.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>
-References: <20250315142050.3642741-1-linux@roeck-us.net>
- <CAFEAcA-zPwJrq3oQk3MRp9ZCyTzDOg2-Je00v20pVzrKe8he6w@mail.gmail.com>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <CAFEAcA-zPwJrq3oQk3MRp9ZCyTzDOg2-Je00v20pVzrKe8he6w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250319-gpiodev-v1-1-76da4e5800a1@yadro.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dib+7aoEZ3UK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jvzM0CNmJx0W
 
-On 3/18/25 09:59, Peter Maydell wrote:
-> On Sat, 15 Mar 2025 at 14:20, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> Without psci_conduit, the Linux kernel crashes almost immediately.
->>
->>      psci: probing for conduit method from DT.
->>      Internal error: Oops - Undefined instruction: 0000000002000000 [#1] PREEMPT SMP
->>
->> Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
->> Cc: Hao Wu <wuhaotsh@google.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> ---
->>   hw/arm/npcm8xx.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
->> index f182accc47..e5a1929ed7 100644
->> --- a/hw/arm/npcm8xx.c
->> +++ b/hw/arm/npcm8xx.c
->> @@ -346,6 +346,7 @@ static struct arm_boot_info npcm8xx_binfo = {
->>       .secure_boot            = false,
->>       .board_id               = -1,
->>       .board_setup_addr       = NPCM8XX_BOARD_SETUP_ADDR,
->> +    .psci_conduit           = QEMU_PSCI_CONDUIT_SMC,
->>   };
+On Wed, Mar 19, 2025 at 10:57:51AM +0300, Nikita Shubin via B4 Relay wrote:
+> From: Nikita Shubin <nshubin@yadro.com>
 > 
-> Why do we need this for npcm8xx when we don't need it
-> for npcm7xx? Or is it also broken on 7xx?
+> Signed-off-by: Nikita Shubin <nshubin@yadro.com>
+> ---
+>  qapi/gpio.json        | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  qapi/meson.build      |  1 +
+>  qapi/qapi-schema.json |  1 +
+>  3 files changed, 70 insertions(+)
 > 
+> diff --git a/qapi/gpio.json b/qapi/gpio.json
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..1c2b7af36813ff52cbb3a44e64a2e5a5d8658d62
+> --- /dev/null
+> +++ b/qapi/gpio.json
+> @@ -0,0 +1,68 @@
+> +# -*- Mode: Python -*-
+> +# vim: filetype=python
+> +#
+> +
+> +##
+> +# = Gpio devices
+> +##
+> +
+> +##
+> +# @GpiodevInfo:
+> +#
+> +# Information about a gpio device.
+> +#
+> +# @label: the label of the gpio device
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'struct': 'GpiodevInfo',
+> +  'data': { 'label': 'str' } }
+> +
+> +##
+> +# @GpiodevBackendKind:
+> +#
+> +# @chardev: chardevs
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'enum': 'GpiodevBackendKind',
+> +  'data': [ 'chardev' ] }
+> +
+> +##
+> +# @GpiodevChardev:
+> +#
+> +# Configuration info for chardev gpiodevs.
+> +#
+> +# @chardev: chardev id
+> +#
+> +# @size: buffer size, default is 65536
+> +#
+> +# Since: 9.2
+> +##
+> +  { 'struct': 'GpiodevChardev',
+> +    'data': { 'chardev': 'str',
+> +              '*size': 'int' } }
+> +
+> +##
+> +# @GpiodevChardevWrapper:
+> +#
+> +# @data: Configuration info for chardev gpiodevs
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'struct': 'GpiodevChardevWrapper',
+> +  'data': { 'data': 'GpiodevChardev' } }
+> +
+> +##
+> +# @GpiodevBackend:
+> +#
+> +# Configuration info for the new chardev backend.
+> +#
+> +# @type: backend type
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'union': 'GpiodevBackend',
+> +  'base': { 'type': 'GpiodevBackendKind' },
+> +  'discriminator': 'type',
+> +  'data': { 'chardev': 'GpiodevChardevWrapper' } }
 
-I don't see a reference to psci in npcm7xx devicetree files
-in the upstream Linux kernel.
+While historically we've just wired things up to chardevs in QEMU,
+in most cases this is just a hack to get the ability too configure
+a socket, with the other chardev backends being never used. The
+downside of this is that chardev APIs internally are not very nice
+to work with, especally if you want/need to be aware of client
+connection establishment/closure.
 
-$ git grep psci arch/arm64/boot/dts/nuvoton/ arch/arm/boot/dts/nuvoton/
-arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                        enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                        enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:        psci {
-arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                compatible = "arm,psci-0.2";
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:       psci {
-arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:               compatible      = "arm,psci-1.0";
+These days we've got common socket APIs and QAPI schema available
+and can bypass the chardevs (which have a pretty unpleasant
+internal API) if all we need is a socket backend connecting to
+an external server. This would let code directly work with the
+QIOChannelSocket object, instead of that object being hidden
+behind the chardev APIs.
 
-Guenter
+ { 'enum': 'GpiodevBackendKind',
+   'data': [ 'socket' ] }
+
+ { 'struct': 'GpiodevSocket',
+   'data': { 'addr': 'SocketAddress',
+             '*size': 'int'} }
+
+ { 'struct': 'GpiodevSocketWrapper',
+   'data': { 'data': 'GpiodevSocket' } }
+
+
+ { 'union': 'GpiodevBackend',
+   'base': { 'type': 'GpiodevBackendKind' },
+   'discriminator': 'type',
+   'data': { 'socket': 'GpiodevSocketWrapper' } }
+
+if you need to switch between client/server mode some further
+additions would be needed.
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

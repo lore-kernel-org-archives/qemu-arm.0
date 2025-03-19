@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp208546njc;
-        Wed, 19 Mar 2025 05:50:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXK1nuNcj6+XMHxU5B8JEiIb93oxlLLqVfmLGaZTbYWgb2uQ1QnPe61Xy0sc7diqjMumHuf06F+E0WN7w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFFsfWkGS5DhYnGLmRKjb+9mIb+D3ApS49I/X4rxJuxq9VaSYUNsmPfRyawGWraj1aAEZ9x
-X-Received: by 2002:a05:622a:5513:b0:476:80ce:a61f with SMTP id d75a77b69052e-47708378756mr41756971cf.39.1742388607101;
-        Wed, 19 Mar 2025 05:50:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742388607; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp210516njc;
+        Wed, 19 Mar 2025 05:53:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV5eoHYKRDZDzY1ZRuwMkBQbgIQyXoqmqg23ibLGCnfBkOoHln4lT30OGiZmRrojL0idOqbCB1+JqFnJA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHaebRVyUhX22rihbku/9I+5VhqtZghS4adv0nzxytBQeQ3pKMqj9mp4vQ4hg92mgIOyX2R
+X-Received: by 2002:a05:620a:1791:b0:7c5:5d4b:e63b with SMTP id af79cd13be357-7c5a8462239mr252184285a.38.1742388831295;
+        Wed, 19 Mar 2025 05:53:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742388831; cv=none;
         d=google.com; s=arc-20240605;
-        b=lNkLL568Ga1ktJ+GBcetmye33va2DoZwsICLqL0NyzJ05Ki5JN8TmLTWL8AqvKdEe8
-         FpDXlYNF42cp3Nzwp3wJ5Vcj2mpepyhLLtWrgM7rjNq/izvo+cQYCcTJ3K+pK4lnDQG8
-         rlnP9LGGS7OdrzXefqV3WN66uQXsX6I9BY0lg/IDTjpBWM93XyYMEUDoiuunz10G+wCv
-         IaKZ1o6ISh8d9YxLqwL4CL0I4qTx1haoIy0QfuuFrUNusmHfbP5vnTF1232SxP+oOQ2u
-         9AzDg9oyzg+m6lw6HM4bitW2sp/8BtgLu6gYyesUwilVj23/Eiad1yvbQaHJpi0sQZ4X
-         Rg0g==
+        b=ICQOlAkvWumtXkl7J+XME1tTttKy5ldBBdbhvKARSAx2UPZ5bl1cmTUAGpTeZqZSJt
+         +63x6oEmKl5aC3PiIdY0iEvXJEBEuTI9CoX4OwtQvw0jUi3neq/8FVWaYhgmBGomgTVM
+         QiQYRjI2awc9LWcz1FLOoYFwsaARbKVXHh/h+5cst7xLULy1MBdDE/trbsOkI0g1wupB
+         qQHX+YXjvTj5/qiSbwsa4M7X5Ky5ENi6ZiU+jbMYfagc7G9TN34+NoCIkEe42PegUwcR
+         Yl+GM03V1BcBUVZLpCrZfy53hFG5RyDTpS3ce6SdEFf4nyfLTu5yX3OgaYnmEAuHLu11
+         D5bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:cc:to:in-reply-to
          :references:message-id:content-transfer-encoding:mime-version
          :subject:date:from:dkim-signature;
-        bh=TbLXloT6IlLt+KwRlJUn4y9q+aknET92PS6EnBB0tjw=;
+        bh=dFLBLgY6tETb0f3xaNRFTbZZ/o0eEGqjfbNOV4N/B7k=;
         fh=53Xc37c+ZxayqL7YVOBgqKytqQgQp8Q0bl7IHoyyIrs=;
-        b=lF/OBVt4i00GhK86LejcpLpekOCih52rpQ2ub6yCmjmoTdWO8G4Z+ScMklnEDU4XsG
-         RjHx1XkqshE1ghIMaTuGY8kF1zyOlHkuHqgeFCyoI0TIi1RYYkhaTEeb0SbryL1P6MqH
-         YcwbZgNEQ8fLRSlKVH/gjxryYBOQrfIuJ2YuICnGvsOUrsxnXbBQsbBOrx87mwEnKRTh
-         eWe2WYp84Pk/Kxj3lWUoQ40V1O4uqrS6Yxj/XlGlKvv4vJyLVPs++1blXl1S43CZtIXY
-         TXkWbqpSsvG0B5DitiIZlqpmN2L2D5DaIo9EvT599kQA+v9PsyAulA696cudQjPKATDM
-         Regw==;
+        b=A4Kn1BSWd7w+FOjaB1WbluvpEsLY2T4MKui/QDIqMRWYD8zSkQ5OHRhVcYPPv0ito0
+         /k5MbKul9QlZgFivwCe449MjLRtaZP4V7dbh/w0O1DTk/pVkhOOY9rRZlKCWBcHFAvfQ
+         XmB+4XbhKUsyaKLOQGZGJAryX/L5MG5CfAn+8/4BXuDSeQnn0Y+esfN0AkDNkCQsXTSN
+         +jflZiDx9KHKKmPXgYo3lsoxith0nkmlM/BrK2lpCJLoLJCHAaZHR1t/38Qh9JV4QMWn
+         ePWC6LQl+fcf7gjQgTdxSbvzAPvuNCdIV0wg/kYuAoAeehBaWa1WvuHmh8ey4AXRigxs
+         XeoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=V0yTTDtb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=gOz5sCZp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47705dab3ffsi20562951cf.103.2025.03.19.05.50.06
+        by mx.google.com with ESMTPS id af79cd13be357-7c573b73030si1383699485a.17.2025.03.19.05.53.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Mar 2025 05:50:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Mar 2025 05:53:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=V0yTTDtb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=gOz5sCZp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tusrc-0000Gp-G4; Wed, 19 Mar 2025 08:49:40 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tusrt-0000re-9A; Wed, 19 Mar 2025 08:49:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnull+n.shubin.yadro.com@kernel.org>)
- id 1tuoJU-0006GR-Vi; Wed, 19 Mar 2025 03:58:09 -0400
-Received: from tor.source.kernel.org ([172.105.4.254])
+ id 1tuoJV-0006GS-0j; Wed, 19 Mar 2025 03:58:09 -0400
+Received: from nyc.source.kernel.org ([147.75.193.91])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnull+n.shubin.yadro.com@kernel.org>)
- id 1tuoJQ-0003di-B2; Wed, 19 Mar 2025 03:58:08 -0400
+ id 1tuoJQ-0003de-9U; Wed, 19 Mar 2025 03:58:08 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id D2B8261160;
- Wed, 19 Mar 2025 07:57:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id AE786C4CEF4;
+ by nyc.source.kernel.org (Postfix) with ESMTP id 93941A48B6F;
+ Wed, 19 Mar 2025 07:52:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 9CD97C4CEF0;
  Wed, 19 Mar 2025 07:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1742371074;
- bh=pCiavkc0lCIP1XX9Y6CVBKB4HWoGnxvVV8ujV7FQAek=;
+ bh=qIHV3qXpJxMoWKLO7JpvCuXhHkSYO/5EVcOzLHwY3vs=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
- b=V0yTTDtb67aO3w4tLiU4f06iBiY39YbQUwU33y2IvzZzorm/g50RGOcDYHTBFxMrx
- kOSoi2myc/RvyO/jqVy1+N1BFYSjWxQbk+osmjtIL7kWKU5Gx8EYIR48TlpElPFa/p
- 1aee7YeolDyRXy6uSnj+qX2yQ9WeW9hpaQtKiFSVbU+wFq8hY6mPdoYwmQ45g4+NXz
- loVfGJQnRFqPzxmuDxaz99To1TfPRozQpYON9V7YJ6/PV5dWIC9TMw7S0mqeFhhFun
- GvxLe4ESrmE/CUfGeP3O+ovxPskRK0JqIAeaqlQWnLFsInR4ilS0b9pVC8f6Q7Xb+H
- 3mZelBMWsAuyg==
+ b=gOz5sCZppajmm7Gg4t/LvJOLKelmJsxCPAJGgUYfNVVoaUzEsNO+sUL0PdYc8zNc9
+ Hkoq67H/tNYgP+xaYjg0jluKMCKqBYGtYFy4gK/YtScCAWuVMAv4attpHsm4s/9xpB
+ J3+uCerYMkK5YwhDJNLbeig8dh0/RI01NkPZ2sFKOptHj5euybtrWIDKblsDVemT04
+ sUFW77YuQdclylgRg0smAKl06a0QVkGWzAhuT5O3rFq/dp6YgviLd1uGCvfw/IBJRu
+ s4pc8CktllTMaBrdpfue4CZp1sAsFk5UJ1n0jcdJnRSSzEAk2TGr5M5LS9cWXBInIj
+ haBC0epdSVkxw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org
  (localhost.localdomain [127.0.0.1])
- by smtp.lore.kernel.org (Postfix) with ESMTP id A55AFC35FFF;
+ by smtp.lore.kernel.org (Postfix) with ESMTP id 8FE41C35FFA;
  Wed, 19 Mar 2025 07:57:54 +0000 (UTC)
 From: Nikita Shubin via B4 Relay <devnull+n.shubin.yadro.com@kernel.org>
-Date: Wed, 19 Mar 2025 10:57:54 +0300
-Subject: [PATCH PoC 4/7] gpiodev: Add GPIO backend over chardev
+Date: Wed, 19 Mar 2025 10:57:53 +0300
+Subject: [PATCH PoC 3/7] gpiodev: Add GPIO device frontend
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250319-gpiodev-v1-4-76da4e5800a1@yadro.com>
+Message-Id: <20250319-gpiodev-v1-3-76da4e5800a1@yadro.com>
 References: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
 In-Reply-To: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
 To: qemu-devel@nongnu.org
@@ -100,567 +100,896 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  qemu-arm@nongnu.org, Nikita Shubin <nikita.shubin@maquefel.me>, 
  Nikita Shubin <n.shubin@yadro.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1742371072; l=15807;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1742371072; l=22989;
  i=n.shubin@yadro.com; s=20230718; h=from:subject:message-id;
- bh=5SgTiI0ydbYQARFNJTO+9VhaH4GQhgG0X6FDQsOgxCo=;
- b=9UpynEdIOObCM9wieZowdBFdaPH5tLSl2huhFW0MjhsIL4vTt/GqRF9PZSLNt+7QTe7rBaPXK
- gqh9X9ChwduD8EL+yS8gtXzsMSASjOhgpMTc1jo44g41GzGMqEEDMAN
+ bh=LTQ4DRZxUgYIxufc+VjL7CHLDfHRsY0h348VPbCO93Q=;
+ b=RoqpcR3Zh9HwlMSu71p/Dmq3QlGR/Atk09T0ZsYOLuYHtZ2T47HTXNNp5Us70EO8BPkK4uLau
+ 0fx0jSYJSaYBJwQbP1w7FHc7CTSknCFdYaNyhYyHKqyiHbJelyKPtKC
 X-Developer-Key: i=n.shubin@yadro.com; a=ed25519;
  pk=vqf5YIUJ7BJv3EJFaNNxWZgGuMgDH6rwufTLflwU9ac=
 X-Endpoint-Received: by B4 Relay for n.shubin@yadro.com/20230718 with
  auth_id=161
 X-Original-From: Nikita Shubin <n.shubin@yadro.com>
-Received-SPF: pass client-ip=172.105.4.254;
+Received-SPF: pass client-ip=147.75.193.91;
  envelope-from=devnull+n.shubin.yadro.com@kernel.org;
- helo=tor.source.kernel.org
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
+ helo=nyc.source.kernel.org
+X-Spam_score_int: -46
+X-Spam_score: -4.7
+X-Spam_bar: ----
+X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 19 Mar 2025 08:48:21 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Wed, 19 Mar 2025 08:49:30 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: n.shubin@yadro.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q8gCHmd+CKDg
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Gi8iEYSSLzSN
 
 From: Nikita Shubin <n.shubin@yadro.com>
 
-Currently based on passing linux GPIO UAPI structs over
-UNIX socket.
+Add GPIO device front end with helper functions to provide information
+about GPIO Port to Backends and to allow Frontend to set data.
 
-This is more a PoC than a real application, still this is something to
-start with.
+To use it GPIO device should register with qemu_gpio_fe_init()
+and provide handlers with qemu_gpio_fe_set_handlers().
+
+Notifications about config and changed value events should be done with
+qemu_gpio_fe_line_event() and qemu_gpio_fe_config_event().
 
 Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
 ---
- gpiodev/gpio-chardev.c | 479 +++++++++++++++++++++++++++++++++++++++++++++++++
- gpiodev/meson.build    |   1 +
- include/gpiodev/gpio.h |   2 +
- 3 files changed, 482 insertions(+)
+ gpiodev/gpio-fe.c         | 103 ++++++++++++++++++
+ gpiodev/gpio.c            | 264 +++++++++++++++++++++++++++++++++++++++++++++-
+ gpiodev/meson.build       |   1 +
+ include/gpiodev/gpio-fe.h | 122 +++++++++++++++++++++
+ include/gpiodev/gpio.h    | 200 ++++++++++++++++++++++++++++++++++-
+ qom/object.c              |   1 +
+ 6 files changed, 684 insertions(+), 7 deletions(-)
 
-diff --git a/gpiodev/gpio-chardev.c b/gpiodev/gpio-chardev.c
+diff --git a/gpiodev/gpio-fe.c b/gpiodev/gpio-fe.c
 new file mode 100644
-index 0000000000000000000000000000000000000000..5c2ae0373e6b447ea17ee08eacdcb12fbaa13a9c
+index 0000000000000000000000000000000000000000..3377548d8ed9961a74595686f83636945132f4c8
 --- /dev/null
-+++ b/gpiodev/gpio-chardev.c
-@@ -0,0 +1,479 @@
++++ b/gpiodev/gpio-fe.c
+@@ -0,0 +1,103 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
-+ * QEMU GPIO Chardev based backend.
++ * QEMU GPIO device frontend.
 + *
 + * Author: 2025 Nikita Shubin <n.shubin@yadro.com>
 + *
 + */
 +#include "qemu/osdep.h"
-+#include "qemu/module.h"
-+#include "qemu/option.h"
-+#include "qemu/log.h"
++#include "qemu/error-report.h"
 +#include "qapi/error.h"
-+#include "gpiodev/gpio.h"
-+#include "chardev/char.h"
-+#include "chardev/char-fe.h"
++#include "qapi/qmp/qerror.h"
 +
-+#include <linux/gpio.h>
++#include "gpiodev/gpio-fe.h"
 +
-+/* Taken from include/linux/circ_buf.h */
-+
-+/*
-+ * Return count in buffer.
-+ */
-+#define CIRC_CNT(head, tail, size) (((head) - (tail)) & ((size) - 1))
-+
-+/*
-+ * Return space available, 0..size-1.  We always leave one free char
-+ * as a completely full buffer has head == tail, which is the same as
-+ * empty.
-+ */
-+#define CIRC_SPACE(head, tail, size) CIRC_CNT((tail), ((head) + 1), (size))
-+
-+/*
-+ * Return count up to the end of the buffer.  Carefully avoid
-+ * accessing head and tail more than once, so they can change
-+ * underneath us without returning inconsistent results.
-+ */
-+#define CIRC_CNT_TO_END(head, tail, size) \
-+        ({int end = (size) - (tail); \
-+          int n = ((head) + end) & ((size) - 1); \
-+          n < end ? n : end; })
-+
-+/*
-+ * Return space available up to the end of the buffer.
-+ */
-+#define CIRC_SPACE_TO_END(head, tail, size) \
-+        ({int end = (size) - 1 - (head); \
-+          int n = (end + (tail)) & ((size) - 1); \
-+          n <= end ? n : end + 1; })
-+
-+
-+typedef struct ChardevGpiodev {
-+    Gpiodev parent;
-+
-+    CharBackend chardev;
-+    size_t size;
-+    size_t prod;
-+    size_t cons;
-+    uint8_t *cbuf;
-+
-+    struct gpio_v2_line_request last_request;
-+    uint64_t mask;
-+} ChardevGpiodev;
-+
-+DECLARE_INSTANCE_CHECKER(ChardevGpiodev, GPIODEV_CHARDEV,
-+                         TYPE_GPIODEV_CHARDEV)
-+
-+static void gpio_chardev_line_event(Gpiodev *g, uint32_t offset,
-+                                    QEMUGpioLineEvent event)
++bool qemu_gpio_fe_init(GpioBackend *b, Gpiodev *s, uint32_t nlines,
++                       const char *name, const char *label,
++                       Error **errp)
 +{
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(g);
-+    struct gpio_v2_line_event changed = { 0 };
-+    int ret;
-+
-+    changed.timestamp_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    changed.id = event;
-+    changed.offset = offset;
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&changed, sizeof(changed));
-+    if (ret != sizeof(changed)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                                       __func__, ret);
++    if (s->be) {
++        goto unavailable;
++    } else {
++        s->be = b;
 +    }
++
++    qemu_gpiodev_set_info(s, nlines, name, label);
++    b->gpio = s;
++
++    return true;
++
++unavailable:
++    error_setg(errp, "chardev '%s' is already in use", s->label);
++    return false;
 +}
 +
-+static void gpio_chardev_config_event(Gpiodev *g, uint32_t offset,
-+                                      QEMUGpioConfigEvent event)
++void qemu_gpio_fe_set_handlers(GpioBackend *b,
++                               LineInfoHandler *line_info,
++                               LineGetValueHandler *get_value,
++                               LineSetValueHandler *set_value,
++                               void *opaque)
 +{
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(g);
-+    struct gpio_v2_line_info_changed changed = { 0 };
-+    int ret;
++    Gpiodev *s;
 +
-+    changed.timestamp_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    changed.event_type = event;
-+    changed.info.offset = offset;
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&changed, sizeof(changed));
-+    if (ret != sizeof(changed)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                                       __func__, ret);
-+    }
-+}
-+
-+static int gpio_chardev_can_read(void *opaque)
-+{
-+    ChardevGpiodev *s = GPIODEV_CHARDEV(opaque);
-+
-+    return CIRC_SPACE(s->prod, s->cons, s->size);
-+}
-+
-+static int gpio_chardev_send_chip_info(ChardevGpiodev *d)
-+{
-+    struct gpiochip_info info = { 0 };
-+    int ret;
-+
-+    qemu_gpio_chip_info(&d->parent, &info.lines, info.name, info.label);
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&info, sizeof(info));
-+    if (ret != sizeof(info)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return 8;
-+}
-+
-+static int gpio_chardev_unwatch_line(ChardevGpiodev *d, const uint8_t *buf,
-+                                     size_t len)
-+{
-+    uint32_t offset;
-+
-+    memcpy(&offset, &buf[8], sizeof(offset));
-+    qemu_gpio_clear_event_watch(&d->parent, offset, -1ULL);
-+
-+    return 8 + 4;
-+}
-+
-+static int gpio_chardev_send_line_info(ChardevGpiodev *d, const uint8_t *buf,
-+                                       size_t len)
-+{
-+    struct gpio_v2_line_info info = { 0 };
-+    gpio_line_info req = { 0 };
-+    int ret;
-+
-+    if (len < sizeof(info) + 8) {
-+        return -EAGAIN;
-+    }
-+
-+    memcpy(&info, &buf[8], sizeof(info));
-+    req.offset = info.offset;
-+    qemu_gpio_line_info(&d->parent, &req);
-+
-+    g_strlcpy(info.name, req.name, GPIO_MAX_NAME_SIZE);
-+    info.flags = req.flags;
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&info, sizeof(info));
-+    if (ret != sizeof(info)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return sizeof(info) + 8;
-+}
-+
-+static int gpio_chardev_line_watch(ChardevGpiodev *d, const uint8_t *buf,
-+                                   size_t len)
-+{
-+    struct gpio_v2_line_info info = { 0 };
-+    int ret;
-+
-+    if (len < sizeof(info) + 8) {
-+        return -EAGAIN;
-+    }
-+
-+    memcpy(&info, &buf[8], sizeof(info));
-+    qemu_gpio_add_config_watch(&d->parent, info.offset);
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&info, sizeof(info));
-+    if (ret != sizeof(info)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return sizeof(info) + 8;
-+}
-+
-+static uint64_t gpio_chardev_get_flags(const struct gpio_v2_line_request *request)
-+{
-+    uint64_t req_flags = request->config.flags;
-+    uint64_t flags = 0;
-+
-+    if (req_flags & GPIO_V2_LINE_FLAG_EDGE_RISING) {
-+        flags |= GPIO_EVENT_RISING_EDGE;
-+    }
-+
-+    if (req_flags & GPIO_V2_LINE_FLAG_EDGE_FALLING) {
-+        flags |= GPIO_EVENT_FALLING_EDGE;
-+    }
-+
-+    return flags;
-+}
-+
-+static int gpio_chardev_line_request(ChardevGpiodev *d, const uint8_t *buf,
-+                                     size_t len)
-+{
-+    struct gpio_v2_line_request *req = &d->last_request;
-+    uint64_t flags;
-+    int ret, i;
-+
-+    if (len < sizeof(*req) + 8) {
-+        return -EAGAIN;
-+    }
-+
-+    /* unwatch lines before proccessing new request */
-+    d->mask = 0;
-+    for (i = 0; i < req->num_lines; i++) {
-+        qemu_gpio_clear_event_watch(&d->parent, req->offsets[i], -1ULL);
-+    }
-+
-+    memcpy(req, &buf[8], sizeof(*req));
-+    flags = gpio_chardev_get_flags(req);
-+    for (i = 0; i < req->num_lines; i++) {
-+        qemu_gpio_add_event_watch(&d->parent, req->offsets[i], flags);
-+        d->mask |= BIT_ULL(req->offsets[i]);
-+    }
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)req, sizeof(*req));
-+    if (ret != sizeof(*req)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return sizeof(*req) + 8;
-+}
-+
-+static int gpio_chardev_get_line_values(ChardevGpiodev *d, const uint8_t *buf,
-+                                        size_t len)
-+{
-+    struct gpio_v2_line_request *req = &d->last_request;
-+    struct gpio_v2_line_values values = { 0 };
-+    int ret, idx;
-+
-+    if (len < (sizeof(values) + 8)) {
-+        return -EAGAIN;
-+    }
-+
-+    memcpy(&values, &buf[8], sizeof(values));
-+    idx = find_first_bit((unsigned long *)&values.mask, req->num_lines);
-+    while (idx < req->num_lines) {
-+        values.bits |= qemu_gpio_get_line_value(&d->parent, req->offsets[idx]);
-+        idx = find_next_bit((unsigned long *)&values.mask, req->num_lines, idx + 1);
-+    }
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&values, sizeof(values));
-+    if (ret != sizeof(values)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return sizeof(values) + 8;
-+}
-+
-+static int gpio_chardev_set_line_values(ChardevGpiodev *d, const uint8_t *buf,
-+                                        size_t len)
-+{
-+    struct gpio_v2_line_request *req = &d->last_request;
-+    struct gpio_v2_line_values values = { 0 };
-+    int ret, idx;
-+
-+    if (len < sizeof(values) + 8) {
-+        return -EAGAIN;
-+    }
-+
-+    memcpy(&values, &buf[8], sizeof(values));
-+    idx = find_first_bit((unsigned long *)&values.mask, req->num_lines);
-+    while (idx < req->num_lines) {
-+        qemu_gpio_set_line_value(&d->parent, req->offsets[idx],
-+                                 test_bit(idx, (unsigned long *)&values.bits));
-+        idx = find_next_bit((unsigned long *)&values.mask, req->num_lines, idx + 1);
-+    }
-+
-+    ret = qemu_chr_fe_write(&d->chardev, (uint8_t *)&values, sizeof(values));
-+    if (ret != sizeof(values)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed writing %d bytes\n",
-+                      __func__, ret);
-+    }
-+
-+    return sizeof(values) + 8;
-+}
-+
-+static int gpio_chardev_consume_one(ChardevGpiodev *d, const uint8_t *buf,
-+                                    size_t len)
-+{
-+    unsigned long ctl;
-+    int ret;
-+
-+    if (len < 8) {
-+        return -EAGAIN;
-+    }
-+
-+    memcpy(&ctl, buf, 8);
-+    switch (ctl) {
-+    case GPIO_GET_CHIPINFO_IOCTL:
-+        ret = gpio_chardev_send_chip_info(d);
-+        break;
-+    case GPIO_GET_LINEINFO_UNWATCH_IOCTL:
-+        ret = gpio_chardev_unwatch_line(d, buf, len);
-+        break;
-+    case GPIO_V2_GET_LINEINFO_IOCTL:
-+        ret = gpio_chardev_send_line_info(d, buf, len);
-+        break;
-+    case GPIO_V2_GET_LINEINFO_WATCH_IOCTL:
-+        ret = gpio_chardev_line_watch(d, buf, len);
-+        break;
-+    case GPIO_V2_GET_LINE_IOCTL:
-+        ret = gpio_chardev_line_request(d, buf, len);
-+        break;
-+    case GPIO_V2_LINE_GET_VALUES_IOCTL:
-+        ret = gpio_chardev_get_line_values(d, buf, len);
-+        break;
-+    case GPIO_V2_LINE_SET_VALUES_IOCTL:
-+        ret = gpio_chardev_set_line_values(d, buf, len);
-+        break;
-+    case GPIO_V2_LINE_SET_CONFIG_IOCTL:
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unknow ctl=%lx\n",
-+                        __func__, ctl);
-+        return -EINVAL;
-+    };
-+
-+    return ret;
-+}
-+
-+static void gpio_chardev_consume(ChardevGpiodev *d, size_t len)
-+{
-+    g_autofree guint8 *buf;
-+    size_t t_cons = d->cons;
-+    int i, ret, pos = 0;
-+    size_t left = len;
-+
-+    buf = g_malloc(len);
-+
-+    for (i = 0; i < len && t_cons != d->prod; i++) {
-+        buf[i] = d->cbuf[t_cons++ & (d->size - 1)];
-+    }
-+
-+    do {
-+        ret = gpio_chardev_consume_one(d, &buf[pos], left);
-+        if (ret > 0) {
-+            left -= ret;
-+            pos += ret;
-+        }
-+    } while (ret > 0);
-+
-+    /* advance */
-+    d->cons += pos;
-+    qemu_chr_fe_accept_input(&d->chardev);
-+}
-+
-+static void gpio_chardev_read(void *opaque, const uint8_t *buf, int len)
-+{
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(opaque);
-+    int i;
-+
-+    if (!buf || (len < 0)) {
++    s = b->gpio;
++    if (!s) {
 +        return;
 +    }
 +
-+    for (i = 0; i < len; i++) {
-+        d->cbuf[d->prod++ & (d->size - 1)] = buf[i];
-+        if (d->prod - d->cons > d->size) {
-+            d->cons = d->prod - d->size;
++    b->line_info = line_info;
++    b->get_value = get_value;
++    b->set_value = set_value;
++    b->opaque = opaque;
++}
++
++bool qemu_gpio_fe_line_event(GpioBackend *b, uint32_t offset,
++                             QEMUGpioLineEvent event)
++{
++    Gpiodev *gpio = b->gpio;
++
++    if (!gpio) {
++        return false;
++    }
++
++    qemu_gpio_line_event(gpio, offset, event);
++
++    return true;
++}
++
++bool qemu_gpio_fe_config_event(GpioBackend *b, uint32_t offset,
++                               QEMUGpioConfigEvent event)
++{
++    Gpiodev *gpio = b->gpio;
++
++    if (!gpio) {
++        return false;
++    }
++
++    qemu_gpio_config_event(gpio, offset, event);
++
++    return true;
++}
++
++void qemu_gpio_fe_deinit(GpioBackend *b, bool del)
++{
++    assert(b);
++
++    if (b->gpio) {
++        qemu_gpio_fe_set_handlers(b, NULL, NULL, NULL, NULL);
++        if (b->gpio->be == b) {
++            b->gpio->be = NULL;
++        }
++
++        if (del) {
++            Object *obj = OBJECT(b->gpio);
++            if (obj->parent) {
++                object_unparent(obj);
++            } else {
++                object_unref(obj);
++            }
++        }
++
++        b->gpio = NULL;
++    }
++}
+diff --git a/gpiodev/gpio.c b/gpiodev/gpio.c
+index 0f84fb6c502bd6d0a5f808bc299fabd4144c2909..396de1f03d9af1910e104bd0381dd81025e994db 100644
+--- a/gpiodev/gpio.c
++++ b/gpiodev/gpio.c
+@@ -8,52 +8,227 @@
+ #include "qemu/osdep.h"
+ 
+ #include "qapi/error.h"
++#include "qapi/qmp/qerror.h"
++#include "qemu/bitmap.h"
+ #include "qemu/config-file.h"
+ #include "qemu/option.h"
+ #include "qemu/qemu-print.h"
+ #include "qemu/help_option.h"
+ 
+ #include "gpiodev/gpio.h"
++#include "gpiodev/gpio-fe.h"
+ 
+ static Object *get_gpiodevs_root(void)
+ {
+     return object_get_container("gpiodevs");
+ }
+ 
++void qemu_gpiodev_set_info(Gpiodev *g, uint32_t nlines,
++                           const char *name, const char *label)
++{
++    g->lines = nlines;
++    g_strlcpy(g->name, name, sizeof(g->name));
++    g_strlcpy(g->label, label, sizeof(g->label));
++
++    g->mask.risen = bitmap_new(nlines);
++    g->mask.fallen = bitmap_new(nlines);
++    g->mask.config = bitmap_new(nlines);
++}
++
++void qemu_gpio_chip_info(Gpiodev *g, uint32_t *nlines,
++                         char *name, char *label)
++{
++    if (!g->be) {
++        g_strlcpy(name, "NULL", GPIO_MAX_NAME_SIZE);
++        g_strlcpy(label, "NULL", GPIO_MAX_NAME_SIZE);
++        *nlines = 0;
++        return;
++    }
++
++    g_strlcpy(name, g->name, GPIO_MAX_NAME_SIZE);
++    g_strlcpy(label, g->label, GPIO_MAX_NAME_SIZE);
++    *nlines = g->lines;
++}
++
++void qemu_gpio_line_info(Gpiodev *g, gpio_line_info *info)
++{
++    GpioBackend *be = g->be;
++
++    if (!be || !be->line_info) {
++        return;
++    }
++
++    be->line_info(be->opaque, info);
++}
++
++void qemu_gpio_set_line_value(Gpiodev *g, uint32_t offset, uint8_t value)
++{
++    GpioBackend *be = g->be;
++
++    if (!be || !be->set_value) {
++        return;
++    }
++
++    be->set_value(be->opaque, offset, value);
++}
++
++uint8_t qemu_gpio_get_line_value(Gpiodev *g, uint32_t offset)
++{
++    GpioBackend *be = g->be;
++
++    if (!be || !be->get_value) {
++        return 0;
++    }
++
++    return be->get_value(be->opaque, offset);
++}
++
++void qemu_gpio_add_event_watch(Gpiodev *g, uint32_t offset, uint64_t flags)
++{
++    if (flags & GPIO_EVENT_RISING_EDGE) {
++        set_bit(offset, g->mask.risen);
++    }
++
++    if (flags & GPIO_EVENT_FALLING_EDGE) {
++        set_bit(offset, g->mask.fallen);
++    }
++}
++
++void qemu_gpio_clear_event_watch(Gpiodev *g, uint32_t offset, uint64_t flags)
++{
++    if (flags & GPIO_EVENT_RISING_EDGE) {
++        clear_bit(offset, g->mask.risen);
++    }
++
++    if (flags & GPIO_EVENT_FALLING_EDGE) {
++        clear_bit(offset, g->mask.fallen);
++    }
++}
++
++void qemu_gpio_add_config_watch(Gpiodev *g, uint32_t offset)
++{
++    set_bit(offset, g->mask.config);
++}
++
++void qemu_gpio_clear_config_watch(Gpiodev *g, uint32_t offset)
++{
++    clear_bit(offset, g->mask.config);
++}
++
++void qemu_gpio_clear_watches(Gpiodev *g)
++{
++    bitmap_zero(g->mask.risen, g->lines);
++    bitmap_zero(g->mask.fallen, g->lines);
++    bitmap_zero(g->mask.config, g->lines);
++}
++
++void qemu_gpio_line_event(Gpiodev *g, uint32_t offset,
++                          QEMUGpioLineEvent event)
++{
++    GpiodevClass *gc = GPIODEV_GET_CLASS(g);
++    bool notify = false;
++
++    if (!gc->line_event) {
++        return;
++    }
++
++    if (event & GPIO_EVENT_RISING_EDGE) {
++        if (test_bit(offset, g->mask.risen)) {
++            notify = true;
 +        }
 +    }
 +
-+    gpio_chardev_consume(d, CIRC_CNT(d->prod, d->cons, d->size));
-+}
++    if (event & GPIO_EVENT_FALLING_EDGE) {
++        if (test_bit(offset, g->mask.fallen)) {
++            notify = true;
++        }
++    }
 +
-+static void gpio_chardev_event(void *opaque, QEMUChrEvent event)
-+{
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(opaque);
-+
-+    if (event == CHR_EVENT_OPENED) {
-+        d->prod = 0;
-+        d->cons = 0;
-+
-+        /* remove watches */
-+        qemu_gpio_clear_watches(&d->parent);
++    if (notify) {
++        gc->line_event(g, offset, event);
 +    }
 +}
 +
-+static void gpio_chardev_open(Gpiodev *gpio, GpiodevBackend *backend,
-+                              Error **errp)
++void qemu_gpio_config_event(Gpiodev *g, uint32_t offset,
++                            QEMUGpioConfigEvent event)
 +{
-+    GpiodevChardev *opts = backend->u.chardev.data;
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(gpio);
-+    Object *chr_backend;
-+    Chardev *chr = NULL;
++    GpiodevClass *gc = GPIODEV_GET_CLASS(g);
 +
-+    d->size = opts->has_size ? opts->size : 65536;
-+
-+    /* The size must be power of 2 */
-+    if (d->size & (d->size - 1)) {
-+        error_setg(errp, "size of ringbuf chardev must be power of two");
++    if (!gc->config_event) {
 +        return;
 +    }
 +
-+    chr_backend = object_resolve_path_type(opts->chardev, TYPE_CHARDEV, NULL);
-+    if (chr_backend) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s got backend\n",
-+                      __func__, opts->chardev);
-+        chr = qemu_chr_find(opts->chardev);
++    if (test_bit(offset, g->mask.config)) {
++        gc->config_event(g, offset, event);
 +    }
-+
-+    if (!chr) {
-+        error_setg(errp, "gpiodev: chardev: no chardev %s not found", opts->chardev);
-+        return;
-+    }
-+
-+    d->cbuf = g_malloc0(d->size);
-+
-+    qemu_chr_fe_init(&d->chardev, chr, NULL);
-+    qemu_chr_fe_set_handlers(&d->chardev,
-+                             gpio_chardev_can_read,
-+                             gpio_chardev_read,
-+                             gpio_chardev_event, NULL, d, NULL, true);
 +}
 +
-+static void gpio_chardev_parse(QemuOpts *opts, GpiodevBackend *backend,
-+                               Error **errp)
++static void qemu_gpio_finalize(Object *obj)
 +{
-+    const char *chardev = qemu_opt_get(opts, "chardev");
-+    GpiodevChardev *gchardev;
-+    int val;
++    Gpiodev *d = GPIODEV(obj);
 +
-+    if (chardev == NULL) {
-+        error_setg(errp, "gpiodev: chardev: no chardev id given");
-+        return;
++    g_free(d->mask.risen);
++    g_free(d->mask.fallen);
++    g_free(d->mask.config);
++}
++
+ static const TypeInfo gpiodev_types_info[] = {
+     {
+         .name = TYPE_GPIODEV,
+         .parent = TYPE_OBJECT,
+         .instance_size = sizeof(Gpiodev),
++        .instance_finalize = qemu_gpio_finalize,
+         .abstract = true,
++        .class_size = sizeof(GpiodevClass),
+     },
+ };
+ 
+ DEFINE_TYPES(gpiodev_types_info);
+ 
+-static Gpiodev *gpiodev_new(const char *id,
++static void qemu_gpio_open(Gpiodev *gpio, GpiodevBackend *backend,
++                           Error **errp)
++{
++    GpiodevClass *gc = GPIODEV_GET_CLASS(gpio);
++
++    if (gc->open) {
++        gc->open(gpio, backend, errp);
++    }
++}
++
++static Gpiodev *gpiodev_new(const char *id, const char *typename,
++                            GpiodevBackend *backend,
+                             GMainContext *gcontext,
+                             Error **errp)
+ {
+     Object *obj;
+     Gpiodev *gpio = NULL;
++    Error *local_err = NULL;
+ 
++    assert(g_str_has_prefix(typename, "gpiodev-"));
+     assert(id);
+ 
+-    obj = object_new(TYPE_GPIODEV);
++    obj = object_new(typename);
+     gpio = GPIODEV(obj);
+     gpio->gcontext = gcontext;
+ 
++    qemu_gpio_open(gpio, backend, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        object_unref(obj);
++        return NULL;
 +    }
 +
-+    backend->type = GPIODEV_BACKEND_KIND_CHARDEV;
-+    gchardev = backend->u.chardev.data = g_new0(GpiodevChardev, 1);
-+    val = qemu_opt_get_size(opts, "size", 0);
-+    if (val != 0) {
-+        gchardev->has_size = true;
-+        gchardev->size = val;
+     return gpio;
+ }
+ 
+-static Gpiodev *qemu_gpiodev_new(const char *id,
++static Gpiodev *qemu_gpiodev_new(const char *id, const char *typename,
++                                 GpiodevBackend *backend,
+                                  GMainContext *gcontext,
+                                  Error **errp)
+ {
+     Gpiodev *gpio;
+ 
+-    gpio = gpiodev_new(id, gcontext, errp);
++    gpio = gpiodev_new(id, typename, backend, gcontext, errp);
+     if (!gpio) {
+         return NULL;
+     }
+@@ -100,11 +275,67 @@ help_string_append(const char *name, void *opaque)
+     g_string_append_printf(str, "\n  %s", name);
+ }
+ 
++static const GpiodevClass *gpio_get_class(const char *driver, Error **errp)
++{
++    ObjectClass *oc;
++    char *typename = g_strdup_printf("gpiodev-%s", driver);
++
++    oc = module_object_class_by_name(typename);
++    g_free(typename);
++
++    if (!object_class_dynamic_cast(oc, TYPE_GPIODEV)) {
++        error_setg(errp, "'%s' is not a valid gpio driver name", driver);
++        return NULL;
 +    }
-+    gchardev->chardev = g_strdup(chardev);
++
++    if (object_class_is_abstract(oc)) {
++        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
++                   "a non-abstract device type");
++        return NULL;
++    }
++
++    return GPIODEV_CLASS(oc);
 +}
 +
-+static void gpio_chardev_finalize(Object *obj)
++static GpiodevBackend *qemu_gpio_parse_opts(QemuOpts *opts, Error **errp)
 +{
-+    ChardevGpiodev *d = GPIODEV_CHARDEV(obj);
++    Error *local_err = NULL;
++    const GpiodevClass *gc;
++    GpiodevBackend *backend = NULL;
++    const char *name = qemu_opt_get(opts, "backend");
 +
-+    g_free(d->cbuf);
++    if (name == NULL) {
++        error_setg(errp, "gpiodev: \"%s\" missing backend",
++                   qemu_opts_id(opts));
++        return NULL;
++    }
++
++    gc = gpio_get_class(name, errp);
++    if (gc == NULL) {
++        return NULL;
++    }
++
++    backend = g_new0(GpiodevBackend, 1);
++    if (gc->parse) {
++        gc->parse(opts, backend, &local_err);
++        if (local_err) {
++            error_propagate(errp, local_err);
++            qapi_free_GpiodevBackend(backend);
++            return NULL;
++        }
++    }
++
++    return backend;
 +}
 +
-+static void gpio_chardev_class_init(ObjectClass *oc, void *data)
-+{
-+    GpiodevClass *cc = GPIODEV_CLASS(oc);
+ Gpiodev *qemu_gpiodev_add(QemuOpts *opts, GMainContext *context,
+                           Error **errp)
+ {
+     const char *id = qemu_opts_id(opts);
+     const char *name = qemu_opt_get(opts, "backend");
++    const GpiodevClass *gc;
++    GpiodevBackend *backend = NULL;
++    Gpiodev *gpio = NULL;
+ 
+     if (name && is_help_option(name)) {
+         GString *str = g_string_new("");
+@@ -121,7 +352,22 @@ Gpiodev *qemu_gpiodev_add(QemuOpts *opts, GMainContext *context,
+         return NULL;
+     }
+ 
+-    return qemu_gpiodev_new(id, context, errp);
++    backend = qemu_gpio_parse_opts(opts, errp);
++    if (backend == NULL) {
++        return NULL;
++    }
 +
-+    cc->parse = &gpio_chardev_parse;
-+    cc->open = &gpio_chardev_open;
-+    cc->line_event = &gpio_chardev_line_event;
-+    cc->config_event = &gpio_chardev_config_event;
-+}
++    gc = gpio_get_class(name, errp);
++    if (gc == NULL) {
++        goto out;
++    }
 +
-+static const TypeInfo gpio_chardev_type_info[] = {
-+    {
-+        .name = TYPE_GPIODEV_CHARDEV,
-+        .parent = TYPE_GPIODEV,
-+        .class_init = gpio_chardev_class_init,
-+        .instance_size = sizeof(ChardevGpiodev),
-+        .instance_finalize = gpio_chardev_finalize,
-+    },
-+};
++    gpio = qemu_gpiodev_new(id, object_class_get_name(OBJECT_CLASS(gc)),
++                            backend, context, errp);
 +
-+DEFINE_TYPES(gpio_chardev_type_info);
-+
++out:
++    qapi_free_GpiodevBackend(backend);
++    return gpio;
+ }
+ 
+ static QemuOptsList qemu_gpiodev_opts = {
+@@ -132,6 +378,14 @@ static QemuOptsList qemu_gpiodev_opts = {
+         {
+             .name = "backend",
+             .type = QEMU_OPT_STRING,
++        }, {
++            .name = "chardev",
++            .type = QEMU_OPT_STRING,
++            .help = "Chardev id (for gpiodev-chardev)",
++        }, {
++            .name = "devname",
++            .type = QEMU_OPT_STRING,
++            .help = "Device name (for gpiodev-guse)",
+         },
+         { /* end of list */ }
+     },
 diff --git a/gpiodev/meson.build b/gpiodev/meson.build
-index 0c7e457a11a6b01ec675006ae11ce0c50356407e..64d3abb4e3d72cba0c26b665515a0f97e82fb5d9 100644
+index 05aeb266bce8d905753d90d917b5f8b2d265a0cf..0c7e457a11a6b01ec675006ae11ce0c50356407e 100644
 --- a/gpiodev/meson.build
 +++ b/gpiodev/meson.build
 @@ -1,4 +1,5 @@
  gpiodev_ss.add(files(
-+  'gpio-chardev.c',
-   'gpio-fe.c',
++  'gpio-fe.c',
    'gpio.c',
  ))
+ 
+diff --git a/include/gpiodev/gpio-fe.h b/include/gpiodev/gpio-fe.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..ba775575c3b4a20219730189108a480fde7e60ca
+--- /dev/null
++++ b/include/gpiodev/gpio-fe.h
+@@ -0,0 +1,122 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * QEMU GPIO device frontend.
++ *
++ * Author: 2025 Nikita Shubin <n.shubin@yadro.com>
++ *
++ */
++#ifndef QEMU_GPIO_FE_H
++#define QEMU_GPIO_FE_H
++
++#include "qemu/main-loop.h"
++
++#include "gpiodev/gpio.h"
++
++/**
++ * LineInfoHandler: Return the gpio line info specified by offset
++ */
++typedef void LineInfoHandler(void *opaque, gpio_line_info *info);
++
++/**
++ * LineInfoHandler: Return the gpio line value specified by offset
++ */
++typedef int LineGetValueHandler(void *opaque, uint32_t offset);
++
++/**
++ * LineSetValueHandler: Set the gpio line value specified by offset
++ */
++typedef int LineSetValueHandler(void *opaque, uint32_t offset, uint8_t value);
++
++/**
++ * struct GpioBackend - back end as seen by front end
++ *
++ * The actual backend is Gpiodev
++ */
++struct GpioBackend {
++    Gpiodev *gpio;
++    LineInfoHandler *line_info;
++    LineGetValueHandler *get_value;
++    LineSetValueHandler *set_value;
++    void *opaque;
++};
++
++/**
++ * qemu_gpio_fe_deinit:
++ *
++ * @b: a GpioBackend
++ * @s: a Gpiodev
++ * @nlines: number of lines in the GPIO Port
++ * @name: name of the GPIO Port
++ * @label: label of the GPIO Port
++ * @errp: error if any
++ *
++ * Initializes a front end for the given GpioBackend and
++ * Gpiodev. Call qemu_gpio_fe_deinit() to remove the association and
++ * release the driver.
++ *
++ * nlines, name and label used for proving information
++ * via qemu_gpiodev_set_info().
++ *
++ * Returns: false on error.
++ */
++bool qemu_gpio_fe_init(GpioBackend *b, Gpiodev *s, uint32_t nlines,
++                       const char *name, const char *label,
++                       Error **errp);
++
++/**
++ * qemu_gpio_fe_set_handlers:
++ *
++ * @b: a GpioBackend
++ * @s: a Gpiodev
++ * @line_info: Line info handler to provide info about line
++ * @get_value: Get line value handler
++ * @set_value: Set line value handler
++ * @opaque: an opaque pointer for the callbacks
++ * @context: a main loop context or NULL for the default
++ *
++ * Set the front end gpio handlers.
++ *
++ */
++void qemu_gpio_fe_set_handlers(GpioBackend *b,
++                               LineInfoHandler *line_info,
++                               LineGetValueHandler *get_value,
++                               LineSetValueHandler *set_value,
++                               void *opaque);
++
++/**
++ * qemu_gpio_fe_deinit:
++ *
++ * @b: a GpioBackend
++ * @del: if true, delete the gpiodev backend
++ *
++ * Dissociate the GpioBackend from the Gpiodev.
++ *
++ * Safe to call without associated Gpiodev.
++ */
++void qemu_gpio_fe_deinit(GpioBackend *b, bool del);
++
++/**
++ * qemu_gpio_fe_line_event:
++ *
++ * @b: a GpioBackend
++ * @offset: line number offset
++ * @event: rising or falling edge event
++ *
++ * See enum QEMUGpioEvent.
++ */
++bool qemu_gpio_fe_line_event(GpioBackend *b, uint32_t offset,
++                             QEMUGpioLineEvent event);
++
++/**
++ * qemu_gpio_fe_config_event:
++ *
++ * @b: a GpioBackend
++ * @offset: line number offset
++ * @event: requested, released or input/output toggle
++ *
++ * See enum QEMUGpioConfigEvent.
++ */
++bool qemu_gpio_fe_config_event(GpioBackend *b, uint32_t offset,
++                               QEMUGpioConfigEvent event);
++
++#endif /* QEMU_GPIO_FE_H */
 diff --git a/include/gpiodev/gpio.h b/include/gpiodev/gpio.h
-index 2ea6c0e6af8125caacc944cdddca94b1bca8c4ff..a34d805ccc0bf5a25986b118dcc0b2cc0a55572c 100644
+index aca0a6090bb5264e1646fa5facace2d8f7cc47fd..2ea6c0e6af8125caacc944cdddca94b1bca8c4ff 100644
 --- a/include/gpiodev/gpio.h
 +++ b/include/gpiodev/gpio.h
-@@ -55,6 +55,8 @@ struct Gpiodev {
- #define TYPE_GPIODEV "gpiodev"
- OBJECT_DECLARE_TYPE(Gpiodev, GpiodevClass, GPIODEV)
+@@ -8,25 +8,221 @@
+ #ifndef QEMU_GPIO_H
+ #define QEMU_GPIO_H
  
-+#define TYPE_GPIODEV_CHARDEV "gpiodev-chardev"
++#include "qapi/qapi-types-gpio.h"
+ #include "qom/object.h"
++#include "qemu/bitops.h"
+ 
+ /* gpio back-end device */
+ typedef struct GpioBackend GpioBackend;
+ 
++#define GPIO_MAX_NAME_SIZE 32
++
++/* compatible with enum gpio_v2_line_flag */
++typedef enum QEMUGpioLineFlags {
++	GPIO_LINE_FLAG_INPUT            = BIT_ULL(2),
++	GPIO_LINE_FLAG_OUTPUT           = BIT_ULL(3),
++} QEMUGpioLineFlags;
++
++typedef enum QEMUGpioLineEvent {
++	GPIO_EVENT_RISING_EDGE	= 1,
++	GPIO_EVENT_FALLING_EDGE	= 2,
++} QEMUGpioLineEvent;
++
++typedef enum QEMUGpioConfigEvent {
++	GPIO_LINE_CHANGED_REQUESTED	= 1,
++	GPIO_LINE_CHANGED_RELEASED	= 2,
++	GPIO_LINE_CHANGED_CONFIG	= 3,
++} QEMUGpioConfigEvent;
++
+ struct Gpiodev {
+     Object parent_obj;
+ 
+     GpioBackend *be;
+ 
++    uint32_t lines;
++    char name[GPIO_MAX_NAME_SIZE];
++	char label[GPIO_MAX_NAME_SIZE];
++
++    struct {
++        unsigned long *risen;
++        unsigned long *fallen;
++        unsigned long *config;
++    } mask;
++
+     GMainContext *gcontext;
+ };
+ 
++#define TYPE_GPIODEV "gpiodev"
++OBJECT_DECLARE_TYPE(Gpiodev, GpiodevClass, GPIODEV)
 +
  struct GpiodevClass {
      ObjectClass parent_class;
++
++    /* parse command line options and populate QAPI @backend */
++    void (*parse)(QemuOpts *opts, GpiodevBackend *backend, Error **errp);
++
++    /* called after construction, open/starts the backend */
++    void (*open)(Gpiodev *gpio, GpiodevBackend *backend, Error **errp);
++
++    /* notify backend about line event */
++    void (*line_event)(Gpiodev *g, uint32_t offset,
++                       QEMUGpioLineEvent event);
++
++    /* notify backend about config event */
++    void (*config_event)(Gpiodev *g, uint32_t offset,
++                         QEMUGpioConfigEvent event);
+ };
  
+-#define TYPE_GPIODEV "gpiodev"
+-OBJECT_DECLARE_TYPE(Gpiodev, GpiodevClass, GPIODEV)
++/**
++ * qemu_gpiodev_set_info:
++ *
++ * @g: a Gpiodev
++ * @nlines: number of lines in the GPIO Port
++ * @name: name of the GPIO Port
++ * @label: label of the GPIO Port
++ *
++ * Set basic info about GPIO Port, used by backends to provide data
++ * to client applications.
++ *
++ * nlines, name and label used for proving information
++ * via qemu_gpio_chip_info().
++ */
++void qemu_gpiodev_set_info(Gpiodev *g, uint32_t nlines,
++                           const char *name, const char *label);
++
++/**
++ * qemu_gpio_chip_info:
++ *
++ * @g: a Gpiodev
++ * @nlines: lines number of the GPIO Port will be set
++ * @name: name of the GPIO Port will be set
++ * @label: label of the GPIO Port will be set
++ *
++ * If GpioBackend is NULL, nlines will be set to zero and
++ * both name and label to NULL.
++ */
++void qemu_gpio_chip_info(Gpiodev *g, uint32_t *nlines,
++                         char *name, char *label);
++
++typedef struct gpio_line_info {
++	char name[GPIO_MAX_NAME_SIZE];
++	char consumer[GPIO_MAX_NAME_SIZE];
++	uint32_t offset;
++	uint64_t flags;
++} gpio_line_info;
++
++/**
++ * qemu_gpio_line_info:
++ *
++ * @g: a Gpiodev
++ * @info: info about requested line
++ *
++ * info->offset should be provided see gpio_line_info.
++ */
++void qemu_gpio_line_info(Gpiodev *g, gpio_line_info *info);
++
++/**
++ * qemu_gpio_set_line_value:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ * @value: line value
++ */
++void qemu_gpio_set_line_value(Gpiodev *g, uint32_t offset, uint8_t value);
++
++/**
++ * qemu_gpio_get_line_value:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ *
++ * returns 0 or 1 line status
++ */
++uint8_t qemu_gpio_get_line_value(Gpiodev *g, uint32_t offset);
++
++/**
++ * qemu_gpio_add_event_watch:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ * @flags: event flags
++ *
++ * See QEMUGpioLineEvent.
++ *
++ * Add lines specified by mask and flags to watch, called by GpiodevBackend to subscribe
++ * desired lines and events.
++ */
++void qemu_gpio_add_event_watch(Gpiodev *g, uint32_t offset, uint64_t flags);
++
++/**
++ * qemu_gpio_clear_event_watch:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ * @flags: event flags
++ *
++ * See QEMUGpioLineEvent.
++ *
++ * Remove lines specified by mask and flags from watch, called by GpiodevBackend.
++ */
++void qemu_gpio_clear_event_watch(Gpiodev *g, uint32_t offset, uint64_t flags);
++
++/**
++ * qemu_gpio_add_config_watch:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ *
++ * See QEMUGpioConfigEvent.
++ *
++ * Add lines specified by mask to watch, called by GpiodevBackend to subscribe
++ * about desired lines config change.
++ */
++void qemu_gpio_add_config_watch(Gpiodev *g, uint32_t offset);
++
++/**
++ * qemu_gpio_clear_config_watch:
++ *
++ * @g: a Gpiodev
++ * @mask: lines mask to clear
++ *
++ * See QEMUGpioConfigEvent.
++ *
++ * Remove lines specified by mask from watch, called by GpiodevBackend.
++ */
++void qemu_gpio_clear_config_watch(Gpiodev *g, uint32_t offset);
++
++void qemu_gpio_clear_watches(Gpiodev *g);
++
++
++/**
++ * qemu_gpio_line_event:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ * @event: event
++ *
++ * See QEMUGpioLineEvent.
++ *
++ * Called by GpioBackend to notify Gpiodev about line event, i.e. line set to 0/1.
++ */
++void qemu_gpio_line_event(Gpiodev *gpio, uint32_t offset,
++                          QEMUGpioLineEvent event);
++
++/**
++ * qemu_gpio_config_event:
++ *
++ * @g: a Gpiodev
++ * @offset: line offset
++ * @event: event
++ *
++ * See QEMUGpioConfigEvent.
++ *
++ * Called by GpioBackend to notify Gpiodev about line config event,
++ * i.e. input switched to output.
++ */
++void qemu_gpio_config_event(Gpiodev *g, uint32_t offset,
++                          QEMUGpioConfigEvent event);
+ 
+ Gpiodev *qemu_gpiodev_add(QemuOpts *opts, GMainContext *context,
+                           Error **errp);
+diff --git a/qom/object.c b/qom/object.c
+index 01618d06bd88b0b7049f4b6de9985d4b3c5c1dbc..e0b9095a1148be3c8de05408ef89578c10226c4e 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1730,6 +1730,7 @@ const char *object_property_get_type(Object *obj, const char *name, Error **errp
+ 
+ static const char *const root_containers[] = {
+     "chardevs",
++    "gpiodevs",
+     "objects",
+     "backend"
+ };
 
 -- 
 2.45.2

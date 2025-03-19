@@ -1,61 +1,64 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac314a40eadsm1020530066b.138.2025.03.19.08.57.42
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395c83b6a27sm21877226f8f.31.2025.03.19.11.22.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Mar 2025 08:57:42 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6E8C35F93F;
-	Wed, 19 Mar 2025 15:57:41 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Polzini <laurentpolzin@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
-  millian.poquet@univ-tlse3.fr,  clement.aldebert@univ-tlse3.fr
-Subject: Re: Raspberry Pi 3B energy consumption
-In-Reply-To: <CABsFrshLGcmBEBXCMrOdDv213c1q6GB6pDs4JDLQGKrTzqvkYQ@mail.gmail.com>
-	(Polzini's message of "Wed, 19 Mar 2025 13:38:57 +0100")
-References: <CABsFrshLGcmBEBXCMrOdDv213c1q6GB6pDs4JDLQGKrTzqvkYQ@mail.gmail.com>
-User-Agent: mu4e 1.12.9; emacs 30.1
-Date: Wed, 19 Mar 2025 15:57:41 +0000
-Message-ID: <87ecytm2ru.fsf@draig.linaro.org>
+        Wed, 19 Mar 2025 11:22:56 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 4D41E5F954;
+	Wed, 19 Mar 2025 18:22:55 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Juan Quintela <quintela@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	qemu-ppc@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-s390x@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Yonggang Luo <luoyonggang@gmail.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-arm@nongnu.org,
+	Greg Kurz <groug@kaod.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PATCH 01/10] include/gdbstub: fix include guard in commands.h
+Date: Wed, 19 Mar 2025 18:22:46 +0000
+Message-Id: <20250319182255.3096731-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250319182255.3096731-1-alex.bennee@linaro.org>
+References: <20250319182255.3096731-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 0MVQdnhts6Fl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: fselhLp0GspM
 
-Polzini <laurentpolzin@gmail.com> writes:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/gdbstub/commands.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Dear Sir/Madam, My name is Cl=C3=A9ment Aldebert, and I am a third-year c=
-omputer science student at Paul Sabatier University.
-> Together with my teammate Laurent Polzin, we are working on a project sup=
-ervised by Millian Poquet. Our project focuses on
-> reducing the energy consumption of QEMU=E2=80=99s Raspberry Pi 3B emulati=
-on, as we have observed that power usage is quite high
-> even when the system is idle.
-
-Can you qualify that a bit more? What are you running the emulation on?
-What power usage do you see?
-
-Power consumption of the emulation is really just down to computational
-efficiency of the emulation and if we ever get to a point that QEMU can
-go idle giving the host system a chance to reach a lower power state.
-
-> Ultimately, we also aim to enable emulation on a single CPU core.
-
-If you want to run all emulation on a single core you could use -icount
-to do that. It is less efficient though.
-
-> We are reaching out to
-> inquire if you have any advice, resources, or suggestions for implementin=
-g power management in QEMU, particularly for the
-> Raspberry Pi 3B model. Additionally, we would like to understand any cons=
-traints or best practices regarding adding new
-> code or features to QEMU.
-
-What documentation that exists can be found in the developers section of
-the manual:
-
-  https://qemu.readthedocs.io/en/master/devel/index.html
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/include/gdbstub/commands.h b/include/gdbstub/commands.h
+index 40f0514fe9..bff3674872 100644
+--- a/include/gdbstub/commands.h
++++ b/include/gdbstub/commands.h
+@@ -1,5 +1,5 @@
+ #ifndef GDBSTUB_COMMANDS_H
+-#define GDBSTUB
++#define GDBSTUB_COMMANDS_H
+ 
+ typedef void (*GdbCmdHandler)(GArray *params, void *user_ctx);
+ 
+-- 
+2.39.5

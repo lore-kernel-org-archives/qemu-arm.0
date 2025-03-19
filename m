@@ -1,223 +1,394 @@
-Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp203104njc;
-        Wed, 19 Mar 2025 05:39:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUyphe51lzuA0O0sA0CivCjdoYiRZx+gSDTHQmUiX1WnaUpYEoGUWv2C/izMtTMwl2N3M2b5EoabIKZFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFH+t5p119t8ZWb5eMm1ow2StU/tMVb7UWPwb2378vk5E7qimM4f0hnAtTe8iSwdNxKFSP3
-X-Received: by 2002:a05:622a:4aca:b0:476:a655:c4a2 with SMTP id d75a77b69052e-47708314ae5mr39356101cf.22.1742387999487;
-        Wed, 19 Mar 2025 05:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742387999; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp208338njc;
+        Wed, 19 Mar 2025 05:49:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXSrYbLme+0utHhqek65dhPX9c/EnuGgnmQg6SWML1NEM9hEHK8Aq4nvh5zHnvGBOds4pK1HqsJvrZpAQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEUcMiWJUQYGHXl+WP0RdPS0XfJNkXimxVdDwwybH9Ao4ZMhnI+YNJsA839IiyN0pOuKu60
+X-Received: by 2002:a05:620a:4614:b0:7c5:4949:23f1 with SMTP id af79cd13be357-7c5a8461dedmr326453585a.40.1742388582775;
+        Wed, 19 Mar 2025 05:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742388582; cv=none;
         d=google.com; s=arc-20240605;
-        b=FvNOCsQQhpDqlvAoSuA6MjT+TD2xEIHwAVpvRBeEWQsXahLGAQV0+/EdrfM2bT+d8g
-         ibGPRwQpIenb7iHByGzppoWu2iuOSijxGsLXiNj2rgHARo/QX0773jqYYOU6qhcZH8g3
-         EeuSN1PKqJPRBPsiOVdFIOxuhKMtrhdUnopCC1VpQ8bigpEmjuyw3b/suGyS+ng2os/t
-         s5PU70YUkkj5IVS5UcYxHaSRoWtRrlvMHqIav2WrHnq/WOwdc5z2XO4x822p4BZ35ds9
-         nzoYZaTtMfhrQUokjpvQozzGResxnIlfPL+uSlFvxACcV9yHgoAxd3OfyV35zCJP04on
-         UnkA==
+        b=BPy5GGzYcItjB8CEUlSjyKRIAQyvBdT88nBpIubSZ92iNxPPZm58adM39Wj0O0aMn+
+         OuN3u6XSsrM96vEUcm7krZtf7ccvhpUbKopwhJE+U9w+Dg0CTYfMMvznRC/Q2joGDm2d
+         AYdvLvcctNClLk8Pz2gonTeWf+Op5ohkPrw7nYM6FBWjGTS7C7YmJ4XZTysZ1L4gMaiu
+         oDDQAdPRE/JnOZmzS+TBFTUzI3LEPHU3pxRzh4wkLkgt/qRzmVpEhG7c9lpP9YRaGvub
+         dx6CqDrjcoD1C+y+DqFKlctd5acXUryLpH57GusIvtMAn0gIkSMo9egUrYPHnwSc8mEC
+         Ltqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:mime-version:dkim-signature;
-        bh=1hdHuEysa/ThZp9HRBSxmqxasm/eBKourHd3B88oVC8=;
-        fh=GNAhGTXbdDSIpAP5iBg834sFmSghNyQM61beY+2GX6s=;
-        b=Rc3Bprt272ls3WLr67LFu0waJeu7xvEQtOPv2Kf63CbD+FgR3ABZv+aZjrGIDFqq+c
-         TmX4WNod1AGtH5hN3OZBGBtD//GwD1hsTPjb2X/OxR770g03DVs4IdwPF9FEXra4lgxM
-         dM+a9IpkQZC1zDyLeT1v6CAJWdI72WgyufTcXYqZt/r0ucMfx9dMpeFjcSCGCktj5PN5
-         uGx4iuhJoMVYTUA29mbvmDjd/gPBL0CL5xEe1yANiIsZyQkeIiRbgiXzY+oH+sGvpUui
-         RW00xZjy66F2+ToSKXbXFW0p8tOYjLIEvEL0Cu7/jnPCKnwW4wBnLPebhyLco4Vp4eLI
-         DzCA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:cc:to:in-reply-to
+         :references:message-id:content-transfer-encoding:mime-version
+         :subject:date:from:dkim-signature;
+        bh=IZ+48d2orLFzO9JlR3aBhvRp8i2Wff1k+rqPsGV2ubQ=;
+        fh=53Xc37c+ZxayqL7YVOBgqKytqQgQp8Q0bl7IHoyyIrs=;
+        b=DspmlFbrwnWKuGhvrZYiU/rO/9U//0f/1ajnsBQ2oOYBbTBuYRF3cKyIUIl2M9Tq33
+         oy1b4U8hQSuiJigp5QUfWYlyMn226p+s5Z84tCnj2bX18LViFD+kkeJhi+Kha+CZz+Ho
+         XaNatOniqGOViSIVYEtuYQaIeZ2bsBo3LJVq4clwv/H9EnuV587W2eh6mDlsbfLdwwdS
+         jQuOb63bvblKCzJOfNEhUoExs2yCZYY0kYl1X9701l2y9zvr7rDVLdTdRfcb7e50XdAs
+         /c0esyAntSEjNnfqpVczCzpzjPG5+/yusmgBQzSLn8FHXkBA2rDs50KQHsisJjJ22yK9
+         PrYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Fcrys/fO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ASjpQQU8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-476bb61adf0si134950941cf.99.2025.03.19.05.39.59
+        by mx.google.com with ESMTPS id af79cd13be357-7c573caa532si1457632785a.316.2025.03.19.05.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Mar 2025 05:39:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Mar 2025 05:49:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Fcrys/fO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ASjpQQU8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tushw-0002Wa-PL; Wed, 19 Mar 2025 08:39:40 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tusrc-0000Ep-9S; Wed, 19 Mar 2025 08:49:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurentpolzin@gmail.com>)
- id 1tushX-0002DL-SC; Wed, 19 Mar 2025 08:39:17 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <laurentpolzin@gmail.com>)
- id 1tushV-00016A-3A; Wed, 19 Mar 2025 08:39:15 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-6f74b78df93so69081177b3.0; 
- Wed, 19 Mar 2025 05:39:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742387948; x=1742992748; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=1hdHuEysa/ThZp9HRBSxmqxasm/eBKourHd3B88oVC8=;
- b=Fcrys/fOtHnbkaz1oNdLcj50ygA7Ey2G5NjCw6bQ1Qq7oaPtNEZ8z6luoxR6i0or+P
- S4BzAiou9oEKiDljZPRFec0u8U049U2QlPkXTlKRLx20vsumIxNBA7GqwSqM28PLKdc4
- O9Bwcg07p+8sXzEKOfPJf22+ZwgCU2HTznfRF1hWi76CqZgWn5kPlUh1GmU/PYIsUoUM
- OqbtvRxk5tayPhraO0+/jgzOUptvqfZiw1IkCRkVIglLw2FwMejfIRe2VTW2TFtcZvoH
- SMhdrjNjmoO4ueS41tSOsRGXlbawskHSa7F78/erUIwx1q6bWp4AA8gSmK0CpjcwF70i
- t6RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742387948; x=1742992748;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1hdHuEysa/ThZp9HRBSxmqxasm/eBKourHd3B88oVC8=;
- b=evpa4q0LWar6rZtFFt0e2TPR7rkN9lCKgfTzTqOcOaYOJm/gbHpofmoOKbETlbJChG
- lF7wJjomMb/Pm4D8ghYcoUoPqjVCtDiRcUp+HuzraOKa/u57a9eRkvShCb66JkoQ3DAv
- f0gVnMYSxAOIOIWrGxchhmnB+5o+wEerfLx1iz6ru/bPXprFiF1UYzWHzsGPTlxALfCm
- vxVk2Nq/qXqpZoV5BVOfYOsVINVCmpEYhXKdW1hlsPSdEfNJmIo75yEOJV1MMNjpmgQS
- 5T6WI380iPqDkBseWpMmbap3i1AFiavj8FJ88GcDVAKJQu6kC9F0BqlVB9zTugqxe9D3
- 0pqg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUES7sIlv1kMDmiJsOeaIOO3U/hg7TLiQdERajr1qWBoPoLh7HkNMUhdz/qzWjcMMGx0Mv8XrqZlA==@nongnu.org
-X-Gm-Message-State: AOJu0YyAz9mUphxGGj+8jJMcAoIeUAHWgo49OmrLYAj12e0lvgXHwMD5
- QuN6r8u9KS2RALsd/sWK7dH5TdH7wRYKA419LiQ+khg3Zydov8Bj84JMlV2KpSzvIt3IqqvQhkE
- DcEop0nKQGAFuGvHlftdTPRf0fzJrJIb35zU=
-X-Gm-Gg: ASbGncvqw2ZoUJC/AkeTJK42M7X8aaRLUkHKEcTG0ha129pptdpZoObzthM0BD7wiiG
- hMNMk4dJnLdFPoTqJVJScBQ7U9neP2LhPxWuMJDdF7TwoXMrtek5tingtNicuTWw6q05cuCDsDU
- 76uXWEvaTVSOJVkA0eCTlih+Swc9FuEnFNQN9JKiIGe7iyXpqjwjGzCoVk3Q==
-X-Received: by 2002:a05:690c:3506:b0:6f7:409c:f659 with SMTP id
- 00721157ae682-7009bf49986mr31374927b3.8.1742387948250; Wed, 19 Mar 2025
- 05:39:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <devnull+n.shubin.yadro.com@kernel.org>)
+ id 1tuoJT-0006G2-Sb; Wed, 19 Mar 2025 03:58:08 -0400
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <devnull+n.shubin.yadro.com@kernel.org>)
+ id 1tuoJQ-0003df-Bw; Wed, 19 Mar 2025 03:58:07 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id C2486A48FE1;
+ Wed, 19 Mar 2025 07:52:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id CBBA9C4CEF6;
+ Wed, 19 Mar 2025 07:57:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1742371074;
+ bh=/FXbuVk2kxneP1NDtfBB0y/MWnfDsP3dDD2KxydWs9E=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+ b=ASjpQQU8NZQ54aoHigkVzhqQwLHZzgh5/W9Yfa+9+Pd+jpmKqUW0D7TD6BlQY+7BN
+ u2wPdVNOmB3KeYdiqS//dY9qDN7rL/ZyX3WWL0XZSI1lM+yJmP2hVlogV2NZL2otKG
+ uM9WtyyeHRcO6hVsT7YMjWHtRrBb/rseT4075OKfEub9LtMKi88sGIstZmG621PZDr
+ M6+aHuEoFYZR5JEywwiFaejmVIat87fBasovE7sDFKDDJUFQGmd3KHQtQBKKZOU8Wo
+ pwn+kWc5Gnzrh39f4C9CkiCxejfWRc15IRlM5jPKXBIZC2C/AT5IUU6qnAxp8oBqWA
+ ePLfzV7W28zgg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by smtp.lore.kernel.org (Postfix) with ESMTP id BC5E4C35FFA;
+ Wed, 19 Mar 2025 07:57:54 +0000 (UTC)
+From: Nikita Shubin via B4 Relay <devnull+n.shubin.yadro.com@kernel.org>
+Date: Wed, 19 Mar 2025 10:57:55 +0300
+Subject: [PATCH PoC 5/7] hw/gpio/aspeed: Add gpiodev support
 MIME-Version: 1.0
-From: Polzini <laurentpolzin@gmail.com>
-Date: Wed, 19 Mar 2025 13:38:57 +0100
-X-Gm-Features: AQ5f1JrKM54V0SlGObVSjg6150EabVBxrPX8RMH6i_Xaw9Zs9_30rbF1BT8yXgg
-Message-ID: <CABsFrshLGcmBEBXCMrOdDv213c1q6GB6pDs4JDLQGKrTzqvkYQ@mail.gmail.com>
-Subject: Raspberry Pi 3B energy consumption
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: millian.poquet@univ-tlse3.fr, clement.aldebert@univ-tlse3.fr
-Content-Type: multipart/alternative; boundary="000000000000b774040630b14e53"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=laurentpolzin@gmail.com; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DEAR_SOMETHING=1.973,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250319-gpiodev-v1-5-76da4e5800a1@yadro.com>
+References: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
+In-Reply-To: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
+To: qemu-devel@nongnu.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, 
+ "Enrico Weigelt, metux IT consult" <info@metux.net>, 
+ Viresh Kumar <vireshk@kernel.org>, Eric Blake <eblake@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org, Nikita Shubin <nikita.shubin@maquefel.me>, 
+ Nikita Shubin <n.shubin@yadro.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1742371072; l=9057;
+ i=n.shubin@yadro.com; s=20230718; h=from:subject:message-id;
+ bh=LCxwVdVyHaytyw7TlHjgwh2ubyN+clkLCBd91HD+W6s=;
+ b=QY/eH0K/w+TXRSupwDbLRlk8MNe53AnT+V9sWX4EEshbkn/JpR8nRJRRsJ7onmtw1mKnV0NPj
+ /slWcVxjxBNDDCSgSIZCjkWz8kTwTdGE+mMjMqeXGuDuqvQhaTvi5lp
+X-Developer-Key: i=n.shubin@yadro.com; a=ed25519;
+ pk=vqf5YIUJ7BJv3EJFaNNxWZgGuMgDH6rwufTLflwU9ac=
+X-Endpoint-Received: by B4 Relay for n.shubin@yadro.com/20230718 with
+ auth_id=161
+X-Original-From: Nikita Shubin <n.shubin@yadro.com>
+Received-SPF: pass client-ip=2604:1380:45d1:ec00::3;
+ envelope-from=devnull+n.shubin.yadro.com@kernel.org;
+ helo=nyc.source.kernel.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Wed, 19 Mar 2025 08:48:13 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 82YmGFi/QgdM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: n.shubin@yadro.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6YDjAlhb1/1u
 
---000000000000b774040630b14e53
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Nikita Shubin <n.shubin@yadro.com>
 
-Dear Sir/Madam, My name is Cl=C3=A9ment Aldebert, and I am a third-year com=
-puter
-science student at Paul Sabatier University. Together with my teammate Laur=
-ent
-Polzin, we are working on a project supervised by Millian Poquet. Our
-project focuses on reducing the energy consumption of QEMU=E2=80=99s Raspbe=
-rry Pi
-3B emulation, as we have observed that power usage is quite high even when
-the system is idle. Ultimately, we also aim to enable emulation on a single
-CPU core. We are reaching out to inquire if you have any advice, resources,
-or suggestions for implementing power management in QEMU, particularly for
-the Raspberry Pi 3B model. Additionally, we would like to understand any
-constraints or best practices regarding adding new code or features to
-QEMU. We appreciate your time and any assistance you can provide. Best
-regards, Cl=C3=A9ment Aldebert & Laurent Polzin.
+Add gpiodev support for:
 
---000000000000b774040630b14e53
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+- getting line info
+- getting/setting lines
+- monitoring line events
+- monitoting config events
 
-<div dir=3D"ltr"><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto =
-Sans&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:=
-16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:norm=
-al;font-weight:400;letter-spacing:normal;text-align:left;text-indent:0px;te=
-xt-transform:none;word-spacing:0px;white-space:break-spaces;text-decoration=
--style:initial;text-decoration-color:initial;display:inline;float:none">Dea=
-r Sir/Madam,
+Binding is done via id, i.e.:
 
-My name is </span><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto=
- Sans&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size=
-:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:nor=
-mal;font-weight:400;letter-spacing:normal;text-align:left;text-indent:0px;t=
-ext-transform:none;word-spacing:0px;white-space:break-spaces;text-decoratio=
-n-style:initial;text-decoration-color:initial;display:inline;float:none"></=
-span><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans&quot;,&=
-quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px;font-st=
-yle:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weig=
-ht:400;letter-spacing:normal;text-align:left;text-indent:0px;text-transform=
-:none;word-spacing:0px;white-space:break-spaces;text-decoration-style:initi=
-al;text-decoration-color:initial;display:inline;float:none">Cl=C3=A9ment Al=
-debert</span><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans=
-&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px=
-;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;f=
-ont-weight:400;letter-spacing:normal;text-align:left;text-indent:0px;text-t=
-ransform:none;word-spacing:0px;white-space:break-spaces;text-decoration-sty=
-le:initial;text-decoration-color:initial;display:inline;float:none"></span>=
-<span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans&quot;,&quot;=
-Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px;font-style:n=
-ormal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:40=
-0;letter-spacing:normal;text-align:left;text-indent:0px;text-transform:none=
-;word-spacing:0px;white-space:break-spaces;text-decoration-style:initial;te=
-xt-decoration-color:initial;display:inline;float:none">, and I am a third-y=
-ear computer science student at Paul Sabatier University. Together with my =
-teammate </span><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto S=
-ans&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:1=
-6px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:norma=
-l;font-weight:400;letter-spacing:normal;text-align:left;text-indent:0px;tex=
-t-transform:none;word-spacing:0px;white-space:break-spaces;text-decoration-=
-style:initial;text-decoration-color:initial;display:inline;float:none"></sp=
-an><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans&quot;,&qu=
-ot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px;font-styl=
-e:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight=
-:400;letter-spacing:normal;text-align:left;text-indent:0px;text-transform:n=
-one;word-spacing:0px;white-space:break-spaces;text-decoration-style:initial=
-;text-decoration-color:initial;display:inline;float:none">Laurent Polzin</s=
-pan><span style=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans&quot;,&q=
-uot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px;font-sty=
-le:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weigh=
-t:400;letter-spacing:normal;text-align:left;text-indent:0px;text-transform:=
-none;word-spacing:0px;white-space:break-spaces;text-decoration-style:initia=
-l;text-decoration-color:initial;display:inline;float:none"></span><span sty=
-le=3D"font-family:&quot;gg sans&quot;,&quot;Noto Sans&quot;,&quot;Helvetica=
- Neue&quot;,Helvetica,Arial,sans-serif;font-size:16px;font-style:normal;fon=
-t-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-=
-spacing:normal;text-align:left;text-indent:0px;text-transform:none;word-spa=
-cing:0px;white-space:break-spaces;text-decoration-style:initial;text-decora=
-tion-color:initial;display:inline;float:none">, we are working on a project=
- supervised by Millian Poquet. Our project focuses on reducing the energy c=
-onsumption of QEMU=E2=80=99s Raspberry Pi 3B emulation, as we have observed=
- that power usage is quite high even when the system is idle. Ultimately, w=
-e also aim to enable emulation on a single CPU core.
+... -gpiodev chardev,id=aspeed-gpio0
 
-We are reaching out to inquire if you have any advice, resources, or sugges=
-tions for implementing power management in QEMU, particularly for the Raspb=
-erry Pi 3B model. Additionally, we would like to understand any constraints=
- or best practices regarding adding new code or features to QEMU.
+Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
+---
+ hw/gpio/aspeed_gpio.c         | 127 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/gpio/aspeed_gpio.h |   3 +
+ 2 files changed, 130 insertions(+)
 
-We appreciate your time and any assistance you can provide.
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index a5b3f454e800dc9440600562b6295b069cb536fb..0c8b27c9a0cbef313254405dde3f1e1910f9bf57 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -291,6 +291,8 @@ static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
+     return 0;
+ }
+ 
++static void aspeed_gpio_line_event(AspeedGPIOState *s, uint32_t set_idx, uint32_t pin_idx);
++
+ #define nested_struct_index(ta, pa, m, tb, pb) \
+         (pb - ((tb *)(((char *)pa) + offsetof(ta, m))))
+ 
+@@ -337,6 +339,9 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
+                 /* ...trigger the line-state IRQ */
+                 ptrdiff_t set = aspeed_gpio_set_idx(s, regs);
+                 qemu_set_irq(s->gpios[set][gpio], !!(new & mask));
++
++                /* ...notify gpio backend if any */
++                aspeed_gpio_line_event(s, set, gpio);
+             } else {
+                 /* ...otherwise if we meet the line's current IRQ policy... */
+                 if (aspeed_evaluate_irq(regs, old & mask, gpio)) {
+@@ -360,6 +365,18 @@ static bool aspeed_gpio_get_pin_level(AspeedGPIOState *s, uint32_t set_idx,
+     return !!(reg_val & pin_mask);
+ }
+ 
++static void aspeed_gpio_line_event(AspeedGPIOState *s, uint32_t set_idx, uint32_t pin_idx)
++{
++    uint32_t offset = set_idx * ASPEED_GPIOS_PER_SET + pin_idx;
++    QEMUGpioLineEvent event = GPIO_EVENT_FALLING_EDGE;
++
++    if (aspeed_gpio_get_pin_level(s, set_idx, pin_idx)) {
++        event = GPIO_EVENT_RISING_EDGE;
++    }
++
++    qemu_gpio_fe_line_event(&s->gpiodev, offset, event);
++}
++
+ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
+                                       uint32_t pin, bool level)
+ {
+@@ -659,6 +676,13 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
+     return value;
+ }
+ 
++static void aspeed_gpio_config_event(AspeedGPIOState *s, uint32_t set_idx, uint32_t pin_idx)
++{
++    uint32_t offset = set_idx * ASPEED_GPIOS_PER_SET + pin_idx;
++
++    qemu_gpio_fe_config_event(&s->gpiodev, offset, GPIO_LINE_CHANGED_CONFIG);
++}
++
+ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+                                                 uint64_t data, uint32_t size)
+ {
+@@ -674,6 +698,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+     uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
+     uint32_t reg_value = 0;
+     uint32_t pending = 0;
++    uint32_t old_direction;
+ 
+     set = &s->sets[set_idx];
+     props = &agc->props[set_idx];
+@@ -711,8 +736,12 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+          *  data = ( data | ~input) & output;
+          */
+         reg_value = (reg_value | ~props->input) & props->output;
++        old_direction = set->direction;
+         set->direction = update_value_control_source(set, set->direction,
+                                                      reg_value);
++        if (set->direction != old_direction) {
++            aspeed_gpio_config_event(s, set_idx, pin_idx);
++        }
+         break;
+     case gpio_reg_idx_interrupt:
+         reg_value = set->int_enable;
+@@ -813,6 +842,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+     const AspeedGPIOReg *reg;
+     GPIOSets *set;
+     uint32_t cleared;
++    uint32_t old_direction;
+ 
+     trace_aspeed_gpio_write(offset, data);
+ 
+@@ -867,7 +897,17 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+          *  data = ( data | ~input) & output;
+          */
+         data = (data | ~props->input) & props->output;
++        old_direction = set->direction;
+         set->direction = update_value_control_source(set, set->direction, data);
++        qemu_log("gpio_reg_direction: 0x%x 0x%x\n", set->direction, old_direction);
++        if (set->direction != old_direction) {
++            unsigned long changed = set->direction ^ old_direction;
++            int idx = find_first_bit(&changed, ASPEED_GPIOS_PER_SET);
++            while (idx < ASPEED_GPIOS_PER_SET) {
++                aspeed_gpio_config_event(s, reg->set_idx, idx);
++                idx = find_next_bit(&changed, ASPEED_GPIOS_PER_SET, idx + 1);
++            }
++        }
+         break;
+     case gpio_reg_int_enable:
+         set->int_enable = update_value_control_source(set, set->int_enable,
+@@ -1392,11 +1432,85 @@ static void aspeed_gpio_reset(DeviceState *dev)
+     memset(s->sets, 0, sizeof(s->sets));
+ }
+ 
++static void aspeed_gpio_line_info(void *opaque, gpio_line_info *info)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    uint32_t group_idx = 0, pin_idx = 0, idx = 0;
++    uint32_t offset = info->offset;
++    const GPIOSetProperties *props;
++    bool direction;
++    const char *group;
++    int i, set_idx, grp_idx, pin;
++
++    for (i = 0; i < ASPEED_GPIO_MAX_NR_SETS; i++) {
++        props = &agc->props[i];
++        uint32_t skip = ~(props->input | props->output);
++        for (int j = 0; j < ASPEED_GPIOS_PER_SET; j++) {
++            if (skip >> j & 1) {
++                continue;
++            }
++
++            group_idx = j / GPIOS_PER_GROUP;
++            pin_idx = j % GPIOS_PER_GROUP;
++            if (idx == offset) {
++                goto found;
++            }
++
++            idx++;
++        }
++    }
++
++    return;
++
++found:
++    group = &props->group_label[group_idx][0];
++    set_idx = get_set_idx(s, group, &grp_idx);
++    snprintf(info->name, sizeof(info->name), "gpio%s%d", group, pin_idx);
++    pin =  pin_idx + group_idx * GPIOS_PER_GROUP;
++    direction = !!(s->sets[set_idx].direction & BIT_ULL(pin));
++
++    if (direction) {
++        info->flags |= GPIO_LINE_FLAG_OUTPUT;
++    } else {
++        info->flags |= GPIO_LINE_FLAG_INPUT;
++    }
++
++    qemu_log("%u: %s: set_idx=%d, grp_idx=%d, group_idx=%u, pin_idx=%u\n", offset, info->name, set_idx, grp_idx, group_idx, pin_idx);
++}
++
++static int aspeed_gpio_get_line(void *opaque, uint32_t offset)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    int set_idx, pin_idx;
++
++    set_idx = offset / ASPEED_GPIOS_PER_SET;
++    pin_idx = offset % ASPEED_GPIOS_PER_SET;
++
++    return aspeed_gpio_get_pin_level(s, set_idx, pin_idx);
++}
++
++static int aspeed_gpio_set_line(void *opaque, uint32_t offset, uint8_t value)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    int set_idx, pin_idx;
++
++    set_idx = offset / ASPEED_GPIOS_PER_SET;
++    pin_idx = offset % ASPEED_GPIOS_PER_SET;
++
++    aspeed_gpio_set_pin_level(s, set_idx, pin_idx, value);
++
++    return 0;
++}
++
+ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedGPIOState *s = ASPEED_GPIO(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    DeviceState *d = DEVICE(s);
++    Object *backend;
++    Gpiodev *gpio;
+ 
+     /* Interrupt parent line */
+     sysbus_init_irq(sbd, &s->irq);
+@@ -1417,6 +1531,19 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
+                           TYPE_ASPEED_GPIO, agc->mem_size);
+ 
+     sysbus_init_mmio(sbd, &s->iomem);
++
++    /* NOTE: or we can create one per set */
++    if (d->id) {
++        backend = object_resolve_path_type(d->id, TYPE_GPIODEV, NULL);
++        if (backend) {
++            gpio = GPIODEV(backend);
++            qemu_gpio_fe_init(&s->gpiodev, gpio, agc->nr_gpio_pins, d->id,
++                              "ASPEED GPIO", NULL);
++            qemu_gpio_fe_set_handlers(&s->gpiodev, aspeed_gpio_line_info,
++                                      aspeed_gpio_get_line,
++                                      aspeed_gpio_set_line, s);
++        }
++    }
+ }
+ 
+ static void aspeed_gpio_init(Object *obj)
+diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
+index e1e6c543339ef9ddff99124d7a267e9c8544c556..f0a1207b24421f4129182fbcbb88650604313a6c 100644
+--- a/include/hw/gpio/aspeed_gpio.h
++++ b/include/hw/gpio/aspeed_gpio.h
+@@ -12,6 +12,8 @@
+ 
+ #include "hw/sysbus.h"
+ #include "qom/object.h"
++#include "gpiodev/gpio.h"
++#include "gpiodev/gpio-fe.h"
+ 
+ #define TYPE_ASPEED_GPIO "aspeed.gpio"
+ OBJECT_DECLARE_TYPE(AspeedGPIOState, AspeedGPIOClass, ASPEED_GPIO)
+@@ -85,6 +87,7 @@ struct AspeedGPIOState {
+     SysBusDevice parent;
+ 
+     /*< public >*/
++    GpioBackend gpiodev;
+     MemoryRegion iomem;
+     int pending;
+     qemu_irq irq;
 
-Best regards,
-Cl=C3=A9ment Aldebert &amp; Laurent Polzin.</span></div>
+-- 
+2.45.2
 
---000000000000b774040630b14e53--
+

@@ -1,98 +1,96 @@
-Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp756773njc;
-        Thu, 20 Mar 2025 00:24:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXt1FhbSWwnEgu0LQVo5T5VGRElpI9d0ABEFmiJM7w6Xf7nfWtH4pjW2ZXBth+8UHBnvQGfLQdWhh/1UQ==@linaro.org
-X-Received: by 2002:a5d:648b:0:b0:38b:d7d2:12f6 with SMTP id ffacd0b85a97d-399795a5082mr1801847f8f.2.1742455495635;
-        Thu, 20 Mar 2025 00:24:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742455495; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp758818njc;
+        Thu, 20 Mar 2025 00:30:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzpt24S3a9l0G2xeGc7rQAYJjjYxN4LyIH5j5vVJ69lxKED9mFJQznoCHEMvAcpZQmma7UnL8G5iTU/A==@linaro.org
+X-Received: by 2002:a05:600c:ccd:b0:43c:fcbc:9686 with SMTP id 5b1f17b1804b1-43d437802b1mr47235855e9.1.1742455856962;
+        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742455856; cv=none;
         d=google.com; s=arc-20240605;
-        b=bVw4+GvavK8s1g/nHt6/7uXHkPhfMoPl9jAufBBSVa7NOGTia8qEuzN41+HLP1CULM
-         8VwlC7dKGMK8op4fmCGsQyW6uPzGXF+2tMH1iJ3zb+IbdUKllT55vCH6UmXPB28nrokA
-         ISLWux2Bxr+rFG+7UYNE90oOKQqwpqQjWRTcwjSZG7Xq9RrRmul5umydwCWkJAROfSJd
-         4MRJP/HicA6BbmvfxJF5zenuD0tVTEv4LoSE21aOE6xckT02AhpnM4aY7dfSlegi9At6
-         G8p/nqcqDBdeGcNj3r4XyCiwLnkcJ2Q4gi+D37JjLoy/BWpZsK2RlPpm55+g4d83js6d
-         bSjA==
+        b=AfQoeB3ipupRB6ojuYeWMHGCso/8cWMo5USDfQ4tW246waEbiQNPDbsQ2A7b0XjjHM
+         aqg7qTTPT6Hb053+L0KYRCzYvlha9LexvFWg+lejH4lsYR2NVI/Z+safociub4OCkWfa
+         b7r1hAIY0ZRRwADtSMUcziWOaLH8vh3e+69GVOg+XU1fsUGeJZ0123XnllZm8EohivPv
+         Qoestt+EMbVOzfkDkFpVf+E69Sj/8MzDqRNO45d17v/x4SFnGywAzw/kBPYwGemWQnEq
+         /QeiLIcLLcCBXczc/Y7JKsGK+UNNTwLBCRGfTyrbN/KH+T/1zHcnNKhX+m4xdMfrlI+L
+         WCMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=OfAuJYtA3gt8CE28/QLl0zbRSj4IcfSgyPCV7JDaP3o=;
-        fh=G1+JUPCB8PTeRvLlpYQU208XAb9clVnOg72fa6GQpdA=;
-        b=F3yqEEBhXLHvutuBSxEZq5tupS7pFUnrEz2/0I2CSlSaDlXmFXT7pTLUOpc3VO9qmX
-         yoM48hMMvf5QYMKTzMnP9KA3aba1sVt5bH8F/xNFS8UhS3OyfU4tcFgNiQVRGUJatMFS
-         TCpRYhQhKJMHB8n+fdy5w7U2fzFTrJfLUsmXeQUJWnfdMNijjcQWSzng6Jos90eCmsJU
-         XzI3yZGaAFHqZqH5KrnHtjSi8KzE5ENT0ck2aQq/QmNAKBVomhfGTyo9dzHmN/WaQX+4
-         9CQq348M/kwWI61ah7GhMopJ2Tvn4qUB51P+MkwWbflAnuJV+kjB67C27e/VgQKafHFB
-         BAsw==;
+        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
+        fh=hIXiofhfqpavH6Tsd1hvZCFRY7wLrR/+K7am+dbLznQ=;
+        b=SkcwdblU3pQBzKKWtaBzkSgPCi/bcDlukNXnLRrqB5Ehem6JXWh+AZguVvjVWzmV2a
+         WZpzpfDyHNb6jSXxHT4V32RtBwGn0oskWk9DdX84tkpmOSLEkS1twSIRqJF8h+GU7yku
+         6U8oe4YRi9yO25uciE+MZwVaBbZ8mqNS8RB7tOtskLpZtKAt2NiRLyS8O5U1Zy4pdId8
+         B1G4O5b6lQtocBDWNv2NgFNO1X18SZGIAAnft8E6VuWHgBAwEQbe0yo71nOCd4kYoqoh
+         kBLhWsOf9siVyxDDCyN6sX0Y8+bOZUIRhu3dk2hRpzCgkXon/1dRMOI5rHyNnWGc4k+S
+         6Jmg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rsxr8CLD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G8G0D3CL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-395ca1b849asor6034194f8f.5.2025.03.20.00.24.55
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43d1ff84815sor43649895e9.5.2025.03.20.00.30.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 20 Mar 2025 00:24:55 -0700 (PDT)
+        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rsxr8CLD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G8G0D3CL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742455495; x=1743060295; darn=linaro.org;
+        d=linaro.org; s=google; t=1742455856; x=1743060656; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=OfAuJYtA3gt8CE28/QLl0zbRSj4IcfSgyPCV7JDaP3o=;
-        b=Rsxr8CLD9bmFGn+T95gIDbe3dj4EDb+04iFBxBLCeQpg8E1nS+hjv7gZOxJodBYHbS
-         69nxwmmk6neBYFdxuqfjP2sD3R8Pl0ctj66Vesy+0u14kQmA0ri71dYra3Rf0hk3uVv+
-         xKLkgqduPXmqYYu1IbKtAUCC1msXM7Z48O2EAcMrJU3spYRRXQJiGJC/X6IkURro5XgD
-         5C/MgMCIsvgHqrf5wkCvNVL+yKZkv9YKv3Hpies/gn27qFhX7zuHfXwB6nD1a4Zgiqx9
-         fCFZa42PZjQSMf82qPMkkjpRz/Ff1insF+QqlC+HL5+h8pKv9uX7TEU/UaBKMNUnFXed
-         9Q1w==
+        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
+        b=G8G0D3CLcnfQcvX4VRxutd9RXZ4xf5k0PWZ5HzHQjjddELNEK0gn6K52yM7EfqUpLt
+         kBaAdmwOY0lUpIfywM0jyjq4YnUhfVZ4YE6DQT12ELDNo8RvkBmAgkFXdXaJQJH7/qnI
+         hZp0R6Wcok1WQvH6+fdVy6AVc8S3z4qa/mbhRjSJ1M8265Mn42ToWEUBhsbjIiiPVsZ1
+         q+uhJHn+iRcIGCM777dXZwqMGq4a+lUBuTAUflLVSl9HwYrFB71C4mRsx/VQd/1x2crB
+         iC5eIWQ8H6fCKejmqWFPrwg3XttDeugScd9cfO1Q4UG7pXKfRrSF7lGSO7mGhtJZ6r3B
+         pCtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742455495; x=1743060295;
+        d=1e100.net; s=20230601; t=1742455856; x=1743060656;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OfAuJYtA3gt8CE28/QLl0zbRSj4IcfSgyPCV7JDaP3o=;
-        b=ZVfuntrfqw0UkWlrWp5lec8pwZz/KV+/IAwbcbkrR6U9754/lkKdzKI/WMpwtljvhI
-         dTWPqZSG7PXm1TzFpGcWpPZ6UPjEkfmqcmhrbAx8iMjmBv47lIinTsyFl9xmoWwqzbCK
-         T1sOBGZ3El1HorjGV3kP2biOFYU0JreKyDsCZM+mfolvkgWwdGRYJBWIhOIxaVUWRXfg
-         eiNTRzqUxHivuLIASZuZZKi2Y8Gf4s3w9/gUha6HBQX2gheUBHNKacgjpCrsXJTaeMwG
-         U0rZJZ6+iYOTi42FkLtQx3VMrSYc+sRIkC2mt/VzZ06VjxVtIHfK7PHtcHSwnwXTdi6w
-         xpdg==
-X-Forwarded-Encrypted: i=1; AJvYcCW06GHf7NAzRyrMHSgAWn0YXEv/Vv/Ui6mAoz058N+BXOPt32lmpkMtr0My3hTNTb8kME6wyDCBdxGxaA==@linaro.org
-X-Gm-Message-State: AOJu0YyaOO9GRGfI0gJ1STFo0qzGHhAvhlmuhvApueFLQXS3YMus8eZA
-	V94sMJ4TfVPrKpoDrACxx0asKP+fMFa+2wukoa74/gK76XxWG1bCJgzzpnIlesdnZ/Dqa+7UY8B
-	N9Y4=
-X-Gm-Gg: ASbGncuE4/gQNGowZgqwFIcwMbun2KRUouxzfaFJiUflt1bB3lPASka3HQjzDtd/5Rw
-	g1hRf+lJvCCzzFjmoFMO2vPqOiVCYDugHE+DTPWk+iqTBvkI/YrPeiF/H4hIAVkqVAWoDwrBiyA
-	FICfTIHds/TItMMwRNcRCDGoOHrjBCeAhGSqi4026Bpq6IDOBgr3mOCA7uGWa5ukWoEzNcUZOri
-	E5R8gEOYs/j1/BgkRLYqkTn5b7W6ta7iZBMZa92CRaD6rS66AqWRRvfAYq7+sqgLu4GIKc5soU7
-	z/HJhQrivoCwgFFMnZxuPjBS4cbIfZ40q61ukQxcX7qByYSeZl2/6kaG6OsstZEiLmIEL89Skl5
-	CN26ZPZ8i7WWX
-X-Google-Smtp-Source: AGHT+IGllMEfpF+aiZg+sVrY/WHZ+kuxHj2Mg5kkRDq2lm97gIt7Jbowg3G27DoK9OUMMT0oIuc1xA==
-X-Received: by 2002:a5d:47c9:0:b0:391:3f4f:a17f with SMTP id ffacd0b85a97d-399795d8a4cmr1817785f8f.42.1742455494923;
-        Thu, 20 Mar 2025 00:24:54 -0700 (PDT)
+        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
+        b=hNrJP5oR3gtgmiXJ1CmrkYXEVQ8mDYSmJZFKsEhd2bDIS+qYVvAww+LJsoyNRFF6YB
+         NtlcKce8gR7B4cx1LiOL3ZnS24TIEakcz88t17EmQKlK3O+atjlroOHiT26S8lPFGGEM
+         hw98EpiOQqDSR6Dh3w/cDSCd0Mv+ZfnmqMmk5QH17YNan4F2MVj3B5BP4RhEhT5ioNLg
+         kL8iBhWQuwmExMt/rr45zXC2hySEewqvf+VOg04iSby7N2mj0L5yuCJBMdSRiJdgLH0/
+         9ILfLBLGySB5ZfiVECz9hMKzVKc8XFcJAYU+jdFhWurhjuiIgjHJsZMKBVGwelJT9Obc
+         TdHw==
+X-Forwarded-Encrypted: i=1; AJvYcCXMbpiaA1eg/hFltHgjwem9rtfgaBvKoLb5Ly7nIcewrcMNJ8yuaRL7ZakV3qzL0z8Pc3CVYsUvqYxzoA==@linaro.org
+X-Gm-Message-State: AOJu0YwASzqaAl6/YgPOqjLSD+oAPm9uR8mQAa20fjNrDTSjxwPax68a
+	6sKESpHaG7n5YkxDu5yUN2NxVwnc6xqnhT3ZHm+3+6SsLI3GzLBkg5PJ3lbI8K+t5A==
+X-Gm-Gg: ASbGncsHzOAbTU5K2EOakBOPoylOIhBsEnr7RhHbF50GPAwpfowNpVAPBroxSsISFSn
+	7Q7C8jTq+5HGRiDMvCq4mKhW0A9Lg9UMXWc1sY70EhIXedTbzIKz4SiETpT7CQlvjU5r/ZuO6Vv
+	gg8YEYXbKQ9M9O9o1zUcRSp+C0M+yi4QpTJKzYE4h3sXl3gfatSEfjaZnM0cEIYxIVMVaO8KjR/
+	TQfIuv0gRqgyyHaf+rjRMDhAj1id50xby7p6rFX3+S+n0Pv89BjT9c2VxwhnEOLPcjGrKS1RY82
+	l6sT53g6iMDj8a7F/x4/ea/u720l9dRIwheTYNAOTWMflTQX7vJJK6bKBu7w4DmXlzos0bfiVyL
+	t4it1x1cgCqaH
+X-Google-Smtp-Source: AGHT+IEEU0dq3TPYHgyykoRWUKZC23YFtuaNL8zhpMLcXVGLieVgHtXNvExrNGc44SfaN/TffgArRA==
+X-Received: by 2002:a05:6000:401e:b0:391:454:5eb8 with SMTP id ffacd0b85a97d-39973b3207fmr5800696f8f.48.1742455856248;
+        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395cb40cdafsm23136118f8f.62.2025.03.20.00.24.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39972df9b9esm4431024f8f.18.2025.03.20.00.30.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Mar 2025 00:24:54 -0700 (PDT)
-Message-ID: <e54c91c2-6035-4259-9557-16d99c844ff7@linaro.org>
-Date: Thu, 20 Mar 2025 08:24:53 +0100
+        Thu, 20 Mar 2025 00:30:55 -0700 (PDT)
+Message-ID: <05412bd7-a389-4e9b-a344-1a65396409ac@linaro.org>
+Date: Thu, 20 Mar 2025 08:30:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/10] gdbstub: introduce target independent gdb register
- helper
+Subject: Re: [PATCH 09/10] include/exec: fix assert in size_memop
 To: Akihiko Odaki <akihiko.odaki@daynix.com>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Juan Quintela <quintela@trasno.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
  Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>, qemu-s390x@nongnu.org,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -107,105 +105,51 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <20250319182255.3096731-1-alex.bennee@linaro.org>
- <20250319182255.3096731-3-alex.bennee@linaro.org>
- <d3ea5401-866c-40a0-9ccc-6c681b760535@daynix.com>
+ <20250319182255.3096731-10-alex.bennee@linaro.org>
+ <d3688ce0-e2f3-4bee-863f-dac7a394c789@daynix.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <d3ea5401-866c-40a0-9ccc-6c681b760535@daynix.com>
+In-Reply-To: <d3688ce0-e2f3-4bee-863f-dac7a394c789@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: bT71NWuL+LfU
+X-TUID: 7TKpi574HSm0
 
-On 20/3/25 07:19, Akihiko Odaki wrote:
+On 20/3/25 07:29, Akihiko Odaki wrote:
+> Updating the email address of Juan Quintela according to .mailmap.
+> 
 > On 2025/03/20 3:22, Alex Bennée wrote:
->> The current helper.h functions rely on hard coded assumptions about
->> target endianess to use the tswap macros. We also end up double
->> swapping a bunch of values if the target can run in multiple endianess
->> modes. Avoid this by getting the target to pass the endianess and size
->> via a MemOp and fixing up appropriately.
+>> We can handle larger sized memops now, expand the range of the assert.
 >>
+>> Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
 >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> The overall idea looks good to me. I have a few nitpicks:
-> 
 >> ---
->>   include/gdbstub/registers.h | 30 ++++++++++++++++++++++++++++++
->>   gdbstub/gdbstub.c           | 22 ++++++++++++++++++++++
->>   2 files changed, 52 insertions(+)
->>   create mode 100644 include/gdbstub/registers.h
+>>   include/exec/memop.h | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
 >>
->> diff --git a/include/gdbstub/registers.h b/include/gdbstub/registers.h
->> new file mode 100644
->> index 0000000000..4abc7a6ae7
->> --- /dev/null
->> +++ b/include/gdbstub/registers.h
->> @@ -0,0 +1,30 @@
->> +/*
->> + * GDB Common Register Helpers
->> + *
->> + * Copyright (c) 2025 Linaro Ltd
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +
->> +#ifndef GDB_REGISTERS_H
->> +#define GDB_REGISTERS_H
->> +
->> +#include "exec/memop.h"
->> +
->> +/**
->> + * gdb_get_register_value() - get register value for gdb
->> + * mo: size and endian MemOp
->> + * buf: GByteArray to store in target order
->> + * val: pointer to value in host order
->> + *
->> + * This replaces the previous legacy read functions with a single
->> + * function to handle all sizes. Passing @mo allows the target mode to
->> + * be taken into account and avoids using hard coded tswap() macros.
->> + *
->> + * Returns the number of bytes written to the array.
->> + */
->> +int gdb_get_register_value(MemOp op, GByteArray *buf, uint8_t *val);
->> +
->> +#endif /* GDB_REGISTERS_H */
->> +
->> +
->> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
->> index 282e13e163..3d7b1028e4 100644
->> --- a/gdbstub/gdbstub.c
->> +++ b/gdbstub/gdbstub.c
->> @@ -32,6 +32,7 @@
->>   #include "exec/gdbstub.h"
->>   #include "gdbstub/commands.h"
->>   #include "gdbstub/syscalls.h"
->> +#include "gdbstub/registers.h"
->>   #ifdef CONFIG_USER_ONLY
->>   #include "accel/tcg/vcpu-state.h"
->>   #include "gdbstub/user.h"
->> @@ -45,6 +46,7 @@
->>   #include "system/runstate.h"
->>   #include "exec/replay-core.h"
->>   #include "exec/hwaddr.h"
->> +#include "exec/memop.h"
->>   #include "internals.h"
->> @@ -551,6 +553,26 @@ static int gdb_write_register(CPUState *cpu, 
->> uint8_t *mem_buf, int reg)
->>       return 0;
->>   }
->> +/*
->> + * Target helper function to read value into GByteArray, target
->> + * supplies the size and target endianess via the MemOp.
->> + */
->> +int gdb_get_register_value(MemOp op, GByteArray *buf, uint8_t *val)
->> +{
->> +    size_t bytes = memop_size(op);
->> +
->> +    if (op & MO_BSWAP) {
->> +        for ( int i = bytes ; i > 0; i--) {
+>> diff --git a/include/exec/memop.h b/include/exec/memop.h
+>> index 407a47d82c..faed3ff902 100644
+>> --- a/include/exec/memop.h
+>> +++ b/include/exec/memop.h
+>> @@ -162,8 +162,8 @@ static inline unsigned memop_size(MemOp op)
+>>   static inline MemOp size_memop(unsigned size)
+>>   {
+>>   #ifdef CONFIG_DEBUG_TCG
+>> -    /* Power of 2 up to 8.  */
+>> -    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
+>> +    /* Power of 2 up to 128.  */
+>> +    assert((size & (size - 1)) == 0 && size >= 1 && size <= 128);
 > 
-> memop_size() returns unsigned, but bytes is size_t and i is int, and 
-> this function returns int. Let's keep them consistent.
+> This is the minimal change to fix, but perhaps it may be also nice to 
+> change it to use MO_SIZE.
 
-I wasn't sure why this method returns any information at all, but
-apparently the next patch shows some uses. Indeed as Akihiko pointed,
-if we return something, let it be unsigned (possibly size_t).
+I concur.
+
+       ... && size >= 1 && size <= (1 << MO_SIZE));
+
+> Regards,
+> Akihiko Odaki
+> 
+>>   #endif
+>>       return (MemOp)ctz32(size);
+>>   }
+> 

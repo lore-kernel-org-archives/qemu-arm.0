@@ -1,99 +1,98 @@
-Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp758818njc;
-        Thu, 20 Mar 2025 00:30:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWzpt24S3a9l0G2xeGc7rQAYJjjYxN4LyIH5j5vVJ69lxKED9mFJQznoCHEMvAcpZQmma7UnL8G5iTU/A==@linaro.org
-X-Received: by 2002:a05:600c:ccd:b0:43c:fcbc:9686 with SMTP id 5b1f17b1804b1-43d437802b1mr47235855e9.1.1742455856962;
-        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742455856; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp762183njc;
+        Thu, 20 Mar 2025 00:39:25 -0700 (PDT)
+X-Received: by 2002:a05:600c:468f:b0:43c:e7ae:4bcf with SMTP id 5b1f17b1804b1-43d436c753fmr52806475e9.0.1742456364798;
+        Thu, 20 Mar 2025 00:39:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742456364; cv=none;
         d=google.com; s=arc-20240605;
-        b=AfQoeB3ipupRB6ojuYeWMHGCso/8cWMo5USDfQ4tW246waEbiQNPDbsQ2A7b0XjjHM
-         aqg7qTTPT6Hb053+L0KYRCzYvlha9LexvFWg+lejH4lsYR2NVI/Z+safociub4OCkWfa
-         b7r1hAIY0ZRRwADtSMUcziWOaLH8vh3e+69GVOg+XU1fsUGeJZ0123XnllZm8EohivPv
-         Qoestt+EMbVOzfkDkFpVf+E69Sj/8MzDqRNO45d17v/x4SFnGywAzw/kBPYwGemWQnEq
-         /QeiLIcLLcCBXczc/Y7JKsGK+UNNTwLBCRGfTyrbN/KH+T/1zHcnNKhX+m4xdMfrlI+L
-         WCMg==
+        b=AFgirswSSzGmspFwnDf1RAYRgcXuEQJvvIw4M5p9AfZUqC/Ej752bspdA/ogcCzn+Z
+         0M6XlpRbSpNyIfB9SJ+eYmBmCT7nJWG3QAblv94YYqNNM9Bo+gUNuZvD44rcYLhxv1it
+         nGH4YH6bz5fA1SY+YOy5GaNRpyvlJtfgTEne7QgK/qSbhe0BPpraCX+K9A7mMbQIOUv6
+         v5/2eck+1oXSyfrQug+BM3n3/XPh4wHRBL3QjxgkxVmtnvybE5WEA8srr8eIINnZFQx9
+         a3+wK3GUVEGuzDGssCUIh60ePwrxiGqNzPC2VrT1W+2sYRS8Bx2UCbnMAtSYety6GxzR
+         ozrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
-        fh=hIXiofhfqpavH6Tsd1hvZCFRY7wLrR/+K7am+dbLznQ=;
-        b=SkcwdblU3pQBzKKWtaBzkSgPCi/bcDlukNXnLRrqB5Ehem6JXWh+AZguVvjVWzmV2a
-         WZpzpfDyHNb6jSXxHT4V32RtBwGn0oskWk9DdX84tkpmOSLEkS1twSIRqJF8h+GU7yku
-         6U8oe4YRi9yO25uciE+MZwVaBbZ8mqNS8RB7tOtskLpZtKAt2NiRLyS8O5U1Zy4pdId8
-         B1G4O5b6lQtocBDWNv2NgFNO1X18SZGIAAnft8E6VuWHgBAwEQbe0yo71nOCd4kYoqoh
-         kBLhWsOf9siVyxDDCyN6sX0Y8+bOZUIRhu3dk2hRpzCgkXon/1dRMOI5rHyNnWGc4k+S
-         6Jmg==;
+        bh=Nf4r+1HHRl9mM0NAlDwdoIGe7010ICXlf3pq30lWtuw=;
+        fh=VTjyscoH3jg4EEBGXGBCijT0Cth03TkL5RpTsM1FyIc=;
+        b=eNrLpoqSFTKzPsGUPyXa/s2ZiQBdFtdupZNehCPnCcEz3kiIfKv5oU/EZ0stQbPZse
+         IRLmOpSrqIOz8pCc22642ceHrOiAiwkDVPJuV01VGHyz6JOyq2lmMR96bSwZdm3VvPu1
+         TQHjo0d0GA0ezw/m135Q5bJCwsEPO5VEDU+lxpaxt+4BeQhAqTMJu+Tp9Tm3ia9veswC
+         yIV1/+CXLY4AptSY1Y07kj86m345YIRG3gTb1vMeJJJbkgLxheEdLuUK27lAZT6SO8JE
+         jczGL9DSWN7oS8iWcim2y4A3GJv1jw6CVaAydKBlyCY8ZCxrO+i9uTznM+5TUSBx4MFv
+         tWZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G8G0D3CL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OsV7DDE6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43d1ff84815sor43649895e9.5.2025.03.20.00.30.56
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43d422f6231sor10552785e9.5.2025.03.20.00.39.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
+        Thu, 20 Mar 2025 00:39:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G8G0D3CL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OsV7DDE6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742455856; x=1743060656; darn=linaro.org;
+        d=linaro.org; s=google; t=1742456364; x=1743061164; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
-        b=G8G0D3CLcnfQcvX4VRxutd9RXZ4xf5k0PWZ5HzHQjjddELNEK0gn6K52yM7EfqUpLt
-         kBaAdmwOY0lUpIfywM0jyjq4YnUhfVZ4YE6DQT12ELDNo8RvkBmAgkFXdXaJQJH7/qnI
-         hZp0R6Wcok1WQvH6+fdVy6AVc8S3z4qa/mbhRjSJ1M8265Mn42ToWEUBhsbjIiiPVsZ1
-         q+uhJHn+iRcIGCM777dXZwqMGq4a+lUBuTAUflLVSl9HwYrFB71C4mRsx/VQd/1x2crB
-         iC5eIWQ8H6fCKejmqWFPrwg3XttDeugScd9cfO1Q4UG7pXKfRrSF7lGSO7mGhtJZ6r3B
-         pCtQ==
+        bh=Nf4r+1HHRl9mM0NAlDwdoIGe7010ICXlf3pq30lWtuw=;
+        b=OsV7DDE6EZBSTbyAkRCSpM5vAExH7VfYVuVtLK2q93RWsdT20BHP+Dl5YQgN/x2fiw
+         4F4uUpUqrHG18a3xrAEchBXoYnt646TDacR+ibF3Xi3liNlK3AIxB3jLIc1NzovyjOpS
+         sYhqeiQwmd7HEE1z07PTMYjyjrhsrcyDq1X5scBEotfDdLtPPEMIz4HhksF76MigIZl9
+         B2fx3606DbZ8O53Izp+fD1rLSYlGgE/YDxKaHq0ASbV/J18+YBbzDYBCZpnQ7vmexflk
+         S0PG4PcFne31zPdFU9ZhxW/f/sxyVveGOb8hZWWYvdyIe6BbVW8GIzk/SExVVrS5QmuI
+         BIqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742455856; x=1743060656;
+        d=1e100.net; s=20230601; t=1742456364; x=1743061164;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9Q3cy8jYCn9xr9CHTDFTQ86895kEPqzjD05yFJjZ0rw=;
-        b=hNrJP5oR3gtgmiXJ1CmrkYXEVQ8mDYSmJZFKsEhd2bDIS+qYVvAww+LJsoyNRFF6YB
-         NtlcKce8gR7B4cx1LiOL3ZnS24TIEakcz88t17EmQKlK3O+atjlroOHiT26S8lPFGGEM
-         hw98EpiOQqDSR6Dh3w/cDSCd0Mv+ZfnmqMmk5QH17YNan4F2MVj3B5BP4RhEhT5ioNLg
-         kL8iBhWQuwmExMt/rr45zXC2hySEewqvf+VOg04iSby7N2mj0L5yuCJBMdSRiJdgLH0/
-         9ILfLBLGySB5ZfiVECz9hMKzVKc8XFcJAYU+jdFhWurhjuiIgjHJsZMKBVGwelJT9Obc
-         TdHw==
-X-Forwarded-Encrypted: i=1; AJvYcCXMbpiaA1eg/hFltHgjwem9rtfgaBvKoLb5Ly7nIcewrcMNJ8yuaRL7ZakV3qzL0z8Pc3CVYsUvqYxzoA==@linaro.org
-X-Gm-Message-State: AOJu0YwASzqaAl6/YgPOqjLSD+oAPm9uR8mQAa20fjNrDTSjxwPax68a
-	6sKESpHaG7n5YkxDu5yUN2NxVwnc6xqnhT3ZHm+3+6SsLI3GzLBkg5PJ3lbI8K+t5A==
-X-Gm-Gg: ASbGncsHzOAbTU5K2EOakBOPoylOIhBsEnr7RhHbF50GPAwpfowNpVAPBroxSsISFSn
-	7Q7C8jTq+5HGRiDMvCq4mKhW0A9Lg9UMXWc1sY70EhIXedTbzIKz4SiETpT7CQlvjU5r/ZuO6Vv
-	gg8YEYXbKQ9M9O9o1zUcRSp+C0M+yi4QpTJKzYE4h3sXl3gfatSEfjaZnM0cEIYxIVMVaO8KjR/
-	TQfIuv0gRqgyyHaf+rjRMDhAj1id50xby7p6rFX3+S+n0Pv89BjT9c2VxwhnEOLPcjGrKS1RY82
-	l6sT53g6iMDj8a7F/x4/ea/u720l9dRIwheTYNAOTWMflTQX7vJJK6bKBu7w4DmXlzos0bfiVyL
-	t4it1x1cgCqaH
-X-Google-Smtp-Source: AGHT+IEEU0dq3TPYHgyykoRWUKZC23YFtuaNL8zhpMLcXVGLieVgHtXNvExrNGc44SfaN/TffgArRA==
-X-Received: by 2002:a05:6000:401e:b0:391:454:5eb8 with SMTP id ffacd0b85a97d-39973b3207fmr5800696f8f.48.1742455856248;
-        Thu, 20 Mar 2025 00:30:56 -0700 (PDT)
+        bh=Nf4r+1HHRl9mM0NAlDwdoIGe7010ICXlf3pq30lWtuw=;
+        b=NCal3f6iPd5K9tNN8XcAzB4DNKsLbc5PRCE9Bw7Ozst6WQQR/FK4uA3JxA6p9KpEf6
+         i50UIkjbj3Hz3Z7GgsQ7pK3d/PxIHRRePYvvtQVENfI3LgWtQ2mx2qZeKMFTr9glkZ24
+         1DlOuj0teW7vLo+0y3k+1JleVEKne1mKAaGFTikutScl0tc/dLD1ZppMA/wgSfvrUY5U
+         Z09LRaNc9/i8rnwJbqXAh9BRgHTbp4l8u7W1KDwMfd6PFeNj+A3MQG2gbGAgmwbemPf2
+         9KXiUTEiS+kFPCLdB8mOPKiSf6eVKXxrD1q9D3t0ul1qzSCwNc35JCS1y/qNKbizIqU2
+         mKpg==
+X-Gm-Message-State: AOJu0YyuF3fvsFgOeXqycCGZODZwaDBuom99ankTvSTrM02W7DrpbCHg
+	5Y/44LQ0keARLW6qn82FknsZDY0U1zcgJq/vxL9Z6/XST551cW5lb89NA1mRp0fYVZ9Jrv71AjB
+	OWLA=
+X-Gm-Gg: ASbGncsSvA15t+fdLNugdNXe5wKSXnDXyZCx0PHaCib+UxUyucm7OyWpdHAsW2Si/xt
+	6azbAqKs2r2efokuJ//sxNKyElDOIJWtJNXk+TRNlNK3vORGcbcpV1lb0iXgKRsNkJCVI0qiuAN
+	8zFpOhLdJKDXIKY4LsbEYqoMwNle80wagXHJ1LR06TB2rm8S6I+gKr5uWYCuAUVOhpQNblYTlFJ
+	qrgtlh0zqgc5LHQYFQ3PK8H1I1hW3yARNYHMfNO/52jUMhijdYchQ4W13/r0W2K/gxVBJNkBwHt
+	GdPgXkRFSkWvxqQyxCBsaNk9PqSr74Jm2U38UhwK5wmvOmNpmBi0Axn1ogVpVHC3sZFA+vE9b9y
+	OKRwLpZ16rPz6
+X-Google-Smtp-Source: AGHT+IF5iFIAmvd5x5g0gVj4Ts/bGYTDsScqRgAbWZ9okMeojOdqKjdJg2n01Qc9M0o0MGM7gNRTVw==
+X-Received: by 2002:a05:600c:468f:b0:43c:e7ae:4bcf with SMTP id 5b1f17b1804b1-43d436c753fmr52805815e9.0.1742456363779;
+        Thu, 20 Mar 2025 00:39:23 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39972df9b9esm4431024f8f.18.2025.03.20.00.30.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395c83b6b37sm23258321f8f.37.2025.03.20.00.39.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Mar 2025 00:30:55 -0700 (PDT)
-Message-ID: <05412bd7-a389-4e9b-a344-1a65396409ac@linaro.org>
-Date: Thu, 20 Mar 2025 08:30:54 +0100
+        Thu, 20 Mar 2025 00:39:23 -0700 (PDT)
+Message-ID: <91758d60-7fdf-4df8-9513-b3c0ca1ecc4c@linaro.org>
+Date: Thu, 20 Mar 2025 08:39:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/10] include/exec: fix assert in size_memop
-To: Akihiko Odaki <akihiko.odaki@daynix.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Subject: Re: [PATCH 04/10] target/arm: convert 64 bit gdbstub to new helper
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Juan Quintela <quintela@trasno.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>, qemu-s390x@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Akihiko Odaki <akihiko.odaki@daynix.com>,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-s390x@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
@@ -105,51 +104,194 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <20250319182255.3096731-1-alex.bennee@linaro.org>
- <20250319182255.3096731-10-alex.bennee@linaro.org>
- <d3688ce0-e2f3-4bee-863f-dac7a394c789@daynix.com>
+ <20250319182255.3096731-5-alex.bennee@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <d3688ce0-e2f3-4bee-863f-dac7a394c789@daynix.com>
+In-Reply-To: <20250319182255.3096731-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 7TKpi574HSm0
+X-TUID: SNYEkSi7pAov
 
-On 20/3/25 07:29, Akihiko Odaki wrote:
-> Updating the email address of Juan Quintela according to .mailmap.
+On 19/3/25 19:22, Alex Bennée wrote:
+> For some of the helpers we need a temporary variable to copy from
+> although we could add some helpers to return pointers into env in
+> those cases if we wanted to.
 > 
-> On 2025/03/20 3:22, Alex Bennée wrote:
->> We can handle larger sized memops now, expand the range of the assert.
->>
->> Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> ---
->>   include/exec/memop.h | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/include/exec/memop.h b/include/exec/memop.h
->> index 407a47d82c..faed3ff902 100644
->> --- a/include/exec/memop.h
->> +++ b/include/exec/memop.h
->> @@ -162,8 +162,8 @@ static inline unsigned memop_size(MemOp op)
->>   static inline MemOp size_memop(unsigned size)
->>   {
->>   #ifdef CONFIG_DEBUG_TCG
->> -    /* Power of 2 up to 8.  */
->> -    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
->> +    /* Power of 2 up to 128.  */
->> +    assert((size & (size - 1)) == 0 && size >= 1 && size <= 128);
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   target/arm/gdbstub64.c | 53 ++++++++++++++++++++++++++----------------
+>   1 file changed, 33 insertions(+), 20 deletions(-)
 > 
-> This is the minimal change to fix, but perhaps it may be also nice to 
-> change it to use MO_SIZE.
+> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+> index 1a4dbec567..793332af31 100644
+> --- a/target/arm/gdbstub64.c
+> +++ b/target/arm/gdbstub64.c
+> @@ -20,7 +20,7 @@
+>   #include "qemu/log.h"
+>   #include "cpu.h"
+>   #include "internals.h"
+> -#include "gdbstub/helpers.h"
+> +#include "gdbstub/registers.h"
+>   #include "gdbstub/commands.h"
+>   #include "tcg/mte_helper.h"
+>   #if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+> @@ -35,15 +35,16 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+>   
+>       if (n < 31) {
+>           /* Core integer register.  */
+> -        return gdb_get_reg64(mem_buf, env->xregs[n]);
+> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &env->xregs[n]);
 
-I concur.
+s/MO_TEUO/MO_TEUQ/
 
-       ... && size >= 1 && size <= (1 << MO_SIZE));
+But I think we should get MO_TE from CPUState in prologue.
 
-> Regards,
-> Akihiko Odaki
-> 
->>   #endif
->>       return (MemOp)ctz32(size);
->>   }
-> 
+   MemOp mop = MO_TE; /* FIXME get from CPUState */
+
+   ...
+   return gdb_get_register_value(mop | MO_64, mem_buf, &env->xregs[n]);
+
+>       }
+>       switch (n) {
+>       case 31:
+> -        return gdb_get_reg64(mem_buf, env->xregs[31]);
+> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &env->xregs[31]);
+
+s/MO_TEUO/MO_TEUQ/
+
+But harder to get it wrong using the MO_$bit equivalent:
+
+   return gdb_get_register_value(mop | MO_64, mem_buf, &env->xregs[31]);
+
+>       case 32:
+> -        return gdb_get_reg64(mem_buf, env->pc);
+> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &env->pc);
+
+s/MO_TEUO/MO_TEUQ/
+
+>       case 33:
+> -        return gdb_get_reg32(mem_buf, pstate_read(env));
+> +        uint32_t pstate = pstate_read(env);
+> +        return gdb_get_register_value(MO_TEUL, mem_buf, (uint8_t *) &pstate);
+>       }
+>       /* Unknown register.  */
+>       return 0;
+> @@ -82,23 +83,27 @@ int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg)
+>   {
+>       ARMCPU *cpu = ARM_CPU(cs);
+>       CPUARMState *env = &cpu->env;
+> +    uint32_t fpr;
+>   
+>       switch (reg) {
+>       case 0 ... 31:
+>       {
+>           /* 128 bit FP register - quads are in LE order */
+>           uint64_t *q = aa64_vfp_qreg(env, reg);
+> -        return gdb_get_reg128(buf, q[1], q[0]);
+> +        return gdb_get_register_value(MO_TEUO, buf, (uint8_t *) q);
+>       }
+>       case 32:
+>           /* FPSR */
+> -        return gdb_get_reg32(buf, vfp_get_fpsr(env));
+> +        fpr = vfp_get_fpsr(env);
+> +        break;
+>       case 33:
+>           /* FPCR */
+> -        return gdb_get_reg32(buf, vfp_get_fpcr(env));
+> +        fpr = vfp_get_fpcr(env);
+> +        break;
+>       default:
+>           return 0;
+>       }
+> +    return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &fpr);
+>   }
+>   
+>   int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg)
+> @@ -132,30 +137,37 @@ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
+>   {
+>       ARMCPU *cpu = ARM_CPU(cs);
+>       CPUARMState *env = &cpu->env;
+> +    uint32_t fpr;
+>   
+>       switch (reg) {
+>       /* The first 32 registers are the zregs */
+>       case 0 ... 31:
+>       {
+>           int vq, len = 0;
+> +        ARMVectorReg *zreg = &env->vfp.zregs[reg];
+> +
+>           for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+> -            len += gdb_get_reg128(buf,
+> -                                  env->vfp.zregs[reg].d[vq * 2 + 1],
+> -                                  env->vfp.zregs[reg].d[vq * 2]);
+> +            len += gdb_get_register_value(MO_TEUQ, buf,
+> +                                          (uint8_t *) &zreg->d[vq * 2 + 1]);
+
+s/MO_TEUQ/MO_TEUO/ ?
+
+> +            len += gdb_get_register_value(MO_TEUQ, buf,
+> +                                          (uint8_t *) &zreg->d[vq * 2]);
+
+s/MO_TEUQ/MO_TEUO/ ?
+
+>           }
+>           return len;
+>       }
+>       case 32:
+> -        return gdb_get_reg32(buf, vfp_get_fpsr(env));
+> +        fpr = vfp_get_fpsr(env);
+> +        return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &fpr);
+>       case 33:
+> -        return gdb_get_reg32(buf, vfp_get_fpcr(env));
+> +        fpr = vfp_get_fpcr(env);
+> +        return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &fpr);
+>       /* then 16 predicates and the ffr */
+>       case 34 ... 50:
+>       {
+>           int preg = reg - 34;
+>           int vq, len = 0;
+>           for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+> -            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
+> +            len += gdb_get_register_value(MO_TEUQ, buf,
+> +                                          (uint8_t *) &env->vfp.pregs[preg].p[vq / 4]);
+>           }
+>           return len;
+>       }
+> @@ -165,8 +177,8 @@ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
+>            * We report in Vector Granules (VG) which is 64bit in a Z reg
+>            * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+>            */
+> -        int vq = sve_vqm1_for_el(env, arm_current_el(env)) + 1;
+> -        return gdb_get_reg64(buf, vq * 2);
+> +        uint64_t vq = (sve_vqm1_for_el(env, arm_current_el(env)) + 1) * 2;
+> +        return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &vq);
+
+s/MO_TEUL/MO_TEUQ/
+
+>       }
+>       default:
+>           /* gdbstub asked for something out our range */
+> @@ -248,10 +260,11 @@ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
+>               bool is_data = !(reg & 1);
+>               bool is_high = reg & 2;
+>               ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
+> -            ARMVAParameters param;
+> +            ARMVAParameters param = aa64_va_parameters(env, -is_high, mmu_idx,
+> +                                                       is_data, false);
+> +            uint64_t pauth_mask = pauth_ptr_mask(param);
+>   
+> -            param = aa64_va_parameters(env, -is_high, mmu_idx, is_data, false);
+> -            return gdb_get_reg64(buf, pauth_ptr_mask(param));
+> +            return gdb_get_register_value(MO_TEUQ, buf, (uint8_t *) &pauth_mask);
+>           }
+>       default:
+>           return 0;
+> @@ -399,7 +412,7 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
+>   
+>       tcf0 = extract64(env->cp15.sctlr_el[1], 38, 2);
+>   
+> -    return gdb_get_reg64(buf, tcf0);
+> +    return gdb_get_register_value(MO_TEUQ, buf, (uint8_t *) &tcf0);
+>   }
+>   
+>   int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg)

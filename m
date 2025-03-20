@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp1278818njc;
-        Thu, 20 Mar 2025 15:30:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUQljFgmGG90RzmkSYELNzdXlcSd9izQxAIb1OJz5RzdU1lKV9/LyyM9RDbQkuoZn0jnNPp1BWSngOilA==@linaro.org
-X-Received: by 2002:a17:902:ea07:b0:224:76f:9e59 with SMTP id d9443c01a7336-22780c54d2cmr22290805ad.10.1742509811544;
-        Thu, 20 Mar 2025 15:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742509811; cv=none;
+Received: by 2002:a17:505:ab84:b0:1be9:327d:8ee3 with SMTP id pj4csp1278873njc;
+        Thu, 20 Mar 2025 15:30:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUyMVddxpH3Plf4kkR9GjVsWHckKMApZrZWpyE+CjLc6xjTTXAjClruMNbIgdosJVxblABy5/Vt9vAqcg==@linaro.org
+X-Received: by 2002:a17:902:d488:b0:224:1005:7280 with SMTP id d9443c01a7336-22780e121e4mr16284005ad.38.1742509817468;
+        Thu, 20 Mar 2025 15:30:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742509817; cv=none;
         d=google.com; s=arc-20240605;
-        b=PfYq8wPbr0jgqlAwyoWHDR8nCqvEmc24UX0Q8P7L9RKP95o5SI42pFqpEq6/foNZ73
-         D9Y61NY/4w/kVgtfuYioH9SbSjjnGdwbdyJN+dc4aFruwmiUO6NoyQh8r0Sr0JsOUux+
-         zXP/++y1qcEP8U2PBm5tZ7ji8XS9JE1ycgYinwl5syRLJXLDHtWBbquPfVt71CHn+8An
-         SHCVwCqfCDhd2DPkm4hDcIc/x9ItFAtXDugpEDHmGYAqYM02P4Z8LdERI6wxAW/yt6ol
-         54NQeU2RqMIh7MhtCRIRkgyc1hjSmMIuWDuX7DEbzmDuqKjLqLJKH9dWMOTnOJpE9ywc
-         V05Q==
+        b=cEflCRZIte4IvjxOicrvMELcBidfp7mxpHPo6v/TVrfB6RmaGVODhv+FNAuK/VrKQa
+         PBlbO9MLcXS27xJ2RLhdZxob0ZUTzaHLNLiY4/VxQLqKDOnCk7okn3R38WuWnSC5ySIt
+         Cz6ahTfSuWX08BgccB7DnzpGvgJyOCmF984U3Nj0hP8OKc9SveTdLD6AFhNhL1S7B3aM
+         3xcWVmsnC/Pd15XAUISsJiyn+kogG18crF5MhQJGA0HxuVwmuWLQb+UkrlCGMu0rAU/g
+         D9X6+xKZAAD7n+dLY71W4iyjoQha7FNXUWHzjCKj4F5VEMgdvzfbbExRmPXxn8TU6/lq
+         MeUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=iqhwlkf8vVBUTfdErW46dXre9tdQWHJk62D7NGKBzrU=;
-        fh=TYILgdL1XCZ8jqLEdECZhXbs5y7FZRZKNvzQl7AcQ8w=;
-        b=NDlNrzLHiwvROE/egJ9wdCu7KqWdrauLJoBdU1T9r897vppWzywRKfqpC2M75aajcR
-         riC5C7XGbl5zBEeaSFjLSC/DaE/t4xsBLJT0GM/5agaYMO7TH7WW3sWZj0BotnmD3m2Q
-         GOz14ZoLSUTNlvp1Drmyw70oAuigqCBEWzukCA5XXpVwErkiWhGWNLWyfINr+9Iy2qlN
-         /ThAmh+d2HAOWKMVYRLTotjODJQagTYLaeCrU212iHvyY6vQRUPXF0i8E1Q9zzE54ytw
-         FAcVD0NgEPqFL9wSEjlA/EZbkKQVj2WXCR1BcMtr5tX0AeT0Ubv1i9qP1qXxyi2bCtXx
-         GU7g==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=WS56+yaDx7XPqQTsxGbqAzPgp+EeucvCf5WClfPP9c4=;
+        fh=cW1keL/+UZycSY2g078FkmrDk4aEeTfMB/H+AznVfDU=;
+        b=G5HH5UQ2GUThTyZbeJ6lE5wIPeSaiHdirOmJEdMy8NSfBQmgok18fHaNt5XFIN/Ew2
+         unTT/K+2MX0iKKwC0dWqeSwHHL1lrl7E8neEoB8z0w2SbQWY5XONEFV3Tfi1QfIrLqaD
+         vWgBHBbYCWQHHopiI+cK9HSq4PZ3HkBUqQpHMdX1PWYpkwZC0sfhBPiliNGBQyddU2I0
+         qTGSe5jPCSeKv+/38pcayoZZpii1zWSxVLwSD8FwClvvPfTuveIooti6FBbWWEJrAdKH
+         wF+P4uYt6NM19TGCW+nwNz9OG6PbiN1NmGuvR2dVtxKILhZkBJ2V++Urwie9V7MmK4km
+         9T2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GKs+RYqb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u7AQKKVn;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22780e09d71sor3406435ad.0.2025.03.20.15.30.11
+        by mx.google.com with SMTPS id d9443c01a7336-22780f5be92sor3810465ad.8.2025.03.20.15.30.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 20 Mar 2025 15:30:11 -0700 (PDT)
+        Thu, 20 Mar 2025 15:30:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GKs+RYqb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u7AQKKVn;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742509811; x=1743114611; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iqhwlkf8vVBUTfdErW46dXre9tdQWHJk62D7NGKBzrU=;
-        b=GKs+RYqbFFMVaRPePKtYsbukCg72Rjgy9xUkYtF5y9eE2XzDmWCqjBjjCWrIScZ9+F
-         n3R8O6yXIDesXk3w7K0eYljS8b1POjn9wPNJTAuAMJTEAF8VoEZpBSzy1x+wKbJkZOJr
-         G/eZuJW2ts9EXcVTIEFbJ2s5KWt6ov5Q3Oev4PhiKF+XmBQAUObkJ4cWfynxjgFuGMGT
-         /H8g/SX1H9znGt8rN2iFuMqbNXNFFhiUOLGdYehIQEK0vPt6i969z/KvZDmp+GZgO3cb
-         brsW1lU8uR8fPggwY6ebBAOAX7kvqbaP0hMdqvaoZnWf/OaJ8iIW3lKb/Ndy3wa6FO0B
-         mpXA==
+        d=linaro.org; s=google; t=1742509817; x=1743114617; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WS56+yaDx7XPqQTsxGbqAzPgp+EeucvCf5WClfPP9c4=;
+        b=u7AQKKVnGewr/60ndSd0QfHCtvW2GllM7lcbJ2K7Aj/icLnnKet06G/tS6/rtP3FY5
+         67/x1FCY77eIutTOrdl22xnELSb/nuTvI7JmLOHpH53g/AQGZiRWL5tl36ZXbgg47o9R
+         yUf50nJ7S2e7Zr0adEkmKi1DD8wUUGSl/+rGrmbAGEPVbZNGtI6Hn09P/0/PZnpCCrYY
+         xQ4AQaHC4IXtuD06RxHPn0toMj7cd71LgHKoOHTU9RJiFPYNBgt0VfPU5VgTmYp731IZ
+         fRIFnH8ltw+vZnIyQ78o4+a3MpEBRUR49OKvFhu4Ug7YKoaeFbgFJwPVAp0OZC94mECO
+         Gx6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742509811; x=1743114611;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iqhwlkf8vVBUTfdErW46dXre9tdQWHJk62D7NGKBzrU=;
-        b=mcUM7sKZgyb3W2/rGD+wsRZYqWQgvzn9qwezhZqVu+l2/+cp+/PSbaZTI/E7IgaycR
-         8jR1+8+T9swUsh2pseD+h2V1P4It0kNNQOQWt9Ziy/3EHDa1kIk2cCszkAC2RHMS+Ij9
-         O7oodeUPi26Fx2P4Ac17to+W9dM122utSvSjCfX95/USndQca2o2jbiawFuLgC5VKZP+
-         yyUBUGyajIQpg96zunk2foVD0GKCkTXwQ3apG8JknBhe8xb5rD8D3+h+lm00v7zhewuy
-         lp2aMJ/fjYVkB0vC8tSgwv4c3kvWU7xjbtnV6EqTRR2AtO/+s2Fo2Ke2k8UdC50JJyVo
-         aNfw==
-X-Forwarded-Encrypted: i=1; AJvYcCVSH3l3mEcQB5qAtyctB5rcxBVfTZUr6nLB3Oe2UByAuq6qRc6kDD5VQXMtLVhzcBw5YGA4DGvWLqlH5w==@linaro.org
-X-Gm-Message-State: AOJu0YyZwxLLm/Tl1OpFdhhb8Cvu7J12UlBxcmuoSc91aiZAGrttGa3g
-	eYvz91c053iVjo+VX6NPnJroMHmGxsW3WzuyDI9X6XcecvKgBDdyRwUQSGbJvDueorWORiprg+y
-	GcXg=
-X-Gm-Gg: ASbGncsGIlWNfmEr7CzHPjehRAnLJtZ6zM57DaSXOQ4t2oBhOg07AQMJBIXSTuZWhFe
-	ckZ8cIdzUK0G2+IxZ6f3v6JeU995mNvMDx5uxoWqpGh/HEAxOSw9wBYGrs21G/6O6iabvVc4Oie
-	5WG1XVUmY1/0Ire1IiD836BHOWMBYQOuqDdyILNkrXcYZbPOZ/K+jjkgGfudjtGMMjTGRK0Wf4S
-	3SsEF+i73IhwAwhSfBM1EwaBjKQbTpeENIIZg+zuWLOVwGYLd6NQ9KyesF6t3IhJVSJMGLsIQlA
-	5swIYDouK3K86oC2VEjozxrzg8YVk4bA3AZ79TSvgFc9jtt6yb1QLHs=
-X-Google-Smtp-Source: AGHT+IF7rxq36QivV5DZYlbW16JQVFyK0VK5/tg8mquF2bSISfiJtuxjSj/kyOctpc9S1USrnAuYdg==
-X-Received: by 2002:a17:903:1110:b0:21f:ba77:c45e with SMTP id d9443c01a7336-22780e20562mr11953595ad.45.1742509810917;
-        Thu, 20 Mar 2025 15:30:10 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742509817; x=1743114617;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WS56+yaDx7XPqQTsxGbqAzPgp+EeucvCf5WClfPP9c4=;
+        b=Hhqp9NYMriCjw0J3i2uQsdbn6jr/spauGaYbswc+x4MF2BRlCE9ZQLqNFjzExao2L3
+         VsK9K/Dze2cjK6jjRwp+wAEnA3xohfbj3DNyXG+H9KkHlj7cn9cwcS/ome4qBMfP72WQ
+         S/5ndpmQ82s6KTzRb1wyTCdshqfmYoU5gI1clkyqXEd9NGTlE7tV8NOnZtambDnE81cq
+         PnBO95uyKmlzEvlv98YZJbpj9CnvFCnh8Sf0mRZcKe4HkEzG8e9thAMAlGJf9ICNrWMz
+         BaNGzZwIasvRYwTtMEImBOhDu7XWbrPqdBDgJv1h+M1Yo9Y2SdW+ErYtnv/sxzIiMw/+
+         sLDw==
+X-Forwarded-Encrypted: i=1; AJvYcCXyotD9yQ/XfQxtDjvvq2egyS19yJfmswSuTAGFlbknvdEDUvjN5L+Xyr/d7WcgCzfVAF0yoXIlUqnAlw==@linaro.org
+X-Gm-Message-State: AOJu0YzoaKfejpx3ETR+icVjh8oOwidSbo1CYf3GGmpao/UR6AatwSP/
+	FXI3b3U5Jy8iU9dvuFdT4X1bkyhxrO9Hdy8Kw6lpQCdXWB85rlwUTOa2nItRL7Fozw==
+X-Gm-Gg: ASbGncs7kVWOBm2YY0xX8crWK6YhE080nOhQWgpZDVmjX8dBuaSwGyftyEt4eQ+MRu6
+	4p80JuImG/bG9O0f1U4OB99P6nXClPJZV0Sob6tjh1okjLPl2qFbW+VIchdwq1fEyYacl7yES8x
+	PEUbGzqN1/NTBSOUoSjyjAS1xwCItY9krOWxWAqNfnTOmXQCz/ydcdIRT/EYBUcMZIzhNMru3vm
+	KQVEtGbH4oxGrVUzmOoDKPU9M0zk3SFALLZ//zreqRJGKmE7igRFSWAmzariByqbGbvrGSt5W3A
+	T0xTKHrG9i9G8+pWX/b2wX1s/T84Xu3aiMnBSp7+KoPv
+X-Google-Smtp-Source: AGHT+IG0vzDaHZgnC6rKOEx/scdI1YP63Fg9bCy7lK0T8agjJCI/Ay2Ce96All1W1vTYmlDF4RvBEw==
+X-Received: by 2002:a17:903:41ce:b0:223:f9a4:3f99 with SMTP id d9443c01a7336-22780dacaedmr15783575ad.29.1742509817000;
+        Thu, 20 Mar 2025 15:30:17 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22780f4581csm3370145ad.59.2025.03.20.15.30.10
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22780f4581csm3370145ad.59.2025.03.20.15.30.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 15:30:10 -0700 (PDT)
+        Thu, 20 Mar 2025 15:30:16 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -90,222 +90,46 @@ Cc: kvm@vger.kernel.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 00/30] single-binary: start make hw/arm/ common
-Date: Thu, 20 Mar 2025 15:29:32 -0700
-Message-Id: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 03/30] exec/cpu-all: move cpu_copy to linux-user/qemu.h
+Date: Thu, 20 Mar 2025 15:29:35 -0700
+Message-Id: <20250320223002.2915728-4-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
+References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: lblWo+C0MWrx
+X-TUID: PG+tNVbEfT59
 
-This series focuses on removing compilation units duplication in hw/arm. We
-start with this architecture because it should not be too hard to transform it,
-and should give us some good hints on the difficulties we'll meet later.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ include/exec/cpu-all.h | 2 --
+ linux-user/qemu.h      | 3 +++
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-We first start by making changes in global headers to be able to not rely on
-specific target defines. In particular, we completely remove cpu-all.h.
-We then focus on removing those defines from target/arm/cpu.h.
-
-From there, we modify build system to create a new hw common library (per base
-architecture, "arm" in this case), instead of compiling the same files for every
-target.
-
-Finally, we can declare hw/arm/boot.c, and most of the boards as common as a
-first step for this part.
-
-- Based-on: 20250317183417.285700-1-pierrick.bouvier@linaro.org
-("[PATCH v6 00/18] make system memory API available for common code")
-https://lore.kernel.org/qemu-devel/20250317183417.285700-1-pierrick.bouvier@linaro.org/
-- Based-on: 20250318213209.2579218-1-richard.henderson@linaro.org
-("[PATCH v2 00/42] accel/tcg, codebase: Build once patches")
-https://lore.kernel.org/qemu-devel/20250318213209.2579218-1-richard.henderson@linaro.org
-
-v2:
-- rebase on top of Richard series
-- add target include in hw_common lib
-- hw_common_lib uses -DCOMPILE_SYSTEM_VS_USER introduced by Richard series
-- remove cpu-all header
-- remove BSWAP_NEEDED define
-- new tlb-flags header
-- Cleanup i386 KVM_HAVE_MCE_INJECTION definition + move KVM_HAVE_MCE_INJECTION
-- remove comment about cs_base in target/arm/cpu.h
-- updated commit message about registers visibility between aarch32/aarch64
-- tried remove ifdefs in target/arm/helper.c but this resulted in more a ugly
-  result. So just comment calls for now, as we'll clean this file later.
-- make most of the boards in hw/arm common
-
-Pierrick Bouvier (30):
-  exec/cpu-all: remove BSWAP_NEEDED
-  exec/cpu-all: extract tlb flags defines to exec/tlb-flags.h
-  exec/cpu-all: move cpu_copy to linux-user/qemu.h
-  include/exec/cpu-all: move compile time check for CPUArchState to
-    cpu-target.c
-  exec/cpu-all: remove system/memory include
-  exec/cpu-all: remove exec/page-protection include
-  exec/cpu-all: remove tswap include
-  exec/cpu-all: remove exec/cpu-interrupt include
-  exec/cpu-all: remove exec/cpu-defs include
-  exec/cpu-all: remove exec/target_page include
-  exec/cpu-all: remove hw/core/cpu.h include
-  accel/tcg: fix missing includes for TCG_GUEST_DEFAULT_MO
-  accel/tcg: fix missing includes for TARGET_HAS_PRECISE_SMC
-  exec/cpu-all: remove cpu include
-  exec/cpu-all: transfer exec/cpu-common include to cpu.h headers
-  exec/cpu-all: remove this header
-  exec/target_page: runtime defintion for TARGET_PAGE_BITS_MIN
-  accel/kvm: move KVM_HAVE_MCE_INJECTION define to kvm-all.c
-  exec/poison: KVM_HAVE_MCE_INJECTION can now be poisoned
-  target/arm/cpu: always define kvm related registers
-  target/arm/cpu: flags2 is always uint64_t
-  target/arm/cpu: define same set of registers for aarch32 and aarch64
-  target/arm/cpu: remove inline stubs for aarch32 emulation
-  meson: add common hw files
-  hw/arm/boot: make compilation unit hw common
-  hw/arm/armv7m: prepare compilation unit to be common
-  hw/arm/digic_boards: prepare compilation unit to be common
-  hw/arm/xlnx-zynqmp: prepare compilation unit to be common
-  hw/arm/xlnx-versal: prepare compilation unit to be common
-  hw/arm: make most of the compilation units common
-
- meson.build                             |  37 +++++++-
- accel/tcg/internal-target.h             |   1 +
- accel/tcg/tb-internal.h                 |   1 -
- hw/s390x/ipl.h                          |   2 +
- include/exec/cpu_ldst.h                 |   1 +
- include/exec/exec-all.h                 |   1 +
- include/exec/poison.h                   |   4 +
- include/exec/target_page.h              |   3 +
- include/exec/{cpu-all.h => tlb-flags.h} |  38 +-------
- include/hw/core/cpu.h                   |   2 +-
- include/qemu/bswap.h                    |   2 +-
- include/system/kvm.h                    |   2 -
- linux-user/qemu.h                       |   3 +
- linux-user/sparc/target_syscall.h       |   2 +
- linux-user/syscall_defs.h               |   2 +-
- target/alpha/cpu.h                      |   4 +-
- target/arm/cpu.h                        |  40 ++------
- target/arm/internals.h                  |   1 +
- target/avr/cpu.h                        |   4 +-
- target/hexagon/cpu.h                    |   3 +-
- target/hppa/cpu.h                       |   5 +-
- target/i386/cpu.h                       |   5 +-
- target/i386/hvf/vmx.h                   |   1 +
- target/loongarch/cpu.h                  |   4 +-
- target/m68k/cpu.h                       |   4 +-
- target/microblaze/cpu.h                 |   4 +-
- target/mips/cpu.h                       |   4 +-
- target/openrisc/cpu.h                   |   4 +-
- target/ppc/cpu.h                        |   4 +-
- target/ppc/mmu-hash32.h                 |   2 +
- target/ppc/mmu-hash64.h                 |   2 +
- target/riscv/cpu.h                      |   4 +-
- target/rx/cpu.h                         |   4 +-
- target/s390x/cpu.h                      |   4 +-
- target/sh4/cpu.h                        |   4 +-
- target/sparc/cpu.h                      |   4 +-
- target/tricore/cpu.h                    |   3 +-
- target/xtensa/cpu.h                     |   4 +-
- accel/kvm/kvm-all.c                     |   5 +
- accel/tcg/cpu-exec.c                    |   3 +-
- accel/tcg/cputlb.c                      |   1 +
- accel/tcg/tb-maint.c                    |   1 +
- accel/tcg/translate-all.c               |   1 +
- accel/tcg/user-exec.c                   |   2 +
- bsd-user/elfload.c                      |   6 +-
- cpu-target.c                            |   5 +
- hw/alpha/dp264.c                        |   1 +
- hw/alpha/typhoon.c                      |   1 +
- hw/arm/armv7m.c                         |  12 ++-
- hw/arm/boot.c                           |   2 +
- hw/arm/digic_boards.c                   |   2 +-
- hw/arm/smmuv3.c                         |   1 +
- hw/arm/xlnx-versal.c                    |   2 -
- hw/arm/xlnx-zynqmp.c                    |   2 -
- hw/hppa/machine.c                       |   1 +
- hw/i386/multiboot.c                     |   1 +
- hw/i386/pc.c                            |   1 +
- hw/i386/pc_sysfw_ovmf.c                 |   1 +
- hw/i386/vapic.c                         |   1 +
- hw/loongarch/virt.c                     |   1 +
- hw/m68k/next-cube.c                     |   1 +
- hw/m68k/q800.c                          |   1 +
- hw/m68k/virt.c                          |   1 +
- hw/openrisc/boot.c                      |   1 +
- hw/pci-host/astro.c                     |   1 +
- hw/ppc/e500.c                           |   1 +
- hw/ppc/mac_newworld.c                   |   5 +-
- hw/ppc/mac_oldworld.c                   |   5 +-
- hw/ppc/ppc.c                            |   1 +
- hw/ppc/ppc_booke.c                      |   1 +
- hw/ppc/prep.c                           |   1 +
- hw/ppc/spapr_hcall.c                    |   1 +
- hw/ppc/spapr_ovec.c                     |   1 +
- hw/riscv/riscv-iommu-pci.c              |   1 +
- hw/riscv/riscv-iommu.c                  |   1 +
- hw/s390x/s390-pci-bus.c                 |   1 +
- hw/s390x/s390-pci-inst.c                |   1 +
- hw/s390x/s390-skeys.c                   |   1 +
- hw/sparc/sun4m.c                        |   7 +-
- hw/sparc64/sun4u.c                      |   7 +-
- hw/xtensa/pic_cpu.c                     |   1 +
- linux-user/elfload.c                    |   8 +-
- monitor/hmp-cmds-target.c               |   1 +
- semihosting/uaccess.c                   |   2 +-
- target/alpha/helper.c                   |   2 +
- target/arm/gdbstub64.c                  |   1 +
- target/arm/helper.c                     |   6 ++
- target/arm/hvf/hvf.c                    |   1 +
- target/arm/ptw.c                        |   1 +
- target/arm/tcg/helper-a64.c             |   1 +
- target/arm/tcg/hflags.c                 |   4 +-
- target/arm/tcg/mte_helper.c             |   1 +
- target/arm/tcg/sve_helper.c             |   1 +
- target/arm/tcg/tlb-insns.c              |   1 +
- target/avr/helper.c                     |   2 +
- target/hexagon/translate.c              |   1 +
- target/i386/arch_memory_mapping.c       |   1 +
- target/i386/helper.c                    |   2 +
- target/i386/hvf/hvf.c                   |   1 +
- target/i386/kvm/hyperv.c                |   1 +
- target/i386/kvm/kvm.c                   |   1 +
- target/i386/kvm/xen-emu.c               |   1 +
- target/i386/sev.c                       |   1 +
- target/i386/tcg/system/excp_helper.c    |   2 +
- target/i386/tcg/system/misc_helper.c    |   1 +
- target/i386/tcg/system/tcg-cpu.c        |   1 +
- target/i386/xsave_helper.c              |   1 +
- target/loongarch/cpu_helper.c           |   1 +
- target/loongarch/tcg/translate.c        |   1 +
- target/m68k/helper.c                    |   1 +
- target/microblaze/helper.c              |   1 +
- target/microblaze/mmu.c                 |   1 +
- target/mips/tcg/system/cp0_helper.c     |   1 +
- target/mips/tcg/translate.c             |   1 +
- target/openrisc/mmu.c                   |   1 +
- target/ppc/excp_helper.c                |   1 +
- target/ppc/mmu-book3s-v3.c              |   1 +
- target/ppc/mmu-hash64.c                 |   1 +
- target/ppc/mmu-radix64.c                |   1 +
- target/riscv/cpu_helper.c               |   1 +
- target/riscv/op_helper.c                |   1 +
- target/riscv/pmp.c                      |   1 +
- target/riscv/vector_helper.c            |   2 +
- target/rx/cpu.c                         |   1 +
- target/s390x/helper.c                   |   1 +
- target/s390x/ioinst.c                   |   1 +
- target/s390x/tcg/mem_helper.c           |   1 +
- target/sparc/ldst_helper.c              |   1 +
- target/sparc/mmu_helper.c               |   2 +
- target/tricore/helper.c                 |   1 +
- target/xtensa/helper.c                  |   1 +
- target/xtensa/mmu_helper.c              |   1 +
- target/xtensa/op_helper.c               |   1 +
- target/xtensa/xtensa-semi.c             |   1 +
- tcg/tcg-op-ldst.c                       |   2 +-
- hw/arm/meson.build                      | 117 ++++++++++++------------
- 136 files changed, 302 insertions(+), 205 deletions(-)
- rename include/exec/{cpu-all.h => tlb-flags.h} (78%)
-
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index d2895fb55b1..74017a5ce7c 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -32,8 +32,6 @@
+ #include "exec/cpu-defs.h"
+ #include "exec/target_page.h"
+ 
+-CPUArchState *cpu_copy(CPUArchState *env);
+-
+ #include "cpu.h"
+ 
+ /* Validate correct placement of CPUArchState. */
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 5f007501518..948de8431a5 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -362,4 +362,7 @@ void *lock_user_string(abi_ulong guest_addr);
+ #define unlock_user_struct(host_ptr, guest_addr, copy)		\
+     unlock_user(host_ptr, guest_addr, (copy) ? sizeof(*host_ptr) : 0)
+ 
++/* Clone cpu state */
++CPUArchState *cpu_copy(CPUArchState *env);
++
+ #endif /* QEMU_H */
 -- 
 2.39.5

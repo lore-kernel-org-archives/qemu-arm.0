@@ -1,214 +1,113 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp235728njc;
-        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV+0wD66BeOpbDBAHW9HXd211LpJ9sK4qnYqi4kgPmaH2kw8fOE6YbAarQZ/eiMItH3MjKy61WM7sR5+g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpNEzjc0u4pUhYf6NYIsdplrzmRStd6qiLv/Q29aCHCXCnezMDdnNNxd/GUfXkSn6SihkC
-X-Received: by 2002:a05:622a:2588:b0:476:8db0:8caf with SMTP id d75a77b69052e-4771dd5d84fmr42928221cf.1.1742556354795;
-        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742556354; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp381547njc;
+        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVsp9py14azpX3ulsrwvDFWpPOrW+1yJbA7lkMX3cTHp1SMrtD24ju3aOQbKBbmTKIaxFhjcrWek3tRuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3hda2bA1mxurMDKeawW2sNaC9CCx2+QhCmGZL2Od0qSQ4JiuPQ9dDRnv3vnnYxJuCYVWO
+X-Received: by 2002:a05:620a:4588:b0:7c5:5909:18ca with SMTP id af79cd13be357-7c5ba19023fmr515855385a.26.1742569529057;
+        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742569529; cv=none;
         d=google.com; s=arc-20240605;
-        b=PKXuGOlMvtxPB2AZiHWK6+OUVeXj6pGbnjOPya5E5tb0GGk9RlaX+l6KOHbvk7focN
-         /8atdWGMTYufdebIc3yRIkFQvwSOsebs7cJOcPBLwO4l7QUSQBu7lM3yPq3uJ0s/tu4r
-         LOSfhdFnc323FPukon3fp7tFEspL7MXE4OxlKU6NvJYsHT9o0C8YQbP+ZrOiItZSngRL
-         sX7loSNwTildvHRxTUulVoe2IfQrCe6atVvYyVg6noawRGMo9UTm8QYJ53xu5901PXBx
-         OSC5dDg8QlyZgoYcFQOpu107U4tddB003ZExbzBeB4/cueLxOd8qw+X8xInHcjUg9xwh
-         IPkw==
+        b=PfFeN7fov7e1FD7OqB4Ks9LSQPlf5LYbuf1alv9CxLAMpFyDUEw7fpNndxmGMwqjRr
+         AdseU8Wb6kTF9t1HSxOeavYEotqqkyECHrdLLH/oZYs1V1sCIdKpmImkoPwY8tZW8FmB
+         jyqg544hCs50nm9Ojaj3gMNaMKetE6x9aBZB0pnEcj3bARH7TsRsHcQ5EsaHCxDmPm1Z
+         hzzjt5jErkkQYuNmUDt8LxXWuoUAL+eTYDJdvDMC492imPVm/PS0tlBfuswlLI4hdsU7
+         Fu3TveydbTGWEVuJJ6x2pMMCY0teO1JLVWbL8hhL8LjKl48WvSau6VVw4pcRBsni1OfZ
+         iZLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
-        fh=nkUwK14Rko481OoP9lZW22Eno4pNVh/EeqL/ISZn+LU=;
-        b=CYM2RPN+UHVbg9Ys4jpdHhkwZ00ZcFDwzV3tAQ5+IbSGS1ULLcUcJmqUpuk3Qd0aDe
-         F0nJFLw3BY9rKB+OXoebX1xgB9rFHWSzVRbp5WphQHP/3/L9bUS+5uF1Fjo7FAym7uPP
-         dIJuQSh+xgsSgA/K4A9hwfhWxMcvmzHlnuhUn8tNgQmnzJOSaRWYIQFXj41PGDUPnXLW
-         cw5j4F6Tz6ukvdQviiZ89iEZv/tuzl6DXEI0gk/52YwOd7thWyec+wgfE2mUgnopmuu8
-         PT7VPkPIUyNupH7ZvTIhKbnaddFOXP180q7cAdIUL1lyFuxe8Okyj9yeMr5g7uNK78B3
-         mnjw==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=5R+ajQwnCzOTnEk7/Bcr1/crlPPyRTCprYEV/8jk2A8=;
+        fh=Os6bOJX8NNd8nTecMiYpYmU1dwrK2S4cq+Zk1WZZsoc=;
+        b=U8mwAME0YQpNdyGCoDc4fOm1qHD1LyUu9Yvh8uwGJFTqhE2kTKlvAz9CIDaVMHGjWS
+         Moex7MfZLpv5AviGuXQuGzPgOL7RxLXjvKqH7TKFQ1qWbT5h19dgEcsBAzOEWIeh8Ru+
+         DpXfGQQFpEElB9G/kaxVGJBnX8Dw1x8O23a1UlTuh763uhGmGRYpafU3QEwU8W48z+wS
+         zcgwitGM7DPvt7rHpP0r61psL2TdC9vt4LBy0dsxMtBU9J0hviUMUzlc/KvE9jcmIy1s
+         Fp3tUu94y4CkOt9+FoBkxcm7/DAiceeLo/JDCRpLx1ndHUMkBlZ5SmgVpqkMcBYP5Jef
+         rmOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6i5iEGG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4771d63ab7csi17586021cf.517.2025.03.21.04.25.54
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WR5UjkfQ;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b93474e5si215703785a.273.2025.03.21.08.05.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6i5iEGG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tvaVO-0003z5-Uw; Fri, 21 Mar 2025 07:25:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tvaVJ-0003vd-4f
- for qemu-devel@nongnu.org; Fri, 21 Mar 2025 07:25:33 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tvaVG-0004P0-AE
- for qemu-devel@nongnu.org; Fri, 21 Mar 2025 07:25:32 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43d0618746bso12611005e9.2
- for <qemu-devel@nongnu.org>; Fri, 21 Mar 2025 04:25:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1742556329; x=1743161129; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
- b=O6i5iEGGX5ipDvgPxkTufU2YNGxN1dr8Uxy7Lzluxr4+UHIUkOUnaSU7pZ93kd+G9p
- 3JvME4u+hKabGBuscYPgCT+nPxStBtLeZibenh0mJWGpR4w9iybI1iPAUGS06QT22v6i
- JPlGjZtYlPYFUBRNmCAspBM+pLpLAK9cb8ies5acxes+z40tzAiV/payNsJ1WpOVPxC2
- XCvx29+S54E3DqXbhY0N6bXTA5pISwnUAQPdeso/BHZhjCBz3PKnW2V2NsDVV8l1hvnB
- YPinfweBxRSzyE5xuz/7Ll978O3zMHcZkXc7+g3G/hrZf0SBHrmYsvVel3ZOM0n3U0r1
- UQow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742556329; x=1743161129;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
- b=G2d4yA9Syl1FSLgDxkdL+IFiaVjObMJ1PQDT/eo8J97mu9jyWnPmUsYS3i95rcu5YP
- 6nteATDZN/u1ix+fYog1WbJa4us3n73SBAeN07kLGezJRi9szDlCe6UBlf/ZNVXLlnrL
- xxg6Qe7ZBmsxMj84DOeG5s2rtwaWiN7rQGSjL0JF1J65CW+2PURhogQevJv+qUrTKX4p
- DCKt3yvcSssIB0fbArzgrU8UXD+7efaqNEOIPk2XZEWWicoeSUrs+IeB/nP8IThmEMoi
- REda+rg9Alm+yr2L59uv8STePkyO1p0+Hn3e+AFyDAtBS/P0pWkn5HiwHegrtUSy1crk
- NDQw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXSlqz0bRZd1vOze3jDYVM8/g0OtngRPwndAG7I1XCQs2AaYpfZX0rC+TiYer0295I8sO/yW5G8V114@nongnu.org
-X-Gm-Message-State: AOJu0YwNyRO9JxT6acghIYVM0ouW5qSin597Xp1YcyTQfMvg8U/UEToO
- 4w71gw6anhR4abNcvneW7giBRo14+YTo1OT3yi5yTE8HJZkCge63YKJPMbksryOw0QFiRecpaRJ
- 2
-X-Gm-Gg: ASbGncsoTgEHOfGjiYH78K5/+fvbwZQif6KYF6SzdhQEDXMzXrjVWnNdpEEBak4oOsn
- jhYu3qjBFi7tVoq2LK09/9TPeWjV1ORdQl3lIbnoCxRMmU5Uehkjyr94D5742AWAfSQSCm72maw
- nR/rEU6pPaetdty/M08unUeRTGfmMEojAzMhdIB30Mfi7LunTED2Hu/qRS+2ASIEhvi6Af/dml5
- H7M1UrC+HVz72bSYnup0yFOrSWFlQktPkSyQCKxhSrj7AhcJbj74edi+I414jhtYh7Hj268O0fs
- RqYOB/vmQMwTcSoLlbJ4zFbtmQ1oIVsIapZI510Bn+Q6+O/8jDQ=
-X-Received: by 2002:a5d:47a5:0:b0:390:fc83:a070 with SMTP id
- ffacd0b85a97d-3997f8a4e9cmr2587541f8f.0.1742556328752; 
- Fri, 21 Mar 2025 04:25:28 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9e6767sm2132614f8f.66.2025.03.21.04.25.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Mar 2025 04:25:28 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-rust@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 3/3] rust: pl011: Check size of state struct at compile time
-Date: Fri, 21 Mar 2025 11:25:23 +0000
-Message-ID: <20250321112523.1774131-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250321112523.1774131-1-peter.maydell@linaro.org>
-References: <20250321112523.1774131-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WR5UjkfQ;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1742569528;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5R+ajQwnCzOTnEk7/Bcr1/crlPPyRTCprYEV/8jk2A8=;
+	b=WR5UjkfQE/ayQEXSY7NV0YoL3jLhd0Uzr4i0ua2svf3NWZtK3wStFACdEzDNhhZyOM4QH4
+	r8PUuxC+rY/eQ/lzPCMDl/0bA5YlYAf5VPu5JXUajrv8R+2yimvOIgzC8Wv//LbIvaczCg
+	Rekn8QGcGTvvPklWJg//7Umca/sW8Dw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-137-LzjtJHa7P2S4k7YUT17pWg-1; Fri,
+ 21 Mar 2025 11:05:24 -0400
+X-MC-Unique: LzjtJHa7P2S4k7YUT17pWg-1
+X-Mimecast-MFC-AGG-ID: LzjtJHa7P2S4k7YUT17pWg_1742569522
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6CC06180AF6C;
+	Fri, 21 Mar 2025 15:05:21 +0000 (UTC)
+Received: from localhost (unknown [10.67.24.51])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 158E81828A83;
+	Fri, 21 Mar 2025 15:05:18 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Marc Zyngier <maz@kernel.org>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
+ philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 00/14] arm: rework id register storage
+In-Reply-To: <86plino2ru.wl-maz@kernel.org>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250311162824.199721-1-cohuck@redhat.com>
+ <86plino2ru.wl-maz@kernel.org>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Fri, 21 Mar 2025 16:05:12 +0100
+Message-ID: <871puqv2zb.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vmuYIBd+YlKY
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: wK5sjzk6ejJ+
 
-The PL011 device's C implementation exposes its PL011State struct to
-users of the device, and one common usage pattern is to embed that
-struct into the user's own state struct.  (The internals of the
-struct are technically visible to the C user of the device, but in
-practice are treated as implementation details.)
+On Tue, Mar 11 2025, Marc Zyngier <maz@kernel.org> wrote:
 
-This means that the Rust version of the state struct must not be
-larger than the C version's struct; otherwise it will trip a runtime
-assertion in object_initialize_type() when the C user attempts to
-in-place initialize the type.
+> On Tue, 11 Mar 2025 16:28:10 +0000,
+> Cornelia Huck <cohuck@redhat.com> wrote:
+>> 
+>>   - I'm open to changing the source of the definitions from the sysregs
+>>     file to the JSON definitions published by Arm; however, I first wanted
+>>     to get the code using it right -- we can switch out the code generating
+>>     the file to use a different source easily later on, and I'd also like
+>>     to steal parts of the script from Linux once integrated (which I think
+>>     hasn't happened yet?)
+>
+> I don't think there is a real appetite to have that script merged in
+> the kernel. My current plan is to maintain it separately.
+>
+> But by any mean, take it and do whatever you want with it.
 
-Add a compile-time assertion on the Rust side, so that if we
-accidentally make the Rust device state larger we know immediately
-that we need to expand the padding in the C version of the struct.
-
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-v1->v2: fix alpha order in 'use'; use 'size_of' and
-'qemu_api::bindings::PL011State rather than 'mem::size_of'
-and 'bindings::PL011State'.
----
- rust/wrapper.h                   | 1 +
- rust/hw/char/pl011/src/device.rs | 9 ++++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/rust/wrapper.h b/rust/wrapper.h
-index d927ad6799d..d4fec546571 100644
---- a/rust/wrapper.h
-+++ b/rust/wrapper.h
-@@ -65,3 +65,4 @@ typedef enum memory_order {
- #include "exec/memattrs.h"
- #include "qemu/timer.h"
- #include "exec/address-spaces.h"
-+#include "hw/char/pl011.h"
-diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
-index f137b49feaf..bf88e0b00a0 100644
---- a/rust/hw/char/pl011/src/device.rs
-+++ b/rust/hw/char/pl011/src/device.rs
-@@ -2,7 +2,7 @@
- // Author(s): Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
- // SPDX-License-Identifier: GPL-2.0-or-later
- 
--use std::{ffi::CStr, ptr::addr_of_mut};
-+use std::{ffi::CStr, mem::size_of, ptr::addr_of_mut};
- 
- use qemu_api::{
-     chardev::{CharBackend, Chardev, Event},
-@@ -12,6 +12,7 @@
-     prelude::*,
-     qdev::{Clock, ClockEvent, DeviceImpl, DeviceState, Property, ResetType, ResettablePhasesImpl},
-     qom::{ObjectImpl, Owned, ParentField},
-+    static_assert,
-     sysbus::{SysBusDevice, SysBusDeviceImpl},
-     vmstate::VMStateDescription,
- };
-@@ -124,6 +125,12 @@ pub struct PL011State {
-     pub migrate_clock: bool,
- }
- 
-+// Some C users of this device embed its state struct into their own
-+// structs, so the size of the Rust version must not be any larger
-+// than the size of the C one. If this assert triggers you need to
-+// expand the padding_for_rust[] array in the C PL011State struct.
-+static_assert!(size_of::<PL011State>() <= size_of::<qemu_api::bindings::PL011State>());
-+
- qom_isa!(PL011State : SysBusDevice, DeviceState, Object);
- 
- #[repr(C)]
--- 
-2.43.0
-
+Thanks for the info; I'll look at it again once the rest of this series
+here is done.

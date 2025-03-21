@@ -1,151 +1,213 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp17645njc;
-        Thu, 20 Mar 2025 18:27:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWikkfro5LWxi163w6NtLhAbX2bg+ohqGcryCKhQkT/Q/Z30yeKXBUnID46cqQ9QoH8V78K66X8GTm+SA==@linaro.org
-X-Google-Smtp-Source: AGHT+IERFTqKxa7K19XmyH2adwuadbCtT4GnggmXA35RXoQVGyebFgqIxyJ302gdM0/uLeKeZGOT
-X-Received: by 2002:a05:620a:8081:b0:7c3:d677:dcd2 with SMTP id af79cd13be357-7c5ba240a0amr246970085a.51.1742520425039;
-        Thu, 20 Mar 2025 18:27:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742520425; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp45652njc;
+        Thu, 20 Mar 2025 19:55:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVkrj8CKrTnnbNeUU7w2N3GRXPhBjzJr2T/KcWXgQKn/XKY89JDY9trIorCOVDJy3+3HWQHFoMKIgVVQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3E/1mPpZWc62jMdB9886cRQHTHdvO4r2681q8JPRsSW+DjeYrf36NqGdDLxW5Iv41IXgS
+X-Received: by 2002:a05:6214:dca:b0:6e8:f905:aff0 with SMTP id 6a1803df08f44-6eb3f33c8ebmr24542716d6.35.1742525713306;
+        Thu, 20 Mar 2025 19:55:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1742525713; cv=pass;
         d=google.com; s=arc-20240605;
-        b=DCNAs0N5z2K2xF8vEFX1uUSLSsPRWyfm+tM/Lg1i5my8VoJ/z1f8JDqeWTKXPpxoBL
-         7jWY0fMwNiOotDRdaSRvLuRNzWaprIWwnDgLWw5waTIjLz0O1e/Ax82nq0QJmDtgMhzx
-         vN6WNHlxdYx0Hqgp8q0X8GgbZ6JNWyS4mYX+ft2zcmWrVA22Dk6awT0GMQpQ5grfxmO3
-         ZF/qiniazZXN149tnp5hxofEONwWWFMDSccaIryZeN/gxgz7Rt24kEvsSPr/MXt/aPZf
-         sTp8hNtoquG9OnheVfQz0dKuogS8XR6h5mXZq1EPW9RjnPD09KqN9037e1XPMmmPBrbb
-         Cs1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=KvQIJjFHIcf8+yDn0DhdqdsJ08W+RJl5nLfQbFyepZqBLhc34s7Flmm55uQchSUfph
+         AP2cvmx29rtwdgr0xEtBwLbK3BO1NdWJJs8lYp0Lev4kIze7i5s2ulCpbm3udn7I71Yf
+         BpC5YSe49ejZYVEz36EqzY+CMqaZxvf3xDOGUIUbSzxFBrSU7m5wpUoR2UiIW+Xx2akf
+         ISmGR4RHWzDo53NrKuc7//RTrY1aTXcV2MHfb00rRk1iIXW5H9z6yTs89IjwoHlPdnOf
+         3MRl2tqUZCmy4C4Dct3TYAuXsup7D5KD+5DfZrJdA3+/TAdAktgBjuyffek/0fxIP3lo
+         KsiQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=DPzH+pbWEdmaE+tb6lEZgkQVsUFoZg4eoMTkUxT1Jx0=;
-        fh=tv6rb5lFHriwFm2Lqc7MKIjs2gNznMNFHFgIzpXrUI8=;
-        b=WMsV1QyoFzDzcWhczI8EBH0ynyUYHypTiSL/cvqHLug/VM7urzWXPROYvTcHX1ZhhQ
-         p0tTwWg4+mVHeKQqShGs9cAg94JK5Ot5Yc+OcBiA119MIBYm3puy7JcfeWvzzIh6EgH4
-         G0x0rHh3LMxhahf0qS6PdNECo7lowNtRl4FeWQnJFwJmG328ARYYZhEmnfcYFBxApGDp
-         qPAfZ53VP3npybgS1wz5nnlSVUqP4J6XpU41Vro+Fyp66LTYsiLaWsOysFpvtWV22gaE
-         j8AG5KgHLM1xEi1RSu5QnN/sdA7CtjBaP2ZHKhnhfITeYJNO6wW+d8FbWbuATwfP1HzW
-         dNew==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=vgAH5qDxZ36HVHrZsnkFWU4CTFlBuFs/b/a1BKECNrM=;
+        fh=P/g+kTUW+s4mkE+kIha88BM4QHPFj0V3iiVMqTGtdOk=;
+        b=PrqxOo9uwVtkycjDhW+bCcQ8cAGexzRm7ou228QYlILGvY5IEddK6kukP+pO3L/sBZ
+         FDTTgVEMDOnAJf9lqkHr2H04cx5IuCT0d+CQpGqOMGWFui7NKFbbiMh2m6nzlmS7J4D7
+         Iu8Dbh83jxvgKCjjzYtiPet19dlgEg21USg9BF4oHhMbkBelbEQFHXvsJ7/oRLzDFz/+
+         dHcdiKPGqNqXiKLMMBzgoHcROW5O8Jdtqdp4fnV45FwE66JrcOt0tuF15mVMft1eZBOw
+         dUC8fXjUtwL13NKKLoD33mCpXZkg4NtFJKNj/bCi1tCmSHA6HpfYsa1oNm9Xu+5aVoRl
+         gRbA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apUX5t1C;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b="h/dTtkd5";
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b93854ddsi94884685a.642.2025.03.20.18.27.04
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3eff37fcsi10631406d6.201.2025.03.20.19.55.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Mar 2025 18:27:05 -0700 (PDT)
+        Thu, 20 Mar 2025 19:55:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=apUX5t1C;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b="h/dTtkd5";
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tvR9y-0004rJ-K0; Thu, 20 Mar 2025 21:26:54 -0400
+	id 1tvSXH-0005az-7g; Thu, 20 Mar 2025 22:55:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1tvR9w-0004r4-SK
- for qemu-arm@nongnu.org; Thu, 20 Mar 2025 21:26:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1tvSXF-0005ac-Dk; Thu, 20 Mar 2025 22:55:01 -0400
+Received: from mail-tyzapc01on20718.outbound.protection.outlook.com
+ ([2a01:111:f403:2011::718]
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1tvR9v-0008Rb-4q
- for qemu-arm@nongnu.org; Thu, 20 Mar 2025 21:26:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742520410;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DPzH+pbWEdmaE+tb6lEZgkQVsUFoZg4eoMTkUxT1Jx0=;
- b=apUX5t1CCduf3yAbeUqWVolFZg5g9RNq51HyKYqvICBJbJ32m4MMdISw5TmRU3/Vl5aJ9P
- TPMyqYCLhQa3Rh0yWIHvMWK5vXA53utcaStaGt+AQw5mQwlTKsh8oKemZOGULm4isXXw6b
- 8lJyQCfCxwWFVm2eIAOGAjkwZfrh2no=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-675-O3c0jB0dNo6Mu6sZSAzlXg-1; Thu, 20 Mar 2025 21:26:43 -0400
-X-MC-Unique: O3c0jB0dNo6Mu6sZSAzlXg-1
-X-Mimecast-MFC-AGG-ID: O3c0jB0dNo6Mu6sZSAzlXg_1742520402
-Received: by mail-il1-f199.google.com with SMTP id
- e9e14a558f8ab-3d44b221f0dso27926055ab.1
- for <qemu-arm@nongnu.org>; Thu, 20 Mar 2025 18:26:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742520402; x=1743125202;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DPzH+pbWEdmaE+tb6lEZgkQVsUFoZg4eoMTkUxT1Jx0=;
- b=KCkxm5J6QSxN1ihbDlJ+2CnqTKjsdMiymxTgzrvdggMYNhp+HHi1v/Ech+8ZhHFgkt
- Y2JHiRkMtOajvoTqd5Suqosbz2zItponU7aSMHozrhHigTefILtZ+KTEIN9J2z10pXnX
- jnuAIMG1JVgFbvl7pXH/XmloRwqPTVzd7F96agXGsyQBY49LAoQAU6xqSoNY+qQzV7zu
- +GloA5JbIv3s+qkVm9iO46E9YikZBIfGPjsAhFcSbLz84TZ5v4w8GhLRX2TrmXxY7gcq
- +9IezxRy9Eb1ZrbUbX9y4OGOxsCQe7IUkxAAcATh+YZiOma5TKgprVCeJIU44DgGeAWn
- /Pxg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWG2Pn+ePGcOLZqzHIkwcWpSjUPBEnG8qPY8nqdI02+vgOQ0+Hg7bOhmhf65iNOw14E8m7ATeA3sw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyesqehtz9tz9oPNmot/pVirat5ShfBak7okNq3r35AsqYqaBel
- mdCdq+tQhkpQPFKKMEGqP19hnMZH++Bkd/IogtGwX31EvkHBsL3D+ZMuBu7GYv4DXiA3hK7nfXR
- FjkD80Q8pOl7qlJ9P+CZCbeM6CULIphOGRJ+hfP6TQJDk3WnWig==
-X-Gm-Gg: ASbGnct0P/LUE7dS8oYsc35C3bwdk/sj+Mwlzyz+9AGZW/GBpCvknacE7XcFaSzKGSq
- sqbjXOqnwo60BRAo+pN47zcPEDh9CLVM3dyjiUyfFmbLZ+uaXiEIPhvsc5KbusUqVP47je3ESV6
- zqgEa+z2lT2Junx0QGvIUwZksb5Zk007DvdZl3Oz/m/CbQOdAslfmRi3ChriMxjGaqE++fvX3vJ
- DVmkNFq9twGzgHaEWMqJ2RirH/jZla1daBlxDxNC8w/kOW0QE077IJaYrGyfL7+0WidolwUfkbS
- M+bmrveyCN/5GzMN
-X-Received: by 2002:a05:6e02:23c5:b0:3d3:d965:62c3 with SMTP id
- e9e14a558f8ab-3d5961775a9mr17939395ab.15.1742520402572; 
- Thu, 20 Mar 2025 18:26:42 -0700 (PDT)
-X-Received: by 2002:a05:6e02:23c5:b0:3d3:d965:62c3 with SMTP id
- e9e14a558f8ab-3d5961775a9mr17939265ab.15.1742520402258; 
- Thu, 20 Mar 2025 18:26:42 -0700 (PDT)
-Received: from [192.168.40.164] ([70.105.235.240])
- by smtp.gmail.com with ESMTPSA id
- e9e14a558f8ab-3d59607e92csm2063905ab.23.2025.03.20.18.26.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Mar 2025 18:26:41 -0700 (PDT)
-Message-ID: <57e53ae1-3a34-4be1-94ab-f96b765c3bb5@redhat.com>
-Date: Thu, 20 Mar 2025 21:26:39 -0400
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1tvSXA-0007YY-Ow; Thu, 20 Mar 2025 22:55:00 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CnJ3fycerAjdjjsRKXYDERxMbUW1XrvDmL0TdvFcD4M41Ik83qZNi33PWtv0ZXupaH7Xvx0ITe69ag85jgILOCWIOb+r842vAc7EC7rJq0UJuJmDTvohfb6Mt0C6r5YLjqE2LIoSXlmT60DRjYCtQc1eEFJIZ+lLw23p5hF51wIax7NrGyaTi7hE+kg6Tl6WGDgWRnVTyALIZhM0MhOLzbceNMHwh/IF4r/Pi9049kChSE1XMQeqiaF0PIxBOk+jykGHyI4DgkgB4Z8wGOpji6Xir8pUDnvWA7zlea30vSf1B7EJvZW1hp8Z/ON1EQaLDFHtt8O+QXumeS8VnYJoUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vgAH5qDxZ36HVHrZsnkFWU4CTFlBuFs/b/a1BKECNrM=;
+ b=d1m0nZYQp59qxWEgyIyonBYHdfabNBfhmcAZNAkGwGDkw2sNn7kk8Ls0L81SFQDAaqDpX6worZZsdFVrIHqb8gQh2T0mL/BmbjC1QfEtlSACifpuNe48+ZioSHZPsMfQIJMt2A7O+3434/hToR8YTPMFUdJV7xD8ElWR71crASMJT/SD9ucp1UW17mpfA0KfAEDxPfntMyV9gRTt0owZ6Uqs6rPHP4GCzkWuppYKO2Bl7W1lyHwgeSiEq05W+4LJmf12MZVKbNTECE53CerAY2gRBGE1j9VrlWUEJaV8PXzR7v6wgyfSMe5/r+1oD2zXKPFnyNInSQLG+qWKappMzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vgAH5qDxZ36HVHrZsnkFWU4CTFlBuFs/b/a1BKECNrM=;
+ b=h/dTtkd5CP6rYS+yjg50Bjb4urocxYRpgjqoFI9r9Y3DeLodIcDBLHXtl1NQdxgAlk5NluJHMQezZ71zHH3K6dkfxY+OkGlH469FX8LTznMFp6Z/gpsqALk7puiExU/fFeUL25sibKUxQTbZ0lsC1Hbgt07x2815TD4c7mw/RreyHzP8E3j+uWozs9RQ/+bed4kauJcUwdmzUWcVKNRAo9gXfbILbrbohnYjf6GVCWn0zDfH0L3JpDLwkjM76uHHxuuUeEO4ai+ZaW5NQQDwzek0lYVK0zXSoqmPrmedmM6fqVsK0hkhPZQl6zuwwb8R4j7UoINtBKRMej17+jr5nA==
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ (2603:1096:820:29::12) by TYZPR06MB5783.apcprd06.prod.outlook.com
+ (2603:1096:400:269::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.27; Fri, 21 Mar
+ 2025 02:54:46 +0000
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a]) by KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a%2]) with mapi id 15.20.8534.034; Fri, 21 Mar 2025
+ 02:54:45 +0000
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, "longzl2@lenovo.com"
+ <longzl2@lenovo.com>, Yunlin Tang <yunlin.tang@aspeedtech.com>
+Subject: RE: [PATCH 1/1] hw/intc/aspeed: Fix IRQ handler mask check
+Thread-Topic: [PATCH 1/1] hw/intc/aspeed: Fix IRQ handler mask check
+Thread-Index: AQHbmazg+f/7g8eK2E2+7RPGx4q6BbN84h7A
+Date: Fri, 21 Mar 2025 02:54:45 +0000
+Message-ID: <KL1PR0601MB4180B4C4C323A2C3FE5248D985DB2@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+References: <20250320092543.4040672-1-steven_lee@aspeedtech.com>
+ <20250320092543.4040672-2-steven_lee@aspeedtech.com>
+ <f6210cfe-2a3f-47be-8ff3-568c3b2fc055@kaod.org>
+In-Reply-To: <f6210cfe-2a3f-47be-8ff3-568c3b2fc055@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR0601MB4180:EE_|TYZPR06MB5783:EE_
+x-ms-office365-filtering-correlation-id: 2ff670cc-e9ea-4416-433c-08dd6823bceb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?T0RCSGtFZCs3YkpoLzhGT3lYWFRIUGpjaHNRR1NvWGQ0ai9iOWhaWDRvdFZ1?=
+ =?utf-8?B?RlVqR2pPY01tdnlnK0V1V1FSeEx6eG81SDJoTVAxNWZiZmpIaVh1ZFhOVmN5?=
+ =?utf-8?B?L0Z1SUR6eTd6VHZ4TDNUWjVOSU9BaERoandZWkl6UWh6Ry93SWFYNlVtUGIw?=
+ =?utf-8?B?MU8yM2d1VWhadmJaZXdwK21lUUhIQ0lDNGdLZVZUL01TTHMwbEpWbllRdzVD?=
+ =?utf-8?B?ZUtyV0xzSitpL0NucUZ6cXZMdjFscmdZSFJQT2lqRFI4emdVTUNTdlUvZTBj?=
+ =?utf-8?B?a2FRM25OZDQ3NjhoMGVLSjlaQXJIdE11U1ZPZ2lxZG8zRzFEMjBOV3lIc0dN?=
+ =?utf-8?B?VzdrRjNhN3cyTkR6R3paTEhNQ1Zpakg2YTZLNi9NamtGdDFMVjgyZExlSHpt?=
+ =?utf-8?B?QVFIMy91K28rMHdBekdwQ3J1QWhHYzMrdStBaDQ1Zk1EYkJjcUNIVWIyUVVw?=
+ =?utf-8?B?OUdkQzluZ29jeG5aNWNZYWxTR0RZWkhsS3RHMVArMzYrTzNXVDVhOHRFOW5C?=
+ =?utf-8?B?MWM5dzUxcGtUU3Z3bEdMMDg4MFp0b3RZckZOcnl2OE16OW9VOEpWSE9ZZG84?=
+ =?utf-8?B?NVcyZ3AyMDArQnF6QmYvSU1TbnRyR1dpMVovUkgwTDVFdkhoZFlEbStoRHQ4?=
+ =?utf-8?B?RldxV2NkT3BtMnV4Y1hZZHgwVmNLZkNLRmZDUUtrRHdTQktnRGd5VE1WQ0pl?=
+ =?utf-8?B?Vi9GVWl6blpwSnQwMVN2MktaSG1hcmJkRGJ2UlJvR09TcEJHSHNFeWFURmlI?=
+ =?utf-8?B?eEY3SmhmRjl1SFFCRWhocTFzT1dXMk1PWXBwdzluNDdBbUVuZ1NzRHV5aDkw?=
+ =?utf-8?B?RlUrWUtwcDlxeUllaFdBUUk4UTNTbGRJZ3BzNDkvM0RVZU9zZkV6UTNnd1J6?=
+ =?utf-8?B?VFZ0M0dNQ3JBSjM2Z2QyRDdWRThlWkpvUlJGRHVqRGJPODgxZ2F5KzU1YktS?=
+ =?utf-8?B?SFYyYm5OOXpSTXRsWXNod3JMSHRMVTlwdWovdVBpOTVkSUFrckUxRHFzcUFC?=
+ =?utf-8?B?Sjg4ei9xUlIyRUR6bnB0ei9nVnMwdFVmVGtWamhLWGFWK3AzcnplTkhGeEFs?=
+ =?utf-8?B?RVBndEw1ZytVQjdjZFUvOFlGdW5XZ0tnYWNkK2JvQnN5UzlBcThQc3J1MkdM?=
+ =?utf-8?B?WjRpeG90ejh4eXRuVXJzZkprRTh6dnk4VThpcnJMU3dUYTlJVm10NThIVEh3?=
+ =?utf-8?B?b1JVc095WDRvQUFsVEFSV2FhY09JQmc2ak92NktmQzhRUzNXd3ZHNDNJdDEr?=
+ =?utf-8?B?ejJQZmlqTmxxSGFiMlpLTVpZWXJqWHpOaDVEdlc1Wk9pR3VHQkF2emRZUjdC?=
+ =?utf-8?B?SFc3UmFCRGo0ejBlQmEwVk0xdGlDWUhnakt3NWlyQnI2V05pYWJXSmRZZzBv?=
+ =?utf-8?B?UGVxQThGTlVOV1JVMTR0Um5ETVlBdldxdjlvbVBHckxrN0lNY1lsSHZFdEVJ?=
+ =?utf-8?B?bHpoRDRPbUoyaE5hL2EwWUNGeFZWMEJ1Q2dHb2xZVlpyS2F6MGJNblFoSWxX?=
+ =?utf-8?B?WFVwdS9NUHZDWGZRaldaRTM5SU0zSWtRcnprTHErM25hdys2ZzhleDg3dnpj?=
+ =?utf-8?B?ZTN1eGMwRWVZUmNaNCtqVlc2Y1lWdFpjbFFHa09TYVd1R3VvZ0lXU2Z1QW4v?=
+ =?utf-8?B?Nlk4U1V2VkJwMVRxV0RtK2JhQng2cUhuY2FGWCtDclRvVVA5elI4dExYVFFJ?=
+ =?utf-8?B?aUkvQklzbzIxS3hxV1g3Q3hpcTNoVmZkUXNTN25BYUNoZUs3QThsZmdsZTB5?=
+ =?utf-8?B?YmtpTFJCQnJHd01id0FQQWwreDhENkxSbzBBOEM0S2gvOEFKa1UwYXpENFo4?=
+ =?utf-8?B?dEV2U053bERrckphQXg4VXFXZFRNamZlR0pjRWpuR2pVL0k5MEkyc0ZJNVFi?=
+ =?utf-8?B?bUJNYVE3alEzZjNvdXVJdStjSlpIVEQvSTFHKzBzRlppYWErLy9DVm0yaFZY?=
+ =?utf-8?Q?RAc+LW8z3ctWRwDc3fR9OgqKZZZy6lyR?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:KL1PR0601MB4180.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(1800799024)(376014)(366016)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WDlBQmZlMnd6aE11cnNXdnRnYU1ZcGlVa09kSVBJTVdOUEp5aUpUdnI2MmlY?=
+ =?utf-8?B?MloxM2w0cUdvWTlRS1hMZFgwMUxkZEVPOGpOa0VkUmhDZXRiM2xQQmp6OGY4?=
+ =?utf-8?B?Wk9pcFQya0JYa0dWZW5DTURVcWl0N0dNL1MyUE5CdGtJcG11V2g2R09QOHlM?=
+ =?utf-8?B?WU5ZNW1TNmVkZXdZaU1zVUloUHF5azV2RE92ajVYOVR1VTZZSVliclp1bHlu?=
+ =?utf-8?B?aHZ5R2g4Q2RKMWdwWnFuWTFSY296ZWtwcUY1YkxhNkE0YmlZRStkZ3BJTTkz?=
+ =?utf-8?B?K3A2L0s1YXpEbmxlY1BUbTdYNXZQQno2SEJEYytZQ3NreGdxSXhEM3JYbm0r?=
+ =?utf-8?B?bmtYVUhXOE5EeTVJUEFXOU9Rb01QNDV1MVIvTjZkdVhXOHBtU3VUZ0FoUGhK?=
+ =?utf-8?B?S01FR2FBWmdNcm5kNm90VGRoY2pmTkZSTU10MEVBVjh5aGl4OFRkMytuUS9a?=
+ =?utf-8?B?eWI0TDlsZVZxcUVhU3lhSmZqUS9QVS95b1ZZN3JlYXpES0ppdVFnYUVMY0xs?=
+ =?utf-8?B?dm5VU0lab1VWUnNkZlBGaGZlRVFtdlF2bW9DdUVGZDVkalY3Y0EzS3RsdHYz?=
+ =?utf-8?B?emVKMTJhUW1ib2ZET0VLVVNLTWRyTjJPaDFvSS9USU1kc1A1VEY1VWlWTmwv?=
+ =?utf-8?B?YUNEaC9BR1Noa3hva005aU84RldscHBQSC9BczBmUkkzTS9SU1hVZWdFMFdQ?=
+ =?utf-8?B?ZEo3YkN6eGNQU2lPbTQ1OEt4YmJVd25QYjgyREx2d3FOek1pVWtDemRCZDNz?=
+ =?utf-8?B?a0JlVmYvWEV5bXJvc1A3WCtob2dsVjZZQ1d0ZzRDa0JnS2dxZ0JDa256eElK?=
+ =?utf-8?B?dlM4emhBZHNwZHJLN3dlUlN4R2xhZFQwL1hsdStNSmR4c3NDNEthWDAwVGhl?=
+ =?utf-8?B?Rnh6TC9ONVdEVWphUjNPU2xVMmM3aWdZNDhKZlNlZlI2S0FNaCtKL1pDb25O?=
+ =?utf-8?B?ZXduS0RmOXZUbVdlRHljSUFIMkdEQkxYZ3VMaFFNZk9qRmxrUTBUVzVjSEFq?=
+ =?utf-8?B?R2RZZW00WHVuMnNDT0t5TndpWldDemNkTEozK0Y3WitXaGo4Q2ErOElBOGp2?=
+ =?utf-8?B?VHZzc0hwVjV2aDJ3SVlJNC9yZmcwcFRGSmk1aXlTYytWYndOa0xpaGpqWDRU?=
+ =?utf-8?B?WTVLRGc3Z2FaUmpGNWxSUUlwb1ZHM0pKOWk4TnAwOGVzbVY4b2I3WHd4Y1RV?=
+ =?utf-8?B?TXBURnBWOXFNNThSNzZqcXBOYmRtMFhYdmtCWU1EdzNrSmZsTmRQVldYNEkw?=
+ =?utf-8?B?dWR5VmU1UTRWdml6SzQrN2FvYmdpelBOM21qanhrR0JZTk93STdkSVhJdi9x?=
+ =?utf-8?B?dzdNN3VzeXN4U1ZPMlBLN1Y1elRDVyt5RWN6WUFDUmp3Wm1XREtkNlhUMFQx?=
+ =?utf-8?B?Zy9OaFJ1b2hHY0JKOXQ4OE96MW0rblVVeGc3eGlnODZLTUFuMnFyczk0NVVE?=
+ =?utf-8?B?V2k4aWlXaHV6dkp3b3kza1BSN0lCQ0t0Zm40RlJQdDVWZUZUQXN0dUo5M2g1?=
+ =?utf-8?B?WTc4QTVYTkE5VEdsUkRzRGxlZzVlQ0tnSnN2eXppK2l6em9GTUM0REEwMDNw?=
+ =?utf-8?B?ZlBDQkJHbTJCb3lVUDdYajZSQzdMKzVVN2FtWVFzem5xbEF0dTBmK3N4emdI?=
+ =?utf-8?B?VDArcFoySFNtK2xIdDFVL1lCcWs4clJFWWRFMWVMSGJNK1c4M29sTWV2dEx5?=
+ =?utf-8?B?eVFxL1JSRHdCZy9pTDYvNDhrS1FTZHJ1UkNxUllmWmQyMXpQbmgwYk9tdWsx?=
+ =?utf-8?B?R0U1WGlONDVIcGdFaEZSZnpqUGRtZlgzOE5KWnQvRkdLcmk2bGNhN3dRdFpq?=
+ =?utf-8?B?Z3JmTFpmdWw0ODhjbjRPOGQreGlQblRKSkJxYVM0WnRzejZtN1pqamN0Wk5K?=
+ =?utf-8?B?RFg0UnFta0x2YVpyT1ZBY2J4ZUFYTHJQdDdnMTZDcWxpS0g3Rnh6My84MnJ1?=
+ =?utf-8?B?VHQwZ05VYThRYm1raE8zMzkzTmsyaHBhZFRiTmxXQk9IRlJDa1pzTytQbllm?=
+ =?utf-8?B?MHNBTjlXN2JyL1VCM0lST2tKeklNdnI2WDZ5Zlh1OTRJcHZ4b0VUYUZaL0U5?=
+ =?utf-8?B?ZzJ0S0RDVStqYm5pc1MwSnZZNVlIOG8wV1FlalhKWmlrVm5qWGJHbmx4L2Vj?=
+ =?utf-8?B?c2ZBU0xmNTJjZUJJNm9IS1NEaFk4UXhXNzl1a1R5QUZHcWZMaWVoOHgzRmVo?=
+ =?utf-8?B?WkE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 03/20] hw/arm/smmuv3-accel: Add initial
- infrastructure for smmuv3-accel device
-To: eric.auger@redhat.com, Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- jgg@nvidia.com, berrange@redhat.com, nathanc@nvidia.com, mochs@nvidia.com,
- smostafa@google.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <20250311141045.66620-4-shameerali.kolothum.thodi@huawei.com>
- <d75feb00-72d3-4d79-a7ac-2548eadb6a77@redhat.com>
- <Z9hh8MIAQNQcvNlG@Asurada-Nvidia>
- <71b73212-3d8f-4c9d-93a4-bf07c0f169e3@redhat.com>
- <Z9hzmzHfWw18OyGO@Asurada-Nvidia>
- <11895c78-d6ab-40c8-a500-4abed1565234@redhat.com>
- <Z9r7dT/5E+YToqc9@Asurada-Nvidia>
- <c70fdb0c-ef56-4a52-8591-31df51ff0eec@redhat.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <c70fdb0c-ef56-4a52-8591-31df51ff0eec@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: R11nwyFU0H0rhaqwLWmZ_Ob097bV_utWMJwQrBj-A0Y_1742520402
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4180.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ff670cc-e9ea-4416-433c-08dd6823bceb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Mar 2025 02:54:45.8872 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qVUhNi3XzioXZw9eai9cBfuZfHxbuidZEMax7XBdwzldpQE8s9YpkP8FaKStAWrByXVR1RmiKcV8b/m7W4FIUt5V6HiKt8zYMUrxr77Op6Y=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5783
+Received-SPF: pass client-ip=2a01:111:f403:2011::718;
+ envelope-from=steven_lee@aspeedtech.com;
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,128 +222,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KMaiJI07xrLr
+X-TUID: SgD6lq4I2UtS
 
-
-
-On 3/19/25 2:09 PM, Eric Auger wrote:
-> Hi Nicolin,
-> 
-> 
-> On 3/19/25 6:14 PM, Nicolin Chen wrote:
->> On Wed, Mar 19, 2025 at 05:45:51PM +0100, Eric Auger wrote:
->>>
->>>
->>> On 3/17/25 8:10 PM, Nicolin Chen wrote:
->>>> On Mon, Mar 17, 2025 at 07:07:52PM +0100, Eric Auger wrote:
->>>>> On 3/17/25 6:54 PM, Nicolin Chen wrote:
->>>>>> On Wed, Mar 12, 2025 at 04:15:10PM +0100, Eric Auger wrote:
->>>>>>> On 3/11/25 3:10 PM, Shameer Kolothum wrote:
->>>>>>>> Based on SMMUv3 as a parent device, add a user-creatable smmuv3-accel
->>>>>>>> device. In order to support vfio-pci dev assignment with a Guest
->>>>>>> guest
->>>>>>>> SMMUv3, the physical SMMUv3 has to be configured in nested(S1+s2)
->>>>>>> nested (s1+s2)
->>>>>>>> mode, with Guest owning the S1 page tables. Subsequent patches will
->>>>>>> the guest
->>>>>>>> add support for smmuv3-accel to provide this.
->>>>>>> Can't this -accel smmu also works with emulated devices? Do we want an
->>>>>>> exclusive usage?
->>>>>> Is there any benefit from emulated devices working in the HW-
->>>>>> accelerated nested translation mode?
->>>>> Not really but do we have any justification for using different device
->>>>> name in accel mode? I am not even sure that accel option is really
->>>>> needed. Ideally the qemu device should be able to detect it is
->>>>> protecting a VFIO device, in which case it shall check whether nested is
->>>>> supported by host SMMU and then automatically turn accel mode?
->>>>>
->>>>> I gave the example of the vfio device which has different class
->>>>> implementration depending on the iommufd option being set or not.
->>>> Do you mean that we should just create a regular smmuv3 device and
->>>> let a VFIO device to turn on this smmuv3's accel mode depending on
->>>> its LEGACY/IOMMUFD class?
->>> no this is not what I meant. I gave an example where depending on an
->>> option passed to thye VFIO device you choose one class implement or the
->>> other.
->> Option means something like this:
->> 	-device smmuv3,accel=on
->> instead of
->> 	-device "smmuv3-accel"
->> ?
->>
->> Yea, I think that's good.
-> Yeah actually that's a big debate for not much. From an implementation
-> pov that shall not change much. The only doubt I have is if we need to
-> conditionnaly expose the MSI RESV regions it is easier to do if we
-> detect we have a smmuv3-accel. what the option allows is the auto mode.
->>
->>>> Another question: how does an emulated device work with a vSMMUv3?
->>> I don't get your question. vSMMUv3 currently only works with emulated
->>> devices. Did you mean accelerated SMMUv3?
->> Yea. If "accel=on", how does an emulated device work with that?
->>
->>>> I could imagine that all the accel steps would be bypassed since
->>>> !sdev->idev. Yet, the emulated iotlb should cache its translation
->>>> so we will need to flush the iotlb, which will increase complexity
->>>> as the TLBI command dispatching function will need to be aware what
->>>> ASID is for emulated device and what is for vfio device..
->>> I don't get the issue. For emulated device you go through the usual
->>> translate path which indeed caches configs and translations. In case the
->>> guest invalidates something, you know the SID and you find the entries
->>> in the cache that are tagged by this SID.
->>>
->>> In case you have an accelerated device (indeed if sdev->idev) you don't
->>> exercise that path. On invalidation you detect the SID matches a VFIO
->>> devoce, propagate the invalidations to the host instead. on the
->>> invalidation you should be able to detect pretty easily if you need to
->>> flush the emulated caches or propagate the invalidations. Do I miss some
->>> extra problematic?
->>>
->>> I do not say we should support emulated devices and VFIO devices in the
->>> same guest iommu group. But I don't see why we couldn't easily plug the
->>> accelerated logic in the current logical for emulation/vhost and do not
->>> require a different qemu device.
->> Hmm, feels like I fundamentally misunderstood your point.
->>   a) We implement the device model with the same piece of code but
->>      only provide an option "accel=on/off" to switch mode. And both
->>      passthrough devices and emulated devices can attach to the same
->>      "accel=on" device.
-> I think we all agree we don't want that use case in general. However
-> effectively I was questioning why it couldn't work maybe at the expense
-> of some perf degration.
->>   b) We implement the device model with the same piece of code but
->>      only provide an option "accel=on/off" to switch mode. Then, an
->>      passthrough device can attach to an "accel=on" device, but an
->>      emulated device can only attach to an "accel=off" SMMU device.
->>
->> I was thinking that you want case (a). But actually you were just
->> talking about case (b)? I think (b) is totally fine.
->>
->> We certainly can't do case (a): not all TLBI commands gives an "SID"
->> field (so would have to broadcast, i.e. underlying SMMU HW would run
->> commands that were supposed for emulated devices only); in case of
->> vCMDQ, commands for emulated devices would be issued to real HW and
-> I am still confused about that. For instance if the guest sends an
-> NH_ASID, NH_VA invalidation and it happens both the emulated device and
-> VFIO-device share the same cd.asid (same guest iommu domain, which
-> practically should not happen) why shouldn't we propagate the
-it can't ... on ARM ... PCIe only, no shared iommu domain btwn devices.
-
-Isn't this another reason (perf) why emulated devices & physical devices should
-be on different vSMMU's ... so it can be distinguished on how deep (to hw)
-or how wide(a broadcast) actions like TLBI is implemented, or impacts other devices ?
-
-
-> invalidation to the host. Does the problem come from the usage of vCMDQ
-> or would you foresee the same problem with a generic physical SMMU?
-> 
-> Thanks
-> 
-> Eric
->> trigger HW errors.
->>
->> Thanks
->> Nicolin
->>
-> 
-
+SGkgQ8OpZHJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lk
+cmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgTWFyY2ggMjAs
+IDIwMjUgMTE6MjkgUE0NCj4gVG86IFN0ZXZlbiBMZWUgPHN0ZXZlbl9sZWVAYXNwZWVkdGVjaC5j
+b20+OyBQZXRlciBNYXlkZWxsDQo+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBUcm95IExl
+ZSA8bGVldHJveUBnbWFpbC5jb20+OyBKYW1pbiBMaW4NCj4gPGphbWluX2xpbkBhc3BlZWR0ZWNo
+LmNvbT47IEFuZHJldyBKZWZmZXJ5DQo+IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20uYXU+OyBK
+b2VsIFN0YW5sZXkgPGpvZWxAam1zLmlkLmF1Pjsgb3Blbg0KPiBsaXN0OkFTUEVFRCBCTUNzIDxx
+ZW11LWFybUBub25nbnUub3JnPjsgb3BlbiBsaXN0OkFsbCBwYXRjaGVzIENDIGhlcmUNCj4gPHFl
+bXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gQ2M6IFRyb3kgTGVlIDx0cm95X2xlZUBhc3BlZWR0ZWNo
+LmNvbT47IGxvbmd6bDJAbGVub3ZvLmNvbTsgWXVubGluIFRhbmcNCj4gPHl1bmxpbi50YW5nQGFz
+cGVlZHRlY2guY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIDEvMV0gaHcvaW50Yy9hc3BlZWQ6
+IEZpeCBJUlEgaGFuZGxlciBtYXNrIGNoZWNrDQo+IA0KPiBIZWxsbyBTdGV2ZW4sDQo+IA0KPiBP
+biAzLzIwLzI1IDEwOjI1LCBTdGV2ZW4gTGVlIHdyb3RlOg0KPiA+IFVwZGF0ZWQgdGhlIElSUSBo
+YW5kbGVyIG1hc2sgY2hlY2sgdG8gQU5EIHdpdGggc2VsZWN0IHZhcmlhYmxlLg0KPiA+IFRoaXMg
+ZW5zdXJlcyB0aGF0IHRoZSBpbnRlcnJ1cHQgc2VydmljZSByb3V0aW5lIGlzIGNvcnJlY3RseSB0
+cmlnZ2VyZWQNCj4gPiBmb3IgdGhlIGludGVycnVwdHMgd2l0aGluIHRoZSBzYW1lIGlycSBncm91
+cC4NCj4gPg0KPiA+IEZvciBleGFtcGxlLCBib3RoIGBldGgwYCBhbmQgdGhlIGRlYnVnIFVBUlQg
+YXJlIGhhbmRsZWQgaW4gYEdJQ0lOVDEzMmAuDQo+ID4gV2l0aG91dCB0aGlzIGZpeCwgdGhlIGRl
+YnVnIGNvbnNvbGUgbWF5IGhhbmcgaWYgdGhlIGBldGgwYCBJU1IgaXMgbm90DQo+ID4gaGFuZGxl
+ZC4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFN0ZXZlbiBMZWUgPHN0ZXZlbl9sZWVAYXNwZWVk
+dGVjaC5jb20+DQo+ID4gQ2hhbmdlLUlkOiBJYzM2MDllYjcyMjE4ZGZkNjhiZTYwNTdkNzhiODk1
+M2IxODgyODcwOQ0KPiA+IC0tLQ0KPiANCj4gSSB0aGluayB0aGUgaXNzdWUgd2FzIGludHJvZHVj
+ZWQgYnkgdGhlIGluaXRpYWwgY29tbWl0IDoNCj4gDQo+ICAgIGQ4MzFjNWZkODY4MiAoImFzcGVl
+ZC9pbnRjOiBBZGQgQVNUMjcwMCBzdXBwb3J0IikNCj4gDQo+IElzIHRoYXQgY29ycmVjdCA/DQo+
+IA0KDQpZZXMsIGFuZCB0aGUgaW1wbGVtZW50YXRpb24gaXMgYmFzZWQgb24gY29tbWl0IDM4YmEz
+OGQgKGh3L2ludGMvYXNwZWVkOiBBZGQgU3VwcG9ydCBmb3IgQVNUMjcwMCBJTlRDSU8gQ29udHJv
+bGxlcikuDQoNCkFkZGl0aW9uYWxseSwgSSBzZW50IGEgcGF0Y2ggc2VyaWVzIGZvciBBU1QyN3gw
+IG11bHRpLVNvQyBzdXBwb3J0IG9uIE1hcmNoIDEzdGguIEhvd2V2ZXIsIEkgZm9yZ290IHRvIGFw
+cGVuZCB0aGUgdjIgdGFnIHRvIHRoZSBzZXJpZXMuIFNob3VsZCBJIHJlc2VuZCBpdCB3aXRoIHRo
+ZSBjb3JyZWN0IHZlcnNpb24gdGFnPw0KDQpQYXRjaHdvcmsgbGluazoNCmh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9xZW11LWRldmVsL2xpc3QvP3Nlcmllcz05NDMzNzkNCg0K
+VGhhbmtzLA0KU3RldmVuDQoNCj4gUmV2aWV3ZWQtYnk6IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdA
+cmVkaGF0LmNvbT4NCj4gDQo+IFRoYW5rcywNCj4gDQo+IEMuDQo+IA0KPiANCj4gPiAgIGh3L2lu
+dGMvYXNwZWVkX2ludGMuYyB8IDIgKy0NCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKSwgMSBkZWxldGlvbigtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2ludGMvYXNwZWVk
+X2ludGMuYyBiL2h3L2ludGMvYXNwZWVkX2ludGMuYyBpbmRleA0KPiA+IDNmZDQxNzA4NGYuLmYx
+N2JmNDM5MjUgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvaW50Yy9hc3BlZWRfaW50Yy5jDQo+ID4gKysr
+IGIvaHcvaW50Yy9hc3BlZWRfaW50Yy5jDQo+ID4gQEAgLTExMSw3ICsxMTEsNyBAQCBzdGF0aWMg
+dm9pZA0KPiBhc3BlZWRfaW50Y19zZXRfaXJxX2hhbmRsZXIoQXNwZWVkSU5UQ1N0YXRlICpzLA0K
+PiA+ICAgICAgIG91dHBpbl9pZHggPSBpbnRjX2lycS0+b3V0cGluX2lkeDsNCj4gPiAgICAgICBp
+bnBpbl9pZHggPSBpbnRjX2lycS0+aW5waW5faWR4Ow0KPiA+DQo+ID4gLSAgICBpZiAocy0+bWFz
+a1tpbnBpbl9pZHhdIHx8IHMtPnJlZ3Nbc3RhdHVzX3JlZ10pIHsNCj4gPiArICAgIGlmICgocy0+
+bWFza1tpbnBpbl9pZHhdICYgc2VsZWN0KSB8fCAocy0+cmVnc1tzdGF0dXNfcmVnXSAmDQo+ID4g
+KyBzZWxlY3QpKSB7DQo+ID4gICAgICAgICAgIC8qDQo+ID4gICAgICAgICAgICAqIGEuIG1hc2sg
+aXMgbm90IDAgbWVhbnMgaW4gSVNSIG1vZGUNCj4gPiAgICAgICAgICAgICogc291cmNlcyBpbnRl
+cnJ1cHQgcm91dGluZSBhcmUgZXhlY3V0aW5nLg0KDQo=

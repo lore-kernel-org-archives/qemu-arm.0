@@ -1,175 +1,168 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp54748njc;
-        Thu, 20 Mar 2025 20:23:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUsBUY9EbzF7MCzQlMvc9/1nmQfZ5A0Vx4+84nVm9qKzrJlUA+htv7HpWm71SKNoavjKAX8ciyHOsEVsw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/q5B0WEZtzF9Okc8atda6A4gQGeBTMe4NWax4YnxWKVyA1T/cvJ9oXphxEeypZ3/NSw8q
-X-Received: by 2002:a17:903:230e:b0:223:5645:8e26 with SMTP id d9443c01a7336-22780d7fb17mr24400335ad.20.1742527392702;
-        Thu, 20 Mar 2025 20:23:12 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1742527392; cv=pass;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp69435njc;
+        Thu, 20 Mar 2025 21:12:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWezZ1dtHbldY8LVEIJqVCFD/QVybchqehWwQtTSnMo7DRlDjkRMQHa0+H1t0TcbOzWMS6v3B9RyemIvg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpnjhEdgMorW680MOGM7knxfMi78aC2hdW/Qa7LtlQkpiI1tue9C1XtA9vq8JNIaM3g5qX
+X-Received: by 2002:a05:622a:1b27:b0:476:7669:b947 with SMTP id d75a77b69052e-4771de15a18mr27403951cf.36.1742530333875;
+        Thu, 20 Mar 2025 21:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742530333; cv=none;
         d=google.com; s=arc-20240605;
-        b=TGGc/w2/tGv+cQ/61cdtoxvlOlyluEejcDlbrCFyBqMDq9gUlyDogO10eiTobK9PvI
-         mCikn5SzAcpewssI6lmwqopwCu0sz4fBUUiTEPfBdLDSr+x8ucpZKcFmc2wzVysk3xFN
-         cbitBdhjuYesJKHLSTlraZxRgpD4vpcQHodiiHcsWi1+rGGLx9rZ5r2PoOa3lNQ6SU8+
-         mk3gBO6LS7HXI1L6afWdNEjRTuSzH3Y6r8/ErHBHBA5XErCss2KBuy5+LyOQ4xdJy21G
-         LfBizFUB0R7jhLbi0uwz4/80T4O5TYyZrQH09Syc5TUh5BTv/q5MwNM6MtKBnHDscJwv
-         hZIA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=vpev7LXc0wl9Nx7iJ1RTK9DKGOfa+mH428rraTKLW8U=;
-        fh=RYtkOQT6yUy7Go0JSXbTvllVes1s/NFsS2YbUgfC25A=;
-        b=ku7R1+Azcqg/VB4S2C3PrBD/boEXIX1vAleUmroWHVYrJ0nuXtPcEW489MeptFvxrF
-         BFXdgXoKgG/a/ZALwNGuu+AhYhoGseEnaj8V8wO//nrw9BXQBYfKFt4c15ZXWyINydX/
-         MJKmbIr22kl8NWOTJe6HzLLhl2Uwf1DN7Xfdf0sJT0T8+IaKBpv0k90jkpU1GkXeZJZm
-         TQUqAUf86+hHqwkXTO7BOi8JuDpuG0gTby5Hf+iAENetPdBNMu55RfmoXTRSCvjpm1nn
-         zAfQyiUvUipd4uZDPapQI9wlt4I6JhN7TOFE4OAmwa2ns0H+/VedPgDqmjai2caL9nzw
-         pKyA==;
+        b=UiQgVxgJkX9ySzmSVpcuaabwDuTGPpnF3rZMP4Dla6EE8ohGit5kGWpLb9gYYs+dkc
+         QgThGf5HAPlcWMlj8siFeTLFd4DWchdJ3sx7yQ0ITpcfKgf0Q3YKfC5oCRd80UUNhDt8
+         4ukWaM6sxBEfjZ2TdeZEwgwdcVoKvRBWGbC/7SBatA+yCuwh4DVzPUajsGQCjixdYR04
+         RFqNru9OAXWHUxdaG5CAg3Uy84ibr1xfmDCwSljJkTvdWq+VI85Sgk7vSwofZL4wMDbf
+         exUEDMH6QNOS21kfPn/aWI9LzWneNZDMDX6wZv2GC2T74SSjl6I0zTU5G7NS4F5jkiFt
+         yj/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=hFYq62HBBQAs03hedsT2IJ7sycu/Tq+ms0WC9oCa+rs=;
+        fh=nDFlYaei8P8t+7kUhsWaqA5H1A9WTaVnQjIgJeoFoxA=;
+        b=XceTbwCovSNVpwiAmFnJKAZC7nWLtFEif2W0mM93yehAQuuPSdbhHspIf8/eIQmIWk
+         2hJjOHD8sgYMyCMS+tsqD1ts86BK1MaMP8SVG6FJveK3go5terEQbKRCOXgHs7ok2uKe
+         zL5mFW+LgegmhO/jFFvtpTO7jwaIOP/HSFu66F8rKInKligz/+SwQ3gg4vYyrAWDYwjQ
+         UvwT4BqfyqCiIfWVk8Jyl/LNUwcuDUW9+g8uXj2Umn9m4uYcrJm+N8cVKigJJVysqYhU
+         39sNW7cVuoimyuaxAJtj08DwzQPPZFiMsNzIv/V6vCJAiAk1zoR5ct4fKaxiG5j7Oljv
+         Rntw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=WtMFZysn;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Kd3sYT64;
+       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-22780f4bf2asi16575685ad.143.2025.03.20.20.23.12
+Return-Path: <qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d63a2c9si11329681cf.508.2025.03.20.21.12.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 20:23:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Mar 2025 21:12:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=WtMFZysn;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-41642-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Kd3sYT64;
+       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 120E23B361A
-	for <alex.bennee@linaro.org>; Fri, 21 Mar 2025 03:23:00 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B3B511E5716;
-	Fri, 21 Mar 2025 03:23:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="WtMFZysn"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 362CB78F5B
-	for <kvm@vger.kernel.org>; Fri, 21 Mar 2025 03:23:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.14
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742527389; cv=none; b=VX6k//IL+Ny6jzhtUvzkfHTy/C1oTBq6g3Y3OqjoMrAM3oLWdWLjJ6LHrP0Yk9yGkgXqKfYuKpT5sxN1K5e8R4cNxHQ2NdRBded35wGFqLN7z2ElUwedFkXaOLrKXZjarquIGewPKURjZp5ycUCnZVCvQ+tjnhdZ4wjgeORTRhQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742527389; c=relaxed/simple;
-	bh=VW905S5AtEa+aqLunlCnNTDg/VfBoD1PewmutLdb2ys=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=rdVeV0TVSlWCQRxQyS4RGMyHQKWfEtIHoshgMmg5RieZ69HWu3gdlYgz9GeSv1HG/hUaQa34cYOvfPD6pD6USsowY+VU6LlcFWvKF9S/RE7uIDuY1vhaRi9gFZVSeDzvNl2coZ/pbGo1lEogVEK4GOUgeOmxkL1bZ8X7U3C7vkg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=WtMFZysn; arc=none smtp.client-ip=192.198.163.14
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-rust-bounces@nongnu.org>)
+	id 1tvTji-0004A8-4k; Fri, 21 Mar 2025 00:11:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tvTje-00049K-Qo; Fri, 21 Mar 2025 00:11:55 -0400
+Received: from mgamail.intel.com ([192.198.163.13])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tvTjb-0006kX-3q; Fri, 21 Mar 2025 00:11:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1742527387; x=1774063387;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=VW905S5AtEa+aqLunlCnNTDg/VfBoD1PewmutLdb2ys=;
-  b=WtMFZysnVtx6Be5zYcIXWLZENYqrIPncXEjmHFzoNF7SMjMj1Qm+ovuK
-   mVJSduKkqVehA1fha78kaLVYt2BWD7WJH0MMArJJuFCr+NvExg2xfx65T
-   z3Ud8XycbRF2ZtmaejD9uutfMmyqK+tx+PJrSMEDPE3zJW/qzfJP7TPY3
-   zgxGJexjBGIEOita/8qSGSbOrSUSHiQhLeGrCM2InCYC5G6BaLZjVIYS6
-   wgbRS4Hx/qifpADB9OmJvU+jer2PSq6L34051oNyNUJ7CpLRXnOvDvBY8
-   tiFg1dsX8YKwC8N8dPSXQqCiWzVxFHhb9n5NITY+Ylmc/57Zi9dS4hroh
-   A==;
-X-CSE-ConnectionGUID: FrO9T6ylRqOb5MhJd2TP1w==
-X-CSE-MsgGUID: spjkfp6OSv2kY2tkh9Eusg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11379"; a="43973087"
-X-IronPort-AV: E=Sophos;i="6.14,263,1736841600"; 
-   d="scan'208";a="43973087"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2025 20:23:06 -0700
-X-CSE-ConnectionGUID: zOxVwuLWQFi4cQC1qFTZ9g==
-X-CSE-MsgGUID: PRbIxo2HQ6KErz7zyEbsEg==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1742530311; x=1774066311;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=uKqMiHfxqUU1QswsJ9itCG+7AgcaEQycIrOEAhAxPZk=;
+ b=Kd3sYT64WngYnFLpJYDmxCx2CedyYOwY54rTEzUfCfiJ0c1O1cFMwGup
+ hIZCPMoJ5Mt4Q/ZgYwEvHxrvOrbeqEDicyR2z4AlryA0202IAsaZwoH5H
+ pC0jlk6GMB/S+cr/meJoC1ky0F5QQQfOjSyzE6pca8vT8Td2DB0Xs2AGE
+ IIsf1Z4COQh9xeFKfa1Pn6KSI6AXcztQRtjnW1e7ViPs49C1qzKa5cvY0
+ VP8KzqTOhyFI7bY68zSYZSsv1efavmjHZfPBpdtOk6LhtSF0cgCM/HNVJ
+ X4n+W7Rrl1X4k/NJLB5aDQVvDwqIG/mU78d2hQqwiWf2ToAd6+l+0Cn8g Q==;
+X-CSE-ConnectionGUID: UWV4MoydTpStqlaH5dnbcg==
+X-CSE-MsgGUID: Af/wUMvqTdu5kgV8vnkFOg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11379"; a="46540737"
+X-IronPort-AV: E=Sophos;i="6.14,263,1736841600"; d="scan'208";a="46540737"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Mar 2025 21:11:43 -0700
+X-CSE-ConnectionGUID: xerjebGDRV2wYEFT342WjA==
+X-CSE-MsgGUID: 4N5o0sOBR8m4U3UlG84R5A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,263,1736841600"; 
-   d="scan'208";a="128114389"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by orviesa003.jf.intel.com with ESMTP; 20 Mar 2025 20:23:03 -0700
-Date: Fri, 21 Mar 2025 11:43:16 +0800
+X-IronPort-AV: E=Sophos;i="6.14,263,1736841600"; d="scan'208";a="123741185"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa010.fm.intel.com with ESMTP; 20 Mar 2025 21:11:42 -0700
+Date: Fri, 21 Mar 2025 12:31:56 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
-To: Shaoqin Huang <shahuang@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
-	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 0/5] accel/kvm: Support KVM PMU filter
-Message-ID: <Z9zgVKtZyEx3MKuf@intel.com>
-References: <20250122090517.294083-1-zhao1.liu@intel.com>
- <2fe2a98d-f70f-4996-b04e-d81f66d5863f@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-rust@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 3/3] rust: pl011: Check size of state struct at compile
+ time
+Message-ID: <Z9zrvF7qRoykMupa@intel.com>
+References: <20250320133248.1679485-1-peter.maydell@linaro.org>
+ <20250320133248.1679485-4-peter.maydell@linaro.org>
+ <Z9w4Gttv8QeBRKfZ@intel.com>
+ <CAFEAcA_BQOtzugW31ke=sit1mKnvxieGC_GXLOG4=MK_O2mKqw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=gb2312
 Content-Disposition: inline
-In-Reply-To: <2fe2a98d-f70f-4996-b04e-d81f66d5863f@redhat.com>
-X-TUID: 1pZbFzXwNWGs
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA_BQOtzugW31ke=sit1mKnvxieGC_GXLOG4=MK_O2mKqw@mail.gmail.com>
+Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -46
+X-Spam_score: -4.7
+X-Spam_bar: ----
+X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-rust@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: QEMU Rust-related patches and discussion <qemu-rust.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-rust>,
+ <mailto:qemu-rust-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-rust>
+List-Post: <mailto:qemu-rust@nongnu.org>
+List-Help: <mailto:qemu-rust-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-rust>,
+ <mailto:qemu-rust-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nTNgQ98FsLHm
 
-Hi Shaoqin,
-
-Thank you very much for testing!
-
-> I tried your series on ARM64, but it reports error at compile time, here is
-> the error output:
+> > > +// Some C users of this device embed its state struct into their own
+> > > +// structs, so the size of the Rust version must not be any larger
+> > > +// than the size of the C one. If this assert triggers you need to
+> > > +// expand the padding_for_rust[] array in the C PL011State struct.
+> > > +static_assert!(mem::size_of::<PL011State>() <= mem::size_of::<bindings::PL011State>());
+> > > +
+> >
+> > maybe use qemu_api::bindings::PL011State directly? Because bindings
+> > contains native C structures/functions and their use should not be
+> > encouraged, I think it's better to 'hide' bindings (not list it at the
+> > beginning of the file).
 > 
-> qapi/kvm.json:59:Unexpected indentation.
+> Yeah, I wasn't sure what our preferred style approach is here
+> regarding what we "use" and what we just directly reference
+> (and the same in the other direction for mem::size_of vs
+> size_of). Is there a "normal" pattern to follow here ?
 
-I guess this is caused by my invalid format and sphinx complains that,
-as Markus figured out :-(
+There seems no clear doc on when to list use statements, but it's common
+to list as clearly as possible to make it easier to sort out dependencies.
 
-What about the following change?
+About bindings, I think it's better to clearly point out the specific
+members in bindings, so ¡®use qemu_api::bindings¡¯ looks vague. Alternatively,
+the qemu_api::bindings::PL011State could also be listed at the beginning of
+the file, similar to a previous clean up: 06a1cfb5550a ("rust/pl011: Avoid
+bindings::*") and another patch [1].
 
-diff --git a/qapi/kvm.json b/qapi/kvm.json
-index 31447dfeffb0..b383dfd9a788 100644
---- a/qapi/kvm.json
-+++ b/qapi/kvm.json
-@@ -54,11 +54,6 @@
- ##
- # @KVMPMUX86DefalutEvent:
- #
--# x86 PMU event encoding with select and umask.
--# raw_event = ((select & 0xf00UL) << 24) | \
--#              (select) & 0xff) | \
--#              ((umask) & 0xff) << 8)
--#
- # @select: x86 PMU event select field, which is a 12-bit unsigned
- #     number.
- #
+[1]: https://lore.kernel.org/qemu-devel/20250318130219.1799170-16-zhao1.liu@intel.com/
 
-> While I compiled it on x86, everything is ok. Could you please check why it
-> failed on ARM64?
+> Speaking of size_of, I noticed that Rust provides both
+> core::mem::size_of and std::mem::size_of, and in rust/ at
+> the moment we have uses of both. What's the difference?
 
-Maybe your Arm64 environment doesn't have sphinx_rtd_theme?
+They're the same (a simple proof of this is that the "source" option of
+the std::mem page [2] points to the core::mem repo). `core` is
+self-contained without OS dependency, and `std` is the superset of `core`
+with extra OS dependency. And there's a previous cleanup to consolidate
+`std::ptr` (commit c48700e86d, "rust: prefer importing std::ptr over
+core::ptr"). So I think we can prefer std::mem as well.
 
-You can check it by:
+[2]: https://doc.rust-lang.org/std/mem/index.html
 
-python3 -m pip show sphinx_rtd_theme
-
-> By the mean time, I will review and test this series.
-
-Thank you again! I also plan to refresh v3, in maybe 1 or 2 weeks.
-
-Best Regards,
+Regards,
 Zhao
-
 

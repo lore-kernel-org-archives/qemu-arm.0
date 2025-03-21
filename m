@@ -1,63 +1,63 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp178184njc;
-        Fri, 21 Mar 2025 02:27:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXma+KVbtDUQjIH17wmBZVneHGhTcVEK3QtVk9wRSLYVqae0wpamUIl4OczrjqqLFOLA3ItcibG/HZQlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGaXxmmipXkNyCuZTqbvZmUJDJHodRQ7z8JuQ1eX4RxWeBUT05njsRaMhyANpAWfpST9Z77
-X-Received: by 2002:a05:620a:2949:b0:7c5:46e4:480b with SMTP id af79cd13be357-7c5ba16855fmr296053785a.22.1742549246307;
-        Fri, 21 Mar 2025 02:27:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742549246; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp178238njc;
+        Fri, 21 Mar 2025 02:27:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUrDeeK5GfvjJWxaCpEVCnMC4EVA6VmkBiC1MW2jLH0jDBx70+lf3b8cvDX+NXsKe8I7VT+EZrXe2WBhQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHO5tUCRlRMDVy2B3hAdNt77Cc7wJYZQyoJ1ysnJF6iax+m6KKXs5vpc7sUIN5qVt4gw4fw
+X-Received: by 2002:a05:622a:4c0a:b0:476:9dc9:3c2a with SMTP id d75a77b69052e-4771de498f7mr43294251cf.48.1742549253693;
+        Fri, 21 Mar 2025 02:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742549253; cv=none;
         d=google.com; s=arc-20240605;
-        b=CAOdI2EeYtLivFuSdCLZFJKeuboDBnEDVV/WOHbpf20zw/4aBc3OWME2b7p06k6xPr
-         n32LbtBFmig8tTpcUMe4PmJVViQ4a3UHbw7AYwESjKUVIweIKu+s8UILwX8YxXz0J7G+
-         z+Myu0MODsK4mlXs+rgIQzb1YKAHEd7M0NKQR8uvUiKH+s4lyUKXJ3i8THqVGk/iP0cZ
-         RiRaChYKFOJ4MWnZfQU/CUN2yUki964qW2eYCzthPLa7nsTTlFEoQrPxh0aaf/e6K5St
-         BDHWJp32aFSYgqcOpXfLTFay2q10Jv54WRCNT7kYOfktq4wemG1ONC+2t/NM45pWIOui
-         x9sg==
+        b=b4I1shQok9x07tuSrclSXwPQJnNGinGENCW17wMIS4aN8mWgb9v9reGtqbbgTwRAOn
+         JNrrKR9KNvLAPvkqArQ+2Xibr51pLT4nW+OPtir6OK15LemGcuOPXjFELf0JUylo01om
+         19mh9gfkacIXs34DM+PlvWaJ0Cl4UDH9/bwDc0h96eoxf97pdUg7QQhkiIsnkPqI6wGl
+         qMVkMg7Lt6Y1xoKKmoOei3QS0oESdk8/e9rdU/ltKu+an/4lxC/Px02Dffjiy/KzEGK5
+         Ua8Kafvyxthlk+0PBMFz5nG9Okr++Ne2azZ6BRTcA0RcAA+byvrNKM+AKDnj6oIAdKJ5
+         IITg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=2rjf2tuHRIw75SkFCP1sZR2VLC2FCS2mSphUlTC2CUo=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=J3L0bBO43HSPPNEFMDhc3Blc19GSY61sfhHd4K7gXrs=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=HEAWSWNqUS7ARyP7k5kUNSLqltZ1aMUuEBnym+FA2PGXQuT7l++zMTJ6J/NnwrtRIj
-         JbsvK9Q3XNr/k5jd2Ghgs52/5uMEfFDyyYGhbw+Q78/jiMcL+OmkTM47ltP1GGFbiLjG
-         4Fe8oX2+2QQwAosMzihsLMtU8lrEmiKhB2vf9LmGPYhVc2cjbIoqyzHb42oyx/lAz6GI
-         Gq1lb4qGeBk7hJpcGAkRipW4+fgXoYp+/TaLu6RW+VU5aHFq5Z1NvMFEIBXIChMXLBxM
-         WxmSS1maBiuVHXIn+x7HnEZU3a8dBng9dlOUWxh2H/Q4j8At+NltJBwBkq9/4vMShvu+
-         ddeA==;
+        b=HyBuW00CWoAlkxpFzydk8WRMygfbxiYd+eRI2M62otKqsZa95JUjV1EKFyaagku0Ta
+         ocdzbzrcZ9Yj8uQr5vR/dVP4IOextv0F/3DonfY2LWYrUsQHCJTnfTR+kYb5VLC7BYLd
+         p1PkI3g6nSP3yPw+n4bgPAwp0UjBAv69F163Rlo0ORAzvi8UTqVjeG2HMQ4Ui/h/AT2l
+         Bv8OSwE53lHcVWE0nYKQSOioaFYo7cRHMiksvFpuoyXFBVHORM9yAQZAisKM5uaIBs4y
+         JNLfGjUp7mofbPXyjpafBOkyTqxrRrpjGCnrP7+bvp8gyi2KgOxm2fnRNJ4N7e0SBLGE
+         jtEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b93582cdsi152486485a.367.2025.03.21.02.27.26
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d638f72si15680911cf.479.2025.03.21.02.27.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:27:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Mar 2025 02:27:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tvYeK-0006Jj-UT; Fri, 21 Mar 2025 05:26:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tvYf0-00073C-PJ; Fri, 21 Mar 2025 05:27:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYeC-00069W-4y; Fri, 21 Mar 2025 05:26:36 -0400
+ id 1tvYet-0006pl-QM; Fri, 21 Mar 2025 05:27:22 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYe8-00056F-QH; Fri, 21 Mar 2025 05:26:35 -0400
+ id 1tvYep-00056m-PF; Fri, 21 Mar 2025 05:27:17 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 21 Mar
- 2025 17:26:23 +0800
+ 2025 17:26:27 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 21 Mar 2025 17:26:23 +0800
+ Transport; Fri, 21 Mar 2025 17:26:27 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,13 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 00/22] Fix incorrect hash results on AST2700
-Date: Fri, 21 Mar 2025 17:25:56 +0800
-Message-ID: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 12/22] hw/misc/aspeed_hace Support to dump plaintext and
+ digest for better debugging
+Date: Fri, 21 Mar 2025 17:26:08 +0800
+Message-ID: <20250321092623.2097234-13-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
+References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -82,168 +85,79 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o8ZH3GVlVbY9
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FALgqmcZhYEW
 
-v1:
- 1. Added support for 64-bit DMA in the HACE model
- 2. Refactored the do_hash operation in the HACE model
- 3. Fixed a crash caused by out-of-bound memory access in HACE
- 4. Added more trace events and implemented dumping of source hash data and
-    resulting digests to improve debugging
- 5. Refactored the HACE QTest framework to support both AST1030 and AST2700
- 6. Added a test case for SHA384
+1. Disabled by default. Uncomment "#define DEBUG_HACE 1" to enable it.
+2. Uses the "qemu_hexdump" API to dump the digest result.
+3. Uses the "iov_hexdump" API to dump the source vector, which contains the
+   source plaintext.
 
-This patchset resolves incorrect hash results reported on the AST2700 platform.
-This update addresses the following kernel warnings and test failures related to
-the crypto self-test framework:
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/misc/aspeed_hace.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-aspeed-hmac-sha512 test failed (incorrect result)
-aspeed-hmac-sha384 test failed (incorrect result)
-aspeed-sha512 test failed (incorrect result)
-aspeed-sha384 test failed (incorrect result)
-aspeed-hmac-sha256 test failed (incorrect result)
-aspeed-hmac-sha224 test failed (incorrect result)
-aspeed-hmac-sha1 test failed (incorrect result)
-aspeed-sha224 test failed (incorrect result)
-aspeed-sha256 test failed (incorrect result)
-aspeed-sha1 test failed (incorrect result)
-
-How to test it
-
-Use the following command to dump information about the supported digest methods
-via the afalg hardware engine:
-
-root@ast2700-default:~# openssl engine -pre DUMP_INFO afalg
-
-Digest SHA1, NID=64, AF_ALG info: name=sha1ALG_ERR: , driver=aspeed-sha1 (hw accelerated)
-Digest SHA224, NID=675, AF_ALG info: name=sha224ALG_ERR: , driver=aspeed-sha224 (hw accelerated)
-Digest SHA256, NID=672, AF_ALG info: name=sha256ALG_ERR: , driver=aspeed-sha256 (hw accelerated)
-Digest SHA384, NID=673, AF_ALG info: name=sha384ALG_ERR: , driver=aspeed-sha384 (hw accelerated)
-Digest SHA512, NID=674, AF_ALG info: name=sha512ALG_ERR: , driver=aspeed-sha512 (hw accelerated)
-
-The status of SHA1, SHA224, SHA256, SHA384, and SHA512 should be marked as
-hw accelerated, indicating that these algorithms are supported by hardware
-acceleration via the aspeed drivers.
-
-Create a test file on the host machine and compute its HASH value as the
-expected result
-
-Create a 256MB test file
-
-$ dd if=/dev/random of=/tmp/256M bs=1M count=256
-Generate Hash Values Using SHA1, SHA224, SHA256, SHA384, and SHA512
-
-Use the following commands to generate HASH values for a 256MB file using
-different SHA algorithms:
-
-$ sha1sum /tmp/256M
-7fc628811a31ab87b0502dab3ed8d3ef07565885  /tmp/256M
-
-$ sha224sum /tmp/256M
-2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54  /tmp/256M
-
-$ sha256sum /tmp/256M
-5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d  /tmp/256M
-
-$ sha384sum /tmp/256M
-fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c  /tmp/256M
-
-$ sha512sum /tmp/256M
-fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9  /tmp/256M
-
-Generate HASH Values Using the Hardware Engine
-
-Use the following commands to generate HASH values for a 256MB file using
-various SHA algorithms with the afalg hardware engine:
-
-
-root@ast2700-default:~# openssl dgst -sha1 -engine afalg /tmp/256M
-Engine "afalg" set.
-SHA1(/tmp/256M)= 7fc628811a31ab87b0502dab3ed8d3ef07565885
-
-root@ast2700-default:~# openssl dgst -sha224 -engine ast_crypto_engine /tmp/256M
-Engine "afalg" set.
-SHA2-224(/tmp/256M)= 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54
-
-root@ast2700-default:~# openssl dgst -sha256 -engine afalg /tmp/256M
-Engine "afalg" set.
-SHA2-256(/tmp/256M)= 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d
-
-root@ast2700-default:~# openssl dgst -sha384 -engine afalg /tmp/256M
-Engine "afalg" set.
-SHA2-384(/tmp/256M)= fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c
-
-root@ast2700-default:~# openssl dgst -sha512 -engine afalg /tmp/256M
-Engine "afalg" set.
-SHA2-512(/tmp/256M)= fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9
-
-
-The HASH values generated here should exactly match those computed on the host
-machine using software-based OpenSSL, verifying both the correctness of the
-hardware-accelerated results and the functionality of the afalg.
-
-
-Jamin Lin (22):
-  hw/misc/aspeed_hace: Remove unused code for better readability
-  hw/misc/aspeed_hace: Fix buffer overflow in has_padding function
-  hw/misc/aspeed_hace: Improve readability and consistency in variable
-    naming
-  hw/misc/aspeed_hace: Update hash source address handling to 64-bit for
-    AST2700
-  hw/misc/aspeed_hace: Introduce 64-bit digest_addr variable for AST2700
-  hw/misc/aspeed_hace: Support accumulative mode for direct access mode
-  hw/misc/aspeed_hace: Add support for source, digest, key buffer 64 bit
-    addresses
-  hw/misc/aspeed_hace: Support DMA 64 bits dram address.
-  hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to prevent firmware
-    hang
-  hw/misc/aspeed_hace:: Support setting different memory size
-  hw/misc/aspeed_hace: Add trace-events for better debugging
-  hw/misc/aspeed_hace Support to dump plaintext and digest for better
-    debugging
-  test/qtest: Introduce a new aspeed-hace-utils.c to place common
-    testcases
-  test/qtest/hace: Adjust test address range for AST1030 due to SRAM
-    limitations
-  test/qtest/hace: Add SHA-384 test cases for ASPEED HACE model
-  test/qtest/hace: Add SHA-384 tests for AST2600
-  test/qtest/hace: Add tests for AST1030
-  test/qtest/hace: Update source data and digest data type to 64-bit
-  test/qtest/hace: Support 64-bit source and digest addresses for
-    AST2700
-  test/qtest/hace: Support to test upper 32 bits of digest and source
-    addresses
-  test/qtest/hace: Support to validate 64-bit hmac key buffer addresses
-  test/qtest/hace: Add tests for AST2700
-
- include/hw/misc/aspeed_hace.h   |   9 +-
- tests/qtest/aspeed-hace-utils.h |  84 +++++
- hw/misc/aspeed_hace.c           | 194 ++++++----
- tests/qtest/aspeed-hace-utils.c | 646 ++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_hace-test.c  | 577 +++++-----------------------
- tests/qtest/ast2700-hace-test.c |  98 +++++
- hw/misc/trace-events            |   6 +
- tests/qtest/meson.build         |   5 +-
- 8 files changed, 1074 insertions(+), 545 deletions(-)
- create mode 100644 tests/qtest/aspeed-hace-utils.h
- create mode 100644 tests/qtest/aspeed-hace-utils.c
- create mode 100644 tests/qtest/ast2700-hace-test.c
-
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index b8e473ee3f..ae4d2fa687 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -10,8 +10,10 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/cutils.h"
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
++#include "qemu/iov.h"
+ #include "hw/misc/aspeed_hace.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
+@@ -20,6 +22,8 @@
+ #include "hw/irq.h"
+ #include "trace.h"
+ 
++/* #define DEBUG_HACE 1 */
++
+ #define R_CRYPT_CMD     (0x10 / 4)
+ 
+ #define R_STATUS        (0x1c / 4)
+@@ -268,6 +272,10 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+         }
+     }
+ 
++#ifdef DEBUG_HACE
++    iov_hexdump(iov, i, stdout, "plaintext", 0xa000);
++#endif
++
+     if (acc_mode) {
+         if (qcrypto_hash_updatev(s->hash_ctx, iov, i, &local_err) < 0) {
+             qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash update failed : %s",
+@@ -311,6 +319,10 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                       "aspeed_hace: address space write failed\n");
+     }
+ 
++#ifdef DEBUG_HACE
++    qemu_hexdump(stdout, "digest", digest_buf, digest_len);
++#endif
++
+     for (; i > 0; i--) {
+         address_space_unmap(&s->dram_as, iov[i - 1].iov_base,
+                             iov[i - 1].iov_len, false,
 -- 
 2.43.0
 

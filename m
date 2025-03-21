@@ -1,63 +1,63 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp179034njc;
-        Fri, 21 Mar 2025 02:29:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVx5PCjW9k344oPcbdQk0Fq0hetKa/CcQiZrgkeYmL18O3U10TXAiRPl32lIp0IM9igXfQP8h1fOMPWfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEAZlz40p6NNwxXm9OmFH+BjlArV6jbDx4fn9ZEHyLrrtrt2kICU3g22+uja8rfGSMitM5h
-X-Received: by 2002:a05:6214:d4e:b0:6e8:f9a9:397b with SMTP id 6a1803df08f44-6eb3f28f50cmr40728006d6.15.1742549385753;
-        Fri, 21 Mar 2025 02:29:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742549385; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp179250njc;
+        Fri, 21 Mar 2025 02:30:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvYRIrehOtdlazUpxu/eMcmViUFdmS4gSkSOfm0EVh3GesQQIIVE8RClLrsaRem0jpIify+xuJjjJisw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5agRQLdTK6EeCSFHlE66gZa5zYIsSgKRxOE/7pbuhS061c1K1IqWUCm73SvM+c8a6eyYW
+X-Received: by 2002:ac8:690f:0:b0:476:8f41:7b8a with SMTP id d75a77b69052e-4771dd80272mr32949701cf.15.1742549414254;
+        Fri, 21 Mar 2025 02:30:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742549414; cv=none;
         d=google.com; s=arc-20240605;
-        b=XjdjWoT5BEQ3JVKqNVyf938eHrufFlnpQtQUF4nWaXgUJxLHXsRq0U3LmKnbZxlOob
-         Vj6msfQoBOliOK1w4v88J0eDONUMCTdDdMQzJyeBRghIEKJ+lLRWLmsLFPGrTUpI8awQ
-         RbU9s+/DdnKRf2gkl4KzNVc4dS4sSRMwqGrExLMSqRaswW09mUx55RfxGcOZFnyYypqc
-         vT87MuXR/tBI4WbkOUWeExbWeGSneYswzgLbdD71qucYVJxTxw0m5znwAD0woCoF1qee
-         kg090QL4pt/Csr819yKh1S/QOKn3MWn8bCWFixkS8B+fWfkS2THfWZnVYXFmEZJcvfDB
-         X9Iw==
+        b=IdxoZ6mZ9iIAwN1e5nM7dSpnNFWPcwIz2tsqiD228WA7YcMZKnxtDMV0QmzMu0Ok9S
+         kc9amvg/lKaMTyLDSzf1qPMEZ2o1CCll+LM9fd1baKP9PlCa2XaFsnHFux0f56Jm+xTM
+         KRz0lhFaFzB+c8hYOuyFl4GkHAMe7GCr3JJB5vLBSUbpLhHgcT9260ldoDwUucs5BPnm
+         SgQpo7xNLQ0vxXdtrJPM6F20KelXGFvNTtxLI0rCTpjFg7mzilwKfWNb1r4TcolBpwSV
+         56TIljIjIf189BErO9iMYtWVX0pcnIduIFjxpDGotQ2em/agWae6DdXC3XXQquM6lWjY
+         EHMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=mmD/hTDTVJl2Hr2T1lzXVYz+zCt4j+rrSoLPK7sKlzU=;
+        bh=5F8AgKiWU6pHH245OtJNsv/lJ16EVqiOaSTyE5R9AXE=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=FXY6P/FcaL75Q0CtljAXKctF8cc+s0Vjo8TzBy51p/9pv5sCgTkWZ28FWoXxe4pmie
-         /e/cWygk2Hv/7FsRu11RTh38pL2Y1aYOB34T1cuk3yJUoR2dYp4twnTLQb30UCfDlE8v
-         rL0FbhFSc6V70AxmU9ThsGiUDAoBmNhkd1FqXoV+Yti0YQuGuhhwWmb7tc4fUmn+p0Qz
-         q5zdTL3TCZZYcw62NDMs0rkdDka/SeLEzOu4ZqILl2sY4j5pKa692/mThCIj+1GOop1d
-         mMpWzDE03bDAeJtOg7aJ30RNqzkJWjhqPPdfZXrwxsixBRs5oIfZhYMWdcXzmttdkiA6
-         P4aA==;
+        b=T+9vOm2SSKx46lHHCkJ+lUJn9Qw9QoDe3mM/tPQUiKmiZOYiOm/PW8QjFH7kTCDcuG
+         0U5LbmyCSrdQWkGbasXjLGQA8N6YzqL1GDb6FucbRw8daumdB5m8EWywfraiWYND4QnY
+         JEpwDhSmWyn1Wow0/J+0GviVtDLls/nsAqfukNEHyJHxLFmYgUd08QpRqoKVKDLFKAR7
+         OSncqIYj7rIs4SLd9gBywUQakhbFmlyyAyp7L4U5Nyqh57eK7HVfW4fY6EPk7lvzANJ6
+         0CuuXj+jrmxoHy9l68Hon/VKFYyskyfyJ/XVjfYUkTT0t/vOiSXzlcmr0jkcSuo8S1sw
+         /uuA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3f03d811si14465996d6.373.2025.03.21.02.29.45
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d644e08si15661431cf.592.2025.03.21.02.30.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:29:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Mar 2025 02:30:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tvYeb-0006aH-NL; Fri, 21 Mar 2025 05:27:03 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tvYg5-0002EW-Dr; Fri, 21 Mar 2025 05:28:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYeR-0006T7-Sf; Fri, 21 Mar 2025 05:26:51 -0400
+ id 1tvYfq-0001ih-9I; Fri, 21 Mar 2025 05:28:18 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYeP-00056F-Ed; Fri, 21 Mar 2025 05:26:51 -0400
+ id 1tvYfo-0005jH-DE; Fri, 21 Mar 2025 05:28:17 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 21 Mar
- 2025 17:26:26 +0800
+ 2025 17:26:31 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 21 Mar 2025 17:26:26 +0800
+ Transport; Fri, 21 Mar 2025 17:26:31 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 09/22] hw/misc/aspeed_hace: Ensure HASH_IRQ is always set
- to prevent firmware hang
-Date: Fri, 21 Mar 2025 17:26:05 +0800
-Message-ID: <20250321092623.2097234-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 22/22] test/qtest/hace: Add tests for AST2700
+Date: Fri, 21 Mar 2025 17:26:18 +0800
+Message-ID: <20250321092623.2097234-23-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
@@ -85,79 +84,164 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k3dU5Mjnudgp
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9p6rq+fnq9rr
 
-Currently, if the program encounters an unsupported algorithm, it does not set
-the HASH_IRQ bit in the status register and send an interrupt to indicate
-command completion. As a result, the FW gets stuck waiting for a completion
-signal from the HACE module.
+The HACE models in AST2600 and AST2700 are nearly identical. Based on the
+AST2600 test cases, new tests have been added for AST2700.
 
-Additionally, in do_hash_operation, if an error occurs within the conditional
-statement, the HASH_IRQ bit is not set in the status register. This causes the
-firmware to continuously send HASH commands, as it is unaware that the HACE
-model has completed processing the command.
-
-To fix this, the HASH_IRQ bit in the status register must always be set to
-ensure that the firmware receives an interrupt from the HACE module, preventing
-it from getting stuck or repeatedly sending HASH commands.
+Implemented test functions for SHA-256, SHA-384, SHA-512, and MD5.
+Added scatter-gather and accumulation test variants.
+For AST2700, the HACE controller base address starts at "0x12070000", and
+the DRAM start address is "0x4_00000000".
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/misc/aspeed_hace.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ tests/qtest/ast2700-hace-test.c | 98 +++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build         |  4 +-
+ 2 files changed, 101 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/ast2700-hace-test.c
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 8f333fc97e..d4f653670e 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -311,12 +311,6 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                             iov[i - 1].iov_len, false,
-                             iov[i - 1].iov_len);
-     }
--
--    /*
--     * Set status bits to indicate completion. Testing shows hardware sets
--     * these irrespective of HASH_IRQ_EN.
--     */
--    s->regs[R_STATUS] |= HASH_IRQ;
+diff --git a/tests/qtest/ast2700-hace-test.c b/tests/qtest/ast2700-hace-test.c
+new file mode 100644
+index 0000000000..a400e2962b
+--- /dev/null
++++ b/tests/qtest/ast2700-hace-test.c
+@@ -0,0 +1,98 @@
++/*
++ * QTest testcase for the ASPEED Hash and Crypto Engine
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2025 ASPEED Technology Inc.
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++#include "aspeed-hace-utils.h"
++
++static const struct AspeedMasks as2700_masks = {
++    .src  = 0x7fffffff,
++    .dest = 0x7ffffff8,
++    .key = 0x7ffffff8,
++    .len  = 0x0fffffff,
++    .src_hi  = 0x00000003,
++    .dest_hi = 0x00000003,
++    .key_hi = 0x00000003,
++};
++
++/* ast2700 */
++static void test_md5_ast2700(void)
++{
++    aspeed_test_md5("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha256_ast2700(void)
++{
++    aspeed_test_sha256("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha256_sg_ast2700(void)
++{
++    aspeed_test_sha256_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha384_ast2700(void)
++{
++    aspeed_test_sha384("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha384_sg_ast2700(void)
++{
++    aspeed_test_sha384_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha512_ast2700(void)
++{
++    aspeed_test_sha512("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha512_sg_ast2700(void)
++{
++    aspeed_test_sha512_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha256_accum_ast2700(void)
++{
++    aspeed_test_sha256_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha384_accum_ast2700(void)
++{
++    aspeed_test_sha384_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_sha512_accum_ast2700(void)
++{
++    aspeed_test_sha512_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
++}
++
++static void test_addresses_ast2700(void)
++{
++    aspeed_test_addresses("-machine ast2700a1-evb", 0x12070000, &as2700_masks);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("ast2700/hace/addresses", test_addresses_ast2700);
++    qtest_add_func("ast2700/hace/sha512", test_sha512_ast2700);
++    qtest_add_func("ast2700/hace/sha384", test_sha384_ast2700);
++    qtest_add_func("ast2700/hace/sha256", test_sha256_ast2700);
++    qtest_add_func("ast2700/hace/md5", test_md5_ast2700);
++
++    qtest_add_func("ast2700/hace/sha512_sg", test_sha512_sg_ast2700);
++    qtest_add_func("ast2700/hace/sha384_sg", test_sha384_sg_ast2700);
++    qtest_add_func("ast2700/hace/sha256_sg", test_sha256_sg_ast2700);
++
++    qtest_add_func("ast2700/hace/sha512_accum", test_sha512_accum_ast2700);
++    qtest_add_func("ast2700/hace/sha384_accum", test_sha384_accum_ast2700);
++    qtest_add_func("ast2700/hace/sha256_accum", test_sha256_accum_ast2700);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 62fc8f9868..253d37f7bd 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -218,7 +218,8 @@ qtests_aspeed = \
+    'aspeed_gpio-test']
+ qtests_aspeed64 = \
+   ['ast2700-gpio-test',
+-   'ast2700-smc-test']
++   'ast2700-smc-test',
++   'ast2700-hace-test']
+ 
+ qtests_stm32l4x5 = \
+   ['stm32l4x5_exti-test',
+@@ -384,6 +385,7 @@ qtests = {
+   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
+   'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
+   'aspeed_hace-test': files('aspeed-hace-utils.c', 'aspeed_hace-test.c'),
++  'ast2700-hace-test': files('aspeed-hace-utils.c', 'ast2700-hace-test.c'),
  }
  
- static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -400,10 +394,16 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                         "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
-                         __func__, data & ahc->hash_mask);
--                break;
-+        } else {
-+            do_hash_operation(s, algo, data & HASH_SG_EN,
-+                    ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
-         }
--        do_hash_operation(s, algo, data & HASH_SG_EN,
--                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
-+
-+        /*
-+         * Set status bits to indicate completion. Testing shows hardware sets
-+         * these irrespective of HASH_IRQ_EN.
-+         */
-+        s->regs[R_STATUS] |= HASH_IRQ;
- 
-         if (data & HASH_IRQ_EN) {
-             qemu_irq_raise(s->irq);
+ if vnc.found()
 -- 
 2.43.0
 

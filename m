@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp179296njc;
-        Fri, 21 Mar 2025 02:30:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqkMMMTQtNu0lUpxshR49wfH34D6/lcPL5/syqgcArARIm9kA9hNGpJNeC35jH4egccUKJUXY5+HhHTg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEPoH6d9A+Zbgkm2f/zzLI2cKjeET/UZbpe4AppHQ62OKwaI9mKh9aJrZ9MuZE6X2vGMa8a
-X-Received: by 2002:a05:622a:2b45:b0:476:964a:e338 with SMTP id d75a77b69052e-4771ddcbd08mr43017501cf.28.1742549421384;
-        Fri, 21 Mar 2025 02:30:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742549421; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp179486njc;
+        Fri, 21 Mar 2025 02:30:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFi1kZZcDyhIqdLvyL7zTms91wz0DatJoggjHDXgRvml7cG8ktPJL8SfhMOvmhEk1NXak3J9zDPVQHuQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeI9lXminw4vBxgZ++eKmJddMjiZKdoaj0zzu+bDqwrON6AI8hGMUq/EfaMRXlozQNNP/P
+X-Received: by 2002:a05:620a:44ca:b0:7c5:4ac6:79de with SMTP id af79cd13be357-7c5ba15ef85mr271522885a.24.1742549444286;
+        Fri, 21 Mar 2025 02:30:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742549444; cv=none;
         d=google.com; s=arc-20240605;
-        b=KbRVP+pgNfC3KoJapz9oDxxPa3FCPs7mQeVvQU1nGquQIzwIbd65Zgk10bbujKzxMU
-         7YTuj+f+TRxaxjkobVjDJvGOgLfRLxgHUzxAiMUG6x9pB6Fbg3lrpc3gtpvbmjVUsX59
-         Y5gBrVbB3VZ0jtEQ4ipW0/vsv2S4BOd1f78RkncqpnGWBYbGmNbPU0CNc+R4/OJa3dFD
-         4t4H3eHxtGh6w5gW6YrGCdMC2b51pglmUaKgnLktk3YOMp3E4b1J/Niih0MxnAuwpK6v
-         gurYxqJ3zc+ghPFCUBYrHA656SiDngSREcmkXAkXRQ1YMhYoZHcJAJq9Iiefy0Wpvgiu
-         UHTw==
+        b=NDOwBKNF7FQOLRKH/RH2GZps0Edfl1/1FnNAnbdNdAtwrvdi+hmCA/MXIBUixRAdFl
+         t84I3M8//ocOLWKrcdnpBZiT1jtWjm1aEjtAy6Uvbw9Od13+OaOhPBZ84fN88ABoyOgP
+         orZ82dz7YSvL8+5MX9HcAwWpRycAuO9SZDP0iQuMmlR8k3BPLR5a5s8WWlNLDQGOPGUo
+         1+FC/GjMUUhzZQfvQCkheNexPifXll1GLQG6fb6rTlp2YqjztvhOIFsjce6wHP8lS3YB
+         c+QZPmiesXWbLDUJ7fZvMmKo0J6Qi49irWM/F9Y2u3Ug6VILfOnFBC2fhJ6vI+3drcTh
+         7hEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=C6akXjAYfccFmh6RPJprgA5WJC37rMLsfMAKLOKJyoM=;
+        bh=ue5BEwpzBa6QOnWJbqXrv2dCki1jrKRmbOGKO/ey/2Y=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=jFoceS+F8qCU/GfvdXUc9zoDYGruRNBg4Ug3V9kpxQoR56liavQ/NkIjiS3fhID8Fk
-         vN9sLB9ol6zN3cRgo+ESx2OsCwzL4zkWiwL7/nRjibKeJdaomqKSpvw5B9eVfcvl5O9Q
-         Xgo2odCgh6gFr6MWQEmkTcKCfwLg0ewY/MvQVEhCeDEju/iLYhELcj5JQJq27Jzv2IcO
-         Z+yXmopFQoeXtuZaKpxhdfEg0s8cJpczmjp6MuhQwAv1UmwAHqybptEtfBvY6F/nAh+A
-         J6zEcAigzremrgvAqqF2Ahyfk6weStoD2mjyp0+c+bWV+8olcxDGDhBy08er4vA0Pjgn
-         i+1A==;
+        b=bc9skiMK0p2j0hfkkmH/2J6JxDEwtEAZ8C2nO8uop/FNrUUguZVzhjy6RAKas1apGi
+         WrlPFJBbpicxMuNAY+UfbkIf18gMaDBkHclcVm2erQWAKVZMp+WMrU8BuU4oiqA2o0pk
+         TDyQszw6Bua6b16ehnLe2Ow4I82OnfGOtRe5TRRyV+zeRiyyVxxe8WQKAfqQUw4auJQK
+         vLKA4k4QicNVCNarYYllOTdaaYivPqwxlT5+T5q/S3qtZK8Dwu4hg/94JVhwAarBZvX4
+         GIWp+u5WGCJShzdHGgFpV8lvHMKpEDMqplISPGnyifnEuKEp7SbtGxBHI/WmH71dz3v8
+         lsEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4771d63c04bsi15556041cf.564.2025.03.21.02.30.21
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b9356b1fsi154462485a.372.2025.03.21.02.30.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:30:21 -0700 (PDT)
+        Fri, 21 Mar 2025 02:30:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tvYfQ-0007zA-Nz; Fri, 21 Mar 2025 05:27:52 -0400
+	id 1tvYfc-0000p5-7B; Fri, 21 Mar 2025 05:28:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYf7-0007Hk-QV; Fri, 21 Mar 2025 05:27:35 -0400
+ id 1tvYfa-0000gl-KN; Fri, 21 Mar 2025 05:28:02 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYf5-0005EC-OY; Fri, 21 Mar 2025 05:27:33 -0400
+ id 1tvYfY-0005EC-Hd; Fri, 21 Mar 2025 05:28:02 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 21 Mar
- 2025 17:26:29 +0800
+ 2025 17:26:30 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 21 Mar 2025 17:26:29 +0800
+ Transport; Fri, 21 Mar 2025 17:26:30 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 15/22] test/qtest/hace: Add SHA-384 test cases for ASPEED
- HACE model
-Date: Fri, 21 Mar 2025 17:26:11 +0800
-Message-ID: <20250321092623.2097234-16-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 18/22] test/qtest/hace: Update source data and digest data
+ type to 64-bit
+Date: Fri, 21 Mar 2025 17:26:14 +0800
+Message-ID: <20250321092623.2097234-19-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
@@ -100,285 +100,292 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VXO8ckOzjhA0
+X-TUID: dGa/EjHRV5bc
 
-Introduced SHA-384 test functions to verify hashing operations.
-Extended support for scatter-gather (`_sg`) and accumulation (`_accum`) tests.
-Updated test result vectors for SHA-384 validation.
+Currently, the hash data source and digest result buffer addresses are set to
+32-bit. However, the AST2700 CPU is a 64-bit Cortex-A35 architecture, and its
+DRAM base address is also 64-bit.
+
+To support AST2700, update the hash data source address and digest result buffer
+address to use 64-bit addressing.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- tests/qtest/aspeed-hace-utils.h |   6 ++
- tests/qtest/aspeed-hace-utils.c | 168 +++++++++++++++++++++++++++++++-
- 2 files changed, 171 insertions(+), 3 deletions(-)
+ tests/qtest/aspeed-hace-utils.h | 20 +++----
+ tests/qtest/aspeed-hace-utils.c | 96 ++++++++++++++++-----------------
+ 2 files changed, 58 insertions(+), 58 deletions(-)
 
 diff --git a/tests/qtest/aspeed-hace-utils.h b/tests/qtest/aspeed-hace-utils.h
-index 598577c69b..f4440561de 100644
+index f4440561de..0382570fa2 100644
 --- a/tests/qtest/aspeed-hace-utils.h
 +++ b/tests/qtest/aspeed-hace-utils.h
-@@ -54,14 +54,20 @@ void aspeed_test_md5(const char *machine, const uint32_t base,
-                      const uint32_t src_addr);
+@@ -51,25 +51,25 @@ struct AspeedMasks {
+ };
+ 
+ void aspeed_test_md5(const char *machine, const uint32_t base,
+-                     const uint32_t src_addr);
++                     const uint64_t src_addr);
  void aspeed_test_sha256(const char *machine, const uint32_t base,
-                         const uint32_t src_addr);
-+void aspeed_test_sha384(const char *machine, const uint32_t base,
-+                        const uint32_t src_addr);
+-                        const uint32_t src_addr);
++                        const uint64_t src_addr);
+ void aspeed_test_sha384(const char *machine, const uint32_t base,
+-                        const uint32_t src_addr);
++                        const uint64_t src_addr);
  void aspeed_test_sha512(const char *machine, const uint32_t base,
-                         const uint32_t src_addr);
+-                        const uint32_t src_addr);
++                        const uint64_t src_addr);
  void aspeed_test_sha256_sg(const char *machine, const uint32_t base,
-                            const uint32_t src_addr);
-+void aspeed_test_sha384_sg(const char *machine, const uint32_t base,
-+                           const uint32_t src_addr);
+-                           const uint32_t src_addr);
++                           const uint64_t src_addr);
+ void aspeed_test_sha384_sg(const char *machine, const uint32_t base,
+-                           const uint32_t src_addr);
++                           const uint64_t src_addr);
  void aspeed_test_sha512_sg(const char *machine, const uint32_t base,
-                            const uint32_t src_addr);
+-                           const uint32_t src_addr);
++                           const uint64_t src_addr);
  void aspeed_test_sha256_accum(const char *machine, const uint32_t base,
-                               const uint32_t src_addr);
-+void aspeed_test_sha384_accum(const char *machine, const uint32_t base,
-+                              const uint32_t src_addr);
+-                              const uint32_t src_addr);
++                              const uint64_t src_addr);
+ void aspeed_test_sha384_accum(const char *machine, const uint32_t base,
+-                              const uint32_t src_addr);
++                              const uint64_t src_addr);
  void aspeed_test_sha512_accum(const char *machine, const uint32_t base,
-                               const uint32_t src_addr);
+-                              const uint32_t src_addr);
++                              const uint64_t src_addr);
  void aspeed_test_addresses(const char *machine, const uint32_t base,
+                            const struct AspeedMasks *expected);
+ 
 diff --git a/tests/qtest/aspeed-hace-utils.c b/tests/qtest/aspeed-hace-utils.c
-index 8fbbba49c1..d3146898c2 100644
+index d3146898c2..f39bb8ea48 100644
 --- a/tests/qtest/aspeed-hace-utils.c
 +++ b/tests/qtest/aspeed-hace-utils.c
-@@ -16,7 +16,7 @@
-  * Expected results were generated using command line utitiles:
-  *
-  *  echo -n -e 'abc' | dd of=/tmp/test
-- *  for hash in sha512sum sha256sum md5sum; do $hash /tmp/test; done
-+ *  for hash in sha512sum sha384sum sha256sum md5sum; do $hash /tmp/test; done
-  *
-  */
- static const uint8_t test_vector[] = {0x61, 0x62, 0x63};
-@@ -29,6 +29,12 @@ static const uint8_t test_result_sha512[] = {
-     0x45, 0x4d, 0x44, 0x23, 0x64, 0x3c, 0xe8, 0x0e, 0x2a, 0x9a, 0xc9, 0x4f,
-     0xa5, 0x4c, 0xa4, 0x9f};
- 
-+static const uint8_t test_result_sha384[] = {
-+    0xcb, 0x00, 0x75, 0x3f, 0x45, 0xa3, 0x5e, 0x8b, 0xb5, 0xa0, 0x3d, 0x69,
-+    0x9a, 0xc6, 0x50, 0x07, 0x27, 0x2c, 0x32, 0xab, 0x0e, 0xde, 0xd1, 0x63,
-+    0x1a, 0x8b, 0x60, 0x5a, 0x43, 0xff, 0x5b, 0xed, 0x80, 0x86, 0x07, 0x2b,
-+    0xa1, 0xe7, 0xcc, 0x23, 0x58, 0xba, 0xec, 0xa1, 0x34, 0xc8, 0x25, 0xa7};
-+
- static const uint8_t test_result_sha256[] = {
-     0xba, 0x78, 0x16, 0xbf, 0x8f, 0x01, 0xcf, 0xea, 0x41, 0x41, 0x40, 0xde,
+@@ -153,22 +153,22 @@ static const uint8_t test_result_accum_sha256[] = {
      0x5d, 0xae, 0x22, 0x23, 0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
-@@ -45,7 +51,7 @@ static const uint8_t test_result_md5[] = {
-  * Expected results were generated using command line utitiles:
-  *
-  *  echo -n -e 'abcdefghijkl' | dd of=/tmp/test
-- *  for hash in sha512sum sha256sum; do $hash /tmp/test; done
-+ *  for hash in sha512sum sha384sum sha256sum; do $hash /tmp/test; done
-  *
-  */
- static const uint8_t test_vector_sg1[] = {0x61, 0x62, 0x63, 0x64, 0x65, 0x66};
-@@ -60,6 +66,12 @@ static const uint8_t test_result_sg_sha512[] = {
-     0x84, 0x25, 0x7c, 0x32, 0xc8, 0xf6, 0xd0, 0x85, 0x4a, 0xe6, 0xb5, 0x40,
-     0xf8, 0x6d, 0xda, 0x2e};
+     0xb4, 0x10, 0xff, 0x61, 0xf2, 0x00, 0x15, 0xad};
  
-+static const uint8_t test_result_sg_sha384[] = {
-+    0x10, 0x3c, 0xa9, 0x6c, 0x06, 0xa1, 0xce, 0x79, 0x8f, 0x08, 0xf8, 0xef,
-+    0xf0, 0xdf, 0xb0, 0xcc, 0xdb, 0x56, 0x7d, 0x48, 0xb2, 0x85, 0xb2, 0x3d,
-+    0x0c, 0xd7, 0x73, 0x45, 0x46, 0x67, 0xa3, 0xc2, 0xfa, 0x5f, 0x1b, 0x58,
-+    0xd9, 0xcd, 0xf2, 0x32, 0x9b, 0xd9, 0x97, 0x97, 0x30, 0xbf, 0xaa, 0xff};
-+
- static const uint8_t test_result_sg_sha256[] = {
-     0xd6, 0x82, 0xed, 0x4c, 0xa4, 0xd9, 0x89, 0xc1, 0x34, 0xec, 0x94, 0xf1,
-     0x55, 0x1e, 0x1e, 0xc5, 0x80, 0xdd, 0x6d, 0x5a, 0x6e, 0xcd, 0xe9, 0xf3,
-@@ -74,7 +86,7 @@ static const uint8_t test_result_sg_sha256[] = {
-  * Expected results were generated using command line utitiles:
-  *
-  *  echo -n -e 'abc' | dd of=/tmp/test
-- *  for hash in sha512sum sha256sum; do $hash /tmp/test; done
-+ *  for hash in sha512sum sha384sum sha256sum; do $hash /tmp/test; done
-  */
- static const uint8_t test_vector_accum_512[] = {
-     0x61, 0x62, 0x63, 0x80, 0x00, 0x00, 0x00, 0x00,
-@@ -94,6 +106,24 @@ static const uint8_t test_vector_accum_512[] = {
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18};
- 
-+static const uint8_t test_vector_accum_384[] = {
-+    0x61, 0x62, 0x63, 0x80, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18};
-+
- static const uint8_t test_vector_accum_256[] = {
-     0x61, 0x62, 0x63, 0x80, 0x00, 0x00, 0x00, 0x00,
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -112,6 +142,12 @@ static const uint8_t test_result_accum_sha512[] = {
-     0x45, 0x4d, 0x44, 0x23, 0x64, 0x3c, 0xe8, 0x0e, 0x2a, 0x9a, 0xc9, 0x4f,
-     0xa5, 0x4c, 0xa4, 0x9f};
- 
-+static const uint8_t test_result_accum_sha384[] = {
-+    0xcb, 0x00, 0x75, 0x3f, 0x45, 0xa3, 0x5e, 0x8b, 0xb5, 0xa0, 0x3d, 0x69,
-+    0x9a, 0xc6, 0x50, 0x07, 0x27, 0x2c, 0x32, 0xab, 0x0e, 0xde, 0xd1, 0x63,
-+    0x1a, 0x8b, 0x60, 0x5a, 0x43, 0xff, 0x5b, 0xed, 0x80, 0x86, 0x07, 0x2b,
-+    0xa1, 0xe7, 0xcc, 0x23, 0x58, 0xba, 0xec, 0xa1, 0x34, 0xc8, 0x25, 0xa7};
-+
- static const uint8_t test_result_accum_sha256[] = {
-     0xba, 0x78, 0x16, 0xbf, 0x8f, 0x01, 0xcf, 0xea, 0x41, 0x41, 0x40, 0xde,
-     0x5d, 0xae, 0x22, 0x23, 0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
-@@ -195,6 +231,40 @@ void aspeed_test_sha256(const char *machine, const uint32_t base,
-     qtest_quit(s);
+-static void write_regs(QTestState *s, uint32_t base, uint32_t src,
+-                       uint32_t length, uint32_t out, uint32_t method)
++static void write_regs(QTestState *s, uint32_t base, uint64_t src,
++                       uint32_t length, uint64_t out, uint32_t method)
+ {
+-        qtest_writel(s, base + HACE_HASH_SRC, src);
+-        qtest_writel(s, base + HACE_HASH_DIGEST, out);
++        qtest_writel(s, base + HACE_HASH_SRC, extract64(src, 0, 32));
++        qtest_writel(s, base + HACE_HASH_DIGEST, extract64(out, 0, 32));
+         qtest_writel(s, base + HACE_HASH_DATA_LEN, length);
+         qtest_writel(s, base + HACE_HASH_CMD, HACE_SHA_BE_EN | method);
  }
  
-+void aspeed_test_sha384(const char *machine, const uint32_t base,
-+                        const uint32_t src_addr)
-+{
-+    QTestState *s = qtest_init(machine);
-+
-+    const uint32_t digest_addr = src_addr + 0x10000;
-+    uint8_t digest[32] = {0};
-+
-+    /* Check engine is idle, no busy or irq bits set */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Write test vector into memory */
-+    qtest_memwrite(s, src_addr, test_vector, sizeof(test_vector));
-+
-+    write_regs(s, base, src_addr, sizeof(test_vector), digest_addr,
-+               HACE_ALGO_SHA384);
-+
-+    /* Check hash IRQ status is asserted */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0x00000200);
-+
-+    /* Clear IRQ status and check status is deasserted */
-+    qtest_writel(s, base + HACE_STS, 0x00000200);
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Read computed digest from memory */
-+    qtest_memread(s, digest_addr, digest, sizeof(digest));
-+
-+    /* Check result of computation */
-+    g_assert_cmpmem(digest, sizeof(digest),
-+                    test_result_sha384, sizeof(digest));
-+
-+    qtest_quit(s);
-+}
-+
+ void aspeed_test_md5(const char *machine, const uint32_t base,
+-                     const uint32_t src_addr)
++                     const uint64_t src_addr)
+ 
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    uint32_t digest_addr = src_addr + 0x010000;
++    uint64_t digest_addr = src_addr + 0x010000;
+     uint8_t digest[16] = {0};
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -198,11 +198,11 @@ void aspeed_test_md5(const char *machine, const uint32_t base,
+ }
+ 
+ void aspeed_test_sha256(const char *machine, const uint32_t base,
+-                        const uint32_t src_addr)
++                        const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t digest_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x10000;
+     uint8_t digest[32] = {0};
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -232,11 +232,11 @@ void aspeed_test_sha256(const char *machine, const uint32_t base,
+ }
+ 
+ void aspeed_test_sha384(const char *machine, const uint32_t base,
+-                        const uint32_t src_addr)
++                        const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t digest_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x10000;
+     uint8_t digest[32] = {0};
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -266,11 +266,11 @@ void aspeed_test_sha384(const char *machine, const uint32_t base,
+ }
+ 
  void aspeed_test_sha512(const char *machine, const uint32_t base,
-                         const uint32_t src_addr)
+-                        const uint32_t src_addr)
++                        const uint64_t src_addr)
  {
-@@ -280,6 +350,57 @@ void aspeed_test_sha256_sg(const char *machine, const uint32_t base,
-     qtest_quit(s);
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t digest_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x10000;
+     uint8_t digest[64] = {0};
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -300,22 +300,22 @@ void aspeed_test_sha512(const char *machine, const uint32_t base,
  }
  
-+void aspeed_test_sha384_sg(const char *machine, const uint32_t base,
-+                           const uint32_t src_addr)
-+{
-+    QTestState *s = qtest_init(machine);
-+
-+    const uint32_t src_addr_1 = src_addr + 0x10000;
-+    const uint32_t src_addr_2 = src_addr + 0x20000;
-+    const uint32_t src_addr_3 = src_addr + 0x30000;
-+    const uint32_t digest_addr = src_addr + 0x40000;
-+    uint8_t digest[64] = {0};
-+    struct AspeedSgList array[] = {
-+        {  cpu_to_le32(sizeof(test_vector_sg1)),
-+           cpu_to_le32(src_addr_1) },
-+        {  cpu_to_le32(sizeof(test_vector_sg2)),
-+           cpu_to_le32(src_addr_2) },
-+        {  cpu_to_le32(sizeof(test_vector_sg3) | SG_LIST_LEN_LAST),
-+           cpu_to_le32(src_addr_3) },
-+    };
-+
-+    /* Check engine is idle, no busy or irq bits set */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Write test vector into memory */
-+    qtest_memwrite(s, src_addr_1, test_vector_sg1, sizeof(test_vector_sg1));
-+    qtest_memwrite(s, src_addr_2, test_vector_sg2, sizeof(test_vector_sg2));
-+    qtest_memwrite(s, src_addr_3, test_vector_sg3, sizeof(test_vector_sg3));
-+    qtest_memwrite(s, src_addr, array, sizeof(array));
-+
-+    write_regs(s, base, src_addr,
-+               (sizeof(test_vector_sg1)
-+                + sizeof(test_vector_sg2)
-+                + sizeof(test_vector_sg3)),
-+               digest_addr, HACE_ALGO_SHA384 | HACE_SG_EN);
-+
-+    /* Check hash IRQ status is asserted */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0x00000200);
-+
-+    /* Clear IRQ status and check status is deasserted */
-+    qtest_writel(s, base + HACE_STS, 0x00000200);
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Read computed digest from memory */
-+    qtest_memread(s, digest_addr, digest, sizeof(digest));
-+
-+    /* Check result of computation */
-+    g_assert_cmpmem(digest, sizeof(digest),
-+                    test_result_sg_sha384, sizeof(digest));
-+
-+    qtest_quit(s);
-+}
-+
+ void aspeed_test_sha256_sg(const char *machine, const uint32_t base,
+-                           const uint32_t src_addr)
++                           const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t src_addr_1 = src_addr + 0x10000;
+-    const uint32_t src_addr_2 = src_addr + 0x20000;
+-    const uint32_t src_addr_3 = src_addr + 0x30000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t src_addr_1 = src_addr + 0x10000;
++    const uint64_t src_addr_2 = src_addr + 0x20000;
++    const uint64_t src_addr_3 = src_addr + 0x30000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[32] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_sg1)),
+-           cpu_to_le32(src_addr_1) },
++           cpu_to_le64(src_addr_1) },
+         {  cpu_to_le32(sizeof(test_vector_sg2)),
+-           cpu_to_le32(src_addr_2) },
++           cpu_to_le64(src_addr_2) },
+         {  cpu_to_le32(sizeof(test_vector_sg3) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(src_addr_3) },
++           cpu_to_le64(src_addr_3) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -351,22 +351,22 @@ void aspeed_test_sha256_sg(const char *machine, const uint32_t base,
+ }
+ 
+ void aspeed_test_sha384_sg(const char *machine, const uint32_t base,
+-                           const uint32_t src_addr)
++                           const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t src_addr_1 = src_addr + 0x10000;
+-    const uint32_t src_addr_2 = src_addr + 0x20000;
+-    const uint32_t src_addr_3 = src_addr + 0x30000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t src_addr_1 = src_addr + 0x10000;
++    const uint64_t src_addr_2 = src_addr + 0x20000;
++    const uint64_t src_addr_3 = src_addr + 0x30000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[64] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_sg1)),
+-           cpu_to_le32(src_addr_1) },
++           cpu_to_le64(src_addr_1) },
+         {  cpu_to_le32(sizeof(test_vector_sg2)),
+-           cpu_to_le32(src_addr_2) },
++           cpu_to_le64(src_addr_2) },
+         {  cpu_to_le32(sizeof(test_vector_sg3) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(src_addr_3) },
++           cpu_to_le64(src_addr_3) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -402,22 +402,22 @@ void aspeed_test_sha384_sg(const char *machine, const uint32_t base,
+ }
+ 
  void aspeed_test_sha512_sg(const char *machine, const uint32_t base,
-                            const uint32_t src_addr)
+-                           const uint32_t src_addr)
++                           const uint64_t src_addr)
  {
-@@ -372,6 +493,47 @@ void aspeed_test_sha256_accum(const char *machine, const uint32_t base,
-     qtest_quit(s);
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t src_addr_1 = src_addr + 0x10000;
+-    const uint32_t src_addr_2 = src_addr + 0x20000;
+-    const uint32_t src_addr_3 = src_addr + 0x30000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t src_addr_1 = src_addr + 0x10000;
++    const uint64_t src_addr_2 = src_addr + 0x20000;
++    const uint64_t src_addr_3 = src_addr + 0x30000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[64] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_sg1)),
+-           cpu_to_le32(src_addr_1) },
++           cpu_to_le64(src_addr_1) },
+         {  cpu_to_le32(sizeof(test_vector_sg2)),
+-           cpu_to_le32(src_addr_2) },
++           cpu_to_le64(src_addr_2) },
+         {  cpu_to_le32(sizeof(test_vector_sg3) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(src_addr_3) },
++           cpu_to_le64(src_addr_3) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -453,16 +453,16 @@ void aspeed_test_sha512_sg(const char *machine, const uint32_t base,
  }
  
-+void aspeed_test_sha384_accum(const char *machine, const uint32_t base,
-+                              const uint32_t src_addr)
-+{
-+    QTestState *s = qtest_init(machine);
-+
-+    const uint32_t buffer_addr = src_addr + 0x10000;
-+    const uint32_t digest_addr = src_addr + 0x40000;
-+    uint8_t digest[64] = {0};
-+    struct AspeedSgList array[] = {
-+        {  cpu_to_le32(sizeof(test_vector_accum_384) | SG_LIST_LEN_LAST),
-+           cpu_to_le32(buffer_addr) },
-+    };
-+
-+    /* Check engine is idle, no busy or irq bits set */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Write test vector into memory */
-+    qtest_memwrite(s, buffer_addr, test_vector_accum_384,
-+                   sizeof(test_vector_accum_384));
-+    qtest_memwrite(s, src_addr, array, sizeof(array));
-+
-+    write_regs(s, base, src_addr, sizeof(test_vector_accum_384),
-+               digest_addr, HACE_ALGO_SHA384 | HACE_SG_EN | HACE_ACCUM_EN);
-+
-+    /* Check hash IRQ status is asserted */
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0x00000200);
-+
-+    /* Clear IRQ status and check status is deasserted */
-+    qtest_writel(s, base + HACE_STS, 0x00000200);
-+    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-+
-+    /* Read computed digest from memory */
-+    qtest_memread(s, digest_addr, digest, sizeof(digest));
-+
-+    /* Check result of computation */
-+    g_assert_cmpmem(digest, sizeof(digest),
-+                    test_result_accum_sha384, sizeof(digest));
-+
-+    qtest_quit(s);
-+}
-+
- void aspeed_test_sha512_accum(const char *machine, const uint32_t base,
-                               const uint32_t src_addr)
+ void aspeed_test_sha256_accum(const char *machine, const uint32_t base,
+-                              const uint32_t src_addr)
++                              const uint64_t src_addr)
  {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t buffer_addr = src_addr + 0x10000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t buffer_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[32] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_accum_256) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(buffer_addr) },
++           cpu_to_le64(buffer_addr) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -494,16 +494,16 @@ void aspeed_test_sha256_accum(const char *machine, const uint32_t base,
+ }
+ 
+ void aspeed_test_sha384_accum(const char *machine, const uint32_t base,
+-                              const uint32_t src_addr)
++                              const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t buffer_addr = src_addr + 0x10000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t buffer_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[64] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_accum_384) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(buffer_addr) },
++           cpu_to_le64(buffer_addr) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
+@@ -535,16 +535,16 @@ void aspeed_test_sha384_accum(const char *machine, const uint32_t base,
+ }
+ 
+ void aspeed_test_sha512_accum(const char *machine, const uint32_t base,
+-                              const uint32_t src_addr)
++                              const uint64_t src_addr)
+ {
+     QTestState *s = qtest_init(machine);
+ 
+-    const uint32_t buffer_addr = src_addr + 0x10000;
+-    const uint32_t digest_addr = src_addr + 0x40000;
++    const uint64_t buffer_addr = src_addr + 0x10000;
++    const uint64_t digest_addr = src_addr + 0x40000;
+     uint8_t digest[64] = {0};
+     struct AspeedSgList array[] = {
+         {  cpu_to_le32(sizeof(test_vector_accum_512) | SG_LIST_LEN_LAST),
+-           cpu_to_le32(buffer_addr) },
++           cpu_to_le64(buffer_addr) },
+     };
+ 
+     /* Check engine is idle, no busy or irq bits set */
 -- 
 2.43.0
 

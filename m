@@ -1,191 +1,214 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp235616njc;
-        Fri, 21 Mar 2025 04:25:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW3xxgzpw375oSNFgnw79/YSIJURK372T+7XYp5XPCDNg6iWtUqPwMOJLLQl7HF6TBeJdz3KwlOqCfTiQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFi6MuZcHhC97E0Si8Lv+rWta5766vJbMjGHafpIT9r6lIcLDXepVh5leBMNYYj9IPAxPrW
-X-Received: by 2002:a05:622a:4a19:b0:476:8eae:3366 with SMTP id d75a77b69052e-4771ddd5baemr45534131cf.30.1742556343308;
-        Fri, 21 Mar 2025 04:25:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742556343; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp235728njc;
+        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV+0wD66BeOpbDBAHW9HXd211LpJ9sK4qnYqi4kgPmaH2kw8fOE6YbAarQZ/eiMItH3MjKy61WM7sR5+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpNEzjc0u4pUhYf6NYIsdplrzmRStd6qiLv/Q29aCHCXCnezMDdnNNxd/GUfXkSn6SihkC
+X-Received: by 2002:a05:622a:2588:b0:476:8db0:8caf with SMTP id d75a77b69052e-4771dd5d84fmr42928221cf.1.1742556354795;
+        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742556354; cv=none;
         d=google.com; s=arc-20240605;
-        b=VqHNaSrA1dGz4Eb9mRLSakhAVIY5tKmxLu2W5tlTrcPvVfXw3Q+QvuHODDZVjgX2E4
-         GykpUQ8HF1UWaMHfbIh9XOtfJssht541IsRWdUvXymvePvbCo2eS7WYd1Uk551+g06Rd
-         4Bl/e3GU1SaaRPFn+wlEJlmDsKyTftZwe1tGe/Pg13k1gPI/cKFktV6AC8Hgemz7wenB
-         eI4Po1IUHIJT8RXKlG0G2bdhcL0jMmrbCcwc2RIboeZG4Ci9K9+wgWeDUNFvseOGQWCE
-         +2DF9AHQXtaxxVN8kQFJG5FItrT3Zi/I3+VmR/KFhNxfAu1brtdxgXjCkuXhtWoDIFF8
-         g+vg==
+        b=PKXuGOlMvtxPB2AZiHWK6+OUVeXj6pGbnjOPya5E5tb0GGk9RlaX+l6KOHbvk7focN
+         /8atdWGMTYufdebIc3yRIkFQvwSOsebs7cJOcPBLwO4l7QUSQBu7lM3yPq3uJ0s/tu4r
+         LOSfhdFnc323FPukon3fp7tFEspL7MXE4OxlKU6NvJYsHT9o0C8YQbP+ZrOiItZSngRL
+         sX7loSNwTildvHRxTUulVoe2IfQrCe6atVvYyVg6noawRGMo9UTm8QYJ53xu5901PXBx
+         OSC5dDg8QlyZgoYcFQOpu107U4tddB003ZExbzBeB4/cueLxOd8qw+X8xInHcjUg9xwh
+         IPkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=DwalI5yLXIYOeimdWTNSfaCvh6YDdb17pOS3Ktb3jnU=;
-        fh=NAemCr4H7/+6PKPE7ijuGJKYAK7QJ7bz7TXRqyVlLss=;
-        b=CMg/gIObLn8sxwBUUFTKaVHgvBboXIEx90OtJbVzZn7Q0ud7wJGKGPqA3KlayW4c9x
-         iwttb+NfuWvRitytMhqb5rdEbBXgtUnkAViwFVLvL/Rv+9eVssk46Dm3B5vgP+bpzETN
-         1GFJXOhsUMqALsFGEqnqKATzBO3jnKnFARhu/j7tMGsxTCwGzzRJJj/S2xvmHFtNNd61
-         s8NlzDEeOv6LXqveUlqHbij3sE7XmZeRvChi5GEXbCCk7l14VWIgJEzbVKn3cVMiFVno
-         mXgLsNZoxWFOrfdFk/f+DrGUPRNSB5umVQS0USMx27b6bUkZk/Egkbjlt9z4eGOhUy2D
-         tizw==;
+        bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
+        fh=nkUwK14Rko481OoP9lZW22Eno4pNVh/EeqL/ISZn+LU=;
+        b=CYM2RPN+UHVbg9Ys4jpdHhkwZ00ZcFDwzV3tAQ5+IbSGS1ULLcUcJmqUpuk3Qd0aDe
+         F0nJFLw3BY9rKB+OXoebX1xgB9rFHWSzVRbp5WphQHP/3/L9bUS+5uF1Fjo7FAym7uPP
+         dIJuQSh+xgsSgA/K4A9hwfhWxMcvmzHlnuhUn8tNgQmnzJOSaRWYIQFXj41PGDUPnXLW
+         cw5j4F6Tz6ukvdQviiZ89iEZv/tuzl6DXEI0gk/52YwOd7thWyec+wgfE2mUgnopmuu8
+         PT7VPkPIUyNupH7ZvTIhKbnaddFOXP180q7cAdIUL1lyFuxe8Okyj9yeMr5g7uNK78B3
+         mnjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tMXr9FSM;
-       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O6i5iEGG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4771d63af83si17135981cf.554.2025.03.21.04.25.43
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d63ab7csi17586021cf.517.2025.03.21.04.25.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 04:25:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Mar 2025 04:25:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tMXr9FSM;
-       spf=pass (google.com: domain of qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O6i5iEGG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-rust-bounces@nongnu.org>)
-	id 1tvaVO-0003yJ-2z; Fri, 21 Mar 2025 07:25:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tvaVO-0003z5-Uw; Fri, 21 Mar 2025 07:25:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tvaVJ-0003ve-4G
- for qemu-rust@nongnu.org; Fri, 21 Mar 2025 07:25:33 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1tvaVJ-0003vd-4f
+ for qemu-devel@nongnu.org; Fri, 21 Mar 2025 07:25:33 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tvaVF-0004Ob-Iy
- for qemu-rust@nongnu.org; Fri, 21 Mar 2025 07:25:31 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-391342fc0b5so1599959f8f.3
- for <qemu-rust@nongnu.org>; Fri, 21 Mar 2025 04:25:28 -0700 (PDT)
+ id 1tvaVG-0004P0-AE
+ for qemu-devel@nongnu.org; Fri, 21 Mar 2025 07:25:32 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-43d0618746bso12611005e9.2
+ for <qemu-devel@nongnu.org>; Fri, 21 Mar 2025 04:25:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1742556328; x=1743161128; darn=nongnu.org;
+ d=linaro.org; s=google; t=1742556329; x=1743161129; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DwalI5yLXIYOeimdWTNSfaCvh6YDdb17pOS3Ktb3jnU=;
- b=tMXr9FSMdIAnk+lOHR9mvLUnfSKrhGFfKvNQ5+SYCe2MxHrGhy3PMlWNuzZ99kYmua
- E3bbmZwKIyOrrjjeq+NFsgWEyw+BAC1lEj+MHklzJLQtlB14o6uoTNxOdkavQSt8Dgky
- GXypwXPPS6G1ShqPRbiYmm9FV0EQssYjtOR7fT/AC9DU8jdZMHg1Av7cp0jwi9/H7tXE
- Z/t/3EVgpQF8EUX8DJ/wVewqqcwYYO54ZipouRgAEvxx58xuMiQo8Q7lvzKvhm85yQVs
- s229yjtjFyRDXjCkoCXN/gaXbtd0WqoKFch8yfvqXExY9xM9/Js93kMOszeE45P+LDM1
- IOZQ==
+ bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
+ b=O6i5iEGGX5ipDvgPxkTufU2YNGxN1dr8Uxy7Lzluxr4+UHIUkOUnaSU7pZ93kd+G9p
+ 3JvME4u+hKabGBuscYPgCT+nPxStBtLeZibenh0mJWGpR4w9iybI1iPAUGS06QT22v6i
+ JPlGjZtYlPYFUBRNmCAspBM+pLpLAK9cb8ies5acxes+z40tzAiV/payNsJ1WpOVPxC2
+ XCvx29+S54E3DqXbhY0N6bXTA5pISwnUAQPdeso/BHZhjCBz3PKnW2V2NsDVV8l1hvnB
+ YPinfweBxRSzyE5xuz/7Ll978O3zMHcZkXc7+g3G/hrZf0SBHrmYsvVel3ZOM0n3U0r1
+ UQow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742556328; x=1743161128;
+ d=1e100.net; s=20230601; t=1742556329; x=1743161129;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DwalI5yLXIYOeimdWTNSfaCvh6YDdb17pOS3Ktb3jnU=;
- b=a0+t72vZh29YGQRNHL9xHUy4jPEoNRyR5tEtm5HjiuNhBvyxaKYOw7XNyi7M7D5i3O
- pjL04UgoQzUyTaQoBLULROgxzczVgNUpe80rqAezJcP6NyqdgYPXV45sUXr23cdRZ25F
- wjvcv/IZYeXSm+gYPg0xcz7Opxztdw6KvjNehdoEQt6Uxztcx3D5Qr7T9Rtt6GMAyCsN
- YXPGBRQ0HrDPhFRKZ5UPbAShHrmEGE6/llb3r9zeWY4oDangO4zB6UsQ39CvYcxneGU5
- l4o8+Y4Xp7Tt/oXI4X3L11+R52I5hH9f57oG0GIQYtd+N6RGnj3N2k8ks/GbPQJ33VmC
- VP+A==
-X-Gm-Message-State: AOJu0YyyhzE8eg0ljqlIZKM/jEKoo02jmRxRxXwgfrMmm6tC23+JAkmZ
- taBLOt2i7N4TSjaeWgkZqAYgxQWaL6gr03vxcJDYdvnyM8s/nR/Rd05Bz7LgJ75SuTDGzZwI7QK
- b
-X-Gm-Gg: ASbGnct49Q6L95J15693Q8nnq4gbvkhkDH89BlcMkqx+bRN+QtHwiPiMHtAKNLIEl0C
- gVFDGeurQGkK4GQeOP2X3av+EMMj2PZZWvLs2BV7qLp0yT5IPNUbpBwiVuAnU+H0tvk8sTjCdXU
- ql95hSRhkqfJu8JET11n02APOuDn+Sc5KU2Odllu2YiXxMsk4dOSJrNhywyvdPmUzhMzBNiscM6
- BTzJqsg4LUMuyMzJK4zCLzywZqR5e2OLfjfgVSrn2v2iotUu8BfTDAnr0/X5jlm4r271QdHN3iF
- /SHWse0K0HSac3ABQFimU3F72CqJM06cjuQkKvQKALmiEj91LFHxX0yMXlgqfQ==
-X-Received: by 2002:a05:6000:188d:b0:391:3124:f287 with SMTP id
- ffacd0b85a97d-3997f9014a6mr3430455f8f.16.1742556327776; 
- Fri, 21 Mar 2025 04:25:27 -0700 (PDT)
+ bh=NzDaV833+sNCdch5vTHYgYjsDrkvTWOgMEcsYmvQ7Aw=;
+ b=G2d4yA9Syl1FSLgDxkdL+IFiaVjObMJ1PQDT/eo8J97mu9jyWnPmUsYS3i95rcu5YP
+ 6nteATDZN/u1ix+fYog1WbJa4us3n73SBAeN07kLGezJRi9szDlCe6UBlf/ZNVXLlnrL
+ xxg6Qe7ZBmsxMj84DOeG5s2rtwaWiN7rQGSjL0JF1J65CW+2PURhogQevJv+qUrTKX4p
+ DCKt3yvcSssIB0fbArzgrU8UXD+7efaqNEOIPk2XZEWWicoeSUrs+IeB/nP8IThmEMoi
+ REda+rg9Alm+yr2L59uv8STePkyO1p0+Hn3e+AFyDAtBS/P0pWkn5HiwHegrtUSy1crk
+ NDQw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXSlqz0bRZd1vOze3jDYVM8/g0OtngRPwndAG7I1XCQs2AaYpfZX0rC+TiYer0295I8sO/yW5G8V114@nongnu.org
+X-Gm-Message-State: AOJu0YwNyRO9JxT6acghIYVM0ouW5qSin597Xp1YcyTQfMvg8U/UEToO
+ 4w71gw6anhR4abNcvneW7giBRo14+YTo1OT3yi5yTE8HJZkCge63YKJPMbksryOw0QFiRecpaRJ
+ 2
+X-Gm-Gg: ASbGncsoTgEHOfGjiYH78K5/+fvbwZQif6KYF6SzdhQEDXMzXrjVWnNdpEEBak4oOsn
+ jhYu3qjBFi7tVoq2LK09/9TPeWjV1ORdQl3lIbnoCxRMmU5Uehkjyr94D5742AWAfSQSCm72maw
+ nR/rEU6pPaetdty/M08unUeRTGfmMEojAzMhdIB30Mfi7LunTED2Hu/qRS+2ASIEhvi6Af/dml5
+ H7M1UrC+HVz72bSYnup0yFOrSWFlQktPkSyQCKxhSrj7AhcJbj74edi+I414jhtYh7Hj268O0fs
+ RqYOB/vmQMwTcSoLlbJ4zFbtmQ1oIVsIapZI510Bn+Q6+O/8jDQ=
+X-Received: by 2002:a5d:47a5:0:b0:390:fc83:a070 with SMTP id
+ ffacd0b85a97d-3997f8a4e9cmr2587541f8f.0.1742556328752; 
+ Fri, 21 Mar 2025 04:25:28 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9e6767sm2132614f8f.66.2025.03.21.04.25.26
+ ffacd0b85a97d-3997f9e6767sm2132614f8f.66.2025.03.21.04.25.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Mar 2025 04:25:26 -0700 (PDT)
+ Fri, 21 Mar 2025 04:25:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: qemu-rust@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 2/3] hw/char/pl011: Pad PL011State struct to same size as
- Rust impl
-Date: Fri, 21 Mar 2025 11:25:22 +0000
-Message-ID: <20250321112523.1774131-3-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/3] rust: pl011: Check size of state struct at compile time
+Date: Fri, 21 Mar 2025 11:25:23 +0000
+Message-ID: <20250321112523.1774131-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250321112523.1774131-1-peter.maydell@linaro.org>
 References: <20250321112523.1774131-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-rust@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: QEMU Rust-related patches and discussion <qemu-rust.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-rust>,
- <mailto:qemu-rust-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-rust>
-List-Post: <mailto:qemu-rust@nongnu.org>
-List-Help: <mailto:qemu-rust-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-rust>,
- <mailto:qemu-rust-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-rust-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QBnDAJIUhLLv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vmuYIBd+YlKY
 
-We have some users of the PL011 struct which embed it directly into
-their own state structs. This means that the Rust version of the
-device must have a state struct that is the same size or smaller
-than the C struct.
+The PL011 device's C implementation exposes its PL011State struct to
+users of the device, and one common usage pattern is to embed that
+struct into the user's own state struct.  (The internals of the
+struct are technically visible to the C user of the device, but in
+practice are treated as implementation details.)
 
-In commit 9b642097d6b7 ("rust: pl011: switch to safe chardev operation")
-the Rust PL011 state struct changed from having a bindings::CharBackend
-to a chardev::CharBackend, which made it grow larger than the C
-version. This results in an assertion at startup when QEMU was
-built with Rust enabled:
+This means that the Rust version of the state struct must not be
+larger than the C version's struct; otherwise it will trip a runtime
+assertion in object_initialize_type() when the C user attempts to
+in-place initialize the type.
 
- $ qemu-system-arm -M raspi2b -display none
- ERROR:../../qom/object.c:562:object_initialize_with_type: assertion
- failed: (size >= type->instance_size)
+Add a compile-time assertion on the Rust side, so that if we
+accidentally make the Rust device state larger we know immediately
+that we need to expand the padding in the C version of the struct.
 
-The long-term better approach to this problem would be to move
-our C device code patterns away from "embed a struct" and (back)
-to "have a pointer to the device", so we can make the C PL011State
-struct a private implementation detail rather than exposed to
-its users.
-
-For the short term, add a padding field at the end of the C struct
-so it's big enough that the Rust state struct can fit.
-
-Fixes: 9b642097d6b7 ("rust: pl011: switch to safe chardev operation")
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/char/pl011.h | 5 +++++
- 1 file changed, 5 insertions(+)
+v1->v2: fix alpha order in 'use'; use 'size_of' and
+'qemu_api::bindings::PL011State rather than 'mem::size_of'
+and 'bindings::PL011State'.
+---
+ rust/wrapper.h                   | 1 +
+ rust/hw/char/pl011/src/device.rs | 9 ++++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index 4fcaf3d7d30..299ca9b18bb 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -52,6 +52,11 @@ struct PL011State {
-     Clock *clk;
-     bool migrate_clk;
-     const unsigned char *id;
-+    /*
-+     * Since some users embed this struct directly, we must
-+     * ensure that the C struct is at least as big as the Rust one.
-+     */
-+    uint8_t padding_for_rust[16];
- };
+diff --git a/rust/wrapper.h b/rust/wrapper.h
+index d927ad6799d..d4fec546571 100644
+--- a/rust/wrapper.h
++++ b/rust/wrapper.h
+@@ -65,3 +65,4 @@ typedef enum memory_order {
+ #include "exec/memattrs.h"
+ #include "qemu/timer.h"
+ #include "exec/address-spaces.h"
++#include "hw/char/pl011.h"
+diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
+index f137b49feaf..bf88e0b00a0 100644
+--- a/rust/hw/char/pl011/src/device.rs
++++ b/rust/hw/char/pl011/src/device.rs
+@@ -2,7 +2,7 @@
+ // Author(s): Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+ // SPDX-License-Identifier: GPL-2.0-or-later
  
- DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr);
+-use std::{ffi::CStr, ptr::addr_of_mut};
++use std::{ffi::CStr, mem::size_of, ptr::addr_of_mut};
+ 
+ use qemu_api::{
+     chardev::{CharBackend, Chardev, Event},
+@@ -12,6 +12,7 @@
+     prelude::*,
+     qdev::{Clock, ClockEvent, DeviceImpl, DeviceState, Property, ResetType, ResettablePhasesImpl},
+     qom::{ObjectImpl, Owned, ParentField},
++    static_assert,
+     sysbus::{SysBusDevice, SysBusDeviceImpl},
+     vmstate::VMStateDescription,
+ };
+@@ -124,6 +125,12 @@ pub struct PL011State {
+     pub migrate_clock: bool,
+ }
+ 
++// Some C users of this device embed its state struct into their own
++// structs, so the size of the Rust version must not be any larger
++// than the size of the C one. If this assert triggers you need to
++// expand the padding_for_rust[] array in the C PL011State struct.
++static_assert!(size_of::<PL011State>() <= size_of::<qemu_api::bindings::PL011State>());
++
+ qom_isa!(PL011State : SysBusDevice, DeviceState, Object);
+ 
+ #[repr(C)]
 -- 
 2.43.0
 

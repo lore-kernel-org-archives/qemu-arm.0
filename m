@@ -1,113 +1,168 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp381547njc;
-        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVsp9py14azpX3ulsrwvDFWpPOrW+1yJbA7lkMX3cTHp1SMrtD24ju3aOQbKBbmTKIaxFhjcrWek3tRuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3hda2bA1mxurMDKeawW2sNaC9CCx2+QhCmGZL2Od0qSQ4JiuPQ9dDRnv3vnnYxJuCYVWO
-X-Received: by 2002:a05:620a:4588:b0:7c5:5909:18ca with SMTP id af79cd13be357-7c5ba19023fmr515855385a.26.1742569529057;
-        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742569529; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp388759njc;
+        Fri, 21 Mar 2025 08:14:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVyiWpsl8PRqhFwTVIsZFGjAzMt6geBIXugmKU/su6uPl0j5g6t0OaM/7j9c4SqHtZUzgns1NoA/uCZvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoGitLBJeDgY3W9y2ZqAtd1+5XF+BURxwixGymwMOR4/BxdH6d4Q9ZBG5CFesCkXsfTcIO
+X-Received: by 2002:a05:620a:4055:b0:7c5:4c49:7697 with SMTP id af79cd13be357-7c5ba1355d2mr596931485a.6.1742570063102;
+        Fri, 21 Mar 2025 08:14:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742570063; cv=none;
         d=google.com; s=arc-20240605;
-        b=PfFeN7fov7e1FD7OqB4Ks9LSQPlf5LYbuf1alv9CxLAMpFyDUEw7fpNndxmGMwqjRr
-         AdseU8Wb6kTF9t1HSxOeavYEotqqkyECHrdLLH/oZYs1V1sCIdKpmImkoPwY8tZW8FmB
-         jyqg544hCs50nm9Ojaj3gMNaMKetE6x9aBZB0pnEcj3bARH7TsRsHcQ5EsaHCxDmPm1Z
-         hzzjt5jErkkQYuNmUDt8LxXWuoUAL+eTYDJdvDMC492imPVm/PS0tlBfuswlLI4hdsU7
-         Fu3TveydbTGWEVuJJ6x2pMMCY0teO1JLVWbL8hhL8LjKl48WvSau6VVw4pcRBsni1OfZ
-         iZLA==
+        b=hfe8NQrWx+DNjUlZGwJIg+rwBHUM4MVGxlKFZWHDKHzm56aNGyGKbUAmVDrKMYZDNz
+         nvzDrYYAeOhFbpEQGlvjkWdT2CbYJuGb9NfHs+yeJ43t/AZGaqALuMqnDmOwBIFfaX+E
+         FXALFb4/Wd9MXbwZ5WNY2lWd956o4ggbT2zVPWa2DjMdXe5PQocrtzRzz2ure4DahGKT
+         r42XERF4iPU264cihJYkZPgqbdwJjwDFOz3cbTnHyj8yFwbOCwbpNq0MchbAPRXvzilm
+         Q2wjKb3JTz4CEiIM+4D3bXENXDMez3hY7SrcHHihf7sc5h9zdaMgh5VA5sElWkpqwL22
+         2A6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=5R+ajQwnCzOTnEk7/Bcr1/crlPPyRTCprYEV/8jk2A8=;
-        fh=Os6bOJX8NNd8nTecMiYpYmU1dwrK2S4cq+Zk1WZZsoc=;
-        b=U8mwAME0YQpNdyGCoDc4fOm1qHD1LyUu9Yvh8uwGJFTqhE2kTKlvAz9CIDaVMHGjWS
-         Moex7MfZLpv5AviGuXQuGzPgOL7RxLXjvKqH7TKFQ1qWbT5h19dgEcsBAzOEWIeh8Ru+
-         DpXfGQQFpEElB9G/kaxVGJBnX8Dw1x8O23a1UlTuh763uhGmGRYpafU3QEwU8W48z+wS
-         zcgwitGM7DPvt7rHpP0r61psL2TdC9vt4LBy0dsxMtBU9J0hviUMUzlc/KvE9jcmIy1s
-         Fp3tUu94y4CkOt9+FoBkxcm7/DAiceeLo/JDCRpLx1ndHUMkBlZ5SmgVpqkMcBYP5Jef
-         rmOw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:to:from
+         :dkim-signature;
+        bh=rPupw8CosAXQ7cMnzUG05hJe8aL+7GdH3+3uzrcSG8s=;
+        fh=aYiF/zCfbWb8ljJdclTVJwTYeSlmEWG6r6gfpqjlBns=;
+        b=d7RXzYc2JlBT8Y8TT6smAvH7yuGcn57Z4HCDGvgfrjbatjXAurMo2PFLpnyYJcBUGu
+         4LGALqFFeURSKqP5lgeRrWJ/gLti21Zu5hGHwzHwM/dEeuGxSkkFGjOwmprh8BwUslmu
+         dgnZGwSlHx1Cu5ST+oktYkBUcePtOFTcK+gxhewxKlgITPhEMxfHw76FSFlUIC1MraMm
+         D3T6+tzizCrNsxqWdxafwBeygJCULKe2wgJ3RMmvCZSSkUt5Drgvk3WOHBmyTmYkIz4v
+         A6mt5X4+vmwMqB2+7bn4yym/Rs7pOKFN+RMEGnYpIHRrup29QUHMKkVhQk1KU1WN32Gb
+         JaUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WR5UjkfQ;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=URd5TfqR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b93474e5si215703785a.273.2025.03.21.08.05.28
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b9356153si204759185a.410.2025.03.21.08.14.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Mar 2025 08:05:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Mar 2025 08:14:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WR5UjkfQ;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=URd5TfqR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tve4B-0005Fv-ET; Fri, 21 Mar 2025 11:13:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1tve48-0005En-UB
+ for qemu-arm@nongnu.org; Fri, 21 Mar 2025 11:13:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1tve45-0005pa-1H
+ for qemu-arm@nongnu.org; Fri, 21 Mar 2025 11:13:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1742569528;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5R+ajQwnCzOTnEk7/Bcr1/crlPPyRTCprYEV/8jk2A8=;
-	b=WR5UjkfQE/ayQEXSY7NV0YoL3jLhd0Uzr4i0ua2svf3NWZtK3wStFACdEzDNhhZyOM4QH4
-	r8PUuxC+rY/eQ/lzPCMDl/0bA5YlYAf5VPu5JXUajrv8R+2yimvOIgzC8Wv//LbIvaczCg
-	Rekn8QGcGTvvPklWJg//7Umca/sW8Dw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ s=mimecast20190719; t=1742570017;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rPupw8CosAXQ7cMnzUG05hJe8aL+7GdH3+3uzrcSG8s=;
+ b=URd5TfqRLttSkOhPGSHsbCmV6UyL2UAWbc8FBuaY+NwHuLHI7DGgkM/yCTsCvJCpwIrjVX
+ p0BiRm9QlFxC+0F3Rdqm2Gjyk6ygZVFjAW0ewlczq+ie9glrb4G1p6VyDQNhz2yKA+kKGW
+ aX7d3u7RDHov9ALyL39B+M7w9FDq2sk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-137-LzjtJHa7P2S4k7YUT17pWg-1; Fri,
- 21 Mar 2025 11:05:24 -0400
-X-MC-Unique: LzjtJHa7P2S4k7YUT17pWg-1
-X-Mimecast-MFC-AGG-ID: LzjtJHa7P2S4k7YUT17pWg_1742569522
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6CC06180AF6C;
-	Fri, 21 Mar 2025 15:05:21 +0000 (UTC)
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-653-fq52eXB2N2etE_5c0DpYiQ-1; Fri,
+ 21 Mar 2025 11:13:33 -0400
+X-MC-Unique: fq52eXB2N2etE_5c0DpYiQ-1
+X-Mimecast-MFC-AGG-ID: fq52eXB2N2etE_5c0DpYiQ_1742570012
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0F3701933B48; Fri, 21 Mar 2025 15:13:32 +0000 (UTC)
 Received: from localhost (unknown [10.67.24.51])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 158E81828A83;
-	Fri, 21 Mar 2025 15:05:18 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 42A2B1800944; Fri, 21 Mar 2025 15:13:29 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
- philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v3 00/14] arm: rework id register storage
-In-Reply-To: <86plino2ru.wl-maz@kernel.org>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v3 01/14] arm/cpu: Add sysreg definitions in cpu-sysregs.h
+In-Reply-To: <3b8c9531-b770-4ab2-8c33-8d3bfce03eb6@linaro.org>
 Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
  Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
  153243,
  =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
+ Michael O'Neill, Amy Ross"
 References: <20250311162824.199721-1-cohuck@redhat.com>
- <86plino2ru.wl-maz@kernel.org>
+ <20250311162824.199721-2-cohuck@redhat.com>
+ <3b8c9531-b770-4ab2-8c33-8d3bfce03eb6@linaro.org>
 User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 21 Mar 2025 16:05:12 +0100
-Message-ID: <871puqv2zb.fsf@redhat.com>
+Date: Fri, 21 Mar 2025 16:13:24 +0100
+Message-ID: <87y0wyto17.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: wK5sjzk6ejJ+
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UH95hqGW6Bgk
 
-On Tue, Mar 11 2025, Marc Zyngier <maz@kernel.org> wrote:
+On Tue, Mar 11 2025, Richard Henderson <richard.henderson@linaro.org> wrote:
 
-> On Tue, 11 Mar 2025 16:28:10 +0000,
-> Cornelia Huck <cohuck@redhat.com> wrote:
+> On 3/11/25 09:28, Cornelia Huck wrote:
+>> From: Eric Auger <eric.auger@redhat.com>
 >> 
->>   - I'm open to changing the source of the definitions from the sysregs
->>     file to the JSON definitions published by Arm; however, I first wanted
->>     to get the code using it right -- we can switch out the code generating
->>     the file to use a different source easily later on, and I'd also like
->>     to steal parts of the script from Linux once integrated (which I think
->>     hasn't happened yet?)
+>> This new header contains macros that define aarch64 registers.
+>> In a subsequent patch, this will be replaced by a more exhaustive
+>> version that will be generated from linux arch/arm64/tools/sysreg
+>> file. Those macros are sufficient to migrate the storage of those
+>> ID regs from named fields in isar struct to an array cell.
+>> 
+>> [CH: reworked to use different structures]
+>> [CH: moved accessors from the patches first using them to here,
+>>       dropped interaction with writable registers, which will happen
+>>       later]
+>> [CH: use DEF magic suggested by rth]
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>   target/arm/cpu-sysregs.h     | 37 +++++++++++++++++++++++++++
+>>   target/arm/cpu-sysregs.h.inc | 35 ++++++++++++++++++++++++++
+>>   target/arm/cpu.h             | 49 ++++++++++++++++++++++++++++++++++++
+>>   target/arm/cpu64.c           | 22 ++++++++++++++++
+>>   4 files changed, 143 insertions(+)
+>>   create mode 100644 target/arm/cpu-sysregs.h
+>>   create mode 100644 target/arm/cpu-sysregs.h.inc
+>> 
+>> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+>> new file mode 100644
+>> index 000000000000..b95320b5b595
+>> --- /dev/null
+>> +++ b/target/arm/cpu-sysregs.h
+>> @@ -0,0 +1,37 @@
+>> +#ifndef ARM_CPU_SYSREGS_H
 >
-> I don't think there is a real appetite to have that script merged in
-> the kernel. My current plan is to maintain it separately.
+> All new files should have a SPDX-License-Identifier tag.
 >
-> But by any mean, take it and do whatever you want with it.
+> Otherwise,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thanks for the info; I'll look at it again once the rest of this series
-here is done.
+Thx, will add.
+

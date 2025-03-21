@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp178350njc;
-        Fri, 21 Mar 2025 02:27:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFUwA1T4fIwxsstIcsOCKuU4+prT+D9/a+6+Gqm+kkAYOgbgMDMF0KLHUGVn5kkb2cqDnqrkGp6ZEEvA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFHMRfbnVMu/C/0UTVu/taC5vP19ILJ+KsLYLPDb7UUCIq7u6UFm+D2BfOgzrKtzpi9EC10
-X-Received: by 2002:a05:6214:234b:b0:6eb:2f7a:45c2 with SMTP id 6a1803df08f44-6eb3f36ecb6mr27613326d6.43.1742549272726;
-        Fri, 21 Mar 2025 02:27:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742549272; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp178394njc;
+        Fri, 21 Mar 2025 02:28:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVXxsduf+EibWb7QXKPBuCT+nxfr4zgP+1RxsWFSH02yCBLCv9tcFJIt5XQcpbRw2t3Kr7awztLU9/E3w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFTasCxfxGjzvkKT9vHWSDbmW+x84oHIaMK36o+0yN+96Ij3jKfCrp5P23zIAgL6shGot/
+X-Received: by 2002:a05:622a:4009:b0:476:8cad:72d9 with SMTP id d75a77b69052e-4771de3f530mr42454511cf.33.1742549281660;
+        Fri, 21 Mar 2025 02:28:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742549281; cv=none;
         d=google.com; s=arc-20240605;
-        b=VhNpdhJPzYj2oKzBMtD6Njg6hPXDd7UGHv7F3wlEtuMQnig8PaQvzTYR+yu7oNO+V3
-         xSD93gzjseko84qNBiCCy6rYknCxy29ylu7Nztql6L6HZmFWa/eg14KeDt5HtYsGGXeC
-         eW/LFCFdWty5drdwGyEXmjBGArXhB8XbnKtXUE+2iahxOxljq6UUEO3yVphJMNjG5lZA
-         c6eg8NvSSHkaSyjhh/1dJp8oHP3FFtGw+1StKbX+DE+fygafY9dCtyKIxHNVhotuPfeg
-         fGhl8nZDJWivj+EyRQ8484LvaGEzgNdkz8QMwh3VrkTAs6wcbBXi6cT1C1wcq4usyRcc
-         qGmA==
+        b=XfnKyAVXtW/3Q2IoOh6V//miaNj+emxJGHJeXOZ4Gy/+mjClOHW5tFuh82BJ6v0ka4
+         0wyheOUb5CjiwJoWPSvGMUZ+Q8kxwbU0AuAyu8bkXCzDI336Joc+fRbzXFniXOLyCo+G
+         +2+3ZbUAE+iKR3o+3TAOTMqSXqtt0jOmLZBxb9ZG/szRNhArDkbL5atw9ByG1r+4/f9y
+         RtUY2Bzcpwopc09x6Is6qii+3PE0yaFhkn68GIWjltAfKX7NXhw/SOA0fcmJAtH4Go9g
+         6VgT9kK610NEV1cnia7oh9FHnXnmerqge58yF8yQU5PLeueOnQXsHavl6GmHIxv8yLGm
+         l3Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=bJqq7yebRxAg/RVH/W9OQolCI1c3PQMXnjGAnm0Z2VY=;
+        bh=2DQODn4qUfAigCDs4nh4a5GTfeUtPWLZbk06ID3i28g=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=Tca3iG6UdsUYehDRAq/1Jwlnv/P1hEU/XqM+Uwr8pFUGPsbGnKnpUrxifTEojXsVjV
-         kfzKZU5rWZWHWSmqsqZMpp3ymIUvXjgPAssrKr80ol9wtaLKYXsQtvDz1HRZUZfL2sYC
-         IZAtdZueWjHFaOGVr70F/BLTPo86lFdvP1eU3d/j9JQ8YY3LXk1+OK2+r6CJ+7t42FR+
-         HwXoo9zW++yUQUzaaq6/AcEtepAS6Mu6bQ3CwjP8iWC4SuaooqdD80x0OxAigKIS75Fe
-         elHIb2MxwDfxugfaZOMD0L0DJWGBKDXUh8NabeLTqfS/3oZ+eo2WviTQBJgEHNp3qVSO
-         vsbw==;
+        b=BvgCL3Y1wi+m8MdpxF46XAjJq5xPQXY/+n4rMnWJYnRWferULh+DE/YspJOnetzYsj
+         hRqzQ6WRbokkGiQFV3wlyi1EGEqyLMIsd/hcyU8T9PL1hdnjluUPvNsm3bwg85qGUXyD
+         5oeCuJ2cc1jY2Sbwk6mOPngsJgBmwxT224Pqe6188FXcfbBS+a+D34j7Ssu3K0UqqdH5
+         JtnpNQrex8ZL/JjtNuqXfjS9jkVlSocCaHuzIwRIbQX1yherTmu71Y7a0I+Jxeg1xAIv
+         qoKLSZ2eQVNkzB2dQjz0n1cu4XqsbAP2vRufJ75YNx24tfALHc8X6zvtj28BHSAEetd1
+         CmJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3f03dc5asi14564926d6.386.2025.03.21.02.27.52
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d52ce28si15667191cf.398.2025.03.21.02.28.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:27:52 -0700 (PDT)
+        Fri, 21 Mar 2025 02:28:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tvYf0-00070R-8t; Fri, 21 Mar 2025 05:27:26 -0400
+	id 1tvYeR-0006SG-OD; Fri, 21 Mar 2025 05:26:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYeO-0006OO-M7; Fri, 21 Mar 2025 05:26:48 -0400
+ id 1tvYeI-0006Hi-Ty; Fri, 21 Mar 2025 05:26:43 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYeM-00056m-Pa; Fri, 21 Mar 2025 05:26:48 -0400
+ id 1tvYeH-00056m-Ai; Fri, 21 Mar 2025 05:26:42 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 21 Mar
- 2025 17:26:26 +0800
+ 2025 17:26:25 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 21 Mar 2025 17:26:26 +0800
+ Transport; Fri, 21 Mar 2025 17:26:25 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 07/22] hw/misc/aspeed_hace: Add support for source, digest,
- key buffer 64 bit addresses
-Date: Fri, 21 Mar 2025 17:26:03 +0800
-Message-ID: <20250321092623.2097234-8-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 04/22] hw/misc/aspeed_hace: Update hash source address
+ handling to 64-bit for AST2700
+Date: Fri, 21 Mar 2025 17:26:00 +0800
+Message-ID: <20250321092623.2097234-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
@@ -100,124 +100,51 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jnv4x8DUBP+M
+X-TUID: lQZXkG1tju2G
 
-According to the AST2700 design, the data source address is 64-bit, with
-R_HASH_SRC_HI storing bits [63:32] and R_HASH_SRC storing bits [31:0].
-Similarly, the digest address is 64-bit, with R_HASH_DEST_HI storing bits
-[63:32] and R_HASH_DEST storing bits [31:0]. The HMAC key buffer address is also
-64-bit, with R_HASH_KEY_BUFF_HI storing bits [63:32] and R_HASH_KEY_BUFF storing
-bits [31:0].
-
-The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM addressable range
-from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range fits within 34 bits, only
-bits [33:0] are needed to store the DRAM offset. To optimize address storage,
-the high physical address bits [1:0] of the source, digest and key buffer
-addresses are stored as dram_offset bits [33:32].
-
-To achieve this, a src_hi_mask with a mask value of 0x3 is introduced, ensuring
-that src_addr_hi consists of bits [1:0]. The final src_addr is computed as
-(src_addr_hi[1:0] << 32) | src_addr[31:0], representing the DRAM offset within
-bits [33:0].
-
-Similarly, a dest_hi_mask with a mask value of 0x3 is introduced to ensure that
-dest_addr_hi consists of bits [1:0]. The final dest_addr is calculated as
-(dest_addr_hi[1:0] << 32) | dest_addr[31:0], representing the DRAM offset within
-bits [33:0].
-
-Additionally, a key_hi_mask with a mask value of 0x3 is introduced to ensure
-that key_buf_addr_hi consists of bits [1:0]. The final key_buf_addr is
-determined as (key_buf_addr_hi[1:0] << 32) | key_buf_addr[31:0], representing
-the DRAM offset within bits [33:0].
-
-This approach eliminates the need to reduce the high part of the DRAM physical
-address for DMA operations. Previously, this was calculated as
-(high physical address bits [7:0] - 4), since the DRAM start address is
-0x4_00000000, making the high part address [7:0] - 4.
+The AST2700 CPU, based on the Cortex-A35, is a 64-bit processor, and its DRAM
+address space is also 64-bit. To support future AST2700 updates, the source
+hash buffer address data type is being updated to 64-bit.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/misc/aspeed_hace.h |  5 ++++-
- hw/misc/aspeed_hace.c         | 29 +++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+), 1 deletion(-)
+ hw/misc/aspeed_hace.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index b69a038d35..a4479bd383 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -22,7 +22,7 @@
- 
- OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
- 
--#define ASPEED_HACE_NR_REGS (0x64 >> 2)
-+#define ASPEED_HACE_NR_REGS (0x9C >> 2)
- #define ASPEED_HACE_MAX_SG  256 /* max number of entries */
- 
- struct AspeedHACEState {
-@@ -49,6 +49,9 @@ struct AspeedHACEClass {
-     uint32_t key_mask;
-     uint32_t hash_mask;
-     bool raise_crypt_interrupt_workaround;
-+    uint32_t src_hi_mask;
-+    uint32_t dest_hi_mask;
-+    uint32_t key_hi_mask;
- };
- 
- #endif /* ASPEED_HACE_H */
 diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index d06158dffd..51c6523fab 100644
+index 4bcf6ed074..9771d6e490 100644
 --- a/hw/misc/aspeed_hace.c
 +++ b/hw/misc/aspeed_hace.c
-@@ -30,6 +30,9 @@
- #define R_HASH_DEST     (0x24 / 4)
- #define R_HASH_KEY_BUFF (0x28 / 4)
- #define R_HASH_SRC_LEN  (0x2c / 4)
-+#define R_HASH_SRC_HI      (0x90 / 4)
-+#define R_HASH_DEST_HI     (0x94 / 4)
-+#define R_HASH_KEY_BUFF_HI (0x98 / 4)
- 
- #define R_HASH_CMD      (0x30 / 4)
- /* Hash algorithm selection */
-@@ -393,6 +396,15 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+@@ -154,7 +154,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+     uint32_t sg_addr = 0;
+     uint32_t pad_offset;
+     uint32_t len = 0;
+-    uint32_t src = 0;
++    uint64_t src = 0;
+     void *haddr;
+     hwaddr plen;
+     int i;
+@@ -177,7 +177,8 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                 break;
              }
-         }
-         break;
-+    case R_HASH_SRC_HI:
-+        data &= ahc->src_hi_mask;
-+        break;
-+    case R_HASH_DEST_HI:
-+        data &= ahc->dest_hi_mask;
-+        break;
-+    case R_HASH_KEY_BUFF_HI:
-+        data &= ahc->key_hi_mask;
-+        break;
-     default:
-         break;
-     }
-@@ -566,6 +578,23 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
-     ahc->key_mask = 0x7FFFFFF8;
-     ahc->hash_mask = 0x00147FFF;
  
-+    /*
-+     * The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM
-+     * addressable range from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range
-+     * fits within 34 bits, only bits [33:0] are needed to store the DRAM
-+     * offset. To optimize address storage, the high physical address bits
-+     * [1:0] of the source, digest and key buffer addresses are stored as
-+     * dram_offset bits [33:32].
-+     *
-+     * This approach eliminates the need to reduce the high part of the DRAM
-+     * physical address for DMA operations. Previously, this was calculated as
-+     * (high physical address bits [7:0] - 4), since the DRAM start address is
-+     * 0x4_00000000, making the high part address [7:0] - 4.
-+     */
-+    ahc->src_hi_mask = 0x00000003;
-+    ahc->dest_hi_mask = 0x00000003;
-+    ahc->key_hi_mask = 0x00000003;
-+
-     /*
-      * Currently, it does not support the CRYPT command. Instead, it only
-      * sends an interrupt to notify the firmware that the crypt command
+-            src = s->regs[R_HASH_SRC] + (i * SG_LIST_ENTRY_SIZE);
++            src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
++            src += i * SG_LIST_ENTRY_SIZE;
+ 
+             len = address_space_ldl_le(&s->dram_as, src,
+                                        MEMTXATTRS_UNSPECIFIED, NULL);
+@@ -212,8 +213,9 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+         }
+     } else {
+         plen = s->regs[R_HASH_SRC_LEN];
++        src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
+ 
+-        haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
++        haddr = address_space_map(&s->dram_as, src,
+                                   &plen, false, MEMTXATTRS_UNSPECIFIED);
+         if (haddr == NULL) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
 -- 
 2.43.0
 

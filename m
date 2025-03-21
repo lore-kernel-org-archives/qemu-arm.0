@@ -1,257 +1,158 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp186823njc;
-        Fri, 21 Mar 2025 02:48:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV743p3Ie5ocyq+dX6uBErPumuGhDwDhBQDQDI2X+XN4TYfpxHoctVHNisSvnzosu49RPcq+nTbLcT3LQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IECe97stuBJYlYpNNQaro545+PjdyfR7SXObCseSRyd24O2g+l2yzEQerU2+Qgo3T/UBg/b
-X-Received: by 2002:a05:6214:1d04:b0:6e8:9394:cbbe with SMTP id 6a1803df08f44-6eb3f2dd429mr35523056d6.20.1742550504149;
-        Fri, 21 Mar 2025 02:48:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1742550504; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=HrGk1GZivwc+k1YcNi1KJ4yQs8F4NBTbTLBX7CSDD9cWQMwRvq+RkSnq3MvSU+A0Cn
-         thDh3cKbSnM3mV+RBV2RPjKcTG8MQeMkFcRCMMYC2Jo0+dAugEKLshqrPNUmU8AJS5k1
-         vF612UAAgDI7EbT43EIbcdqZHaHDh0s5peRhBRjdeIbYFzvVi3ATdJxsVkeeGUOkAY1T
-         R/zFdURMqyFoqRCP2MZFSPD9uM5tM9ZzpZLCmT298qXV9GqdnG9n5Bcat4sy4gLqH8HJ
-         UW7wuBQeO6tbZEK+LOkBUvUJLmPVVMCK12bL9ayZi6zgKMFRcktW6IvePuPo6w8v7tRK
-         x/gg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=kJaXnTueBkHTjjFjJ9om7VXtBH+cRw9vjsELLkou0y8=;
-        fh=6k4X/iUK+Eb1ovLzOlXNqia2wUdsNtra8dTIV5D/B8A=;
-        b=Hub7t2V1yemr8adPpnGS353vylyMd2U7SCEDE6v6d5rwZj7HOnANAt18UNFjm3e8jy
-         iWvVw8DkWyOW6mYMf9G0wuEHd4Jx4ToA/y+Cv6vkKR3SnRisFVdxjJKNu7aRb/sWSn3c
-         1bYgW19fDOLDhinUb29uKGa6MWxskTLkCN1mXsjxAW8MYBLh144LKPRGyn9LwHIz8PwQ
-         GjCHz/LlLb8L6pMP1KuEGzBMjhSzqyv9Mc5jJHI3WSt4X6pSxzn7IaFQ9Pzb+TGrFlWY
-         7vW/HPSE9KJWvDfajCTUafxUcaG/h/XHmQI4iV1pCfLkIneNl1hbTfitX4BIxB11BJXx
-         zO7Q==;
-        dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=Fdb3ZYJd;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3ef5ff02si15343176d6.114.2025.03.21.02.48.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:48:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=Fdb3ZYJd;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tvYz6-0000iE-GP; Fri, 21 Mar 2025 05:48:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYyv-0000hb-UD; Fri, 21 Mar 2025 05:48:02 -0400
-Received: from mail-tyzapc01on2070b.outbound.protection.outlook.com
- ([2a01:111:f403:2011::70b]
- helo=APC01-TYZ-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tvYyk-0006IV-TQ; Fri, 21 Mar 2025 05:47:58 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=nyGnk9Rlg0nZBcI2KkcdBeTG/+uPyHdlokQt1tlheYwpUI8lfGUa2HnDPhUaqi6C4FUOqJycDlkTmDS3b+Q6Eb6hgdtr6erLc7E8wIPL082tZIGHIYUysAZtc2ElXfi9FLWHt5JViC2l2JSYROlQttMo3xZ6zx73gIMSNtLOypRoZpUYA28tOhsWyQYUAc0zxuYhDGcB7yK/5zD0rIPRa5qIjEqtM57ehi6ulWqXOr8NKEegSHXEl4NzRYwM5gVabWbnxnIIkkoNT/XLPOzAWcJS8Pkl0G5fEHFDJf3jzp3B8OpPc0vZz/l6ionNPE07isi+YP9RfDI7pn2kGVezXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kJaXnTueBkHTjjFjJ9om7VXtBH+cRw9vjsELLkou0y8=;
- b=s3PwMQCnQCJDyV7f8tBt5wiWFM9sOh+VN1VcE973jnbweRlUykBY9iRZp3G5JOSdT/7Sf7lm7wf7OwWDXRGcv784I42B/QfZaOCMFWKgJtdYQoSW+opiqAQqHGCIBCn/x+BrO3ocxOwzbQgLMHO9TzCE8rIjDd0/nG8BZUqbJQqFBmLhp7+iZtS8KeWzaTHDNLzodxMD3zpfikeAwRO0IZFuLU5DnrlKyw6gu+nSLaxm21RUHVR7Tx6sCu7IetgJ2Wz4Gp57u6teFm8ECvXIBjA0X48gKHC/1hndlXJ64qtIvskxQSfpE3QnnL2LMmmW98zxKkc+oUtfQ2vR4HkcGg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kJaXnTueBkHTjjFjJ9om7VXtBH+cRw9vjsELLkou0y8=;
- b=Fdb3ZYJdBh8cxq5lARTx+YlhMOPDcuiCMB+HHWgR09odw5QaW7OMEUnCtzBBXrbb42qlFgs2vEZA1RYdFmjnSV7LDV3eBDU/6paqTV1Ry7IflgKNjmTiGttMSGaqalCtvmHmq+2HfSSWCyyOfht1nGJg+2P9zRUxTMtyri+nFCsFei+Lsj5/ZoZN9CZpjftbpOqi2X68f06P2AkT6ZX+hx3aeJgzSEuBkJ4iDFW5TONuU6lWQB+GkPpmzRI7Inq0mFPX3Lz/k9Yc0q7qsu8JUfNFi6LW7l3HV+ms+isHenaJYINRvFOW8bbCZ3faWsrNCbrbLufdp+5n95BUgWxdVw==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- SEZPR06MB5501.apcprd06.prod.outlook.com (2603:1096:101:a1::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8534.33; Fri, 21 Mar 2025 09:47:43 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8534.034; Fri, 21 Mar 2025
- 09:47:42 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Fabiano Rosas
- <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v1 02/22] hw/misc/aspeed_hace: Fix buffer overflow in
- has_padding function
-Thread-Topic: [PATCH v1 02/22] hw/misc/aspeed_hace: Fix buffer overflow in
- has_padding function
-Thread-Index: AQHbmkNUcYpcCxrAtE+S0QJ0F2035rN9VqXw
-Date: Fri, 21 Mar 2025 09:47:42 +0000
-Message-ID: <SI2PR06MB5041FEAF9E22928FC807B639FCDB2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-3-jamin_lin@aspeedtech.com>
-In-Reply-To: <20250321092623.2097234-3-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SEZPR06MB5501:EE_
-x-ms-office365-filtering-correlation-id: 96d57072-20ab-4d98-2e96-08dd685d6d28
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|7416014|921020|38070700018; 
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?gVOMjh4GXvoYxOoUKoqnbeiI4hpiTPDgvuGZmL5HiENf9nk3nU9BjHKJ2a?=
- =?iso-8859-1?Q?Mcu4yo8fn2BylKr322WOc6iTRH1ajXrg1MRnQ9tKDDuygRQQq+mnaBcV5f?=
- =?iso-8859-1?Q?hykeR6Dwh8gJoFpJwRtWrMT23IWKn2559pA+FDcxtuGIgXe+K/Fnv4r3fX?=
- =?iso-8859-1?Q?DSE3Hc9p+m/IH9EP7nx2yRmwd1osTPWwsj1Z+cMV39YLhCzJa7pVR3NSW1?=
- =?iso-8859-1?Q?VUzHG29wnIYL4PkjIXrnWmlUpTf/7IwlPIeMFCP3JlHXSWvx9fEU3e37AG?=
- =?iso-8859-1?Q?sOgud5lsdJbsmHb6be04ij1KYZRVQcBBCQsTXZhkbhFEuGJTQz+/ii30KK?=
- =?iso-8859-1?Q?wGDUFxBYUsOEhGKKJECAYtUWy4bbomrxLab0p0aQPRf/U3nsEOs9D+IycI?=
- =?iso-8859-1?Q?l2D6I7QRhCDu9Y6ZbgiaGxhPdU/Ki3PsmuRL1IELLf0PmGjqh6fxAN9NDE?=
- =?iso-8859-1?Q?RYLWdeMeo0hqtpqBr1ZNY1ic3Y1VSvT3NGWEkoMvKMJ8jvEj4EWWMqP/nx?=
- =?iso-8859-1?Q?ZZN7vHXDGnk+TEeH5RxtchvnTlTlH2GsQkIYVs6eRcay2noq+R2giERelF?=
- =?iso-8859-1?Q?tUHAAi6I5b1ohrH93lTCXmQUjdt1rXuzOt0LZYpXRl0NkcJGESv23m2Dra?=
- =?iso-8859-1?Q?8hS3auTKhBjdmv2V58n6+ftMy10+5CuhRen75BqRR1WvlzhnI7hzWnNDPd?=
- =?iso-8859-1?Q?dh0ifTfK4HwKVP7/6NxSNV9bJS/OeIJv3gc4sowAihFlxY1rhZLWjSDI+w?=
- =?iso-8859-1?Q?e4yEIL51qBjjJIvvhLc0Rd/Eg2rUrvg1cS4xLepRvhxVTk2Y8Ej7kUuw0e?=
- =?iso-8859-1?Q?SiA9F7qrzb68DfbDXuZCb9wMW+xjCXw9sKQoV9s79LwWsh1+AciGs++U6R?=
- =?iso-8859-1?Q?wL/rRlH80iODq9hibCO9ESiSkELOYz/1iGaQ6KTy1PHtX0JHPFsFxb0zDU?=
- =?iso-8859-1?Q?YT447Ln2BQWg739pnn2wzeTdUqqZ1oW8IWJp/e5DlT0w6ohKFX14siT7n0?=
- =?iso-8859-1?Q?qbygYVCJ/iqTatSQzHQP0ZYQ4KVbbXSZ1dfUPlL/Oyd/lVo0Ez5UglJVbw?=
- =?iso-8859-1?Q?Kc7w2ORWFncm9KxfWDZk5cEjmxUxAFoetieq1bwqi6fMKGMWnoc31FaZAw?=
- =?iso-8859-1?Q?TLBh0ClGl3eVXpmLqhaEfu+LJHQ15uut4Uk5EB4yhEyjjOs/vwSPCgxJjS?=
- =?iso-8859-1?Q?4CMR0T6EZ1YDd/FQXqGD2zRVOig4VhlHvLv3rSvW/eAXsO6Y3xH9xMdhLD?=
- =?iso-8859-1?Q?Fo33h0ZnB1q4uxRzcSsdl6ItIyTddKf2M+DBBNihSfjyRjjV3sHmhvezJP?=
- =?iso-8859-1?Q?ZMN+dBsWFivgheL9+4q+oyP143/CTgGa6A0NUvyB7Da51/8ueeswXaKFWj?=
- =?iso-8859-1?Q?ZznCWM5Rtnd5fqzzBZ1V3A9/HP37JHRpeB8yKeQjoMPC86LCbWxcNbDrlE?=
- =?iso-8859-1?Q?FSOIjEFoDnW9XShC16C1RhSM4Ab77JKtPCyHy/t92LtgYWwJm1vhVZhZFR?=
- =?iso-8859-1?Q?9s3RiTMD5NRv7LOcfKBHK+GcuXZ5oypaQb4t1sKoYGQQ=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(7416014)(921020)(38070700018);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?c41Jd00/L8jtbCbXTERLncs+t2fUMmwyRqfb0aQB+9G4biv35uqsdmqv2F?=
- =?iso-8859-1?Q?32a41qVGZXdXrZeOgDe6CCm2sGVH66vMUmCLjFx3JvfdV1s6vdeGUsU159?=
- =?iso-8859-1?Q?lgYRmeQJTYQNItx6uABWAjtaGUa0WMpGP2HtQzTxQaRLREWc9e+6ieRtp8?=
- =?iso-8859-1?Q?Fmm2Ckx9y8H7U5PZpfTagxEtHP3heNUHFEHWS/LYuSHZNFkHhvqfK5I9xr?=
- =?iso-8859-1?Q?4xpjMJxZI0mrgHXPLlC+KMpDA/RVLjB4K/yR1k87aSMEqUUmDEHtDlDyu5?=
- =?iso-8859-1?Q?ounqHfm3vjdXG31mx4CV6lzT7u2DusUdc4IX4b6b0lSGoWZO3ESrb3mKho?=
- =?iso-8859-1?Q?OfLrGpqZPN7Hm/q8BDdFtvDX66fFDAo63tDqeGIzlzhWIj63nqE+Oy68tA?=
- =?iso-8859-1?Q?5ANsE8CDw+NcpSq4pzqTSPVfRPIglXgkjTeih6NlC4nLHkTTFnvFngDVzR?=
- =?iso-8859-1?Q?v4eUTHoDNF08vS3d6vYWDtpbgNjpJee6g5qI4Vuw0vea4ifniJ0sjUomzJ?=
- =?iso-8859-1?Q?4KbvjAXp4z6v7Nx9kh9yNDOMdbw6qr+2AgGcSLeUiZeo1ly3Z9Ut5SYtcE?=
- =?iso-8859-1?Q?5qTwT5iiJdBrJcr3E6BAcHew+dJ0zCV5O+yPIaj7x8QEMMsPzJCBUmf4Mn?=
- =?iso-8859-1?Q?BlIenfqcWcE1tj//+RuEKBE4oZpD+wTNk9X2p7/UCkgVCwNCc0hXx2K4Tx?=
- =?iso-8859-1?Q?Kh6z3AnG3q9R02YQrShUNAGUmQ5P/AQAnQdwxDKZZM5rQ94phnhTPKyx9A?=
- =?iso-8859-1?Q?b5sTHtYjwH1JY61U/5N4jHdlt8HYStDlwr/fQMq6XEbhpnPh/b4ihGB4M2?=
- =?iso-8859-1?Q?LUhGufOeFQBvUH8FNfBKugP+4CQQrZN1yEybOEmlx9JmeiKXVHq07pHZ6l?=
- =?iso-8859-1?Q?toBOrqCmA0ZcQw/4N3PMPfs+ZrvBEJQSywZKmEymrtFvmcMwFm2+NyZmGe?=
- =?iso-8859-1?Q?O8A5bDvBYLWqQcq+f+Zm2YdEodTH4zPQ0ensuiJsSPLQr/caa1sVpBB3Oo?=
- =?iso-8859-1?Q?17lPIlt4/BQk3SCfyVLTWZrw18pMYNlm1M0MIPsNy8za9/STZf5knmYHoX?=
- =?iso-8859-1?Q?LS6tyisKRyYjkhRB2SZnC1smbgQSt5+nMIYuZSRSQTqVaIbhtZ1GMjP5Xs?=
- =?iso-8859-1?Q?wJeEqc3fBsMZfgDupGDKLIfjEDlQhd5kbhM3Bbvr0DsfvYS2bgqllCtGrm?=
- =?iso-8859-1?Q?IJYD7aKrA56qWABp/oYJXu7hOzw6aU/bjtD/hLsg4XbSUk7gBrnHSjQ8iL?=
- =?iso-8859-1?Q?C25k1om0vbwhNjAAMXYmAt0BhuDkuzsC76CDJqvL4OK0906NDntivqw060?=
- =?iso-8859-1?Q?Ag1EgjYYpsAT81T+MvqmLG4qk4kBilCDQwiN2p8Y+A0ANS08dpZIFlawM6?=
- =?iso-8859-1?Q?QtjXZvBlzAXyVDQalco5uFj3bjrzMOvue/k+xaWonaYYxE3wKN+Hkk+A7Z?=
- =?iso-8859-1?Q?7P4zdNEr7LhouvbOAmqcIZPTn0Yr5CxDQCCZYiOYOJf16ui8mKKeC+uP1R?=
- =?iso-8859-1?Q?8zJSrbHE5VfkPDaYFl4IZwwyCwHqUoj/p3C4AgNzVzh4huxiIkMKZJLtUp?=
- =?iso-8859-1?Q?RKgqWDdGAl+UxHDy7yvTRlg2GtDfi4z0cXq/sDlh1FkFZ6rSe5pizxv4Uy?=
- =?iso-8859-1?Q?/2LrhaKrlzlDVBWQuWswt4gVT4B02AswI/?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3997f9b25c9sm2113920f8f.42.2025.03.21.04.36.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Mar 2025 04:36:40 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id A8A175F7A5;
+	Fri, 21 Mar 2025 11:36:39 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Juan
+ Quintela <quintela@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+  Thomas Huth <thuth@redhat.com>,  Akihiko Odaki
+ <akihiko.odaki@daynix.com>,  qemu-ppc@nongnu.org,  David Gibson
+ <david@gibson.dropbear.id.au>,  qemu-s390x@nongnu.org,  Wainer dos Santos
+ Moschetta <wainersm@redhat.com>,  Peter Xu <peterx@redhat.com>,  Markus
+ Armbruster <armbru@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Daniel Henrique Barboza
+ <danielhb413@gmail.com>,  David Hildenbrand <david@redhat.com>,  Yonggang
+ Luo <luoyonggang@gmail.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Beraldo Leal <bleal@redhat.com>,
+  qemu-arm@nongnu.org,  Greg Kurz <groug@kaod.org>,  Philippe =?utf-8?Q?Ma?=
+ =?utf-8?Q?thieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Nicholas Piggin <npiggin@gmail.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH 02/10] gdbstub: introduce target independent gdb
+ register helper
+In-Reply-To: <1bc5463d-1e37-4a92-b43d-2d4b61cc19ff@linaro.org> (Pierrick
+	Bouvier's message of "Thu, 20 Mar 2025 12:36:25 -0700")
+References: <20250319182255.3096731-1-alex.bennee@linaro.org>
+	<20250319182255.3096731-3-alex.bennee@linaro.org>
+	<2c441f75-8fd8-4792-a4e4-1ae7c78754ba@linaro.org>
+	<1bc5463d-1e37-4a92-b43d-2d4b61cc19ff@linaro.org>
+User-Agent: mu4e 1.12.9; emacs 30.1
+Date: Fri, 21 Mar 2025 11:36:39 +0000
+Message-ID: <87ldsylins.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 96d57072-20ab-4d98-2e96-08dd685d6d28
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Mar 2025 09:47:42.8499 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GdhhrvKrDaTSVjiWC31HAjlCN1StQ2uZ6a7FZqACWc/4pmN9qjd2MVPS/ePbemeILVe1ZG6yZZF8J0PbhjNcmG/IkHgbITHGOyPif0FpGSA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB5501
-Received-SPF: pass client-ip=2a01:111:f403:2011::70b;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=APC01-TYZ-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: awzNwDrDh2h0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 6b56Tr26HrFr
 
-Hi Cedric,
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
 
-> Subject: [PATCH v1 02/22] hw/misc/aspeed_hace: Fix buffer overflow in
-> has_padding function
->=20
-> The maximum padding size is either 64 or 128 bytes and should always be
-> smaller than "req_len". If "padding_size" exceeds "req_len", then "req_le=
-n -
-> padding_size" underflows due to "uint32_t" data type, leading to a large
-> incorrect value (e.g., `0xFFXXXXXX`). This causes an out-of-bounds memory
-> access, potentially leading to a buffer overflow.
->=20
-> Added a check to ensure "padding_size" does not exceed "req_len" before
-> computing "pad_offset". This prevents "req_len - padding_size" from
-> underflowing and avoids accessing invalid memory.
->=20
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->  hw/misc/aspeed_hace.c | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c index
-> 8e7e8113a5..d8b5f048bb 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -128,6 +128,11 @@ static bool has_padding(AspeedHACEState *s, struct
-> iovec *iov,
->      if (*total_msg_len <=3D s->total_req_len) {
->          uint32_t padding_size =3D s->total_req_len - *total_msg_len;
->          uint8_t *padding =3D iov->iov_base;
-> +
-> +        if (padding_size > req_len) {
-> +            return false;
-> +        }
-> +
->          *pad_offset =3D req_len - padding_size;
->          if (padding[*pad_offset] =3D=3D 0x80) {
->              return true;
-> --
-> 2.43.0
+> On 3/20/25 12:30, Pierrick Bouvier wrote:
+>> On 3/19/25 11:22, Alex Benn=C3=A9e wrote:
+>>> The current helper.h functions rely on hard coded assumptions about
+>>> target endianess to use the tswap macros. We also end up double
+>>> swapping a bunch of values if the target can run in multiple endianess
+>>> modes. Avoid this by getting the target to pass the endianess and size
+>>> via a MemOp and fixing up appropriately.
+>>>
+>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>> ---
+>>>    include/gdbstub/registers.h | 30 ++++++++++++++++++++++++++++++
+>>>    gdbstub/gdbstub.c           | 22 ++++++++++++++++++++++
+>>>    2 files changed, 52 insertions(+)
+>>>    create mode 100644 include/gdbstub/registers.h
+>>>
+>>> diff --git a/include/gdbstub/registers.h b/include/gdbstub/registers.h
+>>> new file mode 100644
+>>> index 0000000000..4abc7a6ae7
+>>> --- /dev/null
+>>> +++ b/include/gdbstub/registers.h
+>>> @@ -0,0 +1,30 @@
+>>> +/*
+>>> + * GDB Common Register Helpers
+>>> + *
+>>> + * Copyright (c) 2025 Linaro Ltd
+>>> + *
+>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>> + */
+>>> +
+>>> +#ifndef GDB_REGISTERS_H
+>>> +#define GDB_REGISTERS_H
+>>> +
+>>> +#include "exec/memop.h"
+>>> +
+>>> +/**
+>>> + * gdb_get_register_value() - get register value for gdb
+>>> + * mo: size and endian MemOp
+>>> + * buf: GByteArray to store in target order
+>>> + * val: pointer to value in host order
+>>> + *
+>>> + * This replaces the previous legacy read functions with a single
+>>> + * function to handle all sizes. Passing @mo allows the target mode to
+>>> + * be taken into account and avoids using hard coded tswap() macros.
+>>> + *
+>>> + * Returns the number of bytes written to the array.
+>>> + */
+>>> +int gdb_get_register_value(MemOp op, GByteArray *buf, uint8_t *val);
+>>> +
+>>> +#endif /* GDB_REGISTERS_H */
+>>> +
+>>> +
+>>> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+>>> index 282e13e163..3d7b1028e4 100644
+>>> --- a/gdbstub/gdbstub.c
+>>> +++ b/gdbstub/gdbstub.c
+>>> @@ -32,6 +32,7 @@
+>>>    #include "exec/gdbstub.h"
+>>>    #include "gdbstub/commands.h"
+>>>    #include "gdbstub/syscalls.h"
+>>> +#include "gdbstub/registers.h"
+>>>    #ifdef CONFIG_USER_ONLY
+>>>    #include "accel/tcg/vcpu-state.h"
+>>>    #include "gdbstub/user.h"
+>>> @@ -45,6 +46,7 @@
+>>>    #include "system/runstate.h"
+>>>    #include "exec/replay-core.h"
+>>>    #include "exec/hwaddr.h"
+>>> +#include "exec/memop.h"
+>>>       #include "internals.h"
+>>>    @@ -551,6 +553,26 @@ static int gdb_write_register(CPUState
+>>> *cpu, uint8_t *mem_buf, int reg)
+>>>        return 0;
+>>>    }
+>>>    +/*
+>>> + * Target helper function to read value into GByteArray, target
+>>> + * supplies the size and target endianess via the MemOp.
+>>> + */
+>>> +int gdb_get_register_value(MemOp op, GByteArray *buf, uint8_t *val)
+>>> +{
+>>> +    size_t bytes =3D memop_size(op);
+>>> +
+>>> +    if (op & MO_BSWAP) {
+>>> +        for ( int i =3D bytes ; i > 0; i--) {
+>>> +            g_byte_array_append(buf, &val[i - 1], 1);
+>>> +        };
+>>> +    } else {
+>>> +        g_byte_array_append(buf, val, bytes);
+>>> +    }
+>>> +
+>>> +    return bytes;
+>>> +}
+>>> +
+>>> +
+>>>    static void gdb_register_feature(CPUState *cpu, int base_reg,
+>>>                                     gdb_get_reg_cb get_reg, gdb_set_reg=
+_cb set_reg,
+>>>                                     const GDBFeature *feature)
+>> It could be preferable to set buf with the value, instead of simply
+>> appending the value. This way, there is no need to return the size, as
+>> it's contained in buffer size itself.
+>> If we insist on returning the size, it's better to make it a
+>> parameter
+>> (and use a void parameter type), because at the moment, it gives the
+>> impression the function itself returns the value, which may be confusing.
+>
+> Seems like it's the existing convention through
+> gdb_set_reg_cb/gdb_get_reg_cb, so we have to follow this.
 
-Fixes: 5cd7d8564a8b563da724b9e6264c967f0a091afa ("aspeed/hace: Support AST2=
-600 HACE ")
+For the "g" packet we append multiple registers so the buffer size grows
+as we append each one.
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

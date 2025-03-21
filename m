@@ -1,313 +1,139 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp183535njc;
-        Fri, 21 Mar 2025 02:40:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXNtYByhWqKqUwjV9+OMeTnSuqeIvIxmdEPpOKLoq9yDuevZH1dKl6MXSENy78G2dDL1RGob2KvadzuWg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFp8K+MQmTHWPUirhlLzWTWKTiePiG7T35JvKCS4s5QAeU7ptyRj7VbDbhZ5bV/1QzSDGX4
-X-Received: by 2002:a05:6214:d64:b0:6ea:d629:f48b with SMTP id 6a1803df08f44-6eb3f2e48dbmr41507876d6.19.1742550004804;
-        Fri, 21 Mar 2025 02:40:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742550004; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp403627njc;
+        Fri, 21 Mar 2025 08:36:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXjuFZWg2Xeu90hS9DMErxSvS9oulqRpXPmNME8Zyc/3EQr9JjMpUvPsikWYbK6QE6zO8/gTSgoSV0hFQ==@linaro.org
+X-Received: by 2002:a05:6a21:e8a:b0:1f5:82ae:69d1 with SMTP id adf61e73a8af0-1fe42f55828mr7302565637.20.1742571390063;
+        Fri, 21 Mar 2025 08:36:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742571390; cv=none;
         d=google.com; s=arc-20240605;
-        b=UfmRMexGU8NjhssUQAmfjYjKuKnvPBnaCxEQ+uWzBhbhWSwdsDj0pqEq81UofMYKdG
-         zYvFH5MmLXmIPPlnUJ8C9oa33vZhIORlhehJhVbD/OS83ZZbCwnvLn0DUYdYeMMr2+F7
-         rLWxV2TW/PiyIWtn1AnJTDoGZO40wG0FaU2q0LZ3oeufbdMdIBPWlfP34siYG1E0kB1x
-         VKPrDOhxXFI470mtOmtV6kLGnPFXthpmPPxRvjRT8yAaMP0DiUcpyZ/L9uZkpqddILGE
-         6njF6OSgcAj9Lq6dxsnEhqsicURmp0dArlFFoC+NkJPz1gwY3h2hON+gQK8XHn7yO1B7
-         Bf4g==
+        b=cqVC5d7Kvbud1y8kEGVpofaoA2i0gUv5ghCDOlqkFSuT0lI8SZZ4azKwVy4RfWEAuu
+         7KCvmWZ5/V0lJO4rYp9lSUNkTgnMLUIRaD5NERH5YyEbp/7l+sGI1sLktONKZlxphNWM
+         CbpHRd+5nSAuN8Wl19FHx9GLupTuqcGRduq+a57mPpizEAbLlM0xrPbAIN3XUC+Cw3j1
+         nrdubxQBZzwmiNrop2YSFw43RwW2U+1zgiIUzgxJAnd4PhVyrk+VsDHsnbGespF5aRw9
+         biCIvCGVPjQvDQUuiz11bgPRnMoutlXVYDYQxcO+t0LRgrQ/z5bTaDQuwvMdnIUe3cNN
+         N5Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=1Q9xUcgk3oh0VkpQoKos/CY5GUH4DJeMQYq/xRrUkx0=;
-        fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=hYRG1ZmNzbA4m+n/VILiTMXcClhkwYGorR9MdRt4JHqOs5tx077D+oE/JZqwJ+7PSx
-         HqqALSx+P76Dw9/Bj8KJN9sZUoEIgV3GSfZeutoU3Kc7cpZ6LdhODokGpudpqfZ/UXz6
-         0mKlDYKJQVBXFi9aen4af+i9KAd6necDakU1nvoxeBs1eZNWny73QdDzvlCbeyayC304
-         ADmhGeWC+8KgE/wRvSiT5Y4ofluGsSJnWwU6jFJ9CgIpm2lHDAFW2NiZnjeOGpzYSSjd
-         Ci6CfAQ7gGHwzZxH6jG9ZshNOnk2+YwwABcff4ArwzbcMZSS2z/OATfPGJb6nEU0qItn
-         WoNw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=1XrcnI8/sSn+DKJfn9g/ACfk6EsflbS3NmSa9fiFXcQ=;
+        fh=s5tl4bOvqwnxT+KbhCLDvLD8OnUPXvm14jb3dFQqzTY=;
+        b=OM97f3soi7tYYfg06qqYdQ7k86IkXJfwinn/wWElCxM7xDPqB284qSdxJAhnHcmiG3
+         kPVeI4UC2SzhZfGeBW5edhTDYHoutt6IjdYThMdFhuCNFLeWfn+/JYnX0fWQGBMcXQi7
+         F+wSycnb+RuAjk0RRLZDZLxjfx838mQy8JVBezC/0ad1OY14MnVEGCv54VJ3neXYr83L
+         jFs1qMJvj5MrrhRfFtPmP9iEe8EHMTAgmnUIGL2gcFHVsPMMJDqLtVqYrtBSwobEpMoR
+         RV65ZhRzRoI6w65yxzm37uz6z7tnsWtwN3ewWAehi0KPL55kYUeTPpTYPfNB7H6/IFzN
+         BpuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ecdca8c780si4438626d6.5.2025.03.21.02.40.04
+       dkim=pass header.i=@linaro.org header.s=google header.b=SxrQKQI2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af8a2914aeasor1397213a12.3.2025.03.21.08.36.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Mar 2025 02:40:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 21 Mar 2025 08:36:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tvYr0-0006l3-Gp; Fri, 21 Mar 2025 05:39:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rypf=WI=kaod.org=clg@ozlabs.org>)
- id 1tvYqv-0006kU-Hf; Fri, 21 Mar 2025 05:39:47 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rypf=WI=kaod.org=clg@ozlabs.org>)
- id 1tvYqs-0001da-79; Fri, 21 Mar 2025 05:39:44 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZJy8T3cNDz4xG0;
- Fri, 21 Mar 2025 20:39:37 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZJy8N4lSdz4wxh;
- Fri, 21 Mar 2025 20:39:32 +1100 (AEDT)
-Message-ID: <ad2a275b-2487-42d5-b191-bb2c120234e3@kaod.org>
-Date: Fri, 21 Mar 2025 10:39:29 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b=SxrQKQI2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1742571389; x=1743176189; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1XrcnI8/sSn+DKJfn9g/ACfk6EsflbS3NmSa9fiFXcQ=;
+        b=SxrQKQI2MoJNQDDpEUh6udlImzkfybKWGAebcoqZzulVIVpd2DZwzrZOBI7MRQRtK7
+         IOYSpKcC5c15cIGoHF1b5Q/fzqNCXdsXOcwynV31sXSHxXECQh1CrxJNimCPzdsaDADO
+         cUxyen3GnegBLpbfak71d1ll5H9wId4vcbkNb760X2OVjoQ8v16hYtXZ58pKRILvbTNH
+         pnzuY02xdUJ6g3dKbQgXE5JOCVxhTFyLKCaC7/+I+mWom5ANIzskV+5LBZnfMsLgy1a4
+         40X1TgxcB7IAP5PBMDPBQnlISU74bYmksrn9Jbxkl4Cjc4hpHAYCxwTWomqi4X1Gepq9
+         O1/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742571389; x=1743176189;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1XrcnI8/sSn+DKJfn9g/ACfk6EsflbS3NmSa9fiFXcQ=;
+        b=KJ5d3t+59TVAtk51Nas+lBZhmQAmEUpsOrZTl9ycgPGoazrBtsNEIlFvDGk+Dih9rs
+         Ze6++BITHPd5BEOpJc+6Hrb9RfTEl9XIjbukN/js6/xB6d2nyKKSeXyFXSwn55/LHq9a
+         Q8ICrNNYgrrixeRGd3lkMoPNgRtbFPLOI9tXwKpB6W5jZtJ3OqFpUXhmWEJi6GS7sW+8
+         zSflT7/THvlMu623nOU2chKH//pSO0hkxMu4jZac2fw0vV7NyQ2QxY1GLGv6vcpHhUPr
+         e08p4brVGiw1dwZ9Cmd88+DhkusHlAqOZPsLYdyVxIpVERWwvykR4pTVjO6YPte66xno
+         HiTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVgWvm36s6AR2HS8XPzyIQMUvudxpkXy5EMUYVaq7EPweCWJFGEcJ0zX6VegweOi0jF358XKKPQjSamVA==@linaro.org
+X-Gm-Message-State: AOJu0Yz19jBIRs2jJS2aHpxLinDN6Wz0vg0TYqPbMg+Pq10Xf+n6/hrm
+	oNLDOyWuQ48GKgcLiSnwDqOeFmnTlZqjhspv2JpnAeD9+476QeGq9DQmZG3CN9BARA==
+X-Gm-Gg: ASbGncsMN/JFU0WfbAHsbAWLK99lbpKHQP7LCmZPS4lWUcTNwA5cd5US4bzuseaTV8L
+	VURUMIns4Q+U0tQyoYghEV9Cx0b9wE1Y12/0B4FA5SkpXksyuh3czhcGJqSuI8hxVA3cZkWGDqj
+	e7nXP3u5iQ8eNvq5Uzt83naCeBLA4RutuB7DuCueCRHfuwbxAfsQ/O63QZb733TibFg/16yX6Q/
+	zmvkLYer2f0HsaAyrgrcFnLg+v1sylZ1Wa6Vv5QwsSyNl9bN2CHcB2QsUMWkXt+0uriSY4av67Q
+	bWKhWxO0w3zT1vf/UgDBNBwWIlDK0YmYkNGhgRsuMM6Os8lIX2GGd1fEFn9Bh7fgUFnN/sHCWeb
+	ofZrQSMqQ
+X-Google-Smtp-Source: AGHT+IHJWViTwcKfPKoLy1dU4C8myvJLYRcls55PV5nSU6Vmh6oW9S11ryDhM4HtSbU3j2AR+5qbTA==
+X-Received: by 2002:a05:6a20:c997:b0:1f5:7c6f:6c8a with SMTP id adf61e73a8af0-1fe43311d2dmr6722330637.35.1742571389478;
+        Fri, 21 Mar 2025 08:36:29 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-74-48.tukw.qwest.net. [174.21.74.48])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af8a28467e9sm1611739a12.37.2025.03.21.08.36.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Mar 2025 08:36:29 -0700 (PDT)
+Message-ID: <85f93712-7612-4016-9fd3-4f8f135da95d@linaro.org>
+Date: Fri, 21 Mar 2025 08:36:27 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 00/22] Fix incorrect hash results on AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH v2 03/30] exec/cpu-all: move cpu_copy to linux-user/qemu.h
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
+ <20250320223002.2915728-4-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250320223002.2915728-4-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=rypf=WI=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wc/Qy5N2Y3Is
+X-TUID: lYebavrCARwh
 
-Hello Jamin
+On 3/20/25 15:29, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   include/exec/cpu-all.h | 2 --
+>   linux-user/qemu.h      | 3 +++
+>   2 files changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+> index d2895fb55b1..74017a5ce7c 100644
+> --- a/include/exec/cpu-all.h
+> +++ b/include/exec/cpu-all.h
+> @@ -32,8 +32,6 @@
+>   #include "exec/cpu-defs.h"
+>   #include "exec/target_page.h"
+>   
+> -CPUArchState *cpu_copy(CPUArchState *env);
+> -
+>   #include "cpu.h"
+>   
+>   /* Validate correct placement of CPUArchState. */
+> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+> index 5f007501518..948de8431a5 100644
+> --- a/linux-user/qemu.h
+> +++ b/linux-user/qemu.h
+> @@ -362,4 +362,7 @@ void *lock_user_string(abi_ulong guest_addr);
+>   #define unlock_user_struct(host_ptr, guest_addr, copy)		\
+>       unlock_user(host_ptr, guest_addr, (copy) ? sizeof(*host_ptr) : 0)
+>   
+> +/* Clone cpu state */
+> +CPUArchState *cpu_copy(CPUArchState *env);
+> +
+>   #endif /* QEMU_H */
 
-On 3/21/25 10:25, Jamin Lin wrote:
-> v1:
->   1. Added support for 64-bit DMA in the HACE model
->   2. Refactored the do_hash operation in the HACE model
->   3. Fixed a crash caused by out-of-bound memory access in HACE
->   4. Added more trace events and implemented dumping of source hash data and
->      resulting digests to improve debugging
->   5. Refactored the HACE QTest framework to support both AST1030 and AST2700
->   6. Added a test case for SHA384
-> 
-> This patchset resolves incorrect hash results reported on the AST2700 platform.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-Thanks for taking time to address these issues.
-
-I think it is a big change for QEMU 10.0 and I'd rather keep it
-for QEMU 10.1. However, there seem to be important fixes which
-would be candidates for QEMU 10.0, such as patch 2. Could you
-please send a Fixes: trailer as a reply to the patch ? No need
-to resend.
-
-
-Thanks,
-
-C.
-
-
-
-> This update addresses the following kernel warnings and test failures related to
-> the crypto self-test framework:
-> 
-> aspeed-hmac-sha512 test failed (incorrect result)
-> aspeed-hmac-sha384 test failed (incorrect result)
-> aspeed-sha512 test failed (incorrect result)
-> aspeed-sha384 test failed (incorrect result)
-> aspeed-hmac-sha256 test failed (incorrect result)
-> aspeed-hmac-sha224 test failed (incorrect result)
-> aspeed-hmac-sha1 test failed (incorrect result)
-> aspeed-sha224 test failed (incorrect result)
-> aspeed-sha256 test failed (incorrect result)
-> aspeed-sha1 test failed (incorrect result)
-> 
-> How to test it
-> 
-> Use the following command to dump information about the supported digest methods
-> via the afalg hardware engine:
-> 
-> root@ast2700-default:~# openssl engine -pre DUMP_INFO afalg
-> 
-> Digest SHA1, NID=64, AF_ALG info: name=sha1ALG_ERR: , driver=aspeed-sha1 (hw accelerated)
-> Digest SHA224, NID=675, AF_ALG info: name=sha224ALG_ERR: , driver=aspeed-sha224 (hw accelerated)
-> Digest SHA256, NID=672, AF_ALG info: name=sha256ALG_ERR: , driver=aspeed-sha256 (hw accelerated)
-> Digest SHA384, NID=673, AF_ALG info: name=sha384ALG_ERR: , driver=aspeed-sha384 (hw accelerated)
-> Digest SHA512, NID=674, AF_ALG info: name=sha512ALG_ERR: , driver=aspeed-sha512 (hw accelerated)
-> 
-> The status of SHA1, SHA224, SHA256, SHA384, and SHA512 should be marked as
-> hw accelerated, indicating that these algorithms are supported by hardware
-> acceleration via the aspeed drivers.
-> 
-> Create a test file on the host machine and compute its HASH value as the
-> expected result
-> 
-> Create a 256MB test file
-> 
-> $ dd if=/dev/random of=/tmp/256M bs=1M count=256
-> Generate Hash Values Using SHA1, SHA224, SHA256, SHA384, and SHA512
-> 
-> Use the following commands to generate HASH values for a 256MB file using
-> different SHA algorithms:
-> 
-> $ sha1sum /tmp/256M
-> 7fc628811a31ab87b0502dab3ed8d3ef07565885  /tmp/256M
-> 
-> $ sha224sum /tmp/256M
-> 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54  /tmp/256M
-> 
-> $ sha256sum /tmp/256M
-> 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d  /tmp/256M
-> 
-> $ sha384sum /tmp/256M
-> fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c  /tmp/256M
-> 
-> $ sha512sum /tmp/256M
-> fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9  /tmp/256M
-> 
-> Generate HASH Values Using the Hardware Engine
-> 
-> Use the following commands to generate HASH values for a 256MB file using
-> various SHA algorithms with the afalg hardware engine:
-> 
-> 
-> root@ast2700-default:~# openssl dgst -sha1 -engine afalg /tmp/256M
-> Engine "afalg" set.
-> SHA1(/tmp/256M)= 7fc628811a31ab87b0502dab3ed8d3ef07565885
-> 
-> root@ast2700-default:~# openssl dgst -sha224 -engine ast_crypto_engine /tmp/256M
-> Engine "afalg" set.
-> SHA2-224(/tmp/256M)= 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54
-> 
-> root@ast2700-default:~# openssl dgst -sha256 -engine afalg /tmp/256M
-> Engine "afalg" set.
-> SHA2-256(/tmp/256M)= 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d
-> 
-> root@ast2700-default:~# openssl dgst -sha384 -engine afalg /tmp/256M
-> Engine "afalg" set.
-> SHA2-384(/tmp/256M)= fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c
-> 
-> root@ast2700-default:~# openssl dgst -sha512 -engine afalg /tmp/256M
-> Engine "afalg" set.
-> SHA2-512(/tmp/256M)= fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9
-> 
-> 
-> The HASH values generated here should exactly match those computed on the host
-> machine using software-based OpenSSL, verifying both the correctness of the
-> hardware-accelerated results and the functionality of the afalg.
-> 
-> 
-> Jamin Lin (22):
->    hw/misc/aspeed_hace: Remove unused code for better readability
->    hw/misc/aspeed_hace: Fix buffer overflow in has_padding function
->    hw/misc/aspeed_hace: Improve readability and consistency in variable
->      naming
->    hw/misc/aspeed_hace: Update hash source address handling to 64-bit for
->      AST2700
->    hw/misc/aspeed_hace: Introduce 64-bit digest_addr variable for AST2700
->    hw/misc/aspeed_hace: Support accumulative mode for direct access mode
->    hw/misc/aspeed_hace: Add support for source, digest, key buffer 64 bit
->      addresses
->    hw/misc/aspeed_hace: Support DMA 64 bits dram address.
->    hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to prevent firmware
->      hang
->    hw/misc/aspeed_hace:: Support setting different memory size
->    hw/misc/aspeed_hace: Add trace-events for better debugging
->    hw/misc/aspeed_hace Support to dump plaintext and digest for better
->      debugging
->    test/qtest: Introduce a new aspeed-hace-utils.c to place common
->      testcases
->    test/qtest/hace: Adjust test address range for AST1030 due to SRAM
->      limitations
->    test/qtest/hace: Add SHA-384 test cases for ASPEED HACE model
->    test/qtest/hace: Add SHA-384 tests for AST2600
->    test/qtest/hace: Add tests for AST1030
->    test/qtest/hace: Update source data and digest data type to 64-bit
->    test/qtest/hace: Support 64-bit source and digest addresses for
->      AST2700
->    test/qtest/hace: Support to test upper 32 bits of digest and source
->      addresses
->    test/qtest/hace: Support to validate 64-bit hmac key buffer addresses
->    test/qtest/hace: Add tests for AST2700
-> 
->   include/hw/misc/aspeed_hace.h   |   9 +-
->   tests/qtest/aspeed-hace-utils.h |  84 +++++
->   hw/misc/aspeed_hace.c           | 194 ++++++----
->   tests/qtest/aspeed-hace-utils.c | 646 ++++++++++++++++++++++++++++++++
->   tests/qtest/aspeed_hace-test.c  | 577 +++++-----------------------
->   tests/qtest/ast2700-hace-test.c |  98 +++++
->   hw/misc/trace-events            |   6 +
->   tests/qtest/meson.build         |   5 +-
->   8 files changed, 1074 insertions(+), 545 deletions(-)
->   create mode 100644 tests/qtest/aspeed-hace-utils.h
->   create mode 100644 tests/qtest/aspeed-hace-utils.c
->   create mode 100644 tests/qtest/ast2700-hace-test.c
-> 
-
+r~

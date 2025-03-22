@@ -1,154 +1,201 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp664955njc;
-        Fri, 21 Mar 2025 17:20:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWBrE8iV7lCDgp0LgR2o+FfJyQw28NzAObkUijn1Wqm66ponl1iL7l3PxawjK7sniK1CayOnP/Scb+bGA==@linaro.org
-X-Received: by 2002:a17:902:d4c5:b0:216:53fa:634f with SMTP id d9443c01a7336-22780e206a3mr85214635ad.48.1742602814620;
-        Fri, 21 Mar 2025 17:20:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742602814; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp1116282njc;
+        Sat, 22 Mar 2025 13:53:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUhjMaf62qJssnPntS/vIBZ2BykqFYZ2veouqbu6AsWRw/29K+pJ1BzZY/mCsmjqMBbbQ9b4/daGwjjfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFYysOTcfQL4YpPw5Kdv1VpcjcW36R7JnQqpSI+iqkIvAFSHIcDwKR4JSH/ER3mUKal7U9c
+X-Received: by 2002:a05:620a:d8b:b0:7c5:6a35:81c1 with SMTP id af79cd13be357-7c5ba1fba0fmr1379076185a.48.1742676808671;
+        Sat, 22 Mar 2025 13:53:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742676808; cv=none;
         d=google.com; s=arc-20240605;
-        b=haO4H9LzoXLIwrFbkkd8DRPTAZqHQIv1ZJgwoMKU65ZRpS/78esUJlCqXyFKItATtc
-         8fFk5D93uQZPyEBJLnE3/hmHJkQFsy9KWwKMDMh5ghDA5EHN2O7SrcKyAOH1jZsl62I9
-         o6DpMpGEod2MoBWSPX5IgaBkJwjsfxnT714pjma1z14q/XwdrCaPerAeBTPQD82GcDAP
-         oz687ItIMJWmNtQPiJOFxA0SE8kp9caTbZwEEIWLPZJKm8FLUMQjNDB2PWUGlK/NOBMP
-         99PmRzW2RJzwZN3fNh6k4rMtQEOv2DB1oGaFHpUX49g/cFriCo2yTQGrkGvifGBLXQ1i
-         VTFw==
+        b=fhaTRZte6XgiVhyG7S9QFgKJqfpxkX163LoftVwu7CmjYDuLpYTSnUUVkgRT35NAsI
+         o+rl/TXkftv9Mvxp3Z5PaV8jmdYEMb0ErDl8czQnP2AUUjTBoa4VqrpRmAjQKxaxTVgi
+         d0jyatt0nH2wR5IRQJLI8nxHR2JvHgyZjt63Fz+kG6zewcG2EkWSl41aal6GwUnsw60u
+         vMtmuy0E2Kjc7N0jbY+Atvhi6Vvn6kLieLYvei6QzgqFV95wQeKuq6WovyWq+3wXXXZs
+         4FKWchNCOTTqIugZl9b3/4BqWYztg08i0B7YzQo2Oeggchf1P0uw2KgQHhGaAqKtWdnX
+         o6dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=gmihTeepoM01G32VwMRKIpoRxTtCyWjhxO8/HlXx56w=;
-        fh=LHhN//MRAs17hXOBwCGqySxsDJG0d9Mlad/Mye4eQNE=;
-        b=fycBk3WoGQXUvzikylYDufEcxGwYxrI4p4Z/kMxXhc1mJiqXzm8wECsiAVh+ltxsOf
-         3JWM8qWXsgD10qH6ke93z3nqu8xz5Vuf3hCDFZt3gaCAhs/MTfsNtpb54Pg/uvsoIrcH
-         nvwZW3GnWPGDhgPO1P4hCu35zQSbPhwLrpgPHhQvtTvwL74Y7hgyc3bh4tmJTV+5xqyZ
-         bnQzufJfYnAbThZOYkjIkLdB4BrHYpubdTI1qwA1WDVF5FztY8JL2KQ0fahHtMoMAKUR
-         SDy6Gwm7g/KGbo9NYDgHjzgg0h1BZfPY3AE4l0B2g58oGeFHFqRxZGtN0C4aZvszHash
-         ZGOQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=PyADzpaVX7lVgtr7GjKTA+wCa/E8C1aYICooHgukZ0Q=;
+        fh=gCXMQKs6lZ8CIfxrgvNmsucbxJPLBUoEizQFcmzUdmQ=;
+        b=KXUtLEqARN8NZo1zNbr2O5Di9THrJ1bVFXz6dSfAbKk7TDjhqtB7tURaa0juJD9vwR
+         798qKaZXwBGzmBLXbEHURqucwJTjdrte9FRk4WH3mRv88+wdEbxZfjUfeIi0JdMJ5lUD
+         ZkBtqK/wdh86xLFoFL7BBZMVbcfyjQn8ES/E8eH6qg3KcGKMjjdk3bqLHSiktBeoC2Bq
+         3X3rkoSZcb18r9MCVZAzQywBDhHBr1H1z/SqfnBpKT3Yydf13Tobpf7lxp582ktltDTc
+         qTSJ+5eKJFlbzfgcY5/9R8L57tqzePdx4M2UyBUqooPN+wkZ6SDPsaHDgqaS0nXuFxMX
+         D+4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YK7lYBHu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-227811d1f78sor19113945ad.16.2025.03.21.17.20.14
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b9383a11si450578485a.611.2025.03.22.13.53.28
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 21 Mar 2025 17:20:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 22 Mar 2025 13:53:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YK7lYBHu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742602814; x=1743207614; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=gmihTeepoM01G32VwMRKIpoRxTtCyWjhxO8/HlXx56w=;
-        b=YK7lYBHutzrFy0Pq06cO55vwKpjU5DXjo4UL0ssJg3RHJuB35J+yfn53Llk3bWUcwA
-         RXkL3OGfLwg7uZOm5biU162RNkvpWTGBZR+f4pkZINXP5hCswssWQiZpcmZMEdufm37c
-         U8KiMM5wEeJu3bgOK5loxzEmxZS/m5hvH8jf+QyAQ3vc+e/VfWtcCpBkwA0b6ESHz0Ah
-         UfOdAld+fU2rQE3UzmDF6k87lShS5Jm+91/yP+NVry+o0crvhTd52D4lksdhCpn08zN6
-         ttXtV3ur2n/AFFZjVzVjSAre+JRbufFiExAE9QU6wEpMgTLE4iEM+/BYUQL4ptpQlGcT
-         InpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742602814; x=1743207614;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gmihTeepoM01G32VwMRKIpoRxTtCyWjhxO8/HlXx56w=;
-        b=lYTnejzUc38u6IBn3l31nQRr0rIH32haWxDek6WRUWMT3gfJbOqJBD6itM8dS8riUl
-         DEL77KHkrdILxODnrpZ2KcQmX5RTkGJ1SmdQ2AGFBKmFVcIZMhMQiihKVVYpzF7AYcAv
-         OB337teLuSzMuSujupqW1LdABGUme5ZkxB5uDXHiN0A4VuyR1XXQ6SzD+aNPRAF/ZEpE
-         LsK4PnTYMA/Zf6apXedEnafe/VRzmIf5B1DfdYyW/T6X8Jj6Df1y2g/kQpFJM9Cw4T67
-         S6TUi1rgjZ7GkESmlnmMyay0uvpEhCIeJzhhDkwUhuMIoCA3vQYS9aqsPb/tWzoaXtkt
-         ZvIA==
-X-Forwarded-Encrypted: i=1; AJvYcCXnEVql/CyDgmGslEUWYoldNoy6kw/Th1Dh+ttUnGxNd/43kPhmttfzoj7CaiZMnyr/63jmBxY8KFvxJQ==@linaro.org
-X-Gm-Message-State: AOJu0YxAA1v7VRv4SxJFAYYaR4jF8UzKtoTnuk42rRDPizPEtWUeLzoD
-	4rZVy3mlaYZhyoYZftdCE9FLMdJZiFVFRUvrQyTGp0SCMgYRGw0iDMHoKeQUD0KBOg==
-X-Gm-Gg: ASbGnctS/OM7eAIF6Y2tuKNrMqdwX8w6v07jzORc2svnWIsIh9AJMi4Jt7kj8xg/rZK
-	WmVcw95pFSrC49gtqEy/z7fY/ulWJxElKf8saCQ7qw74t4Y4W9C2K2q0VjWPXzoR+26QlSOMQSq
-	qWuEOKzzeHDYY6nkZxHH+p9SYAMAyXD+FZGptrxKkAHT8mTtEWUOUdudb+lTgz7s3wp+y55bvRj
-	NfGgRu3cYmKlkvCFJZjIq7nBwC0xGfhEnn2LKcM8AFoKKiWzt7qYvk0zhTCQq5V7fAXrwx0FYIK
-	O50ctTSq8GuYZ0Ii9o4fagDCkWBkkW0HgHl9VIAK0t/kNbnp9unVsjBtsDpE6sg0f4Ki
-X-Google-Smtp-Source: AGHT+IEiwshH0mEB0ml11+5ohr1OVAQK1GvcSU9JeTsnEj9XYL0ycGei7ChHq5z6xhuvXYlP6cdGKQ==
-X-Received: by 2002:a17:903:18c:b0:220:d909:1734 with SMTP id d9443c01a7336-22780c7a955mr74702015ad.14.1742602814010;
-        Fri, 21 Mar 2025 17:20:14 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301bf576aa7sm6892181a91.4.2025.03.21.17.20.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Mar 2025 17:20:13 -0700 (PDT)
-Message-ID: <c1b7b73e-0a59-46cf-bf33-5712df5d9b75@linaro.org>
-Date: Fri, 21 Mar 2025 17:20:12 -0700
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tw5q0-0006Cy-Ci; Sat, 22 Mar 2025 16:53:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=aWnt=WJ=kaod.org=clg@ozlabs.org>)
+ id 1tw5pw-0006CZ-Ma; Sat, 22 Mar 2025 16:52:56 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=aWnt=WJ=kaod.org=clg@ozlabs.org>)
+ id 1tw5pu-0004af-Gj; Sat, 22 Mar 2025 16:52:56 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZKs2h6Cmcz4wy9;
+ Sun, 23 Mar 2025 07:52:44 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZKs2b6LVkz4wcr;
+ Sun, 23 Mar 2025 07:52:38 +1100 (AEDT)
+Message-ID: <4dc5348a-9b71-49d9-b21f-0e18f7e888ed@kaod.org>
+Date: Sat, 22 Mar 2025 21:52:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 17/30] exec/target_page: runtime defintion for
- TARGET_PAGE_BITS_MIN
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
- <20250320223002.2915728-18-pierrick.bouvier@linaro.org>
- <2e667bb0-7357-4caf-ab60-4e57aabdceeb@linaro.org>
- <e738b8b8-e06f-48d0-845e-f263adb3dee5@linaro.org>
- <a67d17bb-e0dc-4767-8a43-8f057db70c71@linaro.org>
- <216a39c6-384d-4f9e-b615-05af18c6ef59@linaro.org>
- <c0e338f5-6592-4d83-9f17-120b9c4f039e@linaro.org>
- <ebd25730-1947-4360-af36-cf1131f4155c@linaro.org>
-Content-Language: en-US
-In-Reply-To: <ebd25730-1947-4360-af36-cf1131f4155c@linaro.org>
+Subject: Re: [PATCH v1 02/22] hw/misc/aspeed_hace: Fix buffer overflow in
+ has_padding function
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-3-jamin_lin@aspeedtech.com>
+ <SI2PR06MB5041FEAF9E22928FC807B639FCDB2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB5041FEAF9E22928FC807B639FCDB2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: YrtQohrUKW1/
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=aWnt=WJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oHwVGzzvac+5
 
-T24gMy8yMS8yNSAxNzowMSwgUGllcnJpY2sgQm91dmllciB3cm90ZToNCj4gT24gMy8yMS8y
-NSAxNToxOSwgUmljaGFyZCBIZW5kZXJzb24gd3JvdGU6DQo+PiBPbiAzLzIxLzI1IDEzOjEx
-LCBQaWVycmljayBCb3V2aWVyIHdyb3RlOg0KPj4+IE9uIDMvMjEvMjUgMTI6MjcsIFJpY2hh
-cmQgSGVuZGVyc29uIHdyb3RlOg0KPj4+PiBPbiAzLzIxLzI1IDExOjA5LCBQaWVycmljayBC
-b3V2aWVyIHdyb3RlOg0KPj4+Pj4+IE1tbSwgb2sgSSBndWVzcy7CoCBZZXN0ZXJkYXkgSSB3
-b3VsZCBoYXZlIHN1Z2dlc3RlZCBtZXJnaW5nIHRoaXMgd2l0aCBwYWdlLXZhcnkuaCwgYnV0
-DQo+Pj4+Pj4gdG9kYXkgSSdtIGFjdGl2ZWx5IHdvcmtpbmcgb24gbWFraW5nIFRBUkdFVF9Q
-QUdFX0JJVFNfTUlOIGEgZ2xvYmFsIGNvbnN0YW50Lg0KPj4+Pj4+DQo+Pj4+Pg0KPj4+Pj4g
-V2hlbiB5b3UgbWVudGlvbiB0aGlzLCBkbyB5b3UgbWVhbiAiY29uc3RhbnQgYWNjcm9zcyBh
-bGwgYXJjaGl0ZWN0dXJlcyIsIG9yIGEgZ2xvYmFsDQo+Pj4+PiAoY29uc3QpIHZhcmlhYmxl
-IHZzIGhhdmluZyBhIGZ1bmN0aW9uIGNhbGw/DQo+Pj4+IFRoZSBmaXJzdCAtLSBjb25zdGFu
-dCBhY3Jvc3MgYWxsIGFyY2hpdGVjdHVyZXMuDQo+Pj4+DQo+Pj4NCj4+PiBUaGF0J3MgZ3Jl
-YXQuDQo+Pj4gRG9lcyBjaG9vc2luZyB0aGUgbWluKHNldF9vZihUQVJHRVRfUEFHRV9CSVRT
-X01JTikpIGlzIHdoYXQgd2Ugd2FudCB0aGVyZSwgb3IgaXMgdGhlDQo+Pj4gYW5zd2VyIG1v
-cmUgc3VidGxlIHRoYW4gdGhhdD8NCj4+DQo+PiBJdCB3aWxsIGJlLCB5ZXMuDQo+Pg0KPj4g
-VGhpcyBpc24ndCBhcyBoYXJkIGFzIGl0IHNlZW1zLCBiZWNhdXNlIHRoZXJlIGFyZSBleGFj
-dGx5IHR3byB0YXJnZXRzIHdpdGgNCj4+IFRBUkdFVF9QQUdFX0JJVFMgPCAxMjogYXJtIGFu
-ZCBhdnIuDQo+Pg0KPj4gQmVjYXVzZSB3ZSBzdGlsbCBzdXBwb3J0IGFybXY0LCBUQVJHRVRf
-UEFHRV9CSVRTX01JTiBtdXN0IGJlIDw9IDEwLg0KPj4NCj4+IEFWUiBjdXJyZW50bHkgaGFz
-IFRBUkdFVF9QQUdFX0JJVFMgPT0gOCwgd2hpY2ggaXMgYSBiaXQgb2YgYSBwcm9ibGVtLg0K
-Pj4gTXkgZmlyc3QgdGFzayBpcyB0byBhbGxvdyBhdnIgdG8gY2hvb3NlIFRBUkdFVF9QQUdF
-X0JJVFNfTUlOID49IDEwLg0KPj4NCj4+IFdoaWNoIHdpbGwgbGVhdmUgdXMgd2l0aCBUQVJH
-RVRfUEFHRV9CSVRTX01JTiA9PSAxMC4NCj4+DQo+IA0KPiBPay4NCj4gDQo+ICAgRnJvbSB3
-aGF0IEkgdW5kZXJzdGFuZCwgd2UgbWFrZSBzdXJlIHRsYiBmbGFncyBhcmUgc3RvcmVkIGlu
-IGFuDQo+IGltbXV0YWJsZSBwb3NpdGlvbiwgd2l0aGluIHZpcnR1YWwgYWRkcmVzc2VzIHJl
-bGF0ZWQgdG8gZ3Vlc3QsIGJ5IHVzaW5nDQo+IGxvd2VyIGJpdHMgYmVsb25naW5nIHRvIGFk
-ZHJlc3MgcmFuZ2UgaW5zaWRlIGEgZ2l2ZW4gcGFnZSwgc2luY2UgcGFnZQ0KPiBhZGRyZXNz
-ZXMgYXJlIGFsaWduZWQgb24gcGFnZSBzaXplLCBsZWF2aW5nIHRob3NlIGJpdHMgZnJlZS4N
-Cj4gDQo+IGJpdHMgWzAuLjIpIGFyZSBic3dhcCwgd2F0Y2hwb2ludCBhbmQgY2hlY2tfYWxp
-Z25lZC4NCj4gYml0cyBbVEFSR0VUX1BBR0VfQklUU19NSU4gLSA1Li5UQVJHRVRfUEFHRV9C
-SVRTX01JTikgYXJlIHNsb3csDQo+IGRpc2NhcmRfd3JpdGUsIG1taW8sIG5vdGRpcnR5LCBh
-bmQgaW52YWxpZCBtYXNrLg0KPiBBbmQgdGhlIGNvbXBpbGUgdGltZSBjaGVjayB3ZSBoYXZl
-IGlzIHRvIG1ha2Ugc3VyZSB3ZSBkb24ndCBvdmVybGFwDQo+IHRob3NlIHNldHMgKHdvdWxk
-IGhhcHBlbiBpbiBUQVJHRVRfUEFHRV9CSVRTX01JTiA8PSA3KS4NCj4gDQo+IEkgd29uZGVy
-IHdoeSB3ZSBjYW4ndCB1c2UgYml0cyBbMy4uOCkgZXZlcnl3aGVyZSwgbGlrZSBpdCdzIGRv
-bmUgZm9yDQo+IEFWUiwgZXZlbiBmb3IgYmlnZ2VyIHBhZ2Ugc2l6ZXMuIEkgbm90aWNlZCB0
-aGUgY29tbWVudCBhYm91dCAiYWRkcmVzcw0KPiBhbGlnbm1lbnQgYml0cyIsIGJ1dCBJJ20g
-Y29uZnVzZWQgd2h5IGJpdHMgWzAuLjIpIGNhbiBiZSB1c2VkLCBhbmQgbm90DQo+IHVwcGVy
-IG9uZXMuDQo+IA0KPiBBcmUgd2Ugc3RvcmluZyBzb21ldGhpbmcgZWxzZSBpbiB0aGUgbWlk
-ZGxlIG9uIG90aGVyIGFyY2hzLCBvciBkaWQgSQ0KPiBtaXNzIHNvbWUgcGllY2Ugb2YgdGhl
-IHB1enpsZT8NCj4gDQoNCkFmdGVyIGxvb2tpbmcgYmV0dGVyLCBUTEJfU0xPV19GTEFHUyBh
-cmUgbm90IHBhcnQgb2YgYWRkcmVzcywgc28gd2UgDQpkb24ndCB1c2UgYml0cyBbMC4uMiku
-DQoNCkZvciBhIGdpdmVuIFRBUkdFVF9QQUdFX1NJWkUsIGhvdyBkbyB3ZSBkZWZpbmUgYWxp
-Z25tZW50IGJpdHM/DQoNCj4gVGhhbmtzLA0KPiBQaWVycmljaw0KPiANCj4+DQo+PiByfg0K
-PiANCg0K
+On 3/21/25 10:47, Jamin Lin wrote:
+> Hi Cedric,
+> 
+>> Subject: [PATCH v1 02/22] hw/misc/aspeed_hace: Fix buffer overflow in
+>> has_padding function
+>>
+>> The maximum padding size is either 64 or 128 bytes and should always be
+>> smaller than "req_len". If "padding_size" exceeds "req_len", then "req_len -
+>> padding_size" underflows due to "uint32_t" data type, leading to a large
+>> incorrect value (e.g., `0xFFXXXXXX`). This causes an out-of-bounds memory
+>> access, potentially leading to a buffer overflow.
+>>
+>> Added a check to ensure "padding_size" does not exceed "req_len" before
+>> computing "pad_offset". This prevents "req_len - padding_size" from
+>> underflowing and avoids accessing invalid memory.
+>>
+>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> ---
+>>   hw/misc/aspeed_hace.c | 5 +++++
+>>   1 file changed, 5 insertions(+)
+>>
+>> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c index
+>> 8e7e8113a5..d8b5f048bb 100644
+>> --- a/hw/misc/aspeed_hace.c
+>> +++ b/hw/misc/aspeed_hace.c
+>> @@ -128,6 +128,11 @@ static bool has_padding(AspeedHACEState *s, struct
+>> iovec *iov,
+>>       if (*total_msg_len <= s->total_req_len) {
+>>           uint32_t padding_size = s->total_req_len - *total_msg_len;
+>>           uint8_t *padding = iov->iov_base;
+>> +
+>> +        if (padding_size > req_len) {
+>> +            return false;
+>> +        }
+>> +
+>>           *pad_offset = req_len - padding_size;
+>>           if (padding[*pad_offset] == 0x80) {
+>>               return true;
+>> --
+>> 2.43.0
+> 
+> Fixes: 5cd7d8564a8b563da724b9e6264c967f0a091afa ("aspeed/hace: Support AST2600 HACE ")
+
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+

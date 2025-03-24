@@ -1,147 +1,146 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp1998274njc;
-        Mon, 24 Mar 2025 07:46:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVhH/p5z1EU5juq9r1gMniFKZfRXCRYqh7xBUZM47coeOUbX74/KGhBt4dmDkjPtitzocPQsLgnXoWc5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGpQJqYQ1yNbeWCSRh+i4UnsnqC+oR405X1EMkPoYZPkN7AHJADRSA1Bc72o6DBEBPeThm3
-X-Received: by 2002:a05:620a:1a0a:b0:7c5:5794:3e66 with SMTP id af79cd13be357-7c5ba18fa04mr1909221085a.31.1742827615092;
-        Mon, 24 Mar 2025 07:46:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742827615; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2001664njc;
+        Mon, 24 Mar 2025 07:53:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWffIODu+AicTT8OFY2Eep7xqZOlqC+0x9lHSv69wB34oWc+qZrabTjs43srhxPrL+6bTVeJr5koJASaA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGSIW8Dz8pYrLpDbcWf2XZpWlS9yzKmy48JpyzN4qNaQkqjNFXdEnPmbm5E4rAh3kIOAUJE
+X-Received: by 2002:a05:620a:199d:b0:7c5:6cf5:9439 with SMTP id af79cd13be357-7c5ba22dc7fmr1783003685a.37.1742827999853;
+        Mon, 24 Mar 2025 07:53:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742827999; cv=none;
         d=google.com; s=arc-20240605;
-        b=CCZmkFuHm7JD1NoELe+7/j/ACkh0Ko6WmEjWEaEUbOmnksdAu5XxRQ6rr46xrPKlzu
-         JIVDv7iRM/rRnprccJ4yUhxxjRx203oyqdz1l3K5T1hue+4qGugYcSQaZ+hQRJIwMQNz
-         izjt8RnoLOq0Gu/+Q0hcR4PIxWYuvmLz9Wn31ToxY8TMNkSzFsSIk3nUqo1ANQRJc3Z5
-         1fp0Z55/e+K7+bITQoGPoIQgWJ4XzZv25REnp6RxVbBSwShmsacTsVoJFvkqs2ZYLDYs
-         C1kJQMOe8bbp5/+GZesfoTXihJqYTi15eP0CW8fxD2OvuoJnGXrurkr89JMcF3HvD78v
-         DmGw==
+        b=LppfWTl4yWd94LI9+8oQGugDkHNZMAaIzAsbKWlAdbe8aWcz0Dh+5vEJTQZgk9pRfi
+         PCZ9vkTTpXLaqk2nVONCseJrfudT/MiWitxRdz4MIFme0L53L+Kioh656skKj0As98xp
+         Ghvi0g1za1PtdSz5ZuLd3OrduHgosTWG/DBDffU9lyZjm9kFvl29ZmHD8rx02zoqKRki
+         0VVLHoX+4tCQaMFyPEJ+MA7xyl5O+MJpSI3vg693N5G7cMDfAGV1i09Vv1gOiWIOjcXM
+         7opW5Gd3DHlFaDZtAeyn1/0YrW+1GoZKJ710jF/biIUmwpleylXSqslfYo7j3oCeN7nH
+         BtdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Y/6dJM7WjLY3R3rYiRGivphCR3M2STG0pH0mvJdxxt4=;
-        fh=Wqf8ZSyQE4y4etbheSJpTnVMLzxt0RJQGzBlZJjXmBA=;
-        b=TJegT0FdZiPdYDjnsysH1FJTNVuzZ4Z0FdfqCFMNv4xOlV8TImybUUHNUPiqjSovhg
-         J1Ty8uVwJ6fw1YAMKKL6M2/cPL/k16pgefnsg2Aaut3wRsfwgXII4By42Z0lQjomiolg
-         GyBMjkRclMTlvgk0IAi0Pv6XvHeGVyGple1TZZwv/3U46C4h7Jy3PNIIF0xJTwee0AjN
-         xproRntHp8VFBX9xTit+ZQQRoFwnfKRjFxVPe/X8fy7R+cWVKh5c8nGvj6Yfh3PX5y9P
-         nSl69utwXTayBZHgXlqJOQ2bTnmR/dWiL1LDLsi/feJ8z7EI0kI/2uIN4ccHxltycjY1
-         ev5g==;
+        bh=Ys31jPK8UA+FD/TlxFqDDbz6Z4RsZkmDi3lzeHuZU5s=;
+        fh=n5OFwSnvXVYLKk1MeMDW9vxIoZ8OGb1xCcna04S6Kcs=;
+        b=W3K24faznfrI7nt3/7Lp+bCQ6EBpcj8pXI4ELtDMp+1Tb0eTTbvnmx5ubhxyo8/s7N
+         T/3Vt4bEm+y+EMfKv2L/AVQn8mcrjR9QjIbJTvT54y2Owv0mCnvivI3CGjLDLTx8tYxE
+         YAtAkxlTwLlZJ6/guEFtNH2/0q/doOqjbUrCNnGJcjwnkHlhrBKj1rf/SV89w1kRFOdl
+         TO66n1WBI7b8KUD1NjMvo9BlKEobzHlOLO8uZU5OjwLvx2Mb0nJE/8eGkCt/4xpbJyHl
+         HEQmL0jy6S2G1PKB38sWCg3aGsi+UO1efrakhTWKQDxQrAVelv4wT59Y+vPMXFlBQR72
+         pHhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dbaCjjpq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bi0mUZsW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b93580f5si746008385a.444.2025.03.24.07.46.54
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b934793fsi773951185a.292.2025.03.24.07.53.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Mar 2025 07:46:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Mar 2025 07:53:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dbaCjjpq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bi0mUZsW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1twj4S-0007kR-JC; Mon, 24 Mar 2025 10:46:32 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1twjAT-0001dE-OM; Mon, 24 Mar 2025 10:52:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1twj4R-0007jv-DG
- for qemu-arm@nongnu.org; Mon, 24 Mar 2025 10:46:31 -0400
+ id 1twjAH-0001av-Dl
+ for qemu-devel@nongnu.org; Mon, 24 Mar 2025 10:52:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1twj4P-0003Er-GG
- for qemu-arm@nongnu.org; Mon, 24 Mar 2025 10:46:31 -0400
+ id 1twjA4-0003ob-Jo
+ for qemu-devel@nongnu.org; Mon, 24 Mar 2025 10:52:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742827588;
+ s=mimecast20190719; t=1742827938;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Y/6dJM7WjLY3R3rYiRGivphCR3M2STG0pH0mvJdxxt4=;
- b=dbaCjjpqpfKZpMPYlp0F0pJCi2zFvAzX/P5ryi/KsBYq3f/RoO00DUKuyvFfui5QTnJP7O
- v37xUJL7xcNDqzYExeDz/pacrmZPVL6x1vsvPm842J3UH7iNQxcu6U/25yKsSs7QSoQwpb
- v6QFj/4/SjQrKbwN1E13FKoYiM1fndo=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Ys31jPK8UA+FD/TlxFqDDbz6Z4RsZkmDi3lzeHuZU5s=;
+ b=bi0mUZsWJ+HhQL3crlWrW+ulLanY+lOOTy1p5Z6ZVcFq5JHCk34Y3Sam0CndZ8bZacOquP
+ NaODh7+o1LCS5N63DFrxW6Rj2nyxH/qyL+WSGdRhwa9AJ/X6xoorz2oYbZuO+8VP865UYT
+ ahpmnaXP7WiLAT+HPdPSVMyOJrT7MNM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-148-9Ahoq0euNmKiV1T8F4WuuA-1; Mon, 24 Mar 2025 10:46:27 -0400
-X-MC-Unique: 9Ahoq0euNmKiV1T8F4WuuA-1
-X-Mimecast-MFC-AGG-ID: 9Ahoq0euNmKiV1T8F4WuuA_1742827586
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-43bd0586b86so26458915e9.3
- for <qemu-arm@nongnu.org>; Mon, 24 Mar 2025 07:46:26 -0700 (PDT)
+ us-mta-632-Bhjc-UVHN4yotk7e1ym9_g-1; Mon, 24 Mar 2025 10:52:16 -0400
+X-MC-Unique: Bhjc-UVHN4yotk7e1ym9_g-1
+X-Mimecast-MFC-AGG-ID: Bhjc-UVHN4yotk7e1ym9_g_1742827935
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43d025a52c2so33573875e9.0
+ for <qemu-devel@nongnu.org>; Mon, 24 Mar 2025 07:52:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742827586; x=1743432386;
+ d=1e100.net; s=20230601; t=1742827935; x=1743432735;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Y/6dJM7WjLY3R3rYiRGivphCR3M2STG0pH0mvJdxxt4=;
- b=ZYRAEHDsvSST2bwTyz90GGr976x77lQgvkrb6du2dPyglI7si8tEWPgPou068xac/N
- PzNdBLjjf8hXFhfFm4AXk6HHEhgn37XEIWzW2B8lbercStwzyZXBx99bu8YrTG2YrZA2
- rkJd7YqxSNUYnwsqS0oQwJ7fh8lLGfV28b2zD/fD9QzKnRra0AqikIvMO/AuxATMTBjn
- 5r/8TfMODRUAQ4vAA+Rh5s7REUcahg6YmeD9MoAi/sL6pkNNoXOum1NvK8BcZ+5lPhnb
- +yW6ETlXDFGEcmfwRXTcnLJbTZMcyw1XuWS2oLlkjJNmIJMfMy2kt6nmGe2EhstenK1F
- ZQxg==
+ bh=Ys31jPK8UA+FD/TlxFqDDbz6Z4RsZkmDi3lzeHuZU5s=;
+ b=tdIUOf+a0M2myJIqMYf9anKNdlR3/mlTSubaf1PckhDJ6uq5gi29ZJSZZX1VmKaGAI
+ R6WYpoe6Fv3P0I5g5nqNHCjsxW922prbaA6K0lDh20LuYudjKs8McpQWHouSKhhy3A5B
+ YR0sUM3aHUzFPBYMw7Qe9N1CLvcXmMqRxG1blK+P60glX3G663sDFGrlIOfsv2aWKGbK
+ Dxzr8XWK9ttN1A9mn+STRSf3HBmjMAT5+hDapIWww/sRTESwR6qYtKk/387M/vXCZPLl
+ dJP+ohDnUHtvUXKHOrTTpSfypml0RkyFp2GMX20aG1VdRR8tkwLW/KV2mpvK5zr1fORn
+ f4rw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXB7gNBt/ZEE61K5csY+SFTj4fw9GQFb6EI76hTlYQgxULeC7HnaOR1HCAwQHsnZAVc5RyQvfzEBw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyc5sxMrYi2s2iE0mZsmimxl2FHMh1SnxyqhjLfDPfVvqfWyIW9
- z7d2Y2cIkCB5xruxxQGhId//LNZtssmOj3U7IIdymHGr5ds/tEL5lQT2KuLMh4aPtv315X2r6+I
- 82uqTo3gnv3lb9Epj9WpHr6Vzvc+ltD8msO0ov6qeNBMiybgKHg==
-X-Gm-Gg: ASbGncups64bQ2zympGn6SDRL2TBViNY0BDkYv3J4sbXws6czCKlTQnCrBaHBbvJnxD
- gmDM+FjKD/msy3tI7GWUrrC/3k2HATnf1MZpIo0QVlMMieTpbHRywmHCm6CPtK6Lh37WDWdL/Dd
- UXv9xF7/2Sp9Uscy3QdZAmJTHns+lF+vRC9D7DRmkRsk4DHNq89r45mLIShY/svqa1oAhukuwfN
- so8BSWDj/wkxFrd1bkhMZTjI62ieVxUML2ZujCzov9JhnMzBbgEEG9D/px2PG0AYHMvhqN/+2iw
- OdSOSr0eiiHgI7p/emZ0C4cH9a72w8sMT49UEBS1nZykZA/vl+TsraTfB9IPgGQ=
-X-Received: by 2002:a05:6000:1543:b0:391:3cf6:95fd with SMTP id
- ffacd0b85a97d-3997f9144c4mr11349599f8f.30.1742827585756; 
- Mon, 24 Mar 2025 07:46:25 -0700 (PDT)
-X-Received: by 2002:a05:6000:1543:b0:391:3cf6:95fd with SMTP id
- ffacd0b85a97d-3997f9144c4mr11349576f8f.30.1742827585262; 
- Mon, 24 Mar 2025 07:46:25 -0700 (PDT)
+ AJvYcCVDIXSVWsFTsybkjg5a5uT+Mz02XLZAEOFq6AYlOIEjMEzRHtSN0rtYDtVs4KM1V6RBwfmhFRm6p0/F@nongnu.org
+X-Gm-Message-State: AOJu0YwniH3Wf5rrX5Rzgc6qpXfN5aWOQC+P6JhUC5XQm/q8GEOdWF1Y
+ jrAdQju+aY6WtWhooegJTQeJqSRVzQnENDveqvESuUkTnuMrK6IF/is1upGtCVaaZPt94bAnzyX
+ PceonHY7caqZqTTB7PKBzdFWENzfwlHQ5uYIE1Z12qTwAE0oZIiIT
+X-Gm-Gg: ASbGncuEdA3wUPw2yEtwqhJoGABacBEgSeY0fqr7CODJJ/cgyk3RaXvQnPCUdTnp+xT
+ 2W7DkXBf2Wmi8A/Zl97SVILC11XqJJAoYadGmrwteJkWt5BHwsjn7AWIb/coIyaz+/KExBLIIAs
+ owvc0cdSfz3cIWvE8/fbmYaiOCvlFx+I5U8smDcVicyF+fNS0yAyohEOBzBqlHy6m+MIg+IOobQ
+ IgmeEPQ2EdJXiB/YQZWu0t4073DdFMeo+SjamSr1eEZTqr+W3MDUtamuPI0LwSudAG98nuPXUdR
+ atXK9ZOR/pRA9+jOQmZ/VfqOGI6rqnDIiYOhq+4WddyC6RJUf1a5GdzsJuGXAd0=
+X-Received: by 2002:a05:600c:1d81:b0:43d:10a:1b90 with SMTP id
+ 5b1f17b1804b1-43d509f8691mr126066735e9.16.1742827935135; 
+ Mon, 24 Mar 2025 07:52:15 -0700 (PDT)
+X-Received: by 2002:a05:600c:1d81:b0:43d:10a:1b90 with SMTP id
+ 5b1f17b1804b1-43d509f8691mr126066265e9.16.1742827934635; 
+ Mon, 24 Mar 2025 07:52:14 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39ab907da9asm8567283f8f.90.2025.03.24.07.46.23
+ ffacd0b85a97d-3997f9efc9bsm10967197f8f.87.2025.03.24.07.52.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Mar 2025 07:46:24 -0700 (PDT)
-Message-ID: <b0465153-3781-44e7-a012-a5994dcbbdae@redhat.com>
-Date: Mon, 24 Mar 2025 15:46:23 +0100
+ Mon, 24 Mar 2025 07:52:13 -0700 (PDT)
+Message-ID: <8c8cbea6-fff7-4e3c-9ea3-f99a60f8f04c@redhat.com>
+Date: Mon, 24 Mar 2025 15:52:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH v2 03/20] hw/arm/smmuv3-accel: Add initial
  infrastructure for smmuv3-accel device
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+Content-Language: en-US
+To: Donald Dutile <ddutile@redhat.com>, Nicolin Chen <nicolinc@nvidia.com>
+Cc: Jason Gunthorpe <jgg@nvidia.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+ berrange@redhat.com, nathanc@nvidia.com, mochs@nvidia.com,
+ smostafa@google.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
  <20250311141045.66620-4-shameerali.kolothum.thodi@huawei.com>
  <d75feb00-72d3-4d79-a7ac-2548eadb6a77@redhat.com>
  <Z9hh8MIAQNQcvNlG@Asurada-Nvidia>
  <71b73212-3d8f-4c9d-93a4-bf07c0f169e3@redhat.com>
- <Z9hzmzHfWw18OyGO@Asurada-Nvidia>
- <11895c78-d6ab-40c8-a500-4abed1565234@redhat.com>
- <Z9r7dT/5E+YToqc9@Asurada-Nvidia>
- <c70fdb0c-ef56-4a52-8591-31df51ff0eec@redhat.com>
- <Z9sORySxEEL0VXMq@Asurada-Nvidia>
+ <Z9hzmzHfWw18OyGO@Asurada-Nvidia> <20250317192453.GR9311@nvidia.com>
+ <Z9iDxSvZVsgtasGj@Asurada-Nvidia>
+ <6cb391a4-d150-4692-b62e-a509448a1034@redhat.com>
+ <Z9nF6FaIU37BNg4B@Asurada-Nvidia>
+ <3716d39d-3f88-4914-a9d6-440d379db3d7@redhat.com>
+ <c0448b92-1e2a-4983-837f-504a1cfa0975@redhat.com>
+ <05e5aa5a-228e-4c76-9175-09126e56dd61@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Z9sORySxEEL0VXMq@Asurada-Nvidia>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mx3Dg_4y0X4m9nxZHy5K1OlwPRTmhq9097Ksd_o-QWE_1742827586
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <05e5aa5a-228e-4c76-9175-09126e56dd61@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -153,69 +152,175 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xsm3Yzs8kAq7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3NIB9CwtTFa+
 
 
 
-On 3/19/25 7:34 PM, Nicolin Chen wrote:
-> On Wed, Mar 19, 2025 at 07:09:33PM +0100, Eric Auger wrote:
->>> Option means something like this:
->>> 	-device smmuv3,accel=on
->>> instead of
->>> 	-device "smmuv3-accel"
->>> ?
+On 3/21/25 1:54 AM, Donald Dutile wrote:
+>
+>
+> On 3/19/25 1:04 PM, Eric Auger wrote:
+>>
+>>
+>>
+>> On 3/18/25 10:22 PM, Donald Dutile wrote:
 >>>
->>> Yea, I think that's good.
->> Yeah actually that's a big debate for not much. From an implementation
->> pov that shall not change much. The only doubt I have is if we need to
->> conditionnaly expose the MSI RESV regions it is easier to do if we
->> detect we have a smmuv3-accel. what the option allows is the auto mode.
-> Mind elaborating your doubt about the MSI RESV region?
->
-> Do you mean how VMS code should tag "accel=on" option and generate
-> RMR nodes in the IORT table?
-yes that was my point. Earlier we detected whether a "nested-smmu" was
-part of the object hierarchy. Now we do the same with smmu type and
-check if accel=on. I guess we can retrieve the property value but this
-is worth to test.
->
->>> We certainly can't do case (a): not all TLBI commands gives an "SID"
->>> field (so would have to broadcast, i.e. underlying SMMU HW would run
->>> commands that were supposed for emulated devices only); in case of
->>> vCMDQ, commands for emulated devices would be issued to real HW and
->> I am still confused about that. For instance if the guest sends an
->> NH_ASID, NH_VA invalidation and it happens both the emulated device and
->> VFIO-device share the same cd.asid (same guest iommu domain, which
->> practically should not happen) why shouldn't we propagate the
->> invalidation to the host. Does the problem come from the usage of vCMDQ
->> or would you foresee the same problem with a generic physical SMMU?
-> Host (HW) would end up with executing commands that were issued for
-> emulated devices, which impacts performance.
->
-> With vCMDQ, QEMU cannot trap command queue because all invalidation
-> commands will be issued to HW directly from the guest kernel driver.
-> This includes TLBI and ATC_INV commands. It's probably okay to run
-> TLBI commands with vCMDQ (again perf impact), while ATC_INV commands
-> would result in "unkonwn SID" errors or directly ATC_INV timeouts.
-OK understood. Thanks and sorry for the misunderstanding
+>>>
+>>> On 3/18/25 3:13 PM, Nicolin Chen wrote:
+>>>> On Tue, Mar 18, 2025 at 07:31:36PM +0100, Eric Auger wrote:
+>>>>> On 3/17/25 9:19 PM, Nicolin Chen wrote:
+>>>>>> On Mon, Mar 17, 2025 at 04:24:53PM -0300, Jason Gunthorpe wrote:
+>>>>>>> On Mon, Mar 17, 2025 at 12:10:19PM -0700, Nicolin Chen wrote:
+>>>>>>>> Another question: how does an emulated device work with a vSMMUv3?
+>>>>>>>> I could imagine that all the accel steps would be bypassed since
+>>>>>>>> !sdev->idev. Yet, the emulated iotlb should cache its translation
+>>>>>>>> so we will need to flush the iotlb, which will increase complexity
+>>>>>>>> as the TLBI command dispatching function will need to be aware
+>>>>>>>> what
+>>>>>>>> ASID is for emulated device and what is for vfio device..
+>>>>>>> I think you should block it. We already expect different vSMMU's
+>>>>>>> depending on the physical SMMU under the PCI device, it makes sense
+>>>>>>> that a SW VFIO device would have it's own, non-accelerated, vSMMU
+>>>>>>> model in the guest.
+>>>>>> Yea, I agree and it'd be cleaner for an implementation separating
+>>>>>> them.
+>>>>>>
+>>>>>> In my mind, the general idea of "accel=on" is also to keep things
+>>>>>> in a more efficient way: passthrough devices go to HW-accelerated
+>>>>>> vSMMUs (separated PCIE buses), while emulated ones go to a vSMMU-
+>>>>>> bypassed (PCIE0).
+>>>>
+>>>>> Originally a specific SMMU device was needed to opt in for MSI
+>>>>> reserved
+>>>>> region ACPI IORT description which are not needed if you don't
+>>>>> rely on
+>>>>> S1+S2. However if we don't rely on this trick this was not even
+>>>>> needed
+>>>>> with legacy integration
+>>>>> (https://patchwork.kernel.org/project/qemu-devel/cover/20180921081819.9203-1-eric.auger@redhat.com/).
+>>>>>
+>>>>>
+>>>>>
+>>>>> Nevertheless I don't think anything prevents the acceleration granted
+>>>>> device from also working with virtio/vhost devices for instance
+>>>>> unless
+>>>>> you unplug the existing infra. The translation and invalidation just
+>>>>> should use different control paths (explicit translation requests,
+>>>>> invalidation notifications towards vhost, ...).
+>>>>
+>>>> smmuv3_translate() is per sdev, so it's easy.
+>>>>
+>>>> Invalidation is done via commands, which could be tricky:
+>>>> a) Broadcast command
+>>>> b) ASID validation -- we'll need to keep track of a list of ASIDs
+>>>>      for vfio device to compare the ASID in each per-ASID command,
+>>>>      potentially by trapping all CFGI_CD(_ALL) commands? Note that
+>>>>      each vfio device may have multiple ASIDs (for multiple CDs).
+>>>> Either a or b above will have some validation efficiency impact.
+>>>>
+>>>>> Again, what does legitimate to have different qemu devices for the
+>>>>> same
+>>>>> IP? I understand that it simplifies the implementation but I am not
+>>>>> sure
+>>>>> this is a good reason. Nevertheless it worth challenging. What is the
+>>>>> plan for intel iommu? Will we have 2 devices, the legacy device
+>>>>> and one
+>>>>> for nested?
+>>>>
+>>>> Hmm, it seems that there are two different topics:
+>>>> 1. Use one SMMU device model (source code file; "iommu=" string)
+>>>>      for both an emulated vSMMU and an HW-accelerated vSMMU.
+>>>> 2. Allow one vSMMU instance to work with both an emulated device
+>>>>      and a passthrough device.
+>>>> And I get that you want both 1 and 2.
+>>>>
+>>>> I'm totally okay with 1, yet see no compelling benefit from 2 for
+>>>> the increased complexity in the invalidation routine.
+>>>>
+>>>> And another question about the mixed device attachment. Let's say
+>>>> we have in the host:
+>>>>     VFIO passthrough dev0 -> pSMMU0
+>>>>     VFIO passthrough dev1 -> pSMMU1
+>>>> Should we allow emulated devices to be flexibly plugged?
+>>>>     dev0 -> vSMMU0 /* Hard requirement */
+>>>>     dev1 -> vSMMU1 /* Hard requirement */
+>>>>     emu0 -> vSMMU0 /* Soft requirement; can be vSMMU1 also */
+>>>>     emu1 -> vSMMU1 /* Soft requirement; can be vSMMU0 also */
+>>>>
+>>>> Thanks
+>>>> Nicolin
+>>>>
+>>> I agree w/Jason & Nicolin: different vSMMUs for pass-through devices
+>>> than emulated, & vice-versa.
+>>> Not mixing... because... of the next agreement:
+>> you need to clarify what you mean by different vSMMUs: are you taking
+>> about different instances or different qemu device types?
+> Both. a device needed to use hw-accel feature has to use an smmu that
+> has that feature;
+> an emulated device can use such an smmu, but as mentioned in other
+> threads,
+> if you start with all emulated in one smmu, if you hot-plug a
+> (assigned) device,
+> it needs another smmu that has hw-accel features.
+> Keeping them split makes it easier at config time, and it may enable
+> the code to be simpler...
+> but the other half of my brain wants common code paths with
+> accel/emulate branches but
+> a different smmu instance will like simplify the smmu-(accel-)specific
+> lookups.
+
+Yes I think we agree on the fact that several smmu instances are needed,
+especially for matching the underneath HW topology and for having a
+separate protection for emulated and host devices (esp with vCMD queues)
 
 Eric
 >
-> Thanks
-> Nicolin
+>>>
+>>> I agree with Eric that 'accel' isn't needed -- this should be
+>>> ascertained from the pSMMU that a physical device is attached to.
+>> we can simply use an AUTO_ON_OFF property and by default choose AUTO
+>> value. That would close the debate ;-)
+>>
+> Preaching to the choir... yes.
+>
+>> Eric
+>>> Now... how does vfio(?; why not qemu?) layer determine that? -- where
+>>> are SMMUv3 'accel' features exposed either: a) in the device struct
+>>> (for the smmuv3) or (b) somewhere under sysfs? ... I couldn't find
+>>> anything under either on my g-h system, but would appreciate a ptr if
+>>> there is.
+>>> and like Eric, although 'accel' is better than the original 'nested',
+>>> it's non-obvious what accel feature(s) are being turned on, or not.
+>>> In fact, if broken accel hw occurs ('if' -> 'when'), how should it be
+>>> turned off? ... if info in the kernel, a kernel boot-param will be
+>>> needed;
+>>> if in sysfs, a write to 0 an enable(disable) it maybe an alternative
+>>> as well.
+>>> Bottom line: we need a way to (a) ascertain the accel feature (b) a
+>>> way to disable it when it is broken,
+>>> so qemu's smmuv3 spec will 'just work'.
+>>> [This may also help when migrating from a machine that has accel
+>>> working to one that does not.[
+>>>
+>>> ... and when an emulated device is assigned a vSMMU, there are no
+>>> accel features ... unless we have tunables like batch iotlb
+>>> invalidation for perf reasons, which can be viewed as an 'accel'
+>>> option.
+>>>
+>>
 >
 

@@ -1,143 +1,205 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp1831472njc;
-        Mon, 24 Mar 2025 03:06:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCURGfmqCTd1A5LpOVl49wGjWOZ7BbOaZ3inZMTHyAE1U9SvgOBuVMcnA1Y//2aRpvYa4zXqiH1h7Ngngw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTPfAEJ4/g4gsdGh2KxhFiWxrUoblpX/HB1153NPFWSR0kl0AyQGQgRxZK5Ow5Gq/a88ja
-X-Received: by 2002:ad4:5d43:0:b0:6e8:f120:80ce with SMTP id 6a1803df08f44-6eb34a4ae02mr274808846d6.22.1742810780802;
-        Mon, 24 Mar 2025 03:06:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742810780; cv=none;
-        d=google.com; s=arc-20240605;
-        b=cVuONYIISxDYw4Yd+rpiWvY1nywQZqQkqLYGgpJrszwYl0Gr0L4ViOml+0PdXtoaLO
-         Ndi69UyE0f/Q4YM7m4ZAIge1ORREDv6xLKnebtn2gAHpTXpymwzsZW8EHC3tucv9vFQT
-         gVPjReDDnx67Ef6lAMw9dTOPsLHJAE5AeqZWT6Yw1uNcLgDa99zbmhIU56+RWv+2AWz0
-         xiPLCOh/dIQedPPnEE56Miq+CT7kX91TQY4KqHWnRur7m0Ck9gkSO2VXcqKHMy2pYvQ9
-         eIonNsuLyZyL/2294F1HDsdL7ebtIKfeO5NycAWuPeXef46bhQ+gwwXgxiPZVAu27H9l
-         ZcVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PnYu2LnFSsjRkXA0QzD2VorL5ifVzVkrluj+YurgsfI=;
-        fh=FFcxFM2uhrTJo/SzPfgszERozwUY6POsDsITUB8pqI8=;
-        b=elzsoLgzRsiBTUYWT3T+jFDvKnv+qy1BD7nFVGuduB3TPlsIi8coT8WR6Jln2kjaI1
-         G4duV/+sZjIYcxaJ/ceqpe99i/kEmR35rd8S01QxCxLAuwLHNT+c5ZUTQVUR5Xtpjb63
-         zIaYCBl0sOmF0Hdb0wjJ7nDdRtp1TDKhBgiVKo0V4/oy6T4ytKHLZ5pbz0tHhNqdHZHU
-         BhVYpuL41bUdsu9zRoVF7XnsGR8daYYXbBzVjdzqGrt6ANZ+KczbzTtfzJQ1IApKOHUK
-         nO7juiE2pHGTHTg0vSqtyp9GVMDnSAdNEPJ9EZu6abODGsis8egOjWcbZPmtuXT+TPze
-         +T/g==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@maquefel.me header.s=mail header.b=p1AuJfdF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3f01a87asi71780516d6.291.2025.03.24.03.06.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Mar 2025 03:06:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@maquefel.me header.s=mail header.b=p1AuJfdF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1twegf-00066F-Fp; Mon, 24 Mar 2025 06:05:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
- id 1twegT-00061C-0N; Mon, 24 Mar 2025 06:05:29 -0400
-Received: from forward103d.mail.yandex.net ([178.154.239.214])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
- id 1twegO-00052F-94; Mon, 24 Mar 2025 06:05:28 -0400
-Received: from mail-nwsmtp-smtp-production-main-80.klg.yp-c.yandex.net
- (mail-nwsmtp-smtp-production-main-80.klg.yp-c.yandex.net
- [IPv6:2a02:6b8:c42:2347:0:640:6ae5:0])
- by forward103d.mail.yandex.net (Yandex) with ESMTPS id 369E26097C;
- Mon, 24 Mar 2025 13:05:15 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-80.klg.yp-c.yandex.net
- (smtp/Yandex) with ESMTPSA id D5L6Pk2LeW20-Af9uR16U; 
- Mon, 24 Mar 2025 13:05:14 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maquefel.me; s=mail;
- t=1742810714; bh=PnYu2LnFSsjRkXA0QzD2VorL5ifVzVkrluj+YurgsfI=;
- h=Message-ID:Date:Cc:Subject:To:From;
- b=p1AuJfdF6hFMzLEDWpx13rz9VDyceI8Rm9OAsI2UPtH4JND+EUD7kIRVIDp+RFl0p
- ihvsA2C3GtpgIpMHTNFtnmDQvndZMxxIUls1cFjSXI3HGz4loqiuDNjrGuo4eOEKV7
- +xgDFMaatiOKrmJOBr/47gZ/P1lIsPMw8oHRe1wM=
-Authentication-Results: mail-nwsmtp-smtp-production-main-80.klg.yp-c.yandex.net;
- dkim=pass header.i=@maquefel.me
-From: Nikita Shubin <nikita.shubin@maquefel.me>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ebccf68308sm5823794a12.5.2025.03.24.03.21.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Mar 2025 03:21:46 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 2CD3B5FC1A;
+	Mon, 24 Mar 2025 10:21:43 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Alexandre Iooss <erdnaxe@crans.org>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Ilya Chichkov <i.chichkov@yadro.com>,
- Nikita Shubin <n.shubin@yadro.com>
-Subject: [PATCH 0/3] Add STM32 DMA model
-Date: Mon, 24 Mar 2025 13:05:05 +0300
-Message-ID: <20250324100508.2176-1-nikita.shubin@maquefel.me>
-X-Mailer: git-send-email 2.48.1
+Cc: qemu-arm@nongnu.org,
+	Nicholas Piggin <npiggin@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	qemu-ppc@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 06/11] target/arm: convert 64 bit gdbstub to new helpers
+Date: Mon, 24 Mar 2025 10:21:37 +0000
+Message-Id: <20250324102142.67022-7-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250324102142.67022-1-alex.bennee@linaro.org>
+References: <20250324102142.67022-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=178.154.239.214;
- envelope-from=nikita.shubin@maquefel.me; helo=forward103d.mail.yandex.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Bce/iXRrcNqi
+X-TUID: ICBc/N/tUrPy
 
-From: Nikita Shubin <n.shubin@yadro.com>
+For some of the helpers we need a temporary variable to copy from
+although we could add some helpers to return pointers into env in
+those cases if we wanted to.
 
-Add STM32 DMA model and include it in STM32F100 SoC.
-
-The model is fully compatible with GD32F30x DMA.
-
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Alistair Francis <alistair@alistair23.me>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: Alexandre Iooss <erdnaxe@crans.org>
-Cc: Fabiano Rosas <farosas@suse.de>
-Cc: Laurent Vivier <lvivier@redhat.com>
-Cc: Nikita Shubin <nikita.shubin@maquefel.me>
-Cc: Ilya Chichkov <i.chichkov@yadro.com>
-Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
+v2
+  - use MO32/MO64 varients for reg sizes
+  - use wrappers for 32/64 bit regs
+  - do SVE Z registers in 128bit chunks
+---
+ target/arm/gdbstub64.c | 53 ++++++++++++++++++++++++++----------------
+ 1 file changed, 33 insertions(+), 20 deletions(-)
 
-b4 doesn't allow sending through relay, may be this should be addressed.
-
---- b4-submit-tracking ---
-# This section is used internally by b4 prep for tracking purposes.
-{
-  "series": {
-    "revision": 1,
-    "change-id": "20250314-stm32_dma-24e7a75cec64",
-    "prefixes": []
-  }
-}
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 1a4dbec567..6ad10368e8 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -20,7 +20,7 @@
+ #include "qemu/log.h"
+ #include "cpu.h"
+ #include "internals.h"
+-#include "gdbstub/helpers.h"
++#include "gdbstub/registers.h"
+ #include "gdbstub/commands.h"
+ #include "tcg/mte_helper.h"
+ #if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+@@ -32,18 +32,21 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
++    MemOp mop = MO_TE; /* TE = LE for registers despite SCTLR.EE/E0E */
++    uint32_t pstate;
+ 
+     if (n < 31) {
+         /* Core integer register.  */
+-        return gdb_get_reg64(mem_buf, env->xregs[n]);
++        return gdb_get_reg64_value(mop | MO_64, mem_buf, &env->xregs[n]);
+     }
+     switch (n) {
+     case 31:
+-        return gdb_get_reg64(mem_buf, env->xregs[31]);
++        return gdb_get_reg64_value(mop | MO_64, mem_buf, &env->xregs[31]);
+     case 32:
+-        return gdb_get_reg64(mem_buf, env->pc);
++        return gdb_get_reg64_value(mop | MO_64, mem_buf, &env->pc);
+     case 33:
+-        return gdb_get_reg32(mem_buf, pstate_read(env));
++        pstate = pstate_read(env);
++        return gdb_get_reg32_value(mop | MO_32, mem_buf, &pstate);
+     }
+     /* Unknown register.  */
+     return 0;
+@@ -82,23 +85,27 @@ int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
++    uint32_t fpr;
+ 
+     switch (reg) {
+     case 0 ... 31:
+     {
+         /* 128 bit FP register - quads are in LE order */
+         uint64_t *q = aa64_vfp_qreg(env, reg);
+-        return gdb_get_reg128(buf, q[1], q[0]);
++        return gdb_get_register_value(MO_TE | MO_128, buf, q);
+     }
+     case 32:
+         /* FPSR */
+-        return gdb_get_reg32(buf, vfp_get_fpsr(env));
++        fpr = vfp_get_fpsr(env);
++        break;
+     case 33:
+         /* FPCR */
+-        return gdb_get_reg32(buf, vfp_get_fpcr(env));
++        fpr = vfp_get_fpcr(env);
++        break;
+     default:
+         return 0;
+     }
++    return gdb_get_reg32_value(MO_TE | MO_32, buf, &fpr);
+ }
+ 
+ int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg)
+@@ -132,30 +139,35 @@ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
++    MemOp mop = MO_TE; /* TE = LE for registers despite SCTLR.EE/E0E */
++    uint32_t fpr;
+ 
+     switch (reg) {
+     /* The first 32 registers are the zregs */
+     case 0 ... 31:
+     {
+         int vq, len = 0;
++        ARMVectorReg *zreg = &env->vfp.zregs[reg];
++
+         for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+-            len += gdb_get_reg128(buf,
+-                                  env->vfp.zregs[reg].d[vq * 2 + 1],
+-                                  env->vfp.zregs[reg].d[vq * 2]);
++            len += gdb_get_register_value(mop | MO_128, buf, &zreg->d[vq * 2]);
+         }
+         return len;
+     }
+     case 32:
+-        return gdb_get_reg32(buf, vfp_get_fpsr(env));
++        fpr = vfp_get_fpsr(env);
++        return gdb_get_reg32_value(mop | MO_32, buf, &fpr);
+     case 33:
+-        return gdb_get_reg32(buf, vfp_get_fpcr(env));
++        fpr = vfp_get_fpcr(env);
++        return gdb_get_reg32_value(mop | MO_32, buf, &fpr);
+     /* then 16 predicates and the ffr */
+     case 34 ... 50:
+     {
+         int preg = reg - 34;
+         int vq, len = 0;
+         for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+-            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
++            len += gdb_get_reg64_value(mop | MO_64, buf,
++                                       &env->vfp.pregs[preg].p[vq / 4]);
+         }
+         return len;
+     }
+@@ -165,8 +177,8 @@ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
+          * We report in Vector Granules (VG) which is 64bit in a Z reg
+          * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+          */
+-        int vq = sve_vqm1_for_el(env, arm_current_el(env)) + 1;
+-        return gdb_get_reg64(buf, vq * 2);
++        uint64_t vq = (sve_vqm1_for_el(env, arm_current_el(env)) + 1) * 2;
++        return gdb_get_reg64_value(mop | MO_64, buf, &vq);
+     }
+     default:
+         /* gdbstub asked for something out our range */
+@@ -248,10 +260,11 @@ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
+             bool is_data = !(reg & 1);
+             bool is_high = reg & 2;
+             ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
+-            ARMVAParameters param;
++            ARMVAParameters param = aa64_va_parameters(env, -is_high, mmu_idx,
++                                                       is_data, false);
++            uint64_t pauth_mask = pauth_ptr_mask(param);
+ 
+-            param = aa64_va_parameters(env, -is_high, mmu_idx, is_data, false);
+-            return gdb_get_reg64(buf, pauth_ptr_mask(param));
++            return gdb_get_reg64_value(MO_TE | MO_64, buf, &pauth_mask);
+         }
+     default:
+         return 0;
+@@ -399,7 +412,7 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
+ 
+     tcf0 = extract64(env->cp15.sctlr_el[1], 38, 2);
+ 
+-    return gdb_get_reg64(buf, tcf0);
++    return gdb_get_reg64_value(MO_TE | MO_64, buf, &tcf0);
+ }
+ 
+ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg)
 -- 
-2.48.1
-
+2.39.5

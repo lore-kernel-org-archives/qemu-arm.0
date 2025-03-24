@@ -1,98 +1,89 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fdbcfaasm24067905e9.35.2025.03.21.04.38.29
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac3efbdfcc7sm654291866b.146.2025.03.24.03.21.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Mar 2025 04:38:29 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 83EFD5F7A5;
-	Fri, 21 Mar 2025 11:38:28 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Juan
- Quintela <quintela@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
-  Thomas Huth <thuth@redhat.com>,  Akihiko Odaki
- <akihiko.odaki@daynix.com>,  qemu-ppc@nongnu.org,  David Gibson
- <david@gibson.dropbear.id.au>,  qemu-s390x@nongnu.org,  Wainer dos Santos
- Moschetta <wainersm@redhat.com>,  Peter Xu <peterx@redhat.com>,  Markus
- Armbruster <armbru@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Daniel Henrique Barboza
- <danielhb413@gmail.com>,  David Hildenbrand <david@redhat.com>,  Yonggang
- Luo <luoyonggang@gmail.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Beraldo Leal <bleal@redhat.com>,
-  qemu-arm@nongnu.org,  Greg Kurz <groug@kaod.org>,  Philippe =?utf-8?Q?Ma?=
- =?utf-8?Q?thieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Nicholas Piggin <npiggin@gmail.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH 04/10] target/arm: convert 64 bit gdbstub to new helper
-In-Reply-To: <e03abbd9-cb20-4a98-a112-66d13a76d244@linaro.org> (Pierrick
-	Bouvier's message of "Thu, 20 Mar 2025 12:42:15 -0700")
-References: <20250319182255.3096731-1-alex.bennee@linaro.org>
-	<20250319182255.3096731-5-alex.bennee@linaro.org>
-	<e03abbd9-cb20-4a98-a112-66d13a76d244@linaro.org>
-User-Agent: mu4e 1.12.9; emacs 30.1
-Date: Fri, 21 Mar 2025 11:38:28 +0000
-Message-ID: <87frj6likr.fsf@draig.linaro.org>
+        Mon, 24 Mar 2025 03:21:43 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 95AEB5F8B9;
+	Mon, 24 Mar 2025 10:21:42 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Nicholas Piggin <npiggin@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	qemu-ppc@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 00/11] gdbstub: conversion to runtime endianess helpers
+Date: Mon, 24 Mar 2025 10:21:31 +0000
+Message-Id: <20250324102142.67022-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: jtMYVEos+5r1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: zZwj0T2k2B3j
 
-Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+The aim of this work is to get rid of the endian aware helpers in
+gdbstub/helpers.h which due to their use of tswap() mean target
+gdbstubs need to be built multiple times. While this series doesn't
+actually build each stub once it introduces a new helper -
+gdb_get_register_value() which takes a MemOp which can describe the
+current endian state of the system. This will be a lot easier to
+dynamically feed from a helper function.
 
-> On 3/19/25 11:22, Alex Benn=C3=A9e wrote:
->> For some of the helpers we need a temporary variable to copy from
->> although we could add some helpers to return pointers into env in
->> those cases if we wanted to.
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   target/arm/gdbstub64.c | 53 ++++++++++++++++++++++++++----------------
->>   1 file changed, 33 insertions(+), 20 deletions(-)
->> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
->> index 1a4dbec567..793332af31 100644
->> --- a/target/arm/gdbstub64.c
->> +++ b/target/arm/gdbstub64.c
->> @@ -20,7 +20,7 @@
->>   #include "qemu/log.h"
->>   #include "cpu.h"
->>   #include "internals.h"
->> -#include "gdbstub/helpers.h"
->> +#include "gdbstub/registers.h"
->>   #include "gdbstub/commands.h"
->>   #include "tcg/mte_helper.h"
->>   #if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
->> @@ -35,15 +35,16 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByt=
-eArray *mem_buf, int n)
->>         if (n < 31) {
->>           /* Core integer register.  */
->> -        return gdb_get_reg64(mem_buf, env->xregs[n]);
->> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &en=
-v->xregs[n]);
->>       }
->>       switch (n) {
->>       case 31:
->> -        return gdb_get_reg64(mem_buf, env->xregs[31]);
->> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &en=
-v->xregs[31]);
->>       case 32:
->> -        return gdb_get_reg64(mem_buf, env->pc);
->> +        return gdb_get_register_value(MO_TEUO, mem_buf, (uint8_t *) &en=
-v->pc);
->
-> For the 3 occurrences, should it be MO_TEUQ instead?
+The most complex example is PPC which has a helper called
+ppc_maybe_bswap_register() which was doing this.
 
->> -        int vq =3D sve_vqm1_for_el(env, arm_current_el(env)) + 1;
->> -        return gdb_get_reg64(buf, vq * 2);
->> +        uint64_t vq =3D (sve_vqm1_for_el(env, arm_current_el(env)) + 1)=
- * 2;
->> +        return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &vq);
->>       }
->
-> Should it be MO_TEUQ instead?
+This is still an RFC but I've spun out v2 for further discussion.
 
-I've taken Philippe's suggestion and used explicit MO_32/64 which is
-easier to follow.
+In v2:
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+  - drop uint8_t casting and use void as C intended ;-)
+  - add specific 32/64 bit helpers with type checking an assertion
+  - various tweaks and fixes (see individual commits)
+
+There are a few other misc clean-ups I did on the way which might be
+worth cherry picking for 10.0 but I'll leave that up to maintainers.
+
+Alex Bennée (11):
+  include/exec: fix assert in size_memop
+  include/gdbstub: fix include guard in commands.h
+  gdbstub: assert earlier in handle_read_all_regs
+  gdbstub: introduce target independent gdb register helper
+  target/arm: convert 32 bit gdbstub to new helpers
+  target/arm: convert 64 bit gdbstub to new helpers
+  target/ppc: expand comment on FP/VMX/VSX access functions
+  target/ppc: make ppc_maybe_bswap_register static
+  target/ppc: convert gdbstub to new helpers
+  target/microblaze: convert gdbstub to new helper
+  include/gdbstub: add note to helpers.h
+
+ include/exec/memop.h        |   4 +-
+ include/gdbstub/commands.h  |   2 +-
+ include/gdbstub/helpers.h   |   4 +-
+ include/gdbstub/registers.h |  55 ++++++++++
+ target/ppc/cpu.h            |   8 +-
+ gdbstub/gdbstub.c           |  25 ++++-
+ target/arm/gdbstub.c        |  55 ++++++----
+ target/arm/gdbstub64.c      |  53 ++++++----
+ target/microblaze/gdbstub.c |  49 ++++-----
+ target/ppc/gdbstub.c        | 197 ++++++++++++++++++++----------------
+ 10 files changed, 292 insertions(+), 160 deletions(-)
+ create mode 100644 include/gdbstub/registers.h
+
+-- 
+2.39.5

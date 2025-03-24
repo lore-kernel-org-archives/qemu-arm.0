@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ebccf89240sm5803429a12.31.2025.03.24.03.21.43
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac3ef8d3cbcsm644126666b.49.2025.03.24.03.21.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 24 Mar 2025 03:21:43 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C35515F953;
+	by draig.lan (Postfix) with ESMTP id D9E2F5FABD;
 	Mon, 24 Mar 2025 10:21:42 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,34 +28,39 @@ Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	David Hildenbrand <david@redhat.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 02/11] include/gdbstub: fix include guard in commands.h
-Date: Mon, 24 Mar 2025 10:21:33 +0000
-Message-Id: <20250324102142.67022-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 03/11] gdbstub: assert earlier in handle_read_all_regs
+Date: Mon, 24 Mar 2025 10:21:34 +0000
+Message-Id: <20250324102142.67022-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250324102142.67022-1-alex.bennee@linaro.org>
 References: <20250324102142.67022-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UES2Sf+7dQ1L
+X-TUID: 0UCcWB52DFFM
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+When things go wrong we want to assert on the register that failed to
+be able to figure out what went wrong.
+
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/gdbstub/commands.h | 2 +-
+ gdbstub/gdbstub.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/gdbstub/commands.h b/include/gdbstub/commands.h
-index 40f0514fe9..bff3674872 100644
---- a/include/gdbstub/commands.h
-+++ b/include/gdbstub/commands.h
-@@ -1,5 +1,5 @@
- #ifndef GDBSTUB_COMMANDS_H
--#define GDBSTUB
-+#define GDBSTUB_COMMANDS_H
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 282e13e163..b6d5e11e03 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1328,8 +1328,8 @@ static void handle_read_all_regs(GArray *params, void *user_ctx)
+         len += gdb_read_register(gdbserver_state.g_cpu,
+                                  gdbserver_state.mem_buf,
+                                  reg_id);
++        g_assert(len == gdbserver_state.mem_buf->len);
+     }
+-    g_assert(len == gdbserver_state.mem_buf->len);
  
- typedef void (*GdbCmdHandler)(GArray *params, void *user_ctx);
- 
+     gdb_memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data, len);
+     gdb_put_strbuf();
 -- 
 2.39.5

@@ -1,161 +1,127 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp1916813njc;
-        Mon, 24 Mar 2025 05:47:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTqJICOJ92bS27sPV3tGVTER7By+lZnYq7ri6Q5fWtYSEfVByf2nAwTLZ48gq1dTUob2RwaOA3xAqLTg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF+KKXqjFczrXgyTOfBaDORI1ry83mdfHCMtnoNJjeiVBl61OWxBvpFa3PKf+f6R2Cp2s6Q
-X-Received: by 2002:a05:620a:318a:b0:7c5:6ef2:275d with SMTP id af79cd13be357-7c5ba1fc57fmr1891230685a.52.1742820447259;
-        Mon, 24 Mar 2025 05:47:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742820447; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2077697njc;
+        Mon, 24 Mar 2025 09:40:25 -0700 (PDT)
+X-Received: by 2002:a05:600c:3552:b0:43c:f509:2bbf with SMTP id 5b1f17b1804b1-43d491bfe15mr210799655e9.15.1742834425243;
+        Mon, 24 Mar 2025 09:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742834425; cv=none;
         d=google.com; s=arc-20240605;
-        b=jj0jokwFIpXPlNXC4kmV18YEKvinpTC3TFObGuHbxQHtQQX5os/TbtF5bE4oo9GBjR
-         wWonclhNhkleB+lqqWnHcBT7kpWG3+lTO+M2l/wuQ3vbY+PxvlKkbHojxg7jjcRs1980
-         2IRj6UmJmn5yT3ERGhuzCCavEslAwXEQyFCouGvONHpfC+2MluGp4Y3c0cCPn3lRVHNF
-         ZkXcAT+Ej4MS75xgGR/QpbQ0F+tIbw4/Mxwf01KWCGcPx5KEtthGSkub1M5rihkIjvJA
-         VXQrZOj/TChjjYUVKlTizhxXQS0SU+3oJm+uAvhKHODkpCywH/ueUxEDHBTunP5tLZra
-         g/1Q==
+        b=BmaG6Mv21Krol/Qmueg+2/+bOAwzeagASXI2IyaDgPczz7n6u+xFskrGj47AcpA0Ar
+         Oj0uQAoue4gqEn88Y76Af8u2qBut9RxoFdCE+hVySbO9F7th0Ir9npWTq19McFtySOJk
+         PKo0S7ypU962YwdTesetnrfqOoV3ctV9ajf3z/HwnTkZIPlh9tTS5BXd6NzJ08ytpGi7
+         7FC8MelTk2Wfhq6r3mx6cuqhyWwvdsaAN8Gq0KY+oxHO+re1odINM17opNgqiroGdiHS
+         7fKB4rYLeQZFTvuo4m56bbgXEvfbXWe8UtM7LaxxLJb0DyI/oO4zC7OcURqUhFpqNH9W
+         CCaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=vlaejTW49+2SQl8bTiBjt5+klb0qChEYp1HvZ26ZB5I=;
-        fh=jCbaFznAZWEznT+7926db/ZBBvBZP9LMEzpvicghg9o=;
-        b=dOzg0KnaciC1j81i2QjS9Nc0Ww5s8o/pgJIwCzo4XAiyUy4ElOJCFZ9v86imz3fh3n
-         8Wvynj1XIgb5mQvZ20Fq75U/Ms0HR+QIU1vxLSNBO1UtjB/U8kYJzD7bKvoCH1YdSGlr
-         YQfNrCPlV/RpeFqhqKe32pIsyd+UMyH5v6GG0FgpaidzwUjHZdHmjGlA5JY60LuKDOQu
-         tgsO5tbrwEHZUzC7CdE5mbrA4NVi0sAqPUKZHwYy2kEkNFiuH0f+ziJHVal3QezhnRHz
-         0fOxonNAIwdBLsJdXUUJ1JtrsZryAVRiHlrPaXioafjqd9jMXuWqGC2nqgDYTd+XGj36
-         zhpg==;
+        bh=bTa1qSYmCQTmQKOmrsf4vKQV804JWM9ydm18X7vtUJ8=;
+        fh=+hiypcBzRMz4cZbkcE6zZ3AbQNbWdAweEnpc9/zzoN8=;
+        b=QJ0H4A7Rd8MxRL8ho4OL4wK5bn4S0eVa3p0YlAD9zgOq+hD3cNgbExP1H1+3Nbw1eB
+         dNMD3TQO1tiC8y7hufNHGzTTH56JLmnhVeH7YTwF2fYD+5OazdBWspqClsa0RlQQGZdH
+         exwwVsIckUABSTg/Hqf9kicJrhwL54xJ3lylY/N50DOEEEeSSrXDIBtD2512k2qgPFqU
+         spLKDRHLKjFeIbp61qD0T2p8mMhI3LE+e3o/n9Qay6vZRREF/3XFnAPKFqrnGkXMytcZ
+         wXbZfsXrrFkhxZa+ZtTMiXcdkVo4PrKGfc1d2IR3auOH4IS2rdAohWZGgYlDWAXN6emA
+         HY3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OF3wOceD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b9362ab1si734269185a.570.2025.03.24.05.47.27
+       dkim=pass header.i=@linaro.org header.s=google header.b=Swc+pMEz;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43d43d81315sor25660535e9.0.2025.03.24.09.40.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Mar 2025 05:47:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 24 Mar 2025 09:40:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OF3wOceD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1twhD0-0007qt-W4; Mon, 24 Mar 2025 08:47:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1twhCP-0007dg-N2
- for qemu-arm@nongnu.org; Mon, 24 Mar 2025 08:46:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1twhBt-0001u1-HJ
- for qemu-arm@nongnu.org; Mon, 24 Mar 2025 08:46:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742820361;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vlaejTW49+2SQl8bTiBjt5+klb0qChEYp1HvZ26ZB5I=;
- b=OF3wOceDRIT5v0LrM59x1dpLZiJs+BTMrTC6op19j8OLEd2OzhtZdbB1KkLy6+aDXEb1fU
- ppSb9lig9UTd+/Jxs2byPTNpfh1rE+v84g6qMhZrEkpG1vNQR4nME65fc7BHDQLSOU6uC7
- YpqJShopBkqSMJpki4b3y3GhLqLJCiU=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-391-7-c_HLBGNle4_7JUBAERkw-1; Mon,
- 24 Mar 2025 08:45:57 -0400
-X-MC-Unique: 7-c_HLBGNle4_7JUBAERkw-1
-X-Mimecast-MFC-AGG-ID: 7-c_HLBGNle4_7JUBAERkw_1742820356
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2F1FC196F400; Mon, 24 Mar 2025 12:45:54 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.56])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9F410189C310; Mon, 24 Mar 2025 12:45:47 +0000 (UTC)
-Date: Mon, 24 Mar 2025 12:45:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH] tests/functional: Add missing require_netdev('user')
- statements
-Message-ID: <Z-FT-NE712WMZWA7@redhat.com>
-References: <20250324123450.111307-1-thuth@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Swc+pMEz;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1742834424; x=1743439224; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bTa1qSYmCQTmQKOmrsf4vKQV804JWM9ydm18X7vtUJ8=;
+        b=Swc+pMEzWZ7iYBXDBla7MzLbAZMOC8zD1F+COQtka5c1G3cbNiPZIbpJ/WSdsdwC5C
+         DKvlWoaSZykU3DeimLPLjKnRnC8h55kpG55bEOOoHVOBGlVaMM7qzq0Dj3hlRcDrFIm7
+         CO3twz7der6pD7vDBFT8Xwd4R3bnVqoT7g+IshPet+puKvdbKPke7k6MRf6Vd5+PhFOH
+         NYR/XPw2CWi0wpp5xZkOpevBrD33iU8zWX/Jd2MJ6a4OTGxxdwuSQEVPw3v6VgrZGHBf
+         5zm7wDyz4XCCZaDsIZ2lQDncekX/naMLrHDF1kCMGjQDe+8LpAKpRV07MFQHLD7Bre5D
+         1vag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742834424; x=1743439224;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bTa1qSYmCQTmQKOmrsf4vKQV804JWM9ydm18X7vtUJ8=;
+        b=K2+33fNbrGVK5NRCxk/CV5XuvWQIM5jMAO9eAY5m1ZceMf8AYsNKkURTeBtJod56wy
+         m6LyK4RNrMgLY5FUwSKjqiBRFSybhsGfAmxhljSiUYHVd9/sFBmmTd0SfbUrpI/nV4OQ
+         vKNKbWBLCcv1RjuuMWU1Gcre/CvPjUtdQty57o5JJC3q5k2cOgda7lX+BHI/1EfIySNb
+         hgSnfXGwbZcWrYxlveVIee1lRJfWolJngFkOdKV2Uqn+TZGTF95FNgodIVwDPnR2sJ4L
+         7mKOAE4kfJYW87Wb8ZYrfBQf2zrYVLU/lSEv0HZ+KtulqWwdx2jvjyRCnngUlmdsRzNN
+         HMIg==
+X-Gm-Message-State: AOJu0YxF1KF/btNc2DrDyew4ToOL4tb0iUqTWQCIkRhBtQLySH0SsCdS
+	2sKd0QP20EebQBqqRXIJIUhCw9tQb3V5SYg1E0kRAlM86Ubtfx+VXDfFikAKuSg0CUsCK3uUqEi
+	qnkQ=
+X-Gm-Gg: ASbGncuFOs2+YXGWvdVr7M3JnNqTLBR8fUrD7sMPvWo5sjW342CifQwTRXw8X+Rf7sc
+	DIoXeLr5fQpHIXC9ihjRClYNezjWjwO7ijCid0h3eK7drhji/AHP9FQ6dQ7Kfxl7ruJkfre5RY3
+	zWDmo0WLD0MQb/B687rhIlDQecJzEL0HiV5UuI0MRNAVLFuwX2TJ6tdsQNfwps0XO0LISDnGLk6
+	Xk2kljRGDZoCQBq1HXc69irSnTlQN18GBA7RntnY+3ig0kcxijCVZH5l31+SgOwapxQ16d4Lh7I
+	TTZR5vbYCmhTH64wglsW3IV42pSZ5XWNBpvEzuQol1eeEO8g3iyiaLmqxoY12gv58IAy3kygOGI
+	NaKR0klAyHST1uYdlag==
+X-Google-Smtp-Source: AGHT+IEvZ/GXzs2W0cmBjidBxwdbJWVMhXMMKf14qXn9WElgvhHpYj93Nmhq/cx3A3UvvPASUW0QoQ==
+X-Received: by 2002:a05:6000:154d:b0:390:f025:9e85 with SMTP id ffacd0b85a97d-39979586dc7mr15451843f8f.21.1742834424250;
+        Mon, 24 Mar 2025 09:40:24 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fdbd348sm125765705e9.39.2025.03.24.09.40.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 24 Mar 2025 09:40:23 -0700 (PDT)
+Message-ID: <6d31aa14-376e-471c-99eb-646f25e6e9b2@linaro.org>
+Date: Mon, 24 Mar 2025 17:40:22 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/11] include/exec: fix assert in size_memop
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-s390x@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>
+References: <20250324102142.67022-1-alex.bennee@linaro.org>
+ <20250324102142.67022-2-alex.bennee@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250324102142.67022-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250324123450.111307-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MGkqwW2OuxuJ
+X-TUID: qGzZ9ExUFWLH
 
-On Mon, Mar 24, 2025 at 01:34:50PM +0100, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+On 24/3/25 11:21, Alex Bennée wrote:
+> We can handle larger sized memops now, expand the range of the assert.
 > 
-> A bunch of tests are using "-netdev user" but fail to check
-> for the availability of SLIRP in the binary, so these tests
-> fail if QEMU has been configured with "--disable-slirp"
-> (most of the tests are disabled by default with a decorator,
-> that's likely why nobody noticed this problem yet). Add the
-> missing self.require_netdev('user') statements to skip the
-> tests if SLIRP is not available.
+> Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  tests/functional/test_aarch64_rme_sbsaref.py | 1 +
->  tests/functional/test_aarch64_rme_virt.py    | 4 +++-
->  tests/functional/test_arm_bpim2u.py          | 2 ++
->  tests/functional/test_arm_cubieboard.py      | 2 ++
->  tests/functional/test_arm_orangepi.py        | 4 ++++
->  tests/functional/test_ppc64_hv.py            | 3 +++
->  tests/functional/test_x86_64_kvm_xen.py      | 1 +
->  7 files changed, 16 insertions(+), 1 deletion(-)
+> v2
+>    - instead of 128 use 1 << MO_SIZE for future proofing
+> ---
+>   include/exec/memop.h | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

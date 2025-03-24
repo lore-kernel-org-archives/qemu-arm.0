@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac3ef8d3f17sm652317166b.63.2025.03.24.03.21.44
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac3efd3aab3sm636836466b.156.2025.03.24.03.21.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 24 Mar 2025 03:21:46 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 1520F5FBC3;
+	by draig.lan (Postfix) with ESMTP id 85D915FDAC;
 	Mon, 24 Mar 2025 10:21:43 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,175 +28,127 @@ Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	David Hildenbrand <david@redhat.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 05/11] target/arm: convert 32 bit gdbstub to new helpers
-Date: Mon, 24 Mar 2025 10:21:36 +0000
-Message-Id: <20250324102142.67022-6-alex.bennee@linaro.org>
+Subject: [PATCH v2 10/11] target/microblaze: convert gdbstub to new helper
+Date: Mon, 24 Mar 2025 10:21:41 +0000
+Message-Id: <20250324102142.67022-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250324102142.67022-1-alex.bennee@linaro.org>
 References: <20250324102142.67022-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: p6XqCxKub0tJ
+X-TUID: +DsdNIHT6/UK
 
-For some of the helpers we need a temporary variable to copy from
-although we could add some helpers to return pointers into env in
-those cases if we wanted to.
+This is a pretty simple conversion given a single set of registers and
+an existing helper to probe endianess.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - use new wrappers
-  - explicit MO_32 usage and reg32/64 helpers
+  - use mb_cpu_is_big_endian
+  - use explicit MO_32 size
+  - handle differing size of env->ear between user/system
 ---
- target/arm/gdbstub.c | 55 +++++++++++++++++++++++++++-----------------
- 1 file changed, 34 insertions(+), 21 deletions(-)
+ target/microblaze/gdbstub.c | 49 +++++++++++++++++--------------------
+ 1 file changed, 22 insertions(+), 27 deletions(-)
 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 30068c2262..71d672ace5 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -20,7 +20,7 @@
+diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
+index d493681d38..dbaf7ecb9c 100644
+--- a/target/microblaze/gdbstub.c
++++ b/target/microblaze/gdbstub.c
+@@ -19,7 +19,7 @@
+  */
  #include "qemu/osdep.h"
  #include "cpu.h"
- #include "exec/gdbstub.h"
 -#include "gdbstub/helpers.h"
 +#include "gdbstub/registers.h"
- #include "gdbstub/commands.h"
- #include "system/tcg.h"
- #include "internals.h"
-@@ -33,12 +33,16 @@ typedef struct RegisterSysregFeatureParam {
-     int n;
- } RegisterSysregFeatureParam;
  
--/* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expect
--   whatever the target description contains.  Due to a historical mishap
--   the FPA registers appear in between core integer regs and the CPSR.
--   We hack round this by giving the FPA regs zero size when talking to a
--   newer gdb.  */
--
-+/*
-+ * Old gdb always expect FPA registers. Newer (xml-aware) gdb only
-+ * expect whatever the target description contains. Due to a
-+ * historical mishap the FPA registers appear in between core integer
-+ * regs and the CPSR. We hack round this by giving the FPA regs zero
-+ * size when talking to a newer gdb.
-+ *
-+ * While gdb cares about the memory endianess of the target all
-+ * registers are passed in little-endian mode.
-+ */
- int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+ /*
+  * GDB expects SREGs in the following order:
+@@ -50,62 +50,57 @@ int mb_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
  {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -46,15 +50,17 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
+     CPUMBState *env = &cpu->env;
+-    uint32_t val;
++    MemOp mo = mb_cpu_is_big_endian(cs) ? MO_BE : MO_LE;
++    uint32_t msr;
  
-     if (n < 16) {
-         /* Core integer register.  */
--        return gdb_get_reg32(mem_buf, env->regs[n]);
-+        return gdb_get_reg32_value(MO_TE | MO_32, mem_buf, &env->regs[n]);
+     switch (n) {
+     case 1 ... 31:
+-        val = env->regs[n];
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->regs[n]);
+     case GDB_PC:
+-        val = env->pc;
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->pc);
+     case GDB_MSR:
+-        val = mb_cpu_read_msr(env);
+-        break;
++        msr = mb_cpu_read_msr(env);
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &msr);
+     case GDB_EAR:
+-        val = env->ear;
+-        break;
++#if TARGET_LONG_BITS == 64
++        return gdb_get_reg64_value(mo | MO_64, mem_buf, &env->ear);
++#else
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->ear);
++#endif
+     case GDB_ESR:
+-        val = env->esr;
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->esr);
+     case GDB_FSR:
+-        val = env->fsr;
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->fsr);
+     case GDB_BTR:
+-        val = env->btr;
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->btr);
+     case GDB_PVR0 ... GDB_PVR11:
+         /* PVR12 is intentionally skipped */
+-        val = cpu->cfg.pvr_regs[n - GDB_PVR0];
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf,
++                                      &cpu->cfg.pvr_regs[n - GDB_PVR0]);
+     case GDB_EDR:
+-        val = env->edr;
+-        break;
++        return gdb_get_reg32_value(mo | MO_32, mem_buf, &env->edr);
+     default:
+         /* Other SRegs aren't modeled, so report a value of 0 */
+-        val = 0;
+-        break;
++        return 0;
      }
-     if (n == 25) {
-         /* CPSR, or XPSR for M-profile */
-+        uint32_t reg;
-         if (arm_feature(env, ARM_FEATURE_M)) {
--            return gdb_get_reg32(mem_buf, xpsr_read(env));
-+            reg = xpsr_read(env);
-         } else {
--            return gdb_get_reg32(mem_buf, cpsr_read(env));
-+            reg = cpsr_read(env);
-         }
-+        return gdb_get_reg32_value(MO_TE | MO_32, mem_buf, &reg);
-     }
-     /* Unknown register.  */
-     return 0;
-@@ -115,19 +121,21 @@ static int vfp_gdb_get_reg(CPUState *cs, GByteArray *buf, int reg)
- 
-     /* VFP data registers are always little-endian.  */
-     if (reg < nregs) {
--        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
-+        return gdb_get_reg64_value(MO_TE | MO_64, buf, aa32_vfp_dreg(env, reg));
-     }
-     if (arm_feature(env, ARM_FEATURE_NEON)) {
-         /* Aliases for Q regs.  */
-         nregs += 16;
-         if (reg < nregs) {
-             uint64_t *q = aa32_vfp_qreg(env, reg - 32);
--            return gdb_get_reg128(buf, q[0], q[1]);
-+            return gdb_get_reg64_value(MO_TE | MO_64, buf, q);
-         }
-     }
-     switch (reg - nregs) {
-+        uint32_t fpcr;
-     case 0:
--        return gdb_get_reg32(buf, vfp_get_fpscr(env));
-+        fpcr = vfp_get_fpscr(env);
-+        return gdb_get_reg32_value(MO_TE | MO_32, buf, &fpcr);
-     }
-     return 0;
+-    return gdb_get_reg32(mem_buf, val);
  }
-@@ -166,9 +174,11 @@ static int vfp_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
  
-     switch (reg) {
-     case 0:
--        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]);
-+        return gdb_get_reg32_value(MO_TE | MO_32, buf,
-+                                   &env->vfp.xregs[ARM_VFP_FPSID]);
-     case 1:
--        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]);
-+        return gdb_get_reg32_value(MO_TE | MO_32, buf,
-+                                   &env->vfp.xregs[ARM_VFP_FPEXC]);
-     }
-     return 0;
- }
-@@ -196,7 +206,7 @@ static int mve_gdb_get_reg(CPUState *cs, GByteArray *buf, int reg)
+ int mb_cpu_gdb_read_stack_protect(CPUState *cs, GByteArray *mem_buf, int n)
+ {
+     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
+     CPUMBState *env = &cpu->env;
+-    uint32_t val;
++    MemOp mo = TARGET_BIG_ENDIAN ? MO_BEUL : MO_LEUL;
  
-     switch (reg) {
-     case 0:
--        return gdb_get_reg32(buf, env->v7m.vpr);
-+        return gdb_get_reg32_value(MO_TE | MO_32, buf, &env->v7m.vpr);
+     switch (n) {
+     case GDB_SP_SHL:
+-        val = env->slr;
++        return gdb_get_reg32_value(mo, mem_buf, &env->slr);
+         break;
+     case GDB_SP_SHR:
+-        val = env->shr;
++        return gdb_get_reg32_value(mo, mem_buf, &env->shr);
+         break;
      default:
          return 0;
      }
-@@ -236,9 +246,11 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
-     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
-     if (ri) {
-         if (cpreg_field_is_64bit(ri)) {
--            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
-+            uint64_t cpreg = read_raw_cp_reg(env, ri);
-+            return gdb_get_register_value(MO_TEUQ, buf, (uint8_t *) &cpreg);
-         } else {
--            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
-+            uint32_t cpreg = (uint32_t) read_raw_cp_reg(env, ri);
-+            return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &cpreg);
-         }
-     }
-     return 0;
-@@ -375,12 +387,12 @@ static uint32_t *m_sysreg_ptr(CPUARMState *env, MProfileSysreg reg, bool sec)
- static int m_sysreg_get(CPUARMState *env, GByteArray *buf,
-                         MProfileSysreg reg, bool secure)
- {
--    uint32_t *ptr = m_sysreg_ptr(env, reg, secure);
-+    uint8_t *ptr = (uint8_t *) m_sysreg_ptr(env, reg, secure);
- 
-     if (ptr == NULL) {
-         return 0;
-     }
--    return gdb_get_reg32(buf, *ptr);
-+    return gdb_get_register_value(MO_TEUL, buf, ptr);
+-    return gdb_get_reg32(mem_buf, val);
  }
  
- static int arm_gdb_get_m_systemreg(CPUState *cs, GByteArray *buf, int reg)
-@@ -393,7 +405,8 @@ static int arm_gdb_get_m_systemreg(CPUState *cs, GByteArray *buf, int reg)
-      * banked and non-banked bits.
-      */
-     if (reg == M_SYSREG_CONTROL) {
--        return gdb_get_reg32(buf, arm_v7m_mrs_control(env, env->v7m.secure));
-+        uint32_t reg32 = arm_v7m_mrs_control(env, env->v7m.secure);
-+        return gdb_get_register_value(MO_TEUL, buf, (uint8_t *) &reg32);
-     }
-     return m_sysreg_get(env, buf, reg, env->v7m.secure);
- }
+ int mb_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
 -- 
 2.39.5

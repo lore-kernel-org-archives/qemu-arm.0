@@ -1,126 +1,200 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2220243njc;
-        Mon, 24 Mar 2025 13:54:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU32cfopHTaB89wGfkuZhxtnhS9iff85v3Z57iW46NvXXugUIUQ2ols6s4ny01FiWPPK8bjlufjq/Oz7w==@linaro.org
-X-Received: by 2002:a17:902:fc4b:b0:223:4d7e:e52c with SMTP id d9443c01a7336-22780c689f7mr268127875ad.5.1742849692884;
-        Mon, 24 Mar 2025 13:54:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742849692; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2228063njc;
+        Mon, 24 Mar 2025 14:09:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWybmiUADrtL0VEexH9PSfHqLd8BM2It8n4phrbqdYFC0h0vSF9kj706mstseBuBT9+Me5xC+epQ3QtPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJ0ek2fKiwIFjoFJv91K/aRfY/BIa/Ca3HUgWqU3W89xC26Ylk4X1944N04Cm+i0QNdChN
+X-Received: by 2002:a05:6102:c0d:b0:4c4:dead:2f36 with SMTP id ada2fe7eead31-4c50d286cb9mr10302619137.0.1742850549121;
+        Mon, 24 Mar 2025 14:09:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742850549; cv=none;
         d=google.com; s=arc-20240605;
-        b=DPZMikEmxnyFtON80csWQnDbrSr+d/mAEVvn+ZLh0Ce1EIhnwzaBobrwPd1sic/rQc
-         kCwBy3iyMLs7xeEst6O2vXrZTzh+kOK2cM1LhFmagXVrLh2GgQMxJrlnXbHHLavCn3Tc
-         AO47Y9W8mejAvYn1dWVNM+BQTrARCZS5urcMdbJyPUxZiDYOCxyKvWNfrtqJ+Rdow14c
-         JeF837f2Mx9tTeTUm4v3/g/xyyh8IiZr3ckFpCcZQpdkeRBfp7H1hbth28Svp6sHu5f5
-         6YH9gUSyvUv+XsRxeh/4VcOWEVu7WuML+2GrF0s9bgtc2FmM5WOlCaYZDkWvDwQKnxIL
-         ypLQ==
+        b=M1QA0Y6zJETiwD2yDeSj6KQkpUfn5HNjMIJgTdD8vU7ue63v86dAZmMajR6Th9pyaY
+         lldzkWUtV3wDFJ0BpVP0fAGH5ITvJ7JXsvlamjmV+Aq2r5ULnMD0copOqolpRXCog8at
+         kpKR1QUDB8qefP27vE8T+kRFV+tXZKwGlx1linO9HmohD9y5BAvQcn1zhPHCGgquv6sl
+         MVADF0+wRe3C86Cokq4itgW0zpqpYaTsoHTmKRyGAGMrAhQtM2VLfDuTKLhLd9sg1biG
+         CinCCmDZxxaa7ftle3XAOz/P+n2VtrxNDMolFWRE6yNLL7KFpnE7v1uDV/XcCePAM3xy
+         P83A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=IjcUgPK06/izKZfVvH05gncc+9DrDMjLcc2e2JeXhy0=;
-        fh=i8uw7f/c2ugkErosfD3pCsj8XQ4/EizqG7t/t2MH7rA=;
-        b=MMPld3qwAPlg/gx3c+eIgq/vBbmZ4Qv9nKpAzIi6NaxTcCKPn0O7U3130qPqEHaM61
-         x+bIvLncx/ErXCH4F0HBrNeqmOk8aA+fCtCWDJ2/2HSgkO9yGmD3STm3CD/mWq7kBhnV
-         0AVZSWvm26msW89aqPmXtyffQWBp/PcfVcnIpOlR+Lvs7x/HFZODx697a8Tv7pA757UH
-         w4NujEjhzi4eJ25mEYaNZA2sWtusMcS12S6dfWX4QBs3MSO1nnjK2MEabP8KoITFHXHv
-         cm5gWmlC5A8BUWya4yy/+bFgjEdB8MRz+iyCr+7KB4i+EHIaRrColjuHa9y/hP2wschB
-         vFvg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=3cx+XRzgucR1b87MKUL3kVV2kbyfiV4eQXKyj4gncQ8=;
+        fh=i796QYE+3AgekThBub9Wh3d7I6DUqyd+K9khfkpKOEI=;
+        b=Pe+SBUhCuP1fkUQZNd9Wt9POLciLQOS3lVn+uQ0xb2OX1P5MzzsL55UgS2ORyv+b11
+         9IwZJorOm/DJCtcUaR5DSvnWC6CVcPzdldzOdOVaqbK5i63amlY+n5pjM7UWafHHDOFU
+         ZboV4sEC7J8yIZqpTn0qfRqBXQ+jpheJtv68CrL2vkFsqGapDWasM8mhcN5RKLimNqSZ
+         j3Vyb9/d151xRZya6mIZRugkVyuWYGh/FRDr6RjSm6/f66TlyH9dQtdTDtgla+EA3WdX
+         PM88+09OEMkycq4oAtsShh2SJgj1MpNQPmbT49I2L6Sx7Elx4BNLP4x7YLHI8usvUT0S
+         VcYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HrGSWR3J;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73905fc9070sor4094214b3a.3.2025.03.24.13.54.52
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4c50bd44264si1938740137.194.2025.03.24.14.09.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 24 Mar 2025 13:54:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Mar 2025 14:09:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HrGSWR3J;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742849692; x=1743454492; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IjcUgPK06/izKZfVvH05gncc+9DrDMjLcc2e2JeXhy0=;
-        b=HrGSWR3JP/LZKgC6TX16jja1gm1ckHZShwZuh0qwtybMneFBUf5WMxDLU3qL3lZ13Y
-         kHx/Ww+FRgLAaWQta38LOXg9vFZcbpCAc+KlVaIX9dWN8ONNjNvaImCCLA7rANJyHmlk
-         EXyBKTbWWww2Ly1kzkx8/KL90+vsNQ9owzcfIlzahRiyc62ruAf+yI8sqlD9p4EWtd1z
-         UqTTozDYBqd2Ik9u0yqPVwpFCt9u+2y/Dst5oJcnXT+SifCcUtqJnUemv4j1OZFJK+bK
-         /DCW/5k2uKzbBmxHxMbH4ZKwyhQbvj1HSyHu+B78yxNKdLHkoNFBCbSgc/aSh0sW74YA
-         T+jQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742849692; x=1743454492;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IjcUgPK06/izKZfVvH05gncc+9DrDMjLcc2e2JeXhy0=;
-        b=CgqkttEbBuo0SPJ6+SD3zDBIX+le5TtpFIoBCAsV2/3y4rNkKIx4w8V8CaVWCEfMGU
-         SkbXyA/ycTRmxksxqcsVi/6//N4WXTaIYQ2oyV3J3GjOBfenLjb5s9+7toIrOgzO/duy
-         /Ycd8zbfq+4z89RtVwBB3fofa6CCNU2Q8Xvq12kQdiDDoxNjMnfC9OVNJB6g2gnmBfcm
-         XCuHGAzHosmukyyhVqrsys8mK02yVQJSlysgAIqEi2jGTMut1HpB3FD7aX5qqWpd0Fvg
-         /jn1fwNL2eOhhCCvlpQCjkeSNGaedJe8vWDcaclULljLJLCMJ9jcgP0DzYQnQnXjag9G
-         96vQ==
-X-Forwarded-Encrypted: i=1; AJvYcCULXSX8AYSJFrJ6gLy9Qlk93ov15elMEPyzgnng7SndTw8iF8qKFUPlGkC+G4GrlBg2YlrJDacp+qcvXw==@linaro.org
-X-Gm-Message-State: AOJu0YyBSxKDwMsGamfNLYZnFUoznk8idtbV626lXUUif7bZ4CBtMPsi
-	ma3AAzwtSO3tJbFCkK2Qaquwc3q1jNa/BpDWx9Wkr8WgOb/TARv5Cr2dZonCE5rSQQ==
-X-Gm-Gg: ASbGncsPNU8lZmfnh5QIMRR1EfxcWCwwb3E+gbZqKA9zg2uDta8zlOhU7Gqgb5x87JE
-	bYH3N1IsVIZsYqDktUJKlHR3bPIlgrRlXn72kuuUFeU1wytLJjGw5Hx0EUfzgdvWkhLJzRB2fBL
-	fqZ9c26bPORKjTHVfHxH/7yYOF+VgxZHXQLIUvyHOtptBtew7hED8Ok1ry5DQnC4uE6GpTQWND+
-	YvGpXaVY+TW6zXyi/4voVnc7Z0vAGehm7IwTyoT7UlQDJ7J2gINxFZBfO0MGGo9JmAQN3Omqi1g
-	9/BzvhXvHnoxB2jE1/z78V6ttRtimbWseHAn21gC+mGtsSOXa5VLstFCGGKmCCVFxKz3
-X-Google-Smtp-Source: AGHT+IGJzNx9IZ5b2eNR9WIGYzP1pk30sz3PbrZFL+zU4w+xOKfS1nIh78+kz3DyaBP6HUlThar6YQ==
-X-Received: by 2002:a05:6a20:c901:b0:1f3:345e:4054 with SMTP id adf61e73a8af0-1fe42f32676mr25724414637.14.1742849692427;
-        Mon, 24 Mar 2025 13:54:52 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af8a27db8e5sm7724126a12.14.2025.03.24.13.54.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Mar 2025 13:54:51 -0700 (PDT)
-Message-ID: <6a3f794d-3403-4e80-8fd4-9449a78a4ceb@linaro.org>
-Date: Mon, 24 Mar 2025 13:54:51 -0700
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1twp2Y-0004gc-Ab; Mon, 24 Mar 2025 17:08:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1twp2P-0004fd-3E; Mon, 24 Mar 2025 17:08:50 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1twp2M-00031V-Sb; Mon, 24 Mar 2025 17:08:48 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id D86F2107AAF;
+ Tue, 25 Mar 2025 00:07:32 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 71F4F1D5B7E;
+ Tue, 25 Mar 2025 00:08:41 +0300 (MSK)
+Message-ID: <debb6c58-2a38-40d6-ac9c-b90c60ba8b69@tls.msk.ru>
+Date: Tue, 25 Mar 2025 00:08:41 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/30] exec/cpu-all: remove BSWAP_NEEDED
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
- <20250320223002.2915728-2-pierrick.bouvier@linaro.org>
- <61f1bc3a-abcd-4cf5-9d56-1132c8fc3ba7@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <61f1bc3a-abcd-4cf5-9d56-1132c8fc3ba7@linaro.org>
+Subject: Re: [PULL 0/3] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>
+References: <20250323174541.406860-1-clg@redhat.com>
+ <08930285-903b-4413-bd6e-20a14b2d15bb@tls.msk.ru>
+ <2616d3e5-443c-477f-a024-317fadb76a59@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <2616d3e5-443c-477f-a024-317fadb76a59@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: NSs7NaI96O4B
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2ZNC2lf/yXhA
 
-On 3/23/25 12:26, Richard Henderson wrote:
-> On 3/20/25 15:29, Pierrick Bouvier wrote:
->> This identifier is poisoned, so it can't be used from common code
->> anyway. We replace all occurrences with its definition directly.
->>
->> Signed-off-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
->> ---
->>    include/exec/cpu-all.h    | 12 ------------
->>    linux-user/syscall_defs.h |  2 +-
->>    bsd-user/elfload.c        |  6 +++---
->>    hw/ppc/mac_newworld.c     |  4 +---
->>    hw/ppc/mac_oldworld.c     |  4 +---
->>    hw/sparc/sun4m.c          |  6 +-----
->>    hw/sparc64/sun4u.c        |  6 +-----
->>    linux-user/elfload.c      |  8 ++++----
->>    8 files changed, 12 insertions(+), 36 deletions(-)
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> r~
+24.03.2025 23:46, Cédric Le Goater wrote:
 
-For information, this patch was already merged (by Paolo who cleanup 
-bswap_needed from hw/*).
+>> Is there anything in there worth to pick up for stable series?
+> 
+> you are fast !
+
+I was just about to send final announcements for a bunch of next
+stable releases, and noticed another pull request has been merged.. :)
+
+
+> - "aspeed: Fix maximum number of spi controller" is QEMU 10.0 material.
+> - "hw/intc/aspeed: Fix IRQ handler mask check" was merged in QEMU 9.1
+> - "hw/misc/aspeed_hace: Fix buffer overflow in has_padding function"
+>     was merged in QEMU 7.1
+> 
+> The last 2 deserve to be backported IMO. They will need some massaging.
+
+The "buffer overflow" fix seems to be okay for 9.2, 8.2 and 7.2.
+
+The "IRQ handler mask check" seems to be this (for 9.2). Does it look sane?
+
+Author: Steven Lee <steven_lee@aspeedtech.com>
+Date:   Thu Mar 20 17:25:43 2025 +0800
+
+     hw/intc/aspeed: Fix IRQ handler mask check
+
+     Updated the IRQ handler mask check to AND with select variable.
+     This ensures that the interrupt service routine is correctly triggered
+     for the interrupts within the same irq group.
+
+     For example, both `eth0` and the debug UART are handled in `GICINT132`.
+     Without this fix, the debug console may hang if the `eth0` ISR is not
+     handled.
+
+     Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+     Change-Id: Ic3609eb72218dfd68be6057d78b8953b18828709
+     Reviewed-by: Cédric Le Goater <clg@redhat.com>
+     Fixes: d831c5fd8682 ("aspeed/intc: Add AST2700 support")
+     Link: https://lore.kernel.org/qemu-devel/20250320092543.4040672-2-steven_lee@aspeedtech.com
+     Signed-off-by: Cédric Le Goater <clg@redhat.com>
+     (cherry picked from commit 7b8cbe5162e69ad629c5326bf3c158b81857955d)
+     (Mjt: update for before v9.2.0-2466-g5824e8bf6beb
+      "hw/intc/aspeed: Introduce IRQ handler function to reduce code duplication")
+     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index 126b711b94..495fd2bdfa 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -92,7 +92,7 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+
+      trace_aspeed_intc_select(select);
+
+-    if (s->mask[irq] || s->regs[status_addr]) {
++    if ((s->mask[irq] & select) || (s->regs[status_addr] & select)) {
+          /*
+           * a. mask is not 0 means in ISR mode
+           * sources interrupt routine are executing.
+

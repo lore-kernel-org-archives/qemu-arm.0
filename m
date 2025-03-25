@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2791053njc;
-        Tue, 25 Mar 2025 10:31:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUx7SUHILhRUwh6cQVthnVXvAeuHId8C0ZJoItbOtIam3QGi/3JigIxHf6okYMG+Q97REPsIvTU9o4gIA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGxyqOCjeOTS86rBFm0Ooamcn0mHW8xbG6h0sR24+Kf2jLvDNITEIkbdcVK2bX8Wr9LfqSU
-X-Received: by 2002:a05:620a:24c5:b0:7c5:4bb7:8e30 with SMTP id af79cd13be357-7c5ba157afbmr2227520085a.20.1742923905788;
-        Tue, 25 Mar 2025 10:31:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742923905; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2791451njc;
+        Tue, 25 Mar 2025 10:32:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViDdssOfgzUbWP6SIuxnaBAdLpQxa6mTV3eUzV4ltWFikRaL1Vifyiz+LzwWtv3UyjU16yAQZF1P2FFA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHnphd4LGOt6nvNniUcXKTJGNbBsJV+kLYgMaWuXrw/WFKki7A1MImSycYSg2k3cNJp6e1z
+X-Received: by 2002:a05:620a:2845:b0:7c5:4eee:5409 with SMTP id af79cd13be357-7c5ba1fcf20mr3123270085a.48.1742923941784;
+        Tue, 25 Mar 2025 10:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742923941; cv=none;
         d=google.com; s=arc-20240605;
-        b=cfJNk1CoLUCYEAOGfwl7kC5HoJwS/ssC+SnbzH6eFe5wSgaNWw4l2tl4MI8vZ4I2KZ
-         ekFEfxe7QHCitYJKQw+F/CaSdFNFpmqItm0ejtVcB+c1jIMuJPbPZ3KH2j2zgEw2ly6K
-         P+Trxl2Kr7cMC9D5rQxJtJ6devTthhG6j5ZQK3ujTAhefr0L4sjJyItkOaMC1RMVlGCe
-         pbMLygDlOLNf0zfucm4nytmicWf1VtDLUQ9WBuX4KukkrJK/tJA9vr7eHTmh9aZ1gZxd
-         schaM+Uuz8k+mMpHfETlthc1YsENyLizEGOA4FGk+0n02ufLCjaCvRl3vsHZU6/p6LaL
-         SfmQ==
+        b=EwJD8f1fls58dN2VebRnjKgxEY099WulDw0F1+YY2LssVjnXh8IcQOfQgPjyuAQuoQ
+         piBAxoz5CXMudc6bZTRx9uo+TRM0g1Cv1/Oa2OgUqR9VACqjPY98Ic9q1Z2bJPAZsZMt
+         UeWPRFmrJ3SZWzUWnvAKu7vRa2+n4ejIZQ6lTn6kzv/LdAYmNVckxJS28vkolz9Xal+3
+         OAzkr4DkHFKKS/N1+Z2PL691G1T2UwFWzF6I1RIft2oimaxDQ/1uuk5h8knm9c/6B1cv
+         KqQH3absroR/u2GVsOuRC+OlexdNNNc6pTV94AboeQBrBg1TY3x/6Z99jqcymEpBHMAN
+         m0oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=bLD7uGAuxhknuMznbPUOjYYmujALZbEPbDo7/Q7yzKo=;
+        bh=Czo88RaJJgCij9jxsu1AcHzJyKEdny4U9dEIVRzYvJg=;
         fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
-        b=KyYMLL8jfx25Y1O6OO49P3FAqeCsl/WYLt43rBH3CM7kk1UCKRivm3nxeMYwZW3TPG
-         o/MIM/smsoghdIPddp1i1seY+ukDaPiwfmUqjJlGBfGEYv8WbKjBzd/kmFh8aWZW+kVU
-         inZpaEzZvIuY/eYRBGkPqwxa487Yajbm1StTHEjeC6VjA+Md32sdVS2YqiY5+ybyDn8r
-         86Xa0Qeij/C6zd6sNvKZ3+47/DSBl1SekHBYWkyLaZPkgM+aa+o8u/qTsuL8s7dvfTh/
-         D0j/72QVrXXPQ86I0Ki1li179iVfcnXmj+LR3LO9HZalaQI7pTasFwN8kq8UVlnrOcAP
-         NsAQ==;
+        b=kFnJMv++C8BYsk2n1C8teJoqnY0Y8SEx924iXSWiLNyu+KSuV2hj+fF24GbZS1fJr0
+         a/UC5UyjEl43PB5FA4dH+IsahevgtA7OR5MGLcpJcRH39KrETDNs00ey76/adc1SafEe
+         Z+cUzbgEePjI0pke6jzDdf3EZPSy4axE9zvM9Cd1Yj5c9N+oNVSIRt4ODlY4A5Rq24dW
+         u7zTHxAoZoh0ZFGt8c2cf1XbTYtQFcC2mgM0cLgu/XgVj5HPvTAtFYM1bh/7SmcLwWGK
+         7UtlIwLWN26q1H+bhwX3ol6+QWJ88abiefG/1tjIjJ8vtymKzTWmzz+F4snc7epJo8vk
+         1DfQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b92afe58si1047180785a.130.2025.03.25.10.31.45
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b9348163si963355285a.265.2025.03.25.10.32.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Mar 2025 10:31:45 -0700 (PDT)
+        Tue, 25 Mar 2025 10:32:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tx87i-0005iB-Oo; Tue, 25 Mar 2025 13:31:34 -0400
+	id 1tx87i-0005i0-Pe; Tue, 25 Mar 2025 13:31:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=TX69=WM=kaod.org=clg@ozlabs.org>)
- id 1tx87T-0005fk-O9; Tue, 25 Mar 2025 13:31:30 -0400
+ id 1tx87E-0005ei-MY; Tue, 25 Mar 2025 13:31:30 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=TX69=WM=kaod.org=clg@ozlabs.org>)
- id 1tx87Q-0001Dl-04; Tue, 25 Mar 2025 13:31:17 -0400
+ id 1tx874-0001CT-Dm; Tue, 25 Mar 2025 13:30:57 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZMcQn3MxXz4xN6;
- Wed, 26 Mar 2025 04:31:13 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZMcQH6Pk3z4xN6;
+ Wed, 26 Mar 2025 04:30:47 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZMcQk0BgNz4x1t;
- Wed, 26 Mar 2025 04:31:09 +1100 (AEDT)
-Message-ID: <d3c84044-390b-4ba5-8cc8-1d21b70beee9@kaod.org>
-Date: Tue, 25 Mar 2025 18:31:07 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZMcQD24QPz4x1t;
+ Wed, 26 Mar 2025 04:30:43 +1100 (AEDT)
+Message-ID: <f3e1f6e6-c4b7-4777-8555-fa310389b1db@kaod.org>
+Date: Tue, 25 Mar 2025 18:30:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/13] aspeed: ast27x0: Correct hex notation for device
- addresses
+Subject: Re: [PATCH 01/13] aspeed: ast27x0: Map unimplemented devices in SoC
+ memory
 To: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
@@ -72,7 +72,7 @@ To: Steven Lee <steven_lee@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
- <20250313054020.2583556-3-steven_lee@aspeedtech.com>
+ <20250313054020.2583556-2-steven_lee@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,7 +117,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250313054020.2583556-3-steven_lee@aspeedtech.com>
+In-Reply-To: <20250313054020.2583556-2-steven_lee@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -142,17 +142,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DUViibwxzuht
+X-TUID: DlBLf2OXQrcg
+
+Hello Steven,
 
 On 3/13/25 06:40, Steven Lee wrote:
-> Corrected the hexadecimal notation for several device addresses in the
-> aspeed_soc_ast2700_memmap array by changing the uppercase 'X' to
-> lowercase 'x'.
+> Maps following unimplemented devices in SoC memory
+> - dpmcu
+> - iomem
+> - iomem0
+> - iomem1
+> - ltpi
 > 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> Change-Id: I45426e18ea8e68d7ccdf9b60c4ea235c4da33cc3
+> Iomem, Iomem0 and Iomem1 include unimplemented controllers in the
+> memory ranges 0x0 - 0x1000000, 0x120000000 - 0x121000000 and
+> 0x14000000 - 0x141000000.
+> 
+> For instance:
+> - USB hub at 0x12010000
+> - eSPI at 0x14C5000
+> - PWM at 0x140C0000
+> 
+> DPMCU stands for Display Port MCU controller. LTPI is used to connect
+> to AST1700.
+> AST1700 is an I/O expander that supports the DC-SCM 2.1 LTPI protocol.
+> It provides AST2700 with additional GPIO, UART, I3C, and other
+> interfaces.
 
-
+For your awareness, I keep in the aspeed branch [1] a series
+adding I3C support. It was sent by Google in 2023 [2]. In case
+you are interested to upstream.
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
@@ -160,56 +179,145 @@ Thanks,
 
 C.
 
+[1] https://github.com/legoater/qemu/commits/aspeed-10.0
+[2] https://lore.kernel.org/qemu-devel/20230331010131.1412571-1-komlodi@google.com/
 
-
-
-> ---
->   hw/arm/aspeed_ast27x0.c | 28 ++++++++++++++-------------->   1 file changed, 14 insertions(+), 14 deletions(-)
 > 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> Change-Id: Iea6c11651c40e341a395b6dbb81975ea2639aebd
+> ---
+>   include/hw/arm/aspeed_soc.h |  6 +++++
+>   hw/arm/aspeed_ast27x0.c     | 51 ++++++++++++++++++++++++++++++++-----
+>   2 files changed, 50 insertions(+), 7 deletions(-)
+> 
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index f899356ed9..c46ec6302d 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -90,6 +90,8 @@ struct AspeedSoCState {
+>       SerialMM uart[ASPEED_UARTS_NUM];
+>       Clock *sysclk;
+>       UnimplementedDeviceState iomem;
+> +    UnimplementedDeviceState iomem0;
+> +    UnimplementedDeviceState iomem1;
+>       UnimplementedDeviceState video;
+>       UnimplementedDeviceState emmc_boot_controller;
+>       UnimplementedDeviceState dpmcu;
+> @@ -97,6 +99,7 @@ struct AspeedSoCState {
+>       UnimplementedDeviceState espi;
+>       UnimplementedDeviceState udc;
+>       UnimplementedDeviceState sgpiom;
+> +    UnimplementedDeviceState ltpi;
+>       UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
+>       AspeedAPB2OPBState fsi[2];
+>   };
+> @@ -171,6 +174,9 @@ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
+>   enum {
+>       ASPEED_DEV_SPI_BOOT,
+>       ASPEED_DEV_IOMEM,
+> +    ASPEED_DEV_IOMEM0,
+> +    ASPEED_DEV_IOMEM1,
+> +    ASPEED_DEV_LTPI,
+>       ASPEED_DEV_UART0,
+>       ASPEED_DEV_UART1,
+>       ASPEED_DEV_UART2,
 > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index a3fe2582f8..b4e4c5e4b6 100644
+> index dce7255a2c..a3fe2582f8 100644
 > --- a/hw/arm/aspeed_ast27x0.c
 > +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -43,7 +43,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_RTC]       =  0x12C0F000,
+> @@ -23,8 +23,16 @@
+>   #include "qobject/qlist.h"
+>   #include "qemu/log.h"
+>   
+> +#define AST2700_SOC_IO_SIZE          0x01000000
+> +#define AST2700_SOC_IOMEM_SIZE       0x01000000
+> +#define AST2700_SOC_DPMCU_SIZE       0x00040000
+> +#define AST2700_SOC_LTPI_SIZE        0x01000000
+> +
+>   static const hwaddr aspeed_soc_ast2700_memmap[] = {
+> +    [ASPEED_DEV_IOMEM]     =  0x00000000,
+>       [ASPEED_DEV_SRAM]      =  0x10000000,
+> +    [ASPEED_DEV_DPMCU]     =  0x11000000,
+> +    [ASPEED_DEV_IOMEM0]    =  0x12000000,
+>       [ASPEED_DEV_HACE]      =  0x12070000,
+>       [ASPEED_DEV_EMMC]      =  0x12090000,
+>       [ASPEED_DEV_INTC]      =  0x12100000,
+> @@ -36,6 +44,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
 >       [ASPEED_DEV_TIMER1]    =  0x12C10000,
 >       [ASPEED_DEV_SLI]       =  0x12C17000,
-> -    [ASPEED_DEV_UART4]     =  0X12C1A000,
-> +    [ASPEED_DEV_UART4]     =  0x12C1A000,
->       [ASPEED_DEV_IOMEM1]    =  0x14000000,
+>       [ASPEED_DEV_UART4]     =  0X12C1A000,
+> +    [ASPEED_DEV_IOMEM1]    =  0x14000000,
 >       [ASPEED_DEV_FMC]       =  0x14000000,
 >       [ASPEED_DEV_SPI0]      =  0x14010000,
-> @@ -62,19 +62,19 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_I2C]       =  0x14C0F000,
->       [ASPEED_DEV_INTCIO]    =  0x14C18000,
->       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
-> -    [ASPEED_DEV_VUART]     =  0X14C30000,
-> -    [ASPEED_DEV_UART0]     =  0X14C33000,
-> -    [ASPEED_DEV_UART1]     =  0X14C33100,
-> -    [ASPEED_DEV_UART2]     =  0X14C33200,
-> -    [ASPEED_DEV_UART3]     =  0X14C33300,
-> -    [ASPEED_DEV_UART5]     =  0X14C33400,
-> -    [ASPEED_DEV_UART6]     =  0X14C33500,
-> -    [ASPEED_DEV_UART7]     =  0X14C33600,
-> -    [ASPEED_DEV_UART8]     =  0X14C33700,
-> -    [ASPEED_DEV_UART9]     =  0X14C33800,
-> -    [ASPEED_DEV_UART10]    =  0X14C33900,
-> -    [ASPEED_DEV_UART11]    =  0X14C33A00,
-> -    [ASPEED_DEV_UART12]    =  0X14C33B00,
-> +    [ASPEED_DEV_VUART]     =  0x14C30000,
-> +    [ASPEED_DEV_UART0]     =  0x14C33000,
-> +    [ASPEED_DEV_UART1]     =  0x14C33100,
-> +    [ASPEED_DEV_UART2]     =  0x14C33200,
-> +    [ASPEED_DEV_UART3]     =  0x14C33300,
-> +    [ASPEED_DEV_UART5]     =  0x14C33400,
-> +    [ASPEED_DEV_UART6]     =  0x14C33500,
-> +    [ASPEED_DEV_UART7]     =  0x14C33600,
-> +    [ASPEED_DEV_UART8]     =  0x14C33700,
-> +    [ASPEED_DEV_UART9]     =  0x14C33800,
-> +    [ASPEED_DEV_UART10]    =  0x14C33900,
-> +    [ASPEED_DEV_UART11]    =  0x14C33A00,
-> +    [ASPEED_DEV_UART12]    =  0x14C33B00,
+>       [ASPEED_DEV_SPI1]      =  0x14020000,
+> @@ -68,6 +77,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_UART12]    =  0X14C33B00,
 >       [ASPEED_DEV_WDT]       =  0x14C37000,
 >       [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
->       [ASPEED_DEV_LTPI]      =  0x300000000,
+> +    [ASPEED_DEV_LTPI]      =  0x300000000,
+>       [ASPEED_DEV_SDRAM]     =  0x400000000,
+>   };
+>   
+> @@ -491,6 +501,16 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+>       object_initialize_child(obj, "hace", &s->hace, typename);
+> +    object_initialize_child(obj, "dpmcu", &s->dpmcu,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "ltpi", &s->ltpi,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "iomem", &s->iomem,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "iomem0", &s->iomem0,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    object_initialize_child(obj, "iomem1", &s->iomem1,
+> +                            TYPE_UNIMPLEMENTED_DEVICE);
+>   }
+>   
+>   /*
+> @@ -526,8 +546,10 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
+>       if (!sysbus_realize(gicbusdev, errp)) {
+>           return false;
+>       }
+> -    sysbus_mmio_map(gicbusdev, 0, sc->memmap[ASPEED_GIC_DIST]);
+> -    sysbus_mmio_map(gicbusdev, 1, sc->memmap[ASPEED_GIC_REDIST]);
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->gic), 0,
+> +                    sc->memmap[ASPEED_GIC_DIST]);
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->gic), 1,
+> +                    sc->memmap[ASPEED_GIC_REDIST]);
+>   
+>       for (i = 0; i < sc->num_cpus; i++) {
+>           DeviceState *cpudev = DEVICE(&a->cpu[i]);
+> @@ -876,11 +898,26 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+>   
+> -    create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
+> -    create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
+> -    create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
+> -    create_unimplemented_device("ast2700.ltpi", 0x30000000, 0x1000000);
+> -    create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu),
+> +                                  "aspeed.dpmcu",
+> +                                  sc->memmap[ASPEED_DEV_DPMCU],
+> +                                  AST2700_SOC_DPMCU_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->ltpi),
+> +                                  "aspeed.ltpi",
+> +                                  sc->memmap[ASPEED_DEV_LTPI],
+> +                                  AST2700_SOC_LTPI_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem),
+> +                                  "aspeed.io",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM],
+> +                                  AST2700_SOC_IO_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem0),
+> +                                  "aspeed.iomem0",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM0],
+> +                                  AST2700_SOC_IOMEM_SIZE);
+> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem1),
+> +                                  "aspeed.iomem1",
+> +                                  sc->memmap[ASPEED_DEV_IOMEM1],
+> +                                  AST2700_SOC_IOMEM_SIZE);
+>   }
+>   
+>   static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
 

@@ -1,94 +1,94 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2329730njc;
-        Mon, 24 Mar 2025 18:22:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTywr8wqNPRvnIM/r5MQZG+g1WiRWdA0v3MF+KCqPtP3OxLa+p5dpN82xTJhG2TQ+eOpUWtk7aiYmkIQ==@linaro.org
-X-Received: by 2002:a17:90b:28cc:b0:2ea:a9ac:eee1 with SMTP id 98e67ed59e1d1-3030fe93e6emr26887783a91.10.1742865764911;
-        Mon, 24 Mar 2025 18:22:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742865764; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2338204njc;
+        Mon, 24 Mar 2025 18:48:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW3Eo/F7/G5IgIQZ1Z0XclPoEh6I6m72+4/5irgPSx9NjKrgH+5CxJlOUd4IPIDYgutV5Puiwq0bx0eBw==@linaro.org
+X-Received: by 2002:aa7:8883:0:b0:736:3be3:3d77 with SMTP id d2e1a72fcca58-73905a276a9mr23243309b3a.16.1742867319560;
+        Mon, 24 Mar 2025 18:48:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742867319; cv=none;
         d=google.com; s=arc-20240605;
-        b=XT3P9abm1f8UnJeamxe9hjveYk3K3HJb0jxYhtdaB7NWQfMAfLC7r7WMdmIk95jjIp
-         N2B0PkfFnfmAegKDcAaHtYkSzh/kj7/uvACGpNcuFiLgctGmsdCLVGsPjhF0Wc0fkfFe
-         psk6E7W2Xf1XmQ4UXNZ/zdELoO47Gm+Fqkf6PyUw7E03/YzE1MdeHHzfdXU1Ju7ew73C
-         5z1r2k4LG+1bdo2ueZXoOmayQwVneSLTp3dgz9Tv9anw3KjZX+rnTI0nPmUJgFrVAAtR
-         BNCNDkJxWiDcYGJJ+vALh6uWWu6DGzTKMb+l8x9QcY2FxNoLIj9TU8V3mcgiLIJN3gzi
-         Gy8Q==
+        b=fT9ca2wIGz9oprVFAw6qTWNPshT0Uyq1xvslP7jYCttEZR3enDw6y2gVu1NBIFr1sB
+         LBVGaO29QCnN4e+Aenjc0xSdQDdTkNdyJPrtUZnOX9p/75SK75s4MmDPI6TEHcG18Uxx
+         cn4HEzXct5wsE68PfvWvK2kJ9ob+1aZIGGa0IgmfYeKjtmSw7DEnbRGpv9HzSA0SX2xK
+         Hu2tDfS0sIjR+EM+Aanp8r6Rf4Q8GJIoZHbSollaDtda2Ivj2ao+HWkB4eF3Z+FYiy0F
+         l55JCtQyV3pTLlJgx6Mumy6oIGFDSK8Hi+o4uw08kn0jPX8VlroW3Vd7QUHbvMGiIG0p
+         DYdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=aG/ikolZ9gVRmszvosTh9e33E/vQ1AmQm3yTNYjPZIM=;
-        fh=QdogeJndDFisuOUsM+as0w/2uXELE49QHh3Uswr0vkA=;
-        b=JqXA6SF8uwT4DbRx3aZ9jf0T0L3M7qq/OH9C6lSrX2dAcLIGqKZKTF49knWb8sjkAa
-         iXauV4juWlQXuC2J6f2ILhWDc4OH54zZ+YRG7wKlxA7Q/kPjdGqpG/90Aq3K/Q22WCbB
-         VwZuDfw1RJ0HevB4WGt0d9uTwVjVu+HnxerxzpH4GeApNyCco7Wc+MhkyGjqiBQfMwXP
-         d2CFAwySrzOTRu3pr9v7wTsJpphogMDQJFey+iJCWKG30sUwTZXaLsuxiOcWr3zWumym
-         BoOUjcwMCrEy8hfdUyTaD8Q680mYAJnoGnECs5I15qS308kEngUZFMHeYaZ0OvirOBf3
-         kZuw==;
+        bh=jepGxtMetxth7FUIkF6aKP1E2vtROZB2g8aTn+vFrpA=;
+        fh=VkveZkWoAVR3eo3Fs40rEEc+vCeqRHAN/fP2UCYiDVE=;
+        b=KBvPrFzvTZE1OUJjxYBzA5j9pV8kxQgsYje6dCbR2p6KS4kCZtHV90tDyBFj01ehCo
+         fNAY1Hd6+Q5hEsGDvE9m5s6zW60z37njtNqc+hZ3oVEJ6ar8F2BZc1iWLtBCMlJtHqZi
+         T8F+IFj2XKhW+nlprw94dkSYKMsShIz+s0ET/N01fZJxBOyXC83ZADfBYpDdUJ9Fk05W
+         ScMGlS79lkR/wFclJ9kZGykEi6c4YWhJyPx5OtdlJLl/IzUu/aGwjUkyCtgmtFxxMMKX
+         xbBuJbNNtId1kK5HjqPT7UephsN/eBjX57FSQLxFVKOoX6OZjHaYxkJ2qq6MOy/MFSfd
+         EWnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jnhgyma6;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XRannoXH;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-af8a27dcc5bsor5000830a12.1.2025.03.24.18.22.44
+        by mx.google.com with SMTPS id d2e1a72fcca58-73905f98e2asor4766342b3a.1.2025.03.24.18.48.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 24 Mar 2025 18:22:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 24 Mar 2025 18:48:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jnhgyma6;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XRannoXH;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742865764; x=1743470564; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=linaro.org; s=google; t=1742867319; x=1743472119; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=aG/ikolZ9gVRmszvosTh9e33E/vQ1AmQm3yTNYjPZIM=;
-        b=jnhgyma6MlJkOZyN7Deh2lL/48kGcu2c27bPfX+eujdAPwILMNHH0TzPawoVXj2b0/
-         ZoEkolIi8+MD3tpHZQvrcB+f1d7gaRRdK+PZI3ObGQESeXY8ggBvLNKXt/w0IQapRTkN
-         AkEA8/vVH0qhTHwewdhRicjCG39RtBDHaXr357mrwGDXRJREC0r9Q967QZER+b8qa5j9
-         ohgb6DIxfh/H6GzGZwIbnYdzEZU/4Lej8kVGm1vBSLtuhbjlT84fcybUo1xzYNkmBmZI
-         W9rTpXRBJ0AD0OZTF7kPrgWV5B7DW5h7Veqhf6dUblOxpUbQGRulxIflkQJNsgAWOE9Q
-         zCrw==
+        bh=jepGxtMetxth7FUIkF6aKP1E2vtROZB2g8aTn+vFrpA=;
+        b=XRannoXHRDUjBg+/2kNO6Zjoa/msFKMbNp6jnzWz0GVZ3m3C6IWJOqwaQcY5Tj/IsG
+         PJnwhLfogQMBrJjGNkqJaZ239IgwDE81HajzcV+s9PKNI+DWgWSZ/oPVqDgEU3Tu02NJ
+         eNS5ovYGPZmMVl8QF97AAhWgA+N3bn80EG0WkJnLmD4ZO/p1+cKFAohxRYjF29XsO6yT
+         PnuDCGKqqCZ41AQjs+ACu8ykyMOAknBbkJnrL7Ni9U3J3O74aL9fLJxFHMNVFovNm1ig
+         iP4sVYmbV4LCuOYNVbcscODJbZWX/h1+Yq8UC8XYXNWkzcN1gWPF7czCdFuMVOGEmJZE
+         BPUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742865764; x=1743470564;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1742867319; x=1743472119;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aG/ikolZ9gVRmszvosTh9e33E/vQ1AmQm3yTNYjPZIM=;
-        b=Z6oQ8vMAwUzrZdj2AHjO9jjYWTVwHE8b5uY7s/hkWgyQgyIGaVE45qst1O/UuRdFgX
-         t55koz8t6ce5z6zwxl58CpX/xePH6Ve/WJ15sMQTTysXnMi2zhMCPuWh0xtOdTg5Y+mo
-         IDQGY83iklvUjNz9towNE26xB1kBTxaR0yuKrSkX47PHAKtRYtOBVRbik7bRICZolhSy
-         fawVKIPvTbd3WOZYY+MzhI+g5VBu3qD/MvdMvYUkiXan2dbqnLkUDmndCPebYp6ZmqVC
-         djnXs7Wsn/eQ6OECxc1fR3yVqcu7hPUz5nWq7r7XljmSARKgyGYX6N3ePWYlddtIxzQt
-         q5jg==
-X-Forwarded-Encrypted: i=1; AJvYcCWPj3DTf+VoUzAQzzrbFcqfQWdHicWZucy1FBtLMRNEayJA6PRI73sMhZftMs8f37BKB18sc9VQjxtBwg==@linaro.org
-X-Gm-Message-State: AOJu0Yye+PGZQgz5+N7uR8qzNQxFU7SjFacr+ch3n4yTqPn12VswpwFm
-	Tq0AWThwsIGDFDEzULFSof3hNJbsF4ru2IMMJoXLn7Y2h1Kr6n/0iNmkh73wTPPB2g==
-X-Gm-Gg: ASbGncs7qkPYzpmULB1CJR7Pt+7AdrKbdz9eyy31m2i4p8p1Ii3zhOMwZHOgjeuqSxV
-	PdmtdIUgCVcndSY71240zrsUJ7WrQSONwGBWus9ZXFb3i0DZMisC2a8zcUNFTgOBCTfkmfaPS9u
-	6HhV2kWH0+IGexFPWDB40h0FoNOgtQbLaNCPOAIi/dhTK3kvsZTPNQwEDloFiT7iAYgIBCcxyjv
-	DydWB4sIq6qUhRHWdqUexUlLc0OPBCz5UAY+dyLQozm+nrbYr5Aug1S2Ge7ek0by2fxVOg/ZpgR
-	HXroBA5L6TSHGrzqrqekkKmR9XW+sGyh0aIPu34R3AOyQ19xM9we7HA3GTFVakzsnUIcSKuvbzU
-	0aQhhRX4i
-X-Google-Smtp-Source: AGHT+IHEZCg9xs1G0ztU1F3GqMs42dpDB5T8VAwisopTv+ewq4W5/2ROGq56Z/iMGj+HJJwkTysYNg==
-X-Received: by 2002:a17:90b:2743:b0:2ff:4a8d:74f8 with SMTP id 98e67ed59e1d1-3030fe721dfmr21437984a91.6.1742865764131;
-        Mon, 24 Mar 2025 18:22:44 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (174-21-74-48.tukw.qwest.net. [174.21.74.48])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3030fe83d50sm8832615a91.24.2025.03.24.18.22.43
+        bh=jepGxtMetxth7FUIkF6aKP1E2vtROZB2g8aTn+vFrpA=;
+        b=By8KJIJNQ0Nll844x/j0HSbERpJ1d+mN1vegJZko/6nMAf9TuK/PrUjojpP6MiJI99
+         XATD+cyd9mBZvbqlzGcLIvfhczIvtlyUPML95e8uKgBMs2+T5gzTcoiBf2AqPL+XgHky
+         yZE57qW4jINAyilNtw1k6X4W+6HJbtyPxkXdSPa3oyyrjk8vllt/Qfa2WlSA3bHkvunp
+         rprZdvggcUCgFfoJc95vH94w6Qvbb7NZRYgbwhbg0wf8YOl7YBbkPHvJRxlAgpPFpya+
+         QW4Y45Vd40Kdn94nCdTT95vQP8EtqzkLB0bu62PmvYgR+ZWERfrigUUSeAKOZFmJBxEr
+         ugbg==
+X-Forwarded-Encrypted: i=1; AJvYcCUr3bJAq6hvY8gTEE3L3ZAMo/esVJ+dpcCt5NDkXr8eTWiKwHJEiLzSEEzGpO7GAkZw3wnyePToWccMOg==@linaro.org
+X-Gm-Message-State: AOJu0Yw3PJbaWu1ArjrzOkHOJ/HjsMzDdXGWwo7YOKoz9kImAyu6KWFp
+	uNYlzw3X1qtn649bIkDHWd4d1n32b84tAzk7Onap9Gr2kMl9kgSrcYhSTYWcWlTWWQ==
+X-Gm-Gg: ASbGnctfGuG6UODn5mHXJLro1ILONrNtneaiHVYoz9nEBxglEuIsm5HIaW41BkMhHme
+	csDs+CKOp/zDykzVY/EkbbOKdjNjyH8Sg16zEiIN97891Hz/vDpWY45y4aWx9gZm3xWdMoBJNBL
+	w/rNFFDYBm4EP0GkfABkN6HIXr1enKe/pqWVntkKvhtKbIA54dG6VTHteZw3LFoSlFqeCdwgFhY
+	6jof0/hlL8si7Qo6ROaOebMUvmE7ZGHPHQeFe6YD/PD+4MuWgkI9h+GmyrkRxkq5+l4RAJddUc6
+	N8wqBdSIvmB/Zi16d69G8e6uX0XAdhw5sppPlIw1eCAgnhko7T6oT2A8zQ==
+X-Google-Smtp-Source: AGHT+IHoINdwL8jgY5FqgvZtk5Q6BeVpE4yF1ws/NywnBXzBwUcbjtM6+wv8Mc2pJC11Q5+zeW1xjA==
+X-Received: by 2002:a05:6a20:12cf:b0:1f5:86f2:a674 with SMTP id adf61e73a8af0-1fe42f326e4mr25190629637.12.1742867318910;
+        Mon, 24 Mar 2025 18:48:38 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af8a2a23b2asm7923700a12.50.2025.03.24.18.48.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Mar 2025 18:22:43 -0700 (PDT)
-Message-ID: <67313299-0ce6-457d-ace7-73ad864a0eb0@linaro.org>
-Date: Mon, 24 Mar 2025 18:22:42 -0700
+        Mon, 24 Mar 2025 18:48:38 -0700 (PDT)
+Message-ID: <60aa7341-e462-4334-bc85-f70f6d48e392@linaro.org>
+Date: Mon, 24 Mar 2025 18:48:37 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 26/30] hw/arm/armv7m: prepare compilation unit to be
  common
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
  <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
@@ -97,61 +97,57 @@ References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
  <20250320223002.2915728-27-pierrick.bouvier@linaro.org>
  <0c9055a3-2650-4802-a28c-e5d79052bc81@linaro.org>
  <6cce9fd1-d008-4b63-a77f-c091fcd933e0@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <6cce9fd1-d008-4b63-a77f-c091fcd933e0@linaro.org>
+ <67313299-0ce6-457d-ace7-73ad864a0eb0@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <67313299-0ce6-457d-ace7-73ad864a0eb0@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: iUSyyVKH9DL8
+Content-Transfer-Encoding: base64
+X-TUID: qVV0k1oYrxOX
 
-On 3/24/25 14:31, Pierrick Bouvier wrote:
-> On 3/23/25 12:48, Richard Henderson wrote:
->> On 3/20/25 15:29, Pierrick Bouvier wrote:
->>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> ---
->>>    hw/arm/armv7m.c | 12 ++++++++----
->>>    1 file changed, 8 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
->>> index 98a69846119..c367c2dcb99 100644
->>> --- a/hw/arm/armv7m.c
->>> +++ b/hw/arm/armv7m.c
->>> @@ -139,8 +139,9 @@ static MemTxResult v7m_sysreg_ns_write(void *opaque, hwaddr addr,
->>>        if (attrs.secure) {
->>>            /* S accesses to the alias act like NS accesses to the real region */
->>>            attrs.secure = 0;
->>> +        MemOp end = target_words_bigendian() ? MO_BE : MO_LE;
->>>            return memory_region_dispatch_write(mr, addr, value,
->>> -                                            size_memop(size) | MO_TE, attrs);
->>> +                                            size_memop(size) | end, attrs);
->>
->> target_words_bigendian() is always false for arm system mode.
->> Just s/TE/LE/.
->>
-> 
-> Good point.
-> 
-> By the way, what's the QEMU rationale behind having Arm big endian user binaries, and not 
-> provide it for softmmu binaries?
-
-For system mode, endianness is set via a combination of CPSR.E, SCTLR.B and SCTLR.EE, 
-details depending on armv4, armv6, armv7+.
-
-It is IMPLEMENTATION DEFINED how the cpu initiailizes at reset.  In olden times, via a 
-board-level pin (sometimes switched, sometimes soldered).  We model the board-level pin 
-via the "cfgend" cpu property.
-
-In any case, for system mode we expect the guest to do the same thing it would need to do 
-on real hardware.  For user mode, we can't do that, as we're also emulating the OS layer, 
-which needs to know the endianness to expect from the guest binaries.
-
-> If those systems are so rare, why would people need a user mode emulation?
-
-IMO armbe-linux-user is extinct.
-
-Debian never had big-endian support at all.  If there was some other distro which had it, 
-I don't recall which.  Otherwise you'd need to bootstrap the entire toolchain, which to me 
-seems rather beside the point.
-
-
-r~
+T24gMy8yNC8yNSAxODoyMiwgUmljaGFyZCBIZW5kZXJzb24gd3JvdGU6DQo+IE9uIDMvMjQv
+MjUgMTQ6MzEsIFBpZXJyaWNrIEJvdXZpZXIgd3JvdGU6DQo+PiBPbiAzLzIzLzI1IDEyOjQ4
+LCBSaWNoYXJkIEhlbmRlcnNvbiB3cm90ZToNCj4+PiBPbiAzLzIwLzI1IDE1OjI5LCBQaWVy
+cmljayBCb3V2aWVyIHdyb3RlOg0KPj4+PiBTaWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2
+aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+Pj4+IC0tLQ0KPj4+PiAgwqDC
+oCBody9hcm0vYXJtdjdtLmMgfCAxMiArKysrKysrKy0tLS0NCj4+Pj4gIMKgwqAgMSBmaWxl
+IGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkNCj4+Pj4NCj4+Pj4g
+ZGlmZiAtLWdpdCBhL2h3L2FybS9hcm12N20uYyBiL2h3L2FybS9hcm12N20uYw0KPj4+PiBp
+bmRleCA5OGE2OTg0NjExOS4uYzM2N2MyZGNiOTkgMTAwNjQ0DQo+Pj4+IC0tLSBhL2h3L2Fy
+bS9hcm12N20uYw0KPj4+PiArKysgYi9ody9hcm0vYXJtdjdtLmMNCj4+Pj4gQEAgLTEzOSw4
+ICsxMzksOSBAQCBzdGF0aWMgTWVtVHhSZXN1bHQgdjdtX3N5c3JlZ19uc193cml0ZSh2b2lk
+ICpvcGFxdWUsIGh3YWRkciBhZGRyLA0KPj4+PiAgwqDCoMKgwqDCoMKgIGlmIChhdHRycy5z
+ZWN1cmUpIHsNCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgIC8qIFMgYWNjZXNzZXMgdG8g
+dGhlIGFsaWFzIGFjdCBsaWtlIE5TIGFjY2Vzc2VzIHRvIHRoZSByZWFsIHJlZ2lvbiAqLw0K
+Pj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYXR0cnMuc2VjdXJlID0gMDsNCj4+Pj4gK8Kg
+wqDCoMKgwqDCoMKgIE1lbU9wIGVuZCA9IHRhcmdldF93b3Jkc19iaWdlbmRpYW4oKSA/IE1P
+X0JFIDogTU9fTEU7DQo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gbWVtb3J5
+X3JlZ2lvbl9kaXNwYXRjaF93cml0ZShtciwgYWRkciwgdmFsdWUsDQo+Pj4+IC3CoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzaXplX21lbW9wKHNpemUpIHwgTU9fVEUsIGF0
+dHJzKTsNCj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHNpemVfbWVt
+b3Aoc2l6ZSkgfCBlbmQsIGF0dHJzKTsNCj4+Pg0KPj4+IHRhcmdldF93b3Jkc19iaWdlbmRp
+YW4oKSBpcyBhbHdheXMgZmFsc2UgZm9yIGFybSBzeXN0ZW0gbW9kZS4NCj4+PiBKdXN0IHMv
+VEUvTEUvLg0KPj4+DQo+Pg0KPj4gR29vZCBwb2ludC4NCj4+DQo+PiBCeSB0aGUgd2F5LCB3
+aGF0J3MgdGhlIFFFTVUgcmF0aW9uYWxlIGJlaGluZCBoYXZpbmcgQXJtIGJpZyBlbmRpYW4g
+dXNlciBiaW5hcmllcywgYW5kIG5vdA0KPj4gcHJvdmlkZSBpdCBmb3Igc29mdG1tdSBiaW5h
+cmllcz8NCj4gDQo+IEZvciBzeXN0ZW0gbW9kZSwgZW5kaWFubmVzcyBpcyBzZXQgdmlhIGEg
+Y29tYmluYXRpb24gb2YgQ1BTUi5FLCBTQ1RMUi5CIGFuZCBTQ1RMUi5FRSwNCj4gZGV0YWls
+cyBkZXBlbmRpbmcgb24gYXJtdjQsIGFybXY2LCBhcm12NysuDQo+IA0KPiBJdCBpcyBJTVBM
+RU1FTlRBVElPTiBERUZJTkVEIGhvdyB0aGUgY3B1IGluaXRpYWlsaXplcyBhdCByZXNldC4g
+IEluIG9sZGVuIHRpbWVzLCB2aWEgYQ0KPiBib2FyZC1sZXZlbCBwaW4gKHNvbWV0aW1lcyBz
+d2l0Y2hlZCwgc29tZXRpbWVzIHNvbGRlcmVkKS4gIFdlIG1vZGVsIHRoZSBib2FyZC1sZXZl
+bCBwaW4NCj4gdmlhIHRoZSAiY2ZnZW5kIiBjcHUgcHJvcGVydHkuDQo+IA0KPiBJbiBhbnkg
+Y2FzZSwgZm9yIHN5c3RlbSBtb2RlIHdlIGV4cGVjdCB0aGUgZ3Vlc3QgdG8gZG8gdGhlIHNh
+bWUgdGhpbmcgaXQgd291bGQgbmVlZCB0byBkbw0KPiBvbiByZWFsIGhhcmR3YXJlLiAgRm9y
+IHVzZXIgbW9kZSwgd2UgY2FuJ3QgZG8gdGhhdCwgYXMgd2UncmUgYWxzbyBlbXVsYXRpbmcg
+dGhlIE9TIGxheWVyLA0KPiB3aGljaCBuZWVkcyB0byBrbm93IHRoZSBlbmRpYW5uZXNzIHRv
+IGV4cGVjdCBmcm9tIHRoZSBndWVzdCBiaW5hcmllcy4NCj4gDQoNCk9oIHllcywgdG90YWxs
+eSBtYWtlcyBzZW5zZS4gVGhhbmtzLg0KDQo+PiBJZiB0aG9zZSBzeXN0ZW1zIGFyZSBzbyBy
+YXJlLCB3aHkgd291bGQgcGVvcGxlIG5lZWQgYSB1c2VyIG1vZGUgZW11bGF0aW9uPw0KPiAN
+Cj4gSU1PIGFybWJlLWxpbnV4LXVzZXIgaXMgZXh0aW5jdC4NCj4gDQo+IERlYmlhbiBuZXZl
+ciBoYWQgYmlnLWVuZGlhbiBzdXBwb3J0IGF0IGFsbC4gIElmIHRoZXJlIHdhcyBzb21lIG90
+aGVyIGRpc3RybyB3aGljaCBoYWQgaXQsDQo+IEkgZG9uJ3QgcmVjYWxsIHdoaWNoLiAgT3Ro
+ZXJ3aXNlIHlvdSdkIG5lZWQgdG8gYm9vdHN0cmFwIHRoZSBlbnRpcmUgdG9vbGNoYWluLCB3
+aGljaCB0byBtZQ0KPiBzZWVtcyByYXRoZXIgYmVzaWRlIHRoZSBwb2ludC4NCj4gDQo+IA0K
+PiByfg0KDQo=

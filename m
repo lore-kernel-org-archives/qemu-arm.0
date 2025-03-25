@@ -1,366 +1,166 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2457821njc;
-        Tue, 25 Mar 2025 01:01:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6Q3QbCtnOisp6FQB+84PysXO6ZJKmCA83pCuVZ72zf30pyWkiHlh5+LXHIaq4Zqqtm4lOIKh9mGPHig==@linaro.org
-X-Google-Smtp-Source: AGHT+IFkSmhvapEZf3mydRtFBV/AT5D1/Iu1ZpYFSNU89ovrEbqHRNJcTRDiywpKIHNRW+dIKUcj
-X-Received: by 2002:a05:622a:124c:b0:471:cdae:ac44 with SMTP id d75a77b69052e-4771de7e667mr262456701cf.47.1742889712680;
-        Tue, 25 Mar 2025 01:01:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742889712; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2489134njc;
+        Tue, 25 Mar 2025 02:22:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHZxr7N7gGVVyfdXiNcv48brAwxt2iA5GNaVMZhQpKma6PMLTGgaecg25I61MmLiT0FsDUAe0cb5gHfA==@linaro.org
+X-Received: by 2002:a5d:64ce:0:b0:398:fd9b:b935 with SMTP id ffacd0b85a97d-3997f9407b6mr15184220f8f.53.1742894529165;
+        Tue, 25 Mar 2025 02:22:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742894529; cv=none;
         d=google.com; s=arc-20240605;
-        b=MhC4uxWjOAb5jQ6q/zt/ONBfWjIwkspqX5QR3eZqE4YBEub2m+Kf8O2P5SnoUkIFZW
-         MLuXRq+KVq5Ob/GTI9h14HTMPrq7AOq2978KJ/qoLdQXcw2FI2+Ph+8hZ2ylXpFR6uAR
-         uKckRcXNEuI56HxNenmh2MuxgdwGSwHYsZtXM7p/pZ5jPhq9sLJPjc9ic1S32H8pYCPQ
-         yaAApwsy70Pwt1X7lcoc3RURM2fC83ur2a2wrZ9/oZ9CUgj6bkR1tdOuBlsR4tm7Y6FL
-         9EMUVne7QhlN20HtW+34CzG9VX7BwcEepnkX6Dhuco0qbBXCEL1m029Sxd+XUt6KL1Tf
-         guHg==
+        b=aMDIzjKvl2TBTNovRYHk3aCWoD3TTXiv1K3IyMgtee5QiSLhZQGWeSZRr2ugDLxYGk
+         OAwgvMmjEwXvyuWYJpvJ1bs7PHGZltX9ZGtQPHWputG8k3jf1878W20IVvoWXmZxtrjP
+         Am3apixzhqOUJgYSS3+29SMCYw4rEhIP0vKXa+CxPFz6WrxM0yR7bvfoQT+khF4HOcH/
+         z88KwE62PlVkB1OMvFRmaoYLGw8jEHb0hyuixofGJq41tc5BS3u/uMKyfV7akhmDl+sC
+         B9YMBCgha6cfN9QlFEltGtSi+f+YBmalqApSc5ex8hPD1w2lht/+22omMLPUISDBG+Xq
+         1/tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:subject:cc:to;
-        bh=k1nlCypjDytZO3G79pS3I6qneIEOVXrOt0esMakb3/k=;
-        fh=tMUoHvkf3avxBR4l/NzbMrTg+OWSegug9bLhnsZje6Y=;
-        b=NLVyMwazLMPSSlxzAohdkmKQVIzCKpJHxo1wOftrR6AwLtLyQ8zCc9/8jU3v71FWYT
-         cyUQ4rfaNoesusJEFbcWd6/46pGLH5wfpapxajnO/dRhl4eK+bBlcg+gTtHfUsqNCL2r
-         JBnH2XAezMdzALfJifyvZIGIXljup49FDm6Q+8Nxqz3Lp/CjZyYy5+ZW/ggdTeThttRi
-         mb4Q1D+jJFoXIF245bjQStS2sEipyhTZ7uMPQ7RVhof3gaVpjqBLGkBe00E6MHo/yVy7
-         Htnw7Ff4JmtkeVwF1HTVQ5DvgvJQwBXKIkG8BvhrGdT27ztwA0zboe/D6QJhqJBctFAB
-         Sdzg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=71RvBOAOQfE9OhpYm5SKcAiC6VgyqIl/XhKPHqIjpjM=;
+        fh=1gKwZrMOY3r57XDA94poaNRkAwkRa036aG1j/ciZlgw=;
+        b=AZ6bSJKCa7wWLUNPTXeAfVvOlZV3BS+yBqVeu9oH3oi6OVru5uwFvEOMWn+NDG6YH+
+         ckg6hopfMIlaACJubmMS9wPYw3T86070zUtO0jIQeQ3PLg41reFEWmUBWtPUvzoD4p0H
+         uaz3EZ5vVgxbz3P99c3bsu7L/d4aWajU9ttDScLsbBEqKNkvSpC1fQS9dddPyOquQ+30
+         vnUzE3v0TtJSs3b9TSMVZCqUSJ/rux1ADkXSzlbntsr76WRs8+frV/vjJF2DXG5jK3Xg
+         KCL/4vGhNwZqtitKWyQ3z+XOpBu9Ssy8r1OrtpZbVC+UbyVcqqIUfFx5ktG5/GBTYVxO
+         gA8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4771d4fe448si96915781cf.243.2025.03.25.01.01.52
+       dkim=pass header.i=@linaro.org header.s=google header.b=C9JVhBMC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43d4fefe616sor42930415e9.10.2025.03.25.02.22.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Mar 2025 01:01:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 25 Mar 2025 02:22:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1twzDg-0001Bl-U0; Tue, 25 Mar 2025 04:01:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
- id 1twzDe-0001A1-3o; Tue, 25 Mar 2025 04:01:06 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
- id 1twzDX-0002UQ-QZ; Tue, 25 Mar 2025 04:01:05 -0400
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4ZMMkW0FlHz1FNFy;
- Tue, 25 Mar 2025 15:58:59 +0800 (CST)
-Received: from kwepemd500011.china.huawei.com (unknown [7.221.188.45])
- by mail.maildlp.com (Postfix) with ESMTPS id D7ABC1A0188;
- Tue, 25 Mar 2025 16:00:45 +0800 (CST)
-Received: from kwepemg100001.china.huawei.com (7.202.181.18) by
- kwepemd500011.china.huawei.com (7.221.188.45) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.10; Tue, 25 Mar 2025 16:00:45 +0800
-Received: from kwepemg100001.china.huawei.com ([7.202.181.18]) by
- kwepemg100001.china.huawei.com ([7.202.181.18]) with mapi id 15.02.1544.011;
- Tue, 25 Mar 2025 16:00:45 +0800
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, lex Williamson
- <alex.williamson@redhat.com>
-CC: "Wangzhou (B)" <wangzhou1@hisilicon.com>, liuyonglong
- <liuyonglong@huawei.com>, jiangkunkun <jiangkunkun@huawei.com>, "libai (G)"
- <libai12@huawei.com>, tangchengchang <tangchengchang@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Questions about vfio-pci
-Thread-Topic: Questions about vfio-pci
-Thread-Index: AdudW06L4raav9tJRXuEMJF2Lkz38w==
-Date: Tue, 25 Mar 2025 08:00:45 +0000
-Message-ID: <f82e1e01c21e4a75a9a78315c08449ea@huawei.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.67.121.183]
-Content-Type: multipart/alternative;
- boundary="_000_f82e1e01c21e4a75a9a78315c08449eahuaweicom_"
+       dkim=pass header.i=@linaro.org header.s=google header.b=C9JVhBMC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1742894528; x=1743499328; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=71RvBOAOQfE9OhpYm5SKcAiC6VgyqIl/XhKPHqIjpjM=;
+        b=C9JVhBMCOBS6oBOgjKV0YUSkPy2AEiPXA88uZHLJsib8omN+GELQN/UZqv9z7F6qyz
+         WSdHSpVfDcuhDazWi1r7VpnJwBjWXyTNc6BL2T4GXLhLcNQDVwVrcCZ0NV+UnrrEhx8j
+         WoRZ264t6S3GyIgJvOJiovrqtq1DYQQ5XKsD5vc6mOyAD3iY1FH417ram5nm2mA55moh
+         BNd4Z/+xUPqXhwuCdHAbaBSy/9VOBUeCkH6BA3kYfGeLLvqkhr49EUs+sg/zQ+bZc1pe
+         r4y+G57Si3TZDfTQuSPmJSEX+HwUPAQx6fCTF7lGs+m3ow7HePTKxcYor1CHzZG3Xqpq
+         RnbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742894528; x=1743499328;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=71RvBOAOQfE9OhpYm5SKcAiC6VgyqIl/XhKPHqIjpjM=;
+        b=pHG33as8AWWHJb8diVYNKv/ayjiFipbISS8O9dtztFRcloNhk2qMlesrrklmDx98sI
+         lOZx2K30yJoprm3WHNckyJ4KEsRwGxKlcpHlp91WV8ABzkBQepfYBg6k15TWtWq/sAhW
+         YNdZL1ZmsIdsyzYTtYDL74rsqsRHuwHZznp38RFah1WHkxDnoAJVvEs/P/d7GBMZX7uD
+         8X+w/7m2LmHp38dVSDa2dEbS6BXF2fo9FHroZBtbTu4aH0lpoM1qtIEEKbnToZxnFA0S
+         taiKi4krYuzksRgOpTPoOddlEouekWS1k0fCRh75PbBe0zHNT6B+B1MadRTJJNpxYXoE
+         l/qQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWMtuztonHqCqh8pngw83QdUkTWpwcds4mvFI2+DHhXQGd19BEZ9kG+OeZEZmiR+dMu2llaNhK/i8UbhQ==@linaro.org
+X-Gm-Message-State: AOJu0Yxc4VTgUpWb75reYCtaIA2g94QcllIMsCM047UsMFMWObxQ/ooT
+	0Kd+WW3Puf3mV+VhwGUt9DkI+xTxdwLmTSjediKvzADkAgXYxwFJ3FwjrNZ2+HBeJA==
+X-Gm-Gg: ASbGncsz5ShSMBIY0goH5UdFP3VpkN1ROWdIzMpvb5xYSZ0IQyUYjc0ZjQ7bsovGVAS
+	6JjDo2rwUVwW6J7fJiKrd0pDSTv+LIizEuwHZ0wvHtgvV96RAFq65Q1kXiJ6Nq5C8pec9m06S0b
+	C01P0nTa5DRral/y2R95hQMnLa83c0QFZE+uY/YaKufzcGLvu064ZLhMsw4WkKqcVFbHB+W2gju
+	e3z80V3KnVfsaUACZd8xQoVjLqHpiY4tubZtWw6X0jTHrzPFj1RFz9MXHMBMlvyxHmolIFXDokn
+	RCYVXtDQWN1am52GldnUoal27QqwzDMFE50u/qSRFDYJv5EN05Mrs2NwFtRmXgfMR4oviYD8oKr
+	zm17uZQspAyA2
+X-Google-Smtp-Source: AGHT+IFO3zTzJIztdYqhK2y/r4LlVYawe+R2NThRj0xrIgZq3OIzebqoKnh9hrcx8WNvgyuyYo8YwQ==
+X-Received: by 2002:a5d:6c64:0:b0:390:f9f9:3e9c with SMTP id ffacd0b85a97d-3997f910184mr14486976f8f.25.1742894528576;
+        Tue, 25 Mar 2025 02:22:08 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3997f9a345fsm13042133f8f.24.2025.03.25.02.22.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 25 Mar 2025 02:22:07 -0700 (PDT)
+Message-ID: <6fd61c99-c753-40bc-b6a0-8b40e0c3956b@linaro.org>
+Date: Tue, 25 Mar 2025 10:22:06 +0100
 MIME-Version: 1.0
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=yangjinqian1@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  yangjinqian <yangjinqian1@huawei.com>
-From:  yangjinqian via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pb9CEJLFP9BR
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/11] target/ppc: convert gdbstub to new helpers
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-ppc@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-s390x@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ David Hildenbrand <david@redhat.com>
+References: <20250324102142.67022-1-alex.bennee@linaro.org>
+ <20250324102142.67022-10-alex.bennee@linaro.org>
+ <c99b4b18-2222-4868-9e2d-78305e530663@linaro.org>
+ <7a60e516-e224-4766-830d-20e14bba3c8e@linaro.org>
+ <f2fc4de2-7235-4c86-8574-2b8d630e5cd6@linaro.org>
+ <4ff5ca15-6784-4660-b6f5-9c219d215378@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <4ff5ca15-6784-4660-b6f5-9c219d215378@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: id0dTtbs54Yy
 
---_000_f82e1e01c21e4a75a9a78315c08449eahuaweicom_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+On 24/3/25 21:49, Pierrick Bouvier wrote:
+> On 3/24/25 13:04, Richard Henderson wrote:
+>> On 3/24/25 12:29, Pierrick Bouvier wrote:
+>>> On 3/24/25 10:39, Richard Henderson wrote:
+>>>> On 3/24/25 03:21, Alex Bennée wrote:
+>>>>> +    #ifdef TARGET_BIG_ENDIAN
+>>>>> +    MemOp end = MO_BE;
+>>>>> +    #else
+>>>>> +    MemOp end = MO_LE;
+>>>>> +    #endif
+>>>>> +#endif
+>>>>
+>>>> That's what MO_TE is for.
+>>>>
+>>>>> +/*
+>>>>> + * Helpers copied from helpers.h just for handling target_ulong 
+>>>>> values
+>>>>> + * from gdbstub's GByteArray based on what the build config is. This
+>>>>> + * will need fixing for single-binary.
+>>>>> + */
+>>>>> +
+>>>>> +#if TARGET_LONG_BITS == 64
+>>>>> +#define ldtul_p(addr) ldq_p(addr)
+>>>>> +#define gdb_get_regl_value(m, b, v) gdb_get_reg64_value(m, b, v)
+>>>>> +#else
+>>>>> +#define ldtul_p(addr) ldl_p(addr)
+>>>>> +#define gdb_get_regl_value(m, b, v) gdb_get_reg32_value(m, b, v)
+>>>>> +#endif
+>>>>
+>>>> Surely you're not intending to replicate this in any target that can 
+>>>> have multiple sizes?
+>>>> This is not an improvement.
+>>>>
+>>>
+>>> If I'm correct (and from v1), ppc is the only architecture having 
+>>> registers defined with
+>>> target_long types.
+>>
+>> With a quick check, mips, riscv, sparc do as well.
+>>
+> 
+> Right, I should have run the simple grep :)
+> So it's better to keep those macros defined in a separate header (out of 
+> helpers.h, like helpers-target.h), so we can already start to cleanup 
+> some targets, and do the rest of the work for the ones using 
+> target_ulong type for later.
 
-Hi,
-
-I'm observing intermittent failures when enabling the HNS3 network port in =
-VM using
-QEMU with the mainline kernel.
-
-HNS3 drive in kernel:
-static int hns3_nic_net_up(struct net_device *netdev)
-{
-......
-       /* enable the vectors */
-       for (i =3D 0; i < vector_num; i++)
-{
-napi_enable(napi);
-             enable_irq(vector_irq);
-             hns3_mask_vector_irq(tqp_vector, 1);
-       }
-......
-}
-
-When the VM has two vCPUs, the guest HNS3 driver performs two sequential
-enable_irq operations (vector_num=3D2). The enable_irq will trap into KVM f=
-or interrupt
-configuration and exit to QEMU for PCI device emulation. When emulating int=
-errupt
-enabling in QEMU, vfio_[intx/msi/msix]_enable calls vfio_disable_interrupts=
- to disable
-all interrupts on the vdev.
-
-The questions are:
-
-1.      Why does the vfio-pci disable all interrupts of the device before e=
-nabling irqs?
-
-2.      Is this a normal vfio-pci process or a problem?
-
-Thanks
-Jinqian
-
-
---_000_f82e1e01c21e4a75a9a78315c08449eahuaweicom_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:dt=3D"uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:m=3D"http://sc=
-hemas.microsoft.com/office/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-=
-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:DengXian;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:DengXian;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"Segoe UI";
-	panose-1:2 11 5 2 4 2 4 2 2 3;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	font-size:10.5pt;
-	font-family:DengXian;}
-p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
-	{mso-style-priority:34;
-	margin:0cm;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	text-indent:21.0pt;
-	font-size:10.5pt;
-	font-family:DengXian;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:DengXian;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:DengXian;}
-/* Page Definitions */
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
-div.WordSection1
-	{page:WordSection1;}
-/* List Definitions */
-@list l0
-	{mso-list-id:1746416320;
-	mso-list-type:hybrid;
-	mso-list-template-ids:368977896 -2117812486 67698713 67698715 67698703 676=
-98713 67698715 67698703 67698713 67698715;}
-@list l0:level1
-	{mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:18.0pt;
-	text-indent:-18.0pt;}
-@list l0:level2
-	{mso-level-number-format:alpha-lower;
-	mso-level-text:"%2\)";
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:42.0pt;
-	text-indent:-21.0pt;}
-@list l0:level3
-	{mso-level-number-format:roman-lower;
-	mso-level-tab-stop:none;
-	mso-level-number-position:right;
-	margin-left:63.0pt;
-	text-indent:-21.0pt;}
-@list l0:level4
-	{mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:84.0pt;
-	text-indent:-21.0pt;}
-@list l0:level5
-	{mso-level-number-format:alpha-lower;
-	mso-level-text:"%5\)";
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:105.0pt;
-	text-indent:-21.0pt;}
-@list l0:level6
-	{mso-level-number-format:roman-lower;
-	mso-level-tab-stop:none;
-	mso-level-number-position:right;
-	margin-left:126.0pt;
-	text-indent:-21.0pt;}
-@list l0:level7
-	{mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:147.0pt;
-	text-indent:-21.0pt;}
-@list l0:level8
-	{mso-level-number-format:alpha-lower;
-	mso-level-text:"%8\)";
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:168.0pt;
-	text-indent:-21.0pt;}
-@list l0:level9
-	{mso-level-number-format:roman-lower;
-	mso-level-tab-stop:none;
-	mso-level-number-position:right;
-	margin-left:189.0pt;
-	text-indent:-21.0pt;}
-ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
-break-word;text-justify-trim:punctuation">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span lang=3D"EN-US">Hi,<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-family:&quot;Sego=
-e UI&quot;,sans-serif;color:black;background:#FCFCFC">I'm observing intermi=
-ttent failures when enabling the HNS3 network port in VM using</span><span =
-lang=3D"EN-US" style=3D"font-family:&quot;Segoe UI&quot;,sans-serif;backgro=
-und:#FCFCFC"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-family:&quot;Sego=
-e UI&quot;,sans-serif;color:black;background:#FCFCFC">QEMU with the mainlin=
-e kernel.</span><span lang=3D"EN-US" style=3D"font-family:&quot;Segoe UI&qu=
-ot;,sans-serif;background:#FCFCFC"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">HNS3 drive in kernel:<o:p></o:p=
-></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">static int hns3_nic_net_up(stru=
-ct net_device *netdev)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">{<o:p></o:p></span></p>
-<p class=3D"MsoNormal" style=3D"text-indent:21.0pt"><span lang=3D"EN-US">..=
-....<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp; /* enable the vectors */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp; for (i =3D 0; i &lt; vector_num; i&#43;&#43;)<o:p></o:p></span></p>
-<p class=3D"MsoNormal" style=3D"text-indent:21.0pt"><span lang=3D"EN-US">{<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal" style=3D"margin-left:21.0pt;text-indent:21.0pt"><spa=
-n lang=3D"EN-US">napi_enable(napi);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; enable_irq(vector_irq);<o:p></o:p></sp=
-an></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hns3_mask_vector_irq(tqp_vector, 1);<o=
-:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp; }<o:p></o:p></span></p>
-<p class=3D"MsoNormal" style=3D"text-indent:21.0pt"><span lang=3D"EN-US">..=
-....<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">}<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">When the VM has two vCPUs, the =
-guest HNS3 driver performs two sequential<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">enable_irq operations (vector_n=
-um=3D2). The enable_irq will trap into KVM for interrupt<o:p></o:p></span><=
-/p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">configuration and exit to QEMU =
-for PCI device emulation. When emulating interrupt<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">enabling in QEMU, vfio_[intx/ms=
-i/msix]_enable calls vfio_disable_interrupts to disable<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">all interrupts on the vdev.<o:p=
-></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">The questions are:<o:p></o:p></=
-span></p>
-<p class=3D"MsoListParagraph" style=3D"margin-left:18.0pt;text-indent:-18.0=
-pt;mso-list:l0 level1 lfo1">
-<![if !supportLists]><span lang=3D"EN-US"><span style=3D"mso-list:Ignore">1=
-.<span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;
-</span></span></span><![endif]><span lang=3D"EN-US">Why does the vfio-pci d=
-isable all interrupts of the device before enabling irqs?<o:p></o:p></span>=
-</p>
-<p class=3D"MsoListParagraph" style=3D"margin-left:18.0pt;text-indent:-18.0=
-pt;mso-list:l0 level1 lfo1">
-<![if !supportLists]><span lang=3D"EN-US"><span style=3D"mso-list:Ignore">2=
-.<span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;
-</span></span></span><![endif]><span lang=3D"EN-US">Is this a normal vfio-p=
-ci process or a problem?<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">Thanks<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">Jinqian<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-</div>
-</body>
-</html>
-
---_000_f82e1e01c21e4a75a9a78315c08449eahuaweicom_--
+See also
+https://lore.kernel.org/qemu-devel/f9131f6e-e843-48be-b85f-c341ec198154@linaro.org/
+considering s/TARGET_LONG_SIZE/target_info_long_size()/

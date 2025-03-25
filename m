@@ -1,163 +1,215 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2717688njc;
-        Tue, 25 Mar 2025 08:44:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXd934DLlES1sSNsy3TKuQ1SYq+clz5HJGEylZaZwiEQAbMOb70WHE+i55nI4b5EnxYVN+x2Q7p4yh6UQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGpyRKHkhELat9uAQCXlQc5ecR7/ityqaO3xG4DCkcqQKeVp3PXb0gEdII3BFguOBhZ5gd3
-X-Received: by 2002:a05:6000:402b:b0:390:f5c8:1079 with SMTP id ffacd0b85a97d-39acc477107mr245767f8f.24.1742917445461;
-        Tue, 25 Mar 2025 08:44:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742917445; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2791053njc;
+        Tue, 25 Mar 2025 10:31:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUx7SUHILhRUwh6cQVthnVXvAeuHId8C0ZJoItbOtIam3QGi/3JigIxHf6okYMG+Q97REPsIvTU9o4gIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxyqOCjeOTS86rBFm0Ooamcn0mHW8xbG6h0sR24+Kf2jLvDNITEIkbdcVK2bX8Wr9LfqSU
+X-Received: by 2002:a05:620a:24c5:b0:7c5:4bb7:8e30 with SMTP id af79cd13be357-7c5ba157afbmr2227520085a.20.1742923905788;
+        Tue, 25 Mar 2025 10:31:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742923905; cv=none;
         d=google.com; s=arc-20240605;
-        b=SphpYal0wiUgfa+Y3OEHJi+siFnb7E9B//GbyHVMwPIJVppdS2dwC7vM5G05UJBrr6
-         G9fUPz+UCmZKAGKaa+95nOHDfnw4VBvPnDZyj50k92i2IA4R9jF2ydh2TBzyhbScKZ75
-         XtmLiQ9YsvvIfiNc9EPIW1WCJx48ddfMKuzQC6UJm7uJ2FEelgOlI67JiE1oKskw3tvR
-         m7B4uj0SJNPl/h34j/4Ce/ogqt5Bbi5sdM6d1MvsZEBKWr4WIUEgT0+kd9trhaxOT43U
-         zZFnEVOw1jLW1AuCD8MknsxRpwseadY9MxC+FsKqHo9BICtfMFhaAgvMbbu2ftUPAd47
-         iXXw==
+        b=cfJNk1CoLUCYEAOGfwl7kC5HoJwS/ssC+SnbzH6eFe5wSgaNWw4l2tl4MI8vZ4I2KZ
+         ekFEfxe7QHCitYJKQw+F/CaSdFNFpmqItm0ejtVcB+c1jIMuJPbPZ3KH2j2zgEw2ly6K
+         P+Trxl2Kr7cMC9D5rQxJtJ6devTthhG6j5ZQK3ujTAhefr0L4sjJyItkOaMC1RMVlGCe
+         pbMLygDlOLNf0zfucm4nytmicWf1VtDLUQ9WBuX4KukkrJK/tJA9vr7eHTmh9aZ1gZxd
+         schaM+Uuz8k+mMpHfETlthc1YsENyLizEGOA4FGk+0n02ufLCjaCvRl3vsHZU6/p6LaL
+         SfmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=ICFwMYPZMssGSZEIB8NoadF5NRv9GT/YDR6wWKiAgRk=;
-        fh=O6X2BWEQtTCF1UGIaMMuTYtr58ukGNU/CQyZ48iW9Cs=;
-        b=Nw9VtwMNF2PYnAXFNV2vOml+/KsC6R7TgDmHIyCL8Y/bOfsQH/7MLw2et9OZywUEx5
-         IdRADHmLIwhZyBPIFSacgWAb4jTfr+q2avvDU/IK8OrJ2f8wu98FJ4uae/2Fhni5vX3k
-         ucqkmeVq14ZtNoNPXIy0qyk9fFsz9C995AL5t9hI6b4lhOkVf8O/ZfwHZR4pQ6/Jm/nE
-         /cenHdVXUMOfYEcrUIBUKWJvIYRUdaPICEWjcNeQy3HKrhiJix3oNwUxRikvxCa1iEJK
-         vdQHchqle9b7IPqk9p5NHVsBXnBOMeMi9mX48D+jCABDpTZyaFQKmb63nD4Ixw/HeWL3
-         lhuw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=bLD7uGAuxhknuMznbPUOjYYmujALZbEPbDo7/Q7yzKo=;
+        fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
+        b=KyYMLL8jfx25Y1O6OO49P3FAqeCsl/WYLt43rBH3CM7kk1UCKRivm3nxeMYwZW3TPG
+         o/MIM/smsoghdIPddp1i1seY+ukDaPiwfmUqjJlGBfGEYv8WbKjBzd/kmFh8aWZW+kVU
+         inZpaEzZvIuY/eYRBGkPqwxa487Yajbm1StTHEjeC6VjA+Md32sdVS2YqiY5+ybyDn8r
+         86Xa0Qeij/C6zd6sNvKZ3+47/DSBl1SekHBYWkyLaZPkgM+aa+o8u/qTsuL8s7dvfTh/
+         D0j/72QVrXXPQ86I0Ki1li179iVfcnXmj+LR3LO9HZalaQI7pTasFwN8kq8UVlnrOcAP
+         NsAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43d4fd9ef79si79838015e9.115.2025.03.25.08.44.05
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b92afe58si1047180785a.130.2025.03.25.10.31.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Mar 2025 08:44:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Mar 2025 10:31:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tx6RO-0000ds-8d; Tue, 25 Mar 2025 11:43:46 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tx87i-0005iB-Oo; Tue, 25 Mar 2025 13:31:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tx6RL-0000d5-Ui; Tue, 25 Mar 2025 11:43:43 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <SRS0=TX69=WM=kaod.org=clg@ozlabs.org>)
+ id 1tx87T-0005fk-O9; Tue, 25 Mar 2025 13:31:30 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tx6RI-0004HY-Os; Tue, 25 Mar 2025 11:43:43 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZMYyV6KYPz6D99x;
- Tue, 25 Mar 2025 23:40:02 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
- by mail.maildlp.com (Postfix) with ESMTPS id 1FC8F14050C;
- Tue, 25 Mar 2025 23:43:30 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 25 Mar 2025 16:43:29 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Tue, 25 Mar 2025 16:43:29 +0100
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>, "smostafa@google.com"
- <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
- <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
- Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>
-Subject: RE: [RFC PATCH v2 00/20] hw/arm/virt: Add support for user-creatable
- accelerated SMMUv3
-Thread-Topic: [RFC PATCH v2 00/20] hw/arm/virt: Add support for user-creatable
- accelerated SMMUv3
-Thread-Index: AQHbku9qSXcuhW1ML0aJ2/ms8Fev1bOD8a2AgAAdwlA=
-Date: Tue, 25 Mar 2025 15:43:29 +0000
-Message-ID: <ffff33965d2a4ed4a5bf22c1bda6d774@huawei.com>
-References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <dbc0ee83-cb24-4fa5-9060-54a34a324f2c@redhat.com>
-In-Reply-To: <dbc0ee83-cb24-4fa5-9060-54a34a324f2c@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <SRS0=TX69=WM=kaod.org=clg@ozlabs.org>)
+ id 1tx87Q-0001Dl-04; Tue, 25 Mar 2025 13:31:17 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZMcQn3MxXz4xN6;
+ Wed, 26 Mar 2025 04:31:13 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZMcQk0BgNz4x1t;
+ Wed, 26 Mar 2025 04:31:09 +1100 (AEDT)
+Message-ID: <d3c84044-390b-4ba5-8cc8-1d21b70beee9@kaod.org>
+Date: Tue, 25 Mar 2025 18:31:07 +0100
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/13] aspeed: ast27x0: Correct hex notation for device
+ addresses
+To: Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+ <20250313054020.2583556-3-steven_lee@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250313054020.2583556-3-steven_lee@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=TX69=WM=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X+vFWHmnv6lc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DUViibwxzuht
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
-Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IFR1ZXNkYXksIE1hcmNoIDI1LCAy
-MDI1IDI6NDMgUE0NCj4gVG86IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPHNoYW1lZXJh
-bGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47IHFlbXUtYXJtQG5vbmdudS5vcmc7DQo+IHFl
-bXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBqZ2dA
-bnZpZGlhLmNvbTsgbmljb2xpbmNAbnZpZGlhLmNvbTsNCj4gZGR1dGlsZUByZWRoYXQuY29tOyBi
-ZXJyYW5nZUByZWRoYXQuY29tOyBuYXRoYW5jQG52aWRpYS5jb207DQo+IG1vY2hzQG52aWRpYS5j
-b207IHNtb3N0YWZhQGdvb2dsZS5jb207IExpbnV4YXJtDQo+IDxsaW51eGFybUBodWF3ZWkuY29t
-PjsgV2FuZ3pob3UgKEIpIDx3YW5nemhvdTFAaGlzaWxpY29uLmNvbT47DQo+IGppYW5na3Vua3Vu
-IDxqaWFuZ2t1bmt1bkBodWF3ZWkuY29tPjsgSm9uYXRoYW4gQ2FtZXJvbg0KPiA8am9uYXRoYW4u
-Y2FtZXJvbkBodWF3ZWkuY29tPjsgemhhbmdmZWkuZ2FvQGxpbmFyby5vcmcNCj4gU3ViamVjdDog
-UmU6IFtSRkMgUEFUQ0ggdjIgMDAvMjBdIGh3L2FybS92aXJ0OiBBZGQgc3VwcG9ydCBmb3IgdXNl
-ci0NCj4gY3JlYXRhYmxlIGFjY2VsZXJhdGVkIFNNTVV2Mw0KPiANCg0KDQo+IEZvciB0aGUgcmVj
-b3JkIEkgdGVzdGVkIHRoZSBzZXJpZXMgd2l0aCBob3N0IFZGSU8gZGV2aWNlIGFuZCBhDQo+IHZp
-cnRpby1ibGstcGNpIGRldmljZSBwdXQgYmVoaW5kIHRoZSBzYW1lIHB4Yi1wY2llL3NtbXUgcHJv
-dGVjdGlvbiBhbmQNCj4gaXQgd29ya3MganVzdCBmaW5lDQo+IA0KPiAtKy1bMDAwMDowYV0tKy0w
-MS4wLVswYl0tLS0tMDAuMMKgIE1lbGxhbm94IFRlY2hub2xvZ2llcyBDb25uZWN0WCBGYW1pbHkN
-Cj4gbWx4NUdlbiBWaXJ0dWFsIEZ1bmN0aW9uDQo+IMKgfMKgwqDCoMKgwqDCoMKgwqDCoMKgIFwt
-MDEuMS1bMGNdLS0tLTAwLjDCoCBSZWQgSGF0LCBJbmMuIFZpcnRpbyAxLjAgYmxvY2sgZGV2aWNl
-DQo+IMKgXC1bMDAwMDowMF0tKy0wMC4wwqAgUmVkIEhhdCwgSW5jLiBRRU1VIFBDSWUgSG9zdCBi
-cmlkZ2UNCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICstMDEuMC1bMDFdLS0NCj4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgICstMDEuMS1bMDJdLS0NCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIFwtMDIuMMKgIFJlZCBIYXQsIEluYy4gUUVNVSBQQ0llIEV4cGFuZGVyIGJyaWRnZQ0KPiAN
-Cj4gVGhpcyBzaG93cyB0aGF0IHdpdGhvdXQgdmNtZHEgZmVhdHVyZSB0aGVyZSBpcyBubyBibG9j
-a2VyIGhhdmluZyB0aGUNCj4gc2FtZSBzbW11IGRldmljZSBwcm90ZWN0aW5nIGJvdGggYWNjZWxl
-cmF0ZWQgYW5kIGVtdWxhdGVkIGRldmljZXMuDQoNClRoYW5rcyBmb3IgZ2l2aW5nIGl0IGEgc3Bp
-bi4gWWVzLCBpdCBjdXJyZW50bHkgc3VwcG9ydHMgdGhlIGFib3ZlLiANCg0KQXQgdGhlIG1vbWVu
-dCB3ZSBhcmUgbm90IHVzaW5nIHRoZSBJT1RMQiBmb3IgdGhlIGVtdWxhdGVkIGRldiBmb3IgYQ0K
-Y29uZmlnIGxpa2UgYWJvdmUuICBIYXZlIHlvdSBjaGVja2VkIHBlcmZvcm1hbmNlIGZvciBlaXRo
-ZXIgZW11bGF0ZWQgb3INCnZmaW8gZGV2IHdpdGggdGhlIGFib3ZlIGNvbmZpZz8gV2hhdGV2ZXIg
-bGlnaHQgdGVzdHMgSSBoYXZlIGRvbmUgaXQgc2hvd3MNCnBlcmZvcm1hbmNlIGRlZ3JhZGF0aW9u
-IGZvciBlbXVsYXRlZCBkZXYgY29tcGFyZWQgdG8gdGhlIGRlZmF1bHQNClNNTVV2Myhpb21tdT1z
-bW11djMpLiANCg0KQW5kIGlmIHRoZSBlbXVsYXRlZCBkZXYgaXNzdWVzIF9UTEJJX05IX0FTSUQs
-IHRoZSBjb2RlIGN1cnJlbnRseSB3aWxsIHByb3BhZ2F0ZQ0KdGhhdCBkb3duIHRvIGhvc3QgU01N
-VXYzLiBUaGlzIHdpbGwgYWZmZWN0IHRoZSB2ZmlvIGRldiBhcyB3ZWxsLg0KDQpTbyB0aGUgcXVl
-c3Rpb24gaXMgd2hldGhlciB3ZSB3YW50IHRvIGFsbG93IHRoaXMoYXNzdW1pbmcgdXNlciBpcyBl
-ZHVjYXRlZCkgb3INCmJsb2NrIHN1Y2ggYSBjb25maWcgYXMgdXNlciBoYXMgYW4gb3B0aW9uIG9m
-IHVzaW5nIGEgbm9uLWFjY2VsIHNtbXV2MyBmb3INCmVtdWxhdGVkIGRldmljZXMuDQoNClRoYW5r
-cywNClNoYW1lZXINCg0KDQo=
+On 3/13/25 06:40, Steven Lee wrote:
+> Corrected the hexadecimal notation for several device addresses in the
+> aspeed_soc_ast2700_memmap array by changing the uppercase 'X' to
+> lowercase 'x'.
+> 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> Change-Id: I45426e18ea8e68d7ccdf9b60c4ea235c4da33cc3
+
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+
+
+> ---
+>   hw/arm/aspeed_ast27x0.c | 28 ++++++++++++++-------------->   1 file changed, 14 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index a3fe2582f8..b4e4c5e4b6 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -43,7 +43,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_RTC]       =  0x12C0F000,
+>       [ASPEED_DEV_TIMER1]    =  0x12C10000,
+>       [ASPEED_DEV_SLI]       =  0x12C17000,
+> -    [ASPEED_DEV_UART4]     =  0X12C1A000,
+> +    [ASPEED_DEV_UART4]     =  0x12C1A000,
+>       [ASPEED_DEV_IOMEM1]    =  0x14000000,
+>       [ASPEED_DEV_FMC]       =  0x14000000,
+>       [ASPEED_DEV_SPI0]      =  0x14010000,
+> @@ -62,19 +62,19 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_I2C]       =  0x14C0F000,
+>       [ASPEED_DEV_INTCIO]    =  0x14C18000,
+>       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+> -    [ASPEED_DEV_VUART]     =  0X14C30000,
+> -    [ASPEED_DEV_UART0]     =  0X14C33000,
+> -    [ASPEED_DEV_UART1]     =  0X14C33100,
+> -    [ASPEED_DEV_UART2]     =  0X14C33200,
+> -    [ASPEED_DEV_UART3]     =  0X14C33300,
+> -    [ASPEED_DEV_UART5]     =  0X14C33400,
+> -    [ASPEED_DEV_UART6]     =  0X14C33500,
+> -    [ASPEED_DEV_UART7]     =  0X14C33600,
+> -    [ASPEED_DEV_UART8]     =  0X14C33700,
+> -    [ASPEED_DEV_UART9]     =  0X14C33800,
+> -    [ASPEED_DEV_UART10]    =  0X14C33900,
+> -    [ASPEED_DEV_UART11]    =  0X14C33A00,
+> -    [ASPEED_DEV_UART12]    =  0X14C33B00,
+> +    [ASPEED_DEV_VUART]     =  0x14C30000,
+> +    [ASPEED_DEV_UART0]     =  0x14C33000,
+> +    [ASPEED_DEV_UART1]     =  0x14C33100,
+> +    [ASPEED_DEV_UART2]     =  0x14C33200,
+> +    [ASPEED_DEV_UART3]     =  0x14C33300,
+> +    [ASPEED_DEV_UART5]     =  0x14C33400,
+> +    [ASPEED_DEV_UART6]     =  0x14C33500,
+> +    [ASPEED_DEV_UART7]     =  0x14C33600,
+> +    [ASPEED_DEV_UART8]     =  0x14C33700,
+> +    [ASPEED_DEV_UART9]     =  0x14C33800,
+> +    [ASPEED_DEV_UART10]    =  0x14C33900,
+> +    [ASPEED_DEV_UART11]    =  0x14C33A00,
+> +    [ASPEED_DEV_UART12]    =  0x14C33B00,
+>       [ASPEED_DEV_WDT]       =  0x14C37000,
+>       [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+>       [ASPEED_DEV_LTPI]      =  0x300000000,
+

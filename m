@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2397046njc;
-        Mon, 24 Mar 2025 21:59:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWREqoXpy1eA3LjoIoSFiGY2l4g3DbuXq4ncmcdCd7vyVEGeL7n9hOzj9FlboxoYYaNMdrm8OvA8FGjbg==@linaro.org
-X-Received: by 2002:a05:6a21:4c85:b0:1f5:9069:e563 with SMTP id adf61e73a8af0-1fe42f55966mr27702116637.21.1742878774676;
-        Mon, 24 Mar 2025 21:59:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742878774; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2397056njc;
+        Mon, 24 Mar 2025 21:59:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUoSwo67LETajS4GuvKx03HTc/z/D+3Fo/SCysfrtzfxoFfBEFWBGY5sZ6T7eC+R2BSwgqdBAaZJqbQaw==@linaro.org
+X-Received: by 2002:a05:6a20:2d24:b0:1f5:80a3:b006 with SMTP id adf61e73a8af0-1fe42f58220mr26194826637.21.1742878775737;
+        Mon, 24 Mar 2025 21:59:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742878775; cv=none;
         d=google.com; s=arc-20240605;
-        b=LQRRsqpbCrqQOf7IBzyHHAmiAURL2LyFIwdKNNS0NAOowgmpFiRolWeAmCSmVCdpZX
-         wYalCSUhivNyo6gOOUJrweQjRpozdmPR0Rj3wndDNFcI6AXDsUUg62lrEEY8N6axjdmO
-         8YKcR5+nm3K+ZziDUpn08dHffCOfxMSY+px+GfxZ6QFOHQFZlQL8b23Cnaaxjk0jlZ/9
-         cm8q5H8u2EjkrNK9LP38ipEA806nbXoFiCpDtCGvaHuNKT6XYTtLik+MxoS+Tm173STN
-         VLaMpzEoysm1/sRZoZiU4VGx0XsgeJB3uL05TeLYgkkPhyRKmGZjw3x2f95G7iDr24Rt
-         7qzw==
+        b=FDdhTlS40xZAmLb3HLar5BB7F9gibpeaey+S34sEx6unZQoYS+k8TLu1+yWOEYs/HP
+         4vVOF1eygZin4/RZK1PoUrgLU70uO2WiAgjcUMjTWTCbVXPVWfWloptICJO4T5VjyHeK
+         vtXLdqiSU5foxqodcrgDK9/y42HOluO3M6rMJQtV4zvlAlA66djcEiNAruHrZIG7qqwS
+         FWtfo4W2RaFfq85cA6f0fFKeqq61lpdYYgCz2OhTLrqWRzVbZEp2mMMZa+EKZkDhU/Xs
+         kReMHkv20sLI1lQonKMBtuMZMqxZXNsHe+LWHPhe1hsSLonwDRZ/+nlVKggOFbyoxWT3
+         BxlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=suKjzNx+ro19ZSxlCmxY92LJNBi/ThyI6kfAqCnEFLE=;
-        fh=bf4TOXu025e1eTP/lftaNK+5SBuxNve7rcKYhK41tRw=;
-        b=N5V2vt9SQGh9MSg5AUHkIRV/ygtytcWmZ+eBNTmD06pEJMcXeQYOrgtosWy9810Cqd
-         nlfrlCwvtfmVU9S7iNSdKzZH1smlcem3zTpvp5uqsS7TnU0nlSDGeObapjmt8bc2rDk9
-         NRnULA0HAO+g9UoOl0bxV8Tlqn6621iaS7gHwc5ZRqRG38zY5V/wIb38m9EM0KynG7ob
-         yUD4k9l+yC/9bTO8Pyh1f+gcGC8pydONgoavf7EvzeiXnZP0Pdhi6uyFs+v3n2h+hAJO
-         k9+Tzk5KehHFexOOGBumfk2Zifd4GF5IbILaYmLTKtoTDYCAmR/EUlPZ81g2R2k6rsUd
-         xcHQ==;
+        bh=da9qCgJ+S1UaM0j+OYD82icAp+J1ucJQQo9Biij6cxI=;
+        fh=svHgrvaT+2KLJ913jrijrliabLU1o4rXzWgwiBRuvTs=;
+        b=ko+WeDU9xG/rdp1EONaDU6TRoAoLYf6/MKWfNi56RH4C3GWPpkOXfRUpp7mypz45YZ
+         TrxQhVL2gLKmFPSaO6LXvyoBIFVL27JRA8BpRcAYR7aTuSIFb4cYHjuu89Mmdba084gz
+         VLSMrLA6HhFnyULGNeaOvhKUZG+4lw1ZAe9ArhAQOupSzSL+7AYHJ7r8d42u6f/Dxl6W
+         vhiGcjGmBbjgodIQPxZTFQHV3rK0l3eE+3A7c+lfwqB8mHtqgDNjT0tfsorKA9SgsQW2
+         dQY2d2MNYtgppHdj9Khz1hxbsD0/8XZoTwIAaDZz9SLohX9tqrKorQ52fTCJ7EdEiole
+         y3sQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JNShFAf/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pjU9T4gF;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-af8a291374asor5182310a12.3.2025.03.24.21.59.34
+        by mx.google.com with SMTPS id 41be03b00d2f7-af8a2a5d004sor4388065a12.7.2025.03.24.21.59.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 24 Mar 2025 21:59:34 -0700 (PDT)
+        Mon, 24 Mar 2025 21:59:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JNShFAf/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pjU9T4gF;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742878774; x=1743483574; darn=linaro.org;
+        d=linaro.org; s=google; t=1742878775; x=1743483575; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=suKjzNx+ro19ZSxlCmxY92LJNBi/ThyI6kfAqCnEFLE=;
-        b=JNShFAf/DAbs0fo68i+i7AN9A+LsdHhb3FC4MMTA/YlhXL0ZIU+Ib9I3RFBs5izaN9
-         GlGXPMG4KnSiqKb+WKSYER1V+SNIq7dxJfGbp7+pILk9LzspQJGjEDKPkRQXlUZPOGAq
-         cliKQAnBst55OheD6ZL/kfpo4iCiwHiQLmvvi1SAwqHlm0PcGc8YP7xq7Q6mh75z/Cs1
-         qp9P+bLYl7Ig09EG7Y2cmc/ybC71ToyLKSB9tZJvmDO3tct/R2OMNcCn81oBO8JZv/xV
-         h9aX2U2AAVrGiW/2SP0AN/WQcvei+6YsFwOXi2+2TVRcT/nFHRhu9yxRgssGXuEtdJ9i
-         tFVQ==
+        bh=da9qCgJ+S1UaM0j+OYD82icAp+J1ucJQQo9Biij6cxI=;
+        b=pjU9T4gF4uWM1RdSfNNBL0hXvRiOv5RazNrOyJxHLO7Zcu2toL1WFr9zeI/46orHa3
+         2n/6QQmF3Yi2sd6m1FOR9jzvv8Ft5R3HZRMOpjqRAIbZQNx8z49HBkndr++tevG8dAYF
+         iJu2YXs36/YlMvWkDqEq1rUSAM/SmN9bHEMBeDCgYqZNQKYmK5D9OTQP+3blQ29saCY+
+         AjNUmVdPM1uBPOJEBm5zSah5hEpWWDNGC9TbmpmemPq98oBOOeWuMwPT3xE2ruuy3wGg
+         HNo+ESdtyBPDJ6uHyGnIu+KxVqvxeDrG3St5AA2Q9GxZA43DzQsRkY9CnTfBm9WV5ku3
+         FlFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742878774; x=1743483574;
+        d=1e100.net; s=20230601; t=1742878775; x=1743483575;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=suKjzNx+ro19ZSxlCmxY92LJNBi/ThyI6kfAqCnEFLE=;
-        b=PVF0uMKxjBW29yDuKzNa+2CC3lKbPCjMeh+0e4sZzKolgDX3Et+z7gsuBHs+fILtht
-         z4opkrUrfGLoi2OYOcIOAbO3aqQ1l1oNs1HNFx3CknJ7tkadRGU6h4Vdb03U5u/4AzSI
-         14nHaSzyXRz8yX7+gKODpRDcSqOpNTaUGnZZunakoD2C3NgCk+4pyhpXQPzxE3mFQOg5
-         Js26auhW+SAMFhOricx9BZwsUG70ht8fNvBSJeHUDPALo9A8yKkHB/JbCIZY/jjPe/xx
-         KyAeNhbm3bavI1K04zlvV8BjV1Cq1fuqhotsa4xDg+gqJfRtCAy8Y78vI2OtOT/h9/kg
-         uTfw==
-X-Forwarded-Encrypted: i=1; AJvYcCXID7I9awCTEHDz9Lf9IZbJmNFNK6sng2KQss8UcKphUTxDysxjc7hYb504orEAcEgaGsLjWG7OMpOlRA==@linaro.org
-X-Gm-Message-State: AOJu0YyiPgRdKp+cFnsVmAGdpmX/WQT6CUsc948Q0AKYSRh10NylWr3G
-	U5unHJO7YFofVwNkOrYssFC5Xue4Vzxxgn11CIyWxYTo/WZAxFJ9HeFP0ZIs3B/SlA==
-X-Gm-Gg: ASbGncsFMvsNTGg44a/1Pz3iK5SNqnjcD/AAt+eOMpw0kcoDi9g0HZgedIt8wZ/IRTc
-	7O6q8L+B0KeHuJhLotKIbHGTR4wGdfmbeu6zGHGP8mB7H4HySyKjx/3vovASyz3hn7ziTAJqYmK
-	MNmSszKKEgp7rgTiwR2Ksj7VBki4596bkcowo8lLgILaeZubQXZsatKHUdVh6zfh9RqiWXVaKq5
-	8qnEDzhoNZAXyEU0m46sPil8/Mrx2YGLNZfsngGHAw47uzJcrDcpiKX8nEA1VqUbEI3Eh2mAZU3
-	mjULSADSht9oSYKMK4xGykDZKH25kLu81vjB+yQFQ7EkfvhkMug2ZKo=
-X-Google-Smtp-Source: AGHT+IHPU4uchBIGiRjkJmhVeK2EhQ4Ui7xYBT+ie5zJXI7wvII1DZ8qGB//kHUIjROeSaKjFRMo2A==
-X-Received: by 2002:a17:90b:3e47:b0:2f4:4500:bb4d with SMTP id 98e67ed59e1d1-3030fec4e66mr25832284a91.20.1742878774134;
-        Mon, 24 Mar 2025 21:59:34 -0700 (PDT)
+        bh=da9qCgJ+S1UaM0j+OYD82icAp+J1ucJQQo9Biij6cxI=;
+        b=pXYx0/0wQIfqzHulZqnY7oZUPdePqZZ1cGNxS2kct/UXXS/MAJCBV0x9/nENT72FwT
+         YLj1uSziCfrWHuHrtkMbGWF3efXCTzqX1Fb2QoBy20OBbO+8HLHoEn2ZKVGTloHyJt45
+         88qw00YXZa4UstWpJBTmEG+hYe6fwIOqrocGT3I0wdUL9U5KZ4/fII/CiYMeg6j8ytN/
+         psxq+yQ1UKo+aEKBb1ylY1MW9YggJehfoxSd8rJR1lnLdguIEq1RI1c1/6vpz4THXn3/
+         nQvoP/qytUSwgwTn7okhGaFE5EjPWpYwCBMkhpzBarYq7cPaswS++ZTE3WIgbCN+Atbi
+         3AMg==
+X-Forwarded-Encrypted: i=1; AJvYcCVGG/tZhL/E4WlDBAFvCvlsE/j531TfnNyHeowHAnQBkN277LHvLCKZVyGOTqYDzPADR+YSPyMXumw6cA==@linaro.org
+X-Gm-Message-State: AOJu0Yy7HtiW7Li49yn7dD9zanHDBxoDXMvWECVohXmGIeiPYAvS/zeX
+	0+d843BW2HV9SfP6LYfZxs+dMWfKeqk9ciQNYhL2Ly5phtREtUN3VlrmrE7FNb7kog==
+X-Gm-Gg: ASbGncth9JEJz1TqFC51RZb6Yoy4xtL2Qc93xGqoXK+p9OnSWaA3ikh7ic7s4j03Ff0
+	1yw2z4eu7VeNADQcQS3ffo27Yrq5lTMQif4aQNa5stX7gLwlyQcsIn2+Qyf67JUxLnyJGDLL6nP
+	90eX8bB+jrTaETnU9zPyYF6+Jefh4s7NQVeXkUMvAgsSAU/ZjwrSj2vjjZfINCsSMSPbhCB4WAZ
+	0efDSnSHqMCtzQShVsI2f9NyODN/QCSD33CfyQVOmhfhB6YmCf9uBQijjBQ3YuTPGWAt+SX42xA
+	RqH+OMZPeQUQVoXGpV/vyT7LQSEXim74Rxb3LBmwmcr7
+X-Google-Smtp-Source: AGHT+IEgjGxzJS/SsixkRPa7V7unRDt/oD82QlFwQaCLK26d+wtOW0DzMMqVormswycOEINYKmOvCQ==
+X-Received: by 2002:a17:90b:4b8e:b0:2f9:c139:b61f with SMTP id 98e67ed59e1d1-3030fe8bdf1mr32282657a91.14.1742878775136;
+        Mon, 24 Mar 2025 21:59:35 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301bf58b413sm14595120a91.13.2025.03.24.21.59.33
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301bf58b413sm14595120a91.13.2025.03.24.21.59.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Mar 2025 21:59:33 -0700 (PDT)
+        Mon, 24 Mar 2025 21:59:34 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -90,48 +90,305 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	kvm@vger.kernel.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 13/29] exec/cpu-all: remove cpu include
-Date: Mon, 24 Mar 2025 21:58:58 -0700
-Message-Id: <20250325045915.994760-14-pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 14/29] exec/cpu-all: transfer exec/cpu-common include to cpu.h headers
+Date: Mon, 24 Mar 2025 21:58:59 -0700
+Message-Id: <20250325045915.994760-15-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250325045915.994760-1-pierrick.bouvier@linaro.org>
 References: <20250325045915.994760-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: lz9QoRFpzaqB
-
-Now we made sure important defines are included using their direct
-path, we can remove cpu.h from cpu-all.h.
+X-TUID: E9HPgqWoBccF
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- include/exec/cpu-all.h | 2 --
- accel/tcg/cpu-exec.c   | 1 +
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ include/exec/cpu-all.h  | 2 --
+ include/exec/cpu_ldst.h | 1 +
+ target/alpha/cpu.h      | 1 +
+ target/arm/cpu.h        | 1 +
+ target/avr/cpu.h        | 1 +
+ target/hexagon/cpu.h    | 1 +
+ target/hppa/cpu.h       | 1 +
+ target/i386/cpu.h       | 1 +
+ target/loongarch/cpu.h  | 1 +
+ target/m68k/cpu.h       | 1 +
+ target/microblaze/cpu.h | 1 +
+ target/mips/cpu.h       | 1 +
+ target/openrisc/cpu.h   | 1 +
+ target/ppc/cpu.h        | 1 +
+ target/riscv/cpu.h      | 1 +
+ target/rx/cpu.h         | 1 +
+ target/s390x/cpu.h      | 1 +
+ target/sh4/cpu.h        | 1 +
+ target/sparc/cpu.h      | 1 +
+ target/tricore/cpu.h    | 1 +
+ target/xtensa/cpu.h     | 1 +
+ cpu-target.c            | 1 +
+ 22 files changed, 21 insertions(+), 2 deletions(-)
 
 diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index d4d05d82315..da8f5dd10c5 100644
+index da8f5dd10c5..b488e6b7c0b 100644
 --- a/include/exec/cpu-all.h
 +++ b/include/exec/cpu-all.h
-@@ -21,6 +21,4 @@
+@@ -19,6 +19,4 @@
+ #ifndef CPU_ALL_H
+ #define CPU_ALL_H
  
- #include "exec/cpu-common.h"
- 
--#include "cpu.h"
+-#include "exec/cpu-common.h"
 -
  #endif /* CPU_ALL_H */
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 207416e0212..813113c51ea 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -36,6 +36,7 @@
- #include "exec/log.h"
- #include "qemu/main-loop.h"
- #include "exec/cpu-all.h"
-+#include "cpu.h"
- #include "exec/icount.h"
- #include "exec/replay-core.h"
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index 82e67eff682..313100fcda1 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -66,6 +66,7 @@
+ #error Can only include this header with TCG
+ #endif
+ 
++#include "exec/cpu-common.h"
+ #include "exec/cpu-ldst-common.h"
+ #include "exec/cpu-mmu-index.h"
+ #include "exec/abi_ptr.h"
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 42788a6a0bc..fb1d63527ef 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -21,6 +21,7 @@
+ #define ALPHA_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 958a921490e..ee92476814c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -24,6 +24,7 @@
+ #include "qemu/cpu-float.h"
+ #include "hw/registerfields.h"
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "exec/gdbstub.h"
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index 714c6821e2f..f56462912b9 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -22,6 +22,7 @@
+ #define QEMU_AVR_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ 
+diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
+index f78c8f9c2a0..e4fc35b112d 100644
+--- a/target/hexagon/cpu.h
++++ b/target/hexagon/cpu.h
+@@ -21,6 +21,7 @@
+ #include "fpu/softfloat-types.h"
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "hex_regs.h"
+ #include "mmvec/mmvec.h"
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 986dc655fc1..5b6cd2ae7fe 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -21,6 +21,7 @@
+ #define HPPA_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "system/memory.h"
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 64706bd6e5d..38ec99ee29c 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -23,6 +23,7 @@
  #include "system/tcg.h"
+ #include "cpu-qom.h"
+ #include "kvm/hyperv-proto.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "exec/memop.h"
+diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+index 1dba8ac6a7c..167989ca7fe 100644
+--- a/target/loongarch/cpu.h
++++ b/target/loongarch/cpu.h
+@@ -9,6 +9,7 @@
+ #define LOONGARCH_CPU_H
+ 
+ #include "qemu/int128.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "fpu/softfloat-types.h"
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 451644a05a3..5347fbe3975 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -21,6 +21,7 @@
+ #ifndef M68K_CPU_H
+ #define M68K_CPU_H
+ 
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index d29681abed4..90d820b90c7 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -21,6 +21,7 @@
+ #define MICROBLAZE_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "qemu/cpu-float.h"
+ #include "exec/cpu-interrupt.h"
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 29362498ec4..79f8041ced4 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -2,6 +2,7 @@
+ #define MIPS_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index c153823b629..f16a070ef6c 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -21,6 +21,7 @@
+ #define OPENRISC_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "fpu/softfloat-types.h"
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 7489ba95648..aa5df47bdaf 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -22,6 +22,7 @@
+ 
+ #include "qemu/int128.h"
+ #include "qemu/cpu-float.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "cpu-qom.h"
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 556eda57e94..14a6779b4c1 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -23,6 +23,7 @@
+ #include "hw/core/cpu.h"
+ #include "hw/registerfields.h"
+ #include "hw/qdev-properties.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "exec/gdbstub.h"
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 5f2fcb66563..e2ec78835e4 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -23,6 +23,7 @@
+ #include "hw/registerfields.h"
+ #include "cpu-qom.h"
+ 
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index 0a32ad4c613..83d01d5c4e1 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -27,6 +27,7 @@
+ 
+ #include "cpu-qom.h"
+ #include "cpu_models.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index 18557d8c386..7581f5eecb7 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -21,6 +21,7 @@
+ #define SH4_CPU_H
+ 
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 923836f47c8..5dc5dc49475 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -3,6 +3,7 @@
+ 
+ #include "qemu/bswap.h"
+ #include "cpu-qom.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "qemu/cpu-float.h"
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index cf9dbc6df8e..abb9cba136d 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -22,6 +22,7 @@
+ 
+ #include "cpu-qom.h"
+ #include "hw/registerfields.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "qemu/cpu-float.h"
+ #include "tricore-defs.h"
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 66846314786..c5d2042de14 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -30,6 +30,7 @@
+ 
+ #include "cpu-qom.h"
+ #include "qemu/cpu-float.h"
++#include "exec/cpu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/cpu-interrupt.h"
+ #include "hw/clock.h"
+diff --git a/cpu-target.c b/cpu-target.c
+index 587f24b34e5..52de33d50b0 100644
+--- a/cpu-target.c
++++ b/cpu-target.c
+@@ -23,6 +23,7 @@
+ #include "qemu/qemu-print.h"
+ #include "system/accel-ops.h"
+ #include "system/cpus.h"
++#include "exec/cpu-common.h"
+ #include "exec/tswap.h"
+ #include "exec/replay-core.h"
+ #include "exec/log.h"
 -- 
 2.39.5

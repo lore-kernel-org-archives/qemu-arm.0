@@ -1,122 +1,122 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3346434njc;
-        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX01OUkgxT23qtI9s1N3kLEAykLg04RJU5xncwkrq55WBIHW0BEYMwOmjrCABlfuvJ1RJqJ5SLPOifoRw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH9t6wjcIC/y4p2Q516sT+4FPUh07KG1uLnqsfp1p793kLJwR2O5MuS475pBfKdqRM41iAe
-X-Received: by 2002:a05:620a:27c2:b0:7c5:ae70:b081 with SMTP id af79cd13be357-7c5e491272bmr547038085a.20.1742998710143;
-        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742998710; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3330383njc;
+        Wed, 26 Mar 2025 06:59:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV9SGgihABz6LURvLjseSUx9QEk8qUMHue7DpIPTxBIYC/EuZnuS4Qh34fHEP7rJp+htJg7Bjg8KiJzhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGL6CRaDWRs7iJaCJIF3jr8PaJYg6uyUxI+ny6pTwW23eOLMpyjILmOUR64Jp1UZV2Zqupg
+X-Received: by 2002:a05:620a:40c4:b0:7c5:9665:38d3 with SMTP id af79cd13be357-7c5ba1ef1d2mr3404333085a.46.1742997571966;
+        Wed, 26 Mar 2025 06:59:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742997571; cv=none;
         d=google.com; s=arc-20240605;
-        b=PfWO92XX4vl2XwLS6uU9fSYVU4K7BrqtpEOMA0DedAZZgRh+y+JB33eBS7HcxCgAwI
-         +LUEPygDXeuONeWBs6c2G+3O2h2MIkoZBhSexy4PwIWYLn/Wygta4fJMPED9DtsR7UG9
-         d4mBZ3gKOmBiTVbN2UnKQU0+CM06DQoJnQS1ASDmrRVAr3sAOa9+XNcA3siXGDbJO2Ik
-         LOSLpcrJFpYxpNfH0fYr9hnBX6MMcohG51jTQiAd9LphVgHs1ZbcLV1DmRq3gJ3zSnI+
-         Cn8OB6OyUExi1mZjZ8grzFlXLrQujUptDElZCY0EtqM6+58gJKLzGRlaf28i+BCo+51w
-         Powg==
+        b=dFVHsX/YbTxr5vryl8aFgk8vZm0QeItegicB8RiipuUgTkQhQW/ifgx63PwbFR352W
+         2mDFwfB7N2fmSd7qU8wTwqvNQvm0/E5l1Iiz8u4IUzNEsPlFVfw8ccCTTnRnvzB8Z6UW
+         rACYPnI1cHwBIoAKbBXKQNziA41g+u2Dk/2jTO04U0DHJN9QvJdjAYHTu4vGsFmkfGxs
+         1wQ149G7ogDr2M+vxSSNSIJD56QgGFkJKqYpCJM4K1dbc73YwcUw2w1l/k9G//IqgNuN
+         MMvNcuOAa9vA/OBgwrNEWgytymAthdrXiOt4CfdyXVrhVQI2m/t+sAo2NXJdJLehjr5O
+         1SAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
-        fh=JFsBDM/S0fl8jlmmuEo91WoOT7fXVTELEQ9awC7qTSI=;
-        b=i/0MOrYTPQJ+akTVexl7xwPQyAN4hM4oUx9e77pRHBv5IQPSkJn3BDX5AyJP+Qwfn2
-         INH/HstH/+pSAgSXI4lSz3ZtiAtHvmxLRfnsx285knAjElGO65qxIXEJYkA3Ij2wJSZz
-         apaHu8mhNSzOcvw0hYtK0IQuWe21hamE8bR/pKT1tJ0iLkc5ek1yIBMMPf3VCbqplJf8
-         z6Z4Kkg4TNoX+9DmfmlWf1M5wkMTKUAOTlMyj6hKOq5VjBMpQ4nDrZGBfrpb84ILZ2E4
-         Cgg/2xJFjAeRq8Wxm7ydzmxe8Ft5IOolRJRMiWcPHVJopJYfQXacE9dF+5htlyOEzlyb
-         PKuQ==;
+        bh=ikhE//JWK4Sdjg+6D/ARN9Oi1G3pFUwXzqX4b0H32PQ=;
+        fh=LpAk4Z9OfJwq9D8XGuUHAKgmc9zyBy5+WbhPYM73FrQ=;
+        b=jyzRMBettNdxgxg+2aGETrGcs7xTrGR3uX1mXzX0hTcr/B1+D+fordluxXU+zOL0eK
+         knpWqHsOnMBGCQiTrs64iCB/P9wTymSXUK/wRsuV5P23f1GfVk/U+bBOfWxq/GXxBFAa
+         BY2Oh8FaunClsuzFGNI0aiQZpS2LAXaJdu1EhDiV1uhLt2qxyP97CtcYATIrx2UTT4ZB
+         mINB6Q4cDKiIdeEK51qSoyM4FjlYmI90/1ZGpR68Jjx9RqV+hOQrAj0D8pZIwQh+Zb4M
+         g2w9Bm2nDHNSqckmQuuHCvV1Vxzs2CIRQXc98YqUHmQNiTkB1bbv8Sf+qilRFBLIVoUV
+         k0Gw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfZE4l+D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIQMPMSz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b93575cesi1147526385a.415.2025.03.26.07.18.30
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b92ce8f9si1180906985a.193.2025.03.26.06.59.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
+        Wed, 26 Mar 2025 06:59:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfZE4l+D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIQMPMSz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1txRaO-0003nF-2w; Wed, 26 Mar 2025 10:18:28 -0400
+	id 1txRHv-00071o-CH; Wed, 26 Mar 2025 09:59:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txRaD-0003j5-Fe
- for qemu-arm@nongnu.org; Wed, 26 Mar 2025 10:18:25 -0400
+ id 1txRHt-00071B-JG
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 09:59:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txRaB-0005Ui-Gd
- for qemu-arm@nongnu.org; Wed, 26 Mar 2025 10:18:17 -0400
+ id 1txRHr-00036h-Qb
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 09:59:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742998694;
+ s=mimecast20190719; t=1742997558;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
- b=MfZE4l+DcuJ12Fs+L8wonGbcBt94OEUhHSL/A/Vv673I7Sk2EAh2Iio2x5vAMQoKTPkVl5
- Gx88Jw8VvILn+Z9yMRLvBaYWv5bM+2+/XzxmshzS/f/f9000eybh3m5hh5WBJuYjNGImDF
- F9TZMuCrza2cKrVbdwIMNiiX3Q6HYYs=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ikhE//JWK4Sdjg+6D/ARN9Oi1G3pFUwXzqX4b0H32PQ=;
+ b=QIQMPMSzj+v2ExBKZpE104pLHeCllCW1Kgl/L3DF/W+YUSqwDkCXbUZtwx6rdRj8J6Sbml
+ uNcKPP8D+C09KFL685mCz8NvSIxMTrykEk52fyQfEHm8PI1J0vf7mwPcIAE1rZuN5dg3sS
+ k5VwawP4vG0ARglRncqMrVwrREnCzik=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-347-TRDDjA6zMvazQp3LXVH8JQ-1; Wed, 26 Mar 2025 10:18:13 -0400
-X-MC-Unique: TRDDjA6zMvazQp3LXVH8JQ-1
-X-Mimecast-MFC-AGG-ID: TRDDjA6zMvazQp3LXVH8JQ_1742998692
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-438e180821aso32396625e9.1
- for <qemu-arm@nongnu.org>; Wed, 26 Mar 2025 07:18:12 -0700 (PDT)
+ us-mta-61-uHod6tUMNUO3mCWZ4P92Hg-1; Wed, 26 Mar 2025 09:59:16 -0400
+X-MC-Unique: uHod6tUMNUO3mCWZ4P92Hg-1
+X-Mimecast-MFC-AGG-ID: uHod6tUMNUO3mCWZ4P92Hg_1742997555
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-43d3b211d0eso4973885e9.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Mar 2025 06:59:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742998692; x=1743603492;
+ d=1e100.net; s=20230601; t=1742997555; x=1743602355;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
- b=n+425lWuvGaXBOpcf6omK28eEN4Jk76OKxAK86bldD+Bw9srsvv8oLj3Sx0Eu4mvKm
- Y6d7SrvWwwXJw1OSSo6aW1WsdG3nIrtBZLCUOe+BDCGdzKD/QipsIof+5MjqRurMuaSz
- KP0SQsAh7e5pO49yzXX04RU5fRB9eJ5dNsKrzWy1H6e15qJudTfqrra3JYO94UVnfc8q
- joGYBsDqanX60JPAuRZ/oxBb6M6EsEMIdAngFEsQIslFTuMfJdH7UfqdWwGpgcQ6PrG+
- ShKXMF66vV2qqZVR7pXomYis/BXKaWEwqL8uP8vMmTjE0wPNs3ZdZ48+XTNqev/dov7V
- 2RKQ==
+ bh=ikhE//JWK4Sdjg+6D/ARN9Oi1G3pFUwXzqX4b0H32PQ=;
+ b=AFHR2JSgre9+o6jhJLxmhwYSDz8Id2XTdyVwS6zfyyZUM3Lf7R0QfGT4j+qPPyLawp
+ mWKtnNiKU0YZTq36mFguHcA2W0FyFlxbJ2t612780iq7S8YrInQIHaYwxGdzsJ+jzxov
+ VwpeFZSbzKVwW12x8SSWTemL5F4pRz9kuONLLHxZ8WEaDs4Gc/myf3Y6uCf6UyLpg6kW
+ dFAwcg/x2CaebTshZM7ZCaUZ5VlKfU/IazoTvVNEVXQ36xS4SrypYj+0ffSvZBJpu2B0
+ l6hZmq+6UvE1DxT/SKk977aFSF4keqSVZ70xi4v0x0ZvVgFno9GaN4IpABR/OCiABzHf
+ g49w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVz7+CeFo1E4ILLrkkS6AhqrTGb+LCYFRzo/IY9ipcDTrZQT2bfCEsqDMxHTVh4d1ge8JgsKFZniw==@nongnu.org
-X-Gm-Message-State: AOJu0YwrW3BDtMib/TeRjn/1GVrTn+i3xYoLs5jRjJ8nVneGi8ftpdiR
- nOfw3GSQMC9HcWDFbTp1kNFV+CcD7HPlxiq7JtKlc07E5oc/BFv0sBJHAuaRBeNz4ySlBUp49FU
- a1lOv1H3ow064W49T3+NCWDMK5ZpvimajJWOEoXBGZKFnaElMyQ==
-X-Gm-Gg: ASbGncu6Wzf1z20L8EZI1uZi8zIa2HExFh4QpauIWHJbhagXTs5scZyqhMDvu5O6cJx
- HDh83b4sFACdWS0DCC7ThakJGx3GdfSpW/3YmqG/z0DXDq7LdEgaJwERfBL3e9zQM02e0RJrueg
- siDmjeOOMIlk2OrB7itzkWZOEXGeiu4q8R7jhsh6uwmZK/S8Ml5tA4Nn/Ap29uWrXDxBWtS2tWX
- 1K3oWr7qp8ju4oGDXBnHHd8A8f43fVPV2wOMHHVLknGnaN3Gpwv/n+MxWfhuZmL9P821zvJ08TZ
- ekWL81y9q2h7a/CfBsXVGIVP3avE72ETJCW1RqZXtbGt12rCYW3MV2NHyDSUYqY=
-X-Received: by 2002:a05:600c:3547:b0:439:91dd:cf9c with SMTP id
- 5b1f17b1804b1-43d7894c000mr35043275e9.10.1742998689909; 
- Wed, 26 Mar 2025 07:18:09 -0700 (PDT)
-X-Received: by 2002:a05:600c:3547:b0:439:91dd:cf9c with SMTP id
- 5b1f17b1804b1-43d7894c000mr35042625e9.10.1742998689417; 
- Wed, 26 Mar 2025 07:18:09 -0700 (PDT)
+ AJvYcCVN+Ho5VWA8fW0E+Bb71fBmMLRF8ShjdZLz6G9EGaUR9BWpzLtydIlWzj/ZvlkztM+DcxzpdBVeLQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxISzZ5BvnE12kAsypbQuSKDHnLrHmnEaL3QCxcdn6psvBcX0hU
+ JsEFAOEumYhdck/AkPQ3eXvegerL8UFhKrRYX3C0CCNKIsR7+zyBXDOdRh/H+ssaouqFyk25If2
+ z1Zp8O8XkQfmg8NFwanNF7bxy9foxfv6Wuqa2KhJc4SBxds6mtw==
+X-Gm-Gg: ASbGncsaoi0eRKtjWAqGdUOwp+zs6raf2/4mVZhq14b39TbMleEJ44JHRGqPpqY9VpM
+ YWMsyoLof//bY1P5yiLPwsRzVy8++bJzxQ8DZ6kTWjaEg0Rr/PW6aTfVrEDyDKt/u4lFDkBkwTo
+ icmv3RaZ2QQPJNtj+hH9aLi9MozpiB/2++e2n83pesmmz8/yZu02rOODOcFPDqw3dDwhNxobYEY
+ 8rRBAyxGmQQMYIYduw/XtuOokbS6vecpZpQqk6M9rUTPm6+t7Q42oOisEPC2UGvzrfnSDqM56TH
+ gbZ9q6Z2jmGeU1dec0ScQHot6aD5zQxShljIlmYLMo3TZe3mF4d/VkLmH+k1u5A=
+X-Received: by 2002:a05:6000:1a88:b0:39a:c86d:e094 with SMTP id
+ ffacd0b85a97d-39acc46dd0bmr3313250f8f.17.1742997555087; 
+ Wed, 26 Mar 2025 06:59:15 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a88:b0:39a:c86d:e094 with SMTP id
+ ffacd0b85a97d-39acc46dd0bmr3313218f8f.17.1742997554593; 
+ Wed, 26 Mar 2025 06:59:14 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9a3b83sm17192486f8f.33.2025.03.26.07.18.08
+ ffacd0b85a97d-3997f9b2654sm16699286f8f.41.2025.03.26.06.59.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Mar 2025 07:18:08 -0700 (PDT)
-Message-ID: <6b943f66-6a2d-4db7-9524-c4c1fa2fbaec@redhat.com>
-Date: Wed, 26 Mar 2025 15:18:07 +0100
+ Wed, 26 Mar 2025 06:59:13 -0700 (PDT)
+Message-ID: <092113d0-9cd8-4384-b65a-46922239c794@redhat.com>
+Date: Wed, 26 Mar 2025 14:59:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 15/20] hw/arm/smmuv3: Forward invalidation commands
- to hw
+Subject: Re: [RFC PATCH v2 13/20] hw/arm/smmuv3-accel: Introduce helpers to
+ batch and issue cache invalidations
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
@@ -125,11 +125,11 @@ Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-14-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20250311141045.66620-14-shameerali.kolothum.thodi@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZMyRW_WgmVekSB3VSbTsFq4Al8XRfHyHPpeo-3NmLmE_1742998692
+X-Mimecast-MFC-PROC-ID: hKP56rMtsUo8dLWU-nLplf3HSj5K6-b2r-gASoK_szE_1742997555
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -159,170 +159,156 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4Ws1k145a6zy
+X-TUID: 0TeVZ481SGow
 
 
 
 On 3/11/25 3:10 PM, Shameer Kolothum wrote:
 > From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> Use the provided smmuv3-accel helper functions to issue the
-> command to physical SMMUv3.
+> Inroduce an SMMUCommandBatch and some helpers to batch and issue the
+> commands.  Currently separate out TLBI commands and device cache commands
+> to avoid some errata on certain versions of SMMUs. Later it should check
+> IIDR register to detect if underlying SMMU hw has such an erratum.
 >
 > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/arm/smmuv3-internal.h | 11 ++++++++
->  hw/arm/smmuv3.c          | 58 +++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 68 insertions(+), 1 deletion(-)
+>  hw/arm/smmuv3-accel.c    | 69 ++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/smmuv3-internal.h | 29 +++++++++++++++++
+>  2 files changed, 98 insertions(+)
 >
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 4602ae6728..546f8faac0 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -235,6 +235,17 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
->  #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
->  #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 76134d106a..09be838d22 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -160,6 +160,75 @@ void smmuv3_accel_install_nested_ste(SMMUDevice *sdev, int sid)
+>                                            nested_data.ste[0]);
+>  }
 >  
-> +static inline int smmuv3_q_ncmds(SMMUQueue *q)
+> +/* Update batch->ncmds to the number of execute cmds */
+> +int smmuv3_accel_issue_cmd_batch(SMMUState *bs, SMMUCommandBatch *batch)
 > +{
-> +        uint32_t prod = Q_PROD(q);
-> +        uint32_t cons = Q_CONS(q);
+> +    SMMUv3AccelState *s_accel = ARM_SMMUV3_ACCEL(bs);
+> +    uint32_t total = batch->ncmds;
+> +    IOMMUFDViommu *viommu_core;
+> +    int ret;
 > +
-> +        if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
-> +                return prod - cons;
-> +        else
-> +                return WRAP_MASK(q) - cons + prod;
+> +    if (!bs->accel) {
+> +        return 0;
+> +    }
+> +
+> +    if (!s_accel->viommu) {
+> +        return 0;
+> +    }
+> +    viommu_core = &s_accel->viommu->core;
+> +    ret = iommufd_backend_invalidate_cache(viommu_core->iommufd,
+> +                                           viommu_core->viommu_id,
+> +                                           IOMMU_VIOMMU_INVALIDATE_DATA_ARM_SMMUV3,
+> +                                           sizeof(Cmd), &batch->ncmds,
+> +                                           batch->cmds);
+> +    if (total != batch->ncmds) {
+> +        error_report("%s failed: ret=%d, total=%d, done=%d",
+> +                      __func__, ret, total, batch->ncmds);
+> +        return ret;
+> +    }
+> +
+> +    batch->ncmds = 0;
+> +    batch->dev_cache = false;
+> +    return ret;
 > +}
 > +
->  static inline bool smmuv3_q_full(SMMUQueue *q)
->  {
->      return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 83159db1d4..e0f225d0df 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1297,10 +1297,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
->      SMMUQueue *q = &s->cmdq;
->      SMMUCommandType type = 0;
-> +    SMMUCommandBatch batch = {};
-> +    uint32_t ncmds = 0;
+> +int smmuv3_accel_batch_cmds(SMMUState *bs, SMMUDevice *sdev,
+I think you shall document that sdev can be NULL and also when this
+helper shall be called with sdev != NULL
+
+Thanks
+
+Eric
+> +                            SMMUCommandBatch *batch, Cmd *cmd,
+> +                            uint32_t *cons, bool dev_cache)
+> +{
+> +    int ret;
 > +
->  
->      if (!smmuv3_cmdq_enabled(s)) {
->          return 0;
->      }
+> +    if (!bs->accel) {
+> +        return 0;
+> +    }
 > +
-> +    ncmds = smmuv3_q_ncmds(q);
-> +    batch.cmds = g_new0(Cmd, ncmds);
-> +    batch.cons = g_new0(uint32_t, ncmds);
-> +
->      /*
->       * some commands depend on register values, typically CR0. In case those
->       * register values change while handling the command, spec says it
-> @@ -1395,6 +1403,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->  
->              trace_smmuv3_cmdq_cfgi_cd(sid);
->              smmuv3_flush_config(sdev);
-> +
-> +            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
-> +                                        &q->cons, true)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-OK so now I see you record the error. You can ignore the previous comment.
-> +                break;
-> +            }
-> +
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ASID:
-> @@ -1418,6 +1433,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->              smmu_inv_notifiers_all(&s->smmu_state);
->              smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-> +
-> +            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-> +                                        false)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ALL:
-> @@ -1445,6 +1467,12 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              trace_smmuv3_cmdq_tlbi_nsnh();
->              smmu_inv_notifiers_all(&s->smmu_state);
->              smmu_iotlb_inv_all(bs);
-> +
-> +            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-> +                                        false)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
->              break;
->          case SMMU_CMD_TLBI_NH_VAA:
->          case SMMU_CMD_TLBI_NH_VA:
-> @@ -1453,7 +1481,24 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->                  break;
->              }
->              smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
-> +
-> +            if (smmuv3_accel_batch_cmds(bs, NULL, &batch, &cmd, &q->cons,
-> +                                        false)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +            break;
-> +        case SMMU_CMD_ATC_INV:
-To me the code below shall be put in a separate patch as it introduces
-the suport for a new cmd. Also it shall be properly documented in the
-commit msg
-> +        {
-> +            SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
-> +
-> +            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
-> +                                        &q->cons, true)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
->              break;
-> +        }
->          case SMMU_CMD_TLBI_S12_VMALL:
->          {
->              int vmid = CMD_VMID(&cmd);
-> @@ -1485,7 +1530,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          case SMMU_CMD_TLBI_EL2_ASID:
->          case SMMU_CMD_TLBI_EL2_VA:
->          case SMMU_CMD_TLBI_EL2_VAA:
-> -        case SMMU_CMD_ATC_INV:
->          case SMMU_CMD_PRI_RESP:
->          case SMMU_CMD_RESUME:
->          case SMMU_CMD_STALL_TERM:
-> @@ -1511,12 +1555,24 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          queue_cons_incr(q);
->      }
->  
-> +    qemu_mutex_lock(&s->mutex);
-> +    if (!cmd_error && batch.ncmds) {
-> +        if (smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-> +            q->cons = batch.cons[batch.ncmds];
-> +            cmd_error = SMMU_CERROR_ILL;
+> +    if (sdev) {
+> +        SMMUv3AccelDevice *accel_dev;
+> +        accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
+> +        if (!accel_dev->s1_hwpt) {
+> +            return 0;
 > +        }
 > +    }
-> +    qemu_mutex_unlock(&s->mutex);
 > +
->      if (cmd_error) {
->          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
->          smmu_write_cmdq_err(s, cmd_error);
->          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
->      }
->  
-> +    g_free(batch.cmds);
-> +    g_free(batch.cons);
+> +    /*
+> +     * Currently separate out dev_cache and hwpt for safety, which might
+> +     * not be necessary if underlying HW SMMU does not have the errata.
+> +     *
+> +     * TODO check IIDR register values read from hw_info.
+> +     */
+> +    if (batch->ncmds && (dev_cache != batch->dev_cache)) {
+> +        ret = smmuv3_accel_issue_cmd_batch(bs, batch);
+> +        if (ret) {
+> +            *cons = batch->cons[batch->ncmds];
+> +            return ret;
+> +        }
+> +    }
+> +    batch->dev_cache = dev_cache;
+> +    batch->cmds[batch->ncmds] = *cmd;
+> +    batch->cons[batch->ncmds++] = *cons;
+> +    return 0;
+> +}
 > +
->      trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
->                                    Q_PROD_WRAP(q), Q_CONS_WRAP(q));
+>  static bool
+>  smmuv3_accel_dev_attach_viommu(SMMUv3AccelDevice *accel_dev,
+>                                 HostIOMMUDeviceIOMMUFD *idev, Error **errp)
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 46c8bcae14..4602ae6728 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -549,13 +549,42 @@ typedef struct CD {
+>      uint32_t word[16];
+>  } CD;
 >  
-Eric
+> +/**
+> + * SMMUCommandBatch - batch of invalidation commands for smmuv3-accel
+> + * @cmds: Pointer to list of commands
+> + * @cons: Pointer to list of CONS corresponding to the commands
+> + * @ncmds: Total ncmds in the batch
+> + * @dev_cache: Issue to a device cache
+> + */
+> +typedef struct SMMUCommandBatch {
+> +    Cmd *cmds;
+> +    uint32_t *cons;
+> +    uint32_t ncmds;
+> +    bool dev_cache;
+> +} SMMUCommandBatch;
+> +
+>  int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>                    SMMUEventInfo *event);
+>  void smmuv3_flush_config(SMMUDevice *sdev);
+>  
+>  #if defined(CONFIG_ARM_SMMUV3_ACCEL) && defined(CONFIG_IOMMUFD)
+> +int smmuv3_accel_issue_cmd_batch(SMMUState *bs, SMMUCommandBatch *batch);
+> +int smmuv3_accel_batch_cmds(SMMUState *bs, SMMUDevice *sdev,
+> +                            SMMUCommandBatch *batch, Cmd *cmd,
+> +                            uint32_t *cons, bool dev_cache);
+>  void smmuv3_accel_install_nested_ste(SMMUDevice *sdev, int sid);
+>  #else
+> +static inline int smmuv3_accel_issue_cmd_batch(SMMUState *bs,
+> +                                               SMMUCommandBatch *batch)
+> +{
+> +    return 0;
+> +}
+> +static inline int smmuv3_accel_batch_cmds(SMMUState *bs, SMMUDevice *sdev,
+> +                                          SMMUCommandBatch *batch, Cmd *cmd,
+> +                                          uint32_t *cons, bool dev_cache)
+> +{
+> +    return 0;
+> +}
+>  static inline void smmuv3_accel_install_nested_ste(SMMUDevice *sdev, int sid)
+>  {
+>  }
 

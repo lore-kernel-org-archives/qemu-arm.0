@@ -1,178 +1,235 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3483398njc;
-        Wed, 26 Mar 2025 10:41:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVi8/pgzxyfyNs+XIw0dvGOjrPBXNd65h8PHzzj1T0tywQYV+ugZlEwmY52iP3D/4j3pd3bC+d+evvvFQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG1xPsskMST3cshC09d8AJRstTQiQ2Ne0bJUNHtvi00tfTrWAh3mkAtXrVQoPY3uJs6Ti0r
-X-Received: by 2002:a05:622a:996:b0:476:b82b:ac91 with SMTP id d75a77b69052e-4776e255ed5mr10418421cf.49.1743010889296;
-        Wed, 26 Mar 2025 10:41:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743010889; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3484470njc;
+        Wed, 26 Mar 2025 10:43:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFBk/L8MooHzlNPMoHdSU8O0/Qopa0x4hjriskA30eXCqfuGqppCPaRHlHYXCM4zak8hw6JoWQvYiPAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHjGIy8MR0blKQRlGWtbn9fLROO6Ur9DoBCS8oxA5CtlcOFvfjwCqH7iwifm77+yT9Vmysg
+X-Received: by 2002:a05:622a:259b:b0:476:af18:239d with SMTP id d75a77b69052e-4776e21c081mr8280311cf.51.1743011004151;
+        Wed, 26 Mar 2025 10:43:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743011004; cv=none;
         d=google.com; s=arc-20240605;
-        b=hZy2jmvXdztR5MgrqgAeqrBiuX6Lenu9rRqnui2qa12iMcuVMEDKDfHT3iC8EWrRE3
-         w1lCkDDps3B6Dahj5bg2bAyFuVtniR3J5cIakzo7A2egTh8oMQuEPwNxUriGvbGv40lr
-         ip+J3+d3zsjb0YTjqMKhe9K4Li/hf9waizQWxKSljt+23zC15euStwBoutluxmA9cHEH
-         oU9iwkD+lCmt+kIITAKlmBRc/pPlxuYXhTNFSMTracrxdVvS0Rj78byIzVlKzsKxcNoe
-         zyiNaMBEFjHL8OdCxfnHyLNS/ourFlrxV9JJLDxXe/Fwv+UQLR9PssZTS1ZWWnL1dCHd
-         pJ+w==
+        b=EQllJ6aopYajvmacMfMy/HO1bXF+APhVyjWA9gCyQiRyTAgAz8hMyE1qF5NvvKsJ0u
+         oVuCrnXuIPrUvoxePc/qphxYCFQ6jaHZYWDKhmWDhrwWk5qMM5NOUUnTkH8bV5eyL5ew
+         ehYMDFI2WtTp8Qq4YAd8Y+cbZ8jRGV1RGkNt6OxvmWqz0S2e64M+IKPy+a04wziTJTbF
+         3ajgo0HnTXLvE7pkBkQ++fr81GNWbg2XiOzIV4oUSqFpvQqJjv+4J41DwxaLObhdrwil
+         FLiemACmkgAoLHQy2JN2h5oiW7A7uTkssBIwcCRVAx7ZE7fVXvyYam09ElsGZ+zbJWq1
+         W0Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ekskBF5GBKj4mH3h42hATvRtDb2eBG485Gn9iKgB1aU=;
-        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
-        b=c5Qa+buvT4QHlg4QVXnBhhAyIu3aVJRoG5YkGsf0+bwXlU+/uUwjds0B0PyIDPOEoj
-         725WDf6k251KrVAR+Mv3dJQpPhMnJU4JT0f9mIHxAN8E/RmDf4EAkP3gLXwlU7CFHxcT
-         9gvucKaF6DPPu0JrBFOd15kVHRNjWFcLRhsZ7nzRT3JdCXcPzS/AnpxoDsF7GeAS1hJU
-         5efXNYrnyEPtXhJPoz1sjw4WjqiZCUv5z92Uvp32GBL6auEHt1oRAZW/dLBfXaD0AY+Q
-         3Zc3oug/rDDH1s3M0V37q3bfBqts/hcR3pdyCHyMdyRp+jFGEgy4CCcXyFXtkvMaW2F5
-         XYSA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=jTJ0C7Goe9kJnjrceh72nLA7Q8PYNzitscojKrqHVDg=;
+        fh=KufzrQdO9SlXbJnJr4Q4i9pd+Cj0/RAEgAJwYesJ1jg=;
+        b=PF8Ed1PZsP2LKdvcBMjAVE5/hvLMBDK8gCQ3WXeof7XjGgdkz/QHrLB8VLQKUNsD7z
+         2ebG/+hWbgglz4bnGbveJHJUIM3mBfSK6p9GiUJX5uHy31BzkfcDrnEqpFxRs/xxGz1H
+         ohJoutUF/LvbADsFmEMz5bO4kzncJYmMqVt0a6QyjZf4jLgqFuS0Xg7A0vkdiPCPBPfL
+         YWwhlq0nM/N9zCaLeubA68/N8sQ0xWabmWTByKVB+K7/VkLKauKZAsNy3QLkEWTH+Uy/
+         MRTKxSfXWTZ2uvdYwsFx9cKtlLg/BJ12PQZ/gVpzjD5SkQT6DFjJ0TGHmbJudIJVlJw7
+         Xzgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P7UsGv6M;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QBH/remi";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4771d180479si128265351cf.165.2025.03.26.10.41.29
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4771d63b0a2si119780201cf.566.2025.03.26.10.43.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Mar 2025 10:41:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 26 Mar 2025 10:43:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P7UsGv6M;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QBH/remi";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1txUkr-0000UE-3A; Wed, 26 Mar 2025 13:41:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1txUjq-000710-76
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 13:40:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1txUjm-0005Zu-7a
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 13:40:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1743010889;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ekskBF5GBKj4mH3h42hATvRtDb2eBG485Gn9iKgB1aU=;
-	b=P7UsGv6MIM5dSz27kbokHhFw4p0ne3TMbC0tmMoQNYzS8quOs8I3zaiV6cPIm4rXbNnHky
-	xxbJobp+gPEPK8MXNop8ptjB6f5jpz79DYu7XmBo/h1WyJ6YKEvCH4FPrz1345wpsYxcei
-	FKT7+1qi38snoQI00UtIlHaqkvrwZ+g=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-65-WAJJEppKPFWVHOQxz4CdVg-1; Wed,
- 26 Mar 2025 13:41:23 -0400
-X-MC-Unique: WAJJEppKPFWVHOQxz4CdVg-1
-X-Mimecast-MFC-AGG-ID: WAJJEppKPFWVHOQxz4CdVg_1743010881
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 74999196D2DC;
-	Wed, 26 Mar 2025 17:41:21 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.67.24.38])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 12D10180B489;
-	Wed, 26 Mar 2025 17:41:06 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger.pro@gmail.com,
-	eric.auger@redhat.com,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	maz@kernel.org,
-	oliver.upton@linux.dev,
-	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com,
-	berrange@redhat.com,
-	abologna@redhat.com,
-	jdenemar@redhat.com,
-	agraf@csgraf.de
-Cc: shahuang@redhat.com,
-	mark.rutland@arm.com,
-	philmd@linaro.org,
-	pbonzini@redhat.com,
-	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-10.1 v4 13/13] arm/cpu: switch to a generated cpu-sysregs.h.inc
-Date: Wed, 26 Mar 2025 18:37:23 +0100
-Message-ID: <20250326173723.389988-14-cohuck@redhat.com>
-In-Reply-To: <20250326173723.389988-1-cohuck@redhat.com>
-References: <20250326173723.389988-1-cohuck@redhat.com>
+ s=mimecast20190719; t=1743010821;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jTJ0C7Goe9kJnjrceh72nLA7Q8PYNzitscojKrqHVDg=;
+ b=QBH/remiyETZAXMsy/K6zJDtAW61V6JO+pN6/VGzmIrUoUi09IZzhIPkdnPAPBrqIKDfk6
+ K0Hun6nNYitq7mc9fdSnJWsbvkMIZVldXo9Il3DpVthvBweNJmLnExVS2NqcGr2g3/YiUC
+ USsfMKT0SlklI2mMY20Ej5oNPqUW0O4=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-588-6diHIRcGPeCYXqrH243eqQ-1; Wed, 26 Mar 2025 13:40:14 -0400
+X-MC-Unique: 6diHIRcGPeCYXqrH243eqQ-1
+X-Mimecast-MFC-AGG-ID: 6diHIRcGPeCYXqrH243eqQ_1743010813
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-43d5ca7c86aso740985e9.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Mar 2025 10:40:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1743010813; x=1743615613;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jTJ0C7Goe9kJnjrceh72nLA7Q8PYNzitscojKrqHVDg=;
+ b=Pmy2IHA3wKq0WY8UrPwUcaEDsj3iQDJ4cnir0O9f4oRveHYjJd/yIJ+z63ojT3LkjH
+ JGMTRsWcNxROEOnaBIdAYsVFdEGXFKPWzqD54JrQSP3ru3ZHbukf4tHh432Q0BWw4bx1
+ Txeg/gNM/TmiyZwPNBazEQR1XqbxHJxuLsO4bS8NYLuasu2kKOgCQ2vOF11HtnpQv7WX
+ 4TM7Tl0AMm1wq/ChHjG8TjnnaJd6Vonf6uftdKpEaHspk8Otcw8084nNhIhaqowVAyqI
+ QtDmVxatyJiKWM+5jGfT4Ibv1C3UFwbfzJ1gsgIOIt69q7KnK/4nHGfG4mGk7ua5y84w
+ W0vQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXvCvt8UGjOogk9dztNOmG7h4Y/MZ5if9Q7WqrzJN4Rs6bHCqT60wF3rgZ+k/g4gJ66F2hnpQghxg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5QkMLt27YgAwNl5DDv7MjQNZ40aMZkbXAXvXGhOHSYMxyXwHg
+ 4NVfdFlIRYg4PIt7HY+Gyn2Rr2mgt/mcM3+rADLGCqDbYeHWu8GyQbcVSi939Nvi1cCxr7I2jZK
+ W9a1skZr2w8sgYgxymYr6jMMV9SHAzeCY8Y/edYyty2KMVSbZfg==
+X-Gm-Gg: ASbGncsOxIAU66yuDZ+VjnOlKSahMDRR/r/VvqA4RflVqGCfbXEQn3y3ROJZqurtsNf
+ L5vIY2qBBJf07MrVtahHRoUwcZfSLR+UndK4/F2kC6vj4zeWiRM+3tzbS35hlEFxv+JfQ+I/Fi1
+ RBUTsobzmz+0UFxPQ/RGv6OUNnhW8KLqd94y3wa408i1Mt7BDjyl+ZMzA6gNRhNqzIEOFMS6R+O
+ 4pnvqfgxQraHpzCFDL3j7/pYJc9dh7XBSEZ1VSv59x5QUO1wAKEQ7rWQZ7VD3jkrm0n/BQb1d8B
+ zJNCB87RlwbKD07qJmhokWvt8dGaHskecHqSQcQK8CUKwAaxsgHM+a2Pm1R7EpQ=
+X-Received: by 2002:a05:600c:3483:b0:43c:e9f7:d6a3 with SMTP id
+ 5b1f17b1804b1-43d84fba8d5mr4381965e9.13.1743010812799; 
+ Wed, 26 Mar 2025 10:40:12 -0700 (PDT)
+X-Received: by 2002:a05:600c:3483:b0:43c:e9f7:d6a3 with SMTP id
+ 5b1f17b1804b1-43d84fba8d5mr4381585e9.13.1743010812307; 
+ Wed, 26 Mar 2025 10:40:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43d8314b9e9sm8886385e9.37.2025.03.26.10.40.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Mar 2025 10:40:11 -0700 (PDT)
+Message-ID: <4a6103cd-a007-4cb2-bd3b-1bc39c0ecd9e@redhat.com>
+Date: Wed, 26 Mar 2025 18:40:10 +0100
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: N0Zu4VxY18Ww
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2 18/20] hw/arm/smmu-common: Bypass emulated IOTLB
+ for a accel SMMUv3
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
+ <20250311141045.66620-19-shameerali.kolothum.thodi@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250311141045.66620-19-shameerali.kolothum.thodi@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dcw11wyEV-C3m30RSuG_jT3sMssXpaFswMjYw8Qz-jo_1743010813
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EHmRm4YE/jf6
 
-Generated against Linux 6.14-rc1.
 
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- target/arm/cpu-sysregs.h.inc | 43 +++++++++++++++++++++++++-----------
- 1 file changed, 30 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index 6c9f9981cc5d..02aae133eb67 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,18 +1,8 @@
--DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
--DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
--DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
--DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
--DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
--DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
--DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
--DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
--DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
--DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
--DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
--DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
-+
- DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
- DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
- DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
- DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
- DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
- DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
-@@ -23,13 +13,40 @@ DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
- DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
- DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
- DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
--DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
-+DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
- DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
- DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
-+DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
- DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
-+DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
-+DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
-+DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
-+DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
-+DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
-+DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-+DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
-+DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
-+DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-+DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
-+DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
-+DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
-+DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
-+DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
-+DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
-+DEF(CCSIDR_EL1, 3, 1, 0, 0, 0)
-+DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-+DEF(CCSIDR2_EL1, 3, 1, 0, 0, 2)
-+DEF(GMID_EL1, 3, 1, 0, 0, 4)
-+DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
-+DEF(CSSELR_EL1, 3, 2, 0, 0, 0)
- DEF(CTR_EL0, 3, 3, 0, 0, 1)
-+DEF(DCZID_EL0, 3, 3, 0, 0, 7)
-+
--- 
-2.48.1
+On 3/11/25 3:10 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> If a vSMMU is configured as a accelerated one, HW IOTLB will be used
+> and all cache invalidation should be done to the HW IOTLB too, v.s.
+> the emulated iotlb. In this case, an iommu notifier isn't registered,
+> as the devices behind a SMMUv3-accel would stay in the system address
+> space for stage-2 mappings.
+>
+> However, the KVM code still requests an iommu address space to translate
+> an MSI doorbell gIOVA via get_msi_address_space() and translate().
+In case we you flat MSI mapping, can't we get rid about that problematic?
+
+Sorry but I don't really understand the problematic here. Please can
+elaborate?
+
+Thanks
+
+Eric
+>
+> Since a SMMUv3-accel doesn't register an iommu notifier to flush emulated
+> iotlb, bypass the emulated IOTLB and always walk through the guest-level
+> IO page table.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmu-common.c | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 9fd455baa0..fd10df8866 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -77,6 +77,17 @@ static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
+>      uint8_t level = 4 - (inputsize - 4) / stride;
+>      SMMUTLBEntry *entry = NULL;
+>  
+> +    /*
+> +     * Stage-1 translation with a accel SMMU in general uses HW IOTLB. However,
+> +     * KVM still requests for an iommu address space for an MSI fixup by looking
+> +     * up stage-1 page table. Make sure we don't go through the emulated pathway
+> +     * so that the emulated iotlb will not need any invalidation.
+> +     */
+> +
+> +    if (bs->accel) {
+> +        return NULL;
+> +    }
+> +
+>      while (level <= 3) {
+>          uint64_t subpage_size = 1ULL << level_shift(level, tt->granule_sz);
+>          uint64_t mask = subpage_size - 1;
+> @@ -142,6 +153,16 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
+>      SMMUIOTLBKey *key = g_new0(SMMUIOTLBKey, 1);
+>      uint8_t tg = (new->granule - 10) / 2;
+>  
+> +    /*
+> +     * Stage-1 translation with a accel SMMU in general uses HW IOTLB. However,
+> +     * KVM still requests for an iommu address space for an MSI fixup by looking
+> +     * up stage-1 page table. Make sure we don't go through the emulated pathway
+> +     * so that the emulated iotlb will not need any invalidation.
+> +     */
+> +    if (bs->accel) {
+> +        return;
+> +    }
+> +
+>      if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
+>          smmu_iotlb_inv_all(bs);
+>      }
+

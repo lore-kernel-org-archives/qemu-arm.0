@@ -1,205 +1,325 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp2955657njc;
-        Tue, 25 Mar 2025 15:44:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWn5M/ruajkuYGXyQM5CWFNdkXRwP9YvjBjWwKfCHjo3gTW98pT4gs7jt8hWFY3Bo7tpsqRvDgr2r4Crg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEC6A2fBuV8NfSaMYSl6vJx9maP8hDsQ2hm7N9ibBxMwI6LyUadcmQsfjKDvio8oZAlHnG
-X-Received: by 2002:a05:6214:1d27:b0:6ea:d393:962b with SMTP id 6a1803df08f44-6eb3f2e297emr328610066d6.22.1742942689996;
-        Tue, 25 Mar 2025 15:44:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742942689; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3481539njc;
+        Wed, 26 Mar 2025 10:38:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZBoYpBHH7VsZZHaDun3ZNISVJtiKwveJJC7EW9ia8U9aBwhO+ssegO3g3mloaycnPCEe5w3p7fTcWSA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHUF3vw2+zlA6R8mRq/1l7hhdnFwe0HFwDlnYXwm6OlU106aIbT7ktbYtj7w1OXzbUyVsWM
+X-Received: by 2002:a17:902:db0a:b0:224:23be:c569 with SMTP id d9443c01a7336-22804845097mr6825095ad.22.1743010691435;
+        Wed, 26 Mar 2025 10:38:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743010691; cv=none;
         d=google.com; s=arc-20240605;
-        b=Lh7Uf3AM2unsOZITe8MHc8BmWFWhBBrmiV8a2Gc2pINC1ZIK84YxznSfwuJNKtQ27j
-         h3RqUVslr33IPFsYTxRnACIIKbUY8LSGNfAgHOu2lsYkf7u3bmrdIAMRlD23U0g50qJm
-         sUOibL6dEeVE2ZH02Cyq3mZtf9F1THbKguX4FXUcLYE3zLshNNU2Blpj/gsETc3huHUl
-         5sEmEFli1/upxYrEMC59XR4TlKe1vpfUewRJr+0FSVzIubdq01F3kJ0FD1PbCUGiWoyH
-         ts23eadPDbkI/VxGkGy5piLFPyslus6GeQL+BrgOW8f6M1WG80SxCs8DaNeGukN4erPO
-         076g==
+        b=AYzAtRGhQO0v+S8Atta7PnWHVZoZEig1l7zbvdCkT4CBEqHGIZD00URwInuK9bGgaY
+         5yamu2EGLikQ2BaUKmnExaWjN1FAluJBswcjYpv/Eu+DzM6aB+s1dV/w6l0WFlCP0XHd
+         1Cxup173ySAchrIRDS7dXQRzVNi9F4ZDjw0sBAFD5zjJsk+6k48RltlyAmbDThvO2ey4
+         VEG6LHbcQT3IVg0jCdMas9z+nu9S0QySetfF+eMh/bnKLm0WNOg9jJFJ6Hpp/dqNNBla
+         z9lVoxlajA15x8hptog3RiL2EyAX+0VGx+OJrg2HuphQQkcNOjqTG2Ul2eWZ2YCFLL6r
+         finQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=DK+uWh0VCKgLvFlRmYU1/+eCsypc6Q9Oe4mzDQEUpcU=;
-        fh=mW1Q0Ozvt3OYZSPetfKS4v23CGXlqzaToexXM8Xohuw=;
-        b=UbE4qJxXS0vkfDKDX47OxX7hx5PufgGHzs196e9dz8T7j205Arup0aqtpYaUkc65+D
-         2dH0O2ibEqPeZqDrRgNBTwxsS0zE2jqe5/sJj0J9M8LFP/wO972lOPMiO7Y4ec8a47Nf
-         3FDu/PmKwvINHYOo8+bhdEMKkVh2Ffhij5VOjUW8aAkqHLzLlti1dEgclsVrQEQi8i/G
-         R9mLObXhMd6AeOlgGzvmSn410Okr9bobD6gi/uoEo1JNN5kBi34vn+CX9tRWlFTFdDTF
-         A6qwgfImkNtP2+bqZk5Cg7y+SQXlpsGMfgyOFWbdNwjGa1avCh39e+Jp/1NRpAaToSeH
-         Tsig==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Bxv4ehpPzDtjZQ/zQRfM+KrR6+mrhCmVABlE68fDoiE=;
+        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
+        b=gelkdmoSKx2gzGSucAWQc19L5JHrEV7CHhdZephrHxwaoWI7nQWDCaeDncDYFnVasa
+         ViiMhRb+BPCvPGJVbpBFYP8dxDP+2Ido5qnzmcsvvxZQJ1asc8eb0gHmRfVC1iChAfC9
+         KsNs65Siu18utOOjJ9EHrHLzIoUI0LFEiR6F8sbXHVOKYouwr3vMLkLFZ15wkGxCZTAf
+         D7+KCna7THZVKXz4IuWp+D6SItNDHwMiTO3dzcB/DjjAh6G8ITs2cdQu+SXAy/eC/w29
+         c39xaoAHyeptvU7nlne/Y+sq47sg1QXazrM/s1oeC06FCSY9udchpGKGE6TCn6TRRULK
+         BhbA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uegHxEdl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3f018ea2si100311386d6.269.2025.03.25.15.44.49
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Gqg/CUAV";
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-7390605d5e6si19265221b3a.315.2025.03.26.10.38.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Mar 2025 15:44:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Mar 2025 10:38:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uegHxEdl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1txD0N-0001xy-TI; Tue, 25 Mar 2025 18:44:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1txD0I-0001aT-Av
- for qemu-arm@nongnu.org; Tue, 25 Mar 2025 18:44:14 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1txD0G-00074I-87
- for qemu-arm@nongnu.org; Tue, 25 Mar 2025 18:44:13 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-399744f74e9so3929567f8f.1
- for <qemu-arm@nongnu.org>; Tue, 25 Mar 2025 15:44:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1742942651; x=1743547451; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DK+uWh0VCKgLvFlRmYU1/+eCsypc6Q9Oe4mzDQEUpcU=;
- b=uegHxEdlSfbpWcRVBdukpVBBHylh13PVvAPZQVcJbbRjyw2yWCjpAszeIwck3tjbtS
- 5x7zQcKDEPatHXomGY549ElqZ9Qbstcjpv+dTbVZnLYhi/gVRRl3tt6vfV4RwOru0Mwu
- f+byCT/Igsw8GdRNXLZPEg+2ZbXEPS2KZNBTfvF/zW6zs4Tb+SFGokvrY6FKkL6izLJ1
- Rj7xEccrwwl9f/0XPjKURTSA1xwIjPiApICUTX6Ay34Cg9gMrX1rl6Mg/tXoZZO51Eue
- 4HtW6NO4kPkU1vP0Y13AUn4wpU5jXswwM6M5FnmopmB7T+YAsVFqU9Wv7Dae6vRU17M2
- 4h2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742942651; x=1743547451;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=DK+uWh0VCKgLvFlRmYU1/+eCsypc6Q9Oe4mzDQEUpcU=;
- b=pV9EmMUBErH1ZMKN0WVmXybyuOfb90f6wc7Oy2iGqm+eqWEuHBDlg6Iledef4LK7w3
- 2FJNAQa0K2VhlEr2TkU1wOpmqvxiIpgjH9HlkYGMFnvDs3kiqvkjqbTTXGbIx/pMy4v8
- CvzPQDPVzslIBhw5zmX++OG6GUydZvb5YsiUJD/wxP0+Xlnes9KAQMNaAF4LneuvwXjH
- utv9lxL8yVXWB+FoD19gqnzWfEr4ziZ7WJH6FksYdaBB8n2KedKE240Pn77BAPFWYb0l
- ELy+q6P8jzJVDWYcjuevustvFTSglEfn2/Ud3nFlmrkZ6Nuc+Q4zUXmrDl2SOql8TE6e
- qLzg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUHVRrRGgTGFOWVqr3WlJCX0m7PJ3SwOQMzR/VUfSxg9fcwyXIxrVNBOxfGTPaCdxja1xKstk9M+A==@nongnu.org
-X-Gm-Message-State: AOJu0YzsgIoYbC6JU478V6HX20efqAMTr8q0iVl+A7VPAz8zkObq6Byx
- YBQUATkeUm0FYl46AFJVRFZdAc4L+JZ8NU8+ECVaDYcJLcFIpSy5Mlz9MsvKxLM=
-X-Gm-Gg: ASbGncuN3fKuRC4AhZRJfp6LT0kl1AdwxIAa5D8wR6gLudTWSkK1FQaLUlXo+RUFlwE
- qkvpyFARybj7hPfws6MBSbZuw9P9hyWJdFM7yrL8CPjl/BNOaHSL3LhZ0s9FR/vcHYNqLs3HFl3
- 5+cZGPgDIUGm+AiUVhgPTIeBPUfkZw8iTFzhIPnapzVb+iEYLPK9qKKV7swA47QoZgjvbjMjadT
- Npub1fHEQl4m/LvorJU//Yve6/bEo1pDXqWH/rtJY3ULoz/cKWc7bc/h5vSLloTQoKBuTJ1T3z9
- M/f4k0JkB5edWozOkQEHUInAMM+sfuymV59Gxk6MNsEu59zssgSDxfhgjlC2xljdW0U+jbJEr3G
- 2lIEa71Qq6/MR1VD+YiY=
-X-Received: by 2002:a5d:598c:0:b0:391:3aaf:1d5f with SMTP id
- ffacd0b85a97d-3997f9595f6mr16437604f8f.52.1742942650628; 
- Tue, 25 Mar 2025 15:44:10 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43d43f32fcdsm218803915e9.7.2025.03.25.15.44.09
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 25 Mar 2025 15:44:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Glenn Miles <milesg@linux.ibm.com>, Samuel Tardieu <sam@rfc1149.net>,
- qemu-block@nongnu.org, Patrick Leis <venture@google.com>,
- David Hildenbrand <david@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Bernhard Beschow <shentey@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- Hao Wu <wuhaotsh@google.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org
-Subject: [PATCH-for-10.0 10/12] hw/rtc: Categorize and add description
-Date: Tue, 25 Mar 2025 23:43:08 +0100
-Message-ID: <20250325224310.8785-11-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250325224310.8785-1-philmd@linaro.org>
-References: <20250325224310.8785-1-philmd@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Gqg/CUAV";
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1743010690;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bxv4ehpPzDtjZQ/zQRfM+KrR6+mrhCmVABlE68fDoiE=;
+	b=Gqg/CUAV5MKnjXmhgpHbTsadSVqjaNU/EuoC8RTtWrvfvuPVDfpjufmCX+O5X/sjKVqq3p
+	depYDAQWRVYT00vgekedjxD8SRB5o1QQ2j0LcYShrXbg8OgC0ehfXd/3nPU+0ZDtJwMJ4v
+	E/a+VFdf4xsIPb0/waRO3YxCKa/twBU=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-94-YBmEI9RNPZecn65CrsiB_Q-1; Wed,
+ 26 Mar 2025 13:38:07 -0400
+X-MC-Unique: YBmEI9RNPZecn65CrsiB_Q-1
+X-Mimecast-MFC-AGG-ID: YBmEI9RNPZecn65CrsiB_Q_1743010685
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CBF73180034D;
+	Wed, 26 Mar 2025 17:38:03 +0000 (UTC)
+Received: from gondolin.redhat.com (unknown [10.67.24.38])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 75AA9180B489;
+	Wed, 26 Mar 2025 17:37:47 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com,
+	agraf@csgraf.de
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH for-10.1 v4 01/13] arm/cpu: Add sysreg definitions in cpu-sysregs.h
+Date: Wed, 26 Mar 2025 18:37:11 +0100
+Message-ID: <20250326173723.389988-2-cohuck@redhat.com>
+In-Reply-To: <20250326173723.389988-1-cohuck@redhat.com>
+References: <20250326173723.389988-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tMxUFNxFSk1H
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: wq+wUagrAkQi
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+
+This new header contains macros that define aarch64 registers.
+In a subsequent patch, this will be replaced by a more exhaustive
+version that will be generated from linux arch/arm64/tools/sysreg
+file. Those macros are sufficient to migrate the storage of those
+ID regs from named fields in isar struct to an array cell.
+
+[CH: reworked to use different structures]
+[CH: moved accessors from the patches first using them to here,
+     dropped interaction with writable registers, which will happen
+     later]
+[CH: use DEF magic suggested by rth]
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/rtc/ds1338.c  | 2 ++
- hw/rtc/m41t80.c  | 2 ++
- hw/rtc/rs5c372.c | 2 ++
- 3 files changed, 6 insertions(+)
+ target/arm/cpu-sysregs.h     | 42 +++++++++++++++++++++++++++++++
+ target/arm/cpu-sysregs.h.inc | 35 ++++++++++++++++++++++++++
+ target/arm/cpu.h             | 49 ++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c           | 22 ++++++++++++++++
+ 4 files changed, 148 insertions(+)
+ create mode 100644 target/arm/cpu-sysregs.h
+ create mode 100644 target/arm/cpu-sysregs.h.inc
 
-diff --git a/hw/rtc/ds1338.c b/hw/rtc/ds1338.c
-index 8dd17fdc07c..56162917c1b 100644
---- a/hw/rtc/ds1338.c
-+++ b/hw/rtc/ds1338.c
-@@ -230,6 +230,8 @@ static void ds1338_class_init(ObjectClass *klass, void *data)
-     k->send = ds1338_send;
-     device_class_set_legacy_reset(dc, ds1338_reset);
-     dc->vmsd = &vmstate_ds1338;
-+    dc->desc = "Maxim DS1338 RTC";
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
+diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+new file mode 100644
+index 000000000000..38590b477454
+--- /dev/null
++++ b/target/arm/cpu-sysregs.h
+@@ -0,0 +1,42 @@
++/*
++ * Definitions for Arm ID system registers
++ *
++ * SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++#ifndef ARM_CPU_SYSREGS_H
++#define ARM_CPU_SYSREGS_H
++
++/*
++ * Following is similar to the coprocessor regs encodings, but with an argument
++ * ordering that matches the ARM ARM. We also reuse the various CP_REG_ defines
++ * that actually are the same as the equivalent KVM_REG_ values.
++ */
++#define ENCODE_ID_REG(op0, op1, crn, crm, op2)          \
++    (((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
++     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
++     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
++     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
++     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
++
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) NAME##_IDX,
++
++typedef enum ARMIDRegisterIdx {
++#include "cpu-sysregs.h.inc"
++    NUM_ID_IDX,
++} ARMIDRegisterIdx;
++
++#undef DEF
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
++    SYS_##NAME = ENCODE_ID_REG(OP0, OP1, CRN, CRM, OP2),
++
++typedef enum ARMSysRegs {
++#include "cpu-sysregs.h.inc"
++} ARMSysRegs;
++
++#undef DEF
++
++extern const uint32_t id_register_sysreg[NUM_ID_IDX];
++
++int get_sysreg_idx(ARMSysRegs sysreg);
++
++#endif /* ARM_CPU_SYSREGS_H */
+diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+new file mode 100644
+index 000000000000..6c9f9981cc5d
+--- /dev/null
++++ b/target/arm/cpu-sysregs.h.inc
+@@ -0,0 +1,35 @@
++DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
++DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
++DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
++DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
++DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
++DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
++DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
++DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
++DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
++DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
++DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
++DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
++DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
++DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
++DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
++DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
++DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
++DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
++DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
++DEF(ID_ISAR0_EL1, 3, 0, 0, 2, 0)
++DEF(ID_ISAR1_EL1, 3, 0, 0, 2, 1)
++DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
++DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
++DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
++DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
++DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
++DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
++DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
++DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
++DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
++DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
++DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
++DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
++DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
++DEF(CTR_EL0, 3, 3, 0, 0, 1)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a8177c6c2e89..5048c85b188c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -30,6 +30,7 @@
+ #include "qapi/qapi-types-common.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/cpu-sysregs.h"
  
- static const TypeInfo ds1338_types[] = {
-diff --git a/hw/rtc/m41t80.c b/hw/rtc/m41t80.c
-index 96006956798..55f52d95c51 100644
---- a/hw/rtc/m41t80.c
-+++ b/hw/rtc/m41t80.c
-@@ -99,6 +99,8 @@ static void m41t80_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *sc = I2C_SLAVE_CLASS(klass);
+ #ifdef TARGET_AARCH64
+ #define KVM_HAVE_MCE_INJECTION 1
+@@ -855,6 +856,53 @@ typedef struct {
+     uint32_t map, init, supported;
+ } ARMVQMap;
  
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "ST M41T80 RTC";
-     dc->realize = m41t80_realize;
-     sc->send = m41t80_send;
-     sc->recv = m41t80_recv;
-diff --git a/hw/rtc/rs5c372.c b/hw/rtc/rs5c372.c
-index 5542f74085a..98067ad06d1 100644
---- a/hw/rtc/rs5c372.c
-+++ b/hw/rtc/rs5c372.c
-@@ -216,6 +216,8 @@ static void rs5c372_class_init(ObjectClass *klass, void *data)
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
++/* REG is ID_XXX */
++#define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        uint64_t regval = i_->idregs[REG ## _EL1_IDX];                  \
++        regval = FIELD_DP64(regval, REG, FIELD, VALUE);                 \
++        i_->idregs[REG ## _EL1_IDX] = regval;                           \
++    })
++
++#define FIELD_DP32_IDREG(ISAR, REG, FIELD, VALUE)                       \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        uint64_t regval = i_->idregs[REG ## _EL1_IDX];                  \
++        regval = FIELD_DP32(regval, REG, FIELD, VALUE);                 \
++        i_->idregs[REG ## _EL1_IDX] = regval;                           \
++    })
++
++#define FIELD_EX64_IDREG(ISAR, REG, FIELD)                              \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_EX64(i_->idregs[REG ## _EL1_IDX], REG, FIELD);            \
++    })
++
++#define FIELD_EX32_IDREG(ISAR, REG, FIELD)                              \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_EX32(i_->idregs[REG ## _EL1_IDX], REG, FIELD);            \
++    })
++
++#define FIELD_SEX64_IDREG(ISAR, REG, FIELD)                             \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_SEX64(i_->idregs[REG ## _EL1_IDX], REG, FIELD);           \
++    })
++
++#define SET_IDREG(ISAR, REG, VALUE)                                     \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        i_->idregs[REG ## _EL1_IDX] = VALUE;                            \
++    })
++
++#define GET_IDREG(ISAR, REG)                                            \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        i_->idregs[REG ## _EL1_IDX];                                    \
++    })
++
+ /**
+  * ARMCPU:
+  * @env: #CPUARMState
+@@ -1063,6 +1111,7 @@ struct ArchCPU {
+         uint64_t id_aa64zfr0;
+         uint64_t id_aa64smfr0;
+         uint64_t reset_pmcr_el0;
++        uint64_t idregs[NUM_ID_IDX];
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 8188ede5cc8a..62eff5375c19 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -36,6 +36,28 @@
+ #include "cpu-features.h"
+ #include "cpregs.h"
  
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "Ricoh RS5C372 RTC";
-     k->event = rs5c372_event;
-     k->recv = rs5c372_recv;
-     k->send = rs5c372_send;
++/* convert between <register>_IDX and SYS_<register> */
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
++    [NAME##_IDX] = SYS_##NAME,
++
++const uint32_t id_register_sysreg[NUM_ID_IDX] = {
++#include "cpu-sysregs.h.inc"
++};
++
++#undef DEF
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
++    case SYS_##NAME: return NAME##_IDX;
++
++int get_sysreg_idx(ARMSysRegs sysreg)
++{
++    switch (sysreg) {
++#include "cpu-sysregs.h.inc"
++    }
++    g_assert_not_reached();
++}
++
++#undef DEF
++
+ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
+     /*
 -- 
-2.47.1
-
+2.48.1

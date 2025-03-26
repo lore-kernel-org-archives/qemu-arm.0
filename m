@@ -1,123 +1,122 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3345537njc;
-        Wed, 26 Mar 2025 07:17:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU83bK9ytEGnbzxl3ePdafWMd0FbmepsmBkOv6wvxjgvKzJ0iUS5WSYkd0vSgVVXvOFzAdo0qO/3nYJqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHF3Fc7wNvqACblK34gB5D43DaXXrTv8e/32OktsU2Bivd5mfd4xPSbzNtrtzzGgvSyDWOY
-X-Received: by 2002:ad4:5c44:0:b0:6e8:f3c3:9809 with SMTP id 6a1803df08f44-6eb3f2c6843mr320414026d6.20.1742998635917;
-        Wed, 26 Mar 2025 07:17:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1742998635; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3346434njc;
+        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX01OUkgxT23qtI9s1N3kLEAykLg04RJU5xncwkrq55WBIHW0BEYMwOmjrCABlfuvJ1RJqJ5SLPOifoRw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH9t6wjcIC/y4p2Q516sT+4FPUh07KG1uLnqsfp1p793kLJwR2O5MuS475pBfKdqRM41iAe
+X-Received: by 2002:a05:620a:27c2:b0:7c5:ae70:b081 with SMTP id af79cd13be357-7c5e491272bmr547038085a.20.1742998710143;
+        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742998710; cv=none;
         d=google.com; s=arc-20240605;
-        b=VCuY9RNx4+Eeh2MvN4pPemcpH8nnV61ZMO0vcQe6iVxif3DIRgX66N+H9LrkzvfQSP
-         ymZYDitTaceIFKsJOtcGor1l2VMHi+GWiHF15McwG97xBzZvnKmgRRbiefod/SKBaebp
-         usLJlzm6uTduLfThNh8HxlbBNxcdpnixMZ5v7rzdNBnJZkBHVzh03Vs9S49T1vZ29Ymc
-         TYPSnhJh1C8UK1efUkYCXGs+xr+Xa7Tj7SkKJi1KXUbsiEDK20RdltVRkE4NNNPvx6bj
-         VBGrE6mx5xFnprjf3ZVWB/X92n316MMuYvSuw61ovgLsa7whDXTqJ9LdWO8yeovSol/d
-         uWuQ==
+        b=PfWO92XX4vl2XwLS6uU9fSYVU4K7BrqtpEOMA0DedAZZgRh+y+JB33eBS7HcxCgAwI
+         +LUEPygDXeuONeWBs6c2G+3O2h2MIkoZBhSexy4PwIWYLn/Wygta4fJMPED9DtsR7UG9
+         d4mBZ3gKOmBiTVbN2UnKQU0+CM06DQoJnQS1ASDmrRVAr3sAOa9+XNcA3siXGDbJO2Ik
+         LOSLpcrJFpYxpNfH0fYr9hnBX6MMcohG51jTQiAd9LphVgHs1ZbcLV1DmRq3gJ3zSnI+
+         Cn8OB6OyUExi1mZjZ8grzFlXLrQujUptDElZCY0EtqM6+58gJKLzGRlaf28i+BCo+51w
+         Powg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=n3VDAgxe1/ZgMeKkPn2r0thVEuTOhIV30Ca57Tpx4sw=;
-        fh=nBEutzEu5YjvNbUfS/9spuANIHKrzMjlKIHMWy0sa48=;
-        b=fCuL9085MZCop9vxKa2rbmo5h/Y1N0KbZlshhnTudmzO2D9B3UpgllNiiVfPNAakVP
-         wvkZMN+lcD6eyRzn0zJPGPjn/qyNFvoX0jAT0E+0Y9//Q6GTRwF8t5neoub4hybYmBUX
-         fqnng/FvMz9qpj2wLZP+hRodc7xgLAb8omJz3NtrTgI2vtH6MJiLuNxW8eEOfzHIRSk0
-         +CSnNQx3hDHJkPmXWTiKN2C//quLb/NI6yslXQqRokOhAwt93ZKOZFwvnHRj5eRTFlQq
-         KakZPo5sXzBBp6AbYg5wInKXKSakmbScFkOvfjBcEieH3jU3j2gbbgaoqLuSv/xSiM7j
-         QIhA==;
+        bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
+        fh=JFsBDM/S0fl8jlmmuEo91WoOT7fXVTELEQ9awC7qTSI=;
+        b=i/0MOrYTPQJ+akTVexl7xwPQyAN4hM4oUx9e77pRHBv5IQPSkJn3BDX5AyJP+Qwfn2
+         INH/HstH/+pSAgSXI4lSz3ZtiAtHvmxLRfnsx285knAjElGO65qxIXEJYkA3Ij2wJSZz
+         apaHu8mhNSzOcvw0hYtK0IQuWe21hamE8bR/pKT1tJ0iLkc5ek1yIBMMPf3VCbqplJf8
+         z6Z4Kkg4TNoX+9DmfmlWf1M5wkMTKUAOTlMyj6hKOq5VjBMpQ4nDrZGBfrpb84ILZ2E4
+         Cgg/2xJFjAeRq8Wxm7ydzmxe8Ft5IOolRJRMiWcPHVJopJYfQXacE9dF+5htlyOEzlyb
+         PKuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDvWMxgt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfZE4l+D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eb3ef4978dsi113907856d6.30.2025.03.26.07.17.15
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b93575cesi1147526385a.415.2025.03.26.07.18.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Mar 2025 07:17:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Mar 2025 07:18:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDvWMxgt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MfZE4l+D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1txRYw-0003AH-8e; Wed, 26 Mar 2025 10:16:58 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1txRaO-0003nF-2w; Wed, 26 Mar 2025 10:18:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txRYT-00038r-AY
- for qemu-devel@nongnu.org; Wed, 26 Mar 2025 10:16:30 -0400
+ id 1txRaD-0003j5-Fe
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 10:18:25 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txRYP-0005Lr-QJ
- for qemu-devel@nongnu.org; Wed, 26 Mar 2025 10:16:28 -0400
+ id 1txRaB-0005Ui-Gd
+ for qemu-arm@nongnu.org; Wed, 26 Mar 2025 10:18:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1742998583;
+ s=mimecast20190719; t=1742998694;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n3VDAgxe1/ZgMeKkPn2r0thVEuTOhIV30Ca57Tpx4sw=;
- b=eDvWMxgtvPkLdZYo5rp3WpiJ/kT/A83WPyQNs73iuVwM/ubVLCTUh9471RY/MnoAv0+xU9
- ahAm0wNiUJWl/aN2/VhujkF6kACY1OuLTWR3LitEqO4TB7tfTGuX2Gbz5YqCxc6XhsjFx3
- 3QhRjzzJVNy8mSMZ08mYtiHrg20xh28=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
+ b=MfZE4l+DcuJ12Fs+L8wonGbcBt94OEUhHSL/A/Vv673I7Sk2EAh2Iio2x5vAMQoKTPkVl5
+ Gx88Jw8VvILn+Z9yMRLvBaYWv5bM+2+/XzxmshzS/f/f9000eybh3m5hh5WBJuYjNGImDF
+ F9TZMuCrza2cKrVbdwIMNiiX3Q6HYYs=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-333-JRHi2DT2Msaj4NzjUiBuTQ-1; Wed, 26 Mar 2025 10:16:22 -0400
-X-MC-Unique: JRHi2DT2Msaj4NzjUiBuTQ-1
-X-Mimecast-MFC-AGG-ID: JRHi2DT2Msaj4NzjUiBuTQ_1742998581
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3912539665cso477418f8f.1
- for <qemu-devel@nongnu.org>; Wed, 26 Mar 2025 07:16:22 -0700 (PDT)
+ us-mta-347-TRDDjA6zMvazQp3LXVH8JQ-1; Wed, 26 Mar 2025 10:18:13 -0400
+X-MC-Unique: TRDDjA6zMvazQp3LXVH8JQ-1
+X-Mimecast-MFC-AGG-ID: TRDDjA6zMvazQp3LXVH8JQ_1742998692
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-438e180821aso32396625e9.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Mar 2025 07:18:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742998581; x=1743603381;
+ d=1e100.net; s=20230601; t=1742998692; x=1743603492;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=n3VDAgxe1/ZgMeKkPn2r0thVEuTOhIV30Ca57Tpx4sw=;
- b=vsjGw4vnMAoSQW9ESy8JNrwmjdm+LukAFI5sFRaCSmBF0edgILhg5zBoTZzKOQbeO7
- c3K4yRqSkX6ayNGtzoU7edvO3VIu6WzxbA0pkNXLbNhMN1CvSh/IX7p8Ob5E/DeEMtKi
- Mu5usCZVYId2EBZrliB1lHAAcXg0bVkbVLOUEQINumZNKlqm9v1f5Mwrfp3Rp2loGdrg
- uvwyKwfYGr8cDSmgOy+0OKRMbLI1qvpsjGWN8XRIHiTtDN9e4nP8S+J10YDe5lMzG1vN
- qd3ka28Dty8ZEK+eK1tjHBsAz+N6NUIPXNfFVw/ReY2pjH9cobNJWrM4rSSIXTnY3Ejm
- yWbw==
+ bh=bhahwpgcLXH65nyIi3P5pcPRCcUPovIfGC7Er/9p7/Y=;
+ b=n+425lWuvGaXBOpcf6omK28eEN4Jk76OKxAK86bldD+Bw9srsvv8oLj3Sx0Eu4mvKm
+ Y6d7SrvWwwXJw1OSSo6aW1WsdG3nIrtBZLCUOe+BDCGdzKD/QipsIof+5MjqRurMuaSz
+ KP0SQsAh7e5pO49yzXX04RU5fRB9eJ5dNsKrzWy1H6e15qJudTfqrra3JYO94UVnfc8q
+ joGYBsDqanX60JPAuRZ/oxBb6M6EsEMIdAngFEsQIslFTuMfJdH7UfqdWwGpgcQ6PrG+
+ ShKXMF66vV2qqZVR7pXomYis/BXKaWEwqL8uP8vMmTjE0wPNs3ZdZ48+XTNqev/dov7V
+ 2RKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXxhrxTRtXuBpGaEbmgMC7298vjGL1AxN/Mu20fXLT0DezxzN6VHS8OIG9p2sybE+szifQXUztdFTn/@nongnu.org
-X-Gm-Message-State: AOJu0Yy22cTHBLzY45jQRz3PW2LbdfVZF0Zn6qGMqVMqRg3OjgZBUBxG
- 3TpgDQWybJuf6O2ZBT22kGobDMHZOZH15pndLmeJyMjXoNEetL+cTB6piPz+DKXa9AL0Uqa1XTV
- ezTkg31UcXcojjlb0NkrBqXy/5JhUTDe/O5+6jS2gYG2b8la1S0hc
-X-Gm-Gg: ASbGncu3UsT2UlIivlQovxtDIstVQETGNW6OOVOZUtCnjmYkKoq5TnmsbkddXSr2FCr
- auMcexePzmPeP1J3KPDLhcKFEaq4yN+rSDC08EVKmZNqxPGt/HU9VjUV2uBO9O0T8h0rw7ODv3E
- AeCFqJUbOrtvyNSjR6JQuRnIS9b72HxEJz2fJYcpUDgdWJoRpRoHGT8/x3Bej12fKctkfRw/6pK
- 2DHT45Anzf6KedVm5ZLda4z/RP4Pxvj6DLAy20JtAKggv8+XHo/s9fWJO5oTdLHLgXDzPBTzP9q
- KyAgkgI0IEqCqhmgI1zOerKEYI18bld0NhQdukvCeLUD4Z9KMjoAyzIwN8j5MaY=
-X-Received: by 2002:a5d:47ad:0:b0:391:386d:5971 with SMTP id
- ffacd0b85a97d-39acc455d39mr3844562f8f.14.1742998580955; 
- Wed, 26 Mar 2025 07:16:20 -0700 (PDT)
-X-Received: by 2002:a5d:47ad:0:b0:391:386d:5971 with SMTP id
- ffacd0b85a97d-39acc455d39mr3844496f8f.14.1742998580486; 
- Wed, 26 Mar 2025 07:16:20 -0700 (PDT)
+ AJvYcCVz7+CeFo1E4ILLrkkS6AhqrTGb+LCYFRzo/IY9ipcDTrZQT2bfCEsqDMxHTVh4d1ge8JgsKFZniw==@nongnu.org
+X-Gm-Message-State: AOJu0YwrW3BDtMib/TeRjn/1GVrTn+i3xYoLs5jRjJ8nVneGi8ftpdiR
+ nOfw3GSQMC9HcWDFbTp1kNFV+CcD7HPlxiq7JtKlc07E5oc/BFv0sBJHAuaRBeNz4ySlBUp49FU
+ a1lOv1H3ow064W49T3+NCWDMK5ZpvimajJWOEoXBGZKFnaElMyQ==
+X-Gm-Gg: ASbGncu6Wzf1z20L8EZI1uZi8zIa2HExFh4QpauIWHJbhagXTs5scZyqhMDvu5O6cJx
+ HDh83b4sFACdWS0DCC7ThakJGx3GdfSpW/3YmqG/z0DXDq7LdEgaJwERfBL3e9zQM02e0RJrueg
+ siDmjeOOMIlk2OrB7itzkWZOEXGeiu4q8R7jhsh6uwmZK/S8Ml5tA4Nn/Ap29uWrXDxBWtS2tWX
+ 1K3oWr7qp8ju4oGDXBnHHd8A8f43fVPV2wOMHHVLknGnaN3Gpwv/n+MxWfhuZmL9P821zvJ08TZ
+ ekWL81y9q2h7a/CfBsXVGIVP3avE72ETJCW1RqZXtbGt12rCYW3MV2NHyDSUYqY=
+X-Received: by 2002:a05:600c:3547:b0:439:91dd:cf9c with SMTP id
+ 5b1f17b1804b1-43d7894c000mr35043275e9.10.1742998689909; 
+ Wed, 26 Mar 2025 07:18:09 -0700 (PDT)
+X-Received: by 2002:a05:600c:3547:b0:439:91dd:cf9c with SMTP id
+ 5b1f17b1804b1-43d7894c000mr35042625e9.10.1742998689417; 
+ Wed, 26 Mar 2025 07:18:09 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9b3dd5sm16842775f8f.45.2025.03.26.07.16.19
+ ffacd0b85a97d-3997f9a3b83sm17192486f8f.33.2025.03.26.07.18.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Mar 2025 07:16:19 -0700 (PDT)
-Message-ID: <af531bef-4597-4729-bdcc-f6b7e3647266@redhat.com>
-Date: Wed, 26 Mar 2025 15:16:18 +0100
+ Wed, 26 Mar 2025 07:18:08 -0700 (PDT)
+Message-ID: <6b943f66-6a2d-4db7-9524-c4c1fa2fbaec@redhat.com>
+Date: Wed, 26 Mar 2025 15:18:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH v2 15/20] hw/arm/smmuv3: Forward invalidation commands
  to hw
-Content-Language: en-US
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
@@ -129,6 +128,10 @@ References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
  <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ZMyRW_WgmVekSB3VSbTsFq4Al8XRfHyHPpeo-3NmLmE_1742998692
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124;
@@ -142,23 +145,23 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g7H5I+/BqVnv
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4Ws1k145a6zy
 
-Hi,
+
 
 On 3/11/25 3:10 PM, Shameer Kolothum wrote:
 > From: Nicolin Chen <nicolinc@nvidia.com>
@@ -205,7 +208,6 @@ On 3/11/25 3:10 PM, Shameer Kolothum wrote:
 >      SMMUCommandType type = 0;
 > +    SMMUCommandBatch batch = {};
 > +    uint32_t ncmds = 0;
-init looks useless
 > +
 >  
 >      if (!smmuv3_cmdq_enabled(s)) {
@@ -227,13 +229,7 @@ init looks useless
 > +            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
 > +                                        &q->cons, true)) {
 > +                cmd_error = SMMU_CERROR_ILL;
-I understand you collect all batchable commands all together (those
-sharing the same dev_cache prop) and the batch is executed either when
-the cache target changes or at the very end of the queue consumption.
-Since you don't batch all kinds of commands don't you have a risk to
-send commands out of order?
-
-Eric
+OK so now I see you record the error. You can ignore the previous comment.
 > +                break;
 > +            }
 > +
@@ -279,6 +275,9 @@ Eric
 > +            }
 > +            break;
 > +        case SMMU_CMD_ATC_INV:
+To me the code below shall be put in a separate patch as it introduces
+the suport for a new cmd. Also it shall be properly documented in the
+commit msg
 > +        {
 > +            SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
 > +
@@ -325,7 +324,5 @@ Eric
 >      trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
 >                                    Q_PROD_WRAP(q), Q_CONS_WRAP(q));
 >  
-Thanks
-
 Eric
 

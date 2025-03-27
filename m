@@ -1,137 +1,142 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3833957njc;
-        Thu, 27 Mar 2025 01:03:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVMQk+OIwoXjYr0MQJIxoCJTPlwuY1H96hJBJvExxjsqTaGclVMQobsff5TGYfJNXIyh43daubskUKdfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF7GgXom+99kBn9unxK0pFDsObY9YSecSUvCgcaWAa04xsx1cuMnenet+yxUKJAqbGBhYbs
-X-Received: by 2002:a05:620a:3703:b0:7c5:5003:81be with SMTP id af79cd13be357-7c5eda64e43mr416788485a.43.1743062628207;
-        Thu, 27 Mar 2025 01:03:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743062628; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3860804njc;
+        Thu, 27 Mar 2025 02:12:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUmK84fPOQAhi/l4Ie1AIdEsGn5swSvi3wTieHukLcpoLaEs6zQviAGpLcDoMZGfMjXrZZLIn/UPgk22A==@linaro.org
+X-Google-Smtp-Source: AGHT+IENvPalbi4FV4m8ZgQKj+s37vNKiXB9d6GW7d1FAvWcbygCftEzOvsi3qyS42bqdiiFIc13
+X-Received: by 2002:a05:620a:2454:b0:7c5:5fa0:4617 with SMTP id af79cd13be357-7c5eda65b50mr406297285a.40.1743066744628;
+        Thu, 27 Mar 2025 02:12:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743066744; cv=none;
         d=google.com; s=arc-20240605;
-        b=N4RzseeflkRztZbIXUIl5mU+DkcP7k/kopjAUcakTWqaiEvx3otkd4aQPFeZCkN4w0
-         rY9+12j63KKw1242W95MMoITJB/LO4PSn2Or9RANCEaiu6huJ2zBoShS7bEBNdQTfe7/
-         mAasSkAoqw87miuJ9ym9Vvyk1wWnsJp/tElHTQXA0TDXFnfskn2iyhOFxJ4gJHUIkIbM
-         C/2Z0JDBm/y8zjer0wvVpCzfpvGb33vqd3xa+IxUssfOis2N71DvbpORqnxvFX9VZu0W
-         /ak8pk4MrwSIFcm4EJZu7f+0++/Ie4luCW1kwskvdLpd/wagPfaj8Q3+N+e6C7Wx6Ad/
-         XtGA==
+        b=f7HIzBebpyUgz4ljxDfn0O8PKVslIkrpurymV9YzXdYDzC4JIvP1MTd/RVd2FTkjw2
+         OT6gAWJMvch7+PGS+8fvP5Ah4F/qIVlIdYaGzY/MSs3SjqFm+GQ8cq7kDPwjYUnXtKi+
+         5H37Y7A3bwhXzrmOy6ewGGl+uDxA46WRDynAvENIJ2/CCyarNcPMLFquChvlHH33+/qy
+         MziyEWvj2sxevCCYiiUQ1hQXFP9MqhZEYpthbTTPoLYp8YXtex2Ik9RLN22SvvHMpudE
+         GKLo1x2PnwIdS0soJvfcUulgAVd8f4h8N+LyBXmx87BZpIck/DrD5UIm5t1kDLoxEfF+
+         oPUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=KqiZ8b0K7F3/LhHoQ8DE2457h5HuEEasSkiMMWavqyk=;
-        fh=VvIWhYQ0nD3x16px2Sqgj7Y+irN4uqqh/osl//AA+Rc=;
-        b=Qq8FG5VFYpsUN6QMhPEqo6gaPD5RChSHpJv0pGE3t6cH2JEzgx3ErPZKEOFQuFkrTJ
-         j7ehinjYgFpxfB5wjYSRJtbt0R0SJ6ZtwqKuvblg0s0kEptTF/p/p/h4FIqrKp3v3TOr
-         dJiiU3p8TMDdHpYguu+TS44WqZlPbD412vGlanH5mZemeIs+JIT+LnIS9QZNiQ0kc+nW
-         4HAEXLY4XfqSRzWKK65M680mcQZXrso6x4zv4D0MgUCmF8nHt7WnelzLW75CAWD+VSsV
-         pVarPj9XAzOgxISzCzL9QMNN8l2x/GltCAOCw4dESPZYjQrLOVTz/XKJJHjN2q+9BY9G
-         U/aA==;
+        bh=KxJ16tDeYAGFS0tk1Xhh+SQUoUEZcKzgVt37yURehds=;
+        fh=aZWAMUwNKbvFjGphyBohNHZM/ez7/0rkU6ykXjSs1pM=;
+        b=W+60YlkIwNdoFaMc/leSvIDUYXayXlbnPHfj8E16rm07Jlxtv9Cir+uEOIZFA+2cSB
+         1pR+82jIU098W+eRsqUUMq3JnQ93wWSlB1OhVHXBzAS/PgzUQvMr3Oa7CW0fmrSX1DdE
+         DvSzdhXcmdNp6XmUk4IDsf/rKO+o8fV7Oo3cL1uC4h9S67cgDnLeN1NrjkOW3W5grHqV
+         stD71l4vu2QBOp1uByisTibzrLHuSwz+xzuEqoNp2POl5N/SKzh7wwTe0JiocYzILHJZ
+         tILzU007s+nC9vtb/oRG7tkbKbw9FGdsTYJhya7jCB2rsfIFVL5Ja86vH6LDzWNu0A59
+         /m5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fHIWb6Px;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BeS8k180;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b9347fc6si1277744685a.205.2025.03.27.01.03.48
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b92aff4dsi1342480385a.52.2025.03.27.02.12.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Mar 2025 01:03:48 -0700 (PDT)
+        Thu, 27 Mar 2025 02:12:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fHIWb6Px;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BeS8k180;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1txiD9-0006sX-Ch; Thu, 27 Mar 2025 04:03:37 -0400
+	id 1txjHV-0007Cd-Fh; Thu, 27 Mar 2025 05:12:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txiD7-0006sO-UZ
- for qemu-arm@nongnu.org; Thu, 27 Mar 2025 04:03:33 -0400
+ id 1txjHP-00078Y-FA
+ for qemu-arm@nongnu.org; Thu, 27 Mar 2025 05:12:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1txiD6-0005FD-Bu
- for qemu-arm@nongnu.org; Thu, 27 Mar 2025 04:03:33 -0400
+ id 1txjHM-0005lR-L4
+ for qemu-arm@nongnu.org; Thu, 27 Mar 2025 05:12:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1743062611;
+ s=mimecast20190719; t=1743066719;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KqiZ8b0K7F3/LhHoQ8DE2457h5HuEEasSkiMMWavqyk=;
- b=fHIWb6PxB8an6AX6UsUP2YLVMfCM5kfAq65tEbe4biK/uko8691eij70pfS6zi3E4iwBbK
- m6AqXn0H5D/0yBX5qWKVzUHgdJBtNqDG12mfLUbfJsHSpNP4Wywe++kmCeHb1B2v1s6jzJ
- Pf9yh+9PirNQn1uP5TtwXJbkVoxWvCQ=
+ bh=KxJ16tDeYAGFS0tk1Xhh+SQUoUEZcKzgVt37yURehds=;
+ b=BeS8k180fyJCN/FXZ3Ih2d5VehpHQwJpoQHUp7GZza4ihERQTFaqdaQ5We/aapfZrqp25z
+ 11dS7yJfgnsvyZ58FcNQtwb/9IVDRhu/ldXrHrg8VHmbol9VtfV9hxUdrpw1EMJG3v0WUv
+ 7tSUIHk6aqqEKtU79PJ46E/i5YkB70s=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-83-_RGv-w02Mh6UAZL1DHYAgg-1; Thu, 27 Mar 2025 04:03:25 -0400
-X-MC-Unique: _RGv-w02Mh6UAZL1DHYAgg-1
-X-Mimecast-MFC-AGG-ID: _RGv-w02Mh6UAZL1DHYAgg_1743062604
+ us-mta-477-bEBxooqrOzCBxxHUuMnKJw-1; Thu, 27 Mar 2025 05:11:56 -0400
+X-MC-Unique: bEBxooqrOzCBxxHUuMnKJw-1
+X-Mimecast-MFC-AGG-ID: bEBxooqrOzCBxxHUuMnKJw_1743066715
 Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3913aaf1e32so347826f8f.0
- for <qemu-arm@nongnu.org>; Thu, 27 Mar 2025 01:03:25 -0700 (PDT)
+ ffacd0b85a97d-3913aea90b4so262376f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 27 Mar 2025 02:11:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743062603; x=1743667403;
+ d=1e100.net; s=20230601; t=1743066715; x=1743671515;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=KqiZ8b0K7F3/LhHoQ8DE2457h5HuEEasSkiMMWavqyk=;
- b=QYB0fmnj0eoLs/ZL3j5ZsWeNFkMUEPDTnUJ5OOFYUthUY5WjEwNY9eAp3i8BxtlEwC
- PLZTLfX46ylbPZkDjIT4Oeb/4uDVYCW9lkBV9DeK2D5EvSL/oA2vqFqpYrlIq6ZpHqYC
- njt+jyRcLCGz1bKh6eiK517j+WFgjJK0lRe/iBiXskECIbKcBEnTpb6imdFE5GXnzpHT
- RtzKtzw6Yvq3K+FjNArVkKoYu3zmE3RzSW6X3/Yv9SfBJ6lQoTNHe9vonMi/aHBM5ztd
- R8u12ROT1NItGQPIroYnYSH73Twf4vy5krhb4xs78lw2wN7Hq7NpAcsjfmBM9qZ6oYmn
- /uaA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXmcNzuhPLf4nkr7sxVmIJmE6a+Ofrtl7xo/IfZYzh18ml78eYds8NCT/TraICQ7GHoDEkwafGV3A==@nongnu.org
-X-Gm-Message-State: AOJu0YytAF+zWlruoAiQstk1fsjA3y3ubGI1Dq3Pk9rnZCaU3kdXdJXA
- HNVqq9agJOxrrT7QwE+MOefFji+vK1KJQTkv9Hr/2DzFfH8uVuW6PqY7RgK4uJ0RApWgCn4Umj6
- ufWvEnhMSF+iiRvIAFOwfynMbclxcbBIt3gmQhfp3Z3ilqjvQCLgaZHh0vw==
-X-Gm-Gg: ASbGncs4AXkXaxOR95qmOJq7/gxMSPZCj+yffjp93US1ejZOtm7B6nMZ7ICvuWlyfTq
- 8ijUf0yIysCGhYTQimMX37FjE7Ey1Lausj2G22bsJNtzHBnwdRetobewnW2kvmv+nLWVNzbVd0t
- FXe+XwXJhXzXQBOLyLLB3US26wl0BTQPKVJOHxTHmX1BMjohfy3BsGQjOf6DDiLV7cnDw3OsBQX
- fgQkNUdgyDJvBmfyXVZBLszLIXhCefm2dIF7A4g7X8uvXxEP9ekwXGcfD6XJgB2QJZFpi2+tsvV
- p0c7wWm2NPBCaAnuEB3deKpSoZi3zql6qDMfPnOxQkon0fQBzc9zD0bjmMlYsR0=
-X-Received: by 2002:a05:6000:4211:b0:391:12a5:3cb3 with SMTP id
- ffacd0b85a97d-39ad173d283mr2019548f8f.3.1743062603472; 
- Thu, 27 Mar 2025 01:03:23 -0700 (PDT)
-X-Received: by 2002:a05:6000:4211:b0:391:12a5:3cb3 with SMTP id
- ffacd0b85a97d-39ad173d283mr2019508f8f.3.1743062603045; 
- Thu, 27 Mar 2025 01:03:23 -0700 (PDT)
+ bh=KxJ16tDeYAGFS0tk1Xhh+SQUoUEZcKzgVt37yURehds=;
+ b=Y5NwTblgF0qr/k1+zPRs4XlNtoazVpF5RWt3DO6Te+9KMEIUpMvHvzsmVgVO+UUx9Z
+ lkc3wyGHMOK7JwPIBNbQfWDlpTflD4uXb1772SQC78qJpSvO9aLK5J2VAOx4QOzThmoU
+ PqywGFbHYOSCiWR5iCMFg0zIGazJSa2F8/yG31vYp54W01D9OkR04tz9F5p90e3bSI88
+ Htan4sduuv9+7+3eftlIfvMX2LXLTx7wnZv5UdAhJZUQHbvBBpoZ30lIOJGJHbDQATfY
+ LU2/SsvOcDXv9TnqRkYMErxwlDeVV9J5RaSWfqFPOKTN/NGCGRWf2PRcvQYZXjZe9PDE
+ PoRg==
+X-Gm-Message-State: AOJu0Yzl/gYNhLQYb9GU3Ur1kYKUCgWxKB61CtSXvSkF1AfbDLgUd/rX
+ XsOktAeDQ7GEUX4GS7LVCFUIB9BRd2XBhCUcWiNQJPb+H8MEqsSGBH97I9xFZRKxHMeKU3vvqRT
+ WMwuPGgRDHgleTEKtiDVyD73mCoMyukJqs9RQ2bcohDA4v1DF/Q==
+X-Gm-Gg: ASbGncuM62cn8mkmgZUEimaBWnjErd5uJDJmFe+2lMBuyD2/OXX6GaObxdNPhiCsHJT
+ DoHn0g8zejDzfeC7/7USCPzv4eELy2WzpIuI/E7L+4kvlgZoE717u2RC5cH8crLTUgO3a1ZJIlU
+ JlpWKtoj8ryeNBCyNULVPXGtN/q1OLjit49GRNMdc+KnHA38XnbYCbeiFzDgfZtlxuaHVQ+MsQ/
+ lUgoWFRsDT/p52ggrYrZqSjnq3QfjeZkeJikr6wEouue4EAWuP5ZvhzKsz1qbQywnfnesXTxgXp
+ Eq/zZUanPMVxhDrvYBdT1b2qT1jJJsCwqfeR0wSogqMYJMXOGHfHGbHQaE3XfUw=
+X-Received: by 2002:a05:6000:2913:b0:391:48f7:bd8a with SMTP id
+ ffacd0b85a97d-39ad17596e3mr1874952f8f.30.1743066714868; 
+ Thu, 27 Mar 2025 02:11:54 -0700 (PDT)
+X-Received: by 2002:a05:6000:2913:b0:391:48f7:bd8a with SMTP id
+ ffacd0b85a97d-39ad17596e3mr1874930f8f.30.1743066714449; 
+ Thu, 27 Mar 2025 02:11:54 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9e64casm19147079f8f.73.2025.03.27.01.03.21
+ ffacd0b85a97d-3997f9a3f2asm19488557f8f.30.2025.03.27.02.11.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Mar 2025 01:03:22 -0700 (PDT)
-Message-ID: <8ccf83fd-0d32-4491-a812-f1d29d44f08c@redhat.com>
-Date: Thu, 27 Mar 2025 09:03:20 +0100
+ Thu, 27 Mar 2025 02:11:53 -0700 (PDT)
+Message-ID: <c081ba1e-4e6a-48ec-ab8a-36474cdce8fe@redhat.com>
+Date: Thu, 27 Mar 2025 10:11:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 15/20] hw/arm/smmuv3: Forward invalidation commands
- to hw
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+Subject: Re: [RFC PATCH v2 17/20] hw/arm/smmuv3: Check idr registers for
+ STE_S1CDMAX and STE_S1STALLD
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
 References: <20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com>
- <20250311141045.66620-16-shameerali.kolothum.thodi@huawei.com>
- <af531bef-4597-4729-bdcc-f6b7e3647266@redhat.com>
- <Z+RVM8Cr+EcnhDaJ@nvidia.com>
+ <20250311141045.66620-18-shameerali.kolothum.thodi@huawei.com>
+ <477323cb-12d3-484c-8ad9-61229ede3efe@redhat.com>
+ <Z+RZsES0+Ywxi7Xx@nvidia.com> <cd1393939aaa43bebce8bd926b4b00de@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Z+RVM8Cr+EcnhDaJ@nvidia.com>
+In-Reply-To: <cd1393939aaa43bebce8bd926b4b00de@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4lXnpCWD1yxw2dX5qlllc4GmnUdArcC3CtgTeLED6Yg_1743062604
+X-Mimecast-MFC-PROC-ID: d1XWmVSRE7hqWCOQLqNcBO4eGRp_-h3r8eqOO_KjY60_1743066715
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -161,38 +166,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uWNnmXjGkiNe
+X-TUID: URRmIFdGzk71
 
+Hi,
 
+On 3/27/25 8:54 AM, Shameerali Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Nicolin Chen <nicolinc@nvidia.com>
+>> Sent: Wednesday, March 26, 2025 7:47 PM
+>> To: Eric Auger <eric.auger@redhat.com>
+>> Cc: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+>> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+>> mochs@nvidia.com; smostafa@google.com; Linuxarm
+>> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+>> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH v2 17/20] hw/arm/smmuv3: Check idr registers for
+>> STE_S1CDMAX and STE_S1STALLD
+>>
+>>> Again I think we need to understand the consequence of having a more
+>>> comprehensive support of SSID. This also holds with old the IDR fields
+>>> that may be inherited from the HW and we don't support yet in the
+>>> emulation code
+>> To support guest-level SVA, it must support SSID. We can keep the
+>> SSIDSIZE=0 in an emulated SMMU. Would you elaborate the concern of
+>> doing so?
+I just want to make sure we dissociate both accel and emulated paths and
+we do not advertise SSID in one mode while we do not fully support it.
+>>
+> Regarding adding support for SSID/SVA in emulation code, the support also depends on
+> device PRI/IOPF feature as well. Do we have any emulated devices that can make use
+> this? I would say we can add that support later if there is any real use cases for that.
 
-On 3/26/25 8:27 PM, Nicolin Chen wrote:
-> On Wed, Mar 26, 2025 at 03:16:18PM +0100, Eric Auger wrote:
->>> @@ -1395,6 +1403,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>>  
->>>              trace_smmuv3_cmdq_cfgi_cd(sid);
->>>              smmuv3_flush_config(sdev);
->>> +
->>> +            if (smmuv3_accel_batch_cmds(sdev->smmu, sdev, &batch, &cmd,
->>> +                                        &q->cons, true)) {
->>> +                cmd_error = SMMU_CERROR_ILL;
->> I understand you collect all batchable commands all together (those
->> sharing the same dev_cache prop) and the batch is executed either when
->> the cache target changes or at the very end of the queue consumption.
->> Since you don't batch all kinds of commands don't you have a risk to
->> send commands out of order?
-> Yes, that could happen. But would it have some real risk?
-
-OK. I don't know but this needs to be studied.
+x86 may be ahead of us in this area. Maybe this was tested by Zhenzhong
+when contributing emulation for S1 support in intel_iommu?
 
 Eric
 >
-> This practice has an assumption that the guest OS would group
-> each batch with a proper CMD_SYNC like Linux does. So it could
-> reduce the amount of ioctls. If we can think of some real risk
-> when the guest OS doesn't, yes, I think we would have to flush
-> the batch if any non-accel command appear in-between.
->
-> Thanks
-> Nicolin
->
+> Thanks,
+> Shameer 
 

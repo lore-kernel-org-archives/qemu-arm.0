@@ -1,132 +1,98 @@
-Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3620514njc;
-        Wed, 26 Mar 2025 15:00:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlYMSvgh4Z94H0MpypDXw8yPlfwTTLR34YBFBq2rOd24Aw9pWFRAFg7ip8e9yM8cB+bwx6VrIlKd/5Kg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgxcZJx2+9R60Y3Trdm3ejp0eAfMT4odj02TXrDSve5LtIX+dLFpNep3wTNGksyegxP0UW
-X-Received: by 2002:a05:620a:4707:b0:7c5:562d:ccf4 with SMTP id af79cd13be357-7c5ed9db101mr256781685a.4.1743026402578;
-        Wed, 26 Mar 2025 15:00:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743026402; cv=none;
+Received: by 2002:a17:504:5f65:b0:1be9:327d:8ee3 with SMTP id gl5csp3933748njc;
+        Thu, 27 Mar 2025 04:50:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW1LnChWW1nB1QU5QbA0nLXurV3cQC5hN+QgkojA0CpEFIzDYG43Q06oqJqaROsVEdZJ0uhI2SxxcYTrQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFcX9KX+1JnmtdiGKW8sPoLQhzku99v2eZNh4Ggd7traW4US7othYGPZCTqYoUbF+Wv10hv
+X-Received: by 2002:a05:620a:4051:b0:7c5:5343:8c2c with SMTP id af79cd13be357-7c5eda13669mr492256085a.27.1743076207658;
+        Thu, 27 Mar 2025 04:50:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743076207; cv=none;
         d=google.com; s=arc-20240605;
-        b=B+9AGXVi5IpB0sOj9QTTZGzICpXvJ55z+K21eM2RtKMhAu7VMtW6gt1SX/XS0PEtem
-         UZ4DxvgLcB7cOZo/UrqqvdVpe/GWVy3qhHhOT4e70Un271r6GPm93UyhkQffDFN7csGL
-         /2J9dwCtfwa9d+VfYzJFDbzk5x0vvys7gPrPJXkjuuKjOLX+0nJUG5NgegsCvXduc8od
-         /bF6Pb5x8ybTwFLTZ84PfEz7uTK8HpKOV2DW+4RmaEyR5R8b0+p5P2jkqC31xrbpqWpZ
-         CRgI1zqs55NUFc7aVwKfjdneaS4BvivcyDRQ3eniE6uRTYmHDdipQ4C+9Oleq8Tf7o4M
-         24tA==
+        b=HkmD3UjWko2OMLmJKZ3/95AHrn2QITYchh2PaL+8/j6DckekPBDMMrpljKd8tnl/7l
+         JVtwmS5X12I/BFUeUmfamo3H053MXcbZZLye6p3tnGt592x3/cL/oLG3r0QC0XIFBcVs
+         VwduFIYb4RX6NGRfNuuHQ9I1uijEJ08z8E9yFg4sY8L+5PujpQceLZfDgW7TGlKnzV36
+         fdVo/e7d5UCXDDCDKywBtFMVOhxQbeDsAM60dSSDaImcOr5S2vVuyYa7AfU/auTMUGJ1
+         FBa880JDBqYb9aCqha77ConMzi7GAL8IEMqMyNPZ8/ujTtJAu92Rhpi33xw4pD4pcoVb
+         BbCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=BWQl9h7tbcA75IqUdooZHWufbGAMAQAqrqtfO0E4p/M=;
-        fh=owKCkkBCrfQ8Rnfd4dHms/Wi3fanNgWnzm529AtSKr0=;
-        b=YaSDbl+8FlmdqfltiNPNiMTzVXUuHZe5CY3Yy80FwbWQ5m5JzkajwwH/ycZi89RtXg
-         NjZ1XkFn4rY71mInFn2dHDxeR5gDXBIv0/9YRH1h186LBcS4u6brSrqAsBPUdBIJIoC1
-         qMcTvOaQgGz5tgHEgd/onR0kjDaRg5PoHpkiRv6dJFSz8gIgY/mNGBjOTPQlLTSEfHKb
-         tZlYlZu1wyhnArgdg1uuZbY9zEcBkSGc75EjFwllKlmgGRKhByGnqoPBOSr0dyp4EACs
-         QyngE57quYJppM1cd3cc56ZLUlHgVfq2Gig6SQL/+3wW08VaCT2c8AJdhh1FCNeaJbR7
-         7VjQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:cc:to;
+        bh=MycVq9OCBiGOlagmLIVaUREWHZNn9qhaMxVLeygWibI=;
+        fh=j3RM5wmvgngfS9P77gY1UvDK/P2RZ1l6+4m7Fi9xu0c=;
+        b=Dh0lFmsiF3tvjJA1FmooFZKQsaTGg3lEWJhJIVfeD/od78TwHULuYaOpqON4iu6Sjx
+         94xkHSEoS4sGD7DkRQlw31G2b8bvc2b+ygiNMx4BaOa14c7dvDC2aKpTD+NG6FFT9EXW
+         r2gVIAx7JqzvC93LQDnYMtG1nmETTOBtkqsb6qcvUkMqr7A6sgqztxe/W6UiE34zhljP
+         87IrvU9s58tHsXf/S74fIxOzvkLDdS72oJdAXYOssR4jdlC2v1v0AO8XpHApD2v+9pKi
+         xwnUtRsY/M9EJqwI74ji5swI7qo8RCRpqpAia3ithrU96mb6a7T2uBIfeV7Lcbprx0ug
+         MbZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5b9362862si1239103585a.492.2025.03.26.15.00.02
+        by mx.google.com with ESMTPS id af79cd13be357-7c5b93474dasi1306009385a.325.2025.03.27.04.50.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Mar 2025 15:00:02 -0700 (PDT)
+        Thu, 27 Mar 2025 04:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1txYmg-0006Lv-IX; Wed, 26 Mar 2025 17:59:38 -0400
+	id 1txlk5-0003u6-7J; Thu, 27 Mar 2025 07:49:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
- id 1txYme-0006LG-S6; Wed, 26 Mar 2025 17:59:36 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
+ id 1txlk2-0003sq-HV; Thu, 27 Mar 2025 07:49:46 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org>)
- id 1txYmc-0006oa-Ca; Wed, 26 Mar 2025 17:59:36 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZNLKs06VNz4x8P;
- Thu, 27 Mar 2025 08:59:29 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZNLKn46wsz4wcd;
- Thu, 27 Mar 2025 08:59:24 +1100 (AEDT)
-Message-ID: <c07e65b3-027f-450e-85d5-7fd26934d976@kaod.org>
-Date: Wed, 26 Mar 2025 22:59:21 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
+ id 1txljz-0000vT-Sj; Thu, 27 Mar 2025 07:49:46 -0400
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4ZNhf74bwmz1jBVp;
+ Thu, 27 Mar 2025 19:44:47 +0800 (CST)
+Received: from kwepemd200012.china.huawei.com (unknown [7.221.188.145])
+ by mail.maildlp.com (Postfix) with ESMTPS id 372E61402CD;
+ Thu, 27 Mar 2025 19:49:28 +0800 (CST)
+Received: from kwepemg100001.china.huawei.com (7.202.181.18) by
+ kwepemd200012.china.huawei.com (7.221.188.145) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.10; Thu, 27 Mar 2025 19:49:27 +0800
+Received: from kwepemg100001.china.huawei.com ([7.202.181.18]) by
+ kwepemg100001.china.huawei.com ([7.202.181.18]) with mapi id 15.02.1544.011;
+ Thu, 27 Mar 2025 19:49:27 +0800
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, lex Williamson
+ <alex.williamson@redhat.com>
+CC: "Wangzhou (B)" <wangzhou1@hisilicon.com>, liuyonglong
+ <liuyonglong@huawei.com>, jiangkunkun <jiangkunkun@huawei.com>, "libai (G)"
+ <libai12@huawei.com>, tangchengchang <tangchengchang@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Subject: Re: Questions about vfio-pci
-To: yangjinqian <yangjinqian1@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- lex Williamson <alex.williamson@redhat.com>
-Cc: "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- liuyonglong <liuyonglong@huawei.com>, jiangkunkun <jiangkunkun@huawei.com>,
- "libai (G)" <libai12@huawei.com>, tangchengchang
- <tangchengchang@huawei.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <f82e1e01c21e4a75a9a78315c08449ea@huawei.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <f82e1e01c21e4a75a9a78315c08449ea@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=gtQ3=WN=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+Thread-Topic: Questions about vfio-pci
+Thread-Index: AdufDTdm4raav9tJRXuEMJF2Lkz38w==
+Date: Thu, 27 Mar 2025 11:49:27 +0000
+Message-ID: <04da2c1331e049c69d3fb3330403724d@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.67.121.183]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=yangjinqian1@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.007, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,78 +105,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  yangjinqian <yangjinqian1@huawei.com>
+From:  yangjinqian via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ApjQ/xTuSpA9
+X-TUID: vS3FOUOGMpQx
 
-Hello Jinqian
-
-On 3/25/25 09:00, yangjinqian via wrote:
-> Hi,
-> 
-> I'm observing intermittent failures when enabling the HNS3 network port in VM using
-> 
-> QEMU with the mainline kernel.
-
-
-Would you mind opening a gitlab issue with more details on the
-context, host, guest, HW ?
-
-    https://gitlab.com/qemu-project/qemu/-/issues/
-
-Thanks,
-
-C.
-
-
-
-
-> HNS3 drive in kernel:
-> 
-> static int hns3_nic_net_up(struct net_device *netdev)
-> 
-> {
-> 
-> ......
-> 
->         /* enable the vectors */
-> 
->         for (i = 0; i < vector_num; i++)
-> 
-> {
-> 
-> napi_enable(napi);
-> 
->               enable_irq(vector_irq);
-> 
->               hns3_mask_vector_irq(tqp_vector, 1);
-> 
->         }
-> 
-> ......
-> 
-> }
-> 
-> When the VM has two vCPUs, the guest HNS3 driver performs two sequential
-> 
-> enable_irq operations (vector_num=2). The enable_irq will trap into KVM for interrupt
-> 
-> configuration and exit to QEMU for PCI device emulation. When emulating interrupt
-> 
-> enabling in QEMU, vfio_[intx/msi/msix]_enable calls vfio_disable_interrupts to disable
-> 
-> all interrupts on the vdev.
-> 
-> The questions are:
-> 
-> 1.Why does the vfio-pci disable all interrupts of the device before enabling irqs?
-> 
-> 2.Is this a normal vfio-pci process or a problem?
-> 
-> Thanks
-> 
-> Jinqian
-> 
-
-Would
-
+PiANCj4gSGVsbG8gSmlucWlhbg0KPiANCj4gT24gMy8yNS8yNSAwOTowMCwgeWFuZ2ppbnFpYW4g
+dmlhIHdyb3RlOg0KPiA+IEhpLA0KPiA+DQo+ID4gSSdtIG9ic2VydmluZyBpbnRlcm1pdHRlbnQg
+ZmFpbHVyZXMgd2hlbiBlbmFibGluZyB0aGUgSE5TMyBuZXR3b3JrDQo+ID4gcG9ydCBpbiBWTSB1
+c2luZw0KPiA+DQo+ID4gUUVNVSB3aXRoIHRoZSBtYWlubGluZSBrZXJuZWwuDQo+IA0KPiANCj4g
+V291bGQgeW91IG1pbmQgb3BlbmluZyBhIGdpdGxhYiBpc3N1ZSB3aXRoIG1vcmUgZGV0YWlscyBv
+biB0aGUgY29udGV4dCwgaG9zdCwNCj4gZ3Vlc3QsIEhXID8NCj4gDQo+ICAgICBodHRwczovL2dp
+dGxhYi5jb20vcWVtdS1wcm9qZWN0L3FlbXUvLS9pc3N1ZXMvDQo+IA0KPiBUaGFua3MsDQo+IA0K
+PiBDLg0KPiANCj4gDQpIaSwgQ8OpZHJpYw0KDQpJJ3ZlIGFkZGVkIHRoZSBkZXRhaWxzIHRvIHRo
+ZSBnaXRsYWIgaXNzdWUuDQoNCmh0dHBzOi8vZ2l0bGFiLmNvbS9xZW11LXByb2plY3QvcWVtdS8t
+L2lzc3Vlcy8yODg0DQoNCnRoYW5rcywNCkppbnFpYW4NCj4gDQo+IA0KPiA+IEhOUzMgZHJpdmUg
+aW4ga2VybmVsOg0KPiA+DQo+ID4gc3RhdGljIGludCBobnMzX25pY19uZXRfdXAoc3RydWN0IG5l
+dF9kZXZpY2UgKm5ldGRldikNCj4gPg0KPiA+IHsNCj4gPg0KPiA+IC4uLi4uLg0KPiA+DQo+ID4g
+IMKgwqDCoMKgwqDCoCAvKiBlbmFibGUgdGhlIHZlY3RvcnMgKi8NCj4gPg0KPiA+ICDCoMKgwqDC
+oMKgwqAgZm9yIChpID0gMDsgaSA8IHZlY3Rvcl9udW07IGkrKykNCj4gPg0KPiA+IHsNCj4gPg0K
+PiA+IG5hcGlfZW5hYmxlKG5hcGkpOw0KPiA+DQo+ID4gIMKgwqDCoMKgwqDCoCDCoMKgwqDCoMKg
+IGVuYWJsZV9pcnEodmVjdG9yX2lycSk7DQo+ID4NCj4gPiAgwqDCoMKgwqDCoMKgIMKgwqDCoMKg
+wqAgaG5zM19tYXNrX3ZlY3Rvcl9pcnEodHFwX3ZlY3RvciwgMSk7DQo+ID4NCj4gPiAgwqDCoMKg
+wqDCoMKgIH0NCj4gPg0KPiA+IC4uLi4uLg0KPiA+DQo+ID4gfQ0KPiA+DQo+ID4gV2hlbiB0aGUg
+Vk0gaGFzIHR3byB2Q1BVcywgdGhlIGd1ZXN0IEhOUzMgZHJpdmVyIHBlcmZvcm1zIHR3bw0KPiA+
+IHNlcXVlbnRpYWwNCj4gPg0KPiA+IGVuYWJsZV9pcnEgb3BlcmF0aW9ucyAodmVjdG9yX251bT0y
+KS4gVGhlIGVuYWJsZV9pcnEgd2lsbCB0cmFwIGludG8NCj4gPiBLVk0gZm9yIGludGVycnVwdA0K
+PiA+DQo+ID4gY29uZmlndXJhdGlvbiBhbmQgZXhpdCB0byBRRU1VIGZvciBQQ0kgZGV2aWNlIGVt
+dWxhdGlvbi4gV2hlbg0KPiA+IGVtdWxhdGluZyBpbnRlcnJ1cHQNCj4gPg0KPiA+IGVuYWJsaW5n
+IGluIFFFTVUsIHZmaW9fW2ludHgvbXNpL21zaXhdX2VuYWJsZSBjYWxscw0KPiA+IHZmaW9fZGlz
+YWJsZV9pbnRlcnJ1cHRzIHRvIGRpc2FibGUNCj4gPg0KPiA+IGFsbCBpbnRlcnJ1cHRzIG9uIHRo
+ZSB2ZGV2Lg0KPiA+DQo+ID4gVGhlIHF1ZXN0aW9ucyBhcmU6DQo+ID4NCj4gPiAxLldoeSBkb2Vz
+IHRoZSB2ZmlvLXBjaSBkaXNhYmxlIGFsbCBpbnRlcnJ1cHRzIG9mIHRoZSBkZXZpY2UgYmVmb3Jl
+IGVuYWJsaW5nDQo+IGlycXM/DQo+ID4NCj4gPiAyLklzIHRoaXMgYSBub3JtYWwgdmZpby1wY2kg
+cHJvY2VzcyBvciBhIHByb2JsZW0/DQo+ID4NCj4gPiBUaGFua3MNCj4gPg0KPiA+IEppbnFpYW4N
+Cj4gPg0KPiANCj4gV291bGQNCj4gDQoNCg==

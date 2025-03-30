@@ -1,127 +1,125 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1486347njd;
-        Sun, 30 Mar 2025 01:55:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXQ05qfYKZT0PjGcxm+85kw1q9A0r+b4wNu2XAv+Y5LkL+RtS6qW+q2fgblK1ZL+/oNVW86lBOHv8kcOg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH+lfMx5aF9fClLyR1FGuYSWlLQ1wyT+wH90N2Av+qGq+gmBmsHIaGU1A9fAEznKZveEvMv
-X-Received: by 2002:ac8:7fc2:0:b0:477:6e6a:7cfe with SMTP id d75a77b69052e-477e4b3e9f9mr75750611cf.0.1743324958352;
-        Sun, 30 Mar 2025 01:55:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743324958; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1499536njd;
+        Sun, 30 Mar 2025 02:42:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVmHoOU7aaCdRJ8G6oJ5uPR/rrVAdggaT/OMXf9+1cmgBeFoArc519zA8sgIZjPZSakXePzaN7SNmPEFw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEeoPBNr5pLx5M+qcMm40Er+Sxm7xC3WNMTEGQhGipZL6Eab9dI9GXttHXPwHb1yJ9vr6nn
+X-Received: by 2002:a05:6214:29e3:b0:6e8:fa72:be49 with SMTP id 6a1803df08f44-6eed666ab64mr66155916d6.12.1743327743816;
+        Sun, 30 Mar 2025 02:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743327743; cv=none;
         d=google.com; s=arc-20240605;
-        b=WJ5uGtBaG8yeBgLrCxA8K+A+zinL0BIlMwqR9eMs3Y2VIgCKPuXMt/11PAflY6MCIb
-         wn8HkHRfbnxmro/dO+JMI2zmybeEFXe5geah434OE41RFkShnSvs7Yt9wiymyUb/sLmH
-         U2n/f/3v/D97TPc2kC1rDy0VdkLQmmnzFVn+XvCxd3mp9EZsRjcSnNBUXm12g+hYnMMd
-         NomezDj+LAf+xYT3uNYfsPyHTMXgwkZ9dcQ50sGhs51SePrN8i2M97yj15sAZX4l9LNr
-         j6wGv1AQ5o2T1S0zk69np5Dx+wGG3XS3LuI6AEkphV1Y4cjJlcPa4OBRdFuu+y3P7sR0
-         e9FA==
+        b=bqfJKAX7lDtlW2OsKJcd4O+hIojiFOpXa5h5M66kuvlqew3pratGIFtOZqM9ZkDTIo
+         WS7F0OWbRLWNCcAt0fbr1gEn/dfFkuvx9UbMfztVwxL//ob6iaDaoFPO03ievWEYvGTA
+         PxBmDIqSy7lkCmzqKDGnEndUkhzLeBSXDtt0g21BgeoPSqoAK4QRu0weMAT1JtDX59G+
+         tU8W1IeNHSZfnkhlBiQ6pCCYKNrCInInb830S0OetLmmYA3dqCkG5PUxE1/fncDAZgx3
+         s5evmI9VhBl5jQabNg+wJGUfqmHVUYKRWXxy4qy6gVR5qKS8LoadiNTg4aDxq8KtNrfU
+         7sYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9/nxt1LrBVyfREPr1sg3Dt3QD+ktmROgEeHZ5OrCeQg=;
-        fh=Pu/UB5m9UKNRQ3T2S2tW4oAxo8Ooogt424icEDifPNU=;
-        b=XTgRQm0+DQ/pQxx4k9xrs4RsMuSZr20pVwt1kOV4Y/9tsmKVXGaAGGlYVds7VzPeQs
-         Rnu7ejkHgvcsWryROKj+IDFRdFFVQGD4+ML9KSVswxvPKbeejfx+pGhwHEDFVoDNKCc4
-         vAUJ5lMOMml9U7UwtcIibpIUXZQFvWcwhV8jEAUStJNT0KdhdDTGXpzg17RVrOC3APNW
-         EonRKf85gr+ZNCU5teNWtXh+/9WwUrFMp2zsqPViAh+U5hABl2koNSfHR3U7wkOeD20f
-         s1buRAwNLAFg4n6Q4A3ptJnM+1mtwP/HuvxrqEyaFguKz2vihIFN7RrlXzOnyedDQTEq
-         KjmQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=u76IOBSMbjJcH5OQHSSw28t6GnCDxPKsnRcq6i4Xx/A=;
+        fh=me5EuS2T/4i67cN/+aXRN0dhZv1slld4ihr0mlsCYi4=;
+        b=ZVfg5di7iwMEAdPJ5Ef1k6yC2wIzY9eOxynWb9CoEabMLku/R3+4aTWCvJOpmao0qc
+         W/8v3wF+RWSjAkyNaRnqQ3bIMQc8QFNJKKwTA2EedcOW0q8/j+pS3ugAhz7u4pz/AeH4
+         N2hGCWTMYXXecmjRzwe90iWcLGVYTlGFf/kXrodsJCEod+9+eb0SfLEdRnpYR7Nr4onu
+         xXtUOAmWDSwqIGmaML+ewKEzHaJdJzdCtTYU5ZTk8GuVnQHrR/p2x1tJ+XVK4mGng7+A
+         R4FU7hLSHNNwc3D2InScZHtLM3zAlIip3LmzQTx911czyLOb4masM1P0JgNGT1+4+s0L
+         Tb0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sXNneDhz;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Vq8wbVuV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47816271e8asi26954211cf.351.2025.03.30.01.55.58
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec965a173si47643106d6.145.2025.03.30.02.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Mar 2025 01:55:58 -0700 (PDT)
+        Sun, 30 Mar 2025 02:42:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sXNneDhz;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Vq8wbVuV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tyoS7-00006f-ER; Sun, 30 Mar 2025 04:55:35 -0400
+	id 1typAz-0008OA-V6; Sun, 30 Mar 2025 05:41:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tyoS5-00006F-8K
- for qemu-arm@nongnu.org; Sun, 30 Mar 2025 04:55:33 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1typAw-0008NT-Sj; Sun, 30 Mar 2025 05:41:54 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tyoRz-0007H3-KV
- for qemu-arm@nongnu.org; Sun, 30 Mar 2025 04:55:29 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-39c0dfad22aso1193146f8f.2
- for <qemu-arm@nongnu.org>; Sun, 30 Mar 2025 01:55:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1typAt-0004Xk-42; Sun, 30 Mar 2025 05:41:54 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-ab771575040so909369366b.1; 
+ Sun, 30 Mar 2025 02:41:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1743324926; x=1743929726; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9/nxt1LrBVyfREPr1sg3Dt3QD+ktmROgEeHZ5OrCeQg=;
- b=sXNneDhzQwtWodEKQgMem247WZjwyST958HjeGOXPwrTpNi091CnK5Buv7ImMJ8JnH
- sTdkCUAWTk8fF//G04vii15+c+ubcjJtxI1Ra36Cn12BPoXg2aKhUJomdDBAmS3Dl9uI
- NGQhsgBhjQwuVm9/aOBVnN8oGb46Q7uvM8gxDV650HCvOEkAu4j6g+TCoBeeGHVlk7g4
- jUYZFSR/mTs+jsnNfgqAZb2JcJzZFqp5w6B+wPgOyOeMi/XBDYK05+hGijAnDhHNGFDt
- Z8gb8J2CkImeJTgA+/5DBrW52XTeZLZGagcYjviOxtCMSBj3cDuQHL0CwSlsi87h49RD
- tlRw==
+ d=gmail.com; s=20230601; t=1743327708; x=1743932508; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=u76IOBSMbjJcH5OQHSSw28t6GnCDxPKsnRcq6i4Xx/A=;
+ b=Vq8wbVuVdJDvOS2qsOKUhUOxqWxgPLKGEluMoqyTleoPMx1ptq079mz0FFkncH+QKg
+ XTpTCZk3LfXk3oecBzoYplQZS/1CVnmVC/FicHfnxIM2+/dHsuPooUwdPfAHSM6/Rywq
+ NjMkuhTpRGydsqMPGJ+Qavy/VGkQLYwLGgyTfnE8U2a5lJ0EOrzp8bZgJXhJ1KNjhO64
+ eUgjW4aOTG+B2o2kd2RimWjgHR+AMjD+f4yBf3p1T7lRFRtpzBvxToTDdQberz2eC7W4
+ PDjSkcjNY6TEWRT5KvjT9tZanAkkxkPped4Xs33mJJYTcWcXpDYI6nGoXXhb5573vlIe
+ tn0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743324926; x=1743929726;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9/nxt1LrBVyfREPr1sg3Dt3QD+ktmROgEeHZ5OrCeQg=;
- b=DCBPUzGqEfoi4tM/XMGSMdg2MNfM5TFzDUxKra18Cx2E2atSkGqkwMhiDzr2d/Tzc0
- DIvbZHnij880dpXDQkSVAx6HB+KmUJJgyPFgzaIFvBGO7pt1KaKyBCIDz/TKHAUD+7cB
- EdVLNa4n/7c67VTE3cbpEEBx4ZZKmCeMIFW4ZDf+uRgC8Tlfy2vmTiI5uftSLbmsQiMw
- zL3+f4r9cpcCZOxUvjOHORaesVHVbDkp9quSjyg4i+yNfBTBjKeg9yn0P0X5gl2okmO/
- V5japn3yNa0R08txaId+rAgQQ7lLzDf94YO7YMvfD9HGCOVil+CoSumEzJP6EfZ+gHBv
- sIzA==
+ d=1e100.net; s=20230601; t=1743327708; x=1743932508;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=u76IOBSMbjJcH5OQHSSw28t6GnCDxPKsnRcq6i4Xx/A=;
+ b=qKYYbaijWylNkFWPn899xu3s4bQjSgqxzj3iLIWWTl909L3oti/mz5loljGVQwe59H
+ 8i0koCxe5Trmxdp9jTmydKqHi7G0y8fyvEs7YLXqL35JeHZgz4RGwn/TP7qxqL8Y6MEC
+ Vmo4Z4ryDiWCvmLkmeV8JCqm3Li0tnIUiHNSEGh4zAXs/+ZwBFLU6p3d0Vk5DBOcxu1b
+ YPVjnICTJ+RDoHuxKRd2oLnuVz+4V+qKsRVtfwoR4FfeQkRlWdQtMBYPLss/jNdL18OV
+ v3dPxmkzkuSYpqLqGgnx/nDoNXabpVU1tJPCcuUvAAvyiWVwnwJn9wCwEPuztg1MKlev
+ k8cg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVIsm89kMoS+3/fH7bDvW2pzYVr9nn+rk/SB0/v4ZIjlYBVyVQlqGnnzzs1zNsfGmSBG9tS+PdiAw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx/0MUYLGtqYRBGD5+C6Aer0lYsb3XveMNqq5gtp+9sdXI/g319
- ddXG5J/lKAN/Mqo5icXpk59Yxcga7jVMifg56AkOJ2S/054VNUYe/l2KrRYwvaE=
-X-Gm-Gg: ASbGncv4+wkWBdiUXl4SuKawCvFdvMqz20EpPytQibD1aZRtAqxCYMJCS7fwy0UJgXE
- SEow1d2vVrMvG+k2ynH5CRbv8gZG/30bf5mdc9u83RpoXR+AjV3G0JJWVfq27ZJdIbQOVJ90im+
- j+f7RR9K5ijDzPqdPUyvVbNxZbXer56PwIcqxvHCwjIeW5NceBE5eSZtlyY4LfTp2SRQa9Bsq6Y
- xiqaaacy3836ehCMsQl/C7ujmhYSuir6gHyk96SuGSoDfGyPe1skWedAv1wUpHSfswVTqCBeAhz
- RiFZSbgQAeyLvY7BbhP2Sm+gpTLBhi/HKGvY5fYkIzZLCcBVoWTs658E+3dQUdor+d/IZNqj7Pz
- o0BM=
-X-Received: by 2002:a5d:5f91:0:b0:390:f9d0:5e3 with SMTP id
- ffacd0b85a97d-39c120ca76emr4304099f8f.1.1743324925667; 
- Sun, 30 Mar 2025 01:55:25 -0700 (PDT)
-Received: from [10.155.70.213] (63.170.88.92.rev.sfr.net. [92.88.170.63])
+ AJvYcCVTWz46a4KHPVxFme1ZzXrqSqgd0TniaCgzOjKXiLKxIL8ORH4x5NdFcWHvbLXZ6Qvc++TGT8Wq+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyKpf4kWH5d+KmGWFnxTmJhFnZe5wD1gF9hnpOzyLD7EwMzTjoG
+ oIcLel9uD48sfSNrhKQ8GbfuV1YH3ub8uUPP0i0TCXYbdqp3EuVAX3OBjg==
+X-Gm-Gg: ASbGncvplqdw6q1EK9nM1tZ/67f/mgke8x9ESC6IYg2UIJXHBC7rDoXzcP7ldbG6bW1
+ 6PnNPIDdXLnK4+XRL7kjIt3sUckmyXrKiV0DyvdOQZam5DFc9oNX760Ky54Plx2kCAsAY86WON6
+ 70zgAy0SNCw9Z+OdF3p1YevGeHF3kw3Gg+uT5SbZ4gYFB5ifK89P3Lvg/U3O0+zAniU+Ry14v3P
+ x/sI8HshEH1e2/p358oFl9b0XOjL9B2TXufDAiLEBNHhp8CK5LLW3OLOpUfcIzXH31FOCD7FQ1o
+ Dq1esWSpz1i89KFPXY4gKC6OHmHRZP5FCyDXnnq0RoYy67tPfAatZ6vD4PF9kGeUg4+0RJxJQTw
+ EotBtBulPkw0OevexBL044GBohL/INQbKnfOpVMUicel1qxrcocluVC/XZH98geqM
+X-Received: by 2002:a17:907:9816:b0:ac4:3d0:8bca with SMTP id
+ a640c23a62f3a-ac7369be91fmr444984966b.29.1743327707807; 
+ Sun, 30 Mar 2025 02:41:47 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-2ddd-7900-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:2ddd:7900:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39c0b658c87sm8110604f8f.9.2025.03.30.01.55.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Mar 2025 01:55:25 -0700 (PDT)
-Message-ID: <e778d53b-7ff8-49cf-a23f-7255cc968672@linaro.org>
-Date: Sun, 30 Mar 2025 10:55:22 +0200
+ a640c23a62f3a-ac7196e954csm457914666b.171.2025.03.30.02.41.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 30 Mar 2025 02:41:47 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] tests/functional: Add test for imx8mp-evk board with USDHC
+ coverage
+Date: Sun, 30 Mar 2025 11:41:39 +0200
+Message-ID: <20250330094139.11948-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/char/bcm2835_aux: Fix incorrect interrupt ID when RX
- disabled
-To: Chung-Yi Chen <yeechen0207@gmail.com>, qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, marcandre.lureau@redhat.com,
- pbonzini@redhat.com, qemu-devel@nongnu.org
-References: <20250328123725.94176-1-yeechen0207@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250328123725.94176-1-yeechen0207@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -138,46 +136,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5/unBcRyRzNg
+X-TUID: mSfwrVoe67Ka
 
-On 28/3/25 13:37, Chung-Yi Chen wrote:
-> This patch fixes a misconfiguration issue in the read implementation of
-> the AUX_MU_IIR_REG register. This issue can lead to a transmit interrupt
-> being incorrectly interpreted as a receive interrupt when the receive
-> interrupt is disabled and the receive FIFO holds valid bytes.
-> 
-> The AUX_MU_IIR_REG register (interrupt ID bits [2:1]) indicates the
-> status of mini UART interrupts:
-> 
->      - 00: No interrupts
->      - 01: Transmit FIFO is empty
->      - 10: Receive FIFO is not empty
->      - 11: <Not possible>
-> 
-> When the transmit interrupt is enabled and the receive interrupt is
-> disabled, the original code incorrectly sets the interrupt ID bits.
-> Specifically:
-> 
->      1. Transmit FIFO empty, receive FIFO empty
->          - Expected 0b01, returned 0b01 (correct)
->      2. Transmit FIFO empty, receive FIFO not empty
->          - Expected 0b01, returned 0b10 (incorrect)
-> 
-> In the second case, the code sets the interrupt ID to 0b10 (receive FIFO
-> is not empty) even if the receive interrupt is disabled.
-> 
-> To fix this, the patch adds additional condition for setting the
-> interrupt ID bits to also check if the receive interrupt is enabled.
-> 
-> Reference: BCM2835 ARM Peripherals, page 13. Available on
-> https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
-> 
-> Signed-off-by: Chung-Yi Chen <yeechen0207@gmail.com>
-> ---
->   hw/char/bcm2835_aux.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Introduce a functional test which boots Debian 12 on the imx8mp-evk board. Since
+the root filesystem resides on an SD card, the test also verifies the basic
+operation of the USDHC.
 
-Fixes: 97398d900ca ("bcm2835_aux: add emulation of BCM2835 AUX (aka 
-UART1) block")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ MAINTAINERS                                 |  1 +
+ tests/functional/meson.build                |  1 +
+ tests/functional/test_aarch64_imx8mp_evk.py | 69 +++++++++++++++++++++
+ 3 files changed, 71 insertions(+)
+ create mode 100644 tests/functional/test_aarch64_imx8mp_evk.py
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d54b5578f8..4ceffa89dc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -833,6 +833,7 @@ F: include/hw/arm/fsl-imx8mp.h
+ F: include/hw/misc/imx8mp_*.h
+ F: include/hw/pci-host/fsl_imx8m_phy.h
+ F: docs/system/arm/imx8mp-evk.rst
++F: tests/functional/test_aarch64_imx8mp_evk.py
+ F: tests/qtest/rs5c372-test.c
+ 
+ MPS2 / MPS3
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 0f8be30fe2..aaaf3472f1 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -75,6 +75,7 @@ tests_aarch64_system_quick = [
+ 
+ tests_aarch64_system_thorough = [
+   'aarch64_aspeed',
++  'aarch64_imx8mp_evk',
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+   'aarch64_replay',
+diff --git a/tests/functional/test_aarch64_imx8mp_evk.py b/tests/functional/test_aarch64_imx8mp_evk.py
+new file mode 100644
+index 0000000000..5419d3c525
+--- /dev/null
++++ b/tests/functional/test_aarch64_imx8mp_evk.py
+@@ -0,0 +1,69 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++
++class Imx8mpEvkMachine(LinuxKernelTest):
++
++    ASSET_IMAGE = Asset(
++        ('https://cloud.debian.org/images/cloud/bookworm/20231210-1590/'
++         'debian-12-generic-arm64-20231210-1590.tar.xz'),
++        '7ebf1577b32d5af6204df74b54ca2e4675de9b5a9fa14f3ff70b88eeb7b3b359')
++
++    KERNEL_OFFSET = 0x51000000
++    KERNEL_SIZE = 32622528
++    INITRD_OFFSET = 0x76000000
++    INITRD_SIZE = 30987766
++    DTB_OFFSET = 0x64F51000
++    DTB_SIZE = 45 * 1024
++
++    def extract(self, in_path, out_path, offset, size):
++        try:
++            with open(in_path, "rb") as source:
++                source.seek(offset)
++                data = source.read(size)
++            with open(out_path, "wb") as target:
++                target.write(data)
++        except (IOError, ValueError) as e:
++            self.log.error(f"Failed to extract {out_path}: {e}")
++            raise
++
++    def setUp(self):
++        super().setUp()
++
++        self.ASSET_IMAGE.fetch()
++        self.archive_extract(self.ASSET_IMAGE)
++
++        self.image_path = self.scratch_file("disk.raw")
++        self.kernel_path = self.scratch_file("linux")
++        self.initrd_path = self.scratch_file("initrd.zstd")
++        self.dtb_path = self.scratch_file("imx8mp-evk.dtb")
++
++        self.extract(self.image_path, self.kernel_path,
++                     self.KERNEL_OFFSET, self.KERNEL_SIZE)
++        self.extract(self.image_path, self.initrd_path,
++                     self.INITRD_OFFSET, self.INITRD_SIZE)
++        self.extract(self.image_path, self.dtb_path,
++                     self.DTB_OFFSET, self.DTB_SIZE)
++
++    def test_aarch64_imx8mp_evk_usdhc(self):
++        self.set_machine('imx8mp-evk')
++        self.vm.set_console(console_index=1)
++        self.vm.add_args('-m', '2G',
++                         '-smp', '4',
++                         '-accel', 'tcg',
++                         '-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path,
++                         '-append', 'root=/dev/mmcblk2p1',
++                         '-drive', f'file={self.image_path},if=sd,bus=2,'
++                                    'format=raw,id=mmcblk2')
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Welcome to ')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
+-- 
+2.49.0
 

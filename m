@@ -1,194 +1,220 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1842808njd;
-        Sun, 30 Mar 2025 18:36:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXU/Z7HBzpwg39TlJS6fKWVTC8+kFVg60Y6yIGxm4CVKPyF8sz4RXvS1qNzHlG2i+wplxcEm1klbiBpkA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHM4ZIJwVka5mwQqNqfvmpssDSZ0Td2JVi1BclkKFieaao6dFLOaeM7dHCX1k1HhkF5A5f6
-X-Received: by 2002:a05:6214:224c:b0:6ea:d6e1:f3f8 with SMTP id 6a1803df08f44-6eed62a35b2mr99919446d6.45.1743385002480;
-        Sun, 30 Mar 2025 18:36:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1743385002; cv=pass;
+Received: by 2002:a05:7022:ef04:b0:9b:2b00:a62d with SMTP id qy4csp1947787dlb;
+        Sun, 30 Mar 2025 23:32:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXtnKQi+LUhsu3rimOpFpwpNm9Vz7TswBIDSU1NIYKtZVZjGBvzpFOzOD8OblGFpHQ/jrSvJgS3Mv544Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvOLEUsCxwM/t5KRCmFwyk6jd2ga6tsAPwYtYXtrP6RUnOyWHoI2cCfnRoTI41/E+Ztlm6
+X-Received: by 2002:a05:6a00:92a5:b0:736:4e0a:7e82 with SMTP id d2e1a72fcca58-739803923e1mr11135026b3a.10.1743402747759;
+        Sun, 30 Mar 2025 23:32:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1743402747; cv=pass;
         d=google.com; s=arc-20240605;
-        b=I+Q8LOHbO9W6qVzPhlRdrIDITYHc+Lf5yTpuKaTEYovBN3qQ3ABX1ma+Hew3McCGfl
-         d0aaVcc87hYejL247aLiX7LBlhuLETfHXjfR4fzmQ9gLT5HBjVPBIV0/WXG8FVby6KXv
-         aSJd9nH5ruMcdMpeKmUrO1Midv0qeM998gQt8cbst2UBDVx9+jp68vOMoEFFFj6Xt5IG
-         +HA/Iy/oxMnjG6ZidcTM0cTf87vcBTFiGbps2Tbe+5SbxnfclnVezwUE/eSMQbtooBkP
-         v0lofNx4L4HFnrV14e4nnUmJwrYNXzG8xp9YgX4DdDF2CJBrS3fl+g6PYD5zVfEPKNLy
-         4CVg==
+        b=QDY5wcxsBnqjyuqX6uAds410JcdAMxDWpkeHuWruNb4dHTwDxB5lcxeY/sDB/PJR+l
+         4PYcE+hiHYUS1eSeoVh6bZsUUcmpm5QWQcDevmJYr0RoOV76RLWaSyZ1aQnstmpgstJd
+         1Dp6LskE+JQ9Vd8PGYtu6t5bgFKb30PmauOP6OGLw02B+NRj3JdXbqwZdqgoLRH4yPvT
+         ZbZ+1R43PBNCw6LMWF7YpiO64X+3v2TkQFJv0qJdtG/y34oamjYnoL1pAUKZlkqmuH1Z
+         F5iJcehKSry+UUtUGQILsR3wamu8XwyDL4Ab3WUOqL1uwBMUGnctxzpqCWLKJX2/b5h2
+         l1KA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=ks9XSJOP65MEaXjpEgcJryGfRqzAJHRu8wLXEsmLCVo=;
-        fh=DY5/iPQTkaegFowhDos3pccVqX4NyD5RR8nxFVZ/2MQ=;
-        b=TBz3HAq4xWuyB2IqhKR4asrvL0EfUa5es526EzvWMoOElJ7vYvdQAhcw69YvH7sqEW
-         9Q9yrT8rEUShppjGWqYAuUz2sFf03FsYaU+EXxq0KlxaI/c98Nev246rPHnZRkFVopxt
-         H7f0w/ux6dehL+fRBHCCyh5l7vBiTeGItodcUyr6D6gB/y+kvmwOtfK4IchjguG8zrGo
-         ZnPx8XNajKtJrR4KiYSauRjupCy/Km03C89VzIVWw7cRc01GsaPfVL3+KTL/b+BZeWU/
-         QHLORBvcDpfdGoEW6lnGASwnQNMiZFpw4sAU5mKpmIPmHufbgRxxT3Oovd2WupN1Vw2F
-         RHsw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=Bj+uPbhdX2jDRRq2LjcQpDcOcEDf1LjkYUr8tDy3SUs=;
+        fh=cF0dtaDf5G95hC3P5ws1uyr/VkrFak6b2duhq3cbDN0=;
+        b=k1XSN24GtDMB5T9VfK/AOapcaFxLxPPalGPEiBNZ68ZwkzURvzt2raZ43q6XWhD9OV
+         WQ+ahVacyuTLHmdtj5lH/Y0zhoo/5URgIS7KccZWJd0a3zi8d9XGZhigitwR80DqjMNE
+         wnOJnhOGatIdoIzHJRJpnfwxCOCVgfllj1rtppx/l3CIOZlUoA32ON77/T5IucNHWCmq
+         wyxX4VoafuaEUtlKvMY58VHPW7O42cWuvezTRPSz81xt7ytXPYrGdlikLcZars0p/HnV
+         ehpXj8iKKEbtWjC09QumhT1m5Lt7+Zhfc3ngMPMis0uiHi8vh/3vfEt6GbfatSC32345
+         zNIw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=IC5BxK1l;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5f778c243si618173685a.410.2025.03.30.18.36.42
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K3t52V6G;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-739710542e8si12276305b3a.159.2025.03.30.23.32.27
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Mar 2025 18:36:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Sun, 30 Mar 2025 23:32:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=IC5BxK1l;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42229-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K3t52V6G;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-42231-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A164B168420
-	for <alex.bennee@linaro.org>; Mon, 31 Mar 2025 01:36:42 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id E50F43A79B7
+	for <alex.bennee@linaro.org>; Mon, 31 Mar 2025 06:32:13 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 20FAA5FB95;
-	Mon, 31 Mar 2025 01:36:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 45DB713A258;
+	Mon, 31 Mar 2025 06:32:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="IC5BxK1l"
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="K3t52V6G"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6081F6A33B
-	for <kvm@vger.kernel.org>; Mon, 31 Mar 2025 01:36:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 388DF2C190
+	for <kvm@vger.kernel.org>; Mon, 31 Mar 2025 06:32:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743384990; cv=none; b=NqbT+6HUoqZZKm7T8NJJzGr3cuAwb4aWlb52P+DMRevUIgn6Ka1Splt4MllFAPb0pHA2/vm7jnFDgxpnFCLwk5CKmVbJF3ObNJrJTyjDU2ZFedGfbfZKAWsuiOsOXVMSx7SUUsLQeeXB3G7F89Egv9t41CoCYoXFhQL78pahJY0=
+	t=1743402743; cv=none; b=oIQGzIzo2Z5B74dqJQc9sqJ3lEOm1xfzUnMSTT4EtURtbF2HcfWUMZQKxulgc4znQ7yBvDdrj+4NEacpucMl4kxRX/o/PQN22hx4Xf1S3vmDV5CC2U2UmWvvCjGlByOOxe0P4e8aFSIQQ10GsK1Yh3xSDRt2VJdTIlpIbf4ChzA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743384990; c=relaxed/simple;
-	bh=Mc2S/QOOjF/HnI1POBii2WiJWciXB3NdkfArDcHJ/s4=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=DokWbicBFdPQxqoGruo+rPxp35HJf60I3LW4vYR7vWmaDZWX87yxO+cyclU3uP9b++MNeISfqcsG8CpCn+1T2mdgU+ws+JrlJXoV4GcR1mb1ButKd0l866iHpda51rKapOxKZuD4QV4QIM0N5xKu+fSBgQ2yCdcoHC3dQnB++Qw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=IC5BxK1l; arc=none smtp.client-ip=205.220.177.32
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52UMFPsk029810;
-	Mon, 31 Mar 2025 01:35:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=corp-2023-11-20; bh=ks9XS
-	JOP65MEaXjpEgcJryGfRqzAJHRu8wLXEsmLCVo=; b=IC5BxK1lZARMYlYl1rDH3
-	h2926dV5oK/Tj5EOtlUemh3+LwOD7HtEQepErA+qS41eKLpYyiiVjx2bSlvKaFTc
-	E6D17k4ZBjl3dJCJJnjZgMyaxg41QD3KhNvPBK6id/UzpZnFdg2TP/b6SY3WZT29
-	uSh2oUe0kQDki1a2mSQQqUYJ6Bags6iJ0umliIx+UfYbtDNq1sKnedYkQGLb3Tbg
-	aP5pmtXLu4LQLHzpQS7f/T7gT0sYosjbZA+ToED/9OQP+No8srtuinmppZ81B/Mr
-	Pb1mD12Fp0XztPM43dpCDOy5evAixGTyeHpURIcv8LgqNrVrh1hkL1gZJ1DbGlx3
-	A==
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45p8wcaewa-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 31 Mar 2025 01:35:06 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 52V1BJJo033642;
-	Mon, 31 Mar 2025 01:35:05 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 45p7a7ddvf-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 31 Mar 2025 01:35:05 +0000
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 52V1YfxZ015214;
-	Mon, 31 Mar 2025 01:35:03 GMT
-Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 45p7a7ddms-11;
-	Mon, 31 Mar 2025 01:35:03 +0000
-From: Dongli Zhang <dongli.zhang@oracle.com>
-To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-        qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
-        sandipan.das@amd.com, babu.moger@amd.com, likexu@tencent.com,
-        like.xu.linux@gmail.com, groug@kaod.org, khorenko@virtuozzo.com,
-        alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
-        davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
-        dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
-        peter.maydell@linaro.org, gaosong@loongson.cn, chenhuacai@kernel.org,
-        philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
-        arikalo@gmail.com, npiggin@gmail.com, danielhb413@gmail.com,
-        palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com,
-        zhiwei_liu@linux.alibaba.com, pasic@linux.ibm.com,
-        borntraeger@linux.ibm.com, richard.henderson@linaro.org,
-        david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
-        flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
-        cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
-        frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: [PATCH v3 10/10] target/i386/kvm: don't stop Intel PMU counters
-Date: Sun, 30 Mar 2025 18:32:29 -0700
-Message-ID: <20250331013307.11937-11-dongli.zhang@oracle.com>
-X-Mailer: git-send-email 2.43.5
-In-Reply-To: <20250331013307.11937-1-dongli.zhang@oracle.com>
-References: <20250331013307.11937-1-dongli.zhang@oracle.com>
+	s=arc-20240116; t=1743402743; c=relaxed/simple;
+	bh=agaHOg60VrLLxeZkJI3T/8tAvEtzaEf2BEwlNzvFZK8=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=gYNiDVidUBcJ5cc17Yu8YHJRPJPs4a497qKQIEBrGx4IK4WEekPg2O491NCPu58r7K2mk5RooSrxb501rlM3hAYU3Hn7uIFsoyFVePrTYEvSEP/QrZjMOpuWmrhxgtksnBAcXSG3mRbX5y562Jvkfz3llbMZA+awO87GQYg5ouU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=K3t52V6G; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1743402739;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bj+uPbhdX2jDRRq2LjcQpDcOcEDf1LjkYUr8tDy3SUs=;
+	b=K3t52V6GgwMir4w8TLltn9pS0wcSF/KwFEa9kCM3ioE0V80I62bTCtzwzSrX7iZUgsUAoZ
+	E72HpT09SZLiXqSOJwGYRyQJ92RDHoIO6wFah3H9lQ8pDu6HKx8GDwRFEafYJh3n4Gpsf6
+	0Fek2afsQfecUhKf7bNrpwH4zDTPMe4=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-186-HNU_EYEgOQusxLqD7dZBZg-1; Mon, 31 Mar 2025 02:32:16 -0400
+X-MC-Unique: HNU_EYEgOQusxLqD7dZBZg-1
+X-Mimecast-MFC-AGG-ID: HNU_EYEgOQusxLqD7dZBZg_1743402735
+Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-223f3357064so65776025ad.3
+        for <kvm@vger.kernel.org>; Sun, 30 Mar 2025 23:32:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743402735; x=1744007535;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Bj+uPbhdX2jDRRq2LjcQpDcOcEDf1LjkYUr8tDy3SUs=;
+        b=WfehVv9AN2ZNBSRibPx1I6MOCNdH5JVYmuXKZFhl/R4oPFkqIGBuv2ZEriXxINj2nU
+         uo8S6mnAioA6KJlb8B0e2Tk4cUM4F1y1GExp7SkMfE2mr8Ld/6fKM/GOyxe15QEmb2FW
+         Wkuf8Xf7d+F5qoQ6Gy3b/82YEQgbU1x87uZkdwW/iFBG/KA/8ak72xeOhdE20ej4+Cpc
+         wsP1bpT2aFS5vIfcjSGhevIB6RMY55dlVcjbSk9LgMrd4FZvw+kMMSFKKHWNpIsDlWIb
+         qzpB1PyNuoIlMrwk2peRLu5xLbFjmfOaDBCW3P9Cx+yl4KD7JgwFJfjItAtIsSMciLvJ
+         oCug==
+X-Forwarded-Encrypted: i=1; AJvYcCXV3J/r+5oeZ2G1pWZ7zyg8eNhILEps6yfeO/NuvC/8NKrhDr6g31+npGPD6grzT2454J8=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yw/KSFPa6puiIUSf4uuXz7VUvrAVH5LrsuA8rQXBmc4LGHneJcQ
+	q92OyHLB2iYnucENtuOudjT7yeDyDt58PNGgF8StNtCqxOI+Bde1APAAaW3AGKEVEUJToiAlijF
+	eZ1Et+be+8t9+Pzt4Y67LpBIe/d2jHqrorbjFQhfPV55bTivZrA==
+X-Gm-Gg: ASbGncvHJOYxM8JHS8WT0pNaFWZAvI5kO9upmWAJFMBAm4GuGOoF9U5TQWABBMCWRbA
+	j0b7IVIX9V2XNB3XbDSQ80qgbPSyJD+7i7W5gISVQNjuvfvRHGOUmOukapWGcaheiejpilnO23f
+	SjMsDAlizcGqIl9bVQc3dwQXfV8ALZjz1uGdQLQH4pTPCHYSCb66R9WNfeaupaVsOpYVA/uHtmU
+	BJ7eeyC3gIqXqJG+NIEdpLcB0/bg5G5+09AEMiKRV6Jxv4/2AqknmBnpbZ/NmlX0ZRYz02Yt1fM
+	aErKf/xfJsSpig7RUxKS
+X-Received: by 2002:a05:6a00:3d12:b0:736:32d2:aa93 with SMTP id d2e1a72fcca58-73980461abfmr14103499b3a.20.1743402735288;
+        Sun, 30 Mar 2025 23:32:15 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3d12:b0:736:32d2:aa93 with SMTP id d2e1a72fcca58-73980461abfmr14103450b3a.20.1743402734861;
+        Sun, 30 Mar 2025 23:32:14 -0700 (PDT)
+Received: from [10.72.116.144] ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739710dd3d4sm6451950b3a.177.2025.03.30.23.32.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 30 Mar 2025 23:32:14 -0700 (PDT)
+Message-ID: <44dcac55-62d1-4092-9b75-5c26b6d4abed@redhat.com>
+Date: Mon, 31 Mar 2025 14:32:06 +0800
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-03-30_11,2025-03-27_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0
- suspectscore=0 mlxscore=0 malwarescore=0 spamscore=0 bulkscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2502280000 definitions=main-2503310009
-X-Proofpoint-GUID: 37-REWe4adbPewXhfiex0uHxINcpNQyE
-X-Proofpoint-ORIG-GUID: 37-REWe4adbPewXhfiex0uHxINcpNQyE
-X-TUID: UtSagZiAyfuD
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v2 0/5] accel/kvm: Support KVM PMU filter
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
+ <mtosatti@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
+ <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+References: <20250122090517.294083-1-zhao1.liu@intel.com>
+ <2fe2a98d-f70f-4996-b04e-d81f66d5863f@redhat.com>
+ <Z9zgVKtZyEx3MKuf@intel.com>
+Content-Language: en-US
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <Z9zgVKtZyEx3MKuf@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: EbPh/dMXyAH6
 
-The kvm_put_msrs() sets the MSRs using KVM_SET_MSRS. The x86 KVM processes
-these MSRs one by one in a loop, only saving the config and triggering the
-KVM_REQ_PMU request. This approach does not immediately stop the event
-before updating PMC.
+Hi Zhao,
 
-In additional, PMU MSRs are set only at levels >= KVM_PUT_RESET_STATE,
-excluding runtime. Therefore, updating these MSRs without stopping events
-should be acceptable.
+On 3/21/25 11:43 AM, Zhao Liu wrote:
+> Hi Shaoqin,
+> 
+> Thank you very much for testing!
+> 
+>> I tried your series on ARM64, but it reports error at compile time, here is
+>> the error output:
+>>
+>> qapi/kvm.json:59:Unexpected indentation.
+> 
+> I guess this is caused by my invalid format and sphinx complains that,
+> as Markus figured out :-(
+> 
+> What about the following change?
+> 
+> diff --git a/qapi/kvm.json b/qapi/kvm.json
+> index 31447dfeffb0..b383dfd9a788 100644
+> --- a/qapi/kvm.json
+> +++ b/qapi/kvm.json
+> @@ -54,11 +54,6 @@
+>   ##
+>   # @KVMPMUX86DefalutEvent:
+>   #
+> -# x86 PMU event encoding with select and umask.
+> -# raw_event = ((select & 0xf00UL) << 24) | \
+> -#              (select) & 0xff) | \
+> -#              ((umask) & 0xff) << 8)
+> -#
+>   # @select: x86 PMU event select field, which is a 12-bit unsigned
+>   #     number.
+>   #
+> 
 
-Finally, KVM creates kernel perf events with host mode excluded
-(exclude_host = 1). While the events remain active, they don't increment
-the counter during QEMU vCPU userspace mode.
+This doesn't work for me.
 
-No Fixed tag is going to be added for the commit 0d89436786b0 ("kvm:
-migrate vPMU state"), because this isn't a bugfix.
+But this works on ARM:
 
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
----
- target/i386/kvm/kvm.c | 9 ---------
- 1 file changed, 9 deletions(-)
+-#              (select) & 0xff) | \
+-#              ((umask) & 0xff) << 8)
++# (select) & 0xff) | \
++# ((umask) & 0xff) << 8)
 
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 4c3908e09e..d9c6c9905e 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -4170,13 +4170,6 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
-         }
- 
-         if ((IS_INTEL_CPU(env) || IS_ZHAOXIN_CPU(env)) && pmu_version > 0) {
--            if (pmu_version > 1) {
--                /* Stop the counter.  */
--                kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
--                kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
--            }
--
--            /* Set the counter values.  */
-             for (i = 0; i < num_pmu_fixed_counters; i++) {
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR0 + i,
-                                   env->msr_fixed_counters[i]);
-@@ -4192,8 +4185,6 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
-                                   env->msr_global_status);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_OVF_CTRL,
-                                   env->msr_global_ovf_ctrl);
--
--                /* Now start the PMU.  */
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL,
-                                   env->msr_fixed_ctr_ctrl);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL,
+
+>> While I compiled it on x86, everything is ok. Could you please check why it
+>> failed on ARM64?
+> 
+> Maybe your Arm64 environment doesn't have sphinx_rtd_theme?
+> 
+> You can check it by:
+> 
+> python3 -m pip show sphinx_rtd_theme
+> 
+>> By the mean time, I will review and test this series.
+> 
+> Thank you again! I also plan to refresh v3, in maybe 1 or 2 weeks.
+
+Ok, Waiting for your new respin. :)
+
+Thanks,
+Shaoqin
+
+> 
+> Best Regards,
+> Zhao
+> 
+> 
+
 -- 
-2.39.3
+Shaoqin
 

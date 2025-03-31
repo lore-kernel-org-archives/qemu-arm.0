@@ -1,132 +1,139 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1500998njd;
-        Sun, 30 Mar 2025 02:48:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWOFbaFPw+ksKwwFJHfZh6KcXxZRA9nlYDCVS8Q/ysgbapJiXz9kpO8OFYee5Kyz31wpgak55sTBUgmaA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH9fwdQkH2lykSCwB5fYYDUB3LN9ed1/SY6ev2DLO+cu1mz8mIJW60UU/cxNLqw+XfA65q5
-X-Received: by 2002:a05:6214:1c4a:b0:6e8:97c0:76f8 with SMTP id 6a1803df08f44-6eed6217d2dmr83280396d6.27.1743328131773;
-        Sun, 30 Mar 2025 02:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743328131; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1842559njd;
+        Sun, 30 Mar 2025 18:35:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWo9My5i8JUaVNTkQmSCtMjDA0YUVMKoIYfJ2P5HXveNZui+JV+I+JFJGoOv+Apso8EMA+QDwTX4OZf/w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGFXE+4oSzfkXbuLhvjKZPFctfABeEn82YKLrnG8B1u908bVPn7Tu8SR1vJFU8k6S8xDSzb
+X-Received: by 2002:ac8:7f56:0:b0:477:5d31:9c3f with SMTP id d75a77b69052e-477f79d5301mr99820971cf.42.1743384951771;
+        Sun, 30 Mar 2025 18:35:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743384951; cv=none;
         d=google.com; s=arc-20240605;
-        b=aTkDsGsb3xnQQTdAr8pv/nu9avP4Dh3VsLD9DBIICJvorqNjk/mcsiSwMrO2zIxjx7
-         o46VHATwl4mM4pkZSpq1zD2FlKS2aMjjeUpCmHEXMqagjBn+QRJbYUFsJrdD+udlOS8t
-         OlgfA/jUEQlXLBN38/AGmfcbY8api9Aq9pOaRD7N9vYRfzPNBJ4H/MgzDZBkrB4GQCEb
-         nD8lUUZMXwtctChy5X6OTH9jH+LgzegREPrQJ97KkzxCfA7aFt5nzPh9GgXDQ4EGdNEu
-         X+9YUMI0dtPegDyJIVTgH3bqAPAWMPz9dXLCZw3iBNA6Sp0NrmmFf4vqD4IcRpCwekna
-         ts8w==
+        b=RawJLm3eY8rWYU7np81FGvQb5FAIS/xwuik48hY9LeGqkMNgg5OPIpUBuw128j5mvl
+         AEbjibMcEFAElZPw+zeAthxLqQiGUATu8DF3smv7tbhEGQM+tTZAVC2U4UIZUBUbseTg
+         c4aDtBql3EJs1g2rwUEHGrmdCrlL9dk7uDgLbnE8IzCV+op/5axRZcdYGYKxKp3JqbBC
+         rAEQlHqC/UkWdmC1w5JC7ulh6BmZJAfuN8aU7sZUUoeibIJcQtzcDiYP5ZNQX99lmLM2
+         SfS26B6YX+KNiV5ED5vsekg1/dnIgjBAKfSg7gQLL0VuFoGOTx2S88qISVNxUq043L67
+         2rxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=eRdudXDYt8RHgefvNy4Ckoqy5VflOX9G0dwjwHRqJVc=;
-        fh=fMhGC7z+aT52s2oLG1x5PdT0lkCEt+o94DseHDZPcV8=;
-        b=lzLpY+sx4+pXRgPPRQ5Zz13rMbCe4k0w4xG+eiZQxWe8cUYCBYNRT+PG1V0oiRnjAj
-         7B1vXkTzYifHf4ihn7CqA7Aqr+zmbmIO0sIxBuI2d1Iet+pFM1+G33FjJln4F74u5sF9
-         BxKChQrjqyRCgs60S/94gj+GYRxVY2FwNUttJf76ST1WLfVj/gPPVwKBfckEOkqgS9ct
-         KlEIF4Ei6WvugwciGJHjyc4L4caZf5X9Nt5nxRomuoZgxVTR75DHoQKn/HY6qVvPbdz7
-         4VjAW3B4dIsZEpyAXYnn1BIhkTNlsFp95vwpu4XYpHZIBThplsES2AHJRjYnl1dxGxa/
-         65yw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=uKlqOdhnxF9XZFanemfUUs541QDubDS3SJU+AHnhLXQ=;
+        fh=DY5/iPQTkaegFowhDos3pccVqX4NyD5RR8nxFVZ/2MQ=;
+        b=XZ5KUquDwHvkMJuCqY13L8q84N6dHGtldxSs1pijBbrLuTEajUa7cROtOhmnfxZIGh
+         HVnxAaN/xRsBQcm+aBbmPIFKi4wCHOQrqKcWop70YB+1+c+oQDGGCDsq+Uobv8cVf70P
+         5V6lTs7nux42lFj7UA2717APA0BgVtIl3l2LtZzazPTWbSCuH4ytvcP+z7f7nu1ay8AF
+         OrS57H3KTdHxK0+V+dUnaoHAoz+KudTE1/9sUUrt1DlwTY3eRNoB/rx9mRTy2okw8B6A
+         huJfLg/hptEpG6qmOx+PiRk1R7T8U8Eb1twmkpp8gN1zIbe/pdaIrIKSJPIdgaU2Dx7i
+         eUbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=h3qQDH17;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Y9T8wdN7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eec962e13bsi48977126d6.93.2025.03.30.02.48.51
+        by mx.google.com with ESMTPS id d75a77b69052e-477831ae13bsi59548901cf.619.2025.03.30.18.35.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Mar 2025 02:48:51 -0700 (PDT)
+        Sun, 30 Mar 2025 18:35:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=h3qQDH17;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Y9T8wdN7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1typHQ-0001IL-4V; Sun, 30 Mar 2025 05:48:36 -0400
+	id 1tz441-0005w4-Cl; Sun, 30 Mar 2025 21:35:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1typHP-0001I4-5I; Sun, 30 Mar 2025 05:48:35 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1typHN-00058I-Nu; Sun, 30 Mar 2025 05:48:34 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-ac2dfdf3c38so643608166b.3; 
- Sun, 30 Mar 2025 02:48:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1743328112; x=1743932912; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eRdudXDYt8RHgefvNy4Ckoqy5VflOX9G0dwjwHRqJVc=;
- b=h3qQDH17DWr5MHrGBZEkPFLxLGAqBxThkzpDy98ifrrK2QfNYQ2LhsNJy6g2Pj2nFy
- +mZxAvjsic91ZHJxYDpjxv1Znx8nn3mmGj/fin04KzXoTaWW9MkYM0EOIjio1d8Xvy+8
- KBibvxAjLZ2G2GpAHEpAjeaUknQz39YPt+X+fbBfaddeC0iyhohMkUL2tegBcat/9zm5
- rFmHEkA3rsf/nKwoJunJppvEq29ITQ3VR4yP8cQy940H5gLvBBocqzo0N4IEq8jK+t3j
- Gy+f1ecK5NVVzHeu/Z+908g9nSKyOSMd43giYhppwHWI3ctvRtgKKWt+MYcd6fsYZ20g
- wSag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743328112; x=1743932912;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eRdudXDYt8RHgefvNy4Ckoqy5VflOX9G0dwjwHRqJVc=;
- b=N3HaIA+czzF9Mn/DljPuORvU2Pd0rJbRptKpxJAq5H+g5rU5IVFGiTyibJsieFK2XV
- QLerDOMjrGVEzU6V5HEv2ln7KtbFAlFpGE6PEPsohCgHmGXn/M8BjOt5VrwAQRM3M8CJ
- M1wpFD/lpKkJFr26mkzWlwUQJihUE09frTJ6lyJg0ONvcPaZ9oVWGqkPn4lDsAT8fzGI
- K4XgOl3MIkkOEaMTuoD60O6Mpf7Dies0RX0cn/NNkmX2sRfZ6h5JsoHunoJOpuyCjc32
- 0Bec+jGUQ6z5zCoVT7/jCdhAdjPMKezNMxlST4aXPRic8VeotENUTXnVnfGqjg/UoPsc
- HSFw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVrBWg3cxilEKvUjpWVz30mw3wOuplqVqEttW68Qt4w3kWIpr38wcZ5pLN/pm7wyKMTpjQeh2cPlg==@nongnu.org,
- AJvYcCWKh3+2xvxAj9PG6McSsV1n33iZ2w6yLRITH348mEF5qVPxiQgcu7gsqKyw7qN3ePtA5VOjVqgzn15dnw==@nongnu.org
-X-Gm-Message-State: AOJu0YxCSZh6QsqyqAZJx7zNjf8Rd/fqcli1mYLskJD+9flPgp3cWJrH
- 83gkYRUvxAaso0CFwwHCcNi0IgdE41Rom1LoXpUQ8bIbfHRimEaZ
-X-Gm-Gg: ASbGncsmrzI0K7KVsKpI06LTx9JUR2KxE9W3hWGB8WX+6/xK4j2DSy3N3F7O/zdZvFa
- 5Idrq5C5sfIxTDWBjGi/RbGnEZbpBHbcbZd7C1AqvH1aflVavXZ8Bk6lU12d8OL4BFdN3f69dTA
- Pu+xMkVVDkVI7H/ngfeyE1N1utTy7MlAsHBh9N7iaX3m3eKjVaUJDJufbEJJg7Pi9Tzh4WyURWG
- 2ujnO0OAR6+gDLyDrLeWuDIpZe/8A31dsu08xKWWX8jsUfpQHuebBnl2yDPqCs6PvIGYksrKhHR
- TBmiXf0gCpqMyZrK7FRBeQ/kdApv6NrIy8ujgPZXJ9iHMrHHwQkMJ4oImuhsl4GfidwkR0n29tP
- 2mDRQuTHemUCpTeS++GBsgQwNXPEsXpWt6SHLljlBPzi5r12nSwG1
-X-Received: by 2002:a17:907:3f12:b0:ac6:b639:5a1a with SMTP id
- a640c23a62f3a-ac738b0ba28mr483032066b.28.1743328111543; 
- Sun, 30 Mar 2025 02:48:31 -0700 (PDT)
-Received: from ?IPv6:::1?
- (dynamic-2a02-3100-2ddd-7900-69d2-56f6-a5af-50a8.310.pool.telefonica.de.
- [2a02:3100:2ddd:7900:69d2:56f6:a5af:50a8])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac71922babbsm455901066b.5.2025.03.30.02.48.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Mar 2025 02:48:31 -0700 (PDT)
-Date: Sun, 30 Mar 2025 09:48:30 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 0/3] i.MX 8M Plus EVK Fixes
-In-Reply-To: <c794ca2f-43f7-4abd-86d0-650eb53602d4@linaro.org>
-References: <20250318205709.28862-1-shentey@gmail.com>
- <c794ca2f-43f7-4abd-86d0-650eb53602d4@linaro.org>
-Message-ID: <CEA374C6-D7EC-42DE-B8DA-EF6704C6527A@gmail.com>
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1tz43r-0005l7-W2; Sun, 30 Mar 2025 21:35:36 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1tz43q-0005CG-3B; Sun, 30 Mar 2025 21:35:35 -0400
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52UNrlYe027570;
+ Mon, 31 Mar 2025 01:34:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+ :content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=corp-2023-11-20; bh=uKlqO
+ dhnxF9XZFanemfUUs541QDubDS3SJU+AHnhLXQ=; b=Y9T8wdN7+S4CTFfg8JhrJ
+ NtyZcs+XQWv2b8xGt0CI+sFN9s6ns5Zt1NfO7Ju+LNpWsRtyfTIQp88Y7sa0h2xo
+ qWipMzKjZ1eeEPFuiKgVRDfn7M6H2XXNQF6guMX+ZS89WKwlRxVrHZj+YGGI/988
+ yCeNy0K2vlceuFlu7KvWU2ar5J6fQnOHBDIRAHEErs3kkuOsIJ2UsPFkEMJUf3ud
+ 9JPtMEeg2mK5qJaVyqiyXDO6XpEBXAR/yIOUecavzrm0dEQ/+2026jtdFzuV+mPQ
+ hVc+8Q5knGOm9DGd8VL8Yoz3ILMebaofzabJe1OYsi71wuz6YHAip/beoKZuq6r5
+ w==
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45p79c2ery-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 31 Mar 2025 01:34:59 +0000 (GMT)
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 52UNQAtp032594; Mon, 31 Mar 2025 01:34:58 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 45p7a7ddtb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 31 Mar 2025 01:34:58 +0000
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 52V1YfxT015214;
+ Mon, 31 Mar 2025 01:34:57 GMT
+Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
+ 45p7a7ddms-8; Mon, 31 Mar 2025 01:34:56 +0000
+From: Dongli Zhang <dongli.zhang@oracle.com>
+To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
+ sandipan.das@amd.com, babu.moger@amd.com, likexu@tencent.com,
+ like.xu.linux@gmail.com, groug@kaod.org, khorenko@virtuozzo.com,
+ alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+ davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+ dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+ peter.maydell@linaro.org, gaosong@loongson.cn, chenhuacai@kernel.org,
+ philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+ arikalo@gmail.com, npiggin@gmail.com, danielhb413@gmail.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com,
+ zhiwei_liu@linux.alibaba.com, pasic@linux.ibm.com,
+ borntraeger@linux.ibm.com, richard.henderson@linaro.org,
+ david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
+ flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
+ cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
+ frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
+Subject: [PATCH v3 07/10] target/i386/kvm: query kvm.enable_pmu parameter
+Date: Sun, 30 Mar 2025 18:32:26 -0700
+Message-ID: <20250331013307.11937-8-dongli.zhang@oracle.com>
+X-Mailer: git-send-email 2.43.5
+In-Reply-To: <20250331013307.11937-1-dongli.zhang@oracle.com>
+References: <20250331013307.11937-1-dongli.zhang@oracle.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-30_11,2025-03-27_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0
+ suspectscore=0 mlxscore=0 malwarescore=0 spamscore=0 bulkscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2502280000 definitions=main-2503310009
+X-Proofpoint-GUID: RJcy_F8DOBA9Y14oXQWwQkwHzR6F2YWj
+X-Proofpoint-ORIG-GUID: RJcy_F8DOBA9Y14oXQWwQkwHzR6F2YWj
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=dongli.zhang@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.368,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,19 +148,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M/5oishFAqWd
+X-TUID: yb7PjB95Y67s
 
+There is no way to distinguish between the following scenarios:
 
+(1) KVM_CAP_PMU_CAPABILITY is not supported.
+(2) KVM_CAP_PMU_CAPABILITY is supported but disabled via the module
+parameter kvm.enable_pmu=N.
 
-Am 27=2E M=C3=A4rz 2025 16:19:32 UTC schrieb "Philippe Mathieu-Daud=C3=A9"=
- <philmd@linaro=2Eorg>:
->
->> Bernhard Beschow (3):
->>    hw/arm/imx8mp-evk: Fix reference count of SoC object
->>    hw/arm/fsl-imx8mp: Derive struct FslImx8mpState from
->>      TYPE_SYS_BUS_DEVICE
->>    hw/arm/fsl-imx8mp: Remove unused define
->
->Series queued to hw-misc, thanks!
+In scenario (1), there is no way to fully disable AMD PMU virtualization.
 
-Thanks, Phil!
+In scenario (2), PMU virtualization is completely disabled by the KVM
+module.
+
+To help determine the scenario, read the kvm.enable_pmu value from the
+sysfs module parameter.
+
+There isn't any requirement to initialize 'pmu_version',
+'num_pmu_gp_counters' or 'num_pmu_fixed_counters', if kvm.enable_pmu=N.
+
+In addition, return error when kvm.enable_pmu=N but the user wants to enable
+vPMU.
+
+Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+---
+Changed since v2:
+  - Rework the code flow following Zhao's suggestion.
+  - Return error when:
+    (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu)
+
+ target/i386/kvm/kvm.c | 36 +++++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 6b49549f1b..f68d5a0578 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -2051,13 +2051,35 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
+          * behavior on Intel platform because current "pmu" property works
+          * as expected.
+          */
+-        if ((pmu_cap & KVM_PMU_CAP_DISABLE) && !X86_CPU(cpu)->enable_pmu) {
+-            ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
+-                                    KVM_PMU_CAP_DISABLE);
+-            if (ret < 0) {
+-                error_setg_errno(errp, -ret,
+-                                 "Failed to set KVM_PMU_CAP_DISABLE");
+-                return ret;
++        if (pmu_cap) {
++            if ((pmu_cap & KVM_PMU_CAP_DISABLE) &&
++                !X86_CPU(cpu)->enable_pmu) {
++                ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
++                                        KVM_PMU_CAP_DISABLE);
++                if (ret < 0) {
++                    error_setg_errno(errp, -ret,
++                                     "Failed to set KVM_PMU_CAP_DISABLE");
++                    return ret;
++                }
++            }
++        } else {
++            /*
++             * KVM_CAP_PMU_CAPABILITY is introduced in Linux v5.18. For old
++             * linux, we have to check enable_pmu parameter for vPMU support.
++             */
++            g_autofree char *kvm_enable_pmu;
++
++            /*
++             * The kvm.enable_pmu's permission is 0444. It does not change until
++             * a reload of the KVM module.
++             */
++            if (g_file_get_contents("/sys/module/kvm/parameters/enable_pmu",
++                                    &kvm_enable_pmu, NULL, NULL)) {
++                if (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu) {
++                    error_setg(errp, "Failed to enable PMU since "
++                               "KVM's enable_pmu parameter is disabled");
++                    return -EPERM;
++                }
+             }
+         }
+     }
+-- 
+2.39.3
+

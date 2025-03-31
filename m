@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1842634njd;
-        Sun, 30 Mar 2025 18:36:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXUMfGN2Yi56XrjMkO8jfmVbWKte5qOmiNfVsIco/XAS/XsO6tCW/5leE+ryZHt/8J1pZdmWN/xvEfxPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFYiZ/hWO5/DCObbxtJr02qdHLGghulT4XWP18uKnuEO/7NwDwvF5MknrgRoKW2I2y7rG1h
-X-Received: by 2002:a17:906:6a10:b0:ac2:6bb5:413c with SMTP id a640c23a62f3a-ac738a9700amr753194766b.31.1743384965268;
-        Sun, 30 Mar 2025 18:36:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1743384965; cv=pass;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp1842667njd;
+        Sun, 30 Mar 2025 18:36:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX0meqVbC9GO7WgFc+P08VwR/c+Kz2meFF1M+Jk4QS7DWzEZF/MglUwnzBXZ6xXiGWcti0DL3TNCwfY5A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFHhpCOcAo3m5oCwaZ1a0sn0/W3EfO66EfOv4dY8oMx92b+kdWPBtloosYI4rNJ0dYayhiC
+X-Received: by 2002:a05:6214:29e3:b0:6e6:6aa5:2326 with SMTP id 6a1803df08f44-6eed60a792fmr97361046d6.24.1743384973013;
+        Sun, 30 Mar 2025 18:36:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1743384973; cv=pass;
         d=google.com; s=arc-20240605;
-        b=V3VgCTFDoWlfUUuQ/ICdxiGDQRFIMnXdJsW1v/JkMCgVNrW0itXMFXY4qdRYULu0Ol
-         SJa9q4qoBNLCsQUSJlFmw17QIV1PyG5FdEFf7D3+83HT86Mo/bFw0D9yID4/vEAV9grL
-         z0rbZWtyWAcuasDI6cg92mNDduVF4772NGaZLRotZ8b5BdxxYHLAy0T+YAY5WrhlLdt/
-         Jwpb+if0Q5OW8af/0QdBlvNnz/No54Gu0poXbcBt9lBWfj63UhilBTDBanDVg/WJVqcx
-         R7m/Nt/KBvfk6wIbxXmwZrLxJLF0JJAMom//20bKk9GDng1IBC/NdZqgWzJCi0pv3WQZ
-         w4tg==
+        b=WK8cN5IjHl/y8TIT18aEOmJTjBbCEOIKZOGJwhKLTcrDznxWv46WIIEAXl+1ybdPyz
+         CEqihU3AXZsfK7pyoIKGTWIeBkiBvWUWMKfLuthTdCw06PTLktVxFeLlaXJaozSbCcfM
+         uOE4foXJaBGMrtmI53xEfexGRwR6p7byYmAlVDgYGWlS2HAlSrBJxPIE/9irFXLv3b1m
+         PW0mz9Q8WjlB1+zm5LQwu+BD3VM1Aoanlfnx9/XLcwi2kFgusa0IgUX2C+ZrdXyEaBLP
+         MQyO4n5TfrCJ/ltRkS50+67rmfK0MGlJHYX2v3S07Rn5gJU4cwCEbzFakgWkPKUBQLpw
+         h2Fw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=fPfXDrOzaHcHS0nz37sj3IHcdYCKyF/+hei62PcUU+U=;
+        bh=0EDp8/O8chEXYfnRuxO7aZoAWTNGeHerTKEIocr4ftQ=;
         fh=DY5/iPQTkaegFowhDos3pccVqX4NyD5RR8nxFVZ/2MQ=;
-        b=GE9KO4yg+Tmthp4o4kfZNk1xZYZXFFxf4Ekizo7js16GuFNKeT6FRi9IcoOr7yxv+K
-         2D8w8t6YUG1G3U6rmpywzJznL8cXjpO3JS7KVCdErFeCfFegf5mOyVwczwSAWziIRn+M
-         c6pUhPvjf9ZX47zSn7bjj0vRAM7p+FLg2xzBc553SNJj2bWUSSEWGr5I1Ze6LZjUM9FF
-         Ua9hx5l6recn5PLXXn9VsAXvR4OUY6UV3AVRscOaAokPupaMblK2DNvvCJhZQmCVjrKm
-         9PiCut75+s1zE4v8+VwPlMZaeKzNQHkcNG1b91wQUZ8frUAMXGekYwDyGusklEi15ZO/
-         dpbQ==;
+        b=IKCoETR0RCVks+ZtiqzZAa65vaqe6NCdSenAulHSHIntQel/F7x6H1GRlfJ6J+s7X9
+         mBggfkZvdn0KIGJVwTCpbnxGuG3dP6Tz/NCttBv9u0nZwc8u1TVeqjuFHJCrECv+UGJn
+         PrIUujqkRtNUfLFPGxTVH6Z0u/gNSE88rAsiyyeq50ftIYR/J+HXt+yA5/MzBizWtcOD
+         tqRX07FfWd6qbsKFq42XDbVCkmg/L1yVNyvO4+4cJZTN7otrzN53mCblvAFwPYnEL9A2
+         2dc/cl8LoIujO3cIPApn/CLNvokfAsUJfICWaymD6H7tPntUQi1GA3wjq9HCBcoimwkw
+         p4Zg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=j48wOII8;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Xt2dEO2z;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ac7196160f8si472835166b.610.2025.03.30.18.36.05
+Return-Path: <kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec97cf40fsi57690056d6.380.2025.03.30.18.36.12
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Mar 2025 18:36:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Sun, 30 Mar 2025 18:36:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=j48wOII8;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Xt2dEO2z;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-42223-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-42224-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id BEC52188A4D0
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 3525016843B
 	for <alex.bennee@linaro.org>; Mon, 31 Mar 2025 01:36:13 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2E2B212CD88;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C7FBD13C918;
 	Mon, 31 Mar 2025 01:35:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="j48wOII8"
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Xt2dEO2z"
 Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 532DF70823
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 903595FB95
 	for <kvm@vger.kernel.org>; Mon, 31 Mar 2025 01:35:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743384949; cv=none; b=iEO+TR3ZyfJAyCEyPWvOJ341GARx+jHsTMLkU2OX/ZEckbs116+BluNTktQ3yvv22b4du5dl/5uYt3FYhWhunoiovJMmQFkXd8z64d+K4xpu4qQEtDIENwyKcLtrdx+bdnjSgN3/iL29U8FTLPRSScGFVRCyYot5EKEthTIvFu8=
+	t=1743384949; cv=none; b=cDaKZ4OkBn6iVSJ+QRFF+EhCSf3XGphCvR+WKjUx1QTKU+wMug4f3FOyitcM4e1l4l2T9LaJHdKpD+AnxiHqA41xdYHqWQnvzqaVdGeJhMN5bJYGlhtezKP0Eoz3fK4MPorPjjUSKkkt9QSJQliaS5M9cfH8W96W7SeZMstFSwc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1743384949; c=relaxed/simple;
-	bh=UMgQy+3HBlfdLG75j46TW7KcGsLuo7MHYBWiaRlDiaw=;
+	bh=R/BhY3kUKZnWRv6iLGpWtt3HlcZBwwhTJGpN5qCAD8Q=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=bXrJSgdPWx3vvGq/xs0uZSjM8kpHzc+1WXOyUVs5vZpxCcXjCM7cgegdSYM1/O2PBj96eqT7bo/JqgKZKJ4/CJTjAlgSv0R9hHAVtyvsWim8bTqS3nTldun/NO2xBeNvIuK9jHzavQjz6ONgupj2MdYf9fOTSxfigNzMFPheclk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=j48wOII8; arc=none smtp.client-ip=205.220.177.32
+	 MIME-Version; b=RDZFutTH6Rd87R7T4ouwXiY6uUXFq7xisx8iYaNAPaL3uptydTtgXX18Vh7SU8LeWXJZCjDnmCCy5MHQuInx1Obdc+TEB0TEsDYR/Ek8Hq3o/1vDNweuhz1PPzxa4qQbyrqEkzl4MwGT4qcIL8Jn+x+4ochanEjWQhn7Dg9ryts=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=Xt2dEO2z; arc=none smtp.client-ip=205.220.177.32
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52ULUGXU012777;
-	Mon, 31 Mar 2025 01:34:48 GMT
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52UN9IjA014929;
+	Mon, 31 Mar 2025 01:34:51 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
 	:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=corp-2023-11-20; bh=fPfXD
-	rOzaHcHS0nz37sj3IHcdYCKyF/+hei62PcUU+U=; b=j48wOII8nGH+cexuKH2Xs
-	hLPeajw/H1B8BcT6ooCuFT41h6R+My4gEZNnI+9jfWXY4518Xky1SUVo10BaAYKL
-	GNGvLmZe7FPXKKcSjAp2p44JqK8CzVxwBT6t/9zibJZwzrR61oOcbaolvPz6yer4
-	brSzqq8BFTHLERPIdkhlKmp/3zjfKo7H3G/Oearzjp6LiWmG/m9ie4WZn4dBeX7X
-	cjyLcigj4k3FVq3qliFP6ewUkZPKroNhak6C2NaQWcVMc+fkGltazDewMLqb0pwJ
-	k8wSdl9Ay5VqQR1IkKBi3TSoBi5DbZy0N+D60jPbag8ktjrlZoTZGp0t1xMHnkI7
-	w==
+	:mime-version:references:subject:to; s=corp-2023-11-20; bh=0EDp8
+	/O8chEXYfnRuxO7aZoAWTNGeHerTKEIocr4ftQ=; b=Xt2dEO2zBwlHAIWsTy1fS
+	rSPoaqtQXVzOve+QdzIBU9d/r7sB0uPGOJw73X1eJMWHyX85qpb7ippSDewpa/5h
+	EYbPiWHiXXO25MF3kESaNaSeOl+vN6bEphqcFZjN0Djoi28rLdEhZSOxlquHa5Pw
+	nB0je5Cjp7hGlg2jgZdTlABES6aSZqVoJ6XEAbAQp0DQWlpqtK8IOkjr+6uzgyjF
+	VCe2vRR37khkIjjJdEhp4MElBY6cSC82lPqneya+dSmenLJD+NBXmdgAt91F9LBe
+	i9Y27uk7pzApWvHwbCCBemjbYlt+VpJqdq3Dh+jpnqdhvdRE5sUxSVRTiRsUz3n3
+	Q==
 Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45p7n22fh6-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45p8fs2evj-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 31 Mar 2025 01:34:48 +0000 (GMT)
+	Mon, 31 Mar 2025 01:34:50 +0000 (GMT)
 Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 52UNQAtl032594;
-	Mon, 31 Mar 2025 01:34:47 GMT
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 52V0g69C032802;
+	Mon, 31 Mar 2025 01:34:49 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 45p7a7ddq6-1
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 45p7a7ddr1-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 31 Mar 2025 01:34:47 +0000
+	Mon, 31 Mar 2025 01:34:49 +0000
 Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 52V1YfxJ015214;
-	Mon, 31 Mar 2025 01:34:46 GMT
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 52V1YfxL015214;
+	Mon, 31 Mar 2025 01:34:48 GMT
 Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 45p7a7ddms-3;
-	Mon, 31 Mar 2025 01:34:46 +0000
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 45p7a7ddms-4;
+	Mon, 31 Mar 2025 01:34:48 +0000
 From: Dongli Zhang <dongli.zhang@oracle.com>
 To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
         qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
@@ -117,9 +117,9 @@ Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
         flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
         cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
         frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: [PATCH v3 02/10] target/i386: disable PERFCORE when "-pmu" is configured
-Date: Sun, 30 Mar 2025 18:32:21 -0700
-Message-ID: <20250331013307.11937-3-dongli.zhang@oracle.com>
+Subject: [PATCH v3 03/10] kvm: Introduce kvm_arch_pre_create_vcpu()
+Date: Sun, 30 Mar 2025 18:32:22 -0700
+Message-ID: <20250331013307.11937-4-dongli.zhang@oracle.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20250331013307.11937-1-dongli.zhang@oracle.com>
 References: <20250331013307.11937-1-dongli.zhang@oracle.com>
@@ -137,48 +137,177 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phis
  suspectscore=0 mlxscore=0 malwarescore=0 spamscore=0 bulkscore=0
  mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2502280000 definitions=main-2503310009
-X-Proofpoint-ORIG-GUID: 3D6zf21AIxxU6X9rNhPEAsUNEuh37aQA
-X-Proofpoint-GUID: 3D6zf21AIxxU6X9rNhPEAsUNEuh37aQA
-X-TUID: wwVrGFCVW1zE
+X-Proofpoint-ORIG-GUID: lnlui7U5gyxdNAPQm5CLHCemFVHolOb3
+X-Proofpoint-GUID: lnlui7U5gyxdNAPQm5CLHCemFVHolOb3
+X-TUID: 6XwLki/XF92p
 
-Currently, AMD PMU support isn't determined based on CPUID, that is, the
-"-pmu" option does not fully disable KVM AMD PMU virtualization.
+From: Xiaoyao Li <xiaoyao.li@intel.com>
 
-To minimize AMD PMU features, remove PERFCORE when "-pmu" is configured.
+Introduce kvm_arch_pre_create_vcpu(), to perform arch-dependent
+work prior to create any vcpu. This is for i386 TDX because it needs
+call TDX_INIT_VM before creating any vcpu.
 
-To completely disable AMD PMU virtualization will be implemented via
-KVM_CAP_PMU_CAPABILITY in upcoming patches.
+The specific implemnet of i386 will be added in the future patch.
 
-As a reminder, neither CPUID_EXT3_PERFCORE nor
-CPUID_8000_0022_EAX_PERFMON_V2 is removed from env->features[] when "-pmu"
-is configured. Developers should query whether they are supported via
-cpu_x86_cpuid() rather than relying on env->features[] in future patches.
-
-Suggested-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
 Changed since v2:
-  - No need to check "kvm_enabled() && IS_AMD_CPU(env)".
+  - Add my Signed-off-by.
 
- target/i386/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ accel/kvm/kvm-all.c        | 5 +++++
+ include/system/kvm.h       | 1 +
+ target/arm/kvm.c           | 5 +++++
+ target/i386/kvm/kvm.c      | 5 +++++
+ target/loongarch/kvm/kvm.c | 5 +++++
+ target/mips/kvm.c          | 5 +++++
+ target/ppc/kvm.c           | 5 +++++
+ target/riscv/kvm/kvm-cpu.c | 5 +++++
+ target/s390x/kvm/kvm.c     | 5 +++++
+ 9 files changed, 41 insertions(+)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 2b87331be5..acbd627f7e 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7242,6 +7242,10 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-             !(env->hflags & HF_LMA_MASK)) {
-             *edx &= ~CPUID_EXT2_SYSCALL;
-         }
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index f89568bfa3..df9840e53a 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -540,6 +540,11 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+ 
+     trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+ 
++    ret = kvm_arch_pre_create_vcpu(cpu, errp);
++    if (ret < 0) {
++        goto err;
++    }
 +
-+        if (!cpu->enable_pmu) {
-+            *ecx &= ~CPUID_EXT3_PERFCORE;
-+        }
-         break;
-     case 0x80000002:
-     case 0x80000003:
+     ret = kvm_create_vcpu(cpu);
+     if (ret < 0) {
+         error_setg_errno(errp, -ret,
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index ab17c09a55..d7dfa25493 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -374,6 +374,7 @@ int kvm_arch_get_default_type(MachineState *ms);
+ 
+ int kvm_arch_init(MachineState *ms, KVMState *s);
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp);
+ int kvm_arch_init_vcpu(CPUState *cpu);
+ int kvm_arch_destroy_vcpu(CPUState *cpu);
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index da30bdbb23..93f1a7245b 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1874,6 +1874,11 @@ static int kvm_arm_sve_set_vls(ARMCPU *cpu)
+ 
+ #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     int ret;
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 6c749d4ee8..f41e190fb8 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -2051,6 +2051,11 @@ full:
+     abort();
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     struct {
+diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
+index 7f63e7c8fe..ed0ddf1cbf 100644
+--- a/target/loongarch/kvm/kvm.c
++++ b/target/loongarch/kvm/kvm.c
+@@ -1075,6 +1075,11 @@ static int kvm_cpu_check_pv_features(CPUState *cs, Error **errp)
+     return 0;
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     uint64_t val;
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index d67b7c1a8e..ec53acb51a 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -61,6 +61,11 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return 0;
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     CPUMIPSState *env = cpu_env(cs);
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 992356cb75..20fabccecd 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -479,6 +479,11 @@ static void kvmppc_hw_debug_points_init(CPUPPCState *cenv)
+     }
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     PowerPCCPU *cpu = POWERPC_CPU(cs);
+diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+index 4ffeeaa1c9..451c00f17c 100644
+--- a/target/riscv/kvm/kvm-cpu.c
++++ b/target/riscv/kvm/kvm-cpu.c
+@@ -1389,6 +1389,11 @@ static int kvm_vcpu_enable_sbi_dbcn(RISCVCPU *cpu, CPUState *cs)
+     return kvm_set_one_reg(cs, kvm_sbi_dbcn.kvm_reg_id, &reg);
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     int ret = 0;
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 4d56e653dd..1f592733f4 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -404,6 +404,11 @@ unsigned long kvm_arch_vcpu_id(CPUState *cpu)
+     return cpu->cpu_index;
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     unsigned int max_cpus = MACHINE(qdev_get_machine())->smp.max_cpus;
 -- 
 2.39.3
 

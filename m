@@ -1,124 +1,127 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2412085njd;
-        Mon, 31 Mar 2025 15:14:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXWN7uYNEoHJ/XufY4LNL6XAZbUFxRnuDY5Q7p3nlBK6yyPr2ZPvT082NXiquNr1S7TXN9OjxD37z4LNA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWAM+E308zSc7f2cOJrhEenKvXp/jSYd6W2sp4D37OVTh5DBBKiEkxlA9fq7ZfOIulR3x4
-X-Received: by 2002:ac8:5751:0:b0:476:b56d:eb46 with SMTP id d75a77b69052e-477ed72426fmr131523191cf.15.1743459276830;
-        Mon, 31 Mar 2025 15:14:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743459276; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2425839njd;
+        Mon, 31 Mar 2025 15:49:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzdo9+U7tUk3EjLKkh0G9c+VlshfHXUlM20jGQ4UC9dqdIaDYxI+Z3xwTtps9WzSh18n1xlVkwzPSuQA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEcfgNgwwNBHAmXEX8agvKOaLyPBji4xVQZQeWrIj/bJoqJiPIWBd61/Ub0xVuHWczQlE7V
+X-Received: by 2002:a05:622a:15d2:b0:476:5fd5:4de6 with SMTP id d75a77b69052e-477ed67a657mr134021791cf.40.1743461394097;
+        Mon, 31 Mar 2025 15:49:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743461394; cv=none;
         d=google.com; s=arc-20240605;
-        b=XZJej1j9FnIALcMyHdvE5mTUw1QT4gT86i1ScGvS/FYU5KxnxxDXA5uDkPBJR+KCxc
-         wBBdNTTKBQwsvp853OySXZtp2wCzmReaFYX2hZkf39mZFlW0l7T8CYcNZjNcPBF9Y5cT
-         uP44Wf62iKryJSNQ4Bf1C+7nLLNonthZrSOcRCxMHQk69qt6PkODEvj2R6wt4nmuD/9h
-         yLsnfvL9mYUYDBHIhKAGjsKvS89eiamFa6I1D0spwe4VuVgXnY6xvtcvywP1vWI9PeXY
-         95Ajl0IjNc5yGV98n9R2h+cybpapgCWfmUL90jl3upDN3HKwU1SlB64cYDfueuVfiD1q
-         9Bkw==
+        b=Jv1VbR7uItck0wadWNDNuVe7GjYnh3zITpjiKMPG3i6GUbfr51dbb0au/2tQ+2Nem1
+         UevT/7SUGB0jGbt+kRl3eUa2qr+nw60Uj797Muv5MW64jYjCgTI6tGLh1dFJWxsBx/6k
+         UzW6WCwkD+JVdH3FauCjsTin+9bWrMhFud5yNh0q+gS/hVdEAd1O2Et8GP8kYTr7NwQJ
+         DEAS381EToUWTVjc36fpsFsFKw2ug3MtFiAwOj12jq6HSResSXJn4X552TXet+3YGLuV
+         6lBqIeEqYoLDFDy8H5SgzEoAtb2TWFpOHTQRTS5L6PnW+3Pd660xL1y37aZt8yvZHURk
+         sYFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=/KLJrDvoh1faXMk+CdmP0dMnMEwSNEMM0AJfQ5Q45FQ=;
-        fh=Y/kC1Q4d41u7Pz/wAUfEwBq+31HZHI5q1O9R6m6NfSM=;
-        b=B/j3dSlVf8YQ8CNHPwrDyDuiqErN/9isMJw0JCj6Sq3l+M3ieS4rP0lvY6XyqpIdPS
-         MnAQIbo0Vmxl5okdODydKe+zMrBkxsekfSz1tTuPQWFJBKWOTDbKLaT3WcbEcXORqsH7
-         I7gR/lvV/ohifTxF1DNWj1rmIMfK9JIAjGRM6fJrNY3hIaQlEJqCMYoCd/0aIHALH1Fg
-         C1ejH6DIg9SSBwZND788YDB/d9lGGPvBDUWjIXbBXUCwmGS9mGxxZHqbGFEjRoA8+E/2
-         68w+LAvSDy1XUp3AgXNA0N4+jLVAnr/7l8exGi2A1gNu0vLXqk3dB4EEIbWxZxQ+7N8V
-         kFAA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=dIgofOQ16FfHrqCR+n2/TXJ8ZAXHvNpoy3xWYKJ8Uns=;
+        fh=7Zg3dJIBXu1DPuPHQMDPH2w325gKpns0ra7ayYkDT5M=;
+        b=CzaUoU4WyIio2I33iVw8SbMC0BKPm9L4DxqdsGv34w8LDp+GhLxjE3DgNZhc0m9oN5
+         Ou4s+8yvXcokly3fPYXw+WLL5kzMzeYJMerGNQi3FgETjREzmqxLskZ19CQKI+qM+STh
+         04yM/nl9GJfHogdDZf0kXSif1xr0ERyFwu33HeCxI8hCXuctAtcdQfCsomKgU0Paj3wS
+         jGl2VJ4wZss+pqqRfeNVdL8zRxIscRcswCThVSsbd3GJWjInEBaf08+Xbl79sfUvdhfw
+         0guJko7PEHeACBVGJ9u1nJyyQX1hPb29F15h7A/gKnwtS3ZuW50+73cFanCgWdQVNV7S
+         pBQw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gWsE2kxb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=htahq61Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-477831669efsi72702871cf.429.2025.03.31.15.14.36
+        by mx.google.com with ESMTPS id d75a77b69052e-47782a5edf7si76892711cf.193.2025.03.31.15.49.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Mar 2025 15:14:36 -0700 (PDT)
+        Mon, 31 Mar 2025 15:49:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gWsE2kxb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=htahq61Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzNNP-0000b7-Qo; Mon, 31 Mar 2025 18:13:03 -0400
+	id 1tzNww-0002g8-To; Mon, 31 Mar 2025 18:49:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzNNN-0000ZJ-RT
- for qemu-arm@nongnu.org; Mon, 31 Mar 2025 18:13:01 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzNww-0002fm-3n
+ for qemu-arm@nongnu.org; Mon, 31 Mar 2025 18:49:46 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzNNM-00076F-64
- for qemu-arm@nongnu.org; Mon, 31 Mar 2025 18:13:01 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-39c14016868so1689096f8f.1
- for <qemu-arm@nongnu.org>; Mon, 31 Mar 2025 15:12:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzNwu-0003WX-5m
+ for qemu-arm@nongnu.org; Mon, 31 Mar 2025 18:49:45 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4394036c0efso32431255e9.2
+ for <qemu-arm@nongnu.org>; Mon, 31 Mar 2025 15:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1743459179; x=1744063979; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/KLJrDvoh1faXMk+CdmP0dMnMEwSNEMM0AJfQ5Q45FQ=;
- b=gWsE2kxbR348jSf67ACN5MUeMdZrzZbCfcaLi91wnIPYrIF3T12jeeLYreS3Gy2qdS
- vxRc1cPa5MIK7MUR1Dromjp8cYyWQ/wFZeJIaZN/mzccm76Zsmbb9Dl6Fs2gy0rto0P6
- dpZJnKx/nrH3mQK9r4MI/A8fvcIQYMDlAsVG1L/jpmTt7ROPCY4yx+15/oD8b4MiGpCa
- hpVycVYFzFPIu7KAPJiaNI2GuHsiNRVIyJQ4+TiD6mW4GgdUY5NSYAe+oxTaZaYlfDQ4
- TNJItKSfm7+PpuECKYvxkuuHVS1dB2snxBopXaZMJbZ38rb3bLFEhyYjjGwGq2UGJk7a
- 7qtA==
+ d=linaro.org; s=google; t=1743461382; x=1744066182; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dIgofOQ16FfHrqCR+n2/TXJ8ZAXHvNpoy3xWYKJ8Uns=;
+ b=htahq61ZL0zMXNQ+GO5q6NClgw4EOpC22v+IT+QOtkRvbx1YB09r0ie5zpN2HST81J
+ QNOWtuJypyXNLcbRFi9719xf8CXqr3RYOQzQl1CeYIvdNg1dtA2Zn27isPw1RecjpT+9
+ 5PrKTrXa//Yj2yaUZA21c2BKs4z+b3MQOmkcEESwD0Py5YX1hpQ3VNWxfBLdng97BQA5
+ YceW8nZ/Pu1B4gMitSjH8cyLKJY4Fw/tVT2LNLcQ1rypohBwZpaqdibmoR0xtkGZKxlh
+ TKY6Q3i8/Lfp4+x1dm+HcCQXuzDkJk3qu0QVUFyIgIPUdGSQuUKjv8cLZqrdN3lS5/s6
+ hxTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743459179; x=1744063979;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/KLJrDvoh1faXMk+CdmP0dMnMEwSNEMM0AJfQ5Q45FQ=;
- b=Gz1Hyx6EBxsgWC2xENcmqEhwi0KgPGd4V2ZnGIM6D4FxXamsbDh/yPf3z9njyOeika
- vW5Dm+KiPlsCMd7fvmjVLuALzdJ29BKjFtMYlf0ReZjbpadrex+Z+ADQr8wKp3J/flcP
- 2x8wAHwQhYiUZgSxKBl6O5SO13P/C3OIVAWkBTy+VXLuGejEPz30aW63K9Gwxb1BECoU
- nJ3x+aZI2Rkg1Vj/YECz/pD/pT8WJlUa1ayYx5l10gQVq2xkSQVzayxMnTNjEcBHAptC
- YGPCpsRwR1xt5QGGgfwiqgmOlSgKrW78KTeUI1GD021SU4hC1IE6crBrNMvVU+d6bWtz
- 5nuA==
+ d=1e100.net; s=20230601; t=1743461382; x=1744066182;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dIgofOQ16FfHrqCR+n2/TXJ8ZAXHvNpoy3xWYKJ8Uns=;
+ b=Ulsg07vPYYdRoNs2zT1MM4TpUl3fZ5mUo4cZwZWYd5hGxfZws58SoCiQQtEgpONmKH
+ PvxQZVMa+EKx3ZAYoc7gwdEN5T/GomeyKFZ8akrwoFR1wIdrhIv7Cj2NWIf73JXl59MN
+ ya+ssOrhlQIQenqW/jGiowqgX70g4qC/vqvY9ujK3M/jfwvlATWBPEtSkCMSvdAyHY4X
+ Mf5JxYQdRen+t9+9lqTQIFgH5xPJIUqHJQf+d41gsmTJ1bcsv+l5DpbKGov3K7D3FoOw
+ 9wp2rAuwvCJDll/XXAcDYNOJlJKnzOGX+hv8u4O+tWyKQ33Nkm+zzFtizCoz5ydM4HKr
+ vfwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWBKsWaoku308IDRPzoVjXPyeCqGjdFg7If7AHG/1/w7cXMfn9WzSyLlWZXLBpwxOtb1pV8+ZKGAQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/+A8Di+076wzjNMbqHg82M5a76/+bx1+fGpd/dPQ48mx90Vr9
- OqmXs7qODi7xeTiqjSQM8H3QURruPIs1YGwbW8+8Fiulo0C9H6qUZzHi7W4oG0A=
-X-Gm-Gg: ASbGncvUc9RZXxYfaxIJpZUfxIJHEXOM/2MyC4ukuSiLt9EB4w6ee6RnD+Hn95z4zut
- WfFWUIU7sM0zuw+nSlf+qMdhXnvK1Nn16IMeSslaOOvclZ5p8ybqlNb0Iw3qYFqnQPBoA2Af+JX
- GBg4SXc9x4mQIDSb0AllKsDU2tN2DqGMEiTuG/k3NckLPw5xxNWTS1wcj/FbW6rsF+hRXviTBKB
- pMYLNudv5//1UIrDu7Lx78CmVInyTY/w76CQRwQ4egCxsstx+gx9jG7VFnbN2NWmPa2/W/34Lzk
- lHfyrPRLt8Hr/R7+o32AGXiuHLLohv3/OQdJN6qMrURDO5dmE2oZgLNn50MogKl7yof92PngRBt
- tYbffqbc+4HRWeo6stVk=
-X-Received: by 2002:a05:6000:188b:b0:390:f0ff:2c11 with SMTP id
- ffacd0b85a97d-39c120cb546mr8952099f8f.2.1743459178856; 
- Mon, 31 Mar 2025 15:12:58 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ AJvYcCUBnD9vlvjAP6M43OYyP6Y8xmEBMsQQLUXcVyfD9Pr/q/DBcwH/Qm+u77DfsCliHlClOpzltB9SIw==@nongnu.org
+X-Gm-Message-State: AOJu0YzSu6nOuzj6xDKfOcOGNcvkaigI6Djarc1J237aJVdpdqu+RLeF
+ 5PCgn49ejl996EvVYTf9cWbBavUDEiylc5ca9BIrPIOPP0kqBFZSsY0WS9S1+VE=
+X-Gm-Gg: ASbGncvL3Pc0ObRnXxGNWtC5X1pfdilBcVXK9rCMo8b8gYOMtfYRUdEIe+rnPikAfm9
+ 0cJwdLOWwZF1QezvWIm275ulh/ZPdmsMCAtO45wyzxmSp5fQ1rNQHKvMpfmqh6ABRQEd3z2FYMm
+ 2TadPes4Tc1MwBVqE0VlYm+edI7sOhwsu2wsSSOqTRl3ywR5XSktgz7kVosa52VqNmHc7ttDMxo
+ NdYX2YHBL8gozudPjJ0+wvX0dgIL/9vm9xsEstVf4tLeQY20ZhiuQVKjNZnjEB34qeL6r1gBgP2
+ McLve3xs0aDwQ4Kkt2YfovgYTB99CUnEBJ/y8mbUmqiWK5aStgyydtE3fZ/8AkrKsUayJ5uIxaf
+ CbgKBreLmM5xk2GoJZ7+1Y9c=
+X-Received: by 2002:a05:600c:468c:b0:43c:fa3f:8e5d with SMTP id
+ 5b1f17b1804b1-43db61b52e5mr111621165e9.2.1743461381918; 
+ Mon, 31 Mar 2025 15:49:41 -0700 (PDT)
+Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43d8835e627sm164459555e9.29.2025.03.31.15.12.57
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 31 Mar 2025 15:12:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Udo Steinberg <udo@hypervisor.org>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.0 3/5] hw/arm/virt-acpi: Factor its_enabled() helper out
-Date: Tue,  1 Apr 2025 00:12:37 +0200
-Message-ID: <20250331221239.87150-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250331221239.87150-1-philmd@linaro.org>
-References: <20250331221239.87150-1-philmd@linaro.org>
+ ffacd0b85a97d-39c0b7a4239sm12614094f8f.94.2025.03.31.15.49.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Mar 2025 15:49:41 -0700 (PDT)
+Message-ID: <0b6fc8e8-e3a8-42a7-a38e-1008bac0ab42@linaro.org>
+Date: Tue, 1 Apr 2025 00:49:39 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/aspeed: Correct minimum access size for all models
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ BMC-SW@aspeedtech.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20241118021820.4928-1-joel@jms.id.au>
+ <CAFEAcA9tPhbjnJ6XjMcZq6iWS4i1BdrTB+=391L5UgaVSMkCLQ@mail.gmail.com>
+ <CACPK8XeFP+fmws+tcG-qgz1WXyKAtMicpfcgDG-pd_jp8PLXwQ@mail.gmail.com>
+ <CAFEAcA_+YvS7zTuosAxK8zMgBTD01SRheAat7WbHsfLHCCFGcA@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA_+YvS7zTuosAxK8zMgBTD01SRheAat7WbHsfLHCCFGcA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,60 +143,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QQCo5+UKvh+I
+X-TUID: YupMVX6z5zIZ
 
-GIC ITS is checked for the MADT and IORT tables.
-Factor the checks out to the its_enabled() helper.
+Hi Joel,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/virt-acpi-build.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+On 19/11/24 11:29, Peter Maydell wrote:
+> On Tue, 19 Nov 2024 at 02:53, Joel Stanley <joel@jms.id.au> wrote:
+>>
+>> On Mon, 18 Nov 2024 at 20:40, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> Have you reviewed all the device read/write function
+>>> implementations for these devices to check whether
+>>> (a) changing the .valid value does the right thing, or
+>>
+>> I read the implementation of the read/write memory ops and I believe
+>> it does the right thing. We want devices to accept reads that are of
+>> any size, instead of returning an error.
+>>
+>>> (b) whether there are cases where we should instead
+>>> be updating the implementation and setting the .impl
+>>> min access size ?
+>>
+>> Reading the documentation for impl vs valid, we definitely want to set
+>> valid to 1. There should be no machine check when performing byte
+>> reads.
+>>
+>> I don't think we want to change .impl.min from the default of 1.
+>>
+>> I'm not sure if I've missed something that you're trying to point out.
+>> Are there gotchas about setting valid.min=1 that I should know about?
+> 
+> The "gotcha" is that the memory system's implementation of the
+> size 1 and 2 reads when .impl.min is 4 and .valid.min is 1
+> (as for instance with aspeed_apb2opb_ops after this patch)
+> is "read 4 bytes, return the relevant portion"
+> and the implementation of size 1 and 2 writes is "pad the
+> small value with zeroes at either end appropriately so it is
+> 4 bytes and write that". That is often the right thing for
+> the required behaviour of the device registers, but it is
+> also quite common that it is the wrong behaviour. For instance
+> for some devices the write of a byte is supposed to only modify
+> that byte, and leave the other bytes of a 4-byte register alone.
+> Or if the device has bit-clears-on-read behaviour for a register
+> then the default handling will incorrectly do that for bits
+> that the guest didn't actually read.
+> 
+> Conversely if the device leaves the .impl.min at its default 1
+> and moves .valid.min from 4 to 1 (as with eg ftgmac100_ops)
+> the device will now be called for byte reads and writes at any
+> address in its range. If a write to, say, byte 3 of a 32-bit
+> register is supposed to update bits [31:24], that won't happen
+> unless the write function is changed (usually if there's a switch
+> on offset the write to something that's not at a multiple-of-4
+> will end up in the default "log an error" code path).
+> 
+> What this adds up to is that it's a bit misleading to have
+> a single patch which changes the minimum access size for lots
+> of devices at once, because for each device you need to look
+> at QEMU's implementation of the read and write functions
+> together with the spec of the device, and confirm that the
+> right way to implement "byte writes are supported" for this
+> particular device is to change .valid.min, and that you don't
+> also need to make changes to the read or write function code
+> at the same time or adjust .impl.min. Putting them all in one
+> patch with no discussion in the commit message of the device
+> behaviour and implementation was just a bit of a yellow flag
+> to me that maybe this complexity wasn't considered.
+> 
+> If we get this wrong for one of these devices, it's also likely
+> to be rather easier to bisect the problem if bisection
+> can track it down to "we made this change to aspeed_timer"
+> rather than "we made this change to a dozen devices all at once".
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 3ac8f8e1786..fdc08b40883 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -208,6 +208,13 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
- #define ROOT_COMPLEX_ENTRY_SIZE 36
- #define IORT_NODE_OFFSET 48
- 
-+static bool its_enabled(VirtMachineState *vms)
-+{
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+
-+    return its_class_name() && !vmc->no_its;
-+}
-+
- /*
-  * Append an ID mapping entry as described by "Table 4 ID mapping format" in
-  * "IO Remapping Table System Software on ARM Platforms", Chapter 3.
-@@ -670,7 +677,6 @@ static void
- build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-     int i;
--    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     const MemMapEntry *memmap = vms->memmap;
-     AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
-@@ -741,7 +747,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
-         }
- 
--        if (its_class_name() && !vmc->no_its) {
-+        if (its_enabled(vms)) {
-             /*
-              * ACPI spec, Revision 6.0 Errata A
-              * (original 6.0 definition has invalid Length)
-@@ -973,7 +979,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-                           vms->oem_table_id);
-     }
- 
--    if (its_class_name() && !vmc->no_its) {
-+    if (its_enabled(vms)) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-     }
--- 
-2.47.1
-
+Could you respin splitting 1 device per patch?

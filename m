@@ -1,262 +1,165 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2221343njd;
-        Mon, 31 Mar 2025 09:16:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIzQ2UBReo5LepSun74GcKlepmx4BSCwMZjVmK2DTMB7f6QgX2/ws+vGLsjwLr4kPh0wRUP6VU23np/Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHVWsrmtMgNJtS2JprCWEGDz18zf1QCNzBxjy01ZK+t0kkfm59p/Qph0h6L7hnTsSbsDMiH
-X-Received: by 2002:a05:622a:18a6:b0:476:6a3d:de3d with SMTP id d75a77b69052e-477ed8057aemr125407851cf.24.1743437804861;
-        Mon, 31 Mar 2025 09:16:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743437804; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2650643njd;
+        Tue, 1 Apr 2025 02:44:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjZaSSD1FEIyCFMFXzuuIO3bpXXVtA5EgmIXkAc3QAimfhid76/cXgb/Cmo0kjxQXB1ndQ6Jx1XluH1A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOSj/oA6ylZxrqopF9p07hh4PFwA/yvKRuL8oaj7YTn4+rFhW1iwiTM6VcqbZIR6ouxoTr
+X-Received: by 2002:ac8:5890:0:b0:476:977c:2eb0 with SMTP id d75a77b69052e-478f6ca6021mr29238201cf.30.1743500661917;
+        Tue, 01 Apr 2025 02:44:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743500661; cv=none;
         d=google.com; s=arc-20240605;
-        b=IAfH2E6F8dZ98nWnrtYaengEJTTUE9CYVeNegrOLu9tl8yhpDCWmfniouuc0q/R9Lg
-         4CAqH3gTZ+TxrWl9bLXmOPRq/b/+C2pi1W94aD+tmLKXonkUsPyD83oko51dPKsXcL31
-         EwgqnFjYnFX7FtR/ZeVZEhvTn2ucqR0jsrl4n3FrDgRejstc01G1+bxQm4Gp3cvpqm0F
-         4ArXhoYfqqSeo4n5eW2ARZKIvai0eR5/NH88Nk9KD91urJz/7phfpcPIT3Fw2ChfxRpV
-         pdoFAZoXTmnOdCN56Tk8p+rcCS81JRUJZ6FnlCw1IHGaQIkINAlbpLXTGpE4U2lK2Dh/
-         hQZg==
+        b=dTHKlVuqcD3A5eOBI35TxaY03FikunP01DFja8Mv3kJ8rJnpkCa6FBt+Dqw7Z/C05n
+         LFd97mRwGwQZTZMvWnWrWAemS7WUyh67au/ly4EGS85X3iIN4FvaqD+rKxZcpb1y9iq6
+         yemMvxHOrhW2BoDW3e0TPLnEhV9x/YLfN4dziBZfQJEvMnKws3sD0ZCHM8PveeoqKc1U
+         EH+OWvfTE0CM1rl/VUg+V1ceJyZL8reM4ntlHIuhOo4VbpS6AXUUBvsi5RsO4artLfKc
+         lF2PojbpyCs9zh9+yMqzLDBCDdFhARKQxEDF2MoxuUoHRX3X/qTkcYAJ28C+tm2JhFMP
+         SOZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=IJtFi8D7vhmcfVxTwvz1pcXTXbXta4Z6msoZeGbGGbg=;
-        fh=e6VxJXx10P+9OkdCZ61sLz6zwHuAV0R/kppJCauAWDs=;
-        b=DtZK4lgwubVdYZEe4nTMi4nZMiYBHtynbOEUA5udZGFqME7xf+qq8D8/3jsTagSoFF
-         VfhpKHWXZdwij2VztaTsiAjhYHlTPCbAh1JwSR7p21LKWMSiWdvu8g3vu8m5ZzF8fDI1
-         JUZQATlISA+W+zcvuDBBSCbILzSep+Q+++MbrlpeReQ3M31XP/YFtXqFrTXJsGDdc0Jf
-         C7lyagDPG72PujvVg6/cVxQtX3qcUdnqZJAUCCx2mcGOc9cFmz9McqErbEauaLsm8UsJ
-         VvSaR9Ky8x8Fe4vN7bMykPv9MK51ZALt5oqHEFP617JlpPR+04HzDLLMHqoc4VhsigHo
-         XrNw==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=5023E3vk1cMfUL3x/itEHd9Ilympy/p08T03WRUaS94=;
+        fh=LjSU0xPQm0MNoQlMWRl0ECClOzXK4pci9/FCHTHShKI=;
+        b=A+XkjEZtSnAQcYSiQk7NKQXUYw2pc1bbRP9SDU3uljTNohumszn2L3LZS7jYjuhXbV
+         gVPRLoUrHHkzL0CelsyjRT6/LiTWQUxhy8ZjyqL5XeUaYO6sP+NApatDVlWyur1kEt46
+         HsAu2ZlzKXHvRt6m9Wi1PZMz4CeX8lcVuUUOCxAhLHOztoA3W7WG5QPR3HdNZImV3Oix
+         zE/5vUWoEPF9qps3OVU5vgk9VqV1uV3ghv8eXfs9nLxzuBqh6yJZdFjlzwAodJeJkUbF
+         5rfjTxIXcDEnu0l9/kCmzmm3TY1SfvtecFstkHgHrBlGiimdk7pOloapuUUTc6AFF+UC
+         mS0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BM+Bo1BN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47783189ac2si66733941cf.520.2025.03.31.09.16.44
+        by mx.google.com with ESMTPS id d75a77b69052e-47783189d94si82461481cf.537.2025.04.01.02.44.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Mar 2025 09:16:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Apr 2025 02:44:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BM+Bo1BN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tzHoL-0002Np-Us; Mon, 31 Mar 2025 12:16:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tzYAB-0004yl-On; Tue, 01 Apr 2025 05:44:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1tzHoG-0002I1-Cx
- for qemu-devel@nongnu.org; Mon, 31 Mar 2025 12:16:25 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1tzHoE-00009F-Br
- for qemu-devel@nongnu.org; Mon, 31 Mar 2025 12:16:23 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-22622ddcc35so8858485ad.2
- for <qemu-devel@nongnu.org>; Mon, 31 Mar 2025 09:16:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1743437781; x=1744042581; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=IJtFi8D7vhmcfVxTwvz1pcXTXbXta4Z6msoZeGbGGbg=;
- b=BM+Bo1BNBptZFhYVWRnc9sqV/6sohZE3zIExcV0Cua5JxXrZi3ECwWnC5eZH5iysmb
- VX/zG8UbSA9YkZ+6jrND4+jaUK0ZGeWlb8ahBrp9hSUQRDH2Q14VAQHFeg9JCl6mjAJ7
- 1yGAYmcxf2PN8hyNw9QmFlYKl7JS5IHBicXtX66lCdN93Lfnr6gwV43pIJVggPUCBZRZ
- inVrN4HE5fRe2fGF5Tv07yRywL8QMz76gV1qfEpVP0KVhTVxYms/1cAGbquqc6RbWa8d
- fqc5fAkBCxmo9B5oM7a4BmmruPznQYJhwMdBaZ4Ks6jpvXTbnWJvUENxez0UffU6kdYG
- 5jbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743437781; x=1744042581;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IJtFi8D7vhmcfVxTwvz1pcXTXbXta4Z6msoZeGbGGbg=;
- b=mJCFELEgVI/O631NeGPcqsNRc5Ql2CX8lhl/00CwBuNmhu/R5W+TcS6EgHhrd8hl/w
- EDE94uc5m9nprSV9ZdZUcBGjXZfX/biC7lDB/O32NVhvq9/JxcwdAwAAiL7aeXxNFn9a
- F9trwNns9rSQJG6MxYR5w1k12NrhzUh9F1kuA98OzwsY5i79nKiWk7+7OkqrY283yzkr
- l6UvdsfT/6fNSz957v87JHXV59mG7zF2Gq9gLyNrZwFbkxKxUeKwO1oAK9QGQenJlyF1
- Ks+S/Whb26S8neY/Xiv69/lgfGW2lHLdc/hHWOfGv6217tuRs5D6OeSIgO9+WMGZzdlg
- KFmA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX8WT1v9su1rsz/Ss2AZMjRFp7orj+yDjcDB3orKDyc8IOrqX2jZBHi1b6VukQtwo7sLpSWuSs7Bn4A@nongnu.org
-X-Gm-Message-State: AOJu0Yzfxy0wukYrl69k0AppEcDIpu0iifXLqQNRrxwB8Tmxa909qid2
- MS/l/SZ7bBd2zCL3jsGpDk6wDSRY5+GJaOo4XyWUwmpvRfNT6uy9Md2AoIfCHWEhKOXlAP5GYUM
- i
-X-Gm-Gg: ASbGncum+W64A4gKGnht5mgUTnMTUwX6hP1mjw+beY1lvtQbaPA1YgCbRY/729lLXFx
- VJM9GwDP6Z5wnj2/6xhESJQBU79ImFXjyBQfvyC3m/y8URBHS3/SItCZRSioXe5lSogmnOYC5cf
- Oe1hDer1sOeeruCYxgRZrGKSlR5x3INAsosb7j5OdCgkCLY4p5ObJy0AkHcbx3oT6w3RnJHo1X1
- ouojL/xsFw3U6KmjEXXAoGj57Piv4dT0eiltlFF7svUT4WgxWKems53jWpo3EBRgizneOhrcJoi
- BaWNVgAjJvDHHD6TjBcHIrE8Dy2ZsCklPvsoVoik6YqDRe8iRbOkSQA+
-X-Received: by 2002:a05:6a00:218d:b0:736:fff2:99b with SMTP id
- d2e1a72fcca58-7398045dfecmr17037177b3a.23.1743437780690; 
- Mon, 31 Mar 2025 09:16:20 -0700 (PDT)
-Received: from [192.168.0.102] ([186.215.49.85])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-739710a1de3sm7122911b3a.121.2025.03.31.09.16.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Mar 2025 09:16:20 -0700 (PDT)
-Message-ID: <383d3515-4016-4b19-a1e4-a6c1690e79b8@linaro.org>
-Date: Mon, 31 Mar 2025 13:16:17 -0300
+ (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
+ id 1tzYAA-0004yQ-OX; Tue, 01 Apr 2025 05:44:06 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
+ id 1tzYA8-0002Z3-Ee; Tue, 01 Apr 2025 05:44:06 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRjkK398fz4x8Z;
+ Tue,  1 Apr 2025 20:43:53 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRjkC3GWrz4wcD;
+ Tue,  1 Apr 2025 20:43:46 +1100 (AEDT)
+Message-ID: <862875c7-3e40-4c2e-95c5-2f8b480d10be@kaod.org>
+Date: Tue, 1 Apr 2025 11:43:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 2/2] hw/pci-host/designware: Use deposit/extract
- API
+Subject: Re: [PATCH-for-10.0 0/2] hw/misc/aspeed_scu: Correct minimum access
+ size for AST2500 / AST2600
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Joey <jeundery@gmail.com>, qemu-arm@nongnu.org,
+Cc: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>
-References: <20250331152041.74533-1-philmd@linaro.org>
- <20250331152041.74533-3-philmd@linaro.org>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250331152041.74533-3-philmd@linaro.org>
+ Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@codeconstruct.com.au>
+References: <20250331230444.88295-1-philmd@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250331230444.88295-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=ooSu=WT=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X2Wt0dflk48/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yrXhF6gGcFJN
 
-Hi Phil,
-
-On 3/31/25 12:20, Philippe Mathieu-Daudé wrote:
-> Prefer the safer (less bug-prone) deposit/extract API
-> to access lower/upper 32-bit of 64-bit registers.
+On 4/1/25 01:04, Philippe Mathieu-Daudé wrote:
+> Mark SCU MemoryRegionOps read/write handler implementations
+> as 32-bit, then allow down to 8-bit accesses.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/pci-host/designware.c | 47 ++++++++++++++--------------------------
->   1 file changed, 16 insertions(+), 31 deletions(-)
+> Joel Stanley (1):
+>    hw/misc/aspeed_scu: Correct minimum access size for AST2500 / AST2600
 > 
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index 5598d18f478..3f2282b2596 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -22,6 +22,7 @@
->   #include "qapi/error.h"
->   #include "qemu/module.h"
->   #include "qemu/log.h"
-> +#include "qemu/bitops.h"
->   #include "hw/pci/msi.h"
->   #include "hw/pci/pci_bridge.h"
->   #include "hw/pci/pci_host.h"
-> @@ -162,11 +163,9 @@ designware_pcie_root_config_read(PCIDevice *d, uint32_t address, int len)
->           break;
->   
->       case DESIGNWARE_PCIE_MSI_ADDR_LO:
-> -        val = root->msi.base;
-> -        break;
-> -
->       case DESIGNWARE_PCIE_MSI_ADDR_HI:
-> -        val = root->msi.base >> 32;
-> +        val = extract64(root->msi.base,
-> +                        address == DESIGNWARE_PCIE_MSI_ADDR_LO ? 0 : 32, 32);
->           break;
->   
->       case DESIGNWARE_PCIE_MSI_INTR0_ENABLE:
-> @@ -190,19 +189,15 @@ designware_pcie_root_config_read(PCIDevice *d, uint32_t address, int len)
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LOWER_BASE:
-> -        val = viewport->base;
-> -        break;
-> -
->       case DESIGNWARE_PCIE_ATU_UPPER_BASE:
-> -        val = viewport->base >> 32;
-> +        val = extract64(viewport->base,
-> +                        address == DESIGNWARE_PCIE_ATU_LOWER_BASE ? 0 : 32, 32);
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LOWER_TARGET:
-> -        val = viewport->target;
-> -        break;
-> -
->       case DESIGNWARE_PCIE_ATU_UPPER_TARGET:
-> -        val = viewport->target >> 32;
-> +        val = extract64(viewport->target,
-> +                        address == DESIGNWARE_PCIE_ATU_LOWER_TARGET ? 0 : 32, 32);
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LIMIT:
-> @@ -321,14 +316,10 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
->           break;
->   
->       case DESIGNWARE_PCIE_MSI_ADDR_LO:
-> -        root->msi.base &= 0xFFFFFFFF00000000ULL;
-> -        root->msi.base |= val;
-> -        designware_pcie_root_update_msi_mapping(root);
-> -        break;
-> -
->       case DESIGNWARE_PCIE_MSI_ADDR_HI:
-> -        root->msi.base &= 0x00000000FFFFFFFFULL;
-> -        root->msi.base |= (uint64_t)val << 32;
-> +        root->msi.base = deposit64(root->msi.base,
-> +                                   address == DESIGNWARE_PCIE_MSI_ADDR_LO
-> +                                   ? 0 : 32, 32, val);
->           designware_pcie_root_update_msi_mapping(root);
->           break;
->   
-> @@ -355,23 +346,17 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LOWER_BASE:
-> -        viewport->base &= 0xFFFFFFFF00000000ULL;
-> -        viewport->base |= val;
-> -        break;
-> -
->       case DESIGNWARE_PCIE_ATU_UPPER_BASE:
-> -        viewport->base &= 0x00000000FFFFFFFFULL;
-> -        viewport->base |= (uint64_t)val << 32;
-> +        viewport->base = deposit64(root->msi.base,
-> +                                   address == DESIGNWARE_PCIE_ATU_LOWER_BASE
-> +                                   ? 0 : 32, 32, val);
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LOWER_TARGET:
-> -        viewport->target &= 0xFFFFFFFF00000000ULL;
-> -        viewport->target |= val;
-> -        break;
-> -
->       case DESIGNWARE_PCIE_ATU_UPPER_TARGET:
-> -        viewport->target &= 0x00000000FFFFFFFFULL;
-> -        viewport->target |= (uint64_t)val << 32;
-> +        viewport->target = deposit64(root->msi.base,
-> +                                     address == DESIGNWARE_PCIE_ATU_LOWER_TARGET
-> +                                     ? 0 : 32, 32, val);
->           break;
->   
->       case DESIGNWARE_PCIE_ATU_LIMIT:
+> Philippe Mathieu-Daudé (1):
+>    hw/misc/aspeed_scu: Set MemoryRegionOps::impl::access_size to 32-bit
+> 
+>   hw/misc/aspeed_scu.c | 16 ++++++++++++++--
+>   1 file changed, 14 insertions(+), 2 deletions(-)
+> 
+Applied to aspeed-next.
 
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+Thanks,
+
+C.
 
 
-Cheers,
-Gustavo

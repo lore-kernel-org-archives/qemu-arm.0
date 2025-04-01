@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2794349njd;
-        Tue, 1 Apr 2025 07:01:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEkw6OT3cgWB3m7mgE9mCJmtZgNwH5a7ccv7mHxTqokRSY5QMsz8HS1I33AEOIiBRTQypBXU8vILIDqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSvH6VJp6NLqk2v1FjHRhnyjxnu7h7uOJuKuyz0J1bszyTot2MDUCYrz2cvGX4AYVPbR9w
-X-Received: by 2002:a05:6870:2046:b0:2c2:cd87:7521 with SMTP id 586e51a60fabf-2cbcf414c50mr8018949fac.4.1743516101269;
-        Tue, 01 Apr 2025 07:01:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743516101; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2796751njd;
+        Tue, 1 Apr 2025 07:04:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVVDOp3k4x26VNNEFaOFrgijzT/S5CkrB+oiwbYVedJYE33JtfTyLtrHhZBzzrGFwPZcOXtFvGkFVjKug==@linaro.org
+X-Google-Smtp-Source: AGHT+IGQkWcJsUrE9Mdm0TFv3SbAzD8rXWJNeVY9d4fx9xcFE9QnftxIo9JPcG7jVp1XnakmXuBC
+X-Received: by 2002:a05:6000:1843:b0:391:952:c730 with SMTP id ffacd0b85a97d-39c120cca4emr10381692f8f.11.1743516249412;
+        Tue, 01 Apr 2025 07:04:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743516249; cv=none;
         d=google.com; s=arc-20240605;
-        b=lpHHjkXqhLC17FyhKEoI8rc7e2zumeLk+U5SXlAbtakncBYvBHU9BbBPcnwhmKv4r4
-         BhVkUOeG/bFb/xsrTU0Pak0THOoq3uMkvq63celg+FC8tYJQ2TbxsAhBkZ4qiG9rUY71
-         VoMh49z2/TmXmVAfa5taMCI/VRx5puPhNT4+KELLD3oUYI+ZjMPGN8W7p98zIcO9EUKy
-         wVNCGVBuKrUZfknF42hcpzD8lf5X6lEhDKqIr5sRSfR4Oe67QBFiFRXOmA6lGLtaqpgA
-         wifh2aDah5wTNRR5YlMd3cJUJMdiTW17qY0c84QqTN86ErHEgd0qvUCFBMlxSNNJooFt
-         iRmg==
+        b=iYvGq8CcYLOokMxCxwVdiuk1Q+32tBZ/7aJPIHvZ/Xs0d7XMlpG9MFYvHUml4FacEV
+         L/5gezFCdiB8jFOuA+SISlymiMoahrRF+xUgzL8xr9YnbpUn8EkqDCp7xufkAZ4iSRh7
+         Zp1oTuZSdORWEXLiNXpNA0/1hmyPhxSBDHJVDIItPNvPgaHOG/6cjFxqTfHJ4g9cscp3
+         ou3Ig+YaYxcKINhxNwVmSQc47CPTLRPXD5/Q5cISat99TM9qGMAazCe0vtY0w78X5ua1
+         E/vKTxKLqKztg9nYHu5aIr91iT+te/ld3r5i2UUGKElm4YHLX4qGSkJLliJd1FVPAJxq
+         VPkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=W6wkG0IAInRZi/6J8euucfOQ2yKG74P7m9LfuUeoXmk=;
+        bh=OrSaLuXzmabji/E+kRaHDTD8YRc3iD0fkiN7RtRvcjU=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=kY+pQoBE8h/H7oMR6bY1RRCAR1/9VO32X840uGpO2Y7BtS7QAOb5bmRMqAf0weKGLh
-         g2JoTRY/A2foxuPDX7OtDdwiCF3zCw6OFoN9bAa1fdA9Oh/Jxtwovu9miKikQ6IxsWbH
-         C/PtisWCjX7LlhbHWxWeXOnTQQN0fTfzkKLGOWSrwx6spDUlHCb1Jjv89QgVo2BzIVeM
-         hYiI+TGu068GdJyifDLGuicySbgHp/bY+izG31OHVRHdcQ0K2y1PqnY7Fqw2fknvtskk
-         vm968qD2tkGQJCBrrUEQcpqNvWn63/W9f7+1puxdbriwrd5Hpr/JJlvSChAPGuU8brjB
-         1gNw==;
+        b=kTt+l2pvEMOCkGEmXoxeh/YPZZ6XItMs66fNezmTzdB7tVoPqevX2bpNMeLemwacpP
+         UliE1w4x4izCeciSnJXUW89x1v2hjflkf7YTlkiP5QCe9CESeArF1PrK3hjm3/Jkakga
+         NXfo1oYz2nKUWPSBCRpG8VivTVnDt0gERYeXP5jwF/xECePD+Z2y32utY9NqGi/JVZUR
+         H/Jxmvp9GmfivmyE8cA1U5GgRY/zqcrqYtNE+1n0IQ6v5nWAlZlmxSryHIIaULNJ7LFw
+         uTMDz977w69Lab7Bv32RDtkT4DOIsUWAw0anmlDuThkOIEAK9+y2xOovXr4nOJXc5FEl
+         P55Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eec9788f2bsi88057576d6.241.2025.04.01.07.01.41
+        by mx.google.com with ESMTPS id ffacd0b85a97d-39c0b7ef03bsi6764494f8f.827.2025.04.01.07.04.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Apr 2025 07:01:41 -0700 (PDT)
+        Tue, 01 Apr 2025 07:04:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzc8l-0001Y2-Hd; Tue, 01 Apr 2025 09:58:56 -0400
+	id 1tzc5i-0007qQ-Fi; Tue, 01 Apr 2025 09:55:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzc7p-0001BO-LQ; Tue, 01 Apr 2025 09:58:02 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1tzc5F-0007WH-LI; Tue, 01 Apr 2025 09:55:18 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzc7n-0008Ki-4Y; Tue, 01 Apr 2025 09:57:56 -0400
+ id 1tzc5D-00087u-Kc; Tue, 01 Apr 2025 09:55:17 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRqML6GT5z4x1w;
- Wed,  2 Apr 2025 00:57:50 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRqJG70Jsz4xMG;
+ Wed,  2 Apr 2025 00:55:10 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRqMG694mz4wcD;
- Wed,  2 Apr 2025 00:57:46 +1100 (AEDT)
-Message-ID: <c2789dae-3c0e-4ad3-b3ba-07493bdbec28@kaod.org>
-Date: Tue, 1 Apr 2025 15:57:44 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRqJB6sk3z4xG8;
+ Wed,  2 Apr 2025 00:55:06 +1100 (AEDT)
+Message-ID: <2731580b-f20e-44cf-beed-e61e5b792e9f@kaod.org>
+Date: Tue, 1 Apr 2025 15:55:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 06/22] hw/misc/aspeed_hace: Support accumulative mode
- for direct access mode
+Subject: Re: [PATCH v1 05/22] hw/misc/aspeed_hace: Introduce 64-bit
+ digest_addr variable for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-7-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-6-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,17 +119,16 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=ooSu=WT=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -145,34 +144,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: szHgh6b2VGIN
+X-TUID: vOcyXmMlsivr
 
 On 3/21/25 10:26, Jamin Lin wrote:
-> Enable accumulative mode for direct access mode operations. In direct access
-> mode, only a single source buffer is used, so the "iovec" count is set to 1.
-> If "acc_mode" is enabled:
-> 1. Accumulate "total_req_len" with the current request length ("plen").
-> 2. Check for padding and determine whether this is the final request.
+> The AST2700 CPU, based on the Cortex-A35, is a 64-bit processor with a 64-bit
+> DRAM address space. To support future AST2700 updates, a new "digest_addr"
+> variable is introduced with a 64-bit data type.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/misc/aspeed_hace.c | 15 ++++++++++++++-
->   1 file changed, 14 insertions(+), 1 deletion(-)
+>   hw/misc/aspeed_hace.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 > 
 > diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 8cf3f194a5..d06158dffd 100644
+> index 9771d6e490..8cf3f194a5 100644
 > --- a/hw/misc/aspeed_hace.c
 > +++ b/hw/misc/aspeed_hace.c
-> @@ -223,8 +223,21 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->               return;
->           }
->           iov[0].iov_base = haddr;
-> -        iov[0].iov_len = plen;
->           i = 1;
-> +        if (acc_mode) {
+> @@ -148,6 +148,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>       bool sg_acc_mode_final_request = false;
+>       g_autofree uint8_t *digest_buf = NULL;
+>       struct iovec iov[ASPEED_HACE_MAX_SG];
+> +    uint64_t digest_addr = 0;
+>       Error *local_err = NULL;
+>       uint32_t total_msg_len;
+>       size_t digest_len = 0;
+> @@ -257,7 +258,8 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>           return;
+>       }
+>   
+> -    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
+> +    digest_addr = deposit64(digest_addr, 0, 32, s->regs[R_HASH_DEST]);
 
-hmm, more complexity is being added to do_hash_operation(). I would introduce
-a sub routine do_hash_operation_acc() to handle accumulative mode.
+As on the previous patch, an helper would be useful and is there
+an alignment constraint ?
+
 
 Thanks,
 
@@ -180,20 +185,8 @@ C.
 
 
 
-> +            s->total_req_len += plen;
-> +
-> +            if (has_padding(s, &iov[0], plen, &total_msg_len,
-> +                            &pad_offset)) {
-> +                /* Padding being present indicates the final request */
-> +                sg_acc_mode_final_request = true;
-> +                iov[0].iov_len = pad_offset;
-> +            } else {
-> +                iov[0].iov_len = plen;
-> +            }
-> +        } else {
-> +            iov[0].iov_len = plen;
-> +        }
->       }
->   
->       if (acc_mode) {
+> +    if (address_space_write(&s->dram_as, digest_addr,
+>                               MEMTXATTRS_UNSPECIFIED,
+>                               digest_buf, digest_len)) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
 

@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2767556njd;
-        Tue, 1 Apr 2025 06:19:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUztmXH+XdUMospIwOyDQwUgxGWiEeR7gbmckwiN1yjVTFG9uLLtCpqsrhpUXGzYLUoBnMoAQAd/TSp4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IE97BrypgsSPYp1rkc27Qv5TYpj7DQB/VqbZRV5RR0zQlWUXrZxFLzp3UoSzWW3XEtv6Dfq
-X-Received: by 2002:a67:e7ca:0:b0:4c1:a66f:a468 with SMTP id ada2fe7eead31-4c6d39f3752mr8539948137.22.1743513540373;
-        Tue, 01 Apr 2025 06:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743513540; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2759149njd;
+        Tue, 1 Apr 2025 06:09:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5+P24wHp0tadSLISMvyA5BIRnrwbCG4EZBo2sbn6DrbSsdEMO8ONTDC38thpRtghbGtsvE3vjyHRDXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEZHp6mn0U0akgAChVG1HAcRPLhZAfjws9ffiKd9RD3ACz2KHimWROy8+k0NcntAywBB8P
+X-Received: by 2002:a05:620a:2992:b0:7c5:4463:29aa with SMTP id af79cd13be357-7c69087def9mr2040235585a.40.1743512961230;
+        Tue, 01 Apr 2025 06:09:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743512961; cv=none;
         d=google.com; s=arc-20240605;
-        b=YW5JOJWzVk/dCImFmn2f7w4g1kcKhma71mtbDVav13GHhLiIf/XnSf9HDxE6qNxPGO
-         CudCBD3CO7dmwWN1OoccbvZj//efKSG7WG/co6/kmke1c85CGCAxiYDWCAbc5CmpYFIr
-         FpJ9A4/6fP9pDlyt3Vig22cRCYEfbSXblmMwd/aWdEGq3G5a7urwzMpA3BcR7T/qrVVg
-         4IECKuErs7dssfD16fyxLJt28nZrOGbT5wvZJh5cMT/IqktLWaWvUa4SaoZ+yIiaTtT5
-         d1SSxTA+Ctxn8yy7J4BYlbiw7tNBKexiuWtJDeezh5ces8x/rChCd37aTsSClukk+M2Y
-         R8XA==
+        b=kZLhAAzCzm7n/PIq83QlCtbxATP1yz9vomIZwsTKWigYQV69tyA6D2W7BUhc6T9RYV
+         PcEg0vJZe/1+vJMOjmdDlkQ471BGegh397P42h3P6JRE7oQ74dr+qqTRlaxZt89y6HQd
+         R0dfK1Jvp6wAUtMYFOV8L9qtdsTm4oPskEkDqonuiMEsduWWlCpi+JYsXyJMTOUXYf5w
+         DF38u3B+sJ3NxjO55hppKcE9ewOo5gDkszcsW5fNtRyIB227FelpE86CUsxbVG7gnI70
+         qC95NXn6l27J/gUwweONhghdwNA6P5frLv/Je0l5R2ytbeEH6HO9oY3eOp7HhFDhF8/i
+         uDFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=AjqjJDqcV0tQDgLmyNSgZqvqnVRUlUzQMll0oIFsx2A=;
+        bh=aN7KYH38VWtxFZzh+SjCJv6Aycplwq+qL3wAUDv+B84=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=CZVCyyBBj5PjF4nU+PkIBleSooQCQpt3YVYntKDEPc2qlPdGu+eigPcck+2v+P8eh6
-         J7yLRZ3+S6pIlab3eIsZaOF4w8t7dOCbjrMgE3iUemCla//z8muIvn8e3+t/bNjDNe86
-         wfNQTGq1L+7BLGZ9y+9Gj4q/VuujAaSrBl4wfSW2GPiMLAWaDyH+jALwojWn4tLD9vx4
-         OFkQPgihFGMIIh5our9VAl497qx7tx3HjFGu+tLMb2Ce844H/QQEEfZ/VrykIGa10kzr
-         OZz2BuRbZ1srOLWusI5IQtoM4oyztSKSaONbWlEGcx7qVxRp00VHyQQdK7fE4kSl3nrt
-         Mk8A==;
+        b=UNRP9kYixQuWhCnDef3PaeKUVfS3df8sFpfkV6mVZcMqauJMhL72C+IJ+srQAdmIbY
+         J6ehzh9Yoj1Aa5kmJKPOzHKJD7O/+I/ppvPj/iFpui+h4SbhBKUyRBTSb6sk21fs0yLY
+         7Vp99p6XBT8wUCK1zFACobEQGd3g7QdwkwBL/uipvFC7E1PQuVajAykdfUaNTmUj5zht
+         DDomK27oWSuIYIvyofkAqZvfE47zAYGgSpKBVbzcAEKIFdZEy5SYgojKvEwXapO1d8jX
+         bACn0aozVtNDAIGI70qFmztE1PVBCXS/4TCdbL0V43MEXybpAVx7DgUL0kbuhIEAR/3d
+         PP3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c6bfc8b0a0si2344766137.82.2025.04.01.06.19.00
+        by mx.google.com with ESMTPS id af79cd13be357-7c5f776db46si880969785a.219.2025.04.01.06.09.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Apr 2025 06:19:00 -0700 (PDT)
+        Tue, 01 Apr 2025 06:09:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzbVX-00058U-P1; Tue, 01 Apr 2025 09:18:24 -0400
+	id 1tzbMX-0001Vp-2c; Tue, 01 Apr 2025 09:09:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzbVW-00058F-PU; Tue, 01 Apr 2025 09:18:22 -0400
+ id 1tzbMF-0001OK-BZ; Tue, 01 Apr 2025 09:08:47 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzbVL-0002jS-56; Tue, 01 Apr 2025 09:18:14 -0400
+ id 1tzbMA-0000i7-JZ; Tue, 01 Apr 2025 09:08:47 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRpTQ5P0Fz4xG8;
- Wed,  2 Apr 2025 00:18:02 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRpGX40ykz4x8P;
+ Wed,  2 Apr 2025 00:08:36 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRpTL1mf6z4xD3;
- Wed,  2 Apr 2025 00:17:57 +1100 (AEDT)
-Message-ID: <b6b0d7c1-4992-4ea1-ab1e-6cad29ae07c0@kaod.org>
-Date: Tue, 1 Apr 2025 15:17:56 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRpGS24HVz4x3p;
+ Wed,  2 Apr 2025 00:08:31 +1100 (AEDT)
+Message-ID: <1c4176c4-6077-4260-b96d-69ab5b920afb@kaod.org>
+Date: Tue, 1 Apr 2025 15:08:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 03/22] hw/misc/aspeed_hace: Improve readability and
- consistency in variable naming
+Subject: Re: [PATCH v1 01/22] hw/misc/aspeed_hace: Remove unused code for
+ better readability
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-4-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-2-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -144,122 +144,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jHNYZ/fZ3BUS
+X-TUID: R/ytMix6IcIq
 
 On 3/21/25 10:25, Jamin Lin wrote:
-> Currently, users define multiple local variables within different if-statements.
-> To improve readability and maintain consistency in variable naming, rename the
-> variables accordingly.
-> Introduced "sg_addr" to clearly indicate the scatter-gather mode buffer address.
+> This cleanup follows significant changes in commit 4c1d0af4a28d, making the
+> model more readable.
+> 
+> - Deleted "iov_cache" and "iov_count" from "AspeedHACEState".
+
+It would be good to say why we can remove these. I think this is because
+s->iov_count is always zero, right ?
+
+> - Removed "reconstruct_iov" function and related logic.
+> - Simplified "do_hash_operation" by eliminating redundant checks.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/misc/aspeed_hace.h |  2 --
+>   hw/misc/aspeed_hace.c         | 35 -----------------------------------
+>   2 files changed, 37 deletions(-)
+> 
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index 5d4aa19cfe..b69a038d35 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -31,10 +31,8 @@ struct AspeedHACEState {
+>       MemoryRegion iomem;
+>       qemu_irq irq;
+>   
+> -    struct iovec iov_cache[ASPEED_HACE_MAX_SG];
+>       uint32_t regs[ASPEED_HACE_NR_REGS];
+>       uint32_t total_req_len;
+> -    uint32_t iov_count;
+>   
+>       MemoryRegion *dram_mr;
+>       AddressSpace dram_as;
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 32a5dbded3..8e7e8113a5 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -137,25 +137,6 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
+>       return false;
+>   }
+>   
+> -static int reconstruct_iov(AspeedHACEState *s, struct iovec *iov, int id,
+> -                           uint32_t *pad_offset)
+> -{
+> -    int i, iov_count;
+> -    if (*pad_offset != 0) {
+> -        s->iov_cache[s->iov_count].iov_base = iov[id].iov_base;
+> -        s->iov_cache[s->iov_count].iov_len = *pad_offset;
+> -        ++s->iov_count;
+> -    }
+> -    for (i = 0; i < s->iov_count; i++) {
+> -        iov[i].iov_base = s->iov_cache[i].iov_base;
+> -        iov[i].iov_len = s->iov_cache[i].iov_len;
+> -    }
+> -    iov_count = s->iov_count;
+> -    s->iov_count = 0;
+> -    s->total_req_len = 0;
+> -    return iov_count;
+> -}
+> -
+>   static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>                                 bool acc_mode)
+>   {
+> @@ -237,19 +218,6 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>           iov[0].iov_base = haddr;
+>           iov[0].iov_len = len;
+>           i = 1;
+> -
+> -        if (s->iov_count) {
+> -            /*
+> -             * In aspeed sdk kernel driver, sg_mode is disabled in hash_final().
+> -             * Thus if we received a request with sg_mode disabled, it is
+> -             * required to check whether cache is empty. If no, we should
+> -             * combine cached iov and the current iov.
+> -             */
+> -            s->total_req_len += len;
+> -            if (has_padding(s, iov, len, &total_msg_len, &pad_offset)) {
+> -                i = reconstruct_iov(s, iov, 0, &pad_offset);
+> -            }
+> -        }
+>       }
+>   
+>       if (acc_mode) {
+> @@ -273,7 +241,6 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>               qcrypto_hash_free(s->hash_ctx);
+>   
+>               s->hash_ctx = NULL;
+> -            s->iov_count = 0;
+>               s->total_req_len = 0;
+>           }
+>       } else if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf,
+> @@ -432,7 +399,6 @@ static void aspeed_hace_reset(DeviceState *dev)
+>       }
+>   
+>       memset(s->regs, 0, sizeof(s->regs));
+> -    s->iov_count = 0;
+>       s->total_req_len = 0;
+>   }
+>   
+> @@ -469,7 +435,6 @@ static const VMStateDescription vmstate_aspeed_hace = {
+>       .fields = (const VMStateField[]) {
+>           VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
+>           VMSTATE_UINT32(total_req_len, AspeedHACEState),
+> -        VMSTATE_UINT32(iov_count, AspeedHACEState),
 
-
-The change look OK. do_hash_operation() is a big routine, difficult
-to read. It does stuff like :
-
-     if (sg_mode) {
-	    ...
-     } else {
-	    ...
-     }
-
-     if (acc_mode) {
-	    ...
-     } else {
-	    ...
-     }
-     ...
-
-I think we should also split it in multiple routines to reduce the
-complexity, even if some part are redundant.
+This is a vmstate change which is breaking migration compatibility.
+We could preserve compatibility [1] but I think this is overkill.
+However, we should say so. Please add a comment in the commit log.
 
 Thanks,
 
 C.
 
+[1] https://qemu.readthedocs.io/en/v9.2.0/devel/migration/main.html#vmstate
 
-
-> --->   hw/misc/aspeed_hace.c | 33 ++++++++++++++++-----------------
->   1 file changed, 16 insertions(+), 17 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index d8b5f048bb..4bcf6ed074 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -145,15 +145,19 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
->   static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->                                 bool acc_mode)
->   {
-> +    bool sg_acc_mode_final_request = false;
-> +    g_autofree uint8_t *digest_buf = NULL;
->       struct iovec iov[ASPEED_HACE_MAX_SG];
-> +    Error *local_err = NULL;
->       uint32_t total_msg_len;
-> -    uint32_t pad_offset;
-> -    g_autofree uint8_t *digest_buf = NULL;
->       size_t digest_len = 0;
-> -    bool sg_acc_mode_final_request = false;
-> -    int i;
-> +    uint32_t sg_addr = 0;
-> +    uint32_t pad_offset;
-> +    uint32_t len = 0;
-> +    uint32_t src = 0;
->       void *haddr;
-> -    Error *local_err = NULL;
-> +    hwaddr plen;
-> +    int i;
->   
->       if (acc_mode && s->hash_ctx == NULL) {
->           s->hash_ctx = qcrypto_hash_new(algo, &local_err);
-> @@ -166,12 +170,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>           VMSTATE_END_OF_LIST(),
 >       }
->   
->       if (sg_mode) {
-> -        uint32_t len = 0;
-> -
->           for (i = 0; !(len & SG_LIST_LEN_LAST); i++) {
-> -            uint32_t addr, src;
-> -            hwaddr plen;
-> -
->               if (i == ASPEED_HACE_MAX_SG) {
->                   qemu_log_mask(LOG_GUEST_ERROR,
->                           "aspeed_hace: guest failed to set end of sg list marker\n");
-> @@ -183,12 +182,12 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->               len = address_space_ldl_le(&s->dram_as, src,
->                                          MEMTXATTRS_UNSPECIFIED, NULL);
->   
-> -            addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
-> -                                        MEMTXATTRS_UNSPECIFIED, NULL);
-> -            addr &= SG_LIST_ADDR_MASK;
-> +            sg_addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
-> +                                           MEMTXATTRS_UNSPECIFIED, NULL);
-> +            sg_addr &= SG_LIST_ADDR_MASK;
->   
->               plen = len & SG_LIST_LEN_MASK;
-> -            haddr = address_space_map(&s->dram_as, addr, &plen, false,
-> +            haddr = address_space_map(&s->dram_as, sg_addr, &plen, false,
->                                         MEMTXATTRS_UNSPECIFIED);
->               if (haddr == NULL) {
->                   qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -212,16 +211,16 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->               }
->           }
->       } else {
-> -        hwaddr len = s->regs[R_HASH_SRC_LEN];
-> +        plen = s->regs[R_HASH_SRC_LEN];
->   
->           haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
-> -                                  &len, false, MEMTXATTRS_UNSPECIFIED);
-> +                                  &plen, false, MEMTXATTRS_UNSPECIFIED);
->           if (haddr == NULL) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
->               return;
->           }
->           iov[0].iov_base = haddr;
-> -        iov[0].iov_len = len;
-> +        iov[0].iov_len = plen;
->           i = 1;
->       }
->   
+>   };
 

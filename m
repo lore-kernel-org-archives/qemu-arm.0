@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2796751njd;
-        Tue, 1 Apr 2025 07:04:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVDOp3k4x26VNNEFaOFrgijzT/S5CkrB+oiwbYVedJYE33JtfTyLtrHhZBzzrGFwPZcOXtFvGkFVjKug==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQkWcJsUrE9Mdm0TFv3SbAzD8rXWJNeVY9d4fx9xcFE9QnftxIo9JPcG7jVp1XnakmXuBC
-X-Received: by 2002:a05:6000:1843:b0:391:952:c730 with SMTP id ffacd0b85a97d-39c120cca4emr10381692f8f.11.1743516249412;
-        Tue, 01 Apr 2025 07:04:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743516249; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2898183njd;
+        Tue, 1 Apr 2025 09:19:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJ/RQNOzbeWUp9d8ZIi/DZLDThBog5tvm7bgncpNCOteswquhMr3wX8JSgZCNPKB+kVyER3/0aIQkqPA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGCSoXJnpyj+M78bgx2klyb6zZ6hlWwXQpsFpoKCerPmYOyUZ3u5gKoFTNM4XJpTeirlmTW
+X-Received: by 2002:a05:620a:31a9:b0:7c5:5692:ee95 with SMTP id af79cd13be357-7c69089247cmr2149499585a.51.1743524392080;
+        Tue, 01 Apr 2025 09:19:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743524392; cv=none;
         d=google.com; s=arc-20240605;
-        b=iYvGq8CcYLOokMxCxwVdiuk1Q+32tBZ/7aJPIHvZ/Xs0d7XMlpG9MFYvHUml4FacEV
-         L/5gezFCdiB8jFOuA+SISlymiMoahrRF+xUgzL8xr9YnbpUn8EkqDCp7xufkAZ4iSRh7
-         Zp1oTuZSdORWEXLiNXpNA0/1hmyPhxSBDHJVDIItPNvPgaHOG/6cjFxqTfHJ4g9cscp3
-         ou3Ig+YaYxcKINhxNwVmSQc47CPTLRPXD5/Q5cISat99TM9qGMAazCe0vtY0w78X5ua1
-         E/vKTxKLqKztg9nYHu5aIr91iT+te/ld3r5i2UUGKElm4YHLX4qGSkJLliJd1FVPAJxq
-         VPkA==
+        b=XDWpHx1ckVi1/AJqPQAP3CGJbaJrvCs5LI4TJTp/QeozoW545WJLocQ2avcnwHvqDU
+         YuOSuu3k0BFC6qzkdannHqYGMEEIbaqe8AOchKS1MbEXMbsyKN13LFN+zK2LOVpehpoB
+         22eXfpfk8+jxzc6LxL/2NOiKfUmCdWawbOSHqsm1RLs+ABE2HRRfUkebNjN/ejrQqCDj
+         6KGyKoDNPVZMPW72DQkiD+lEXXR+t+NEVmFGPpoffots71AAkMHD6sFk7DhhGKW1Yme0
+         mXBGqAV60YBQpKm6d7Y4fZu7K/lWN1qQ0GcEebjfPsvogceR9yjlZQyxpUmIMarxhSsK
+         wzRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=OrSaLuXzmabji/E+kRaHDTD8YRc3iD0fkiN7RtRvcjU=;
+        bh=kzfEizUju1uC0B8yUujRtYwy09sfUHTmxdfu7iMvqfo=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=kTt+l2pvEMOCkGEmXoxeh/YPZZ6XItMs66fNezmTzdB7tVoPqevX2bpNMeLemwacpP
-         UliE1w4x4izCeciSnJXUW89x1v2hjflkf7YTlkiP5QCe9CESeArF1PrK3hjm3/Jkakga
-         NXfo1oYz2nKUWPSBCRpG8VivTVnDt0gERYeXP5jwF/xECePD+Z2y32utY9NqGi/JVZUR
-         H/Jxmvp9GmfivmyE8cA1U5GgRY/zqcrqYtNE+1n0IQ6v5nWAlZlmxSryHIIaULNJ7LFw
-         uTMDz977w69Lab7Bv32RDtkT4DOIsUWAw0anmlDuThkOIEAK9+y2xOovXr4nOJXc5FEl
-         P55Q==;
+        b=AfeaWGVQpVzPej6gYGbmUvpKd6A4zR94rISQi4lDR+q92xIzIDm7BTETrwH9E7GtNX
+         bNIhgpfWJfFly9kXXz26Nz3QM5YPZT5eakikvbplKuXMdrqPsNSZdVTYsV5j4CSZKLoJ
+         JTcGk0faVxHSxJ4J+f/ZPhhR0P3pOaBhOiI7Rd9mRtQ0slLH72Aupgv2z8p2QoWSUSL2
+         nBUjLZWacvN9QcO1W0Ag9GGRT5OzYOQsvrRB+WlM+88tqHq1+hZvOL4j1rNj3yqPKPXb
+         1dblMA+1BthiPfpzElogGeTN0TiY6C1jOWiJBULf/Us/eI4maauoAFiyvBMzJ74IgBS9
+         Rvlg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-39c0b7ef03bsi6764494f8f.827.2025.04.01.07.04.09
+        by mx.google.com with ESMTPS id af79cd13be357-7c5f7767ad2si914534685a.216.2025.04.01.09.19.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Apr 2025 07:04:09 -0700 (PDT)
+        Tue, 01 Apr 2025 09:19:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzc5i-0007qQ-Fi; Tue, 01 Apr 2025 09:55:54 -0400
+	id 1tzeKp-0007Bc-1E; Tue, 01 Apr 2025 12:19:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzc5F-0007WH-LI; Tue, 01 Apr 2025 09:55:18 -0400
+ id 1tzeKe-0007Ah-Uk; Tue, 01 Apr 2025 12:19:21 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ooSu=WT=kaod.org=clg@ozlabs.org>)
- id 1tzc5D-00087u-Kc; Tue, 01 Apr 2025 09:55:17 -0400
+ id 1tzeKb-00068v-Ho; Tue, 01 Apr 2025 12:19:20 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRqJG70Jsz4xMG;
- Wed,  2 Apr 2025 00:55:10 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZRtVS25rQz4xD3;
+ Wed,  2 Apr 2025 03:19:12 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRqJB6sk3z4xG8;
- Wed,  2 Apr 2025 00:55:06 +1100 (AEDT)
-Message-ID: <2731580b-f20e-44cf-beed-e61e5b792e9f@kaod.org>
-Date: Tue, 1 Apr 2025 15:55:04 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZRtVM5yb1z4x8W;
+ Wed,  2 Apr 2025 03:19:07 +1100 (AEDT)
+Message-ID: <df09b1ee-2e49-4a44-96b3-67d4a8634fcc@kaod.org>
+Date: Tue, 1 Apr 2025 18:19:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 05/22] hw/misc/aspeed_hace: Introduce 64-bit
- digest_addr variable for AST2700
+Subject: Re: [PATCH v1 07/22] hw/misc/aspeed_hace: Add support for source,
+ digest, key buffer 64 bit addresses
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-6-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-8-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-6-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-8-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -144,40 +144,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vOcyXmMlsivr
+X-TUID: ccsQQz0WDeyB
 
 On 3/21/25 10:26, Jamin Lin wrote:
-> The AST2700 CPU, based on the Cortex-A35, is a 64-bit processor with a 64-bit
-> DRAM address space. To support future AST2700 updates, a new "digest_addr"
-> variable is introduced with a 64-bit data type.
+> According to the AST2700 design, the data source address is 64-bit, with
+> R_HASH_SRC_HI storing bits [63:32] and R_HASH_SRC storing bits [31:0].
+> Similarly, the digest address is 64-bit, with R_HASH_DEST_HI storing bits
+
+R_HASH_DIGEST_HIGH would be easier to understand.
+
+> [63:32] and R_HASH_DEST storing bits [31:0]. The HMAC key buffer address is also
+> 64-bit, with R_HASH_KEY_BUFF_HI storing bits [63:32] and R_HASH_KEY_BUFF storing
+> bits [31:0].
+> 
+> The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM addressable range
+> from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range fits within 34 bits, only
+> bits [33:0] are needed to store the DRAM offset. To optimize address storage,
+> the high physical address bits [1:0] of the source, digest and key buffer
+> addresses are stored as dram_offset bits [33:32].
+> 
+> To achieve this, a src_hi_mask with a mask value of 0x3 is introduced, ensuring
+> that src_addr_hi consists of bits [1:0]. The final src_addr is computed as
+> (src_addr_hi[1:0] << 32) | src_addr[31:0], representing the DRAM offset within
+> bits [33:0].
+> 
+> Similarly, a dest_hi_mask with a mask value of 0x3 is introduced to ensure that
+> dest_addr_hi consists of bits [1:0]. The final dest_addr is calculated as
+> (dest_addr_hi[1:0] << 32) | dest_addr[31:0], representing the DRAM offset within
+> bits [33:0].
+> 
+> Additionally, a key_hi_mask with a mask value of 0x3 is introduced to ensure
+> that key_buf_addr_hi consists of bits [1:0]. The final key_buf_addr is
+> determined as (key_buf_addr_hi[1:0] << 32) | key_buf_addr[31:0], representing
+> the DRAM offset within bits [33:0].
+
+What does the datasheet say regarding the High Address registers ?
+Are bits [1:0] RW and [31:2] RO ?
+
+  
+> This approach eliminates the need to reduce the high part of the DRAM physical
+> address for DMA operations. Previously, this was calculated as
+> (high physical address bits [7:0] - 4), since the DRAM start address is
+> 0x4_00000000, making the high part address [7:0] - 4.
+
+I don't understand this part. Is there a difference between AST2700
+A0 and A1  ?
+
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/misc/aspeed_hace.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+>   include/hw/misc/aspeed_hace.h |  5 ++++-
+>   hw/misc/aspeed_hace.c         | 29 +++++++++++++++++++++++++++++
+>   2 files changed, 33 insertions(+), 1 deletion(-)
 > 
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index b69a038d35..a4479bd383 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -22,7 +22,7 @@
+>   
+>   OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
+>   
+> -#define ASPEED_HACE_NR_REGS (0x64 >> 2)
+> +#define ASPEED_HACE_NR_REGS (0x9C >> 2)
+
+I think we need a class attribute.
+
+>   #define ASPEED_HACE_MAX_SG  256 /* max number of entries */
+>   
+>   struct AspeedHACEState {
+> @@ -49,6 +49,9 @@ struct AspeedHACEClass {
+>       uint32_t key_mask;
+>       uint32_t hash_mask;
+>       bool raise_crypt_interrupt_workaround;
+> +    uint32_t src_hi_mask;
+> +    uint32_t dest_hi_mask;
+> +    uint32_t key_hi_mask;
+>   };
+>   
+>   #endif /* ASPEED_HACE_H */
 > diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 9771d6e490..8cf3f194a5 100644
+> index d06158dffd..51c6523fab 100644
 > --- a/hw/misc/aspeed_hace.c
 > +++ b/hw/misc/aspeed_hace.c
-> @@ -148,6 +148,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->       bool sg_acc_mode_final_request = false;
->       g_autofree uint8_t *digest_buf = NULL;
->       struct iovec iov[ASPEED_HACE_MAX_SG];
-> +    uint64_t digest_addr = 0;
->       Error *local_err = NULL;
->       uint32_t total_msg_len;
->       size_t digest_len = 0;
-> @@ -257,7 +258,8 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->           return;
->       }
+> @@ -30,6 +30,9 @@
+>   #define R_HASH_DEST     (0x24 / 4)
+>   #define R_HASH_KEY_BUFF (0x28 / 4)
+>   #define R_HASH_SRC_LEN  (0x2c / 4)
+> +#define R_HASH_SRC_HI      (0x90 / 4)
+> +#define R_HASH_DEST_HI     (0x94 / 4)
+> +#define R_HASH_KEY_BUFF_HI (0x98 / 4)
 >   
-> -    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
-> +    digest_addr = deposit64(digest_addr, 0, 32, s->regs[R_HASH_DEST]);
+>   #define R_HASH_CMD      (0x30 / 4)
+>   /* Hash algorithm selection */
+> @@ -393,6 +396,15 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>               }
+>           }
+>           break;
+> +    case R_HASH_SRC_HI:
+> +        data &= ahc->src_hi_mask;
+> +        break;
+> +    case R_HASH_DEST_HI:
+> +        data &= ahc->dest_hi_mask;
+> +        break;
+> +    case R_HASH_KEY_BUFF_HI:
+> +        data &= ahc->key_hi_mask;
+> +        break;
 
-As on the previous patch, an helper would be useful and is there
-an alignment constraint ?
+This change exposes the high address registers to all SoCs which
+is unfortunate.
 
+I would introduce a class attribute to limit the number of registers
+per SoC.
+
+You could also size the MMIO aperture with this new attribute and
+remove the "Out-of-bounds" message at the beginning of the read/write
+memops.
 
 Thanks,
 
@@ -185,8 +267,31 @@ C.
 
 
 
-> +    if (address_space_write(&s->dram_as, digest_addr,
->                               MEMTXATTRS_UNSPECIFIED,
->                               digest_buf, digest_len)) {
->           qemu_log_mask(LOG_GUEST_ERROR,
+>       default:
+>           break;
+>       }
+> @@ -566,6 +578,23 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
+>       ahc->key_mask = 0x7FFFFFF8;
+>       ahc->hash_mask = 0x00147FFF;
+>   
+> +    /*
+> +     * The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM
+> +     * addressable range from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range
+> +     * fits within 34 bits, only bits [33:0] are needed to store the DRAM
+> +     * offset. To optimize address storage, the high physical address bits
+> +     * [1:0] of the source, digest and key buffer addresses are stored as
+> +     * dram_offset bits [33:32].
+> +     *
+> +     * This approach eliminates the need to reduce the high part of the DRAM
+> +     * physical address for DMA operations. Previously, this was calculated as
+> +     * (high physical address bits [7:0] - 4), since the DRAM start address is
+> +     * 0x4_00000000, making the high part address [7:0] - 4.
+> +     */
+> +    ahc->src_hi_mask = 0x00000003;
+> +    ahc->dest_hi_mask = 0x00000003;
+> +    ahc->key_hi_mask = 0x00000003;
+> +
+>       /*
+>        * Currently, it does not support the CRYPT command. Instead, it only
+>        * sends an interrupt to notify the firmware that the crypt command
 

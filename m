@@ -1,75 +1,75 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2480937njd;
-        Mon, 31 Mar 2025 18:08:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9eu8xU2L48GqnBmev+dBYjuIT73XtxtTm+drjlG73AJv4/iZxzWcWUj8op9xiRuo8wMzIF21tCB76ig==@linaro.org
-X-Google-Smtp-Source: AGHT+IFoeF9DSSCHFTa17Oc4HE9L5odnr0ZtP7c6k4NPGgoyc10hH+KG9EaMFMiccnoivydVUgX7
-X-Received: by 2002:a05:620a:258a:b0:7c5:4c49:7697 with SMTP id af79cd13be357-7c6862eb8eemr1467915585a.6.1743469710167;
-        Mon, 31 Mar 2025 18:08:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743469710; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2481324njd;
+        Mon, 31 Mar 2025 18:09:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnHLve4D6ad78ymUQeccpX5DzyK8nXCkUJagaHSurosg2RUZdhKm63RGLCutD3OHWKb2nzPEwPZfX3JQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEEDmeEcrRhk36cnD7DhZrmTgnfdzXoOm8ju78d70gzEFhqEbyBo6/f1ZtnmKcJGnOHhVXa
+X-Received: by 2002:a05:6214:5007:b0:6ed:126b:a15e with SMTP id 6a1803df08f44-6eed61da438mr176273006d6.33.1743469771825;
+        Mon, 31 Mar 2025 18:09:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743469771; cv=none;
         d=google.com; s=arc-20240605;
-        b=KNtqoAesBY8jTgvbdQIc5jC/XoD1Ja6buWCGV8NJ79IyQiSMYirYqHfZoGx24k2lAg
-         G0zHd8UkoCSJyG0SAHNoH+f9sEZ/jafCvWZGpdol9lTP0rvDuC7QhkH6JoQMvB0YKt3A
-         /+AQKDYnItMIb5QbJa09nIX+b7ibB3lQDJoVOIMVTrPwUTq7PCBSaHlVysWKVajlsLLf
-         IcunwWi9iMNZrRJ7hVq1lU8zAuA9KyfR7YjWXnG2sTmPZDOhR8cGWNyClGN6pziWDs0u
-         k2ovX5gHf99BxU5SEKxGY7USA5G12Ao5l37HLq66wHmZwVp7nkeEu1vmUQM0VnpaEQ8S
-         8pkQ==
+        b=i9QnG5rUfUqjjggHfb21whkokLvHM0uM7M9u5xz73G7Gpg2dnEGPjaKsuvdseiRWOC
+         pYtBcsXv5gd6Y70S9iubAtHoLYlj22dKxZJ6iOslDHKc3L4udSQcXfSS74vgT3yrIM5Z
+         uFCB8Kn1f4JJXvJz+HeYOqPDbd1RCmnZ++MGv9P69gxq2M/8tZUDDOnpleJqDOVhte8Y
+         Sb7vrgVaDh9kvPJg/NzZYSnJ3ExBD7NitrmRcTk/8xpv8HvdQjvOuXceVxfp1G6ClWB2
+         XuXtQzUbquMh2bq9Jl4+TMenBlZO822VJMyn9w11GCm8jWXpCT7ww/MWB+v1FD/kwN0X
+         OILw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :content-transfer-encoding:references:in-reply-to:date:cc:to:from
          :subject:message-id:dkim-signature;
-        bh=AeXoW4qhjGDr3OZ+osAyoKWodzZ7uNbS3OT0JucGZ7o=;
+        bh=OJM+1iFnYxgpP8U7Ia7G3gSRn07/YIXewjJMWPeUWss=;
         fh=iXfICh/9hUFSJvI/uJNyK9bAVic1IOKG+4dUsuNw2Ng=;
-        b=by8y8UTYSCfQ0Czkyh1fAkcO5zdwdTpTmnOK2qudCiQ4K4p+04CRrOvnLO2TJjnBcu
-         6n8VzReRvT3XvSbkk3SegfDou73L5ejit+a8DO6XVh0wR+G1fBbV4OJdgwpYyrS7okS5
-         Y1w03E/Obr0jxy5cuAomPvQ5QClaHrrdh6b8Dx8iUg4SE2vbTXEtzpo5LHssMFzzxiRA
-         lKuCJK5oKxzUND3QphSSUQBIYhLdkrSSYk0XoKOqgw8WqJD+SQSquoYKQEjtevC3JOHu
-         AiOLsp2f570D3/PZY5dis8wxqXimOp03GbBpS5Lj99Ey7BFVCSR7tkoxrgOFyMQQ9XcS
-         oHIQ==;
+        b=FLZdCCO7fa3ggl0EWz8cpj34kYw4KjY9u+FAaWEakIQcH2OUYnLr2exWNx2eiXQpem
+         cgEbwTgJRPGtvqIslenrKBMhZhowbkAH6JaRNzDepdM1a30hXd8DTpyBsO8isqyDJGU8
+         Ge2rq9rl0dmM1370QzfFqV9jPfSWs8lJJamOw1ceK2umlEMPkMMtcWG9w1GiP/QvbYog
+         0M/ihwj+KxYYaX36JYbE0/6mpNpwfOczKZe9I4nnNYExMKlFWFt4Xw+5QJLblkQ3lz7s
+         Q5uNDIptaHrYR37ilKOQQlY1wuNjUJvSVAG5qGVBRx3uoffwC+eA3Zpfm9wHt3g9rJI7
+         Ylgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=huqzEA9i;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=TIWcdk6T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eec97d006asi77573406d6.410.2025.03.31.18.08.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec97a585fsi78646266d6.329.2025.03.31.18.09.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Mar 2025 18:08:30 -0700 (PDT)
+        Mon, 31 Mar 2025 18:09:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=huqzEA9i;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=TIWcdk6T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzQ6p-0000Fh-DT; Mon, 31 Mar 2025 21:08:09 -0400
+	id 1tzQ84-0000dg-Pc; Mon, 31 Mar 2025 21:09:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tzQ6i-0000F8-IK; Mon, 31 Mar 2025 21:08:01 -0400
+ id 1tzQ7p-0000au-Iv; Mon, 31 Mar 2025 21:09:12 -0400
 Received: from pi.codeconstruct.com.au ([203.29.241.158]
  helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1tzQ6f-0004gT-Vt; Mon, 31 Mar 2025 21:08:00 -0400
+ id 1tzQ7n-0004xq-IM; Mon, 31 Mar 2025 21:09:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1743469666;
- bh=AeXoW4qhjGDr3OZ+osAyoKWodzZ7uNbS3OT0JucGZ7o=;
+ d=codeconstruct.com.au; s=2022a; t=1743469744;
+ bh=OJM+1iFnYxgpP8U7Ia7G3gSRn07/YIXewjJMWPeUWss=;
  h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=huqzEA9i8JcJeY/OFthNJXafGaAwCBEAV/1m3icFnw7b6TrUEqg6lbmsuiqQoILfO
- P3p/1G5C20vfqNsfBdu+mdSYIygVV/NoKaRRUq3rc+8Y/383DAoFH+1VyqFSGXwQQ+
- 9lT5490P20qNb9NvoWnEdaLbfh0vB9cxtod+xsw7+qhXNTtbpcnlM8a0iSTw+s4ocB
- 9cODOu+EuMgHOqjnLhk5XwE85L71Je3QoS+6sluV/AGMB1+rjatMAqYEql1A5T0/7N
- QU/7lRX3ql6oIoiwjpgU9KJj/JZ0l83iTdrlYZbP9GIb6QltnAqnVviEVK+vI5n4nr
- qDsS9Rt9a6hCQ==
+ b=TIWcdk6TVeRl2vBUEgWMrbMC204lDHLjorBwYtJziwgUCXhDf1aMNYfMHvO6X9D1v
+ Br24JMsaMFkkRFrBQLvbsX+RpoDQ3310rEmxm3T5HIc2tJCDUb8Gj8l5iyxpifK0LI
+ QRPT5O4JELTCDm9L/FJ9ppPv+s0iChuTPW74UUFgoYovemKQWu3sDfjYfH9xFNVri6
+ 26Vzv1EESVMFlwVfmwgqcoIvLXOrLz9GbDzgB+sQW7ugUCzqbSl4R5QEcYcjzyrGHO
+ OPBEQgrT5ME+fEtlCyAsVqpsNEp7kLGKvNVdb4B7qBY6iwpepFNUfcz52kjUtWZkED
+ 0vcNdxvnejZVw==
 Received: from [10.194.67.88] (unknown [180.150.112.225])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id BD1707B352;
- Tue,  1 Apr 2025 09:07:44 +0800 (AWST)
-Message-ID: <3720f2efc3778e722adc8add248954b46070139c.camel@codeconstruct.com.au>
-Subject: Re: [PATCH-for-10.0 1/2] hw/misc/aspeed_scu: Set
- MemoryRegionOps::impl::access_size to 32-bit
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id D668F7B352;
+ Tue,  1 Apr 2025 09:09:03 +0800 (AWST)
+Message-ID: <7c8bb3cd3df86236f59615fb6e8b64a0a65bebf7.camel@codeconstruct.com.au>
+Subject: Re: [PATCH-for-10.0 2/2] hw/misc/aspeed_scu: Correct minimum access
+ size for AST2500 / AST2600
 From: Andrew Jeffery <andrew@codeconstruct.com.au>
 To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
  qemu-devel@nongnu.org
@@ -77,10 +77,10 @@ Cc: Steven Lee <steven_lee@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>, 
  =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, qemu-arm@nongnu.org
-Date: Tue, 01 Apr 2025 11:37:43 +1030
-In-Reply-To: <20250331230444.88295-2-philmd@linaro.org>
+Date: Tue, 01 Apr 2025 11:39:03 +1030
+In-Reply-To: <20250331230444.88295-3-philmd@linaro.org>
 References: <20250331230444.88295-1-philmd@linaro.org>
- <20250331230444.88295-2-philmd@linaro.org>
+ <20250331230444.88295-3-philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.46.4-2 
@@ -108,19 +108,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vJ8y0Hz4zy9J
+X-TUID: WVhfGdgT2vOO
 
 On Tue, 2025-04-01 at 01:04 +0200, Philippe Mathieu-Daud=C3=A9 wrote:
-> All MemoryRegionOps::read/write() handlers switch over a 32-bit
-> aligned value, because converted using TO_REG(), which is defined
-> as:
+> From: Joel Stanley <joel@jms.id.au>
 >=20
-> =C2=A0 #define TO_REG(offset) ((offset) >> 2)
+> Guest code was performing a byte load to the SCU MMIO region, leading
+> to the guest code crashing (it should be using proper accessors, but
+> that is not Qemu's bug). Hardware and the documentation[1] both agree
+> that byte loads are okay, so change all of the aspeed SCU devices to
+> accept a minimum access size of 1.
 >=20
-> So all implementations are 32-bit.
-> Set min/max access_size accordingly.
+> [1] See the 'ARM Address Space Mapping' table in the ASPEED docs.
+> This
+> is section 6.1 in the ast2400 and ast2700, and 7.1 in the ast2500 and
+> ast2600 datasheets.
 >=20
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2636
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Reviewed-by: Troy Lee <leetroy@gmail.com>
+> Message-ID: <20241118021820.4928-1-joel@jms.id.au>
+> [PMD: Rebased, only including SCU changes]
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-

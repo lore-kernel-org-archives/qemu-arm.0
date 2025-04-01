@@ -1,182 +1,56 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp2622740njd;
-        Tue, 1 Apr 2025 01:32:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWSsDZLOuu3UxjPCq4nCDQ54KY3Zw9pH/c90iYH49qj3V/vMArLwG94GwEI6a9UwYUj4LvVpkw0BDRiMw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHui0i9dxK8dHLm4QM1y9d+UsxW5yblssYxF64rxxImg+s1k5236rJyVIi6wuDg8etdEvSP
-X-Received: by 2002:a05:622a:1a17:b0:476:af54:5038 with SMTP id d75a77b69052e-477e4b9571emr139643331cf.22.1743496320289;
-        Tue, 01 Apr 2025 01:32:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743496320; cv=none;
-        d=google.com; s=arc-20240605;
-        b=VeXNNshjVv4S/an7SLKPBrNjvzPLJluR+aEJLE5Bm6ar3khjIxPYJHSMictj774cZa
-         KhDc/qsa0CYBaP83X6lQtAfurjJza9dUbEPv1r/pbioD/Nz7/78b6xPLsvPGA+NF8k6l
-         MJlUgkjgJI2xvoaBCoAeQ0AsrMeOI59B3mPNHVkR+58cvzmkcv5QCqiRtIXRrIfj2Q8q
-         IR3rK6DnqslhapSUhef3WGiOXUPMVNqMBi3V+z9gN5zuSW1nPUtcJLXR6c+Rsp7k09oh
-         PoGiy12H7G6u/v/zK3bz6LCCYu+0H7phoFBfdHr5u+OApfWL/lJ/rPMxPOiRxicx8F32
-         Kseg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NXJzMkbHeNL7hvhp7UIYqNGKaUhKAfMEt68Iz/x8HeI=;
-        fh=+OuEK8TlL9aoUgIM8AqEMXXYvfUgfQYbASOjPxlHl08=;
-        b=J4HVS/T8vqcnrt5shORCJf0qkugsesptOQ/3IaujCNezc1KAWo2asFKwelGQFbFkNf
-         snHDnWVP5ycAa9QlhiU5S1P70ODWY/tEIySaCEkp35lVL16zHPr2kQBfOGa7e/q9XQ+X
-         0sBpGyQIrvmhRzJwuKYw8xj8zf7qDkrbFV1qXhTJYtMRH9YOjm5p7X+Qs/pdokepiLgL
-         emqGWoTg2ImcSGQOsYFvVfnTCUuAN+xNBK9OtnUgr4nv7GCS+ZuTbfpb+tYVB65ucM21
-         7fmXamveEWuYFefZdiOoQDmol4YEL89OhlXH4KhtPqNUfcRf24g3gDFMbbJHUP+z2xqz
-         T3Ow==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Yy7DunYr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47782a1c273si81301081cf.81.2025.04.01.01.32.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Apr 2025 01:32:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Yy7DunYr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tzX1t-0000dW-M7; Tue, 01 Apr 2025 04:31:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangckid@gmail.com>)
- id 1tzX1j-0000aS-Mp; Tue, 01 Apr 2025 04:31:20 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhangckid@gmail.com>)
- id 1tzX1f-0000wU-1F; Tue, 01 Apr 2025 04:31:17 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-2279915e06eso107945485ad.1; 
- Tue, 01 Apr 2025 01:31:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1743496268; x=1744101068; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=NXJzMkbHeNL7hvhp7UIYqNGKaUhKAfMEt68Iz/x8HeI=;
- b=Yy7DunYrSD0aeQ/7az0LUS89ZHnyW2QVV9tkqJ/9ybZ+fumTxad0Kp1SiJmqozhQ2+
- IV/RLkDJZB9MgJK2/sc1uK1QbBI6eXFl5bQv2CmP6J4ra62NrEuLmHaRiON+Mtjpq+3S
- cCxdgSVZRG4lPSTttFsmopNtWyPy6zSicI7qM2pDvzwgDfMlWuFvWrK9fe9jTspBWDk4
- cuYGRBdJhWlSnwIDXe5bSXu2J2FCRVxqxkyybqtVnap0H3OgWnrBcUKA7YYHSGPzfGv6
- yltRp6yqVmY7gTcDZPMSrvkKglf6wD9AEaAhvK48EapXUHzp8m7PdhOXcYZpOwGy6KdL
- zI2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743496268; x=1744101068;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=NXJzMkbHeNL7hvhp7UIYqNGKaUhKAfMEt68Iz/x8HeI=;
- b=p17oSCmwp1aubZdOoy30PdBcRaA/HDysZ7HlqBupjtvf2DGXyUkvQGdBVgazX8uiv8
- GC34PkKmR26IpufxvL6Qkno6ZZpK07TJsdDKsLs9BgOa5bo/OTOaZ/f3unIfRgx2sL+d
- qUn8ATzdVFZmqyj9SSrtfXLqWSCYJ+TfsTD1DymKKtz71sSKsXWB6GFThgAJji71ibx6
- k2CPPUxcqgKP779yDTj0NjY87kukwZSs4LqW7sD+v0B0UxiRqx72IpnhJkzjsYV75Bsi
- ib/ugqBbuFtLTKIYBidO4tuo0+C+mHAkKnua6P1O95Mbep8OLEktY+j6+9UEStDOROMI
- VjeA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUbvYNECsrQ4KCvzUONf1+0wMsWMpALoo+pFaaWbA2e9aFZGRQER2khUBEUQbDb85GUH6HYdFyM+Q==@nongnu.org,
- AJvYcCW3rEuCYm3KeqC2TQRkwXvNaj+4xB75yTqpOV/U+0Q4ybsiuDZ6WDlJ/yTgkSF03imkwg82Ssy/Kl/EBEpV@nongnu.org
-X-Gm-Message-State: AOJu0Yz7G4hbiOX8iVbkIhRP10BSoxzNMWq+HzgWJmAivZFlTvtpCZ76
- 4UEVIxhP7K7zMMtlQDPdMU93ah1r+GrxCGE2sN/8jD7qJ/KUE4HLIcYXsQh9680=
-X-Gm-Gg: ASbGnctuKvqqNDcz20iHE5sFBlrDILGHYbY7qRoTvRccCHzOSp8yu1JY07P5ayA7FUS
- BchL5uhkRrxqY7aT4Z21+sLSuDIssPiOyEUoMwGpb4xMxSKRJ1sF1H1x12sZRqd7nyitTtgWZ6v
- GH1AemikLvgvB1r2lHejZTR21tTqUKff+FjIM3w/ZJDWnaKmUqLbzwOnyNK0woa5sBAdDIFGdpj
- FBUDlSm8zoK3NOL3ehH4f9m3Iq43euuWGQhao0Mbc09+baeJ2KwQgPcvkJ74P2sRALvkEaEdepv
- pJCbA5ETj+fh3T09rBSoj/C659iFkOjFtSvEyuSbbSvL+w==
-X-Received: by 2002:a05:6a00:4f8d:b0:736:476b:fccf with SMTP id
- d2e1a72fcca58-739804397f9mr19522271b3a.18.1743496268177; 
- Tue, 01 Apr 2025 01:31:08 -0700 (PDT)
-Received: from localhost.localdomain ([129.227.63.233])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7397106aea5sm8574597b3a.100.2025.04.01.01.31.06
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 01 Apr 2025 01:31:07 -0700 (PDT)
-From: Zhang Chen <zhangckid@gmail.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Zhang Chen <zhangckid@gmail.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] docs/arm: Add apple HVF host for supported guest CPU type
-Date: Tue,  1 Apr 2025 16:31:02 +0800
-Message-ID: <20250401083102.72845-1-zhangckid@gmail.com>
-X-Mailer: git-send-email 2.49.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d8fba4c29sm157175245e9.5.2025.04.01.03.29.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Apr 2025 03:29:59 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 3FEAC5F8B9;
+	Tue,  1 Apr 2025 11:29:58 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Zhang Chen <zhangckid@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-trivial@nongnu.org
+Subject: Re: [PATCH] docs/arm: Add apple HVF host for supported guest CPU type
+In-Reply-To: <20250401083102.72845-1-zhangckid@gmail.com> (Zhang Chen's
+	message of "Tue, 1 Apr 2025 16:31:02 +0800")
+References: <20250401083102.72845-1-zhangckid@gmail.com>
+User-Agent: mu4e 1.12.9; emacs 30.1
+Date: Tue, 01 Apr 2025 11:29:58 +0100
+Message-ID: <87zfh0npi1.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=zhangckid@gmail.com; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zt9n3VfKjLs/
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: b6y/P8PmzllW
 
-In my test, latest QEMU already support Apple HVF for -cpu host and max.
+Zhang Chen <zhangckid@gmail.com> writes:
 
-From guest VM lscpu:
+> In my test, latest QEMU already support Apple HVF for -cpu host and max.
+>
+> From guest VM lscpu:
+>
+> Architecture:             aarch64
+>   CPU op-mode(s):         64-bit
+>   Byte Order:             Little Endian
+> CPU(s):                   11
+>   On-line CPU(s) list:    0-10
+> Vendor ID:                Apple
+>   Model name:             -
+>     Model:                0
+>     Thread(s) per core:   1
+>     Core(s) per socket:   11
+>     Socket(s):            1
+>     Stepping:             0x0
+>     BogoMIPS:             48.00
+>     Flags:                fp asimd evtstrm aes pmull sha1 sha2 crc32 atom=
+ics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 =
+asim
+>                           dfhm dit uscat ilrcpc flagm ssbs sb paca pacg d=
+cpodp flagm2 frint
+>
+> Signed-off-by: Zhang Chen <zhangckid@gmail.com>
 
-Architecture:             aarch64
-  CPU op-mode(s):         64-bit
-  Byte Order:             Little Endian
-CPU(s):                   11
-  On-line CPU(s) list:    0-10
-Vendor ID:                Apple
-  Model name:             -
-    Model:                0
-    Thread(s) per core:   1
-    Core(s) per socket:   11
-    Socket(s):            1
-    Stepping:             0x0
-    BogoMIPS:             48.00
-    Flags:                fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asim
-                          dfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp flagm2 frint
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Signed-off-by: Zhang Chen <zhangckid@gmail.com>
----
- docs/system/arm/virt.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index adf446c0a2..6a719b9586 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -70,11 +70,11 @@ Supported guest CPU types:
- - ``cortex-a76`` (64-bit)
- - ``cortex-a710`` (64-bit)
- - ``a64fx`` (64-bit)
--- ``host`` (with KVM only)
-+- ``host`` (with KVM and HVF only)
- - ``neoverse-n1`` (64-bit)
- - ``neoverse-v1`` (64-bit)
- - ``neoverse-n2`` (64-bit)
--- ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
-+- ``max`` (same as ``host`` for KVM and HVF; best possible emulation with TCG)
- 
- Note that the default is ``cortex-a15``, so for an AArch64 guest you must
- specify a CPU type.
--- 
-2.49.0
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

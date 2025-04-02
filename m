@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3315101njd;
-        Wed, 2 Apr 2025 02:07:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVy7SbN46rYN2YKzcJXH4YqIiETM889PTBVePZKg4u5q+OZ9TlSSfZWy1/gfbx8MwuOJpfCEtFYClGejQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFcd3ros2/Z8GBB+b4TyDilUvrst7d1ffGkgBxpQtQ2qWVb217axC/Q5vblAcyTfJQmDYms
-X-Received: by 2002:a05:620a:240d:b0:7c5:4de8:bf65 with SMTP id af79cd13be357-7c690880c87mr2561880285a.36.1743584826640;
-        Wed, 02 Apr 2025 02:07:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743584826; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3317727njd;
+        Wed, 2 Apr 2025 02:13:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXUVRaQpp8Wx66UAg4ymllCInlHUVLCMZZFd9fRX7YRFTvcwYE1TvDgTXiYiR/G8pd+Sbjh7H26DrdbvQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvb8kn91hDltYvHQmUp26nq0ln8JcF30+HXontb1O0HJkBJRGtNNDxe0q95JRRCIcnYEOB
+X-Received: by 2002:a05:620a:4082:b0:7c5:5d9b:b626 with SMTP id af79cd13be357-7c7664d722cmr365294485a.36.1743585187824;
+        Wed, 02 Apr 2025 02:13:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743585187; cv=none;
         d=google.com; s=arc-20240605;
-        b=CMWAm9mOlhW2sEyTezOZ9CAytKET9aU1RKbVVCp/TmkBOpMoeAlDakkyh+DhPFF5Qc
-         my+iLTKcJHu9Yv/lYgzWY3d/4ghstDliC7Jmwi2SaOqQeq2oDUKjzxdStvm1egYExw+t
-         03pIXU1JUZG9TpecJhimk3ZcyfPW+rxcREHfMlITCoNfSTW3uqMhWb6rRNUHxPTMRlOP
-         wz9CHvtmbztXX6QTDCW/G59xbSUZ0p1RxeZVUCrQlzub9s0Mg56UKdK4p3WYVKofWv72
-         Zkfq+eh56gMbU36pTQYmSdMuvgzJwaTneAlOSTF11t+m/4AJpiKTY3PuuaqhIAYdurzQ
-         AoLA==
+        b=icDrwf1PxzQNRgwsWbHJzQMzFdpCv/dh1FKGsTGAo9Sz0G40y9IRNnQVDTFGohOar7
+         eNBV8aNsXkQRL50eFmD2EvFZE+h98P3tSCBedwwnVaAGPSWzniaxnJ2GlgaayIdLm69r
+         H07lB1qDfbZS29En1N6dWfSO5kYDsySeUxU9QowBWrFMmI1pwIQ+s59peTAyVcbbdAy3
+         bAzfvtwOXzVBISdxxUER7ZtEtoI0LzUCLUcucooJjICrrygL5myJib42nSe5HdGvG+bt
+         br215VRDMDQY2AA+sFIof3P5jSAiOXYgh2JEuJ/VSk55U1F8jFtpuCAbxrhKibirOKJL
+         LhZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=YcyW7Fmzn2HEs/RpuX294bnG/OreaLKp2w2ykAm8nYc=;
+        bh=ebYuZGwowVaTNFW7APS2Ntenz4+KXguFlkDdENVcXeM=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=D0hAmUOaqyAN7cN+Jm9eogJH/G0Ie/6rNQ9Cx5F0aJ4wxovyNMA2/gaZ97bdQIScsl
-         iPlQgARdvKJsBR0wm6WGURiOqoKtmCW2AuulKUDjD5pZLOPsQWSYyo0Z9ughOdOLZLCA
-         Xlsb1N0fnU/++Szi5pQ/tq/o1X8T3Pnkn+8I3Awk2ceUKg8UyXIjyLym9s/rI4tGBBAV
-         TclFzcGvWtcEQp3FlASag/Zi5Yx4Kqrd6Vdn9XK/kVpdLnyHuySbfUNv/JDDaz/UwSed
-         CoBcxB3LTtV6uV02UhMfBSImgPpK6gYmn1ztv8dNgUIEJ9cjhJq0fDQmII5jWMoL/uE3
-         uHVg==;
+        b=Bcn0nWGgHs9RjIiZufJ3RNiqki2wRnuSyxQeJkMqV+FGgzRpaAJFQOJeioAKc8Bi9G
+         PUxmlvFIV35sbJy0yK85qps5WjqVNeqDqiEH8EL3ckpSgGiTOYD8DRnGvst/xiVIAQw1
+         5FEv+b7W3/C2lrqIOqhumxalVSGSOh53qKNxZJECoBsQl75tskkfctbK0Vv9ervcnk/J
+         2UUx6XZFrZXxHNigvzUG51ktoL86bLKSKbalBdv49R76kxrUG71vUH4UcQeU5+NJKBDU
+         rzmwFalR3m4SvU2tcj661/D2uua0IZt5/kSH32dUOz7GMJWp5qSW1hTYU+H65seK7FLv
+         Jxow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c5f7681dbbsi1041020085a.40.2025.04.02.02.07.06
+        by mx.google.com with ESMTPS id af79cd13be357-7c5f77e3dd3si1054100085a.649.2025.04.02.02.13.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Apr 2025 02:07:06 -0700 (PDT)
+        Wed, 02 Apr 2025 02:13:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzu3d-00089D-Vj; Wed, 02 Apr 2025 05:06:50 -0400
+	id 1tzu9O-0002KM-G6; Wed, 02 Apr 2025 05:12:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzu3c-00087q-9N; Wed, 02 Apr 2025 05:06:48 -0400
+ id 1tzu9M-0002Jn-3j; Wed, 02 Apr 2025 05:12:44 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzu3a-00066c-9n; Wed, 02 Apr 2025 05:06:48 -0400
+ id 1tzu9J-0000P8-HS; Wed, 02 Apr 2025 05:12:43 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSJrz1bpkz4x21;
- Wed,  2 Apr 2025 20:06:43 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSJzm1dcRz4x3p;
+ Wed,  2 Apr 2025 20:12:36 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSJrv0ZBjz4wby;
- Wed,  2 Apr 2025 20:06:38 +1100 (AEDT)
-Message-ID: <b1ad2730-9b56-4051-8b58-dc977e124f72@kaod.org>
-Date: Wed, 2 Apr 2025 11:06:36 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSJzh1mcSz4wbx;
+ Wed,  2 Apr 2025 20:12:31 +1100 (AEDT)
+Message-ID: <ba9c579b-4530-41cf-a1b0-b2b31d3dddc5@kaod.org>
+Date: Wed, 2 Apr 2025 11:12:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 19/22] test/qtest/hace: Support 64-bit source and
- digest addresses for AST2700
+Subject: Re: [PATCH v1 20/22] test/qtest/hace: Support to test upper 32 bits
+ of digest and source addresses
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-20-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-21-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-20-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-21-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -144,12 +144,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WuDJnLfSpNQl
+X-TUID: a70IxlVdZq7t
 
 On 3/21/25 10:26, Jamin Lin wrote:
-> Added "HACE_HASH_SRC_HI" and "HACE_HASH_DIGEST_HI", "HACE_HASH_KEY_BUFF_HI"
-> registers to store upper 32 bits.
-> Updated "write_regs" to handle 64-bit source and digest addresses.
+> Added "src_hi" and "dest_hi" fields to "AspeedMasks" for 64-bit addresses test.
+> Updated "aspeed_test_addresses" to validate "HACE_HASH_SRC_HI" and
+> "HACE_HASH_DIGEST_HI".
+> Ensured correct masking of 64-bit addresses by checking both lower and upper
+> 32-bit registers.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -162,36 +164,70 @@ C.
 
 
 > ---
->   tests/qtest/aspeed-hace-utils.h | 3 +++
->   tests/qtest/aspeed-hace-utils.c | 2 ++
->   2 files changed, 5 insertions(+)
+>   tests/qtest/aspeed-hace-utils.h |  2 ++
+>   tests/qtest/aspeed-hace-utils.c | 15 ++++++++++++++-
+>   2 files changed, 16 insertions(+), 1 deletion(-)
 > 
 > diff --git a/tests/qtest/aspeed-hace-utils.h b/tests/qtest/aspeed-hace-utils.h
-> index 0382570fa2..d8684d3f83 100644
+> index d8684d3f83..de8055a1db 100644
 > --- a/tests/qtest/aspeed-hace-utils.h
 > +++ b/tests/qtest/aspeed-hace-utils.h
-> @@ -36,6 +36,9 @@
->   #define HACE_HASH_KEY_BUFF       0x28
->   #define HACE_HASH_DATA_LEN       0x2c
->   #define HACE_HASH_CMD            0x30
-> +#define HACE_HASH_SRC_HI         0x90
-> +#define HACE_HASH_DIGEST_HI      0x94
-> +#define HACE_HASH_KEY_BUFF_HI    0x98
+> @@ -51,6 +51,8 @@ struct AspeedMasks {
+>       uint32_t src;
+>       uint32_t dest;
+>       uint32_t len;
+> +    uint32_t src_hi;
+> +    uint32_t dest_hi;
+>   };
 >   
->   /* Scatter-Gather Hash */
->   #define SG_LIST_LEN_LAST         BIT(31)
+>   void aspeed_test_md5(const char *machine, const uint32_t base,
 > diff --git a/tests/qtest/aspeed-hace-utils.c b/tests/qtest/aspeed-hace-utils.c
-> index f39bb8ea48..8d9c464f72 100644
+> index 8d9c464f72..fc209353f3 100644
 > --- a/tests/qtest/aspeed-hace-utils.c
 > +++ b/tests/qtest/aspeed-hace-utils.c
-> @@ -157,7 +157,9 @@ static void write_regs(QTestState *s, uint32_t base, uint64_t src,
->                          uint32_t length, uint64_t out, uint32_t method)
->   {
->           qtest_writel(s, base + HACE_HASH_SRC, extract64(src, 0, 32));
-> +        qtest_writel(s, base + HACE_HASH_SRC_HI, extract64(src, 32, 32));
->           qtest_writel(s, base + HACE_HASH_DIGEST, extract64(out, 0, 32));
-> +        qtest_writel(s, base + HACE_HASH_DIGEST_HI, extract64(out, 32, 32));
->           qtest_writel(s, base + HACE_HASH_DATA_LEN, length);
->           qtest_writel(s, base + HACE_HASH_CMD, HACE_SHA_BE_EN | method);
->   }
+> @@ -588,30 +588,43 @@ void aspeed_test_addresses(const char *machine, const uint32_t base,
+>        */
+>       g_assert_cmphex(qtest_readl(s, base + HACE_CMD), ==, 0);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC), ==, 0);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC_HI), ==, 0);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==, 0);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==, 0);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==, 0);
+>   
+> -
+>       /* Check that the address masking is correct */
+>       qtest_writel(s, base + HACE_HASH_SRC, 0xffffffff);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC), ==, expected->src);
+>   
+> +    qtest_writel(s, base + HACE_HASH_SRC_HI, 0xffffffff);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC_HI),
+> +                    ==, expected->src_hi);
+> +
+>       qtest_writel(s, base + HACE_HASH_DIGEST, 0xffffffff);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==,
+>                       expected->dest);
+>   
+> +    qtest_writel(s, base + HACE_HASH_DIGEST_HI, 0xffffffff);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==,
+> +                    expected->dest_hi);
+> +
+>       qtest_writel(s, base + HACE_HASH_DATA_LEN, 0xffffffff);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==,
+>                       expected->len);
+>   
+>       /* Reset to zero */
+>       qtest_writel(s, base + HACE_HASH_SRC, 0);
+> +    qtest_writel(s, base + HACE_HASH_SRC_HI, 0);
+>       qtest_writel(s, base + HACE_HASH_DIGEST, 0);
+> +    qtest_writel(s, base + HACE_HASH_DIGEST_HI, 0);
+>       qtest_writel(s, base + HACE_HASH_DATA_LEN, 0);
+>   
+>       /* Check that all bits are now zero */
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC), ==, 0);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC_HI), ==, 0);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==, 0);
+> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==, 0);
+>       g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==, 0);
+>   
+>       qtest_quit(s);
 

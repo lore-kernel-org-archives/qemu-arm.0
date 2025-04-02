@@ -1,103 +1,121 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3462133njd;
-        Wed, 2 Apr 2025 06:53:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXfqMYvbrsP79dL8QjN6IXegbeAPy+DKQeIdLmHWkgvABdGwXcZO+ZoXcsdSPXgK6Bt8ot6Rs2n203sNg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFlT5n6qisyV6U5aHgqQQYQwQQObhyL58dA4vsC06GvHvjZCm8ol6jo2flieoti8kZk1GDL
-X-Received: by 2002:a05:622a:1354:b0:476:6625:eed4 with SMTP id d75a77b69052e-477ed67a5femr231980611cf.38.1743601989648;
-        Wed, 02 Apr 2025 06:53:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743601989; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3462903njd;
+        Wed, 2 Apr 2025 06:54:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXyHKnP37OOmvgXUjOhip9VoiPXX7jvIIYRYK7AqX6M6Az/gj/WSPW7tBnHsSR+pmOHwOgXy703V4d0ig==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHT21ZBEGVml6sKaeRfzORqEyjQKQACf+Lb/gzMpBtewM6HIuTPJKHXc7tHLNDdun5zr98
+X-Received: by 2002:a05:6214:da9:b0:6e1:715f:cdf5 with SMTP id 6a1803df08f44-6ef04e84a6fmr32786316d6.15.1743602073359;
+        Wed, 02 Apr 2025 06:54:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743602073; cv=none;
         d=google.com; s=arc-20240605;
-        b=iXH838gU129CAEuJQQZlE9W7JO0yrKCPve2eh/j1B74PjPZG/oj2zgO+TPhB5KIAmC
-         aSM/ulmty2AsouQ0FR9DYjBq1NXGLUD0cXFepAaS9954sSn6MCHU+zZR8s96X7q+ypFw
-         dY5dMhR8CRkr7E23lzi0pK3yXDt+Py76v879ogR/m8O18jNgRTQDqW3eIdxPQ6S3OyBs
-         FscjS53wTbX7E031dKU8gxXslQ9cwngZwvKCVp3T7zFql11qcZcpuYEWkPHGgci7IDt0
-         uJFmdWylcGumt9E/juzu2fXp+gRLzyTiMdMeurRzOfD/mhnm2nPnaqSei/UfcKPp7iUi
-         x3fg==
+        b=VdrS7L7bvYi3DVDNBi0xahshYxHei72f/AKiAdyLqNzJrgy1+R779DiTTlxPp/P27J
+         VyhPZyV2mlPp+sTC1qOkojBSnVqvqrDjhBrDbw7uve3FVjU6QdHdF28yed/+Kw0qbhRK
+         aUlQLIEl2yNWvy2vvMTlY48SVBcsjmgmZWLcUS0+lEIXIt+WXpehW0EOQ5HTRvnGBzgQ
+         9/vtv+eLiqPC0YbrFp+ohmKsRqChNJov+XeH9HaT1Hg56a2lbGD0mwvljui2bQRoudeQ
+         gOMJRHA8BfMRJE/8GTU8NADX5el0leRwvetqVKuI59E+eCfpi4BWaeAY/NtcdeEw+8wm
+         ShFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ZlWkA8Hnp4VhLorzaE2Emb2h6bKTBaRmXpXEi5waIDw=;
-        fh=5y3keCLtsD5SnVtO9H4HEGBM2WO3bexKZtwkNvJJEt8=;
-        b=PFnfOzFyzYvh1EVn+V0h7QSG1G/tT2T62E2h/kX8/kNc4ClCbl8SnKZeXD3K/wdfhA
-         lW1XvzxMA7HzM16e+9Xbc0wSoIJ/8DeKIN7ZoFdnhXvwj4w94BRoPA5jgvMkTfW/imHJ
-         30W9KpUeoHZ/tQGDClJaBlxUzppG4jPeuW8RZU8WBm+e9UoaZSQTC+mez1jMfzvaCYvC
-         m3o6Qu6ems1CNY9IVyVLn0HXKcLcnDNIMX/2ajrPueF4EXjJCWWTeziM16srbS3WwdkB
-         YN4nCA/w7MWTl+Awm+2NG7dRSjvECzxVycgnxmMZSNjj2TyEI6k1eT2LtpZn0uhy4Anj
-         Mf/g==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=G9PZV4WZkVFc5r3WtXw+MuqZv9ug6Jw0HtjL9BKEMkQ=;
+        fh=gfDFskAIGpy0PZ+qJIgLediYbeLXmTeIxqjSyjA+cBA=;
+        b=Ah7gP+suRnxQutFVM29Qhd4q224p2R45nxT0eCJ0JujTXLc5CH7KNMAU/gyLdswMjw
+         1363SRDW45cnRD72fFEhBuDhVXGbf8HPUjMYw2zuQSxQGV7kpLU9bBbn2F9LbTtZcoes
+         Qg3CebxVhZfOuw/TzSFc4/DGOsyZra5zkY7PdAjcq3udEVHkxxDBQfO/lGdn1eGRIwCn
+         vV3bnZ3HGRaW+4i/fTTXgOLZDK1VngQ3ankoUjgoflmLMo9E0yyn9llGvLqBG6vWvqa2
+         0HN24iZKXpuen7Npg5hYhlvkpqbpBMfX9HmvXMl8vq5XgfZrnPzjmTjROZbHbXrHBjaY
+         EOMQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=oTM0vdXi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FhZTc0nc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47782a47707si105192601cf.142.2025.04.02.06.53.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec97a556dsi111953536d6.344.2025.04.02.06.54.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Apr 2025 06:53:09 -0700 (PDT)
+        Wed, 02 Apr 2025 06:54:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=oTM0vdXi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FhZTc0nc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzyWZ-0000JP-18; Wed, 02 Apr 2025 09:52:59 -0400
+	id 1tzyXy-0002Lw-9J; Wed, 02 Apr 2025 09:54:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1tzyWK-00008b-1k
- for qemu-arm@nongnu.org; Wed, 02 Apr 2025 09:52:50 -0400
-Received: from qs51p00im-qukt01072502.me.com ([17.57.155.15])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1tzyWH-0004cB-N2
- for qemu-arm@nongnu.org; Wed, 02 Apr 2025 09:52:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=ZlWkA8Hnp4VhLorzaE2Emb2h6bKTBaRmXpXEi5waIDw=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=oTM0vdXi6/JsCZ6ixS3I+eY3MvBlZRK+1rtfVk7vZQ6WZF1R5ezUNPVZSQKgi1tpy
- 8j0iPh6nZciehUQzUFDcrLTFpae5FNztxLQmF5y7KVLyWvzEhK5hhJXwG9M/25h7vO
- QLHrp5Lexc+8h7Sh3xfsfLtx6sUqEoeeFb6KefWAwM2wTVRqIZ0Zf7RlytkJ2UxC8F
- TWz06cxy49RD9kW7JNUGCqBGgZmkxIYv5Z1JCtR0nLbqIn2791AvsuscbO5gf3XEBg
- faQ8JCqFrXkgwrvk7E6YlGlKdFbLZAjSwYwldcdClwl9pNiu/x/9SxRHpxg56ZJ1ng
- Q1YFaWy746IVA==
-Received: from localhost.localdomain (qs51p00im-dlb-asmtp-mailmevip.me.com
- [17.57.155.28])
- by qs51p00im-qukt01072502.me.com (Postfix) with ESMTPSA id 8800B6EC037A;
- Wed,  2 Apr 2025 13:52:36 +0000 (UTC)
-From: Mads Ynddal <mads@ynddal.dk>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <m.ynddal@samsung.com>, Daniel Gomez <da.gomez@samsung.com>
-Subject: [PATCH 1/2] hvf: avoid repeatedly setting trap debug for each cpu
-Date: Wed,  2 Apr 2025 15:52:28 +0200
-Message-ID: <20250402135229.28143-2-mads@ynddal.dk>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250402135229.28143-1-mads@ynddal.dk>
-References: <20250402135229.28143-1-mads@ynddal.dk>
+ (Exim 4.90_1) (envelope-from <zhangckid@gmail.com>)
+ id 1tzyXs-0002G6-DP; Wed, 02 Apr 2025 09:54:21 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <zhangckid@gmail.com>)
+ id 1tzyXq-0004uY-Fc; Wed, 02 Apr 2025 09:54:19 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-225df540edcso15695625ad.0; 
+ Wed, 02 Apr 2025 06:54:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1743602055; x=1744206855; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=G9PZV4WZkVFc5r3WtXw+MuqZv9ug6Jw0HtjL9BKEMkQ=;
+ b=FhZTc0ncRG+dEh04a5jtJi73TOohVY4C5S0k/HLagWDRPVF0mBpVNTe2kDP5LoFr/2
+ nSMJrWAaCT/5Rs/qgSssVYuBuD1yfcKbTq6/tXl3mNKaBSJ2n+DoFIvIXLiKiVdz+TOB
+ g2MOjIT3yVruNM8oF4Pe1Rwms31p/puq0U/JqQ5tV/DctX7J64Va4oxRSdn5EDPl+r8m
+ 6hmknU2eh540sdm1lyFkx/zR4ToqJTnWwNbrY4H0gFSSR1Sq91sy9Puv+hc+K92acUUL
+ s5PVd6aNVFPt4PZhT7tDbBsU7gpxmkIcQz1IlhkpatrwytCKiB5E8fMKpCoT2mdzXNXW
+ ohHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1743602055; x=1744206855;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=G9PZV4WZkVFc5r3WtXw+MuqZv9ug6Jw0HtjL9BKEMkQ=;
+ b=eyc5ReVLtLOeiGzpTHCzj6HVoMifwAreYuTPoK6RepAn2PQ0Poi3o4DC8V7/E7jmnV
+ OIWp/kFuq3IOo9vR29H/lxFoE6BVCt2ohJSPFMvEw9RCEQfxLYSXKIKx4mJwPeSZGF+/
+ Tv3Pl+p27IgnPoXMv/+aa06/yYWs7K3LP/7UHAHWNhGm7/7QirwEBS03VB9s1G2b2IoI
+ 4pEB8v/LCrLU9MdbuWgCpnzq8yrMQB95VCYtMI6ZX+625BihkQlhOcIPg9CaS/zjmQAt
+ 8ar+Jcv0bTKkQ+4cg3IJOaLqEQQZ89lQ6Ff2uC7nmoXBPN4k1JNR8ferJPdP2PzD3YLC
+ hdaA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX3XvvpEEOpy0RyIh0f8LjsjVgS1k7SEKCkimZkCF0+ZQ+RmFJ3GGOfS3vPIcauVpSbhPsbbyF4zg==@nongnu.org
+X-Gm-Message-State: AOJu0YxZwmaWCiwwvncsCnGYrXe3dc0qMXjZtoF1IIW5A8dnjrLPMR/y
+ mFWKedJj1Zu4w5AicW1ymxlF66zCDHTKCeXiT32qZALOSgcv9BO9Vy6inxC6LQM=
+X-Gm-Gg: ASbGncsrsXyQMzywZBm2qbg30TYyB3PgGD3theU9DiA2TGVxgJ5utVA/M7UU8V8VwBM
+ v4KmXaFysYD2dK3K4uXarvJoqkXP8hOVelQL4knkJ+VvKaMpcWRK4GWk4nBWrdCgzOwEcy1o7Y0
+ Vi6kxPDtTFbPZQLhVCPR3pKJTHU+6J47nInwFErOtt8HecSG9efvnrZCEsRw8TmGtJYybW7q1ic
+ 0q+78KNmY/0qZGJ4yClEbrCIceQ+1soF5XTzDB79QJ9dSNyF86IhU5QCgUJnpA0yfSjxadKA/0G
+ WoQ1ZPqRkW26bN2iqBcnv1jhUunQU+C1bt4X2xC0dPPN3w==
+X-Received: by 2002:a17:902:d4c9:b0:221:1356:10c5 with SMTP id
+ d9443c01a7336-2296def2cc3mr26378025ad.9.1743602055173; 
+ Wed, 02 Apr 2025 06:54:15 -0700 (PDT)
+Received: from localhost.localdomain ([129.227.63.233])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2291eedcc5csm108439025ad.66.2025.04.02.06.54.13
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 02 Apr 2025 06:54:14 -0700 (PDT)
+From: Zhang Chen <zhangckid@gmail.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Zhang Chen <zhangckid@gmail.com>
+Subject: [PATCH] hw/arm/virt.c: Fix wrong default cpu type in AARCH64
+Date: Wed,  2 Apr 2025 21:54:02 +0800
+Message-ID: <20250402135402.14526-1-zhangckid@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: xM6SEoQOSrlsW6vloog1goXbFNz01ly8
-X-Proofpoint-ORIG-GUID: xM6SEoQOSrlsW6vloog1goXbFNz01ly8
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-02_05,2025-04-02_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=619
- phishscore=0 mlxscore=0
- bulkscore=0 spamscore=0 suspectscore=0 adultscore=0 malwarescore=0
- clxscore=1030 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2504020088
-Received-SPF: pass client-ip=17.57.155.15; envelope-from=mads@ynddal.dk;
- helo=qs51p00im-qukt01072502.me.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=zhangckid@gmail.com; helo=mail-pl1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,74 +130,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FOCFYqJufcZx
+X-TUID: 8+nYlRiHC57H
 
-From: Mads Ynddal <m.ynddal@samsung.com>
+Because of the CONFIG_TCG auto enabled, the cpu type "cortex-a15"
+is mistakenly set to the default AARCH64 target.
 
-hvf_arch_set_traps is already called from a context of a specific
-CPUState, so we don't need to do a nested CPU_FOREACH.
-
-It also results in an error from hv_vcpu_set_sys_reg, as it may only be
-called from the thread owning the vCPU.
-
-Tested-by: Daniel Gomez <da.gomez@samsung.com>
-Signed-off-by: Mads Ynddal <m.ynddal@samsung.com>
+Signed-off-by: Zhang Chen <zhangckid@gmail.com>
 ---
- target/arm/hvf/hvf.c | 27 +++++++++++----------------
- 1 file changed, 11 insertions(+), 16 deletions(-)
+ hw/arm/virt.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 2439af63a0..48e4b12725 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2277,28 +2277,23 @@ static inline bool hvf_arm_hw_debug_active(CPUState *cpu)
-     return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
- }
- 
--static void hvf_arch_set_traps(void)
-+static void hvf_arch_set_traps(CPUState *cpu)
- {
--    CPUState *cpu;
-     bool should_enable_traps = false;
-     hv_return_t r = HV_SUCCESS;
- 
-     /* Check whether guest debugging is enabled for at least one vCPU; if it
-      * is, enable exiting the guest on all vCPUs */
--    CPU_FOREACH(cpu) {
--        should_enable_traps |= cpu->accel->guest_debug_enabled;
--    }
--    CPU_FOREACH(cpu) {
--        /* Set whether debug exceptions exit the guest */
--        r = hv_vcpu_set_trap_debug_exceptions(cpu->accel->fd,
--                                              should_enable_traps);
--        assert_hvf_ok(r);
-+    should_enable_traps |= cpu->accel->guest_debug_enabled;
-+    /* Set whether debug exceptions exit the guest */
-+    r = hv_vcpu_set_trap_debug_exceptions(cpu->accel->fd,
-+                                            should_enable_traps);
-+    assert_hvf_ok(r);
- 
--        /* Set whether accesses to debug registers exit the guest */
--        r = hv_vcpu_set_trap_debug_reg_accesses(cpu->accel->fd,
--                                                should_enable_traps);
--        assert_hvf_ok(r);
--    }
-+    /* Set whether accesses to debug registers exit the guest */
-+    r = hv_vcpu_set_trap_debug_reg_accesses(cpu->accel->fd,
-+                                            should_enable_traps);
-+    assert_hvf_ok(r);
- }
- 
- void hvf_arch_update_guest_debug(CPUState *cpu)
-@@ -2339,7 +2334,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu)
-             deposit64(env->cp15.mdscr_el1, MDSCR_EL1_MDE_SHIFT, 1, 0);
-     }
- 
--    hvf_arch_set_traps();
-+    hvf_arch_set_traps(cpu);
- }
- 
- bool hvf_arch_supports_guest_debug(void)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a96452f17a..63649e9543 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3178,9 +3178,10 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+ #ifdef CONFIG_TCG
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+-#else
++#ifdef TARGET_AARCH64
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("max");
+-#endif
++#endif /* TARGET_AARCH64 */
++#endif /* CONFIG_TCG */
+     mc->valid_cpu_types = valid_cpu_types;
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
 -- 
-2.48.1
+2.49.0
 

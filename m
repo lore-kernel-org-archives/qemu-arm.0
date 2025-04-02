@@ -1,291 +1,147 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3351973njd;
-        Wed, 2 Apr 2025 03:34:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOGp3jeXu3IkKS8q8gDHaupbvyMaGaOJ8uWKY/si2IjBxaDOJL17UIugWpH4inN81D84E1G07jwjwzzw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEl+k8o9Rk2rfATRKZHcBlHF8WjAVf2fK2dwYpQXroHLjzFhs2vSjZh92Trc24NQn/qln4C
-X-Received: by 2002:a05:622a:188c:b0:476:add4:d2bf with SMTP id d75a77b69052e-477e4b8bae0mr219218511cf.22.1743590086208;
-        Wed, 02 Apr 2025 03:34:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743590086; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3452739njd;
+        Wed, 2 Apr 2025 06:36:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgS1oBaeEB+ZOPZJAneHMuj7TqZt6LMBBIFV+MQWO2ea1YkWVVHnhDmC3Y8gX126EBjQIk6O18rlEK2w==@linaro.org
+X-Received: by 2002:a05:600c:1f8b:b0:43c:f332:703a with SMTP id 5b1f17b1804b1-43dbc6fb97fmr180080585e9.31.1743601001521;
+        Wed, 02 Apr 2025 06:36:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743601001; cv=none;
         d=google.com; s=arc-20240605;
-        b=LL1k6gJCFKOTjXuNE39uxCyPVs66i0BT0Vv8+bzy5AgtfLfrHWlLxWzqJUmg3avDwe
-         hplHtXGLsfLn0iwNfZ3g2QpeqF+AmVlA6Ght4j/e4z1FXUZuwB5qIdo7v0O/DyGVF2sO
-         coqwbkpYXb0LOGYzTN69Mq18LaBTLqJAE3Y++igm55sxaMkhw1xRqK5o8uAyRfxM9zeM
-         6RiYoSVXdC87in0G1xBDAyT1LKlf7XCcOCAvXny16zFR9/4oeLCZccphRbJcMJDjVPB3
-         jr/QCh9rzktgerOR+FcctNuVZRtgjIlO8+6/tnHagPsXa02smxNhfMnL5Ug11SzJMqHe
-         pgcw==
+        b=lMjIFrgDy18AYNhwPvzRYth4llddoaUFcn/tlAHMJlD0OE9opnfYcnEb3RZ12sGymn
+         8sZzmwERpIOrABiuI+eOc6rxNKWFhnweBUE4C+LkSqwY3YF/h2raMLy8knGNuEHSPxH1
+         ezYY5ExdpjGKUY99iyqf2/TPexsI3nO8oq6HpnKNvvpPEf0rEI0HKqD9ZUFJAoai+m51
+         dGVTf928C7qnfPY6Z0p6+CY0ge6zReX9XNrnvMz4VLKuTsz0Hr/M4335Pccvz2JYGnrr
+         mYy6HpbnBvcCkUk7f91Nrqt3SvfDQxj32an7Rs9EADO7Xop7kIal1mA0RqRCsS8iS4oD
+         tN7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zjqm5otoX3blaef8ZeheL7iB1TbA1gOguF8Ug2ztT/A=;
-        fh=Rnca5bfpKAL/sVIDMWcONjg6d3t7+FVGs9lcGTPX/wc=;
-        b=RETeX4P0SnA1SB0lqDbAMEIrzzjaQYKUPR6UWofeZm9FKRiw9D1RdKyIce/s9oBp5p
-         P3tPeOk9BD/4oL1//QjFIRvVBc1JsRLh6R7jTRyIzuhrCaa1BBqxOUu9cllIyrglWES0
-         JcfmvTv8lbH1Q2yYVCE6lUM1XyKrreCSlIYW7M3KoKPJwjuWXg1aANW3p6mML/hCazTN
-         //cXQMsoVDGOJYuRsWPqmAc9VlbG8cu/UFpmTp4NRb5qB/zMKqZp2JH8BKfJDI0zBv+6
-         U+AwrbYow0WqzY34lxWzP0PCn7x1s6GFX0AkFCetUuxaVk+HfaCFfrrLIDibqOromlFu
-         9gPg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=lJfVCNOyKlIn5SjHIiikLpbH+IBtLpw1jWMX+o/dVSU=;
+        fh=/lxGOM5nsaiR0/fhfrnEe9ZCgsPFxCf826hcZbtsed8=;
+        b=H6hTp5cL5oge6em/O1lqUkih6HBAZQykmiWYyWYg+vGgS6Sek6PaHMXXuWuAe5YR+s
+         GIS+1oB6ZNhbux+ICjcrfo2PGkXJjrsa0SsW4KOnpCFOz/otl/qA0Gj4Q1W9oYCKR0+d
+         zCja64lyC3WN2YBq69xqadlE1cvINd3h+vHc6jtiQW3/KALUV7aJgqBeqMfy/kPZnCAx
+         3NAhfYPMiBG5DWp4c7N8Xhdbzk+4fkTdKQtaqyrN8Lrqf/EDYXsFvNTfEpfG8kpllQYI
+         cfYtTjZ9OY5r0v0EChtudei+MxLUNusWbh27nZZWjf1YS4xcAv+LC2bYUU1F7E4k/R9O
+         X8cg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YQPDAwrQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RtJKrn5S;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47782a56a5csi104236841cf.177.2025.04.02.03.34.46
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43eae467235sor12509355e9.2.2025.04.02.06.36.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Apr 2025 03:34:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 02 Apr 2025 06:36:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YQPDAwrQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RtJKrn5S;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzvQY-00006Y-NI; Wed, 02 Apr 2025 06:34:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzvQO-00005w-Bi
- for qemu-arm@nongnu.org; Wed, 02 Apr 2025 06:34:24 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tzvQM-0000MD-2b
- for qemu-arm@nongnu.org; Wed, 02 Apr 2025 06:34:24 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3912fdddf8fso420039f8f.1
- for <qemu-arm@nongnu.org>; Wed, 02 Apr 2025 03:34:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1743590060; x=1744194860; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zjqm5otoX3blaef8ZeheL7iB1TbA1gOguF8Ug2ztT/A=;
- b=YQPDAwrQX6FvAkexpJFpXcWqxlBM1IphTQ4Tt7aSKqWNMKZ/2IiizkFteEbwk4cN7G
- Tu3zghSA0nswklt2jLOGTovhGOkLv6ru47eXHYprCkck9nl1HipsKa6HEvkVbH/xjvLk
- wLWNSGUI++avmxlVlgzbFbQOXPncbnz3jQhsyvdZsz3dlvbRVEn4HcQwXW35gAqhYAEM
- UbA/V81qEQZj7BskmhQMc7SaEbv/G0pdDKluTCz2FH+2Pe2eVk0wZMejKffkZ1xDhuGO
- zm78FIqS584fsXWSNXornRoRzA54+aoLD+6l41dw1uLL3QtcGRKTtit3cteXilak97SL
- spnQ==
+        d=linaro.org; s=google; t=1743601001; x=1744205801; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lJfVCNOyKlIn5SjHIiikLpbH+IBtLpw1jWMX+o/dVSU=;
+        b=RtJKrn5S53oa/jvUE1/IGlKPGiB8x0Ps+cbFPRkYbr1nUE29sJilaen3I9jIrQfO6t
+         4af+eMV7dA/ngdfFg6iP0AoGphCZM/+14qUxLo79Ia2ydVqjbc2XZ7GcFaROr10UauL+
+         w8PUgrlJlxOZzIoPvVmgguk0SBj6N/vXlRyYakNXdr+1n2YpsMnPreg3A0K/0/VEq2IC
+         1ANCq1WcWp3QgyhJjQc0NJS64pp84Enu0xDQoz7hC7+Pj0hJdnSoaLXapj4ku/c64tK1
+         4ZAbZnvWj6kjxc7f9MnxzcX+21OYXEd37Uhe8WqZEC63ZAGW2gt571p985FRlelYLlek
+         vxoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743590060; x=1744194860;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zjqm5otoX3blaef8ZeheL7iB1TbA1gOguF8Ug2ztT/A=;
- b=Ngkplcqvgq+hbSuWE/k5MiHGQkkdnmgBC9ARyw2dUTB3gRGhVccun9b4NwLMEEQlfd
- dDZEnyo/vHsup1IkduOFq1kuALVjXclfGEKiFzU8JEe237tWk431qHfaIjr7NtBLLAeY
- iRXY0epHuVuBmZgo9fW9HM9pPYcuCIdWEfS3VE26Kwr/n+fNl11Qu+0nNQc/7gHYOWtx
- jw4zL6Ho/lwT3wanuRLuAHcp8W1ZUnW+zappBQ7uVPOlyzLgyCtylHlx6h75C+0bl12t
- HZAHBc5A/MtrnbWlSfNLak3J+j6NC/DldSvngut2UgUeY1duZSQs8a0SpJZUOj+Zzeaa
- yW2g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXHzUqOq8Qj5Fnz9Tm2t5tLXln1vNGSC/6yLClriISVhiDbZEheSmbacrbPbklh7lycpv02S4JlVg==@nongnu.org
-X-Gm-Message-State: AOJu0YzhIkxqCYl6AhYlIjkfQrSThlz1hiW9zHyRGeQQ90nd/H/OVG8u
- hrNx8iIBJPpawOTl6ZUZoFYtqZK3q0DFEbNMGVvtBHczWG54XCWx1wbkSSqFHfs=
-X-Gm-Gg: ASbGnctO6RvWzvK5RHRso5pc0l/DFSfJvTFT/aCJMQY8Zq3fXJVEGcwF86GP33jzzxz
- 8J+DBDMOAZEYlxd1c5U+ihzZY9xgmekFoAvaG9FdqEmk6U+Ec44HBZN02vLciZSpr8sCPdsyql0
- ODxSpl1nwzoKNkpQKEwGaTwxv/9bJrwKog53RcCK66VIfybzahxdVDNPKZxMkz6X9kj6xugM2T4
- Gez06LOK4hkrlvysSI1+N0g5EVKnCtAhVR8auG2zCgRDicz6CJyXJfirU9asP8CqzKLZvFDCRmC
- jocFjUoNE44SuV2r7ng8czXRxdpePRCVkjrhL4zhh6gtoZXf8quQl/izyug8THaBKeIwIisMK7v
- OoIvPljJfUFsf
-X-Received: by 2002:a05:6000:40d9:b0:39c:cc7:3c93 with SMTP id
- ffacd0b85a97d-39c2a67875emr1362429f8f.18.1743590060390; 
- Wed, 02 Apr 2025 03:34:20 -0700 (PDT)
-Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39c0b663860sm16765603f8f.39.2025.04.02.03.34.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Apr 2025 03:34:19 -0700 (PDT)
-Message-ID: <b34b6ab3-ac42-4d94-a30d-0d8ebed960f5@linaro.org>
-Date: Wed, 2 Apr 2025 12:34:19 +0200
+        d=1e100.net; s=20230601; t=1743601001; x=1744205801;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lJfVCNOyKlIn5SjHIiikLpbH+IBtLpw1jWMX+o/dVSU=;
+        b=UhaitE2lvnM3ObHSTymneUW7brdVUr/LSXU4/y1yPKDTcPEGToPLpFTNPVaOJfFbSW
+         Vv1FVZ83Q9Up4zfDOtsRXpblJ92Gbp57rmzP/DJNNWrV1zsxbrEM2hxSVKWygj8rvOYE
+         lyBdYGMdZ9ruBdTQ+5d2YU+Tho5LfBy45bRH2HJlJpJw759F2P/J01v1poClEZ6GStsx
+         vYR9J5LgoGTlZaKpd/s2PhLYO7SEbFj3FcR0An1iahYTO4oOXwcYLRqt+uikLrD2k7a8
+         DIrGhxUUL4YyjcZ3ebJLcaAr8ExVNmwf6n9Dhgr6G3du/0NC22tcPKRXjTzI6VdVqtGE
+         1j5A==
+X-Forwarded-Encrypted: i=1; AJvYcCXAzDjzlO5w/rQE4IdHrxGpynEPrledEDU/xyTgb/8JP9uHHkWvwKn4Tx4np0HGxQF80Ab08bHLV5kvaA==@linaro.org
+X-Gm-Message-State: AOJu0YwFV4WlSJYxH0h2OIYJB4izDDi7aA2N3T/L84pI8tlJRCbI+jCE
+	ZJ6jupiQDxIKUYoti7YdcpFMXXtJKWaDhVR6yRsLbP28yOv5LzFQOvAl53EtaHB8uQ==
+X-Gm-Gg: ASbGncs+EHzo8LYYUnxbTao2d6qp64ne+mcontgH8TAuxsgrsEwCZdpJ3THmxkcRWtr
+	LJ2KdiWLrdk7EK5WoaaNYUfDMPuQocxcGWyXCK0WpMY8AnCxNTIneQPz3MHslopwzf85TQ6HoFk
+	KxbKhhNitb8EFOtwu0JQFw4piJzQf7RRMRRGbkqboZbeqsrd5lbAdDYlp2eUNYVGtc4LVJ3YR/2
+	z2empwr2lctj8J+VKWwtI8ng+S0IVeK0ZOz9WQH2IXWCK7gGJAD+4eYaCVP/PVwHY08XTsAciBW
+	jiOWta+dKv8EgV5+uDbauoWFPpTTUc67vI+5mfvt6TA4ttA6k1V+JcI3FOgerxq3iWlNMxmTeh8
+	GOcHCjTmKu50c
+X-Google-Smtp-Source: AGHT+IHoyscVn8p5jxvX72Ru3UvDJ2OXxx0IAldkyjAZ5Adle9QLCIrr4AZ9ithEY6/SyYpc+bvqUQ==
+X-Received: by 2002:a05:600c:1e22:b0:43b:d0fe:b8ac with SMTP id 5b1f17b1804b1-43db8526564mr178633115e9.30.1743601000940;
+        Wed, 02 Apr 2025 06:36:40 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c0b6588e9sm17432591f8f.14.2025.04.02.06.36.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 02 Apr 2025 06:36:40 -0700 (PDT)
+Message-ID: <ca52ecb4-6c1d-4299-9764-5839db2d013e@linaro.org>
+Date: Wed, 2 Apr 2025 15:36:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.0 5/5] qtest/bios-tables-test: Update
- aarch64/virt/APIC.its_off blob
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
-Cc: Udo Steinberg <udo@hypervisor.org>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20250331221239.87150-1-philmd@linaro.org>
- <20250331221239.87150-6-philmd@linaro.org>
- <98b286c5-f48f-4dec-b6c7-3e1ca2156735@linaro.org>
+Subject: Re: [PATCH v2 20/30] target/arm/cpu: always define kvm related
+ registers
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
+ Thomas Huth <thuth@redhat.com>
+Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20250320223002.2915728-1-pierrick.bouvier@linaro.org>
+ <20250320223002.2915728-21-pierrick.bouvier@linaro.org>
+ <1109fe22-9008-47c6-b14d-7323f9888822@linaro.org>
+ <11b5441f-c7c0-4b4c-8061-471a49e8465a@linaro.org>
+ <428e6fdb-24b9-47a2-9d3f-4ef5c2e1a0ae@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <98b286c5-f48f-4dec-b6c7-3e1ca2156735@linaro.org>
+In-Reply-To: <428e6fdb-24b9-47a2-9d3f-4ef5c2e1a0ae@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dBFCzLLc3S4p
+X-TUID: REPvINkOQNTC
 
-On 2/4/25 08:45, Gustavo Romero wrote:
-> Hi Phil,
+On 25/3/25 02:24, Richard Henderson wrote:
+> On 3/24/25 14:11, Pierrick Bouvier wrote:
+>> On 3/23/25 12:37, Richard Henderson wrote:
+>>> On 3/20/25 15:29, Pierrick Bouvier wrote:
+>>>> This does not hurt, even if they are not used.
+>>>>
+>>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>> ---
+>>>>    target/arm/cpu.h | 2 --
+>>>>    1 file changed, 2 deletions(-)
+>>>>
+>>>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>>>> index a8a1a8faf6b..ab7412772bc 100644
+>>>> --- a/target/arm/cpu.h
+>>>> +++ b/target/arm/cpu.h
+>>>> @@ -971,7 +971,6 @@ struct ArchCPU {
+>>>>         */
+>>>>        uint32_t kvm_target;
+>>>> -#ifdef CONFIG_KVM
+>>>>        /* KVM init features for this CPU */
+>>>>        uint32_t kvm_init_features[7];
+>>>> @@ -984,7 +983,6 @@ struct ArchCPU {
+>>>>        /* KVM steal time */
+>>>>        OnOffAuto kvm_steal_time;
+>>>> -#endif /* CONFIG_KVM */
+>>>>        /* Uniprocessor system with MP extensions */
+>>>>        bool mp_is_up;
+>>>
+>>> I'm not sure what this achieves?   CONFIG_KVM is a configure-time 
+>>> selection.
+>>>
+>>
+>> CONFIG_KVM is a poisoned identifier.
+>> It's included via config-target.h, and not config-host.h.
 > 
-> On 3/31/25 19:12, Philippe Mathieu-Daudé wrote:
->> Changes in the tables:
->>
->>    @@ -1,32 +1,32 @@
->>     /*
->>      * Intel ACPI Component Architecture
->>      * AML/ASL+ Disassembler version 20240927 (64-bit version)
->>      * Copyright (c) 2000 - 2023 Intel Corporation
->>      *
->>      * Disassembly of tests/data/acpi/aarch64/virt/APIC.its_off
->>      *
->>      * ACPI Data Table [APIC]
->>      *
->>      * Format: [HexOffset DecimalOffset ByteLength]  FieldName : 
->> FieldValue (in hex)
->>      */
->>
->>     [000h 0000 004h]                   Signature : "APIC"    [Multiple 
->> APIC Description Table (MADT)]
->>    -[004h 0004 004h]                Table Length : 000000B8
->>    +[004h 0004 004h]                Table Length : 000000A4
->>     [008h 0008 001h]                    Revision : 04
->>    -[009h 0009 001h]                    Checksum : A7
->>    +[009h 0009 001h]                    Checksum : EE
->>     [00Ah 0010 006h]                      Oem ID : "BOCHS "
->>     [010h 0016 008h]                Oem Table ID : "BXPC    "
->>     [018h 0024 004h]                Oem Revision : 00000001
->>     [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
->>     [020h 0032 004h]       Asl Compiler Revision : 00000001
->>
->>     [024h 0036 004h]          Local Apic Address : 00000000
->>     [028h 0040 004h]       Flags (decoded below) : 00000000
->>                              PC-AT Compatibility : 0
->>
->>     [02Ch 0044 001h]               Subtable Type : 0C [Generic 
->> Interrupt Distributor]
->>     [02Dh 0045 001h]                      Length : 18
->>     [02Eh 0046 002h]                    Reserved : 0000
->>     [030h 0048 004h]       Local GIC Hardware ID : 00000000
->>     [034h 0052 008h]                Base Address : 0000000008000000
->>     [03Ch 0060 004h]              Interrupt Base : 00000000
->>    @@ -49,37 +49,29 @@
->>     [06Ch 0108 008h]    Virtual GIC Base Address : 0000000000000000
->>     [074h 0116 008h] Hypervisor GIC Base Address : 0000000000000000
->>     [07Ch 0124 004h]       Virtual GIC Interrupt : 00000019
->>     [080h 0128 008h]  Redistributor Base Address : 0000000000000000
->>     [088h 0136 008h]                   ARM MPIDR : 0000000000000000
->>     [090h 0144 001h]            Efficiency Class : 00
->>     [091h 0145 001h]                    Reserved : 00
->>     [092h 0146 002h]      SPE Overflow Interrupt : 0000
->>     [094h 0148 002h]              TRBE Interrupt : 100E
->>
->>     [094h 0148 001h]               Subtable Type : 0E [Generic 
->> Interrupt Redistributor]
->>     [095h 0149 001h]                      Length : 10
->>     [097h 0151 002h]                    Reserved : 0000
->>     [098h 0152 008h]                Base Address : 00000000080A0000
->>     [0A0h 0160 004h]                      Length : 00F60000
->>
->>    -[0A4h 0164 001h]               Subtable Type : 0F [Generic 
->> Interrupt Translator]
->>    -[0A5h 0165 001h]                      Length : 14
->>    -[0A7h 0167 002h]                    Reserved : 0000
->>    -[0A8h 0168 004h]              Translation ID : 00000000
->>    -[0ACh 0172 008h]                Base Address : 0000000008080000
->>    -[0B4h 0180 004h]                    Reserved : 00000000
->>    +Raw Table Data: Length 164 (0xA4)
->>
->>    -Raw Table Data: Length 184 (0xB8)
->>    -
->>    -    0000: 41 50 49 43 B8 00 00 00 04 A7 42 4F 43 48 53 20  // 
->> APIC......BOCHS
->>    +    0000: 41 50 49 43 A4 00 00 00 04 EE 42 4F 43 48 53 20  // 
->> APIC......BOCHS
->>         0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // 
->> BXPC    ....BXPC
->>         0020: 01 00 00 00 00 00 00 00 00 00 00 00 0C 18 00 
->> 00  // ................
->>         0030: 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 
->> 00  // ................
->>         0040: 04 00 00 00 0B 50 00 00 00 00 00 00 00 00 00 
->> 00  // .....P..........
->>         0050: 01 00 00 00 00 00 00 00 17 00 00 00 00 00 00 
->> 00  // ................
->>         0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
->> 00  // ................
->>         0070: 00 00 00 00 00 00 00 00 00 00 00 00 19 00 00 
->> 00  // ................
->>         0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
->> 00  // ................
->>         0090: 00 00 00 00 0E 10 00 00 00 00 0A 08 00 00 00 
->> 00  // ................
->>    -    00A0: 00 00 F6 00 0F 14 00 00 00 00 00 00 00 00 08 
->> 08  // ................
->>    -    00B0: 00 00 00 00 00 00 00 
->> 00                          // ........
->>    +    00A0: 00 00 F6 00                                      // ....
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->>   tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 184 -> 164 bytes
->>   2 files changed, 1 deletion(-)
->>
->> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/ 
->> qtest/bios-tables-test-allowed-diff.h
->> index bfc4d601243..dfb8523c8bf 100644
->> --- a/tests/qtest/bios-tables-test-allowed-diff.h
->> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
->> @@ -1,2 +1 @@
->>   /* List of comma-separated changed AML files to ignore */
->> -"tests/data/acpi/aarch64/virt/APIC.its_off",
->> diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/ 
->> acpi/aarch64/virt/APIC.its_off
->> index 
->> c37d05d6e05805304f10afe73eb7cb9100fcccfa..f24ac8fbff5261a52434abcfcff96dbdc7709de4 100644
->> GIT binary patch
->> delta 18
->> ZcmdnNxP+0*F~HM#2?GNI%e#qOvj8xy1yKM1
->>
->> delta 39
->> jcmZ3&xPy_)F~HM#2Ll5G%kqg_vqbnsfJ`vp;DE6Jpmzmj
-> 
-> If the change affects other tables besides APIC (IORT and FACP in this 
-> series),
-> then I think that's the moment to update all the correct blobs (final 
-> versions)
-> and drop the list of blobs in bios-tables-test-allowed-diff.h. I also 
-> think it's
-> better to list all the table diffs in the commit message, not only the 
-> diff for
-> the APIC table.
+> Whoops, yes.
 
-When following the script steps with V=2, I only see diff change in the
-MADT table.
-
-Igor, am I missing something?
-
-> 
-> Cheers,
-> Gustavo
-
+If we go this way, can we consistently allow CONFIG_${HW_ACCEL}
+(read "remove poisoned defs in config-poison.h)?

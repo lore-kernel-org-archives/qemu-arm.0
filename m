@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3284858njd;
-        Wed, 2 Apr 2025 00:46:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWLZOXaAAoFQIZ6mRZRWzDXKe5ufDzYG2PYI6WsXCKI20XRu0OEeKqxIuFqZxV3FPqF3MUjVNMX49oJfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHo5o+Up473N7A7ipe33fWHAAjZmv4XpDxd1InmmhR+AKBBF1Ga2rg0t8qLS2O3va0KC6db
-X-Received: by 2002:a05:6214:2508:b0:6ed:1651:e8dc with SMTP id 6a1803df08f44-6eed5fc8470mr240907236d6.11.1743580012673;
-        Wed, 02 Apr 2025 00:46:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743580012; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3289286njd;
+        Wed, 2 Apr 2025 01:00:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVVlP+Uqu38fH/bS4lYT0xCvLrbbC//XRYrJV8Sc2N7eNN6WKmbmxBGOzdu0DOlQxup0JKyOtYXixQsMQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGV7biY+oDXqcJQPS0eIivWXT/jWtgVZgtrr6UmmFZcexeNacRovXIN30PyZNs1kjhmPlg/
+X-Received: by 2002:a05:620a:430f:b0:7c5:5d13:f188 with SMTP id af79cd13be357-7c766456f19mr212171185a.26.1743580825955;
+        Wed, 02 Apr 2025 01:00:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743580825; cv=none;
         d=google.com; s=arc-20240605;
-        b=ARx61e8CCtmt9Q929A+BfwyQChuRy3HEXTO8Uxf3IGqWzb5PhYAw97nJoCKohpm9lk
-         zgiEuSgzQ2tV9wnCrTRQZmaj9zj8gjyGqk3ZyLY8rQQjKk/Mo9ua/IBHNt3LV8mh3h3+
-         JPdXGWgjGmhpyYqycO6NEyErurrLg1XMNX1nqLlTFGiPmElu1QWoikdvFWB6klUI+GcJ
-         j+kXxFxCVlBDR4L66A2JPV05zY/jzeVkm8aKRtuKoaGwyZA1Kj+3rTXI34YzHZu1rvxz
-         RfdGQlI5wi9NBeBgAp0+ZmAnxGPNJm4wc9j8R7XQUmluY/iq4We4SAe/Mt5c+IxAGwtJ
-         7wwQ==
+        b=f1+DOuyEEZw57XFKFm84iW3V3YWUZFYSiDlveGML16gjZtPkcQN++aCXNf84nyLQ06
+         w/WgSlTMr7hqaK+f7wy8dxiNzWAB0GSl86tXyhw/7MWG9xH62Hu2aq9WOvDniLZ9hwWT
+         QellCeXoCvVm4kls2wzcqZOU7GvIdiphc4e8XdDH10NlpCEtVBIaRlj/bP62rAKjdqCk
+         xbvuXExvodU9hQxF90+bAdxvxFvozCOg/VIBVMnnbdcNCOr4OiXdyK1AH6ElhCcGwljw
+         Sn/Bg/XR+6vWiHQ0HIi16UbxeNl3sL94Yi6sS0tq0Rf5dKlADTJCR31Xnhd8l4U96L6C
+         cHNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=IoQJCjL9CkC2nNLPRiKCwC1ymM2gX7kWLIHlyGf9PpI=;
+        bh=RHzen905VTtu8FAju8W+JO2HaQLInU6Rh3BBRNHLptY=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=S0VoBwACb9l/cikfQ30QKvCR2y3FQ/GghmPCATMqWvGSsi6o3I7AS8hRERIHlES+5y
-         biU9CYACrMfv5u/w33qwx1Wg8f7UGWQy2wsr+YkM+nJveilIO3nGUbhbaCv1B2mXwOyO
-         0d/9oRH1Y67xa8ffqciuvwQsIcBo9f8SqVakZ/0GxasSEe+Aqa1PNzEShva/C1ES3iYG
-         og4EedHDIK0F2Ip7AcKMqQUT4ET7buy6BFpa9A1QTbv6SjFoRrR3seJYOArdPX7bEgjh
-         QA0Q7fYmoHdQ8V1qNM/KipF/oz3PMqqQk6PW+ym64a+oV/2W52AQ/twwc4CkcgM+WM8L
-         /zqg==;
+        b=eAXnfOZ+2wl/cXQD+h+3nOZazKG/mlyFKbmb1MKjmXez/r0q25kt3Wo9/yiYNYCq7Q
+         xwJNaLEgLlZNxUe4AlPN1ir5AHeG2PL4y+S7OI9CXunoNqxK5xCyGlZu1C1+M9MroRbZ
+         Hpa1rVp+1EEE3e7+GjweOSf90nDm5mmvQMVg5nb5b7cRg6cBLGCJsbobVNsGrntgWZvr
+         lvvRyNGVuGU/0cLtJgZQoI9IOlqoe2jbtmjdanorgeVyYeRARd+oW/Conq4Sgpt5nE+y
+         2u77EkXvb/RRZF1sWV0K6PbkixfxWiY5460Qc1S8aIj5Mq8U5ptbKTc8g1acgVXvTqL0
+         5+fA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eec962e1e5si103919556d6.31.2025.04.02.00.46.52
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec964a906si106397086d6.113.2025.04.02.01.00.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Apr 2025 00:46:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Apr 2025 01:00:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzso5-0004Hu-Pm; Wed, 02 Apr 2025 03:46:41 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tzt19-0008Ox-Ux; Wed, 02 Apr 2025 04:00:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzso3-0004HK-9J; Wed, 02 Apr 2025 03:46:39 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1tzt17-0008Ny-SO; Wed, 02 Apr 2025 04:00:09 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzso0-000611-BI; Wed, 02 Apr 2025 03:46:38 -0400
+ id 1tzt15-0007tX-Au; Wed, 02 Apr 2025 04:00:09 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSH4N3msgz4x8h;
- Wed,  2 Apr 2025 18:46:28 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSHN01cW7z4x8h;
+ Wed,  2 Apr 2025 19:00:00 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSH4J3gPJz4wcT;
- Wed,  2 Apr 2025 18:46:24 +1100 (AEDT)
-Message-ID: <1727568a-2101-444c-bf48-03d4a203d78f@kaod.org>
-Date: Wed, 2 Apr 2025 09:46:22 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSHMw1fMSz4x21;
+ Wed,  2 Apr 2025 18:59:55 +1100 (AEDT)
+Message-ID: <fb147a8a-c072-4404-8adf-a0c1d5e39305@kaod.org>
+Date: Wed, 2 Apr 2025 09:59:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 10/22] hw/misc/aspeed_hace:: Support setting different
- memory size
+Subject: Re: [PATCH v1 11/22] hw/misc/aspeed_hace: Add trace-events for better
+ debugging
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-11-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-12-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,128 +119,130 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-11-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-12-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IQly2tQFngZl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qqfJEmPhaMjZ
 
 On 3/21/25 10:26, Jamin Lin wrote:
-> The memory size was previously hardcoded to 0x1000 (4K). However, the actual
-> memory size of the HACE controller varies across different models:
-> 1. AST2400/AST2500: 0x1000 (4K)
-> 2. AST2600/AST1030: 0x10000 (64K)
-> 3. AST2700: 0x100 (256 bytes)
-> 
-> To address this, a new class attribute, mem_size, has been introduced to
-> dynamically set the appropriate memory size for each HACE model, ensuring
-> correct allocation across AST2400, AST2500, AST2600, AST1030 and AST2700.
+> Introduced "trace_aspeed_hace_addr", "trace_aspeed_hace_sg",
+> "trace_aspeed_hace_read", and "trace_aspeed_hace_write" trace events.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/misc/aspeed_hace.c | 8 ++++++++
+>   hw/misc/trace-events  | 6 ++++++
+>   2 files changed, 14 insertions(+)
+> 
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 53b3b390e3..b8e473ee3f 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -18,6 +18,7 @@
+>   #include "crypto/hash.h"
+>   #include "hw/qdev-properties.h"
+>   #include "hw/irq.h"
+> +#include "trace.h"
+>   
+>   #define R_CRYPT_CMD     (0x10 / 4)
+>   
+> @@ -186,6 +187,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>               if (ahc->has_dma64) {
+>                   src = deposit64(src, 32, 32, s->regs[R_HASH_SRC_HI]);
+>               }
+> +            trace_aspeed_hace_addr("src", src);
+>               src += i * SG_LIST_ENTRY_SIZE;
+>   
+>               len = address_space_ldl_le(&s->dram_as, src,
+> @@ -194,6 +196,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>               sg_addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
+>                                              MEMTXATTRS_UNSPECIFIED, NULL);
+>               sg_addr &= SG_LIST_ADDR_MASK;
+> +            trace_aspeed_hace_sg(i, sg_addr, len);
+>               /*
+>                * Ideally, sg_addr should be 64-bit for the AST2700, using the
+>                * following program to obtain the 64-bit sg_addr and convert it
+> @@ -237,6 +240,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>       } else {
+>           plen = s->regs[R_HASH_SRC_LEN];
+>           src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
+> +        trace_aspeed_hace_addr("src", src);
+>           if (ahc->has_dma64) {
+>               src = deposit64(src, 32, 32, s->regs[R_HASH_SRC_HI]);
+>           }
+> @@ -299,6 +303,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>       if (ahc->has_dma64) {
+>           digest_addr = deposit64(digest_addr, 32, 32, s->regs[R_HASH_DEST_HI]);
+>       }
+> +    trace_aspeed_hace_addr("digest", digest_addr);
+>       if (address_space_write(&s->dram_as, digest_addr,
+>                               MEMTXATTRS_UNSPECIFIED,
+>                               digest_buf, digest_len)) {
 
+I would use the prefix 'trace_aspeed_hace_hash_addr' since the trace
+events are called from do_hash_operation()
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
 
-> ---
->   include/hw/misc/aspeed_hace.h | 1 +
->   hw/misc/aspeed_hace.c         | 8 +++++++-
->   2 files changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-> index 58fb66009a..db95f2fd4b 100644
-> --- a/include/hw/misc/aspeed_hace.h
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -53,6 +53,7 @@ struct AspeedHACEClass {
->       uint32_t dest_hi_mask;
->       uint32_t key_hi_mask;
->       bool has_dma64;
-> +    uint64_t mem_size;
->   };
+
+> @@ -326,6 +331,7 @@ static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
+>           return 0;
+>       }
 >   
->   #endif /* ASPEED_HACE_H */
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index d4f653670e..53b3b390e3 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -463,11 +463,12 @@ static void aspeed_hace_realize(DeviceState *dev, Error **errp)
->   {
->       AspeedHACEState *s = ASPEED_HACE(dev);
->       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
+> +    trace_aspeed_hace_read(addr << 2, s->regs[addr]);
+>       return s->regs[addr];
+>   }
 >   
->       sysbus_init_irq(sbd, &s->irq);
+> @@ -344,6 +350,8 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>           return;
+>       }
 >   
->       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
-> -            TYPE_ASPEED_HACE, 0x1000);
-> +            TYPE_ASPEED_HACE, ahc->mem_size);
+> +    trace_aspeed_hace_write(addr << 2, data);
+> +
+>       switch (addr) {
+>       case R_STATUS:
+>           if (data & HASH_IRQ) {
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 4383808d7a..cf96e68cfa 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -302,6 +302,12 @@ aspeed_peci_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%"
+>   aspeed_peci_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
+>   aspeed_peci_raise_interrupt(uint32_t ctrl, uint32_t status) "ctrl 0x%" PRIx32 " status 0x%" PRIx32
 >   
->       if (!s->dram_mr) {
->           error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
-> @@ -521,6 +522,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+> +# aspeed_hace.c
+> +aspeed_hace_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_hace_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_hace_sg(int index, uint64_t addr, uint32_t len) "%d: addr 0x%" PRIx64 " len 0x%" PRIx32
+> +aspeed_hace_addr(const char *s, uint64_t addr) "%s: 0x%" PRIx64
+> +
+>   # bcm2835_property.c
+>   bcm2835_mbox_property(uint32_t tag, uint32_t bufsize, size_t resplen) "mbox property tag:0x%08x in_sz:%u out_sz:%zu"
 >   
->       dc->desc = "AST2400 Hash and Crypto Engine";
->   
-> +    ahc->mem_size = 0x1000;
->       ahc->src_mask = 0x0FFFFFFF;
->       ahc->dest_mask = 0x0FFFFFF8;
->       ahc->key_mask = 0x0FFFFFC0;
-> @@ -540,6 +542,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
->   
->       dc->desc = "AST2500 Hash and Crypto Engine";
->   
-> +    ahc->mem_size = 0x1000;
->       ahc->src_mask = 0x3fffffff;
->       ahc->dest_mask = 0x3ffffff8;
->       ahc->key_mask = 0x3FFFFFC0;
-> @@ -559,6 +562,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
->   
->       dc->desc = "AST2600 Hash and Crypto Engine";
->   
-> +    ahc->mem_size = 0x10000;
->       ahc->src_mask = 0x7FFFFFFF;
->       ahc->dest_mask = 0x7FFFFFF8;
->       ahc->key_mask = 0x7FFFFFF8;
-> @@ -578,6 +582,7 @@ static void aspeed_ast1030_hace_class_init(ObjectClass *klass, void *data)
->   
->       dc->desc = "AST1030 Hash and Crypto Engine";
->   
-> +    ahc->mem_size = 0x10000;
->       ahc->src_mask = 0x7FFFFFFF;
->       ahc->dest_mask = 0x7FFFFFF8;
->       ahc->key_mask = 0x7FFFFFF8;
-> @@ -597,6 +602,7 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
->   
->       dc->desc = "AST2700 Hash and Crypto Engine";
->   
-> +    ahc->mem_size = 0x100;
->       ahc->src_mask = 0x7FFFFFFF;
->       ahc->dest_mask = 0x7FFFFFF8;
->       ahc->key_mask = 0x7FFFFFF8;
 

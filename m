@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3283206njd;
-        Wed, 2 Apr 2025 00:42:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWStClx7ycv6WTmdPtJevo9Oz0i7VM4/WTar/8MfkJQmThIbDPeHqHblhN/PkqRsGo5QGAIu6LYqRmYXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGfWx8Hch7u9JZB+QyMC03X6A/mnry4DqusqnpjwiGj3BeOQ1njZo6TSux8PrQ1DPNCFhzq
-X-Received: by 2002:a05:6214:1d2b:b0:6e8:c713:31fa with SMTP id 6a1803df08f44-6eef5d67f1amr84818236d6.9.1743579745395;
-        Wed, 02 Apr 2025 00:42:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743579745; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp3284858njd;
+        Wed, 2 Apr 2025 00:46:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWLZOXaAAoFQIZ6mRZRWzDXKe5ufDzYG2PYI6WsXCKI20XRu0OEeKqxIuFqZxV3FPqF3MUjVNMX49oJfA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHo5o+Up473N7A7ipe33fWHAAjZmv4XpDxd1InmmhR+AKBBF1Ga2rg0t8qLS2O3va0KC6db
+X-Received: by 2002:a05:6214:2508:b0:6ed:1651:e8dc with SMTP id 6a1803df08f44-6eed5fc8470mr240907236d6.11.1743580012673;
+        Wed, 02 Apr 2025 00:46:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743580012; cv=none;
         d=google.com; s=arc-20240605;
-        b=bsZtUnt1oYTwLug8/RpAI7Dr593Kt3c1l/NmInJmsw1ZEquQGHJRgvp6q5awJJIINv
-         USZjDMI9KoCe9cYLWoRmxxMTycGROe1pTwfJIbd4F326dY538HTXi71GF91bJ2zgfKwE
-         n1lF4mMk4ZUfOj2gPhImbC6HywKScuFM90Gq/pr1NUs53IQYGiVo0qpbuDGUMBxj45m6
-         7gvSCF/9CeV/yBBrI/GONS4F8SX3HTMzWTNQjfZr1uGk7vOIl4NN7TjE4eX3IxRs0dlm
-         2N3+/mTASJNBUoXY4LmD+MaUgKIu1pkpcVJz5yDVieHQE1PLDT1MaBWissUifeswZUFz
-         M1jw==
+        b=ARx61e8CCtmt9Q929A+BfwyQChuRy3HEXTO8Uxf3IGqWzb5PhYAw97nJoCKohpm9lk
+         zgiEuSgzQ2tV9wnCrTRQZmaj9zj8gjyGqk3ZyLY8rQQjKk/Mo9ua/IBHNt3LV8mh3h3+
+         JPdXGWgjGmhpyYqycO6NEyErurrLg1XMNX1nqLlTFGiPmElu1QWoikdvFWB6klUI+GcJ
+         j+kXxFxCVlBDR4L66A2JPV05zY/jzeVkm8aKRtuKoaGwyZA1Kj+3rTXI34YzHZu1rvxz
+         RfdGQlI5wi9NBeBgAp0+ZmAnxGPNJm4wc9j8R7XQUmluY/iq4We4SAe/Mt5c+IxAGwtJ
+         7wwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=fsflF2mEUUQkjKlFfy9S42pWWpPvqAFRZeHh3r7iZhM=;
+        bh=IoQJCjL9CkC2nNLPRiKCwC1ymM2gX7kWLIHlyGf9PpI=;
         fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=Ex+j7mzH2RfsfYBdD5QpxzE2gWYXteMEaaGEoT65/y6fbaxUd1wMEULqsjCMwBIoB1
-         bjccogb69p7iQ2KqAU6JGUGqF4JH22JjrmmTUrxRnZMYO/rDMx9PmqnkMayxlja5DdlQ
-         qfGsNAJoJbQ5YTmxPBY9BkykI9NNgoLFhjO9yfNZC7xteYW2SIZjZczqM/nj/ym4UzlL
-         5RIErxUa9F6c/69tXhSp+Jpb/nSfZdmO2AArxP6yIZmPxtt5se5PKOo4uPY+dvLzYHf1
-         XaFSQN67WevFJf5xDbwHg6fG0GmXmbDycFe9nIIQb6CsklhYhysLlMFXRDZR+Iys1QRl
-         aWvA==;
+        b=S0VoBwACb9l/cikfQ30QKvCR2y3FQ/GghmPCATMqWvGSsi6o3I7AS8hRERIHlES+5y
+         biU9CYACrMfv5u/w33qwx1Wg8f7UGWQy2wsr+YkM+nJveilIO3nGUbhbaCv1B2mXwOyO
+         0d/9oRH1Y67xa8ffqciuvwQsIcBo9f8SqVakZ/0GxasSEe+Aqa1PNzEShva/C1ES3iYG
+         og4EedHDIK0F2Ip7AcKMqQUT4ET7buy6BFpa9A1QTbv6SjFoRrR3seJYOArdPX7bEgjh
+         QA0Q7fYmoHdQ8V1qNM/KipF/oz3PMqqQk6PW+ym64a+oV/2W52AQ/twwc4CkcgM+WM8L
+         /zqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6eec965a158si102147406d6.146.2025.04.02.00.42.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6eec962e1e5si103919556d6.31.2025.04.02.00.46.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Apr 2025 00:42:25 -0700 (PDT)
+        Wed, 02 Apr 2025 00:46:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tzsjf-0003Ho-JD; Wed, 02 Apr 2025 03:42:07 -0400
+	id 1tzso5-0004Hu-Pm; Wed, 02 Apr 2025 03:46:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzsjc-0003HR-4N; Wed, 02 Apr 2025 03:42:04 -0400
+ id 1tzso3-0004HK-9J; Wed, 02 Apr 2025 03:46:39 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=yfRC=WU=kaod.org=clg@ozlabs.org>)
- id 1tzsjW-0005S4-Mg; Wed, 02 Apr 2025 03:42:01 -0400
+ id 1tzso0-000611-BI; Wed, 02 Apr 2025 03:46:38 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSGyz3l8hz4x1w;
- Wed,  2 Apr 2025 18:41:47 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZSH4N3msgz4x8h;
+ Wed,  2 Apr 2025 18:46:28 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSGyt3PCrz4x1t;
- Wed,  2 Apr 2025 18:41:41 +1100 (AEDT)
-Message-ID: <ff5e84c5-4714-4897-90b6-40df76746443@kaod.org>
-Date: Wed, 2 Apr 2025 09:41:36 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZSH4J3gPJz4wcT;
+ Wed,  2 Apr 2025 18:46:24 +1100 (AEDT)
+Message-ID: <1727568a-2101-444c-bf48-03d4a203d78f@kaod.org>
+Date: Wed, 2 Apr 2025 09:46:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 08/22] hw/misc/aspeed_hace: Support DMA 64 bits dram
- address.
+Subject: Re: [PATCH v1 10/22] hw/misc/aspeed_hace:: Support setting different
+ memory size
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-9-jamin_lin@aspeedtech.com>
+ <20250321092623.2097234-11-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,9 +119,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250321092623.2097234-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250321092623.2097234-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=yfRC=WU=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -145,148 +145,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uXYpUk3Av70m
+X-TUID: IQly2tQFngZl
 
 On 3/21/25 10:26, Jamin Lin wrote:
-> According to the AST2700 design, the data source address is 64-bit, with
-> R_HASH_SRC_HI storing bits [63:32] and R_HASH_SRC storing bits [31:0].
+> The memory size was previously hardcoded to 0x1000 (4K). However, the actual
+> memory size of the HACE controller varies across different models:
+> 1. AST2400/AST2500: 0x1000 (4K)
+> 2. AST2600/AST1030: 0x10000 (64K)
+> 3. AST2700: 0x100 (256 bytes)
 > 
-> Similarly, the digest address is 64-bit, with R_HASH_DEST_HI storing bits
-> [63:32] and R_HASH_DEST storing bits [31:0].
-> 
-> Ideally, sg_addr should be 64-bit for the AST2700, using the following program
-> to obtain the 64-bit sg_addr and convert it to a DRAM offset:
-> 
-> ```
-> sg_addr = deposit64(sg_addr, 32, 32,
->                      address_space_ldl_le(&s->dram_as, src + SG_LIST_ADDR_SIZE,
->                                           MEMTXATTRS_UNSPECIFIED, NULL);
-> sg_addr -= 0x400000000;
-> ```
-
-I don't think the code extract above is useful.
-
-> To maintain compatibility with older SoCs such as the AST2600, the AST2700 HW
-> HACE controllers automatically set bit 34 of the 64-bit sg_addr. 
-
-I suppose that's what bits [30:28] of the first word of the scatter-gather entry
-are for ?
-
-> As a result,
-> the firmware only needs to provide a 32-bit sg_addr containing bits [31:0].
-> This is sufficient for the AST2700, as it uses a DRAM offset rather than a DRAM
-> address.
-
-yes the HACE model can use a relative address because the DRAM memory
-region is directly available. There is no need to construct a physical
-address.
-
-> Introduce a has_dma64 class attribute and set it to true for the AST2700.
+> To address this, a new class attribute, mem_size, has been introduced to
+> dynamically set the appropriate memory size for each HACE model, ensuring
+> correct allocation across AST2400, AST2500, AST2600, AST1030 and AST2700.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   include/hw/misc/aspeed_hace.h |  1 +
->   hw/misc/aspeed_hace.c         | 27 ++++++++++++++++++++++++++-
->   2 files changed, 27 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-> index a4479bd383..58fb66009a 100644
-> --- a/include/hw/misc/aspeed_hace.h
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -52,6 +52,7 @@ struct AspeedHACEClass {
->       uint32_t src_hi_mask;
->       uint32_t dest_hi_mask;
->       uint32_t key_hi_mask;
-> +    bool has_dma64;
->   };
->   
->   #endif /* ASPEED_HACE_H */
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 51c6523fab..8f333fc97e 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -148,6 +148,7 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
->   static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->                                 bool acc_mode)
->   {
-> +    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
->       bool sg_acc_mode_final_request = false;
->       g_autofree uint8_t *digest_buf = NULL;
->       struct iovec iov[ASPEED_HACE_MAX_SG];
-> @@ -182,6 +183,9 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->               }
->   
->               src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
-> +            if (ahc->has_dma64) {
-> +                src = deposit64(src, 32, 32, s->regs[R_HASH_SRC_HI]);
-> +            }
 
-That's where a little helper would be nice to have.
 
->               src += i * SG_LIST_ENTRY_SIZE;
->   
->               len = address_space_ldl_le(&s->dram_as, src,
-> @@ -190,6 +194,21 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->               sg_addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
->                                              MEMTXATTRS_UNSPECIFIED, NULL);
->               sg_addr &= SG_LIST_ADDR_MASK;
-> +            /*
-> +             * Ideally, sg_addr should be 64-bit for the AST2700, using the
-> +             * following program to obtain the 64-bit sg_addr and convert it
-> +             * to a DRAM offset:
-> +             * sg_addr = deposit64(sg_addr, 32, 32,
-> +             *      address_space_ldl_le(&s->dram_as, src + SG_ADDR_LEN_SIZE,
-> +             *                           MEMTXATTRS_UNSPECIFIED, NULL);
-> +             * sg_addr -= 0x400000000;
-> +             *
-
-I don't think the above comment is useful. Please keep the one below.
-
-> +             * To maintain compatibility with older SoCs such as the AST2600,
-> +             * the AST2700 HW automatically set bit 34 of the 64-bit sg_addr.
-> +             * As a result, the firmware only needs to provide a 32-bit sg_addr
-> +             * containing bits [31:0]. This is sufficient for the AST2700, as
-> +             * it uses a DRAM offset rather than a DRAM address.
-> +             */
-
-The SG_LIST_ADDR_MASK needs an update though. AFAICT, it's bigger on AST2700.
-
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
 
-
->               plen = len & SG_LIST_LEN_MASK;
->               haddr = address_space_map(&s->dram_as, sg_addr, &plen, false,
-> @@ -218,7 +237,9 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->       } else {
->           plen = s->regs[R_HASH_SRC_LEN];
->           src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
-> -
-> +        if (ahc->has_dma64) {
-> +            src = deposit64(src, 32, 32, s->regs[R_HASH_SRC_HI]);
-> +        }
->           haddr = address_space_map(&s->dram_as, src,
->                                     &plen, false, MEMTXATTRS_UNSPECIFIED);
->           if (haddr == NULL) {
-> @@ -275,6 +296,9 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->       }
+> ---
+>   include/hw/misc/aspeed_hace.h | 1 +
+>   hw/misc/aspeed_hace.c         | 8 +++++++-
+>   2 files changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index 58fb66009a..db95f2fd4b 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -53,6 +53,7 @@ struct AspeedHACEClass {
+>       uint32_t dest_hi_mask;
+>       uint32_t key_hi_mask;
+>       bool has_dma64;
+> +    uint64_t mem_size;
+>   };
 >   
->       digest_addr = deposit64(digest_addr, 0, 32, s->regs[R_HASH_DEST]);
-> +    if (ahc->has_dma64) {
-> +        digest_addr = deposit64(digest_addr, 32, 32, s->regs[R_HASH_DEST_HI]);
-> +    }
->       if (address_space_write(&s->dram_as, digest_addr,
->                               MEMTXATTRS_UNSPECIFIED,
->                               digest_buf, digest_len)) {
-> @@ -601,6 +625,7 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
->        * has completed. It is a temporary workaround.
->        */
->       ahc->raise_crypt_interrupt_workaround = true;
-> +    ahc->has_dma64 = true;
->   }
+>   #endif /* ASPEED_HACE_H */
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index d4f653670e..53b3b390e3 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -463,11 +463,12 @@ static void aspeed_hace_realize(DeviceState *dev, Error **errp)
+>   {
+>       AspeedHACEState *s = ASPEED_HACE(dev);
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
 >   
->   static const TypeInfo aspeed_ast2700_hace_info = {
+>       sysbus_init_irq(sbd, &s->irq);
+>   
+>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
+> -            TYPE_ASPEED_HACE, 0x1000);
+> +            TYPE_ASPEED_HACE, ahc->mem_size);
+>   
+>       if (!s->dram_mr) {
+>           error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
+> @@ -521,6 +522,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+>   
+>       dc->desc = "AST2400 Hash and Crypto Engine";
+>   
+> +    ahc->mem_size = 0x1000;
+>       ahc->src_mask = 0x0FFFFFFF;
+>       ahc->dest_mask = 0x0FFFFFF8;
+>       ahc->key_mask = 0x0FFFFFC0;
+> @@ -540,6 +542,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+>   
+>       dc->desc = "AST2500 Hash and Crypto Engine";
+>   
+> +    ahc->mem_size = 0x1000;
+>       ahc->src_mask = 0x3fffffff;
+>       ahc->dest_mask = 0x3ffffff8;
+>       ahc->key_mask = 0x3FFFFFC0;
+> @@ -559,6 +562,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+>   
+>       dc->desc = "AST2600 Hash and Crypto Engine";
+>   
+> +    ahc->mem_size = 0x10000;
+>       ahc->src_mask = 0x7FFFFFFF;
+>       ahc->dest_mask = 0x7FFFFFF8;
+>       ahc->key_mask = 0x7FFFFFF8;
+> @@ -578,6 +582,7 @@ static void aspeed_ast1030_hace_class_init(ObjectClass *klass, void *data)
+>   
+>       dc->desc = "AST1030 Hash and Crypto Engine";
+>   
+> +    ahc->mem_size = 0x10000;
+>       ahc->src_mask = 0x7FFFFFFF;
+>       ahc->dest_mask = 0x7FFFFFF8;
+>       ahc->key_mask = 0x7FFFFFF8;
+> @@ -597,6 +602,7 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, void *data)
+>   
+>       dc->desc = "AST2700 Hash and Crypto Engine";
+>   
+> +    ahc->mem_size = 0x100;
+>       ahc->src_mask = 0x7FFFFFFF;
+>       ahc->dest_mask = 0x7FFFFFF8;
+>       ahc->key_mask = 0x7FFFFFF8;
 

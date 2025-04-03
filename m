@@ -1,85 +1,86 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4184812njd;
-        Thu, 3 Apr 2025 08:18:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU/cSgnLUUaINBhYme5Rt12EbwK8d9I5R0agMjJBWdyN0XA//iQ5VWVEh9CN33OTD+K5x6ck/EzVJ4u4w==@linaro.org
-X-Received: by 2002:a05:600c:3c9a:b0:43c:ec0a:ddfd with SMTP id 5b1f17b1804b1-43eb5c18448mr55497895e9.6.1743693513463;
-        Thu, 03 Apr 2025 08:18:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743693513; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4184885njd;
+        Thu, 3 Apr 2025 08:18:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU9flmYdzVqsMJgl4cTOkcZI4BuJYFvbF1bZiNgcIZNTFaJlsclrHj+sqV3AOf7c2w2nJ4XsPz8+YDUTA==@linaro.org
+X-Received: by 2002:a05:600c:6d45:b0:43c:e70d:4504 with SMTP id 5b1f17b1804b1-43eb63d417dmr47747945e9.19.1743693519850;
+        Thu, 03 Apr 2025 08:18:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743693519; cv=none;
         d=google.com; s=arc-20240605;
-        b=SkFR0qU1tLV26jFpswyczNnMBLSP9Zw4HyA44+1dMf4yquyJdv04qVyWHkrs2N4qH+
-         c6lamwRIbGrd+XiAHYu+vJZmlcC8UsmJqep7bje9CEP9iHorOkFcf/H61kv+Ke4Wjmsn
-         jHXoGZc7AZK5oWjTg7rw+6738ni8/LYqWpVp9MBly+HWkGESYyozN0JVOPopVpPuVMcQ
-         Tjdeec/By9fBmz6rxVi6esmpgHmJzOXR04ggLAkM2FbPm1GgK7zk/FaKq0OgM7pxR6Es
-         KuaW1zp0/Sc9XaUMpaqtICrYYUVqEI5WOkNmbumGv96hmKKz1GVTaIrNgkGHNqTG8bE9
-         lGIw==
+        b=f83Ot/HjhVLvNR/rBl5U5zBp63viZsjiccVQ6dm6iKh/YjMX9oj3JSGgPPkyVgYGlT
+         MS2Tc0qVht9OjO55Ukg0eo1phuSTtmoxxSO9l/D5QsjFV47AJ7qNcY7Fjtr4AefwrkFF
+         z3tRdl7H/+WaSc7dmR6Ng/7LTdOcM+g1qNqePp1yK15KAhJLxCaXLGqoN/v02MVlFzOz
+         vQNYpxlgXzHwYDntROqZsmFs4LAcopW+3Lx3Th3BJq777IUUlSRrpnMgAKKVHGwqaU9q
+         qcfYnnEKeBLj8SkLCo6ijIe7gz/amOIUF95Gf1CLjkOhoLn27eaz1v8KmHbZdkOSXhPd
+         26rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
-        fh=3YK621noR+tbjRkZj61V3nc1BcDK7q+YTVWHpvIyn/A=;
-        b=ZVcPpbWRPplcgg3Kd68Ahm6oPFl/C6F2esS+hLmqoyrBGBCCfeTsf6y49DczUWqkSc
-         vMzhuCp7CNBXAxSmeDH0DuJ4c9TE6hi3SDedOTNjzj13s3pq/cYC9Uz2Gz6NUd7dhsOm
-         DfxhKCBS7tSCJb4Dpa3/CX0LBjJ7gXJIjyFocm77TlsHzA1a7i0ScFysqp8W3vlXgRmy
-         iHb1mLh3P0bmZWYRHJztYq2oLrbizpAaOa9gcy+7BcE1mk2iJDIkN3AJ4mqP7YfN17ZG
-         y9Z9cY8ZyPkTsPxPQFFkbzZzkqewj9xvKoi+cupSfZKL8lIwS28sDKHpCLYvL6PiYpKu
-         Vzng==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Fuei3baK1sdFDft7gXrQyidqUa02cv4ewmtE/kL3GxQ=;
+        fh=QQ7uvn/wJuUu7AVT2cNoJR4aKRxzRtJf7zmF1NfJMhw=;
+        b=IZqAhvt1F8qC7Fa2tmDdIwbY8dgn1hrgfTu9ySijcGJOrfeUascPXF8WXaFX3yReI0
+         veJmHP0adRqTu6/F8hOBYAkI1VChxw37FaX11UZzVAiYI8tGvwbVqz+LDrz2v+eaXMvI
+         vndX0uTOTCfXhdhNqD5Y9/dXmdLxBoMtBh/NfdwcMncqtDka0mh1h6VXnvd7RxyFt7gl
+         JBFJ6MPOUozroEOMJCZphb/mv8jD1QEftKNgb6hyYb39oqaZtPMilu+6btsQ0X6EztbD
+         AIeCU4nCzqt+BjECzK2G5VWcirnuk3x01AHKPzNDsIjS/aG1TrDOwV71XD5ggMhhhnea
+         O52w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=opP68IEM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WNfAF4LG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec24ebdbbsor8532385e9.8.2025.04.03.08.18.33
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec2504df0sor7617715e9.0.2025.04.03.08.18.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 03 Apr 2025 08:18:33 -0700 (PDT)
+        Thu, 03 Apr 2025 08:18:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=opP68IEM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WNfAF4LG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743693513; x=1744298313; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
-        b=opP68IEMTsCw5oZSoF1nIk2wfncrMVT+fkXw0Sq1eIpTJ0YjXvUOuQF48FrH7f0AgQ
-         y+4meu3rikk+qqC29sfH0zaFoA+RR1ktq6AKStwk+2BhgR3zObFtjlTheY5rViwaqYAg
-         ePtgQ7OU7jkfgkg8CppNE/M/pQ7LB/JsUQWp5Xppdw6UtDJK6m6NlHtMQ6zYNxt1oDT0
-         ngVGw1a/3X4sjPFjmfPbI+Bs1g7aSTxBMm2b3+YC6sNwmB2viQtJldRm5jOo0c7QcKW5
-         4okeln+Yf+2yivFC139Iz3WYZq99l79ZxLPBvg10wk+RRVOZyUTbPHw/TZlBStySVZ/A
-         wEhg==
+        d=linaro.org; s=google; t=1743693519; x=1744298319; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Fuei3baK1sdFDft7gXrQyidqUa02cv4ewmtE/kL3GxQ=;
+        b=WNfAF4LGpqLu7TXM5c2+ltCfVoAhoRlK5s9PQr57SfRSBC8eo7a9GMYxmaHoFG8HKa
+         3BZ7sB8gkGSpL+cWRszcOPLA/YauUey6smWflel3uwcwQLzal4MpDicp+gANNPPTMwhX
+         jus/MPfSqNvh6WRIoDZGMvB0hqhrYZUrY19TIib2DxVePaHU3HGetS6kqNADI83hcwtx
+         MSaCq+BfZ8B/gxI+obVphJy0UgLUUHqI/hZRKBvyjMDgp0HQK5cgOgwF7BTNDwVf4sNe
+         wI4p++wzcRwtgrDrH5R4IlHNOznkzstYQerNh/BhbZPEhBOPIOlfI/9tW24t4PWJn13g
+         dVyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743693513; x=1744298313;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
-        b=Dr0+aKHj4/W07HGGwBmx2ez//LSDevIIktok/YVIpKIXEqOQy8cDXAfFt8EtHAs19Y
-         t65X/dvOorbGfu2OsixrpRUBuB+1XMnd4mYm1LIy8EqiWBOtJiubU7DoM26290M7t7q5
-         jsvvt7HrxbJzGUWyaH9Oih+nDINXbz/WTduIEF/VpnDQwY++Hebu0yuG3XSSJ62Ua/Y+
-         F8lSJ0V5c5xmiE/p7Ky/FwuWC1lYzN9FEMEI+vr7JQk/h0pA4e0J4RJYEep0oWyw9LLH
-         iIKM/bd17krytr3X9VOs4sI5W9knX68i02WexIuCpWmT/3j5adMEwo69JDIOx2x8b9Zo
-         gplA==
-X-Forwarded-Encrypted: i=1; AJvYcCU0RiMWdgBwxVYXhR3y5ofbE2iPO735bJ+TVOgxT5mtsVsRFRKpBKNwdtYJaO+BB0TQ2fwqCdIdwPqjrA==@linaro.org
-X-Gm-Message-State: AOJu0YwFFisMYCSO0N4T5dLGPSo6BCBLua/gv+RdjY+l0Up2DgL0UAOZ
-	G2XaEi2kphlgjXXqfPHjV7rwYfo4MNfre7lcW4qmqgqJ8N5Tqf3FUHJvlaaaGljiWA==
-X-Gm-Gg: ASbGnctXGbbtOplQTFmieYV1tRGy46OJYs33zJvljTviVmP0ijaCkinpd/zdweYly/n
-	3L8INR/io1yxhZpedfKp7u08KR6oqkWUvocmSAJJOobndaa/Ojn41rHl95dW1c7YInxuMtKrzkF
-	72E0gMDEv1jPp86yKm3+8Po+qfLNYNG4Slq2RzgzHM+7ZqO4O7PIpgAKNHf7yd0xYniq5jW3aOD
-	4Fofv3M5z9PNx296qZO5cGYwT//XA59xjz99OWlRERI/bUgeBMu6L+Bx+21icNzED7dVGlU/Ucb
-	9kUAb3XNQ4Wi/jRlxuGc3nlFB3ceDheQAPFpy8co91c7RziEocZo53I0+bdkc9w5R8KoDlCyk2z
-	Jag7Wd3Yn2yj4UBaE6lk=
-X-Google-Smtp-Source: AGHT+IEbJTCBFrbSyXuSCuQB8JSMdT9Rr0TuWMBudPsTzJaJXw7BLufu4Oeg1Yocmd8P5m1fXjju0g==
-X-Received: by 2002:a5d:6d8a:0:b0:391:4835:d888 with SMTP id ffacd0b85a97d-39c297e526amr5638439f8f.42.1743693512823;
-        Thu, 03 Apr 2025 08:18:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1743693519; x=1744298319;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Fuei3baK1sdFDft7gXrQyidqUa02cv4ewmtE/kL3GxQ=;
+        b=kUORYcAnfVZEDQ1u8RQ9I+Ml9ssdg0yZHUwIIpwWSEkIDDPzpRq1DFxW2DS5tSTu1w
+         1RdkQMoxRBfrKFP5+glH4dRN+YT1vt8avVfeXWGFH+n/pn3xUwblD0O0iciCX3n23WO9
+         Dgx9ipjRgqB5SlCe+Ur6/aagJIYNs+XU5rZd/vO64OKenav3hspJR2wXOPdvobsc7jUm
+         fGp4YOofLglP2MZxwfne8d/CgMkHg6KSJPbIMEvJ6GvsNMSi1SMjLEpcOZKqUmrsQH9z
+         YXHUm/dX3vlKZuKYUhENx0CBPd4MsuyhhZjRoeYWfiFeB9o22nyOGOTezjLpmzyFV3Kl
+         peug==
+X-Forwarded-Encrypted: i=1; AJvYcCXEmSw8X+erTWoAF4agxZ6z+lS/DwIWu5yan0u1/4cPfEnzKDu2xfLE5Lo3kgnWX6FLU0zSe9ohhF3EfA==@linaro.org
+X-Gm-Message-State: AOJu0Yzt3xhkTBk6dMtHj6670g+fUtTICxFQJjUI3lr239EZQpAsuY0I
+	K+yBLUbYnx8zGh0p6I24AR5K0GaxNYywrv+s8UdCeS35fkTZFhhTtxbU/ntHCCwbdw==
+X-Gm-Gg: ASbGncvUFFdKk0gTuvU/Paet7HXb+V9bu3+wxZ86wHTQJ7L+/Z5k/7doB0UJbt69GxM
+	JVKRV/gf/qaKPKvhJ3hy5w9ure26a4bCVjRrdo0ANJvU/dKrZou3A9UCH91DVAyPabGIsBKibeL
+	OIfL1hwEGOSIivHqllGT9o9FCzxnrw4nj43eeAoaUqWC3VHOWURwy97y25DyymXcOqnwEFewE4R
+	LJ1O8UJWCOxuUpermDGyjQGWu/3pqivxBHHjOGpBLLCq6GHZ2T63/N//ANR7OtLT232LKJH9tUm
+	X/dD6SCZ017xJFZp/f2oEfnMe9LYpd4TYl4m+l+zf/RkDc1VXEoz/vMtzTIAm/lEoVos1C6ATIc
+	lW+Rqn+d5sW27zwEAz9ZECRZ3yataQg==
+X-Google-Smtp-Source: AGHT+IEnm1d5jqQclVVh0+L43ZL/ydHkKrGZBsMRZ386WjgQW7Nmg/Rga4Nq4MA7R+Vd0OPKzFvQ9Q==
+X-Received: by 2002:a05:600c:8707:b0:43c:fe15:41d4 with SMTP id 5b1f17b1804b1-43eb5c2167bmr71212425e9.18.1743693519299;
+        Thu, 03 Apr 2025 08:18:39 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (145.171.88.92.rev.sfr.net. [92.88.171.145])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301ba2dfsm2074928f8f.60.2025.04.03.08.18.30
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec1660bcesm24437595e9.10.2025.04.03.08.18.37
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 03 Apr 2025 08:18:32 -0700 (PDT)
+        Thu, 03 Apr 2025 08:18:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -97,70 +98,56 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Fabiano Rosas <farosas@suse.de>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: [PATCH-for-10.0 v2 00/14] hw/arm: Tests & ACPI tables fixes for 10.0
-Date: Thu,  3 Apr 2025 17:18:15 +0200
-Message-ID: <20250403151829.44858-1-philmd@linaro.org>
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH-for-10.0 v2 01/14] tests/functional/test_aarch64_rme_virt: fix sporadic failure
+Date: Thu,  3 Apr 2025 17:18:16 +0200
+Message-ID: <20250403151829.44858-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250403151829.44858-1-philmd@linaro.org>
+References: <20250403151829.44858-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6nkP3b0SB1Oy
+X-TUID: f+/xeURoQblH
 
-Hi,
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-I tried to gather all the hw/arm/-related patches for
-the GitLab issues tagged for 10.0.
+This test was randomly failing on our CI, and on dev machines,
+especially with QEMU debug builds.
 
-First, trivial ones fixing / disabling broken tests;
-then disable the VMapple machine (not sure about it);
-finally fix ACPI tables for '-M its=off' CLI option.
+From the information collected, it's related to an implementation choice
+in edk2 QEMU virt support. The workaround is to disable KASLR, to avoid
+accessing protected memory.
+Note: this is *not* needed for the similar test_aarch64_rme_sbsaref.
 
-While polishing the series, I noticed MST mentioning
-the ACPI changes are likely too late:
-https://lore.kernel.org/qemu-devel/20250403100406-mutt-send-email-mst@kernel.org/
-I'll defer that jugement to Alex :)
+More information is available on the associated GitLab issue.
 
-Regards,
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2823
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <20250328183816.2687925-1-pierrick.bouvier@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ tests/functional/test_aarch64_rme_virt.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Phil.
-
-Philippe Mathieu-Daudé (13):
-  tests/functional: Add a decorator for skipping tests on particular OS
-  tests/functional: Skip aarch64_replay test on macOS
-  tests/qtest: Skip Aarch64 VMapple machine
-  hw/arm: Do not build VMapple machine by default
-  hw/arm/virt: Remove pointless VirtMachineState::tcg_its field
-  hw/intc/gicv3_its: Do not check its_class_name() for NULL
-  hw/arm/virt: Simplify create_its()
-  hw/arm/virt-acpi: Factor its_enabled() helper out
-  qtest/bios-tables-test: Add test for -M virt,its=off
-  qtest/bios-tables-test: Whitelist aarch64/virt 'its_off' variant blobs
-  hw/arm/virt-acpi: Always build IORT table (even with GIC ITS disabled)
-  hw/arm/virt-acpi: Do not advertise disabled GIC ITS
-  qtest/bios-tables-test: Update aarch64/virt 'its_off' variant blobs
-
-Pierrick Bouvier (1):
-  tests/functional/test_aarch64_rme_virt: fix sporadic failure
-
- configs/devices/aarch64-softmmu/default.mak |   1 +
- include/hw/arm/virt.h                       |   1 -
- include/hw/intc/arm_gicv3_its_common.h      |   2 +-
- hw/arm/virt-acpi-build.c                    |  48 ++++++++++++--------
- hw/arm/virt.c                               |  23 +++-------
- tests/qtest/bios-tables-test.c              |  22 +++++++++
- tests/qtest/libqtest.c                      |   1 +
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 164 bytes
- tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
- tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 212 bytes
- tests/functional/qemu_test/__init__.py      |   2 +-
- tests/functional/qemu_test/decorators.py    |  15 +++++-
- tests/functional/test_aarch64_replay.py     |   4 +-
- tests/functional/test_aarch64_rme_virt.py   |   4 +-
- 14 files changed, 82 insertions(+), 41 deletions(-)
- create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
- create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
-
+diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
+index f4ad4d33d58..a1abf584f0e 100755
+--- a/tests/functional/test_aarch64_rme_virt.py
++++ b/tests/functional/test_aarch64_rme_virt.py
+@@ -87,7 +87,9 @@ def test_aarch64_rme_virt(self):
+         self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
+         self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
+         self.vm.add_args('-netdev', 'user,id=net0')
+-        self.vm.add_args('-append', 'root=/dev/vda')
++        # We need to add nokaslr to avoid triggering this sporadic bug:
++        # https://gitlab.com/qemu-project/qemu/-/issues/2823
++        self.vm.add_args('-append', 'root=/dev/vda nokaslr')
+ 
+         self.vm.launch()
+         # Wait for host VM boot to complete.
 -- 
 2.47.1

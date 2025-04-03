@@ -1,85 +1,86 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4376857njd;
-        Thu, 3 Apr 2025 13:40:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCURwGyEcvMyf/b9BmIkT+hze5dtYEwl+lNF8Mwc+eGwAWnXJw3Imk8N8BM5WMjyOyXWj7dBIAg3kpMtrg==@linaro.org
-X-Received: by 2002:a05:600c:4513:b0:43c:fa3f:8e5d with SMTP id 5b1f17b1804b1-43ed0b5e246mr1702625e9.2.1743712832561;
-        Thu, 03 Apr 2025 13:40:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743712832; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4376965njd;
+        Thu, 3 Apr 2025 13:40:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3474ZvRR54pUvMrvex33jMxknq5xMFX5OvNr5yYXSOewvYjJq2Ps8Xy/G7jUqeSEDjhU6PPe1eoVjMA==@linaro.org
+X-Received: by 2002:a05:6000:1787:b0:39c:1f0a:ee0 with SMTP id ffacd0b85a97d-39cb3575da2mr680354f8f.2.1743712843005;
+        Thu, 03 Apr 2025 13:40:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743712842; cv=none;
         d=google.com; s=arc-20240605;
-        b=UGcpKPdOX0lGtUGYnBWvKMC/vJDKK3ruIccm6jucPzRDzKYlW8Hgqwxzh4r+vtS/Bi
-         1wy9DhDfIET/1g4aWC5bPOuwGFDUtJfgf6Y1rG4fvM6Y2TF48ZFsmsjpQq/KaRnDly5c
-         tsTBRfoZJOQmPDv0tJEXP6mR7Sqd7e/UprxA7leamRfLflPRn+iZG9KYumPjUMTGrROO
-         KrYIRPJsXQRE0V2OlYneKi9lRHLxVzSDBofIlbvX3QqStct01EI7o/Z6NFlNWGmN45Bb
-         XcOGx5x5XtXTN3A+uMsFV2jo1FY8MVbj/Lsdj6S2ghqrFdYWtAtO1vZpl06BdyKa+xOT
-         OPvg==
+        b=FenWir67b1yIZijPdRtjKXuXNrjK8gD7dsEh0EwW6+z5IgGyEW1cQZHFaZ21mX4bcP
+         l+SgNgOhtmA2W5sJwrPP8IzN0S7HjoXX3w9hTmdbzBBYfr/zmj7V7eBWWynCJbfKFMM7
+         TVhFa9mRwrPnXnGNEF+QB9yHZGt+yQDHCOpFc929tZ5SAKfcd3y74WJkTv8wbGsj+D//
+         dO9W2mUKpzACBfatF/1zMs3IVTJlIrTHSqiuroOVfT1uM8aKRNlF2AS4YRIHBLxhcIj8
+         3KQrfeiwDkFaT5enJo+V6zUQTO0b0dHfPSGooqn+EVQcfFThXF+maH+Uh9i7kkBElknd
+         x15g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Pxply8yIkySJTvDNIEdcC/CzMn2EFpNjcgIvnBNgm5s=;
-        fh=EkYFb6cPD5vbLdGl1L3Ui2u53JRTj/rqbP/EZu0+6pE=;
-        b=AOGmkSBAWtBTySXKClBZycS21u2dtT3XY1THYEotc0XJ3C28GYAeWV+WFCscTInCOq
-         HMsCrB6t7Yv7xJCOAx+LwcGWMDw6LUBPdoTMNSZLZZ4rrU3tQGK+H7CP9FFAL6wMKK4W
-         MNo8N6yTgkHTXR3/SdDLTasMrjK58u2FNMuwhbjd4LQKOK3jU+EFAZjSK89yjhy2VzYo
-         vvSme9v9ttcONHMM46Amic57NhcEzgkVu2ejA2A1kjlfD40BAvDANHCWUhEenbm0Z3uA
-         pQSISsn5yP1xJZAt4PBr4WqRKWAoiG4gxi5cZT5nukrhweiACZO+YLwOgO2WulVReGgZ
-         Z+vA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=91qw8dB7Eg7Eq+MHz4XIrej88B1FVRM9ctS9zjgiZGk=;
+        fh=jmpLWMsKwYMKPoiqL8ipl/sJVkdAhATG+tT+DAFndaw=;
+        b=i5mBQMhiPVKZinU5RPZiuxSXW8KWSkWHfQeOaDoNGPm64HfWMC3zdBrB7MGHOUPh/k
+         bXB7DC35wydDbVQrK6N3hKQOmXT80gLIJZ59XvMtISf8YT0fTzPrxjGWJPuxyi0s/oDu
+         TUZkscXZOWDxMI4jYodkmtz6VaTkgmwLBRPmfiHglRYxPcs19RcW/W9i0nl6phn/oRSK
+         UPhHE1kTJMZBoxRqTHMpmqKMDE58/N+VfBVbiZJhVJutBuartcXXv27m9CEDiCuMrmoi
+         r+EtVBqh7hgmE0qgqeTZ2/KgAv1Om12LtCKb0QXELKB3ULkQJAO5PY8ScM0yMenZUZdR
+         cTgQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YDLpQKID;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z54FoROK;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec34a9345sor9923645e9.3.2025.04.03.13.40.32
+        by mx.google.com with SMTPS id ffacd0b85a97d-39c3009677esor774900f8f.2.2025.04.03.13.40.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 03 Apr 2025 13:40:32 -0700 (PDT)
+        Thu, 03 Apr 2025 13:40:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YDLpQKID;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z54FoROK;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743712832; x=1744317632; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pxply8yIkySJTvDNIEdcC/CzMn2EFpNjcgIvnBNgm5s=;
-        b=YDLpQKIDIs3QgSw+NMmwo0mPCtFZRp6g4qMhYm3KKhjRRstyCKcax/HDMOlI96CxFL
-         TRRyFX5IDAKcXNnEuhrtdJDRYeWF/zoXjT1OZwahBBG64XmiNYe380S7OQogRm1gAHrG
-         9wTKPaa94WYoNP4ng6g4tL+8C3FchMkl7rLsFze4JQ3MQ96/d90EvLYm0yKun0aZriNC
-         sf9m8Mm2qq0kqUCdH0F6mzLbe/5T1ZkNkwc0glv1eyTPldaU4SqYZd/CS29ZrsLKMCX4
-         8TnAtkrEri98Wq7AVBohmJrVi4Slo91qWgLMuA3I20iEdEkJzyO6eyj6ER+6T5AKOGDn
-         sviQ==
+        d=linaro.org; s=google; t=1743712842; x=1744317642; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=91qw8dB7Eg7Eq+MHz4XIrej88B1FVRM9ctS9zjgiZGk=;
+        b=Z54FoROKX6E3ufmir9HF/Fm+poltuPd3xaB4w6hcNbm2XBnk217GgPFqmRCVs8NPlC
+         /Ojo9Ryt90YmeXIYKqaQXqsjehZ+npKtKfnMsqrje15VtOIEREfkJ6+vMylw4xPkVqO1
+         Uz91NZlLgwxDK/Uux53eZZ3JzC5b3crRuts4XNbwsWMWTQZHnY26YhWTgPCVh8dCCeIw
+         egMdVA7DTKWz+ic0whU4fH5UHFSKysiQA/vlvnQ0surPreOBwzZ2HF0o10RAA3O0kmgV
+         XcKV+gAmzToVtuR12Qu7HDuAxaJvdYNHq48p3glhu3zPnTSLLj1ATesNk7GMsVguIjTE
+         EkGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743712832; x=1744317632;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Pxply8yIkySJTvDNIEdcC/CzMn2EFpNjcgIvnBNgm5s=;
-        b=AGg3udNRGCtTLbudUvOnOX66zQDKazynAgEiTrPhLBHO76/YZm8IIhrqsMm1sni8tQ
-         LCDaInAQt5zoGdmth5aSW+D5TNhT1FZDVqN+9OTiKYlsM8fSG6je1sqAMN5X0YG9ify2
-         PmlQNPa69FKncCsl2LQPIHH5vo8kbYdTAQlPcR1d45AyO+mpFtY5mCG7JvGhdrbRtJ7s
-         iS4zWxSYaPS0l2Kt8nDlcESXxHd2fD3GSqLLMjSvbdl0L9wC5jITR56vnTL8xm/dcNiQ
-         +a/u+pJ4XyZgzo410HrVdN5To7c2tYyIm3zGlXF9c3h1e2+fGZq5IAlI1zMePhbpkw8y
-         0dFA==
-X-Forwarded-Encrypted: i=1; AJvYcCXzg6ASMRE7USmfnBY0dqIEMdeNKNDoMg8pL7hkzzs/Yqd6v49K+t4yXmXr4gYJ8rGzML7KK3K3oVULjg==@linaro.org
-X-Gm-Message-State: AOJu0Yy0ZOoi0fpDmD2yFc+QzLExsu9aAKqzHmJL9LJwJFdYSb6LmIZQ
-	QcDBNkxoIsh9Yj9zvlTuSYNmLIOhPDu29Ko/RSCr0Lxw3Lernk6zMgDJVOFQ2f0ysA==
-X-Gm-Gg: ASbGncsaNwM5FSvebTYOnvglmSXUFIUsj/ECIHKoodNOoFzNb8a46vIudyUsKbB4Z8n
-	zCnsknbuzpq8Z+FOoSv3kEPmMe2h+JqFK4vPbKaiig4ib3URH5JutsiMHcJyq1SgR5aQBn+hR3f
-	So2cBB2aou5YU3Zvt7+LZfZayqqChK5rPUFNYiZF5dRYgzWE7bI35GlGHhYcD+zk7AM2BE8Y4Ps
-	BJkVlGGp88mlBDUIomeMpgwK8Yxd9gRIcpqvkd6pAkLZVxdenQ0271pDmT4pQsWjO1DoORFhJ6x
-	ET/CANwY2l84UPhv+TxexuYvTtee53ex/t4DYoTnfDk5f/y+dRQNs91pshXeQvArJp93NSUxWLA
-	KnIV96e4inMH1Ct4FDpiov80y
-X-Google-Smtp-Source: AGHT+IEKRM+FhD1Ucca4TbxYi2jjwLUiasMIXpkB19F4cdRVuiVoRIDblnHtZtj9Vm1gZoe4WdThGQ==
-X-Received: by 2002:a05:6000:186e:b0:391:304f:34e7 with SMTP id ffacd0b85a97d-39d0de61c1amr174803f8f.44.1743712832023;
-        Thu, 03 Apr 2025 13:40:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1743712842; x=1744317642;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=91qw8dB7Eg7Eq+MHz4XIrej88B1FVRM9ctS9zjgiZGk=;
+        b=VToQSsqxUQ+DBQs9AsdHU+9S6d8pShnqmTa9nl+tFroc7pymsayKVsoHvMVCLg2bPJ
+         k+FYmkeC9Rcy+VuX9DgN0rEyHh2oG2MHni/8OOGMBbRzr9/p4nlyipJOasC9pjuWZWxr
+         EjdD8YElLTt5BiQ7K3Xahf1FTER6LZLrvYqSP7uqH0B9btTqC6GqKk3icvqzxnuVK/LV
+         BlTNzfdNQFsdTRA+GdhOic/wbgnz/XFrUyTApYewXxGunvAxBqdcR6LE9VcUHRZXANv0
+         7U0qEfrlJnBS19DggMknOdxJglW403hmCkOoO65SOmxJT+cK9GiIDOgwwzBU7LoMsxMY
+         wOaw==
+X-Forwarded-Encrypted: i=1; AJvYcCXd8tQs61xqI7vHbfjfM3f3naTWhiOWniLiB2Cl2Soa28Nm5sB3sXBP64fT8T1h9+BMNq3BbXoKuuzNjg==@linaro.org
+X-Gm-Message-State: AOJu0YzO0iuG4QebgI/3UhIrxeT4SyRKfFm25lpvVnegPV3tsFKzcSX3
+	AittsCD/7HkkP9xwZZVlbVnfl2l+7uW5ICP4y6SS1LAYQeLfMRORkrqdjCKxPqODSg==
+X-Gm-Gg: ASbGnctBIc6rHjIXgbuA1lEuu2ybrYRJNDTzFegBrnWG5GW5ynUqt3Lv2M6BdMBSO6+
+	MFNsMKHg+hSeVv8RPMqFs3xXcwlAPLtwM4EL7h1/8IM3SHvzqH2nBqnrxABOZsh2SatJVXxPvnI
+	dLVTYOD+uf1k1yFLwxjVJSuBbAw5nP/AQyII7GD1/IPRN2Ay/eOT+/ZsVF339BIoGePTo3hwTjF
+	gga6PX2AaQ8NrPUoE9Q78EGEawmtvzNrQ/0hd9BGiofJiOghm0+oxDkaB1gxlsiTVhwuXTMfpVa
+	hbH2dnsRE3ww8kKFBb7qmfqQoU2en/QG7X34fEIhu4rIFZTWSdHos39rMPDoI7gDe7SeLFmqsNR
+	PqRq+R42EXVYxYkycUGJZ77ykJlKGHW0+wM8=
+X-Google-Smtp-Source: AGHT+IF0VB25+QWZbsznnQinFc032J8n9BsALOb34HjpL7ukA/Tx7TYioKqQiRbt6yig2CP+o+N8Tg==
+X-Received: by 2002:a05:6000:188f:b0:391:3915:cfea with SMTP id ffacd0b85a97d-39cba93329amr612537f8f.38.1743712842401;
+        Thu, 03 Apr 2025 13:40:42 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec17b18easm30640115e9.38.2025.04.03.13.40.30
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec1663053sm30876275e9.15.2025.04.03.13.40.40
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 03 Apr 2025 13:40:31 -0700 (PDT)
+        Thu, 03 Apr 2025 13:40:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jones <ajones@ventanamicro.com>,
@@ -92,48 +93,66 @@ Cc: Andrew Jones <ajones@ventanamicro.com>,
 	Igor Mammedov <imammedo@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Ani Sinha <anisinha@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 v3 0/9] hw/arm: GIC ITS=off ACPI tables fixes
-Date: Thu,  3 Apr 2025 22:40:20 +0200
-Message-ID: <20250403204029.47958-1-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH-for-10.1 v3 2/9] hw/intc/gicv3_its: Do not check its_class_name() for NULL
+Date: Thu,  3 Apr 2025 22:40:22 +0200
+Message-ID: <20250403204029.47958-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250403204029.47958-1-philmd@linaro.org>
+References: <20250403204029.47958-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3xYWrk60GEPj
+X-TUID: tDo9Ytd0+HmY
 
-Since v2:
-- Fixed no_tcg_its inverted logic (rth)
+Since commit cc5e719e2c8 ("kvm: require KVM_CAP_SIGNAL_MSI"),
+its_class_name() single implementation doesn't return NULL
+anymore. Update the prototype docstring, and remove the
+pointless checks.
 
-Fix ACPI tables for '-M its=off' CLI option.
+Reported-by: Gustavo Romero <gustavo.romero@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/hw/intc/arm_gicv3_its_common.h | 2 +-
+ hw/arm/virt-acpi-build.c               | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (9):
-  hw/arm/virt: Remove pointless VirtMachineState::tcg_its field
-  hw/intc/gicv3_its: Do not check its_class_name() for NULL
-  hw/arm/virt: Simplify create_its()
-  hw/arm/virt-acpi: Factor its_enabled() helper out
-  qtest/bios-tables-test: Add test for -M virt,its=off
-  qtest/bios-tables-test: Whitelist aarch64/virt 'its_off' variant blobs
-  hw/arm/virt-acpi: Always build IORT table (even with GIC ITS disabled)
-  hw/arm/virt-acpi: Do not advertise disabled GIC ITS
-  qtest/bios-tables-test: Update aarch64/virt 'its_off' variant blobs
-
- include/hw/arm/virt.h                     |   1 -
- include/hw/intc/arm_gicv3_its_common.h    |   2 +-
- hw/arm/virt-acpi-build.c                  |  48 +++++++++++++---------
- hw/arm/virt.c                             |  23 ++++-------
- tests/qtest/bios-tables-test.c            |  22 ++++++++++
- tests/data/acpi/aarch64/virt/APIC.its_off | Bin 0 -> 164 bytes
- tests/data/acpi/aarch64/virt/FACP.its_off | Bin 0 -> 276 bytes
- tests/data/acpi/aarch64/virt/IORT.its_off | Bin 0 -> 212 bytes
- 8 files changed, 59 insertions(+), 37 deletions(-)
- create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
- create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
-
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index 7dc712b38d2..3c7b543b018 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -128,7 +128,7 @@ struct GICv3ITSCommonClass {
+  * Return the ITS class name to use depending on whether KVM acceleration
+  * and KVM CAP_SIGNAL_MSI are supported
+  *
+- * Returns: class name to use or NULL
++ * Returns: class name to use
+  */
+ const char *its_class_name(void);
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3ac8f8e1786..9b7fc99f170 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -741,7 +741,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
+         }
+ 
+-        if (its_class_name() && !vmc->no_its) {
++        if (!vmc->no_its) {
+             /*
+              * ACPI spec, Revision 6.0 Errata A
+              * (original 6.0 definition has invalid Length)
+@@ -973,7 +973,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+                           vms->oem_table_id);
+     }
+ 
+-    if (its_class_name() && !vmc->no_its) {
++    if (!vmc->no_its) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_iort(tables_blob, tables->linker, vms);
+     }
 -- 
 2.47.1

@@ -1,186 +1,166 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4236455njd;
-        Thu, 3 Apr 2025 09:31:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXRxs6w1Dui8juCd/B/uhMmfKzUP5kFdpV8aIrJqZACyX3lG1usW1jn7dpOv2ug7vBR3+qOrFB2SAAV2A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGqaDHQmNk6uuYafeJGRR4XIV38GgxU/Awa+vs1PbKjilYcGjskx6S54ZcyLbseDXkHFCM9
-X-Received: by 2002:a05:690c:4486:b0:6fd:41d5:de11 with SMTP id 00721157ae682-703e1601fc8mr938537b3.23.1743697909234;
-        Thu, 03 Apr 2025 09:31:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743697909; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4184812njd;
+        Thu, 3 Apr 2025 08:18:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU/cSgnLUUaINBhYme5Rt12EbwK8d9I5R0agMjJBWdyN0XA//iQ5VWVEh9CN33OTD+K5x6ck/EzVJ4u4w==@linaro.org
+X-Received: by 2002:a05:600c:3c9a:b0:43c:ec0a:ddfd with SMTP id 5b1f17b1804b1-43eb5c18448mr55497895e9.6.1743693513463;
+        Thu, 03 Apr 2025 08:18:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743693513; cv=none;
         d=google.com; s=arc-20240605;
-        b=UekcQXcjUk77i72xIbZfcJX/lu3EXQhDfUsnrlYeOLgKVFr35VS3U/SONLX5RD/5pK
-         hrDj+41EYi3AjcGQZBMXtgKsmA2XaDHjYpLprJjpJCR/4VT+I/pEf7WU4I2YFXBuGedh
-         BnH/1D5KqO2fl69vI8Wn0EBssWCqNg6ynvvMOKqeCPTjUe9mf4PQiqVKoOYUX3Bq91kf
-         iXnKGQAsFrZ9aXISQtQ8Mdyhy5gUKyO8Ju7wVIo5PDWdRnuUQ0KzWpbhrJJ32FtWetMm
-         BMt0xj+5i7zq6c7L+mWbXrx8N+FusJqUcrxG1M2PCjHcfhw2m1ayciR4PzmVRlS4N3k0
-         9Jew==
+        b=SkFR0qU1tLV26jFpswyczNnMBLSP9Zw4HyA44+1dMf4yquyJdv04qVyWHkrs2N4qH+
+         c6lamwRIbGrd+XiAHYu+vJZmlcC8UsmJqep7bje9CEP9iHorOkFcf/H61kv+Ke4Wjmsn
+         jHXoGZc7AZK5oWjTg7rw+6738ni8/LYqWpVp9MBly+HWkGESYyozN0JVOPopVpPuVMcQ
+         Tjdeec/By9fBmz6rxVi6esmpgHmJzOXR04ggLAkM2FbPm1GgK7zk/FaKq0OgM7pxR6Es
+         KuaW1zp0/Sc9XaUMpaqtICrYYUVqEI5WOkNmbumGv96hmKKz1GVTaIrNgkGHNqTG8bE9
+         lGIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=MjM4pClLZIU0ZSFwgs4qTMDFVSuFSu4RDYnKmKQYdrA=;
-        fh=zlHVD/cTaq0hR6YiPepdoo/yrjvxwzjFQXCENLcFS+0=;
-        b=YmgP2BwtdQoMC4Gi+yedyZMVRaoHVuKeleyXhnVTB4upEn8rKtqq7ZyoZnAGLaBM14
-         EaFSKArf0obwyB+O5JLfcvYoOZk4/kwgwHYmmApMUkvdZ283ysSxJRR6c/GsZmRyj7S6
-         GrVHfbmNn3cm7CzlTnMeuS7PPjyCCLEnPCZ61LK2M57uIuVRldvHA6mwWxJJ8wvbhGIA
-         xORe+VTHs88U2GUJEjq1BdHCrVHgXEsTxxUX8wuQ2SzZQaEDg80HzUD6KqMHOAPOBbL9
-         texUoDY6XpvCb1g3g7qnv8k9wmhFs4rRPwieXw1B9zxFf/YvfRRZmww4xG20cA09n4UX
-         GD8w==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
+        fh=3YK621noR+tbjRkZj61V3nc1BcDK7q+YTVWHpvIyn/A=;
+        b=ZVcPpbWRPplcgg3Kd68Ahm6oPFl/C6F2esS+hLmqoyrBGBCCfeTsf6y49DczUWqkSc
+         vMzhuCp7CNBXAxSmeDH0DuJ4c9TE6hi3SDedOTNjzj13s3pq/cYC9Uz2Gz6NUd7dhsOm
+         DfxhKCBS7tSCJb4Dpa3/CX0LBjJ7gXJIjyFocm77TlsHzA1a7i0ScFysqp8W3vlXgRmy
+         iHb1mLh3P0bmZWYRHJztYq2oLrbizpAaOa9gcy+7BcE1mk2iJDIkN3AJ4mqP7YfN17ZG
+         y9Z9cY8ZyPkTsPxPQFFkbzZzkqewj9xvKoi+cupSfZKL8lIwS28sDKHpCLYvL6PiYpKu
+         Vzng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xaew5SWz;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 00721157ae682-703d1e6a1a1si27651457b3.105.2025.04.03.09.31.49
+       dkim=pass header.i=@linaro.org header.s=google header.b=opP68IEM;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec24ebdbbsor8532385e9.8.2025.04.03.08.18.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Apr 2025 09:31:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Thu, 03 Apr 2025 08:18:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xaew5SWz;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1743697908;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MjM4pClLZIU0ZSFwgs4qTMDFVSuFSu4RDYnKmKQYdrA=;
-	b=Xaew5SWzgmkYOWw+iCBQw5J7poUywJpBlS8JRuG5hRsPRod/ejIt98AvR+c84LzGliSB3a
-	xyAv7qEpzqngwGBLt8v4/LgL336HQ+nCffxpgMLOxqTTOFC8RVRLhOE3mKdLqE3oMudMBb
-	lzY4hhQRx7R8IkR9DMPscyParwpFpgU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-376-sMBvNcOJMoqQJ3Uu4fw0-g-1; Thu, 03 Apr 2025 12:31:47 -0400
-X-MC-Unique: sMBvNcOJMoqQJ3Uu4fw0-g-1
-X-Mimecast-MFC-AGG-ID: sMBvNcOJMoqQJ3Uu4fw0-g_1743697906
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-39c1b1c0969so1081542f8f.1
-        for <alex.bennee@linaro.org>; Thu, 03 Apr 2025 09:31:47 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=opP68IEM;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1743693513; x=1744298313; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
+        b=opP68IEMTsCw5oZSoF1nIk2wfncrMVT+fkXw0Sq1eIpTJ0YjXvUOuQF48FrH7f0AgQ
+         y+4meu3rikk+qqC29sfH0zaFoA+RR1ktq6AKStwk+2BhgR3zObFtjlTheY5rViwaqYAg
+         ePtgQ7OU7jkfgkg8CppNE/M/pQ7LB/JsUQWp5Xppdw6UtDJK6m6NlHtMQ6zYNxt1oDT0
+         ngVGw1a/3X4sjPFjmfPbI+Bs1g7aSTxBMm2b3+YC6sNwmB2viQtJldRm5jOo0c7QcKW5
+         4okeln+Yf+2yivFC139Iz3WYZq99l79ZxLPBvg10wk+RRVOZyUTbPHw/TZlBStySVZ/A
+         wEhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743697906; x=1744302706;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MjM4pClLZIU0ZSFwgs4qTMDFVSuFSu4RDYnKmKQYdrA=;
-        b=cAlBK9OPB5iSDmH/o4hR4PMkcNMc+8fNjdrTcY3yq0aGFf74NTe+KfyAoEVrmCXBZQ
-         Si8XLZkww5PAViNVntk2EwxO9tnkeiv6ClhSoWH4fZicQ43chOvm4ox/ZfHJfN7TWxRm
-         4nDM1PTxun3jPATwR7R8Em/MNRgYZ1roB2huLr/6VfHsAy5REO3dm3E+34lIowasztQE
-         0kkltJHegr/vKudaI6vtl9GbDf5LnLNIPcmCWpwgKgOp99QjRJvD6rFx+ynEYTQ8M7pW
-         XDWwPnuud13RumOyKbrKWmmAZYsJl8oO8gGguljgkx1GRo3KGdhX/vIrCXAqLODpz93g
-         KA/A==
-X-Forwarded-Encrypted: i=1; AJvYcCWyLEiJYyCzMvKzN2S/kHdeIUOZMWnGH4H0Bw8AeWDcG3D4lg9CPcydNStxYCHAt0WiDNVJQY8DQehCYA==@linaro.org
-X-Gm-Message-State: AOJu0YyhLJ4SUptZzNPEKUPdHoi8F/cj/3OBaYJYqP+6lOUNvfSpR/TQ
-	0GGQ39KKc9fjUcFP3UkCW0kcStAnwLX6XKAefSjeijQzomhBymVlsZIu+7ANCE+GeSjMaOhvA8l
-	iXB2PRr+sOdXwsXQQT1aEd3cLtrnS+MV7pU+cZP0NJ8gyqvNjcibf8g==
-X-Gm-Gg: ASbGncvnc3nPRb6/ZYGQTX7SzB/fn7ORaH3j/JyUolWZAFg7FWcrkwl6WdUgGjr1YnD
-	fNXE9TPfabq5/oL1/QMm1tozJvzCYoB2MUzr1q9imXX/vxp85r+bYeadPVIAN1MVSc5KyKNvM4k
-	KwTmsfpwBrEkqDwOMigrAGLG5Gw8Ca1Z+5i2me9XSo3DL71JDmx814YgoM8mxh341prf9k5z2Wm
-	H4FbMDFnCgHBQ3xxt/zeb0mIUg3viD6tPY4Egl5TRnztxxMDMUnyKXCPI23vzW/C+pw7JOfn3/x
-	KdE4CQHwjw==
-X-Received: by 2002:a5d:64cd:0:b0:391:255a:748b with SMTP id ffacd0b85a97d-39c2f94bf88mr3080662f8f.39.1743697906133;
-        Thu, 03 Apr 2025 09:31:46 -0700 (PDT)
-X-Received: by 2002:a5d:64cd:0:b0:391:255a:748b with SMTP id ffacd0b85a97d-39c2f94bf88mr3080621f8f.39.1743697905671;
-        Thu, 03 Apr 2025 09:31:45 -0700 (PDT)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301b6a1esm2243463f8f.45.2025.04.03.09.31.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Apr 2025 09:31:44 -0700 (PDT)
-Date: Thu, 3 Apr 2025 12:31:41 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+        d=1e100.net; s=20230601; t=1743693513; x=1744298313;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nk7HkSl6ytbVk4kl2foDviXAGWH6GjCYLhLVx8jvfi4=;
+        b=Dr0+aKHj4/W07HGGwBmx2ez//LSDevIIktok/YVIpKIXEqOQy8cDXAfFt8EtHAs19Y
+         t65X/dvOorbGfu2OsixrpRUBuB+1XMnd4mYm1LIy8EqiWBOtJiubU7DoM26290M7t7q5
+         jsvvt7HrxbJzGUWyaH9Oih+nDINXbz/WTduIEF/VpnDQwY++Hebu0yuG3XSSJ62Ua/Y+
+         F8lSJ0V5c5xmiE/p7Ky/FwuWC1lYzN9FEMEI+vr7JQk/h0pA4e0J4RJYEep0oWyw9LLH
+         iIKM/bd17krytr3X9VOs4sI5W9knX68i02WexIuCpWmT/3j5adMEwo69JDIOx2x8b9Zo
+         gplA==
+X-Forwarded-Encrypted: i=1; AJvYcCU0RiMWdgBwxVYXhR3y5ofbE2iPO735bJ+TVOgxT5mtsVsRFRKpBKNwdtYJaO+BB0TQ2fwqCdIdwPqjrA==@linaro.org
+X-Gm-Message-State: AOJu0YwFFisMYCSO0N4T5dLGPSo6BCBLua/gv+RdjY+l0Up2DgL0UAOZ
+	G2XaEi2kphlgjXXqfPHjV7rwYfo4MNfre7lcW4qmqgqJ8N5Tqf3FUHJvlaaaGljiWA==
+X-Gm-Gg: ASbGnctXGbbtOplQTFmieYV1tRGy46OJYs33zJvljTviVmP0ijaCkinpd/zdweYly/n
+	3L8INR/io1yxhZpedfKp7u08KR6oqkWUvocmSAJJOobndaa/Ojn41rHl95dW1c7YInxuMtKrzkF
+	72E0gMDEv1jPp86yKm3+8Po+qfLNYNG4Slq2RzgzHM+7ZqO4O7PIpgAKNHf7yd0xYniq5jW3aOD
+	4Fofv3M5z9PNx296qZO5cGYwT//XA59xjz99OWlRERI/bUgeBMu6L+Bx+21icNzED7dVGlU/Ucb
+	9kUAb3XNQ4Wi/jRlxuGc3nlFB3ceDheQAPFpy8co91c7RziEocZo53I0+bdkc9w5R8KoDlCyk2z
+	Jag7Wd3Yn2yj4UBaE6lk=
+X-Google-Smtp-Source: AGHT+IEbJTCBFrbSyXuSCuQB8JSMdT9Rr0TuWMBudPsTzJaJXw7BLufu4Oeg1Yocmd8P5m1fXjju0g==
+X-Received: by 2002:a5d:6d8a:0:b0:391:4835:d888 with SMTP id ffacd0b85a97d-39c297e526amr5638439f8f.42.1743693512823;
+        Thu, 03 Apr 2025 08:18:32 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (145.171.88.92.rev.sfr.net. [92.88.171.145])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301ba2dfsm2074928f8f.60.2025.04.03.08.18.30
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 03 Apr 2025 08:18:32 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Laurent Vivier <lvivier@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>, Udo Steinberg <udo@hypervisor.org>,
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Udo Steinberg <udo@hypervisor.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
 	Andrew Jones <ajones@ventanamicro.com>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Fabiano Rosas <farosas@suse.de>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: Re: [PATCH-for-10.0 v2 00/14] hw/arm: Tests & ACPI tables fixes for
- 10.0
-Message-ID: <20250403122948-mutt-send-email-mst@kernel.org>
-References: <20250403151829.44858-1-philmd@linaro.org>
+Subject: [PATCH-for-10.0 v2 00/14] hw/arm: Tests & ACPI tables fixes for 10.0
+Date: Thu,  3 Apr 2025 17:18:15 +0200
+Message-ID: <20250403151829.44858-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-In-Reply-To: <20250403151829.44858-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tGzs4PFXR0xRia65JhNDIADa1EtL0GJ_9Qk_uBxxqlY_1743697906
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: HPXAERXtaZIZ
+X-TUID: 6nkP3b0SB1Oy
 
-On Thu, Apr 03, 2025 at 05:18:15PM +0200, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> I tried to gather all the hw/arm/-related patches for
-> the GitLab issues tagged for 10.0.
-> 
-> First, trivial ones fixing / disabling broken tests;
-> then disable the VMapple machine (not sure about it);
-> finally fix ACPI tables for '-M its=off' CLI option.
-> 
-> While polishing the series, I noticed MST mentioning
-> the ACPI changes are likely too late:
-> https://lore.kernel.org/qemu-devel/20250403100406-mutt-send-email-mst@kernel.org/
-> I'll defer that jugement to Alex :)
-> 
-> Regards,
-> 
-> Phil.
+Hi,
 
+I tried to gather all the hw/arm/-related patches for
+the GitLab issues tagged for 10.0.
 
-Patches 1-4:
+First, trivial ones fixing / disabling broken tests;
+then disable the VMapple machine (not sure about it);
+finally fix ACPI tables for '-M its=off' CLI option.
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+While polishing the series, I noticed MST mentioning
+the ACPI changes are likely too late:
+https://lore.kernel.org/qemu-devel/20250403100406-mutt-send-email-mst@kernel.org/
+I'll defer that jugement to Alex :)
 
+Regards,
 
-The rest indeed seems late.
+Phil.
 
+Philippe Mathieu-DaudÃ© (13):
+  tests/functional: Add a decorator for skipping tests on particular OS
+  tests/functional: Skip aarch64_replay test on macOS
+  tests/qtest: Skip Aarch64 VMapple machine
+  hw/arm: Do not build VMapple machine by default
+  hw/arm/virt: Remove pointless VirtMachineState::tcg_its field
+  hw/intc/gicv3_its: Do not check its_class_name() for NULL
+  hw/arm/virt: Simplify create_its()
+  hw/arm/virt-acpi: Factor its_enabled() helper out
+  qtest/bios-tables-test: Add test for -M virt,its=off
+  qtest/bios-tables-test: Whitelist aarch64/virt 'its_off' variant blobs
+  hw/arm/virt-acpi: Always build IORT table (even with GIC ITS disabled)
+  hw/arm/virt-acpi: Do not advertise disabled GIC ITS
+  qtest/bios-tables-test: Update aarch64/virt 'its_off' variant blobs
 
-> Philippe Mathieu-Daudé (13):
->   tests/functional: Add a decorator for skipping tests on particular OS
->   tests/functional: Skip aarch64_replay test on macOS
->   tests/qtest: Skip Aarch64 VMapple machine
->   hw/arm: Do not build VMapple machine by default
->   hw/arm/virt: Remove pointless VirtMachineState::tcg_its field
->   hw/intc/gicv3_its: Do not check its_class_name() for NULL
->   hw/arm/virt: Simplify create_its()
->   hw/arm/virt-acpi: Factor its_enabled() helper out
->   qtest/bios-tables-test: Add test for -M virt,its=off
->   qtest/bios-tables-test: Whitelist aarch64/virt 'its_off' variant blobs
->   hw/arm/virt-acpi: Always build IORT table (even with GIC ITS disabled)
->   hw/arm/virt-acpi: Do not advertise disabled GIC ITS
->   qtest/bios-tables-test: Update aarch64/virt 'its_off' variant blobs
-> 
-> Pierrick Bouvier (1):
->   tests/functional/test_aarch64_rme_virt: fix sporadic failure
-> 
->  configs/devices/aarch64-softmmu/default.mak |   1 +
->  include/hw/arm/virt.h                       |   1 -
->  include/hw/intc/arm_gicv3_its_common.h      |   2 +-
->  hw/arm/virt-acpi-build.c                    |  48 ++++++++++++--------
->  hw/arm/virt.c                               |  23 +++-------
->  tests/qtest/bios-tables-test.c              |  22 +++++++++
->  tests/qtest/libqtest.c                      |   1 +
->  tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 164 bytes
->  tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
->  tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 212 bytes
->  tests/functional/qemu_test/__init__.py      |   2 +-
->  tests/functional/qemu_test/decorators.py    |  15 +++++-
->  tests/functional/test_aarch64_replay.py     |   4 +-
->  tests/functional/test_aarch64_rme_virt.py   |   4 +-
->  14 files changed, 82 insertions(+), 41 deletions(-)
->  create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
->  create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
->  create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
-> 
-> -- 
-> 2.47.1
+Pierrick Bouvier (1):
+  tests/functional/test_aarch64_rme_virt: fix sporadic failure
+
+ configs/devices/aarch64-softmmu/default.mak |   1 +
+ include/hw/arm/virt.h                       |   1 -
+ include/hw/intc/arm_gicv3_its_common.h      |   2 +-
+ hw/arm/virt-acpi-build.c                    |  48 ++++++++++++--------
+ hw/arm/virt.c                               |  23 +++-------
+ tests/qtest/bios-tables-test.c              |  22 +++++++++
+ tests/qtest/libqtest.c                      |   1 +
+ tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 164 bytes
+ tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
+ tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 212 bytes
+ tests/functional/qemu_test/__init__.py      |   2 +-
+ tests/functional/qemu_test/decorators.py    |  15 +++++-
+ tests/functional/test_aarch64_replay.py     |   4 +-
+ tests/functional/test_aarch64_rme_virt.py   |   4 +-
+ 14 files changed, 82 insertions(+), 41 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
+ create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
+
+-- 
+2.47.1

@@ -1,86 +1,86 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp5087018njd;
-        Fri, 4 Apr 2025 15:36:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkSEh0dNEW6EJi03kMem9kSvwWWHVRvSCvF96Ov7uzXChSs8hrWvWr/q56SxgPweTUVS0J+wZQ040E8w==@linaro.org
-X-Received: by 2002:a5d:648e:0:b0:391:2c0c:1247 with SMTP id ffacd0b85a97d-39cb36b2a7bmr4710121f8f.1.1743806163764;
-        Fri, 04 Apr 2025 15:36:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743806163; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp5087056njd;
+        Fri, 4 Apr 2025 15:36:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVlYTG1FuNb48qJKLCja/PJpy4WI4x6VfoGmUX/OnRxbX/oowOf+BaYQONmF8+c/2y/WSuivSCAI+ldVA==@linaro.org
+X-Received: by 2002:a05:600c:1ca4:b0:43c:fcbc:968c with SMTP id 5b1f17b1804b1-43ecf842872mr40701065e9.7.1743806168207;
+        Fri, 04 Apr 2025 15:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743806168; cv=none;
         d=google.com; s=arc-20240605;
-        b=Pc3uFU2e/PJwckZ4tqFUHpAImILP9JhTGRRFXrxly7YKuF8mF/pHenMw5xz70onwYW
-         K1zmAQ92RsBmU/QtVistHaWyBAeF+aGzF25C7g+jM5eBMb/4LtSSA4LDuQKYOPgf+PuD
-         8hh5s1oc+XMIyAfLt9unBhSItx/zYTujcjlvD0k+3hEJk+YQGMkonzqd6SgjBGawv+0e
-         5mIc+fF98wbvW8osPIaM+l9TXtw151Nn1OoJStXvzNY09YXv/+HBTTIlDAWzVv2fTblo
-         YPM/8j19G9lugxk+ieFRuVTQ+HeypXBl92hSG/e67wRj05H22VV7+JpUX17KWedm3zHx
-         5rqA==
+        b=P++X1m5OBz5M/V7u+P/f34/ZHg5Ac4AwG3BnaoEg80+q0U9qxxXXqUb5lVs3UEueT1
+         WvEJzQVzK5IfRvY9TEzu3khpKgveT0cn+vHzEAyhvkxjRETKw3KlhqVD8es41WriSJut
+         Pa+BILIrw1GAy1YICDjX301bJYLKld8XulDF5nvNCVzYfEI+YUaj+Em1A+04QItNOvv3
+         UkCSFcnYeu0aU8X9SqDZMWf1i+SYh0MF77ARJz9bMaYu/ztyRJhaBQn7QDOZ7L0WTBLO
+         iKnbiH0xCQ4zzhu3Thn9OargdOstTA7um1dFubcBAAlBR0PuVgFaEv+K7S+C6Zg9/mus
+         fFWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UbtmmP0oOdI2W/ScvwaiV+7++EOQsRdn8KA47Nc8msw=;
-        fh=cN7fZPBtKZJYKMD/u8MEHQ9KqrYbBk7t5hCaOaVMzKo=;
-        b=Cf6wj7DlKBoW53KCLz2lhg0gDa2RCAoIQ4HHPVlP8LNx86odgBActbZq+XS6lU+Gxt
-         h2AJD1wGbMKuMfdWkIqH5tpm6VYKLgjnLwz2TMzzk9Y2p4KrDyFvMbYhnbh5xfGNHeS/
-         5llWTOl9rEq5a4PT1ONEmBB88jbOsCP0kmSCT0J41xv/svFzyJ+Lt3YGc5WVRLNhz4CH
-         FoigwBoNiqKbVPM5M79N0HIsddSirCY8SQToyVuharXi3+I6J5559T8gON686RxZc/mn
-         B+y+1X3Cmc/iN/G2hs2B4lglrymsSUdhWm4de6JgO91pbMxL4eykeoMrbIQPf7pwC8Fo
-         J6dw==;
+        bh=XWF7rdm9ZKpOTMOhQjFoDhQRH+RhkK3qjttuQ8CqxOQ=;
+        fh=PEN5QsIqeYO7+0zXjaB+HOzq7elEf+Y2w2L98UgCB4s=;
+        b=c6kkuLcvq/Y+rDNY2qnina3rW5EOej9SsXBsUkOBT4Xvd1JkUjro7LbzwMaFuvAki9
+         uABlYHCcFimzCayAoin4YJPk32vmJWGDTsvF5ecJPmzQPBbvc1KNya93mF9pbYEJaklq
+         OwZUeBgeRYdDsszIOwLyt81kPpxys1o+hqap8Q+Gc0l99Cae0+Ihs9yMxcuR7kOKHgTE
+         a/RIzUJTgoMjCQwMnDoNbwZp5W9rWmXlrx/Syy8dcGo4s/5Emp/44F2Pnb8/dfWu4BcG
+         HIytO+uvqY0zOP2ctaLcHCoHzFV0dxOzX+GaY4UWhTMgycde067QeH90KAtegeaYbqk4
+         yaww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZeUBMGE3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lkFmZXcV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec2c6f89csor20835635e9.11.2025.04.04.15.36.03
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43ec2733c1asor23286835e9.2.2025.04.04.15.36.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 04 Apr 2025 15:36:03 -0700 (PDT)
+        Fri, 04 Apr 2025 15:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZeUBMGE3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lkFmZXcV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743806163; x=1744410963; darn=linaro.org;
+        d=linaro.org; s=google; t=1743806168; x=1744410968; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UbtmmP0oOdI2W/ScvwaiV+7++EOQsRdn8KA47Nc8msw=;
-        b=ZeUBMGE3nsVJXN+VIHwpsuZ9NBKQiymmB01UzGrPioYmrLh25+CSZmpbCHPPBKP1Bk
-         IaYh1P0p30WLd511UA/gJp/gKMuzZoWd6DJOMwD8ZYHpILZRM2qDXCBaKScCEbaKMtcR
-         kzLGzTpOBePrtI6vBgllnceHUvBsAwHeMopMHKRDkZDHqd1pJdARp/VKUHbrvGI/O+Sj
-         n4wnwtl5DGsK2r0u8OGOLkE3WtN5YeQGZkvT7ksbXVtVRKaQppz51dY78byKlgYRgktr
-         76ZLSW9/rFNOC9OLyijuSJ/+jVD2R8KGmni7eS01iIKweO8hwSKN8PGkgQ7Eg2TkJr+f
-         67bA==
+        bh=XWF7rdm9ZKpOTMOhQjFoDhQRH+RhkK3qjttuQ8CqxOQ=;
+        b=lkFmZXcVnRaOrdnFBimDJcXFaFs1b5lr67TAXc77JHUkpx5UBBdn6L4BbIIlSsFLBZ
+         fn4LE2FoISg8mBRpj+DT3L7zubY1IEM2tT0cTTyGQYAISRhMN6EjBkyLLtKDxWI4xlLq
+         6xwSe/1aiK896gNYWb7ix/mmljNueMQdRHokVe3Kys0n5iPeNbn1Zd6t8TciyX90pkAX
+         V8/WFAPc2urjxv6bN9+eLIHlRxiE+Eia/D8xF+sWv1tYcIET1jqNP/5xrAmSDPKZScQt
+         GDa8ezy22vgG9vdCzy4+hEMiWPkIcASFAo/OvRbIoKjF44jxoytYDaZJtmrnID4inKPq
+         XM5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743806163; x=1744410963;
+        d=1e100.net; s=20230601; t=1743806168; x=1744410968;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UbtmmP0oOdI2W/ScvwaiV+7++EOQsRdn8KA47Nc8msw=;
-        b=JbNtf8eo6nVXeZCWr/DEjkQE8xwViotuc4kupDzmvR6LVgd8EZ/k/drliYQcx+fFZ8
-         +CW9sRVe3/YvbNHJvosryOv1TmyhoEnpWMwpysGo4BAmiTfUvDrJ+FWgRbPikjaT1pR8
-         v9i2elTii9bk8QVgX4NDYxhoacRCtI66j5L2y/zkOEqp8s+VyoILz5qpN5pd/WB613XX
-         v0iBvyFsf/nCHNO0E5ec8hyiW9k7ZTwmg3GZi3+cJEVD/kJ5MDgW85DYCpUdo7+6RrsB
-         Fy8VPoYH9oJanRVjcNS7m1A0aJVEyQEF0tLr2PF3V1vVr0kRNgvQrbhqaRUG/aDkDiGK
-         v6+A==
-X-Forwarded-Encrypted: i=1; AJvYcCX2Lc70p5bm7BAPtPwRRyf4U72rm3nNyPRJxGOL3xJfjum9I7sTQcP5SYZ35fVGl2TFp7GazGHfvImwWw==@linaro.org
-X-Gm-Message-State: AOJu0Yzk+jD86VcfV9X+Bu09eM/BfrxUWJ7ktjLVnWmkhbEUUmwZdiWX
-	gzoqD8zxM7Q8Ed/yzGkwr3HpYfui0akwhDeEIL5tkcXuaWZHjS2sumdATPd5JDRBpA==
-X-Gm-Gg: ASbGncuFNqLnlni/m54obbH/+V8oCFthJCKRvUTpj5k72XTEinRwNcpT4KEJFLqZcz6
-	n38V7IinWainkp1Zkspyq9jwQ+kE1pGt9T49ZIdF9Yim/XGUheQkdgOLJ3TrkM+s3UyoJkAdVdN
-	CwiLTkCb3g67wrYl4452EDbosM60FVLljcooV+VRW304YKXHZ8JjLzzD01kEdWDLLm8wBAsoZzg
-	pa+ObdYGvtLpOQwiQPz6acoLpEeCaXy+07bcBB4AQtAOrLVw5f+ahOQJMPYuUuli7YqirJ6I6Rk
-	+vmnyCXdGE+PgjVTSa65rxXZ3QHcmeE3sDr6BfcshwDMeSAhXkIsYKtxtezOCdj5ECCt+Nv+04S
-	NTKbOyJkrCBRnmxaRt28QNrgQ
-X-Google-Smtp-Source: AGHT+IGSdr7DxbVwhuVhiX68wKER9VgzAYsNnLkEibQmdNkzqlLvtbByQegi0We/lY/E/p0KaHYHdw==
-X-Received: by 2002:a05:600c:1e03:b0:43d:683:8cb2 with SMTP id 5b1f17b1804b1-43ecf8ceb2dmr46985395e9.14.1743806163033;
-        Fri, 04 Apr 2025 15:36:03 -0700 (PDT)
+        bh=XWF7rdm9ZKpOTMOhQjFoDhQRH+RhkK3qjttuQ8CqxOQ=;
+        b=SJZQ1oaj7jb7TxK2xY6nYlf1Z0OZOp6cuJjg8vT+GoXcK1KIqSm3NK2ripwn42b+0B
+         sqXK8kKO77lUVmbQ2IxnpUGOuUa07Vrb40Tfb+hpD60m9MeJ6lB22PHEayFUcNHJlas6
+         tyF6M+IXPkTFgm/jnsJ2YMYO1GWRMWLbxqtYftQYA0Ax2boE0jB9p948EOD50Ww+1w/n
+         +hwO85q4dQU0Z143f1DkHs1k+tsN/uwIntfcziUVYpSK4h6gWGZdl2oVd2zbGCeoKAjE
+         ne2Xe+GKUi+BsdE0tcqWTGc1C18UueUS8mA2aayrCRx1mGyrhZvg08fxaBvNE8rVg2E+
+         Sq9w==
+X-Forwarded-Encrypted: i=1; AJvYcCWxOMGCCY4iwUIGCDPLdYOujLX+0nqtkfH8DXuFdgD6C3WgzQvY+uRKnbw1yC7RVpDieMToZxtCWLL9HA==@linaro.org
+X-Gm-Message-State: AOJu0YxhD3KTcKtxZzzcdfLgmknxXGqN1yDW6emEhYuH3yUSNFRs8Yo3
+	uyVAKCbQ96SJymsyhwO0t7hTXITm/nSvXSwv1dzZcKDzIzxcRkhXoBeXp8CPPCiM0A==
+X-Gm-Gg: ASbGncvU8MRz2+lli91FN/2BfreWA3ZvaXPn10mcNfAlAQb4giB22VAeyWmgbFHGyPz
+	nWTAy9u0x0cJCawr+hgJhzxGagg42Vu8+KfFabEK1EnXjPOyj+r5ENt1pE6Nvw8wwLVvBLw4TpZ
+	0JHkjUsR2VShjJPaqWnEK8meltLYkabosIWLLTLV84FJMstI7zWLEN03mulFJOnQDWmddDQK1Qy
+	6gcwNk58NAZJ+lyRG39/Dx+a2/xYvWvEaAMrsuvb2rNMIzxXMwbiYtG53iWRnDhewBaZkrlJXMs
+	KAcllEn/BOY/V9KCCtlH2ajwNJMa+p/V9msXo4B9mrVdK2TVXEsFunVgC22+IDl0oLyIdCyMyDw
+	PyiEklXRyceB3CW6ihVD0Px/S
+X-Google-Smtp-Source: AGHT+IEJDeuVCQqd5+26e5u+Xkja1NbGYrALPQ3A0LUnM6TxcRo2jV+hsTPIJ/bYCN4WFg+E5YYW/g==
+X-Received: by 2002:a5d:5983:0:b0:390:e9b5:d69c with SMTP id ffacd0b85a97d-39cba93bc86mr4406816f8f.25.1743806167717;
+        Fri, 04 Apr 2025 15:36:07 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec342a3dfsm57630445e9.4.2025.04.04.15.36.02
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c300968a1sm5446597f8f.11.2025.04.04.15.36.06
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 04 Apr 2025 15:36:02 -0700 (PDT)
+        Fri, 04 Apr 2025 15:36:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -89,136 +89,98 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 8/9] linux-user/arm: Implement MTE stubs for 32-bit user emulation
-Date: Sat,  5 Apr 2025 00:35:20 +0200
-Message-ID: <20250404223521.38781-9-philmd@linaro.org>
+Subject: [PATCH-for-10.1 9/9] target/arm: Build Aarch64 gdbstub helpers indistinctly
+Date: Sat,  5 Apr 2025 00:35:21 +0200
+Message-ID: <20250404223521.38781-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250404223521.38781-1-philmd@linaro.org>
 References: <20250404223521.38781-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dBqTQNjrKtqe
+X-TUID: sDyUCatzvXNP
 
-We want to build MTE code once, but on linux-user it calls
-arm_set_mte_tcf0() which is only defined for Aarch64.
-Expose the declaration on 32-bit ARM by renaming
-aarch64/mte_user_helper.h -> arm/mte_user_helper.h, then
-add a stub in arm/mte_user_helper.c.
+The Aarch64 gdbstub code is guarded by checks on ARM_FEATURE_AARCH64
+and isar_feature_aa64_sve(), only enabled for Aarch64 CPUs.
+Remove TARGET_AARCH64 #ifdef'ry and build gdbstub64.c once.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- linux-user/aarch64/mte_user_helper.h | 27 +---------------------
- linux-user/arm/mte_user_helper.h     | 34 ++++++++++++++++++++++++++++
- linux-user/arm/mte_user_helper.c     | 13 +++++++++++
- linux-user/arm/meson.build           |  2 ++
- 4 files changed, 50 insertions(+), 26 deletions(-)
- create mode 100644 linux-user/arm/mte_user_helper.h
- create mode 100644 linux-user/arm/mte_user_helper.c
+ target/arm/internals.h | 2 +-
+ target/arm/gdbstub.c   | 4 ----
+ target/arm/meson.build | 2 +-
+ 3 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mte_user_helper.h
-index 0c53abda222..63f63abff62 100644
---- a/linux-user/aarch64/mte_user_helper.h
-+++ b/linux-user/aarch64/mte_user_helper.h
-@@ -6,29 +6,4 @@
-  * SPDX-License-Identifier: LGPL-2.1-or-later
-  */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 5e549b95e14..5fd2631e8e2 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1682,7 +1682,6 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
+   return (1ULL << 31) | ((1ULL << pmu_num_counters(env)) - 1);
+ }
  
--#ifndef AARCH64_MTE_USER_HELPER_H
--#define AARCH64_MTE USER_HELPER_H
--
--#include "user/abitypes.h"
--
--#ifndef PR_MTE_TCF_SHIFT
--# define PR_MTE_TCF_SHIFT       1
--# define PR_MTE_TCF_NONE        (0UL << PR_MTE_TCF_SHIFT)
--# define PR_MTE_TCF_SYNC        (1UL << PR_MTE_TCF_SHIFT)
--# define PR_MTE_TCF_ASYNC       (2UL << PR_MTE_TCF_SHIFT)
--# define PR_MTE_TCF_MASK        (3UL << PR_MTE_TCF_SHIFT)
--# define PR_MTE_TAG_SHIFT       3
--# define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
+-#ifdef TARGET_AARCH64
+ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
+ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
+@@ -1692,6 +1691,7 @@ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_pauth_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg);
++#ifdef TARGET_AARCH64
+ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+ void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
+ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 30068c22627..e76142e8ddb 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -482,10 +482,8 @@ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
+     g_autoptr(GString) qsupported_features = g_string_new(NULL);
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+-    #ifdef TARGET_AARCH64
+         aarch64_cpu_register_gdb_commands(cpu, qsupported_features, query_table,
+                                           set_table);
+-    #endif
+     }
+ 
+     /* Set arch-specific handlers for 'q' commands. */
+@@ -514,7 +512,6 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+          * The lower part of each SVE register aliases to the FPU
+          * registers so we don't need to include both.
+          */
+-#ifdef TARGET_AARCH64
+         if (isar_feature_aa64_sve(&cpu->isar)) {
+             GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
+             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
+@@ -546,7 +543,6 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      gdb_find_static_feature("aarch64-mte.xml"),
+                                      0);
+         }
 -#endif
--
--/**
-- * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
-- * @env: The CPU environment
-- * @value: The value to be set for the Tag Check Fault in EL0 field.
-- *
-- * Only SYNC and ASYNC modes can be selected. If ASYMM mode is given, the SYNC
-- * mode is selected instead. So, there is no way to set the ASYMM mode.
-- */
--void arm_set_mte_tcf0(CPUArchState *env, abi_long value);
--
--#endif /* AARCH64_MTE_USER_HELPER_H */
-+#include "../arm/mte_user_helper.h"
-diff --git a/linux-user/arm/mte_user_helper.h b/linux-user/arm/mte_user_helper.h
-new file mode 100644
-index 00000000000..0c53abda222
---- /dev/null
-+++ b/linux-user/arm/mte_user_helper.h
-@@ -0,0 +1,34 @@
-+/*
-+ * ARM MemTag convenience functions.
-+ *
-+ * This code is licensed under the GNU GPL v2 or later.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#ifndef AARCH64_MTE_USER_HELPER_H
-+#define AARCH64_MTE USER_HELPER_H
-+
-+#include "user/abitypes.h"
-+
-+#ifndef PR_MTE_TCF_SHIFT
-+# define PR_MTE_TCF_SHIFT       1
-+# define PR_MTE_TCF_NONE        (0UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_SYNC        (1UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_ASYNC       (2UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_MASK        (3UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TAG_SHIFT       3
-+# define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
-+#endif
-+
-+/**
-+ * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
-+ * @env: The CPU environment
-+ * @value: The value to be set for the Tag Check Fault in EL0 field.
-+ *
-+ * Only SYNC and ASYNC modes can be selected. If ASYMM mode is given, the SYNC
-+ * mode is selected instead. So, there is no way to set the ASYMM mode.
-+ */
-+void arm_set_mte_tcf0(CPUArchState *env, abi_long value);
-+
-+#endif /* AARCH64_MTE_USER_HELPER_H */
-diff --git a/linux-user/arm/mte_user_helper.c b/linux-user/arm/mte_user_helper.c
-new file mode 100644
-index 00000000000..6fd19dc1073
---- /dev/null
-+++ b/linux-user/arm/mte_user_helper.c
-@@ -0,0 +1,13 @@
-+/*
-+ * ARM ARM MemTag user emulation stubs.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "mte_user_helper.h"
-+
-+void arm_set_mte_tcf0(CPUArchState *env, abi_long value)
-+{
-+    g_assert_not_reached();
-+}
-diff --git a/linux-user/arm/meson.build b/linux-user/arm/meson.build
-index 348ffb810d7..95e8c078e29 100644
---- a/linux-user/arm/meson.build
-+++ b/linux-user/arm/meson.build
-@@ -24,3 +24,5 @@ vdso_le_inc = gen_vdso.process('vdso-le.so',
- linux_user_ss.add(when: 'TARGET_ARM', if_true: [
-     vdso_be8_inc, vdso_be32_inc, vdso_le_inc
- ])
-+
-+linux_user_ss.add(when: 'TARGET_ARM', if_true: [files('mte_user_helper.c')])
+ #endif
+     } else {
+         if (arm_feature(env, ARM_FEATURE_NEON)) {
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 3065081d241..503d106b588 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -3,6 +3,7 @@ arm_ss.add(files(
+   'cpu.c',
+   'debug_helper.c',
+   'gdbstub.c',
++  'gdbstub64.c',
+   'helper.c',
+   'vfp_fpscr.c',
+ ))
+@@ -13,7 +14,6 @@ arm_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
+-  'gdbstub64.c',
+ ))
+ 
+ arm_system_ss = ss.source_set()
 -- 
 2.47.1

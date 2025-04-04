@@ -1,140 +1,138 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4739571njd;
-        Fri, 4 Apr 2025 05:19:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvO1PPrqMjoXpYxzcJpjIpO1rW+41Jjq9+KYO0JT5KgojQah+G32lJR/tUoOA/gv87tqdq06VwpkxJUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFCVn+xh9vDqy4J3syMvI0sIVLKGa2zwpxcnfR8eoigOkaguX02BfOVH3iwy5RWDLPqQOS
-X-Received: by 2002:a05:6214:1d2c:b0:6e6:6599:edf6 with SMTP id 6a1803df08f44-6f01e770938mr49193776d6.34.1743769188705;
-        Fri, 04 Apr 2025 05:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743769188; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp4800037njd;
+        Fri, 4 Apr 2025 06:54:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWYxxBs4xyo2joFmDdpIk5R7dCGOO+2ixgatKkKS+r9AgLNzGgzrfH8/RjyN9R9ZkqUwpLQ+2Y31T074g==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2nHRbBXvdGMye7iHHwQqjRa42feMUnUz8wTi88Elo3ukJPHJupkH3nx8tXn1tjBWlTfLc
+X-Received: by 2002:a05:620a:4628:b0:7c5:4caa:21af with SMTP id af79cd13be357-7c774df9625mr452888585a.53.1743774872428;
+        Fri, 04 Apr 2025 06:54:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743774872; cv=none;
         d=google.com; s=arc-20240605;
-        b=kcrVKpyWTT5mqvDP66sDOQWV0Eyb+hlykU8HoeAZ9LZjwKpMuuo8NqsxYMBQ49U+38
-         qMeKMI6PW69zDxylH4sqNobr4TXtjuvV/sFbwOPWxRyMAxQBtsnP2ksO4lgwt/Rz3KS8
-         eDn0CtKMrp9lPQnU8vgrX6cM0g1A/qKX0ac78YVl5CYIOLKJdAfAxPdqGO0kMdn133T6
-         M6eiwboLlT99USzkqZf96pOIQL3QtBDEpNsa8TkpmSgKGQgFsQOdLsJ8dLuFjYsEcuvL
-         iZqPc1+hzH79kSNXoBB0ThZdgJPFXeISOLW2WjYj89hfI4RnbWFvYJIL2jpVKCExrUaz
-         RdmA==
+        b=YFPJL+s1V2b87u1J4kvL/awlQeMixj2UFvMlWOO1P1ZGTN0cA8GGKwg+HVOYpPOSTf
+         1PDFpG8kqT7476mEhkArEajfccBsoJH5Nyxm7kkf+a/ltLXZbN2YmkpZASwHsiEMYVN4
+         U1CTovysaqhkg7e+BGTkFGY2IGG2WL6bE0r7Vh4hZVrLj7saymSFi9pOjIoXMhIZAURU
+         lriCGfiNmppixHMmSvYM/c0We+Gmbwf5NjLSTE1eAh5IcVvw5ToJibOS9VvDzuyJYxD/
+         zSgbU6jeHhihhEreRrNAiwAN3pJu7iU1mC4LVvhhTGQ/N6F92zL4RPsj1obVuqYmuexk
+         6wSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=FOVEc3/kq/cbqlQj7CW1gO5ElwGD9uK9JSThet8Wpow=;
-        fh=AFQ7BOryRLVmLtL6AdO5VqBKfxbHR3jMXqlGJaY/RAI=;
-        b=cvkjSdeEKQ3tMAj4jD4QzbxbBFlo/zgBA6+0Dy4/XyVR7e9CcAxiOrLVgPXVgmmZHv
-         d4Dgeaiml1KyTKOFYnOEC2tS52WDxOfXTvDARqKGafXvDz8PY7JCi5+zo44H7R0ODz43
-         oORy3WCZ1ih6rg88TMtGh6+u3nzB3EqP8B5gqCa4Ec4BvCQTRERTVIIJMTDQdZqU2P4m
-         KRKL1RkbV4AbWF5e6sAHy1Qu26o6XRjHiZ7yIgNshyDCmtTUIwginSBXNhAvtVIyz1Lq
-         Uvm00ZjOmUdWJB43LWgQPxHk+Cf+QPIeIwcuck/MBjlyNig57G76CSKii+sDv3GsYNr2
-         Vm/g==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=PfJ/l1ib59j42XNupdJ6IZOP2MqY8z7KqDdgb6LDlho=;
+        fh=wmBsvpgjpPT/Ov6m3AMdAeOeE6fswH94wCIJKeio6R4=;
+        b=H3ntEIvfn411hrWxlxMVU3Ylujun1CW8Ersj8YI63mhb2Kuv9RXTPUW4CAO7t6y76L
+         P0mapQ78Y6BbuAfwwsf2c32KsMPJCaJ8Le9LtdclqvmuTZKI4SKrY77cOzYWKe0RGqOp
+         WQyotBdU2ptZv2H4xc5C95gbB0y3q2G83l3jnaVdY6idBpbD4ULiq7iU9h2qitv87P4J
+         0TedNjzwvzBWk/uU9u4ntSy77b6sJJxZ8Kp664bJ2dREjajB6kTfGHQp/5RmZZ97vnul
+         tBcAR3Wmkeokeiqa2gKmnXL+MBqHpvgHrtRgLd4tcTrQVUtVcGLN54+xMQAsYwQPZE26
+         78pA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e/YNKB0z";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00ee29si32158936d6.122.2025.04.04.05.19.48
+        by mx.google.com with ESMTPS id af79cd13be357-7c76ea8fd52si332948785a.400.2025.04.04.06.54.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Apr 2025 05:19:48 -0700 (PDT)
+        Fri, 04 Apr 2025 06:54:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e/YNKB0z";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u0g0x-0005Rr-P9; Fri, 04 Apr 2025 08:19:15 -0400
+	id 1u0hUU-000647-3h; Fri, 04 Apr 2025 09:53:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1u0g0v-0005RT-Gn
- for qemu-devel@nongnu.org; Fri, 04 Apr 2025 08:19:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=VGIb=WW=kaod.org=clg@ozlabs.org>)
+ id 1u0hUR-00062s-Ol; Fri, 04 Apr 2025 09:53:47 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1u0g0t-0006hD-Eh
- for qemu-devel@nongnu.org; Fri, 04 Apr 2025 08:19:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1743769150;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FOVEc3/kq/cbqlQj7CW1gO5ElwGD9uK9JSThet8Wpow=;
- b=e/YNKB0zfrd1w+Pj2yulYet3gg5RgCPuahvKh5D2GbLHBgu9vZRJUwcqkja1CF1rCjcLGk
- 0IthpO5FA4d+iTv3ad6eIqqBlrqARqzr1CTaZpKPQCqu2dg7ulwh3fSrDmG6jOms4sDeih
- 7Ff2Nx1bDXMILLbSk60pjiKuT+4pm4g=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-333-NT15UWvuPnamJSDMXd-jTw-1; Fri, 04 Apr 2025 08:19:08 -0400
-X-MC-Unique: NT15UWvuPnamJSDMXd-jTw-1
-X-Mimecast-MFC-AGG-ID: NT15UWvuPnamJSDMXd-jTw_1743769146
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3913aea90b4so948443f8f.2
- for <qemu-devel@nongnu.org>; Fri, 04 Apr 2025 05:19:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743769146; x=1744373946;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FOVEc3/kq/cbqlQj7CW1gO5ElwGD9uK9JSThet8Wpow=;
- b=LSTmNrDSFvIxD6U35MNXhBderXa1+vseqUjj5DoRpseLgQWQlKEhxLNmYRcabcLUmo
- Bj5Bt4y5tBqrRL/CNfhn4LPACZJzBGrJlBeB0sJBqK4WvXgfj+i7eGNHH14882gOwbU1
- BmAwS+5UpqqB+lCFB/fDcTXYt8dglJO3j5HZpD4auDfv6HQRPTNv3m2HTciJHwXCHW36
- z3xTAyNQfAlUvb7RqaKxNPgM+j3025+y5BLj1Dmb9es027VP/OOzSGFIBCUZssbLquh0
- f4j+5yqFC4OOnLH8ktFWBa5m0dWv7HTvQ9qXuOoXjnDC/EXXuLNEbfvjFZ3tY2r80ajQ
- 1KJA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXTlBVdd70+tccPYfovBZ/SOvsDP8gHOpAnlvRfSdzkob3oz7RWSr7wjZXxNYMYkpwjzzhjHd4fr+8a@nongnu.org
-X-Gm-Message-State: AOJu0YzRjBWjlShiMRAkO32VtWA3euY6LlFFHYumBx9CtWtABXnSJcAN
- ETEAGCoR9+ZZNkJrXoiZa2cr1WdsVZbs4FM9eP/zii1O5MMS8jI88hnu4VbdPleon83N7A5YM1T
- oPYPdBVkHvV2gTotLTDn3Ulh007JLEkDijUOSzt2ceU583jaeaDR1
-X-Gm-Gg: ASbGncss19bbfwtNGIvWYWTf3l6kjliYC0qF77qySRuLq9bP3KLbSiVRRcry8lhgP4u
- mDAJ8NNBfvPXRmph20jX7FT2f2getRROMOivM6cTM5Wif6g3QV+q7kcaUjmz5mhG8LLIgFs7mWP
- /nNQTFEAILI3I7wcy88m8RSGpegvBVnp/W7nYwmnzfcx/gWkYS7BH4Fcct9hkdmOmFIud/mbN+5
- +YcSn+Hk/tkjrisCI3ipeDAz3kkdZBu7r4Y8GL2BMdJuetlTxuXYCWMjxkvNa0fzZLNTjXXE8r9
- UTPA+a86Ya1/vj2+OfaiNPPXN8Zc00huHSCt
-X-Received: by 2002:a05:6000:1a8d:b0:38f:37f3:5ca9 with SMTP id
- ffacd0b85a97d-39cba97fd3emr2463344f8f.50.1743769145906; 
- Fri, 04 Apr 2025 05:19:05 -0700 (PDT)
-X-Received: by 2002:a05:6000:1a8d:b0:38f:37f3:5ca9 with SMTP id
- ffacd0b85a97d-39cba97fd3emr2463315f8f.50.1743769145501; 
- Fri, 04 Apr 2025 05:19:05 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39c30226ee4sm4321197f8f.93.2025.04.04.05.19.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Apr 2025 05:19:05 -0700 (PDT)
-Date: Fri, 4 Apr 2025 14:19:04 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eduardo
- Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: Re: [PATCH RFC 0/3] Attempt to add GHES for x86
-Message-ID: <20250404141904.711f8aa3@imammedo.users.ipa.redhat.com>
-In-Reply-To: <cover.1741094512.git.mchehab+huawei@kernel.org>
-References: <cover.1741094512.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <SRS0=VGIb=WW=kaod.org=clg@ozlabs.org>)
+ id 1u0hUP-0003Y4-J8; Fri, 04 Apr 2025 09:53:47 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZTg774WY6z4xN4;
+ Sat,  5 Apr 2025 00:53:39 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZTg7142tRz4wcr;
+ Sat,  5 Apr 2025 00:53:33 +1100 (AEDT)
+Message-ID: <c193e64d-6ce7-4e5c-bb2a-3e1d3f4f143e@kaod.org>
+Date: Fri, 4 Apr 2025 15:53:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.028,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 0/1] hw/misc/aspeed_sbc: Implement OTP memory and
+ controller
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kane-Chen-AS <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ qemu-block <qemu-block@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250402091447.3381734-1-kane_chen@aspeedtech.com>
+ <9171629d-a386-4971-802b-cd26cc42e194@kaod.org>
+ <99497c16-cee4-4098-9971-f61ef7174412@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <99497c16-cee4-4098-9971-f61ef7174412@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=VGIb=WW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,66 +147,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1of8lEq7UxUR
+X-TUID: PYY/WInY57r0
 
-On Tue,  4 Mar 2025 14:30:55 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On 4/4/25 15:00, Philippe Mathieu-Daudé wrote:
+> +qemu-block@
+> 
+> On 4/4/25 14:06, Cédric Le Goater wrote:
+>> Hello,
+>>
+>> On 4/2/25 11:14, Kane-Chen-AS wrote:
+>>> This patch introduces part of the Secure Boot Controller device,
+>>> which consists of several sub-components, including an OTP memory,
+>>> OTP controller, cryptographic engine, and boot controller.
+>>>
+>>> In this version, the implementation includes the OTP memory and its
+>>> controller. The OTP memory can be programmed from within the guest
+>>> OS via a software utility.
+>>
+>>
+>> What is the OTP memory ? An external flash device or built-in SRAM ?
+>> If the latter, I suggest using an allocated buffer under the SBC model
+>> and avoid the complexity of the BlockBackend implementation and
+>> the definition of a drive on the command line for it. The
+>> proposal is bypassing a lot of QEMU layers for this purpose.
+> 
+> More of the former, a built-in eFuse behaving more like flash. So using
+> block backend for the storage seems correct to me. 
 
-> Hi Igor,
-> 
-> This patch series comes after:
->    https://lore.kernel.org/qemu-devel/cover.1740903110.git.mchehab+huawei@kernel.org/
-> 
-> I'm basically trying to add support for error injection for x86,
-> without success so far.
-> 
-> On x86, the notification mechanism is different: it is via QMP.
-> Yet, from what I saw on Linux implementation, it works on
-> a similar way to GED. So, I ended implementing a notification
-> via GED.
-> 
-> HEST table build seems to be working OK on it, and the
-> error injection notification for x86 is called. Yet, OSPM is not
-> receiving any notifications.
+How would you define the drive backend on the command line ?
 
-microvm already uses GED, so GHES support with GED is fine there  
+> However I don't think
+> the implementation belongs to hw/misc/aspeed_sbc; ideally we'd have some
+> abstract (or interface) implementation in hw/block/otp.c -- with methods
+> such program_otp_data() --, completed by hw/block/aspeed_otc.c.
 
-However ps/q35 have already acpi controller, and I'd rather
-add GHES support there instead of adding extra acpi device.
-and use GPE as event delivery mechanism (like it's done for
-hotplug event delivery)
+I was imagining more something like NPCM7xxOTPState or BCM2835OTPState
+and not SiFiveUOTPState.
 
-> Could you help me figuring out what are the missing bits?
-> 
-> PS.: there are some things at the code that require polishing,
-> plus there are some extra printf() there to help debugging.
+> Current patch might be good enough to start with IMHO.
 
-use tracing instead of printfs
+Have you looked at the next patch and how the backend is handled ?
+I will let the block people Ack this patch in that case. It's
+beyond my skills.
 
-> Finally, we would need to add x86 CPU error event at the
-> ghes script, but I'd like to have at least something that the 
-> OSPM receives before improving it further.
-> 
-> It can be tested with:
->    $ ./scripts/ghes_inject.py arm
-> 
-> (Ok, this would be generating an ARM processor event , but
-> I guess Linux would at least mark the event as read, even if
-> it doesn't recognize it)
-> 
-> Mauro Carvalho Chehab (3):
->   acpi/ghes: move use_hest_addr out of acpi_build_hest()
->   hw/i186: add support for HEST table with SCI
->   Add a GED device for RAS notification
-> 
->  hw/acpi/ghes.c           | 16 ++++-----
->  hw/arm/virt-acpi-build.c | 12 ++++---
->  hw/i386/Kconfig          |  1 +
->  hw/i386/acpi-build.c     | 75 ++++++++++++++++++++++++++++++++++++++++
->  hw/i386/pc.c             | 41 ++++++++++++++++++++++
->  include/hw/acpi/ghes.h   | 25 +++++++-------
->  include/hw/i386/pc.h     |  5 +++
->  include/hw/i386/x86.h    |  2 ++
->  8 files changed, 153 insertions(+), 24 deletions(-)
-> 
+Thanks,
+
+C.
+
 

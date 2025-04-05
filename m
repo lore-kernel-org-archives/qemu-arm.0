@@ -1,121 +1,130 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp5523882njd;
-        Sat, 5 Apr 2025 12:14:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXDxEGta0+/DLbCzx6gxB9n8UFSYUVjgTi4uvv4bPoHisivpbO5gdPgDXUPRmR3Fq5xMEIByq2VMDDIwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFW/jHx974o3hlUlqItMt9om+jsDugXh2m+rAoD29I43iEDLQw9zdeg2ntgpr7NZ+Q8Et8B
-X-Received: by 2002:a05:622a:1a88:b0:476:a823:50cf with SMTP id d75a77b69052e-479259310cemr116426251cf.2.1743880493634;
-        Sat, 05 Apr 2025 12:14:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1743880493; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp5570927njd;
+        Sat, 5 Apr 2025 14:49:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMisGg8MDel+Y16VrAXBTreKWUEJB2AMOKqJxm9uEwPaWDO13rFlltKHH8DofJCXWYyJO58k5Bqk1YDw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGDqO1fY/UkLWCGjjhlU8laFy9sJI5Ig81mQfGMuIV+TPYZ7QcqnbLBzBX0pRUnmdli1zR4
+X-Received: by 2002:ad4:5e8c:0:b0:6e8:ebfa:42f9 with SMTP id 6a1803df08f44-6f0b7412fc3mr65989466d6.16.1743889788698;
+        Sat, 05 Apr 2025 14:49:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743889788; cv=none;
         d=google.com; s=arc-20240605;
-        b=YF6TZPlhUH1YdQjjhKUIvycaRHl/sE+ZqkVqzdKGZIQecYTTxPGol3WEXNpRYFOKjx
-         PxiIvBZE/BLHj5Fz190K7bXG3KlHwxy1FGgH6BYs/hOuflKCmWp+YvSNM6dlVTaYA1WS
-         7E55hgJkbl9xuobE72jtzpjUhWob3b0BE1UliP2Ch0f8fZaQ7HgodqR5yY7Vwqd5Fl+0
-         qaqUxgWNKdMcWR5rHiwk8MBXnMXq7FPUcNY3V/LYBLBT+RsoAahNdmlYdQ/AcnoypwG0
-         mtzqAn47QrBAQjBXt/wGvrI78SDraWI48sBr4x9sqkys+Xw+xbSuAwwrsAXGNtJGthNo
-         82EA==
+        b=Lfcd88Q7XNTnipydKZ8GrS14kXcYkxjxjS3+lVvT757zmA3XhyUsummQue8CTyMoiM
+         n8vtn9xt79QUF1vD3GBiTnh7u1bYxB+L1t1Zaj70DOcuiL19J0UtPEUtxy99HqMZu07r
+         xrwXEUg12LplGTyL6DD6wKZ5eiWH4cQ9r46irEIwYB1qSRPezO3fvdGSc1wi+D/zQIPW
+         01FLoxlkeKnQBcFPxfgvWlHXT/bW3SSiRJ5Aa6FoSrSvvAJPqoWPN92iBh8Tkl0KkXtb
+         Xh+ohv10Zut1+izNiRBdLrxxNIOLglje98/e/7QOMp3mbCTvRmaBZJB9epGqw9CdODsN
+         R62A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kQdGrrcbZWKpYAgus0JPPTI/OwvFHzzmXF7Yn31LZPs=;
-        fh=geUp7mCOzh9gGl5SbVSyFiYiXIeY89W+nb/FiEg6Ns4=;
-        b=ItUNqh/en2zKDSBcRrYqRqhwzFntx5ZODdbEebDts3kEPOtQMKs+s1jXwe6iV+D3BX
-         Dn0X4mTf75TlYHSQ12jcw99TXISVudaWveRzuo+xQ2AWldJuiTGRB9H5nzcozPUPYRYQ
-         D6oRJtYVz+RTvE4ThjlSoKrFdBv6gf8SSACH1gOD3kFn+m9+uAF6Qm+OfVKlReYB9N2L
-         EelOQufG14wUxyar1PNd03WQayOH9sttmXzynFCjL48WP6QDN/sdCW5LNYj+9NKOaT5V
-         2Tkw5/efDrG64a3bw+TcvbBxAOIosUKyiqjX3WlzDd4iRUvjnFzTezxoItq6H5zsURnD
-         tcBA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=vvSf9TCswsvHlHP1HmqYppAppZQUi4irJNJ4qlnuZD8=;
+        fh=GZa4rN4hXvolSKREkkte1WnV2BN3vNhVufNkQvYLw3c=;
+        b=c/LumV8zO3BQHDoA0M0EkvO9inQTNGjnncNDBzPY4f+wq4BUZtxwTr1dmH/LGjt+cA
+         715ejht1yLa326DxW19wCo0DiGAj7UankLMRMlXOc/2OJrXiM8Hdz1AKyj4lt920GI7g
+         Geejs47cMJm8Ak077Wki4nv6RAmzxWMtd7iu/4PRaywoMnlBEPivgu1d3pE1kwMp/IRY
+         R2jM4pUAEbmLzCtoAPpCVeOPY8y9rZ4B+L8Tuu053MG1zXt9xu2uw37d+8fXiXxDOgo1
+         W3zM/2Y42meGr5GuzX7lRWCDdONSmvnTWnjTI7Ez8v0tzOD0996KaPwWYL+uRDGVgpM9
+         OxnA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=J8v2G86Z;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CJh+R3mC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4791b190696si53977041cf.339.2025.04.05.12.14.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f143aedsi57150626d6.394.2025.04.05.14.49.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Apr 2025 12:14:53 -0700 (PDT)
+        Sat, 05 Apr 2025 14:49:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=J8v2G86Z;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CJh+R3mC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u18yE-0004zp-9U; Sat, 05 Apr 2025 15:14:22 -0400
+	id 1u1BON-0003Sj-Kw; Sat, 05 Apr 2025 17:49:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sjg@chromium.org>) id 1u18y2-0004z0-DL
- for qemu-arm@nongnu.org; Sat, 05 Apr 2025 15:14:10 -0400
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u1BOE-0003RL-DU; Sat, 05 Apr 2025 17:49:26 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sjg@chromium.org>) id 1u18xz-0007Dq-02
- for qemu-arm@nongnu.org; Sat, 05 Apr 2025 15:14:09 -0400
-Received: by mail-il1-x135.google.com with SMTP id
- e9e14a558f8ab-3d4496a34cdso10244515ab.1
- for <qemu-arm@nongnu.org>; Sat, 05 Apr 2025 12:14:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u1BOA-0004NW-Fm; Sat, 05 Apr 2025 17:49:21 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5e61d91a087so5135936a12.0; 
+ Sat, 05 Apr 2025 14:49:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=chromium.org; s=google; t=1743880445; x=1744485245; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=kQdGrrcbZWKpYAgus0JPPTI/OwvFHzzmXF7Yn31LZPs=;
- b=J8v2G86ZUpWjtg6N1tC5v3yiSxhjEvHpHQWovbMW7jn/Hq9iKazG/4rK8MEUuPv9Cr
- dpaF0q61fZ+UTm6MLv+ZejROQRhgM12DxrbMVh9+Qtoolp0VoZxdDgph8rOwA3h2aDCl
- Fpn04C/lHuM+qW+9m2pDlaqkx+SlQuJqQ3rAs=
+ d=gmail.com; s=20230601; t=1743889755; x=1744494555; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vvSf9TCswsvHlHP1HmqYppAppZQUi4irJNJ4qlnuZD8=;
+ b=CJh+R3mCbFkp82qMuWiCdPkFXYr7JAJZqKeVCR5SlJ4gKPvIAApoyycWGAw3L1SU8B
+ ErGwZm/LVW9RbPNOYaXRaQR0EWixVj9pSLLbU/O/ILrdS3+iJbTqDHG1UmK/aZtP43XA
+ E7W8z0zlDmsDU2ni/qvS1YJMV77/XzWeqvbGBDbVSJdtjOLvSsGPtWBYyuPUy7F1ITe1
+ K9ixYnyoIkrJK1VppnhWS5uEzWiM/cdwY5vL37CCeS+2c60Y+XbnHzhBMTN5rPE5Ajk8
+ OG2t2ruqIzfoVkmPN2SPEldLjAwZFfuqG/dqeS18QJYWNOYZh5Q8a179vQ7WdrAufG4O
+ fxKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1743880445; x=1744485245;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kQdGrrcbZWKpYAgus0JPPTI/OwvFHzzmXF7Yn31LZPs=;
- b=uXv+P1VWfj6b43ccSMfO/jlvvsE7ghT6mM8zgAi5I/15L8vNEps1X9XddhD/hzQjeE
- nTajq+62z7nG4vMe5jnv1L9z0bPGSDuvcYw+xwXq+n7DNaUEwdBjqrOJLlErzSywD23q
- hS9NgNHg6bzkKAcvOiJlazYvT/MuI7WoLmF3MNFfRetlcuoYV2teUwSygJJvmxotkCIQ
- VA75AWI5b2rB7H+dO9vi9y5eueO2QvuqKnYVougBosJ6lU/jlg+jqQV1yjgSry+y/C4g
- HwjP/YJhvlgudmb/m4e9YcDa8JPL7Q/yzgUH0FgCFQiztCMdhdQK70HnJJ4SuR9/3Zkq
- xgPQ==
-X-Gm-Message-State: AOJu0YwNtENb8MvPoLF5256q5zuaM9KYZl99GtcQxfcUpLIDamm4hY3e
- xQ3aDCnKkhQB7DtoXLjzRN1mcWV03m4CneWRHzsXmBdy+t1n4Hc6K70O7g+vAw==
-X-Gm-Gg: ASbGnct1EkhPEk8i26wG+YiC1BLqXTaZaxEdoQYfDMBLXzk1WrPaSHWj0yvkgEwDcab
- IWg2JdWMNJM9UCghWaXylR0rOeE7xw6ViXau2bTLj8Z/gHN486HAaZ2wB7VBamm4ALF7gd0msjY
- Hm5QTOCYE3bP73wSDEoQznhDjqj1phtNBnafCdE8Llw1+dXGLjzp7SEWV/rE93MVl+ycQEstp/2
- by0LygQAdZ8ON43fxMXLoytmL1Zu9bRPzQxjcUONgb1N51vKDFb/4lC9UeO9ERAS1X9c1mF+wLb
- wMfQ7WH4GFerQASGPJYdSBT4chMXUD0DtoRm7wBFgiuS0Ex1VrYXA5R86UxByF3fovWQWWKhP+Y
- p4r2UZA==
-X-Received: by 2002:a05:6e02:2402:b0:3d6:ca61:5f67 with SMTP id
- e9e14a558f8ab-3d6e576be66mr64977505ab.14.1743880444934; 
- Sat, 05 Apr 2025 12:14:04 -0700 (PDT)
-Received: from chromium.org (c-73-203-119-151.hsd1.co.comcast.net.
- [73.203.119.151]) by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-4f4b5d40515sm1448176173.120.2025.04.05.12.14.03
+ d=1e100.net; s=20230601; t=1743889755; x=1744494555;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vvSf9TCswsvHlHP1HmqYppAppZQUi4irJNJ4qlnuZD8=;
+ b=kmHi25hHVuw5qdxIGRWYUAVZL7UdVLkmxRdqmJUDehfXE85tWtEROZv1O0cARg2B5p
+ jhtaCOdO4xGnl+o+tR6Oo1P3zCXn50vu7kYm/4imzCtcvWWa2KWC3x86G1S7dJ0wBWrq
+ WQKUDClbpKmlDguYPC0qColfa0XUJO0G7CdSLPXGHkR816UmNpKFXIWnl1QI6xD9mMIE
+ s1t9/xxNOh8GW+HbEtUk5hIlsSXV0G2TR1Vf6AxcWqDdUOUizVqlz6UyLbgqYCXOnTiY
+ fNCs6YVHbfozFsDMCgqq7YCBfgBoSIiQQ2YxGHst6D8SiwhQ0lNBnEw2htRlIoPjgLvR
+ hFjA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUd7mcke1kgYSBAU+jkHhUSMiEnZVQSeWIkMRGHlsIcZ0TNHnVV4qp8k8KoLB9ZZAttqVPfD6AV6Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yw1gOMQLV2Cn1sKCTS1j9GhDLuM3o16aVqhIMm5dh3ep/MqN+6X
+ bGJtqcvUrf7iA0J3QKDT8K1wOQFIzjWYT7Hw7/DCgT16RLB1hVY1JiXdtg==
+X-Gm-Gg: ASbGncsxirxgK9Lf9eEczUXoW7DjkCUkLKO/ymzz7vfYSjkv/IIvcMM8RskcOVoNPcq
+ Isd0QNn4hUFNBvSJ7RXfQt3mRlmZLKDEmktN/zvaVY8z253iSbGJjwycHrac13zQan4EONBuqOK
+ g9AVOCIr7T14BTLrkL2PJ0k1XdQKxIdaUmDGVz2Es1kqRI1N4vcp/46XghNXaD9jIMXG2D84n6C
+ Qcfy5MQR71oV/7ug5oXoAAbC4VodIwpEI3qkDdgSa+SQ2vF6iUGA6mDzSMhbqgsdffeS77ZRrrv
+ QjQ8Jnm9jfQdlngMb1PuZuIjd3WXz1yr5WojrrEc+p3dmXkRB4g5UNQSH+4uF6W5DFVNk74HRtq
+ B3pmfyCZEOP8EjKk3Hrg0Cv+8XlroorogQ3phcWGEcKRJSFzwBRyjLEZR0GHOtoIU
+X-Received: by 2002:a05:6402:5187:b0:5e5:c847:1a56 with SMTP id
+ 4fb4d7f45d1cf-5f0b3b8f022mr6647717a12.10.1743889754988; 
+ Sat, 05 Apr 2025 14:49:14 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-1bf0-7700-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:1bf0:7700:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5f0880a535fsm4382270a12.80.2025.04.05.14.49.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Apr 2025 12:14:04 -0700 (PDT)
-From: Simon Glass <sjg@chromium.org>
+ Sat, 05 Apr 2025 14:49:14 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Tom Rini <trini@konsulko.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>, Simon Glass <sjg@chromium.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v3] hw/arm/virt: Allow additions to the generated device tree
-Date: Sat,  5 Apr 2025 13:13:50 -0600
-Message-ID: <20250405191352.2597585-1-sjg@chromium.org>
-X-Mailer: git-send-email 2.43.0
+ Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH-for-10.0 3/3] hw/arm/imx8mp-evk: Remove unimplemented nxp,
+ imx8mp-fspi node from devicetree
+Date: Sat,  5 Apr 2025 23:49:00 +0200
+Message-ID: <20250405214900.7114-4-shentey@gmail.com>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250405214900.7114-1-shentey@gmail.com>
+References: <20250405214900.7114-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::135;
- envelope-from=sjg@chromium.org; helo=mail-il1-x135.google.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.359,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -132,307 +141,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bA3L/duLr674
+X-TUID: emjN3O+WF3PA
 
-At present qemu creates a device tree automatically with the 'virt' generic
-virtual platform. This is very convenient in most cases but there is not
-much control over what is generated.
+From: Guenter Roeck <linux@roeck-us.net>
 
-Add a way to provide a device tree binary file with additional properties
-to add before booting. This provides flexibility for situations where
-Linux needs some tweak to operate correctly. It also allows configuration
-information to be passed to U-Boot, supporting verified boot, for example.
+The nxp,imx8mp-fspi node triggers a warning backtrace.
+Remove it from the devicetree file.
 
-The term 'merge' is used here to avoid confusion with device tree overlays,
-which are a particular type of format.
-
-Link: https://docs.u-boot.org/en/latest/develop/devicetree/dt_qemu.html
-Link: https://patchwork.ozlabs.org/project/uboot/patch/20250405190711.365419-1-sjg@chromium.org/
-
-Signed-off-by: Simon Glass <sjg@chromium.org>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Inspired-by: commit bf1da4b308 ("hw/arm/raspi4b: Temporarily disable
+unimplemented rpi4b devices")
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+[Bernhard: split patch, adapt commit message]
 ---
+ hw/arm/imx8mp-evk.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-Changes in v3:
-- Rebase to master
-
-Changes in v2:
-- Rebase to master
-
- docs/system/arm/virt.rst |  13 +++-
- hw/arm/virt.c            | 135 +++++++++++++++++++++++++++++++++++++++
- hw/core/machine.c        |  20 ++++++
- include/hw/boards.h      |   1 +
- qemu-options.hx          |   8 +++
- system/vl.c              |   3 +
- 6 files changed, 178 insertions(+), 2 deletions(-)
-
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index adf446c0a2..5d34dc90ae 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -235,8 +235,17 @@ Hardware configuration information for bare-metal programming
- The ``virt`` board automatically generates a device tree blob ("dtb")
- which it passes to the guest. This provides information about the
- addresses, interrupt lines and other configuration of the various devices
--in the system. Guest code can rely on and hard-code the following
--addresses:
-+in the system.
-+
-+The optional ``-dtbi`` argument is used to specify a device tree blob to merge
-+with this generated device tree, to add any properties required by the guest but
-+not included by qemu. Properties are merged after the generated device tree is
-+created, so take precedence over generated properties. This can be useful for
-+overriding the ``stdout-path`` for Linux, for example, or to add configuration
-+information needed by U-Boot. This is intended for simple nodes and properties
-+and does not support use of phandles or device tree overlays.
-+
-+Guest code can rely on and hard-code the following addresses:
+diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+index 3bbf2bfbea..b5aec06ec5 100644
+--- a/hw/arm/imx8mp-evk.c
++++ b/hw/arm/imx8mp-evk.c
+@@ -19,7 +19,22 @@
  
- - Flash memory starts at address 0x0000_0000
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a96452f17a..ec7c74637d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -41,6 +41,7 @@
- #include "hw/vfio/vfio-calxeda-xgmac.h"
- #include "hw/vfio/vfio-amd-xgbe.h"
- #include "hw/display/ramfb.h"
-+#include <libfdt.h>
- #include "net/net.h"
- #include "system/device_tree.h"
- #include "system/numa.h"
-@@ -349,6 +350,135 @@ static void create_fdt(VirtMachineState *vms)
-     }
- }
- 
-+
-+/*
-+ * From U-Boot v2021.07 (under BSD-2-Clause license)
-+ *
-+ * This does not use the qemu_fdt interface because that requires node names.
-+ * Here we are using offsets.
-+ *
-+ * overlay_apply_node - Merges a node into the base device tree
-+ * @fdt: Base Device Tree blob
-+ * @target: Node offset in the base device tree to apply the fragment to
-+ * @fdto: Device tree overlay blob
-+ * @node: Node offset in the overlay holding the changes to merge
-+ *
-+ * overlay_apply_node() merges a node into a target base device tree
-+ * node pointed.
-+ *
-+ * This is part of the final step in the device tree overlay
-+ * application process, when all the phandles have been adjusted and
-+ * resolved and you just have to merge overlay into the base device
-+ * tree.
-+ *
-+ * returns:
-+ *      0 on success
-+ *      Negative error code on failure
-+ */
-+static int overlay_apply_node(void *fdt, int target, void *fdto, int node)
-+{
-+    int property;
-+    int subnode;
-+
-+    fdt_for_each_property_offset(property, fdto, node) {
-+        const char *name;
-+        const void *prop;
-+        int prop_len;
-+        int ret;
-+
-+        prop = fdt_getprop_by_offset(fdto, property, &name, &prop_len);
-+        if (prop_len == -FDT_ERR_NOTFOUND) {
-+            return -FDT_ERR_INTERNAL;
-+        }
-+        if (prop_len < 0) {
-+            return prop_len;
-+        }
-+
-+        ret = fdt_setprop(fdt, target, name, prop, prop_len);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    fdt_for_each_subnode(subnode, fdto, node) {
-+        const char *name = fdt_get_name(fdto, subnode, NULL);
-+        int nnode;
-+        int ret;
-+
-+        nnode = fdt_add_subnode(fdt, target, name);
-+        if (nnode == -FDT_ERR_EXISTS) {
-+            nnode = fdt_subnode_offset(fdt, target, name);
-+            if (nnode == -FDT_ERR_NOTFOUND) {
-+                return -FDT_ERR_INTERNAL;
-+            }
-+        }
-+
-+        if (nnode < 0) {
-+            return nnode;
-+        }
-+
-+        ret = overlay_apply_node(fdt, nnode, fdto, subnode);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+/* Merge nodes and properties into fdt from fdto */
-+static int merge_fdt(void *fdt, void *fdto)
-+{
-+    int err;
-+
-+    err = overlay_apply_node(fdt, 0, fdto, 0);
-+    if (err) {
-+        fprintf(stderr, "Device tree error %s\n", fdt_strerror(err));
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+/* Finish creating the device tree, merging in the -dtbi file if needed */
-+static int complete_fdt(VirtMachineState *vms)
-+{
-+    MachineState *ms = MACHINE(vms);
-+
-+    if (ms->dtbi) {
-+        char *filename;
-+        void *fdt;
-+        int size;
-+        int ret;
-+
-+        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, ms->dtbi);
-+        if (!filename) {
-+            fprintf(stderr, "Couldn't open dtbi file %s\n", ms->dtbi);
-+            goto fail;
-+        }
-+
-+        fdt = load_device_tree(filename, &size);
-+        if (!fdt) {
-+            fprintf(stderr, "Couldn't open dtbi file %s\n", filename);
-+            g_free(filename);
-+            goto fail;
-+        }
-+
-+        ret = merge_fdt(ms->fdt, fdt);
-+        g_free(fdt);
-+        if (ret) {
-+            fprintf(stderr, "Failed to merge in dtbi file %s\n", filename);
-+            g_free(filename);
-+            goto fail;
-+        }
-+        g_free(filename);
-+    }
-+    return 0;
-+
-+fail:
-+    return -1;
-+}
-+
- static void fdt_add_timer_nodes(const VirtMachineState *vms)
+ static void imx8mp_evk_modify_dtb(const struct arm_boot_info *info, void *fdt)
  {
-     /* On real hardware these interrupts are level-triggered.
-@@ -2438,6 +2568,11 @@ static void machvirt_init(MachineState *machine)
- 
-     create_platform_bus(vms);
- 
-+    if (complete_fdt(vms)) {
-+        error_report("mach-virt: Failed to complete device tree");
-+        exit(1);
+-    int offset;
++    int i, offset;
++
++    /* Temporarily disable following nodes until they are implemented */
++    const char *nodes_to_remove[] = {
++        "nxp,imx8mp-fspi",
++    };
++
++    for (i = 0; i < ARRAY_SIZE(nodes_to_remove); i++) {
++        const char *dev_str = nodes_to_remove[i];
++
++        offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
++        while (offset >= 0) {
++            fdt_nop_node(fdt, offset);
++            offset = fdt_node_offset_by_compatible(fdt, offset, dev_str);
++        }
 +    }
-+
-     if (machine->nvdimms_state->is_enabled) {
-         const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio = {
-             .space_id = AML_AS_SYSTEM_MEMORY,
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index f52a4f2273..d714c5e99c 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -375,6 +375,21 @@ static void machine_set_dtb(Object *obj, const char *value, Error **errp)
-     ms->dtb = g_strdup(value);
- }
  
-+static char *machine_get_dtbi(Object *obj, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    return g_strdup(ms->dtbi);
-+}
-+
-+static void machine_set_dtbi(Object *obj, const char *value, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    g_free(ms->dtbi);
-+    ms->dtbi = g_strdup(value);
-+}
-+
- static char *machine_get_dumpdtb(Object *obj, Error **errp)
- {
-     MachineState *ms = MACHINE(obj);
-@@ -1143,6 +1158,11 @@ static void machine_class_init(ObjectClass *oc, void *data)
-     object_class_property_set_description(oc, "dtb",
-         "Linux kernel device tree file");
- 
-+    object_class_property_add_str(oc, "dtbi",
-+        machine_get_dtbi, machine_set_dtbi);
-+    object_class_property_set_description(oc, "dtbi",
-+        "Linux kernel device tree file to merge with the generated device tree");
-+
-     object_class_property_add_str(oc, "dumpdtb",
-         machine_get_dumpdtb, machine_set_dumpdtb);
-     object_class_property_set_description(oc, "dumpdtb",
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index f22b2e7fc7..dabc51581d 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -400,6 +400,7 @@ struct MachineState {
- 
-     void *fdt;
-     char *dtb;
-+    char *dtbi;  /* filename of device tree to merge with the generated one */
-     char *dumpdtb;
-     int phandle_start;
-     char *dt_compatible;
-diff --git a/qemu-options.hx b/qemu-options.hx
-index dc694a99a3..be45f877ec 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4294,6 +4294,14 @@ the guest image is:
- 
- ERST
- 
-+DEF("dtbi", HAS_ARG, QEMU_OPTION_dtbi, \
-+    "-dtbi   file    merge 'file' with generated device tree\n", QEMU_ARCH_ARM)
-+SRST
-+``-dtbi file``
-+    Merge a device tree binary (dtb) file into the generated device tree and
-+    pass the result to the kernel on boot.
-+ERST
-+
- DEFHEADING()
- 
- DEFHEADING(Debug/Expert options:)
-diff --git a/system/vl.c b/system/vl.c
-index ec93988a03..75d76951be 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -3018,6 +3018,9 @@ void qemu_init(int argc, char **argv)
-             case QEMU_OPTION_dtb:
-                 qdict_put_str(machine_opts_dict, "dtb", optarg);
-                 break;
-+            case QEMU_OPTION_dtbi:
-+                qdict_put_str(machine_opts_dict, "dtbi", optarg);
-+                break;
-             case QEMU_OPTION_cdrom:
-                 drive_add(IF_DEFAULT, 2, optarg, CDROM_OPTS);
-                 break;
+     /* Remove cpu-idle-states property from CPU nodes */
+     offset = fdt_node_offset_by_compatible(fdt, -1, "arm,cortex-a53");
 -- 
-2.43.0
+2.49.0
 

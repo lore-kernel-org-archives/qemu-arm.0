@@ -1,82 +1,83 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6425691njd;
-        Mon, 7 Apr 2025 07:46:53 -0700 (PDT)
-X-Received: by 2002:a05:6a00:14d2:b0:736:3979:369e with SMTP id d2e1a72fcca58-739e6ff6b1bmr15523324b3a.9.1744037213135;
-        Mon, 07 Apr 2025 07:46:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744037213; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426182njd;
+        Mon, 7 Apr 2025 07:47:37 -0700 (PDT)
+X-Received: by 2002:aa7:888c:0:b0:739:4a93:a5df with SMTP id d2e1a72fcca58-73b6aa6c7c8mr13294744b3a.12.1744037257493;
+        Mon, 07 Apr 2025 07:47:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744037257; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q1fpHDN7T2jASqqWJcY/v+nQaKsnJjZ5tCfdPLf5U1Jy3VsIZv/nmXZtKmKL2HXKCz
-         qDvGgeZwpA4FrcR83BGwyn5CrHGpuR6/yhvbA5/o94cCPJc2rDF+ZLXhj4TsFYVs6VCl
-         QhK9T5RA9SDV8hV+xqBI3TPcs2VNLLw2Ih04huRW//HMr9rZQfbkkuxWUG4NGlvL9jut
-         /6z9OFudH1QlDvrNNHug0FwO8jFMx8iSCJxdA17Y4REAx1oAF66ErwunLuJdFh4MRW0E
-         v5xdrd5PgSNBS0sLn+c5EgjnD5sSuNW304BYSdh3ryZ0JLNN34ATa8Y5D2tmipQ1rLEc
-         tzvg==
+        b=PZ5saKt2SVKd4uNbrTbxUUuc4l7l5aRiJCTaSet27WRX97bPIGDu/blEtAcNwCEnh8
+         JCRkOuVIcTNFW8p3i52S0fwlGptTDev2uqNQOcTjsrCNWScZFs1fA3APS00hllrhlgEH
+         pJtX9E04dDWYixSxDocEm9d2wwZeFvJ2wabIgh63HxDBNsIHfNu8BUbvoweTZw8KgLWL
+         x+CxuetogL2B/Xl+7c+Fwya0L5jnYYt//9trIiBJ5aqMHzVnQPDqROVlAa9hNWcJbMfa
+         CkjsDF03sZEcG3JGgTojn86gU59slZDUb9bouDPCzDpXTwYFMdedQf10hgHIThJFArTE
+         Fp8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=7LIdU2kK//yLHKRwtXpESmYMpQAS4hvFafVc/W+LxT4=;
-        fh=FTpKWhLy2b7hhdXjvTv6EJ9JyvYQuF8I6RCIZcnoSuA=;
-        b=hSjJ1pUlJO2RwcBpvDWtJPB9jsn9O3iRTq1fuCNe4DuQgj8++EHRflKlHo+Z2s90Ry
-         kq36F0E2LNg7o3ZOmLoeL+gTaQH8tN/rVYps829tmVsEpKjG8iUgRrHGK8iUo6sBIEVz
-         sqRS7dnpasyKc1gRzm3Kx9I/hbRokdzDpQd524B6CpK7xhDN9AntcBatt+jIEqYc0pKa
-         4pkSVG2qeAxErM6hd5zFG4FrTJWTFAVIdXUFIPPMVBjsqQLe6sK1xZq4l/EduVACt/CJ
-         X3ypQeu6u3rK9mk8+D0OpG8kcjSDLfgDeApEyQaqdAYXCjKgdcuRodvT98yv2PagXpJ3
-         q1fA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=303oU4ivEV4o+skcvNL6xtz8+P6ObO0/wi+L6EFBQWE=;
+        fh=8on/HHdq9HZ3v/3BHWD7LCSN1FNlTLAZRByRW6zJtNk=;
+        b=jzJbG775E8NwOTv5BIpvOIIIG0RL4bCEMcQ/aZoI4TLOk5dXGPv/MPOCEuBLenVzI8
+         ZL/7AKsZpNWw/CP+I8DpJPTDwaB+LtFbKRPWw3SkXWzR/PRc02MypRWLB/nGzFo2KFcU
+         bv0OoszgtwsP9m6IK/1AC1JKhHwFgBYanG2VyPz/FMGzB5I5CfhjatDUb9Gw51LlRA7T
+         mzHXspG8QuISl5XGCScFcp2WX0c0bZOkZmMze9R/Yr2ZSswCC96rVRTOEgtrr4IACefd
+         pgpRRdp5V2x7N5Aa/XP6hs8bwmJacAWqoRNgSiReVjvWAM3hswohNOnSWMN61PuXekot
+         ilYg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GQqAAllA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fFreMP3a;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-739dac2bd09sor5073299b3a.2.2025.04.07.07.46.51
+        by mx.google.com with SMTPS id d2e1a72fcca58-739da0b2af3sor5307082b3a.9.2025.04.07.07.47.37
         (Google Transport Security);
-        Mon, 07 Apr 2025 07:46:53 -0700 (PDT)
+        Mon, 07 Apr 2025 07:47:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GQqAAllA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fFreMP3a;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744037211; x=1744642011; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7LIdU2kK//yLHKRwtXpESmYMpQAS4hvFafVc/W+LxT4=;
-        b=GQqAAllA4z2tToRQ6jarsCvtTyWvzvHx+dbpFeuWvO79QoyJSW2SVSm7DpzZ/XLZ9k
-         RG8ZN+7Dq5vt/+jgKfS7p3I1XBES+LVc/rAy/ckHKo/Fcy5EYh5WBcHLcH3NxoDLBrjj
-         NucoHmX6dJxyWD7DwcBp+25CM83UsuGJ3Bk+CYFw8lMjy63Z7aFrCqh3EYyeypdKgTF1
-         mUJ5WrX8w2HwsgpogtQpijv+boWiMaW4DnukuxGeu5PmRIX4v1UxMrcSiC0qBX54JSQU
-         j+rSrSHTIRJN9EGz/YkXfwdxzDyxYBR3GoxIm+fyb74ChlaN9zsanN95rKSjvq09ufR2
-         X1IQ==
+        d=gmail.com; s=20230601; t=1744037257; x=1744642057; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=303oU4ivEV4o+skcvNL6xtz8+P6ObO0/wi+L6EFBQWE=;
+        b=fFreMP3aE73D7/Sxf7O7NHX3QIP5NvNKySJWhi1x0zic/zUCgNcb5Hv8jHNCJGgAa9
+         AbpReBQYKLm51eSQ2IDdNhTqafDE+ODNzmIGpT4g4HQtS9jFtXENVuDvYVlbJ6B0n0x2
+         NIAZg7JNVPNOytde8lZs+UpJW3Jh9f0u6hHWiIatC/EL6gzv7oEHlBo6mRxfp7iY6dvA
+         G81bUP+kfhx1JRAucdQUSPk81UHQo1uYaciOmswICYkL4ySZJzVu4VAto2LOy49liS5g
+         Ojo3WPEQTJlQ7gALgxklYSiQWtovBCk1HG0IrcX0Nc6eRX+7UkXhurMq/mWTynmQ3cbP
+         nQig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744037211; x=1744642011;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7LIdU2kK//yLHKRwtXpESmYMpQAS4hvFafVc/W+LxT4=;
-        b=shQ9ZSaQBwZ1L4hseDyj5oRvsQBVq4j3ql99IcDXxWnHu/+xqOOzgS6/XjL7IoJGwb
-         BAmunCrWXzwQAWhSJggMfD3BeJU3L0T58qkuMkp6nfO578K5SGt8kTdc5zC8MXhn3RL+
-         9msUe7ugSWtiKcqBxQzKUV0ACcYUTTGx7GgvU0gVowTupVStFOtwMO+Q9UrlMvi7n+IL
-         uWfwUtsSO3RMEYlIFyECoaH/3KOB79e4eMoNyenbWRfgsgRH6ffqsw2ODOJi6SR44Cro
-         /duX8hNCWTEnGqaXJpn0t++TcRTpNWYOIEps2rChiqKdb6XNIVVZESnN2i6awHEhtXPK
-         Qk/g==
-X-Forwarded-Encrypted: i=1; AJvYcCUV7DnpIXCC2rHlCuVy6g5g4PBRsyxhxJk0VCFOusA19x0ldVljTx7Sq48HWaYeWvoCtswuLtiVljbS53u/PdtxlgI=@linaro.org, AJvYcCVHaYT4TWtv9YDrpdMSRUlwu+/D0SzKnOSnfB6xy7MJs5UHJDVXqk5BGQG1JDxWdvCo6xsdCFFcLeF6K9st@linaro.org, AJvYcCXi6L+YkAMvD/bUw5p38peHsSmTPS9YcPl+OFqS6R8JlvyLClsV34oV3I+zvp+fWtBGJu3MEy2T@linaro.org
-X-Gm-Message-State: AOJu0YykTyz3lAUf7FGJJnwyggtDQ4oVzWNiBAdfKCjhZcLBqfPpLFl6
-	Wt+Wp8HWoCZZaMUVWt9yJE0NNcumD3/M0ilEVdfh3ysq9RI+eunjcWgO+tdM
-X-Gm-Gg: ASbGncto/kUVck1DeSzW0wZVZSModCuzcMnIzgnHIBiObgtW8/+UgrHRC/3xKtDggHs
-	aG9fXeR/V5GAfGqm0VIZNywfYbTWJ2tvbsqMVSFi5poVuUZJ2FD/z6D3/lFfHCqYfHBWSXr+HEN
-	7eT8z/azAtmEpEFCyPcLEYoZ1ZgxT5aJoc2S1FDbQ4vxMN0hYE2F0rOmgHoqrrhox1pZG0Mfrp7
-	zhbsgjbqdf+3hjzVFHVUVzhDPPgLfsRT7n3hGQDlA5oNeHKWjXPSO54hT4LWGRc2jaZvZV+hvSk
-	3M0dUJ4wBs8xvp7RHvxwOYE11pyko+BPaoVO2c2+kDtn8NSWswsioEKBwNPxtQ==
-X-Google-Smtp-Source: AGHT+IGOpMd+zixBjwH+ZUX9bocsp8GVd//iJoCVWf/G57iHw/hiumEIqHCi5j6XW6VB9vzy8CNMlQ==
-X-Received: by 2002:a05:6a00:18a1:b0:736:4a5b:7f08 with SMTP id d2e1a72fcca58-739e716248amr14323576b3a.22.1744037210463;
-        Mon, 07 Apr 2025 07:46:50 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1744037257; x=1744642057;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=303oU4ivEV4o+skcvNL6xtz8+P6ObO0/wi+L6EFBQWE=;
+        b=qYZUlDT/ZkCc2TL4/huO5a5OHtv+Vx6LtJwliV6OtvLo/gBt+VlRImdBCAZDouKkF2
+         q7Lyo/iQdZC5yOzqCZ13LxkOGq7Qgbe+RaiQRYnTbZGvTzAw5lNHkC/Z21N6PYKoCSft
+         YU+jSOLWv8zqZPwIjYG/HHbsUhURmeywcaReZAao/MCMM4k0Hjj3IuH2JkpHODh9S5GG
+         286kk44NwxtOGhRo6DZ0d2tWvLu6YZf+pxrqxV1C7D57wwdYMLdmjAr7s0VunDI0ukbH
+         Dyg1RRDKhf/NiizqB4B5fUBSkZgifVDM6yml+5x4ca3X1cOBtgnq229wGu5NXRKdkx8H
+         1dMA==
+X-Forwarded-Encrypted: i=1; AJvYcCUmjwopVFYsa15auHILfHrpK6n1SclhyeAi+TNAwi7lRvwEHKe5x/OPWjBl3WlSox6z0L3FnHLklOF9wQGwJGv9ooU=@linaro.org, AJvYcCWdwXqMZyvW3ICOLilrZRO/l3ETHELJFEpz7gKN2CRlB31CYmBUh5baLTXV8I5FeqBnV2ZPjFCN@linaro.org, AJvYcCX7fDkY8pK2a75dlD9Q2nLnLbELdq/VTSfIG8Vz8Ac8JLD/WCdQexIvKqf+E7htB3dCso785WCorlAz5TIq@linaro.org
+X-Gm-Message-State: AOJu0Ywbs6UlMQZiCjdzDN30Q8TCUxq9J/4bgOnmXimTDYVjxeiIhmMa
+	7hDxwtI7HkvYI4hva0LvFM4bxL+l1Zck8nc5Kl8J+X5duOdL17a0
+X-Gm-Gg: ASbGncvzUqEnVEnh/nXcXyKL2dxBZ7RBSvFK94JSVFXQTeJpUiMA3px12m3d4rzLVck
+	KtPMfU+cjQ/WU/BPF5o0KQJDk4cBADwdEXGNpAkLZIjSZnSWrNjtpJT9i+yDM0kv/2awfXUH/jt
+	Rt/LEuCqLcWJMJJTA1NzaViD55P4iUTPBVFVFb4VbJ9cgc9efnZDwQ3Xj9lNHNWRp3V21DSt9g7
+	0hEC01l43qYQJ4SIYVA/Yy5PkSHW/98H9OQbQCNORjlZ4UPLmn6Xbh5EyGzGYoH25aekAi3pg98
+	8dT6vDsUXkhkrE33YlSMBzjeG+6y5DIbnsK8y6cQU+64k+gFfL9lzwsjubfpFg==
+X-Google-Smtp-Source: AGHT+IGZ2Wz0Y1VNTDZ7pixroI/TzMaEKIf24Xwu3jGbGdGuKfSQAcxOo2mpyOC9HsbIY+yWz/StLg==
+X-Received: by 2002:a05:6a00:3a0a:b0:736:53ce:a32c with SMTP id d2e1a72fcca58-73b6b8c5773mr8623059b3a.17.1744037256768;
+        Mon, 07 Apr 2025 07:47:36 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from localhost.localdomain ([240d:1a:3b6:8b00:8768:486:6a8e:e855])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.46.44
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.47.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 07:46:49 -0700 (PDT)
+        Mon, 07 Apr 2025 07:47:36 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,187 +103,98 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-block@nongnu.org,
 	qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 00/10] Enable QEMU to run on browsers
-Date: Mon,  7 Apr 2025 23:45:51 +0900
-Message-Id: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 01/10] various: Fix type conflict of GLib function pointers
+Date: Mon,  7 Apr 2025 23:45:52 +0900
+Message-Id: <2be81d2f86704662c9fa33ceb46077804e34ac77.1744032780.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 6qKqmgovsLmm
+X-TUID: lYpmIhmcwhyy
 
-This patch series enables QEMU's system emulator to run in a browser using
-Emscripten.
-It includes implementations and workarounds to address browser environment
-limitations, as shown in the following.
+On emscripten, function pointer casts can cause function call failure.
+This commit fixes the function definition to match to the type of the
+function call.
 
-# New TCG Backend for Browsers
+- qtest_set_command_cb passed to g_once should match to GThreadFunc
+- object_class_cmp and cpreg_key_compare are passed to g_list_sort as
+  GCopmareFunc but GLib cast them to GCompareDataFunc.
 
-A new TCG backend translates IR instructions into Wasm instructions and runs
-them using the browser's WebAssembly APIs (WebAssembly.Module and
-WebAssembly.instantiate). To minimize compilation overhead and avoid hitting
-the browser's limitation of the number of instances, this backend integrates
-a forked TCI. TBs run on TCI by default, with frequently executed TBs
-compiled into WebAssembly.
+Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+---
+ hw/riscv/riscv_hart.c | 9 ++++++++-
+ qom/object.c          | 5 +++--
+ target/arm/helper.c   | 4 ++--
+ 3 files changed, 13 insertions(+), 5 deletions(-)
 
-# Workaround for Running 64-bit Guests
-
-The current implementation uses Wasm's 32-bit memory model, even though Wasm
-supports 64-bit variables and instructions. This patch explores implementing
-TCG 64-bit instructions while leveraging SoftMMU for address translation. To
-enable 64-bit guest support in Wasm today, it was necessary to partially
-revert recent changes that removed support for different pointer widths
-between the host and guest (e.g., commits
-a70af12addd9060fdf8f3dbd42b42e3072c3914f and
-bf455ec50b6fea15b4d2493059365bf94c706273) when compiling with
-Emscripten. While this serves as a temporary workaround, a long-term
-solution could involve adopting Wasm's 64-bit memory model once it gains
-broader support, as it is currently not widely adopted (e.g., unsupported by
-Safari and libffi). Feedback and suggestions on this approach are welcome.
-
-# Emscripten-Based Coroutine Backend
-
-Emscripten does not support couroutine methods currently used by QEMU but
-provides a coroutine implementation called "fiber". This patch series
-introduces a coroutine backend using fiber. However, fiber does not support
-submitting coroutines to other threads. So this patch series modifies
-hw/9pfs/coth.h to disable this behavior when compiled with Emscripten.
-
-# Overview of build process
-
-This section provides an overview of the build process for compiling QEMU
-using Emscripten. Full instructions are available in the sample
-repository[1].
-
-To compile QEMU with Emscripten, the following dependencies are required.
-The emsdk-wasm32-cross.docker environment includes all necessary components
-and can be used as the build environment:
-
-- Emscripten SDK (emsdk) v3.1.50
-- Libraries cross-compiled with Emscripten (refer to
-  emsdk-wasm32-cross.docker for build steps)
-  - GLib v2.84.0
-  - zlib v1.3.1
-  - libffi v3.4.7
-  - Pixman v0.44.2
-
-QEMU can be compiled using Emscripten's emconfigure and emmake, which
-automatically set environment variables such as CC for targeting Emscripten.
-
-emconfigure configure --static --disable-tools --target-list=x86_64-softmmu
-emmake make -j$(nproc)
-
-This process generates the following files:
-
-- qemu-system-x86_64.js
-- qemu-system-x86_64.wasm
-- qemu-system-x86_64.worker.js
-
-Guest images can be packaged using Emscripten's file_packager.py tool.
-For example, if the images are stored in a directory named "pack", the
-following command packages them, allowing QEMU to access them through
-Emscripten's virtual filesystem:
-
-/path/to/file_packager.py qemu-system-x86_64.data --preload pack > load.js
-
-This process generates the following files:
-
-- qemu-system-x86_64.data
-- load.js
-
-Emscripten allows passing arguments to the QEMU command via the Module
-object in JavaScript:
-
-Module['arguments'] = [
-    '-nographic', '-m', '512M', '-accel', 'tcg,tb-size=500',
-    '-L', 'pack/',
-    '-drive', 'if=virtio,format=raw,file=pack/rootfs.bin',
-    '-kernel', 'pack/bzImage',
-    '-append', 'earlyprintk=ttyS0 console=ttyS0 root=/dev/vda loglevel=7',
-];
-
-The sample repository[1] provides a complete setup, including an HTML file
-that implements a terminal UI.
-
-[1] https://github.com/ktock/qemu-wasm-sample
-
-# Additional references
-
-- A talk at FOSDEM 2025:
-  https://fosdem.org/2025/schedule/event/fosdem-2025-6290-running-qemu-inside-browser/
-- Demo page on GitHub Pages: https://ktock.github.io/qemu-wasm-demo/
-
-Kohei Tokunaga (10):
-  various: Fix type conflict of GLib function pointers
-  various: Define macros for dependencies on emscripten
-  util/mmap-alloc: Add qemu_ram_mmap implementation for emscripten
-  util: Add coroutine backend for emscripten
-  meson: Add wasm build in build scripts
-  include/exec: Allow using 64bit guest addresses on emscripten
-  tcg: Add a TCG backend for WebAssembly
-  hw/9pfs: Allow using hw/9pfs with emscripten
-  gitlab: Enable CI for wasm build
-  MAINTAINERS: Update MAINTAINERS file for wasm-related files
-
- .gitlab-ci.d/buildtest-template.yml           |   27 +
- .gitlab-ci.d/buildtest.yml                    |    9 +
- .gitlab-ci.d/container-cross.yml              |    5 +
- MAINTAINERS                                   |   11 +
- accel/tcg/cputlb.c                            |    8 +-
- block/file-posix.c                            |   18 +
- configs/meson/emscripten.txt                  |    6 +
- configure                                     |    7 +
- fsdev/file-op-9p.h                            |    3 +
- fsdev/meson.build                             |    2 +-
- hw/9pfs/9p-util-stub.c                        |   43 +
- hw/9pfs/9p-util.h                             |   18 +
- hw/9pfs/9p.c                                  |    3 +
- hw/9pfs/coth.h                                |   12 +
- hw/9pfs/meson.build                           |    2 +
- hw/riscv/riscv_hart.c                         |    9 +-
- include/accel/tcg/getpc.h                     |    2 +-
- include/exec/tlb-common.h                     |   14 +-
- include/exec/vaddr.h                          |   11 +
- include/qemu/atomic.h                         |    4 +
- include/qemu/cacheflush.h                     |    3 +-
- include/tcg/helper-info.h                     |    4 +-
- include/tcg/tcg.h                             |    2 +-
- meson.build                                   |   30 +-
- meson_options.txt                             |    2 +-
- os-posix.c                                    |    5 +
- qom/object.c                                  |    5 +-
- scripts/meson-buildoptions.sh                 |    2 +-
- target/arm/helper.c                           |    4 +-
- tcg/meson.build                               |    5 +
- tcg/tcg.c                                     |   26 +-
- tcg/wasm32.c                                  | 1260 +++++
- tcg/wasm32.h                                  |   39 +
- tcg/wasm32/tcg-target-con-set.h               |   18 +
- tcg/wasm32/tcg-target-con-str.h               |    8 +
- tcg/wasm32/tcg-target-has.h                   |  102 +
- tcg/wasm32/tcg-target-mo.h                    |   12 +
- tcg/wasm32/tcg-target-opc.h.inc               |    4 +
- tcg/wasm32/tcg-target-reg-bits.h              |   12 +
- tcg/wasm32/tcg-target.c.inc                   | 4484 +++++++++++++++++
- tcg/wasm32/tcg-target.h                       |   65 +
- .../dockerfiles/emsdk-wasm32-cross.docker     |  145 +
- util/cacheflush.c                             |    3 +-
- util/coroutine-fiber.c                        |  127 +
- util/mmap-alloc.c                             |   18 +
- 45 files changed, 6561 insertions(+), 38 deletions(-)
- create mode 100644 configs/meson/emscripten.txt
- create mode 100644 hw/9pfs/9p-util-stub.c
- create mode 100644 tcg/wasm32.c
- create mode 100644 tcg/wasm32.h
- create mode 100644 tcg/wasm32/tcg-target-con-set.h
- create mode 100644 tcg/wasm32/tcg-target-con-str.h
- create mode 100644 tcg/wasm32/tcg-target-has.h
- create mode 100644 tcg/wasm32/tcg-target-mo.h
- create mode 100644 tcg/wasm32/tcg-target-opc.h.inc
- create mode 100644 tcg/wasm32/tcg-target-reg-bits.h
- create mode 100644 tcg/wasm32/tcg-target.c.inc
- create mode 100644 tcg/wasm32/tcg-target.h
- create mode 100644 tests/docker/dockerfiles/emsdk-wasm32-cross.docker
- create mode 100644 util/coroutine-fiber.c
-
+diff --git a/hw/riscv/riscv_hart.c b/hw/riscv/riscv_hart.c
+index a55d156668..e37317dcbd 100644
+--- a/hw/riscv/riscv_hart.c
++++ b/hw/riscv/riscv_hart.c
+@@ -102,10 +102,17 @@ static bool csr_qtest_callback(CharBackend *chr, gchar **words)
+     return false;
+ }
+ 
++static gpointer g_qtest_set_command_cb(
++    bool (*pc_cb)(CharBackend *chr, gchar **words))
++{
++    qtest_set_command_cb(pc_cb);
++    return NULL;
++}
++
+ static void riscv_cpu_register_csr_qtest_callback(void)
+ {
+     static GOnce once;
+-    g_once(&once, (GThreadFunc)qtest_set_command_cb, csr_qtest_callback);
++    g_once(&once, (GThreadFunc)g_qtest_set_command_cb, csr_qtest_callback);
+ }
+ #endif
+ 
+diff --git a/qom/object.c b/qom/object.c
+index 01618d06bd..19698aae4c 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1191,7 +1191,8 @@ GSList *object_class_get_list(const char *implements_type,
+     return list;
+ }
+ 
+-static gint object_class_cmp(gconstpointer a, gconstpointer b)
++static gint object_class_cmp(gconstpointer a, gconstpointer b,
++                             gpointer user_data)
+ {
+     return strcasecmp(object_class_get_name((ObjectClass *)a),
+                       object_class_get_name((ObjectClass *)b));
+@@ -1201,7 +1202,7 @@ GSList *object_class_get_list_sorted(const char *implements_type,
+                                      bool include_abstract)
+ {
+     return g_slist_sort(object_class_get_list(implements_type, include_abstract),
+-                        object_class_cmp);
++                        (GCompareFunc)object_class_cmp);
+ }
+ 
+ Object *object_ref(void *objptr)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bb445e30cd..68f81fadfc 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -220,7 +220,7 @@ static void count_cpreg(gpointer key, gpointer opaque)
+     }
+ }
+ 
+-static gint cpreg_key_compare(gconstpointer a, gconstpointer b)
++static gint cpreg_key_compare(gconstpointer a, gconstpointer b, void *d)
+ {
+     uint64_t aidx = cpreg_to_kvm_id((uintptr_t)a);
+     uint64_t bidx = cpreg_to_kvm_id((uintptr_t)b);
+@@ -244,7 +244,7 @@ void init_cpreg_list(ARMCPU *cpu)
+     int arraylen;
+ 
+     keys = g_hash_table_get_keys(cpu->cp_regs);
+-    keys = g_list_sort(keys, cpreg_key_compare);
++    keys = g_list_sort(keys, (GCompareFunc)cpreg_key_compare);
+ 
+     cpu->cpreg_array_len = 0;
+ 
 -- 
 2.25.1

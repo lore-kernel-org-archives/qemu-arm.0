@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426506njd;
-        Mon, 7 Apr 2025 07:48:11 -0700 (PDT)
-X-Received: by 2002:a05:6a00:ad0:b0:736:53c5:33ba with SMTP id d2e1a72fcca58-739e711a95amr16045625b3a.16.1744037291240;
-        Mon, 07 Apr 2025 07:48:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744037291; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426573njd;
+        Mon, 7 Apr 2025 07:48:17 -0700 (PDT)
+X-Received: by 2002:a05:6a00:843:b0:736:43d6:f008 with SMTP id d2e1a72fcca58-73b6aa6c7f6mr12855531b3a.12.1744037297428;
+        Mon, 07 Apr 2025 07:48:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744037297; cv=none;
         d=google.com; s=arc-20240605;
-        b=k9UBpE9QqBUHgHKj11TROwlP3v6Y6g4yQHLNvV5FeNgm43W/7HKkeYHcbahMnkQZjp
-         qOEVbVseZfSDsvA/nBB8b5KB92pTAUFGRs8UOLMB3BjXPoUJPBh2fOblPSmyewhr1KMs
-         vNILFi/Bo18AovgRuj1Y0QmGgvhp/kU2wlsppTleNmT5nB1YE389krWKSPBcbYVpPfP6
-         4oQkkkHVg0iSdeT7jfWqMQgfAJQ17MhJF5q25DxpltfzrG4UrKfAKDsmjNZshS4NVpJN
-         qvIViQ5nrLWJUGs+eRTk2hV5zAQX9pGvjVlm+j6wrVTzRCzwyZkCi1EVPKOxMQeAQPXy
-         7Igw==
+        b=MPIRUZTEXdk5rC+ikWYuCwF5uxteNvmywrljr3mEpHncm2ztVGNtH0VWONS/1EIyu8
+         8iTVtcOKrnGIxfM+kkn64c/63XmGxv98pWZST3W5C2WIN+AxINal4b+mMMtytpIAAXmb
+         xmYarqVSWrObWPa4E3WfmfQtuPB2CHKc2a8levEvgGd+ZD0ru6Vi196Ma+qLay7kiUF4
+         0qETcRks59LIpddcr95orE2I2osIcrF8a7qIDp8lMIf2L+yjcYuUihXhzsgI1tGWzqwu
+         nITNogI1WyPf91bRlZRZX5idOmaVZ9k5fxrBZXVZ9iSfTrna7I3ZH0uCw+LMauC61Zwc
+         Fwtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eS7eXR/+DdOMAXfY7Q+DNRv1hMrXf+iqTPbLWHVDLlk=;
-        fh=XfhpurMQll4IN3H754zjXP6IQEBRNGw1MgqvaHS6eNw=;
-        b=WOUp6667DPDdDa8xWuGHEbOWrnCmd3Y3lId5A9wIVtjL0i/3sEU8J6ULoGSPFLBRky
-         XENCc4NZVWocarO6KegoGTfWW+49EobcW7E7yv+sCDk81UM57CjFXqvnwS1GhFX6dLmt
-         YvBWhkDkOsJ3G5gT+jE7gbza7x/h/ggBD7jU2m1yM3qthD93q/2H1K/1U5VWPKQYH8qa
-         OsJNpwarNyT3khDFcfKoAXMEiG2MmqQmtncfL17Xmtx1keNvZBr5ayjcnf6sME+/tJZ1
-         Mr/+v5gL7SAmgHZsqX624Szo85QIPHhNVf+ocEvGG5dTqoau0sLbxNUCBZk5FQMeDzzh
-         5dMg==;
+        bh=fW8XIKfaYZtOTkzwtpemEa+AlpQFv1wOG7n/PEjrSqI=;
+        fh=MU98CxdXJsaZsm6ccBycn0l265M5G1AMXkcNFO7SuD8=;
+        b=G/9OhoHDpOX1lSuZwIyNN1ehPu3726YAP4t5Hxn4XNPoePZ5PxNCFNyaPQih6nVNLo
+         rgBxhnip3aYZIId/+57PAA0Qfg4FsQ5/Sov5PFIF6nokxUfMUdcJXLgfTVaIzQuaA345
+         bpjNExRzMBJP2enmFP/TSSlDTLXmpwPNJ227FyyDjwCZZzmTKFDsnNsBxhiR6d/RxA5a
+         OybNer/R5GdGU4jRUmRdf3F27OsCRoL4S9PZp7jQKhKUgSb+iuk4fsQ245AbpSzod50H
+         A6evZxugyHXRgmc+5MEaCH/yVMFUmVZM7VyTW7TspBN33vjZPHvuOuyf0RhdE0rCkiR4
+         uPcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kKAnpOEZ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="CdWPN/bG";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-739dab0b232sor4600171b3a.0.2025.04.07.07.48.11
+        by mx.google.com with SMTPS id d2e1a72fcca58-739d97f381esor7070387b3a.4.2025.04.07.07.48.17
         (Google Transport Security);
-        Mon, 07 Apr 2025 07:48:11 -0700 (PDT)
+        Mon, 07 Apr 2025 07:48:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kKAnpOEZ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="CdWPN/bG";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744037291; x=1744642091; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744037297; x=1744642097; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=eS7eXR/+DdOMAXfY7Q+DNRv1hMrXf+iqTPbLWHVDLlk=;
-        b=kKAnpOEZzbeniR55FWQzt6sZ7pl2TVpcki1mpPKt73tWlyBc/FDvjakPDRSB7pgO2N
-         4JvVi3ZiDFge1bvvaMUaGprzeJCnk2MSI0B7G5WCGhnx3wItzGTr+IQ7aBOveGGh/pvR
-         QtKgObZeP0tI5l5Fs0/W0rDcl458Jt8bI/D5Rg/l3LBd6T+E0j4a2Ae35kmKdQ9Q/z1f
-         bYIWO9x5GIzxCLgnArPuBrC6BUixLt0iqOH47Pc7bHuzF05iu8MmAUzCaABDa8YvKPFr
-         vxmEqZTcWKyjXMiQQ0zrmoj1IsqP9iBSbeuk3Pk4Egl4+nd5CIGpnDBDbN+TOUhKZbmk
-         AAwg==
+        bh=fW8XIKfaYZtOTkzwtpemEa+AlpQFv1wOG7n/PEjrSqI=;
+        b=CdWPN/bGtPIz2lhL3huCIDYbfAAVn3VynACJebEbX2q2AvRQvv06o5Vwj2LVFP9X4X
+         c3FEO0Xa4GjyA9cf9QljViAn2cKlYCUBB1RGjQuNJW6k47n2HqsjdRxROiB0DuICuhXZ
+         VPkGolJpf7SWxuG+Q1MzpjACTMpeMUVKnjQHLUuwCLd9c6wg7EZKKQ3iUFvGpKb+SlvS
+         treNfmMtmRE5kbKHcQYj6fdwnlSkLnTwfUXOL8SW1386tzalCSH22KTnhlzo0Ws22YXJ
+         7lw/idHDBwDyflf3n1A0qH+lAoGDbGpAYSoDEoLP8MRzpeoMnB70fkEFhbjG7t3Xu1RT
+         3bPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744037291; x=1744642091;
+        d=1e100.net; s=20230601; t=1744037297; x=1744642097;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=eS7eXR/+DdOMAXfY7Q+DNRv1hMrXf+iqTPbLWHVDLlk=;
-        b=As5xkvAY3n6A0h9j5Y5ire5KbUWn1anlRw9v/ty2eUjNzejD5xcHoQMXnn7PRsygFY
-         NFCU10c/JlK8rx4OKMx2rzRfWcQD9EUS5D6PNrYNgp+EL1+H3pWI2tk7gUeFO7BwuNbs
-         I1vW5z3lv7t5XpGJvw/kWm56ifsnGZ9Th4sVpqOtjVlnMVpcJMlVPll8q+98pHdhp4by
-         EaSLJYKOV9XEkZP0bHjOiLAcIOVNm7W3mSZFcF/6Qyit8WHGKQF64+AqNfZy6Epndg5E
-         Qz1QCVhh5tG2a0lzDz4J5q4LOqZ3Gkem7Jb8NYUgVGKen50UgfwV/zajQs3JutwCufYT
-         vq4A==
-X-Forwarded-Encrypted: i=1; AJvYcCUXskTfGLJikJYH9b6y3zkOVpTI3Gw7QkZQOglZTGf06qUxb3ZaODeGm6q4pOWLVVXPyvQMPCnd@linaro.org, AJvYcCV/0Ih29flnkOKtNpZEWuVt2qkmy7CM9QLwjivpGDy/uKRPbsb4vsMTJvReX0hC0E1uhhrtoaWlVAVhfAuh@linaro.org, AJvYcCXkvQA/1syyRtFgLtPm0t45WIW18QqderUVWs1rrbIe159hAxLzm0SlPxBqCtIpt65IN5LBbi4dsG6cxKzLfoGOREM=@linaro.org
-X-Gm-Message-State: AOJu0Yy2p26wbmg2V4wVsf3znrRMLfJVLoL3uNqZijlCcUVC5I7ZXmv+
-	GD5Ps+JfbBGnYLLy2RHOJRy6LQ4eMJrsNc5GxkHJbNb3M20MoqwU
-X-Gm-Gg: ASbGnctBhsUn9FYkZXulqGHdPL83O1f2goBxr6+WUmeYyIrSzZG0+gYnZCK4FMoBxxd
-	/NlmLAqlQar4gdJVAV/r9aP8QNl6XEVY0Dl6SHu5AoAHDZoXnM1mCMuDwFUCRVArQTN7lHY+rr3
-	0SIhUAJA5UE1Nwa+3dNg7YAWsa/U+WUyQHAcyNPTT0xAgKX6Que5tTwoSrk9cT1PRJ15BwkP1BT
-	ld9j2OuqKNnQuOSCFpeg0W+6tS8JC2a6qMRPvC8PQKMa90rqb4WSyteeYIwrTW38iD9NFJ1W/wU
-	WmksAxR1HKRlUzTQvMapWZxcziZCDb8/zXuU6uj18LNUGlXwJyeTGTKMLdarCw==
-X-Google-Smtp-Source: AGHT+IEBJV8PXN2+xgPpGnGGxW+rcmF9NYagYDrP8jIyQSc8TCL+FbPaJa4t0px/C7vZ0Fzdop2MCQ==
-X-Received: by 2002:a05:6a00:1411:b0:732:5164:3cc with SMTP id d2e1a72fcca58-739e711fcf5mr16357894b3a.19.1744037290570;
-        Mon, 07 Apr 2025 07:48:10 -0700 (PDT)
+        bh=fW8XIKfaYZtOTkzwtpemEa+AlpQFv1wOG7n/PEjrSqI=;
+        b=JvpKpYqEcWgtU7twby0XR/YU9VujlwhmgcjatpTor0XkAkF7Fs6sSiQ4AkFcPxC5Dk
+         fmivfQ4r4SCBY5+KHtP5o8JaKW53q8Xts9jqQxharKV3FtI/rCqANhdKLifLD1WOQJwJ
+         ZZEx8MKW3dW8Iu1bZjPKNYKwDqYLlG6soxMKokueR4JsNbvQYaMRI2P5DdbCve/nnStU
+         awQceZvjKdHOJ9e7QLD9Qm5sQdy/ezFsrK6MwrITrbwoX9CTOUTm58sE9BddWNORQRW2
+         dWAE6VIWyDof5c6xCx1fVyMOPSal/NQTKntjS6Vv/DID0PUQoB0N3lQQlnVf2CnqMvzR
+         Pj1w==
+X-Forwarded-Encrypted: i=1; AJvYcCUAH1pd99AjonYtJn2Ib9nwmnRHs+39wmi7X0tbODV2Paj/huffKWmd27ocRPYIUi2lWyb0CqeT@linaro.org, AJvYcCVoG0T7DRJxR7s/UerwsaKg8DLKMkyhPK98b9r3kn3zOoaIJmoeb2IpwLPaMx8rreI4K9MRM3ZsPOF2VePt@linaro.org, AJvYcCWg7WOVfclZeFqsU5pGv8R3Fyg6IH4QXZrlSsYkBEzdmUC++uVXhPPOK7im1BhWNEcb+7ZUcxVHuiQ3Tt5IVdjjuSM=@linaro.org
+X-Gm-Message-State: AOJu0Yys5HZDcHBL4ZaTjEayIhQaDsefqNbbOUprmj4Y2v1BFyDtk1rC
+	IN+qa8B2ct7y4ZARFdmkMexy4Baviss23TXZ8pQ+kGD8Ixupd/QA
+X-Gm-Gg: ASbGncukhxaloBJB/jQwj3PiyePNL/P/KwfTAMeetPYnnOM6oad3sJnNzk8GAWwX93l
+	hXmYpScXB5+tvlPP8I1U3w6+okK2Hcda/0TTf7xjCw172auBcCGxRKHm4Zmkmv4TwC2gNrLj5zq
+	PkLvnS9WwGC6LYBKTnkwUYL+4damjvlqGoV46quNaJXU1oVkX5rEZcmanJOYu+YG63Wg7s3Vvq4
+	v4Wz6z5lBOXrdjxresm/Cj4GxRNCQmhrUNnam1aKq6iOPe5KfjyZiVVczn0eGHSKaLziIuHk6el
+	gzsUImvxJsQENyG+5Jef0AE87wC24hGco3CQU7phYZzISWE/sPsDqGomLhDKkw==
+X-Google-Smtp-Source: AGHT+IEf/31V+SpzPJuGAwERtSZYT3VmroA5Y689cGqjAR92zXSAv+cv0eNY3KphtMS3srkYGNEyog==
+X-Received: by 2002:a05:6a00:3922:b0:736:fff2:99b with SMTP id d2e1a72fcca58-73b6b8f7d08mr11175167b3a.23.1744037296768;
+        Mon, 07 Apr 2025 07:48:16 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from localhost.localdomain ([240d:1a:3b6:8b00:8768:486:6a8e:e855])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.48.04
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.48.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 07:48:10 -0700 (PDT)
+        Mon, 07 Apr 2025 07:48:16 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -103,146 +103,162 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-block@nongnu.org,
 	qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 05/10] meson: Add wasm build in build scripts
-Date: Mon,  7 Apr 2025 23:45:56 +0900
-Message-Id: <04b7137a464e0925e2ae533bbde4fcdfe0dfe069.1744032780.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 06/10] include/exec: Allow using 64bit guest addresses on emscripten
+Date: Mon,  7 Apr 2025 23:45:57 +0900
+Message-Id: <04ab0a8c2ab61c47530f77b149ad29123a0ee382.1744032780.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: BRS9EjOqtjH2
+X-TUID: WbB9VvqPV62P
 
-has_int128_type is set to false on emscripten as of now to avoid errors by
-libffi. And tests aren't integrated with Wasm execution environment as of
-now so this commit disables tests.
+To enable 64-bit guest support in Wasm 32bit memory model today, it was
+necessary to partially revert recent changes that removed support for
+different pointer widths between the host and guest (e.g., commits
+a70af12addd9060fdf8f3dbd42b42e3072c3914f and
+bf455ec50b6fea15b4d2493059365bf94c706273) when compiling with
+Emscripten. While this serves as a temporary workaround, a long-term
+solution could involve adopting Wasm's 64-bit memory model once it gains
+broader support, as it is currently not widely adopted (e.g., unsupported by
+Safari and libffi).
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- configs/meson/emscripten.txt  |  6 ++++++
- configure                     |  7 +++++++
- meson.build                   | 14 ++++++++++----
- meson_options.txt             |  2 +-
- scripts/meson-buildoptions.sh |  2 +-
- 5 files changed, 25 insertions(+), 6 deletions(-)
- create mode 100644 configs/meson/emscripten.txt
+ accel/tcg/cputlb.c        |  8 ++++----
+ include/exec/tlb-common.h | 14 ++++++++++----
+ include/exec/vaddr.h      | 11 +++++++++++
+ include/qemu/atomic.h     |  4 ++++
+ meson.build               |  8 +++++---
+ 5 files changed, 34 insertions(+), 11 deletions(-)
 
-diff --git a/configs/meson/emscripten.txt b/configs/meson/emscripten.txt
-new file mode 100644
-index 0000000000..054b263814
---- /dev/null
-+++ b/configs/meson/emscripten.txt
-@@ -0,0 +1,6 @@
-+[built-in options]
-+c_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-+cpp_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-+objc_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-+c_link_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','-sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','-sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','-sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
-+cpp_link_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','-sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','-sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','-sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
-diff --git a/configure b/configure
-index 02f1dd2311..a1fe6e11cd 100755
---- a/configure
-+++ b/configure
-@@ -360,6 +360,10 @@ elif check_define __NetBSD__; then
-   host_os=netbsd
- elif check_define __APPLE__; then
-   host_os=darwin
-+elif check_define EMSCRIPTEN ; then
-+  host_os=emscripten
-+  cpu=wasm32
-+  cross_compile="yes"
- else
-   # This is a fatal error, but don't report it yet, because we
-   # might be going to just print the --help text, or it might
-@@ -526,6 +530,9 @@ case "$cpu" in
-     linux_arch=x86
-     CPU_CFLAGS="-m64"
-     ;;
-+  wasm32)
-+    CPU_CFLAGS="-m32"
-+    ;;
- esac
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index fb22048876..8f8f5c19c4 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -104,13 +104,13 @@ static inline uint64_t tlb_read_idx(const CPUTLBEntry *entry,
+ {
+     /* Do not rearrange the CPUTLBEntry structure members. */
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_read) !=
+-                      MMU_DATA_LOAD * sizeof(uintptr_t));
++                      MMU_DATA_LOAD * sizeof(tlb_addr));
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_write) !=
+-                      MMU_DATA_STORE * sizeof(uintptr_t));
++                      MMU_DATA_STORE * sizeof(tlb_addr));
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_code) !=
+-                      MMU_INST_FETCH * sizeof(uintptr_t));
++                      MMU_INST_FETCH * sizeof(tlb_addr));
  
- if test -n "$host_arch" && {
+-    const uintptr_t *ptr = &entry->addr_idx[access_type];
++    const tlb_addr *ptr = &entry->addr_idx[access_type];
+     /* ofs might correspond to .addr_write, so use qatomic_read */
+     return qatomic_read(ptr);
+ }
+diff --git a/include/exec/tlb-common.h b/include/exec/tlb-common.h
+index 03b5a8ffc7..679054bb44 100644
+--- a/include/exec/tlb-common.h
++++ b/include/exec/tlb-common.h
+@@ -19,14 +19,20 @@
+ #ifndef EXEC_TLB_COMMON_H
+ #define EXEC_TLB_COMMON_H 1
+ 
++#ifndef EMSCRIPTEN
+ #define CPU_TLB_ENTRY_BITS (HOST_LONG_BITS == 32 ? 4 : 5)
++typedef uintptr_t tlb_addr;
++#else
++#define CPU_TLB_ENTRY_BITS 5
++typedef uint64_t tlb_addr;
++#endif
+ 
+ /* Minimalized TLB entry for use by TCG fast path. */
+ typedef union CPUTLBEntry {
+     struct {
+-        uintptr_t addr_read;
+-        uintptr_t addr_write;
+-        uintptr_t addr_code;
++        tlb_addr addr_read;
++        tlb_addr addr_write;
++        tlb_addr addr_code;
+         /*
+          * Addend to virtual address to get host address.  IO accesses
+          * use the corresponding iotlb value.
+@@ -37,7 +43,7 @@ typedef union CPUTLBEntry {
+      * Padding to get a power of two size, as well as index
+      * access to addr_{read,write,code}.
+      */
+-    uintptr_t addr_idx[(1 << CPU_TLB_ENTRY_BITS) / sizeof(uintptr_t)];
++    tlb_addr addr_idx[(1 << CPU_TLB_ENTRY_BITS) / sizeof(tlb_addr)];
+ } CPUTLBEntry;
+ 
+ QEMU_BUILD_BUG_ON(sizeof(CPUTLBEntry) != (1 << CPU_TLB_ENTRY_BITS));
+diff --git a/include/exec/vaddr.h b/include/exec/vaddr.h
+index 28bec632fb..ff57f944dd 100644
+--- a/include/exec/vaddr.h
++++ b/include/exec/vaddr.h
+@@ -9,6 +9,7 @@
+  * We do not support 64-bit guest on 32-host and detect at configure time.
+  * Therefore, a host pointer width will always fit a guest pointer.
+  */
++#ifndef EMSCRIPTEN
+ typedef uintptr_t vaddr;
+ #define VADDR_PRId PRIdPTR
+ #define VADDR_PRIu PRIuPTR
+@@ -16,5 +17,15 @@ typedef uintptr_t vaddr;
+ #define VADDR_PRIx PRIxPTR
+ #define VADDR_PRIX PRIXPTR
+ #define VADDR_MAX UINTPTR_MAX
++#else
++/* Explicitly define this as 64bit on emscripten */
++typedef uint64_t vaddr;
++#define VADDR_PRId PRId64
++#define VADDR_PRIu PRIu64
++#define VADDR_PRIo PRIo64
++#define VADDR_PRIx PRIx64
++#define VADDR_PRIX PRIX64
++#define VADDR_MAX UINT64_MAX
++#endif
+ 
+ #endif
+diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
+index f80cba24cf..76a8fbcd8c 100644
+--- a/include/qemu/atomic.h
++++ b/include/qemu/atomic.h
+@@ -56,6 +56,7 @@
+  */
+ #define signal_barrier()    __atomic_signal_fence(__ATOMIC_SEQ_CST)
+ 
++#ifndef EMSCRIPTEN
+ /*
+  * Sanity check that the size of an atomic operation isn't "overly large".
+  * Despite the fact that e.g. i686 has 64-bit atomic operations, we do not
+@@ -63,6 +64,9 @@
+  * bit of sanity checking that other 32-bit hosts might build.
+  */
+ #define ATOMIC_REG_SIZE  sizeof(void *)
++#else
++#define ATOMIC_REG_SIZE  8 /* wasm supports 64bit atomics */
++#endif
+ 
+ /* Weak atomic operations prevent the compiler moving other
+  * loads/stores past the atomic operation load/store. However there is
 diff --git a/meson.build b/meson.build
-index 41f68d3806..bcf1e33ddf 100644
+index bcf1e33ddf..343408636b 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -50,9 +50,9 @@ genh = []
- qapi_trace_events = []
+@@ -3304,9 +3304,11 @@ foreach target : target_dirs
  
- bsd_oses = ['gnu/kfreebsd', 'freebsd', 'netbsd', 'openbsd', 'dragonfly', 'darwin']
--supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
-+supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux', 'emscripten']
- supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
--  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64']
-+  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32']
- 
- cpu = host_machine.cpu_family()
- 
-@@ -353,6 +353,8 @@ foreach lang : all_languages
-       # endif
-       #endif''')
-     # ok
-+  elif compiler.get_id() == 'emscripten'
-+    # ok
-   else
-     error('You either need GCC v7.4 or Clang v10.0 (or XCode Clang v15.0) to compile QEMU')
-   endif
-@@ -514,6 +516,8 @@ ucontext_probe = '''
- supported_backends = []
- if host_os == 'windows'
-   supported_backends += ['windows']
-+elif host_os == 'emscripten'
-+  supported_backends += ['fiber']
- else
-   if host_os != 'darwin' and cc.links(ucontext_probe)
-     supported_backends += ['ucontext']
-@@ -2962,7 +2966,7 @@ config_host_data.set('CONFIG_ATOMIC64', cc.links('''
-     return 0;
-   }''', args: qemu_isa_flags))
- 
--has_int128_type = cc.compiles('''
-+has_int128_type = host_os != 'emscripten' and cc.compiles('''
-   __int128_t a;
-   __uint128_t b;
-   int main(void) { b = a; }''')
-@@ -4456,7 +4460,9 @@ subdir('scripts')
- subdir('tools')
- subdir('pc-bios')
- subdir('docs')
--subdir('tests')
-+if host_os != 'emscripten'
-+  subdir('tests')
-+endif
- if gtk.found()
-   subdir('po')
- endif
-diff --git a/meson_options.txt b/meson_options.txt
-index 59d973bca0..6d73aafe91 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -34,7 +34,7 @@ option('fuzzing_engine', type : 'string', value : '',
- option('trace_file', type: 'string', value: 'trace',
-        description: 'Trace file prefix for simple backend')
- option('coroutine_backend', type: 'combo',
--       choices: ['ucontext', 'sigaltstack', 'windows', 'auto'],
-+       choices: ['ucontext', 'sigaltstack', 'windows', 'auto', 'fiber'],
-        value: 'auto', description: 'coroutine backend to use')
- 
- # Everything else can be set via --enable/--disable-* option
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 3e8e00852b..cbba2f248c 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -80,7 +80,7 @@ meson_options_help() {
-   printf "%s\n" '  --tls-priority=VALUE     Default TLS protocol/cipher priority string'
-   printf "%s\n" '                           [NORMAL]'
-   printf "%s\n" '  --with-coroutine=CHOICE  coroutine backend to use (choices:'
--  printf "%s\n" '                           auto/sigaltstack/ucontext/windows)'
-+  printf "%s\n" '                           auto/fiber/sigaltstack/ucontext/windows)'
-   printf "%s\n" '  --with-pkgversion=VALUE  use specified string as sub-version of the'
-   printf "%s\n" '                           package'
-   printf "%s\n" '  --with-suffix=VALUE      Suffix for QEMU data/modules/config directories'
+   target_kconfig = []
+   foreach sym: accelerators
+-    # Disallow 64-bit on 32-bit emulation and virtualization
+-    if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
+-      continue
++    if host_arch != 'wasm32'
++      # Disallow 64-bit on 32-bit emulation and virtualization
++      if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
++        continue
++      endif
+     endif
+     if sym == 'CONFIG_TCG' or target in accelerator_targets.get(sym, [])
+       config_target += { sym: 'y' }
 -- 
 2.25.1

@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426294njd;
-        Mon, 7 Apr 2025 07:47:51 -0700 (PDT)
-X-Received: by 2002:a17:903:1b0c:b0:223:fbc7:25f4 with SMTP id d9443c01a7336-22a8a866dc9mr173462965ad.14.1744037271617;
-        Mon, 07 Apr 2025 07:47:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744037271; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426383njd;
+        Mon, 7 Apr 2025 07:47:58 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3d12:b0:736:34a2:8a20 with SMTP id d2e1a72fcca58-739e4c19f56mr18861353b3a.21.1744037278695;
+        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744037278; cv=none;
         d=google.com; s=arc-20240605;
-        b=Kxto9o9UBFs/kJDPKkzmsq76HsPzWVDHy8RES5bzii3RO+SfAimMXLcKxhzwvJqiiC
-         dgwb33nOHLFK4ctI5y9QwAiPqr/JikMn2bPmyfCZXzcWRbxQuuU2EUfoYZLs62L+LylP
-         51/8iSu5lY8pG0q7wBS3dGxMnYe+tUwh0ZJr9eLIisjFWYB0ZvyL9hD0oFRS3/tvW+j5
-         0qCarEEfIrLAt8Wy4tWQ7qHIUvbMMk0zV8qzeTeK5bROqPA0On6wmNPeQ6uQSx/84Ckk
-         PTcyaZPIONLvyaCJYDF14bobaa0OJbCJSg0Bev6mkZX5KArP9g1WTBlCU7aACgoR2vMt
-         EFqQ==
+        b=NEq5rcOr4y5/t7neA0LTXUfyt5dqRHPjxlhVBsqkR04S1ZwiPhAT7UokJHxh9pfDsu
+         EQodqtxAUdYZ7HdyqLYYI5wY4MibtoGtEAbCox0kSOkLqAaKOBPVV9E3UFpsxXMy1YoA
+         Azm4nE+NIjQG0WkI+sHSNjVU77Cw/0Oa5foPt5EEanbELpNBx4BBfqlS+CcOhwsHxLWS
+         LiOH6Y3GMRv1aeJ/63ulM7JVI5V20g5Gx1ufoRKmPGUicE0ifW9KrBqEoeirQd2IMpBW
+         3wosbJ7owEiOb5AQKrk3FF6n+vaqvvzbTNhgP7v0bO64FJs0Y9TOPAliHARXID5AVtUl
+         1ZAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=maq8DmxjYyAbXMCny/cpZJZoQ4BH2LZVoK9JgpK4scU=;
-        fh=wq/lMT/FRV05jdh242aqn4MWIFLnaqr/btyM4uw1Tpg=;
-        b=KTcpWF1sepqCLYBCM1bfksmqA/zh+Q7DhuMjR7r0EAk41WPhiyVKKxFim3AuSp/Eol
-         XXdyRiHfYO6Tohd71mN2MsouPyF0bGpJTz8AYZv/Vw8vtTvrsXwpMPeoJqWUHxdRPRr5
-         2GMW6vLoHZRPCkN3BsIg1+cSlnneV9kj7JZvP0YzsCk9lggA9LjRXF/So1HxO9OYbXtY
-         vxsjePuOs1ItLnMykEGcQ/DgH/LVl+x65DgU+mo3im0nRR4lpM2rzM/9zDIdWcFXqqh1
-         urgPDakkJizGs+plTMgxp1zFKiN4EExwkM5xOvi6DtyKSxquWh0XWadCwxvAqzUDEaYw
-         D1Hw==;
+        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
+        fh=WZuGVYKruktk7PrHJjDxZNHAy274/CJzESlrEWcZdOY=;
+        b=gbaXCqsmPt9K4KQnNrrbiCR9sYhI/d0RtU97NwR14U07THXwYD+6F1HSkri7h85d5h
+         do7L97PKn2qPsIuPkENEDHYFQHSR5nCMIBKDRE3ZQXnd2mF4KRLgw/WHSvttVlTsY6+u
+         ZgCt7A0SgB5gmNDI0xf1ImYX2pUNuE/eoKYY/AwfYdKm2aafVXdKOYlry8bp2XB7/e2F
+         tQ6kQspzSsNQJjPMs4jbndwwkIk+TvSPakyOVUMZHBT3EEaZmHrE+Jv/jYtMnoZm9IZa
+         1qnodnzUhQyj2gT0RMqSj4d5HoudRHh2gT3TvcOPANmyHv2tyNLu+6XXfoJfpLGbrwjl
+         5bGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NzYI63zf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrMOAKH2;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-229b78bfe17sor51278355ad.12.2025.04.07.07.47.51
+        by mx.google.com with SMTPS id d2e1a72fcca58-739d97cfcdfsor5078786b3a.1.2025.04.07.07.47.58
         (Google Transport Security);
-        Mon, 07 Apr 2025 07:47:51 -0700 (PDT)
+        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NzYI63zf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrMOAKH2;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744037271; x=1744642071; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744037278; x=1744642078; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=maq8DmxjYyAbXMCny/cpZJZoQ4BH2LZVoK9JgpK4scU=;
-        b=NzYI63zfS61pkrGk3b5w8yPflf+M3Pjud5LE6n1n4tA3qdX4OG5P71nbCcbArAXmF4
-         of5kzg72BkbcQkMHzVa/cep6yeifbJFUzMtSlvFHGpwEavCeggJJWfInMcHQd/oUNymS
-         b2oTqCA9HoSsV5gAYg+d3Gv+yrrjPPuPzwDKEsJY1YM/BVMd1FxQT1WvrFWg0BYDFkgz
-         VcD7tfjWCJfShiKOvwn3E3PcFpJ0/JwDTdGItjWfwp6eWM9XtHxhA+0HMUQcsA5q6Bk9
-         rOq3FUuhJXWcA8ngxfDEkRKcfUZwj9QZFLL8dIe5Q2S+pfNrcH4Ptdv8EsKu92PNLnE9
-         TVdw==
+        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
+        b=WrMOAKH2bdlUUwMEV8oRFTgmlnfSEh2KkNj0AgiRaKFXfg8EjPf0mPMCwAAapSVqiW
+         50rmBjgVT6RRV4UCXQqpMwZmDEDt13PUzCgEgn3PaANyvKkJi/SiAS2Q/e19I3ih2r/V
+         3HER08wwRZIXmneWzYjkf8IYiPm/PZq9Cmfks798zYxRnQnrREtlnFzMU37DBfHBALAj
+         BkDroZe62vfB/XjLRRFm5+T9FYwnOClG+9ojO3ZybrODQ2riblxALRjpSFiJ60hoGiAQ
+         9995OEfwrOj6HcbfTA+ZZ6/pSSP789VB/Qxkt1KLDGc3eeD+4uj1p1w9jDfPgRw7qCIq
+         oF9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744037271; x=1744642071;
+        d=1e100.net; s=20230601; t=1744037278; x=1744642078;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=maq8DmxjYyAbXMCny/cpZJZoQ4BH2LZVoK9JgpK4scU=;
-        b=jSimELKQ4QsFVoITUQ4/NsKAhwzzPrC0T1v9DUiJCDVE6jYttXJt+I1cfTpECVJhEI
-         +5n4S9rC0wMDjrEBzHea0qi7Sf2gNF7B6YnOSvDHPv1yXX1aZnyYdbQb4x/bW1U5qvBH
-         5KPNOupOy1Bfh5JqmrPN+x361xd8xtTITMpBd/WBV4dnysmexMihzhMspArb+MWfQyzq
-         PXhG6Uti7eaRX64RKFdkIPQ1ai/nHw8BmzYFJjNhl7OvmPfpYC/Bm/Z3WHTzKNjXpUnc
-         YLIVSWtROGTOBCrxPxfFRhFAllkzsUKUDHT90c/s8GU8ljWBFF1daeBsN9A+ATPFflbL
-         t7lQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUacxS1kD1wn+g9p7NRmB2sLINgPYXDkdqLc8FNIw9JLPIWhoYMzaHv/Cki/FtY9PqWLyXbkTalPpdLd/u3U8WWpCM=@linaro.org, AJvYcCUxAzkIGsugUho/Uj56QHYjV91RYDYn00sIB+OXcy/oYzbSxH5q+Mpmlevk2Ihl3xZHVqaYhL6tyCykLOA1@linaro.org, AJvYcCVQv60xk/B5jxwEWypCebPFmmIlc9CkuiVS2u6zbVqPWyq2V1pf2IklfBjtE0vOIMD3Mf67ePw2@linaro.org
-X-Gm-Message-State: AOJu0YxBoRRRutA2xDaObRG7DtDttqqShojPIgUle9N6qWQSQjJ6j4yp
-	qQXwPhFyiZtgv4LSQCrISJdPABbIRZ9XIgJUp9ZrGNmcssXHVKvx
-X-Gm-Gg: ASbGncu9gHEsQhgXLEgZaqhDEN13UUpg8kGN+5fW2Q2W0XQPR02Pydwq6q9ns8TRuhH
-	JAlUufpuE+swLmA2a/ANu3AGB02JNdVT7tNRhUl3TuuI1fe+Km77quQP1UcagMoMHjJXQyLdlcy
-	Po6iBPfdaGXmdgD2Yr2OciGG8a/6MZAEZ0Gbai8VsMuVgzZNyfaadyvr+e/2I3CdniGd5QcjKE1
-	r0Idjr3mk0lXsFzReq9OJdsRqn+hg/rrLImKgAJO/nRvVlJahtMVyZKc2lE3tlUMv7znH6Ltf0J
-	EjZnPWZ9w1Xb3YNofQ9Wl8U+MmQHXKlqVDLZOnBPSgz6SBe/lMio3IvaPXvCGA==
-X-Google-Smtp-Source: AGHT+IGnRlE1J9xAQ8on+RsP6dF3OMiTxnoLy+/62yPs6hp1pQvN2FypIbgjstfQKJKk6OT9jCncrw==
-X-Received: by 2002:a17:903:3bc6:b0:220:d79f:60f1 with SMTP id d9443c01a7336-22a8a8ced77mr165846205ad.42.1744037270688;
-        Mon, 07 Apr 2025 07:47:50 -0700 (PDT)
+        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
+        b=moiZQgMuR3kxWW6F4azaocZirA8gpEzLP3GfndLxgMF7S4GuQsBOIfonZehLrVh4y6
+         w4NP4DM74z0cW+K4BKo6z2YwMkWODwKfy76d1TpUf2/JdRInvGGWA4A48BOfblm9yJBl
+         eaC9rJ3dYlJkQnl02HR0QV8KmvWeB8Ud+MuV+IOp4OeekhlQnKnoiSmZoPgqA4krD5lx
+         Ika3qo42oI9oQeFLHqCrZj6c+BDx4IKZ2Bu8lFc/Gy1kIONCqzTzCR28auKh85tbJ5it
+         verkoN+JUwQFz4DbAS0nJz0ssWd9X/YPhBB8Ej86MzH+oHGJH8q2X5inNepAEz1WyftC
+         mfgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVOS/KhxPO32A5ALHkWEE6MjGXTlmW2+52JwVD+3bMEePOfo5XIEOlguX0YVpg+4Gwtw41uOb03vY1e04geukkoYyY=@linaro.org, AJvYcCVlD6JZ7dW1iFV/JNJuEetkg6R7PQY7HJmIQmf89AkK1OLx5XusJZsLsjtE8e0cXyURdhHNPiVP@linaro.org, AJvYcCX+dm+ieIBx419cAwCgmBMVsB92A+5I5h5Gj90JcCO68DzT83pN7+kU+FumMQJ0RX9b0CmAp9HH3j6pme5i@linaro.org
+X-Gm-Message-State: AOJu0Yx3OLOBcv+WtaAPVggaqI7pT0R9DcqfZVfV5xfi+UXfX0DwJWLj
+	PfrwioKu+mvW8e5221MaNccf8ZYMzL+xiyh02qg4YDffysN+7SRY
+X-Gm-Gg: ASbGncu4bBCT49Yc7FGRpyqxvVUvxXRl+2/LtGWXzJi3GJyqFqQfTq4HYaewRZdsqjF
+	5xLrl2oBK7p15yWbZqiDGy6pojFcVASnSAKGP5FghvlTaxtQSRau8stWJMLzBkBnLSpAexn5nzs
+	J3S5XF2TMrLuEiW8AK+yBH7+wGS8SrZmuONXC/G7YzHYvoirCdzyZs0Ll9NPHLJapxzbxgfWymF
+	VXRHZVUGyGSq4mW/XPlnVlFDwTz+CKhLEGLoSXqgoQUdxBskeQpDBsn2Q4US2dGTsUEMh5tJOqr
+	G+AYOsy8SGvlRPt7YhHCdWUlkI/1uxXLsYVA2a1nNmossfKW8I1N4iAxmANc3+P1g2d2YLti
+X-Google-Smtp-Source: AGHT+IFK5Snnwez+9Z1jA55NI18ZTP1BoHatw9I8udhAd9+QfwRAfkorXPb+OzP1TByBPcIzR0wn1A==
+X-Received: by 2002:a05:6a21:788f:b0:1f5:619a:8f73 with SMTP id adf61e73a8af0-20104735fdemr18035606637.26.1744037278135;
+        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from localhost.localdomain ([240d:1a:3b6:8b00:8768:486:6a8e:e855])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.47.44
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.47.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 07:47:50 -0700 (PDT)
+        Mon, 07 Apr 2025 07:47:57 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -103,115 +103,70 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-block@nongnu.org,
 	qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 02/10] various: Define macros for dependencies on emscripten
-Date: Mon,  7 Apr 2025 23:45:53 +0900
-Message-Id: <5f2a8fa2d7116b1d65b79fbb3a95244096fb7308.1744032780.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 03/10] util/mmap-alloc: Add qemu_ram_mmap implementation for emscripten
+Date: Mon,  7 Apr 2025 23:45:54 +0900
+Message-Id: <8c2b176bd4c499233a88dcd18e62d8cf94e08f56.1744032780.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 1zDn2mng8jlw
+X-TUID: tkT5DabFslOl
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- block/file-posix.c        | 18 ++++++++++++++++++
- include/qemu/cacheflush.h |  3 ++-
- os-posix.c                |  5 +++++
- util/cacheflush.c         |  3 ++-
- 4 files changed, 27 insertions(+), 2 deletions(-)
+ util/mmap-alloc.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/block/file-posix.c b/block/file-posix.c
-index 56d1972d15..69f54505bd 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -110,6 +110,10 @@
- #include <sys/diskslice.h>
- #endif
- 
-+#ifdef EMSCRIPTEN
-+#include <sys/ioctl.h>
-+#endif
-+
- /* OS X does not have O_DSYNC */
- #ifndef O_DSYNC
- #ifdef O_SYNC
-@@ -2011,6 +2015,19 @@ static int handle_aiocb_write_zeroes_unmap(void *opaque)
+diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
+index ed14f9c64d..91f33682e8 100644
+--- a/util/mmap-alloc.c
++++ b/util/mmap-alloc.c
+@@ -145,6 +145,7 @@ static bool map_noreserve_effective(int fd, uint32_t qemu_map_flags)
+     return false;
  }
  
- #ifndef HAVE_COPY_FILE_RANGE
-+#ifdef EMSCRIPTEN
-+/*
-+ * emscripten exposes copy_file_range declaration but doesn't provide the
-+ * implementation in the final link. Define the stub here but avoid type
-+ * conflict with the emscripten's header.
-+ */
-+ssize_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
-+                             off_t *out_off, size_t len, unsigned int flags)
-+{
-+    errno = ENOSYS;
-+    return -1;
-+}
-+#else
- static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
-                              off_t *out_off, size_t len, unsigned int flags)
- {
-@@ -2023,6 +2040,7 @@ static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
- #endif
++#ifndef EMSCRIPTEN
+ /*
+  * Reserve a new memory region of the requested size to be used for mapping
+  * from the given fd (if any).
+@@ -176,6 +177,7 @@ static void *mmap_reserve(size_t size, int fd)
+ 
+     return mmap(0, size, PROT_NONE, flags, fd, 0);
  }
- #endif
 +#endif
  
  /*
-  * parse_zone - Fill a zone descriptor
-diff --git a/include/qemu/cacheflush.h b/include/qemu/cacheflush.h
-index ae20bcda73..84969801e3 100644
---- a/include/qemu/cacheflush.h
-+++ b/include/qemu/cacheflush.h
-@@ -19,7 +19,8 @@
-  * mappings of the same physical page(s).
-  */
+  * Activate memory in a reserved region from the given fd (if any), to make
+@@ -244,6 +246,21 @@ static inline size_t mmap_guard_pagesize(int fd)
+ #endif
+ }
  
--#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-+#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) \
-+    || defined(EMSCRIPTEN)
- 
- static inline void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
- {
-diff --git a/os-posix.c b/os-posix.c
-index 52925c23d3..9a7099e279 100644
---- a/os-posix.c
-+++ b/os-posix.c
-@@ -148,11 +148,16 @@ static void change_process_uid(void)
-             exit(1);
-         }
-         if (user_pwd) {
 +#ifdef EMSCRIPTEN
-+            error_report("initgroups unsupported");
-+            exit(1);
++void *qemu_ram_mmap(int fd,
++                    size_t size,
++                    size_t align,
++                    uint32_t qemu_map_flags,
++                    off_t map_offset)
++{
++    /*
++     * emscripten doesn't support non-zero first argument for mmap so
++     * mmap a larger region without the hint and return an aligned pointer.
++     */
++    void *ptr = mmap_activate(0, size + align, fd, qemu_map_flags, map_offset);
++    return (void *)QEMU_ALIGN_UP((uintptr_t)ptr, align);
++}
 +#else
-             if (initgroups(user_pwd->pw_name, user_pwd->pw_gid) < 0) {
-                 error_report("Failed to initgroups(\"%s\", %d)",
-                         user_pwd->pw_name, user_pwd->pw_gid);
-                 exit(1);
-             }
-+#endif
-         } else {
-             if (setgroups(1, &user_gid) < 0) {
-                 error_report("Failed to setgroups(1, [%d])",
-diff --git a/util/cacheflush.c b/util/cacheflush.c
-index 1d12899a39..e5aa256cd8 100644
---- a/util/cacheflush.c
-+++ b/util/cacheflush.c
-@@ -225,7 +225,8 @@ static void __attribute__((constructor)) init_cache_info(void)
-  * Architecture (+ OS) specific cache flushing mechanisms.
-  */
+ void *qemu_ram_mmap(int fd,
+                     size_t size,
+                     size_t align,
+@@ -293,6 +310,7 @@ void *qemu_ram_mmap(int fd,
  
--#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-+#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) || \
-+    defined(EMSCRIPTEN)
+     return ptr;
+ }
++#endif /* EMSCRIPTEN */
  
- /* Caches are coherent and do not require flushing; symbol inline. */
- 
+ void qemu_ram_munmap(int fd, void *ptr, size_t size)
+ {
 -- 
 2.25.1

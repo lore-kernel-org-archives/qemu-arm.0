@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426383njd;
-        Mon, 7 Apr 2025 07:47:58 -0700 (PDT)
-X-Received: by 2002:a05:6a00:3d12:b0:736:34a2:8a20 with SMTP id d2e1a72fcca58-739e4c19f56mr18861353b3a.21.1744037278695;
-        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744037278; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6426451njd;
+        Mon, 7 Apr 2025 07:48:05 -0700 (PDT)
+X-Received: by 2002:a17:902:ce0e:b0:224:2717:7993 with SMTP id d9443c01a7336-22a8a8cf307mr182768305ad.45.1744037284874;
+        Mon, 07 Apr 2025 07:48:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744037284; cv=none;
         d=google.com; s=arc-20240605;
-        b=NEq5rcOr4y5/t7neA0LTXUfyt5dqRHPjxlhVBsqkR04S1ZwiPhAT7UokJHxh9pfDsu
-         EQodqtxAUdYZ7HdyqLYYI5wY4MibtoGtEAbCox0kSOkLqAaKOBPVV9E3UFpsxXMy1YoA
-         Azm4nE+NIjQG0WkI+sHSNjVU77Cw/0Oa5foPt5EEanbELpNBx4BBfqlS+CcOhwsHxLWS
-         LiOH6Y3GMRv1aeJ/63ulM7JVI5V20g5Gx1ufoRKmPGUicE0ifW9KrBqEoeirQd2IMpBW
-         3wosbJ7owEiOb5AQKrk3FF6n+vaqvvzbTNhgP7v0bO64FJs0Y9TOPAliHARXID5AVtUl
-         1ZAA==
+        b=jeHy3SSQrZYGpPo53hCYzmub4FAS6eCLRqHOrOKjBOoK6nJb3BN5KBA7ijeirV5hlY
+         6B4wp2AP/ov8QuBxyN9TmMRlEC1qsiXgxXVtLheGrvMZT+4oJaB0e2reR1IzcToAXQzB
+         FfESjVjtea2+9f0GPPuzj2DukKIbJAxie62FN7rff1yiFNejmOxze3tTyBOolp6Lwh+i
+         Gx0Q0TxJ2Re/IFFViZ6/P/YxX4xi1cUX/94wJ4EYiMVBBRUTQ18ChqRjBBDQxUISa2xX
+         4kRVgrDoaDvX4r9el6ogKXPuf6aw0wT3/BLOIZG1Qk9f8TpfgTqStz1+3X/cGlf9RwYU
+         +EEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
-        fh=WZuGVYKruktk7PrHJjDxZNHAy274/CJzESlrEWcZdOY=;
-        b=gbaXCqsmPt9K4KQnNrrbiCR9sYhI/d0RtU97NwR14U07THXwYD+6F1HSkri7h85d5h
-         do7L97PKn2qPsIuPkENEDHYFQHSR5nCMIBKDRE3ZQXnd2mF4KRLgw/WHSvttVlTsY6+u
-         ZgCt7A0SgB5gmNDI0xf1ImYX2pUNuE/eoKYY/AwfYdKm2aafVXdKOYlry8bp2XB7/e2F
-         tQ6kQspzSsNQJjPMs4jbndwwkIk+TvSPakyOVUMZHBT3EEaZmHrE+Jv/jYtMnoZm9IZa
-         1qnodnzUhQyj2gT0RMqSj4d5HoudRHh2gT3TvcOPANmyHv2tyNLu+6XXfoJfpLGbrwjl
-         5bGg==;
+        bh=Y/vXoOU9/WH6B8z0Pp6XgozbGmRLjl1o39LJP8NE6XY=;
+        fh=suD0jIJg8bDsS00CTx1roEw2EWciE5r8Pq42OKKaWrw=;
+        b=giOhUfzjPUL73xw3Ui/qa5XSpuDSgYk5GHq+I/vbUjnJ1+IqAU+ZnAT2Tvgeu3Dcpx
+         w8nPOERZV7xU8ZuGy5n8EKv1EMrl0eodkdnk2yALV2i/HmVdBF3ykC348c0zxT4Szk51
+         0IuGBT3tm5Kk8yUY/LI5GwWIhSDYEmS+1MP88+uzaFQat1ZhIQhuTSGNy0BicW2BpQXI
+         sq0DBo55nX1/hb1nUl7VuXSuYvih4XhduJvLj/ud+T4uoe2QYYCCT61dO+X6sB/hsVlR
+         QQROMxCCujmqzoXHD7sDJiRYf3XbqwAYkKyxzFuv+z40oowAsVv8WpMzYqEYwauSs+Va
+         7kbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrMOAKH2;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jdTOqdfS;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-739d97cfcdfsor5078786b3a.1.2025.04.07.07.47.58
+        by mx.google.com with SMTPS id d9443c01a7336-229a7b58b1fsor71334845ad.3.2025.04.07.07.48.04
         (Google Transport Security);
-        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
+        Mon, 07 Apr 2025 07:48:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrMOAKH2;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jdTOqdfS;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744037278; x=1744642078; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744037284; x=1744642084; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
-        b=WrMOAKH2bdlUUwMEV8oRFTgmlnfSEh2KkNj0AgiRaKFXfg8EjPf0mPMCwAAapSVqiW
-         50rmBjgVT6RRV4UCXQqpMwZmDEDt13PUzCgEgn3PaANyvKkJi/SiAS2Q/e19I3ih2r/V
-         3HER08wwRZIXmneWzYjkf8IYiPm/PZq9Cmfks798zYxRnQnrREtlnFzMU37DBfHBALAj
-         BkDroZe62vfB/XjLRRFm5+T9FYwnOClG+9ojO3ZybrODQ2riblxALRjpSFiJ60hoGiAQ
-         9995OEfwrOj6HcbfTA+ZZ6/pSSP789VB/Qxkt1KLDGc3eeD+4uj1p1w9jDfPgRw7qCIq
-         oF9w==
+        bh=Y/vXoOU9/WH6B8z0Pp6XgozbGmRLjl1o39LJP8NE6XY=;
+        b=jdTOqdfS4AFHUVSGkw8JutZKDDaqWdfpfQSiwaizn0V//aCD4vgM9ZfWgGDtOOntHK
+         iQfvJp/9kJLe3wvqudVo+hh7ezkeUqEPfZtm3tBZ6sKcNq268cPpR2IOEnpnVPoitXNv
+         V+5RwMwO/EeYonkjNPlTmVA7RRRuXRzsv0cljqtnqxsF6JQc6FdPIFvABTRJrAAtr07S
+         z3INA0RgdEvygRrRU3deYAAppQnlKzyxcE94HvlWSKDgnoU3JmWc4PDE0DvXcZwl+tFK
+         X8SZoyKkLod83pxfMb2XW+4Qc3F/I2p4fCuBO8QqMmlON2e8dvuMbH++QKtYcBqDCc/A
+         jcwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744037278; x=1744642078;
+        d=1e100.net; s=20230601; t=1744037284; x=1744642084;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LeWm4gdwYX7Mpk2+jTOfSOTsV04a2XRASVxxD/NFs3U=;
-        b=moiZQgMuR3kxWW6F4azaocZirA8gpEzLP3GfndLxgMF7S4GuQsBOIfonZehLrVh4y6
-         w4NP4DM74z0cW+K4BKo6z2YwMkWODwKfy76d1TpUf2/JdRInvGGWA4A48BOfblm9yJBl
-         eaC9rJ3dYlJkQnl02HR0QV8KmvWeB8Ud+MuV+IOp4OeekhlQnKnoiSmZoPgqA4krD5lx
-         Ika3qo42oI9oQeFLHqCrZj6c+BDx4IKZ2Bu8lFc/Gy1kIONCqzTzCR28auKh85tbJ5it
-         verkoN+JUwQFz4DbAS0nJz0ssWd9X/YPhBB8Ej86MzH+oHGJH8q2X5inNepAEz1WyftC
-         mfgQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVOS/KhxPO32A5ALHkWEE6MjGXTlmW2+52JwVD+3bMEePOfo5XIEOlguX0YVpg+4Gwtw41uOb03vY1e04geukkoYyY=@linaro.org, AJvYcCVlD6JZ7dW1iFV/JNJuEetkg6R7PQY7HJmIQmf89AkK1OLx5XusJZsLsjtE8e0cXyURdhHNPiVP@linaro.org, AJvYcCX+dm+ieIBx419cAwCgmBMVsB92A+5I5h5Gj90JcCO68DzT83pN7+kU+FumMQJ0RX9b0CmAp9HH3j6pme5i@linaro.org
-X-Gm-Message-State: AOJu0Yx3OLOBcv+WtaAPVggaqI7pT0R9DcqfZVfV5xfi+UXfX0DwJWLj
-	PfrwioKu+mvW8e5221MaNccf8ZYMzL+xiyh02qg4YDffysN+7SRY
-X-Gm-Gg: ASbGncu4bBCT49Yc7FGRpyqxvVUvxXRl+2/LtGWXzJi3GJyqFqQfTq4HYaewRZdsqjF
-	5xLrl2oBK7p15yWbZqiDGy6pojFcVASnSAKGP5FghvlTaxtQSRau8stWJMLzBkBnLSpAexn5nzs
-	J3S5XF2TMrLuEiW8AK+yBH7+wGS8SrZmuONXC/G7YzHYvoirCdzyZs0Ll9NPHLJapxzbxgfWymF
-	VXRHZVUGyGSq4mW/XPlnVlFDwTz+CKhLEGLoSXqgoQUdxBskeQpDBsn2Q4US2dGTsUEMh5tJOqr
-	G+AYOsy8SGvlRPt7YhHCdWUlkI/1uxXLsYVA2a1nNmossfKW8I1N4iAxmANc3+P1g2d2YLti
-X-Google-Smtp-Source: AGHT+IFK5Snnwez+9Z1jA55NI18ZTP1BoHatw9I8udhAd9+QfwRAfkorXPb+OzP1TByBPcIzR0wn1A==
-X-Received: by 2002:a05:6a21:788f:b0:1f5:619a:8f73 with SMTP id adf61e73a8af0-20104735fdemr18035606637.26.1744037278135;
-        Mon, 07 Apr 2025 07:47:58 -0700 (PDT)
+        bh=Y/vXoOU9/WH6B8z0Pp6XgozbGmRLjl1o39LJP8NE6XY=;
+        b=kNuqAiW4+NaGxsJ/GLjhXF2HDpvt2FuHlngWJb6Oh6NFKLWOgZR6KrNlVeK5dLXw9V
+         8GVplKGihxBL1am3Cr4pW9mm5u4KG/ml9NoqCd1/AoskTn8+T0IfxrQEs1z9GDNk8066
+         +/E+s6kPOvOJYeFMzfDZTAcer5rjhe0z0a+nSBLRORSUDqwRwUUwGqp+kobWcjnUNANv
+         NEqal2rWCYCKZThaTgGYWoFz+xx29H6QUxEHmtU3qT2eUn8OHfM0cwZgVV1SZKzhmNkL
+         glgJzWiNMbuTv1B7mciMEn/VqNnPDbC08N9N/AK2iihHSKet/ms10z+z9vMIoK/F7gfV
+         gjGA==
+X-Forwarded-Encrypted: i=1; AJvYcCVDwVHxZe1p/1PECFrQ0jIHEnHZA2ZuxA080o5IsyO3UyYlsWDYxI43ymzZrvYjLsMn22RBul5ddnPMVuyuSQMUSXs=@linaro.org, AJvYcCWJ3kIn8m4ER+/vhFvaUFuAP93Kpm1X332VjPzDuL+ndaTeGZSDzd7rJyTVXAnhZ2hQEmmfUhBL@linaro.org, AJvYcCXiS9yNT6MVa7mvcFsxc0WpEM6hYS12HKrAv+NFvUG+WC7WkyzqrDm8ePJ1bfIc8eRgewx2gJpcFI3ASswB@linaro.org
+X-Gm-Message-State: AOJu0Yy0jiOvLKqgPmETNZi2CWGjtP6UjkqPyLIkW2h4dbhoD0XP2Myx
+	o6CHRnRXQw86WZsybcyY/BH2pgP09ewiQfmq28ZeOzL2RRMeKXyqPl2VK6WM
+X-Gm-Gg: ASbGnctMUDX3kU0kjVDhWUaJP54S/6enRruseWddOScA+eCu7qwvDsHva4LBeDfiEf1
+	/AjuP6AIr8cjeZkFI/bntH5jap2muepet2VirJppVH94Np3Tu/QiCQ+d8urtv3fJFTOvWhKEzh4
+	W0UXgPaz6Yi9VhWhfVU1sV3BG3IuktjIUbx0EUbhyBdq3JLO3iVlc8fNbWOfbhJmAZbIObdAXgX
+	nZvwATKZlVvhyp5fEU1nTLYb8V4uMmmYxBS7hiM60Laq8VLfppqXyO/PSHrTXrappMJ2NGwo5sQ
+	E11G9vMgL/oaBZyNjlo+UgB+ip4aiG0Yzsv408JZFChy5eDakupik6uwTOa+nw==
+X-Google-Smtp-Source: AGHT+IGVX4WZdwjz8t2px+L/u1IusGGhdA+M9JnGeDomm+fX2PtXqK/fd/imZowOMFEYatlfbwDLfA==
+X-Received: by 2002:a17:902:e749:b0:224:13a4:d61e with SMTP id d9443c01a7336-22a8a8d31e9mr167348655ad.51.1744037284265;
+        Mon, 07 Apr 2025 07:48:04 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from localhost.localdomain ([240d:1a:3b6:8b00:8768:486:6a8e:e855])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.47.52
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-739d97ef3c2sm8856960b3a.59.2025.04.07.07.47.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 07:47:57 -0700 (PDT)
+        Mon, 07 Apr 2025 07:48:03 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -103,70 +103,159 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-block@nongnu.org,
 	qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 03/10] util/mmap-alloc: Add qemu_ram_mmap implementation for emscripten
-Date: Mon,  7 Apr 2025 23:45:54 +0900
-Message-Id: <8c2b176bd4c499233a88dcd18e62d8cf94e08f56.1744032780.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 04/10] util: Add coroutine backend for emscripten
+Date: Mon,  7 Apr 2025 23:45:55 +0900
+Message-Id: <b6b8274b7dae5f3e4ee12c1d20cf9c329dd350bf.1744032780.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: tkT5DabFslOl
+X-TUID: gfYTr1EQBGf9
+
+Emscripten does not support couroutine methods currently used by QEMU but
+provides a coroutine implementation called "fiber". This commit introduces a
+coroutine backend using fiber. Note that fiber does not support submitting
+coroutines to other threads.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- util/mmap-alloc.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ util/coroutine-fiber.c | 127 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 127 insertions(+)
+ create mode 100644 util/coroutine-fiber.c
 
-diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
-index ed14f9c64d..91f33682e8 100644
---- a/util/mmap-alloc.c
-+++ b/util/mmap-alloc.c
-@@ -145,6 +145,7 @@ static bool map_noreserve_effective(int fd, uint32_t qemu_map_flags)
-     return false;
- }
- 
-+#ifndef EMSCRIPTEN
- /*
-  * Reserve a new memory region of the requested size to be used for mapping
-  * from the given fd (if any).
-@@ -176,6 +177,7 @@ static void *mmap_reserve(size_t size, int fd)
- 
-     return mmap(0, size, PROT_NONE, flags, fd, 0);
- }
-+#endif
- 
- /*
-  * Activate memory in a reserved region from the given fd (if any), to make
-@@ -244,6 +246,21 @@ static inline size_t mmap_guard_pagesize(int fd)
- #endif
- }
- 
-+#ifdef EMSCRIPTEN
-+void *qemu_ram_mmap(int fd,
-+                    size_t size,
-+                    size_t align,
-+                    uint32_t qemu_map_flags,
-+                    off_t map_offset)
+diff --git a/util/coroutine-fiber.c b/util/coroutine-fiber.c
+new file mode 100644
+index 0000000000..cb1ec92509
+--- /dev/null
++++ b/util/coroutine-fiber.c
+@@ -0,0 +1,127 @@
++/*
++ * emscripten fiber coroutine initialization code
++ * based on coroutine-ucontext.c
++ *
++ * Copyright (C) 2006  Anthony Liguori <anthony@codemonkey.ws>
++ * Copyright (C) 2011  Kevin Wolf <kwolf@redhat.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.0 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/coroutine_int.h"
++#include "qemu/coroutine-tls.h"
++
++#include <emscripten/fiber.h>
++
++typedef struct {
++    Coroutine base;
++    void *stack;
++    size_t stack_size;
++
++    void *asyncify_stack;
++    size_t asyncify_stack_size;
++
++    CoroutineAction action;
++
++    emscripten_fiber_t fiber;
++} CoroutineEmscripten;
++
++/**
++ * Per-thread coroutine bookkeeping
++ */
++QEMU_DEFINE_STATIC_CO_TLS(Coroutine *, current);
++QEMU_DEFINE_STATIC_CO_TLS(CoroutineEmscripten *, leader);
++size_t leader_asyncify_stack_size = COROUTINE_STACK_SIZE;
++
++static void coroutine_trampoline(void *co_)
 +{
-+    /*
-+     * emscripten doesn't support non-zero first argument for mmap so
-+     * mmap a larger region without the hint and return an aligned pointer.
-+     */
-+    void *ptr = mmap_activate(0, size + align, fd, qemu_map_flags, map_offset);
-+    return (void *)QEMU_ALIGN_UP((uintptr_t)ptr, align);
++    Coroutine *co = co_;
++
++    while (true) {
++        co->entry(co->entry_arg);
++        qemu_coroutine_switch(co, co->caller, COROUTINE_TERMINATE);
++    }
 +}
-+#else
- void *qemu_ram_mmap(int fd,
-                     size_t size,
-                     size_t align,
-@@ -293,6 +310,7 @@ void *qemu_ram_mmap(int fd,
- 
-     return ptr;
- }
-+#endif /* EMSCRIPTEN */
- 
- void qemu_ram_munmap(int fd, void *ptr, size_t size)
- {
++
++Coroutine *qemu_coroutine_new(void)
++{
++    CoroutineEmscripten *co;
++
++    co = g_malloc0(sizeof(*co));
++
++    co->stack_size = COROUTINE_STACK_SIZE;
++    co->stack = qemu_alloc_stack(&co->stack_size);
++
++    co->asyncify_stack_size = COROUTINE_STACK_SIZE;
++    co->asyncify_stack = g_malloc0(co->asyncify_stack_size);
++    emscripten_fiber_init(&co->fiber, coroutine_trampoline, &co->base,
++                          co->stack, co->stack_size, co->asyncify_stack,
++                          co->asyncify_stack_size);
++
++    return &co->base;
++}
++
++void qemu_coroutine_delete(Coroutine *co_)
++{
++    CoroutineEmscripten *co = DO_UPCAST(CoroutineEmscripten, base, co_);
++
++    qemu_free_stack(co->stack, co->stack_size);
++    g_free(co->asyncify_stack);
++    g_free(co);
++}
++
++CoroutineAction qemu_coroutine_switch(Coroutine *from_, Coroutine *to_,
++                      CoroutineAction action)
++{
++    CoroutineEmscripten *from = DO_UPCAST(CoroutineEmscripten, base, from_);
++    CoroutineEmscripten *to = DO_UPCAST(CoroutineEmscripten, base, to_);
++
++    set_current(to_);
++    to->action = action;
++    emscripten_fiber_swap(&from->fiber, &to->fiber);
++    return from->action;
++}
++
++Coroutine *qemu_coroutine_self(void)
++{
++    Coroutine *self = get_current();
++
++    if (!self) {
++        CoroutineEmscripten *leaderp = get_leader();
++        if (!leaderp) {
++            leaderp = g_malloc0(sizeof(*leaderp));
++            leaderp->asyncify_stack = g_malloc0(leader_asyncify_stack_size);
++            leaderp->asyncify_stack_size = leader_asyncify_stack_size;
++            emscripten_fiber_init_from_current_context(
++                &leaderp->fiber,
++                leaderp->asyncify_stack,
++                leaderp->asyncify_stack_size);
++            leaderp->stack = leaderp->fiber.stack_limit;
++            leaderp->stack_size =
++                leaderp->fiber.stack_base - leaderp->fiber.stack_limit;
++            set_leader(leaderp);
++        }
++        self = &leaderp->base;
++        set_current(self);
++    }
++    return self;
++}
++
++bool qemu_in_coroutine(void)
++{
++    Coroutine *self = get_current();
++
++    return self && self->caller;
++}
 -- 
 2.25.1

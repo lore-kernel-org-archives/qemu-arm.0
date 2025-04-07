@@ -1,227 +1,458 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6372108njd;
-        Mon, 7 Apr 2025 06:30:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWpa+bxuGT6kUwHUtA2CB+J+Lq6Xp8OvS3aJZs7oCXnQnRdFWjOHjKigZqq/ma3J0EAuv90x6Gb2qw4yA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE7ckPaXTt+Cnb6I+KEhDghTNbFDw0dPkLWzOEOCTRwsO1uQ7amqQHYJQHQCHBHzCrFCCXG
-X-Received: by 2002:a05:620a:2447:b0:7c5:65fb:fe0e with SMTP id af79cd13be357-7c77dd6b226mr1514554085a.6.1744032633106;
-        Mon, 07 Apr 2025 06:30:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744032633; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6444513njd;
+        Mon, 7 Apr 2025 08:12:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUB0B/3yL6m4WlcDqYmj13xkZitf/C/pVufLrDCsFXWz1q8MJfshBdcWg5lgZDBwaFF/conA3Wo4eNW3w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEiuGpuxK/++7DASW3uA/LU8htwox4cztggdTnmvRVFYtIsfy9t54EqkK+Djzu/ks+j/E8r
+X-Received: by 2002:a05:6000:2906:b0:39c:30d8:f104 with SMTP id ffacd0b85a97d-39cb3575b81mr9422179f8f.6.1744038772092;
+        Mon, 07 Apr 2025 08:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744038772; cv=none;
         d=google.com; s=arc-20240605;
-        b=BEP6PCQGeevWnLEfpQfkjB3m/3Vn8XT6pExTLyv14huruHYN+V3g55ZndeeYT3zYEM
-         Mt8a0C2zgjHLO6WYTBB03kg9/q0LjGB8xQnNn94C1coRkXplu34CgUPNXG01axca/Ggt
-         TfUDxPtG4pATk2Ur8b1DzGGJUSpB+/x7Q3pogbBi87ZBa2f4YHe5PLkJ4jH5fp48n+3P
-         Gx2bZJite8WrYtkWvH79VKHJFWVlPDzrJeBWdbZFkTyTmMBSLcZPHMgM4i9qvHadmzJr
-         s0h8gSezZRk6IsHlob5qHNH79gi7K10wQkDG6O8H0U3k3PGsxjZX7XQqHyhpaZdMGhJm
-         3jJg==
+        b=jd/IWm2Mim2B5oUSFVpuIck2wikcev+YjPqUvx2a45x0OcpOIw+N9Hkf1p/axUOaDK
+         CAis6bdpxeB6LajFUE/8Je+Gwla4od8oOFLt1bqw4yfNrv/jaIL4BsbjxGIGEaZZUi2+
+         kxi5ODjJIek7NeoEGpIq9Q/U5CF5rmidvcCr5kXTJ4ethnfC80+eA4sGfkfkOrtDg2CK
+         4WuZ0yvYmEaEivEFVLv27rT/dRrkYn8BE+Sc+oOGT+omisAkxs0oBRTgJwwTq0ZqWCaR
+         8b1pKgR2IVmXJET4NvG/q8O7W33806NHaMSW8WGK+v2ghsrjK9Yu0rMEjNb3Ln23+EL8
+         u3lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=5yYQ8iH6g2DJrpmcWfAUZDWMJZm83Xuy4dF4K7MbYHo=;
-        fh=osz4PMbrZWZlXWkB6Rp9NvlWtWkwIBu6oLZhq5GQEyU=;
-        b=ctWwvf8mr8xo97ax2loivwT2T7XlcIVuhjWIYOZOJDEI3zsuc3Mo7raSJHMmZTmAOP
-         NmaSpbIKqocy/byg/wUOhk+Fb5MgiJ/oZ1xM2lTxb/WqBX6OqDwNGi9g9Y7YU4Ph4Age
-         8S4XcVi3YCrED9n2B4YZWla+OEpJXEUaSAueB9T9VD6RsNHGIE3Yk/Y9B8lLbgPSygzs
-         XpZkTl8sH13nMLw5sCGs1Q3w78BzAScSPMvW9caqqdlvYWuIYwqNY/fAtNxsSa2JivEY
-         510XgvAwOr/tbAN7HiLGTAo2tvNzS1nBJJLTYQbiKDLZQvnk0ExSxJ15Xg8/YAeCIRn2
-         dAmg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=kbtIxjVDhlw2f8qERpoJ6tCOZI/kUzAjysph1XHFYLU=;
+        fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
+        b=BRyTELTFWt3ixzcOQ5xWGPBpWbq6PVbBinlTvY6gWCayyp3gRlHVEs2anqV54calcp
+         IyC05kQ0CJCcNgKktSeQ/hLL9bwcfkJUVA+rSOVrVYkDgZUa9spX3ZiCAdG/djlaSiYE
+         qa0EGXAAzEjFe+8Cq9PtLuOZgRNlJtgOgZv7acRbYjNEbU+wQpm+9K0u6DP5pAItMbD1
+         CH5bYYHkpakWSH0nDlkWO25hEh2CM+fu73fkA89bwD3HPfH+zuzZ9zgFeSXjXfKpfIVg
+         70or98yy4+SyD7gZeq8cj/Vzp1FV8jzSXQXC1JfeN3dYhwOLwPFHtmXMl4OoG/LzNhIn
+         j/WA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIcALQDu;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c76ea97331si853980085a.419.2025.04.07.06.30.32
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-39c3023bb35si6582303f8f.444.2025.04.07.08.12.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 06:30:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Apr 2025 08:12:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIcALQDu;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744032632;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5yYQ8iH6g2DJrpmcWfAUZDWMJZm83Xuy4dF4K7MbYHo=;
-	b=ZIcALQDuASXveJjtrTmkcO6r5gqTUxVn6WJuEA8tuofwVdkmzpSNGMe3jTtFxbhlFmrM0I
-	70n8Os8/6O7PIyr0lOw/MkbHurYN3hxh71dgg9V/S7bAdrI/NdMZkXxQliRspv2/OOUe/8
-	SfYZn8ipIwOonBg5/pIUfFDNNVsHL3w=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-526-2DXMvqFVN22nnDOFjdUZiA-1; Mon, 07 Apr 2025 09:30:11 -0400
-X-MC-Unique: 2DXMvqFVN22nnDOFjdUZiA-1
-X-Mimecast-MFC-AGG-ID: 2DXMvqFVN22nnDOFjdUZiA_1744032610
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-43cfda30a3cso26466125e9.3
-        for <alex.bennee@linaro.org>; Mon, 07 Apr 2025 06:30:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744032610; x=1744637410;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5yYQ8iH6g2DJrpmcWfAUZDWMJZm83Xuy4dF4K7MbYHo=;
-        b=pAsaNDHbblQD/bEYhwZYEnJsCqsO9g3B0d8NSKuIQY+DRio/bVOpUmOjpgTh23Hn0g
-         xli3HreuECSq6pRnUWDUBdzxKxSeSn1MoTBVzuuillktvTjPOyYJDDByjvvrDmsefspT
-         bM553vLLgt6hwvwKOpynozIXsN9AUuNRIb398p7FJj1C/XTU0K6b2sZp0wfdffPEO/BI
-         2GuOpu20WVvso2G4phnZI1ytgb6L6U/aVFD6qd3X6RCk8So0QpFxguYElHvcjGE4C7n2
-         VHs2YcCW3WglqVG/05DFPsIOzc7qYYrbo8NWAmUeC9/IVXb7GS1ZEhEc+wcorG/MT2z7
-         5lBw==
-X-Forwarded-Encrypted: i=1; AJvYcCWYAEnaD/Oyzxl2CNn50zmY7zKeTyiAQMrr1ZPTbGo5fezZOyX0+trFBbMM9lXrdaMxAynehLJdPyLS1A==@linaro.org
-X-Gm-Message-State: AOJu0YyesGZP7O11xlZ3a68LM71heKo1ucS1CJvFCYDG0vy+jN6Yndrh
-	TAUedDobC/8/sFHrOWDtAm5i/oS3wPzW63n7kSAOfR4llebTsV8VNKN+hbl2QRNwMKdfB182zmw
-	LGS6Yaacu8KM5szgA5tv3bw2UCVxfm6hkpkytub0BOGLWf/VERY3qzA==
-X-Gm-Gg: ASbGncunM/z2olHg5C0NbYos041ejePQ1YZhPE0Ut7sFU8dqAnmeFUDtEy+RaBCVb0W
-	fQH4U4uqTRskKul4ihUqnayxdoe5/G6H6ypcRtympAZioZuiQvO/t7mB7M8NnTx5VGKiBuI0PIT
-	6ZByQPKGYpfcdvgdX1YD4WY0NvXkGZlE+PRFF7y5MEv6TOcjn4DWMqPLKr0Kf+jCQRKunUOZw/N
-	6Zso4HK0iIPqh+mbllLxmpi1WYRlNFdfppr/b3FmzCB3j/D1QQc9dYSGAu+QwCeMDYxM3zj/foU
-	C11mwMt/+niut5I6wFt1xFpIZ9WoZXQT82F9SUiz64wYF+4ocwJ2eOqsUpkPOkk=
-X-Received: by 2002:a05:600c:3494:b0:43c:efed:732c with SMTP id 5b1f17b1804b1-43ecfa0714emr99010325e9.28.1744032610391;
-        Mon, 07 Apr 2025 06:30:10 -0700 (PDT)
-X-Received: by 2002:a05:600c:3494:b0:43c:efed:732c with SMTP id 5b1f17b1804b1-43ecfa0714emr99009925e9.28.1744032609928;
-        Mon, 07 Apr 2025 06:30:09 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec364c959sm129643265e9.25.2025.04.07.06.30.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Apr 2025 06:30:09 -0700 (PDT)
-Message-ID: <0a69bd8b-c053-46b7-80a9-c9f3ea374dd7@redhat.com>
-Date: Mon, 7 Apr 2025 15:30:07 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u1o9S-0000hw-Dr; Mon, 07 Apr 2025 11:12:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org>)
+ id 1u1o9C-0000gf-P6; Mon, 07 Apr 2025 11:12:26 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org>)
+ id 1u1o9A-0005Nl-3w; Mon, 07 Apr 2025 11:12:26 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZWXkT4Crxz4xM1;
+ Tue,  8 Apr 2025 01:12:17 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZWXkP541Yz4wcx;
+ Tue,  8 Apr 2025 01:12:13 +1000 (AEST)
+Message-ID: <8420121f-250a-419a-9e99-095a09f11d46@kaod.org>
+Date: Mon, 7 Apr 2025 17:12:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH-for-10.1 v3 7/9] hw/arm/virt-acpi: Always build IORT table
- (even with GIC ITS disabled)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Andrew Jones <ajones@ventanamicro.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
- Udo Steinberg <udo@hypervisor.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>
-References: <20250403204029.47958-1-philmd@linaro.org>
- <20250403204029.47958-8-philmd@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250403204029.47958-8-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: pLY6Pw26KpSix7lPuoG3g-6_RJfxIYWrfWAGHLyWRic_1744032610
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH 03/13] hw/intc/aspeed: Add support for AST2700 SSP INTC
+To: Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+ <20250313054020.2583556-4-steven_lee@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250313054020.2583556-4-steven_lee@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: xevw+abiqfL9
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /ifPi3VitI5A
 
-Hi Philippe,
+On 3/13/25 06:40, Steven Lee wrote:
+> - Define new types for ast2700ssp INTC and INTCIO
+> - Add register definitions for SSP INTC and INTCIO
+> - Implement write handlers for SSP INTC and INTCIO
+> - Register new types in aspeed_intc_register_types
+> 
+> The design of the SSP INTC and INTCIO controllers is similar to
+> AST2700, with the following differences:
+> 
+> - AST2700
+>    Support GICINT128 to GICINT136 in INTC
+>    The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
+>      Bit 0 -> GIC 192
+>      Bit 1 -> GIC 193
+>      Bit 2 -> GIC 194
+>      Bit 3 -> GIC 195
+>      Bit 4 -> GIC 196
+> 
+> - AST2700-ssp
+>    Support SSPINT128 to SSPINT136 in INTC
+>    The INTCIO SSPINT_160_169 has 10 output pins, mapped as follows:
+>      Bit 0 -> SSPINT 160
+>      Bit 1 -> SSPINT 161
+>      Bit 2 -> SSPINT 162
+>      Bit 3 -> SSPINT 163
+>      Bit 4 -> SSPINT 164
+> 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> Change-Id: I5329767b21c0e982d3afcb87c7d1690cc04ce2ef
 
-On 4/3/25 10:40 PM, Philippe Mathieu-Daudé wrote:
-> Citing Gustavo [*]:
->
->   Gating IORT table generation entirely based on the presence
->   of ITS looks wrong because IORT table has data beyond GIC ITS,
->   like for SMMUv3 etc..
-> [*] https://lore.kernel.org/qemu-devel/bae6e29a-7290-47d2-8caf-14702ee091f0@linaro.org/
->
-> Reported-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
->  hw/arm/virt-acpi-build.c | 38 +++++++++++++++++++++-----------------
->  1 file changed, 21 insertions(+), 17 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 1c389ef5cdb..e7e27951cb9 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -287,6 +287,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      uint32_t id = 0;
->      GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->      GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
-> +    bool has_its = its_enabled(vms);
->  
->      AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
->                          .oem_table_id = vms->oem_table_id };
-> @@ -325,9 +326,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->          nb_nodes = 3; /* RC, ITS, SMMUv3 */
->          rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
-> -    } else {
-> +    } else if (has_its) {
->          nb_nodes = 2; /* RC, ITS */
->          rc_mapping_count = 1;
-> +    } else {
-> +        nb_nodes = 1; /* RC */
-> +        rc_mapping_count = 1;
->      }
->      /* Number of IORT Nodes */
->      build_append_int_noprefix(table_data, nb_nodes, 4);
-> @@ -336,17 +340,19 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
->      build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->  
-> -    /* Table 12 ITS Group Format */
-> -    build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
-> -    node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
-> -    build_append_int_noprefix(table_data, node_size, 2); /* Length */
-> -    build_append_int_noprefix(table_data, 1, 1); /* Revision */
-> -    build_append_int_noprefix(table_data, id++, 4); /* Identifier */
-> -    build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
-> -    build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
-> -    build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
-> -    /* GIC ITS Identifier Array */
-> -    build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
-> +    if (has_its) {
-> +        /* Table 12 ITS Group Format */
-> +        build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */ //
-> +        node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
-> +        build_append_int_noprefix(table_data, node_size, 2); /* Length */
-> +        build_append_int_noprefix(table_data, 1, 1); /* Revision */
-> +        build_append_int_noprefix(table_data, id++, 4); /* Identifier */
-> +        build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
-> +        build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
-> +        build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
-> +        /* GIC ITS Identifier Array */
-> +        build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
+>   include/hw/intc/aspeed_intc.h |   3 +
+>   hw/intc/aspeed_intc.c         | 211 ++++++++++++++++++++++++++++++++++
+>   2 files changed, 214 insertions(+)
+> 
+> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+> index 3727ba24be..746f159bf3 100644
+> --- a/include/hw/intc/aspeed_intc.h
+> +++ b/include/hw/intc/aspeed_intc.h
+> @@ -15,6 +15,9 @@
+>   #define TYPE_ASPEED_INTC "aspeed.intc"
+>   #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+>   #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
+> +#define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
+> +#define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
+> +
+>   OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+>   
+>   #define ASPEED_INTC_MAX_INPINS 10
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 3fd417084f..1f8b4d4d36 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -62,6 +62,50 @@ REG32(GICINT196_STATUS,     0x44)
+>   REG32(GICINT197_EN,         0x50)
+>   REG32(GICINT197_STATUS,     0x54)
+>   
+> +/*
+> + * SSP INTC Registers
+> + */
+> +REG32(SSPINT128_EN,             0x2000)
+> +REG32(SSPINT128_STATUS,         0x2004)
+> +REG32(SSPINT129_EN,             0x2100)
+> +REG32(SSPINT129_STATUS,         0x2104)
+> +REG32(SSPINT130_EN,             0x2200)
+> +REG32(SSPINT130_STATUS,         0x2204)
+> +REG32(SSPINT131_EN,             0x2300)
+> +REG32(SSPINT131_STATUS,         0x2304)
+> +REG32(SSPINT132_EN,             0x2400)
+> +REG32(SSPINT132_STATUS,         0x2404)
+> +REG32(SSPINT133_EN,             0x2500)
+> +REG32(SSPINT133_STATUS,         0x2504)
+> +REG32(SSPINT134_EN,             0x2600)
+> +REG32(SSPINT134_STATUS,         0x2604)
+> +REG32(SSPINT135_EN,             0x2700)
+> +REG32(SSPINT135_STATUS,         0x2704)
+> +REG32(SSPINT136_EN,             0x2800)
+> +REG32(SSPINT136_STATUS,         0x2804)
+> +REG32(SSPINT137_EN,             0x2900)
+> +REG32(SSPINT137_STATUS,         0x2904)
+> +REG32(SSPINT138_EN,             0x2A00)
+> +REG32(SSPINT138_STATUS,         0x2A04)
+> +REG32(SSPINT160_169_EN,         0x2B00)
+> +REG32(SSPINT160_169_STATUS,     0x2B04)
+> +
+> +/*
+> + * SSP INTCIO Registers
+> + */
+> +REG32(SSPINT160_EN,         0x180)
+> +REG32(SSPINT160_STATUS,     0x184)
+> +REG32(SSPINT161_EN,         0x190)
+> +REG32(SSPINT161_STATUS,     0x194)
+> +REG32(SSPINT162_EN,         0x1A0)
+> +REG32(SSPINT162_STATUS,     0x1A4)
+> +REG32(SSPINT163_EN,         0x1B0)
+> +REG32(SSPINT163_STATUS,     0x1B4)
+> +REG32(SSPINT164_EN,         0x1C0)
+> +REG32(SSPINT164_STATUS,     0x1C4)
+> +REG32(SSPINT165_EN,         0x1D0)
+> +REG32(SSPINT165_STATUS,     0x1D4)
+> +
+>   static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
+>                                                   uint32_t reg)
+>   {
+> @@ -452,6 +496,50 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>       return;
+>   }
+>   
+> +static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
+> +                                        unsigned size)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(opaque);
+> +    const char *name = object_get_typename(OBJECT(s));
+> +    uint32_t reg = offset >> 2;
+> +
+> +    trace_aspeed_intc_write(name, offset, size, data);
+> +
+> +    switch (reg) {
+> +    case R_SSPINT128_EN:
+> +    case R_SSPINT129_EN:
+> +    case R_SSPINT130_EN:
+> +    case R_SSPINT131_EN:
+> +    case R_SSPINT132_EN:
+> +    case R_SSPINT133_EN:
+> +    case R_SSPINT134_EN:
+> +    case R_SSPINT135_EN:
+> +    case R_SSPINT136_EN:
+> +    case R_SSPINT160_169_EN:
+> +        aspeed_intc_enable_handler(s, offset, data);
+> +        break;
+> +    case R_SSPINT128_STATUS:
+> +    case R_SSPINT129_STATUS:
+> +    case R_SSPINT130_STATUS:
+> +    case R_SSPINT131_STATUS:
+> +    case R_SSPINT132_STATUS:
+> +    case R_SSPINT133_STATUS:
+> +    case R_SSPINT134_STATUS:
+> +    case R_SSPINT135_STATUS:
+> +    case R_SSPINT136_STATUS:
+> +        aspeed_intc_status_handler(s, offset, data);
+> +        break;
+> +    case R_SSPINT160_169_STATUS:
+> +        aspeed_intc_status_handler_multi_outpins(s, offset, data);
+> +        break;
+> +    default:
+> +        s->regs[reg] = data;
+> +        break;
 > +    }
-Do we allow configs where we have SMMU and no ITS?
+> +
+> +    return;
+> +}
+> +
+>   static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
+>                                      unsigned int size)
+>   {
+> @@ -500,6 +588,39 @@ static void aspeed_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+>       return;
+>   }
+>   
+> +static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+> +                                unsigned size)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(opaque);
+> +    const char *name = object_get_typename(OBJECT(s));
+> +    uint32_t reg = offset >> 2;
+> +
+> +    trace_aspeed_intc_write(name, offset, size, data);
+> +
+> +    switch (reg) {
+> +    case R_SSPINT160_EN:
+> +    case R_SSPINT161_EN:
+> +    case R_SSPINT162_EN:
+> +    case R_SSPINT163_EN:
+> +    case R_SSPINT164_EN:
+> +    case R_SSPINT165_EN:
+> +        aspeed_intc_enable_handler(s, offset, data);
+> +        break;
+> +    case R_SSPINT160_STATUS:
+> +    case R_SSPINT161_STATUS:
+> +    case R_SSPINT162_STATUS:
+> +    case R_SSPINT163_STATUS:
+> +    case R_SSPINT164_STATUS:
+> +    case R_SSPINT165_STATUS:
+> +        aspeed_intc_status_handler(s, offset, data);
+> +        break;
+> +    default:
+> +        s->regs[reg] = data;
+> +        break;
+> +    }
+> +
+> +    return;
+> +}
+>   
+>   static const MemoryRegionOps aspeed_intc_ops = {
+>       .read = aspeed_intc_read,
+> @@ -521,6 +642,26 @@ static const MemoryRegionOps aspeed_intcio_ops = {
+>       }
+>   };
+>   
+> +static const MemoryRegionOps aspeed_ssp_intc_ops = {
+> +    .read = aspeed_intc_read,
+> +    .write = aspeed_ssp_intc_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    }
+> +};
+> +
+> +static const MemoryRegionOps aspeed_ssp_intcio_ops = {
+> +    .read = aspeed_intcio_read,
+> +    .write = aspeed_ssp_intcio_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    }
+> +};
+> +
+>   static void aspeed_intc_instance_init(Object *obj)
+>   {
+>       AspeedINTCState *s = ASPEED_INTC(obj);
+> @@ -678,11 +819,81 @@ static const TypeInfo aspeed_2700_intcio_info = {
+>       .class_init = aspeed_2700_intcio_class_init,
+>   };
+>   
+> +static AspeedINTCIRQ aspeed_2700ssp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 0, 10, R_SSPINT160_169_EN, R_SSPINT160_169_STATUS},
+> +    {1, 10, 1, R_SSPINT128_EN, R_SSPINT128_STATUS},
+> +    {2, 11, 1, R_SSPINT129_EN, R_SSPINT129_STATUS},
+> +    {3, 12, 1, R_SSPINT130_EN, R_SSPINT130_STATUS},
+> +    {4, 13, 1, R_SSPINT131_EN, R_SSPINT131_STATUS},
+> +    {5, 14, 1, R_SSPINT132_EN, R_SSPINT132_STATUS},
+> +    {6, 15, 1, R_SSPINT133_EN, R_SSPINT133_STATUS},
+> +    {7, 16, 1, R_SSPINT134_EN, R_SSPINT134_STATUS},
+> +    {8, 17, 1, R_SSPINT135_EN, R_SSPINT135_STATUS},
+> +    {9, 18, 1, R_SSPINT136_EN, R_SSPINT136_STATUS},
+> +};
+> +
+> +static void aspeed_2700ssp_intc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 SSP INTC Controller";
+> +    aic->num_lines = 32;
+> +    aic->num_inpins = 10;
+> +    aic->num_outpins = 19;
+> +    aic->mem_size = 0x4000;
+> +    aic->nr_regs = 0x2B08 >> 2;
+> +    aic->reg_offset = 0x0;
+> +    aic->reg_ops = &aspeed_ssp_intc_ops;
+> +    aic->irq_table = aspeed_2700ssp_intc_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intc_irqs);
+> +}
+> +
+> +static const TypeInfo aspeed_2700ssp_intc_info = {
+> +    .name = TYPE_ASPEED_2700SSP_INTC,
+> +    .parent = TYPE_ASPEED_INTC,
+> +    .class_init = aspeed_2700ssp_intc_class_init,
+> +};
+> +
+> +static AspeedINTCIRQ aspeed_2700ssp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 0, 1, R_SSPINT160_EN, R_SSPINT160_STATUS},
+> +    {1, 1, 1, R_SSPINT161_EN, R_SSPINT161_STATUS},
+> +    {2, 2, 1, R_SSPINT162_EN, R_SSPINT162_STATUS},
+> +    {3, 3, 1, R_SSPINT163_EN, R_SSPINT163_STATUS},
+> +    {4, 4, 1, R_SSPINT164_EN, R_SSPINT164_STATUS},
+> +    {5, 5, 1, R_SSPINT165_EN, R_SSPINT165_STATUS},
+> +};
+> +
+> +static void aspeed_2700ssp_intcio_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 SSP INTC IO Controller";
+> +    aic->num_lines = 32;
+> +    aic->num_inpins = 6;
+> +    aic->num_outpins = 6;
+> +    aic->mem_size = 0x400;
+> +    aic->nr_regs = 0x1d8 >> 2;
+> +    aic->reg_offset = 0;
+> +    aic->reg_ops = &aspeed_ssp_intcio_ops;
+> +    aic->irq_table = aspeed_2700ssp_intcio_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intcio_irqs);
+> +}
+> +
+> +static const TypeInfo aspeed_2700ssp_intcio_info = {
+> +    .name = TYPE_ASPEED_2700SSP_INTCIO,
+> +    .parent = TYPE_ASPEED_INTC,
+> +    .class_init = aspeed_2700ssp_intcio_class_init,
+> +};
+> +
+>   static void aspeed_intc_register_types(void)
+>   {
+>       type_register_static(&aspeed_intc_info);
+>       type_register_static(&aspeed_2700_intc_info);
+>       type_register_static(&aspeed_2700_intcio_info);
+> +    type_register_static(&aspeed_2700ssp_intc_info);
+> +    type_register_static(&aspeed_2700ssp_intcio_info);
+>   }
+>   
+>   type_init(aspeed_intc_register_types);
 
-The IORT spec says "
-ID mappings that are defined in an SMMU IORT node can only have an ITS
-Group node as an output reference,
-or no IDs in the case of a system that does not have ITS units. All
-other object types are explicitly forbidden.
-"
-So in case we do not have any ITS we also need to take care of ID
-mappings of SMMUs
-
-Eric
->  
->      if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->          int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
-> @@ -429,7 +435,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->              build_iort_id_mapping(table_data, range->input_base,
->                                    range->id_count, IORT_NODE_OFFSET);
->          }
-> -    } else {
-> +    } else if (has_its) {
->          /* output IORT node is the ITS group node (the first node) */
->          build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
->      }
-> @@ -979,10 +985,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->                            vms->oem_table_id);
->      }
->  
-> -    if (its_enabled(vms)) {
-> -        acpi_add_table(table_offsets, tables_blob);
-> -        build_iort(tables_blob, tables->linker, vms);
-> -    }
-> +    acpi_add_table(table_offsets, tables_blob);
-> +    build_iort(tables_blob, tables->linker, vms);
->  
->  #ifdef CONFIG_TPM
->      if (tpm_get_version(tpm_find()) == TPM_VERSION_2_0) {

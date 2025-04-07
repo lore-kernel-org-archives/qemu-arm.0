@@ -1,68 +1,68 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6444513njd;
-        Mon, 7 Apr 2025 08:12:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUB0B/3yL6m4WlcDqYmj13xkZitf/C/pVufLrDCsFXWz1q8MJfshBdcWg5lgZDBwaFF/conA3Wo4eNW3w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEiuGpuxK/++7DASW3uA/LU8htwox4cztggdTnmvRVFYtIsfy9t54EqkK+Djzu/ks+j/E8r
-X-Received: by 2002:a05:6000:2906:b0:39c:30d8:f104 with SMTP id ffacd0b85a97d-39cb3575b81mr9422179f8f.6.1744038772092;
-        Mon, 07 Apr 2025 08:12:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744038772; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6447480njd;
+        Mon, 7 Apr 2025 08:16:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVaAgQShcgfPq1IRh5wfYOjeU/tWpsaAzbGgpk/f4GzwnzX64piyap3ibp5lndMWnTbiqilq1jdCkX9dg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFEAEr1E1UVlI3etzXcM6M2UZODgPpkGYNDO+3gs/7AF31dRCg/ojfrzeXNYbUKNxcI7p5Z
+X-Received: by 2002:a05:622a:19a7:b0:476:8521:778d with SMTP id d75a77b69052e-479310dd77amr185610751cf.50.1744038997066;
+        Mon, 07 Apr 2025 08:16:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744038997; cv=none;
         d=google.com; s=arc-20240605;
-        b=jd/IWm2Mim2B5oUSFVpuIck2wikcev+YjPqUvx2a45x0OcpOIw+N9Hkf1p/axUOaDK
-         CAis6bdpxeB6LajFUE/8Je+Gwla4od8oOFLt1bqw4yfNrv/jaIL4BsbjxGIGEaZZUi2+
-         kxi5ODjJIek7NeoEGpIq9Q/U5CF5rmidvcCr5kXTJ4ethnfC80+eA4sGfkfkOrtDg2CK
-         4WuZ0yvYmEaEivEFVLv27rT/dRrkYn8BE+Sc+oOGT+omisAkxs0oBRTgJwwTq0ZqWCaR
-         8b1pKgR2IVmXJET4NvG/q8O7W33806NHaMSW8WGK+v2ghsrjK9Yu0rMEjNb3Ln23+EL8
-         u3lQ==
+        b=LpuyKbJxMrOiX2B22bMoyyS1vluvX2zHDRKiDyLDdySCQJU2T6D9d6c5KFFUwCtizK
+         qA4EQLBBPgce/euG0KQT4ZXvrgFhIOnjjsS0PIep9hUa1d4AMKdb0vIqIuinQ8umAgkn
+         ZDA6PdLsJxlB+nXu3B0v24sSgKrunAc5R99WZPPQehno1higxwdir4sGo6uyLjlJScRk
+         HOXkaTTamq6aOOefB77ihxvZjVXRjg89vbv5Y0/MyEyXpkU9ti9XnCaLZSXRySxdZaMg
+         Sr3nyLIKVV+VRAKZCUnN3XSTJ1+QH0kVJdPY2Zd7zGgU49FYCyGO0NWa07prV62nC36B
+         uOZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=kbtIxjVDhlw2f8qERpoJ6tCOZI/kUzAjysph1XHFYLU=;
+        bh=O2cjvIauy96UW1sWRJ+AHJwivTQFAGiMAA0D8dmZMUA=;
         fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
-        b=BRyTELTFWt3ixzcOQ5xWGPBpWbq6PVbBinlTvY6gWCayyp3gRlHVEs2anqV54calcp
-         IyC05kQ0CJCcNgKktSeQ/hLL9bwcfkJUVA+rSOVrVYkDgZUa9spX3ZiCAdG/djlaSiYE
-         qa0EGXAAzEjFe+8Cq9PtLuOZgRNlJtgOgZv7acRbYjNEbU+wQpm+9K0u6DP5pAItMbD1
-         CH5bYYHkpakWSH0nDlkWO25hEh2CM+fu73fkA89bwD3HPfH+zuzZ9zgFeSXjXfKpfIVg
-         70or98yy4+SyD7gZeq8cj/Vzp1FV8jzSXQXC1JfeN3dYhwOLwPFHtmXMl4OoG/LzNhIn
-         j/WA==;
+        b=WuQWAL+884FDpyIKwdmuLS8I9HdycvQePh+adxJphLCbZaLN/P3EnhuXIdlCB79Pd8
+         wDs2R1nARqXzVi8sLyh5SRZhyGYn09S4SAprfefUlXl/cTuJx2NuZ6WmimE915pfIrmU
+         DrhFZ8HySHQ0cPtlVY2q4nqwivnjhI8Q3wgIDKE/sIX6KlO14xnlcmQ5LBygGI2FXaw+
+         Ie2OkydS7EionV7mfOk0vCDIIAbhc4oDSGQT3XtkXpU8zJGyifF50YhAer7JbdulsAxs
+         Ypgx8WNhnYeQ9qTbdUy1t6vjsG1mVg8LArO5qyl3uO73TRG22qJceApdxxdE6zpsLXtF
+         SLug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-39c3023bb35si6582303f8f.444.2025.04.07.08.12.51
+        by mx.google.com with ESMTPS id d75a77b69052e-4791b173b9csi84934161cf.295.2025.04.07.08.16.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Apr 2025 08:12:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Apr 2025 08:16:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u1o9S-0000hw-Dr; Mon, 07 Apr 2025 11:12:43 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u1oBs-0003AZ-Ik; Mon, 07 Apr 2025 11:15:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org>)
- id 1u1o9C-0000gf-P6; Mon, 07 Apr 2025 11:12:26 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1u1oBI-0002QL-3y; Mon, 07 Apr 2025 11:14:36 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org>)
- id 1u1o9A-0005Nl-3w; Mon, 07 Apr 2025 11:12:26 -0400
+ id 1u1oBE-0005fz-Jb; Mon, 07 Apr 2025 11:14:35 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZWXkT4Crxz4xM1;
- Tue,  8 Apr 2025 01:12:17 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZWXmz03fgz4wyk;
+ Tue,  8 Apr 2025 01:14:27 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZWXkP541Yz4wcx;
- Tue,  8 Apr 2025 01:12:13 +1000 (AEST)
-Message-ID: <8420121f-250a-419a-9e99-095a09f11d46@kaod.org>
-Date: Mon, 7 Apr 2025 17:12:09 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZWXmv2CV6z4wcn;
+ Tue,  8 Apr 2025 01:14:22 +1000 (AEST)
+Message-ID: <c953bf4b-fbca-40df-859b-54e19f81790c@kaod.org>
+Date: Mon, 7 Apr 2025 17:14:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/13] hw/intc/aspeed: Add support for AST2700 SSP INTC
+Subject: Re: [PATCH 04/13] hw/intc/aspeed: Add support for AST2700 TSP INTC
 To: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
@@ -71,7 +71,7 @@ To: Steven Lee <steven_lee@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
- <20250313054020.2583556-4-steven_lee@aspeedtech.com>
+ <20250313054020.2583556-5-steven_lee@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,40 +116,41 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250313054020.2583556-4-steven_lee@aspeedtech.com>
+In-Reply-To: <20250313054020.2583556-5-steven_lee@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=CcIW=WZ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /ifPi3VitI5A
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KrRY8oY45CTb
 
 On 3/13/25 06:40, Steven Lee wrote:
-> - Define new types for ast2700ssp INTC and INTCIO
-> - Add register definitions for SSP INTC and INTCIO
-> - Implement write handlers for SSP INTC and INTCIO
+> - Define new types for ast2700tsp INTC and INTCIO
+> - Add register definitions for TSP INTC and INTCIO
+> - Implement write handlers for TSP INTC and INTCIO
 > - Register new types in aspeed_intc_register_types
 > 
-> The design of the SSP INTC and INTCIO controllers is similar to
+> The design of the TSP INTC and INTCIO controllers is similar to
 > AST2700, with the following differences:
 > 
 > - AST2700
@@ -161,17 +162,17 @@ On 3/13/25 06:40, Steven Lee wrote:
 >      Bit 3 -> GIC 195
 >      Bit 4 -> GIC 196
 > 
-> - AST2700-ssp
->    Support SSPINT128 to SSPINT136 in INTC
->    The INTCIO SSPINT_160_169 has 10 output pins, mapped as follows:
->      Bit 0 -> SSPINT 160
->      Bit 1 -> SSPINT 161
->      Bit 2 -> SSPINT 162
->      Bit 3 -> SSPINT 163
->      Bit 4 -> SSPINT 164
+> - AST2700-tsp
+>    Support TSPINT128 to TSPINT136 in INTC
+>    The INTCIO TSPINT_160_169 has 10 output pins, mapped as follows:
+>      Bit 0 -> TSPINT 160
+>      Bit 1 -> TSPINT 161
+>      Bit 2 -> TSPINT 162
+>      Bit 3 -> TSPINT 163
+>      Bit 4 -> TSPINT 164
 > 
 > Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> Change-Id: I5329767b21c0e982d3afcb87c7d1690cc04ce2ef
+> Change-Id: I9e71a8aac400c0cdbd5b78073d0ada79d12a1350
 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
@@ -182,84 +183,84 @@ C.
 
 
 > ---
->   include/hw/intc/aspeed_intc.h |   3 +
->   hw/intc/aspeed_intc.c         | 211 ++++++++++++++++++++++++++++++++++
->   2 files changed, 214 insertions(+)
+>   include/hw/intc/aspeed_intc.h |   2 +
+>   hw/intc/aspeed_intc.c         | 213 ++++++++++++++++++++++++++++++++++
+>   2 files changed, 215 insertions(+)
 > 
 > diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-> index 3727ba24be..746f159bf3 100644
+> index 746f159bf3..51288384a5 100644
 > --- a/include/hw/intc/aspeed_intc.h
 > +++ b/include/hw/intc/aspeed_intc.h
-> @@ -15,6 +15,9 @@
->   #define TYPE_ASPEED_INTC "aspeed.intc"
->   #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+> @@ -17,6 +17,8 @@
 >   #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
-> +#define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
-> +#define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
-> +
+>   #define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
+>   #define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
+> +#define TYPE_ASPEED_2700TSP_INTC TYPE_ASPEED_INTC "-ast2700tsp"
+> +#define TYPE_ASPEED_2700TSP_INTCIO TYPE_ASPEED_INTC "io-ast2700tsp"
+>   
 >   OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
 >   
->   #define ASPEED_INTC_MAX_INPINS 10
 > diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-> index 3fd417084f..1f8b4d4d36 100644
+> index 1f8b4d4d36..9e3bee993f 100644
 > --- a/hw/intc/aspeed_intc.c
 > +++ b/hw/intc/aspeed_intc.c
-> @@ -62,6 +62,50 @@ REG32(GICINT196_STATUS,     0x44)
->   REG32(GICINT197_EN,         0x50)
->   REG32(GICINT197_STATUS,     0x54)
+> @@ -106,6 +106,51 @@ REG32(SSPINT164_STATUS,     0x1C4)
+>   REG32(SSPINT165_EN,         0x1D0)
+>   REG32(SSPINT165_STATUS,     0x1D4)
 >   
 > +/*
-> + * SSP INTC Registers
+> + * TSP INTC Registers
 > + */
-> +REG32(SSPINT128_EN,             0x2000)
-> +REG32(SSPINT128_STATUS,         0x2004)
-> +REG32(SSPINT129_EN,             0x2100)
-> +REG32(SSPINT129_STATUS,         0x2104)
-> +REG32(SSPINT130_EN,             0x2200)
-> +REG32(SSPINT130_STATUS,         0x2204)
-> +REG32(SSPINT131_EN,             0x2300)
-> +REG32(SSPINT131_STATUS,         0x2304)
-> +REG32(SSPINT132_EN,             0x2400)
-> +REG32(SSPINT132_STATUS,         0x2404)
-> +REG32(SSPINT133_EN,             0x2500)
-> +REG32(SSPINT133_STATUS,         0x2504)
-> +REG32(SSPINT134_EN,             0x2600)
-> +REG32(SSPINT134_STATUS,         0x2604)
-> +REG32(SSPINT135_EN,             0x2700)
-> +REG32(SSPINT135_STATUS,         0x2704)
-> +REG32(SSPINT136_EN,             0x2800)
-> +REG32(SSPINT136_STATUS,         0x2804)
-> +REG32(SSPINT137_EN,             0x2900)
-> +REG32(SSPINT137_STATUS,         0x2904)
-> +REG32(SSPINT138_EN,             0x2A00)
-> +REG32(SSPINT138_STATUS,         0x2A04)
-> +REG32(SSPINT160_169_EN,         0x2B00)
-> +REG32(SSPINT160_169_STATUS,     0x2B04)
+> +REG32(TSPINT128_EN,             0x3000)
+> +REG32(TSPINT128_STATUS,         0x3004)
+> +REG32(TSPINT129_EN,             0x3100)
+> +REG32(TSPINT129_STATUS,         0x3104)
+> +REG32(TSPINT130_EN,             0x3200)
+> +REG32(TSPINT130_STATUS,         0x3204)
+> +REG32(TSPINT131_EN,             0x3300)
+> +REG32(TSPINT131_STATUS,         0x3304)
+> +REG32(TSPINT132_EN,             0x3400)
+> +REG32(TSPINT132_STATUS,         0x3404)
+> +REG32(TSPINT133_EN,             0x3500)
+> +REG32(TSPINT133_STATUS,         0x3504)
+> +REG32(TSPINT134_EN,             0x3600)
+> +REG32(TSPINT134_STATUS,         0x3604)
+> +REG32(TSPINT135_EN,             0x3700)
+> +REG32(TSPINT135_STATUS,         0x3704)
+> +REG32(TSPINT136_EN,             0x3800)
+> +REG32(TSPINT136_STATUS,         0x3804)
+> +REG32(TSPINT137_EN,             0x3900)
+> +REG32(TSPINT137_STATUS,         0x3904)
+> +REG32(TSPINT138_EN,             0x3A00)
+> +REG32(TSPINT138_STATUS,         0x3A04)
+> +REG32(TSPINT160_169_EN,         0x3B00)
+> +REG32(TSPINT160_169_STATUS,     0x3B04)
 > +
 > +/*
-> + * SSP INTCIO Registers
+> + * TSP INTCIO Registers
 > + */
-> +REG32(SSPINT160_EN,         0x180)
-> +REG32(SSPINT160_STATUS,     0x184)
-> +REG32(SSPINT161_EN,         0x190)
-> +REG32(SSPINT161_STATUS,     0x194)
-> +REG32(SSPINT162_EN,         0x1A0)
-> +REG32(SSPINT162_STATUS,     0x1A4)
-> +REG32(SSPINT163_EN,         0x1B0)
-> +REG32(SSPINT163_STATUS,     0x1B4)
-> +REG32(SSPINT164_EN,         0x1C0)
-> +REG32(SSPINT164_STATUS,     0x1C4)
-> +REG32(SSPINT165_EN,         0x1D0)
-> +REG32(SSPINT165_STATUS,     0x1D4)
+> +
+> +REG32(TSPINT160_EN,         0x200)
+> +REG32(TSPINT160_STATUS,     0x204)
+> +REG32(TSPINT161_EN,         0x210)
+> +REG32(TSPINT161_STATUS,     0x214)
+> +REG32(TSPINT162_EN,         0x220)
+> +REG32(TSPINT162_STATUS,     0x224)
+> +REG32(TSPINT163_EN,         0x230)
+> +REG32(TSPINT163_STATUS,     0x234)
+> +REG32(TSPINT164_EN,         0x240)
+> +REG32(TSPINT164_STATUS,     0x244)
+> +REG32(TSPINT165_EN,         0x250)
+> +REG32(TSPINT165_STATUS,     0x254)
 > +
 >   static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
 >                                                   uint32_t reg)
 >   {
-> @@ -452,6 +496,50 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+> @@ -540,6 +585,50 @@ static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
 >       return;
 >   }
 >   
-> +static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
+> +static void aspeed_tsp_intc_write(void *opaque, hwaddr offset, uint64_t data,
 > +                                        unsigned size)
 > +{
 > +    AspeedINTCState *s = ASPEED_INTC(opaque);
@@ -269,30 +270,30 @@ C.
 > +    trace_aspeed_intc_write(name, offset, size, data);
 > +
 > +    switch (reg) {
-> +    case R_SSPINT128_EN:
-> +    case R_SSPINT129_EN:
-> +    case R_SSPINT130_EN:
-> +    case R_SSPINT131_EN:
-> +    case R_SSPINT132_EN:
-> +    case R_SSPINT133_EN:
-> +    case R_SSPINT134_EN:
-> +    case R_SSPINT135_EN:
-> +    case R_SSPINT136_EN:
-> +    case R_SSPINT160_169_EN:
+> +    case R_TSPINT128_EN:
+> +    case R_TSPINT129_EN:
+> +    case R_TSPINT130_EN:
+> +    case R_TSPINT131_EN:
+> +    case R_TSPINT132_EN:
+> +    case R_TSPINT133_EN:
+> +    case R_TSPINT134_EN:
+> +    case R_TSPINT135_EN:
+> +    case R_TSPINT136_EN:
+> +    case R_TSPINT160_169_EN:
 > +        aspeed_intc_enable_handler(s, offset, data);
 > +        break;
-> +    case R_SSPINT128_STATUS:
-> +    case R_SSPINT129_STATUS:
-> +    case R_SSPINT130_STATUS:
-> +    case R_SSPINT131_STATUS:
-> +    case R_SSPINT132_STATUS:
-> +    case R_SSPINT133_STATUS:
-> +    case R_SSPINT134_STATUS:
-> +    case R_SSPINT135_STATUS:
-> +    case R_SSPINT136_STATUS:
+> +    case R_TSPINT128_STATUS:
+> +    case R_TSPINT129_STATUS:
+> +    case R_TSPINT130_STATUS:
+> +    case R_TSPINT131_STATUS:
+> +    case R_TSPINT132_STATUS:
+> +    case R_TSPINT133_STATUS:
+> +    case R_TSPINT134_STATUS:
+> +    case R_TSPINT135_STATUS:
+> +    case R_TSPINT136_STATUS:
 > +        aspeed_intc_status_handler(s, offset, data);
 > +        break;
-> +    case R_SSPINT160_169_STATUS:
+> +    case R_TSPINT160_169_STATUS:
 > +        aspeed_intc_status_handler_multi_outpins(s, offset, data);
 > +        break;
 > +    default:
@@ -306,11 +307,11 @@ C.
 >   static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
 >                                      unsigned int size)
 >   {
-> @@ -500,6 +588,39 @@ static void aspeed_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+> @@ -622,6 +711,40 @@ static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
 >       return;
 >   }
 >   
-> +static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+> +static void aspeed_tsp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
 > +                                unsigned size)
 > +{
 > +    AspeedINTCState *s = ASPEED_INTC(opaque);
@@ -320,20 +321,20 @@ C.
 > +    trace_aspeed_intc_write(name, offset, size, data);
 > +
 > +    switch (reg) {
-> +    case R_SSPINT160_EN:
-> +    case R_SSPINT161_EN:
-> +    case R_SSPINT162_EN:
-> +    case R_SSPINT163_EN:
-> +    case R_SSPINT164_EN:
-> +    case R_SSPINT165_EN:
+> +    case R_TSPINT160_EN:
+> +    case R_TSPINT161_EN:
+> +    case R_TSPINT162_EN:
+> +    case R_TSPINT163_EN:
+> +    case R_TSPINT164_EN:
+> +    case R_TSPINT165_EN:
 > +        aspeed_intc_enable_handler(s, offset, data);
 > +        break;
-> +    case R_SSPINT160_STATUS:
-> +    case R_SSPINT161_STATUS:
-> +    case R_SSPINT162_STATUS:
-> +    case R_SSPINT163_STATUS:
-> +    case R_SSPINT164_STATUS:
-> +    case R_SSPINT165_STATUS:
+> +    case R_TSPINT160_STATUS:
+> +    case R_TSPINT161_STATUS:
+> +    case R_TSPINT162_STATUS:
+> +    case R_TSPINT163_STATUS:
+> +    case R_TSPINT164_STATUS:
+> +    case R_TSPINT165_STATUS:
 > +        aspeed_intc_status_handler(s, offset, data);
 > +        break;
 > +    default:
@@ -343,16 +344,17 @@ C.
 > +
 > +    return;
 > +}
->   
+> +
 >   static const MemoryRegionOps aspeed_intc_ops = {
 >       .read = aspeed_intc_read,
-> @@ -521,6 +642,26 @@ static const MemoryRegionOps aspeed_intcio_ops = {
+>       .write = aspeed_intc_write,
+> @@ -662,6 +785,26 @@ static const MemoryRegionOps aspeed_ssp_intcio_ops = {
 >       }
 >   };
 >   
-> +static const MemoryRegionOps aspeed_ssp_intc_ops = {
+> +static const MemoryRegionOps aspeed_tsp_intc_ops = {
 > +    .read = aspeed_intc_read,
-> +    .write = aspeed_ssp_intc_write,
+> +    .write = aspeed_tsp_intc_write,
 > +    .endianness = DEVICE_LITTLE_ENDIAN,
 > +    .valid = {
 > +        .min_access_size = 4,
@@ -360,9 +362,9 @@ C.
 > +    }
 > +};
 > +
-> +static const MemoryRegionOps aspeed_ssp_intcio_ops = {
+> +static const MemoryRegionOps aspeed_tsp_intcio_ops = {
 > +    .read = aspeed_intcio_read,
-> +    .write = aspeed_ssp_intcio_write,
+> +    .write = aspeed_tsp_intcio_write,
 > +    .endianness = DEVICE_LITTLE_ENDIAN,
 > +    .valid = {
 > +        .min_access_size = 4,
@@ -373,85 +375,87 @@ C.
 >   static void aspeed_intc_instance_init(Object *obj)
 >   {
 >       AspeedINTCState *s = ASPEED_INTC(obj);
-> @@ -678,11 +819,81 @@ static const TypeInfo aspeed_2700_intcio_info = {
->       .class_init = aspeed_2700_intcio_class_init,
+> @@ -887,6 +1030,74 @@ static const TypeInfo aspeed_2700ssp_intcio_info = {
+>       .class_init = aspeed_2700ssp_intcio_class_init,
 >   };
 >   
-> +static AspeedINTCIRQ aspeed_2700ssp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
-> +    {0, 0, 10, R_SSPINT160_169_EN, R_SSPINT160_169_STATUS},
-> +    {1, 10, 1, R_SSPINT128_EN, R_SSPINT128_STATUS},
-> +    {2, 11, 1, R_SSPINT129_EN, R_SSPINT129_STATUS},
-> +    {3, 12, 1, R_SSPINT130_EN, R_SSPINT130_STATUS},
-> +    {4, 13, 1, R_SSPINT131_EN, R_SSPINT131_STATUS},
-> +    {5, 14, 1, R_SSPINT132_EN, R_SSPINT132_STATUS},
-> +    {6, 15, 1, R_SSPINT133_EN, R_SSPINT133_STATUS},
-> +    {7, 16, 1, R_SSPINT134_EN, R_SSPINT134_STATUS},
-> +    {8, 17, 1, R_SSPINT135_EN, R_SSPINT135_STATUS},
-> +    {9, 18, 1, R_SSPINT136_EN, R_SSPINT136_STATUS},
+> +static AspeedINTCIRQ aspeed_2700tsp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 0, 10, R_TSPINT160_169_EN, R_TSPINT160_169_STATUS},
+> +    {1, 10, 1, R_TSPINT128_EN, R_TSPINT128_STATUS},
+> +    {2, 11, 1, R_TSPINT129_EN, R_TSPINT129_STATUS},
+> +    {3, 12, 1, R_TSPINT130_EN, R_TSPINT130_STATUS},
+> +    {4, 13, 1, R_TSPINT131_EN, R_TSPINT131_STATUS},
+> +    {5, 14, 1, R_TSPINT132_EN, R_TSPINT132_STATUS},
+> +    {6, 15, 1, R_TSPINT133_EN, R_TSPINT133_STATUS},
+> +    {7, 16, 1, R_TSPINT134_EN, R_TSPINT134_STATUS},
+> +    {8, 17, 1, R_TSPINT135_EN, R_TSPINT135_STATUS},
+> +    {9, 18, 1, R_TSPINT136_EN, R_TSPINT136_STATUS},
 > +};
 > +
-> +static void aspeed_2700ssp_intc_class_init(ObjectClass *klass, void *data)
+> +static void aspeed_2700tsp_intc_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
 > +
-> +    dc->desc = "ASPEED 2700 SSP INTC Controller";
+> +    dc->desc = "ASPEED 2700 TSP INTC Controller";
 > +    aic->num_lines = 32;
 > +    aic->num_inpins = 10;
 > +    aic->num_outpins = 19;
 > +    aic->mem_size = 0x4000;
-> +    aic->nr_regs = 0x2B08 >> 2;
-> +    aic->reg_offset = 0x0;
-> +    aic->reg_ops = &aspeed_ssp_intc_ops;
-> +    aic->irq_table = aspeed_2700ssp_intc_irqs;
-> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intc_irqs);
+> +    aic->nr_regs = 0x3B08 >> 2;
+> +    aic->reg_offset = 0;
+> +    aic->reg_ops = &aspeed_tsp_intc_ops;
+> +    aic->irq_table = aspeed_2700tsp_intc_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intc_irqs);
 > +}
 > +
-> +static const TypeInfo aspeed_2700ssp_intc_info = {
-> +    .name = TYPE_ASPEED_2700SSP_INTC,
+> +static const TypeInfo aspeed_2700tsp_intc_info = {
+> +    .name = TYPE_ASPEED_2700TSP_INTC,
 > +    .parent = TYPE_ASPEED_INTC,
-> +    .class_init = aspeed_2700ssp_intc_class_init,
+> +    .class_init = aspeed_2700tsp_intc_class_init,
 > +};
 > +
-> +static AspeedINTCIRQ aspeed_2700ssp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-> +    {0, 0, 1, R_SSPINT160_EN, R_SSPINT160_STATUS},
-> +    {1, 1, 1, R_SSPINT161_EN, R_SSPINT161_STATUS},
-> +    {2, 2, 1, R_SSPINT162_EN, R_SSPINT162_STATUS},
-> +    {3, 3, 1, R_SSPINT163_EN, R_SSPINT163_STATUS},
-> +    {4, 4, 1, R_SSPINT164_EN, R_SSPINT164_STATUS},
-> +    {5, 5, 1, R_SSPINT165_EN, R_SSPINT165_STATUS},
+> +static AspeedINTCIRQ aspeed_2700tsp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 0, 1, R_TSPINT160_EN, R_TSPINT160_STATUS},
+> +    {1, 1, 1, R_TSPINT161_EN, R_TSPINT161_STATUS},
+> +    {2, 2, 1, R_TSPINT162_EN, R_TSPINT162_STATUS},
+> +    {3, 3, 1, R_TSPINT163_EN, R_TSPINT163_STATUS},
+> +    {4, 4, 1, R_TSPINT164_EN, R_TSPINT164_STATUS},
+> +    {5, 5, 1, R_TSPINT165_EN, R_TSPINT165_STATUS},
 > +};
 > +
-> +static void aspeed_2700ssp_intcio_class_init(ObjectClass *klass, void *data)
+> +static void aspeed_2700tsp_intcio_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
 > +
-> +    dc->desc = "ASPEED 2700 SSP INTC IO Controller";
+> +    dc->desc = "ASPEED 2700 TSP INTC IO Controller";
 > +    aic->num_lines = 32;
 > +    aic->num_inpins = 6;
 > +    aic->num_outpins = 6;
 > +    aic->mem_size = 0x400;
-> +    aic->nr_regs = 0x1d8 >> 2;
-> +    aic->reg_offset = 0;
-> +    aic->reg_ops = &aspeed_ssp_intcio_ops;
-> +    aic->irq_table = aspeed_2700ssp_intcio_irqs;
-> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intcio_irqs);
+> +    aic->nr_regs = 0x258 >> 2;
+> +    aic->reg_offset = 0x0;
+> +    aic->reg_ops = &aspeed_tsp_intcio_ops;
+> +    aic->irq_table = aspeed_2700tsp_intcio_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intcio_irqs);
 > +}
 > +
-> +static const TypeInfo aspeed_2700ssp_intcio_info = {
-> +    .name = TYPE_ASPEED_2700SSP_INTCIO,
+> +static const TypeInfo aspeed_2700tsp_intcio_info = {
+> +    .name = TYPE_ASPEED_2700TSP_INTCIO,
 > +    .parent = TYPE_ASPEED_INTC,
-> +    .class_init = aspeed_2700ssp_intcio_class_init,
+> +    .class_init = aspeed_2700tsp_intcio_class_init,
 > +};
 > +
 >   static void aspeed_intc_register_types(void)
 >   {
 >       type_register_static(&aspeed_intc_info);
->       type_register_static(&aspeed_2700_intc_info);
+> @@ -894,6 +1105,8 @@ static void aspeed_intc_register_types(void)
 >       type_register_static(&aspeed_2700_intcio_info);
-> +    type_register_static(&aspeed_2700ssp_intc_info);
-> +    type_register_static(&aspeed_2700ssp_intcio_info);
+>       type_register_static(&aspeed_2700ssp_intc_info);
+>       type_register_static(&aspeed_2700ssp_intcio_info);
+> +    type_register_static(&aspeed_2700tsp_intc_info);
+> +    type_register_static(&aspeed_2700tsp_intcio_info);
 >   }
 >   
 >   type_init(aspeed_intc_register_types);

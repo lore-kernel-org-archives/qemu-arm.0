@@ -1,126 +1,129 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6971815njd;
-        Tue, 8 Apr 2025 04:40:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUhAde6gZG0Wmbq7R+VY0UPCYBbsSsT51WqA4ZShZVbEITii1l2dGWY4nqKork9548hPfx5bIslmZdZmg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFiziHASyd+UW9LzAl0rtQVdNLiaDuXLQeqG7IXpPm/FU9D/pCUD9Mej/4ccFUGYhujfQUv
-X-Received: by 2002:a05:6214:2502:b0:6ea:d49f:ddeb with SMTP id 6a1803df08f44-6f0b74a6430mr252116296d6.31.1744112443136;
-        Tue, 08 Apr 2025 04:40:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744112443; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7262779njd;
+        Tue, 8 Apr 2025 11:58:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVkhjS4JZVXgXwZymVEWirx32+HCuTt7p55/JsxTAsBRRWYPNZ2+SGQl6RCBOrkAjog3kMh6Cqln529Lw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4Vk/2W56CNOe72qKwAGMM5SnPRdD9C5MGnZbzs79EI6Agr2CZcYnpR55m3jgaRG1AsK1B
+X-Received: by 2002:a05:622a:191f:b0:477:5c21:2e1e with SMTP id d75a77b69052e-4795f2b65f8mr1199861cf.5.1744138731058;
+        Tue, 08 Apr 2025 11:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744138731; cv=none;
         d=google.com; s=arc-20240605;
-        b=PFEujFq7uGBLH3ckTrkSbwVjKmIGoM3aWkvd811VbWSQgr2vg4KmMZ+3Iy4RljIbo4
-         5M/dZpOfgVTENrj5DfuEE+TWYAVTRlOAlzDeFoTph3+ZiYrzn3fNljqGfTuHeAIdhMDF
-         Zf1IFcUUf8u/TPZ9o/xffsRLo4pavW4cgMHV/Sw6kq7o+yFhjUgZ8WYU8OC5oN41qTnq
-         WnVnrtIhgPRn+MHI/6cOYbp6GD6iG57fuQhix/FdefjH1acfZ1Fxn3ODfwVJ8NQaecOP
-         ma+wd9nodCrjAwP4dHjYyu2Syl5aaGFIqWAoFZb2Ch25pES3E7OyPyPuYHzUwhy44L30
-         jqHw==
+        b=EzACYjL4NUNZO9dlPQXd0QZn1uynl4EEdyVIv5wq1HGy1ohoaBdVr4iRV0id0sVhTa
+         6KCC06vy+obUGKiAKEpYSO5lNP6GqPvkRTjjhY7JiQvt4k2vYM2oX472I1uKdIg2Mr03
+         Azkrx9yQeU5RTA9xlNSWX0fxu714/rVHy7rkZSZtuSwDQeXEEA0LSATIIHQbEsYCAgLr
+         oZ3s2KuOavQkujOwFijko2f8wNz7f99H7kIjEDAQ7oV/GI+/klgMCBJzfIs6VbOkR+l1
+         r4idKjf4M9dgHVlGSF1P31UEnm+txreIdvGF1AYw0Xto6RKuhLDLxM3CZyIWwWYSkTJQ
+         4TaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=AIAtQEYrWFYwySnMP0BU6rNLD7hDbgkMcRtopEPE+G0=;
-        fh=xv3Dd1fEtUW0fUSJlH4GTHjoesca3q97VpuHPUbw5L4=;
-        b=YRm7osiHG5Vo9a5ICfTdYWPOSEfJz8RSIYby6ooUeuSvfW2RVGUiRKFNkJp6ntofUx
-         Ae/IoYEliVB4RWvUwJvnwZeOb5PUwVZ7Y16nJkhMGipvISwWjZPH4ECO2RXHjemEiflm
-         DAsPCnqQW6YjT48VC0E0G6b0gnuwyUo6cNmmMnsT5c4WhfhL8CZQRBHuU517LtK1GeXA
-         Cqn60lkFVyY9ExIxTmYi135gc3yUTKVPsznpdSZLrdkybwfGKmYLQMxte/yKr1ljO5de
-         7I6a+HEO9uJYYivSDEtiYgrIjEnfPj3oMAaJvbiPg5DWuVlaWzL/duILWlUOml+C5ILn
-         20Cw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=A43eN9gEJpLwzInwk73xEE63oH6QJlEJodemacKh4UY=;
+        fh=OWcoHSm8hBeiCrqoUYhY50c3VXAuJ1U/kD35YCj00Hs=;
+        b=Qa3sT5sOc8qwOLweT8YS4+THu6LGsQLlvY0J7E+K2rFrY8qLpdhr0+6lVgLIFs60Lo
+         O9LOBwXv1xSbmwkAQ2GW8R5wviW0aZ4hOw7yrqU82Q5rn6eXF1rqtAawmYYZftA+SBI1
+         uz7bUabaB1y2cnfR0YJXd9uUYRk4JIqEgweaGa4RzBVtaZJ1mKPuz6xT35LXVtS1HGrV
+         AALj/Jk65GnzojCnhYJd6BHlWDlEH8/8IqZZYDvkPwWwuThE5IjpNTMGGBHTS7+sBc9q
+         n6YIeb90YXhEp6GXPwuJAnfkKhshhv1WQTsKnbSBe6J4Uf5zNA3Drkzw1MATjgmSzt0H
+         nA1g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CcraR484;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jg2ch7Fn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00efadsi108480826d6.125.2025.04.08.04.40.42
+        by mx.google.com with ESMTPS id d75a77b69052e-4791b176860si115208391cf.323.2025.04.08.11.58.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Apr 2025 04:40:43 -0700 (PDT)
+        Tue, 08 Apr 2025 11:58:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CcraR484;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jg2ch7Fn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u27JJ-0005Fm-Ld; Tue, 08 Apr 2025 07:40:09 -0400
+	id 1u2E8z-0002Lo-B3; Tue, 08 Apr 2025 14:57:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u27If-0005Ac-M0
- for qemu-devel@nongnu.org; Tue, 08 Apr 2025 07:39:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u27Id-0007yZ-AP
- for qemu-devel@nongnu.org; Tue, 08 Apr 2025 07:39:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1744112365;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AIAtQEYrWFYwySnMP0BU6rNLD7hDbgkMcRtopEPE+G0=;
- b=CcraR4842OoIznqGkILHHHhnYinJDGeVmSoJEGjbhmVpl7wMnz3QdVii4LnBTb3tyuClOH
- 62CvqsZ5nPxMP8TkEnmrtzi7QJqOseAyyr84oEyx1E5JHIRuTCmPH5VqD3ZdoOpVxqaPTy
- 1s7J4iN7RmQ0BCe6K76Sc9fr/WWreac=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-274-47SyR3ndOiiQ2GHI5uxC-A-1; Tue,
- 08 Apr 2025 07:39:21 -0400
-X-MC-Unique: 47SyR3ndOiiQ2GHI5uxC-A-1
-X-Mimecast-MFC-AGG-ID: 47SyR3ndOiiQ2GHI5uxC-A_1744112359
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DB979180AF57; Tue,  8 Apr 2025 11:39:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3BB24180B487; Tue,  8 Apr 2025 11:39:08 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BE4CB21E675E; Tue, 08 Apr 2025 13:39:05 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Kane Chen <kane_chen@aspeedtech.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Peter Maydell <peter.maydell@linaro.org>,  Steven
- Lee <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,  "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>,  "open list:All patches CC here"
- <qemu-devel@nongnu.org>,  qemu-block <qemu-block@nongnu.org>,  Troy Lee
- <troy_lee@aspeedtech.com>
-Subject: Configuring onboard devices, in particular memory contents (was:
- [PATCH v1 0/1] hw/misc/aspeed_sbc: Implement OTP memory and controller)
-In-Reply-To: <254844fd-15b8-47b2-9203-b19f8279c757@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Mon, 7 Apr 2025 11:55:17 +0200")
-References: <20250402091447.3381734-1-kane_chen@aspeedtech.com>
- <9171629d-a386-4971-802b-cd26cc42e194@kaod.org>
- <99497c16-cee4-4098-9971-f61ef7174412@linaro.org>
- <c193e64d-6ce7-4e5c-bb2a-3e1d3f4f143e@kaod.org>
- <SI6PR06MB7631DDEA18B197B4C343386DF7AA2@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <254844fd-15b8-47b2-9203-b19f8279c757@kaod.org>
-Date: Tue, 08 Apr 2025 13:39:05 +0200
-Message-ID: <877c3ulw6e.fsf_-_@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u2E8w-0002DT-V1
+ for qemu-devel@nongnu.org; Tue, 08 Apr 2025 14:57:55 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u2E8q-0004Ng-Ot
+ for qemu-devel@nongnu.org; Tue, 08 Apr 2025 14:57:54 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-39c266c1389so4246848f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 08 Apr 2025 11:57:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1744138666; x=1744743466; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=A43eN9gEJpLwzInwk73xEE63oH6QJlEJodemacKh4UY=;
+ b=Jg2ch7FnkImBETgagmeKF+XJD0QhOk3l+EAWyVIJdViZOXPtRQjpJH6Oycm/O2UcYX
+ l5FEkldbK0J6mQBfQjcjjuO9yQITOqiqTNZFbYJ446vleiYjBiCRIauixPHK5QziIsMk
+ 3CPunG0B0ROBB5wCsnrfXJ0Fcl9szDsN6p42TK2VZ23X/a4M19mBYT8YIH/jwnOavmgA
+ B6I06RFiVPjdBeSzF4kMbcAry2Db574k3tgRzM5nzhbesqLZu/8Y1PzX6swl/YcNgJeE
+ Gy19TCUEKJ4v14cluYHWwL0w5+iPyOqY4dKtTWliKCf3oEH9UEfvbfgFRBdpqf56hDQN
+ uP3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744138666; x=1744743466;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=A43eN9gEJpLwzInwk73xEE63oH6QJlEJodemacKh4UY=;
+ b=XOhm26K4MZICVmqrUDRIOCkfzVNRvtz3e1EjgDca794tnW8pVXxGi7QNivq8pBihLn
+ VmMlCxcLxdBi0dvs/kp/2uLhzSGlgMA1yp84tc/li7ycgPtLoWo48YcVyXXyHviaKrAe
+ 6gpP2ZIMZBoinffsjLCjzmOCY4SIC3hHEr2JLWvZcckTC1RqvtVwSp33ak2HqG17yDFC
+ 0rSVvQPQUxgkYKXvWKpAOCShlLmCtmX6mdn2Lmqu2fowRGvRNQKDuSamtK7Pj7e1lwUy
+ HgaJhzEcZ0hcUXkA33HL6RCm7GQSm93G3WUYQ/LIlYp9hHgeGTVPIW+TiMszBg57eEe9
+ JaZw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX1b5xJlXHnvXBiclbW/l4hXaPfsHUi70HcyVbxpsdN8/KHkEki2YNhJyMTXTtjw/BSSwqmRVgbSeZ6@nongnu.org
+X-Gm-Message-State: AOJu0YzN2y5RCxHvoaAQBD0z90x9ZXaOb4xh5SfdcTwTLBysYImHEG5G
+ CpiHvi3rvbNT55LUGCzeThIxdsZFZJl8phU37iLGCWEr7N4jhC23uCesQnp2YnU=
+X-Gm-Gg: ASbGncvLgUvoDAjZ5cz2FEtlj7ZmVldYlOoFbO6MGWKU0WQNbSmd1tMg5WPKaBIv/ut
+ +urxAKAeQobHKtBtT8eTv5vgpstzYnfAtYNAMptuKTdSKhsVnhnZjE7rshfLfB6ElVZrLTLOPbU
+ ikAlAyZk07fuLfyu7GjwiliLyPLdA6SLJBn/ck6cQT9k3X2cp4Q/6/SBNzWsw94m2pVeDzFzRzD
+ f6cnEqo9b6WUdMKnHUx/kwsdGmcDbTmr0THTS/yyDhBIdNBfPf3TysA3fNmK2149d2UIsOKdTHu
+ usCAWe44kNLdOTUkdvpr8AH4/yU3pd3l0JXGnqKKEJW0lOQb/K4qJjj6mIF1BU5nc2OjF8Lgp5G
+ 0fwJSjJZvq8Cy
+X-Received: by 2002:a5d:5f85:0:b0:38f:503a:d93f with SMTP id
+ ffacd0b85a97d-39d87cd33edmr293462f8f.40.1744138666435; 
+ Tue, 08 Apr 2025 11:57:46 -0700 (PDT)
+Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-39c30226f1fsm15847037f8f.95.2025.04.08.11.57.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Apr 2025 11:57:45 -0700 (PDT)
+Message-ID: <49539ce7-d36e-42f1-9ff2-771c893e5ce3@linaro.org>
+Date: Tue, 8 Apr 2025 20:57:45 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.0 0/3] More imx8mp-evk improvements
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>, Peter Maydell
+ <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
+References: <20250405214900.7114-1-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250405214900.7114-1-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.845,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,229 +138,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nnE5TbBCRJWh
+X-TUID: 6G3tJs7rjk0a
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+On 5/4/25 23:48, Bernhard Beschow wrote:
 
-> Hello Kane,
->
-> + Markus (for ebc29e1beab0 implementation)
->
-> On 4/7/25 09:33, Kane Chen wrote:
->> Hi C=C3=A9dric/Philippe,
->> OTP (One-Time Programmable) memory is a type of non-volatile memory
->> in which each bit can be programmed only once. It is typically used
->> to store critical and permanent information, such as the chip ID and
->> secure boot keys. The structure and behavior of OTP memory are
->> consistent across both the AST1030 and AST2600 platforms.
->> As Philippe pointed out, this proposal models the OTP memory as a
->> flash device and utilizes a block backend for persistent storage. In
->> contrast, existing implementations such as NPCM7xxOTPState,
->> BCM2835OTPState, and SiFiveUOTPState expose OTP memory via MMIO and
->> always initialize it in a blank state.=20
->
-> AFAIU, Aspeed SBC is also MMIO based or is there another device,
-> an eeprom, accessible through an external bus ? How is it
-> implemented in HW ?
->
->> The goal of this design is to
->> allow the guest system to boot with a pre-configured OTP memory
->> state.=20
->
-> Yes. This is a valid request. It's not the first time we've had
-> this kind of requests. The initial content of EEPROM devices are
-> an example and some machines, like the rainier, have a lot.
->
-> If the device can be defined on the command line, like would be
-> an EEPROM device attached to an I2C bus or a flash device attached
-> to a SPI bus, we can use a 'drive' property. Something like :
->
->   qemu-system-arm -M ast2600-evb \
->       -blockdev node-name=3Dfmc0,driver=3Dfile,filename=3D/path/to/fmc0.i=
-mg \
->       -device mx66u51235f,bus=3Dssi.0,cs=3D0x0,drive=3Dfmc0 \
->       -blockdev node-name=3Dfmc1,driver=3Dfile,filename=3D/path/to/fmc1.i=
-mg \
->       -device mx66u51235f,bus=3Dssi.0,cs=3D0x1,drive=3Dfmc1 \
->       -blockdev node-name=3Dspi1,driver=3Dfile,filename=3D/path/to/spi1.i=
-mg \
->       -device mx66u51235f,cs=3D0x0,bus=3Dssi.1,drive=3Dspi1 \
->       ...
->
-> However, the Aspeed SBC device is a platform device and it makes
-> things more complex : it can not be created on the command line,
-> it is directly created by the machine and the soc and passing
-> device properties to specify a blockdev it is not possible :
->
->   qemu-system-arm -M ast2600-evb \
->       -blockdev node-name=3Dotpmem,driver=3Dfile,filename=3D/path/to/otpm=
-em.img \
->       -device aspeed-sbc,drive=3Dotpmem \
->       ...
+> Guenter Roeck (2):
+>    hw/arm/imx8mp-evk: Remove unimplemented cpu-idle-states properties
+>      from devicetree
+>    hw/arm/imx8mp-evk: Remove unimplemented nxp,imx8mp-fspi node from
+>      devicetree
 
-Configuring onboard devices is an old problem, and so far we have failed
-at solving it adequately.
-
--device / device_add let you configure the new device in a general way,
-but these work only for device the user creates, not for devices the
-board creates automatically.
-
-We have a bunch of ad hoc and mostly ancient ways to configure them, but
-they're all limited.  For example:
-
-* A number of old command line options, such as -drive, -serial, -net
-  nic, create device backends and additionally deposit configuration in
-  some global table the board may elect to use however it sees fit.  The
-  intended use is to create frontends connected to these backends.
-
-  Some boards error out when they can't honor something in the table.
-  Others silently ignore parts of the table, or all of it.  Bad UI.
-
-  Device configuration the table doesn't support is not accessible this
-  way.  If you extend the table (and the associated option) to provide
-  access to some device-specific configuration, all the other devices
-  will silently ignore the new configuration bits.  Again, bad UI.
-
-  There's another serious issue with block devices: -drive is obsolete
-  for configurating complex block backends.  But its replacement
-  -blockdev is for backend configuration only.  If you use -blockdev,
-  you can't add to the table.
-
-* Command line option -global lets you change property defaults.  This
-  can be used to configure an onboard device as long as it is the only
-  such device in the system.  Limited use, and also bad UI.
-
-A modern attempt at a solution is to have machine properties alias
-properties of onboard devices, so you can specify them with -machine.
-For instance, a few machines expose the "drive" property of two onboard
-pflash devices as machine properties "pflash0" and "pflash1".
-
-Commits
-
-    e0561e60f170 (hw/arm/virt: Support firmware configuration with -blockde=
-v)
-    ebc29e1beab0 (pc: Support firmware configuration with -blockdev)=20
-
-explain this in a lot more detail in their commit messages.
-
-Sadly, this solution does not scale.  Adding alias properties to the
-machine object is work, sometimes a lot of work (evidence: the two
-commits above).  There are simply too many onboard devices with too many
-properties to all manually alias.
-
-Of course, even an insufficiently general / scalable solution like this
-one can work well enough for specific cases.
-
->> To support this, the OTP memory is backed by a file,
->> simulating persistent flash behavior.
->
-> The idea is good but the implementation is problematic.
->
->     +static BlockBackend *init_otpmem(int64_t size_bytes)
->     +{
->     +    Error *local_err =3D NULL;
->     +    BlockDriverState *bs =3D NULL;
->     +    BlockBackend *blk =3D NULL;
->     +    bool image_created =3D false;
->     +    QDict *options;
->     +    uint32_t i, odd_def =3D 0xffffffff, even_def =3D 0, *def;
->     +
->     +    if (!g_file_test(OTP_FILE_PATH, G_FILE_TEST_EXISTS)) {
->     +        bdrv_img_create(OTP_FILE_PATH, "raw", NULL, NULL,
->     +                        NULL, size_bytes, 0, true, &local_err);
->     +        if (local_err) {
->     +            qemu_log_mask(LOG_GUEST_ERROR,
->     +                          "%s: Failed to create image %s: %s\n",
->     +                          __func__, OTP_FILE_PATH,
->     +                          error_get_pretty(local_err));
->     +            error_free(local_err);
->     +            return NULL;
->     +        }
->     +        image_created =3D true;
->     +    }
->     +
->     +    blk =3D blk_new(qemu_get_aio_context(),
->     +                  BLK_PERM_CONSISTENT_READ | BLK_PERM_WRITE,
->     +                  0);
->     +    if (!blk) {
->     +        qemu_log_mask(LOG_GUEST_ERROR,
->     +                      "%s: Failed to create BlockBackend\n",
->     +                      __func__);
->     +        return NULL;
->     +    }
->     +
->     +    options =3D  qdict_new();
->     +    qdict_put_str(options, "driver", "raw");
->     +    bs =3D bdrv_open(OTP_FILE_PATH, NULL, options, BDRV_O_RDWR, &loc=
-al_err);
->     +    if (local_err) {
->     +        qemu_log_mask(LOG_GUEST_ERROR,
->     +                      "%s: Failed to create OTP memory, err =3D %s\n=
-",
->     +                      __func__, error_get_pretty(local_err));
->     +        blk_unref(blk);
->     +        error_free(local_err);
->     +        return NULL;
->     +    }
->     +
->     +    blk_insert_bs(blk, bs, &local_err);
->     +    if (local_err) {
->     +        qemu_log_mask(LOG_GUEST_ERROR,
->     +                      "%s: Failed to insert OTP memory to SBC, err =
-=3D %s\n",
->     +                      __func__, error_get_pretty(local_err));
->     +        bdrv_unref(bs);
->     +        blk_unref(blk);
->     +        error_free(local_err);
->     +        return NULL;
->     +    }
->     +    bdrv_unref(bs);
->     ...
->
-> IMO, this is low level block code that a device model shouldn't have
-> to deal with. A 'drive' should be used instead. Now, if the qemu-block
-> maintainers are OK with it, we need their approval.
-
-Using block backends to specify the contents of a memory device is a bit
-of a hack.  However, it's the hacky solution we use, and until we have a
-better solution, new code is well advised to stick to the same hacky
-solution we use in existing code.
-
-Why is it a bit of a hack?  Well, memory isn't a block device.  For
-read-only memory, all we want from the block device is slurping in some
-image in its entirety.  We're not interesting in reading parts, or
-writing at all.  For writable memory, we are interested in writing, but
-there's often a awkward translation to block device blocks.
-
->  > The OTP memory access flow is as follows:
->> 1. The guest issues a read or write OTP command to the Secure Boot
->>     Controller (SBC)
->> 2. The SBC triggers the corresponding operation in the OTP controller
->> 3. The SBC returns the result to the guest
->> Since the guest interacts with OTP memory exclusively through the
->> SBC, the OTP logic is implemented within aspeed_sbc.c.
->> If there are existing architectural guidelines or design patterns
->> that should be followed for modeling OTP devices, I would greatly
->> appreciate your feedback. I am happy to revise the implementation
->> accordingly and submit updated patches for further review.
->
-> Adding a 'drive' property to the aspeed-sbc model shouldn't change
-> too much the proposal and it will remove the init_otpmem() routine,
-> which is problematic.
->
-> Then, we need to find a way to set the 'drive' property of the
-> aspeed-sbc model. I suggest using the same method of the edk2 flash
-> devices of the q35 machine. See ebc29e1beab0. Setting a machine
-> option would set the drive. Something like :
->
->   qemu-system-arm -M ast2600-evb,otpmem=3Dotpmem-drive \
->       -blockdev node-name=3Dotpmem,driver=3Dfile,filename=3D/path/to/otpm=
-em.img \
->       ...
->
-> This machine option would only be defined for machine types needing
-> it.
-
-I don't love this solution, but it's what we use elsewhere.  I think
-C=C3=A9dric is right.
-
+Patches 2 & 3 queued, thanks!

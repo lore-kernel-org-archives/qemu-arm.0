@@ -1,95 +1,130 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6896949njd;
-        Tue, 8 Apr 2025 01:49:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTf8gdRmiAYvbBoftOdi61ZWiFbxnTzytlGqdr9RMWO4TUtTrt+t8sCbfNC0+QFSC7HtmuLiPgtLkqxw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFF6LIGCxsTXSIeyAekRfrwgjmNCOTjtm15T+pMbsbT01apUs2Fu4EIsMTIPK1cLgOC+g9Y
-X-Received: by 2002:a05:6214:f07:b0:6e6:5a25:e118 with SMTP id 6a1803df08f44-6f0d24f7df1mr37698676d6.6.1744102156909;
-        Tue, 08 Apr 2025 01:49:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744102156; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6940945njd;
+        Tue, 8 Apr 2025 03:35:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX4Ee3xbwdgJj1/9g+DaA8qA+but6KzH14cuHTaPRNKmsRiRWHGpCtwoDNGPOSkW38FpSXsuMgNNygV/w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWnkTY/2YRsAZKOfcn/AWnRtVTo8H6zU/Cu/SaR4jSdbiQgb6dpW6nGupVX7QylY6Tyli3
+X-Received: by 2002:a05:620a:269b:b0:7c3:c9f9:3936 with SMTP id af79cd13be357-7c77dd61aabmr1664587985a.20.1744108500541;
+        Tue, 08 Apr 2025 03:35:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744108500; cv=none;
         d=google.com; s=arc-20240605;
-        b=NdqqCQqpPvZrpIFj6ABPPvuXl0hTELLKSErsMImouOQ25mXP3zb0clU8fL4lapLf4F
-         KkBmeUfeuWIuxqC5Mjr0Tqodpmul44JGm40Kiz+gWJE1LmLhcRJanma96t9hK1rcpKAI
-         lv23HFSYCNaSN2bT/H5S86m74FFhcTDDCtkKhRbUKG19sZzPqRbrqV+2nx8iLNc0HTkv
-         D9NqKQogri7uy82J7C/M0BPd/y9X5r9WdFqDYeplwH2ngvYOBrBKEix4h4Baaz9BfbW3
-         pwCxx7vOBv0cKWfjgpNtPDHSv/rHB9qcIxae3hspVLsk2K9MsPV9mnyBcRKk2fdiebJP
-         TrJw==
+        b=YAP6RKrvvI9qcXuqzmXiqVEQrz90yq3FRQSQXav1rc75aCsKCpVNPRLmTjtRZj5Ybo
+         BQ/NK1tIFGSAoryzBaRqCaqrvB5JxrLfOwyUSNVrDQTqPg6KeoNWTgHJrSeo9E7CE5f/
+         snvwSjdzpsWivd2512gp39rcoxUdO/LZkypsthBMwr6inQJojfO2uUgbZ0o8As+PVHJK
+         8GrLjpYxoculyX6WAn/Na5x9AdMwjUsmx564v9nf9XkXTETBlUtytSlQ8ka5afugDK8B
+         yj2iYxzmbgVoAoCAT0VD/AJabtMrvUKEpeODvEvQGeCvkRSGq8WOwkV9lw7bkqBwBjaC
+         NGBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=VB/cn8Qhfpp0MFSAos4CiAdAjtaXU6T+LqyceWJPkC8=;
-        fh=WU88N4mKJ15KAWPL9VYIv7nZ1xzpFNrIIDVdluAAoJ4=;
-        b=NVH4Ruaayt1/aiHP/8FOOhcnzQLCoSryyhTyNOPCiDABE3ZHUzI5VPnWCTbXSOXXLN
-         efhPNJq1OMojJGR+MD1dmvZJbgRdjjGbuguskTI7ZBb69lRAQMgUH3EfVhpCN8O5k+6C
-         xiMjrHsmZAHadHo9b+yFTuS3Xjl0K9GA63jaLxCXlgo8M0grgO739Onsrw/yNTjUQNeh
-         6XxvJERjlzZQ8jK/X9CNnhxEr0gl3/u4yNVCJdSiTXn00IWsASVeWauA5ofkhbQH+eBG
-         PnM9fPztk3wLQLjZBX0AM+XNSwxqYNp9QuZZQeL2u+pc/ABCNPGQ9VAguiQ94mIg8C1h
-         SXTg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=QTbwRhe3DqMRjQbHAqyruavgTwGQghTB5+1ocfpnPJg=;
+        fh=5RTU31CRDKuStddgUFwTqcuDKjOyHLt67nhRpTxJ9aU=;
+        b=CYD9sXHcfAg7vuTEMDhc2djuAQdtiwJ2zWXdNSkmW0RbUjeVwBv7RLfy5TiTaqNMy1
+         MNEGuAMYeg2xECJ9hZfxU00Xn4YGQ7rj5gDktUIRU53EJIMusgPvvssRdSRn9rytjmVV
+         hgyQ1WiRwb+jUFDABC5l0VRLpo6aXqVEjPWcGh54mmevmXI0BVp14FXQAJGJS4rtwSxQ
+         zb61cAr9bAYtazYqtmFvDL9mqNR+jI2CMRZgTJBzVL7p8cRti4PGUIFBuetHlhzsm5IW
+         hBUTnt94N2lU9SdYbCYp93q6EVbd6fQyLnhIurWgguTngw2LV0gly5MRgUC/jjNtZy2X
+         ZQjQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iVI1P7hf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00ed98si103093696d6.112.2025.04.08.01.49.16
+        by mx.google.com with ESMTPS id af79cd13be357-7c76e969438si1031877685a.185.2025.04.08.03.35.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Apr 2025 01:49:16 -0700 (PDT)
+        Tue, 08 Apr 2025 03:35:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iVI1P7hf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u24dX-00010B-2Y; Tue, 08 Apr 2025 04:48:51 -0400
+	id 1u26I7-0001eO-9H; Tue, 08 Apr 2025 06:34:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1u24dS-0000zq-9A; Tue, 08 Apr 2025 04:48:46 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1u24dK-00030H-G3; Tue, 08 Apr 2025 04:48:45 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZX0856DJtz6FGp6;
- Tue,  8 Apr 2025 16:47:33 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id ECDCB1400DB;
- Tue,  8 Apr 2025 16:48:28 +0800 (CST)
-Received: from localhost (10.203.177.99) by frapeml500003.china.huawei.com
- (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 8 Apr
- 2025 10:48:28 +0200
-Date: Tue, 8 Apr 2025 09:48:22 +0100
-To: Eric Auger <eric.auger@redhat.com>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
- <zhao1.liu@intel.com>, <dapeng1.mi@linux.intel.com>, <armbru@redhat.com>,
- <farman@linux.ibm.com>, <peter.maydell@linaro.org>, <anisinha@redhat.com>,
- <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mtosatti@redhat.com>,
- <berrange@redhat.com>, <richard.henderson@linaro.org>,
- <shameerali.kolothum.thodi@huawei.com>, <jonathan.cameron@huawei.com>,
- <jiangkunkun@huawei.com>, <yangyicong@hisilicon.com>, <linuxarm@huawei.com>
-Subject: Re: [PATCH v8 0/6] Specifying cache topology on ARM
-Message-ID: <20250408094822.0000012f.alireza.sanaee@huawei.com>
-In-Reply-To: <7cad3f1f-1977-4d98-900c-080aa5ad32d5@redhat.com>
-References: <20250310162337.844-1-alireza.sanaee@huawei.com>
- <7cad3f1f-1977-4d98-900c-080aa5ad32d5@redhat.com>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u26I4-0001dt-Cb; Tue, 08 Apr 2025 06:34:48 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u26I1-0007WZ-F4; Tue, 08 Apr 2025 06:34:47 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-abec8b750ebso907508166b.0; 
+ Tue, 08 Apr 2025 03:34:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1744108483; x=1744713283; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=QTbwRhe3DqMRjQbHAqyruavgTwGQghTB5+1ocfpnPJg=;
+ b=iVI1P7hfRTM8OiZdeOmDFqTEDYmftwkWqjMruf8eHV9DQXuWCgXJXFnax5B9cW3BPt
+ l5Ss4d+DCuoE3Ney1FgPRtXYWeTnxcWgu3rBvPF5p8K2enNdW8asXqPNCQ7Ni1Em6zB/
+ tLvqreI3qkAXkc4shUgu14gPzJ5WYB0k8J6q7Vx+mhkgh5ba77B/VhUlUXsNjOijKw36
+ J7E62qj4NLTb3ppv+3dZwybhDkzRAo0oV9Doj0JEhdk3/W+Mr2Kb/uJG4DEyVSZ84j6n
+ YBYI0LZd/JfRPFMwnDqEgw2fZWrvPi8MDuNo70ERila0mj+NgycblC0EgGERfOV5Fxlu
+ uUFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744108483; x=1744713283;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=QTbwRhe3DqMRjQbHAqyruavgTwGQghTB5+1ocfpnPJg=;
+ b=haXy6X972IetSyxzWgPyitLoFS2Sw0o4ZxsNubesaAy2iAmj+D0Bj0fX7lU6Q35fkN
+ av3kYZLv+eJofAqsYbixTsUBLFLn6sOwIobFSOxqskxas1io+YkW1pSGgY2ybrFMdvGL
+ HYU/ZcOAyMxxhc4wlJ0i317mxPU1QLOuyXrrA45B7g3iCQ3pabZasSxtWFuRbN8Ls/bz
+ cfXQbJ9zssv1YwOvXLyLTbLQrlLIYV1yGxdZ0GeRftBqNfwOIeD6vUNskdVcaYqlWf9t
+ uSa9CoU3yJiFcRdbCdF12D3IpXHn3TgPcbd1DpASdg5BYq+ePQHBrkpIaoqJ874CNyUw
+ 4iqw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX9WieOcH+cjBxEC+OZ7weafJV6F3aK6NBSe7j42JP7KVZObltdnCVUKgdLpB41juotrS7Rd5mUWg==@nongnu.org,
+ AJvYcCXGEPNi0Mt6EvwjAfYHqqyEG0fxEx4XXG4RTI80r+WQjPehl+sl2S0kY16lxmU5ftcxIyx7LHq+gl/wTA==@nongnu.org
+X-Gm-Message-State: AOJu0YztVuSGg6lEMmJvj174ra/ByeKbKIsTbOt7YQVfQ6fafQOVWjam
+ pBdn1bdsaRCBGk/KIwaOJWk3f2u6Gy+wf1yXzdo+KVOuz5HIRl1v/uGY2w==
+X-Gm-Gg: ASbGncvROWsD3O5WcAcOfqSDQIcFv8MLIDKND036shgM0r1lCf0WkG3+8DHbUoZMiAL
+ ZNLxEEuIoR2VzLYwLwyg8F4IemEgQw3QtoiVQBm9vr42PNAzQMVA0I9aEPzsScqQsqAbZZnpv3C
+ nJcSkh95BJPmxRd1zfldFUVmZuNAFDSaOKDwd33ocvfhvV5/Uu0T2N/o5eUELoO+d/DHrdwiyT8
+ 1TVRC1vkk3tckgL2/w7PjguGrIbnG3fxDjWuzWZ/3nuCNoxXQhq97GXbp7Uu0qWsQ01KZIo23zU
+ u0cN0a2GlJPbXo6+CyLVQGPWhySH3vOGR2ouuxx5
+X-Received: by 2002:a17:906:c144:b0:ac3:2d47:f6af with SMTP id
+ a640c23a62f3a-ac7e71b44femr999117966b.20.1744108482633; 
+ Tue, 08 Apr 2025 03:34:42 -0700 (PDT)
+Received: from [127.0.0.1] ([90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ac7bfeed008sm886206666b.85.2025.04.08.03.34.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Apr 2025 03:34:42 -0700 (PDT)
+Date: Tue, 08 Apr 2025 10:15:32 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org, 
+ Guenter Roeck <linux@roeck-us.net>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH-for-10=2E0_1/3=5D_tests/functional=3A_Add?=
+ =?US-ASCII?Q?_test_for_imx8mp-evk_board_with_USDHC_coverage?=
+In-Reply-To: <122aaf9e-cb4c-4117-90ae-2803f4810700@redhat.com>
+References: <20250405214900.7114-1-shentey@gmail.com>
+ <20250405214900.7114-2-shentey@gmail.com>
+ <122aaf9e-cb4c-4117-90ae-2803f4810700@redhat.com>
+Message-ID: <79FE9C71-1792-44F0-A4D0-364636B21F09@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
- frapeml500003.china.huawei.com (7.182.85.28)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,202 +138,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T3pPxJqmb90+
+X-TUID: lfGoo9JJyEoi
 
-On Mon, 7 Apr 2025 19:24:16 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
 
-> Hi Ali,
-> 
-> On 3/10/25 5:23 PM, Alireza Sanaee via wrote:
-> > Specifying the cache layout in virtual machines is useful for
-> > applications and operating systems to fetch accurate information
-> > about the cache structure and make appropriate adjustments.
-> > Enforcing correct sharing information can lead to better
-> > optimizations. This patch enables the specification of cache layout
-> > through a command line parameter, building on a patch set by Intel
-> > [1,2,3]. It uses this set as a  
-> some dependencies were merged. The series does not apply anymore.
-This has already picked up, thanks for pointing out. Will remove in the
-next version.
-> > foundation.  The device tree and ACPI/PPTT table, and device tree
-> > are populated based on user-provided information and CPU topology.  
-> this last sentence need some rewording.
-Sure, gonna fix.
-> >
-> > Example:
-> >
-> >
-> > +----------------+                            +----------------+
-> > |    Socket 0    |                            |    Socket 1    |
-> > |    (L3 Cache)  |                            |    (L3 Cache)  |
-> > +--------+-------+                            +--------+-------+
-> >          |                                             |
-> > +--------+--------+                            +--------+--------+
-> > |   Cluster 0     |                            |   Cluster 0     |
-> > |   (L2 Cache)    |                            |   (L2 Cache)    |
-> > +--------+--------+                            +--------+--------+
-> >          |                                             |
-> > +--------+--------+  +--------+--------+    +--------+--------+
-> > +--------+----+ |   Core 0         | |   Core 1        |    |
-> > Core 0        |  |   Core 1    | |   (L1i, L1d)     | |   (L1i,
-> > L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
-> > +--------+--------+  +--------+--------+    +--------+--------+
-> > +--------+----+ |                   |                       |
-> >             | +--------+              +--------+
-> > +--------+          +--------+ |Thread 0|              |Thread 1|
-> >            |Thread 1|          |Thread 0| +--------+
-> > +--------+              +--------+          +--------+ |Thread 1|
-> >            |Thread 0|              |Thread 0|          |Thread 1|
-> > +--------+              +--------+              +--------+
-> > +--------+
-> >
-> >
-> > The following command will represent the system relying on **ACPI
-> > PPTT tables**.
-> >
-> > ./qemu-system-aarch64 \
-> >  -machine
-> > virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-
-> >  
-> s/cluseter/cluster
-> > cache.3.cache=l3,smp-cache.3.topology=socket \
-> >  -cpu max \
-> >  -m 2048 \
-> >  -smp sockets=2,clusters=1,cores=2,threads=2 \
-> >  -kernel ./Image.gz \
-> >  -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
-> >  -initrd rootfs.cpio.gz \
-> >  -bios ./edk2-aarch64-code.fd \
-> >  -nographic
-> >
-> > The following command will represent the system relying on **the
-> > device tree**.
-> >
-> > ./qemu-system-aarch64 \
-> >  -machine
-> > virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket
-> > \ -cpu max \ -m 2048 \
-> >  -smp sockets=2,clusters=1,cores=2,threads=2 \
-> >  -kernel ./Image.gz \
-> >  -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
-> >  -initrd rootfs.cpio.gz \
-> >  -nographic
-> >
-> > Failure cases:
-> >     1) There are scenarios where caches exist in systems' registers
-> > but left unspecified by users. In this case qemu returns failure.  
-> Can you give more details on 1)? is it a TCG case or does it also
-> exist with KVM acceleration?
-Yes, imagine your CLIDR register describes L1, L2, and L3. Then in the
-interface we only describe L1, and L2 and leave L3. Situation for L3 
-right now is undefined, in a sense that what is the sharing situation?
-This is failure.
 
-I think this is applicable to both TCG and KVM, because, the miss-match
-might come from real systems' registers or emulated ones. User might
-not exactly know the supported caches and misconfigure.
+Am 7=2E April 2025 05:38:28 UTC schrieb Thomas Huth <thuth@redhat=2Ecom>:
+> Hi!
+>
+>On 05/04/2025 23=2E48, Bernhard Beschow wrote:
+>> Introduce a functional test which boots Debian 12 on the imx8mp-evk boa=
+rd=2E Since
+>> the root filesystem resides on an SD card, the test also verifies the b=
+asic
+>> operation of the USDHC=2E
+>>=20
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   MAINTAINERS                                 |  1 +
+>>   tests/functional/meson=2Ebuild                |  1 +
+>>   tests/functional/test_aarch64_imx8mp_evk=2Epy | 69 ++++++++++++++++++=
++++
+>>   3 files changed, 71 insertions(+)
+>>   create mode 100644 tests/functional/test_aarch64_imx8mp_evk=2Epy
+>>=20
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index d54b5578f8=2E=2E4ceffa89dc 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -833,6 +833,7 @@ F: include/hw/arm/fsl-imx8mp=2Eh
+>>   F: include/hw/misc/imx8mp_*=2Eh
+>>   F: include/hw/pci-host/fsl_imx8m_phy=2Eh
+>>   F: docs/system/arm/imx8mp-evk=2Erst
+>> +F: tests/functional/test_aarch64_imx8mp_evk=2Epy
+>>   F: tests/qtest/rs5c372-test=2Ec
+>>     MPS2 / MPS3
+>> diff --git a/tests/functional/meson=2Ebuild b/tests/functional/meson=2E=
+build
+>> index 0f8be30fe2=2E=2Eaaaf3472f1 100644
+>> --- a/tests/functional/meson=2Ebuild
+>> +++ b/tests/functional/meson=2Ebuild
+>> @@ -75,6 +75,7 @@ tests_aarch64_system_quick =3D [
+>>     tests_aarch64_system_thorough =3D [
+>>     'aarch64_aspeed',
+>> +  'aarch64_imx8mp_evk',
+>>     'aarch64_raspi3',
+>>     'aarch64_raspi4',
+>>     'aarch64_replay',
+>> diff --git a/tests/functional/test_aarch64_imx8mp_evk=2Epy b/tests/func=
+tional/test_aarch64_imx8mp_evk=2Epy
+>> new file mode 100644
+>
+>The test files should be executable so you can run them directly (after s=
+etting PYTHONPATH and QEMU_TEST_QEMU_BINARY)
 
-I spend some time thinking about a default behavior but then that
-again will be unclear to users, and decided it is better if users
-decide what EXACTLY should happen in an informed fashion.
-> >
-> >     2) SMT threads cannot share caches which is not very common.
-> > More discussions here [4].
-> >
-> > Currently only three levels of caches are supported to be specified
-> > from the command line. However, increasing the value does not
-> > require significant changes. Further, this patch assumes l2 and l3
-> > unified caches and does not allow l(2/3)(i/d). The level
-> > terminology is thread/core/cluster/socket right now. Hierarchy
-> > assumed in this patch: Socket level = Cluster level + 1 = Core
-> > level + 2 = Thread level + 3;
-> >
-> > TODO:
-> >   1) Making the code to work with arbitrary levels
-> >   2) Separated data and instruction cache at L2 and L3.
-> >   3) Additional cache controls.  e.g. size of L3 may not want to
-> > just match the underlying system, because only some of the
-> > associated host CPUs may be bound to this VM.  
-> Does it mean this is more an RFC or do you plan to send improvement
-> patches once this series gets upstream?
-Short answer, I think I am better off sending upgrades once the main
-patchset got merged.
+Ack=2E Will fix=2E
 
-Some of these TODOs are good to have really, i.e., L3 size is something
-I have received some interest about already.
+>
+>> index 0000000000=2E=2E5419d3c525
+>> --- /dev/null
+>> +++ b/tests/functional/test_aarch64_imx8mp_evk=2Epy
+>> @@ -0,0 +1,69 @@
+>> +#!/usr/bin/env python3
+>> +#
+>> +# Functional test that boots a Linux kernel and checks the console
+>> +#
+>> +# SPDX-License-Identifier: GPL-2=2E0-or-later
+>> +
+>> +from qemu_test import LinuxKernelTest, Asset
+>> +
+>> +class Imx8mpEvkMachine(LinuxKernelTest):
+>> +
+>> +    ASSET_IMAGE =3D Asset(
+>> +        ('https://cloud=2Edebian=2Eorg/images/cloud/bookworm/20231210-=
+1590/'
+>> +         'debian-12-generic-arm64-20231210-1590=2Etar=2Exz'),
+>> +        '7ebf1577b32d5af6204df74b54ca2e4675de9b5a9fa14f3ff70b88eeb7b3b=
+359')
+>> +
+>> +    KERNEL_OFFSET =3D 0x51000000
+>> +    KERNEL_SIZE =3D 32622528
+>> +    INITRD_OFFSET =3D 0x76000000
+>> +    INITRD_SIZE =3D 30987766
+>> +    DTB_OFFSET =3D 0x64F51000
+>> +    DTB_SIZE =3D 45 * 1024
+>> +
+>> +    def extract(self, in_path, out_path, offset, size):
+>> +        try:
+>> +            with open(in_path, "rb") as source:
+>> +                source=2Eseek(offset)
+>> +                data =3D source=2Eread(size)
+>> +            with open(out_path, "wb") as target:
+>> +                target=2Ewrite(data)
+>> +        except (IOError, ValueError) as e:
+>> +            self=2Elog=2Eerror(f"Failed to extract {out_path}: {e}")
+>> +            raise
+>> +
+>> +    def setUp(self):
+>> +        super()=2EsetUp()
+>
+>Is there any special reason for overriding the setUp function here? =2E=
+=2E=2E otherwise, I think this could also simply be done from the test_aarc=
+h64_imx8mp_evk_usdhc function instead?
 
-Or separated data and instruction is interesting only if someone plans
-to build one (maybe there is already and I don't know).
+The idea is that it prepares the test data once which could be used by mul=
+tiple test cases in the future=2E One could add tests booting via USB and P=
+CIe=2E Not done yet due to concerns about CI resources=2E
 
-Or arbitrary levels is not a challenging mod, so can be added later,
-if people want to have 7 layers :)
+>
+>> +        self=2EASSET_IMAGE=2Efetch()
+>
+>I think you can omit the fetch() here, it should be handled by archive_ex=
+tract() already=2E At least that's what we're doing in the other spots that=
+ use archive_extract()=2E
 
-This is something community can help me knowing what else might be
-interesting.
+Sounds excellent, I'll try that=2E
 
-> 
-> Thanks
-> 
-> Eric
-> >
-> > [1] https://lore.kernel.org/kvm/20240908125920.1160236-1-zhao1.liu@intel.com/
-> > [2] https://lore.kernel.org/qemu-devel/20241101083331.340178-1-zhao1.liu@intel.com/
-> > [3] https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
-> > [4] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
-> >
-> > Change Log:
-> >   v7->v8:
-> >    * rebase: Merge tag 'pull-nbd-2024-08-26'
-> > of https://repo.or.cz/qemu/ericb into staging
-> >    * I mis-included a file in patch #4 and I removed it in this one.
-> >
-> >   v6->v7:
-> >    * Intel stuff got pulled up, so rebase.
-> >    * added some discussions on device tree.
-> >
-> >   v5->v6:
-> >    * Minor bug fix.
-> >    * rebase based on new Intel patchset.
-> >      - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
-> >
-> >   v4->v5:
-> >     * Added Reviewed-by tags.
-> >     * Applied some comments.
-> >
-> >   v3->v4:
-> >     * Device tree added.
-> >
-> > Depends-on: Building PPTT with root node and identical
-> > implementation flag Depends-on: Msg-id:
-> > 20250306023342.508-1-alireza.sanaee@huawei.com
-> >
-> > Alireza Sanaee (6):
-> >   target/arm/tcg: increase cache level for cpu=max
-> >   arm/virt.c: add cache hierarchy to device tree
-> >   bios-tables-test: prepare to change ARM ACPI virt PPTT
-> >   hw/acpi/aml-build.c: add cache hierarchy to pptt table
-> >   tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
-> >   Update the ACPI tables according to the acpi aml_build change,
-> > also empty bios-tables-test-allowed-diff.h.
-> >
-> >  hw/acpi/aml-build.c                        | 205 +++++++++++-
-> >  hw/arm/virt-acpi-build.c                   |   8 +-
-> >  hw/arm/virt.c                              | 350
-> > +++++++++++++++++++++ hw/cpu/core.c                              |
-> > 92 ++++++ hw/loongarch/virt-acpi-build.c             |   2 +-
-> >  include/hw/acpi/aml-build.h                |   4 +-
-> >  include/hw/arm/virt.h                      |   4 +
-> >  include/hw/cpu/core.h                      |  27 ++
-> >  target/arm/tcg/cpu64.c                     |  13 +
-> >  tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 540 bytes
-> >  tests/qtest/bios-tables-test.c             |   4 +
-> >  11 files changed, 701 insertions(+), 8 deletions(-)
-> >  
-> 
-> 
+>
+>> +        self=2Earchive_extract(self=2EASSET_IMAGE)
+>> +
+>> +        self=2Eimage_path =3D self=2Escratch_file("disk=2Eraw")
+>> +        self=2Ekernel_path =3D self=2Escratch_file("linux")
+>> +        self=2Einitrd_path =3D self=2Escratch_file("initrd=2Ezstd")
+>> +        self=2Edtb_path =3D self=2Escratch_file("imx8mp-evk=2Edtb")
+>> +
+>> +        self=2Eextract(self=2Eimage_path, self=2Ekernel_path,
+>> +                     self=2EKERNEL_OFFSET, self=2EKERNEL_SIZE)
+>> +        self=2Eextract(self=2Eimage_path, self=2Einitrd_path,
+>> +                     self=2EINITRD_OFFSET, self=2EINITRD_SIZE)
+>> +        self=2Eextract(self=2Eimage_path, self=2Edtb_path,
+>> +                     self=2EDTB_OFFSET, self=2EDTB_SIZE)
+>> +
+>> +    def test_aarch64_imx8mp_evk_usdhc(self):
+>> +        self=2Eset_machine('imx8mp-evk')
+>> +        self=2Evm=2Eset_console(console_index=3D1)
+>> +        self=2Evm=2Eadd_args('-m', '2G',
+>> +                         '-smp', '4',
+>> +                         '-accel', 'tcg',
+>
+>The imx8mp-evk board has a "depends on TCG" in its Kconfig file, so I thi=
+nk you could omit "-accel tcg" here (but it also does not hurt to be explic=
+it, I guess)=2E
 
+I've seen it elsewhere, and I plan to add KVM support=2E That's why I adde=
+d it=2E If it can be omitted I'm happy to remove it=2E
+
+Best regards,
+Bernhard
+
+>
+> Thomas
+>
+>
+>> +                         '-kernel', self=2Ekernel_path,
+>> +                         '-initrd', self=2Einitrd_path,
+>> +                         '-dtb', self=2Edtb_path,
+>> +                         '-append', 'root=3D/dev/mmcblk2p1',
+>> +                         '-drive', f'file=3D{self=2Eimage_path},if=3Ds=
+d,bus=3D2,'
+>> +                                    'format=3Draw,id=3Dmmcblk2')
+>> +
+>> +        self=2Evm=2Elaunch()
+>> +        self=2Ewait_for_console_pattern('Welcome to ')
+>> +
+>> +if __name__ =3D=3D '__main__':
+>> +    LinuxKernelTest=2Emain()
+>

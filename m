@@ -1,300 +1,248 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6831244njd;
-        Mon, 7 Apr 2025 22:51:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWZYhSfQ525LU1PyDgFsEmL6+GAN6cuT74OrV+vqp62QBJFPMM+iUL5V5ArptqErDUin3u6A/O/+1JyMg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHLI6Dn+zxT0DTKnd2/HQsKcfUPWR6oVrpVBxFjTNROYJPUcUeIR+KF6lh1+MrTNxCGZqhj
-X-Received: by 2002:a05:620a:24d3:b0:7c5:5229:2f1f with SMTP id af79cd13be357-7c7759e933dmr2236597285a.5.1744091490743;
-        Mon, 07 Apr 2025 22:51:30 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744091490; cv=pass;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6850033njd;
+        Mon, 7 Apr 2025 23:47:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVxjy460HxIeDCfjsPSM+CDphez7Eljbr+hC5L3D1StS7Cxr9P2EG0ZPVjNms8CoYKBqBlwznul2/25XA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNYtrMEKEJaZ1Yy7iFbfKUlzQf1GIMKTorSdhLxDgFKlOT19dq4f8mpMWgpC6NpbI6i8H8
+X-Received: by 2002:a05:620a:25c8:b0:7c0:ad47:db3d with SMTP id af79cd13be357-7c7940ba2a0mr327214385a.21.1744094835873;
+        Mon, 07 Apr 2025 23:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744094835; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZgAhZZJjUTJauc4WXARUz1RZUm1Xq3MPzsfbYXrFhDya2k/swQCe6L7aPmeHbMaVdK
-         vsx7AuaWm1iDjrcVlQApOWlKPpn9mp7QluPAeSXf8jgIfKGQy5fqLtVTTa+iWtOv3/tj
-         jw8RpJ0sUUi5p5ppQI1nidc4xpt9gvR8TzMWikF7WSHolmI0g0I9ILp5CJQ3Fal4B696
-         +RIO8yXs9t2GhRQvo7bjN6eOcZjQSIrSq9mWlR3EDaotMVJdyNtdM418W4FJq0mxwq9I
-         3VlBM3sUIAHRBFG9PuG0jzKSwNAwSRpmaJi6RiPSRhgAX9q+oXzLAd9LHLVxlcATFD4p
-         27ww==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=KsGOnFovtOzMtwHN1EPch6+uuIN1gHUnqKOr7Ubv4J8=;
-        fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
-        b=Yapbml2IUr8xkPgRNF2FVj6gNDQxCdWg2VZ92lH0yTYOb+GHaRURCCMmP7MB+IrrEU
-         pdcLXkoe+R3lbE2Mh3hhV0TVUIwyB52EZN9tuBFwIp97B/z8FNpkp677lzk+yhB3CIKR
-         RTKQC0ZSQK5Y7N0gE6RAzxBvbqh8ZRgfELEq9Mv8fRiapRhvvdDJSnCWFcvmXMLEeVGt
-         pfgsFkfleKyX8RwS+gaedJnzGozAmwgUyMpevSwporQbLHSo1eF9fdnSy3pPf5d0gYKk
-         e/Z3ctTfkEtzlUf/xlhTsqPBSxxWj11TQw/XY3dFrOjrPrLPN592B2o3tH+VtevMOhRf
-         sfUA==;
+        b=RYuMgVrHa58+8ALUcHQ9AiChsGeGkw6F61yLhy1rc5abieOv4qO1LMl6Xx/yKQg3ER
+         fSL8lo/Pglmiekw31b+Vl3vEpd2XKKhPNwznexwiFkj3Gu32nXIJAo0KOTA6YIN35OUy
+         oQKSsCfjsWMHlFPDV0TO68NfufsDm5tbUuSHuyClyf8mAe6mXJ5IB7qQqO4R4sJRpQak
+         4W/CU4GFcO+XBUx5zIcwSKr/Rm091Gh82ii/5Kmi8uHAfzKLpL9OqVnrJMkKQ2GpRF29
+         rl+lERYilLs244m9OvGOn6u5AZ+xOsDICM+jZFHnvmfGwSaojPd5lm4AdqqFflMF0IqG
+         xr6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=vGmGn/8Fspn3+JWbQ+XeTW/tHyonFxm9xLAQr0W16tc=;
+        fh=XO19m6VQrQta/lNPxYpV2slcM1mGJ189RKXDIz+Ofio=;
+        b=J5Gh0mc7EpglQJ+XrXgZWhB5Z3+8WMr69L48CujKp+tZXlurmyg83X3AKQAO+L+gNN
+         MaiykV2T2ixNdRvRcPogsT8E4T1upieEeBAwnQQZJa7DiBnN9rugnrKb7nyTuJhLg34B
+         JgQkkyndAUzdPI2GNd+EqKEPWuslyknXDWGvoFYezEO/TknrsV85E9ohq6BmBhiPnW1V
+         UnU2DRVi9ky9BdWKSPgkjCUJTIwBS+BFI+me3qJO2QZH6mJrSB59folD7/So2YwzNVW/
+         ZnTlZMIwC0Wu1iMswLlvwjXUN+z7euBDPSHgWtcL3aM9po2yrkbtTqRG4+r565ZpAyxj
+         /g/A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjFi+V9E;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00ed8csi104054106d6.156.2025.04.07.22.51.30
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c76ea5bb84si1024764885a.261.2025.04.07.23.47.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 22:51:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Apr 2025 23:47:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjFi+V9E;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 20D4217A1F6
-	for <alex.bennee@linaro.org>; Tue,  8 Apr 2025 05:51:31 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5E6B423BF88;
-	Tue,  8 Apr 2025 05:51:26 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="EjFi+V9E"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 131622063FA
-	for <kvm@vger.kernel.org>; Tue,  8 Apr 2025 05:51:23 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744091486; cv=none; b=cEA2M7T2wpCXHPfqShrtTNMiQCmqJalaebc0nSL18gtPQv+4ckCxeWh98dF8KP7ipWu8gTguRPQf1d83mhVLOV+KBCe1eVAzCgHFA3NrDBY6V18sITQHLDV3tIP1tiRnwsmLRIp14H/PtYxuU9FFw1SVgXg3dkUsueDT7Ijixgc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744091486; c=relaxed/simple;
-	bh=QmKDDyvPn3/AguTsFLoMiM1SUj6+bz1bvBXyyohwfuY=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=JXqU0GxMusY+NUyzSVz6UGdsepmf9/RDF5UQ1jM9J7iu2Jn04qGMCwEWwXw/TvLBR4iAGT3TZ+gp0wTYrs+wiwSdon1nKlbAojhLPiGUSkQ0s1wSvfFxh8QUEzqnKPRGpXhFOCviDHjjVBuRzepnBOrqHfuZCirD1OzuPZZHSL8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=EjFi+V9E; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744091482;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KsGOnFovtOzMtwHN1EPch6+uuIN1gHUnqKOr7Ubv4J8=;
-	b=EjFi+V9EjXTJJpZgYPyTv9Yipe9YDvUW33Z4aSThRgjNzf+zcwsR09gthxfcW3DzMdMH2w
-	+LWjS4WCbBSd25SAJMCWjwGDxNBgqAlQ0PkoCx+y4+rOiSuPX7Cn5KV7+1HOElOlXA2XlC
-	1W6KywBPAEf2ONA8PU8j3Q77YyZO/CE=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-PMoa9VyhMEafLbhCzvRMtA-1; Tue,
- 08 Apr 2025 01:51:18 -0400
-X-MC-Unique: PMoa9VyhMEafLbhCzvRMtA-1
-X-Mimecast-MFC-AGG-ID: PMoa9VyhMEafLbhCzvRMtA_1744091477
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 08F811956080;
-	Tue,  8 Apr 2025 05:51:17 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E1B3919560AD;
-	Tue,  8 Apr 2025 05:51:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 981EB21E6757; Tue, 08 Apr 2025 07:51:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
-  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
- Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
-  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
-  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
-  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
-  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
-Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
-In-Reply-To: <Z+uaGHiOkFJd6TAO@intel.com> (Zhao Liu's message of "Tue, 1 Apr
-	2025 15:47:36 +0800")
-References: <20250122090517.294083-1-zhao1.liu@intel.com>
-	<20250122090517.294083-2-zhao1.liu@intel.com>
-	<871pwc3dyw.fsf@pond.sub.org> <Z6SMxlWhHgronott@intel.com>
-	<87h657p8z0.fsf@pond.sub.org> <Z6TH+ZyLg/6pgKId@intel.com>
-	<87v7tlhpqj.fsf@pond.sub.org> <Z+uaGHiOkFJd6TAO@intel.com>
-Date: Tue, 08 Apr 2025 07:51:13 +0200
-Message-ID: <878qobqjzi.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u22jm-0002Vo-Df; Tue, 08 Apr 2025 02:47:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=PH2m=W2=kaod.org=clg@ozlabs.org>)
+ id 1u22jj-0002Mw-AO; Tue, 08 Apr 2025 02:47:07 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=PH2m=W2=kaod.org=clg@ozlabs.org>)
+ id 1u22jh-0005we-29; Tue, 08 Apr 2025 02:47:07 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZWxSt2yHFz4x0t;
+ Tue,  8 Apr 2025 16:46:54 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZWxSp4kfRz4wcZ;
+ Tue,  8 Apr 2025 16:46:50 +1000 (AEST)
+Message-ID: <b00e7982-3fb1-42e2-b11c-e351fa261282@kaod.org>
+Date: Tue, 8 Apr 2025 08:46:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: RZm776fa3kag
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
+To: Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
+References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+ <5e3c1b62-2a1c-4e99-8842-d5a06a80d2f1@kaod.org>
+ <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=PH2m=W2=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0LtEQbeWR4qD
 
-Zhao Liu <zhao1.liu@intel.com> writes:
+On 4/8/25 08:35, Steven Lee wrote:
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@kaod.org>
+>> Sent: Wednesday, March 26, 2025 1:34 AM
+>> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
+>> <jamin_lin@aspeedtech.com>; Andrew Jeffery
+>> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
+>> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
+>> <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
+>> <yunlin.tang@aspeedtech.com>
+>> Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
+>>
+>> Hello Steven,
+>>
+>> On 3/13/25 06:40, Steven Lee wrote:
+>>> This patch series introduces full core support for the AST27x0 SoC, along with
+>> necessary updates to the ASPEED AST27x0 SOC.
+>>> The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35
+>> cores and 2 Cortex-M4 cores.
+>>>
+>>> v1:
+>>>     - Map unimplemented devices in SoC memory
+>>>     - Intruduce AST2700 CM4 SoC
+>>>     - Introduce AST27x0FC Machine
+>>>
+>>> v2:
+>>>     - Remove unused functions
+>>>     - Correct hex notation for device addresses in AST27x0 SoC
+>>>     - Add AST2700 SSP INTC and AST2700 TSP INTC
+>>>     - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
+>>>     - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
+>>>     - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
+>>>     - Add functional tests for AST2700FC A0 and AST2700FC A1
+>>>     - Add Documentation for AST2700FC
+>>
+>> Please try to label all patches as v2. See 'git format-patch -v ...'
+>>
+> 
+> Hi Cédric,
+> 
+> Thanks for the reminder. I will label the patches as v3 in the next submission.
+> 
+> Regards,
+> Steven
+> 
+>>> Steven Lee (13):
+>>>     aspeed: ast27x0: Map unimplemented devices in SoC memory
+>>>     aspeed: ast27x0: Correct hex notation for device addresses
+>>>     hw/intc/aspeed: Add support for AST2700 SSP INTC
+>>>     hw/intc/aspeed: Add support for AST2700 TSP INTC
+>>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A0 SSP SoC
+>>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
+>>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A0 TSP SoC
+>>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
+>>>     hw/arm: Introduce ASPEED AST2700 a0 full core machine
+>>>     hw/arm: Introduce ASPEED AST2700 a1 full core machine
+>>>     tests/function/aspeed: Add functional test for AST2700FC
+>>>     tests/function/aspeed: Add functional test for AST2700FC A1
+>>>     docs: Add support for ast2700fc machine
+>>
+>> Do we need to add support for the A0 and A1 ? Would A1 be enough ?
+>>
+> 
+> I will remove A0 in v3 the patch series.
 
-> Hi Mrkus,
->
-> I'm really sorry I completely missed your reply (and your patient
-> advice). It wasn't until I looked back at the lore archives that I
-> realized my mistake. Thinking it over again, I see that your reply,
-> which I missed, really helped clear up my confusion:
+Thanks, it all looked good to me. I should be able to queue the series
+quickly for QEMU 10.1 before Jamin's HACE changes.
 
-I'm glad I was able to help some!
+C.
 
-> On Fri, Feb 07, 2025 at 02:02:44PM +0100, Markus Armbruster wrote:
->> Date: Fri, 07 Feb 2025 14:02:44 +0100
->> From: Markus Armbruster <armbru@redhat.com>
->> Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
->> 
->> Zhao Liu <zhao1.liu@intel.com> writes:
->> 
->> >> Let's ignore how to place it for now, and focus on where we would *like*
->> >> to place it.
->> >> 
->> >> Is it related to anything other than ObjectType / ObjectOptions in the
->> >> QMP reference manual?
->> >
->> > Yes!
->> 
->> Now I'm confused :)
->> 
->> It is related to ObjectType / ObjectType.
->> 
->> Is it related to anything else in the QMP reference manual, and if yes,
->> to what exactly is it related?
->
-> I misunderstood your point. The PMU stuff and the QAPI definitions for
-> ObjectType/ObjectOptions are not related. They should belong to separate
-> categories or sections.
->
->> >> I guess qapi/kvm.json is for KVM-specific stuff in general, not just the
->> >> KVM PMU filter.  Should we have a section for accelerator-specific
->> >> stuff, with subsections for the various accelerators?
->> >> 
->> >> [...]
->> >
->> > If we consider the accelerator from a top-down perspective, I understand
->> > that we need to add accelerator.json, kvm.json, and kvm-pmu-filter.json.
->> >
->> > The first two files are just to include subsections without any additional
->> > content. Is this overkill? Could we just add a single kvm-pmu-filter.json
->> > (I also considered this name, thinking that kvm might need to add more
->> > things in the future)?
->> >
->> > Of course, I lack experience with the file organization here. If you think
->> > the three-level sections (accelerator.json, kvm.json, and kvm-pmu-filter.json)
->> > is necessary, I am happy to try this way. :-)
->> 
->> We don't have to create files just to get a desired section structure.
->> 
->> I'll show you how in a jiffie, but before I do that, let me stress: we
->> should figure out what we want *first*, and only then how to get it.
->> So, what section structure would make the most sense for the QMP
->> reference manual?
->
-> Thank you for your patience. I have revisited and carefully considered
-> the "QEMU QMP Reference Manual," especially from a reader's perspective.
-> Indeed, I agree that, as you mentioned, a three-level directory
-> (accelerator - kvm - kvm stuff) is more readable and easier to maintain.
 
-Sounds good to me.
-
-> For this question "what we want *first*, and only then how to get it", I
-> think my thought is:
->
-> First, the structure should be considered, and then the specific content
-> can be added. Once the structure is clearly defined, categorizing items
-> into their appropriate places becomes a natural process...
->
-> Then for this question "what section structure would make the most sense
-> for the QMP reference manual?", I understand that a top-down, clearly
-> defined hierarchical directory makes the most sense, allowing readers to
-> follow the structure to find what they want. Directly adding
-> kvm-pmu-filter.json or kvm.json would disrupt the entire structure, because
-> KVM is just one of the accelerators supported by QEMU. Using "accelerator"
-> as the entry point for the documentation, similar to the "accel" directory
-> in QEMU's source code, would make indexing more convenient.
-
-I think so, too.
-
->> A few hints on how...
->> 
->> Consider how qapi/block.json includes qapi/block-core.json:
->> 
->>     ##
->>     # = Block devices
->>     ##
->> 
->>     { 'include': 'block-core.json' }
->> 
->>     ##
->>     # == Additional block stuff (VM related)
->>     ##
->> 
->> block-core.json starts with
->> 
->>     ##
->>     # == Block core (VM unrelated)
->>     ##
->> 
->> Together, this produces this section structure
->> 
->>     = Block devices
->>     == 
->>     ##
->> 
->> Together, this produces this section structure
->> 
->>     = Block devices
->>     == Block core (VM unrelated)
->>     == Additional block stuff (VM related)
->> 
->> Note that qapi/block-core.json isn't included anywhere else.
->> qapi/qapi-schema.json advises:
->> 
->>     # Documentation generated with qapi-gen.py is in source order, with
->>     # included sub-schemas inserted at the first include directive
->>     # (subsequent include directives have no effect).  To get a sane and
->>     # stable order, it's best to include each sub-schema just once, or
->>     # include it first right here.
->
-> Thank you very much!!
->
-> Based on your inspiration, I think the ideal section structure for my
-> issue could be:
->
->     = accelerator
->     == KVM
->     === PMU
->
-> Firstly, I should have a new accelerator.json () to include KVM stuff:
->
->     ##
->     # = Accelerator
->     ##
->
->     { 'include': 'kvm.json' }
->
-> Next, in kvm.json, I could organize stuffs like:
->
->     ##
->     # == KVM
->     ##
->
->     ##
->     # === PMU stuff
->     ##
->
->     ... (the below are my current QPAI definitions.)
->
-> Is such a structure reasonable?
-
-Yes.
-
-I'm not a fan of schema files with nothing but includes, like
-accelerator.json.  But the alternative here would be putting its
-contents into qapi-schema.json, which I really don't like, or keeping
-the KVM contents there instead of in a separate kvm.json, which would
-interfere with tracking maintainers in the MAINTAINERS file.
-
-> Thank you again for your guidance!
-
-You're welcome!
+> 
+>>
+>>
+>>
+>>
+>>>    docs/system/arm/aspeed.rst                 |  61 ++-
+>>>    include/hw/arm/aspeed_soc.h                |  32 ++
+>>>    include/hw/intc/aspeed_intc.h              |   5 +
+>>>    hw/arm/aspeed_ast27x0-fc.c                 | 340
+>> +++++++++++++++++
+>>>    hw/arm/aspeed_ast27x0-ssp.c                | 400
+>> +++++++++++++++++++
+>>>    hw/arm/aspeed_ast27x0-tsp.c                | 400
+>> +++++++++++++++++++
+>>>    hw/arm/aspeed_ast27x0.c                    |  79 +++-
+>>>    hw/intc/aspeed_intc.c                      | 424
+>> +++++++++++++++++++++
+>>>    hw/arm/meson.build                         |   6 +-
+>>>    tests/functional/test_aarch64_ast2700fc.py | 161 ++++++++
+>>>    10 files changed, 1884 insertions(+), 24 deletions(-)
+>>>    create mode 100644 hw/arm/aspeed_ast27x0-fc.c
+>>>    create mode 100644 hw/arm/aspeed_ast27x0-ssp.c
+>>>    create mode 100644 hw/arm/aspeed_ast27x0-tsp.c
+>>>    create mode 100755 tests/functional/test_aarch64_ast2700fc.py
+>>>
+> 
 

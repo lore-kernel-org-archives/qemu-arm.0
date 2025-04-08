@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6888061njd;
-        Tue, 8 Apr 2025 01:25:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXFTVN7IPeQwLrLTAlRSToajdph8k67Ki5AEi69NoNAn7oUUdw1CVuNtQuUsDxgFcIoffN0bAbg7+FtgA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGwwqyueOb/KpATezT1jQXJ3CMGInc0jcdjs0F+51iNTjwUFiTBgWkAnF3dlbA+kfOnGAJ2
-X-Received: by 2002:a05:620a:4588:b0:7c5:4ac6:79de with SMTP id af79cd13be357-7c775a130dbmr1972964085a.24.1744100735152;
-        Tue, 08 Apr 2025 01:25:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744100735; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6896949njd;
+        Tue, 8 Apr 2025 01:49:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTf8gdRmiAYvbBoftOdi61ZWiFbxnTzytlGqdr9RMWO4TUtTrt+t8sCbfNC0+QFSC7HtmuLiPgtLkqxw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFF6LIGCxsTXSIeyAekRfrwgjmNCOTjtm15T+pMbsbT01apUs2Fu4EIsMTIPK1cLgOC+g9Y
+X-Received: by 2002:a05:6214:f07:b0:6e6:5a25:e118 with SMTP id 6a1803df08f44-6f0d24f7df1mr37698676d6.6.1744102156909;
+        Tue, 08 Apr 2025 01:49:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744102156; cv=none;
         d=google.com; s=arc-20240605;
-        b=DGpc8pTzOd77pkHRob1Ga0EpkyFJ8c5cjFe/qJwi2VX9HxI56jyR5T6sQeinQ3ZU10
-         yye4siALPR9uB6YIKpZ8qsaQGfXrIL8UWxayGcoNEqp0JKcoVGQDxb5xZIdloa4fegHP
-         JKKuM9DHt68sWGXzveufNqgejhwoUokFUN0RYFQoFii/hwifoI27NB1+1d7AzflEdN6v
-         pbAWu4LriwGh3NI8s/jm48rL7vn9QNWK6co0bYdu5UdXgmF9Nmx9XVa2nN83TqbQMiDT
-         TlUa48zwS+zrMZReGvSI7tsJLqtHIgM70adTFHGdEjAm55kf8lYtrI2QhOnWyFQAemMx
-         6Qvw==
+        b=NdqqCQqpPvZrpIFj6ABPPvuXl0hTELLKSErsMImouOQ25mXP3zb0clU8fL4lapLf4F
+         KkBmeUfeuWIuxqC5Mjr0Tqodpmul44JGm40Kiz+gWJE1LmLhcRJanma96t9hK1rcpKAI
+         lv23HFSYCNaSN2bT/H5S86m74FFhcTDDCtkKhRbUKG19sZzPqRbrqV+2nx8iLNc0HTkv
+         D9NqKQogri7uy82J7C/M0BPd/y9X5r9WdFqDYeplwH2ngvYOBrBKEix4h4Baaz9BfbW3
+         pwCxx7vOBv0cKWfjgpNtPDHSv/rHB9qcIxae3hspVLsk2K9MsPV9mnyBcRKk2fdiebJP
+         TrJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=If2Br7DZrcZp9JXUP7y73+nF+L62IwMZ3xgHe0RmtHg=;
-        fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=Vs8+GSNk0jmdqNBy/+yXa4kN9FhB1hF0usmSRQqTc2y4kdBt1XGwvRkT6hh4vEEw/9
-         1oS5gqKp9UZZESK+pkNftUFihaK13rSlC7aMwgzZJ41ptALfBWriqhs+KFt8pvyfNwiY
-         21pnTmpKAUbpucyOdZqLTWZq1CLCvJxyT7QYf1uadvn5jRU4XtIJv/TP1RX5VG3+Br/K
-         XAAILkOC6cRLVaJTzYeUDORpSw7gPAsLj5G0akYmzXgpnMhYNBHKzDM3QExdb8ghwQ99
-         mL9kcEMrhwd2fDTIU2Usgc20HK0SsbDbvyByAQkjvOtcRF2rS+3yQbHFtv2ZI+1BrrVC
-         0Kxg==;
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=VB/cn8Qhfpp0MFSAos4CiAdAjtaXU6T+LqyceWJPkC8=;
+        fh=WU88N4mKJ15KAWPL9VYIv7nZ1xzpFNrIIDVdluAAoJ4=;
+        b=NVH4Ruaayt1/aiHP/8FOOhcnzQLCoSryyhTyNOPCiDABE3ZHUzI5VPnWCTbXSOXXLN
+         efhPNJq1OMojJGR+MD1dmvZJbgRdjjGbuguskTI7ZBb69lRAQMgUH3EfVhpCN8O5k+6C
+         xiMjrHsmZAHadHo9b+yFTuS3Xjl0K9GA63jaLxCXlgo8M0grgO739Onsrw/yNTjUQNeh
+         6XxvJERjlzZQ8jK/X9CNnhxEr0gl3/u4yNVCJdSiTXn00IWsASVeWauA5ofkhbQH+eBG
+         PnM9fPztk3wLQLjZBX0AM+XNSwxqYNp9QuZZQeL2u+pc/ABCNPGQ9VAguiQ94mIg8C1h
+         SXTg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c76eab894asi1030982385a.471.2025.04.08.01.25.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00ed98si103093696d6.112.2025.04.08.01.49.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Apr 2025 01:25:35 -0700 (PDT)
+        Tue, 08 Apr 2025 01:49:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,44 +42,55 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u24Gm-00041q-0X; Tue, 08 Apr 2025 04:25:20 -0400
+	id 1u24dX-00010B-2Y; Tue, 08 Apr 2025 04:48:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u24Gj-00041X-1B; Tue, 08 Apr 2025 04:25:17 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1u24dS-0000zq-9A; Tue, 08 Apr 2025 04:48:46 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u24Gg-0000Y5-3s; Tue, 08 Apr 2025 04:25:16 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 8 Apr
- 2025 16:25:05 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 8 Apr 2025 16:25:05 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2] hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when
- I2CM_DMA_TX/RX_ADDR set first
-Date: Tue, 8 Apr 2025 16:25:04 +0800
-Message-ID: <20250408082504.3060742-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1u24dK-00030H-G3; Tue, 08 Apr 2025 04:48:45 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZX0856DJtz6FGp6;
+ Tue,  8 Apr 2025 16:47:33 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id ECDCB1400DB;
+ Tue,  8 Apr 2025 16:48:28 +0800 (CST)
+Received: from localhost (10.203.177.99) by frapeml500003.china.huawei.com
+ (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 8 Apr
+ 2025 10:48:28 +0200
+Date: Tue, 8 Apr 2025 09:48:22 +0100
+To: Eric Auger <eric.auger@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+ <zhao1.liu@intel.com>, <dapeng1.mi@linux.intel.com>, <armbru@redhat.com>,
+ <farman@linux.ibm.com>, <peter.maydell@linaro.org>, <anisinha@redhat.com>,
+ <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mtosatti@redhat.com>,
+ <berrange@redhat.com>, <richard.henderson@linaro.org>,
+ <shameerali.kolothum.thodi@huawei.com>, <jonathan.cameron@huawei.com>,
+ <jiangkunkun@huawei.com>, <yangyicong@hisilicon.com>, <linuxarm@huawei.com>
+Subject: Re: [PATCH v8 0/6] Specifying cache topology on ARM
+Message-ID: <20250408094822.0000012f.alireza.sanaee@huawei.com>
+In-Reply-To: <7cad3f1f-1977-4d98-900c-080aa5ad32d5@redhat.com>
+References: <20250310162337.844-1-alireza.sanaee@huawei.com>
+ <7cad3f1f-1977-4d98-900c-080aa5ad32d5@redhat.com>
+Organization: Huawei
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,96 +103,202 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9R0Of8TAoaSb
+X-TUID: T3pPxJqmb90+
 
-In the previous design, the I2C model would update I2CC_DMA_LEN (0x54) based on
-the value of I2CM_DMA_LEN (0x1C) when the firmware set either I2CM_DMA_TX_ADDR
-(0x30) or I2CM_DMA_RX_ADDR (0x34). However, this only worked correctly if the
-firmware set I2CM_DMA_LEN before setting I2CM_DMA_TX_ADDR or I2CM_DMA_RX_ADDR.
+On Mon, 7 Apr 2025 19:24:16 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-If the firmware instead set I2CM_DMA_TX_ADDR or I2CM_DMA_RX_ADDR before setting
-I2CM_DMA_LEN, the value written to I2CC_DMA_LEN would be incorrect.
+> Hi Ali,
+> 
+> On 3/10/25 5:23 PM, Alireza Sanaee via wrote:
+> > Specifying the cache layout in virtual machines is useful for
+> > applications and operating systems to fetch accurate information
+> > about the cache structure and make appropriate adjustments.
+> > Enforcing correct sharing information can lead to better
+> > optimizations. This patch enables the specification of cache layout
+> > through a command line parameter, building on a patch set by Intel
+> > [1,2,3]. It uses this set as a  
+> some dependencies were merged. The series does not apply anymore.
+This has already picked up, thanks for pointing out. Will remove in the
+next version.
+> > foundation.  The device tree and ACPI/PPTT table, and device tree
+> > are populated based on user-provided information and CPU topology.  
+> this last sentence need some rewording.
+Sure, gonna fix.
+> >
+> > Example:
+> >
+> >
+> > +----------------+                            +----------------+
+> > |    Socket 0    |                            |    Socket 1    |
+> > |    (L3 Cache)  |                            |    (L3 Cache)  |
+> > +--------+-------+                            +--------+-------+
+> >          |                                             |
+> > +--------+--------+                            +--------+--------+
+> > |   Cluster 0     |                            |   Cluster 0     |
+> > |   (L2 Cache)    |                            |   (L2 Cache)    |
+> > +--------+--------+                            +--------+--------+
+> >          |                                             |
+> > +--------+--------+  +--------+--------+    +--------+--------+
+> > +--------+----+ |   Core 0         | |   Core 1        |    |
+> > Core 0        |  |   Core 1    | |   (L1i, L1d)     | |   (L1i,
+> > L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
+> > +--------+--------+  +--------+--------+    +--------+--------+
+> > +--------+----+ |                   |                       |
+> >             | +--------+              +--------+
+> > +--------+          +--------+ |Thread 0|              |Thread 1|
+> >            |Thread 1|          |Thread 0| +--------+
+> > +--------+              +--------+          +--------+ |Thread 1|
+> >            |Thread 0|              |Thread 0|          |Thread 1|
+> > +--------+              +--------+              +--------+
+> > +--------+
+> >
+> >
+> > The following command will represent the system relying on **ACPI
+> > PPTT tables**.
+> >
+> > ./qemu-system-aarch64 \
+> >  -machine
+> > virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-
+> >  
+> s/cluseter/cluster
+> > cache.3.cache=l3,smp-cache.3.topology=socket \
+> >  -cpu max \
+> >  -m 2048 \
+> >  -smp sockets=2,clusters=1,cores=2,threads=2 \
+> >  -kernel ./Image.gz \
+> >  -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+> >  -initrd rootfs.cpio.gz \
+> >  -bios ./edk2-aarch64-code.fd \
+> >  -nographic
+> >
+> > The following command will represent the system relying on **the
+> > device tree**.
+> >
+> > ./qemu-system-aarch64 \
+> >  -machine
+> > virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket
+> > \ -cpu max \ -m 2048 \
+> >  -smp sockets=2,clusters=1,cores=2,threads=2 \
+> >  -kernel ./Image.gz \
+> >  -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+> >  -initrd rootfs.cpio.gz \
+> >  -nographic
+> >
+> > Failure cases:
+> >     1) There are scenarios where caches exist in systems' registers
+> > but left unspecified by users. In this case qemu returns failure.  
+> Can you give more details on 1)? is it a TCG case or does it also
+> exist with KVM acceleration?
+Yes, imagine your CLIDR register describes L1, L2, and L3. Then in the
+interface we only describe L1, and L2 and leave L3. Situation for L3 
+right now is undefined, in a sense that what is the sharing situation?
+This is failure.
 
-Ideally, this issue should be resolved by updating the model to set
-I2CC_DMA_LEN (0x54) when the firmware writes to the I2CM_DMA_LEN (0x1C)
-register, instead of when it writes to I2CM_DMA_TX_ADDR (0x30) or
-I2CM_DMA_RX_ADDR (0x34).
+I think this is applicable to both TCG and KVM, because, the miss-match
+might come from real systems' registers or emulated ones. User might
+not exactly know the supported caches and misconfigure.
 
-Originally, the design of I2CM_DMA_LEN (0x1C) included buffer length
-write-enable bits for the current command:
-Bit 31 enabled the RX buffer length update
-Bit 15 enabled the TX buffer length update
+I spend some time thinking about a default behavior but then that
+again will be unclear to users, and decided it is better if users
+decide what EXACTLY should happen in an informed fashion.
+> >
+> >     2) SMT threads cannot share caches which is not very common.
+> > More discussions here [4].
+> >
+> > Currently only three levels of caches are supported to be specified
+> > from the command line. However, increasing the value does not
+> > require significant changes. Further, this patch assumes l2 and l3
+> > unified caches and does not allow l(2/3)(i/d). The level
+> > terminology is thread/core/cluster/socket right now. Hierarchy
+> > assumed in this patch: Socket level = Cluster level + 1 = Core
+> > level + 2 = Thread level + 3;
+> >
+> > TODO:
+> >   1) Making the code to work with arbitrary levels
+> >   2) Separated data and instruction cache at L2 and L3.
+> >   3) Additional cache controls.  e.g. size of L3 may not want to
+> > just match the underlying system, because only some of the
+> > associated host CPUs may be bound to this VM.  
+> Does it mean this is more an RFC or do you plan to send improvement
+> patches once this series gets upstream?
+Short answer, I think I am better off sending upgrades once the main
+patchset got merged.
 
-In other words, when the firmware set either bit 31 or bit 15, the I2C model
-could safely update I2CC_DMA_LEN (0x54) with the value in I2CM_DMA_LEN (0x1C).
+Some of these TODOs are good to have really, i.e., L3 size is something
+I have received some interest about already.
 
-However, starting with the AST2700, the design of the I2CM_DMA_LEN (0x1C)
-register was changed. The write-enable bits (bit 31 and bit 15) were removed,
-meaning there is no longer an explicit indication of whether the firmware
-intends to update the TX or RX length.
+Or separated data and instruction is interesting only if someone plans
+to build one (maybe there is already and I don't know).
 
-As a result, on AST2700 and newer SoCs, the model cannot reliably determine
-whether a write to I2CM_DMA_LEN was meant for TX or RX. This ambiguity is
-especially problematic when the value written is 0, which actually corresponds
-to a DMA length of 1.
+Or arbitrary levels is not a challenging mod, so can be added later,
+if people want to have 7 layers :)
 
-To ensure consistent behavior across all SoCs, the model now updates
-I2CC_DMA_LEN when I2CM_CMD (0x18) is written, as this is the final command that
-initiates a TX or RX transfer and reflects the firmware’s intent more clearly.
+This is something community can help me knowing what else might be
+interesting.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: ba2cccd (aspeed: i2c: Add new mode support)
----
- hw/i2c/aspeed_i2c.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
-
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index a8fbb9f44a..c659099e9a 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -634,6 +634,20 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-             break;
-         }
- 
-+        /* Handle DMA length */
-+        if (SHARED_FIELD_EX32(value, TX_DMA_EN) &&
-+            SHARED_FIELD_EX32(value, M_TX_CMD)) {
-+            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
-+                                                         I2CM_DMA_LEN,
-+                                                         TX_BUF_LEN) + 1;
-+        }
-+        if (SHARED_FIELD_EX32(value, RX_DMA_EN) &&
-+            SHARED_FIELD_EX32(value, M_RX_CMD)) {
-+            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
-+                                                         I2CM_DMA_LEN,
-+                                                         RX_BUF_LEN) + 1;
-+        }
-+
-         if (bus->regs[R_I2CM_INTR_STS] & 0xffff0000) {
-             qemu_log_mask(LOG_UNIMP, "%s: Packet mode is not implemented\n",
-                           __func__);
-@@ -656,8 +670,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
-                       FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
--        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
--                                                     TX_BUF_LEN) + 1;
-         break;
-     case A_I2CM_DMA_RX_ADDR:
-         bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
-@@ -665,8 +677,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
-                       FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
--        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
--                                                     RX_BUF_LEN) + 1;
-         break;
-     case A_I2CM_DMA_LEN:
-         w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
--- 
-2.43.0
+> 
+> Thanks
+> 
+> Eric
+> >
+> > [1] https://lore.kernel.org/kvm/20240908125920.1160236-1-zhao1.liu@intel.com/
+> > [2] https://lore.kernel.org/qemu-devel/20241101083331.340178-1-zhao1.liu@intel.com/
+> > [3] https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+> > [4] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+> >
+> > Change Log:
+> >   v7->v8:
+> >    * rebase: Merge tag 'pull-nbd-2024-08-26'
+> > of https://repo.or.cz/qemu/ericb into staging
+> >    * I mis-included a file in patch #4 and I removed it in this one.
+> >
+> >   v6->v7:
+> >    * Intel stuff got pulled up, so rebase.
+> >    * added some discussions on device tree.
+> >
+> >   v5->v6:
+> >    * Minor bug fix.
+> >    * rebase based on new Intel patchset.
+> >      - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+> >
+> >   v4->v5:
+> >     * Added Reviewed-by tags.
+> >     * Applied some comments.
+> >
+> >   v3->v4:
+> >     * Device tree added.
+> >
+> > Depends-on: Building PPTT with root node and identical
+> > implementation flag Depends-on: Msg-id:
+> > 20250306023342.508-1-alireza.sanaee@huawei.com
+> >
+> > Alireza Sanaee (6):
+> >   target/arm/tcg: increase cache level for cpu=max
+> >   arm/virt.c: add cache hierarchy to device tree
+> >   bios-tables-test: prepare to change ARM ACPI virt PPTT
+> >   hw/acpi/aml-build.c: add cache hierarchy to pptt table
+> >   tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+> >   Update the ACPI tables according to the acpi aml_build change,
+> > also empty bios-tables-test-allowed-diff.h.
+> >
+> >  hw/acpi/aml-build.c                        | 205 +++++++++++-
+> >  hw/arm/virt-acpi-build.c                   |   8 +-
+> >  hw/arm/virt.c                              | 350
+> > +++++++++++++++++++++ hw/cpu/core.c                              |
+> > 92 ++++++ hw/loongarch/virt-acpi-build.c             |   2 +-
+> >  include/hw/acpi/aml-build.h                |   4 +-
+> >  include/hw/arm/virt.h                      |   4 +
+> >  include/hw/cpu/core.h                      |  27 ++
+> >  target/arm/tcg/cpu64.c                     |  13 +
+> >  tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 540 bytes
+> >  tests/qtest/bios-tables-test.c             |   4 +
+> >  11 files changed, 701 insertions(+), 8 deletions(-)
+> >  
+> 
+> 
 

@@ -1,288 +1,300 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6846386njd;
-        Mon, 7 Apr 2025 23:35:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWQuBu+SpPLFVimhfB+o7oU/fUvb0zFfXS3tt6ZCrxSUkDGPDQ2JiHyaNiIU61EEg6r+Cp7FXbGsjDykA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGZF+He1ztGSo+amQ6gYEB44Bjxbky2hr3u2D8Ag/3RVi7R0/r4Pgt4Gay7t4T7U1CJ9DYL
-X-Received: by 2002:a05:620a:c47:b0:7c5:3ca5:58fb with SMTP id af79cd13be357-7c7759eae80mr2153026985a.4.1744094144336;
-        Mon, 07 Apr 2025 23:35:44 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744094144; cv=pass;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp6831244njd;
+        Mon, 7 Apr 2025 22:51:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWZYhSfQ525LU1PyDgFsEmL6+GAN6cuT74OrV+vqp62QBJFPMM+iUL5V5ArptqErDUin3u6A/O/+1JyMg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLI6Dn+zxT0DTKnd2/HQsKcfUPWR6oVrpVBxFjTNROYJPUcUeIR+KF6lh1+MrTNxCGZqhj
+X-Received: by 2002:a05:620a:24d3:b0:7c5:5229:2f1f with SMTP id af79cd13be357-7c7759e933dmr2236597285a.5.1744091490743;
+        Mon, 07 Apr 2025 22:51:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1744091490; cv=pass;
         d=google.com; s=arc-20240605;
-        b=OC3suwf7OrpYjDSkbpFjJm3WVqpAu+OQmcr9Fp/wN9vpqkPtFPVERPnqhmaM17pu5v
-         FDt+oI5aoFRsi/ltkti2HypFSfdRVmdhCr6azjA5Vmwq/amG9RKiz5FRNbS3dGWrvaU4
-         mE+1vI7mTx5E8F5JKnAUFbM6JmQAzMl4PCyX0pCwFUEh/4dq/jmWh2iM/aS8oFPNzD9o
-         1IibVoMwbHZbnpR2EX+pe1CwHomQ6wkyELmysa1yVwkAXAG3OLAgxfzII5l2hTuJ7ZT3
-         jW5LD67hU+5ad5lUMwgd/EyJ/TRpv9mFpRKyxiXqd/VRdPoS6GoCE4nLTKMDPmkGgxbK
-         cfuw==
+        b=ZgAhZZJjUTJauc4WXARUz1RZUm1Xq3MPzsfbYXrFhDya2k/swQCe6L7aPmeHbMaVdK
+         vsx7AuaWm1iDjrcVlQApOWlKPpn9mp7QluPAeSXf8jgIfKGQy5fqLtVTTa+iWtOv3/tj
+         jw8RpJ0sUUi5p5ppQI1nidc4xpt9gvR8TzMWikF7WSHolmI0g0I9ILp5CJQ3Fal4B696
+         +RIO8yXs9t2GhRQvo7bjN6eOcZjQSIrSq9mWlR3EDaotMVJdyNtdM418W4FJq0mxwq9I
+         3VlBM3sUIAHRBFG9PuG0jzKSwNAwSRpmaJi6RiPSRhgAX9q+oXzLAd9LHLVxlcATFD4p
+         27ww==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=Jm8z+y+hlewB7pQgJLoX5y3pVxTGTE9vtB87+u3shs8=;
-        fh=hNJ1dHTB9a+Ws7qKXpcXiV+0Wj1TQX0dn5U3m29u5dY=;
-        b=hCh+9GstebV2voZs4X8+lcLgBPRL9MpDr9ATD5yy0MFBMNiVusrKQKcU0E62Z4yfJv
-         mg19b4dRUnaV0muyrcH5zOoPU93oL0gdlV9S+PGCYKajLJ+SCf9di77BfPZhT/HNjegs
-         wxa1oCpUiEa+B8Rznofud+w7mFcsmTODKaEj9wxFyvrU0aBIccPaRNm/WjMM0DOR8Bwo
-         FZKfKPX6uwjaZo7jWKqN8OFmFUGH9lbeHABENs64uTRzZk69AalfIAh2yKl9URAeXl1d
-         T4CGM0ucuy4aYF9Os1vuQDroU46D1NpV5jbDdoOzdQWznCUS0Y4OfkSkda5ORnbUZKsu
-         EIMQ==;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=KsGOnFovtOzMtwHN1EPch6+uuIN1gHUnqKOr7Ubv4J8=;
+        fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
+        b=Yapbml2IUr8xkPgRNF2FVj6gNDQxCdWg2VZ92lH0yTYOb+GHaRURCCMmP7MB+IrrEU
+         pdcLXkoe+R3lbE2Mh3hhV0TVUIwyB52EZN9tuBFwIp97B/z8FNpkp677lzk+yhB3CIKR
+         RTKQC0ZSQK5Y7N0gE6RAzxBvbqh8ZRgfELEq9Mv8fRiapRhvvdDJSnCWFcvmXMLEeVGt
+         pfgsFkfleKyX8RwS+gaedJnzGozAmwgUyMpevSwporQbLHSo1eF9fdnSy3pPf5d0gYKk
+         e/Z3ctTfkEtzlUf/xlhTsqPBSxxWj11TQw/XY3dFrOjrPrLPN592B2o3tH+VtevMOhRf
+         sfUA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=PYY7Z2uQ;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4791b0759edsi98408541cf.159.2025.04.07.23.35.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjFi+V9E;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ef0f00ed8csi104054106d6.156.2025.04.07.22.51.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Apr 2025 23:35:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 07 Apr 2025 22:51:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=PYY7Z2uQ;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u22YW-0006vv-7S; Tue, 08 Apr 2025 02:35:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1u22YK-0006v1-RE; Tue, 08 Apr 2025 02:35:21 -0400
-Received: from mail-eastasiaazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c400::3] helo=HK3PR03CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1u22YG-0004gf-EA; Tue, 08 Apr 2025 02:35:20 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IlpixeDuHK5oK73Kg9oVOmLgjNSKTVaAc+tJBds/p+GJ/sW9e0pK6ma57a3m1G2QVFXxEwC93ZZcA7aWTXf+jMecQnAfELbM5jK/+hobfyfrVJGG4jlKHWnYH8W6Mpnlt26tqQy8GNlP7OIYcoWpvYxVjp5vVYf5DjDwdHIz/PWCvcRzWdbn+Eu0pywcS2J6bNj+6njxGfQ0lZ+o1EIs/P1rtbzdQBhbsb4B3sZV3MVGO9VhBt3BzrZU9b5RykeIK07+h6a2F6LiQ/oGZ6i9VXBY40IFmTua/zepRw/r49a5HdmDcVVciu6/y8Z/ZsjicaKl1tn36sE49EZYXcL7fg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Jm8z+y+hlewB7pQgJLoX5y3pVxTGTE9vtB87+u3shs8=;
- b=Vbz3zzV7STDjfulaIJEp2/ElBVyVuezjiP+M6TQRQpIvghU1SnOEb17lO4DhSWqwVzHd1LZTyDIDnOZlF0hAQbe0CjtyJiI0fw/7fmBDDdmXorY02OT1an3jLmqQB13MdYc5JeY0at6318oiGTySfXGHEGYM+vcB+QKO38tmz3ynXoBJ/xsZ54T9gD++WDj/2lzTNyg0+nYd/Op8axmTUO8COBwZNqdB3g/qnzOfFtdwLpyqfYUwGSnDUnzYj9+WAs036WX7HxZeKyd72vS4CSGsfs6FU7Fnv6WPUpPEempFkyhFHIJLHX71iGtGSA9rrjSeHXy1NMAgXIUuIcGjpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Jm8z+y+hlewB7pQgJLoX5y3pVxTGTE9vtB87+u3shs8=;
- b=PYY7Z2uQtNsnQtwHRUwkKJ9mLeP1kDaLHr1ALT51FCqVrdpZEgt7jsUNEUBld7UQRXvOViXph4Hu/V2ILgasxOKvJmNDCfYjS57deZTWd03bWH+sa+lBrxwObgU3ffqWdDa41BRWFvr9xKLIJs/RuYKQ0CrGbQnTL5H/N2GuzEYAYq+S92N4Byx0ZNxJFLyvCoUNf7ZgII8xN5cWAs35MeuJ9IoES4v2wd7Qdh2rf9dQTVjtf1NDljZWf5PTVf6NUgAScpy6Git1YIi94D07i15rQimT8vp8mw62EQMOIc22Ese37qDK1vnSNPx4VzIfj58OChdlie/iAbOr285EEA==
-Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
- (2603:1096:820:29::12) by PUZPR06MB5887.apcprd06.prod.outlook.com
- (2603:1096:301:117::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.35; Tue, 8 Apr
- 2025 06:35:05 +0000
-Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
- ([fe80::6fe5:1995:96a2:552a]) by KL1PR0601MB4180.apcprd06.prod.outlook.com
- ([fe80::6fe5:1995:96a2:552a%3]) with mapi id 15.20.8606.029; Tue, 8 Apr 2025
- 06:35:05 +0000
-From: Steven Lee <steven_lee@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
- <yunlin.tang@aspeedtech.com>
-Subject: RE: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
-Thread-Topic: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
-Thread-Index: AQHbnawV1QUrJuodHEOa0FF12E1LW7OZZIAg
-Date: Tue, 8 Apr 2025 06:35:05 +0000
-Message-ID: <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
-References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
- <5e3c1b62-2a1c-4e99-8842-d5a06a80d2f1@kaod.org>
-In-Reply-To: <5e3c1b62-2a1c-4e99-8842-d5a06a80d2f1@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR0601MB4180:EE_|PUZPR06MB5887:EE_
-x-ms-office365-filtering-correlation-id: 0304bb88-5dfe-4b4d-d219-08dd76677fc9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?MTVFbUVXVmNZMmRCOHlpaWs3Zzh3SzFLZ3dYdGFIODlicTVDVzRSNlZIVnJ1?=
- =?utf-8?B?dnRWOVgwUHNhUUpxR0RlM1pzeHptcVEwazJnSUdQS2N0RXVvVFZsVXhQTGFs?=
- =?utf-8?B?Vk9qLzFEOXJRa0xWTk1HaW1Vc2pBamwzYXZ3cVlhOGVlbG1WMERnSGlwRXZn?=
- =?utf-8?B?bGdoZTlzMmJmaFhaempPRXkxb25BNnZrcXhGTytZVE5XNllRa01FUG55dDJh?=
- =?utf-8?B?UXl0a2tZclRVZ3FLbklpRHQ2M3ZtL3g0ei90aHA3YUVCYjVObzhFc1YvTXMx?=
- =?utf-8?B?cXVJZ0ZpaFgxSW5EcFJTWVhwQk4reVg2SXA0WExUS2VLM3FuY0VTa2xFNkN2?=
- =?utf-8?B?Z0hUNDJUSEs3U2pjR0JHYXdXUE9qWFgwa3RZMVZBV0J3Vk0vUXFDM1FyZ3Fm?=
- =?utf-8?B?VjFLS1ZzYUU3UW1GRE1MdDVvSDdkYytUMGJ6clM2L3g5dnZSbUYzeEgxMU96?=
- =?utf-8?B?ck1SRVZMcy9wZ2dMNzd2b2RnT0tCcjVxOGJFbHh2UHh6WnRJR1ZsU3hsc3hW?=
- =?utf-8?B?VUtpNnphYkljWDM3NjRuRmIwdzdBa1BJR2VheSszT2x5NnZ1VFFXRUJoa285?=
- =?utf-8?B?VXgxc3NyUFhQWElxL3dPUDIwbW5Ob0NRaTl5N0lIaVV4NnVaVWovWDJuWDZ1?=
- =?utf-8?B?UUQzajh5Q0ROcVlSRlNoMy9VVUF2eTE4SkszL0NKenp3d2thK3hQK0xweUlL?=
- =?utf-8?B?K1Avckc4dXkzZUhLeExOSmhTQXlva3hzakJNNEhwS2ZzZE1MRUUwSkRWVnBF?=
- =?utf-8?B?YUpFWFNWYWp3dmIxVnR6RTRPZE4vSHQ5SS9FbURGd1BLZDZGU3JIeGRjbitW?=
- =?utf-8?B?alRvU1pTV1FXSDhScUNnM3lVa1dTMEl1UVpZSnRqSFMybnp3MDduMlFwdi9q?=
- =?utf-8?B?WUZldmIwbmk1dUNnaEZiMFVNTk5jdE5oUGV0aEtXM29VUWRuV0VPdE1TeXFE?=
- =?utf-8?B?M2tYSVFvWThkMGozckl2UUVSb01ZTTU3WUhNK1pDRDdSbDFMeUI2b0xybEJT?=
- =?utf-8?B?dUhRUkZWd3BpR0UzbisxcHgwVWUvRldwYkZ6Y1l6ZW1WaXNFRGxxTHN2bWgy?=
- =?utf-8?B?RTFQZlY1TVRGUUNyS2xOVTlibk1jMXcvV0lrbVpZeWY4MEVlQXY5aHh2NE81?=
- =?utf-8?B?UFkxbDVGcmppZTJWUitYRXZCa2RFbTY0TU5nTEpGVmZ0bm1NQzJiTnN0eGNw?=
- =?utf-8?B?SS9WOFY4enRIU2RSYzFQVHowck5wK0tseTZLeFFNU0Z2Nk1RTUN1Z1cvQlNR?=
- =?utf-8?B?eWl0R0pHRUo3MXB4cG9aMVNObUYzbHprYjNQUGsvS1pEbCtHQjdCWTdIWUZ2?=
- =?utf-8?B?NkJZS1lzTURJUlBsL3hjZzl4RjlmT1hDOE5sS3JBbDZqZ2dVR1VFRlY1ak8r?=
- =?utf-8?B?TWl3SjFpcGV1dk9YOWhwWm03TEZZbTRFOHhncmNHelNVenR0TlBqd3RFc2Y0?=
- =?utf-8?B?WVdPYUZiT1NVSnVuY0poakhRWFl3RVQrS3hrSUlzcXZhZDR6bnNoZXlTbU9Y?=
- =?utf-8?B?ZG1haTNiUlFRV0NnRUl4YkxKWkhKNEFKSkpkdExhSUxWY1lrck5tS1gyMFZq?=
- =?utf-8?B?UVpmRk1HUHp1RjFkOVhtRkhNdkxnUXBWOExLMU1Vbm02VFRZNXJXcldGMEw1?=
- =?utf-8?B?M0JFSHBZalN1ZmRYNERYV2xMclRHWENrckxBbGhHYXd0cTZaU09saWxUSm5J?=
- =?utf-8?B?K05mekhjVmJXZklnOTJ3NGgzZnk4TXRxYlN6U29tOW0zZUowNGJyOXc0L05G?=
- =?utf-8?B?Sm9adWFxY0tQRTdWcGJBbXQ3K0U4UHJibkwvaXRFc0pCcUsvZE01L0pyU3pK?=
- =?utf-8?B?MUFUS0MrMC9Tb3diY1UwRlIwQzJocTlkT1MyaHRCTUwvenUzNDlmL0luNTUr?=
- =?utf-8?B?TTU3aFdmUHJtL0lIeDJiVUJvS2UyZmNFZXRrMTZWd3phMThYeE53eTB4bVM1?=
- =?utf-8?Q?8cqAtMyB1c4iTtaIiPcdyCNeSnrvgn9r?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:KL1PR0601MB4180.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RUVBalNYRzIxMHROMU16RWh3VG9hRXFwbkZ3TnBxMXF5VHJ6TmRWRlUyeVZI?=
- =?utf-8?B?ZVREMFR0bzRHNjd2aXdxUTcrVEZHcFRHNXdNK2NLSUNZMk1hbkJYYnJQS2tF?=
- =?utf-8?B?SjEzbHE2N1MyVUVHWER0bzI0K0I1elUzaXRQeFJqcUxBd1l5ajV3NVlQN2Vz?=
- =?utf-8?B?UEpaa0FxU3p4eDRCQW53am9ROXVXNUZ2bVo4dE5MR2hzc1h4eWZQNDVmVkRk?=
- =?utf-8?B?TFJlMy8vSzREK0NyZGxndm03QlFURHoveC9QY09MVUl1N1FpV0JRbXNWNTV0?=
- =?utf-8?B?NitRS2tCek5SSWU2czhLM3hRNnVCdFZLdk9TRVFMd1lSd3RWYlQwWmo3eE9J?=
- =?utf-8?B?Qk82cCtNZDZTdHVpYlA5djREZXN0cjEyWTJxWmV6MWZ0eVFBYy9wYW9USGxW?=
- =?utf-8?B?ZWRJbU10ckYyYk1wSkowL3ZtUmpWOXQ0dCtiVk9pSTEwVnp0Mm94aDhSbXN3?=
- =?utf-8?B?cm9hMjRmSHZOeEtnSmJ4a29HNnJ1VFd6UkFhK0o1SlJhTkZ1d3FiTVY0TGIz?=
- =?utf-8?B?Z000S3dZSHZyR2Z4M0hGSVZyb29LRUhQUjR4U2FBUWdiSW1hK1ZtcVRjTXBx?=
- =?utf-8?B?dk9ZVGV0M2x6OGxhTHZnTmpXcTJqVjQwQUowZEZDMVdLZldsd1RnZ0RVUW0x?=
- =?utf-8?B?OWdhOXkwdVdnRkY1MW4zMy9MNUlsRWFlUkhGM0xpRit4VjdKOXNhaXM2M09Y?=
- =?utf-8?B?eTNTNUFtbllnZnR5bWFyOTFYSGpZS2Nvekk2R2hDWFhOaS9BZTdMekx5V3dl?=
- =?utf-8?B?TlRwdWFXcHAzamdLRmMrbjR6MklhazBYQkRKYjdpOVY5TURSQzlsWnB5ZDk5?=
- =?utf-8?B?Y2RESi8xK1FUeGdYMENoQnVHNEcxbEpJbWFyQUJwblRJbm1YU1Y2TVJRWEk3?=
- =?utf-8?B?K0hmUHovUTRSekVaMzJKdmZKYVZVOFBmQXIrL21GNy94RWs0WFAxZFduQmh5?=
- =?utf-8?B?MlhRRng2VXMxcElqUFh0WWZsUTR6WHcvZlVTRk5CUVlIUGFPUUFyakhhYjV3?=
- =?utf-8?B?djgyeG5KT2lQWWdvcHE5bGVDOFhwZjYxa3F0T2ZISU1IUDRXNHBjWitSUlcy?=
- =?utf-8?B?SGo0VEp5UzdTOUVSWnFYbmsxREcyR1JnK3htdlVEOEUzTDhDMWJWSVlkMnV4?=
- =?utf-8?B?U3h1aUEwMGJqZm5YUXhCZ2RJNU1WclBtS2pqOHJwRlBEZUVFT09DT01zYVlR?=
- =?utf-8?B?MVlPRTZSdEczK0tPanJraUl6eUlFN0hTNURkM3JobXhCM3d1UndLRjJ5V1c3?=
- =?utf-8?B?UHVjRzQyY1JabjBjTkhPTDMwaUpVS3JqNTBRdkZoWEZpbUdaaThHSUxUKzY0?=
- =?utf-8?B?NnFZaWhibjhXaklld281azNOVkRaM3RvU29QZ2MvR3BYazR5YWVjVXIwcWZ5?=
- =?utf-8?B?WlgxTC91WGNLS05zQTF5R1J2RkI4UHJ0WkxEektOOWFjM1R4c3ozOE1XbWJz?=
- =?utf-8?B?V0pUeitraHREUVNGMlhWWUZmQ3g3ZWVZbXpBSzhYQ3doZENLVUppeW12N05q?=
- =?utf-8?B?dmxVTzhKRjl3UWJWYTluY0lESGxnZDI1MUZEYTVWNWhvTXowdFhGTkg2UWps?=
- =?utf-8?B?NzF0V1FTb2FDaTVqQlAreDRjaDY3RlNteWsvb1VMMXNaYmM0S3J4eW8yazky?=
- =?utf-8?B?ZW9wOHhrTDNJYTRMdFZJNFlnYXROZ3lESzM0TXVsUEcrQW9WWW5WMWtNRzNJ?=
- =?utf-8?B?TWRZWkhDR0N0SGhoRmpJVHlhZHRhdmRrNzBOU1Z4b2c4VTF6RW0yWXZ0YU1u?=
- =?utf-8?B?Q3NVZGthNGpBVU5FNlVnZkRxR1RPY3BBWGNRMFFSbm1ZZ3gxaWxQQTZKWHVy?=
- =?utf-8?B?Q2MvUFNNQWZCZHJDN3pRMW1WSGtzTGtEVnczUUVYYzVrTnNwR2FaN280Tld4?=
- =?utf-8?B?OG5ZbVlEVEM0S2RyRXpoNUhCSDZYU2NROElKSDZDOWtZNnRuc05YeDI1V00z?=
- =?utf-8?B?cXp0UkVjV2J6NE5RbENoNk5YUHkwdmJWRGNpVjNvSDc4aWVhN2lrZEJVUjd0?=
- =?utf-8?B?eUtZaTZ4Rkg0Ulp4aElYRXo4V0p1b3RQMjJQZDg3bmZPUm1aRXhmKzQwNUxw?=
- =?utf-8?B?b0MvTUY1QjhNWGJkQlNBaDhibUdYTDgxWUZERHk5NjhyUDBETGFubkdLa3Bj?=
- =?utf-8?Q?/xD9djw3ypKM6SfNCKM5tDHRQ?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EjFi+V9E;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-42884-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 20D4217A1F6
+	for <alex.bennee@linaro.org>; Tue,  8 Apr 2025 05:51:31 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5E6B423BF88;
+	Tue,  8 Apr 2025 05:51:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="EjFi+V9E"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 131622063FA
+	for <kvm@vger.kernel.org>; Tue,  8 Apr 2025 05:51:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1744091486; cv=none; b=cEA2M7T2wpCXHPfqShrtTNMiQCmqJalaebc0nSL18gtPQv+4ckCxeWh98dF8KP7ipWu8gTguRPQf1d83mhVLOV+KBCe1eVAzCgHFA3NrDBY6V18sITQHLDV3tIP1tiRnwsmLRIp14H/PtYxuU9FFw1SVgXg3dkUsueDT7Ijixgc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1744091486; c=relaxed/simple;
+	bh=QmKDDyvPn3/AguTsFLoMiM1SUj6+bz1bvBXyyohwfuY=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=JXqU0GxMusY+NUyzSVz6UGdsepmf9/RDF5UQ1jM9J7iu2Jn04qGMCwEWwXw/TvLBR4iAGT3TZ+gp0wTYrs+wiwSdon1nKlbAojhLPiGUSkQ0s1wSvfFxh8QUEzqnKPRGpXhFOCviDHjjVBuRzepnBOrqHfuZCirD1OzuPZZHSL8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=EjFi+V9E; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744091482;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KsGOnFovtOzMtwHN1EPch6+uuIN1gHUnqKOr7Ubv4J8=;
+	b=EjFi+V9EjXTJJpZgYPyTv9Yipe9YDvUW33Z4aSThRgjNzf+zcwsR09gthxfcW3DzMdMH2w
+	+LWjS4WCbBSd25SAJMCWjwGDxNBgqAlQ0PkoCx+y4+rOiSuPX7Cn5KV7+1HOElOlXA2XlC
+	1W6KywBPAEf2ONA8PU8j3Q77YyZO/CE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-PMoa9VyhMEafLbhCzvRMtA-1; Tue,
+ 08 Apr 2025 01:51:18 -0400
+X-MC-Unique: PMoa9VyhMEafLbhCzvRMtA-1
+X-Mimecast-MFC-AGG-ID: PMoa9VyhMEafLbhCzvRMtA_1744091477
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 08F811956080;
+	Tue,  8 Apr 2025 05:51:17 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E1B3919560AD;
+	Tue,  8 Apr 2025 05:51:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 981EB21E6757; Tue, 08 Apr 2025 07:51:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
+  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
+ Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
+  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
+In-Reply-To: <Z+uaGHiOkFJd6TAO@intel.com> (Zhao Liu's message of "Tue, 1 Apr
+	2025 15:47:36 +0800")
+References: <20250122090517.294083-1-zhao1.liu@intel.com>
+	<20250122090517.294083-2-zhao1.liu@intel.com>
+	<871pwc3dyw.fsf@pond.sub.org> <Z6SMxlWhHgronott@intel.com>
+	<87h657p8z0.fsf@pond.sub.org> <Z6TH+ZyLg/6pgKId@intel.com>
+	<87v7tlhpqj.fsf@pond.sub.org> <Z+uaGHiOkFJd6TAO@intel.com>
+Date: Tue, 08 Apr 2025 07:51:13 +0200
+Message-ID: <878qobqjzi.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4180.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0304bb88-5dfe-4b4d-d219-08dd76677fc9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Apr 2025 06:35:05.3746 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HVIT5nI6rIzHGq1M6fHdjApwLXp/Pt8yunQ0e8bMolpQ6d/fmO9tlXY2KWakHs7xqj6209NJeg4bGZOVZTrxOAFzRl7BvFV6OlS9ZAw4HVM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5887
-Received-SPF: pass client-ip=2a01:111:f403:c400::3;
- envelope-from=steven_lee@aspeedtech.com;
- helo=HK3PR03CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WwZqXnHX59II
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: RZm776fa3kag
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lkcmljIExlIEdvYXRlciA8
-Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBXZWRuZXNkYXksIE1hcmNoIDI2LCAyMDI1IDE6MzQgQU0N
-Cj4gVG86IFN0ZXZlbiBMZWUgPHN0ZXZlbl9sZWVAYXNwZWVkdGVjaC5jb20+OyBQZXRlciBNYXlk
-ZWxsDQo+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBUcm95IExlZSA8bGVldHJveUBnbWFp
-bC5jb20+OyBKYW1pbiBMaW4NCj4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT47IEFuZHJldyBK
-ZWZmZXJ5DQo+IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20uYXU+OyBKb2VsIFN0YW5sZXkgPGpv
-ZWxAam1zLmlkLmF1Pjsgb3Blbg0KPiBsaXN0OkFTUEVFRCBCTUNzIDxxZW11LWFybUBub25nbnUu
-b3JnPjsgb3BlbiBsaXN0OkFsbCBwYXRjaGVzIENDIGhlcmUNCj4gPHFlbXUtZGV2ZWxAbm9uZ251
-Lm9yZz4NCj4gQ2M6IFRyb3kgTGVlIDx0cm95X2xlZUBhc3BlZWR0ZWNoLmNvbT47IFl1bmxpbiBU
-YW5nDQo+IDx5dW5saW4udGFuZ0Bhc3BlZWR0ZWNoLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRD
-SCB2MiAwMC8xM10gSW50cm9kdWNlIEFTVDI3eDAgbXVsdGktU29DIG1hY2hpbmUNCj4gDQo+IEhl
-bGxvIFN0ZXZlbiwNCj4gDQo+IE9uIDMvMTMvMjUgMDY6NDAsIFN0ZXZlbiBMZWUgd3JvdGU6DQo+
-ID4gVGhpcyBwYXRjaCBzZXJpZXMgaW50cm9kdWNlcyBmdWxsIGNvcmUgc3VwcG9ydCBmb3IgdGhl
-IEFTVDI3eDAgU29DLCBhbG9uZyB3aXRoDQo+IG5lY2Vzc2FyeSB1cGRhdGVzIHRvIHRoZSBBU1BF
-RUQgQVNUMjd4MCBTT0MuDQo+ID4gVGhlIEFTVDI3eDAgU29DIGlzIGEgbmV3IGZhbWlseSBvZiBB
-U1BFRUQgU29DcyBmZWF0dXJpbmcgNCBDb3J0ZXgtQTM1DQo+IGNvcmVzIGFuZCAyIENvcnRleC1N
-NCBjb3Jlcy4NCj4gPg0KPiA+IHYxOg0KPiA+ICAgIC0gTWFwIHVuaW1wbGVtZW50ZWQgZGV2aWNl
-cyBpbiBTb0MgbWVtb3J5DQo+ID4gICAgLSBJbnRydWR1Y2UgQVNUMjcwMCBDTTQgU29DDQo+ID4g
-ICAgLSBJbnRyb2R1Y2UgQVNUMjd4MEZDIE1hY2hpbmUNCj4gPg0KPiA+IHYyOg0KPiA+ICAgIC0g
-UmVtb3ZlIHVudXNlZCBmdW5jdGlvbnMNCj4gPiAgICAtIENvcnJlY3QgaGV4IG5vdGF0aW9uIGZv
-ciBkZXZpY2UgYWRkcmVzc2VzIGluIEFTVDI3eDAgU29DDQo+ID4gICAgLSBBZGQgQVNUMjcwMCBT
-U1AgSU5UQyBhbmQgQVNUMjcwMCBUU1AgSU5UQw0KPiA+ICAgIC0gU3BsaXQgQVNUMjd4MCBDTTQg
-U29DIHRvIEFTVDI3eDAgU1NQIFNvQyBhbmQgQVNUMjd4MCBUU1AgU29DDQo+ID4gICAgLSBBZGQg
-QVNUMjd4MCBBMCBTU1AgU29DIGFuZCBBU1QyN3gwIEExIFNTUCBTb0MNCj4gPiAgICAtIEFkZCBB
-U1QyN3gwIEEwIFRTUCBTb0MgYW5kIEFTVDI3eDAgQTEgVFNQIFNvQw0KPiA+ICAgIC0gQWRkIGZ1
-bmN0aW9uYWwgdGVzdHMgZm9yIEFTVDI3MDBGQyBBMCBhbmQgQVNUMjcwMEZDIEExDQo+ID4gICAg
-LSBBZGQgRG9jdW1lbnRhdGlvbiBmb3IgQVNUMjcwMEZDDQo+IA0KPiBQbGVhc2UgdHJ5IHRvIGxh
-YmVsIGFsbCBwYXRjaGVzIGFzIHYyLiBTZWUgJ2dpdCBmb3JtYXQtcGF0Y2ggLXYgLi4uJw0KPiAN
-Cg0KSGkgQ8OpZHJpYywNCg0KVGhhbmtzIGZvciB0aGUgcmVtaW5kZXIuIEkgd2lsbCBsYWJlbCB0
-aGUgcGF0Y2hlcyBhcyB2MyBpbiB0aGUgbmV4dCBzdWJtaXNzaW9uLg0KDQpSZWdhcmRzLA0KU3Rl
-dmVuDQoNCj4gPiBTdGV2ZW4gTGVlICgxMyk6DQo+ID4gICAgYXNwZWVkOiBhc3QyN3gwOiBNYXAg
-dW5pbXBsZW1lbnRlZCBkZXZpY2VzIGluIFNvQyBtZW1vcnkNCj4gPiAgICBhc3BlZWQ6IGFzdDI3
-eDA6IENvcnJlY3QgaGV4IG5vdGF0aW9uIGZvciBkZXZpY2UgYWRkcmVzc2VzDQo+ID4gICAgaHcv
-aW50Yy9hc3BlZWQ6IEFkZCBzdXBwb3J0IGZvciBBU1QyNzAwIFNTUCBJTlRDDQo+ID4gICAgaHcv
-aW50Yy9hc3BlZWQ6IEFkZCBzdXBwb3J0IGZvciBBU1QyNzAwIFRTUCBJTlRDDQo+ID4gICAgaHcv
-YXJtL2FzcGVlZF9hc3QyN3gwLXNzcDogSW50cm9kdWNlIEFTVDI3eDAgQTAgU1NQIFNvQw0KPiA+
-ICAgIGh3L2FybS9hc3BlZWRfYXN0Mjd4MC1zc3A6IEludHJvZHVjZSBBU1QyN3gwIEExIFNTUCBT
-b0MNCj4gPiAgICBody9hcm0vYXNwZWVkX2FzdDI3eDAtdHNwOiBJbnRyb2R1Y2UgQVNUMjd4MCBB
-MCBUU1AgU29DDQo+ID4gICAgaHcvYXJtL2FzcGVlZF9hc3QyN3gwLXRzcDogSW50cm9kdWNlIEFT
-VDI3eDAgQTEgVFNQIFNvQw0KPiA+ICAgIGh3L2FybTogSW50cm9kdWNlIEFTUEVFRCBBU1QyNzAw
-IGEwIGZ1bGwgY29yZSBtYWNoaW5lDQo+ID4gICAgaHcvYXJtOiBJbnRyb2R1Y2UgQVNQRUVEIEFT
-VDI3MDAgYTEgZnVsbCBjb3JlIG1hY2hpbmUNCj4gPiAgICB0ZXN0cy9mdW5jdGlvbi9hc3BlZWQ6
-IEFkZCBmdW5jdGlvbmFsIHRlc3QgZm9yIEFTVDI3MDBGQw0KPiA+ICAgIHRlc3RzL2Z1bmN0aW9u
-L2FzcGVlZDogQWRkIGZ1bmN0aW9uYWwgdGVzdCBmb3IgQVNUMjcwMEZDIEExDQo+ID4gICAgZG9j
-czogQWRkIHN1cHBvcnQgZm9yIGFzdDI3MDBmYyBtYWNoaW5lDQo+IA0KPiBEbyB3ZSBuZWVkIHRv
-IGFkZCBzdXBwb3J0IGZvciB0aGUgQTAgYW5kIEExID8gV291bGQgQTEgYmUgZW5vdWdoID8NCj4g
-DQoNCkkgd2lsbCByZW1vdmUgQTAgaW4gdjMgdGhlIHBhdGNoIHNlcmllcy4NCg0KPiANCj4gDQo+
-IA0KPiANCj4gPiAgIGRvY3Mvc3lzdGVtL2FybS9hc3BlZWQucnN0ICAgICAgICAgICAgICAgICB8
-ICA2MSArKy0NCj4gPiAgIGluY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaCAgICAgICAgICAgICAg
-ICB8ICAzMiArKw0KPiA+ICAgaW5jbHVkZS9ody9pbnRjL2FzcGVlZF9pbnRjLmggICAgICAgICAg
-ICAgIHwgICA1ICsNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0Mjd4MC1mYy5jICAgICAgICAgICAg
-ICAgICB8IDM0MA0KPiArKysrKysrKysrKysrKysrKw0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3Qy
-N3gwLXNzcC5jICAgICAgICAgICAgICAgIHwgNDAwDQo+ICsrKysrKysrKysrKysrKysrKysNCj4g
-PiAgIGh3L2FybS9hc3BlZWRfYXN0Mjd4MC10c3AuYyAgICAgICAgICAgICAgICB8IDQwMA0KPiAr
-KysrKysrKysrKysrKysrKysrDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI3eDAuYyAgICAgICAg
-ICAgICAgICAgICAgfCAgNzkgKysrLQ0KPiA+ICAgaHcvaW50Yy9hc3BlZWRfaW50Yy5jICAgICAg
-ICAgICAgICAgICAgICAgIHwgNDI0DQo+ICsrKysrKysrKysrKysrKysrKysrKw0KPiA+ICAgaHcv
-YXJtL21lc29uLmJ1aWxkICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA2ICstDQo+ID4gICB0
-ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9hc3QyNzAwZmMucHkgfCAxNjEgKysrKysrKysN
-Cj4gPiAgIDEwIGZpbGVzIGNoYW5nZWQsIDE4ODQgaW5zZXJ0aW9ucygrKSwgMjQgZGVsZXRpb25z
-KC0pDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvYXJtL2FzcGVlZF9hc3QyN3gwLWZjLmMN
-Cj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2FzdDI3eDAtc3NwLmMNCj4g
-PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2FzdDI3eDAtdHNwLmMNCj4gPiAg
-IGNyZWF0ZSBtb2RlIDEwMDc1NSB0ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9hc3QyNzAw
-ZmMucHkNCj4gPg0KDQo=
+Zhao Liu <zhao1.liu@intel.com> writes:
+
+> Hi Mrkus,
+>
+> I'm really sorry I completely missed your reply (and your patient
+> advice). It wasn't until I looked back at the lore archives that I
+> realized my mistake. Thinking it over again, I see that your reply,
+> which I missed, really helped clear up my confusion:
+
+I'm glad I was able to help some!
+
+> On Fri, Feb 07, 2025 at 02:02:44PM +0100, Markus Armbruster wrote:
+>> Date: Fri, 07 Feb 2025 14:02:44 +0100
+>> From: Markus Armbruster <armbru@redhat.com>
+>> Subject: Re: [RFC v2 1/5] qapi/qom: Introduce kvm-pmu-filter object
+>> 
+>> Zhao Liu <zhao1.liu@intel.com> writes:
+>> 
+>> >> Let's ignore how to place it for now, and focus on where we would *like*
+>> >> to place it.
+>> >> 
+>> >> Is it related to anything other than ObjectType / ObjectOptions in the
+>> >> QMP reference manual?
+>> >
+>> > Yes!
+>> 
+>> Now I'm confused :)
+>> 
+>> It is related to ObjectType / ObjectType.
+>> 
+>> Is it related to anything else in the QMP reference manual, and if yes,
+>> to what exactly is it related?
+>
+> I misunderstood your point. The PMU stuff and the QAPI definitions for
+> ObjectType/ObjectOptions are not related. They should belong to separate
+> categories or sections.
+>
+>> >> I guess qapi/kvm.json is for KVM-specific stuff in general, not just the
+>> >> KVM PMU filter.  Should we have a section for accelerator-specific
+>> >> stuff, with subsections for the various accelerators?
+>> >> 
+>> >> [...]
+>> >
+>> > If we consider the accelerator from a top-down perspective, I understand
+>> > that we need to add accelerator.json, kvm.json, and kvm-pmu-filter.json.
+>> >
+>> > The first two files are just to include subsections without any additional
+>> > content. Is this overkill? Could we just add a single kvm-pmu-filter.json
+>> > (I also considered this name, thinking that kvm might need to add more
+>> > things in the future)?
+>> >
+>> > Of course, I lack experience with the file organization here. If you think
+>> > the three-level sections (accelerator.json, kvm.json, and kvm-pmu-filter.json)
+>> > is necessary, I am happy to try this way. :-)
+>> 
+>> We don't have to create files just to get a desired section structure.
+>> 
+>> I'll show you how in a jiffie, but before I do that, let me stress: we
+>> should figure out what we want *first*, and only then how to get it.
+>> So, what section structure would make the most sense for the QMP
+>> reference manual?
+>
+> Thank you for your patience. I have revisited and carefully considered
+> the "QEMU QMP Reference Manual," especially from a reader's perspective.
+> Indeed, I agree that, as you mentioned, a three-level directory
+> (accelerator - kvm - kvm stuff) is more readable and easier to maintain.
+
+Sounds good to me.
+
+> For this question "what we want *first*, and only then how to get it", I
+> think my thought is:
+>
+> First, the structure should be considered, and then the specific content
+> can be added. Once the structure is clearly defined, categorizing items
+> into their appropriate places becomes a natural process...
+>
+> Then for this question "what section structure would make the most sense
+> for the QMP reference manual?", I understand that a top-down, clearly
+> defined hierarchical directory makes the most sense, allowing readers to
+> follow the structure to find what they want. Directly adding
+> kvm-pmu-filter.json or kvm.json would disrupt the entire structure, because
+> KVM is just one of the accelerators supported by QEMU. Using "accelerator"
+> as the entry point for the documentation, similar to the "accel" directory
+> in QEMU's source code, would make indexing more convenient.
+
+I think so, too.
+
+>> A few hints on how...
+>> 
+>> Consider how qapi/block.json includes qapi/block-core.json:
+>> 
+>>     ##
+>>     # = Block devices
+>>     ##
+>> 
+>>     { 'include': 'block-core.json' }
+>> 
+>>     ##
+>>     # == Additional block stuff (VM related)
+>>     ##
+>> 
+>> block-core.json starts with
+>> 
+>>     ##
+>>     # == Block core (VM unrelated)
+>>     ##
+>> 
+>> Together, this produces this section structure
+>> 
+>>     = Block devices
+>>     == 
+>>     ##
+>> 
+>> Together, this produces this section structure
+>> 
+>>     = Block devices
+>>     == Block core (VM unrelated)
+>>     == Additional block stuff (VM related)
+>> 
+>> Note that qapi/block-core.json isn't included anywhere else.
+>> qapi/qapi-schema.json advises:
+>> 
+>>     # Documentation generated with qapi-gen.py is in source order, with
+>>     # included sub-schemas inserted at the first include directive
+>>     # (subsequent include directives have no effect).  To get a sane and
+>>     # stable order, it's best to include each sub-schema just once, or
+>>     # include it first right here.
+>
+> Thank you very much!!
+>
+> Based on your inspiration, I think the ideal section structure for my
+> issue could be:
+>
+>     = accelerator
+>     == KVM
+>     === PMU
+>
+> Firstly, I should have a new accelerator.json () to include KVM stuff:
+>
+>     ##
+>     # = Accelerator
+>     ##
+>
+>     { 'include': 'kvm.json' }
+>
+> Next, in kvm.json, I could organize stuffs like:
+>
+>     ##
+>     # == KVM
+>     ##
+>
+>     ##
+>     # === PMU stuff
+>     ##
+>
+>     ... (the below are my current QPAI definitions.)
+>
+> Is such a structure reasonable?
+
+Yes.
+
+I'm not a fan of schema files with nothing but includes, like
+accelerator.json.  But the alternative here would be putting its
+contents into qapi-schema.json, which I really don't like, or keeping
+the KVM contents there instead of in a separate kvm.json, which would
+interfere with tracking maintainers in the MAINTAINERS file.
+
+> Thank you again for your guidance!
+
+You're welcome!
+

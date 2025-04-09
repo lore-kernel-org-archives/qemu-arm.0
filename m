@@ -1,120 +1,131 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4820123njd;
-        Fri, 25 Apr 2025 23:38:59 -0700 (PDT)
-X-Received: by 2002:a05:6a00:2403:b0:736:34a2:8a20 with SMTP id d2e1a72fcca58-73ff7396a96mr2994755b3a.21.1745649539215;
-        Fri, 25 Apr 2025 23:38:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745649539; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7730766njd;
+        Wed, 9 Apr 2025 06:53:38 -0700 (PDT)
+X-Received: by 2002:a05:6a21:a342:b0:1fd:e9c8:cf3b with SMTP id adf61e73a8af0-201592d0f16mr6010072637.30.1744206818073;
+        Wed, 09 Apr 2025 06:53:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744206818; cv=none;
         d=google.com; s=arc-20240605;
-        b=j7BLHYo75CT/R7vtG/EGBeqMSED/ZoFlHqhGHAo0t8b9nHQMTHDOzFag983Mrn6Bf4
-         nptJceXOXLVeCjdCv8gkjNmSkWQh8vsMAAKrSO27TUioRV79uF6T0oVkcjzL3lx8FUy3
-         sYJNL13Ck5mB8rRAGEFPHaOPCmAmCzyc/zWYLUWTZANBY8QYDXnAT2Lkp7MLC6hd42W8
-         mv8uhGkEmFjs47APbLDWTr6uLAN4UHlRWbkBx4rrKGOTmuQ8Q2OD4vSOiEGzH8SZgevs
-         Pe8kVrT+Jr9MOh5KVNLwHCn1UqDfM4R7XIDaCS7Wv+5iRVDLb2v9ALyjZBoDilE175kj
-         RgNQ==
+        b=iBFWlj5WODUO0nHyxD0G+zWyrwk80v3dF7a8FqyDeUndPgcIfUVQ+TAyoACUefH46I
+         MHEaBAhcuKt2Efue4+XbeAtK7LQEEVHnQnEJciJ/cuJFk5n9/mIOetiplzZH9zbZ8Ily
+         GVEmfdpket0W2RrDInEo4HE2cpJUN6tD13pzpz7IKWrDQRpKWYQV/yfBtH02BmNRY0gO
+         WbLubZyEGIfGdU8aNqnvur92Z05cmhaTdW2dfMtaRcv0BJ51T9ggcxFmEQfYJVt5BbKW
+         Uf9vFjz+s9h9b9jTQYJs8Lorwrw55qmp2qvUPj3b57YSdyxazd2rTsNf+w+4ggVnmvfk
+         6TYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=/T1LZKwySduyRo2h0IOtfFdSgYkIBmpQV9h3xYV3Y5s=;
-        fh=qml1ictO63r96R772yfkUOggRS6qI9XaMn2HAjbfxJY=;
-        b=ZHHKnc6oylblrABTyupRMZ7YWwme1B2qVPRydyPGDIC/rQxbOEdDDOyKBwu/vV/Vhd
-         eN9EJgBzfMtG35xRgy2JFkFHOKzvaknM4nPAHixBTV7WpqCKec4eYJg+PKIZSTVzgeA4
-         ZQD3LqVUXXihC3LauxBibI6WmJbAMZ00qehvxYQYuHXi+hjH+1dV3wXhs/at7at5N3+3
-         xWyIxTAaY9B1+/1E0GkqXwnoDx1zvvecxIz3Iq+I/Yj3iNz29Ai5HvHp/fkJ7eZnS1OD
-         eyQzT4UwZAC41YO8LJyqLPjPN7+s34HBcgnYozvI1YMumX0TBrKKXDX1h+dH2gh8eDkj
-         v5/g==;
+        bh=fO86AUOVMEMkyzgCe3CigxfkEKJzkLkqDXYq/IelJEs=;
+        fh=R3FteP84Tzq4rd+VE1vGD2SwxFGrN8QqlQ+3M6be9d4=;
+        b=HT9oG8y3n/qZrhqQUZaWu9fnE3Th+ZndZ6jBj37Vi1vqV1nT7JFBMRufutCQSv7VkM
+         B5btGF/xJ4eVihOlyv4zqpGK1BXtQ2wiuKBJFnl6dcGwzefEzzymNv0ebjgv/lS73Cw0
+         yicwrkY1TAXx7quHUWjxj+BiThMknsNVs7AxsfmpGFDRch66EV09/vRmO6yePLAsl/la
+         mojiNAGIWC1gE9l7SiSZIdqZJi/NsfrwyBm6S77aJBuLZVabbp3rnro8JalELyI3yCBy
+         EzcIvVn+o5Itw+hEcnpluuEe+G0/z0CFPAeB96FUGKei4h+EMizO8hb1SsOKhY62nJUN
+         hDcg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jws4fo/f";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OXT4Oud4;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73e25b6577asor3413702b3a.6.2025.04.25.23.38.58
+        by mx.google.com with SMTPS id 41be03b00d2f7-b029e1e7264sor856903a12.0.2025.04.09.06.53.37
         (Google Transport Security);
-        Fri, 25 Apr 2025 23:38:59 -0700 (PDT)
+        Wed, 09 Apr 2025 06:53:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jws4fo/f";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OXT4Oud4;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745649538; x=1746254338; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744206817; x=1744811617; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/T1LZKwySduyRo2h0IOtfFdSgYkIBmpQV9h3xYV3Y5s=;
-        b=jws4fo/f5ft6eCUFYdXwjpUhN2BYiPFeKb4brQYrIYm468ulKdP7C8YKa55XqxQedK
-         uvKFAujixZQqls+m7QN7oMu9022E6qBzMEjxuZHA7FLdVjR0y/hzrdzLEOGM8VljzvgH
-         HdglRiLqna/YW0kyNF4vAo2wB2haI1HJJuOTFMb467UE52U11iBq2mhYDex9vsUNGlS7
-         prCj8LSGFi/GHsvUGvw3g5uxBhej3EM8PAOErEC8VID8m9AOwFQ/66Sv1CJMhYToQa93
-         ITjjPM593f1pfnLVc3GsFmr3Hik4aKJHJt3ST+6yEd0pEGUw2NVLd9gf24NJ0XXvccu1
-         Nojw==
+        bh=fO86AUOVMEMkyzgCe3CigxfkEKJzkLkqDXYq/IelJEs=;
+        b=OXT4Oud4JDnIj211lbnEfq0cKaWJIirdd5a0+9YVvrCKOC5QIQIpn6/1IH9lyrh3Oc
+         VFr7rU0Ejq98s45vFD5TSzV3Wb5vTG6FKO8ihjZDRi9G9ERH4zeqnNvYG415UAppVmd0
+         xNDxAmOlpRs1EcjYHT652Ni8S6fG1POpn8WGvZyhzAaz7jw3Q1O5S9wVioOp6zr6a5vp
+         4YF1NZirN3DpTUU4zSGCp4wf7ZfYAb2cQT74WeV9xUN8JrpgU1Dv53a6vNZvIR4nCJK6
+         ZjULeR/NwUM+GyWUPJb33BNUvxaL0iZYHih0iDmnQL3J39ye6ByFcxshH0jMOVYyi7f/
+         BA+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745649538; x=1746254338;
+        d=1e100.net; s=20230601; t=1744206817; x=1744811617;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/T1LZKwySduyRo2h0IOtfFdSgYkIBmpQV9h3xYV3Y5s=;
-        b=U4TA59kGRsstWu5nK+fc2GBONtCaXt9Zp7vgnVGfLS8ot1WIh3aj1Kyq/yFh/2jrHx
-         0j3z9d5+/ypPq/KTPIoaZtoiOvcQbnfbHSXAdsjV1XYaHOqlCAK4Pb/GHBzJvlSdy89e
-         snXP1jMH6we4z/3T1U1XACea/Ql8D8h0hKaFuVbym6u+Odu4yi+IBDTCkdjmXDqHJLSP
-         GLoPU8x3xNCVphZCcRjF+j/4tZh/ww9i28P7BXzkXk3gNT/zqbgJ3aDKmZ82WaJKyn6E
-         BFW0H7y1Fp2SRimkK78Uu3l/YrP4Zets6ye/PKXN3vVy8ghzJyYErrJ2NQCreVrb2CtF
-         w34w==
-X-Forwarded-Encrypted: i=1; AJvYcCV5HCK0PL6kiPFBHjJ4MTcSOMAExxO5O0Jy+53CLfX6WuR7tgR1l8TqrKxHMjEhwBf6PWD6X5OKNIID8hDEkICDtAA=@linaro.org, AJvYcCWo6HX5PXMYayea7IdMVG9D9IDEAJxTc++/jxP65lu4eYJySr9+f752dHmyKCf6BPmMAHnq3u/8XxsHBfhx@linaro.org, AJvYcCXWALDvk4uwpeOpWAmwSnQgBkqfv42AE6/Bz9j4fm5GKKrh4geldLLVdANEMeV/84NLxDC3V4SWD83P/R6cPOz9gw==@linaro.org
-X-Gm-Message-State: AOJu0YxVueB9wi5mGY6h65b2CF36EZNNiQHw0VloimAEp1V7UU5V3MRw
-	f8BZ0aCeGK13lCQ4YsZw0ZSUiAJNAaBJXh5o+PAAJVapS+Hdt6Kl//wOgtXqm305niFZ28qpCLj
-	LAon0rbwPI+lTOam9KV0DW8th9YRZZOoURFo=
-X-Gm-Gg: ASbGncuXEKAxCU1NJQbp6zsZdhahtb+EBdIqAUQmHM8uTiF7pjQ6gF7dbCJpY3153oK
-	rCSESbNmO6ws4AngYfb95ONzmaukFCh+uDJfQre2EwvBc/7Ziv90z2yhfj1oozG3biuRQ71KMfP
-	3AGxOixqRQUmzt7jv7wvaLymxhX7CACXLoWTqIDhpgpa+scioP7ae4
-X-Google-Smtp-Source: AGHT+IHPfSQkkpkcBFSfcIVQOJdr8vuupIRlsf58kYnTZTu9jfM8osjgQAZcyGwfjotTwU7n4se3juPAMjXfY/btnLg=
-X-Received: by 2002:a17:90b:3504:b0:2ee:f22a:61dd with SMTP id
- 98e67ed59e1d1-30a013bac35mr2692858a91.32.1745649538523; Fri, 25 Apr 2025
- 23:38:58 -0700 (PDT)
+        bh=fO86AUOVMEMkyzgCe3CigxfkEKJzkLkqDXYq/IelJEs=;
+        b=vIm0YxEsyKBhFJx/zSPekS+uIp3U5d93K02aTBIfEM/jVB9Ybhmk3Spnq4CBIoy0+W
+         Z4n/mVxAi4gruxJbdXh93ddUVzjXgkPQEV0dQv5RVvLAJ3jX/pWYMuBwO9nGu4iKw7gz
+         D1cy/UKFSH69+ephTf/T9dXprgtkOCyIx67GQr118PkF+eb8mSykdKemlr3+fAJiJPy5
+         ZRdr9u4sk1w0TLm3SYzJhIj8cD5BV/tomEe/bYYVPwI/fPF4GVFu1ydkGGHeStyRm7S2
+         hn2r2llAaQ8D/dGdjyfvm5ccBd5UwptR54HNHZp/WpDPBX6qj44v7ouFbgTy5zqX9ynO
+         jOEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWe8ezodRrejjR9ENyqk8yvCghnsaaSfkgOpGv1BcOCZKEQ7RfoU/hHyMZ2DUmmYaHv0OSICZd1OpZlGuNM@linaro.org, AJvYcCWqCBqMfZTn/Rr4l/xIjLmLo5V1wEgBdpEJSD9WNzijZaO8k5wWV4xZ5L4uHSbT69S1j0p1gXTriraVvxuLlFrnIP8=@linaro.org
+X-Gm-Message-State: AOJu0Yy3nPFvdBMQkMYL5py2X6boXFDOE2AVYCPJxJHSqUeBhCLVlsHD
+	uCEL/4D5c77ZmcLgWY8d+Mf7Jsu48v/yRCRobTMWD/FyjOWC12TUBqLx6XH2xYYTrtrNbJP8deS
+	UU2z8V1kilqA8Lt6Of0HYRrsB82hr/nhECw4=
+X-Gm-Gg: ASbGnct/6i3ytlG2l1O4JGS0JovrWTFpw43MBYng84BfHczVOZ963o4yu3/bp2C0I3O
+	PnOkxgWNPHuj3+M6NB798oSs2ypNisDFGjQrPKJRlKNwSpK79rcqjPvwJJZpWY9sKz7mOwEbuSG
+	KZR+zQsl4I0fiMCqRydVChZ7mguM1D/RAw3cZeSR/WvyBgDdgv9Mk+Mk717ZwtFlY=
+X-Google-Smtp-Source: AGHT+IEcFr5+7WmmB/L2Y3x0x3gjpCLcCsTZwB8iEN3nZHLGE5ZN9jnOSQr5GjgYEdphHNdpy5MVCHMb1sEwGjJb6G4=
+X-Received: by 2002:a17:90b:380a:b0:2ff:570d:88c5 with SMTP id
+ 98e67ed59e1d1-306dbb8e6f7mr3966680a91.9.1744206817553; Wed, 09 Apr 2025
+ 06:53:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
- <01b21c849b459660453eb905d12ff0da4c65f53c.1745295397.git.ktokunaga.mail@gmail.com>
- <5b7afc3e-d5d3-4485-96ab-a1b212644607@linaro.org>
-In-Reply-To: <5b7afc3e-d5d3-4485-96ab-a1b212644607@linaro.org>
+References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+ <24b5ff124d70043aff97dc30aa45f8a502676989.1744032780.git.ktokunaga.mail@gmail.com>
+ <069ad872-5012-4f2a-8ba6-e2a22ce2bb49@linaro.org>
+In-Reply-To: <069ad872-5012-4f2a-8ba6-e2a22ce2bb49@linaro.org>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Sat, 26 Apr 2025 15:38:47 +0900
-X-Gm-Features: ATxdqUEudJEQciex8VkQsUG2VLwhDymMM4jg3D4EAR_WFlPPRlIFWXCgzUkbd-w
-Message-ID: <CAEDrbUZrPSBezgUpVfJC8-R0ED9yLMB5YYu5e_zd9jdnd+5CKQ@mail.gmail.com>
-Subject: Re: [PATCH v2 04/20] target/arm/helper.c: Fix type conflict of GLib
- function pointers
+Date: Wed, 9 Apr 2025 22:53:26 +0900
+X-Gm-Features: ATxdqUHcy7JpXUs-uTpIxaoiUmvJiw4LWXS3bgs3RLqnCgbLDwbNS6L7a6WJOo4
+Message-ID: <CAEDrbUYX+i908=QxmvSt6SHAK9O6cwu9cT+5NbCw1xbwz3Ja7w@mail.gmail.com>
+Subject: Re: [PATCH 07/10] tcg: Add a TCG backend for WebAssembly
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
-	Mahmoud Mandour <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Francisco Iglesias <francisco.iglesias@amd.com>, 
-	Vikram Garhwal <vikram.garhwal@bytedance.com>, Jason Wang <jasowang@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
+	Weiwei Li <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
 	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
 	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
-	David Hildenbrand <david@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000a567c50633a8b425"
-X-TUID: utoIGgAHmjZU
+	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000c67982063258cbc5"
+X-TUID: 3z6sd4/TpA1N
 
---000000000000a567c50633a8b425
+--000000000000c67982063258cbc5
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Philippe,
+> Eh TBH this is too much to review as a single patch.
+>
+> Do you already have an idea how different the wasm64 implementation can
+be?
 
-> Why not use a gpointer for @d like in other patches?
-
-Thank you for the feedback. I'll fix this to use a gpointer in the next
+Sorry for the large patch. I'll split it into smaller patches in the next
 version of the series.
 
---000000000000a567c50633a8b425
+With wasm64, instructions that manipulate pointers (e.g., ld/st, qemu_ld/st)
+will be updated to handle 64bit pointers. I believe wasm64 will not require
+large changes to other parts, such as label handling, goto_tb/goto_ptr, or
+the forked TCI.
+
+--000000000000c67982063258cbc5
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<div dir="ltr"><div dir="ltr">Hi Philippe,<br><br>&gt; Why not use a gpointer for @d like in other patches?<br><br>Thank you for the feedback. I&#39;ll fix this to use a gpointer in the next<br>version of the series.<br><br><br></div></div>
+<div dir=3D"ltr"><div dir=3D"ltr">&gt; Eh TBH this is too much to review as=
+ a single patch.<br>&gt; <br>&gt; Do you already have an idea how different=
+ the wasm64 implementation can be?<br><br>Sorry for the large patch. I&#39;=
+ll split it into smaller patches in the next<br>version of the series.<br><=
+br>With wasm64, instructions that manipulate pointers (e.g., ld/st, qemu_ld=
+/st)<br>will be updated to handle 64bit pointers. I believe wasm64 will not=
+ require<br>large changes to other parts, such as label handling, goto_tb/g=
+oto_ptr, or<br>the forked TCI.<br><br><br></div></div>
 
---000000000000a567c50633a8b425--
+--000000000000c67982063258cbc5--

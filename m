@@ -1,331 +1,208 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7945374njd;
-        Wed, 9 Apr 2025 12:21:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWIjQJnY1JMMKtDNC4SCTzCNaC1Y2ZCtCpwf34cfjicbPXq15EjaDPPxTPkXLZkvUFgy9rLAsDmIvJ97A==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+b3CxZkxgwz1aE3UtxOvO+jhFPyy8f9UI7y18IS0B427YDUjST+3yZSNpHGLCpCs2YqdG
-X-Received: by 2002:a05:6902:228d:b0:e60:9d12:c1e5 with SMTP id 3f1490d57ef6-e703e1c893emr224165276.36.1744226488363;
-        Wed, 09 Apr 2025 12:21:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744226488; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7720190njd;
+        Wed, 9 Apr 2025 06:35:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF/Af27pMALaH/Enl23TjyXwz01QtRWp725EhZDyxZ6c5+JccK9KrUBe7qOA29E6yK7R6JD
+X-Received: by 2002:a05:690c:60c7:b0:6ef:57ad:9d6e with SMTP id 00721157ae682-70538816743mr53186657b3.15.1744205721002;
+        Wed, 09 Apr 2025 06:35:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744205720; cv=none;
         d=google.com; s=arc-20240605;
-        b=XmDCc1pqZstwUHzROimoHD2oALODyI4gkXBCqgsDIpOjNEX8SEZgu5vZOu3xcJlyzq
-         OQZOdj3OwsftZVLgjCZc/5gE4RW8her+jixN89ObTqUQdc75u55uPtr13gnf5DQ2hOm/
-         IaV6j8G3+5fuV2lsjqoYRnEHDltKOR83GX2oLqBqhsUdngbVlmTym0IFejn3oVGVVTJx
-         /RtL4nct883PlJg6uEwIRUGLdQtBdAWL1FqF+jOaPdmq/Xb/7tSGR/6DduWPAYBSVpxk
-         hJdl24k2yCg81tZCtPHXKgFPNdMwXIdN46Iv4pmCy8wBeBD1HH5LfFZiILpW5Yug/jOF
-         f6ZQ==
+        b=eOQhh9EWbz4XlFRuh3oqbsRMViIVhCOoiycuxOUISn3W64I8H6KNvF96xXE1RqxNCr
+         05JbT70Sks8hUikUubV9Q58W6FgGDdQ6pLfz3ZV1Suj5EdmLxkr8hmQtT9E9RTCYzWNx
+         fAsFxhBe9RvevIxidnFpKLQVHdrDYThlRK9C2a0JODEnMM8L9ythTfe23WUYC53J9TvX
+         7/Nhdktzl8LHxuFAJtFQTzqiy4ICxf12lP2zvtGP8xN0+ZOysFU5ijKnmuoS5c0M2y9t
+         eOkUuedwIWxzjlHNwWR2e9bdJ2sbexqfK29++tKC5KYOaF8y7ZaNzL4FEH9Jc+Ar1pzV
+         yTtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=O0SW+EbGMTX07a5jltzv1cSEZRNVM8yzih6xzURwWfI=;
-        fh=Ka3VFK1o1qJ0V9N8/wQGlOiSs6a4S1N+6UzJ0Ei4IOQ=;
-        b=O5wbtUYuHlU+H7SZmJNVEGjDmD6hUKruPQcfJoF5QTcQC5hKStiftKihA2bu4USGK8
-         2XsDNd9wAirqeqXP8+5kO/uT1kAPfSXuqYQMmFjwNEiUVEN8pHLas/OC1J3FfIjiekH+
-         FdkzE7tOn5FRNlKii+PWcWYbclTUc0Aon0KgO1xOjiGlhxpbVwBnB01lNlRPzOFmmsco
-         7g7uuNHnbBbWu3Y/vhKPE5FoJez1PtAY5+I1zVV/cyH/ms3lNZ5LsM1j8RXAW+JF5bfP
-         iVVptrhK2Z+dLqtcjVI4rmoJNsUvthbzS8x+V5nChvjUZBHW2TnRt3N+swAA8hIVvI5L
-         fdGg==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=1TMoOKh1qF7O83Nj4d6TCIOVoyS54jKotwsf9ZbPvoA=;
+        fh=il79Cl/g+2VHFwcnjQL5i94RGv7izKT2/8O/GiHWbOs=;
+        b=hwv6vfz2SUZ2aWW+h0xXtCCMENUmiBDkvA8Zjj2jMsVhqQB7uzRMApFDk5nTnfgxaK
+         JIfULxl3nrdRNfXMaZEi7RIA4/uUSLLQvPmb9S4iu8PCaCZDoFi8MfCARUgZF98X8tkW
+         Qo+k1Sx0mlSBldsUAv3ZrzyU0NvKDUIxEbgLpvfJyoZrNO69cQ9ILA+mpfDUb3QJ7IoU
+         clmfrfXzyxl6mzK5jLgsZJSioxrWOn+DYy2jMU3xo2DIchwhgHT4RVDH7UYq1km94Yo1
+         X7Llva7SPhcFUdJIZz4csdqtdkIhjBeYlGHSf580ovXMlkntRBGoB7yvMduoin6HjOtx
+         vbcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSUstPHg;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ReG7Mit0;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
+Return-Path: <pbonzini@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-e703282ec13si2936058276.521.2025.04.09.12.21.28
+        by mx.google.com with ESMTPS id 00721157ae682-7053e34a4cdsi18857027b3.320.2025.04.09.06.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Apr 2025 12:21:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 09 Apr 2025 06:35:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSUstPHg;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ReG7Mit0;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744226487;
+	s=mimecast20190719; t=1744205720;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=O0SW+EbGMTX07a5jltzv1cSEZRNVM8yzih6xzURwWfI=;
-	b=GSUstPHgknGcGX5XGmCRKeycvToG9gS+EFU4Yy48OHQPcSBx9MHlUIfGcT8MadIU/Z44y4
-	MsixILY3qUy9CZHBFTUYdNRGaBH5vFwvoPc81OVALPKDe+qdh5/dHnueYy9M4gD2rBq1Ds
-	eNtF7gT+yjgTu/6H99+AFDmVxVNyQ28=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-498-H9NlB14GOLCdR-3kczdCnQ-1; Wed,
- 09 Apr 2025 15:21:23 -0400
-X-MC-Unique: H9NlB14GOLCdR-3kczdCnQ-1
-X-Mimecast-MFC-AGG-ID: H9NlB14GOLCdR-3kczdCnQ_1744226481
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 1219F19560AB;
-	Wed,  9 Apr 2025 19:21:20 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.144])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id CFC4D1801747;
-	Wed,  9 Apr 2025 19:21:16 +0000 (UTC)
-Date: Wed, 9 Apr 2025 15:21:15 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Cc: qemu-devel@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	Greg Kurz <groug@kaod.org>, Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
-	qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/10] Enable QEMU to run on browsers
-Message-ID: <20250409192115.GA5528@fedora>
-References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=1TMoOKh1qF7O83Nj4d6TCIOVoyS54jKotwsf9ZbPvoA=;
+	b=ReG7Mit0AwYjuZPIhwue8ux8iefDFUynIY2Z36NEJ3ti3cikYOuY9szh/tSTUxN5k9IMJ2
+	OMr4CfjeQIYK0eMLhOHZfMga82KpKoY1auWUNOwaYl64XgPmcRo11oeq4bH58jdosuTjeX
+	3tTL4YnSI4t5+ZnT0Pu17EODvnivkJQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-586-JC_UDwqMNOGwDv75lgq35Q-1; Wed, 09 Apr 2025 09:35:19 -0400
+X-MC-Unique: JC_UDwqMNOGwDv75lgq35Q-1
+X-Mimecast-MFC-AGG-ID: JC_UDwqMNOGwDv75lgq35Q_1744205718
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43d734da1a3so35231905e9.0
+        for <alex.bennee@linaro.org>; Wed, 09 Apr 2025 06:35:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744205718; x=1744810518;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1TMoOKh1qF7O83Nj4d6TCIOVoyS54jKotwsf9ZbPvoA=;
+        b=ldGvaopIS2KNHiv/lYMZ//VbbbZRYMwGNYrxUVvyGzCaVu3imOMB+rh2Y+BNavWPRM
+         X2liUU0hNfEPEdTvZ3WeUEvJ6nUcqkd6iYUfen2n27zhW+W09JiIR3BvYzMa47x0qt8q
+         hPsP6f/N/fg0SNfBipTYwBQsmkMozcDACvwYnu0orC4z0l5wv1v6ega9lDumZKNEhXjf
+         EJMVqYWR8ndh6YlGB7JtaG6cI43BZSXYXJjv7EsFdq2x0wEtkzGZE/i0dz8rY/BO6d28
+         BI7qCBPgtt4gZRidPIJvDc3w+VgoRl6m3O4eCse2dB8R2m2Q7nN140FXxPSvVJQ8TcTS
+         Uaag==
+X-Gm-Message-State: AOJu0YzfWxrrW3zTFeDFpEcc0N6YUDwq/kuokFL8EYmlbq91zPU0YbYO
+	88sI4cbIlXFpptCFXb54dM+9uI+8Xi+S+ruv2ChCyVnNDc9wbvwe7dQ49/PsVxAqyygMtXAPHAR
+	K7PqKCQziR+Pm560Jw6JG42nKnpvfQs9r2fbYUYnniPwr2TyavQkwMw==
+X-Gm-Gg: ASbGncsqHQKM3JdiWbKGMgsf1j+LKWElw9+6usqnd8mKdmz/1WR0G+gUxMGpHpSm1ga
+	1ByliC9L6kqNje0qnWui3bzsL+fxPD/jZlMdVNg7tUr0joevvN+FIf7K25wp/8UTqOGs7tklTUp
+	6v+Lc0mBJsf+euYzVPyEdaGa6Lzq/WbgByrpuAIUfKefLPVut9w/Cq6WZgIHYmK8P+kMBBMRi26
+	UTaIypA/4gxRMRs2C70Fk4aOCjlGP1PPTSjm80H7KgqJprx4VhYZX9m8dRMUFOVX6nsxK0xrACJ
+	eiWuUM8KL4+ytcvaKQ==
+X-Received: by 2002:a05:600c:1f16:b0:43d:649:4e50 with SMTP id 5b1f17b1804b1-43f1fe01880mr25224435e9.13.1744205718163;
+        Wed, 09 Apr 2025 06:35:18 -0700 (PDT)
+X-Received: by 2002:a05:600c:1f16:b0:43d:649:4e50 with SMTP id 5b1f17b1804b1-43f1fe01880mr25224085e9.13.1744205717804;
+        Wed, 09 Apr 2025 06:35:17 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from [192.168.10.48] ([176.206.110.254])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-39d8938b5e7sm1703373f8f.55.2025.04.09.06.35.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Apr 2025 06:35:17 -0700 (PDT)
+Message-ID: <671805c9-f802-412b-998e-ba83719f1e72@redhat.com>
+Date: Wed, 9 Apr 2025 15:35:14 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Ex1hep+Q2LcyrOp+"
-Content-Disposition: inline
-In-Reply-To: <cover.1744032780.git.ktokunaga.mail@gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: jPaGckmhz3vy
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/10] meson: Add wasm build in build scripts
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+ <04b7137a464e0925e2ae533bbde4fcdfe0dfe069.1744032780.git.ktokunaga.mail@gmail.com>
+ <e0dcc4e6-1e8e-468f-83e5-36ffb014eeef@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <e0dcc4e6-1e8e-468f-83e5-36ffb014eeef@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: AsI8cdymOVbTZMDeoi-zEqvLwZUGXK1kPGijy8Qmyrg_1744205718
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: /TJVAUClkFBE
 
+On 4/9/25 12:55, Philippe Mathieu-Daudé wrote:
+> Cc'ing Pierrick
+> 
+> On 7/4/25 16:45, Kohei Tokunaga wrote:
+>> has_int128_type is set to false on emscripten as of now to avoid errors by
+>> libffi.
 
---Ex1hep+Q2LcyrOp+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+What is the error here?  How hard would it be to test for it?
 
-On Mon, Apr 07, 2025 at 11:45:51PM +0900, Kohei Tokunaga wrote:
-> This patch series enables QEMU's system emulator to run in a browser using
-> Emscripten.
-> It includes implementations and workarounds to address browser environment
-> limitations, as shown in the following.
+>> And tests aren't integrated with Wasm execution environment as of
+>> now so this commit disables tests.
 
-I think it would be great to merge this even if there are limitations
-once code review comments have been addressed. Developing WebAssembly
-support in-tree is likely to allow this effort to develop further than
-if done in personal repos (and with significant efforts required to
-rebase the code periodically).
+Perhaps it would be enough to add
 
-> # New TCG Backend for Browsers
->=20
-> A new TCG backend translates IR instructions into Wasm instructions and r=
-uns
-> them using the browser's WebAssembly APIs (WebAssembly.Module and
-> WebAssembly.instantiate). To minimize compilation overhead and avoid hitt=
-ing
-> the browser's limitation of the number of instances, this backend integra=
-tes
-> a forked TCI. TBs run on TCI by default, with frequently executed TBs
-> compiled into WebAssembly.
->=20
-> # Workaround for Running 64-bit Guests
->=20
-> The current implementation uses Wasm's 32-bit memory model, even though W=
-asm
-> supports 64-bit variables and instructions. This patch explores implement=
-ing
-> TCG 64-bit instructions while leveraging SoftMMU for address translation.=
- To
-> enable 64-bit guest support in Wasm today, it was necessary to partially
-> revert recent changes that removed support for different pointer widths
-> between the host and guest (e.g., commits
-> a70af12addd9060fdf8f3dbd42b42e3072c3914f and
-> bf455ec50b6fea15b4d2493059365bf94c706273) when compiling with
-> Emscripten. While this serves as a temporary workaround, a long-term
-> solution could involve adopting Wasm's 64-bit memory model once it gains
-> broader support, as it is currently not widely adopted (e.g., unsupported=
- by
-> Safari and libffi). Feedback and suggestions on this approach are welcome.
->=20
-> # Emscripten-Based Coroutine Backend
->=20
-> Emscripten does not support couroutine methods currently used by QEMU but
-> provides a coroutine implementation called "fiber". This patch series
-> introduces a coroutine backend using fiber. However, fiber does not suppo=
-rt
-> submitting coroutines to other threads. So this patch series modifies
-> hw/9pfs/coth.h to disable this behavior when compiled with Emscripten.
+[binaries]
+exe_wrapper = 'node'
 
-QEMU's block job coroutines also rely on switching between threads. See
-how job_co_entry() schedules job_exit(). It's not very likely that users
-will run jobs in a WebAssembly environment, so maybe this is more of a
-theoretical problem for the time being.
+to the emscripten.txt file?
 
-> # Overview of build process
->=20
-> This section provides an overview of the build process for compiling QEMU
-> using Emscripten. Full instructions are available in the sample
-> repository[1].
->=20
-> To compile QEMU with Emscripten, the following dependencies are required.
-> The emsdk-wasm32-cross.docker environment includes all necessary componen=
-ts
-> and can be used as the build environment:
->=20
-> - Emscripten SDK (emsdk) v3.1.50
-> - Libraries cross-compiled with Emscripten (refer to
->   emsdk-wasm32-cross.docker for build steps)
->   - GLib v2.84.0
->   - zlib v1.3.1
->   - libffi v3.4.7
->   - Pixman v0.44.2
->=20
-> QEMU can be compiled using Emscripten's emconfigure and emmake, which
-> automatically set environment variables such as CC for targeting Emscript=
-en.
->=20
-> emconfigure configure --static --disable-tools --target-list=3Dx86_64-sof=
-tmmu
-> emmake make -j$(nproc)
->=20
-> This process generates the following files:
->=20
-> - qemu-system-x86_64.js
-> - qemu-system-x86_64.wasm
-> - qemu-system-x86_64.worker.js
->=20
-> Guest images can be packaged using Emscripten's file_packager.py tool.
-> For example, if the images are stored in a directory named "pack", the
-> following command packages them, allowing QEMU to access them through
-> Emscripten's virtual filesystem:
->=20
-> /path/to/file_packager.py qemu-system-x86_64.data --preload pack > load.js
->=20
-> This process generates the following files:
->=20
-> - qemu-system-x86_64.data
-> - load.js
->=20
-> Emscripten allows passing arguments to the QEMU command via the Module
-> object in JavaScript:
->=20
-> Module['arguments'] =3D [
->     '-nographic', '-m', '512M', '-accel', 'tcg,tb-size=3D500',
->     '-L', 'pack/',
->     '-drive', 'if=3Dvirtio,format=3Draw,file=3Dpack/rootfs.bin',
->     '-kernel', 'pack/bzImage',
->     '-append', 'earlyprintk=3DttyS0 console=3DttyS0 root=3D/dev/vda logle=
-vel=3D7',
-> ];
->=20
-> The sample repository[1] provides a complete setup, including an HTML file
-> that implements a terminal UI.
+>> +[built-in options]
+>> +c_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
+>> +cpp_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
+>> +objc_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
+>> +c_link_args = ['-Wno-unused-command-line-argument','-g','-O3','- 
+>> pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','- 
+>> sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','- 
+>> sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','- 
+>> sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
+>> +cpp_link_args = ['-Wno-unused-command-line-argument','-g','-O3','- 
+>> pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','- 
+>> sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','- 
+>> sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','- 
+>> sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
 
-If I understand correctly the QEMU project is only build the statically
-linked wasm binary in the CI system and not distributing it (e.g. making
-it available for download)? I'm asking because if the QEMU project wants
-to distribute the wasm binary it may be necessary to put together a
-combined software license to meet the license requirements of glib and
-other dependencies that are statically linked.
+At least -g -O3 -pthread should not be necessary.
 
->=20
-> [1] https://github.com/ktock/qemu-wasm-sample
->=20
-> # Additional references
->=20
-> - A talk at FOSDEM 2025:
->   https://fosdem.org/2025/schedule/event/fosdem-2025-6290-running-qemu-in=
-side-browser/
-> - Demo page on GitHub Pages: https://ktock.github.io/qemu-wasm-demo/
->=20
-> Kohei Tokunaga (10):
->   various: Fix type conflict of GLib function pointers
->   various: Define macros for dependencies on emscripten
->   util/mmap-alloc: Add qemu_ram_mmap implementation for emscripten
->   util: Add coroutine backend for emscripten
->   meson: Add wasm build in build scripts
->   include/exec: Allow using 64bit guest addresses on emscripten
->   tcg: Add a TCG backend for WebAssembly
->   hw/9pfs: Allow using hw/9pfs with emscripten
->   gitlab: Enable CI for wasm build
->   MAINTAINERS: Update MAINTAINERS file for wasm-related files
->=20
->  .gitlab-ci.d/buildtest-template.yml           |   27 +
->  .gitlab-ci.d/buildtest.yml                    |    9 +
->  .gitlab-ci.d/container-cross.yml              |    5 +
->  MAINTAINERS                                   |   11 +
->  accel/tcg/cputlb.c                            |    8 +-
->  block/file-posix.c                            |   18 +
->  configs/meson/emscripten.txt                  |    6 +
->  configure                                     |    7 +
->  fsdev/file-op-9p.h                            |    3 +
->  fsdev/meson.build                             |    2 +-
->  hw/9pfs/9p-util-stub.c                        |   43 +
->  hw/9pfs/9p-util.h                             |   18 +
->  hw/9pfs/9p.c                                  |    3 +
->  hw/9pfs/coth.h                                |   12 +
->  hw/9pfs/meson.build                           |    2 +
->  hw/riscv/riscv_hart.c                         |    9 +-
->  include/accel/tcg/getpc.h                     |    2 +-
->  include/exec/tlb-common.h                     |   14 +-
->  include/exec/vaddr.h                          |   11 +
->  include/qemu/atomic.h                         |    4 +
->  include/qemu/cacheflush.h                     |    3 +-
->  include/tcg/helper-info.h                     |    4 +-
->  include/tcg/tcg.h                             |    2 +-
->  meson.build                                   |   30 +-
->  meson_options.txt                             |    2 +-
->  os-posix.c                                    |    5 +
->  qom/object.c                                  |    5 +-
->  scripts/meson-buildoptions.sh                 |    2 +-
->  target/arm/helper.c                           |    4 +-
->  tcg/meson.build                               |    5 +
->  tcg/tcg.c                                     |   26 +-
->  tcg/wasm32.c                                  | 1260 +++++
->  tcg/wasm32.h                                  |   39 +
->  tcg/wasm32/tcg-target-con-set.h               |   18 +
->  tcg/wasm32/tcg-target-con-str.h               |    8 +
->  tcg/wasm32/tcg-target-has.h                   |  102 +
->  tcg/wasm32/tcg-target-mo.h                    |   12 +
->  tcg/wasm32/tcg-target-opc.h.inc               |    4 +
->  tcg/wasm32/tcg-target-reg-bits.h              |   12 +
->  tcg/wasm32/tcg-target.c.inc                   | 4484 +++++++++++++++++
->  tcg/wasm32/tcg-target.h                       |   65 +
->  .../dockerfiles/emsdk-wasm32-cross.docker     |  145 +
->  util/cacheflush.c                             |    3 +-
->  util/coroutine-fiber.c                        |  127 +
->  util/mmap-alloc.c                             |   18 +
->  45 files changed, 6561 insertions(+), 38 deletions(-)
->  create mode 100644 configs/meson/emscripten.txt
->  create mode 100644 hw/9pfs/9p-util-stub.c
->  create mode 100644 tcg/wasm32.c
->  create mode 100644 tcg/wasm32.h
->  create mode 100644 tcg/wasm32/tcg-target-con-set.h
->  create mode 100644 tcg/wasm32/tcg-target-con-str.h
->  create mode 100644 tcg/wasm32/tcg-target-has.h
->  create mode 100644 tcg/wasm32/tcg-target-mo.h
->  create mode 100644 tcg/wasm32/tcg-target-opc.h.inc
->  create mode 100644 tcg/wasm32/tcg-target-reg-bits.h
->  create mode 100644 tcg/wasm32/tcg-target.c.inc
->  create mode 100644 tcg/wasm32/tcg-target.h
->  create mode 100644 tests/docker/dockerfiles/emsdk-wasm32-cross.docker
->  create mode 100644 util/coroutine-fiber.c
->=20
-> --=20
-> 2.25.1
->=20
+For -Wno-unused-command-line-argument what are the warnings/errors that 
+you are getting?
 
---Ex1hep+Q2LcyrOp+
-Content-Type: application/pgp-signature; name=signature.asc
+>> +elif host_os == 'emscripten'
+>> +  supported_backends += ['fiber']
 
------BEGIN PGP SIGNATURE-----
+Can you rename the backend to 'wasm' since the 'windows' backend also 
+uses an API called Fibers?
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmf2yKoACgkQnKSrs4Gr
-c8jrGAgArxG5JcQ7kMWq9ZAUzdDSYfC4+ag+jvYj3/DzNOWl57WhqgpyWR/ppOeI
-57c5fMWtu50s5RJ1k9hyaTTusRPuilljutDZEspcQ4DBFPNc54+JQq78vrLHdR3I
-fv+Q8ldL78JZdAB7CfFRMJklclo3gQGwjSvOrxZxg3Xnx1sqXwzsJNxXbMZt9kr4
-NEbaXHUzyjvR215VP+Y4a7JQEatssBWLDa3mf4TbyCClhUtisn1S1nwNZhQ+8Pb9
-BdEluCfiw2DCFKFUkA4d8czr9wS3IHhJahbZYg9tpHLFDPeiZGjgVOE8fM/Vf8ZA
-Ur3ohLbPsr37Fu2NpLKPQ58RJjdumw==
-=QZYV
------END PGP SIGNATURE-----
+Otherwise the changes look good.
 
---Ex1hep+Q2LcyrOp+--
+Paolo

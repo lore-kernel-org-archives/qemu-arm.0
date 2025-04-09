@@ -1,274 +1,207 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7526439njd;
-        Tue, 8 Apr 2025 23:43:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRKUEJAbV4bVDmW+If97OYsMnBMhFPl+LrIaUN1bKFfrkwLZs+EvCxOyMI9+2jqdzMewKlRuZv0na7tw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFo3w8UyBHPpRcUei2UU3NqMk/up0TR8ZCwmoh3c2aghXozfyx7rcXAXHaAWt0G1Dv4B9Pw
-X-Received: by 2002:a05:620a:2545:b0:7c5:54c9:3b8a with SMTP id af79cd13be357-7c79cbe07b9mr267077985a.26.1744181027033;
-        Tue, 08 Apr 2025 23:43:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744181027; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7626135njd;
+        Wed, 9 Apr 2025 03:54:57 -0700 (PDT)
+X-Received: by 2002:a05:6000:220b:b0:39c:1159:fe1f with SMTP id ffacd0b85a97d-39d87ac4b62mr2258321f8f.32.1744196097639;
+        Wed, 09 Apr 2025 03:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744196097; cv=none;
         d=google.com; s=arc-20240605;
-        b=CeFOpRc32dthbPzKjvCOVVHu/envykRonJDf4wqvgKK0gnSE/DrdKi5l+ik5UD+deW
-         EgaECENNmulLLzcqp9ymCSTGqY6r52AhTzBn1rJQhmcLFF3EMJshOAMlGZcoOAqtVerb
-         4E21aL7O3+O+tO0XI0rvaxOE4SKAtGxjhEM/o6u6snBeR0LydlbVCVjJ051xCtdx7ns/
-         FzBjRIuN2sd1YV7pcj39pAQZgDenBHGI+stEhRR6cFUsvaH6LbKXKZ/5etTTumNs/ov6
-         H6xDudCK2+bjUPOcETf0v40Ru8cQOZsTGFESIr13Lcpc5CxVE0ClFPVVSFwZ8EqX6kR9
-         hJAQ==
+        b=b0q3d+q4/7tpVaj4CE9zjyaualgq7vR9oaJIEbmTPq5n4XYUO0OG9b/WDvatRYJIio
+         ay8rQU0SwVDC+R7mStEO084y/dy7PtXtsAylKLPgDD3iSA58uJK+LdfjOmio8PjAcMRH
+         QAhhb/lBh8D2/MMtPHhR8op+F1tStjIw6vMgitK5RVi6QEJFpS5O0Zut6Tbekv59WVVw
+         6ohDOmiGpfqSa7PJglbt8gbXC7VpgiHcooxrgwpBzs06Bd10HFIIbCy6yQZn2mkE/5pH
+         dBEbgI4v8TCCOdTqQg1o++4dB9hy+JvjV39h0Lal3CMAUMKRXTQsYOedMxqqcUSYM+5C
+         avTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=ReSjXhTMyXs68TOAKRohePS4DFiaZ4opUsV4HIHmny8=;
-        fh=Cp428lGRWpSy1FcYgOVTU0uUMVutpHx5Ex0BR529Ry0=;
-        b=VKYTcQIKphAOu8U6CA/MXA7RtCFHOdFrDAU5bEgrHtP/8BJXnCWZNdpIotWEDsEZW3
-         eBDQJKiHF0JXxm7iDp71bgp9qcq1b3fODXwxEUsSsK74lSRh/OYXGx3i+dfpwjAlppY3
-         /MMUauscfL6CoXttdN1iIWe0PbteR4fAOAANRNMVAybp6oekYtGXqqSWaQsFDglvLzOj
-         tQdLWf9txwVr/XrxOKD4grpailncwbpMXW9BUn562zKS4Wx/dxpIqwNa+68CHvhLminj
-         rQz2qJSE7uK/7z58s5mkpzWP8CZcIB1PfDWA/QS+l0nSgIJ6WtOW2K8J/Smib/dGlff4
-         mKCw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=jcBAbBd5FPIILIqTt7rvo07REbaJqjD83akAyEzos0E=;
+        fh=RDkVV6McDzl5AGSWeQEYfMLoxwMSy8uHCupVGoJ0Z7Y=;
+        b=dI6bSY8rWAt1oI9nPYyRJ5OFUmxWg8xDEpW57jp60jE7pPpp61p68JU8/bqt8TlMgW
+         jITcEzm7kgH0UDJ12rA7W5KeKlgi5GklAAjklEVzG6LDa+2q95TXCRNfkgRlXgRIrER4
+         xDye8k3J/uQO4nVz/rxfjMI1V4z+/8X5dQWE6vKte0bJI7L+HAuuKRf2Lvh3cyqW2SJQ
+         y2/6UwRtsTC8+2TdAdSYDfd2MLqu98l+zH2z0buOKeBmpYipPOXRoTxprz/+UDQH815T
+         GJ20Klkel8vf5itLJmu0HJUiCndB5E9urKFYV3t50pE+AD+Jp+zdEtR4EikVsmUqSeb0
+         AGiw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I2JnMNH2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c7a144ea0esi42067985a.404.2025.04.08.23.43.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q4uk3M0Y;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-39d8937776bsor333892f8f.3.2025.04.09.03.54.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Apr 2025 23:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 09 Apr 2025 03:54:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I2JnMNH2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2P9W-0005ne-7a; Wed, 09 Apr 2025 02:43:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u2P9J-0005mf-Rb
- for qemu-arm@nongnu.org; Wed, 09 Apr 2025 02:43:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u2P9E-0001tR-Qd
- for qemu-arm@nongnu.org; Wed, 09 Apr 2025 02:42:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1744180969;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ReSjXhTMyXs68TOAKRohePS4DFiaZ4opUsV4HIHmny8=;
- b=I2JnMNH2N4xvodsSesPNsTURRZDF62GtSuH8WMMA4y+GOgBdLaQ5IuVp9SXOdfSAUGvY+N
- BhPpw19cmg2aidFNbZg5EvRJMvNdZEA9k2+SQDGz43mU/UQPsHdXayqHAAZ6hFkd9jkSEy
- p+T3/ghNegBX/j4B7Mrb/pHbpI1Vg/k=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-249-dIYiwDFSO5e-QYXd9yM_Tg-1; Wed,
- 09 Apr 2025 02:42:48 -0400
-X-MC-Unique: dIYiwDFSO5e-QYXd9yM_Tg-1
-X-Mimecast-MFC-AGG-ID: dIYiwDFSO5e-QYXd9yM_Tg_1744180966
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4C2C61801A07; Wed,  9 Apr 2025 06:42:41 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 638251801747; Wed,  9 Apr 2025 06:42:33 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 017CD21E6773; Wed, 09 Apr 2025 08:42:30 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: n.shubin@yadro.com,  qemu-devel@nongnu.org,  Linus Walleij
- <linus.walleij@linaro.org>,  Bartosz Golaszewski <brgl@bgdev.pl>,  "Enrico
- Weigelt, metux IT consult" <info@metux.net>,  Viresh Kumar
- <vireshk@kernel.org>,  Eric Blake <eblake@redhat.com>,  Michael Roth
- <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?=
- Lureau <marcandre.lureau@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Eduardo Habkost <eduardo@habkost.net>,  =?utf-8?Q?C?=
- =?utf-8?Q?=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Peter Maydell <peter.maydell@linaro.org>,  Steven
- Lee <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,  qemu-arm@nongnu.org,  Nikita Shubin
- <nikita.shubin@maquefel.me>,  Nikita Shubin <nshubin@yadro.com>
-Subject: Re: [PATCH PoC 1/7] QAPI: gpio JSON
-In-Reply-To: <Z9qpeF9-LNLk_nON@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
- =?utf-8?Q?=C3=A9=22's?= message of
- "Wed, 19 Mar 2025 11:24:40 +0000")
-References: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
- <20250319-gpiodev-v1-1-76da4e5800a1@yadro.com>
- <Z9qpeF9-LNLk_nON@redhat.com>
-Date: Wed, 09 Apr 2025 08:42:30 +0200
-Message-ID: <87h62xg7jd.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q4uk3M0Y;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744196097; x=1744800897; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jcBAbBd5FPIILIqTt7rvo07REbaJqjD83akAyEzos0E=;
+        b=Q4uk3M0YZeW7FPrge3p1W9uqulxeFi0ZGYuvE0Q9+aYZp4lNXZXxNK7TWaBzwGhCo5
+         e8BBUuo1sinZabInetEZA76ufjsOQxdO/lDNCtxQWaAYNqcUNGtjSgnajwv4DSanZjaw
+         9iGwv3Isz9tovWQ7GBaRsUwFjSLFf0jQ9betFg1Z5RMP67mue/pj5Gnq01BCDPfnNsbP
+         9VWeWK8fgmFMvPEBdrcjJHAeHuYAfTQg2sV9fp2OZnqbMruI8bYgkoJ6wcZy1LShJbbI
+         9G3orI+sHG3APuR0B+M+q98rFPkGQEctPZymjbIA1MNj3ZPjCegMRqLsa2HKV03oLBF9
+         qIqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744196097; x=1744800897;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jcBAbBd5FPIILIqTt7rvo07REbaJqjD83akAyEzos0E=;
+        b=Vo+FD3sv5QRfogentsD+HgA9+Wvec49S36Nd+c0kfMmRiDXWPLajXoBVtURinamnhh
+         32nNfIDdsnrXYIQYEC7P0dhqfL121tbbLAv1q6Rn+3ZDti6Ym59draTqy2S9I/pMpqBe
+         RC23EdH9OkPQJZaR3r4MPd75jFj/jb2u4d9C4RVFZ6muRUJZMmYW0N0H51H6QQU0YtSE
+         nwiPOFy1AxRhvstfaFVB6WFilJPLRNXbTi/B+xk4N5ZUfJBfcxsVEdc5AHzODazMtQaP
+         NWBSM6/UY+C2qbs/8xsE3d0O1CQ3CUgueMbfeB3IPe0nDOKJr0kKPxAUHTF1hAvKss6S
+         ILIA==
+X-Gm-Message-State: AOJu0YwhFVLXf7r3cr9gNSJWt+pGnl7xAB1a+QkSAmwqJcY/nJb1MkTh
+	nTeHkRvKqH1VPzdkV6Q/J7L1yg420CwrCaKH4/TnipghCiUsCJHFXh7Z7N047qPHkg==
+X-Gm-Gg: ASbGnctghyLpklpnMHvsftuuwxcpAoVGv7eYFpQ7ZlB+dwJYPUqfnY4BmjEWbu8IGkK
+	ElguBNK1tmi5Lht8smBjChNhXMcmQBxSbymwIhKQ6LUhLj2zLI42D268wjKtuoy0g8ozp13fSe2
+	igbIvL0/+8bBexrM2UwPuORu6f2B7cdibvCTwB+y5SPcb7UT6UdXkC8x1Sg/3+9qtnTlUv5cgD8
+	uk5wcj9h6dYEEEimQjptLc42sADkcxN+yK/o93tuVaHi6pQW1WZ31JRuaYL9yc1zv127RNHzncR
+	Puts4WSwru3l14uJvMbXAlsNkrivenqqMTY6LSvQDPloSYIfqhWHNJXNFZDqbfGqHQ+QNvH6o8U
+	mOBrJXj7tSxU=
+X-Google-Smtp-Source: AGHT+IEv7Xxdb4HKM1O/QUHyqJdmOZet1wAx2IE66VhM4OMBEgcQ+cG2syd8513zhiem0AbxZJ42og==
+X-Received: by 2002:a05:6000:2a10:b0:39c:1257:dbab with SMTP id ffacd0b85a97d-39d87cddd45mr1521437f8f.59.1744196097044;
+        Wed, 09 Apr 2025 03:54:57 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.74] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f20625592sm16121325e9.10.2025.04.09.03.54.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Apr 2025 03:54:56 -0700 (PDT)
+Message-ID: <e6cbd3ae-356d-4805-bca1-90b0e98c4d0d@linaro.org>
+Date: Wed, 9 Apr 2025 12:54:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.845,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9HBKF0xMRDU2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/10] various: Fix type conflict of GLib function
+ pointers
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
+ <2be81d2f86704662c9fa33ceb46077804e34ac77.1744032780.git.ktokunaga.mail@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <2be81d2f86704662c9fa33ceb46077804e34ac77.1744032780.git.ktokunaga.mail@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: s2n4qPdTN7aq
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+Hi Kohei,
 
-> On Wed, Mar 19, 2025 at 10:57:51AM +0300, Nikita Shubin via B4 Relay wrot=
-e:
->> From: Nikita Shubin <nshubin@yadro.com>
->>=20
->> Signed-off-by: Nikita Shubin <nshubin@yadro.com>
+On 7/4/25 16:45, Kohei Tokunaga wrote:
+> On emscripten, function pointer casts can cause function call failure.
+> This commit fixes the function definition to match to the type of the
+> function call.
+> 
+> - qtest_set_command_cb passed to g_once should match to GThreadFunc
+> - object_class_cmp and cpreg_key_compare are passed to g_list_sort as
+>    GCopmareFunc but GLib cast them to GCompareDataFunc.
+> 
+> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+> ---
+>   hw/riscv/riscv_hart.c | 9 ++++++++-
+>   qom/object.c          | 5 +++--
+>   target/arm/helper.c   | 4 ++--
+>   3 files changed, 13 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/riscv/riscv_hart.c b/hw/riscv/riscv_hart.c
+> index a55d156668..e37317dcbd 100644
+> --- a/hw/riscv/riscv_hart.c
+> +++ b/hw/riscv/riscv_hart.c
+> @@ -102,10 +102,17 @@ static bool csr_qtest_callback(CharBackend *chr, gchar **words)
+>       return false;
+>   }
+>   
+> +static gpointer g_qtest_set_command_cb(
+> +    bool (*pc_cb)(CharBackend *chr, gchar **words))
+> +{
 
-The commit message should briefly explain the purpose of the change.
+Why not use a GThreadFunc prototype, casting the argument?
 
->> ---
->>  qapi/gpio.json        | 68 ++++++++++++++++++++++++++++++++++++++++++++=
-+++++++
->>  qapi/meson.build      |  1 +
->>  qapi/qapi-schema.json |  1 +
->>  3 files changed, 70 insertions(+)
->>=20
->> diff --git a/qapi/gpio.json b/qapi/gpio.json
->> new file mode 100644
->> index 0000000000000000000000000000000000000000..1c2b7af36813ff52cbb3a44e=
-64a2e5a5d8658d62
->> --- /dev/null
->> +++ b/qapi/gpio.json
->> @@ -0,0 +1,68 @@
->> +# -*- Mode: Python -*-
->> +# vim: filetype=3Dpython
->> +#
->> +
->> +##
->> +# =3D Gpio devices
+> +    qtest_set_command_cb(pc_cb);
+> +    return NULL;
+> +}
+> +
+>   static void riscv_cpu_register_csr_qtest_callback(void)
+>   {
+>       static GOnce once;
+> -    g_once(&once, (GThreadFunc)qtest_set_command_cb, csr_qtest_callback);
+> +    g_once(&once, (GThreadFunc)g_qtest_set_command_cb, csr_qtest_callback);
+>   }
+>   #endif
+>   
 
-Spell it GPIO in doc text, because it's an acronym.
+OK for the rest, but it might help to merge by corresponding maintainers
+if split in 3 distinct patches.
 
->> +##
->> +
->> +##
->> +# @GpiodevInfo:
->> +#
->> +# Information about a gpio device.
->> +#
->> +# @label: the label of the gpio device
->> +#
->> +# Since: 9.2
-
-Make that 10.1 everywhere.
-
->> +##
->> +{ 'struct': 'GpiodevInfo',
->> +  'data': { 'label': 'str' } }
->> +
->> +##
->> +# @GpiodevBackendKind:
->> +#
->> +# @chardev: chardevs
->> +#
->> +# Since: 9.2
->> +##
->> +{ 'enum': 'GpiodevBackendKind',
->> +  'data': [ 'chardev' ] }
->> +
->> +##
->> +# @GpiodevChardev:
->> +#
->> +# Configuration info for chardev gpiodevs.
->> +#
->> +# @chardev: chardev id
->> +#
->> +# @size: buffer size, default is 65536
-
-What buffer is being sized here?
-
->> +#
->> +# Since: 9.2
->> +##
->> +  { 'struct': 'GpiodevChardev',
->> +    'data': { 'chardev': 'str',
->> +              '*size': 'int' } }
-
-Use 'size' instead of 'int' for byte counts, please.
-
->> +
->> +##
->> +# @GpiodevChardevWrapper:
->> +#
->> +# @data: Configuration info for chardev gpiodevs
->> +#
->> +# Since: 9.2
->> +##
->> +{ 'struct': 'GpiodevChardevWrapper',
->> +  'data': { 'data': 'GpiodevChardev' } }
->> +
->> +##
->> +# @GpiodevBackend:
->> +#
->> +# Configuration info for the new chardev backend.
->> +#
->> +# @type: backend type
->> +#
->> +# Since: 9.2
->> +##
->> +{ 'union': 'GpiodevBackend',
->> +  'base': { 'type': 'GpiodevBackendKind' },
->> +  'discriminator': 'type',
->> +  'data': { 'chardev': 'GpiodevChardevWrapper' } }
-
-Why GpiodevChardevWrapper?  Consistency with similar existing things?
-
-The wrapper types are remnants of "simple" unions.  New code should
-avoid them, unless avoiding them would make things hard to use.  For
-instance, when adding a new branch to a union where the existing
-branches are of such wrapper types, use a wrapper for the new one to
-keep things consistent.
-
-What other backend types do you have in mind?
-
-> While historically we've just wired things up to chardevs in QEMU,
-> in most cases this is just a hack to get the ability too configure
-> a socket, with the other chardev backends being never used. The
-> downside of this is that chardev APIs internally are not very nice
-> to work with, especally if you want/need to be aware of client
-> connection establishment/closure.
->
-> These days we've got common socket APIs and QAPI schema available
-> and can bypass the chardevs (which have a pretty unpleasant
-> internal API) if all we need is a socket backend connecting to
-> an external server. This would let code directly work with the
-> QIOChannelSocket object, instead of that object being hidden
-> behind the chardev APIs.
-
-Good point.  Nikita, do you see a use for chardevs other than sockets?
-
-[...]
-
+> diff --git a/qom/object.c b/qom/object.c
+> index 01618d06bd..19698aae4c 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -1191,7 +1191,8 @@ GSList *object_class_get_list(const char *implements_type,
+>       return list;
+>   }
+>   
+> -static gint object_class_cmp(gconstpointer a, gconstpointer b)
+> +static gint object_class_cmp(gconstpointer a, gconstpointer b,
+> +                             gpointer user_data)
+>   {
+>       return strcasecmp(object_class_get_name((ObjectClass *)a),
+>                         object_class_get_name((ObjectClass *)b));
+> @@ -1201,7 +1202,7 @@ GSList *object_class_get_list_sorted(const char *implements_type,
+>                                        bool include_abstract)
+>   {
+>       return g_slist_sort(object_class_get_list(implements_type, include_abstract),
+> -                        object_class_cmp);
+> +                        (GCompareFunc)object_class_cmp);
+>   }
+>   
+>   Object *object_ref(void *objptr)
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index bb445e30cd..68f81fadfc 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -220,7 +220,7 @@ static void count_cpreg(gpointer key, gpointer opaque)
+>       }
+>   }
+>   
+> -static gint cpreg_key_compare(gconstpointer a, gconstpointer b)
+> +static gint cpreg_key_compare(gconstpointer a, gconstpointer b, void *d)
+>   {
+>       uint64_t aidx = cpreg_to_kvm_id((uintptr_t)a);
+>       uint64_t bidx = cpreg_to_kvm_id((uintptr_t)b);
+> @@ -244,7 +244,7 @@ void init_cpreg_list(ARMCPU *cpu)
+>       int arraylen;
+>   
+>       keys = g_hash_table_get_keys(cpu->cp_regs);
+> -    keys = g_list_sort(keys, cpreg_key_compare);
+> +    keys = g_list_sort(keys, (GCompareFunc)cpreg_key_compare);
+>   
+>       cpu->cpreg_array_len = 0;
+>   

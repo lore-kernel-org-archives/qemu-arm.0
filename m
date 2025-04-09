@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7557313njd;
-        Wed, 9 Apr 2025 01:07:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUdkWzNAB2BO4gNMO9w0HFItzmbDQ7BdCaUbN3tpLrMUtQT+zZRFEA5KXggMWeUo3JJeKilaKfvwn7Tag==@linaro.org
-X-Google-Smtp-Source: AGHT+IEgpNH/VDSXtn1dkQHdHDXb9+nhDe4uJL5z/JLOXidav0Wb+rOoFK5PhrOe7s5+YNNFpBQY
-X-Received: by 2002:ac8:5a0f:0:b0:477:1edc:baaa with SMTP id d75a77b69052e-4796007e3b7mr20015861cf.6.1744186030150;
-        Wed, 09 Apr 2025 01:07:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744186030; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7557399njd;
+        Wed, 9 Apr 2025 01:07:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnBBL13edEvEpCP6v7DfBMDAg4oz3Rmi/lU7ZbZmORhEVwkuP+0BcKnkoAvGtgxf4BLDvz2ZzNHO+69Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvJ2yncw66kG1MzTdR5mLMyFsdyb6jEiIA4vRPeiTKfpq/iWX/uuLqv3bzHV9PERiwJ1vL
+X-Received: by 2002:a05:620a:198c:b0:7c7:93c7:f35d with SMTP id af79cd13be357-7c79cbe70bbmr281688085a.31.1744186038702;
+        Wed, 09 Apr 2025 01:07:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744186038; cv=none;
         d=google.com; s=arc-20240605;
-        b=hRovLVmU109c7RunPwggeTQF2AOAALTMKfp6VlZm53eWjgBfXZ2HJw3opXtve6crUS
-         AMuPSkaPGkjOGU4ggi2E0W9edXk6SyI4WvG6aGNbEZCjk5tICZnmuQCRO/c7E/foxt6d
-         D17qKxFPYv+3GlKifChC2pbpfVCnNTYcrQK0zoMBnBU7Mx/e6wRvzUP+qe0kRp3s38RN
-         rhpGe0E4MJtCcVi9z2XFrkvUmzattO7m6kkavyC1Ix60nfIdvirm5mS6aCWXgtwnxYii
-         OlaYcU+1EQFagZIT3YGDy3dqREujtrs9QRp8CxftjqMP4sb77BaOdf41JZFtZKoBsUk7
-         eYJw==
+        b=GH8HZErf8UHxl+3k4Cqg2b6zkCR9om7xasS7hboE5iV/t1V6WykbDe6ug3Q4D4R6MF
+         pkMxHWZ0eH/Af5XsURfi3RorlQ8WGPAJelc8JL3J8g9H+eRM7vCsTBUyaBSVnFXidoOQ
+         xic8YINXwBU+O2WxfBwjUveU9O5CgPHVoHbXfLrHZHiJ2/d7gdLNHD2VNqppSo6w/DdB
+         ozdv6z0U8y3QE9Huo7xFmAAeqJd1NhAijnV3Ql78GbG8vtpSh9ER4PI/cPxz0dKVC7DR
+         DHFdAwgBZHwcpdiDhPhrywP4qocDGrzlrbYtU1f0YAHkjWlkq4crX7w556uStex36iVh
+         0P0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ItfTOmc5oEnh9HnixfzO6wo9yChJeKeo9Khbhm/JQMM=;
+        bh=mM+hXtIV7QavzwcJNmTJXPrIKcVthVQcju9zoigjujU=;
         fh=PtEDQrZFPZGDVFMumSdzEvkXT1K9aj+GDIdDBicI0gg=;
-        b=YNrfXKUVxV2bhPr+aRzISPxRkfKpXoNcRQ3IFNHeJ21aTEirfQyfq4A/6quC0G+Fr5
-         fv/It33cvzRVg4V1b9DgYOYmUM714QPy9xKZh+Z6R8Z1C3WlCLNSo1RKv9D2X3V/8zeu
-         G2Fjjf9GN+qbHaPnJHMy1vDTz/eAQVFephUsQeylUC+F9aKxoXtAgMiR8nJKwxPrayLl
-         PJr3KZOxZTDqc2RDM5X8n1Zv5YmaykcPBk/uZvnHhFFiZeuOmUZSRNTDyDsX/LkPPBXo
-         Nn89BLNb17BA7FN3XojB8bNflnzIHhAUWf4ekD9jpwz/66tyAMpMu5eK3e3QcrjBNHMR
-         NElw==;
+        b=XL7fb8wIFG8iIEWj4+0snWWB7nYgfMnPNSrBDsG6twk80+vsF9Eaw3+avK7wnylB2H
+         hQ39lTaTi4AIxBv9qYL868hRwuDFPFzRZQ+ezpshGylT48Fwuj8m72Tb/5X/Gey+YYNu
+         UA7hszc1uUTQuYXM6vMVWaqQEbOQqY5cLrN52T42qmk2uwQ8+zfrRBc8rxV8NH72N36U
+         Ls+ZYDp8zWH+1UPIoB7oeab0d0zKqOcVU2O7m7DzomXieZjaGHtzQTkOzMCvTwlIOpLH
+         UZ9jCmWjFvcFfG6YVRRuTy3NCSVRLzeuhW2YijhqhzOMZYsTFDXqB8WDsiecaSyBzu+7
+         gWUg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CLHGLi8K;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Oe7J8JWg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47964dd2c07si5395741cf.137.2025.04.09.01.07.10
+        by mx.google.com with ESMTPS id af79cd13be357-7c7a1459d2fsi51503085a.375.2025.04.09.01.07.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Apr 2025 01:07:10 -0700 (PDT)
+        Wed, 09 Apr 2025 01:07:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CLHGLi8K;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Oe7J8JWg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2QSJ-00057T-7g; Wed, 09 Apr 2025 04:06:43 -0400
+	id 1u2QSk-0005Fr-SM; Wed, 09 Apr 2025 04:07:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2QSD-00056k-G9; Wed, 09 Apr 2025 04:06:39 -0400
+ id 1u2QSO-00058o-Tg; Wed, 09 Apr 2025 04:06:59 -0400
 Received: from mgamail.intel.com ([192.198.163.14])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2QSA-0000T8-AH; Wed, 09 Apr 2025 04:06:37 -0400
+ id 1u2QSL-0000UX-NG; Wed, 09 Apr 2025 04:06:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744185994; x=1775721994;
+ t=1744186005; x=1775722005;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=IooOrcGOLR5xKZ+Di0/EtLuoebHrm/6xV5IkllZH54w=;
- b=CLHGLi8KQXOaLPc8jcX3fq9514GLUqhlDCrauILDIGAEfL7eUbwy4M8d
- XKBbe1GRcmrI20o4bkdO9UESbmWrUvzR4fTbFPoAoPFj/NuIYgjK4LRGw
- T6ROW6qfICIdua3BY2mTncw0O9pn+msV8064ZYNu0ES5qxrzu1wgMG9Sj
- RcfcMl1LJmw1MgmrD6W+s+6vzVBEAmTbkBDSw+jWRGWaSQyH51dCS4dW+
- 3OX0LTmkkqHS+OYCt/9T+okx/e65DWUu0qEH/MUM3t7C1z9tYbnnGtkO4
- fKGQF7oLbkSnTSp4mei0Gegx4CSzjifPm7YEpECxK8t2eB/PaDPiMKTmw g==;
-X-CSE-ConnectionGUID: /WvjI32YSvixw9XyimSudg==
-X-CSE-MsgGUID: rjkt0GHnQli+fJAlOv1Z6A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45810034"
-X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="45810034"
+ bh=y/Ah2gIgHbe+sK/IOChNaZznI5EZIF+55b+SG00yUgU=;
+ b=Oe7J8JWg9VXJ56ghC2qNc1crUmOT2HlGCP+KLAoDHOdG6eJQA1Ett2xB
+ 9wR1uzTbUkaDYs7PANfrzQ4b6iLiXl4mI78Z5FxIZbQ+1C4vA/EsmTRUT
+ njID0BNBGd8u28fSwR0f78Vaised9E/YtqsoDzGBFRgw28ykzDDylMr+9
+ VcsIaznsNeI55XqI5PISL89rph8rdKquRKiDeYRecFzb1c4xXMt7E6aPn
+ 2nHLFD46NChrD8yGovunJfrT6TqUf2BPLkV5enIGxX7C3sHAuMYDKoOnj
+ 5AjzKDsHg3W6lCDWQ/uKSai5V8keV3jiBQj+RCOmbM5/idnEg16yAZY5u g==;
+X-CSE-ConnectionGUID: tf98bI3qQZyXY3cDGsGFLg==
+X-CSE-MsgGUID: IT9daTE7Reml79q5bOBkcA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45810065"
+X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="45810065"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2025 01:06:32 -0700
-X-CSE-ConnectionGUID: rt3jFTj5SKKZ0sGxiRAkwA==
-X-CSE-MsgGUID: XrJzuMe3QeOsDHHyN8mciQ==
+ 09 Apr 2025 01:06:43 -0700
+X-CSE-ConnectionGUID: I97O+6i8RBm4yuoI5EFM2Q==
+X-CSE-MsgGUID: eesw//O1SlG3FcXwB6y7cg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="151702615"
+X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="151702674"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by fmviesa002.fm.intel.com with ESMTP; 09 Apr 2025 01:06:20 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 09 Apr 2025 01:06:38 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
@@ -90,9 +90,9 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
 Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
  Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 2/5] i386/kvm: Support basic KVM PMU filter
-Date: Wed,  9 Apr 2025 16:26:46 +0800
-Message-Id: <20250409082649.14733-3-zhao1.liu@intel.com>
+Subject: [PATCH 5/5] i386/kvm: Support fixed counter in KVM PMU filter
+Date: Wed,  9 Apr 2025 16:26:49 +0800
+Message-Id: <20250409082649.14733-6-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250409082649.14733-1-zhao1.liu@intel.com>
 References: <20250409082649.14733-1-zhao1.liu@intel.com>
@@ -122,297 +122,222 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZUoLnwES1mie
+X-TUID: Lto2muOI0zqm
 
-Filter PMU events with raw format in i386 code.
+KVM_SET_PMU_EVENT_FILTER of x86 KVM allows user to configure x86 fixed
+function counters by a bitmap.
 
-For i386, raw format indicates that the PMU event code is already
-encoded according to the KVM ioctl requirements, and can be delivered
-directly to KVM without additional encoding work.
+Add the support of x86-fixed-counter in kvm-pmu-filter object and handle
+this in i386 kvm codes.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Tested-by: Yi Lai <yi1.lai@intel.com>
 ---
 Changes since RFC v2:
- * Add documentation in qemu-options.hx.
+ * Drop KVMPMUX86FixedCounter structure and use uint32_t to represent
+   bitmap in QAPI directly.
  * Add Tested-by from Yi.
+ * Add documentation in qemu-options.hx.
+ * Bump up the supported QAPI version to v10.1.
 
 Changes since RFC v1:
- * Stop check whether per-event actions are the same, as "action" has
-   been a global parameter. (Dapeng)
- * Make pmu filter related functions return int in
-   target/i386/kvm/kvm.c.
+ * Make "action" as a global (per filter object) item, not a per-counter
+   parameter. (Dapeng)
+ * Bump up the supported QAPI version to v10.0.
 ---
- include/system/kvm_int.h |   2 +
- qemu-options.hx          |  47 ++++++++++++++-
- target/i386/kvm/kvm.c    | 127 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 175 insertions(+), 1 deletion(-)
+ accel/kvm/kvm-pmu.c      | 31 +++++++++++++++++++++++++++++++
+ include/system/kvm-pmu.h |  5 ++++-
+ qapi/kvm.json            |  6 +++++-
+ qemu-options.hx          |  6 +++++-
+ target/i386/kvm/kvm.c    | 39 ++++++++++++++++++++++++---------------
+ 5 files changed, 69 insertions(+), 18 deletions(-)
 
-diff --git a/include/system/kvm_int.h b/include/system/kvm_int.h
-index 4de6106869b0..743fed29b17b 100644
---- a/include/system/kvm_int.h
-+++ b/include/system/kvm_int.h
-@@ -17,6 +17,7 @@
- #include "hw/boards.h"
- #include "hw/i386/topology.h"
- #include "io/channel-socket.h"
-+#include "system/kvm-pmu.h"
- 
- typedef struct KVMSlot
- {
-@@ -166,6 +167,7 @@ struct KVMState
-     uint16_t xen_gnttab_max_frames;
-     uint16_t xen_evtchn_max_pirq;
-     char *device;
-+    KVMPMUFilter *pmu_filter;
- };
- 
- void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-diff --git a/qemu-options.hx b/qemu-options.hx
-index dc694a99a30a..51a7c61ce0b0 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -232,7 +232,8 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
-     "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
-     "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
-     "                thread=single|multi (enable multi-threaded TCG)\n"
--    "                device=path (KVM device path, default /dev/kvm)\n", QEMU_ARCH_ALL)
-+    "                device=path (KVM device path, default /dev/kvm)\n"
-+    "                pmu-filter=id (configure KVM PMU filter)\n", QEMU_ARCH_ALL)
- SRST
- ``-accel name[,prop=value[,...]]``
-     This is used to enable an accelerator. Depending on the target
-@@ -318,6 +319,10 @@ SRST
-         option can be used to pass the KVM device to use via a file descriptor
-         by setting the value to ``/dev/fdset/NN``.
- 
-+    ``pmu-filter=id``
-+        Sets the id of KVM PMU filter object. This option can be used to set
-+        whitelist or blacklist of PMU events for Guest.
-+
- ERST
- 
- DEF("smp", HAS_ARG, QEMU_OPTION_smp,
-@@ -6144,6 +6149,46 @@ SRST
-         ::
- 
-             (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-+
-+    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"action":action,"events":[entry_list]}'``
-+        Create a kvm-pmu-filter object that configures KVM to filter
-+        selected PMU events for Guest.
-+
-+        This option must be written in JSON format to support ``events``
-+        JSON list.
-+
-+        The ``action`` parameter sets the action that KVM will take for
-+        the selected PMU events. It accepts ``allow`` or ``deny``. If
-+        the action is set to ``allow``, all PMU events except the
-+        selected ones will be disabled and blocked in the Guest. But if
-+        the action is set to ``deny``, then only the selected events
-+        will be denied, while all other events can be accessed normally
-+        in the Guest.
-+
-+        The ``events`` parameter accepts a list of PMU event entries in
-+        JSON format. Event entries, based on different encoding formats,
-+        have the following types:
-+
-+        ``{"format":"raw","code":raw_code}``
-+            Encode the single PMU event with raw format. The ``code``
-+            parameter accepts raw code of a PMU event. For x86, the raw
-+            code represents a combination of umask and event select:
-+
-+        ::
-+
-+            (((select & 0xf00UL) << 24) | \
-+             ((select) & 0xff) | \
-+             ((umask) & 0xff) << 8)
-+
-+        An example KVM PMU filter object would look like:
-+
-+        .. parsed-literal::
-+
-+             # |qemu_system| \\
-+                 ... \\
-+                 -accel kvm,pmu-filter=id \\
-+                 -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":196}]}' \\
-+                 ...
- ERST
- 
- 
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 6c749d4ee812..fa3a696654cb 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -34,6 +34,7 @@
- #include "system/system.h"
- #include "system/hw_accel.h"
- #include "system/kvm_int.h"
-+#include "system/kvm-pmu.h"
- #include "system/runstate.h"
- #include "kvm_i386.h"
- #include "../confidential-guest.h"
-@@ -110,6 +111,7 @@ typedef struct {
- static void kvm_init_msrs(X86CPU *cpu);
- static int kvm_filter_msr(KVMState *s, uint32_t msr, QEMURDMSRHandler *rdmsr,
-                           QEMUWRMSRHandler *wrmsr);
-+static int kvm_filter_pmu_event(KVMState *s);
- 
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_INFO(SET_TSS_ADDR),
-@@ -3346,6 +3348,18 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         }
-     }
- 
-+    /*
-+     * TODO: Move this chunk to kvm_arch_pre_create_vcpu() and check
-+     * whether pmu is enabled there.
-+     */
-+    if (s->pmu_filter) {
-+        ret = kvm_filter_pmu_event(s);
-+        if (ret < 0) {
-+            error_report("Could not set KVM PMU filter");
-+            return ret;
-+        }
-+    }
-+
-     return 0;
+diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
+index 9205907d1779..509d69d9c515 100644
+--- a/accel/kvm/kvm-pmu.c
++++ b/accel/kvm/kvm-pmu.c
+@@ -101,6 +101,29 @@ fail:
+     qapi_free_KvmPmuFilterEventList(head);
  }
  
-@@ -5942,6 +5956,82 @@ static int kvm_handle_wrmsr(X86CPU *cpu, struct kvm_run *run)
-     g_assert_not_reached();
- }
- 
-+static bool kvm_config_pmu_event(KVMPMUFilter *filter,
-+                                 struct kvm_pmu_event_filter *kvm_filter)
++static void kvm_pmu_filter_get_fixed_counter(Object *obj, Visitor *v,
++                                             const char *name, void *opaque,
++                                             Error **errp)
 +{
-+    KvmPmuFilterEventList *events;
-+    KvmPmuFilterEvent *event;
-+    uint64_t code;
-+    int idx = 0;
++    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
 +
-+    kvm_filter->nevents = filter->nevents;
-+    events = filter->events;
-+    while (events) {
-+        assert(idx < kvm_filter->nevents);
-+
-+        event = events->value;
-+        switch (event->format) {
-+        case KVM_PMU_EVENT_FORMAT_RAW:
-+            code = event->u.raw.code;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        kvm_filter->events[idx++] = code;
-+        events = events->next;
-+    }
-+
-+    return true;
++    visit_type_uint32(v, name, &filter->x86_fixed_counter, errp);
 +}
 +
-+static int kvm_install_pmu_event_filter(KVMState *s)
++static void kvm_pmu_filter_set_fixed_counter(Object *obj, Visitor *v,
++                                             const char *name, void *opaque,
++                                             Error **errp)
 +{
-+    struct kvm_pmu_event_filter *kvm_filter;
-+    KVMPMUFilter *filter = s->pmu_filter;
-+    int ret;
++    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
++    uint32_t counter;
 +
-+    kvm_filter = g_malloc0(sizeof(struct kvm_pmu_event_filter) +
-+                           filter->nevents * sizeof(uint64_t));
-+
-+    switch (filter->action) {
-+    case KVM_PMU_FILTER_ACTION_ALLOW:
-+        kvm_filter->action = KVM_PMU_EVENT_ALLOW;
-+        break;
-+    case KVM_PMU_FILTER_ACTION_DENY:
-+        kvm_filter->action = KVM_PMU_EVENT_DENY;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    if (!kvm_config_pmu_event(filter, kvm_filter)) {
-+        goto fail;
-+    }
-+
-+    ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
-+    if (ret) {
-+        error_report("KVM_SET_PMU_EVENT_FILTER fails (%s)", strerror(-ret));
-+        goto fail;
-+    }
-+
-+    g_free(kvm_filter);
-+    return 0;
-+fail:
-+    g_free(kvm_filter);
-+    return -EINVAL;
-+}
-+
-+static int kvm_filter_pmu_event(KVMState *s)
-+{
-+    if (!kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_FILTER)) {
-+        error_report("KVM PMU filter is not supported by Host.");
-+        return -1;
-+    }
-+
-+    return kvm_install_pmu_event_filter(s);
-+}
-+
- static bool has_sgx_provisioning;
- 
- static bool __kvm_enable_sgx_provisioning(KVMState *s)
-@@ -6537,6 +6627,35 @@ static void kvm_arch_set_xen_evtchn_max_pirq(Object *obj, Visitor *v,
-     s->xen_evtchn_max_pirq = value;
- }
- 
-+static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
-+                                      Object *child, Error **errp)
-+{
-+    KVMPMUFilter *filter = KVM_PMU_FILTER(child);
-+    KvmPmuFilterEventList *events = filter->events;
-+
-+    if (!filter->nevents) {
-+        error_setg(errp,
-+                   "Empty KVM PMU filter.");
++    if (!visit_type_uint32(v, name, &counter, errp)) {
 +        return;
 +    }
 +
-+    while (events) {
-+        KvmPmuFilterEvent *event = events->value;
-+
-+        switch (event->format) {
-+        case KVM_PMU_EVENT_FORMAT_RAW:
-+            break;
-+        default:
-+            error_setg(errp,
-+                       "Unsupported PMU event format %s.",
-+                       KvmPmuEventFormat_str(events->value->format));
-+            return;
-+        }
-+
-+        events = events->next;
-+    }
++    filter->x86_fixed_counter = counter;
 +}
 +
- void kvm_arch_accel_class_init(ObjectClass *oc)
+ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
  {
-     object_class_property_add_enum(oc, "notify-vmexit", "NotifyVMexitOption",
-@@ -6576,6 +6695,14 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
+     object_class_property_add_enum(oc, "action", "KvmPmuFilterAction",
+@@ -116,6 +139,14 @@ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
                                NULL, NULL);
-     object_class_property_set_description(oc, "xen-evtchn-max-pirq",
-                                           "Maximum number of Xen PIRQs");
+     object_class_property_set_description(oc, "events",
+                                           "KVM PMU event list");
 +
-+    object_class_property_add_link(oc, "pmu-filter",
-+                                   TYPE_KVM_PMU_FILTER,
-+                                   offsetof(KVMState, pmu_filter),
-+                                   kvm_arch_check_pmu_filter,
-+                                   OBJ_PROP_LINK_STRONG);
-+    object_class_property_set_description(oc, "pmu-filter",
-+                                          "Set the KVM PMU filter");
++    object_class_property_add(oc, "x86-fixed-counter", "uint32_t",
++                              kvm_pmu_filter_get_fixed_counter,
++                              kvm_pmu_filter_set_fixed_counter,
++                              NULL, NULL);
++    object_class_property_set_description(oc, "x86-fixed-counter",
++                                          "Enablement bitmap of "
++                                          "x86 PMU fixed counter");
  }
  
- void kvm_set_max_apic_id(uint32_t max_apic_id)
+ static void kvm_pmu_filter_instance_init(Object *obj)
+diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
+index 6abc0d037aee..5238b2b4dcc7 100644
+--- a/include/system/kvm-pmu.h
++++ b/include/system/kvm-pmu.h
+@@ -19,10 +19,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(KVMPMUFilter, KVM_PMU_FILTER)
+ 
+ /**
+  * KVMPMUFilter:
+- * @action: action that KVM PMU filter will take for selected PMU events.
++ * @action: action that KVM PMU filter will take for selected PMU events
++ *    and counters.
+  * @nevents: number of PMU event entries listed in @events
+  * @events: list of PMU event entries.  A PMU event entry may represent one
+  *    event or multiple events due to its format.
++ * @x86_fixed_counter: bitmap of x86 fixed counter.
+  */
+ struct KVMPMUFilter {
+     Object parent_obj;
+@@ -30,6 +32,7 @@ struct KVMPMUFilter {
+     KvmPmuFilterAction action;
+     uint32_t nevents;
+     KvmPmuFilterEventList *events;
++    uint32_t x86_fixed_counter;
+ };
+ 
+ /*
+diff --git a/qapi/kvm.json b/qapi/kvm.json
+index 1b523e058731..5374c8340e5a 100644
+--- a/qapi/kvm.json
++++ b/qapi/kvm.json
+@@ -115,7 +115,10 @@
+ #
+ # Properties of KVM PMU Filter.
+ #
+-# @action: action that KVM PMU filter will take for selected PMU events.
++# @action: action that KVM PMU filter will take for selected PMU events
++#     and counters.
++#
++# @x86-fixed-counter: enablement bitmap of x86 fixed counters.
+ #
+ # @events: list of selected PMU events.
+ #
+@@ -123,4 +126,5 @@
+ ##
+ { 'struct': 'KvmPmuFilterProperties',
+   'data': { 'action': 'KvmPmuFilterAction',
++            '*x86-fixed-counter': 'uint32',
+             '*events': ['KvmPmuFilterEvent'] } }
+diff --git a/qemu-options.hx b/qemu-options.hx
+index bb89198971e0..eadfb69c8876 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -6150,7 +6150,7 @@ SRST
+ 
+             (qemu) qom-set /objects/iothread1 poll-max-ns 100000
+ 
+-    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"action":action,"events":[entry_list]}'``
++    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"x86-fixed-counter":bitmap,"action":action,"events":[entry_list]}'``
+         Create a kvm-pmu-filter object that configures KVM to filter
+         selected PMU events for Guest.
+ 
+@@ -6165,6 +6165,10 @@ SRST
+         will be denied, while all other events can be accessed normally
+         in the Guest.
+ 
++        The ``x86-fixed-counter`` parameter sets a bitmap of x86 fixed
++        counters, and ``action`` will also take effect on the selected
++        fixed counters.
++
+         The ``events`` parameter accepts a list of PMU event entries in
+         JSON format. Event entries, based on different encoding formats,
+         have the following types:
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 8786501e9c7e..8b916dbb5d6f 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -6016,19 +6016,25 @@ static int kvm_install_pmu_event_filter(KVMState *s)
+         g_assert_not_reached();
+     }
+ 
+-    kvm_filter->flags = filter->events->value->format ==
+-                        KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
+-                        KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
+-
+-    if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
+-        !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
+-        error_report("Masked entry format of PMU event "
+-                     "is not supported by Host.");
+-        goto fail;
++    if (filter->x86_fixed_counter) {
++        kvm_filter->fixed_counter_bitmap = filter->x86_fixed_counter;
+     }
+ 
+-    if (!kvm_config_pmu_event(filter, kvm_filter)) {
+-        goto fail;
++    if (filter->nevents) {
++        kvm_filter->flags = filter->events->value->format ==
++                            KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
++                            KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
++
++        if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
++            !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
++            error_report("Masked entry format of PMU event "
++                         "is not supported by Host.");
++            goto fail;
++        }
++
++        if (!kvm_config_pmu_event(filter, kvm_filter)) {
++            goto fail;
++        }
+     }
+ 
+     ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
+@@ -6656,16 +6662,19 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
+     KvmPmuFilterEventList *events = filter->events;
+     uint32_t base_flag;
+ 
+-    if (!filter->nevents) {
++    if (!filter->x86_fixed_counter && !filter->nevents) {
+         error_setg(errp,
+                    "Empty KVM PMU filter.");
+         return;
+     }
+ 
+     /* Pick the first event's flag as the base one. */
+-    base_flag = events->value->format ==
+-                KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
+-                KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
++    base_flag = 0;
++    if (filter->nevents &&
++        events->value->format == KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY) {
++        base_flag = KVM_PMU_EVENT_FLAG_MASKED_EVENTS;
++    }
++
+     while (events) {
+         KvmPmuFilterEvent *event = events->value;
+         uint32_t flag;
 -- 
 2.34.1
 

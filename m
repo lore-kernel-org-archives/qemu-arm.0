@@ -1,133 +1,124 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7314225njd;
-        Tue, 8 Apr 2025 13:40:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbe5o3phmfLxVMFCmtIBD5975Mvf7GD2elbHYDmz+XE3zyVAZhPnr6AtyP/uAIDp40zzC4moU1ivtYpw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5cIH76PjS4znlsFflbsswSWQ6v/GCU193F/fKKpvA9QE8AhqiwnW9BUR4S3Hw7/WacsjK
-X-Received: by 2002:a05:622a:1901:b0:476:77a5:3104 with SMTP id d75a77b69052e-4795f2b16e6mr8067461cf.11.1744144814077;
-        Tue, 08 Apr 2025 13:40:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744144814; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7530773njd;
+        Tue, 8 Apr 2025 23:57:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXD9oLyDCKPJwI/12jMZQBDM0oZ89RK8YRX09A/HCc0wR9DnrPREEfVTj8KTKEAPxBat7dJzzH0/8ybeQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHYrHIK+g3OJTUacEGk7XFMOhbZq/v31dY5S+xPYHxKpY84keaxo7h9DnEn3mWVnHUJsuqF
+X-Received: by 2002:ad4:5cad:0:b0:6e8:9e9c:d20f with SMTP id 6a1803df08f44-6f0dbbbd91amr29365606d6.21.1744181855796;
+        Tue, 08 Apr 2025 23:57:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744181855; cv=none;
         d=google.com; s=arc-20240605;
-        b=BHoLYz8uTCsxhZAwA4VJOoIku5gB1VyNNUG85RmxSO7M3CI+g9YvICORbKjBHsQGnk
-         buEJmBkqLVBsEbo2Oii+eJwjDj13vCk3/0cp6WmZvn4PXhmpj0Oqc8RxM2GuwjcEcvz0
-         YmGt6vGifej2eKyeheCQKbB5Wio/jOed3PC1yXXm0XpQBwXfUDkvd9lfRQO9qM49nCFz
-         AtsSVKKThvODS1kd/+5EMTjllOfp9dE6zSXZE+0wE32G5xxshBa5QVW3vjQdGgn3pm3H
-         uE4NCCpzvtdlnIE7FDzx3loLCG0miNKVkoZTzMoNHkQ6K56a/asMyR9r2FM6X21UkHD2
-         +TCA==
+        b=hPKvAhdDOVdn6OSzlLY3gCU0ZjbckTxYs26baeO5CBy0rDvZblWnoXEnmfdrXVuv1h
+         1CouN7EuEVc1oX/gw6teG0qBqSdxVHVbklaOv2DtvfyozhpGz8vbIoQ5fDNDbcc/oVip
+         28JttxOvbfI4gQi5WnS6rl4R/fPZgwZaUbOQVm6xhKatuxdoG9tbs9TWtd7is/ZnEGh8
+         k7ug4o49hc4mVvqdiO/i86lDKmseFwady6onwRGDQHuKqYIbCSpg9MKwmLDzygGr7ELK
+         Mppl/IXDFUP5FvR2fRNsLKruuUkQCxm/0eKin3LZACrJHXdjPjtu0P9Hral7ETNq44BM
+         Ojfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=IgUxJfhh3Ozt/b8ulQyeQIxejkkPVWsfOwlbE8S6q0o=;
-        fh=cHsH2ZdBDu2aYv/1qv8vRzTiw+c0GucqB4GPoH36Q8o=;
-        b=G8c4Vm597Fk7p4L2aist1be8698MhjjIsJ4GJGmd4+rMxiLJ7DOZh1816qpITrzzbf
-         aOM9auCfj0blfTSa/e49qN19yq8h4EhhPwaQi8ks3aIpVxBLToxGMmGR0eHeyVTYDb5e
-         F9XAgnW9fimcoiGkhuBB5rE3msjGnK/VVnJ6lj5PXZFZgG+z7mrllmoa+j0Af27Yk6Gl
-         dDKvAMR9azZbEl82q4WVOWp6CsQdjf0TWSIW/w8Wcip65aZuxrD0PU2NLdnOAGzWAZxi
-         L/fZzxsEVCU4aU/Vwm7q65zmU7ej8FAHrdz6e/AVzjAlZzeXu8YKDVgKmd5gEvV36+v4
-         XFHQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:date:references:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=bdXLUhDFBZnqWIM0OScM+yJqDCgLY6zkPW5gq/U+PoU=;
+        fh=68T0G8t8T6Qnb3WGL7MGiw4IJT0UR1w0pI9e+T98irI=;
+        b=UuQU3u4S8sX3AoZz+hyDSdkBgPHMblimCYpVljQjcHJ8HRChURkQr9Av3EAqz8G7PO
+         EBiBs3j9tslIuz/ghpIy1vAsSkNjjMBqwFlpn2lI5LPVaPH09pSO0RtORKlXa23D9Z4h
+         ZmKr9/fLyXQ6Xolc0wy+A0MDZD42ABXpMnj77kyQ+lOq7DYSQglX5PBDJAT3UYcNBtZf
+         Ru/qPnhaBpl0+nF0uc/QPmkCy+e/zCth3b9FxdIaO+R3bGZeu9XM1qmRcaowgFX5AqDo
+         XEpDRINQ66gXjo7rynr1i/7rOuNW1AR3R0DJCKWpl+x2F8sBbUOquxpQxXsIwC4Xoxcy
+         QJ+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VLuZDroM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gFZDEoHP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4791b1c41d0si111404401cf.551.2025.04.08.13.40.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0dea0b2eesi5191726d6.434.2025.04.08.23.57.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Apr 2025 13:40:14 -0700 (PDT)
+        Tue, 08 Apr 2025 23:57:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VLuZDroM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gFZDEoHP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2FjM-0004lY-2Y; Tue, 08 Apr 2025 16:39:36 -0400
+	id 1u2PMx-0000J6-0s; Wed, 09 Apr 2025 02:57:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1u2Fj7-0004i9-5f; Tue, 08 Apr 2025 16:39:24 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1u2Fiw-0007pD-4L; Tue, 08 Apr 2025 16:39:16 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-ac289147833so1004860466b.2; 
- Tue, 08 Apr 2025 13:39:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744144745; x=1744749545; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IgUxJfhh3Ozt/b8ulQyeQIxejkkPVWsfOwlbE8S6q0o=;
- b=VLuZDroMFPA1sgAG6e3R2kOY4JJbdUpt/PIx8saHkEMTxjLRVM98nUZinLARfyCmL+
- C2fEuibhTLX/449A4Ez/zdRxgX+Ym9PBXSsXtepM8pDkEVBspTVQ6aTnBNckKm+cenpu
- 7dGE8MUjPXcDYWT/f1LtdfaOKeGBmXsUS8D93Bfd0mkNO9rS6L0oCa/+C2Se/wUNuvfr
- DIf9ucOje1/1ZG5onl0IP+khZ14TWK1g7n0c2sEEE7tOPlTzr1CT0qaRU/Y45J3knXXk
- o7pDBDNlMZgUH8E9p0PH//xPb4FiHkE3MT3c1ur9dZKCDUkKQNgHXMzFCl9ZMJ1EYfeE
- LwhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744144745; x=1744749545;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IgUxJfhh3Ozt/b8ulQyeQIxejkkPVWsfOwlbE8S6q0o=;
- b=LC/5dUXDPnuH803OY7q/JT8pTiDQN+zMoVF0mMsREopKZfwMBWESTvuwCOhZOsPPZk
- XIlQcPFS3Oeyo9u+FMNkBRCkxMr8pxpAAB03l+NJ5j57e7w+fV052r6zCfUCkwOtmX2B
- rQvgKYEdgjuRT6t1E0uLcCbZL7ZqSUFUZqRi4UdY1V5FlSt52PrHC6s8FCWsK4opnwst
- e2qWiLroGSN9rEDOWupvw3T/7tBEYWj/CwwSc9KmrntY7EGyXOh9bgBC9NuIOKeERANQ
- kpOOOxSx1eq5EFP8n5mPxdeF2Grax75k3xUgjOrICLccVvZRMSD1WW64I0E6S+S4QCVR
- 5OlA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVcWUpIInWwaW9cYgm4L2GookkchkSt6s5Y5kNgV/NdwJjNYNT3BULyfJ8G2AUHQ7tXGYB/vO8nGxHtgA==@nongnu.org,
- AJvYcCWlsb5lkIeg5jFC5ZoQDiSxDbl4Ym0enwe6qQckwaraCOU5fYU9lqAUS5oX2tDCIm+O++pRITT/0Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzlVRhUoF2D+94EF9RWi2FXO9Crp1Vxx8hZhqH4NIA8c/zABcnb
- T2B0pxox/tBirZmd/z9WZ72I1vCHgDYptA93f1ZfwHmzjFjIDqa4
-X-Gm-Gg: ASbGncsgaP2WZJkx5NA7D4X9YZBAgXlyPxGx4g3J/XI3FcPn8+k1EeFAad5LNhLYIuN
- 0ogaK/pydJnNJ5QeDY4aSQcvXU+fZfXsG5DqjkVmjmBUEVgPI8+PlYpW3UNHmLpKr/HWLAJLFyN
- WEcrY0dr7oYX3qNVRvcco9DCoB2LJI5FlcmLRMfPWiqU2nRQtEdCIQcg3ziZ8pVmzsMHDHgnBMd
- Cznlrpid+D9ZFjZK4Q4W6rCgwC/wu2bnO7WUt45MflIk5OgCz7I5BiuB6BBh/7/b4//6avBRoyT
- 4Ejxj83vhfMjECXr+qTaEhGauSzxj0hCfEDg+DOYBQjDvoeepPeSKCwjK7vl01YGad639u8CW8n
- RW8a4iAtRMk2s9W0eWV+Sclt7EZI3beKQmLSRqrp/yNp/mpDaoW+R
-X-Received: by 2002:a17:907:6d11:b0:ac2:b1e2:4b85 with SMTP id
- a640c23a62f3a-aca9d5d255cmr10332566b.3.1744144744931; 
- Tue, 08 Apr 2025 13:39:04 -0700 (PDT)
-Received: from ?IPv6:::1?
- (dynamic-2a02-3100-291c-6e00-b87f-49d2-cee7-5562.310.pool.telefonica.de.
- [2a02:3100:291c:6e00:b87f:49d2:cee7:5562])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ac7bfea16aesm971237566b.70.2025.04.08.13.39.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Apr 2025 13:39:04 -0700 (PDT)
-Date: Tue, 08 Apr 2025 20:39:01 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org, 
- Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH-for-10.0 0/3] More imx8mp-evk improvements
-In-Reply-To: <49539ce7-d36e-42f1-9ff2-771c893e5ce3@linaro.org>
-References: <20250405214900.7114-1-shentey@gmail.com>
- <49539ce7-d36e-42f1-9ff2-771c893e5ce3@linaro.org>
-Message-ID: <36A1B58F-535F-4129-A74C-EE8C467B91BA@gmail.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u2PMu-0000Hx-0f
+ for qemu-arm@nongnu.org; Wed, 09 Apr 2025 02:57:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u2PMs-0004eI-8n
+ for qemu-arm@nongnu.org; Wed, 09 Apr 2025 02:57:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1744181821;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bdXLUhDFBZnqWIM0OScM+yJqDCgLY6zkPW5gq/U+PoU=;
+ b=gFZDEoHPwGuFWPcIOw1EAXe3oBE9IJVi7h3z/mOfXTUn2akd9GBIi9yOdWnIWKFHjx5sl0
+ kctStlMxv0dMenLj4eb5DhCGrT8smNM633k+FFSBuApOCwpfhUqFBK5S7T2As5IpwbBtEs
+ VCpyTDQbacBn8BhPcmMUx7mFXSs5hQ0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-568-ldKryXfgOEOOuXMlYB1C6w-1; Wed,
+ 09 Apr 2025 02:56:57 -0400
+X-MC-Unique: ldKryXfgOEOOuXMlYB1C6w-1
+X-Mimecast-MFC-AGG-ID: ldKryXfgOEOOuXMlYB1C6w_1744181815
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 06102195608D; Wed,  9 Apr 2025 06:56:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5EC943001D0E; Wed,  9 Apr 2025 06:56:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 000A421E6773; Wed, 09 Apr 2025 08:56:44 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Nikita Shubin via B4 Relay <devnull+n.shubin.yadro.com@kernel.org>
+Cc: qemu-devel@nongnu.org,  n.shubin@yadro.com,  Linus Walleij
+ <linus.walleij@linaro.org>,  Bartosz Golaszewski <brgl@bgdev.pl>,  "Enrico
+ Weigelt, metux IT consult" <info@metux.net>,  Viresh Kumar
+ <vireshk@kernel.org>,  Eric Blake <eblake@redhat.com>,  Michael Roth
+ <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,  Steven Lee
+ <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
+ <jamin_lin@aspeedtech.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,  qemu-arm@nongnu.org,  Nikita Shubin
+ <nikita.shubin@maquefel.me>
+Subject: Re: [PATCH PoC 7/7] gpiodev: Add gpiobackend over GUSE
+In-Reply-To: <20250319-gpiodev-v1-7-76da4e5800a1@yadro.com> (Nikita Shubin
+ via's message of "Wed, 19 Mar 2025 10:57:57 +0300")
+References: <20250319-gpiodev-v1-0-76da4e5800a1@yadro.com>
+ <20250319-gpiodev-v1-7-76da4e5800a1@yadro.com>
+Date: Wed, 09 Apr 2025 08:56:44 +0200
+Message-ID: <875xjdg6vn.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.845,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,23 +133,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: quAq3Bi4PlBC
+X-TUID: Nvpblh/IcyGU
 
+Nikita Shubin via B4 Relay <devnull+n.shubin.yadro.com@kernel.org>
+writes:
 
-
-Am 8=2E April 2025 18:57:45 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <phi=
-lmd@linaro=2Eorg>:
->On 5/4/25 23:48, Bernhard Beschow wrote:
+> From: Nikita Shubin <n.shubin@yadro.com>
 >
->> Guenter Roeck (2):
->>    hw/arm/imx8mp-evk: Remove unimplemented cpu-idle-states properties
->>      from devicetree
->>    hw/arm/imx8mp-evk: Remove unimplemented nxp,imx8mp-fspi node from
->>      devicetree
+> Add GUSE (FUSE based kernel module similiar to CUSE) based backend.
 >
->Patches 2 & 3 queued, thanks!
+> This allows transparent usage of Linux GPIO UAPI based tools like
+> in kernel tools/gpio or libgpiod.
+>
+> libgpiod requires some modification to allow "/sys/class/guse" in
+> gpiod_check_gpiochip_device().
+>
+> It requires guse module to be loaded and providing DEVICE()->id
+> for GPIO module, for example:
+>
+> ```
+> DEVICE(&s->gpio)->id = g_strdup("aspeed-gpio0");
+> ```
+>
+> The id should be provided to gpiodev with any `devname` that doesn't
+> exists in /dev:
+>
+> ```
+> -gpiodev guse,id=aspeed-gpio0,devname=gpiochip10
+> ```
+>
+> That /dev/gpiochip10 can be used in the same way we usually operate with
+> gpiochip's.
+>
+> Link: http://git.maquefel.me/?p=qemu-gpiodev/libgpiod.git;a=shortlog;h=refs/heads/nshubin/guse-fix
+> Link: http://git.maquefel.me/?p=qemu-gpiodev/guse.git;a=summary
+> Link: http://git.maquefel.me/?p=qemu-gpiodev/libfuse.git;a=shortlog;h=refs/heads/nshubin/guse
+> Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
 
-Thanks! This is a real quality of life improvement=2E
+[...]
 
-Best regards,
-Bermhard
+> diff --git a/qapi/gpio.json b/qapi/gpio.json
+> index 1c2b7af36813ff52cbb3a44e64a2e5a5d8658d62..e3cdca793260212622a30947eaea61bd523e98fb 100644
+> --- a/qapi/gpio.json
+> +++ b/qapi/gpio.json
+> @@ -21,12 +21,36 @@
+>  ##
+>  # @GpiodevBackendKind:
+>  #
+> -# @chardev: chardevs
+> +# @chardev: Gpio dev over chardev backend
+> +# @gusedev: Gpio dev over GUSE FUSE module
+>  #
+>  # Since: 9.2
+
+10.1
+
+>  ##
+>  { 'enum': 'GpiodevBackendKind',
+> -  'data': [ 'chardev' ] }
+> +  'data': [ 'chardev',
+> +            { 'name': 'gusedev', 'if': 'CONFIG_LINUX' } ] }
+> +
+> +##
+> +# @GpiodevGusedev:
+> +#
+> +# Configuration info for guse gpiodevs.
+> +#
+> +# @devname: Name of device created in /dev
+
+Existing names for similar things elsewhere:
+
+* @dev in AudiodevAlsaPerDirectionOptions
+
+* @device in ChardevHostdev
+
+* @devname in NetdevNetmapOptions
+
+* @vhostdev in NetdevVhostUserOptions
+
+* @sev-device in SevCommonProperties
+
+* @filename in RngRandomProperties
+
+* @path in BlockdevOptionsNvmeIoUring,
+  BlockdevOptionsVirtioBlkVhostVdpa, TPMPassthroughOptions
+
+What a mess.
+
+@filename and @path are clearly bad.
+
+I'd prefer @device or @gpio-device, or maybe @dev.
+
+> +#
+> +# Since: 9.2
+> +##
+> +  { 'struct': 'GpiodevGusedev',
+> +    'data': { 'devname': 'str' } }
+> +
+> +##
+> +# @GpiodevGusedevWrapper:
+> +#
+> +# @data: Configuration info for chardev gpiodevs
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'struct': 'GpiodevGusedevWrapper',
+> +  'data': { 'data': 'GpiodevGusedev' } }
+
+Avoid the wrapper?
+
+>  
+>  ##
+>  # @GpiodevChardev:
+> @@ -65,4 +89,5 @@
+>  { 'union': 'GpiodevBackend',
+>    'base': { 'type': 'GpiodevBackendKind' },
+>    'discriminator': 'type',
+> -  'data': { 'chardev': 'GpiodevChardevWrapper' } }
+> \ No newline at end of file
+> +  'data': { 'chardev': 'GpiodevChardevWrapper',
+> +            'gusedev': { 'type': 'GpiodevGusedevWrapper', 'if': 'CONFIG_LINUX' } } }
+> \ No newline at end of file
+
+Please add a newline at the end of the file.
+

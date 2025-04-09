@@ -1,243 +1,260 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7812752njd;
-        Wed, 9 Apr 2025 08:49:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdzBkfENkGTOVb1O/zD9nWD0m9oeIQhY0tJJUJjb1Vge2JEc8H8Cg0onXfvIvPiNWg1Djk9MnH6FUamQ==@linaro.org
-X-Received: by 2002:a17:90b:588b:b0:2ff:5ed8:83d1 with SMTP id 98e67ed59e1d1-306dd52b3f8mr4489818a91.19.1744213781075;
-        Wed, 09 Apr 2025 08:49:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744213781; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7978720njd;
+        Wed, 9 Apr 2025 13:27:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRHJ5oI98RjFOFV94fnQaWd/wCblF8wGf5uEVRwYoRmt2QgvzHg/egfWYO0zaLwLjy1rO2H4VkLqpi9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGSU9Y9JR+/MIn9G4z85X7ZfJ1r8VQPIZcy+YiS8ZZwE+lkppazVwzSwyVvkz4LyzFquSOt
+X-Received: by 2002:ac8:5a4c:0:b0:477:6f1f:690b with SMTP id d75a77b69052e-4796cb9fe9cmr4329081cf.5.1744230459775;
+        Wed, 09 Apr 2025 13:27:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744230459; cv=none;
         d=google.com; s=arc-20240605;
-        b=j2k+lHeS63X21+xpecsVs3Z+4uwrW3UCkADtQkQYm/LyxReYncUjSmjzz3O1PU7arT
-         vShTADUKPnr4GXVuNXZCl2BTBl4BfGfl8gv5AFZWxX4rXkm9naKYhggQnF/RPyksSmPF
-         mZJWXjehAZO824ATO7xJRHbqqbmdna/SLxAb6DXc6TZpEfktiXTtbpMF1OkICRIcL+ed
-         X9gOWYrzRv/cmOOh7dlpYlc9woj3DLKNIs551pavBEfM7OF1xHEkaddH35YH3IApha4V
-         Oyw4nmX2b4G+g2AJPlKG7O8bPKY3Shqrd6eZk5CNUhvkZwamxcLhbDHO4Ue5Z8PVwxaQ
-         n5DQ==
+        b=JpToESlilDt/hcpx7qXu21N2t5XKqRzTDfhegJe/nQ878bb0SciDxlGbN1dyt6qAw2
+         jcDcwUmlYEKZQBSK8zfEGZgWpDZcFuB5/mYPEcENYWIUwKWDsf40ARKDwko27fI128o5
+         sLTlLRNUqeYwra5BRZxjqk8VzY2vTFjf/9IkYUR6vfe4brPyAHdb5ljR2OWy+JFcWueX
+         WMdyhUsIpwswT7PJPmN+AYzXo/OTqIqYpOs+H7lHzJrJbZ+PUT1TkoUURO4NifyxzpqC
+         iA+Yr0oNlFBhActW4gi8L0pPCyhjuN3SpZ2R9N2932iXMLd12KIZoDMETDIT3hOf/GiR
+         yFiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=940NqbKb+O1X9drvhQ2ttvWpopLBI4IZKc98V0PWB/o=;
-        fh=FfTSOyF+hMhKkXps9cLSBiv5vyi4hWOkCwJeM2DSiRk=;
-        b=iTUoPUIbdvDmxOx+OxgpI6HbQrNRR8G1YEhD1QrnApdnOupuNO+QWeaoZzXYqsGqjV
-         diiGfbittVoQ5Ww1e3c27Zp9ejEN4aItVkhNmIRCgR0PD9aF1DG7u8aFzs03f5QUivcM
-         73A3Iv31bVrsApHO862oZ1pus6G6XAJ1ofehQgNXDCA+zyMirm64ADAwCIwx2xutdF1a
-         qu1+JTCkr3iaiv7UfCiqFIY2wS6Vq/4bblmzfCft+zVZ9quRooQChmgcn77r12uAL332
-         aesbhjFLJpu5Rxi8CU5rdB7MLpVgTdsCehk5kSUxkn0knUxYNynMFrGJUmeoolAZlAAi
-         dQpw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=rrt7jL8lifFq0pPIvqMAcPOa40ZyUaxWAyL/gY6pVoQ=;
+        fh=D7Z44FxzaFZdMeElkrRQ0sfmDJEI+YS/p3DxmzoeWuc=;
+        b=jc3qJysZ1osjjshoq+e5vwyQTAxxiUqncCW+uYwl1fbtlHjCl+/nIks0Sas0CoLSz4
+         z6UzbnFwo0nBJjIB19hFUleUtQFVQPuK/tZlBxdo9q/nB+VgWQvYyFKpOPrD4Qll8jYt
+         l2Q3RavbOeJ7O1VOY2nZt9WbULNyPvtG49JE0RG9R9+Xz1HCh5hxtZfllQkKJughWTcc
+         NC1BHGpulZ9FKt23ZxoQb37gLJWXWGHYYg+fZsn3KtksVLF3+EenE0Skpuiu5eXjiCK4
+         Zp6ZU9oFasx/z8otwk2N7rwB6qndPNmSkflnofb3b0Db6SwRUv4B8XS6+cYcacIO29Fb
+         P9uQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zNghZGrH;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="TMK/znCP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-306df401052sor1305036a91.7.2025.04.09.08.49.40
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-47964eb99a1si17054681cf.290.2025.04.09.13.27.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 09 Apr 2025 08:49:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 09 Apr 2025 13:27:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zNghZGrH;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="TMK/znCP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u2c0T-0006Ho-JW; Wed, 09 Apr 2025 16:26:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u2c0R-0006HY-L5; Wed, 09 Apr 2025 16:26:43 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u2c0P-0000vi-Qp; Wed, 09 Apr 2025 16:26:43 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5e5e1a38c1aso118853a12.2; 
+ Wed, 09 Apr 2025 13:26:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744213780; x=1744818580; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=940NqbKb+O1X9drvhQ2ttvWpopLBI4IZKc98V0PWB/o=;
-        b=zNghZGrH+aN1eY88HGdQNtyELwG6RVXsInVdlMbs8Xa/1ozq9pMikfut7bH1mzBIOY
-         1U/TS2eESMDajdUox9hDbbtO7Stv5ovzE6qgyMjAZDF9Brlvf32y0ZAJbUPwurKHbCB4
-         MMRZUyCyiLqQ6oYA2ZM5uGLx7c2/XiV68cPh9ZMYxHjvRTKW3U6PTnE3BAtzIcaiWp08
-         aVVx/QfVxH9CA/adBhiPwZwoD8MEqWUxHc5MYMnT7T1JnASe/ADFxw+cUVE0gpKY1/9N
-         bh7x/cGUM6I1bnmZrqL1DnC+lypQ9Pc8UvHn6OfwVmbxCH9rcwk3i13bHb0+qaOh0dI8
-         Ognw==
+ d=gmail.com; s=20230601; t=1744230399; x=1744835199; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=rrt7jL8lifFq0pPIvqMAcPOa40ZyUaxWAyL/gY6pVoQ=;
+ b=TMK/znCP2VP8tN5o2oixQqxXZDRT5rtOUJmKoyDZV/ZLSBdj7MIr5XXGWSe0HY0taG
+ t0x85gX/KYlGgtDsYPucH3TGPJIN2GLNxhZVZmcRri7L0E2hRuUHYoepeOVmGNGYRNaj
+ 5mXpZfpm/QsYENNOVxMuXymDX/bzJO+K6uV8A8UkSMy4YSyduqhOlLXttBy0b82LLaEd
+ icbWUY8dJFXqc8UCpMrYesVddSo9IcBZYJj+Puox7oi24C6M8mkrxjORSa7ULxzAJGxL
+ 5Np+jw5n9yxMdmyIgYGXVQQ68JhDSaVAABKBUOrmMRFXY7pryS+UYZa0Zdm432hSr8QV
+ dS/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744213780; x=1744818580;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=940NqbKb+O1X9drvhQ2ttvWpopLBI4IZKc98V0PWB/o=;
-        b=eNjOMlRuzQ+K/f57QQMAqMYlkxbMlV95vtw5KV00ZjUO66+MVF/45hIz+yWYdajZja
-         cVrWtfMg0x9igwuOCK1EkVChBRgtUwF80UhhMRoxm9PxaG3znNgdjG4NGE/EYpho6v6C
-         aYULm6yrytrqnHpq3GAupoNTxTGZSfxH13Ngvls/cLDcUWCMNxey8fRF2qIkk2wB9qYq
-         AhIs7yDG3oJ6mqKbf9Ry3VI145c/mjWGH0+YsfDjwndVx71e/whzss+sg8DDxkw9t/u0
-         9bxrnH4657N0ADqxCiiRL2pkWvvX4uX/bWkNH/Na4K7YzMWz6oEYeTE/S8PkkDk4C0B6
-         G9uA==
-X-Forwarded-Encrypted: i=1; AJvYcCViCc4aN1TtqT0XP/BWCGJMLINgrh6xB9M1fCFCNEQ/KBVi7V8YpfOpVNuGL1RiLILnsMP18w+T65MnUQ==@linaro.org
-X-Gm-Message-State: AOJu0YxsEp6K1SytnFsyck5mbGMVx4TTTRL+I1q7mQXL9ZrVCX9Oan/c
-	+RWvzwzWMJZiW4k0raZoS8URyIzt7XOL22WQPJ03M/tG/C82O9nzIe6iAY7vQiijcEjhZJG/c2C
-	tQ5o=
-X-Gm-Gg: ASbGncvVGBZjV+00qI9CzGqnIlhwoq1+cBZ4qJuYZXkLNexDjh0p1Wz3YRg068o/dz7
-	ot41HkGK7VtlOMcGxU2w/I+kR1N0ZyuSVIeY7YMIxSY5SMUG1n7330lXYjjtkvppKqZ303YX+JN
-	TIJPpVOPKA5ZbKmUjly+OAcaQEGQnqNYcPmHNAEuraKyAtcAVrWP/zYHkrKgwK7WdnRRkbFuk2M
-	AQWG93qC4OTYcSsXLCAa5B5KbKMxNjSyOpvUBzvsrpXNdDjO6Gf3l70TpkePALWiIWJfQsAg/1b
-	vQrXZJVrRMZCivxwvDZU4H+7MhOsaoD3fBcBagUXLSWQeioneQrFONrVyK9XQ6o=
-X-Google-Smtp-Source: AGHT+IHlJPjP1EdHBldUh7oZwaqORrFVtYXcqN97bbJEiH3ZzyHbtcsoQ7hiLBJj4tiOL061eOjFlw==
-X-Received: by 2002:a17:90b:524f:b0:2ee:9e06:7db0 with SMTP id 98e67ed59e1d1-306dd32ce33mr4417565a91.11.1744213780520;
-        Wed, 09 Apr 2025 08:49:40 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] ([152.250.123.8])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-306df2fae27sm1618263a91.31.2025.04.09.08.49.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Apr 2025 08:49:40 -0700 (PDT)
-Message-ID: <98b2676d-ad21-4c05-a165-12ae5e1b9c64@linaro.org>
-Date: Wed, 9 Apr 2025 12:49:36 -0300
+ d=1e100.net; s=20230601; t=1744230399; x=1744835199;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rrt7jL8lifFq0pPIvqMAcPOa40ZyUaxWAyL/gY6pVoQ=;
+ b=H9320k73yaFNPYyUzjpd10KvAgqy3llHTCtlFsIl8RPECMLi56w6LTX0VxcJWlf2GU
+ Xub2ojJYKHaIyARwhCrfK/X1eLLLKIw0DY1q+s0vYn5Y+RahnseRdN9ghMWDmoaki+Dw
+ NkmfDz53MyD+m4RGmH1Uw5ZfnvhK5WD4Bc/nWloKniiI+ba5mIg/63FmpjXY+byuMPvX
+ R02FS6HIAU/xcGmqDLtnMC5VGceKGQSDXCIX1PGDaZ5v8B8HO0TFsyp+lOoIDPCUEkz9
+ UzZI+d20xtfmOz1pFb7SaTHE5dMjylbZG8H2T121vNZKm1DUE+AlBNL7Tm96yH3WiLi8
+ l8ig==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUFkGq2gPeFbHvVLmLnAdDBlju4hidYIJl0eoIm32nnzXJniqcvruuBO58xEz6/4EHwhBXJ1KfRtg==@nongnu.org
+X-Gm-Message-State: AOJu0YyDtZYfpRpCa0jdacmsJmGfom8tmGbaj4bgwjDWPbd/9R6bNybN
+ +lN+6I+8tL4MBp5buE2AepDEoH4GrY8WsQ+u64XRsYZFEfxebV1K4SKhGA==
+X-Gm-Gg: ASbGnctebyfNTnlAFm7p2NISsDBl4AMIBfjEcqjJu+w+1OqlWDADcIXpZFb9hH8WqBm
+ 27pF8AaVTssGEbBULtmR90+QYm0UYG/vm1hit7GvzT9GBrxdLHViX4553QHEuI+r3tAH7QXnvOh
+ omju8+rzHuD5Nk7wGQ5DqSLpDlflfaEd0i2DAKxXYoNw+hYumSgb+6XU/dEPWHTHo0IqK8Fjq0J
+ yNn/JiM569BT15YDnxjsnYIedNVbNF+LdGjJ4lC9huAz4Bvtj0DKCayvCWlAx+3kZDoT+Dj2TnZ
+ aIdUowIks36FAmfRFtkgmmdmxiR0LbTFhLf8v8+M2/MMA3PYUY0FRELT2vs1V7u1lWZV+PZXdhs
+ gSmTuEl/8J9UOFs/4mUqIYxG9Ch9qk/KF/5NZ41ebHS1FdBf+HNCvTmgTJfn6
+X-Received: by 2002:a05:6402:90b:b0:5f3:2665:f961 with SMTP id
+ 4fb4d7f45d1cf-5f32932dadamr133807a12.33.1744230398550; 
+ Wed, 09 Apr 2025 13:26:38 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-242e-7100-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:242e:7100:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5f2fbc2e3f8sm1259373a12.48.2025.04.09.13.26.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Apr 2025 13:26:38 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH-for-10.0? v2] tests/functional: Add test for imx8mp-evk board
+ with USDHC coverage
+Date: Wed,  9 Apr 2025 22:26:30 +0200
+Message-ID: <20250409202630.19667-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 v3 6/9] qtest/bios-tables-test: Whitelist
- aarch64/virt 'its_off' variant blobs
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Andrew Jones <ajones@ventanamicro.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
- Udo Steinberg <udo@hypervisor.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>
-References: <20250403204029.47958-1-philmd@linaro.org>
- <20250403204029.47958-7-philmd@linaro.org>
- <671a6c82-ae10-4f3b-9d83-cecc32755206@linaro.org>
- <20250409160531.341c205e@imammedo.users.ipa.redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250409160531.341c205e@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: fPdlZ8tJO7Oq
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FREEMAIL_REPLY=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iS3NaXD0K5l1
 
-Hi Igor,
+Introduce a functional test which boots Debian 12 on the imx8mp-evk board. Since
+the root filesystem resides on an SD card, the test also verifies the basic
+operation of the USDHC.
 
-On 4/9/25 11:05, Igor Mammedov wrote:
-> On Fri, 4 Apr 2025 00:01:22 -0300
-> Gustavo Romero <gustavo.romero@linaro.org> wrote:
-> 
->> Hi Phil,
->>
->> On 4/3/25 17:40, Philippe Mathieu-Daudé wrote:
->>> We are going to fix the test_acpi_aarch64_virt_tcg_its_off()
->>> test. In preparation, copy the ACPI tables which will be
->>> altered as 'its_off' variants, and whitelist them.
->>>
->>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>    tests/qtest/bios-tables-test-allowed-diff.h |   3 +++
->>>    tests/qtest/bios-tables-test.c              |   1 +
->>>    tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 184 bytes
->>>    tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
->>>    tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 236 bytes
->>>    5 files changed, 4 insertions(+)
->>>    create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
->>>    create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
->>>    create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
->>>
->>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
->>> index dfb8523c8bf..3421dd5adf3 100644
->>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
->>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
->>> @@ -1 +1,4 @@
->>>    /* List of comma-separated changed AML files to ignore */
->>> +"tests/data/acpi/aarch64/virt/APIC.its_off",
->>> +"tests/data/acpi/aarch64/virt/FACP.its_off",
->>> +"tests/data/acpi/aarch64/virt/IORT.its_off",
->>
->> I think your first approach is the correct one: you add the blobs
->> when adding the new test, so they would go into patch 5/9 in this series,
->> making the test pass without adding anything to bios-tables-test-allowed-diff.h.
->> Then in this patch only add the APIC.its_off table to the bios-tables-test-allowed-diff.h
->> since that's the table that changes when the fix is in place, as you did in:
-> 
-> if APIC.its_off is the only one that's changing, but FACP/IORT blobs are the same
-> as suffix-less blobs, one can omit copying FACP/IORT as test harness will fallback
-> to suffix-less blob if the one with suffix isn't found.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 
-OK. Just clarifying and for the records, this is not the case for this series
+--
+v2:
+* Make test file executable (Thomas)
+* Omit fetch() (Thomas)
+* Omit "-accel tcg" (Thomas)
+* Add "snapshot=on" to make potential future tests independent
 
+Supersedes: 20250405214900.7114-1-shentey@gmail.com
+---
+ MAINTAINERS                                 |  1 +
+ tests/functional/meson.build                |  1 +
+ tests/functional/test_aarch64_imx8mp_evk.py | 66 +++++++++++++++++++++
+ 3 files changed, 68 insertions(+)
+ create mode 100755 tests/functional/test_aarch64_imx8mp_evk.py
 
-> if blobs are different from defaults then create empty blobs and whitelist them in the same patch
-> then do your changes and then update blobs & wipeout withe list.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d54b5578f8..4ceffa89dc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -833,6 +833,7 @@ F: include/hw/arm/fsl-imx8mp.h
+ F: include/hw/misc/imx8mp_*.h
+ F: include/hw/pci-host/fsl_imx8m_phy.h
+ F: docs/system/arm/imx8mp-evk.rst
++F: tests/functional/test_aarch64_imx8mp_evk.py
+ F: tests/qtest/rs5c372-test.c
+ 
+ MPS2 / MPS3
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 0f8be30fe2..aaaf3472f1 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -75,6 +75,7 @@ tests_aarch64_system_quick = [
+ 
+ tests_aarch64_system_thorough = [
+   'aarch64_aspeed',
++  'aarch64_imx8mp_evk',
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+   'aarch64_replay',
+diff --git a/tests/functional/test_aarch64_imx8mp_evk.py b/tests/functional/test_aarch64_imx8mp_evk.py
+new file mode 100755
+index 0000000000..62fee74044
+--- /dev/null
++++ b/tests/functional/test_aarch64_imx8mp_evk.py
+@@ -0,0 +1,66 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++
++class Imx8mpEvkMachine(LinuxKernelTest):
++
++    ASSET_IMAGE = Asset(
++        ('https://cloud.debian.org/images/cloud/bookworm/20231210-1590/'
++         'debian-12-generic-arm64-20231210-1590.tar.xz'),
++        '7ebf1577b32d5af6204df74b54ca2e4675de9b5a9fa14f3ff70b88eeb7b3b359')
++
++    KERNEL_OFFSET = 0x51000000
++    KERNEL_SIZE = 32622528
++    INITRD_OFFSET = 0x76000000
++    INITRD_SIZE = 30987766
++    DTB_OFFSET = 0x64F51000
++    DTB_SIZE = 45 * 1024
++
++    def extract(self, in_path, out_path, offset, size):
++        try:
++            with open(in_path, "rb") as source:
++                source.seek(offset)
++                data = source.read(size)
++            with open(out_path, "wb") as target:
++                target.write(data)
++        except (IOError, ValueError) as e:
++            self.log.error(f"Failed to extract {out_path}: {e}")
++            raise
++
++    def setUp(self):
++        super().setUp()
++
++        self.image_path = self.scratch_file("disk.raw")
++        self.kernel_path = self.scratch_file("linux")
++        self.initrd_path = self.scratch_file("initrd.zstd")
++        self.dtb_path = self.scratch_file("imx8mp-evk.dtb")
++
++        self.archive_extract(self.ASSET_IMAGE)
++        self.extract(self.image_path, self.kernel_path,
++                     self.KERNEL_OFFSET, self.KERNEL_SIZE)
++        self.extract(self.image_path, self.initrd_path,
++                     self.INITRD_OFFSET, self.INITRD_SIZE)
++        self.extract(self.image_path, self.dtb_path,
++                     self.DTB_OFFSET, self.DTB_SIZE)
++
++    def test_aarch64_imx8mp_evk_usdhc(self):
++        self.set_machine('imx8mp-evk')
++        self.vm.set_console(console_index=1)
++        self.vm.add_args('-m', '2G',
++                         '-smp', '4',
++                         '-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path,
++                         '-append', 'root=/dev/mmcblk2p1',
++                         '-drive', f'file={self.image_path},if=sd,bus=2,'
++                                    'format=raw,id=mmcblk2,snapshot=on')
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Welcome to ')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
+-- 
+2.49.0
 
-Thanks for confirming it. That's what I suggested to Phil in my first review and what
-I understood from the prescription in bios-tables-test.c.
-
-However, on second thoughts, for this particular series, isn't it better to have the following commit sequence instead:
-
-1) Add the new test and the new blobs that make the test pass, i.e. APIC.suffix, FACP.suffix, and IORT.suffix (they are different than the default suffix-less blobs)
-2) Whitelist only the APIC.suffix since that's the table that will change with the fix
-3) Add the fix (which changes the APIC table so a new APIC.suffix blob is needed and also stops generating the IORT table, so no more IORT.suffix blob is necessary)
-4) Finally, update only the APIC.suffix blob and remove the IORT.suffix blob and wipe out the whitelist
-
-This way:
-
-A) It's clear that only ACPI blob changed with the fix, because there is no addition of a FACP.suffix blob in 4) (it remains the same)
-B) It's clear that the IORT table is removed with the fix and is not relevant anymore for the test
-
-What do you think?
-
-
-Cheers,
-Gustavo
-
-> Phil,
-> the process is described in doc comment at the top of tests/qtest/bios-tables-test.c
-> 
->> https://mail.gnu.org/archive/html/qemu-devel/2025-03/msg07082.html
->>
->> Plus, adding the blobs, which are actually related to the test in the other
->> patch, and ignoring them at the same time looks confusing to me. I understand
->> that only the blob that changes (APIC.its_off) with the fix should be temporarily
->> ignored and, later, updated, as in your first series.
->>
->>
->> Cheers,
->> Gustavo
->>
->>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>> index baaf199e01c..55366bf4956 100644
->>> --- a/tests/qtest/bios-tables-test.c
->>> +++ b/tests/qtest/bios-tables-test.c
->>> @@ -2151,6 +2151,7 @@ static void test_acpi_aarch64_virt_tcg_its_off(void)
->>>        test_data data = {
->>>            .machine = "virt",
->>>            .arch = "aarch64",
->>> +        .variant = ".its_off",
->>>            .tcg_only = true,
->>>            .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
->>>            .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
->>> diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
->>> new file mode 100644
->>> index 0000000000000000000000000000000000000000..c37d05d6e05805304f10afe73eb7cb9100fcccfa
->>> GIT binary patch
->>> literal 184
->>> zcmZ<^@O0k6z`($=+{xeBBUr&HBEVSz2pEB4AU24G0Uik$i-7~iVgWL^17JJ`2AFzr
->>> bgb+@aBn}xq0gwb2)Q)cq{30-g9B_L93G4|0
->>>
->>> literal 0
->>> HcmV?d00001
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/FACP.its_off b/tests/data/acpi/aarch64/virt/FACP.its_off
->>> new file mode 100644
->>> index 0000000000000000000000000000000000000000..606dac3fe4b55c31fd68b25d3a4127eeef227434
->>> GIT binary patch
->>> literal 276
->>> zcmZ>BbPf<<WME(uaq@Te2v%^42yj*a0-z8Bhz+8t3j|P&V`N}P6&N^PpsQ~v$aVnZ
->>> CVg~^L
->>>
->>> literal 0
->>> HcmV?d00001
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/acpi/aarch64/virt/IORT.its_off
->>> new file mode 100644
->>> index 0000000000000000000000000000000000000000..0fceb820d509e852ca0849baf568a8e93e426738
->>> GIT binary patch
->>> literal 236
->>> zcmebD4+?q1z`(#9?&R<65v<@85#X!<1dKp25F11@1F-=RgMkDCNC*yK9F_<M77!bR
->>> zUBI%eoFED&4;F$FSwK1)h;xBB2Py`m{{M%tVD>TjFfcO#g+N#Zh@s|zoCF3AP#UU@
->>> R!2`+%Dg6Hr$N|zYvjDIZ5CH%H
->>>
->>> literal 0
->>> HcmV?d00001
->>>    
->>
-> 

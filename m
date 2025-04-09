@@ -1,87 +1,134 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7603117njd;
-        Wed, 9 Apr 2025 03:04:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXORSHF3cizIhJ7sQpOD7xMvNQ6xFUXg7nk+hGDnzzgslFDd/JqyNseumBWH6AJXhLHlo+bfwACoUPIzg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE+Plu6tcS8QkKBmoSRvf+B6GiZ3ePmuMpC6g/6syPamrnDbzAxJi5gH7LR3iK2vSggzxuM
-X-Received: by 2002:a05:6214:1d0d:b0:6d4:1425:6d2d with SMTP id 6a1803df08f44-6f0dbc75b30mr33457066d6.43.1744193054779;
-        Wed, 09 Apr 2025 03:04:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744193054; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp7607961njd;
+        Wed, 9 Apr 2025 03:12:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVUxfbaj6qw9qNopZGBXWICM6QPSXGoqvCDpVgIZHfVzLhYzEK1ViAagD1+fvycaSghN8blr7cQJAjOZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGiRuDFRPHQj2JhwXu58asivhLfpeF9kgrckcGO7EN1FPjlB46nU7dOgnZbe3+HR7S1iYqb
+X-Received: by 2002:ac8:5987:0:b0:476:7112:4add with SMTP id d75a77b69052e-4795f2d088cmr30893611cf.18.1744193527587;
+        Wed, 09 Apr 2025 03:12:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744193527; cv=none;
         d=google.com; s=arc-20240605;
-        b=clNWxLsJrEXriR8WLuUmYI2fIQ4LbrStJV+/UDmG4zdGRrCaqaojcHLELEwqNFE8is
-         69IBcxnTnxXocx+YMc9D1QuhrsaBLroU8pkSL8e4sd18n6yeeXHepTHs04hrXqsKE2mA
-         h5iH+ZFEjdSCwxFWUYNHbuT2VOKYAItX8NDNNNrDelJovTXaV8uNKNeuAlZkUMGGzEK7
-         KJnh150uqx9oulDE7yv60GzGQ2HdImIP5obFUzGWP8un9k0h4dxR6bJtPGcIIYIt6/Ke
-         aT0t551Eu1t/VGhOBIM5A3FcdsxQAConQp2CH8m+F0IbvdbJJeoZJDy/w++/BZ52/BzD
-         r4bg==
+        b=AyGKugH82+643tGEV4+cqjafXAet6r8aMaR1fJFfgGcjjvmHysfjlEGfa7/sIaAfAi
+         uXTg8f752pmeovgyZng1naPzvsHzGrY0GlmF+gDoveq+hyc+gIkYTp8wxEoAV7Avn253
+         ZgoRiFgp8uspxsDYjSoBuKgtshYPHQSNavdr05GGHwN/EYCgas1c5q+FNIJ6CFfG6sSq
+         VtXFV1TchIuObjKKs9j2p4ZRGdAMiCF4UeN3+P/ktjccRI53Uvgjbrvu/im46AA546oO
+         LNuRj4oJT30q6tZdcFz/qP8MtpQeR3ZvLZ+P8F63BkV1N0brMW5v0sxf0JnTVvlO5Q4U
+         pMMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=Dw315Da7d5QI0VoNITXAWjuFYk49Uk2WaLRFs+KXVD4=;
-        fh=9slMQvAVAaDbZF94sUZsatNqTIKawFKtbOHuc7HAk0w=;
-        b=gZH3w5U2T4C4b5VRN5fU+ftQZEGIG/pcIsxsZsgBYMqbRPwn1V+mu0h2vDOw/xq/jA
-         eIu2HUcqTinUSn9FgJucY4sLZmC1CuhZK98Wn0AqgoG4vP1QJpBV83PoC46Y97d4Exwt
-         qexc25Mny/6VeLQrE6KZU02h+gX5+V+tvB9nkqkMW9Y5+H2LlRRQ40yvmMJQcfHIsGB2
-         LZK3hwX9vePLFlW2vPp/LQ1R6hn4Cy6XvXyA6hJxoDm9myhZEx/sHfGhAkFI8Pe0b6Mw
-         C3ppAPLXDurgTOO/PlY5V+2mGNKlNs9k5wKo/hcd1vdpw3jZpAISLxsQssHg0MrkhmAs
-         gG8Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=CLL28LgCy5ECLxOo44043+NKDD0UK0m2c3lsxP3ZXvI=;
+        fh=J/Vpo1aZXXarK+YDdkQg5PtIVtDaaIf62smGYaLKRgU=;
+        b=CbLRU7ShfShk2dweWyh87TMZcvJi2WIWqEW9z9Z4XgaVE4hCxgQBQWA5wGovfj5y90
+         OmsvKnkiCO0JG7IO8aSX/xywRnN9bMcRWqNEMpc/9wgARn6wf5gnQxoDKbp+pG2wPJtj
+         po05V1ETWgG8jpnypGdj8llI2QP5VsymduTnrfNszNHsTeRqSko3aQKbEjtPvGbp4HcQ
+         nMXR2EFnO8BICKucuiRQT4CA/w3f53tuk25DGdi8XRGxoqAZ9aTr/+xQo75qESqL51XK
+         kCGXPkKMO6e8C/ZAexV+CvpYgWTlbONi/e1hbDhEutZTsPUUYedXIxBrvDyjwQ/YCdv6
+         wruQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de970db8si7431386d6.107.2025.04.09.03.04.14
+        by mx.google.com with ESMTPS id d75a77b69052e-47964f2ae4esi6889711cf.584.2025.04.09.03.12.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Apr 2025 03:04:14 -0700 (PDT)
+        Wed, 09 Apr 2025 03:12:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2SFH-00078t-Oa; Wed, 09 Apr 2025 06:01:24 -0400
+	id 1u2SPT-0007wF-UH; Wed, 09 Apr 2025 06:11:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u2SFA-00072g-U5; Wed, 09 Apr 2025 06:01:18 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <SRS0=1y2v=W3=kaod.org=clg@ozlabs.org>)
+ id 1u2SPQ-0007te-E8; Wed, 09 Apr 2025 06:11:52 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u2SF9-0006jO-Dl; Wed, 09 Apr 2025 06:01:16 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 9 Apr
- 2025 18:00:42 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 9 Apr 2025 18:00:42 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>
-Subject: [PATCH v1 9/9] docs/system/arm/aspeed: Support vbootrom for AST2700
-Date: Wed, 9 Apr 2025 18:00:37 +0800
-Message-ID: <20250409100039.2391847-10-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250409100039.2391847-1-jamin_lin@aspeedtech.com>
-References: <20250409100039.2391847-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <SRS0=1y2v=W3=kaod.org=clg@ozlabs.org>)
+ id 1u2SPN-0000Bo-On; Wed, 09 Apr 2025 06:11:52 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZXdyg1tMNz4x1w;
+ Wed,  9 Apr 2025 20:11:39 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZXdyb4vW8z4wby;
+ Wed,  9 Apr 2025 20:11:35 +1000 (AEST)
+Message-ID: <7512f3d5-d90e-449e-ab0c-4e82d32eb361@kaod.org>
+Date: Wed, 9 Apr 2025 12:11:31 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when
+ I2CM_DMA_TX/RX_ADDR set first
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250408082504.3060742-1-jamin_lin@aspeedtech.com>
+ <SI2PR06MB50412DDB7CEE6844C1E5B953FCB42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB50412DDB7CEE6844C1E5B953FCB42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=1y2v=W3=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,54 +141,168 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZKYZsqY8xYIe
+X-TUID: McOsHTqZ9WAq
 
-Using the vbootrom image instead of manually loading boot components with
--device loader. The boot ROM binary is now passed via the -bios option,
-using the image located in pc-bios/ast27x0_bootrom.bin.
+Hello,
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- docs/system/arm/aspeed.rst | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+On 4/9/25 11:10, Jamin Lin wrote:
+> Hi Cedric,
+> 
+> After discussing with the I2C hardware designers, we confirmed that the I2c design in AST2600 and AST2700 A1 is the same.
+> The datasheet will be updated accordingly for AST2700.
+> 
+> However, please note that bit 15 and bit 31 are not available on AST2700 A0 and FW do not set either bit 15 and bit 31.
+> AST2700 A0 was an engineering sample version. Given this, I plan to resend the v3 patch with AST2700 A0 explicitly marked as unsupported.
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 97fd6a0e7f..dfa8e6b4c6 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -250,24 +250,14 @@ under Linux), use :
- Booting the ast2700-evb machine
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
--Boot the AST2700 machine from the flash image, use an MTD drive :
-+Boot the AST2700 machine using a flash image, with an MTD drive and
-+the virtual boot ROM :
- 
- .. code-block:: bash
- 
--  IMGDIR=ast2700-default
--  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
--
-   $ qemu-system-aarch64 -M ast2700-evb \
--       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
--       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
--       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
--       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
--       -device loader,cpu-num=0,addr=0x430000000 \
--       -device loader,cpu-num=1,addr=0x430000000 \
--       -device loader,cpu-num=2,addr=0x430000000 \
--       -device loader,cpu-num=3,addr=0x430000000 \
--       -smp 4 \
--       -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
-+       -bios ast27x0_bootrom.bin \
-+       -drive file=image-bmc,format=raw,if=mtd \
-        -nographic
- 
- Aspeed minibmc family boards (``ast1030-evb``)
--- 
-2.43.0
+Are you going to introduce an I2C property to distinguish the
+A0 implementation for the A1 ?
+
+> I prefer not to introduce workarounds specifically for AST2700 A0, as it is not a production-grade silicon.
+
+We can deprecate the AST2700 A0 machine too, See 56a37eda93ed,
+and change the ast2700-evb machine alias.
+
+> I will resend the v3 patch with the same content as v1, since the only issue in v1 was a functional test failure on AST2700 A0.
+> Apologies for the inconvenience, and thank you for your understanding.
+
+That's ok. Nothing is merged. Let's get it right first.
+
+Thanks,
+
+C.
+
+
+
+> 
+> Thanks-Jamin
+> 
+> ************* Email Confidentiality Notice ********************
+> 免責聲明:
+> 本信件(或其附件)可能包含機密資訊，並受法律保護。如 台端非指定之收件者，請以電子郵件通知本電子郵件之發送者, 並請立即刪除本電子郵件及其附件和銷毀所有複印件。謝謝您的合作!
+> 
+> DISCLAIMER:
+> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> 
+>> -----Original Message-----
+>> From: Jamin Lin <jamin_lin@aspeedtech.com>
+>> Sent: Tuesday, April 8, 2025 4:25 PM
+>> To: Cédric Le Goater <clg@kaod.org>; Peter Maydell
+>> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
+>> Lee <leetroy@gmail.com>; Andrew Jeffery <andrew@codeconstruct.com.au>;
+>> Joel Stanley <joel@jms.id.au>; open list:ASPEED BMCs
+>> <qemu-arm@nongnu.org>; open list:All patches CC here
+>> <qemu-devel@nongnu.org>
+>> Cc: Jamin Lin <jamin_lin@aspeedtech.com>; Troy Lee
+>> <troy_lee@aspeedtech.com>
+>> Subject: [PATCH v2] hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when
+>> I2CM_DMA_TX/RX_ADDR set first
+>>
+>> In the previous design, the I2C model would update I2CC_DMA_LEN (0x54)
+>> based on the value of I2CM_DMA_LEN (0x1C) when the firmware set either
+>> I2CM_DMA_TX_ADDR
+>> (0x30) or I2CM_DMA_RX_ADDR (0x34). However, this only worked correctly if
+>> the firmware set I2CM_DMA_LEN before setting I2CM_DMA_TX_ADDR or
+>> I2CM_DMA_RX_ADDR.
+>>
+>> If the firmware instead set I2CM_DMA_TX_ADDR or I2CM_DMA_RX_ADDR
+>> before setting I2CM_DMA_LEN, the value written to I2CC_DMA_LEN would be
+>> incorrect.
+>>
+>> Ideally, this issue should be resolved by updating the model to set
+>> I2CC_DMA_LEN (0x54) when the firmware writes to the I2CM_DMA_LEN
+>> (0x1C) register, instead of when it writes to I2CM_DMA_TX_ADDR (0x30) or
+>> I2CM_DMA_RX_ADDR (0x34).
+>>
+>> Originally, the design of I2CM_DMA_LEN (0x1C) included buffer length
+>> write-enable bits for the current command:
+>> Bit 31 enabled the RX buffer length update Bit 15 enabled the TX buffer length
+>> update
+>>
+>> In other words, when the firmware set either bit 31 or bit 15, the I2C model
+>> could safely update I2CC_DMA_LEN (0x54) with the value in I2CM_DMA_LEN
+>> (0x1C).
+>>
+>> However, starting with the AST2700, the design of the I2CM_DMA_LEN (0x1C)
+>> register was changed. The write-enable bits (bit 31 and bit 15) were removed,
+>> meaning there is no longer an explicit indication of whether the firmware
+>> intends to update the TX or RX length.
+>>
+>> As a result, on AST2700 and newer SoCs, the model cannot reliably determine
+>> whether a write to I2CM_DMA_LEN was meant for TX or RX. This ambiguity is
+>> especially problematic when the value written is 0, which actually corresponds
+>> to a DMA length of 1.
+>>
+>> To ensure consistent behavior across all SoCs, the model now updates
+>> I2CC_DMA_LEN when I2CM_CMD (0x18) is written, as this is the final
+>> command that initiates a TX or RX transfer and reflects the firmware’s intent
+>> more clearly.
+>>
+>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> Fixes: ba2cccd (aspeed: i2c: Add new mode support)
+>> ---
+>>   hw/i2c/aspeed_i2c.c | 18 ++++++++++++++----
+>>   1 file changed, 14 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c index
+>> a8fbb9f44a..c659099e9a 100644
+>> --- a/hw/i2c/aspeed_i2c.c
+>> +++ b/hw/i2c/aspeed_i2c.c
+>> @@ -634,6 +634,20 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus
+>> *bus, hwaddr offset,
+>>               break;
+>>           }
+>>
+>> +        /* Handle DMA length */
+>> +        if (SHARED_FIELD_EX32(value, TX_DMA_EN) &&
+>> +            SHARED_FIELD_EX32(value, M_TX_CMD)) {
+>> +            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
+>> +
+>> I2CM_DMA_LEN,
+>> +
+>> TX_BUF_LEN) + 1;
+>> +        }
+>> +        if (SHARED_FIELD_EX32(value, RX_DMA_EN) &&
+>> +            SHARED_FIELD_EX32(value, M_RX_CMD)) {
+>> +            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
+>> +
+>> I2CM_DMA_LEN,
+>> +
+>> RX_BUF_LEN) + 1;
+>> +        }
+>> +
+>>           if (bus->regs[R_I2CM_INTR_STS] & 0xffff0000) {
+>>               qemu_log_mask(LOG_UNIMP, "%s: Packet mode is not
+>> implemented\n",
+>>                             __func__);
+>> @@ -656,8 +670,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus
+>> *bus, hwaddr offset,
+>>           bus->dma_dram_offset =
+>>               deposit64(bus->dma_dram_offset, 0, 32,
+>>                         FIELD_EX32(value, I2CM_DMA_TX_ADDR,
+>> ADDR));
+>> -        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
+>> I2CM_DMA_LEN,
+>> -                                                     TX_BUF_LEN)
+>> + 1;
+>>           break;
+>>       case A_I2CM_DMA_RX_ADDR:
+>>           bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value,
+>> I2CM_DMA_RX_ADDR, @@ -665,8 +677,6 @@ static void
+>> aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>>           bus->dma_dram_offset =
+>>               deposit64(bus->dma_dram_offset, 0, 32,
+>>                         FIELD_EX32(value, I2CM_DMA_RX_ADDR,
+>> ADDR));
+>> -        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
+>> I2CM_DMA_LEN,
+>> -                                                     RX_BUF_LEN)
+>> + 1;
+>>           break;
+>>       case A_I2CM_DMA_LEN:
+>>           w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
+>> --
+>> 2.43.0
+> 
 

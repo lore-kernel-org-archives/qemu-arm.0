@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8228292njd;
-        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5iS3o1t+HsqONa9dhm/+I82fuTxPfwVOvGL37m1iZ0grRpe0cL4f5rXNm+bdu5vDS082Xax8OCe4Zew==@linaro.org
-X-Google-Smtp-Source: AGHT+IHz2xfVueNoAP6y5jmDUIQr1kd9OOuASuI+kKihsDY1/zly62kdl0eVAf+EystAWTpBaj0o
-X-Received: by 2002:a05:6214:2249:b0:6e6:5bd5:f3c3 with SMTP id 6a1803df08f44-6f0e77db671mr12056116d6.44.1744272081344;
-        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744272081; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8262384njd;
+        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcHli+6v6ww3B11rEGmBwPAq4ydlivgM0DRJ+/4OQAY+u/BoKO95uiec2JMqdkop3Oor7wIhrtwPlgGg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE8TasYM4CBxauESQTvgPA0DTh+k/s/Z7Iq79oqzTr4FD9lG/6Kn+hmiYFtQSyE3+6CDx0F
+X-Received: by 2002:ad4:5c8c:0:b0:6eb:28e4:8516 with SMTP id 6a1803df08f44-6f0e77c0770mr21798986d6.33.1744277124759;
+        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744277124; cv=none;
         d=google.com; s=arc-20240605;
-        b=QEPl3sOV+0auADwt8HmqJH9GlXlBd1X0V/AUmfkt3ZqjP1bvW30eeSDQjIBvkTc7u4
-         02qCUoORYQCQlv4N2Xf/coiANFYDCL99HR/gEnPUkQh8O3TEH1qPITbn4F5d19N6Uri3
-         LYZdt5NW22dj0fmovxKlta266JZ1CGeNaPFlqWEtKzOyLfq4ms99fPdyo243WABQ80vX
-         K5ktBOe2tgxIz5U2f8bMdTdRhgnT6ijH8ig/BI6UOlJ7Y9RaSTE2C01GzsC3uBWxr28V
-         o0y4pzk9qjNQbiUb70T+kB18jljD89COua0lhqjHvHy0KI5Bx2+4WnJ2RSGsHt9Hl3c3
-         4yjQ==
+        b=CIZZ4cno88lvtM8tQTgIqnB2ro89463NH22nEabUzRvmAINLDojpoCOvnjCbupRoiD
+         qdqMpakq+YTjTWBYOQOTrM9cpsbYGMo2PAucuPzG8Jd38YjLTto3cUPmed1RlzCgXlfw
+         RSm/0rszBTS3nejO1NsRQKZs4zF22+kwJzIN54QqC0WIHmy+naPPNhHMpg22AocndHTJ
+         oJ+OiF6t2XB2gsP3w26grhzcxqOA3K9SWABD04H9NcJd4+o5A89pEhi+cNt4J3Y4IE/S
+         RVru6JjDuDT8szXpKtCeF1iSEmrq9eqkbzm+to/k2XpwpzTIMGVSezYR9rcUDXEuf1QU
+         bRoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=2rAITOc8zzCDPLFAC0ssOMLTDuMH/tTiohbx554KGY4=;
+        bh=UzIfLtsz8ODLabWHZ++h1JXGyuNjwbZR1gQnM9lqAQE=;
         fh=MAffrn4U4uG1V2DrepAitVuUISIAqDfmc8PNRNXcHoo=;
-        b=PYMcXEKLivvEXMhw4UczDrKcZJGMBpwfYx8rWVJTxZuxK7aEuWLDc5KIBe8TRzX7+o
-         VTEu5x4w4lPryTeNTGdnN0s05slDlbj1YoOnVuoUAwOAl66qsYXcpGEILjMFfsdp9Dza
-         O/81ChpWIfC6FCyrNXEjan+RhwnBWFacaOY482iAvK2cPputLIOEinHb4mAgjnWgkMVt
-         pcJl5NyIDzjswlYVayA1TJanjFntelI5ywaNqnndAdu1I7Q0UkazaWS1uOZ4ujlU+vzh
-         89Dff+PDPF2JbeFU3g9IY9fDqMfBevXKfZ+uT6LFuUggSx+jq3CiurPe/I4QFmHB6sf0
-         irKg==;
+        b=Dz5a19qe5tUb4LFPaz68EM3+ZK/gbPluONcrqY8fDKxFg825blZk5jTnXQn0DeOr3c
+         paxEsPws5azAM5Wy8fSmxXZ9AHxu9ZzOXF90FTJ+492lp5t5bJZI5EupQ9zB/Xm/vXFq
+         ylDbrs2ghvcYOA41V5z0fgOSraIWXhcXolBSj4ZGpS7HFtxq3sXbx5onSWp2+OBcXEX/
+         j6/U3/U3jCV9f5ltMZ5HaNVPBVYw/oYwrUjd7aCzKw0Iqo14Z9gqjDEI2CMpFonuWn6v
+         Lw3jx5ZLvvhA8Dr4jF7tT826q/Bq4OhYWBKj+O1qolG2GSkM/mzacWr23VSJfesy0AFH
+         ROfg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=mzPuRRw8;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=CAGLPQl7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de95fae9si25139776d6.31.2025.04.10.01.01.21
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de95fbacsi25872976d6.38.2025.04.10.02.25.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
+        Thu, 10 Apr 2025 02:25:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=mzPuRRw8;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=CAGLPQl7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2mqS-0005za-Qv; Thu, 10 Apr 2025 04:01:08 -0400
+	id 1u2o9r-0006v2-3i; Thu, 10 Apr 2025 05:25:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2mqG-0005yO-U1; Thu, 10 Apr 2025 04:01:02 -0400
-Received: from mgamail.intel.com ([198.175.65.19])
+ id 1u2o9l-0006si-UX; Thu, 10 Apr 2025 05:25:10 -0400
+Received: from mgamail.intel.com ([192.198.163.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2mqC-00073D-R2; Thu, 10 Apr 2025 04:00:56 -0400
+ id 1u2o9j-00026A-9F; Thu, 10 Apr 2025 05:25:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744272053; x=1775808053;
+ t=1744277107; x=1775813107;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=Fog4B6Qbd8u1Pqc/gI0bDG41NJadwivsKQhqgMevtPQ=;
- b=mzPuRRw891rlTsFM9OO202Ka3ZXrlJ91N6PXOSuruai/PJEW/HcKFgZU
- RmY8E3264DeRs8AUGl4vFnliNvRNt/kHVXfsMfOSY1PJpKRxyOdTEMR8D
- mWhfjd+NFEpNc53E2atNS+l+/juigl2GUBgOI4X5TSz8ZKRXsNJGdBoma
- fGfgQqQWz+sP8Q68pWNPFTQ9p2yhn89GFbtEPEYNxeoPUx1/r04Xh9EsP
- EUpLXUn2dORtSx2QiZyU3eZcF9SxYQvWO29JBSI27kg43vuCCUwQTDL9j
- uh2ZybZVUJhT0eVTad5YAPjn4E7QzRWZ1P4w2Qotv48tErYJQNizk/qEa g==;
-X-CSE-ConnectionGUID: rOTq+PxKToCFEqu+7R8Pgg==
-X-CSE-MsgGUID: 5nbWWZGTTr2nptxVLb7TFg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="45668210"
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="45668210"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2025 01:00:39 -0700
-X-CSE-ConnectionGUID: GCO21CPgQjmbraiccL1yeA==
-X-CSE-MsgGUID: CwIZbOfJSLOTUfZSSHQyug==
+ bh=vWFTCAHyc4ZZSNblinRf0t8BBfuIQYEI8cO6hq8NbrA=;
+ b=CAGLPQl78R5F/0eb8DNCrhKsax4H8oLxcWT2JI5YQkfjoPvE6V3ZsJZs
+ z6DogORdau5iKKoShp6lla52jwJmoJPjtQ7uqxf+1nPyxt3JNrHHEzdP7
+ OIkum8zy1tUayGCMXP/NY6axmXrwUjjHoBhxooKmShKeatvnl5hzegPUG
+ F3katX1LpNIjL8ETP0+30y+R/SLTxC0OSxqZh0qlORH9BwUH3p/lMBl9U
+ n3vMKzwlJMmIbUmphPOQrtEKDYCtYTETaKAPTJGWC4MWJLq1eJiR/99jr
+ 8QIq0jIjVJa0ITghG3jyOYj5mX86KDQIvyydEc+VwrbOG+pG323l7xoIo A==;
+X-CSE-ConnectionGUID: Xx6nNb4dTQGIrOXlLCgZuA==
+X-CSE-MsgGUID: hE6bzLpVRNKkM6EHcckQPw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="49625375"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="49625375"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2025 02:25:00 -0700
+X-CSE-ConnectionGUID: 7EFLD+8sQoiP2fdPZgk4+Q==
+X-CSE-MsgGUID: aiCRLBNDQsqVw5PNhNlRAg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="134019949"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="129685784"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by orviesa005.jf.intel.com with ESMTP; 10 Apr 2025 01:00:28 -0700
-Date: Thu, 10 Apr 2025 16:21:18 +0800
+ by fmviesa009.fm.intel.com with ESMTP; 10 Apr 2025 02:24:51 -0700
+Date: Thu, 10 Apr 2025 17:45:41 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Dongli Zhang <dongli.zhang@oracle.com>
 Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
@@ -100,15 +100,15 @@ Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
  thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
  ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
  liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: Re: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
-Message-ID: <Z/d/ft0CufA8prwl@intel.com>
+Subject: Re: [PATCH v3 10/10] target/i386/kvm: don't stop Intel PMU counters
+Message-ID: <Z/eTRVSveNMwZBaa@intel.com>
 References: <20250331013307.11937-1-dongli.zhang@oracle.com>
- <20250331013307.11937-10-dongli.zhang@oracle.com>
+ <20250331013307.11937-11-dongli.zhang@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250331013307.11937-10-dongli.zhang@oracle.com>
-Received-SPF: pass client-ip=198.175.65.19; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20250331013307.11937-11-dongli.zhang@oracle.com>
+Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -48
 X-Spam_score: -4.9
@@ -132,56 +132,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: selDPgAbDW9c
+X-TUID: /T5EGl3oh35z
 
-On Sun, Mar 30, 2025 at 06:32:28PM -0700, Dongli Zhang wrote:
-> Date: Sun, 30 Mar 2025 18:32:28 -0700
+On Sun, Mar 30, 2025 at 06:32:29PM -0700, Dongli Zhang wrote:
+> Date: Sun, 30 Mar 2025 18:32:29 -0700
 > From: Dongli Zhang <dongli.zhang@oracle.com>
-> Subject: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
+> Subject: [PATCH v3 10/10] target/i386/kvm: don't stop Intel PMU counters
 > X-Mailer: git-send-email 2.43.5
 > 
-> Since perfmon-v2, the AMD PMU supports additional registers. This update
-> includes get/put functionality for these extra registers.
+> The kvm_put_msrs() sets the MSRs using KVM_SET_MSRS. The x86 KVM processes
+> these MSRs one by one in a loop, only saving the config and triggering the
+> KVM_REQ_PMU request. This approach does not immediately stop the event
+> before updating PMC.
+
+This is ture after KVM's 68fb4757e867 (v6.2). QEMU even supports v4.5
+(docs/system/target-i386.rst)... I'm not sure whether it is outdated,
+but it's better to mention the Linux version.
+
+> In additional, PMU MSRs are set only at levels >= KVM_PUT_RESET_STATE,
+> excluding runtime. Therefore, updating these MSRs without stopping events
+> should be acceptable.
+
+I agree.
+
+> Finally, KVM creates kernel perf events with host mode excluded
+> (exclude_host = 1). While the events remain active, they don't increment
+> the counter during QEMU vCPU userspace mode.
 > 
-> Similar to the implementation in KVM:
-> 
-> - MSR_CORE_PERF_GLOBAL_STATUS and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS both
-> use env->msr_global_status.
-> - MSR_CORE_PERF_GLOBAL_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_CTL both use
-> env->msr_global_ctrl.
-> - MSR_CORE_PERF_GLOBAL_OVF_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS_CLR
-> both use env->msr_global_ovf_ctrl.
-> 
-> No changes are needed for vmstate_msr_architectural_pmu or
-> pmu_enable_needed().
+> No Fixed tag is going to be added for the commit 0d89436786b0 ("kvm:
+> migrate vPMU state"), because this isn't a bugfix.
 > 
 > Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
 > ---
-
-...
-
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index 3a35fd741d..f4532e6f2a 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -2149,6 +2149,16 @@ static void kvm_init_pmu_info_amd(struct kvm_cpuid2 *cpuid, X86CPU *cpu)
->      }
->  
->      num_pmu_gp_counters = AMD64_NUM_COUNTERS_CORE;
-> +
-> +    c = cpuid_find_entry(cpuid, 0x80000022, 0);
-> +    if (c && (c->eax & CPUID_8000_0022_EAX_PERFMON_V2)) {
-> +        pmu_version = 2;
-> +        num_pmu_gp_counters = c->ebx & 0xf;
-> +
-> +        if (num_pmu_gp_counters > MAX_GP_COUNTERS) {
-> +            num_pmu_gp_counters = MAX_GP_COUNTERS;
-
-OK! KVM now supports 6 GP counters (KVM_MAX_NR_AMD_GP_COUNTERS).
-
-> +        }
-> +    }
->  }
+>  target/i386/kvm/kvm.c | 9 ---------
+>  1 file changed, 9 deletions(-)
 
 Fine for me,
 

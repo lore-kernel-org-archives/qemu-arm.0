@@ -1,90 +1,99 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8353361njd;
-        Thu, 10 Apr 2025 05:24:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU9O4WrwzQYeqlPaYsbv2Ht/mlaKMohd/IV1Cejygkjr4X8r41VYg3nzcHv+WGzORY5hWkujQQcfukf4A==@linaro.org
-X-Received: by 2002:a17:903:1b06:b0:220:e362:9b1a with SMTP id d9443c01a7336-22be0322f16mr33128635ad.25.1744287871750;
-        Thu, 10 Apr 2025 05:24:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744287871; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8370436njd;
+        Thu, 10 Apr 2025 05:55:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8vETQ0xnrI8B+Pee97X021B7X3o6qsOvgIHIf+Ts+LPx0d+MILWNUdKNb4JuaTSfNpJQG+Z5A1N1dJQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEZqS/Ft3BY0HzUYRCuZ30Z7ECgrJ8QeSoeeLsgLCSbAEmdDedLNlE4/QruSWMsicBILlny
+X-Received: by 2002:a05:6902:4913:b0:e6b:7aa8:59f9 with SMTP id 3f1490d57ef6-e703e0ed7afmr4000819276.4.1744289724725;
+        Thu, 10 Apr 2025 05:55:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744289724; cv=none;
         d=google.com; s=arc-20240605;
-        b=Kqwt51huWnKe79GG+6LlR5X7JbL1WGILcewWkM+/Y20kUOQMwaV7rAK46kl0b2FxXA
-         /qp2C9dvtciaOVikwMRtiMym1IyIEiP3GYHkogGJRgeW6K4ebWoVumrM6VWP4e/p4Nwl
-         iE1PPw7uPvw6MoA0PfBMGAYetF+5SEJrhCkEj8tN+F1wLPA0TaRB4jM2KnoGh8nlDX74
-         jtwo4pLdThGhW5dP+lQBe0/mmz/XZLwpTXRd2QGQOLDNakJy02rkViLLfmUsiUD4PVSO
-         PANevwYbj49/EKIg2Gsnr3V8pF/QQ7CpKGZBdJENjtZLhaBtWNp61Hv2CnrBeSRCEXep
-         IwIA==
+        b=KEVRFKIMT/NodWtF5z7L3HKXO21enKBkrUbiWMB7dqUCGzV9W2d+FkRqUP21F8IaPr
+         xNdtkAe4BbdUG9v0Y5/1+nFGOD0p7qkbHZTKuNDqPAlBz/uedAoaKoEWU0ZXDcEy1IbR
+         0n27Lc2ATRCf41feHp6zXShwpsjqU8tsyxPJuNie+tB62NmX+u+rktKPczcLwxwMxuAv
+         EO6ZFUJmmceFFUM6c3pTTPUA948hdzsuPCPAYcoDgqOwSddChZArGj0x4cyIv+gZS4TU
+         SGQ052JVO15iJ+jooTnj3fYpzoIS688qD0Hth6Rz0AetXSQm+z307geFyUTkKR//TkZt
+         IEAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=bUphInPLmEDCerY7cJxB4YMAiJbIiSaraVi2vqUAgHU=;
-        fh=TdoSVBFfG3ZAROKZoR0ZIQON5NdULXfWhz3/6fCeP+g=;
-        b=UixsD13bE9Bh4OZvdtnnLC2FsbVIUAPQTi0nB1ObKiD2ztoN5P9f2V+c8wLmViuyXe
-         jFHudbv5bQH8qD8QAHxJR9GP2wGgYKILGHsyPrC26Mter7R6ERHFU1Br5wVi/32F+yzk
-         qeczHWtYwbufondhZkbj8yniqc98QlbTYXGr5JvAgevEdpC7sRysb/7Gvv3ez68G6UAN
-         rPNsUGJ9/hk498/g3KILvqzikglf7pFwUOa2Tjs7rOY6M5c85He+uFn9ykY7/CiCWRN0
-         KNKDIUNMpXSPi9b0FsAwB8OvwF9h0pFFXNEECNHD5MwFXn7KhvR9/o1AijHNCRm5k6uz
-         vsAA==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=uY+GXIRcFHjEMDAwApDq5u+dpMv+32eCMLTfB4Go5sE=;
+        fh=h/xq0HSKuKGvYzHFttcQlJ5TBbXx1QoEvCv99+erpS4=;
+        b=laVe07ECs+3WJBY6rC+I/e2KzCOJ+VUVrcL60L3r4a2xlqDnS2J+VRyscoltCdwxSR
+         XguGKRQySzTqIRzYZfVrGzOBsDU7xk7LJFerfC8ty6fetaksXIlYykfi3eWB874Yr36H
+         vqr5yJvEjbgvrEMbT6oKx+cVcYhfvFJuZwHIFPWpnn71hWRVrtK7tLWPL0kkoYdtaxS2
+         T3a6yevSqB8+2D9Cs5SRngsGA/u5dPPZQ6C/544yw+Ps8pZqkh2INBFJWVEWXdc0Sq7r
+         gEvtnSyy4oemtkX98npdjAa3o+NaX+wKVuOb+p7/CW+wBM1wqzAwrmz1R2rbIuzWlc6z
+         9QMg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="THG/qLYI";
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22be116d53dsor8157525ad.14.2025.04.10.05.24.31
-        (Google Transport Security);
-        Thu, 10 Apr 2025 05:24:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OCBgQL91;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e70327c1bb7si4932221276.256.2025.04.10.05.55.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Apr 2025 05:55:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="THG/qLYI";
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744287871; x=1744892671; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bUphInPLmEDCerY7cJxB4YMAiJbIiSaraVi2vqUAgHU=;
-        b=THG/qLYIxfc5PJQdi+dQ/7IDFaZ60JolmQeP8GFhuMts8QCAgQ59ugBzk/kmfv/NpV
-         /OuE8D5W7E1CZ7vS/3Offctml4e8ikCsXLj+2MQABZUnqefT//Xxhdmf7Qh0YKNYh4v9
-         GssEfnl6pOxhdWlyOeahGeX5EC9pIXLCZkwgeIVmJ7MAwakDh3v+zGbCYpGNG7lCJGQC
-         s3O1ZCX2a/Ka0aFi0kCJyz2bW3vpG+svOlFPBENKJoqa6fgOhXlnfK1rh4AvoGYJadbb
-         D7Hn0zU3hzMYbCz65EZTtvt/Vw+HTW+ZKnVXKWqphPI9+h9+4DS1JU917j4EKnIoYQa2
-         rvTg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OCBgQL91;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744289724;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uY+GXIRcFHjEMDAwApDq5u+dpMv+32eCMLTfB4Go5sE=;
+	b=OCBgQL91BtwmaXqClGY0/katG9AY6OLu1srChBkJacCkR3CiPFVZA8fOlXtv/sUR0gQ7Dq
+	9lHZ4Khi2nIBW7ejWFEV0dF/NQGRLmswoBl8NhD59vJrWHml7ZY2fxGE8aDJqW98J9Xm3j
+	d9kig1Ss2g0OxTde/VTZcCnXWxyL9Hw=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-378-aBrmER7zPCO7-z9oD_4W6Q-1; Thu, 10 Apr 2025 08:55:23 -0400
+X-MC-Unique: aBrmER7zPCO7-z9oD_4W6Q-1
+X-Mimecast-MFC-AGG-ID: aBrmER7zPCO7-z9oD_4W6Q_1744289722
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43941ad86d4so4611755e9.2
+        for <alex.bennee@linaro.org>; Thu, 10 Apr 2025 05:55:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744287871; x=1744892671;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bUphInPLmEDCerY7cJxB4YMAiJbIiSaraVi2vqUAgHU=;
-        b=nFsgKG6eo5ltIQTzF9M8KJKVtLZ6LH0XppxqtVTCSgeeRSMP0JJ6ROy9D4Ui/uquI6
-         JY2heJeRmKESfJqEwf5vf07VrDPhaK/tm/uPzhFIqvYDeeCmKQHH/lXsUa6Fmi39SJuC
-         lQ67Dxns+ro3Lc4IdViHDiETNBqy51RevqJofepi2yzJoLQqJBF7+/NgJoLIeH2cve5Y
-         NgBvDXXTF1X3bnNqYhBmNC4VMb36YcKuHXppdtRBgrXn7icbJax7EEaroSJXeRoNUL+4
-         5WdqPuyy7SpwAgIwMQEZ3Lly912noNwRo4oXNT6/79e0KQhZIS1uZT8T7G/mbrAR2EO9
-         ZbIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUjQ2OA2DTegWah0yIKvGTu4hzG1rv6Hs6pwQgYpU4/2jy2oF9PKkweSFSWoNxtWO9KHoDu3ffWqTfZag==@linaro.org, AJvYcCVN+i0pTn9e+oCdWqD7BUYC7b+QZvFO+ZkGaPiLkMtA5U1/ELRqiCUMDYgc68XHaZk05OUeAMoS2qIX+MKWuttHUg==@linaro.org, AJvYcCWzmdnOQjbE3KZo90AEDjbEfyad/bUTxRW+6uWuMEyLJiuLytIPPyOvscF28X4Pp2PCbjIwBOz5C5bUCWA1rA==@linaro.org, AJvYcCXanyQkQ/uMYUsDOL5q9Z0ZWGdUOEKLwoSZ+LuF6sWVTX507Yv78lj0kd+qyDKZZuLpn33sZ9BOW0e4mIhYXq0SOOM=@linaro.org
-X-Gm-Message-State: AOJu0YxBzNapXqjPvHSgCOm6RqKaNu4hbcdK6szULJHSZE6UZOQi2kIO
-	AhTOXJPyajKd4Nhpy3+YI62XXBI7k0YxHUF+TmJCF6wTE0MldRFfjXg4iLtv84eqUmnVZQMvyvw
-	43vQ68ZnrF53TEl1Z7AXkfBI0sos=
-X-Gm-Gg: ASbGncv58JoGiY4Fs109oZvwRpfpOGPq/U1qC6uLPLIwIJPLNYFwTImxPGkPosLxac6
-	IsPUk8JCmEl0j2v+ryQAGAgOSBOR0kVVRpQYqIrOqXXFvxowwWhCWpU6NxRGMiXpaadvwWVKdws
-	iycBj4D6FypBxJ/hEP1wChEPo1JbgtoZI2VeQrBdtm7ujt6O1UxZM=
-X-Google-Smtp-Source: AGHT+IFjSY680fopcspcV4dUSl5ihWrJhgbnXfs2mZ+dOnxVdG/BfQfFtKhI2p5hFRI6D7GBe8EyIw2lqwpHRV7Cn6k=
-X-Received: by 2002:a17:90b:1f88:b0:2ee:44ec:e524 with SMTP id
- 98e67ed59e1d1-307e9b3f36dmr3334852a91.35.1744287871077; Thu, 10 Apr 2025
- 05:24:31 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1744289722; x=1744894522;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uY+GXIRcFHjEMDAwApDq5u+dpMv+32eCMLTfB4Go5sE=;
+        b=e7SrevNog980DHQI06hH2aQ0EtgoKF5+HXTU4PmN+IBY9/aPwAvaqg/1w2RqWsXTH8
+         EFJz2Jv2AoXKgK1qNI3xqUq1qEYb3+JgZvUsThDQHyH1WhXPcGC+bIXSKbC35ByYRra2
+         bASuFW0H4Om3bhwaLvx5hGxxVQR3ZSFf6pYKOmoQTNE77KAZ49edYgwrfci0+OHjIiPR
+         e5AZQG94+TmUCT9Zw4eVmdAM7n49zb/Kfmje+vft6uvnE31GJ+Jwe+lg9P4EB6HibTVG
+         sbUPaBqPXe05v9ehI+/yFLbBwb1gWnig2U2/L3ardw/bwCyFsPRzPzze4r1J700abCOo
+         G4yw==
+X-Forwarded-Encrypted: i=1; AJvYcCVbx4XZB0rzhvpVNYxQZbUBpIzzOH84arozwnJlqm6lsQWebF9x04Ekugy3fBzBs1w0tCMcHSiOCBc5Cw==@linaro.org
+X-Gm-Message-State: AOJu0Yzkhz/CwS1sDbkj7ad3L0fSwzbMoXJfIjxdArbUPxp4oQ7m0lpt
+	X6HmLm+y0L0FpguIXfkt8A7JHFuGBjGHSjsK3hEqp0Muj0vTd3V/REeE45aJ9kwyMfBPrBifScI
+	z81Dg2Hv8jtvkfO6vEAJnvXgQXWmhgEaKtvXhngqM/+gvpWZrg7Hmv9sK1q6SnyWU8nSbe67ziB
+	jbnICAiQ6HB2goT+7sfCgAXHZYPktS
+X-Gm-Gg: ASbGncsIEXiNmg9z36okCqkL+3luiKHCI+BTiyrNGUQjlt8+Q2TcSIYjeFHTIG2VUCU
+	HfvPAxUFn3aLKxwqOBY8SMOz41NLMszhvz7mh/qIo+aTsSmSFvcNQnmIGRsk69yqiJlsbZhw=
+X-Received: by 2002:a05:600c:444f:b0:43c:ec28:d301 with SMTP id 5b1f17b1804b1-43f2d95a8cemr20170425e9.26.1744289721792;
+        Thu, 10 Apr 2025 05:55:21 -0700 (PDT)
+X-Received: by 2002:a05:600c:444f:b0:43c:ec28:d301 with SMTP id
+ 5b1f17b1804b1-43f2d95a8cemr20170155e9.26.1744289721389; Thu, 10 Apr 2025
+ 05:55:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
  <04b7137a464e0925e2ae533bbde4fcdfe0dfe069.1744032780.git.ktokunaga.mail@gmail.com>
  <e0dcc4e6-1e8e-468f-83e5-36ffb014eeef@linaro.org> <671805c9-f802-412b-998e-ba83719f1e72@redhat.com>
-In-Reply-To: <671805c9-f802-412b-998e-ba83719f1e72@redhat.com>
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 10 Apr 2025 21:24:18 +0900
-X-Gm-Features: ATxdqUEAUMCgXq0GAn2bYNIHf98GyBjr_QDHwkvX6Mgc8qM0VB1vNeJy_FRznks
-Message-ID: <CAEDrbUbnAzXpmNSNi11j7+a0DCYHy7d_MCY=TMqHUoxmo_ZHGw@mail.gmail.com>
+ <CAEDrbUbnAzXpmNSNi11j7+a0DCYHy7d_MCY=TMqHUoxmo_ZHGw@mail.gmail.com>
+In-Reply-To: <CAEDrbUbnAzXpmNSNi11j7+a0DCYHy7d_MCY=TMqHUoxmo_ZHGw@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Thu, 10 Apr 2025 14:55:07 +0200
+X-Gm-Features: ATxdqUGKmzOKJOybqP1sPUXX_2b_QdTs7865rXacRygnAG-Afji3ov0U768K7SU
+Message-ID: <CABgObfaL3f3BD56ajE=Dv+VKidjpW=FRuwTyFHr_Fpu5uAqmpg@mail.gmail.com>
 Subject: Re: [PATCH 05/10] meson: Add wasm build in build scripts
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Thomas Huth <thuth@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
 	Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
@@ -97,177 +106,95 @@ Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
 	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
 	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
 	qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000f1196306326baa44"
-X-TUID: /eqOUh9aTw9v
-
---000000000000f1196306326baa44
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 0E_9pO6qTZIoBghvIPjDGWqszYwnAuwWQQL_x0BiBTs_1744289722
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-
-Hi Paolo, thank you for the comments.
-
-> >> has_int128_type is set to false on emscripten as of now to avoid
-errors by
-> >> libffi.
->
-> What is the error here?  How hard would it be to test for it?
-
-When has_int128_type=true, I encountered a runtime error from libffi. To
-reproduce this, we need to actually execute a libffi call with 128-bit
-arguments.
-
-> Uncaught TypeError: Cannot convert 1079505232 to a BigInt
->     at ffi_call_js (out.js:702:37)
->     at qemu-system-x86_64.wasm.ffi_call (qemu-system-x86_64.wasm:0xa37712)
->     at qemu-system-x86_64.wasm.tcg_qemu_tb_exec_tci
-(qemu-system-x86_64.wasm:0x65f440)
->     at qemu-system-x86_64.wasm.tcg_qemu_tb_exec
-(qemu-system-x86_64.wasm:0x65edff)
->     at qemu-system-x86_64.wasm.cpu_tb_exec
-(qemu-system-x86_64.wasm:0x6762c0)
->     at qemu-system-x86_64.wasm.cpu_exec_loop
-(qemu-system-x86_64.wasm:0x677c84)
->     at qemu-system-x86_64.wasm.dynCall_iii
-(qemu-system-x86_64.wasm:0xab9014)
->     at ret.<computed> (out.js:6016:24)
->     at invoke_iii (out.js:7574:10)
->     at qemu-system-x86_64.wasm.cpu_exec_setjmp
-(qemu-system-x86_64.wasm:0x676db8)
-
-> >> And tests aren't integrated with Wasm execution environment as of
-> >> now so this commit disables tests.
->
-> Perhaps it would be enough to add
->
-> [binaries]
-> exe_wrapper = 'node'
->
-> to the emscripten.txt file?
-
-Thank you for the suggestion. I'll explore this approach.
-
-> >> +[built-in options]
-> >> +c_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-> >> +cpp_args = ['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-> >> +objc_args =
-['-Wno-unused-command-line-argument','-g','-O3','-pthread']
-> >> +c_link_args = ['-Wno-unused-command-line-argument','-g','-O3','-
-> >> pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','-
-> >> sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','-
-> >> sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','-
-> >> sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
-> >> +cpp_link_args = ['-Wno-unused-command-line-argument','-g','-O3','-
-> >> pthread','-sASYNCIFY=1','-sPROXY_TO_PTHREAD=1','-sFORCE_FILESYSTEM','-
-> >> sALLOW_TABLE_GROWTH','-sTOTAL_MEMORY=2GB','-sWASM_BIGINT','-
-> >> sEXPORT_ES6=1','-sASYNCIFY_IMPORTS=ffi_call_js','-
-> >> sEXPORTED_RUNTIME_METHODS=addFunction,removeFunction,TTY,FS']
->
-> At least -g -O3 -pthread should not be necessary.
-
-Thank you for the suggestion. -sPROXY_TO_PTHREAD flag used in c_link_args
-always requires -pthread, even during configuration. Otherwise, emcc returns
-an error like:
-
-> emcc: error: -sPROXY_TO_PTHREAD requires -pthread to work!
-
-So I think -pthread needs to be included in c_link_args at minimum. I'll try
-to remove other flags in the next version of the series.
-
-> For -Wno-unused-command-line-argument what are the warnings/errors that
-> you are getting?
-
-I encountered the following error when compiling QEMU:
-
-> clang: error: argument unused during compilation: '-no-pie'
-[-Werror,-Wunused-command-line-argument]
-
-It seems Emscripten doesn't support the -no-pie flag, and this wasn't caught
-during the configure phase. It seems that removing
--Wno-unused-command-line-argument would require the following change in
-meson.build, but I'm open to better approaches.
-
-> -if not get_option('b_pie')
-> +if not get_option('b_pie') and host_os != 'emscripten'
->    qemu_common_flags += cc.get_supported_arguments('-fno-pie', '-no-pie')
->  endif
-
-> >> +elif host_os == 'emscripten'
-> >> +  supported_backends += ['fiber']
->
-> Can you rename the backend to 'wasm' since the 'windows' backend also
-> uses an API called Fibers?
-
-Sure, I'll rename the coroutine backend in the next version of the series.
-
---000000000000f1196306326baa44
-Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: pRpgThObcoOi
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hi Paolo, thank you for =
-the comments.<br><br>&gt; &gt;&gt; has_int128_type is set to false on emscr=
-ipten as of now to avoid errors by<br>&gt; &gt;&gt; libffi.<br>&gt; <br>&gt=
-; What is the error here?=C2=A0 How hard would it be to test for it?<br><br=
->When has_int128_type=3Dtrue, I encountered a runtime error from libffi. To=
-<br>reproduce this, we need to actually execute a libffi call with 128-bit<=
-br>arguments.<br><br>&gt; Uncaught TypeError: Cannot convert 1079505232 to =
-a BigInt<br>&gt; =C2=A0 =C2=A0 at ffi_call_js (out.js:702:37)<br>&gt; =C2=
-=A0 =C2=A0 at qemu-system-x86_64.wasm.ffi_call (qemu-system-x86_64.wasm:0xa=
-37712)<br>&gt; =C2=A0 =C2=A0 at qemu-system-x86_64.wasm.tcg_qemu_tb_exec_tc=
-i (qemu-system-x86_64.wasm:0x65f440)<br>&gt; =C2=A0 =C2=A0 at qemu-system-x=
-86_64.wasm.tcg_qemu_tb_exec (qemu-system-x86_64.wasm:0x65edff)<br>&gt; =C2=
-=A0 =C2=A0 at qemu-system-x86_64.wasm.cpu_tb_exec (qemu-system-x86_64.wasm:=
-0x6762c0)<br>&gt; =C2=A0 =C2=A0 at qemu-system-x86_64.wasm.cpu_exec_loop (q=
-emu-system-x86_64.wasm:0x677c84)<br>&gt; =C2=A0 =C2=A0 at qemu-system-x86_6=
-4.wasm.dynCall_iii (qemu-system-x86_64.wasm:0xab9014)<br>&gt; =C2=A0 =C2=A0=
- at ret.&lt;computed&gt; (out.js:6016:24)<br>&gt; =C2=A0 =C2=A0 at invoke_i=
-ii (out.js:7574:10)<br>&gt; =C2=A0 =C2=A0 at qemu-system-x86_64.wasm.cpu_ex=
-ec_setjmp (qemu-system-x86_64.wasm:0x676db8)<br><br>&gt; &gt;&gt; And tests=
- aren&#39;t integrated with Wasm execution environment as of<br>&gt; &gt;&g=
-t; now so this commit disables tests.<br>&gt; <br>&gt; Perhaps it would be =
-enough to add<br>&gt; <br>&gt; [binaries]<br>&gt; exe_wrapper =3D &#39;node=
-&#39;<br>&gt; <br>&gt; to the emscripten.txt file?<br><br>Thank you for the=
- suggestion. I&#39;ll explore this approach.<br><br>&gt; &gt;&gt; +[built-i=
-n options]<br>&gt; &gt;&gt; +c_args =3D [&#39;-Wno-unused-command-line-argu=
-ment&#39;,&#39;-g&#39;,&#39;-O3&#39;,&#39;-pthread&#39;]<br>&gt; &gt;&gt; +=
-cpp_args =3D [&#39;-Wno-unused-command-line-argument&#39;,&#39;-g&#39;,&#39=
-;-O3&#39;,&#39;-pthread&#39;]<br>&gt; &gt;&gt; +objc_args =3D [&#39;-Wno-un=
-used-command-line-argument&#39;,&#39;-g&#39;,&#39;-O3&#39;,&#39;-pthread&#3=
-9;]<br>&gt; &gt;&gt; +c_link_args =3D [&#39;-Wno-unused-command-line-argume=
-nt&#39;,&#39;-g&#39;,&#39;-O3&#39;,&#39;-<br>&gt; &gt;&gt; pthread&#39;,&#3=
-9;-sASYNCIFY=3D1&#39;,&#39;-sPROXY_TO_PTHREAD=3D1&#39;,&#39;-sFORCE_FILESYS=
-TEM&#39;,&#39;-<br>&gt; &gt;&gt; sALLOW_TABLE_GROWTH&#39;,&#39;-sTOTAL_MEMO=
-RY=3D2GB&#39;,&#39;-sWASM_BIGINT&#39;,&#39;-<br>&gt; &gt;&gt; sEXPORT_ES6=
-=3D1&#39;,&#39;-sASYNCIFY_IMPORTS=3Dffi_call_js&#39;,&#39;-<br>&gt; &gt;&gt=
-; sEXPORTED_RUNTIME_METHODS=3DaddFunction,removeFunction,TTY,FS&#39;]<br>&g=
-t; &gt;&gt; +cpp_link_args =3D [&#39;-Wno-unused-command-line-argument&#39;=
-,&#39;-g&#39;,&#39;-O3&#39;,&#39;-<br>&gt; &gt;&gt; pthread&#39;,&#39;-sASY=
-NCIFY=3D1&#39;,&#39;-sPROXY_TO_PTHREAD=3D1&#39;,&#39;-sFORCE_FILESYSTEM&#39=
-;,&#39;-<br>&gt; &gt;&gt; sALLOW_TABLE_GROWTH&#39;,&#39;-sTOTAL_MEMORY=3D2G=
-B&#39;,&#39;-sWASM_BIGINT&#39;,&#39;-<br>&gt; &gt;&gt; sEXPORT_ES6=3D1&#39;=
-,&#39;-sASYNCIFY_IMPORTS=3Dffi_call_js&#39;,&#39;-<br>&gt; &gt;&gt; sEXPORT=
-ED_RUNTIME_METHODS=3DaddFunction,removeFunction,TTY,FS&#39;]<br>&gt; <br>&g=
-t; At least -g -O3 -pthread should not be necessary.<br><br>Thank you for t=
-he suggestion. -sPROXY_TO_PTHREAD flag used in c_link_args<br>always requir=
-es -pthread, even during configuration. Otherwise, emcc returns<br>an error=
- like:<br><br>&gt; emcc: error: -sPROXY_TO_PTHREAD requires -pthread to wor=
-k!<br><br>So I think -pthread needs to be included in c_link_args at minimu=
-m. I&#39;ll try<br>to remove other flags in the next version of the series.=
-<br><br>&gt; For -Wno-unused-command-line-argument what are the warnings/er=
-rors that<br>&gt; you are getting?<br><br>I encountered the following error=
- when compiling QEMU:<br><br>&gt; clang: error: argument unused during comp=
-ilation: &#39;-no-pie&#39; [-Werror,-Wunused-command-line-argument]<br><br>=
-It seems Emscripten doesn&#39;t support the -no-pie flag, and this wasn&#39=
-;t caught<br>during the configure phase. It seems that removing<br>-Wno-unu=
-sed-command-line-argument would require the following change in<br>meson.bu=
-ild, but I&#39;m open to better approaches.<br><br>&gt; -if not get_option(=
-&#39;b_pie&#39;)<br>&gt; +if not get_option(&#39;b_pie&#39;) and host_os !=
-=3D &#39;emscripten&#39;<br>&gt; =C2=A0 =C2=A0qemu_common_flags +=3D cc.get=
-_supported_arguments(&#39;-fno-pie&#39;, &#39;-no-pie&#39;)<br>&gt; =C2=A0e=
-ndif<br><br>&gt; &gt;&gt; +elif host_os =3D=3D &#39;emscripten&#39;<br>&gt;=
- &gt;&gt; + =C2=A0supported_backends +=3D [&#39;fiber&#39;]<br>&gt; <br>&gt=
-; Can you rename the backend to &#39;wasm&#39; since the &#39;windows&#39; =
-backend also<br>&gt; uses an API called Fibers?<br><br>Sure, I&#39;ll renam=
-e the coroutine backend in the next version of the series.<br><br><br></div=
-></div>
-</div>
+On Thu, Apr 10, 2025 at 2:24=E2=80=AFPM Kohei Tokunaga <ktokunaga.mail@gmai=
+l.com> wrote:
+> > >> has_int128_type is set to false on emscripten as of now to avoid err=
+ors by
+> > >> libffi.
+> >
+> > What is the error here?  How hard would it be to test for it?
+>
+> When has_int128_type=3Dtrue, I encountered a runtime error from libffi. T=
+o
+> reproduce this, we need to actually execute a libffi call with 128-bit
+> arguments.
+>
+> > Uncaught TypeError: Cannot convert 1079505232 to a BigInt
+> >     at ffi_call_js (out.js:702:37)
+> >     at qemu-system-x86_64.wasm.ffi_call (qemu-system-x86_64.wasm:0xa377=
+12)
+> >     at qemu-system-x86_64.wasm.tcg_qemu_tb_exec_tci (qemu-system-x86_64=
+.wasm:0x65f440)
+> >     at qemu-system-x86_64.wasm.tcg_qemu_tb_exec (qemu-system-x86_64.was=
+m:0x65edff)
+> >     at qemu-system-x86_64.wasm.cpu_tb_exec (qemu-system-x86_64.wasm:0x6=
+762c0)
+> >     at qemu-system-x86_64.wasm.cpu_exec_loop (qemu-system-x86_64.wasm:0=
+x677c84)
+> >     at qemu-system-x86_64.wasm.dynCall_iii (qemu-system-x86_64.wasm:0xa=
+b9014)
+> >     at ret.<computed> (out.js:6016:24)
+> >     at invoke_iii (out.js:7574:10)
+> >     at qemu-system-x86_64.wasm.cpu_exec_setjmp (qemu-system-x86_64.wasm=
+:0x676db8)
 
---000000000000f1196306326baa44--
+Ok, I guess a comment mentioning that it's a libffi limitation is enough.
+
+> > At least -g -O3 -pthread should not be necessary.
+>
+> Thank you for the suggestion. -sPROXY_TO_PTHREAD flag used in c_link_args
+> always requires -pthread, even during configuration. Otherwise, emcc retu=
+rns
+> an error like:
+>
+> > emcc: error: -sPROXY_TO_PTHREAD requires -pthread to work!
+>
+> So I think -pthread needs to be included in c_link_args at minimum. I'll =
+try
+> to remove other flags in the next version of the series.
+
+Reading more about -sPROXY_TO_PTHREAD it seems that you need it for
+all calls to emcc, even when compiling, so it's better to leave it in
+everywhere.
+
+> > For -Wno-unused-command-line-argument what are the warnings/errors that
+> > you are getting?
+>
+> I encountered the following error when compiling QEMU:
+>
+> > clang: error: argument unused during compilation: '-no-pie' [-Werror,-W=
+unused-command-line-argument]
+>
+> It seems Emscripten doesn't support the -no-pie flag, and this wasn't cau=
+ght
+> during the configure phase. It seems that removing
+> -Wno-unused-command-line-argument would require the following change in
+> meson.build, but I'm open to better approaches.
+>
+> > -if not get_option('b_pie')
+> > +if not get_option('b_pie') and host_os !=3D 'emscripten'
+> >    qemu_common_flags +=3D cc.get_supported_arguments('-fno-pie', '-no-p=
+ie')
+> >  endif
+
+Meson should have passed the -Werror=3Dunused-command-line-argument flag
+when doing the above test (CLikeCompiler._has_multi_arguments ->
+has_arguments -> Compiler.compiles -> _build_wrapper ->
+build_wrapper_args -> ClangCompiler.get_compiler_check_args). It would
+be great if you can check what's wrong in this theory so perhaps meson
+can be fixed, or at least send here a meson-log.txt.
+
+My suggestion is (if possible) to split out the parts of this series
+that are enough to run QEMU under TCI, and get those in as quickly as
+possible. The TCG backend can come second.
+
+Thanks,
+
+Paolo

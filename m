@@ -1,153 +1,337 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp42084njc;
-        Thu, 10 Apr 2025 14:00:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVaXNHD8xjZicfdb+XysMXzS8OjkqvemRYaFSZGwEGm9HmXmD0aqm+jsrY+5z9h/+eIjG5rMx94am42sQ==@linaro.org
-X-Received: by 2002:a05:6a00:2e27:b0:736:53c5:33ba with SMTP id d2e1a72fcca58-73bd12657e3mr381256b3a.16.1744318839791;
-        Thu, 10 Apr 2025 14:00:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744318839; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp53127njc;
+        Thu, 10 Apr 2025 14:21:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXA6n6SoCMpaR7eWfPSq3uMg+aYxEzNBaAM5F/Ib3aTNp6l/8KDwyNKRTVZ41uX96A+vYEfSVWKss8mnw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHUg8HH9K5crVTKmorO0/yAb3x/birne7690sno5NBLoNSVEt87ID4jYprUyikqikHRuAUi
+X-Received: by 2002:a05:6214:2342:b0:6eb:2f7a:45c2 with SMTP id 6a1803df08f44-6f23f16e6c6mr6172576d6.43.1744320068256;
+        Thu, 10 Apr 2025 14:21:08 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1744320068; cv=pass;
         d=google.com; s=arc-20240605;
-        b=dd0pV3fVMtddYy0s8r+5Bcd+S7ajAe5eN5syMj9fPZDWhuoSeIYbjZTPP6QG20FdNW
-         UMxkvk4edhxJpsitS84qh5yoAWR7yYm6n2cFkE1x+0gy6tR4WSlBMesJPJYqki2mcJq/
-         fOFYggfsC6s8BDgu7e60D+Ws1UqBezaS11mydsULSi0H42meULFXX7XceF9WLKBb8jFD
-         9C5BjM5X1IOsTjK9O0AB8NrG1YWmc9tlJ7AFWcWyp+cP4iFthxEpuunGNd//I570B3uE
-         j2H1lEC2lmouMlMaWEuE/OCOPO0VCG75hUbCAqc7hAEgo7Kxm30a/qaozqnQS4Aj7ur6
-         nZtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=M9OwVMJQ+nPgoXVT+v3WG48aEZrZJjJFRvNoKJmm5KU=;
-        fh=RTHUnwD9TEfrYZIuI1O++0OavyP/e1qNLIvBMFVQi98=;
-        b=MqIUEoN1lvq6OtBwyu9rPMeV8tNDWZrX6/NvflCpqBOam5RgL1PKSXsC42XZ8fqIPQ
-         4Nc2Si+1QbiusVdqxt2f+qDSJ8lLRJUCkYEK97FWsK9qCBgXOuBoyd6bJGFJvZdhoSdM
-         GL+hOzfZeOhCTHtCxJiUvlVL2GShIdr8rUvsmuKmDotXdwnJCWZpvftYvNvUPtez8K4I
-         0XbMbnQD/PuFLT3VcbevL7HjTX+ub1ykXpm+mHcpphSHZrqrJRNOpv8/Pq+es1vCAflq
-         LxoTC1lZcxhaqr+2ydGik6Z1qMnXveb6n9b1mQXvAGRLMxsXM6BNSvruflnmaxMKdjRl
-         BIJQ==;
+        b=a6i1kDgSWuGVOlsn6TxjIOqjRMefD+QSWagAMSaawfnR9UWwGTwy0qYH7a7RRgNkcT
+         H6ztfULWao2LQiYCal/3rBr0LqBWHCxkjTJh4u6Tba9+4ZC64rbrxolgts+vkGFZWViQ
+         dh4N0lOfaNLiWNAjSlB3W6Q5wjHY1YwX6gh3Z8/BTnanxvOiSh3fZ2OJls+6IXw+t+8T
+         KmszekymFK0nGUuivS9dnHbDyOgINGvNY8bOo2Kpznjpj5KDRdzr0DfRNw9qXPuSaA3i
+         L2N9j9zlgP5Tew7v3uQ/h2nHkcXW2nsAL7G0WEUhsOUicliXAiO84OqICLJknnoquE6h
+         WMKA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:date:message-id:dkim-signature
+         :dkim-signature;
+        bh=N2n3BCLvdlrIC2S21rEq8DkkWCctiGUO+CZA4v9fuzI=;
+        fh=1ujQTGHwsHyh6nVmxEcR8DwquczXhHr+N2b9h4E3xPk=;
+        b=dGoWBWsEQGhFxueKUmQjozYv+eQEeA7B76+AYm0cJ+OTy725wN/yCgm6oLcFFQoTBq
+         lj+bBEPVyhl3Hu7q0jig5XE9uX4RpW3UpCXF86x3tOFhHElLI1ZmfEWFdYD75ZSA3W1M
+         aO29CHPtVtt+NPEZAbyxVOZod5HAn++UJiVn2T8ivhxAIWKlKEpT/P51tWEVJX//waWV
+         rBrvhm2yCHdsVNnEkpOrMZuNtvKzsSVYin1AIvyFktboxpmWmL5hbNlqMzN08yUK27gu
+         NIgCRM6N2jT/Velt21C8yAMnKiBuUdxqNHlrdHO9ueh7A5bK2+85mY+mwSSEmrC3DJu7
+         HjMg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V08Ws6Ip;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73bc26bcf31sor1444305b3a.2.2025.04.10.14.00.39
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=W2T5IQ+H;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=hXuZKLsW;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de95fa1bsi36309906d6.60.2025.04.10.14.21.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 10 Apr 2025 14:00:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Apr 2025 14:21:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V08Ws6Ip;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=W2T5IQ+H;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=hXuZKLsW;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u2zKR-00066I-M4; Thu, 10 Apr 2025 17:20:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1u2zKP-00065n-K0; Thu, 10 Apr 2025 17:20:53 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1u2zKM-00055W-WA; Thu, 10 Apr 2025 17:20:53 -0400
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53AL7R2h011013;
+ Thu, 10 Apr 2025 21:20:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ corp-2023-11-20; bh=N2n3BCLvdlrIC2S21rEq8DkkWCctiGUO+CZA4v9fuzI=; b=
+ W2T5IQ+HW6LZNSZyP30g0nVyBpgVD0NAdKxKPSPxCSU7H/7f/d1ld8TLI/a0b1ez
+ oMsLcddzjcC1Khz73vV9v0klr20F0MlDq4wEKUNH+2eJKG3RC1GBCM7B+psecRk9
+ UCMdeEUZtetgYnkeEkeNQo2wMfBfQ4mtAhU9gw5KVKztFYlL7KV9PKCTlxEt3GRB
+ c9tiiCWzw6PZScwRDMorgR++KodFNjs3ZjV0VnTfo8zXsHTXmKKwLFSzx5iapVIV
+ /zv1RXMgaUhM5vw22Z+MJJ2UVIxPcRLDL05jb2gBRfs5Lxog81QkMhYDLg3DzBOM
+ DMYSPM9ba2cDuqIXHMYfAA==
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45xnm8g0ub-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 10 Apr 2025 21:20:09 +0000 (GMT)
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 53AKj6Vu001435; Thu, 10 Apr 2025 21:20:08 GMT
+Received: from nam04-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam04lp2049.outbound.protection.outlook.com [104.47.73.49])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 45ttyctajp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 10 Apr 2025 21:20:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=q/26bO5XvMZRE8fCbzjrIf/EjTN8+6b31ssB3LCKlO0LoHqBF1GIAWnQdvocjGmBVQ3/hrjpBYKBi7AbjKsJXFnTnIxwYzUJC4S1Gau/zsK1Gj1J9kR/Fmvd7HkTIpiIt0wXocRMdNQCWYupNFdhgHF2ZOvb7VrTGDpEwVBs+Hd4PvfmgBHRHf5LU8hIYG2ErnUxr1p3LHfBEHQ9jovN+5TwsiPo+VskROgImwGTvq7zCWFYXUz6YJqO3HDR3GCLFhA5sAn7IUGBsmML1UOUIIxgQeZhEpfeu5Zc+h0dwFmD2Fe47tbSH+DZoOVWk8KA9iPdIgK5fS52/508qVIHNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N2n3BCLvdlrIC2S21rEq8DkkWCctiGUO+CZA4v9fuzI=;
+ b=M4U6pVULBAR9oWQe5PGeHHggkKp4s3rISu0WoNUJ+bndn+R65GsgeKMMu7Am7/13nxz99St12bbuc046iHPWVb7gHPxpzek0u1tb+7YPQ7YLc/HDRh3L7VMSd57Hq2HeNg9/+zgVEWogzXDGgdz7Q+ZdwyoQSyIF8DbrVTgcUPy9zbQs/sPffJIZ7wkU1THllgytrDFUiFNnN25rW1EXVUZCsNiseNUGaOroE++pAzVFKQBqL04U3O8ejUFCoJKJCpkVJ/0OGMNsaR7I0LZPzh84RrpnUsEctrWokPWBNiUR7Nh0UgAorXdoND7oWOLGTmXbEygr83CH01H7LjsylA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744318839; x=1744923639; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=M9OwVMJQ+nPgoXVT+v3WG48aEZrZJjJFRvNoKJmm5KU=;
-        b=V08Ws6IpImI1HceY0mJot1SUM1kTR9hou38z0gGMoLflnvUAvIjkYIiskFT9hVMjHP
-         /RkY2K5oWoQMLleEvhIzL79mfNFvdqeUK+A7XMOiD8K4s5dyEiX0INdT3W71qKUYkPae
-         STVzC2odHBlabS9AlPje6JVc5xkEYyR9PLExLjPswBuTJmXpriig+VSxXUtnYh3+hXFk
-         TLYO7bS6SLg4+qowCQjmdT4EgW1wRdmrw5Giu83AG01q7vhk3Pn3LZLfiwvODz+a1PoR
-         0moEa5tZA5Auu6uVptXoGSlKSCMPTHYL+kv+DBU8cj6Ld0MFmtg+fvHvLAMd58JW3fxt
-         62fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744318839; x=1744923639;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=M9OwVMJQ+nPgoXVT+v3WG48aEZrZJjJFRvNoKJmm5KU=;
-        b=K8UMZXg3QCYOIAqWhLvc2UE+k1q1+vfS9uffFW6KQNWDgfKWy8CqU8bamtD6llw9U8
-         YjLwQZRkp3dW/loG9ucP7h0dMV8HIkSnxDa+/s9KCJ+TNuFJNR1zaE9CNOIrFkpxvk0T
-         aur4Um59v/6PSvVNCVYrsTnzGME5BP/D8V2ezWy/JA4maJF+GMGHhcXKMjxB1ydntMKV
-         GwWvd2vAgIS1d36RqqXv5SvOaU0yg4ukMVJADTERZnP/aIvpLTc2V09d0oVhSeqr3DNb
-         gSaooU/fo7tx10p87qx4jOj8RBOI2rDRd3+z/1QtIChPUNJLPjlXVCDZKRxykkyz8neU
-         9OOg==
-X-Forwarded-Encrypted: i=1; AJvYcCUd6DC/kG8utwImswEYDVjybOzmtnCHhn34WWi+l/A6zMA1E40JWhYg3EXEg7Lz3a5gvkkBIPTZaOCfug==@linaro.org
-X-Gm-Message-State: AOJu0Ywx1QEtlu8pDheN6HMXr3s9g8EWFEYwqkhr077yzyswJkZ2PhcP
-	4bSTjY9oRtIj6HOORuUtwkfCj45CcxoQs4lr/IvUWcMvtYlCiRZSUO8sJ2gXa0SJdw==
-X-Gm-Gg: ASbGncsSqvaAF8SkTWDPFeWH806F/lgGH7OK2nqzuAp8xX+HpRV+5PWs70ysiayj7a/
-	Z7CT56KKsAb4hQ8tRoU/yonK17ZAqhCJaWu4It/VMevarNeN1T59geqCTayu9vy/2iLjTILepr8
-	6PfWAIRd4ajPYYLGypVPV/Ywn2WG1KFY+1bKy0uXkwFa9jtolD5xFter8+Pb1TcUsQ0px1gQlmD
-	m50WwAwIL4wd9Lc1rOT26+DmLJQpbTUa+n+5T6D2B/YW+PVRhfoXNs2ZN7bUltPQwvgfaR1XE1p
-	7OGiv8a32B16Lq7hDHQxHyGZxeDmlGD/BzP0oTvR
-X-Google-Smtp-Source: AGHT+IE2yp1m6sBCLp+wVAJ0VFY7M3tuLn6xaXJpPkEtHMIenwsxdNR9U7U4c12ls+Lzhnd5joWPeQ==
-X-Received: by 2002:a05:6a00:2284:b0:736:34ca:dee2 with SMTP id d2e1a72fcca58-73bd119993dmr361114b3a.4.1744318839065;
-        Thu, 10 Apr 2025 14:00:39 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73bd22f82a3sm12431b3a.90.2025.04.10.14.00.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Apr 2025 14:00:38 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	philmd@linaro.org,
-	alex.bennee@linaro.org,
-	qemu-arm@nongnu.org,
-	Yannis Bolliger <yannis.bolliger@protonmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 4/4] target/arm/ptw: fix arm_cpu_get_phys_page_attrs_debug
-Date: Thu, 10 Apr 2025 14:00:22 -0700
-Message-Id: <20250410210022.809905-5-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250410210022.809905-1-pierrick.bouvier@linaro.org>
-References: <20250410210022.809905-1-pierrick.bouvier@linaro.org>
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N2n3BCLvdlrIC2S21rEq8DkkWCctiGUO+CZA4v9fuzI=;
+ b=hXuZKLsW3d/0wb149+GJWvAoQXCoZdWVPsfnu5/jLAVfnQEq7dhPmsxtwDRYTYfu2cUF2om5r/E3rvkL2zfeoZ5Yyl8hTIneDmMsfKQCcZCO9kqIQj2w4MUvEIdRdWN7yQiH11jbByjNZUOY4tvgzigqkogUzh635BfYJlejLhU=
+Received: from DS7PR10MB7129.namprd10.prod.outlook.com (2603:10b6:8:e6::5) by
+ CY8PR10MB7338.namprd10.prod.outlook.com (2603:10b6:930:7e::21) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8606.32; Thu, 10 Apr 2025 21:20:04 +0000
+Received: from DS7PR10MB7129.namprd10.prod.outlook.com
+ ([fe80::721c:7e49:d8c5:799c]) by DS7PR10MB7129.namprd10.prod.outlook.com
+ ([fe80::721c:7e49:d8c5:799c%5]) with mapi id 15.20.8632.021; Thu, 10 Apr 2025
+ 21:20:04 +0000
+Message-ID: <ecc2d76c-9c91-4bdb-8308-b93b516635a6@oracle.com>
+Date: Thu, 10 Apr 2025 14:19:59 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
+ babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
+ groug@kaod.org, khorenko@virtuozzo.com, alexander.ivanov@virtuozzo.com,
+ den@virtuozzo.com, davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+ dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+ peter.maydell@linaro.org, gaosong@loongson.cn, chenhuacai@kernel.org,
+ philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+ arikalo@gmail.com, npiggin@gmail.com, danielhb413@gmail.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com,
+ zhiwei_liu@linux.alibaba.com, pasic@linux.ibm.com,
+ borntraeger@linux.ibm.com, richard.henderson@linaro.org,
+ david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
+ flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
+ cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
+ frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
+References: <20250331013307.11937-1-dongli.zhang@oracle.com>
+ <20250331013307.11937-10-dongli.zhang@oracle.com>
+ <Z/d/ft0CufA8prwl@intel.com>
+Content-Language: en-US
+From: Dongli Zhang <dongli.zhang@oracle.com>
+In-Reply-To: <Z/d/ft0CufA8prwl@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BYAPR02CA0024.namprd02.prod.outlook.com
+ (2603:10b6:a02:ee::37) To DS7PR10MB7129.namprd10.prod.outlook.com
+ (2603:10b6:8:e6::5)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: ru+hRrwvnc91
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR10MB7129:EE_|CY8PR10MB7338:EE_
+X-MS-Office365-Filtering-Correlation-Id: cb74e5a3-691b-4476-30b6-08dd787575ca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|7416014|7053199007; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?cGN5RDNFcnhXSEhadkNLUmRSeGMrUHZyNVhWYjFDWlRqbjF2SUJoSys3VVJP?=
+ =?utf-8?B?TkJqLzBQK0ZsTFJqVDVXdXNNaERGcC8vY0dTYjRDVHhETTNjNEVNd0UyUnFG?=
+ =?utf-8?B?M1FqNWFoV1duOEh3OGJ2dXpEdHpyYTFtMFhFS1BXa0RQQTNRTUN4aldjYlpZ?=
+ =?utf-8?B?UWtLZTV6WVhrV2N1NDg5S3MvNWtUVjFKalVFM1ZCVU04Qll3bVh2ajdtT3ZT?=
+ =?utf-8?B?UjBwZkM2T1VvSzdPWnVXbk12QWRPSHJtQ0tucWN4UERYNlBkSk93bjFPdnAz?=
+ =?utf-8?B?Tm1UQkFvdkdsYWQ3SmZEREFHUGkvaDlBT1hldzFwNHRDOE5KU3U5WERnNjRi?=
+ =?utf-8?B?SjQ5WlMvWWpnVGpNTndzN253bGxRdnJBWE95VHpvejI3L2ZrSDRpZEFiLzEv?=
+ =?utf-8?B?ZmVvVEhVY1VZRDNSbzVMUXE3S0R2YWtTVTczMmk5S1dNclJaVzl2cFNzWHFj?=
+ =?utf-8?B?c0dTUjBjL1IrY29zV3oycUpIRG5rVTR1aXhmcSsxTnBrWkxpVUtXTXZDYkRU?=
+ =?utf-8?B?ZE56cTRQRVVkcVU5NWtXclJhZDN1OG9zRk9VcnYxdHlJQlk1MWZldEZyczNJ?=
+ =?utf-8?B?ZkhXa1NFRDlDKzhnZUxWcllqM0k5RUs4a3Z0M2ZuWUNZVkd6VkVEOEhNSWhu?=
+ =?utf-8?B?L2tpL3pVWUFvdm8zNGpOVWhocnFtZDE1NEFGR25EYVRIV1RpWHVOalVqOW1C?=
+ =?utf-8?B?K3pZcGFOSHFwZDBSQVF6L1RadjBrZTdUL0JBNUh6bG41VFJENVVzcFg2bloz?=
+ =?utf-8?B?WlpDbVI0U3NEcnVnRGFuMjV6N1VnektGU3l3d3VIRUJEUWE2OU91NjVwOXZ5?=
+ =?utf-8?B?VlJSN3lTcmE5dEZsZEUwYWx0L2tPMEVFNkRjalRJNTh4eEt4ZnFZRmdXL1Z4?=
+ =?utf-8?B?SGNlcFFGRDgyenZhbDU2ejZHcWtITWo2RzM2RndPVVYwNUt5VzV5RzZHOWtn?=
+ =?utf-8?B?eGRMdDdyeS9ITVovWXhLaFBJQy80cjlQd2hsenBrVW1NNzRhQ25aTDcxZE93?=
+ =?utf-8?B?ZmRXdmhwdHBDaXEzazVzWjRUeHcyOTlkT3BKV0lvQUk1VGNCRytHMmxTNm5M?=
+ =?utf-8?B?NVNlUU5sN1ZOcEsyMzBTY01VOUFxVHNpa3ZnVXlkQVhjRFpTbFhmSUFhVEgz?=
+ =?utf-8?B?QWNNTUw2UUJhSFhqeE45MWFjRi9NNmQ0dGJ3bHFhNGwwQnJVbnlTbFEyL2lW?=
+ =?utf-8?B?QVlEOVZpZERzaWJmd09MV1p0UytUSG0wekRMcG92UzlyREhOdUtFT245NVF0?=
+ =?utf-8?B?RE45dkhWNmlDUCttOTN5RVJIUDloMmJ3bUFtdVRqb2ZGMmhySWFudFVwY3Vh?=
+ =?utf-8?B?bTlEc3JrWE5YMllzYklNQXhSdStPaHRnN1E2ZVRHZnkvanZGOUR6Y2ZPTFZU?=
+ =?utf-8?B?NWZ2T3h6akRpMnZNSmg5WW9xTDdrd2YrZ2ZZWjZpWjZOYzM1WGpQZFRhU0hn?=
+ =?utf-8?B?UVpYeVRyRFRQUmpMV2JlMk1XZlRNU1h6UVQ1cFUyV2dCK21Za0JsZ3RJWkhC?=
+ =?utf-8?B?Q3FaSUtGTUlPSjE5OUFpbXY2MTU1cmZsUW1EajlLVHVtbm96S2dEalFDSnhU?=
+ =?utf-8?B?N21peDdsdFZ5b0pWZDcreHBSY0tVbG1HS05pV0xnYWJJU3lnZkVaQ2J6d0pl?=
+ =?utf-8?B?WlBlemk2MUZrYmMyaFd1dG55NTJHMGUxRFJVYjdhb0N2MWRhNDR3ZFFHZllp?=
+ =?utf-8?B?aFFIR1BMTzBZbUpmSk9zdTNCU01HaGp1RDU3eDBHNHR4THVCZ3BYUERLUXU1?=
+ =?utf-8?B?Smo2aEh4eFdaWEVCR0RnanRvQjVQTUFtTjRldHhIdmp4OHZ6MkdXNHp2ME4x?=
+ =?utf-8?B?VWdGem9tNkIyWjBOMUpnUjFQb1ZudHFVOHB5NnR3QnhEdDlCU3hCSjVHVGZ2?=
+ =?utf-8?Q?iibneTnXSbFla?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS7PR10MB7129.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(7053199007); DIR:OUT;
+ SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SkRWTHU0dWlPeURRNjFVSFVGOFhGaEczd28vTjFKT3NVNlZrZVFscEsxVVEw?=
+ =?utf-8?B?Z09EbzBMSlkzbnNJVmhkc0pCem4rSzkwT2pUS3RXSWhGcXc2aTc5ZXZucHpt?=
+ =?utf-8?B?OS9jMS93QlR3NDlGRkoyd2liMXNkaWZ1cFVlRTkyTXdSRk53UnozYWtFQk5n?=
+ =?utf-8?B?V1J3UlU5WE5iSHBLQkFnNzdHdGRmUjhSWFUxVEJnTG02RXNub1VZM0EveE9V?=
+ =?utf-8?B?d25qUENQUlZudEJYMm03bElMZmNsK3Y1dTVYV3dCc21QRXNQOXRPUW02Ynl3?=
+ =?utf-8?B?SS80VjY1NitwTDhqYW9oeFJUTHRrN1lDNUtCUXVyc0xHVklheWdydTJiRGJx?=
+ =?utf-8?B?c3NjNWExaXZxdy9NNHRtOHdHZG9DcEozV2JieDRUcGdPVGVMUWZJazF0bTdn?=
+ =?utf-8?B?K1FCVElnNGpVMmhON2lRUjBWTThjRXhEMFlSS0FTV2JFelVkcmdzSERvQjZR?=
+ =?utf-8?B?VmRVbVVnay9qZkljVzdwK3hLZ2NtQ0dRUWVmY1BVcGJvdzlXeWVtcVRQdDJB?=
+ =?utf-8?B?dkRuanF6MU5GUktvSDBIUnhzMmpGU0crdG9xWVo3ck9HbkdPak5md3JLb1Fu?=
+ =?utf-8?B?WllncE1ueExoWTRzUytOVVlRYkloUFVlaVpsSVZIRFQ5ZnZVS3p6aVBKYkQ0?=
+ =?utf-8?B?MFFRUktiQzU4c1NGTUtKaGFRcG9SbkxwT0FkSStjOTNMano4MXZYUzREZVh5?=
+ =?utf-8?B?OXJUVENEUk04QTIrVEpzSFMzRXlFWm9kbE5xUE5SZHNyYWNjM3M5aVBYcCsy?=
+ =?utf-8?B?dnhoUU0xaytUanZiNFpxam10RkxwR3pGaThRUHIveGN6eDFTRjVWNk9wYlJa?=
+ =?utf-8?B?NVVyRnQyZ2M2dno3eXZIVXJuazFRekdOdmVmQUhQSkcraXV4S2lvV1Q4MHEx?=
+ =?utf-8?B?aENUK083NThDdGJsdjJSVkVZdEx0V0NVVVZYSkppSXRVRzA3R0hVL0Z3RVRH?=
+ =?utf-8?B?Um8vU25EdjJHQytaTi82bkMxeXEybDFOUUhoR2tPZzBPcTVNSnJjaW1yWFNu?=
+ =?utf-8?B?RHcrU1daZ1FYZTM2L0ZobjBQU2k4b1F3RlJHTEtJSzVFVGdjVGN6WjFwZjAv?=
+ =?utf-8?B?UmQxSi9zdlpCMVlabURleHJibi9nanFjNC9CZWRoMGh1QndjQUpKTXVjWWw5?=
+ =?utf-8?B?c1ZweGpPenRZZ0ZYUWloRFpIU0dCd3QrdUp2Nm40c1o5UmpCUUw0QnNiNnBQ?=
+ =?utf-8?B?SkwzYXhlNWFJbUxGbnZ0UGFwcW03UTArV1FKNDFadWI4eEE0UXlpTUdqNUd2?=
+ =?utf-8?B?Zzh1L2ozUzg0M2h0OW1vbW9JYXRYeXl6K1VIbm9kZFRHWkJFeDA1cjNjdzd5?=
+ =?utf-8?B?MVV2T1B0QTBqZHh5UkxJV3Y4MGtkQlFMZyszT2M3bzZ1eVNaWmNxejBxTTds?=
+ =?utf-8?B?THI5ODh1Y0JUVjdSMHJqYzNmMWlYdmxzbVBWd29rOVVab3oxRkRXVUJ0bHBl?=
+ =?utf-8?B?WG5lb0UrM0htbDVBdXl6dG9tSllQL3JhTDYzQWVLR1cyZE1kZ29kZ0xHb2la?=
+ =?utf-8?B?THpMTWRBZ2lRTDV2RWhYaTkwNitMSGpoR3JBTXZNOE9tVWRoT0xnVWFmQ3lH?=
+ =?utf-8?B?NzRlNCtDa3hPNlBobjl6V1pCa0VQVXUyUTJlbkhkM05Jc3lzSXRXVW8vYVpr?=
+ =?utf-8?B?T0dINHAvQUZSVk5EeWpCaUVqR0ZNTHZ3bEEvVVMyRlZZcURTb1NGUWlFc290?=
+ =?utf-8?B?V21PNmw5WjNqQWVSM2FtaEhLdktsUVBSc1pwOXJPUDBPZHd4bjhPejVDS3E3?=
+ =?utf-8?B?NFpERVROdXhNeGRBd05Md0ZTR3NVUGJmNjBGdCtvRVBJd2dFWXE5Z0VpeUY4?=
+ =?utf-8?B?dUNJaE9WN2NrWUFZbzgxcHo2QUVNVE5KRFZWQlpDbkw1bFNONldyYUZUdGYz?=
+ =?utf-8?B?R0N6c1NLcStCWEhXUUNEc3lwVHpOVzlqRVJKOWlnWHBQckFJbHNuY3JqTnVh?=
+ =?utf-8?B?dUhML3RKMjZqcnNtYm9xVndTYTQxSG1lNVE2MmtsdlhUdHN4eFJBUzVzR0tn?=
+ =?utf-8?B?QWFmLzhnZ09GRGhxYUxjcEp0Qm4wUjVHR3Izb2o4MkpLT0twaS9la29VOHM4?=
+ =?utf-8?B?UVlHcEpobDY5ajBCQW5sdTRNQ2lwOFFWcDdYREFIQWxGdUpTcS9WYkxYOGp5?=
+ =?utf-8?Q?5x5syKVjjHzgbAQU1NRpExRB2?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: v+rcw8eMO34kUMsQVZ0RF6ro7LeMcfL4uzi6kGdfySHfApPVExQdu5uUzhh+Nw6TNfkQDWu2cy0FexzUlPF9VvyG0/F9KACO/BbOjl5boaBQhxH/dzBOUMzp26hRJyfIEFEIFr6NJrng7SHac3lJk605tSh+8HYBtt4jJIKyVFsxqBaoma0/aP3xRnkgSvhUgkvrUyyD76vb7D5WdgmHH6IJ66FK9emTIFYPZxrJAUAOMdTd2NGwuAZs44z9EVhUa30hcTzIUT/G+NLUJNbJ5jClXgpB/iGKF0Fm7cVUx2nJtp5JIhKOzg9ofcTsH0cFOinjH6QnMgEjvx94kbB2qgUnm4eAEHtqfVhVcal1AxbfOW83xXT4jKTN4LSuivbmsI07+cF2MIsDonSUGrIqnJrzAh7nDlD4wiaFMV3dOmqNxAf7LEoenansHcF9u4H5quHZl7WgnYOmt+4AvA0sW8YPdkTefBfJQiLmT6bS9//b+YdDojJsN0pMircgQ+ThyoU9Z/gZe6dy61PGhIdAGWi+BRMlWTZTisTTmSP299h3jto6nr8/RD1Jq97mh1hzgWgK4UwYZJxDNzLHZmPGDWZ9O23kwszsGW5pXx+8VWc=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cb74e5a3-691b-4476-30b6-08dd787575ca
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR10MB7129.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Apr 2025 21:20:04.1056 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 59tyiI+SOC7oS7peo8S100IXz7hJvXMkcPri8Ej5SLZ7o6nISgE6jUzOlRYQPFnoVKYyIpjezMbqSbJKcYgVCQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB7338
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-10_06,2025-04-10_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ suspectscore=0 adultscore=0 bulkscore=0 mlxscore=0 phishscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2502280000 definitions=main-2504100155
+X-Proofpoint-GUID: X0rna8BzvnM1G_VPKbOredBzvotxhtHN
+X-Proofpoint-ORIG-GUID: X0rna8BzvnM1G_VPKbOredBzvotxhtHN
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=dongli.zhang@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xV2f06dpKQzR
 
-It was reported that QEMU monitor command gva2gpa was reporting unmapped
-memory for a valid access (qemu-system-aarch64), during a copy from
-kernel to user space (__arch_copy_to_user symbol in Linux) [1].
-This was affecting cpu_memory_rw_debug also, which
-is used in numerous places in our codebase. After investigating, the
-problem was specific to arm_cpu_get_phys_page_attrs_debug.
+Hi Zhao,
 
-When performing user access from a privileged space, we need to do a
-second lookup for user mmu idx, following what get_a64_user_mem_index is
-doing at translation time.
+On 4/10/25 1:21 AM, Zhao Liu wrote:
+> On Sun, Mar 30, 2025 at 06:32:28PM -0700, Dongli Zhang wrote:
+>> Date: Sun, 30 Mar 2025 18:32:28 -0700
+>> From: Dongli Zhang <dongli.zhang@oracle.com>
+>> Subject: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
+>> X-Mailer: git-send-email 2.43.5
+>>
+>> Since perfmon-v2, the AMD PMU supports additional registers. This update
+>> includes get/put functionality for these extra registers.
+>>
+>> Similar to the implementation in KVM:
+>>
+>> - MSR_CORE_PERF_GLOBAL_STATUS and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS both
+>> use env->msr_global_status.
+>> - MSR_CORE_PERF_GLOBAL_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_CTL both use
+>> env->msr_global_ctrl.
+>> - MSR_CORE_PERF_GLOBAL_OVF_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS_CLR
+>> both use env->msr_global_ovf_ctrl.
+>>
+>> No changes are needed for vmstate_msr_architectural_pmu or
+>> pmu_enable_needed().
+>>
+>> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+>> ---
+> 
+> ...
+> 
+>> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+>> index 3a35fd741d..f4532e6f2a 100644
+>> --- a/target/i386/kvm/kvm.c
+>> +++ b/target/i386/kvm/kvm.c
+>> @@ -2149,6 +2149,16 @@ static void kvm_init_pmu_info_amd(struct kvm_cpuid2 *cpuid, X86CPU *cpu)
+>>      }
+>>  
+>>      num_pmu_gp_counters = AMD64_NUM_COUNTERS_CORE;
+>> +
+>> +    c = cpuid_find_entry(cpuid, 0x80000022, 0);
+>> +    if (c && (c->eax & CPUID_8000_0022_EAX_PERFMON_V2)) {
+>> +        pmu_version = 2;
+>> +        num_pmu_gp_counters = c->ebx & 0xf;
+>> +
+>> +        if (num_pmu_gp_counters > MAX_GP_COUNTERS) {
+>> +            num_pmu_gp_counters = MAX_GP_COUNTERS;
+> 
+> OK! KVM now supports 6 GP counters (KVM_MAX_NR_AMD_GP_COUNTERS).
 
-[1] https://lists.nongnu.org/archive/html/qemu-discuss/2025-04/msg00013.html
+Thank you very much for the Reviewed-by. I assume MAX_GP_COUNTERS is still good
+to you here in the patch. It is to just do an upper-bound check.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/ptw.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+Dongli Zhang
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 6ea39ee5755..5b8d84d44df 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3655,5 +3655,25 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-     CPUARMState *env = &cpu->env;
-     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
- 
--    return arm_cpu_get_phys_page(env, addr, attrs, mmu_idx);
-+    hwaddr res = arm_cpu_get_phys_page(env, addr, attrs, mmu_idx);
-+
-+    if (res != -1) {
-+        return res;
-+    }
-+
-+    /*
-+     * Memory may be accessible for an "unprivileged load/store" variant.
-+     * In this case, get_a64_user_mem_index function generates an op using an
-+     * unprivileged mmu idx, so we need to try with it.
-+     */
-+    switch (mmu_idx) {
-+    case ARMMMUIdx_E10_1:
-+    case ARMMMUIdx_E10_1_PAN:
-+        return arm_cpu_get_phys_page(env, addr, attrs, ARMMMUIdx_E10_0);
-+    case ARMMMUIdx_E20_2:
-+    case ARMMMUIdx_E20_2_PAN:
-+        return arm_cpu_get_phys_page(env, addr, attrs, ARMMMUIdx_E20_0);
-+    default:
-+        return -1;
-+    }
- }
--- 
-2.39.5
+> 
+>> +        }
+>> +    }
+>>  }
+> 
+> Fine for me,
+> 
+> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+> 
+

@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8215241njd;
-        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWV/lRF31o6KNcXc2Vjoq7FRAxhKRvbjGdWHf4ORWgl7BFVW7CgEAd+0iMTvXLOxNaLyh4kNyF/9MZHjg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8ILnweIMgNREbIkS6zXAsFY0IHQrAVkByDPjXMDLXs/KaAizVfD80iRHQpafmkUi04vrU
-X-Received: by 2002:a05:620a:1915:b0:7c5:50ab:de02 with SMTP id af79cd13be357-7c7a81b1493mr143259485a.41.1744269829100;
-        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744269829; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8228292njd;
+        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5iS3o1t+HsqONa9dhm/+I82fuTxPfwVOvGL37m1iZ0grRpe0cL4f5rXNm+bdu5vDS082Xax8OCe4Zew==@linaro.org
+X-Google-Smtp-Source: AGHT+IHz2xfVueNoAP6y5jmDUIQr1kd9OOuASuI+kKihsDY1/zly62kdl0eVAf+EystAWTpBaj0o
+X-Received: by 2002:a05:6214:2249:b0:6e6:5bd5:f3c3 with SMTP id 6a1803df08f44-6f0e77db671mr12056116d6.44.1744272081344;
+        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744272081; cv=none;
         d=google.com; s=arc-20240605;
-        b=EBGpY9sunxMv/GvS62BCDV8nmnUIyOf9Ojk2NXdxY06GoEHP3auS7tgjpsQIOsz7Uv
-         WFIfTbUFqGhl8uCaa6ZmdZFrjgylFn588JiN+l3gog7VvTsUhOvztLJ2L3hh0tX0KO8T
-         zNf9GuIxt3f+XkYQbf5r2QzHKyH8ttmgFgYLk4Fp6GvOA9PwnjKtvTEVFzRBog1dsNS5
-         wKqcLmX7wrzEL+Odx8bA/wK/njc5yUAA0bAtmiv28gZc3zD1UfNHylnbW+HlFa2dh4kM
-         OPaBsq+CYt0qczy6wiKJDYTo3RQuGU28sPv/oy6zYC3fpPP5ONB0u2kbQeFbz8jhCGmt
-         JKNg==
+        b=QEPl3sOV+0auADwt8HmqJH9GlXlBd1X0V/AUmfkt3ZqjP1bvW30eeSDQjIBvkTc7u4
+         02qCUoORYQCQlv4N2Xf/coiANFYDCL99HR/gEnPUkQh8O3TEH1qPITbn4F5d19N6Uri3
+         LYZdt5NW22dj0fmovxKlta266JZ1CGeNaPFlqWEtKzOyLfq4ms99fPdyo243WABQ80vX
+         K5ktBOe2tgxIz5U2f8bMdTdRhgnT6ijH8ig/BI6UOlJ7Y9RaSTE2C01GzsC3uBWxr28V
+         o0y4pzk9qjNQbiUb70T+kB18jljD89COua0lhqjHvHy0KI5Bx2+4WnJ2RSGsHt9Hl3c3
+         4yjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=0x2ZS7SmoLDg+4IcLFJEiYR9ogKbRZumyj87Y3Hu0U4=;
+        bh=2rAITOc8zzCDPLFAC0ssOMLTDuMH/tTiohbx554KGY4=;
         fh=MAffrn4U4uG1V2DrepAitVuUISIAqDfmc8PNRNXcHoo=;
-        b=I7hoQbQ+E4P50qxJlWjmQuZBsRFvh5F7+dYdLpL0iIU0uWCoYcNVO+P1+QF3tccT+p
-         nuC0tbCygdBvcF8Z45z54u7o+7X5KuQud3uEUIyDo8OYo5GxwkYHCRCU02P9H5pQb5lp
-         OpBkLqE1YzGw5uKEoR1ZU/9WTp4VllvnWfnKixUbziyDcLb//Z73/SpwyhDj+vxz+LbK
-         bxI0rtuOrYzE6wymYv5hPu602O7NPnqOcMV/CNVdbr76rz9jSxyLBzVaLmjXQudKeNbt
-         1iiK6kw/xub1FOR8CAqwd4xl3eOHgVfb+pIImjvIpCHWaH4lN/t5bpQ+XAA/FVw/v0vP
-         7ZpA==;
+        b=PYMcXEKLivvEXMhw4UczDrKcZJGMBpwfYx8rWVJTxZuxK7aEuWLDc5KIBe8TRzX7+o
+         VTEu5x4w4lPryTeNTGdnN0s05slDlbj1YoOnVuoUAwOAl66qsYXcpGEILjMFfsdp9Dza
+         O/81ChpWIfC6FCyrNXEjan+RhwnBWFacaOY482iAvK2cPputLIOEinHb4mAgjnWgkMVt
+         pcJl5NyIDzjswlYVayA1TJanjFntelI5ywaNqnndAdu1I7Q0UkazaWS1uOZ4ujlU+vzh
+         89Dff+PDPF2JbeFU3g9IY9fDqMfBevXKfZ+uT6LFuUggSx+jq3CiurPe/I4QFmHB6sf0
+         irKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=nRSb0qd0;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mzPuRRw8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c7a89f6ce5si52905885a.283.2025.04.10.00.23.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de95fae9si25139776d6.31.2025.04.10.01.01.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
+        Thu, 10 Apr 2025 01:01:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=nRSb0qd0;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mzPuRRw8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2mG2-0002Zm-8R; Thu, 10 Apr 2025 03:23:30 -0400
+	id 1u2mqS-0005za-Qv; Thu, 10 Apr 2025 04:01:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2mFv-0002ZA-98; Thu, 10 Apr 2025 03:23:25 -0400
-Received: from mgamail.intel.com ([192.198.163.13])
+ id 1u2mqG-0005yO-U1; Thu, 10 Apr 2025 04:01:02 -0400
+Received: from mgamail.intel.com ([198.175.65.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u2mFr-0001d0-Ee; Thu, 10 Apr 2025 03:23:22 -0400
+ id 1u2mqC-00073D-R2; Thu, 10 Apr 2025 04:00:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744269799; x=1775805799;
+ t=1744272053; x=1775808053;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=Lh9jXEP9tgVr78Y+bjPvBpsrVvBVBSu8yVPe3X6/PBk=;
- b=nRSb0qd0mPvsnCA8UggK+s4HYDYYQqiZHFFKu2AgqgRgHa5OErudp0kh
- dPSwh8QqCcAJzjAZEsnMMCnieQhOcVkL7ACndmJPk/WpbHJQhGBrDR7sN
- Lysqx2d25eDSWh3e1Odxb/56DgVXlReueZ1Pg0v5Be7d9xtvp4MOPEJEG
- Qsuo9TFSxOaYOmsezbLCMlPJUqGt28hi7VFvu6fmhmuzzNIKZVRx5hPmU
- ZigwN8HYEdRwAxsQHegTcV+XcF7S1o03cSxSSZ5fHm1ZOim03DgidL94y
- c74j86YTvk7wyg3UJbIoIelKTCqebbc9mxwqZtBYRfKHO0zEKxYN7L57+ Q==;
-X-CSE-ConnectionGUID: NOrZ43W/SsKlMPxVOpa4XA==
-X-CSE-MsgGUID: o8wDdkHJQ6+PtL+MBLCRVA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="48477565"
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="48477565"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2025 00:23:14 -0700
-X-CSE-ConnectionGUID: XUminAD6T0GYkRlVFemdzg==
-X-CSE-MsgGUID: pctWMc5OS/GsMX0hxH8+og==
+ bh=Fog4B6Qbd8u1Pqc/gI0bDG41NJadwivsKQhqgMevtPQ=;
+ b=mzPuRRw891rlTsFM9OO202Ka3ZXrlJ91N6PXOSuruai/PJEW/HcKFgZU
+ RmY8E3264DeRs8AUGl4vFnliNvRNt/kHVXfsMfOSY1PJpKRxyOdTEMR8D
+ mWhfjd+NFEpNc53E2atNS+l+/juigl2GUBgOI4X5TSz8ZKRXsNJGdBoma
+ fGfgQqQWz+sP8Q68pWNPFTQ9p2yhn89GFbtEPEYNxeoPUx1/r04Xh9EsP
+ EUpLXUn2dORtSx2QiZyU3eZcF9SxYQvWO29JBSI27kg43vuCCUwQTDL9j
+ uh2ZybZVUJhT0eVTad5YAPjn4E7QzRWZ1P4w2Qotv48tErYJQNizk/qEa g==;
+X-CSE-ConnectionGUID: rOTq+PxKToCFEqu+7R8Pgg==
+X-CSE-MsgGUID: 5nbWWZGTTr2nptxVLb7TFg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="45668210"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="45668210"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2025 01:00:39 -0700
+X-CSE-ConnectionGUID: GCO21CPgQjmbraiccL1yeA==
+X-CSE-MsgGUID: CwIZbOfJSLOTUfZSSHQyug==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="128681029"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="134019949"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by fmviesa006.fm.intel.com with ESMTP; 10 Apr 2025 00:23:05 -0700
-Date: Thu, 10 Apr 2025 15:43:53 +0800
+ by orviesa005.jf.intel.com with ESMTP; 10 Apr 2025 01:00:28 -0700
+Date: Thu, 10 Apr 2025 16:21:18 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Dongli Zhang <dongli.zhang@oracle.com>
 Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
@@ -100,16 +100,15 @@ Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
  thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
  ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
  liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: Re: [PATCH v3 08/10] target/i386/kvm: reset AMD PMU registers during
- VM reset
-Message-ID: <Z/d2ucu6Y5xlNh6S@intel.com>
+Subject: Re: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
+Message-ID: <Z/d/ft0CufA8prwl@intel.com>
 References: <20250331013307.11937-1-dongli.zhang@oracle.com>
- <20250331013307.11937-9-dongli.zhang@oracle.com>
+ <20250331013307.11937-10-dongli.zhang@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250331013307.11937-9-dongli.zhang@oracle.com>
-Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20250331013307.11937-10-dongli.zhang@oracle.com>
+Received-SPF: pass client-ip=198.175.65.19; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -48
 X-Spam_score: -4.9
@@ -133,100 +132,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1lxGVoK30F9u
+X-TUID: selDPgAbDW9c
+
+On Sun, Mar 30, 2025 at 06:32:28PM -0700, Dongli Zhang wrote:
+> Date: Sun, 30 Mar 2025 18:32:28 -0700
+> From: Dongli Zhang <dongli.zhang@oracle.com>
+> Subject: [PATCH v3 09/10] target/i386/kvm: support perfmon-v2 for reset
+> X-Mailer: git-send-email 2.43.5
+> 
+> Since perfmon-v2, the AMD PMU supports additional registers. This update
+> includes get/put functionality for these extra registers.
+> 
+> Similar to the implementation in KVM:
+> 
+> - MSR_CORE_PERF_GLOBAL_STATUS and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS both
+> use env->msr_global_status.
+> - MSR_CORE_PERF_GLOBAL_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_CTL both use
+> env->msr_global_ctrl.
+> - MSR_CORE_PERF_GLOBAL_OVF_CTRL and MSR_AMD64_PERF_CNTR_GLOBAL_STATUS_CLR
+> both use env->msr_global_ovf_ctrl.
+> 
+> No changes are needed for vmstate_msr_architectural_pmu or
+> pmu_enable_needed().
+> 
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> ---
 
 ...
 
-> TODO:
->   - This patch adds is_host_compat_vendor(), while there are something
->     like is_host_cpu_intel() from target/i386/kvm/vmsr_energy.c. A rework
->     may help move those helpers to target/i386/cpu*.
-
-vmsr_energy emulates RAPL in user space...but RAPL is not architectural
-(no CPUID), so this case doesn't need to consider "compat" vendor.
-
->  target/i386/cpu.h     |   8 ++
->  target/i386/kvm/kvm.c | 176 +++++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 180 insertions(+), 4 deletions(-)
-
-...
-
-> +static bool is_host_compat_vendor(CPUX86State *env)
-> +{
-> +    char host_vendor[CPUID_VENDOR_SZ + 1];
-> +    uint32_t host_cpuid_vendor1;
-> +    uint32_t host_cpuid_vendor2;
-> +    uint32_t host_cpuid_vendor3;
->
-> +    host_cpuid(0x0, 0, NULL, &host_cpuid_vendor1, &host_cpuid_vendor3,
-> +               &host_cpuid_vendor2);
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index 3a35fd741d..f4532e6f2a 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -2149,6 +2149,16 @@ static void kvm_init_pmu_info_amd(struct kvm_cpuid2 *cpuid, X86CPU *cpu)
+>      }
+>  
+>      num_pmu_gp_counters = AMD64_NUM_COUNTERS_CORE;
 > +
-> +    x86_cpu_vendor_words2str(host_vendor, host_cpuid_vendor1,
-> +                             host_cpuid_vendor2, host_cpuid_vendor3);
+> +    c = cpuid_find_entry(cpuid, 0x80000022, 0);
+> +    if (c && (c->eax & CPUID_8000_0022_EAX_PERFMON_V2)) {
+> +        pmu_version = 2;
+> +        num_pmu_gp_counters = c->ebx & 0xf;
+> +
+> +        if (num_pmu_gp_counters > MAX_GP_COUNTERS) {
+> +            num_pmu_gp_counters = MAX_GP_COUNTERS;
 
-We can use host_cpu_vendor_fms() (with a little change). If you like
-this idea, pls feel free to pick my cleanup patch into your series.
+OK! KVM now supports 6 GP counters (KVM_MAX_NR_AMD_GP_COUNTERS).
 
-> +    /*
-> +     * Intel and Zhaoxin are compatible.
-> +     */
-> +    if ((g_str_equal(host_vendor, CPUID_VENDOR_INTEL) ||
-> +         g_str_equal(host_vendor, CPUID_VENDOR_ZHAOXIN1) ||
-> +         g_str_equal(host_vendor, CPUID_VENDOR_ZHAOXIN2)) &&
-> +        (IS_INTEL_CPU(env) || IS_ZHAOXIN_CPU(env))) {
-> +        return true;
+> +        }
 > +    }
-> +
-> +    return env->cpuid_vendor1 == host_cpuid_vendor1 &&
-> +           env->cpuid_vendor2 == host_cpuid_vendor2 &&
-> +           env->cpuid_vendor3 == host_cpuid_vendor3;
+>  }
 
-Checking AMD directly makes the "compat" rule clear:
+Fine for me,
 
-    return g_str_equal(host_vendor, CPUID_VENDOR_AMD) &&
-           IS_AMD_CPU(env);
-
-> +}
-
-...
-
->      if (env->mcg_cap) {
->          kvm_msr_entry_add(cpu, MSR_MCG_STATUS, 0);
->          kvm_msr_entry_add(cpu, MSR_MCG_CTL, 0);
-> @@ -4871,6 +5024,21 @@ static int kvm_get_msrs(X86CPU *cpu)
->          case MSR_P6_EVNTSEL0 ... MSR_P6_EVNTSEL0 + MAX_GP_COUNTERS - 1:
->              env->msr_gp_evtsel[index - MSR_P6_EVNTSEL0] = msrs[i].data;
->              break;
-> +        case MSR_K7_EVNTSEL0 ... MSR_K7_EVNTSEL0 + AMD64_NUM_COUNTERS - 1:
-> +            env->msr_gp_evtsel[index - MSR_K7_EVNTSEL0] = msrs[i].data;
-> +            break;
-> +        case MSR_K7_PERFCTR0 ... MSR_K7_PERFCTR0 + AMD64_NUM_COUNTERS - 1:
-> +            env->msr_gp_counters[index - MSR_K7_PERFCTR0] = msrs[i].data;
-> +            break;
-> +        case MSR_F15H_PERF_CTL0 ...
-> +             MSR_F15H_PERF_CTL0 + AMD64_NUM_COUNTERS_CORE * 2 - 1:
-> +            index = index - MSR_F15H_PERF_CTL0;
-> +            if (index & 0x1) {
-> +                env->msr_gp_counters[index] = msrs[i].data;
-> +            } else {
-> +                env->msr_gp_evtsel[index] = msrs[i].data;
-
-This msr_gp_evtsel[] array's size is 18:
-
-#define MAX_GP_COUNTERS    (MSR_IA32_PERF_STATUS - MSR_P6_EVNTSEL0)
-
-This formula is based on Intel's MSR, it's best to add a note that the
-current size also meets AMD's needs. (No need to adjust the size, as
-it will affect migration).
-
-> +            }
-> +            break;
->          case HV_X64_MSR_HYPERCALL:
->              env->msr_hv_hypercall = msrs[i].data;
->              break;
-
-Others LGTM!
-
-Thanks,
-Zhao
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

@@ -1,266 +1,148 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8123146njd;
-        Wed, 9 Apr 2025 19:33:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXuOtp5S6+tzVnoF4UzkpqtvdWwoOXuTaC5IXmJj+tCaKc5Yhfdb6ID6TmOkhCx3d6D2MbCmnqYukJwyw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGjY1nSerg6m25MFJ4GkrINePMxH9ahxGVidSJom7OKvThlTU0To66Jw7efWChAgBOCpAbG
-X-Received: by 2002:a05:6000:220d:b0:39c:dfa:c3de with SMTP id ffacd0b85a97d-39d8f4e87d2mr739230f8f.47.1744252391199;
-        Wed, 09 Apr 2025 19:33:11 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744252391; cv=pass;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8124989njd;
+        Wed, 9 Apr 2025 19:39:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVo0okIwpaC4XXLasreZhvWbAWI25J67sYWih1wEny148SGMAiK394kGVWDX58hh7BvCxgJkku2c6M6Yw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGs4zUf7IzRa8F2o9ScxCtI5pY/BFCKCLZMD2gSc15VJYJfLsZR7yyWUyHmuvSJegZ5j1LQ
+X-Received: by 2002:a05:600c:13d6:b0:43b:c305:3954 with SMTP id 5b1f17b1804b1-43f2ea651a4mr5444425e9.8.1744252768879;
+        Wed, 09 Apr 2025 19:39:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744252768; cv=none;
         d=google.com; s=arc-20240605;
-        b=eNhzO0RHrnPMHXTT57PbW99AoebGOOnGVW1s5+Pfpi/yG28i0V0J1yO4U8R4Gyibgk
-         kPLnzh01M4ayJwSGVeq6hlDYYJQCLjhbmYzJAF3cLiSBKeC32hbbzrw8PguFsFanHcdY
-         1TrKgSQSu6EvslmCcUpG9Bw+hP++jSGvSTNBVk6oa+DbHbHE9zmC0tahbeunTco6YY1l
-         sdqVHYYX0o8s2rXAr8qANIWRat3s89g9piqzAeJ8UdlsDlDRMzUlbYx/3NBb7x5byjn8
-         po38eeolHy/iVNAlxxz6L+062Uv3S5hgl0FRqzj03QbvtsVdNPTAKENVDRQJdijdXPJh
-         eVgg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=x4hwuxSTgGxuFLH4y304fnmomGBgs/Va1mIpvjzRYyU=;
-        fh=BRRWhoM5xWeTWsq9HiBMKemX8zdyuPRH6qESrTnpeBc=;
-        b=DW476ntONPO7CI8LDBv1jQF82MNCNbVPan1jhhqJcdnbceFNUeX4Djqwrl0vsQeWl2
-         Zhb54CDsHXRmPXq/g5fqLBn6dT5FtbVBSI8cxz8h2ume/vgOMPoCQRsf7iwtZqpPZ/Zx
-         UTCTw4B5hrnbpMPmZFRr/Ed7nWNY4cu1WhG7yXWGIXfs6tC3em18UZx7osjcFp6I6c2K
-         dWEk3PTXBGilvCFTFGiO+qOyDeXowaYbqXQYAFDg4MuVR/Tl5j4VA0GeQGp8uVwo7aiR
-         4R6hFyh0XQGnq1j0/VjUOVhwh4Pm+C3xo78YU8TZ8Qp7s7gY6sR1QdwY+l7Y0HG93ny3
-         z5AA==;
+        b=VWaiT0Wduz85JuY2Us8WRXf7h6SWE81X7FLwToYhXRQvRMFhZl7zuJwaStEEj5aqqd
+         ww0ElzKNSJ2o/jbAb4xPl/mSlcriuWKAUuPhbgaJpuXAW+K8VAmg6+iK1m2HOeqKlgOP
+         pxYnmHBURJnt2VlQFBmSjeJODaxluttHAVohtfWib2TaFdjpN/c0saeX3DSwxrwcshRJ
+         Oy1k2JkG5/Kv41rmA+Ppv/ARZk8aytXx7MoeqPslX8Jr8+aitQm3bBJw7TBriwiuekae
+         mNOOPCcJYQa953w0Z//8to4QEOiVXqBrmfF3ZziMz3rYm4gQXPKXxaApeAp3Gp67CN6j
+         +WcA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=DeU5IajzPOwR0vaMMjl3nTCpm93r6jegus1pe/jx2Vc=;
+        fh=9slMQvAVAaDbZF94sUZsatNqTIKawFKtbOHuc7HAk0w=;
+        b=PVvJult+kl4krwiT7TbSls15uoQ3TslO1vGRcORHrZpa6gTcPj9oyys8UfuzBWR1uJ
+         VeYoPbT1c1w6yVcEWnfK4OzVwjV1T5p+vHoiJoPVhMvF/wwvLmshHtMdgcQrsiUDRC1k
+         Fulo9c1iKfUkNBXeWaajaA0+zNMY6ouMvU6c+iyx+uMkf5wXvJaI/SHdS78qfwhb0Lek
+         bskzk9yHKlQ3y3VODc+a61CtSmFfkNuEeBRR6+HcWFhYcvcPiiuFx5teViTnhpWzpw71
+         lsbRMcyJqSftz8XluC6WRx6dsEfdO5Iv5dpoTcrl0Bx8TjWIc5gQkgUnNkTbxqRYiRGT
+         Q1kw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b="Wa/NOS98";
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-39d8936d559si1688555f8f.88.2025.04.09.19.33.10
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-43f233af499si17993515e9.80.2025.04.09.19.39.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Apr 2025 19:33:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Apr 2025 19:39:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b="Wa/NOS98";
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u2hiV-0000O7-VV; Wed, 09 Apr 2025 22:32:35 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u2hoy-0001ZW-AN; Wed, 09 Apr 2025 22:39:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u2hiT-0000Nq-8U; Wed, 09 Apr 2025 22:32:33 -0400
-Received: from mail-psaapc01on2072c.outbound.protection.outlook.com
- ([2a01:111:f403:200e::72c]
- helo=APC01-PSA-obe.outbound.protection.outlook.com)
+ id 1u2hov-0001Ym-P6; Wed, 09 Apr 2025 22:39:14 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u2hiP-0002O7-Jx; Wed, 09 Apr 2025 22:32:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NvPHhh4WhXBQTmXCsWOFUBAF0aTw5R41UIOQZyj7amCjd/oRsJDNol+8eQnMsW02y/RtfcfCr1WtxZ4xxgPwpmaAVPyoW56Wi2HFQyZxKz9NdctMIfdMxGlou0wraxNIYRiSIVfyl3+Z/te/D3c9rV0HcCbK7cjSVdStLRCIQxuq9DOg0t2B05cpJlrqjbOgsdQfOJ/UYKTWoLvLk8llXpM9UcKgWkgem3wGg++TaifQtNZLhtyaB2CERPJQwWx5w+Rrl/4Fk6aI9c5YB5S4eTYDxllMRrqWgYZW7tYBdXUwi8dG/obVK6gw5+J8LgdZoULXhr3u0MjTG8rRpQSxqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=x4hwuxSTgGxuFLH4y304fnmomGBgs/Va1mIpvjzRYyU=;
- b=GjmTWOnLHJQPGXwCmW2qWnFTfA5h2aGBlSEzZmrxaGLAfTNzTz3VO0MH8iUS/iQwcax6aq/tix6yxUTKqs8uQfe45JAvv2TO1T0v57L3f6bxaKumetyOKQap6Xmgozs41hn9fGWu94Rg/46JjeaFW9nxYrC3r5MWjhEQIqLnQOfjc/iNSYn78EjjD0cMu3eX1XKTJU6iABXtLtdBJ4W1tQevcQbGayatJ6SeBYr5TnthX+jq3RBa4z3J9pE1FICYpMdxdlW7Ge2sKIEE7Viyko+zzPwNwMnw/KYGlKpNPv5+n6JKbRatbiqgacSX2QElvaOyVC1mEz+G5d6jkGqlKQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=x4hwuxSTgGxuFLH4y304fnmomGBgs/Va1mIpvjzRYyU=;
- b=Wa/NOS98sTDE/g0vMmN37waOfWRY9kf5HbTFACjWyaOL+KpCPCcwUeBgdynI+tr8trq17wiYkFzMHb2w8BgU7+36uoFKnxOeoKjhhItGa0N9J4FAfoOBu6P7ugwFwCTv1+8ZYYMUrjXm4RqdMShVdXgO/6tlpZyLwGelk8ifkBoAkpqgajJi2Q1kJKc3PeOnX2lUlli6JpJtcwj/ozaXgTlA/ijiyKMMYy6eV916SLwusTMS57Ul19S19vNgp7tCc0y254y9zUTDFKznRtkYso8udVCSiy2R0QqYtgjECqHA4joqECBcNC/QDem60kBEnmpISmK7ty1vGtfDJKgevg==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- JH0PR06MB7030.apcprd06.prod.outlook.com (2603:1096:990:6d::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8606.31; Thu, 10 Apr 2025 02:32:20 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%4]) with mapi id 15.20.8632.021; Thu, 10 Apr 2025
- 02:32:20 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open list:All
- patches CC here" <qemu-devel@nongnu.org>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "nabihestefan@google.com"
+ id 1u2hou-00033O-AW; Wed, 09 Apr 2025 22:39:13 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 10 Apr
+ 2025 10:38:57 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 10 Apr 2025 10:38:57 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>
-Subject: RE: [PATCH v1 0/9] Support vbootrom for AST2700
-Thread-Topic: [PATCH v1 0/9] Support vbootrom for AST2700
-Thread-Index: AQHbqTaymNAGMPVtbUWMF2kInkR/tLOcLo3g
-Date: Thu, 10 Apr 2025 02:32:20 +0000
-Message-ID: <SI2PR06MB50410ED73D611FD1A669713BFCB72@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20250409100039.2391847-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20250409100039.2391847-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|JH0PR06MB7030:EE_
-x-ms-office365-filtering-correlation-id: 10f88f31-3c51-4815-6d1c-08dd77d7eb07
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?cGb31Yc23d3CSoen9H9GlqXzPaMtINJnK0ajFvrScZYwDHOgFwxP0DF8gG?=
- =?iso-8859-1?Q?fuXgNrADhhgxz2vqoIdjt+x7Aj+BREbjyCJZiHkasfyjX7aSNgBFoa2oko?=
- =?iso-8859-1?Q?oz7EJhw5XJ7/QBuRIoeZXWDiDOTH3QarCqWjcLOjPdCxFIegtOanRF/0QX?=
- =?iso-8859-1?Q?1mrrn7j61jyG5ziWuZF1ZHK+ntZy8UWtLmizdfzcfSITnEywu97Nk2mawU?=
- =?iso-8859-1?Q?vPl1Wbo1JMilGD7Ygu7kp/PordQyGAaC8i1UBm99aKn0KyOaQ2D50BIPM2?=
- =?iso-8859-1?Q?IaHylWnJrx6M2TISxeZ5hx70c1VJDT+Tgp0jAGIyuwaa0ILCNzv9KOEUyN?=
- =?iso-8859-1?Q?hSEKD8vV7oMrlewcXdi/4TIvoduB5QSaUsRBVfw6kyTROYgr0KCHgirNDJ?=
- =?iso-8859-1?Q?WGT0NhvzM2LQ2tbnc0yHoYs8M8vx6G5rlrsUSGDhu5YPtowkXmbTvtWtyU?=
- =?iso-8859-1?Q?x6o8qfzwnROuAdlFoF5Ong0OS+t2/qd88N/NrvF7wgrBY3vGdwEXa4La0U?=
- =?iso-8859-1?Q?I6ZYX0mD6TyaZBg4JTQ05KZGrfHzxBc3taIIWD5Q1yakdXguSPH9TVzHbQ?=
- =?iso-8859-1?Q?+uXtgyh6y2ZQS+nhSxyD+RvG08hIKygQtC1YRjDJ+Y7d2B3zKfccbzA5lZ?=
- =?iso-8859-1?Q?2RoT//W/DBYb8+NNEMkRZcWPEnDr1dS7V+ylnNJadTSGPMTmHFzW+dvEZ8?=
- =?iso-8859-1?Q?TjAh8WfAWQ/HGpN8AXvNax71QNrNe456ppyR7XXWrpOWnIBtLuAslkTonS?=
- =?iso-8859-1?Q?gdOJDBKjAoB9Rn0pzIdXFRxjsiprpqb0NG3t082SyEKDwXgROMHqo9thYk?=
- =?iso-8859-1?Q?0JiOfURbPawVLP1RfuB9QXp3k8nTT8AJ6pq3dyMcpckDIj/48rehZBJJgr?=
- =?iso-8859-1?Q?5/yNReKQZU4+USiE/0+iWYyfRrmAsBc0hndPUvXxPkKt9jCEe6FhLI1yi7?=
- =?iso-8859-1?Q?66YWTRueb29052Oudtrba9BwNxAfKD85EmbrqyC9WggS7VnH/ymoGZbvSx?=
- =?iso-8859-1?Q?r5zXd+zFjIaS6Jq9b7ylAntpl6WVIOtyEyMi9NApC15QfVPCn64XVASeJO?=
- =?iso-8859-1?Q?p6OAjaMiccQaWUgEI6/lZ53Ti9Vadkol9xUO2bphgGHpKvYhQQIWRpqGwr?=
- =?iso-8859-1?Q?QuQd/H0kuO6epwkpFKp4nZJ/6E0MWQZYqCJ1VEtwTB7E7gZ+F2yLCS7c5l?=
- =?iso-8859-1?Q?pB9IOgC15hW2jvuN2808rYvCxgloCaO6tBq/2wGEno8FtyeR28fCd6RcRK?=
- =?iso-8859-1?Q?Wb/zpnZcknK9427TJ4wcjcEKTUVemAbcI/u3yUhOu6p1Ms/2e2ep/Q68y8?=
- =?iso-8859-1?Q?yorbKfNHoMELvUDE0U5etVbiUgmr9nhG4q8MDuy2Av7PpZjz4+VCvAQMkQ?=
- =?iso-8859-1?Q?T9GEBy+cHxDIshIKPYivgkr+8yrOcQZ1zYFWQ4SIKuPFR869I0GpbnvEqf?=
- =?iso-8859-1?Q?PvYJBNLpWtMYqXHQ+PLEl4vh48lbGcLlMUoqWbLusX12KL+1Gv/l8EYxeY?=
- =?iso-8859-1?Q?04r2jE/U92XXuXrwU4cs93VSgBZmZZsXM/N1e7HdMLsaLM6TP5cDjwIP82?=
- =?iso-8859-1?Q?hd+bnHw=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?UXq7XZkri5vPDdR0jxgn3xIi+XyMXHBrqG6dsgB92zZ/jySdg4EsajBrOY?=
- =?iso-8859-1?Q?NF7yVuTezS5Vnhv986WtatJDkji+SWoImlAiVKkPtqNiPcZRHm6n6pIj4B?=
- =?iso-8859-1?Q?Rk9xjNLRjDdi5zqLNlhj1JoaJYiiH4OcyxsOYzwWNaCnAZ/A/APp9y7Wza?=
- =?iso-8859-1?Q?5B6yFHjnaSzgOP5996Clb0nHoFrLYSJGgfvcqAJGJlDtjP5H3oVxID5sQh?=
- =?iso-8859-1?Q?WE+HRnDQtVeuVe77pUlivsYfuycuhevMZRB3cGONH0RT4KZJ33zKFJhPzR?=
- =?iso-8859-1?Q?zYDRUYM3og5cIUmzpjpwAZ/awJ9dDrghcKVoWBg/7HvSeShMIi9zhmyLBt?=
- =?iso-8859-1?Q?ApdqzaHvqbHuTn3w3LyXYHo5zpPVBXFfYpBzEpFbi3jvoaqvtfUBOqElVu?=
- =?iso-8859-1?Q?5QHwC2MWoriDGnBOmFwcNP2B8ZSPCOF9ezeetZ8KSyBuvxhSgTddIgxjs2?=
- =?iso-8859-1?Q?2rg7UL+9kHKqoJZofBIQ0VazfrLGRwYNcVAcekfhSGlTdNjZWIpquVgvaM?=
- =?iso-8859-1?Q?68BbPNwX7/pD16gv7zCA+p7XNcYtmJjZZXsq+4kCzKLKu78ApWTJpNRXnk?=
- =?iso-8859-1?Q?QpuNXNbRqL1SbQ5r+tky8A+67JlG9y8x5XOpsfAOHYBxOvrW0xjxwDdNdQ?=
- =?iso-8859-1?Q?6UBmDiwpDbfj4JdAH4n7hM+Cm/oBWdTUPBvBWL1/M3imp9f0N8GX3pJb4f?=
- =?iso-8859-1?Q?jhUDGED705FwYf0LyoL+pUpPoFt6HpF2GL3vuSrS58eEcQ952aO57i0bOK?=
- =?iso-8859-1?Q?LRdabRADQEO+0XvOriZoJfGLFkFZ9oh6CR9XIyo3YPR5dqKqJjmwq8nEC8?=
- =?iso-8859-1?Q?Bw6iF7JcDg6EfJf+iqWj952gjopPyXMdRgkqT5Iez2kSE3wCzjJcOYOchb?=
- =?iso-8859-1?Q?phT5ubwMfjgYMyiwf+cQbAsvT/hZqKsAIMfS9iPecn62ldrA7OPxNtstfj?=
- =?iso-8859-1?Q?8yOifHtCL2DEuuHLylT74L+wM7JxCj5ZaZRAEeuXll+rQ0DWa/BjKVe360?=
- =?iso-8859-1?Q?MkV5JEybsWdlVqz0omduM1IUYTnAgcm/mV0kMi/h0JXEzyFY0HMhElxeN7?=
- =?iso-8859-1?Q?NTQpkkxXhlF/Fphl8ybMEAyAEPXmtV2OB+Tv9F4dF0MYJXUHzgPLIxbQ4i?=
- =?iso-8859-1?Q?AUKPPXLsbXdhAnkWssX5oj/JJrzdXWFkwRvUzNQOA0w3xfrni8xlLosl1F?=
- =?iso-8859-1?Q?UgUSfff3bGwlubyUP80hmSAAIAzDDtOoBuJJLABNkK7/QArCrm7gOwDw6Q?=
- =?iso-8859-1?Q?E0jPbT1vVAOXk9CtLm8SBgF51HL3LyN0CoX3x19dbcapGYEr5BWJns2XXm?=
- =?iso-8859-1?Q?9uX9XcMoZgujPjLzVlJWzZrjpOKKdsx8m8xppySiepGU7QhsMc/m99FYFu?=
- =?iso-8859-1?Q?WblbcgD5PNiWSoNOO2LEcWzNmHEECbuJwreCcy9nmyqVi5wSGpRuliW087?=
- =?iso-8859-1?Q?GmJ/jOPi/mQhei/lqHlqZyffXW5quVqU6O85YLVkzeZPIpFlSFpwQUypRj?=
- =?iso-8859-1?Q?0UMDHmsC/NOiLTZYN+W0v2kvKAgyUKIevpaEDeRoJQyNk1065nma6cQnpc?=
- =?iso-8859-1?Q?fRV2GwcZILQNeHMjtFFvNif5QTRpR61nv9WyATOkmru0sqen/JKmgdniEt?=
- =?iso-8859-1?Q?5dvo7CEGP435XT0sEAeV2SBBJxxPZnBDy7?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH v2 02/10] hw/arm/aspeed_ast27x0: Add "vbootrom_size" field to
+ AspeedSoCClass
+Date: Thu, 10 Apr 2025 10:38:46 +0800
+Message-ID: <20250410023856.500258-3-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250410023856.500258-1-jamin_lin@aspeedtech.com>
+References: <20250410023856.500258-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 10f88f31-3c51-4815-6d1c-08dd77d7eb07
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Apr 2025 02:32:20.1210 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: L/ANmKP6vQo7tBWx3OQJ2pJar69wW6UnnCYKixPDJNhWg+A2zzX0u7diEb0k75EL38DwS2NIBg4XitVoQiqjjuLq1YuHtlaD3FsKqFdj+w8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB7030
-Received-SPF: pass client-ip=2a01:111:f403:200e::72c;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=APC01-PSA-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a1WSWuECj2YY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4V/ZEMGfO1NK
 
-Hi all,=20
+Introduced a "vbootrom_size" attribute in "AspeedSoCClass" to define virtual
+boot ROM size.
+Initialized "vbootrom_size" to "0x20000" for both AST2700 A0 and A1 variants.
 
-> Subject: [PATCH v1 0/9] Support vbootrom for AST2700
->=20
-> v1:
->   Add initial support for AST27x0
->   The purpose of vbootrom here is to simulate the work of BootMCU SPL
-> (riscv)
->   in AST2700, because QEMU doesn't support heterogenous architecture yet.
->=20
->   ast27x0_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for
->   ASPEED AST27x0 BMC SOC. It currently implements the bare minimum to
->   load, parse, initialize and run boot images stored in SPI flash, but ma=
-y grow
->   more features over time as needed. The source code is available at:
->   https://github.com/google/vbootrom
->=20
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ include/hw/arm/aspeed_soc.h | 1 +
+ hw/arm/aspeed_ast27x0.c     | 2 ++
+ 2 files changed, 3 insertions(+)
 
-This patch series failed to build because I missed including one patch.
-I will resend the series as v2.
-Sorry for the inconvenience.
-
-Jamin
-
-> Jamin Lin (9):
->   hw/arm/aspeed_ast27x0: Add "vbootrom_size" field to AspeedSoCClass
->   hw/arm/aspeed_ast27x0: Rename variable sram_name to name in ast2700
->     realize
->   hw/arm/aspeed_ast27x0 Introduce vbootrom memory region
->   hw/arm/aspeed: Enable vbootrom support by default on AST2700 EVB
->     machines
->   hw/arm/aspeed: Reuse rom_size variable for vbootrom setup
->   hw/arm/aspeed: Add support for loading vbootrom image via "-bios"
->   pc-bios: Add AST27x0 vBootrom
->   tests/functional/aspeed: Update AST2700 functional test to use
->     vbootrom
->   docs/system/arm/aspeed: Support vbootrom for AST2700
->=20
->  MAINTAINERS                             |   1 +
->  docs/system/arm/aspeed.rst              |  18 +++--------
->  include/hw/arm/aspeed.h                 |   1 +
->  include/hw/arm/aspeed_soc.h             |   2 ++
->  hw/arm/aspeed.c                         |  37
-> ++++++++++++++++++++++-
->  hw/arm/aspeed_ast27x0.c                 |  20 ++++++++++---
->  pc-bios/README                          |   6 ++++
->  pc-bios/ast27x0_bootrom.bin             | Bin 0 -> 15464 bytes
->  pc-bios/meson.build                     |   1 +
->  tests/functional/test_aarch64_aspeed.py |  38 +-----------------------
->  10 files changed, 68 insertions(+), 56 deletions(-)  create mode 100644
-> pc-bios/ast27x0_bootrom.bin
->=20
-> --
-> 2.43.0
->=20
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 37cd7cd793..432f6178ac 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -152,6 +152,7 @@ struct AspeedSoCClass {
+     const char * const *valid_cpu_types;
+     uint32_t silicon_rev;
+     uint64_t sram_size;
++    uint64_t vbootrom_size;
+     uint64_t secsram_size;
+     int spis_num;
+     int ehcis_num;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index dce7255a2c..81dd90ffdd 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -898,6 +898,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A0_SILICON_REV;
++    sc->vbootrom_size = 0x20000;
+     sc->sram_size    = 0x20000;
+     sc->spis_num     = 3;
+     sc->wdts_num     = 8;
+@@ -925,6 +926,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A1_SILICON_REV;
++    sc->vbootrom_size = 0x20000;
+     sc->sram_size    = 0x20000;
+     sc->spis_num     = 3;
+     sc->wdts_num     = 8;
+-- 
+2.43.0
 

@@ -1,322 +1,300 @@
-Received: by 2002:a05:7022:ef04:b0:9b:2b00:a62d with SMTP id qy4csp8110685dlb;
-        Wed, 9 Apr 2025 23:06:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWIn5b96Tb/9Se06macHua0tzCYQ2Hz5d7sRBIgW0Vf7+zIfMfsKcBt8PnbcV2Sm5A+9TvgXi6lRPuhmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFaO9ycWMAHKLDRpFW4LDq/h/Symjw2PEN0aBnOjn8KUy64veoIzSmtJJu7kyf//j5p+Mhr
-X-Received: by 2002:a05:6214:490:b0:6eb:28e4:8518 with SMTP id 6a1803df08f44-6f0e77c0743mr10836036d6.34.1744265170934;
-        Wed, 09 Apr 2025 23:06:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744265170; cv=none;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8201833njd;
+        Wed, 9 Apr 2025 23:50:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXbEi+zkeZJRpAFnM0s8NBjeEJ8z2mZDLKGqKHLbfurl6IF9BCyL5GuaXXK+GmC4dqbM3Buo8qBKsOBYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvZPpIXecSfD51EGIYK4DZa3Tgb2MpuLTHm6243kEMIKBdVh72B/8mB9J0bEHBULTJCoM7
+X-Received: by 2002:ac8:5989:0:b0:477:cb1:ab2a with SMTP id d75a77b69052e-4796cbb5912mr25068071cf.13.1744267849342;
+        Wed, 09 Apr 2025 23:50:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744267849; cv=none;
         d=google.com; s=arc-20240605;
-        b=A+rHcYHhsjjtTdnKWmeMC8NCwYatP2H8SRTP5j3E1qbTZSnSAda8SwmZQeOcVZ6lDF
-         q8FAm6Ao2XbMUSJ/Vre/vCRTXk9+N/orYQzDxWa/PK637Pbx+fzN5mjd0e/qsP7+9Teg
-         TjUTHuCp9UOESROtB7uUbmHMS0Pn5/NGt5ysFh6325GrX+FARaKrpgu1zQ+JTqhDEbLi
-         cbbkuXergo3kRXPgzp7YPme2x+DrjkJM4B2QM+GDdIZLR/TQ5ulicMoS/NRJTRQQ08s4
-         O6KnP1GFVv/fJGdc3crZKWrOTfMWa2B4b7UUEGhYborIA1ols4cEo8WXI0XzFAII1h5/
-         Wlng==
+        b=XHOAVdk4YO5kvTgSSILJBmMHElTOMf+kqzewYpded3YoQ/v+V5Fe8heISgXB82UOfT
+         fF9f9Z8pohBnL9JuhXXH/9d/6FZYfTr+qZBEKmOsuXFyiAiHMyE44nCjT8eeZtKXDF74
+         DO56YoIxxnCap+d35RdGQPOzDIHEVOv3zG2aXjUqaXEklcTAVIq3jBBqpA3HW6GisT31
+         1ADQiUjYmXE7iI1XMt1euPyJBrinWbqt1fLcz2uO/BueqMXZacc6VI6R2gI9sAhXAwLw
+         AvlVi+acctnaKiOBO6Bwx5Zn4d2SbxO9qYjNsA0zP868pGitoB7dSDqBgFbmpgUG+4Sy
+         /chg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=srJnrWC5m/uVmI/yE8vzwiF7k5u1bDwTF3N57h0kArI=;
-        fh=PxN2/SU4UgyBd8ucsYBL+yWm/wkWUkY7tOk8tRN4q40=;
-        b=acCY3BT2Xo7JxiwIoTCTxWtvkxD3clcMUNvPiszzgtrnwguww5LzU2UtaWCmNp8jxO
-         BXhjebRfAJboZnP0FPOm9ameMnGcAiU2dItpobVH7nH8Ofjz5Ol2w3fdLn+coBcY4EiQ
-         9lkVcZVKi9mxjHP2xUdHkAf9tMN7ytWShnkHzaPkkNdq7rvQw3aN1P4HkGI5nbZnZ55r
-         iDAQtyOQ8Ip8h7MQkGnBMxLjSFaPWqLJ8bpXbcwhDXAJDxiFzao7D71XyOWGK9KGaMvk
-         FyoYJ7J4zz9+sIZDKxnvhbFF04Dz7+z2TbgosVWOihQZqr5nKO+Vwsng3C7Li7gDj4vw
-         O5lA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=9xq+6ryzMsa583Rf6MUM7lr82WoeDQJ6LP4WIqsMoDc=;
+        fh=ug9qOWQ8I4FyWPgHo6d8bCsvmL8yQOuHYDk3aNdtuO4=;
+        b=iGDq6EsNhSsP2BEzjE4EnxSmoD3Mrnyd5X/SItX7sFNq9kzo57UzYmpEgSFpOa0PzU
+         AM4V9RPyta7GrdjJC2n6a2AW1YCp2YkdaNywkJpMPFNzhj2H1Ypt5Tg3+5XKCJnFhHBz
+         zuRsHUYgNEqHOTArtmhi3+KI+cANyWnqiGkrnBmlQykl9kZr2oLBNGuPp8zZUl5Y7nzc
+         BeJtJZzZrNArRExGQ7YCpC65OYkRBEuSg4MS5MlRw57caVIlyBh6SL92noAgZ7c0uhy2
+         ep100sS5TAcNry57UbCfMDh5Jn61SBnTWjSV31mBXdWOINNaO5NF99YgdJUWDb09T+Q8
+         ZR7Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa9YDzdh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J9W623cu;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de9ecf7asi24892126d6.361.2025.04.09.23.06.10
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4796ee138a9si5264251cf.651.2025.04.09.23.50.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Apr 2025 23:06:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Apr 2025 23:50:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa9YDzdh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J9W623cu;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u2l2v-0002lx-Pu; Thu, 10 Apr 2025 02:05:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1u2l2n-0002iJ-Io
- for qemu-arm@nongnu.org; Thu, 10 Apr 2025 02:05:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1u2l2l-0001om-HN
- for qemu-arm@nongnu.org; Thu, 10 Apr 2025 02:05:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1744265140;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=srJnrWC5m/uVmI/yE8vzwiF7k5u1bDwTF3N57h0kArI=;
- b=Fa9YDzdh6jr3D3gTGBYT5mqmxEvnljJ1lMU6X1CVlRPtCYtjpk+5L7t8Zc4SyczeREI1Rx
- cI3YBSybXOUmLj+oZl0PbhT65n6av2RptaYevBTT307deJ6aYiX2WCa3qae0cGAGGFVeVO
- iXyCN5TXvAQeCq4Jnsd+juM7q9o/P+8=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1744267849;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9xq+6ryzMsa583Rf6MUM7lr82WoeDQJ6LP4WIqsMoDc=;
+	b=J9W623cuf+NyHRqRm+bvGYIGRBdT6J5CeYpGl7xZbT4gYIJROIuoZu8kXwGdfE7nVBZPKO
+	V/tyieF29HXb1IE90mp8895v6e5hoZowrMZ1NDTtp5WlzjF9mYtBz7wp1fezXFoSDDV4FR
+	yjoFN5vv2F1492O99gDNBidCJTevGh8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-635-7cY27zUxMRusIG4A27N0Pw-1; Thu, 10 Apr 2025 02:05:39 -0400
-X-MC-Unique: 7cY27zUxMRusIG4A27N0Pw-1
-X-Mimecast-MFC-AGG-ID: 7cY27zUxMRusIG4A27N0Pw_1744265138
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-5edc07c75efso423672a12.1
- for <qemu-arm@nongnu.org>; Wed, 09 Apr 2025 23:05:39 -0700 (PDT)
+ us-mta-221-FKuMGa4IPMqnDumipLoOew-1; Thu, 10 Apr 2025 02:50:45 -0400
+X-MC-Unique: FKuMGa4IPMqnDumipLoOew-1
+X-Mimecast-MFC-AGG-ID: FKuMGa4IPMqnDumipLoOew_1744267844
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-39134c762ebso155640f8f.0
+        for <alex.bennee@linaro.org>; Wed, 09 Apr 2025 23:50:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744265138; x=1744869938;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=srJnrWC5m/uVmI/yE8vzwiF7k5u1bDwTF3N57h0kArI=;
- b=Rxkz97YEVr/cz3d5ibAGLfK2hWEICu73HTkHb3Cpx+6/wsDkPZtUlRHVjzMzimJZsl
- SUKi6kkXFqtVrK6AMRwXPr6a9fxjIRLT3yvDKm3zAenYLYFEasnveHDHU49sfG8XxQ0q
- Pr9JSb1dqL2oG18EfGSpQ0rp8tCTT7cD0uprPGJQlkIYw/AH3jxch/Z8nCnGir+jT7g7
- u8vbJC6+Htw6RphTzA8xCxlGsI9i5MKO+rOC3hs85CmCyrnjZiLZV0ot1SpADldLp1f7
- kWgQLZUhLs8Ya47q2drj+Lhpac32cMdXWR6vMtyncgSiqeUBQMaWWVtatXhvuTkfMyKH
- ugjQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXHTXKfuHusRSQtK5kH6y7bT/IZ9AK6hLQq2LCFmXpOEteZtjQOnWAC/MDOcx8+oO+oD123zRUVUw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9KM3fm4ukfeFNgFex03Tb5W5MvdU04/HPpEDg4//hxMpqeWbz
- Wp/uK3Y3xRADH+Etp6Ywt05ZsaTZhSGwsHeE3GCaN4Z5Rk9Syf/2kb58yhlcbm5dl2M1kDXtnqJ
- BttxGgWQW+wgd0mEF5QAO6jOHKmL6YXUUtXvG25xxhey65UKyfw==
-X-Gm-Gg: ASbGnctkTWa9QytZZ7Y25l2A6edbiHC8Y4MjT2hIjUwHx8yqky7Ypv0d9S//8cmM3zg
- 4qZx8Da5uvm+JH9SI7lHHw+INrmNEvTV7nMdSKL4gD6PyVqqKw0wpB57il7vIRGTpwI48ItWoiS
- kA3UpV2h0OXeB/JkwF4tHr6d0E8l0Noq2DN6a57KEHT9hzWZwO5pxpWcP9n8ouIHmsuQtzyKGSb
- wc5z7S0hd1Xt7e6OIRzv1GjP8BANZYT6Gx/A8EUqZLyBMxBVztB9rd1eDTKrBlduRHSMMekaOG0
- WRj2bjwjYQLPWrJsDSmZBjEj8DRSa5hUbjt/Vhfsccs=
-X-Received: by 2002:a05:6402:84f:b0:5e5:49af:411d with SMTP id
- 4fb4d7f45d1cf-5f32926bbbdmr1135389a12.17.1744265138065; 
- Wed, 09 Apr 2025 23:05:38 -0700 (PDT)
-X-Received: by 2002:a05:6402:84f:b0:5e5:49af:411d with SMTP id
- 4fb4d7f45d1cf-5f32926bbbdmr1135375a12.17.1744265137680; 
- Wed, 09 Apr 2025 23:05:37 -0700 (PDT)
-Received: from [192.168.0.7] (ip-109-42-49-221.web.vodafone.de.
- [109.42.49.221]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5f2fbc2b975sm1766021a12.33.2025.04.09.23.05.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Apr 2025 23:05:37 -0700 (PDT)
-Message-ID: <aa47d49a-b81a-46cf-811a-2045e453f4bf@redhat.com>
-Date: Thu, 10 Apr 2025 08:05:35 +0200
+        d=1e100.net; s=20230601; t=1744267844; x=1744872644;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HTm3jxIp5j55tgccKANvtb9WBAkFtdMn3VAIesopr4Q=;
+        b=wA5l2sLsgcdw0S8A4Pf27DtM+iM1zNqDSkEZ69GWzMVoheCarYfeP5x4jWcAc4RAzU
+         up8iHUvly14/BuW01xa4yBfYFAK8zjeQztVbFkowKNya8++COi4uZVQ8og0P8GReIOqI
+         OsUhehtddGfzJwDq3uX70Py4nh6JJspExoz2jF3ckTHVv+fmMx5G286NeKD8k7uNa0oa
+         l9LO60JYuRvtHqn13GBGaJHMPYh2GmO+tivUaBPCE1wBrvSKQnyybym6Rlg+tvUnptIi
+         wLlsLq6/UHuFcOPEdJEOtXuy1lbhMSjADP4SCyfT3wob43nciQ13cXSHBAb2xgJLK6dJ
+         3fxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWQbdODdzGCZPmDkiGdjf1afQ3AEM5Ovlc/NzwRL8rrtHCZy0+OiCzOPBaZJL5cvVy+Qs2+pBps0wZ2aQ==@linaro.org
+X-Gm-Message-State: AOJu0YydM9HcD7Fu2WBNNUPvKpQRI5nwrFzqth7APAhhEfM/HHTJpKFh
+	WG3E/pZZlr04jMpN9ao66ifmMWA75CDLirV1joo+rFYKmwlPtLifpmNswA+e4mL3uPxiWdJjPfx
+	oHo8o7oWs88Yv3gFxhaeUjcTByLX0lZrydaqahNAwXekQ/7eqtO1eQA==
+X-Gm-Gg: ASbGncsgdpQ3P7ZXuJmgXm31qxyVkYULXcNU3Qr9DicV/AonJwEk0uDNKwPRrAWYUg+
+	X0bbiUefxzSp9i2Nec7YPaHfKcsPT0glIkZ00B0vI0SPRGoIyfZDJfWN6zrCwTQ49ByAUwxA2eZ
+	ROrHhTXRf7dLSBNkt431HWStnji1Khr+fY4mMtPcq9tGMuMsh6OCwZHUet1zUg5+xz2H0KPgo5j
+	8SP7wOvBgX/Jx8gFQbuYT7JYLAO6jKcRELutbnZCqGBGPuRMg+uzh3ipzS5ij5H/yFybytHlVGM
+	cmWLYu6HMJzNndXpjFYBokLle9o6qMkh
+X-Received: by 2002:a5d:64e3:0:b0:39a:cc34:2f9b with SMTP id ffacd0b85a97d-39d8f469224mr1259014f8f.16.1744267844406;
+        Wed, 09 Apr 2025 23:50:44 -0700 (PDT)
+X-Received: by 2002:a5d:64e3:0:b0:39a:cc34:2f9b with SMTP id ffacd0b85a97d-39d8f469224mr1258991f8f.16.1744267844033;
+        Wed, 09 Apr 2025 23:50:44 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d893631b5sm3740705f8f.3.2025.04.09.23.50.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Apr 2025 23:50:43 -0700 (PDT)
+Date: Thu, 10 Apr 2025 08:50:42 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Andrew Jones <ajones@ventanamicro.com>, Alex
+ =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-arm@nongnu.org, Udo Steinberg <udo@hypervisor.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>
+Subject: Re: [PATCH-for-10.1 v3 6/9] qtest/bios-tables-test: Whitelist
+ aarch64/virt 'its_off' variant blobs
+Message-ID: <20250410085042.6aa5593d@imammedo.users.ipa.redhat.com>
+In-Reply-To: <98b2676d-ad21-4c05-a165-12ae5e1b9c64@linaro.org>
+References: <20250403204029.47958-1-philmd@linaro.org>
+	<20250403204029.47958-7-philmd@linaro.org>
+	<671a6c82-ae10-4f3b-9d83-cecc32755206@linaro.org>
+	<20250409160531.341c205e@imammedo.users.ipa.redhat.com>
+	<98b2676d-ad21-4c05-a165-12ae5e1b9c64@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.0? v2] tests/functional: Add test for imx8mp-evk
- board with USDHC coverage
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250409202630.19667-1-shentey@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20250409202630.19667-1-shentey@gmail.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Z4YY53x0mh3OnUQFZZl6JVK93mhLQxf813MQs9akdgI_1744265138
+X-Mimecast-MFC-PROC-ID: 6ORAZTrD__f93sUq-jCADy_Xsx47igaEERlVIDlW4gM_1744267844
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.505,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QcioT+cIRnAU
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: FSvsM9gZQ8fm
 
-On 09/04/2025 22.26, Bernhard Beschow wrote:
-> Introduce a functional test which boots Debian 12 on the imx8mp-evk board. Since
-> the root filesystem resides on an SD card, the test also verifies the basic
-> operation of the USDHC.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> 
-> --
-> v2:
-> * Make test file executable (Thomas)
-> * Omit fetch() (Thomas)
-> * Omit "-accel tcg" (Thomas)
-> * Add "snapshot=on" to make potential future tests independent
-> 
-> Supersedes: 20250405214900.7114-1-shentey@gmail.com
-> ---
->   MAINTAINERS                                 |  1 +
->   tests/functional/meson.build                |  1 +
->   tests/functional/test_aarch64_imx8mp_evk.py | 66 +++++++++++++++++++++
->   3 files changed, 68 insertions(+)
->   create mode 100755 tests/functional/test_aarch64_imx8mp_evk.py
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d54b5578f8..4ceffa89dc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -833,6 +833,7 @@ F: include/hw/arm/fsl-imx8mp.h
->   F: include/hw/misc/imx8mp_*.h
->   F: include/hw/pci-host/fsl_imx8m_phy.h
->   F: docs/system/arm/imx8mp-evk.rst
-> +F: tests/functional/test_aarch64_imx8mp_evk.py
->   F: tests/qtest/rs5c372-test.c
->   
->   MPS2 / MPS3
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 0f8be30fe2..aaaf3472f1 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -75,6 +75,7 @@ tests_aarch64_system_quick = [
->   
->   tests_aarch64_system_thorough = [
->     'aarch64_aspeed',
-> +  'aarch64_imx8mp_evk',
->     'aarch64_raspi3',
->     'aarch64_raspi4',
->     'aarch64_replay',
-> diff --git a/tests/functional/test_aarch64_imx8mp_evk.py b/tests/functional/test_aarch64_imx8mp_evk.py
-> new file mode 100755
-> index 0000000000..62fee74044
-> --- /dev/null
-> +++ b/tests/functional/test_aarch64_imx8mp_evk.py
-> @@ -0,0 +1,66 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots a Linux kernel and checks the console
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +from qemu_test import LinuxKernelTest, Asset
-> +
+On Wed, 9 Apr 2025 12:49:36 -0300
+Gustavo Romero <gustavo.romero@linaro.org> wrote:
 
-In case you respin (due to other reasons), please add a second empty line 
-before the "class" statement (that's the style that we use in the other 
-tests, too).
+> Hi Igor,
+>=20
+> On 4/9/25 11:05, Igor Mammedov wrote:
+> > On Fri, 4 Apr 2025 00:01:22 -0300
+> > Gustavo Romero <gustavo.romero@linaro.org> wrote:
+> >  =20
+> >> Hi Phil,
+> >>
+> >> On 4/3/25 17:40, Philippe Mathieu-Daud=C3=A9 wrote: =20
+> >>> We are going to fix the test_acpi_aarch64_virt_tcg_its_off()
+> >>> test. In preparation, copy the ACPI tables which will be
+> >>> altered as 'its_off' variants, and whitelist them.
+> >>>
+> >>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> >>> ---
+> >>>    tests/qtest/bios-tables-test-allowed-diff.h |   3 +++
+> >>>    tests/qtest/bios-tables-test.c              |   1 +
+> >>>    tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 184 bytes
+> >>>    tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
+> >>>    tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 236 bytes
+> >>>    5 files changed, 4 insertions(+)
+> >>>    create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
+> >>>    create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
+> >>>    create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
+> >>>
+> >>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtes=
+t/bios-tables-test-allowed-diff.h
+> >>> index dfb8523c8bf..3421dd5adf3 100644
+> >>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> >>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> >>> @@ -1 +1,4 @@
+> >>>    /* List of comma-separated changed AML files to ignore */
+> >>> +"tests/data/acpi/aarch64/virt/APIC.its_off",
+> >>> +"tests/data/acpi/aarch64/virt/FACP.its_off",
+> >>> +"tests/data/acpi/aarch64/virt/IORT.its_off", =20
+> >>
+> >> I think your first approach is the correct one: you add the blobs
+> >> when adding the new test, so they would go into patch 5/9 in this seri=
+es,
+> >> making the test pass without adding anything to bios-tables-test-allow=
+ed-diff.h.
+> >> Then in this patch only add the APIC.its_off table to the bios-tables-=
+test-allowed-diff.h
+> >> since that's the table that changes when the fix is in place, as you d=
+id in: =20
+> >=20
+> > if APIC.its_off is the only one that's changing, but FACP/IORT blobs ar=
+e the same
+> > as suffix-less blobs, one can omit copying FACP/IORT as test harness wi=
+ll fallback
+> > to suffix-less blob if the one with suffix isn't found. =20
+>=20
+> OK. Just clarifying and for the records, this is not the case for this se=
+ries
+>=20
+>=20
+> > if blobs are different from defaults then create empty blobs and whitel=
+ist them in the same patch
+> > then do your changes and then update blobs & wipeout withe list. =20
+>=20
+> Thanks for confirming it. That's what I suggested to Phil in my first rev=
+iew and what
+> I understood from the prescription in bios-tables-test.c.
+>=20
+> However, on second thoughts, for this particular series, isn't it better =
+to have the following commit sequence instead:
+>=20
+> 1) Add the new test and the new blobs that make the test pass, i.e. APIC.=
+suffix, FACP.suffix, and IORT.suffix (they are different than the default s=
+uffix-less blobs)
 
-Anyway:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+blobs should be a separate commit (that way it's easier for maintainer to r=
+ebase them,
+if they clash during merge with some other change.
 
+> 2) Whitelist only the APIC.suffix since that's the table that will change=
+ with the fix
+> 3) Add the fix (which changes the APIC table so a new APIC.suffix blob is=
+ needed and also stops generating the IORT table, so no more IORT.suffix bl=
+ob is necessary)
+> 4) Finally, update only the APIC.suffix blob and remove the IORT.suffix b=
+lob and wipe out the whitelist
+>=20
+> This way:
+>=20
+> A) It's clear that only ACPI blob changed with the fix, because there is =
+no addition of a FACP.suffix blob in 4) (it remains the same)
+> B) It's clear that the IORT table is removed with the fix and is not rele=
+vant anymore for the test
 
-> +class Imx8mpEvkMachine(LinuxKernelTest):
-> +
-> +    ASSET_IMAGE = Asset(
-> +        ('https://cloud.debian.org/images/cloud/bookworm/20231210-1590/'
-> +         'debian-12-generic-arm64-20231210-1590.tar.xz'),
-> +        '7ebf1577b32d5af6204df74b54ca2e4675de9b5a9fa14f3ff70b88eeb7b3b359')
-> +
-> +    KERNEL_OFFSET = 0x51000000
-> +    KERNEL_SIZE = 32622528
-> +    INITRD_OFFSET = 0x76000000
-> +    INITRD_SIZE = 30987766
-> +    DTB_OFFSET = 0x64F51000
-> +    DTB_SIZE = 45 * 1024
-> +
-> +    def extract(self, in_path, out_path, offset, size):
-> +        try:
-> +            with open(in_path, "rb") as source:
-> +                source.seek(offset)
-> +                data = source.read(size)
-> +            with open(out_path, "wb") as target:
-> +                target.write(data)
-> +        except (IOError, ValueError) as e:
-> +            self.log.error(f"Failed to extract {out_path}: {e}")
-> +            raise
-> +
-> +    def setUp(self):
-> +        super().setUp()
-> +
-> +        self.image_path = self.scratch_file("disk.raw")
-> +        self.kernel_path = self.scratch_file("linux")
-> +        self.initrd_path = self.scratch_file("initrd.zstd")
-> +        self.dtb_path = self.scratch_file("imx8mp-evk.dtb")
-> +
-> +        self.archive_extract(self.ASSET_IMAGE)
-> +        self.extract(self.image_path, self.kernel_path,
-> +                     self.KERNEL_OFFSET, self.KERNEL_SIZE)
-> +        self.extract(self.image_path, self.initrd_path,
-> +                     self.INITRD_OFFSET, self.INITRD_SIZE)
-> +        self.extract(self.image_path, self.dtb_path,
-> +                     self.DTB_OFFSET, self.DTB_SIZE)
-> +
-> +    def test_aarch64_imx8mp_evk_usdhc(self):
-> +        self.set_machine('imx8mp-evk')
-> +        self.vm.set_console(console_index=1)
-> +        self.vm.add_args('-m', '2G',
-> +                         '-smp', '4',
-> +                         '-kernel', self.kernel_path,
-> +                         '-initrd', self.initrd_path,
-> +                         '-dtb', self.dtb_path,
-> +                         '-append', 'root=/dev/mmcblk2p1',
-> +                         '-drive', f'file={self.image_path},if=sd,bus=2,'
-> +                                    'format=raw,id=mmcblk2,snapshot=on')
-> +
-> +        self.vm.launch()
-> +        self.wait_for_console_pattern('Welcome to ')
-> +
-> +if __name__ == '__main__':
-> +    LinuxKernelTest.main()
+I'd just mention it in commit log so  that later no one would wonder why we=
+ are adding and then removing tables
 
+As for the rest of suggestions, it looks fine to me.
+
+>=20
+> What do you think?
+>=20
+>=20
+> Cheers,
+> Gustavo
+>=20
+> > Phil,
+> > the process is described in doc comment at the top of tests/qtest/bios-=
+tables-test.c
+> >  =20
+> >> https://mail.gnu.org/archive/html/qemu-devel/2025-03/msg07082.html
+> >>
+> >> Plus, adding the blobs, which are actually related to the test in the =
+other
+> >> patch, and ignoring them at the same time looks confusing to me. I und=
+erstand
+> >> that only the blob that changes (APIC.its_off) with the fix should be =
+temporarily
+> >> ignored and, later, updated, as in your first series.
+> >>
+> >>
+> >> Cheers,
+> >> Gustavo
+> >> =20
+> >>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables=
+-test.c
+> >>> index baaf199e01c..55366bf4956 100644
+> >>> --- a/tests/qtest/bios-tables-test.c
+> >>> +++ b/tests/qtest/bios-tables-test.c
+> >>> @@ -2151,6 +2151,7 @@ static void test_acpi_aarch64_virt_tcg_its_off(=
+void)
+> >>>        test_data data =3D {
+> >>>            .machine =3D "virt",
+> >>>            .arch =3D "aarch64",
+> >>> +        .variant =3D ".its_off",
+> >>>            .tcg_only =3D true,
+> >>>            .uefi_fl1 =3D "pc-bios/edk2-aarch64-code.fd",
+> >>>            .uefi_fl2 =3D "pc-bios/edk2-arm-vars.fd",
+> >>> diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/a=
+cpi/aarch64/virt/APIC.its_off
+> >>> new file mode 100644
+> >>> index 0000000000000000000000000000000000000000..c37d05d6e05805304f10a=
+fe73eb7cb9100fcccfa
+> >>> GIT binary patch
+> >>> literal 184
+> >>> zcmZ<^@O0k6z`($=3D+{xeBBUr&HBEVSz2pEB4AU24G0Uik$i-7~iVgWL^17JJ`2AFzr
+> >>> bgb+@aBn}xq0gwb2)Q)cq{30-g9B_L93G4|0
+> >>>
+> >>> literal 0
+> >>> HcmV?d00001
+> >>>
+> >>> diff --git a/tests/data/acpi/aarch64/virt/FACP.its_off b/tests/data/a=
+cpi/aarch64/virt/FACP.its_off
+> >>> new file mode 100644
+> >>> index 0000000000000000000000000000000000000000..606dac3fe4b55c31fd68b=
+25d3a4127eeef227434
+> >>> GIT binary patch
+> >>> literal 276 =20
+> >>> zcmZ>BbPf<<WME(uaq@Te2v%^42yj*a0-z8Bhz+8t3j|P&V`N}P6&N^PpsQ~v$aVnZ =
+=20
+> >>> CVg~^L
+> >>>
+> >>> literal 0
+> >>> HcmV?d00001
+> >>>
+> >>> diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/a=
+cpi/aarch64/virt/IORT.its_off
+> >>> new file mode 100644
+> >>> index 0000000000000000000000000000000000000000..0fceb820d509e852ca084=
+9baf568a8e93e426738
+> >>> GIT binary patch
+> >>> literal 236
+> >>> zcmebD4+?q1z`(#9?&R<65v<@85#X!<1dKp25F11@1F-=3DRgMkDCNC*yK9F_<M77!bR =
+=20
+> >>> zUBI%eoFED&4;F$FSwK1)h;xBB2Py`m{{M%tVD>TjFfcO#g+N#Zh@s|zoCF3AP#UU@ =
+=20
+> >>> R!2`+%Dg6Hr$N|zYvjDIZ5CH%H
+> >>>
+> >>> literal 0
+> >>> HcmV?d00001
+> >>>     =20
+> >> =20
+> >  =20
+>=20

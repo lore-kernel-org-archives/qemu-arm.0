@@ -1,265 +1,232 @@
-Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8161731njd;
-        Wed, 9 Apr 2025 21:44:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVlz3Bd/6q2hl/XUp5Nfz8oxHJ2uBtiiAqECHEN8kfRpG9TyeXsIPHUWLuEwsDeksMUYBD9WiaHe8VjJw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGxQjtPkQHBg+Iuh/Fm/Gi0eJ5Nth0jp7pl3nnEA/A/z1FwKpSUE32k/+BFTILGbhkT4TCk
-X-Received: by 2002:a17:902:c952:b0:21f:5638:2d8 with SMTP id d9443c01a7336-22b42c5ce57mr26790875ad.53.1744260285059;
-        Wed, 09 Apr 2025 21:44:45 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744260285; cv=pass;
+Received: by 2002:a17:504:17d6:b0:1be9:327d:8ee3 with SMTP id o22csp8215241njd;
+        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWV/lRF31o6KNcXc2Vjoq7FRAxhKRvbjGdWHf4ORWgl7BFVW7CgEAd+0iMTvXLOxNaLyh4kNyF/9MZHjg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG8ILnweIMgNREbIkS6zXAsFY0IHQrAVkByDPjXMDLXs/KaAizVfD80iRHQpafmkUi04vrU
+X-Received: by 2002:a05:620a:1915:b0:7c5:50ab:de02 with SMTP id af79cd13be357-7c7a81b1493mr143259485a.41.1744269829100;
+        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744269829; cv=none;
         d=google.com; s=arc-20240605;
-        b=IIvM11He2Hj2pMTp+Yt2aqdYLjjOHpGxvoJ2mBvbxL8zSH9yRsA8CLjreN2jas/AR7
-         9kPLeYa/8r813hBmPnQKaElJzdYBhUyLVwR8HP69DaMutG97X8uW9+XWogxYwXGDkyBC
-         CdwceDEQcAOWQoCWJR82wM/gJogTvGrML/layKJNImtSXk9RfVqDxaUM/G3o4KOZjJTc
-         ZB3LA6omGeuuAdvsjHTSLZ1OEhJHwyctoSt+8akot5m1KBlQDfrdMoEYGa1MMx3dZJj6
-         /iTKMTXu0VUfFgOXRTEIa0N1FJ84VMZYSifZ6RheKGY0A0htPVmKah+qcdNSHzgegKrn
-         0GaQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=2pBPzzzZ/xYyHnbNGBNGF8EZmTFQj//iQHhb748KWx4=;
+        b=EBGpY9sunxMv/GvS62BCDV8nmnUIyOf9Ojk2NXdxY06GoEHP3auS7tgjpsQIOsz7Uv
+         WFIfTbUFqGhl8uCaa6ZmdZFrjgylFn588JiN+l3gog7VvTsUhOvztLJ2L3hh0tX0KO8T
+         zNf9GuIxt3f+XkYQbf5r2QzHKyH8ttmgFgYLk4Fp6GvOA9PwnjKtvTEVFzRBog1dsNS5
+         wKqcLmX7wrzEL+Odx8bA/wK/njc5yUAA0bAtmiv28gZc3zD1UfNHylnbW+HlFa2dh4kM
+         OPaBsq+CYt0qczy6wiKJDYTo3RQuGU28sPv/oy6zYC3fpPP5ONB0u2kbQeFbz8jhCGmt
+         JKNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=0x2ZS7SmoLDg+4IcLFJEiYR9ogKbRZumyj87Y3Hu0U4=;
         fh=MAffrn4U4uG1V2DrepAitVuUISIAqDfmc8PNRNXcHoo=;
-        b=WsTt4EtoqtZq9xWwmPbxmErLWq7vDZGLstFl/iK4xfJ+Kacr0/1BW+tbtrz58TLmxG
-         sbWscANNTwdwMYG/KVDyFqhnKEOQzXhCNY+2vYZRLgl7f01SroDb+vrTWyONZyjCn7fu
-         dSBIla+nvEkoew3OMHYgNv2ApyccVV1UXyQbn44LOehVE2jiAHga05SXri6jIfA+sJb4
-         wZnYQxtkSCr3Kl2g5SV0KKNkTzwKB+ftBZ0az6KCfAg2j2//5nnwNLeSRh/qTc6mfTHd
-         vVBMInWNl+cCB0sw+Oj6C8kr/si5CRZvSlQhkm7K1ztUXxxtcbFUp2TPrbJTS6P9Vj7n
-         6lXQ==;
+        b=I7hoQbQ+E4P50qxJlWjmQuZBsRFvh5F7+dYdLpL0iIU0uWCoYcNVO+P1+QF3tccT+p
+         nuC0tbCygdBvcF8Z45z54u7o+7X5KuQud3uEUIyDo8OYo5GxwkYHCRCU02P9H5pQb5lp
+         OpBkLqE1YzGw5uKEoR1ZU/9WTp4VllvnWfnKixUbziyDcLb//Z73/SpwyhDj+vxz+LbK
+         bxI0rtuOrYzE6wymYv5hPu602O7NPnqOcMV/CNVdbr76rz9jSxyLBzVaLmjXQudKeNbt
+         1iiK6kw/xub1FOR8CAqwd4xl3eOHgVfb+pIImjvIpCHWaH4lN/t5bpQ+XAA/FVw/v0vP
+         7ZpA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=IXzLyow7;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=nRSb0qd0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d9443c01a7336-22ac7c9da08si32331285ad.347.2025.04.09.21.44.44
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c7a89f6ce5si52905885a.283.2025.04.10.00.23.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Apr 2025 21:44:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Apr 2025 00:23:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=IXzLyow7;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-43052-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=nRSb0qd0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 8C91C7AFAAC
-	for <alex.bennee@linaro.org>; Thu, 10 Apr 2025 04:43:36 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B8D1E1F1524;
-	Thu, 10 Apr 2025 04:44:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="IXzLyow7"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F9431E9B02
-	for <kvm@vger.kernel.org>; Thu, 10 Apr 2025 04:44:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744260278; cv=none; b=H9j2Y9UUPgo681lBfvFnqI2XDtuKO7Y0xF7lDCcoyuxvc7fy9YMw0LPg4HQVqeF+NmTSPyMJ1eywJeKyV4EXdRM/dUH42WZwuV8rDFK1vUgq1c1BoVocF/DMmtBNT5Am5TplKt6O9I50WNGs6ZrhSnb+rR/2Xcj0wpIkxkzqwfA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744260278; c=relaxed/simple;
-	bh=aTdHpc5rDqraycZTf4nOde0tkf7843YMHFrARQ0hu2s=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=OaB1lq6boOeAQLufHmxxZHuLifAcnxlcD7j5np5b5ynWHXDym2wtFyYGQWsy68478IxuKsVvUg5kdSGpkw8y0A7lJf1kBQuUxZjkdDcfO9smbsadTCn0K6BqNKkKMHCGmq+B5kDPuHDues2JvRWi2jUo+4DBRN/glpNmPoh5Z48=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=IXzLyow7; arc=none smtp.client-ip=198.175.65.9
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u2mG2-0002Zm-8R; Thu, 10 Apr 2025 03:23:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u2mFv-0002ZA-98; Thu, 10 Apr 2025 03:23:25 -0400
+Received: from mgamail.intel.com ([192.198.163.13])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u2mFr-0001d0-Ee; Thu, 10 Apr 2025 03:23:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744260277; x=1775796277;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=aTdHpc5rDqraycZTf4nOde0tkf7843YMHFrARQ0hu2s=;
-  b=IXzLyow7/9IM5XAOaTpxTzO17nHfHRVYsVO+3pfRIEShIaZ76ixSAppC
-   9VwA0F7uctMR8JVSa/lqkfFu6wLJn4j+HgwCkVW3tLgcNny2EwwBce38X
-   yYrRYiOv2UyGtIBRBFW0myhXxp5E3hVVexGwadiwY9iMC06jT/SPcolHo
-   L7c6QKLS7Gp/yUnuqN2sl4sOTU+zakrRHNWksqLUq1/OX3cTex+RLDQFH
-   ERUhOSl0qoAK+NDKzHpASDKFqknsZnjrv3KtsufcjGqUt7dHY/lqH2ekS
-   ANU3vW5O6igjaH6wwve2cc3D8mitcGpF9zeTvbF999+AxVBFb50C4Q3nj
-   g==;
-X-CSE-ConnectionGUID: Y0TxMSNGShSsV9gk/Q88Qg==
-X-CSE-MsgGUID: Vw3BLeWMSYmHeZL0tOybDg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="68245480"
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="68245480"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Apr 2025 21:44:36 -0700
-X-CSE-ConnectionGUID: qcSZQYFES12pOlD3NIbIBQ==
-X-CSE-MsgGUID: RIwOMItmTjud9lN6+3ArRQ==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1744269799; x=1775805799;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Lh9jXEP9tgVr78Y+bjPvBpsrVvBVBSu8yVPe3X6/PBk=;
+ b=nRSb0qd0mPvsnCA8UggK+s4HYDYYQqiZHFFKu2AgqgRgHa5OErudp0kh
+ dPSwh8QqCcAJzjAZEsnMMCnieQhOcVkL7ACndmJPk/WpbHJQhGBrDR7sN
+ Lysqx2d25eDSWh3e1Odxb/56DgVXlReueZ1Pg0v5Be7d9xtvp4MOPEJEG
+ Qsuo9TFSxOaYOmsezbLCMlPJUqGt28hi7VFvu6fmhmuzzNIKZVRx5hPmU
+ ZigwN8HYEdRwAxsQHegTcV+XcF7S1o03cSxSSZ5fHm1ZOim03DgidL94y
+ c74j86YTvk7wyg3UJbIoIelKTCqebbc9mxwqZtBYRfKHO0zEKxYN7L57+ Q==;
+X-CSE-ConnectionGUID: NOrZ43W/SsKlMPxVOpa4XA==
+X-CSE-MsgGUID: o8wDdkHJQ6+PtL+MBLCRVA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="48477565"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="48477565"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2025 00:23:14 -0700
+X-CSE-ConnectionGUID: XUminAD6T0GYkRlVFemdzg==
+X-CSE-MsgGUID: pctWMc5OS/GsMX0hxH8+og==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="129620583"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by fmviesa009.fm.intel.com with ESMTP; 09 Apr 2025 21:44:26 -0700
-Date: Thu, 10 Apr 2025 13:05:15 +0800
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="128681029"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa006.fm.intel.com with ESMTP; 10 Apr 2025 00:23:05 -0700
+Date: Thu, 10 Apr 2025 15:43:53 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Dongli Zhang <dongli.zhang@oracle.com>
 Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
-	pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
-	babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
-	groug@kaod.org, khorenko@virtuozzo.com,
-	alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
-	davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
-	dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
-	peter.maydell@linaro.org, gaosong@loongson.cn,
-	chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
-	jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
-	danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
-	liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
-	pasic@linux.ibm.com, borntraeger@linux.ibm.com,
-	richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
-	thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
-	ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
-	liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
-Subject: Re: [PATCH v3 07/10] target/i386/kvm: query kvm.enable_pmu parameter
-Message-ID: <Z/dRiyGTxb8JBE8v@intel.com>
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
+ babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
+ groug@kaod.org, khorenko@virtuozzo.com,
+ alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+ davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+ dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+ peter.maydell@linaro.org, gaosong@loongson.cn,
+ chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
+ danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
+ ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
+ liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com
+Subject: Re: [PATCH v3 08/10] target/i386/kvm: reset AMD PMU registers during
+ VM reset
+Message-ID: <Z/d2ucu6Y5xlNh6S@intel.com>
 References: <20250331013307.11937-1-dongli.zhang@oracle.com>
- <20250331013307.11937-8-dongli.zhang@oracle.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ <20250331013307.11937-9-dongli.zhang@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250331013307.11937-8-dongli.zhang@oracle.com>
-X-TUID: HijA9Zs7SDZl
+In-Reply-To: <20250331013307.11937-9-dongli.zhang@oracle.com>
+Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.505,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1lxGVoK30F9u
 
-Hi Dongli,
+...
 
-The logic is fine for me :-) And thank you to take my previous
-suggestion. When I revisit here after these few weeks, I have some
-thoughts:
+> TODO:
+>   - This patch adds is_host_compat_vendor(), while there are something
+>     like is_host_cpu_intel() from target/i386/kvm/vmsr_energy.c. A rework
+>     may help move those helpers to target/i386/cpu*.
 
-> +        if (pmu_cap) {
-> +            if ((pmu_cap & KVM_PMU_CAP_DISABLE) &&
-> +                !X86_CPU(cpu)->enable_pmu) {
-> +                ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
-> +                                        KVM_PMU_CAP_DISABLE);
-> +                if (ret < 0) {
-> +                    error_setg_errno(errp, -ret,
-> +                                     "Failed to set KVM_PMU_CAP_DISABLE");
-> +                    return ret;
-> +                }
-> +            }
+vmsr_energy emulates RAPL in user space...but RAPL is not architectural
+(no CPUID), so this case doesn't need to consider "compat" vendor.
 
-This case enhances vPMU disablement.
+>  target/i386/cpu.h     |   8 ++
+>  target/i386/kvm/kvm.c | 176 +++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 180 insertions(+), 4 deletions(-)
 
-> +        } else {
-> +            /*
-> +             * KVM_CAP_PMU_CAPABILITY is introduced in Linux v5.18. For old
-> +             * linux, we have to check enable_pmu parameter for vPMU support.
-> +             */
-> +            g_autofree char *kvm_enable_pmu;
+...
+
+> +static bool is_host_compat_vendor(CPUX86State *env)
+> +{
+> +    char host_vendor[CPUID_VENDOR_SZ + 1];
+> +    uint32_t host_cpuid_vendor1;
+> +    uint32_t host_cpuid_vendor2;
+> +    uint32_t host_cpuid_vendor3;
+>
+> +    host_cpuid(0x0, 0, NULL, &host_cpuid_vendor1, &host_cpuid_vendor3,
+> +               &host_cpuid_vendor2);
 > +
-> +            /*
-> +             * The kvm.enable_pmu's permission is 0444. It does not change until
-> +             * a reload of the KVM module.
-> +             */
-> +            if (g_file_get_contents("/sys/module/kvm/parameters/enable_pmu",
-> +                                    &kvm_enable_pmu, NULL, NULL)) {
-> +                if (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu) {
-> +                    error_setg(errp, "Failed to enable PMU since "
-> +                               "KVM's enable_pmu parameter is disabled");
-> +                    return -EPERM;
-> +                }
+> +    x86_cpu_vendor_words2str(host_vendor, host_cpuid_vendor1,
+> +                             host_cpuid_vendor2, host_cpuid_vendor3);
 
-And this case checks if vPMU could enable.
+We can use host_cpu_vendor_fms() (with a little change). If you like
+this idea, pls feel free to pick my cleanup patch into your series.
 
->              }
->          }
->      }
+> +    /*
+> +     * Intel and Zhaoxin are compatible.
+> +     */
+> +    if ((g_str_equal(host_vendor, CPUID_VENDOR_INTEL) ||
+> +         g_str_equal(host_vendor, CPUID_VENDOR_ZHAOXIN1) ||
+> +         g_str_equal(host_vendor, CPUID_VENDOR_ZHAOXIN2)) &&
+> +        (IS_INTEL_CPU(env) || IS_ZHAOXIN_CPU(env))) {
+> +        return true;
+> +    }
+> +
+> +    return env->cpuid_vendor1 == host_cpuid_vendor1 &&
+> +           env->cpuid_vendor2 == host_cpuid_vendor2 &&
+> +           env->cpuid_vendor3 == host_cpuid_vendor3;
 
-So I feel it's not good enough to check based on pmu_cap, we can
-re-split it into these two cases: enable_pmu and !enable_pmu. Then we
-can make the code path more clear!
+Checking AMD directly makes the "compat" rule clear:
 
-Just like:
+    return g_str_equal(host_vendor, CPUID_VENDOR_AMD) &&
+           IS_AMD_CPU(env);
 
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index f68d5a057882..d728fb5eaec6 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -2041,44 +2041,42 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
-     if (first) {
-         first = false;
+> +}
 
--        /*
--         * Since Linux v5.18, KVM provides a VM-level capability to easily
--         * disable PMUs; however, QEMU has been providing PMU property per
--         * CPU since v1.6. In order to accommodate both, have to configure
--         * the VM-level capability here.
--         *
--         * KVM_PMU_CAP_DISABLE doesn't change the PMU
--         * behavior on Intel platform because current "pmu" property works
--         * as expected.
--         */
--        if (pmu_cap) {
--            if ((pmu_cap & KVM_PMU_CAP_DISABLE) &&
--                !X86_CPU(cpu)->enable_pmu) {
--                ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
--                                        KVM_PMU_CAP_DISABLE);
--                if (ret < 0) {
--                    error_setg_errno(errp, -ret,
--                                     "Failed to set KVM_PMU_CAP_DISABLE");
--                    return ret;
--                }
--            }
--        } else {
--            /*
--             * KVM_CAP_PMU_CAPABILITY is introduced in Linux v5.18. For old
--             * linux, we have to check enable_pmu parameter for vPMU support.
--             */
-+        if (X86_CPU(cpu)->enable_pmu) {
-             g_autofree char *kvm_enable_pmu;
+...
 
-             /*
--             * The kvm.enable_pmu's permission is 0444. It does not change until
--             * a reload of the KVM module.
-+             * The enable_pmu parameter is introduced since Linux v5.17,
-+             * give a chance to provide more information about vPMU
-+             * enablement.
-+             *
-+             * The kvm.enable_pmu's permission is 0444. It does not change
-+             * until a reload of the KVM module.
-              */
-             if (g_file_get_contents("/sys/module/kvm/parameters/enable_pmu",
-                                     &kvm_enable_pmu, NULL, NULL)) {
--                if (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu) {
--                    error_setg(errp, "Failed to enable PMU since "
-+                if (*kvm_enable_pmu == 'N') {
-+                    warn_report("Failed to enable PMU since "
-                                "KVM's enable_pmu parameter is disabled");
--                    return -EPERM;
-+                }
-+            }
-+        } else {
-+            /*
-+             * Since Linux v5.18, KVM provides a VM-level capability to easily
-+             * disable PMUs; however, QEMU has been providing PMU property per
-+             * CPU since v1.6. In order to accommodate both, have to configure
-+             * the VM-level capability here.
-+             *
-+             * KVM_PMU_CAP_DISABLE doesn't change the PMU
-+             * behavior on Intel platform because current "pmu" property works
-+             * as expected.
-+             */
-+            if ((pmu_cap & KVM_PMU_CAP_DISABLE)) {
-+                ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
-+                                        KVM_PMU_CAP_DISABLE);
-+                if (ret < 0) {
-+                    error_setg_errno(errp, -ret,
-+                                     "Failed to set KVM_PMU_CAP_DISABLE");
-+                    return ret;
-                 }
-             }
-         }
+>      if (env->mcg_cap) {
+>          kvm_msr_entry_add(cpu, MSR_MCG_STATUS, 0);
+>          kvm_msr_entry_add(cpu, MSR_MCG_CTL, 0);
+> @@ -4871,6 +5024,21 @@ static int kvm_get_msrs(X86CPU *cpu)
+>          case MSR_P6_EVNTSEL0 ... MSR_P6_EVNTSEL0 + MAX_GP_COUNTERS - 1:
+>              env->msr_gp_evtsel[index - MSR_P6_EVNTSEL0] = msrs[i].data;
+>              break;
+> +        case MSR_K7_EVNTSEL0 ... MSR_K7_EVNTSEL0 + AMD64_NUM_COUNTERS - 1:
+> +            env->msr_gp_evtsel[index - MSR_K7_EVNTSEL0] = msrs[i].data;
+> +            break;
+> +        case MSR_K7_PERFCTR0 ... MSR_K7_PERFCTR0 + AMD64_NUM_COUNTERS - 1:
+> +            env->msr_gp_counters[index - MSR_K7_PERFCTR0] = msrs[i].data;
+> +            break;
+> +        case MSR_F15H_PERF_CTL0 ...
+> +             MSR_F15H_PERF_CTL0 + AMD64_NUM_COUNTERS_CORE * 2 - 1:
+> +            index = index - MSR_F15H_PERF_CTL0;
+> +            if (index & 0x1) {
+> +                env->msr_gp_counters[index] = msrs[i].data;
+> +            } else {
+> +                env->msr_gp_evtsel[index] = msrs[i].data;
 
+This msr_gp_evtsel[] array's size is 18:
 
+#define MAX_GP_COUNTERS    (MSR_IA32_PERF_STATUS - MSR_P6_EVNTSEL0)
+
+This formula is based on Intel's MSR, it's best to add a note that the
+current size also meets AMD's needs. (No need to adjust the size, as
+it will affect migration).
+
+> +            }
+> +            break;
+>          case HV_X64_MSR_HYPERCALL:
+>              env->msr_hv_hypercall = msrs[i].data;
+>              break;
+
+Others LGTM!
+
+Thanks,
+Zhao
 

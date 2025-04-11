@@ -1,282 +1,148 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp350682njc;
-        Fri, 11 Apr 2025 03:50:55 -0700 (PDT)
-X-Received: by 2002:a05:600c:a009:b0:43c:ef13:7e5e with SMTP id 5b1f17b1804b1-43f3a9ab087mr15046505e9.26.1744368655052;
-        Fri, 11 Apr 2025 03:50:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744368655; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp352921njc;
+        Fri, 11 Apr 2025 03:56:12 -0700 (PDT)
+X-Received: by 2002:a17:90b:3806:b0:2fe:e0a9:49d4 with SMTP id 98e67ed59e1d1-30823660fd2mr3874557a91.2.1744368972138;
+        Fri, 11 Apr 2025 03:56:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744368972; cv=none;
         d=google.com; s=arc-20240605;
-        b=SfZ0TIC3Hps7r3/Q61z38p/Hv/tVcLIxeumDZmR/sSI+GfDUzew8IbIv9LHsb3l5UO
-         FpBUTEBVS5RthisBbT2tZD69nUvkYOyixEuJbuyaaoah25er7uAGvLmcjxAMucOAtsta
-         ivuL2Edclmuqju/p1C1aXaQyAWFEVsT/aZSsJIS2cwhpfiozR4d5ktAYPMclpGp1tltb
-         koBZUlXfFl9mlIoPcds/vw8NLNvwO6GCbuy/kb/HbXtV2V+j/XyvxrRhw1fQn++5prYJ
-         3Gd4+RI7ptxbb3Ag4Wc20r+I4PMIsEwWqPRiDzvEJ07AzmqjVcQZwzdH0IE4QGTGI3V1
-         GB8Q==
+        b=dtR7K58sURqr2EP0Ye4n6XYFEAPdd8jR8GOnlUQPdgR9vAueB8+D5NO8VJ7eAGqROU
+         ZZekhfCa0ykhkXe1Qx2syjaCUl/H3oc3w1p7jQrRSeWp+HVEORiVJi1Y01X3F2LjZkQN
+         xc5whfgB0eoVK1RWaZe0jP9RKt2q1dZqaVrjEk8e65mqX0szWf3kS4X7g+ws23oKoGJ4
+         wOg7t/VuK5A6TLZYJP8L0OMldvfG0cVTOxVF35vwgn6YjChsSzaqH21d2hDqSpUBPkU4
+         s0IBwKyfpaai8K1yUXVWM3WywAuZplLvCHR79+KKkOCeZWbdM/4+uuVJUcZcx+J0BNfr
+         kkZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Iq9jjUjxQMvcNPRONFjv6Xn7v+b6NtpERTGuJsmABkI=;
-        fh=RDkVV6McDzl5AGSWeQEYfMLoxwMSy8uHCupVGoJ0Z7Y=;
-        b=hUqWP4TMC+iAcTa67RQxIODcRpvSN1T82kDl8Vewj29MsOdCyPhR5ScqbGxroRYSJb
-         izIL3r74u6Q38i9+Kn8BehE0d6hxJQF0UjK1zt//x/w0B2xM6OP74iltfTBbYjoCC8Fx
-         AAnGp0w54VlCwX9ghWrXkXK7YYstAHcp4i6p/9ETR25ZGtgLG9hD4kdqUM8ekkc6HyQQ
-         uW5pbyWW6kr/SxpOqWVP3pp6/7NO3KHNLoVh7VRttvdcGcDEac3RQ4WYWQlz8vA/nrsi
-         iCEpbEf2PYHAiZ6FbwGjAHc+Z3D85qfVdaLFbZoQH09wxLlnoK7w/rf5cUjkJBx31Seh
-         ZvLQ==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=kxvMv2qnqE/YwdbtiAkx2DWqRAqTN/wPwM6vw5LuxzA=;
+        fh=rdAoA6FsG4dZMVKOShC5+HgAniQ1sg7Gtp6aLNIk0hU=;
+        b=f0/8N4pLnKzZnAzAxNFeh/cxSs5AseDM2b54pIGZNRnugiOXp3I0TY0hAen4S9RR/U
+         JefxQUqWLpqxZR98Nyz9BVi61KTfwOmzisyQUI94HBaWXP+zztnnd1/IG46fLxwCwpKN
+         WhG4LOYQhrIf4HJVkDRQuLfLVqCoSxup9y6lZfxAQyWMXfWiXe6qdUJZRPP4nqqWANBN
+         pXNGmo5R4UeWlLPtCq+2xn9Ay8CPdd5bPFriKG/225zSmPp+KAAnCzC6/mSruzrQsVEZ
+         bA2/JAkGi0A3zdop8Yyro1SoV45YMDuZdtbID4cTDy/6T/L0c3FQicyItfBAE+e6jqsq
+         MBCA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jPL7z7GH;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bOXqCHYo;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43f2358fbdcsor22756225e9.7.2025.04.11.03.50.54
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id 98e67ed59e1d1-308188061f7sor2405405a91.4.2025.04.11.03.56.11
         (Google Transport Security);
-        Fri, 11 Apr 2025 03:50:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 11 Apr 2025 03:56:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jPL7z7GH;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bOXqCHYo;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744368654; x=1744973454; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Iq9jjUjxQMvcNPRONFjv6Xn7v+b6NtpERTGuJsmABkI=;
-        b=jPL7z7GHUxTPhWBQ9x7VoQAfO05KS2xRhsbXQAPUP5HgXGkh+ih/5iJGOtaw0IkEuR
-         bxGVM4WxhWzX/9j/8+0xVBzHlMYb6LP/bs9JQqRu/aVa10BoE059drrZ2y1PPUJpiEHc
-         FYZTCYKLULV6HY2zf+z24fq7MC5JRmaaMd6NhpupbyXxsc1ezzk3z4uEZGS4vwUT7mSG
-         qJdzDwqk+rUP44gj6lVlLZ9dDxIFqx22gx3/oT52/XFLldvh+JDA/RWG3xPN+G604V4q
-         +ukdO/nTaz0Z7NeLF4fddk2bnPTlOe6PepFXkKkwuED37VQLUZogUNi2q1kcgW5rSPex
-         vYyg==
+        d=gmail.com; s=20230601; t=1744368971; x=1744973771; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=kxvMv2qnqE/YwdbtiAkx2DWqRAqTN/wPwM6vw5LuxzA=;
+        b=bOXqCHYo+SZTZ5A1tHQ9Uje2Zr3f9aM73CJ+qGSm2mXfqbU1C9HK2l54xZLPvVUhPz
+         Ul+mqhqfauiIhyuhsYdxmuJpHDT6vCoo2di3isFUHbnqsqbdA4ks18iIBYoSwp3cF1bJ
+         3Ws/2VXviidcG1AlEk6a6d0smgwqdm8yXZ3POwSRoGrrtn3OX8CYlw8Uyx15wvULOcN/
+         lmyqSJu+HOkAIHF37MabviUZTTo1ylxd2sGeWpmimUk4zZuYKQTeFtQ5WZVM8eS7ssUo
+         LYeROolmb9Top+Do5SjPX+v4VfuSvTLNRT2rX8KQHmzdjjRjLvGQU6osshxPuFXw34Nf
+         oJrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744368654; x=1744973454;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Iq9jjUjxQMvcNPRONFjv6Xn7v+b6NtpERTGuJsmABkI=;
-        b=CHCjW9me3E3ZzhyzMvZdjknjyXCvM+VAVq+CE0pfLD6pBiG2/cF39iaVMVWqfIVcXa
-         rlOSU1a9VqaN1oLzJFneA3DmeEs9ZDYv5vfMtCa6/QqwqXFH+Vmd5ylqxvzUimAxm5Ui
-         PU43OrwaohAkx9vzt921NQLtug3EFyNPZGvioW8ELx/7B2MWQwQFKOFD3P1lMmIb5WCb
-         3zGUGqbgV3sprgGNp2FojyDD4C5L9LpfNrwt9G90hUKGvVaS8mQrdu/NvnqG9MNToEyr
-         gZpqiHAgFNLXAqQNdnxYaYh6MIGf5+ltU39FgEgp5cQXbXaY0lO9oGcvPcxlKQWTfmZB
-         sYXg==
-X-Gm-Message-State: AOJu0YwQvB+01h4Uf6cY7OQJ/60en9dH2kDJmeAK3YjziAdv+V7+e9P9
-	aNgM4nLv9l27v9deJBILAB0yNRurqziUuMFEltWN9/G4kIXsSoxUwWyN6IjR2hbvCw==
-X-Gm-Gg: ASbGncvpCGs1s0FwIzmf3eWhh9ltf61xzONM4AnII7LgFU2K2e/WWx6zM/O7aKhRBRg
-	dSMkAcbP1PdrtLA9Sq0xH7AWSKfJKMO3cv1J75QziCBUvghuGY/G+tr5vz32ZtqcKtZ6halj1N0
-	zEkaXpAQAT/Cvr75B0XKjj1XpIL59V16UKvB8lwoyyTTCCyU02JlqdNKiVVHvNu0Z7vxtIwaehK
-	7k/63cn6FhRElbgrD0ABQp5paQmXn2L3pvXNBOyn0rUaLV6HfPLuATENxWdYzvAmebbJMMrbsu4
-	7UcWlUEYvRR4uuTVhgOtST5upE87rftBnlxvEe8WU2NgiEcufHrYSJZLG8uxsiw340soBDj2vRu
-	UIKMF91HC
-X-Google-Smtp-Source: AGHT+IEUzs9XR5D4XrEtui0VIUsz9arF4D9KrXvZlIBODeRZ6oSGMKZn1EOxR1kNn5qyfs2yYmKQQA==
-X-Received: by 2002:a05:600c:384b:b0:43c:f3e4:d6f6 with SMTP id 5b1f17b1804b1-43f3a9b1564mr23993035e9.31.1744368654276;
-        Fri, 11 Apr 2025 03:50:54 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae977fc8sm1620631f8f.48.2025.04.11.03.50.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Apr 2025 03:50:53 -0700 (PDT)
-Message-ID: <264d9113-16ce-4c05-a468-78e1f9921df6@linaro.org>
-Date: Fri, 11 Apr 2025 12:50:51 +0200
+        d=1e100.net; s=20230601; t=1744368971; x=1744973771;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kxvMv2qnqE/YwdbtiAkx2DWqRAqTN/wPwM6vw5LuxzA=;
+        b=oR5oXe3PQEZcz3e4UGEu/dLnmYKiUbjZAL2pW8PgrYU3vsq5RGOk7tifykDwajj9F1
+         KjtZGTJFWOsCi1oMfhCtr6bV8g/S1Rh/yXPsvxOKl3188/D8aRt/e8mAnHoQfInlRKfQ
+         kASzeIx7EC1KEcX5UVOICJa56P6gKUProaE9ewdIqfOQ++QESaLXeSjDE2mv8v7+Dgzl
+         9xb5WZlWhcCT6qjZD5gEH3H4ZIe+464CGwREOwEdDFFzhzi+4dTfJ0CHRIUksMeuQsgC
+         DzFag4uckpTFxLKEJEjte9449DudrIkSwBER/lQAvJC00OipTFSz8nzge0VPt+k/4/9+
+         l55A==
+X-Forwarded-Encrypted: i=1; AJvYcCUZKfbZ8Xm0DearbdWN9WiKp1hmEWP8TCa5sNhe979gdVJx3M8S4fxxPv7v5TzmMfzm//b37/6lKWddf3wXufAHTXw=@linaro.org, AJvYcCWd1a0oiOEKoxRlcVjNOK63+/cpOGHdBtbe95QP1u7g7KSABZCgiFiJtqFU61w3p8xigBi35zql@linaro.org, AJvYcCXoFKV+7iL1hLFSa2SfR5YvR4Z8vOi/pgWC30BvINIo4VoCytTggPW23RiIr5l6CnTDXOW+G8OiTF5SAqPS@linaro.org
+X-Gm-Message-State: AOJu0YxhvHaLbk0wCgC79CfmRuN9nEs6Kwtp5JA+OS3OYNhZD/YOMmo4
+	yT2hRTNWeM8QoNOWpjgm56clFVgEta0jV1LkFM5qwRa2Y9N6njxtht+jgw8K5/skxWaGTayupfl
+	0h+LlIffV/NPXsVZlCO8t5MGOGBE=
+X-Gm-Gg: ASbGnctxQrXWTBjqKKeiNnRylEDtdUJgFZjy8BMB2GRgpOUYyTy9HpnRNCZfcIbppxJ
+	mBJak1kURVxBkxhr7Fp+Ike5rPEStmPoUUN1JiaaqnecO1YSX8xtZdyL4WJSQx8QWIh6pzjifU+
+	k8dNG3ScmRz9vY7YRHs8CrjHxnu24zCWyJ0acpzjrXTP56w10TMe8=
+X-Google-Smtp-Source: AGHT+IH+PlUhBQNJZi6uzrl2GMJX89hNOF7AbzbbflfIk6LAc+qm3rZwoGqYwh4pcE7A5pY6WfaNrX3fMGnvPguqexI=
+X-Received: by 2002:a17:90b:584b:b0:2fe:7fea:ca34 with SMTP id
+ 98e67ed59e1d1-308237cedabmr3256340a91.32.1744368971455; Fri, 11 Apr 2025
+ 03:56:11 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/10] tcg: Add a TCG backend for WebAssembly
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
- <24b5ff124d70043aff97dc30aa45f8a502676989.1744032780.git.ktokunaga.mail@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <24b5ff124d70043aff97dc30aa45f8a502676989.1744032780.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: XRP4dQQ4MXa4
+ <2be81d2f86704662c9fa33ceb46077804e34ac77.1744032780.git.ktokunaga.mail@gmail.com>
+ <65a63820-e59d-47d4-883a-4affe40f9b38@redhat.com>
+In-Reply-To: <65a63820-e59d-47d4-883a-4affe40f9b38@redhat.com>
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Date: Fri, 11 Apr 2025 19:55:59 +0900
+X-Gm-Features: ATxdqUF-3ml7LwnXhwj16CrdfgMINPXrYTL6FVmqP88Q7vzlX2MEgr5SaflJhSU
+Message-ID: <CAEDrbUYDtpLqUAH-7T8xPk-YneY3B6sBw5TB_diNb7g9xzpYyQ@mail.gmail.com>
+Subject: Re: [PATCH 01/10] various: Fix type conflict of GLib function pointers
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
+	Weiwei Li <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000e6a2b406327e8c65"
+X-TUID: TxmVk+S9U2qm
 
-Hi Kohei,
+--000000000000e6a2b406327e8c65
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 7/4/25 16:45, Kohei Tokunaga wrote:
-> A TB consists of a wasmTBHeader followed by the data listed below. The
-> wasmTBHeader contains pointers for each element:
-> 
-> - TCI code
-> - Wasm code
-> - Array of function indices imported into the Wasm instance
-> - Counter tracking the number of TB executions
-> - Pointer to the Wasm instance information
-> 
-> The Wasm backend (tcg/wasm32.c) and Wasm instances running on the same
-> thread share information, such as CPUArchState, through a wasmContext
-> structure. The Wasm backend defines tcg_qemu_tb_exec as a common entry point
-> for TBs, similar to the TCI backend. tcg_qemu_tb_exec runs TBs on a forked
-> TCI interpreter by default, while compiles and executes frequently executed
-> TBs as Wasm.
-> 
-> The code generator (tcg/wasm32) receives TCG IR and generates both Wasm and
-> TCI instructions. Since Wasm cannot directly jump to specific addresses,
-> labels are implemented using Wasm control flow instructions. As shown in the
-> pseudo-code below, a TB wraps instructions in a large loop, where codes are
-> placed within if blocks separated by labels. Branching is handled by
-> breaking from the current block and entering the target block.
-> 
-> loop
->    if
->      ... code after label1
->    end
->    if
->      ... code after label2
->    end
->    ...
-> end
-> 
-> Additionally, the Wasm backend differs from other backends in several ways:
-> 
-> - goto_tb and goto_ptr return control to tcg_qemu_tb_exec which runs the
->    target TB
-> - Helper function pointers are stored in an array in TB and imported into
->    the Wasm instance on execution
-> - Wasm TBs lack prologue and epilogue. TBs are executed via tcg_qemu_tb_exec
-> 
-> Browsers cause out of memory error if too many Wasm instances are
-> created. To prevent this, the Wasm backend tracks active instances using an
-> array. When instantiating a new instance risks exceeding the limit, the
-> backend removes older instances to avoid browser errors. These removed
-> instances are re-instantiated when needed.
-> 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-> ---
->   include/accel/tcg/getpc.h        |    2 +-
->   include/tcg/helper-info.h        |    4 +-
->   include/tcg/tcg.h                |    2 +-
->   meson.build                      |    2 +
->   tcg/meson.build                  |    5 +
->   tcg/tcg.c                        |   26 +-
->   tcg/wasm32.c                     | 1260 +++++++++
->   tcg/wasm32.h                     |   39 +
->   tcg/wasm32/tcg-target-con-set.h  |   18 +
->   tcg/wasm32/tcg-target-con-str.h  |    8 +
->   tcg/wasm32/tcg-target-has.h      |  102 +
->   tcg/wasm32/tcg-target-mo.h       |   12 +
->   tcg/wasm32/tcg-target-opc.h.inc  |    4 +
->   tcg/wasm32/tcg-target-reg-bits.h |   12 +
->   tcg/wasm32/tcg-target.c.inc      | 4484 ++++++++++++++++++++++++++++++
->   tcg/wasm32/tcg-target.h          |   65 +
->   16 files changed, 6035 insertions(+), 10 deletions(-)
->   create mode 100644 tcg/wasm32.c
->   create mode 100644 tcg/wasm32.h
->   create mode 100644 tcg/wasm32/tcg-target-con-set.h
->   create mode 100644 tcg/wasm32/tcg-target-con-str.h
->   create mode 100644 tcg/wasm32/tcg-target-has.h
->   create mode 100644 tcg/wasm32/tcg-target-mo.h
->   create mode 100644 tcg/wasm32/tcg-target-opc.h.inc
->   create mode 100644 tcg/wasm32/tcg-target-reg-bits.h
->   create mode 100644 tcg/wasm32/tcg-target.c.inc
->   create mode 100644 tcg/wasm32/tcg-target.h
+Hi Paolo,
 
+> > On emscripten, function pointer casts can cause function call failure.
+> > This commit fixes the function definition to match to the type of the
+> > function call.
+> >
+> > - qtest_set_command_cb passed to g_once should match to GThreadFunc
+>
+> Sending an alternative patch that doesn't use GOnce, this code runs in
+> the main thread.
 
-> diff --git a/tcg/tcg.c b/tcg/tcg.c
-> index dfd48b8264..154a4dafa7 100644
-> --- a/tcg/tcg.c
-> +++ b/tcg/tcg.c
-> @@ -136,6 +136,10 @@ static void tcg_out_goto_tb(TCGContext *s, int which);
->   static void tcg_out_op(TCGContext *s, TCGOpcode opc, TCGType type,
->                          const TCGArg args[TCG_MAX_OP_ARGS],
->                          const int const_args[TCG_MAX_OP_ARGS]);
-> +#if defined(EMSCRIPTEN)
+Thank you for addressing this issue. I've sent a review to that patch.
 
-Maybe we can let this independently of EMSCRIPTEN, to reduce #ifdef'ry.
+> > - object_class_cmp and cpreg_key_compare are passed to g_list_sort as
+> >    GCopmareFunc but GLib cast them to GCompareDataFunc.
+>
+> Please use g_list_sort_with_data instead, and poison
+> g_slist_sort/g_list_sort in include/glib-compat.h, with a comment
+> explaining that it's done this way because of Emscripten.
 
-> +static void tcg_out_label_cb(TCGContext *s, TCGLabel *l);
-> +static int tcg_out_tb_end(TCGContext *s);
-> +#endif
->   #if TCG_TARGET_MAYBE_vec
->   static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
->                               TCGReg dst, TCGReg src);
-> @@ -251,7 +255,7 @@ TCGv_env tcg_env;
->   const void *tcg_code_gen_epilogue;
->   uintptr_t tcg_splitwx_diff;
->   
-> -#ifndef CONFIG_TCG_INTERPRETER
-> +#if !defined(CONFIG_TCG_INTERPRETER) && !defined(EMSCRIPTEN)
+Sure, I=E2=80=99ll fix this in the next version of the series.
 
-s/&&/||/ otherwise breaks TCI? (various cases)
+--000000000000e6a2b406327e8c65
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->   tcg_prologue_fn *tcg_qemu_tb_exec;
->   #endif
->   
-> @@ -358,6 +362,9 @@ static void tcg_out_label(TCGContext *s, TCGLabel *l)
->       tcg_debug_assert(!l->has_value);
->       l->has_value = 1;
->       l->u.value_ptr = tcg_splitwx_to_rx(s->code_ptr);
-> +#if defined(EMSCRIPTEN)
-> +    tcg_out_label_cb(s, l);
-> +#endif
->   }
->   
->   TCGLabel *gen_new_label(void)
-> @@ -1139,7 +1146,7 @@ static TCGHelperInfo info_helper_st128_mmu = {
->                 | dh_typemask(ptr, 5)  /* uintptr_t ra */
->   };
->   
-> -#ifdef CONFIG_TCG_INTERPRETER
-> +#if defined(CONFIG_TCG_INTERPRETER) || defined(EMSCRIPTEN)
->   static ffi_type *typecode_to_ffi(int argmask)
->   {
->       /*
-> @@ -1593,7 +1600,7 @@ void tcg_prologue_init(void)
->       s->code_buf = s->code_gen_ptr;
->       s->data_gen_ptr = NULL;
->   
-> -#ifndef CONFIG_TCG_INTERPRETER
-> +#if !defined(CONFIG_TCG_INTERPRETER) && !defined(EMSCRIPTEN)
->       tcg_qemu_tb_exec = (tcg_prologue_fn *)tcg_splitwx_to_rx(s->code_ptr);
->   #endif
->   
-> @@ -1649,11 +1656,11 @@ void tcg_prologue_init(void)
->           }
->       }
->   
-> -#ifndef CONFIG_TCG_INTERPRETER
-> +#if !defined(CONFIG_TCG_INTERPRETER) && !defined(EMSCRIPTEN)
->       /*
->        * Assert that goto_ptr is implemented completely, setting an epilogue.
-> -     * For tci, we use NULL as the signal to return from the interpreter,
-> -     * so skip this check.
-> +     * For tci and wasm backend, we use NULL as the signal to return from the
-> +     * interpreter, so skip this check.
->        */
->       tcg_debug_assert(tcg_code_gen_epilogue != NULL);
->   #endif
-> @@ -6505,6 +6512,13 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
->                           tcg_ptr_byte_diff(s->code_ptr, s->code_buf));
->   #endif
->   
-> +#if defined(EMSCRIPTEN)
-> +    i = tcg_out_tb_end(s);
-> +    if (i < 0) {
-> +        return i;
-> +    }
-> +#endif
-> +
->       return tcg_current_code_size(s);
->   }
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hi Paolo,<br><br>&gt; &g=
+t; On emscripten, function pointer casts can cause function call failure.<b=
+r>&gt; &gt; This commit fixes the function definition to match to the type =
+of the<br>&gt; &gt; function call.<br>&gt; &gt; <br>&gt; &gt; - qtest_set_c=
+ommand_cb passed to g_once should match to GThreadFunc<br>&gt; <br>&gt; Sen=
+ding an alternative patch that doesn&#39;t use GOnce, this code runs in<br>=
+&gt; the main thread.<br><br>Thank you for addressing this issue. I&#39;ve =
+sent a review to that patch.<br><br>&gt; &gt; - object_class_cmp and cpreg_=
+key_compare are passed to g_list_sort as<br>&gt; &gt; =C2=A0 =C2=A0GCopmare=
+Func but GLib cast them to GCompareDataFunc.<br>&gt; <br>&gt; Please use g_=
+list_sort_with_data instead, and poison<br>&gt; g_slist_sort/g_list_sort in=
+ include/glib-compat.h, with a comment<br>&gt; explaining that it&#39;s don=
+e this way because of Emscripten.<br><br>Sure, I=E2=80=99ll fix this in the=
+ next version of the series.<br><br></div></div>
+</div>
 
-Out of curiosity, have you tried to run a big-endian guest?
+--000000000000e6a2b406327e8c65--

@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp537142njc;
-        Fri, 11 Apr 2025 08:50:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVNekzhhNKYJ1K5i/UqmYqo+1i1kzPSdj8Du2iHSVxnUxl/jh2eA2Pxus59Dbve2fvhzqtr+P3vv8V//w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEI1I+Blltd1/jmg815WsPCpZtWIWMVWG0h25R5x1bjU/3dc2fE5xcAgTjMFTrUY+HaAnjs
-X-Received: by 2002:a05:620a:248b:b0:7c7:93c7:f35d with SMTP id af79cd13be357-7c7af11b921mr459633385a.31.1744386642920;
-        Fri, 11 Apr 2025 08:50:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744386642; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp539009njc;
+        Fri, 11 Apr 2025 08:54:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnTBggIZpaonBmDH1jwyUoyOng8nJcZ5bqRkZrcfCCMMfxQ9Vi1pnS3DCS7kvY7Kp2e9g4StwR7ipJCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/Hh62IDD7N6WwSK/IEp3x8sI1qjfNZUbHBS36A+Imvs+3E0+I/Ct+zAy4kpNxcuOR7bOt
+X-Received: by 2002:a05:622a:202:b0:476:6f90:395e with SMTP id d75a77b69052e-4797753ac52mr51224281cf.21.1744386874203;
+        Fri, 11 Apr 2025 08:54:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744386874; cv=none;
         d=google.com; s=arc-20240605;
-        b=ibIVDhF9qbXUs/1dQaLdrEUhtarLf5TJNIRCdQID5acJBGbCYpI8QAjDAIGB/20/RO
-         cvFVZnLNSc181p9r7CQbLVounf3XuJtP09eTpNasypmXIgbZQGLGp5BEKmSxujflGe5i
-         CGQhOarjwR7sp4DJbT1TzSalE58St5TZG/YpTUDRGQqxYh3y4psoWrvOD53VSb4xDb/V
-         a82a0pSO87xQyVbu7Vb4r/Q1yIFtoguqB56sJ36bn+jQZrYPR/SE+VzrHKFQXn6s0K25
-         uglaUI8JePvw5SxvK1Wb9ctGC10vkjVigJ673AhSX1l8IgRqpBzpYYRtyOiHRCheKBqS
-         zcdQ==
+        b=koGcDiydelFpr60HnSzV5B18C6l1F3uPFb1KAga25LBQOWkOkz3ClRPqZc/PEbRvXy
+         k1JF7SH2Ivoeqg5Ha3akAOUiqcgbTsgAtt9VEetB+WdTLCvTcrfkdtooMlo1u9T+UhT8
+         aOSEasI4h2aamXNz1F2Z5LtpPdfPUKE/NRqd0Qw9yEJf+bd9dRkp7esxU/9hJLLU9ym0
+         6ZGt9U0aNTvYUDCwGV814EWeWMy8NnL0U07eiS2w8/iTQ5tAuGEMM+6RBHlO508GtHAw
+         DPajErWB3xmWzCbh5rpJp0JgpY5uTobiamJMA2bsPXPidh61LwUJsOwtySm+U+jFv+KG
+         a/4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=KfshK1Vi5jdSXV5rDiO+vI/GsRnAqWNTMKrv76/cpgE=;
+        bh=Zxrq+N80RuzDVSPuAHUYR/rKs4RpqdvhVkrYkA6WyDI=;
         fh=aTXBRWvcUi1tLADA5DrDnV7F47mfdIt5smkQi/SmRpk=;
-        b=LZb9j86cYePov48SJU9M2cef7p2pvERReVVfYxw6zZK3zsZM7bbjw5QmavSuNZtpeO
-         DHTUbEDp4GmEpWd8Vea2Ilsiz4ErSRqo1vunEVvdSX8VJWo/68NwWgfO2b943UaCohoT
-         wNCREJYykIzo6HzVYE8Kk8iMwowyaqX50KMW2MdED0WZ8VYle+KoGGQWLRHtp2rxf92f
-         QIVCwfoUrtis3RfM7h3AvKkoPlUVK2SM2dumpn7mUxZzxGsuIB3qaUNz+Okw7jpAF/D7
-         sh7xh1RJQ4Ur1hH7I8/hF/WXnFn9A8GddKUdG4SwCYk66ePpll4qWRTcXygLhiFiyREk
-         xPmQ==;
+        b=Yz8Z+RHckFj+zWmvEpwVXPJevDk98YInIe1MgYTVBXs0fM+3jUxcY3CTnNE+MrzODn
+         icKBvTu6XCrbUq6iHOZQVrvTqtbPed0iNG6vqPTJ7ycNeWmWiBRnT/gGgEXLmvfsWdNB
+         4qABihvuftoBo3+banWJPyWs/MsddZiut+aSCxLX2fvAiduFhvrm+3gCbLtWO9LqcqcY
+         lJCNAE/nGl5Lab0vO4SkpQ35ACLYPUd4rycLHF4pERwLMpEyWc3fA8mnORr8x17hfpW2
+         VxIsGyzjOZYTRYgwKBnvzB5OgHfWFN6uRvHx1uzriclxGllE0/2c8EMwvujezLbNXD/3
+         YoHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c7a8a429f2si311992885a.641.2025.04.11.08.50.42
+        by mx.google.com with ESMTPS id d75a77b69052e-4796eb1fb23si32750931cf.148.2025.04.11.08.54.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Apr 2025 08:50:42 -0700 (PDT)
+        Fri, 11 Apr 2025 08:54:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u3GeG-00006V-Ti; Fri, 11 Apr 2025 11:50:32 -0400
+	id 1u3Gi0-0001fG-CS; Fri, 11 Apr 2025 11:54:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1u3GeE-0008UE-04; Fri, 11 Apr 2025 11:50:30 -0400
+ id 1u3Ghw-0001bA-K9; Fri, 11 Apr 2025 11:54:20 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1u3GeB-0005QF-W8; Fri, 11 Apr 2025 11:50:29 -0400
+ id 1u3Ghu-0005qg-3a; Fri, 11 Apr 2025 11:54:20 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZZ1NZ2Tqdz4xN1;
- Sat, 12 Apr 2025 01:50:22 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZZ1T04yC8z4xN1;
+ Sat, 12 Apr 2025 01:54:12 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZZ1NV5SKbz4x89;
- Sat, 12 Apr 2025 01:50:18 +1000 (AEST)
-Message-ID: <607a13da-d40a-4009-919c-ab82b1498404@kaod.org>
-Date: Fri, 11 Apr 2025 17:50:18 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZZ1Sx0wbcz4w2J;
+ Sat, 12 Apr 2025 01:54:08 +1000 (AEST)
+Message-ID: <cd0a32b2-9d1a-42f4-805f-307f3e2a7bbf@kaod.org>
+Date: Fri, 11 Apr 2025 17:54:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/10] hw/arm/aspeed: Reuse rom_size variable for
- vbootrom setup
+Subject: Re: [PATCH v2 09/10] tests/functional/aspeed: Update AST2700
+ functional test to use vbootrom
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +72,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com
 References: <20250410023856.500258-1-jamin_lin@aspeedtech.com>
- <20250410023856.500258-7-jamin_lin@aspeedtech.com>
+ <20250410023856.500258-10-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +117,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250410023856.500258-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250410023856.500258-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=05Ho=W5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -142,48 +142,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6YT+O2Neo5me
+X-TUID: hVG8tCjcatuS
 
 On 4/10/25 04:38, Jamin Lin wrote:
-> Move the declaration of `rom_size` to an outer scope in aspeed_machine_init()
-> so it can be reused for setting up the vbootrom region as well.
-> 
-> This avoids introducing a redundant local variable and ensures consistent
-> ROM sizing logic when both SPI boot and vbootrom are used.
+> Refactor the AST2700 functional test to boot using the vbootrom image
+> instead of manually loading boot components with -device loader.
+> The boot ROM binary is now passed via the
+> -bios option, using the image located in pc-bios/ast27x0_bootrom.bin.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/functional/test_aarch64_aspeed.py | 38 +------------------------
+>   1 file changed, 1 insertion(+), 37 deletions(-)
+> 
+> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
+> index c25c966278..971f548534 100755
+> --- a/tests/functional/test_aarch64_aspeed.py
+> +++ b/tests/functional/test_aarch64_aspeed.py
+> @@ -36,43 +36,7 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
+>               'c1f4496aec06743c812a6e9a1a18d032f34d62f3ddb6956e924fef62aa2046a5')
+>   
+>       def start_ast2700_test(self, name):
+> -        num_cpu = 4
+> -        uboot_size = os.path.getsize(self.scratch_file(name,
+> -                                                       'u-boot-nodtb.bin'))
+> -        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
+> -
+> -        load_images_list = [
+> -            {
+> -                'addr': '0x400000000',
+> -                'file': self.scratch_file(name,
+> -                                          'u-boot-nodtb.bin')
+> -            },
+> -            {
+> -                'addr': str(uboot_dtb_load_addr),
+> -                'file': self.scratch_file(name, 'u-boot.dtb')
+> -            },
+> -            {
+> -                'addr': '0x430000000',
+> -                'file': self.scratch_file(name, 'bl31.bin')
+> -            },
+> -            {
+> -                'addr': '0x430080000',
+> -                'file': self.scratch_file(name, 'optee',
+> -                                          'tee-raw.bin')
+> -            }
+> -        ]
+> -
+> -        for load_image in load_images_list:
+> -            addr = load_image['addr']
+> -            file = load_image['file']
+> -            self.vm.add_args('-device',
+> -                             f'loader,force-raw=on,addr={addr},file={file}')
+> -
+> -        for i in range(num_cpu):
+> -            self.vm.add_args('-device',
+> -                             f'loader,addr=0x430000000,cpu-num={i}')
+> -
+> -        self.vm.add_args('-smp', str(num_cpu))
+> +        self.vm.add_args('-bios', 'ast27x0_bootrom.bin')
+>           self.vm.add_args('-device',
+>                            'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
+>           self.do_test_aarch64_aspeed_sdk_start(
 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+I think it is interesting to keep both method for the tests, with and without
+the vbootrom.
 
 Thanks,
 
 C.
 
-
-> ---
->   hw/arm/aspeed.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index e852bbc4cb..b70a120e62 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -381,6 +381,7 @@ static void aspeed_machine_init(MachineState *machine)
->       AspeedSoCClass *sc;
->       int i;
->       DriveInfo *emmc0 = NULL;
-> +    uint64_t rom_size;
->       bool boot_emmc;
->   
->       bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
-> @@ -475,7 +476,7 @@ static void aspeed_machine_init(MachineState *machine)
->           BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
->   
->           if (fmc0 && !boot_emmc) {
-> -            uint64_t rom_size = memory_region_size(&bmc->soc->spi_boot);
-> +            rom_size = memory_region_size(&bmc->soc->spi_boot);
->               aspeed_install_boot_rom(bmc, fmc0, rom_size);
->           } else if (emmc0) {
->               aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(emmc0), 64 * KiB);
 

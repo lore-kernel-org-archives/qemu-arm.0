@@ -1,95 +1,95 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp490005njc;
-        Fri, 11 Apr 2025 07:36:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWO02ItglYJC960T8qz7ZS1pPFQvncPA6jk2XYIV4ygZ9sdYtru7NKyQTiDayuFF5rQtkOiIkLOeU185A==@linaro.org
-X-Received: by 2002:a17:907:3fa7:b0:abf:59e1:ad88 with SMTP id a640c23a62f3a-acad34c96a5mr254492066b.29.1744382184868;
-        Fri, 11 Apr 2025 07:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744382184; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp493312njc;
+        Fri, 11 Apr 2025 07:42:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVaw9hC2+zzk/8N2y8DvyEO9giGC82GRGZBD+s3KlV//SviLAC9U9Xrvmz/enOPE4yWUA6P6qKtel5J2Q==@linaro.org
+X-Received: by 2002:a17:907:3d0e:b0:ac7:ec75:c65b with SMTP id a640c23a62f3a-acad34dd659mr271494166b.36.1744382530644;
+        Fri, 11 Apr 2025 07:42:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744382530; cv=none;
         d=google.com; s=arc-20240605;
-        b=AWUJjEqpR1WYsVwmqbO6zbVv0sPzVhOBajmwwOjAETBhN/am+uiAdcCmwrCHNIqBVn
-         jGOwFDrF/fkcU9JGG5EzvhOK4YiGUbiVw8aVTVYYtW15uHKcLbI/c12iw6Q2SAXkvley
-         2a52w6ZhRWY0hkwFIG2JE4uzyeh02qa3aJVb1hkUt7TpZXgfEhAHDx0zcxkLKzWed2uZ
-         2bYRk/HSHGGKdJ3UgEDHGCQIq1tpJuPElR+GxMC6fEJ0CRTMU6s+asnxoFS4UdtwWH7t
-         IGSCNoGqmwLnCrAviFV5PC/iT3Ix/3C9ZEmNKNBk4PoDhQ4Le/vq5hlFKTjksb/jduyu
-         9hWA==
+        b=YodZMjvoXrzjRX53fdwro2zSJVfFR93HpG+lh698/a0pqT0Af5+Er/hrQFG2QpOKLM
+         +zQQC/LBZALHBZOwtNZJqZD3V9U04RSdc+3Ron+9M5aiEuiu9QdFMXzSNp495q2xDfOk
+         WmUtE+vdUM7+C5gs9RNrJuGWScg/P0KmLHYbWrKKTlIzvsD/wlbvARCy4l9P0Cl73cEC
+         MNOPCBqkA2UrXpMmwKRgqweD/V4f5yDpUFJGjieFzwG3l+O0fiV+By5/R2O2swAMtIbz
+         1nEsRTR7wE+alRCcbO02RcBE7yG8CYiVotqT/ITQGTuIJwgMcYji6ztqjmuq8ASztNeG
+         v3Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=TlF6NDZu6E7cqFh7Nc+T41PatugtSHL1p7nnfIPlLdk=;
-        fh=Af5rR7vqSLlcc90ee1CwLq8ihN3hUpMlUoNrg7u9Hrk=;
-        b=NWEQscmzxXMFiF2yyb3+0vw1dOZ54upKUaBV+OYN4Tqo/M96s7ZQwWMDhl0zpLTvej
-         o7vv3yLvcq1y6JXS5lZ7BmJLCIkn2ShxhW0TJA+paGXMAuyFESjPlpGMPP+9VTjzXftL
-         xXZl4HS46kf/7U4S2yiEeaF5TlcAYNuqpLjbXefw/eWleWQE++UBX5rtuSrRR2meBp5j
-         qsmsSNrBfURp1IClzlKhpKbbEeR/4nGYr5Ss5gKCyqfzib5zf2WQGB6mN7z41aKeI1qd
-         SnnO6bxlSSeEaUWfr3nfoK/VXyXlfA1Smj6vuDcybyN4dQzSCd1U6w56bf+D0Y3DqqTp
-         i4lQ==;
+        bh=fSg6VV0S2nSlCQBls/gUcOoEnqiGB9k8fi2W1vxyUOk=;
+        fh=tr7Ipvk/kZDnbQQw6Z1UOEgk8lOR8wXN2NEB56ReSco=;
+        b=FvCsF6de0MKGNcACMil532nNb/x2H9VI95SxGWis4rw+kSPMof9mIRtg9lWyExzOsi
+         7lYutxBLSdck22Q8DsdpApIUIunB99T6PLD4UqScDbH0pYGNV+CWSeNTz5RDFsU3olH/
+         y7uvBCbATzVEuhEVYiZ7SKDHNw4QRoHd84wsWPJBxwqK/SmAC38VzBSAVaeo8T4Sucaw
+         jJ78OAyIMPLimwJcK0yKWa0DmQLoGIWCNbRoMtIWqqTtuMwai3VKimN5yho4KD8Bev8y
+         DvNhSwUyGCx8XlEliORcnv5cr+jPx9WlJ63dKLaIJQpR5qTISZKlKljOd18r4TMXeNDX
+         o1/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="CQgCOO/1";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZyaF7o2l;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-acaa1c99a03sor301057966b.12.2025.04.11.07.36.24
+        by mx.google.com with SMTPS id a640c23a62f3a-acaa1c02264sor293262366b.10.2025.04.11.07.42.10
         (Google Transport Security);
-        Fri, 11 Apr 2025 07:36:24 -0700 (PDT)
+        Fri, 11 Apr 2025 07:42:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="CQgCOO/1";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZyaF7o2l;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744382184; x=1744986984; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744382530; x=1744987330; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=TlF6NDZu6E7cqFh7Nc+T41PatugtSHL1p7nnfIPlLdk=;
-        b=CQgCOO/1N6ZeFfeh8MfbfSUrV/9uF480vFIGvUopotHv6ZeFiRSaAQo7jc9SrYBLw5
-         ZAKFchA40uZ3EG55+bzTnZOumjG70w3o4/LWq0vq3mGnt29wrU7k8cN+n7Jj2IYe7lTc
-         GwSaJanehe2rS27YgWK2zsxEnA0MbCrFqlHnhYbHgD/vm+XKjnFXACKyFbbeIvP9YEIx
-         YIYot6zGlhJoQgdkXJxUDQbR8P/K8M762g4M0/p2iSEKnWrqdXWGGxEcKANOCT5/9Jdb
-         tXPUY+f1YO8bSOLXTOj36qNsEoCRmrJ26tLkKud69Irbqr1wz8/wo0ccUtaWxhJ3nKim
-         Xtng==
+        bh=fSg6VV0S2nSlCQBls/gUcOoEnqiGB9k8fi2W1vxyUOk=;
+        b=ZyaF7o2lW/WslNCqtSIf4h/Po5YJ/D4Z2AX2XGehii9kyuw+KQXIukq80wLqnh95XS
+         M+ZQXzSRcFJSMwBAgXkQtHxgUHz7BsJXQx5HY1b9kIjnTCvrCPKAxQgMF3nWG0AYeJ/4
+         +hJsYyA8Gabc9sP2qNfb/Y7icNGwMvGMQ2Z/w6qvxGBS8ev2Mj31KQJWJ2k9iHlR5AQX
+         Gtoz47uOkd/sXcg4yT+vfZ9YhiaJfT4YHVMLBs+NA9ss80jzoSY+2YnclLq91G9pGWZN
+         oUZ9e8lKsCbcwaTcGy/vr9mxdso7vqgE84mAQAIlFJQTiZFO4fGKRD63ma8bmYBdIJAe
+         P10Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744382184; x=1744986984;
+        d=1e100.net; s=20230601; t=1744382530; x=1744987330;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=TlF6NDZu6E7cqFh7Nc+T41PatugtSHL1p7nnfIPlLdk=;
-        b=WEWyDi0Cmj6X3dL7V8yoOsSWnSXA6QUbnzcF/mkJhMProiYpZVhB6hQKXC4/n/BCSm
-         MiIBvdOlnqlgJEYCQ1Y/+Iswt9LqId3gEFseUyNdsMZbYOHkc/her75aKMHP9YhHPdMH
-         5o46AKHxvaeGL6zNn9TQo4Yc4bZ1mFIuXdCvWjjiudjybPRHe1alwAZA71KhWGddKOuQ
-         pW+Od3jzV2dB6dZlZcQld6gcBCfAHLbnUPaIpy++9Nu/QDm1JLizowOR3RpOWEkF+4Ot
-         NceXlS2LfU1uEMdiny6UprE2Nl7IDKJW+xDFZyKf5pe+MdjAOk3JySR9/Oa/uXzYGxnJ
-         LlWw==
-X-Forwarded-Encrypted: i=1; AJvYcCUYNdLHT+NdC81jjY82pbyYSmSON8OCkfoDN9LpqdRKc7pamWDvr3tO1SLssqEDOo9l4wbVHgNAPYqSrU5icA==@linaro.org, AJvYcCW4DLyMxeIUONvmpLGTlS4Bt/4qcw6qnyA6RW/PkMH4cHWwbAQBrouLMe0c7RpWUniAQ+XUh1oeErgsVjWbG7GoCG8=@linaro.org, AJvYcCXR66mW+jIFZlSrmsCNuDOHrLfrq+0+cVayCUGohGJwSprvzf0ReyJo0rDahT+MY4kn5puPIiBLIcd5yg==@linaro.org
-X-Gm-Message-State: AOJu0YyxtDgKhzAetVw0ZLgRZGVJwz1Ps2S4v7x+z94mYP8nvAwA5cDX
-	Fixf9u/0wa3vuGSs7l46iXrKmPGrHQZBLHzjeE8eErc7KSNqYWG59IDw6AnZ7yji1KUYxnzzPT9
-	o74tAwji7uKlKyRV4JR9P8sK0kPE4xzdK5s4=
-X-Gm-Gg: ASbGncuKTNVYmz6zBkCBndk0DQ9noj/2n/sIW8gCnayyyzb9rjaAKpzcvExvrEjaDDT
-	LfMSz7Iyts/FqC0I6aFD97AhD1GFKj/RVcKqWRE7FwcWEzb4YnFL9Myl+9V77aaFTPGKsWFEGG+
-	TcdGpdwSI4q2Mv7W2DmkB/58lAMU/sSK7FUfFOihztLMA8YBo+aeo=
-X-Google-Smtp-Source: AGHT+IEK4IlWPqik4XVDKLNC42CRTXGG0nCurAmChUtUb3OKn1+5+1bmiQVlarf1wzo4Olhm09ujK8nS6X9rvaZgqTI=
-X-Received: by 2002:a17:906:3551:b0:aca:d4f6:440d with SMTP id
- a640c23a62f3a-acad4f64472mr203284666b.17.1744382183784; Fri, 11 Apr 2025
- 07:36:23 -0700 (PDT)
+        bh=fSg6VV0S2nSlCQBls/gUcOoEnqiGB9k8fi2W1vxyUOk=;
+        b=bBCP+8dyDZ0RWB0lZvXwD2ncKUWKPPHnnVO7e2qGUOIj8UyaA7HIC7Ny6+R3fLz3OC
+         rXTV9HHovsjAXWllsmNtsgtumJALwS389Qxj3WCfvnr7FILzOI4bZ194UcP99RHQ+Vq+
+         XXBtOVlLDX9Ddl87koC7+fxCYianCcryO+gjms7RZRxPQuaJFurxs4MpxhnB0IitnuIq
+         ycbXPBGdCToyDikPTmsKPLf6nIc2jDMOotWunyawMhBCSqgScnnsxPYKk/GVF6dyQ45Y
+         76x325Tr95++HEu08La6wSauzl+6vH2dJaFaYsda6N3fzZOBVqiHVnScOAQhuLLRyTot
+         rY2w==
+X-Forwarded-Encrypted: i=1; AJvYcCW/vaomvdFiIatJhWf3o51blTtXwG/7BaceAlHxO2R6q43BzgtZIabLt5cFwKzRb9ncXMamsGgtrLuWpA==@linaro.org, AJvYcCWLE4WtmgcSS/5d+ffWcM6XzQ9nP8PBgPmNI4NoovMVwjg95yvXJ40Qo0XgQmPvnw9MR4Ljr3K1LflgI2fdfQ==@linaro.org, AJvYcCXmTaD8RnV4zFWM7/xrStMHzonD7kK8+Xopm4vkzSvWJMLfYa7ktwqq3/LMVi2J5IoHYJm/C11cYnFWEqJuPPVb4vs=@linaro.org
+X-Gm-Message-State: AOJu0YwfVK9bseiB1UYRJtL/RVg6MVVRnPz+U3eG9wajq/8d06+IgyIO
+	v1Rd2xgktfEz9G0wioJMkCuOLGxcCRbtgloEP3Z1JGb+lugj1YKF+zQOO+PxjTgXezlnne80FeB
+	hW/4yyAF1vLG5cRhUAUQ4QZwrQXc=
+X-Gm-Gg: ASbGncti4E+sxOzTfTVQaKsFhgY6iYXhBXmGbJDhValuuLki7Fivqbyc+S7WfK6NWc5
+	0Yr0gBjrjHjTbzn9y/F7pZPJSpqaHrvmLP1hryXhfkk1F4xK/3FI+VFdEda1C8vNYVyUgH4ZPWH
+	pev5EJvphcFpN0z2dp7xTpncWw9GVVkypNhvV36uPAHj7BjkhRBaY=
+X-Google-Smtp-Source: AGHT+IGM/L1G5c/pGv0mWpPy9S2TrZVYAgbtjuqt00gDkNmv2LT9mD9EBklEQnolow+B7gZfjm/5nJqKbNTR9trnpjI=
+X-Received: by 2002:a17:907:7f0d:b0:ac3:bd68:24f0 with SMTP id
+ a640c23a62f3a-acad3457c9dmr311069566b.7.1744382529777; Fri, 11 Apr 2025
+ 07:42:09 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744032780.git.ktokunaga.mail@gmail.com>
  <20250409192115.GA5528@fedora> <dc36c24e-dc4a-4c24-97b7-8b812441ffce@linaro.org>
  <CAEDrbUZ4mbCT-npk8Nha4fDd9a5PGguAxS_RD0wG96gpQRUp+g@mail.gmail.com>
- <CAEDrbUYM3aK5ErvF=+oV=q-NVLO0uzxbYjHzcxPGvTLp7yNtwA@mail.gmail.com> <83f44749-0eea-48f0-8aa5-3882132e30d0@linaro.org>
-In-Reply-To: <83f44749-0eea-48f0-8aa5-3882132e30d0@linaro.org>
+ <CAEDrbUYM3aK5ErvF=+oV=q-NVLO0uzxbYjHzcxPGvTLp7yNtwA@mail.gmail.com> <26951ab5-cc40-465c-88d2-d70e98bae3f6@redhat.com>
+In-Reply-To: <26951ab5-cc40-465c-88d2-d70e98bae3f6@redhat.com>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Fri, 11 Apr 2025 23:36:10 +0900
-X-Gm-Features: ATxdqUG2wUVfL0Bc-xKm6Ed3L3KzqObfzFH1fQHjiBHOvWTFvTqQyENfOv92ae8
-Message-ID: <CAEDrbUbjD0d-pP_s1oV7gSuFoDpKTDiXd7bQf6p5hQUcN_iT+g@mail.gmail.com>
+Date: Fri, 11 Apr 2025 23:41:55 +0900
+X-Gm-Features: ATxdqUHuiB3X5nnUlwjG9zchkT6JXAC7eww0fXhplrsQCQJM-9blRapTad2xPWE
+Message-ID: <CAEDrbUYj9362hWQuTNA28cMRLTrjd4MeqkN8BUpZUpEVbPcsTg@mail.gmail.com>
 Subject: Re: [PATCH 00/10] Enable QEMU to run on browsers
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
-	Hanna Reitz <hreitz@redhat.com>, Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>, 
+	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>, 
 	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
 	Weiwei Li <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
 	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
@@ -97,87 +97,73 @@ Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
 	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org, 
 	qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000006acb94063281a09e"
-X-TUID: aYmFTco8jGOT
+Content-Type: multipart/alternative; boundary="0000000000000a3dd7063281b5e4"
+X-TUID: vAuJ957HPiUW
 
---0000000000006acb94063281a09e
+--0000000000000a3dd7063281b5e4
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi Pierrick, thank you for the feedback.
+Hi Paolo,
 
-> first, congrats for this work!
-> It would be really nice to have this available upstream, starting with a
-> modest TCI port, before having the tcg backend also.
-
-Sure, I'll split the patch series, starting with the TCI port.
-
-> Do you have recent information about wasm64? It seems to be something
-> that has been discussed for several years, without really seeing any
-> progress.
-
-According to the adoption status=E2=80=AF[1], wasm64 is supported by recent=
- versions
-of Chrome and Firefox. Emscripten also supports wasm64=E2=80=AF[2]. However=
-, it is
-not yet supported by Safari or libffi=E2=80=AF[3], and I haven't found a ro=
-admap for
-the adoption.
-
-[1] https://webassembly.org/features/
-[2]
-https://emscripten.org/docs/tools_reference/settings_reference.html#memory6=
-4
-[3]
-https://github.com/libffi/libffi/blob/6a99edb8082f75e523e0d6ebaba42218b80e1=
-0c8/README.md#supported-platforms
-
-> As Philippe said, we can't really revert that (it's now an assumption
-> for our softmmu implementation, and would break code if we enabled it
-> again now.)
+> > > The biggest problem I'm seeing is we no longer support 64-bit guests
+on
+> > > 32-bit hosts, and don't plan to revert that.
+> >
+> > Yes, so the sixth patch ("[PATCH 06/10] include/exec: Allow using 64bit
+> > guest addresses on emscripten") should be considered as a temporary
+> > workaround, enabled only for Emsripten builds. It will be removed once
+> > wasm64 gains broader support and is adopted in the Wasm backend.
 >
-> That said, we can always have a first version supporting only 32 bits
-> targets. And later, when wasm64 will be available, we can extend this to
-> all remaining ones.
+> Maybe there's a way though. Currently we don't support 64-bit guests on
+> 32-bit hosts, but more precisely we don't support 64-bit guests with
+> 32-bit host word size.
+>
+>
+> The wasm TCG backend is able to compile with 64-bit words:
+>
+> +#define TCG_TARGET_HAS_div_i64          1
+> +#define TCG_TARGET_HAS_rem_i64          1
+> etc.
+>
+> and if x32 was a thing it would as well.  In fact the changes in patch
+> 6/10 are not a full revert, and the "#ifdef EMSCRIPTEN" could be changed
+to
+>
+> #if HOST_LONG_BITS >= TARGET_LONG_BITS
+> ... use uintptr_t
+> #else
+> ... use uint64_t
+> #endif
 
-The main challenge I'm seeing is that I couldn't find a clear timeline for
-wasm64 adoption so it's difficult to predict when it will be widely
-available.
+Thank you for the feedback.
 
-Regarding the revert, the wasm backend supports 64-bit words, so the revert
-introduced in patch 06/10 is partial, as also pointed out by Paolo.
+Yes, the Wasm backend can be compiled with 64-bit words. The change
+regarding the macro looks good to me.
 
---0000000000006acb94063281a09e
+--0000000000000a3dd7063281b5e4
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Pierrick, thank you for the feedback.<=
-/div><br>&gt; first, congrats for this work!<br>&gt; It would be really nic=
-e to have this available upstream, starting with a<br>&gt; modest TCI port,=
- before having the tcg backend also.<br><br>Sure, I&#39;ll split the patch =
-series, starting with the TCI port.<br><br>&gt; Do you have recent informat=
-ion about wasm64? It seems to be something<br>&gt; that has been discussed =
-for several years, without really seeing any<br>&gt; progress.<br><br>Accor=
-ding to the adoption status=E2=80=AF[1], wasm64 is supported by recent vers=
-ions<br>of Chrome and Firefox. Emscripten also supports wasm64=E2=80=AF[2].=
- However, it is<br>not yet supported by Safari or libffi=E2=80=AF[3], and I=
- haven&#39;t found a roadmap for<br>the adoption.<br><br>[1] <a href=3D"htt=
-ps://webassembly.org/features/">https://webassembly.org/features/</a><br>[2=
-] <a href=3D"https://emscripten.org/docs/tools_reference/settings_reference=
-.html#memory64">https://emscripten.org/docs/tools_reference/settings_refere=
-nce.html#memory64</a><br>[3] <a href=3D"https://github.com/libffi/libffi/bl=
-ob/6a99edb8082f75e523e0d6ebaba42218b80e10c8/README.md#supported-platforms">=
-https://github.com/libffi/libffi/blob/6a99edb8082f75e523e0d6ebaba42218b80e1=
-0c8/README.md#supported-platforms</a><br><br>&gt; As Philippe said, we can&=
-#39;t really revert that (it&#39;s now an assumption <br>&gt; for our softm=
-mu implementation, and would break code if we enabled it <br>&gt; again now=
-.)<br>&gt; <br>&gt; That said, we can always have a first version supportin=
-g only 32 bits <br>&gt; targets. And later, when wasm64 will be available, =
-we can extend this to <br>&gt; all remaining ones.<br><br>The main challeng=
-e I&#39;m seeing is that I couldn&#39;t find a clear timeline for<br>wasm64=
- adoption so it&#39;s difficult to predict when it will be widely<br>availa=
-ble.<br><br>Regarding the revert, the wasm backend supports 64-bit words, s=
-o the revert<br>introduced in patch 06/10 is partial, as also pointed out b=
-y Paolo.<br><br></div>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div>Hi Paolo,<br><br>&gt; &gt; &gt;=
+ The biggest problem I&#39;m seeing is we no longer support 64-bit guests o=
+n<br>&gt; &gt; &gt; 32-bit hosts, and don&#39;t plan to revert that.<br>&gt=
+; &gt; <br>&gt; &gt; Yes, so the sixth patch (&quot;[PATCH 06/10] include/e=
+xec: Allow using 64bit<br>&gt; &gt; guest addresses on emscripten&quot;) sh=
+ould be considered as a temporary<br>&gt; &gt; workaround, enabled only for=
+ Emsripten builds. It will be removed once<br>&gt; &gt; wasm64 gains broade=
+r support and is adopted in the Wasm backend.<br>&gt; <br>&gt; Maybe there&=
+#39;s a way though. Currently we don&#39;t support 64-bit guests on<br>&gt;=
+ 32-bit hosts, but more precisely we don&#39;t support 64-bit guests with<b=
+r>&gt; 32-bit host word size.<br>&gt; <br>&gt; <br>&gt; The wasm TCG backen=
+d is able to compile with 64-bit words:<br>&gt; <br>&gt; +#define TCG_TARGE=
+T_HAS_div_i64 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A01<br>&gt; +#define TCG_TARG=
+ET_HAS_rem_i64 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A01<br>&gt; etc.<br>&gt; <br=
+>&gt; and if x32 was a thing it would as well.=C2=A0 In fact the changes in=
+ patch<br>&gt; 6/10 are not a full revert, and the &quot;#ifdef EMSCRIPTEN&=
+quot; could be changed to<br>&gt; <br>&gt; #if HOST_LONG_BITS &gt;=3D TARGE=
+T_LONG_BITS<br>&gt; ... use uintptr_t<br>&gt; #else<br>&gt; ... use uint64_=
+t<br>&gt; #endif<br><br>Thank you for the feedback.<br><br>Yes, the Wasm ba=
+ckend can be compiled with 64-bit words. The change<br>regarding the macro =
+looks good to me.<br><br></div>
 
---0000000000006acb94063281a09e--
+--0000000000000a3dd7063281b5e4--

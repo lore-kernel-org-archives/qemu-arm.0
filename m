@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp536522njc;
-        Fri, 11 Apr 2025 08:49:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUlQipwtEc1HK77o87WrGTlV85pnZfwmO86QjB2j+N91g7ega+iJU3jCiD5phnLIbZSRKSmrXF+llhk/Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHoyf3Q6/e/d8xDo/FyxKJ5nt2VHuBkfUXzY1AuYWNkbMkdIulnxilzbar1UMfofS2Cy3Aa
-X-Received: by 2002:a05:620a:19a9:b0:7c5:53ab:a74f with SMTP id af79cd13be357-7c7af1f32famr460394285a.39.1744386571067;
-        Fri, 11 Apr 2025 08:49:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744386571; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp537008njc;
+        Fri, 11 Apr 2025 08:50:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZjphPLDohxs4YnJKCNl/w833DINUvg4iLZ1VfKUEZRrT5sf1tET3gu/o0Pp+Egw9o13HJKgDQqPGalg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH96B2pjbIn1VoQOt2B/BcKrMIsshnJrJF/eR0O/w4KDkzUpuLbytFDOgs91z8/m2z8CWRq
+X-Received: by 2002:a05:6214:500d:b0:6e2:43d1:5fd0 with SMTP id 6a1803df08f44-6f23f11d25fmr48981786d6.31.1744386625977;
+        Fri, 11 Apr 2025 08:50:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744386625; cv=none;
         d=google.com; s=arc-20240605;
-        b=b6Qx3knsOLYQ/gUJPuGXyD29AXnhsO/n/AV2RZsxjpSK6HwSyZmtW6ytBqzu5HP4y7
-         9sHqkZBn1vvRZXoQ/3GtO4kYY6KzCq59IrtR8A1QS3Y1fFha9zA/4L+3El72u8EKU+6I
-         wBooUfhBLN+EG1fbEIDb+2M5OzWChthpLY+2hFnd/xjQJ5hzwarrsKxl3cNtI7cVrLZA
-         X+wstDQnivV9YB4LlAxMiBOlJ0jBirG/TuILTlP94dDDrJ6h3JPwAjN2Bb6trwAOdkOm
-         wNSpq73xZhCZ7bLo/tHCRBy3waI1TdjxXGgumG8Ewgpi78UOW6ilOB3u5eGQhUz1eKoc
-         ZeTA==
+        b=NMMCNWaoqsoEm/0nnOB3LE7zIbJeokKJ4INZLPWapEuVQZpohVFUxUJCQiFciUpo5d
+         hIsKP9/rTlfMp/UisDg9M0b6vqmm1rzUtar18f3fCtv2luEjA2Z8xsYSetFFUl8jZq4w
+         XChAZ2ECW6tC3a3SiDGcxHNd7V98LQ1H9GoyRJ43DA28z50HLrLt/+okf168ORs6mMIB
+         WXurqLF6PJpWL/hvdU9mIYi5wcHh4L1lffQdcl5A4L3dU5RZL6aWu9vKc0ErjoQaoaV1
+         HYdpGfzR3/w30Kp7ztM4Qd0UmAG/q0TEjePd/GjIRPuyST1iQX69+z/Vby5cGYwGJOxK
+         KIIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=wuyOE1q/rrBrmBfZiRpxeSp0JrahaPClQwhM1/PdTYQ=;
+        bh=c+u42yZp5/V/0PWbAQPY/W0lsypmYTUsaG3/wnI1qtM=;
         fh=aTXBRWvcUi1tLADA5DrDnV7F47mfdIt5smkQi/SmRpk=;
-        b=Vxci8hvZD6H+77M6dycmaSV/4zGwEn33IQZ1nckgWyW5ADNbHDQpAFA3lP/uZ9gj9l
-         D7vDTO2+QJrf+dXinjDp4Kgb2df5TSJkCih1Zzv6ssNTOxUORW4ZwGxf0nbIFpYvVXw4
-         WuOhgJKQvlm0OC/uBd1S35sqJnO4tW8jXuf7LoxDQTOyT5i3CX2uPa36jBq5z/H8R3y2
-         +sVL6KHL8iy4DlT8qexaUboUg29Bw2ooWLlmky2Und6giy2j/+m8BAznuLcPka83tMNz
-         S4mc+bvGG3f6KnsJqyKTdoYXX/HoOZRFw0s9k++eLf1tPfvn6jqAZReospG8xhphZ7cD
-         8/RA==;
+        b=Gw7RnetuSz94/x1J6c7jbYUpzIIrw525CEhBtzrDWx+ujprSmtOOUeKOKvN/uyrowL
+         /LHEUdxTfzzgK6kTOXgX20cJTf+osPjOGh5ZTw4h2x5/tBeqLFN06g+FVT7zEIFNce8r
+         6MOqxUA1RX0zf68KbF0tcYfgOPsgFousuoL0QMg8nx2YPDE1gqvsUyCKomR7ASR1nZoO
+         JVPkB5wCKioIVzOoWYwRuT/vlNY9YKAwV5XiXG/p//yA+PsID46j2VQl08EHWRfyQQd7
+         oxwGUEjZyXIR5uZK/g7tMevn67tXGATh5iMoJCUXzftSAQDXp4FGLpB9g7KKgjPpM+D3
+         0UJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c7a89f5e1bsi313385885a.258.2025.04.11.08.49.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de970c73si52424816d6.117.2025.04.11.08.50.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Apr 2025 08:49:31 -0700 (PDT)
+        Fri, 11 Apr 2025 08:50:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u3Gcj-00064s-I7; Fri, 11 Apr 2025 11:48:57 -0400
+	id 1u3Ge6-00085b-Nj; Fri, 11 Apr 2025 11:50:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1u3Gce-0005zh-I1; Fri, 11 Apr 2025 11:48:54 -0400
+ id 1u3Ge4-00080f-TK; Fri, 11 Apr 2025 11:50:21 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=05Ho=W5=kaod.org=clg@ozlabs.org>)
- id 1u3Gca-000529-7x; Fri, 11 Apr 2025 11:48:51 -0400
+ id 1u3Ge2-0005Pa-LO; Fri, 11 Apr 2025 11:50:20 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZZ1Lh4dRcz4xN1;
- Sat, 12 Apr 2025 01:48:44 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZZ1NS1HVLz4xN1;
+ Sat, 12 Apr 2025 01:50:16 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZZ1Ld0JSQz4wyl;
- Sat, 12 Apr 2025 01:48:40 +1000 (AEST)
-Message-ID: <9944e195-a864-468b-a682-0424687d20ce@kaod.org>
-Date: Fri, 11 Apr 2025 17:48:38 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZZ1NN3mGcz4w2H;
+ Sat, 12 Apr 2025 01:50:12 +1000 (AEST)
+Message-ID: <23839e2c-c2e7-4c63-a647-689291dc0f2f@kaod.org>
+Date: Fri, 11 Apr 2025 17:50:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/10] hw/arm/aspeed_ast27x0: Rename variable sram_name
- to name in ast2700 realize
+Subject: Re: [PATCH v2 04/10] hw/arm/aspeed_ast27x0 Introduce vbootrom memory
+ region
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +72,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com
 References: <20250410023856.500258-1-jamin_lin@aspeedtech.com>
- <20250410023856.500258-4-jamin_lin@aspeedtech.com>
+ <20250410023856.500258-5-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +117,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250410023856.500258-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250410023856.500258-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=05Ho=W5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -143,17 +143,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w8b87UBEvRqV
+X-TUID: qPB6bojFxELG
 
 On 4/10/25 04:38, Jamin Lin wrote:
-> The variable "sram_name" was only used for naming the SRAM memory region.
-> Rename it to "name" for consistency with similar code and avoid unnecessary
-> new local variable declarations.
+> Introduce a new vbootrom memory region. The region is mapped at address
+> "0x00000000" and has a size of 128KB, identical to the SRAM region size.
+> This memory region is intended for loading a vbootrom image file as part of the
+> boot process.
+> 
+> The vbootrom region is initialized as ROM and registered in the SoC's address
+> space using the ASPEED_DEV_VBOOTROM index.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
+Please merge patches 1-2,4 together.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
@@ -161,33 +165,48 @@ C.
 
 
 > ---
->   hw/arm/aspeed_ast27x0.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>   include/hw/arm/aspeed_soc.h |  1 +
+>   hw/arm/aspeed_ast27x0.c     | 10 ++++++++++
+>   2 files changed, 11 insertions(+)
 > 
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 432f6178ac..9af8cfbc3e 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -59,6 +59,7 @@ struct AspeedSoCState {
+>       MemoryRegion sram;
+>       MemoryRegion spi_boot_container;
+>       MemoryRegion spi_boot;
+> +    MemoryRegion vbootrom;
+>       AddressSpace dram_as;
+>       AspeedRtcState rtc;
+>       AspeedTimerCtrlState timerctrl;
 > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 81dd90ffdd..c7188ae5f1 100644
+> index c7188ae5f1..0982e63639 100644
 > --- a/hw/arm/aspeed_ast27x0.c
 > +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -577,7 +577,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->       AspeedINTCClass *ic = ASPEED_INTC_GET_CLASS(&a->intc[0]);
->       AspeedINTCClass *icio = ASPEED_INTC_GET_CLASS(&a->intc[1]);
-> -    g_autofree char *sram_name = NULL;
-> +    g_autofree char *name = NULL;
->       qemu_irq irq;
+> @@ -24,6 +24,7 @@
+>   #include "qemu/log.h"
 >   
->       /* Default boot region (SPI memory or ROMs) */
-> @@ -649,9 +649,9 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       }
->   
->       /* SRAM */
-> -    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
-> -    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-> -                                 errp)) {
-> +    name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
-> +    if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
-> +                                errp)) {
->           return;
->       }
+>   static const hwaddr aspeed_soc_ast2700_memmap[] = {
+> +    [ASPEED_DEV_VBOOTROM]  =  0x00000000,
+>       [ASPEED_DEV_SRAM]      =  0x10000000,
+>       [ASPEED_DEV_HACE]      =  0x12070000,
+>       [ASPEED_DEV_EMMC]      =  0x12090000,
+> @@ -657,6 +658,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
 >       memory_region_add_subregion(s->memory,
+>                                   sc->memmap[ASPEED_DEV_SRAM], &s->sram);
+>   
+> +    /* VBOOTROM */
+> +    name = g_strdup_printf("aspeed.vbootrom.%d", CPU(&a->cpu[0])->cpu_index);
+> +    if (!memory_region_init_rom(&s->vbootrom, OBJECT(s), name,
+> +                                sc->vbootrom_size, errp)) {
+> +        return;
+> +    }
+> +    memory_region_add_subregion(s->memory,
+> +                                sc->memmap[ASPEED_DEV_VBOOTROM], &s->vbootrom);
+> +
+>       /* SCU */
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+>           return;
 

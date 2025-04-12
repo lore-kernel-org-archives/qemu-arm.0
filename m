@@ -1,129 +1,149 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp573304njc;
-        Fri, 11 Apr 2025 09:43:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW69oVRqJskvM0dydIkeQXnSdQmzKmXZzLezRa/qQEx3NkXTyQE1XSOz9T+AawocDJVuJykl2gIVV/crQ==@linaro.org
-X-Received: by 2002:a17:902:c405:b0:224:2207:5130 with SMTP id d9443c01a7336-22bea50da70mr44422185ad.45.1744389827240;
-        Fri, 11 Apr 2025 09:43:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744389827; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp903326njc;
+        Sat, 12 Apr 2025 01:21:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUm8CGIlSy4ZacRv9Axkdi06SqHqGgrTG/kmKR6sAprq37NcDpuDT/vh/sUT+sAImwyHrK
+X-Received: by 2002:a05:6402:1d48:b0:5ec:da2e:6f4d with SMTP id 4fb4d7f45d1cf-5f36f6779d9mr4140220a12.18.1744446118900;
+        Sat, 12 Apr 2025 01:21:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744446118; cv=none;
         d=google.com; s=arc-20240605;
-        b=SSb58Z5yR1ZoN3FIT3rWEslSN/trv+ip0slOGYi4SzZgqgH1kw0UzHbeTM9C/WZ2AG
-         UHcbIrb7l3xhbTgKFiSFDAUWgn7sY5e36YC9ewdoOxoNU6Eet3ie7R/mNHmDCvUIIA7Q
-         9E9in4kAICCSyOZhNyk/DyMrewMbfy/GKloMJYM1Bgeo3S+BNQ5P7UgKuCdSL9uDTZqu
-         vW3ETDcS6Iq7rS5PYxZan9RQHNdnenm7WReSr9n3VchViNLIRWchyv8RArqmdn7RSSRa
-         p4x92RnB3e7flDyBENBk7K+u4L2czQi9MX7dJRQ3WLZGIsaq89mZE2kawhWeDgZOrTcD
-         wZ+A==
+        b=adV+1DVJ4whxIT5dcyTBp9W29/GcZSiEsa7DKxZBBM6+9mEFEorJQmu2DCli1TAOOU
+         Kx2m5ix7sdylAoLRCjCHngX8diPfwnHBf74PYOa++ri2rXKWDGTedYa304Bwd0GW4HOx
+         0DbZ8UcNGXEZq+sWRbus38tNAvUHqwa4RT6k7vYC0GsnMA+EC6B5M8O5Vsjy2V5Zqjbo
+         IWwda4bBut2iP1Rnhawtkbl/MI+amKImlAypAt9XaACTaYl8ZVQfa6Wz/YRMlitDOFkB
+         b0GrRDFonLW+zpoVwq+loUx8AoE2bZCqURHTdpY01n7Nhwjck/9ikek8CNIDH+GvqV24
+         464A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=yEehcKkEtvkrukIzx807jrlT1sua6l4Lwl0XwiVIqY8=;
-        fh=V5eNuXziUvoAJXsVL23Kty9O6AfOXr0tPDMftwfyK98=;
-        b=VHU+8wakeibv+1SNjKoi+zheOKt+pt8C3q4Y+X8T7BSMM8c2dlLDSaBz0KFXkpS765
-         /3zRMC0+ny4U4jW05gIKmxAN0yCfUYoyas6pAf4oYFOVfKJDEIVYI+Zr7kzSU22kM0P0
-         xCf5LyoLMHZci8yHuoQPU3G+BRtGkHTYlz8RgBqzs18yu1WrTvYq7/sPOUuNmvA1cCxN
-         R8tyVkfnm2ENeFuiajFBpfqEi0L1lI+feUtH7l/iRMSWGpjF/swAbkmvzaV5Ho2Kme9p
-         AIfjgSSKBc0QUCIQLVFQWaHIqjFpbWuzBxInvPXX6pR37cQuhabER0xdC3wZ9vHkfCLe
-         JZqQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EyyvU26WyWKZPrjnU2aSEB0k5vWB94xWPRhX4O3z5BM=;
+        fh=Un3iYNNU8h/R/nWmOY2Oa2CT+zZI+ZGWFZKnRlWRwoE=;
+        b=NvvOIk2AsGvlHBXEfcaOOp7J9HQUaWJvv+Vyh/FXenuy1u69qzRYfViUiYeteIYvek
+         vk55OGnHjRFSU2krS3JXEhHB0vBofozcSMkaqpUDJ1+l9tQxo1POurSzBnSl4STvHn56
+         /7ImKiFF/UP3jXkW5ae45A+Gpsfz8W7DjV3U16T1FzLg5ZYOD/GBbubR2miC1vb7+oqm
+         b3hBIYc/o+RO/gqIsoIBx9kaQnjwTjCcGU4SdAYeSReunacZ0lnlbAZvPXk+dizcPw7r
+         SBNWTj+KL7E0hFxaMAmLYpMP0VbszIjkOKawguglRUhe0DxejEFf5t20oEnWnIi4Yyu0
+         j2gg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y6l514Z5;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22be10ce92esor28567685ad.8.2025.04.11.09.43.47
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 11 Apr 2025 09:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@crudebyte.com header.s=kylie header.b=X0PHKkwi;
+       spf=pass (google.com: domain of qemu_oss@crudebyte.com designates 5.189.157.229 as permitted sender) smtp.mailfrom=qemu_oss@crudebyte.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=crudebyte.com
+Return-Path: <qemu_oss@crudebyte.com>
+Received: from kylie.crudebyte.com (kylie.crudebyte.com. [5.189.157.229])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5f36f646ec0si1916654a12.476.2025.04.12.01.21.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 12 Apr 2025 01:21:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu_oss@crudebyte.com designates 5.189.157.229 as permitted sender) client-ip=5.189.157.229;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y6l514Z5;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744389827; x=1744994627; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yEehcKkEtvkrukIzx807jrlT1sua6l4Lwl0XwiVIqY8=;
-        b=y6l514Z5uNPW8rjh1SPsbo6KC9GIxTc1sevFpDADIWVHELjghrMFX7pbOdRx0/wDKc
-         qOOlTvYdiBfbRMad/5lgxph/f2i4pX3HmfsRTAsKrPQ917vmybvfxAeJ615P4/jnk00k
-         SwbSX+1pR1Zn2zgx1/tAIr5QhPemU9F/eX4uMRJzH9MAdwsoHRXMZeSs3DPQF483LcUE
-         pps8jHSKOu80QhxxXKKdYo5UqGVE5jRZOJ8Y7o/KfcBgSvPaUuuojE0758FJbcLEEklM
-         n/aOARwV2C92gi8++cGwlEmNql+AylKhvcWaKzTYl/Wa8b9n/p16uh2Jopy4tpXQkyNe
-         d1dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744389827; x=1744994627;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yEehcKkEtvkrukIzx807jrlT1sua6l4Lwl0XwiVIqY8=;
-        b=XeSqXWuPoEvJ1gfe2zbTxkfPuAWo9tV0GGZSj8OPZTnAHwj7R2LjiRuqMlhWCLphMm
-         0F9qGjhtbm+7NaVqng+lEzTACzHlo9l83607xCJr5UqNNq0dPf1UN7tJD9Dm9Ta9QRUv
-         QwcEibI61dmB1QTAWjqjM8tibL0VMkBTTTCyZGSNibBkdwbQK2qNGFRAaEY1BvzSmNtx
-         aGzplEMoULSCuhjRm6CWYUPiNAkCKZoobvCmW1GQ2jRPiNjsnEJpnTdNuxqORzVJmknA
-         Pdx2J/34s213KW0gkqubSjnL5+h3tD4T3J4Ps5A8gVbdOpVd2RQBJmeuKjnqLVPE0Aon
-         DLNw==
-X-Forwarded-Encrypted: i=1; AJvYcCWvTeEE6QiIRa0FIPGnjT5bt5wgqz02huVZjKIDTEwdymbUk0OTA87DZB6P7SlyeoD3ylztXwKJ3i3rYg==@linaro.org
-X-Gm-Message-State: AOJu0YzPwcpEteYRECeaa3yhd6OD60/zbaPu83jg8ZUW5DFPF7n49F+7
-	HJg0mOkgNHF0Yg1O4dZqUTPMRlateu9CY2nuSMGLJmaMqhRa5y/EDVYwp+4Gxziokw==
-X-Gm-Gg: ASbGnctyn7B/w1YzXy+ZzNMrjXkIWfMQy0DrIFlkG+CVPYs/4g6Nm5u54N8vgyXGekS
-	Ebb7/THuj+2XbKRybrw+u/etw5sQd4EYUAR3cJ9yVguit7wHKQKXe/TA4sioBkyYD5TwtxnCWz2
-	7ETRxwjeIRZt5bniH4Wgi/c0G4Sjzl2j3/uYi3Tlxxg4Uv0Y1pXhD5L59147ZX9wDXFB7+oeZTu
-	9oLJcyP5Nlx3w9egJPWGzG1fwF7CmhfbZ/5U4VTbRHWKX3OzuBsFA/KEIzIadSvber3xmb7QLb0
-	ecixRV8xs4x54ARcmYBqpRHfTlAJLt3z1l/744MMgLbvxc8lG9+Aig==
-X-Google-Smtp-Source: AGHT+IGf54UMQ/WV03DIur+/XHnWpBL5Jn9QPVDaNn0xvv32LjsywHFJDgUYmDh0hVrTznsWUFFWkA==
-X-Received: by 2002:a17:902:ef0b:b0:21f:8453:7484 with SMTP id d9443c01a7336-22bea4c76cdmr51659035ad.30.1744389826716;
-        Fri, 11 Apr 2025 09:43:46 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.87] ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22ac7ccb5ddsm51718575ad.230.2025.04.11.09.43.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Apr 2025 09:43:46 -0700 (PDT)
-Message-ID: <7538bb41-cb6a-4a82-8535-3059f12e2f67@linaro.org>
-Date: Fri, 11 Apr 2025 09:43:45 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] target/arm/ptw: extract arm_mmu_idx_to_security_space
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+       dkim=pass header.i=@crudebyte.com header.s=kylie header.b=X0PHKkwi;
+       spf=pass (google.com: domain of qemu_oss@crudebyte.com designates 5.189.157.229 as permitted sender) smtp.mailfrom=qemu_oss@crudebyte.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=crudebyte.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Content-ID:Content-Description;
+	bh=EyyvU26WyWKZPrjnU2aSEB0k5vWB94xWPRhX4O3z5BM=; b=X0PHKkwiOKMRj4NvkXHZOEICQO
+	IU5nERcHuk3T6uPDUcXFOLwOe/xgDoCzBUOxX7dy8d45+2GoR//cYecZfgMsMvdkNsrR1shm9oI8D
+	7bteA0D/SK+GkQ7tgk0bTKMWzRv9VEr1f1Et+A0/E/VeHN/LxSxExgEGBBuNR8Mms8TBG8oK2xbtE
+	fxCXSHc7zT0oyUMRHbLuWCpSDt0TjeNXl7CSWeURF89WHAHV4CqJVfS/Y18RhT/qhF/ryo5kuXHGS
+	VgYNHtyHkvVY0CedsT5xcnfXgrEJfg/pp3Arz2lNS6g1+8xVjVcoMY7bnzw2ztHxALuUp+iXhdyoi
+	6yar6q4XNB/+5p0jX1uAUIVq9GHa0bLmnOVp2+gJyMWstLdxs9YnRT2AlwdQx5IudXstbXJF5XIpm
+	NZqeFMhD6S8gyWePDtW7HH8CQz6xy9PtkYc/jHsqpIoOjh4e0Unbt10Ik2SzdaFa3nG2F8DVnsGYr
+	xxBfVOGzIu00yzh0xdDuyuRY2iE9FxM8DMzrNYabg+xddQufqR8Tyj6f+bOwazAGS0xV9se4nSI0K
+	rlnHXzomHa4xGaauyAF7qpChLB58HEHrmmGtm4kK3arxnhbJGm0RKCB3pvVPw2d9BbHPtt/gFc8RU
+	fO9C8Gbo2j2hj0D+3ce6dVeuYuPA9mIJOZtr9ckAk=;
+From: Christian Schoenebeck <qemu_oss@crudebyte.com>
+To: qemu-devel@nongnu.org
+Cc: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Philippe =?ISO-8859-1?Q?Mathieu=2DDaud=E9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, alex.bennee@linaro.org,
- qemu-arm@nongnu.org, Yannis Bolliger <yannis.bolliger@protonmail.com>
-References: <20250410210022.809905-1-pierrick.bouvier@linaro.org>
- <20250410210022.809905-2-pierrick.bouvier@linaro.org>
- <cea136fd-50a1-42be-98c6-e9550e85c1ed@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <cea136fd-50a1-42be-98c6-e9550e85c1ed@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: zbsMHtnSAECP
+ Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?ISO-8859-1?Q?Marc=2DAndr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel P =?ISO-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Subject: Re: [PATCH 08/10] hw/9pfs: Allow using hw/9pfs with emscripten
+Date: Sat, 12 Apr 2025 10:21:47 +0200
+Message-ID: <2441396.svyq9LpYvz@silver>
+In-Reply-To:
+ <CAEDrbUakVwwn228nSb0rD1C9qiZ-tpcHBzLRDVyGRNsim97=JQ@mail.gmail.com>
+References:
+ <cover.1744032780.git.ktokunaga.mail@gmail.com> <2533109.DitPQcejgS@silver>
+ <CAEDrbUakVwwn228nSb0rD1C9qiZ-tpcHBzLRDVyGRNsim97=JQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-TUID: SDMViddRpVPE
 
-T24gNC8xMS8yNSAwNjo0NCwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgd3JvdGU6DQo+IE9u
-IDEwLzQvMjUgMjM6MDAsIFBpZXJyaWNrIEJvdXZpZXIgd3JvdGU6DQo+PiBXZSdsbCByZXVz
-ZSB0aGlzIGZ1bmN0aW9uIGxhdGVyLg0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IFBpZXJyaWNr
-IEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+IC0tLQ0KPj4gICAg
-dGFyZ2V0L2FybS9wdHcuYyB8IDIxICsrKysrKysrKysrKysrLS0tLS0tLQ0KPj4gICAgMSBm
-aWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pDQo+Pg0KPj4g
-ZGlmZiAtLWdpdCBhL3RhcmdldC9hcm0vcHR3LmMgYi90YXJnZXQvYXJtL3B0dy5jDQo+PiBp
-bmRleCA4ZDRlOWUwN2E5NC4uNWUxOTZjZmE5NTUgMTAwNjQ0DQo+PiAtLS0gYS90YXJnZXQv
-YXJtL3B0dy5jDQo+PiArKysgYi90YXJnZXQvYXJtL3B0dy5jDQo+PiBAQCAtMzU1MCwxMyAr
-MzU1MCw5IEBAIGJvb2wgZ2V0X3BoeXNfYWRkcl93aXRoX3NwYWNlX25vZ3BjKENQVUFSTVN0
-YXRlICplbnYsIHZhZGRyIGFkZHJlc3MsDQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgbWVtb3AsIHJlc3VsdCwgZmkpOw0KPj4gICAgfQ0KPj4gICAgDQo+PiAtYm9v
-bCBnZXRfcGh5c19hZGRyKENQVUFSTVN0YXRlICplbnYsIHZhZGRyIGFkZHJlc3MsDQo+PiAt
-ICAgICAgICAgICAgICAgICAgIE1NVUFjY2Vzc1R5cGUgYWNjZXNzX3R5cGUsIE1lbU9wIG1l
-bW9wLCBBUk1NTVVJZHggbW11X2lkeCwNCj4+IC0gICAgICAgICAgICAgICAgICAgR2V0UGh5
-c0FkZHJSZXN1bHQgKnJlc3VsdCwgQVJNTU1VRmF1bHRJbmZvICpmaSkNCj4+ICtzdGF0aWMg
-QVJNU2VjdXJpdHlTcGFjZSBhcm1fbW11X2lkeF90b19zZWN1cml0eV9zcGFjZQ0KPj4gKyhD
-UFVBUk1TdGF0ZSAqZW52LCBBUk1NTVVJZHggbW11X2lkeCkNCj4gDQo+IFN0eWxlIGlzOg0K
-PiANCj4gc3RhdGljIEFSTVNlY3VyaXR5U3BhY2UgYXJtX21tdV9pZHhfdG9fc2VjdXJpdHlf
-c3BhY2UoQ1BVQVJNU3RhdGUgKmVudiwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBUk1NTVVJZHggbW11X2lkeCkNCj4gDQo+
-IG9yOg0KPiANCj4gc3RhdGljIEFSTVNlY3VyaXR5U3BhY2UNCj4gYXJtX21tdV9pZHhfdG9f
-c2VjdXJpdHlfc3BhY2UoQ1BVQVJNU3RhdGUgKmVudiwgQVJNTU1VSWR4IG1tdV9pZHgpDQo+
-IA0KDQpUaGFua3MsIEknbGwgdXBkYXRlIHRvIHRoaXMgb25lLg0KDQo+IFJldmlld2VkLWJ5
-OiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+DQo+IA0KDQo=
+On Friday, April 11, 2025 12:47:29 PM CEST Kohei Tokunaga wrote:
+> Hi Christian,
+> 
+> > > Emscripten's fiber does not support submitting coroutines to other
+> > > threads. So this commit modifies hw/9pfs/coth.h to disable this behavior
+> > > when compiled with Emscripten.
+> >
+> > The lack of being able to dispatch a coroutine to a worker thread is one
+> > thing, however it would probably still make sense to use fibers in 9pfs as
+> > replacement of its coroutines mechanism.
+> >
+> > In 9pfs coroutines are used to dispatch blocking fs I/O syscalls from main
+> > thread to worker thread(s):
+> >
+> > https://wiki.qemu.org/Documentation/9p#Control_Flow
+> >
+> > If you just remove the coroutine code entirely, 9p server might hang for
+> good,
+> > and with it QEMU's main thread.
+> >
+> > By using fibers instead, it would not hang, as it seems as if I/O
+> syscalls are
+> > emulated in Emscripten, right?
+> 
+> Thank you for the feedback. Yes, it would be great if Emscripten's fiber
+> could be used to address this limitation. Since Emscripten's fiber is
+> cooperative, I believe a blocking code_block can still block the 9pfs server
+> unless an explicit yield occurs within it. I'll continue exploring better
+> solutions for this. Please let me know if I'm missing anything.
+
+As far as I understand it, the I/O syscalls are emulated, and when being
+called by fibers, blocking syscalls would imply to yield under the hood,
+without explicit yield by application that is.
+
+If that's true, it would only require little code changes for this to work.
+
+> > Missing
+> >
+> >     errno = ENOTSUP;
+> 
+> Sure, I'll fix this in the next version of the series.
+> 
+> > Looks like you just copied the macOS errno translation code. That probably
+> > doesn't make sense.
+> 
+> Errno values differ between Emscripten and Linux, so conversion is required
+> here. I've used the same mappings as macOS for now, but I'm happy to add
+> more conversions if needed.
+
+OK, but why have you chosen macOS errno mapping exactly? Are you testing on a
+macOS host machine? Are errno values of emscripten machine dependent?
+
+The errno mapping must be correct, otherwise funny things will happen on guest
+side if 9p2000.L client is used, as it blindly expects errno numbers sent by
+9p server to be in native Linux errno number presentation.
+
+Alternatively 9p2000.u protocol variant could be used for Emscripten. Not
+ideal, as this 9p protocol version is somewhat a legacy protocol from QEMU
+perspective, reduced performance, less reliable, but it transmits error
+strings to client which it can map to correct errno values by itself. Linux 9p
+client uses a hash map for this errno translation of 9p2000.u error strings.
+
+/Christian
+

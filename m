@@ -1,155 +1,480 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2108663njc;
-        Mon, 14 Apr 2025 09:12:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUfeSgvnyfpqzkcZHW2dHCehWg32Bq/kkLRbNAAAxbFjMgSO83bvpon5m9M3nqnuZ6OmZCY7G3hRgtQsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgjFiiUiuq5ZWvZlGhidAFCqh9DKFc6RdXnMYyanW+JrhIsit1FQ3DVx9Ql+GJZBypLu8f
-X-Received: by 2002:a05:6102:5f05:b0:4c3:64bc:7d00 with SMTP id ada2fe7eead31-4c9e504cf3cmr8984572137.24.1744647153400;
-        Mon, 14 Apr 2025 09:12:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744647153; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2125737njc;
+        Mon, 14 Apr 2025 09:39:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVTQZb+MW2FYwV9Gqp6y8yvAz/MpeCkT3uxYTyx91Y4j5+q/gZ3CKfo/yqQR74nWjbRSlBifZbZqdUioQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF0bNFAQDQFzILoRS44LLklMeOTHd6fVUitPGvBMZJ+VQP5nXaqrHcZJH22/nUikNtIjek9
+X-Received: by 2002:a05:690c:6b11:b0:6fe:d759:b178 with SMTP id 00721157ae682-705599894bdmr224542557b3.6.1744648793979;
+        Mon, 14 Apr 2025 09:39:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744648793; cv=none;
         d=google.com; s=arc-20240605;
-        b=W3GPwPhAXljjyn8tXE9k5Bj2iixVD4JpJ0vHdAktChleklWoIiHx1z9LDs4ZFdgZkd
-         AbFe27eRs/9fU7YggA4gDi22SEXG1kJD6mAbajQJ2FPapDvGXWxAeSWQB5rXl+K/qSlT
-         7XcEGlLeb+h0RlCXXhoQxQ/VJW2EpcS5s/WYhS51xs9QJNkMLA0KBO9XnWC7Ij2wekpd
-         J8o3vxzzOXZgtWmruTwYoh6EboDhQ9roe/5DsjspaAJNBi5D1T68eFlPpgkNQ63UHglD
-         h2YibYgNlkO/rZouLL7t7t/Ygs2JqfvVr9Put/zk3WGAosjWLFiSJiF1cUOXN/P3tGo+
-         AE3g==
+        b=ZeKomzEdR8XYEIhhyDtQEOPniGvblpRV9hsAOqGTcGbg0iUieJze1WIxHsDfkyyY8w
+         FcFaMGEuLhEGsbK04zXVOUaZvP2JoP9g5w2JWVi++8n3FJsEi0iKh3nGj/hPvTmxrRSG
+         ZzZCkpzLoPmtJi1VUXbilo7eBifDQX2y0hLGx8akSSsRHNQChqtnN4tB4RbW5m6fE9fM
+         EKflP6cmyrw2/SHEH+jXwORajTQ7rYj78VbxB2q6SZuMJ049cGFd7DVoHPFu61ZgZDYD
+         Yznp+8pDGfM6ZY5Nu/mGMjyCp1tQ3zE7st+y0BHoIJ/TIhY/9xxMxR37w/bapyAtYtSm
+         jIJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=WqBFC1T5vvtFmaKrfZy+y6npmm7hcx4NUKeeI8wQlmk=;
-        fh=CtMalJvqHl+KOnFl95sXmsNoc/0A9MC35kVAxPh4KPQ=;
-        b=IpodwhKiKQFDlQqWAbOA4nK5Wlr+sF7Sc9EsK2SnwS3gTzlO2LPTDaw2fpK1pYvN3b
-         C4nCCjX/qlXU13XQLAgSSmx/pc1dkZFmyAoFdKQVhzAN1T4ZJQ2GJDGFHyhAZN4ZPCoO
-         r4DLRAbPP6VXUyCJq/qyhF2y3nfGdo83BOZdHrIYRYJP6uXbtsgGnq8wGnuY4EJRfxMW
-         gaFNiqI8qsdWeTzKbrTKB3MA2Mtn0WeM/b8+kfS/+oAucymhDWWkH9ON+4+OCmUnXQOV
-         N4w84tKaC+RmeSgDwBkTjzkCCdEGszhknvVA76hUGAJn695A2mp6IVX34i4CWXVEM9kI
-         HIJw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=GQJucsEU0+czHXH5GOQU4YsA6Y5H66tludcrXjXDsQY=;
+        fh=6xsxbRFvSPtT8TG3B9HOEDad133GF2zMAz688Nd5+nE=;
+        b=ZJm8/BBxdWzl+mfhQB05OoCYu5w8XQijri1QgRk2wmHozm4ZapqofxKY4IxoVrfUqS
+         hgBY9FHrZAgwFhnb+E8wcOEnmu+iJy7q6ZDrRdgEbbDo1zwBFThrOWprc8UIfejYFqk6
+         TZRwfOCvZpknv+rG23cbN/FzCeUNmJrg/B/76/0ghDF5o9M8g0Cm8CJn8zn5P4gB9eG6
+         CvzaUu48qsDw5YrY1oy40sSCEdG9dGqN6mHfvjzRRywiEY+K9VAbJWTf5QNJepWXw1/6
+         fBUqD0r4zyeBqrOggZxNFu706Jaqz8mCwwIFwIwgQ+cQkD+F4790md8+0n+bJ3QZ7rB9
+         pxZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBMF3+sF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4c9c98c1cd9si3498940137.368.2025.04.14.09.12.33
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GPG4fnna;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 00721157ae682-7053e344b23si66682917b3.295.2025.04.14.09.39.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Apr 2025 09:12:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Apr 2025 09:39:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBMF3+sF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u4MPn-000242-8e; Mon, 14 Apr 2025 12:12:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4MPH-00020b-9t
- for qemu-arm@nongnu.org; Mon, 14 Apr 2025 12:11:43 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4MP9-0000WV-Gn
- for qemu-arm@nongnu.org; Mon, 14 Apr 2025 12:11:34 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-43cfa7e7f54so29106845e9.1
- for <qemu-arm@nongnu.org>; Mon, 14 Apr 2025 09:11:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1744647085; x=1745251885; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=WqBFC1T5vvtFmaKrfZy+y6npmm7hcx4NUKeeI8wQlmk=;
- b=rBMF3+sFBVP7HTPZGM15azdw41CrySc8otZPZjALRj/mTsJZEYKMWgN/jR5nyxbYFj
- TrctYwgL3N+xfenGJGpOa45T4mzPgM8Xg41lo/cCplMUtMETYNdWAEFIvu3Ixzc9Ki3F
- kixP7e49lv27OGwI32dNaoNxg1fiEO0BarYT7WfzRjQ06J17MGm+araNK5u60JSQ8hAz
- PVWT/dWswpMVEQM6TRwO84Eg52OrKdvCSAvbVSdui42fGGPMUDQlI3w2JBXjSVMEQ57w
- ivcTgeknY3CFjkYs1Jrpv5OEyqDivEmjEU5shLweJZK0VVWeCn2x4j36C6FRuhHYFkwc
- 7CRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744647085; x=1745251885;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WqBFC1T5vvtFmaKrfZy+y6npmm7hcx4NUKeeI8wQlmk=;
- b=F7ep4nL6ecR3jR14FGidGVFC2MN0pJPl821js5DKnBIlt/QJ9HFg8mYIq9NwlO0KQ/
- fXeG01fr1oFnWc8Jyn2IX8M7wt+vWb8Bfn9ZggVThDRkFc1rFfDoMBvQkSqOYa2Be/9A
- 9tUWIuNYM5P6fORGqGtyRD8/kIcEZY7qZYrJo5xF64ppwRbA6TPKclym73m0P8G/CsPr
- cqqIfrnLJoX4y64fpRmL2jbjuyPF6W15XJQZqoBu3QW1A5Ek0L8W0oi9hJw1Pbnr4I9U
- P5pXpFpRfycNOer9OxRdtAW7OxW6pEQjCggLeclRzqlVmRBsVAhW7EePsnKrTWm7/Kvf
- hOQw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUFhHG73ateIpPSTUt8gsh8SG/a5/tjRxwKdPhqppxGuL6NwS9fFHPQQD/wxk3QSNKuKs2KFYdTtg==@nongnu.org
-X-Gm-Message-State: AOJu0YyMKwiWTnMt1pJfjeSOT7HmcAQUsuUvORfucWdDWpXGcdjiwzNB
- 9k7OFPCs8htwnGQHtMypaFlXv8WhAA/6McXg5X6otNTi4JzFgIQmyp+j7Yut2+U=
-X-Gm-Gg: ASbGnctVyAQGTtRGbcgMAykSeVB/cZEHNJz4ixyPZae5FkLR+wXLS4EURcG4q+MPRxD
- V0tae7V+ZPbBn/Ka3kXm7i8N4+MLVUaxRbphDZslsYlISK6ftrEBel0O7a8/nUz6V9lwXV9PCAD
- 7rmEWU0RPlbbdB02FwcB0NBUyO6AwfS8KtukmWM8wezikhX20WSJmAC6LI6SEgjVc/a1C2PFl3+
- +FHfCdqoC5Lg5+BzMNZO1PSaMVBia9WnsDzIHltV1VopjIcGdxacvfOVjHNGKc1s8XKr+wQ9TWO
- 0KbtJXLixaE+8E6NQJgDmHlQRO1tkoWxvHwL8M5/rngOL/9BbK9IF8zsREO08IbOcMY3dNrk40K
- EVtYsX7Kq
-X-Received: by 2002:a05:600c:3b27:b0:439:8878:5029 with SMTP id
- 5b1f17b1804b1-43f99889ac5mr232165e9.2.1744647084720; 
- Mon, 14 Apr 2025 09:11:24 -0700 (PDT)
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39eaf445772sm11501941f8f.91.2025.04.14.09.11.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Apr 2025 09:11:24 -0700 (PDT)
-Message-ID: <a8d305e6-3658-4ee6-98dd-167b41a184cd@linaro.org>
-Date: Mon, 14 Apr 2025 18:11:23 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GPG4fnna;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744648793;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GQJucsEU0+czHXH5GOQU4YsA6Y5H66tludcrXjXDsQY=;
+	b=GPG4fnnaZnVq0zYWmerEH4lCicrKwtzHfH8JJykdr6fpqwWp754dVedenyc2o9ZUVspnRd
+	xKBO5Iuznfjo0g2tPGKYOs0Yn8NiGcTdhKMe4beQj/GTC8xIqsDmLA/VSzVcqIhZHsfVF0
+	E7fA5QqgQ4tmfOn8JjW5gWnNoFr457Y=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-376-DtY3oA9gOSWxbZGobgRvzA-1; Mon,
+ 14 Apr 2025 12:39:49 -0400
+X-MC-Unique: DtY3oA9gOSWxbZGobgRvzA-1
+X-Mimecast-MFC-AGG-ID: DtY3oA9gOSWxbZGobgRvzA_1744648786
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 31EA8180AB16;
+	Mon, 14 Apr 2025 16:39:46 +0000 (UTC)
+Received: from gondolin.redhat.com (unknown [10.67.24.14])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 3E314180B491;
+	Mon, 14 Apr 2025 16:39:30 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com
+Cc: agraf@csgraf.de,
+	shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v3 02/10] arm/cpu: Add sysreg properties generation
+Date: Mon, 14 Apr 2025 18:38:41 +0200
+Message-ID: <20250414163849.321857-3-cohuck@redhat.com>
+In-Reply-To: <20250414163849.321857-1-cohuck@redhat.com>
+References: <20250414163849.321857-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Add functional tests that are not covered yet
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: "Daniel P . Berrange" <berrange@redhat.com>, qemu-arm@nongnu.org
-References: <20250414121520.213665-1-thuth@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250414121520.213665-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h7ZAIOAr2dvY
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: 9daBbiqZ/Oab
 
-On 14/4/25 14:15, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> Some functional tests are currently not covered by the entries
-> in MAINTAINERS yet, so scripts/get_maintainers.pl fails to suggest
-> the right people who should be CC:-ed for related patches.
-> Add the uncovered tests to the right sections to close this gap.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 13 +++++++++++--
->   1 file changed, 11 insertions(+), 2 deletions(-)
+From: Eric Auger <eric.auger@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Introduce a script that automates the generation of system register
+properties definitions from a given linux source tree
+arch/arm64/tools/sysreg.
 
+Invocation of
+./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
+in scripts directory additionally generates
+target/arm/cpu-sysreg-properties.c containing definitions for
+feature ID registers.
+
+update-aarch64-sysreg-code.sh additionally calls
+gen-cpu-sysreg-properties.awk which is inherited from kernel
+arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
+the original author of this script.
+
+[CH: split off from original patch adding both sysreg definitions
+ and properties]
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
+ scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++++++++++++++++
+ scripts/update-aarch64-sysreg-code.sh |   5 +-
+ 2 files changed, 329 insertions(+), 1 deletion(-)
+ create mode 100755 scripts/gen-cpu-sysreg-properties.awk
+
+diff --git a/scripts/gen-cpu-sysreg-properties.awk b/scripts/gen-cpu-sysreg-properties.awk
+new file mode 100755
+index 000000000000..76c37938b168
+--- /dev/null
++++ b/scripts/gen-cpu-sysreg-properties.awk
+@@ -0,0 +1,325 @@
++#!/bin/awk -f
++# SPDX-License-Identifier: GPL-2.0
++# gen-cpu-sysreg-properties.awk: arm64 sysreg header generator
++#
++# Usage: awk -f gen-cpu-sysreg-properties.awk $LINUX_PATH/arch/arm64/tools/sysreg
++
++function block_current() {
++	return __current_block[__current_block_depth];
++}
++
++# Log an error and terminate
++function fatal(msg) {
++	print "Error at " NR ": " msg > "/dev/stderr"
++
++	printf "Current block nesting:"
++
++	for (i = 0; i <= __current_block_depth; i++) {
++		printf " " __current_block[i]
++	}
++	printf "\n"
++
++	exit 1
++}
++
++# Enter a new block, setting the active block to @block
++function block_push(block) {
++	__current_block[++__current_block_depth] = block
++}
++
++# Exit a block, setting the active block to the parent block
++function block_pop() {
++	if (__current_block_depth == 0)
++		fatal("error: block_pop() in root block")
++
++	__current_block_depth--;
++}
++
++# Sanity check the number of records for a field makes sense. If not, produce
++# an error and terminate.
++function expect_fields(nf) {
++	if (NF != nf)
++		fatal(NF " fields found where " nf " expected")
++}
++
++# Print a CPP macro definition, padded with spaces so that the macro bodies
++# line up in a column
++function define(name, val) {
++	printf "%-56s%s\n", "#define " name, val
++}
++
++# Print standard BITMASK/SHIFT/WIDTH CPP definitions for a field
++function define_field(reg, field, msb, lsb, idreg) {
++	if (idreg)
++            print "    arm64_sysreg_add_field("reg", \""field"\", "lsb", "msb");"
++}
++
++# Print a field _SIGNED definition for a field
++function define_field_sign(reg, field, sign, idreg) {
++	if (idreg)
++            print "    arm64_sysreg_add_field("reg", \""field"\", "lsb", "msb");"
++}
++
++# Parse a "<msb>[:<lsb>]" string into the global variables @msb and @lsb
++function parse_bitdef(reg, field, bitdef, _bits)
++{
++	if (bitdef ~ /^[0-9]+$/) {
++		msb = bitdef
++		lsb = bitdef
++	} else if (split(bitdef, _bits, ":") == 2) {
++		msb = _bits[1]
++		lsb = _bits[2]
++	} else {
++		fatal("invalid bit-range definition '" bitdef "'")
++	}
++
++
++	if (msb != next_bit)
++		fatal(reg "." field " starts at " msb " not " next_bit)
++	if (63 < msb || msb < 0)
++		fatal(reg "." field " invalid high bit in '" bitdef "'")
++	if (63 < lsb || lsb < 0)
++		fatal(reg "." field " invalid low bit in '" bitdef "'")
++	if (msb < lsb)
++		fatal(reg "." field " invalid bit-range '" bitdef "'")
++	if (low > high)
++		fatal(reg "." field " has invalid range " high "-" low)
++
++	next_bit = lsb - 1
++}
++
++BEGIN {
++	print "#include \"cpu-custom.h\""
++	print ""
++	print "ARM64SysReg arm64_id_regs[NUM_ID_IDX];"
++	print ""
++	print "void initialize_cpu_sysreg_properties(void)"
++	print "{"
++        print "    memset(arm64_id_regs, 0, sizeof(ARM64SysReg) * NUM_ID_IDX);"
++        print ""
++
++	__current_block_depth = 0
++	__current_block[__current_block_depth] = "Root"
++}
++
++END {
++	if (__current_block_depth != 0)
++		fatal("Missing terminator for " block_current() " block")
++
++	print "}"
++}
++
++# skip blank lines and comment lines
++/^$/ { next }
++/^[\t ]*#/ { next }
++
++/^SysregFields/ && block_current() == "Root" {
++	block_push("SysregFields")
++
++	expect_fields(2)
++
++	reg = $2
++
++	res0 = "UL(0)"
++	res1 = "UL(0)"
++	unkn = "UL(0)"
++
++	next_bit = 63
++
++	next
++}
++
++/^EndSysregFields/ && block_current() == "SysregFields" {
++	if (next_bit > 0)
++		fatal("Unspecified bits in " reg)
++
++	reg = null
++	res0 = null
++	res1 = null
++	unkn = null
++
++	block_pop()
++	next
++}
++
++/^Sysreg/ && block_current() == "Root" {
++	block_push("Sysreg")
++
++	expect_fields(7)
++
++	reg = $2
++	op0 = $3
++	op1 = $4
++	crn = $5
++	crm = $6
++	op2 = $7
++
++	res0 = "UL(0)"
++	res1 = "UL(0)"
++	unkn = "UL(0)"
++
++	if (op0 == 3 && (op1>=0 && op1<=3) && crn==0 && (crm>=0 && crm<=7) && (op2>=0 && op2<=7)) {
++	    idreg = 1
++        } else {
++	    idreg = 0
++	}
++
++	if (idreg == 1) {
++	   print "    /* "reg" */"
++	   print "    ARM64SysReg *"reg" = arm64_sysreg_get("reg"_IDX);"
++	   print "    "reg"->name = \""reg"\";"
++	}
++
++	next_bit = 63
++
++	next
++}
++
++/^EndSysreg/ && block_current() == "Sysreg" {
++	if (next_bit > 0)
++		fatal("Unspecified bits in " reg)
++
++	reg = null
++	op0 = null
++	op1 = null
++	crn = null
++	crm = null
++	op2 = null
++	res0 = null
++	res1 = null
++	unkn = null
++
++	if (idreg==1)
++	    print ""
++	block_pop()
++	next
++}
++
++# Currently this is effectivey a comment, in future we may want to emit
++# defines for the fields.
++(/^Fields/ || /^Mapping/) && block_current() == "Sysreg" {
++	expect_fields(2)
++
++	if (next_bit != 63)
++		fatal("Some fields already defined for " reg)
++
++	print "/* For " reg " fields see " $2 " */"
++	print ""
++
++        next_bit = 0
++	res0 = null
++	res1 = null
++	unkn = null
++
++	next
++}
++
++
++/^Res0/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	expect_fields(2)
++	parse_bitdef(reg, "RES0", $2)
++	field = "RES0_" msb "_" lsb
++
++	res0 = res0 " | GENMASK_ULL(" msb ", " lsb ")"
++
++	next
++}
++
++/^Res1/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	expect_fields(2)
++	parse_bitdef(reg, "RES1", $2)
++	field = "RES1_" msb "_" lsb
++
++	res1 = res1 " | GENMASK_ULL(" msb ", " lsb ")"
++
++	next
++}
++
++/^Unkn/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	expect_fields(2)
++	parse_bitdef(reg, "UNKN", $2)
++	field = "UNKN_" msb "_" lsb
++
++	unkn = unkn " | GENMASK_ULL(" msb ", " lsb ")"
++
++	next
++}
++
++/^Field/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	expect_fields(3)
++	field = $3
++	parse_bitdef(reg, field, $2)
++
++
++	define_field(reg, field, msb, lsb, idreg)
++
++	next
++}
++
++/^Raz/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	expect_fields(2)
++	parse_bitdef(reg, field, $2)
++
++	next
++}
++
++/^SignedEnum/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	block_push("Enum")
++
++	expect_fields(3)
++	field = $3
++	parse_bitdef(reg, field, $2)
++
++	define_field(reg, field, msb, lsb, idreg)
++	define_field_sign(reg, field, "true", idreg)
++
++	next
++}
++
++/^UnsignedEnum/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	block_push("Enum")
++
++	expect_fields(3)
++	field = $3
++	parse_bitdef(reg, field, $2)
++
++	define_field(reg, field, msb, lsb, idreg)
++	#define_field_sign(reg, field, "false", idreg)
++
++	next
++}
++
++/^Enum/ && (block_current() == "Sysreg" || block_current() == "SysregFields") {
++	block_push("Enum")
++
++	expect_fields(3)
++	field = $3
++	parse_bitdef(reg, field, $2)
++
++	define_field(reg, field, msb, lsb, idreg)
++
++	next
++}
++
++/^EndEnum/ && block_current() == "Enum" {
++
++	field = null
++	msb = null
++	lsb = null
++
++	block_pop()
++	next
++}
++
++/0b[01]+/ && block_current() == "Enum" {
++	expect_fields(2)
++	val = $1
++	name = $2
++
++	next
++}
++
++# Any lines not handled by previous rules are unexpected
++{
++	fatal("unhandled statement")
++}
+diff --git a/scripts/update-aarch64-sysreg-code.sh b/scripts/update-aarch64-sysreg-code.sh
+index 721f41a9a516..a11637091815 100755
+--- a/scripts/update-aarch64-sysreg-code.sh
++++ b/scripts/update-aarch64-sysreg-code.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh -e
+ #
+-# Update target/arm/cpu-sysregs.h
++# Update target/arm/cpu-sysreg-properties.c and target/arm/cpu-sysregs.h
+ # from a linux source tree (arch/arm64/tools/sysreg)
+ #
+ # Copyright Red Hat, Inc. 2024
+@@ -23,3 +23,6 @@ fi
+ 
+ awk -f gen-cpu-sysregs-header.awk \
+     $linux/arch/arm64/tools/sysreg > ../target/arm/cpu-sysregs.h.inc
++
++awk -f gen-cpu-sysreg-properties.awk \
++       $linux/arch/arm64/tools/sysreg > ../target/arm/cpu-sysreg-properties.c
+-- 
+2.49.0

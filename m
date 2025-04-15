@@ -1,125 +1,95 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp1905118njc;
-        Mon, 14 Apr 2025 03:43:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWKv3gq6xFrZ4CcWBj4gc1AteRTbfA11l5OeSuqLTe/LjXfsPfCotihGev2PXvLPvUvQPW4KCnxeiMnTw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDtLMup35Fcw4dMeRSsN2Hb70zihW2Lr8IFOIfrJVpmEU2l812AI/81tnRY1Q1d2VxS0Wh
-X-Received: by 2002:a05:6214:19eb:b0:6e4:2c6e:7cdc with SMTP id 6a1803df08f44-6f230d93d63mr198834196d6.25.1744627436402;
-        Mon, 14 Apr 2025 03:43:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744627436; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2525180njc;
+        Tue, 15 Apr 2025 02:26:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWsJnIESP4A5w9LMZjpS8dAMmtQag3h/NoVAqv7PpTkiYcwXu9O4mPCYsRwm15OrAJDYhwUSc3RZKAErA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwh3tidYeQt8DuqDFzXVD14nZnlmlkdKcK3W8mPlsV7EiAJwyAuYEsvnx/4YaUhETEQuJs
+X-Received: by 2002:ad4:5c68:0:b0:6e8:f568:22e8 with SMTP id 6a1803df08f44-6f230d2f3f6mr210218446d6.15.1744709192869;
+        Tue, 15 Apr 2025 02:26:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744709192; cv=none;
         d=google.com; s=arc-20240605;
-        b=S/tKCps7liwk7JRtLsb/DiZRx19NgO+dAIFBoXWM3eWoffFdAqW1DwF9Ccu3hIpygR
-         4e/7DHs6Zh1HbUgsOVYcf100BBcm03NRGAkejnGBvHS9JWXa4JFqkXZIg+XSs+lKSBg5
-         1KK7bFGTvsAAsSyt6yIoDTnZBCQFBaAOgtsgFmDl4GAl7rhGqc+0lvokdQ7uMQR73UDf
-         WJwFtOsWL7521O/yv9FZcchP1dmmi15mO0ZOJsSa5SlBLzzY/i7deAzbKniV4vI0WaZa
-         c07CW/5Kb+3ZVV19TuhR3rF4qHSept+9wVHAoqdr8EVDSIOY09KfoiKh3hI+qqacycCt
-         MIew==
+        b=MqMKor6HeRDJGCLkhCIT1KBUPfcLA+F3zHrp6z3xLdVD8JMx91mTqEum9uuJowZgmk
+         j5Ds7UIaWusUFfjcRL0mYxQW9Xhg7VRz5QlLJw0jVzYJSFDdZ38RwQV5O+eSaODMuckX
+         t+3j8sHvw9KBPAhvphLbD4rHxTuJRI+p6mdgXE4dtNUvQN/sQPr+SdV52yabAxUk5QYK
+         pcr9oFsrSmP9RBzmBiklC5Fg0UOhGka1paqdawa90wGJ68Z396GcBrarslOU0+wShh0c
+         YaOdEGk6ll2m9JqkGk6nqw9OfYeWLAgg16ZbOXSrEJYgzy0N6CxJ5DLItbLalRbYiyHI
+         O72w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1MZ0v41VasWztOjswGKD3Mq1UKw/Yh0NDdJUxmOEsWA=;
-        fh=AK8jqPp7dDiEag2y/oHNk8OEqdygcUhyNkzW0+Fz5aI=;
-        b=lhUk7wJP2hjR0w/UgusP2+8zKt7Lr5CFplB6wSuONoizLHTpxobTIlWYjHOAP588kS
-         zZT5PQxaVPzKgRRfYfkuEjEXz/+gEGSJvxC5X7VQzeEWwnDDK2c1eJC6IKLu/KbLWyfJ
-         hDB+MTq/dZQKS2JrI+PR5PRN2CO9Cr+JfBrDdYp1F4V8qODhNJug7J1+a/wL6H5g0E1U
-         96rcscjWyn64AHNQBuk1XD4e9jcVCl1HJ8B+ukrhuGDw2pHUpel0ojN9iH9EL5Mt6qdS
-         XrR7cKHCOBMyRcgeZMxj9U95ezp7mixYmKcQb+HUsUYvDjOCQvETvZ5j1pOvZFfJZsWt
-         8vZw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=FwEfODvJs6J4qMLL7FjbPE8HwOWPzkcPjhhb9nKJ89Y=;
+        fh=2ehTNrbowOjZk//UOXD2QbHiLm/9SAEtt9tI/jQ+6a4=;
+        b=A+xnpyUKBIZyGbHf5JvvcxXXx1dIQ6gHbCAeEq3VfnPhPxxhEG22GYqFPSbB/MswwL
+         yONmkkJUwkwKxpN4SKQCaY90zsGCBLXutLO5LUWbR04RSk+IZtk4DN1/4OJ9V23JEV7J
+         dNH6BxTpp5ssdRNYQ/IiTjArEs3CDGLNgAXAprnbGiJLdGu3dduvF/o7jk64Tc0a7J7v
+         Z1NQBAJGvggKbn157j4m34WCN9NDd7MVu4YIMdAtdiZZNxojpeDpv56mZXUDSsxiot4V
+         rD2a5m/DQuKnUegKRyzntw+DLBzFCAUxg3+CbnRabjYbaKuH3taLEzzvGrGKJlDZ0t7g
+         Dnfw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EwxFdu7I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0dea0a715si101579386d6.406.2025.04.14.03.43.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de9ecf46si118545206d6.353.2025.04.15.02.26.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Apr 2025 03:43:56 -0700 (PDT)
+        Tue, 15 Apr 2025 02:26:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EwxFdu7I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u4HI0-0000aO-CW; Mon, 14 Apr 2025 06:43:44 -0400
+	id 1u4cYb-0000lV-F9; Tue, 15 Apr 2025 05:26:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4HHz-0000a6-HN
- for qemu-arm@nongnu.org; Mon, 14 Apr 2025 06:43:43 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4HHx-0006yF-Eq
- for qemu-arm@nongnu.org; Mon, 14 Apr 2025 06:43:43 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-43cf0d787eeso47608675e9.3
- for <qemu-arm@nongnu.org>; Mon, 14 Apr 2025 03:43:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1744627419; x=1745232219; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1MZ0v41VasWztOjswGKD3Mq1UKw/Yh0NDdJUxmOEsWA=;
- b=EwxFdu7IJVLeqcNpsk95wwhT/JEbQLgNwSxZGRhyvk7GVhiRvrCzb4lziMBF39/qj2
- dEfeyAwI6CObTnVwiNOol9X5c0bzpJn1xFhQImzkA+EFge978jbcsTa2y+WCRNkz40dy
- nl5gZyPJcWNEfW+UaQ1cuxJrzlxKIXY8vqhgbJKrgV64qhe59PVSeFK6yhRp+e16mpvI
- srKOVXFXh1vi37/MJABQmiDnznX6GkK8SMnkgKMz0iUl8ocilEURTJfJ99C8fj9TVBLv
- slDjISQ9U5etYnFMZ8v2GU/CviaUP9IYtg++Bn0PRcGgakgL4ybAYErz2mZ5wox4zr8b
- 4XnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744627419; x=1745232219;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1MZ0v41VasWztOjswGKD3Mq1UKw/Yh0NDdJUxmOEsWA=;
- b=Aw2JzgKMnkDccTBgDwcycbM4hiFd3b5WoVrM938BVG7uKEh6Umu6cIK77tmdDmkwC6
- Vn9AXTjJt1EWYdMhttd2oNLsONMfi1FDm14uA5qNuNwdqMnWxaZOuK46ee+aKsPVAsO6
- KJiWbSK9CeO2QPPcvhOcnXbR32KZKbWjJH4WEqkN51L8YkAriN085wVWI5e8bcNaTNGT
- +mASBNszrQKPfgr2xZ5KXBKMv6j0vEq0QS/FLCVKbwywiKijJxtNzoydf3qsPOU2aXQx
- O4/Md8cV8LqBRAJ+9V0AwqI0DYQBPxSychK2Tq7xNoYhCA8xmiRyV5dxMTV8IFa+JP2G
- lflA==
-X-Gm-Message-State: AOJu0Yw1s4KQGt6duYqb9AzTTnFZ+YcHL20QQCRrYuRPuK62uruIFqlI
- a7gB3sWaP8PBhOUGIIaeOsciWy9TjzaFJ+6XzP1+x1TIq1kTgusMAcQBYZnw26c=
-X-Gm-Gg: ASbGncuH6O5QI78xE0rYMorenre90Lh8o5h8cuUZylx8ng3gzGXU3Bb0mm7hT7x46EU
- 8qjJ9exJHbN7Bya80cKhgnXEefvnq4UaMl8Kos+KRd1MB8l56FxnmhRlnfwi8/exuLgKTWZhHW3
- eBC/SrpcPZLweyK+KaiRylzjK7FOh1FtgZmTx2F3eV9iT84XwvBp8hhqUM2Wan1/gKtXfraFDUg
- niMaHBBcdbHH4KXe6+pnInCzNFl7yb0MW9eL9P7dZXE6aIH5E2nt0Nl0JfdTsZR8dsUrv4zZ9Xn
- rdvOYQRe0hjCV6WKTJ7Q/mDhIrVOeb47I69XYxlipuYlBRnkp/4qGP6BKGA4sMdZhppExWQr58R
- +akpa+wy6byk7qZuiT+c=
-X-Received: by 2002:a05:600c:1da0:b0:43c:f81d:f with SMTP id
- 5b1f17b1804b1-43f3a93f338mr93956935e9.8.1744627419312; 
- Mon, 14 Apr 2025 03:43:39 -0700 (PDT)
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39eae979615sm10901367f8f.54.2025.04.14.03.43.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Apr 2025 03:43:38 -0700 (PDT)
-Message-ID: <834ad4b1-9dac-4559-b4da-bec6e6d4a945@linaro.org>
-Date: Mon, 14 Apr 2025 12:43:38 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1u4cYK-0000hL-6F; Tue, 15 Apr 2025 05:26:01 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1u4cYG-0002NX-7E; Tue, 15 Apr 2025 05:25:59 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZcJZL5lXcz6M4jR;
+ Tue, 15 Apr 2025 17:21:46 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1C8CA140114;
+ Tue, 15 Apr 2025 17:25:44 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 15 Apr
+ 2025 11:25:43 +0200
+Date: Tue, 15 Apr 2025 10:25:42 +0100
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ <linuxarm@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
+ <ddutile@redhat.com>, <berrange@redhat.com>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH 4/5] hw/arm/virt: Add support for smmuv3 device
+Message-ID: <20250415102542.00007fd7@huawei.com>
+In-Reply-To: <20250415081104.71708-5-shameerali.kolothum.thodi@huawei.com>
+References: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
+ <20250415081104.71708-5-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm: Attach PSPI module to NPCM8XX SoC
-To: Tim Lee <timlee660101@gmail.com>, peter.maydell@linaro.org,
- wuhaotsh@google.com, kfting@nuvoton.com, chli30@nuvoton.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20250414020629.1867106-1-timlee660101@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250414020629.1867106-1-timlee660101@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -133,22 +103,180 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ShVK3onc9x5p
+X-TUID: XRVh4zm5P382
 
-On 14/4/25 04:06, Tim Lee wrote:
-> Nuvoton's PSPI is a general purpose SPI module which enables
-> connections to SPI-based peripheral devices. Attach it to the NPCM8XX.
+On Tue, 15 Apr 2025 09:11:03 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> Allow cold-plug of smmuv3 device to virt If the machine wide smmuv3
+> or a virtio-iommu is not specified.
 > 
-> Tested:
-> NPCM8XX PSPI driver probed successfully from dmesg log.
+> Also restrict the usage if virt <= 9.2. This will prevent accidently
+> creating a SMMUv3 device on machines prior to 9.2 and cause failure
+> on migrating to machines with same version but has a legacy smmuv3
+> device.
+
+Hi,
+
+As we discussed internally I'm not convinced we need to prevent this particular
+way for a user to shoot themselves in the foot.
+
+To be a problem they have to specifically request an old machine + the
+device that didn't exist for that machine, then migrate to a real old
+version of QEMU.  Agreed it is possible but I'm not sure we need to
+prevent that particular crazy.
+
+Jonathan
+
+
 > 
-> Signed-off-by: Tim Lee <timlee660101@gmail.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->   hw/arm/npcm8xx.c         | 11 ++++++++++-
->   include/hw/arm/npcm8xx.h |  2 ++
->   2 files changed, 12 insertions(+), 1 deletion(-)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ToDo: probably need to change virt <= 9.2 to 10.0 considering the 
+> Qemu cycle we are at now.
+> ---
+>  hw/arm/virt.c         | 54 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/core/sysbus-fdt.c  |  3 +++
+>  include/hw/arm/virt.h |  1 +
+>  3 files changed, 58 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 729f192558..8d0ae79f4d 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -56,6 +56,7 @@
+>  #include "qemu/cutils.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/module.h"
+> +#include "hw/pci/pci_bus.h"
+>  #include "hw/pci-host/gpex.h"
+>  #include "hw/virtio/virtio-pci.h"
+>  #include "hw/core/sysbus-fdt.h"
+> @@ -1445,6 +1446,31 @@ static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
+>      g_free(node);
+>  }
+>  
+> +static void create_smmuv3_dev_dtb(VirtMachineState *vms,
+> +                                  DeviceState *dev)
+> +{
+> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> +    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
+> +    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
+> +    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+> +    MachineState *ms = MACHINE(vms);
+> +    PCIBus *bus;
+> +
+> +    bus = PCI_BUS(object_property_get_link(OBJECT(dev), "primary-bus",
+> +                                           &error_abort));
+> +    if (strcmp("pcie.0", bus->qbus.name)) {
+> +        warn_report("SMMUv3 device only supported with pcie.0 for DT");
+> +        return;
+> +    }
+> +    base += vms->memmap[VIRT_PLATFORM_BUS].base;
+> +    irq += vms->irqmap[VIRT_PLATFORM_BUS];
+> +
+> +    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+> +    create_smmuv3_dt_bindings(vms, base, irq);
+> +    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
+> +                           0x0, vms->iommu_phandle, 0x0, 0x10000);
+> +}
+> +
+>  static void create_smmu(const VirtMachineState *vms,
+>                          PCIBus *bus)
+>  {
+> @@ -2944,6 +2970,18 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>          qlist_append_str(reserved_regions, resv_prop_str);
+>          qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+>          g_free(resv_prop_str);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_DEV)) {
+> +        VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> +
+> +        if (vmc->no_smmuv3_device) {
+> +            error_setg(errp, "virt machine does not support arm-smmuv3-device");
+> +        } else if ((vms->iommu == VIRT_IOMMU_VIRTIO) ||
+> +                   (vms->iommu == VIRT_IOMMU_SMMUV3)) {
+> +            error_setg(errp, "virt machine already has %s set."
+> +                       "Doesn't support multiple incompatible iommus",
+> +                       (vms->iommu == VIRT_IOMMU_VIRTIO) ?
+> +                       "virtio-iommu" : "iommu=smmuv3");
+> +        }
+>      }
+>  }
+>  
+> @@ -2967,6 +3005,19 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>          virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+>      }
+>  
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_DEV)) {
+> +        VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> +
+> +        create_smmuv3_dev_dtb(vms, dev);
+> +        if (vms->iommu != VIRT_IOMMU_SMMUV3_DEV) {
+> +            vms->iommu = VIRT_IOMMU_SMMUV3_DEV;
+> +        }
+> +        if (!vmc->no_nested_smmu) {
+> +            object_property_set_str(OBJECT(dev), "stage", "nested",
+> +                                    &error_fatal);
+> +        }
+> +    }
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+>          PCIDevice *pdev = PCI_DEVICE(dev);
+>  
+> @@ -3169,6 +3220,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_DEV);
+>  #ifdef CONFIG_TPM
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+>  #endif
+> @@ -3418,8 +3470,10 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 0)
+>  
+>  static void virt_machine_9_2_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+>      virt_machine_10_0_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_9_2, hw_compat_9_2_len);
+> +    vmc->no_smmuv3_device = true;
+>  }
+>  DEFINE_VIRT_MACHINE(9, 2)
+>  
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index e85066b905..ec90ed2c14 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -31,6 +31,7 @@
+>  #include "qemu/error-report.h"
+>  #include "system/device_tree.h"
+>  #include "system/tpm.h"
+> +#include "hw/arm/smmuv3.h"
+>  #include "hw/platform-bus.h"
+>  #include "hw/vfio/vfio-platform.h"
+>  #include "hw/vfio/vfio-calxeda-xgmac.h"
+> @@ -512,6 +513,8 @@ static const BindingEntry bindings[] = {
+>  #ifdef CONFIG_LINUX
+>      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
+>      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
+> +    /* No generic DT support for smmuv3 dev. Support added for arm virt only */
+> +    TYPE_BINDING(TYPE_ARM_SMMUV3_DEV, no_fdt_node),
+>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+>  #endif
+>  #ifdef CONFIG_TPM
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 12395c7594..9f98345c92 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -136,6 +136,7 @@ struct VirtMachineClass {
+>      bool no_tcg_lpa2;
+>      bool no_ns_el2_virt_timer_irq;
+>      bool no_nested_smmu;
+> +    bool no_smmuv3_device;
+>  };
+>  
+>  struct VirtMachineState {
 

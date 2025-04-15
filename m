@@ -1,174 +1,295 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2476174njc;
-        Tue, 15 Apr 2025 00:20:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUdTUI/39NGnn77yO9sA2LS5MHvhdP7xgqLcU5nyy2i6tOsDZzkIIsMmvPTTsd5Y97oWX77kZNneiA9RA==@linaro.org
-X-Received: by 2002:a05:6000:4285:b0:39c:16a0:feef with SMTP id ffacd0b85a97d-39eaaec76bemr10911873f8f.38.1744701657703;
-        Tue, 15 Apr 2025 00:20:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744701657; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2486358njc;
+        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU0trDYdr2s0r779g2bnkXtwImk8bci7AaoZCUSDrlhA0DhJWYctfttqoqE/UmhuDL8lADy1rG18Zc8zg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHBLSZHgS2Jn1yDZBeH6rUyxjqtU2OynRJZ35uoQNNABphXJeAd9bf+R7psT5yuyZeXiJZp
+X-Received: by 2002:a05:622a:1902:b0:476:964a:e335 with SMTP id d75a77b69052e-4797755aaacmr157351351cf.24.1744703443360;
+        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744703443; cv=none;
         d=google.com; s=arc-20240605;
-        b=JEr95VVIjRWDeN8EBmUN8eeLAUpb+xsDnG4P9CY8/dUtt7y4OLpyK63PLTSAZBIYA0
-         Ae2Q3z8ZwuNLu/C1wcwSWXGjMHbJJY3/q42aPGsGKAJ0oWMYSeiIbk0aoL/UVNv2eYCC
-         dnlijps00b3WZckXO9p4FJxHqTGmiVFok0jRiMGkytCiDszWvumeh/jbKVf4iH1PQNN3
-         /1+AHluXTjX+TVfhvqmEsiPMx7FYs+3Tn8f3nC4brbVvWMteZhF3BHPLseJr7QP9tLJ8
-         eh5OY23tNVGzfauiuKsx23+W903C3bZRzib4RjczpDYMfOYbvlCC4yVMlhtpx1jURJxB
-         Fkfg==
+        b=FWXyo91QHWkn9wKY81yPsdR2HSQk+Tbpye2L3CW7+zroWvaJ6aEpumw0boJC3qtynh
+         ezElhKGlNt70pD+q/i2TBbK/WrTiZeg5KBjMomvpbQq80U0D+H6gz2YgUjYrskeNqwqg
+         u3S83TvkRsMNnL4lnyJa6QY/VIdVNNQtiNCOO61poYCmQuLnBmig6FUzbgp3wavzFSNH
+         v6LGkTTaVxB4i97rkiUHovWq6WAjUlyQ2yFTh/+NjL3GoepSAdLk8m/6Euw2DgIlO1xI
+         LueL93G+g96Bz4xMxJVG53pHzJqtICM1CktMipNzoxQjuEPNxmdoY/nvqWXjPRNyOlO5
+         Mkew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=hH8+sIlY1RoZcJVObMFX4ZA0+K3VlclfSxJRg4vxEo4=;
-        fh=jbAN6jvg2DeDqZMabpjlTX1ym4ml9mKtjNT9stBBRXQ=;
-        b=Bvwn78TGkxWb5/ilWOWtTG0Mdea0A01Lj++GyioxtiqGb1u9CfZAHycWzht80euqgB
-         6HExamsb0Y+4GHSYk1Wqx/vfDsX8o+PGsi6QgTtDUtOi0DmfocJ++hEvPF3LrUR/Qbap
-         YuHWwzjZfxceb4/Gbdd7F1bW9+evtogtl9fX/2kveNd+rfEz4PM936EWjckpf1aYJ4hu
-         88ZYMVP1oXm6iAQ5eygMffT1fPrLRU5F0JD0yY+rUMblb4FndZHHqIuwwHzc20IqtO19
-         h0lqDEGh8Q7cMz63VnsZL49yFR/1l87inBfIbiNJP5Yrz8St0VjlVhSa90ReRywXXjyZ
-         3/yg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
+        fh=7IMKCbFgifz+lQR046y8Ul5TYdHCuD0l8AStsaLFZCo=;
+        b=RV79A9GSPW22HvM2boispswut9JQ+BTfJbd/NHxpiwvgjGF/mm/K3dDtd4hF2l+8LA
+         Gtacz3ToTX1EPtBUbOibCgWAcIokmtOkpBiCmKF8qYGJdrzp8/2E1X5ilAxSJCIX6FuL
+         6hGtWmA28aS4CXcpwSop5jp8UR0y3aBpn2iHOQDgcnhP+beqJ793dNCoFEvooRmmj/ut
+         l9OLJgSwdSZurodFXysQpmSTtXJnN3k3nnRM4pd9Dt+YTXmRwJ2wXTxYU8evH7orA84w
+         QLNfhQVIUIvsxNSjmPMyz6z7PtCOPJX6w9nBHVrNq7ggvfWK0JRhHVZr53ol/yH8B92X
+         9YXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="cG1nEC/f";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43f23380fcbsor67501965e9.2.2025.04.15.00.20.57
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzrfM10Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4796edd6156si106825511cf.396.2025.04.15.00.50.43
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 15 Apr 2025 00:20:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="cG1nEC/f";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744701657; x=1745306457; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=hH8+sIlY1RoZcJVObMFX4ZA0+K3VlclfSxJRg4vxEo4=;
-        b=cG1nEC/fMvjgs0obs3J1wygt0BpqT2ik6xwxMrWC/8fofc1aSpRM+rC+Q8vAX59x7N
-         hQQDQOCSTbUCgwIcBpGrK9TWvDJCXaKUXGw63JLMD7OGAt5XKPV43ii/YeFCOISh4agS
-         OhGW5bEKA2uvVu5erlMvdddKTn0PPoJfRV8JIea/BwbDsiSEztjqHgDIFNrVwjBRdOSN
-         Zgls3m66NkPEJ9/8HU2RTturZIvJgzVUNPiTdEogFNUM/wg85Vc+TUtadp7SYOkejf+R
-         qK5Q9BCT6zJ6IBHyfWqpDcN8y33SWnM6kJ8sSaeDxK+rRxbUamMDCGq0S66aLHH0Ml43
-         SOVA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzrfM10Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u4b3l-0003Ak-V7; Tue, 15 Apr 2025 03:50:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1u4b3j-0003AF-7d
+ for qemu-devel@nongnu.org; Tue, 15 Apr 2025 03:50:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1u4b3g-0007ZS-EI
+ for qemu-devel@nongnu.org; Tue, 15 Apr 2025 03:50:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1744703412;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
+ b=EzrfM10ZKNRc2hEY4/otiRrzwGuZjCkDb1LyOMQlBd6RLB4Q1o5tPebxQMj7Ud+91jDwdp
+ yqHQWxf5pu5Pc0YyFYiSVapGDUypJqJr4PGum/7BWsvZb/YBPR0Dnvr2Rz1xIxGi1TYW7J
+ ZKckTlyZDk2j3EbP5LepcYUh5IxpSNQ=
+Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
+ [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-588-5l6JnsNTO9auxSgewafZ9w-1; Tue, 15 Apr 2025 03:50:09 -0400
+X-MC-Unique: 5l6JnsNTO9auxSgewafZ9w-1
+X-Mimecast-MFC-AGG-ID: 5l6JnsNTO9auxSgewafZ9w_1744703408
+Received: by mail-pf1-f200.google.com with SMTP id
+ d2e1a72fcca58-739525d4d7bso3755981b3a.2
+ for <qemu-devel@nongnu.org>; Tue, 15 Apr 2025 00:50:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744701657; x=1745306457;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hH8+sIlY1RoZcJVObMFX4ZA0+K3VlclfSxJRg4vxEo4=;
-        b=qaAQHTOPIUkmXfziZjojKRfEqZDvc9V0M8dMXyzFpTBxz2uNBbTnYTyqT3Y5Mm/sBx
-         L+9QUDN0u4kIQ0FHMNCwKHzmB6AiLEelEwCtA26fB5z/lcFTe7r5urQ1unlK3lRfiLxH
-         M+RfL8eObIcvVg2lpbbkfWZ9G3BLXjW2F+yUnVpgPnb6r0HN4/G7779oUGoNIOgstFSF
-         UC0vBA6fWQ8LD2+rZEYMKzNKmU5jk2j6eSnKB7u1qnXweYUL0tKXNSlqiJ+KY4jPROlH
-         HctTD7tf6IiChaKq+sbxaBfrhIyw6e9muW2Nb8pgBWgdU8IHi663dZ/Ztq0VVc206PMO
-         Ih7A==
-X-Forwarded-Encrypted: i=1; AJvYcCXCcHmHs6LDp3bqwD74mRj61ld+P7h7zhE6HEx5VXqdgteEtPK0IiyhYe++R9XuQSRpROrvtwQ3FmekuA==@linaro.org
-X-Gm-Message-State: AOJu0Yyoy7Zy1nDrWwt+pdIxmwdXflfsvisHZ+5HXevTolbt6lz9UCIT
-	yOcO0dIGq4ItX+670Ss+j2egWis8foxNaPEyx1tVUQstQaKsE8Q2rKoG4e2NcDMqUQ==
-X-Gm-Gg: ASbGnctcTvWgBh7herpB9KGD0tqKyvXy2ZNpzB5jNR6RG/JYFBpyH2rNTXKtfO0EcAK
-	f9WHsi2/SEgXJxb24AMznW/F+d/gAvW1YHTybWj7iqRxA7EwhBqEqpmnRoTHJGdMdN0LCdguZ4S
-	4nZxPtghm8CpmRZwxA6LX45wzr64QtWYelVsrfRCE/Ifox4zl52IIIadiz3yDUH5oULddLJDnH+
-	DJWdCicIRzuz0zeB1Sxmd6W+J29FZOLZIiDKofGM+7sU8jsKmlcMvdWZpWY/KnGlv4LrCc40MDt
-	LLml3GMADTpPEAYFaKYCwkMjEdn05h6h5Pvi8a4S/e5XoGvF64wTauTBbe/Vb5Dhe4En2yMBbhq
-	dxyzMT6bz
-X-Google-Smtp-Source: AGHT+IGMKQVqURwl9R+Cxj7iwnbtFUMFNP8OTb/dvkhY2+jVXZZuTDzVjeEZnPKZQibjq2fpiV5KdA==
-X-Received: by 2002:a05:600c:1d83:b0:43c:f3e4:d6f7 with SMTP id 5b1f17b1804b1-43f3a9afdeamr152724645e9.31.1744701657130;
-        Tue, 15 Apr 2025 00:20:57 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f205ecb20sm201470335e9.3.2025.04.15.00.20.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Apr 2025 00:20:55 -0700 (PDT)
-Message-ID: <823616d0-77d4-41b8-b8b4-a7830cb8d112@linaro.org>
-Date: Tue, 15 Apr 2025 09:20:54 +0200
+ d=1e100.net; s=20230601; t=1744703408; x=1745308208;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
+ b=Hf3+at18bR33WmPfJW+/HGs2OVys/muIJ5nE1EZHFyYggkc+87V/hNVJrPdnCNnSI0
+ hMYSFN2+T5V1V4MmsBS26l4L9VCxOGRW1F4psaj1WKSGYM3mkEO/kcYTQIl03qdkwUdB
+ ZM7G1usn/MzeqvYwJPY3ctEfCvYlOV3QGjeINwWftkkAINcmVawbXHy90JtZOYPtieWl
+ dzq7Dwe0jwjgb3b3a9dD+6HbzRYi7cKl3D8nr5mBfFWZFVmEjeeJbTCxU95kK1pgMkHv
+ vWGDJ89+5JH4rRQBvyOV2Jn9Gtqkrwu3gLCUEdg0Xe5dKWqXg8gQ2ABVkS9RevsJoWbf
+ GuWw==
+X-Gm-Message-State: AOJu0Yz6hrAiQFiC+2yhfHpPens5hWGXBhZgYYaLno/bgW16wKamCbNX
+ xuMyWMuR+QmhiNPLOL+lhU1c7NzqOoBHBm+Qa81c0Kc7Mu3+zYdLykP1Cbu7UrL7WIoZZl1XI1U
+ wMWR5qt/J8ZjzOK1qyo+FpTf5cS8hTwU/yA2ZXxofYzmy4LW2PiA4
+X-Gm-Gg: ASbGncs8B8vDjSK7raZWs8tgnk299Gq8CYKDUw94z/emoC7Hzz8LDMUQrtP7CpgbHJ+
+ 1yWkoR5JqpRPSflIBnpfmANvfnwl7zdyoExEqB8ZqM3CfqSt6X/Kp6CfZb71EdXTuD505QfJSEf
+ wZlENnmxy4RJ12MPxpBjFXgipzvt/T2lEtIyDavOaB30Ig+JAsNjR0TezfMHaAzRCUtb/C0SeQ1
+ YWboBLjRR/ykBeRuosgCKzBiWAZgO45g9bhqAPlbIspZlymIEZmkkKflvb1AFmNMeyLBjwlT7Vx
+ AQ1hBhBuoQh5A0tG
+X-Received: by 2002:a05:6a21:32a3:b0:1f5:9208:3ac7 with SMTP id
+ adf61e73a8af0-20179995dcbmr27309140637.41.1744703408544; 
+ Tue, 15 Apr 2025 00:50:08 -0700 (PDT)
+X-Received: by 2002:a05:6a21:32a3:b0:1f5:9208:3ac7 with SMTP id
+ adf61e73a8af0-20179995dcbmr27309086637.41.1744703407997; 
+ Tue, 15 Apr 2025 00:50:07 -0700 (PDT)
+Received: from [10.72.116.169] ([209.132.188.88])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-73bd1fe6b4esm7881572b3a.0.2025.04.15.00.50.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Apr 2025 00:50:07 -0700 (PDT)
+Message-ID: <21f3fedd-274e-4e81-87f8-369deefa8c1a@redhat.com>
+Date: Tue, 15 Apr 2025 15:49:59 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 02/10] arm/cpu: Add sysreg properties generation
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
- pbonzini@redhat.com
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-3-cohuck@redhat.com>
- <0fb4cd74-bcbf-4063-bc3b-0e8359d04117@linaro.org>
+Subject: Re: [PATCH 0/5] accel/kvm: Support KVM PMU filter
+To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
+ <mtosatti@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
+ <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
 Content-Language: en-US
-In-Reply-To: <0fb4cd74-bcbf-4063-bc3b-0e8359d04117@linaro.org>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <20250409082649.14733-1-zhao1.liu@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 0NIb/w/OGIGr
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PbzOWv67R92p
 
-On 15/4/25 09:09, Philippe Mathieu-Daudé wrote:
-> On 14/4/25 18:38, Cornelia Huck wrote:
->> From: Eric Auger <eric.auger@redhat.com>
->>
->> Introduce a script that automates the generation of system register
->> properties definitions from a given linux source tree
->> arch/arm64/tools/sysreg.
->>
->> Invocation of
->> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
->> in scripts directory additionally generates
->> target/arm/cpu-sysreg-properties.c containing definitions for
->> feature ID registers.
->>
->> update-aarch64-sysreg-code.sh additionally calls
->> gen-cpu-sysreg-properties.awk which is inherited from kernel
->> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
->> the original author of this script.
->>
->> [CH: split off from original patch adding both sysreg definitions
->>   and properties]
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->>   scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++++++++++++++++
->>   scripts/update-aarch64-sysreg-code.sh |   5 +-
->>   2 files changed, 329 insertions(+), 1 deletion(-)
->>   create mode 100755 scripts/gen-cpu-sysreg-properties.awk
->>
->> diff --git a/scripts/gen-cpu-sysreg-properties.awk b/scripts/gen-cpu- 
->> sysreg-properties.awk
->> new file mode 100755
->> index 000000000000..76c37938b168
->> --- /dev/null
->> +++ b/scripts/gen-cpu-sysreg-properties.awk
->> @@ -0,0 +1,325 @@
->> +#!/bin/awk -f
->> +# SPDX-License-Identifier: GPL-2.0
->> +# gen-cpu-sysreg-properties.awk: arm64 sysreg header generator
->> +#
->> +# Usage: awk -f gen-cpu-sysreg-properties.awk $LINUX_PATH/arch/arm64/ 
->> tools/sysreg
-> 
-> 
->> +BEGIN {
-> 
->          print "/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n"
-> 
-> Should we keep copyright?
+Hi Zhao,
 
-(if so, preferably as SPDX tag)
+I've added some code and test it on ARM64, it works very well.
 
+And after reviewing the code, it looks good to me.
+
+Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+
+On 4/9/25 4:26 PM, Zhao Liu wrote:
+> Hi all,
 > 
->> +    print "#include \"cpu-custom.h\""
->> +    print ""
->> +    print "ARM64SysReg arm64_id_regs[NUM_ID_IDX];"
->> +    print ""
->> +    print "void initialize_cpu_sysreg_properties(void)"
->> +    print "{"
->> +        print "    memset(arm64_id_regs, 0, sizeof(ARM64SysReg) * 
->> NUM_ID_IDX);"
->> +        print ""
->> +
->> +    __current_block_depth = 0
->> +    __current_block[__current_block_depth] = "Root"
->> +}
+> Now I've converted the previous RFC (v2) to PATCH.
+> 
+> Compared with RFC v2 [1], this version mianly have the following
+> changes:
+>   * Make PMU related QAPIs accept decimal value instead of string.
+>   * Introduce a three-level QAPI section to organize KVM PMU stuff.
+>   * Fix QAPI related style issues.
+>   * Rename "x86-default" format to "x86-select-umask".
+> 
+> Current pmu-filter QOM design could meet the requirements of both x86
+> and ARM sides.
+> 
+> 
+> Background
+> ==========
+> 
+> I picked up Shaoqing's previous work [2] on the KVM PMU filter for arm,
+> and now is trying to support this feature for x86 with a JSON-compatible
+> API.
+> 
+> While arm and x86 use different KVM ioctls to configure the PMU filter,
+> considering they all have similar inputs (PMU event + action), it is
+> still possible to abstract a generic, cross-architecture kvm-pmu-filter
+> object and provide users with a sufficiently generic or near-consistent
+> QAPI interface.
+> 
+> That's what I did in this series, a new kvm-pmu-filter object, with the
+> API like:
+> 
+> -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":196}]}'
+> 
+> For x86, this object is inserted into kvm accelerator and is extended
+> to support fixed-counter and more formats ("x86-default" and
+> "x86-masked-entry"):
+> 
+> -accel kvm,pmu-filter=f0 \
+> -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","x86-fixed-counter":0,"events":[{"format":"x86-masked-entry","select":196,"mask":255,"match":0,"exclude":true},{"format":"x86-masked-entry","select":197,"mask":255,"match":0,"exclude":true}]}'
+> 
+> This object can still be added as the property to the arch CPU if it is
+> desired as a per CPU feature (as Shaoqin did for arm before).
+> 
+> 
+> Introduction
+> ============
+> 
+> 
+> Formats supported in kvm-pmu-filter
+> -----------------------------------
+> 
+> This series supports 3 formats:
+> 
+> * raw format (general format).
+> 
+>    This format indicates the code that has been encoded to be able to
+>    index the PMU events, and which can be delivered directly to the KVM
+>    ioctl. For arm, this means the event code, and for i386, this means
+>    the raw event with the layout like:
+> 
+>        select high bit | umask | select low bits
+> 
+> * x86-select-umask format (i386 specific)
+> 
+>    x86 commonly uses select&umask to identify PMU events, and this format
+>    is used to support the select&umask. Then QEMU will encode select and
+>    umask into a raw format code.
+> 
+> * x86-masked-entry (i386 specific)
+> 
+>    This is a special format that x86's KVM_SET_PMU_EVENT_FILTER supports.
+> 
+> 
+> CPU property v.s. KVM property
+> ------------------------------
+> 
+> In Shaoqin's previous implementation [2], KVM PMU filter is made as a
+> arm CPU property. This is because arm uses a per CPU ioctl
+> (KVM_SET_DEVICE_ATTR) to configure KVM PMU filter.
+> 
+> However, for x86, the dependent ioctl (KVM_SET_PMU_EVENT_FILTER) is per
+> VM. In the meantime, considering that for hybrid architecture, maybe in
+> the future there will be a new per vCPU ioctl, or there will be
+> practices to support filter fixed counter by configuring CPUIDs.
+> 
+> Based on the above thoughts, for x86, it is not appropriate to make the
+> current per-VM ioctl-based PMU filter a CPU property. Instead, I make it
+> a kvm property and configure it via "-accel kvm,pmu-filter=obj_id".
+> 
+> So in summary, it is feasible to use the KVM PMU filter as either a CPU
+> or a KVM property, depending on whether it is used as a CPU feature or a
+> VM feature.
+> 
+> The kvm-pmu-filter object, as an abstraction, is general enough to
+> support filter configurations for different scopes (per-CPU or per-VM).
+> 
+> [1]: https://lore.kernel.org/qemu-devel/20250122090517.294083-1-zhao1.liu@intel.com/
+> [2]: https://lore.kernel.org/qemu-devel/20240409024940.180107-1-shahuang@redhat.com/
+> 
+> Thanks and Best Regards,
+> Zhao
+> ---
+> Zhao Liu (5):
+>    qapi/qom: Introduce kvm-pmu-filter object
+>    i386/kvm: Support basic KVM PMU filter
+>    i386/kvm: Support event with select & umask format in KVM PMU filter
+>    i386/kvm: Support event with masked entry format in KVM PMU filter
+>    i386/kvm: Support fixed counter in KVM PMU filter
+> 
+>   MAINTAINERS              |   2 +
+>   accel/kvm/kvm-pmu.c      | 177 +++++++++++++++++++++++++++++++++++++++
+>   accel/kvm/meson.build    |   1 +
+>   include/system/kvm-pmu.h |  51 +++++++++++
+>   include/system/kvm_int.h |   2 +
+>   qapi/accelerator.json    |  14 ++++
+>   qapi/kvm.json            | 130 ++++++++++++++++++++++++++++
+>   qapi/meson.build         |   1 +
+>   qapi/qapi-schema.json    |   1 +
+>   qapi/qom.json            |   3 +
+>   qemu-options.hx          |  67 ++++++++++++++-
+>   target/i386/kvm/kvm.c    | 176 ++++++++++++++++++++++++++++++++++++++
+>   12 files changed, 624 insertions(+), 1 deletion(-)
+>   create mode 100644 accel/kvm/kvm-pmu.c
+>   create mode 100644 include/system/kvm-pmu.h
+>   create mode 100644 qapi/accelerator.json
+>   create mode 100644 qapi/kvm.json
+> 
+
+-- 
+Shaoqin
+

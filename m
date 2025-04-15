@@ -1,92 +1,92 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2468761njc;
-        Tue, 15 Apr 2025 00:03:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWEXneuqXe6xwnaFtH7TqTThLaVms1TvnBj1/Jv+rnXne1O0Jji58oPlzMspzTA/lhsd1Tcx3t9HwdVRg==@linaro.org
-X-Received: by 2002:a5d:5f94:0:b0:39c:1f02:44ae with SMTP id ffacd0b85a97d-39ea54fd3d6mr13512791f8f.27.1744700588517;
-        Tue, 15 Apr 2025 00:03:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744700588; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2471685njc;
+        Tue, 15 Apr 2025 00:09:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUkfHc5nqKbyWuCE0cL/RlJtJuSXv9Z+uSQONlwKsByrXnxoRrfuB311dlR1/BPWxmWQknsCaQIalZcOg==@linaro.org
+X-Received: by 2002:a05:600c:384b:b0:43c:f3e4:d6f6 with SMTP id 5b1f17b1804b1-43f3a9b1564mr170974975e9.31.1744700953118;
+        Tue, 15 Apr 2025 00:09:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744700953; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZaGaXCwKRLR0iiBaKBU89p0sEoNjidaaGVZFVgBF/YSwy8RiJZ0xsX5cTydcBkW3i3
-         zE4raJ4rKJVilz8/fz0yH4FUh6YCHBCWctZeg0Q/L0PeNIBcT9YsnwDPzYJ1aJPHYdXy
-         Bfa5Nv17wJ21Kt32UQ8KfGRGE3wmrripi/PJqz24n0eUkG2MJotvfPL/rP+Yn+XRM2CF
-         7IlQ/mCGCuVVj0ZgkUIj5SZVb6UCu2IK3iYJn0GQ6+av6lBRfZMbt6mAkv6DNPcxu2Tm
-         Gg8M51XwFG3mfSp1xvZDRtwMt6qoPXuGGcTGujR502fS+2KNPm8Q6hIUk30gEBn+4/1y
-         hSvQ==
+        b=Cy7xOYCt3KK8qAA4IymeExoV4lylmyojbaI6Gm99yxPlJwcc1M00ZdJsMLCGKRb4NF
+         Ym3p03Oihx+oZJn272flganH4GhiftEH1AcejwDfYDZ3hH1O3ZKSSOLOFkUUFdVeer9N
+         adInmZNMZpgXpjzjVSPScVX/PmtK8nXxaOMTEqdm8uLAwAnUyJ1CsGYepZTJnsWmRGQw
+         HoeMZNKCtxVW5Lxg4Gsg1E14Ls1qodPHXsozPNucRwXMiSeLJSwPnryW0tdJWK38c/Lb
+         2maSjMZpl/VdxHCsQXfujjuI4OhyZQSyPfiydA3e8rOWCE2r3c2BaaGFcicVT28l8Lqe
+         AcbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=gQIZTL9G2c/6upLFkGLhEBR0xC+hQ/0nufe0kTqCXv8=;
-        fh=4wwVIo/95iVF1gRkeHgxArmMwWm6RdgQwHZeN6AIDKo=;
-        b=QWZ4/kusO952TVu0GgNDAlwbDEK+ytjEtu3VBq5efNJTn9qXfoqhp6ybmhuXncaa+4
-         VgpluVUS0KBIfl/2Vg4x7shzsA5Md7QEaZwDAUFNnCOuP5CsBgr5dNfehsyp05ET6uZg
-         Mnpvp081uK6XRRnHziRfu0iNtDyKD0yru67OG8GdS9ACAl7pql/r/WwRkY3nIrhETOrp
-         RE5WBCaIf65zB3Y7dzQQaDFLcfzpA3lPiH3HIdJVDG7mWuSxgy4ZyzqIpc8+aQdsFJqE
-         lZFh4qjOBSANTd1poLkZhMhtaJIRU4IHk8Cdm2NBs2oA0QWx6TMyT1ApXPt4F0hcHIxq
-         qPGQ==;
+        bh=HQorS3qs/9wF+hxqJeIyqNgmDflvogIXAEEo0HyX7cg=;
+        fh=R7T/p++LYe2ZW5XG1ATMo6ApFG6FzhKm3oEf7klmOJo=;
+        b=hQKN2ZdzxPGsxd7U2qY9i33ryi4BhTGN+FXg3ozRhlCI7BhQxdRX6q5fU/KLR+7geH
+         Hqiauzbvy54t1w8SNU6RXIIfDBJmThQpWFGwTQ/nysyrgMZ6B7kck6G9qzG0CDFNitSb
+         7NEg3JKCar6Pmeifz92pTP0bIpksK+I7giPUBZ51Olpzsf0q1IBafWt4FN+WCKTKkDjM
+         a+fQ+wWMGr1GLb1tsG1ZzxBVFX8QWvAlBshJ693W+USR52uZeFuC9pq8LDe6KBECvAfU
+         e+yiwaGBl+uhZdFRGY4CIP5CbkmbhbEvYJRzmYbqbYPYbK+1YMFFFRoiYkg1mX5znBAb
+         pZjQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eqdT7c1b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NSeShalz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-39d89403151sor161912f8f.9.2025.04.15.00.03.08
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43f2358fd72sor42380785e9.6.2025.04.15.00.09.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 15 Apr 2025 00:03:08 -0700 (PDT)
+        Tue, 15 Apr 2025 00:09:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eqdT7c1b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NSeShalz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744700588; x=1745305388; darn=linaro.org;
+        d=linaro.org; s=google; t=1744700952; x=1745305752; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=gQIZTL9G2c/6upLFkGLhEBR0xC+hQ/0nufe0kTqCXv8=;
-        b=eqdT7c1bjOcPsiV1LokFzYDi3c1I8CuwiuLJtEYG3krIVZZpm0L/Rqe17CpbnHz+1y
-         3/h2Mq8t1fedZnOy4hPFQGy0E1mz2dZ7cJcFBGuHe10jzdRJ3bSGB8P+86Dy3ZTRaoyH
-         82x3MndcAncnYhagjnv4bWEEFzVGwN0Vmsdj7PFgvnsH3PS/ueqhDizPzuvXiNdzDeQA
-         SfSVEyXNnemsj3Zs8FJE301iRJn1X+EXdCq02wXTkyqxvy1Cbdanbuw6hbgVA5HS1pFZ
-         PdsopQXKQ4mzcepxyt+Sj56dACwo7C2xZ6MtZzqLXGxUZEq8C9iYdksnxAJsR8TSMx7w
-         bOow==
+        bh=HQorS3qs/9wF+hxqJeIyqNgmDflvogIXAEEo0HyX7cg=;
+        b=NSeShalzMLNT8e1S3RYJyeOOBRbdfCzjek9AQ1OdMiZmI4ZxlgdmIvoIbyxIEPFqm5
+         2hje1tZhnI82otMd84WyA3acxyj+AOGR701ZPlpUY1g1NJR05slvy7jegdJNycCSt35X
+         RDghdZGvPWYWkjdQdxqUTVqsSRlUoehO81j3TyjSucH5lMMBV+gOQvzoc/osg1QZIAZl
+         uXT8Lxpa+TJaz6YCZN73u3nBYvmthVuPV6fttjS+87sS51uBIxB0c/FepmRfnNR9G5BD
+         BSSxJCDO+judMu6AZ/dPLdMmVWhoUmHdVWEo4TrwAc3OFpwEAlI9roZIBtdUKJZzd4Ik
+         7cKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744700588; x=1745305388;
+        d=1e100.net; s=20230601; t=1744700952; x=1745305752;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gQIZTL9G2c/6upLFkGLhEBR0xC+hQ/0nufe0kTqCXv8=;
-        b=ZreU/5X3e6K191WtXhIUa/i0sf+f3irubLxONViW5Hb/gA0BpsK2F4v3xX2I2Bs2A2
-         vihtkDa04J3FCRSi4ZM5d71ufR3nbKeogtxDyAIhRdEU8d/YohPOIldOOb4EVl0BRQHc
-         Pv3j82LW6zvcLCMBJiUNezwt/TN0zGDuo5Rx3/XKGVI1oXPMJ3rOoB9CjuGuK94P/xu1
-         ffA9nvTUf0t1gqLlchoRWVr4BUXFrWe5lahHcl5oW0CDt1pIgGsSOz6myTATZIdV9hbK
-         DNtJLwZuHQSXgL9Hx21LGEXiNwcCQkuwVu6XJKuRM76mVoccATqngHvyOB87ViWuXj3q
-         7rAg==
-X-Forwarded-Encrypted: i=1; AJvYcCXPfrxNRCVpG0rXAzOlgC+klnn0Yv83ZFzDbYFugoOhH+v3UYGq6wxEejyjqbUO0OmfCqn7jq9/tZ1ZVQ==@linaro.org
-X-Gm-Message-State: AOJu0YxE5RaP68DCgbI/sGrBDBoDwyvLwuUbYi1Dbt1LMAxsTKG35rlj
-	0sSXBbj6eQmbPTzRDtNRimK/RS7+Ayg06Ojw0XQxvwazZplgcX78zaVYiMpvZAZD+g==
-X-Gm-Gg: ASbGnct6L00bIc5omZ7NZ8wd5y4qefupIy6T0M9lkDDaf6K4N4pkGLBpJBHSjmBVbCO
-	N3TZYUL9wCdd4OPCDjq6uv/EZV6vGtX3GSKcUYyXKFxy2WP4+OOfEOuZPgWBCK1oTBckV6FYfga
-	xuKXFIX6szw2Ykh813Y7p2ltf2Ayz4iGwCdria3PvICEFAaugPk6BW4pGboMzk7pY6UaidTzBzd
-	QaxlpWLJJ0sZ9Sj2ZwhRbjdHK1lAfwpjE8oPGwCpm5BNSk1w/jl5nqm4H8q5L4owm0PANa9iAdW
-	J2mmiUov1zcadq3mhWZzf2sdUOUHK6xy1O7/OQI+r7a6Nf+ipAMKX4ddamdQcNAIyenTk5sfU/H
-	j2kWDtRmf
-X-Google-Smtp-Source: AGHT+IFdPTJ8LHSnf9kexPXg9Yw57XSpwMyM9HqLdnmKOqq/iid4dTW/LxIaw775eBPO7mzIdnTsQQ==
-X-Received: by 2002:a5d:588a:0:b0:39a:c9b3:e1d7 with SMTP id ffacd0b85a97d-39ea634bf9amr10517202f8f.29.1744700587920;
-        Tue, 15 Apr 2025 00:03:07 -0700 (PDT)
+        bh=HQorS3qs/9wF+hxqJeIyqNgmDflvogIXAEEo0HyX7cg=;
+        b=upSoDwFpJfopRK4D7FBadzCiWdTbH0T4tEZBqvc6KQdiBcYbKWPcoI1cyxGxvmlmc3
+         v98Dp/i3tWuNVRGFwxFH24L3qn5x8MPUteNV5HRXWFqjBd6OS+RkaySVpyfylAF233jz
+         F6h0qAxzpnREBqO024yjO0bg3Dk7bc0W8r09A6XfQ0/Rg6fmg8Q54EPiHQ+qVF9YFNwH
+         nWYg7w2smFvHtJZLZYWvp5Z+QkAUYstxDUuy2Andl5mPZ2blvgzJpcDSuRwRgjVrlJxa
+         UUym9CyQ8WsoWA1vlnwFl1uAO2+DHPpNR24R194M9AFn4c29hryvZKH6+Roop5vuaTth
+         WDWw==
+X-Forwarded-Encrypted: i=1; AJvYcCUnheoevk8mxC/CSF5Guaq51nLd3DKcVFhEiZ26ytcsUxoVMoq1jE044w9QKae3SwFkqWEvwXmWMjYutA==@linaro.org
+X-Gm-Message-State: AOJu0YxIg+UhGtGSY8Gn0x5RE2reLLhQK6+XZqRe66w3i8ylRZByrPj0
+	aj2G6kYDq88tog1/Pty2OIOaDSck1TnS1nakh9hgHpCakMo12lFZH5/g3031eiaUyw==
+X-Gm-Gg: ASbGncs15nDN7NkATHzjW2Rdv7qWEvWCjo2gPJa/3LrX/2W/MLOy/qIX6mQhyLt24vU
+	ZHLEpIHrdA22g2Y2KazJX8nAGX7QTp+4zE8YD6zxrhrdXs+Iw3nsP1y0cbJMyu3Q973pDQCoBLc
+	vUjtnRxksznNwXWdrSykOzIQ0rbIY5pa7IUtRRqfYwrqirUiSrBevRpGf4E8VcNVVtvRtEDd8Am
+	/w229g4px461G1hhvHt2E4E/N2sp2RRZAf4Hz5ZDCdJkBsPE1YUcox0u0hoMFWTQnpioIvHLZIQ
+	n8ijjD+QJ9COT9TVBFVCZn5nxZlZgxef/9NMPFfgQWNms0GLrO3OdEkNcBMWA9Sir8ayzu/Nvhf
+	fQumtEV1r
+X-Google-Smtp-Source: AGHT+IEBCb9hNiit5aB+Gor1TQBCisecLYyLH9/Q7InmyAKhQNWL89req9MQk6VcoCy7HxiIPVKtng==
+X-Received: by 2002:a05:600c:3acd:b0:43d:9d5:474d with SMTP id 5b1f17b1804b1-43f3a7d827emr146771465e9.0.1744700952548;
+        Tue, 15 Apr 2025 00:09:12 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eaf445315sm13165936f8f.82.2025.04.15.00.03.06
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f205ecc73sm201303415e9.8.2025.04.15.00.09.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Apr 2025 00:03:07 -0700 (PDT)
-Message-ID: <5f9a4bc5-5569-437f-8e8d-f386dd51e33a@linaro.org>
-Date: Tue, 15 Apr 2025 09:03:05 +0200
+        Tue, 15 Apr 2025 00:09:12 -0700 (PDT)
+Message-ID: <0fb4cd74-bcbf-4063-bc3b-0e8359d04117@linaro.org>
+Date: Tue, 15 Apr 2025 09:09:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 07/10] arm/kvm: write back modified ID regs to KVM
+Subject: Re: [PATCH v3 02/10] arm/cpu: Add sysreg properties generation
 To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
  eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -97,53 +97,70 @@ To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
 Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
  pbonzini@redhat.com
 References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-8-cohuck@redhat.com>
+ <20250414163849.321857-3-cohuck@redhat.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250414163849.321857-8-cohuck@redhat.com>
+In-Reply-To: <20250414163849.321857-3-cohuck@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: GbkSunNtMos/
+X-TUID: OjHFh/7JQzOm
 
 On 14/4/25 18:38, Cornelia Huck wrote:
 > From: Eric Auger <eric.auger@redhat.com>
 > 
-> We want to give a chance to override the value of host ID regs.
-> In a previous patch we made sure all their values could be fetched
-> through kvm_get_one_reg() calls before their modification. After
-> their potential modification we need to make sure we write back
-> the values through kvm_set_one_reg() calls.
+> Introduce a script that automates the generation of system register
+> properties definitions from a given linux source tree
+> arch/arm64/tools/sysreg.
 > 
-> Make sure the cpreg_list is modified with updated values and
-> transfer those values back to kvm.
+> Invocation of
+> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
+> in scripts directory additionally generates
+> target/arm/cpu-sysreg-properties.c containing definitions for
+> feature ID registers.
 > 
+> update-aarch64-sysreg-code.sh additionally calls
+> gen-cpu-sysreg-properties.awk which is inherited from kernel
+> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
+> the original author of this script.
+> 
+> [CH: split off from original patch adding both sysreg definitions
+>   and properties]
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->   target/arm/kvm.c        | 44 ++++++++++++++++++++++++++++++++++++++++-
->   target/arm/trace-events |  1 +
->   2 files changed, 44 insertions(+), 1 deletion(-)
+>   scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++++++++++++++++
+>   scripts/update-aarch64-sysreg-code.sh |   5 +-
+>   2 files changed, 329 insertions(+), 1 deletion(-)
+>   create mode 100755 scripts/gen-cpu-sysreg-properties.awk
+> 
+> diff --git a/scripts/gen-cpu-sysreg-properties.awk b/scripts/gen-cpu-sysreg-properties.awk
+> new file mode 100755
+> index 000000000000..76c37938b168
+> --- /dev/null
+> +++ b/scripts/gen-cpu-sysreg-properties.awk
+> @@ -0,0 +1,325 @@
+> +#!/bin/awk -f
+> +# SPDX-License-Identifier: GPL-2.0
+> +# gen-cpu-sysreg-properties.awk: arm64 sysreg header generator
+> +#
+> +# Usage: awk -f gen-cpu-sysreg-properties.awk $LINUX_PATH/arch/arm64/tools/sysreg
 
 
->   void kvm_arm_reset_vcpu(ARMCPU *cpu)
->   {
->       int ret;
-> @@ -2050,7 +2083,16 @@ int kvm_arch_init_vcpu(CPUState *cs)
->       }
->       cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->   
-> -    return kvm_arm_init_cpreg_list(cpu);
-> +    ret = kvm_arm_init_cpreg_list(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +    /* overwrite writable ID regs with their updated property values */
-> +    kvm_arm_writable_idregs_to_cpreg_list(cpu);
+> +BEGIN {
+
+         print "/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n"
+
+Should we keep copyright?
+
+> +	print "#include \"cpu-custom.h\""
+> +	print ""
+> +	print "ARM64SysReg arm64_id_regs[NUM_ID_IDX];"
+> +	print ""
+> +	print "void initialize_cpu_sysreg_properties(void)"
+> +	print "{"
+> +        print "    memset(arm64_id_regs, 0, sizeof(ARM64SysReg) * NUM_ID_IDX);"
+> +        print ""
 > +
-> +    write_list_to_kvmstate(cpu, 3);
-
-s/3/KVM_PUT_FULL_STATE/?
-
-> +
-> +    return 0;
->   }
+> +	__current_block_depth = 0
+> +	__current_block[__current_block_depth] = "Root"
+> +}

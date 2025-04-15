@@ -1,295 +1,263 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2486358njc;
-        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU0trDYdr2s0r779g2bnkXtwImk8bci7AaoZCUSDrlhA0DhJWYctfttqoqE/UmhuDL8lADy1rG18Zc8zg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHBLSZHgS2Jn1yDZBeH6rUyxjqtU2OynRJZ35uoQNNABphXJeAd9bf+R7psT5yuyZeXiJZp
-X-Received: by 2002:a05:622a:1902:b0:476:964a:e335 with SMTP id d75a77b69052e-4797755aaacmr157351351cf.24.1744703443360;
-        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744703443; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2495707njc;
+        Tue, 15 Apr 2025 01:12:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW3S54jyLhcjFOvWsmWRno8WrB+hRjeowpOQGY5QRDtTDvm81vAYJbsjU8FSwMw+O/MZaZpdgMAsUXFPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9yi8bgpaIRkEwjIwmloYMQa2nyuuvpgc1QVBmMIotVX6MTyCWU5O4xdLcZvaYLC9ZxRdn
+X-Received: by 2002:a05:622a:1306:b0:471:96af:c005 with SMTP id d75a77b69052e-479775cce8dmr232672261cf.33.1744704772953;
+        Tue, 15 Apr 2025 01:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744704772; cv=none;
         d=google.com; s=arc-20240605;
-        b=FWXyo91QHWkn9wKY81yPsdR2HSQk+Tbpye2L3CW7+zroWvaJ6aEpumw0boJC3qtynh
-         ezElhKGlNt70pD+q/i2TBbK/WrTiZeg5KBjMomvpbQq80U0D+H6gz2YgUjYrskeNqwqg
-         u3S83TvkRsMNnL4lnyJa6QY/VIdVNNQtiNCOO61poYCmQuLnBmig6FUzbgp3wavzFSNH
-         v6LGkTTaVxB4i97rkiUHovWq6WAjUlyQ2yFTh/+NjL3GoepSAdLk8m/6Euw2DgIlO1xI
-         LueL93G+g96Bz4xMxJVG53pHzJqtICM1CktMipNzoxQjuEPNxmdoY/nvqWXjPRNyOlO5
-         Mkew==
+        b=P8cLqpDzujAqd9+Jw8SpOycqvcboseOS1uyIC6U7lShyIkkdCJsV5nqIoTA8+w4eMw
+         TafYa0mClQKnzK+6xlq2GM7zrH+LP8l4+0KwEs+uYNVRX0fLB+K8ARc1yEj0b/wGYqsy
+         DLeP4acjIqRueoI7Zp2Dn9fAgf3DRZ6Lalq+I0AdRmDwl2Jk4/yLQwowIUGP7C8mv/dW
+         uNg3HHGaoK22cdrTUslOjhzj6GN7UrIetVHrnfvs1+jdL84qtXAM/G7IMp5Gu03ZQp+O
+         OXMfr16V57pBpm9ZH5Snf6B96+MJBn9OHkaWxpT8C4aBHEscZSEPHDQdZKX3xvfP2vvH
+         UDqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
-        fh=7IMKCbFgifz+lQR046y8Ul5TYdHCuD0l8AStsaLFZCo=;
-        b=RV79A9GSPW22HvM2boispswut9JQ+BTfJbd/NHxpiwvgjGF/mm/K3dDtd4hF2l+8LA
-         Gtacz3ToTX1EPtBUbOibCgWAcIokmtOkpBiCmKF8qYGJdrzp8/2E1X5ilAxSJCIX6FuL
-         6hGtWmA28aS4CXcpwSop5jp8UR0y3aBpn2iHOQDgcnhP+beqJ793dNCoFEvooRmmj/ut
-         l9OLJgSwdSZurodFXysQpmSTtXJnN3k3nnRM4pd9Dt+YTXmRwJ2wXTxYU8evH7orA84w
-         QLNfhQVIUIvsxNSjmPMyz6z7PtCOPJX6w9nBHVrNq7ggvfWK0JRhHVZr53ol/yH8B92X
-         9YXw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to;
+        bh=XVquwDSVjAl2oKha+xB8Zo7v6Nryw3ODbJttXhqEoB4=;
+        fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
+        b=kr+5EhqsKQAUz3HUwdNxebNVoDhdbRk2D81OihYL2crVnjQE4FdLMfCKUnf1Kxedch
+         WnlaX4I8VsXMHhL4UBGfjgX8xP1Gy0hMLhk3fXE70SrtW/i/mbE0xzD8lRZWkGxfofpG
+         UQZAaT+gfEuiPSB8aFcIsvmX31sKsbzV4Ttr05ZolVb0wQhdNgdmJcFINtY60W+H1BPY
+         eix55t+5F3Fao1nzVsm9m98aBclTMgDqPz0SrM1vwvp9Bc/ooi8HyXeBw9z0d9OWM7Om
+         EVcH9eHR+DQP67zydYzaTLrruthsoRfRbmupplgo+kppM8uhFCALo55S4X4bM2pJ7hKl
+         fB8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzrfM10Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4796edd6156si106825511cf.396.2025.04.15.00.50.43
+        by mx.google.com with ESMTPS id d75a77b69052e-4796eb0de3esi108103271cf.89.2025.04.15.01.12.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Apr 2025 00:50:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Apr 2025 01:12:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzrfM10Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u4b3l-0003Ak-V7; Tue, 15 Apr 2025 03:50:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u4bPG-0004Mu-RJ; Tue, 15 Apr 2025 04:12:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1u4b3j-0003AF-7d
- for qemu-devel@nongnu.org; Tue, 15 Apr 2025 03:50:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1u4bPD-0004EO-9k; Tue, 15 Apr 2025 04:12:32 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1u4b3g-0007ZS-EI
- for qemu-devel@nongnu.org; Tue, 15 Apr 2025 03:50:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1744703412;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
- b=EzrfM10ZKNRc2hEY4/otiRrzwGuZjCkDb1LyOMQlBd6RLB4Q1o5tPebxQMj7Ud+91jDwdp
- yqHQWxf5pu5Pc0YyFYiSVapGDUypJqJr4PGum/7BWsvZb/YBPR0Dnvr2Rz1xIxGi1TYW7J
- ZKckTlyZDk2j3EbP5LepcYUh5IxpSNQ=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-588-5l6JnsNTO9auxSgewafZ9w-1; Tue, 15 Apr 2025 03:50:09 -0400
-X-MC-Unique: 5l6JnsNTO9auxSgewafZ9w-1
-X-Mimecast-MFC-AGG-ID: 5l6JnsNTO9auxSgewafZ9w_1744703408
-Received: by mail-pf1-f200.google.com with SMTP id
- d2e1a72fcca58-739525d4d7bso3755981b3a.2
- for <qemu-devel@nongnu.org>; Tue, 15 Apr 2025 00:50:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744703408; x=1745308208;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9GL8Jiak0PPzAi305o2OIVAtyLPZMn+xMPHksf916Ng=;
- b=Hf3+at18bR33WmPfJW+/HGs2OVys/muIJ5nE1EZHFyYggkc+87V/hNVJrPdnCNnSI0
- hMYSFN2+T5V1V4MmsBS26l4L9VCxOGRW1F4psaj1WKSGYM3mkEO/kcYTQIl03qdkwUdB
- ZM7G1usn/MzeqvYwJPY3ctEfCvYlOV3QGjeINwWftkkAINcmVawbXHy90JtZOYPtieWl
- dzq7Dwe0jwjgb3b3a9dD+6HbzRYi7cKl3D8nr5mBfFWZFVmEjeeJbTCxU95kK1pgMkHv
- vWGDJ89+5JH4rRQBvyOV2Jn9Gtqkrwu3gLCUEdg0Xe5dKWqXg8gQ2ABVkS9RevsJoWbf
- GuWw==
-X-Gm-Message-State: AOJu0Yz6hrAiQFiC+2yhfHpPens5hWGXBhZgYYaLno/bgW16wKamCbNX
- xuMyWMuR+QmhiNPLOL+lhU1c7NzqOoBHBm+Qa81c0Kc7Mu3+zYdLykP1Cbu7UrL7WIoZZl1XI1U
- wMWR5qt/J8ZjzOK1qyo+FpTf5cS8hTwU/yA2ZXxofYzmy4LW2PiA4
-X-Gm-Gg: ASbGncs8B8vDjSK7raZWs8tgnk299Gq8CYKDUw94z/emoC7Hzz8LDMUQrtP7CpgbHJ+
- 1yWkoR5JqpRPSflIBnpfmANvfnwl7zdyoExEqB8ZqM3CfqSt6X/Kp6CfZb71EdXTuD505QfJSEf
- wZlENnmxy4RJ12MPxpBjFXgipzvt/T2lEtIyDavOaB30Ig+JAsNjR0TezfMHaAzRCUtb/C0SeQ1
- YWboBLjRR/ykBeRuosgCKzBiWAZgO45g9bhqAPlbIspZlymIEZmkkKflvb1AFmNMeyLBjwlT7Vx
- AQ1hBhBuoQh5A0tG
-X-Received: by 2002:a05:6a21:32a3:b0:1f5:9208:3ac7 with SMTP id
- adf61e73a8af0-20179995dcbmr27309140637.41.1744703408544; 
- Tue, 15 Apr 2025 00:50:08 -0700 (PDT)
-X-Received: by 2002:a05:6a21:32a3:b0:1f5:9208:3ac7 with SMTP id
- adf61e73a8af0-20179995dcbmr27309086637.41.1744703407997; 
- Tue, 15 Apr 2025 00:50:07 -0700 (PDT)
-Received: from [10.72.116.169] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-73bd1fe6b4esm7881572b3a.0.2025.04.15.00.50.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Apr 2025 00:50:07 -0700 (PDT)
-Message-ID: <21f3fedd-274e-4e81-87f8-369deefa8c1a@redhat.com>
-Date: Tue, 15 Apr 2025 15:49:59 +0800
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1u4bPB-0001rK-Bc; Tue, 15 Apr 2025 04:12:31 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZcGxp3Rddz6LD5F;
+ Tue, 15 Apr 2025 16:08:30 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id AF0D01402C3;
+ Tue, 15 Apr 2025 16:12:27 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 15 Apr 2025 10:12:20 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH 4/5] hw/arm/virt: Add support for smmuv3 device
+Date: Tue, 15 Apr 2025 09:11:03 +0100
+Message-ID: <20250415081104.71708-5-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] accel/kvm: Support KVM PMU filter
-To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
- <mtosatti@redhat.com>, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
-Content-Language: en-US
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <20250409082649.14733-1-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PbzOWv67R92p
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1R9yq482CEoq
 
-Hi Zhao,
+Allow cold-plug of smmuv3 device to virt If the machine wide smmuv3
+or a virtio-iommu is not specified.
 
-I've added some code and test it on ARM64, it works very well.
+Also restrict the usage if virt <= 9.2. This will prevent accidently
+creating a SMMUv3 device on machines prior to 9.2 and cause failure
+on migrating to machines with same version but has a legacy smmuv3
+device.
 
-And after reviewing the code, it looks good to me.
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+ToDo: probably need to change virt <= 9.2 to 10.0 considering the 
+Qemu cycle we are at now.
+---
+ hw/arm/virt.c         | 54 +++++++++++++++++++++++++++++++++++++++++++
+ hw/core/sysbus-fdt.c  |  3 +++
+ include/hw/arm/virt.h |  1 +
+ 3 files changed, 58 insertions(+)
 
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-
-On 4/9/25 4:26 PM, Zhao Liu wrote:
-> Hi all,
-> 
-> Now I've converted the previous RFC (v2) to PATCH.
-> 
-> Compared with RFC v2 [1], this version mianly have the following
-> changes:
->   * Make PMU related QAPIs accept decimal value instead of string.
->   * Introduce a three-level QAPI section to organize KVM PMU stuff.
->   * Fix QAPI related style issues.
->   * Rename "x86-default" format to "x86-select-umask".
-> 
-> Current pmu-filter QOM design could meet the requirements of both x86
-> and ARM sides.
-> 
-> 
-> Background
-> ==========
-> 
-> I picked up Shaoqing's previous work [2] on the KVM PMU filter for arm,
-> and now is trying to support this feature for x86 with a JSON-compatible
-> API.
-> 
-> While arm and x86 use different KVM ioctls to configure the PMU filter,
-> considering they all have similar inputs (PMU event + action), it is
-> still possible to abstract a generic, cross-architecture kvm-pmu-filter
-> object and provide users with a sufficiently generic or near-consistent
-> QAPI interface.
-> 
-> That's what I did in this series, a new kvm-pmu-filter object, with the
-> API like:
-> 
-> -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":196}]}'
-> 
-> For x86, this object is inserted into kvm accelerator and is extended
-> to support fixed-counter and more formats ("x86-default" and
-> "x86-masked-entry"):
-> 
-> -accel kvm,pmu-filter=f0 \
-> -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","x86-fixed-counter":0,"events":[{"format":"x86-masked-entry","select":196,"mask":255,"match":0,"exclude":true},{"format":"x86-masked-entry","select":197,"mask":255,"match":0,"exclude":true}]}'
-> 
-> This object can still be added as the property to the arch CPU if it is
-> desired as a per CPU feature (as Shaoqin did for arm before).
-> 
-> 
-> Introduction
-> ============
-> 
-> 
-> Formats supported in kvm-pmu-filter
-> -----------------------------------
-> 
-> This series supports 3 formats:
-> 
-> * raw format (general format).
-> 
->    This format indicates the code that has been encoded to be able to
->    index the PMU events, and which can be delivered directly to the KVM
->    ioctl. For arm, this means the event code, and for i386, this means
->    the raw event with the layout like:
-> 
->        select high bit | umask | select low bits
-> 
-> * x86-select-umask format (i386 specific)
-> 
->    x86 commonly uses select&umask to identify PMU events, and this format
->    is used to support the select&umask. Then QEMU will encode select and
->    umask into a raw format code.
-> 
-> * x86-masked-entry (i386 specific)
-> 
->    This is a special format that x86's KVM_SET_PMU_EVENT_FILTER supports.
-> 
-> 
-> CPU property v.s. KVM property
-> ------------------------------
-> 
-> In Shaoqin's previous implementation [2], KVM PMU filter is made as a
-> arm CPU property. This is because arm uses a per CPU ioctl
-> (KVM_SET_DEVICE_ATTR) to configure KVM PMU filter.
-> 
-> However, for x86, the dependent ioctl (KVM_SET_PMU_EVENT_FILTER) is per
-> VM. In the meantime, considering that for hybrid architecture, maybe in
-> the future there will be a new per vCPU ioctl, or there will be
-> practices to support filter fixed counter by configuring CPUIDs.
-> 
-> Based on the above thoughts, for x86, it is not appropriate to make the
-> current per-VM ioctl-based PMU filter a CPU property. Instead, I make it
-> a kvm property and configure it via "-accel kvm,pmu-filter=obj_id".
-> 
-> So in summary, it is feasible to use the KVM PMU filter as either a CPU
-> or a KVM property, depending on whether it is used as a CPU feature or a
-> VM feature.
-> 
-> The kvm-pmu-filter object, as an abstraction, is general enough to
-> support filter configurations for different scopes (per-CPU or per-VM).
-> 
-> [1]: https://lore.kernel.org/qemu-devel/20250122090517.294083-1-zhao1.liu@intel.com/
-> [2]: https://lore.kernel.org/qemu-devel/20240409024940.180107-1-shahuang@redhat.com/
-> 
-> Thanks and Best Regards,
-> Zhao
-> ---
-> Zhao Liu (5):
->    qapi/qom: Introduce kvm-pmu-filter object
->    i386/kvm: Support basic KVM PMU filter
->    i386/kvm: Support event with select & umask format in KVM PMU filter
->    i386/kvm: Support event with masked entry format in KVM PMU filter
->    i386/kvm: Support fixed counter in KVM PMU filter
-> 
->   MAINTAINERS              |   2 +
->   accel/kvm/kvm-pmu.c      | 177 +++++++++++++++++++++++++++++++++++++++
->   accel/kvm/meson.build    |   1 +
->   include/system/kvm-pmu.h |  51 +++++++++++
->   include/system/kvm_int.h |   2 +
->   qapi/accelerator.json    |  14 ++++
->   qapi/kvm.json            | 130 ++++++++++++++++++++++++++++
->   qapi/meson.build         |   1 +
->   qapi/qapi-schema.json    |   1 +
->   qapi/qom.json            |   3 +
->   qemu-options.hx          |  67 ++++++++++++++-
->   target/i386/kvm/kvm.c    | 176 ++++++++++++++++++++++++++++++++++++++
->   12 files changed, 624 insertions(+), 1 deletion(-)
->   create mode 100644 accel/kvm/kvm-pmu.c
->   create mode 100644 include/system/kvm-pmu.h
->   create mode 100644 qapi/accelerator.json
->   create mode 100644 qapi/kvm.json
-> 
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 729f192558..8d0ae79f4d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -56,6 +56,7 @@
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
++#include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/core/sysbus-fdt.h"
+@@ -1445,6 +1446,31 @@ static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
+     g_free(node);
+ }
+ 
++static void create_smmuv3_dev_dtb(VirtMachineState *vms,
++                                  DeviceState *dev)
++{
++    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
++    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
++    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
++    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    MachineState *ms = MACHINE(vms);
++    PCIBus *bus;
++
++    bus = PCI_BUS(object_property_get_link(OBJECT(dev), "primary-bus",
++                                           &error_abort));
++    if (strcmp("pcie.0", bus->qbus.name)) {
++        warn_report("SMMUv3 device only supported with pcie.0 for DT");
++        return;
++    }
++    base += vms->memmap[VIRT_PLATFORM_BUS].base;
++    irq += vms->irqmap[VIRT_PLATFORM_BUS];
++
++    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
++    create_smmuv3_dt_bindings(vms, base, irq);
++    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
++                           0x0, vms->iommu_phandle, 0x0, 0x10000);
++}
++
+ static void create_smmu(const VirtMachineState *vms,
+                         PCIBus *bus)
+ {
+@@ -2944,6 +2970,18 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qlist_append_str(reserved_regions, resv_prop_str);
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_DEV)) {
++        VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
++
++        if (vmc->no_smmuv3_device) {
++            error_setg(errp, "virt machine does not support arm-smmuv3-device");
++        } else if ((vms->iommu == VIRT_IOMMU_VIRTIO) ||
++                   (vms->iommu == VIRT_IOMMU_SMMUV3)) {
++            error_setg(errp, "virt machine already has %s set."
++                       "Doesn't support multiple incompatible iommus",
++                       (vms->iommu == VIRT_IOMMU_VIRTIO) ?
++                       "virtio-iommu" : "iommu=smmuv3");
++        }
+     }
+ }
+ 
+@@ -2967,6 +3005,19 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+     }
+ 
++    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_DEV)) {
++        VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
++
++        create_smmuv3_dev_dtb(vms, dev);
++        if (vms->iommu != VIRT_IOMMU_SMMUV3_DEV) {
++            vms->iommu = VIRT_IOMMU_SMMUV3_DEV;
++        }
++        if (!vmc->no_nested_smmu) {
++            object_property_set_str(OBJECT(dev), "stage", "nested",
++                                    &error_fatal);
++        }
++    }
++
+     if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+         PCIDevice *pdev = PCI_DEVICE(dev);
+ 
+@@ -3169,6 +3220,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_DEV);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ #endif
+@@ -3418,8 +3470,10 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 0)
+ 
+ static void virt_machine_9_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+     virt_machine_10_0_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_9_2, hw_compat_9_2_len);
++    vmc->no_smmuv3_device = true;
+ }
+ DEFINE_VIRT_MACHINE(9, 2)
+ 
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index e85066b905..ec90ed2c14 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -31,6 +31,7 @@
+ #include "qemu/error-report.h"
+ #include "system/device_tree.h"
+ #include "system/tpm.h"
++#include "hw/arm/smmuv3.h"
+ #include "hw/platform-bus.h"
+ #include "hw/vfio/vfio-platform.h"
+ #include "hw/vfio/vfio-calxeda-xgmac.h"
+@@ -512,6 +513,8 @@ static const BindingEntry bindings[] = {
+ #ifdef CONFIG_LINUX
+     TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
+     TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
++    /* No generic DT support for smmuv3 dev. Support added for arm virt only */
++    TYPE_BINDING(TYPE_ARM_SMMUV3_DEV, no_fdt_node),
+     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+ #endif
+ #ifdef CONFIG_TPM
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 12395c7594..9f98345c92 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -136,6 +136,7 @@ struct VirtMachineClass {
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
+     bool no_nested_smmu;
++    bool no_smmuv3_device;
+ };
+ 
+ struct VirtMachineState {
 -- 
-Shaoqin
+2.34.1
 

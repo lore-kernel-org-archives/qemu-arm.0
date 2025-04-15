@@ -1,79 +1,82 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2496428njc;
-        Tue, 15 Apr 2025 01:14:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnweEXVZQNVl6v3WMNz8CXmHfXMNVGkCQZUDJ3V1xS/d5Cf5oVxfy5HUe8uDXlO0Lbl1qvmltFTclBqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF66H5vXePvYqEg/5R6Nmr6fxqlzlo91lFsSgvWO3SF4MMZBXazBWMAkeWFdP9FyXIhD/+P
-X-Received: by 2002:ad4:4eeb:0:b0:6d9:ac3:e730 with SMTP id 6a1803df08f44-6f2a1726fa2mr36855826d6.5.1744704875879;
-        Tue, 15 Apr 2025 01:14:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744704875; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2496478njc;
+        Tue, 15 Apr 2025 01:14:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVAKXFtSMWXUW/l2ZeAaFbGiXoRDVvWs6TcregrxkbP7Imv+2GwZpIyQPrv/+OjD+u6BJY9oZRRua2xuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgCdXubvjSS3y6woez32Ytun0//emcfRYBvP843RwufdZyEcmSiNzYOHtfOj0DVoKbGGNe
+X-Received: by 2002:a05:620a:4610:b0:7c5:4463:29aa with SMTP id af79cd13be357-7c7af1127a6mr2783108085a.40.1744704881361;
+        Tue, 15 Apr 2025 01:14:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744704881; cv=none;
         d=google.com; s=arc-20240605;
-        b=gEkv+LVMC0WJmTe53mjkvnQN2Oye7Od7zdTzSp3/zM4FfGVuL+XEwWP9in4TJ3fqcU
-         sxG2va4sf6mhgxlZpK6hUYAWgzf5maEfqaWJv0urnWf2UWYS3zjpwR02P7bsLRA5ZPlw
-         9QaztoZGs/MN11p06xKD3CM1vFbBfgTHwSB4aQkxkUCYzSsuCVuk8C7VO2zteQ5SH2jW
-         SBPs05AtjPtAYICthImB6MMng4MuuFYeTXoNaH6Q5zaH8LSDIK7nMOpaaPN9cikaCOzC
-         G9QM27eyQ38mUDGdk1/L8V7prqaoe/YXUy0d5Ul8UBfTt21P5fM/OPvDfRGbpqFbVXGU
-         +7Rw==
+        b=FADOV0yk+d/N/gEV0t7BD9+OJiaDydkdOdShbdWJA191x4e8MoovqIbwobkPakkY38
+         ZlC1mQdWnpfb35L/Q1P2VF2IqrdZOEdng5CuMU2t19thvsJx7ElTCz/0rbk4r5tRJBYx
+         kFpSdJq4I0+/Cay/+sJRojhnxWSuZshaBvoS8kZUcJq2md8w51bJitsB6D2qDmUT0jBL
+         zQwmKqd9bJSfWv1faPDcpBM5sJ37bxl/FrpxAzVhKVICoN9KZzPG6EOLTDsR6zxK25hu
+         L5GCt3Pf7j/qCf1R4oacz7QZfFfK4wAEPQftoZURqaOIh/rCb2YdnPeBynvZtUtsBPNu
+         HkQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=DAxUZpT0qL99typQXrUkt+VSfEo0uuAtbPTA4ccGm7g=;
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=EtwL8YrR32T2ZFwYCcUnyooL8Q0dX+8Mr8ufsbU4reI=;
         fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
-        b=Bg0TijF40zbo154hZ63Ism2/vQnn+QxMcfSLWio4V7hMW5uDrOwJDioY1LEfOUasxt
-         bIExTiujFusC5tZneNgYo6HSk+gaDI6ciuME9dBMusLm9X5opPUh3Iy/00wsPr8BnUSK
-         Pf6vI13aIKAGHRo6VRJJjj55DW+mn0sBo7dbFta8jZSevNVOgh6JB3Q+TEgOqtg2WHJL
-         jeb0dGr+Rx8Ms6fgkcxJWMUbvTkgxXqFspieyvIa83Ge70DTT4IHL2nMCykSWFupdzDV
-         mfuyqrvW6QJsIY6nGXl1N+RqJEh63UD7L7Qp5p76+wxQr9UPyHfcYL++3d6thH/yKTnB
-         a+lA==;
+        b=RoIPWANatD1IjUPd7/V7N2AjmDjWRDRwYhoWMvkoP1pcuoRj7IQCEH9TrVm8Hvmiwu
+         EhNW+M6v8WdkNYfjSoMYs8a0AdTGPb05Z3jmXX0Ea4RqBJu43dQkVDT4RQXYCXSdatYC
+         1Ikkzt12xshUJAmIY1jKjH40HajCZzrCH+8buVOxUavI4v2HorF8pYvW44qMDwqSdqtH
+         YooApMZkZD8KnyADGKJ4eOHt6yoNIQn+czsaDgT8j/XEwonQg34j+ZE2ZzOqKx382sGk
+         JqKIVwVHnVUTiSElRxsi/9QuiYTonDLPHSTyfBP8s0HGZ9Coyj/xVIfr6AYrfNDNro03
+         DU6g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de970c68si126005166d6.125.2025.04.15.01.14.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de9dcd77si126447856d6.244.2025.04.15.01.14.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Apr 2025 01:14:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Apr 2025 01:14:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u4bPO-0004fs-CQ; Tue, 15 Apr 2025 04:12:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u4bOy-0003bi-G8; Tue, 15 Apr 2025 04:12:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1u4bPM-0004aZ-37; Tue, 15 Apr 2025 04:12:40 -0400
+ id 1u4bOw-0003WX-HU; Tue, 15 Apr 2025 04:12:14 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1u4bPK-0001rv-Fv; Tue, 15 Apr 2025 04:12:39 -0400
+ id 1u4bOt-0001py-57; Tue, 15 Apr 2025 04:12:14 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZcGxz4H5Rz6LD5G;
- Tue, 15 Apr 2025 16:08:39 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZcGxR5jh7z6LD3q;
+ Tue, 15 Apr 2025 16:08:11 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id CC8F91402FF;
- Tue, 15 Apr 2025 16:12:36 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 07E801402C3;
+ Tue, 15 Apr 2025 16:12:09 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 15 Apr 2025 10:12:29 +0200
+ 15.1.2507.39; Tue, 15 Apr 2025 10:12:01 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
  <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
  <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH 5/5] hw/arm/smmuv3: Enable smmuv3 device creation
-Date: Tue, 15 Apr 2025 09:11:04 +0100
-Message-ID: <20250415081104.71708-6-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH 2/5] hw/arm/virt-acpi-build: Update IORT for multiple smmuv3
+ devices
+Date: Tue, 15 Apr 2025 09:11:01 +0100
+Message-ID: <20250415081104.71708-3-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.203.177.241]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  frapeml500008.china.huawei.com (7.182.85.71)
@@ -88,40 +91,251 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P20/bqHPg9Yu
+From:  Shameer Kolothum via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: enqxJkZ6eL/B
+
+With the soon to be introduced user-creatable SMMUv3 devices for
+virt, it is possible to have multiple SMMUv3 devices associated
+with different PCIe root complexes.
+
+Update IORT nodes accordingly.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/smmuv3.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/virt-acpi-build.c | 119 +++++++++++++++++++++++++++++++++++----
+ include/hw/arm/virt.h    |   1 +
+ 2 files changed, 108 insertions(+), 12 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index e3b8e13ca3..572119e472 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -2026,6 +2026,7 @@ static void smmuv3_dev_class_init(ObjectClass *klass, void *data)
-                                     &c->parent_realize);
-     dc->hotpluggable = false;
-     dc->bus_type = TYPE_PCIE_BUS;
-+    dc->user_creatable = true;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3ac8f8e178..d1e083ee31 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -43,6 +43,7 @@
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/acpi/tpm.h"
+ #include "hw/acpi/hmat.h"
++#include "hw/arm/smmuv3.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bus.h"
+@@ -266,6 +267,60 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
+     return idmap_a->input_base - idmap_b->input_base;
  }
  
- static void smmuv3_class_init(ObjectClass *klass, void *data)
++struct SMMUv3Device {
++    int irq;
++    hwaddr base;
++    AcpiIortIdMapping smmu_idmap;
++};
++typedef struct SMMUv3Device SMMUv3Device;
++
++static int smmuv3_dev_idmap_compare(gconstpointer a, gconstpointer b)
++{
++    SMMUv3Device *sdev_a = (SMMUv3Device *)a;
++    SMMUv3Device *sdev_b = (SMMUv3Device *)b;
++
++    return sdev_a->smmu_idmap.input_base - sdev_b->smmu_idmap.input_base;
++}
++
++static int get_smmuv3_device(Object *obj, void *opaque)
++{
++    GArray *sdev_blob = opaque;
++    int min_bus, max_bus;
++    VirtMachineState *vms;
++    PlatformBusDevice *pbus;
++    SysBusDevice *sbdev;
++    SMMUv3Device sdev;
++    hwaddr base;
++    int irq;
++    PCIBus *bus;
++
++    if (!object_dynamic_cast(obj, TYPE_ARM_SMMUV3_DEV)) {
++        return 0;
++    }
++
++    bus = PCI_BUS(object_property_get_link(obj, "primary-bus", &error_abort));
++    if (!bus || pci_bus_bypass_iommu(bus)) {
++        return 0;
++    }
++
++    vms = VIRT_MACHINE(qdev_get_machine());
++    pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
++    sbdev = SYS_BUS_DEVICE(obj);
++    base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    irq = platform_bus_get_irqn(pbus, sbdev, 0);
++
++    base += vms->memmap[VIRT_PLATFORM_BUS].base;
++    irq += vms->irqmap[VIRT_PLATFORM_BUS];
++
++    pci_bus_range(bus, &min_bus, &max_bus);
++    sdev.smmu_idmap.input_base = min_bus << 8;
++    sdev.smmu_idmap.id_count = (max_bus - min_bus + 1) << 8;
++    sdev.base = base;
++    sdev.irq = irq + ARM_SPI_BASE;
++    g_array_append_val(sdev_blob, sdev);
++    return 0;
++}
++
+ /*
+  * Input Output Remapping Table (IORT)
+  * Conforms to "IO Remapping Table System Software on ARM Platforms",
+@@ -275,25 +330,42 @@ static void
+ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+     int i, nb_nodes, rc_mapping_count;
+-    size_t node_size, smmu_offset = 0;
++    size_t node_size, *smmu_offset = NULL;
+     AcpiIortIdMapping *idmap;
++    int num_smmus = 0;
+     uint32_t id = 0;
+     GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
+     GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
++    GArray *smmuv3_devices = g_array_new(false, true, sizeof(SMMUv3Device));
+ 
+     AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     /* Table 2 The IORT */
+     acpi_table_begin(&table, table_data);
+ 
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+-        AcpiIortIdMapping next_range = {0};
+-
++    nb_nodes = 2; /* RC, ITS */
++    if (vms->iommu == VIRT_IOMMU_SMMUV3_DEV) {
++        object_child_foreach_recursive(object_get_root(),
++                                       get_smmuv3_device, smmuv3_devices);
++         /* Sort the smmuv3-devices by smmu idmap input_base */
++        g_array_sort(smmuv3_devices, smmuv3_dev_idmap_compare);
++        /*  Fill smmu idmap from sorted smmuv3 devices array */
++        for (i = 0; i < smmuv3_devices->len; i++) {
++            SMMUv3Device *s = &g_array_index(smmuv3_devices, SMMUv3Device, i);
++            g_array_append_val(smmu_idmaps, s->smmu_idmap);
++        }
++        num_smmus = smmuv3_devices->len;
++    } else if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+         object_child_foreach_recursive(object_get_root(),
+                                        iort_host_bridges, smmu_idmaps);
+ 
+         /* Sort the smmu idmap by input_base */
+         g_array_sort(smmu_idmaps, iort_idmap_compare);
++        num_smmus = 1;
++    }
++
++    if (num_smmus) {
++        AcpiIortIdMapping next_range = {0};
+ 
+         /*
+          * Split the whole RIDs by mapping from RC to SMMU,
+@@ -316,10 +388,10 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             g_array_append_val(its_idmaps, next_range);
+         }
+ 
+-        nb_nodes = 3; /* RC, ITS, SMMUv3 */
++        smmu_offset = g_new0(size_t, num_smmus);
++        nb_nodes += num_smmus;
+         rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
+     } else {
+-        nb_nodes = 2; /* RC, ITS */
+         rc_mapping_count = 1;
+     }
+     /* Number of IORT Nodes */
+@@ -341,10 +413,20 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     /* GIC ITS Identifier Array */
+     build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
+ 
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+-        int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
++    for (i = 0; i < num_smmus; i++) {
++        hwaddr base;
++        int irq;
++
++        if (vms->iommu == VIRT_IOMMU_SMMUV3_DEV) {
++            SMMUv3Device *s = &g_array_index(smmuv3_devices, SMMUv3Device, i);
++            base = s->base;
++            irq = s->irq;
++        } else {
++            base = vms->memmap[VIRT_SMMU].base;
++            irq = vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
++        }
+ 
+-        smmu_offset = table_data->len - table.table_offset;
++        smmu_offset[i] = table_data->len - table.table_offset;
+         /* Table 9 SMMUv3 Format */
+         build_append_int_noprefix(table_data, 4 /* SMMUv3 */, 1); /* Type */
+         node_size =  SMMU_V3_ENTRY_SIZE + ID_MAPPING_ENTRY_SIZE;
+@@ -355,7 +437,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         /* Reference to ID Array */
+         build_append_int_noprefix(table_data, SMMU_V3_ENTRY_SIZE, 4);
+         /* Base address */
+-        build_append_int_noprefix(table_data, vms->memmap[VIRT_SMMU].base, 8);
++        build_append_int_noprefix(table_data, base, 8);
+         /* Flags */
+         build_append_int_noprefix(table_data, 1 /* COHACC Override */, 4);
+         build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+@@ -404,15 +486,26 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+ 
+     /* Output Reference */
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++    if (num_smmus) {
+         AcpiIortIdMapping *range;
+ 
+         /* translated RIDs connect to SMMUv3 node: RC -> SMMUv3 -> ITS */
+         for (i = 0; i < smmu_idmaps->len; i++) {
++            size_t offset;
++            if (vms->iommu == VIRT_IOMMU_SMMUV3_DEV) {
++                offset = smmu_offset[i];
++            } else {
++                /*
++                 * For legacy VIRT_IOMMU_SMMUV3 case, one machine wide
++                 * smmuv3 may have multiple smmu_idmaps.
++                 */
++                offset = smmu_offset[0];
++            }
++
+             range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+             /* output IORT node is the smmuv3 node */
+             build_iort_id_mapping(table_data, range->input_base,
+-                                  range->id_count, smmu_offset);
++                                  range->id_count, offset);
+         }
+ 
+         /* bypassed RIDs connect to ITS group node directly: RC -> ITS */
+@@ -430,6 +523,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_table_end(linker, &table);
+     g_array_free(smmu_idmaps, true);
+     g_array_free(its_idmaps, true);
++    g_free(smmu_offset);
++    g_array_free(smmuv3_devices, true);
+ }
+ 
+ /*
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c8e94e6aed..12395c7594 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -92,6 +92,7 @@ enum {
+ typedef enum VirtIOMMUType {
+     VIRT_IOMMU_NONE,
+     VIRT_IOMMU_SMMUV3,
++    VIRT_IOMMU_SMMUV3_DEV,
+     VIRT_IOMMU_VIRTIO,
+ } VirtIOMMUType;
+ 
 -- 
 2.34.1
 

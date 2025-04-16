@@ -1,157 +1,157 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3198409njc;
-        Wed, 16 Apr 2025 02:04:00 -0700 (PDT)
-X-Received: by 2002:a05:600c:8707:b0:43d:45a:8fc1 with SMTP id 5b1f17b1804b1-4405d5fccd5mr11764565e9.4.1744794240377;
-        Wed, 16 Apr 2025 02:04:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744794240; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3202558njc;
+        Wed, 16 Apr 2025 02:12:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCJZ3eKhheHvGzYZGeVtDavMDePIAoLFSVRx60G38TzSCwyTzaLGh3N+sFc/vzMS+OWAH+2EpWHUaf/A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHBb+7pQYKT+RXLrw1WIA68JQYl7hXZCSy1Kbs+dyHsYaEkCm8qkbhU1IojmuE+fzDMP4mv
+X-Received: by 2002:a05:6902:15c5:b0:e6e:195d:406b with SMTP id 3f1490d57ef6-e727598a2fbmr1400444276.28.1744794765596;
+        Wed, 16 Apr 2025 02:12:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744794765; cv=none;
         d=google.com; s=arc-20240605;
-        b=L6BFC5QJ4BiJh5qXUSU2TKr7eDPbSRGrs8zLc+u0/JmIt7Gg9v+JVXQ8hte1UIL/9H
-         Xk3T4c30vYrb5WMfbJEu2pSKdQmTpU0GYc7rsx4v8Vw5rgu+d26Hqzf4ZTys8efEjkPx
-         aY31v2750J9iRWAlefuiiFkAshdqdvyoe/6CFPBzxq1V/XRv+NyaAuPLuq5NXM7w/U2z
-         jb8yHQzYYLzvVviSgBtqjmJjYtUhevj7YxXMj+tpGtyE8PTUAlVbeWTEgtIPnR7ikXnl
-         0NEefvza4XFQrSFdPG9RBEt8Kf7YBNW10RQJqndUomUvl5PwfrDlxejMZgHJNj+L8Yee
-         QFAQ==
+        b=bGBTEyQzIxABTVOuZnZrIJSanD+uaBpEWCiqMDI/ZfOberqdBrYkWxY1Zq06BtyMB0
+         7rTeMU1Pl4a6cfikKe3CqqDqdva0uZ1/TWR4iMQfiMaeXTztI2Rib9TfceMyx7P0A55U
+         3Q4mz3cTNmARwJAqZx3+rqFKR3dcCq8r4nahJMlZky+nhWoTj5Q4sR99yNFtGOJ46shL
+         K83NggyFX8AeAH86fVq+lQYhoVcJjmq48YPMElEbxRqhtUvCy/r2N7pqMx1bUEAMa8ok
+         4ma9TxdoAploS7lAiNSbhfmPbQkeJBJNfq4CQJ0LPDCXIxGjOnFfNgzYXfK+BeBCjxrD
+         TVMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=nUWYxnXh8lwhGY2OO/SccjnOI4f8xd+wiWjlUO6Csa4=;
-        fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
-        b=SE9IYEyMJWbjyWflJDfCjYDmL2hNeDjChcfDwse00WSe9akVkDM1I9tDfC6VQ4ICUm
-         Mp51TmWElzjXRqB9/SpLOyqynES5VJ/j8PurdsJyRLg3ALFzrHNuNdzGy80dkLlN2kG8
-         WkReFW4wzi7IHUfltNnEPXDU7phMi3Or6YdOqw2ZJTKhKOwiuXzputj3A2qau8a0KF9W
-         7IofIu63YSz1rhgbcksLXNmwyKh3dxGmj/1PgW6+I1aT/XmzltAzAULOoDVeJub9juA4
-         E7qIzPLAJhWNZ6rIlbyjBUjjx1EznUUZDOA7W1TscakDNfxDezH1yNoeTP1eghPEhthD
-         aKtQ==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=NRkPwzwUr2ZRm9OT5a1JiPbtfsT1DAMR2Iob30hjX4M=;
+        fh=UShjZqrrDK42PKAzXjL/tCNRJ8rN9jlMNSjlGvmASGA=;
+        b=G76o86NmHQucaUpaGEHap1zWNwtcOwOc80CTuRgKkpXsaABg5HI7pmaZ0uOpCzJk1z
+         7cDLJGq6SutekF7sHPyx1pNfs/cHnQTErXBL28+TW+lqHutyUbhcQOvdovLzSl7s4R9Y
+         oMfoq/hIjKGR++zvg1x1OOXgkXLhRWB7AWwYehrkYIiQjsjqm9n3/A3Bp9hjIsIb611t
+         WaHi1Jrt1DG0MC4dQW3v6vzxxm02CnkWBX4oAz0K98KHfL5Gdx4EBtcawZO+q6CEIvdI
+         0tDDVsblkoddx7oB11XTHc6zB2A8PvY9f6bYqKyHdhNFJ3i+0Ll44hal22Pj2OzBtlJ1
+         ytNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T4WjNDhH;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43f235eccd0sor74671535e9.10.2025.04.16.02.04.00
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gg3JANQ0;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e70a6d44e15si2848212276.395.2025.04.16.02.12.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Apr 2025 02:04:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Apr 2025 02:12:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T4WjNDhH;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744794240; x=1745399040; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nUWYxnXh8lwhGY2OO/SccjnOI4f8xd+wiWjlUO6Csa4=;
-        b=T4WjNDhHUNYiJdjeIrzZUtoD60A0QkTqi3K6s4/IA/BoBewXCRxVHBFr2m7WbGXhn3
-         Px2FGMrGvPiKlAG0bGSOxpcHGi7+Ks/FsFdsBo08NA5rNnBekj11/q7epwOu4e4xxmp/
-         MIM16oM3KhUS6RGMbJLTsl5jjXORpc9z4TF/90MZyUUXygBYcOw63q0TA2Acvq5xyJYy
-         AwnRgbZ/Pd+5x8Xhm6GsZv0Up8rS3GYx1AFMqAFL7N/5gudCYZ2jrB2DCne5SlovRuLU
-         RPyYOLh4w/5XLDIY9meNp0EQqkgrKoSWR0NMTLCzWQ6qZK/RsRrFA36Y6eOCJXqDzxis
-         q1GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744794240; x=1745399040;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nUWYxnXh8lwhGY2OO/SccjnOI4f8xd+wiWjlUO6Csa4=;
-        b=YouuAQjYy/0kfjc3lvYivxPai0+2idYXy80aeWT4nXqpI4sN5T0b6uYcdgIzcb1EMd
-         mcQW11oWo8DkcZTeBexyy+NScM73hDs63O5I5133o/FL392HS9NwC84y2+L0KG/GOEfH
-         tgSesczpdVz+JYjuvjYUwtGwwOr+fqiHCLebMSxQRctvMgEIgxWPRRdcv2C8krphdUlS
-         4e14s6xf/WEH+F9r3eCf4WJQCv83DO9U4TSniHOBr+OyO4OJROkDvk07E9CuLFUmkt6b
-         yTv+HAG2a/n9rNT1hTERDsu3UPhIwurCMACS2HPN1I6bL7JbaBY/EKQuUJANN/lmoXfE
-         n6nw==
-X-Gm-Message-State: AOJu0YwGvc0GBqlb2q/04zg97lR/1QkjHH9s422jXfrMBDv2RCFZQ8XI
-	PZWO6ej/ODrvdgBkIbLOcwTySDvBM7+jDfDYkLY1Wxf7NBfCY2BCkbILY1hg13Auhw==
-X-Gm-Gg: ASbGncsmSF8FdosBq6ZzhmHWxMy8mI4Ms0+2KTYTC8kXS7oTuj3rcEt13CdbIDmJfxp
-	SAGG+zy9hhwsqLy6BD9GTOoBD9OLXiu8rqcqdvNAZtOiBH1525ZOtK8W/xRklxbOHs/UWG0Ntt8
-	zJYOo/IW0ZRP0Qqj4wnO5laGK9LrXcY+jC3CdKad1pJSPkEDuw2vsI/YmGT+0sfUiMmv/VQmU92
-	GyLNpUKOmg4wM+6awFhKovNuqHD3wqdicfklLpEdEjvS9hcI/WLy+dpwyKnjcJ8Bcn40kA9DO39
-	ftLx6mshWERmRZkDb/Hn9HHj2oHIFpmpbpacG/JVuydbIzaWmP0VtfDLllutR1GzL5eGsrZsLtZ
-	Xne0qj27mocuLSyftw3PN6k3l
-X-Google-Smtp-Source: AGHT+IFMBlwQSmEgqm/NTnMes5Uq1j9emF6+odX1U04PVh1jhQhYgfi2u1ppgJChumoqqCfveWDkGQ==
-X-Received: by 2002:a05:600c:34c6:b0:43c:fc00:f94f with SMTP id 5b1f17b1804b1-4405d69b68fmr10008205e9.23.1744794239868;
-        Wed, 16 Apr 2025 02:03:59 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4405b4c8294sm15258185e9.2.2025.04.16.02.03.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Apr 2025 02:03:59 -0700 (PDT)
-Message-ID: <e10f052d-b098-487e-a667-a0a19630d082@linaro.org>
-Date: Wed, 16 Apr 2025 11:03:57 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/19] Disable options unsupported on Emscripten
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gg3JANQ0;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744794765;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NRkPwzwUr2ZRm9OT5a1JiPbtfsT1DAMR2Iob30hjX4M=;
+	b=gg3JANQ0mKioUSw0fmnd9or5FonnZPPo94YOjrchYXTTLsvbkNZ7iwGCHYpLZZX1OB76Zc
+	kTGOyXdwafoIOSEh8z1f6QOTNXIV6LfN0UOThxNAMYHkx//V33Z/hH2SnEqAA8l4EWhlpI
+	unCb7xvAjstrZA9h27jmcEmf20HdYXQ=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-686-ugVE9C-sPe25fbUS6G-e-w-1; Wed,
+ 16 Apr 2025 05:12:41 -0400
+X-MC-Unique: ugVE9C-sPe25fbUS6G-e-w-1
+X-Mimecast-MFC-AGG-ID: ugVE9C-sPe25fbUS6G-e-w_1744794759
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 25A581828AA8;
+	Wed, 16 Apr 2025 09:12:26 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.58])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 988B01954B05;
+	Wed, 16 Apr 2025 09:12:14 +0000 (UTC)
+Date: Wed, 16 Apr 2025 10:12:10 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Kohei Tokunaga <ktokunaga.mail@gmail.com>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+	Francisco Iglesias <francisco.iglesias@amd.com>,
+	Vikram Garhwal <vikram.garhwal@bytedance.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"zmta06.collab.prod.int.phx2.redhat.com, list@suse.de" <qemu-ppc@nongnu.org>,
+	qemu-s390x <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
+ function pointers
+Message-ID: <Z_90aqNE74sonn8O@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <c2e3a58825c39678fcde361b685d1bd69d2fb1dd.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <c2e3a58825c39678fcde361b685d1bd69d2fb1dd.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: VqU7m5oHz4Qz
+ <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
+ <Z_9qIQhjsI5zOwXA@redhat.com>
+ <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: IWDRZPiw8Fh3
 
-On 16/4/25 10:14, Kohei Tokunaga wrote:
-> Daemonizing and run-with aren't supported on Emscripten so disable these
-> flags.
+On Wed, Apr 16, 2025 at 11:00:37AM +0200, Paolo Bonzini wrote:
+> Il mer 16 apr 2025, 10:29 Daniel P. Berrangé <berrange@redhat.com> ha
+> scritto:
 > 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-> ---
->   qemu-options.hx | 4 +++-
->   system/vl.c     | 4 ++--
->   2 files changed, 5 insertions(+), 3 deletions(-)
+> > > -    secs = g_list_sort(secs, sort_secs);
+> > > +    secs = g_list_sort_with_data(secs, sort_secs, NULL);
+> >
+> > I don't see what the problem is with the original code.
+> >
+> > The commit message says we have a bad function cast, but the original
+> > method decl is
+> >
+> >   GList *g_list_sort(GList*list, GCompareFunc compare_func);
+> >
+> > where the callback is
+> >
+> >    typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b);
+> >
+> > Our code complies with that GCompareFunc signature.
+> >
 > 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index dc694a99a3..20ed22afe2 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4863,9 +4863,11 @@ SRST
->   ERST
->   
->   #ifndef _WIN32
-> +#ifndef EMSCRIPTEN
+> The cast is inside glib; g_list_sort casts the function pointer and calls
+> g_list_sort_with_data.
 
-#if !defined(_WIN32) && !defined(EMSCRIPTEN)
+Sigh, the commit message should have said that, as it reads like the
+problem is in QEMU code, not glib code.
 
-?
+> I suggested this solution to Kohei because it's easy to check that we're
+> converting all users and not introducing new ones in the future (see
+> poisoning in patch 10).
 
->   DEF("daemonize", 0, QEMU_OPTION_daemonize, \
->       "-daemonize      daemonize QEMU after initializing\n", QEMU_ARCH_ALL)
->   #endif
-> +#endif
->   SRST
->   ``-daemonize``
->       Daemonize the QEMU process after initialization. QEMU will not
-> @@ -5249,7 +5251,7 @@ HXCOMM Internal use
->   DEF("qtest", HAS_ARG, QEMU_OPTION_qtest, "", QEMU_ARCH_ALL)
->   DEF("qtest-log", HAS_ARG, QEMU_OPTION_qtest_log, "", QEMU_ARCH_ALL)
->   
-> -#ifdef CONFIG_POSIX
-> +#if defined(CONFIG_POSIX) && !defined(EMSCRIPTEN)
->   DEF("run-with", HAS_ARG, QEMU_OPTION_run_with,
->       "-run-with [async-teardown=on|off][,chroot=dir][user=username|uid:gid]\n"
->       "                Set miscellaneous QEMU process lifecycle options:\n"
+It is easy to check this /one/ example, but this pattern of bad casts
+is typical in glib with likely many more examples, so avoidance in this
+way does not feel like a sustainable long term strategy to me.
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

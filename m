@@ -1,90 +1,91 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3206803njc;
-        Wed, 16 Apr 2025 02:23:13 -0700 (PDT)
-X-Received: by 2002:a05:6000:42c8:b0:39e:e75b:5cd with SMTP id ffacd0b85a97d-39ee75b094amr189200f8f.3.1744795392772;
-        Wed, 16 Apr 2025 02:23:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744795392; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3210707njc;
+        Wed, 16 Apr 2025 02:33:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:68d2:b0:43b:bfa7:c7d with SMTP id 5b1f17b1804b1-4405d765a17mr9161605e9.2.1744795991086;
+        Wed, 16 Apr 2025 02:33:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744795991; cv=none;
         d=google.com; s=arc-20240605;
-        b=es6fcP0y3CsW/3ZRG8TsIikgv3rUVPPeWYv2LFyX5Me7D1LGVqpHCYEbd2A0UeIVTM
-         rzavTN/yMOAKVy6kZsWRAnx/KGmABZJKJFqOaqKEb9hJTY823sox35g7AayOXXImn96h
-         r3QC40ImnFWHb1tHA1L9Zpz2Q9UCE3FB+y7FJUCTkfHbs/6oPMjlDJSmQxLIWOGpPdHQ
-         eWpfJE+rcZWKprIO3t0uC2F6fYZXYWkwKOkEo5b5sYPbo6ov4IVPcduZYRqN3bavIhok
-         amzurirMzFhxeKTkqwAqTFasSLTHjqIa+59rHyLRmUgmqgRHszBlC3iuxT4AVrKpmHWJ
-         l3oQ==
+        b=OT/cnoD5YL5xsEM7GynWQGNfBG67XszbtE+6eC7jGYubHye22x0RdZbxSQCfJsNrnN
+         AstmkRfXSxhTVhcWf8t4NPXetFdzwd0ac7pLYmbu/QKEr0AaVYpSz1XNE5kuKzxQ1gOz
+         xM9kQPpnITPrmrQw3vhkxv5CNy0Gm+1exJkm8eFWWUV81R8XanWUXhKVhqUex+uBQPxD
+         4vFXKo1IDXtI2zDFxMKozdcgWOFeT44krfgQeK9T8HNDuYAMHiCQfEC0MVwVne6HO6OI
+         8NH2vMN63IYqoK97c/+b/BLRB78dMBnQ6M3Id2UFDjq64m/xtvIhzryKTcN8QXCc+aXt
+         Zy4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=XoImJa+fjliBajtT+2WRyNvLKOrfk0bxtRwFuQd95Yg=;
+        bh=afPtcsGo0/7NpTM+oS8EQe7bVn98dwsMMIGtq+LmHK0=;
         fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
-        b=VgUYmq5vDs/DHwmPBBiNcDFywnndgkBJ7bTRjyBBs0JS9ls+T5O94P57CmZq9f5tsy
-         k6dD/pMsxa2vCgATK6UiDTgHKim4RS0KFutoXYdEQ+DOuJ9cZ7ZII2mGkwdhHxzknUWp
-         ObfErRm/WW0TIUn2pFAwCgNd4diYtRlk1kl6o21OC+WOEycMDM989JIzaMaLULuEkXPL
-         tUtxkMOKhAXh90r5NtG35esYr5QmyuZPwrULMeYUOLzc6NpLRCZCKbhRccRJmnW6QCX+
-         o30dF/y6ZKO54uBbIfuAJPqjjEolzh5F5MaRaq/jihhOWbpBqk0Qz9m3jKxIp4BbE5eb
-         bitQ==;
+        b=dVVqbAij8rCvLSzXNMtmtzFCzFMWY/aeD5EW955DlteLaWWF4ZIUy9gJ7uD73UBIEV
+         TDUllRW4Sr/FCH1V0D6nKGinyp/6cuf25RtES1yRzPQmWpPeQK+p/4jIf2a0DEI/9NLZ
+         TixlihNcQQ88MPj5fHUVIHo6qIvEr8lAMwWwiAlSXLwBipzHC8KGYcXPuJBJtTWGSIJH
+         EeJpxvnq4QjAD61ltLF+o62YXSSx9s2dN4XgoYVEh+JS/X3z0dpTcI/9WH/aI91QCzia
+         9sgA2AASqPSYA2KgAT5wPUYW5F8E2gPTc0BjLrLGZJn816L29qYf+uj12NguxNkx33Cu
+         kIEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h1Cc85QK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wY7k7Kpa;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-39d909d5cffsor4716051f8f.0.2025.04.16.02.23.12
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4405b5a5396sor3613125e9.5.2025.04.16.02.33.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Apr 2025 02:23:12 -0700 (PDT)
+        Wed, 16 Apr 2025 02:33:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h1Cc85QK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wY7k7Kpa;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744795392; x=1745400192; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XoImJa+fjliBajtT+2WRyNvLKOrfk0bxtRwFuQd95Yg=;
-        b=h1Cc85QKIaDb/naIGGDNZdw759Y6jMrIYmZ09cZHLYAT/k03OEsTizHAWrlm6L9EiD
-         JH43Twk7WjQ+SjvuJVsjn5D6ce/ORQy2Ev/e9rctUTsnCCOJiAEPsDLSeQ0zGlPk0Der
-         4hkD6NHnGkpByaUWLlIzlgTggKJIGdA4bUFuHuSSq73VQQecsHhvPpJbhSUSYW6RQOhq
-         AZbwj4YwI3/UbIGC3gRWMET2pogqK4hkzlqvs3O6TiupvSw92GWumd95Ocaz10n1Osvq
-         3SjZtEsl2akKCtAkG5Oqnf33tt/Ix2LTlXy34NLzF12gyejNoBBlHGatpD1RnhE/Nqzf
-         6VUw==
+        d=linaro.org; s=google; t=1744795990; x=1745400790; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=afPtcsGo0/7NpTM+oS8EQe7bVn98dwsMMIGtq+LmHK0=;
+        b=wY7k7Kpa9ILNqW7l2SLkgyf0JhETG1kQa3j3arcjyvYkZMUyyihhBrbKMYP1ASZ441
+         NlQOclYzyY/p/vYwJ5cZ6edJsA0H3gWzwOFmFBeB8SUYvhSVizrqgKsR0owJDyLNNW4b
+         MzlsqdKSeRwI3KAW3D2sfFLBsYNYlWPfKOC9PGeJv9gFIUpLDE3dofcJpzrTS7jkruB4
+         5hu19dDo4kkiZlTUgQFRiRKYDux6AjTiVFVE+e4YdJPApBp2/JA/kEcp/AvsjhaY2zHW
+         qF/Po+47rhfJmAvEpX40H1LkfkLxfo7Ug4PAy1pgoGU1TUyo/ZQ3GrDKDLk+RjxtT5rg
+         /J8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744795392; x=1745400192;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1744795990; x=1745400790;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XoImJa+fjliBajtT+2WRyNvLKOrfk0bxtRwFuQd95Yg=;
-        b=tqGhNNhGZDpJ4Ge2+6YgnuiqZBKGXJaEplb20hMPJTknHtMIvmPS7RiVEGE1G9o1EN
-         1zdutw5EJEjpEmxM0BnhZ2Wr85fv7Fih7H31gykAx4reibHRF4ZO+N5mTpPmFUe1p4/B
-         pnEESJudffu6le87cWqC+Xou/or4GfBdZS7Az4q22sF9agvXfzhlOuKS2QZ/Izi3r072
-         qH6d05enZRD5jKH2Xk/KyfzAnPhCjqE3PTHe4Ne9jQa8LyMU2/NDalEuVjLMX0XkcxCx
-         nFv/P1N7ddOzMp6wdwcYA9aAew5n4KJFPA+nln0PmL70cjGe0XqDD8Bkc1f36BrDr+NG
-         Lgug==
-X-Gm-Message-State: AOJu0YwBjCO8+++oE+XA/ROeQRyAq9Nvl3Ga3R9y5m7Vafqe0VNUkHoU
-	WSALDD2WuR7P90UknqMVOC8DOL+5RGnLSljmUKwOmkyFwgiu/8p9bQ7LlxfuAi6qkg==
-X-Gm-Gg: ASbGncseMpLD7bwYKVvgetT11rHdz/DLUs1/34bif4J3xgob6noqyyUttM98jbtZvW9
-	1zG+FT/sFY2DZGpJjCuBPEtOyOos0Wqown9z+Vx2W5KRaAqOgbkCPYeua2O0Bs8LMiqghAsD9jv
-	YRPvEQ4v01rYWdZc9ij6AeAePtmOvSl2ClaH7yN5Ul3gSS9MLz3l2OrpkjmTsHhm8LmqlZ406jf
-	132apvI1e7NinSu0Sqlf7hBCmil7u497CAT5gG/0nP/GAdNGrucULSrjO1IEsQLXYe6m4OKuhqO
-	gr9HxBiyI8VQVScZC/dG+Fsb8OoAv86gpWxmOo9Ged53eD5m6NvkEy5QZXP/7G6BElgUK3mdwBq
-	geWwAkhWpWrulRg==
-X-Google-Smtp-Source: AGHT+IGa7RGQyM2l9Tq/ih49pAHM7+HApoQxnN2Cd45RmYTPDotEOrhSfrtvQ6JTX++TzJDKj63q1g==
-X-Received: by 2002:a05:6000:2584:b0:39e:cbd2:986b with SMTP id ffacd0b85a97d-39ee5b10eddmr912645f8f.7.1744795392174;
-        Wed, 16 Apr 2025 02:23:12 -0700 (PDT)
+        bh=afPtcsGo0/7NpTM+oS8EQe7bVn98dwsMMIGtq+LmHK0=;
+        b=DcX+Xp1i/wblidJnzziEKlVZ1SzMmuFe0MYaquvbsEiwuRmchcc9fQzSGMPEQLEpoD
+         xABPHx++gZFjSPOUIJP/AGY4D8qegfBlz6eeDaHMDYkJsq2G351qcF8xwwzVKt5fj/dQ
+         VpDMhlf9cuuXFAt5UMxH0VNjTJaSDmvIsucYbRZAvQAw1JaQ6A3A8u2rVdgDg+OV2Y/q
+         75dTwUCohdW2D5ENR/t6N0z1NoxOjcoQMrNh9XAQqIzZJXTNH1N8jQutiBssNZEuMXXg
+         /CdT+MotF05Z3GHpNrRET3WWK7SqUa09r/NJYoU8JGDmMsbBkpXw1IsLKtU3oDpHDtx5
+         zTCA==
+X-Gm-Message-State: AOJu0YxOC7Ffp/mV0XX3p7KVjb2C+C2kifkOqumZKDbxt3II1i/MYhSt
+	nNc44d2XXkmNez1/QsiaT/+uTgjVs8+jAsVnJr7yA61auCWGfI/Q6iRrQKOi0co8FQ==
+X-Gm-Gg: ASbGncsTEkyfHlUatgGaVww612pXgw4p3bPPpURtAsYp05Bd53l+x98xNKgFwN4YPpN
+	BOQrbhP/WULE7qIfTGejKwcGLwLC34VCEmdTnSAXHI1lUzS4yo2DckiU9Sw27NX1lLzfxKBmMEV
+	DWFoo0DyHaEHaO7XEXphl8pxJTINZStLlp3fy4WGCP/h+9qOTwG4iQY6vOABsvDx9z2ov7e6kn7
+	/6DPt1q5J3bcZiyOkbs9BVZoEi1kGBqPcNh2QDXx13VOOpcEIgIi1FUdUDb9ZOfw/zUNZCq95XD
+	bBCfvSJRCvt2/TZbacTLwBmxlrpXoBpIumAx6nWQ2RT1vP9oZbQCny2gwazeqGL86LKpDrvIAb1
+	WlMpUI/GOJtVa/A==
+X-Google-Smtp-Source: AGHT+IGsE+YM7/CjJzAZeTiKtyuERZ+66QMAZoCdiwf6nPB3lLer+ArlLHsqqSFfxnm9YRiyFGIx+g==
+X-Received: by 2002:a05:600c:4593:b0:439:8878:5029 with SMTP id 5b1f17b1804b1-4405d765ae9mr10364065e9.2.1744795990518;
+        Wed, 16 Apr 2025 02:33:10 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae96407esm16736471f8f.17.2025.04.16.02.23.10
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4405b54579fsm15743395e9.40.2025.04.16.02.33.08
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Apr 2025 02:23:11 -0700 (PDT)
-Message-ID: <91dc0def-2e17-40c0-a66a-c5992f10eb3e@linaro.org>
-Date: Wed, 16 Apr 2025 11:23:10 +0200
+        Wed, 16 Apr 2025 02:33:09 -0700 (PDT)
+Message-ID: <2d232dbc-4613-4352-8ede-3fd5dcefc32c@linaro.org>
+Date: Wed, 16 Apr 2025 11:33:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/19] gitlab: Enable CI for wasm build
+Subject: Re: [PATCH 12/19] block: Update block to compile with Emscripten
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
@@ -107,27 +108,116 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <16055d17cadcb5f4c23203218cb8fc3fa81d1754.1744787186.git.ktokunaga.mail@gmail.com>
+ <9da41d784991f77e2c1f38d0781cd047b593e053.1744787186.git.ktokunaga.mail@gmail.com>
+ <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <16055d17cadcb5f4c23203218cb8fc3fa81d1754.1744787186.git.ktokunaga.mail@gmail.com>
+In-Reply-To: <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: /sUOimRhataX
+Content-Transfer-Encoding: 8bit
+X-TUID: azLli/6LBkHx
 
-On 16/4/25 10:14, Kohei Tokunaga wrote:
-> Add GitLab CI job that builds QEMU using emscripten. The build runs in the
-> added Dockerfile that contains dependencies (glib, libffi, pixman, zlib)
-> compiled by emscripten.
+On 16/4/25 11:00, Philippe Mathieu-Daudé wrote:
+> On 16/4/25 10:14, Kohei Tokunaga wrote:
+>> emscripten exposes copy_file_range declaration but doesn't provide the
+>> implementation in the final link. Define the emscripten-specific stub
+>> function to avoid type conflict with the emscripten's header.
+>>
+>> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+>> ---
+>>   block/file-posix.c |  6 ++++++
+>>   stubs/emscripten.c | 13 +++++++++++++
+>>   2 files changed, 19 insertions(+)
+>>   create mode 100644 stubs/emscripten.c
+>>
+>> diff --git a/block/file-posix.c b/block/file-posix.c
+>> index 56d1972d15..22e0ed5069 100644
+>> --- a/block/file-posix.c
+>> +++ b/block/file-posix.c
+>> @@ -110,6 +110,10 @@
+>>   #include <sys/diskslice.h>
+>>   #endif
+>> +#ifdef EMSCRIPTEN
+>> +#include <sys/ioctl.h>
+>> +#endif
+>> +
+>>   /* OS X does not have O_DSYNC */
+>>   #ifndef O_DSYNC
+>>   #ifdef O_SYNC
+>> @@ -2010,6 +2014,7 @@ static int handle_aiocb_write_zeroes_unmap(void 
+>> *opaque)
+>>       return handle_aiocb_write_zeroes(aiocb);
+>>   }
+>> +#ifndef EMSCRIPTEN
+>>   #ifndef HAVE_COPY_FILE_RANGE
+>>   static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+>>                                off_t *out_off, size_t len, unsigned 
+>> int flags)
+>> @@ -2023,6 +2028,7 @@ static off_t copy_file_range(int in_fd, off_t 
+>> *in_off, int out_fd,
+>>   #endif
+>>   }
+>>   #endif
+>> +#endif
+>>   /*
+>>    * parse_zone - Fill a zone descriptor
+>> diff --git a/stubs/emscripten.c b/stubs/emscripten.c
+>> new file mode 100644
+>> index 0000000000..2157d6349b
+>> --- /dev/null
+>> +++ b/stubs/emscripten.c
+>> @@ -0,0 +1,13 @@
+>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+>> +#include "qemu/osdep.h"
+>> +/*
+>> + * emscripten exposes copy_file_range declaration but doesn't provide 
+>> the
+>> + * implementation in the final link. Define the stub here but avoid type
+>> + * conflict with the emscripten's header.
+>> + */
+>> +ssize_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+>> +                             off_t *out_off, size_t len, unsigned int 
+>> flags)
+>> +{
+>> +    errno = ENOSYS;
+>> +    return -1;
+>> +}
 > 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+> I'd include in this patch this hunk from patch 17:
+> 
+> -- >8 --
+> diff --git a/stubs/meson.build b/stubs/meson.build
+> index 63392f5e78..4fd4d362f9 100644
+> --- a/stubs/meson.build
+> +++ b/stubs/meson.build
+> @@ -89,3 +89,7 @@ if have_system or have_user
+>     stub_ss.add(files('hotplug-stubs.c'))
+>     stub_ss.add(files('sysbus.c'))
+>   endif
+> +
+> +if host_os == 'emscripten'
+> +  stub_ss.add(files('emscripten.c'))
+> +endif
 > ---
->   .gitlab-ci.d/buildtest-template.yml           |  27 ++++
->   .gitlab-ci.d/buildtest.yml                    |   9 ++
->   .gitlab-ci.d/container-cross.yml              |   5 +
->   .../dockerfiles/emsdk-wasm32-cross.docker     | 145 ++++++++++++++++++
->   4 files changed, 186 insertions(+)
->   create mode 100644 tests/docker/dockerfiles/emsdk-wasm32-cross.docker
 
-Probably nitpicking, I'd add the Dockerfile first, then the GitLab job
-in another patch.
+Actually what about checking the symbol presence in meson?
+Something like (untested):
+
+-- >8 --
+diff --git a/meson.build b/meson.build
+index b18c46d16a2..33185fdf315 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2654,3 +2654,2 @@ config_host_data.set('CONFIG_TIMERFD', 
+cc.has_function('timerfd_create'))
+  config_host_data.set('CONFIG_GETLOADAVG', cc.has_function('getloadavg'))
+-config_host_data.set('HAVE_COPY_FILE_RANGE', 
+cc.has_function('copy_file_range'))
+  config_host_data.set('HAVE_GETIFADDRS', cc.has_function('getifaddrs'))
+@@ -2756,2 +2755,6 @@ config_host_data.set('HAVE_UTMPX',
+
++config_host_data.set('HAVE_COPY_FILE_RANGE', cc.links(gnu_source_prefix 
++ '''
++  #include <unistd.h>
++  int main(void) { return copy_file_range(-1, NULL, -1, NULL, 0, 0); }'''))
+  config_host_data.set('CONFIG_EVENTFD', cc.links('''
+---

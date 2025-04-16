@@ -1,155 +1,120 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3212602njc;
-        Wed, 16 Apr 2025 02:37:50 -0700 (PDT)
-X-Received: by 2002:a05:600c:1d9e:b0:43d:fa59:bced with SMTP id 5b1f17b1804b1-4405d6cc4e5mr12842135e9.32.1744796269723;
-        Wed, 16 Apr 2025 02:37:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744796269; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp30475njk;
+        Wed, 16 Apr 2025 04:56:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFcaJX6POkdoAkvUP7u7IbW7ZSKrm0fTgzIY6uiizboLiMD2mH9flKEFMYil75JNwOBqJ04JcSlft8Og==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxq7+neSf4XZ4twQ64FdwqKMVt3BM5N1nbWsJ8UFtpeD6Isd+NXRPPw/EQTlQDN4GDH5aw
+X-Received: by 2002:a5d:584f:0:b0:391:43cb:43e6 with SMTP id ffacd0b85a97d-39ee5ba01f0mr1508867f8f.51.1744804566525;
+        Wed, 16 Apr 2025 04:56:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744804566; cv=none;
         d=google.com; s=arc-20240605;
-        b=G5OFOt2hDrVfiIijG6nWRaxRnBfWTaNJH4WuWwwUbF3awv/Qv+1y/7HGdBYFEXX9Mo
-         8/RUEMAnC0FRxVTpUOGFJVz10eAUHkVQMhM82/qQ5I8ysexy3SdctlhqUdCuB0EKt7Zz
-         PR4ki/ccXzVVt4/GN50ooxsER6OsL0K6Q1H/Qu5vhfs7LD3rb94NEbcwBSeDyuTwwle4
-         ABfV2wDS4zKwoA5ei8AEFBgCxSP5GIj2xtX5OzrDONHO/VIkVfH3Up121P6UsxQIsIhX
-         EPD1c+SOQKDK9YF6r6k7mIqumhtFctsbztoHzaqV4UMwnAvuEmZzDu5g8cBS9DnZyh0d
-         0Dug==
+        b=a6osvYuPa/JdDrl4hxyLhJ6XzAnSCdQMm2cqIGFCjw+1RtSuwCVL9Sk2ejfBQsgXju
+         67MhwfZFTTzzndQDfyS9ofLvCRMYqgu5LPardwdImkKQlf3cnLck11vM1+/W2gIxi5dy
+         v3oOiLnvkjvmjTy84VpC4um129Ecu3gnyqeYi+WutvQL6EsaUyUQpwy6Druw2bbMXpK8
+         IMggmbbVesJOXkFglJHARNOtSkGGMmPZE1P/cEA0dRJ0dYPeJAHrFki6xw1xGmluKx8Q
+         XzeSsNw+mTV4k0eKeMnreZ7/MaBJ/iwDM5b6ujBo9KWI0Wsru22YDNmlTHPceOxeWeXX
+         Ww1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=sQOBlieVx7DwZK+XD/QwOsduptdXBd3npEDwZEx3ATA=;
-        fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
-        b=co9PWiVybo55m7ljiby4ScfPbkRYKTRGfVcXnAAnvOz6iSZZ9CvBAM4vzCYCmqlntZ
-         SE8yG8Wh+HDYd+CvGjw+dwsjaCNyIE9FQdS3BJwQhCukTes4DElb+49648h5Cgdg2Ufg
-         tT3soXwcVUkq5hxTmZ8KEavrlg2m1RHiBDY3VIQdp69rUtiovsZA/bH0JS5UF9d2c+fG
-         IhHr7AFT0n2ym3IMRmSY6IZmpENXi2XE5HADvEKDxyYInz73pyxHPMoiqQFRpnYtWH6A
-         N00sk7v0R+Q9ZvjZOnYt0yoJBh/D8u/zs122O0u6Ux8DKHkZToAEUOw+M0NOk3KHwGvk
-         LWyA==;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date;
+        bh=LWCw4EY4JF8g7EemMHlUxF0MisOZK/fedcxuaLdlmxc=;
+        fh=bn9hZl/3WSY7EHYmNoFvkGecCUwCqI9+/4TR+4fmFmA=;
+        b=OsTNQk/h3lwHsy2+9inKJTOfriAlLWxU8WYCawjgMVBA1eheT4xDgWEa/5VRWpc8Y0
+         LgmGWEfl0kpv6mrelm/EUZhVVl2n9USl27g+JHpSP714LxXtch8vdTYitipgLdUqnPfk
+         MQxRFqukElOKKyjM15NzcX+Chl0y4efM9jjKH3h++j3pwJ0R6s2MPA/ilYXkHkNsw4g4
+         ocy8mtCS51aOH015ir+2Utbz6tSD01oJHZkfNGr4RuFNT9LHCHH8re+KpToJr636E3Vs
+         zpVnwUTQPA5pjbc0Q+cmTKEAL9R1UsNT+r105YYwIC7UKy2Eiq/U/rTvZh3U4YmUVSVS
+         H7CQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SDozfdPL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43f30aa7160sor49645075e9.7.2025.04.16.02.37.49
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Apr 2025 02:37:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <balaton@eik.bme.hu>
+Received: from zero.eik.bme.hu (zero.eik.bme.hu. [2001:738:2001:2001::2001])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-39eaf427ec2si7573105f8f.355.2025.04.16.04.56.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Apr 2025 04:56:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) client-ip=2001:738:2001:2001::2001;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SDozfdPL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744796269; x=1745401069; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sQOBlieVx7DwZK+XD/QwOsduptdXBd3npEDwZEx3ATA=;
-        b=SDozfdPLVQ4GFSITlNw/Fv/Xi4x8L4wRsjx9BHRIHD5nPo64DjIYfrhdimiPpGLodc
-         5jHVt1SWtU7EqTlVzmKblSSOfBkepvXydbuIfIqPey/jjSqfqyos4G/kSKXsPHCpv7Pp
-         jZP94jFovH7nROp8C2M9xeoXf+NNOc6bSm7rh7G6OsVNrKQ+9GO4BWxNNOQXCfBwMTTh
-         /xkQF2fv7JyNOtUW2fpdeqMJf1ecw+LYfQRDYeNn/fCB2/sCyM6Ee5K4FWf0yS9/5Ivv
-         H4gsg1YxiyWUqQdTn4Z0JvZHHQLHu8RlVgfyzpmWi6jC+1VIQ0XwQva7jOsq7LEgfS4I
-         VZhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744796269; x=1745401069;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sQOBlieVx7DwZK+XD/QwOsduptdXBd3npEDwZEx3ATA=;
-        b=PZ3svA8xDGUREEhL4k14Dg9DfopFyFndKPHaW11sictEYQXpywxhETOvZKJ1mqQtpT
-         f2aDXYrHloe1nn/bLxBrRAuNeLdEDnYHGMKZkVFfUVSiop41GAD6d7b2deck0RhP4Fgh
-         hUE7YVe9CTYcIf5LufPjf6PcxDArnavIexJeUKEQhWh1b3HD8teL7zs7eZoQ29m0JF79
-         l9gV42v8RvB+EobZiUbycbXvvjQhLLF/42iWRD9UgGNBRis01KK6Q4GeICFV0CL9/NAg
-         QvzyDvsx6SQUG7lW90jYGruZpqE0hL8b83pZ7fXViYuTjoAwT9hOkSjG2DqEZn88dH2V
-         PIFg==
-X-Gm-Message-State: AOJu0Yz0UzTEshNEJsdCQqkAVd+GuZ+oplQL0OqphLqIFuz0gIBEokcw
-	5TPa0ZLO1Ld6kgfVFaI5igxEJePPwUByBFttYxRZi1VV13W/dQhBu6hotvL+2D8qUA==
-X-Gm-Gg: ASbGncvUZ1iMPMzcr3bPN9bG2KNh2Ldsr5fS9JXaelykJPis8+ryuUjqmfefP+r4vvU
-	akcmHpurIskjqCSiNgjYoSlRPgVa1AQPBLwXXAhr4+9naoXwntql6WRTJKXgc2wqxZfnCjInFBu
-	6ccMTKAd5gY9x3uQ6SoOjlwb1Qtc003Y99Fa3nbifRmBp/nc/6Em0eFKBh7P9wPPiYtGKA3gXK2
-	Pw+TRaICOZ7nW4ZL/JMi/vmzISl1ns5kv/+Ajzaa0wNiK8rJ6FBRNer6PeXbnhChim9jpGxhxGC
-	sULwzr8m8+zteZxX47yy88yr2vahhZgIIknNSxTcXL575J93UNXl61SsGMdrYKRAtY7qU1qMzEz
-	16W+Z8e/o/QtC+g==
-X-Google-Smtp-Source: AGHT+IEbSJP+SdgI0tcHZOmu0kOzUlAeAcfUCVoNz3lD99jqt3F6Q/0K0L5eP2XrHzbEXTRek9UMRg==
-X-Received: by 2002:a5d:6485:0:b0:390:eb50:37c3 with SMTP id ffacd0b85a97d-39ee5b37b83mr1219460f8f.27.1744796269150;
-        Wed, 16 Apr 2025 02:37:49 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae979615sm17040199f8f.54.2025.04.16.02.37.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Apr 2025 02:37:48 -0700 (PDT)
-Message-ID: <29330430-61a8-42c8-a87c-259f0cdbefe0@linaro.org>
-Date: Wed, 16 Apr 2025 11:37:47 +0200
+       spf=pass (google.com: domain of balaton@eik.bme.hu designates 2001:738:2001:2001::2001 as permitted sender) smtp.mailfrom=balaton@eik.bme.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id D058B4E6033;
+	Wed, 16 Apr 2025 13:56:05 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id 8l-mtgXqr-oN; Wed, 16 Apr 2025 13:56:03 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id E0DE14E6027; Wed, 16 Apr 2025 13:56:03 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id DE66574577C;
+	Wed, 16 Apr 2025 13:56:03 +0200 (CEST)
+Date: Wed, 16 Apr 2025 13:56:03 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+cc: qemu-devel@nongnu.org, 
+    =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
+    =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+    Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
+    Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+    Alexandre Iooss <erdnaxe@crans.org>, 
+    Mahmoud Mandour <ma.mandourr@gmail.com>, 
+    Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+    Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+    Francisco Iglesias <francisco.iglesias@amd.com>, 
+    Vikram Garhwal <vikram.garhwal@bytedance.com>, 
+    Jason Wang <jasowang@redhat.com>, 
+    =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+    =?ISO-8859-15?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Eduardo Habkost <eduardo@habkost.net>, 
+    Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>, 
+    Nicholas Piggin <npiggin@gmail.com>, 
+    Daniel Henrique Barboza <danielhb413@gmail.com>, 
+    David Hildenbrand <david@redhat.com>, 
+    Richard Henderson <richard.henderson@linaro.org>, 
+    Ilya Leoshkevich <iii@linux.ibm.com>, 
+    Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
+    qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 10/19] include/glib-compat.h: Poison g_list_sort and
+ g_slist_sort
+In-Reply-To: <f6e0e42ae3491564478929e412991c2a16ee3539.1744787186.git.ktokunaga.mail@gmail.com>
+Message-ID: <263e4803-65d0-5a41-4031-99766b067915@eik.bme.hu>
+References: <cover.1744787186.git.ktokunaga.mail@gmail.com> <f6e0e42ae3491564478929e412991c2a16ee3539.1744787186.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/19] util/cacheflush.c: Update cache flushing mechanism
- for Emscripten
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <97a2164b3f428265136bb1c01615a16b516138c2.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <97a2164b3f428265136bb1c01615a16b516138c2.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: FiXyhNzhGbdZ
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-TUID: G30Pe/lw9y9w
 
-The "why?" isn't clearly described.
-
-On 16/4/25 10:14, Kohei Tokunaga wrote:
+On Wed, 16 Apr 2025, Kohei Tokunaga wrote:
+> On emscripten, function pointer casts can cause function call
+> failure. g_list_sort and g_slist_sort performs this internally so can't be
+> used on Emscripten. Instead, g_list_sort_with_data and
+> g_slist_sort_with_data should be used.
+>
 > Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
->   include/qemu/cacheflush.h | 3 ++-
->   util/cacheflush.c         | 3 ++-
->   2 files changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/qemu/cacheflush.h b/include/qemu/cacheflush.h
-> index ae20bcda73..84969801e3 100644
-> --- a/include/qemu/cacheflush.h
-> +++ b/include/qemu/cacheflush.h
-> @@ -19,7 +19,8 @@
->    * mappings of the same physical page(s).
->    */
->   
-> -#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-> +#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) \
-> +    || defined(EMSCRIPTEN)
->   
->   static inline void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
->   {
-> diff --git a/util/cacheflush.c b/util/cacheflush.c
-> index 1d12899a39..e5aa256cd8 100644
-> --- a/util/cacheflush.c
-> +++ b/util/cacheflush.c
-> @@ -225,7 +225,8 @@ static void __attribute__((constructor)) init_cache_info(void)
->    * Architecture (+ OS) specific cache flushing mechanisms.
->    */
->   
-> -#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-> +#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) || \
-> +    defined(EMSCRIPTEN)
->   
->   /* Caches are coherent and do not require flushing; symbol inline. */
->   
+> include/glib-compat.h | 6 ++++++
+> 1 file changed, 6 insertions(+)
+>
+> diff --git a/include/glib-compat.h b/include/glib-compat.h
+> index 86be439ba0..e441b396ef 100644
+> --- a/include/glib-compat.h
+> +++ b/include/glib-compat.h
+> @@ -36,6 +36,12 @@
+> #include <pwd.h>
+> #endif
+>
+> +/* These functions perform function pointer casts which can cause function call
+> + * failure on Emscripten. Use g_slist_sort_with_data and g_list_sort_with_data
+> + * insted of these functions.
+
+Typo: instead
+
+Regards,
+BALATON Zoltan
+
+> + */
+> +#pragma GCC poison g_slist_sort g_list_sort
+> +
+> /*
+>  * Note that because of the GLIB_VERSION_MAX_ALLOWED constant above, allowing
+>  * use of functions from newer GLib via this compat header needs a little
+>

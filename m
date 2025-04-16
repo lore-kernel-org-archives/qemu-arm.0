@@ -1,149 +1,193 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3179666njc;
-        Wed, 16 Apr 2025 01:17:31 -0700 (PDT)
-X-Received: by 2002:a17:902:e542:b0:21f:f3d:d533 with SMTP id d9443c01a7336-22c358c542fmr15491525ad.2.1744791450915;
-        Wed, 16 Apr 2025 01:17:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744791450; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3179851njc;
+        Wed, 16 Apr 2025 01:17:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX0OobjaMni9mOlDBKoZlQfAIuTrbZqd4AXgl7KU1NVHofSGnxtvz5zgURJ753/GihK2nX8IQPdKiXolA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMmhHUS4g5rJuq7VLuz2mqnUZUJ1cbl79BtEaAjr8a5LJ2p5DTRBu2OkkE4gp/Bbhwlv28
+X-Received: by 2002:a17:907:940c:b0:aca:e1ea:c5fc with SMTP id a640c23a62f3a-acb429dfb90mr69813166b.26.1744791476284;
+        Wed, 16 Apr 2025 01:17:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1744791476; cv=pass;
         d=google.com; s=arc-20240605;
-        b=BAmvvcIuBOyz3t0F+ybDb2m7pdUmwj6vEK+Kft9Cu7rdsYqlOM7dvSAuz5NWTVIO/o
-         m4FNPYadbjJJ1O7d2VDBAjIlPAbV3QXhFIshNPCqTp/c90da/Sx36cudOOliGhTZId38
-         ziCuUZXCjfR4e44RnBryXjM50PbWQ8s4mv8UbokSN2rJK6QXnioLj4yRTi5AtlYYNf9+
-         9I5vERXfhK/Db6BnE4LiC7/dGXswdbOOJRbLyzbHa2cFLqajC4BWvldJ4S7LSIkZaUeJ
-         46bVeRZLcqdemdLoi8vwJjy1ukI8z/6iaTG+n1RkqRUWASgYKsUPRkZP1YrXyh9xVxSc
-         YReQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p61XeamrPryy5y8KZD/my/LXyq845Q2ZSQbHbgzzrSA=;
-        fh=k3PyV3YIMseYxpCV5ph3FiFpSwjQ35w0Q8XFG8OAsz4=;
-        b=Dt2C/MMMFetJVFEXDrVdn+yeSeU7WoTJ1zm6DXqrR3Gpw1bHILwLeGwWmyhMAd1i4N
-         hzGbo/lnGOkVDNkxtexfg5DSMuUyx5beRi7tfAqv60yZw90gloJ4vemxY4KGW66UBXUP
-         TL88gJ3riOX5mmHr4IlS6EZ3c73UTu3yJELWj7mlrTlLkncHD2cukl0eItXjk0aaWKUJ
-         aZRFEKa2A0AhXuAKJjJKHjuuC6SpFyn72PEHr5f1+Od0QqRy6UCdEkrKKCP+qJURAUyG
-         IiCYMqiQsd+k6o7CNTF0s87GBkvMctaq5vZ+xg9lsd6esDZMXY/reHRWjEuvb+Ypt5LF
-         DLzg==;
+        b=jeAuV7J9md8ieVYfltQwwKI/39CPnNTDCD71Evh3NOQyXjWIEc9ZXHQuCf4Oez+AmW
+         UNCz3zqJSnRyOs45czGvLb+evC/IS/3syBxlomGtBiO55F8xw4IVlg8500DgLwpWHdpz
+         SGF01S1pk90JFnepT5HUVYT15W/0ZyPV3SboSMq+TmsTaWRaLcmYuUIt0F0qlnPHFb1T
+         A1aN+TP60iV3/PIN6OsMMiowQRvrB3YFLhCk5W2Q1WIaA7+y34bHM3paVB6fD8G0bP1A
+         AZM+Ch+7Fs5YfLwbUlIfJw7qcQjq23WB49D/v8klztAQtKk7npQvkJIreAUyJF2xjRj5
+         oulw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=+prEyTRWGZcBrE/AIyoW4nEtdjv1GtfBf5zu6/qquhE=;
+        fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
+        b=V47TxCSDaNck1SvmcDSiLuqWsPg0UGsgHiIYALx5iM7WxycVwa/6+tcR4a4AHKtydU
+         cS8/61K+12ylRgOSpVe7vZYyiyxyfQ95QFbE0113MtveaRhfK9Fd8y7Pg46bUhwIchzs
+         hZwIx4Z2ZJxb5uFcsP8FJFEs3Cumz/5okvexRpn3gMUfN+eUDd3Fl6tYRiq7Jv35AG4U
+         ihisW9bdmqi3bdD4luejrw9baYDkyjo+4HPdj7UwonwiuIgsW+Dg+Ms1hMCkrfxzRnth
+         BYgv0eGFIjEjJ8GTnTKJp9YwUd3zQp+PjTMymUnq800kXj7AiFOSNbCLVyuHTl+JLdc4
+         wU9g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=klQJOPZx;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73bb1d44a06sor13754229b3a.2.2025.04.16.01.17.30
-        (Google Transport Security);
-        Wed, 16 Apr 2025 01:17:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=klQJOPZx;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744791450; x=1745396250; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p61XeamrPryy5y8KZD/my/LXyq845Q2ZSQbHbgzzrSA=;
-        b=klQJOPZxLlQYCmrdt0Eqd2yrh3AShnhZJgqYH0k1AkiHJSiNCslAexbdH25IXAPlqO
-         gThZfFq4xMjxj0Y7l/Pf4Wa4OGc9LZqRlEuFLZplcIet1iLgM4HNBokOVqehtTVaqSKG
-         l1wxbS+Zzm/Q0fD7+hrkAkWdHR3Q3OBiPb1o0LrKxdinVe3qS75fBZXoJYFGzIuYzLJ/
-         YyzFzsHRvBdilqTGa+YYdGdcJ2Aie2ghkRNOwNxj6lEyGr7W2k17L9SlSKR82+GkzVgj
-         glAcZ496t7J8YW3pb7WOT58hbAOU+Di8aszYiVNESS9vuI6AS/B7SMFWPMpzqjWWice6
-         /6oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744791450; x=1745396250;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p61XeamrPryy5y8KZD/my/LXyq845Q2ZSQbHbgzzrSA=;
-        b=r0igJMsooQ/XxjqUfz9/aZWQXsBpaWZd4+xraMpwiqOGZVF1gD8Amb6LlO2GywRQb7
-         +NISmCLDXtjiu6+Zd2mBKlHQyU7etqkSBsJqep3u4sOFvme159G3TN4dOvUlJueO3fI0
-         IuNBDlkCipdN+Hu7Inq56jZu21hCtVyQcP7rfA0HmXIE/h1idEELV8mIEpxaUI7bd6RG
-         081XdIYslUnMfK6nLS/IK/qi8EqxghV/UbDlVVmXEucK7ueFdjN4XamWa7zbeC4RXNu5
-         PNV+fZ9wE63nTEcaXtIUrP5Hkh51t2Gc24kgZZJ+5C0ER61hzPqRaWmtfuLMwZAt6B+w
-         JzYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUNeA9qgO6ab0VNxnCVj3AHKhtdCVtjeFlWLoV1fHJpmpmzQL4h4/HuQlYYEVkgX5NdzcS2yukY@linaro.org, AJvYcCVgCylTIzl4RbuUDK13DWiZncJTmDXaQUpJmdZPH7tTD7NveiFKq9nMslsX8EV+hLx4cNH3SHJXDK9U4K13jQkjBwo=@linaro.org, AJvYcCWS2zvgePzWVOM49gQViuzJKEquHKE62TLvlXAkVlRkPLG++ke4ht9VZz3zhzluGdHcFB+C4CEXcWwUx0rA@linaro.org, AJvYcCXFt8bos8QqMcKiQ2K8WaioRSd9cINshibJsRFDmxtspKoZUxyw4Io6scRDfieZ835gHD1VRoWYbO1NLjiSCdlW7A==@linaro.org
-X-Gm-Message-State: AOJu0YxzshbWS0EV8e6QPwNPSdQH4AmHB2J/PTSj2eUOuP3WN6CUzn2b
-	5M//wdwVsWojk3sYZZdU1ZaaOgS2Cq9SxwC/7tFPvgg8/z1NllvU
-X-Gm-Gg: ASbGncsqgTnCp8jzzZKD7jQEplplSfZBB3PoxSwhNzJX1SYfwhp0f4e0ERE85nhLpP3
-	tytrDwfZqySgRwq1S8xT/Cg3WSWkkhK1P8zhGeQKlGsL1ETq1D468MAnxuZeicOobeijCm3Yxlm
-	GYjH7waa1WwL6Bs/tzWwdayYid++XTqwpAGFbpu+KLvALbvTxrCceKcd/lVIjEHvmzQkBqCsEl2
-	Wnv3MjB+pZY3tbmj/Inkmg8hGL2prPQhaL1u250mraRogPVhmga9VS7k9/cYzRXe5H7McdvVF6X
-	y+hbUNqkrhjw71i2x2P6TinNTRGzGMYApVQmY25i9dpr6uxOaBUZCBMAy7hOkh9Mw5J9
-X-Google-Smtp-Source: AGHT+IG+HhXY9MccZflP2IGJae4uZu0y23mzWOU0azhXj3wrV5kpmm22SzyuVnini2IXqkIH9KI0Sg==
-X-Received: by 2002:a05:6a00:2e84:b0:736:42a8:a742 with SMTP id d2e1a72fcca58-73c26735170mr1091929b3a.11.1744791450203;
-        Wed, 16 Apr 2025 01:17:30 -0700 (PDT)
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from localhost.localdomain ([240d:1a:3b6:8b00:ee5a:e672:7d4c:d43])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73bd21c3263sm9839445b3a.38.2025.04.16.01.17.22
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DeW0GEcx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-acb3cb75224si60648966b.171.2025.04.16.01.17.56
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 01:17:29 -0700 (PDT)
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
-	Francisco Iglesias <francisco.iglesias@amd.com>,
-	Vikram Garhwal <vikram.garhwal@bytedance.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-s390x@nongnu.org
-Subject: [PATCH 19/19] MAINTAINERS: Update MAINTAINERS file for wasm-related files
-Date: Wed, 16 Apr 2025 17:14:24 +0900
-Message-Id: <185cfff812b952abb24e25dfcc8bab7c65da6214.1744787186.git.ktokunaga.mail@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1744787186.git.ktokunaga.mail@gmail.com>
-References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+        Wed, 16 Apr 2025 01:17:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DeW0GEcx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-43404-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 231D119051A2
+	for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 08:17:56 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D326A2309B9;
+	Wed, 16 Apr 2025 08:17:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DeW0GEcx"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE6C022D7BC
+	for <kvm@vger.kernel.org>; Wed, 16 Apr 2025 08:17:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1744791441; cv=none; b=sfC+3xjmDikyBzqBeVfqGv9Zwl5P3zTZConfHg84t4xFPiYJa85sqtglJmQFoiPoKuAuQBzE66MlsCvNeyWwNwqJ7BG4duAYCoaNJRXqqPpGTagTLVIUficMk/rxBqDaLl3Eq+WfaZe2x5CWKR/FhBzblHLjib/kB2KneT6ZKrI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1744791441; c=relaxed/simple;
+	bh=hGK36dqVuYa9Hoa5jNnlWPUMMV2VDbIGZcqBMN6kn7I=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=PY08hSCex48hynx25ek8FAr/9vHnjtO2hz/Z65iQocM35EZqh245ZSDEqsMWC1r6V570MkaZg2CIbeLRh3LTzmVeH2Ex/QN+5Me0kZuyPCxND2zdi/71fzLBibhF3DKur6NssWsZXLJMRGiOOXqol4bryuwYMzugJ3dE7J1w0Fg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DeW0GEcx; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744791438;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+prEyTRWGZcBrE/AIyoW4nEtdjv1GtfBf5zu6/qquhE=;
+	b=DeW0GEcxO0ZckpkcDt8GSKEZvxqm5iz4ClCcyAiby76nR3OGQehj8VpJ6F7J1jtfVcvbPe
+	CX5rKfq9jjjIr08UU+85MTNXcx8WKs0u3DDXGxVoktUFB7sfGcw7yfxXmTTm1qE92JCUGa
+	mNnfLylfH/EuAjpQ5C40fwj1d7+L6uM=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-249-QmzrYM3kNo6d5vwj2mc6gQ-1; Wed,
+ 16 Apr 2025 04:17:14 -0400
+X-MC-Unique: QmzrYM3kNo6d5vwj2mc6gQ-1
+X-Mimecast-MFC-AGG-ID: QmzrYM3kNo6d5vwj2mc6gQ_1744791433
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2AD2A1800570;
+	Wed, 16 Apr 2025 08:17:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.3])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4E5141800367;
+	Wed, 16 Apr 2025 08:17:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id D569121E66C3; Wed, 16 Apr 2025 10:17:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
+  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
+ Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
+  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
+Subject: Re: [PATCH 1/5] qapi/qom: Introduce kvm-pmu-filter object
+In-Reply-To: <Z/i3+l3uQ3dTjnHT@intel.com> (Zhao Liu's message of "Fri, 11 Apr
+	2025 14:34:34 +0800")
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+	<20250409082649.14733-2-zhao1.liu@intel.com>
+	<878qo8yu5u.fsf@pond.sub.org> <Z/iUiEXZj52CbduB@intel.com>
+	<87frifxqgk.fsf@pond.sub.org> <Z/i3+l3uQ3dTjnHT@intel.com>
+Date: Wed, 16 Apr 2025 10:17:08 +0200
+Message-ID: <87fri8o70b.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: gepHt3rA66yQ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: QyfVENwWUL1I
 
-Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
----
- MAINTAINERS | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Zhao Liu <zhao1.liu@intel.com> writes:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d54b5578f8..74a102c594 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3903,6 +3903,16 @@ F: tcg/tci/
- F: tcg/tci.c
- F: disas/tci.c
- 
-+WebAssembly TCG target
-+M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-+S: Maintained
-+F: configs/meson/emscripten.txt
-+F: tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-+F: util/coroutine-wasm.c
-+F: os-wasm.c
-+F: include/system/os-wasm.h
-+F: stubs/emscripten.c
-+
- Block drivers
- -------------
- VMDK
--- 
-2.25.1
+> On Fri, Apr 11, 2025 at 06:38:35AM +0200, Markus Armbruster wrote:
+>> Date: Fri, 11 Apr 2025 06:38:35 +0200
+>> From: Markus Armbruster <armbru@redhat.com>
+>> Subject: Re: [PATCH 1/5] qapi/qom: Introduce kvm-pmu-filter object
+>>=20
+>> Zhao Liu <zhao1.liu@intel.com> writes:
+>>=20
+>> > Hi Markus
+>> >
+>> > On Thu, Apr 10, 2025 at 04:21:01PM +0200, Markus Armbruster wrote:
+>> >> Date: Thu, 10 Apr 2025 16:21:01 +0200
+>> >> From: Markus Armbruster <armbru@redhat.com>
+>> >> Subject: Re: [PATCH 1/5] qapi/qom: Introduce kvm-pmu-filter object
+>> >>=20
+>> >> Zhao Liu <zhao1.liu@intel.com> writes:
+>> >>=20
+>> >> > Introduce the kvm-pmu-filter object and support the PMU event with =
+raw
+>> >> > format.
+>> >>=20
+>> >> Remind me, what does the kvm-pmu-filter object do, and why would we
+>> >> want to use it?
+>> >
+>> > KVM PMU filter allows user space to set PMU event whitelist / blacklist
+>> > for Guest. Both ARM and x86's KVMs accept a list of PMU events, and x86
+>> > also accpets other formats & fixed counter field.
+>>=20
+>> But what does the system *do* with these event lists?
+>
+> This is for security purposes, and can restrict Guest users from
+> accessing certain sensitive hardware information on the Host via perf or
+> PMU counter.
+>
+> When a PMU event is blocked by KVM, Guest users can't get the
+> corresponding event count via perf/PMU counter.
+>
+> EMM, if =E2=80=98system=E2=80=99 refers to the QEMU part, then QEMU is re=
+sponsible
+> for checking the format and passing the list to KVM.
+>
+> Thanks,
+> Zhao
+
+This helped some, thanks.  To make sure I got it:
+
+KVM can restrict the guest's access to the PMU.  This is either a
+whitelist (guest can access exactly what's on this list), or a blacklist
+(guest can access exactly what's not this list).
+
+QEMU's kvm-pmu-filter object provides an interface to this KVM feature.
+
+KVM takes "raw" list entries: an entry is a number, and the number's
+meaning depends on the architecture.  The kvm-pmu-filter object can take
+such entries, and passes them to straight to KVM.
+
+On x86, we commonly use two slightly higher level formats: select &
+umask, and masked.  The kvm-pmu-filter object can take entries in either
+format, and maps them to "raw".
+
+Correct?
+

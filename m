@@ -1,114 +1,103 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3203450njc;
-        Wed, 16 Apr 2025 02:14:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW8IQ+HFWKGnwxKJccoPUAsZU7iHUYABJeJGAxBXW9QV9Y5Oz6I/uhwmyM9qmmh9GibAZV2VYxSU4x6vg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEQ3V4IqcIggCd3k2VjekKTzX6htglg4cV4LJ4i/QBjNVsczD4Z+QQX1Ly1PkTX+7C40NeT
-X-Received: by 2002:a05:6214:2a87:b0:6e8:e828:820d with SMTP id 6a1803df08f44-6f2b3032873mr15927166d6.36.1744794893853;
-        Wed, 16 Apr 2025 02:14:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744794893; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3205195njc;
+        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
+X-Received: by 2002:a05:6402:280a:b0:5ed:1841:18c5 with SMTP id 4fb4d7f45d1cf-5f4b76e74c6mr1052041a12.30.1744795134059;
+        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744795134; cv=none;
         d=google.com; s=arc-20240605;
-        b=TCiOXRRHcvyyFwcSagAeYkJ9jtNlkiX0+Yz+1cKZxnvY3GARC8y6hjvDbYZbaqguzw
-         Q1tJ8YpvWbP7zDudWAxDEcbH++ZjdCfN8pns1F+DCWKEkqJuGWgulTq9YtxP+Ztn8yzN
-         aTJu/KxfuAdXI6wYz5KJMvfF1rPwTLI6noJo0kIIvdAINTQR4EGxh1WXosfV1wLoz5hO
-         msTVtTkMTkTbWt/Ulbh0EcZkMQWenX/FwT9sfyG6eYHPMxJtIau985e61UIFsBpf62vD
-         lYIX0ezvzPh2aCVDgU+EdfJsH4y9/d6/RMlPVb+5FbVo/XmBKlJrZbB5RSUt/RfCxUxf
-         /y7w==
+        b=ZwF5Wk8Kfc+Qnd25213e8QY252RqmuwYwTgjFhQO3wY5omAl3WBpvu+HlPCooh15pV
+         NJv5Otuc5OvJiuQr3ViNB3uV/VHIJJ4QABFt6Mh6qtHEvAkMn55vqbl2kJJfOZj0i17h
+         /YKogvqeRmun7QrKcL2YI/2OxtFf9C4hdTQJ+UJys1lN2lJPdu7PjKhmdWSThJNo8B1b
+         K4VHRRdnejC8+Czh6w2umkkytgzhm3xY1FxqdXPdwFxHJhdT5Iuij70OdP6SnhILFmMs
+         EwICTU/IgyvOK3mQP06Wc+Xf1TCQHEfbzSIaO+bZ0PeDDCZ2WKfCnP+2W/gY8/XELYb3
+         xFCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=S73o+5gdR+idz0e6i/LO+q57mH3U211Z2J6LdwxR3Fk=;
-        fh=HkvfAVmkKIgIf9kTBUyad/T2MRWeMUD9XbqRVHQQwk0=;
-        b=VAuN+YxqJEuqbCjHXX44axsOvR8JSA1z51S7inIhOaoHSs0sfDlVmWODTMScuNI3bq
-         GA4utkPkHofzi3k2Cq5RFEoLjLLdMWCTOaiBhaYttBvani2O29XNe9o30e0m7UzEoaFp
-         bsI5efJ7PDg0Quh07JDB2wOcY75Gx/HT0qzxt4K11aev6l+g6//3/mvfdHL/bGlD+UBl
-         tgJe27LaFCH93/sY+v8sX3GMuDgWyZMPFnbRbuCDFnkOhfRUMiNvDaG1FJHiFZIAA3tN
-         jIzMrjjvmgA3OahElpqJGhi30F4zF9vmQWgd+iGdzoE+3k5/hx4E65/H5AODRnB5Wn3O
-         lbZA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
+        fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
+        b=hvcjzr3Utpo2TXvbALYNHDdeXmkEfVQd6yLf/KTI0NuwSGgOk3+TXKc43HV0ihXPUx
+         l8ePjFADf9fLOyc0PQYEeXpQRfK92/sfm96/E7arUrlDbJj6pMUf9fHKKQfSuOO5Eo2I
+         2wxCT4PFcmBe9neB5siRz0CYCzOxO7HW5+gmpaREzivAkHia4OzuKymg5Mj56nfZS+KV
+         vkMXEPZ/995sC/0C/CUteS2dTOc2deQR9Gd+N5qbt8czskuBfUKh4ohD1NzZ3ZBpGK/I
+         foFa11acWLulGvXRkxfokaCsGY1H/v7s9AhDMgTcxKbQo24CRg9sANOp8voYBFKOwGp1
+         gtIA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RNvCebPT;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f2a4f98cd6si33120516d6.10.2025.04.16.02.14.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=pzRaD7dC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5f2fbb8d1dfsor5688291a12.2.2025.04.16.02.18.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 02:14:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RNvCebPT;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744794893;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=S73o+5gdR+idz0e6i/LO+q57mH3U211Z2J6LdwxR3Fk=;
-	b=RNvCebPTvrU1UhPxXQVo4crcscaiBuDgewOnebxwbvTxwxSIUUy+d4QtuCruejTKQs0HWF
-	jp8NO8rVc+aaxiqPpZqdFaerE6Zt8WVLEEmo4g4wdfa/Ih5AiT9hZNx0K3zGELQrIUKpGu
-	c7QPZ4M258koPSFAUPZhuunbZQOWsZo=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-605-Euy7TeJWN9m3UpR5nutDpw-1; Wed, 16 Apr 2025 05:14:52 -0400
-X-MC-Unique: Euy7TeJWN9m3UpR5nutDpw-1
-X-Mimecast-MFC-AGG-ID: Euy7TeJWN9m3UpR5nutDpw_1744794891
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-43ea256f039so49346615e9.0
-        for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 02:14:52 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=pzRaD7dC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744795133; x=1745399933; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
+        b=pzRaD7dCx2uPfJKDcyI3UiFXNwHVU9PLOfvj/fT/2nfIm1fnFdUDAycdV4NdlkZ1t+
+         GOh+i0Os4DGwepZF/cH4U2HGxW+W/EdPSqNGHH/RNbCvmtFmj6U7TmfZUyCTuFlXuETg
+         QmMOahWO0zpdfcj7C0D9nOMKtp+HN96GNevzUolpOJHndOht5RYa6+p6ID4LsvmQu+vO
+         m5f1qDMKkNuQIwHLZim5HtMc1vHMrj2/aC8JD3gfpZSSmifqEG/mER4cR9c2EUdPTnwi
+         zChfOWSJhJWEdA0c0WfchQNKV5lE2cqQyw6cDL5Q8u+kXm/EqxOUR2W8eMIgIVfudrla
+         nCuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744794891; x=1745399691;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=S73o+5gdR+idz0e6i/LO+q57mH3U211Z2J6LdwxR3Fk=;
-        b=jBL+f8S0c7sf4PfzUkheh5p+5PvvRmgI6ows79GhRAeMiBe/WuS74y8sdjU0zKXYnD
-         Lm4H9v0AW0YI6R0sCwBufo2PkpUokpiSfp6rp/rLXoLEctnvCYgfV6G8pAWoD19aldmz
-         /bPkzzMIxC6TW+3MApuHQ38jgC1xiozFSZ6hemb12Lh2kMpNiGAV0c8Slob7okgtArnr
-         WNjHTZzRDb0ORubSkWgDrnSjUde8ObgYJt80E7tbk8l5aD0PEOkIn0uttEK3IVotL4bo
-         D5mfZE90zX9lRCokgeDtPawHEOFXS0RIZ6fMeFadsm/5d+RIAwh1ycv3P386DA6fMOQv
-         ZSJw==
-X-Forwarded-Encrypted: i=1; AJvYcCWrihqh/BjFB6lM4l4sJL2K+lXIbQwuJNJMXvHTF99EDsY/26pPQmYXGfA43aYQYHKsl9/NCgDuaDkZqg==@linaro.org
-X-Gm-Message-State: AOJu0YzzdsGKgiQaTYAKfBwEhv7KT6Kwh4X5OustdI9OM5zq5BuSW2Ip
-	Dr2J+E3Ex71ATQc+PlmMk0NzK91FPu5zU44K7/IluKMVZY2QJeguN3p23Kix/FXpBL2wz90pPRi
-	C0IWXPJhxpvBKE4bZmooXEcq6J8T/sUsxvNOZbsfgjYl4BSvzIqOipg==
-X-Gm-Gg: ASbGncs5SyQey75N3BzQ552fXw5OHEZuA3Z7e39VVtwU/f4z1zSo80WTBfb8mPBvqYh
-	ep/bzNGxsakh6Kc1PDgKS6VM27rXrBNqBG4xV0+ek7P66yu3e6wxcDZG32CxTjMc3CVbFf7jWk2
-	ftr35a8a0uujrNSlFzQSWyzEwIDSXQHXceRi5y57J+SVHDJI5cGKnOoUjwykwrxfTHjHmnQPT1E
-	UmhNjy2C7ZjM3Ia6d2okL1vbmV5kIeO2ioZFQ4oOJ/E0uGsRCPi0PNieXfaIjlW9DjK1p2fx6Wd
-	vrJGZP66P8dXtHUCniiyMrpfK3IpXjQ4L2JVQO5YHqo=
-X-Received: by 2002:a05:600c:5025:b0:43d:988b:7732 with SMTP id 5b1f17b1804b1-4405d6255aamr11632655e9.14.1744794891077;
-        Wed, 16 Apr 2025 02:14:51 -0700 (PDT)
-X-Received: by 2002:a05:600c:5025:b0:43d:988b:7732 with SMTP id 5b1f17b1804b1-4405d6255aamr11632415e9.14.1744794890747;
-        Wed, 16 Apr 2025 02:14:50 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.7] (ip-109-43-176-89.web.vodafone.de. [109.43.176.89])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4405b4c8263sm15485835e9.4.2025.04.16.02.14.49
+        d=1e100.net; s=20230601; t=1744795133; x=1745399933;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
+        b=AJghKF8IJoNz/u2FyJ0vN9F0rHucbl80KumVSF6DYLf18QvAHwQSeY+vt4j8GA4mPK
+         a9t9sCSJRyx6beepMSyW5SD2oJbdGcP6xZVcgR7VoQgwroUrST49zkdT4VLyDpvs1zpe
+         Dodk6s/oiHizcAHFIAZXqCB1magvFqSos4vYno+uBDdtfInPIOGzhw3gJrXs7Pd3mvEL
+         dCMYsJNvzy1HuU4yahcl9DSXj5tjVUiovJ+DOna5WkNI9cyFBaveg7dyExFIR9M8Uynb
+         vV3gexykZceoF4chsztEmrybTS+zPMpNrdCRI/ZYEYqs03BF9eZ8LYv+bs50/q35zB1U
+         vO/w==
+X-Gm-Message-State: AOJu0Yy1C2c3uCXZcR9ot7Z8O81te37ZMsFKqAEQRUK4dFHDcxQFh27B
+	I/A1v8O2mk5s4fzqEb3u1/R4KcVTeQMc5c0G6S1B6gpQRM/TwjqAP0flze9fmL7ZEA==
+X-Gm-Gg: ASbGnctKmF/GiKm2UaQo/N2TIjcHZVqBN9Onx9e4LGzzc6SmCpEQ5TAEotpetT1D8PP
+	HAXOgjWRHpYeWCe/rRCQM3CG3GKmJuYIe8wVOeJsDmPi2u71E+FlgP0reIKQL+dRzYkISjhJlG0
+	rLZdoM0x2YZ1Aae1eeDDpmVuBYh8GU47ZYf4GWcVkpfu+GCP0c+DReIz8J/WwqiH8pIwsS2swvr
+	R5jpTUdziOEqG9qM5nmpk9poQ4loVlj4YsQA/5TEfQXNC8eK8rDoL50teq8ghOqbPFvK9xKNmvl
+	5wvr8awW1/VqTEBTub9Rj4tDt6wD9NG42sDJj25b1+DTT/VwekkFcQZ5/sUzl7rotfQKsJKDMcd
+	JTiOGp+dr6yfUig==
+X-Google-Smtp-Source: AGHT+IGr1/MfO5wsf3tA/3dnOJoLlld+cE6SoujA4jBiRHSd8qF8sSM327OsefaPiZzkZU94UvLfag==
+X-Received: by 2002:a05:6402:1e91:b0:5ec:9352:7b20 with SMTP id 4fb4d7f45d1cf-5f4b6dfb88dmr896220a12.0.1744795133486;
+        Wed, 16 Apr 2025 02:18:53 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f36f50569fsm8393804a12.52.2025.04.16.02.18.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Apr 2025 02:14:50 -0700 (PDT)
-Message-ID: <307e2854-4320-4c8b-b6f9-b8ba2627157f@redhat.com>
-Date: Wed, 16 Apr 2025 11:14:47 +0200
+        Wed, 16 Apr 2025 02:18:52 -0700 (PDT)
+Message-ID: <a92737eb-786d-4ebc-87df-a5518417195c@linaro.org>
+Date: Wed, 16 Apr 2025 11:18:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
- function pointers
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Kohei Tokunaga <ktokunaga.mail@gmail.com>,
- qemu-devel <qemu-devel@nongnu.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+Subject: Re: [PATCH 15/19] util/mmap-alloc: Add qemu_ram_mmap implementation
+ for emscripten
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Pavel Pisa <pisa@cmp.felk.cvut.cz>,
  Francisco Iglesias <francisco.iglesias@amd.com>,
  Vikram Garhwal <vikram.garhwal@bytedance.com>,
  Jason Wang <jasowang@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Nicholas Piggin <npiggin@gmail.com>,
@@ -116,93 +105,130 @@ Cc: Kohei Tokunaga <ktokunaga.mail@gmail.com>,
  David Hildenbrand <david@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- "zmta06.collab.prod.int.phx2.redhat.com, list@suse.de"
- <qemu-ppc@nongnu.org>, qemu-s390x <qemu-s390x@nongnu.org>
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
- <Z_9qIQhjsI5zOwXA@redhat.com>
- <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9gDNq6KVDfFN_XkT0BIGx2agjs9QDrrTdTO-WmkYIZk_1744794891
-X-Mimecast-Originator: redhat.com
+ <7ef485c860a0c26d2ddcf6a96430f5443deb5aee.1744787186.git.ktokunaga.mail@gmail.com>
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <7ef485c860a0c26d2ddcf6a96430f5443deb5aee.1744787186.git.ktokunaga.mail@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: pPv+p8K4uYhX
+Content-Transfer-Encoding: 7bit
+X-TUID: iAGEhpnfHOY6
 
-On 16/04/2025 11.00, Paolo Bonzini wrote:
+On 16/4/25 10:14, Kohei Tokunaga wrote:
+> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+> ---
+>   util/mmap-alloc.c | 18 ++++++++++++++++++
+>   1 file changed, 18 insertions(+)
 > 
-> 
-> Il mer 16 apr 2025, 10:29 Daniel P. Berrangé <berrange@redhat.com 
-> <mailto:berrange@redhat.com>> ha scritto:
-> 
->      > -    secs = g_list_sort(secs, sort_secs);
->      > +    secs = g_list_sort_with_data(secs, sort_secs, NULL);
-> 
->     I don't see what the problem is with the original code.
-> 
->     The commit message says we have a bad function cast, but the original
->     method decl is
-> 
->        GList *g_list_sort(GList*list, GCompareFunc compare_func);
-> 
->     where the callback is
-> 
->         typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b);
-> 
->     Our code complies with that GCompareFunc signature.
-> 
-> 
-> The cast is inside glib; g_list_sort casts the function pointer and calls 
-> g_list_sort_with_data.
+> diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
+> index ed14f9c64d..91f33682e8 100644
+> --- a/util/mmap-alloc.c
+> +++ b/util/mmap-alloc.c
+> @@ -145,6 +145,7 @@ static bool map_noreserve_effective(int fd, uint32_t qemu_map_flags)
+>       return false;
+>   }
+>   
+> +#ifndef EMSCRIPTEN
+>   /*
+>    * Reserve a new memory region of the requested size to be used for mapping
+>    * from the given fd (if any).
+> @@ -176,6 +177,7 @@ static void *mmap_reserve(size_t size, int fd)
+>   
+>       return mmap(0, size, PROT_NONE, flags, fd, 0);
+>   }
+> +#endif
+>   
+>   /*
+>    * Activate memory in a reserved region from the given fd (if any), to make
+> @@ -244,6 +246,21 @@ static inline size_t mmap_guard_pagesize(int fd)
+>   #endif
+>   }
+>   
+> +#ifdef EMSCRIPTEN
+> +void *qemu_ram_mmap(int fd,
+> +                    size_t size,
+> +                    size_t align,
+> +                    uint32_t qemu_map_flags,
+> +                    off_t map_offset)
+> +{
+> +    /*
+> +     * emscripten doesn't support non-zero first argument for mmap so
+> +     * mmap a larger region without the hint and return an aligned pointer.
+> +     */
+> +    void *ptr = mmap_activate(0, size + align, fd, qemu_map_flags, map_offset);
+> +    return (void *)QEMU_ALIGN_UP((uintptr_t)ptr, align);
+> +}
+> +#else
+>   void *qemu_ram_mmap(int fd,
+>                       size_t size,
+>                       size_t align,
+> @@ -293,6 +310,7 @@ void *qemu_ram_mmap(int fd,
+>   
+>       return ptr;
+>   }
+> +#endif /* EMSCRIPTEN */
+>   
+>   void qemu_ram_munmap(int fd, void *ptr, size_t size)
+>   {
 
-Did anybody already report this to the glib people? I guess it should get 
-fixed there in the long run...?
+Can we keep this code generic? I.e. with something in the lines
+of (only build-tested):
 
-  Thomas
+-- >8 --
+diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
+index ed14f9c64de..0e52cce5b29 100644
+--- a/util/mmap-alloc.c
++++ b/util/mmap-alloc.c
+@@ -238,3 +238,10 @@ static inline size_t mmap_guard_pagesize(int fd)
+  {
+-#if defined(__powerpc64__) && defined(__linux__)
++#if defined(EMSCRIPTEN)
++    /*
++     * emscripten doesn't support non-zero first argument for mmap so we
++     * don't use any guard, returning 0 to mmap a larger region without the
++     * hint and return an aligned pointer in qemu_ram_mmap().
++     */
++    return 0;
++#elif defined(__powerpc64__) && defined(__linux__)
+      /* Mappings in the same segment must share the same page size */
+@@ -246,2 +253,3 @@ static inline size_t mmap_guard_pagesize(int fd)
+
++
+  void *qemu_ram_mmap(int fd,
+@@ -253,4 +261,8 @@ void *qemu_ram_mmap(int fd,
+      const size_t guard_pagesize = mmap_guard_pagesize(fd);
+-    size_t offset, total;
+-    void *ptr, *guardptr;
++    size_t offset = 0, total;
++    void *ptr, *guardptr = NULL;
++
++    assert(is_power_of_2(align));
++    /* Always align to host page size */
++    assert(align >= guard_pagesize);
+
+@@ -262,13 +274,11 @@ void *qemu_ram_mmap(int fd,
+
+-    guardptr = mmap_reserve(total, fd);
+-    if (guardptr == MAP_FAILED) {
+-        return MAP_FAILED;
++    if (guard_pagesize) {
++        guardptr = mmap_reserve(total, fd);
++        if (guardptr == MAP_FAILED) {
++            return MAP_FAILED;
++        }
++
++        offset = QEMU_ALIGN_UP((uintptr_t)guardptr, align) - 
+(uintptr_t)guardptr;
+      }
+
+-    assert(is_power_of_2(align));
+-    /* Always align to host page size */
+-    assert(align >= guard_pagesize);
+-
+-    offset = QEMU_ALIGN_UP((uintptr_t)guardptr, align) - 
+(uintptr_t)guardptr;
+-
+      ptr = mmap_activate(guardptr + offset, size, fd, qemu_map_flags,
+---

@@ -1,166 +1,196 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3184259njc;
-        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV7lDk5xyFLC5CfKpZlmCmr2FgiJAAzym6YXw/+rCKENxHF6zWAaYRqEchJO7sufHg2m1A1PsM3Xmzl+Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFd+6uK5BJpFmAadaZaG8lwS4+r9J40J+cq6JQbQCK79JyFtFaeUvhU0koB2P3Zz1mq/WRu
-X-Received: by 2002:a05:690c:6f08:b0:6fb:9280:5bf4 with SMTP id 00721157ae682-706b3363991mr13358907b3.30.1744792160061;
-        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744792160; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3196530njc;
+        Wed, 16 Apr 2025 02:00:57 -0700 (PDT)
+X-Received: by 2002:a17:907:788:b0:aca:cb18:9ad0 with SMTP id a640c23a62f3a-acb42aeda26mr87037866b.45.1744794057579;
+        Wed, 16 Apr 2025 02:00:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744794057; cv=none;
         d=google.com; s=arc-20240605;
-        b=C6KNYcbT45Ts9W7raUM5rjbbEccYz4wfWc2+xtuF2BYiBtFJEuyaTipDm+cWIOvsRz
-         uAqljsu62zklYEM+4mCvFX0/AFw1s4srZHPmt3kmeEAy0d3j28L+OxyUMs9KeqY3G1rV
-         4oIelQ4Hi/OTgW56ai656b75vggrtG/y5IsUuFX1V189Aj9U+Wr6vGI6FqUnZopJh72p
-         M84CUa63/FqsEcMXvvq1V8aCyhKat5yQvotbFn+XxSsCJQkwi2dZTVP2cKhO0u3ToDUj
-         zz9fhva5u9PNX94foFtjG+MO4tScBqbQWL7jiDT7zse7sqQqS89WS+kV+FcW/mLfKljb
-         YFwQ==
+        b=e0JDJ9qfTfuKIv5mKQkay0Bc+F2HZF4g1rn2Cx+PFEiqkCSQhtYve2+OkLQkPYM02Q
+         DZLcpPTI5WPLH/w2V/LbWSYuI+o5VESv5FwnuwxzZ5kSt9ZrgGXSkfZEZM4zNj83Yw0n
+         5wMMjpew9r+4q92Ao2sR6gIJ2okfS5pl4iEMctpMbsMIjRd8OMZB5TdKstzWVqmCSl8m
+         0KIa/aCjnoR41qfMZR53zwPocMABDU8WM4iHV8QY9ciLyc/AisvlubTVHxhKe4maFTMc
+         26gzIJ516Do3GR+zuskqKQ3gA7UXd4HxJ586QqTqmakyNovyMwGNz+Pm8Wk3Cz7HfGfl
+         2YKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=KpK5a5N522QrVFFwZVgIKrckLxvNrQwiWNFASbDGrUE=;
-        fh=oOTJNc2Ke305c1XgESVqCB6I9OL9mWksUmzrmt7korA=;
-        b=SjHEFQjwD5c+DCwLSLR22rY3zNPfbu9Eddw6DRVRqCZr5+1ILp8mNh6lBDC9e2qLn6
-         nFqRUdbG9G0IMBMXKwNW3EP3WzF1ctjJ3fqJCwzbaaUMRcmC9ukS9DL/quRQ5iUPepFC
-         hSyAapsOXAVErrkgbOg3DtuYP8fp2Om5KYDOfg3jvSoOmCm7648e5hvNITlHY6Zc5HiV
-         Ie334vB3/GRo/bHPhoTMlMyrG7BUHRXnwB8Nkx10Zxp70vu2VZOIkEPg4A5w+92ORy3b
-         daTBiSqD4GNnHMQH6oiolqQwDXV9n3d6EWC1yq/mWIhNH7w+6hFodaM8zojOyquw3KiE
-         qdxA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=3VElVfjX45mj1/WonUIf3ibIkb+BD4bvk0WWThnCbn4=;
+        fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
+        b=Xxr3ZrR4o3rlavAYaOnifAekmiYky4JnfCkQ7lt0G9iA2bM7IRHQoDXe48tH9ppoO8
+         tGVD3Yv2ZgbgzhYb0GdRd4KkI0w7MRggbktlm7Z3I0EolBckGgSp/bPASe6wWWuhQHZ3
+         OCANsoVs1DOoZK7I4StF9MnsY38ChH3+ycYIvsAVzgF2cPD2UGAVZViJTjTvmo/Pgayd
+         dPiZFj9T+lGqD9lyc+BS4TJFSgK0dvyUWBUmPfyHIoAaWp/3NkwPitRV94c7liE/rR4h
+         AhniLEMYEDAOzqBu/IhttZvbDV2BUsVQwPGs+9+hkF6ctDZOk/DoHd/GOke4RT6EY4nc
+         M7Mw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WZkF4/jx";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 00721157ae682-7053e381d78si206888787b3.431.2025.04.16.01.29.19
+       dkim=pass header.i=@linaro.org header.s=google header.b=gWrgTqaC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-acac17ec0d6sor605359766b.1.2025.04.16.02.00.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Wed, 16 Apr 2025 02:00:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WZkF4/jx";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744792159;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=KpK5a5N522QrVFFwZVgIKrckLxvNrQwiWNFASbDGrUE=;
-	b=WZkF4/jxQbUeY9H/sXLLu8oYuTBrAFHde27SmKAQuITTxoMVxmzdQbmjgSlB1fqI/rMdtg
-	RpPo3hM5sBFph0yuvDylNIzGkaDKCvwknYCMEdauSFLyrIb3Y3p/zXcjs/5m/tIl2nRRBI
-	87lVa1Ctqh2fvoOVTK8xnO1GM1slBf4=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-500-jvrBfuqLOAW5oyi64e-xsA-1; Wed,
- 16 Apr 2025 04:28:55 -0400
-X-MC-Unique: jvrBfuqLOAW5oyi64e-xsA-1
-X-Mimecast-MFC-AGG-ID: jvrBfuqLOAW5oyi64e-xsA_1744792133
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D0EFA1955D98;
-	Wed, 16 Apr 2025 08:28:50 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.58])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 295E3180047F;
-	Wed, 16 Apr 2025 08:28:39 +0000 (UTC)
-Date: Wed, 16 Apr 2025 09:28:36 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Cc: qemu-devel@nongnu.org,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
-	Francisco Iglesias <francisco.iglesias@amd.com>,
-	Vikram Garhwal <vikram.garhwal@bytedance.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
- function pointers
-Message-ID: <Z_9qIQhjsI5zOwXA@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=gWrgTqaC;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744794057; x=1745398857; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3VElVfjX45mj1/WonUIf3ibIkb+BD4bvk0WWThnCbn4=;
+        b=gWrgTqaCcnYgyxloAs3IdpQv71KupONo5bmboGEKz8HxcbomSChGhnMWHCt16HeBI+
+         ceF5e4i5rdQX97x2dD2f4EIb3ekkQIEjyFIIY75vbMqADzZ8ADDcAo8buJ5ECJCdP0Vu
+         Uf9ivKH9dvrYD5Oz8ZUcbfmyQVmucwVzcgAmpTbafx9W+7/tkxM5wSpAkzUN5dU5+XJG
+         eZQywC9JNLv/p2fD/c3+mrDspV93T37ou6H6aY/LbSIp1rbLi59ZwPINcVMyNmYGZr4u
+         ZClcr/shDPW+bKanz9PYQ4juo0WwOBEw7F7bTeJssKGacpEf58IV7MGqwh7V6vu33ool
+         23vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744794057; x=1745398857;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3VElVfjX45mj1/WonUIf3ibIkb+BD4bvk0WWThnCbn4=;
+        b=D0u5OXJhg7F+o4Nk5iv3DNBoSXFSeqfLwV32dvvIlIg95kpxp9REYfO/fSfDRtoUAL
+         o4ZarymAHqPHtp0cdTesrcEkVrxQkjP0dpEIl18A1ojLnTy7dFGVaICM+SEDbUl2yq1N
+         XSq5HUnJR4URV1HwR+g6s46d17e94j/kRpOckMRT6X9MzHxtonu7rQP6b0GfBt6b3vKL
+         OWTB1lniWZ+gzy1f21IkwEztHEeoWa6Ad+r9rfd9VZhKLVMKC9ofrVxPFRqYD0HbSp+7
+         pIhd1sG05/C4gTKvotVPWDB6vey/gZkVVDycHDbSORQ5sxvIy2g8V7OwAvTesvmJml3+
+         nMgg==
+X-Gm-Message-State: AOJu0YyrvOjTbebmsQUhrHBphd2Etm9HHXNFuWhWje2crCl8TNFe1+Qc
+	fGbEfVq5it6PxHXc5rKsEVGcaY8UCk7e8jJVuZHfXslBKOJVBWVSsfBW3tfei2tndQ==
+X-Gm-Gg: ASbGnctkWL5uDGKBHSybq+flmTjbzEMHYDH2Yk8hhAfAZEe0ruEtLGDd+bkEQZHYBvk
+	dZmXA1ZmjOwab6WZOvopsqCBqoBt2eTGtLMRFswFgHBZESAHOnT0Y8HaxFfEZeLchXetf8eaiUJ
+	NCZ86xDldwxNEXhrOQxjEtUQL4J+nbZMjoMWetXNHVKSLqxqtaLZ83cW+EYvKxLDjBoZkZ77Iau
+	8S2lQ7sAnh2Pdw0OzO44QW7GDheLZE36UyMeO2yLW4wpZQJtfsPfz2+bOkIZFsqlE6hYK+lhc7Q
+	/jnmdwFg0QFi6+3KHUGyp0Jjs9onF1C6L7j936z7t+lDtqU2+MS42gYIOEXuBf4GmjW8s9tCEEE
+	jU0R1tqBVsIkpiA==
+X-Google-Smtp-Source: AGHT+IGj+IC3tfxmH1L1LTV5Ido32LezNB1aM4TK4otxy0m+9SPby/MHE4nVYKb49xBdsNXucqxxqg==
+X-Received: by 2002:a05:6402:4407:b0:5e5:e396:3f6e with SMTP id 4fb4d7f45d1cf-5f4b75dcfe1mr962378a12.26.1744794056842;
+        Wed, 16 Apr 2025 02:00:56 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f36ef56376sm8046360a12.19.2025.04.16.02.00.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Apr 2025 02:00:56 -0700 (PDT)
+Message-ID: <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org>
+Date: Wed, 16 Apr 2025 11:00:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: Bfdn6eD74vYV
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/19] block: Update block to compile with Emscripten
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+ <9da41d784991f77e2c1f38d0781cd047b593e053.1744787186.git.ktokunaga.mail@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <9da41d784991f77e2c1f38d0781cd047b593e053.1744787186.git.ktokunaga.mail@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 2p8ZsGSR2Ugw
 
-On Wed, Apr 16, 2025 at 05:14:06PM +0900, Kohei Tokunaga wrote:
-> On emscripten, function pointer casts can cause function call failure.
-> This commit fixes the function definition to match to the type of the
-> function call using g_list_sort_with_data.
+On 16/4/25 10:14, Kohei Tokunaga wrote:
+> emscripten exposes copy_file_range declaration but doesn't provide the
+> implementation in the final link. Define the emscripten-specific stub
+> function to avoid type conflict with the emscripten's header.
 > 
 > Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
->  hw/core/loader.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   block/file-posix.c |  6 ++++++
+>   stubs/emscripten.c | 13 +++++++++++++
+>   2 files changed, 19 insertions(+)
+>   create mode 100644 stubs/emscripten.c
 > 
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 2e35f0aa90..93a8b45d28 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -1410,7 +1410,7 @@ typedef struct RomSec {
->   * work, but this way saves a little work later by avoiding
->   * dealing with "gaps" of 0 length.
->   */
-> -static gint sort_secs(gconstpointer a, gconstpointer b)
-> +static gint sort_secs(gconstpointer a, gconstpointer b, gpointer d)
->  {
->      RomSec *ra = (RomSec *) a;
->      RomSec *rb = (RomSec *) b;
-> @@ -1463,7 +1463,7 @@ RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
->      /* sentinel */
->      secs = add_romsec_to_list(secs, base + size, 1);
->  
-> -    secs = g_list_sort(secs, sort_secs);
-> +    secs = g_list_sort_with_data(secs, sort_secs, NULL);
+> diff --git a/block/file-posix.c b/block/file-posix.c
+> index 56d1972d15..22e0ed5069 100644
+> --- a/block/file-posix.c
+> +++ b/block/file-posix.c
+> @@ -110,6 +110,10 @@
+>   #include <sys/diskslice.h>
+>   #endif
+>   
+> +#ifdef EMSCRIPTEN
+> +#include <sys/ioctl.h>
+> +#endif
+> +
+>   /* OS X does not have O_DSYNC */
+>   #ifndef O_DSYNC
+>   #ifdef O_SYNC
+> @@ -2010,6 +2014,7 @@ static int handle_aiocb_write_zeroes_unmap(void *opaque)
+>       return handle_aiocb_write_zeroes(aiocb);
+>   }
+>   
+> +#ifndef EMSCRIPTEN
+>   #ifndef HAVE_COPY_FILE_RANGE
+>   static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+>                                off_t *out_off, size_t len, unsigned int flags)
+> @@ -2023,6 +2028,7 @@ static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+>   #endif
+>   }
+>   #endif
+> +#endif
+>   
+>   /*
+>    * parse_zone - Fill a zone descriptor
+> diff --git a/stubs/emscripten.c b/stubs/emscripten.c
+> new file mode 100644
+> index 0000000000..2157d6349b
+> --- /dev/null
+> +++ b/stubs/emscripten.c
+> @@ -0,0 +1,13 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +#include "qemu/osdep.h"
+> +/*
+> + * emscripten exposes copy_file_range declaration but doesn't provide the
+> + * implementation in the final link. Define the stub here but avoid type
+> + * conflict with the emscripten's header.
+> + */
+> +ssize_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+> +                             off_t *out_off, size_t len, unsigned int flags)
+> +{
+> +    errno = ENOSYS;
+> +    return -1;
+> +}
 
-I don't see what the problem is with the original code.
+I'd include in this patch this hunk from patch 17:
 
-The commit message says we have a bad function cast, but the original
-method decl is
-
-  GList *g_list_sort(GList*list, GCompareFunc compare_func);
-
-where the callback is
-
-   typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b);
-
-Our code complies with that GCompareFunc signature.
-
-For comparison the new code uses:
-
-  GList *g_list_sort_with_data(GList *list, GCompareDataFunc  compare_func, gpointer user_data);
-
-where the callback is
-
-  typedef gint (*GCompareDataFunc)(gconstpointer a, gconstpointer b, gpointer user_data);
-
-which the new code complies with, but it is undesirable since we
-have no use for the data parameter.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+-- >8 --
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 63392f5e78..4fd4d362f9 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -89,3 +89,7 @@ if have_system or have_user
+    stub_ss.add(files('hotplug-stubs.c'))
+    stub_ss.add(files('sysbus.c'))
+  endif
++
++if host_os == 'emscripten'
++  stub_ss.add(files('emscripten.c'))
++endif
+---

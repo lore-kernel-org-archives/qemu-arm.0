@@ -1,158 +1,162 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp2527077njc;
-        Tue, 15 Apr 2025 02:31:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVscn8c6wxq1X9mO8V42BpRioLyAloenhroo8tY6IglglJCBz+IepvXjn+HLXNgyYULwNQgKdEw4DV7kA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFyqaNIUSXkrwNRUaWpxVI3s+w2QbUa+00LeZOESqRUj/dkx17dy7GrYB92adOyo80Mf48
-X-Received: by 2002:a05:620a:1139:b0:7c7:af68:b6f3 with SMTP id af79cd13be357-7c7af68b883mr1873692385a.33.1744709500578;
-        Tue, 15 Apr 2025 02:31:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744709500; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3184259njc;
+        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV7lDk5xyFLC5CfKpZlmCmr2FgiJAAzym6YXw/+rCKENxHF6zWAaYRqEchJO7sufHg2m1A1PsM3Xmzl+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFd+6uK5BJpFmAadaZaG8lwS4+r9J40J+cq6JQbQCK79JyFtFaeUvhU0koB2P3Zz1mq/WRu
+X-Received: by 2002:a05:690c:6f08:b0:6fb:9280:5bf4 with SMTP id 00721157ae682-706b3363991mr13358907b3.30.1744792160061;
+        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744792160; cv=none;
         d=google.com; s=arc-20240605;
-        b=N4i9ea7xkcztyO/d/FVlLC1SSMjuPdzAiPSAfQbJ8TLrMqHk+xU0c5m53nSG/ipYF5
-         hbLwkAmeC9S42txhM5KeUxmvXIthKsNDqacJK9l3WyoGn8L5MBkWQ5yVRKTC3EKuDOt4
-         x65waJZstTuDr2Sni9ZAuUz6BMfGi1BpwKJnKfQPE9fBa84CFuZhEJDluzy1BdrD6KaZ
-         8fOPj36nZkOgYSe/OrS6SrhQv1gNknHahvwM/rM8yu+fHzqn+3TC3feBheH9etYExpf1
-         M0AzlmGV22tZrXRfy5tso6UlyKDOFo+xMyz2x82aJ+QteDXcUBNcJ9bcnStm8cWmEF5+
-         /+SA==
+        b=C6KNYcbT45Ts9W7raUM5rjbbEccYz4wfWc2+xtuF2BYiBtFJEuyaTipDm+cWIOvsRz
+         uAqljsu62zklYEM+4mCvFX0/AFw1s4srZHPmt3kmeEAy0d3j28L+OxyUMs9KeqY3G1rV
+         4oIelQ4Hi/OTgW56ai656b75vggrtG/y5IsUuFX1V189Aj9U+Wr6vGI6FqUnZopJh72p
+         M84CUa63/FqsEcMXvvq1V8aCyhKat5yQvotbFn+XxSsCJQkwi2dZTVP2cKhO0u3ToDUj
+         zz9fhva5u9PNX94foFtjG+MO4tScBqbQWL7jiDT7zse7sqQqS89WS+kV+FcW/mLfKljb
+         YFwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=C94tr+jixKhsnt7SGY9mXCayUlxMp6mwPtpKTnMYhdM=;
-        fh=Gh9QsBxoWK4v3aGJPBJXqFVDZvxjnzD+pghPnCzDeuc=;
-        b=FIQ/NPEnUtOuwe0YqmRiRyPEJGu+/l2BtXtthSZjW08dZHnsxeS0e9S6w9sl1tspZM
-         w/rRfqfnrfp8eIv3zNFgdvR6lWhmV+rrTMyDanfPNKJ01sTx+cW1uxrU9BNSiCsWwRep
-         XhQ/ZEQB0TZSqebP2HXw3B/XOZPcw6U63GtSHyoo1YuNhl7mLWmx1q7Rh8NVxCl1yOU/
-         T0H8XX5eH0Cq1yJLhZWOwqrzi7ufaTvS4mfSsAsIyb8jMzXfe42+A+1mmjdL97WpR/OY
-         0hR8FGAYzYlbf6DLfnTfEKInZDJvLgbK9DHoeZy/6+Jq+yBMEvFPS9XPwKINOM9lVeyE
-         qi2g==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=KpK5a5N522QrVFFwZVgIKrckLxvNrQwiWNFASbDGrUE=;
+        fh=oOTJNc2Ke305c1XgESVqCB6I9OL9mWksUmzrmt7korA=;
+        b=SjHEFQjwD5c+DCwLSLR22rY3zNPfbu9Eddw6DRVRqCZr5+1ILp8mNh6lBDC9e2qLn6
+         nFqRUdbG9G0IMBMXKwNW3EP3WzF1ctjJ3fqJCwzbaaUMRcmC9ukS9DL/quRQ5iUPepFC
+         hSyAapsOXAVErrkgbOg3DtuYP8fp2Om5KYDOfg3jvSoOmCm7648e5hvNITlHY6Zc5HiV
+         Ie334vB3/GRo/bHPhoTMlMyrG7BUHRXnwB8Nkx10Zxp70vu2VZOIkEPg4A5w+92ORy3b
+         daTBiSqD4GNnHMQH6oiolqQwDXV9n3d6EWC1yq/mWIhNH7w+6hFodaM8zojOyquw3KiE
+         qdxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jMnlu7rw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WZkF4/jx";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c7a89f5771si1009914885a.198.2025.04.15.02.31.40
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 00721157ae682-7053e381d78si206888787b3.431.2025.04.16.01.29.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Apr 2025 02:31:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Apr 2025 01:29:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jMnlu7rw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WZkF4/jx";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u4cdg-00070j-Ew; Tue, 15 Apr 2025 05:31:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1u4cdH-0006v1-O5
- for qemu-devel@nongnu.org; Tue, 15 Apr 2025 05:31:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1u4cdF-000354-5S
- for qemu-devel@nongnu.org; Tue, 15 Apr 2025 05:31:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1744709463;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=C94tr+jixKhsnt7SGY9mXCayUlxMp6mwPtpKTnMYhdM=;
- b=jMnlu7rwcPqgv0uqzb129VqR0tRuhtkoIodbMMGp2p7H5HKZgXI4Tm5FkM7eoHnCGP2aWt
- 7OxObSbNwK04SZYVyBevhPXB5gGgv5asvWnEkJ0OLMLA3K4ozmrSjsYZPzgEVzC/Cn0ITs
- XbI3DG272rWHYL4aYE1imWaXlDN87+s=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+	s=mimecast20190719; t=1744792159;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=KpK5a5N522QrVFFwZVgIKrckLxvNrQwiWNFASbDGrUE=;
+	b=WZkF4/jxQbUeY9H/sXLLu8oYuTBrAFHde27SmKAQuITTxoMVxmzdQbmjgSlB1fqI/rMdtg
+	RpPo3hM5sBFph0yuvDylNIzGkaDKCvwknYCMEdauSFLyrIb3Y3p/zXcjs/5m/tIl2nRRBI
+	87lVa1Ctqh2fvoOVTK8xnO1GM1slBf4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-582-d4kGaj37ME-eoeMkqpG0hw-1; Tue,
- 15 Apr 2025 05:30:58 -0400
-X-MC-Unique: d4kGaj37ME-eoeMkqpG0hw-1
-X-Mimecast-MFC-AGG-ID: d4kGaj37ME-eoeMkqpG0hw_1744709456
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 87D5919560BB; Tue, 15 Apr 2025 09:30:55 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.133])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D28331808869; Tue, 15 Apr 2025 09:30:49 +0000 (UTC)
-Date: Tue, 15 Apr 2025 10:30:46 +0100
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-500-jvrBfuqLOAW5oyi64e-xsA-1; Wed,
+ 16 Apr 2025 04:28:55 -0400
+X-MC-Unique: jvrBfuqLOAW5oyi64e-xsA-1
+X-Mimecast-MFC-AGG-ID: jvrBfuqLOAW5oyi64e-xsA_1744792133
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D0EFA1955D98;
+	Wed, 16 Apr 2025 08:28:50 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.58])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 295E3180047F;
+	Wed, 16 Apr 2025 08:28:39 +0000 (UTC)
+Date: Wed, 16 Apr 2025 09:28:36 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- linuxarm@huawei.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, ddutile@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, zhangfei.gao@linaro.org
-Subject: Re: [PATCH 4/5] hw/arm/virt: Add support for smmuv3 device
-Message-ID: <Z_4nRnwNOylcENYh@redhat.com>
-References: <20250415081104.71708-1-shameerali.kolothum.thodi@huawei.com>
- <20250415081104.71708-5-shameerali.kolothum.thodi@huawei.com>
- <20250415102542.00007fd7@huawei.com>
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Cc: qemu-devel@nongnu.org,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+	Francisco Iglesias <francisco.iglesias@amd.com>,
+	Vikram Garhwal <vikram.garhwal@bytedance.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
+ function pointers
+Message-ID: <Z_9qIQhjsI5zOwXA@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+ <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250415102542.00007fd7@huawei.com>
+In-Reply-To: <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
 User-Agent: Mutt/2.2.13 (2024-03-09)
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p9JbXDpU3qUP
+X-TUID: Bfdn6eD74vYV
 
-On Tue, Apr 15, 2025 at 10:25:42AM +0100, Jonathan Cameron wrote:
-> On Tue, 15 Apr 2025 09:11:03 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+On Wed, Apr 16, 2025 at 05:14:06PM +0900, Kohei Tokunaga wrote:
+> On emscripten, function pointer casts can cause function call failure.
+> This commit fixes the function definition to match to the type of the
+> function call using g_list_sort_with_data.
 > 
-> > Allow cold-plug of smmuv3 device to virt If the machine wide smmuv3
-> > or a virtio-iommu is not specified.
-> > 
-> > Also restrict the usage if virt <= 9.2. This will prevent accidently
-> > creating a SMMUv3 device on machines prior to 9.2 and cause failure
-> > on migrating to machines with same version but has a legacy smmuv3
-> > device.
+> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+> ---
+>  hw/core/loader.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> Hi,
-> 
-> As we discussed internally I'm not convinced we need to prevent this particular
-> way for a user to shoot themselves in the foot.
-> 
-> To be a problem they have to specifically request an old machine + the
-> device that didn't exist for that machine, then migrate to a real old
-> version of QEMU.  Agreed it is possible but I'm not sure we need to
-> prevent that particular crazy.
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index 2e35f0aa90..93a8b45d28 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -1410,7 +1410,7 @@ typedef struct RomSec {
+>   * work, but this way saves a little work later by avoiding
+>   * dealing with "gaps" of 0 length.
+>   */
+> -static gint sort_secs(gconstpointer a, gconstpointer b)
+> +static gint sort_secs(gconstpointer a, gconstpointer b, gpointer d)
+>  {
+>      RomSec *ra = (RomSec *) a;
+>      RomSec *rb = (RomSec *) b;
+> @@ -1463,7 +1463,7 @@ RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
+>      /* sentinel */
+>      secs = add_romsec_to_list(secs, base + size, 1);
+>  
+> -    secs = g_list_sort(secs, sort_secs);
+> +    secs = g_list_sort_with_data(secs, sort_secs, NULL);
 
-Agreed, there are a million ways to screw up using old machine types
-with new features, so there's no compelling need to single out smmu for
-special protection in this respect.
+I don't see what the problem is with the original code.
+
+The commit message says we have a bad function cast, but the original
+method decl is
+
+  GList *g_list_sort(GList*list, GCompareFunc compare_func);
+
+where the callback is
+
+   typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b);
+
+Our code complies with that GCompareFunc signature.
+
+For comparison the new code uses:
+
+  GList *g_list_sort_with_data(GList *list, GCompareDataFunc  compare_func, gpointer user_data);
+
+where the callback is
+
+  typedef gint (*GCompareDataFunc)(gconstpointer a, gconstpointer b, gpointer user_data);
+
+which the new code complies with, but it is undesirable since we
+have no use for the data parameter.
 
 With regards,
 Daniel
@@ -160,4 +164,3 @@ Daniel
 |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
 |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
 |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-

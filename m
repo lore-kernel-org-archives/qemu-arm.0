@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp392432njk;
-        Wed, 16 Apr 2025 14:58:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXTg7Z47lOu4V7hldE74DjxuCdac6WvXBWVjluhBxfYmhzJwbfgPyJE2g/C+SK7epFHRm/sXAyVQ/YCMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHtM2UKD7XCqyBtI7swcFQ+H0egE0S8cJo4mZskpU73WBAPNRSFF7NG3qLqraHctmb2PJTc
-X-Received: by 2002:a05:6a00:801b:b0:736:5545:5b84 with SMTP id d2e1a72fcca58-73c266beee1mr5592277b3a.3.1744840701411;
-        Wed, 16 Apr 2025 14:58:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744840701; cv=pass;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp392503njk;
+        Wed, 16 Apr 2025 14:58:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUHYdTeGpBG5pxZHQMD0JD0yL9Gm+Rdu5Z+dGIi4KY4kCrxjrKRslQQ7ILpZk6Bz5knQRICia3IU9ggXQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFauUQttq7g49YPO5i51u0+NLG67urpStIbwZgvH19Te0UZe8hvomOW/M3Si/ym98Zl+6nR
+X-Received: by 2002:a05:620a:2894:b0:7c5:3b52:517d with SMTP id af79cd13be357-7c9190841c1mr658919685a.54.1744840711386;
+        Wed, 16 Apr 2025 14:58:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1744840711; cv=pass;
         d=google.com; s=arc-20240605;
-        b=i1ZGxQ+0oc0JuU/+87NtnUmJFGRgzGZ562Sef2H44fgbbVU0xroC+zKhFiLUdMDl5d
-         NKy1WGozZDrag/XRRWLYzBNdps+GbCZJjKtnRYQWi0bSGwPpGRDrmwWn+sVB+PHB1zys
-         YehlrKEiR2PYaLiwko1KUphP/wIXp6LK8fCkukDASNK/JOv6OANN6bvWTu4Hip+msrPK
-         QM0jzzCsh3f34698CTFdjnOrm6BD0G+0qzqRxfPy54hxLkLGTvgxzw15yTysNfjGaPKk
-         NH6zQLfjhReoXJGmC6T9e2KvEKzDjEg49DiXAIRBwlCzfOcyj7FBjAIpfXGSHNylPzyZ
-         kp6Q==
+        b=jqYpeXcmFnz6zG1OYgb/j9W2VqZ3sq232qmpOePJsBi2/HibQoYP/ngNHbf5O2YPok
+         IAz+VHkMLhdi7s0InMBqrCqNLENGnadV7iWQMpxRGIss/4CDLhhS0Zi/u6+vgr3XcqmA
+         0WVAHJ8USDtN0AQYJrskv9v010+d9EmU4y1+fcHBVgfw8AGixnmef4oj8GaAIWIexC6s
+         ipHywS0X0qcdfSn9e/EdLs5UomCmAXU1OK340jZeWyf2oEomyEtCbdnUAUpOMPGI2g0C
+         Q9JKKxmCaaqDws1gHfq8vdIlzgwP0pH/8NCuM4zPMExPDXowrswU8Z5UTOHEXPeNcKul
+         GYPw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=F+QHFJtjx+28JGhYXKrFILOpFgt9z1RkF42hhyzkpYU=;
+        bh=2lnIBN5KJbkcBf1EPifbRJMmBH9Fug6xLrkwvcHfQ5M=;
         fh=pr/dSBFL9oLV7kU9Ai5m+xSM8b3nJsKetG/wF2Loub4=;
-        b=QblmB9S/S1+RQR00AKWpL5T3QIAWnEzasMOYxtYJ4F74ssCk9wDzntZYsJCZ/6DvWE
-         0xEfX0Jn4qHCi5WaKZ9l86xYTMet+j7soxxUZAri93ygl3wpF/icFgdKJu3BDdpCedvp
-         RSEeWA9ZgV/OeTNNnp+WLed08/B/Q9tQ0UFCiSbmTGA+dPM5OUlwa9AKsvOGzzRrCzRA
-         hu44q0hmu1IhQ0uRVgo9UmHNqrjVU+WpCfiS0kb0teZjTUKVOU7L/Y8nx1MGGfNru1m3
-         pV6P6E3noLFdA1NChJrVO3+Gp5Iy3sk6T/YNDbqGNkFF7kJsWu7SS3+Rq1EJi/b6nw0k
-         Yn1A==;
+        b=hVTkwZ3OZ8CXroYcnXczno+D/vuKZSHQ40B2fFhyMSPyQJ1RUriKLd9jgT4Aauo6by
+         dyYdZZyxmu6alhoJb2fXtuoTPODACzPbcCNuExsggVFEYGUnGXM27Na7dYgG8XOHL4ZL
+         OtSHkjqkVGX96PmmV1R+tD3fs4V0NOstv4x0wt28NsoOHVjGEvwy40+KdzJ5Og9c5TQ3
+         LKPwWA1RAg2uIDPq9F8Q/XNMyKR1kJCfJiIej3277ek20AJqtK6jRBYQKuTu+TwCUbCd
+         2Eh8fS2a46APfHRt8cnb/rtqLX12gNoPZol+DRx70OgPvfwryRtB9RJlhiCUC/qdlrET
+         tsFw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=JLGa5K7b;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=WorluwUj;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-73bd230e669si17678901b3a.306.2025.04.16.14.58.20
+Return-Path: <kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7c7a894ace7si1371908585a.22.2025.04.16.14.58.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 14:58:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        Wed, 16 Apr 2025 14:58:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=JLGa5K7b;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=WorluwUj;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-43493-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-43495-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 32C0C7A2C6F
-	for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 21:57:11 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id EC34A460169
+	for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 21:58:31 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4BFE924A043;
-	Wed, 16 Apr 2025 21:58:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 54A0F24A072;
+	Wed, 16 Apr 2025 21:58:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="JLGa5K7b"
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="WorluwUj"
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C6C023237F
-	for <kvm@vger.kernel.org>; Wed, 16 Apr 2025 21:58:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7826924887A
+	for <kvm@vger.kernel.org>; Wed, 16 Apr 2025 21:58:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.165.32
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744840683; cv=none; b=JNHwh3V/C/7dtfTdJNjEv6xZWei1IVsCrnShqsQWtqRb9jqaKWH42MKQoZ5atAhHZ8ukGegTtWlNTvJVlx/mi5Coih7dGuWELi2yZC44M6FKA3mh4ok4zhHv/VUEwUE9LORITR4zFb7chJq+LywgOlHnWRe6B45Y+giZUoxw0yU=
+	t=1744840684; cv=none; b=Dh+/dczFkXcbScFs+Np22Xn/R5P9KGl77A8qZYcZEd8KQDybe0Nwfjfcxp7HHl6fWET/61YbDBRAp3W8iZ4xrM1q6vbILmD+VKRIi0vnu2ZzRwRNyfLGSdvKnBJRyVnXYsyDU0F+mJWk9kQsegkMHU16o8xCcin2Zrk0qlwklps=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744840683; c=relaxed/simple;
-	bh=Mg88Ek3A0Dwn0K00ozR63wePvHB1D4rMRm81bRB4MA8=;
+	s=arc-20240116; t=1744840684; c=relaxed/simple;
+	bh=7fSM0kS/bBlnL+6h9gVp6/Gr90m8H3RKpVS1zy6nwyI=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=d7N3ZR20bZ5UUDD/p8p8g+Nr5tFjYPs3ad2C1VTYFFtrdhzYaMPDs+6JqFrn/wMTBZvdlZcyNHBruZuxEjuBUURsNKSjhwny12rJ+oqcuuMnuCQxfqAvVJPquBw0NHT1u37n9tVJzLdvA+oCwFrCLU3tW1X6TfHnfEARjHSVfmw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=JLGa5K7b; arc=none smtp.client-ip=205.220.177.32
+	 MIME-Version:Content-Type; b=UPiUrAjDy2cp+piHA6IJvH9llD0rw/yWTpCmPXDqh8DI7HsIn2Px99vSezdvmc9CsnRUV3I88+BOEOTulYyfGmFYDFKF2vKc15dLkTURot5RxTrA33Qw+KevBP9SLT1yvVG9VtXYiLJKLdDpRbqcrRiIb0cK53TYUwf+SdR6+eA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=WorluwUj; arc=none smtp.client-ip=205.220.165.32
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53GLN3Hg005812;
-	Wed, 16 Apr 2025 21:57:22 GMT
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53GLMx1d019722;
+	Wed, 16 Apr 2025 21:57:13 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=corp-2023-11-20; bh=F+QHF
-	Jtjx+28JGhYXKrFILOpFgt9z1RkF42hhyzkpYU=; b=JLGa5K7bgTVUxaKFMwZ3F
-	cvPc295Y6fDeM4zobP4ECqFOQxaKAbd/WQILtXqdh1CSvI0Fa+kdChrwgn9R0BJF
-	w4pJiZTQepUnHqPqNq/Y2Gt1r9sKckrDCK2N2mEaCp08zKh2YRq/b2OeiFpqJH1R
-	MzLzu1mWyvvANRoPORlfOVb6z2vDYPDeCrS+E2EynxjF94DwGH4NAz60JgjttXWx
-	ruYraP76AZYt7kVaWR3Ue7oEhP35+r04CTIUklpk2ZGQVPGycERZJWfPEjRQ0ikf
-	PQr08THVgf7fKzYg9YQx27uVU0/b0WPDY5DUBdY6xqDCAnIoW/FbADffCiYAdd+K
-	w==
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=2lnIBN5KJbkcBf1EPifbRJMmBH9Fug6xLrkwvcHfQ5M=; b=
+	WorluwUjkhfYLimcZtQaQ7VnZYV0Rc+CsaBWeM6Y0IRFhZSNoQBoBxEP9wGbcBC1
+	T0P+Y0ARPR78BAeYHSQynGgD8TyN5QxQJk/6Qupyzpc6fSF0kOHdxz0T9Y37g2GR
+	XmZ/PrRNKIVgVAO5xdM+609iDVP3iQO5los+sATDT9UmTX1FXZscdP5zbbpknzFm
+	NzpEB3R6YZBDj1fv9sDoqeT0mbaBhuSueDT2mfDj0i8RvBdotTNNiiTNEwq/b+Cd
+	h7Fx7QdP8ZMO/PuNs4/MaXny84A3X4gqTzvG7LtKWaSPxA9Rf2Yl/vJ2qmFezsI5
+	oJ3JV0L5U5QPAats7A8YOQ==
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 46187xw3pr-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4619444xq8-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 16 Apr 2025 21:57:21 +0000 (GMT)
+	Wed, 16 Apr 2025 21:57:13 +0000 (GMT)
 Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53GKZu3o005650;
-	Wed, 16 Apr 2025 21:57:20 GMT
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53GKk54C005736;
+	Wed, 16 Apr 2025 21:57:12 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 460d5xhvnv-1
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 460d5xhvjc-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 16 Apr 2025 21:57:20 +0000
+	Wed, 16 Apr 2025 21:57:12 +0000
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53GLv1qc036583;
-	Wed, 16 Apr 2025 21:57:19 GMT
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53GLv1qW036583;
+	Wed, 16 Apr 2025 21:57:11 GMT
 Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 460d5xhvcp-8;
-	Wed, 16 Apr 2025 21:57:19 +0000
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 460d5xhvcp-5;
+	Wed, 16 Apr 2025 21:57:11 +0000
 From: Dongli Zhang <dongli.zhang@oracle.com>
 To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
         qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
@@ -118,9 +118,9 @@ Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
         cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
         frankzhu@zhaoxin.com, silviazhao@zhaoxin.com, kraxel@redhat.com,
         berrange@redhat.com
-Subject: [PATCH v4 07/11] target/i386/kvm: rename architectural PMU variables
-Date: Wed, 16 Apr 2025 14:52:32 -0700
-Message-ID: <20250416215306.32426-8-dongli.zhang@oracle.com>
+Subject: [PATCH v4 04/11] kvm: Introduce kvm_arch_pre_create_vcpu()
+Date: Wed, 16 Apr 2025 14:52:29 -0700
+Message-ID: <20250416215306.32426-5-dongli.zhang@oracle.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20250416215306.32426-1-dongli.zhang@oracle.com>
 References: <20250416215306.32426-1-dongli.zhang@oracle.com>
@@ -130,6 +130,7 @@ List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
@@ -138,149 +139,183 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxl
  suspectscore=0 spamscore=0 bulkscore=0 malwarescore=0 adultscore=0
  mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2502280000 definitions=main-2504160177
-X-Proofpoint-GUID: HmsAYUCLExgypsI3Uh6Da0I_DLHNptDn
-X-Proofpoint-ORIG-GUID: HmsAYUCLExgypsI3Uh6Da0I_DLHNptDn
-X-TUID: YG2l7/DzLt1C
+X-Proofpoint-GUID: vRhKiTwugRWlC8C7DEIYFzbK2MujU19W
+X-Proofpoint-ORIG-GUID: vRhKiTwugRWlC8C7DEIYFzbK2MujU19W
+X-TUID: tHlB3eOTrUqn
 
-AMD does not have what is commonly referred to as an architectural PMU.
-Therefore, we need to rename the following variables to be applicable for
-both Intel and AMD:
+From: Xiaoyao Li <xiaoyao.li@intel.com>
 
-- has_architectural_pmu_version
-- num_architectural_pmu_gp_counters
-- num_architectural_pmu_fixed_counters
+Introduce kvm_arch_pre_create_vcpu(), to perform arch-dependent
+work prior to create any vcpu. This is for i386 TDX because it needs
+call TDX_INIT_VM before creating any vcpu.
 
-For Intel processors, the meaning of pmu_version remains unchanged.
+The specific implementation of i386 will be added in the future patch.
 
-For AMD processors:
-
-pmu_version == 1 corresponds to versions before AMD PerfMonV2.
-pmu_version == 2 corresponds to AMD PerfMonV2.
-
+Signed-off-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-Reviewed-by: Dapeng Mi <dapeng1.mi@linux.intel.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
 Changed since v2:
-  - Change has_pmu_version to pmu_version.
-  - Add Reviewed-by since the change is minor.
-  - As a reminder, there are some contextual change due to PATCH 05,
-    i.e., c->edx vs. edx.
+  - Add my Signed-off-by.
+Changed since v3:
+  - Pick new reviewed version from:
+https://lore.kernel.org/all/20250401130205.2198253-8-xiaoyao.li@intel.com/
+    I have fixed the typo as suggested by Daniel.
+  - Keep Zhao's review.
 
- target/i386/kvm/kvm.c | 49 ++++++++++++++++++++++++-------------------
- 1 file changed, 28 insertions(+), 21 deletions(-)
+ accel/kvm/kvm-all.c        | 5 +++++
+ include/system/kvm.h       | 1 +
+ target/arm/kvm.c           | 5 +++++
+ target/i386/kvm/kvm.c      | 5 +++++
+ target/loongarch/kvm/kvm.c | 4 ++++
+ target/mips/kvm.c          | 5 +++++
+ target/ppc/kvm.c           | 5 +++++
+ target/riscv/kvm/kvm-cpu.c | 5 +++++
+ target/s390x/kvm/kvm.c     | 5 +++++
+ 9 files changed, 40 insertions(+)
 
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index f89568bfa3..df9840e53a 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -540,6 +540,11 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+ 
+     trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+ 
++    ret = kvm_arch_pre_create_vcpu(cpu, errp);
++    if (ret < 0) {
++        goto err;
++    }
++
+     ret = kvm_create_vcpu(cpu);
+     if (ret < 0) {
+         error_setg_errno(errp, -ret,
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index ab17c09a55..d7dfa25493 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -374,6 +374,7 @@ int kvm_arch_get_default_type(MachineState *ms);
+ 
+ int kvm_arch_init(MachineState *ms, KVMState *s);
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp);
+ int kvm_arch_init_vcpu(CPUState *cpu);
+ int kvm_arch_destroy_vcpu(CPUState *cpu);
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index da30bdbb23..93f1a7245b 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1874,6 +1874,11 @@ static int kvm_arm_sve_set_vls(ARMCPU *cpu)
+ 
+ #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     int ret;
 diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 4d86c08c6c..6b49549f1b 100644
+index 6c749d4ee8..f41e190fb8 100644
 --- a/target/i386/kvm/kvm.c
 +++ b/target/i386/kvm/kvm.c
-@@ -164,9 +164,16 @@ static bool has_msr_perf_capabs;
- static bool has_msr_pkrs;
- static bool has_msr_hwcr;
+@@ -2051,6 +2051,11 @@ full:
+     abort();
+ }
  
--static uint32_t has_architectural_pmu_version;
--static uint32_t num_architectural_pmu_gp_counters;
--static uint32_t num_architectural_pmu_fixed_counters;
-+/*
-+ * For Intel processors, the meaning is the architectural PMU version
-+ * number.
-+ *
-+ * For AMD processors: 1 corresponds to the prior versions, and 2
-+ * corresponds to AMD PerfMonV2.
-+ */
-+static uint32_t pmu_version;
-+static uint32_t num_pmu_gp_counters;
-+static uint32_t num_pmu_fixed_counters;
- 
- static int has_xsave2;
- static int has_xcrs;
-@@ -2068,24 +2075,24 @@ static void kvm_init_pmu_info(struct kvm_cpuid2 *cpuid)
-         return;
-     }
- 
--    has_architectural_pmu_version = c->eax & 0xff;
--    if (has_architectural_pmu_version > 0) {
--        num_architectural_pmu_gp_counters = (c->eax & 0xff00) >> 8;
-+    pmu_version = c->eax & 0xff;
-+    if (pmu_version > 0) {
-+        num_pmu_gp_counters = (c->eax & 0xff00) >> 8;
- 
-         /*
-          * Shouldn't be more than 32, since that's the number of bits
-          * available in EBX to tell us _which_ counters are available.
-          * Play it safe.
-          */
--        if (num_architectural_pmu_gp_counters > MAX_GP_COUNTERS) {
--            num_architectural_pmu_gp_counters = MAX_GP_COUNTERS;
-+        if (num_pmu_gp_counters > MAX_GP_COUNTERS) {
-+            num_pmu_gp_counters = MAX_GP_COUNTERS;
-         }
- 
--        if (has_architectural_pmu_version > 1) {
--            num_architectural_pmu_fixed_counters = c->edx & 0x1f;
-+        if (pmu_version > 1) {
-+            num_pmu_fixed_counters = c->edx & 0x1f;
- 
--            if (num_architectural_pmu_fixed_counters > MAX_FIXED_COUNTERS) {
--                num_architectural_pmu_fixed_counters = MAX_FIXED_COUNTERS;
-+            if (num_pmu_fixed_counters > MAX_FIXED_COUNTERS) {
-+                num_pmu_fixed_counters = MAX_FIXED_COUNTERS;
-             }
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     struct {
+diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
+index f0e3cfef03..64c9672976 100644
+--- a/target/loongarch/kvm/kvm.c
++++ b/target/loongarch/kvm/kvm.c
+@@ -1071,7 +1071,11 @@ static int kvm_cpu_check_pv_features(CPUState *cs, Error **errp)
+             env->pv_features |= BIT(KVM_FEATURE_VIRT_EXTIOI);
          }
      }
-@@ -4037,25 +4044,25 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
-             kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, env->poll_control_msr);
-         }
++    return 0;
++}
  
--        if (has_architectural_pmu_version > 0) {
--            if (has_architectural_pmu_version > 1) {
-+        if (pmu_version > 0) {
-+            if (pmu_version > 1) {
-                 /* Stop the counter.  */
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
-             }
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
+     return 0;
+ }
  
-             /* Set the counter values.  */
--            for (i = 0; i < num_architectural_pmu_fixed_counters; i++) {
-+            for (i = 0; i < num_pmu_fixed_counters; i++) {
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR0 + i,
-                                   env->msr_fixed_counters[i]);
-             }
--            for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-+            for (i = 0; i < num_pmu_gp_counters; i++) {
-                 kvm_msr_entry_add(cpu, MSR_P6_PERFCTR0 + i,
-                                   env->msr_gp_counters[i]);
-                 kvm_msr_entry_add(cpu, MSR_P6_EVNTSEL0 + i,
-                                   env->msr_gp_evtsel[i]);
-             }
--            if (has_architectural_pmu_version > 1) {
-+            if (pmu_version > 1) {
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_STATUS,
-                                   env->msr_global_status);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_OVF_CTRL,
-@@ -4515,17 +4522,17 @@ static int kvm_get_msrs(X86CPU *cpu)
-     if (env->features[FEAT_KVM] & CPUID_KVM_POLL_CONTROL) {
-         kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, 1);
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index d67b7c1a8e..ec53acb51a 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -61,6 +61,11 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return 0;
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     CPUMIPSState *env = cpu_env(cs);
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 992356cb75..20fabccecd 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -479,6 +479,11 @@ static void kvmppc_hw_debug_points_init(CPUPPCState *cenv)
      }
--    if (has_architectural_pmu_version > 0) {
--        if (has_architectural_pmu_version > 1) {
-+    if (pmu_version > 0) {
-+        if (pmu_version > 1) {
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_STATUS, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_OVF_CTRL, 0);
-         }
--        for (i = 0; i < num_architectural_pmu_fixed_counters; i++) {
-+        for (i = 0; i < num_pmu_fixed_counters; i++) {
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR0 + i, 0);
-         }
--        for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-+        for (i = 0; i < num_pmu_gp_counters; i++) {
-             kvm_msr_entry_add(cpu, MSR_P6_PERFCTR0 + i, 0);
-             kvm_msr_entry_add(cpu, MSR_P6_EVNTSEL0 + i, 0);
-         }
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     PowerPCCPU *cpu = POWERPC_CPU(cs);
+diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+index 0f4997a918..6f15f727de 100644
+--- a/target/riscv/kvm/kvm-cpu.c
++++ b/target/riscv/kvm/kvm-cpu.c
+@@ -1383,6 +1383,11 @@ static int kvm_vcpu_enable_sbi_dbcn(RISCVCPU *cpu, CPUState *cs)
+     return kvm_set_one_reg(cs, kvm_sbi_dbcn.kvm_reg_id, &reg);
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     int ret = 0;
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 4d56e653dd..1f592733f4 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -404,6 +404,11 @@ unsigned long kvm_arch_vcpu_id(CPUState *cpu)
+     return cpu->cpu_index;
+ }
+ 
++int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
++{
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     unsigned int max_cpus = MACHINE(qdev_get_machine())->smp.max_cpus;
 -- 
 2.39.3
 

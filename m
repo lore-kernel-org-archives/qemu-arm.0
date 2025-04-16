@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp392564njk;
-        Wed, 16 Apr 2025 14:58:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWbCeGPeZpvxqSgGya2YMMKeDcHq5r6gzkULEH4OuMXRPja65lLog0sBh5SEGV3w/zvztI5ByvXBXmIVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IESZz0ke9pnFxT34/hEj6vi5eNlOLDbTWnaXYsZpfB7QgdIGpSScXfTk6ZGeaO473DB9pzs
-X-Received: by 2002:a05:6214:3003:b0:6e8:9053:825e with SMTP id 6a1803df08f44-6f2ba9842bbmr5915736d6.17.1744840719178;
-        Wed, 16 Apr 2025 14:58:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1744840719; cv=pass;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp392686njk;
+        Wed, 16 Apr 2025 14:58:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWqBJkcijhDknroF9hCmpOPkaOvqtudQlFsGPUoIc9gBEfNfxaMxHyGITJNmzZyqHTH019o1TUkbmIX6A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGa+5yyOrQJ2Fn9gzYA7/MakxXiKPhZRNJo3iiYZYD3JXb7nL23Mgl/DHjJMvXm7sBWv35A
+X-Received: by 2002:a17:90a:d010:b0:2ea:a9ac:eee1 with SMTP id 98e67ed59e1d1-30863f19401mr5199830a91.10.1744840736712;
+        Wed, 16 Apr 2025 14:58:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1744840736; cv=pass;
         d=google.com; s=arc-20240605;
-        b=KvJPtZbvUoeTK2cJ0eq2D07yLaA2C6+dN+ANp5Jc4oMUtPP1zp5yUUV/65ujJ3Pe6d
-         pGk1AEGWu/E/4maP1DoGrZ9GkzOH+tijkmHm7UQorc0C6jB5uQaSsF4vM8CougUBpDE/
-         tiqkoTMRcSpmDwJCLv+ByhJJUm8VOerQaznVFJGMO2oYSdEdGg52JaVJGlEBmNg5xVxZ
-         y0LWLmjp9pRtUJvwO+KrNtG8JaWG4rpAu7EY1ZZNYNPsTMLzlTkFuTcyJaW1G1fpY6Ey
-         wZG/KnenvhChpSnDmzkfIFdmsBoid1o3KxXspEiHfUS/7b+Lsc3KR7Tb4BGDiWkMo71A
-         aGzg==
+        b=JPsbi9XZfmoEVFNR48slkVWrgIJWOe4vSC5SgWVV7ZXK+7/hjtv8q3kR3C3yC23yBI
+         98/kLQFbdxHIuJ9SonAoJkKb3xb+lAPnyK17++n0neiO+kdiA/PwAd7nwqFtwXEoTh6A
+         66voyH76h3StpMAyxL9Yd8tQE+cMtz+0fb8Gax6911olK/6n0EglcR8HRT7B1y0A02HM
+         kblRw0EYuqRldpwzzmATP8hLxP69HGdHe9evHGTqg9jFCrDdZfkd2ko2t/KVODX6acrk
+         KKrG47n5r+Py9LPIgySRckH8EARJh945xO0tE/iOSei7Ghv09c9XNUMHT+mnnNOv/+4B
+         NuFQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=26biSeKyClnKK7tVS05KxYECIm8bQH64xTAw4ai6yEU=;
+        bh=zrsW9B0Kw+566H0LzTSEW67Xu8nF2NC7lmctRBkvIos=;
         fh=pr/dSBFL9oLV7kU9Ai5m+xSM8b3nJsKetG/wF2Loub4=;
-        b=FbJZedpHsJsVtu5vkq1nuDa2nhPUv3wbfUmR4tTOKpJuZs8esj+ODxJ0nbQP1UAo+x
-         oCtxWahIdSKCFqFoSEoeLsgk2q64cbNmjV1AS1Bpo47somIKTUr8CnxDmkmEO9P/V3Zd
-         YIrpllfy6lyXIkfuLNXubRLlNduLPURyHtbqWPEh75tgjncF6H7NZxdt7wxArscNDAci
-         fnFaaGGyOxKvQn2asePxYJwnoGz/dxM6htlFbCNLIiZLGszB7hUTg3Df2X0BPoM6MX8O
-         DS4zELdpu9h4nXxuj92O+RL57MS5Obnt/6kEagIg6rMHClY+1HemdQ7CXYJwLlYR87Ks
-         Cn2w==;
+        b=Qd3V/kQSP4BWcE7NkDdJiDVhrLpPT2iJff/riA0KLI0qYM+uaZ6x0rwtzl/cbEtguC
+         e/974IKT3M+Fdvxgg/YbXXRRPmHP+ZuA7COrmdKzHBCKkwuS5oebc1oJrjwzk10wUNUl
+         q8X1g/09QiYX/NaRnspGSMZWiA33iSecwlkjvF7+3rUdM+kUZnJC2Yq9tp+iDruZ/SgX
+         uHVodJb8Jh42uts+OyjEOKMhiPAhbYlaBh4lXx75sB2Y+TWJcaJAsyj4c/vbfZ3ypuxs
+         KosFu78t8dpa36gQiWtOrxg/L1Ak1Jf6F5ECkMegLVs7JN3Tx+GKTlGYClUGNSYeY/e7
+         Olwg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=a1cV1Uhs;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=KJMmpWuA;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de9735ecsi162123326d6.154.2025.04.16.14.58.39
+Return-Path: <kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-308613987c8si3662942a91.111.2025.04.16.14.58.56
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 14:58:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Wed, 16 Apr 2025 14:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=a1cV1Uhs;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=KJMmpWuA;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-43498-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-43499-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BFA1B46003D
-	for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 21:58:39 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 01E0C3B50C8
+	for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 21:58:41 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B67AF23237A;
-	Wed, 16 Apr 2025 21:58:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0C90123D296;
+	Wed, 16 Apr 2025 21:58:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="a1cV1Uhs"
-Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="KJMmpWuA"
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D74A23534A
-	for <kvm@vger.kernel.org>; Wed, 16 Apr 2025 21:58:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.165.32
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 208FB24A06B
+	for <kvm@vger.kernel.org>; Wed, 16 Apr 2025 21:58:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744840684; cv=none; b=SAkDTWVcq7eqqFx1sKA8RsfCMpvtkY/HaTMyz3Ake/ZSqqqyr61kYa7ug3QmqjbhBqustNPRZThz0epZlfccFkb8wT6O1nudjirDKzlVnHC1qmmfS/5uazrku1QX1lNgONrRLxwzUyPcYr9t4Dj4QVHEFKad/JkvTE/jQ76X53k=
+	t=1744840685; cv=none; b=Y1YyUfFz1w379NqqaFkTM0YtXPvewx37Pr5eIQzmwNq6+axfspmzME++zM2JXQrcFgOWtJehYv+phHdLps8caG5YXPg+IT0JdaqMh3fIriT4TU+xbDsMDoX7BBRqmAHu/lssMBLZZZBbElx+s3ucoAUQW2pXNEBXsgL1rQDh3tE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744840684; c=relaxed/simple;
-	bh=bXXWF0aEhpaycxotmu6g9BXCxDtzaqBk0G2QtOg3k5Q=;
+	s=arc-20240116; t=1744840685; c=relaxed/simple;
+	bh=Ha1HYW+QDKRp4+1K8FFoi1cUlZ04tUeg74xEpo+5gv8=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=URw5elq2BcEQNvlq4hA4+szsd4wCxzTqFONmdNNDN7IATwbxxVp/h/NBsbD/b3Bf7yqolDz40ymsDIdTZYUaJV5cQssdxI1p3lnzR0pQ9mMsMEeR+SEzVhhxijW/mt/WV9yLyfWKYJSCYom9ouij/rtbDJtSTT0rAx+irmgrquY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=a1cV1Uhs; arc=none smtp.client-ip=205.220.165.32
+	 MIME-Version; b=a6/vjWde40/j9t3RSgBfrxg7i4Cnm7GDieUuR9DpSjAfDwsipWzlhOMY82FgAo85Bct2GpVK5cwylkVp10BpEZecaMPyKQIiAhRavi/QSojBLMdZZ/voziex8YB7Vu86dqxQb5luc5NqnxO9mOXzk/4aGJFxLy7ZMSdlosakp4I=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=KJMmpWuA; arc=none smtp.client-ip=205.220.177.32
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53GLN0Ax019727;
-	Wed, 16 Apr 2025 21:57:08 GMT
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53GLNiUT028808;
+	Wed, 16 Apr 2025 21:57:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
 	:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=corp-2023-11-20; bh=26biS
-	eKyClnKK7tVS05KxYECIm8bQH64xTAw4ai6yEU=; b=a1cV1UhsWqAzYj8Yu5rsO
-	2mmDkS7CTJm6PUF0t9K0XDOftBVvByHhvaUvPXcvjBYeYmWtPcQoRaWZv8TaKXT1
-	pIMX60mG3yWsZX8WbLXl1az7Tetu5FqpmIXe43PvjQuK0Fivfz2eHDiJWr/H1HA3
-	a6OLAsU+g5wBOhzeb/R63/8epPDKoRQGPkRF3749MylE5xawob22v6mc8Y0XbEki
-	MsER0h6HadmTdqmpIiDsDhs8gdbWcUEZPt9bVNsEV7QyzSmSU8Ko8/HgUpsBmZPQ
-	CZZeK2a703uNbKOD3WhSSBSrgIuSMhizNb+RAmFaUO4N30tEP8mOomzwoN/X5Y1d
-	g==
+	:mime-version:references:subject:to; s=corp-2023-11-20; bh=zrsW9
+	B0Kw+566H0LzTSEW67Xu8nF2NC7lmctRBkvIos=; b=KJMmpWuAepLM76Lsi3SHm
+	qVU8FSs1+8B1j82MQqiz4myRjQKx6VwDb3n8trKy5++7u2E9Dy9dCUN/b8ZO9AAy
+	IFY6AwzmlINVTfDG21p7dzEchusgYdbo6Hrqjz28xKteK/kVnP6QmaUbvDsyTI06
+	9Vx65D6GTQkav3gWknaWaf1KdXEPnNeeBqNLDgj9k9u6wLp2Vl140hIpPG/sTySh
+	flFlBSPGKjGdAHV7cuKmTAGbCrE2Pi00fNVboPvQUX+6Vw1FeHTw5oezDEHFmr/S
+	DWT/CgDZNYrJCeiv5BBn80L+JkP1rC1Qz7Z5l1KFHBrLsbQkSErFGSVEbGUR5ZYW
+	A==
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4619444xq6-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4617jud6jq-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 16 Apr 2025 21:57:08 +0000 (GMT)
+	Wed, 16 Apr 2025 21:57:23 +0000 (GMT)
 Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53GKwS07005672;
-	Wed, 16 Apr 2025 21:57:07 GMT
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53GKVvPX005651;
+	Wed, 16 Apr 2025 21:57:22 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 460d5xhvg6-1
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 460d5xhvq7-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 16 Apr 2025 21:57:07 +0000
+	Wed, 16 Apr 2025 21:57:22 +0000
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53GLv1qS036583;
-	Wed, 16 Apr 2025 21:57:06 GMT
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53GLv1qe036583;
+	Wed, 16 Apr 2025 21:57:21 GMT
 Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 460d5xhvcp-3;
-	Wed, 16 Apr 2025 21:57:06 +0000
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 460d5xhvcp-9;
+	Wed, 16 Apr 2025 21:57:21 +0000
 From: Dongli Zhang <dongli.zhang@oracle.com>
 To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
         qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
@@ -118,9 +118,9 @@ Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
         cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
         frankzhu@zhaoxin.com, silviazhao@zhaoxin.com, kraxel@redhat.com,
         berrange@redhat.com
-Subject: [PATCH v4 02/11] target/i386: disable PerfMonV2 when PERFCORE unavailable
-Date: Wed, 16 Apr 2025 14:52:27 -0700
-Message-ID: <20250416215306.32426-3-dongli.zhang@oracle.com>
+Subject: [PATCH v4 08/11] target/i386/kvm: query kvm.enable_pmu parameter
+Date: Wed, 16 Apr 2025 14:52:33 -0700
+Message-ID: <20250416215306.32426-9-dongli.zhang@oracle.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20250416215306.32426-1-dongli.zhang@oracle.com>
 References: <20250416215306.32426-1-dongli.zhang@oracle.com>
@@ -138,61 +138,128 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxl
  suspectscore=0 spamscore=0 bulkscore=0 malwarescore=0 adultscore=0
  mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2502280000 definitions=main-2504160177
-X-Proofpoint-GUID: 1ZX-wEgbeIX-zrphKb9xK-enwtl1Thwj
-X-Proofpoint-ORIG-GUID: 1ZX-wEgbeIX-zrphKb9xK-enwtl1Thwj
-X-TUID: GBEp3jAK30BQ
+X-Proofpoint-GUID: 1bGCwNLmTZdfXa36pPFKeM7BYF21nKgx
+X-Proofpoint-ORIG-GUID: 1bGCwNLmTZdfXa36pPFKeM7BYF21nKgx
+X-TUID: TGYwRkqYdXR1
 
-When the PERFCORE is disabled with "-cpu host,-perfctr-core", it is
-reflected in in guest dmesg.
+When PMU is enabled in QEMU, there is a chance that PMU virtualization is
+completely disabled by the KVM module parameter kvm.enable_pmu=N.
 
-[    0.285136] Performance Events: AMD PMU driver.
+The kvm.enable_pmu parameter is introduced since Linux v5.17.
+Its permission is 0444. It does not change until a reload of the KVM
+module.
 
-However, the guest CPUID indicates the PerfMonV2 is still available.
+Read the kvm.enable_pmu value from the module sysfs to give a chance to
+provide more information about vPMU enablement.
 
-CPU:
-   Extended Performance Monitoring and Debugging (0x80000022):
-      AMD performance monitoring V2         = true
-      AMD LBR V2                            = false
-      AMD LBR stack & PMC freezing          = false
-      number of core perf ctrs              = 0x6 (6)
-      number of LBR stack entries           = 0x0 (0)
-      number of avail Northbridge perf ctrs = 0x0 (0)
-      number of available UMC PMCs          = 0x0 (0)
-      active UMCs bitmask                   = 0x0
-
-Disable PerfMonV2 in CPUID when PERFCORE is disabled.
-
-Suggested-by: Zhao Liu <zhao1.liu@intel.com>
-Fixes: 209b0ac12074 ("target/i386: Add PerfMonV2 feature bit")
 Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Sandipan Das <sandipan.das@amd.com>
 ---
-Changed since v1:
-  - Use feature_dependencies (suggested by Zhao Liu).
 Changed since v2:
-  - Nothing. Zhao and Xiaoyao may move it to x86_cpu_expand_features()
-    later.
+  - Rework the code flow following Zhao's suggestion.
+  - Return error when:
+    (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu)
+Changed since v3:
+  - Re-split the cases into enable_pmu and !enable_pmu, following Zhao's
+    suggestion.
+  - Rework the commit messages.
+  - Bring back global static variable 'kvm_pmu_disabled' from v2.
 
- target/i386/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ target/i386/kvm/kvm.c | 61 +++++++++++++++++++++++++++++++------------
+ 1 file changed, 44 insertions(+), 17 deletions(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 1b64ceaaba..2b87331be5 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -1808,6 +1808,10 @@ static FeatureDep feature_dependencies[] = {
-         .from = { FEAT_7_1_EDX,             CPUID_7_1_EDX_AVX10 },
-         .to = { FEAT_24_0_EBX,              ~0ull },
-     },
-+    {
-+        .from = { FEAT_8000_0001_ECX,       CPUID_EXT3_PERFCORE },
-+        .to = { FEAT_8000_0022_EAX,         CPUID_8000_0022_EAX_PERFMON_V2 },
-+    },
- };
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 6b49549f1b..38cc1a5f43 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -184,6 +184,10 @@ static int has_triple_fault_event;
+ static bool has_msr_mcg_ext_ctl;
  
- typedef struct X86RegisterInfo32 {
+ static int pmu_cap;
++/*
++ * Read from /sys/module/kvm/parameters/enable_pmu.
++ */
++static bool kvm_pmu_disabled;
+ 
+ static struct kvm_cpuid2 *cpuid_cache;
+ static struct kvm_cpuid2 *hv_cpuid_cache;
+@@ -2041,23 +2045,30 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
+     if (first) {
+         first = false;
+ 
+-        /*
+-         * Since Linux v5.18, KVM provides a VM-level capability to easily
+-         * disable PMUs; however, QEMU has been providing PMU property per
+-         * CPU since v1.6. In order to accommodate both, have to configure
+-         * the VM-level capability here.
+-         *
+-         * KVM_PMU_CAP_DISABLE doesn't change the PMU
+-         * behavior on Intel platform because current "pmu" property works
+-         * as expected.
+-         */
+-        if ((pmu_cap & KVM_PMU_CAP_DISABLE) && !X86_CPU(cpu)->enable_pmu) {
+-            ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
+-                                    KVM_PMU_CAP_DISABLE);
+-            if (ret < 0) {
+-                error_setg_errno(errp, -ret,
+-                                 "Failed to set KVM_PMU_CAP_DISABLE");
+-                return ret;
++        if (X86_CPU(cpu)->enable_pmu) {
++            if (kvm_pmu_disabled) {
++                warn_report("Failed to enable PMU since "
++                            "KVM's enable_pmu parameter is disabled");
++            }
++        } else {
++            /*
++             * Since Linux v5.18, KVM provides a VM-level capability to easily
++             * disable PMUs; however, QEMU has been providing PMU property per
++             * CPU since v1.6. In order to accommodate both, have to configure
++             * the VM-level capability here.
++             *
++             * KVM_PMU_CAP_DISABLE doesn't change the PMU
++             * behavior on Intel platform because current "pmu" property works
++             * as expected.
++             */
++            if (pmu_cap & KVM_PMU_CAP_DISABLE) {
++                ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
++                                        KVM_PMU_CAP_DISABLE);
++                if (ret < 0) {
++                    error_setg_errno(errp, -ret,
++                                     "Failed to set KVM_PMU_CAP_DISABLE");
++                    return ret;
++                }
+             }
+         }
+     }
+@@ -3252,6 +3263,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     int ret;
+     struct utsname utsname;
+     Error *local_err = NULL;
++    g_autofree char *kvm_enable_pmu;
+ 
+     /*
+      * Initialize SEV context, if required
+@@ -3397,6 +3409,21 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+ 
+     pmu_cap = kvm_check_extension(s, KVM_CAP_PMU_CAPABILITY);
+ 
++    /*
++     * The enable_pmu parameter is introduced since Linux v5.17,
++     * give a chance to provide more information about vPMU
++     * enablement.
++     *
++     * The kvm.enable_pmu's permission is 0444. It does not change
++     * until a reload of the KVM module.
++     */
++    if (g_file_get_contents("/sys/module/kvm/parameters/enable_pmu",
++                            &kvm_enable_pmu, NULL, NULL)) {
++        if (*kvm_enable_pmu == 'N') {
++            kvm_pmu_disabled = true;
++        }
++    }
++
+     return 0;
+ }
+ 
 -- 
 2.39.3
 

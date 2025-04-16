@@ -1,91 +1,90 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3205195njc;
-        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
-X-Received: by 2002:a05:6402:280a:b0:5ed:1841:18c5 with SMTP id 4fb4d7f45d1cf-5f4b76e74c6mr1052041a12.30.1744795134059;
-        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744795134; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3206440njc;
+        Wed, 16 Apr 2025 02:22:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:3c90:b0:43d:8ea:8d7a with SMTP id 5b1f17b1804b1-4405d6b2dcbmr8313545e9.28.1744795334173;
+        Wed, 16 Apr 2025 02:22:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744795334; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZwF5Wk8Kfc+Qnd25213e8QY252RqmuwYwTgjFhQO3wY5omAl3WBpvu+HlPCooh15pV
-         NJv5Otuc5OvJiuQr3ViNB3uV/VHIJJ4QABFt6Mh6qtHEvAkMn55vqbl2kJJfOZj0i17h
-         /YKogvqeRmun7QrKcL2YI/2OxtFf9C4hdTQJ+UJys1lN2lJPdu7PjKhmdWSThJNo8B1b
-         K4VHRRdnejC8+Czh6w2umkkytgzhm3xY1FxqdXPdwFxHJhdT5Iuij70OdP6SnhILFmMs
-         EwICTU/IgyvOK3mQP06Wc+Xf1TCQHEfbzSIaO+bZ0PeDDCZ2WKfCnP+2W/gY8/XELYb3
-         xFCg==
+        b=UDqPm7Dq1KrQFUzwevNpj2eBam5VkxTW2Q4A781h4za2PiwxCCTy+qtNvrwGHdis5n
+         Q3W9BazWOFxIlx29/qjSDdWiQ39TIJoWhEq5fpBsYIcLYsb3ZTWCpVc3gLBkN85D9Lob
+         cZMRYCQMKqeQZrkXJOh6MwVq6hE+yA2ogMeu+rZAdbYL5oNFKA9pk/tBeuQJLBMpwL47
+         G9SjtUa3LxIfdxa2CdXVDd9oY2VndzvimKIUIVTuFqSg/sFFQVn6aDhKgYS/FFS2VPQo
+         QQPZN6cC4U2zr0+MNRxEBpZttxryMBcQi56P94M3WgJk3O8bnlsMFzUlNK8nrFwTosfh
+         Gd0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
+        bh=O9DmSrSvp+/D4+V2cx49ZZK5Qu5Xoook/Yq/s+DSIa4=;
         fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
-        b=hvcjzr3Utpo2TXvbALYNHDdeXmkEfVQd6yLf/KTI0NuwSGgOk3+TXKc43HV0ihXPUx
-         l8ePjFADf9fLOyc0PQYEeXpQRfK92/sfm96/E7arUrlDbJj6pMUf9fHKKQfSuOO5Eo2I
-         2wxCT4PFcmBe9neB5siRz0CYCzOxO7HW5+gmpaREzivAkHia4OzuKymg5Mj56nfZS+KV
-         vkMXEPZ/995sC/0C/CUteS2dTOc2deQR9Gd+N5qbt8czskuBfUKh4ohD1NzZ3ZBpGK/I
-         foFa11acWLulGvXRkxfokaCsGY1H/v7s9AhDMgTcxKbQo24CRg9sANOp8voYBFKOwGp1
-         gtIA==;
+        b=WTwZWgWKCPLa5fCmLtFdhvxUb9doYFuAp895BvweRsgtbmV8PDw+dlhDLH0tr5qdZ7
+         AAetQ7lQksrLcBhH6YXscZUfsIsMTOJHuX9gmB4o6yU2MRH+Gk6OM0A0oqUy2sfVOG48
+         Q4Rbc90MnOQCNFG2SiMtnG+yrM9Ey+2AZqpIM6J5UbRebcQvGYMiWzXF4QvIcEnEZ8Ac
+         QO6fM7p35tkvRPBSQFP1/FLwEdhrGq3Xx/gnnGT1yeJy/lnOQsge7FZSDZgN5cU0Cnzx
+         I1QIQ/APqpboYyM/IADVoZIjtsTB2/tCqTSLNuTfwl6reR7HAqBavczFmf0HGgEwneSn
+         MBiQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pzRaD7dC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="P/bx+W0+";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5f2fbb8d1dfsor5688291a12.2.2025.04.16.02.18.53
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43f3071a63fsor54914385e9.0.2025.04.16.02.22.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Apr 2025 02:18:54 -0700 (PDT)
+        Wed, 16 Apr 2025 02:22:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pzRaD7dC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="P/bx+W0+";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744795133; x=1745399933; darn=linaro.org;
+        d=linaro.org; s=google; t=1744795333; x=1745400133; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
-        b=pzRaD7dCx2uPfJKDcyI3UiFXNwHVU9PLOfvj/fT/2nfIm1fnFdUDAycdV4NdlkZ1t+
-         GOh+i0Os4DGwepZF/cH4U2HGxW+W/EdPSqNGHH/RNbCvmtFmj6U7TmfZUyCTuFlXuETg
-         QmMOahWO0zpdfcj7C0D9nOMKtp+HN96GNevzUolpOJHndOht5RYa6+p6ID4LsvmQu+vO
-         m5f1qDMKkNuQIwHLZim5HtMc1vHMrj2/aC8JD3gfpZSSmifqEG/mER4cR9c2EUdPTnwi
-         zChfOWSJhJWEdA0c0WfchQNKV5lE2cqQyw6cDL5Q8u+kXm/EqxOUR2W8eMIgIVfudrla
-         nCuA==
+        bh=O9DmSrSvp+/D4+V2cx49ZZK5Qu5Xoook/Yq/s+DSIa4=;
+        b=P/bx+W0+yD61x6hfeAozlGFCIWuEE+5BQDyPNwmjn4YS05QbE8LYePqGPTdhrC3iVF
+         hV1U5Z/bb6WzOGnNz3MTKDkktKd9Tu4gi20rl9nr8EHnI1i0w6lWUWXAqGwoU2bMLTJR
+         B6+vy1m10nXbr//7zvA9CuIVIz3tRiI5fuxMpixe+VX6Bsjgjabm846FLTQnTUzgqDIk
+         RB19M2/sjX/i7aCnfmfA57buk96y06ufnWfKccp2seXM490aWdxRgCSpmkrBG3dKQ+x4
+         QuqsNOVqIeFgvw3KuO5wnQydpvVYYhrFSA/wbdIXEMa/ZODBRRNpC9ZDu97GDVd8Dg1b
+         8lQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744795133; x=1745399933;
+        d=1e100.net; s=20230601; t=1744795333; x=1745400133;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=opxX0AnLU8z4IF4WKw6Y3YI4gcZ8WAb/hd2WUxU844M=;
-        b=AJghKF8IJoNz/u2FyJ0vN9F0rHucbl80KumVSF6DYLf18QvAHwQSeY+vt4j8GA4mPK
-         a9t9sCSJRyx6beepMSyW5SD2oJbdGcP6xZVcgR7VoQgwroUrST49zkdT4VLyDpvs1zpe
-         Dodk6s/oiHizcAHFIAZXqCB1magvFqSos4vYno+uBDdtfInPIOGzhw3gJrXs7Pd3mvEL
-         dCMYsJNvzy1HuU4yahcl9DSXj5tjVUiovJ+DOna5WkNI9cyFBaveg7dyExFIR9M8Uynb
-         vV3gexykZceoF4chsztEmrybTS+zPMpNrdCRI/ZYEYqs03BF9eZ8LYv+bs50/q35zB1U
-         vO/w==
-X-Gm-Message-State: AOJu0Yy1C2c3uCXZcR9ot7Z8O81te37ZMsFKqAEQRUK4dFHDcxQFh27B
-	I/A1v8O2mk5s4fzqEb3u1/R4KcVTeQMc5c0G6S1B6gpQRM/TwjqAP0flze9fmL7ZEA==
-X-Gm-Gg: ASbGnctKmF/GiKm2UaQo/N2TIjcHZVqBN9Onx9e4LGzzc6SmCpEQ5TAEotpetT1D8PP
-	HAXOgjWRHpYeWCe/rRCQM3CG3GKmJuYIe8wVOeJsDmPi2u71E+FlgP0reIKQL+dRzYkISjhJlG0
-	rLZdoM0x2YZ1Aae1eeDDpmVuBYh8GU47ZYf4GWcVkpfu+GCP0c+DReIz8J/WwqiH8pIwsS2swvr
-	R5jpTUdziOEqG9qM5nmpk9poQ4loVlj4YsQA/5TEfQXNC8eK8rDoL50teq8ghOqbPFvK9xKNmvl
-	5wvr8awW1/VqTEBTub9Rj4tDt6wD9NG42sDJj25b1+DTT/VwekkFcQZ5/sUzl7rotfQKsJKDMcd
-	JTiOGp+dr6yfUig==
-X-Google-Smtp-Source: AGHT+IGr1/MfO5wsf3tA/3dnOJoLlld+cE6SoujA4jBiRHSd8qF8sSM327OsefaPiZzkZU94UvLfag==
-X-Received: by 2002:a05:6402:1e91:b0:5ec:9352:7b20 with SMTP id 4fb4d7f45d1cf-5f4b6dfb88dmr896220a12.0.1744795133486;
-        Wed, 16 Apr 2025 02:18:53 -0700 (PDT)
+        bh=O9DmSrSvp+/D4+V2cx49ZZK5Qu5Xoook/Yq/s+DSIa4=;
+        b=W+gbh8Rgm6xYg+2ITgdC/kLx5GMeTJN9997rASBxMLJmG0plLnRZsD/5e9SwMt3Nw5
+         mlcfB7p+fab+LIyrGb84UcpEPC2JmNFGmQU/FGkKjHaX7+aU4doAbhdtOk/NrUOGRctE
+         0j6qsqds8QD+mi8EaH1yKt5JmYKTaBNe5lSpOaBs954bSJNzbpGUbCpZkt23S16IegUo
+         bgYt1csodiGUAErE1vuff9J+ZyDSSuGxyXb4KlW3lvMSPs6Y4JXmanFg7vk5bwtKIZwJ
+         pXUuu0Ytdwhw6xu5qz5MVrRXGbcvFmCP7z/oglYi/DAVX9B1IrpPPoki0quA1oXS4hW8
+         wrGQ==
+X-Gm-Message-State: AOJu0YyC1f+N6En7TcudKwXiLltpIudfBM8emLxguJ3w6t0jg+Syj+wL
+	vmEb0M87wGfrJWFZAcs4Id9C5WTMD/XU7PFSFSnqFkfXwlioQNZYOH7bYKdtPycZqA==
+X-Gm-Gg: ASbGncsvOjMiYnTPNYUdr+FT+3EC52RE+R4+c+hTHcWvwwkzbsEGbA88KvgBQk094xv
+	Cb+NF5Uq0doCi836lt7GzRgp0D5D72d8MFKuWjsdILoyGoPWahAiuPzKx9cu/kZxBMtMs+IclWn
+	59sGbk1yGjXL855Oobyl8wL85OxOYeLWlvcHT+cCQCdBXvOMUvt8aBcTGXAI3sT4U441Sglt9nR
+	5gH+mvTbhs50fCJbapireNUr2hAZPXMXLHs9Waq7fu+8vQzRZSBpFqLLs/y68V/VxK9SofFv4JM
+	/QKPzCh0qVLcYZajc6expaJMXqS4m7VHymS66wZzeFUEoCR6c67L6vHjlTGrkJ0Bj/t/CgeKFV+
+	kCmydPE6TJaPgQw==
+X-Google-Smtp-Source: AGHT+IH/5/Fc9I2DlZUhZUcAfXrdb3493WfekOWHZJ/g9slKP5w0pM4osO2SziGppYoFnMSTAiNOqQ==
+X-Received: by 2002:a05:600c:c0e:b0:43c:eec7:eabb with SMTP id 5b1f17b1804b1-4405d6168ccmr10836195e9.8.1744795333597;
+        Wed, 16 Apr 2025 02:22:13 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f36f50569fsm8393804a12.52.2025.04.16.02.18.51
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4405b4f2b72sm15214025e9.19.2025.04.16.02.22.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Apr 2025 02:18:52 -0700 (PDT)
-Message-ID: <a92737eb-786d-4ebc-87df-a5518417195c@linaro.org>
-Date: Wed, 16 Apr 2025 11:18:51 +0200
+        Wed, 16 Apr 2025 02:22:12 -0700 (PDT)
+Message-ID: <c00e2bc8-3248-44a7-bf4a-87441f6f9c19@linaro.org>
+Date: Wed, 16 Apr 2025 11:22:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/19] util/mmap-alloc: Add qemu_ram_mmap implementation
- for emscripten
+Subject: Re: [PATCH 17/19] meson: Add wasm build in build scripts
 To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
@@ -108,127 +107,125 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <7ef485c860a0c26d2ddcf6a96430f5443deb5aee.1744787186.git.ktokunaga.mail@gmail.com>
+ <835dfef61307a941cdb58331607c308238d37e00.1744787186.git.ktokunaga.mail@gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <7ef485c860a0c26d2ddcf6a96430f5443deb5aee.1744787186.git.ktokunaga.mail@gmail.com>
+In-Reply-To: <835dfef61307a941cdb58331607c308238d37e00.1744787186.git.ktokunaga.mail@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: iAGEhpnfHOY6
+X-TUID: jGnyxjgJqYOn
+
+Hi Kohei,
 
 On 16/4/25 10:14, Kohei Tokunaga wrote:
+> has_int128_type is set to false on emscripten as of now to avoid errors by
+> libffi. Tests are disabled on emscripten because they rely on host
+> features that aren't supported by emscripten (e.g. fork and unix
+> socket).
+> 
 > Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
->   util/mmap-alloc.c | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
-> 
-> diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
-> index ed14f9c64d..91f33682e8 100644
-> --- a/util/mmap-alloc.c
-> +++ b/util/mmap-alloc.c
-> @@ -145,6 +145,7 @@ static bool map_noreserve_effective(int fd, uint32_t qemu_map_flags)
->       return false;
->   }
->   
-> +#ifndef EMSCRIPTEN
->   /*
->    * Reserve a new memory region of the requested size to be used for mapping
->    * from the given fd (if any).
-> @@ -176,6 +177,7 @@ static void *mmap_reserve(size_t size, int fd)
->   
->       return mmap(0, size, PROT_NONE, flags, fd, 0);
->   }
-> +#endif
->   
->   /*
->    * Activate memory in a reserved region from the given fd (if any), to make
-> @@ -244,6 +246,21 @@ static inline size_t mmap_guard_pagesize(int fd)
->   #endif
->   }
->   
-> +#ifdef EMSCRIPTEN
-> +void *qemu_ram_mmap(int fd,
-> +                    size_t size,
-> +                    size_t align,
-> +                    uint32_t qemu_map_flags,
-> +                    off_t map_offset)
-> +{
-> +    /*
-> +     * emscripten doesn't support non-zero first argument for mmap so
-> +     * mmap a larger region without the hint and return an aligned pointer.
-> +     */
-> +    void *ptr = mmap_activate(0, size + align, fd, qemu_map_flags, map_offset);
-> +    return (void *)QEMU_ALIGN_UP((uintptr_t)ptr, align);
-> +}
-> +#else
->   void *qemu_ram_mmap(int fd,
->                       size_t size,
->                       size_t align,
-> @@ -293,6 +310,7 @@ void *qemu_ram_mmap(int fd,
->   
->       return ptr;
->   }
-> +#endif /* EMSCRIPTEN */
->   
->   void qemu_ram_munmap(int fd, void *ptr, size_t size)
->   {
+>   configs/meson/emscripten.txt  |  8 ++++++++
+>   configure                     |  7 +++++++
+>   meson.build                   | 25 ++++++++++++++++++++-----
+>   meson_options.txt             |  2 +-
+>   scripts/meson-buildoptions.sh |  2 +-
+>   stubs/meson.build             |  4 ++++
+>   6 files changed, 41 insertions(+), 7 deletions(-)
+>   create mode 100644 configs/meson/emscripten.txt
 
-Can we keep this code generic? I.e. with something in the lines
-of (only build-tested):
 
--- >8 --
-diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
-index ed14f9c64de..0e52cce5b29 100644
---- a/util/mmap-alloc.c
-+++ b/util/mmap-alloc.c
-@@ -238,3 +238,10 @@ static inline size_t mmap_guard_pagesize(int fd)
-  {
--#if defined(__powerpc64__) && defined(__linux__)
-+#if defined(EMSCRIPTEN)
-+    /*
-+     * emscripten doesn't support non-zero first argument for mmap so we
-+     * don't use any guard, returning 0 to mmap a larger region without the
-+     * hint and return an aligned pointer in qemu_ram_mmap().
-+     */
-+    return 0;
-+#elif defined(__powerpc64__) && defined(__linux__)
-      /* Mappings in the same segment must share the same page size */
-@@ -246,2 +253,3 @@ static inline size_t mmap_guard_pagesize(int fd)
+> diff --git a/meson.build b/meson.build
+> index 41f68d3806..c9aa5016d6 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -50,9 +50,9 @@ genh = []
+>   qapi_trace_events = []
+>   
+>   bsd_oses = ['gnu/kfreebsd', 'freebsd', 'netbsd', 'openbsd', 'dragonfly', 'darwin']
+> -supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
+> +supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux', 'emscripten']
+>   supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
+> -  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64']
+> +  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32']
+>   
+>   cpu = host_machine.cpu_family()
+>   
+> @@ -353,6 +353,8 @@ foreach lang : all_languages
+>         # endif
+>         #endif''')
+>       # ok
+> +  elif compiler.get_id() == 'emscripten'
+> +    # ok
+>     else
+>       error('You either need GCC v7.4 or Clang v10.0 (or XCode Clang v15.0) to compile QEMU')
+>     endif
+> @@ -470,7 +472,10 @@ endif
+>   # instead, we can't add -no-pie because it overrides -shared: the linker then
+>   # tries to build an executable instead of a shared library and fails.  So
+>   # don't add -no-pie anywhere and cross fingers. :(
+> -if not get_option('b_pie')
+> +#
+> +# Emscripten doesn't support -no-pie but meson can't catch the compiler
+> +# warning. So explicitly omit the flag for Emscripten.
+> +if not get_option('b_pie') and host_os != 'emscripten'
+>     qemu_common_flags += cc.get_supported_arguments('-fno-pie', '-no-pie')
+>   endif
+>   
+> @@ -514,6 +519,8 @@ ucontext_probe = '''
+>   supported_backends = []
+>   if host_os == 'windows'
+>     supported_backends += ['windows']
+> +elif host_os == 'emscripten'
+> +  supported_backends += ['wasm']
+>   else
+>     if host_os != 'darwin' and cc.links(ucontext_probe)
+>       supported_backends += ['ucontext']
+> @@ -2962,7 +2969,9 @@ config_host_data.set('CONFIG_ATOMIC64', cc.links('''
+>       return 0;
+>     }''', args: qemu_isa_flags))
+>   
+> -has_int128_type = cc.compiles('''
+> +# has_int128_type is set to false on Emscripten to avoid errors by libffi
+> +# during runtime.
+> +has_int128_type = host_os != 'emscripten' and cc.compiles('''
+>     __int128_t a;
+>     __uint128_t b;
+>     int main(void) { b = a; }''')
+> @@ -3774,6 +3783,8 @@ if have_block
+>     # os-win32.c does not
+>     if host_os == 'windows'
+>       system_ss.add(files('os-win32.c'))
+> +  elif host_os == 'emscripten'
+> +    blockdev_ss.add(files('os-wasm.c'))
+>     else
+>       blockdev_ss.add(files('os-posix.c'))
+>     endif
+> @@ -4456,7 +4467,11 @@ subdir('scripts')
+>   subdir('tools')
+>   subdir('pc-bios')
+>   subdir('docs')
+> -subdir('tests')
+> +# Tests are disabled on emscripten because they rely on host features that aren't
+> +# supported by emscripten (e.g. fork and unix socket).
+> +if host_os != 'emscripten'
+> +  subdir('tests')
+> +endif
+>   if gtk.found()
+>     subdir('po')
+>   endif
+> diff --git a/meson_options.txt b/meson_options.txt
+> index 59d973bca0..45772484cc 100644
+> --- a/meson_options.txt
+> +++ b/meson_options.txt
+> @@ -34,7 +34,7 @@ option('fuzzing_engine', type : 'string', value : '',
+>   option('trace_file', type: 'string', value: 'trace',
+>          description: 'Trace file prefix for simple backend')
+>   option('coroutine_backend', type: 'combo',
+> -       choices: ['ucontext', 'sigaltstack', 'windows', 'auto'],
+> +       choices: ['ucontext', 'sigaltstack', 'windows', 'wasm', 'auto'],
+>          value: 'auto', description: 'coroutine backend to use')
 
-+
-  void *qemu_ram_mmap(int fd,
-@@ -253,4 +261,8 @@ void *qemu_ram_mmap(int fd,
-      const size_t guard_pagesize = mmap_guard_pagesize(fd);
--    size_t offset, total;
--    void *ptr, *guardptr;
-+    size_t offset = 0, total;
-+    void *ptr, *guardptr = NULL;
-+
-+    assert(is_power_of_2(align));
-+    /* Always align to host page size */
-+    assert(align >= guard_pagesize);
-
-@@ -262,13 +274,11 @@ void *qemu_ram_mmap(int fd,
-
--    guardptr = mmap_reserve(total, fd);
--    if (guardptr == MAP_FAILED) {
--        return MAP_FAILED;
-+    if (guard_pagesize) {
-+        guardptr = mmap_reserve(total, fd);
-+        if (guardptr == MAP_FAILED) {
-+            return MAP_FAILED;
-+        }
-+
-+        offset = QEMU_ALIGN_UP((uintptr_t)guardptr, align) - 
-(uintptr_t)guardptr;
-      }
-
--    assert(is_power_of_2(align));
--    /* Always align to host page size */
--    assert(align >= guard_pagesize);
--
--    offset = QEMU_ALIGN_UP((uintptr_t)guardptr, align) - 
-(uintptr_t)guardptr;
--
-      ptr = mmap_activate(guardptr + offset, size, fd, qemu_map_flags,
----
+Does wasm depend on TCI at this point (no TCG backend)? If so, should
+we check TCI is enabled? (I wonder if configuring with the
+--disable-tcg-interpreter option succeed).

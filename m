@@ -1,157 +1,241 @@
-Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3179256njc;
-        Wed, 16 Apr 2025 01:16:29 -0700 (PDT)
-X-Received: by 2002:a05:6a00:4c8d:b0:736:562b:9a9c with SMTP id d2e1a72fcca58-73c267d2f14mr1548907b3a.18.1744791388703;
-        Wed, 16 Apr 2025 01:16:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744791388; cv=none;
+Received: by 2002:a17:504:14cd:b0:1be9:327d:8ee3 with SMTP id g13csp3196558njc;
+        Wed, 16 Apr 2025 02:01:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU67h96qxe3tOJoEGTvkasVk7InjrkMU9n46hGwRBiwG6yjOlVq1YImH8olD/qiVoEy7poOjU53pftHCg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFesvKYIaLqZkAMvCb7A4SS2FvOSQvJLainHd7V8tJW72PXcsGfm27sINVYvKg5xNZueSgq
+X-Received: by 2002:a05:6808:2f11:b0:3f6:a9ea:eab3 with SMTP id 5614622812f47-400b01be32bmr533565b6e.5.1744794060600;
+        Wed, 16 Apr 2025 02:01:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744794060; cv=none;
         d=google.com; s=arc-20240605;
-        b=MPLFrRIod+querxs3oeJiGUM12SmWwWZ103SLRWoeXH89AlWLXf9jIgFCioYnIKd/L
-         AVOVfaPchg1JQgNBjvwqElt8kcQikRsuRjdA1WgFbKf7hntAANUphy3y//tvHG5AG5F/
-         gb2CsboPjYsbATIvu6/Y1ZvPdr6WnSKz2l2wWtDrm70328awoEkk+FhDs8IeOZiQ3rOA
-         3N1o2GE32eAzhB/3CmtJEwvsK1fwtqzWj62ErM46gFO2Tx53RN+jaRrrRAZE3BMZF+oS
-         CU0gg+5mjYU/+VqkWGgKsqOGAdEbkFQhds9TCO5vRIS3oTWc7iSoQUXf+mdkDOHze18E
-         9eTg==
+        b=Z5mxxcM5eGS9pwcLs8FgsC68jhBu8A9w3BqQ32+mQvVHQrnfj5MKaJpqwSZYvEA+LP
+         Lgbpbs8xoLpro/nLfQKAsXGyF0qSeUCTr1N/F91KNRtqDBGNt5suwFWvr/Dhgjn+tSxk
+         6WmKwVWK9JkJ97DC38FuFO7YM3o46tmfqFSO7UJB9AMlcxGMXcx7xK4nvZ+X3H+OYGcd
+         J6jLKA8zzJutR2msoSdlBXLaWzE18aZUkXdtuafFTDMuDUxJFMecEjR4Joi9CSYh/ZON
+         UF0/yNZfRtXp1SsZIcqtyO96MgUf2CZI5gC0ukxV4dfTve/tKA3L48ZiO4oLnew9BRe8
+         TjNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lYpO1k305Wtiuq/zmuKPfj735nkTtZMPOH5ZuTPK1tU=;
-        fh=44EJt32sUexDaRKDNrG4nvGVf4pEpV5c4wERqwGLKms=;
-        b=UaxDM9rQxuBP+XpKka0rfDCwrZzJQZUJ8Q/giUpuMSWAtXTvbd4PcgtVNdh0mrULso
-         upSRob7yyYmJe+oOVhiVcwgCrpQa4ejJ3VHvLERriwjlqdjJ8ns9LddQgY6b6E26YosJ
-         nksXRir5bV9IzH28vCQvSpwp/tkL9cuaCARyAihZLro9hSt/BzcPrvFtzs8zKo9jzncU
-         SyO/KJ6PIxOaEU4zgJ5oOc1WIKErM43Loh/+VE1O4j7b7MUtt73HLaU7mVz6gp9RZE4I
-         ZbezAjHL31BWFJ5KSSJpYB1DxYdz/rXNIZXtXRBvyr3qAvCVcSWy+eplbSKkzEuBt2Sn
-         OX0Q==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=t4cUu06qS+cFN9mZzfjcJYWfoQ19aC/j63DrCIx4FSQ=;
+        fh=8EJtza2Ebp+3BUB89jyBVmLuMP8rk+++txGiWOm7O+w=;
+        b=X4MKmR6SSKHWB1H1NJr/A6R/aLOONQLutRLkdE2n3/3cKBFxiMX8SiktPncw6rR6cR
+         5xCgWNqK+Qhw83LbQWN8b/taIpcTSJEBdQIgi65h0GgYZbLxgMlQmCit6hTtGW4tVOiP
+         0RbTT2EiPfpTXgCu/szuNDWZZ+ou/qtKtmIMAas0qEdvTKBxhtmr1zxRO7wgcOCf67z4
+         keEgp+xhuqCDegFVdJzvE/LON53zFxTqqVLQykMMx8Qgs9ZkMtTZGSSW0OhfD/Y6oOuW
+         g/0ts0DKXtbG0dhK7z9jmqbBBN/yD/eTVnX5iDrierEXto+kK7ZG7XJjQXYeIjX/iThT
+         pwnw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eeTsvqJf;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73bc26deac1sor11402170b3a.4.2025.04.16.01.16.28
-        (Google Transport Security);
-        Wed, 16 Apr 2025 01:16:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eeTsvqJf;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744791388; x=1745396188; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lYpO1k305Wtiuq/zmuKPfj735nkTtZMPOH5ZuTPK1tU=;
-        b=eeTsvqJfCHbS3PXZ/GNFI1rLSPTHdBAJDzUJ2vQmhNvu2GF8jg7gB4IpDmE8ODr3ec
-         ouSa9fmVyK+gaFLnbGNCviGyDsaPjb0gMpY6Mcwk1fx2qC7IGrrPDiyeoIC880T+L5RV
-         KXvhpg4Dz2xbSqm8l4lysfpVg/OSKzRngQ2+pKj5sOig6HzdKd8vn6iWZVrehsEHuV60
-         siv+v6I8WpZvIbZjgWEZgImk3EIzlp1oPK6xBijEnh6P92YSpaWhIV+lgfkswruulJhr
-         kdSOwnfQ4bwXeEgNz7TlXZYArdPV7r2QdP80qfBsaYbjemaxb+xftniDWjWG+1QxzbOb
-         dpPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744791388; x=1745396188;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lYpO1k305Wtiuq/zmuKPfj735nkTtZMPOH5ZuTPK1tU=;
-        b=jw22TkEp9HYVl8Aj9WCCAmWLu+AEfZVWDe4V83z1hR9GW9TpiBaxfA2JobRhAKclcB
-         +Ogq6zq/k3Y8Lf0iq363evFgwai6eCzNMLBZzrMjD8W9yxcHVco1tDljS7NLBUMTuPtf
-         /H03jH2bggG2SAYOKx2rbq56sfsNHaS6erVQg1mDpSM/6e+WD/iVGY5At2GSEW1lp7oU
-         8DmDo9wPPRoehsbUslfrKGWobj9aDMmNMX+j0BawzRZWo2Nr6u4FbN8ERGw5gQ6VxIzc
-         uS4XCL/r5t9CkAmlLmZscLjFiLmbWypd3TC0j44YxL23Yc/8wARMnayYuu/8LNWCB6M4
-         JpaA==
-X-Forwarded-Encrypted: i=1; AJvYcCUdlZpoQTSo/Af7ZfQTmK/15aOeZJwh6UWo0Ef5tZAPLxF2TIfpe51/rDlg0zjN88cbSGvGnmmbSZMDOd79ILFLXQ==@linaro.org, AJvYcCVhJ9LFwOeu2wNbUON/Z6hl5FoJvkDpHBHRmrTNCk1LfLVycYblUYgfTZ2FNC/RlgLkwmuMhgA6@linaro.org, AJvYcCXDHHh7fRoWlq4Hc3QGG6Lv0c3JbGlFUSLvws/PCGKf1ssPKrBoYzUUIkT6tMOhLiNFWV97q/Klmw2sdnTiRujQIgg=@linaro.org, AJvYcCXkX+gVdLZ5ZCZaLxdUP0u6ZtTbdsFsfniEukIwccC/F0M14x3ls8P7ZO6wyVbKkAVxFfUmEwZzllR//GJF@linaro.org
-X-Gm-Message-State: AOJu0Yzw6/uS1gVe51aVgf1LD0PM3jObmrMyaUHP+ThKO/lstaqAKNVD
-	uHeZe9FivNxwc/d6W/RbCR71RRVaRA1OdlZApUs2E1uFvfFc0EKj
-X-Gm-Gg: ASbGncv8dzDlcksqrITyX50YC3TjzTcoFLc/paEn+g2sDFhqgLANpNPuEiflhzAJOoH
-	36OFZV/dAIpCnlN4NT6WtaobHSOhKtQJktUkhUb8rCzAtREC37JBWdHlRQ/K1Dlumdgf7QzRh8k
-	7h/AxNFjDTMKcd4O1rO9U3N8sXuzDC3L79RXwFZJXKswX4jAK3MNBEft04N3gHm1gLeEGuPWeGP
-	8XCo3eVSIqRnxsZlgDOcekuupvKAFh4sI9KDHp87bRBK1b5K2/MmkgqAhAPLh2aH3JDW9SyFX36
-	zH7qfOxGmgGPOnTkny5NC0rtOSolf+CYGwZZNlAMpw2dIXoa9f++URud5A==
-X-Google-Smtp-Source: AGHT+IF9bDDZbwuPJU2PpdK5gj1XZbWq4WLDXyolVao4ExtH4EJUgh98Q5i9ZONRA1Uraq4j6nEIYg==
-X-Received: by 2002:a05:6a00:4c8d:b0:736:562b:9a9c with SMTP id d2e1a72fcca58-73c267d2f14mr1548869b3a.18.1744791388065;
-        Wed, 16 Apr 2025 01:16:28 -0700 (PDT)
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from localhost.localdomain ([240d:1a:3b6:8b00:ee5a:e672:7d4c:d43])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73bd21c3263sm9839445b3a.38.2025.04.16.01.16.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BdcLVSxT;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 5614622812f47-4007629a5b8si9283285b6e.81.2025.04.16.02.01.00
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 01:16:27 -0700 (PDT)
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
-	Francisco Iglesias <francisco.iglesias@amd.com>,
-	Vikram Garhwal <vikram.garhwal@bytedance.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-s390x@nongnu.org
-Subject: [PATCH 11/19] util/cacheflush.c: Update cache flushing mechanism for Emscripten
-Date: Wed, 16 Apr 2025 17:14:16 +0900
-Message-Id: <97a2164b3f428265136bb1c01615a16b516138c2.1744787186.git.ktokunaga.mail@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1744787186.git.ktokunaga.mail@gmail.com>
-References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+        Wed, 16 Apr 2025 02:01:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BdcLVSxT;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744794059;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t4cUu06qS+cFN9mZzfjcJYWfoQ19aC/j63DrCIx4FSQ=;
+	b=BdcLVSxTRr+wefCkPtWN7o7fUvlKZ6SXczgE+3AdlWKumh/+3am03gwdWTZEBBrNwOVFix
+	7zSUXKKgFD58toAiRvHkDWVq5YldZ2Em7Q/DW2k/nA8b4ABUgLHQPr+AnoJ4pb45VtfnZf
+	NY+p0Q2u6+E+A4pNAN0LHo1L5lWV7eg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-570-fp8XvAI_PkiOT5mZxSm2wQ-1; Wed, 16 Apr 2025 05:00:51 -0400
+X-MC-Unique: fp8XvAI_PkiOT5mZxSm2wQ-1
+X-Mimecast-MFC-AGG-ID: fp8XvAI_PkiOT5mZxSm2wQ_1744794050
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3912fe32a30so2649530f8f.1
+        for <alex.bennee@linaro.org>; Wed, 16 Apr 2025 02:00:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744794050; x=1745398850;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t4cUu06qS+cFN9mZzfjcJYWfoQ19aC/j63DrCIx4FSQ=;
+        b=dKp0GUhxwNZMxyClJRrPlZgPO4yn/KbiZkc/KSk9MpZGEJg+9e/xeH7j5GmFmg1/7D
+         fyr7oSWYTWMoXhjpouPkMz1+r/UWLLAUcNXM321j9MxjEk2eZkBVYc4Qb9qyBKUomimW
+         nN15/AyvYbvsMnRlPiUhtGCT8gS4Mmq6/JXaMLsmb4+iEBCpd1RlWR71z5euYfehJz1/
+         GBR6ZGBtOdKQtJ+PBjp2UEmx9Rp4ewBMthjxMDNBDLboxMGjnCAOgkseYPuiktN+coyB
+         L+RXTFAVSEnSsQ6lKNt6o7teORZZQ5MzCzKKbGWAJpg6gWFv/qLeUsy5/tqSay+lkeuq
+         pwvQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXEyFvmPXfGpsiU1bVqyXGp7T9n/wmWpHXwD3Brl++Dg8X8fdl6X+XdTlj5qCkjWKz+ThH9WgEc7I5DPQ==@linaro.org
+X-Gm-Message-State: AOJu0YyZpQkER6urukM2J8GXNqIAksYtZsoj98OH1YLUHgTwW9nY92Mt
+	EJIZPh4hywoHYxoUp+QTn7l6V+2uzt4rlZ8K8eGrtTp+rrOYYgLSXDy4mHgz9/xKN0WPU4tFZwa
+	fYJk5lw/r8GtY/3KA0v2mffrr+vThyXbOtvLE9A/ff5o33K7lH5jpLBKdsyI9q1YMW66VSuM1/0
+	3aNzRSs8SdeKnPsLDHtfe97z9WIPBp
+X-Gm-Gg: ASbGnctQAlhj+hXOinxOVRqzvONwQMhhOmXCIq/Ya8j2cRls1xr4dHKYYQp9y1za2vG
+	nvdS+Ya4xaXJ76pyeTjKbXfG3DBd+19HZRTpN8MzFlhjTWuYpJfCEhpxWbjoIAxTJ73m/7w==
+X-Received: by 2002:a05:6000:4282:b0:391:4231:40a with SMTP id ffacd0b85a97d-39ee5b35cc7mr868351f8f.33.1744794049635;
+        Wed, 16 Apr 2025 02:00:49 -0700 (PDT)
+X-Received: by 2002:a05:6000:4282:b0:391:4231:40a with SMTP id
+ ffacd0b85a97d-39ee5b35cc7mr868327f8f.33.1744794049313; Wed, 16 Apr 2025
+ 02:00:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 7r3JhoBmmspO
+References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+ <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
+ <Z_9qIQhjsI5zOwXA@redhat.com>
+In-Reply-To: <Z_9qIQhjsI5zOwXA@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 16 Apr 2025 11:00:37 +0200
+X-Gm-Features: ATxdqUF_yxp8UmiitEgBJlwXgw5fD6l4Tq_i7Q_t6dBFJg29p48TP3GllPE74hs
+Message-ID: <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
+Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
+ function pointers
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel <qemu-devel@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+	Francisco Iglesias <francisco.iglesias@amd.com>, Vikram Garhwal <vikram.garhwal@bytedance.com>, 
+	Jason Wang <jasowang@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
+	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, David Hildenbrand <david@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, "open list:Block layer core" <qemu-block@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, 
+	"zmta06.collab.prod.int.phx2.redhat.com, list@suse.de" <qemu-ppc@nongnu.org>, qemu-s390x <qemu-s390x@nongnu.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: GSjXypDIt19H51iBLuWeCxDQHFtQZkU73pm5yg8wLVU_1744794050
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000841ee60632e185e4"
+X-TUID: blGMAgmPg5dR
 
-Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
----
- include/qemu/cacheflush.h | 3 ++-
- util/cacheflush.c         | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+--000000000000841ee60632e185e4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/include/qemu/cacheflush.h b/include/qemu/cacheflush.h
-index ae20bcda73..84969801e3 100644
---- a/include/qemu/cacheflush.h
-+++ b/include/qemu/cacheflush.h
-@@ -19,7 +19,8 @@
-  * mappings of the same physical page(s).
-  */
- 
--#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-+#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) \
-+    || defined(EMSCRIPTEN)
- 
- static inline void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
- {
-diff --git a/util/cacheflush.c b/util/cacheflush.c
-index 1d12899a39..e5aa256cd8 100644
---- a/util/cacheflush.c
-+++ b/util/cacheflush.c
-@@ -225,7 +225,8 @@ static void __attribute__((constructor)) init_cache_info(void)
-  * Architecture (+ OS) specific cache flushing mechanisms.
-  */
- 
--#if defined(__i386__) || defined(__x86_64__) || defined(__s390__)
-+#if defined(__i386__) || defined(__x86_64__) || defined(__s390__) || \
-+    defined(EMSCRIPTEN)
- 
- /* Caches are coherent and do not require flushing; symbol inline. */
- 
--- 
-2.25.1
+Il mer 16 apr 2025, 10:29 Daniel P. Berrang=C3=A9 <berrange@redhat.com> ha
+scritto:
+
+> > -    secs =3D g_list_sort(secs, sort_secs);
+> > +    secs =3D g_list_sort_with_data(secs, sort_secs, NULL);
+>
+> I don't see what the problem is with the original code.
+>
+> The commit message says we have a bad function cast, but the original
+> method decl is
+>
+>   GList *g_list_sort(GList*list, GCompareFunc compare_func);
+>
+> where the callback is
+>
+>    typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b);
+>
+> Our code complies with that GCompareFunc signature.
+>
+
+The cast is inside glib; g_list_sort casts the function pointer and calls
+g_list_sort_with_data.
+
+I suggested this solution to Kohei because it's easy to check that we're
+converting all users and not introducing new ones in the future (see
+poisoning in patch 10).
+
+Paolo
+
+For comparison the new code uses:
+>
+>   GList *g_list_sort_with_data(GList *list, GCompareDataFunc
+> compare_func, gpointer user_data);
+>
+> where the callback is
+>
+>   typedef gint (*GCompareDataFunc)(gconstpointer a, gconstpointer b,
+> gpointer user_data);
+>
+> which the new code complies with, but it is undesirable since we
+> have no use for the data parameter.
+>
+> With regards,
+> Daniel
+> --
+> |: https://berrange.com      -o-
+> https://www.flickr.com/photos/dberrange :|
+> |: https://libvirt.org         -o-
+> https://fstop138.berrange.com :|
+> |: https://entangle-photo.org    -o-
+> https://www.instagram.com/dberrange :|
+>
+>
+
+--000000000000841ee60632e185e4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote gmail_quote_contai=
+ner"><div dir=3D"ltr" class=3D"gmail_attr">Il mer 16 apr 2025, 10:29 Daniel=
+ P. Berrang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redha=
+t.com</a>&gt; ha scritto:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">&gt; -=C2=A0 =C2=A0 secs =3D g_list_sort(secs, sort_secs);<br>
+&gt; +=C2=A0 =C2=A0 secs =3D g_list_sort_with_data(secs, sort_secs, NULL);<=
+br>
+<br>
+I don&#39;t see what the problem is with the original code.<br>
+<br>
+The commit message says we have a bad function cast, but the original<br>
+method decl is<br>
+<br>
+=C2=A0 GList *g_list_sort(GList*list, GCompareFunc compare_func);<br>
+<br>
+where the callback is<br>
+<br>
+=C2=A0 =C2=A0typedef gint (*GCompareFunc)(gconstpointer a, gconstpointer b)=
+;<br>
+<br>
+Our code complies with that GCompareFunc signature.<br></blockquote></div><=
+/div><div dir=3D"auto"><br></div><div dir=3D"auto">The cast is inside glib;=
+ g_list_sort casts the function pointer and calls g_list_sort_with_data.</d=
+iv><div dir=3D"auto"><br></div><div dir=3D"auto">I suggested this solution =
+to Kohei because it&#39;s easy to check that we&#39;re converting all users=
+ and not introducing new ones in the future (see poisoning in patch 10).</d=
+iv><div dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div><div dir=3D"aut=
+o"><br></div><div dir=3D"auto"><div class=3D"gmail_quote gmail_quote_contai=
+ner"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex">
+For comparison the new code uses:<br>
+<br>
+=C2=A0 GList *g_list_sort_with_data(GList *list, GCompareDataFunc=C2=A0 com=
+pare_func, gpointer user_data);<br>
+<br>
+where the callback is<br>
+<br>
+=C2=A0 typedef gint (*GCompareDataFunc)(gconstpointer a, gconstpointer b, g=
+pointer user_data);<br>
+<br>
+which the new code complies with, but it is undesirable since we<br>
+have no use for the data parameter.<br>
+<br>
+With regards,<br>
+Daniel<br>
+-- <br>
+|: <a href=3D"https://berrange.com" rel=3D"noreferrer noreferrer" target=3D=
+"_blank">https://berrange.com</a>=C2=A0 =C2=A0 =C2=A0 -o-=C2=A0 =C2=A0 <a h=
+ref=3D"https://www.flickr.com/photos/dberrange" rel=3D"noreferrer noreferre=
+r" target=3D"_blank">https://www.flickr.com/photos/dberrange</a> :|<br>
+|: <a href=3D"https://libvirt.org" rel=3D"noreferrer noreferrer" target=3D"=
+_blank">https://libvirt.org</a>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-o-=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://fstop138.berrange.com=
+" rel=3D"noreferrer noreferrer" target=3D"_blank">https://fstop138.berrange=
+.com</a> :|<br>
+|: <a href=3D"https://entangle-photo.org" rel=3D"noreferrer noreferrer" tar=
+get=3D"_blank">https://entangle-photo.org</a>=C2=A0 =C2=A0 -o-=C2=A0 =C2=A0=
+ <a href=3D"https://www.instagram.com/dberrange" rel=3D"noreferrer noreferr=
+er" target=3D"_blank">https://www.instagram.com/dberrange</a> :|<br>
+<br>
+</blockquote></div></div></div>
+
+--000000000000841ee60632e185e4--

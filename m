@@ -1,88 +1,87 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp644938njk;
-        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
-X-Received: by 2002:a17:903:1a44:b0:224:1935:fb91 with SMTP id d9443c01a7336-22c358fd434mr71766615ad.27.1744882857329;
-        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744882857; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp646090njk;
+        Thu, 17 Apr 2025 02:44:11 -0700 (PDT)
+X-Received: by 2002:a17:903:3c65:b0:21f:617a:f1b2 with SMTP id d9443c01a7336-22c359a37e1mr91322395ad.46.1744883050834;
+        Thu, 17 Apr 2025 02:44:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744883050; cv=none;
         d=google.com; s=arc-20240605;
-        b=LS6mdiZtXzHosILvGfSOtrdN2r/hEgC8OtKEob2Ln3rcIZFv57wrg1QfDyvpROnM0Y
-         6eDzUx7NUY2HQk4cDW52ynJVVcBc1lIOTrYW/NEAd6eCPYXofypKDB30HWgMnruzU8e6
-         XWafOSbm2XbV+oUGjrv2uBpOMF+lfFqPWjSk22kAt+ovgh4Cx1CGIZY0IvqCmaR+DH7B
-         dPeojIG1tgiGaM/wqjUkekgB+4hNQsedJP0te3j0LGRujSbU3ggoNyAB3cI6ssRi9X5R
-         8altPSWXrhpqHS/V0Ks3y/GsTszTRvU9m52bd4B9x9Xqs8XUjwrOinc6qGLMPZpiQkwk
-         NRsQ==
+        b=A2xjFNMHjJVBvgo+Dc6hPW/NSyChujp+WNwmBUTOpXgA8vgC0gbAyzjqN9k5mJLZC2
+         IZ7EfL1NSWsvwEK4pSquN6Us02kc/l4sqgmKZl9GF+iV9me2Vufq7hQbshcF39gYCSkv
+         pGKyS8fRQ61RKm6ZGyhfR9OF74XUjflV6OT8bPow3MVqlNfWmqiceVIkZH9JQnnM7jA7
+         REWCILwBVpXZ1l+RQmIK9YpAD2ow0rjLKF/ceYYyQo4Ck/Y0mBO8Gwr2UxpTG8YSZypy
+         CCdFuD0USu2d+IMbP12z2QYJbnnjL2or1I5RMWWOIrCDGxciocrZ/P5jAcLgjVw8B14k
+         N3GA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
-        fh=l2x3Cuxtyy8O2Q4xLF3D/JR/1wGb5coWD5+2INhtQ+o=;
-        b=OlvGiRUkzh4mYV7o7S4C1C/bltcfloKd4V4zZuXXKF+tyIs2D1TktyopIEPraNbeTB
-         B6EDc8hey7851RfUCT+PS/yWl0Nvq3Rmfn49+h5H/WhDHedO3V41+IeN7DP4ulTYH3Dx
-         3WtGPCoCNrE+guhZkEbQw0+T4Tt+AdxU/UWD1+c2H0O/V8JwICOmHcwN4IIz653AvUpu
-         NjroKiAeTzxdwPyTHjsak4/fqdocJFDRFcEfKf2XJmVbqTyo+SaKYnzFXmRIR5TA6Nfq
-         VgqwP2a9CWPK6BHyXGOLyveroMxnRdFDYB7noj4lkErvW4B0dR+mNMEwDRePl1Omz6co
-         sNdw==;
+        bh=PA0EhDX6QJBxQ9JHECAPsX3Ldf9jQbhyeu8Jda0RX8k=;
+        fh=1tNGntuikegAzE96zaeG9F3IG3GilOmMrA/StQw+9DQ=;
+        b=DpnpKBtIutryPww1RS9nowT7C9OYsjFfnA8vNGyP0FaWNRdlF0ibNZYShrFzr3mL5u
+         /2VHqvoIiLvp1IBruqZUJTzs4brdQFONBS/pmg0FywCWvHLlP4WETocojWn4AWysl+xP
+         9MUh3Jowyzt3tZoNn+rpwN3I6hLQxif33Xn0LzOFolv7KBE0YEah02AUUAkNJHmMLTqc
+         uJEFgHW0EBEWLQlTajVVEpgyIpHcNJX4oJBdSmUZVh5o60cDqFq27J2aVIqBvnBO3aMy
+         IpCCqrfFP195bXNf3mgXyDRkeKFXnlv0dV1je+wdNbbKFNts1MKHZE6A8ScpFA0wnS7p
+         aS4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e55/8Ln5";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=m0Ius92+;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22ac7b86683sor119132365ad.6.2025.04.17.02.40.57
+        by mx.google.com with SMTPS id 41be03b00d2f7-b02a2b21037sor13518410a12.6.2025.04.17.02.44.10
         (Google Transport Security);
-        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
+        Thu, 17 Apr 2025 02:44:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e55/8Ln5";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=m0Ius92+;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744882857; x=1745487657; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744883050; x=1745487850; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
-        b=e55/8Ln5FPC7iiXJD0ZV2vAqrD3XEP5PafOTwnC2uJGQEokUMX+nWTocdAU/Y2X7Er
-         abske5y7yjJJQGrXur9x2fufb1yjBr2eW+WXJgJLlHvYDk8vAzGBvDdWqq46EVV9/Vpu
-         oGXKW+aG6rz+VdtZzg1N5Ke/HflPDtgVJlJ6u2OeSDkp6guR3mIIuimBi3bxqL+6KjEl
-         lSmZ8X20cFH1shkQGULwkOIONv16gOGLAjmBfT7jdgTYtvlaSijMJXPSIUpjaCY1ExcS
-         7pjMyY0XwoxR3i2Li0k65jCuhfqXrT97C2cpwWgjXaKMY2t8iGjZ7Yg8HTpr7movMT6t
-         yQVA==
+        bh=PA0EhDX6QJBxQ9JHECAPsX3Ldf9jQbhyeu8Jda0RX8k=;
+        b=m0Ius92+v7TL73FS8z4o0Vox9iEMlHd+lRNc71SfXC1pgvqsVOwhYXnkijIHQkbiLZ
+         Y9uAq7cq/8WZUunkn/jS0koKh83PNyPP4ecvM3e5il1dzbt/fNq5KxGP09TDkSRNP2uc
+         HS9I8IfA0j9BokS8UBtQAASHvIY2L7qwYiMcrdWsBtKLr2pUt+VMCq6u8CY+tA18uWbV
+         L27YywOtSKQPD1JBJWdjLgxMWpfYcAwaXVd+/kbxG0ET0ra0w+l2WMon52XHPQz9zhfX
+         72SKfth8ujUUgG92ZvyM6u+e5O7zwsSWEvPMKUIYw5nBNDHPmNsXDlan8tJjdgRasRsl
+         cLrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744882857; x=1745487657;
+        d=1e100.net; s=20230601; t=1744883050; x=1745487850;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
-        b=AQYH21Jjg2yUR9fI4cdAaihmlJodKeY9LVKyHSxXCPlDTB4uO0nvEGK3GAIWlXABZL
-         ERXdDyowfhd0iA2SRRaCjRAXfGqNNzZMSi00zReNmtukl1YRguvrOimQnM2KyAFAnuXB
-         tX7uw3Dh+xBss/jJQAtDgq68OHtZC04bmODGOhT/ZaZp//A7emge8RdZPCIVM2QS7pQY
-         VfVAaCTTDwaQjmrTHn/9D+HQIrKKfNvUkZyLO07kkqXkLR/NWrGkPHI1Vk2Iy0dAAZ18
-         MsTvl80TZ1dfImu4yBtrWEdpzdsjRaveFQ4KPTQv5e3ZXQjiAF9n0PPTKcZzyRlCkd5p
-         gpAg==
-X-Forwarded-Encrypted: i=1; AJvYcCUme3czg/gwoEXQDu6+hb/6xjD7bCyFWFHUcn+H+HxfbXGaG+8koGC5HqxKOsDCngpUUmy16Mx+6S8NKWk4@linaro.org, AJvYcCW0LmQwKAxueybQgZtMAAk1VmRsLc098brFgqQu1RrQFXjSRW4asvyHv9WLJ0vagVYNC3onM8ys1hYvsT6jVqB+wQ==@linaro.org, AJvYcCXRY9Q7vYkEFGBczsoH7nMIUVZPEHjupuctbi2jYONpvIcyknxIfZpWp8SizcneChXT14G9Ul+gwxcq3blcjsV2SPI=@linaro.org
-X-Gm-Message-State: AOJu0YzOP0p1rbGEA6RLEiJ3yl0j4FaJZVrecCtYpx+5KtkxOxnKEida
-	LYWmyNE2zuKuacs6xh1mt5X4g/D74X7SlT62a1R0bv8tDUJLnBxW7VZ0T62WyFDAoob/8oCKbOO
-	X3evawmBie+G+aRxDAqOYUeniFT0iV5ghWPw=
-X-Gm-Gg: ASbGncsnfU4ZoPwDIhMFciVH/iBYK7QYLNu1/HJhELG69oCZ7KUuU2lI6F+WxYOSGSU
-	uDAFYE6y8nOxjtUmlsgWZt2S+nIXoOuGMTIZM9Po7l5x7Igb+yIxlFu8qV5oGkKQE4R8i3SHOjy
-	y5wHCzTC2vGwcbZhcY89WVMzhu1DP16Fj/8yU/dxv351UCbsi5UeJH
-X-Google-Smtp-Source: AGHT+IGKwwOAuBmQI+wOClsZaLQqiMd4YBE6pAZkKS9df9Jtvkx3A3NVX5PnAcsCgGCvP6Qr3G2oyYFnnMwDpbf4ZD0=
-X-Received: by 2002:a17:90a:d64c:b0:2fe:955d:cdb1 with SMTP id
- 98e67ed59e1d1-3086415ce8dmr5382416a91.23.1744882856771; Thu, 17 Apr 2025
- 02:40:56 -0700 (PDT)
+        bh=PA0EhDX6QJBxQ9JHECAPsX3Ldf9jQbhyeu8Jda0RX8k=;
+        b=tzJ7Zno1uCNvnYwss+GN/JUoO9d7XbdjhbzTj0/YcQxdUtmpzgpaRH+VcW54A5HT5i
+         LCU9TCdIqIuLFP6oX7aZLzpo2THfBWCMNyYzu3YZ0BYjBDrnwM2/PmImH1p4/GKSJ5yV
+         IDMiA318ssUZhBpwRKhXpPyvCPoM/9MqiR9VQTMLJEXjCKuderrZDIg0gYDsNkiGGD8H
+         YX1ZsWtrBhVW26f6w+QKfyvxBwgased4hwwHO8P7ikeuw1JTEftkw86UcD/xEOK/aii6
+         YX3VVD+611eybkQRzutp8HA0+Z1gFW+VqnSMnWeKEFocPFVH9q/w0Fik3OAbE4OWRO7T
+         +t5g==
+X-Forwarded-Encrypted: i=1; AJvYcCVkyHsl7YlQCgm7e7B4bFAH9B758f3s6BwGDl0n3gvApiqrPSc3wkgefZp2HabHPFB+xR7Z9D6N1IYS6SCnPr03bxo=@linaro.org, AJvYcCWTDrA9uZus6lfwOmdNJSVrvc5OyptPdpH/Eg8IMDggnzy344M2acMCBSpBtBYnoM0Rgnud2tWutyC7V/ZO@linaro.org, AJvYcCX2Z+yIBkgn9+dMqx7sZgz3m7w7PGY2KcDp/kNPaIHzzEj4FXtaeDAHRgmt1KqLRwhhR41JW0UiVck9Cm/M1SbGnw==@linaro.org
+X-Gm-Message-State: AOJu0YwqtBsMB2RXxL34mPuP9LjGovq6imC3FqPkjxEbHqtFF59TJRva
+	reg4rsCnWmpd93IrvzGOF5QwDQGL26Pxe53k3qVOEAlkSDilcD8mpIq6r0/JdW30SfXTVDOawNP
+	NU80qzDk7cXrDf5fJhyHOvaQ3lfvN8RIufHQ=
+X-Gm-Gg: ASbGncsFqvOXM3NJrFyxhkmc5F8sDTp9Wj219usjsfOarOJqv1dKgS9/4KdUQipB3Zg
+	3dkB7l+HKFAVtyBlDuyYt6E60KJm9wXN2XFz+hyfPEEvHQAABVH8nDeA/ahmOD2SC9eYs8UfWb4
+	HlYiWsMPAvq+maiZ/TnwiL/TNRqzDOclXAMNu8S1hKk4/D/yU7Ia4xwMWXA+CbMX0=
+X-Google-Smtp-Source: AGHT+IHP+JdDahQbg6xYUOyNaJJYXnktpp96kZVSTGHw6qU/aRtTi9EOIC5ZHd/OTbOGXwEL72s43vG5bJrGFksqvzE=
+X-Received: by 2002:a17:90b:2751:b0:2ee:db1a:2e3c with SMTP id
+ 98e67ed59e1d1-30863d1de40mr7383316a91.1.1744883050265; Thu, 17 Apr 2025
+ 02:44:10 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <185cfff812b952abb24e25dfcc8bab7c65da6214.1744787186.git.ktokunaga.mail@gmail.com>
- <4962b53d-c507-49df-91b4-cf51d724e8ea@linaro.org>
-In-Reply-To: <4962b53d-c507-49df-91b4-cf51d724e8ea@linaro.org>
+ <9da41d784991f77e2c1f38d0781cd047b593e053.1744787186.git.ktokunaga.mail@gmail.com>
+ <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org>
+In-Reply-To: <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 17 Apr 2025 18:40:44 +0900
-X-Gm-Features: ATxdqUGA5J1i1cY3gaT0zt7hUBvEXbJ-92uPofOuCttG0cZ-o8_-C-TylCAxRMU
-Message-ID: <CAEDrbUZZ5E228PgRiykPdkdOSS4qU5V_wh37x-gvKxZr2Q_-xw@mail.gmail.com>
-Subject: Re: [PATCH 19/19] MAINTAINERS: Update MAINTAINERS file for
- wasm-related files
+Date: Thu, 17 Apr 2025 18:43:58 +0900
+X-Gm-Features: ATxdqUH24IWgEAi8slkXOhtMExdzhUW_bsxEeDlGrnxlTkQ4nrqfQ0a-aKKUpPM
+Message-ID: <CAEDrbUZwqRnxhxAfSJXPHqpAiYWwxo0+QNP311H2H6rX8Tyjpw@mail.gmail.com>
+Subject: Re: [PATCH 12/19] block: Update block to compile with Emscripten
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
@@ -99,32 +98,46 @@ Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
 	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
 	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000da4b8d0632f63285"
-X-TUID: /tgbcYBcgw7d
+Content-Type: multipart/alternative; boundary="00000000000062c6830632f63e52"
+X-TUID: VrUWJCsgv2b/
 
---000000000000da4b8d0632f63285
+--00000000000062c6830632f63e52
 Content-Type: text/plain; charset="UTF-8"
 
 Hi Philippe,
 
-> Just "WebAssembly target"? (I'd add the future
-> tcg/wasm/ files in another MAINTAINERS section).
+> I'd include in this patch this hunk from patch 17:
 >
-> Maybe better to squash with patch 17? Or start adding
-> the section when you add a new file, then update for
-> each new file added?
+> -- >8 --
+> diff --git a/stubs/meson.build b/stubs/meson.build
+> index 63392f5e78..4fd4d362f9 100644
+> --- a/stubs/meson.build
+> +++ b/stubs/meson.build
+> @@ -89,3 +89,7 @@ if have_system or have_user
+>     stub_ss.add(files('hotplug-stubs.c'))
+>     stub_ss.add(files('sysbus.c'))
+>   endif
+> +
+> +if host_os == 'emscripten'
+> +  stub_ss.add(files('emscripten.c'))
+> +endif
+> ---
 
-Sure, I'll update the patch to follow this approach.
+Sure, I'll move that hunk into this patch.
 
---000000000000da4b8d0632f63285
+--00000000000062c6830632f63e52
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br><br>&gt; Just &quot;WebAs=
-sembly target&quot;? (I&#39;d add the future<br>&gt; tcg/wasm/ files in ano=
-ther MAINTAINERS section).<br>&gt; <br>&gt; Maybe better to squash with pat=
-ch 17? Or start adding<br>&gt; the section when you add a new file, then up=
-date for<br>&gt; each new file added?<br><br>Sure, I&#39;ll update the patc=
-h to follow this approach.<br><br></div></div>
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,</div><br>&gt; I&#39;d includ=
+e in this patch this hunk from patch 17:<br>&gt; <br>&gt; -- &gt;8 --<br>&g=
+t; diff --git a/stubs/meson.build b/stubs/meson.build<br>&gt; index 63392f5=
+e78..4fd4d362f9 100644<br>&gt; --- a/stubs/meson.build<br>&gt; +++ b/stubs/=
+meson.build<br>&gt; @@ -89,3 +89,7 @@ if have_system or have_user<br>&gt; =
+=C2=A0 =C2=A0 stub_ss.add(files(&#39;hotplug-stubs.c&#39;))<br>&gt; =C2=A0 =
+=C2=A0 stub_ss.add(files(&#39;sysbus.c&#39;))<br>&gt; =C2=A0 endif<br>&gt; =
++<br>&gt; +if host_os =3D=3D &#39;emscripten&#39;<br>&gt; + =C2=A0stub_ss.a=
+dd(files(&#39;emscripten.c&#39;))<br>&gt; +endif<br>&gt; ---<br><br>Sure, I=
+&#39;ll move that hunk into this patch.<br><br></div>
 
---000000000000da4b8d0632f63285--
+--00000000000062c6830632f63e52--

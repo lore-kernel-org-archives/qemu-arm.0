@@ -1,192 +1,160 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp632071njk;
-        Thu, 17 Apr 2025 02:08:11 -0700 (PDT)
-X-Received: by 2002:a17:90b:2741:b0:301:6343:1626 with SMTP id 98e67ed59e1d1-30863d257dcmr7295374a91.1.1744880891384;
-        Thu, 17 Apr 2025 02:08:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744880891; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp636222njk;
+        Thu, 17 Apr 2025 02:18:15 -0700 (PDT)
+X-Received: by 2002:a17:90b:2c8b:b0:2ee:aed6:9ec2 with SMTP id 98e67ed59e1d1-30863f1c90dmr8934975a91.14.1744881495699;
+        Thu, 17 Apr 2025 02:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744881495; cv=none;
         d=google.com; s=arc-20240605;
-        b=GOl2oBmxunDnQTqgBIYT0KRvuOmX339iy912iVrM7rCyH4TKU/WQIuagZ0VZQoQBAn
-         3HEeuaOtxlpDyj7tqXUs4oMhdAkssP0kSKbe2x3FLWSU35+TZ+20KclAaGiGinW8MjMb
-         H4pcXwRvB4f2AvRo3byOFtU+5EoBdTFWVt2sP2Wufq6bsH+YHqWHX/rme80Flq55wLt/
-         IXRHRC72HjAAuOJkU4N/b7OuGiFlItZSNQIAfUcU5VocLeuZH82eHCQxCLPFVgqXvStd
-         sH1pvQ36QqllPDRHZuzNWM55J756xip2Bu298GIMigxznhLMlRxsYiMN1olEQEeRIaj2
-         fG3A==
+        b=PSxjZvG+fp3F4XOyGWJJhCV7idjBsKYdIU6FyH2NrWT8QAWhVirJRNm+ztEZ+/+pTt
+         x7xszJQTZAX/prP6sihvDreni5ikgp09TJa1wuklWotSelz2p9otg9M8BvYx9KNZOTAv
+         FNBRkQWBsasBQ6I20/CobiPyXjElYFWFu72JjOcD0MEB44ioS0KxZzUQUsAEq5sZmfWS
+         e+OZQfYnWwyLciY43/ChA2640DQJwAIgzUh1RWK9R4/X4atIPcXWMgnAE8GzRrM2WO1k
+         V2rvI2KGNgd+3lBkY8U8qZ+SGU0vjMt933GnJV5sCtQOhOmmG9cXLHzBqhRALN2T7F6U
+         Zrpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=RX6RdA2ZPdP1x/dP/QkgTF0/lqZSn71J8irkE5U7t9k=;
-        fh=YPpWXZkaXypph6ccdrOAHkKlOi5k9JqgeaI7jzsMFWg=;
-        b=TkrSz3KlTOvrHl6RYCLEdwj92n+v/yyChaCyvEQdl3rR2loj0V8eBtlUPJd1h2TDZJ
-         nLEoCy6y+grZBOgJwnVa89eU8eZ6t/bFA6HMrr0nSFMWtuhbgtorl1aNBYk/uMGGuAei
-         szEF2+UJx3v5UaK7EiPmixr+pxBNgLYn7l4QriTzFEXJ7eWCylm3HXnU2ai9wuHQ4ZI8
-         vaqvZBXQiiZo1c/OE1T3UmHemgT0SPEUyUuWcilDsQw+9fsrCnFf75vVuTVpwIQPAPNr
-         84MhqFlnlVl/LFbwPTvkXC+jJ1HDh59eTd80l+ECndMlncy4LpTKiHokHcHU9VktjE6R
-         rg2Q==;
+        bh=1WLBjPWfsO4BXL0OvQ1i5sHakJ1+UaHlRH3KudpiBG4=;
+        fh=yHosOoybXN/c//EbXiCgpUbhKRtqfB+K7jfAv8MdkMA=;
+        b=ZD1ZMEFgUJvRq9ss9JLji/1aXjdL+8+xJPq+WCAwNjcbyrKDaFMBBKWsfyh+V3C6CX
+         56bn6E+Ykpgt6XakJhmPPB+Qf2Hf7xxFiXviELXCzd+ti2ZSYhcaBQ21v1OprfeHBiiU
+         mLX8p8+2fuxAusPtgUADdd5jOiA3x6ek3wqZbRhv6p8bFuXPtwNjEUa7cxQZ2xQgcXaD
+         IlMISL8c7gw/RzMJ/JsZmM84Q4CYi9rg+1vb/72BBQziU96t2XeXiceDhEE/+SyCTkaM
+         jRdi5NZnkhLqxTS09uKZ57vs6jUMiQafOuV4j6KNXIqCrZ+cyojcRQjaz/VmX2BrkxQ5
+         yY4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iHzWNtOU;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="KVLFm3p/";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-308186a4b4asor12763622a91.1.2025.04.17.02.08.11
+        by mx.google.com with SMTPS id d9443c01a7336-22be10b53bfsor150771845ad.3.2025.04.17.02.18.15
         (Google Transport Security);
-        Thu, 17 Apr 2025 02:08:11 -0700 (PDT)
+        Thu, 17 Apr 2025 02:18:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iHzWNtOU;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="KVLFm3p/";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744880891; x=1745485691; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744881495; x=1745486295; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=RX6RdA2ZPdP1x/dP/QkgTF0/lqZSn71J8irkE5U7t9k=;
-        b=iHzWNtOUENsSmjQ9cmSgnKWVb48cdQyUOXadNMPFZz2Gt4kwYiG8JGoVRKJgEG52Ag
-         sYMlkrrQJnLg5zoV6kCKu6lG9feaSioJiKltObOECKcX3LagGYezZBnaKNZqZkrqTfhg
-         WyIUOXMKhcUw5NJeaHp4Kb0jVgAa/20VkQjjYLe/mjqdBz2JcFbdA3kNdqR0NgX/PgyR
-         tSkgT+iepMnENHLPQHM2UpPwPPvpBCgfd7P1OtTDODgs1r9py4DXt8U6KyMzIxapZBB6
-         IO4SSKeyhjzga4m7xHWXtMf9ZR6/pB5BZKev2OJo16mWyLKJxydy6t7WavSsuS2siR6M
-         3EoA==
+        bh=1WLBjPWfsO4BXL0OvQ1i5sHakJ1+UaHlRH3KudpiBG4=;
+        b=KVLFm3p/E9gis3KmAOsIi6DbpF5q/0ljWvh3Q+Lj7yF7a/FqfQxTKie9gqCmdNa4XT
+         iqBjCPZBo+DcPTXtGlmq3BgKS5oUeznIbyEI63dF6pM2zp0bKx3HF7fTaxE00QrbQ1Da
+         YXXtDxfhfvDCNn/DxYc5w+iJTi442uKkmx+byBXb969a1r1TjJYo2VfNTT3A0LKqG9q6
+         RQrZ1Ap14J7ISD5G7HnoXeJIPwGEdMgOuo6Q2EXI4GclU5878Nu/bFiTPKTvTF7wf60a
+         HdEmmxs9IjbRgjOBgoY5ExjqFMTL5OgwlwKrvuAdMAHcgsQ14ucx9C3ylgOlabsxco3Y
+         35fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744880891; x=1745485691;
+        d=1e100.net; s=20230601; t=1744881495; x=1745486295;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=RX6RdA2ZPdP1x/dP/QkgTF0/lqZSn71J8irkE5U7t9k=;
-        b=qL9n0tyyToQsxT0mnYr14NE4A/psgYN5UHQKEcHvpslzzLQ+vfhsmhVgUuyv1+vZ1G
-         uovsa4Cj8fSjMIYkWS5caP5IJbkF7iaxaF34G5oeZ4pEytjDHValLD/fntsSPbm4YpO7
-         QL5XfgvSLx232Y87DS3K5SKBMloyKHoWWk7YkNEsmwr8ab6X7/ajUKB82Ds+U65FoR3x
-         EF//HKreRBLIaLCMPs3EPA/rmcwLvllMN7PoG3G863oU2/jaVmcTjk/qPtfQs/vyLrC9
-         iMQevhLw1ih7caucR92VlLGs2mMZ0kPqsyN8zJ8BaNvFkYKJCPwwHGit+hWIB1hCCfyh
-         W4WQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUGGz5mrgIae9T5neZHQTs9fiHCwoyvsYJ/xailC1p8ZLpw2ek7oxzVJ6bxA4iqtgMSWhYkzFU/+q2ucfqy@linaro.org, AJvYcCVHJ9f8dwblt0GFosW8lnsNTZJjs+rlDTNOEpcWl1X0/hk0DnQuA1Z3dYGQ7XHHNiLhm6Jtvzxs6O+4XNOQtr35twc=@linaro.org, AJvYcCVXoLPl/GMp+iC1/Om7poJJGZyeauUdLBplmsO8bhKBtZUW8iJOwezJbDmN2Llx+8Gu1IluTQXo@linaro.org, AJvYcCWEWotS6aGNh02O1iQJJAkfsIuReSCiFnFVYL37V3/864qEREngS5L5XUqZLlC9A3Z831mzwvfrZebdFoNUe9Uosg==@linaro.org
-X-Gm-Message-State: AOJu0YxbprWcAxQ/eXNqTM5L4Tx+RJkQEiOoC+NzZAeepgjktJ2/N+oO
-	ohr2k2lOBuwqFksw5u8tMsNaQBtyP7jHtQMTNnLs1pMxTRTZxhVKnZOT7v35NmrveB0Rvs8tSD9
-	PpK4pNDk35yo6WctToIayF2+hvFPqCOVw/2A=
-X-Gm-Gg: ASbGncvoT0bBXkqPZ73UE2Sz/X/YnDoYQ93mxlu+IBLfktGpENIIWtWl1EaXVHN2FIq
-	J2qpBueM8rmfih2UtcVqcQs33yvLTmRE96nfFhaIH79bNQ0Yp6Drk5LXSkP4S9a/YyPl5dd6KgQ
-	gSvGGVSsVx8ig+Vq5w8x2Mz9LtipmakhQ2mm611M3GneuWqaVos8VnCCq5jlqdrys=
-X-Google-Smtp-Source: AGHT+IErs/6yr7NvmcQpzRNkUCEqx5sl1VpdkRX4//FuoykcHO5spdFERVti8OBP7SHlu/UrylXSXdJOlZ0WZjUnhME=
-X-Received: by 2002:a17:90b:254d:b0:2ff:6fc3:79c3 with SMTP id
- 98e67ed59e1d1-30863f1b878mr7991510a91.9.1744880890768; Thu, 17 Apr 2025
- 02:08:10 -0700 (PDT)
+        bh=1WLBjPWfsO4BXL0OvQ1i5sHakJ1+UaHlRH3KudpiBG4=;
+        b=RJLSWnfIcr+UHwZvSeluose8txvDf+plDm3xHgIc5ulIsG57wBfecwStcsf8nuvDXf
+         eTuBfd255cO44Zn/vlO/N9rXVZ4UTLpI4H9hSMe4B/mLBETtFlvuerLH7qpeoCozW5eI
+         eSq9zd/Q0dI/f5nrG01wQWDEismj41dyhPDUJAncG/Do+bkGADqtrJd3yOlrIVk34MKA
+         m/lhMPx7b+zVLOYlUREu6n6CITI4+bu03oVR0MZ6F4GvXCcYOKaur2uf8sdvKXeyiCIF
+         sZg0JBKWQrJrRF9H1kR32mTq6Z1JVZKr3TRwWEcrsNqWD7zWDLdiW40j8OZR5zFrJEh3
+         IH1w==
+X-Forwarded-Encrypted: i=1; AJvYcCVpcSwPPibYQTxO62iJ6YispoSYyy8Dmwjxax9lNCYfRxntdkWvQG81cbQDOdKKopdfSeOis8IP@linaro.org, AJvYcCVv8odcebvLdw7+5AnZr4vJlOMOJfPa6ldwAfZViUKFRodUsu2f1juyRXAmw3/PebUnt2w3yhLjSHZIeoZg@linaro.org, AJvYcCXFpvxv74geeL8/r2ZRSRgxJY/KDbD5dFb/nGR8jMsit7aJBoErLFnJPG2YbLmNBWWV2uFo994FATeDbasaCuaU4Sk=@linaro.org, AJvYcCXh5sYz0GhOMYRXfEGHJbQWcYQuf29J9NgDgDvoHHno8pjA6DBSiZbZdPm952IFQVFwP+sUNX6t6P5b+La3dxZrQA==@linaro.org
+X-Gm-Message-State: AOJu0YzFgb4CzBLXpF5MSYuVWHqxS8NOH1AT64ZGf5RIf2/8ZOoP+pFN
+	nCIqXLqxktFdwFXMqfbwQqJLNvOfL0Agi+Ju+eb53GEq8r0yoonidg9E2ZG6YsQ0cjC2D3Q6s+Z
+	5jLtXbMOAXuRZ4cHfVDVlFrj+x+I=
+X-Gm-Gg: ASbGncsmd6ws09OTvEnB88I20DjxE/5Xh8piOT/4phy4TxgJcJztevA06LxnYuab1ec
+	VIzRCMy4ooB5KNxQbfzMCJvjxPqVOBMH9WDOC69Z3nPkT/P8UXe9p/kR7HfZ9ufgkG6sqce2yFi
+	jX5nbcPQmMfuARtMM/mJwtN+uxi00hlYJdn/n//s2HBzIxJp6pBejq
+X-Google-Smtp-Source: AGHT+IF4Rj1T9/KMNZqxohi5RwAbiBoQGmz+hSuqGgEUXQj0HsnRboEYQra1EsTT3emQLFpOZXah8k1AtyHzy5DAlg8=
+X-Received: by 2002:a17:90a:e70b:b0:2fc:3264:3657 with SMTP id
+ 98e67ed59e1d1-30863c54ae3mr8816800a91.0.1744881494943; Thu, 17 Apr 2025
+ 02:18:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
  <44e9ef95ea6e8aa33560ca8580db0033623f0e91.1744787186.git.ktokunaga.mail@gmail.com>
- <Z_9qIQhjsI5zOwXA@redhat.com> <3b661309-904f-4670-b5c4-d537a4745c20@linaro.org>
-In-Reply-To: <3b661309-904f-4670-b5c4-d537a4745c20@linaro.org>
+ <Z_9qIQhjsI5zOwXA@redhat.com> <CABgObfaj0ycyc2jVSJEVvQJ1m+uLf=_HYiOafn2MECgU36aspw@mail.gmail.com>
+ <Z_90aqNE74sonn8O@redhat.com> <CABgObfaNAEsRQrr8O8fpuGGoQHq14Q_niBnQf1Yj4iD33a0LVA@mail.gmail.com>
+In-Reply-To: <CABgObfaNAEsRQrr8O8fpuGGoQHq14Q_niBnQf1Yj4iD33a0LVA@mail.gmail.com>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 17 Apr 2025 18:07:58 +0900
-X-Gm-Features: ATxdqUGQszfJtE52WkySPK7Za_X9zCr63jfmUjXigIWcEzfc2LINVQp2bunB9YI
-Message-ID: <CAEDrbUYOBF4QoTCR=JfaV2B33oHeKkL6cMxc-rSmzpZHyhi2LQ@mail.gmail.com>
+Date: Thu, 17 Apr 2025 18:18:03 +0900
+X-Gm-Features: ATxdqUHgp2h8Pj8TyRxXfyhh8WPCb-zjOPqcUlZcrXo0tsUUQI1ADOBE82KIVwY
+Message-ID: <CAEDrbUb0G=12Gt50sV+mM3gw_MbXpKwy-F0pXs1rAzdUoU3qKg@mail.gmail.com>
 Subject: Re: [PATCH 01/19] hw/core/loader.c: Fix type conflict of GLib
  function pointers
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org
+To: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
-	Mahmoud Mandour <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Francisco Iglesias <francisco.iglesias@amd.com>, 
-	Vikram Garhwal <vikram.garhwal@bytedance.com>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+	Francisco Iglesias <francisco.iglesias@amd.com>, Vikram Garhwal <vikram.garhwal@bytedance.com>, 
+	Jason Wang <jasowang@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
 	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
 	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
 	Daniel Henrique Barboza <danielhb413@gmail.com>, David Hildenbrand <david@redhat.com>, 
 	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
-	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ab74ed0632f5bd1e"
-X-TUID: sX/8ol5+01C5
+	Stefan Hajnoczi <stefanha@redhat.com>, "open list:Block layer core" <qemu-block@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, 
+	"zmta06.collab.prod.int.phx2.redhat.com, list@suse.de" <qemu-ppc@nongnu.org>, qemu-s390x <qemu-s390x@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000ae74880632f5e1d2"
+X-TUID: ta/q0lJtV1Yw
 
---000000000000ab74ed0632f5bd1e
+--000000000000ae74880632f5e1d2
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Daniel and Philippe,
+Hi Daniel, Paolo and Thomas,
 
->>> On emscripten, function pointer casts can cause function call failure.
->>> This commit fixes the function definition to match to the type of the
->>> function call using g_list_sort_with_data.
->>>
->>> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
->>> ---
->>>   hw/core/loader.c | 4 ++--
->>>   1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/core/loader.c b/hw/core/loader.c
->>> index 2e35f0aa90..93a8b45d28 100644
->>> --- a/hw/core/loader.c
->>> +++ b/hw/core/loader.c
->>> @@ -1410,7 +1410,7 @@ typedef struct RomSec {
->>>    * work, but this way saves a little work later by avoiding
->>>    * dealing with "gaps" of 0 length.
->>>    */
->>> -static gint sort_secs(gconstpointer a, gconstpointer b)
->>> +static gint sort_secs(gconstpointer a, gconstpointer b, gpointer d)
->>>   {
->>>       RomSec *ra = (RomSec *) a;
->>>       RomSec *rb = (RomSec *) b;
->>> @@ -1463,7 +1463,7 @@ RomGap rom_find_largest_gap_between(hwaddr base,
-size_t size)
->>>       /* sentinel */
->>>       secs = add_romsec_to_list(secs, base + size, 1);
->>>
->>> -    secs = g_list_sort(secs, sort_secs);
->>> +    secs = g_list_sort_with_data(secs, sort_secs, NULL);
->>
->> I don't see what the problem is with the original code.
+> > > I suggested this solution to Kohei because it's easy to check that
+we're
+> > > converting all users and not introducing new ones in the future (see
+> > > poisoning in patch 10).
+> >
+> > It is easy to check this /one/ example, but this pattern of bad casts
+> > is typical in glib with likely many more examples, so avoidance in this
+> > way does not feel like a sustainable long term strategy to me.
 >
->IIUC the rationale is in patch #10 where Kohei poisons g_list_sort():
+> If you refer to the general case of function casting then yes, I agree
+that there could be other problems in the future but that would have to be
+solved in glib.
 >
->   On emscripten, function pointer casts can cause function call
->   failure. g_list_sort and g_slist_sort performs this internally
->   so can't be used on Emscripten. Instead, g_list_sort_with_data
->   and g_slist_sort_with_data should be used.
+> However QEMU's use of glib is overall relatively limited and for now this
+seems to be the only case we hit. What this patch is doing is both
+effective at solving the immediate issue, and future proof.
 
-Thank you for the feedback. As Philippe pointed out, the rationale is
-explained in the patch #10. I'll make sure to include the explanation in
-the commit message of this patch as well.
+The current patch addresses the cases we've encountered so far, and the
+poisoning will help catch the usage of them in future development.
 
---000000000000ab74ed0632f5bd1e
+That said, it's worth continuing to explore a more robust solution. I've
+submitted an issue to the GLib repository to investigate a long-term fix[1].
+
+[1] https://gitlab.gnome.org/GNOME/glib/-/issues/3670
+
+--000000000000ae74880632f5e1d2
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div>Hi Daniel and Philippe,<br><br>=
-&gt;&gt;&gt; On emscripten, function pointer casts can cause function call =
-failure.<br>&gt;&gt;&gt; This commit fixes the function definition to match=
- to the type of the<br>&gt;&gt;&gt; function call using g_list_sort_with_da=
-ta.<br>&gt;&gt;&gt;<br>&gt;&gt;&gt; Signed-off-by: Kohei Tokunaga &lt;<a hr=
-ef=3D"mailto:ktokunaga.mail@gmail.com">ktokunaga.mail@gmail.com</a>&gt;<br>=
-&gt;&gt;&gt; ---<br>&gt;&gt;&gt; =C2=A0 hw/core/loader.c | 4 ++--<br>&gt;&g=
-t;&gt; =C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>&gt;&gt;&g=
-t;<br>&gt;&gt;&gt; diff --git a/hw/core/loader.c b/hw/core/loader.c<br>&gt;=
-&gt;&gt; index 2e35f0aa90..93a8b45d28 100644<br>&gt;&gt;&gt; --- a/hw/core/=
-loader.c<br>&gt;&gt;&gt; +++ b/hw/core/loader.c<br>&gt;&gt;&gt; @@ -1410,7 =
-+1410,7 @@ typedef struct RomSec {<br>&gt;&gt;&gt; =C2=A0 =C2=A0* work, but=
- this way saves a little work later by avoiding<br>&gt;&gt;&gt; =C2=A0 =C2=
-=A0* dealing with &quot;gaps&quot; of 0 length.<br>&gt;&gt;&gt; =C2=A0 =C2=
-=A0*/<br>&gt;&gt;&gt; -static gint sort_secs(gconstpointer a, gconstpointer=
- b)<br>&gt;&gt;&gt; +static gint sort_secs(gconstpointer a, gconstpointer b=
-, gpointer d)<br>&gt;&gt;&gt; =C2=A0 {<br>&gt;&gt;&gt; =C2=A0 =C2=A0 =C2=A0=
- RomSec *ra =3D (RomSec *) a;<br>&gt;&gt;&gt; =C2=A0 =C2=A0 =C2=A0 RomSec *=
-rb =3D (RomSec *) b;<br>&gt;&gt;&gt; @@ -1463,7 +1463,7 @@ RomGap rom_find_=
-largest_gap_between(hwaddr base, size_t size)<br>&gt;&gt;&gt; =C2=A0 =C2=A0=
- =C2=A0 /* sentinel */<br>&gt;&gt;&gt; =C2=A0 =C2=A0 =C2=A0 secs =3D add_ro=
-msec_to_list(secs, base + size, 1);<br>&gt;&gt;&gt; =C2=A0 <br>&gt;&gt;&gt;=
- - =C2=A0 =C2=A0secs =3D g_list_sort(secs, sort_secs);<br>&gt;&gt;&gt; + =
-=C2=A0 =C2=A0secs =3D g_list_sort_with_data(secs, sort_secs, NULL);<br>&gt;=
-&gt;<br>&gt;&gt; I don&#39;t see what the problem is with the original code=
-.<br>&gt;<br>&gt;IIUC the rationale is in patch #10 where Kohei poisons g_l=
-ist_sort():<br>&gt;<br>&gt; =C2=A0 On emscripten, function pointer casts ca=
-n cause function call<br>&gt; =C2=A0 failure. g_list_sort and g_slist_sort =
-performs this internally<br>&gt; =C2=A0 so can&#39;t be used on Emscripten.=
- Instead, g_list_sort_with_data<br>&gt; =C2=A0 and g_slist_sort_with_data s=
-hould be used.<br><br>Thank you for the feedback. As Philippe pointed out, =
-the rationale is<br>explained in the patch #10. I&#39;ll make sure to inclu=
-de the explanation in<br>the commit message of this patch as well.<br><br><=
-/div>
+<div dir=3D"ltr">Hi Daniel, Paolo and Thomas,<br><br>&gt; &gt; &gt; I sugge=
+sted this solution to Kohei because it&#39;s easy to check that we&#39;re<b=
+r>&gt; &gt; &gt; converting all users and not introducing new ones in the f=
+uture (see<br>&gt; &gt; &gt; poisoning in patch 10).<br>&gt; &gt; <br>&gt; =
+&gt; It is easy to check this /one/ example, but this pattern of bad casts<=
+br>&gt; &gt; is typical in glib with likely many more examples, so avoidanc=
+e in this<br>&gt; &gt; way does not feel like a sustainable long term strat=
+egy to me.<br>&gt; <br>&gt; If you refer to the general case of function ca=
+sting then yes, I agree that there could be other problems in the future bu=
+t that would have to be solved in glib.<br>&gt; <br>&gt; However QEMU&#39;s=
+ use of glib is overall relatively limited and for now this seems to be the=
+ only case we hit. What this patch is doing is both effective at solving th=
+e immediate issue, and future proof.<br><br>The current patch addresses the=
+ cases we&#39;ve encountered so far, and the<br>poisoning will help catch t=
+he usage of them in future development.<br><br>That said, it&#39;s worth co=
+ntinuing to explore a more robust solution. I&#39;ve<br>submitted an issue =
+to the GLib repository to investigate a long-term fix[1].<br><br>[1] <a hre=
+f=3D"https://gitlab.gnome.org/GNOME/glib/-/issues/3670">https://gitlab.gnom=
+e.org/GNOME/glib/-/issues/3670</a><br><br><br></div>
 
---000000000000ab74ed0632f5bd1e--
+--000000000000ae74880632f5e1d2--

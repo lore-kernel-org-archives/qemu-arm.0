@@ -1,87 +1,88 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp644396njk;
-        Thu, 17 Apr 2025 02:39:23 -0700 (PDT)
-X-Received: by 2002:a17:90b:570f:b0:2ee:cded:9ac7 with SMTP id 98e67ed59e1d1-30863f2f5admr7572753a91.20.1744882763303;
-        Thu, 17 Apr 2025 02:39:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744882763; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp644938njk;
+        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
+X-Received: by 2002:a17:903:1a44:b0:224:1935:fb91 with SMTP id d9443c01a7336-22c358fd434mr71766615ad.27.1744882857329;
+        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744882857; cv=none;
         d=google.com; s=arc-20240605;
-        b=C5PaMg1S2YDVUQaJw50hNJb71x8pY4xl8ZImftjjh9oWshEM/CXkTofeG6BRz6ONnf
-         0kNkuyBQf8T/l7w2NBh9t/I5qkAS4RIFPHETY8lsl4SmaNlCjqhWVzy0pijvJXFnFmDU
-         Px1jL0RMc6o7/1xmBA1HhLpazlydG3lu02pkSqvJ8xMZXiyxXEhXy6SF6XN7CDElmWvj
-         4CuSZy1/RWF4VEp+w9PGZW8EVDOar2ZMBwo1HQ7LTtGN9AKn8qSbZthvFicin0B5XA8v
-         msVWmnq62UpVYq6Uj1ABkTsg0zqP24QJO/oPAlQB19fl1itZk4b4EcqTbhC3/TfNq7Bq
-         7Grw==
+        b=LS6mdiZtXzHosILvGfSOtrdN2r/hEgC8OtKEob2Ln3rcIZFv57wrg1QfDyvpROnM0Y
+         6eDzUx7NUY2HQk4cDW52ynJVVcBc1lIOTrYW/NEAd6eCPYXofypKDB30HWgMnruzU8e6
+         XWafOSbm2XbV+oUGjrv2uBpOMF+lfFqPWjSk22kAt+ovgh4Cx1CGIZY0IvqCmaR+DH7B
+         dPeojIG1tgiGaM/wqjUkekgB+4hNQsedJP0te3j0LGRujSbU3ggoNyAB3cI6ssRi9X5R
+         8altPSWXrhpqHS/V0Ks3y/GsTszTRvU9m52bd4B9x9Xqs8XUjwrOinc6qGLMPZpiQkwk
+         NRsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=4IUwotaB6QpXvayv7s4yBerKtK+FrKs7EK6XfCGHghE=;
-        fh=Khm1GxviNJFKyopvKX3EPKEBi5CyTw8LiaQR1eJMR9c=;
-        b=RRV3zdu4RPLvtiOlpJcR7dC0j/jOicTSPaNHc37NHZm+Qloc5VPKQltiJlAexlM808
-         jSQ3ig/auizu+//9LGn+rpn/8dSVEad1ODrHqlan8BNaN+HnWm/vfrJ6q5IioWEXF35z
-         Qro5SwfcTpQxhnHQo76gClmVh2tZsHhRVGfFVASd4SaGXzCd/qO7zaf7go7h4Yi6DDSF
-         nzBQpA82bSWs/K7LEmehw4G2Oiu1DnL3V/j3V62h0IGkIJrHWX1W+02Jiu2tbctsXRov
-         XLXu4G7rcwZLoKrKm2QYq4kH3mUrqM0CJg009PMB2fFOcxOYbQf5MVckdd6pR3nKvS+r
-         60IA==;
+        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
+        fh=l2x3Cuxtyy8O2Q4xLF3D/JR/1wGb5coWD5+2INhtQ+o=;
+        b=OlvGiRUkzh4mYV7o7S4C1C/bltcfloKd4V4zZuXXKF+tyIs2D1TktyopIEPraNbeTB
+         B6EDc8hey7851RfUCT+PS/yWl0Nvq3Rmfn49+h5H/WhDHedO3V41+IeN7DP4ulTYH3Dx
+         3WtGPCoCNrE+guhZkEbQw0+T4Tt+AdxU/UWD1+c2H0O/V8JwICOmHcwN4IIz653AvUpu
+         NjroKiAeTzxdwPyTHjsak4/fqdocJFDRFcEfKf2XJmVbqTyo+SaKYnzFXmRIR5TA6Nfq
+         VgqwP2a9CWPK6BHyXGOLyveroMxnRdFDYB7noj4lkErvW4B0dR+mNMEwDRePl1Omz6co
+         sNdw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=g7Ji2fmu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e55/8Ln5";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30818827cf6sor11276024a91.8.2025.04.17.02.39.23
+        by mx.google.com with SMTPS id d9443c01a7336-22ac7b86683sor119132365ad.6.2025.04.17.02.40.57
         (Google Transport Security);
-        Thu, 17 Apr 2025 02:39:23 -0700 (PDT)
+        Thu, 17 Apr 2025 02:40:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=g7Ji2fmu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e55/8Ln5";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744882763; x=1745487563; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744882857; x=1745487657; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4IUwotaB6QpXvayv7s4yBerKtK+FrKs7EK6XfCGHghE=;
-        b=g7Ji2fmu1Liu40LtHrl7GTI/RAVdrqXs06fbQg3U9g3Uoez0jz+vUrqTOUGBRtkK8/
-         F/VvyuXqvZEj2PmIle7WFxpdivYHWTf7e8IQedEUaPcIC26UPnCZNdjWeVhSrTrIiF1q
-         5tQ4wGzCtT+CFtukJ9Dfk2T+yAvpWeYuNm32+yxmiRchJR8hbs7QRENv9E4fCwe/Z3wU
-         1GTP52kJTPLA6lnCEEsi/vGDb3vv+gbdIBgzWcXOgl+AjkFifATlctRBEO45In2IYxgG
-         GHZ5ZSSLVOm6pJ6NefSc7sArGn4606hHVg0FdSCVL/LK5DxYHd527MAiBRUt80tUVPzV
-         BFXw==
+        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
+        b=e55/8Ln5FPC7iiXJD0ZV2vAqrD3XEP5PafOTwnC2uJGQEokUMX+nWTocdAU/Y2X7Er
+         abske5y7yjJJQGrXur9x2fufb1yjBr2eW+WXJgJLlHvYDk8vAzGBvDdWqq46EVV9/Vpu
+         oGXKW+aG6rz+VdtZzg1N5Ke/HflPDtgVJlJ6u2OeSDkp6guR3mIIuimBi3bxqL+6KjEl
+         lSmZ8X20cFH1shkQGULwkOIONv16gOGLAjmBfT7jdgTYtvlaSijMJXPSIUpjaCY1ExcS
+         7pjMyY0XwoxR3i2Li0k65jCuhfqXrT97C2cpwWgjXaKMY2t8iGjZ7Yg8HTpr7movMT6t
+         yQVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744882763; x=1745487563;
+        d=1e100.net; s=20230601; t=1744882857; x=1745487657;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4IUwotaB6QpXvayv7s4yBerKtK+FrKs7EK6XfCGHghE=;
-        b=r55hxKnoxPqCdCfpWopqCR2ic5ia3DlYIPyuvZq1IScDdvldG0NMyx+b7rlETBnm/l
-         eZqhdsH2Te/o9cTrgWgioJrRUpv+ltWTyaQ6S0cq/ZPawYcccFNi5Owfa0I7gEfIKBTw
-         m6ILe+alUBFeBerBpefFSsH76iA9FytqqILOT/CkDTUzCjNmB3XFnGPqr1LswAv4SJmV
-         guT2yPTczUSFhgrSWsAf3HaCcwLzGAv1Cc8s9MvJnfLIiHz/P3aTUG5hrrS4J5a0FsFB
-         OsRcfgQ2Vtvs9JQhts8fMd0DucKmsXo4e6b068B79gUkTxTZ+JMlodpLWV1HOPWwVO6a
-         kDgQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU0roxWPwzIVS7D5sISrkTyiaJo6atylhjPonKEk+RIJ998/XOUtmSOFI46Z3UwEPxGq/dGLQTT+4f6OkikGDfb1gU=@linaro.org, AJvYcCU1WYHZA7lFxWrmlj8aXrYrZeq9P2HwcnnkywTrDCX8CMxyAQCBrnxRCYauK0z1HNYXfv56dHtn9AdJ63WJUmhHhg==@linaro.org, AJvYcCXVZy6eMJIrm+8EDsbOLcauodi21J4RhmESSF1U/UJ5CatESmli6m/i49zMD029QMj2/DJwlnN3MVrJxQ+3@linaro.org
-X-Gm-Message-State: AOJu0YzK03af828ourPVI/4zpctl/WVpkSJVM3E9zOU8ShTtoS3vTEWm
-	vXzV3VUsoZbBG+oPizhAzMgMVRZd2RC9j/YuE/BQxM9kpa3e1d9Q6ZAhMw4HPy6X478HwAo6YwO
-	L4O6J7BG8KjJypLAJMW5qk7Evk8C7DyL7xVk=
-X-Gm-Gg: ASbGncuRDyOZtLrvz8j5c+fvqX7Ejkh+7MiygWnZUBP262JnWZ7g73Ap0M+S9G/b078
-	7pz6aJo2QJwLqB7lK5ARpSkWdEXvMZKzFk8GK5rFyiZkYTWkU+xsr8DTrFO4StwZEz37N+UthHl
-	5XRAbnbx8k+RB0pDp5ThyZntSLYdvd8kSjTrDXUdYMis0Cue+tc7tI
-X-Google-Smtp-Source: AGHT+IFGO09VYMrl10ZjGYqmmRzbxNWDwxetel7yMJnEh4wV5kv3PfNYs8qKTOf1V1Q+IQsx1zdNjYz79TSWIB1rIfI=
-X-Received: by 2002:a17:90b:57e6:b0:308:5273:4dee with SMTP id
- 98e67ed59e1d1-30863f2c4fcmr8208361a91.15.1744882762526; Thu, 17 Apr 2025
- 02:39:22 -0700 (PDT)
+        bh=QFj33q5/KeeGLRSrHE8hMSPyr/POvveEwsqwvFuHU1Q=;
+        b=AQYH21Jjg2yUR9fI4cdAaihmlJodKeY9LVKyHSxXCPlDTB4uO0nvEGK3GAIWlXABZL
+         ERXdDyowfhd0iA2SRRaCjRAXfGqNNzZMSi00zReNmtukl1YRguvrOimQnM2KyAFAnuXB
+         tX7uw3Dh+xBss/jJQAtDgq68OHtZC04bmODGOhT/ZaZp//A7emge8RdZPCIVM2QS7pQY
+         VfVAaCTTDwaQjmrTHn/9D+HQIrKKfNvUkZyLO07kkqXkLR/NWrGkPHI1Vk2Iy0dAAZ18
+         MsTvl80TZ1dfImu4yBtrWEdpzdsjRaveFQ4KPTQv5e3ZXQjiAF9n0PPTKcZzyRlCkd5p
+         gpAg==
+X-Forwarded-Encrypted: i=1; AJvYcCUme3czg/gwoEXQDu6+hb/6xjD7bCyFWFHUcn+H+HxfbXGaG+8koGC5HqxKOsDCngpUUmy16Mx+6S8NKWk4@linaro.org, AJvYcCW0LmQwKAxueybQgZtMAAk1VmRsLc098brFgqQu1RrQFXjSRW4asvyHv9WLJ0vagVYNC3onM8ys1hYvsT6jVqB+wQ==@linaro.org, AJvYcCXRY9Q7vYkEFGBczsoH7nMIUVZPEHjupuctbi2jYONpvIcyknxIfZpWp8SizcneChXT14G9Ul+gwxcq3blcjsV2SPI=@linaro.org
+X-Gm-Message-State: AOJu0YzOP0p1rbGEA6RLEiJ3yl0j4FaJZVrecCtYpx+5KtkxOxnKEida
+	LYWmyNE2zuKuacs6xh1mt5X4g/D74X7SlT62a1R0bv8tDUJLnBxW7VZ0T62WyFDAoob/8oCKbOO
+	X3evawmBie+G+aRxDAqOYUeniFT0iV5ghWPw=
+X-Gm-Gg: ASbGncsnfU4ZoPwDIhMFciVH/iBYK7QYLNu1/HJhELG69oCZ7KUuU2lI6F+WxYOSGSU
+	uDAFYE6y8nOxjtUmlsgWZt2S+nIXoOuGMTIZM9Po7l5x7Igb+yIxlFu8qV5oGkKQE4R8i3SHOjy
+	y5wHCzTC2vGwcbZhcY89WVMzhu1DP16Fj/8yU/dxv351UCbsi5UeJH
+X-Google-Smtp-Source: AGHT+IGKwwOAuBmQI+wOClsZaLQqiMd4YBE6pAZkKS9df9Jtvkx3A3NVX5PnAcsCgGCvP6Qr3G2oyYFnnMwDpbf4ZD0=
+X-Received: by 2002:a17:90a:d64c:b0:2fe:955d:cdb1 with SMTP id
+ 98e67ed59e1d1-3086415ce8dmr5382416a91.23.1744882856771; Thu, 17 Apr 2025
+ 02:40:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <16055d17cadcb5f4c23203218cb8fc3fa81d1754.1744787186.git.ktokunaga.mail@gmail.com>
- <91dc0def-2e17-40c0-a66a-c5992f10eb3e@linaro.org>
-In-Reply-To: <91dc0def-2e17-40c0-a66a-c5992f10eb3e@linaro.org>
+ <185cfff812b952abb24e25dfcc8bab7c65da6214.1744787186.git.ktokunaga.mail@gmail.com>
+ <4962b53d-c507-49df-91b4-cf51d724e8ea@linaro.org>
+In-Reply-To: <4962b53d-c507-49df-91b4-cf51d724e8ea@linaro.org>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 17 Apr 2025 18:39:10 +0900
-X-Gm-Features: ATxdqUFMJQjUjwv7_rm5KRUGYLctreEWeKcrZ-VtCgLHnxVjiLH26TVqskdecX0
-Message-ID: <CAEDrbUZHJ0_hfmXB6Zfn2UKCu53eeqNGwzdtr7Lsuee2rGdKKQ@mail.gmail.com>
-Subject: Re: [PATCH 18/19] gitlab: Enable CI for wasm build
+Date: Thu, 17 Apr 2025 18:40:44 +0900
+X-Gm-Features: ATxdqUGA5J1i1cY3gaT0zt7hUBvEXbJ-92uPofOuCttG0cZ-o8_-C-TylCAxRMU
+Message-ID: <CAEDrbUZZ5E228PgRiykPdkdOSS4qU5V_wh37x-gvKxZr2Q_-xw@mail.gmail.com>
+Subject: Re: [PATCH 19/19] MAINTAINERS: Update MAINTAINERS file for
+ wasm-related files
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
@@ -98,26 +99,32 @@ Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
 	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
 	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000003c35f70632f62d58"
-X-TUID: 1EqGyR6D1CPK
+Content-Type: multipart/alternative; boundary="000000000000da4b8d0632f63285"
+X-TUID: /tgbcYBcgw7d
 
---0000000000003c35f70632f62d58
+--000000000000da4b8d0632f63285
 Content-Type: text/plain; charset="UTF-8"
 
 Hi Philippe,
 
-> Probably nitpicking, I'd add the Dockerfile first, then the GitLab job
-> in another patch.
+> Just "WebAssembly target"? (I'd add the future
+> tcg/wasm/ files in another MAINTAINERS section).
+>
+> Maybe better to squash with patch 17? Or start adding
+> the section when you add a new file, then update for
+> each new file added?
 
-Thank you for the suggestion. I'll split the patch in the next version.
+Sure, I'll update the patch to follow this approach.
 
---0000000000003c35f70632f62d58
+--000000000000da4b8d0632f63285
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br><br>&gt; Probably nitpick=
-ing, I&#39;d add the Dockerfile first, then the GitLab job<br>&gt; in anoth=
-er patch.<br><br>Thank you for the suggestion. I&#39;ll split the patch in =
-the next version.<br><br></div></div>
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br><br>&gt; Just &quot;WebAs=
+sembly target&quot;? (I&#39;d add the future<br>&gt; tcg/wasm/ files in ano=
+ther MAINTAINERS section).<br>&gt; <br>&gt; Maybe better to squash with pat=
+ch 17? Or start adding<br>&gt; the section when you add a new file, then up=
+date for<br>&gt; each new file added?<br><br>Sure, I&#39;ll update the patc=
+h to follow this approach.<br><br></div></div>
 
---0000000000003c35f70632f62d58--
+--000000000000da4b8d0632f63285--

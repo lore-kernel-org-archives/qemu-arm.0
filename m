@@ -1,90 +1,89 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp639771njk;
-        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
-X-Received: by 2002:a05:6a00:4484:b0:73b:ac3d:9d6b with SMTP id d2e1a72fcca58-73cf293357cmr3404606b3a.4.1744882055458;
-        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744882055; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp641830njk;
+        Thu, 17 Apr 2025 02:32:30 -0700 (PDT)
+X-Received: by 2002:a05:6a20:43a0:b0:1f5:769a:a4c2 with SMTP id adf61e73a8af0-203b3edf9c9mr8052686637.22.1744882350110;
+        Thu, 17 Apr 2025 02:32:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744882350; cv=none;
         d=google.com; s=arc-20240605;
-        b=O/gu7w55Vby+11/wmF31hnTrxg7gt0zyAgACkcsIhXZtfLtvMQI+u06Vtn2rSWeibc
-         ZJzbBYuWRKWUffF+flOrork+AZr8Wa9P3avyO/mrpH2OJgOelRVTfPrNoodO1dEJ88L4
-         g8/VKHsNsCynCPmnRx5SYJcXkkGBMYZIey4AB79QbacFbYphRqOfffoTki/a4lZX80Pz
-         80asoZ+Ft5UNOcq4vjCM8qaBB3KFzkVjW4uoSWpiPLORutLYiQ6kDn2/XDadtK80L7qf
-         bDAGjA0U3zZdFO1vFVyIPlaCABifNcb1MyziUG2DxzMawa7NpoWzrnWdbhjUGFKJ6hSc
-         PITw==
+        b=dSHa+ND8B1E17WVjwFAqgP5TNmOUnjhUvkTmzgJmuOgXXAJZvxLkiSx7AVjhfglbzY
+         BEKDlC2a5DYtSyEL6jolxG74q5W77iqYkCZvutqkFVD3Pd2KSsnXIFAPRsPnWMSX1UuS
+         O6wQRI+FpplLx2Kv0dX2dEIBKamJeMekoPDBY0jFJ/Vyp++WBueNvjPGDQI7mqLmnlZP
+         eASUmB1RVoREDaYsSh6RMcY7kOjep5AfXV8Vesx6IK99Pao5QD/i0/qnJ7yNtKRtJCD1
+         zHWswl/z4p3Si/176A0MEsffkChzcokFVfH42zyDPQMiNMO2J5siX28JxvzxJ4sbAzcH
+         jOYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
-        fh=+iRxevmgakKJdfD9Ht/yJ5gYP7NJTDiGIBh3Keo8Qjo=;
-        b=fyyCtOV6bHssTUPRA/jKhPLqos5XS8gU2Hq7mB6vkTXT4H/n2AI7uojMMRU7Agj9yE
-         5kcpxZc66N8aPyx5DDE3MHa9sW+aOBPJCbkIfOK/WFFz/UfbY6kk3p2nb5EZdX9Toj6X
-         PNRG3lIYv9wJa+i3KasDpBUQ9Ocf4hCmFydULIGBcrS82/SuflwRZA/gQE4Bwro59+QO
-         MceSGwAU877IdQ/ejCEdHg7QkEV9xvsohKpuP+NRVx8A/wktn4P6tvZ11knW5vk2PbJ/
-         Fan0Y4L72aOnkGUF383JIM3MZvAbuuCIfvBFnpYMbo/pBPVaLBEjMpVoPVDSQ+E6qTho
-         HepA==;
+        bh=Jg9liQY2yP5Kh3RtgdI7xjFe5GA+ZZN449PB22RqFLM=;
+        fh=bzgPMdzuujmObE1/eAUUH1BHga00wqZ6VHdfguj0lZA=;
+        b=B9+EBXBICsznn1BWRn/vIFiViMzXwmwi/n8rASal65FHU3WLbWpQcJ8Ed4Wg/HVs8N
+         s/71RjpIAhyAYXJxv/OdkEiZ3qcf9ixTjIPrG07Ykt06FTDYNQh5eCNPYxU5MH+3wLgN
+         F75Qx/VnAkAui4ZcCDStI9oF2tiz1/07Z359rtmlfxKfacw7T8CS6zIVOZ+dw4YFrGbF
+         taMeonbiWCgI9An9gNLZeW3SiwbENkh4/+SMSY7xgV1JI0OrWn7kS9P72tHA0QJeZy9T
+         Htk2q+RF2plNNlaNS7kgoc0RpTjTKfxWOwBavXpNG0DNbocFZ/p7In0APHKM+DwPgiVj
+         FMKw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IaNNUPHz;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LcgOJ2za;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-73c225f4062sor1960127b3a.5.2025.04.17.02.27.35
+        by mx.google.com with SMTPS id 41be03b00d2f7-b03f8931e7csor9007525a12.4.2025.04.17.02.32.29
         (Google Transport Security);
-        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
+        Thu, 17 Apr 2025 02:32:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IaNNUPHz;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LcgOJ2za;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744882055; x=1745486855; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1744882349; x=1745487149; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
-        b=IaNNUPHzfW2abi4VT/VxW2K8CLYoUxcaT1rLTRjAVhTn4ruTGRuBjrwILHElbEXw2/
-         +2K6B+hJyqKDqv6gA7/ISujiM+wwZrS+lKCtWdzmp0YRxQnGceJBPWTCYibN8r5i60jd
-         1C+IPZlNusa49qmhR8mXzQSJRXGpeJzt3bQi/O/5K+jGINiuWdBT/dKQ3xxxPQT4ulyZ
-         ni99Nf88vWoTXLZTkwgiGLFjuU/6ED5GUWVASl1Wut1i+GsRe8PeJL53BArPKwRT+tUX
-         ITKLXvUAUeTxFiFsVClr5qmyxNhrJ4/MI/0tP/IkFmzQtlJGQwafWfvo86MBxK/DagIC
-         65ow==
+        bh=Jg9liQY2yP5Kh3RtgdI7xjFe5GA+ZZN449PB22RqFLM=;
+        b=LcgOJ2zah64EiIw2T3CEPAtarZEW+Eu6z2IEzW4gaH400K9ztrYPjtutiKXzVJe6b7
+         0IIXrouF7ZewDltSWQ5IniqRAzq2M4mpZelpMmdNX1b5DuFyuQWLmD2PsPkNVihYFiF2
+         rur7pDXBuRqeX/W9ELZ4ZDLHMJcxy6SCpi3eD1HlAIJvFg61O9OtBvyJ3/0MN/QXpyF4
+         DeAdBBuPuFcUFwmsO8hq97XNLmy8o+w3Xuh+8MbnopX/kEQq+nCznhwNSmjB10Vt6fVr
+         EB6ZU2iaRty9UfSVhILPoiA+BgqH3Sf4CE3LTC9wLJS2Zh74h+goMc1YmvS0dVnNtXEP
+         O/Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744882055; x=1745486855;
+        d=1e100.net; s=20230601; t=1744882349; x=1745487149;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
-        b=vav+rtvAiz/JucsSksosM5ff82PEGQNHYL0qo6P43pQtkTiGkqUPyZTCwD3Xp5DgS2
-         GKynCkPIBKD8/LtoHPZIprX48KciWHIU4JHrtFGLYMGq9fOPEeK9qDRdZk5AKiEux0qO
-         7M+Qfsd2Bb7q2j7M38cZCrEnqwlibtzZl0kHA+602QMEApcR7Euqhv2UIqNDWOrcJ4Zq
-         bZcq6pSWspwUQ1Jq/P4vgoYjBeuPAPVBgz/0URxOkbIiBNI/PMDchivwcKElmE65dEVa
-         YrPoYWEt9JmWqig7AaUBui9grQYtL4pJeiRXd0naIqyWPjmjmT0102sKC9JsA+cegmif
-         JXPA==
-X-Forwarded-Encrypted: i=1; AJvYcCU2jkSgogMUZXGZfcT2ssj/djCTdpbea4Mi42kOL2XbJYlvM14DZaNA3uNgknlDj3KG1sxlojzUoI3zTJs0Czvld7s=@linaro.org, AJvYcCUi6aCQPhzOS1P/XvdDnyCFtV8Upg9YvoB+ZIswtp4xEAzyllV2r3LSC56AW1VSkUOqaumwXddPzfTBWJi0@linaro.org, AJvYcCWsLW+rkbByT+LWHiVivvKItUw2mgOdEpGkcLI6yKyemP+lmR0BBDO0s6wW3649I+8ko+j2t3r3Hd2iqDuqMcLr4g==@linaro.org
-X-Gm-Message-State: AOJu0YxQ9/J6NWPDYnglX/6opa/MJKOuU2voGd9PKWtn4o3WmQbT5zt6
-	3bf6siXD1OKdlBBe0ioiP99dykVO7MO5L5Ll+7+08jFPuh1Y4Sv2YlPv3N2LpaNSh+VJbAija6T
-	5KhNhuutawu38q+bbwWIkB/w5WbmgxTNhJ5U=
-X-Gm-Gg: ASbGncvtmUmix1UsmAdgX0Zc9sGeYR1bWt+hFYFDKaiwZdNJgS5nPqMzZV73T54BCwO
-	z9NusSghb+/d10bXYx/HhipcPLeFD0Po7nZLO4eE1rWaVxWwp24kKxV9UaS51OO0BSVOnYO+Bs4
-	vhlLgrm3Gpuxl5DcYtLEhJqB6gWtRtfr1BntvgBrOlEJ9EXH+429EIRR1w//pmvqI=
-X-Google-Smtp-Source: AGHT+IGF+Vkrm9uDjKFzLmTshgVd8s7nlzAFtbfV/yAmDU8+/yUUoSqd7K7AfX6UvmF4lqNEtvM0CwXgZobg+fDYuXY=
-X-Received: by 2002:a17:90b:6cf:b0:2fa:42f3:e3e4 with SMTP id
- 98e67ed59e1d1-3086f3c7908mr3177332a91.3.1744882054787; Thu, 17 Apr 2025
- 02:27:34 -0700 (PDT)
+        bh=Jg9liQY2yP5Kh3RtgdI7xjFe5GA+ZZN449PB22RqFLM=;
+        b=sMfyTGcfAq8zzTU5Lj8Qlo8skdyoHg5ytBGSSCXJLhb3qdF6ngr0q7k3ZG1J1407Lf
+         5n+4ffUUkWe6doaH5Dy0xMSYzUVW1kk50KqJliy1+AF9l3XOhboT28qeE/gtNsqA3eoB
+         AYpRSlS/5qmqbjhAViKX9XpaqvZxazQC+9qpPqAHElJJr4xGrrOB8paBMQm4uAcGQC5n
+         0nHxqn7f/rryQJsvTtuUbb/Kbo7vnIV+yEQbd+FXLuv3O5ApwWwSX+aUOTQ8cG9whjQT
+         4UgkXQCUc4eWEYKWYY+A6TH+2cCdv/iYyIAQbspt0/OuJFmu2e/jT6Ms/PIvqtF0/eUl
+         KDhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXOPIrsuB+E37p90B63Q0s+z8rUhZeVUhN9noKewxhSIdR7GfDFoXr68vtGK+sPELbshPWW58DQdNTy+ROWv11Ffg==@linaro.org, AJvYcCXWA1fm6GX9YyjElIw+VUX4RRVz2mYx0b+uUfGXF56s3NViFoWf/rwEavkZpFP4GLqzULsENZcaGKpLLDHm@linaro.org, AJvYcCXxtactVTYP8uCvDnlcv96o6o2YKes1NDBSmjo5440xafXXDphkcLiprkYuwO795xatc7EeyJiqTDTzoiSBSMutQD0=@linaro.org
+X-Gm-Message-State: AOJu0YwygAoG18p7syvAbtoxTJl+SQP29bRQZadWfrCA16WbYKMPU1N3
+	TcVmW6qasz3PwXJYrGbpTGogCl7rvbsxH6wrV5LwNArwCvClvv0sLSvh2070Sf/duHmqlAaeTmh
+	seOaf6EckqgBoJLM1JJTOL0eyLn+hy6kaM4E=
+X-Gm-Gg: ASbGncv5bAT0biKnL2/jXE0yHOwtugSl/42PS4+KnXHjP0O0ggyXioqPa34dAJXlffR
+	qxc6PygXkpAL89O7AWXU1wa8tkj9CJ1tDkZ0rCJz0AZRvazIElJ9LVKzREP9erV0KTlEVrShnJx
+	UcmLC1V6yxPedhYWCFT87HTM8YyHiKRbonXVAI6PpV7WtNj5eSo5cSNaZ3B1WyRL4=
+X-Google-Smtp-Source: AGHT+IF9pYKO14rulbqXlenJvlINTzUJkAGUA0aliek/nHp4sD+sVre5AM6ZYB1ZP7DJitiPcfZ6l9P0Gbm/9bQdhUo=
+X-Received: by 2002:a17:90b:57e6:b0:308:5273:4dee with SMTP id
+ 98e67ed59e1d1-30863f2c4fcmr8184303a91.15.1744882349418; Thu, 17 Apr 2025
+ 02:32:29 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <97a2164b3f428265136bb1c01615a16b516138c2.1744787186.git.ktokunaga.mail@gmail.com>
- <29330430-61a8-42c8-a87c-259f0cdbefe0@linaro.org>
-In-Reply-To: <29330430-61a8-42c8-a87c-259f0cdbefe0@linaro.org>
+ <9da41d784991f77e2c1f38d0781cd047b593e053.1744787186.git.ktokunaga.mail@gmail.com>
+ <afe0abf1-2c33-47d8-bde6-8abc722eb212@linaro.org> <2d232dbc-4613-4352-8ede-3fd5dcefc32c@linaro.org>
+In-Reply-To: <2d232dbc-4613-4352-8ede-3fd5dcefc32c@linaro.org>
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 17 Apr 2025 18:27:22 +0900
-X-Gm-Features: ATxdqUE7DUGXiaiXQZUUdbzbb-Cv03aYAE2cd1t2TtTNMflviKjNJHtvlmo3h98
-Message-ID: <CAEDrbUYu-NH4Dwkby-UTtQpiy0ApN+Z4dwt+iOs_SZjCwfM_ZA@mail.gmail.com>
-Subject: Re: [PATCH 11/19] util/cacheflush.c: Update cache flushing mechanism
- for Emscripten
+Date: Thu, 17 Apr 2025 18:32:17 +0900
+X-Gm-Features: ATxdqUGGTv3OArB87npbRxwo9F2RaSZjhfG-gwWP-mNK2kFi5AGNRi4plJgSNmw
+Message-ID: <CAEDrbUbQ2h1wj-KJqjYjcGPb4Pyp0te8ycy2DoJGENvT2+Mxcg@mail.gmail.com>
+Subject: Re: [PATCH 12/19] block: Update block to compile with Emscripten
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
 	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
@@ -96,61 +95,101 @@ Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
 	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
 	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
 	Daniel Henrique Barboza <danielhb413@gmail.com>, David Hildenbrand <david@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
-	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000000cfcd70632f603c7"
-X-TUID: MM398TWDqUpn
+	Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000009cbd6d0632f61401"
+X-TUID: hvM3TMzin879
 
---0000000000000cfcd70632f603c7
+--0000000000009cbd6d0632f61401
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Philippe,
+Hi Philippe and Richard, thank you for the feedback.
 
-> The "why?" isn't clearly described.
+> Actually what about checking the symbol presence in meson?
+> Something like (untested):
+>
+> -- >8 --
+> diff --git a/meson.build b/meson.build
+> index b18c46d16a2..33185fdf315 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -2654,3 +2654,2 @@ config_host_data.set('CONFIG_TIMERFD',
+> cc.has_function('timerfd_create'))
+>   config_host_data.set('CONFIG_GETLOADAVG', cc.has_function('getloadavg'))
+> -config_host_data.set('HAVE_COPY_FILE_RANGE',
+> cc.has_function('copy_file_range'))
+>   config_host_data.set('HAVE_GETIFADDRS', cc.has_function('getifaddrs'))
+> @@ -2756,2 +2755,6 @@ config_host_data.set('HAVE_UTMPX',
+>
+> +config_host_data.set('HAVE_COPY_FILE_RANGE', cc.links(gnu_source_prefix
+> + '''
+> +  #include <unistd.h>
+> +  int main(void) { return copy_file_range(-1, NULL, -1, NULL, 0, 0);
+}'''))
+>   config_host_data.set('CONFIG_EVENTFD', cc.links('''
+> ---
 
-Although __builtin___clear_cache is used to flush the instruction cache for
-a specified memory region[1], this operation doesn't apply to wasm, as its
-memory isn't executable. Moreover, Emscripten does not support this builtin
-and fails to compile it with the following error.
+Emscripten doesn't provide copy_file_range implementation but it declares
+this function in its headers. Meson correctly detects the missing
+implementation and unsets HAVE_COPY_FILE_RANGE. However, the stub defined in
+file-posix.c causes a type conflict with the declaration from Emscripten
+during compilation:
 
-> fatal error: error in backend: llvm.clear_cache is not supported on wasm
+> ../qemu/block/file-posix.c:2019:14: error: static declaration of
+'copy_file_range' follows non-static declaration
+>  2019 | static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+>       |              ^
+> /emsdk/upstream/emscripten/cache/sysroot/include/unistd.h:207:9: note:
+previous declaration is here
+>   207 | ssize_t copy_file_range(int, off_t *, int, off_t *, size_t,
+unsigned);
+>       |         ^
+> 1 error generated.
 
-To resolve this, I've removed the call to __builtin___clear_cache.
+If introducing a new stub isn't preferable, we could update the existing
+stub in file-posix.c to match the declaration used by Emscripten. The
+manpage[1] also aligns with this signature.
 
-I'll update this patch to include an explicit "#elif" branch with an
-explanation, like the following:
+[1] https://man7.org/linux/man-pages/man2/copy_file_range.2.html
 
-+#elif defined(EMSCRIPTEN)
-+
-+/* Wasm does not have an executable memory region. */
-+
-
-Please let me know if I'm missing something or if there is a preferred way
-to handle this case.
-
-[1]
-https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcache
-
---0000000000000cfcd70632f603c7
+--0000000000009cbd6d0632f61401
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br><br>&gt; The &quot;why?&q=
-uot; isn&#39;t clearly described.<br><br>Although __builtin___clear_cache i=
-s used to flush the instruction cache for<br>a specified memory region[1], =
-this operation doesn&#39;t apply to wasm, as its<br>memory isn&#39;t execut=
-able. Moreover, Emscripten does not support this builtin<br>and fails to co=
-mpile it with the following error.<br><br>&gt; fatal error: error in backen=
-d: llvm.clear_cache is not supported on wasm<br><br>To resolve this, I&#39;=
-ve removed the call to __builtin___clear_cache.<br><br>I&#39;ll update this=
- patch to include an explicit &quot;#elif&quot; branch with an<br>explanati=
-on, like the following:<br><br>+#elif defined(EMSCRIPTEN)<br>+<br>+/* Wasm =
-does not have an executable memory region. */<br>+<br><br>Please let me kno=
-w if I&#39;m missing something or if there is a preferred way<br>to handle =
-this case.<br><br>[1] <a href=3D"https://gcc.gnu.org/onlinedocs/gcc-14.2.0/=
-gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcac=
-he">https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index=
--_005f_005fbuiltin_005f_005f_005fclear_005fcache</a><br><br></div></div>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div>Hi Philippe and Richard, t=
+hank you for the feedback.</div><div><br></div><div>&gt; Actually what abou=
+t checking the symbol presence in meson?<br>&gt; Something like (untested):=
+<br>&gt; <br>&gt; -- &gt;8 --<br>&gt; diff --git a/meson.build b/meson.buil=
+d<br>&gt; index b18c46d16a2..33185fdf315 100644<br>&gt; --- a/meson.build<b=
+r>&gt; +++ b/meson.build<br>&gt; @@ -2654,3 +2654,2 @@ config_host_data.set=
+(&#39;CONFIG_TIMERFD&#39;,<br>&gt; cc.has_function(&#39;timerfd_create&#39;=
+))<br>&gt; =C2=A0 config_host_data.set(&#39;CONFIG_GETLOADAVG&#39;, cc.has_=
+function(&#39;getloadavg&#39;))<br>&gt; -config_host_data.set(&#39;HAVE_COP=
+Y_FILE_RANGE&#39;,<br>&gt; cc.has_function(&#39;copy_file_range&#39;))<br>&=
+gt; =C2=A0 config_host_data.set(&#39;HAVE_GETIFADDRS&#39;, cc.has_function(=
+&#39;getifaddrs&#39;))<br>&gt; @@ -2756,2 +2755,6 @@ config_host_data.set(&=
+#39;HAVE_UTMPX&#39;,<br>&gt; <br>&gt; +config_host_data.set(&#39;HAVE_COPY_=
+FILE_RANGE&#39;, cc.links(gnu_source_prefix<br>&gt; + &#39;&#39;&#39;<br>&g=
+t; + =C2=A0#include &lt;unistd.h&gt;<br>&gt; + =C2=A0int main(void) { retur=
+n copy_file_range(-1, NULL, -1, NULL, 0, 0); }&#39;&#39;&#39;))<br>&gt; =C2=
+=A0 config_host_data.set(&#39;CONFIG_EVENTFD&#39;, cc.links(&#39;&#39;&#39;=
+<br>&gt; ---</div><div><br></div>Emscripten doesn&#39;t provide copy_file_r=
+ange implementation but it declares<br>this function in its headers. Meson =
+correctly detects the missing<br>implementation and unsets HAVE_COPY_FILE_R=
+ANGE. However, the stub defined in<br>file-posix.c causes a type conflict w=
+ith the declaration from Emscripten<br>during compilation:<br><br>&gt; ../q=
+emu/block/file-posix.c:2019:14: error: static declaration of &#39;copy_file=
+_range&#39; follows non-static declaration<br>&gt; =C2=A02019 | static off_=
+t copy_file_range(int in_fd, off_t *in_off, int out_fd,<br>&gt; =C2=A0 =C2=
+=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^<br>&gt; /ems=
+dk/upstream/emscripten/cache/sysroot/include/unistd.h:207:9: note: previous=
+ declaration is here<br>&gt; =C2=A0 207 | ssize_t copy_file_range(int, off_=
+t *, int, off_t *, size_t, unsigned);<br>&gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 ^<br>&gt; 1 error generated.<br><br>If introducing a =
+new stub isn&#39;t preferable, we could update the existing<br>stub in file=
+-posix.c to match the declaration used by Emscripten. The<br>manpage[1] als=
+o aligns with this signature.<br><br>[1] <a href=3D"https://man7.org/linux/=
+man-pages/man2/copy_file_range.2.html">https://man7.org/linux/man-pages/man=
+2/copy_file_range.2.html</a><br><br></div>
 
---0000000000000cfcd70632f603c7--
+--0000000000009cbd6d0632f61401--

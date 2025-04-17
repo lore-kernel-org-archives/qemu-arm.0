@@ -1,245 +1,197 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp1054709njk;
-        Thu, 17 Apr 2025 14:21:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUUj1GGdpv7B4ZbsN348vQKocM10niCd10VkJ+STynWPqOAQcYoBfXSuA5MZYeLYVC4Srfiqyh1exf8wA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgnpMSNdJySw1JBuGlL07WoIop/+Dscxh+qXlcI8Yjc1lNqNZZH5jGS1tcuXbr7kta/5ls
-X-Received: by 2002:a05:6602:3995:b0:85e:8c26:170b with SMTP id ca18e2360f4ac-861dbde2329mr38306239f.2.1744924913625;
-        Thu, 17 Apr 2025 14:21:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744924913; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp1114078njk;
+        Thu, 17 Apr 2025 16:59:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgj3V+mF97GAiRaa4yu6kv56ORAyxMYvkAxk0Q1FhCacAln/QIywX6HZIdy1PRCXTFPIwKuZWI6Itf9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHsZ5LIp/zZ24v9X5pSn1kjKkg0x2pQqON1yPSQt4Echr7RwbE3AAnPkRyBj4nLg9jCLyG5
+X-Received: by 2002:a05:620a:2890:b0:7c5:9c13:2858 with SMTP id af79cd13be357-7c927e525a4mr133013685a.0.1744934345090;
+        Thu, 17 Apr 2025 16:59:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744934345; cv=none;
         d=google.com; s=arc-20240605;
-        b=P+VJP15NkCN8pfqL3gH5+mc7o8kZqTVzWTIEOqUDQV3HUsbXgT83MAcMJTqU7hpiZ3
-         p1C+9Vb31FVSDzdKBEC3Zh0lehbtDmEDDsdLZH8Y+zSXRuPiBoxdpPU0GxiUZbatD/Ph
-         F+C53Z0Vx8p8UkzBcLN/0joW7Wa+QExKRg3ugF4OaZR+/g0pkX9ZYAF+T4raqWy7Bkq8
-         3ps5GhugNLFU2lPrtt6zjndZsJ2LMdfLeW10ysySl921dK7a9KCAqvwPkzmNrlIgOqoY
-         LD4P9FFevL6qZJal3jx1OH2CW2sqDiXRb6OmHLMXaLTWUrDj3nYIWLzs+hKBG80dFLtd
-         juPg==
+        b=fiSsNBX7SFM6//PgPjVDPqS8yTSPKEiRMtYTLeo+uCwhLjpm0qfiXT9Khs2PsxOfYU
+         /29w3mGp0xmLPl/j2V7C1vygF1GjoUkChR8lRPObGpS9UlaNpMhfmcvQ/4P58yvQ9Dd+
+         foxtcc4tTpIPyaPR4+flMF6sBGNqZIaxR+7sM8UDbOWWXljNiPnobPWnp6tfk5fBr3rm
+         fM/wXL591gQ4hGfQOzwpo6/r3JwvSXtcFLi148GcOELcdxL5KkWdDpm1LYUi8hRdNFVR
+         k7VRhol2BuijHsRcUuHZEJ+ptIEbqXFzEG11OvgtlLiOOZrOUZzUwplyDycMuPwPWCax
+         b+pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ARwUeFH/AbXpiF9ATeO2ZoXgZbMQVisi5KpAcd2UYGQ=;
-        fh=QdvXuzBgAbsbAhmrBMiLhFiBAU5uHQq69Fiafv8CQYo=;
-        b=EwaYHm/FgUwdgx1tBCvegGRIMDLtIPwI1+10mxN03goD4l1UPUS1NNVAyPqw/XU56V
-         27eppFICWVdb7xFi3qCWkke8DPzPNzNtmBS+894CNQE1ZLyOER4du3VErnXrYwg76xme
-         N+Q2NEoQYT0s4Y3mPdra3gNsg+WZ8jI841zq+uy6flJ90SdBSFWXLIwzOFG/+fjs6Qbq
-         VDdi7En6khKACBUeCfxKp3K5aYDjPLhN1hvkz+k6jDXA3iCWF4GRq7Mo6MN3awZJZRiz
-         XyhP9w3V1Chz9IdZ1XqUuAkn7nngNkE+epT9dxAz8ifP9VHnDpfG9oF539oZhJsLuYJN
-         F6Sw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=AOUZObtkL1pnrtX/HUZz7JN00TbmXk0vW2RpCKqJB7c=;
+        fh=WFwUGmGYmncExvQBJsU6UTDk6GMcZbek85cNJsMLDI8=;
+        b=SXsAlGWkpK54S0I9ovK9zGRJIYWD/5tNdytAWh8VhwVEdiD7mvp7yRarTb06v1kiUD
+         TNeOXCnGOwjDMnz/LbqYVfec9ZjEm38HBRaTeVraS5blTdd8SBo2YzNKdzfzVfIkVRYu
+         nw6V/L6V2RwS9DMz1pExHD860WX4fTM1UcQTsOdz6D7zg3IgcVvwUFaLBByaaTO3E8Wk
+         p3ZS0Eatlcp2SULGv5naJyYT304wBsOUfJOLLA38Ow5w+59xhSJ2wNPtGfAzaJ+7OZlq
+         PZFHBK4UAOhBpXNizBzmvsGc90dkICEVxHGYAyIkuDn1c1PxsTGndGNs4iMoqUNyzMEn
+         to8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=enxbcBzy;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id ca18e2360f4ac-861d98e1392si62597139f.80.2025.04.17.14.21.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=PAFAo2Pp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c925abf17asi101443585a.59.2025.04.17.16.59.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Apr 2025 14:21:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Apr 2025 16:59:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=enxbcBzy;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744924913;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ARwUeFH/AbXpiF9ATeO2ZoXgZbMQVisi5KpAcd2UYGQ=;
-	b=enxbcBzyWUWuc9raduhK6LhfVKr+WpTNvux+qhJe4fZtICM1YyKO+LVEOqIpadlVC9xlHZ
-	eI1r7qoiRKdpbDbI9cQ1uVVpX7eey5fjx+GZgYK6KW9PqSBmwbtSmt0FEnMcm+RMWlJE4/
-	DrCECRShVxEe0cASL1SLvRpMxB1w/qs=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-583-lhwNh07aP4e0OqGRVF-x2g-1; Thu, 17 Apr 2025 17:21:51 -0400
-X-MC-Unique: lhwNh07aP4e0OqGRVF-x2g-1
-X-Mimecast-MFC-AGG-ID: lhwNh07aP4e0OqGRVF-x2g_1744924910
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-43cf3168b87so5999045e9.2
-        for <alex.bennee@linaro.org>; Thu, 17 Apr 2025 14:21:51 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=PAFAo2Pp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u5Z7y-0006uw-LM; Thu, 17 Apr 2025 19:58:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u5Z7x-0006ud-Kb
+ for qemu-arm@nongnu.org; Thu, 17 Apr 2025 19:58:41 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u5Z7v-0003sP-T9
+ for qemu-arm@nongnu.org; Thu, 17 Apr 2025 19:58:41 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3912d2c89ecso1332135f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 17 Apr 2025 16:58:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1744934318; x=1745539118; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AOUZObtkL1pnrtX/HUZz7JN00TbmXk0vW2RpCKqJB7c=;
+ b=PAFAo2Pp0wgCkq+BChyAr860QFHxBpZWeB7EPQAsx5igLUkJjy6m6FrFRhmUQlon6Q
+ 9tmYyjKCjhUXsWyqwGOuRS3mCLa3aoqwXWPjzP+vqbo22VG/Aj7fJKm/LwEzUyI8BMhS
+ VcerR7gzOxY9S9YXANUFDAi7svQQBXGJ9l/UN1fAOM7yvjyAP2cZVDfvWxtu/qJ1HvaL
+ OIyHGq9ATeCpnQExpK+nMdJgNdguB7Y4ZOrLbKGXDb0P9Vlg86t+/ZDDo0ycpRZOr1yk
+ rSvaZHlnvWqTnN1+0EZsMdlsJrRD3vTZgFAo5xHM6Z5eXBxx3+Jlp4WsKqieL6Petoae
+ RNdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744924910; x=1745529710;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ARwUeFH/AbXpiF9ATeO2ZoXgZbMQVisi5KpAcd2UYGQ=;
-        b=J3JE9CCsWFUFiHNfNdX3iMbpbZ9W+hoam23B/sWjvHFaVDJYU3lCl1NaL/r3D+Kz3o
-         xSv5PBusplsZ13lsNe/QCrtpLyFJnimCDj144Na77PfZ8BsZMBncH7ij6yu2ph5kotRC
-         qvXV3sQpZnK9YdE+OriUXNpZe0SrpB/MeEIiWaceutkxpoqo9DDnga2IITmTf3r+0wj9
-         Vldjy76T9abcx3ktrFhUetpObuqFWYUxhkMHea8Twt2AQRLgnfmkltPKsMv4fBb50gRt
-         tk8yGQS4zI0RVasxasdhQZ+Y2iWUEUw0LfLnkkQ0+zc9lu4R4I7s+6RuK5I6wwlGb4m5
-         MA0g==
-X-Forwarded-Encrypted: i=1; AJvYcCWlX/orWqqOTkfjvv9UTUKVKtlvVxFb2Tnl3i26MHWDyGkVFztVXpbQE5EInQASSNyAYm/H2jHmE4/sBg==@linaro.org
-X-Gm-Message-State: AOJu0YzqAdmYZR2uqwZV0jTRnf1qTtjxforqQ2zvLVf1MAdhOFw+7BS5
-	/GIqUeb097WVFQyRQnk8Q4Nog6hK2N6J5RunfG/chL+8hwEn8ZsukekwLZkDrxsO2M4od6N/i+W
-	O9IvDiTtebeWgFyhM+b37we4uLYBOkwzLjB5fqQcKaL0cGOOArZPHjA==
-X-Gm-Gg: ASbGnctp5f9QKwYv+e/4hjZf7BrhIyssUh10xqsY9FeyM5sW6vmGH2Ix0XQOKqLRM6V
-	kvWpoYyjjcXIveEx/MAKFTmwWIS7ZHm8tsh1w5XNDKMOjOrXrh1f4db2SkA1qiRVp5BGmmGk3Wu
-	DUhDH/j1V4J8anQL2+NwVTxFyhjJLE2omgSMDnzHRSYvNfL3m/tFEkxMa+4w3x7HP0bwSbWKY4p
-	mpL869HYqf2OlzAOczaOpSpkbaN3qORN9gAPoHJANIYjlBGT3CMwfjCbGdbro7lhoHybQVvBk3L
-	S3Y59w==
-X-Received: by 2002:a05:6000:2401:b0:391:489a:ce12 with SMTP id ffacd0b85a97d-39efba608ecmr334065f8f.26.1744924910454;
-        Thu, 17 Apr 2025 14:21:50 -0700 (PDT)
-X-Received: by 2002:a05:6000:2401:b0:391:489a:ce12 with SMTP id ffacd0b85a97d-39efba608ecmr334046f8f.26.1744924910012;
-        Thu, 17 Apr 2025 14:21:50 -0700 (PDT)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4406abfff1asm3872555e9.27.2025.04.17.14.21.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Apr 2025 14:21:49 -0700 (PDT)
-Date: Thu, 17 Apr 2025 17:21:46 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org, Andrew Jones <ajones@ventanamicro.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org, Udo Steinberg <udo@hypervisor.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Ani Sinha <anisinha@redhat.com>
-Subject: Re: [PATCH-for-10.1 v3 6/9] qtest/bios-tables-test: Whitelist
- aarch64/virt 'its_off' variant blobs
-Message-ID: <20250417172138-mutt-send-email-mst@kernel.org>
-References: <20250403204029.47958-1-philmd@linaro.org>
- <20250403204029.47958-7-philmd@linaro.org>
- <671a6c82-ae10-4f3b-9d83-cecc32755206@linaro.org>
- <20250409160531.341c205e@imammedo.users.ipa.redhat.com>
- <98b2676d-ad21-4c05-a165-12ae5e1b9c64@linaro.org>
- <20250410085042.6aa5593d@imammedo.users.ipa.redhat.com>
- <ec5cec94-4d02-442e-94e6-c0c2e79f3684@linaro.org>
- <0dffbcec-ca2a-47d0-b837-2400865371f7@linaro.org>
+ d=1e100.net; s=20230601; t=1744934318; x=1745539118;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AOUZObtkL1pnrtX/HUZz7JN00TbmXk0vW2RpCKqJB7c=;
+ b=Lxrv5KUO19FI3Tj3eoQWJM/7O96PyGhbQ5nWvs1kNaz+iIrdGoQtJgznYAYLvDZ+t/
+ DkOReh5mLNCI8pffLWe7ZH3jqvHj/t7tzzm+Ix13bgh21kPAwugqvzwtOFtHiSK8qqSz
+ 83IX4NKt0GPF1fC/DfkgGiDKNOE0KIbTf0Lle42YxSLH6d+KQWCgCnOjLcbTrmygjxv1
+ xfrBC6xRIrJhp0oI/AOtJhsd2CO9lYg+coPV6bwLaZ6XQ9Yl19lyabzWr2oQZ4zlTTJj
+ TjSUA50R2XH6iZbBBjcSJ/ZkpratcIahKoKGjnR4XLIdvgl8YQgPkaJkycgSBHh1DEJB
+ ZmsQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWMM8odM4ZOG9zV8Z2YEJqkNd1MMzSvbtVz+IS3yb9Ech36QFi/2VrFcp/FG3kjwrNZ2Brd9dC6dw==@nongnu.org
+X-Gm-Message-State: AOJu0YymG8xyKgzncFk1x64zw6ku8EDrQwG3BhAeGwpJDouIOTMkQ1pk
+ IXbPO71VgPNAF5NwiL5fEQkQGf+QjvGKz2S3LAzY94vYR8x+YckFjGARmHfrI0U=
+X-Gm-Gg: ASbGnct7f2ttdvasqJAsv4C9YLCeebozE9mSSL4x6hGy9wuPKoSDFRAfRTP//t4Nkqz
+ nmPNmI0JPeWANsvJhBGM5aeuNiu3Cg8vtnvBvRh4CNEiMGybwFVNu7DzvsuHBvYTXN2Iqkm2t/6
+ LInGdwJrFUnWwz01/BVNYIP2n3n57gCCEqtHeD5KsxSVf/OfpBulixYBi5rGLKcyNwLmJtzNFS1
+ NIJtHXCSG+9kKpIwc0GfSkmzyoGed0wJSfoonSVFq9R6QudRnBW1L/haonZX9Fjhip9JE3W13RO
+ 3gkajCizOiDbJNaocu5xujK8Bdh8J4MhFcg0OcgNESsK8sW5gv3KPfHNzTu4l07kyV2l1LhaerC
+ JIJjK9Qd0VBMmdsMm1q9u
+X-Received: by 2002:a05:6000:4006:b0:390:f4f9:8396 with SMTP id
+ ffacd0b85a97d-39efba5c77emr501897f8f.28.1744934318310; 
+ Thu, 17 Apr 2025 16:58:38 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-39efa49312fsm1045268f8f.70.2025.04.17.16.58.37
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 17 Apr 2025 16:58:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Felipe Balbi <balbi@kernel.org>, Bernhard Beschow <shentey@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Alistair Francis <alistair@alistair23.me>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH 04/11] hw/arm/digic: Define machine as generic QOM type
+Date: Fri, 18 Apr 2025 01:58:07 +0200
+Message-ID: <20250417235814.98677-5-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250417235814.98677-1-philmd@linaro.org>
+References: <20250417235814.98677-1-philmd@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <0dffbcec-ca2a-47d0-b837-2400865371f7@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: U_wu-iCVmigPaYCvrCZeiEuI-QsIOJTxKBI66Ia1HMY_1744924910
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: k9N3f5hNHC8W
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_XBL=0.375, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4/iVEpbl9WBk
 
-On Thu, Apr 17, 2025 at 06:06:14PM -0300, Gustavo Romero wrote:
-> Hi Igor and Michael,
-> 
-> On 4/10/25 13:22, Gustavo Romero wrote:
-> > Hi Igor,
-> > 
-> > On 4/10/25 03:50, Igor Mammedov wrote:
-> > > On Wed, 9 Apr 2025 12:49:36 -0300
-> > > Gustavo Romero <gustavo.romero@linaro.org> wrote:
-> > > 
-> > > > Hi Igor,
-> > > > 
-> > > > On 4/9/25 11:05, Igor Mammedov wrote:
-> > > > > On Fri, 4 Apr 2025 00:01:22 -0300
-> > > > > Gustavo Romero <gustavo.romero@linaro.org> wrote:
-> > > > > > Hi Phil,
-> > > > > > 
-> > > > > > On 4/3/25 17:40, Philippe Mathieu-Daudé wrote:
-> > > > > > > We are going to fix the test_acpi_aarch64_virt_tcg_its_off()
-> > > > > > > test. In preparation, copy the ACPI tables which will be
-> > > > > > > altered as 'its_off' variants, and whitelist them.
-> > > > > > > 
-> > > > > > > Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-> > > > > > > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > > > > > > ---
-> > > > > > >     tests/qtest/bios-tables-test-allowed-diff.h |   3 +++
-> > > > > > >     tests/qtest/bios-tables-test.c              |   1 +
-> > > > > > >     tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 184 bytes
-> > > > > > >     tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
-> > > > > > >     tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 236 bytes
-> > > > > > >     5 files changed, 4 insertions(+)
-> > > > > > >     create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
-> > > > > > >     create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
-> > > > > > >     create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
-> > > > > > > 
-> > > > > > > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> > > > > > > index dfb8523c8bf..3421dd5adf3 100644
-> > > > > > > --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> > > > > > > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> > > > > > > @@ -1 +1,4 @@
-> > > > > > >     /* List of comma-separated changed AML files to ignore */
-> > > > > > > +"tests/data/acpi/aarch64/virt/APIC.its_off",
-> > > > > > > +"tests/data/acpi/aarch64/virt/FACP.its_off",
-> > > > > > > +"tests/data/acpi/aarch64/virt/IORT.its_off",
-> > > > > > 
-> > > > > > I think your first approach is the correct one: you add the blobs
-> > > > > > when adding the new test, so they would go into patch 5/9 in this series,
-> > > > > > making the test pass without adding anything to bios-tables-test-allowed-diff.h.
-> > > > > > Then in this patch only add the APIC.its_off table to the bios-tables-test-allowed-diff.h
-> > > > > > since that's the table that changes when the fix is in place, as you did in:
-> > > > > 
-> > > > > if APIC.its_off is the only one that's changing, but FACP/IORT blobs are the same
-> > > > > as suffix-less blobs, one can omit copying FACP/IORT as test harness will fallback
-> > > > > to suffix-less blob if the one with suffix isn't found.
-> > > > 
-> > > > OK. Just clarifying and for the records, this is not the case for this series
-> > > > 
-> > > > 
-> > > > > if blobs are different from defaults then create empty blobs and whitelist them in the same patch
-> > > > > then do your changes and then update blobs & wipeout withe list.
-> > > > 
-> > > > Thanks for confirming it. That's what I suggested to Phil in my first review and what
-> > > > I understood from the prescription in bios-tables-test.c.
-> > > > 
-> > > > However, on second thoughts, for this particular series, isn't it better to have the following commit sequence instead:
-> > > > 
-> > > > 1) Add the new test and the new blobs that make the test pass, i.e. APIC.suffix, FACP.suffix, and IORT.suffix (they are different than the default suffix-less blobs)
-> > > 
-> > > blobs should be a separate commit (that way it's easier for maintainer to rebase them,
-> > > if they clash during merge with some other change.
-> > 
-> > I see. What is a bit confusing here is that the series consists in
-> > one blob addition act (for the new test) and one blob update/removal act (after the fix).
-> > 
-> > 
-> > > > 2) Whitelist only the APIC.suffix since that's the table that will change with the fix
-> > > > 3) Add the fix (which changes the APIC table so a new APIC.suffix blob is needed and also stops generating the IORT table, so no more IORT.suffix blob is necessary)
-> > > > 4) Finally, update only the APIC.suffix blob and remove the IORT.suffix blob and wipe out the whitelist
-> > > > 
-> > > > This way:
-> > > > 
-> > > > A) It's clear that only ACPI blob changed with the fix, because there is no addition of a FACP.suffix blob in 4) (it remains the same)
-> > > > B) It's clear that the IORT table is removed with the fix and is not relevant anymore for the test
-> > > 
-> > > I'd just mention it in commit log so  that later no one would wonder why we are adding and then removing tables
-> > > 
-> > > As for the rest of suggestions, it looks fine to me.
-> > 
-> > Well, 2) won't make sense anymore since APIC.suffix would be already in the
-> > whitelist in the previous patch that added the empty blobs. Since there won't
-> > be a commit that adds _only_ the APIC.suffix to the whitelist, in preparation
-> > for the fix, this info is "lost" in the series, even tho it's possible to
-> > mention in the commit message.
-> > 
-> > Hence, what I think is not ideal from a maintainer's/reviewer's perspective,
-> > is that in one commit all the blobs are updated/removed at once, which is
-> > confusing because the fix did not touch the FACP table (for instance) and
-> > this table is updated with APIC and with the removal of IORT, altogether,
-> > in the last commit.
-> > 
-> > So, for this series, which adds new blobs and _also_ updates and removes some
-> > of them, how about the following organization:
-> > 
-> > - Patch 1     : Add the new test, add the empty blobs *.suffix files, whitelist such a blobs
-> > - Patch 2     : Update the blobs in Patch 1 with the ones that make the new test pass and remove them from the whitelist
-> > 
-> > - Patch 3     : Add the APIC.suffix blob to the whitelist (the table that changes due to the fix)
-> > - Patch 4 - n : Fix(es)
-> > - Patch (n+1) : Update the APIC.suffix blob, remove IORT.suffix blob, and remove the APIC.suffix blob from the whitelist
-> >                * Add the APIC diff to the commit log
-> >                * Mention in the commit log that IORT.suffix is removed because IORT table is no long generated after the fix
-> > 
-> > This way: a) no commit fails the test and b) blobs are added/updated/removed in separate commits
-> > 
-> > What do you think?
-> 
-> I’d really appreciate it if you could confirm whether this organization makes sense.
-> 
-> 
-> Cheers,
-> Gustavo
+While DEFINE_MACHINE() is a succinct macro, it doesn't
+allow registering QOM interfaces to the defined machine.
+Convert to the generic DEFINE_TYPES() in preparation to
+register interfaces.
 
-looks ok. Igor?
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/digic_boards.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+index 466b8b84c0e..3c0cc6e4370 100644
+--- a/hw/arm/digic_boards.c
++++ b/hw/arm/digic_boards.c
+@@ -136,8 +136,10 @@ static void canon_a1100_init(MachineState *machine)
+     digic4_board_init(machine, &digic4_board_canon_a1100);
+ }
+ 
+-static void canon_a1100_machine_init(MachineClass *mc)
++static void digic_machine_class_init(ObjectClass *oc, void *data)
+ {
++    MachineClass *mc = MACHINE_CLASS(oc);
++
+     mc->desc = "Canon PowerShot A1100 IS (ARM946)";
+     mc->init = &canon_a1100_init;
+     mc->ignore_memory_transaction_failures = true;
+@@ -145,4 +147,12 @@ static void canon_a1100_machine_init(MachineClass *mc)
+     mc->default_ram_id = "ram";
+ }
+ 
+-DEFINE_MACHINE("canon-a1100", canon_a1100_machine_init)
++static const TypeInfo digic_machine_types[] = {
++    {
++        .name           = MACHINE_TYPE_NAME("canon-a1100"),
++        .parent         = TYPE_MACHINE,
++        .class_init     = digic_machine_class_init,
++    },
++};
++
++DEFINE_TYPES(digic_machine_types)
+-- 
+2.47.1
+

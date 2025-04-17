@@ -1,152 +1,468 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp651066njk;
-        Thu, 17 Apr 2025 02:58:11 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b93:b0:43a:ed4d:716c with SMTP id 5b1f17b1804b1-4405d69b031mr33433115e9.22.1744883890750;
-        Thu, 17 Apr 2025 02:58:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744883890; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp656468njk;
+        Thu, 17 Apr 2025 03:07:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJHu8JhwElE8flav0QNhJ3CKY4QvxsdCXMa77RboySrl5yz/Kk6MTvFVqi2z5fNoArs/2emm7z/gCmog==@linaro.org
+X-Google-Smtp-Source: AGHT+IH8DOGyH4NyYDToE+3o/uf6I1+LbJ2iwzGIT95r2OGsYMOgFUUiKpFVl2rmt3GrNdJqoiSn
+X-Received: by 2002:a05:6214:cc8:b0:6e8:eabf:fd55 with SMTP id 6a1803df08f44-6f2b305af6dmr76060896d6.39.1744884438441;
+        Thu, 17 Apr 2025 03:07:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744884438; cv=none;
         d=google.com; s=arc-20240605;
-        b=ITN6OtQ/Gd0Z7jtKzC/3OWl6oUwXmtsO2kdH0E/1cnQM1bUiQbwX+LCOSpl4XrBI/z
-         XQQFrlyvAQpRRyx/CTVn1mGWljXzXb9eLM/6OfwSrWyKvnZSGmBHbMfqxXlthNuDIWMn
-         fuI2CbKk42Dv2IQkO6GJNCo8noMFNdsbQECvaJMRpuJOCWpaw/uzD4feljM4GBg1cSan
-         EmCyHDX8vrOLeoVwcHW28DuLOS21i4TNNW33Xg33TDUUP563RNVroc9qgoKY+aKZ/UIk
-         YWZw6c00rVYjuuI37HxXF3WyTIwm3SRPFUVF+UP6UziDh0m3eib5bwYklKdRx2KEueVE
-         0xtA==
+        b=PSfx/dEEM4iYJG+kL8MWFpgtCdFJf5azuKb7KJSWSsU26p0tUNYYDxJimvbDBpjQjW
+         VTylkoJEKLEJRKZswQWxaoCPehf5UEe204pGuCGPp7kyvyutIBWDCAts9uBKVTDzDImj
+         uq9XOHWfmlD960ujgGMJofhz19+7X1SepLIHugQr7baMCDHsXKAS4w/4w0Z5j7AtlM97
+         Oc9N7R6NFXAa5C90doRpFA3bZ1RWYlog9v9ZZ4xOcbtP7x2wAcvByZZxu+7prpvD44CX
+         upDdF2JcEagBG5NYzerGG8RlTfxN+3XiD2f81N6KU/g3L5rRDhbT+gmB29XCD4Zx0XdM
+         etsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=WhbUksNA5WCsHu7DVyS15rbACub4hYHmoXK4gfbw1I8=;
-        fh=fBlaMbEcqh7qRrh/4PMPxXZXWarHK9f7O0uylPUAsHQ=;
-        b=RLx04kynvyuN+K+9db/sVlDiLWmXhH48cUkMIWHUeJ94EkuFcdpwDhFH6rk5opB7PA
-         qx3xbK0OhKxYWjNUDicEU9Zn9WWsIDOPZOqanl6PHryd2ME9wJfgjlRaou1UxPXwJ4hj
-         Fn2qiTV6ZctETXp5F30iCFpKGPn8SsuA/swvr0AAyVDdIn6QcDOR5LvDqZDYLbuF2MQ2
-         +w6uYFu/Wl9tqgv5HdXojG4KWTD6DL9KbrHGhKm8yJ6w7pg1yPab5CNArPw3RDsEdS9C
-         lEKLbz7REOpvr8my2Uz890Rb98PPQYniSOL7PnM56k2v9wGZM53/y45HQsveLwBobvH+
-         BxNw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=935At1+GEkK97IFVUQ39VPxRPadAohxu7N/GMPwO/IQ=;
+        fh=cfzBSoZRsCZhhWJunDljpQFb0rtP8/+3oxo3N0KDN/g=;
+        b=YBi/21rPRJEbPYtG6H9P+LfvwtIwOM7ENdWtQ3B7ybklp6KZtU/ybuvagt8yzKR7nl
+         ILDie/CZFZQcY1YA/9zXs6Ebgc0eUVxJ2HK9BHjaWmHzyaOfVa1lc5EOtCCSdpbFEI89
+         7vhoo0xxTyd6NN6F1CIlOZ+go98V2etnMOmhXpMl5viZKvcY1Ow8PwmZTxIymQSa5eFe
+         29Vhq2k3xjD4fMaXgzbhunA8lRSDaNPbzIooL4Db68vNJI8vR3kAkOyz1cgfJj+c9d7S
+         ANWhpMg1hJeh25UaDeZFjyNRgs0B/RMw6n241XJkQpIr1TDboANvkSR4RWsiwjyF8hnR
+         DFsQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k/0IUHWB";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RlJU84Y8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43f3099cb0csor61738125e9.4.2025.04.17.02.58.10
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f0de9dcd8esi176614676d6.184.2025.04.17.03.07.18
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 17 Apr 2025 02:58:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Apr 2025 03:07:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k/0IUHWB";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RlJU84Y8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u5M8y-0005gC-Kj; Thu, 17 Apr 2025 06:06:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u5M8f-0005bR-Hh; Thu, 17 Apr 2025 06:06:36 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1u5M8d-0003Zu-4B; Thu, 17 Apr 2025 06:06:33 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-39ee651e419so305988f8f.3; 
+ Thu, 17 Apr 2025 03:06:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744883890; x=1745488690; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=WhbUksNA5WCsHu7DVyS15rbACub4hYHmoXK4gfbw1I8=;
-        b=k/0IUHWBE4G3tTEnBq51alTw7RWbXyOHZo0kjPtD3UGGgAbs/FIBoQbsC3hSF/wzCj
-         MLh8/flx1o1FIisiCIlNyf97V+sTYIfi5mQ9f1dpSujbTrdvtW5XGZe6kUfIUhvxgJB1
-         NElS+Bm0Vl2Ro+DHnBJ8/LqTKTCYigv81ZI2e2sTR27jyQuzANFx30wtuZqvgDh6/S26
-         7fzFcoYGZrS6tiDW7OIG3+sNWaAiAq6mDwbiEKo0nXgjgu6SpJ0AVTgw8Gn0/lBcMleH
-         PY1etpRef88FMiojft7+ePCQ7pfDLHeuZIJSWP45SkInFeSjfb3uE/TmkoQTrmM2wcg6
-         WEvA==
+ d=gmail.com; s=20230601; t=1744884388; x=1745489188; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=935At1+GEkK97IFVUQ39VPxRPadAohxu7N/GMPwO/IQ=;
+ b=RlJU84Y8zUSp1mioHVd3xRWXrb2htGJXNfid/zbxRY4YsayXvjn7rsKodpqleFh68s
+ 6Nebfxj6lF2vv4vIY96DI+Z9LjNJ8Y6MIn4DIWXoVMPkBKfOtDqJ5u3ArYgXvZhI2te8
+ BOUletSdZyrvEU0gjegr6effDpZIjf+sfvT8mSvldrCVKz9Qkw+XUlZqfSfRFTlMEQnX
+ zkBQcATmPwjDg8H2zKtWiguBMydnEMufKmLR9ozqzdqxKH4I//qRcYX4lsaffratIN2A
+ uy7csc4EFPTmJpuOhWg0lzpHlDsyYserxRsXpZpdKrFvs9vAOpFhEabAnPfoLRJ1smXC
+ YbWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744883890; x=1745488690;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WhbUksNA5WCsHu7DVyS15rbACub4hYHmoXK4gfbw1I8=;
-        b=nm5TugWi0eoDF6n6lrJ+JcA+qmQEjIwQ0OA2AUhFI6kSauJ6H4C07gqS/brr6wlDh0
-         PPK5f3YfXfojEjcIaPDFLoLBBu08ZWgdIz6jAI6g8OywCZ5Ww1Q3pH6yxDPuaFNRvXQU
-         DBFBllbdwBIEF5TXnqRnBCNVloYeLtafhMdnwzHojsM5DXT2WMrgykV+8sNU1WH4OOK+
-         m8ORiCK7HhdPfbLnWoPi6EmsPKdi64F6UJ+5qugHahCmZ8RwmTdKPvptZM5wb4710pFK
-         MN/AEOtlVomciD0yksyCZepnKlh4bcJLw6Dt+1nAxcc+M7kekqY2453SHYTnQIegmIKm
-         e3Dw==
-X-Gm-Message-State: AOJu0YxsGRNjftafHCfqsgahqdnYjavnTm1Wsohpj3MdLiHDBD/sHFeD
-	Im2UBAdvetSCx+bV1y9f2DMcjPYsqZ3QzWDtxF8LRdjbhRApNuYcoeGmIhbI5k/LLQ==
-X-Gm-Gg: ASbGncvyvRvpgUf8clBKMBw4G46+A3Z6hsUj2FvduRjK9YgceWc6Xa90lj5H8VOqMBO
-	/snS8+hlBxuDN9AXr71iGayfYAfjdfXI4xJZvig2NdLjADusCQn4ExKJkJaJJMwdxU5pQw1GtSN
-	bdVoq0wBf3WCRp1UI4b6LTAAQVm6zWoTT6DSEB7a0RSp69k3hfZW4r1heYhZRBm8tJ9qb5d0KQ2
-	Wf7AGFdQLC1ldlIavC5RUFZ8pQjK6E/THESt/vC1ukRsgRADUNJ12OeFKXpzfNb3ZBcuxsvhKAJ
-	K4FPdaksr/tF/skPUqGPiWnqGoFa6QIpTauli2yznkBl15cLbo65L4zF9DkL3F+4hG9ZatKI+v1
-	bMHgwqQsiK9IKORKUsHw=
-X-Google-Smtp-Source: AGHT+IEqeET6AdG1UMkwctbSE4l83P0Z+vGmkZxifhSHVLyYOM9QHGkJShfCLgn7NkJNkBmlC0mTqA==
-X-Received: by 2002:a05:6000:420b:b0:38f:2678:d790 with SMTP id ffacd0b85a97d-39ee5b37c35mr4702997f8f.33.1744883890140;
-        Thu, 17 Apr 2025 02:58:10 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.176] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4405b4d3463sm47258745e9.13.2025.04.17.02.58.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Apr 2025 02:58:09 -0700 (PDT)
-Message-ID: <1e658b6e-02ed-47d1-9c19-d5753cc6e6c8@linaro.org>
-Date: Thu, 17 Apr 2025 11:58:08 +0200
+ d=1e100.net; s=20230601; t=1744884388; x=1745489188;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=935At1+GEkK97IFVUQ39VPxRPadAohxu7N/GMPwO/IQ=;
+ b=pG89ZmFFqxxn1fBomXvgNX+bZa216z/Nz+vUzAAfw+quD6bwRk6K5i2yhLV5kAC9A/
+ JASkg3PJSKVf1EMV7dyIv/I5F71P1eBVLVX7EiFPY33M63iB9rDdZzc+574lg6qyMH6A
+ rM9PCfUaygaprVqe2OcvrWU1TVNI2yE+czB77EqO+w5hWnXcwSj9g4+N39mn3OuXtG2u
+ SAbEkkR+bXCqDZSCD3wECbO88m1sImoUKkcIBXGglJk3JT3Z57gwNxeDKJ800QhLDYwP
+ m6gaAfde21EvRQdUFJu2qganw6R16bFMqZdRZSWYW5VgQGgjuEPkGszMfJxWQJTRYW0d
+ MRrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV8GlaCC7ToTBXvOE0eXrU63tyBP88WYyS6xbvjsHMslzchcgfT1pSn9+49f2p4Ui8Z47yt/E5TGw==@nongnu.org,
+ AJvYcCWMDb7nmtQxvJNKPEq/LzOt9PRrBK4JKQQTLhEK3XzFBw0xpH9qQKOs7pjUNRPNVh3v2aVcEfKwsjkbSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyXNQMwOIdAVHqtZ6yJUDqh/jN6I00Yr8dSOLUB0UX9SBX1rEq3
+ joaYXdV8CSnsRZcfw0iUsxpUx68wplfLoagMz9acUfLvBsfVwWaU
+X-Gm-Gg: ASbGncu294hDEIHk0vD8uz07yw8UEdQidjzrKbEP8PfZGJt3JEUt09qHR2kCk6W5jwf
+ dc3Bp39Hjbc4Fhh/GCStyFE5sjegaNTwZ88FEL8rr3p67X0YErNt/Ek0SON0buuiZXVP5Eb7iOj
+ ZRXMr15dxTKQpVdhsJLHubgEn1gnojm+OL7Oq62hZ1TqIW2BpDfwpLSANwt9VEJOLFb5z/1Rtt7
+ 3YsxNi4cfrih9SR2256NENb7djc+Z1IPgxpRgndT4YBECy1HfSupBOBY2r39b3IsTTp9Z3PDPOL
+ pyLz7S2fU9LlmUeixx41tzdExlHfQIuAIvY=
+X-Received: by 2002:a05:6000:420d:b0:39c:2b28:604a with SMTP id
+ ffacd0b85a97d-39ee5bb0c8fmr3984399f8f.50.1744884388279; 
+ Thu, 17 Apr 2025 03:06:28 -0700 (PDT)
+Received: from [127.0.0.1] ([62.214.191.67]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-39eae96c074sm19203938f8f.28.2025.04.17.03.06.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Apr 2025 03:06:27 -0700 (PDT)
+Date: Thu, 17 Apr 2025 10:06:21 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Kane Chen <kane_chen@aspeedtech.com>, Kane Chen via <qemu-devel@nongnu.org>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: troy_lee@aspeedtech.com, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_1/3=5D_hw/misc/aspeed=5Fot?=
+ =?US-ASCII?Q?p=3A_Add_Aspeed_OTP_memory_device_model?=
+In-Reply-To: <20250417030957.2586802-2-kane_chen@aspeedtech.com>
+References: <20250417030957.2586802-1-kane_chen@aspeedtech.com>
+ <20250417030957.2586802-2-kane_chen@aspeedtech.com>
+Message-ID: <BE49E71F-6FE7-4D87-BB24-A88035B94183@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 13/19] include/qemu/osdep.h: Add Emscripten-specific OS
- dependencies
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
- <58863961cf88a72b76a90279da09ea332943924d.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <58863961cf88a72b76a90279da09ea332943924d.1744787186.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: XYM00o3UlxQ6
-
-Hi Kohei,
-
-On 16/4/25 10:14, Kohei Tokunaga wrote:
-> On emscripten, some implementations in os-posix.c can't be used such as
-> daemonizing and changing user. This commit introduces os-wasm.c and
-> os-wasm.h which are forked from os-posix.c and os-posix.h and patched for
-> targetting Emscripten.
-> 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-> ---
->   include/qemu/osdep.h      |   8 ++-
->   include/system/os-posix.h |   3 +-
->   include/system/os-wasm.h  | 105 +++++++++++++++++++++++++++++++++
->   os-wasm.c                 | 119 ++++++++++++++++++++++++++++++++++++++
->   4 files changed, 232 insertions(+), 3 deletions(-)
->   create mode 100644 include/system/os-wasm.h
->   create mode 100644 os-wasm.c
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iH1OmJ7OD/R2
 
 
-> diff --git a/include/system/os-posix.h b/include/system/os-posix.h
-> index ce5b3bccf8..e87cc36a3a 100644
-> --- a/include/system/os-posix.h
-> +++ b/include/system/os-posix.h
-> @@ -1,5 +1,6 @@
->   /*
-> - * posix specific declarations
-> + * posix specific declarations forked from os-posix.c, removing functions not
-> + * working on Emscripten
 
-You shouldn't have to modify this file, likely a rebase typo.
+Am 17=2E April 2025 03:09:53 UTC schrieb Kane Chen via <qemu-devel@nongnu=
+=2Eorg>:
+>From: Kane-Chen-AS <kane_chen@aspeedtech=2Ecom>
+>
+>This introduces a new model for the ASPEED OTP (One-Time Programmable)
+>memory=2E The device is implemented as a `SysBusDevice` and provides an
+>abstracted interface for OTP read, write (program), and default value
+>initialization=2E
+>
+>OTP content is backed by a block device and supports QEMU=E2=80=99s drive
+>infrastructure via the "drive" property=2E
+>
+>Features:
+>- Enforces irreversible bit programming logic (0->1 or 1->0)
+>- Provides interface for SoC/secure controller integration
+>- Validates bounds and bit-level constraints
+>- Uses QEMU error handling conventions and logging
+>
+>Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech=2Ecom>
+>---
+> hw/misc/aspeed_otpmem=2Ec         | 217 ++++++++++++++++++++++++++++++++
+> hw/misc/meson=2Ebuild             |   1 +
+> include/hw/misc/aspeed_otpmem=2Eh |  40 ++++++
+> 3 files changed, 258 insertions(+)
+> create mode 100644 hw/misc/aspeed_otpmem=2Ec
+> create mode 100644 include/hw/misc/aspeed_otpmem=2Eh
+>
+>diff --git a/hw/misc/aspeed_otpmem=2Ec b/hw/misc/aspeed_otpmem=2Ec
+>new file mode 100644
+>index 0000000000=2E=2Ecf4b3aa4d2
+>--- /dev/null
+>+++ b/hw/misc/aspeed_otpmem=2Ec
+>@@ -0,0 +1,217 @@
+>+/*
+>+ *  ASPEED OTP (One-Time Programmable) memory
+>+ *
+>+ *  Copyright (C) 2025 Aspeed
+>+ *
+>+ * This code is licensed under the GPL version 2 or later=2E  See
+>+ * the COPYING file in the top-level directory=2E
+>+ */
+>+
+>+#include "qemu/osdep=2Eh"
+>+#include "hw/block/block=2Eh"
+>+#include "hw/block/flash=2Eh"
+>+#include "hw/qdev-properties=2Eh"
+>+#include "hw/qdev-properties-system=2Eh"
+>+#include "system/block-backend=2Eh"
+>+#include "qemu/log=2Eh"
+>+#include "qemu/option=2Eh"
+>+#include "hw/sysbus=2Eh"
+>+#include "qemu/error-report=2Eh"
+>+#include "hw/misc/aspeed_otpmem=2Eh"
+>+
+>+static const Property aspeed_otpmem_properties[] =3D {
+>+    DEFINE_PROP_DRIVE("drive", AspeedOTPMemState, blk),
+>+};
+>+
+>+static void aspeed_otpmem_read(void *opaque, uint32_t addr,
+>+                               uint32_t *out, Error **errp)
+>+{
+>+    AspeedOTPMemState *otp =3D ASPEED_OTPMEM(opaque);
+>+
+>+    if (!otp->blk) {
+>+        error_setg(errp, "OTP memory is not initialized");
+>+        return;
+>+    }
 
->    *
->    * Copyright (c) 2003-2008 Fabrice Bellard
->    * Copyright (c) 2010 Jes Sorensen <Jes.Sorensen@redhat.com>
+Since the same condition is checked in realize(), this if statement is unr=
+eachable code=2E Maybe use an assert() here? There is more unreachable code=
+ like this in other functions=2E
+
+Best regards,
+Bernhard
+
+>+
+>+    if (out =3D=3D NULL) {
+>+        error_setg(errp, "out is NULL");
+>+        return;
+>+    }
+>+
+>+    if (addr > (otp->max_size - 4)) {
+>+        error_setg(errp, "OTP memory 0x%x is exceeded", addr);
+>+        return;
+>+    }
+>+
+>+    if (blk_pread(otp->blk, (int64_t)addr, sizeof(uint32_t), out, 0) < 0=
+) {
+>+        error_setg(errp, "Failed to read data 0x%x", addr);
+>+        return;
+>+    }
+>+    return;
+>+}
+>+
+>+static bool valid_program_data(uint32_t otp_addr,
+>+                                 uint32_t value, uint32_t prog_bit)
+>+{
+>+    uint32_t programmed_bits, has_programmable_bits;
+>+    bool is_odd =3D otp_addr & 1;
+>+
+>+    /*
+>+     * prog_bit uses 0s to indicate target bits to program:
+>+     *   - if OTP word is even-indexed, programmed bits flip 0->1
+>+     *   - if odd, bits flip 1->0
+>+     * Bit programming is one-way only and irreversible=2E
+>+     */
+>+    if (is_odd) {
+>+        programmed_bits =3D ~value & prog_bit;
+>+    } else {
+>+        programmed_bits =3D value & (~prog_bit);
+>+    }
+>+
+>+    /* If there is some bit can be programed, to accept the request */
+>+    has_programmable_bits =3D value ^ (~prog_bit);
+>+
+>+    if (programmed_bits) {
+>+        qemu_log_mask(LOG_GUEST_ERROR,
+>+                      "%s: Found programmed bits in addr %x\n",
+>+                      __func__, otp_addr);
+>+        for (int i =3D 0; i < 32; ++i) {
+>+            if (programmed_bits & (1U << i)) {
+>+                qemu_log_mask(LOG_GUEST_ERROR,
+>+                              "  Programmed bit %d\n",
+>+                              i);
+>+            }
+>+        }
+>+    }
+>+
+>+    return has_programmable_bits !=3D 0;
+>+}
+>+
+>+static bool program_otpmem_data(void *opaque, uint32_t otp_addr,
+>+                             uint32_t prog_bit, uint32_t *value)
+>+{
+>+    AspeedOTPMemState *s =3D ASPEED_OTPMEM(opaque);
+>+    bool is_odd =3D otp_addr & 1;
+>+    uint32_t otp_offset =3D otp_addr << 2;
+>+
+>+    if (blk_pread(s->blk, (int64_t)otp_offset,
+>+                  sizeof(uint32_t), value, 0) < 0) {
+>+        qemu_log_mask(LOG_GUEST_ERROR,
+>+                      "%s: Failed to read data 0x%x\n",
+>+                      __func__, otp_offset);
+>+        return false;
+>+    }
+>+
+>+    if (!valid_program_data(otp_addr, *value, prog_bit)) {
+>+        return false;
+>+    }
+>+
+>+    if (is_odd) {
+>+        *value &=3D ~prog_bit;
+>+    } else {
+>+        *value |=3D ~prog_bit;
+>+    }
+>+
+>+    return true;
+>+}
+>+
+>+static void aspeed_otpmem_prog(void *s, uint32_t otp_addr,
+>+                               uint32_t data, Error **errp)
+>+{
+>+    AspeedOTPMemState *otp =3D ASPEED_OTPMEM(s);
+>+    uint32_t otp_offset, value;
+>+
+>+    if (!otp->blk) {
+>+        error_setg(errp, "OTP memory is not initialized");
+>+        return;
+>+    }
+>+
+>+    if (otp_addr > (otp->max_size >> 2)) {
+>+        error_setg(errp, "OTP memory 0x%x is exceeded", otp_addr);
+>+        return;
+>+    }
+>+
+>+    otp_offset =3D otp_addr << 2;
+>+    if (!program_otpmem_data(s, otp_addr, data, &value)) {
+>+        error_setg(errp, "Failed to program data");
+>+        return;
+>+    }
+>+
+>+    if (blk_pwrite(otp->blk, (int64_t)otp_offset,
+>+                   sizeof(value), &value, 0) < 0) {
+>+        error_setg(errp, "Failed to write data");
+>+    }
+>+
+>+    return;
+>+}
+>+
+>+static void aspeed_otpmem_set_default(void *s, uint32_t otp_offset,
+>+                                      uint32_t data, Error **errp)
+>+{
+>+    AspeedOTPMemState *otp =3D ASPEED_OTPMEM(s);
+>+
+>+    if ((otp_offset + 4) > otp->max_size) {
+>+        error_setg(errp, "OTP memory 0x%x is exceeded", otp_offset);
+>+        return;
+>+    }
+>+
+>+    if (blk_pwrite(otp->blk, (int64_t)otp_offset,
+>+                   sizeof(data), &data, 0) < 0) {
+>+        error_setg(errp, "Failed to write data");
+>+    }
+>+    return;
+>+}
+>+
+>+static AspeedOTPMemOps aspeed_otpmem_ops =3D {
+>+    =2Eread =3D aspeed_otpmem_read,
+>+    =2Eprog =3D aspeed_otpmem_prog,
+>+    =2Eset_default_value =3D aspeed_otpmem_set_default
+>+};
+>+
+>+static void aspeed_otpmem_realize(DeviceState *dev, Error **errp)
+>+{
+>+    AspeedOTPMemState *s =3D ASPEED_OTPMEM(dev);
+>+
+>+    if (!s->blk) {
+>+        error_setg(&error_fatal, "OTP memory is not initialized");
+>+        return;
+>+    }
+>+
+>+    s->max_size =3D blk_getlength(s->blk);
+>+    if (s->max_size < 0 || (s->max_size % 4)) {
+>+        error_setg(&error_fatal,
+>+                   "Unexpected OTP memory size: %" PRId64 "",
+>+                   s->max_size);
+>+        return;
+>+    }
+>+
+>+    s->ops =3D &aspeed_otpmem_ops;
+>+
+>+    return;
+>+}
+>+
+>+static void aspeed_otpmem_system_reset(DeviceState *dev)
+>+{
+>+    return;
+>+}
+>+
+>+static void aspeed_otpmem_class_init(ObjectClass *klass, void *data)
+>+{
+>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>+
+>+    device_class_set_legacy_reset(dc, aspeed_otpmem_system_reset);
+>+    dc->realize =3D aspeed_otpmem_realize;
+>+    device_class_set_props(dc, aspeed_otpmem_properties);
+>+
+>+}
+>+
+>+static const TypeInfo aspeed_otpmem_types[] =3D {
+>+    {
+>+        =2Ename           =3D TYPE_ASPEED_OTPMEM,
+>+        =2Eparent         =3D TYPE_SYS_BUS_DEVICE,
+>+        =2Einstance_size  =3D sizeof(AspeedOTPMemState),
+>+        =2Eclass_init     =3D aspeed_otpmem_class_init,
+>+    },
+>+};
+>+
+>+DEFINE_TYPES(aspeed_otpmem_types)
+>diff --git a/hw/misc/meson=2Ebuild b/hw/misc/meson=2Ebuild
+>index 6d47de482c=2E=2Eed1eaaa2ad 100644
+>--- a/hw/misc/meson=2Ebuild
+>+++ b/hw/misc/meson=2Ebuild
+>@@ -136,6 +136,7 @@ system_ss=2Eadd(when: 'CONFIG_ASPEED_SOC', if_true: f=
+iles(
+>   'aspeed_sbc=2Ec',
+>   'aspeed_sdmc=2Ec',
+>   'aspeed_xdma=2Ec',
+>+  'aspeed_otpmem=2Ec',
+>   'aspeed_peci=2Ec',
+>   'aspeed_sli=2Ec'))
+>=20
+>diff --git a/include/hw/misc/aspeed_otpmem=2Eh b/include/hw/misc/aspeed_o=
+tpmem=2Eh
+>new file mode 100644
+>index 0000000000=2E=2E11e2de70b6
+>--- /dev/null
+>+++ b/include/hw/misc/aspeed_otpmem=2Eh
+>@@ -0,0 +1,40 @@
+>+/*
+>+ *  ASPEED OTP (One-Time Programmable) memory
+>+ *
+>+ *  Copyright (C) 2025 Aspeed
+>+ *
+>+ * This code is licensed under the GPL version 2 or later=2E  See
+>+ * the COPYING file in the top-level directory=2E
+>+ */
+>+
+>+#ifndef ASPEED_OTPMMEM_H
+>+#define ASPEED_OTPMMEM_H
+>+
+>+#include "hw/sysbus=2Eh"
+>+#include "qapi/error=2Eh"
+>+
+>+#define TYPE_ASPEED_OTPMEM "aspeed=2Eotpmem"
+>+#define ASPEED_OTPMEM_DRIVE "otpmem"
+>+
+>+#define ASPEED_OTPMEM(obj) OBJECT_CHECK(AspeedOTPMemState, (obj), \
+>+                                        TYPE_ASPEED_OTPMEM)
+>+
+>+typedef struct AspeedOTPMemOps {
+>+    void (*read)(void *s, uint32_t addr, uint32_t *out, Error **errp);
+>+    void (*prog)(void *s, uint32_t addr, uint32_t data, Error **errp);
+>+    void (*set_default_value)(void *s, uint32_t otp_offset,
+>+                              uint32_t data, Error **errp);
+>+} AspeedOTPMemOps;
+>+
+>+typedef struct AspeedOTPMemState {
+>+    SysBusDevice parent_obj;
+>+
+>+    MemoryRegion mmio;
+>+    BlockBackend *blk;
+>+    int64_t max_size;
+>+
+>+    AspeedOTPMemOps *ops;
+>+} AspeedOTPMemState;
+>+
+>+#endif /* ASPEED_OTPMMEM_H */
+>+

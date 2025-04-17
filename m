@@ -1,292 +1,230 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5285868njd;
-        Sat, 26 Apr 2025 23:28:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWc4p6ViM0/+fmhILNwPuyGZNAXIe0cy6wlEYMDIIZRgerMaRlwwB2wynbqYHAfB9YEmqIEoCW+lopUuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEfjlKVpUcf4ECRxSDKp4VaJ2R7DL8Z8qGAEwrdHkXTxl8+l45CgDYi7qsqesXBTtP/h7c
-X-Received: by 2002:a05:622a:653:b0:477:db8:e15b with SMTP id d75a77b69052e-4813122783bmr59912031cf.9.1745735338930;
-        Sat, 26 Apr 2025 23:28:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745735338; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp1047645njk;
+        Thu, 17 Apr 2025 14:06:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnSHq/11nvA+jA/regpoRQeEM4lFyE8zpvLmVUY3MxhJT0jZbU3KvfL/Rd9a7vO6sNtO+6iem4KkZpwg==@linaro.org
+X-Received: by 2002:a17:902:f541:b0:223:325c:89f6 with SMTP id d9443c01a7336-22c53568612mr5733445ad.10.1744923979816;
+        Thu, 17 Apr 2025 14:06:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744923979; cv=none;
         d=google.com; s=arc-20240605;
-        b=hG6uc7UedGc9M4qv9SFRYrguhLp64KWTXMDVDQt1WuZm242luOA9inRh5N7IL5I1da
-         Gw3DcW9B467n9750ojcvuWIVTGcK08yYIvB25rH4bYa91VLXGnyZOydw/ePpxH2Pm/uc
-         FkQXV186uWsQeWPa6cvnVVDPr6EyIWFBTo8T0zhr6Ud8YEOHwXeI8FhYJrcoT8c10Hzu
-         RBXLIi+ngsy7L94tNm69cYueyymId7XRugXVofJpbw6/Ww1WgRHxC9z5KqRwryseDruq
-         +GTWgS1aaMtP3dWiLn/GpdZ9mm1Q++KS4OAU3t+vfQRheZibAi79LtyWFb7ZzmDGVVdD
-         /54g==
+        b=R11Bxiwa2hBywB1MB4njUyBR+zuRI6rvvwuI3ajTARvu2jnx5W0N7GUaRTSZ2P4Fc3
+         04WHRpIHgbANS49JcpkcM2+iyhu6R+VInvO/ZcrlA5HnI6xFzg2iONyiAJRJIoXN0GbF
+         9usQUOsBz59RR5OHH2IuFE851M6KGz+HR8+POAXgpADLOJAmdaPiXvnZROycEUhFfE3h
+         ePr5UiW2BURmT9OfBpy2JjlMCGnr+FqOy085B1HjYC+90wXOcLMSrolR65meqeqCNgCO
+         3xUB8SIj1Mq5+r41EaBMviw2QMP4MKgjKKEmdeXg3/TGfp5UdhoPL09WKBGJC1sPR+GW
+         aQ0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=cvkEnBRv55jA0661P2gC/fwLAO8YNfiGX+jgyCQW+fo=;
-        fh=5YDLLJgO7dHw3UrwgK3PqKzoqhNi0WRWyfs5b9Zwmpw=;
-        b=VCIjQGt7z4k94PxC/zNd0CkQEgaUONbJt0x5S+zZ/PmIXl/gA8xBunLmZItoDfYUH+
-         Y1Hoa8pLkSFThhtMGUG5BXS+NA6w5AjXUH5di0953BoQsfvZbnsyA3aoVTgqw2y1KMu5
-         Zm2n7O0o00YHWssmh5t0sIBF/ixclFXnjoK5YelxDQlw7x/TO6HMLr0XXjWmk8NUcaO1
-         zN9hMctZUe6ShyNG+JZIssYiWV8IGWiVJJ+9nUktmKC4mILRqmHnSfjS9nPosC/Er0jW
-         ENPai1TUrQsa78KkpUTrQ1wSDj7H6S/gR0GYD23aEjekxU/6KEBZyB74kRjJOOFASiY5
-         aGaA==;
+        bh=2SX7Ep+ot7gpgj7NWTMdX4Ce49Ly0lymB8IyE/t7pOY=;
+        fh=oezD1PEA1cf2GvYMwpZbvI4DrKFkhe4Z2s8HgQJ8lp0=;
+        b=V2Hhg+omsScQ1OXAVFOGr3PfjcfAZxCrq7t4pujdXi0GfpRNzkojSugpv45DGI5j7R
+         dEGH2Rpc48Y5SqQbj6+hnFSX6y7Yg0YWDM7yZIsGdSQvvgju5paZM7mV3vs69HnmX2ar
+         svXHe1+kl8CbdAllyNaZiXJTAt3zAZdc4mtGVo6RvSpI55oZY0NFAmx51IGu7IoGVfJ5
+         +EmtIr52zSSMk2y7Sv07yA9nV6INFU4wJJvuropkrwrEo8YkcYwRDwEwyyb91CwpmOp3
+         aKthqRlXoKzRYJMASb4fwyvZ4aDkV1G2PY7ZbScDZQvkAbnhycEfZx65tPtKHOmaw4wJ
+         7JlQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=AFav72zj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47e9fa9717esi80829591cf.155.2025.04.26.23.28.58
+       dkim=pass header.i=@linaro.org header.s=google header.b=s93Bu5SD;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-22c50daa6bcsor4745685ad.11.2025.04.17.14.06.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 26 Apr 2025 23:28:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 17 Apr 2025 14:06:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=AFav72zj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8vVP-0000K2-58; Sun, 27 Apr 2025 02:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8vVN-0000H7-HV; Sun, 27 Apr 2025 02:28:45 -0400
-Received: from mgamail.intel.com ([192.198.163.13])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8vVK-0000IL-Mt; Sun, 27 Apr 2025 02:28:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745735323; x=1777271323;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=mnGbRICatNcyoPrI5GrAe65yEryXZhpnLlqHMQGHYqQ=;
- b=AFav72zjWXBQeavK2IzbgMOK26l5x0acTwx3Gw4CmxGE/RQUkT4UzKpo
- ZdgF8rn+eMi+cORYSTEAPvBq7YbpZ1a86uNuvIx60xx5MC5U4Vo8usOxD
- RB4G9YbNUZ1OYERnEjVKK04T4DzcfFwXyV3ktXhwVwZRkSBsvt4dS1jG9
- vURx9KwgjDTUAGZuH31H4KuyxE6EaX2ZKIGkK0NOe74EqKaFAqV3Uva4M
- /yXfkFGPoWeDLAMTufXpFJhPfAXlfnxuU2lkPYrvrptQm04/RDvTAEXO/
- 73dgwOkDxiRLFPh+R2d9VAb1Y3MhFT7Z39uW1WErkWeQSgz4X6MLs+UNr w==;
-X-CSE-ConnectionGUID: DhJQYWq4QF67gBhfqf9ImA==
-X-CSE-MsgGUID: SgAfAPPSRtarCkRnruvcYA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11415"; a="49995862"
-X-IronPort-AV: E=Sophos;i="6.15,243,1739865600"; d="scan'208";a="49995862"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2025 23:28:37 -0700
-X-CSE-ConnectionGUID: iO0zR2YdQPuksNBrc7RPBg==
-X-CSE-MsgGUID: H4em+WpuSHWky0kg4kKVEg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,243,1739865600"; d="scan'208";a="133216649"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa007.fm.intel.com with ESMTP; 26 Apr 2025 23:28:32 -0700
-Date: Sun, 27 Apr 2025 14:49:29 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-Message-ID: <aA3TeaYG9mNMdEiW@intel.com>
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
- <20250409082649.14733-4-zhao1.liu@intel.com>
- <87frhwfuv1.fsf@pond.sub.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=s93Bu5SD;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744923979; x=1745528779; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=2SX7Ep+ot7gpgj7NWTMdX4Ce49Ly0lymB8IyE/t7pOY=;
+        b=s93Bu5SDIflhwv71igKsGu72kHc1cSRZYDORo0spaGBfIBwbJzmcVxMWpUPFCm1BnI
+         lfFxQTlQVqK+1GXfmnewBJgs1Ub4dfrMBNxl0EGZCi9MBjUYJWrXZXfpAj7kuUpw1Jrk
+         VD0xrrJFpKXDr1oqV0AIMM6LekFo2chSkJHEQK3vwC2CTvun1boe5hNfjgaTNitZJEQT
+         5KbESnfOv6Jq3QgXlEhFqPY8d3dlKgiP9wE+ucOxrtcPL5ruJpiP4xmeoIQSRWvraBg3
+         BFBe47L9tK0vgtOtUF0cxPfy2P17k0UtnH5N06et9KV1Ph5LJ1gKald/IY4uSE6htAJr
+         MIlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744923979; x=1745528779;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2SX7Ep+ot7gpgj7NWTMdX4Ce49Ly0lymB8IyE/t7pOY=;
+        b=Nwerrnn969UaEq721TLO+3CxOpOmGtamszB5C0CZEC0vrFc7dZBWoF19XI1GfZQqnD
+         +E7Ij10TKmAaSQTldktJA8sZBzyMiFWKpoDLbXE/kuB2TrYHO6Il0ccyn5sO+hIJ9X6L
+         yjMPdjIbj0SstgJZ+vCsh1lJL9ceLUSPr2/I7bZawmpQShGP049yCwBsdsyj2lXveNTa
+         xGakcZO70RzPPo7hPw0h0/n1weBf+GFOrhDSw+oNnnzcQ4Q3DgvYeaoc92w4hCIkF/5h
+         kx6Ru25fQYWRf8N83fGoYikxJWCCx+eNIUX1ooTfbS51mOjRs9XdO6bnR/HYORWqHUNO
+         Xj3g==
+X-Forwarded-Encrypted: i=1; AJvYcCVFN7ek/VpdseXfaoIpf5ougH50zSxal6mMK8/UFQQcnAsTByKHD3zM5Nd7J5/WPEYvU//VmjCNEh9u7Q==@linaro.org
+X-Gm-Message-State: AOJu0Yyn3c4RTTYQBiFmRuL9DxquVb7NXSjM2R3MlgmIbdj/a01EbH6F
+	tKY6kOeeVu4LOO5hbNN+K4CNPXtNkblQov0OXe68jDAC4fAO+7fQBAzXmV8V8v/vvQ==
+X-Gm-Gg: ASbGncvCZI4bq+OygKWZGorW0UEAmt/BcAhp3jkj1BosW9//9PbtCW2DP3TVQupBKzs
+	EPboJhPM7+mxHF8NfSabCxaLjIJNIWkE/8WAaqbIutMxKdp5r2LxMKr2MitB8vki5iQgMSsEz4+
+	MQtnN1jKztj/XIFjyxilg5PjhmZ36dOkaYf3vYki80c3VIfrkKHaU7RKCI3LwWZU/x7R6j5B2tW
+	dls+or1hm22Oq7Dfcj0PVapubzNgJcfIwAQr3qvs8W/ekdm49kdCEDbx5qYEJmcLOO+4dX8FWE2
+	2a3Q4Th7cHwpwR9ljGzkkGgg8/ympyA6SLVShjqn9rFr4wZYtlBk
+X-Google-Smtp-Source: AGHT+IE5Sx0i+sJQdJZr9MjI/6tY42ww3fBwjDghN2gv/lQD0a8Bmfwx11UQcsAZS4q1sVxry9+nuw==
+X-Received: by 2002:a17:902:d50b:b0:220:c813:dfd1 with SMTP id d9443c01a7336-22c53607db6mr5220135ad.36.1744923979293;
+        Thu, 17 Apr 2025 14:06:19 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] ([186.215.52.65])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22c50ed0eb5sm4485605ad.202.2025.04.17.14.06.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Apr 2025 14:06:18 -0700 (PDT)
+Message-ID: <0dffbcec-ca2a-47d0-b837-2400865371f7@linaro.org>
+Date: Thu, 17 Apr 2025 18:06:14 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87frhwfuv1.fsf@pond.sub.org>
-Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.738,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m5MqCYNX+n/t
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1 v3 6/9] qtest/bios-tables-test: Whitelist
+ aarch64/virt 'its_off' variant blobs
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Andrew Jones <ajones@ventanamicro.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Udo Steinberg <udo@hypervisor.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>
+References: <20250403204029.47958-1-philmd@linaro.org>
+ <20250403204029.47958-7-philmd@linaro.org>
+ <671a6c82-ae10-4f3b-9d83-cecc32755206@linaro.org>
+ <20250409160531.341c205e@imammedo.users.ipa.redhat.com>
+ <98b2676d-ad21-4c05-a165-12ae5e1b9c64@linaro.org>
+ <20250410085042.6aa5593d@imammedo.users.ipa.redhat.com>
+ <ec5cec94-4d02-442e-94e6-c0c2e79f3684@linaro.org>
+Content-Language: en-US
+In-Reply-To: <ec5cec94-4d02-442e-94e6-c0c2e79f3684@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: aVobFyiXfCiY
 
-Hi Markus,
+Hi Igor and Michael,
 
-> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
-> > +            if (event->u.x86_select_umask.select > UINT12_MAX) {
-> > +                error_setg(errp,
-> > +                           "Parameter 'select' out of range (%d).",
-> > +                           UINT12_MAX);
-> > +                goto fail;
-> > +            }
-> > +
-> > +            /* No need to check the range of umask since it's uint8_t. */
-> > +            break;
-> > +        }
+On 4/10/25 13:22, Gustavo Romero wrote:
+> Hi Igor,
 > 
-> As we'll see below, the new x86-specific format is defined in the QAPI
-> schema regardless of target.
+> On 4/10/25 03:50, Igor Mammedov wrote:
+>> On Wed, 9 Apr 2025 12:49:36 -0300
+>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>
+>>> Hi Igor,
+>>>
+>>> On 4/9/25 11:05, Igor Mammedov wrote:
+>>>> On Fri, 4 Apr 2025 00:01:22 -0300
+>>>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>>>> Hi Phil,
+>>>>>
+>>>>> On 4/3/25 17:40, Philippe Mathieu-Daudé wrote:
+>>>>>> We are going to fix the test_acpi_aarch64_virt_tcg_its_off()
+>>>>>> test. In preparation, copy the ACPI tables which will be
+>>>>>> altered as 'its_off' variants, and whitelist them.
+>>>>>>
+>>>>>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>>> ---
+>>>>>>     tests/qtest/bios-tables-test-allowed-diff.h |   3 +++
+>>>>>>     tests/qtest/bios-tables-test.c              |   1 +
+>>>>>>     tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 184 bytes
+>>>>>>     tests/data/acpi/aarch64/virt/FACP.its_off   | Bin 0 -> 276 bytes
+>>>>>>     tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 236 bytes
+>>>>>>     5 files changed, 4 insertions(+)
+>>>>>>     create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
+>>>>>>     create mode 100644 tests/data/acpi/aarch64/virt/FACP.its_off
+>>>>>>     create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
+>>>>>>
+>>>>>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>>> index dfb8523c8bf..3421dd5adf3 100644
+>>>>>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>>> @@ -1 +1,4 @@
+>>>>>>     /* List of comma-separated changed AML files to ignore */
+>>>>>> +"tests/data/acpi/aarch64/virt/APIC.its_off",
+>>>>>> +"tests/data/acpi/aarch64/virt/FACP.its_off",
+>>>>>> +"tests/data/acpi/aarch64/virt/IORT.its_off",
+>>>>>
+>>>>> I think your first approach is the correct one: you add the blobs
+>>>>> when adding the new test, so they would go into patch 5/9 in this series,
+>>>>> making the test pass without adding anything to bios-tables-test-allowed-diff.h.
+>>>>> Then in this patch only add the APIC.its_off table to the bios-tables-test-allowed-diff.h
+>>>>> since that's the table that changes when the fix is in place, as you did in:
+>>>>
+>>>> if APIC.its_off is the only one that's changing, but FACP/IORT blobs are the same
+>>>> as suffix-less blobs, one can omit copying FACP/IORT as test harness will fallback
+>>>> to suffix-less blob if the one with suffix isn't found.
+>>>
+>>> OK. Just clarifying and for the records, this is not the case for this series
+>>>
+>>>
+>>>> if blobs are different from defaults then create empty blobs and whitelist them in the same patch
+>>>> then do your changes and then update blobs & wipeout withe list.
+>>>
+>>> Thanks for confirming it. That's what I suggested to Phil in my first review and what
+>>> I understood from the prescription in bios-tables-test.c.
+>>>
+>>> However, on second thoughts, for this particular series, isn't it better to have the following commit sequence instead:
+>>>
+>>> 1) Add the new test and the new blobs that make the test pass, i.e. APIC.suffix, FACP.suffix, and IORT.suffix (they are different than the default suffix-less blobs)
+>>
+>> blobs should be a separate commit (that way it's easier for maintainer to rebase them,
+>> if they clash during merge with some other change.
 > 
-> It is accepted here also regardless of target.  Doesn't matter much
-> right now, as the object is effectively useless for targets other than
-> x86, but I understand that will change.
+> I see. What is a bit confusing here is that the series consists in
+> one blob addition act (for the new test) and one blob update/removal act (after the fix).
 > 
-> Should we reject it unless the target is x86?
-
-I previously supposed that different architectures should implement
-their own kvm_arch_check_pmu_filter(), which is the `check` hook of
-object_class_property_add_link():
-
-    object_class_property_add_link(oc, "pmu-filter",
-                                   TYPE_KVM_PMU_FILTER,
-                                   offsetof(KVMState, pmu_filter),
-                                   kvm_arch_check_pmu_filter,
-                                   OBJ_PROP_LINK_STRONG);
-
-For x86, I implemented kvm_arch_check_pmu_filter() in target/i386/kvm/
-kvm.c and checked the supported formats (I also supposed arch-specific
-PMU filter could reject the unsupported format in
-kvm_arch_check_pmu_filter().)
-
-But I think your idea is better, i.e., rejecting unsupported format
-early in pmu-filter parsing.
-
-Well, IIUC, there is no way to specify in QAPI that certain enumerations
-are generic and certain enumerations are arch-specific, so rejecting
-unsupported format can only happen in parsing code. For example, wrap
-the above code in "#if defined(TARGET_I386)":
-
-    for (node = head; node; node = node->next) {
-        KvmPmuFilterEvent *event = node->value;
-
-        switch (event->format) {
-        case KVM_PMU_EVENT_FORMAT_RAW:
-            break;
-#if defined(TARGET_I386)
-        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
-            ...
-            break;
-        }
-        case KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY: {
-            ...
-	    break;
-        }
-#endif
-        default:
-	    error_setg(errp,
-                       "Unsupported format.");
-            goto fail;
-        }
-
-        ...
-    }
-
-EMM, do you like this idea?
-
-> If not, I feel the behavior should be noted in the commit message.
-
-With the above change, I think it's possible to reject x86-specific
-format on non-x86 arch. And I can also note this behavior in commit
-message.
-
-> >          default:
-> >              g_assert_not_reached();
-> >          }
-> > @@ -67,6 +82,9 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
-> >      filter->events = head;
-> >      qapi_free_KvmPmuFilterEventList(old_head);
-> >      return;
-> > +
-> > +fail:
-> > +    qapi_free_KvmPmuFilterEventList(head);
-> >  }
-> >  
-> >  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
-
-...
-
-> >  ##
-> >  # @KvmPmuFilterEvent:
-> >  #
-> > @@ -66,7 +82,8 @@
-> >  { 'union': 'KvmPmuFilterEvent',
-> >    'base': { 'format': 'KvmPmuEventFormat' },
-> >    'discriminator': 'format',
-> > -  'data': { 'raw': 'KvmPmuRawEvent' } }
-> > +  'data': { 'raw': 'KvmPmuRawEvent',
-> > +            'x86-select-umask': 'KvmPmuX86SelectUmaskEvent' } }
-> >  
-> >  ##
-> >  # @KvmPmuFilterProperties:
 > 
-> Documentation could perhaps be more explicit about this making sense
-> only for x86.
-
-What about the following doc?
-
-##
-# @KvmPmuFilterProperties:
-#
-# Properties of KVM PMU Filter (only for x86).
-
-> > diff --git a/qemu-options.hx b/qemu-options.hx
-> > index 51a7c61ce0b0..5dcce067d8dd 100644
-> > --- a/qemu-options.hx
-> > +++ b/qemu-options.hx
-> > @@ -6180,6 +6180,9 @@ SRST
-> >               ((select) & 0xff) | \
-> >               ((umask) & 0xff) << 8)
-> >  
-> > +        ``{"format":"x86-select-umask","select":event_select,"umask":event_umask}``
-> > +            Specify the single x86 PMU event with select and umask fields.
-> > +
-> >          An example KVM PMU filter object would look like:
-> >  
-> >          .. parsed-literal::
-> > diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> > index fa3a696654cb..0d36ccf250ed 100644
-> > --- a/target/i386/kvm/kvm.c
-> > +++ b/target/i386/kvm/kvm.c
-> > @@ -5974,6 +5974,10 @@ static bool kvm_config_pmu_event(KVMPMUFilter *filter,
-> >          case KVM_PMU_EVENT_FORMAT_RAW:
-> >              code = event->u.raw.code;
-> >              break;
-> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
-> > +            code = X86_PMU_RAW_EVENT(event->u.x86_select_umask.select,
-> > +                                     event->u.x86_select_umask.umask);
-> > +            break;
-> >          default:
-> >              g_assert_not_reached();
-> >          }
-> > @@ -6644,6 +6648,7 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
-> >  
-> >          switch (event->format) {
-> >          case KVM_PMU_EVENT_FORMAT_RAW:
-> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
-
-Here's the current format check I mentioned above. But I agree your idea
-and will check in the parsing of pmu-filter object.
-
-> >              break;
-> >          default:
-> >              error_setg(errp,
+>>> 2) Whitelist only the APIC.suffix since that's the table that will change with the fix
+>>> 3) Add the fix (which changes the APIC table so a new APIC.suffix blob is needed and also stops generating the IORT table, so no more IORT.suffix blob is necessary)
+>>> 4) Finally, update only the APIC.suffix blob and remove the IORT.suffix blob and wipe out the whitelist
+>>>
+>>> This way:
+>>>
+>>> A) It's clear that only ACPI blob changed with the fix, because there is no addition of a FACP.suffix blob in 4) (it remains the same)
+>>> B) It's clear that the IORT table is removed with the fix and is not relevant anymore for the test
+>>
+>> I'd just mention it in commit log so  that later no one would wonder why we are adding and then removing tables
+>>
+>> As for the rest of suggestions, it looks fine to me.
 > 
+> Well, 2) won't make sense anymore since APIC.suffix would be already in the
+> whitelist in the previous patch that added the empty blobs. Since there won't
+> be a commit that adds _only_ the APIC.suffix to the whitelist, in preparation
+> for the fix, this info is "lost" in the series, even tho it's possible to
+> mention in the commit message.
+> 
+> Hence, what I think is not ideal from a maintainer's/reviewer's perspective,
+> is that in one commit all the blobs are updated/removed at once, which is
+> confusing because the fix did not touch the FACP table (for instance) and
+> this table is updated with APIC and with the removal of IORT, altogether,
+> in the last commit.
+> 
+> So, for this series, which adds new blobs and _also_ updates and removes some
+> of them, how about the following organization:
+> 
+> - Patch 1     : Add the new test, add the empty blobs *.suffix files, whitelist such a blobs
+> - Patch 2     : Update the blobs in Patch 1 with the ones that make the new test pass and remove them from the whitelist
+> 
+> - Patch 3     : Add the APIC.suffix blob to the whitelist (the table that changes due to the fix)
+> - Patch 4 - n : Fix(es)
+> - Patch (n+1) : Update the APIC.suffix blob, remove IORT.suffix blob, and remove the APIC.suffix blob from the whitelist
+>                * Add the APIC diff to the commit log
+>                * Mention in the commit log that IORT.suffix is removed because IORT table is no long generated after the fix
+> 
+> This way: a) no commit fails the test and b) blobs are added/updated/removed in separate commits
+> 
+> What do you think?
+
+I’d really appreciate it if you could confirm whether this organization makes sense.
+
+
+Cheers,
+Gustavo

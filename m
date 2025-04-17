@@ -1,152 +1,156 @@
-Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp511897njk;
-        Wed, 16 Apr 2025 20:14:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVqMnoi5ePs8XQ1uusU5mJuzoOXhgip8o6ZxLNrHAn8PuIr5jG8tS0Ut+iRe9BHCy04EBWjLDsOnNu3yg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsUs9Gk9mkBKWgMmfK7R07/BnRvjVCeQcn8ihzara16GzdHNTbww1gyAONcm0HDTMlootk
-X-Received: by 2002:a05:6214:c21:b0:6e4:2dd7:5c88 with SMTP id 6a1803df08f44-6f2b30829cemr64205516d6.38.1744859671268;
-        Wed, 16 Apr 2025 20:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744859671; cv=none;
+Received: by 2002:a17:504:749a:b0:1be9:327d:8ee3 with SMTP id a26csp639771njk;
+        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
+X-Received: by 2002:a05:6a00:4484:b0:73b:ac3d:9d6b with SMTP id d2e1a72fcca58-73cf293357cmr3404606b3a.4.1744882055458;
+        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744882055; cv=none;
         d=google.com; s=arc-20240605;
-        b=WAVR4X6sK1IY4i29IOeMjP/XpaAUVXDZnnoXwKXMsscj0iOCwsQ737hu8ZQgkrE+yb
-         r6r8oJqhaLmKB2JqJsZSbwEA8RdZmqhGUJJEqYP6LBAWR9xhJ5MAqrPu5afEYTCqVujv
-         zWfw5Thxumu+35ZWKAeZ4R73sTvRmKhnekj+BcWwJpuLOUrLFeJJtLlX4WW4z9KJFyCK
-         k2bPNuq9ZfT+qyjLd2pLD02i2Tti4OhEWgkX2VFQqVdcHn6MroqvR2YdOdNsv+MFhL90
-         LKK9v5urDXkHgjwpHxb7yKARffeS3hR6ElhbEHKuzbhkN6PsrrG/A+SdroSteWkXithd
-         MqbA==
+        b=O/gu7w55Vby+11/wmF31hnTrxg7gt0zyAgACkcsIhXZtfLtvMQI+u06Vtn2rSWeibc
+         ZJzbBYuWRKWUffF+flOrork+AZr8Wa9P3avyO/mrpH2OJgOelRVTfPrNoodO1dEJ88L4
+         g8/VKHsNsCynCPmnRx5SYJcXkkGBMYZIey4AB79QbacFbYphRqOfffoTki/a4lZX80Pz
+         80asoZ+Ft5UNOcq4vjCM8qaBB3KFzkVjW4uoSWpiPLORutLYiQ6kDn2/XDadtK80L7qf
+         bDAGjA0U3zZdFO1vFVyIPlaCABifNcb1MyziUG2DxzMawa7NpoWzrnWdbhjUGFKJ6hSc
+         PITw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=gunqLQxrJL45Jak+Dflmnw0MCxQ8S8v4jQeOiO75FKg=;
-        fh=9slMQvAVAaDbZF94sUZsatNqTIKawFKtbOHuc7HAk0w=;
-        b=IIvjLcdSBbBlJeXMD0+5sERkrbsERaEs1muthxugKAt50ee7rLQXv5rWsIBwogWv4/
-         R35sSxTQnFxbVikIClQq4z7rUUnbQTr4EObfYfNYoj2eNEANEjj0SxVxxLzmCuORghE9
-         8anVrngO62WtdxgnLXOQG4157m5L77S3ukTR9u9NnSqV5r3DSxbG/fZBMvtfDQ/LnQ/e
-         K4PmthpGRSKeNTqk5zWvCFmTeEqz88sbshAoo6RQMBTO+OQc2vWX1nBpgxmmN8MgLzJH
-         LatpAKtoe9MzWVIv5XE27uAJsgVQFNwqM0kb4i+jyDKK/RDfkLSP6i3d+Wu/l3YSIvJ5
-         D7lQ==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
+        fh=+iRxevmgakKJdfD9Ht/yJ5gYP7NJTDiGIBh3Keo8Qjo=;
+        b=fyyCtOV6bHssTUPRA/jKhPLqos5XS8gU2Hq7mB6vkTXT4H/n2AI7uojMMRU7Agj9yE
+         5kcpxZc66N8aPyx5DDE3MHa9sW+aOBPJCbkIfOK/WFFz/UfbY6kk3p2nb5EZdX9Toj6X
+         PNRG3lIYv9wJa+i3KasDpBUQ9Ocf4hCmFydULIGBcrS82/SuflwRZA/gQE4Bwro59+QO
+         MceSGwAU877IdQ/ejCEdHg7QkEV9xvsohKpuP+NRVx8A/wktn4P6tvZ11knW5vk2PbJ/
+         Fan0Y4L72aOnkGUF383JIM3MZvAbuuCIfvBFnpYMbo/pBPVaLBEjMpVoPVDSQ+E6qTho
+         HepA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ada83e0c9si22536111cf.263.2025.04.16.20.14.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Apr 2025 20:14:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IaNNUPHz;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <ktokunaga.mail@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73c225f4062sor1960127b3a.5.2025.04.17.02.27.35
+        (Google Transport Security);
+        Thu, 17 Apr 2025 02:27:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u5Fft-0000rN-62; Wed, 16 Apr 2025 23:12:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u5Ffr-0000pI-VZ; Wed, 16 Apr 2025 23:12:23 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u5Ffq-0000cO-Do; Wed, 16 Apr 2025 23:12:23 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 17 Apr
- 2025 11:12:10 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 17 Apr 2025 11:12:10 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>
-Subject: [PATCH v4 03/10] hw/arm/aspeed: Add vbootrom support on AST2700 EVB
- machines
-Date: Thu, 17 Apr 2025 11:12:00 +0800
-Message-ID: <20250417031209.2647703-4-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250417031209.2647703-1-jamin_lin@aspeedtech.com>
-References: <20250417031209.2647703-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IaNNUPHz;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744882055; x=1745486855; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
+        b=IaNNUPHzfW2abi4VT/VxW2K8CLYoUxcaT1rLTRjAVhTn4ruTGRuBjrwILHElbEXw2/
+         +2K6B+hJyqKDqv6gA7/ISujiM+wwZrS+lKCtWdzmp0YRxQnGceJBPWTCYibN8r5i60jd
+         1C+IPZlNusa49qmhR8mXzQSJRXGpeJzt3bQi/O/5K+jGINiuWdBT/dKQ3xxxPQT4ulyZ
+         ni99Nf88vWoTXLZTkwgiGLFjuU/6ED5GUWVASl1Wut1i+GsRe8PeJL53BArPKwRT+tUX
+         ITKLXvUAUeTxFiFsVClr5qmyxNhrJ4/MI/0tP/IkFmzQtlJGQwafWfvo86MBxK/DagIC
+         65ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744882055; x=1745486855;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Rmq6tnV3oobqPR6ZeDk8CKR3QdvTx9T6LSTEeuuSMFg=;
+        b=vav+rtvAiz/JucsSksosM5ff82PEGQNHYL0qo6P43pQtkTiGkqUPyZTCwD3Xp5DgS2
+         GKynCkPIBKD8/LtoHPZIprX48KciWHIU4JHrtFGLYMGq9fOPEeK9qDRdZk5AKiEux0qO
+         7M+Qfsd2Bb7q2j7M38cZCrEnqwlibtzZl0kHA+602QMEApcR7Euqhv2UIqNDWOrcJ4Zq
+         bZcq6pSWspwUQ1Jq/P4vgoYjBeuPAPVBgz/0URxOkbIiBNI/PMDchivwcKElmE65dEVa
+         YrPoYWEt9JmWqig7AaUBui9grQYtL4pJeiRXd0naIqyWPjmjmT0102sKC9JsA+cegmif
+         JXPA==
+X-Forwarded-Encrypted: i=1; AJvYcCU2jkSgogMUZXGZfcT2ssj/djCTdpbea4Mi42kOL2XbJYlvM14DZaNA3uNgknlDj3KG1sxlojzUoI3zTJs0Czvld7s=@linaro.org, AJvYcCUi6aCQPhzOS1P/XvdDnyCFtV8Upg9YvoB+ZIswtp4xEAzyllV2r3LSC56AW1VSkUOqaumwXddPzfTBWJi0@linaro.org, AJvYcCWsLW+rkbByT+LWHiVivvKItUw2mgOdEpGkcLI6yKyemP+lmR0BBDO0s6wW3649I+8ko+j2t3r3Hd2iqDuqMcLr4g==@linaro.org
+X-Gm-Message-State: AOJu0YxQ9/J6NWPDYnglX/6opa/MJKOuU2voGd9PKWtn4o3WmQbT5zt6
+	3bf6siXD1OKdlBBe0ioiP99dykVO7MO5L5Ll+7+08jFPuh1Y4Sv2YlPv3N2LpaNSh+VJbAija6T
+	5KhNhuutawu38q+bbwWIkB/w5WbmgxTNhJ5U=
+X-Gm-Gg: ASbGncvtmUmix1UsmAdgX0Zc9sGeYR1bWt+hFYFDKaiwZdNJgS5nPqMzZV73T54BCwO
+	z9NusSghb+/d10bXYx/HhipcPLeFD0Po7nZLO4eE1rWaVxWwp24kKxV9UaS51OO0BSVOnYO+Bs4
+	vhlLgrm3Gpuxl5DcYtLEhJqB6gWtRtfr1BntvgBrOlEJ9EXH+429EIRR1w//pmvqI=
+X-Google-Smtp-Source: AGHT+IGF+Vkrm9uDjKFzLmTshgVd8s7nlzAFtbfV/yAmDU8+/yUUoSqd7K7AfX6UvmF4lqNEtvM0CwXgZobg+fDYuXY=
+X-Received: by 2002:a17:90b:6cf:b0:2fa:42f3:e3e4 with SMTP id
+ 98e67ed59e1d1-3086f3c7908mr3177332a91.3.1744882054787; Thu, 17 Apr 2025
+ 02:27:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h7RDXrz42xIJ
+References: <cover.1744787186.git.ktokunaga.mail@gmail.com>
+ <97a2164b3f428265136bb1c01615a16b516138c2.1744787186.git.ktokunaga.mail@gmail.com>
+ <29330430-61a8-42c8-a87c-259f0cdbefe0@linaro.org>
+In-Reply-To: <29330430-61a8-42c8-a87c-259f0cdbefe0@linaro.org>
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Date: Thu, 17 Apr 2025 18:27:22 +0900
+X-Gm-Features: ATxdqUE7DUGXiaiXQZUUdbzbb-Cv03aYAE2cd1t2TtTNMflviKjNJHtvlmo3h98
+Message-ID: <CAEDrbUYu-NH4Dwkby-UTtQpiy0ApN+Z4dwt+iOs_SZjCwfM_ZA@mail.gmail.com>
+Subject: Re: [PATCH 11/19] util/cacheflush.c: Update cache flushing mechanism
+ for Emscripten
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
+	Mahmoud Mandour <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Francisco Iglesias <francisco.iglesias@amd.com>, 
+	Vikram Garhwal <vikram.garhwal@bytedance.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, 
+	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, David Hildenbrand <david@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000000cfcd70632f603c7"
+X-TUID: MM398TWDqUpn
 
-Introduce a new "vbootrom" field in the AspeedMachineClass to indicate whether
-a machine supports the virtual boot ROM region.
+--0000000000000cfcd70632f603c7
+Content-Type: text/plain; charset="UTF-8"
 
-Set this field to true by default for the AST2700-A0 and AST2700-A1 EVB
-machines.
+Hi Philippe,
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
----
- include/hw/arm/aspeed.h | 1 +
- hw/arm/aspeed.c         | 2 ++
- 2 files changed, 3 insertions(+)
+> The "why?" isn't clearly described.
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 9cae45a1c9..973277bea6 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -40,6 +40,7 @@ struct AspeedMachineClass {
-     void (*i2c_init)(AspeedMachineState *bmc);
-     uint32_t uart_default;
-     bool sdhci_wp_inverted;
-+    bool vbootrom;
- };
- 
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 82f42582fa..e852bbc4cb 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1689,6 +1689,7 @@ static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-     amc->uart_default = ASPEED_DEV_UART12;
-     amc->i2c_init  = ast2700_evb_i2c_init;
-+    amc->vbootrom = true;
-     mc->auto_create_sdcard = true;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
-@@ -1709,6 +1710,7 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-     amc->uart_default = ASPEED_DEV_UART12;
-     amc->i2c_init  = ast2700_evb_i2c_init;
-+    amc->vbootrom = true;
-     mc->auto_create_sdcard = true;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
--- 
-2.43.0
+Although __builtin___clear_cache is used to flush the instruction cache for
+a specified memory region[1], this operation doesn't apply to wasm, as its
+memory isn't executable. Moreover, Emscripten does not support this builtin
+and fails to compile it with the following error.
 
+> fatal error: error in backend: llvm.clear_cache is not supported on wasm
+
+To resolve this, I've removed the call to __builtin___clear_cache.
+
+I'll update this patch to include an explicit "#elif" branch with an
+explanation, like the following:
+
++#elif defined(EMSCRIPTEN)
++
++/* Wasm does not have an executable memory region. */
++
+
+Please let me know if I'm missing something or if there is a preferred way
+to handle this case.
+
+[1]
+https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcache
+
+--0000000000000cfcd70632f603c7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br><br>&gt; The &quot;why?&q=
+uot; isn&#39;t clearly described.<br><br>Although __builtin___clear_cache i=
+s used to flush the instruction cache for<br>a specified memory region[1], =
+this operation doesn&#39;t apply to wasm, as its<br>memory isn&#39;t execut=
+able. Moreover, Emscripten does not support this builtin<br>and fails to co=
+mpile it with the following error.<br><br>&gt; fatal error: error in backen=
+d: llvm.clear_cache is not supported on wasm<br><br>To resolve this, I&#39;=
+ve removed the call to __builtin___clear_cache.<br><br>I&#39;ll update this=
+ patch to include an explicit &quot;#elif&quot; branch with an<br>explanati=
+on, like the following:<br><br>+#elif defined(EMSCRIPTEN)<br>+<br>+/* Wasm =
+does not have an executable memory region. */<br>+<br><br>Please let me kno=
+w if I&#39;m missing something or if there is a preferred way<br>to handle =
+this case.<br><br>[1] <a href=3D"https://gcc.gnu.org/onlinedocs/gcc-14.2.0/=
+gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcac=
+he">https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index=
+-_005f_005fbuiltin_005f_005f_005fclear_005fcache</a><br><br></div></div>
+
+--0000000000000cfcd70632f603c7--

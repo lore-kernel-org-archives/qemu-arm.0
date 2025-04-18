@@ -1,98 +1,123 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp92975njd;
-        Fri, 18 Apr 2025 01:53:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWS7CSvkB/kh6dhYjedJlTkP2JyZ6HX6yiz7jFpQeph0TVB2k0tNR8zBJN0GYwn0dvoOqtuP4vB3N0O1Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGhjcYfaCzFAEjFn+VSOoUjWXTOtK70D1frTe29EvMNELPrwYU6q0KZdnR8b5hvMnPzwLQ7
-X-Received: by 2002:a05:620a:44cf:b0:7c0:af6d:a52a with SMTP id af79cd13be357-7c928304baemr319721085a.26.1744966418685;
-        Fri, 18 Apr 2025 01:53:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744966418; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp101770njd;
+        Fri, 18 Apr 2025 02:12:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWjEz+cuH9F9DMmDcM8IigBKn6rZl+xRW9CvxxFrwU+bJ2g2ZCqnoqAXkri0A7KyntYJP7eBOWCtS1LTw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHJAC3Bh3QTlN5GjGaweK4WLhln7lwK+VBgRy/z6+NZ4pNyzPUHrKpxXCWDZtpPjO22kx0D
+X-Received: by 2002:a05:620a:1aa4:b0:7c5:65ab:5001 with SMTP id af79cd13be357-7c92800eb4dmr266552385a.39.1744967558163;
+        Fri, 18 Apr 2025 02:12:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744967558; cv=none;
         d=google.com; s=arc-20240605;
-        b=SONR5zlRuqh4dibjQXvWxZDYBIhzn3vUEFRfx4xqBT2CmijgLx7vQlrLFOyOEOXsTF
-         P0v0SGsi4jOHbg9K9Te2fAkOqYsN2v9aj89YCHrQgHYkhGXlf+Gxq5T2JI52oLVzIhAs
-         qX5qYj8x1E5V2lM+yfAEJStN7Pr/E5zFGtkACfHw5iWNGprq1MnLNerSOKDt3toA/z8M
-         4MqlkmcS370/bpdxNlQjkX47nwlt//cFp+/bABXK3bavy3R2UIVNFtsHuWt/ecgu/2gP
-         0RvMmjNdSDEJp3g/yImr8fHxVY+ZdVi/lg+dQB4pwJYrYl/YrIyHLiRHXhMHYuwQiNlU
-         3XJw==
+        b=g/BcXnSlW5iX/QuS57meI3A8ggVyszTavewtZGFwwDW5q0RnPHwhAsoihViWYaxUwa
+         0H3UODF5CQ/+8OFufXQbSzGPisCFONiqAOQn0uiUucH+VAO/rkXzZHWSavovd5c0Z6jn
+         AwKs08b22Dk1ndFhg/jkZUWAFAV+YkGAEVCOFySUbW5x4N4wPOtTaoPDZ2fhl2L1x9cD
+         QNP2pBTvdc96TqndmKhg7pGHw1IDaOYzNjyIMDq719kOK93AGaB6y+YRVRcHF/ryDvRh
+         SMl2VClR/+kEVuGanrqEGhRsc4C9/nRY1dcdVi4/2l56BrFz3a6/cQd8iq7BcSWjnPNm
+         NgkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=UTxo2r63s8nMA9EJ74pimRl/vGbNsR+WagpHss1ZUhw=;
-        fh=P8Kwi9NCHXtdPJ+JJ1ttwmPHrLPAjEFK4TEhpaLFAMs=;
-        b=Ph3My0d8yaB3uR2e/tOTaGzScStm2NW+zi0pfcZpYRgyA4bZ94ymGlTSzwSrfOwblI
-         Fb2BEWTBz1Eixc4R9wLnasMOT7cm3IHkaPDFBACDxazWqPaPkiKwUe5fAlwgmlN107Ng
-         2HYr7j/6u/Q2Lnb9H3EqC25xVMqK6qCZmlbOw6TnDj/h4kyjgQ43gFbLEnff6XK4gvKC
-         E5mozoj9opI/BNs/RapxbW/zs3h8AHBSZY22ekBSAti/mwzS2J328W5uFN/vyrblGsyv
-         QYBDsb/BUTDAU76QFL03YDN73XRaHREwoLQXfq6QBfNWTbW43RyaH+nbYhVSqK5upKAv
-         USGw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=6CI12ttItHcMSh53TsGyuf/PuGGoebtdM3ZV8W4rVlU=;
+        fh=lkOgkDa1aJAp2lPq/glICE+Jj8OxibxgzXkAQy3GDBM=;
+        b=AK4T+vhtVZ3+QhhJhsOq8LjvMZ+W4qgv4gqieUKv08Bl129dJzS8C6eCRwzpXMsAjV
+         KK0DB9ZEFJ7xCfLEDc3iywIRipVTYyDVF4AsaPy5/MwDHLDct3Qj17H8pQAkWyxnNhZR
+         3vHqeR4U2DHTGWyQvZR0UIy3d7d+pCOXW4nkkWvB3GhpqRcCzwLyPRjQo76gGmseZ4Q6
+         abKxNPAXDI4TGKJlkzg7b4Ov9GXTGZM8G7zE3F/ROJray06or/ppga+74ee7WAKwOCi7
+         nW6LqjBxCSDJH3lnQA/wdsIsB/q83OQunH2xgPg2bOL/cdS+j6+hnd/xAhLRKJjI/SVS
+         ZeHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H58c+KaB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c925aaffabsi182648885a.25.2025.04.18.01.53.38
+        by mx.google.com with ESMTPS id af79cd13be357-7c925ab072fsi188552985a.126.2025.04.18.02.12.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Apr 2025 01:53:38 -0700 (PDT)
+        Fri, 18 Apr 2025 02:12:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H58c+KaB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u5hTR-0004Rx-8J; Fri, 18 Apr 2025 04:53:25 -0400
+	id 1u5hls-0007HZ-Im; Fri, 18 Apr 2025 05:12:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1u5hTP-0004RJ-GZ; Fri, 18 Apr 2025 04:53:23 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1u5hTN-0001NZ-22; Fri, 18 Apr 2025 04:53:23 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 6C8FA55D21A;
- Fri, 18 Apr 2025 10:53:15 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id kjrGb1OLwGkb; Fri, 18 Apr 2025 10:53:13 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 745DA55C592; Fri, 18 Apr 2025 10:53:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 7185F745682;
- Fri, 18 Apr 2025 10:53:13 +0200 (CEST)
-Date: Fri, 18 Apr 2025 10:53:13 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Antony Pavlov <antonynpavlov@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Beniamino Galvani <b.galvani@gmail.com>, 
- Eduardo Habkost <eduardo@habkost.net>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Felipe Balbi <balbi@kernel.org>, Bernhard Beschow <shentey@gmail.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
- Jan Kiszka <jan.kiszka@web.de>, Alistair Francis <alistair@alistair23.me>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- Alexandre Iooss <erdnaxe@crans.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH 00/11] hw/arm: Define machines as generic QOM types
-In-Reply-To: <20250417235814.98677-1-philmd@linaro.org>
-Message-ID: <a302fb91-e2d8-ef36-ac53-5e460476c2d0@eik.bme.hu>
-References: <20250417235814.98677-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
+ id 1u5hlr-0007GG-EU; Fri, 18 Apr 2025 05:12:27 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
+ id 1u5hlp-00055R-6s; Fri, 18 Apr 2025 05:12:27 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-af523f4511fso1428457a12.0; 
+ Fri, 18 Apr 2025 02:12:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1744967542; x=1745572342; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6CI12ttItHcMSh53TsGyuf/PuGGoebtdM3ZV8W4rVlU=;
+ b=H58c+KaBNS2COqQH/D3Ujf7qfJh6HINrTmgpv5tdx/X3X2UhqdtRXV/VSO3MFxgTXT
+ xZHFYvNwSAB6tSMryHPa1Eyn/OwkNWDsROHhY+Bl2Pp4wfUlpuqV9iaqG60+qA2ehvcY
+ x3P6ZoyXxeio4gn05pvpMCnbQu+3h1jTSLIZ2bETcvRds4AbdfQIxPbHQ9bG+wa1yrJO
+ E+HdtmG5+KDC5ZDsAVe++LNZZiB3lnnYXJMvU6cbLVNolZO1lRXjzc0REuM3YJMPHtQn
+ dr0cBFCtcY2vnSdiZ1BXukfxD6qww60Tzf0RuoSf0uAEfnhbI2cX0XoCrsi41gE8QDVd
+ Z0bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744967542; x=1745572342;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6CI12ttItHcMSh53TsGyuf/PuGGoebtdM3ZV8W4rVlU=;
+ b=Nws/Y9rRRIA4v+P5dTx9NT5uheHFWTyOnoTKvQSyuRflJ5i0yCLQ2vsWMBs88KSUQ+
+ WVHsIVsw0TDqQBdg30l10oQTRxyh6XgChIgRPUrd0xWrLRUbItiXnqpunUerqrHbzcyk
+ pbFIWsQBSAuq24JFMLTm0twp0iIgW6yJsGg6JRcdd9jV030uhsrqqqBXIZdb2Oa6mGAp
+ tI4GxGeeJU9/4/Yb1gZu8JxqHJi3rJTIBemFuqqNANnAGq9cGPXlBDCB3WkSJ60H5eDN
+ N542eWsmtgMU2Cl1i4YIG7yZFto4hBYx4SFao8yAeEJWrGlA3qSlb7fB8Z3WRuK+2MX9
+ lfvQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXblFyaqCasn+1yHhmeuQZ0Dr3/FfLO26+WN4sx9Kj3QybKBGfM6+PPoOX5mvcOJHEr5fkqUXzaKcv0@nongnu.org
+X-Gm-Message-State: AOJu0YzADXgJSjqDqGwM8P03sl4boPWTjy/ojL19kAKgJcT1rclE2ngm
+ XRwbUYLi+bLQXPcn5SB5V5buSMaXxDg/vMe96Atmc3Rlw9+k3KIt
+X-Gm-Gg: ASbGncsz8ZWEBnABnzfcNMRbxRdJlN8f4fCC+++bycTw95Hon953zMJIze3mVX4QlwA
+ X2ECWAHt2aeOPzr+XTxDHKbVLiuT1GZ0Hvi/0lqBwdliopOzwZ0dHuX/hAM5P89Y/DT4p18gU6S
+ mpGMUwWyV/XVeYTnD7Dm0Zkp7qvlL7hRYRzEkJGeYd9DAflYeBT5SndPCwcGOhn0mx0zpD/EGv9
+ +mIpeeHtgyMwnQV62rVnWOEiTPtvQ+LwWlbKdrqZ6hTLg8oZZF2IUNjM54+FR+7xJfMrT3BbgZw
+ Lbi8kVHlZAKPz7SNNN3J7MVf+Akx9YMosDPC3ZgoplvJDgFyMVmfGRk/FY4vzdKbkM9CmqLPVAK
+ dVjQS5oZy
+X-Received: by 2002:a17:90b:51c2:b0:2ee:edae:75e with SMTP id
+ 98e67ed59e1d1-3087bb53218mr3339214a91.13.1744967542136; 
+ Fri, 18 Apr 2025 02:12:22 -0700 (PDT)
+Received: from hcdev-d520mt.. (60-250-196-139.hinet-ip.hinet.net.
+ [60.250.196.139]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3085380966csm3899344a91.0.2025.04.18.02.12.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Apr 2025 02:12:21 -0700 (PDT)
+From: Tim Lee <timlee660101@gmail.com>
+To: farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com,
+ wuhaotsh@google.com, kfting@nuvoton.com, chli30@nuvoton.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Tim Lee <timlee660101@gmail.com>
+Subject: [PATCH] tests/qtest: Add qtest for NPCM8XX PSPI module
+Date: Fri, 18 Apr 2025 17:12:08 +0800
+Message-Id: <20250418091208.1888768-1-timlee660101@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-674896605-1744966393=:81771"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=timlee660101@gmail.com; helo=mail-pg1-x536.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,60 +133,165 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LXhntJeWvWyq
+X-TUID: w+GjoNLgoTa+
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+- Created qtest to check initialization of registers in PSPI Module
+- Implemented test into Build File
 
---3866299591-674896605-1744966393=:81771
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Tested:
+./build/tests/qtest/npcm8xx-pspi_test
 
-On Fri, 18 Apr 2025, Philippe Mathieu-Daudé wrote:
-> While DEFINE_MACHINE() is a succinct macro, it doesn't
-> allow registering QOM interfaces to the defined machine.
-> Convert to the generic DEFINE_TYPES() in preparation to
-> register interfaces.
->
-> Philippe Mathieu-Daudé (11):
->  hw/core/null-machine: Define machine as generic QOM type
->  hw/arm/bananapi: Define machine as generic QOM type
->  hw/arm/cubieboard: Define machine as generic QOM type
->  hw/arm/digic: Define machine as generic QOM type
->  hw/arm/imx: Define machines as generic QOM types
->  hw/arm/integratorcp: Define machine as generic QOM type
->  hw/arm/kzm: Define machine as generic QOM type
->  hw/arm/msf2: Define machine as generic QOM type
->  hw/arm/musicpal: Define machine as generic QOM type
->  hw/arm/orangepi: Define machine as generic QOM type
->  hw/arm/stm32: Define machines as generic QOM types
->
-> hw/arm/bananapi_m2u.c      | 13 +++++++++++--
-> hw/arm/cubieboard.c        | 13 +++++++++++--
-> hw/arm/digic_boards.c      | 14 ++++++++++++--
-> hw/arm/imx25_pdk.c         | 14 ++++++++++++--
-> hw/arm/imx8mp-evk.c        | 15 +++++++++++++--
-> hw/arm/integratorcp.c      | 16 +++++++++++++---
-> hw/arm/kzm.c               | 14 ++++++++++++--
-> hw/arm/mcimx6ul-evk.c      | 15 +++++++++++++--
-> hw/arm/mcimx7d-sabre.c     | 15 +++++++++++++--
-> hw/arm/msf2-som.c          | 13 +++++++++++--
-> hw/arm/musicpal.c          | 16 +++++++++++++---
-> hw/arm/netduino2.c         | 13 +++++++++++--
-> hw/arm/netduinoplus2.c     | 13 +++++++++++--
-> hw/arm/olimex-stm32-h405.c | 13 +++++++++++--
-> hw/arm/orangepi.c          | 13 +++++++++++--
-> hw/arm/sabrelite.c         | 14 ++++++++++++--
-> hw/arm/stm32vldiscovery.c  | 13 +++++++++++--
-> hw/core/null-machine.c     | 14 ++++++++++++--
-> 18 files changed, 213 insertions(+), 38 deletions(-)
+Signed-off-by: Tim Lee <timlee660101@gmail.com>
+---
+ MAINTAINERS                     |   1 +
+ tests/qtest/meson.build         |   3 +
+ tests/qtest/npcm8xx_pspi-test.c | 104 ++++++++++++++++++++++++++++++++
+ 3 files changed, 108 insertions(+)
+ create mode 100644 tests/qtest/npcm8xx_pspi-test.c
 
-This is much longer and exposing boiler plate code. Is it possible instead 
-to change DEFINE_MACHINE or add another similar macro that allows 
-specifying more details such as class state type and interfaces like we 
-already have for OBJECT_DEFINE macros to keep the boiler plate code hidden 
-and not bring it back?
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d54b5578f8..0162f59bf7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -892,6 +892,7 @@ F: hw/sensor/adm1266.c
+ F: include/hw/*/npcm*
+ F: tests/qtest/npcm*
+ F: tests/qtest/adm1266-test.c
++F: tests/qtest/npcm8xx_pspi-test.c
+ F: pc-bios/npcm7xx_bootrom.bin
+ F: pc-bios/npcm8xx_bootrom.bin
+ F: roms/vbootrom
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 3136d15e0f..88672a8b00 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -210,6 +210,8 @@ qtests_npcm7xx = \
+    'npcm7xx_watchdog_timer-test',
+    'npcm_gmac-test'] + \
+    (slirp.found() ? ['npcm7xx_emc-test'] : [])
++qtests_npcm8xx = \
++  ['npcm8xx_pspi-test']
+ qtests_aspeed = \
+   ['aspeed_hace-test',
+    'aspeed_smc-test',
+@@ -257,6 +259,7 @@ qtests_aarch64 = \
+   (config_all_accel.has_key('CONFIG_TCG') and                                            \
+    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
++  (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
+   ['arm-cpu-features',
+    'numa-test',
+    'boot-serial-test',
+diff --git a/tests/qtest/npcm8xx_pspi-test.c b/tests/qtest/npcm8xx_pspi-test.c
+new file mode 100644
+index 0000000000..107bce681f
+--- /dev/null
++++ b/tests/qtest/npcm8xx_pspi-test.c
+@@ -0,0 +1,104 @@
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/module.h"
++
++#define DATA_OFFSET 0x00
++#define CTL_SPIEN   0x01
++#define CTL_OFFSET  0x02
++#define CTL_MOD     0x04
++
++typedef struct PSPI {
++    uint64_t base_addr;
++} PSPI;
++
++PSPI pspi_defs = {
++    .base_addr  = 0xf0201000
++};
++
++static uint16_t pspi_read_data(QTestState *qts, const PSPI *pspi)
++{
++    return qtest_readw(qts, pspi->base_addr + DATA_OFFSET);
++}
++
++static void pspi_write_data(QTestState *qts, const PSPI *pspi, uint16_t value)
++{
++    qtest_writew(qts, pspi->base_addr + DATA_OFFSET, value);
++}
++
++static uint32_t pspi_read_ctl(QTestState *qts, const PSPI *pspi)
++{
++    return qtest_readl(qts, pspi->base_addr + CTL_OFFSET);
++}
++
++static void pspi_write_ctl(QTestState *qts, const PSPI *pspi, uint32_t value)
++{
++    qtest_writel(qts, pspi->base_addr + CTL_OFFSET, value);
++}
++
++/* Check PSPI can be reset to default value */
++static void test_init(gconstpointer pspi_p)
++{
++    const PSPI *pspi = pspi_p;
++
++    QTestState *qts = qtest_init("-machine npcm845-evb");
++    pspi_write_ctl(qts, pspi, CTL_SPIEN);
++    g_assert_cmphex(pspi_read_ctl(qts, pspi), ==, CTL_SPIEN);
++
++    qtest_quit(qts);
++}
++
++/* Check PSPI can be r/w data register */
++static void test_data(gconstpointer pspi_p)
++{
++    const PSPI *pspi = pspi_p;
++    uint16_t test = 0x1234;
++    uint16_t output;
++
++    QTestState *qts = qtest_init("-machine npcm845-evb");
++
++    /* Write to data register */
++    pspi_write_data(qts, pspi, test);
++    printf("Wrote 0x%x to data register\n", test);
++
++    /* Read from data register */
++    output = pspi_read_data(qts, pspi);
++    printf("Read 0x%x from data register\n", output);
++
++    qtest_quit(qts);
++}
++
++/* Check PSPI can be r/w control register */
++static void test_ctl(gconstpointer pspi_p)
++{
++    const PSPI *pspi = pspi_p;
++    uint8_t control = CTL_MOD;
++
++    QTestState *qts = qtest_init("-machine npcm845-evb");
++
++    /* Write CTL_MOD value to control register for 16-bit interface mode */
++    qtest_memwrite(qts, pspi->base_addr + CTL_OFFSET,
++                   &control, sizeof(control));
++    g_assert_cmphex(pspi_read_ctl(qts, pspi), ==, control);
++    printf("Wrote CTL_MOD to control register\n");
++
++    qtest_quit(qts);
++}
++
++static void pspi_add_test(const char *name, const PSPI* wd,
++        GTestDataFunc fn)
++{
++    g_autofree char *full_name = g_strdup_printf("npcm8xx_pspi/%s",  name);
++    qtest_add_data_func(full_name, wd, fn);
++}
++
++#define add_test(name, td) pspi_add_test(#name, td, test_##name)
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    add_test(init, &pspi_defs);
++    add_test(ctl, &pspi_defs);
++    add_test(data, &pspi_defs);
++    return g_test_run();
++}
+-- 
+2.34.1
 
-Regards,
-BALATON Zoltan
---3866299591-674896605-1744966393=:81771--

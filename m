@@ -1,110 +1,111 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp350324njd;
-        Fri, 18 Apr 2025 10:03:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqDlrqyZCQNt/KGEk4aIvU+V6aqDiM9fCXYGhGyBjE1WYOXGclbu/vhKbJAy4pJDuH44IMaH4y7vKCcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG6QfgVpugFbd6hHaqVx2LzTGBNp3lzqgP+Yr3ES6ilhsKzdm9lwekUf5tIwdYbiv9yIdFX
-X-Received: by 2002:a05:600c:1e15:b0:43d:82c:2b23 with SMTP id 5b1f17b1804b1-4406abfaae3mr25169515e9.23.1744995808158;
-        Fri, 18 Apr 2025 10:03:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1744995808; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp353946njd;
+        Fri, 18 Apr 2025 10:08:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPKcMV/Egzl8e9b6x/8+wCU9XIRIHyoZzRXojK1NolJWIqYTEtR304JJ2mQNuDIDEeY+9qXbIC3ZN5+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IG4ZKzT3PfgWFvPmEgK6IdJRtveb3URhQxc3VSCqTndM0FZwdDEyxVDYX1VcYRPU8c3736s
+X-Received: by 2002:a05:620a:c50:b0:7c5:57b2:2cb9 with SMTP id af79cd13be357-7c927fac56emr455344185a.26.1744996096813;
+        Fri, 18 Apr 2025 10:08:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744996096; cv=none;
         d=google.com; s=arc-20240605;
-        b=k8d8Bqwq3K9W/FrAnNn5FDdN/lYMKtgXKQlb8tuKB6xTqJKYm6henyrPJu0eTfvAKS
-         ddhwkYUrMy70ft+/LBb/dHN8RZfO08saC78+7laJpIb9/0XHHhEmIR6T/yP05PPHX6C5
-         y4dNx6yHIETxKKbF+ErVlQSSSWovJcsMp47pd0aw8stWPMIRaTxn/lwsoBllmkh1K1yq
-         TuBxiWySU5SgyMzO+SEknkg84CroXY3euzPZt4jtY/qiWVdoG0SOaD0snYSacK/R9o/F
-         AajAoJFh92vaKR+4n/lW+ogY/lsztMZ4znd1M7dRoA2w9YXe6izbhKF6ITgIihe80TwN
-         ha6Q==
+        b=fpiotGAQmQhct1znv7XNhC671SKtD3p9kRoRwZ+c8Wa32WJzFFiBSE1nPgyMcWbRxZ
+         PweEZ1QxCIgjVrVTmZT6nPT21PVNJVrvuAcGq2+SE1Zw/mvw5nTw0FdIOjujF0gjOmuv
+         9tVO53m/TYdtA5+r3AR8RtoKHhygkbTlHAND02AiOXFLRcuuOeYfo40ToeaivKlOQKlr
+         LaWgXjSyO5jzz+QeOHWvl04KhYdy2wp5w1C334DzhwQpQpZD10qedsx1xsl6fxTafpzZ
+         3tr/zQWSe2lSVqu0DhHMgkWUTMUAO0uiWVxtDlSdcD8VGcQ+xFsm2QxJ1vlO+THTwof6
+         dKgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=evtNphXxaFH71ju8wrtSa4YQjBanemanWnMBRRa1Iog=;
-        fh=8Ug6bavCM/58aAiw8eESgYgbhZEXnlyRQtC9QSMNeEc=;
-        b=Musma1Je4O4wLh4YvGhk0ueruWQ6acfbc6HBv2RakdbDIPc0XK+hr9fadcDGrOgM+l
-         YIAb0onZcGM7MyY7G1MasiscIwG9iP9T15jLUFgPk5jerqPPqQTqIxUUkmvtEo7f2nOp
-         55KsamEIGMfxDzy8DHY04oJvi3lYJlSDEPflM5NxG+1IVgeird472waSAivCriEexuP7
-         yLAdDt7b1HcVfu8kBLDyGI1ftLTjjyZsXUZ3OHMns+X6sY5tTDT6sgobejZgFFyju12R
-         hX5iMoBBNrtP9Dm4HuqeEmSkZ9U8BTYYMqilgO47MrSdaqkLZKWd8s5mvVdau3etxtsb
-         jjWQ==;
+        bh=WQcUR+8DZpToY40YkzrKeJh5gMEQCSz+L8jocvc+Mgc=;
+        fh=IkwzomGtCoVf9PTAix13ClNjt3CY4AIMWigQarFB5vc=;
+        b=RTPVhyLPSrTOpHJEo5Wz1ZG0DJwJYbhTdZF+f0OfOJZ/vP0dU+phZi8rW0IMHLEF6v
+         WZ7peLwVmjdRShhHMzQSfYcQmZa2sJeKlp9HPU1ZXjvpio89ZkcNPWWvESQGj2dI5dqb
+         Om1Hy1Ufyd4eoupCWrftFH0VCBiAcUumpJd0R2j710bmA4foEGyykL1A8eUsbkSHsUjg
+         sNzC4FRxgC1Pqk9WEpqSAuDIpL3U7IWWlhcn8GNI6Cwp7XNcDzDn9IdJj96O/2rHnNgo
+         vgTqscbLr8UzFJXXYJuMETQkNFSE2IV6zian+OTsByTI1vihSs0huPGa3Jm6f7R5kgTs
+         yAEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YBWeWqqa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y0b58yTC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4406d5ae7aasi11778815e9.51.2025.04.18.10.03.27
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-877647ab873si618034241.152.2025.04.18.10.08.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Apr 2025 10:03:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Apr 2025 10:08:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YBWeWqqa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y0b58yTC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u5p7T-0005dZ-Mj; Fri, 18 Apr 2025 13:03:15 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u5pC3-0008VV-8v; Fri, 18 Apr 2025 13:07:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1u5p7S-0005dL-6u
- for qemu-devel@nongnu.org; Fri, 18 Apr 2025 13:03:14 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u5pBs-0008Nr-9u
+ for qemu-arm@nongnu.org; Fri, 18 Apr 2025 13:07:48 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1u5p7Q-0004lJ-BV
- for qemu-devel@nongnu.org; Fri, 18 Apr 2025 13:03:13 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-736bfa487c3so1854528b3a.1
- for <qemu-devel@nongnu.org>; Fri, 18 Apr 2025 10:03:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u5pBq-0005bc-99
+ for qemu-arm@nongnu.org; Fri, 18 Apr 2025 13:07:47 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-43cf0d787eeso24649375e9.3
+ for <qemu-arm@nongnu.org>; Fri, 18 Apr 2025 10:07:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1744995790; x=1745600590; darn=nongnu.org;
+ d=linaro.org; s=google; t=1744996061; x=1745600861; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=evtNphXxaFH71ju8wrtSa4YQjBanemanWnMBRRa1Iog=;
- b=YBWeWqqah7uBNExTNGmQPUxZgmWi8PitrSJl7AWTHeDZkZNg1JGCM9qnNpPh7wHJkD
- yDtfoziOBnJZvUxOiScCGvhNWkfZvX8AuMgx1+1qRHY1TFHWPLZO+H29gnTMUpuAZvWk
- Bs+nnZzk1DnBmt469/wMYcU9+15Ndyku0jpWKmTTrwPjd/VirAdnmPueqIg82Tyx3oi+
- jQA7qKlLKEkJMIdOCOydllXX73dsLB9l4b8A+Dl705SC/+Hcu0VPH6ePHsSQLUvtLtXY
- emTW/gxH1prC+hr7R8fPp7Verto2Y9ejyvzab8asCCw0YlqYHVtOIV4YPVL6Uc9QT5vQ
- 3BTQ==
+ bh=WQcUR+8DZpToY40YkzrKeJh5gMEQCSz+L8jocvc+Mgc=;
+ b=y0b58yTC6C6VeFTnBgFYupIIvk1Vow5+nJuWAmR2oSeXidptwpxTAsJDh8Qzxa0wJ7
+ 8MhqdCeQBAFvDBItLFRHBG71FTbGnDDi5kYBQl+Rj4LXK/Mx8V6SePB04sNKdwDhIVSp
+ KjPQsbNaJDwMmxsE2ddf/l4BJWt7Br9MNu623iJignU85wZOl9mBFnfytEtkY7SbaVm1
+ Bb7hKWU9HoDyEqbPr1SUHQzmCv/4DANycRK/8+tc5GzCHao57UQqCtKvP9e+QXGSncS8
+ 2anhxiQ2V0hoZX6k+/T3mJE0XYs9dECIPbs0A6ijfMIIPD7ajeVbO1t/0AsgwbiE3AYa
+ 4VHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744995790; x=1745600590;
+ d=1e100.net; s=20230601; t=1744996061; x=1745600861;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=evtNphXxaFH71ju8wrtSa4YQjBanemanWnMBRRa1Iog=;
- b=ZJ1v5LFAqVg7jG8YwFDxlbqxrlYxT67HMNLkKU4p9u8x6r06yDCAcW18OvKdnSosF/
- sLycAXUEwXn4TVM1WeLqF7eKx7i5TOQQKxaFW9nKsXH8DR9CVJR6hCGnPFCthzRpwsar
- 1aAHoz83oGfzRjxXLxJNS7UBJF1qTO5fEKU1o9EmYR5rnf42SJrPLYHSYpcQmLuGuLkZ
- SU9jWbk+CO1vLKNUp3Jy++YpKI2VEkvp1JF0Pq5Z+j2igeHn/psOk5i3FS+uhy6LPx3b
- QZBAw8cLehmYoo9gA2O0qcsIzQ1ErYLh7Eup+IeRjPk9Uh67Rpq19EmwRyHVDN34pHxn
- jiaw==
-X-Gm-Message-State: AOJu0YxiuQsl4XOCptjxaxrDHfUxBaaeWT7t+oWUNs9E6aEIaV1Luy50
- JZ50a2r1LdAA7y+umxoV3XQonE/KUb/gaKAAemgizXz+ah1McQOmIP6lNwd3qCA=
-X-Gm-Gg: ASbGncur1hxaOTUJRjczvzhouZrwH/28nPjdnU21zjrTp7BoYuCP3Mem2C0OQriDL3Y
- yGgwQqjCzxRr3nlu4rCj0JlzQddzh88ifLra38TYWiXh1H1w5Lv2gRO8IM2+VxSzU7JsyWA3zQt
- UI1PI2k0BWwgz1mtUORmh41XJuNVG4xwRwwKC3/t6l6x1W0mnIZIV/LGi4cpXXKBeImjAm720fU
- XNMwL/ifIj/ZNrVpgfGKrV66TVf6DsGJSYYc64gfyWqHfXZBvch3OEAv1y4duU4XjEcnz31MAnV
- Flgd2GsA2dEmVi37xCtZVJG3rutP+jqTL/9sPs3gG8G5N+JOctEExg==
-X-Received: by 2002:a05:6a00:2285:b0:736:4d05:2e2e with SMTP id
- d2e1a72fcca58-73dc149716dmr4381970b3a.6.1744995790216; 
- Fri, 18 Apr 2025 10:03:10 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-73dbfa59176sm1827621b3a.113.2025.04.18.10.03.09
+ bh=WQcUR+8DZpToY40YkzrKeJh5gMEQCSz+L8jocvc+Mgc=;
+ b=m/k9fGSKWEmZu8WRwNeznspXVD4GWtWjHhwvQJ3IvBnm4DqTkhz3TyU551hCWsVTA0
+ lWUBLLVuWNlaV5GqmzwuxAidOToj7eKtyRPAakONk9CXXqI48PgAJ+NeDkPtqXCtaiQ8
+ adKW5slHtrdz8oU4JI2E28rzYmr5MdJ2LMCGsTy0k5AYxYOCVq+my/RAEX9d60uK08Po
+ JZEP26uqzNvKnBT9rtYTEl3uUfUKKPB7PBPEcWJ3xl4/NBZLNyH9Mn9TM0XOG/IQAK8b
+ pQlxwHgs7YGvkLJZHrtS0Lh/Az1PEO3cnNhgfs8AQMusppafySB4EBRTnAjdXg7DTZ/4
+ 35nw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW83yXhheRZSGyOk03NBZylubnUzypR5Z+eoIac2uqN/i1fTDKbUman4wYDSIhfCY1rhTctrcXjjQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwahXlkZJKHCnWxfyuaX4o04wVSb82GxleQJFjP+236UpeJLUFd
+ KucmAjkCCQ6//0kQOqKJHnIGYT4T4dZxpzODkbRtimpAj6ZcHnTM5zVEzWbc/sg=
+X-Gm-Gg: ASbGncsKJg61NxmysfX8fDzAMSwjNlyY7fu4ks8n8wS48+IZvlj630bM8ImzCFDk/nr
+ 4s/Vj9o0MCl8VBpRPgbKnGDcOrT4vh8EzCK78LT7bDBITTDWhQWIsvI++gf+AcWJ/onSmSojXry
+ m/PjB0SnLBDJnNmLHQM4OtRyfpMotMxz0BiPpDXkXzOBo+NcAquyRvxtQYVn8fLCVOF9ilpPo4g
+ Yr3sRguvl39vSmC1VnP/lg0xvV9O3+uc0oRtIj50aqd4nupqJ73qvDFNDxU7Fl/Mt1H4wfarf9X
+ d42B8qNsDwvgU2Z3flHo1IPDz0N5LxnjLvnmz4VH25Nj4vSeJ8N9NPrdBbkNhwCUQHjL00xdnnX
+ cV2PT7XKp
+X-Received: by 2002:a05:600c:1547:b0:439:6118:c188 with SMTP id
+ 5b1f17b1804b1-4406aba756emr26720995e9.19.1744996061226; 
+ Fri, 18 Apr 2025 10:07:41 -0700 (PDT)
+Received: from [192.168.69.175] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4406d5a9e0esm29601275e9.5.2025.04.18.10.07.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Apr 2025 10:03:09 -0700 (PDT)
-Message-ID: <35ae8633-4195-446b-9a22-0c131b9cab88@linaro.org>
-Date: Fri, 18 Apr 2025 10:03:08 -0700
+ Fri, 18 Apr 2025 10:07:40 -0700 (PDT)
+Message-ID: <ee3c9b11-4c4e-41c7-8029-7e5c153215d7@linaro.org>
+Date: Fri, 18 Apr 2025 19:07:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 00/11] hw/arm: Define machines as generic QOM types
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  BALATON Zoltan <balaton@eik.bme.hu>
 Cc: qemu-devel@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
  Antony Pavlov <antonynpavlov@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
@@ -123,99 +124,110 @@ References: <20250417235814.98677-1-philmd@linaro.org>
  <a302fb91-e2d8-ef36-ac53-5e460476c2d0@eik.bme.hu>
  <25a82a76-cd63-4a42-bb68-5dcf826bd948@linaro.org>
  <26c2b844-dc96-448e-8978-e536ed1e61f6@linaro.org>
+ <35ae8633-4195-446b-9a22-0c131b9cab88@linaro.org>
 Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <26c2b844-dc96-448e-8978-e536ed1e61f6@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <35ae8633-4195-446b-9a22-0c131b9cab88@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pxjc7h3O3MDX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OoGtC2HZZsZ7
 
-T24gNC8xOC8yNSAwOTo1OSwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgd3JvdGU6DQo+IE9u
-IDE4LzQvMjUgMTg6MzMsIFBpZXJyaWNrIEJvdXZpZXIgd3JvdGU6DQo+PiBPbiA0LzE4LzI1
-IDAxOjUzLCBCQUxBVE9OIFpvbHRhbiB3cm90ZToNCj4+PiBPbiBGcmksIDE4IEFwciAyMDI1
-LCBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSB3cm90ZToNCj4+Pj4gV2hpbGUgREVGSU5FX01B
-Q0hJTkUoKSBpcyBhIHN1Y2NpbmN0IG1hY3JvLCBpdCBkb2Vzbid0DQo+Pj4+IGFsbG93IHJl
-Z2lzdGVyaW5nIFFPTSBpbnRlcmZhY2VzIHRvIHRoZSBkZWZpbmVkIG1hY2hpbmUuDQo+Pj4+
-IENvbnZlcnQgdG8gdGhlIGdlbmVyaWMgREVGSU5FX1RZUEVTKCkgaW4gcHJlcGFyYXRpb24g
-dG8NCj4+Pj4gcmVnaXN0ZXIgaW50ZXJmYWNlcy4NCj4+Pj4NCj4+Pj4gUGhpbGlwcGUgTWF0
-aGlldS1EYXVkw6kgKDExKToNCj4+Pj4gIMKgIGh3L2NvcmUvbnVsbC1tYWNoaW5lOiBEZWZp
-bmUgbWFjaGluZSBhcyBnZW5lcmljIFFPTSB0eXBlDQo+Pj4+ICDCoCBody9hcm0vYmFuYW5h
-cGk6IERlZmluZSBtYWNoaW5lIGFzIGdlbmVyaWMgUU9NIHR5cGUNCj4+Pj4gIMKgIGh3L2Fy
-bS9jdWJpZWJvYXJkOiBEZWZpbmUgbWFjaGluZSBhcyBnZW5lcmljIFFPTSB0eXBlDQo+Pj4+
-ICDCoCBody9hcm0vZGlnaWM6IERlZmluZSBtYWNoaW5lIGFzIGdlbmVyaWMgUU9NIHR5cGUN
-Cj4+Pj4gIMKgIGh3L2FybS9pbXg6IERlZmluZSBtYWNoaW5lcyBhcyBnZW5lcmljIFFPTSB0
-eXBlcw0KPj4+PiAgwqAgaHcvYXJtL2ludGVncmF0b3JjcDogRGVmaW5lIG1hY2hpbmUgYXMg
-Z2VuZXJpYyBRT00gdHlwZQ0KPj4+PiAgwqAgaHcvYXJtL2t6bTogRGVmaW5lIG1hY2hpbmUg
-YXMgZ2VuZXJpYyBRT00gdHlwZQ0KPj4+PiAgwqAgaHcvYXJtL21zZjI6IERlZmluZSBtYWNo
-aW5lIGFzIGdlbmVyaWMgUU9NIHR5cGUNCj4+Pj4gIMKgIGh3L2FybS9tdXNpY3BhbDogRGVm
-aW5lIG1hY2hpbmUgYXMgZ2VuZXJpYyBRT00gdHlwZQ0KPj4+PiAgwqAgaHcvYXJtL29yYW5n
-ZXBpOiBEZWZpbmUgbWFjaGluZSBhcyBnZW5lcmljIFFPTSB0eXBlDQo+Pj4+ICDCoCBody9h
-cm0vc3RtMzI6IERlZmluZSBtYWNoaW5lcyBhcyBnZW5lcmljIFFPTSB0eXBlcw0KPj4+Pg0K
-Pj4+PiBody9hcm0vYmFuYW5hcGlfbTJ1LmPCoMKgwqDCoMKgIHwgMTMgKysrKysrKysrKyst
-LQ0KPj4+PiBody9hcm0vY3ViaWVib2FyZC5jwqDCoMKgwqDCoMKgwqAgfCAxMyArKysrKysr
-KysrKy0tDQo+Pj4+IGh3L2FybS9kaWdpY19ib2FyZHMuY8KgwqDCoMKgwqAgfCAxNCArKysr
-KysrKysrKystLQ0KPj4+PiBody9hcm0vaW14MjVfcGRrLmPCoMKgwqDCoMKgwqDCoMKgIHwg
-MTQgKysrKysrKysrKysrLS0NCj4+Pj4gaHcvYXJtL2lteDhtcC1ldmsuY8KgwqDCoMKgwqDC
-oMKgIHwgMTUgKysrKysrKysrKysrKy0tDQo+Pj4+IGh3L2FybS9pbnRlZ3JhdG9yY3AuY8Kg
-wqDCoMKgwqAgfCAxNiArKysrKysrKysrKysrLS0tDQo+Pj4+IGh3L2FybS9rem0uY8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAxNCArKysrKysrKysrKystLQ0KPj4+PiBody9h
-cm0vbWNpbXg2dWwtZXZrLmPCoMKgwqDCoMKgIHwgMTUgKysrKysrKysrKysrKy0tDQo+Pj4+
-IGh3L2FybS9tY2lteDdkLXNhYnJlLmPCoMKgwqDCoCB8IDE1ICsrKysrKysrKysrKystLQ0K
-Pj4+PiBody9hcm0vbXNmMi1zb20uY8KgwqDCoMKgwqDCoMKgwqDCoCB8IDEzICsrKysrKysr
-KysrLS0NCj4+Pj4gaHcvYXJtL211c2ljcGFsLmPCoMKgwqDCoMKgwqDCoMKgwqAgfCAxNiAr
-KysrKysrKysrKysrLS0tDQo+Pj4+IGh3L2FybS9uZXRkdWlubzIuY8KgwqDCoMKgwqDCoMKg
-wqAgfCAxMyArKysrKysrKysrKy0tDQo+Pj4+IGh3L2FybS9uZXRkdWlub3BsdXMyLmPCoMKg
-wqDCoCB8IDEzICsrKysrKysrKysrLS0NCj4+Pj4gaHcvYXJtL29saW1leC1zdG0zMi1oNDA1
-LmMgfCAxMyArKysrKysrKysrKy0tDQo+Pj4+IGh3L2FybS9vcmFuZ2VwaS5jwqDCoMKgwqDC
-oMKgwqDCoMKgIHwgMTMgKysrKysrKysrKystLQ0KPj4+PiBody9hcm0vc2FicmVsaXRlLmPC
-oMKgwqDCoMKgwqDCoMKgIHwgMTQgKysrKysrKysrKysrLS0NCj4+Pj4gaHcvYXJtL3N0bTMy
-dmxkaXNjb3ZlcnkuY8KgIHwgMTMgKysrKysrKysrKystLQ0KPj4+PiBody9jb3JlL251bGwt
-bWFjaGluZS5jwqDCoMKgwqAgfCAxNCArKysrKysrKysrKystLQ0KPj4+PiAxOCBmaWxlcyBj
-aGFuZ2VkLCAyMTMgaW5zZXJ0aW9ucygrKSwgMzggZGVsZXRpb25zKC0pDQo+Pj4NCj4+PiBU
-aGlzIGlzIG11Y2ggbG9uZ2VyIGFuZCBleHBvc2luZyBib2lsZXIgcGxhdGUgY29kZS4gSXMg
-aXQgcG9zc2libGUNCj4+PiBpbnN0ZWFkDQo+Pj4gdG8gY2hhbmdlIERFRklORV9NQUNISU5F
-IG9yIGFkZCBhbm90aGVyIHNpbWlsYXIgbWFjcm8gdGhhdCBhbGxvd3MNCj4+PiBzcGVjaWZ5
-aW5nIG1vcmUgZGV0YWlscyBzdWNoIGFzIGNsYXNzIHN0YXRlIHR5cGUgYW5kIGludGVyZmFj
-ZXMgbGlrZSB3ZQ0KPj4+IGFscmVhZHkgaGF2ZSBmb3IgT0JKRUNUX0RFRklORSBtYWNyb3Mg
-dG8ga2VlcCB0aGUgYm9pbGVyIHBsYXRlIGNvZGUNCj4+PiBoaWRkZW4NCj4+PiBhbmQgbm90
-IGJyaW5nIGl0IGJhY2s/DQo+Pj4NCj4+DQo+PiBXZSBjYW4gZXZlbnR1YWxseSBtb2RpZnkg
-REVGSU5FX01BQ0hJTkVTLCB0byB0YWtlIGFuIGFkZGl0aW9uYWwNCj4+IGludGVyZmFjZXMg
-cGFyYW1ldGVyLCBhbmQgcmVwbGFjZSBhbGwgY2FsbCBzaXRlcywgd2l0aCBhbiBlbXB0eSBs
-aXN0IGZvcg0KPj4gYWxsIGJvYXJkcyBvdXQgb2YgaHcvYXJtLg0KPj4NCj4+IEFzIGxvbmcg
-YXMgd2UgYXZvaWQgc29tZXRoaW5nIGxpa2U6DQo+PiBERUZJTkVfTUFDSElORVNfV0lUSF9J
-TlRFUkZBQ0VfMSguLi4pDQo+PiBERUZJTkVfTUFDSElORVNfV0lUSF9JTlRFUkZBQ0VfMigu
-Li4pDQo+PiBERUZJTkVfTUFDSElORVNfV0lUSF9JTlRFUkZBQ0VfMyguLi4pDQo+PiBJJ20g
-b2sgd2l0aCBrZWVwaW5nIHRoZSBtYWNyby4NCj4+DQo+PiBXb3VsZCB0aGF0IHdvcmsgZm9y
-IHlvdSBmb2xrcz8NCj4gDQo+IEJ1dCB0aGVuIHdlJ2xsIHdhbnQgREVGSU5FX1BQQzMyX01B
-Q0hJTkUoKSAtPg0KPiBERUZJTkVfTUFDSElORVNfV0lUSF9JTlRFUkZBQ0VfMSgpIGV0Yy4u
-Lg0KPiANCg0KV2UgY2FuIHNlZSB0aGF0IGxhdGVyIHdoZW4gdG91Y2hpbmcgb3RoZXIgdGFy
-Z2V0cy4gRm9yIG5vdywgDQpERUZJTkVfTUFDSElORSBpcyBub3QgdXNlZCBpbiBhIGxvdCBv
-ZiBwbGFjZXMsIHNvIHJlcGxhY2luZyBjYWxsIHNpdGVzIA0Kc2hvdWxkIGJlIGVhc3ksIGFu
-ZCBpdCB3aWxsIGNvdmVyIGh3L2FybSwgd2hpY2ggaXMgb3VyIHBvaW50IG9mIGludGVyZXN0
-IA0Kbm93Lg0KDQo+IFdlIHdhbnQgdG8gZXZlbnR1YWxseSB1c2UgZGVjbGFyYXRpdmUgZmls
-ZSB0byBzdHJ1Y3R1cmUgbW9zdCBvZiB0aGUNCj4gbWFjaGluZSBib2lsZXIgcGxhdGUgY29k
-ZS4gTWF5YmUgYmVpbmcgbW9tZW50YXJpbHkgdmVyYm9zZSBpcw0KPiBhY2NlcHRhYmxlLi4u
-DQoNCg==
+On 18/4/25 19:03, Pierrick Bouvier wrote:
+> On 4/18/25 09:59, Philippe Mathieu-Daudé wrote:
+>> On 18/4/25 18:33, Pierrick Bouvier wrote:
+>>> On 4/18/25 01:53, BALATON Zoltan wrote:
+>>>> On Fri, 18 Apr 2025, Philippe Mathieu-Daudé wrote:
+>>>>> While DEFINE_MACHINE() is a succinct macro, it doesn't
+>>>>> allow registering QOM interfaces to the defined machine.
+>>>>> Convert to the generic DEFINE_TYPES() in preparation to
+>>>>> register interfaces.
+>>>>>
+>>>>> Philippe Mathieu-Daudé (11):
+>>>>>    hw/core/null-machine: Define machine as generic QOM type
+>>>>>    hw/arm/bananapi: Define machine as generic QOM type
+>>>>>    hw/arm/cubieboard: Define machine as generic QOM type
+>>>>>    hw/arm/digic: Define machine as generic QOM type
+>>>>>    hw/arm/imx: Define machines as generic QOM types
+>>>>>    hw/arm/integratorcp: Define machine as generic QOM type
+>>>>>    hw/arm/kzm: Define machine as generic QOM type
+>>>>>    hw/arm/msf2: Define machine as generic QOM type
+>>>>>    hw/arm/musicpal: Define machine as generic QOM type
+>>>>>    hw/arm/orangepi: Define machine as generic QOM type
+>>>>>    hw/arm/stm32: Define machines as generic QOM types
+>>>>>
+>>>>> hw/arm/bananapi_m2u.c      | 13 +++++++++++--
+>>>>> hw/arm/cubieboard.c        | 13 +++++++++++--
+>>>>> hw/arm/digic_boards.c      | 14 ++++++++++++--
+>>>>> hw/arm/imx25_pdk.c         | 14 ++++++++++++--
+>>>>> hw/arm/imx8mp-evk.c        | 15 +++++++++++++--
+>>>>> hw/arm/integratorcp.c      | 16 +++++++++++++---
+>>>>> hw/arm/kzm.c               | 14 ++++++++++++--
+>>>>> hw/arm/mcimx6ul-evk.c      | 15 +++++++++++++--
+>>>>> hw/arm/mcimx7d-sabre.c     | 15 +++++++++++++--
+>>>>> hw/arm/msf2-som.c          | 13 +++++++++++--
+>>>>> hw/arm/musicpal.c          | 16 +++++++++++++---
+>>>>> hw/arm/netduino2.c         | 13 +++++++++++--
+>>>>> hw/arm/netduinoplus2.c     | 13 +++++++++++--
+>>>>> hw/arm/olimex-stm32-h405.c | 13 +++++++++++--
+>>>>> hw/arm/orangepi.c          | 13 +++++++++++--
+>>>>> hw/arm/sabrelite.c         | 14 ++++++++++++--
+>>>>> hw/arm/stm32vldiscovery.c  | 13 +++++++++++--
+>>>>> hw/core/null-machine.c     | 14 ++++++++++++--
+>>>>> 18 files changed, 213 insertions(+), 38 deletions(-)
+>>>>
+>>>> This is much longer and exposing boiler plate code. Is it possible
+>>>> instead
+>>>> to change DEFINE_MACHINE or add another similar macro that allows
+>>>> specifying more details such as class state type and interfaces like we
+>>>> already have for OBJECT_DEFINE macros to keep the boiler plate code
+>>>> hidden
+>>>> and not bring it back?
+>>>>
+>>>
+>>> We can eventually modify DEFINE_MACHINES, to take an additional
+>>> interfaces parameter, and replace all call sites, with an empty list for
+>>> all boards out of hw/arm.
+>>>
+>>> As long as we avoid something like:
+>>> DEFINE_MACHINES_WITH_INTERFACE_1(...)
+>>> DEFINE_MACHINES_WITH_INTERFACE_2(...)
+>>> DEFINE_MACHINES_WITH_INTERFACE_3(...)
+>>> I'm ok with keeping the macro.
+>>>
+>>> Would that work for you folks?
+>>
+>> But then we'll want DEFINE_PPC32_MACHINE() ->
+>> DEFINE_MACHINES_WITH_INTERFACE_1() etc...
+>>
+> 
+> We can see that later when touching other targets. For now, 
+> DEFINE_MACHINE is not used in a lot of places, so replacing call sites 
+> should be easy, and it will cover hw/arm, which is our point of interest 
+> now.
+
+I concur and share the same goal, but here Zoltan is concerned about
+converting DEFINE_MACHINE to DEFINE_TYPES adds 12 lines of boilerplate
+code.

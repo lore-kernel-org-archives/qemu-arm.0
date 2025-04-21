@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp1972362njd;
-        Mon, 21 Apr 2025 14:04:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVywSPlaEKhM04gvFK27Q/q2vgZsYFuGoqPG8z6/K+iI1JgEq6Yt5vHo1ANr8fkzmovFs2feK24gZ4plw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEPdDtdK8sFE+cw7ImP632hU4mNXTtTq4CWPqqXnGa26ke1AbXio8fJM7rgxqG1Bx1lTbgs
-X-Received: by 2002:ac8:5fc5:0:b0:476:add4:d2b7 with SMTP id d75a77b69052e-47aec4bdcb7mr168616461cf.51.1745269461349;
-        Mon, 21 Apr 2025 14:04:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745269461; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp1974326njd;
+        Mon, 21 Apr 2025 14:08:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUMZjxLJfRhzXOkD6oJh8n6qljw3ewsC5ImdporTqi+cKSzuZ/OXcAhp+EcEBqJ5q0ASkCrpgr8vbaC8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwJZ1ubsJkrsWnh1vMVdnVQMV02rqlWmXrdyTQEJBI3ohJiksoUMWbVuHYuf6eaDVJ8wON
+X-Received: by 2002:a05:620a:3184:b0:7c5:65ab:5002 with SMTP id af79cd13be357-7c92805e97bmr2620463685a.49.1745269694649;
+        Mon, 21 Apr 2025 14:08:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745269694; cv=none;
         d=google.com; s=arc-20240605;
-        b=eihOZdlwnjSXLnI4t553H4ocMTNT3Jb4yVlKjrjzFDuqZJVQkN4qce8A9AhTFJ22r7
-         lKmHyh7YVemAMUdgdhsSo88z7KjXzOJ/Lf+AX7QD5xFH+txA3JtQRzPFVUmV8Erua2pj
-         c9C13rmsvUTBlgxhKkCGOmS1qhCYSgoOwmBXn1neI0ywbxbKMyNahG2IBpk0iB6a0Q7U
-         gNUfFKfwNMWbHDQ4ZPGqU2lc/tqj+xHLg+5wd6UAJNpj24+viqSTLMwBWcgP3reinDE7
-         X/TELqXGXjdBW08+KolWaQ6ie2ycdTjLR6N88E5RzEBQhQbI/wN5w3V8Xbt6Z03kOFZu
-         kC+A==
+        b=YhC1i7NIKiqYW2xW4y/8XdvNQc3UVXK4dgw+AgmVQcwxVWX7xJQZbhnWH53wv8xy6d
+         raFDhmzIx7g2+eWmOW9akuLNfELSn9MVBT6vdA/KA75XnEjtMsw8s186Q3ACd5BVCgOD
+         G3W+tUs1T/2AcJvvIui3AXjWl7fKotVDxmW/264hvBF9sRhD240Iu3TY0NsZvkb71/QL
+         6mjTWJXHrn77K0n76M2oNt0W6fzgH45S7uQkQNLvJB6uYd5ZG/MKCm+4eRi5ccuOW4Dm
+         uxTy6mLc1NDSxpuhrExhI0nlxbOkKFBDCQ141ZgEAik11CHlfDvwUwkhr8redspgq8b7
+         Ctrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=l81PToCfdqNMqo8JB9arveqQytNgDjKjkXEt2EWD/k4=;
+        bh=lCPiIY+oiWFWRghWurWE9bP38vidBXsOTsqspbHyuAU=;
         fh=aTXBRWvcUi1tLADA5DrDnV7F47mfdIt5smkQi/SmRpk=;
-        b=KPS0Our/USrT35FuHA2n6eNfkwB1glDFdBBs8Vnpu3elrn8kgSlhlABj5OnsstkZza
-         CH2JlU6li5GQV+38/emvntxx5zuBegefDsoyrkZKmRmCKrJc0dhmwaoT0MYZm84i0MKc
-         Ay44V/ZuUA8QdEIBh2yxhxNWBbbqwrMdYSnQKwDd5ZXoehkkdv/+niYgDPdgupwgzIVM
-         XV0dq0CzektEe2padWWo3VYGVOV8AYdaukWOa2bjbUCMakwb+omm8apDvW0DGkgf9afE
-         H+t1LfkPUDhsU8BNByqPZgw9HIsJaDHO+6obghuPbIggKAUw2molOxNf06XblSz41rf6
-         tYsg==;
+        b=JL4ikc3MKKP5EPFVFvGyGhb6l5u2g/IWVYeORMR1MpkTet8LWbpi3yKl4AltpTWzz8
+         e7oax+TTbcAmxUV4T/hKi1mt9zlrdYjbVvdtxgpXqJdZpA0pPgiF2550MrnIaqUvpVy9
+         sX9NBZUgOqp+xSASChX67ZhPNaGInpyWdBFougi517CdZP+V4mmFHFVVctStluOPBH+p
+         6EYY2UHQIVbkJEVHkC5CZ+lFqBZ+17hR3/6LngNrLTuWQ14rhQKVMB/ERHyOeO3v7qFl
+         muCAIXmHrkXZ91SrYyqSXc7qQuNmIeGynfDq3AkxjBztWxLDmVtqQGvhy7r5MlNO/fnw
+         b8lA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ae9c2d2f3si102123131cf.153.2025.04.21.14.04.21
+        by mx.google.com with ESMTPS id af79cd13be357-7c925bff01esi956353585a.608.2025.04.21.14.08.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Apr 2025 14:04:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Apr 2025 14:08:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u6yJC-00076r-I5; Mon, 21 Apr 2025 17:04:06 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u6yMj-0001Fr-7n; Mon, 21 Apr 2025 17:07:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=X3PK=XH=kaod.org=clg@ozlabs.org>)
- id 1u6yJA-00075Z-Py; Mon, 21 Apr 2025 17:04:04 -0400
+ id 1u6yMf-0001Ex-HR; Mon, 21 Apr 2025 17:07:42 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=X3PK=XH=kaod.org=clg@ozlabs.org>)
- id 1u6yJ8-0005pI-FK; Mon, 21 Apr 2025 17:04:04 -0400
+ id 1u6yMd-000666-AP; Mon, 21 Apr 2025 17:07:41 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZhHsr0Tfyz4x3S;
- Tue, 22 Apr 2025 07:04:00 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZhHxz3Ttpz4x5g;
+ Tue, 22 Apr 2025 07:07:35 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZhHsm3vtWz4wd0;
- Tue, 22 Apr 2025 07:03:56 +1000 (AEST)
-Message-ID: <60ec9c28-85b2-47cd-a9e6-8574ea841482@kaod.org>
-Date: Mon, 21 Apr 2025 23:03:54 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZhHxv69Scz4x04;
+ Tue, 22 Apr 2025 07:07:31 +1000 (AEST)
+Message-ID: <810f52af-c28c-439c-90f9-c4829f77a910@kaod.org>
+Date: Mon, 21 Apr 2025 23:07:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/10] tests/functional/aspeed: Update test ASPEED SDK
- v09.06
+Subject: Re: [PATCH v4 09/10] tests/functional/aspeed: Add to test vbootrom
+ for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +72,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com
 References: <20250417031209.2647703-1-jamin_lin@aspeedtech.com>
- <20250417031209.2647703-9-jamin_lin@aspeedtech.com>
+ <20250417031209.2647703-10-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +117,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250417031209.2647703-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250417031209.2647703-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=X3PK=XH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -129,80 +129,111 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: do1lPb4XsuWC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: csB9NDJhUWek
 
 On 4/17/25 05:12, Jamin Lin wrote:
+> Add the AST2700 functional test to boot using the vbootrom image
+> instead of manually loading boot components with -device loader.
+> The boot ROM binary is now passed via the
+> -bios option, using the image located in pc-bios/ast27x0_bootrom.bin.
+> 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/functional/test_aarch64_aspeed.py | 15 +++++++++++++++
+>   1 file changed, 15 insertions(+)
+> 
+> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
+> index 337d701917..85789c1b1d 100755
+> --- a/tests/functional/test_aarch64_aspeed.py
+> +++ b/tests/functional/test_aarch64_aspeed.py
+> @@ -94,6 +94,14 @@ def start_ast2700_test(self, name):
+>           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+>           exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+>   
+> +    def start_ast2700_test_vbootrom(self, name):
+> +        self.vm.add_args('-bios', 'ast27x0_bootrom.bin')
+> +        self.do_test_aarch64_aspeed_sdk_start(
+> +                self.scratch_file(name, 'image-bmc'))
+> +        wait_for_console_pattern(self, f'{name} login:')
+> +        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+> +        exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+> +
+>       def test_aarch64_ast2700_evb_sdk_v09_06(self):
+>           self.set_machine('ast2700-evb')
+>   
+> @@ -108,5 +116,12 @@ def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
+>           self.start_ast2700_test('ast2700-default')
+>           self.do_ast2700_i2c_test()
+>   
+> +    def test_aarch64_ast2700a1_evb_sdk_vboottom_v09_06(self):
 
+vboottom -> vbootrom
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> +        self.set_machine('ast2700a1-evb')
+> +
+> +        self.archive_extract(self.ASSET_SDK_V906_AST2700A1)
+> +        self.start_ast2700_test_vbootrom('ast2700-default')
+> +        self.do_ast2700_i2c_test()
+> +
+>   if __name__ == '__main__':
+>       QemuSystemTest.main()
+
+I think we should add some patterns to catch the vbootrom output. See
+below.
+
 
 Thanks,
 
 C.
 
 
-> ---
->   tests/functional/test_aarch64_aspeed.py | 20 ++++++++++----------
->   1 file changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
-> index 441f7f3919..337d701917 100755
-> --- a/tests/functional/test_aarch64_aspeed.py
-> +++ b/tests/functional/test_aarch64_aspeed.py
-> @@ -29,13 +29,13 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
->           wait_for_console_pattern(self, '## Loading kernel from FIT Image')
->           wait_for_console_pattern(self, 'Starting kernel ...')
->   
-> -    ASSET_SDK_V905_AST2700 = Asset(
-> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz',
-> -            'cfbbd1cce72f2a3b73b9080c41eecdadebb7077fba4f7806d72ac99f3e84b74a')
-> +    ASSET_SDK_V906_AST2700 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-a0-default-obmc.tar.gz',
-> +            '7247b6f19dbfb700686f8d9f723ac23f3eb229226c0589cb9b06b80d1b61f3cb')
->   
-> -    ASSET_SDK_V905_AST2700A1 = Asset(
-> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz',
-> -            'c1f4496aec06743c812a6e9a1a18d032f34d62f3ddb6956e924fef62aa2046a5')
-> +    ASSET_SDK_V906_AST2700A1 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
-> +            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
->   
->       def do_ast2700_i2c_test(self):
->           exec_command_and_wait_for_pattern(self,
-> @@ -94,17 +94,17 @@ def start_ast2700_test(self, name):
->           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
->           exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
->   
-> -    def test_aarch64_ast2700_evb_sdk_v09_05(self):
-> +    def test_aarch64_ast2700_evb_sdk_v09_06(self):
->           self.set_machine('ast2700-evb')
->   
-> -        self.archive_extract(self.ASSET_SDK_V905_AST2700)
-> +        self.archive_extract(self.ASSET_SDK_V906_AST2700)
->           self.start_ast2700_test('ast2700-a0-default')
->           self.do_ast2700_i2c_test()
->   
-> -    def test_aarch64_ast2700a1_evb_sdk_v09_05(self):
-> +    def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
->           self.set_machine('ast2700a1-evb')
->   
-> -        self.archive_extract(self.ASSET_SDK_V905_AST2700A1)
-> +        self.archive_extract(self.ASSET_SDK_V906_AST2700A1)
->           self.start_ast2700_test('ast2700-default')
->           self.do_ast2700_i2c_test()
->   
+
+  _    ______  ____  ____  __________  ____  __  ___      ___   ______________  ______  ______
+| |  / / __ )/ __ \/ __ \/_  __/ __ \/ __ \/  |/  /     /   | / ___/_  __/__ \/__  / |/ / __ \
+| | / / __  / / / / / / / / / / /_/ / / / / /|_/ /_____/ /| | \__ \ / /  __/ /  / /|   / / / /
+| |/ / /_/ / /_/ / /_/ / / / / _, _/ /_/ / /  / /_____/ ___ |___/ // /  / __/  / //   / /_/ /
+|___/_____/\____/\____/ /_/ /_/ |_|\____/_/  /_/     /_/  |_/____//_/  /____/ /_//_/|_\____/
+
+Version:1.0.0
+
+Found valid FIT image at 0x100100000 (size: 0x15908b bytes)
+[uboot] load address: 0x80000000
+[uboot] load end address: 0x800b39a0
+[uboot] data: 735648 bytes @ offset 0x11c
+[uboot] loading 735648 bytes to 0x400000000 ... done
+[fdt] load: property not found
+[fdt] no load addr, fallback to u-boot end: 0x800b39a0
+[fdt] data: 25752 bytes @ offset 0xb3b5c
+[fdt] loading 25752 bytes to 0x4000b39a0 ... done
+[tee] load address: 0xb0080000
+[tee] data: 433304 bytes @ offset 0xba070
+[tee] loading 433304 bytes to 0x430080000 ... done
+[atf] load address: 0xb0000000
+[atf] data: 28777 bytes @ offset 0x123da8
+[atf] loading 28777 bytes to 0x430000000 ... done
+[sspfw] load address: 0xac000000
+[sspfw] data: 67260 bytes @ offset 0x12aecc
+[sspfw] loading 67260 bytes to 0x42c000000 ... done
+[tspfw] load address: 0xae000000
+[tspfw] data: 67392 bytes @ offset 0x13b630
+[tspfw] loading 67392 bytes to 0x42e000000 ... done
+[ibexfw] load address: 0x14ba8000
+[ibexfw] data: 52460 bytes @ offset 0x14be18
+[ibexfw] loading 52460 bytes to 0x14ba8000 ... done
+
+Jumping to BL31 (Trusted Firmware-A) at 0x430000000
+
 

@@ -1,68 +1,68 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp1827534njd;
-        Mon, 21 Apr 2025 09:09:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVPDlaTtj4beIFbNMeZJDmDII3VjbHo+cWrTTRfkQpvRcGwkc+Lk41POJx+iMzCFe3zFVZeFZ4786HOBQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVJyJA3VvQoSuOa04KPYGGStKS4rNWCzcADZDoKEYpYB67zYR+UPIudS/ay2jHJ/PMxmGB
-X-Received: by 2002:ac8:7d49:0:b0:476:b3f0:a905 with SMTP id d75a77b69052e-47aec351dfdmr189137331cf.8.1745251773858;
-        Mon, 21 Apr 2025 09:09:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745251773; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp1842455njd;
+        Mon, 21 Apr 2025 09:35:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV29MoB1bK5se/8dATxrI6zndSPOgoBX35z4Ql/gXvpQ8rJtWM3KcfwVX8HxfKUTxMTnujYh70qOTnLVA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHqlSjgNk19R7zGu6ILdAZCmvqdLEd6X6Ee3m39mCs98Y8ysjGzWZ7IP1yFyMwUwEu1H4KX
+X-Received: by 2002:a05:6102:298c:b0:4c1:9780:383e with SMTP id ada2fe7eead31-4cb800d24efmr6775214137.4.1745253329062;
+        Mon, 21 Apr 2025 09:35:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745253329; cv=none;
         d=google.com; s=arc-20240605;
-        b=lD0Wn1SDbVX7Cfa6ralg+RqFX76fketIZnjaXqN+qW8AwoYDUnUo0/GhOX3jsLETGs
-         n51g+3RaGDkoCHn049CglxJYfos0K+S5iWBEwDSreRZe0tDaSVEKO1rtFgVdMnKBlLlO
-         eTBrlSL6trI0DYUxWScHwNEHA4rAqBO0/9nSJt6I+WF+10YhKRNyO3X+vjIgESZZ1QS6
-         igHDD4cwMJPsljCk0AIH8plbqbnKyqLRjZ9ZQJfB2OuhiRVk+2sc6DcfXdvHE0WertZ8
-         o5g7835q9PFb7/UboJIBrI08Mja4ia0qU5FXokIRxbgyNv/cPQz+/zNHgQko3gK0NllA
-         F8QA==
+        b=ZRbccDfoJH0BbHfkxK36iXwaJ9YSFy3xbNJMuMMEzDc6WRYtzPBktS2tc5VxypFbyZ
+         IIciroB6ioVbkNSvNZsEJxCtb1Z/3u+GwAOc+jEo0ZUyYkfwQcTnfehV/97Dl94kz/fp
+         YNAh1uEhStJX1ebnEILDyqfzWONS4ZZzmQqPqIfi7H3kYtOUu48ao3ptr1Wmhhz0nnMN
+         ffFAEO3/7chr0QXeW68uZZ0BjPwamqnXiiwAIlHJT79o2LyCjoxgbRrCticHo37vKGDe
+         4LWSuldwkfaoasOnobOBIFv1iQm/Jofu/tiVLu0Kk2vXAgBZzF13jevUoVBlxsN5yuc/
+         ddRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=eNaxONsaSWZWKfYJsKGutUPRQAo8du2jQURk9sBHomk=;
+        bh=gGkSzliExZcjXJlJ2Ud/Bugkuoav+RcXPje3mX+e1fQ=;
         fh=vB8cktEgn1edfuG8BW10MbPDP+6RcECB1WsHKCUOo6A=;
-        b=N4/cXv6O4mgpJj85mJkS7KIfjK0OBwiRgHWpLIMOIgr8Tt+FMU0fKOMMinkPwhIbhu
-         XYDyFv8NWatuSEPOe0MUvDHcnkFKduhcb8dNgqs0r3QVsASsIvSxUkUMfRIW3mUSO3B1
-         yLtmcpt7i2GXak0Cuj7w/pwwNJWMi23wsJyv4uQNIhaOPVWGS03l4HsKwJGik+qV62R7
-         f+aCQ/GDsQCtwbBGUWv4WO0J4f8f71S4Dxl2yIiNlpcCFzrbOHQHK1wSRMGWvoycZbLs
-         rVdmDFBigU9Bja61rawUsfXLoM3/lfmpZXovtI9KHYo1UGxVARoryeIfx0GASC8TWEQa
-         ufzQ==;
+        b=S1qC7ZxxyGmzn7GymteDoxsWm1DL8Ne2/2hfNBsSj9IzJ/esJoKqtn7DV3zPe8uH0s
+         5DsL8IvfXtpGo7gCo9HCPOcYTnOGDa1A9bN1hAbEqpte7eXeEBjEB7TyXRTXg+45s1Z6
+         W6A1qn5BWyIe2U8PGzsQUf+RE3ApStfCE/QXlLqg2uYSEz4RCAefo2NyS2wffm2iDAnT
+         ZVXExLB3u2b2d6fhHpimwz2qVQ6D3IFlODPuXSDvU9AgfuaM3RX8MdMfTinOX3YmXAJy
+         GMsX/ajzYYTSaRyZAr7J4cM4VHfyb14PvYbBnpVPricXRxISfDyg8Pdm+3LfUd7UMUGV
+         hf4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ae9c11e7fsi94818341cf.59.2025.04.21.09.09.33
+        by mx.google.com with ESMTPS id ada2fe7eead31-4cb7e00bf5fsi1830524137.544.2025.04.21.09.35.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Apr 2025 09:09:33 -0700 (PDT)
+        Mon, 21 Apr 2025 09:35:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u6ti6-0006pj-0B; Mon, 21 Apr 2025 12:09:30 -0400
+	id 1u6u42-0007rk-QJ; Mon, 21 Apr 2025 12:32:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=X3PK=XH=kaod.org=clg@ozlabs.org>)
- id 1u6thT-0006Ul-1C; Mon, 21 Apr 2025 12:08:59 -0400
+ id 1u6u40-0007q7-MV; Mon, 21 Apr 2025 12:32:08 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=X3PK=XH=kaod.org=clg@ozlabs.org>)
- id 1u6thP-0000IL-9F; Mon, 21 Apr 2025 12:08:50 -0400
+ id 1u6u3x-0003GQ-Nu; Mon, 21 Apr 2025 12:32:08 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Zh9Jz5RLsz4wj2;
- Tue, 22 Apr 2025 02:08:35 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Zh9r03fkNz4wcx;
+ Tue, 22 Apr 2025 02:32:00 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Zh9Jw1cKTz4wcn;
- Tue, 22 Apr 2025 02:08:31 +1000 (AEST)
-Message-ID: <be364a03-3d04-4c68-a8ff-f4efd6ee42bf@kaod.org>
-Date: Mon, 21 Apr 2025 18:08:28 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Zh9qw6ZP2z4wcQ;
+ Tue, 22 Apr 2025 02:31:56 +1000 (AEST)
+Message-ID: <5d3ec373-7c4b-4189-b845-87b61eac1561@kaod.org>
+Date: Mon, 21 Apr 2025 18:31:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/10] Support vbootrom for AST2700
+Subject: Re: [PATCH v2 08/10] pc-bios: Add AST27x0 vBootrom
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,8 +72,9 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
 Cc: Troy Lee <troy_lee@aspeedtech.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20250410023856.500258-1-jamin_lin@aspeedtech.com>
- <d44e6583-c9af-4216-b715-aa4aa8968048@kaod.org>
- <SI2PR06MB504170C096123632C5C87B06FCB32@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <20250410023856.500258-9-jamin_lin@aspeedtech.com>
+ <e002b471-4250-4803-a038-17ffe63e0cca@kaod.org>
+ <SI2PR06MB504106612EBE333154EDB953FCB32@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -118,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI2PR06MB504170C096123632C5C87B06FCB32@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <SI2PR06MB504106612EBE333154EDB953FCB32@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -144,46 +145,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: huic9ThBdFmn
+X-TUID: BfB7eX5/lpo/
 
-Hello Jamin
+Jamin,
 
-On 4/14/25 03:20, Jamin Lin wrote:
-> Hi Cedric,
+On 4/14/25 08:50, Jamin Lin wrote:
+> Hi Cedric and all,
 > 
->> Subject: Re: [PATCH v2 00/10] Support vbootrom for AST2700
->>
->> Hello Jamin
+>> Subject: Re: [PATCH v2 08/10] pc-bios: Add AST27x0 vBootrom
 >>
 >> On 4/10/25 04:38, Jamin Lin wrote:
->>> v1:
->>>     Add initial support for AST27x0
->>>     The purpose of vbootrom here is to simulate the work of BootMCU SPL
->> (riscv)
->>>     in AST2700, because QEMU doesn't support heterogenous architecture
->> yet.
->>>
->>>     ast27x0_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for
->>>     ASPEED AST27x0 BMC SOC. It currently implements the bare minimum
->> to
->>>     load, parse, initialize and run boot images stored in SPI flash, but may
->> grow
->>>     more features over time as needed. The source code is available at:
->>>     https://github.com/google/vbootrom
+>>> The boot ROM is a minimal implementation designed to load an AST27x0
+>> boot image.
+>>> Its source code is available at:
+>>> https://github.com/google/vbootrom
 >>
->> I don't see any updates on the vbootrom github repo for Aspeed SoCs. Is the
->> vbootrom compatible with the Nuvoton SoC ?
+>> See commit d1cb5eda67a0 ("roms: Add virtual Boot ROM for NPCM7xx SoCs")
+>> for an example adding a ROM file.
 >>
-> I am upstreaming google/vbootrom to support AST27X0 and code changes in this
-> pull request,  https://github.com/google/vbootrom/pull/5
+>> Also, we need to be able to rebuild from source the provided vbootrom blob,
+>> which means we need access to the code. I don't see any support for Aspeed
+>> under https://github.com/google/vbootrom. Is that expected ?
+>>
+> 
+> I have a question regarding the maintenance of the vbootrom submodule. According to the commit log, it was initially added from "google/vbootrom", but the latest version appears to be hosted at https://gitlab.com/qemu-project/vbootrom.git.
+> https://github.com/qemu/qemu/blob/master/.gitmodules#L40
+> I'm currently upstreaming changes from google/vbootrom, which is maintained by Google.
+> https://github.com/google/vbootrom/pull/5
+> Should I upstream to the qemu-project/vbootrom repository on GitLab or is it acceptable to continue updating the submodule from google/vbootrom?
 
-Nice !
 
-This vbootrom proposal should be merged before accepting the changes
-in QEMU though. The vbootrom PR has been approved, it lacks an Aspeed
-CLA AFAICT. So this seems feasible for the QEMU 10.1 cycle.
+https://gitlab.com/qemu-project/vbootrom.git is a mirror.
+
+
+Please upstreamto google/vbootrom and qemu-project/vbootrom should
+be quickly be updated.
 
 Thanks,
 
 C.
+
 

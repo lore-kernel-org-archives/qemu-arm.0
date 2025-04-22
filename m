@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2137218njd;
-        Mon, 21 Apr 2025 22:30:30 -0700 (PDT)
-X-Received: by 2002:a17:902:e54a:b0:223:5ace:eccf with SMTP id d9443c01a7336-22c535acd67mr222348695ad.25.1745299829859;
-        Mon, 21 Apr 2025 22:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745299829; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2137256njd;
+        Mon, 21 Apr 2025 22:30:37 -0700 (PDT)
+X-Received: by 2002:a17:902:dace:b0:223:42ca:10ef with SMTP id d9443c01a7336-22c5361d5b9mr214227555ad.43.1745299837433;
+        Mon, 21 Apr 2025 22:30:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745299837; cv=none;
         d=google.com; s=arc-20240605;
-        b=dNNpU/dcz+0q7ZgPm5bzRDrfgn/mVUDrrrx8p8pRqYNpmQ5xjVdYPoGOFk+I2cZCfM
-         54tFyTdR5QkotAnqTLdQmcqmGJbICVi+fPVZ4zu7ZjJUFhoYOwRb8sYLPbTDkD0YyV1W
-         uttNdiRmFTYHNezqs8RGVl9u7R+NTePCf4PjZ0/s4aIk2tAFxEQACcTAXa4BgGj/TDkQ
-         3Y+QmMsfVV7/lBEspYQrtpGpkjGAxN1g0YHcOoU4jlagYc15gCB3rVA9VIsnji7jZ/zy
-         ++PMemB+T9Qcm3DoWcZvRX5s33/xewPKksuYYLVDus7s+ojjQFFQ3I1Fy0qlfIAMhgRa
-         zM9Q==
+        b=WjTIUVV1EZvz8qHp/6Lth6xtwHuNlQnWJL25FUyaUVAesADnGGhQi0u1ZiBzKl5+TL
+         G5L6KotJFQgJHsLYW7CED7QFff8PwZl7LDlSdCVLVAs+WzPal+mjQ/FUSBLhRTIqP6Tj
+         BsJFjBU4w280aLppThAA6YuHvUsuyXzLO0Js+7Coxu4Qc6jDbawitFWSvEuMQNEtAvji
+         /eUQFewpEuQ11Kei+/TNSLMyIIHMimKlPmT/wSdWbLvQUDL2HT7WzPB0r6mtIJeRKAo7
+         75DVChmyUYhJQPvqpDzP9JZf2tBfQQJmXZUP8F+uE0CldV6PBz/hgbPY3fznXk9XLi8z
+         k3aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EyswPERNVPUmMfuIfE21udR+zks7HJrFsl2VmGBeB2w=;
-        fh=jVoep+f4X0ue6kEQQniK/tJZkBTLLraM/AZg/yLfYxo=;
-        b=jrvX/AHLlVzI6UvSlM4B4HBrLaxTgHmWJQY1+AUtpif+jAt5bAcszNYmZ9vETWM796
-         APw+1cdCGtNCtvOK2sf3pRRdQwMI1NzzOywC260Km+WfAXgezkqn9vQde7jQDX6OqQaa
-         fXvNXX7Cbb45v76ojIwBobCDr7NOYbU22/RQ86zogyU9TVH8eTGj3vpumAGCeRkiRW4V
-         cFjhP/lHyLmEoX0S/LBiZJz5O/I++M1R6LrjjmYq6oGvF5Yka+8G3nPiaqIBy7Qlyxos
-         auFhTGTkVHEFXhY5MSGoTaTr7z3zU5Xw6/rhdXISK15n6E/l7lmFqYVhYsqPr/nrhiqn
-         R6OQ==;
+        bh=239sog6AsGRpOuiETXgLR1hsZQlcMmDhDGFK29CX7lo=;
+        fh=po7AwjnYh8YudwNm+SFtdWdiBtVSeJwB7Ac3QFlDgIY=;
+        b=LAen3uV3MJA5WL819aIJzwPYxsEqZbCJH03Q/RqkudcQyJfkbOTKHne7uGgaMmNOQE
+         5qlUT29bAi47hL3/qww6Gx+Mw3KvldBc+OrS83zqEHrQjYCvkseu6NT7YbXARwNUI7XF
+         YVBADsyJANfJIVxoiHyaVAoImu9tUwAh0RQ5eBBoFh/PJa4XKpRIBy1bCj+oIItYc0dc
+         xZOSIOlYwExR4faps5sad9wO3iacpbLBGioLtt244D/f8xh6jmF++BvVjBwDDrbGzb5j
+         FNijqEX20kWw6yGlShNq1LPtxp53YJjTZCinSpF4WUdr8R4Y2sPrKQRRFOrKoMXeVMlT
+         4ytw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WbJ5XmCQ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BiOkZOdJ;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22c50bf5554sor68926665ad.10.2025.04.21.22.30.29
+        by mx.google.com with SMTPS id d9443c01a7336-22c50be0e28sor53093965ad.4.2025.04.21.22.30.37
         (Google Transport Security);
-        Mon, 21 Apr 2025 22:30:29 -0700 (PDT)
+        Mon, 21 Apr 2025 22:30:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WbJ5XmCQ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BiOkZOdJ;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745299829; x=1745904629; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1745299837; x=1745904637; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=EyswPERNVPUmMfuIfE21udR+zks7HJrFsl2VmGBeB2w=;
-        b=WbJ5XmCQT6aNkc/fPlYG/STyu8TbNQ9P6gFNtd96H2QSwWf7JucEfvj4DQ/beLTjOk
-         nhXvctMsRl9o39F+hbtrWL9TNhyn0dAFNeFO8iCayRBTnf992Lphn1UX7LyEzds1jSVW
-         sBON9R0+2aq/GWwlXOpwwAn8UvNKmxZHO/Rny3mu3DtlLNIoYTRb+voIKSTapwWxeOHt
-         x4FBpJj3z4By4ue1345/VfZCkCzHtinfVJJ9cPfuV1K7r9yPJxL27heYphpZM7c8tI3n
-         I01SxcvDZSp6ZNMVvdnbaqujt/fegQiIidD1Y+2hrmV9MdHz4ae6YQaEHWB/0BsC4B91
-         sNzA==
+        bh=239sog6AsGRpOuiETXgLR1hsZQlcMmDhDGFK29CX7lo=;
+        b=BiOkZOdJ940veWLAMmKVdtji3xtD0A5tmcNwPXwrnSlhHVklVL4K4a3Cv8zRZK4a64
+         0oxyfOO1b9Ln4edREbYDSbyjAxhVYCiBxt8EzqDl4uMb5SGEe/IK+jlCE4lXLyUERcm2
+         4CHc87j1L5HicLRDHv9/J1azs8Qi7VnSwJTXEjyXmMhePP8Mga3u6TtvYWENte0SKIan
+         c0W+4QzTSrbt5FBLTWNNuAAbD5+tyO+HikKU5H417CwCqw/W+7bP+fWznuJSoat4GCeG
+         lQ6GpL8nmU5paiwzkm3EFBJlhykLKMXkr6yE/1ppdakklo2UD6FzTNsLvjXYDOjSCjV0
+         LTVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745299829; x=1745904629;
+        d=1e100.net; s=20230601; t=1745299837; x=1745904637;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=EyswPERNVPUmMfuIfE21udR+zks7HJrFsl2VmGBeB2w=;
-        b=E2W7yHnjJd2ExcTxN/0i5hUfrroLnxKM7cSwTeIzmQp/shiXh1tDlzzvl7SlPkTXd0
-         F4+lArRlNN0bWK2/50zx9uPji+/VmDb6xhiYEjOUE8gA7Zhd8zDjeSz0g1Xs30Q3cbt+
-         XqCI2xviopw73v4k9okRtmO3SwaZRvR22HfZ67TzdoSg7aUKiEZGWNekFiXn61OZpXjJ
-         Px/K4NxI8myr47A1za3OCHMavZHzV4FNYapYtKN00eqGNNNKerHXVE8T75inIubXEYNo
-         jXG9BMxthFz08Ua21IGvxZ7Da/Il0Iip/KXTNtlBD0YBOzB6tOO7AuDfAoQBsVT/CTk3
-         NZAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUKaW+SBZQmm7zZZ/uDw4opkR3ajap/QCj9lqWTYNwj9/M3gGpC6XYCFe4R5rx/YkPePy/5F22tgEJudqET/F33woE=@linaro.org, AJvYcCUPTL/d1Bm1C5I8AXQHGfDi+9IV+BYO2+j46IG8rs5UgPWUNqC54l9fjo7xJY/g8GVYBuRM5cebSjov8jm87dd0Zw==@linaro.org, AJvYcCW0t42WsJUZR8nLgqDLuLtPUpi9JYErf0dHgbVBAXHKDlYYk7Dc5ieGEt/lzEEuOZr2r90B2MvBsgdEqcqo@linaro.org, AJvYcCWHgt2IxMxCl2YjTfUEufYMdUe/zJ0PG3PLLLtPQx7w4Tp/3ZWut8VQP+j7/5/AlzvYWsQuYeth@linaro.org
-X-Gm-Message-State: AOJu0YxYCsqcmMDSSja+ug+95uTdW1/b0oY7i3y6xXUP+qxG0nTfeUi/
-	0pxzMS47XU/8fq8pV3vyGNkxp8IEOkFVFJZMhMeT9/iF6iaAcxM0
-X-Gm-Gg: ASbGnctyA1h3UMLCBO6K8A2qKfi+IoowuP5N8RTbYYEKakH8zGvBnLl6ODCbgcLM2xN
-	hQfv8aVUwxFK+AdD5rqHgGwGjouW3Y6NjiALCLsUV2kZJ+NHVc2fSwX2UrX5cr5FGbmveh7vdKR
-	SKo7ZIQSA+Qr5Wm0O3MgBvpkyIpZSSSOQz867Nw9D4BalVGf2G3CN0wyFVkSbX5OK5MMvCg/2xc
-	D70fygn1DOB8Q7a0g23+4PigsR6JHGsK6gGBG5dfghg+h4BJ9auNTciuqv1wH7GDfZ0TzwcNvHO
-	Cfs4vqCaosByabK2aauTJQK08klLvDrsFyDWBL4YqARFvfv+MxPAWgJEjro=
-X-Google-Smtp-Source: AGHT+IF866eeRMlWTJ5okWrqXs+r8BGchJhPURBo/iH1ZtCGUA/9C/H97nfcbV0T9/pDqgYGWsEh/w==
-X-Received: by 2002:a17:902:f54c:b0:224:1074:63a2 with SMTP id d9443c01a7336-22c5361c436mr224374235ad.43.1745299829232;
-        Mon, 21 Apr 2025 22:30:29 -0700 (PDT)
+        bh=239sog6AsGRpOuiETXgLR1hsZQlcMmDhDGFK29CX7lo=;
+        b=UiyTO0VbJ+XJSA9F/y+qYQDcdF2DsDecZATu3s35YjClIBHdeDC5A0Qsksf+czDItk
+         FPNLAjLNHBMyg91GViqU12aTR/BA/FgIn3tvm0aTTFaIQTfgBurEXdOhb/aLOg6M6GmM
+         pQ8ppwVDk3OzwgH109xVgAZvsKSZlKvp4Gn1+YGjN09fEIaSRROqDGDjU11U4JXV3fV8
+         YBpvh3rZJBuNvM+JLHweQbEMOPLLoRmmHIbJL3Ywvjsl4exAdSN2LLqPjGNanxYK2VI2
+         r5YTO8v6LN61qaskHadtpXJ5WFVMcmFTRiFOjkBmUe5HHtx2nfgbIFj/VdElS0FW1rXS
+         uNdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU+2Aw7B4WQv/H4qGyLgsw6jcOKZZjp++y1dWrwd0F1DWlZspKt/M9VX64ViwpouxIxGsdueIzEl7uKRPdAFU4UAJM=@linaro.org, AJvYcCUEzNN69veIkRMrSZhXGhQeFQ7tBIMXPJOLBUv9fm1hChwLkcEXV7udRIcV/VVTTgzY5d6UwD/5@linaro.org, AJvYcCWul4TTnUbUKoAWEhhXPbq3ZZLYKllnF7ZU/FkafN3g+zuTrc3dDDMlRQPeykCm9K9j9TiWYiQ0pZo8WEcS2esZIw==@linaro.org, AJvYcCXqKWC8uHjB7QIFKOayq6n6XHf/hiTt6tZmpvRU4QoThR/ChE68jX26EZK1eUxKk3idjgyZ6bvecW913xSv@linaro.org
+X-Gm-Message-State: AOJu0YyToN+m4Tb1qEpLfUKGsekk3pQa6uE/qfW3uVvqK2cmVTI2K0aD
+	DhpRlXaOtRT60Ff9LDBK9NrVGpjhY/T58xPZuFcBCqy0vhOk322o
+X-Gm-Gg: ASbGnctgef8Z6rBYpm7xEMCFyZkA7HsksWO24aZK1jbGxivP/cB0IfiooU7B3/rJKz6
+	cSsAiLYW0WNnj5bCrcn1WsNbYxR75F4h4k3/czUhdm2QMZv0kNV41LeiX2R0w27LxyivKEdtGwY
+	4/a67CkmQxXWrPtYXhvwUkNUvmgM8+seLnyzTr45h4qsQvTyYw8cT6q1b5JVe3efGPa6Iyt5xK/
+	FVW1YjQpirvY1fZkvi1gaDSYJSnlaF4Xd3nm177ULwPyMyD+VByCLVzb1kQ1LsSCKWx27JdxXRc
+	fU41CWha5nqC8IDXJn9BuL/kwVysdLp+tF/J8MOuYS4pY9PrfVjBb40mg9x3/pLDzPSUWw==
+X-Google-Smtp-Source: AGHT+IGGRtHx5fim4xGmJq6v8vkziresfB5+BAuQyo6/891rk0skJGXxaEivPZeVzgS3/6wX99cASQ==
+X-Received: by 2002:a17:903:22c9:b0:220:ff3f:6cc0 with SMTP id d9443c01a7336-22c536080bemr230986565ad.38.1745299836831;
+        Mon, 21 Apr 2025 22:30:36 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from localhost.localdomain ([240d:1a:3b6:8b00:e142:4a4f:1ebb:3ca4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22c50eb4483sm75692085ad.118.2025.04.21.22.30.21
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22c50eb4483sm75692085ad.118.2025.04.21.22.30.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 22:30:28 -0700 (PDT)
+        Mon, 21 Apr 2025 22:30:36 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -110,195 +110,94 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-ppc@nongnu.org,
 	qemu-s390x@nongnu.org
-Subject: [PATCH v2 19/20] tests: Add Dockerfile containing dependencies for Emscripten build
-Date: Tue, 22 Apr 2025 14:27:23 +0900
-Message-Id: <2c76c1bdc27786d54a267b52a861debb64f067f8.1745295397.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v2 20/20] gitlab: Enable CI for wasm build
+Date: Tue, 22 Apr 2025 14:27:24 +0900
+Message-Id: <a9ae4d0fbcde4d837e55c07715a169bcde495895.1745295397.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1745295397.git.ktokunaga.mail@gmail.com>
 References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: bu2szzLZzpb6
+X-TUID: tzru3W7WpXEq
 
-The added Dockerfile is based on the emsdk image, which includes the
-Emscripten toolchain. It also cross-compiles the necessary dependencies
-(glib, libffi, pixman, and zlib) for the Emscripten target environment.
+Add GitLab CI job that builds QEMU using emscripten. The build runs in the
+container defined in tests/docker/dockerfiles/emsdk-wasm32-cross.docker.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- MAINTAINERS                                   |   1 +
- .../dockerfiles/emsdk-wasm32-cross.docker     | 145 ++++++++++++++++++
- 2 files changed, 146 insertions(+)
- create mode 100644 tests/docker/dockerfiles/emsdk-wasm32-cross.docker
+ .gitlab-ci.d/buildtest-template.yml | 27 +++++++++++++++++++++++++++
+ .gitlab-ci.d/buildtest.yml          |  9 +++++++++
+ .gitlab-ci.d/container-cross.yml    |  5 +++++
+ 3 files changed, 41 insertions(+)
 
 V2:
 - Split the Dockerfile addition from the previous 18th patch into a separate
   commit.
-- Split the MAINTAINERS file change that adds emsdk-wasm32-cross.docker from
-  the previous 19th patch into this commit.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0fb7fd79b6..58e4bdedba 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -626,6 +626,7 @@ F: include/system/os-wasm.h
- F: os-wasm.c
- F: util/coroutine-wasm.c
- F: configs/meson/emscripten.txt
-+F: tests/docker/dockerfiles/emsdk-wasm32-cross.docker
- 
- Alpha Machines
- --------------
-diff --git a/tests/docker/dockerfiles/emsdk-wasm32-cross.docker b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-new file mode 100644
-index 0000000000..60a7d02f56
---- /dev/null
-+++ b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-@@ -0,0 +1,145 @@
-+# syntax = docker/dockerfile:1.5
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index 39da7698b0..67167d68a5 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -126,3 +126,30 @@
+     - du -chs ${CI_PROJECT_DIR}/*-cache
+   variables:
+     QEMU_JOB_AVOCADO: 1
 +
-+ARG EMSDK_VERSION_QEMU=3.1.50
-+ARG ZLIB_VERSION=1.3.1
-+ARG GLIB_MINOR_VERSION=2.84
-+ARG GLIB_VERSION=${GLIB_MINOR_VERSION}.0
-+ARG PIXMAN_VERSION=0.44.2
-+ARG FFI_VERSION=v3.4.7
-+ARG MESON_VERSION=1.5.0
++.wasm_build_job_template:
++  extends: .base_job_template
++  stage: build
++  image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
++  before_script:
++    - source scripts/ci/gitlab-ci-section
++    - section_start setup "Pre-script setup"
++    - JOBS=$(expr $(nproc) + 1)
++    - section_end setup
++  script:
++    - du -sh .git
++    - mkdir build
++    - cd build
++    - section_start configure "Running configure"
++    - emconfigure ../configure --disable-docs
++          ${TARGETS:+--target-list="$TARGETS"}
++          $CONFIGURE_ARGS ||
++      { cat config.log meson-logs/meson-log.txt && exit 1; }
++    - if test -n "$LD_JOBS";
++      then
++        pyvenv/bin/meson configure . -Dbackend_max_links="$LD_JOBS" ;
++      fi || exit 1;
++    - section_end configure
++    - section_start build "Building QEMU"
++    - emmake make -j"$JOBS"
++    - section_end build
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 00f4bfcd9f..0f92d5313a 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -801,3 +801,12 @@ coverity:
+       when: never
+     # Always manual on forks even if $QEMU_CI == "2"
+     - when: manual
 +
-+FROM emscripten/emsdk:$EMSDK_VERSION_QEMU AS build-base
-+ARG MESON_VERSION
-+ENV TARGET=/builddeps/target
-+ENV CPATH="$TARGET/include"
-+ENV PKG_CONFIG_PATH="$TARGET/lib/pkgconfig"
-+ENV EM_PKG_CONFIG_PATH="$PKG_CONFIG_PATH"
-+ENV CFLAGS="-O3 -pthread -DWASM_BIGINT"
-+ENV CXXFLAGS="$CFLAGS"
-+ENV LDFLAGS="-sWASM_BIGINT -sASYNCIFY=1 -L$TARGET/lib"
-+RUN apt-get update && apt-get install -y \
-+    autoconf \
-+    build-essential \
-+    libglib2.0-dev \
-+    libtool \
-+    pkgconf \
-+    ninja-build \
-+    python3-pip
-+RUN pip3 install meson==${MESON_VERSION} tomli
-+RUN mkdir /build
-+WORKDIR /build
-+RUN mkdir -p $TARGET
-+RUN <<EOF
-+cat <<EOT > /cross.meson
-+[host_machine]
-+system = 'emscripten'
-+cpu_family = 'wasm32'
-+cpu = 'wasm32'
-+endian = 'little'
++build-wasm:
++  extends: .wasm_build_job_template
++  timeout: 2h
++  needs:
++    job: wasm-emsdk-cross-container
++  variables:
++    IMAGE: emsdk-wasm32-cross
++    CONFIGURE_ARGS: --static --disable-tools --enable-debug --enable-tcg-interpreter
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 34c0e729ad..3ea4971950 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -94,3 +94,8 @@ win64-fedora-cross-container:
+   extends: .container_job_template
+   variables:
+     NAME: fedora-win64-cross
 +
-+[binaries]
-+c = 'emcc'
-+cpp = 'em++'
-+ar = 'emar'
-+ranlib = 'emranlib'
-+pkgconfig = ['pkg-config', '--static']
-+EOT
-+EOF
-+
-+FROM build-base AS zlib-dev
-+ARG ZLIB_VERSION
-+RUN mkdir -p /zlib
-+RUN curl -Ls https://zlib.net/zlib-$ZLIB_VERSION.tar.xz | \
-+    tar xJC /zlib --strip-components=1
-+WORKDIR /zlib
-+RUN emconfigure ./configure --prefix=$TARGET --static
-+RUN emmake make install -j$(nproc)
-+
-+FROM build-base AS libffi-dev
-+ARG FFI_VERSION
-+RUN mkdir -p /libffi
-+RUN git clone https://github.com/libffi/libffi /libffi
-+WORKDIR /libffi
-+RUN git checkout $FFI_VERSION
-+RUN autoreconf -fiv
-+RUN emconfigure ./configure --host=wasm32-unknown-linux \
-+    --prefix=$TARGET --enable-static \
-+    --disable-shared --disable-dependency-tracking \
-+    --disable-builddir --disable-multi-os-directory \
-+    --disable-raw-api --disable-docs
-+RUN emmake make install SUBDIRS='include' -j$(nproc)
-+
-+FROM build-base AS pixman-dev
-+ARG PIXMAN_VERSION
-+RUN mkdir /pixman/
-+RUN git clone  https://gitlab.freedesktop.org/pixman/pixman /pixman/
-+WORKDIR /pixman
-+RUN git checkout pixman-$PIXMAN_VERSION
-+RUN <<EOF
-+cat <<EOT >> /cross.meson
-+[built-in options]
-+c_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+cpp_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+objc_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+c_link_args = [$(printf "'%s', " $LDFLAGS | sed 's/, $//')]
-+cpp_link_args = [$(printf "'%s', " $LDFLAGS | sed 's/, $//')]
-+EOT
-+EOF
-+RUN meson setup _build --prefix=$TARGET --cross-file=/cross.meson \
-+    --default-library=static \
-+    --buildtype=release -Dtests=disabled -Ddemos=disabled
-+RUN meson install -C _build
-+
-+FROM build-base AS glib-dev
-+ARG GLIB_VERSION
-+ARG GLIB_MINOR_VERSION
-+RUN mkdir -p /stub
-+WORKDIR /stub
-+RUN <<EOF
-+cat <<'EOT' > res_query.c
-+#include <netdb.h>
-+int res_query(const char *name, int class,
-+              int type, unsigned char *dest, int len)
-+{
-+    h_errno = HOST_NOT_FOUND;
-+    return -1;
-+}
-+EOT
-+EOF
-+RUN emcc ${CFLAGS} -c res_query.c -fPIC -o libresolv.o
-+RUN ar rcs libresolv.a libresolv.o
-+RUN mkdir -p $TARGET/lib/
-+RUN cp libresolv.a $TARGET/lib/
-+
-+RUN mkdir -p /glib
-+RUN curl -Lks https://download.gnome.org/sources/glib/${GLIB_MINOR_VERSION}/glib-$GLIB_VERSION.tar.xz | \
-+    tar xJC /glib --strip-components=1
-+
-+COPY --link --from=zlib-dev /builddeps/ /builddeps/
-+COPY --link --from=libffi-dev /builddeps/ /builddeps/
-+
-+WORKDIR /glib
-+RUN <<EOF
-+CFLAGS="$CFLAGS -Wno-incompatible-function-pointer-types" ;
-+cat <<EOT >> /cross.meson
-+[built-in options]
-+c_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+cpp_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+objc_args = [$(printf "'%s', " $CFLAGS | sed 's/, $//')]
-+c_link_args = [$(printf "'%s', " $LDFLAGS | sed 's/, $//')]
-+cpp_link_args = [$(printf "'%s', " $LDFLAGS | sed 's/, $//')]
-+EOT
-+EOF
-+RUN meson setup _build --prefix=$TARGET --cross-file=/cross.meson \
-+    --default-library=static --buildtype=release --force-fallback-for=pcre2 \
-+    -Dselinux=disabled -Dxattr=false -Dlibmount=disabled -Dnls=disabled \
-+    -Dtests=false -Dglib_debug=disabled -Dglib_assert=false -Dglib_checks=false
-+# FIXME: emscripten doesn't provide some pthread functions in the final link,
-+#        which isn't detected during meson setup.
-+RUN sed -i -E "/#define HAVE_POSIX_SPAWN 1/d" ./_build/config.h
-+RUN sed -i -E "/#define HAVE_PTHREAD_GETNAME_NP 1/d" ./_build/config.h
-+RUN meson install -C _build
-+
-+FROM build-base
-+COPY --link --from=glib-dev /builddeps/ /builddeps/
-+COPY --link --from=pixman-dev /builddeps/ /builddeps/
++wasm-emsdk-cross-container:
++  extends: .container_job_template
++  variables:
++    NAME: emsdk-wasm32-cross
 -- 
 2.25.1

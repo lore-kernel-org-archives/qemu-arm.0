@@ -1,70 +1,70 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2371537njd;
-        Tue, 22 Apr 2025 06:59:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6BLtrqQazsZPyHg9KeJvQRtY3Wk8cTKE72VzdeUnZvwRq3Z0FC2mvfsnfg6QDI0sr1lPA1dBB7Lpnmw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFbP/jtVv+Gm5QzZIUktZbd5sNWSDlfA1vnNPkHF156F9Npgkl9qsC8ubNydY2eHb4ROxuM
-X-Received: by 2002:a05:6102:30b0:b0:4c4:e3c7:cc8e with SMTP id ada2fe7eead31-4cb8021206fmr9676157137.24.1745330394826;
-        Tue, 22 Apr 2025 06:59:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745330394; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2373629njd;
+        Tue, 22 Apr 2025 07:02:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpwht/Jkednyv1/IKybHRMmegzlAYl79zbrpt8S0HOqlMJL0/NA0jqgZUTZKFRbX22tZp6IC7wPE8zfw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEIF944fuswdABUcq+YTXAE1+vXG7GPbTnV2RHjtGYYVkpXT6T1Qb7rSnE6z3Ik/VvWUnW4
+X-Received: by 2002:a2e:be24:0:b0:30b:efa3:b105 with SMTP id 38308e7fff4ca-310905011f1mr49811041fa.19.1745330528324;
+        Tue, 22 Apr 2025 07:02:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745330528; cv=none;
         d=google.com; s=arc-20240605;
-        b=LOVtj69PCmCFUTthZkUe9FAyOlooemBkOZVkKUqjl2ErhJ+14oPcmQXb35TpRTNloi
-         jumAQu4ezFZp3WCDJOXhpKQRgj7GKPl3qWlqQ3+VMiBEBl/j+jlYcEiPX28163orQPgL
-         cCUE3zeADeRKN4t5PEIEpMIASoPCbB8BYFv4EmAXbfJNgZZ+kuwT8o4NHuhBmyR/AmTn
-         /KcnNFXMjXzS9F1qjX24/3FvxarD/a6xNy3lxXM0KWOnLLIWLpK81r74sVJp7E9Y00q8
-         cq14xqo1TZwBRe7DyNV54Cf7CtgJ4ZUCLBXMMIGAdqGzhj8p/q00slZmVhiV0kNbACbc
-         IYGA==
+        b=QjlEGRHCNZJJ10HnvXqtt3PqCDfrd3XKJdZ9OVW03kffyU0ZQEHwwQ5dymNj9wLwop
+         /qQD44mPzWjc034MBEUrYmCM4/olmBGuAPSg+3MwqWvoIFSb4IhWSxFuVmqnip6lMAhl
+         JDT05/ICfPRqhnWM5O6Vsi7vlnK89HA8jc8KgNtFmk2H0wL0GLLQ27GeSdD+UuSBXCc0
+         loAgwwg1x2Y3oY7zYvN4Ubt3O+KGeIc46g4/U7NzYxkW3N2y37zDBsl0PqjGxyAkB7MV
+         nE/NSJStXhi4q1Q/dvmPZGYXkxCRnGmeVn4GqCtj5TK3fUFrb03wiwCfomeDaLMj1Tb3
+         VpVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=OMtwXvaheTlkiqC0k82+nnlb5B0oIlbejhg9K2ePGgM=;
+        bh=7oUOK46QlawTR7PzRa1h2tAuDsOpWCOm7vEMBMH4LoM=;
         fh=32aYhd7NfHuqwTHZhAKO0J9L4kOohn4q+7j19V5UlyM=;
-        b=Lb5nmp86y7qpRlf31W79BV9ETblamFT8lYmq7IqsCMwOq7euQ1pLfsCmdQtTh+2Ibh
-         yftobKW6ryw7ZQS3CHogCzHif5HJJutHdvNhMBruAWn+/vNCKrwP69hy7eTjsCr3XZuz
-         pvJhxIhwU3RR2HpsvhgRj4GQK4QittvZFrVOBGP+23YGLbdD+1UGa8uQL8I4hvniVsu6
-         jpsVICMpOfirYAd+EsO1fVpxkMXLp8UdWivSTsYH4VqsA4a0znXWrjKhHUKZL6CQIm6j
-         sOjXh4cIakayr85AfhT5OuWhwBTfPIMSsODHga1FV2e1BU0LQj5OVjnQWUWZNoH7tXCU
-         uG7w==;
+        b=Jb47d9+tb9xqB1HqmdAiJ3iQo1NiQ2KbS4OBRNgrBOzAnmbQCjPEZ++akxAS/t5xQR
+         lU/OJENlyuy814eJ1hQw+WLiFfZ94upA3rEOoEZs78YfWG7NqcY3QKsmrwGZg0MBocxY
+         f8Y8nWaer5DbdZgRZxeiJGG2vYDQLkDs/QtkQxpdftL06K/s2EqQNVywDvMnc473fEsq
+         7z3gQ9YgwZ0UKqw7VUBveHDTYoMxjY7aHaQLIWT6l5Bs3SbYr4i/aGY7YK/3zHxlniJK
+         uHSvl0vJnPL+1byGaK4FJ7ZE63RGzAeBjEeqsIiu9of102G+6HsHq9WtRZ6153K5mH5Z
+         tzrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X3mhR8UC;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ClZ2E7W3;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <stefanha@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4cb7e04f61asi2309513137.670.2025.04.22.06.59.54
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 38308e7fff4ca-31090804009si37735971fa.239.2025.04.22.07.02.06
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Apr 2025 06:59:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 22 Apr 2025 07:02:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X3mhR8UC;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ClZ2E7W3;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1745330394;
+	s=mimecast20190719; t=1745330525;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=OMtwXvaheTlkiqC0k82+nnlb5B0oIlbejhg9K2ePGgM=;
-	b=X3mhR8UC8Bw9VMxS6CbVJu/TJllOYa8ubaVaNFj0hduDOtDInyz837cUP/63oEy1kcF32b
-	Zdcs07KPL7ZwUP7wXiOlEnXsYiRt1TO2zAKswQo3YOQWyzBhtPUcoDFJfg7r95DTm5c1I8
-	GPNjbh0rL2q7SY2F6vVBJe00+QYdYlc=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+	bh=7oUOK46QlawTR7PzRa1h2tAuDsOpWCOm7vEMBMH4LoM=;
+	b=ClZ2E7W34Ft4Ry6bycfxH7nPNbsmuDk3fnzH5P0Y53tHfjbLxvJuli9zFoMK20cbkCv506
+	6FQhksZsA0TLYLYjGwDznYP3e1+cok23X0ogZMwGsgRDarz6rRe0iw7Z3xqCkCLlkOddFh
+	ZGmGA3nYx5jLYMhb/GmirCnK+AEzYd8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-126-X05eMDwIPniIGH4XwKwm2g-1; Tue,
- 22 Apr 2025 09:59:49 -0400
-X-MC-Unique: X05eMDwIPniIGH4XwKwm2g-1
-X-Mimecast-MFC-AGG-ID: X05eMDwIPniIGH4XwKwm2g_1745330386
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-695-lKdadMvSOC--cVrGngmKBQ-1; Tue,
+ 22 Apr 2025 10:02:02 -0400
+X-MC-Unique: lKdadMvSOC--cVrGngmKBQ-1
+X-Mimecast-MFC-AGG-ID: lKdadMvSOC--cVrGngmKBQ_1745330519
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C709E19560A5;
-	Tue, 22 Apr 2025 13:59:43 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F189519560BC;
+	Tue, 22 Apr 2025 14:01:58 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.110])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 39459180010A;
-	Tue, 22 Apr 2025 13:59:39 +0000 (UTC)
-Date: Tue, 22 Apr 2025 09:59:38 -0400
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 1C639195608D;
+	Tue, 22 Apr 2025 14:01:56 +0000 (UTC)
+Date: Tue, 22 Apr 2025 10:01:55 -0400
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 Cc: qemu-devel@nongnu.org,
@@ -90,57 +90,64 @@ Cc: qemu-devel@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2 17/20] util: Add coroutine backend for emscripten
-Message-ID: <20250422135938.GB301197@fedora>
+Subject: Re: [PATCH v2 13/20] block: Fix type confict of the copy_file_range
+ stub
+Message-ID: <20250422140155.GC301197@fedora>
 References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
- <82afa4d287a16f89fa59f08cba14fb06e017ea83.1745295397.git.ktokunaga.mail@gmail.com>
+ <ce34a721a5283fce854f417baf7b1c8f5c48c028.1745295397.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DltiIdaNA3nWqmR9"
+	protocol="application/pgp-signature"; boundary="BVTxInpCVWgS3hFa"
 Content-Disposition: inline
-In-Reply-To: <82afa4d287a16f89fa59f08cba14fb06e017ea83.1745295397.git.ktokunaga.mail@gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: BnxRzHNxXSp9
+In-Reply-To: <ce34a721a5283fce854f417baf7b1c8f5c48c028.1745295397.git.ktokunaga.mail@gmail.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: tjSy/+UgerIy
 
 
---DltiIdaNA3nWqmR9
+--BVTxInpCVWgS3hFa
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Apr 22, 2025 at 02:27:21PM +0900, Kohei Tokunaga wrote:
-> Emscripten does not support couroutine methods currently used by QEMU but
-> provides a coroutine implementation called "fiber". This commit introduce=
-s a
-> coroutine backend using fiber. Note that fiber does not support submitting
-> coroutines to other threads.
+On Tue, Apr 22, 2025 at 02:27:17PM +0900, Kohei Tokunaga wrote:
+> Emscripten doesn't provide copy_file_range implementation but it declares
+> this function in its headers. Meson correctly detects the missing
+> implementation and unsets HAVE_COPY_FILE_RANGE. However, the stub defined=
+ in
+> file-posix.c causes a type conflict with the declaration from Emscripten
+> during compilation.
+>=20
+> To fix this error, this commit updates the stub implementation in
+> file-posix.c to exactly match the declaration in Emscripten's headers. The
+> manpage also aligns with this signature.
 >=20
 > Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
->  MAINTAINERS           |   1 +
->  util/coroutine-wasm.c | 127 ++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 128 insertions(+)
->  create mode 100644 util/coroutine-wasm.c
+>  block/file-posix.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >=20
 > V2:
-> - Split the MAINTAINERS file change that adds coroutine-wasm.c from the
->   previous 19th patch into this commit.
+> - Removed the Emscripten-specific stub of copy_file_range in
+>   stubs/emscripten.c. Instead, updated the type of the existing
+>   copy_file_range stub in block/file-posix.c to match the declaration in =
+the
+>   Emscripten headers and avoid a compilation error.
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---DltiIdaNA3nWqmR9
+--BVTxInpCVWgS3hFa
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmgHoMoACgkQnKSrs4Gr
-c8gBeQgAkKJs5uspGEuKmK1DsHRilGp+8iPwo09eOxS9265IAygkr6XEk0f6JQbQ
-ATJgJFl7qVMhPDalRx+jsRrIbfrvQ/RzTbqszy1pCLXuBOLkWYEgXXClGHtBTZtn
-dAKpesc0EaoV/3r70TgNHVDsRGZeeALaJ8oksWtC3dj3lX2CRJUdf6wDFxL8R39x
-+at+I4lXSmXKVS5lSDYl0D/+RjWncJzwv9X8WK1gCXGWzSdjm6ZvC3d5rqWV2jfL
-m0PMcwq99AX3ohiE1f6F8Cxn3roPqeM5vmvF7586JAe7/X4U0dvtS0B6hhyfWB8C
-SGDpKDSpoos4LUj2MQ0otrEBfH+EgA==
-=1x7V
+iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmgHoVMACgkQnKSrs4Gr
+c8jZQQf+OZEX0gEXf1Wt2j51SCBn+i89pfpm/Mg+bo3EwrgfC7ebEI9B2KihRbE2
+0UgrgQoe5WLwKiDt4aR0wuMlmTrng+8t5AT9QCOSAxclJ83z8WLVcMl/g/48IPWI
+hEnsoDS9EgpPCjoIb+lmFnj6zyfUpLYS3arQwj7sjhAbrrGNwILwtrIe8bqqqhZR
+8w1UGF8qR+NV2U57qxexRH0Mvpxp7QhBBCZ1Z7BpCuVUjKb/4xGSqAFktNHY0EHY
+CbnbRrFQ4RrUjj9hiZQpbNkkeraBrAbYdZpPk/hp354VXj3s3DamrmqDSNI0f66y
+lvyTOwAISkjbSu19Len0U+JNeqlZYQ==
+=3eI6
 -----END PGP SIGNATURE-----
 
---DltiIdaNA3nWqmR9--
+--BVTxInpCVWgS3hFa--

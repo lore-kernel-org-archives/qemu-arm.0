@@ -1,182 +1,246 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2435204njd;
-        Tue, 22 Apr 2025 08:26:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVB0BceRgIVu/IKZXznHTlOfSylaY4fggZzo9vkcVy6SOlni/Z6fZ4tKMtTXHr9sDMOaA1sJes93FJljQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHaUqWMmGNBileACWGa2v+6dNBDlju1OjdLstfff8PJ9LiX6UfYVzK5A6MNI0s8ONaGbL9g
-X-Received: by 2002:a05:600c:511e:b0:43c:fc00:f94f with SMTP id 5b1f17b1804b1-4406abfa43fmr99950905e9.23.1745335605096;
-        Tue, 22 Apr 2025 08:26:45 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745335605; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2492218njd;
+        Tue, 22 Apr 2025 09:52:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmZ/mlMxapTxPjDUSJ/KAmY/LgrsO4HJtG9/Tbo4A1ZcdTPQ2ZusQe9nOld+7SxPBhvLu824/aWYjxTA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLFQf8aFfmzX5rvmiRWBiKnu9Wpkst+wzlbzOzbi4a1Q/xr1saAzT6bPkS9jyLq0dlANYB
+X-Received: by 2002:ac8:5f53:0:b0:476:8e3e:2da4 with SMTP id d75a77b69052e-47aec4a50ecmr273679071cf.38.1745340753868;
+        Tue, 22 Apr 2025 09:52:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745340753; cv=none;
         d=google.com; s=arc-20240605;
-        b=L60BI/+lcZvozk4QiCw1Q+ql70ZezEcKvCt4F9z23Ch2A9OphQkS+SA8n760rpvGTY
-         /sflOO1XUtTBlJLScsKbwx+axgwhoQD+x4wNKVisT7RGbMWJfUoB2n/rn7f+G03a813x
-         8MRqwwPtbO0EXihr/qtGf9crBc0M1O8UlM6MjEEDUyGr5nYPt3ylsogzIrtdqDmTAMOi
-         gBSZ9bbulQKOHCHpFCBJx7e/jxNM7uCNpfURJ4psCvdrvsguuRlZra81yekdO+WbXbOu
-         wosSH5gGCqUpo0r+g2isksTLjPSvHUu+bvkZ0+FCtzQ3eg/ehNMfZymrYogBgG3fOI2Y
-         xu/w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=DDY6MVFf9pEFJoxWO+S/ZuV9DI+ixrS4+z8I01uLaNIe0H9mBaZrkWgWuPnZ9YV+pG
+         2d/ivufhtEPtN3Y6ntG0eK+8jUg3coaBPrQl6b9Y1K2rmJeURZFFI78ad7ZMg9qns6LN
+         6HmFYQSx8+FPZgP+RRVJSOlth+0M3xwVCNWAfTtjt9q85NKHfdVep3h8Nf4hlERXFfZI
+         5ZETPke7Q4mFjtgQCGsLgDZZaS0vaDYo+SxiQ6pStsBKkbVsJZJmubLjpmMkz74oie6x
+         3MLldiY03YuY0xeOe87Ra9VfHLmx7hBpDiLb9lflEd0E0AE131jwjd0Lj2XRhKvInFzP
+         C7Sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:importance
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature;
-        bh=8TUOAK4dfw6psyhRy6BzmcaE9jy5HibvFtdX8sbr7os=;
-        fh=vZgF9rKmjVrTnWsHUHJI6UW+ni1k+xhqtIZDjiVW/0c=;
-        b=FRuGNWyQrTzV9XeFzPJ6Mz/8ivBHM49U52I5ooLA0XZ9qaHuyppPHLMnINYo5KDRUM
-         SVFMlwvCRDZylj9hLhXQLjhR2V43rEouKaLHOpuQKNS9HOzyltHRa7l1W6xgf5lP/k4U
-         e/YWfSou59/e34B4bXFQbtdk7DTf5T/766yYC9KLNT1a93EpfHpAhIZn9LYWmYBV087m
-         3mNVnU219q9fqBaE7RnlAAal/1SFr69ir1VGP4mDUZJ8b6X3aJ6UW2AEDCzM2TP/OpOv
-         FchS187LolO4hdM/k0H4JZsOwwJjfay3B3iH//b++aU1DWF+Po0a7qTHv2F+N9NM5QqH
-         bApQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=H27M4w2DDQ9ZyPUqNs73xhWR7wMxduhS0oaVhELDge4=;
+        fh=vB8cktEgn1edfuG8BW10MbPDP+6RcECB1WsHKCUOo6A=;
+        b=Ic82oUKtxCIx2r5fi7w8SHALhTFun464VEC79XA9ZQURv2Yc9q6H8R3gfiwLc0kgie
+         nyQ6hTyjZ8c4igG69S7Rr21gyhv3xt9QipDznO47EBvNJrp98Xfc9C/taS4AJiZzCBHI
+         LGGtVnj/NHSFQGncRMkPS1t8fMg739jabmFBcx4RczypOf8pdHojETY/r/C8+uw4tgv1
+         1JWqigQuorRycY+pcqgD3zrGQ+5Nvgc/touXIPw/wjt3N0kxR5pZjmep2pTx7u7FBPHE
+         Isb4dxyhXH5rftgENCZM2hwCqGA3L2U+pQeVTJVDMhG6lQ/sNwPB99SKKmFboZwAZc8F
+         s0tA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=EcRIdbZf;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4406d6ec653si71509455e9.159.2025.04.22.08.26.44
+        by mx.google.com with ESMTPS id d75a77b69052e-47ae9c2b9f6si117416761cf.169.2025.04.22.09.52.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Apr 2025 08:26:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Apr 2025 09:52:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=EcRIdbZf;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u7FVa-0007ds-8t; Tue, 22 Apr 2025 11:26:02 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u7Gqq-0008KQ-Jd; Tue, 22 Apr 2025 12:52:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1u7FVT-0007cS-Fu; Tue, 22 Apr 2025 11:25:58 -0400
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+ (Exim 4.90_1) (envelope-from <SRS0=h5bN=XI=kaod.org=clg@ozlabs.org>)
+ id 1u7Gqo-0008JX-Lj; Tue, 22 Apr 2025 12:52:02 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1u7FVR-0000rj-42; Tue, 22 Apr 2025 11:25:54 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1745335519; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=JVWoWIJfxZjZI3v/+vk0fOJ5JBn689G3Z/mFyadR8aQ5Uc7TUan2YPp9kG0q96Tkv0I6zv7TpWTf0ZN2W27jGKLgPpNDfsAsGNOMCRTnyojN5RYZBBfSzFFzzFbBn8RoT7yYgXjBuA4Bjtb9dpYZWzsQaaq9E5Z4tIlUmiwC8Oo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1745335519;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=8TUOAK4dfw6psyhRy6BzmcaE9jy5HibvFtdX8sbr7os=; 
- b=I5OzcM/Tv3BxrZ5rpTJfKYny6Z+3DKJ0MHSDxsQ/WoNYEJO2sHAe9Dv1viDLQpELLujlXPWkyw3lLYaJUjZvGVKhFW4LTWylsWfD3BFNO+/AgC+FqJYoXDhfzKRevzOc6UUN7HtCJvzjpMkzUmfEN20HPAy5GJW5IwtDD34kk0E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745335519; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=8TUOAK4dfw6psyhRy6BzmcaE9jy5HibvFtdX8sbr7os=;
- b=EcRIdbZf06OSmwXgSDT1vEHTaY5ETM/lz1xw2LaCLIaLIeavhp0j9tHH1/hBvAXG
- ZJOlWOczRwJRVmcCUVpFXF/oMiAlTzGMisy53ZqsqMbIaRqGlagyO12GI9Yrhp7jJ7B
- gRtI74imOtjfdgALrXOZKyy7IHwoaefC0Z4ucAVc=
-Received: from mail.zoho.com by mx.zohomail.com
- with SMTP id 1745335518281881.1837526050226;
- Tue, 22 Apr 2025 08:25:18 -0700 (PDT)
-Date: Tue, 22 Apr 2025 23:25:18 +0800
-From: Li Chen <me@linux.beauty>
-To: =?UTF-8?Q?=22Philippe_Mathieu-Daud=C3=A9=22?= <philmd@linaro.org>
-Cc: "Peter Maydell" <peter.maydell@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
- "Yanan Wang" <wangyanan55@huawei.com>,
- "Zhao Liu" <zhao1.liu@intel.com>, "Song Gao" <gaosong@loongson.cn>,
- "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
- "Sunil V L" <sunilvl@ventanamicro.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,
- "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
- "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Message-ID: <1965e1a8431.cb206d1e1037721.7771287202770929929@linux.beauty>
-In-Reply-To: <c67391b9-297f-478b-aea5-c27b0dba6cfd@linaro.org>
-References: <1965d621e25.fafa759e911037.825810937022699867@linux.beauty>
- <1965d6357a1.dfa9d35b911644.778874035603636753@linux.beauty>
- <c67391b9-297f-478b-aea5-c27b0dba6cfd@linaro.org>
-Subject: Re: [PATCH V2 1/3] acpi: Add machine option to disable SPCR table
+ (Exim 4.90_1) (envelope-from <SRS0=h5bN=XI=kaod.org=clg@ozlabs.org>)
+ id 1u7Gql-000257-Cl; Tue, 22 Apr 2025 12:52:02 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZhpDS5jcjz4x8Z;
+ Wed, 23 Apr 2025 02:51:52 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZhpDP41vmz4x1w;
+ Wed, 23 Apr 2025 02:51:49 +1000 (AEST)
+Message-ID: <a4c178b6-7048-42d1-9e90-58ed87baf9b5@kaod.org>
+Date: Tue, 22 Apr 2025 18:51:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
-Received-SPF: pass client-ip=136.143.188.12; envelope-from=me@linux.beauty;
- helo=sender4-op-o12.zoho.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 06/10] hw/arm/aspeed: Add support for loading vbootrom
+ image via "-bios"
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>
+References: <20250417031209.2647703-1-jamin_lin@aspeedtech.com>
+ <20250417031209.2647703-7-jamin_lin@aspeedtech.com>
+ <85a2947e-6909-4311-8b58-f9eb8045e76c@kaod.org>
+ <SI2PR06MB5041D4AD25381C7D1D6A5C1CFCBB2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB5041D4AD25381C7D1D6A5C1CFCBB2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=h5bN=XI=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: we6cJQrBhDIe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /SZS2A6X1yJa
 
-Hi Philippe Mathieu-Daud=C3=A9,
+Hello Jamin,
 
-Thanks for your review!
+> Based on the design of aspeed_install_boot_rom, users can place
+> their ROM code at the top of the image-bmc, and this function will
+> install image-bmc which included the user's ROM IMAGE at the
+> ASPEED_DEV_SPI_BOOT address.  For AST2600, users typically set the
+> boot address to 0x0 and boot directly from there.
+>
+> For AST2700, we introduced a vbootrom to simulate the ROM code and
+> the BOOTMCU SPL (RISC-V).
 
- ---- On Tue, 22 Apr 2025 21:18:46 +0800  Philippe Mathieu-Daud=C3=A9 <phil=
-md@linaro.org> wrote ---=20
- > Hi,
- >=20
- > On 22/4/25 14:05, Li Chen wrote:
- > > diff --git a/include/hw/boards.h b/include/hw/boards.h
- > > index f22b2e7fc7..cdf2791a50 100644
- > > --- a/include/hw/boards.h
- > > +++ b/include/hw/boards.h
- > > @@ -444,6 +444,7 @@ struct MachineState {
- > >       SmpCache smp_cache;
- > >       struct NVDIMMState *nvdimms_state;
- > >       struct NumaState *numa_state;
- > > +    bool enable_spcr;
- >=20
- > I'm a bit reluctant to add a field used by 3 virt machines as
- > generic in MachineState. Shouldn't it be for each machine state?
+Side question, is anyone working on the BOOTMCU SPL (RISC-V) models ?
+heterogeneous machines should be supported one day.
 
-I looked for alternative locations for this field before submitting v1 but =
-couldn't find any.
-I re-evaluated potential locations, like struct AcpiBuildState, but ARM, Lo=
-ongArch, and RISC-V=20
-just use their own AcpiBuildState.
+> We use aspeed_install_boot_rom to load the image-bmc at the FMC CS0
+> memory-mapped I/O address, so we set ASPEED_DEV_SPI_BOOT to
+> 0x100000000.
+>
+> We load the vbootrom image into the vbootrom memory region at
+> address 0x0 and start execution from there.
+>
+> The guest OS first enters the vbootrom. From there, it can easily
+> access the flash data (image-bmc) at 0x100000000, since vbootrom
+> itself doesn’t require SPI/flash/emmc host drivers.
+>
+> To support future eMMC booting, we also plan to install the eMMC
+> image at the ASPEED_DEV_SPI_BOOT address.
+> https://github.com/qemu/qemu/blob/master/hw/arm/aspeed.c#L477
 
-BTW, ACPI-supporting virtual machines may eventually adopt SPCR. Although c=
-urrent there=20
-are just three users, future adoption is probable, making it a suitable fie=
-ld for each machine state.
+ok.
 
-Feel free to tell me if you have any other suggestions.
+> It is fully supported to have both options. If users want to include
+> their own ROM code within image-bmc, they can set the program
+> counter (PC) to 0x100000000, just like how a manual loader set it to
+> 0x43000000 (e.g., to jump directly to BL31).  This allows users to
+> bypass the vbootrom if desired.
 
- >=20
- > Also I'm surprised we announce the SPCR table regardless a virt
- > serial exists. Shouldn't we have a disabled default and only
- > enable on virt machines, preferably checking the serial port
- > availability?
+ok.
 
-So you mean we should avoid building SPCR for cases like "-serial none"? If=
- so, I can add a patch to check serial
-device availability before doing spcr_setup in  ARM/RISC-V/LoongArch codes.=
-=20
-Should this change be the first patch in this series, or just a separate se=
-ries?
+> However, I believe this use case will be rare, as the vbootrom
+> design should be able to satisfy most, if not all, user
+> requirements.
 
-Regards,
-Li
+We need to be careful about what we offer the user in terms of boot
+method. It's difficult to maintain on the long term. Let's recap.
+
+For the AST2[456]00 machines, we have :
+
+   1. kernel boot
+   2. flash device boot with or without "execute-in-place" machine
+      option
+
+and this could work for AST2700 machines with some loader magic.
+It would be good to decide to or not to support it. If not supported,
+let's inform the user asap.
+
+For the AST2600 ast2600evb and rainier machines only, we have :
+
+   3. emmc device boot
+
+and we plan to extend it for AST2700 machines.
+
+For the AST2700 machines, we have :
+
+   4. manual loader boot (this could work for the other SoCs, although
+      we have never tried)
+   5. firmware boot
+
+We need to define a priority between these methods too (the list
+above is more or less ordered, apart from 4.) and handle conflicts.
+
+All of which is to say that the piece of code below will require
+some care:
+
+     if (!bmc->mmio_exec) {
+         DeviceState *dev = ssi_get_cs(bmc->soc->fmc.spi, 0);
+         BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
+
+         if (fmc0 && !boot_emmc) {
+             rom_size = memory_region_size(&bmc->soc->spi_boot);
+             aspeed_install_boot_rom(bmc, fmc0, rom_size);
+         } else if (emmc0) {
+             aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(emmc0), 64 * KiB);
+         }
+     }
+
+     if (amc->vbootrom) {
+         rom_size = memory_region_size(&bmc->soc->vbootrom);
+         aspeed_load_vbootrom(machine, rom_size, &error_abort);
+     }
+
+Thanks,
+
+C.
+
+

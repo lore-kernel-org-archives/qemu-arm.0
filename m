@@ -1,81 +1,81 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2337820njd;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2337821njd;
         Tue, 22 Apr 2025 06:07:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXBsg5e/V7LHV1UVBXcLCPbQPcKkEEWRb+mUxNtvyNxznGe2ZdyYaez8m5+KWuNvcVp442ousZj0N1LRg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEbG3ClS0X8WxP/nX2RTd4D1L3M4Rz437wVvFCyEDML9WhdWklp6QpCw0Rj5juzxt+buQiJ
-X-Received: by 2002:a05:6102:3b04:b0:4c4:e018:326f with SMTP id ada2fe7eead31-4cb800d894bmr8176595137.10.1745327262143;
+X-Forwarded-Encrypted: i=3; AJvYcCX9+ZlaoOPix5ik/EfmItFgebUvHYsVl93D2rpcVM1X7oQ3rcbpgeTXkkqCEXV4yaLuOSq0I90WocPPRw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHqGLdk6p/8VtVW3I6Oj04dRDKww8fD5zzUCHSqSVB0qxYk1c0Ipy/NR3+ypd16D0jP4SYj
+X-Received: by 2002:a05:6214:5009:b0:6eb:2fd4:30bd with SMTP id 6a1803df08f44-6f2c46787f4mr196946786d6.30.1745327262130;
         Tue, 22 Apr 2025 06:07:42 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1745327262; cv=pass;
         d=google.com; s=arc-20240605;
-        b=EP2unvt/hm1uN57iry5Wg0aIEUyvOng10tZlvJZaU3fn4a2Lbje2SYhMBMwbo5FmTu
-         zQMkE8F48QBqjCaK3xtPq5dCm0fbbyJcygYw8R7/GX/qKXZGjQR6Yo0xfq52EDfYkGe0
-         bdFzYygada6etwygmb2X7wVafqmHXmw2JKtGFo+tc2HYt/4z/kdDwNiXHPnGPhVxQax8
-         6TqVP5IocqJGJWx0cneTY1Y/RGVbDXCqVvjPLgnQjv9IW4hhmJJJcaPp8vCdHPDjFPq4
-         w6wynelXy5KycWXKt+Thju+x+T5cf1mCWSb4ZJbpu3ymvLndE2xcqrvX9ksEnYx3wfjK
-         fLtw==
+        b=R3UvIn9RSNjwtyYq2bHuGLqq8ePnpa48JUG5X7b057u6v3LP9C0QZND3uBSyzi+krM
+         yvqJ6F3cUDBwEvlkxxs5GejZeasx2NkbfkVKdVYGIV5qdruA4WBrXGAGCvyw9zyno013
+         4ACo2k/dktMLuYNM11KtkkU7Lj2epAztdIHRY11a6JNtoUBcWVBd99mRoRkNw09ZqHPq
+         AoEBoHOPHDPZD7MixkeF6QjtYWj3ct2ptWe9ge4cpgn43+YnakJGmSBSPgyEUn4neAD0
+         bAB0D5e+ojGkV4NplP3P8KNmtu5MWHY8mie4ayIVTkd6Md1xSqwkvW0sIG70GE6rTeHl
+         TFfQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:importance
          :content-transfer-encoding:mime-version:subject:references
          :in-reply-to:message-id:to:from:date:dkim-signature;
-        bh=/stvQ7CKfZG2qrLmD8V83vEdkR/vmhNKv8wtTQoJZjI=;
+        bh=2c0O9T1s6X8/ZTemOXWayC8UqGgBEItGWgmlUlE7g6Y=;
         fh=zS+g9qlHM+oh7KP+PULwazHl5s8pe7BvC50BXmrEVa4=;
-        b=Zwgr7RDdQu0Rh9v1gkj8SIO4W6AagpBBVvquNXIEcYBe5DNANEdHRpqjyuigP9t6is
-         NvRKwQgqDXj8MieW0Zhs4j/ve51ytUUMsexnsmWkG0kVqnZqtg95CITQ9+wMsP59y7Yr
-         kA8EuU9lRPS+mVy+xkJz/sNFr2gwYExoLhhHnCFc4qHPcKfv1xjteM8bOCnydz2v4Mq8
-         vdETTRDbQyhG1Ls55yYwzcHbX05OzE/Xs6ejNv40NQ6R1FYq+fSd1fdsVo1MCXSQZmW/
-         Q5Od8benFQ2npab2wbfeuqFwMl+YLQbEADy79nsZ3kbvuqFuWPoJybXBktWJ035WeUGO
-         F1fA==;
+        b=F1gSySn5/xVVjWekZGbO/d+ZmYg4JeINKU2svZYcfJZd3ZzB7iQzCTuTddtoDJlt7K
+         Mnr0++4Ni2v+LzBtz2TAnwBxnzAfJIJqhMMvqtWt8kgpAli4zb834KgcluOPwkcWA3+A
+         1NVwtCi/rym9M93YdV6uMqt2Qo6KKVgCaQH/fTZUj0gqn7PBAyZYyuJ1YlUKuf8+TvMQ
+         f29bhaZPw/Nk0od/CcGPYzIYu5MoUoViZcvQUlCys6bietG5bj9cMOIE/oZJ/QS1UvUB
+         oYk68bIH/vXXcE9y4kkJ2/GXRYSqv6IDn5z4VB4/O4oBs43vwhutywxSE72dioA0ct3y
+         YWRQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=VR0VB6fD;
+       dkim=pass header.i=@linux.beauty header.s=zmail header.b=ctqEAoQ8;
        arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4cb7dfb8161si2323169137.469.2025.04.22.06.07.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2c17d69si107335906d6.354.2025.04.22.06.07.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 22 Apr 2025 06:07:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=VR0VB6fD;
+       dkim=pass header.i=@linux.beauty header.s=zmail header.b=ctqEAoQ8;
        arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7DLQ-0003ys-Dq; Tue, 22 Apr 2025 09:07:24 -0400
+	id 1u7DLP-0003yH-K4; Tue, 22 Apr 2025 09:07:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1u7CPi-0000SK-7f; Tue, 22 Apr 2025 08:07:46 -0400
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+ id 1u7COt-0000EC-Mk; Tue, 22 Apr 2025 08:06:57 -0400
+Received: from sender3-op-o12.zoho.com ([136.143.184.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1u7CPe-0002sD-1m; Tue, 22 Apr 2025 08:07:44 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1745323641; cv=none; 
+ id 1u7COp-0002mZ-Ib; Tue, 22 Apr 2025 08:06:54 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1745323582; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=fmFbhfJyfECqQmrJkiLYGUNQb0nQlMks/6J04uHDP3zA32Xs1un+ZH7kh9sFwZng6Joj06shogwSh9S4lYnWFR0OCeSzEljnuqpAMP4QxPMg1yrC8ImmQy4RqYGXb47UqNAA4ZSd6lurblvRx46F1vzMHcZtjP7cCc1ZJGTCXl8=
+ b=CqgUqqTIGnpDkOAixwAJdrt0dBVbevIOgoiT6TzUD4F1yLfI146Nph+Xz5HB+0jF7OXbUtTd/b2yt+Lnj4Z2qILfy348DAmuiaC/CEhmYs6vp66rub8LCHPX/lnDqWl5B8llV8M3U1xYo3w1P9qTkv8e+UGFpBh+/kr7DTTkYjQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1745323641;
+ s=zohoarc; t=1745323582;
  h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc;
- bh=/stvQ7CKfZG2qrLmD8V83vEdkR/vmhNKv8wtTQoJZjI=; 
- b=j1PSDk2B9mOBMgTROQTmcR0vOzLXUnSjHhq6fXBNycUdbPfjOy0LvNz3nTgdV+DGEAoUWmTGD4wE22BRPMYwcVgKozYYoGtpHDbVuXVLtMFN1KO8KCKcDrCGy0c+dY9eElLfAgTBvwrjrThpX4hNi5DpN1DiXbvhA12BQ3mOM8Y=
+ bh=2c0O9T1s6X8/ZTemOXWayC8UqGgBEItGWgmlUlE7g6Y=; 
+ b=nT+jbnnl1DiH8C3uLG4+ImfdhHyc6bp8pbO7Vy/UM1bcVs8qnJyXiAAu1FqFGHrtYPyjgitILYJSWIbc2EIu8DnvhG5bDGFfDgd/SqwIzvJeFfM+lnOi54HtveaSXXQVBJy19kaP5PCgCN89ZzMPPOH8EUeZnTuSxO78HzSZ2IM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=linux.beauty;
  spf=pass  smtp.mailfrom=me@linux.beauty;
  dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745323641; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745323582; 
  s=zmail; d=linux.beauty; i=me@linux.beauty;
  h=Date:Date:From:From:To:To:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
- bh=/stvQ7CKfZG2qrLmD8V83vEdkR/vmhNKv8wtTQoJZjI=;
- b=VR0VB6fDB+WPlN3KrTa9j/E/a4iZBWcyyJmFkjYhZTx7qqriqOxYgYT8BISpFf4C
- XWnDqmR0QThRym3BUNuTniFzZoftxW9eId6Ju0tgv0mOpKAFMD/TJfmRSuf2PjG+Hfa
- vVjMMCaAnIlXr05rC3hEOnnUqigDZaEOBWEhXA4g=
+ bh=2c0O9T1s6X8/ZTemOXWayC8UqGgBEItGWgmlUlE7g6Y=;
+ b=ctqEAoQ8LMpLvHzgPZsQERzz9n8WacvHTYHnEAj+iuf9cx6wAm4v5gK9YxLpRMA8
+ VCoxfs9oJ8RJoQ8PNbfHSg7oLRKUxFDp53+itQEqEv5peFlXidxFLoKk7vgvpu3eHV0
+ Llo/QIENnordzV0mQOL6ZU+C4yrbmVDRiA48xRbk=
 Received: from mail.zoho.com by mx.zohomail.com
- with SMTP id 1745323639301266.73560620235014;
- Tue, 22 Apr 2025 05:07:19 -0700 (PDT)
-Date: Tue, 22 Apr 2025 20:07:19 +0800
+ with SMTP id 1745323581073534.0804907669417;
+ Tue, 22 Apr 2025 05:06:21 -0700 (PDT)
+Date: Tue, 22 Apr 2025 20:06:21 +0800
 From: Li Chen <me@linux.beauty>
 To: "Peter Maydell" <peter.maydell@linaro.org>,
  "Shannon Zhao" <shannon.zhaosl@gmail.com>,
@@ -92,27 +92,26 @@ To: "Peter Maydell" <peter.maydell@linaro.org>,
  "Alistair Francis" <alistair.francis@wdc.com>,
  "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
  "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Message-ID: <1965d6541ea.102a06ad4912575.3151797857612362065@linux.beauty>
+Message-ID: <1965d645e78.faddb8f4912124.7439555839695048949@linux.beauty>
 In-Reply-To: <1965d621e25.fafa759e911037.825810937022699867@linux.beauty>
 References: <1965d621e25.fafa759e911037.825810937022699867@linux.beauty>
-Subject: [PATCH V2 3/3] tests/qtest/bios-tables-test: Add test for disabling
- SPCR on RISC-V
+Subject: [PATCH V2 2/3] tests/qtest/bios-tables-test: Add test for disabling
+ SPCR on AArch64
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Importance: Medium
 User-Agent: Zoho Mail
 X-Mailer: Zoho Mail
-Received-SPF: pass client-ip=136.143.188.12; envelope-from=me@linux.beauty;
- helo=sender4-op-o12.zoho.com
+Received-SPF: pass client-ip=136.143.184.12; envelope-from=me@linux.beauty;
+ helo=sender3-op-o12.zoho.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 22 Apr 2025 09:07:19 -0400
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,57 +127,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9IpaQIHG+ngW
+X-TUID: fc297/ETei+D
 
 From: Li Chen <chenl311@chinatelecom.cn>
 
-Add ACPI SPCR table test case for RISC-V when SPCR was off.
+Add ACPI SPCR table test case for ARM when SPCR was off.
 
 Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
 ---
- tests/qtest/bios-tables-test.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ tests/qtest/bios-tables-test.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index d2a1aa7fb3..44de152a36 100644
+index 0a333ec435..d2a1aa7fb3 100644
 --- a/tests/qtest/bios-tables-test.c
 +++ b/tests/qtest/bios-tables-test.c
-@@ -1807,6 +1807,26 @@ static void test_acpi_aarch64_virt_tcg_acpi_spcr(void)
-                   " -machine spcr=off", &data);
+@@ -1789,6 +1789,24 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
      free_test_data(&data);
  }
-+
-+static void test_acpi_riscv_virt_tcg_acpi_spcr(void)
+ 
++static void test_acpi_aarch64_virt_tcg_acpi_spcr(void)
 +{
 +    test_data data = {
 +        .machine = "virt",
-+        .arch = "riscv64",
++        .arch = "aarch64",
 +        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2",
-+        .ram_start = 0x80000000ULL,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
 +        .scan_len = 128ULL * 1024 * 1024,
 +        .variant = ".acpispcr",
 +    };
 +
-+    test_acpi_one("-cpu rva22s64 "
-+                  "-machine spcr=off", &data);
++    test_acpi_one("-cpu cortex-a57 "
++                  " -machine spcr=off", &data);
 +    free_test_data(&data);
 +}
-+
  static void test_acpi_tcg_acpi_hmat(const char *machine, const char *arch)
  {
      test_data data = {};
-@@ -2612,6 +2632,8 @@ int main(int argc, char *argv[])
-             qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
-             qtest_add_func("acpi/virt/numamem",
-                            test_acpi_riscv64_virt_tcg_numamem);
+@@ -2583,6 +2601,8 @@ int main(int argc, char *argv[])
+             qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
+             qtest_add_func("acpi/virt/oem-fields",
+                            test_acpi_aarch64_virt_oem_fields);
 +            qtest_add_func("acpi/virt/acpispcr",
-+                           test_acpi_riscv_virt_tcg_acpi_spcr);
-         }
-     }
-     ret = g_test_run();
++                           test_acpi_aarch64_virt_tcg_acpi_spcr);
+             if (qtest_has_device("virtio-iommu-pci")) {
+                 qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
+             }
 -- 
 2.49.0
 

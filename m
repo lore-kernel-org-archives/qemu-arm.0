@@ -1,126 +1,191 @@
-Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp460750dlb;
-        Wed, 7 Aug 2024 10:26:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1YaLDTqIwT8p4RJi/83/w4/FR9gmWMF4cjod888PWDhOVdgQJ05BMtl+AfRgAxVbQ5Au0zaX9qB4ZdEizM4e6er7IZk/I
-X-Google-Smtp-Source: AGHT+IGSUOn1zzEdxSH60CsqSqlHzU5yICKm8UWpbb57zxly+NJkWKAF9IcOj+bQXhVO//GMGMGV
-X-Received: by 2002:ac8:5d88:0:b0:44f:f693:5a44 with SMTP id d75a77b69052e-451892a3b91mr250610311cf.44.1723051618088;
-        Wed, 07 Aug 2024 10:26:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723051618; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UH0QZxAHoYr8JH4Jc/kt79TAwnO5jk8kfUG8amVV/VvTSuLKPewOnVSn+/l5CdXEVr
-         0DzIsulTApnhtXykQrHJgAfi4yVsl+voOc7mCAG33+o6O2DY8WN3r/a4LkT0BruKKNtK
-         Ud3nsWQLCuQuLJCjSAZdBZreXghBTLyPUcTIVEG7+tTN6cU/UpIVFXp3IIGH+Yny5Nuf
-         wyQuAr3hzqNLiGs7c4TD9utk0zLwWF5HDM044yN7psaxG2vqKP1n2z11j9Gw+UT4m9xB
-         MJL4G/pnAYApM4zBedyF2NemgxczGsCdnBvvDz52e1+QVxb7r2W+/ZowtapGDKVZwcBq
-         dECw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fHdSG8iEg4uS+0Sz/s3n8vWpM9yi4XCN7sVewjdqnp8=;
-        fh=KCqozhMZHDZV6RUE5A6qks0bAAFST509VuzD8ADQ5GM=;
-        b=wjW68devQGtGCm2v36vJ4hVYnky75KXYsNxbZp3qDWHSP4erc7dKKiwPCBlWzgM5SB
-         PW6Pe1fnjqWPGykxqaKIjKqoFjLw7w+5YxKNhesjn1L6FWUhYeofggb5HCFjShjhPG+h
-         mNPdoEIoaqtMYda9rYYRjwRZDaW9MqlE4iTbYiilvT8xpunCP7OUIoi6JDiJ3dKzsI45
-         iVw8XxfTlOqMTu42sXGyEiF7Syw55rrniWLhKHEa5aQF9L+UPgqjSKPSZd2V3/UPoccj
-         rKMS3yOG7GIXsxOeUEPu5vRYV785Kv2+uFIL3EqxQlmoRvmJHhrGQsXFn210aZlF55FN
-         whog==;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2635779njd;
+        Tue, 22 Apr 2025 14:10:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgm1cXd4dmXwMZ6LcDmiPiSYfHh7uz4DSPmRV6Xp8EANjYN1rmW5jt1KMxvxxR4yG0jEFZfcRwbO3gDw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGuCu9hquMXbqF4CV7EGBlZe7QiFxeuKESGMqOA+LR0nvQcRmHOWcxVzKnHVs2c00enwuaN
+X-Received: by 2002:a05:6214:f67:b0:6ed:14cd:d179 with SMTP id 6a1803df08f44-6f2c44ed56cmr300127316d6.3.1745356212427;
+        Tue, 22 Apr 2025 14:10:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745356212; cv=none;
+        d=google.com; s=arc-20240605;
+        b=X3I2QW9ZwraZDj/HBUBQC++uYRlx2lMyhac2V0xRbxHRYa5MxjvrULqmM4NPvGF+uq
+         k6w7jfMzKNHrHT5+OKqIwhSMdo5miY9dBtShCgR5qCpMOde1q12+f85WCOEmj9pwB3uL
+         REYglaffMJDTU5pG1rNhwqfafQpxp1WwcInvWrRQIz0RUzR78G7h/K8fEysRugKUltWW
+         39LWCGzxySmBi5kNd6EN3xF8IhKmIBphpsIxWpqi/nLV3TTIwfsQocMCgaGLqecpb5PA
+         sBGJTYs8HB2i4eSr0fWEZk80b3KM6n4PlBsZqDU26oAxJcg154WMHp6iSwwS17hqYBgy
+         +naA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Hk9RDMhi7WYw+3x5hMC3ThCnGXyUY9r4sBfUbQExpbw=;
+        fh=IQRqTtgiAmj6HQDXymAFJiTF9oztMErITc/T6MUfgnc=;
+        b=iqDxi/Dk73jSqHcuAlJ6z8n1a3shwUo6x3RvRCON2582J9X43cLNfk6SqL6N1jAZf8
+         TYJLoykbvefmMI2Q8WvONPmvX5d6znzMe+9guqDNHBr9GlWWo/odqTfCAK4KFhzceNB6
+         Trs0Gz4nxtJpP8tsuq9Zfjr/9o/eFAsSJs7njUGuWZxT0dYk2CRiQLwcP0868YFOGAlN
+         LLBwCksHF28In2QqTItPz6zJVgHM0wt5VKn+aKqyAY35JBCgBob8dM1RuV5wqRvRK6TG
+         SekpGP//rhNdWf1hhgQNJilSBkZ5GjvUEhu7+vKP2ZD6QUZcPwk4qJEuslY4eXo1KoIb
+         YOrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XtArFQE2;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-451c8852962si19781171cf.725.2024.08.07.10.26.57
+       dkim=pass header.i=@google.com header.s=20230601 header.b=oA2xBvuk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2aff33fsi119322156d6.28.2025.04.22.14.10.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Aug 2024 10:26:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Apr 2025 14:10:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XtArFQE2;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723051617;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fHdSG8iEg4uS+0Sz/s3n8vWpM9yi4XCN7sVewjdqnp8=;
-	b=XtArFQE2xh3G6CxexC0I/CMKtmow4wQ/pafsYs0iCx+1gmiIV0UK/OQsAUy1VS9+y3O8fQ
-	u6etZ4g1hFIJY0PhhlYvzGaFZegPlXX58Y2jcYxCx2tSaDrTEUWTXrBivT9cpL64mL8x0r
-	dT+2e4W8Jq8dIVe9BHknUuSU/S4HAtE=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-307-CECWyyauN6OnHvQrpMyzAQ-1; Wed, 07 Aug 2024 13:26:55 -0400
-X-MC-Unique: CECWyyauN6OnHvQrpMyzAQ-1
-Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-664b7a67ad4so1538457b3.2
-        for <alex.bennee@linaro.org>; Wed, 07 Aug 2024 10:26:55 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=oA2xBvuk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u7KsI-0008Ux-Kc; Tue, 22 Apr 2025 17:09:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1u7KsD-0008T7-Lt
+ for qemu-arm@nongnu.org; Tue, 22 Apr 2025 17:09:48 -0400
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1u7Ks9-00005F-Fb
+ for qemu-arm@nongnu.org; Tue, 22 Apr 2025 17:09:45 -0400
+Received: by mail-lf1-x129.google.com with SMTP id
+ 2adb3069b0e04-54e655818b0so2990e87.0
+ for <qemu-arm@nongnu.org>; Tue, 22 Apr 2025 14:09:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1745356179; x=1745960979; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Hk9RDMhi7WYw+3x5hMC3ThCnGXyUY9r4sBfUbQExpbw=;
+ b=oA2xBvuklA59epJsbvaZXNc8iI6acUbNEw+xaWMBevX08AVhKvLsXczHW+NRQ8lXVc
+ F2klG+SpLio9gxeoVcSWUBVdCLTUd6dD+5HUUNlbde35e5T0mQlhWBlYm9ozfG2CS9Va
+ RG5MrDJ0tBLuCOg/KSGKCz8rkcKMPoSkBiixeMqcA+lZ2ZefMVYo+UJzsc1q3WiusqHq
+ QYzvwuVTyYdvIpLhMK5nmUPIc7HMm+uWoWPclzao50KVpn14lQA7yTwKCzFKOEwGGZb4
+ VFyjz2DAFVZD5Vv/Hiv1Y5EPTbSStAz7/iEin4YOTAf+Ig+xavpzLWm9aXIG1+HHnFpe
+ lS8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723051615; x=1723656415;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=fHdSG8iEg4uS+0Sz/s3n8vWpM9yi4XCN7sVewjdqnp8=;
-        b=nzhBK2rxKKy96nRplr61Txlly5LavAaDw4IDt6Aqm5t1u08ZoqlMy8kuM5m+9Davc1
-         vqTAfaaW7QSc/25gDZLHj0+p3vEMkZ2zqlX5BlSTSRUYivD0JwKS1a6nPeV6Gqk+0zaO
-         ASDcDgFvZ9iim9KbZd+CsJULEJej92d1g62CcS46Ga98OagG9vHZWAubbsKMc7SmjFjT
-         3aEzBOKbC0dcEMMnhrkPrpIai/gePuFdPrQG7XxET65e48anu/iZcTs4Wqa27GdW6KKV
-         rmEkcsTx53ZkNeTmq58JoCJ1XhKx9EcFGjcXf1dFw8NwwcLF7B+Sftun8YUS1yv6NO5P
-         kfIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU0uY5QAjXzhpeBD4h+YKzUbU/d1Juvrze/TkKg2wZxIpUvLzcLpFbHgSkIqLaKRPnDMqnJbXvvxR8rugLe3ppfETT0KS9Z
-X-Gm-Message-State: AOJu0Ywg7LBX58qUun4mGnBcIYkTYTlIJUOzPzhLvawXUBapreR9roJX
-	xAZVIcGpStYjgtFRs5RvnAdAWFMXGeGxsYHuJTkmL2LXLukx77JoMyEmX+QwCY+6XRwVeTXAYoB
-	ZtWQCsq0nT5HGtfSIQeyst3bSm6KolFjwpTx2w/JXRY0jW8RomGVneGH9BfoRbR46IxrP8HzdVH
-	DD7vLZjo/+iFUtp+2aqxL55Er6WZ0W
-X-Received: by 2002:a05:6902:1404:b0:e0b:6583:7900 with SMTP id 3f1490d57ef6-e0bde4caae9mr21061821276.44.1723051614773;
-        Wed, 07 Aug 2024 10:26:54 -0700 (PDT)
-X-Received: by 2002:a05:6902:1404:b0:e0b:6583:7900 with SMTP id
- 3f1490d57ef6-e0bde4caae9mr21061793276.44.1723051614380; Wed, 07 Aug 2024
- 10:26:54 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1745356179; x=1745960979;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Hk9RDMhi7WYw+3x5hMC3ThCnGXyUY9r4sBfUbQExpbw=;
+ b=XSytz8+9awCICZVdWPhjKw/rluLvKjkc9RNT81tTQDjZ7qTR7b4im9UDQdeyxVUoI5
+ cOry3tfWnCj5WjIhYIbplfROnkFs+QQ0TXDVDsU60HrsowMPtGN1IQgxFsaYhHAtTCuq
+ JyouRlj07sfKRqA7Ua7NSen4XAWhG3hD17VMSie850FMM3n5cfbVJDZGAWwbOxiJqrrC
+ ANZ96pIicOCOSFfL3eBfFA4oykiT6A62FlxpgOLkmWvPysrKwZVvVTyAYX0eOdqXXPTD
+ Ud0LtCLA05vGprjxGncfZWAmL9CCTbNJV6tKMKATiFeZYA9LRs1PjDm2zoOAKV6Koz7M
+ 1flA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXF05ac2GortMccn0khSbMfo69KjoI38Kd+e9GNQxJDaw5MrxH9S37PsdcCwEmfSIDwfkeHEfHj+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzhzflhVW6idafjeDervvC+znsUWKf1LYBGCfeDYTUfspGSTTEo
+ 0Kn5/bqgXJs+wqqTN/I/96FKGASYfcUdI/lX1jVAl/Q3EBNZcXrTu1/SYslqLBtxEwRbVDMR3L7
+ rZRtoNBZKcY+HtP1C3eq58d3f119HPkmtP/9C
+X-Gm-Gg: ASbGncvLuhv9QqONuztXbwe7w3q5jAfarRaBsafNUUvS+9mE9f/X0INhXcr1Xn+8JPn
+ pwPZ72UZDU6fbcHXHJC9vWEr/QOi/EfppyBE+bW4x+2aqw3dPhbPcIr3h1FhiGzmId0NYjroVie
+ EV1RMLXTJognwWELTPwy3XYpzlQ9W/tYnbLdg9dF9qWMYlJvO21Vto
+X-Received: by 2002:ac2:4ec4:0:b0:542:6b39:1d57 with SMTP id
+ 2adb3069b0e04-54e772a46e6mr21514e87.3.1745356178623; Tue, 22 Apr 2025
+ 14:09:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240806173119.582857-1-crosa@redhat.com> <20240806173119.582857-8-crosa@redhat.com>
- <540fafc7-9044-4e9a-b2c8-2f2f04412b88@linaro.org>
-In-Reply-To: <540fafc7-9044-4e9a-b2c8-2f2f04412b88@linaro.org>
-From: Cleber Rosa <crosa@redhat.com>
-Date: Wed, 7 Aug 2024 13:26:41 -0400
-Message-ID: <CA+bd_6Ls00k4Wb9cfHZ87oNxb=y2AaRv+ibpR-bY9XPVg3SBiw@mail.gmail.com>
-Subject: Re: [PATCH v2 7/9] tests/avocado/tuxrun_baselines.py: use Avocado's
- zstd support
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-devel@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
-	Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>, 
-	Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>, kvm@vger.kernel.org, 
-	Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant <paul@xen.org>, 
-	Eric Auger <eric.auger@redhat.com>, David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Jamin Lin <jamin_lin@aspeedtech.com>, 
-	Steven Lee <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Leif Lindholm <quic_llindhol@quicinc.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+References: <20250414020629.1867106-1-timlee660101@gmail.com>
+ <834ad4b1-9dac-4559-b4da-bec6e6d4a945@linaro.org>
+In-Reply-To: <834ad4b1-9dac-4559-b4da-bec6e6d4a945@linaro.org>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Tue, 22 Apr 2025 14:09:25 -0700
+X-Gm-Features: ATxdqUEfXo-cZovlZiBuDdh5i0Jfr1_8_Znn7gkgdghHI27YKLuk_wFQaWpKlfs
+Message-ID: <CAGcCb107LRZR4=cso9VzN_54mpc2GJGsuM3q9k+1Z18X_rf_kA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Attach PSPI module to NPCM8XX SoC
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Tim Lee <timlee660101@gmail.com>, peter.maydell@linaro.org,
+ kfting@nuvoton.com, 
+ chli30@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000008f6fb0633646757"
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x129.google.com
+X-Spam_score_int: -180
+X-Spam_score: -18.1
+X-Spam_bar: ------------------
+X-Spam_report: (-18.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.499,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rR9V8DQ+JMUL
+
+--00000000000008f6fb0633646757
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: +HM+uj7eBENw
 
-On Tue, Aug 6, 2024 at 2:20=E2=80=AFPM Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> On 6.08.2024 19:31, Cleber Rosa wrote:
-> > +    @skipUnless(archive._probe_zstd_cmd(),
-> > +                'Could not find "zstd", or it is not able to properly =
-'
-> > +                'decompress decompress the rootfs')
->
-> One "decompress" would be enough.
->
+On Mon, Apr 14, 2025 at 3:43=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd=
+@linaro.org>
+wrote:
 
-True! Thanks for spotting that.
+> On 14/4/25 04:06, Tim Lee wrote:
+> > Nuvoton's PSPI is a general purpose SPI module which enables
+> > connections to SPI-based peripheral devices. Attach it to the NPCM8XX.
+> >
+> > Tested:
+> > NPCM8XX PSPI driver probed successfully from dmesg log.
+> >
+> > Signed-off-by: Tim Lee <timlee660101@gmail.com>
+> > ---
+> >   hw/arm/npcm8xx.c         | 11 ++++++++++-
+> >   include/hw/arm/npcm8xx.h |  2 ++
+> >   2 files changed, 12 insertions(+), 1 deletion(-)
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+Reviewed-by: Hao Wu < wuhaotsh@google.com>
 
-Regards,
-- Cleber.
+--00000000000008f6fb0633646757
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Apr 14,=
+ 2025 at 3:43=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:=
+philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">On 14/4/25 04:06, Tim Lee wrote:<br>
+&gt; Nuvoton&#39;s PSPI is a general purpose SPI module which enables<br>
+&gt; connections to SPI-based peripheral devices. Attach it to the NPCM8XX.=
+<br>
+&gt; <br>
+&gt; Tested:<br>
+&gt; NPCM8XX PSPI driver probed successfully from dmesg log.<br>
+&gt; <br>
+&gt; Signed-off-by: Tim Lee &lt;<a href=3D"mailto:timlee660101@gmail.com" t=
+arget=3D"_blank">timlee660101@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/npcm8xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 11 +++=
++++++++-<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/npcm8xx.h |=C2=A0 2 ++<br>
+&gt;=C2=A0 =C2=A02 files changed, 12 insertions(+), 1 deletion(-)<br>
+<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linar=
+o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br></blockquote><div>Rev=
+iewed-by: Hao Wu &lt; <a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@googl=
+e.com</a>&gt;=C2=A0</div></div></div>
+
+--00000000000008f6fb0633646757--

@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2219783njd;
-        Tue, 22 Apr 2025 02:15:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW3WXJO2SWmqtYGvxMGpcS9zbhPJeybLCVW/vikcg3n8NHv0sl4GysGOWav8hXswixYd4oYxWWTimHuBw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHmEVydwnzB2Z35pA4ND+/y0EXE/xnzOQLJZ7/DIcQ1/rv2jB85AFx6qAH3t9bdbk1vJday
-X-Received: by 2002:a05:620a:25c8:b0:7c5:e370:5b1 with SMTP id af79cd13be357-7c927f53077mr2542635785a.7.1745313345627;
-        Tue, 22 Apr 2025 02:15:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745313345; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2219869njd;
+        Tue, 22 Apr 2025 02:16:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXT4p4fyxYBcaSJy6BJGearjBtec8rZXCLH/q5ljlqaTu2Ufz0jcTUl/ASG0Iv1OccYGdaEgzTTGUL7YQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IESGOPIKHM9wZDGbb1MrjUuXcWvjvJjPF7gpEB0mm0fi6CGWlOffhndcGJRAx6vaBXChp3q
+X-Received: by 2002:a05:6214:242d:b0:6e8:97f6:3229 with SMTP id 6a1803df08f44-6f2c45564acmr249977646d6.16.1745313359874;
+        Tue, 22 Apr 2025 02:15:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745313359; cv=none;
         d=google.com; s=arc-20240605;
-        b=G4nZGPcDfnyT6WGtbVTEvMXwerpeXPI5JthuxwBl8VJIaZTPaeutAv4fHz6oDuEe84
-         Zk7zjApLGncNa2llxLa04SlqjfHM3gePMg8R4waSlDq+/osR2gh3SEeCJ7x21So0TVpy
-         0O23Tz8VLA6Cp8lPvLUHFvn68PKSO5qDhCDEsy04N+FmX4rkpAlr1GY8OAEHpB/RSJZo
-         fbBl30xnqEQ6FQTvaa4C1ZWqpJQ0gzBN+HVSZncEVIm1mKb2ryJdtjErkWg/9uaimLyK
-         sP0TTRvVa0VEAPMhWR6VlgjUk4ak1NZjhLkdCSgRnrXIaUlB9NeuAV/XoLK+i1zU2xi0
-         Y0MA==
+        b=JCgrwiNbF/4yrtc8xC6h6wjY2FUpcHUCfVWU67RghPX5viiC8+7DTJ538zeBET5Agx
+         nyNWA7/NFiQC82hH575/LJ8vzuCZIzpy5gi8gCkzMJK9XPHUBdsH1gOBFVvPOIN726Vt
+         S5yc3aUiD+CkS4ZMgbct9XRIezBRNmGvgR+/uNYwS8JG+ewnX++uyGXxWBzyFCI90C01
+         vJMSbzX2Fqf3flG2ZXRZdCJT8gyza1c2/M9zGOcVeNxrBqfufVLFBEcXl3nkPnv1NPit
+         5oHHBavov25Pkmyvl1jQgS8hv2Ff/BS+c/nITRJrulMmHvLhTbDnXUmp8YB5icptRG76
+         Wjqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=2qnAwegFI4PUxT2QywBi7G9zPaQdL6c/RStFKbZZg1I=;
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=m4LilC9S0g51QIoVxZbOtiYfWWvCsFPYM3vagQLhIik=;
         fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=Bxo6K6ztubMsJbSlywx6AXVzcD5Bf/9FPzXQptQmCejt9aC2O+nAEhGvB2LiYYg3kb
-         rDIunSRrxgGPNhyeGTkWINGIzLxZlWvdedCHcRjiEmXNLZzL/YDUuMHWg1LjbClWFdYV
-         Cw5Mnq5o4cRLJHwkHbA2OFdLk7LcVK+aQhjKWEu0VjCF3E60ZoZLuA5sMZmfySZA588P
-         5MZaWWcBUnktiWZZSRMYGYStTooyQhF4DJomJ0hubjARTa9vNza5IBz46rBstkQqzttM
-         KUZK+tQoIe448uTVqArUcYIHiWe1bUipt73pgK1EtKZPc7MxtUJWgCUyUwOYKClmoMCg
-         PWng==;
+        b=AeRJ8z7SYjmyChnp6E9fTq4Rsms+r3RIu/fGsWbvyDMdBM5q8cx5He+gfQFwuxmlPv
+         aM5SkQIoUTl1SAE63ZUkXQUXHwQDDHX2E2jK0lnZlmX7ncBH8hkAGc5UrHskrdxVh0O5
+         xeDmYbXHNuz2dhUw3fERLQPkGlMZceE/8pWn4Pb8VzuD1AnxuObWOGR6sn3DdqxWLu7q
+         5k6eRLlBWGuACOijKtIP+rmdYLrCTC7Sez6bd5ulhNEMdUEHcGF7XKz3r0djTV9xYfTb
+         5gC575vhIUsRvYnm/Y6zXOwRtKOi0DDK90SkCa0g2Pae5kz0phafwN4Sohm5yZIK0LhQ
+         RDNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c925aaffcdsi1096718485a.45.2025.04.22.02.15.45
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2c0ff24si106418216d6.329.2025.04.22.02.15.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Apr 2025 02:15:45 -0700 (PDT)
+        Tue, 22 Apr 2025 02:15:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,35 +42,32 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u79j4-0006iv-M9; Tue, 22 Apr 2025 05:15:34 -0400
+	id 1u79j3-0006hH-9G; Tue, 22 Apr 2025 05:15:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u79j3-0006i7-OP; Tue, 22 Apr 2025 05:15:33 -0400
+ id 1u79ij-0006f2-8h; Tue, 22 Apr 2025 05:15:17 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u79j1-0006zm-Qw; Tue, 22 Apr 2025 05:15:33 -0400
+ id 1u79ig-0006zm-Fu; Tue, 22 Apr 2025 05:15:12 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 22 Apr
- 2025 17:15:05 +0800
+ 2025 17:15:04 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 22 Apr 2025 17:15:05 +0800
+ Transport; Tue, 22 Apr 2025 17:15:04 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 3/3] tests/functional/aspeed: Update test ASPEED SDK v03.00
- for AST1030
-Date: Tue, 22 Apr 2025 17:15:03 +0800
-Message-ID: <20250422091504.3666464-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 0/3] Update to test new ASPEED SDK version
+Date: Tue, 22 Apr 2025 17:15:00 +0800
+Message-ID: <20250422091504.3666464-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250422091504.3666464-1-jamin_lin@aspeedtech.com>
-References: <20250422091504.3666464-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -98,83 +95,21 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z2lJKkCQMQOu
+X-TUID: 5G2CefW0kqOP
 
-Updated test to target SDK version v03.00.
-Removed redundant test case to simplify validation.
-Cleaned up unsupported shell commands.
+v1:
+  Update to test new ASPEED SDK version for AST2600, AST2500 ,and AST1030.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
+Jamin Lin (3):
+  tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2500
+  tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2500
+  tests/functional/aspeed: Update test ASPEED SDK v03.00 for AST1030
+
  tests/functional/test_arm_aspeed_ast1030.py | 40 ++++-----------------
- 1 file changed, 7 insertions(+), 33 deletions(-)
+ tests/functional/test_arm_aspeed_ast2500.py |  8 ++---
+ tests/functional/test_arm_aspeed_ast2600.py | 15 ++++----
+ 3 files changed, 19 insertions(+), 44 deletions(-)
 
-diff --git a/tests/functional/test_arm_aspeed_ast1030.py b/tests/functional/test_arm_aspeed_ast1030.py
-index d45d9f7c1c..dafa1d24cb 100755
---- a/tests/functional/test_arm_aspeed_ast1030.py
-+++ b/tests/functional/test_arm_aspeed_ast1030.py
-@@ -12,36 +12,17 @@
- 
- class AST1030Machine(LinuxKernelTest):
- 
--    ASSET_ZEPHYR_1_04 = Asset(
-+    ASSET_ZEPHYR_3_00 = Asset(
-         ('https://github.com/AspeedTech-BMC'
--         '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip'),
--        '4ac6210adcbc61294927918707c6762483fd844dde5e07f3ba834ad1f91434d3')
-+         '/zephyr/releases/download/v00.03.00/ast1030-evb-demo.zip'),
-+        '37fe3ecd4a1b9d620971a15b96492a81093435396eeac69b6f3e384262ff555f')
- 
--    def test_ast1030_zephyros_1_04(self):
--        self.set_machine('ast1030-evb')
--
--        kernel_name = "ast1030-evb-demo/zephyr.elf"
--        kernel_file = self.archive_extract(
--            self.ASSET_ZEPHYR_1_04, member=kernel_name)
--
--        self.vm.set_console()
--        self.vm.add_args('-kernel', kernel_file, '-nographic')
--        self.vm.launch()
--        self.wait_for_console_pattern("Booting Zephyr OS")
--        exec_command_and_wait_for_pattern(self, "help",
--                                          "Available commands")
--
--    ASSET_ZEPHYR_1_07 = Asset(
--        ('https://github.com/AspeedTech-BMC'
--         '/zephyr/releases/download/v00.01.07/ast1030-evb-demo.zip'),
--        'ad52e27959746988afaed8429bf4e12ab988c05c4d07c9d90e13ec6f7be4574c')
--
--    def test_ast1030_zephyros_1_07(self):
-+    def test_ast1030_zephyros_3_00(self):
-         self.set_machine('ast1030-evb')
- 
-         kernel_name = "ast1030-evb-demo/zephyr.bin"
-         kernel_file = self.archive_extract(
--            self.ASSET_ZEPHYR_1_07, member=kernel_name)
-+            self.ASSET_ZEPHYR_3_00, member=kernel_name)
- 
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_file, '-nographic')
-@@ -49,17 +30,10 @@ def test_ast1030_zephyros_1_07(self):
-         self.wait_for_console_pattern("Booting Zephyr OS")
-         for shell_cmd in [
-                 'kernel stacks',
--                'otp info conf',
--                'otp info scu',
-                 'hwinfo devid',
-                 'crypto aes256_cbc_vault',
--                'random get',
--                'jtag JTAG1 sw_xfer high TMS',
--                'adc ADC0 resolution 12',
--                'adc ADC0 read 42',
--                'adc ADC1 read 69',
--                'i2c scan I2C_0',
--                'i3c attach I3C_0',
-+                'jtag jtag@7e6e4100 sw_xfer high TMS',
-+                'iic scan i2c@7e7b0080',
-                 'hash test',
-                 'kernel uptime',
-                 'kernel reboot warm',
 -- 
 2.43.0
 

@@ -1,91 +1,91 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2161038njd;
-        Mon, 21 Apr 2025 23:43:12 -0700 (PDT)
-X-Received: by 2002:a05:6000:188d:b0:391:158f:3d59 with SMTP id ffacd0b85a97d-39efba4e3e1mr11567026f8f.15.1745304192360;
-        Mon, 21 Apr 2025 23:43:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745304192; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2161236njd;
+        Mon, 21 Apr 2025 23:43:58 -0700 (PDT)
+X-Received: by 2002:a05:600c:1e88:b0:43d:10c:2f60 with SMTP id 5b1f17b1804b1-4406ac0a847mr103885245e9.24.1745304237818;
+        Mon, 21 Apr 2025 23:43:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745304237; cv=none;
         d=google.com; s=arc-20240605;
-        b=M3hQ5tHhMTjKX+MP55GUhWZlHQAvPaBGKNlPIO6RHundtg+tJER1cmdPR/KgEptFO6
-         dj3tg9/KctbxC3P4CXbyKhRwGP4bsOylowOKmEG5/qrNXWhmc5KtQWArpy6wONeAfx9J
-         xJnSAKh03609oexBdnKqt9jocL1+68adQtqtq3TkuPizcPcSvq0PJWBoPVd+yMlzuzuk
-         BDkxbC/KQSQv4YenM5dPGn3o+iZ/VERkVikAylleblb7pvcK6kKVGbhgzy3Hf9rrZYWY
-         SetngPqSpbUII6/ZMiWGR6DSjHweu+uacNa+3xiFBKh+tsievRfmlNEnZYclmkASslN/
-         GnDg==
+        b=TXtFK5xyYyB8OyWZ6TB9zJX++z+4oLdmG1aBTPeAGBXekaNPaHGNCEOJupAihqEPHE
+         duoRqK2/zT/7DP7IOkJY4lBXEf8OvcRtDQZ/+Og0GDfiYWZYcYJSKbPROWkaGv8ERjXy
+         sDRGnnLjLniLJiNzDNci/52vlY4MeOeebdOz0bVyyu7IaF6YrchWBl5ajhme3ohbDlrT
+         rwyVX1GAvG6CQo/WfnOA+Py+Vc5kVeuI3XfNshb09yQQ7rLbatZ6YjGr6NUlP7k/13OK
+         V777W/r3ZVIiCL5UC3fh4wWxDXqBFUrTmkMweA3PDxfTrrVQADIbKR+eNlX8dzBhePLH
+         hoTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=AX7kKboruwAu8J9cxBWEtuts3z3qq+WSvcjIXuA4QTY=;
+        bh=+9UB07EjzDEhXxVE2VMd7KxrceRog099DGJ5fspr6Kg=;
         fh=6EuZEnKHxIzAX9MCUkFbfMZJVxTEZo1gTpHOklAu9BU=;
-        b=EZWb7inlurs3ZP8+WrNvwxoX3gvKEfUOLcHe76tpF4X2MEQFYe/upbhNMRFJNbZA4T
-         MnlPj3HxMU4305ngITq7L4dN++GDodFxr+g9q0+mejgLs7RXLFdTdHCw6ONWgae1bYeN
-         1VF0V4gfGBSzBUP50frpFFdXnBTrt5j9K15vAkT9OhRiDd2BgPHCqaOJGiZiaj9iniec
-         nHctXZl4s1jDDAmGm3pxmNpZW5Yt1tXavzPJzOL1vtfgCRcf3428nYLQy66RN4Bc2hGd
-         co3rE3b56SvcmTE6XznmFUaVioVjr9zxrwlk8710eB+xzNG5iiARd8cxR/pSC+1kyxL7
-         z4cQ==;
+        b=caM9NMmSaQIxxhXw7655MsnROCmjcehbc11KoTGRl5g274Q2AjMK9Z/Uimr/KybCcc
+         ghop1ZDoFpfjxLRCAGMK+qbFn81Ku8o5u3KL1hU+GKA5HnG3oY2AxERx7iXgLDqKrDy4
+         dxUI5IUalkCjLYOsNaW3L/cwDgJ0RuuQjkADyv8Yafr1iR4t+hHBHpwNLUDhfLcHNNRR
+         a7yfR5Znm00BfGIhfjRPXZj7KkBokwtauq4pKYYwGvSAZv+8NxLUBiVUhPjVDpmAPH1t
+         4ptmuf7zcDWZ1vEqNdfJYyG2alW+nwbVxqSmZNphj/KYAcop6l1RmxAUfu6yU+WKha4g
+         nwng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=riZdaaUn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FBuwILU6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-39efa426d41sor2585484f8f.2.2025.04.21.23.43.12
+        by mx.google.com with SMTPS id 5b1f17b1804b1-440699feca5sor26997375e9.10.2025.04.21.23.43.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 21 Apr 2025 23:43:12 -0700 (PDT)
+        Mon, 21 Apr 2025 23:43:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=riZdaaUn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FBuwILU6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745304192; x=1745908992; darn=linaro.org;
+        d=linaro.org; s=google; t=1745304237; x=1745909037; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AX7kKboruwAu8J9cxBWEtuts3z3qq+WSvcjIXuA4QTY=;
-        b=riZdaaUnMbrEtCW8NIt7ZyDhu5NdhV06q5RyjkH2o1mgDoRJVtsTbIqF/g8t6WOZF0
-         vJaM5okOuR0Tej72ES6o0kuFmFbJaQubWKd787j+rNzTOQoJXrcAWPfXmC2UpjKBD/Qz
-         MZMc9ldKQdvGALJ1IfL4m4ZvvIDG6U7gMK6KgO8IPsUo2/NNwm0F9U+veQOB/we3Q2rJ
-         zVKgPMWJdIXJ9f6r52NpAXvkCpclLRLBh+lKGLeS/X3SCkVgqEeQOSNQ9xczXfElrniB
-         8f24+i01cBRdm/MRj+ashyQ/S/328Z20e1G5sNiIwMdYdC/b1DFJ+tOw7sBgp9YKQXBT
-         fseQ==
+        bh=+9UB07EjzDEhXxVE2VMd7KxrceRog099DGJ5fspr6Kg=;
+        b=FBuwILU6CiaBQKQ8AxhJoSwAhybBzFVr6OS+fgZmo28lhAHikghv18AeU2zTiJSqwn
+         wuK88yIr1M3VF5OTYgFWzbsufh1GykfbyFYkBgbt45OFh6wT6tmmnzrLDNjj4FNOnv0Z
+         N6Jel7GDxDIQRTi50H7L3CZOHrq/rPUgcUgtaCbVeQ14/owwEUdJ8sVHSx5GuHXAAI5g
+         bIL4UpoSNO+VeRziQrOC3qwEjdDUwKjtC0+p6csZlUrQskmCQCB/TpPy9EwBDPmaRvot
+         Pt8bUk6SU2HEiCbDGG2/H9fqKrV0T7J2YdW4+sXxniPpZvbq/TAd7Acvdmma+69Y/bCC
+         kIWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745304192; x=1745908992;
+        d=1e100.net; s=20230601; t=1745304237; x=1745909037;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AX7kKboruwAu8J9cxBWEtuts3z3qq+WSvcjIXuA4QTY=;
-        b=J2m6bLtfh4THq6hsK7Pnq/UNKHexdVVLoGiRVfJDgbP1cs7gi+JnTgEFGJ1cglxlIU
-         J/FO3yDXEy1tSIzIlh1BsxK+38ms8ogwZWxHe9sf2x3m1vnOVtNODuZwzltr21UdqD8/
-         p69nxKC17gE+mPtOfxd+U4K1hx/IfNPpvwPWqGPxmRniR9RMymJvJl5C3P4kfB6eJAy9
-         6qyO8L4OqP8gRvI/MCPNo8ZOXH0zP2DYAD+oZ+y66ZbPup6o9auKxYBjgkn7XYxk7V3c
-         LhLkDZw1ozYC5A/ReuGGIDFPa23ziC3txF9rVfwz5VhBlh4EGWg6s8Gy0viN9NMmYU2U
-         Iu9A==
-X-Gm-Message-State: AOJu0YxKbcKxGQu1V3Lxi6fIW5p9u3g2zfUIDqt+xhNaHmlT9TPhvy0C
-	Xnr9wmmX5ZiGAsNVB2+1Y4qwlZALZdH1ruSJao2siCU/h+SMR1HSmc8wnHOSt4VqPQ==
-X-Gm-Gg: ASbGncv0YAbCc0XPs+7rD/0dbi34yAXKONXZq7qxNofXz6lHJsIuq4HPHXGjzp0gxih
-	ygoyTfrNfV8sXgjC+Np5yvD/vnwUe/XqK6ZhMBNLrOj6ZvsvY5skHhGizZ1I19WGhGwBhmjdGQe
-	d6bH0JpF2UPIXD0hGqharqReuwmCVjJC6VOMqNByu7xzOElYjok175EcAGp9OSvMh8Z4jyCMPqF
-	JwUv2HU7oOFEN5/qD4y/ArZUGdxUYPwXQh3omsbEj6o7XG/C8vBuZnnp75seJwt3kRsdjlfWhFW
-	NqlQ6CzjSqnEUwEWAiEf3/PwkkEwnXSC2cMEmbnevFWW2iHC5q2gK98fkLPM0UWi1c7ZIVWICTj
-	PI4A6xmMz
-X-Google-Smtp-Source: AGHT+IEepHdK7IYO8HBEjYBhodRfYRb2HZU7yu/DSYXhUmsEh2yoLRvCtz06id9IG8c95DaH3egeUQ==
-X-Received: by 2002:a05:6000:40dc:b0:39c:30cd:352c with SMTP id ffacd0b85a97d-39efba383bbmr9963080f8f.8.1745304191777;
-        Mon, 21 Apr 2025 23:43:11 -0700 (PDT)
+        bh=+9UB07EjzDEhXxVE2VMd7KxrceRog099DGJ5fspr6Kg=;
+        b=OwcNXzYnM2qiRdOEKbn6dDfKQky+NvEnCY74AGOhPB5l2un2yGR8mIR2WwHc3fbgna
+         Y2WVZfjnvykdIN/fmbM2OJHIhPbKFdlgwxJSL/2CaNcE5V8FVEfVzLq4DjjmqpHjFK7E
+         454KhmCIRnSHEN1KxFHq5Nf+UftUG2wG9vnYV7hUnNaKjooD/Hm+82JSXWs3h5j6LRVi
+         XVENHfFxrxQjOPGqPHLDBMk0iI3mZMmALe+Cv2x7gSuVHD/Sqesw5M8M3lD9jVFj7NtQ
+         KpDcjEXY6no1+5HOYOD3EDVfBK2DaDARj+O12yVSh8XjI31YwsLlDX6K4dDKhWtzl+KT
+         05Tg==
+X-Gm-Message-State: AOJu0Yy6uSh8ZchP2EaXQqM/D/qheuZGXyuGNUrBFeZF37DZ++vcM8o1
+	ghmDrIGRmKlTvIUKF3/RSjZZ0G8SaxpT6RUPgL1dlkXo5cExO7dKQAsz4ieeD7PaRw==
+X-Gm-Gg: ASbGncsitnsvuQlG4Te7TYSZZLlJAmWyq7RqVMNBpNcGsljaeSYNFQEH7bKB6dcj24W
+	rxW53x4h3TtCLIRDppF0tAuJMr6PYcz+a+i9AllJW1fhZWPrfUK2qTuxiR2Adwv9HB0I2VGmJ8Q
+	eAPfr1kjWFq/JgB70IT70FPJcv9lkgf1T6Q4QYDjMJttg559Eu2ldoWQBnyoKRPb3Oytr33xyWS
+	PD+JplMutGUBcbJFzvuTuscdqKJkcHYNeFeba7lNACYQ1KBrTw3hNHkDm/ZkZv0XmDhMcscnBXv
+	WtOrcycxHJXbmN13/Iiu/hPRl35KVCBS3yBwRs2Xagmg0DRcrHxeDdxXFlm9juKut3RjagZ4xzW
+	zbQnymFYrRQN75zOWpOA=
+X-Google-Smtp-Source: AGHT+IGicNEOGGWG9Ql2/GtKu2hXalYv3ESAo9JoC/qmXK6F5zqhCTj6Dxi2AfDm2j2sZt9xm6esSQ==
+X-Received: by 2002:a5d:47cb:0:b0:39e:f89b:85dc with SMTP id ffacd0b85a97d-39efba52f5cmr10905880f8f.17.1745304237341;
+        Mon, 21 Apr 2025 23:43:57 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4406d5a9e38sm164703545e9.2.2025.04.21.23.43.10
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39efa43be53sm13882739f8f.41.2025.04.21.23.43.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Apr 2025 23:43:11 -0700 (PDT)
-Message-ID: <a0579d5c-8a96-42e7-ac4c-37cd65b4148f@linaro.org>
-Date: Tue, 22 Apr 2025 08:43:09 +0200
+        Mon, 21 Apr 2025 23:43:56 -0700 (PDT)
+Message-ID: <214e3bef-09cd-426b-aa7a-65ee540f7cab@linaro.org>
+Date: Tue, 22 Apr 2025 08:43:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/20] util/cacheflush.c: Update cache flushing
- mechanism for Emscripten
+Subject: Re: [PATCH v2 13/20] block: Fix type confict of the copy_file_range
+ stub
 To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
@@ -108,31 +108,28 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org
 References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
- <73301cc216217d5c3e0d7acdd32482e36f4f045c.1745295397.git.ktokunaga.mail@gmail.com>
+ <ce34a721a5283fce854f417baf7b1c8f5c48c028.1745295397.git.ktokunaga.mail@gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <73301cc216217d5c3e0d7acdd32482e36f4f045c.1745295397.git.ktokunaga.mail@gmail.com>
+In-Reply-To: <ce34a721a5283fce854f417baf7b1c8f5c48c028.1745295397.git.ktokunaga.mail@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: dFBZqrmIvzYM
+X-TUID: V7nhCX6yrIxR
 
 On 22/4/25 07:27, Kohei Tokunaga wrote:
-> Although __builtin___clear_cache is used to flush the instruction cache for
-> a specified memory region[1], this operation doesn't apply to wasm, as its
-> memory isn't executable. Moreover, Emscripten does not support this builtin
-> and fails to compile it with the following error.
+> Emscripten doesn't provide copy_file_range implementation but it declares
+> this function in its headers. Meson correctly detects the missing
+> implementation and unsets HAVE_COPY_FILE_RANGE. However, the stub defined in
+> file-posix.c causes a type conflict with the declaration from Emscripten
+> during compilation.
 > 
->> fatal error: error in backend: llvm.clear_cache is not supported on wasm
-> 
-> To resolve this, this commit removes the call to __builtin___clear_cache for
-> Emscripten build.
-> 
-> [1] https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcache
+> To fix this error, this commit updates the stub implementation in
+> file-posix.c to exactly match the declaration in Emscripten's headers. The
+> manpage also aligns with this signature.
 > 
 > Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
->   include/qemu/cacheflush.h | 7 +++++++
->   util/cacheflush.c         | 4 ++++
->   2 files changed, 11 insertions(+)
+>   block/file-posix.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

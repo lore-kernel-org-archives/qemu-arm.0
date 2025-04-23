@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2858121njd;
-        Wed, 23 Apr 2025 00:24:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWfOhzFw57jQUzOUUyMvx3Yhwq91H0QRHxibALXgUf6/5xPO4udpnVD2zX572aGKOF+44FOT84xceDG9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2V4updehlWbnSAe45sUe7vUB9TImGljbZp6K6kUd7UGs6nsoY5o8aP4TXi+HKrG+OAMby
-X-Received: by 2002:a05:620a:4544:b0:7c5:57e6:ee87 with SMTP id af79cd13be357-7c92804038emr3260486485a.41.1745393072261;
-        Wed, 23 Apr 2025 00:24:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745393072; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2858210njd;
+        Wed, 23 Apr 2025 00:24:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjEYDZsOU+jVNJqwnQr7Enj9EwdoK9XbunwbzC83SHdZtxM87Nwph6RVW9Al0tkvD3bpVqV/QlGFtUAw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH9QprfQbyLxdJLJo/XaTxrGkb/cu6V+EyeKM7CCnxhTjeBXpHtebTQDM8m2RDqXXtoZ5nV
+X-Received: by 2002:a05:622a:11c3:b0:477:6e32:aae2 with SMTP id d75a77b69052e-47d1c74644emr29966311cf.0.1745393084519;
+        Wed, 23 Apr 2025 00:24:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745393084; cv=none;
         d=google.com; s=arc-20240605;
-        b=leu7kjqRA8TG2bLZMjhR+pujbBXz2W07XBP4t4BcloEiq/693UUruOb95Dw5rvyMRp
-         Bk5cIb0XQgi9SdoTOa4ZChLzbll4nnD4mwA6s5eGUpg0S4AKHyVbSol+w0/ikREEKMbk
-         ui36Zyyns8PycBLVRKH7B1tYG1t+rpTsSG1irUbospjjPZSQJXMT1YHy65cEIFk/teRx
-         MVZXyVCZ04xRzhnmb1bsKI1XZCcsj1R2b6sMNKv0oXycXqVo1l4xipuf9RQkFfYznfs0
-         BX1rijtUHxgbMVKnaM8zXEOHF92J4sLGbjpYKcYj0J6vNBW5JzAiWPN+kGzK7rvJzHpo
-         49ug==
+        b=XG5ol0J/dxudQrLUMb9WqkO8Y0LCkGisvVprvN3MgyHY/COf3jWjvtLAyoylawy5gP
+         gugzZMxkQzw2KnI260gtrXSldnChSxp9y/0uD+WBbWUlyOKxapRI/D3CYOdmDMC9Mgxy
+         YfH7ygxDIMSAdezJlbiv4MCzkGP/Ikjwy/XM/Yf7vSGgqoadWjVZK3vqM5/MiAHekdTQ
+         lBqZULIKi5+HrBqNmelFwg0vCGzKNBARu5fs/wWfoYqkxYa6LDFuikBPV60BocpqW5hE
+         efRIT/7ok/Jo0jDSY9+NY1Sdd6raDvcl1KEYoMtDS85EZipaO+bUOSX3fPkRWYpNRzId
+         qDDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=4I0OHooL4f2at72YuHJ9BnmB90xYcNZDrSevD7YEJvE=;
+        bh=V/dhotLayjhs6TECu6ACV1TspD0+QqHhRBAcDl7ZH+k=;
         fh=mYa7DW7+LcAerod9KMiSdtH0/D1NqzuZXE0uoAi0+1E=;
-        b=WQ66pVZkEpM+EmLRtPigX59OEYd2TJwz0aQDp+mhiuEDw3F0mr+MYaypUT46rfgaip
-         b4GqZ6ysXhof+9R8exT0OC3vDBAPXXDCYQHGucZhzlvHFlTOV396h0b+40dx/GMbpkVR
-         VEW03xSftCpGxGVNvm+4Y1R4xqFFhbdCvHHhkuhLaJiawj0Ni/+Iqj8cH3jbpbckqXOE
-         cRNQfHljlaRhN/7o5arHMU/1mEaHFeUudnSS+Co1iNTRM/Rt31mb8WJOjwdjU13H2rFA
-         tFi5mSR4TM1QOxR8ez8faw39ra2ixzLvA9R8NM+QHBO9FDNDaCXNkBLTPjWiKRGZhCrT
-         KP3g==;
+        b=JVPQbsFu3hFAfZ3pZP+3HStpkKjZ8Wc0JtxTuOrrsk/hMFBPw0rpNklVUuQ2t5QC1C
+         Yjr0vz4SGoSlEuda9HnNZilGa4CkUFzj6Jb1dhak0HUMyA3E6r0SjyC3IRk31nYfZmKb
+         6zthqJnOaqNLIbXXRv7C+nKWdVt4oX1WipFWGQ9Dn/mVtm6QBKIbn9iyyoITODWGMsrn
+         w0UNL/JhNq6PBSj+n2w0ZCXwfEKfZIr8hgwNS4Qt5ep0avFuCIHXm6Zio9P3OtXAj8K8
+         gDov7sCtDgSW/6M+hLfqMS4Ho1NIM/kX5tnERrrkHeEjeZfmSDMOOt5igSgBd1aHlKRe
+         +vkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c925bfd754si1247381685a.620.2025.04.23.00.24.32
+        by mx.google.com with ESMTPS id d75a77b69052e-47ae9c2bd1dsi132303791cf.184.2025.04.23.00.24.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Apr 2025 00:24:32 -0700 (PDT)
+        Wed, 23 Apr 2025 00:24:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7UT1-0002dG-7H; Wed, 23 Apr 2025 03:24:24 -0400
+	id 1u7USl-0002ac-Rn; Wed, 23 Apr 2025 03:24:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7USt-0002cg-6i; Wed, 23 Apr 2025 03:24:15 -0400
+ id 1u7USj-0002a9-JT; Wed, 23 Apr 2025 03:24:05 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7USr-0001IR-Db; Wed, 23 Apr 2025 03:24:14 -0400
+ id 1u7USh-0001IR-Sm; Wed, 23 Apr 2025 03:24:05 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 23 Apr
- 2025 15:23:52 +0800
+ 2025 15:23:51 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Wed, 23 Apr 2025 15:23:52 +0800
+ Transport; Wed, 23 Apr 2025 15:23:51 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v5 04/11] hw/arm/aspeed: Reuse rom_size variable for vbootrom
- setup
-Date: Wed, 23 Apr 2025 15:23:40 +0800
-Message-ID: <20250423072350.541742-5-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 01/11] hw/arm/aspeed_ast27x0: Rename variable sram_name to
+ name in ast2700 realize
+Date: Wed, 23 Apr 2025 15:23:37 +0800
+Message-ID: <20250423072350.541742-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250423072350.541742-1-jamin_lin@aspeedtech.com>
 References: <20250423072350.541742-1-jamin_lin@aspeedtech.com>
@@ -100,42 +100,45 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gMrk+vY30+B8
+X-TUID: a5SBCEmlAHd7
 
-Move the declaration of "rom_size" to an outer scope in aspeed_machine_init()
-so it can be reused for setting up the vbootrom region as well.
-
-This avoids introducing a redundant local variable and ensures consistent
-ROM sizing logic when both SPI boot and vbootrom are used.
+The variable "sram_name" was only used for naming the SRAM memory region.
+Rename it to "name" for consistency with similar code and avoid unnecessary
+new local variable declarations.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
 ---
- hw/arm/aspeed.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast27x0.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index e852bbc4cb..b70a120e62 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -381,6 +381,7 @@ static void aspeed_machine_init(MachineState *machine)
-     AspeedSoCClass *sc;
-     int i;
-     DriveInfo *emmc0 = NULL;
-+    uint64_t rom_size;
-     bool boot_emmc;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index dce7255a2c..b05ed75ff4 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -577,7 +577,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     AspeedINTCClass *ic = ASPEED_INTC_GET_CLASS(&a->intc[0]);
+     AspeedINTCClass *icio = ASPEED_INTC_GET_CLASS(&a->intc[1]);
+-    g_autofree char *sram_name = NULL;
++    g_autofree char *name = NULL;
+     qemu_irq irq;
  
-     bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
-@@ -475,7 +476,7 @@ static void aspeed_machine_init(MachineState *machine)
-         BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
+     /* Default boot region (SPI memory or ROMs) */
+@@ -649,9 +649,9 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     }
  
-         if (fmc0 && !boot_emmc) {
--            uint64_t rom_size = memory_region_size(&bmc->soc->spi_boot);
-+            rom_size = memory_region_size(&bmc->soc->spi_boot);
-             aspeed_install_boot_rom(bmc, fmc0, rom_size);
-         } else if (emmc0) {
-             aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(emmc0), 64 * KiB);
+     /* SRAM */
+-    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+-    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
+-                                 errp)) {
++    name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
++    if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
++                                errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
 -- 
 2.43.0
 

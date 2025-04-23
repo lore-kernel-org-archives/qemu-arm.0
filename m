@@ -1,134 +1,104 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2931996njd;
-        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtfgJdwWhOnosYeStrFu2/1EJHoL7hHA9qEMz4hWQpULLJJnpyAk56dlC/8XGKKPKA+E+KEqzH/eGMnA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFL3mWbv6CHFxM2dHPQQuT6ZVK71mExYadATwQUtrJa0odksjMCYmyuUBcpEM6v1x9+IBBO
-X-Received: by 2002:a05:622a:18a1:b0:479:1a41:b50d with SMTP id d75a77b69052e-47aec3d0af4mr278452421cf.17.1745403709607;
-        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745403709; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2940276njd;
+        Wed, 23 Apr 2025 03:40:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX54l/p0v34ZhcL3MIuB7iyQQ0WFdWpd7nZ8u3Hxj5ny0WAIW3HPooFcQ0/ELh7u9r3YJyPWOXMd0uwIw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqpitJnKJNjePsdexrJDAqjYUAwcWIFjxYVuH9OopJcJ2h3sXWaHiPAFONO4XgtLECQaif
+X-Received: by 2002:a05:620a:4587:b0:7ac:b95b:7107 with SMTP id af79cd13be357-7c94d82966dmr426199285a.12.1745404825274;
+        Wed, 23 Apr 2025 03:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745404825; cv=none;
         d=google.com; s=arc-20240605;
-        b=H+DQqhn9E7pnBnF6RhY89qQ2IvQPVs0UWZORX3XEYURghVaYxucutdCTgKjC0XbZXk
-         2DG2MtLYikvE2h9OOzy+U2VqphLXd4AjgraoyCmZ60Ylu5947N37zPV8adTfAwHnq47Q
-         2V0FxWNLAoPYlkrgr9TAgFUXblJaEORft5H4GlzrlAptoO5ze9E1KRZuqdprjPbI4hH3
-         Gh2TEr+47tOerQ7aDwQbrceABuLJLf4A1MkIrbn0w9WpOTIPbnWxDfTtRQVC0qvJRcws
-         LBp18YP2c4vIA0lL8PLYwyxIYRDLB2aO036A47sxewnE1ANJ0x7WmmElvt4GEtNlS4PC
-         STbQ==
+        b=dwcJlGhZwI9bUXHg39xdAe1B7179XSWk6e4x2PxMyOJho/A10kZ9+fguo5D12uP96+
+         E8DXAjIXpLAlT6LQuGC1nSQPnRDchElCZ9SZnnc5Vdzcb1507eK2iLZZU5Og/YsmJj94
+         iWsVaoVNiOeD7x+L0qPg17PYlB6MFUgoJv0tq8eRRkzOf1BaN5tssFcbtKK7mJGm8kk6
+         S/wfM6JRAClYbPIIVbe8sLfMy9j7O9qzweTVXM0gz8eOr7CZSCRU4U1lv8C6fgnSvCKc
+         1VrUvOBJbt4iNDgAt94QCIcCTN0qIz7+sTtlkEFjrLF1OtTohXY0Ssb1YN0xhaJZHVQ0
+         5kLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
-        fh=R7LnnU0a8nsjz4EvZI90RlNCQ4Cnjl5deN92NlVb8wE=;
-        b=coexRvzWeCKVke2j552Uyex/m/BS5Xc2n0/+7SEBv4oqUZpDHNhIXke81HnjlRQHq8
-         qAOaLk4U7Fjf5ZrYgnuK/b8KYDjWodSOII5FJntmsy/+z4aDJF/fn5pmuOholnHgw6mZ
-         I7Kh3tZdB/wUSmS+9UBO4V/k/aZw1Kyih+Jor6W/u7Qxt6U3tZ4+wLOcvbp0bQdHn2my
-         Na/g5bm3GcGLO8Fx13PZG5mBgbrOqIbwQx6EovG/mFFir6iY+caHaluF+Ul3IESZOPe0
-         IgoeZbMGlZMNjpEfbr3Z1fF6RaJahJHwpVdeonEgG8j67giSzEaxifjRevdXrI9n4uLU
-         cZAQ==;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=AXkYTgLNvB2ITnefZruKnNcrIkKF8x7tCBcAQG+5aEE=;
+        fh=GAmK0Upv5WrdQAbaCDp37VgLTNavI8kHgMlrdeySQyo=;
+        b=Uk1yz9JiJ6bJFryRL38QIKgsaJK7Q7qwVSapAT68x4kWV4YNojknmMsu89oQdDZk0K
+         /epi6Hz+aNBpW9nLC2ELohCAAWza9w4j9w/9dGuX7/CfB43MrN9hmNdl2dlyPXMh8Ghq
+         lh77NDzP0y4OHU0O9TtDBhwi7tIEdKoGCBcildyp4lNwQKPghke9lnQ1PMaJFS75UArR
+         hurraygVMfGoVxITfokDzSczaTzLHBtN7wN3OvHRgOkwHZHz5mqlG8XhTRxbZLrwqW5o
+         53JcSC8fqfdYPu/ODaayzKeU4EDwTlTnZ8VKZt5AiT7Mo2G4CIr0oLFEWj85EJUvjwcb
+         AfxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zSyIK9ay;
+       dkim=fail header.i=@codethink.co.uk header.s=imap5-20230908 header.b=nJ1INe7F;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ae9cb7fb9si131475001cf.421.2025.04.23.03.21.49
+        by mx.google.com with ESMTPS id af79cd13be357-7c925bc9e2asi1308997585a.492.2025.04.23.03.40.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
+        Wed, 23 Apr 2025 03:40:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zSyIK9ay;
+       dkim=fail header.i=@codethink.co.uk header.s=imap5-20230908 header.b=nJ1INe7F;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u7XEK-00020p-Rh; Wed, 23 Apr 2025 06:21:24 -0400
+	id 1u7XWR-000441-NC; Wed, 23 Apr 2025 06:40:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7XEH-00020B-Uo
- for qemu-devel@nongnu.org; Wed, 23 Apr 2025 06:21:21 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7XED-00049i-QC
- for qemu-devel@nongnu.org; Wed, 23 Apr 2025 06:21:19 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-39efc1365e4so2298625f8f.1
- for <qemu-devel@nongnu.org>; Wed, 23 Apr 2025 03:21:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745403676; x=1746008476; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
- b=zSyIK9aya42MvLvUY35Q4CtG1Bcp6Kn8JbxYXxq2qwJ+p1CTq4I0MrOYhBtSuJQy7f
- 6tbnlQo196KMl58jP5M3gDrJNyNLdte1xHb+FB6Q7cxl1q7cde2AwW+Sks6KWL5DIBt6
- fwfJInX2BAgY3xdMQ6uPtxUR2ssQF8CmpXGGcFQpGH+DHSPHxsTc1dHPGhHgKjt3afIo
- NnGauaoiTEk9Vleze758EHCC2Xc72TiYbTQkxZfMYAztjGHND2d5IIhti4HdLnv67KMC
- Pkb3nRqNEz0M+SKRQ+2u8UPxODzzCvQXiSYmig7SPvd0KY63vBdUwI5zpUYutn23mgfk
- lnbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745403676; x=1746008476;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
- b=LKc+9jGi37FQCd8/2qszsgQLuoK7lnZ016UghCj6t4jt9plG3N0li2aHCQL9h/xm5r
- laqwm8f7QVMRuivNHF8eSkFt/lp9uOpj/pEiG3pEak3E6H3sBANasicQVEXGEq8fVT8U
- trXHbi/fPlS6h9eCLFMxkzP8fBdr3wXdifcsur8KhPqKZAd+Ays42pwwl92SesqxeNlK
- Q1Ns7M9kWoFlbmXIx4h3d8cbkTHahkm3d9h3swYL+Cg3eUP0p+o1wRkSEiaOKD4BzgAM
- dnduTKuoQNYuG1aJDFKxxmLtFDz+Ujr7H7rAQno6E1Pr5zQ66E3nhPsgnNzp7OzQDCoa
- vKwg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUQLhjDH3EbiYhAzBYXedEDZXTVDFUX7JurVsV315S9nskwJgElKH56P4GctHsywItm1T1uHiiUYxmP@nongnu.org
-X-Gm-Message-State: AOJu0YwsV0IWqJVM59xzCta6onPss3pEhfmajd1DMeSi6YWqug4Jd5PY
- fg/0zxvVhGHUK/nFQpzOqM06Ag1HT8mk6HuOwYv/hDy1emmp8UOh3TtiNIx0lw31V7T1Vy6ILXL
- z
-X-Gm-Gg: ASbGncvJgnkzLJ3vlOamQv/maswFz0z/cqWZ752riobGiHGm6u3GLkudMgiDVMnY9QM
- bOLHY6iyGueBBYLq8Hc+06cjgMSz+3sNCpmquGQTdf6lIO7ijwxEL9zOLyARdYshuH3IJFOy1/x
- eYDf543Xtt/rzRhMBjRz40apm86ALDh57m7v0ujNQQN5lTt2jck1WRrxg/B88S5Iwh60ua60JEz
- G7HipFqErNZPzXtd9RZbfG0c2VyhChjRHHpGc7JcHz0E6/+yabEXx1K4KCUaRmzfQcyR2u9Khrl
- srzTfvIhHEiCMeCr72wi+xtcyRrbExI3RLicPzeIIy8ztOHy57IeH1gjRyP7KFPOTxvuXDNzFCg
- nlvBvZhVp
-X-Received: by 2002:a05:6000:22c2:b0:391:4873:7940 with SMTP id
- ffacd0b85a97d-39efbb05cfdmr14241454f8f.54.1745403675933; 
- Wed, 23 Apr 2025 03:21:15 -0700 (PDT)
-Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39efa4332b2sm18578950f8f.30.2025.04.23.03.21.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Apr 2025 03:21:15 -0700 (PDT)
-Message-ID: <9111e4f4-5e91-406a-9e57-f58c2bfa3b12@linaro.org>
-Date: Wed, 23 Apr 2025 12:21:14 +0200
+ (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
+ id 1u7XWN-00042G-MW; Wed, 23 Apr 2025 06:40:03 -0400
+Received: from imap5.colo.codethink.co.uk ([78.40.148.171])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
+ id 1u7XWK-0006Le-8n; Wed, 23 Apr 2025 06:40:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=codethink.co.uk; s=imap5-20230908; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=AXkYTgLNvB2ITnefZruKnNcrIkKF8x7tCBcAQG+5aEE=; b=nJ1INe7FwbcHuae1f27R1hOgzJ
+ ZikhRA+2gtr10/hKydION2YokCmpl0A9yEjXR1E9F3dH9uTe20EX3b8jLj20m8qweir3utFk7qRsp
+ zKZ4zN42kp/ajll4Ilv33fZeVde0tsOiesd/amnflB+IbFSKkot97fbZTAaoWR8FEu0zlQu6TH4Lw
+ 8V2T1nR/Fh4Dbgl7GzAFdZz2O0gGsTlS5ZXnBN92Ij8AGEC8h6R2DjyjevUNPhLzk3jsouWv7v0XR
+ nkh4VxHAK4c36BVQuWKP+Y8rNykteBdujYrTwI+0I0XY6qsArJ1ZOIJFxb52vzEiaGdf7bilKiKOH
+ 1B+dXOqA==;
+Received: from [167.98.27.226] (helo=rainbowdash)
+ by imap5.colo.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
+ id 1u7X3A-006eze-OA; Wed, 23 Apr 2025 11:09:52 +0100
+Received: from ben by rainbowdash with local (Exim 4.98.2)
+ (envelope-from <ben@rainbowdash>) id 1u7X3A-00000008aYw-1uFj;
+ Wed, 23 Apr 2025 11:09:52 +0100
+From: Ben Dooks <ben.dooks@codethink.co.uk>
+To: ben.dooks@codethink.co.uk, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, mrolnik@gmail.com,
+ brian.cain@oss.qualcomm.com, deller@gmx.de, zhao1.liu@intel.com,
+ gaosong@loongson.cn, laurent@vivier.eu, edgar.iglesias@gmail.com,
+ philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+ arikalo@gmail.com, shorne@gmail.com, npiggin@gmail.com,
+ danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+ ysato@users.sourceforge.jp, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
+ kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+Subject: [RFC PATCH] tcg: allow tb_flags to be larger than 32bit
+Date: Wed, 23 Apr 2025 11:09:49 +0100
+Message-Id: <20250423100949.2047161-1-ben.dooks@codethink.co.uk>
+X-Mailer: git-send-email 2.37.2.352.g3c44437643
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 099/147] page-vary: Move and rename
- qemu_target_page_bits_min
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Fabiano Rosas <farosas@suse.de>
-References: <20250422192819.302784-1-richard.henderson@linaro.org>
- <20250422192819.302784-100-richard.henderson@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250422192819.302784-100-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=78.40.148.171;
+ envelope-from=srv_ts003@codethink.com; helo=imap5.colo.codethink.co.uk
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,135 +113,446 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZukppC9ogM6o
+X-TUID: jf6kfalacHv1
 
-Widening Cc list.
+In adding a new feature to the riscv target, it turns out the tb_flags
+had already got to the 32-bit limit. Everyone other target has been
+fine with uint32_t (except perhaps arm which does somethng strange to
+extend tb_flags, I think).
 
-On 22/4/25 21:27, Richard Henderson wrote:
-> Rename to migration_legacy_page_bits, to make it clear that
-> we cannot change the value without causing a migration break.
-> Move to page-vary.h and page-vary-target.c.
-> Define via TARGET_PAGE_BITS if not TARGET_PAGE_BITS_VARY.
-> 
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/exec/page-vary.h   | 9 +++++++++
->   include/exec/target_page.h | 1 -
->   migration/savevm.c         | 6 +++---
->   page-target.c              | 5 -----
->   page-vary-target.c         | 9 +++++++++
->   5 files changed, 21 insertions(+), 9 deletions(-)
-> 
-> diff --git a/include/exec/page-vary.h b/include/exec/page-vary.h
-> index 54ddde308a..101c25911c 100644
-> --- a/include/exec/page-vary.h
-> +++ b/include/exec/page-vary.h
-> @@ -49,4 +49,13 @@ bool set_preferred_target_page_bits(int bits);
->    */
->   void finalize_target_page_bits(void);
->   
-> +/**
-> + * migration_legacy_page_bits
-> + *
-> + * For migration compatibility with qemu v2.9, prior to the introduction
-> + * of the configuration/target-page-bits section, return the value of
-> + * TARGET_PAGE_BITS that the target had then.
+To allow extending of tb_flags to be bigger, change the uint32_t to
+a tb_flags_t which a target can define to be bigger (and do this for
+riscv as having tb_flags_t be uint64_t somewhere is necessary to pick
+out bugs in this translation).
 
-FYI X86 pc-2.9, pc-i440fx-2.9 [1] and ARM virt-2.9 [2] were waiting
-the v10.0 release to get removed. The s390-ccw-virtio-2.9 machine
-got removed few minutes ago [3]. The remaining one is pc-q35-2.9
-which was deprecated and should be OK for removal, IIUC it is just
-a matter of someone posting patches.
+This method of extension also stops having to go through each arch
+fixing field usage and anything else that may arise, and given this
+is currently only affecting the tcg, it can be done per target arch.
 
-[1] 
-https://lore.kernel.org/qemu-devel/20250117102738.59714-3-thuth@redhat.com/
-[2] 
-https://lore.kernel.org/qemu-devel/20250116145944.38028-9-philmd@linaro.org/
-[3] 
-https://lore.kernel.org/qemu-devel/20250423073610.271585-2-thuth@redhat.com/
+Note, target/riscv does not currently use any of the other flag bits
+yet. The work is done as we would like to try the big-endian riscv
+again and someone has already taken the last bit we where using at
+(target/riscv/cpu.h#L666 adding PM_SIGNEXTEND where we had BE_DATA)
 
-> + */
-> +int migration_legacy_page_bits(void);
-> +
->   #endif /* EXEC_PAGE_VARY_H */
-> diff --git a/include/exec/target_page.h b/include/exec/target_page.h
-> index 8e89e5cbe6..e4bd7f7767 100644
-> --- a/include/exec/target_page.h
-> +++ b/include/exec/target_page.h
-> @@ -63,7 +63,6 @@ static inline int qemu_target_page_bits(void)
->       return TARGET_PAGE_BITS;
->   }
->   
-> -int qemu_target_page_bits_min(void);
->   size_t qemu_target_pages_to_MiB(size_t pages);
->   
->   #endif
-> diff --git a/migration/savevm.c b/migration/savevm.c
-> index c33200a33f..0c12e373b4 100644
-> --- a/migration/savevm.c
-> +++ b/migration/savevm.c
-> @@ -50,6 +50,7 @@
->   #include "system/cpus.h"
->   #include "system/memory.h"
->   #include "exec/target_page.h"
-> +#include "exec/page-vary.h"
->   #include "trace.h"
->   #include "qemu/iov.h"
->   #include "qemu/job.h"
-> @@ -339,7 +340,7 @@ static int configuration_pre_load(void *opaque)
->        * predates the variable-target-page-bits support and is using the
->        * minimum possible value for this CPU.
->        */
-> -    state->target_page_bits = qemu_target_page_bits_min();
-> +    state->target_page_bits = migration_legacy_page_bits();
->       return 0;
->   }
->   
-> @@ -462,8 +463,7 @@ static const VMStateInfo vmstate_info_capability = {
->    */
->   static bool vmstate_target_page_bits_needed(void *opaque)
->   {
-> -    return qemu_target_page_bits()
-> -        > qemu_target_page_bits_min();
-> +    return qemu_target_page_bits() > migration_legacy_page_bits();
->   }
->   
->   static const VMStateDescription vmstate_target_page_bits = {
-> diff --git a/page-target.c b/page-target.c
-> index 321e43d06f..8fcd5443b5 100644
-> --- a/page-target.c
-> +++ b/page-target.c
-> @@ -9,11 +9,6 @@
->   #include "qemu/osdep.h"
->   #include "exec/target_page.h"
->   
-> -int qemu_target_page_bits_min(void)
-> -{
-> -    return TARGET_PAGE_BITS_MIN;
-> -}
-> -
->   /* Convert target pages to MiB (2**20). */
->   size_t qemu_target_pages_to_MiB(size_t pages)
->   {
-> diff --git a/page-vary-target.c b/page-vary-target.c
-> index 84ddeb7c26..6251d948cf 100644
-> --- a/page-vary-target.c
-> +++ b/page-vary-target.c
-> @@ -23,6 +23,15 @@
->   #include "exec/page-vary.h"
->   #include "exec/target_page.h"
->   
-> +int migration_legacy_page_bits(void)
-> +{
-> +#ifdef TARGET_PAGE_BITS_VARY
-> +    return TARGET_PAGE_BITS_MIN;
-> +#else
-> +    return TARGET_PAGE_BITS;
-> +#endif
-> +}
-> +
->   bool set_preferred_target_page_bits(int bits)
->   {
->   #ifdef TARGET_PAGE_BITS_VARY
+Q: Do the cpu_get_tb_state calls need uint32_t changing to the
+tb_flag_t as part of this?
+
+Q: As part of this, should we also define a FLAG_DP_TB or similar
+wrapper for the relevant change?
+
+Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
+---
+ accel/tcg/cpu-exec.c      | 10 +++++-----
+ accel/tcg/translate-all.c |  2 +-
+ target/alpha/cpu.h        |  3 ++-
+ target/arm/cpu.h          |  1 +
+ target/avr/cpu.h          |  1 +
+ target/hexagon/cpu.h      |  1 +
+ target/hppa/cpu.h         |  1 +
+ target/i386/cpu.h         |  1 +
+ target/loongarch/cpu.h    |  1 +
+ target/m68k/cpu.h         |  1 +
+ target/microblaze/cpu.h   |  1 +
+ target/mips/cpu.h         |  1 +
+ target/openrisc/cpu.h     |  1 +
+ target/ppc/cpu.h          |  1 +
+ target/riscv/cpu.h        |  3 ++-
+ target/riscv/cpu_helper.c | 40 +++++++++++++++++++--------------------
+ target/rx/cpu.h           |  1 +
+ target/s390x/cpu.h        |  1 +
+ target/sh4/cpu.h          |  1 +
+ target/sparc/cpu.h        |  1 +
+ target/tricore/cpu.h      |  1 +
+ target/xtensa/cpu.h       |  1 +
+ 22 files changed, 47 insertions(+), 28 deletions(-)
+
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index ef3d967e3a..2610ecd40e 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -302,7 +302,7 @@ static void log_cpu_exec(vaddr pc, CPUState *cpu,
+ }
+ 
+ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
+-                                       uint32_t *cflags)
++                                       tb_flags_t *cflags)
+ {
+     CPUBreakpoint *bp;
+     bool match_page = false;
+@@ -368,7 +368,7 @@ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
+ }
+ 
+ static inline bool check_for_breakpoints(CPUState *cpu, vaddr pc,
+-                                         uint32_t *cflags)
++                                         tb_flags_t *cflags)
+ {
+     return unlikely(!QTAILQ_EMPTY(&cpu->breakpoints)) &&
+         check_for_breakpoints_slow(cpu, pc, cflags);
+@@ -388,7 +388,7 @@ const void *HELPER(lookup_tb_ptr)(CPUArchState *env)
+     TranslationBlock *tb;
+     vaddr pc;
+     uint64_t cs_base;
+-    uint32_t flags, cflags;
++    tb_flags_t flags, cflags;
+ 
+     /*
+      * By definition we've just finished a TB, so I/O is OK.
+@@ -565,7 +565,7 @@ void cpu_exec_step_atomic(CPUState *cpu)
+     TranslationBlock *tb;
+     vaddr pc;
+     uint64_t cs_base;
+-    uint32_t flags, cflags;
++    tb_flags_t flags, cflags;
+     int tb_exit;
+ 
+     if (sigsetjmp(cpu->jmp_env, 0) == 0) {
+@@ -956,7 +956,7 @@ cpu_exec_loop(CPUState *cpu, SyncClocks *sc)
+             TranslationBlock *tb;
+             vaddr pc;
+             uint64_t cs_base;
+-            uint32_t flags, cflags;
++            tb_flags_t flags, cflags;
+ 
+             cpu_get_tb_cpu_state(cpu_env(cpu), &pc, &cs_base, &flags);
+ 
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 82bc16bd53..ec90a9a9b0 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -594,7 +594,7 @@ void tb_check_watchpoint(CPUState *cpu, uintptr_t retaddr)
+         vaddr pc;
+         uint64_t cs_base;
+         tb_page_addr_t addr;
+-        uint32_t flags;
++        tb_flags_t flags;
+ 
+         cpu_get_tb_cpu_state(env, &pc, &cs_base, &flags);
+         addr = get_page_addr_code(env, pc);
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 80562adfb5..25694ede9d 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -464,8 +464,9 @@ void alpha_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                      MemTxResult response, uintptr_t retaddr);
+ #endif
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUAlphaState *env, vaddr *pc,
+-                                        uint64_t *cs_base, uint32_t *pflags)
++                                        uint64_t *cs_base, tb_flags_t *pflags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a8177c6c2e..fd32e8d22c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3151,6 +3151,7 @@ static inline bool bswap_code(bool sctlr_b)
+ #endif
+ }
+ 
++typedef uint32_t tb_flags_t;
+ void cpu_get_tb_cpu_state(CPUARMState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *flags);
+ 
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index 06f5ae4d1b..1a3f31b779 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -193,6 +193,7 @@ enum {
+     TB_FLAGS_SKIP = 2,
+ };
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUAVRState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *pflags)
+ {
+diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
+index f78c8f9c2a..c924aa7e91 100644
+--- a/target/hexagon/cpu.h
++++ b/target/hexagon/cpu.h
+@@ -136,6 +136,7 @@ G_NORETURN void hexagon_raise_exception_err(CPUHexagonState *env,
+                                             uint32_t exception,
+                                             uintptr_t pc);
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUHexagonState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 8b36642b59..e56f327737 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -352,6 +352,7 @@ hwaddr hppa_abs_to_phys_pa2_w1(vaddr addr);
+ #define CS_BASE_DIFFPAGE    (1 << 12)
+ #define CS_BASE_DIFFSPACE   (1 << 13)
+ 
++typedef uint32_t tb_flags_t;
+ void cpu_get_tb_cpu_state(CPUHPPAState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *pflags);
+ 
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 76f24446a5..4283f71d45 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2612,6 +2612,7 @@ int cpu_mmu_index_kernel(CPUX86State *env);
+ #include "hw/i386/apic.h"
+ #endif
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUX86State *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+index 254e4fbdcd..48252678c8 100644
+--- a/target/loongarch/cpu.h
++++ b/target/loongarch/cpu.h
+@@ -490,6 +490,7 @@ static inline void set_pc(CPULoongArchState *env, uint64_t value)
+ #define HW_FLAGS_VA32       0x20
+ #define HW_FLAGS_EUEN_ASXE  0x40
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPULoongArchState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index ddb0f29f4a..9787a0611a 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -607,6 +607,7 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+ #define TB_FLAGS_TRACE          16
+ #define TB_FLAGS_TRACE_BIT      (1 << TB_FLAGS_TRACE)
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index e44ddd5307..8b8e312a4f 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -421,6 +421,7 @@ static inline bool mb_cpu_is_big_endian(CPUState *cs)
+     return !cpu->cfg.endi;
+ }
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUMBState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index f6877ece8b..e2a6b944ed 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1368,6 +1368,7 @@ void cpu_mips_clock_init(MIPSCPU *cpu);
+ /* helper.c */
+ target_ulong exception_resume_pc(CPUMIPSState *env);
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index b97d2ffdd2..cc923629d4 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -351,6 +351,7 @@ static inline void cpu_set_gpr(CPUOpenRISCState *env, int i, uint32_t val)
+     env->shadow_gpr[0][i] = val;
+ }
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUOpenRISCState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 3ee83517dc..1575e8584b 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -2755,6 +2755,7 @@ void cpu_write_xer(CPUPPCState *env, target_ulong xer);
+  */
+ #define is_book3s_arch2x(ctx) (!!((ctx)->insns_flags & PPC_SEGMENT_64B))
+ 
++typedef uint32_t tb_flags_t;
+ #ifdef CONFIG_DEBUG_TCG
+ void cpu_get_tb_cpu_state(CPUPPCState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *flags);
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 51e49e03de..5ffa6e6f79 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -808,8 +808,9 @@ static inline uint32_t vext_get_vlmax(uint32_t vlenb, uint32_t vsew,
+     return vlen >> (vsew + 3 - lmul);
+ }
+ 
++typedef uint64_t tb_flags_t;
+ void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
+-                          uint64_t *cs_base, uint32_t *pflags);
++                          uint64_t *cs_base, tb_flags_t *pflags);
+ 
+ bool riscv_cpu_is_32bit(RISCVCPU *cpu);
+ 
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index 6c4391d96b..7d6878fbc3 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -135,7 +135,7 @@ bool riscv_env_smode_dbltrp_enabled(CPURISCVState *env, bool virt)
+ }
+ 
+ void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
+-                          uint64_t *cs_base, uint32_t *pflags)
++                          uint64_t *cs_base, tb_flags_t *pflags)
+ {
+     RISCVCPU *cpu = env_archcpu(env);
+     RISCVExtStatus fs, vs;
+@@ -162,18 +162,18 @@ void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
+         uint32_t maxsz = vlmax << vsew;
+         bool vl_eq_vlmax = (env->vstart == 0) && (vlmax == env->vl) &&
+                            (maxsz >= 8);
+-        flags = FIELD_DP32(flags, TB_FLAGS, VILL, env->vill);
+-        flags = FIELD_DP32(flags, TB_FLAGS, SEW, vsew);
+-        flags = FIELD_DP32(flags, TB_FLAGS, LMUL,
++        flags = FIELD_DP64(flags, TB_FLAGS, VILL, env->vill);
++        flags = FIELD_DP64(flags, TB_FLAGS, SEW, vsew);
++        flags = FIELD_DP64(flags, TB_FLAGS, LMUL,
+                            FIELD_EX64(env->vtype, VTYPE, VLMUL));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
+-        flags = FIELD_DP32(flags, TB_FLAGS, VTA,
++        flags = FIELD_DP64(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
++        flags = FIELD_DP64(flags, TB_FLAGS, VTA,
+                            FIELD_EX64(env->vtype, VTYPE, VTA));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VMA,
++        flags = FIELD_DP64(flags, TB_FLAGS, VMA,
+                            FIELD_EX64(env->vtype, VTYPE, VMA));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
++        flags = FIELD_DP64(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
+     } else {
+-        flags = FIELD_DP32(flags, TB_FLAGS, VILL, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, VILL, 1);
+     }
+ 
+     if (cpu_get_fcfien(env)) {
+@@ -182,26 +182,26 @@ void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
+          * the start of the block is tracked via env->elp. env->elp
+          * is turned on during jalr translation.
+          */
+-        flags = FIELD_DP32(flags, TB_FLAGS, FCFI_LP_EXPECTED, env->elp);
+-        flags = FIELD_DP32(flags, TB_FLAGS, FCFI_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, FCFI_LP_EXPECTED, env->elp);
++        flags = FIELD_DP64(flags, TB_FLAGS, FCFI_ENABLED, 1);
+     }
+ 
+     if (cpu_get_bcfien(env)) {
+-        flags = FIELD_DP32(flags, TB_FLAGS, BCFI_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, BCFI_ENABLED, 1);
+     }
+ 
+ #ifdef CONFIG_USER_ONLY
+     fs = EXT_STATUS_DIRTY;
+     vs = EXT_STATUS_DIRTY;
+ #else
+-    flags = FIELD_DP32(flags, TB_FLAGS, PRIV, env->priv);
++    flags = FIELD_DP64(flags, TB_FLAGS, PRIV, env->priv);
+ 
+     flags |= riscv_env_mmu_index(env, 0);
+     fs = get_field(env->mstatus, MSTATUS_FS);
+     vs = get_field(env->mstatus, MSTATUS_VS);
+ 
+     if (env->virt_enabled) {
+-        flags = FIELD_DP32(flags, TB_FLAGS, VIRT_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, VIRT_ENABLED, 1);
+         /*
+          * Merge DISABLED and !DIRTY states using MIN.
+          * We will set both fields when dirtying.
+@@ -221,12 +221,12 @@ void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
+     }
+ #endif
+ 
+-    flags = FIELD_DP32(flags, TB_FLAGS, FS, fs);
+-    flags = FIELD_DP32(flags, TB_FLAGS, VS, vs);
+-    flags = FIELD_DP32(flags, TB_FLAGS, XL, env->xl);
+-    flags = FIELD_DP32(flags, TB_FLAGS, AXL, cpu_address_xl(env));
+-    flags = FIELD_DP32(flags, TB_FLAGS, PM_PMM, riscv_pm_get_pmm(env));
+-    flags = FIELD_DP32(flags, TB_FLAGS, PM_SIGNEXTEND, pm_signext);
++    flags = FIELD_DP64(flags, TB_FLAGS, FS, fs);
++    flags = FIELD_DP64(flags, TB_FLAGS, VS, vs);
++    flags = FIELD_DP64(flags, TB_FLAGS, XL, env->xl);
++    flags = FIELD_DP64(flags, TB_FLAGS, AXL, cpu_address_xl(env));
++    flags = FIELD_DP64(flags, TB_FLAGS, PM_PMM, riscv_pm_get_pmm(env));
++    flags = FIELD_DP64(flags, TB_FLAGS, PM_SIGNEXTEND, pm_signext);
+ 
+     *pflags = flags;
+ }
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 349d61c4e4..ad4247deec 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -153,6 +153,7 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int rte);
+ #define RX_CPU_IRQ 0
+ #define RX_CPU_FIR 1
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPURXState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index 5b7992deda..a42d412fe6 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -417,6 +417,7 @@ static inline int s390x_env_mmu_index(CPUS390XState *env, bool ifetch)
+ 
+ #include "tcg/tcg_s390x.h"
+ 
++typedef uint32_t tb_flags_t;
+ void cpu_get_tb_cpu_state(CPUS390XState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *flags);
+ 
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index d536d5d715..b10698f1a9 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -382,6 +382,7 @@ static inline void cpu_write_sr(CPUSH4State *env, target_ulong sr)
+     env->sr = sr & ~((1u << SR_M) | (1u << SR_Q) | (1u << SR_T));
+ }
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUSH4State *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 68f8c21e7c..bc876becc9 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -745,6 +745,7 @@ trap_state* cpu_tsptr(CPUSPARCState* env);
+ #define TB_FLAG_FSR_QNE      (1 << 8)
+ #define TB_FLAG_ASI_SHIFT    24
+ 
++typedef uint32_t tb_flags_t;
+ void cpu_get_tb_cpu_state(CPUSPARCState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *pflags);
+ 
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index cf9dbc6df8..917cd9ab5d 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -259,6 +259,7 @@ void tricore_tcg_init(void);
+ void tricore_translate_code(CPUState *cs, TranslationBlock *tb,
+                             int *max_insns, vaddr pc, void *host_pc);
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 8d70bfc0cd..856f794342 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -733,6 +733,7 @@ static inline uint32_t xtensa_replicate_windowstart(CPUXtensaState *env)
+ 
+ #include "exec/cpu-all.h"
+ 
++typedef uint32_t tb_flags_t;
+ static inline void cpu_get_tb_cpu_state(CPUXtensaState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+-- 
+2.37.2.352.g3c44437643
 

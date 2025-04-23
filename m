@@ -1,78 +1,79 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2917043njd;
-        Wed, 23 Apr 2025 02:49:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVeVN8/e9UOI7X4HD0ddRo+7Y7u06dAYIcXvq7iwKPB6I6PpEI9ltiZX7RnA3PhHIqjsSdXgE15ThPNbg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRqJaj9+KuubPQeob9+xGTPipNUaYJsUoMGQCPp6+YEyUpZxvU6USFi+zQqxsAxYrAsJwq
-X-Received: by 2002:a05:620a:2495:b0:7c5:544e:2ccf with SMTP id af79cd13be357-7c92804d5cfmr3083209585a.57.1745401777516;
-        Wed, 23 Apr 2025 02:49:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745401777; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2917932njd;
+        Wed, 23 Apr 2025 02:52:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX46kxVnkj9L3sVFJ6j5skakxvdLqBIkUKazx/1kicP3X1WpMzGml4s+6h0AlN8Tt3fDJ5dkb4lHSgNUw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWMAfCPaBNNcB6ynZ31Y3yJBlB220RFEyD32dhFam4ytwW34IOGAcySf/3Cc2Iuyz5XyZD
+X-Received: by 2002:a05:620a:bcc:b0:7c5:5670:bd6a with SMTP id af79cd13be357-7c927f8068bmr2893566885a.24.1745401932809;
+        Wed, 23 Apr 2025 02:52:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745401932; cv=none;
         d=google.com; s=arc-20240605;
-        b=KbiQfm3yrBSgSLyYMdvbjwr+gXvJEbv6mR5XOaloMsuUJyBlKgBMz8dilpzvm6S7k2
-         AA509D2/B6JXArxhr5IcoyPyQsevXhWgjcjGDCOCGaDSNss+UquLzg8/zqyd3RnSJ2N8
-         Zu2GJ+0nGyiSyiokmxCFBUQdH9wAj6/MrEN/lvIrZrot5qNlZvBhZ51C/xBIE9Rp68bg
-         UOEVd9M3uMJuHIpvx8T4+ipAZipi+etfEKqfPHYTLjm+JbboahIYEcgsCjN2XNZ2OE44
-         oQ8anD/unW/fK8RdlJBHe05s6Je9tuinvzJCulmacbH+ZBfxGcbK64SxlSB9mvCPBP61
-         nJLQ==
+        b=L9hOIBl1PiRMM4ESZcRcGaOjDrsZBSLt44trEho3jZH2XmPWWTVgxacdvWOf9xecBg
+         p8Lou8PMgG9DnAMDIgON0SxZADzX6Nu3US/7BQBvm1GGXkfr6NOcXwWdo3f01ouW5d38
+         nicazjACu3CU23jIYUyRZIEe7w82AdTYMdWGBf6C0IenganvAbu6+UcNOV97I/Ia60I1
+         l0rKnqms8R+xv6IL+4IYsu/6Js8IgYFTgh0Gu7uxc8oqkf7JcRYJiu/yIegnc2Oqf0vq
+         8a/umQIMnZj854unF6JH0R+4cKwgi5eaTmwrPEToFZyQc0gyHS8sy1Q0N7vdGKsCtdem
+         TZSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=mGKheijDSJk/43QQ+Yh4jPMQjwm6fJdRnUCSm0wVT7c=;
-        fh=aTXBRWvcUi1tLADA5DrDnV7F47mfdIt5smkQi/SmRpk=;
-        b=Q/0SFwAmP+1vs0ohW4uApfLofqoKApU647fVqkxeh5b6cb03Vhrvjf8D/1vkw92CMW
-         sV5cJNsyr43gROzKcIv92sQQ3h5JIuLoFNh3dJmQ0sikUmC203nklyb56ya0nl3jm5V1
-         q7Sr54uoEC4QjKz4OL27MHAbJjSRmkiilUD1Hg9gQ8IJrZkq0Dr85sIG5vM5U+lSOlwR
-         EE4On+N3hmsfKdBYxOneCVbNx0zM4byFn8L7RNm519kld8cqbmzYK617WEQuLn1HRFlM
-         6ov19tJJXiLXyLGWI+sqGizsq7vV1AYpZaThK20qSaSapBfgxGY/7SecDOlchjrAy8El
-         yU6A==;
+        bh=hdENJK2zDB8M/IJ0MlTt/FkNp+TWAt+cHJiXExX7vjA=;
+        fh=XO19m6VQrQta/lNPxYpV2slcM1mGJ189RKXDIz+Ofio=;
+        b=hj28xfFwBgOXPJ6KFJvfWporIbjqCX4HouCeH7a1ZxsUzvonsAvXKYyD3gZnybu8Vg
+         1SmARxIzXcCSbeNREQYHz2t8bQ9WGkrf0YQitnaitC67xS0j4zW3ZjIStN5yVBo1efu+
+         LsAFHsbrq462cpqSB8CRfuilGdmkUREehlITHnW4pdzEa4ClbDNLRus+yENtQa1/AneP
+         62uqqgU36xzUou2J8TNLfKq6Qet6DOrafuDzI3hzktU/1Bd8i9i6cH6ABp2eLD8AIpSl
+         nlyahBASnHqerOU1Ib4+fjo9EGi9V28Dtxx5cR2vv/RKPa4I72iNQohhps7MzaFRF1Td
+         YfOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c925b7f99asi1273562585a.305.2025.04.23.02.49.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2c0fad4si128391766d6.327.2025.04.23.02.52.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Apr 2025 02:49:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Apr 2025 02:52:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7WjT-0001ae-Pd; Wed, 23 Apr 2025 05:49:31 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u7Wle-0002sF-Iy; Wed, 23 Apr 2025 05:51:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7WjL-0001aD-Py; Wed, 23 Apr 2025 05:49:24 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1u7Wld-0002rr-9v; Wed, 23 Apr 2025 05:51:45 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7WjI-0000jA-8a; Wed, 23 Apr 2025 05:49:23 -0400
+ id 1u7Wlb-00017P-7h; Wed, 23 Apr 2025 05:51:45 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZjDpM0rNYz4xN6;
- Wed, 23 Apr 2025 19:49:15 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZjDs73Q8Gz4xPM;
+ Wed, 23 Apr 2025 19:51:39 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZjDpH4Yrvz4xFt;
- Wed, 23 Apr 2025 19:49:11 +1000 (AEST)
-Message-ID: <15ab5c1d-5e2a-48d6-884c-22d6dd8e004d@kaod.org>
-Date: Wed, 23 Apr 2025 11:49:09 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZjDs41Txjz4xN6;
+ Wed, 23 Apr 2025 19:51:35 +1000 (AEST)
+Message-ID: <472fe602-967c-4234-9bb3-52c01fa74ef1@kaod.org>
+Date: Wed, 23 Apr 2025 11:51:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/11] docs/system/arm/aspeed: Support vbootrom for
- AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
+To: Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: troy_lee@aspeedtech.com, nabihestefan@google.com
-References: <20250423072350.541742-1-jamin_lin@aspeedtech.com>
- <20250423072350.541742-12-jamin_lin@aspeedtech.com>
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
+References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
+ <5e3c1b62-2a1c-4e99-8842-d5a06a80d2f1@kaod.org>
+ <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,190 +118,110 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250423072350.541742-12-jamin_lin@aspeedtech.com>
+In-Reply-To: <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Aua5dWOBDIj/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: laQ5jmMmRV+b
 
-On 4/23/25 09:23, Jamin Lin wrote:
-> Using the vbootrom image support and the boot ROM binary is
-> now passed via the -bios option, using the image located in
-> pc-bios/ast27x0_bootrom.bin.
+Hello Steven,
+
+On 4/8/25 08:35, Steven Lee wrote:
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@kaod.org>
+>> Sent: Wednesday, March 26, 2025 1:34 AM
+>> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
+>> <jamin_lin@aspeedtech.com>; Andrew Jeffery
+>> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
+>> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
+>> <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
+>> <yunlin.tang@aspeedtech.com>
+>> Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
+>>
+>> Hello Steven,
+>>
+>> On 3/13/25 06:40, Steven Lee wrote:
+>>> This patch series introduces full core support for the AST27x0 SoC, along with
+>> necessary updates to the ASPEED AST27x0 SOC.
+>>> The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35
+>> cores and 2 Cortex-M4 cores.
+>>>
+>>> v1:
+>>>     - Map unimplemented devices in SoC memory
+>>>     - Intruduce AST2700 CM4 SoC
+>>>     - Introduce AST27x0FC Machine
+>>>
+>>> v2:
+>>>     - Remove unused functions
+>>>     - Correct hex notation for device addresses in AST27x0 SoC
+>>>     - Add AST2700 SSP INTC and AST2700 TSP INTC
+>>>     - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
+>>>     - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
+>>>     - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
+>>>     - Add functional tests for AST2700FC A0 and AST2700FC A1
+>>>     - Add Documentation for AST2700FC
+>>
+>> Please try to label all patches as v2. See 'git format-patch -v ...'
+>>
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Some comments below,
-
-
-> ---
->   docs/system/arm/aspeed.rst | 96 +++++++++++++++++++++++++++++++++++---
->   1 file changed, 90 insertions(+), 6 deletions(-)
+> Hi Cédric,
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 97fd6a0e7f..e15e276a48 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -1,4 +1,4 @@
-> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
->   ==================================================================================================================================================================================================================================================================================================================================================================================================================
->   
->   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
-> @@ -39,10 +39,6 @@ AST2600 SoC based machines :
->   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
->   - ``qcom-firework-bmc``    Qualcomm Firework BMC
->   
-> -AST2700 SoC based machines :
-> -
-> -- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-> -
+> Thanks for the reminder. I will label the patches as v3 in the next submission.
+> 
+> Regards,
+> Steven
+> 
+>>> Steven Lee (13):
+>>>     aspeed: ast27x0: Map unimplemented devices in SoC memory
+>>>     aspeed: ast27x0: Correct hex notation for device addresses
+>>>     hw/intc/aspeed: Add support for AST2700 SSP INTC
+>>>     hw/intc/aspeed: Add support for AST2700 TSP INTC
+>>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A0 SSP SoC
+>>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
+>>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A0 TSP SoC
+>>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
+>>>     hw/arm: Introduce ASPEED AST2700 a0 full core machine
+>>>     hw/arm: Introduce ASPEED AST2700 a1 full core machine
+>>>     tests/function/aspeed: Add functional test for AST2700FC
+>>>     tests/function/aspeed: Add functional test for AST2700FC A1
+>>>     docs: Add support for ast2700fc machine
+>>
+>> Do we need to add support for the A0 and A1 ? Would A1 be enough ?
+>>
+> 
+> I will remove A0 in v3 the patch series.
 
-This will conflict with Steven's series adding the ast2700fc machine.
-To ease upstreaming of both, it might be good idea to separate the
-change adding the "Aspeed 2700 family boards" section from the change
-adding the "Boot using a virtual boot ROM" subsection.
+Do you plan to resend soon ? I think we could merge this series
+quickly.
+
+It would be nice to handle the conflicts on the documentation
+with the series from Jamin adding vbootrom support.
 
 
 Thanks,
 
 C.
-
-
-
->   Supported devices
->   -----------------
->   
-> @@ -247,10 +243,78 @@ under Linux), use :
->   
->     -M ast2500-evb,bmc-console=uart3
->   
-> +Aspeed 2700 family boards (``ast2700-evb``)
-> +==================================================================
-> +
-> +The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
-> +They are based on different releases of the Aspeed SoC :
-> +the AST2700 with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
-> +
-> +The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
-> +etc.
-> +
-> +AST2700 SoC based machines :
-> +
-> +- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-> +
-> +Supported devices
-> +-----------------
-> + * Interrupt Controller
-> + * Timer Controller
-> + * RTC Controller
-> + * I2C Controller
-> + * System Control Unit (SCU)
-> + * SRAM mapping
-> + * X-DMA Controller (basic interface)
-> + * Static Memory Controller (SMC or FMC) - Only SPI Flash support
-> + * SPI Memory Controller
-> + * USB 2.0 Controller
-> + * SD/MMC storage controllers
-> + * SDRAM controller (dummy interface for basic settings and training)
-> + * Watchdog Controller
-> + * GPIO Controller (Master only)
-> + * UART
-> + * Ethernet controllers
-> + * Front LEDs (PCA9552 on I2C bus)
-> + * LPC Peripheral Controller (a subset of subdevices are supported)
-> + * Hash/Crypto Engine (HACE) - Hash support only. TODO: Crypto
-> + * ADC
-> + * eMMC Boot Controller (dummy)
-> + * PECI Controller (minimal)
-> + * I3C Controller
-> + * Internal Bridge Controller (SLI dummy)
-> +
-> +Missing devices
-> +---------------
-> + * Coprocessor support
-> + * PWM and Fan Controller
-> + * Slave GPIO Controller
-> + * Super I/O Controller
-> + * PCI-Express 1 Controller
-> + * Graphic Display Controller
-> + * MCTP Controller
-> + * Mailbox Controller
-> + * Virtual UART
-> + * eSPI Controller
-> +
-> +Boot options
-> +------------
-> +
-> +Images can be downloaded from the ASPEED Forked OpenBMC GitHub release repository :
-> +
-> +   https://github.com/AspeedTech-BMC/openbmc/releases
-> +
->   Booting the ast2700-evb machine
->   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->   
-> -Boot the AST2700 machine from the flash image, use an MTD drive :
-> +Boot the AST2700 machine from the flash image.
-> +
-> +There are two supported methods for booting the AST2700 machine with a flash image:
-> +
-> +Manual boot using ``-device loader``:
-> +
-> +It causes all 4 CPU cores to start execution from address ``0x430000000``, which
-> +corresponds to the BL31 image load address.
->   
->   .. code-block:: bash
->   
-> @@ -270,6 +334,26 @@ Boot the AST2700 machine from the flash image, use an MTD drive :
->          -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
->          -nographic
->   
-> +Boot using a virtual boot ROM (``-bios``):
-> +
-> +If users do not specify the ``-bios option``, QEMU will attempt to load the
-> +default vbootrom image ``ast27x0_bootrom.bin`` from either the current working
-> +directory or the ``pc-bios`` directory within the QEMU source tree.
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-aarch64 -M ast2700-evb \
-> +      -drive file=image-bmc,format=raw,if=mtd \
-> +      -nographic
-> +
-> +The ``-bios`` option allows users to specify a custom path for the vbootrom
-> +image to be loaded during boot. This will load the vbootrom image from the
-> +specified path in the ${HOME} directory.
-> +
-> +.. code-block:: bash
-> +
-> +  -bios ${HOME}/ast27x0_bootrom.bin
-> +
->   Aspeed minibmc family boards (``ast1030-evb``)
->   ==================================================================
->   
 

@@ -1,134 +1,134 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2917932njd;
-        Wed, 23 Apr 2025 02:52:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX46kxVnkj9L3sVFJ6j5skakxvdLqBIkUKazx/1kicP3X1WpMzGml4s+6h0AlN8Tt3fDJ5dkb4lHSgNUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEWMAfCPaBNNcB6ynZ31Y3yJBlB220RFEyD32dhFam4ytwW34IOGAcySf/3Cc2Iuyz5XyZD
-X-Received: by 2002:a05:620a:bcc:b0:7c5:5670:bd6a with SMTP id af79cd13be357-7c927f8068bmr2893566885a.24.1745401932809;
-        Wed, 23 Apr 2025 02:52:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745401932; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2931996njd;
+        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtfgJdwWhOnosYeStrFu2/1EJHoL7hHA9qEMz4hWQpULLJJnpyAk56dlC/8XGKKPKA+E+KEqzH/eGMnA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFL3mWbv6CHFxM2dHPQQuT6ZVK71mExYadATwQUtrJa0odksjMCYmyuUBcpEM6v1x9+IBBO
+X-Received: by 2002:a05:622a:18a1:b0:479:1a41:b50d with SMTP id d75a77b69052e-47aec3d0af4mr278452421cf.17.1745403709607;
+        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745403709; cv=none;
         d=google.com; s=arc-20240605;
-        b=L9hOIBl1PiRMM4ESZcRcGaOjDrsZBSLt44trEho3jZH2XmPWWTVgxacdvWOf9xecBg
-         p8Lou8PMgG9DnAMDIgON0SxZADzX6Nu3US/7BQBvm1GGXkfr6NOcXwWdo3f01ouW5d38
-         nicazjACu3CU23jIYUyRZIEe7w82AdTYMdWGBf6C0IenganvAbu6+UcNOV97I/Ia60I1
-         l0rKnqms8R+xv6IL+4IYsu/6Js8IgYFTgh0Gu7uxc8oqkf7JcRYJiu/yIegnc2Oqf0vq
-         8a/umQIMnZj854unF6JH0R+4cKwgi5eaTmwrPEToFZyQc0gyHS8sy1Q0N7vdGKsCtdem
-         TZSw==
+        b=H+DQqhn9E7pnBnF6RhY89qQ2IvQPVs0UWZORX3XEYURghVaYxucutdCTgKjC0XbZXk
+         2DG2MtLYikvE2h9OOzy+U2VqphLXd4AjgraoyCmZ60Ylu5947N37zPV8adTfAwHnq47Q
+         2V0FxWNLAoPYlkrgr9TAgFUXblJaEORft5H4GlzrlAptoO5ze9E1KRZuqdprjPbI4hH3
+         Gh2TEr+47tOerQ7aDwQbrceABuLJLf4A1MkIrbn0w9WpOTIPbnWxDfTtRQVC0qvJRcws
+         LBp18YP2c4vIA0lL8PLYwyxIYRDLB2aO036A47sxewnE1ANJ0x7WmmElvt4GEtNlS4PC
+         STbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=hdENJK2zDB8M/IJ0MlTt/FkNp+TWAt+cHJiXExX7vjA=;
-        fh=XO19m6VQrQta/lNPxYpV2slcM1mGJ189RKXDIz+Ofio=;
-        b=hj28xfFwBgOXPJ6KFJvfWporIbjqCX4HouCeH7a1ZxsUzvonsAvXKYyD3gZnybu8Vg
-         1SmARxIzXcCSbeNREQYHz2t8bQ9WGkrf0YQitnaitC67xS0j4zW3ZjIStN5yVBo1efu+
-         LsAFHsbrq462cpqSB8CRfuilGdmkUREehlITHnW4pdzEa4ClbDNLRus+yENtQa1/AneP
-         62uqqgU36xzUou2J8TNLfKq6Qet6DOrafuDzI3hzktU/1Bd8i9i6cH6ABp2eLD8AIpSl
-         nlyahBASnHqerOU1Ib4+fjo9EGi9V28Dtxx5cR2vv/RKPa4I72iNQohhps7MzaFRF1Td
-         YfOA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
+        fh=R7LnnU0a8nsjz4EvZI90RlNCQ4Cnjl5deN92NlVb8wE=;
+        b=coexRvzWeCKVke2j552Uyex/m/BS5Xc2n0/+7SEBv4oqUZpDHNhIXke81HnjlRQHq8
+         qAOaLk4U7Fjf5ZrYgnuK/b8KYDjWodSOII5FJntmsy/+z4aDJF/fn5pmuOholnHgw6mZ
+         I7Kh3tZdB/wUSmS+9UBO4V/k/aZw1Kyih+Jor6W/u7Qxt6U3tZ4+wLOcvbp0bQdHn2my
+         Na/g5bm3GcGLO8Fx13PZG5mBgbrOqIbwQx6EovG/mFFir6iY+caHaluF+Ul3IESZOPe0
+         IgoeZbMGlZMNjpEfbr3Z1fF6RaJahJHwpVdeonEgG8j67giSzEaxifjRevdXrI9n4uLU
+         cZAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=zSyIK9ay;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2c0fad4si128391766d6.327.2025.04.23.02.52.12
+        by mx.google.com with ESMTPS id d75a77b69052e-47ae9cb7fb9si131475001cf.421.2025.04.23.03.21.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Apr 2025 02:52:12 -0700 (PDT)
+        Wed, 23 Apr 2025 03:21:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=zSyIK9ay;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u7Wle-0002sF-Iy; Wed, 23 Apr 2025 05:51:46 -0400
+	id 1u7XEK-00020p-Rh; Wed, 23 Apr 2025 06:21:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7Wld-0002rr-9v; Wed, 23 Apr 2025 05:51:45 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7Wlb-00017P-7h; Wed, 23 Apr 2025 05:51:45 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZjDs73Q8Gz4xPM;
- Wed, 23 Apr 2025 19:51:39 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZjDs41Txjz4xN6;
- Wed, 23 Apr 2025 19:51:35 +1000 (AEST)
-Message-ID: <472fe602-967c-4234-9bb3-52c01fa74ef1@kaod.org>
-Date: Wed, 23 Apr 2025 11:51:33 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7XEH-00020B-Uo
+ for qemu-devel@nongnu.org; Wed, 23 Apr 2025 06:21:21 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7XED-00049i-QC
+ for qemu-devel@nongnu.org; Wed, 23 Apr 2025 06:21:19 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-39efc1365e4so2298625f8f.1
+ for <qemu-devel@nongnu.org>; Wed, 23 Apr 2025 03:21:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1745403676; x=1746008476; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
+ b=zSyIK9aya42MvLvUY35Q4CtG1Bcp6Kn8JbxYXxq2qwJ+p1CTq4I0MrOYhBtSuJQy7f
+ 6tbnlQo196KMl58jP5M3gDrJNyNLdte1xHb+FB6Q7cxl1q7cde2AwW+Sks6KWL5DIBt6
+ fwfJInX2BAgY3xdMQ6uPtxUR2ssQF8CmpXGGcFQpGH+DHSPHxsTc1dHPGhHgKjt3afIo
+ NnGauaoiTEk9Vleze758EHCC2Xc72TiYbTQkxZfMYAztjGHND2d5IIhti4HdLnv67KMC
+ Pkb3nRqNEz0M+SKRQ+2u8UPxODzzCvQXiSYmig7SPvd0KY63vBdUwI5zpUYutn23mgfk
+ lnbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1745403676; x=1746008476;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cqcB40nTcXBQkh2PkxB+C2WqDdk2PaXTMOdvhK30HZI=;
+ b=LKc+9jGi37FQCd8/2qszsgQLuoK7lnZ016UghCj6t4jt9plG3N0li2aHCQL9h/xm5r
+ laqwm8f7QVMRuivNHF8eSkFt/lp9uOpj/pEiG3pEak3E6H3sBANasicQVEXGEq8fVT8U
+ trXHbi/fPlS6h9eCLFMxkzP8fBdr3wXdifcsur8KhPqKZAd+Ays42pwwl92SesqxeNlK
+ Q1Ns7M9kWoFlbmXIx4h3d8cbkTHahkm3d9h3swYL+Cg3eUP0p+o1wRkSEiaOKD4BzgAM
+ dnduTKuoQNYuG1aJDFKxxmLtFDz+Ujr7H7rAQno6E1Pr5zQ66E3nhPsgnNzp7OzQDCoa
+ vKwg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUQLhjDH3EbiYhAzBYXedEDZXTVDFUX7JurVsV315S9nskwJgElKH56P4GctHsywItm1T1uHiiUYxmP@nongnu.org
+X-Gm-Message-State: AOJu0YwsV0IWqJVM59xzCta6onPss3pEhfmajd1DMeSi6YWqug4Jd5PY
+ fg/0zxvVhGHUK/nFQpzOqM06Ag1HT8mk6HuOwYv/hDy1emmp8UOh3TtiNIx0lw31V7T1Vy6ILXL
+ z
+X-Gm-Gg: ASbGncvJgnkzLJ3vlOamQv/maswFz0z/cqWZ752riobGiHGm6u3GLkudMgiDVMnY9QM
+ bOLHY6iyGueBBYLq8Hc+06cjgMSz+3sNCpmquGQTdf6lIO7ijwxEL9zOLyARdYshuH3IJFOy1/x
+ eYDf543Xtt/rzRhMBjRz40apm86ALDh57m7v0ujNQQN5lTt2jck1WRrxg/B88S5Iwh60ua60JEz
+ G7HipFqErNZPzXtd9RZbfG0c2VyhChjRHHpGc7JcHz0E6/+yabEXx1K4KCUaRmzfQcyR2u9Khrl
+ srzTfvIhHEiCMeCr72wi+xtcyRrbExI3RLicPzeIIy8ztOHy57IeH1gjRyP7KFPOTxvuXDNzFCg
+ nlvBvZhVp
+X-Received: by 2002:a05:6000:22c2:b0:391:4873:7940 with SMTP id
+ ffacd0b85a97d-39efbb05cfdmr14241454f8f.54.1745403675933; 
+ Wed, 23 Apr 2025 03:21:15 -0700 (PDT)
+Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-39efa4332b2sm18578950f8f.30.2025.04.23.03.21.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Apr 2025 03:21:15 -0700 (PDT)
+Message-ID: <9111e4f4-5e91-406a-9e57-f58c2bfa3b12@linaro.org>
+Date: Wed, 23 Apr 2025 12:21:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20250313054020.2583556-1-steven_lee@aspeedtech.com>
- <5e3c1b62-2a1c-4e99-8842-d5a06a80d2f1@kaod.org>
- <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <KL1PR0601MB4180B751F27DD46E378825E885B52@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH 099/147] page-vary: Move and rename
+ qemu_target_page_bits_min
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>
+References: <20250422192819.302784-1-richard.henderson@linaro.org>
+ <20250422192819.302784-100-richard.henderson@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250422192819.302784-100-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,85 +143,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: laQ5jmMmRV+b
+X-TUID: ZukppC9ogM6o
 
-Hello Steven,
+Widening Cc list.
 
-On 4/8/25 08:35, Steven Lee wrote:
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Wednesday, March 26, 2025 1:34 AM
->> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->> <jamin_lin@aspeedtech.com>; Andrew Jeffery
->> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->> <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH v2 00/13] Introduce AST27x0 multi-SoC machine
->>
->> Hello Steven,
->>
->> On 3/13/25 06:40, Steven Lee wrote:
->>> This patch series introduces full core support for the AST27x0 SoC, along with
->> necessary updates to the ASPEED AST27x0 SOC.
->>> The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35
->> cores and 2 Cortex-M4 cores.
->>>
->>> v1:
->>>     - Map unimplemented devices in SoC memory
->>>     - Intruduce AST2700 CM4 SoC
->>>     - Introduce AST27x0FC Machine
->>>
->>> v2:
->>>     - Remove unused functions
->>>     - Correct hex notation for device addresses in AST27x0 SoC
->>>     - Add AST2700 SSP INTC and AST2700 TSP INTC
->>>     - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
->>>     - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
->>>     - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
->>>     - Add functional tests for AST2700FC A0 and AST2700FC A1
->>>     - Add Documentation for AST2700FC
->>
->> Please try to label all patches as v2. See 'git format-patch -v ...'
->>
+On 22/4/25 21:27, Richard Henderson wrote:
+> Rename to migration_legacy_page_bits, to make it clear that
+> we cannot change the value without causing a migration break.
+> Move to page-vary.h and page-vary-target.c.
+> Define via TARGET_PAGE_BITS if not TARGET_PAGE_BITS_VARY.
 > 
-> Hi Cédric,
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   include/exec/page-vary.h   | 9 +++++++++
+>   include/exec/target_page.h | 1 -
+>   migration/savevm.c         | 6 +++---
+>   page-target.c              | 5 -----
+>   page-vary-target.c         | 9 +++++++++
+>   5 files changed, 21 insertions(+), 9 deletions(-)
 > 
-> Thanks for the reminder. I will label the patches as v3 in the next submission.
-> 
-> Regards,
-> Steven
-> 
->>> Steven Lee (13):
->>>     aspeed: ast27x0: Map unimplemented devices in SoC memory
->>>     aspeed: ast27x0: Correct hex notation for device addresses
->>>     hw/intc/aspeed: Add support for AST2700 SSP INTC
->>>     hw/intc/aspeed: Add support for AST2700 TSP INTC
->>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A0 SSP SoC
->>>     hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
->>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A0 TSP SoC
->>>     hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
->>>     hw/arm: Introduce ASPEED AST2700 a0 full core machine
->>>     hw/arm: Introduce ASPEED AST2700 a1 full core machine
->>>     tests/function/aspeed: Add functional test for AST2700FC
->>>     tests/function/aspeed: Add functional test for AST2700FC A1
->>>     docs: Add support for ast2700fc machine
->>
->> Do we need to add support for the A0 and A1 ? Would A1 be enough ?
->>
-> 
-> I will remove A0 in v3 the patch series.
+> diff --git a/include/exec/page-vary.h b/include/exec/page-vary.h
+> index 54ddde308a..101c25911c 100644
+> --- a/include/exec/page-vary.h
+> +++ b/include/exec/page-vary.h
+> @@ -49,4 +49,13 @@ bool set_preferred_target_page_bits(int bits);
+>    */
+>   void finalize_target_page_bits(void);
+>   
+> +/**
+> + * migration_legacy_page_bits
+> + *
+> + * For migration compatibility with qemu v2.9, prior to the introduction
+> + * of the configuration/target-page-bits section, return the value of
+> + * TARGET_PAGE_BITS that the target had then.
 
-Do you plan to resend soon ? I think we could merge this series
-quickly.
+FYI X86 pc-2.9, pc-i440fx-2.9 [1] and ARM virt-2.9 [2] were waiting
+the v10.0 release to get removed. The s390-ccw-virtio-2.9 machine
+got removed few minutes ago [3]. The remaining one is pc-q35-2.9
+which was deprecated and should be OK for removal, IIUC it is just
+a matter of someone posting patches.
 
-It would be nice to handle the conflicts on the documentation
-with the series from Jamin adding vbootrom support.
+[1] 
+https://lore.kernel.org/qemu-devel/20250117102738.59714-3-thuth@redhat.com/
+[2] 
+https://lore.kernel.org/qemu-devel/20250116145944.38028-9-philmd@linaro.org/
+[3] 
+https://lore.kernel.org/qemu-devel/20250423073610.271585-2-thuth@redhat.com/
 
-
-Thanks,
-
-C.
+> + */
+> +int migration_legacy_page_bits(void);
+> +
+>   #endif /* EXEC_PAGE_VARY_H */
+> diff --git a/include/exec/target_page.h b/include/exec/target_page.h
+> index 8e89e5cbe6..e4bd7f7767 100644
+> --- a/include/exec/target_page.h
+> +++ b/include/exec/target_page.h
+> @@ -63,7 +63,6 @@ static inline int qemu_target_page_bits(void)
+>       return TARGET_PAGE_BITS;
+>   }
+>   
+> -int qemu_target_page_bits_min(void);
+>   size_t qemu_target_pages_to_MiB(size_t pages);
+>   
+>   #endif
+> diff --git a/migration/savevm.c b/migration/savevm.c
+> index c33200a33f..0c12e373b4 100644
+> --- a/migration/savevm.c
+> +++ b/migration/savevm.c
+> @@ -50,6 +50,7 @@
+>   #include "system/cpus.h"
+>   #include "system/memory.h"
+>   #include "exec/target_page.h"
+> +#include "exec/page-vary.h"
+>   #include "trace.h"
+>   #include "qemu/iov.h"
+>   #include "qemu/job.h"
+> @@ -339,7 +340,7 @@ static int configuration_pre_load(void *opaque)
+>        * predates the variable-target-page-bits support and is using the
+>        * minimum possible value for this CPU.
+>        */
+> -    state->target_page_bits = qemu_target_page_bits_min();
+> +    state->target_page_bits = migration_legacy_page_bits();
+>       return 0;
+>   }
+>   
+> @@ -462,8 +463,7 @@ static const VMStateInfo vmstate_info_capability = {
+>    */
+>   static bool vmstate_target_page_bits_needed(void *opaque)
+>   {
+> -    return qemu_target_page_bits()
+> -        > qemu_target_page_bits_min();
+> +    return qemu_target_page_bits() > migration_legacy_page_bits();
+>   }
+>   
+>   static const VMStateDescription vmstate_target_page_bits = {
+> diff --git a/page-target.c b/page-target.c
+> index 321e43d06f..8fcd5443b5 100644
+> --- a/page-target.c
+> +++ b/page-target.c
+> @@ -9,11 +9,6 @@
+>   #include "qemu/osdep.h"
+>   #include "exec/target_page.h"
+>   
+> -int qemu_target_page_bits_min(void)
+> -{
+> -    return TARGET_PAGE_BITS_MIN;
+> -}
+> -
+>   /* Convert target pages to MiB (2**20). */
+>   size_t qemu_target_pages_to_MiB(size_t pages)
+>   {
+> diff --git a/page-vary-target.c b/page-vary-target.c
+> index 84ddeb7c26..6251d948cf 100644
+> --- a/page-vary-target.c
+> +++ b/page-vary-target.c
+> @@ -23,6 +23,15 @@
+>   #include "exec/page-vary.h"
+>   #include "exec/target_page.h"
+>   
+> +int migration_legacy_page_bits(void)
+> +{
+> +#ifdef TARGET_PAGE_BITS_VARY
+> +    return TARGET_PAGE_BITS_MIN;
+> +#else
+> +    return TARGET_PAGE_BITS;
+> +#endif
+> +}
+> +
+>   bool set_preferred_target_page_bits(int bits)
+>   {
+>   #ifdef TARGET_PAGE_BITS_VARY
 

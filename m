@@ -1,69 +1,68 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2844983njd;
-        Tue, 22 Apr 2025 23:52:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPygm2tThq7+4DLJhkjgEY8Wt4AVu10D01OXYHIl08G/67G0IeNVn+bgyrTJJbqCsu3LHmtrz7yYU2mw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIEPSh6bBI4LVxdRg6iECHGGz+1uwDy3bK8G9gjqZsUsCEO8uPsKPbPmZX5mlqcaF/JQN3
-X-Received: by 2002:a05:6214:e46:b0:6f0:e2d4:51fe with SMTP id 6a1803df08f44-6f2c4574ea0mr270251936d6.26.1745391146772;
-        Tue, 22 Apr 2025 23:52:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745391146; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2846527njd;
+        Tue, 22 Apr 2025 23:57:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWC63/6LZVRMNvRjKCAzvVvY/RpE4a0+q603+AEuUZEKHQJjDqic5mxZdawJtkgaDWLgHDlH211BT6aig==@linaro.org
+X-Google-Smtp-Source: AGHT+IHJ+3mUaF9fdKlFropObxiHFditLUys7hIdSl8U54bPlb+VPJkGQyCPgpEhovhgRyz8roPY
+X-Received: by 2002:ad4:5d43:0:b0:6e6:602f:ef68 with SMTP id 6a1803df08f44-6f2c455698bmr404249226d6.10.1745391457306;
+        Tue, 22 Apr 2025 23:57:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745391457; cv=none;
         d=google.com; s=arc-20240605;
-        b=b761VlxMU8JEg03rUzJ3ZeAKWiN5JmWyBl3kKFweTCD7p2RuJ32iT1oJsIgz4Jg8nE
-         TpgsNe+mAJo3Z+Ql5KQa5K/db4LNyp2DsY8icCPPsEt4EOecz3CG7Mwrew2jrrPi3MbD
-         GzsXMwrX5zACTgTRlNIBq4usizPw9JODlgmYWWXQs9QFI+qaEIq/hAWBCMu6uwmhJdpw
-         JKO8rAI+iLHDpRswqQWtbIwR9Js6DcF9kjTdCnlGIumUrvaIBPvoCJN5OsSBUN+LHVBM
-         SblSw8C00PTj8tYzdWC6RZ/CxAHRHLGfxGafOsXGP/2B8goZThuGXGETN1BbVG/8D/OW
-         hU2w==
+        b=UIa3ayd0/kjtUH6esHfqvXqbt1+Vp1009aSZz5sRupsfrCgF3XA+WF485TKymiJBII
+         DZrEdzz0g4nGWUf3oIeQDdmWbAzJyYDGbBzYCr1ey4kC+7mCT5l6UFmcURO6598AB2Sj
+         EPslmFkUclGk77wz/xHgZRRewkbl70lZEnPVyHq8kdyWOcqBmnPxSrFEgWDeDobPd41L
+         5d9ipymdRArCuyRw2p+Wmv0IxDPHIdLe2z8WO+BdmDInfUxz40a7a8JEimIsJFo5Mrqb
+         nAn3RT/Y9ziTWrzpKmpbqT9/HxS8CQ18chbDaxgLESephHzvkkqE1GDHKsgTTO1X2xkV
+         DL9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=3nk6eF1j+ksSpj6V4hg+MuXwD1J9FNKX2CWrR0d64As=;
+        bh=tSN/KzGgf5Sp2DHpVpcvLKNMKQ+nnht/z8CeVvhegv8=;
         fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=LWWMglUJbypimX/xaQgEXWIVQ+GvLYH9dDdo/Cqrm+cBGgDN8IvGzi4OlRT+vCbzfO
-         6fC7g7glWHlEjjY9IS4aRMQb/UNO6jCBe5+iQJagYSlIQRufeZDpuHLU7UAyPyJG55Af
-         K2qm4HMwewG+xWcjuz+7pg94t8ct6tg7ykpBxfYFjNXSk627qQq2p9xljhlfKoPyjlMc
-         E3Wq18z7650eo+AZcqQ9gmho2czE++zr4+9FPdAzPgChZgPNRjekvs2nxF3HHv+Xav4a
-         /kRq0GmaE1Mrt/YcmonoI8EUug/mcxl4UXveP37cCzAzKEglzW8ymhIiq5Ndh/iO/xaX
-         0f1Q==;
+        b=WcVGjheWJ7Isy7CcWGEhsWw6IeIfpwa7Mt4JklCSJtk60xsOwg4Mb6GkNchYWy75bG
+         Cx7DjoMXSEHzHfOUbtdC4RTeTWxDEFs4B/CrWS+UZ0o09W0RtkPdt09AVLXIPiQLHw2E
+         tp1thVgMzLCf8V9sIThv3/uONd0TJ6lvllmNKMLGD3V748jLP3cSFS8NvqgPktdruYRS
+         wUQscD2As6huiB/BTH7xcYZAh+nWAxYCvYINcXP8c3MBpP7j/UjJCTgzk31Ctnt3dbIt
+         75U1ZGjMTvpWLFfbulN5Br59CLiJlrMZEyXP/Vv5LShch8DSrr1IWWwoQNPeJSk3fAEX
+         HUAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2b062a7si122397266d6.35.2025.04.22.23.52.26
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2be821asi124168366d6.257.2025.04.22.23.57.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Apr 2025 23:52:26 -0700 (PDT)
+        Tue, 22 Apr 2025 23:57:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7TxZ-0001Mg-Oh; Wed, 23 Apr 2025 02:51:53 -0400
+	id 1u7U2t-0003FJ-Qb; Wed, 23 Apr 2025 02:57:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7TxX-0001MS-Nk; Wed, 23 Apr 2025 02:51:51 -0400
+ id 1u7U2q-0003Em-3A; Wed, 23 Apr 2025 02:57:20 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
- id 1u7TxR-0005ic-NQ; Wed, 23 Apr 2025 02:51:50 -0400
+ id 1u7U2o-0006Nh-0F; Wed, 23 Apr 2025 02:57:19 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Zj8sN08yDz4xMG;
- Wed, 23 Apr 2025 16:51:36 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Zj8zv3P1Rz4xMG;
+ Wed, 23 Apr 2025 16:57:15 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Zj8sK0Yrcz4wbf;
- Wed, 23 Apr 2025 16:51:31 +1000 (AEST)
-Message-ID: <1d81f251-d52a-47a2-92d1-38d6d8957a06@kaod.org>
-Date: Wed, 23 Apr 2025 08:51:28 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Zj8zr32j5z4xM3;
+ Wed, 23 Apr 2025 16:57:12 +1000 (AEST)
+Message-ID: <36776a1b-6a09-4d08-8a97-d528c593e4db@kaod.org>
+Date: Wed, 23 Apr 2025 08:57:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] tests/functional/aspeed: Update test ASPEED SDK
- v03.00 for AST1030
+Subject: Re: [PATCH v2 0/3] Update to test new ASPEED SDK version
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +71,6 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250423014008.147542-1-jamin_lin@aspeedtech.com>
- <20250423014008.147542-4-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +115,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250423014008.147542-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250423014008.147542-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -143,48 +141,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jTrtvp57mgNz
+X-TUID: qsyR5MU6ik3u
 
 On 4/23/25 03:40, Jamin Lin wrote:
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> v1:
+>    Update to test new ASPEED SDK version for AST2600, AST2500 ,and AST1030.
+> v2:
+>    Fix review issue for AST1030.
+> 
+> Jamin Lin (3):
+>    tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2500
+>    tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2600
+>    tests/functional/aspeed: Update test ASPEED SDK v03.00 for AST1030
+> 
+>   tests/functional/test_arm_aspeed_ast1030.py | 10 +++++-----
+>   tests/functional/test_arm_aspeed_ast2500.py |  8 ++++----
+>   tests/functional/test_arm_aspeed_ast2600.py | 15 ++++++++-------
+>   3 files changed, 17 insertions(+), 16 deletions(-)
+> 
 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Applied to aspeed-next.
 
 Thanks,
 
 C.
 
-
-> ---
->   tests/functional/test_arm_aspeed_ast1030.py | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/tests/functional/test_arm_aspeed_ast1030.py b/tests/functional/test_arm_aspeed_ast1030.py
-> index d45d9f7c1c..77037f0179 100755
-> --- a/tests/functional/test_arm_aspeed_ast1030.py
-> +++ b/tests/functional/test_arm_aspeed_ast1030.py
-> @@ -12,17 +12,17 @@
->   
->   class AST1030Machine(LinuxKernelTest):
->   
-> -    ASSET_ZEPHYR_1_04 = Asset(
-> +    ASSET_ZEPHYR_3_00 = Asset(
->           ('https://github.com/AspeedTech-BMC'
-> -         '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip'),
-> -        '4ac6210adcbc61294927918707c6762483fd844dde5e07f3ba834ad1f91434d3')
-> +         '/zephyr/releases/download/v00.03.00/ast1030-evb-demo.zip'),
-> +        '37fe3ecd4a1b9d620971a15b96492a81093435396eeac69b6f3e384262ff555f')
->   
-> -    def test_ast1030_zephyros_1_04(self):
-> +    def test_ast1030_zephyros_3_00(self):
->           self.set_machine('ast1030-evb')
->   
->           kernel_name = "ast1030-evb-demo/zephyr.elf"
->           kernel_file = self.archive_extract(
-> -            self.ASSET_ZEPHYR_1_04, member=kernel_name)
-> +            self.ASSET_ZEPHYR_3_00, member=kernel_name)
->   
->           self.vm.set_console()
->           self.vm.add_args('-kernel', kernel_file, '-nographic')
 

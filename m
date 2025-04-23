@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2750109njd;
-        Tue, 22 Apr 2025 18:40:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWnCJfj99K7tpddBwlN6nvuDK4WD+48Hfwvit2xIe9v0T5FGvxMtPbS9p2AqdT3PLHuNS6ZPYEgmmmldw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGca6ilHFN2ypP8H1PJJ2ZRDuwal0Hu3Fie/NV21MwMOT7mWv2SflaietXFP6UkrSpIxBSC
-X-Received: by 2002:ac8:7e84:0:b0:476:6b20:2cef with SMTP id d75a77b69052e-47aec4b50cbmr343658491cf.41.1745372443690;
-        Tue, 22 Apr 2025 18:40:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745372443; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2750255njd;
+        Tue, 22 Apr 2025 18:41:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgWPgJ4wNu+723WGvNghnzJSWgFsRC62PswZ9BL/9r4TODb1q+/j8tNsZdsqNL/dRNmD047JTljA4spQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEi3kIFLaDDOU9AQDnSeAGjBdolQWYMOh/xy6zKiMeUXtGDQsayU02+hBXuJnZZvH7v5DPX
+X-Received: by 2002:a05:620a:2586:b0:7c5:96b4:f5e5 with SMTP id af79cd13be357-7c927f849a9mr2487362385a.13.1745372477033;
+        Tue, 22 Apr 2025 18:41:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745372477; cv=none;
         d=google.com; s=arc-20240605;
-        b=SRz2z3CItdhqAK9Wgkp1tmIjfaRgvP9Ncf4c9woXjrit+Fys266HRXxLdg2xUxPnho
-         Gcha6SfK2+EC4t1Z17LK3aGcCmeQG3TEOfQ2UqbpxBAjDAD5ZhTKwKRL9AQ59ZiSKVpd
-         woxBhGT8TadRlTborAczdGhnwKi04EUHWVSCPPikUxV/WTKqBkiOvEyTyKLzYid+Htd3
-         IiWxWYzqpJ8GqQd7VLkOoOLudttXOLsxnkR0wZ2jCQ1gAuGzPjcik5WbzuPVZlr1mA8J
-         +CFIzKXbMcCJo04RTEva6Ba1Uj2ou8IH13aVt+jbtHhRsKdcs3ErWhuXmWrifYbr6eHk
-         29lA==
+        b=BMcAL68y7vDq2jGff3+VPpWEmuDczdm9lb72gz9djiQ4BzLYOuBYMICAb4qAQQx3xD
+         /mFIjJi24c/hNUFT/VuaFn5Zc/NbYw/wJ4NnR1CtiE04FPujkMS28mNmMvoyndno4bUy
+         obp2qblQINXJSDY7fOgzinwn9F97I9lfhBA5sv8tQBhAYkrUg7y9G8iX1sDVLGJgOLV/
+         KV9fx+bAV8ZzPKBfYOqcvnGnyywKQPpgHVKizJoWsmhShU7ZZMe6dGLD7XdKBBf/sm04
+         pNMb75ov0lDhHsFmxZ7nJ6KIbeRGBat/pSvMCh3tX7lmVn2iaSUeFcZDLTxzifnxo6NL
+         G2dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=9oQYGliNJ615rSHqI0dIX7snVAK68EviWQcVoInEnos=;
-        fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=FhaXZkZ8IPWaFCxAInYSqeN5e7oc/KebnDoDxhegeJptVm1Cug1R8YJYvvRuegmKiJ
-         hzyvMQSVipgXA9iSisQLlrij/f3GKBzgpu+zkvhUo78LpT4nYGheSRIKQYW1TpQ4uh54
-         wkiOzJTBM28iUJLy2pPzy1QVqBZiSn5pJT+pbg9Pgc9vDm+k7cBo8ir1c5xuwoA8X9eH
-         2yjWyPXr4Tv1BUvfrt2Jt0qGHmEG7UMNS4A1men+Q9RAGJi0YIwjxQBqQIAFjQWbipAW
-         enPmlSQryZ3y2Zf0hYzxM0Pz9WFqWRc/0wGQCs6hrvPdOfcc9/ASQ5wi3/H7orc9Bd1b
-         ECaQ==;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=VkeZeYXKqgECnAaqK90yltSl9g5aq2IrzL8z6UlCFBU=;
+        fh=no4a9QA/0zeIocEYrBrieE6XYIGB9KPekpO3W6wNjNE=;
+        b=N6ZUD0vjsGNLx33r1E4imIZMEmbR3UJL49mOY0+ZiapQBaLfrMPVem/jBpa0KdVcUz
+         TkuiWWavscw8k7D8Yy4BdMUEE7pjM+e2ENib/s7iV+R7SsMggvOyC+d9stHXoexarEdk
+         RMf5+gHuCl2dZA2g4V79LsG8mFqhxYjFpuHFqNQuC36+9L9Lu+K818YPnaXpzm/qlvh8
+         8FoCWgkhFyV/G2v6zGnDAAD3XpDobGAg8bh0/NxwxuwYUCRYd2shnlBpfCcIny6iTTpO
+         3/6Opwzqs7h006rXR5JXphDj5ysII044UWnISH0BfXFxqWMOu6wk/YdN08TXi2GeLuU7
+         X0Og==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ae9ceeaacsi128241741cf.610.2025.04.22.18.40.43
+        by mx.google.com with ESMTPS id af79cd13be357-7c925ba4b50si1227687985a.429.2025.04.22.18.41.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Apr 2025 18:40:43 -0700 (PDT)
+        Tue, 22 Apr 2025 18:41:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7P6B-0007XY-SE; Tue, 22 Apr 2025 21:40:28 -0400
+	id 1u7P6F-0007ZD-7A; Tue, 22 Apr 2025 21:40:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7P69-0007W5-8q; Tue, 22 Apr 2025 21:40:25 -0400
+ id 1u7P6D-0007YR-L6; Tue, 22 Apr 2025 21:40:29 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7P63-0004FX-AR; Tue, 22 Apr 2025 21:40:25 -0400
+ id 1u7P6B-0004FX-Ia; Tue, 22 Apr 2025 21:40:29 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 23 Apr
@@ -63,22 +63,26 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 0/3] Update to test new ASPEED SDK version
-Date: Wed, 23 Apr 2025 09:40:04 +0800
-Message-ID: <20250423014008.147542-1-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2 1/3] tests/functional/aspeed: Update test ASPEED SDK v09.06
+ for AST2500
+Date: Wed, 23 Apr 2025 09:40:05 +0800
+Message-ID: <20250423014008.147542-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250423014008.147542-1-jamin_lin@aspeedtech.com>
+References: <20250423014008.147542-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.399,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,23 +99,37 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N/nMQLLDACXL
+X-TUID: wv715xNUaLTH
 
-v1:
-  Update to test new ASPEED SDK version for AST2600, AST2500 ,and AST1030.
-v2:
-  Fix review issue for AST1030.
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/functional/test_arm_aspeed_ast2500.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Jamin Lin (3):
-  tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2500
-  tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2600
-  tests/functional/aspeed: Update test ASPEED SDK v03.00 for AST1030
-
- tests/functional/test_arm_aspeed_ast1030.py | 10 +++++-----
- tests/functional/test_arm_aspeed_ast2500.py |  8 ++++----
- tests/functional/test_arm_aspeed_ast2600.py | 15 ++++++++-------
- 3 files changed, 17 insertions(+), 16 deletions(-)
-
+diff --git a/tests/functional/test_arm_aspeed_ast2500.py b/tests/functional/test_arm_aspeed_ast2500.py
+index 1ffba6c995..90f3940e2a 100755
+--- a/tests/functional/test_arm_aspeed_ast2500.py
++++ b/tests/functional/test_arm_aspeed_ast2500.py
+@@ -38,14 +38,14 @@ def test_arm_ast2500_evb_buildroot(self):
+ 
+         self.do_test_arm_aspeed_buildroot_poweroff()
+ 
+-    ASSET_SDK_V806_AST2500 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
+-        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
++    ASSET_SDK_V906_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2500-default-obmc.tar.gz',
++        '542db84645b4efd8aed50385d7f4dd1caff379a987032311cfa7b563a3addb2a')
+ 
+     def test_arm_ast2500_evb_sdk(self):
+         self.set_machine('ast2500-evb')
+ 
+-        self.archive_extract(self.ASSET_SDK_V806_AST2500)
++        self.archive_extract(self.ASSET_SDK_V906_AST2500)
+ 
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2500-default", "image-bmc"))
 -- 
 2.43.0
 

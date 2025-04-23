@@ -1,173 +1,165 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2827614njd;
-        Tue, 22 Apr 2025 23:01:44 -0700 (PDT)
-X-Received: by 2002:a17:90b:2b8b:b0:2ff:502e:62d4 with SMTP id 98e67ed59e1d1-3087bccb0d8mr22099574a91.32.1745388104198;
-        Tue, 22 Apr 2025 23:01:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745388104; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp2837570njd;
+        Tue, 22 Apr 2025 23:29:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVToNf9EXD2fnc4eWZKSZ9JXqlre9U+C7z54a/8/b7SPpBdn9NPgd+GDg8nNBp4RaOoiHRWO/DAGRBtxA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHXQXLMi2DQX6ujps1S2H6A8f8z4BxaW1yNpLL2svN1NkvlenRE1TNwGx9frqBDwrVzcFW
+X-Received: by 2002:a05:6214:1c49:b0:6ea:d033:2853 with SMTP id 6a1803df08f44-6f2c455326dmr317136436d6.16.1745389781893;
+        Tue, 22 Apr 2025 23:29:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745389781; cv=none;
         d=google.com; s=arc-20240605;
-        b=gmwowTqAoN5WP7W9qkM9bj8xlm6lGoQZfyXoxMvAw/EYmWOf3H9BjvYTmZbexgFbf0
-         A/Wu1Q/Z4NIlRBmj102o345JAT79TvfJZWPpvW+WXsxTuxYPVaFw2S8ixW5Ob/op7Slj
-         96NFFhax2N+BJeIfMcrcRZKZtzym1PmvHSKofZexK0yyUr4R6tLyey9NdzysUtPR/zER
-         9JdxHZD2NS7XbIZ9iIh4dAWou6wxAaBP3dibzf3XMViJBfK8at+L6HTfIEoQ5kALMh3p
-         LaPsqFQ3Ik6aYbkRbRj8yclVwb1tHCCGBtDeL+eqlzctBi4zpG0+cqMJannc1y8631Dj
-         HtGQ==
+        b=JDOccd+SZ041rkNz9CCM765aHzFVkK0+JTH5BTvgyGZwJ/DNgDOSwpxONgM2pWWmbh
+         bDorJmH0sI+V1I0a5cPW2O+khvbTbR9hELmRaU5/9rK2PGC+zUw3oxUjx6LOKSzTkHAc
+         LbBOsFzs5yZr3j3toASRZZOzq3zdyQAwKOXSxie+QMLeXjms8CJgmBzuGmc4tEBp9LI4
+         d9rbzYvk4YSTM7r6J1lV1D/vN09BNrY3HFuZqGRMUd7IN29K1uwU84HCN0l+1xgVuE77
+         IHdWx84cYutv0niD853r+s9OvjNcAPieh8qbwBxiA1BgYUNYWfVs8wFWtS6H1qeOjX9X
+         I4jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=75V2zUF4G37A+7ojkne1bi0Ew25Suvv6XvzMaaSL0es=;
-        fh=QyN4MfWE7fI/6ejWR7rOotfoL7x5In4pdDzSa7I5H+k=;
-        b=ZNwadBD+Pv8+TrAiDeMUA3hDbnHPSE8tpMs/FFz49yJRdI/rFJXE77RyzIvqbgEaps
-         QR7b035Z8z8hF7+wXsxJZBOCH5FYHBRB6YwUaXZgO53lVce5pUVbxBog8ye7DtQSxrMD
-         qiuusuGmpzYOuyzGlfMS+ZRUoRPflQSVskUvsk/v4CkISn00QLfZ//YMg7py1fmjykQx
-         RpKzSYm318covCvFuabj0NfOncDGSFUMSLy2f9+cDR5gebupjeB69ZoL4FnUURjOZp8Q
-         y6XIQdxL/4AkywLoi+g/P/AgMwQ0Ey4Tq8LmegiBYl3mcUp0xs7Za/puHmqrkL3XnW0Z
-         5LVw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=PnYUIGVbHUNS49WFTP8lUIYZ/wJDXeanFD2CPqOnTtY=;
+        fh=3rKPZdUuFWTjW77V+gzyfcNhrwTTGaILZiEtMVNiUFo=;
+        b=kxphxGRgIT5S1vloiaEzcsaaVdkmKcdGOIMKRXFnE/P8SDvkofJH9sNW9XSxy9s7AA
+         2wcuXiGryIo9Ccsc2WHJbwViZ6NjRkXgymfheDz1jl8EDNAy3ndMTSAlZ2bzK8xLPJ79
+         vtEyTpZalXiL24UyeVHlEZ1hpFMCLk+uMIFoLBDBOllDbFpZsPYfrzAaJ+dJlUshAivp
+         Ne8yOdESkj0GAbr6iwVZF43G8BIrGi7t52rd+Mj3xRaWMiAM427hrcP0EgIzMgpWoS59
+         mvBuK82Itae0SPNyWEJ9r8jPmZ0qoywvbJVL4rUutlGzPNXjvNHW4UCrYNWCUserwvDs
+         /QLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fW3GhVz1;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-3087a703020sor7471291a91.6.2025.04.22.23.01.43
-        (Google Transport Security);
-        Tue, 22 Apr 2025 23:01:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f2c2b01e07si123817076d6.62.2025.04.22.23.29.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Apr 2025 23:29:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fW3GhVz1;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745388103; x=1745992903; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=75V2zUF4G37A+7ojkne1bi0Ew25Suvv6XvzMaaSL0es=;
-        b=fW3GhVz1zv3LrC9VGmxQQgVM8xBw+Ey4wEZf9SWDgVRFxqXVWGxnmakInVKPNz6eCn
-         QYwHmdcrBV2Z6WBaT7qPOBXrfTcnvsRMhZKvMUUZmaLm+5RnooHZZqwfXbJioh6/jWl0
-         0i3l8mmtqh3Rfa6jt0wYo6pgWGxgBn/skm7PYBPczYlSvpUigm8/pVbwrQyk1ELl3EfB
-         Q9hYls6RSVNJUJkRhtESpxL5R83bJYbcboImESdQ6x7ASn5kUvFXlzgi6GkbeWgQ3Tbl
-         4QBUppjweJ3fuOy7lEY0F0eDfS4E8k6g+Yh+UmWpS3200bH1qmi1MzPZPGmqMQtbUs0t
-         95vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745388103; x=1745992903;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=75V2zUF4G37A+7ojkne1bi0Ew25Suvv6XvzMaaSL0es=;
-        b=Wsmk8ojas2gQTpsqaZ1X4iEgow5LFodhvlcSuMLJciD3j927TYvLSb/HKskH76feoR
-         RZz7JM0BCC4bxq03MPdVxk+OUtmB9hk6KxwNABDwd+meFwxGVTA630dWvkF4n/fueAJe
-         qJr0bb26KqjiOxL1Fm7H7Njo019H3obuiFold018c4t2tLs0zsfpkte0aiG7it36csO4
-         ZGXCoHH1sY1uySq+1vBFI9gkW4YbsJOKhBuWvoP1v5ddJXCaRamrTllA9O1xCxr0UFDt
-         1UrRfXh5/af6BqpIs/PtdcAc1adU//vgvkMl1a82EIcdUqxGLJH44CaNyxGdZn83sx2C
-         VI1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUYMBlgAfPlksjcT5YqQ4MVpXYQZflpFkcc3myVrNG0pSz3xNpvN26Lra+jOZsDJuLbGjr4Em6o87BYIuS0UTJFsA==@linaro.org, AJvYcCWuUZKnXEdWk3xQJSiws8oMf4GLVKB7YfpvjxwHY4pXdT54euUN8hMMBcumQWRRXiqsU3NCuHKFway9sH5x@linaro.org, AJvYcCXA0eVymDIP2NS+R/OF08II0yJvHaJdnWWO9lkd9GRd/3qR484XPJZ5926tmPc5KSVcxZexMd+abMgehXeMmDLFPv0=@linaro.org
-X-Gm-Message-State: AOJu0YzwTLLDStW0fLx7Dj6gwtAtJvO5hvQCvIZsJo2+d5bDXRVke89/
-	JgJwgiPm3G5ash7wUSzj4iYhUrJYHMfa6k/eTV1RadGoqo3h+cMLrmd3p+qmeo9MHgK0zVxExmi
-	x0qh6bMkMlbwh/RKha6i1hwzfsUWZlnL07aQ=
-X-Gm-Gg: ASbGnctr6SNUW83xDsKAfpfJiiHiGdtVfQoqHbFTX68XjS78ovC2imsU+VvnNwsz3aq
-	hC74W/9MdZBnS1qokBsMbHlT7xWw9PejyObiK3R5PUn+P/uEKSS/8cJJtFWWIWJg+n5A3LVAqJk
-	0+XbluaI2X+d1jW177rzK1lQuLqFpNvUM2lcAsC1yCDtAOZxJUyeXSw+MLGQ3+VKM=
-X-Google-Smtp-Source: AGHT+IF64z5wKPzTJg/n9OD0eLWYp+yiZBMBwrvB+l+qjOffdfHgzpWEL7Jo3pzSu4UBC4S2i0z4JhIyxFME2Cwj1Qw=
-X-Received: by 2002:a17:90b:254d:b0:2ff:62f8:9a12 with SMTP id
- 98e67ed59e1d1-3087bbc2a72mr23062304a91.23.1745388103371; Tue, 22 Apr 2025
- 23:01:43 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u7Tbo-0002vR-7L; Wed, 23 Apr 2025 02:29:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maobibo@loongson.cn>)
+ id 1u7TbS-0002Zz-NU; Wed, 23 Apr 2025 02:29:02 -0400
+Received: from mail.loongson.cn ([114.242.206.163])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <maobibo@loongson.cn>)
+ id 1u7TbO-0003Ji-4f; Wed, 23 Apr 2025 02:29:01 -0400
+Received: from loongson.cn (unknown [10.20.42.62])
+ by gateway (Coremail) with SMTP id _____8BxlmmdiAhooHXEAA--.63135S3;
+ Wed, 23 Apr 2025 14:28:45 +0800 (CST)
+Received: from [10.20.42.62] (unknown [10.20.42.62])
+ by front1 (Coremail) with SMTP id qMiowMDxvhuXiAhodEaRAA--.48008S3;
+ Wed, 23 Apr 2025 14:28:42 +0800 (CST)
+Subject: Re: [PATCH V2 0/3] acpi: Add machine option to disable SPCR table
+To: Li Chen <me@linux.beauty>, Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>
+References: <1965d621e25.fafa759e911037.825810937022699867@linux.beauty>
+From: bibo mao <maobibo@loongson.cn>
+Message-ID: <dea44766-af4a-98ad-54fb-bee8fe647d3f@loongson.cn>
+Date: Wed, 23 Apr 2025 14:27:36 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
- <73301cc216217d5c3e0d7acdd32482e36f4f045c.1745295397.git.ktokunaga.mail@gmail.com>
- <e163300b-307f-46d9-9bf3-10f17c998e78@linaro.org>
-In-Reply-To: <e163300b-307f-46d9-9bf3-10f17c998e78@linaro.org>
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Wed, 23 Apr 2025 15:01:30 +0900
-X-Gm-Features: ATxdqUEgMiBMXQqp1DS_p2pUXzotO2Zb8dScDj2LI8F234aM8mnRYFR9cYzrLXk
-Message-ID: <CAEDrbUZkh6P8y8gSf9jcJSYwBDGVYY-dd9EYhcFtEHFUVqV0UA@mail.gmail.com>
-Subject: Re: [PATCH v2 11/20] util/cacheflush.c: Update cache flushing
- mechanism for Emscripten
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
-	Mahmoud Mandour <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Francisco Iglesias <francisco.iglesias@amd.com>, 
-	Vikram Garhwal <vikram.garhwal@bytedance.com>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
-	David Hildenbrand <david@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000e5a29306336bd5c4"
-X-TUID: CsLJxz4Ad7dH
+In-Reply-To: <1965d621e25.fafa759e911037.825810937022699867@linux.beauty>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: qMiowMDxvhuXiAhodEaRAA--.48008S3
+X-CM-SenderInfo: xpdruxter6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBj93XoW7ZrWxJFyftw1Dtw4rCw47ZFc_yoW8Wr1fpF
+ 4qka45Krs8Ja4ak3Wfu3ZFgr1rXFs3GFWUGrW3Jas5GwsxKr10yrnFkryj9a1qyw15Xr1j
+ vrykKF1Uurn8AFXCm3ZEXasCq-sJn29KB7ZKAUJUUUU3529EdanIXcx71UUUUU7KY7ZEXa
+ sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+ 0xBIdaVrnRJUUUPYb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
+ IYs7xG6rWj6s0DM7CIcVAFz4kK6r1Y6r17M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+ e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+ 0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_
+ GcCE3s1ln4kS14v26r126r1DM2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12xvs2
+ x26I8E6xACxx1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r126r1D
+ McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lc7
+ I2V7IY0VAS07AlzVAYIcxG8wCY1x0262kKe7AKxVWUAVWUtwCF04k20xvY0x0EwIxGrwCF
+ x2IqxVCFs4IE7xkEbVWUJVW8JwCFI7km07C267AKxVWUAVWUtwC20s026c02F40E14v26r
+ 1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij
+ 64vIr41lIxAIcVC0I7IYx2IY67AKxVWUCVW8JwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr
+ 0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF
+ 0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07j5o7tUUUUU=
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=maobibo@loongson.cn;
+ helo=mail.loongson.cn
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.292,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DJUo5vMK5Q22
 
---000000000000e5a29306336bd5c4
-Content-Type: text/plain; charset="UTF-8"
 
-Hi Philippe,
 
->On 22/4/25 07:27, Kohei Tokunaga wrote:
->> Although __builtin___clear_cache is used to flush the instruction cache
-for
->> a specified memory region[1], this operation doesn't apply to wasm, as
-its
->> memory isn't executable. Moreover, Emscripten does not support this
-builtin
->> and fails to compile it with the following error.
->>
->>> fatal error: error in backend: llvm.clear_cache is not supported on wasm
->
->Note, you mix LLVM error ...
->
->>
->> To resolve this, this commit removes the call to __builtin___clear_cache
-for
->> Emscripten build.
->>
->> [1]
-https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcache
->
->... with this GCC documentation:
->
->   If the target does not require instruction cache flushes,
->   __builtin___clear_cache has no effect.
->
->I'd expect __builtin___clear_cache() to be OK, having no effect on a GCC
->WASM implementation.
+On 2025/4/22 下午8:03, Li Chen wrote:
+> This series introduces a new machine option, spcr=on|off, allowing users
+> to disable the ACPI SPCR (Serial Port Console Redirection) table.
+> By default, SPCR is enabled. Disabling it can help ensure that the guest > console behavior is determined solely by kernel command-line parameters
+Hi Li,
 
-Thank you for the feedback.
-Although Emscripten supports built-in functions using GCC-compatible syntax,
-the corner-case behavior looks different from what's described in the GCC
-documentation, as shown in this patch. To avoid the confusion, I'll remove
-that link in the next version of the patch series.
+SPCR only provides serial port HW description information.
 
---000000000000e5a29306336bd5c4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+However how to use is determined by Linux kernel, Can you describe the 
+detailed scenario which is unintended serial console configurations 
+imposed by firmware?
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,</div><div dir=3D"ltr"><br></=
-div><div dir=3D"ltr">&gt;On 22/4/25 07:27, Kohei Tokunaga wrote:<br>&gt;&gt=
-; Although __builtin___clear_cache is used to flush the instruction cache f=
-or<br>&gt;&gt; a specified memory region[1], this operation doesn&#39;t app=
-ly to wasm, as its<br>&gt;&gt; memory isn&#39;t executable. Moreover, Emscr=
-ipten does not support this builtin<br>&gt;&gt; and fails to compile it wit=
-h the following error.<br>&gt;&gt; <br>&gt;&gt;&gt; fatal error: error in b=
-ackend: llvm.clear_cache is not supported on wasm<br>&gt;<br>&gt;Note, you =
-mix LLVM error ...<br>&gt;<br>&gt;&gt; <br>&gt;&gt; To resolve this, this c=
-ommit removes the call to __builtin___clear_cache for<br>&gt;&gt; Emscripte=
-n build.<br>&gt;&gt; <br>&gt;&gt; [1] <a href=3D"https://gcc.gnu.org/online=
-docs/gcc-14.2.0/gcc/Other-Builtins.html#index-_005f_005fbuiltin_005f_005f_0=
-05fclear_005fcache">https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Other-Bui=
-ltins.html#index-_005f_005fbuiltin_005f_005f_005fclear_005fcache</a><br>&gt=
-;<br>&gt;... with this GCC documentation:<br>&gt;<br>&gt; =C2=A0 If the tar=
-get does not require instruction cache flushes,<br>&gt; =C2=A0 __builtin___=
-clear_cache has no effect.<br>&gt;<br>&gt;I&#39;d expect __builtin___clear_=
-cache() to be OK, having no effect on a GCC<br>&gt;WASM implementation.<br>=
-<br>Thank you for the feedback.<br>Although Emscripten supports built-in fu=
-nctions using GCC-compatible syntax,<br>the corner-case behavior looks diff=
-erent from what&#39;s described in the GCC<br>documentation, as shown in th=
-is patch. To avoid the confusion, I&#39;ll remove<br>that link in the next =
-version of the patch series.<br><br></div></div>
+Regards
+Bibo Mao
+> on arch like arm64, avoiding unintended serial console configurations imposed
+>   by firmware.
+> 
+> Also add tests on AArch64 and RISC-V virt machines using TCG and UEFI boot.
+> 
+> Changes since v1:
+> - Add bios-tables-test for RISC-V and ARM as suggested by
+> - Add Acked-by from Michael S. Tsirkin for the first patch
+> - Add Reviewed-by from Bibo Mao for the first patch
+> 
+> Li Chen (3):
+>    acpi: Add machine option to disable SPCR table as suggested by Philippe Mathieu-Daudé
+>    tests/qtest/bios-tables-test: Add test for disabling SPCR on AArch64
+>    tests/qtest/bios-tables-test: Add test for disabling SPCR on RISC-V
+> 
+>   hw/arm/virt-acpi-build.c       |  5 +++-
+>   hw/core/machine.c              | 22 ++++++++++++++++++
+>   hw/loongarch/virt-acpi-build.c |  4 +++-
+>   hw/riscv/virt-acpi-build.c     |  5 +++-
+>   include/hw/boards.h            |  1 +
+>   qemu-options.hx                |  5 ++++
+>   tests/qtest/bios-tables-test.c | 42 ++++++++++++++++++++++++++++++++++
+>   7 files changed, 81 insertions(+), 3 deletions(-)
+> 
 
---000000000000e5a29306336bd5c4--

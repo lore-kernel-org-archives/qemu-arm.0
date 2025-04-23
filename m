@@ -1,161 +1,223 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3022251njd;
-        Wed, 23 Apr 2025 06:10:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW8kjaFrZFxqLthgr4x++cD32M5bmZ7ocFbiyJMEk51fCh0bfAlmC77JoImZKtTZWzV+shGqkp9IWI+JA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHScPCtBv+JemuXs6zXtY3koPK1rlvkaAjxNregHtPhyKaR0wELhKGHQtDaFZF0dH0Xm/4C
-X-Received: by 2002:a05:600c:a4b:b0:43d:683:8cb2 with SMTP id 5b1f17b1804b1-4406ab96871mr190646165e9.14.1745413840868;
-        Wed, 23 Apr 2025 06:10:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745413840; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3037059njd;
+        Wed, 23 Apr 2025 06:34:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXlmafXe4pNnLv24lHX7CLCpDmIiYhQ5X8JzDyi6tNC61fKs+BUCcPfs/sWFCqPHHyIxB2L7zR+5wvKeQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeC5F8kWjyZf7j64ckeMdNHzF6gNs9XgPjjHb4lH1+ODmywqMku2MgwLrUd0/QoCb53FWS
+X-Received: by 2002:a05:620a:2890:b0:7c7:a538:490 with SMTP id af79cd13be357-7c927f6317amr2480969685a.2.1745415252596;
+        Wed, 23 Apr 2025 06:34:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745415252; cv=none;
         d=google.com; s=arc-20240605;
-        b=XuP20V/81blvr77c88JCddJ0wRUwehmX1i6o/yN+RXuPMk/PRAC5/pBb+17tMpW3v1
-         8bTbfGpWP3je97IpIm3n02p6HtZ3IGu06OFw35jQEXopVb/5F3PdJEVAqZHDCOyv23CB
-         xsmeJLZqvPDMocaW8cIX5jFtUC016s8JRsO4PTiZfE44KMzYPR1tD7YEc/Jj+sazaHuc
-         Rt+50mCHLvQ8+aeyTMkx74M7b668gUlG0GuyM7L4Hxi6o2dM39r+Zd3wDHipyWNGWqcZ
-         qunVlk06OS01AgCKLlofoeVTKrLBonlhhwsacS8rl+h+2cLtiiKui0XQGEFLUQnAorKC
-         bvqA==
+        b=O4XBzyJ7rt5Oq7dQd7ajbPIfm0sjMLNZFO1lFYT3s5c30q2B7EKAkCgLRMNFFC6HfQ
+         DYACh5NCPR5ciuf0v19hJNbbmIJI3v/OHiGvIFUw3o4P7hNhLEeaDorG7cyp2JWmx3rZ
+         puKwK6sCAAHksjw8Cq0a3aDXZkOiAwjHvKM+7lXvJ5yfcpaJhnMpVZHWaVrk6Fu8qFeA
+         hOgFFfCHBhn5r7LK0S2Vw3bQ7bH+Ph4zCdScfbhMirAAhjkFTtRiKy44fzjH7pvay2jv
+         R0rNPcHzlrdRLoPGrrn2WR0RtUnM4BLRSZ6aThDG8yL193+73x/1MyN5baQnUm1/rjhf
+         U/dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:from:content-language:references:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=548glwDwT3gf3W/atNFlp97rN1ZgX6DbG9TIWRiaags=;
-        fh=NF6QoBIzwBYEY/PXS34TFheTug0pBhGEadkkR7mjhUo=;
-        b=JJqxpQ8typi0l37TnuaPR7S0BLggB1QizDypIygXeY/IlWGvOGGJcYpWLqr0FQe0fN
-         QnavmI0W8GJyOU/IcUyn1LrcrRGb24+PQcfqw2mw+bfSGLFfS+of4+wnUTcOTyC4Cf6O
-         COICKSP5ExSN7Yd3UVsHfUFerQfhruAQxc1ol6+keVd15fc5XeD4fVLxk1VF3rOjNtIc
-         irUWLL8Lpuvk6Rs2ZWDFZ0E8O57U6AM9sHZiLRErfNYlzOn6bOYtf39w8E2o7x7fOagx
-         ow1t3lP3sW33YOK9z+Agsn2B90kqlh/xazpYDzb937Pim7SGX5rWEyQpBv0kiqoNZegH
-         gr8w==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=pOxpZcZaMV9raW2VckHLZdTdqd81xOS6CbbzRlxetqY=;
+        fh=IjFQ/PTfouaIKRVazmohbvD3kvmYZolj5HCRIXreMAM=;
+        b=gjFndhYKv4y6Wchm02dcyDOrp3w0YIbR0CBlcG270deuuAxH0kuer7q0L8d7vu9zHS
+         6OSOyUg+FC7cgPeHABKJ4d0cXqzZ4slDZqPR57p5sZmwTutJiFJWmYCFqeiUuP+Y/s5i
+         ALd415ruqGA4+0EFtueVjjuEx9jRhdr59xunxBnbtYhEIFYVT6wEot+Rc9C1Eg6mQb6W
+         vXIK2+NMDP+lNRnur6O7oPbY7g8J3IR4vGCvZnMgVPx2DqYPynEGPAFj8MOZs/5KmHSN
+         8F0BVu5Y73/zlXs04YG3pzV5a5ZJKejptw4VMVLhxMKwd7yVfXkiRdrm40aQi4DYeP5E
+         XsJg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=JEANxF7d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-39efa48a8fesi8241588f8f.362.2025.04.23.06.10.40
+        by mx.google.com with ESMTPS id af79cd13be357-7c951008f65si111145985a.508.2025.04.23.06.34.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Apr 2025 06:10:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Apr 2025 06:34:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=JEANxF7d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u7Zrv-0001Y5-LE; Wed, 23 Apr 2025 09:10:28 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u7aEf-0002yr-R9; Wed, 23 Apr 2025 09:33:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
- id 1u7Zrd-0001Ux-3B; Wed, 23 Apr 2025 09:10:13 -0400
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
+ (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
+ id 1u7aEb-0002xn-GU; Wed, 23 Apr 2025 09:33:54 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
- id 1u7Zra-00004q-HN; Wed, 23 Apr 2025 09:10:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
- Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
- Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
- :Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=548glwDwT3gf3W/atNFlp97rN1ZgX6DbG9TIWRiaags=; b=JEANxF7de6Dfhy7fikrBLu4V4g
- EffgbXomWZYUGzJFNAEnpE2Ipn9hajnWxLHTT7Le3qqvKBNutr3yRvilOP5TwkmDgkKJsvtiOVecK
- fwZlcLPf5SOI4UofNltqwyg0lqE9uk5mZq+6c0iZ6t+gL/JCD/jUNdZ2H9LLG9XGqD6vrnt050YrA
- z8jBRPlLpnsrDjwRGuHVVHI3ueEhk8N2Vdf74P19AoXug7BnBOlqMo3JGTWKpwyDzCj/hOsydwArL
- vXYVJC+1wiWJ0dx1h4LZLOPcDh6BsVT0i8sP4c6q9XzKbnm05oNk+WpnuS1qSewtJZGJazoV6MDJw
- vCcrOmvQ==;
-Received: from [167.98.27.226] (helo=[10.35.6.194])
- by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1u7Zqd-001ICB-Te; Wed, 23 Apr 2025 14:09:08 +0100
-Message-ID: <251b8459-3007-4fc2-85b8-aea81e16bc2a@codethink.co.uk>
-Date: Wed, 23 Apr 2025 14:09:06 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org>)
+ id 1u7aEY-0003Un-2i; Wed, 23 Apr 2025 09:33:53 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZjKnN1J22z4xFt;
+ Wed, 23 Apr 2025 23:33:44 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZjKnG2JdHz4wbY;
+ Wed, 23 Apr 2025 23:33:38 +1000 (AEST)
+Message-ID: <5f97c30e-9b34-4da0-a2dc-3a6c07601ccb@kaod.org>
+Date: Wed, 23 Apr 2025 15:33:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH] tcg: allow tb_flags to be larger than 32bit
-To: richard.henderson@linaro.org, pbonzini@redhat.com,
- peter.maydell@linaro.org, mrolnik@gmail.com, brian.cain@oss.qualcomm.com,
- deller@gmx.de, zhao1.liu@intel.com, gaosong@loongson.cn, laurent@vivier.eu,
- edgar.iglesias@gmail.com, philmd@linaro.org, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, shorne@gmail.com,
- npiggin@gmail.com, danielhb413@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- ysato@users.sourceforge.jp, david@redhat.com, iii@linux.ibm.com,
- thuth@redhat.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
- kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-References: <20250423100949.2047161-1-ben.dooks@codethink.co.uk>
-Content-Language: en-GB
-From: Ben Dooks <ben.dooks@codethink.co.uk>
-Organization: Codethink Limited.
-In-Reply-To: <20250423100949.2047161-1-ben.dooks@codethink.co.uk>
+Subject: Re: [RFC PATCH] hw/i2c/aspeed_i2c: Make AspeedI2CClass::gap an plain
+ unsigned type
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>
+References: <20250423120555.21318-1-philmd@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20250423120555.21318-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=188.40.203.114;
- envelope-from=ben.dooks@codethink.co.uk; helo=imap4.hz.codethink.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=wlG+=XJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 31LPgF+EfwYh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KgnLsfdPcI51
 
-On 23/04/2025 11:09, Ben Dooks wrote:
-> In adding a new feature to the riscv target, it turns out the tb_flags
-> had already got to the 32-bit limit. Everyone other target has been
-> fine with uint32_t (except perhaps arm which does somethng strange to
-> extend tb_flags, I think).
+On 4/23/25 14:05, Philippe Mathieu-Daudé wrote:
+> Convert AspeedI2CClass::gap to plain unsigned, using '0'
+> as "no gap" to avoid the followin UBSan warnings:
 > 
-> To allow extending of tb_flags to be bigger, change the uint32_t to
-> a tb_flags_t which a target can define to be bigger (and do this for
-> riscv as having tb_flags_t be uint64_t somewhere is necessary to pick
-> out bugs in this translation).
+>    SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../../hw/i2c/aspeed_i2c.c:1559:16
+>    SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../../hw/i2c/aspeed_i2c.c:1583:16
+>    SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../../hw/i2c/aspeed_i2c.c:1608:16
+>    hw/i2c/aspeed_i2c.c:1608:16: runtime error: implicit conversion from type 'int' of value
+>                                 -1 (32-bit, signed) to type 'uint8_t' (aka 'unsigned char')
+>                                 changed the value to 255 (8-bit, unsigned)
 > 
-> This method of extension also stops having to go through each arch
-> fixing field usage and anything else that may arise, and given this
-> is currently only affecting the tcg, it can be done per target arch.
-> 
-> Note, target/riscv does not currently use any of the other flag bits
-> yet. The work is done as we would like to try the big-endian riscv
-> again and someone has already taken the last bit we where using at
-> (target/riscv/cpu.h#L666 adding PM_SIGNEXTEND where we had BE_DATA)
-> 
-> Q: Do the cpu_get_tb_state calls need uint32_t changing to the
-> tb_flag_t as part of this?
-> 
-> Q: As part of this, should we also define a FLAG_DP_TB or similar
-> wrapper for the relevant change?
-> 
-> Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Looks fine.
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
+>   include/hw/i2c/aspeed_i2c.h | 2 +-
+>   hw/i2c/aspeed_i2c.c         | 5 +----
+>   2 files changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 2c4c81bd209..098356e5bac 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -290,7 +290,7 @@ struct AspeedI2CClass {
+>       uint8_t num_busses;
+>       uint8_t reg_size;
+>       uint32_t reg_gap_size;
+> -    uint8_t gap;
+> +    unsigned gap;
+>       qemu_irq (*bus_get_irq)(AspeedI2CBus *);
+>   
+>       uint64_t pool_size;
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index a8fbb9f44a1..a45a4fd6cb7 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1215,7 +1215,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>   
+>       for (i = 0; i < aic->num_busses; i++) {
+>           Object *bus = OBJECT(&s->busses[i]);
+> -        int offset = i < aic->gap ? 1 : 5;
+> +        unsigned offset = i < aic->gap ? 1 : 5;
+>   
+>           if (!object_property_set_link(bus, "controller", OBJECT(s), errp)) {
+>               return;
+> @@ -1556,7 +1556,6 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
+>   
+>       aic->num_busses = 16;
+>       aic->reg_size = 0x80;
+> -    aic->gap = -1; /* no gap */
+>       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+>       aic->pool_size = 0x20;
+>       aic->pool_base = 0xC00;
+> @@ -1580,7 +1579,6 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
+>   
+>       aic->num_busses = 14;
+>       aic->reg_size = 0x80;
+> -    aic->gap = -1; /* no gap */
+>       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+>       aic->pool_size = 0x20;
+>       aic->pool_base = 0xC00;
+> @@ -1605,7 +1603,6 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, void *data)
+>       aic->num_busses = 16;
+>       aic->reg_size = 0x80;
+>       aic->reg_gap_size = 0x80;
+> -    aic->gap = -1; /* no gap */
+>       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+>       aic->pool_size = 0x20;
+>       aic->pool_gap_size = 0xe0;
 
-So after trying this, it looks like the struct TranslationBlock also
-has a flags field in it and we missed updating that which had a follow
-on issue of causing failures elsewhere.
-
-Need to look into whether we should add a config and a global
-tb_flags_t or if the TranslationBlock can include something that
-defines tb_flags_t
-
--- 
-Ben Dooks				http://www.codethink.co.uk/
-Senior Engineer				Codethink - Providing Genius
-
-https://www.codethink.co.uk/privacy.html

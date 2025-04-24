@@ -1,347 +1,133 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3544280njd;
-        Thu, 24 Apr 2025 01:17:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXJtwQtAYTbGqGMbtaTAkKCHIAmopII7Y0Er28J1oqMrRfdHrBSvbblrm2nU/wMYGT0sXOZ9wwFlzMhZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF4jznft0eDQV1oTzKRGgNhm98GwatK4uIL8k3eTxc87Sk4bI8scLMR3GU5Di9vUi6RyMcy
-X-Received: by 2002:a05:6a20:9f4f:b0:1ee:e20f:f14e with SMTP id adf61e73a8af0-20444f3d233mr2436255637.38.1745482677854;
-        Thu, 24 Apr 2025 01:17:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745482677; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3551791njd;
+        Thu, 24 Apr 2025 01:38:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVAeNxNsFeD6y7woPIwhKgmtgEMkxdk+oHdYmaSxVBofo/Jm/lyTAVw9GIjVLW0BMQw6E59YHILNSjlWQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEQS8KPEXqWvkg2XXp6YuIBltEQpjcRMDZrnXxw70Fls+xUGD033g7zF7k7ENmU+VLfHr53
+X-Received: by 2002:a05:6902:2e11:b0:e63:6f18:9926 with SMTP id 3f1490d57ef6-e730354c562mr2623711276.14.1745483904599;
+        Thu, 24 Apr 2025 01:38:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745483904; cv=none;
         d=google.com; s=arc-20240605;
-        b=TokE3imoHelJXh/Cp9OAOJF4UxcObxpzEgM9D2KB09aQQSq/XtRt2WVxMj9sCrjFKB
-         wKvA8e/D457CISLPmqOhrPfHjI5iIq5ads9ceXp2XLHIMuF1Hhae6rQr3WmPWDwJNSOj
-         L6W1nBPcUJIbawVK42I80+bl/Ent4XCqJv5Rqj6A3evkR9udo6w1PXzayipIYJlcq+0p
-         ++xe/RrMNTl5NTUf/bbhG73P1pkuy35hv3bzzU6qQNiSveAZrVlFP3bTYUxgCkzpRh/y
-         4GSZehPt2wEg5ezidbDlo/pdvPVSk4Rsepse2QHFExfzaavsm6HLNuYA/qJm1LqAINu0
-         +Qgg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=1urhrtBTGcCFA6cZkKs8/OBcrd3a7zcTBfMX9TIPxow=;
-        fh=y0CpzT7TwYlZ8dhsTp/X9uJt631qr+XpTSDqbzUbn1A=;
-        b=iH4M+oCNV6H+Z5S0wCrCU4zVRj++2CqCudS+cct5HfibiP3bO+CmF2w6V31+NHR/7m
-         uwEKtZEbXv9FLMWBao2qBfReC9epudVkVuU+z849q++wULh8VBBj+ptGpkjMO3ZA2Ns7
-         RCGJ0uOF0mN4uChEsr3ixAcGFi/jvegzmpUhqEck6t/KnRtJTcK88WxWA4avh0BapWKH
-         sy9xtQwveDDX9SS9yW3w2uDgweOsJEgwRRlZepp5XE/Ip8zDogJs98M4QxVRkpgUP8U9
-         rHX4jPsozlCUWNKy6l2YdTCAEAxtfVZauUOeNAV8ORDsiodRhJuky2y7+SgjCf3adz+P
-         r3ug==;
+        b=DtOlFLdrGOmHWi0LR5Taimuh3Idhw2ra+F2IDLtVOOipMM5tx9OPGVT14+W67sdiz4
+         4nHE/6D+ZN851hwHeNX40M6bbpHr55zlZJNCjSK7pqUTEjUVZYhZTbo489Xp0TY7muOi
+         BbHYeOvQmqItkvgX96eigYcvLgR0Kyl5TTqVqkcfK25h2kodgKVwPdNtQU3IeCAf/Ccn
+         q/rzd9OmuFGOByYPM0hI5ErmlluKa8I2TbaFPjB0naXVxoaJyVbOw8i7wd8rh6UuPs9o
+         44EAorYsubBhbtRT123N5GFuYLVnygqiLuvchv1qfBg0HCNjP7rvOGZrifGkEWNCqXG2
+         jQYQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ZLFKgxWDC4V6tQpUKz3n51Ae0kpBC+dQcS/w9pmPNtA=;
+        fh=IIuvlcU4OU4/G9nlE5Eojh18aGvty5m2lMD0krg8jYg=;
+        b=OE/v13OhDmINC4zQ7S5ry+ZbgivZttoVsP+tse3w9I7nNhcHIkZ5xQwb5y2Y6JnF1x
+         1j9WJZgnfTa/aU8G0e4BkdJlyVhv+W66qO4JjSX/2Ssq0ieyYBscODWmZ2B5hWyCo4Ut
+         P6o5Tmec3LeeNt/166Aeff20T5wjCNQhl9urgcbUo/TTwuKZS9cTqwyvjTq1DtkA61+W
+         yDMXp5Q9FqpSWOGzJVKrsVS4YyHRR/qdDNS8Q8a2jMYdxtwhla+M4hBorJnSRUn/naYx
+         iUDXGGEq0J9iq/7bTcJjAkD/d4C3bke13wFM1ANXSWq67fncDQU0Bikj7jo+KhuPjCti
+         kr9Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Xh3Crk7c;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-b15fb7b31b5si1185056a12.616.2025.04.24.01.17.57
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N7q61TIb;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e7303e571e1si978356276.324.2025.04.24.01.38.24
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Apr 2025 01:17:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Thu, 24 Apr 2025 01:38:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Xh3Crk7c;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N7q61TIb;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1745483904;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=ZLFKgxWDC4V6tQpUKz3n51Ae0kpBC+dQcS/w9pmPNtA=;
+	b=N7q61TIbsJJ8ex6EDNW3uyW8B785CrflpTxBAV+e+ct3KiilOErANN+H5MT2QlVNS7YWm/
+	JUIl6GspuMldi0w+AlM+QEHhhImqLu9yDQB0bxdk9JWqcUgM/I+8gqddvFsrzEy4vf+sPB
+	EBFgyfYxYQ4JOYcyTthG4RcrDwaHd24=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-26-lXhJVEV3OIWvnBKowB-Zeg-1; Thu,
+ 24 Apr 2025 04:38:20 -0400
+X-MC-Unique: lXhJVEV3OIWvnBKowB-Zeg-1
+X-Mimecast-MFC-AGG-ID: lXhJVEV3OIWvnBKowB-Zeg_1745483899
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 4F9357AC2FD
-	for <alex.bennee@linaro.org>; Thu, 24 Apr 2025 08:16:46 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B86A71FECAD;
-	Thu, 24 Apr 2025 08:17:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Xh3Crk7c"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8178D529
-	for <kvm@vger.kernel.org>; Thu, 24 Apr 2025 08:17:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.11
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1745482669; cv=none; b=LTzDsz3fyLYU42igD+bvbH38a5E3nFE9hoJDS54LxVepUqcmbx2N0BLZKmlPmKBWk7Bsw4g/EuCl2i5nX4HdE9D0uGjVrd2H7oTgsswv3m00HtDTW6ykhYv2QDUot55tT2cU5+VMb2diva5lTQEQ5bt1I61oj3O8roWV4ggORr0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1745482669; c=relaxed/simple;
-	bh=mtYa619WJaIjkVS6EBoexqG+IimlWzorRTe7Wk42SY4=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=YjsHIXUO8XNCQB3+VwVj621oo5Z4kMJt2dRyHCt8QnGBycvPSDA3TOsdlEALSkZjFaPm5Yuwtsc65bJh/G0IRAtQA+T8E1OaOViafOQ/to8/W0yVX5/zrn1NcCZvl8OnkBABt2639blaUGAU0lUYd7ENSLCunKXWM1IL8l7VVXM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=Xh3Crk7c; arc=none smtp.client-ip=192.198.163.11
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1745482668; x=1777018668;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=mtYa619WJaIjkVS6EBoexqG+IimlWzorRTe7Wk42SY4=;
-  b=Xh3Crk7cLCGpJi27I2G0QGY+51nvPKifIDGit4VtyK6XrvtAf6ib2YQi
-   G0g8SXZ9z4YeMg9r3P7pO0HEJnhkgum45w5VkjugHLhL1l49Bym1q24X+
-   IsAGIhsV+8DsJUgh/Tds/wTjx9rxyZImOavxPXsTaq1jWY/IPGelhkxL2
-   csQC9onnLc+0UBgJc5nioFNFYkG6l8QT3zquGwSO836VsLgQdf5WH/Sy7
-   JrxtgfPkGoqy/0oOirWmny92h9gBSnB2Sn9iOd9LXzudJWEFYCfz/NGim
-   qTuJIrLVQ2VHjBpJlFIUOYIhHd25ff8tBTsdh9Oj2DsKywhCdPGed+q+S
-   g==;
-X-CSE-ConnectionGUID: EmmdT4pfS1Cp5sAXWhC3Hw==
-X-CSE-MsgGUID: pf3CJAT+QlSqOLsysrf+uQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11412"; a="57751491"
-X-IronPort-AV: E=Sophos;i="6.15,235,1739865600"; 
-   d="scan'208";a="57751491"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2025 01:17:47 -0700
-X-CSE-ConnectionGUID: H5wE5xOYT8y6Safq7OTS6g==
-X-CSE-MsgGUID: 48Uunm39R1qZjQcrQ1tj/Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,235,1739865600"; 
-   d="scan'208";a="163526100"
-Received: from dapengmi-mobl1.ccr.corp.intel.com (HELO [10.124.245.128]) ([10.124.245.128])
-  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2025 01:17:37 -0700
-Message-ID: <c800f523-2b1e-4f0a-b553-eb5a717e617b@linux.intel.com>
-Date: Thu, 24 Apr 2025 16:17:33 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 88D171955DDD;
+	Thu, 24 Apr 2025 08:38:18 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.118])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 94C711800352;
+	Thu, 24 Apr 2025 08:38:14 +0000 (UTC)
+Date: Thu, 24 Apr 2025 09:38:11 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Nabih Estefan <nabihestefan@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, philmd@linaro.org,
+	mjt@tls.msk.ru, thuth@redhat.com, alex.bennee@linaro.org,
+	peter.maydell@linaro.org
+Subject: Re: [PATCH] scripts: Add exception to license check
+Message-ID: <aAn4c6hy_kMcgwXO@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20250423183728.3860325-1-nabihestefan@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] i386/kvm: Support fixed counter in KVM PMU filter
-To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
- <mtosatti@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
- Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
- <20250409082649.14733-6-zhao1.liu@intel.com>
-Content-Language: en-US
-From: "Mi, Dapeng" <dapeng1.mi@linux.intel.com>
-In-Reply-To: <20250409082649.14733-6-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: moMEA+2sLw1B
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250423183728.3860325-1-nabihestefan@google.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-TUID: 73SGxNHeG/70
 
+On Wed, Apr 23, 2025 at 06:37:27PM +0000, Nabih Estefan wrote:
+> The documentation for trace events says that every subdirectory which
+> has trace events should have a trace.h header, whose only content is
+> an include of the trace/trace-<subdir>.h file.
 
-On 4/9/2025 4:26 PM, Zhao Liu wrote:
-> KVM_SET_PMU_EVENT_FILTER of x86 KVM allows user to configure x86 fixed
-> function counters by a bitmap.
->
-> Add the support of x86-fixed-counter in kvm-pmu-filter object and handle
-> this in i386 kvm codes.
->
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Tested-by: Yi Lai <yi1.lai@intel.com>
+Historically we have not bothered to add the license header to the trace.h
+files, primarily because its size would dwarf the actual content, and
+secondly because. the content can probably be sad to be not copyrightable.
+
+With SPDX-License-Identifier being so concise though, the main reason for
+omitting it goes away. So my feeling is that we should not exempt the
+trace.h files, and stick with our default rule that *ALL* source files
+must have SPDX-License-Identifier.
+
+> Due to that, we should skip it in the checkpatch license check.
+> I'm adding it as an exception to the check instead of its own if so it
+> still throws the warning on all new files instead of ignoring it.
+> 
+> Change-Id: Ic2dae14f8cded0dd02d5b231588bd38d8a00e40d
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 > ---
-> Changes since RFC v2:
->  * Drop KVMPMUX86FixedCounter structure and use uint32_t to represent
->    bitmap in QAPI directly.
->  * Add Tested-by from Yi.
->  * Add documentation in qemu-options.hx.
->  * Bump up the supported QAPI version to v10.1.
->
-> Changes since RFC v1:
->  * Make "action" as a global (per filter object) item, not a per-counter
->    parameter. (Dapeng)
->  * Bump up the supported QAPI version to v10.0.
-> ---
->  accel/kvm/kvm-pmu.c      | 31 +++++++++++++++++++++++++++++++
->  include/system/kvm-pmu.h |  5 ++++-
->  qapi/kvm.json            |  6 +++++-
->  qemu-options.hx          |  6 +++++-
->  target/i386/kvm/kvm.c    | 39 ++++++++++++++++++++++++---------------
->  5 files changed, 69 insertions(+), 18 deletions(-)
->
-> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
-> index 9205907d1779..509d69d9c515 100644
-> --- a/accel/kvm/kvm-pmu.c
-> +++ b/accel/kvm/kvm-pmu.c
-> @@ -101,6 +101,29 @@ fail:
->      qapi_free_KvmPmuFilterEventList(head);
->  }
->  
-> +static void kvm_pmu_filter_get_fixed_counter(Object *obj, Visitor *v,
-> +                                             const char *name, void *opaque,
-> +                                             Error **errp)
-> +{
-> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
-> +
-> +    visit_type_uint32(v, name, &filter->x86_fixed_counter, errp);
-> +}
-> +
-> +static void kvm_pmu_filter_set_fixed_counter(Object *obj, Visitor *v,
-> +                                             const char *name, void *opaque,
-> +                                             Error **errp)
-> +{
-> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
-> +    uint32_t counter;
-> +
-> +    if (!visit_type_uint32(v, name, &counter, errp)) {
-> +        return;
-> +    }
-> +
-> +    filter->x86_fixed_counter = counter;
-> +}
-> +
->  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
->  {
->      object_class_property_add_enum(oc, "action", "KvmPmuFilterAction",
-> @@ -116,6 +139,14 @@ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
->                                NULL, NULL);
->      object_class_property_set_description(oc, "events",
->                                            "KVM PMU event list");
-> +
-> +    object_class_property_add(oc, "x86-fixed-counter", "uint32_t",
-> +                              kvm_pmu_filter_get_fixed_counter,
-> +                              kvm_pmu_filter_set_fixed_counter,
-> +                              NULL, NULL);
-> +    object_class_property_set_description(oc, "x86-fixed-counter",
-> +                                          "Enablement bitmap of "
-> +                                          "x86 PMU fixed counter");
->  }
->  
->  static void kvm_pmu_filter_instance_init(Object *obj)
-> diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
-> index 6abc0d037aee..5238b2b4dcc7 100644
-> --- a/include/system/kvm-pmu.h
-> +++ b/include/system/kvm-pmu.h
-> @@ -19,10 +19,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(KVMPMUFilter, KVM_PMU_FILTER)
->  
->  /**
->   * KVMPMUFilter:
-> - * @action: action that KVM PMU filter will take for selected PMU events.
-> + * @action: action that KVM PMU filter will take for selected PMU events
-> + *    and counters.
+>  scripts/checkpatch.pl | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index 365892de04..b2c6ac2477 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -1685,7 +1685,9 @@ sub process {
+>  		if ($line =~ /^new file mode\s*\d+\s*$/) {
+>  		    if ($expect_spdx) {
+>  			if ($expect_spdx_file =~
+> -			    /\.(c|h|py|pl|sh|json|inc|Makefile)$/) {
+> +			    /\.(c|h|py|pl|sh|json|inc|Makefile)$/
+> +				and not $expect_spdx_file =~ /(trace\.h)$/) {
+> +				# Files to include auto-generated files don't require a license
+>  			    # source code files MUST have SPDX license declared
+>  			    ERROR("New file '$expect_spdx_file' requires " .
+>  				  "'SPDX-License-Identifier'");
+> -- 
+> 2.49.0.805.g082f7c87e0-goog
+> 
 
-Maybe more accurate "fixed counters".
-
-
->   * @nevents: number of PMU event entries listed in @events
->   * @events: list of PMU event entries.  A PMU event entry may represent one
->   *    event or multiple events due to its format.
-> + * @x86_fixed_counter: bitmap of x86 fixed counter.
->   */
->  struct KVMPMUFilter {
->      Object parent_obj;
-> @@ -30,6 +32,7 @@ struct KVMPMUFilter {
->      KvmPmuFilterAction action;
->      uint32_t nevents;
->      KvmPmuFilterEventList *events;
-> +    uint32_t x86_fixed_counter;
->  };
->  
->  /*
-> diff --git a/qapi/kvm.json b/qapi/kvm.json
-> index 1b523e058731..5374c8340e5a 100644
-> --- a/qapi/kvm.json
-> +++ b/qapi/kvm.json
-> @@ -115,7 +115,10 @@
->  #
->  # Properties of KVM PMU Filter.
->  #
-> -# @action: action that KVM PMU filter will take for selected PMU events.
-> +# @action: action that KVM PMU filter will take for selected PMU events
-> +#     and counters.
-> +#
-> +# @x86-fixed-counter: enablement bitmap of x86 fixed counters.
->  #
->  # @events: list of selected PMU events.
->  #
-> @@ -123,4 +126,5 @@
->  ##
->  { 'struct': 'KvmPmuFilterProperties',
->    'data': { 'action': 'KvmPmuFilterAction',
-> +            '*x86-fixed-counter': 'uint32',
->              '*events': ['KvmPmuFilterEvent'] } }
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index bb89198971e0..eadfb69c8876 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -6150,7 +6150,7 @@ SRST
->  
->              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
->  
-> -    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"action":action,"events":[entry_list]}'``
-> +    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"x86-fixed-counter":bitmap,"action":action,"events":[entry_list]}'``
->          Create a kvm-pmu-filter object that configures KVM to filter
->          selected PMU events for Guest.
->  
-> @@ -6165,6 +6165,10 @@ SRST
->          will be denied, while all other events can be accessed normally
->          in the Guest.
->  
-> +        The ``x86-fixed-counter`` parameter sets a bitmap of x86 fixed
-> +        counters, and ``action`` will also take effect on the selected
-> +        fixed counters.
-> +
->          The ``events`` parameter accepts a list of PMU event entries in
->          JSON format. Event entries, based on different encoding formats,
->          have the following types:
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index 8786501e9c7e..8b916dbb5d6f 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -6016,19 +6016,25 @@ static int kvm_install_pmu_event_filter(KVMState *s)
->          g_assert_not_reached();
->      }
->  
-> -    kvm_filter->flags = filter->events->value->format ==
-> -                        KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
-> -                        KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
-> -
-> -    if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
-> -        !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
-> -        error_report("Masked entry format of PMU event "
-> -                     "is not supported by Host.");
-> -        goto fail;
-> +    if (filter->x86_fixed_counter) {
-> +        kvm_filter->fixed_counter_bitmap = filter->x86_fixed_counter;
->      }
->  
-> -    if (!kvm_config_pmu_event(filter, kvm_filter)) {
-> -        goto fail;
-> +    if (filter->nevents) {
-> +        kvm_filter->flags = filter->events->value->format ==
-> +                            KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
-> +                            KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
-> +
-> +        if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
-> +            !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
-> +            error_report("Masked entry format of PMU event "
-> +                         "is not supported by Host.");
-> +            goto fail;
-> +        }
-> +
-> +        if (!kvm_config_pmu_event(filter, kvm_filter)) {
-> +            goto fail;
-> +        }
->      }
->  
->      ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
-> @@ -6656,16 +6662,19 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
->      KvmPmuFilterEventList *events = filter->events;
->      uint32_t base_flag;
->  
-> -    if (!filter->nevents) {
-> +    if (!filter->x86_fixed_counter && !filter->nevents) {
->          error_setg(errp,
->                     "Empty KVM PMU filter.");
->          return;
->      }
->  
->      /* Pick the first event's flag as the base one. */
-> -    base_flag = events->value->format ==
-> -                KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
-> -                KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
-> +    base_flag = 0;
-> +    if (filter->nevents &&
-> +        events->value->format == KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY) {
-> +        base_flag = KVM_PMU_EVENT_FLAG_MASKED_EVENTS;
-> +    }
-> +
->      while (events) {
->          KvmPmuFilterEvent *event = events->value;
->          uint32_t flag;
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

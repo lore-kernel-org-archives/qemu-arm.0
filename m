@@ -1,213 +1,347 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3532979njd;
-        Thu, 24 Apr 2025 00:53:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7XFrBLKylPEjlnM1ixkzo8MCs2UVeW+5y/B5eyITJLkC+II+afaxUDrJZDu+FhoNxCoRHs9tJmMfuuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGHOzGSeeyBF9imcEbn6HwDhXDk+1OLMDU96wHkY9B9uRpLVUIiq1uJXbx6ohpKV1UL9M78
-X-Received: by 2002:a05:620a:30c:b0:7c5:3c69:2bd2 with SMTP id af79cd13be357-7c9585e5029mr190681085a.13.1745481182382;
-        Thu, 24 Apr 2025 00:53:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745481182; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3544280njd;
+        Thu, 24 Apr 2025 01:17:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXJtwQtAYTbGqGMbtaTAkKCHIAmopII7Y0Er28J1oqMrRfdHrBSvbblrm2nU/wMYGT0sXOZ9wwFlzMhZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF4jznft0eDQV1oTzKRGgNhm98GwatK4uIL8k3eTxc87Sk4bI8scLMR3GU5Di9vUi6RyMcy
+X-Received: by 2002:a05:6a20:9f4f:b0:1ee:e20f:f14e with SMTP id adf61e73a8af0-20444f3d233mr2436255637.38.1745482677854;
+        Thu, 24 Apr 2025 01:17:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745482677; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Obl1KMnw370nc1IB+2Z5hS3ZlbFFAQ7be8FYns3eoKFmU57iMWBwzwcuzj2mGzVucd
-         BhIEjoH/IOQszA09jI08+1cmPPifcE3Pvs8uzqjd/jPsUvEOOpjvoumFMdiIYgpyloKP
-         XacUqmDRzl842gma68nDPxO+Z+6Ivhq5Jm5QVmrUrdpO6s6nsfMIvMkbZIfbWN4UxsWA
-         z9NLWR76VWubtPlrGLq5vJAB0XmnEHCHLkv1IENKZNOgyBn3NfwfwD++peowF65pVpp3
-         xlL679hjTJLhxAWNPz5sPXj5mOwd5i+g9QzByeCX71aojQQ7dgP5jYVBGAgwVVtNlSp4
-         I4dA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=tXrVP6KY/sKsEcL5xHhErLgMEDr7pghz1glM5Vwkt98=;
-        fh=9slMQvAVAaDbZF94sUZsatNqTIKawFKtbOHuc7HAk0w=;
-        b=ahNPyr5cb0c4BEXg2e/uWQ0A5kxZH0dlLkFJhjvVEaMVdNP/r7QxyFZUbeafJUGDj3
-         G4A0MiX5hztDBBu2ZZZeEbpg2ybR2aHaiRrnRD75L41B7368vzBmmzBZHdHbtT0lN5o+
-         stroS9rBmQ55GRt632OvEIxW/BGvnFCGhaY51A9xwPf6kgQQ2F2jAoc5LOwy0kfb4A3z
-         8eqRSQ5388T78siCeGBw3bDpRT76re+k1pqrrYFtsyg8KATpTVYUGLH3H70TILWxS849
-         WxpB+1NQezrijKfkx79rPXLSByyV48zxa3lQDZZyhI9xm/FMM/j0B0ezKYqyb+LfLCYP
-         wZMQ==;
+        b=TokE3imoHelJXh/Cp9OAOJF4UxcObxpzEgM9D2KB09aQQSq/XtRt2WVxMj9sCrjFKB
+         wKvA8e/D457CISLPmqOhrPfHjI5iIq5ads9ceXp2XLHIMuF1Hhae6rQr3WmPWDwJNSOj
+         L6W1nBPcUJIbawVK42I80+bl/Ent4XCqJv5Rqj6A3evkR9udo6w1PXzayipIYJlcq+0p
+         ++xe/RrMNTl5NTUf/bbhG73P1pkuy35hv3bzzU6qQNiSveAZrVlFP3bTYUxgCkzpRh/y
+         4GSZehPt2wEg5ezidbDlo/pdvPVSk4Rsepse2QHFExfzaavsm6HLNuYA/qJm1LqAINu0
+         +Qgg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=1urhrtBTGcCFA6cZkKs8/OBcrd3a7zcTBfMX9TIPxow=;
+        fh=y0CpzT7TwYlZ8dhsTp/X9uJt631qr+XpTSDqbzUbn1A=;
+        b=iH4M+oCNV6H+Z5S0wCrCU4zVRj++2CqCudS+cct5HfibiP3bO+CmF2w6V31+NHR/7m
+         uwEKtZEbXv9FLMWBao2qBfReC9epudVkVuU+z849q++wULh8VBBj+ptGpkjMO3ZA2Ns7
+         RCGJ0uOF0mN4uChEsr3ixAcGFi/jvegzmpUhqEck6t/KnRtJTcK88WxWA4avh0BapWKH
+         sy9xtQwveDDX9SS9yW3w2uDgweOsJEgwRRlZepp5XE/Ip8zDogJs98M4QxVRkpgUP8U9
+         rHX4jPsozlCUWNKy6l2YdTCAEAxtfVZauUOeNAV8ORDsiodRhJuky2y7+SgjCf3adz+P
+         r3ug==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958c9e2f8si79883985a.49.2025.04.24.00.53.02
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Xh3Crk7c;
+       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b15fb7b31b5si1185056a12.616.2025.04.24.01.17.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Apr 2025 00:53:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 24 Apr 2025 01:17:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u7rNO-0001QT-94; Thu, 24 Apr 2025 03:52:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7rNM-0001Oq-5M; Thu, 24 Apr 2025 03:52:04 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7rNK-0006ez-9n; Thu, 24 Apr 2025 03:52:03 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 24 Apr
- 2025 15:51:37 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 24 Apr 2025 15:51:37 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>
-Subject: [PATCH v6 5/6] docs/system/arm/aspeed: move AST2700 content to new
- section
-Date: Thu, 24 Apr 2025 15:51:33 +0800
-Message-ID: <20250424075135.3715128-6-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
-References: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Xh3Crk7c;
+       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44099-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 4F9357AC2FD
+	for <alex.bennee@linaro.org>; Thu, 24 Apr 2025 08:16:46 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B86A71FECAD;
+	Thu, 24 Apr 2025 08:17:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Xh3Crk7c"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8178D529
+	for <kvm@vger.kernel.org>; Thu, 24 Apr 2025 08:17:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.11
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1745482669; cv=none; b=LTzDsz3fyLYU42igD+bvbH38a5E3nFE9hoJDS54LxVepUqcmbx2N0BLZKmlPmKBWk7Bsw4g/EuCl2i5nX4HdE9D0uGjVrd2H7oTgsswv3m00HtDTW6ykhYv2QDUot55tT2cU5+VMb2diva5lTQEQ5bt1I61oj3O8roWV4ggORr0=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1745482669; c=relaxed/simple;
+	bh=mtYa619WJaIjkVS6EBoexqG+IimlWzorRTe7Wk42SY4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=YjsHIXUO8XNCQB3+VwVj621oo5Z4kMJt2dRyHCt8QnGBycvPSDA3TOsdlEALSkZjFaPm5Yuwtsc65bJh/G0IRAtQA+T8E1OaOViafOQ/to8/W0yVX5/zrn1NcCZvl8OnkBABt2639blaUGAU0lUYd7ENSLCunKXWM1IL8l7VVXM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=Xh3Crk7c; arc=none smtp.client-ip=192.198.163.11
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745482668; x=1777018668;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=mtYa619WJaIjkVS6EBoexqG+IimlWzorRTe7Wk42SY4=;
+  b=Xh3Crk7cLCGpJi27I2G0QGY+51nvPKifIDGit4VtyK6XrvtAf6ib2YQi
+   G0g8SXZ9z4YeMg9r3P7pO0HEJnhkgum45w5VkjugHLhL1l49Bym1q24X+
+   IsAGIhsV+8DsJUgh/Tds/wTjx9rxyZImOavxPXsTaq1jWY/IPGelhkxL2
+   csQC9onnLc+0UBgJc5nioFNFYkG6l8QT3zquGwSO836VsLgQdf5WH/Sy7
+   JrxtgfPkGoqy/0oOirWmny92h9gBSnB2Sn9iOd9LXzudJWEFYCfz/NGim
+   qTuJIrLVQ2VHjBpJlFIUOYIhHd25ff8tBTsdh9Oj2DsKywhCdPGed+q+S
+   g==;
+X-CSE-ConnectionGUID: EmmdT4pfS1Cp5sAXWhC3Hw==
+X-CSE-MsgGUID: pf3CJAT+QlSqOLsysrf+uQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11412"; a="57751491"
+X-IronPort-AV: E=Sophos;i="6.15,235,1739865600"; 
+   d="scan'208";a="57751491"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2025 01:17:47 -0700
+X-CSE-ConnectionGUID: H5wE5xOYT8y6Safq7OTS6g==
+X-CSE-MsgGUID: 48Uunm39R1qZjQcrQ1tj/Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,235,1739865600"; 
+   d="scan'208";a="163526100"
+Received: from dapengmi-mobl1.ccr.corp.intel.com (HELO [10.124.245.128]) ([10.124.245.128])
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2025 01:17:37 -0700
+Message-ID: <c800f523-2b1e-4f0a-b553-eb5a717e617b@linux.intel.com>
+Date: Thu, 24 Apr 2025 16:17:33 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3plBXikM8zk5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/5] i386/kvm: Support fixed counter in KVM PMU filter
+To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
+ <mtosatti@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
+ Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+ <20250409082649.14733-6-zhao1.liu@intel.com>
+Content-Language: en-US
+From: "Mi, Dapeng" <dapeng1.mi@linux.intel.com>
+In-Reply-To: <20250409082649.14733-6-zhao1.liu@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: moMEA+2sLw1B
 
-Moved AST2700-related content from the general Aspeed board list into a
-dedicated section for Aspeed 2700 family boards. Improves clarity and
-readability.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- docs/system/arm/aspeed.rst | 70 ++++++++++++++++++++++++++++++++++----
- 1 file changed, 63 insertions(+), 7 deletions(-)
+On 4/9/2025 4:26 PM, Zhao Liu wrote:
+> KVM_SET_PMU_EVENT_FILTER of x86 KVM allows user to configure x86 fixed
+> function counters by a bitmap.
+>
+> Add the support of x86-fixed-counter in kvm-pmu-filter object and handle
+> this in i386 kvm codes.
+>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Tested-by: Yi Lai <yi1.lai@intel.com>
+> ---
+> Changes since RFC v2:
+>  * Drop KVMPMUX86FixedCounter structure and use uint32_t to represent
+>    bitmap in QAPI directly.
+>  * Add Tested-by from Yi.
+>  * Add documentation in qemu-options.hx.
+>  * Bump up the supported QAPI version to v10.1.
+>
+> Changes since RFC v1:
+>  * Make "action" as a global (per filter object) item, not a per-counter
+>    parameter. (Dapeng)
+>  * Bump up the supported QAPI version to v10.0.
+> ---
+>  accel/kvm/kvm-pmu.c      | 31 +++++++++++++++++++++++++++++++
+>  include/system/kvm-pmu.h |  5 ++++-
+>  qapi/kvm.json            |  6 +++++-
+>  qemu-options.hx          |  6 +++++-
+>  target/i386/kvm/kvm.c    | 39 ++++++++++++++++++++++++---------------
+>  5 files changed, 69 insertions(+), 18 deletions(-)
+>
+> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
+> index 9205907d1779..509d69d9c515 100644
+> --- a/accel/kvm/kvm-pmu.c
+> +++ b/accel/kvm/kvm-pmu.c
+> @@ -101,6 +101,29 @@ fail:
+>      qapi_free_KvmPmuFilterEventList(head);
+>  }
+>  
+> +static void kvm_pmu_filter_get_fixed_counter(Object *obj, Visitor *v,
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
+> +
+> +    visit_type_uint32(v, name, &filter->x86_fixed_counter, errp);
+> +}
+> +
+> +static void kvm_pmu_filter_set_fixed_counter(Object *obj, Visitor *v,
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
+> +    uint32_t counter;
+> +
+> +    if (!visit_type_uint32(v, name, &counter, errp)) {
+> +        return;
+> +    }
+> +
+> +    filter->x86_fixed_counter = counter;
+> +}
+> +
+>  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
+>  {
+>      object_class_property_add_enum(oc, "action", "KvmPmuFilterAction",
+> @@ -116,6 +139,14 @@ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
+>                                NULL, NULL);
+>      object_class_property_set_description(oc, "events",
+>                                            "KVM PMU event list");
+> +
+> +    object_class_property_add(oc, "x86-fixed-counter", "uint32_t",
+> +                              kvm_pmu_filter_get_fixed_counter,
+> +                              kvm_pmu_filter_set_fixed_counter,
+> +                              NULL, NULL);
+> +    object_class_property_set_description(oc, "x86-fixed-counter",
+> +                                          "Enablement bitmap of "
+> +                                          "x86 PMU fixed counter");
+>  }
+>  
+>  static void kvm_pmu_filter_instance_init(Object *obj)
+> diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
+> index 6abc0d037aee..5238b2b4dcc7 100644
+> --- a/include/system/kvm-pmu.h
+> +++ b/include/system/kvm-pmu.h
+> @@ -19,10 +19,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(KVMPMUFilter, KVM_PMU_FILTER)
+>  
+>  /**
+>   * KVMPMUFilter:
+> - * @action: action that KVM PMU filter will take for selected PMU events.
+> + * @action: action that KVM PMU filter will take for selected PMU events
+> + *    and counters.
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 97fd6a0e7f..08a33b7008 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,12 +1,11 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
- ==================================================================================================================================================================================================================================================================================================================================================================================================================
- 
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
- Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
- AST2500 with an ARM1176JZS CPU (800MHz), the AST2600
--with dual cores ARM Cortex-A7 CPUs (1.2GHz) and more recently the AST2700
--with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
-+with dual cores ARM Cortex-A7 CPUs (1.2GHz).
- 
- The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
- etc.
-@@ -39,10 +38,6 @@ AST2600 SoC based machines :
- - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
- - ``qcom-firework-bmc``    Qualcomm Firework BMC
- 
--AST2700 SoC based machines :
--
--- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
--
- Supported devices
- -----------------
- 
-@@ -247,6 +242,67 @@ under Linux), use :
- 
-   -M ast2500-evb,bmc-console=uart3
- 
-+Aspeed 2700 family boards (``ast2700-evb``)
-+==================================================================
-+
-+The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
-+They are based on different releases of the Aspeed SoC :
-+the AST2700 with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz).
-+
-+The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
-+etc.
-+
-+AST2700 SoC based machines :
-+
-+- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-+
-+Supported devices
-+-----------------
-+ * Interrupt Controller
-+ * Timer Controller
-+ * RTC Controller
-+ * I2C Controller
-+ * System Control Unit (SCU)
-+ * SRAM mapping
-+ * X-DMA Controller (basic interface)
-+ * Static Memory Controller (SMC or FMC) - Only SPI Flash support
-+ * SPI Memory Controller
-+ * USB 2.0 Controller
-+ * SD/MMC storage controllers
-+ * SDRAM controller (dummy interface for basic settings and training)
-+ * Watchdog Controller
-+ * GPIO Controller (Master only)
-+ * UART
-+ * Ethernet controllers
-+ * Front LEDs (PCA9552 on I2C bus)
-+ * LPC Peripheral Controller (a subset of subdevices are supported)
-+ * Hash/Crypto Engine (HACE) - Hash support only. TODO: Crypto
-+ * ADC
-+ * eMMC Boot Controller (dummy)
-+ * PECI Controller (minimal)
-+ * I3C Controller
-+ * Internal Bridge Controller (SLI dummy)
-+
-+Missing devices
-+---------------
-+ * Coprocessor support
-+ * PWM and Fan Controller
-+ * Slave GPIO Controller
-+ * Super I/O Controller
-+ * PCI-Express 1 Controller
-+ * Graphic Display Controller
-+ * MCTP Controller
-+ * Mailbox Controller
-+ * Virtual UART
-+ * eSPI Controller
-+
-+Boot options
-+------------
-+
-+Images can be downloaded from the ASPEED Forked OpenBMC GitHub release repository :
-+
-+   https://github.com/AspeedTech-BMC/openbmc/releases
-+
- Booting the ast2700-evb machine
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
--- 
-2.43.0
+Maybe more accurate "fixed counters".
 
+
+>   * @nevents: number of PMU event entries listed in @events
+>   * @events: list of PMU event entries.  A PMU event entry may represent one
+>   *    event or multiple events due to its format.
+> + * @x86_fixed_counter: bitmap of x86 fixed counter.
+>   */
+>  struct KVMPMUFilter {
+>      Object parent_obj;
+> @@ -30,6 +32,7 @@ struct KVMPMUFilter {
+>      KvmPmuFilterAction action;
+>      uint32_t nevents;
+>      KvmPmuFilterEventList *events;
+> +    uint32_t x86_fixed_counter;
+>  };
+>  
+>  /*
+> diff --git a/qapi/kvm.json b/qapi/kvm.json
+> index 1b523e058731..5374c8340e5a 100644
+> --- a/qapi/kvm.json
+> +++ b/qapi/kvm.json
+> @@ -115,7 +115,10 @@
+>  #
+>  # Properties of KVM PMU Filter.
+>  #
+> -# @action: action that KVM PMU filter will take for selected PMU events.
+> +# @action: action that KVM PMU filter will take for selected PMU events
+> +#     and counters.
+> +#
+> +# @x86-fixed-counter: enablement bitmap of x86 fixed counters.
+>  #
+>  # @events: list of selected PMU events.
+>  #
+> @@ -123,4 +126,5 @@
+>  ##
+>  { 'struct': 'KvmPmuFilterProperties',
+>    'data': { 'action': 'KvmPmuFilterAction',
+> +            '*x86-fixed-counter': 'uint32',
+>              '*events': ['KvmPmuFilterEvent'] } }
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index bb89198971e0..eadfb69c8876 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -6150,7 +6150,7 @@ SRST
+>  
+>              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
+>  
+> -    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"action":action,"events":[entry_list]}'``
+> +    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"x86-fixed-counter":bitmap,"action":action,"events":[entry_list]}'``
+>          Create a kvm-pmu-filter object that configures KVM to filter
+>          selected PMU events for Guest.
+>  
+> @@ -6165,6 +6165,10 @@ SRST
+>          will be denied, while all other events can be accessed normally
+>          in the Guest.
+>  
+> +        The ``x86-fixed-counter`` parameter sets a bitmap of x86 fixed
+> +        counters, and ``action`` will also take effect on the selected
+> +        fixed counters.
+> +
+>          The ``events`` parameter accepts a list of PMU event entries in
+>          JSON format. Event entries, based on different encoding formats,
+>          have the following types:
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index 8786501e9c7e..8b916dbb5d6f 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -6016,19 +6016,25 @@ static int kvm_install_pmu_event_filter(KVMState *s)
+>          g_assert_not_reached();
+>      }
+>  
+> -    kvm_filter->flags = filter->events->value->format ==
+> -                        KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
+> -                        KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
+> -
+> -    if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
+> -        !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
+> -        error_report("Masked entry format of PMU event "
+> -                     "is not supported by Host.");
+> -        goto fail;
+> +    if (filter->x86_fixed_counter) {
+> +        kvm_filter->fixed_counter_bitmap = filter->x86_fixed_counter;
+>      }
+>  
+> -    if (!kvm_config_pmu_event(filter, kvm_filter)) {
+> -        goto fail;
+> +    if (filter->nevents) {
+> +        kvm_filter->flags = filter->events->value->format ==
+> +                            KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
+> +                            KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
+> +
+> +        if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
+> +            !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
+> +            error_report("Masked entry format of PMU event "
+> +                         "is not supported by Host.");
+> +            goto fail;
+> +        }
+> +
+> +        if (!kvm_config_pmu_event(filter, kvm_filter)) {
+> +            goto fail;
+> +        }
+>      }
+>  
+>      ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
+> @@ -6656,16 +6662,19 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
+>      KvmPmuFilterEventList *events = filter->events;
+>      uint32_t base_flag;
+>  
+> -    if (!filter->nevents) {
+> +    if (!filter->x86_fixed_counter && !filter->nevents) {
+>          error_setg(errp,
+>                     "Empty KVM PMU filter.");
+>          return;
+>      }
+>  
+>      /* Pick the first event's flag as the base one. */
+> -    base_flag = events->value->format ==
+> -                KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY ?
+> -                KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
+> +    base_flag = 0;
+> +    if (filter->nevents &&
+> +        events->value->format == KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY) {
+> +        base_flag = KVM_PMU_EVENT_FLAG_MASKED_EVENTS;
+> +    }
+> +
+>      while (events) {
+>          KvmPmuFilterEvent *event = events->value;
+>          uint32_t flag;

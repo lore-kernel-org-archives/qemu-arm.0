@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3532622njd;
-        Thu, 24 Apr 2025 00:52:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUziBD3ggcPd4HjssWWK36j1vz0QPadRUeJx9ns6D08NZFq9AquzIeo9X9/B3VDaQlortK0Nz9hwKDGaQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9G1A1koMJi8USrChQMLyE4QwuLNfw8mmcWmSv8o51GDkByT2gAMP+UeDyRrzhOvYlRCHd
-X-Received: by 2002:ac8:7d47:0:b0:47a:e803:d7f with SMTP id d75a77b69052e-47eb27921abmr21263831cf.4.1745481124223;
-        Thu, 24 Apr 2025 00:52:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745481124; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp3532675njd;
+        Thu, 24 Apr 2025 00:52:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVhp31DApwSuD4vMTqX9jLO3fokEqzsybXvnwKmIMdQSXEo/CDKh9OyzCLoxGBRsPIr1cRMoAPH4SQb/A==@linaro.org
+X-Google-Smtp-Source: AGHT+IG05uIo+ImRN/fPDALatGjhoeVvTFVL7BWt1MqDvjG+5N5L5Lqhu+FLprA3D51XGuK/Wlxb
+X-Received: by 2002:a05:620a:1790:b0:7c5:65ab:4ff5 with SMTP id af79cd13be357-7c956f23338mr229431685a.45.1745481135319;
+        Thu, 24 Apr 2025 00:52:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745481135; cv=none;
         d=google.com; s=arc-20240605;
-        b=NhleRwAil/wCRng7+GNAy/Oq3hbNRAOE0+dxkeWUjOuGzBZC9Z5ezp9INE/hAjkzyp
-         mN77DZ7gTptFuuHe3iXBAVTUoI0QBvnwbl+d4RRVGuek+/ROUbAajKCdfI6tpZPnZDLt
-         MITbl9BYJnFtnkwXDmgMEhLEUOFm0S139D3oFGNnIrlPy42tD3JkpiMFrVD8YW7zrhoE
-         xb1EDhY9g8P0+o9rGIZ2gXbQzt9HzfoBoVUtMrRh8Pv+essQZWu0IVkiWbhRwxCbCbB/
-         LsRtGzdJTEbI3nL0KOypqJZNuBO3mHek/K27XsIGuW3IccUoBu62hxItx/POKLd49zvC
-         L2zg==
+        b=DGit0f9v6NOgGWLzyhPF7xqjKYf5eqKZal9VQd41COHkcgO471MvFoEhnxg6GrmBnS
+         hxJc/eHYi9zVl0PGYzAB83DX50vjUlutnJrEzhmYg484n4N0XeKrmy9F6l84QUng4gEp
+         vlw9fp/EnO1a0WjQr/dvdp7R8kUf69E3utb9CMNyYiRduVO3IM/sgPdUx3JSwAZq1keB
+         JkuplUV7y1itwsr4g6z1P7O6e3VabEmdO/SXm6yyauDvk9BmeCNU1Vj6ouGTepmzz02F
+         ptZpBL5nOr1COhy2AUnWPYGcR/sfHCSjXePN5qY/ISdHQxnUNuev0fnvKNVHH4CLo12Y
+         JCfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=4XDmhS8dMpdz4AgzMU9KCsUIxtN57OGRi35MAJf7k+4=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=Z+4JRriFrdTglSsvy5f+WfdZ44yaCDD3vBpc2cnKSEw=;
         fh=9slMQvAVAaDbZF94sUZsatNqTIKawFKtbOHuc7HAk0w=;
-        b=NrgabO4HExAudq1uWUeBmWzqg19kI5ESSD/8/+/Wx0uTbwHsqADA7C6aCvr97hYQoq
-         7VepzBf5c13EZlOSIc7xPeqpCNUy2CVcuhICPAweOSTKcrt5AA6z7wM2CYFuYXq0gB72
-         Pe+77U4K5flHgyIbqP7MRnq74ZzGnsCE7xb6hhn7D3eBvTCUwPkp9nnKWU/jAknKDVAE
-         GDKIal+khP06Ai5l0dZ0J73YxniJaQDgtBCGlfhpU1vhkmEgfSAWM6IE2oVuCiOnuKd0
-         qqmNfvFbFEUhGzMjbcb3L/p3nxjfDYoIAisw/3QSzajPhicvnoke3N4TlVCWalFRWNUH
-         JBqw==;
+        b=Ek0UVEEwEOvrLDuFD1WOK72pgKlbSIotzVOEVOrFvuuDYIdDRfIU7VvWk0HKSzQ+Ik
+         zSlfLbeA4dmgiwLfBQ2ioL9flch7WQsIEFmcoKRcMwh12yY2f9sieNkBGDy9wJB0Ikab
+         NFUBsyat6uFaxYk6HGdAJS6TYcPq4SbyyHBbVGCRVSspVUaqJSJN2QmD7/+DtNE5B93C
+         DYXb64mqqMYKz+VtTERmhlHq5THeRKGoG74TfMWDS+PwQo+5o9sjHEz4RL3rDTQoXZDX
+         gEAulBSIqyq1CU4EYbXCpJGGoL3F1LN6LNiMgV1itBnFmkj6Efh7aAyrhD0DC9ZPEAgz
+         kL1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47e9f1d5823si11863681cf.44.2025.04.24.00.52.04
+        by mx.google.com with ESMTPS id d75a77b69052e-47ea25aec29si11955831cf.550.2025.04.24.00.52.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Apr 2025 00:52:04 -0700 (PDT)
+        Thu, 24 Apr 2025 00:52:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u7rN5-0001Gv-Sv; Thu, 24 Apr 2025 03:51:48 -0400
+	id 1u7rNC-0001Kd-Jg; Thu, 24 Apr 2025 03:51:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7rN3-0001GP-L7; Thu, 24 Apr 2025 03:51:45 -0400
+ id 1u7rNA-0001JQ-FD; Thu, 24 Apr 2025 03:51:52 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1u7rN1-0006ez-8D; Thu, 24 Apr 2025 03:51:45 -0400
+ id 1u7rN4-0006ez-Eo; Thu, 24 Apr 2025 03:51:52 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 24 Apr
@@ -65,13 +65,15 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>
-Subject: [PATCH v6 0/6] Support vbootrom for AST2700
-Date: Thu, 24 Apr 2025 15:51:28 +0800
-Message-ID: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v6 1/6] hw/arm/aspeed_ast27x0 Introduce vbootrom memory region
+Date: Thu, 24 Apr 2025 15:51:29 +0800
+Message-ID: <20250424075135.3715128-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
+References: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -96,61 +98,71 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L8burHeO/pXv
+X-TUID: MQk2rUf68T3P
 
-v1:
-  Add initial support for AST27x0
-  The purpose of vbootrom here is to simulate the work of BootMCU SPL (riscv)
-  in AST2700, because QEMU doesn't support heterogenous architecture yet.
+Introduce a new vbootrom memory region. The region is mapped at address
+"0x00000000" and has a size of 128KB, identical to the SRAM region size.
+This memory region is intended for loading a vbootrom image file as part of the
+boot process.
 
-  ast27x0_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for
-  ASPEED AST27x0 BMC SOC. It currently implements the bare minimum to
-  load, parse, initialize and run boot images stored in SPI flash, but may grow
-  more features over time as needed. The source code is available at:
-  https://github.com/google/vbootrom
+The vbootrom registered in the SoC's address space using the ASPEED_DEV_VBOOTROM
+index.
 
-v2:
-  Add "Introduced ASPEED_DEV_VBOOTROM in the device enumeration" patch to fix
-  build failed.
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
+Tested-by: Nabih Estefan <nabihestefan@google.com>
+---
+ include/hw/arm/aspeed_soc.h | 2 ++
+ hw/arm/aspeed_ast27x0.c     | 9 +++++++++
+ 2 files changed, 11 insertions(+)
 
-v3:
-  1. Supports both vbootrom and device loader boot methods, with vbootrom used as
-  the default.
-  2. Fix review and QTEST test failed issues. 
-
-v4: 
-  Adjust the patch order.
-  
-v5:
-  fix review issue and remove unnecessary class attribure.
-  doc: create a new section for AST2700.
-  
-v6:
-  fix review issue.
-  Add google/vbootrom commit id for ast27x0
-  split to patch to update documentataion for ast27x0
-
-Jamin Lin (6):
-  hw/arm/aspeed_ast27x0 Introduce vbootrom memory region
-  pc-bios: Add AST27x0 vBootrom
-  hw/arm/aspeed: Add support for loading vbootrom image via "-bios"
-  tests/functional/aspeed: Add to test vbootrom for AST2700
-  docs/system/arm/aspeed: move AST2700 content to new section
-  docs/system/arm/aspeed: Support vbootrom for AST2700
-
- MAINTAINERS                             |   1 +
- docs/system/arm/aspeed.rst              |  99 ++++++++++++++++++++++--
- include/hw/arm/aspeed.h                 |   1 +
- include/hw/arm/aspeed_soc.h             |   2 +
- hw/arm/aspeed.c                         |  36 +++++++++
- hw/arm/aspeed_ast27x0.c                 |   9 +++
- pc-bios/README                          |   6 ++
- pc-bios/ast27x0_bootrom.bin             | Bin 0 -> 15424 bytes
- pc-bios/meson.build                     |   1 +
- tests/functional/test_aarch64_aspeed.py |  26 +++++++
- 10 files changed, 173 insertions(+), 8 deletions(-)
- create mode 100644 pc-bios/ast27x0_bootrom.bin
-
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index f069d17d16..b4b23d693d 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -59,6 +59,7 @@ struct AspeedSoCState {
+     MemoryRegion sram;
+     MemoryRegion spi_boot_container;
+     MemoryRegion spi_boot;
++    MemoryRegion vbootrom;
+     AddressSpace dram_as;
+     AspeedRtcState rtc;
+     AspeedTimerCtrlState timerctrl;
+@@ -169,6 +170,7 @@ struct AspeedSoCClass {
+ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
+ 
+ enum {
++    ASPEED_DEV_VBOOTROM,
+     ASPEED_DEV_SPI_BOOT,
+     ASPEED_DEV_IOMEM,
+     ASPEED_DEV_UART0,
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index b05ed75ff4..968dfa5526 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -24,6 +24,7 @@
+ #include "qemu/log.h"
+ 
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
++    [ASPEED_DEV_VBOOTROM]  =  0x00000000,
+     [ASPEED_DEV_SRAM]      =  0x10000000,
+     [ASPEED_DEV_HACE]      =  0x12070000,
+     [ASPEED_DEV_EMMC]      =  0x12090000,
+@@ -657,6 +658,14 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(s->memory,
+                                 sc->memmap[ASPEED_DEV_SRAM], &s->sram);
+ 
++    /* VBOOTROM */
++    if (!memory_region_init_ram(&s->vbootrom, OBJECT(s), "aspeed.vbootrom",
++                                0x20000, errp)) {
++        return;
++    }
++    memory_region_add_subregion(s->memory,
++                                sc->memmap[ASPEED_DEV_VBOOTROM], &s->vbootrom);
++
+     /* SCU */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+         return;
 -- 
 2.43.0
 

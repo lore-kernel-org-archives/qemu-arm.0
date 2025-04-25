@@ -1,499 +1,185 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4239126njd;
-        Fri, 25 Apr 2025 02:19:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXAuQ6xpZBHCyVU8IYpGkvM+Ngn/FcebKeei9BeBzEf2s/X4iC3wdsSfWIc3cwepZ/OngU4lk3tp2H5JA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG0Ff8qqhb0xHtzhK1hiHXjvR1fqiEX5ANdhLG2uvgrXNZhQhXchceKBmlNAud5Jxkm/Dd2
-X-Received: by 2002:a05:6a20:7f9d:b0:1f5:a3e8:64d3 with SMTP id adf61e73a8af0-2045b741207mr2320458637.21.1745572786927;
-        Fri, 25 Apr 2025 02:19:46 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745572786; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4245068njd;
+        Fri, 25 Apr 2025 02:34:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHUdY0uK0Da2q2EkAJdId4fOeKDWEChSuv6MoLzQ0Pp7KP4BEjThozxQcvNL4y1AN8u3XCG
+X-Received: by 2002:a05:6214:529c:b0:6e0:f451:2e22 with SMTP id 6a1803df08f44-6f4cba6325dmr30073956d6.38.1745573643270;
+        Fri, 25 Apr 2025 02:34:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745573643; cv=none;
         d=google.com; s=arc-20240605;
-        b=OAIjnGZvjObabHLCMW65GlpwqZONSgNnkCa7m+t1GXus3qSBEs0pxQGhf6xx1SgyZJ
-         vUeobi77Yy2O2cHBGmUofP1m9sdLj0WhpB4wKDeSJHnh+s4VfJ0tQQ2lYeApaD5r7KCR
-         7hd1T4ryOvpkz5hcs7NKrPLGVJGv8NRMlAho+7+CPd66AkIvmehmdVV3kkpchGXFeK7O
-         mEfsxSuJJsuJRghjkL7vZVK11Fx4EvMM/tO5RBMZHn2xNfpIthstpOsZgNA2o/QcgItU
-         g4/w0b8aTm56LTZSSm2OBQ4WHFv028oOXFOkVdx7pfKJ/CQBef6HmN2q+SZdUeaoCnZk
-         P7ig==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=T/awsreV9eHeMGFCTxP8t7chyrN0flVaMlJqKXTEV70=;
-        fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
-        b=i9FLzJutmcZ3RWsDaA+QwX2FQUtcgdYicpun8y0vIw9srp1ID7XHUbCjolmYwChzy5
-         66aI/Yxiw94rNQaOSZFuO7Ncdfvjd4YkrjbjDmzTpYrcBBDGxCp/vXg4yc1hTbRLCOc3
-         KwRpqHgMc6lBHDVd/FpEVfDZDahTHClzKLwWA/wbpDC8vOtOPx3MtJFet8vLu0stB1My
-         fqH/5OIPpMlqaD9VyATBx9C8/Ayu9BAZtrECO7Gyt6KJYVFyw9bV++mTioy4Jg05L5VN
-         vdvgur+BLtKOD5O+YdXEgNMdEZ+g/6e9ckY8+MTKdqz4jFHQTLxcXDM/Im/dLOWJ/p4g
-         uBIg==;
+        b=DvScXHcY5XqsfW/05Cub0wqH+DLAzZORHNb6bpAIikBjlSvzyEvtk40TNB9aslz1E8
+         IRyGcmgGnO6PMMEyP2VqbjUFcaEDzUgSHuK+NcjCw877HHCu1cDLagsMcSgF3ufzgpoc
+         ePXDcxiwAndWkZiDxOjvFKi+Xpz07uKCHtmYf8npsKfe9bdfSoimats9aW8Z3kGkgXFc
+         c6UlcQiEWUZXyldfnIxNxcgA6GsaVQp76iiv9d4PSogiAVljcgGFso/vEJao3W8MtpjN
+         aHLmuXE7DkgdHaOZBc8c5GCyAnQKj19y2bOeb57ud4xySvM+nsmy5ibeVItE6GRHHPob
+         +FJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=D6PGsnlK5Vh+UCAaUICO19znxR7i/Mlszp8yylYbsvA=;
+        fh=jC9dA94hH7p640mTMkvVU7I1jgLg3koZcLsyNxOpJAs=;
+        b=XiVbGnlwM0R0TtB6qyysweF9H7z7HkbH6ZZWPv5GnQ7EXRphXUuLjJsrOrE7IEsYQh
+         6FmpoMveGkGR3zqKrPEQTZOaISDVL3YfY7P6+wKZ0Zd54/5zU7+lE4EHhTroPQFz8ZAk
+         vMz9Zeo6O4ZmVKnaaXFXSUSJRuail8dp0A83568rVRMHmJuDPnVXIL7rhwh1VOVC3N9g
+         VzkzPa39uXTNATb+qG/S9apMSR5HZnZnZ27z8P2KgpI2jJbgbFqlwHqji8SO7ylA9jDd
+         DxomOlm6qPFJG9eAxkLWMIUW6ZkM8ZwSj17wAu2pFLyCMzjtXWIDaqZs3WXXkqEyWs/h
+         eQIA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="b6/b1l8L";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxHd+ZsY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-b15fb7b3460si4231753a12.641.2025.04.25.02.19.46
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0b22188si34452606d6.502.2025.04.25.02.34.02
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Apr 2025 02:19:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 25 Apr 2025 02:34:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="b6/b1l8L";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44281-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxHd+ZsY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 3C0DB9A4C5D
-	for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 09:19:28 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0E88E235348;
-	Fri, 25 Apr 2025 09:19:41 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="b6/b1l8L"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8DC52343AF
-	for <kvm@vger.kernel.org>; Fri, 25 Apr 2025 09:19:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1745572780; cv=none; b=TbwE+mYTAfPjl2t8A4Xg155d/PzIaGel0Oi7IvtjSbdRfvy7oiY1U4fxY3OPsFd1k/vrmeEOckxDsP99wTo3FHjyrLSUq14fgc//zSMmlM4ELRJ9XHUNPSZAs+8w6srLgGdrrSfzd1mtQUJuYScE5fK/vb1sA/qvXKGbEzJoYWc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1745572780; c=relaxed/simple;
-	bh=hR71IM5Kx3FT5LqChUWbSnqwdGUMevJSqSs7/Jfhrpk=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=VRkzCUL/cjrr02dAZmf2euuU2lfP8j60KIGKdn0nTTYOsmyttzqqu7rSCFtA7rLdSQREbMDqyBJZ7KnRzSwtM2qJN2xopXStVcbr797VMK3r1Yc+8eGOfPkCT7e2Wha2tXAeuuv+gd0VghPk6/7Tr6YKUMQZbMlcuRhn7aUWiBQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=b6/b1l8L; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1745572777;
+	s=mimecast20190719; t=1745573642;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=T/awsreV9eHeMGFCTxP8t7chyrN0flVaMlJqKXTEV70=;
-	b=b6/b1l8LTkDQMyRwArmdKURLAPyU+H8APnR39rlMZMQIvKC/Zi6/6qZjUgHAXttUL9Ho50
-	D3TX5kCMdwEv5NgTklMvgqCsrhnpxiMwr/y8Acz5Wg2zc/A7olbRh1U6B983fh6CIoP/1e
-	MZiQ/OU+YXlQcl/dB9mtxsrERlT8VMM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-mzkPT5yBNLiiJsW-IkIWcQ-1; Fri,
- 25 Apr 2025 05:19:33 -0400
-X-MC-Unique: mzkPT5yBNLiiJsW-IkIWcQ-1
-X-Mimecast-MFC-AGG-ID: mzkPT5yBNLiiJsW-IkIWcQ_1745572771
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 30FCA1800570;
-	Fri, 25 Apr 2025 09:19:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.5])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8AE0D1800378;
-	Fri, 25 Apr 2025 09:19:30 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 160A521E66C3; Fri, 25 Apr 2025 11:19:28 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
-  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
- Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
-  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
-  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
-  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
-  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
-Subject: Re: [PATCH 2/5] i386/kvm: Support basic KVM PMU filter
-In-Reply-To: <20250409082649.14733-3-zhao1.liu@intel.com> (Zhao Liu's message
-	of "Wed, 9 Apr 2025 16:26:46 +0800")
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
-	<20250409082649.14733-3-zhao1.liu@intel.com>
-Date: Fri, 25 Apr 2025 11:19:28 +0200
-Message-ID: <878qnoha3j.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=D6PGsnlK5Vh+UCAaUICO19znxR7i/Mlszp8yylYbsvA=;
+	b=OxHd+ZsYwSoySLLmUkiLwIh/LVlXJefd9FHSSjcMtA3IWJb2qIdAd1P69QIeBdvAQYjeZ7
+	+nV+VoWmKq4yx/xsv2tWVPoU7zunEpS6hGg7pninE/wWrMZUGwiRPxo2XvXUnq7llfz1tu
+	7tRJNk9b3CC4zikAy7BsyxJ5b3jXZNA=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-159-3bL66zu5O--VACmRABxTvA-1; Fri, 25 Apr 2025 05:33:59 -0400
+X-MC-Unique: 3bL66zu5O--VACmRABxTvA-1
+X-Mimecast-MFC-AGG-ID: 3bL66zu5O--VACmRABxTvA_1745573637
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43cf172ff63so9481085e9.3
+        for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 02:33:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745573637; x=1746178437;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=D6PGsnlK5Vh+UCAaUICO19znxR7i/Mlszp8yylYbsvA=;
+        b=JolypDY3mMr4flrVjq08OPCfJNc7/9M65p0jaKHOhwor3OUw/oLFohgh8ECDFP7chG
+         okKPZeDBon0If01hmYK/3nUriH3oflvJRv482VeZlah4+jKhMXwFR3UORVtjJFSS8XIT
+         XrDmcAiScNKwDJjRusPFuQnlEv49420K2NvPSJgYVJjsYGa1tRdzGfXOERVZnF06PsFW
+         +Z8amKLqkV0mS/1Lk1ptZJHSCZYlgx7HvHchlM0eO58cPLQxJVZBIEo62EmBiIBDYCn+
+         EmWnKSmV0YCoH7mc9LbMtPzDOzAdn+/v0Z4e3e+q0zCdfAequsWyYxdFUztQ1eVicAM5
+         EOzA==
+X-Gm-Message-State: AOJu0Yw24HE2c1DP++PvO8RpUo0h9CbEH9Boh6AtpB7o+ajraU8f9Ix6
+	qZKu37PPizPihL39yaqsaLdq5TfKlo0wmxn2zgZ8sUjlrZVtxO+qcqnFAF4sVFm6MMnB6C3NEs1
+	8bf6R19lwQLdl+qs7NUa3mmf/RzxiVya8ImSQ27fjvC90GL/hYT6WaA==
+X-Gm-Gg: ASbGncvYAxkRGNF3ZZUjZXLp+UW5BO2GZfN/hSOAU7FYAGRLKJ5qO34ik6yncddjEhz
+	1CTqwILdtpuGKT9HxPGb8rA2mVEhYAelQouZytBEQRgkQp//H7NQM+4czjGxQKTdG+jkFen7h3g
+	AQA3JGNYhHfo33j6neQ6lMTAocKAVqJBuntY1iO4UWVMEf/sLIQ1M+3LRDo7i9yGLnnuMm+Yj5c
+	tUbkaZJW3llbew9A3lV91Ai0E36m/4BqtLh4U/JXEOgsulerAuP4pzLJwTDagV9wo+1vaO6oAKC
+	9KkQ3bZs2dQVXMSUK9Iz3A/3ruKQq/ZDNknZuTYSI9zfYQ==
+X-Received: by 2002:a05:600c:190b:b0:43b:c95f:fd9 with SMTP id 5b1f17b1804b1-440a65ba213mr13003715e9.5.1745573637286;
+        Fri, 25 Apr 2025 02:33:57 -0700 (PDT)
+X-Received: by 2002:a05:600c:190b:b0:43b:c95f:fd9 with SMTP id 5b1f17b1804b1-440a65ba213mr13003255e9.5.1745573636866;
+        Fri, 25 Apr 2025 02:33:56 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ip-109-43-178-177.web.vodafone.de. [109.43.178.177])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4408c8b0ea0sm57894065e9.2.2025.04.25.02.33.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Apr 2025 02:33:56 -0700 (PDT)
+Message-ID: <f7e1ca0d-b368-4cf6-b964-111722789b90@redhat.com>
+Date: Fri, 25 Apr 2025 11:33:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: E2BQjhooV8AS
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/20] target/s390x: Fix type conflict of GLib function
+ pointers
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
+ <1e55b633d50567e8b145c98f626af5ecd93001f9.1745295397.git.ktokunaga.mail@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <1e55b633d50567e8b145c98f626af5ecd93001f9.1745295397.git.ktokunaga.mail@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 7R_ATRSReQDiqYZG_LtDy7dXz0Cy11WTX4_Bzyh_xZ0_1745573637
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: tn26UmUzWyhU
 
-Zhao Liu <zhao1.liu@intel.com> writes:
-
-> Filter PMU events with raw format in i386 code.
->
-> For i386, raw format indicates that the PMU event code is already
-> encoded according to the KVM ioctl requirements, and can be delivered
-> directly to KVM without additional encoding work.
->
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Tested-by: Yi Lai <yi1.lai@intel.com>
+On 22/04/2025 07.27, Kohei Tokunaga wrote:
+> On Emscripten, function pointer casts can result in runtime failures due to
+> strict function signature checks. This affects the use of g_list_sort and
+> g_slist_sort, which internally perform function pointer casts that are not
+> supported by Emscripten. To avoid these issues, g_list_sort_with_data and
+> g_slist_sort_with_data should be used instead, as they do not rely on
+> function pointer casting.
+> 
+> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 > ---
-> Changes since RFC v2:
->  * Add documentation in qemu-options.hx.
->  * Add Tested-by from Yi.
->
-> Changes since RFC v1:
->  * Stop check whether per-event actions are the same, as "action" has
->    been a global parameter. (Dapeng)
->  * Make pmu filter related functions return int in
->    target/i386/kvm/kvm.c.
-> ---
->  include/system/kvm_int.h |   2 +
->  qemu-options.hx          |  47 ++++++++++++++-
->  target/i386/kvm/kvm.c    | 127 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 175 insertions(+), 1 deletion(-)
->
-> diff --git a/include/system/kvm_int.h b/include/system/kvm_int.h
-> index 4de6106869b0..743fed29b17b 100644
-> --- a/include/system/kvm_int.h
-> +++ b/include/system/kvm_int.h
-> @@ -17,6 +17,7 @@
->  #include "hw/boards.h"
->  #include "hw/i386/topology.h"
->  #include "io/channel-socket.h"
-> +#include "system/kvm-pmu.h"
->  
->  typedef struct KVMSlot
->  {
-> @@ -166,6 +167,7 @@ struct KVMState
->      uint16_t xen_gnttab_max_frames;
->      uint16_t xen_evtchn_max_pirq;
->      char *device;
-> +    KVMPMUFilter *pmu_filter;
->  };
->  
->  void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index dc694a99a30a..51a7c61ce0b0 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -232,7 +232,8 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
->      "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
->      "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
->      "                thread=single|multi (enable multi-threaded TCG)\n"
-> -    "                device=path (KVM device path, default /dev/kvm)\n", QEMU_ARCH_ALL)
-> +    "                device=path (KVM device path, default /dev/kvm)\n"
-> +    "                pmu-filter=id (configure KVM PMU filter)\n", QEMU_ARCH_ALL)
+>   target/s390x/cpu_models.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-As we'll see below, this property is actually available only for i386.
-Other target-specific properties document this like "x86 only".  Please
-do that for this one, too.
-
-As far as I can tell, the kvm-pmu-filter object needs to be activated
-with -accel pmu-filter=... to do anything.  Correct?
-
-You can create any number of kvm-pmu-filter objects, but only one of
-them can be active.  Correct?
-
->  SRST
->  ``-accel name[,prop=value[,...]]``
->      This is used to enable an accelerator. Depending on the target
-> @@ -318,6 +319,10 @@ SRST
->          option can be used to pass the KVM device to use via a file descriptor
->          by setting the value to ``/dev/fdset/NN``.
->  
-> +    ``pmu-filter=id``
-> +        Sets the id of KVM PMU filter object. This option can be used to set
-> +        whitelist or blacklist of PMU events for Guest.
-
-Well, "this option" can't actually be used to set the lists.  That's to
-be done with -object kvm-pmu-filter.  Perhaps:
-
-           Activate a KVM PMU filter object.  That object can be used to
-           filter guest access to PMU events.
-
-> +
->  ERST
->  
->  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
-> @@ -6144,6 +6149,46 @@ SRST
->          ::
->  
->              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-> +
-> +    ``-object '{"qom-type":"kvm-pmu-filter","id":id,"action":action,"events":[entry_list]}'``
-
-Should this be in the previous patch?
-
-> +        Create a kvm-pmu-filter object that configures KVM to filter
-> +        selected PMU events for Guest.
-
-The object doesn't actually configure KVM.  It merely holds the filter
-configuration.  The configuring is done by the KVM accelerator according
-to configuration in the connected kvm-pmu-filter object.  Perhaps:
-
-           Create a kvm-pmu-filter object to hold PMU event filter
-           configuration.
-
-> +
-> +        This option must be written in JSON format to support ``events``
-> +        JSON list.
-> +
-> +        The ``action`` parameter sets the action that KVM will take for
-> +        the selected PMU events. It accepts ``allow`` or ``deny``. If
-> +        the action is set to ``allow``, all PMU events except the
-> +        selected ones will be disabled and blocked in the Guest. But if
-> +        the action is set to ``deny``, then only the selected events
-> +        will be denied, while all other events can be accessed normally
-> +        in the Guest.
-
-I recommend "guest" instead of "Guest".
-
-> +
-> +        The ``events`` parameter accepts a list of PMU event entries in
-> +        JSON format. Event entries, based on different encoding formats,
-> +        have the following types:
-> +
-> +        ``{"format":"raw","code":raw_code}``
-> +            Encode the single PMU event with raw format. The ``code``
-> +            parameter accepts raw code of a PMU event. For x86, the raw
-> +            code represents a combination of umask and event select:
-> +
-> +        ::
-> +
-> +            (((select & 0xf00UL) << 24) | \
-> +             ((select) & 0xff) | \
-> +             ((umask) & 0xff) << 8)
-
-Does it?  Could the code also represent a combination of select, match,
-and mask (masked entry format)?
-
-> +
-> +        An example KVM PMU filter object would look like:
-> +
-> +        .. parsed-literal::
-> +
-> +             # |qemu_system| \\
-> +                 ... \\
-> +                 -accel kvm,pmu-filter=id \\
-> +                 -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":196}]}' \\
-> +                 ...
->  ERST
->  
->  
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index 6c749d4ee812..fa3a696654cb 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -34,6 +34,7 @@
->  #include "system/system.h"
->  #include "system/hw_accel.h"
->  #include "system/kvm_int.h"
-> +#include "system/kvm-pmu.h"
->  #include "system/runstate.h"
->  #include "kvm_i386.h"
->  #include "../confidential-guest.h"
-> @@ -110,6 +111,7 @@ typedef struct {
->  static void kvm_init_msrs(X86CPU *cpu);
->  static int kvm_filter_msr(KVMState *s, uint32_t msr, QEMURDMSRHandler *rdmsr,
->                            QEMUWRMSRHandler *wrmsr);
-> +static int kvm_filter_pmu_event(KVMState *s);
->  
->  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->      KVM_CAP_INFO(SET_TSS_ADDR),
-> @@ -3346,6 +3348,18 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->          }
->      }
->  
-> +    /*
-> +     * TODO: Move this chunk to kvm_arch_pre_create_vcpu() and check
-
-I can't see a function kvm_arch_pre_create_vcpu().
-
-> +     * whether pmu is enabled there.
-
-PMU
-
-> +     */
-> +    if (s->pmu_filter) {
-> +        ret = kvm_filter_pmu_event(s);
-> +        if (ret < 0) {
-> +            error_report("Could not set KVM PMU filter");
-
-When kvm_filter_pmu_event() failed, it already reported an error.
-Reporting it another time can be confusing.
-
-> +            return ret;
-> +        }
-> +    }
-> +
->      return 0;
->  }
->  
-> @@ -5942,6 +5956,82 @@ static int kvm_handle_wrmsr(X86CPU *cpu, struct kvm_run *run)
->      g_assert_not_reached();
->  }
->  
-> +static bool kvm_config_pmu_event(KVMPMUFilter *filter,
-> +                                 struct kvm_pmu_event_filter *kvm_filter)
-> +{
-> +    KvmPmuFilterEventList *events;
-> +    KvmPmuFilterEvent *event;
-> +    uint64_t code;
-> +    int idx = 0;
-> +
-> +    kvm_filter->nevents = filter->nevents;
-> +    events = filter->events;
-> +    while (events) {
-> +        assert(idx < kvm_filter->nevents);
-> +
-> +        event = events->value;
-> +        switch (event->format) {
-> +        case KVM_PMU_EVENT_FORMAT_RAW:
-> +            code = event->u.raw.code;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +
-> +        kvm_filter->events[idx++] = code;
-> +        events = events->next;
-> +    }
-> +
-> +    return true;
-> +}
-
-This function cannot fail.  Please return void, and simplify its caller.
-
-> +
-> +static int kvm_install_pmu_event_filter(KVMState *s)
-> +{
-> +    struct kvm_pmu_event_filter *kvm_filter;
-> +    KVMPMUFilter *filter = s->pmu_filter;
-> +    int ret;
-> +
-> +    kvm_filter = g_malloc0(sizeof(struct kvm_pmu_event_filter) +
-> +                           filter->nevents * sizeof(uint64_t));
-
-Should we use sizeof(filter->events[0])?
-
-> +
-> +    switch (filter->action) {
-> +    case KVM_PMU_FILTER_ACTION_ALLOW:
-> +        kvm_filter->action = KVM_PMU_EVENT_ALLOW;
-> +        break;
-> +    case KVM_PMU_FILTER_ACTION_DENY:
-> +        kvm_filter->action = KVM_PMU_EVENT_DENY;
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +
-> +    if (!kvm_config_pmu_event(filter, kvm_filter)) {
-> +        goto fail;
-> +    }
-> +
-> +    ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
-> +    if (ret) {
-> +        error_report("KVM_SET_PMU_EVENT_FILTER fails (%s)", strerror(-ret));
-
-Suggest something like "can't set KVM PMU event filter".
-
-> +        goto fail;
-> +    }
-> +
-> +    g_free(kvm_filter);
-> +    return 0;
-> +fail:
-> +    g_free(kvm_filter);
-> +    return -EINVAL;
-> +}
-> +
-> +static int kvm_filter_pmu_event(KVMState *s)
-> +{
-> +    if (!kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_FILTER)) {
-> +        error_report("KVM PMU filter is not supported by Host.");
-
-Error message should be a single phrase with no trailing punctuation.
-More of the same below.
-
-> +        return -1;
-> +    }
-> +
-> +    return kvm_install_pmu_event_filter(s);
-> +}
-> +
->  static bool has_sgx_provisioning;
->  
->  static bool __kvm_enable_sgx_provisioning(KVMState *s)
-> @@ -6537,6 +6627,35 @@ static void kvm_arch_set_xen_evtchn_max_pirq(Object *obj, Visitor *v,
->      s->xen_evtchn_max_pirq = value;
->  }
->  
-> +static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
-> +                                      Object *child, Error **errp)
-> +{
-> +    KVMPMUFilter *filter = KVM_PMU_FILTER(child);
-> +    KvmPmuFilterEventList *events = filter->events;
-> +
-> +    if (!filter->nevents) {
-> +        error_setg(errp,
-> +                   "Empty KVM PMU filter.");
-
-Why is this an error?
-
-action=allow with an empty would be the obvious way to allow nothing,
-wouldn't it?
-
-> +        return;
-> +    }
-> +
-> +    while (events) {
-> +        KvmPmuFilterEvent *event = events->value;
-> +
-> +        switch (event->format) {
-> +        case KVM_PMU_EVENT_FORMAT_RAW:
-> +            break;
-> +        default:
-> +            error_setg(errp,
-> +                       "Unsupported PMU event format %s.",
-> +                       KvmPmuEventFormat_str(events->value->format));
-
-Unreachable.
-
-> +            return;
-> +        }
-> +
-> +        events = events->next;
-> +    }
-> +}
-> +
->  void kvm_arch_accel_class_init(ObjectClass *oc)
->  {
->      object_class_property_add_enum(oc, "notify-vmexit", "NotifyVMexitOption",
-> @@ -6576,6 +6695,14 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
->                                NULL, NULL);
->      object_class_property_set_description(oc, "xen-evtchn-max-pirq",
->                                            "Maximum number of Xen PIRQs");
-> +
-> +    object_class_property_add_link(oc, "pmu-filter",
-> +                                   TYPE_KVM_PMU_FILTER,
-> +                                   offsetof(KVMState, pmu_filter),
-> +                                   kvm_arch_check_pmu_filter,
-> +                                   OBJ_PROP_LINK_STRONG);
-> +    object_class_property_set_description(oc, "pmu-filter",
-> +                                          "Set the KVM PMU filter");
->  }
->  
->  void kvm_set_max_apic_id(uint32_t max_apic_id)
-
-target/i386/kvm/kvm.c is compiled into the binary only for i386 target
-with CONFIG_KVM.
-
-The kvm-pmu-filter-object exists for any target with CONFIG_KVM.  But
-it's usable only for i386.
-
-I think the previous patch's commit message should state the role of the
-kvm-pmu-filter-object more clearly: hold KVM PMU filter configuration
-for any target with KVM.  This patch's commit message should then
-explain what the patch does: enable actual use of the
-kvm-pmu-filter-object for i386 only.  Other targets are left for another
-day.
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

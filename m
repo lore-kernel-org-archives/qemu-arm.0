@@ -1,211 +1,292 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4228807njd;
-        Fri, 25 Apr 2025 01:57:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvgiybCrcswg3nJLPbz1AXlRtylaBe0Ye+wo3TurElojQhgJkQ/2nh9gOfcMeDASpw2VN5EBRgWc+0RQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHgwrdRoRNn+r1HNBXq0W6KfGAE2hEiUE8JZgg2iEAIQF99V+j2ftbnar77D2rdYlFPwhVq
-X-Received: by 2002:a05:600c:1e25:b0:43d:46de:b0eb with SMTP id 5b1f17b1804b1-440a65dd632mr13501125e9.12.1745571477769;
-        Fri, 25 Apr 2025 01:57:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745571477; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4239018njd;
+        Fri, 25 Apr 2025 02:19:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCULBky+ieZFW5xN5Pyr7pxBUQKQMypAfH+XSPN9zykQrJe8bBv1KIJN4pJsThiJU8zl1qoyLkjY2LH47g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEtARUActOdPecPxnVqIXPpo9XbVksawTdZNWfpgM0zN9ktN2NQgwKWsTFH7muXI0j8Lte6
+X-Received: by 2002:a05:6402:35cd:b0:5f6:c5e3:faab with SMTP id 4fb4d7f45d1cf-5f722672a7emr1163287a12.1.1745572770597;
+        Fri, 25 Apr 2025 02:19:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745572770; cv=pass;
         d=google.com; s=arc-20240605;
-        b=NZ8Azvt0dFJG0OdmgI1eUO1h72dce4JOtcy//aYe82YR4IcU9fnKqGwEkr+2Kb3Y6I
-         npjRXk8/GVHk4hCwHVpjWht+g0F8kcKbR39A+cNTziGacpYf1eCWclkHjyPBhsZ1+fIj
-         HpE/jPGZyOnogTCZmbmn7nXSq/yT2nBHn5yaGbzxnanXKNykCCEZmiVQwWost/VTYFpx
-         ASPLysr636QQmjpaq86UZPL97f8cIuoYnu9bA02rit+3G9bQdM0K8w9KjSlfIIXp+mPa
-         npKt2kqTLIHVQeN3JHqeCUUfMTAoVujUEhkLtDGSTTodmOHrZqNyMMRCpTv0RAN5P5Xn
-         Bicw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=kBZCLz2dFBgx9PrHYuxwg/dmCppbagqmhMvrWKFAlkI=;
-        fh=Z5gh/o5ZL3xRtUwccechZMEA5ciId+Hw9EA3V2rP7fg=;
-        b=eIfo0sQu0lAtDhBDe42MkuwDCM+G/lhXoUc02lFVkro5HeP6zoPdcvfegwTvy47FXI
-         MqADelbCDLe+fyXwj1eCPeMLcU2v6Bd0WiKtKws5dxWgy6B6Ha6VFp5XtWez7hIsm93e
-         L8/j23v7MIWiT6mB4PdKKi7PSgikwSE2n/U0W1udFQ+TxaAagJUCG0WNA7Ojp14t+kJJ
-         AFegHPXOGoH06Z03ILAQWzHu3D4ohta/gFhLtjb399ET0ucJ2n12d4KSueRA3p1Myo1S
-         +5/Br7I+7gtFqnx0BWCzT72EbgYak0y20ZhOS80ql1Qf1Uk/Y+dv1ROjwngG+EmhwylU
-         2kkQ==;
+        b=FbXG7DJt7It0VhgRitB1FmsLQTpkbmpIWsriumZ8hAe1Bpgm1bkZLX5Md7KPJtxptJ
+         b8WGTY3JE3FXY4wvCKm6PKoJhQy3NdTLF9P6WZHiMcTZzs39udUlDbSvk+n2HQ0FF9CH
+         CtkUWNjNmSVRoN134pN7WfhyVegYhOZ1mNivtWDzSaDxyX1ld5BvpF6TjhXQST+iXyrB
+         t3GJ0ZnS14fzzv4WFTzvnRFUc/F4d4kP05TH7iCg2cxhO++XwwK0+r0VtuoLdS4FqYzz
+         K6URQPyVw+sjqttFxmK92zjxscN36G13naBMfPy6WVJ7+nShsP4PPDKNWMAh1JI5aoFX
+         1U1A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=7ZutwbOjXGr5bGwYW46iHYOEUi2TGqqNhr0ZW2OCt4A=;
+        fh=8P51EM7yizUErdEj88Fe1c0M08tL7FTN3B6ktSKn97s=;
+        b=GYu9pJjGmY6MyZzUf/kxOv2NSlNRapyVK2t6zEaF5so3SSct8yTsRr2E26eFkO8cho
+         n2r+290Lm1v/XZAnJr9lRLkWC8RlMheRxeBpjpYAmneCMd1EPfKd5ZgKVuCo0rk47yjV
+         mVTCIpczotLrfz9DzkUvd5l7mfMp++AqTsMU6kyNC9jN9JLHYEC3PXpLQDvGZwiKzjki
+         1upPlQPwY3mqE9x3qaYYtpXMJpkEidyGEJtqbTf+Bni2oI3BdsYq9HSqxd561YM9BRdN
+         T3sNLT6MBosJsgv85CT3KAZB0tEui1ouXL6kZUqH3MI5TlXETBdagyklP9fL7iA6YcKw
+         MGNg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gzJzqx9u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-440a5311358si8657125e9.85.2025.04.25.01.57.57
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WrewBO8M;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5f70334139fsi874750a12.440.2025.04.25.02.19.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 01:57:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Apr 2025 02:19:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gzJzqx9u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8EsZ-0008GH-NA; Fri, 25 Apr 2025 04:57:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8EsY-0008F1-Df; Fri, 25 Apr 2025 04:57:50 -0400
-Received: from mgamail.intel.com ([192.198.163.10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8EsV-0004Lf-Au; Fri, 25 Apr 2025 04:57:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745571467; x=1777107467;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=mcEr0zmSiDOPEt70TYU6E6B7dOkZJjNKNUv16j9oVcE=;
- b=gzJzqx9urLiWY7IF+T7VZB1QYy7yKnyIrd+9yW9gv44b0kGPhxqmGybJ
- +oXA7hRe3W/p8yKwBOGlEFxlKejUVqefFmiMSoqskazHUt3NEt8ef0qQ+
- 6aHrs80p+BEf6jAoBoOixhDPfzLycDDJ7Jx//Ouu8czfP5ObCd42RMEMj
- qe/mlCdUwsm8rdwg2Pf9s4uYzSCnbseDXQXoHYvpYrs3Q9+onUgNMEug+
- AF12JPh3oqkgNqzkZa03d893vVzgGQtWqZIMMpxVekQI8exYbkwAunHWV
- x2r1QyXmanXSlXuqD3EuhUFoX7qTrM4Z01Df+ePM2uQx4rfG7HBwVjWQe Q==;
-X-CSE-ConnectionGUID: IwSWVHI9RG2I35TwnBtCTg==
-X-CSE-MsgGUID: h1loQsGDTrq39tAMSSeo0A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="58598709"
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="58598709"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Apr 2025 01:57:43 -0700
-X-CSE-ConnectionGUID: GO8FEL63QBeQRXrZ2LqRRQ==
-X-CSE-MsgGUID: gdGUVTFQQaa54FHx4mG1AA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="132847488"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa007.fm.intel.com with ESMTP; 25 Apr 2025 01:57:33 -0700
-Date: Fri, 25 Apr 2025 17:18:28 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
- babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
- groug@kaod.org, khorenko@virtuozzo.com,
- alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
- davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
- dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
- peter.maydell@linaro.org, gaosong@loongson.cn,
- chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
- danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
- thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
- ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
- liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
- kraxel@redhat.com, berrange@redhat.com
-Subject: Re: [PATCH v4 09/11] target/i386/kvm: reset AMD PMU registers during
- VM reset
-Message-ID: <aAtTZLZR7IRhdOUC@intel.com>
-References: <20250416215306.32426-1-dongli.zhang@oracle.com>
- <20250416215306.32426-10-dongli.zhang@oracle.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WrewBO8M;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44280-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 9F3C91BA3292
+	for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 09:19:41 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C9F6D233D88;
+	Fri, 25 Apr 2025 09:19:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="WrewBO8M"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC23B1D63CF
+	for <kvm@vger.kernel.org>; Fri, 25 Apr 2025 09:19:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1745572765; cv=none; b=l2KyJNIEx5n19vBMyl0J9rx17GHfyw9I5OzzPOuoICE+vk6HNdp0lXkV2B+6zQJ2LW3GbfJb4IVDtY1hTra5OTIKUOMUr8SruBq/8AkVi2/7f3TvglPZ3soDES4oKMfebyW5ym2YxocFadhGYs++Fem6FGSopgosgJKsysCN06k=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1745572765; c=relaxed/simple;
+	bh=+QAp4VYv3fmUaD1XK73SkAR89Qzki7SiKgCZ+0iFM4Y=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=QjnmFRIgrdk8AYBoyxLZ6QH6VW6LI/TN48OAnQOanTD5JJMzQx4KmakjdZWe3tnYZ8qI3h9L0vyxzS0eLylbfdaXYTHiTGiG6QZK0jJRdiZqbCgmWH9CHJpgS+m8NIZ2mpPDbAtorVZfWANqWnmJe+Q/sEcb5jmxbW7XrCU9A6c=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=WrewBO8M; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1745572762;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7ZutwbOjXGr5bGwYW46iHYOEUi2TGqqNhr0ZW2OCt4A=;
+	b=WrewBO8MSScKtTMBqK29atTOqFW8iZRFqYSOibHkSoeE+TpGY3Hk5qrNjLajPII3OxbZTu
+	eoq3iD7IFzLGM2ATz97o96m2PgJIQNK9zpWfcZmLHOs4NEW2KuxR0Kyzr2MboWR5H0YZRk
+	k291MaKecg6qGphcBhTybLBog38I9Lo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-LdiWRZCINieW0mfEquIkpQ-1; Fri,
+ 25 Apr 2025 05:19:17 -0400
+X-MC-Unique: LdiWRZCINieW0mfEquIkpQ-1
+X-Mimecast-MFC-AGG-ID: LdiWRZCINieW0mfEquIkpQ_1745572755
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 65F7E19560AE;
+	Fri, 25 Apr 2025 09:19:15 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.5])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 886F030001AB;
+	Fri, 25 Apr 2025 09:19:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id EB81421E6766; Fri, 25 Apr 2025 11:19:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
+  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
+ Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
+  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>,
+    =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH 1/5] qapi/qom: Introduce kvm-pmu-filter object
+In-Reply-To: <20250409082649.14733-2-zhao1.liu@intel.com> (Zhao Liu's message
+	of "Wed, 9 Apr 2025 16:26:45 +0800")
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+	<20250409082649.14733-2-zhao1.liu@intel.com>
+Date: Fri, 25 Apr 2025 11:19:10 +0200
+Message-ID: <87a584ha41.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250416215306.32426-10-dongli.zhang@oracle.com>
-Received-SPF: pass client-ip=192.198.163.10; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.84,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ygkKfntHBm0f
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: J8ZhZsH/7nfq
 
-On Wed, Apr 16, 2025 at 02:52:34PM -0700, Dongli Zhang wrote:
-> Date: Wed, 16 Apr 2025 14:52:34 -0700
-> From: Dongli Zhang <dongli.zhang@oracle.com>
-> Subject: [PATCH v4 09/11] target/i386/kvm: reset AMD PMU registers during
->  VM reset
-> X-Mailer: git-send-email 2.43.5
-> 
-> QEMU uses the kvm_get_msrs() function to save Intel PMU registers from KVM
-> and kvm_put_msrs() to restore them to KVM. However, there is no support for
-> AMD PMU registers. Currently, pmu_version and num_pmu_gp_counters are
-> initialized based on cpuid(0xa), which does not apply to AMD processors.
-> For AMD CPUs, prior to PerfMonV2, the number of general-purpose registers
-> is determined based on the CPU version.
-> 
-> To address this issue, we need to add support for AMD PMU registers.
-> Without this support, the following problems can arise:
-> 
-> 1. If the VM is reset (e.g., via QEMU system_reset or VM kdump/kexec) while
-> running "perf top", the PMU registers are not disabled properly.
-> 
-> 2. Despite x86_cpu_reset() resetting many registers to zero, kvm_put_msrs()
-> does not handle AMD PMU registers, causing some PMU events to remain
-> enabled in KVM.
-> 
-> 3. The KVM kvm_pmc_speculative_in_use() function consistently returns true,
-> preventing the reclamation of these events. Consequently, the
-> kvm_pmc->perf_event remains active.
-> 
-> 4. After a reboot, the VM kernel may report the following error:
-> 
-> [    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
-> [    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
-> 
-> 5. In the worst case, the active kvm_pmc->perf_event may inject unknown
-> NMIs randomly into the VM kernel:
-> 
-> [...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
-> 
-> To resolve these issues, we propose resetting AMD PMU registers during the
-> VM reset process.
-> 
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-> ---
-> Changed since v1:
->   - Modify "MSR_K7_EVNTSEL0 + 3" and "MSR_K7_PERFCTR0 + 3" by using
->     AMD64_NUM_COUNTERS (suggested by Sandipan Das).
->   - Use "AMD64_NUM_COUNTERS_CORE * 2 - 1", not "MSR_F15H_PERF_CTL0 + 0xb".
->     (suggested by Sandipan Das).
->   - Switch back to "-pmu" instead of using a global "pmu-cap-disabled".
->   - Don't initialize PMU info if kvm.enable_pmu=N.
-> Changed since v2:
->   - Remove 'static' from host_cpuid_vendorX.
->   - Change has_pmu_version to pmu_version.
->   - Use object_property_get_int() to get CPU family.
->   - Use cpuid_find_entry() instead of cpu_x86_cpuid().
->   - Send error log when host and guest are from different vendors.
->   - Move "if (!cpu->enable_pmu)" to begin of function. Add comments to
->     reminder developers.
->   - Add support to Zhaoxin. Change is_same_vendor() to
->     is_host_compat_vendor().
->   - Didn't add Reviewed-by from Sandipan because the change isn't minor.
-> Changed since v3:
->   - Use host_cpu_vendor_fms() from Zhao's patch.
->   - Check AMD directly makes the "compat" rule clear.
->   - Add comment to MAX_GP_COUNTERS.
->   - Skip PMU info initialization if !kvm_pmu_disabled.
-> 
->  target/i386/cpu.h     |  12 +++
->  target/i386/kvm/kvm.c | 175 +++++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 183 insertions(+), 4 deletions(-)
+Philippe, there's a question for you on target-specific QAPI schema.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Zhao Liu <zhao1.liu@intel.com> writes:
+
+> Introduce the kvm-pmu-filter object and support the PMU event with raw
+> format.
+>
+> The raw format, as a native PMU event code representation, can be used
+> for several architectures.
+>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Tested-by: Yi Lai <yi1.lai@intel.com>
+
+[...]
+
+> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
+> new file mode 100644
+> index 000000000000..22f749bf9183
+> --- /dev/null
+> +++ b/accel/kvm/kvm-pmu.c
+
+[...]
+
+> +static const TypeInfo kvm_pmu_filter_info = {
+> +    .parent = TYPE_OBJECT,
+> +    .name = TYPE_KVM_PMU_FILTER,
+> +    .class_init = kvm_pmu_filter_class_init,
+> +    .instance_size = sizeof(KVMPMUFilter),
+> +    .instance_init = kvm_pmu_filter_instance_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { TYPE_USER_CREATABLE },
+> +        { }
+> +    }
+> +};
+> +
+> +static void kvm_pmu_event_register_type(void)
+> +{
+> +    type_register_static(&kvm_pmu_filter_info);
+> +}
+> +
+> +type_init(kvm_pmu_event_register_type);
+> diff --git a/accel/kvm/meson.build b/accel/kvm/meson.build
+> index 397a1fe1fd1e..dfab2854f3a8 100644
+> --- a/accel/kvm/meson.build
+> +++ b/accel/kvm/meson.build
+> @@ -2,6 +2,7 @@ kvm_ss = ss.source_set()
+>  kvm_ss.add(files(
+>    'kvm-all.c',
+>    'kvm-accel-ops.c',
+> +  'kvm-pmu.c',
+>  ))
+>  
+>  specific_ss.add_all(when: 'CONFIG_KVM', if_true: kvm_ss)
+
+The new file is compiled into the binary when CONFIG_KVM.  Therefore,
+object kvm-pmu-filter is available exactly then.  Makes sense.
+However, ...
+
+[...]
+
+> diff --git a/qapi/kvm.json b/qapi/kvm.json
+> new file mode 100644
+> index 000000000000..1861d86a9726
+> --- /dev/null
+> +++ b/qapi/kvm.json
+> @@ -0,0 +1,84 @@
+> +# -*- Mode: Python -*-
+> +# vim: filetype=python
+> +#
+> +# Copyright (C) 2025 Intel Corporation.
+> +#
+> +# Author: Zhao Liu <zhao1.liu@intel.com>
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +##
+> +# == KVM
+> +##
+> +
+> +##
+> +# === PMU stuff (KVM related)
+> +##
+> +
+> +##
+> +# @KvmPmuFilterAction:
+> +#
+> +# Actions that KVM PMU filter supports.
+> +#
+> +# @deny: disable the PMU event/counter in KVM PMU filter.
+> +#
+> +# @allow: enable the PMU event/counter in KVM PMU filter.
+> +#
+> +# Since 10.1
+> +##
+> +{ 'enum': 'KvmPmuFilterAction',
+> +  'data': ['allow', 'deny'] }
+> +
+> +##
+> +# @KvmPmuEventFormat:
+> +#
+> +# Encoding formats of PMU event that QEMU/KVM supports.
+> +#
+> +# @raw: the encoded event code that KVM can directly consume.
+> +#
+> +# Since 10.1
+> +##
+> +{ 'enum': 'KvmPmuEventFormat',
+> +  'data': ['raw'] }
+> +
+> +##
+> +# @KvmPmuRawEvent:
+> +#
+> +# Raw PMU event code.
+> +#
+> +# @code: the raw value that has been encoded, and QEMU could deliver
+> +#     to KVM directly.
+> +#
+> +# Since 10.1
+> +##
+> +{ 'struct': 'KvmPmuRawEvent',
+> +  'data': { 'code': 'uint64' } }
+> +
+> +##
+> +# @KvmPmuFilterEvent:
+> +#
+> +# PMU event filtered by KVM.
+> +#
+> +# @format: PMU event format.
+> +#
+> +# Since 10.1
+> +##
+> +{ 'union': 'KvmPmuFilterEvent',
+> +  'base': { 'format': 'KvmPmuEventFormat' },
+> +  'discriminator': 'format',
+> +  'data': { 'raw': 'KvmPmuRawEvent' } }
+> +
+> +##
+> +# @KvmPmuFilterProperties:
+> +#
+> +# Properties of KVM PMU Filter.
+> +#
+> +# @action: action that KVM PMU filter will take for selected PMU events.
+> +#
+> +# @events: list of selected PMU events.
+> +#
+> +# Since 10.1
+> +##
+> +{ 'struct': 'KvmPmuFilterProperties',
+> +  'data': { 'action': 'KvmPmuFilterAction',
+> +            '*events': ['KvmPmuFilterEvent'] } }
+
+... the QAPI schema doesn't reflect that.
+
+To make it reflect, we'd have to add 'if': 'CONFIG_KVM'.  Since
+CONFIG_KVM can only be used in target-specific code, we'd have to put
+the definitions in a target-specific schema module kvm-target.json.
+
+This makes the headers generated for the module target-specific, which
+can be inconvenient.  Whether it's inconvenient here, I can't say.
+
+I understand target-specific QAPI modules are problematic for the single
+binary / heterogeneous machine work.  Philippe, thoughts on this one?
+
+[...]
 

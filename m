@@ -1,163 +1,167 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4210085njd;
-        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU72vPoA3p+y4mQJmHgY7oFuJsJPRQDt1O/5sqQ6m1HfXG3pSMyQNel9Qu6t3YNfunGH9e5YFk+zTunKw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8n4SMQMQ4t1VDHO2MRp5YSoiarTfbZUBR6Hls27cdxIJXVu62/iL1z/DNaoMLWdxGU79Q
-X-Received: by 2002:ad4:5c83:0:b0:6e8:ddf6:d11e with SMTP id 6a1803df08f44-6f4cb9e5107mr23309006d6.21.1745568513498;
-        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745568513; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4220730njd;
+        Fri, 25 Apr 2025 01:35:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCW41oOJ6Cbiix7ejHOHKt7JAP69IuHZd93Jk69SlkbmlUn94h9W91RH1kDlGw09Y0oPquucPhFed3rW+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZnXbwwY1K1q4XNxefcM1pE02dgarGdnrTH0fU9jSxB+IOL+6VMNQU4iLQvLlT12Ua97TK
+X-Received: by 2002:a05:6a00:198f:b0:730:97a6:f04 with SMTP id d2e1a72fcca58-73fd6fde73dmr1816945b3a.7.1745570154801;
+        Fri, 25 Apr 2025 01:35:54 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745570154; cv=pass;
         d=google.com; s=arc-20240605;
-        b=bwdGW/VfGV5ouMGqKxxR3s0xMMyN3AGYUMYqxsv0rqzfsATXBtZhc+TaktDJ4jKUTw
-         9NNCN/Z1Z1MsNHQIjwUNyJlpIHrKjKxiS0Tq8UC2bSERsXCQ6kDDIVrXTad+k4T4p3dS
-         4hXzvedztt79NFGuMW3cDbgzfozjYufDBQ0f6NTTn22emD4RpLeGfetkz5ptQqqxXq4M
-         9Q0slB3PyoTVc5aUNUVsKYyTY/uQcG4FhZwCuFcAi9Xa7yBbSNVDsmug9K7M6kETrMJX
-         paRIyzFb5zy7eVq2WPc5yf6yAUnUAWCuDZvmGTVMPqUFHoPEe0Uv9MrndOxNuDQ4eJYi
-         aMIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=BSAOewodhRFeub9foa3Zo2NN+TwFjpqKBX2SrWYMGuA=;
+        b=DW9iNiGRi1mbq2WkJzRbYjC+ot5ZETd7uw4JJZAHKMgO+bkMryMZtJQal1vz0gZP+k
+         fJdmZo5HUlJsYQpaUTiud5+dCx4iJRIG7L2KcC7oHQs1yUcTKODBlA4fBQ198E8vYF10
+         A8upMVLxbW6ennEUXNSiq527+3PjrfhaHHfm3RcAz7JnxLq6UXGCp2l0Yu3zhn2fist0
+         cJCi3L/JmyYEMt3Txe+6MnvnVqJ67kqsRCDjuOBrQml5ZMXuOZXepe0x1rNrErqSedbu
+         9Jl5JXmt3UV4M4CpFWKebXlcgCl3QTfBCmGZMjgXvp1pnOznlxLWDzh6HBZrAcHymDWK
+         pTYg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=xQ6R8CaS5RhzexB8yX0k3CURItTMK2Vggi+bSCBF0jU=;
         fh=Z5gh/o5ZL3xRtUwccechZMEA5ciId+Hw9EA3V2rP7fg=;
-        b=hVtdojA3PjXYokFw2g2qYj5joMC503y6ike5G8q5wS2m7vyYi7h/ZELR0evPLMW6q3
-         tegETAuzRQlZIr+GkPuSLbS2krYXaa2AnPTLyeVHBVO1nql4tgPsKdOxRSePpI78l1Nl
-         yspxnPybAQp4AOEQBd9RGu+q9znfFIcrkHql9sbkqYavBiDABw+5kMdA8u6+QUuz66tn
-         lhlS+99Y2wbtejFYkqb1LB7p/nJ98fdR5tqaH7qbqsMmd8KcFnqQhqlQDcxogCy8Mitz
-         LFmIjhvA2nCDT6g01qOHNQjg1aflEjNeI5aspBP/IlKy/we2XnTtyhw2zDdTIluxj6jZ
-         k5/g==;
+        b=j1cyMHMJkFPnKJRGh1KlEwOsbILDO0gTBtAGRn+E/EPntBz7LUj6/eB+/apkxoTHlk
+         CBeBLFiionqbfUSCoMYVF0wNLC85c3ZpSsoLKd7dYPfyF9HDajxFjq9LnX8Ei2Om5ToF
+         Z45kF/re6uo/a4Y4lZhzM++7lDW445rdVpeVFGTPwb3RK2T1ZROSXEmvQWV4u0nM1P+o
+         OMAcXR+HRMFBB7d6O6Ngbzx285UJeMQXt1etoAx1ruB1bFtOSqHSIr2ggiY9144fn7ia
+         vyo9ugDZ1T9BK5KWTA1fFsYRhEe440ZGvIgUdGGYACSlKyvC+VD6qRvNEq611pzIN8DJ
+         fssg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=PK8aNYUo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Oqy03SyK;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0acb576si32621916d6.203.2025.04.25.01.08.33
+Return-Path: <kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-73e25a491fesi4434235b3a.217.2025.04.25.01.35.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Apr 2025 01:35:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=PK8aNYUo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Oqy03SyK;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-44260-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8E6h-0007c1-Ej; Fri, 25 Apr 2025 04:08:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8E6c-0007b5-Q1; Fri, 25 Apr 2025 04:08:20 -0400
-Received: from mgamail.intel.com ([198.175.65.17])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1u8E6Z-00076N-Q5; Fri, 25 Apr 2025 04:08:18 -0400
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id C06B83A8364
+	for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 08:35:20 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 00FED235348;
+	Fri, 25 Apr 2025 08:35:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Oqy03SyK"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 265B922D4DA
+	for <kvm@vger.kernel.org>; Fri, 25 Apr 2025 08:35:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.10
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1745570127; cv=none; b=jBVeI+qP0U2or4QU2ZqCuXkNPelxoXdSh3J/NHG3crYLDl/vd1QEAyO08WCTBNLgFB16Rqdym+M02RKWCtnyBDUMzc8K/6v1kEv5FqYoIM3bQtEdsRlJB1WKeIW20xDp7fFtnx514Juj/QbMW4xsVUhcVGpC5JlWM5UeiWyYITw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1745570127; c=relaxed/simple;
+	bh=RwMNTg3WBWQ4a8WIx76dSHsYi7CDIjlLKh74S0G5rbQ=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=lqxLFvUmSCLzwXClHSs3VLOf+3mmmFCIzayCb16ejhcoQn0ec4fbmWXXOaLCYle7c2aPcyF7MNFOTkAfPBjtUCV2b9OftChCmzmicG/vE9ZfvR4dNtE2eOrI/rsN0GTpryBqvgqyo2pPpTi8KMc+H1+V9OYgtHCU2ZMYb1+R5aE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=Oqy03SyK; arc=none smtp.client-ip=198.175.65.10
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745568496; x=1777104496;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=5KRtg0VP7RhePb2K1+43zCTF9YsbA4O/PrqeshZCb4w=;
- b=PK8aNYUoJuEx4LxX7TElVXurQieQYMXXBpZ3RGL36kmUPFlTlYXN4Mha
- HMVqFPQXubFI594kxQ97k+LFMGdCIHDb+Xb/y8ITMc6CJUMRWD74YDUbd
- iW9OWls00TXQpyvBYEcJrBWo7CMsa/2Q5XFn/t2502em5xy8USXgPurWK
- 7WsY72cp9g4Eeq7Kzr2Vd6RU6ggLwFgB3Wbc8E7h8HnJI0ezB4QzlP5CL
- wwVmSzAWMROfubCWVicGrSF6QgL0AlEBV2K1X1yQwj87JAJvlidq7xinW
- pW/fOUMix+HS2QJKWLEJtDpj5bRGBLJ9mS0g3QX5To1nBbhbm8RTbhkyQ w==;
-X-CSE-ConnectionGUID: du0OzITwRR+C1HZ2bU/X4g==
-X-CSE-MsgGUID: e94w0k4vTQm5BU4pp/Z1lg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="47240146"
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="47240146"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Apr 2025 01:08:09 -0700
-X-CSE-ConnectionGUID: 2BKS4ujcSP2OGoMmWUBd1w==
-X-CSE-MsgGUID: BElnjdbdSySYVUcokWJU+A==
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745570126; x=1777106126;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=RwMNTg3WBWQ4a8WIx76dSHsYi7CDIjlLKh74S0G5rbQ=;
+  b=Oqy03SyKaYY/L9erctggUDw/gSpVF2tTM9OW1JZr5V2J8SNgECGheZpP
+   J9djEsz33jRystt0FALyO5TzzBWUP0AILOrUC4TWM6X5WeAU2qo4+kRjz
+   Ddb8wBmFgUevbsCxd+3VCXistmdiHo322ogJImUqq34DhAKA303x8kfsy
+   We4AkSLs89IEt16QqZUwjGFQJvSu23RIj8xUNSNYu1Gy5ehPCBrlp8WF/
+   6LWzIMoKJN/ReH+MOpu6f8uFIICF8qeKN9HskriK4S4sAvsonsloucRct
+   szlgDsXiuZdI4F5v1YXpW95b1fmSetLeH35AioqHu6vYQS83kCdjihu7z
+   w==;
+X-CSE-ConnectionGUID: DOmK38Y9TVS88hbU6Ozhdg==
+X-CSE-MsgGUID: WcTGpnWLSVWiLRmFEDuw8g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="64643795"
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; 
+   d="scan'208";a="64643795"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2025 01:35:26 -0700
+X-CSE-ConnectionGUID: cqhfZVHdRK+lj3h0O7mKlQ==
+X-CSE-MsgGUID: 419sEBXVT3GtDZNwsfRe7Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="163808291"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa002.jf.intel.com with ESMTP; 25 Apr 2025 01:07:59 -0700
-Date: Fri, 25 Apr 2025 16:28:54 +0800
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; 
+   d="scan'208";a="132730130"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
+  by orviesa010.jf.intel.com with ESMTP; 25 Apr 2025 01:35:12 -0700
+Date: Fri, 25 Apr 2025 16:56:10 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Dongli Zhang <dongli.zhang@oracle.com>
 Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
- babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
- groug@kaod.org, khorenko@virtuozzo.com,
- alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
- davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
- dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
- peter.maydell@linaro.org, gaosong@loongson.cn,
- chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
- danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
- thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
- ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
- liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
- kraxel@redhat.com, berrange@redhat.com
-Subject: Re: [PATCH v4 01/11] [DO NOT MERGE] i386/cpu: Consolidate the helper
- to get Host's vendor
-Message-ID: <aAtHxmpV7ka1lseC@intel.com>
+	qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+	pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
+	babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
+	groug@kaod.org, khorenko@virtuozzo.com,
+	alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+	davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+	dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+	peter.maydell@linaro.org, gaosong@loongson.cn,
+	chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+	jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
+	danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+	liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+	pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+	richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+	thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
+	ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
+	liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
+	kraxel@redhat.com, berrange@redhat.com
+Subject: Re: [PATCH v4 08/11] target/i386/kvm: query kvm.enable_pmu parameter
+Message-ID: <aAtOKvlY+X8ERZ/S@intel.com>
 References: <20250416215306.32426-1-dongli.zhang@oracle.com>
- <20250416215306.32426-2-dongli.zhang@oracle.com>
+ <20250416215306.32426-9-dongli.zhang@oracle.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250416215306.32426-2-dongli.zhang@oracle.com>
-Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.84,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wFVfHWtZC7cR
+In-Reply-To: <20250416215306.32426-9-dongli.zhang@oracle.com>
+X-TUID: 7EnkqNb1zKDr
 
-On Wed, Apr 16, 2025 at 02:52:26PM -0700, Dongli Zhang wrote:
-> Date: Wed, 16 Apr 2025 14:52:26 -0700
+On Wed, Apr 16, 2025 at 02:52:33PM -0700, Dongli Zhang wrote:
+> Date: Wed, 16 Apr 2025 14:52:33 -0700
 > From: Dongli Zhang <dongli.zhang@oracle.com>
-> Subject: [PATCH v4 01/11] [DO NOT MERGE] i386/cpu: Consolidate the helper
->  to get Host's vendor
+> Subject: [PATCH v4 08/11] target/i386/kvm: query kvm.enable_pmu parameter
 > X-Mailer: git-send-email 2.43.5
 > 
-> From: Zhao Liu <zhao1.liu@intel.com>
+> When PMU is enabled in QEMU, there is a chance that PMU virtualization is
+> completely disabled by the KVM module parameter kvm.enable_pmu=N.
 > 
-> Extend host_cpu_vendor_fms() to help more cases to get Host's vendor
-> information.
+> The kvm.enable_pmu parameter is introduced since Linux v5.17.
+> Its permission is 0444. It does not change until a reload of the KVM
+> module.
 > 
-> Cc: Dongli Zhang <dongli.zhang@oracle.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Read the kvm.enable_pmu value from the module sysfs to give a chance to
+> provide more information about vPMU enablement.
+> 
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
 > ---
-> This patch is already queued by Paolo.
-> https://lore.kernel.org/all/20250410075619.145792-1-zhao1.liu@intel.com/
-> I don't need to add my Signed-off-by.
+> Changed since v2:
+>   - Rework the code flow following Zhao's suggestion.
+>   - Return error when:
+>     (*kvm_enable_pmu == 'N' && X86_CPU(cpu)->enable_pmu)
+> Changed since v3:
+>   - Re-split the cases into enable_pmu and !enable_pmu, following Zhao's
+>     suggestion.
+>   - Rework the commit messages.
+>   - Bring back global static variable 'kvm_pmu_disabled' from v2.
 > 
->  target/i386/host-cpu.c        | 10 ++++++----
->  target/i386/kvm/vmsr_energy.c |  3 +--
->  2 files changed, 7 insertions(+), 6 deletions(-)
+>  target/i386/kvm/kvm.c | 61 +++++++++++++++++++++++++++++++------------
+>  1 file changed, 44 insertions(+), 17 deletions(-)
 
-Thanks. It has been merged as commit ae39acef49e2916 now.
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

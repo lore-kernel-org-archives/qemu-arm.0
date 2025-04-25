@@ -1,107 +1,107 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4465242njd;
-        Fri, 25 Apr 2025 08:52:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXbqHsQd2g4EW5KuIvdmjrxXJx3fZngPD0NvCm8AX9D/wi6w++0KcV8AnnO+UPLINGQ4WYSl128hUMVQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGG4EUfItpFSFWtIgf7LhOBQVDYNt66fFLlCU+QbRcO4mLu1rl4+Q/gimB1uhl+2MahRMoD
-X-Received: by 2002:a05:6214:d65:b0:6f4:ca47:af99 with SMTP id 6a1803df08f44-6f4ca47b146mr57717746d6.8.1745596356570;
-        Fri, 25 Apr 2025 08:52:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745596356; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4480431njd;
+        Fri, 25 Apr 2025 09:12:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXRn7EJ8md3/DRTB7QNLfiuNu4HmM4K2a/AvrN7PA9DDf1A2uulhdCsim+hhyjdNyZ2+iBE5HEKB6/zLQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEn47b0w/4pwePhU+gtLI0VuPPjsVaZ27Tl1mwg52C55VQ3nf11M0woEDwPaeXCGSsYKNun
+X-Received: by 2002:a05:6000:1ac9:b0:39f:e3b:406b with SMTP id ffacd0b85a97d-3a074e10480mr2688323f8f.5.1745597548387;
+        Fri, 25 Apr 2025 09:12:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745597548; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q4/orWcLZgNvDAQORMpSDO9khSqYFtU4UkLE6p7Ce5hJAjTSYPEGjJsiybenhpPFk7
-         dUKnIuCjsPmQSunayJK3cM8TaDRScumSd7lD+lum5HsjWofnLGDpXaxaAL4KpI2xpcRn
-         37Ng8x99zQIh/et1EmsJpxrHVXNVAwcD1g3dS6ZSV3eozdNT3tNEZj9adZFRgBmhk9z8
-         oe/6A2rpuDkmS0FGvobUvZcd3Rw2LkyVTQbIC25Tuz2c9ZKCiAGY4LGRlVjQPqD0SRvi
-         rZL5Df5SwT/3/anNjq7WyjT+ZdWitymIYVxJomsL/UTtxPLA4BoJTvOf9JXQId0OkYRu
-         gzOA==
+        b=U3iQ08x0zhcz70Nz2nVr5Jjk3s7XyiYtdNQeOVL5FZTwnR76b3USzlSIgfbb9+F2QE
+         V84jJUOHjk7pgpQaxsvzWJOadCuCZEBA2os2WuludCXvOGzG520EZ/V+4lUBBoRoDa4F
+         3eDjgKofPvs01KScw+hrZd67euCNO3znb7sH3HnhUyJk/A1Cn0WBkR7wBB8oEpfBEDK8
+         5neuZkUpOVoicTtSMCeGUtLTRl/z4TLaGYWLbtTa7bx2zVWapWoc6T2mzuZz4kkyxU0O
+         uKzgBzA3TDfaw9ymnImszD/Q9U8sNAS4vq0rgmLlPGK/ltnIkvXpQ9jOyCHHjGg6QuYq
+         KqpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=7c8bi+tYxGd3uDu+5jaT9Zf7rx1GDd9V54uFLw7R+Qs=;
-        fh=GDQRtm3X074Z5INTT7IunNRkXwcHzz/dWdwN2kSal8s=;
-        b=j/Oh3m7o3OHl4ShMLMd8fXAZOGVKkaRdcZyeYchrsnqkPEwDRVtLv4M+KPcVpPNzXt
-         zE62D65BMWwwb/YJ1sHZCxUltd95WH8ot5VKuD+epF1Wqi3CqaCCR4fT9iGdFevyKzO0
-         RfF9btLKpkFCYwIzylfDdi4Aq40GpJfu9FmDi8ML2/a2inzXy641F5QHSWhdCsvpdOEb
-         k1ZRJ6/f8xvuacRQdT4mgl05igaxLm1cxLDT0vXbRAd111x7wYMTqMZaEgi9azKOT3JJ
-         /V3bRUkXe84ZUTyvi9jI4jydjtgcZ9zJjJlO02XoVGaRn/PjRc4a1MU6ICPzo32gGIcX
-         mNWw==;
+        bh=2yxYooqwSIKdZmqLMKmhuHuJKrRsfSGikBSIrzpd9kw=;
+        fh=eeLSAhWgkIWEsj57jOjNtEyxO2kGyGqreoIy0sC/qUA=;
+        b=T7TpbHxo5WqNrj99HvaleWlUziTGauON8oMYtydZg8/l21rUbob3NspXyQ2PCEzzJB
+         hFF2OUMRQ5DmlTq3NvbYnB1EuPtmR0dHc0AYqyCg0shUpB/FP2qW+NAiF5I/GAo2FkdE
+         dSSf4/tYfRzi8tADnIecpnAuLI7Eru5xAeAAxukiLgM6KxO60gO+MQSIdVOA/YTvrNQI
+         DIDYMu6hXMAgWkA82XUTFPrH6hjX1zqXVgBjH1JBksYb3OpyEWghlBvfYNd70OGp50mL
+         CBB20f/ozMXImIebB1t/VSPAXLblZW3CIXNhdOSHvOYpUeYXSkccuOL5v+nuBCx8uHCu
+         CHGw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gVBkAr5k;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="IQzrv/cn";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c08d65c8si41630146d6.88.2025.04.25.08.52.36
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a073c92155si1404601f8f.67.2025.04.25.09.12.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 08:52:36 -0700 (PDT)
+        Fri, 25 Apr 2025 09:12:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gVBkAr5k;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="IQzrv/cn";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8LLY-0000Hj-0R; Fri, 25 Apr 2025 11:52:12 -0400
+	id 1u8Let-00020x-No; Fri, 25 Apr 2025 12:12:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8LLS-0000DI-9o; Fri, 25 Apr 2025 11:52:06 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ id 1u8Lep-0001zD-HG; Fri, 25 Apr 2025 12:12:08 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8LLQ-0006pL-AQ; Fri, 25 Apr 2025 11:52:05 -0400
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-54e7216aaccso2112839e87.1; 
- Fri, 25 Apr 2025 08:52:03 -0700 (PDT)
+ id 1u8Lem-0001Pn-63; Fri, 25 Apr 2025 12:12:06 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-43cfebc343dso16721045e9.2; 
+ Fri, 25 Apr 2025 09:12:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1745596322; x=1746201122; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1745597521; x=1746202321; darn=nongnu.org;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=7c8bi+tYxGd3uDu+5jaT9Zf7rx1GDd9V54uFLw7R+Qs=;
- b=gVBkAr5kQAP+7g3ur3sT7zkUrkXgi9/mQpCTITGOvMWRGYQh3KnDR0C3Ols2ODjT0Y
- NyNGlQ5xy+0bTBSdKHMtvd8178gbB9IMsnr33pb9MhS9E1cNfuZAykuOOoygatb+73Ax
- rmG/WEbQZ5yBDktThFffnMYBhn2utM9UHO0GZjbHp2FePReNVCCHKbIJRrjiLsBVkghx
- qhhNOHKoqyBngymj1auBoCdYONyc69d9s6Dw4gI9iledRIO517+AZNu41VdZ5uvuziuG
- nDm8QkmmX3G8DkmuuspYpzYrqOjkoHXrooPbFxJjC0Ik2RgoJAoV7PPTeNhS9m6jV+C+
- pjPw==
+ bh=2yxYooqwSIKdZmqLMKmhuHuJKrRsfSGikBSIrzpd9kw=;
+ b=IQzrv/cn0v1yXuHfhktynBwSjwYCAR2HU0jpd4OkzQbaJrgZA40+Wjb3OmeADXTgon
+ d8r1Mh7xzWhg/cUCMAPYT4rHYxL1RxKEdu75/WMjfEL7QsqVvat5bkkbGAr18Ln1i0+V
+ PGgqQTSXjukiKrEsElGGxyVOVKuVQdPoNGPX96JuLtX7NhYVr7RL4++65mgW8FvbaTyf
+ uZpB98a5/al2K8xSiKILj0YPMb4WpnSIJ4rzlVn/cm3xO7Xvuj+DsrMMfguyT353r9UC
+ mzFnCWvXvH/4sWlBn1SIRsgb2qwigUsjgUoyCzzHY7ZiuUaKm/at7arUl/eytP51D2cj
+ vvcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745596322; x=1746201122;
+ d=1e100.net; s=20230601; t=1745597521; x=1746202321;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=7c8bi+tYxGd3uDu+5jaT9Zf7rx1GDd9V54uFLw7R+Qs=;
- b=nNbumotPBoPDXSN2FopskoHn/tt/L7t9idMoxN3MNKbU6ejm7usOd1oBrXb25z3TRy
- 8ARZSl6kCKkWcqFb3Bk/VgBGC7EDTbJfRzTePypgCW/apt5QryA7z6wz11QhdolVKiAA
- Ar8yUV8duFA3WxVgTMVxSw12HChszj6UlFGjlybhF1WcK7vaa4cTJZ7tEjK0JlD/x56B
- F+qBpYfIWsneO7bbplrIfrrhutFmHhf7WVrL9wj/za4pCnt3naGyM0T4lEhmOqPxDOt7
- jGntGD0BRT7G+tvRl+D1/DGgvL1AVxZ4tYrAsUbaCIE+41Rxlsia0oco69k3IZo5HA0v
- WRsQ==
+ bh=2yxYooqwSIKdZmqLMKmhuHuJKrRsfSGikBSIrzpd9kw=;
+ b=i1B08Ng9nMkNBbrNwndzTzJ/EGQPjN3QzuhXSblG/UD/YGortED3JJoHLbI2BUzVaP
+ dNngC2ds8xShjw7FnTDYoOpEsCC79XapQNo5d65G3z62+p6ZTdDi+W13Dyp6OsNdspdF
+ EMNDgs2XVgxcQBQfC56I1DEsp1m/Y7f9Ip9byc316iSCn8xE1zgQSKjDJjHLwiaYQiVN
+ HU/cRy8rKfBeYzmjZ9svVLT2nJyCat2qWGUoxTDzFOh1w/HlRXfEuaTU8Z548v9QJmE2
+ V3hrKyGagY5FA+umvuYed2FfYeqE8kXJaZexKDZh8bCRFP9/7vGlctijneAMPXn4VIVU
+ utXA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWj5+UQZJyb1do/rLi3QYdl3EKiwceu1QIVTS0B78LHxnKe09LXqiR1fpwOSHPmzhbrFCxJaNTUeQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxAsLk+QGlt2gX8mmVVq+humMwHRt4c6GlHdzQwI9Ql7ke1Im80
- JdIm1bFryF0oTkn4vDB2eWKZMx/3eyd+Uvm7/3ci2gQCIgXJnVZw
-X-Gm-Gg: ASbGncv2kGtSaeBKQlpFx4dOareCUB3Oi8MOtHzO5vKrYaiuxddbUNtbgYoEIMlEg9s
- COjZ57G5IPpHT/FGnjkv9LrxuAGumiwWsVRuRDhTu5xT1PYvhb5yNQ7CTkjPhsfvjtM6E3dRynf
- 2UCYH3BH7omdjZFZkBvEaIHAfrKhBkTvPjHyuTD6tNT5hPT7tyqwRt7CPQ+g3fv+LN4scY3G0t2
- VPUk/FMYk64pXIxn6i+Jalg0FbwzwEMc5IUUtFBKBBFyhzCgqri855Om1Y/DIz6sHGznTX6u719
- u4i5ECQqP6ObVAP1+ZpbwyloYzy616Zl116b8fq29JGDhDkhm+0IkJIaPwxM5Lmq/TvxxIyYGoP
- GYxXKNtiLBjq9
-X-Received: by 2002:a05:6512:b0b:b0:549:4b8c:a118 with SMTP id
- 2adb3069b0e04-54e8cbd53b2mr1046741e87.17.1745596321671; 
- Fri, 25 Apr 2025 08:52:01 -0700 (PDT)
+ AJvYcCX+uMKz019VbYLUEpJDvFTbG49sXzRDiWuTq+CemPAnQDcWtFpK3B4oSYT5Lih2+qgtI8ZYKNpREA==@nongnu.org
+X-Gm-Message-State: AOJu0YyegtckmefVp0WmJqlSIrOgkarJkwYpmunWYV7ctYuXdUdMzaxs
+ S28kC8o2elLvwlMEFWy69VKVtHXxKiWJVIMDIaeDcssXoUDU9Lhx
+X-Gm-Gg: ASbGnctw1T4FmU9QOib8f9JsmtWdEk6G4bkkDPzqnTe0Z7LwcrdcG4PkHmXDzDJzgPD
+ uokjOZPVrnfsUrk+Llfgbz1VYEtYvoq8Lssq4LdLb2bAmieOGw3dFfK0PmDEaN0dJ+RD4d/rm1g
+ ueH+ZrsXzfwJgyU9ZoJKylOxp4h8PvApmx0gPSlQZ1XU6jOevOnt/XVfGLiYouF/f0bkPSque0d
+ NZu5iEeXwYhjXfvJcGAMNo9uX0EP+KhTpnOIqgqrYkyHKEE2ShE9mW4xJyTjJebpXXxkCrBH6Kq
+ uRq5AgcpeooEVjWcvOvbu+ATJPuoXlS0nDy5U5UtIwonhDPEf1YnUhwkBjTwWX5gh5zm+TaQLD9
+ 4AOHARbXQ1fGB
+X-Received: by 2002:a05:600c:314a:b0:43b:b756:f0a9 with SMTP id
+ 5b1f17b1804b1-440a65e41f5mr21240935e9.11.1745597520963; 
+ Fri, 25 Apr 2025 09:12:00 -0700 (PDT)
 Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
  by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-54e7ccb803fsm642112e87.228.2025.04.25.08.52.01
+ ffacd0b85a97d-3a073c8d60asm2838796f8f.18.2025.04.25.09.12.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Apr 2025 08:52:01 -0700 (PDT)
-Date: Fri, 25 Apr 2025 17:52:00 +0200
+ Fri, 25 Apr 2025 09:12:00 -0700 (PDT)
+Date: Fri, 25 Apr 2025 18:11:59 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Corvin =?iso-8859-1?Q?K=F6hne?= <corvin.koehne@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -110,19 +110,19 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>,
  Corvin =?iso-8859-1?Q?K=F6hne?= <c.koehne@beckhoff.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 04/21] hw/arm/zynq-devcfg: Prevent unintended unlock
- during initialization
-Message-ID: <aAuvoFjhS0VEtpqq@zapote>
+Subject: Re: [PATCH 05/21] hw/dma/zynq: Notify devcfg on FPGA reset via SLCR
+ control
+Message-ID: <aAu0T_XTt2uwermj@zapote>
 References: <20250318130817.119636-1-corvin.koehne@gmail.com>
- <20250318130817.119636-5-corvin.koehne@gmail.com>
+ <20250318130817.119636-6-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250318130817.119636-5-corvin.koehne@gmail.com>
+In-Reply-To: <20250318130817.119636-6-corvin.koehne@gmail.com>
 User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x133.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -144,77 +144,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W1c64ApEdmDA
+X-TUID: bC1+ki47xNmD
 
-On Tue, Mar 18, 2025 at 02:07:55PM +0100, Corvin Kˆhne wrote:
+On Tue, Mar 18, 2025 at 02:07:56PM +0100, Corvin Kˆhne wrote:
 > From: YannickV <Y.Vossen@beckhoff.com>
 > 
-> During the emulation startup, all registers are reset, which triggers the
-> `r_unlock_post_write` function with a value of 0. This led to an
-> unintended memory access disable, making the devcfg unusable.
+> When the FPGA_RST_CTRL register in the SLCR (System Level Control
+> Register) is written to, the devcfg (Device Configuration) should
+> indicate the finished reset.
 > 
-> To address this, a property 'is_initialized' is introduced. It is set
-> to false during reset and updated to true once the initialization is
-> complete. The unlock function is simply ignored while 'is_initialized'
-> is false.
+> Problems occure when Loaders trigger a reset via SLCR and poll for
+> the done flag in devcfg. Since the flag will never be set, this can
+> result in an endless loop.
 > 
-> I have no idea how this ever worked. Nevertheless, this restores the
-> correct behavior.
+> A callback function `slcr_reset_handler` is added to the
+> `XlnxZynqDevcfg` structure. The `slcr_reset` function sets the
+> `PCFG_DONE` flag when triggered by an FPGA reset in the SLCR.
+> The SLCR write handler calls the `slcr_reset` function when the
+> FPGA reset control register (`R_FPGA_RST_CTRL`) is written with
+> the reset value.
+
+Could you please refer to the specs where this is described?
+I couldn't find it...
+
+
+
 > 
 > Signed-off-by: Yannick Voﬂen <y.vossen@beckhoff.com>
 > ---
->  hw/dma/xlnx-zynq-devcfg.c         | 6 +++++-
->  include/hw/dma/xlnx-zynq-devcfg.h | 2 ++
->  2 files changed, 7 insertions(+), 1 deletion(-)
+>  hw/dma/xlnx-zynq-devcfg.c         |  7 +++++++
+>  hw/misc/zynq_slcr.c               | 16 ++++++++++++++++
+>  include/hw/dma/xlnx-zynq-devcfg.h |  1 +
+>  3 files changed, 24 insertions(+)
 > 
 > diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-> index b838c1c0d0..03b5280228 100644
+> index 03b5280228..611a57b4d4 100644
 > --- a/hw/dma/xlnx-zynq-devcfg.c
 > +++ b/hw/dma/xlnx-zynq-devcfg.c
-> @@ -143,9 +143,11 @@ static void xlnx_zynq_devcfg_reset(DeviceState *dev)
->      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(dev);
->      int i;
->  
-> +    s->is_initialized = false;
->      for (i = 0; i < XLNX_ZYNQ_DEVCFG_R_MAX; ++i) {
->          register_reset(&s->regs_info[i]);
->      }
-> +    s->is_initialized = true;
+> @@ -138,6 +138,11 @@ static void xlnx_zynq_devcfg_update_ixr(XlnxZynqDevcfg *s)
+>      qemu_set_irq(s->irq, ~s->regs[R_INT_MASK] & s->regs[R_INT_STS]);
 >  }
 >  
->  static void xlnx_zynq_devcfg_dma_go(XlnxZynqDevcfg *s)
-> @@ -221,7 +223,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
+> +static void slcr_reset (DeviceState *dev) {
+> +    XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(dev);
+> +    s->regs[R_INT_STS] |= R_INT_STS_PCFG_DONE_MASK;
+> +}
+> +
+>  static void xlnx_zynq_devcfg_reset(DeviceState *dev)
 >  {
->      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
->      const char *device_prefix = object_get_typename(OBJECT(s));
-> -
-> +    if (!s->is_initialized) {
-
-
-I think you can use device_is_in_reset(DEVICE(s))
-and get rid of is_initialized alltogether?
-
-
-
-
-> +        return;
-> +    }
->      if (val == R_UNLOCK_MAGIC) {
->          DB_PRINT("successful unlock\n");
->          s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
+>      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(dev);
+> @@ -374,6 +379,8 @@ static void xlnx_zynq_devcfg_init(Object *obj)
+>      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(obj);
+>      RegisterInfoArray *reg_array;
+>  
+> +    s->slcr_reset_handler = slcr_reset;
+> +
+>      sysbus_init_irq(sbd, &s->irq);
+>  
+>      memory_region_init(&s->iomem, obj, "devcfg", XLNX_ZYNQ_DEVCFG_R_MAX * 4);
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index a766bab182..9b3220f354 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -26,6 +26,7 @@
+>  #include "qom/object.h"
+>  #include "hw/qdev-properties.h"
+>  #include "qapi/error.h"
+> +#include "hw/dma/xlnx-zynq-devcfg.h"
+>  
+>  #ifndef ZYNQ_SLCR_ERR_DEBUG
+>  #define ZYNQ_SLCR_ERR_DEBUG 0
+> @@ -576,6 +577,21 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+>          zynq_slcr_compute_clocks(s);
+>          zynq_slcr_propagate_clocks(s);
+>          break;
+> +    case R_FPGA_RST_CTRL:
+> +        if (val == 0) {
+> +            Object *devcfgObject =
+> +                    object_resolve_type_unambiguous("xlnx.ps7-dev-cfg", NULL);
+> +            if (!devcfgObject) {
+> +                break;
+> +            }
+> +            DeviceState *devcfg = OBJECT_CHECK(DeviceState, devcfgObject,
+> +                                               "xlnx.ps7-dev-cfg");
+> +            XlnxZynqDevcfg *zynqdevcfg = XLNX_ZYNQ_DEVCFG(devcfg);
+> +            if (zynqdevcfg) {
+> +                zynqdevcfg->slcr_reset_handler(devcfg);
+> +            }
+> +        }
+> +        break;
+>      }
+>  }
+>  
 > diff --git a/include/hw/dma/xlnx-zynq-devcfg.h b/include/hw/dma/xlnx-zynq-devcfg.h
-> index e4cf085d70..2ab054e598 100644
+> index 2ab054e598..f48a630c5a 100644
 > --- a/include/hw/dma/xlnx-zynq-devcfg.h
 > +++ b/include/hw/dma/xlnx-zynq-devcfg.h
-> @@ -55,6 +55,8 @@ struct XlnxZynqDevcfg {
->      XlnxZynqDevcfgDMACmd dma_cmd_fifo[XLNX_ZYNQ_DEVCFG_DMA_CMD_FIFO_LEN];
+> @@ -56,6 +56,7 @@ struct XlnxZynqDevcfg {
 >      uint8_t dma_cmd_fifo_num;
 >  
-> +    bool is_initialized;
-> +
+>      bool is_initialized;
+> +    void (*slcr_reset_handler) (DeviceState *dev);
+>  
 >      uint32_t regs[XLNX_ZYNQ_DEVCFG_R_MAX];
 >      RegisterInfo regs_info[XLNX_ZYNQ_DEVCFG_R_MAX];
->  };
 > -- 
 > 2.49.0
 > 

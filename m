@@ -1,237 +1,260 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4605090njd;
-        Fri, 25 Apr 2025 12:59:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV2sokGtyZRCXhkvpUVxNB4TCv7txzwW93qhMUocYaHOjcdTVGsLSf1pndiorhzTjGENiBw5VAhlxhKTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH6KftqIeHSGyUvvWEhTRFyD47TWhSd5IjzHDQMjpw/w0nr51WX6B1rNJdtZI769s9YRL8a
-X-Received: by 2002:a05:6214:d4e:b0:6e5:a0fc:f65c with SMTP id 6a1803df08f44-6f4d1dc7eb7mr15219516d6.0.1745611198816;
-        Fri, 25 Apr 2025 12:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745611198; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4648595njd;
+        Fri, 25 Apr 2025 14:33:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXE3k/fLJah0Va6L1KHjLyqlh+BCSB9FqUUUi5fL7dOb/xKns+8CWVubxqDsFlBRKwUpbBfmZvYs36p6A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGYvCO6sU5hd/OtsluinUG37eGtzq5yEjYvFxjzK/63qxOdL1dZBxq+rIUrh2Rj1uuI8rNt
+X-Received: by 2002:a05:6402:35d3:b0:5f7:2af1:51d0 with SMTP id 4fb4d7f45d1cf-5f7398348acmr634994a12.26.1745616789227;
+        Fri, 25 Apr 2025 14:33:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745616789; cv=pass;
         d=google.com; s=arc-20240605;
-        b=QYZ/yh13xj6TCtM5OfX7MA26Jjc/ZJKOtGpi9EocOg9QOgxWdUiscL9nFC7chDGrDL
-         uV8Qh37MPrykvb/ffDA1+HvJJ17Qh/5EmAv7Ne6UT97sa684GiZ1oEzAzLouRjmJ7wMf
-         UyPk/uglld25Zz4/K7l8IbspNOaAbSl13slp2K2n0zDWhuhMKkjZEJautttTJXm5iVPL
-         ahSu9xgfZRNU7mSbmyH3nPCtoiu9Dn6yGY2g1Ofg7bStX3apoUtSZL+8ayp3TdkXw+6e
-         HmoVdkJhHwLvaEnVhui21EXsUTImwLxUoRbgnz2vXqxpU80WMcahUPVSUm6H6TQNQY6/
-         DIzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=yweKDTzZHfMStYqASqNPpklMtZspKfWLJrLsjOL9QlI=;
-        fh=2M1on4a2jaEDrc11MYWLize+WGbln29Zll5QPoJuQmE=;
-        b=gx6zXP7gcYlsnAyaZnlUsjyFCa0IIRrKmMniay0dBw9xhY+H2/1CFRFiN0vQjeg54r
-         XTKZsicasylVs8id0nILWf3lYZzLepv12b6kAwE1zj0XXnj3pSzsOUs9Icu6+vFEhaVr
-         wYxtmZ77xIrdaV08Qpu/ZZVPmnbfsdM+hC7oyd0vnQg+Y8YvvGM6E/AvwWW4g5Q/yoQI
-         lyBfxlnQrdIAEKi6L5++yjLA1fM2vwV2sMccRud9C+SRDaAb528GrhN8HrjwWNr6X7CB
-         H/3oROa+/daHjV065G+tpczppv6TG7xyRH1HxzrOmPIRKd5T57sxONFDpanOLBkAi0ol
-         nKXQ==;
+        b=KHnrdZXCicDSnCs0ahwVmft3fP8lV5+VPK6kfmZ9shbKSGoBFhvCJFhCSYNt9iTRRu
+         GYkVe5tTbSTmACBZofoPNUWm3nREYB2nlFiQj6Sf7SJgShwh7wxH1ARmFnPrtrNvrdWD
+         C5ttO7WvC02qHh86tRUl4YupVyFSziW8H5hRreZXbltR2mVNIuLxDg/IdGZsMwTc228V
+         EAJLCPanpciuby6TsMCf0Hc9D44Ngxn9EYbbHl1SjCKm63mUTukhk+YV3xwvmP24EgIL
+         oeW9gjdRirM1kihp6bI0TdKbqKL8FTuzcsnHlGUwYLLy3B03CNBUX1mT23DAos6ULAqb
+         r0dw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=WDO3NaUFvql5R5Q8LdPImmvxOUc2SvbyQZAQGVdP+j4=;
+        fh=pr/dSBFL9oLV7kU9Ai5m+xSM8b3nJsKetG/wF2Loub4=;
+        b=bxY2pL1e+iRtTCTVcpdBgifuK80So3YaAcZlm9w+iNJpZS/gKYoppmUyIinbaGwtuy
+         k5rkAvdiT3GIy8FPrHrCVLcStrMcf7uBJ80k8FWpsLiZ0P9unX1lpJBbPsjlVISoLEDS
+         l+kyX9Ct1qkQiKDJ0w7zRHGRBPO26rPCV4O31Fwnax5EWfP502IXOLM1bg+E5jDVp11H
+         o64nKeBfVNevR8y7ubTfrM5GCjF330lPvfmst/OWAoX05COAaqW6Gdo/4x3uu9vMhizb
+         2NcPqNrmteiv8dEojupPlp75Y3DMlhnCQmKqX0uebnyd31qZQ/b0jpPk2R5EpcsTru5B
+         fIGQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="NNS7kOe/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c08d2ae4si43730386d6.84.2025.04.25.12.59.58
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=AeszN19u;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Return-Path: <kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5f703734c14si1698141a12.550.2025.04.25.14.33.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 12:59:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Apr 2025 14:33:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="NNS7kOe/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u8PD3-0004Ni-HC; Fri, 25 Apr 2025 15:59:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8PCk-0004KN-Ht; Fri, 25 Apr 2025 15:59:24 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8PCg-0001Ux-1k; Fri, 25 Apr 2025 15:59:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-43d0359b1fcso17820975e9.0; 
- Fri, 25 Apr 2025 12:59:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1745611155; x=1746215955; darn=nongnu.org;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=yweKDTzZHfMStYqASqNPpklMtZspKfWLJrLsjOL9QlI=;
- b=NNS7kOe/Ix+qQ+KfDO4BNd0zL+/ZvCUV4AIA2tMufBEsuO1WRaokfDEcIVwpw6sWWr
- RW122Hpg1DSHyx4wCEHnGxvYZWaQ59EM1V2EhuStRxo9+0Y7r7R4bUGhnBvUIEw8aHW3
- MxYA2B1wyNvb1yZqrGin9Wdtg0EJt//cKHekmyos3iHhUAk+Adc5C5TqXQmPkTTEIbXY
- 7vU7zPgKT0KfxoZNnXHHYOJIRNh7HNcn1KW6IK2lQ8S+njWgWVoG/AovPlQG7UdoNtnJ
- RReY4Dv8H7EGe7IoTazA4lEZRh8FERstcTYliXi7sisdqGn5yUk9u6tkxpMfCHiWWEuz
- 8PfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745611155; x=1746215955;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=yweKDTzZHfMStYqASqNPpklMtZspKfWLJrLsjOL9QlI=;
- b=NwLN6/Z/xCZQH1TSGFIx+s6yTVTY3u0N0hYSBpGxtMCQMZmd+CO3iOAgoOMyVRPccR
- sdLFB6Pg2KXeCPyDRu6KYVBjnwMGNtgJ4PXAKHPD7jCcav//PrXo9UKWFbMIQtqynOHG
- 22m0ccgUOyUt7E1yntAbYCmgiRlBJsGn2GNLjSD/58dug2/nXdZ8Gep5uVPBxO2RasLG
- QdWTGON9N4xpQdrgovfw+rLrTCI1MPwI95QuPAPvy24G2wiNfTgkhGr4Gal8/OS5qvSY
- KCS4JiL7mGmlXLBwYJQojQ2ryv5LwpPhu36oLD+37cGXzkMzYZuF+39Op5r1YP/BhsT8
- /3Ew==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVy7JC/krEs6lhhXJfqhxh9Hq244HxiJ5QqHW9w/+sWzHTIB1T9abL7LBcp+t/94YvjqsuvCTcPxw==@nongnu.org
-X-Gm-Message-State: AOJu0YylmshK1xlYB6zbisbJxm51ISVCYdRRFpmJfWQv77Xk+UXyVhwR
- UnmkmAY/CiYbuaSVHWWP2E7Wtqtq+9e6jTv/u9yeIAkIOt3ko0Sv
-X-Gm-Gg: ASbGncuc2zZ3qvpRExHG6f5AWC8xQVHoxTfACjixV782iNZ6EvgmYFv4TIPlvcoekn3
- /+smLzptmBCFwys12tIQhtwhSXiJwPiGIMzv4EHt4KMqjVzyoEkuObk3TJCgamKCzsTZo4I/GVc
- xUIqIn6ycSXMOk1YYo+EKRXSsowV34aUUM08xWaUznSfYmT7q3MZy52QsX2l2ySTaOwQQ7wldxk
- laSrBPJRyXSjyWK2homwx0VV1KjnbnzPYQI5xSBI7Vuy9e71AfQIGMrDFYGfI1sK9Tgb1hC1zoW
- aZ2g/XJHMtEuIyxMAZwzhrAAe6AnGuWgKjqSy4vWj5fGZg9G0uCYuVQOqOat5I8CM5C+HiItdTf
- NQYV8KAHgf/rC
-X-Received: by 2002:a05:600c:1c23:b0:43c:ec72:3daf with SMTP id
- 5b1f17b1804b1-4409c513fa7mr79424265e9.14.1745611154876; 
- Fri, 25 Apr 2025 12:59:14 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073cc180bsm3295318f8f.53.2025.04.25.12.59.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Apr 2025 12:59:14 -0700 (PDT)
-Date: Fri, 25 Apr 2025 21:59:13 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Corvin =?iso-8859-1?Q?K=F6hne?= <C.Koehne@beckhoff.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Yannick =?iso-8859-1?Q?Vo=DFen?= <Y.Vossen@beckhoff.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "alistair@alistair23.me" <alistair@alistair23.me>
-Subject: Re: [PATCH 00/21] hw/arm: add CX7200 board emulation
-Message-ID: <aAvpkV1ExuLthoH9@zapote>
-References: <20250318130817.119636-1-corvin.koehne@gmail.com>
- <b4a0daac7b200e4ffc08879977dbde120a8d5f73.camel@beckhoff.com>
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=AeszN19u;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44352-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 4FFCD1BC61D3
+	for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 21:33:20 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B97F02253B7;
+	Fri, 25 Apr 2025 21:33:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="AeszN19u"
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CF9D21B91F
+	for <kvm@vger.kernel.org>; Fri, 25 Apr 2025 21:33:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1745616783; cv=none; b=NOOFdE68+eEaFlcN+WfCxoDy+ADaf3ZeW/DfPoMh5M2CgYxIQhLDEKcbBvJmtsJ4Lw9akCXmwfsw4WW4ospeQFJs7c9oKOdgBPmBgXaAs6ehMZhGaQKLsGcbGTe3fUulCkShd8Qapal8KTZwx3JulYMndRi3IdhiQqYo1SQmJis=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1745616783; c=relaxed/simple;
+	bh=dMmgmG0qePgyRiHiwsw4SM8DF3A0zLtr2r5+6wrruLk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=g4Dt+ssNDC4RU/tnHzw7uwLnJ+rzYHXv8BFY3UHehXOr//R9Adz/Ez7HdWn0eLnwFLRJtiGGSCCeQZsasT3Fq6CqbpcKMStjQzIAlI1aNgcp4JO3pHMcsXOEJ85ZMqM7s0ZUnZQPfDHz0IWOHoWdQ+P6C/K9zBrB4BInpblXwjk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=AeszN19u; arc=none smtp.client-ip=205.220.177.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53PL21RE005102;
+	Fri, 25 Apr 2025 21:32:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=corp-2023-11-20; bh=WDO3NaUFvql5R5Q8LdPImmvxOUc2S
+	vbyQZAQGVdP+j4=; b=AeszN19ucTHVzlA/NQhPKtUJuzD1L7wjFd3C1cgvvnmPZ
+	7Mtp6TSC1zXkyrApcOPZKp8rv87hCX7TOlZZfMweKfHzuDbL3lbbVK8iX++SinIV
+	qBiPJ2v5+UWMBQu1BTKWQ4+dKCq8+g9X5BSANUwIZn/Jv+MfPq9khb9VvJxGeAti
+	QCSeG+puofuwdCk2f5v3J3eBhv+QxVGdwerSLRLqntZVWKc2fmff7PSC4iTq+jUW
+	NhVerPKNbgQxfFYfDIIZuZahJkfO8ITlInidZ0B5nd+me/t/jwV1xTRS9Ek/UJzT
+	ICsjuWs/h+yGk8Q6UkTDEiKU6hZWkGhFzsaTDBAmw==
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 468hxvg8wf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 25 Apr 2025 21:32:20 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53PL0WVp031074;
+	Fri, 25 Apr 2025 21:31:41 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 466k095v3g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 25 Apr 2025 21:31:41 +0000
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53PLVdAV039597;
+	Fri, 25 Apr 2025 21:31:39 GMT
+Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 466k095v2d-1;
+	Fri, 25 Apr 2025 21:31:39 +0000
+From: Dongli Zhang <dongli.zhang@oracle.com>
+To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
+        sandipan.das@amd.com, babu.moger@amd.com, likexu@tencent.com,
+        like.xu.linux@gmail.com, groug@kaod.org, khorenko@virtuozzo.com,
+        alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+        davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+        dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+        peter.maydell@linaro.org, gaosong@loongson.cn, chenhuacai@kernel.org,
+        philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+        arikalo@gmail.com, npiggin@gmail.com, danielhb413@gmail.com,
+        palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com,
+        zhiwei_liu@linux.alibaba.com, pasic@linux.ibm.com,
+        borntraeger@linux.ibm.com, richard.henderson@linaro.org,
+        david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
+        flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
+        cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
+        frankzhu@zhaoxin.com, silviazhao@zhaoxin.com, kraxel@redhat.com,
+        berrange@redhat.com
+Subject: [PATCH v5 00/10] target/i386/kvm/pmu: PMU Enhancement, Bugfix and Cleanup
+Date: Fri, 25 Apr 2025 14:29:57 -0700
+Message-ID: <20250425213037.8137-1-dongli.zhang@oracle.com>
+X-Mailer: git-send-email 2.43.5
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <b4a0daac7b200e4ffc08879977dbde120a8d5f73.camel@beckhoff.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TbeQ0oFUVmS3
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-04-25_07,2025-04-24_02,2025-02-21_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulkscore=0 mlxscore=0
+ spamscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2504070000
+ definitions=main-2504250154
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNDI1MDE1NSBTYWx0ZWRfX/JGrdm4b1gKF b2NcXX1//fLXAZCsBhQB7pf9sdZ5I1Im197QXgCFDEMuq4GSp2r2qMgS5JP66Fr2njMis+6O+Ie mQN1uDFkRiEv2XkCtUZtkLtvnV1ImpfbvgStSi5RT895koAcXg0IC3Kz7zTo3GzPybFUPunMkYV
+ k7z9EM0ryoOPJc1BgJ1fmmLF6Yk9d7zjzYm6l2ElqhROdEuSkuyQ6qVtVh/CCDMMd59lk1RaS22 MuHCrK/xBAYlfNtDiomdBN70kDIukCP0C9YrStNvjU12kmk0FdP8TyXcTO6vCFTygm7I+K0WH0E JHBp8z8s4ifyjKNRQedSwNUTK9BlO8Od/B1DftmhzKABQghRz9I7YQdU/sR0kx0U6wTrDpYXqyN dFQLEoTU
+X-Proofpoint-GUID: LRKEPpbRnUEiyTV8M7RN8lJZZS_iQOlB
+X-Proofpoint-ORIG-GUID: LRKEPpbRnUEiyTV8M7RN8lJZZS_iQOlB
+X-TUID: mPYheHqGBvnn
 
-On Thu, Apr 24, 2025 at 10:48:17AM +0000, Corvin Köhne wrote:
-> On Tue, 2025-03-18 at 14:07 +0100, Corvin Köhne wrote:
-> > CAUTION: External Email!!
-> > From: Corvin Köhne <c.koehne@beckhoff.com>
-> > 
-> > Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
-> > platform. This commit series adds the Beckhoff CX7200 as new board variant to
-> > QEMU.
-> > 
-> > The emulation is able to successfully boot an CX7200 image. The image includes
-> > some self tests executed on every boot. Only the cache self test fails due to
-> > QEMU emulating the cache as always being coherent. The self tests include
-> > f.e.:
-> > 
-> > * Network
-> > * Flash
-> > * CCAT DMA + EEPROM [1]
-> > * TwinCAT (Beckhoff's automation control software [2])
-> > 
-> > [1] https://github.com/beckhoff/ccat
-> > [2] https://www.beckhoff.com/en-us/products/automation/
-> > 
-> > Corvin Köhne (1):
-> >   MAINTAINERS: add myself as reviewer for Beckhoff devices
-> > 
-> > YannickV (20):
-> >   hw/timer: Make frequency configurable
-> >   hw/timer: Make PERIPHCLK period configurable
-> >   hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
-> >   hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
-> >   hw/dma/zynq: Notify devcfg on FPGA reset via SLCR control
-> >   hw/dma/zynq-devcfg: Simulate dummy PL reset
-> >   hw/dma/zynq-devcfg: Indicate power-up status of PL
-> >   hw/dma/zynq-devcfg: Fix register memory
-> >   hw/misc: Add dummy ZYNQ DDR controller
-> >   hw/misc/zynq_slcr: Add logic for DCI configuration
-> >   hw/misc: Add Beckhoff CCAT device
-> >   hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
-> >   hw/arm/beckhoff_CX7200: Remove second SD controller
-> >   hw/arm/beckhoff_CX7200: Remove second GEM
-> >   hw/arm/beckhoff_CX7200: Adjust Flashes and Busses
-> >   hw/arm/beckhoff_CX7200: Remove usb interfaces
-> >   hw/arm/beckhoff_CX7200: Remove unimplemented devices
-> >   hw/arm/beckhoff_CX7200: Set CPU frequency and PERIPHCLK period
-> >   hw/arm/beckhoff_CX7200: Add CCAT to CX7200
-> >   hw/arm/beckhoff_CX7200: Add dummy DDR CTRL to CX7200
-> > 
-> >  MAINTAINERS                       |   7 +
-> >  hw/arm/Kconfig                    |  18 ++
-> >  hw/arm/beckhoff_CX7200.c          | 440 ++++++++++++++++++++++++++++++
-> >  hw/arm/
-> > https://nospamproxywebp.beckhoff.com/enQsig/link?id=BAgAAACF1PqAcgZXNGoAAACSdE
-> > 7DUYKKiipqQsJl32BC_vIVe3kQ23Cr-DKSrQn5Y_I0ZnsAu8qZHVUsGVmYwKL0amQboD-LYv9rWN-
-> > mvEPUf2y-CZ1qrggzKI9xgbKnOi8XSPZVd2G0Lro-8fGR9tAuNB-3CWjEaKli0                
-> > |   1 +
-> >  hw/dma/xlnx-zynq-devcfg.c         |  36 ++-
-> >  hw/misc/Kconfig                   |   6 +
-> >  hw/misc/beckhoff_ccat.c           | 365 +++++++++++++++++++++++++
-> >  hw/misc/
-> > https://nospamproxywebp.beckhoff.com/enQsig/link?id=BAgAAACF1PqAcgZXNGoAAACSdE
-> > 7DUYKKiipqQsJl32BC_vIVe3kQ23Cr-DKSrQn5Y_I0ZnsAu8qZHVUsGVmYwKL0amQboD-LYv9rWN-
-> > mvEPUf2y-CZ1qrggzKI9xgbKnOi8XSPZVd2G0Lro-8fGR9tAuNB-3CWjEaKli0               
-> > |   2 +
-> >  hw/misc/zynq_ddr-ctrl.c           | 331 ++++++++++++++++++++++
-> >  hw/misc/zynq_slcr.c               |  47 ++++
-> >  hw/timer/a9gtimer.c               |  25 +-
-> >  hw/timer/arm_mptimer.c            |  33 ++-
-> >  include/hw/dma/xlnx-zynq-devcfg.h |   3 +
-> >  include/hw/timer/a9gtimer.h       |   2 +
-> >  include/hw/timer/arm_mptimer.h    |   4 +
-> >  15 files changed, 1309 insertions(+), 11 deletions(-)
-> >  create mode 100644 hw/arm/beckhoff_CX7200.c
-> >  create mode 100644 hw/misc/beckhoff_ccat.c
-> >  create mode 100644 hw/misc/zynq_ddr-ctrl.c
-> 
-> Hi,
-> 
-> any feedback for those commits?
->
+This patchset addresses four bugs related to AMD PMU virtualization.
 
-Hi Corvin,
+1. The PerfMonV2 is still available if PERCORE if disabled via
+"-cpu host,-perfctr-core".
 
-Thanks for the reminder and sorry for the delay! I started reviewing and
-sending comments today. Cool work!
+2. The VM 'cpuid' command still returns PERFCORE although "-pmu" is
+configured.
 
-It would be great if you could include a patch to docs/system/arm/
-describing how to test this machine.
+3. The third issue is that using "-cpu host,-pmu" does not disable AMD PMU
+virtualization. When using "-cpu EPYC" or "-cpu host,-pmu", AMD PMU
+virtualization remains enabled. On the VM's Linux side, you might still
+see:
 
-Cheers,
-Edgar
+[    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
+
+instead of:
+
+[    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+[    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
+
+To address this, KVM_CAP_PMU_CAPABILITY is used to set KVM_PMU_CAP_DISABLE
+when "-pmu" is configured.
+
+4. The fourth issue is that unreclaimed performance events (after a QEMU
+system_reset) in KVM may cause random, unwanted, or unknown NMIs to be
+injected into the VM.
+
+The AMD PMU registers are not reset during QEMU system_reset.
+
+(1) If the VM is reset (e.g., via QEMU system_reset or VM kdump/kexec) while
+running "perf top", the PMU registers are not disabled properly.
+
+(2) Despite x86_cpu_reset() resetting many registers to zero, kvm_put_msrs()
+does not handle AMD PMU registers, causing some PMU events to remain
+enabled in KVM.
+
+(3) The KVM kvm_pmc_speculative_in_use() function consistently returns true,
+preventing the reclamation of these events. Consequently, the
+kvm_pmc->perf_event remains active.
+
+(4) After a reboot, the VM kernel may report the following error:
+
+[    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
+[    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
+
+(5) In the worst case, the active kvm_pmc->perf_event may inject unknown
+NMIs randomly into the VM kernel:
+
+[...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
+
+To resolve these issues, we propose resetting AMD PMU registers during the
+VM reset process
+
+
+Changed since v1:
+  - Use feature_dependencies for CPUID_EXT3_PERFCORE and
+    CPUID_8000_0022_EAX_PERFMON_V2.
+  - Remove CPUID_EXT3_PERFCORE when !cpu->enable_pmu.
+  - Pick kvm_arch_pre_create_vcpu() patch from Xiaoyao Li.
+  - Use "-pmu" but not a global "pmu-cap-disabled" for KVM_PMU_CAP_DISABLE.
+  - Also use sysfs kvm.enable_pmu=N to determine if PMU is supported.
+  - Some changes to PMU register limit calculation.
+Changed since v2:
+  - Change has_pmu_cap to pmu_cap.
+  - Use cpuid_find_entry() instead of cpu_x86_cpuid().
+  - Rework the code flow of PATCH 07 related to kvm.enable_pmu=N following
+    Zhao's suggestion.
+  - Use object_property_get_int() to get CPU family.
+  - Add support to Zhaoxin.
+Changed since v3:
+  - Re-base on top of Zhao's queued patch.
+  - Use host_cpu_vendor_fms() from Zhao's patch.
+  - Pick new version of kvm_arch_pre_create_vcpu() patch from Xiaoyao.
+  - Re-split the cases into enable_pmu and !enable_pmu, following Zhao's
+    suggestion.
+  - Check AMD directly makes the "compat" rule clear.
+  - Some changes on commit message and comment.
+  - Bring back global static variable 'kvm_pmu_disabled' read from
+    /sys/module/kvm/parameters/enable_pmu.
+Changed since v4:
+  - Re-base on top of most recent mainline QEMU.
+  - Add more Reviewed-by.
+  - All patches are reviewed.
+
+
+Xiaoyao Li (1):
+  kvm: Introduce kvm_arch_pre_create_vcpu()
+
+Dongli Zhang (9):
+  target/i386: disable PerfMonV2 when PERFCORE unavailable
+  target/i386: disable PERFCORE when "-pmu" is configured
+  target/i386/kvm: set KVM_PMU_CAP_DISABLE if "-pmu" is configured
+  target/i386/kvm: extract unrelated code out of kvm_x86_build_cpuid()
+  target/i386/kvm: rename architectural PMU variables
+  target/i386/kvm: query kvm.enable_pmu parameter
+  target/i386/kvm: reset AMD PMU registers during VM reset
+  target/i386/kvm: support perfmon-v2 for reset
+  target/i386/kvm: don't stop Intel PMU counters
+
+ accel/kvm/kvm-all.c        |   5 +
+ include/system/kvm.h       |   1 +
+ target/arm/kvm.c           |   5 +
+ target/i386/cpu.c          |   8 +
+ target/i386/cpu.h          |  16 ++
+ target/i386/kvm/kvm.c      | 360 ++++++++++++++++++++++++++++++++++------
+ target/loongarch/kvm/kvm.c |   4 +
+ target/mips/kvm.c          |   5 +
+ target/ppc/kvm.c           |   5 +
+ target/riscv/kvm/kvm-cpu.c |   5 +
+ target/s390x/kvm/kvm.c     |   5 +
+ 11 files changed, 372 insertions(+), 47 deletions(-)
+
+base-commit: 019fbfa4bcd2d3a835c241295e22ab2b5b56129b
+
+Thank you very much!
+
+Dongli Zhang
+

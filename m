@@ -1,127 +1,127 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4501281njd;
-        Fri, 25 Apr 2025 09:46:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXtxoGgrjhIP/bjeEnuIGPbLwr8Cp9CVOTkeoe9XNIA59UTHZAAM1ubYb+mLaF5g/JKnQIwL94sdLaFHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFGmYVqm11miRapeskSQu0WNm6KLnLi1kxda4YTEx89fhB/1fPZDmVgYX6Wil2tXL5lQgme
-X-Received: by 2002:a05:6102:948:b0:4bb:d45c:7f4b with SMTP id ada2fe7eead31-4d543eb9305mr2283978137.11.1745599564638;
-        Fri, 25 Apr 2025 09:46:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745599564; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4603836njd;
+        Fri, 25 Apr 2025 12:56:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV0qH1nOJVJEikO3+wfu096uTp64O97y5mCtF/F+Jhp9qOnB3FAsDV1yfGG9xNKUTYcco+P+Siv9tJBtQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFGLw8JEZhtlf3mPxC1W5074E7fVqi7Zb+3ctCD7usK3zS8RYGaQyR7+UrxYzhRXiLQoIVX
+X-Received: by 2002:a05:6214:5297:b0:6f4:c15a:62d2 with SMTP id 6a1803df08f44-6f4cb9e5186mr60148386d6.20.1745611005782;
+        Fri, 25 Apr 2025 12:56:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745611005; cv=none;
         d=google.com; s=arc-20240605;
-        b=CpG5iCPWKi5VFlExGPOWN+91qkraAWiZ0+k15TluRNPLvPuVjF2ncQzP/dZWQy2R1T
-         eGyHE1p+Gi77B0J3S+y9aYQWfilFBCpRvfodrh7bBK9XBVOasV2303BLmBCzf7Zjjv9b
-         f6aEIBJsMZQHCDr8m+Wv4D1QH3LUPfktcoxNeXqq0Ra4taT+keQiYISGtmmUrAbxHAae
-         gk7BhwsP+Zw5UofHTy+MqrY8W7DkMbnotYO6ZtqRGrzKQRT+EMYL5zx4fyYXIOZwvUd+
-         Nlm8weCYImHJPjmfiVWSwdZoPVglo0c9fXMjAWmxS6wuUoVzvRG3B0VGvV1fC24Fwc8y
-         BTkQ==
+        b=f1c7EDFQ0QAOzFck5Py7aQXnfJwqfgt4ZkAVVJCTUoOB18nz5jkUp7Yh6esV0HlBLN
+         SYvFBP9CwQRB8VyioebtuLtXXvJirBMNNxT63NM8ZTcg0Gl6v1F3k/tXoGaRH7xG/lhz
+         euxHd9qsOqQu4a9+YEXTKpyldeP/9oE52r2rtK6fuxfuD1MMIN9IUu1reUWDCEoHPcCA
+         gCThHOfCRrR0uD8uVysoU6m7q5e7ZBhMLz5VmxLS5j/azWJ/X6pC6X7FPobAeytvecoj
+         pmyPPnTa+sFvm62CVVq4p4spoi430LpXZsL0jrVYpUi8aMKj4x2joOgWx/QfTM15mjh4
+         mp8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=BGCjJfJGfP3usE1JQv/IJ/f1s+OsuIZhyPVBjb78u2s=;
-        fh=5Pv9gS2Xg+xH5dYm6kfSAig56jiAAWOMa+PV31daMsY=;
-        b=UhtpEuzOwNKvmjs09EWYYETCQKwmxcmLsOnjB18FGvpt6GOTYwe+iEDi3iWSnjw37W
-         e0zxlHMqRm2dJIhHstxxfJVScntyr9Is4/nuokvfIRrDIohJdV3q0ECVsocnlFTeKBhh
-         swgPNwxKBO4GZlVe2pui4KfEHxUBX4GQd8DGKRJUVre32m+tdPqXygj1St6rB9R2aDiT
-         jL/8a/SSIp307fHMkW+eUsQ/3JAu8iaYploAcUncc2dYtuV0hEI68ROBksBK+1icLCSN
-         vtOWsz0a1AjrEDa4sQ/Lmu2X6irzzpv3oxdKezAI5RsSI5D+DI43ABNtnPRRTrUfbQAM
-         O/uA==;
+        bh=A2gfaBXNp4dU0dm+i9LlMdykMAI/Yullks1UebA9OG0=;
+        fh=D1H4QJAJc1XEfzyUnr56TxHN9sgW3vFiK9BkkRKcrPA=;
+        b=Dl4X2LUE8Wrbnx20xhQhTy6dXQzDF5Gn4eg0Ehkn6tkRyd8PEhln+BQjrOedQA6hxr
+         14b/C6lBLSewktFYEJD+bbpbW/t/j+pmpWzko0s29mMGFa6poU2dRU2HfP2AlYhB3nlb
+         lcRr5wV7pzNyPpuHuNA08sKY2+phA/rRD+wxQq5VKeuU0m/UltgGQRZRmGJzvrdhEh92
+         0Sr6dutQwQEBrjBYKjEPNJdffrI/lDFrVck6ff7rMLamywy6eBCzXZbr+ZxBSCq1AymA
+         XUe3yGZofjUw6CxSpkFn0NP9KzVSh/hHOB98SXG5rE/XVTTxp+QClL6OV8Q1Kd2mlmr1
+         g8zQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=biewC9ZL;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lxahaUzS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4d3d79b6c59si1252073137.602.2025.04.25.09.46.04
+        by mx.google.com with ESMTPS id d75a77b69052e-47ea1f9768csi49162191cf.433.2025.04.25.12.56.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 09:46:04 -0700 (PDT)
+        Fri, 25 Apr 2025 12:56:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=biewC9ZL;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lxahaUzS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8MBR-0004Dy-Pn; Fri, 25 Apr 2025 12:45:49 -0400
+	id 1u8P9w-0002QV-AZ; Fri, 25 Apr 2025 15:56:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8MBK-0004Bm-Nj; Fri, 25 Apr 2025 12:45:47 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1u8P9t-0002PU-Bo; Fri, 25 Apr 2025 15:56:25 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u8MBI-0006PQ-0o; Fri, 25 Apr 2025 12:45:42 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-39c30d9085aso1808607f8f.1; 
- Fri, 25 Apr 2025 09:45:38 -0700 (PDT)
+ id 1u8P9r-0001Fk-9D; Fri, 25 Apr 2025 15:56:25 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-39c1efbefc6so1884372f8f.1; 
+ Fri, 25 Apr 2025 12:56:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1745599537; x=1746204337; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1745610981; x=1746215781; darn=nongnu.org;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=BGCjJfJGfP3usE1JQv/IJ/f1s+OsuIZhyPVBjb78u2s=;
- b=biewC9ZLob3dgrKFEnT0YxQJ+X1mokiJyZbzuuE8RGGpgTe8Bcu/Xxw5UhhIsyFz5n
- wAHNt6LEv6qc8k7TDqyOUu3+VeYwl6rFV/WAkgV5BlX5XD7uPHU4sql1IbG6735j0rZj
- 99Ehi5yScrPWXWlTaflMC4iJsFzooFqqFwfgLDSn11q7399chW/TtBdTIWk+Qf94wv84
- y58bTd8DmsoYqRyhdLSSCsxOwSCwUpXVhdfU4cTYN0ox2fTdlsKZAtMI1CRVaVC4Eft7
- iqODTc9p4W+hozIXqLBh4WRlBRmA/Pq99sUwlQmVI1oOCLTt/195h1u6joJxSivQqaZ4
- 3pHA==
+ bh=A2gfaBXNp4dU0dm+i9LlMdykMAI/Yullks1UebA9OG0=;
+ b=lxahaUzSpOAuwokyBFXPBQqvuoIB0Y/eI/dV2gA/NH5qdi0ldsl8DslgCWnY/+n3vT
+ RAiWwCQuh+EF/P57sznJlJ1cBlYZDyxUydXHvXjaKEjzDANg51HQOIiOqEV3Gk5UTzsp
+ Rnm4PexXmu2xaQqhhjjAqdWTw5eyhdpkYtDsZiptHfY/wjqoVaINR+i/Jrc5BA9QXj5W
+ ObbUNhlCESYF58GrRAz+svXKOHe4oeqJyWY45mtDAwwugkv4lJM/O6N9ACeI84xgKKym
+ LD1ibcIO1fQJLhcSvYhihP9z77Z72CgUBQ0sSFKzZCcm9KJXtx/UTTZ0735g9mk+1A/T
+ fZnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745599537; x=1746204337;
+ d=1e100.net; s=20230601; t=1745610981; x=1746215781;
  h=user-agent:in-reply-to:content-transfer-encoding
  :content-disposition:mime-version:references:message-id:subject:cc
  :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BGCjJfJGfP3usE1JQv/IJ/f1s+OsuIZhyPVBjb78u2s=;
- b=C3a0+dRYqLg604xBFwwBNTNuF0dD9VZHlT5AY1MPNeBGoZRchQpOqNuch6K8o2P5vX
- X+XPNa3UJz/fXuRO3KnMvA5avA1buX3FtzNUYjuPeKA9wTxe6Le6jqBtqifKmty80u2H
- vZ/O7GUX8E+JFobylLgPbwo4A+tfqVRk1rjQwScHSCgIoYaiPTkOGjc6C1r5Abrnld8m
- VW9niWNXPXNQpH/yz5o7ajPmT4hGmkjaR6S7KNmCHNEvsXL7arKVyy7H9VuYx/WfV7ce
- jPt3Cjn3tbdeZTvh65i7wVQp1IaNCHiZkbGIY1jxQbPMnwfEWPjEZic0rF3D6WgzcN6Q
- cPcg==
+ bh=A2gfaBXNp4dU0dm+i9LlMdykMAI/Yullks1UebA9OG0=;
+ b=ZSvKcDh4iEeOYTC/5qWDFASBeytFuuXBCGNmbdqSj8+wrA8qDvUde+icp+lwc5B8i9
+ STAFIUKwcU2I6PCAUUUy0VGbBAkKmyIZopLF91URKZrHD2GWctjUHfGN6b1ONxIz1j0o
+ Y/SQwpeGPc91x8vmftYrhwd8uN34Wde1Z6ISF4PbjXTxOg5IO958W0ZiOg7gCGNCJjqw
+ ZZkg47akKYo/a/Esq4/EPBpzv2TdV8F47FtpHi2+3W+pKiRL0/w/A1Cg/UrkcxThX//B
+ O8iOqt5Utf3wBStPFU98zbse2QiZJqXO/f0e87249S0j9rkQ1DauizU66T3fBdLePYY4
+ mCqQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUiVoo/V/p4J13yscSSd9TWUXkTa5pJ2yprIRaIqfsrUevA9EbgLIsf6OCbSY6qRddN8BtBElrcKg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz9AVq9YE9OGw+NoVB7RWlesT0+zXjW+lBACWrkUHJu1mltWYKw
- m6onNn690/KsdGPSs9PqpAjDW7zNVqpzOww3qvRbGJdwIsCk/FpY
-X-Gm-Gg: ASbGncsQAoEeg3F9Fo7w94WJrAlGNP2SzRymEuL7reekoAVcnTnWdHlrY5aDO75bg4Q
- 8gLHOn4t5D5DWU97OhIEMJ4/6BRiCsjqulabNmMrcwE1tLZIlOzGNP9CoHhxIkNywwaHhKUN3SV
- StJIHgiN2cGQ+agOc9B/4bVR2cY8hQ4iKvREwu/D4b/WDh/AiqpgkCrwR/I8kGCEGZslSYM62QF
- UDaLHkc9VGsBwVhCfLeJAf/pR+bCy2K6fBHTsYDEP8FNJdqxODlLMfnDrejGXyG+S4izb71i9RT
- KOlrMsBNLTJKyOQT1jIKhzS9OoLwFseWoicOpohDkOirmLOwyLEAxoc6Om5LmSP81pVsZI8Q3SJ
- TUK7yT3ROEXTQ
-X-Received: by 2002:a05:6000:40de:b0:39d:6f2b:e74d with SMTP id
- ffacd0b85a97d-3a074f39e3bmr2467286f8f.39.1745599537218; 
- Fri, 25 Apr 2025 09:45:37 -0700 (PDT)
+ AJvYcCX8HyIR5DoTVS9E7z6IKVYW4z1+YGrQX4pjZfMMm3TVJLt4voKmfkraY9ALE4AlCpgjY7MsxMJ36g==@nongnu.org
+X-Gm-Message-State: AOJu0Ywsz9ft76o88S3GVEtOHHogTw0v6wRJMu68mYZckGMD/LpMj1iW
+ l0C8DaGe6ik272n/dfz+hgJzevuPFD/Q4uQhXbvLPBuSKIK+JO3E
+X-Gm-Gg: ASbGncu9GN4vDsaA4ygUf7xCpieKLY81JgIHcrRPZB3DKfHSa5G8RqbKk/Zf/s02YrE
+ JBwajoRLAqM0O5xMhRNMkmR1VmL2OtoP2040r0sK/c56XStGHkn9tpAdwV+yPM7+KH10Z5+2XLO
+ WfKgbyZ7HnO9XUaRsl6O9rYT6d3SKUq2XAmwxZ7hUIJ3RaA3FCFPmu+sDLdGA2GAeUo0IX8xs3D
+ AX71X5t+NEZE2bhVd9R1NUZjqo1vPZM14ZKS1w0KnmAdyb5qc2FQRJ5VPS843WIZ8S8hI10RO/f
+ BNJPo0f5O+rBgfrIP3E+eH+LoLU43XDzeMb4rVNeFQ9AmDxBTe/HcKcs3bxwu9iNoy/g0zEEX3U
+ fSmHyWEi+vGsr
+X-Received: by 2002:a05:6000:240b:b0:38d:d701:419c with SMTP id
+ ffacd0b85a97d-3a074f0dca7mr2867191f8f.41.1745610980402; 
+ Fri, 25 Apr 2025 12:56:20 -0700 (PDT)
 Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073e46981sm2821339f8f.66.2025.04.25.09.45.36
+ ffacd0b85a97d-3a073e46501sm3171296f8f.73.2025.04.25.12.56.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Apr 2025 09:45:36 -0700 (PDT)
-Date: Fri, 25 Apr 2025 18:45:36 +0200
+ Fri, 25 Apr 2025 12:56:19 -0700 (PDT)
+Date: Fri, 25 Apr 2025 21:56:18 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Corvin =?iso-8859-1?Q?K=F6hne?= <corvin.koehne@gmail.com>
-Cc: qemu-devel@nongnu.org,
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Yannick =?iso-8859-1?Q?Vo=DFen?= <y.vossen@beckhoff.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  Corvin =?iso-8859-1?Q?K=F6hne?= <c.koehne@beckhoff.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 09/21] hw/misc: Add dummy ZYNQ DDR controller
-Message-ID: <aAu8MIQTmTPoRjIm@zapote>
+Subject: Re: [PATCH 10/21] hw/misc/zynq_slcr: Add logic for DCI configuration
+Message-ID: <aAvo4vhsKM7rApVy@zapote>
 References: <20250318130817.119636-1-corvin.koehne@gmail.com>
- <20250318130817.119636-10-corvin.koehne@gmail.com>
+ <20250318130817.119636-11-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250318130817.119636-10-corvin.koehne@gmail.com>
+In-Reply-To: <20250318130817.119636-11-corvin.koehne@gmail.com>
 User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -143,415 +143,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eI50+4ubE+GN
+X-TUID: t/zyzooVLwJj
 
-On Tue, Mar 18, 2025 at 02:08:00PM +0100, Corvin Kˆhne wrote:
+On Tue, Mar 18, 2025 at 02:08:01PM +0100, Corvin Kˆhne wrote:
 > From: YannickV <Y.Vossen@beckhoff.com>
 > 
-> A dummy DDR controller for ZYNQ has been added. While all registers are present,
-> not all are functional. Read and write access is validated, and the user mode
-> can be set. This provides a basic DDR controller initialization, preventing
-> system hangs due to endless polling or similar issues.
+> The registers for the digitally controlled impedance (DCI) clock are
+> part of the system level control registers (SLCR). The DONE bit in
+> the status register indicates a successfull DCI calibration. An
+> description of the calibration process can be found here:
+> https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/DDR-IOB-Impedance-Calibration
+> 
+> The DCI control register and status register have been added. As soon
+> as the ENABLE and RESET bit are set, the RESET bit has also been toggled
+> to 0 before and the UPDATE_CONTROL is not set, the DONE bit in the status
+> register is set. If these bits change the DONE bit is reset. Note that the
+> option bits are not taken into consideration.
 > 
 > Signed-off-by: Yannick Voﬂen <y.vossen@beckhoff.com>
+
+LGTM:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+
+
+
+
 > ---
->  hw/misc/Kconfig         |   3 +
->  hw/misc/meson.build     |   1 +
->  hw/misc/zynq_ddr-ctrl.c | 331 ++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 335 insertions(+)
->  create mode 100644 hw/misc/zynq_ddr-ctrl.c
+>  hw/misc/zynq_slcr.c | 31 +++++++++++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
 > 
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index ec0fa5aa9f..1bc4228572 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -222,4 +222,7 @@ config IOSB
->  config XLNX_VERSAL_TRNG
->      bool
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index 9b3220f354..10ef8ecee8 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -181,6 +181,12 @@ REG32(GPIOB_CFG_HSTL, 0xb14)
+>  REG32(GPIOB_DRVR_BIAS_CTRL, 0xb18)
 >  
-> +config DDR_CTRLR
-
-I suggest XLNX_ZYNQ_DDRC ?
-
-And name the file accordingly, e.g xlnx-zynq-ddrc.c.
-
-You may also want to consider using the register API, see for example
-hw/misc/xlnx-versal-xramc.c, modelling another memory controller.
-
-
-> +    bool
+>  REG32(DDRIOB, 0xb40)
+> +REG32(DDRIOB_DCI_CTRL, 0xb70)
+> +    FIELD(DDRIOB_DCI_CTRL, RESET, 0, 1)
+> +    FIELD(DDRIOB_DCI_CTRL, ENABLE, 1, 1)
+> +    FIELD(DDRIOB_DCI_CTRL, UPDATE_CONTROL, 20, 1)
+> +REG32(DDRIOB_DCI_STATUS, 0xb74)
+> +    FIELD(DDRIOB_DCI_STATUS, DONE, 13, 1)
+>  #define DDRIOB_LENGTH 14
+>  
+>  #define ZYNQ_SLCR_MMIO_SIZE     0x1000
+> @@ -194,6 +200,8 @@ struct ZynqSLCRState {
+>  
+>      MemoryRegion iomem;
+>  
+> +    bool ddriob_dci_ctrl_reset_toggled;
 > +
->  source macio/Kconfig
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 6d47de482c..8d4c4279c4 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -91,6 +91,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
->  ))
->  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
->  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-> +system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_ddr-ctrl.c'))
->  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
->  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
->  system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
-> diff --git a/hw/misc/zynq_ddr-ctrl.c b/hw/misc/zynq_ddr-ctrl.c
-> new file mode 100644
-> index 0000000000..8cdf8be743
-> --- /dev/null
-> +++ b/hw/misc/zynq_ddr-ctrl.c
-> @@ -0,0 +1,331 @@
-> +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +#include "qemu/bitops.h"
-> +#include "qemu/log.h"
-> +#include "qapi/error.h"
-> +#include "hw/registerfields.h"
-> +#include "system/block-backend.h"
-> +#include "exec/address-spaces.h"
-> +#include "exec/memory.h"
-> +#include "system/dma.h"
+>      uint32_t regs[ZYNQ_SLCR_NUM_REGS];
+>  
+>      Clock *ps_clk;
+> @@ -332,6 +340,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+>  
+>      DB_PRINT("RESET\n");
+>  
+> +    s->ddriob_dci_ctrl_reset_toggled = false;
 > +
-> +#ifndef DDRCTRL_ERR_DEBUG
-> +#define DDRCTRL_ERR_DEBUG 0
-> +#endif
+>      s->regs[R_LOCKSTA] = 1;
+>      /* 0x100 - 0x11C */
+>      s->regs[R_ARM_PLL_CTRL]   = 0x0001A008;
+> @@ -419,6 +429,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+>      s->regs[R_DDRIOB + 4] = s->regs[R_DDRIOB + 5] = s->regs[R_DDRIOB + 6]
+>                            = 0x00000e00;
+>      s->regs[R_DDRIOB + 12] = 0x00000021;
 > +
-> +#define DB_PRINT_L(level, ...) do { \
-> +    if (DDRCTRL_ERR_DEBUG > (level)) { \
-> +        fprintf(stderr,  ": %s: ", __func__); \
-> +        fprintf(stderr, ## __VA_ARGS__); \
-> +    } \
-> +} while (0)
+> +    s->regs[R_DDRIOB_DCI_CTRL] = 0x00000020;
+>  }
+>  
+>  static void zynq_slcr_reset_hold(Object *obj, ResetType type)
+> @@ -555,6 +567,25 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+>                  (int)offset, (unsigned)val & 0xFFFF);
+>          }
+>          return;
 > +
-> +#define DB_PRINT(...) DB_PRINT_L(0, ## __VA_ARGS__)
+> +    case R_DDRIOB_DCI_CTRL:
+> +        if (!FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) && 
+> +            FIELD_EX32(s->regs[R_DDRIOB_DCI_CTRL], DDRIOB_DCI_CTRL, RESET)) {
 > +
-> +REG32(DDRC_CTRL, 0x00)
-> +REG32(TWO_RANK_CFG, 0x04)
-> +REG32(HPR_REG, 0x08)
-> +REG32(LPR_REG, 0x0C)
-> +REG32(WR_REG, 0x10)
-> +REG32(DRAM_PARAM_REG0, 0x14)
-> +REG32(DRAM_PARAM_REG1, 0x18)
-> +REG32(DRAM_PARAM_REG2, 0x1C)
-> +REG32(DRAM_PARAM_REG3, 0x20)
-> +REG32(DRAM_PARAM_REG4, 0x24)
-> +REG32(DRAM_INIT_PARAM, 0x28)
-> +REG32(DRAM_EMR_REG, 0x2C)
-> +REG32(DRAM_EMR_MR_REG, 0x30)
-> +REG32(DRAM_BURST8_RDWR, 0x34)
-> +REG32(DRAM_DISABLE_DQ, 0x38)
-> +REG32(DRAM_ADDR_MAP_BANK, 0x3C)
-> +REG32(DRAM_ADDR_MAP_COL, 0x40)
-> +REG32(DRAM_ADDR_MAP_ROW, 0x44)
-> +REG32(DRAM_ODT_REG, 0x48)
-> +REG32(PHY_DBG_REG, 0x4C)
-> +REG32(PHY_CMD_TIMEOUT_RDDA, 0x50)
-> +REG32(TA_CPT, 0x50)
-> +REG32(MODE_STS_REG, 0x54)
-> +    FIELD(MODE_STS_REG, DDR_REG_DBG_STALL, 3, 3)
-> +    FIELD(MODE_STS_REG, DDR_REG_OPERATING_MODE, 0, 2)
-> +REG32(DLL_CALIB, 0x58)
-> +REG32(ODT_DELAY_HOLD, 0x5C)
-> +REG32(CTRL_REG1, 0x60)
-> +REG32(CTRL_REG2, 0x64)
-> +REG32(CTRL_REG3, 0x68)
-> +REG32(CTRL_REG4, 0x6C)
-> +REG32(CTRL_REG5, 0x78)
-> +REG32(CTRL_REG6, 0x7C)
-> +REG32(CHE_REFRESH_TIMER0, 0xA0)
-> +REG32(CHE_T_ZQ, 0xA4)
-> +REG32(CHE_T_ZQ_SHORT_INTERVAL_REG, 0xA8)
-> +REG32(DEEP_PWRDWN_REG, 0xAC)
-> +REG32(REG_2C, 0xB0)
-> +REG32(REG_2D, 0xB4)
-> +REG32(DFI_TIMING, 0xB8)
-> +REG32(CHE_ECC_CONTROL_REG_OFFSET, 0xC4)
-> +REG32(CHE_CORR_ECC_LOG_REG_OFFSET, 0xC8)
-> +REG32(CHE_CORR_ECC_ADDR_REG_OFFSET, 0xCC)
-> +REG32(CHE_CORR_ECC_DATA_31_0_REG_OFFSET, 0xD0)
-> +REG32(CHE_CORR_ECC_DATA_63_32_REG_OFFSET, 0xD4)
-> +REG32(CHE_CORR_ECC_DATA_71_64_REG_OFFSET, 0xD8)
-> +REG32(CHE_UNCORR_ECC_LOG_REG_OFFSET, 0xDC)
-> +REG32(CHE_UNCORR_ECC_ADDR_REG_OFFSET, 0xE0)
-> +REG32(CHE_UNCORR_ECC_DATA_31_0_REG_OFFSET, 0xE4)
-> +REG32(CHE_UNCORR_ECC_DATA_63_32_REG_OFFSET, 0xE8)
-> +REG32(CHE_UNCORR_ECC_DATA_71_64_REG_OFFSET, 0xEC)
-> +REG32(CHE_ECC_STATS_REG_OFFSET, 0xF0)
-> +REG32(ECC_SCRUB, 0xF4)
-> +REG32(CHE_ECC_CORR_BIT_MASK_31_0_REG_OFFSET, 0xF8)
-> +REG32(CHE_ECC_CORR_BIT_MASK_63_32_REG_OFFSET, 0xFC)
-> +REG32(PHY_RCVER_ENABLE, 0x114)
-> +REG32(PHY_CONFIG0, 0x118)
-> +REG32(PHY_CONFIG1, 0x11C)
-> +REG32(PHY_CONFIG2, 0x120)
-> +REG32(PHY_CONFIG3, 0x124)
-> +REG32(PHY_INIT_RATIO0, 0x12C)
-> +REG32(PHY_INIT_RATIO1, 0x130)
-> +REG32(PHY_INIT_RATIO2, 0x134)
-> +REG32(PHY_INIT_RATIO3, 0x138)
-> +REG32(PHY_RD_DQS_CFG0, 0x140)
-> +REG32(PHY_RD_DQS_CFG1, 0x144)
-> +REG32(PHY_RD_DQS_CFG2, 0x148)
-> +REG32(PHY_RD_DQS_CFG3, 0x14C)
-> +REG32(PHY_WR_DQS_CFG0, 0x154)
-> +REG32(PHY_WR_DQS_CFG1, 0x158)
-> +REG32(PHY_WR_DQS_CFG2, 0x15C)
-> +REG32(PHY_WR_DQS_CFG3, 0x160)
-> +REG32(PHY_WE_CFG0, 0x168)
-> +REG32(PHY_WE_CFG1, 0x16C)
-> +REG32(PHY_WE_CFG2, 0x170)
-> +REG32(PHY_WE_CFG3, 0x174)
-> +REG32(WR_DATA_SLV0, 0x17C)
-> +REG32(WR_DATA_SLV1, 0x180)
-> +REG32(WR_DATA_SLV2, 0x184)
-> +REG32(WR_DATA_SLV3, 0x188)
-> +REG32(REG_64, 0x190)
-> +REG32(REG_65, 0x194)
-> +REG32(REG69_6A0, 0x1A4)
-> +REG32(REG69_6A1, 0x1A8)
-> +REG32(REG6C_6D2, 0x1B0)
-> +REG32(REG6C_6D3, 0x1B4)
-> +REG32(REG6E_710, 0x1B8)
-> +REG32(REG6E_711, 0x1BC)
-> +REG32(REG6E_712, 0x1C0)
-> +REG32(REG6E_713, 0x1C4)
-> +REG32(PHY_DLL_STS0, 0x1CC)
-> +REG32(PHY_DLL_STS1, 0x1D0)
-> +REG32(PHY_DLL_STS2, 0x1D4)
-> +REG32(PHY_DLL_STS3, 0x1D8)
-> +REG32(DLL_LOCK_STS, 0x1E0)
-> +REG32(PHY_CTRL_STS, 0x1E4)
-> +REG32(PHY_CTRL_STS_REG2, 0x1E8)
-> +REG32(AXI_ID, 0x200)
-> +REG32(PAGE_MASK, 0x204)
-> +REG32(AXI_PRIORITY_WR_PORT0, 0x208)
-> +REG32(AXI_PRIORITY_WR_PORT1, 0x20C)
-> +REG32(AXI_PRIORITY_WR_PORT2, 0x210)
-> +REG32(AXI_PRIORITY_WR_PORT3, 0x214)
-> +REG32(AXI_PRIORITY_RD_PORT0, 0x218)
-> +REG32(AXI_PRIORITY_RD_PORT1, 0x21C)
-> +REG32(AXI_PRIORITY_RD_PORT2, 0x220)
-> +REG32(AXI_PRIORITY_RD_PORT3, 0x224)
-> +REG32(EXCL_ACCESS_CFG0, 0x294)
-> +REG32(EXCL_ACCESS_CFG1, 0x298)
-> +REG32(EXCL_ACCESS_CFG2, 0x29C)
-> +REG32(EXCL_ACCESS_CFG3, 0x2A0)
-> +REG32(MODE_REG_READ, 0x2A4)
-> +REG32(LPDDR_CTRL0, 0x2A8)
-> +REG32(LPDDR_CTRL1, 0x2AC)
-> +REG32(LPDDR_CTRL2, 0x2B0)
-> +REG32(LPDDR_CTRL3, 0x2B4)
+> +            s->ddriob_dci_ctrl_reset_toggled = true;
+> +            DB_PRINT("DDRIOB DCI CTRL RESET was toggled\n");
+> +        }
 > +
+> +        if (FIELD_EX32(val, DDRIOB_DCI_CTRL, ENABLE) &&
+> +            FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) &&
+> +            !FIELD_EX32(val, DDRIOB_DCI_CTRL, UPDATE_CONTROL) &&
+> +            s->ddriob_dci_ctrl_reset_toggled) {
 > +
-> +#define ZYNQ_DDRCTRL_MMIO_SIZE      0x400
-> +#define ZYNQ_DDRCTRL_NUM_REG        (ZYNQ_DDRCTRL_MMIO_SIZE / 4)
-> +
-> +#define TYPE_DDRCTRL "zynq.ddr-ctlr"
-> +#define DDRCTRL(obj) \
-> +    OBJECT_CHECK(DDRCTRLState, (obj), TYPE_DDRCTRL)
-> +
-> +typedef struct DDRCTRLState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion iomem;
-> +
-> +    uint32_t reg[ZYNQ_DDRCTRL_NUM_REG];
-> +} DDRCTRLState;
-> +
-> +
-> +static bool zynq_ddrctrl_check_addr(hwaddr addr, bool rnw)
-
-Since we always return true fore reads, I would suggest removing
-the rnw argument, rename the function to check..._write or
-moving this logic to zynq_ddrctrl_write().
-
-
-> +{
-> +    switch (addr) {
-> +    case R_PHY_DBG_REG:
-> +    case R_MODE_STS_REG:
-> +    case R_CHE_CORR_ECC_LOG_REG_OFFSET ...
-> +                    R_CHE_CORR_ECC_DATA_71_64_REG_OFFSET:
-> +    case R_CHE_UNCORR_ECC_ADDR_REG_OFFSET ...
-> +                    R_CHE_UNCORR_ECC_DATA_71_64_REG_OFFSET:
-> +    case R_CHE_ECC_CORR_BIT_MASK_31_0_REG_OFFSET:
-> +    case R_CHE_ECC_CORR_BIT_MASK_63_32_REG_OFFSET:
-> +    case R_REG69_6A0 ... R_AXI_ID:
-> +    case R_MODE_REG_READ:
-> +        return rnw;
-> +    default:
-> +        return true;
-> +    }
-> +}
-> +
-> +static void zynq_ddrctrl_reset_init(Object *obj, ResetType type)
-> +{
-> +    DDRCTRLState *s = DDRCTRL(obj);
-> +
-> +    DB_PRINT("RESET");
-> +
-> +    s->reg[R_DDRC_CTRL]                      = 0x00000200;
-> +    s->reg[R_TWO_RANK_CFG]                   = 0x000C1076;
-> +    s->reg[R_HPR_REG]                        = 0x03C0780F;
-> +    s->reg[R_LPR_REG]                        = 0x03C0780F;
-> +    s->reg[R_WR_REG]                         = 0x0007F80F;
-> +    s->reg[R_DRAM_PARAM_REG0]                = 0x00041016;
-> +    s->reg[R_DRAM_PARAM_REG1]                = 0x351B48D9;
-> +    s->reg[R_DRAM_PARAM_REG2]                = 0x83015904;
-> +    s->reg[R_DRAM_PARAM_REG3]                = 0x250882D0;
-> +    s->reg[R_DRAM_PARAM_REG4]                = 0x0000003C;
-> +    s->reg[R_DRAM_INIT_PARAM]                = 0x00002007;
-> +    s->reg[R_DRAM_EMR_REG]                   = 0x00000008;
-> +    s->reg[R_DRAM_EMR_MR_REG]                = 0x00000940;
-> +    s->reg[R_DRAM_BURST8_RDWR]               = 0x00020034;
-> +    s->reg[R_DRAM_ADDR_MAP_BANK]             = 0x00000F77;
-> +    s->reg[R_DRAM_ADDR_MAP_COL]              = 0xFFF00000;
-> +    s->reg[R_DRAM_ADDR_MAP_ROW]              = 0x0FF55555;
-> +    s->reg[R_DRAM_ODT_REG]                   = 0x00000249;
-> +    s->reg[R_PHY_CMD_TIMEOUT_RDDA]           = 0x00010200;
-> +    s->reg[R_DLL_CALIB]                      = 0x00000101;
-> +    s->reg[R_ODT_DELAY_HOLD]                 = 0x00000023;
-> +    s->reg[R_CTRL_REG1]                      = 0x0000003E;
-> +    s->reg[R_CTRL_REG2]                      = 0x00020000;
-> +    s->reg[R_CTRL_REG3]                      = 0x00284027;
-> +    s->reg[R_CTRL_REG4]                      = 0x00001610;
-> +    s->reg[R_CTRL_REG5]                      = 0x00455111;
-> +    s->reg[R_CTRL_REG6]                      = 0x00032222;
-> +    s->reg[R_CHE_REFRESH_TIMER0]             = 0x00008000;
-> +    s->reg[R_CHE_T_ZQ]                       = 0x10300802;
-> +    s->reg[R_CHE_T_ZQ_SHORT_INTERVAL_REG]    = 0x0020003A;
-> +    s->reg[R_REG_2D]                         = 0x00000200;
-> +    s->reg[R_DFI_TIMING]                     = 0x00200067;
-> +    s->reg[R_ECC_SCRUB]                      = 0x00000008;
-> +    s->reg[R_PHY_CONFIG0]                    = 0x40000001;
-> +    s->reg[R_PHY_CONFIG1]                    = 0x40000001;
-> +    s->reg[R_PHY_CONFIG2]                    = 0x40000001;
-> +    s->reg[R_PHY_CONFIG3]                    = 0x40000001;
-> +    s->reg[R_PHY_RD_DQS_CFG0]                = 0x00000040;
-> +    s->reg[R_PHY_RD_DQS_CFG1]                = 0x00000040;
-> +    s->reg[R_PHY_RD_DQS_CFG2]                = 0x00000040;
-> +    s->reg[R_PHY_RD_DQS_CFG3]                = 0x00000040;
-> +    s->reg[R_PHY_WE_CFG0]                    = 0x00000040;
-> +    s->reg[R_PHY_WE_CFG1]                    = 0x00000040;
-> +    s->reg[R_PHY_WE_CFG2]                    = 0x00000040;
-> +    s->reg[R_PHY_WE_CFG3]                    = 0x00000040;
-> +    s->reg[R_WR_DATA_SLV0]                   = 0x00000080;
-> +    s->reg[R_WR_DATA_SLV1]                   = 0x00000080;
-> +    s->reg[R_WR_DATA_SLV2]                   = 0x00000080;
-> +    s->reg[R_WR_DATA_SLV3]                   = 0x00000080;
-> +    s->reg[R_REG_64]                         = 0x10020000;
-> +    s->reg[R_AXI_PRIORITY_WR_PORT0]          = 0x000803FF;
-> +    s->reg[R_AXI_PRIORITY_WR_PORT1]          = 0x000803FF;
-> +    s->reg[R_AXI_PRIORITY_WR_PORT2]          = 0x000803FF;
-> +    s->reg[R_AXI_PRIORITY_WR_PORT3]          = 0x000803FF;
-> +    s->reg[R_AXI_PRIORITY_RD_PORT0]          = 0x000003FF;
-> +    s->reg[R_AXI_PRIORITY_RD_PORT1]          = 0x000003FF;
-> +    s->reg[R_AXI_PRIORITY_RD_PORT2]          = 0x000003FF;
-> +    s->reg[R_AXI_PRIORITY_RD_PORT3]          = 0x000003FF;
-> +    s->reg[R_LPDDR_CTRL2]                    = 0x003C0015;
-> +    s->reg[R_LPDDR_CTRL3]                    = 0x00000601;
-> +}
-> +
-> +static uint64_t zynq_ddrctrl_read(void *opaque, hwaddr addr, unsigned size)
-> +{
-> +    DDRCTRLState *s = opaque;
-> +    addr /= 4;
-> +    uint32_t ret = s->reg[addr];
-
-Declarations at the top.
-
-
-> +
-> +    if (!zynq_ddrctrl_check_addr(addr, true)) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "zynq_slcr: Invalid read access to "
-> +                      " addr %" HWADDR_PRIx "\n", addr * 4);
-> +        return 0;
-> +    }
-> +
-> +    DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx32 "\n", addr * 4, ret);
-> +    return ret;
-> +}
-> +
-> +static void zynq_ddrctrl_write(void *opaque, hwaddr addr, uint64_t val,
-> +                               unsigned size)
-> +{
-> +    DDRCTRLState *s = opaque;
-> +    addr /= 4;
-> +
-> +    if (!zynq_ddrctrl_check_addr(addr, false)) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "zynq_slcr: Invalid read access to "
-
-Invalid write access to....
-
-> +                      " addr %" HWADDR_PRIx "\n", addr * 4);
-> +        return;
-> +    }
-> +
-> +    DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx64 "\n", addr * 4, val);
-> +
-> +    switch (addr) {
-> +    case R_DDRC_CTRL:
-> +        if (val & 0x1) {
-> +            s->reg[R_MODE_STS_REG] |=
-> +                    (R_MODE_STS_REG_DDR_REG_OPERATING_MODE_MASK & 0x1);
+> +            s->regs[R_DDRIOB_DCI_STATUS] |= R_DDRIOB_DCI_STATUS_DONE_MASK;
 > +        } else {
-> +            s->reg[R_MODE_STS_REG] &=
-> +                    ~R_MODE_STS_REG_DDR_REG_OPERATING_MODE_MASK;
+> +            s->regs[R_DDRIOB_DCI_STATUS] &= ~R_DDRIOB_DCI_STATUS_DONE_MASK;
 > +        }
 > +        break;
-> +    }
-> +
-> +    s->reg[addr] = val;
-> +}
-> +
-> +static const MemoryRegionOps ddrctrl_ops = {
-> +    .read = zynq_ddrctrl_read,
-> +    .write = zynq_ddrctrl_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +};
-> +
-> +static void zynq_ddrctrl_init(Object *obj)
-> +{
-> +    DB_PRINT("Init\n");
-> +
-> +    DDRCTRLState *s = DDRCTRL(obj);
-
-Declarations at the start of a block.
-
-
-> +
-> +    memory_region_init_io(&s->iomem, obj, &ddrctrl_ops, s, "ddrctrl",
-> +                          ZYNQ_DDRCTRL_MMIO_SIZE);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> +}
-> +
-> +static void zynq_ddrctrl_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DB_PRINT("Class init\n");
-> +
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-
-Declarations at the start of a block.
-
-
-> +
-> +    rc->phases.enter = zynq_ddrctrl_reset_init;
-> +}
-> +
-> +static const TypeInfo ddrctrl_info = {
-> +    .name = TYPE_DDRCTRL,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(DDRCTRLState),
-> +    .class_init = zynq_ddrctrl_class_init,
-> +    .instance_init = zynq_ddrctrl_init,
-> +};
-> +
-> +static void ddrctrl_register_types(void)
-> +{
-> +    type_register_static(&ddrctrl_info);
-> +}
-> +
-> +type_init(ddrctrl_register_types)
+>      }
+>  
+>      if (s->regs[R_LOCKSTA]) {
 > -- 
 > 2.49.0
 > 

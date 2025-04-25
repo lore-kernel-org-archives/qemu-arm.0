@@ -1,135 +1,125 @@
-Received: by 2002:a05:7023:b18:b0:9b:2b00:a62d with SMTP id qd24csp4156909dlb;
-        Thu, 24 Apr 2025 23:22:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUdwLBKLZRyp/B1rbx09WeJj1Da09VCBywFzEvVF3cuLalPfep6ToGzzNRnL4ojTymXsji2R5lA3m1vdA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8Y/w0cKRUTtR3dAZsCSefLtNowCqf2YcY5U6AExbur5/UvO8g1MEme+7fodqFvLAFD8sw
-X-Received: by 2002:a05:620a:192a:b0:7c5:5768:40b9 with SMTP id af79cd13be357-7c9607a968dmr200589885a.43.1745562174012;
-        Thu, 24 Apr 2025 23:22:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745562174; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4210085njd;
+        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU72vPoA3p+y4mQJmHgY7oFuJsJPRQDt1O/5sqQ6m1HfXG3pSMyQNel9Qu6t3YNfunGH9e5YFk+zTunKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG8n4SMQMQ4t1VDHO2MRp5YSoiarTfbZUBR6Hls27cdxIJXVu62/iL1z/DNaoMLWdxGU79Q
+X-Received: by 2002:ad4:5c83:0:b0:6e8:ddf6:d11e with SMTP id 6a1803df08f44-6f4cb9e5107mr23309006d6.21.1745568513498;
+        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745568513; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ivpe7Q6XrJ0LxqVy3wSC6KVE0/hP6c23cY6Nexmb4R/Gf77vv8IJ8PpqJFlj1m28fr
-         1fEiMZhhEDEpDCQUo+pjsDd2/i8HF2Zd3G8WygLtvkJj7vB+xyruhsP+ucaX1iOvocDJ
-         GNd8yMJ387PQo6aeiJY0gwXof5fFdLhbdydTLHAZLfTbEak+yQp2MxwtQ3DlU5GPBWfe
-         kdCtRVBVfNRsLaBm8TufyWsnd+jOErM+IBgIoNwjazmo4IfihnCszzgareuJJmwJf3Zg
-         lA6kLrYDvYTZeeQD7Q4R0bESMN+Rj6Sg8b4qsxY7rkpL0EdxLrDOiHnVmKIGQHaEYTAp
-         4DFA==
+        b=bwdGW/VfGV5ouMGqKxxR3s0xMMyN3AGYUMYqxsv0rqzfsATXBtZhc+TaktDJ4jKUTw
+         9NNCN/Z1Z1MsNHQIjwUNyJlpIHrKjKxiS0Tq8UC2bSERsXCQ6kDDIVrXTad+k4T4p3dS
+         4hXzvedztt79NFGuMW3cDbgzfozjYufDBQ0f6NTTn22emD4RpLeGfetkz5ptQqqxXq4M
+         9Q0slB3PyoTVc5aUNUVsKYyTY/uQcG4FhZwCuFcAi9Xa7yBbSNVDsmug9K7M6kETrMJX
+         paRIyzFb5zy7eVq2WPc5yf6yAUnUAWCuDZvmGTVMPqUFHoPEe0Uv9MrndOxNuDQ4eJYi
+         aMIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=nwiiywtuzeOop+1onmZSWo3jvoFu2COeckd2h7mTndg=;
-        fh=vB8cktEgn1edfuG8BW10MbPDP+6RcECB1WsHKCUOo6A=;
-        b=XzQI3IsCpz6MEKmYf2uGngtm+anlCxYR0jaHHj3KDz2hgr//1AqZ+6OcBFVpOHT2if
-         KZH0SPgXJYCJZ378JsUBzr5l7z/OH/e2+dCm0kyLGZTZoQTFGg2EVQ4h/YqqYpvPRPSg
-         afduTzvBF8PGucHfECFEvynYAWL0mb6rrMm35X/aGSlshmmZTr2tNzUBcwiaCeLpyXuw
-         Wg0Aopt7MUia65xyGcPCkkgoKaCXNZC8DuXnjEho2KdIpR8ePbXMPIYQMu1qDq4pMAmM
-         NI6zVDC8YCu/fnmq9flgHzwPuiosRpetgXEIhkUyC/M8FtTxeRLh8lAwQnjTFi3lURuM
-         w4XQ==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=BSAOewodhRFeub9foa3Zo2NN+TwFjpqKBX2SrWYMGuA=;
+        fh=Z5gh/o5ZL3xRtUwccechZMEA5ciId+Hw9EA3V2rP7fg=;
+        b=hVtdojA3PjXYokFw2g2qYj5joMC503y6ike5G8q5wS2m7vyYi7h/ZELR0evPLMW6q3
+         tegETAuzRQlZIr+GkPuSLbS2krYXaa2AnPTLyeVHBVO1nql4tgPsKdOxRSePpI78l1Nl
+         yspxnPybAQp4AOEQBd9RGu+q9znfFIcrkHql9sbkqYavBiDABw+5kMdA8u6+QUuz66tn
+         lhlS+99Y2wbtejFYkqb1LB7p/nJ98fdR5tqaH7qbqsMmd8KcFnqQhqlQDcxogCy8Mitz
+         LFmIjhvA2nCDT6g01qOHNQjg1aflEjNeI5aspBP/IlKy/we2XnTtyhw2zDdTIluxj6jZ
+         k5/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@intel.com header.s=Intel header.b=PK8aNYUo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958ebf554si300824685a.556.2025.04.24.23.22.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0acb576si32621916d6.203.2025.04.25.01.08.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Apr 2025 23:22:53 -0700 (PDT)
+        Fri, 25 Apr 2025 01:08:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@intel.com header.s=Intel header.b=PK8aNYUo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8CRn-0005gL-Jq; Fri, 25 Apr 2025 02:22:05 -0400
+	id 1u8E6h-0007c1-Ej; Fri, 25 Apr 2025 04:08:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=dv4w=XL=kaod.org=clg@ozlabs.org>)
- id 1u8CRP-0005eu-2f; Fri, 25 Apr 2025 02:21:39 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u8E6c-0007b5-Q1; Fri, 25 Apr 2025 04:08:20 -0400
+Received: from mgamail.intel.com ([198.175.65.17])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=dv4w=XL=kaod.org=clg@ozlabs.org>)
- id 1u8CRC-0002mS-3L; Fri, 25 Apr 2025 02:21:36 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZkN5P1jdJz4xMG;
- Fri, 25 Apr 2025 16:21:13 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZkN5K3sbzz4x07;
- Fri, 25 Apr 2025 16:21:06 +1000 (AEST)
-Message-ID: <a0bc628c-b4c1-484d-b645-8059571db83c@kaod.org>
-Date: Fri, 25 Apr 2025 08:21:02 +0200
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u8E6Z-00076N-Q5; Fri, 25 Apr 2025 04:08:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1745568496; x=1777104496;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=5KRtg0VP7RhePb2K1+43zCTF9YsbA4O/PrqeshZCb4w=;
+ b=PK8aNYUoJuEx4LxX7TElVXurQieQYMXXBpZ3RGL36kmUPFlTlYXN4Mha
+ HMVqFPQXubFI594kxQ97k+LFMGdCIHDb+Xb/y8ITMc6CJUMRWD74YDUbd
+ iW9OWls00TXQpyvBYEcJrBWo7CMsa/2Q5XFn/t2502em5xy8USXgPurWK
+ 7WsY72cp9g4Eeq7Kzr2Vd6RU6ggLwFgB3Wbc8E7h8HnJI0ezB4QzlP5CL
+ wwVmSzAWMROfubCWVicGrSF6QgL0AlEBV2K1X1yQwj87JAJvlidq7xinW
+ pW/fOUMix+HS2QJKWLEJtDpj5bRGBLJ9mS0g3QX5To1nBbhbm8RTbhkyQ w==;
+X-CSE-ConnectionGUID: du0OzITwRR+C1HZ2bU/X4g==
+X-CSE-MsgGUID: e94w0k4vTQm5BU4pp/Z1lg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="47240146"
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="47240146"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Apr 2025 01:08:09 -0700
+X-CSE-ConnectionGUID: 2BKS4ujcSP2OGoMmWUBd1w==
+X-CSE-MsgGUID: BElnjdbdSySYVUcokWJU+A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="163808291"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa002.jf.intel.com with ESMTP; 25 Apr 2025 01:07:59 -0700
+Date: Fri, 25 Apr 2025 16:28:54 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
+ babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
+ groug@kaod.org, khorenko@virtuozzo.com,
+ alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+ davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+ dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+ peter.maydell@linaro.org, gaosong@loongson.cn,
+ chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
+ danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
+ ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
+ liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
+ kraxel@redhat.com, berrange@redhat.com
+Subject: Re: [PATCH v4 01/11] [DO NOT MERGE] i386/cpu: Consolidate the helper
+ to get Host's vendor
+Message-ID: <aAtHxmpV7ka1lseC@intel.com>
+References: <20250416215306.32426-1-dongli.zhang@oracle.com>
+ <20250416215306.32426-2-dongli.zhang@oracle.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/6] pc-bios: Add AST27x0 vBootrom
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- "nabihestefan@google.com" <nabihestefan@google.com>
-References: <20250424075135.3715128-1-jamin_lin@aspeedtech.com>
- <20250424075135.3715128-3-jamin_lin@aspeedtech.com>
- <28470bda-09b3-42b4-a044-8e73a76f846c@kaod.org>
- <SI2PR06MB5041F7984B8982F3947127FAFC842@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI2PR06MB5041F7984B8982F3947127FAFC842@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=dv4w=XL=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250416215306.32426-2-dongli.zhang@oracle.com>
+Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.84,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,100 +134,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gdU+cQrGo9qB
+X-TUID: wFVfHWtZC7cR
 
-On 4/25/25 04:28, Jamin Lin wrote:
-> Hi Cedric, Nabih
+On Wed, Apr 16, 2025 at 02:52:26PM -0700, Dongli Zhang wrote:
+> Date: Wed, 16 Apr 2025 14:52:26 -0700
+> From: Dongli Zhang <dongli.zhang@oracle.com>
+> Subject: [PATCH v4 01/11] [DO NOT MERGE] i386/cpu: Consolidate the helper
+>  to get Host's vendor
+> X-Mailer: git-send-email 2.43.5
 > 
->> Subject: Re: [PATCH v6 2/6] pc-bios: Add AST27x0 vBootrom
->>
->> On 4/24/25 09:51, Jamin Lin wrote:
->>> The boot ROM is a minimal implementation designed to load an AST27x0
->> boot image.
->>> Its source code is available at:
->>> https://github.com/google/vbootrom
->>> Commit id: 82bed5ca62295228ea7bcdc721b63db178f686e8
->>
->> It would be good to report some build info when vbootrom starts.
->>
->> Today we have,
->>
->>      _    ______  ____  ____  __________  ____  __  ___      ___
->> ______________  ______  ______
->>     | |  / / __ )/ __ \/ __ \/_  __/ __ \/ __ \/  |/  /     /   | / ___/_
->> __/__ \/__  / |/ / __ \
->>     | | / / __  / / / / / / / / / / /_/ / / / / /|_/ /_____/ /| | \__ \ / /  __/ /  /
->> /|   / / / /
->>     | |/ / /_/ / /_/ / /_/ / / / / _, _/ /_/ / /  / /_____/ ___ |___/ // /  / __/  /
->> //   / /_/ /
->>     |___/_____/\____/\____/ /_/ /_/ |_|\____/_/  /_/     /_/
->> |_/____//_/  /____/ /_//_/|_\____/
->>
->>     Version:1.0.0
->>
->> I don't see any 1.0.0 tag under https://github.com/google/vbootrom ?
->>
->> Other firmware images report :
->>
->>     Jumping to BL31 (Trusted Firmware-A) at 0x430000000
->>
->>     NOTICE:  BL31: v2.10.3(release):lts-v2.10.3-dirty
->>     NOTICE:  BL31: Built : 17:17:34, Apr  5 2024
->>     I/TC:
->>     I/TC: OP-TEE version: 4.1.0-dev (gcc version 13.2.0 (GCC)) #1 Fri Jan 19
->> 17:14:14 UTC 2024 aarch64
->>     I/TC: WARNING: This OP-TEE configuration might be insecure!
->>     I/TC: WARNING: Please check
->> https://optee.readthedocs.io/en/latest/architecture/porting_guidelines.html
->>     I/TC: Primary CPU initializing
->>     I/TC: Primary CPU switching to normal world boot
->>
->>     U-Boot 2023.10-v00.05.06 (Mar 26 2025 - 05:59:26 +0000)
->>
->>
->> OpenFirmware:
->>
->>     SLOF
->> ****************************************************************
->> ******
->>     QEMU Starting
->>      Build Date = Nov  6 2024 15:31:54
->>      FW Version = git-ee03aec2c106a699
->>
->> OpenBIOS:
->>
->>     >>
->> =============================================================
->>     >> OpenBIOS 1.1 [Sep 24 2024 19:56]
->>     >> Configuration device id QEMU version 1 machine id 1
->>
->> SeaBIOS:
->>
->>     SeaBIOS (version rel-1.16.3-0-ga6ed6b701f0a-prebuilt.qemu.org)
->>
->> Adding a commit id, tag, build date to identify the firmware image would be
->> useful when issues are reported.
->>
->> See https://github.com/google/vbootrom/issues/6.
->>
->>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>> Reviewed-by: Nabih Estefan <nabihestefan@google.com>
->>> Tested-by: Nabih Estefan <nabihestefan@google.com>
->>
-> Thanks for review and suggestion.
+> From: Zhao Liu <zhao1.liu@intel.com>
 > 
-> I submitted a pull request to fix this issue, please see
-> https://github.com/google/vbootrom/pull/7
-> https://github.com/google/vbootrom/issues/6
+> Extend host_cpu_vendor_fms() to help more cases to get Host's vendor
+> information.
+> 
+> Cc: Dongli Zhang <dongli.zhang@oracle.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+> This patch is already queued by Paolo.
+> https://lore.kernel.org/all/20250410075619.145792-1-zhao1.liu@intel.com/
+> I don't need to add my Signed-off-by.
+> 
+>  target/i386/host-cpu.c        | 10 ++++++----
+>  target/i386/kvm/vmsr_energy.c |  3 +--
+>  2 files changed, 7 insertions(+), 6 deletions(-)
 
-Approved.
-  
-> If you agree this build info format, I will resend this patch after this pull request is merged.
-
-Yes. Just resend this patch, I will insert it in the v6 series.
-
-Thanks,
-
-C.
-
+Thanks. It has been merged as commit ae39acef49e2916 now.
 

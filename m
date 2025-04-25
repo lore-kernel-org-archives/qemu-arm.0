@@ -1,86 +1,86 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4245357njd;
-        Fri, 25 Apr 2025 02:34:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzA2NyilAOXDOuMDPc70Btw0XA4Cz+ZhsPNOKrkXMp920A/3Av+YEc6435drX1bPdFNQJbGRcNFc+lhw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHfm5eOXi7WMWaPHUA3I3zFZfZEkhA5gyA0Mnhxx9FWk/Y3BOkIhj9w9rbD4fouLYKix/W7
-X-Received: by 2002:ac8:7f10:0:b0:476:fdf6:18ce with SMTP id d75a77b69052e-4801ce5b1f9mr25006671cf.30.1745573689691;
-        Fri, 25 Apr 2025 02:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745573689; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4246613njd;
+        Fri, 25 Apr 2025 02:38:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUbwLV3kb1dKJxPRSTmkqEvjGlgMutFDGEt25fw+vOnsr1pnz+pMYS5+Yi3Y+X3on+i3n7KU3PH3/X42A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFH7BTWXW7G1EnEu3u5HPQ4aastOPYBF1n81ERAcl9VLiqZ8k9c3OYaZDeGJEVsyqM69EQG
+X-Received: by 2002:a05:620a:2801:b0:7c5:61bc:70ee with SMTP id af79cd13be357-7c9607c4910mr274885485a.52.1745573885201;
+        Fri, 25 Apr 2025 02:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745573885; cv=none;
         d=google.com; s=arc-20240605;
-        b=KPV3GbJqjNO6s8V3MUh7sndGvvB+NFmsK3bprgCIKBaR1VKYN1sB56F+R/6fE2sGoh
-         PKcKzXzNGEF6e/EIzoF51s/dhHR0FkLW0OnKbC8/9zvFKIrD+forWC7GUKGRk7BORVKf
-         cTj/TyoT3gVZ+PeoDfqMqdAD6NGMvsFL+MbsxQ4RuY1kwQXPS14qBloXIIT0XHzm/YVk
-         /heHYEzlheFuYwfq6UwqTaIkdJ0kjzhz7xk7Kmn9PCa7lZZvFYkLr1pFk3lxwruT5QIC
-         tg6ZjS76CczU2FnidYSEwwHDw147QRWcu/TUVFL+nVj/sHQ891Hbq/xnA3CYmpF3GlZT
-         bjXA==
+        b=JhzmRkZWkHrzJBepg55pqQ7QJA+CSBKkrQH9BaarLltIUGfPaIZwsb6rJgJoloVXua
+         pGsKAx12MTO586AQDKKSuql8fa6qTeC89F/lApwBCQyCwMBKyk9FrIlJyMOk1mFMz60c
+         6rNK8OIwdl05MAueHWCwBO1eh0vbQGpMSc9gsm0l0n/hliVVQ4LoA+JieqNpkuEexvRW
+         7cpxFLUpPflD6eofZ+YsuCNIBqu/a38qoLR1B4CfZ8eaYuWqKEWypeHafS8sOT6K1sBk
+         T0p7pzAyfrSHfIYi8GdWLafrwxL08RwfWwrJcDqlKRJhaGsUXBu94Aor7x1b6z1pcf+s
+         AfWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :message-id:date:references:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=heIK4dtLDWKuBOV9s/guG+3EGpvKAfEAdYxCwW1eUwM=;
+        bh=yJ0e1wDaEdu3GmTFHVM/+1vxUUTYAG5nC9n80guqzJ0=;
         fh=VGcoBDIBh5SXF1goT3YpiVSAdV7TMpyBGZ3UU5sKMH8=;
-        b=EvKHq3BJvmj1lmasqZG68O3LOG+O2IIjFI3RbSr9QwbLMPZQnZioeYu9r+9p/W9zh4
-         +ZOcdt/Id4Cw2gvg68/iRotwsW7d/9PdRYb3U/xaiDTa7A7kCKPtSi+HG1OjXMHTv5n1
-         eOp75cIHVhyjpwAZXBQP6/J9ARuEsmiu9ObLASMAdfpN2Ik7uB5W1JN7Lk/YJSyOlgf3
-         U7nbr/5//rmh9dlnkmRxQUMUfovOKp27xZSvStgzJPBeWeFWsn5073BMfGxRXoa56om0
-         nmRKpqU7AEZ2rBMwNOXUsYTx+RJwTGVNDThjOLmwtEQ0o423pdW/B96jf7DDJdocckBf
-         mWFA==;
+        b=lILItJe9O2Ns6inltfjpWgvHtmwEdAFag4CCVFwrxUDKMqlwHjFzXsjIFfn5/TkuMV
+         jYr9PcBXDuaiV16DuNOtsy1hiDx0r5lLA8ypTZzZPZOvOmV6VPnETM58Zb6AIQ9TfvcA
+         iaZCSrrZV7i2+ivUnblIIEO4tyFCSdtPBz0PyyRSSGLYlfq8rxz5/SILCcOALoptJt6x
+         ZJikvEZuvhmkwamZ++LRigp7SGRsIhFR5DKo49hTMORYsvjvQWhbmx3lkknNNkl86VtZ
+         HQM/yI8/3N98LB7TbvaS4WebyvaO4XbpsN0aa50dmKBge/sYgYgf6zYAtiivBhrdePc6
+         udBw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5YBvkk5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aGAFROv3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea2ba88d0si36134121cf.608.2025.04.25.02.34.49
+        by mx.google.com with ESMTPS id af79cd13be357-7c958ea2649si322024185a.377.2025.04.25.02.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 02:34:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Apr 2025 02:38:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5YBvkk5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aGAFROv3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u8FRp-0007zl-CV; Fri, 25 Apr 2025 05:34:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u8FVM-0002wz-CQ; Fri, 25 Apr 2025 05:37:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u8FRi-0007xV-Kk
- for qemu-arm@nongnu.org; Fri, 25 Apr 2025 05:34:10 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u8FUy-0002lI-3U
+ for qemu-devel@nongnu.org; Fri, 25 Apr 2025 05:37:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u8FRc-0008N1-Id
- for qemu-arm@nongnu.org; Fri, 25 Apr 2025 05:34:07 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1u8FUw-0000MQ-N6
+ for qemu-devel@nongnu.org; Fri, 25 Apr 2025 05:37:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1745573643;
+ s=mimecast20190719; t=1745573850;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=heIK4dtLDWKuBOV9s/guG+3EGpvKAfEAdYxCwW1eUwM=;
- b=D5YBvkk5OKqzuUBTVKwMRL67+/OIf0aAawPAKjVarPGQQ3xCX7FrI1dF8wYrLcvg9gTLZJ
- DMOn103eIRVQMGg7auKFKeVTTh+qKoPGKsZ4PJHCRBzw3ubOy6K9RUhHPo6tlEhVnbIx8U
- gvFT9TWbDhZf1fD7ih5lWF38g/YBH6w=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=yJ0e1wDaEdu3GmTFHVM/+1vxUUTYAG5nC9n80guqzJ0=;
+ b=aGAFROv3xHFUqHsuKqZeWYqkFLEuSA5QoaNmm0OjCVC0gg353bsf9oAMhhaZ2YnzG9fZhN
+ S514CPvgXYwsVz6BqP+EpehXt4Ax1+Y6Fw0NxI31VkUES8omowM0K469QURLa8Sb7TUZmU
+ rp9qEoqqmogjVWe0ZrBbsXAMsOlqOcQ=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-642-3XThmz3yNEm8YvQ8Ryr_DQ-1; Fri,
- 25 Apr 2025 05:34:01 -0400
-X-MC-Unique: 3XThmz3yNEm8YvQ8Ryr_DQ-1
-X-Mimecast-MFC-AGG-ID: 3XThmz3yNEm8YvQ8Ryr_DQ_1745573639
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-482-CMxPVJDiPI28cWcuwEQ2dQ-1; Fri,
+ 25 Apr 2025 05:37:26 -0400
+X-MC-Unique: CMxPVJDiPI28cWcuwEQ2dQ-1
+X-Mimecast-MFC-AGG-ID: CMxPVJDiPI28cWcuwEQ2dQ_1745573845
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 13B941956095; Fri, 25 Apr 2025 09:33:59 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EC6CD1955DC5; Fri, 25 Apr 2025 09:37:23 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.5])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2D5F0180047F; Fri, 25 Apr 2025 09:33:57 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5D841195608F; Fri, 25 Apr 2025 09:37:23 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7BD0121E66C3; Fri, 25 Apr 2025 11:33:54 +0200 (CEST)
+ id DF51521E66C3; Fri, 25 Apr 2025 11:37:20 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Zhao Liu <zhao1.liu@intel.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
@@ -92,18 +92,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>
-Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-In-Reply-To: <20250409082649.14733-4-zhao1.liu@intel.com> (Zhao Liu's message
- of "Wed, 9 Apr 2025 16:26:47 +0800")
+Subject: Re: [PATCH 4/5] i386/kvm: Support event with masked entry format in
+ KVM PMU filter
+In-Reply-To: <20250409082649.14733-5-zhao1.liu@intel.com> (Zhao Liu's message
+ of "Wed, 9 Apr 2025 16:26:48 +0800")
 References: <20250409082649.14733-1-zhao1.liu@intel.com>
- <20250409082649.14733-4-zhao1.liu@intel.com>
-Date: Fri, 25 Apr 2025 11:33:54 +0200
-Message-ID: <87frhwfuv1.fsf@pond.sub.org>
+ <20250409082649.14733-5-zhao1.liu@intel.com>
+Date: Fri, 25 Apr 2025 11:37:20 +0200
+Message-ID: <874iycfupb.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
@@ -113,221 +113,34 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.84,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5BpRSav6bRFz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9+cOOOF7Wt03
 
 Zhao Liu <zhao1.liu@intel.com> writes:
 
-> The select&umask is the common way for x86 to identify the PMU event,
-> so support this way as the "x86-default" format in kvm-pmu-filter
-> object.
+> KVM_SET_PMU_EVENT_FILTER of x86 KVM supports masked events mode, which
+> accepts masked entry format event to flexibly represent a group of PMU
+> events.
+>
+> Support masked entry format in kvm-pmu-filter object and handle this in
+> i386 kvm codes.
 >
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > Tested-by: Yi Lai <yi1.lai@intel.com>
-> ---
-> Changes since RFC v2:
->  * Drop hexadecimal variants and support numeric version in QAPI
->    directly. (Daniel)
->  * Rename "x86-default" format to "x86-select-umask". (Markus)
->  * Add Tested-by from Yi.
->  * Add documentation in qemu-options.hx.
->  * QAPI style fix:
->    - KVMPMU* stuff -> KvmPmu*.
->  * Bump up the supported QAPI version to v10.1.
->
-> Changes since RFC v1:
->  * Bump up the supported QAPI version to v10.0.
-> ---
->  accel/kvm/kvm-pmu.c      | 20 +++++++++++++++++++-
->  include/system/kvm-pmu.h | 13 +++++++++++++
->  qapi/kvm.json            | 21 +++++++++++++++++++--
->  qemu-options.hx          |  3 +++
->  target/i386/kvm/kvm.c    |  5 +++++
->  5 files changed, 59 insertions(+), 3 deletions(-)
->
-> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
-> index 22f749bf9183..fa73ef428e59 100644
-> --- a/accel/kvm/kvm-pmu.c
-> +++ b/accel/kvm/kvm-pmu.c
-> @@ -16,6 +16,8 @@
->  #include "qom/object_interfaces.h"
->  #include "system/kvm-pmu.h"
->  
-> +#define UINT12_MAX (4095)
-> +
->  static void kvm_pmu_filter_set_action(Object *obj, int value,
->                                        Error **errp G_GNUC_UNUSED)
->  {
-> @@ -53,9 +55,22 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
->      }
->  
->      for (node = head; node; node = node->next) {
-> -        switch (node->value->format) {
-> +        KvmPmuFilterEvent *event = node->value;
-> +
-> +        switch (event->format) {
->          case KVM_PMU_EVENT_FORMAT_RAW:
->              break;
-> +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
-> +            if (event->u.x86_select_umask.select > UINT12_MAX) {
-> +                error_setg(errp,
-> +                           "Parameter 'select' out of range (%d).",
-> +                           UINT12_MAX);
-> +                goto fail;
-> +            }
-> +
-> +            /* No need to check the range of umask since it's uint8_t. */
-> +            break;
-> +        }
 
-As we'll see below, the new x86-specific format is defined in the QAPI
-schema regardless of target.
-
-It is accepted here also regardless of target.  Doesn't matter much
-right now, as the object is effectively useless for targets other than
-x86, but I understand that will change.
-
-Should we reject it unless the target is x86?
-
-If not, I feel the behavior should be noted in the commit message.
-
->          default:
->              g_assert_not_reached();
->          }
-> @@ -67,6 +82,9 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
->      filter->events = head;
->      qapi_free_KvmPmuFilterEventList(old_head);
->      return;
-> +
-> +fail:
-> +    qapi_free_KvmPmuFilterEventList(head);
->  }
->  
->  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
-> diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
-> index 818fa309c191..6abc0d037aee 100644
-> --- a/include/system/kvm-pmu.h
-> +++ b/include/system/kvm-pmu.h
-> @@ -32,4 +32,17 @@ struct KVMPMUFilter {
->      KvmPmuFilterEventList *events;
->  };
->  
-> +/*
-> + * Stolen from Linux kernel (RAW_EVENT at tools/testing/selftests/kvm/include/
-> + * x86_64/pmu.h).
-> + *
-> + * Encode an eventsel+umask pair into event-select MSR format.  Note, this is
-> + * technically AMD's format, as Intel's format only supports 8 bits for the
-> + * event selector, i.e. doesn't use bits 24:16 for the selector.  But, OR-ing
-> + * in '0' is a nop and won't clobber the CMASK.
-> + */
-> +#define X86_PMU_RAW_EVENT(eventsel, umask) (((eventsel & 0xf00UL) << 24) | \
-> +                                            ((eventsel) & 0xff) | \
-> +                                            ((umask) & 0xff) << 8)
-> +
->  #endif /* KVM_PMU_H */
-> diff --git a/qapi/kvm.json b/qapi/kvm.json
-> index 1861d86a9726..cb151ca82e5c 100644
-> --- a/qapi/kvm.json
-> +++ b/qapi/kvm.json
-> @@ -36,10 +36,12 @@
->  #
->  # @raw: the encoded event code that KVM can directly consume.
->  #
-> +# @x86-select-umask: standard x86 encoding format with select and umask.
-> +#
->  # Since 10.1
->  ##
->  { 'enum': 'KvmPmuEventFormat',
-> -  'data': ['raw'] }
-> +  'data': ['raw', 'x86-select-umask'] }
->  
->  ##
->  # @KvmPmuRawEvent:
-> @@ -54,6 +56,20 @@
->  { 'struct': 'KvmPmuRawEvent',
->    'data': { 'code': 'uint64' } }
->  
-> +##
-> +# @KvmPmuX86SelectUmaskEvent:
-> +#
-> +# @select: x86 PMU event select field, which is a 12-bit unsigned
-> +#     number.
-> +#
-> +# @umask: x86 PMU event umask field.
-> +#
-> +# Since 10.1
-> +##
-> +{ 'struct': 'KvmPmuX86SelectUmaskEvent',
-> +  'data': { 'select': 'uint16',
-> +            'umask': 'uint8' } }
-> +
->  ##
->  # @KvmPmuFilterEvent:
->  #
-> @@ -66,7 +82,8 @@
->  { 'union': 'KvmPmuFilterEvent',
->    'base': { 'format': 'KvmPmuEventFormat' },
->    'discriminator': 'format',
-> -  'data': { 'raw': 'KvmPmuRawEvent' } }
-> +  'data': { 'raw': 'KvmPmuRawEvent',
-> +            'x86-select-umask': 'KvmPmuX86SelectUmaskEvent' } }
->  
->  ##
->  # @KvmPmuFilterProperties:
-
-Documentation could perhaps be more explicit about this making sense
-only for x86.
-
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 51a7c61ce0b0..5dcce067d8dd 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -6180,6 +6180,9 @@ SRST
->               ((select) & 0xff) | \
->               ((umask) & 0xff) << 8)
->  
-> +        ``{"format":"x86-select-umask","select":event_select,"umask":event_umask}``
-> +            Specify the single x86 PMU event with select and umask fields.
-> +
->          An example KVM PMU filter object would look like:
->  
->          .. parsed-literal::
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index fa3a696654cb..0d36ccf250ed 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -5974,6 +5974,10 @@ static bool kvm_config_pmu_event(KVMPMUFilter *filter,
->          case KVM_PMU_EVENT_FORMAT_RAW:
->              code = event->u.raw.code;
->              break;
-> +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
-> +            code = X86_PMU_RAW_EVENT(event->u.x86_select_umask.select,
-> +                                     event->u.x86_select_umask.umask);
-> +            break;
->          default:
->              g_assert_not_reached();
->          }
-> @@ -6644,6 +6648,7 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
->  
->          switch (event->format) {
->          case KVM_PMU_EVENT_FORMAT_RAW:
-> +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
->              break;
->          default:
->              error_setg(errp,
+My review comments on PATCH 3 apply here as well.
 

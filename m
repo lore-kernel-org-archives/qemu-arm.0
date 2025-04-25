@@ -1,301 +1,255 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4263481njd;
-        Fri, 25 Apr 2025 03:15:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVdMbhOY6OscRu5zlgkosaR5+a+feIHYP8MYdKRDEczqqvjPMcFKZWFQqby2MChSIvj/s7lEWbatquhnQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFx9WkkQNWuCFfe80g0qcKpMuVhcI406q35gI7aSTxyYY16gRdvNxhhdqTCZb734te4bkeZ
-X-Received: by 2002:a05:6214:2b05:b0:6f2:b9f4:3843 with SMTP id 6a1803df08f44-6f4c125c392mr96289626d6.22.1745576137630;
-        Fri, 25 Apr 2025 03:15:37 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745576137; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4272042njd;
+        Fri, 25 Apr 2025 03:33:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMYoKfqjZecHeA8pNTYAxEIosHM6yybv6tTMfKTBMu25kV6AuCAs/Nnoxt4jR2mM9pdlRRAzpR56Ye3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHy0Nx7BjmgioA/Oah6Y26xRlS8b09OmPt+xe9tFAuPAjAP/G+ZITFrUqNXy7rOlhbYZukD
+X-Received: by 2002:a05:620a:170f:b0:7c9:5eca:ea3b with SMTP id af79cd13be357-7c960729f78mr288992785a.31.1745577199007;
+        Fri, 25 Apr 2025 03:33:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745577198; cv=none;
         d=google.com; s=arc-20240605;
-        b=fCjTHozGB7uJKIsvNTnqPFxA5qJMOncQNjilLqfyfYMM5d3/d0gl7CmDJxVxr5kYIA
-         uv3C6z8bGid4VoJhn9PMisPGZLbzDj4jJ16WbH13pfXI70cDFrV4hutVcmJnSIPPPCqT
-         hVKBkFXLvE3Ux8RKhAAHJnDpsbAc6K7j/WcEa2Tn1NHRlexgGazOUJZ9sAQKRS34N0zZ
-         n2idxlzxpaFozFpBjTHa5cZnOFPwHCsym588j0f8/9Mgku8BH4zlS2qq20xo0GEgI9dG
-         Y+WdeJgNG8ZKuWt++1XoJbDnMkubiFNTq/vC7hAFCioSoTy+ei9/AyQfwkrEdylQdlSS
-         KdEw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=b9MvZ/NEycmPxDr4zM5cvnTsVVoK09dUnE/vCIf6DE5VfFJyACbeRpF6rnuOulhsrB
+         Td/EoAJvJL4gs4h1Lto6r4FmmGMZ8SDRTiDNJjB0pH3CQr5kPiwXTsRFo4LjUQxUjD1K
+         yJwGKz1NYX6qfM+O72VA5iT+KBg457pQXziRBbe8cEJIUWlQXxhz/eQEC5AGQKTa3UQk
+         LsQzs4PVu45Uy/mQWAUlLZkFaN/UAErFC+w2qRMF+EiixpSf5WUXX6tYSIY68uAzxnWT
+         1aL0EUkv5O65+m/+bOdGVNabAoepyWU97NxIm/s0VgovHGNrqqwrsG3TaWxC1LZVn1Rq
+         8x4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
-        bh=UX2FNs5luK3UOi8SSpbtwZ5wYmm3RcOR+q+r1rPpaKg=;
-        fh=zJlQWjmgtgStN2/3AX6lMI/0wd0gH/SXfFvTnsuLEFU=;
-        b=EhOE5F/fi/RlwKvYMnEsIWVuq2KotaXU9hWQu/LTSjO2tB+Khio4Ut9wcJXCeZjsZY
-         sTAWJcqdXlo9U33OCBo0r2YBaXJJRG1IlDp7DOq/TYDNYGVzxsl4T/D2yVW5Y2u89m1s
-         LSx6+SVbTgCzXQG0nW1RXXzJ1SyspVpK2qzNK4dT6+fFkKIak053Me+9Qnbes4r727yI
-         dzPxpbe+Sg5pLKVuS6uVIhjD0Ey+LncqBdCXwVR3AYXJyF+yGVCU/hrgPxMndMp7MWz9
-         c4KHytbnF1Wexh6pL3nbsbUur+1vzzeN/jNDvCU4jLH8TCBj3OEX77X2Vx/IUItg9gow
-         6OMg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sOvNB9OXakWwwLO478SymfKCouNPG/XyF/EAXAqw/50=;
+        fh=OO4/ej4l9dPtmMsWb0SWc3jxhEaYQS116rVY4VS0eVg=;
+        b=dMeDEuMroE3mGdBw7pk815oc9KHPxfy4e17mBg7VgA/yyIWbY/xueQxlmHxAoBwp/Y
+         07mhrdN8T5EA19cCZsvNSIYW8Wf0XgIGJCL9BpR7GsnfJwc6PuxANXzejvMIY1Y43UQp
+         H6LEVyG1170aNG+oHttI4foyQWuuuMDIH51anxU+1w/6UhkWVM/WFOnn8ty1PqrBQogG
+         EvHn8h0Lf8rMTP+YtsQfr6P6+oyH+ZdnnMNWpVKOC4IiWNeP2jkeKZ+5rYjZaRzn/5kG
+         0oBaA1134f8+8HTgysZx3Unw8QJ7e+LJAkTgKTtf1J/5E9e5E9nfzsqfHAw33rA6qBdD
+         jZ9w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=zWX32rQV;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GwN32SDd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0aea314si34567436d6.320.2025.04.25.03.15.37
+        by mx.google.com with ESMTPS id af79cd13be357-7c958ebf2cfsi340526485a.571.2025.04.25.03.33.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Apr 2025 03:15:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Apr 2025 03:33:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=zWX32rQV;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=GwN32SDd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u8G5e-0001KL-VC; Fri, 25 Apr 2025 06:15:27 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u8GMl-0007sl-4w; Fri, 25 Apr 2025 06:33:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Sandipan.Das@amd.com>)
- id 1u8G5X-0001JN-Ja; Fri, 25 Apr 2025 06:15:21 -0400
-Received: from mail-mw2nam12on2060c.outbound.protection.outlook.com
- ([2a01:111:f403:200a::60c]
- helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Sandipan.Das@amd.com>)
- id 1u8G5R-0004tB-U8; Fri, 25 Apr 2025 06:15:16 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VvbRGTw1eLQulrLmEZRgYUw2+EjoNQgBQE0cLPIFbeb8syrHb8SBxECm+/wleu19JopyFnKjK85NZpQDptShonxYtPh9/f8QlkNr/GMXRmLgOifW4mfaX5oVVRvbadnBO37UJTmAj/PvO/JsG/gc+W5QNLt/Nd1xYX/M2B/0T88NI45SXjyOlHGfdnpg/gGtGIrDN+mn3IcSkX0v7U3o4yD1+urw44ByjBvOLzUuREyMuBpSQXC3kvqE0yXAJaLvMWRE0vOFRVnw19GqhUtRD5rzTr2IpgLokvepjZJJsqGnE9ijhYnpMFNKJzcMY5wDNbU0vHigrTG7GQm/TeoutQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UX2FNs5luK3UOi8SSpbtwZ5wYmm3RcOR+q+r1rPpaKg=;
- b=BYhT+pLecz78jghdvkaFq9zdB4E/5QRhMDuj7P2Q4LcJlK2eL+2A+F23mF6X3WjIr7OdvbVC1CXrRZVTOPUglAr+0/ZKANGdTGKsEGgIbbJzwK8aZgH8cOTxPnWXS6k7gk/ocDaR80s+9i3hfXWnIhP9bMxf5KxtHvt/pxzufqEdLHkmj0bvbebpNnbrtVhIZkcwjPhYqeQW3WG9PZa57CGzfJ2VCzT9Z3YPUxts5s6J/67EKHy60PCUKuDeo27c0mMrNuf6E1xtvP7cA6HhFP0YLAuxmqbB1/jskuoG2aPPyELUm5DmMiKyeguTx7AKI7fRhRpEV1IQ7kwL47Ap+g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UX2FNs5luK3UOi8SSpbtwZ5wYmm3RcOR+q+r1rPpaKg=;
- b=zWX32rQVlXcJc+n/tqYH6mGXdc44eOaa5ri34Muat9dJIfXWMnw0wIc/KFjrRchiGtbW/vqfB8KWBYBWwU5MIfVAnttxhCGA+bSmD1Xk2Hk04LVgD2JzWQV/+Q348I+tLa1YxmGqYX1fjua1DjK9FjYF0Uz8zJQi1HbWayauCd8=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from PH7PR12MB5712.namprd12.prod.outlook.com (2603:10b6:510:1e3::13)
- by CH3PR12MB8188.namprd12.prod.outlook.com (2603:10b6:610:120::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8678.26; Fri, 25 Apr
- 2025 10:15:06 +0000
-Received: from PH7PR12MB5712.namprd12.prod.outlook.com
- ([fe80::2efc:dc9f:3ba8:3291]) by PH7PR12MB5712.namprd12.prod.outlook.com
- ([fe80::2efc:dc9f:3ba8:3291%6]) with mapi id 15.20.8678.025; Fri, 25 Apr 2025
- 10:15:06 +0000
-Message-ID: <8a723b11-76f3-46ab-b89e-54e14b8825a4@amd.com>
-Date: Fri, 25 Apr 2025 15:44:45 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 09/11] target/i386/kvm: reset AMD PMU registers during
- VM reset
-To: Dongli Zhang <dongli.zhang@oracle.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
- babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
- groug@kaod.org, khorenko@virtuozzo.com, alexander.ivanov@virtuozzo.com,
- den@virtuozzo.com, davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
- dapeng1.mi@linux.intel.com, joe.jin@oracle.com, peter.maydell@linaro.org,
- gaosong@loongson.cn, chenhuacai@kernel.org, philmd@linaro.org,
- aurelien@aurel32.net, jiaxun.yang@flygoat.com, arikalo@gmail.com,
- npiggin@gmail.com, danielhb413@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
- thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
- ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
- liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
- kraxel@redhat.com, berrange@redhat.com
-References: <20250416215306.32426-1-dongli.zhang@oracle.com>
- <20250416215306.32426-10-dongli.zhang@oracle.com>
-Content-Language: en-US
-From: Sandipan Das <sandipan.das@amd.com>
-In-Reply-To: <20250416215306.32426-10-dongli.zhang@oracle.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: PN3PR01CA0122.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:c01:96::8) To PH7PR12MB5712.namprd12.prod.outlook.com
- (2603:10b6:510:1e3::13)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u8GMi-0007rs-Ft
+ for qemu-arm@nongnu.org; Fri, 25 Apr 2025 06:33:04 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u8GMf-0007QS-1m
+ for qemu-arm@nongnu.org; Fri, 25 Apr 2025 06:33:02 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-43cef035a3bso14097935e9.1
+ for <qemu-arm@nongnu.org>; Fri, 25 Apr 2025 03:33:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1745577179; x=1746181979; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sOvNB9OXakWwwLO478SymfKCouNPG/XyF/EAXAqw/50=;
+ b=GwN32SDdl6rMVmNI/5R6vcrD5kd9H37byn/zMchhMBwpQBrEuhtHKi8zojtFbX6Dxs
+ fTbCrjD+1a5XonQtQxJHrMVKz48p/4tryzlPTOeiXGY0MveO2sfHj1rdC7rtQhLSwgiO
+ ntsCWz/N+eDlCFKJxZb7p7BUgsnuGU+6/7cXUvpDEqtjL6PKlA5n8rUAI3UJpGpHaRgM
+ DXst+g9ho71Mc186WFCLzESP0/vYdXlrBD6c6yIn4TopR5coLg81jLtB/fDakV+Jb6Yv
+ 4v3fzu7IuOUjHSylbPhrrdcQkzxCyDZh9x7quhqNWCy51TAD4ryy8VRiSmc1VZ6+NARr
+ HGCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1745577179; x=1746181979;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sOvNB9OXakWwwLO478SymfKCouNPG/XyF/EAXAqw/50=;
+ b=YLO8vfbY8tRXwSAF91gNdrzf8BrO59an/LIZs7SKxUDum3nm7DVihxVGB9kRiGU9ZQ
+ 3TBFk7mZY3QgW+MBpAzLR5qesQgsQ9sXLH2jn4jcB7dvqGd4azpGW6RZDwJDsdQ/2IwF
+ Q2l5FL0Zxxh9OtdO2JA4vexsxmo/W39wwQR4xgiRjecgAGK86F/skKdtUraH0PZbNH6D
+ ctubCQ0B7n463Xb6qRSInFs0RcAhSp8lDRzDqhM+tfr+TLhTUTewzHvy3QaDaORPDclc
+ 9FxSfhm5c3QHwLdQQGBiuaw3vBg+QUZ4wLt0Eri/PM8o/urRewW254MRAxdCGBgqefRN
+ besg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW6i9qf9pJeZLNuBv3OzwxTpeHm0Zj+qqc00+E8nFTvgkIBLwLVJOjkYI+cWnl3QjvHNLGOe3duow==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4mA8Id5ugH9oS8BlsEkUNKR4mzoMI+FVVPkG5mkf9xyZmxrnA
+ x4YPhCTEanNd6aVpgESTlJ4Y/TfaUx3ZsMjX+NSyA0mYFqQyaZpmyz0hS9Rx5mc=
+X-Gm-Gg: ASbGncthZkZHxhhGDCvLiTPzEUn7iNEjZPym5t6lA2xuRmX5zn0eEWIqvY2FR4kwVxz
+ q73Iheqmvbn0HtBDAqWjGXp7OiYA0NNsxPJIbCWUG+Vc66WcIGQYQKd/xI0Ct6vH+9tl5dnLH61
+ cRK1LbiQzYsdMpCNyqGq6JVVlbgeC/tg82kO56xDU4KRhmT16zOcfzOY1owsHuy/DHXvMmm9jPa
+ irTr9TwckhFu/3Wn7XTQb/JOtwIRnPsaQ8CTzzzhi19xiutASqdmUafAWELSzYYbKf4hnI+vqLz
+ COhEIJIDiFAL42gjmUm19+DQS0B4A0lo8icxlKTE2XiVVtRLdYKEHKP9asHzZNFTZ6Pp462telF
+ KCq9+x5+u
+X-Received: by 2002:a05:6000:4304:b0:38f:4f60:e669 with SMTP id
+ ffacd0b85a97d-3a074e3c47cmr1386882f8f.29.1745577178843; 
+ Fri, 25 Apr 2025 03:32:58 -0700 (PDT)
+Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a073e46976sm1941254f8f.63.2025.04.25.03.32.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Apr 2025 03:32:58 -0700 (PDT)
+Message-ID: <6a93fa6b-d38d-48ac-9cde-488765238247@linaro.org>
+Date: Fri, 25 Apr 2025 12:32:57 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5712:EE_|CH3PR12MB8188:EE_
-X-MS-Office365-Filtering-Correlation-Id: fc8ecd18-ecaa-4ac4-66fd-08dd83e20cc0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|7416014|1800799024|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?dTFZeVZHLzJidWVhS2kxcnBkV2xrVG1WYmdSNEZSK3hNS2w1bkY1Qzl5cnhh?=
- =?utf-8?B?OWxjaXdWZkdXOVYzRkJmYnZodWdocFhoM2NPOWFyN1pKK1FoZElTWE1VbVkx?=
- =?utf-8?B?QzhwSWhqbFo1djZQQmVydFZDa2N2dkhGdzdXY3ZEYXJicEhZOFk1NmoyTlFx?=
- =?utf-8?B?MFVlbGNNTkxzWUtpeWNyTFJ2YXlsL2tnWlZJdUwxL3ZvWnEzU1k4TklSc0dG?=
- =?utf-8?B?K2dpS1piQitnZHBzbGptT1ViMUQ1YkFGTEZuTjk2MVV3WlRscGQrZWRIbE5C?=
- =?utf-8?B?YytIdzFrZGtaR25OTkJDWlFibFduaEpBYWJER0lxb0w0K1Z3TkJBS001NzJI?=
- =?utf-8?B?bW5wM1cxTVJxbXFkWDNhaUcvUlI0U3FpOFVLNDc4eGU1bE9TWW9Hc1JyZXpo?=
- =?utf-8?B?UkNoTXhNTmhJMlNhZ243NVFNU0dkQWxsdW1JM3d1OXRHckhReTREUHM5WWE2?=
- =?utf-8?B?VTVqRWluVVJGR2dSVWNJdEcxd3d0WWFjc3Yyb2JQTFc1RDF1RHpzWVkzQ20v?=
- =?utf-8?B?cnlKZmJCVmhjM1RnOE43SVN2UUpBdVhqcGlmc3RKd2w0NGFhazNEeVdQNHF5?=
- =?utf-8?B?NUxySmkvUlRhMUVpS21NdExEYzIxbE96Q3RaMGFETldxaUJ1OHRnV2FXSmZ5?=
- =?utf-8?B?WkJHOUVwNFc5bXJyQ0dWK203U1RrdWlOUWsrM29LdWhkalZTUGR1ODRPTFVs?=
- =?utf-8?B?cXFPWHllbE1sRzBHaGN1Z2drRi9QTU9mNlo3dVh6K1RiNVAycU1QTGVDa2g0?=
- =?utf-8?B?clEwbmlkU2NqMTRkZWhKUE1pcXZxRFBFb3A0VzN2R1F3eUg0VTlSaGZEL1JU?=
- =?utf-8?B?NlNPdlZPVzM4OEF6WXpKK2pNeVVxTENQSTRneUZtc1daV1NROW5BekNNWDA1?=
- =?utf-8?B?SWJyY0ZLTGFoL25JYTdwZ2phVFdpYUsvdUlsbmgvRit6NjVONmh5WU0zQU43?=
- =?utf-8?B?Q0QzVTk5bnRBNWFWODF6UHBiOGxtRXArbTZLVXNDTHdvSkN6Y2ZOZ0J4eWVZ?=
- =?utf-8?B?Nnh0UWVUc1pxRVdZZ00rZmNxNHNqQUU0UHpNMkc2K1ZHY2o0SGZVbkFuaEdB?=
- =?utf-8?B?NGtmRHRSTU1rY2ZOUW9rK0taQzRuVmdyamVLZ0NVTk1OOXJPTll3NWR3QkZR?=
- =?utf-8?B?SjB5REpYRTRPNnUzYUw5YjFlMXNJckgvMzd6UU8rL0FCcFRCVzhwclQ2SnZx?=
- =?utf-8?B?SmFVNlZPMEkrM2RGMDdnZXhhQVBzOEh1TEhJU0RzeDVVaWE2Qm8wRU9vajRF?=
- =?utf-8?B?Y0plVU1TeXN4UVludEp1dHlQOEJ5ejI3Y24yN1lSN2Q4ZDlmeWlWTXNXWGRs?=
- =?utf-8?B?MTJ2Yk11SW9mSEwvTjZDM3ZHa1QwNXVKYUp6K0xIQ1N2OHBtdTRqRTN4c3ZC?=
- =?utf-8?B?MjM1ZWlDRXlLeXlpZ0ZtMTFGdFBVdk1VbEMwUTRUdHNLNkUwckxBajlnWU9l?=
- =?utf-8?B?Y0JyckVCZHVNdG1sWTJhUmhYYU1LQlhvLzM3MVJCenJEbzFtNlVHV3ErM0pT?=
- =?utf-8?B?cElWWnZSSzczaFBRUGQvYXlETTlpUzFSMXZUbUUwbmsyUWsra1N3bWs2SHA0?=
- =?utf-8?B?aFlQM3IySzJrdmRpQ1hzUW1LbVFhRThhUDNiMkRoTHFTVE91Nk9qNkFSMmds?=
- =?utf-8?B?NTF0cEdIWEQ0TGR6UVJhYzFTL21WNFp6cFZScVovR2krTXRTWXdUS2E2VGV0?=
- =?utf-8?B?RkVzazlhKzdDaU9hVTlmYVFrU3pvdUw2ZnRVU2pRMGsvMExEdlVTcTRDWmxW?=
- =?utf-8?B?N0I0Z2JtV2hzaDNPZkVTc3dORWw2YzdleGY0WUtWNVpvZVVSY2FwZ2lJbW9P?=
- =?utf-8?B?aklXWkhpc3pEN3luWHdzeWsyMUMxQTBVREVWbFFEQ0ZHVHh1bjFwQmlUTWlC?=
- =?utf-8?B?QUxSSDFqMHJTcnZPbmN3Ti9NS3NLMUcwV2xaTk5JMGErc3VscnhZWS9xdVMy?=
- =?utf-8?Q?39xqwrS3VpA=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH7PR12MB5712.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(1800799024)(7053199007); DIR:OUT;
- SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NE0xUjd4TndtMVorUW8rY1F5bDNaMUFTZWV1dnpLdFRBN2c2WXN3dmZXZVZn?=
- =?utf-8?B?b1Z1VnNybW5qWHlPUUN2OFRLZ1MyeHA5Sm0wbXZWSUpFM3BwYVBJT0RqM1Nu?=
- =?utf-8?B?cDVta2ZuaVJCWTJ6c2pNaU0vRnZ5M09tY0VrNTk3T0ZDMEpMTG0yK1FBc1lC?=
- =?utf-8?B?bVNlZG1SV3Z3MDVXbW4xanZQcEdVSXhoa1YwY1FNem1tU3VodmdWZ3hjL0pN?=
- =?utf-8?B?cVhEdUxheGFyaWQyb0tBUTdBWmRHK2FuVVlQeGx3cjhWWmxybExMaFpyZ3I0?=
- =?utf-8?B?NWxacVN2Mkd3Ni90dHZUaEJ3RlhNQTVsRGZXU1p5MkdBOGxROGJ3VUdBcXRK?=
- =?utf-8?B?OEdQWThHTWlDdjEvakZhUTNQK2w3UzBFdzF2SGRweXF5b1BwWXhidS80MHA5?=
- =?utf-8?B?V1Q1QTJiWUJQZ3FESW5RVDBkQTJ0ZlVleVlPRGhackl4LytKVTcvamhZMlZs?=
- =?utf-8?B?TEhmK0xPc1R2WGpRSWtaVFIyOUg3OHVrN1VWUGRFamFmaE5BTU94cTVleENH?=
- =?utf-8?B?VC9hZzRvMlpJMHNtbFpkcUlWTCtxYUlpc0lNU0pyU2wvU2ZUVHN2Mng5Qm95?=
- =?utf-8?B?WS83alBWQ2NHalNOZUd5Q1NTWnpGRG9PTUVYbUVDSXRzSnd3L3p2emRtRVhh?=
- =?utf-8?B?TjRLN3VlSUdjMFJvNWpXOUpDbm5YMGNETjArV0VydWs3eXJZbXVHRUh0NFNy?=
- =?utf-8?B?eFk0dVdsMmFMdzBSQkNSM1NUaDIzcU5GekU0NVp1UzNMaTZHV3psNTUwQnhJ?=
- =?utf-8?B?NEp0Q0w2Uk9aK0FiZGNLL21yZTdDSXRFZjl1SVo1M1hndUlaRUk2OWcvVjFC?=
- =?utf-8?B?NkpzVm96L0x6RWxobWhTTDBBKy90bHdOZnd1TzZLMG5GRk5GdzNxOGROQnlT?=
- =?utf-8?B?by9tdndhNFdHUW9NRTZ0YlZGUVQyNWRvelJOTE1uRjdHdVN5MEMwVi9BZHBr?=
- =?utf-8?B?K3VGVFJQSVR6dzRlN0JKelFRUG1zVzB6L2FjenVxWForZ2l5L0U0aEdQRmlE?=
- =?utf-8?B?akM3Rmxyam5QNXBhY0NxQ2ZQcG40TWtJUWg3SVpOSXpOK3RodG16c3lvdkFm?=
- =?utf-8?B?Y2dMMXZMY09neHJKUlZDTmNWTkx2QlNBclovdlVCaWxWeUdNV1pXN1BQekdI?=
- =?utf-8?B?MjBQNDJaL0phZ2oycG1hS0xDM0RWR3B6UzRqQVlaTTlKV1RadXFqQzQzSGNl?=
- =?utf-8?B?ci9nME4vcmlHYWxsVXRYN1lpOFdBczV0aTFPdGJ3OWwvdDFCQWtFZDN2SEIw?=
- =?utf-8?B?aUZiQUtobmh0Q2NSNS95eXBMVVp3TnVNOHFra1FHMWx6MXhCODlnb3lzb3Ru?=
- =?utf-8?B?TmpLWUQrWDNkTy9YVTI5YkdWMlFNMXFGRU1Uc1plMmM0TTFzVU9lK2c5R0pJ?=
- =?utf-8?B?Qk1IOHZGOFY3Z1gwdjU3ZWlPcWd2ZDN4LzJNd3pPK3dKdmFIV3hmelpZT1I5?=
- =?utf-8?B?RGRHTTMyNjVLb20xbU1qeEQ1cnBXeWxsQ1dBYXlSL1FhNTNPRUUrOWxRZU82?=
- =?utf-8?B?aFl3alR6NFE1T0c5YUdzV3pWczhvT3Y0OTBNWjlxU1U0L3RMRnNMVHNPYjkv?=
- =?utf-8?B?WVlvUGFSVVN2cHYyVmErREVjYlNGaXc4cWdQVjlsL1k2djYzR0JuT3RlREx1?=
- =?utf-8?B?RVVTOEVqS1dGWnBUOUhmeThDNXZNT0ZydkJmcXptdmlGTFFweWtXMWpOMUxH?=
- =?utf-8?B?TitHYzhNcXl4TGswNXhqWVdHYm5ycENwNm5RVWc5ZE1vd1hsellZSFFMTHhv?=
- =?utf-8?B?MWQwR3l1RmRpTExoMTg0bmdzUXZkblJCZkJzOG9YaEJ2UGJhVjd3MzhVZE5t?=
- =?utf-8?B?ZG96aTdaZS90SnhxUEwxalFSMHJ2dXhQeDA5L2x6N1g3eTd0R285NGdKUEUr?=
- =?utf-8?B?RXdhLzBkcFFYNlBneW5STno3WjErSGt6aDV3bTYyU3Y3Yk52ODEyWE1BRVYr?=
- =?utf-8?B?U0NvOUZ4eDRXeDVKVzhESVY4QUNhU2o5STAxcjgyYkpMaU81TmRpb3Y3RDdl?=
- =?utf-8?B?Z0I0RVAraUM5TG1QNWlqNkdlWnRtRWFHV0hEbURHU2lXSldzVHpHQXZEMU9i?=
- =?utf-8?B?NlJOTXFoVlBHL3l0OXdhSGR4NWhyV0tRdkY2YjVNbXp5TzNkNHdWZFJmWHY2?=
- =?utf-8?Q?FP31fi5cGMhdnmSQqUK9K9GmW?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fc8ecd18-ecaa-4ac4-66fd-08dd83e20cc0
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5712.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Apr 2025 10:15:06.0303 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9U5wcmkOPLzkIpxG8j5vca44fz4ZeWajF+gwy/k6pbusRazRFiKp85Pyqfq85Kjj9LsRMSv0LgCFrt0JjqkUFw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8188
-Received-SPF: permerror client-ip=2a01:111:f403:200a::60c;
- envelope-from=Sandipan.Das@amd.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/5] i386/kvm: Support fixed counter in KVM PMU filter
+To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
+ <mtosatti@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
+ Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+ <20250409082649.14733-6-zhao1.liu@intel.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250409082649.14733-6-zhao1.liu@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.84,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XfitR4bxKXXH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oJVOCfUIsHuc
 
-On 4/17/2025 3:22 AM, Dongli Zhang wrote:
-> QEMU uses the kvm_get_msrs() function to save Intel PMU registers from KVM
-> and kvm_put_msrs() to restore them to KVM. However, there is no support for
-> AMD PMU registers. Currently, pmu_version and num_pmu_gp_counters are
-> initialized based on cpuid(0xa), which does not apply to AMD processors.
-> For AMD CPUs, prior to PerfMonV2, the number of general-purpose registers
-> is determined based on the CPU version.
+On 9/4/25 10:26, Zhao Liu wrote:
+> KVM_SET_PMU_EVENT_FILTER of x86 KVM allows user to configure x86 fixed
+> function counters by a bitmap.
 > 
-> To address this issue, we need to add support for AMD PMU registers.
-> Without this support, the following problems can arise:
+> Add the support of x86-fixed-counter in kvm-pmu-filter object and handle
+> this in i386 kvm codes.
 > 
-> 1. If the VM is reset (e.g., via QEMU system_reset or VM kdump/kexec) while
-> running "perf top", the PMU registers are not disabled properly.
-> 
-> 2. Despite x86_cpu_reset() resetting many registers to zero, kvm_put_msrs()
-> does not handle AMD PMU registers, causing some PMU events to remain
-> enabled in KVM.
-> 
-> 3. The KVM kvm_pmc_speculative_in_use() function consistently returns true,
-> preventing the reclamation of these events. Consequently, the
-> kvm_pmc->perf_event remains active.
-> 
-> 4. After a reboot, the VM kernel may report the following error:
-> 
-> [    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
-> [    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
-> 
-> 5. In the worst case, the active kvm_pmc->perf_event may inject unknown
-> NMIs randomly into the VM kernel:
-> 
-> [...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
-> 
-> To resolve these issues, we propose resetting AMD PMU registers during the
-> VM reset process.
-> 
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Tested-by: Yi Lai <yi1.lai@intel.com>
 > ---
-> Changed since v1:
->   - Modify "MSR_K7_EVNTSEL0 + 3" and "MSR_K7_PERFCTR0 + 3" by using
->     AMD64_NUM_COUNTERS (suggested by Sandipan Das).
->   - Use "AMD64_NUM_COUNTERS_CORE * 2 - 1", not "MSR_F15H_PERF_CTL0 + 0xb".
->     (suggested by Sandipan Das).
->   - Switch back to "-pmu" instead of using a global "pmu-cap-disabled".
->   - Don't initialize PMU info if kvm.enable_pmu=N.
-> Changed since v2:
->   - Remove 'static' from host_cpuid_vendorX.
->   - Change has_pmu_version to pmu_version.
->   - Use object_property_get_int() to get CPU family.
->   - Use cpuid_find_entry() instead of cpu_x86_cpuid().
->   - Send error log when host and guest are from different vendors.
->   - Move "if (!cpu->enable_pmu)" to begin of function. Add comments to
->     reminder developers.
->   - Add support to Zhaoxin. Change is_same_vendor() to
->     is_host_compat_vendor().
->   - Didn't add Reviewed-by from Sandipan because the change isn't minor.
-> Changed since v3:
->   - Use host_cpu_vendor_fms() from Zhao's patch.
->   - Check AMD directly makes the "compat" rule clear.
->   - Add comment to MAX_GP_COUNTERS.
->   - Skip PMU info initialization if !kvm_pmu_disabled.
+> Changes since RFC v2:
+>   * Drop KVMPMUX86FixedCounter structure and use uint32_t to represent
+>     bitmap in QAPI directly.
+>   * Add Tested-by from Yi.
+>   * Add documentation in qemu-options.hx.
+>   * Bump up the supported QAPI version to v10.1.
 > 
->  target/i386/cpu.h     |  12 +++
->  target/i386/kvm/kvm.c | 175 +++++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 183 insertions(+), 4 deletions(-)
+> Changes since RFC v1:
+>   * Make "action" as a global (per filter object) item, not a per-counter
+>     parameter. (Dapeng)
+>   * Bump up the supported QAPI version to v10.0.
+> ---
+>   accel/kvm/kvm-pmu.c      | 31 +++++++++++++++++++++++++++++++
+>   include/system/kvm-pmu.h |  5 ++++-
+>   qapi/kvm.json            |  6 +++++-
+>   qemu-options.hx          |  6 +++++-
+>   target/i386/kvm/kvm.c    | 39 ++++++++++++++++++++++++---------------
+>   5 files changed, 69 insertions(+), 18 deletions(-)
 > 
+> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
+> index 9205907d1779..509d69d9c515 100644
+> --- a/accel/kvm/kvm-pmu.c
+> +++ b/accel/kvm/kvm-pmu.c
+> @@ -101,6 +101,29 @@ fail:
+>       qapi_free_KvmPmuFilterEventList(head);
+>   }
+>   
+> +static void kvm_pmu_filter_get_fixed_counter(Object *obj, Visitor *v,
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
+> +
+> +    visit_type_uint32(v, name, &filter->x86_fixed_counter, errp);
+> +}
+> +
+> +static void kvm_pmu_filter_set_fixed_counter(Object *obj, Visitor *v,
+> +                                             const char *name, void *opaque,
+> +                                             Error **errp)
+> +{
+> +    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
+> +    uint32_t counter;
+> +
+> +    if (!visit_type_uint32(v, name, &counter, errp)) {
+> +        return;
+> +    }
+> +
+> +    filter->x86_fixed_counter = counter;
+> +}
+> +
+>   static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
+>   {
+>       object_class_property_add_enum(oc, "action", "KvmPmuFilterAction",
+> @@ -116,6 +139,14 @@ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
+>                                 NULL, NULL);
+>       object_class_property_set_description(oc, "events",
+>                                             "KVM PMU event list");
+> +
+> +    object_class_property_add(oc, "x86-fixed-counter", "uint32_t",
+> +                              kvm_pmu_filter_get_fixed_counter,
+> +                              kvm_pmu_filter_set_fixed_counter,
+> +                              NULL, NULL);
+> +    object_class_property_set_description(oc, "x86-fixed-counter",
+> +                                          "Enablement bitmap of "
+> +                                          "x86 PMU fixed counter");
 
-Reviewed-by: Sandipan Das <sandipan.das@amd.com>
+Adding that x86-specific field to all architectures is a bit dubious.
+
+>   }
+>   
+>   static void kvm_pmu_filter_instance_init(Object *obj)
+> diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
+> index 6abc0d037aee..5238b2b4dcc7 100644
+> --- a/include/system/kvm-pmu.h
+> +++ b/include/system/kvm-pmu.h
+> @@ -19,10 +19,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(KVMPMUFilter, KVM_PMU_FILTER)
+>   
+>   /**
+>    * KVMPMUFilter:
+> - * @action: action that KVM PMU filter will take for selected PMU events.
+> + * @action: action that KVM PMU filter will take for selected PMU events
+> + *    and counters.
+>    * @nevents: number of PMU event entries listed in @events
+>    * @events: list of PMU event entries.  A PMU event entry may represent one
+>    *    event or multiple events due to its format.
+> + * @x86_fixed_counter: bitmap of x86 fixed counter.
+>    */
+>   struct KVMPMUFilter {
+>       Object parent_obj;
+> @@ -30,6 +32,7 @@ struct KVMPMUFilter {
+>       KvmPmuFilterAction action;
+>       uint32_t nevents;
+>       KvmPmuFilterEventList *events;
+> +    uint32_t x86_fixed_counter;
+>   };

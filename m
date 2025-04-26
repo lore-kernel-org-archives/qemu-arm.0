@@ -1,162 +1,125 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4426530njd;
-        Fri, 25 Apr 2025 07:53:08 -0700 (PDT)
-X-Received: by 2002:a05:600c:a06:b0:43c:eec7:eab7 with SMTP id 5b1f17b1804b1-440a65d8e66mr20259145e9.11.1745592787882;
-        Fri, 25 Apr 2025 07:53:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745592787; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4819396njd;
+        Fri, 25 Apr 2025 23:36:31 -0700 (PDT)
+X-Received: by 2002:a17:90a:c884:b0:308:5273:4dee with SMTP id 98e67ed59e1d1-309f7ddd4f5mr7813619a91.15.1745649391221;
+        Fri, 25 Apr 2025 23:36:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745649391; cv=none;
         d=google.com; s=arc-20240605;
-        b=lTj4D5VA7K0DipOeeji4ev283VGtkTXdkVn1blMmVrxRmprDocmIyIOH3s8PgzBhj5
-         QvN2PlF0l6ve9QITvaG5W2WuX+oItNq7yR5lv/M8HgSyW+kerkouPZ+dTu4KePG3rHBQ
-         xjSuYPh+EWzztSFJkfJ2Dk1rblV5+XOm5GUP0sIFCDfbR1ayA79As8UtRUR0T0V1COqW
-         zG2KBvm+93bS28fuNaXQddIP6JaW25ES0cscEW8sZAjcH5ijXjQQGy7YK2uGj9uyeUyj
-         j1KyY5JcyP0KLeSs7ENH015o/tgKjRUyKsx3ZjiThOZLHWzpaDbwZ0DWgl7DFzy58XEx
-         AfYQ==
+        b=Oq0mqLbATSqczy+0GQAv2BdujhLnNfSM7NFStIUHoenXHoVL3U0C3HNasxhuzHa8vD
+         4zXT/4UriHzJe+tE+rZt2j2ynDEnSu97LRsD7gp54ToUQuRHv0jLXtQD7OV2RPxemgZo
+         dJw+G0kLKuy5y5gNYfuxyYXqL+5+mA+Uv3z199LSSWJ1YOZ1bsMbNLGSq5jjADkV+2kr
+         Lvdo6S+uZOaIyHesRgki1h/K6TSYJ4aTFPy1x5SqgJROr3VVnJos52YxVie07fqXKeDT
+         qOcmb5p0o8UQHtOryJh+LonfsVn6a5xzST16tsj26o8viM/CTKJ9fHk784iNQkcdJadS
+         e5pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=dUNdomSLMAMAzzETVkOXhBvDhET6oTmnmbhrlDPxTkc=;
-        fh=6EuZEnKHxIzAX9MCUkFbfMZJVxTEZo1gTpHOklAu9BU=;
-        b=PEW31Z6Yg2xRyPs3WuRutJnMi8GTS7cylH45HehBH7Q3Mexg8gH/BHQOm5Uc+/GJE8
-         SdhjLmLXJksKFs0podPvbCFXsmTXpVzH6jT/SYS8IeGR3PAmoKijc/B/BBD56ZVKdTni
-         +3kSFk3etO/vLYoCKrqGYhf/nr0ldCk4s+T9KgM9L3Ergz16GZk94v1Y5spt3buKp9UK
-         AFY59+k2wbsxTxjPIV2tz69lE+kHfNOSzB+X9krEXdAv9W6xJLOhG8vAvf0881kXCbUx
-         DhXjKbVi99jzF57SL9Hxs1iU/KiwGLyhBabSt8XAUj0NuJ9hzvzpsx8dsKmeTj8kQlHK
-         Rycw==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=7/DYVcSZH+ZAOykmkKdDPPXfsHSN4FIgsDv2mq8ftDk=;
+        fh=+dbNSdheosX43gkrhwzb+jeEZp69IvkTGVJCdRq9DHA=;
+        b=CS1VJgv1PJzK2WE28/ruc+iLZiDH8jDNLmD8NcXMXCUqIt0znzhGVfO7XnXYFumx3W
+         Jw+pS3g3NVdToeeHKGpDwkWyqbRAXe4HcRewjef2g9nrIFI/r60gjyUTj9e068Vc9onh
+         OP0e2YmHCcAyYd1mQ9AN1OlbrOXmoRuPq2+Yco33zydJpewgdD68Sx8pYrCN+Y1IT7JE
+         MQV1C4rcEqPdu1prd3W+H/hjrLk7kIExqwrNba5mEyX21tTrjbnvCFdP4MuJgP4smtru
+         QWlF3kf6a0v8TqgpLMxpOSOWaXuzN9Z5HpyKWh9cMLFnUkLxMrNokoDVErg7G9BoViGo
+         Aevg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="jw/XwsgX";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FrhVTyXr;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4409c332aacsor16629855e9.10.2025.04.25.07.53.07
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id 98e67ed59e1d1-309ee80fd1dsor3577656a91.3.2025.04.25.23.36.30
         (Google Transport Security);
-        Fri, 25 Apr 2025 07:53:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 25 Apr 2025 23:36:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="jw/XwsgX";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FrhVTyXr;
+       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745592787; x=1746197587; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dUNdomSLMAMAzzETVkOXhBvDhET6oTmnmbhrlDPxTkc=;
-        b=jw/XwsgX2ywumuCDB6Pw+lCtIAkDgG1gzZEfS+lmxQ2KYTOgLE+vI5HA4jG5ETzYtR
-         vN/Vj6mtkOq5vYHzn9r1NUXxyle8By9/ShqY2a3cqRVBn79PQhSrLbpVOBkZUva+BgBZ
-         HOcVIsdeTZUMJahVg2Dp8L6Tp5gA0oi4UbsgmVlYjEr2v+BxgHj6/b3OgkzLEb7cuEKY
-         ciXmyJtqOXyf7Rjbilz++qr61reN3jTLt6QEcwoVQ3Vl3gGrmFmAQSSJDO9vU07LI8FY
-         HHeAyeoNLH9Lkv7bncbVvMbgTOaqZ+9sVPOngoWio4CqK/UDiimGSMYjbycBuh+91H4+
-         OO8Q==
+        d=gmail.com; s=20230601; t=1745649390; x=1746254190; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=7/DYVcSZH+ZAOykmkKdDPPXfsHSN4FIgsDv2mq8ftDk=;
+        b=FrhVTyXr0WklnlOnYFyH1K16nX3TWymE0Yrs++/n8XdSzP1BYN9EMblJQwSOstMwK6
+         SJEBL6JBFNM03hBvUpQ60waEtDhOgyAn6wXUVISwC2jjihpwfOmvyAnilaoM+Gow5/3t
+         JdCpOvbHJrLw+MynOPoc+opFVv1O0Ec13grQNXjUFB+DOPBBIU3BVAYZ2CludjGyaTqH
+         Nt5ZpMh9PWnNLGFh0ZQ3wk/6RDLUNYmDYxZ+GApPavfQ8JhudCYbLMIFHRPg7qvOTxTM
+         Y0yKlejAMUNAeTLo3j0vmiXVLRXh6C+/Gfvlz0Mpby5GgSjFFZagr4CltsjNLjQ0kR3n
+         uv5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745592787; x=1746197587;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dUNdomSLMAMAzzETVkOXhBvDhET6oTmnmbhrlDPxTkc=;
-        b=Xaz7c/E9nRP4d4kul9rUrQh7KeMkGRvJ5QwKdpEtr/32dXcxPZAzF1Bi+n2UiCjucu
-         O+UB5aC+B36qr0kGCoLNVfb1TBkbYTjEloJ5IziztH/iyD+sUuND4G5TtxKKQNaD654m
-         s2dusVJjejwEczeC84My0pa0rJdgIew28HfxxpgrATt2A30dnPHM3UKXeHtRyosoPm2/
-         E3+CbpBqZlwPQdpdw7FxQN0RlLRoo7PlEfeFDam+nz4Y2CDjFdGj1DSweGOxlw9TIgGk
-         GDVMy3czNIcPexiGkAoROY+w46OM7/Igxn5Nh8hnTt+zGQzKHURFPy/yEYnKZ+zXSbv9
-         6DTw==
-X-Gm-Message-State: AOJu0YwO9/Dugzc9tv3/m8L1YXsghrRAY50Ou3jn7o8CpnUW5Aqwtfty
-	ZB6WCQeE5jRr7YDxyo8dbcgsHrLl9Jae3ZseSfz5tBTKCk2QR/4tsZDO98N0ub6Cng==
-X-Gm-Gg: ASbGnctZ0scQzDx0+9x5uubdGZIIuUw5b0ADFfycEcYOQHSPHMdCVs1hyV1eWDM5KOR
-	hkP2KeUDLv0hZIWQWeCakQ0jij5DYhew76VltBHqQbMbC78jjVM/qMt63nNugERc8ImdB53WBEa
-	jA2CmDj5IVhmGf/eS8O6MlCwlOpWg0xIgVp1rrg959eaIAeak2bufbYMtfWpWNvKrlF3jUmPROk
-	JaPO8fk59Wp71N9nv2sV5Da9CVziTmgDhZu8bnIS6PPp96/Q4joaX8wJvrT7F2A5nxYFRQ8R7lC
-	SkIqpMHLCPsdomeMqkt2BcxRGlpI/lcujTp7UWxHhHer3f/2BZSeTnnuMFH8IC2xTBAid0V8rnj
-	BfHqKgxhI
-X-Google-Smtp-Source: AGHT+IFACxj+c2eF1ItU+T531+Ds66WdauIfs8lhn5+qYkE3vP3oZJahvoUyRmW2pxXeO8K7N7aPdg==
-X-Received: by 2002:a05:600c:1547:b0:43c:fa24:873e with SMTP id 5b1f17b1804b1-440a65d8d6emr27324645e9.13.1745592787197;
-        Fri, 25 Apr 2025 07:53:07 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.226] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-440a5303c15sm27051805e9.11.2025.04.25.07.53.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Apr 2025 07:53:06 -0700 (PDT)
-Message-ID: <5b7afc3e-d5d3-4485-96ab-a1b212644607@linaro.org>
-Date: Fri, 25 Apr 2025 16:53:04 +0200
+        d=1e100.net; s=20230601; t=1745649390; x=1746254190;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7/DYVcSZH+ZAOykmkKdDPPXfsHSN4FIgsDv2mq8ftDk=;
+        b=nReL5L9f37QCEHn834luRUQsUfJzSWM8mRMqeXwaxQiAPX9Ovw+rDq04UKIQPIK7In
+         ws+OjGbQJ44rpxr/MYHFW/HvM/tH6o9DqjUt4Y3YEvgvSnx+xU93fo7ZKc6WMVRwjJej
+         TPbfpz4oVXw6GP9hHumNJAcgxBXipmM322aaFNbRRzjASMoWXyr/A5pZpS6zRbbBOCg6
+         6RMrYPH60Cz8ZRwJt4saD56JjuxHvaTzwuy2mJKhKdzv5xl5H7cZ8LwuHaWbaJApDxAK
+         HW3oal8P7nh+K6tctMBd4CsBUrPCEVkteenRl3IDeHfya619Zkefs9zinca7WOt1NEWO
+         QtRg==
+X-Forwarded-Encrypted: i=1; AJvYcCUAoO6rA0rHP+bThvOK9M6mCrVAvA+qFGyV+DhYCespYQT1TyBxmcTXBRWz0yM5vsTH14A93MsfpVTRzkZHI5ZauYE=@linaro.org, AJvYcCVX8PlvHbY/1YH0j1sYM9XUOBnkN+rase77SYH/Sjo6ayHyVPgMoCzcV5NyekpeYX/DhuO/yTaZ@linaro.org, AJvYcCVsMPttklAl3l6ZtsG0kWAEFvxH9ioYcseBBBy3eS8hKzfHu4zg69+kz2MoicXX6OsJ1Lu2587OdCgzrqAZ@linaro.org, AJvYcCXm8FP0F9eEtEsf/+1oxeEghe3I3h5qlDqeIHcxpEHB+Gn8pLeQL/wNEtgTCiZSuE11p2E4KFxwTGeKBJrQtHGvcQ==@linaro.org
+X-Gm-Message-State: AOJu0YwS8cW6PdXt3cLVRkAp+aY6lsjJpxIoCIKczWLksMNECfBxGBhD
+	8aqrX1HNFPiDNmhwLf0f68lJ6EcYjcAfSw5mNBdIg7My1luaEEHntwJ9Q0rm1djg8lweS4w0YGb
+	Naca33+j1/w7CxULUEuqVw49UkqQ=
+X-Gm-Gg: ASbGncuHtK9/BTmUK0K37zE7aCNmJ0jvpa5832qPR6sT8D0/YN+rOnGiBrnZkkom+6b
+	nEst9DfvMAvxoSbVC8K+3uObaiaATyKXKoVYAF5C/6YStZbtRYhoQOEUyhB5b2JyTQmN8chmVNm
+	Tq+DyO+HmLXPg51fSq31rmIMrBmG7i35sNvDL+xFOMQ3YnsDcCHAyH
+X-Google-Smtp-Source: AGHT+IHMcheiRX7erJEHMS9wBhZL3GAzAbFVYxcWM3rTtUBOTQfuoJgV8JtbSD2j87Ul7lrwoc20Wvu5/d2oBjfRKdE=
+X-Received: by 2002:a17:90b:5101:b0:305:2d27:7ba0 with SMTP id
+ 98e67ed59e1d1-309f7d87675mr7518197a91.6.1745649390456; Fri, 25 Apr 2025
+ 23:36:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 04/20] target/arm/helper.c: Fix type conflict of GLib
- function pointers
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
 References: <cover.1745295397.git.ktokunaga.mail@gmail.com>
- <01b21c849b459660453eb905d12ff0da4c65f53c.1745295397.git.ktokunaga.mail@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <01b21c849b459660453eb905d12ff0da4c65f53c.1745295397.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: z6CYRzNCbxmw
+ <edc1b2ac9a26dc5bbf9a3897e842fbb36c69ea87.1745295397.git.ktokunaga.mail@gmail.com>
+ <06c52d58-1b12-4036-b243-91be7a1b841f@redhat.com>
+In-Reply-To: <06c52d58-1b12-4036-b243-91be7a1b841f@redhat.com>
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Date: Sat, 26 Apr 2025 15:36:18 +0900
+X-Gm-Features: ATxdqUENhsWBICk9wxb3d5lIslSKZKSH5r1a65cIaeR_TLmUoy57ps7Ep6Mfc3E
+Message-ID: <CAEDrbUbq=r_xuKcBLJ+1p5O4rkVVfaq_q5gP7pDuei_5+zCBSg@mail.gmail.com>
+Subject: Re: [PATCH v2 10/20] include/glib-compat.h: Poison g_list_sort and g_slist_sort
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
+	Mahmoud Mandour <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Francisco Iglesias <francisco.iglesias@amd.com>, 
+	Vikram Garhwal <vikram.garhwal@bytedance.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
+	David Hildenbrand <david@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Ilya Leoshkevich <iii@linux.ibm.com>, Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org, 
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000d212ca0633a8ab3e"
+X-TUID: SJvYuoR8kHkS
 
-Hi Kohei,
+--000000000000d212ca0633a8ab3e
+Content-Type: text/plain; charset="UTF-8"
 
-On 22/4/25 07:27, Kohei Tokunaga wrote:
-> On Emscripten, function pointer casts can result in runtime failures due to
-> strict function signature checks. This affects the use of g_list_sort and
-> g_slist_sort, which internally perform function pointer casts that are not
-> supported by Emscripten. To avoid these issues, g_list_sort_with_data and
-> g_slist_sort_with_data should be used instead, as they do not rely on
-> function pointer casting.
-> 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-> ---
->   target/arm/helper.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> V2:
-> - Updated the commit message to explicitly explain that function pointer
->    casts are performed internally by GLib.
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index bb445e30cd..05793a6c97 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -220,7 +220,7 @@ static void count_cpreg(gpointer key, gpointer opaque)
->       }
->   }
->   
-> -static gint cpreg_key_compare(gconstpointer a, gconstpointer b)
-> +static gint cpreg_key_compare(gconstpointer a, gconstpointer b, void *d)
+Hi Thomas,
 
-Why not use a gpointer for @d like in other patches?
+> Cosmetic nit: Multiline comments in QEMU should start with "/*" on their
+own
+> line.
 
->   {
->       uint64_t aidx = cpreg_to_kvm_id((uintptr_t)a);
->       uint64_t bidx = cpreg_to_kvm_id((uintptr_t)b);
-> @@ -244,7 +244,7 @@ void init_cpreg_list(ARMCPU *cpu)
->       int arraylen;
->   
->       keys = g_hash_table_get_keys(cpu->cp_regs);
-> -    keys = g_list_sort(keys, cpreg_key_compare);
-> +    keys = g_list_sort_with_data(keys, cpreg_key_compare, NULL);
->   
->       cpu->cpreg_array_len = 0;
->   
+Thank you for the feedback. I'll fix this in the next version of the series.
+
+--000000000000d212ca0633a8ab3e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Thomas,<br><br>&gt; Cosmetic nit: Mult=
+iline comments in QEMU should start with &quot;/*&quot; on their own<br>&gt=
+; line.<br><br>Thank you for the feedback. I&#39;ll fix this in the next ve=
+rsion of the series.<br><br></div><br><div class=3D"gmail_quote gmail_quote=
+_container"><br></div></div>
+
+--000000000000d212ca0633a8ab3e--

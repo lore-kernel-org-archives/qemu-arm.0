@@ -1,288 +1,203 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp4649087njd;
-        Fri, 25 Apr 2025 14:34:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVzBCA5oxiy/mJJk1y6R/W8C/UE5KtzO1+Ll4aWj5ETzAVRTd2erOgSNkF3YEYQ6gMSsOMmWNu0PrIysA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZb63IQtl/QU7AqlaWOG49hgu7CjHn0Aq0S8BPEvlV+uqxSBqjfqItm9VqwKz54o+nDa1/
-X-Received: by 2002:a17:907:3e1f:b0:acb:5075:8e2f with SMTP id a640c23a62f3a-ace7339f673mr305734266b.1.1745616851243;
-        Fri, 25 Apr 2025 14:34:11 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745616851; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5297059njd;
+        Sun, 27 Apr 2025 00:05:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW7khXvIVW7XPR+dYsLqt5YM7UK2+pbptPqU7ngun2hNAj1UuHOnpDFgy3q0dckxlrs5iq3o4QATYgJQg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG43dLLYhLX853JW1nk2bEOdjcPIUfLMMtVHxSQysFI7opQTXaotYxhhKQ4TVTRcal2Zjc4
+X-Received: by 2002:a05:620a:44c6:b0:7c5:4278:d151 with SMTP id af79cd13be357-7c9607971dcmr1157763385a.43.1745737553089;
+        Sun, 27 Apr 2025 00:05:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745737553; cv=none;
         d=google.com; s=arc-20240605;
-        b=LVbUNUWidb5s0HlSlVymyswgGi3+jKV8pByLLU6iUZynhr0vI5oCQYr7pY2kx7uivi
-         oYJUpMlnT98IQAoK86iDU0vMB6OAvac0UlnlPY9A8H7jWPJpg3i2OYBWvcxEOKj1oLpi
-         VZAJHcELJ1PGgUIsbrZ78r8L5HzCviVhiw8VT6oZZ6Ayr07FUnlrcbl2/EtBe2kTBaLw
-         vRo8H2QAxWMLc1mB0G7nY/Lkno3ZTRpf0SBS+eRkf55O6s3U9g11xkYuwxK3jhCOte3I
-         EB+RH+yZjoDUiP16tSerhurPMPDB5nWkvhrefDDtkgghYZQdToMZZ70kEyhsKwlgr7G9
-         fUBQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=r2McK08MiECYTqrbiWkO7YF28nZsPDmEYhbgdqlLnP4=;
-        fh=pr/dSBFL9oLV7kU9Ai5m+xSM8b3nJsKetG/wF2Loub4=;
-        b=RpXRG/fIolqsIKNr9cVW8ne8gY8G4ULDrutLT2nVEPlCiBr6wela/TIIjezgO2I2sy
-         9YFvVE5YPR9mlchDcRebMSeQXx6CfEfGXGq96BTQGFwLBkQjLWAyGfKNMLpvytjJcBt6
-         U078NkG1F4lY04BK7e7TYdYXueL5iWlIpSDO4rkcGk3LJOes6YtTCqhS080T6/ripcxq
-         DQEXqfse9UlReQHCHuK13J923dT6+Iwh+73v85cFmfUmSkJ8XX9TCyd47qZ8tT03KzWJ
-         dspDS/13YN5DlhqUqZjMR66pJLhWRHFi7O6mleDD06bVHUr9a7wJkuQGeSgrZvm763d7
-         uu5g==;
+        b=Cwa03cZjE9hEXgRcbvaZ2ZzV1ujGZfBG7OCLZWuj6+ZbBnB60FUY94Mw/a66oj9xBz
+         ZIdzlPZufcXmngocmLzfcteWD5rs2c5eohjcObtCweGFLrKWQjcFj4C+NzDqLkLD507Q
+         vLZOl40dRY03BMZ4tF9AH6fhmyx1KD1WMW8OGP5w9hNtl346t9BOULsSwm+uf6ZGqePu
+         86Zg0eazmoGU/4CQ8dazeviE86/AAqKEJQsYoxevxysbXSEnm9Kv+wttLQVNwHPr8NBr
+         UgGCO/ZpXz5tof1IuV2+gwpbYTfSlRoU4qsYJ6FmqvjAZUE65k1rJmfI+NtObQchXXWW
+         J0bA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=9lKJXKYnc60c5Kky34jU2zuswkn6FmneZPVkQRBXX24=;
+        fh=6+6w0ZTIQxONRbrRNFg+mL7FdenaiToY0VGAmAKfMAc=;
+        b=AaooF5wQYOb3n/qP6opYtOUXo08WgbmDDXJLP/V4sJ0s40ST2e03WJWh8bISBr6wDl
+         +qRGxQTn+I9CLbNUpFIO2LRe8od6/QQZfwa+CxBKu/0ESODw5X/jWaHBlYJmsBVGE18l
+         05BdookMKNrqlWe6O3CWWSaUn5Hkb8nWNc6+avFzmoY6IcZR9cxfiYbGuZUNmlmEujDY
+         BG5rENfi8QjWrI+tftM6P411fsmEm4utyK886njqkG0GulwTAaCkXFP4ktvbLZabs6oT
+         5p4dbLwrJtrDm03JOFUbbP1oS02xTs782HocVXjFIBnYOL2UVsKbhOE7dtrWxiPxjC76
+         NHew==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ZC3BUC+U;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ace6e4e7ae6si166485666b.214.2025.04.25.14.34.11
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WPycwxgB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7c958edeccbsi709995885a.608.2025.04.27.00.05.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Apr 2025 14:34:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 27 Apr 2025 00:05:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ZC3BUC+U;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-44362-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 413D91BC6653
-	for <alex.bennee@linaro.org>; Fri, 25 Apr 2025 21:34:22 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D5F4E21B91F;
-	Fri, 25 Apr 2025 21:34:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="ZC3BUC+U"
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6FF32253BB
-	for <kvm@vger.kernel.org>; Fri, 25 Apr 2025 21:34:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.177.32
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1745616848; cv=none; b=mIggOhmQx3nTfHjpy9peFGQFGN9uBAsxDl6qEL1LZc2T4Q8x4ZRSoxbum7N4IZ65THSG9kxZ4x9/628u+KUs+VgKWBGpRv69rfw3+UB8fRQRcMyQ1Fg683TjF8/aItJxo//jymInWyc95midHl/t6InovcloFruS0q1ClObTtHo=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1745616848; c=relaxed/simple;
-	bh=UA8HvH77ocOiZxgGtKK7VzSStHrhCiSu5w1IobW/lzc=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=KEAZxlkZ5Zx6+d96g1V4Chm4oTiPJcfO7GTTDHz0FpD7N7Oiy6GbKFdQbqDqkF6zqKgwYbaxFiGDq2WYCesCX1wOkVJPZCb0pjcZ1P1wEuNEssk03M8y0s8Q1OkCGuvz0w7XgnXc/T8DvhKbe6RiC+HreWm6I+dctzocuMzMums=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=ZC3BUC+U; arc=none smtp.client-ip=205.220.177.32
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53PLRIu1020542;
-	Fri, 25 Apr 2025 21:33:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=corp-2023-11-20; bh=r2McK
-	08MiECYTqrbiWkO7YF28nZsPDmEYhbgdqlLnP4=; b=ZC3BUC+U5KZsUWComrTA0
-	fwnVjz8g9yhEAxsKD69PHYHdFpSj2jo9eXiYMiP66/VgK6PiobUolPJ/gbjYt9sj
-	LPZPGyK5g1llEb2fHOlARG9C0Os+5o5mI2t6/el+YevyplSkt0xv/fuZW1ZhJI2c
-	ybPvfIRCS8HeGk1AfIAH9s0YSWf+So6K/slj9B8e4a03nMS0XPuxdQSYXSlQL766
-	USdA2a/5tCeKLgBOz2S+6WGSGjPMGoLAujQRKHn5uzXHbZD1qeuoajhgpeb56Lsw
-	aDBpoFqQlEr8QftNGcs3rn3tCRsJny/iswsoVdfNG6mFam6Is4w5oaRqKcr3sX3U
-	Q==
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 468jak80u6-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 25 Apr 2025 21:33:22 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 53PKv4Kh031012;
-	Fri, 25 Apr 2025 21:31:56 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 466k095v93-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 25 Apr 2025 21:31:56 +0000
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 53PLVdAh039597;
-	Fri, 25 Apr 2025 21:31:55 GMT
-Received: from localhost.localdomain (ca-dev80.us.oracle.com [10.211.9.80])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 466k095v2d-7;
-	Fri, 25 Apr 2025 21:31:54 +0000
-From: Dongli Zhang <dongli.zhang@oracle.com>
-To: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-        qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Cc: pbonzini@redhat.com, zhao1.liu@intel.com, mtosatti@redhat.com,
-        sandipan.das@amd.com, babu.moger@amd.com, likexu@tencent.com,
-        like.xu.linux@gmail.com, groug@kaod.org, khorenko@virtuozzo.com,
-        alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
-        davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
-        dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
-        peter.maydell@linaro.org, gaosong@loongson.cn, chenhuacai@kernel.org,
-        philmd@linaro.org, aurelien@aurel32.net, jiaxun.yang@flygoat.com,
-        arikalo@gmail.com, npiggin@gmail.com, danielhb413@gmail.com,
-        palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com,
-        zhiwei_liu@linux.alibaba.com, pasic@linux.ibm.com,
-        borntraeger@linux.ibm.com, richard.henderson@linaro.org,
-        david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
-        flavra@baylibre.com, ewanhai-oc@zhaoxin.com, ewanhai@zhaoxin.com,
-        cobechen@zhaoxin.com, louisqi@zhaoxin.com, liamni@zhaoxin.com,
-        frankzhu@zhaoxin.com, silviazhao@zhaoxin.com, kraxel@redhat.com,
-        berrange@redhat.com
-Subject: [PATCH v5 06/10] target/i386/kvm: rename architectural PMU variables
-Date: Fri, 25 Apr 2025 14:30:03 -0700
-Message-ID: <20250425213037.8137-7-dongli.zhang@oracle.com>
-X-Mailer: git-send-email 2.43.5
-In-Reply-To: <20250425213037.8137-1-dongli.zhang@oracle.com>
-References: <20250425213037.8137-1-dongli.zhang@oracle.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WPycwxgB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u8w54-0005hq-3g; Sun, 27 Apr 2025 03:05:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u8w51-0005hQ-Em; Sun, 27 Apr 2025 03:05:35 -0400
+Received: from mgamail.intel.com ([198.175.65.21])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u8w4x-0005nw-UM; Sun, 27 Apr 2025 03:05:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1745737532; x=1777273532;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=/VAXcw1oJpNq80iCbs63zP5UG4yX37TNo7LthnbGVBo=;
+ b=WPycwxgB746nkyfhq7oZ97mJE0UngqJuCp9pjZe8F9enW8zJlH5E3U3l
+ I8eqs3fHA1B3XLhoFSw1UKG4PZgQ6Gqyp0qWodmQXCjw2bS66wdUOgM7H
+ YOb7pBnbqHxU495hNiUXtfv2mm0p9IlavuYr/bPZizR5h/St8uty7T/Dw
+ NBt9cMNblD23iMlYvPn7PdN8UtmyyyKqoa0yLSSjB/4/N4SAYyvV1IlDI
+ oHuRw2g3okRd9JqjXNN6MlWB5uRkF/pZIkNo5XWQ6NVxon2wZdmTRDARI
+ Nyf718FSNdNmMXcMPT6oulxmzFlhmCuMraBsoL3AcuopeYrFJCo5h+jAV w==;
+X-CSE-ConnectionGUID: gJV9MrDkSDCkkw3G+EZXuw==
+X-CSE-MsgGUID: uB1B60kaQdO+GLOf6tI5Gg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11415"; a="47255469"
+X-IronPort-AV: E=Sophos;i="6.15,243,1739865600"; d="scan'208";a="47255469"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2025 00:05:28 -0700
+X-CSE-ConnectionGUID: rVl3Mel3THqiZcQli6WIqg==
+X-CSE-MsgGUID: kb1BB0dSQ0S5A+G0fWVAEQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,243,1739865600"; d="scan'208";a="156475720"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa002.fm.intel.com with ESMTP; 27 Apr 2025 00:05:23 -0700
+Date: Sun, 27 Apr 2025 15:26:20 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>,
+ Alexander Graf <agraf@csgraf.de>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: Re: [PATCH 1/5] qapi/qom: Introduce kvm-pmu-filter object
+Message-ID: <aA3cHIcKmt3vdkVk@intel.com>
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+ <20250409082649.14733-2-zhao1.liu@intel.com>
+ <878qo8yu5u.fsf@pond.sub.org> <Z/iUiEXZj52CbduB@intel.com>
+ <87frifxqgk.fsf@pond.sub.org> <Z/i3+l3uQ3dTjnHT@intel.com>
+ <87fri8o70b.fsf@pond.sub.org> <aAnbLhBXMFAxE2vT@intel.com>
+ <fa6f20a9-3d7a-4c2d-94e5-c20dbaf4303e@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-04-25_07,2025-04-24_02,2025-02-21_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulkscore=0 mlxscore=0
- spamscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2504070000
- definitions=main-2504250154
-X-Proofpoint-GUID: E_G6SovfxrLNe-uUXLOgp1QpPwNXZIa4
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNDI1MDE1NSBTYWx0ZWRfX4ppke/Gha79y ZWv9pc8KBe9HWbdH2aX4kzx9CdWRlBDLNSGotea3UT6QZ6iITVdZJr62biVQZuXogFBLxi7YvM7 9B8eXkp9sRgjx/scWHYwu0rnQZd94RmAieZC/dms7LViY4yQgfHByOyoUu1SVn8E0xs5SW8ydzE
- 5j1RluXnbBmi3TNKdlAtuT/d2YzGEfV4yffOZVL0qbgCfMf8idX1C7HXBMuotqkkDf1L89SOtRk 4yK3PgXYhmKmZVFAsY0XqWWu8xtqXvRmZvnqBm+Xo6DAqcbDns7EY0w8FRy9V7e2tPeZ4eOXqky IOFX73/+/sYvD/t8vWXKEEw3dqBCg1LW/AjuJuylwWrc1NScZYQjb1+zGmjL/VRi1JtqrSQDoLa pvUbmIOB
-X-Proofpoint-ORIG-GUID: E_G6SovfxrLNe-uUXLOgp1QpPwNXZIa4
-X-TUID: fvMI9El8PW9s
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <fa6f20a9-3d7a-4c2d-94e5-c20dbaf4303e@linaro.org>
+Received-SPF: pass client-ip=198.175.65.21; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.738,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DZWo3661H8Il
 
-AMD does not have what is commonly referred to as an architectural PMU.
-Therefore, we need to rename the following variables to be applicable for
-both Intel and AMD:
+Hi Philip and Markus,
 
-- has_architectural_pmu_version
-- num_architectural_pmu_gp_counters
-- num_architectural_pmu_fixed_counters
+Let's discuss how to handle compilation for different architectures as
+well as different accelerators here.
 
-For Intel processors, the meaning of pmu_version remains unchanged.
+> > And "raw" format as a lower level format can be used for other arches
+> > (e.g., ARM).
+> 
+> Since you provide the ability to use a raw format, are we sure other
+> accelerators will never be interested in such PMU filtering?
+> 
+> I'm pretty sure HVF could benefit of it (whether we implement it there
+> is another story).
 
-For AMD processors:
+Nice to know it could benefit more cases.
 
-pmu_version == 1 corresponds to versions before AMD PerfMonV2.
-pmu_version == 2 corresponds to AMD PerfMonV2.
+> What do you think about adding this as a generic accelerator feature.
 
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-Reviewed-by: Dapeng Mi <dapeng1.mi@linux.intel.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
----
-Changed since v2:
-  - Change has_pmu_version to pmu_version.
-  - Add Reviewed-by since the change is minor.
-  - As a reminder, there are some contextual change due to PATCH 05,
-    i.e., c->edx vs. edx.
+I can implement pmu-filter directly at the "accel" level.
 
- target/i386/kvm/kvm.c | 49 ++++++++++++++++++++++++-------------------
- 1 file changed, 28 insertions(+), 21 deletions(-)
+> If a particular accel doesn't support it and we ask to filter, we simply
+> report an error.
 
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index bacb1c17f5..a3c9324d6c 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -165,9 +165,16 @@ static bool has_msr_perf_capabs;
- static bool has_msr_pkrs;
- static bool has_msr_hwcr;
- 
--static uint32_t has_architectural_pmu_version;
--static uint32_t num_architectural_pmu_gp_counters;
--static uint32_t num_architectural_pmu_fixed_counters;
-+/*
-+ * For Intel processors, the meaning is the architectural PMU version
-+ * number.
-+ *
-+ * For AMD processors: 1 corresponds to the prior versions, and 2
-+ * corresponds to AMD PerfMonV2.
-+ */
-+static uint32_t pmu_version;
-+static uint32_t num_pmu_gp_counters;
-+static uint32_t num_pmu_fixed_counters;
- 
- static int has_xsave2;
- static int has_xcrs;
-@@ -2069,24 +2076,24 @@ static void kvm_init_pmu_info(struct kvm_cpuid2 *cpuid)
-         return;
-     }
- 
--    has_architectural_pmu_version = c->eax & 0xff;
--    if (has_architectural_pmu_version > 0) {
--        num_architectural_pmu_gp_counters = (c->eax & 0xff00) >> 8;
-+    pmu_version = c->eax & 0xff;
-+    if (pmu_version > 0) {
-+        num_pmu_gp_counters = (c->eax & 0xff00) >> 8;
- 
-         /*
-          * Shouldn't be more than 32, since that's the number of bits
-          * available in EBX to tell us _which_ counters are available.
-          * Play it safe.
-          */
--        if (num_architectural_pmu_gp_counters > MAX_GP_COUNTERS) {
--            num_architectural_pmu_gp_counters = MAX_GP_COUNTERS;
-+        if (num_pmu_gp_counters > MAX_GP_COUNTERS) {
-+            num_pmu_gp_counters = MAX_GP_COUNTERS;
-         }
- 
--        if (has_architectural_pmu_version > 1) {
--            num_architectural_pmu_fixed_counters = c->edx & 0x1f;
-+        if (pmu_version > 1) {
-+            num_pmu_fixed_counters = c->edx & 0x1f;
- 
--            if (num_architectural_pmu_fixed_counters > MAX_FIXED_COUNTERS) {
--                num_architectural_pmu_fixed_counters = MAX_FIXED_COUNTERS;
-+            if (num_pmu_fixed_counters > MAX_FIXED_COUNTERS) {
-+                num_pmu_fixed_counters = MAX_FIXED_COUNTERS;
-             }
-         }
-     }
-@@ -4038,25 +4045,25 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
-             kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, env->poll_control_msr);
-         }
- 
--        if (has_architectural_pmu_version > 0) {
--            if (has_architectural_pmu_version > 1) {
-+        if (pmu_version > 0) {
-+            if (pmu_version > 1) {
-                 /* Stop the counter.  */
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
-             }
- 
-             /* Set the counter values.  */
--            for (i = 0; i < num_architectural_pmu_fixed_counters; i++) {
-+            for (i = 0; i < num_pmu_fixed_counters; i++) {
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR0 + i,
-                                   env->msr_fixed_counters[i]);
-             }
--            for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-+            for (i = 0; i < num_pmu_gp_counters; i++) {
-                 kvm_msr_entry_add(cpu, MSR_P6_PERFCTR0 + i,
-                                   env->msr_gp_counters[i]);
-                 kvm_msr_entry_add(cpu, MSR_P6_EVNTSEL0 + i,
-                                   env->msr_gp_evtsel[i]);
-             }
--            if (has_architectural_pmu_version > 1) {
-+            if (pmu_version > 1) {
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_STATUS,
-                                   env->msr_global_status);
-                 kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_OVF_CTRL,
-@@ -4516,17 +4523,17 @@ static int kvm_get_msrs(X86CPU *cpu)
-     if (env->features[FEAT_KVM] & CPUID_KVM_POLL_CONTROL) {
-         kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, 1);
-     }
--    if (has_architectural_pmu_version > 0) {
--        if (has_architectural_pmu_version > 1) {
-+    if (pmu_version > 0) {
-+        if (pmu_version > 1) {
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_STATUS, 0);
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_OVF_CTRL, 0);
-         }
--        for (i = 0; i < num_architectural_pmu_fixed_counters; i++) {
-+        for (i = 0; i < num_pmu_fixed_counters; i++) {
-             kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR0 + i, 0);
-         }
--        for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-+        for (i = 0; i < num_pmu_gp_counters; i++) {
-             kvm_msr_entry_add(cpu, MSR_P6_PERFCTR0 + i, 0);
-             kvm_msr_entry_add(cpu, MSR_P6_EVNTSEL0 + i, 0);
-         }
--- 
-2.39.3
+One of the main issues is how to organize the QAPI scheme:
+
+First we have a "qapi/accelerator.json" like current implementation to
+provide:
+
+##
+# = Accelerators
+##
+
+Then we should have a "qapi/accelerator-target.json" (which will follows
+qapi/accelerator.json in qapi-schema.json, just like machine.json &
+machine-target.json), and place all pmu-filter related things in this
+file with specify the compilation condition, for example:
+
+{ 'struct': 'KvmPmuFilterProperties',
+  'data': { 'action': 'KvmPmuFilterAction',
+            '*x86-fixed-counter': 'uint32',
+            '*events': ['KvmPmuFilterEvent'] },
+  'if': 'CONFIG_KVM' }
+
+In the future, this could be expanded to: 'if': { 'any': [ 'CONFIG_HVF', 'CONFIG_KVM' ] }.
+
+I understand that there is no way to specify the architecture here,
+because it is not possible to specify a combination case like
+"TARGET_I386 & CONFIG_KVM", "TARGET_ARM & CONFIG_KVM", "TARGET_ARM & CONFIG_HVF"
+(please educate me if such "if" condition be implemented in QAPI :-)).
+
+So, I will put the arch-specific format check in pmu-filter.c by adding
+arch macros as I mentioned in this reply:
+
+https://lore.kernel.org/qemu-devel/aA3TeaYG9mNMdEiW@intel.com/
+
+And there'll need accel-specific format check (for example, maksed-entry
+is KVM specific, and it is not defined in x86 spec). I can check the
+accel-specific format in the `check` hook of
+object_class_property_add_link(), which links the pmu-filter object to
+accelerator.
+
+Do you like this idea?
+
+Thanks,
+Zhao
+
 

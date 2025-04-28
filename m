@@ -1,339 +1,265 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5799648njd;
-        Mon, 28 Apr 2025 00:26:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWEZD7U6lviBnsH9L09AcaTzovQ/csXeic0knNiUsO2nJlcI76u9ZQtmP+d4NMQgg/dfJr7i+V0mfsQCA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuPZ6x79vyiNneGvhvz/G3uSA6tGfMKNrneSrhM6oQvQWIXCoP7/pkke2/GuN0QEOquDQS
-X-Received: by 2002:a05:620a:1a16:b0:7c3:d711:6ffb with SMTP id af79cd13be357-7c9668c1e2fmr1296424085a.41.1745825180212;
-        Mon, 28 Apr 2025 00:26:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745825180; cv=pass;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5805836njd;
+        Mon, 28 Apr 2025 00:43:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVrz0772WBH0Q86vAoCyqV48y0ZEwpZEk2VB3VVh2T9cpkftrL9GLsz8wwC7Z4HjiEXjZBNZNlNzROJEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFXVOQI6MnsmkNBduDygehjAIk+rBatahWgK3BfqJRR/5Y2bcy5BGCefp6LEPjpNBc9wjU0
+X-Received: by 2002:a05:6214:ac1:b0:6d4:287d:b8d9 with SMTP id 6a1803df08f44-6f4cc2f6841mr171493606d6.2.1745826194758;
+        Mon, 28 Apr 2025 00:43:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745826194; cv=none;
         d=google.com; s=arc-20240605;
-        b=jI0zF51Ig6+ckF2IfV+Zn2ErepYtlKvfGToITWvSz5o6OYrHRBCjyDHMQpFeVdcY9W
-         ag+7bNdakDa7QrzWqw4esI4jeJIZh2eX+nvkmzlxG7VmFjAdnewo2WKfW7NteQ9wd+qe
-         Rod/+mCv8+C8MOLrcPrXYsEQzv1NM6La3weZ0UKKADQ/x1cpcYLQUIYbDpHHInFyYh43
-         dsDv8rAAlqGYvF0kCHwivxG35APSOIYB3blHdK8uz/JYwtJwLUV1svZM0KczU5G21MzI
-         5xT4gTdHsOrUOK2qzVoXva9jP101Siiv3v/Y/hP56FKw0E9BHrZWLxleLZqwn2ITz/nK
-         BJ0g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=Ep5vsTDMIvlMOpMmlujwECawCCp8PH/R3i2HglWtj1U=;
-        fh=cOCe7OcOQOuH1vJt6m5cASxeevGO4vajEALSfOJOZ4k=;
-        b=bId8wA94uoZxs4F0g5ulYTvPlf5/LJmiqBNzY/UmyRyNotpeiiAW5ICOqRyLhuIpy8
-         ENaVHlcGk654BZNuZpIiQcLXWw1Q+7VkoUyUUqhKP/ypG+z++JG+D/BdwH9/uZoVMpDk
-         p8YsPjZrEOlcnEjwvbzU20KH74xsw1NkY4lR09NGolwd/ymCXJ47u5hsVVQgLL3n/dcP
-         oVKo/9oxOJKaNLPQvCStA7OshZqUjBKOTlUPm+rEtbpuf93Jj9RaxUXWI/4vyVqaQJpb
-         R+jN0NawQ2ElMhi62fYuWCN9YdqDtg4fenMZHvhl1dJoAEYwnUix0neoyfXE6FvYZ2Kw
-         EuTA==;
+        b=PM+epg5PWUjaCHDafMemjzm31YrKnE+DzjxUG/NkhydiQyLuzCXp3KkS9/XxBNlm7W
+         e0yatO1+sSM0JdRBzfTHNxJcRDC2KG40XH1yyyH2vbaXgYuOLJLSPbfjtZ6LgnEpdO59
+         b2F9TPwClwXYFeSHcSohBMsefGplX1zJFXajaoyD/TSDqxe2Oj9QvX+wxYCv1/WDdMG1
+         e4lxYZwND0ZhUPgFLD3aLi9Pyc6xt6bauEZwo3zIYnOU3lAuA9wX48t8qZl+UkK1Nw4N
+         lS25JE3juPznuJ0+hOt1MRfdlKacqlxxGp4u+7gXGZYr65x0E/katV25oJ+DWfBma37t
+         P2tA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=zWsJFt1IA/PfT/D+HBYwVUsMgjwW7F+yxsdi3CGVDAs=;
+        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
+        b=j6qshIjWh2b3dkQ+WYJgNA1nrHpUACzoIJj+mTQmayzFRd6Pc7ZGJO8dKzkbCCYXp/
+         023uGzOnww0m37cG6cafMJR2XWMgs5KjlCFJ7rBNucY0bBLTuscgsefccVrXjGWjd1Z9
+         dumDHCMoGUkZ3L4soHUgTv6P88ADtRNcVPntkBAV2u2HF98/UezkEIM2E6HFfbUIwymr
+         6AUx/HWHQWcdr3v8fR/RbZJM3HAmTojyna5xmNU2I7BFdLrfcKoNLRNSRN+ZsSVC8AmJ
+         v+NcqiwheJBZg40vKxPFUV7GNaPKUPoXPPf0NWci+57lp7LpaSc+6aFNW29XI8aVfqvh
+         rpeA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UVa2nysM;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958c9a8efsi943146885a.93.2025.04.28.00.26.20
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0acc9f2si96493206d6.185.2025.04.28.00.43.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 00:26:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 28 Apr 2025 00:43:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UVa2nysM;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-44527-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 0FC62163D59
-	for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 07:26:21 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B8A8D1DE2BA;
-	Mon, 28 Apr 2025 07:26:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="UVa2nysM"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA3D11D88A4
-	for <kvm@vger.kernel.org>; Mon, 28 Apr 2025 07:26:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1745825171; cv=none; b=nwB9gj395ARdbMnNrfGRKxhFQ3Dd/9pGmYw6Fb2oRxFHTvE90MM7RboiPiLeZbga3Qk+7DV7OyLXehGp5jNJdFycCYXYp7HGL1unouvJ+Scx61XPjKaVcJMUSWu49jHgOyKq+gbe5/V5155DuokL/QapcDPcMnqnrI4Jjv1B5Ms=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1745825171; c=relaxed/simple;
-	bh=/5olxRRzWcYoN6k+kS4e7Agil7hfcLOnKm2yXW3nFzg=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=uPQeygqCw3R23qSaphAOWpj76gZUSbEJAAQgjimv8epI9mhHqL5cHgTTRAE0EKO9kDSdWw9e1vuuv9XwQU0mXNLku+0QF1l7jOFnFjO1iNTnP5SarA3BzhgIFpR9AamAVQJhwgR0vO4QM0ushEsKzHFDLf5r2M9gJOknZzuq8kg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=UVa2nysM; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1745825168;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ep5vsTDMIvlMOpMmlujwECawCCp8PH/R3i2HglWtj1U=;
-	b=UVa2nysMacysNmiu82Vr3h2woNb/RmjcNeceWgb16SKv0XTRcSb3oAqpzrzXj8OcWL3PvN
-	gEZQ8Sg4j/sAlfBBxf7PjVtEGLlS9PmvqRPDAKqBz0X8YY0hQMclisiOHr8fEnVYh5wfkF
-	R9xiZQqRHy24HbpHj2vGU41GJ/XLENE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-274-A1i62NlANvOIKNqsvKAyjw-1; Mon,
- 28 Apr 2025 03:26:03 -0400
-X-MC-Unique: A1i62NlANvOIKNqsvKAyjw-1
-X-Mimecast-MFC-AGG-ID: A1i62NlANvOIKNqsvKAyjw_1745825162
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B8DDA1800ECA;
-	Mon, 28 Apr 2025 07:26:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.27])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E450830001AB;
-	Mon, 28 Apr 2025 07:26:00 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8A93121E6682; Mon, 28 Apr 2025 09:19:07 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,
-  Michael Roth <michael.roth@amd.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Shaoqin Huang <shahuang@redhat.com>,  Eric
- Auger <eauger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
-  Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
-  Sebastian Ott <sebott@redhat.com>,  Gavin Shan <gshan@redhat.com>,
-  qemu-devel@nongnu.org,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
-  Dapeng Mi <dapeng1.mi@intel.com>,  Yi Lai <yi1.lai@intel.com>,
-    =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- pierrick.bouvier@linaro.org
-Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-In-Reply-To: <aA3TeaYG9mNMdEiW@intel.com> (Zhao Liu's message of "Sun, 27 Apr
-	2025 14:49:29 +0800")
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
-	<20250409082649.14733-4-zhao1.liu@intel.com>
-	<87frhwfuv1.fsf@pond.sub.org> <aA3TeaYG9mNMdEiW@intel.com>
-Date: Mon, 28 Apr 2025 09:19:07 +0200
-Message-ID: <87h6283g9g.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u9J8d-0003cb-AT; Mon, 28 Apr 2025 03:42:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
+ id 1u9J7U-0002hZ-Ip; Mon, 28 Apr 2025 03:41:43 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
+ id 1u9J7R-0002JS-Kg; Mon, 28 Apr 2025 03:41:40 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZmFkg4WwBz4xD9;
+ Mon, 28 Apr 2025 17:41:31 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZmFkc2RyRz4wj2;
+ Mon, 28 Apr 2025 17:41:28 +1000 (AEST)
+Message-ID: <e3d35357-de8c-44da-b54e-7ec2761f513b@kaod.org>
+Date: Mon, 28 Apr 2025 09:41:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: DIqUCqnIW58R
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into AST10x0
+ and AST2600 SoCs
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250423025651.189702-1-kane_chen@aspeedtech.com>
+ <20250423025651.189702-4-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250423025651.189702-4-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=KRh2=XO=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +xAU8TX4P2bf
 
-Zhao Liu <zhao1.liu@intel.com> writes:
+On 4/23/25 04:56, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> 
+> This patch wires up the OTP memory device (`aspeed.otpmem`) into the
+> AST1030 and AST2600 SoC models. The device is initialized, attached
+> to a backing block drive (`-drive id=otpmem`) and linked to the SBC
+> controller via a QOM link.
+> 
+> The default OTP memory image can be generated using the following
+> command.
+> ```bash
+> for i in $(seq 1 2048); do
+>    printf '\x00\x00\x00\x00\xff\xff\xff\xff'
+> done > otpmem.img
+> ```
+> 
+> To load the OTP memory image into the guest, use:
+> ```bash
+> ./qemu-system-arm \
+>    -drive id=otpmem,file=otpmem.img,if=none,format=raw \
+>    ...
+> ```
 
-> Hi Markus,
->
->> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
->> > +            if (event->u.x86_select_umask.select > UINT12_MAX) {
->> > +                error_setg(errp,
->> > +                           "Parameter 'select' out of range (%d).",
->> > +                           UINT12_MAX);
->> > +                goto fail;
->> > +            }
->> > +
->> > +            /* No need to check the range of umask since it's uint8_t. */
->> > +            break;
->> > +        }
->> 
->> As we'll see below, the new x86-specific format is defined in the QAPI
->> schema regardless of target.
->> 
->> It is accepted here also regardless of target.  Doesn't matter much
->> right now, as the object is effectively useless for targets other than
->> x86, but I understand that will change.
->> 
->> Should we reject it unless the target is x86?
->
-> I previously supposed that different architectures should implement
-> their own kvm_arch_check_pmu_filter(), which is the `check` hook of
-> object_class_property_add_link():
->
->     object_class_property_add_link(oc, "pmu-filter",
->                                    TYPE_KVM_PMU_FILTER,
->                                    offsetof(KVMState, pmu_filter),
->                                    kvm_arch_check_pmu_filter,
->                                    OBJ_PROP_LINK_STRONG);
+I thought we were going to implement the same method of the edk2 flash
+devices of the q35 machine. Setting a machine option would set the drive :
 
-This way, the checking happens only when you actually connect the
-kvm-pmu-filter object to the accelerator.
+   qemu-system-arm -M ast2600-evb,otpmem=otpmem-drive \
+       -blockdev node-name=otpmem,driver=file,filename=/path/to/otpmem.img \
+       ...
 
-Have you considered checking in the kvm-pmu-filter object's complete()
-method?  Simple example of how to do that: qauthz_simple_complete() in
-authz/simple.c.
+Which is not what is proposed below.
 
-> For x86, I implemented kvm_arch_check_pmu_filter() in target/i386/kvm/
-> kvm.c and checked the supported formats (I also supposed arch-specific
-> PMU filter could reject the unsupported format in
-> kvm_arch_check_pmu_filter().)
->
-> But I think your idea is better, i.e., rejecting unsupported format
-> early in pmu-filter parsing.
->
-> Well, IIUC, there is no way to specify in QAPI that certain enumerations
-> are generic and certain enumerations are arch-specific,
+> Note: Do not use the -snapshot option, or OTP data writes will not
+> persist to the image file.
+> 
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast10x0.c     | 19 +++++++++++++++++++
+>   hw/arm/aspeed_ast2600.c     | 19 +++++++++++++++++++
+>   include/hw/arm/aspeed_soc.h |  2 ++
+>   3 files changed, 40 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> index ec329f4991..eaa70feb9f 100644
+> --- a/hw/arm/aspeed_ast10x0.c
+> +++ b/hw/arm/aspeed_ast10x0.c
+> @@ -15,6 +15,7 @@
+>   #include "system/system.h"
+>   #include "hw/qdev-clock.h"
+>   #include "hw/misc/unimp.h"
+> +#include "system/block-backend-global-state.h"
+>   #include "hw/arm/aspeed_soc.h"
+>   
+>   #define ASPEED_SOC_IOMEM_SIZE 0x00200000
+> @@ -156,6 +157,8 @@ static void aspeed_soc_ast1030_init(Object *obj)
+>   
+>       object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
+>   
+> +    object_initialize_child(obj, "otpmem", &s->otpmem, TYPE_ASPEED_OTPMEM);
+> +
 
-Here's how to make enum values conditional:
+This belongs to AspeedSBC. See below.
 
-    { 'enum': 'KvmPmuEventFormat',
-      'data': ['raw',
-               { 'name': 'x86-select-umask', 'if': 'TARGET_I386' }
-               { 'name': 'x86-masked-entry', 'if': 'TARGET_I386' } ] }
+>       for (i = 0; i < sc->wdts_num; i++) {
+>           snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+>           object_initialize_child(obj, "wdt[*]", &s->wdt[i], typename);
+> @@ -194,6 +197,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>       Error *err = NULL;
+>       int i;
+>       g_autofree char *sram_name = NULL;
+> +    BlockBackend *blk;
+>   
+>       if (!clock_has_source(s->sysclk)) {
+>           error_setg(errp, "sysclk clock must be wired up by the board code");
+> @@ -359,6 +363,21 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
+>       }
+>   
+> +    /* OTP memory */
+> +    blk = blk_by_name(ASPEED_OTPMEM_DRIVE);
+> +    if (blk) {
+> +        blk_set_perm(blk, BLK_PERM_CONSISTENT_READ | BLK_PERM_WRITE,
+> +                     0, &error_fatal);
+> +        qdev_prop_set_drive(DEVICE(&s->otpmem), "drive", blk);
+> +
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->otpmem), errp)) {
+> +            return;
+> +        }
+> +        /* Assign OTP memory to SBC */
+> +        object_property_set_link(OBJECT(&s->sbc), "otpmem",
+> +                                 OBJECT(&s->otpmem), &error_abort);
+> +    }
+> +
 
-However, TARGET_I386 is usable only in target-specific code.  This has
-two consequences here:
+The "optmem" machine option should be pointing to "drive" option of
+the AspeedOTPMemState object in this object hierarchy :
 
-1. It won't compile, since QAPI schema module kvm.json is
-   target-independent.  We'd have to put it into a target-specific
-   module kvm-target.json.
+   /machine (ast2600-evb-machine)
+     /soc (ast2600-a3)
+       /sbc (aspeed.sbc)
+         /aspeed.sbc[0] (memory-region)
+         /optmem (aspeed.otpmem)         <- move otpmem there
 
-2. Target-specific QAPI schema mdoules are problematic for the single
-   binary / heterogeneous machine work.  We are discussing how to best
-   handle that.  Unclear whether adding more target-specific QAPI
-   definitions are a good idea.
+This will require using object_property_add_alias() in 2 or 3 levels.
 
->                                                         so rejecting
-> unsupported format can only happen in parsing code. For example, wrap
-> the above code in "#if defined(TARGET_I386)":
->
->     for (node = head; node; node = node->next) {
->         KvmPmuFilterEvent *event = node->value;
->
->         switch (event->format) {
->         case KVM_PMU_EVENT_FORMAT_RAW:
->             break;
-> #if defined(TARGET_I386)
->         case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
->             ...
->             break;
->         }
->         case KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY: {
->             ...
-> 	    break;
->         }
-> #endif
->         default:
-> 	    error_setg(errp,
->                        "Unsupported format.");
->             goto fail;
->         }
->
->         ...
->     }
->
-> EMM, do you like this idea?
+    object_property_add_alias(OBJECT(parent), "optmem"
+                              OBJECT(child), "drive", &error_abort)
 
-This is kvm_pmu_filter_set_event(), I presume.
+Please try that instead and let's see the result.
 
-The #if is necessary when you make the enum values conditional.  The
-default: code is unreachable then, so it should stay
-g_assert_not_reached().
+Thanks,
 
-The #if is fine even when you don't make the enum values conditional.
-The default: code is reachable then, unless you reject the unwanted
-enums earlier some other way.
+C.
 
->> If not, I feel the behavior should be noted in the commit message.
->
-> With the above change, I think it's possible to reject x86-specific
-> format on non-x86 arch. And I can also note this behavior in commit
-> message.
->
->> >          default:
->> >              g_assert_not_reached();
->> >          }
->> > @@ -67,6 +82,9 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
->> >      filter->events = head;
->> >      qapi_free_KvmPmuFilterEventList(old_head);
->> >      return;
->> > +
->> > +fail:
->> > +    qapi_free_KvmPmuFilterEventList(head);
->> >  }
->> >  
->> >  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
->
-> ...
->
->> >  ##
->> >  # @KvmPmuFilterEvent:
->> >  #
->> > @@ -66,7 +82,8 @@
->> >  { 'union': 'KvmPmuFilterEvent',
->> >    'base': { 'format': 'KvmPmuEventFormat' },
->> >    'discriminator': 'format',
->> > -  'data': { 'raw': 'KvmPmuRawEvent' } }
->> > +  'data': { 'raw': 'KvmPmuRawEvent',
->> > +            'x86-select-umask': 'KvmPmuX86SelectUmaskEvent' } }
->> >  
->> >  ##
->> >  # @KvmPmuFilterProperties:
->> 
->> Documentation could perhaps be more explicit about this making sense
->> only for x86.
->
-> What about the following doc?
->
-> ##
-> # @KvmPmuFilterProperties:
-> #
-> # Properties of KVM PMU Filter (only for x86).
 
-Hmm.  Branch 'raw' make sense regardless of target, doesn't it?  It's
-actually usable only for i86 so far, because this series implements
-accelerator property "pmu-filter" only for i386.
 
-Let's not worry about this until we decided whether to use QAPI
-conditionals or not.
 
->> > diff --git a/qemu-options.hx b/qemu-options.hx
->> > index 51a7c61ce0b0..5dcce067d8dd 100644
->> > --- a/qemu-options.hx
->> > +++ b/qemu-options.hx
->> > @@ -6180,6 +6180,9 @@ SRST
->> >               ((select) & 0xff) | \
->> >               ((umask) & 0xff) << 8)
->> >  
->> > +        ``{"format":"x86-select-umask","select":event_select,"umask":event_umask}``
->> > +            Specify the single x86 PMU event with select and umask fields.
->> > +
->> >          An example KVM PMU filter object would look like:
->> >  
->> >          .. parsed-literal::
->> > diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
->> > index fa3a696654cb..0d36ccf250ed 100644
->> > --- a/target/i386/kvm/kvm.c
->> > +++ b/target/i386/kvm/kvm.c
->> > @@ -5974,6 +5974,10 @@ static bool kvm_config_pmu_event(KVMPMUFilter *filter,
->> >          case KVM_PMU_EVENT_FORMAT_RAW:
->> >              code = event->u.raw.code;
->> >              break;
->> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
->> > +            code = X86_PMU_RAW_EVENT(event->u.x86_select_umask.select,
->> > +                                     event->u.x86_select_umask.umask);
->> > +            break;
->> >          default:
->> >              g_assert_not_reached();
->> >          }
->> > @@ -6644,6 +6648,7 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
->> >  
->> >          switch (event->format) {
->> >          case KVM_PMU_EVENT_FORMAT_RAW:
->> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK:
->
-> Here's the current format check I mentioned above. But I agree your idea
-> and will check in the parsing of pmu-filter object.
->
->> >              break;
->> >          default:
->> >              error_setg(errp,
->> 
 

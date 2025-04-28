@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5869987njd;
-        Mon, 28 Apr 2025 03:27:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUNFCdCXLz34TndCaR4Chec55Szc4mMAfxNqT+vAWN7jIaQLd+pJFrJOiO4dIpL5c5+5y6JXurcJhwW6g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFv5/csdFlj05srJNRY72fRRwNjCpL1fZNVpwM62vCq5W82YbN/Htf9S6QFCrPbxw99fA6M
-X-Received: by 2002:a05:622a:15c5:b0:477:c04:b512 with SMTP id d75a77b69052e-481318036d3mr116704991cf.16.1745836064618;
-        Mon, 28 Apr 2025 03:27:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745836064; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5870041njd;
+        Mon, 28 Apr 2025 03:27:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWr4tP74ZIqrpF+aQWmZY032QAyQDe3BnUjYw1E17CUyI1K6boHN3gY1O7jNg5M2W63QuUH9W/BebZtgg==@linaro.org
+X-Google-Smtp-Source: AGHT+IES8roaF5r2MZFxpQX+pD3vFOcRYY9m6Nci4kevzv/pzwxgvoFlWNdtJuNHQ+wwbtQYBtKD
+X-Received: by 2002:a05:620a:2a07:b0:7c5:5909:18d9 with SMTP id af79cd13be357-7c9606ac866mr1600619385a.5.1745836070458;
+        Mon, 28 Apr 2025 03:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745836070; cv=none;
         d=google.com; s=arc-20240605;
-        b=BiE6MLhAzLGgmrJRW68oOSBrpUtys3SCCeoLjUyKi5U9sDx44JaMUkw6AGjVBFtK5g
-         9mI/GLoax7W0uyA5RJ6McGKsufSK9bNWRB98Pl482BybYBPwc6iJpE9CEI6E2CldrNto
-         tueUXbVQt0/k0K9hnBqWuuUV9RMiJ3Hxivm2FFZrh2KpbnXBhrTmYnr5gOkFqfB+BqNd
-         NL02Bv+UXpcz5FktKxUzxha5yUBU7AbwxWum1kc5ZFVQWd9QqFnK446sj0UiaAijhn+k
-         EpWfyW3/zEcZfSv19JnZyd9FdLgIF5wmuK9QCKglWVkiaribDrcbLfS0pnsKoSW3q/F2
-         YwRw==
+        b=WJXmyS2VndpXNUoPwGy4N067EXfuVE9R+CYqG3AN2aO6RUOQsF+/VrdKN/8aoq1rOa
+         yWfjwgfAL6BH0gCMcD80A1vIy17l/Um5wKv9t92w+r/TfYQ59jhHB+wZUn9ZIlTGzZRI
+         jpd5OKIfN8QKA6he+REtdUdMDecMhEQyehE/SMFbMG06U9T9Y9KG8Nd1aZAbnETLdhfF
+         5S6gqid5sVPvhud7YDPi0opx5B3jZ5fUUd2khGdwN7ttQcZF70sVheod5c93guT4lf5G
+         XpGv3gJ6ROzEYLKOyQnNTWxM+vuzxruTfbgFp91haI1JXXjOgixsO+5RcclbL5DHs2gu
+         Lvzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=69FrE0S4fSJ+qVigUPurs+LzNHJjYE7L3jEoiPizqRE=;
+        bh=4AqKs5m/4n+kqsHPYCruTbphKvF/1V3WYtHDMozGeRE=;
         fh=+sxB8NkS+xL+1QwPgIVnaMhN8Q9GX11v/uLdEosqQQA=;
-        b=RmDAQTWc5d6gE+7EbcB9R+VDogjwG+fdSyHHdXBfDFuP7+/JKQvVxhLZWiGTlmxqhh
-         YQiGEJ2RwZ01UJdP6kj74xCbqCY6Ugat4o53xaUMM2Xm69yDxh2AX7ovFqs1DigUUNi+
-         Tz+6D09vDUDG6rLICIoMOHhc/p9QKqcYPEwnG+XUAJVjqTdQa68qio/ovgjvS+ezRfmB
-         7KVWwWjfXBCqZK5IMxDf/yzs+uRgaljdlMVn7piHDntLVKq75CUfbaKW8a6/NH8l5GnE
-         gbrfm2nJdFA3pZHFLsqv6U81Pf7/wEaiEcVM6R74Cr3KFsS33E8J1mnuFO7Z0YTg+Evj
-         jieA==;
+        b=SkBAGoRhQGQ8M+jSqji1Zk+sz50z0GI/NuWF7r+JlsdyoTCRLc6BmG6E4rjQETD/nq
+         T4Zl1aTC6EewpTHF84EZkGSrIBD607m6inGSw3Pe/JPbXI0Z0tl2EoxlU1aPh5nBJ+mf
+         OyFCFY/Ib1HEkfsECHRFbbdq4caIM0+l7HtKrc8n+jf6dSASnUgCjDLjcdb+C+GDsh7Q
+         iaTh4ClNEd6FEFh0jCERCVWN7vTd99py5xsqUZ9SQhfm00XR2edXxeYUvUeajb3Cyqva
+         IsDyCXb+NTTolMh5K9kV7eF+TStExAmLWrie9jkwuLajoxckHPXrfFUmutJrxb7ppeSv
+         mEog==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U5lmWUha;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RdydleIQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea1f8a656si105585991cf.399.2025.04.28.03.27.44
+        by mx.google.com with ESMTPS id af79cd13be357-7c958d86f79si940758985a.226.2025.04.28.03.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 03:27:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Apr 2025 03:27:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U5lmWUha;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RdydleIQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9Li1-00087H-MW; Mon, 28 Apr 2025 06:27:34 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u9LiB-0008F5-U4; Mon, 28 Apr 2025 06:27:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9Lhp-0007f2-4c
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:27:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1u9Li0-00087F-Nl
+ for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:27:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9Lhm-0003Ko-35
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:27:20 -0400
+ id 1u9Lhy-0003Ma-NS
+ for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:27:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1745836036;
+ s=mimecast20190719; t=1745836044;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=69FrE0S4fSJ+qVigUPurs+LzNHJjYE7L3jEoiPizqRE=;
- b=U5lmWUhaBnSDOoV/1/1WkeFYXQrwimOdv6R3ovruLBY77QI/MzWxIU8GeilLzdvow11vty
- JB7dxQOGU2L/OwXxVHB+d1iuAEtfuxmLkMAGOWLmJ09RYxNooDEfRp/eiu2Y+lbjoIub5b
- RBwGJ7npUOUWAro1uCfOLkWHpTOZf+U=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=4AqKs5m/4n+kqsHPYCruTbphKvF/1V3WYtHDMozGeRE=;
+ b=RdydleIQTQ4LhI42UalUqksnisQz4ei4SfKE0JDbfQIznz+df7iMZHl8nZHZUfEsXDgxLW
+ uwqJZtZ5wbrAE2NL3LeNONcE0wog2vvQsKV34iH7qvGRYS2nkWw6Y2xppYkCPPj4iFUKBj
+ 2zZtRikAaNRiMm7GIWFjqNuhhRtkiNo=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-225-FNyzShMVMdGhlGQS1BMBlA-1; Mon,
- 28 Apr 2025 06:27:10 -0400
-X-MC-Unique: FNyzShMVMdGhlGQS1BMBlA-1
-X-Mimecast-MFC-AGG-ID: FNyzShMVMdGhlGQS1BMBlA_1745836029
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-226-EoaRFVJBPQqJml87skGSSA-1; Mon,
+ 28 Apr 2025 06:27:20 -0400
+X-MC-Unique: EoaRFVJBPQqJml87skGSSA-1
+X-Mimecast-MFC-AGG-ID: EoaRFVJBPQqJml87skGSSA_1745836039
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B7D4C1955DD0; Mon, 28 Apr 2025 10:27:09 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E2A991956096; Mon, 28 Apr 2025 10:27:18 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.14])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AA0471800374; Mon, 28 Apr 2025 10:27:05 +0000 (UTC)
+ id 8E38E1800359; Mon, 28 Apr 2025 10:27:14 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
  anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
 Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com
-Subject: [RFC 07/24] hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
- acpi_dsdt_add_pci_osc
-Date: Mon, 28 Apr 2025 12:25:33 +0200
-Message-ID: <20250428102628.378046-8-eric.auger@redhat.com>
+Subject: [RFC 09/24] hw/pci-host/gpex-acpi: Propagate hotplug type info from
+ virt machine downto gpex
+Date: Mon, 28 Apr 2025 12:25:35 +0200
+Message-ID: <20250428102628.378046-10-eric.auger@redhat.com>
 In-Reply-To: <20250428102628.378046-1-eric.auger@redhat.com>
 References: <20250428102628.378046-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
@@ -106,71 +106,77 @@ X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.492,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5RzsFIvf2t03
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JchpatK0llLY
 
-Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
-native pci hotplug.
+Propagate the type of pci hotplug mode downto the gpex
+acpi code. In case machine acpi_pcihp is unset we configure
+pci native hotplug on pci0. For expander bridges we keep
+legacy pci native hotplug, as done on x86 q35.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/pci-host/gpex-acpi.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ include/hw/pci-host/gpex.h | 1 +
+ hw/arm/virt-acpi-build.c   | 1 +
+ hw/pci-host/gpex-acpi.c    | 3 ++-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index 84471533af..feaf827474 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -45,6 +45,7 @@ struct GPEXConfig {
+     MemMapEntry pio;
+     int         irq;
+     PCIBus      *bus;
++    bool        pci_native_hotplug;
+ };
+ 
+ typedef struct GPEXIrq GPEXIrq;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3ac8f8e178..46c5a43d27 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -129,6 +129,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+         .ecam   = memmap[ecam_id],
+         .irq    = irq,
+         .bus    = vms->bus,
++        .pci_native_hotplug = !vms->acpi_pcihp,
+     };
+ 
+     if (vms->highmem_mmio) {
 diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-index e8b4c64c5f..4016089893 100644
+index 9d9f5ed7c6..9a521145bd 100644
 --- a/hw/pci-host/gpex-acpi.c
 +++ b/hw/pci-host/gpex-acpi.c
-@@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
-     }
- }
- 
--static void acpi_dsdt_add_pci_osc(Aml *dev)
-+static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
- {
-     Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
- 
-@@ -80,8 +80,9 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
-      * Allow OS control for all 5 features:
-      * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
-      */
--    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
--                              aml_name("CTRL")));
-+    aml_append(ifctx, aml_and(aml_name("CTRL"),
-+               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
-+               aml_name("CTRL")));
- 
-     ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-     aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
-@@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+@@ -204,6 +204,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
              if (is_cxl) {
                  build_cxl_osc_method(dev);
              } else {
--                acpi_dsdt_add_pci_osc(dev);
-+                acpi_dsdt_add_pci_osc(dev, true);
++                /* pxb bridges do not have ACPI PCI Hot-plug enabled */
+                 acpi_dsdt_add_host_bridge_methods(dev, true);
              }
  
-             aml_append(scope, dev);
-@@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+@@ -279,7 +280,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
      }
      aml_append(dev, aml_name_decl("_CRS", rbuf));
  
--    acpi_dsdt_add_pci_osc(dev);
-+    acpi_dsdt_add_pci_osc(dev, true);
+-    acpi_dsdt_add_host_bridge_methods(dev, true);
++    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
  
      Aml *dev_res0 = aml_device("%s", "RES0");
      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));

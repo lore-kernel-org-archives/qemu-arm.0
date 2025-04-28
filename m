@@ -1,106 +1,334 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f7f83ef5f1sm979766a12.21.2025.04.28.05.59.21
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp6003626njd;
+        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXbO7OVSQ4CJlntZ69MzVmm/toV239rendUl7aBYhK0cClpe8Pd2/WjB8zKeLJzdU1rb92x7Ov+hL47Yw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH84pTf/cNpS3bafRNC7uL0HCbfx1kGXDSx51O1ofosxoRRjdVfBTCRjahi4p396HUAfIlO
+X-Received: by 2002:a17:90b:2e52:b0:2ff:7b28:a519 with SMTP id 98e67ed59e1d1-309f7e8f6c5mr17877048a91.30.1745850095528;
+        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745850095; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=aGcaGzdIlVpIwVRGVq19i5nl31SW0MdC10ez11fStvWxA/253ZfMuQn/vH3z2u/ylK
+         bjVgeYMHC6ImJAwwSXDUEiZcJLMgCRfCBCn3LRuouZKy6tYsLI4x2KttYPlCfEbpjf7u
+         sioKFISqUxmeTaWLbse56DJ0Ouhw8vSV8PJBLBzM3mMhcj9frlCK3K6c9fOhwTzogYnT
+         i1T++rKorW+SEyRDkR3Krw6IZdH1C4kD6bspIbWuid9O5zQOnw3hnFI3r23AY/Y82CMy
+         53vAO/kLXiiQ7uYa9URueXyqiMyC0FClk8K+yX+jv+e0sfRhYdTNfOlMa3jmTp664svX
+         4kUA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=y97Ix996AwPYhVkL41QI3FzTyNm4keggzI/0RuanVIE=;
+        fh=G3Y2+hewu9CZp4IiK64S6SRatEfgz8riP1xw3aVJTqM=;
+        b=PRHLQdYck9J3x+d12dhwtZvZwfV7HgA6zcjH0UDaMSyZLH7Meztdy17X9VmeWUmXj6
+         fu30nZ0IHtY7A2eZcszB8MBvyQKpFssXHVWOE3nft0sswsEtDFFW2knBD1AtRReLAy2M
+         mLWWGJgUJnDmPGtB2pSbzibcoEEzhdUv2q0JFPu+gftw1Bz6PcfvVbxBmEqYjrx2NOla
+         4VVQKEAuzP8Px4JN6xPE9Qqbk5NnXizjv2eRGJcjUURYbdi+89PCsxCI6DgkDmoQnKcK
+         zec2K7XAlPvO6Bq8L6UJfDTgEXYcQURyF6YHgKIqMJZs1bTJ3EVSTs0AeQJmPUZZjLif
+         BwIg==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=LAayAwQ1;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-309ef131ef2si12669929a91.150.2025.04.28.07.21.35
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 05:59:22 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 18C605FAF1;
-	Mon, 28 Apr 2025 13:59:19 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
+        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=LAayAwQ1;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 60A723AD99F
+	for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 14:21:18 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 47E3126982C;
+	Mon, 28 Apr 2025 14:21:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="LAayAwQ1"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02CD61B86EF
+	for <kvm@vger.kernel.org>; Mon, 28 Apr 2025 14:21:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1745850090; cv=none; b=WLjvV+clXt9t1qOaT9gUXp4l3xRrw/M+2AVSsI/yGjRBT6vd/qeqfJ0vvYbkGuLbwd4YX6GZIcTSR+iNS/2JRYH9rQUBbqIeS+XCIyXgXNL2Z+FFj3zvTW8P9chKwEJiM/O9OOqZfyzcMWjtISHu2ETzFU0ZWzt9kjZeyGoOpik=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1745850090; c=relaxed/simple;
+	bh=M/8gKPrj9UzBo44bqxU2ZtRdrkTJFsFYsgFLwZFM444=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=kzC8uUxHCmm9wcz3uc5pp1FPFW2Bt1nBB6jM/PZhsDHnMxz1WMG0faq/IUbz4HV80ysuAXrPpTyCcO0cBAlzLfD31z74vzRwCtc4LJUaODHYUTd0XMQUpOHsnPVrwJMsYwYhdMX+NeYyTqiM4RZ4OMA5xojSYrXkTAZ2Ys9/xmQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=LAayAwQ1; arc=none smtp.client-ip=198.175.65.9
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745850088; x=1777386088;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=M/8gKPrj9UzBo44bqxU2ZtRdrkTJFsFYsgFLwZFM444=;
+  b=LAayAwQ1vywZtu8wrmcHAhYJLvNO+6ACL6VXAPixa5nJmCO3lIg65mON
+   7eDabxWS/AqEqGXCXjVbkvsDtUqmfTmVwVFNfu3XjYiVtImqGoOTzMgj7
+   7BVkw6bikycWhZC6gss6N+CLYP3/odJ/wi1Io0nOeEuVK/DEkKWfN1Fn9
+   wDKiA80nIuc4h1Slwf++kJ65ZxhbHph94IQ0SI5caY0wkV4qItL5Pp7Hk
+   6/5L/lOPcB2EJ1/9LvPtUJoGZwyIVMR4uZr9kivwGDdgrO31JaD5fBzwb
+   LUC82f1OV/9qdpKgeYQtb0oZYf6eh4uU1QGNoRUPxGRJncGKKVS9cfR7D
+   w==;
+X-CSE-ConnectionGUID: k2+LM5PtToCqi8SyaF46tw==
+X-CSE-MsgGUID: uVmOF2YVTT+6Pkt3/1aafg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11416"; a="69942576"
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
+   d="scan'208";a="69942576"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2025 07:21:27 -0700
+X-CSE-ConnectionGUID: aui4+n6AQBygx0YSOr8INg==
+X-CSE-MsgGUID: zDo3OoVIT7+i4mGbisKf6g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
+   d="scan'208";a="137584568"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
+  by fmviesa003.fm.intel.com with ESMTP; 28 Apr 2025 07:21:22 -0700
+Date: Mon, 28 Apr 2025 22:42:19 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-	qemu-stable@nongnu.org
-Subject: [PATCH 9/9] virtio-gpu: refactor async blob unmapping
-Date: Mon, 28 Apr 2025 13:59:18 +0100
-Message-Id: <20250428125918.449346-10-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250428125918.449346-1-alex.bennee@linaro.org>
-References: <20250428125918.449346-1-alex.bennee@linaro.org>
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	pierrick.bouvier@linaro.org
+Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
+ in KVM PMU filter
+Message-ID: <aA+Ty2IqnE4zQhJv@intel.com>
+References: <20250409082649.14733-1-zhao1.liu@intel.com>
+ <20250409082649.14733-4-zhao1.liu@intel.com>
+ <87frhwfuv1.fsf@pond.sub.org>
+ <aA3TeaYG9mNMdEiW@intel.com>
+ <87h6283g9g.fsf@pond.sub.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: lWbufaSkaqIQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87h6283g9g.fsf@pond.sub.org>
+X-TUID: Zrh8sMZzBnJ9
 
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+On Mon, Apr 28, 2025 at 09:19:07AM +0200, Markus Armbruster wrote:
+> Date: Mon, 28 Apr 2025 09:19:07 +0200
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
+>  in KVM PMU filter
+> 
+> Zhao Liu <zhao1.liu@intel.com> writes:
+> 
+> > Hi Markus,
+> >
+> >> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
+> >> > +            if (event->u.x86_select_umask.select > UINT12_MAX) {
+> >> > +                error_setg(errp,
+> >> > +                           "Parameter 'select' out of range (%d).",
+> >> > +                           UINT12_MAX);
+> >> > +                goto fail;
+> >> > +            }
+> >> > +
+> >> > +            /* No need to check the range of umask since it's uint8_t. */
+> >> > +            break;
+> >> > +        }
+> >> 
+> >> As we'll see below, the new x86-specific format is defined in the QAPI
+> >> schema regardless of target.
+> >> 
+> >> It is accepted here also regardless of target.  Doesn't matter much
+> >> right now, as the object is effectively useless for targets other than
+> >> x86, but I understand that will change.
+> >> 
+> >> Should we reject it unless the target is x86?
+> >
+> > I previously supposed that different architectures should implement
+> > their own kvm_arch_check_pmu_filter(), which is the `check` hook of
+> > object_class_property_add_link():
+> >
+> >     object_class_property_add_link(oc, "pmu-filter",
+> >                                    TYPE_KVM_PMU_FILTER,
+> >                                    offsetof(KVMState, pmu_filter),
+> >                                    kvm_arch_check_pmu_filter,
+> >                                    OBJ_PROP_LINK_STRONG);
+> 
+> This way, the checking happens only when you actually connect the
+> kvm-pmu-filter object to the accelerator.
+> 
+> Have you considered checking in the kvm-pmu-filter object's complete()
+> method?  Simple example of how to do that: qauthz_simple_complete() in
+> authz/simple.c.
 
-Change the 3 part async cleanup of a blob memory mapping to check if the
-unmapping has finished already after deleting the subregion; this
-condition allows us to skip suspending the command and responding to the
-guest right away.
+Thank you, I hadn't noticed it before. Now I study it carefully, and yes,
+this is a better way than `check` hook. Though in the following we are
+talking about other ways to handle target-specific check, this helper
+may be still useful as I proposed to help check accel-specific cases in
+the reply to Philip [*].
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20250410122643.1747913-4-manos.pitsidianakis@linaro.org>
-Cc: qemu-stable@nongnu.org
----
- hw/display/virtio-gpu-virgl.c | 35 +++++++++++++++++++++++++----------
- 1 file changed, 25 insertions(+), 10 deletions(-)
+[*]: https://lore.kernel.org/qemu-devel/aA3cHIcKmt3vdkVk@intel.com/
 
-diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
-index 8fbe4e70cc..32a32879f7 100644
---- a/hw/display/virtio-gpu-virgl.c
-+++ b/hw/display/virtio-gpu-virgl.c
-@@ -155,7 +155,32 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
-      *    asynchronously by virtio_gpu_virgl_hostmem_region_free().
-      * 3. Finish the unmapping with final virgl_renderer_resource_unmap().
-      */
-+
-+    /* 1. Check if we should start unmapping now */
-+    if (!vmr->finish_unmapping) {
-+        /* begin async unmapping. render will be unblocked once MR is freed */
-+        b->renderer_blocked++;
-+
-+        memory_region_set_enabled(mr, false);
-+        memory_region_del_subregion(&b->hostmem, mr);
-+        object_unparent(OBJECT(mr));
-+        /*
-+         * The unmapping might have already finished at this point if no one
-+         * else held a reference to the MR; if yes, we can skip suspending the
-+         * command and unmap the resource right away.
-+         */
-+        *cmd_suspended = !vmr->finish_unmapping;
-+    }
-+
-+    /*
-+     * 2. if virtio_gpu_virgl_hostmem_region_free hasn't been executed yet, we
-+     * have marked the command to be re-processed later by setting
-+     * cmd_suspended to true. The freeing callback will be called from RCU
-+     * context later.
-+     */
-+
-     if (vmr->finish_unmapping) {
-+        /* 3. MemoryRegion has been freed, so finish unmapping */
-         res->mr = NULL;
-         g_free(vmr);
- 
-@@ -166,16 +191,6 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
-                           __func__, strerror(-ret));
-             return ret;
-         }
--    } else {
--        *cmd_suspended = true;
--
--        /* render will be unblocked once MR is freed */
--        b->renderer_blocked++;
--
--        /* memory region owns self res->mr object and frees it by itself */
--        memory_region_set_enabled(mr, false);
--        memory_region_del_subregion(&b->hostmem, mr);
--        object_unparent(OBJECT(mr));
-     }
- 
-     return 0;
--- 
-2.39.5
+> > For x86, I implemented kvm_arch_check_pmu_filter() in target/i386/kvm/
+> > kvm.c and checked the supported formats (I also supposed arch-specific
+> > PMU filter could reject the unsupported format in
+> > kvm_arch_check_pmu_filter().)
+> >
+> > But I think your idea is better, i.e., rejecting unsupported format
+> > early in pmu-filter parsing.
+> >
+> > Well, IIUC, there is no way to specify in QAPI that certain enumerations
+> > are generic and certain enumerations are arch-specific,
+> 
+> Here's how to make enum values conditional:
+> 
+>     { 'enum': 'KvmPmuEventFormat',
+>       'data': ['raw',
+>                { 'name': 'x86-select-umask', 'if': 'TARGET_I386' }
+>                { 'name': 'x86-masked-entry', 'if': 'TARGET_I386' } ] }
+
+What I'm a bit hesitant about is that, if different arches add similar
+"conditional" enumerations later, it could cause the enumeration values
+to change under different compilation conditions (correct? :-)). Although
+it might not break anything, since we don't rely on the specific numeric
+values.
+
+> However, TARGET_I386 is usable only in target-specific code.  This has
+> two consequences here:
+> 
+> 1. It won't compile, since QAPI schema module kvm.json is
+>    target-independent.  We'd have to put it into a target-specific
+>    module kvm-target.json.
+> 
+> 2. Target-specific QAPI schema mdoules are problematic for the single
+>    binary / heterogeneous machine work.  We are discussing how to best
+>    handle that.  Unclear whether adding more target-specific QAPI
+>    definitions are a good idea.
+
+And per yours feedback, CONFIG_KVM can also only be used in target-specific
+code. Moreover, especially if we need to further consider multiple
+accelerators, such as the HVF need mentioned by Philip, it seems that
+we can't avoid target-specific issues here!
+
+> >                                                         so rejecting
+> > unsupported format can only happen in parsing code. For example, wrap
+> > the above code in "#if defined(TARGET_I386)":
+> >
+> >     for (node = head; node; node = node->next) {
+> >         KvmPmuFilterEvent *event = node->value;
+> >
+> >         switch (event->format) {
+> >         case KVM_PMU_EVENT_FORMAT_RAW:
+> >             break;
+> > #if defined(TARGET_I386)
+> >         case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
+> >             ...
+> >             break;
+> >         }
+> >         case KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY: {
+> >             ...
+> > 	    break;
+> >         }
+> > #endif
+> >         default:
+> > 	    error_setg(errp,
+> >                        "Unsupported format.");
+> >             goto fail;
+> >         }
+> >
+> >         ...
+> >     }
+> >
+> > EMM, do you like this idea?
+> 
+> This is kvm_pmu_filter_set_event(), I presume.
+>
+> The #if is necessary when you make the enum values conditional.  The
+> default: code is unreachable then, so it should stay
+> g_assert_not_reached().
+>
+> The #if is fine even when you don't make the enum values conditional.
+> The default: code is reachable then, unless you reject the unwanted
+> enums earlier some other way.
+
+Thanks for your analysis, it's very accurate! I personally prefer the
+2nd way.
+
+> >> If not, I feel the behavior should be noted in the commit message.
+> >
+> > With the above change, I think it's possible to reject x86-specific
+> > format on non-x86 arch. And I can also note this behavior in commit
+> > message.
+> >
+> >> >          default:
+> >> >              g_assert_not_reached();
+> >> >          }
+> >> > @@ -67,6 +82,9 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
+> >> >      filter->events = head;
+> >> >      qapi_free_KvmPmuFilterEventList(old_head);
+> >> >      return;
+> >> > +
+> >> > +fail:
+> >> > +    qapi_free_KvmPmuFilterEventList(head);
+> >> >  }
+> >> >  
+> >> >  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
+> >
+> > ...
+> >
+> >> >  ##
+> >> >  # @KvmPmuFilterEvent:
+> >> >  #
+> >> > @@ -66,7 +82,8 @@
+> >> >  { 'union': 'KvmPmuFilterEvent',
+> >> >    'base': { 'format': 'KvmPmuEventFormat' },
+> >> >    'discriminator': 'format',
+> >> > -  'data': { 'raw': 'KvmPmuRawEvent' } }
+> >> > +  'data': { 'raw': 'KvmPmuRawEvent',
+> >> > +            'x86-select-umask': 'KvmPmuX86SelectUmaskEvent' } }
+> >> >  
+> >> >  ##
+> >> >  # @KvmPmuFilterProperties:
+> >> 
+> >> Documentation could perhaps be more explicit about this making sense
+> >> only for x86.
+> >
+> > What about the following doc?
+> >
+> > ##
+> > # @KvmPmuFilterProperties:
+> > #
+> > # Properties of KVM PMU Filter (only for x86).
+> 
+> Hmm.  Branch 'raw' make sense regardless of target, doesn't it?  It's
+> actually usable only for i86 so far, because this series implements
+> accelerator property "pmu-filter" only for i386.
+
+The advantage of this single note is someone can easily mention other
+arch in doc :-)
+
+> Let's not worry about this until we decided whether to use QAPI
+> conditionals or not.
+
+OK, this is not a big deal (comparing with other issues).
+
+Thanks,
+Zhao
+

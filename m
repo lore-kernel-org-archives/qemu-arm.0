@@ -1,94 +1,98 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5869780njd;
-        Mon, 28 Apr 2025 03:27:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIoWCkpxIuVidQva0UBeA8gaw9nOanXfNbGbgUwZ1GGZkGLUkSGe8Xu1bZI8oOTpR8JnfhvAa5XSC7Hg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE66EnibgWKwVP3UeChTs1k64VqlvbXe/98PjKaDSMgezbtGpwbKy+6rzsFoY+eec7vI2oB
-X-Received: by 2002:a05:6214:268e:b0:6e6:6a6e:7596 with SMTP id 6a1803df08f44-6f4cba63304mr178644936d6.39.1745836036864;
-        Mon, 28 Apr 2025 03:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745836036; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5870433njd;
+        Mon, 28 Apr 2025 03:28:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVXzOeYKo3ey+BvrLPEXVyFvVzuOJCzrP6XExfBA2Lq75tQU71+01i902ansPuTBt99AO1+gIsC/eJC9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGirtNGSSzFNpr/4+OVU7xncCeh1tJ8gxw9E/9RgJn2BCPibqvVNP4soTug3cuaO0SzAiZu
+X-Received: by 2002:a05:622a:c9:b0:476:78a8:4356 with SMTP id d75a77b69052e-4801ce5c60dmr164883981cf.26.1745836120595;
+        Mon, 28 Apr 2025 03:28:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745836120; cv=none;
         d=google.com; s=arc-20240605;
-        b=XxIXFVz/PQ1qZ8U5j2YDpef/n0RpYLwYRbrSfpncekLfr5//AiN+OReVQ0tv8uYr4Y
-         ehCToFEeFkOk+pDzdcaXtKHKv9FlI/Rl/roD8TpX6LykVBagqQo4dp2Ooi9elPhzjFnJ
-         NLvYyulGfR2sTko5nDSqCzwWFBaiYJCkOzSg3RQZxQOzO9fSeosN3DLnbZSkWf/j6udA
-         rN7lewamw4maBjZa+hEA7hA3Qfi/5rGrcwdrSAbSTsF4EfCBA8CINGTltk6S07FT9TM+
-         w4CuKuwW9+eq4YcgrlHGGa9I/E0hg+u96A2L4ZgRuIbz+6aeldcrRxKxyLB3iTxLZnWq
-         OPyQ==
+        b=QmYM/iofpgX2bMcxf7x6i8+TQQv7pu4kPELNHzPnKK+QINwNkl0EQMX0wy9Hyachxh
+         6cNGS/2F3CHrRAM2WnRF0FtChlP+ZcQ5dZJwpp0R7dkI7aeCW0rC4L/OCVefUOKuawVk
+         zvMkiS12e+wmQBSLdJS8yzmL/a8CzvQiSfwvFZPLB0O4kuz3CeUwDR6J1o0kJLcoeFck
+         VoafHoHMs3Rb4xRB7/NHrGPHHdn1spHF3aqq0NOJXGdqRAM5fczdXkLT2LV7GUfszkV7
+         0oJWEvGadwRami1UtXPL87qe+Nn2ITdeoE7khSyrkf8RGFyuHq8tY6NsTlN73JIop6K9
+         V7+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ahYBnUfEydQCI3V8bBlQ14kf0qqdv+HN0cdX3llkQGU=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=6XahBnXpFqwycsDBbg1wLu1EfXJ0E3CuvWhdSJiCoos=;
         fh=+sxB8NkS+xL+1QwPgIVnaMhN8Q9GX11v/uLdEosqQQA=;
-        b=IoHwK6kWLPYP5sX96cyf8MqnKDNKDAKLcfIl3rnh1BDWHoJDUcSXJP/1j4MGVLjhUa
-         jaA+OZ73ekQNLnADiFRXwXdXLlCbPhHjDu7W8hs38TiccBAub27XwIPn9uu9osRGWujQ
-         37xm+5r5ZI/7O9yAc3oUrqQgEYN106MEapFUPk/ICRoalaRfhezPBMShxjcFJSMdfCbb
-         JCz3NwT0Ndzmo9WGo5N77AZo+P5kosHXTu/MwpdmEeDyBS7FdF/c5hfIgPqezXLepeLj
-         58Cwc8tkkpbkDAsxixXoO9Laj6+1M0awnPq6XZXIQvkGaZ0I2OwPIwtHtQi+Q9DiqinH
-         Jsqg==;
+        b=kgc6mlZUT6Wh/SI5QFy9XMhkpemIK/5pWVxM/IMhYMHwvRn7fw/KFm2FYljbyrRijc
+         2zSwGroT6ths0/QC4JLTnIv9BjI7etaAJ4sOiibpy4HJ+d1bIZg/iQxSvy3bVlqCXLxU
+         VNtjnWJs4sG/vToap/j5jYiPSmgG6bEd8RY4Afh22fOU74CavQE3lNM4vrr9Nb6q+Szy
+         z1dn0gVXhLoEadO84EC7y2NNqrm/uHn3eTC6OCwuUCJpEGXRSzPkLNuvqv/QrTytdwa9
+         K0QvquzUQv99vANjO+mIz3QijJgdvXKhWm9f3XvX8NaSxF3hfxgWmk6ObQ+vLcNihELP
+         V2sw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ijs9LuCk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BmbFEPG2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0acafb0si95886276d6.252.2025.04.28.03.27.16
+        by mx.google.com with ESMTPS id d75a77b69052e-47ea1995bcdsi101476331cf.305.2025.04.28.03.28.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 03:27:16 -0700 (PDT)
+        Mon, 28 Apr 2025 03:28:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ijs9LuCk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BmbFEPG2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9LhP-00064m-5W; Mon, 28 Apr 2025 06:26:55 -0400
+	id 1u9LhU-0006S4-Oz; Mon, 28 Apr 2025 06:27:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9LhG-0005nx-V1
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:48 -0400
+ id 1u9LhJ-0005rZ-Uz
+ for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9LhF-0003FD-6c
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:46 -0400
+ id 1u9LhI-0003Fh-0E
+ for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1745836002;
+ s=mimecast20190719; t=1745836006;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ahYBnUfEydQCI3V8bBlQ14kf0qqdv+HN0cdX3llkQGU=;
- b=Ijs9LuCkPl8jTFFXolNpltb3BDbZsjmCS3lIOTPrmCFxgQs9N1S9DEOPc1FAn1sYc94Alk
- 6GjzZOqd16QASsntEZTOvDNye4sS8U078l+c9wzwEA1YWaKbVwY9KughZkVneA+a00n2Pj
- 4czqzfkEpWDONvQB02/ur4xHu0vARbE=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6XahBnXpFqwycsDBbg1wLu1EfXJ0E3CuvWhdSJiCoos=;
+ b=BmbFEPG2efQN3ARm5+jW4l9h7v41PGBdt7UjtbEjIQTFFl1ToPjauIkYxX/r0xAR0fhBP4
+ 7MYdlM8K1bIzVzuQ4g2uSKAQN8WN+Sxg/i8gaOLvu5wgRypn9lfG3eCNZyPS9RpYSMcDkI
+ evIHbCWsIY56sXBTMC/sBJ6eMjp1PhA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-324-Ex66r9OLMsWbmw1yXytr-g-1; Mon,
- 28 Apr 2025 06:26:38 -0400
-X-MC-Unique: Ex66r9OLMsWbmw1yXytr-g-1
-X-Mimecast-MFC-AGG-ID: Ex66r9OLMsWbmw1yXytr-g_1745835996
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-626-6ey_4z0KMjCz6EJX54VPFQ-1; Mon,
+ 28 Apr 2025 06:26:43 -0400
+X-MC-Unique: 6ey_4z0KMjCz6EJX54VPFQ-1
+X-Mimecast-MFC-AGG-ID: 6ey_4z0KMjCz6EJX54VPFQ_1745836002
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 50D131800980; Mon, 28 Apr 2025 10:26:36 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 00E7319560AA; Mon, 28 Apr 2025 10:26:42 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.14])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 41B62180045C; Mon, 28 Apr 2025 10:26:30 +0000 (UTC)
+ id D0464180045C; Mon, 28 Apr 2025 10:26:36 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
  anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
 Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com
-Subject: [RFC 00/24] APCI PCI Hotplug support on ARM
-Date: Mon, 28 Apr 2025 12:25:26 +0200
-Message-ID: <20250428102628.378046-1-eric.auger@redhat.com>
+Subject: [RFC 01/24] hw/pci/pcie_port: Fix pcie_slot_is_hotpluggbale_bus typo
+Date: Mon, 28 Apr 2025 12:25:27 +0200
+Message-ID: <20250428102628.378046-2-eric.auger@redhat.com>
+In-Reply-To: <20250428102628.378046-1-eric.auger@redhat.com>
+References: <20250428102628.378046-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
@@ -116,89 +120,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MlohzefAbkfr
+X-TUID: F7L3YQQJZnGg
 
-This series enables APCI PCI hotplug/hotunplug on ARM
-and makes it default for 10.1 machine type. This aligns with
-x86 q35 machine. Expected benefits should be similar to
-those listed in [1].
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/pci/pcie_port.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-The infrastructure used in x86 is heavily reused and a
-huge part of the series consists in moving code from
-hw/i386/acpi-build.c to a generic place and slightly
-adapting it to make it usable on ARM. The DSDT table is
-augmented to support ACPI PCI hotplug elements.
-
-On ARM we use use a GED event to notify the OS about
-hotplug events.
-
-I have not noticed any tests/qtest/bios-tables-test failures
-neither on x86 nor ARM. x86 DSDT table has not changed.
-ARM DSDT table definitively has but there are no tests
-impacted. ARM misses hotplug tests that do exist on x86. This
-most probably should be considered in the future.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
-
-[1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
-https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
-
-
-Eric Auger (24):
-  hw/pci/pcie_port: Fix pcie_slot_is_hotpluggbale_bus typo
-  hw/acpi/ged: Fix wrong identation
-  hw/i386/acpi-build: Fix build_append_notfication_callback typo
-  hw/i386/acpi-build: Make aml_pci_device_dsm() static
-  hw/arm/virt: Introduce machine state acpi pcihp flags and props
-  hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
-  hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
-    acpi_dsdt_add_pci_osc
-  hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
-  hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine
-    downto gpex
-  hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
-  hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
-  hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
-  hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
-  hw/i386/acpi-build: Move build_append_notification_callback to pcihp
-  hw/i386/acpi-build: Move remaining pcihp generic functions to pcihp
-  hw/i386/acpi-build: Introduce and use acpi_get_pci_host
-  hw/arm/virt-acpi-build: Add DSDT additions for PCI hotplug
-  hw/acpi/ged: Prepare the device to react to PCI hotplug events
-  hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
-    implementation
-  hw/acpi/ged: Support migration of AcpiPciHpState
-  hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
-  hw/arm/virt: Let virt support pci hotplug/unplug GED event
-  hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
-  hw/arm/virt: Use ACPI PCI hotplug by default
-
- hw/i386/acpi-build.h                   |   4 -
- include/hw/acpi/aml-build.h            |   2 +
- include/hw/acpi/generic_event_device.h |   5 +
- include/hw/acpi/pci.h                  |   4 +-
- include/hw/acpi/pcihp.h                |  14 +
- include/hw/arm/virt.h                  |   4 +
- include/hw/pci-host/gpex.h             |   1 +
- include/hw/sysbus.h                    |   1 +
- hw/acpi/aml-build.c                    |  50 +++
- hw/acpi/generic_event_device.c         |  64 +++-
- hw/acpi/pci.c                          |  20 ++
- hw/acpi/pcihp.c                        | 428 +++++++++++++++++++++-
- hw/arm/virt-acpi-build.c               |  26 ++
- hw/arm/virt.c                          | 100 +++++-
- hw/core/sysbus.c                       |  11 +
- hw/i386/acpi-build.c                   | 475 +------------------------
- hw/pci-host/gpex-acpi.c                |  75 +---
- hw/pci/pcie_port.c                     |   4 +-
- hw/arm/Kconfig                         |   2 +
- 19 files changed, 748 insertions(+), 542 deletions(-)
-
+diff --git a/hw/pci/pcie_port.c b/hw/pci/pcie_port.c
+index c73db30e98..072500ed34 100644
+--- a/hw/pci/pcie_port.c
++++ b/hw/pci/pcie_port.c
+@@ -188,7 +188,7 @@ int pcie_count_ds_ports(PCIBus *bus)
+     return dsp_count;
+ }
+ 
+-static bool pcie_slot_is_hotpluggbale_bus(HotplugHandler *plug_handler,
++static bool pcie_slot_is_hotpluggable_bus(HotplugHandler *plug_handler,
+                                           BusState *bus)
+ {
+     PCIESlot *s = PCIE_SLOT(bus->parent);
+@@ -221,7 +221,7 @@ static void pcie_slot_class_init(ObjectClass *oc, void *data)
+     hc->plug = pcie_cap_slot_plug_cb;
+     hc->unplug = pcie_cap_slot_unplug_cb;
+     hc->unplug_request = pcie_cap_slot_unplug_request_cb;
+-    hc->is_hotpluggable_bus = pcie_slot_is_hotpluggbale_bus;
++    hc->is_hotpluggable_bus = pcie_slot_is_hotpluggable_bus;
+ }
+ 
+ static const TypeInfo pcie_slot_type_info = {
 -- 
 2.49.0
 

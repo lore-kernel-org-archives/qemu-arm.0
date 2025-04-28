@@ -1,205 +1,248 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5884113njd;
-        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWyD3jATfhXfKntxlh8HDdWhnKctueC33RSz438ehNU3Kvna2livT/zEqPdhYWmb/JfE/nO4ETXWu1Sdw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGXxD1ogwiObsE94vZKcqjH5gqUGkkL0UxAKdRwcqWCIaOEKKLRnvrJ75xNsBPCSGPdO0cJ
-X-Received: by 2002:a05:622a:11c7:b0:476:9e90:101d with SMTP id d75a77b69052e-4801e4ef571mr184511781cf.38.1745838111625;
-        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745838111; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5888685njd;
+        Mon, 28 Apr 2025 04:08:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8Dy1n4NOlGfR+9pdOYGNVZ18mzfAl/MYKspf5K5I8W359wvRH9Rpot2glxLyva5Rcgkh6znB12T7RkA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxwqrlJyQPGUhDl16LKyDSxfjy5/wCmYvBeBG/G1+8RdGnmZxJKUv2eEFC2PSXdD8Ng17/
+X-Received: by 2002:a05:622a:153:b0:476:5fd5:4de7 with SMTP id d75a77b69052e-4801e4ef5c4mr200288731cf.41.1745838519717;
+        Mon, 28 Apr 2025 04:08:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745838519; cv=none;
         d=google.com; s=arc-20240605;
-        b=icZQC1FveCqJcN07NeJQ0JG1K03A3da7iEb/MxnJsSyy9yGs+idMir6ST4h8NFo6Ot
-         I1wlfClbC9r8XnpGdy0A1QDsNl3eztCmqvBUhwvt92OCQ1WSoWHmNgDzNpvNY4p0WgsQ
-         sWkyvnib9i/msiRvq8CKMXflKBOvDbzXto67yHvzdmqW9Fj+RWRRXV6Pkwl9ZIkdQ6Y2
-         dp/9jAHp8xToMVLpUxmDteTlLXSi8ylHIcPQBV1/WKjaY1MVjuLBHJn/bhJ8HOb6STw0
-         ZFif0mx11jX1gEd91xfEGIRXb2kbevMlYVo8Qcie4DkNPlPBVv4sTeLdWLN6UffmcrF8
-         GTyA==
+        b=dG82lOdBqxTjPNZmSqaYD3D2ubvviq5G7YHH1WBcnmLrS/jQ9GVf/d70O51nwbrPBm
+         zSrTUmcfcMziY6YOHRCGWMNFqIuD9HUws/+/sAe1ydaUkcdZN95VGqQx8GmDMzLaF0Gd
+         qZG9PaE11fzmuypXF9yVZxsa1KM/RNzvAYBt/ZuKKstfRPmriuSM+pv+I3ox1rCC+KRZ
+         /oDFFq000oipoE/u8CgPQrXXiZwFVk/bCja0xhBC1s/flxCfKuFfXcj3jZq084Aqejes
+         1eACpJ5Lh1iHQLPHL/RLdAAPoQBv8RwXBmTYig5a4bcOKZd7EtC8IgSv5we53krISWLc
+         fACQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=p7BPNik8jf6f20Ng89CquWrXSTwtnK3LXnhaTDoRwnQ=;
-        fh=R0c0yB/lExKARN8+ZHY9nltsW9/furMBdAT2nVS52P0=;
-        b=BXef6CoH3rOMOMLDKMp9yPjAcjb+oB80cT9SyGX5ZFZ5Y+lKprl8zyDP3vTUftIGEu
-         Vk0kL9DwwtOWNpooGsiiADGYOAiqVZzPAA2bdsmVt7vXcnT0ha+/x9gtPOzIn128GWeX
-         3jL2SxksahaYar7G7v+CPiwyFvIvP5PluSz66UcjuxfY2rZXBNvIWSn6DdA7PzskaS1a
-         KqlA+LuoU0oP0znMUZ+5aJOrzOuw1jD5i0OeynsLR06YyP7Ajpy62lXQjGPhJfM/iF1A
-         sSOX9jIjzPCxaivLM9eYrmhOkMF/6wgSkVFYsfBW28ZDld6BIvWj0SZ5m66VpEzgYOdk
-         gdmQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=P4MjrEkE3pFzVFNs8O406ceBwsNugKQmmNOa08IAuoU=;
+        fh=4I6C6M6UnjJSR8ua+77IMjq+L7KY+8Gqk52ai7dLWhQ=;
+        b=BCIGbDdthaxvKhL6CxF4fvOtaJBfSALdgkWxYB7L1mIC1BoDseX73/bgFbAcVLQx2O
+         Fnd81TpwqF04gVUXp839k5ql2ck+sCFyhZnfu82apLIYHrLOLCGmIyZQpXoNNgjOGdzv
+         xm7NffbAMVvUsaFovsQ23wAHpb/JDuO4NPgTdpUIUCkhisjA3m4cbU9WTyF3tTbzBzlc
+         mtnl42TzGUy4TEKHeRUREDBFTYKMYwUEqWe8VJzJDDffVkWO/F+XOGmOX7VgEGbNSull
+         +S9/tgasmSk0qqsZYboBCYuyI9LjGTPCaR49T8nE3SqxdtGlgG9wjL7nMSwCO4EVWugJ
+         wlkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea1e95de7si106092341cf.358.2025.04.28.04.01.51
+        by mx.google.com with ESMTPS id d75a77b69052e-47e9fa9999fsi105568911cf.174.2025.04.28.04.08.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Apr 2025 04:08:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9MEg-0006G4-9F; Mon, 28 Apr 2025 07:01:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1u9MLP-00038e-Vq; Mon, 28 Apr 2025 07:08:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
- id 1u9MEc-0006En-G4; Mon, 28 Apr 2025 07:01:15 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1u9MLK-00034T-88; Mon, 28 Apr 2025 07:08:10 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
- id 1u9MEY-0000Hg-C0; Mon, 28 Apr 2025 07:01:14 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZmL8t4S4Yz4x1w;
- Mon, 28 Apr 2025 21:01:02 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZmL8q1F3fz4wvb;
- Mon, 28 Apr 2025 21:00:58 +1000 (AEST)
-Message-ID: <2a85d0c5-0606-411d-b8c5-4b8806182384@kaod.org>
-Date: Mon, 28 Apr 2025 13:00:56 +0200
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1u9MLG-0001T7-00; Mon, 28 Apr 2025 07:08:08 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZmLCH6LlSz6K9QY;
+ Mon, 28 Apr 2025 19:03:07 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id AC4761402EF;
+ Mon, 28 Apr 2025 19:07:55 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.203.177.99) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 28 Apr 2025 13:07:54 +0200
+To: <qemu-devel@nongnu.org>
+CC: <philmd@linaro.org>, <alireza.sanaee@huawei.com>, <anisinha@redhat.com>,
+ <armbru@redhat.com>, <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>,
+ <eric.auger@redhat.com>, <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, 
+ <imammedo@redhat.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <linuxarm@huawei.com>, <mst@redhat.com>,
+ <mtosatti@redhat.com>, <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
+ <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v10 0/6] Specifying cache topology on ARM
+Date: Mon, 28 Apr 2025 12:07:48 +0100
+Message-ID: <20250428110754.48-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into AST10x0
- and AST2600 SoCs
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250423025651.189702-1-kane_chen@aspeedtech.com>
- <20250423025651.189702-4-kane_chen@aspeedtech.com>
- <e3d35357-de8c-44da-b54e-7ec2761f513b@kaod.org>
- <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=KRh2=XO=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: blAQhq/VREf2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Zi6kaNGoAeix
 
-Hello,
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. Patches that allow
+for an interface to express caches was landed in the prior cycles. This
+patchset uses the interface as a foundation.  Thus, the device tree and
+ACPI/PPTT table, and device tree are populated based on
+user-provided information and CPU topology.
 
-> I understand that using a machine option (e.g., -M ast2600-evb,otpmem=xxx)
-> to specify the OTP memory drive is similar to the modeling used for
-> flash devices in the Q35 machine. However, in the real ASPEED hardware,
-> the OTP memory is physically part of the Secure Boot Controller (SBC)
+Example:
 
-So this argument is a good reason to let the Aspeed SBC model own the
-otpmem model and not the SoC. It fits better HW design.
 
-> and is not designed to be removable or swappable. 
++----------------+                            +----------------+
+|    Socket 0    |                            |    Socket 1    |
+|    (L3 Cache)  |                            |    (L3 Cache)  |
++--------+-------+                            +--------+-------+
+         |                                             |
++--------+--------+                            +--------+--------+
+|   Cluster 0     |                            |   Cluster 0     |
+|   (L2 Cache)    |                            |   (L2 Cache)    |
++--------+--------+                            +--------+--------+
+         |                                             |
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+         |                   |                       |                   |
++--------+              +--------+              +--------+          +--------+
+|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
++--------+              +--------+              +--------+          +--------+
+|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
++--------+              +--------+              +--------+          +--------+
 
-Yes. Then, in that case, you should provide a static array of uin8t_t
-defined at reset, which was my first suggestion. But you said you
-wanted to be able to change the initial values. I am bit lost in what
-you want to achieve. Please explain.
 
-If you want to be able to change the initial values, you need to take
-into account the QEMU user interface in the design. Being able to define
-the otpmem backend using a blockdev is better for the long term support.
-'-drive' is a poor interface we would like to remove. What would happen
-if another device of the machine needed a format=raw drive ? how would
-the drives be assigned ? depending on the command line ordering like we
-do for mtd drives ? :/
+The following command will represent the system relying on **ACPI PPTT tables**.
 
-Anyhow, wiring the block backend to the device of the machine is
-Let's first start by defining the basic model.
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
 
-> Allowing users to
-> specify the OTP memory through a machine option might imply otherwise,
-> which could be misleading compared to the actual hardware behavior.
-I don't understand your point here. Putting the otpmem model under
-SBC fits better HW design. Please explain.
+The following command will represent the system relying on **the device tree**.
 
-> That said, if maintaining consistency with QEMU’s device modeling
-> principles (as done for flash devices) is preferred over strict
-> hardware modeling fidelity, I am willing to adjust the implementation
-> accordingly.
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
 
-QEMU is an emulator. We try to avoid modeling shortcuts, but for
-usability and complexity reasons, we sometimes do.
+Failure cases:
+    1) There are scenarios where caches exist in systems' registers but
+    left unspecified by users. In this case qemu returns failure.
 
-> 
-> Could you please confirm if you still prefer following the edk2 flash
-> model for OTP memory, despite the slight mismatch with hardware
-> behavior?
+    2) SMT threads cannot share caches which is not very common. More
+    discussions here [1].
 
-AFAIUI, the current proposal is not matching HW. Please explain the
-mismatch.
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket right now. Hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
 
-Thanks,
+TODO:
+  1) Making the code to work with arbitrary levels
+  2) Separated data and instruction cache at L2 and L3.
+  3) Additional cache controls.  e.g. size of L3 may not want to just
+  match the underlying system, because only some of the associated host
+  CPUs may be bound to this VM.
 
-C.
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
 
+Change Log:
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Depends-on: Building PPTT with root node and identical implementation flag
+Depends-on: Msg-id: 20250423114130.902-1-alireza.sanaee@huawei.com
+
+Alireza Sanaee (6):
+  target/arm/tcg: increase cache level for cpu=max
+  arm/virt.c: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  hw/acpi/aml-build.c: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT tables
+  Update the ACPI tables according to the acpi aml_build changes
+
+ hw/acpi/aml-build.c                           | 201 +++++++++-
+ hw/arm/virt-acpi-build.c                      |   8 +-
+ hw/arm/virt.c                                 | 343 ++++++++++++++++++
+ hw/cpu/core.c                                 |  92 +++++
+ hw/loongarch/virt-acpi-build.c                |   2 +-
+ include/hw/acpi/aml-build.h                   |   4 +-
+ include/hw/arm/virt.h                         |   4 +
+ include/hw/cpu/core.h                         |  26 ++
+ target/arm/tcg/cpu64.c                        |  13 +
+ tests/data/acpi/aarch64/virt/PPTT             | Bin 96 -> 176 bytes
+ .../data/acpi/aarch64/virt/PPTT.acpihmatvirt  | Bin 176 -> 496 bytes
+ tests/data/acpi/aarch64/virt/PPTT.topology    | Bin 356 -> 676 bytes
+ tests/qtest/bios-tables-test.c                |  14 +-
+ 13 files changed, 698 insertions(+), 9 deletions(-)
+
+-- 
+2.34.1
 

@@ -1,112 +1,137 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5872725njd;
-        Mon, 28 Apr 2025 03:33:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVTCc8Tb6pgunGVZmTj2c7/YeKL37POqPdKrg3YWiD3sJ9W/OF+qMt8viBG91ibqEzt8g3CTvYGetiPQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPlrb9Hm+Bk49ICUG9vnl9KvM7d3fXoNUIxVOKc8dsngXj59EeuTZ8qZB5hgwErZ2yJNyZ
-X-Received: by 2002:a05:6214:1c07:b0:6e6:6c18:3ab7 with SMTP id 6a1803df08f44-6f4d1f1a412mr170487586d6.27.1745836408497;
-        Mon, 28 Apr 2025 03:33:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745836408; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5884113njd;
+        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWyD3jATfhXfKntxlh8HDdWhnKctueC33RSz438ehNU3Kvna2livT/zEqPdhYWmb/JfE/nO4ETXWu1Sdw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGXxD1ogwiObsE94vZKcqjH5gqUGkkL0UxAKdRwcqWCIaOEKKLRnvrJ75xNsBPCSGPdO0cJ
+X-Received: by 2002:a05:622a:11c7:b0:476:9e90:101d with SMTP id d75a77b69052e-4801e4ef571mr184511781cf.38.1745838111625;
+        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745838111; cv=none;
         d=google.com; s=arc-20240605;
-        b=BkLj4lXmvCA2FBfJWk1u8kXGFGJ25EH9FY+4YSFIZfPOpbdpnplJpWv/girULVXJ1i
-         /VVTW8AreL9kFyHayNwXqGS5BrQ6QIqOLVUsadrKU1BWb7eiVBMchh+Og650LwkDc0Jk
-         ZWHNWFBeXILDJy48ui006ytsIPZ743n7AebAyuaGrLDdf0QWIj74bspl21QM6W/ygYSN
-         ywYZ/Tw3eu3/N1Yq7jVQ2moxqutfWV72YJajuOMhzmsvvzLTkeBrig21C/odzSIrCGKT
-         OXayMxDkYdC1maEqXmjzm6uaaZnO9RlWzK5Dd8RenDkzWlmIpWD8tEOu4xNs3Jmrd0G2
-         jzlg==
+        b=icZQC1FveCqJcN07NeJQ0JG1K03A3da7iEb/MxnJsSyy9yGs+idMir6ST4h8NFo6Ot
+         I1wlfClbC9r8XnpGdy0A1QDsNl3eztCmqvBUhwvt92OCQ1WSoWHmNgDzNpvNY4p0WgsQ
+         sWkyvnib9i/msiRvq8CKMXflKBOvDbzXto67yHvzdmqW9Fj+RWRRXV6Pkwl9ZIkdQ6Y2
+         dp/9jAHp8xToMVLpUxmDteTlLXSi8ylHIcPQBV1/WKjaY1MVjuLBHJn/bhJ8HOb6STw0
+         ZFif0mx11jX1gEd91xfEGIRXb2kbevMlYVo8Qcie4DkNPlPBVv4sTeLdWLN6UffmcrF8
+         GTyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uOWS9+luVYrycKLIWAMybd23nU1OwvpglG2WD3jdJbg=;
-        fh=+sxB8NkS+xL+1QwPgIVnaMhN8Q9GX11v/uLdEosqQQA=;
-        b=Vj3mY4ihHEOpLJhhmANWBdRARlEEMcsd2JsgSqN7a2m8FlXSMxHMBcv4NOE5ZJAJzS
-         wvZgzLj0VOZVIN7u6xua133f8gbrDOUHTwTld0TVecmI/FZ08C0SwrhSJUPs4YkGWJzl
-         2Q9SZCYiv9Uox2mAu3b+JPNphzV/oXbBDrbcN38lTKLUYapOFPBhVBsBrDuRo36OwUKi
-         NrSrskGbNuEbwNGr0KJzXU5A7Ry1H7rnSklcgasxfL9o+m30oy57kNVQ+M0BShyITcE6
-         F7vF41zEbmAZOqZQmF6OPjVddu9qSBaneGWh4z4jjCS7BeD5EdJjGq4a0s166m9xk39R
-         uhgA==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=p7BPNik8jf6f20Ng89CquWrXSTwtnK3LXnhaTDoRwnQ=;
+        fh=R0c0yB/lExKARN8+ZHY9nltsW9/furMBdAT2nVS52P0=;
+        b=BXef6CoH3rOMOMLDKMp9yPjAcjb+oB80cT9SyGX5ZFZ5Y+lKprl8zyDP3vTUftIGEu
+         Vk0kL9DwwtOWNpooGsiiADGYOAiqVZzPAA2bdsmVt7vXcnT0ha+/x9gtPOzIn128GWeX
+         3jL2SxksahaYar7G7v+CPiwyFvIvP5PluSz66UcjuxfY2rZXBNvIWSn6DdA7PzskaS1a
+         KqlA+LuoU0oP0znMUZ+5aJOrzOuw1jD5i0OeynsLR06YyP7Ajpy62lXQjGPhJfM/iF1A
+         sSOX9jIjzPCxaivLM9eYrmhOkMF/6wgSkVFYsfBW28ZDld6BIvWj0SZ5m66VpEzgYOdk
+         gdmQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iPKKgvfE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c08d2ae4si98228796d6.84.2025.04.28.03.33.28
+        by mx.google.com with ESMTPS id d75a77b69052e-47ea1e95de7si106092341cf.358.2025.04.28.04.01.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 03:33:28 -0700 (PDT)
+        Mon, 28 Apr 2025 04:01:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iPKKgvfE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9Ljr-0003j7-5w; Mon, 28 Apr 2025 06:29:28 -0400
+	id 1u9MEg-0006G4-9F; Mon, 28 Apr 2025 07:01:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9Liz-0000iI-N7
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:28:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
+ id 1u9MEc-0006En-G4; Mon, 28 Apr 2025 07:01:15 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9Lie-0003Ub-LP
- for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:28:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1745836091;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uOWS9+luVYrycKLIWAMybd23nU1OwvpglG2WD3jdJbg=;
- b=iPKKgvfEJx+QEFOMCQKduBu8wX7XdGyonemMXWX/Cw6GIkZdIbgaOf2cOx44/0MU3KumLT
- +/JY5frZmWCfXswTK1yBRFwWblNUqQGxRTHPRy4YEXoYItbolL2piVGg4/dWe3vHlrnzKs
- yS3+oJYT6as6IuYIv7HuYELW1UvkXnI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-131-AMrSQuVROgugMXkUU-mqGw-1; Mon,
- 28 Apr 2025 06:28:07 -0400
-X-MC-Unique: AMrSQuVROgugMXkUU-mqGw-1
-X-Mimecast-MFC-AGG-ID: AMrSQuVROgugMXkUU-mqGw_1745836086
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
+ id 1u9MEY-0000Hg-C0; Mon, 28 Apr 2025 07:01:14 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZmL8t4S4Yz4x1w;
+ Mon, 28 Apr 2025 21:01:02 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 800251800570; Mon, 28 Apr 2025 10:28:06 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.14])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3508A180045C; Mon, 28 Apr 2025 10:28:01 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com,
-	Jonathan.Cameron@huawei.com
-Subject: [RFC 19/24] hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
- implementation
-Date: Mon, 28 Apr 2025 12:25:45 +0200
-Message-ID: <20250428102628.378046-20-eric.auger@redhat.com>
-In-Reply-To: <20250428102628.378046-1-eric.auger@redhat.com>
-References: <20250428102628.378046-1-eric.auger@redhat.com>
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZmL8q1F3fz4wvb;
+ Mon, 28 Apr 2025 21:00:58 +1000 (AEST)
+Message-ID: <2a85d0c5-0606-411d-b8c5-4b8806182384@kaod.org>
+Date: Mon, 28 Apr 2025 13:00:56 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into AST10x0
+ and AST2600 SoCs
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250423025651.189702-1-kane_chen@aspeedtech.com>
+ <20250423025651.189702-4-kane_chen@aspeedtech.com>
+ <e3d35357-de8c-44da-b54e-7ec2761f513b@kaod.org>
+ <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.492,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=KRh2=XO=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,86 +146,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: muXZmUxy1YJH
+X-TUID: blAQhq/VREf2
 
-Add PCI device related code in the TYPE_HOTPLUG_HANDLER
-implementation.
+Hello,
 
-For a PCI device hotplug/hotunplug event, the code routes to
-acpi_pcihp_device callbacks (pre_plug_cb, plug_cb, unplug_request_cb,
-unplug_cb).
+> I understand that using a machine option (e.g., -M ast2600-evb,otpmem=xxx)
+> to specify the OTP memory drive is similar to the modeling used for
+> flash devices in the Q35 machine. However, in the real ASPEED hardware,
+> the OTP memory is physically part of the Secure Boot Controller (SBC)
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/acpi/generic_event_device.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+So this argument is a good reason to let the Aspeed SBC model own the
+otpmem model and not the SoC. It fits better HW design.
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 0fd8baba97..144c91ea4c 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -16,6 +16,7 @@
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
-+#include "hw/pci/pci_device.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
-@@ -234,6 +235,17 @@ static const MemoryRegionOps ged_regs_ops = {
-     },
- };
- 
-+static void acpi_ged_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-+                                        DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_pre_plug_cb(hotplug_dev, dev, errp);
-+    } else {
-+        error_setg(errp, "virt: device pre plug request for unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
- static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
- {
-@@ -247,6 +259,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         }
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_plug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -263,6 +277,9 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_request_cb(hotplug_dev, &s->pcihp_state,
-+                                            dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -278,6 +295,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -494,6 +513,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
-     dc->vmsd = &vmstate_acpi_ged;
-     dc->realize = acpi_ged_realize;
- 
-+    hc->pre_plug = acpi_ged_device_pre_plug_cb;
-     hc->plug = acpi_ged_device_plug_cb;
-     hc->unplug_request = acpi_ged_unplug_request_cb;
-     hc->unplug = acpi_ged_unplug_cb;
--- 
-2.49.0
+> and is not designed to be removable or swappable. 
+
+Yes. Then, in that case, you should provide a static array of uin8t_t
+defined at reset, which was my first suggestion. But you said you
+wanted to be able to change the initial values. I am bit lost in what
+you want to achieve. Please explain.
+
+If you want to be able to change the initial values, you need to take
+into account the QEMU user interface in the design. Being able to define
+the otpmem backend using a blockdev is better for the long term support.
+'-drive' is a poor interface we would like to remove. What would happen
+if another device of the machine needed a format=raw drive ? how would
+the drives be assigned ? depending on the command line ordering like we
+do for mtd drives ? :/
+
+Anyhow, wiring the block backend to the device of the machine is
+Let's first start by defining the basic model.
+
+> Allowing users to
+> specify the OTP memory through a machine option might imply otherwise,
+> which could be misleading compared to the actual hardware behavior.
+I don't understand your point here. Putting the otpmem model under
+SBC fits better HW design. Please explain.
+
+> That said, if maintaining consistency with QEMU’s device modeling
+> principles (as done for flash devices) is preferred over strict
+> hardware modeling fidelity, I am willing to adjust the implementation
+> accordingly.
+
+QEMU is an emulator. We try to avoid modeling shortcuts, but for
+usability and complexity reasons, we sometimes do.
+
+> 
+> Could you please confirm if you still prefer following the edk2 flash
+> model for OTP memory, despite the slight mismatch with hardware
+> behavior?
+
+AFAIUI, the current proposal is not matching HW. Please explain the
+mismatch.
+
+Thanks,
+
+C.
+
 

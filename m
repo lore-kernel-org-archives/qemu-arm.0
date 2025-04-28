@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5783766njd;
-        Sun, 27 Apr 2025 23:41:15 -0700 (PDT)
-X-Received: by 2002:a17:903:1b27:b0:224:255b:c92e with SMTP id d9443c01a7336-22dc69f836cmr114837605ad.3.1745822475581;
-        Sun, 27 Apr 2025 23:41:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745822475; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5783821njd;
+        Sun, 27 Apr 2025 23:41:23 -0700 (PDT)
+X-Received: by 2002:a17:902:cec3:b0:224:1609:a747 with SMTP id d9443c01a7336-22dbf5f11ffmr155145755ad.31.1745822483240;
+        Sun, 27 Apr 2025 23:41:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745822483; cv=none;
         d=google.com; s=arc-20240605;
-        b=eVd4CQz44r7MXPf8wVc+Zq4I7nIrT4DzCTqGKJd1qKgxfGW/myZ9H96BcEs7knJWW8
-         gmAhYrqFg/7YMhclqk5Y0t5k3Urfl2lGDBsy4/I6oN0rgqa55ECgzqjFjgz5lgRJlg0b
-         ghMStWPDUXv2DNjyFJaOfMRwi65h+rdE/TWqHsSYndpNp5pD4EMNCUulzHHA3Huea8IH
-         j8R2JSYxUpRwp6BSQSFlzgl5tDqleNm+8ZHvYxf90ZcQdBMEQDeEjL/A00EH0Lz6acvz
-         eNPyo6Tj+C8vIU7MUCRrjaxxQzJAoAwPyR0WWn+arZPlzBWS0D688kWfhEBFhacygmwR
-         sGiw==
+        b=UeB7Oj723lPzvv3EZ/h33wrIG4y/FNIx2XDCLqwg1kBmjI/u2iudS7m4F0eeLmoaPt
+         B9IJe74NvIZgT7MEhspJgWeVw79byCnk/XcTldSbn9vjkHV5gRFrjTGKuNiWnynLG22f
+         opSOP2G+KD/2UAVKq23ImWOvLRPUCiDuLvppW17giPnOHNsRiehL+Crc69Ev6Um9ULyV
+         trnWwgLT4C+RCaMikTaPCq63mOKbJLefQA6Ste9IfS0/wdW5uwrcHVqnzXrblXuG16GW
+         1zlSXDIoPNrVRvMnqgLoOBb7oO6H5bcEM88ntoks+XJ0waYPrDq2TwFAl6x4Bv+A/dV1
+         WmEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3dFmBLtca5z+k4npQ+vmJi+va4ESRCI4ZS1XYe4MkFk=;
-        fh=E521fOiIvk0/OI311ZHLg43jXELqf8yvWxJPSfQdKsc=;
-        b=RKF8rLumZyN6GCncge2+tgS0lLivaIFyqNzOImV1LhR43HPyCrvAB3VRI1Ha5WblPc
-         kVUlsimF1R2u88KQc5/pRtKQ4AONgSjEoHE4VEYTQkB4UbdkjpnsNhRY5w+4GTsXU3P3
-         MUP8PGCT4QDer9m7HbD16W9IlsI8Yv1Vu6ltp9oSgi/IjP1iGOMoouKcZMqP2oANBZj2
-         Y0W9nXUDF6S1GxTfWVf/LGXhGwWavnoFmUazgsrRpjng4qr+2e7M1/0fEuMND3yhLnFK
-         z3bRgd1xHFTxRqVBrs8g8KVgKPNJEB8mbV5qg0HWuG/qKlfqCs8+tOxbEi3GVbkRI7Lj
-         r0Bg==;
+        bh=A+qJYGpC8zudJ6XJWHSpEsa6KVoxk0Yfz+c+aIsjTJ0=;
+        fh=y9mBxolaVQOglBtqhEOewo+joet7hN/Ehdwlj29Hu6Q=;
+        b=Ou7i+pOaVgfpwZtEe9xXg4SJ/Zsae0WUrvt5Sbt9+V0GVewI1lpdzZttrcITjeGQ5T
+         iyxvIdYs1VzrmQShPV5pj8qirXoLdnA0BpKGURoRi6370ucDMcWlmQbURPRLipsBY0o9
+         rmR2Ny+UMamxlkoAWhW1WlIjNYFQGNghBtUV3PhToTO/PGraqLfk0qPtt8YpS+9/+eai
+         Be5QFyLtwpjoPHRz+xFTouvy3F/cmfkiUTeQo6ZhWLK5PNeUhS16KZEwtrt0yNYF7e4V
+         0ciCJxTsh/hhuknYnbzgUra6nvmX5+lBUz2+tgHSXuvHZpx1Ng7PV8sxYpZvSU85oZkB
+         V9fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ecSImBFl;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="iYLM/lEG";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22db4ddf752sor71568415ad.5.2025.04.27.23.41.15
+        by mx.google.com with SMTPS id d9443c01a7336-22db52098a7sor1468075ad.15.2025.04.27.23.41.23
         (Google Transport Security);
-        Sun, 27 Apr 2025 23:41:15 -0700 (PDT)
+        Sun, 27 Apr 2025 23:41:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ecSImBFl;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="iYLM/lEG";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745822475; x=1746427275; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1745822483; x=1746427283; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3dFmBLtca5z+k4npQ+vmJi+va4ESRCI4ZS1XYe4MkFk=;
-        b=ecSImBFlv8IvLJ4p6Vta/DNWIjmXp3A17VGHg8GKRGnDJvSJYAyP6xxM+G/jZDrppC
-         Ng58oTQWvianQ9JwH0olLu18J5na1CD2Kf9PGOeAZ4c3v4SwZLuoB1rBVFdLJBO9CkpZ
-         KWAKfGaqDmsw8AnySibSkZ6hj6+qoSX+YExa8DtkScrh107Kls/zMyf80D/J8ZpCyCdF
-         yXU3cImB/UsSYsSTXFm+OoCUAxdzxckJj3amix7nCiyrrZLcClfKdnLy5nVTQefRs1EF
-         kAP97fEvmpy0Xf0Z0aB6cEC0uz88uEPVlNYjnIRQLu0A0fnXGteTL6KmdRvUiMantIyd
-         yRvA==
+        bh=A+qJYGpC8zudJ6XJWHSpEsa6KVoxk0Yfz+c+aIsjTJ0=;
+        b=iYLM/lEGgMp7c6k/t9U2TuDyQf5L4M8Awl8yyBO07Z53+4EtOH9E5qW91hhRifUoOn
+         FQGWOC/niOL4xQhvVgII0gX2HdyPF2BLVrtqYecexsz0Ui4/tzmExiwtHfh25EQLPbhs
+         zxUIs9Kl2KebqYhR4OsA60vXvGeLTrK19SNBa1RI0xNi8kBUS2hvF0LOhmNr5FuaabXM
+         9IvpvCQ2pVF9j8G4RpAUDlRafH+f1Oa57qhZbFNVVm4seEuebf5T1Odg0e1dOf1+Hecf
+         W9qLqiOGBMDa+VST8pcyrYsXVsvVzGB/9nzCxvx5AlTIvZUaapNdIx/nlEbrXWu3eqZ6
+         nXiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745822475; x=1746427275;
+        d=1e100.net; s=20230601; t=1745822483; x=1746427283;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3dFmBLtca5z+k4npQ+vmJi+va4ESRCI4ZS1XYe4MkFk=;
-        b=c427+iVxtzz0b5BPAOTTRQ/yKvEqHaMOMZHhQPEHZXTpGJHpTfjxjT2qL86OsGkclK
-         0CD2Yr3TuNehDMS+JfKhK9Sq8ebSgZ7IWNhcAatiBWrSp0IyWe47Jn+MOAAePmjZgh6c
-         Qjjgd5bRQQ55y/Wv38HnV3pM0DH65LxprsgCD1pTZz7HeJuthOhJ+4IYjwdY0pB/AMUV
-         +KYqvxoIbWLiB3c5AKBs0NT429IDU25C2BXKBCNQ5Ci5VLcYUE0oyGVlryMG5yinZy/r
-         DI3ys5+20CFrUho2Sl0yIfnJG0rNPyiBQLdk8j6kIE1U/aN9YT3n1+MZ2XX2jxHDmRzH
-         q5Jw==
-X-Forwarded-Encrypted: i=1; AJvYcCUsxTlRbSAaNKfMXtdOj6ThrZJ7Pe1asl6MRhxWBdoGjG/xlIXeyTUO4rjFT0A/fKVap5R76KyanHu0BjA85b3jjQ==@linaro.org, AJvYcCWQcnYuuGS2I+CVOfscYQF0EdDKk7Ojd9vE1vtNyr4JzPM/N3yvN99WCylO7LzPADGR7jJAs4ta@linaro.org, AJvYcCWY1xOPFTTcUzCNAMbD/UBMK5QN8mau3hXo/UXo+615pAqhuRGKEZEDVDwUlXHcT+57+0OL6z7EsB9GyjETa9SV+L8=@linaro.org, AJvYcCXVfuU+DpTAaqXuOjXa8PfEFTwlkC3GoiVWuLp10ydDI32a4QGm3Lpkqet4sl7YE95pjZSxh5JO/eDkXHmk@linaro.org
-X-Gm-Message-State: AOJu0YyLViEWjqjep+wNFnJ7kuWZLR71bmJA9+6OSUE8Nsq6Axj+whYo
-	H/Vhc7647yS6ZwXAl6MUQDbt4LJYfQNPfjZUYCyVWLaVar+oSNP7
-X-Gm-Gg: ASbGncuic7ZsZ8vptXKVkM3oz7eVfyaSxGz47+Z62PNwuVpJQZGekBI36gLdWTfhurx
-	vGWF5mBmGmjB8t0X4+qT9X5aGNh4daStAllXG++6/KAib6oza7EYcwG8We7YYbdKVZLJNo8cQiK
-	rTtphdyxOte7DGeM5Zbdx6m9E2lZ9iO2tWT0I9TGCJLQDQVTsswsEzWcyhA6rwA7BYMjxTUV7dh
-	LiArbA6M1uuEwWgP3eiOdgwzxT6Bck0y0mpuergbEZwto2jxK88h3K6N51N4Or2Iu/qrVgT37Zb
-	BoPgZ90OZQspIvKQVrHGgo+Tx4vLoJJ3MQd+2A==
-X-Google-Smtp-Source: AGHT+IEV7b6RfMBnPMMkbl7l51hr/9768Z1MTLBGWF6csH0hrlzffpn8bp/f0CJci2DJqbriCeykBg==
-X-Received: by 2002:a17:902:c945:b0:223:fabd:4f76 with SMTP id d9443c01a7336-22dc6a17d6cmr108623535ad.30.1745822474870;
-        Sun, 27 Apr 2025 23:41:14 -0700 (PDT)
+        bh=A+qJYGpC8zudJ6XJWHSpEsa6KVoxk0Yfz+c+aIsjTJ0=;
+        b=TzNZ2yyis4bBE2q45C4ZOBGyEkEtOEjlSSnp1KhREPMMLIzc4mdTvXGqCzowbklv0b
+         T6JoVwxGzNLbGJboYD7XIhjM+AUw0GJ4UgRk5xUatwfa4PPlBsy/rvJPB4QaPUHAbmd/
+         waCIR1zirIEFao6aeXaKsH8qtOmo2dqEvzMTu8k5l0G2T0VathCQHUMfChXEV9FkUzdX
+         wv1+Bz9RGMFjRxS3ggK6+NldwSWzNNgLoQtGTlza4cKhTHqmn2D0APkEw+dIIb0NuGod
+         P188si+KBwzRVbp16khjE8O+a3J6nOEZh7ArQ0DgJBLA0VSKfDsg9riCC/LlMBdzR4cH
+         Njvw==
+X-Forwarded-Encrypted: i=1; AJvYcCUkFJkNGHKjb9l/PCDQpl3rnHD0QAGBIrRcbvWhJMEfNt2FhAFQXGgszuvfbZ8RMSJWoh85xrjsCd7HJVlKTm9kUQ==@linaro.org, AJvYcCUpY3uOt1oZ8poEVqP1/iKFO29PFkrRtfapQmJryB+tpZ3OTrxxqwy/yFCCsAyxZ6TaLYnQXLMW@linaro.org, AJvYcCWJYo96Ky6p6Pwn9CqTq7P6MizoDyEMQez4fj5mP6Ko97+sjRbNFbehPbfvNSfiee4lQYMbs3/ZsVZkLMvdoj8NNlU=@linaro.org, AJvYcCWpuct+TR2IxWWbSZvPr7mePwUs9947gnjF0c/ojXHz37xqE0Kp1m3QjkIAPGj0OeKJNkkfMbAU+KiDY2iG@linaro.org
+X-Gm-Message-State: AOJu0YxVeD6Thu0tUzVWGEWHdGwZaHs514Pv98slnZzLGzRzoI1K9Sgy
+	c5jm/okAJmDl1FrGO7IUwuKV8oM5FjEKzKVaxC2TXc/Rat0Bf4ri
+X-Gm-Gg: ASbGncsp9Tc4OghwqyawIWOonR6GD+aeMoKBTXsRy+dgb7TfZxQuBeSCNe6PChC7iDx
+	VTsU/ufz5/YvswmYKCF5ik1vj7tF/+g+gCNaHuCdHQrAPqvwkzUe7aCcC4qff1jT45VxMASwCNs
+	miUywlXTGFmzaq63GLBxP93SGXEP55T4yRmbdt+z2Rlxrd+to45omzgD6Di+v/ci4ipTwsTmtbu
+	UYLXqffhIIL8sPAkZ+26Q++JOcoIF1N8o4eBusZL2Vt4ekd6o3WgrXWWAiqnV8eoYDkIcSmec7k
+	fkkrN30RDbrdOxFeJy3dJUJqP5geguYN/eXoxg==
+X-Google-Smtp-Source: AGHT+IHO3f+qZc9Iv97lxl2T4n0xLw+LFAlqa4f7UljrI/mIPNgu9dL4YuCAFvRtzFV72lSX8lpLmw==
+X-Received: by 2002:a17:903:94c:b0:223:5ca8:5ecb with SMTP id d9443c01a7336-22dbf62335emr154850705ad.42.1745822482596;
+        Sun, 27 Apr 2025 23:41:22 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:bcb:2cf3:f1b5:b7f])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbe328sm74721215ad.88.2025.04.27.23.41.07
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbe328sm74721215ad.88.2025.04.27.23.41.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Apr 2025 23:41:14 -0700 (PDT)
+        Sun, 27 Apr 2025 23:41:21 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -110,41 +110,48 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-ppc@nongnu.org,
 	qemu-s390x@nongnu.org
-Subject: [PATCH v3 12/20] block: Add including of ioctl header for Emscripten build
-Date: Mon, 28 Apr 2025 15:39:01 +0900
-Message-ID: <49b6ecdbd23ff83e3f191ef8a9f7cc2feeaea43f.1745820062.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v3 13/20] block: Fix type confict of the copy_file_range stub
+Date: Mon, 28 Apr 2025 15:39:02 +0900
+Message-ID: <938d2beba15d4bd496a600ee401995fbaa385c62.1745820062.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1745820062.git.ktokunaga.mail@gmail.com>
 References: <cover.1745820062.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: V56emotLbCnf
+X-TUID: +Es6i1frrjjM
 
-Including <sys/ioctl.h> is still required on Emscripten, just like on other
-platforms, to make the ioctl function available.
+Emscripten doesn't provide copy_file_range implementation but it declares
+this function in its headers. Meson correctly detects the missing
+implementation and unsets HAVE_COPY_FILE_RANGE. However, the stub defined in
+file-posix.c causes a type conflict with the declaration from Emscripten
+during compilation.
+
+To fix this error, this commit updates the stub implementation in
+file-posix.c to exactly match the declaration in Emscripten's headers. The
+manpage also aligns with this signature.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- block/file-posix.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ block/file-posix.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/block/file-posix.c b/block/file-posix.c
-index 56d1972d15..69257c0891 100644
+index 69257c0891..2758f31844 100644
 --- a/block/file-posix.c
 +++ b/block/file-posix.c
-@@ -110,6 +110,10 @@
- #include <sys/diskslice.h>
- #endif
+@@ -2015,8 +2015,8 @@ static int handle_aiocb_write_zeroes_unmap(void *opaque)
+ }
  
-+#ifdef EMSCRIPTEN
-+#include <sys/ioctl.h>
-+#endif
-+
- /* OS X does not have O_DSYNC */
- #ifndef O_DSYNC
- #ifdef O_SYNC
+ #ifndef HAVE_COPY_FILE_RANGE
+-static off_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
+-                             off_t *out_off, size_t len, unsigned int flags)
++ssize_t copy_file_range(int in_fd, off_t *in_off, int out_fd,
++                        off_t *out_off, size_t len, unsigned int flags)
+ {
+ #ifdef __NR_copy_file_range
+     return syscall(__NR_copy_file_range, in_fd, in_off, out_fd,
 -- 
 2.43.0

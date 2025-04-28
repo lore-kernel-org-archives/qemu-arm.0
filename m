@@ -1,98 +1,98 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5986905njd;
-        Mon, 28 Apr 2025 07:00:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEN9RRHwV10RQbh+sQrAf7eyyNBJBmcinZ6wKIuUvjmkdnMEGjkvyQxRXGhevgVXRXVdrZ8
-X-Received: by 2002:a05:6214:e6b:b0:6e6:646e:a0f0 with SMTP id 6a1803df08f44-6f4cb9d37bbmr175956396d6.12.1745848837792;
-        Mon, 28 Apr 2025 07:00:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745848837; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5988405njd;
+        Mon, 28 Apr 2025 07:02:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHIo4Gjcy73325YDY9PtOHVrUvQe10ACiRfB17a3RxG2oKt65k1CP0QaDAy6UOGxA57uds3
+X-Received: by 2002:a17:903:28d:b0:21f:b483:2ad5 with SMTP id d9443c01a7336-22dbf5dcd8bmr155923805ad.20.1745848926705;
+        Mon, 28 Apr 2025 07:02:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745848926; cv=none;
         d=google.com; s=arc-20240605;
-        b=F/LOzgn+dYLQYXTA9QBkLWG06092RC19lsHaURAKvPWFeb51o8eDVca05WxjDMfIHG
-         OhiqDfWkH7wZNSCjn60FXGHWQsiSP1EViZ5/uWcXWfdqBjfZVqMqSZywQ76u6EeQRyxk
-         RxzmIAIk2HEzfKpOi+CpqK+KkuAEKjaH7UR9DhPa0dCRlnu9IHgHw58WKIKTElte630h
-         vtiGFUoWUbI1X84TXF1Bsr8uG+ZStVWaXRyRskW/vFkfwuW9hAwm1uZULQl3wlArl40k
-         e4vRmJJVIzoQBwGWVtjW9jz2oVDcOEu/iI8vctPlOqn3ZrmwshHQfsmKwgv2pkJ5RMqd
-         8+8g==
+        b=cC8Jji4fNZDIOSK2O3n8vLvlvccepqKvcmFxdTKRE74XaiuXxkI2qsOsXkmo9giEBY
+         0sq/OgducVJSfohKb8sZgHhx3fp4mlpYb1+LnsP3Am9G86bBJTODIuNMavQQ+Ce/UHAO
+         MXrouBc/6U5v3KEtnITlz1byevxy5xSDHOYFekvNvGCx/QfH4phOhU7HLgOJIy99yvEv
+         R9iqkChK77+c3Q2k6WPhdKeOBLV8pcBwhZM9yQ0InCwydn6ef/r9AJYHmds1ApDXdFj9
+         LTKJUBcuUOP/SLOp6ricTLby8wUMclFVQAZfZZlGdRRvE1LL67UjPFbp2lSGEr1N4O5l
+         ps2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=o+K9fY3HxhttjtKjHOfixYuMIUFJSLFgMg1UK+eFuek=;
+        bh=oVDaO+qTXn+ujDK2ncQx+yn7CcEGLmLQc2GUBGf+VUE=;
         fh=jf2lbwziKaTy6ue9vQ8Pipxc7vUxBSFDf+GMsIxsvzo=;
-        b=EfpxPCCnKi8FtQIcHmn4SQr6LRWr8s+e7Bkh6POOqo6f3CS/w99sXC0QzHo1jVXZ1R
-         3ucYkVIzlzb/Ux6tbZ7jmRoXhJpwznaEZ48l6Zh1CCWxdzBQ2kfvV7zNA2Vn5cnakGUL
-         uZI8FFeIIrDjVcZChTZjvwkjDza5tUE6VXlE9x7DFdrgijvK0C0d9FU0tXpfrJowaXML
-         uy3VDNMqNkgM/HM1vs8RcfzqyNAzIlC5C/yAgOF52DjMgCf5hrzE+ZRNqsVXfV5Bd3ke
-         hkLJ2ZBjfwcaE69psa4ioNCi37cY7X2F7QH5iGuheHlUaupP7MJpOqkC0gOYPXPjO7tF
-         BRSg==;
+        b=OWv9squROLfaMtkjHR3DtzFantlHH5sYbZ5vbwP8ZkwJfoWNM/kqBPUzlBqmwt0SGA
+         +gc1ld051Y7zccJS5ndT6q6Wet2nl2TOJENtpT2i1p1GgXlFN5PuHBhK5bG2LjHnGl0+
+         N4stgbFjsV36hsl1UokS1QM292F4Kv1upEmXSf/cb1fVWV4EmHYbRZzpbXNVTEk1eALy
+         Y3m9bNZpM8TprqexK52E+FKRxr0sv1HyefQa579NxvjeN+B//jE+McmVpww8DlpvcsaX
+         6JXzb3/3+N5Z4xotYLUFgyK3nONjRt9qkzqYdA106Injm7iP9RU4GuiYJdX246KPNXmc
+         bVvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="CGldGy/G";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iuyHFhrP;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0aea494si99601106d6.299.2025.04.28.07.00.37
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-4f824b9e003si7962946173.82.2025.04.28.07.02.06
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 07:00:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 28 Apr 2025 07:02:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="CGldGy/G";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iuyHFhrP;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1745848837;
+	s=mimecast20190719; t=1745848925;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=o+K9fY3HxhttjtKjHOfixYuMIUFJSLFgMg1UK+eFuek=;
-	b=CGldGy/GgGPPKwtjlp4dLH9be2IoReUUOofYnLW6fKy0O2uoVr+2JssygaBPjrmQ91jlbl
-	TdD8G3vcLW/GYBd7q+7tTJBZp28cRe78f8pWA3ux18O39LKo+ueN1y3AlfFTK8fKUfB3xT
-	JEcoyyHU0Uq8ZbkgJoEYGa9EIbdGYtI=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=oVDaO+qTXn+ujDK2ncQx+yn7CcEGLmLQc2GUBGf+VUE=;
+	b=iuyHFhrPbNNwNWI2SdHB9AmvJEIfhZPapHMA+OHOL/0Ww3AdujcuWOBB2hvumzBkzO3v2U
+	gneSU5BjXXAqqOkVLkKnGITiDnPv+3XTtNg/bqB3Bj8SQIM0XjztUMUEsL140r0JGkaqjA
+	ZbkbGdWSlcPkuTBj99vbWg8kawcdp8w=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-341-khHIWhyoMFGqP-movnzhHg-1; Mon, 28 Apr 2025 10:00:35 -0400
-X-MC-Unique: khHIWhyoMFGqP-movnzhHg-1
-X-Mimecast-MFC-AGG-ID: khHIWhyoMFGqP-movnzhHg_1745848834
-Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-ac6a0443bafso447635066b.2
-        for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 07:00:35 -0700 (PDT)
+ us-mta-62-sCq5knYdM8CNhAvIHvvYbA-1; Mon, 28 Apr 2025 10:02:02 -0400
+X-MC-Unique: sCq5knYdM8CNhAvIHvvYbA-1
+X-Mimecast-MFC-AGG-ID: sCq5knYdM8CNhAvIHvvYbA_1745848921
+Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-acb98b5b0bdso433981566b.1
+        for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 07:02:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745848834; x=1746453634;
+        d=1e100.net; s=20230601; t=1745848921; x=1746453721;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=o+K9fY3HxhttjtKjHOfixYuMIUFJSLFgMg1UK+eFuek=;
-        b=ZkC7EkaRJwxuyswhDc0/JgUVhn+3hHJpnXDy7ReeoqDsw0ZzuiBNPtTuEG3+YTG89X
-         0FVAK3phWUJ3iLo8nd3+hffU86cbSsUPvfjyE4tmDB9v/0duwF8lypBSdQkOUa/7QZwA
-         NUmE1NgRfsNQ4zOViTffVAAVH4now+asrOXYOQw3Bnl8HaVTbwbmaJtxM7Mc3qPV9DgM
-         fiU03wJi8biQ0Up7Z0w/sx86260DrdQzruZYAFZyZs70bBHIGD6rI/6bfB5Swl1e3VBR
-         lO1mdN7m7CRVw3Ww11s2OLuoGxIFj8DChKHO0lU+aPRR53zWWU8XFfGiXVLWpQwAnsDX
-         FJTg==
-X-Gm-Message-State: AOJu0YyIzu8U+BAdUwYj7HRGOpgXBn7NX6jeGGnamyqNptiAtPzbx93u
-	TlZiN78N4ZIpSXXIuwp6cJpFVOiTDDW7XDl3N9DWpwLJLniZMBOdjAB/I3Qy6kQ+dPyZj4vSA2G
-	IVBuo3otCCjQUXA44jWaTlwuRBTJ31yRdMkXZbgX7aQUSkrbP0XCPr789CY3PVBRwTRBr09ifb9
-	H2GaDY0ka7UNhDD6FwH84GjYlKMoXiVIAaTZC1
-X-Gm-Gg: ASbGncv+weS2wQe8MaEqiAmkhJFuc4FhVoJjSqbqcjPaZuFm/ybuFTn4gtTJT0B1Vdu
-	nUZtvrvOMnQ0agrcYGtICcwltj7vzKzs73Yvbx0DJTJSIpnCgDIeCi/imUekhytsTFC+Ntjjum2
-	5tTk0XjLr6qA1kM8p/vUxqUOIb9KH+Cnsys+NfxKCeU15KTVxTu75j2ZBLxX/I3dOYlN/8PJKmb
-	pzYPCiK8K6NtHSM0cuXAMu7nPqqaeZiRpLrfRvnrFyiRQh20TcdUCvkrSDlx5EHM/3Q4hRBE55a
-	sDUGyC1cWl0J/SLG9N1noMe0frruhJavTd94UbVEFIONOQ==
-X-Received: by 2002:a17:907:3e03:b0:ace:3a27:9413 with SMTP id a640c23a62f3a-ace739dd0b1mr975333366b.11.1745848834364;
-        Mon, 28 Apr 2025 07:00:34 -0700 (PDT)
-X-Received: by 2002:a17:907:3e03:b0:ace:3a27:9413 with SMTP id a640c23a62f3a-ace739dd0b1mr975326366b.11.1745848833651;
-        Mon, 28 Apr 2025 07:00:33 -0700 (PDT)
+        bh=oVDaO+qTXn+ujDK2ncQx+yn7CcEGLmLQc2GUBGf+VUE=;
+        b=VSpmwhIdoKhf6mHz3QCUP4Pgobrv4cf1s1qB72nxySubTaXjsFaytehvCWr4bW9dPh
+         IOc07A78aILTA3duivikEeo5rjdj9zgL6EbaCBzAzp1RLqGep3aOkWaSadKTnyIvxpyX
+         Q59vkNRP7O+1Q3LuFZhRzBa+LCVgxSEgkgzT1/LDpwz4LmWqLtWLXSBQVmPm+OgllgQw
+         Tc44r5kaFuy8Sfu6FDSuII7ygL2Tp0ZdX8enJIYJaH1ZbaNow3gCy0xSD2ZCnngK1Zsk
+         n+1LJS2PhiO9AUZEqtC7R9LPDhuTZO4rU9L1/vE9LtfLV6qfSK3FByZ+c2zIZc2mi9He
+         qPAA==
+X-Gm-Message-State: AOJu0Yza/n9po1qbL/16lIAqmUxeOHDgZzmN9lvPl12mARigwBlLDcOE
+	lEPolRom8LNeQcBseyCVIkBrdrgbWcpqwvNp2xr6Y9EnS4FViuP1AH+xAsrJWexwf93qaI99mQ5
+	3WNEE86MlTvPcPEVbWcc35taWDjw3b1I2eeMlW4voaoK4KXM8DbA4IAEzxnfa1MFLn7hC/8v1w4
+	uIzG1FqJRyzhSHPSVBpYFJz4Tyw/jiX4ZXkObY
+X-Gm-Gg: ASbGncs4liFVrg7JfQNWwTQuWN8/ra/tajVn/HDJ6vslMGHFbhEyb/m5pKScj6MOJah
+	qbhSUNF4B8GCJJP/N1rzhlt2N8ObLVvZFoc26GhZfidAE6Y4WV+XtyPXYiJTJmiiQyK2d9jpHE+
+	6qOw/sFgGcG369Tx+XNV6yR3XUIIjigydO9kqHEth6ufq4LTASUMG+DwqPqPB0DwsuXQmOoZ+m/
+	HGVr886Ok8qUoRu054blGxky3Ux+YCPkURdGlqcV8KELeCsG3KdgpSwb7eSQpx5eNXZgFQy+xWb
+	HRUMY78MR7cVFWlSHDtwtyTyqOM+T0IR1qNpffCdZP1Inw==
+X-Received: by 2002:a17:907:3ea3:b0:ac1:ecb5:7207 with SMTP id a640c23a62f3a-ace7111e569mr1044835566b.29.1745848920620;
+        Mon, 28 Apr 2025 07:02:00 -0700 (PDT)
+X-Received: by 2002:a17:907:3ea3:b0:ac1:ecb5:7207 with SMTP id a640c23a62f3a-ace7111e569mr1044825466b.29.1745848919721;
+        Mon, 28 Apr 2025 07:01:59 -0700 (PDT)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-43-178-177.web.vodafone.de. [109.43.178.177])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6edafed3sm625975666b.180.2025.04.28.07.00.32
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6edafec7sm626447466b.165.2025.04.28.07.01.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Apr 2025 07:00:33 -0700 (PDT)
-Message-ID: <e833c21d-cdbd-4924-a8dc-79c8269f87b2@redhat.com>
-Date: Mon, 28 Apr 2025 16:00:30 +0200
+        Mon, 28 Apr 2025 07:01:59 -0700 (PDT)
+Message-ID: <294fd9b9-6880-477f-a2b4-773f1e5274c8@redhat.com>
+Date: Mon, 28 Apr 2025 16:01:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/9] tests/docker: expose $HOME/.cache as docker volume
+Subject: Re: [PATCH 2/9] gitlab: disable debug info on CI builds
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Alexandre Iooss <erdnaxe@crans.org>, "Michael S. Tsirkin"
@@ -103,7 +103,7 @@ Cc: Alexandre Iooss <erdnaxe@crans.org>, "Michael S. Tsirkin"
  Peter Xu <peterx@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Mahmoud Mandour <ma.mandourr@gmail.com>
 References: <20250428125918.449346-1-alex.bennee@linaro.org>
- <20250428125918.449346-2-alex.bennee@linaro.org>
+ <20250428125918.449346-3-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -147,35 +147,41 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250428125918.449346-2-alex.bennee@linaro.org>
+In-Reply-To: <20250428125918.449346-3-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mSHg3kh6eIa28QUJ7x6UaNYZNhEoeAzW-npb_9LMkt8_1745848834
+X-Mimecast-MFC-PROC-ID: QLDQsxczymmo8_dTeVILrGsC-bD4Rbsk7E3nj_Q71kQ_1745848921
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 09ol2iS6NRGb
+X-TUID: 7inDrrxZekUT
 
 On 28/04/2025 14.59, Alex Bennée wrote:
-> If you want to run functional tests we should share .cache so we don't
-> force containers to continually re-download images.
+> Our default build enables debug info which adds hugely to the size of
+> the builds as well as the size of cached objects. Disable debug info
+> across the board to save space and reduce pressure on the CI system.
+> We still have a number of builds which explicitly enable debug and
+> related extra asserts like --enable-debug-tcg.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/docker/Makefile.include | 1 +
+>   .gitlab-ci.d/buildtest-template.yml | 1 +
 >   1 file changed, 1 insertion(+)
 > 
-> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-> index fa1cbb6726..56a8d9f8ff 100644
-> --- a/tests/docker/Makefile.include
-> +++ b/tests/docker/Makefile.include
-> @@ -224,6 +224,7 @@ docker-run: docker-qemu-src
->   			$(if $(NOUSER),,				\
->   				-e CCACHE_DIR=/var/tmp/ccache 		\
->   				-v $(DOCKER_CCACHE_DIR):/var/tmp/ccache:z \
-> +				-v $(HOME)/.cache:$(HOME)/.cache 	\
+> diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+> index d4f145fdb5..d9e69c3237 100644
+> --- a/.gitlab-ci.d/buildtest-template.yml
+> +++ b/.gitlab-ci.d/buildtest-template.yml
+> @@ -24,6 +24,7 @@
+>       - ccache --zero-stats
+>       - section_start configure "Running configure"
+>       - ../configure --enable-werror --disable-docs --enable-fdt=system
+> +          --disable-debug-info
 
-Maybe better restrict it to ~/.cache/qemu ? ... to avoid sharing other 
-subfolders there to the container?
+Do we have any jobs that might show stack traces in the console output ? 
+build-oss-fuzz comes to my mind, but that uses a separate script, so we 
+should be fine there?
 
-  Thomas
+So assuming there are no other jobs around that might need it:
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>

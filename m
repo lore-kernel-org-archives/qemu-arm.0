@@ -1,212 +1,74 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5905192njd;
-        Mon, 28 Apr 2025 04:40:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWzTBgeNxzBGllhg+wkybNV5SNhv0cPaG3OVFN4ii9wnhiOXjAFNrFqosuHTYhmx4Yc0H4fLfHBiMIVfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF53crS7CLB3e0uw2SDeCyjnOolfCQdYPTdGUJL5RDwh9aU9TBay+RhEvhsX3qT5BEUFi3H
-X-Received: by 2002:ac8:5a05:0:b0:476:6a3d:de35 with SMTP id d75a77b69052e-48024a7f520mr196095671cf.39.1745840411695;
-        Mon, 28 Apr 2025 04:40:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745840411; cv=none;
-        d=google.com; s=arc-20240605;
-        b=S3hxkDHb+OXJbjKks0E8eAK3ImnJ5+v9gwnncorQt4SX48dNoqsSXut0mFyJPGQlMD
-         X3QlEditnXbeD/OiNZ6uTUweXWreSx4/AOzdmNKhogNt6OwxkXiEqDwnR6DTSM435Jqz
-         0aekmyZViS8yHVmu1HyxUdYQiFMZR1Oej9sFls1QTxVe2Ra2ZIAjRpHuEZ4Yh6K1KQZ3
-         mFVxqetVofBCNl4aXQVI4hwM5qgPy3NJgYWR/SBjRsejSMPmx4Kz0IibLMPK3g34hcys
-         pl2xSLL4k9SLI0FDfL8N6jdH7Hb406JAT8yJ75xDX8vHXVgBFNM74Mvfj7RwKOSqWlA+
-         zTqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:references:cc:to:from
-         :subject:user-agent:mime-version:date:message-id;
-        bh=bd8VD55yVSAmAye2S4lEl9GCiTrQ8eM7ujrPtjYIwYQ=;
-        fh=R0c0yB/lExKARN8+ZHY9nltsW9/furMBdAT2nVS52P0=;
-        b=Oi7eMUfw9h3m6k1QdH+sdmrO1+5AHbrOU3m040NWodOgi62csHHINzvpyj9CEkEM+e
-         bKLu+vGuuE4mdURD1wNEboDEaxGGeUtEpyvP+jHs+X3Xl6YF04GvjdEdAHqrBtHBHneH
-         kx7TpMMawLWQQYXegFu/8DTITv2QtLs2WRzHEYIZCdr4BI4Ug6HbM1eN456VIxIM9cLs
-         cPTbCYFuDkndNASaUxaCcBw/9ij0gJ3z4PEwHPtrXHUXYgeQSCacjOsPNCLVE4nj+IoO
-         eDVO9jrhVRMcuTZdo9fYb2YMm0PAi5eKPTGGhOJkfMWwKGirc6SFErFIddKBa1i0tgY2
-         qHlA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea1e95760si101515911cf.342.2025.04.28.04.40.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 04:40:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9Mq9-0000Jz-3g; Mon, 28 Apr 2025 07:40:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
- id 1u9Mq1-0000Ij-0m; Mon, 28 Apr 2025 07:39:56 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=KRh2=XO=kaod.org=clg@ozlabs.org>)
- id 1u9Mpy-0007kR-4C; Mon, 28 Apr 2025 07:39:52 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZmM1T3lDWz4xLy;
- Mon, 28 Apr 2025 21:39:41 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZmM1Q0s3yz4xFb;
- Mon, 28 Apr 2025 21:39:37 +1000 (AEST)
-Message-ID: <b2d51447-6a22-44dc-bc0e-8ecdbf17d230@kaod.org>
-Date: Mon, 28 Apr 2025 13:39:35 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6e41bbc3sm622870366b.3.2025.04.28.05.59.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Apr 2025 05:59:19 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 42B225F905;
+	Mon, 28 Apr 2025 13:59:18 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Xu <peterx@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>
+Subject: [PATCH 0/9] Maintainer updates for May (testing, plugins, virtio-gpu)
+Date: Mon, 28 Apr 2025 13:59:09 +0100
+Message-Id: <20250428125918.449346-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into AST10x0
- and AST2600 SoCs
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250423025651.189702-1-kane_chen@aspeedtech.com>
- <20250423025651.189702-4-kane_chen@aspeedtech.com>
- <e3d35357-de8c-44da-b54e-7ec2761f513b@kaod.org>
- <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <2a85d0c5-0606-411d-b8c5-4b8806182384@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <2a85d0c5-0606-411d-b8c5-4b8806182384@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=KRh2=XO=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vVmVh8dt82DS
+X-TUID: BHS8TK78aOM5
 
-On 4/28/25 13:00, Cédric Le Goater wrote:
-> Hello,
-> 
->> I understand that using a machine option (e.g., -M ast2600-evb,otpmem=xxx)
->> to specify the OTP memory drive is similar to the modeling used for
->> flash devices in the Q35 machine. However, in the real ASPEED hardware,
->> the OTP memory is physically part of the Secure Boot Controller (SBC)
-> 
-> So this argument is a good reason to let the Aspeed SBC model own the
-> otpmem model and not the SoC. It fits better HW design.
-> 
->> and is not designed to be removable or swappable. 
-> 
-> Yes. Then, in that case, you should provide a static array of uin8t_t
-> defined at reset, which was my first suggestion. But you said you
-> wanted to be able to change the initial values. I am bit lost in what
-> you want to achieve. Please explain.
-> 
-> If you want to be able to change the initial values, you need to take
-> into account the QEMU user interface in the design. Being able to define
-> the otpmem backend using a blockdev is better for the long term support.
-> '-drive' is a poor interface we would like to remove. What would happen
-> if another device of the machine needed a format=raw drive ? how would
-> the drives be assigned ? depending on the command line ordering like we
-> do for mtd drives ? :/
-> 
-> Anyhow, wiring the block backend to the device of the machine is
+Now the tree is open here is the state of my current maintainer
+queues. I've tagged the virtio-gpu changes as Cc: qemu-stable but
+given how close to release we were it didn't seem worth rushing them
+in for 10.0. I've included a MAINTAINERS patch just to make sure I can
+route any more fixes until a more full time maintainer volunteers.
 
-missing "another topic."  Sorry about that. I changed my keyboard to a
-an ergonomic one this monday and it is a struggle.
+The following need review:
 
-> Let's first start by defining the basic model.
-> 
->> Allowing users to
->> specify the OTP memory through a machine option might imply otherwise,
->> which could be misleading compared to the actual hardware behavior.
-> I don't understand your point here. Putting the otpmem model under
-> SBC fits better HW design. Please explain.
-> 
->> That said, if maintaining consistency with QEMU’s device modeling
->> principles (as done for flash devices) is preferred over strict
->> hardware modeling fidelity, I am willing to adjust the implementation
->> accordingly.
-> 
-> QEMU is an emulator. We try to avoid modeling shortcuts, but for
-> usability and complexity reasons, we sometimes do.
-> 
->>
->> Could you please confirm if you still prefer following the edk2 flash
->> model for OTP memory, despite the slight mismatch with hardware
->> behavior?
-> 
-> AFAIUI, the current proposal is not matching HW. Please explain the
-> mismatch.
-> 
-> Thanks,
-> 
-> C.
-> 
-> 
+  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
+  contrib/plugins: allow setting of instructions per quantum
+  contrib/plugins: add a scaling factor to the ips arg
+  tests/tcg: make aarch64 boot.S handle different starting modes
+  gitlab: disable debug info on CI builds
+  tests/docker: expose $HOME/.cache as docker volume
 
+Alex.
+
+Alex Bennée (7):
+  tests/docker: expose $HOME/.cache as docker volume
+  gitlab: disable debug info on CI builds
+  tests/tcg: make aarch64 boot.S handle different starting modes
+  contrib/plugins: add a scaling factor to the ips arg
+  contrib/plugins: allow setting of instructions per quantum
+  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
+  hw/display: re-arrange memory region tracking
+
+Manos Pitsidianakis (2):
+  virtio-gpu: fix hang under TCG when unmapping blob
+  virtio-gpu: refactor async blob unmapping
+
+ MAINTAINERS                               |   3 +-
+ docs/about/emulation.rst                  |   4 +
+ include/system/memory.h                   |   1 +
+ contrib/plugins/ips.c                     |  33 +++++-
+ hw/display/virtio-gpu-virgl.c             |  60 +++++-----
+ .gitlab-ci.d/buildtest-template.yml       |   1 +
+ tests/docker/Makefile.include             |   1 +
+ tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
+ tests/tcg/aarch64/system/boot.S           | 127 +++++++++++++++++++++-
+ 9 files changed, 202 insertions(+), 31 deletions(-)
+
+-- 
+2.39.5

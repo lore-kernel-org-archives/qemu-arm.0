@@ -1,805 +1,204 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp6022027njd;
-        Mon, 28 Apr 2025 07:52:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX4jOb26XadqE9BdiSw0JRSoTHEAA4BUrgCgP2o5PrOXH/6uW3RN2jnDWXAI3ZthUOZQIXVzNW+fnaZuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEnoLXDqG7DHz5HDCojhH8gu0FalJsVezBpgOn6uDr9koiv+o+ZpMydxVJWT7jxnDBGUbCp
-X-Received: by 2002:a17:90b:4f45:b0:2f9:c56b:6ec8 with SMTP id 98e67ed59e1d1-309f7ddea32mr18183736a91.10.1745851928969;
-        Mon, 28 Apr 2025 07:52:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745851928; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5869780njd;
+        Mon, 28 Apr 2025 03:27:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIoWCkpxIuVidQva0UBeA8gaw9nOanXfNbGbgUwZ1GGZkGLUkSGe8Xu1bZI8oOTpR8JnfhvAa5XSC7Hg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE66EnibgWKwVP3UeChTs1k64VqlvbXe/98PjKaDSMgezbtGpwbKy+6rzsFoY+eec7vI2oB
+X-Received: by 2002:a05:6214:268e:b0:6e6:6a6e:7596 with SMTP id 6a1803df08f44-6f4cba63304mr178644936d6.39.1745836036864;
+        Mon, 28 Apr 2025 03:27:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745836036; cv=none;
         d=google.com; s=arc-20240605;
-        b=fdtHdv8zvcYUu3WYUVgBAmvrNrGPgWrYTwop8jXXbDUXMaTnJi/b0w3D4mhkGjPIK+
-         f9ZknpH60DKyiFx58N+qBwcxGmKPg1VdhpvFhLDYbqbIfAZNmpHNRabTaZGnqyt4Rwkw
-         jM+U3UKeEzVUoq0/kz3FrN5aBWlMhfAZtR1dl6MN1f9zny5vM5QN553hRJEA/K5tmABS
-         Gm5SeMMTj/caX691st3ijdMgJwhit4iJWPLZy8euHK2PQ7nhRe1KpA2JcVc+6uQJIz1a
-         7Zn1dcPArh0r+j7AZb9Z3t3mWYdfYybcjW9jr5s6bkwp+6IxIn/kiZ8uem2ciTMLGoCE
-         TmzA==
+        b=XxIXFVz/PQ1qZ8U5j2YDpef/n0RpYLwYRbrSfpncekLfr5//AiN+OReVQ0tv8uYr4Y
+         ehCToFEeFkOk+pDzdcaXtKHKv9FlI/Rl/roD8TpX6LykVBagqQo4dp2Ooi9elPhzjFnJ
+         NLvYyulGfR2sTko5nDSqCzwWFBaiYJCkOzSg3RQZxQOzO9fSeosN3DLnbZSkWf/j6udA
+         rN7lewamw4maBjZa+hEA7hA3Qfi/5rGrcwdrSAbSTsF4EfCBA8CINGTltk6S07FT9TM+
+         w4CuKuwW9+eq4YcgrlHGGa9I/E0hg+u96A2L4ZgRuIbz+6aeldcrRxKxyLB3iTxLZnWq
+         OPyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=j/npAyFpB4wLxaPnRXXmqyb2DxiGXMZDPBaubKDl9vo=;
-        fh=YQPMyTHh8Z8DNCCirEsaTJcVhoSf+flLLQ9RGt/ZFHg=;
-        b=a+Wf2OFiXcr2FHoDaiU63DEsO/auWcM7qA+oBhBlY1DHi94jfvHmgplfCDKqImtGs+
-         WcEYEMx9Q1lJQN+UsTA5SMIST0RxZUlCZOQK793Z0BEUN4xOb/s2glZfeapvQFRktjk/
-         EkGI3C7rEOLwSgyUleCRRoxEyZ9Gnthmf78hFeKX5qLSSPn1KJa3U6+/usGg7NUnVNgw
-         d6H+mMErXZyf6Xx9YjKwYUFZEBgSqszTDfO+nb/dpcRWYRnbXImrZWKtSDSk75boRa2K
-         trWaqxemwYZhglfH6pGAh2G5+EidxKDdNgNf99e394UJj5/dm1sEOBCj/R1SgaBndCbH
-         /H8w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ahYBnUfEydQCI3V8bBlQ14kf0qqdv+HN0cdX3llkQGU=;
+        fh=+sxB8NkS+xL+1QwPgIVnaMhN8Q9GX11v/uLdEosqQQA=;
+        b=IoHwK6kWLPYP5sX96cyf8MqnKDNKDAKLcfIl3rnh1BDWHoJDUcSXJP/1j4MGVLjhUa
+         jaA+OZ73ekQNLnADiFRXwXdXLlCbPhHjDu7W8hs38TiccBAub27XwIPn9uu9osRGWujQ
+         37xm+5r5ZI/7O9yAc3oUrqQgEYN106MEapFUPk/ICRoalaRfhezPBMShxjcFJSMdfCbb
+         JCz3NwT0Ndzmo9WGo5N77AZo+P5kosHXTu/MwpdmEeDyBS7FdF/c5hfIgPqezXLepeLj
+         58Cwc8tkkpbkDAsxixXoO9Laj6+1M0awnPq6XZXIQvkGaZ0I2OwPIwtHtQi+Q9DiqinH
+         Jsqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UNsExGDJ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ijs9LuCk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d9443c01a7336-22db4fdb419si135153225ad.302.2025.04.28.07.52.08
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c0acafb0si95886276d6.252.2025.04.28.03.27.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 07:52:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 28 Apr 2025 03:27:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UNsExGDJ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ijs9LuCk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1u9LhP-00064m-5W; Mon, 28 Apr 2025 06:26:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1u9LhG-0005nx-V1
+ for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1u9LhF-0003FD-6c
+ for qemu-arm@nongnu.org; Mon, 28 Apr 2025 06:26:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1745851927;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=j/npAyFpB4wLxaPnRXXmqyb2DxiGXMZDPBaubKDl9vo=;
-	b=UNsExGDJ/wY3vr0PAGtvPUSYsEI/QTtxgqYU5rtDgHn3JlTVYug8fF3UAs+iMWC6hVdgo6
-	GwUgNizZRasN/BcST/QKwBI5TN82urNvmlcxc47h0wsQq2zDHDYZuoJLWXM5cKAwtYhbbH
-	EqhAh1uVxEma79bylo2YMp/NE/JMnc8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-544-MYYEwYe9PTKoXwW7r-25Qw-1; Mon, 28 Apr 2025 10:52:06 -0400
-X-MC-Unique: MYYEwYe9PTKoXwW7r-25Qw-1
-X-Mimecast-MFC-AGG-ID: MYYEwYe9PTKoXwW7r-25Qw_1745851925
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-39143311936so1635457f8f.0
-        for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 07:52:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745851925; x=1746456725;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=j/npAyFpB4wLxaPnRXXmqyb2DxiGXMZDPBaubKDl9vo=;
-        b=El41LapwXn1M3cLR7b3Gq139p8RhiZ2wC4jOakzztYKLZ5o6ASeXd6wkfVo9uylZlG
-         VcQ6S8TDKlNGWgKXZShSMnytq9TYRTKghpM/TLiQOSEZq+LeytfdUX/xaEYocHU5GR57
-         XqRa7By2U67YhL1Y4I7co3CRwFqp03VCxvMD2WNQVVXeOHO2yd/0Wuo8yl0wNelNS+YP
-         6Vl00DILkx7HbLvaj8UWqNDdH3MQg9uSBkGd9CDmEicR8nrG8Ai4GC1/HYwTUpbQVgBc
-         EzOJ5VPL31K1XzVwsXllxFnlyzqkGEusaaMKqGLZpSDuUULWbER6qprcuTVl/fkY8ep2
-         WUsw==
-X-Forwarded-Encrypted: i=1; AJvYcCUBuOVMGvq17dskrKBIw5tIIjZmNImQ4n3E3456vdUCkNV68hO9ZnEI0MOgm9YbK7ROz6WlsFbCoEvs6w==@linaro.org
-X-Gm-Message-State: AOJu0YyKHrpNgzhbVk8B9VIFWHC3VhNaj3SQdIW/Xl8ptPEkQTtX2Cec
-	njDYsfkQTz5+V/NrST2icenRYb81U6UfKJXl+dxPPjo6Y4wPTlzKHJuNo5g1RjWdYZCAzIVo8Pu
-	xW2W3Dlv0jF6vWROmok0GRRc+8LpcB1+gJeg2krsxpoZ9xwTqbpeVDA==
-X-Gm-Gg: ASbGncuYr0qqQwQaoGCvHwxkc+iKiJPmD0kfQg1kg8Hea5y7OAkzxU2ikfOM9P7gZFP
-	HrR2rhn3FRDVD4JFMrQUADrSJVwq7IbqAtHxPybxa04p7jtmzqs2mil2eNwbn63TwsB7DYVJv3p
-	9z/zHUZFJM4UiPcKztKkacPshddlrgMVAiLPpjesGVND7tfF2HluNLXpmK71eOy2kes+7wJ46Up
-	1zAuWDGeHEhJs6lQ8F1P+oD5suiferrMsXqheTp94YdHrA5Q2IjkhYFl3OfSl5sIOxFwdfnpzWt
-	W4pbxtBBYswWJML8DMXkDK7AMhXa9t3TEY6yeIK/HlxsVBwNjhBs4UlFVm0=
-X-Received: by 2002:a05:6000:250c:b0:3a0:88c7:47d with SMTP id ffacd0b85a97d-3a088c70487mr397401f8f.38.1745851924808;
-        Mon, 28 Apr 2025 07:52:04 -0700 (PDT)
-X-Received: by 2002:a05:6000:250c:b0:3a0:88c7:47d with SMTP id ffacd0b85a97d-3a088c70487mr397368f8f.38.1745851924206;
-        Mon, 28 Apr 2025 07:52:04 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a073cbf030sm11307378f8f.46.2025.04.28.07.52.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Apr 2025 07:52:03 -0700 (PDT)
-Message-ID: <470349f3-2539-4099-8958-980480459345@redhat.com>
-Date: Mon, 28 Apr 2025 16:52:02 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH for-10.1 v5 02/13] arm/cpu: Store aa64isar0/aa64zfr0 into
- the idregs arrays
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- agraf@csgraf.de
-Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-References: <20250409144304.912325-1-cohuck@redhat.com>
- <20250409144304.912325-3-cohuck@redhat.com>
+ s=mimecast20190719; t=1745836002;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ahYBnUfEydQCI3V8bBlQ14kf0qqdv+HN0cdX3llkQGU=;
+ b=Ijs9LuCkPl8jTFFXolNpltb3BDbZsjmCS3lIOTPrmCFxgQs9N1S9DEOPc1FAn1sYc94Alk
+ 6GjzZOqd16QASsntEZTOvDNye4sS8U078l+c9wzwEA1YWaKbVwY9KughZkVneA+a00n2Pj
+ 4czqzfkEpWDONvQB02/ur4xHu0vARbE=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-324-Ex66r9OLMsWbmw1yXytr-g-1; Mon,
+ 28 Apr 2025 06:26:38 -0400
+X-MC-Unique: Ex66r9OLMsWbmw1yXytr-g-1
+X-Mimecast-MFC-AGG-ID: Ex66r9OLMsWbmw1yXytr-g_1745835996
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 50D131800980; Mon, 28 Apr 2025 10:26:36 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.14])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 41B62180045C; Mon, 28 Apr 2025 10:26:30 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250409144304.912325-3-cohuck@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mdDANOb8RVEUx_InaNUiVqzmFU2DK9LZEyOjoBMoj-E_1745851925
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: VrD0HFzAHQ/I
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com,
+	Jonathan.Cameron@huawei.com
+Subject: [RFC 00/24] APCI PCI Hotplug support on ARM
+Date: Mon, 28 Apr 2025 12:25:26 +0200
+Message-ID: <20250428102628.378046-1-eric.auger@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.492,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MlohzefAbkfr
 
-Hi Connie,
+This series enables APCI PCI hotplug/hotunplug on ARM
+and makes it default for 10.1 machine type. This aligns with
+x86 q35 machine. Expected benefits should be similar to
+those listed in [1].
 
-On 4/9/25 4:42 PM, Cornelia Huck wrote:
-> From: Eric Auger <eric.auger@redhat.com>
->
-> Also add kvm add accessors for storing host features into idregs.
-nit: add kvm add?
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Sebastian Ott <sebott@redhat.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  target/arm/cpu-features.h | 57 ++++++++++++++++++++-------------------
->  target/arm/cpu-sysregs.h  |  4 +++
->  target/arm/cpu.c          | 10 +++----
->  target/arm/cpu.h          |  2 --
->  target/arm/cpu64.c        |  8 +++---
->  target/arm/helper.c       |  6 +++--
->  target/arm/hvf/hvf.c      |  3 ++-
->  target/arm/kvm.c          | 30 ++++++++++++++++++---
->  target/arm/tcg/cpu64.c    | 44 ++++++++++++++++++------------
->  9 files changed, 101 insertions(+), 63 deletions(-)
->
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index 525e4cee12f6..779bcd1abb36 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -22,6 +22,7 @@
->  
->  #include "hw/registerfields.h"
->  #include "qemu/host-utils.h"
-> +#include "cpu-sysregs.h"
->  
->  /*
->   * Naming convention for isar_feature functions:
-> @@ -376,92 +377,92 @@ static inline bool isar_feature_aa32_doublelock(const ARMISARegisters *id)
->   */
->  static inline bool isar_feature_aa64_aes(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, AES) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, AES) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_pmull(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, AES) > 1;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, AES) > 1;
->  }
->  
->  static inline bool isar_feature_aa64_sha1(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SHA1) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SHA1) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sha256(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SHA2) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SHA2) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sha512(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SHA2) > 1;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SHA2) > 1;
->  }
->  
->  static inline bool isar_feature_aa64_crc32(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, CRC32) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, CRC32) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_atomics(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, ATOMIC) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, ATOMIC) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_rdm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, RDM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, RDM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sha3(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SHA3) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SHA3) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sm3(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SM3) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SM3) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sm4(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, SM4) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, SM4) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_dp(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, DP) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, DP) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_fhm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, FHM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, FHM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_condm_4(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TS) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TS) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_condm_5(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TS) >= 2;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TS) >= 2;
->  }
->  
->  static inline bool isar_feature_aa64_rndr(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, RNDR) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, RNDR) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TLB) == 2;
->  }
->  
->  static inline bool isar_feature_aa64_tlbios(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TLB) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_jscvt(const ARMISARegisters *id)
-> @@ -927,52 +928,52 @@ static inline bool isar_feature_aa64_doublelock(const ARMISARegisters *id)
->  
->  static inline bool isar_feature_aa64_sve2(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, SVEVER) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, SVEVER) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve2_aes(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, AES) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, AES) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve2_pmull128(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, AES) >= 2;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, AES) >= 2;
->  }
->  
->  static inline bool isar_feature_aa64_sve2_bitperm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, BITPERM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, BITPERM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve_bf16(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, BFLOAT16) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, BFLOAT16) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve2_sha3(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, SHA3) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, SHA3) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve2_sm4(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, SM4) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, SM4) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve_i8mm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, I8MM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, I8MM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve_f32mm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, F32MM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, F32MM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sve_f64mm(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, F64MM) != 0;
-> +    return FIELD_EX64_IDREG(id, ID_AA64ZFR0, F64MM) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_sme_f64f64(const ARMISARegisters *id)
-> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-> index 7877a3b06a8e..e89a1105904c 100644
-> --- a/target/arm/cpu-sysregs.h
-> +++ b/target/arm/cpu-sysregs.h
-> @@ -39,4 +39,8 @@ extern const uint32_t id_register_sysreg[NUM_ID_IDX];
->  
->  int get_sysreg_idx(ARMSysRegs sysreg);
->  
-> +#ifdef CONFIG_KVM
-> +uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
-> +#endif
-> +
->  #endif /* ARM_CPU_SYSREGS_H */
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 01786ac7879c..750a4e957cb2 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1968,6 +1968,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->  {
->      CPUState *cs = CPU(dev);
->      ARMCPU *cpu = ARM_CPU(dev);
-> +    ARMISARegisters *isar = &cpu->isar;
->      ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
->      CPUARMState *env = &cpu->env;
->      Error *local_err = NULL;
-> @@ -2173,7 +2174,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->  
->          unset_feature(env, ARM_FEATURE_NEON);
->  
-> -        t = cpu->isar.id_aa64isar0;
-> +        t = GET_IDREG(isar, ID_AA64ISAR0);
->          t = FIELD_DP64(t, ID_AA64ISAR0, AES, 0);
->          t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 0);
->          t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 0);
-> @@ -2181,7 +2182,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 0);
->          t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 0);
->          t = FIELD_DP64(t, ID_AA64ISAR0, DP, 0);
-> -        cpu->isar.id_aa64isar0 = t;
-> +        SET_IDREG(isar, ID_AA64ISAR0, t);
->  
->          t = cpu->isar.id_aa64isar1;
->          t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 0);
-> @@ -2223,12 +2224,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      }
->  
->      if (!cpu->has_neon && !cpu->has_vfp) {
-> -        uint64_t t;
->          uint32_t u;
->  
-> -        t = cpu->isar.id_aa64isar0;
-> -        t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 0);
-> -        cpu->isar.id_aa64isar0 = t;
-> +        FIELD_DP64_IDREG(isar, ID_AA64ISAR0, FHM, 0);
->  
->          t = cpu->isar.id_aa64isar1;
->          t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 0);
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 5048c85b188c..57d00da0a927 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1097,7 +1097,6 @@ struct ArchCPU {
->          uint32_t dbgdidr;
->          uint32_t dbgdevid;
->          uint32_t dbgdevid1;
-> -        uint64_t id_aa64isar0;
->          uint64_t id_aa64isar1;
->          uint64_t id_aa64isar2;
->          uint64_t id_aa64pfr0;
-> @@ -1108,7 +1107,6 @@ struct ArchCPU {
->          uint64_t id_aa64mmfr3;
->          uint64_t id_aa64dfr0;
->          uint64_t id_aa64dfr1;
-> -        uint64_t id_aa64zfr0;
->          uint64_t id_aa64smfr0;
->          uint64_t reset_pmcr_el0;
->          uint64_t idregs[NUM_ID_IDX];
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 62eff5375c19..c781efeb7cef 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -136,7 +136,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->               * SVE is disabled and so are all vector lengths.  Good.
->               * Disable all SVE extensions as well.
->               */
-> -            cpu->isar.id_aa64zfr0 = 0;
-> +            SET_IDREG(&cpu->isar, ID_AA64ZFR0, 0);
->              return;
->          }
->  
-> @@ -639,6 +639,7 @@ void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
->  static void aarch64_a57_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a57";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -676,7 +677,7 @@ static void aarch64_a57_initfn(Object *obj)
->      cpu->isar.id_isar6 = 0;
->      cpu->isar.id_aa64pfr0 = 0x00002222;
->      cpu->isar.id_aa64dfr0 = 0x10305106;
-> -    cpu->isar.id_aa64isar0 = 0x00011120;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011120);
->      cpu->isar.id_aa64mmfr0 = 0x00001124;
->      cpu->isar.dbgdidr = 0x3516d000;
->      cpu->isar.dbgdevid = 0x01110f13;
-> @@ -700,6 +701,7 @@ static void aarch64_a57_initfn(Object *obj)
->  static void aarch64_a53_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a53";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -737,7 +739,7 @@ static void aarch64_a53_initfn(Object *obj)
->      cpu->isar.id_isar6 = 0;
->      cpu->isar.id_aa64pfr0 = 0x00002222;
->      cpu->isar.id_aa64dfr0 = 0x10305106;
-> -    cpu->isar.id_aa64isar0 = 0x00011120;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011120);
->      cpu->isar.id_aa64mmfr0 = 0x00001122; /* 40 bit physical addr */
->      cpu->isar.dbgdidr = 0x3516d000;
->      cpu->isar.dbgdevid = 0x00110f13;
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index bb445e30cd15..8062e5190425 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -7750,6 +7750,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->  {
->      /* Register all the coprocessor registers based on feature bits */
->      CPUARMState *env = &cpu->env;
-> +    ARMISARegisters *isar = &cpu->isar;
-> +
->      if (arm_feature(env, ARM_FEATURE_M)) {
->          /* M profile has no coprocessor registers */
->          return;
-> @@ -7939,7 +7941,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 4,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .accessfn = access_aa64_tid3,
-> -              .resetvalue = cpu->isar.id_aa64zfr0 },
-> +              .resetvalue = GET_IDREG(isar, ID_AA64ZFR0)},
->              { .name = "ID_AA64SMFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 5,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -7999,7 +8001,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .accessfn = access_aa64_tid3,
-> -              .resetvalue = cpu->isar.id_aa64isar0 },
-> +              .resetvalue = GET_IDREG(isar, ID_AA64ISAR0)},
->              { .name = "ID_AA64ISAR1_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 2439af63a05a..0213702ef094 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -19,6 +19,7 @@
->  #include "system/hw_accel.h"
->  #include "hvf_arm.h"
->  #include "cpregs.h"
-> +#include "cpu-sysregs.h"
->  
->  #include <mach/mach_time.h>
->  
-> @@ -865,7 +866,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
->          { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
->          { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-> -        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-> +        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.idregs[ID_AA64ISAR0_EL1_IDX] },
->          { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
->          /* Add ID_AA64ISAR2_EL1 here when HVF supports it */
->          { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index da30bdbb2349..d187df80f077 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -26,6 +26,7 @@
->  #include "system/kvm_int.h"
->  #include "kvm_arm.h"
->  #include "cpu.h"
-> +#include "cpu-sysregs.h"
->  #include "trace.h"
->  #include "internals.h"
->  #include "hw/pci/pci.h"
-> @@ -246,6 +247,28 @@ static bool kvm_arm_pauth_supported(void)
->              kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
->  }
->  
-> +
-> +uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg)
-> +{
-> +    return ARM64_SYS_REG((sysreg & CP_REG_ARM64_SYSREG_OP0_MASK) >> CP_REG_ARM64_SYSREG_OP0_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_OP1_MASK) >> CP_REG_ARM64_SYSREG_OP1_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_CRN_MASK) >> CP_REG_ARM64_SYSREG_CRN_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_CRM_MASK) >> CP_REG_ARM64_SYSREG_CRM_SHIFT,
-> +                         (sysreg & CP_REG_ARM64_SYSREG_OP2_MASK) >> CP_REG_ARM64_SYSREG_OP2_SHIFT);
-> +}
-> +
-> +/* read a sysreg value and store it in the idregs */
-> +static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf, ARMIDRegisterIdx index)
-> +{
-> +    uint64_t *reg;
-> +    int ret;
-> +
-> +    reg = &ahcf->isar.idregs[index];
-> +    ret = read_sys_reg64(fd, reg,
-> +                         idregs_sysreg_to_kvm_reg(id_register_sysreg[index]));
-> +    return ret;
-> +}
-> +
->  static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->  {
->      /* Identify the feature bits corresponding to the host CPU, and
-> @@ -306,6 +329,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->  
->      ahcf->target = init.target;
->      ahcf->dtb_compatible = "arm,arm-v8";
-> +    int fd = fdarray[2];
->  
->      err = read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr0,
->                           ARM64_SYS_REG(3, 0, 0, 4, 0));
-> @@ -337,8 +361,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->                                ARM64_SYS_REG(3, 0, 0, 5, 0));
->          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr1,
->                                ARM64_SYS_REG(3, 0, 0, 5, 1));
-> -        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar0,
-while at it you could add use fd in this other calls instead of
-fdarray[2]. But this can be done later.
-> -                              ARM64_SYS_REG(3, 0, 0, 6, 0));
-> +        err |= get_host_cpu_reg(fd, ahcf, ID_AA64ISAR0_EL1_IDX);
->          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar1,
->                                ARM64_SYS_REG(3, 0, 0, 6, 1));
->          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar2,
-> @@ -447,8 +470,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->               * enabled SVE support, which resulted in an error rather than RAZ.
->               * So only read the register if we set KVM_ARM_VCPU_SVE above.
->               */
-> -            err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
-> -                                  ARM64_SYS_REG(3, 0, 0, 4, 4));
-> +            err |= get_host_cpu_reg(fd, ahcf, ID_AA64ZFR0_EL1_IDX);
->          }
->      }
->  
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index 29ab0ac79da9..f31bb9ceaac9 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -32,6 +32,7 @@
->  static void aarch64_a35_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a35";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -66,7 +67,7 @@ static void aarch64_a35_initfn(Object *obj)
->      cpu->isar.id_aa64pfr1 = 0;
->      cpu->isar.id_aa64dfr0 = 0x10305106;
->      cpu->isar.id_aa64dfr1 = 0;
-> -    cpu->isar.id_aa64isar0 = 0x00011120;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011120);
->      cpu->isar.id_aa64isar1 = 0;
->      cpu->isar.id_aa64mmfr0 = 0x00101122;
->      cpu->isar.id_aa64mmfr1 = 0;
-> @@ -204,6 +205,7 @@ static const Property arm_cpu_lpa2_property =
->  static void aarch64_a55_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a55";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -221,7 +223,7 @@ static void aarch64_a55_initfn(Object *obj)
->      cpu->ctr = 0x84448004; /* L1Ip = VIPT */
->      cpu->dcz_blocksize = 4; /* 64 bytes */
->      cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
-> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -276,6 +278,7 @@ static void aarch64_a55_initfn(Object *obj)
->  static void aarch64_a72_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a72";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -311,7 +314,7 @@ static void aarch64_a72_initfn(Object *obj)
->      cpu->isar.id_isar5 = 0x00011121;
->      cpu->isar.id_aa64pfr0 = 0x00002222;
->      cpu->isar.id_aa64dfr0 = 0x10305106;
-> -    cpu->isar.id_aa64isar0 = 0x00011120;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011120);
->      cpu->isar.id_aa64mmfr0 = 0x00001124;
->      cpu->isar.dbgdidr = 0x3516d000;
->      cpu->isar.dbgdevid = 0x01110f13;
-> @@ -335,6 +338,7 @@ static void aarch64_a72_initfn(Object *obj)
->  static void aarch64_a76_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a76";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -352,7 +356,7 @@ static void aarch64_a76_initfn(Object *obj)
->      cpu->ctr = 0x8444C004;
->      cpu->dcz_blocksize = 4;
->      cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
-> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -408,6 +412,7 @@ static void aarch64_a76_initfn(Object *obj)
->  static void aarch64_a64fx_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,a64fx";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -431,9 +436,9 @@ static void aarch64_a64fx_initfn(Object *obj)
->      cpu->isar.id_aa64mmfr0 = 0x0000000000001122;
->      cpu->isar.id_aa64mmfr1 = 0x0000000011212100;
->      cpu->isar.id_aa64mmfr2 = 0x0000000000001011;
-> -    cpu->isar.id_aa64isar0 = 0x0000000010211120;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0000000010211120);
->      cpu->isar.id_aa64isar1 = 0x0000000000010001;
-> -    cpu->isar.id_aa64zfr0 = 0x0000000000000000;
-> +    SET_IDREG(isar, ID_AA64ZFR0, 0x0000000000000000);
->      cpu->clidr = 0x0000000080000023;
->      /* 64KB L1 dcache */
->      cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 7);
-> @@ -581,6 +586,7 @@ static void define_neoverse_v1_cp_reginfo(ARMCPU *cpu)
->  static void aarch64_neoverse_n1_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,neoverse-n1";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -598,7 +604,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
->      cpu->ctr = 0x8444c004;
->      cpu->dcz_blocksize = 4;
->      cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
-> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -656,6 +662,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
->  static void aarch64_neoverse_v1_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,neoverse-v1";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -676,7 +683,7 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
->      cpu->id_aa64afr1 = 0x00000000;
->      cpu->isar.id_aa64dfr0  = 0x000001f210305519ull;
->      cpu->isar.id_aa64dfr1 = 0x00000000;
-> -    cpu->isar.id_aa64isar0 = 0x1011111110212120ull; /* with FEAT_RNG */
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x1011111110212120ull); /* with FEAT_RNG */
->      cpu->isar.id_aa64isar1 = 0x0011100001211032ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -735,7 +742,7 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
->      cpu->isar.mvfr2 = 0x00000043;
->  
->      /* From 3.7.5 ID_AA64ZFR0_EL1 */
-> -    cpu->isar.id_aa64zfr0 = 0x0000100000100000;
-> +    SET_IDREG(isar, ID_AA64ZFR0, 0x0000100000100000);
->      cpu->sve_vq.supported = (1 << 0)  /* 128bit */
->                              | (1 << 1);  /* 256bit */
->  
-> @@ -882,6 +889,7 @@ static const ARMCPRegInfo cortex_a710_cp_reginfo[] = {
->  static void aarch64_a710_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,cortex-a710";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -919,12 +927,12 @@ static void aarch64_a710_initfn(Object *obj)
->      cpu->isar.id_pfr2  = 0x00000011;
->      cpu->isar.id_aa64pfr0  = 0x1201111120111112ull; /* GIC filled in later */
->      cpu->isar.id_aa64pfr1  = 0x0000000000000221ull;
-> -    cpu->isar.id_aa64zfr0  = 0x0000110100110021ull; /* with Crypto */
-> +    SET_IDREG(isar, ID_AA64ZFR0, 0x0000110100110021ull); /* with Crypto */
->      cpu->isar.id_aa64dfr0  = 0x000011f010305619ull;
->      cpu->isar.id_aa64dfr1  = 0;
->      cpu->id_aa64afr0       = 0;
->      cpu->id_aa64afr1       = 0;
-> -    cpu->isar.id_aa64isar0 = 0x0221111110212120ull; /* with Crypto */
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0221111110212120ull); /* with Crypto */
->      cpu->isar.id_aa64isar1 = 0x0010111101211052ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000022200101122ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -983,6 +991,7 @@ static const ARMCPRegInfo neoverse_n2_cp_reginfo[] = {
->  static void aarch64_neoverse_n2_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->  
->      cpu->dtb_compatible = "arm,neoverse-n2";
->      set_feature(&cpu->env, ARM_FEATURE_V8);
-> @@ -1020,12 +1029,12 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
->      cpu->isar.id_pfr2  = 0x00000011;
->      cpu->isar.id_aa64pfr0  = 0x1201111120111112ull; /* GIC filled in later */
->      cpu->isar.id_aa64pfr1  = 0x0000000000000221ull;
-> -    cpu->isar.id_aa64zfr0  = 0x0000110100110021ull; /* with Crypto */
-> +    SET_IDREG(isar, ID_AA64ZFR0, 0x0000110100110021ull); /* with Crypto */
->      cpu->isar.id_aa64dfr0  = 0x000011f210305619ull;
->      cpu->isar.id_aa64dfr1  = 0;
->      cpu->id_aa64afr0       = 0;
->      cpu->id_aa64afr1       = 0;
-> -    cpu->isar.id_aa64isar0 = 0x1221111110212120ull; /* with Crypto and FEAT_RNG */
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x1221111110212120ull); /* with Crypto and FEAT_RNG */
->      cpu->isar.id_aa64isar1 = 0x0011111101211052ull;
->      cpu->isar.id_aa64mmfr0 = 0x0000022200101125ull;
->      cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-> @@ -1083,6 +1092,7 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
->  void aarch64_max_tcg_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
->      uint64_t t;
->      uint32_t u;
->  
-> @@ -1133,7 +1143,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->      t = FIELD_DP64(t, CTR_EL0, DIC, 1);
->      cpu->ctr = t;
->  
-> -    t = cpu->isar.id_aa64isar0;
-> +    t = GET_IDREG(isar, ID_AA64ISAR0);
->      t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
->      t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
->      t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2);     /* FEAT_SHA512 */
-> @@ -1148,7 +1158,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->      t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2);       /* FEAT_FlagM2 */
->      t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);      /* FEAT_TLBIRANGE */
->      t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);     /* FEAT_RNG */
-> -    cpu->isar.id_aa64isar0 = t;
-> +    SET_IDREG(isar, ID_AA64ISAR0, t);
->  
->      t = cpu->isar.id_aa64isar1;
->      t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);      /* FEAT_DPB2 */
-> @@ -1244,7 +1254,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->      t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
->      cpu->isar.id_aa64mmfr3 = t;
->  
-> -    t = cpu->isar.id_aa64zfr0;
-> +    t = GET_IDREG(isar, ID_AA64ZFR0);
->      t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
->      t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
->      t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
-> @@ -1254,7 +1264,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->      t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
->      t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);     /* FEAT_F32MM */
->      t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);     /* FEAT_F64MM */
-> -    cpu->isar.id_aa64zfr0 = t;
-> +    SET_IDREG(isar, ID_AA64ZFR0, t);
->  
->      t = cpu->isar.id_aa64dfr0;
->      t = FIELD_DP64(t, ID_AA64DFR0, DEBUGVER, 10); /* FEAT_Debugv8p8 */
-Thanks
+The infrastructure used in x86 is heavily reused and a
+huge part of the series consists in moving code from
+hw/i386/acpi-build.c to a generic place and slightly
+adapting it to make it usable on ARM. The DSDT table is
+augmented to support ACPI PCI hotplug elements.
+
+On ARM we use use a GED event to notify the OS about
+hotplug events.
+
+I have not noticed any tests/qtest/bios-tables-test failures
+neither on x86 nor ARM. x86 DSDT table has not changed.
+ARM DSDT table definitively has but there are no tests
+impacted. ARM misses hotplug tests that do exist on x86. This
+most probably should be considered in the future.
+
+Best Regards
 
 Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
+
+[1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
+https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
+
+
+Eric Auger (24):
+  hw/pci/pcie_port: Fix pcie_slot_is_hotpluggbale_bus typo
+  hw/acpi/ged: Fix wrong identation
+  hw/i386/acpi-build: Fix build_append_notfication_callback typo
+  hw/i386/acpi-build: Make aml_pci_device_dsm() static
+  hw/arm/virt: Introduce machine state acpi pcihp flags and props
+  hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
+  hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
+    acpi_dsdt_add_pci_osc
+  hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
+  hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine
+    downto gpex
+  hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
+  hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
+  hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
+  hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
+  hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+  hw/i386/acpi-build: Move remaining pcihp generic functions to pcihp
+  hw/i386/acpi-build: Introduce and use acpi_get_pci_host
+  hw/arm/virt-acpi-build: Add DSDT additions for PCI hotplug
+  hw/acpi/ged: Prepare the device to react to PCI hotplug events
+  hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
+    implementation
+  hw/acpi/ged: Support migration of AcpiPciHpState
+  hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
+  hw/arm/virt: Let virt support pci hotplug/unplug GED event
+  hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
+  hw/arm/virt: Use ACPI PCI hotplug by default
+
+ hw/i386/acpi-build.h                   |   4 -
+ include/hw/acpi/aml-build.h            |   2 +
+ include/hw/acpi/generic_event_device.h |   5 +
+ include/hw/acpi/pci.h                  |   4 +-
+ include/hw/acpi/pcihp.h                |  14 +
+ include/hw/arm/virt.h                  |   4 +
+ include/hw/pci-host/gpex.h             |   1 +
+ include/hw/sysbus.h                    |   1 +
+ hw/acpi/aml-build.c                    |  50 +++
+ hw/acpi/generic_event_device.c         |  64 +++-
+ hw/acpi/pci.c                          |  20 ++
+ hw/acpi/pcihp.c                        | 428 +++++++++++++++++++++-
+ hw/arm/virt-acpi-build.c               |  26 ++
+ hw/arm/virt.c                          | 100 +++++-
+ hw/core/sysbus.c                       |  11 +
+ hw/i386/acpi-build.c                   | 475 +------------------------
+ hw/pci-host/gpex-acpi.c                |  75 +---
+ hw/pci/pcie_port.c                     |   4 +-
+ hw/arm/Kconfig                         |   2 +
+ 19 files changed, 748 insertions(+), 542 deletions(-)
+
+-- 
+2.49.0
+

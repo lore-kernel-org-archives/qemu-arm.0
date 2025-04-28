@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6e41bbc3sm622870366b.3.2025.04.28.05.59.18
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6e41bc62sm618677666b.25.2025.04.28.05.59.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 28 Apr 2025 05:59:19 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 42B225F905;
+	by draig.lan (Postfix) with ESMTP id 592E05F93C;
 	Mon, 28 Apr 2025 13:59:18 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -20,55 +20,36 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH 0/9] Maintainer updates for May (testing, plugins, virtio-gpu)
-Date: Mon, 28 Apr 2025 13:59:09 +0100
-Message-Id: <20250428125918.449346-1-alex.bennee@linaro.org>
+Subject: [PATCH 1/9] tests/docker: expose $HOME/.cache as docker volume
+Date: Mon, 28 Apr 2025 13:59:10 +0100
+Message-Id: <20250428125918.449346-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250428125918.449346-1-alex.bennee@linaro.org>
+References: <20250428125918.449346-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BHS8TK78aOM5
+X-TUID: fVjoh+lQrswS
 
-Now the tree is open here is the state of my current maintainer
-queues. I've tagged the virtio-gpu changes as Cc: qemu-stable but
-given how close to release we were it didn't seem worth rushing them
-in for 10.0. I've included a MAINTAINERS patch just to make sure I can
-route any more fixes until a more full time maintainer volunteers.
+If you want to run functional tests we should share .cache so we don't
+force containers to continually re-download images.
 
-The following need review:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/docker/Makefile.include | 1 +
+ 1 file changed, 1 insertion(+)
 
-  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
-  contrib/plugins: allow setting of instructions per quantum
-  contrib/plugins: add a scaling factor to the ips arg
-  tests/tcg: make aarch64 boot.S handle different starting modes
-  gitlab: disable debug info on CI builds
-  tests/docker: expose $HOME/.cache as docker volume
-
-Alex.
-
-Alex Bennée (7):
-  tests/docker: expose $HOME/.cache as docker volume
-  gitlab: disable debug info on CI builds
-  tests/tcg: make aarch64 boot.S handle different starting modes
-  contrib/plugins: add a scaling factor to the ips arg
-  contrib/plugins: allow setting of instructions per quantum
-  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
-  hw/display: re-arrange memory region tracking
-
-Manos Pitsidianakis (2):
-  virtio-gpu: fix hang under TCG when unmapping blob
-  virtio-gpu: refactor async blob unmapping
-
- MAINTAINERS                               |   3 +-
- docs/about/emulation.rst                  |   4 +
- include/system/memory.h                   |   1 +
- contrib/plugins/ips.c                     |  33 +++++-
- hw/display/virtio-gpu-virgl.c             |  60 +++++-----
- .gitlab-ci.d/buildtest-template.yml       |   1 +
- tests/docker/Makefile.include             |   1 +
- tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
- tests/tcg/aarch64/system/boot.S           | 127 +++++++++++++++++++++-
- 9 files changed, 202 insertions(+), 31 deletions(-)
-
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index fa1cbb6726..56a8d9f8ff 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -224,6 +224,7 @@ docker-run: docker-qemu-src
+ 			$(if $(NOUSER),,				\
+ 				-e CCACHE_DIR=/var/tmp/ccache 		\
+ 				-v $(DOCKER_CCACHE_DIR):/var/tmp/ccache:z \
++				-v $(HOME)/.cache:$(HOME)/.cache 	\
+ 			)						\
+ 			-v $$(readlink -e $(DOCKER_SRC_COPY)):/var/tmp/qemu:z$(COMMA)ro \
+ 			$(IMAGE) 					\
 -- 
 2.39.5

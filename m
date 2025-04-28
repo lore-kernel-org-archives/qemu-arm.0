@@ -1,97 +1,96 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5869829njd;
-        Mon, 28 Apr 2025 03:27:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWBqisrMoRsp1f+nmqFXZn6Gcmt0fZvpOpFNhAM1dSEsQmdgOz0WIsELJ2+qpT10839dNisfOCYPzWvkA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEzen346ka2oYOobkIyhhR7xPwtnyVr70aEtaaMwx2wTkwE2Zq/azxHc37dcTuCOruLDSD
-X-Received: by 2002:ad4:5ce2:0:b0:6f4:c846:5fcd with SMTP id 6a1803df08f44-6f4cc30af37mr176234876d6.6.1745836043384;
-        Mon, 28 Apr 2025 03:27:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745836043; cv=none;
+Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp5869902njd;
+        Mon, 28 Apr 2025 03:27:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVut73l/fxDLKa0+5Tpe67bRPdl4hPbsMtMIdskvSVxMY0MPFiYWBU0A2MnAviNLD2IcY3Fvqc36tbpCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFdBtYPRf0DCXm8Q+F2BXzwmiwiEnZ/bVgOUv6kqWdrPZKtjCDaHJrcYNUUEs/BFBCKUiVc
+X-Received: by 2002:a05:620a:2955:b0:7c5:a29e:3477 with SMTP id af79cd13be357-7c9607ac2aamr1866125985a.53.1745836052307;
+        Mon, 28 Apr 2025 03:27:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745836052; cv=none;
         d=google.com; s=arc-20240605;
-        b=H8lqXsV27KdUBvNGRXbBfIH3nlgjRawAyFqw5ypI9jR7ZA+BwmE3LnUPIWctAQIKBP
-         StYBapbJLbjlYcJYtWMfbiGZERh/UgqYc47zD+LUQ8ePQ9NiEEcePnzf/nnSPDcsAIDf
-         fw1hK836Pd/jce+suKpWfWy/3a3/H8zTN3PE+esB3CX8GP2g/JRXL4NTKkFaoE5GzPPG
-         TNF5D//fgWE/WczPLfDTtkRIzAijeNJrzKl3ugxWxyOZ85+8wLU8NMbkCk5NPnlVZIjs
-         vHnYZJ8E6ZK/3Pf34JcxynO2yGqu0ypbd8Mpoiws3qm8Y1TP03sdbMO6cYZ2kiEyiq8H
-         +ngA==
+        b=D8RAXEh3VWJ4cJnPfM3xBuRgkT+3T0NrBnrRrgTe5PK05er/BmSCIvsKKXOkLjJ6kB
+         iC5yDVZBgwH4I1QAgUzNX1+GsAtN/qfZ5aiX/atZXpt2Cpkxgp/pv+fKVzl1NbWYDM3R
+         ArAOpeLhmgERe+5f+a1XBCLJBuLLhpfGSVLr3hWUnvKB+ANLR2nF5TBDnGbUr7vr9chO
+         KZETei+zyx1TDfprlcnw9DZ1TveR8X2anebGuIVwo4LbsPXLhRwb8y+XNwKGh+jSA9+M
+         XVU0ODcckXQ7n64kmqHaz0jSWvkME1V4Rbpt3SmTpqslVCYGXxEZPGoPOsj60x4MUxX6
+         K+bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=BrvU1a+/lgBDVJMnsrimhj8vyVWNdbQwh6DwgyIEH8g=;
+        bh=CdD5WhvUXDD+TKpNtMmpeP4Gbsk9q0qnRvNCY4+zyDg=;
         fh=+sxB8NkS+xL+1QwPgIVnaMhN8Q9GX11v/uLdEosqQQA=;
-        b=jKueCKN8xJzRELAsKS5EPZmoqdXxcEkyw9relj1YprtiD1xy+fdrz7AXBsBjpFkfEN
-         w/0RHpgrQuCrcMqohRTSeZDYbHVwVtVdEsH9JueEBBoHCE1iIel/gHl5h9/j5LBif8zb
-         DLO1bIUn3Wa3GvzAu1ZLEY9PS74IXPiOrGctVqwz8uUsRz/uXwro9gvb8jpKmzpFAtDe
-         fSHiDJOwFxRLGTzji+aOX5JNWA2wGSW1ZLMRKVXF8dH0yYiYESioLcRrINYBrT+tCIV4
-         3sIhEh39nypQWpyQSWDcOQFsfeXABhJ6KUGl1EjM7gr/9HOAqPwN13sLPwjYzDkYAP8T
-         c2zw==;
+        b=cFsYmtSJNRdVeZqwIOYnza/ML1gJKFbienFtqXXWiYnZZ1uYJsCHkjkOXGKeTvA5rC
+         4XrMyKMMQFBC1VCyM0K9952HSFmYYX3d6KUwe9V9yxYnCy4wfEW/wF40R31Ui+jALJnZ
+         DE+y2hWKpOAzGR0MEuUXPfelBETUY59dcQlt1ga4v/TfPerhJo1MAkd4207Ub/69/4MN
+         Gza7+gfHFwTunZyXiOYC6cJm6WsRXhuYcKoXhCdsP0yZD7+ZucAtaiRsD0lMJDapUFeZ
+         a7SPA4OG8yzOrvihs56VfhgIlT3axy2aWvDaGCvMRpGkMcqgAc/QJlwdMIZX86gIkMov
+         4NSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ifl0PdEu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5i48mOa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c08d26b2si96453236d6.16.2025.04.28.03.27.23
+        by mx.google.com with ESMTPS id af79cd13be357-7c958ea0c62si996072985a.338.2025.04.28.03.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Apr 2025 03:27:23 -0700 (PDT)
+        Mon, 28 Apr 2025 03:27:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ifl0PdEu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5i48mOa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u9Lhg-0007F2-33; Mon, 28 Apr 2025 06:27:12 -0400
+	id 1u9LhX-0006ef-HA; Mon, 28 Apr 2025 06:27:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9Lhb-00071e-VH
- for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:27:08 -0400
+ id 1u9LhR-0006ER-Gh
+ for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:26:57 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1u9LhZ-0003IA-Rp
- for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:27:07 -0400
+ id 1u9LhL-0003GI-O9
+ for qemu-devel@nongnu.org; Mon, 28 Apr 2025 06:26:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1745836024;
+ s=mimecast20190719; t=1745836010;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BrvU1a+/lgBDVJMnsrimhj8vyVWNdbQwh6DwgyIEH8g=;
- b=Ifl0PdEukRngxkwST2dmNV3YMnG82D3LNFGA8o+RFh9kDn3fvz0K3Bxt0bROlEtq6bqaie
- oT2Th1QndRBzkl7G8Xqy26B/oeC24HkMm9n1Q56Fzow4K8GrxIAYRfb6A29fViF3KPH+rE
- DA3E9O6JToh88i4bo2+fX/FwIiDmlX4=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=CdD5WhvUXDD+TKpNtMmpeP4Gbsk9q0qnRvNCY4+zyDg=;
+ b=X5i48mOaXT7Y8uz4h7QDrTvnx7WBFRa60IWYEXhFtz/UrZPLx8M165tvmDyrMsKIaaLwBu
+ pNgpwLKwuQPiOZ7Am5M+eA/0Btahw3oSu9iTWtjPxyTfOkjztVctV7HtQ3MI3A3D9n/Lqx
+ G8c/yEabaH+IdDS3i1UxzOJloL+30Bg=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-501-tZdXAa3YOe6yNnHduPxsTg-1; Mon,
- 28 Apr 2025 06:27:01 -0400
-X-MC-Unique: tZdXAa3YOe6yNnHduPxsTg-1
-X-Mimecast-MFC-AGG-ID: tZdXAa3YOe6yNnHduPxsTg_1745836020
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-333-yGbEaFJIMAqiXgk2Xt8oZg-1; Mon,
+ 28 Apr 2025 06:26:47 -0400
+X-MC-Unique: yGbEaFJIMAqiXgk2Xt8oZg-1
+X-Mimecast-MFC-AGG-ID: yGbEaFJIMAqiXgk2Xt8oZg_1745836006
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4B0741800570; Mon, 28 Apr 2025 10:27:00 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 538161956086; Mon, 28 Apr 2025 10:26:46 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.14])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B74801800367; Mon, 28 Apr 2025 10:26:56 +0000 (UTC)
+ id 81D72180045C; Mon, 28 Apr 2025 10:26:42 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
  anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
 Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com
-Subject: [RFC 05/24] hw/arm/virt: Introduce machine state acpi pcihp flags and
- props
-Date: Mon, 28 Apr 2025 12:25:31 +0200
-Message-ID: <20250428102628.378046-6-eric.auger@redhat.com>
+Subject: [RFC 02/24] hw/acpi/ged: Fix wrong identation
+Date: Mon, 28 Apr 2025 12:25:28 +0200
+Message-ID: <20250428102628.378046-3-eric.auger@redhat.com>
 In-Reply-To: <20250428102628.378046-1-eric.auger@redhat.com>
 References: <20250428102628.378046-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -121,117 +120,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0DaWns7UNctf
-
-acpi_pcihp VirtMachineClass state flag will allow
-to opt in for acpi pci hotplug. This is guarded by a
-class no_acpi_pcihp flag to manage compats (<= 10.0
-machine types will not support ACPI PCI hotplug).
-
-Machine state acpi_pcihp flag msu be set before the creation
-of the GED device which will use it.
-
-Currently the ACPI PCI HP is turned off by default. This will
-change later on for 10.1 machine type.
-
-We also introduce properties to allow disabling it.
+X-TUID: p3lrUoU/zxd/
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/arm/virt.h |  2 ++
- hw/arm/virt.c         | 27 +++++++++++++++++++++++++++
- 2 files changed, 29 insertions(+)
+ hw/acpi/generic_event_device.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index c8e94e6aed..1e9d002880 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -135,6 +135,7 @@ struct VirtMachineClass {
-     bool no_tcg_lpa2;
-     bool no_ns_el2_virt_timer_irq;
-     bool no_nested_smmu;
-+    bool no_acpi_pcihp;
- };
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index c85d97ca37..7b2d582fff 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -458,11 +458,11 @@ static void acpi_ged_initfn(Object *obj)
+      * container for memory hotplug IO and expose it as GED sysbus
+      * MMIO so that boards can map it separately.
+      */
+-     memory_region_init(&s->container_memhp, OBJECT(dev), "memhp container",
+-                        MEMORY_HOTPLUG_IO_LEN);
+-     sysbus_init_mmio(sbd, &s->container_memhp);
+-     acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
+-                              &s->memhp_state, 0);
++    memory_region_init(&s->container_memhp, OBJECT(dev), "memhp container",
++                       MEMORY_HOTPLUG_IO_LEN);
++    sysbus_init_mmio(sbd, &s->container_memhp);
++    acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
++                             &s->memhp_state, 0);
  
- struct VirtMachineState {
-@@ -156,6 +157,7 @@ struct VirtMachineState {
-     bool mte;
-     bool dtb_randomness;
-     bool second_ns_uart_present;
-+    bool acpi_pcihp;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-     VirtIOMMUType iommu;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3e72adaa91..1601750913 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2414,8 +2414,10 @@ static void machvirt_init(MachineState *machine)
-     create_pcie(vms);
- 
-     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-+        vms->acpi_pcihp &= !vmc->no_acpi_pcihp;
-         vms->acpi_dev = create_acpi_ged(vms);
-     } else {
-+        vms->acpi_pcihp = false;
-         create_gpio_devices(vms, VIRT_GPIO, sysmem);
-     }
- 
-@@ -2610,6 +2612,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
-     vms->its = value;
- }
- 
-+static bool virt_get_acpi_pcihp(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->acpi_pcihp;
-+}
-+
-+static void virt_set_acpi_pcihp(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->acpi_pcihp = value;
-+}
-+
- static bool virt_get_dtb_randomness(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -3327,6 +3343,10 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "in ACPI table header."
-                                           "The string may be up to 8 bytes in size");
- 
-+    object_class_property_add_bool(oc, "acpi-pcihp",
-+                                   virt_get_acpi_pcihp, virt_set_acpi_pcihp);
-+    object_class_property_set_description(oc, "acpi-pcihp",
-+                                          "Force acpi pci hotplug");
- }
- 
- static void virt_instance_init(Object *obj)
-@@ -3365,6 +3385,9 @@ static void virt_instance_init(Object *obj)
-         }
-     }
- 
-+    /* default disallows ACPI PCI hotplug */
-+    vms->acpi_pcihp = false;
-+
-     /* Default disallows iommu instantiation */
-     vms->iommu = VIRT_IOMMU_NONE;
- 
-@@ -3415,8 +3438,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
- 
- static void virt_machine_10_0_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_10_1_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
-+    /* 10.0 and earlier do not support ACPI PCI hotplug */
-+    vmc->no_acpi_pcihp = true;
- }
- DEFINE_VIRT_MACHINE(10, 0)
- 
+     memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+                           TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
 -- 
 2.49.0
 

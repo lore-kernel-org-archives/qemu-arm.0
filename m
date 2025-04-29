@@ -1,119 +1,126 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp350173njm;
-        Tue, 29 Apr 2025 08:40:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVHwfdIRPhc+2UPyuqqTAgyEh8m0qbG6IJ5tNIQBrpWOy0m0Fmx19k9xkdb4DzjPDizHEXioXGUVIQ3hQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEEQvHyUk6f51jn5DzD2NFwZQIq4Tmv09y7c3jVgyYGyfgm6oRmrot2JEWnl2pXI12nEWpJ
-X-Received: by 2002:a05:622a:5507:b0:476:6599:dee2 with SMTP id d75a77b69052e-4881393c4ebmr69300611cf.27.1745941253623;
-        Tue, 29 Apr 2025 08:40:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745941253; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp353442njm;
+        Tue, 29 Apr 2025 08:46:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhEgy3Fq4z9yF/PLQWyrHSfLvLoTZQDWFcagkhegCFMVsWraw9l0dRbgh9/rFr7q7pvex7bYOHnlQA7Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaiMp+N1o2W76ncY0D922TkdV6e7ah3M9M93UseKpZe94T4AJkeclPbjHWVkJ+p+HA8M01
+X-Received: by 2002:a05:622a:1ccd:b0:472:bbb:1bab with SMTP id d75a77b69052e-48871755324mr49254621cf.24.1745941572474;
+        Tue, 29 Apr 2025 08:46:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745941572; cv=none;
         d=google.com; s=arc-20240605;
-        b=Fqwae7oGcADEkPRsv7c93/sCgofRrHjS7ki5kfc71+5x0ddlahLLQrBJnLhh7syZxb
-         cPwvTGj1mJtL4pJlZ0n76EpGrJARVPhAeIOFhNfH+KiMr/7gF/rnKw8gdm3qPb99tord
-         PJRQR/8TTKlCz96j47ZNrolqQ+Hat2bZD4+5fWUjzG12aGDjbKApVLKLmvBXmoKIQWBA
-         z8OHPfXIQ1AEZiWHgymfLJhPZMDFwhlK6O4xnRoEZje3pkg8rmlz9K7w9sqNayF6AqE2
-         hJykZh4e11lqWCATNR3SyckCe834rA/dRsojNM+iFrpLYBMinzFsePm9GXlSABW3CqOt
-         aufg==
+        b=NERfxA4VAJm8vfnsgothPNpcQp2ZTW9cDwGgfgbo+MQOoZML0WUpoiZRuYlfnuw8Z+
+         uFLyUKM8L7oyWz/1c+ApH7qRxes629t1C05BGWMPS3ZFOzd0lVPg4e455SIX2BA6KBHM
+         WyilxZa/JZ7pi5zA++uaVq8deATMh8nNZLE+dBXwRfSTD1C4vm1LVsXzAlm3E+P7Wcyy
+         1Tm/9m3juX6JXGZEvRhwEitWDceP5bqtbf/0Jvjk3yxaJBGwHkJfKStEkmF9TmeT4uY4
+         /n2cQKGRW/4yedTkcoRPnSGU+FErGDLGziwxDLsnvmgSNvJWpAODY1tjwVUuz/Eem/sb
+         xY9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=BvMuIcy7uWLKoIFwC4B1ZONwZFZEu+NYFeyFXhIve0M=;
-        fh=DKQFoSm5rvXVk6AUqpSavFv+IR+qPwKdgcCOIx8jJm4=;
-        b=d+bFR/WTlcF3QE15qXoBUVul3JIJRxwQlro73RLZilvC1CNyIU/fafPSLJUDqTs8de
-         ieD4Tv494H/I6TiRh3N5Klo3nR7/Onoj6wPviuIaz4pef5Sls/LH7cH3+B61wJGRjYgh
-         gVRX/+VXNmBqLcCnb1mz8r5J501LxUTf92e970SX8dzEaeHspppm7UQ7WykNYmYE1WMf
-         NsGpkg2l5LHzPnBfWuOAYGWHbzNcVUEdhyFjGSy7Wf6pgLLXvwTlpPLPYbnIxQ1sPIRY
-         Gqq/I2wKUzfx3MtCfTNEJ6cBtWDhuw/TcxClqQHD06Jg4dzj5BsT1xfV/AeMC/xQLCIB
-         yLgw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=np9xqL918gw2Ubbb/06D9MCBoIwQQnlrKQUY8EH6ues=;
+        fh=g4RabPuBY2n0d62TIIZ8TV3YuZJH5wkpPLz6l5gwfRs=;
+        b=C10RLi7aEhcl+n9ehvwmPq2Vmo+jdtglydVHdHitV0b8aZQOyPv9YWIMw/pDIrcEXW
+         YWJu9c7rwRTOk3b2d5VzrdEp+zNFFOjZf6ic9NkAOeapSZyF2D2jwtgEBsZ3Sui5GySZ
+         7efjJXHcs2wE5hFlChfjbtvHDBqDm5haKZcprE86H/WSqj/3mohxAMo9qp8TUG6VJBNU
+         XXpGi7qpg5PRn/hKIUMHcikZGm5bMiLzRcTOmol6iwB8p8PKA4WIsLLPm92Z4ZXvuuyo
+         qm/KMuyn1lty3laeiGLTfayfe1AmNQYaEQiS+OLLm+IsEiUhWb+TOsrl+7RNZFIvPLSe
+         Lu+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SohTDoJO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JU2YKuM+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea1f97660si135036531cf.437.2025.04.29.08.40.53
+        by mx.google.com with ESMTPS id d75a77b69052e-489a04db45bsi284571cf.123.2025.04.29.08.46.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Apr 2025 08:40:53 -0700 (PDT)
+        Tue, 29 Apr 2025 08:46:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SohTDoJO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JU2YKuM+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9n3X-0006qC-G8; Tue, 29 Apr 2025 11:39:36 -0400
+	id 1u9n9g-0004Dc-GA; Tue, 29 Apr 2025 11:45:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n3V-0006mp-5B
- for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:39:33 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n9R-0004CY-6E
+ for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:45:41 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n3R-0007eS-Bv
- for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:39:30 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-43cf628cb14so51801585e9.1
- for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 08:39:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n9P-0000kX-Ba
+ for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:45:40 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-39c14016868so6272755f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 08:45:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745941167; x=1746545967; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BvMuIcy7uWLKoIFwC4B1ZONwZFZEu+NYFeyFXhIve0M=;
- b=SohTDoJOl6rKTE9RuAl/DomJU2IME7t9RsMEyZ4XXJqO0cxrgeQpzafoCeF1F9qBAi
- ODLTh3gA+eo0WBsQDbmYEzBcEdKP9+qtZRhdJDVfxBz7ipq2xbW0jxCjAeovpDq9nyu/
- O5QoSiGgZFld1M9ejRB6hxwuOwNuDLlwYUT1hlk4BonromnZO2gM8Nh5dh1XSQA2zJuw
- oVaTdLBIXMqhnIjjSS6mnN+xp+e5I+lsIIwCH33br2h8YxbEl/C8UzTEuB1ON9tfYUjw
- xoAE8jk27BKRgpZnD/05iQsiDf+u00JcxlinF3Cr15p03+qzxAh1mpFOj1Ii+4tpbPcP
- Pi1g==
+ d=linaro.org; s=google; t=1745941537; x=1746546337; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=np9xqL918gw2Ubbb/06D9MCBoIwQQnlrKQUY8EH6ues=;
+ b=JU2YKuM+NKMoqG6fvWnm2Cw0IxypUjsNsMfNlq1BE2c6Oiw5f2zVNh8Cel84cx86fn
+ sZbhLsUF4wzsPURzN6AGWpy+sZXGo9xcy8/rIa2PjetinYhXuopEXfZmwA1v4aLdSiq8
+ fBIWnQm6e/6pCMpYw4Pyybjh6H6/QIF+9rK/Upc1DpQe4/ODssyOrkETGcJyWKItcdLY
+ IviD40pAEqMiK0Z3CtQAUdvo2DrhKp76VqbIxx8oFGThij35JK1bLV/9DKN4XXP8SYGh
+ XXOL91Qq6p19+tCTIg6365LoATWFnyyqPU7JB+AdwEv0h+HJxnVlqvJ0Fv7V1Ujw8RG5
+ VKlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745941167; x=1746545967;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BvMuIcy7uWLKoIFwC4B1ZONwZFZEu+NYFeyFXhIve0M=;
- b=G9Zf0VX7nmYWF35DEAw89vjmJgFqgF+x97VVv1jxwP43EeP6K/08nB6THTmuaKKgEu
- IGE8mZ457RiJ3Yb+NGTjboZDJMOsQJ1Z+9tdu62UH5V62NKDEROUzioRdg52s9wpUfd1
- LV4iX54/kkPkcER1Roet48U9sPd4NP0OGarP10kco801WDh6zywqAlqMkeypLCnW9HFd
- r4/J3WZFRMP1BYJYmgXmD0b3gTYbyJMJ//8398s5iBJr5Zfb2rffrvstTkZiQMG7i1DA
- huJ2gN/6ZUvjQDDdw2ugqN9lhpl7dANVGew6tdCnw7A262H/yGkljDGrKHhiuv23BGco
- Fz5Q==
-X-Gm-Message-State: AOJu0YwZMdjTobUI+28UyT5xoDpVENS+rfH8dDCndg1mxjFdFkXlPFdJ
- K4jYWGsmtPL8hAzTAdUpUxKQwYKPwwsRxP5OoOToqm4AX53wJlHuxU+bcEHk1ktf9GxqGJh8Q0+
- T
-X-Gm-Gg: ASbGncsLPUvXFJjlj1VDXu0fc6wZVJiqUHekboo+quoj6hcXLXHmUzyYtj8Nq6uCv18
- UbOx/0JbgA2y+0XrxYpCXfCGqCPfrHBCLdsmJsNDVx6/L+TP5UDZ2O+Z5TpSE/KQ1PGNiTMSCKW
- 2ouxqpz0RZdiNrFXO1hxd4JUmGvfkOUwzT/zEV3Vj+Y7aB7MJrFA+jL1nzcm2R641zB9GuRBkZL
- a819MFlShrJMNCrrZXUzbTLXNIbpD1AnY5W4l5vGfhExpQvJx2XrMttokDVpt+LL2Q19pEasGyn
- m4Nn3pYVhJ24LbRTWC3DCEGCv1S9f+5aGuZiZQLBvS+9PzlZB+hTor3VuBD5chI+k8L6fV2gAZT
- fAK/zcz4CNU/FzwdvIPmR4Pn9gumq5GU=
-X-Received: by 2002:a05:6000:400e:b0:39f:cfc:d520 with SMTP id
- ffacd0b85a97d-3a08a51f5aemr3425102f8f.15.1745941167596; 
- Tue, 29 Apr 2025 08:39:27 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1745941537; x=1746546337;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=np9xqL918gw2Ubbb/06D9MCBoIwQQnlrKQUY8EH6ues=;
+ b=m26hveZo6wUkXbr1O6Cn/O1skdKjCKEVmpEW5GwcdE7BXbKUPCm3CFjTnWuzlQS7qH
+ NQu7GNgIbZsldZqyrv869A7xGkpiVbsjp1VzetYcBDSpbfWhzPGJQ+QyAtSdaOVBRqMp
+ GxjbSaYk9B02vm668k7O0sbZhcZ97cnQljT/BOROePetwHxuqOfPabU6ahsv747PkoCX
+ 1/0T+NgL6VmaUBtet1vWoo14Y/Sycq5gJMzYXx5yPYohNv2aYZW0HHvAaPzR3klMx7Jn
+ pEf5tgxxK88seRJS94ra3ZCadLYGa/xuwhPzqWTL87rzvhYAQotBOFOTzjT1DtY39NeY
+ pFyQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU9Zbn0IrVZ1emoc9LXuHziuaM0XUgFAEHH2QmIhU9rMRCVqMNER+lEM4e75bTHWHQXHP4ViQTTgg==@nongnu.org
+X-Gm-Message-State: AOJu0YzycxiqPxQ6+wW0MJfg6ebEkt54r6rwueW1pTG1GtfK8SHbw7lT
+ 3VULguJJcsqM4UJIimqpf9SeE8BfO4nCOPBMbKDGAegPeuOXyJsFqGlpebmLoG8=
+X-Gm-Gg: ASbGncvLNPCivN7cns2m0LP8qLxYqAGH7P+K3jLRGvg3NXO6nQA5WWwfGPrtnfAbcPm
+ pqWLLI948BYtjbKx1itredJIdOCmX8SAE7lbxay5Gc2kOo48Px6Cv+wW8OpG+uDDfMX+JlfBKnJ
+ gBiMOJ+Jaad/4uCyLYO67+oVhmP1ZUO7shceRQCR/pISMqta+H25RljvLGPE+gTg8t71TAqRPYs
+ Knj5wyFaM8OrTT/IhdMQTHssv7/19Fp0Vjgq7jAY1HkDdipp+8Gmtg+dImvXu1/XEt/8Iw0UHX+
+ Vf5Yv+b65E75EQ0WKn2fbrdJ58omiQpsyM3l2LqrYaplWPLS0o7ChN/vu4aPdjrHD2wUZABRXoF
+ hwosz6N090BIfTA==
+X-Received: by 2002:a05:6000:dd2:b0:39c:142a:ed6c with SMTP id
+ ffacd0b85a97d-3a08949d877mr3492048f8f.40.1745941536969; 
+ Tue, 29 Apr 2025 08:45:36 -0700 (PDT)
+Received: from [192.168.69.226] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073e46517sm14306959f8f.71.2025.04.29.08.39.26
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 29 Apr 2025 08:39:27 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 4/4] hw/arm/virt: Remove deprecated virt-4.0 machine
-Date: Tue, 29 Apr 2025 17:39:07 +0200
-Message-ID: <20250429153907.31866-5-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250429153907.31866-1-philmd@linaro.org>
-References: <20250429153907.31866-1-philmd@linaro.org>
+ ffacd0b85a97d-3a073e4684csm14227934f8f.76.2025.04.29.08.45.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Apr 2025 08:45:35 -0700 (PDT)
+Message-ID: <3c2c4f90-92a2-41e0-b6c8-71c058ffab7f@linaro.org>
+Date: Tue, 29 Apr 2025 17:45:34 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1 v2 03/13] hw/arm/virt: Remove
+ VirtMachineClass::disallow_affinity_adjustment
+To: qemu-devel@nongnu.org
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ Andrew Jones <ajones@ventanamicro.com>, Thomas Huth <thuth@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20250116145944.38028-1-philmd@linaro.org>
+ <20250116145944.38028-4-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250116145944.38028-4-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,33 +142,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m6TCIbKNsWsz
+X-TUID: oOo8YNQvW7fJ
 
-This machine has been supported for a period of more than 6 years.
-According to our versioned machine support policy (see commit
-ce80c4fa6ff "docs: document special exception for machine type
-deprecation & removal") it can now be removed.
+On 16/1/25 15:59, Philippe Mathieu-Daudé wrote:
+> The VirtMachineClass::disallow_affinity_adjustment
+> field was only used by virt-2.6 machine, which got
+> removed. Remove it and simplify virt_cpu_mp_affinity().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/arm/virt.h |  1 -
+>   hw/arm/virt.c         | 30 +++++++++++++++---------------
+>   2 files changed, 15 insertions(+), 16 deletions(-)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 27c5bb585cb..5d3b25509ff 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -117,7 +117,6 @@ typedef enum VirtGICType {
+>   
+>   struct VirtMachineClass {
+>       MachineClass parent;
+> -    bool disallow_affinity_adjustment;
+>       bool no_its;
+>       bool no_tcg_its;
+>       bool claim_edge_triggered_timers;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 0080577e1a9..53f4a96e517 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1759,24 +1759,24 @@ void virt_machine_done(Notifier *notifier, void *data)
+>   
+>   static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>   {
+> -    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
+> +    uint8_t clustersz;
+>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>   
+> -    if (!vmc->disallow_affinity_adjustment) {
+> -        /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> -         * GIC's target-list limitations. 32-bit KVM hosts currently
+> -         * always create clusters of 4 CPUs, but that is expected to
+> -         * change when they gain support for gicv3. When KVM is enabled
+> -         * it will override the changes we make here, therefore our
+> -         * purposes are to make TCG consistent (with 64-bit KVM hosts)
+> -         * and to improve SGI efficiency.
+> -         */
+> -        if (vms->gic_version == VIRT_GIC_VERSION_2) {
+> -            clustersz = GIC_TARGETLIST_BITS;
+> -        } else {
+> -            clustersz = GICV3_TARGETLIST_BITS;
+> -        }
+> +    /*
+> +     * Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> +     * GIC's target-list limitations. 32-bit KVM hosts currently
+> +     * always create clusters of 4 CPUs, but that is expected to
+> +     * change when they gain support for gicv3. When KVM is enabled
+> +     * it will override the changes we make here, therefore our
+> +     * purposes are to make TCG consistent (with 64-bit KVM hosts)
+> +     * and to improve SGI efficiency.
+> +     */
+> +    if (vms->gic_version == VIRT_GIC_VERSION_2) {
+> +        clustersz = GIC_TARGETLIST_BITS;
+> +    } else {
+> +        clustersz = GICV3_TARGETLIST_BITS;
+>       }
+> +
+>       return arm_build_mp_affinity(idx, clustersz);
+>   }
+>   
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/virt.c | 7 -------
- 1 file changed, 7 deletions(-)
+Missing:
 
+-- >8 --
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index bccbc54073e..f4e5a93f0c5 100644
+index f4e5a93f0c5..9a6cd085a37 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -3563,10 +3563,3 @@ static void virt_machine_4_1_options(MachineClass *mc)
-     mc->auto_enable_numa_with_memhp = false;
- }
- DEFINE_VIRT_MACHINE(4, 1)
--
--static void virt_machine_4_0_options(MachineClass *mc)
--{
--    virt_machine_4_1_options(mc);
--    compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
--}
--DEFINE_VIRT_MACHINE(4, 0)
--- 
-2.47.1
-
+@@ -1766,3 +1766,2 @@ static uint64_t 
+virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+      uint8_t clustersz;
+-    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+---

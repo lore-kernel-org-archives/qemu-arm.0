@@ -1,123 +1,124 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp254442njm;
-        Tue, 29 Apr 2025 06:23:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXUIBB1qfq//B0vESep63ovv46+Isl8OatVWOJOrdmJ0fnGwhb4VKy/avbbDBV4iGEUqafvZscEAT7iSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEw5Go/x3Q0OC7lDCXGXptRgrAOsevjSEEe0eMWs7VL77f0z6bAQvdJrAJOP2mL+nvTTfqr
-X-Received: by 2002:a05:620a:170c:b0:7c5:5286:4369 with SMTP id af79cd13be357-7cabdd8cdd0mr525852285a.28.1745933039670;
-        Tue, 29 Apr 2025 06:23:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745933039; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp254498njm;
+        Tue, 29 Apr 2025 06:24:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXvRUweqGcWH77CBB4aXz04/14QtzG67mxdEH8EIP8y2PL2wK5Gx7h6pF6E9xfQKa9oiKPfM+1etaWniw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF7vfTuJ399SelEFv4NSTocR7KJAeOtMiBhrqGNREBt6I6UtUO5b8fbqHY67BAlake5cm4g
+X-Received: by 2002:a05:6214:2b08:b0:6f4:c423:67b4 with SMTP id 6a1803df08f44-6f4d1efe6f9mr236506546d6.10.1745933044099;
+        Tue, 29 Apr 2025 06:24:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745933044; cv=none;
         d=google.com; s=arc-20240605;
-        b=N5rcA1Cxx7r/1/SNKTr5VIo645cswKdkVuO5zNOkw0xXjcXw70NSfTCUMHK55jyfbv
-         gdQSbxPH/+1uvqw7sjnYeTMVuQqdPpeXxgtgQ+0hC1Nx/0d3wNjfAaSuS9ET4h44ZWOi
-         aadckgG4WQ6jHVodYFJYbw22vUiHfQoW6f60iPdnMTbRRnZy4hW31c+yJ0bEdpTm0Ipd
-         KlLH6D2pdIsa5DbfZ8qOBd5aAVVAfvuDyHe7C9jj3SLt9poMXywK44Z3f2iSM7g3vEBS
-         xV+1eztZSRrpmEPsxrvwYmhJREvrqHWbTWZSLYw/1P0LRrmfQpOT+8afV+/n7JB8DstU
-         R22A==
+        b=fv9LFuJccJy8uyU/2Eg1Z+Ox+IYJcWHFUiaTsjW2GtZpbbv9xZ+NzoXoYKjUtSqDR8
+         Qysv8kD7Vh2ftaWfsGkfTaNQ6c7YHdmdduzv3RujTCp6l4CPVvHGdb05ApqmuBHjJmcK
+         mQhITChrEYaJ3kbZXoKUFHA3xiPquednXvHYG18HfhEvBuwmFjcdCvOsz2DYp4sOvpb7
+         YpCSgF+tueKBlmOxHfVkS2hXqMMuIHI6uKmlWDYKd717chdm807UE1B1q0tTYJK/eZcF
+         dKVFcL67cR7RXO8CO61FKGEJ3eYqTZh2zgdSMJLtjmQQBLA0ML55P/IrF1YjBLZTMk4E
+         xk9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PW9jN2yS/TAOGn5xgs3qpwNb9whA0g2Y1AVjroSf5VQ=;
-        fh=Jf09H9I4VaHbgN8mQ13fIEtUNqkBvOSdRrW68i91mfA=;
-        b=JXLdF6nZYldi7SXoc6avDvFBjSRlHR6KhcjhmRY6JWdBnxAhlt9uzOELXxCFYumlSA
-         ikbGAxADzndgZ5gDaVosljC3x40YV+dP3unHtIyQg5BtjdYsyGwfSzfb/dmkEKEt4MFl
-         a0JYgu7IP75sqMS27Ed757B6Z6h3eZCuyDO8BTe8Xr2GuYV8NbugDrUnjjMEczsGucAO
-         LjDTtS7qo5qXcTug1KTb1mpmJFuCfbshv2+vdqOxGpPBKNTVpqlOBDABbnzikrjuh0Cu
-         nz1Nyu7J400WZRGlYsHsLJp0SohCRO5OxpT1wJ3FG4STiTqzuDnUEzRFN5HhI4DY9NZe
-         NFsg==;
+        bh=DjSG1O4sqyvihfU4YBjpfGe20pFEFSZo62gLO5k4z4k=;
+        fh=tTs/+Q/9VapTPyRNUBfitoxynJgLFWMl03vJGZls8JI=;
+        b=Tnl4gLBF86txUSnOqQvIjeLbaPmy4VMHD6f6LHztKWyO3jIn038xrNL9QRTtNb7I06
+         MoyuJ1uQ7XeUb9HyvU4LemOYhKBhOwO71ncex9eSf/xycdPeaYsP5oqjalGnGYcPlEEf
+         nQ7ubK1qXfN/gG9TlNXAVsAfDsw8qSHQgg+5O1xx1jnr89W8b9M/quk6pGx1LUGXMC9A
+         HNhil7WxIbX/KbVF6H3FjH3wVQCJLU4CcC1/d8NzceavgUhHrqKGZE/Ps9Hw7O2uSc6i
+         iWM2KwGRPqpSUJg3dtW4h451IbBLYLHY6CO9u33xbJmypK+tsQ2WeheC3oCwgnQpUJBv
+         yJRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=olAB2tiG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SzhdpLNC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958ebf3desi1241781485a.568.2025.04.29.06.23.59
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4e77be0a1si36266346d6.453.2025.04.29.06.24.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Apr 2025 06:23:59 -0700 (PDT)
+        Tue, 29 Apr 2025 06:24:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=olAB2tiG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SzhdpLNC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1u9kvP-0005EU-DD; Tue, 29 Apr 2025 09:23:03 -0400
+	id 1u9kvb-0005LF-8a; Tue, 29 Apr 2025 09:23:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kuk-00056r-03
- for qemu-devel@nongnu.org; Tue, 29 Apr 2025 09:22:24 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1u9kuj-00056e-Ca
+ for qemu-devel@nongnu.org; Tue, 29 Apr 2025 09:22:23 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kue-0005eH-1x
- for qemu-devel@nongnu.org; Tue, 29 Apr 2025 09:22:21 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-39c14016868so6066680f8f.1
- for <qemu-devel@nongnu.org>; Tue, 29 Apr 2025 06:22:07 -0700 (PDT)
+ id 1u9kud-0005en-DO
+ for qemu-devel@nongnu.org; Tue, 29 Apr 2025 09:22:20 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3a064a3e143so3072579f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 29 Apr 2025 06:22:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1745932927; x=1746537727; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PW9jN2yS/TAOGn5xgs3qpwNb9whA0g2Y1AVjroSf5VQ=;
- b=olAB2tiGjw62DXbVy4Y6nqAvupBwXUTbLrceTOshH9RXmMAnrQ5EpLWCYAsNiNAwE8
- maU4p8+4wa4zaQ/Zmbc9K5rHAmAfa6s/kikpg4PWA2dLwy6SHf1xDIEbi8ifJ5raCh4w
- gJS+WJrLrNVjpOXCBHSYUjmd15jE50NsnUcHkuIWJ5sND6fXI6GcoMItp3FNpWkWzzbB
- svPGD5HIem4K9YHciMIxHuZQfkv7Wkysrw51TaAKGqe6SkRF9RdiCUXhK9Q/H4yd0zBi
- Fubp6lGB2AzOR6rT4LrKFYBsv7FrAWGoArcJqAE0nD9sZLBSQnmG1bAvhbOu6Yrzd4lT
- Wy/Q==
+ bh=DjSG1O4sqyvihfU4YBjpfGe20pFEFSZo62gLO5k4z4k=;
+ b=SzhdpLNC6SAe0ElUdfmQ95kcWMsf8FDCdDMn49VDIgUimOAHm8ZlBLba4lrwgaza/H
+ Zsips9aPT25RyZfcN/WrNE9tXeh5SEMmzWfoclzehm2SzcIadUe0s9b6t/EYuI2HFqJx
+ FbN17u71Pa1YF30QmKVKablDASzB24wTAuA6z+pvg6t4EFoxk/Gi4jYLXAfONkUubDo4
+ FK4BO7HmcksA2tEvqIeYCeHLr5xcO7o/lre/yiiqFR6eoVlrRTT0ruIVXW3UFbIXekfo
+ wk0Nc6aDTSCOXHc7r6i2DAVm+AA580bxhScrN7ol2SNP2yWhavaB7XyvKU0EAy8GGCrV
+ uTpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20230601; t=1745932927; x=1746537727;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PW9jN2yS/TAOGn5xgs3qpwNb9whA0g2Y1AVjroSf5VQ=;
- b=MCXCSqirtY1xc+PyNIldKjA02F7BNrCfL95al8Y5p6DEm0K4k7sBeelUrZ4p4PUkPT
- sdasbqDuCX6uzMvUoGLl/JjjN/wZj+kN56raCjr43DP8LD6chtsP56dsqbE/5mmIqxEV
- ZSsHPwFlEMzqYPtc/eJC6AbwcM42ZeWy6wHTRsNhsdckVjYyrjmF/wAuA8ZMLoP8/jjN
- BKc+s+6VBmK0v7VfF1PHicNbcV7+fUwrwOkVVsej/pB6vHhXLM01R+T9s1pCjwW1srWW
- hg6aJQ5CkZGqnH5SuML6NeYxiB9Q0QOFuursMI2bPDgK5D8eLpyc1vs69xDdpYJs9GDf
- TqxA==
+ bh=DjSG1O4sqyvihfU4YBjpfGe20pFEFSZo62gLO5k4z4k=;
+ b=Smig3Z6egvSvi7V7hmmiLunb37nr8f6wKNzflt43+ofHlgZ9SQsBBJ9710Z2H9ng1L
+ SxxLPUJmBKy6IRZmoOmORSVlJ7NOxZGfBdkn0x1mgxPhpd2tkcBitOVAoloYpm5EiQy+
+ +TEjqZCQD8zRpJc1kVJjcZk2HaDtvQrnWSOW9hervM0p16fUfuAINKB5KJ8GujzjLOS+
+ AuFYftKTRILFvr5VWJRNucOO6ogHwsvu8AVtqMyRwEWbAs0Gma0GlDzmHBpvYkEceH27
+ dQzqWSdQp0alPmZ+vHKcadFWAV7OTKqQZyuY64Myhw4WvzYuVkeqyFA2RMp32Oe8v4uY
+ 36uA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUDnbwMCznNo2RNHTBSJ2jbDeCBKAlnsoS+5qL4VsMYrLtaGCkHx/ti9sxJiCPQ5HkS+dzU06WmRVQr@nongnu.org
-X-Gm-Message-State: AOJu0YwknwL/iT0DfB3+kc/Dk+xBNp3D3z6D2hdllFUbEIplqf8xAZMK
- yIG2VBzL7QRgVCG+ciXoJ4WzwAPniFWu5GXHPBv6Ji4NARDAfCrTlJkdkH5L5fU=
-X-Gm-Gg: ASbGnculeUVeanXvxb1oiUDMAdRx+0p9qqUDpcgRQq2z2DFU8fPtMfdrSswe87cauD5
- iyjA9l+W6/XiCBv7furYE3I302gQGD+SuRdvfobGIytDngWr9FhRRfcMLLgssy4/zJfk6c/YfYR
- D+NTicHRGcJGpMVjsAejjsLuYAcYejkqbxItHEG2/ZDwni1PyQMVoEAhVHPcUOJEFEZunyK6j7x
- RhHpIK88jnID1eT90Wy9pmnnQVmILnXEI92Ru5ESFOwOfzAU3HpJ2Z61dBP7LJu6drtcD/Bc7nn
- oYwu2QvOtQZyla9OML4fIHy0ekY34742E5YDXurytu+pxRs=
-X-Received: by 2002:a05:6000:b4e:b0:39e:cc5e:147 with SMTP id
- ffacd0b85a97d-3a0894a1aa8mr3065452f8f.55.1745932926674; 
- Tue, 29 Apr 2025 06:22:06 -0700 (PDT)
+ AJvYcCVXIItWbZN6dYv0oX6PY6RhhN3KjMEcS/ihS7Y/WCoJd7S8NRiGncHtQASpbb0sBgT1rtkk1LR63eZ3@nongnu.org
+X-Gm-Message-State: AOJu0YzYSoJmqCMTKGEqqL01XIq3pTBx9JdJyTn33F3npTc7KvL+Frqp
+ rpNpGylJF0XSC7gsfIX656b8WFzCTE8pypSwVD17VkeYbeQdOouC2g5TgYjG8TwGoPwP8zpG0CN
+ d
+X-Gm-Gg: ASbGncvy0UcBPbbcc63YtPF+mjARqj4/7Vo6a9le1gydFm8sM8jzGXZh0ScmlK1okUZ
+ uvK3Z+6wCXiKoaO1csEw6rmJTom7cWJv8kS67UxOt49XOA2CH7rJ2wRwt5SP0Zpx7VTMzukgp/l
+ paCJon3ApIg/rEPc+oqT3LwN8+jP/3eXzPESh2cK09WxmS2dVsjfi1hisOJCDpvQHQH6hKVyslp
+ vpuZbg64D5/GM0ELBWYTku+Y9BlVH3qrI9OF8g9HfmTSRb64MMUcRXU/+M9VeXmbTrlojR2aVA6
+ AsR3Cxztc1R45jadhJVH9au2/P5/q9hhabQAU+kNge7YU8a0aORb6Fyd9A==
+X-Received: by 2002:adf:efd0:0:b0:39c:1159:fe1f with SMTP id
+ ffacd0b85a97d-3a0891ac019mr2454018f8f.32.1745932927612; 
+ Tue, 29 Apr 2025 06:22:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073ca5219sm13729371f8f.27.2025.04.29.06.22.05
+ ffacd0b85a97d-3a073ca5219sm13729371f8f.27.2025.04.29.06.22.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Apr 2025 06:22:06 -0700 (PDT)
+ Tue, 29 Apr 2025 06:22:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH v2 4/7] target/arm: Present AArch64 gdbstub based on
- ARM_FEATURE_AARCH64
-Date: Tue, 29 Apr 2025 14:21:57 +0100
-Message-ID: <20250429132200.605611-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 5/7] target/arm: Move aarch64 CPU property code to
+ TYPE_ARM_CPU
+Date: Tue, 29 Apr 2025 14:21:58 +0100
+Message-ID: <20250429132200.605611-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250429132200.605611-1-peter.maydell@linaro.org>
 References: <20250429132200.605611-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,40 +140,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7V6BpTE/GDcT
+X-TUID: d3QbZQKSJXxw
 
-Currently we provide an AArch64 gdbstub for CPUs which are
-TYPE_AARCH64_CPU, and an AArch32 gdbstub for those which are only
-TYPE_ARM_CPU.  This mostly does the right thing, except in the
-corner case of KVM with -cpu host,aarch64=off.  That produces a CPU
-which is TYPE_AARCH64_CPU but which has ARM_FEATURE_AARCH64 removed
-and which to the guest is in AArch32 mode.
+The only thing we have left in the TYPE_AARCH64_CPU class that makes
+it different to TYPE_ARM_CPU is that we register the handling of the
+"aarch64" property there.
 
-Now we have moved all the handling of AArch64-vs-AArch32 gdbstub
-behaviour into TYPE_ARM_CPU we can change the condition we use for
-whether to select the AArch64 gdbstub to look at ARM_FEATURE_AARCH64.
-This will mean that we now correctly provide an AArch32 gdbstub for
-aarch64=off CPUs.
+Move the handling of this property to the base class, where we make
+it a property of the object rather than of the class, and add it
+to the CPU if it has the ARM_FEATURE_AARCH64 property present at
+init.  This is in line with how we handle other Arm CPU properties,
+and should not change which CPUs it's visible for.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/internals.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/cpu.c   | 36 ++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c | 33 ---------------------------------
+ 2 files changed, 36 insertions(+), 33 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 4d3d84ffebd..f1c06a3fd89 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1831,7 +1831,7 @@ void aarch64_add_sme_properties(Object *obj);
- /* Return true if the gdbstub is presenting an AArch64 CPU */
- static inline bool arm_gdbstub_is_aarch64(ARMCPU *cpu)
- {
--    return object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU);
-+    return arm_feature(&cpu->env, ARM_FEATURE_AARCH64);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5e951675c60..73a2a197667 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1610,6 +1610,35 @@ static void arm_set_pmu(Object *obj, bool value, Error **errp)
+     cpu->has_pmu = value;
  }
  
- /* Read the CONTROL register as the MRS instruction would. */
++static bool aarch64_cpu_get_aarch64(Object *obj, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    return arm_feature(&cpu->env, ARM_FEATURE_AARCH64);
++}
++
++static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    /*
++     * At this time, this property is only allowed if KVM is enabled.  This
++     * restriction allows us to avoid fixing up functionality that assumes a
++     * uniform execution state like do_interrupt.
++     */
++    if (value == false) {
++        if (!kvm_enabled() || !kvm_arm_aarch32_supported()) {
++            error_setg(errp, "'aarch64' feature cannot be disabled "
++                             "unless KVM is enabled and 32-bit EL1 "
++                             "is supported");
++            return;
++        }
++        unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    } else {
++        set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    }
++}
++
+ unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
+ {
+     /*
+@@ -1737,6 +1766,13 @@ void arm_cpu_post_init(Object *obj)
+      */
+     arm_cpu_propagate_feature_implications(cpu);
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++        object_property_add_bool(obj, "aarch64", aarch64_cpu_get_aarch64,
++                                       aarch64_cpu_set_aarch64);
++        object_property_set_description(obj, "aarch64",
++                                        "Set on/off to enable/disable aarch64 "
++                                        "execution state ");
++    }
+     if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
+         arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_reset_cbar_property);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 00629a5d1d1..e527465a3ca 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -781,45 +781,12 @@ static const ARMCPUInfo aarch64_cpus[] = {
+ #endif
+ };
+ 
+-static bool aarch64_cpu_get_aarch64(Object *obj, Error **errp)
+-{
+-    ARMCPU *cpu = ARM_CPU(obj);
+-
+-    return arm_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-}
+-
+-static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+-{
+-    ARMCPU *cpu = ARM_CPU(obj);
+-
+-    /* At this time, this property is only allowed if KVM is enabled.  This
+-     * restriction allows us to avoid fixing up functionality that assumes a
+-     * uniform execution state like do_interrupt.
+-     */
+-    if (value == false) {
+-        if (!kvm_enabled() || !kvm_arm_aarch32_supported()) {
+-            error_setg(errp, "'aarch64' feature cannot be disabled "
+-                             "unless KVM is enabled and 32-bit EL1 "
+-                             "is supported");
+-            return;
+-        }
+-        unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-    } else {
+-        set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-    }
+-}
+-
+ static void aarch64_cpu_finalizefn(Object *obj)
+ {
+ }
+ 
+ static void aarch64_cpu_class_init(ObjectClass *oc, const void *data)
+ {
+-    object_class_property_add_bool(oc, "aarch64", aarch64_cpu_get_aarch64,
+-                                   aarch64_cpu_set_aarch64);
+-    object_class_property_set_description(oc, "aarch64",
+-                                          "Set on/off to enable/disable aarch64 "
+-                                          "execution state ");
+ }
+ 
+ static void aarch64_cpu_instance_init(Object *obj)
 -- 
 2.43.0
 

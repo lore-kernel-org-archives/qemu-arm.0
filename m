@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp121784njm;
-        Tue, 29 Apr 2025 02:19:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXc32dvacDEzuFvxySBBi5czgSd5olJg9UWxBR58shsaZWNmZJbYX0cKoJaZD1llB4Kd7Jqm4RR23Ps/w==@linaro.org
-X-Google-Smtp-Source: AGHT+IH7Uny0z7LCDZQjj1Ny8Jc+Z7EgmnONx3+Lz7f9RNoE2239pA2jKdHfuAHaWPOIuCyLRWEF
-X-Received: by 2002:a05:622a:4cc8:b0:476:949b:8c5e with SMTP id d75a77b69052e-4881393f3d6mr60676671cf.27.1745918370406;
-        Tue, 29 Apr 2025 02:19:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745918370; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp121796njm;
+        Tue, 29 Apr 2025 02:19:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUUOlPCHRl/vCDwDr0lCGcS9WQgijo4nT7Di7TDMpgQObov8uROMShJrZbfJ5TrF18oOz5MKlvsoMKxxw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEMLwYFRrtbYTjTcdcxFAwWQ1mQZY8HTMhLCYzQxnwRJ+tD1l/ibZdLHCR4ISKUbptvUfUL
+X-Received: by 2002:a05:622a:2b0b:b0:476:9e90:101d with SMTP id d75a77b69052e-48815c4d9a6mr48971091cf.38.1745918371327;
+        Tue, 29 Apr 2025 02:19:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745918371; cv=none;
         d=google.com; s=arc-20240605;
-        b=U5shlci0eAyQtLYaGSExpx9ZlRNBl+COMD8JyFASvzsju2gBva2EICHhWo6muXgyFd
-         YtUEL/+6z+Ou4ZMkXeMwe7b1YZkgbz/iFJkP+8WwdrgbgeT59K7fU4OGdOGIfWqJZGRH
-         f+GLk5xwcnitrhrhMCDhlf+/SS7dtjrmw37pVwMl11RynpKox5yCqZ4oz+B4ZROViSBk
-         R0nLcxCP5rHFvZM7rVzEFfuFm2LU1sjIVR934HLuXz0l5FMi29GWD3Vhu79gUb08aaXt
-         Xm/UNzz8bjfx8VUITI5ASFHk6HFssFXXUnpW/DDg0G1p1i8dIUmp+zt43lVcug3S1Vv+
-         sFCg==
+        b=O3K/NTErScHpi+tbxfSU5MG2EKD2/nozd24oxJetfd54wTtbhOsyssS+3uORzqFkbi
+         GyOP3fKb4zhbGecutgkFgUMgu+Uhe+F/tWZWdGSgkeVyMJ+kgXcaZTZrh5wEImFz4TK6
+         bDa8YkJvH48zLQsOA77f05XriGHf47CDHI7EwDBzruBCt4S6yMSJc6NafRGEy+xiD+6D
+         DzjQYza9MSkzIsHgIZDMH263M2+ylC4/sMFwRJQ/Q+hPk2z3MLvpIX6k32PWpBQFWCbo
+         lZyPNsRw33ZaTPZWiTy0c5Brd/l4xwGeraXzl+9EGXwJuEj5ATNQGLp/qNyXXd3s4yQ4
+         5kPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=yRJyv/Pvm6XbaGQHrQ4kHHNypK0meb2iPc5kcU4Kqhk=;
-        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
-        b=MEFvLTElnMcZlNzfNa0OeBMZflKQbgpG56vrWGv3Ye6j/xjE6ROHyIFQ2TPU97ux9m
-         xiRWn8L1YElVGm2XS+OHYdy+N2hfgBE3zTOiFvw45ofcu6Pk0NbE4Q7ddQ1KTnZxWMPH
-         Mn1PpoaPyEhENEgY065pKtV3e9q7+KRuQhPqg1t8/dsUsxeKz+sAyY6aa0HXhli7cq+O
-         TPOZN4FW7N+HwiruV7GY1npvKge8vzHV/nRWBDB/sV/k1OshINOFFeP15L4uzfJ1Wdxq
-         I4ykuehLB33J4vVpLsYYnUP7FTY1jYmJwd25oxvS7u6MRCMX/SW36OJ3a4xY/ybKkJd3
-         9xOw==;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=tNxigGPuEvmsvz8oizcJrfJxZ3zrYsbGRr6ScUeoGho=;
+        fh=vQPqsNMqoAlDx9Lray1TJhxW/ME1Lx6izgi/4Tj22z8=;
+        b=aAVgQ1NRZqIH2gwvZz+vp5GEKh88Gs+ZxkjzBaT3gQkjiknkHOJ7F+h1cqyaWQfOZJ
+         wriehvVXpJ+HWLQg6jaYgaW2Dz6ICe4ITiWJXg5jgPsihPSnyg5kqSDpmoD9C0y8hNGj
+         qAfOiZ0iXFv4JvzrquoFyytkIgFfW1H7p/9cGpRZuxAEN90ZBdUAjYLFpH+gkxdzF/4c
+         WSamiEjprB1MqD/GKp3rji6LiRopSfs8ClapWYQzD3iJWF/xRTr8ZLJ+z6ajGvvZuX/W
+         UlcYJ/imIyu/H1GD/ckfn3tjrSLPD4hU9U1owdUFots+MzBraspE/VEJKkvHwIjsZLcZ
+         kjFA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4c08d2e7bsi121733926d6.64.2025.04.29.02.19.30
+        by mx.google.com with ESMTPS id d75a77b69052e-47ea179c343si125612561cf.204.2025.04.29.02.19.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Apr 2025 02:19:30 -0700 (PDT)
+        Tue, 29 Apr 2025 02:19:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,36 +42,40 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9h7P-0005Mb-9m; Tue, 29 Apr 2025 05:19:11 -0400
+	id 1u9h7d-0005OY-PA; Tue, 29 Apr 2025 05:19:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1u9h7N-0005ML-Mi; Tue, 29 Apr 2025 05:19:09 -0400
+ id 1u9h7V-0005Nk-D5; Tue, 29 Apr 2025 05:19:18 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1u9h7I-0004Ff-Hz; Tue, 29 Apr 2025 05:19:08 -0400
+ id 1u9h7T-0004Ff-I0; Tue, 29 Apr 2025 05:19:16 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 29 Apr
- 2025 17:18:55 +0800
+ 2025 17:18:56 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 29 Apr 2025 17:18:55 +0800
+ Transport; Tue, 29 Apr 2025 17:18:56 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
- <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v3 0/9] Introduce AST27x0 multi-SoC machine
-Date: Tue, 29 Apr 2025 17:18:44 +0800
-Message-ID: <20250429091855.1948374-1-steven_lee@aspeedtech.com>
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v3 2/9] aspeed: ast27x0: Correct hex notation for device
+ addresses
+Date: Tue, 29 Apr 2025 17:18:46 +0800
+Message-ID: <20250429091855.1948374-3-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250429091855.1948374-1-steven_lee@aspeedtech.com>
+References: <20250429091855.1948374-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -96,56 +100,65 @@ Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
 From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L3+shKYaKsie
+X-TUID: QUunSK+ZqH+e
 
-This patch series introduces full core support for the AST27x0 SoC, along with necessary updates to the ASPEED AST27x0 SOC.
-The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35 cores and 2 Cortex-M4 cores.
+Corrected the hexadecimal notation for several device addresses in the
+aspeed_soc_ast2700_memmap array by changing the uppercase 'X' to
+lowercase 'x'.
 
-v1:
-  - Map unimplemented devices in SoC memory
-  - Intruduce AST2700 CM4 SoC
-  - Introduce AST27x0FC Machine
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Change-Id: I45426e18ea8e68d7ccdf9b60c4ea235c4da33cc3
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/arm/aspeed_ast27x0.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-v2:
-  - Remove unused functions
-  - Correct hex notation for device addresses in AST27x0 SoC
-  - Add AST2700 SSP INTC and AST2700 TSP INTC
-  - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
-  - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
-  - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
-  - Add functional tests for AST2700FC A0 and AST2700FC A1
-  - Add Documentation for AST2700FC
-
-v3:
-  - Remove A0 SoC support and related functional tests
-
-Steven Lee (9):
-  aspeed: ast27x0: Map unimplemented devices in SoC memory
-  aspeed: ast27x0: Correct hex notation for device addresses
-  hw/intc/aspeed: Add support for AST2700 SSP INTC
-  hw/intc/aspeed: Add support for AST2700 TSP INTC
-  hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
-  hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
-  hw/arm: Introduce ASPEED AST2700 A1 full core machine
-  tests/function/aspeed: Add functional test for AST2700FC
-  docs: Add support for ast2700fc machine
-
- docs/system/arm/aspeed.rst                 |  61 ++-
- include/hw/arm/aspeed_soc.h                |  32 ++
- include/hw/intc/aspeed_intc.h              |   5 +
- hw/arm/aspeed_ast27x0-fc.c                 | 192 ++++++++++
- hw/arm/aspeed_ast27x0-ssp.c                | 309 +++++++++++++++
- hw/arm/aspeed_ast27x0-tsp.c                | 309 +++++++++++++++
- hw/arm/aspeed_ast27x0.c                    |  79 +++-
- hw/intc/aspeed_intc.c                      | 424 +++++++++++++++++++++
- hw/arm/meson.build                         |   6 +-
- tests/functional/test_aarch64_ast2700fc.py | 137 +++++++
- 10 files changed, 1530 insertions(+), 24 deletions(-)
- create mode 100644 hw/arm/aspeed_ast27x0-fc.c
- create mode 100644 hw/arm/aspeed_ast27x0-ssp.c
- create mode 100644 hw/arm/aspeed_ast27x0-tsp.c
- create mode 100755 tests/functional/test_aarch64_ast2700fc.py
-
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index a3fe2582f8..b4e4c5e4b6 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -43,7 +43,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_RTC]       =  0x12C0F000,
+     [ASPEED_DEV_TIMER1]    =  0x12C10000,
+     [ASPEED_DEV_SLI]       =  0x12C17000,
+-    [ASPEED_DEV_UART4]     =  0X12C1A000,
++    [ASPEED_DEV_UART4]     =  0x12C1A000,
+     [ASPEED_DEV_IOMEM1]    =  0x14000000,
+     [ASPEED_DEV_FMC]       =  0x14000000,
+     [ASPEED_DEV_SPI0]      =  0x14010000,
+@@ -62,19 +62,19 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_I2C]       =  0x14C0F000,
+     [ASPEED_DEV_INTCIO]    =  0x14C18000,
+     [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+-    [ASPEED_DEV_VUART]     =  0X14C30000,
+-    [ASPEED_DEV_UART0]     =  0X14C33000,
+-    [ASPEED_DEV_UART1]     =  0X14C33100,
+-    [ASPEED_DEV_UART2]     =  0X14C33200,
+-    [ASPEED_DEV_UART3]     =  0X14C33300,
+-    [ASPEED_DEV_UART5]     =  0X14C33400,
+-    [ASPEED_DEV_UART6]     =  0X14C33500,
+-    [ASPEED_DEV_UART7]     =  0X14C33600,
+-    [ASPEED_DEV_UART8]     =  0X14C33700,
+-    [ASPEED_DEV_UART9]     =  0X14C33800,
+-    [ASPEED_DEV_UART10]    =  0X14C33900,
+-    [ASPEED_DEV_UART11]    =  0X14C33A00,
+-    [ASPEED_DEV_UART12]    =  0X14C33B00,
++    [ASPEED_DEV_VUART]     =  0x14C30000,
++    [ASPEED_DEV_UART0]     =  0x14C33000,
++    [ASPEED_DEV_UART1]     =  0x14C33100,
++    [ASPEED_DEV_UART2]     =  0x14C33200,
++    [ASPEED_DEV_UART3]     =  0x14C33300,
++    [ASPEED_DEV_UART5]     =  0x14C33400,
++    [ASPEED_DEV_UART6]     =  0x14C33500,
++    [ASPEED_DEV_UART7]     =  0x14C33600,
++    [ASPEED_DEV_UART8]     =  0x14C33700,
++    [ASPEED_DEV_UART9]     =  0x14C33800,
++    [ASPEED_DEV_UART10]    =  0x14C33900,
++    [ASPEED_DEV_UART11]    =  0x14C33A00,
++    [ASPEED_DEV_UART12]    =  0x14C33B00,
+     [ASPEED_DEV_WDT]       =  0x14C37000,
+     [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+     [ASPEED_DEV_LTPI]      =  0x300000000,
 -- 
 2.34.1
 

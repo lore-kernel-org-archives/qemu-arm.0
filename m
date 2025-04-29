@@ -1,116 +1,180 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp550271njm;
-        Tue, 29 Apr 2025 14:26:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHLujs9qAbz8d+6HPXwHCQRJsCaw2KPgj0Yr5KUx/pBfXDJzHXlM15Ik89b/2pbxocdfIZh
-X-Received: by 2002:a05:6a00:986:b0:736:43d6:f008 with SMTP id d2e1a72fcca58-740389c84b8mr1039136b3a.12.1745962003101;
-        Tue, 29 Apr 2025 14:26:43 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745962003; cv=pass;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp565098njm;
+        Tue, 29 Apr 2025 15:02:36 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3a29:b0:736:69aa:112c with SMTP id d2e1a72fcca58-74038989dc9mr1050006b3a.9.1745964155949;
+        Tue, 29 Apr 2025 15:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745964155; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q5BwQZKJyy+dx4Pz2gK5AAwk+8RAET2FP4cXnckTyObwRPA963MXx4aSITKG8q0eg2
-         I9MLzwxdtSktDGNDgNVotEqDtgtB+vcZYp9oaJba0foPBFRxPFpUZ+MuWqhY/iNgfO/+
-         9bMvUMBGVfY544N7pb0XMExNhUJLItdyBU+TL7EKzy0PV5CPGP+lrcWOlCUCWsPjT8Yo
-         +VKK0YElMIICbw9OMacZ4uCKj7QyLwtRkXWfPFyiYjl1ZufEz1Qc3inZn6yJorm/WSLv
-         5nVIPXfcCtBKjUTQg4ZZJFRgPssL1uhgCTVZ5IdUJhZSMgjaxaa2yiImsjUWKXWtadeN
-         I/TQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        b=b6yxk6Mj96tw+FyySXOrF16JLCWnRjxJX2ry6HjYBg5VB9K78aJ18KNws8Aais4j/j
+         QahV6ggx8IE0oshLIprzUvsKUMrN419o6QD8KyJAr5BQeKldhnLegXkms3B5xZaDHHDu
+         fEc+8J0BVRtimyjE7pIgkmMyaAdSu6oOTfkpqaT1kKzrYO2YOOeXM99Z7PHvvkVxQMht
+         qEXaLqLKsOhaitXbAKBpR2cuBojybZMKhn5R5H5M1CN9uqSzQxQyQ8rKtH8fz/3z42i/
+         KcOlHG74IPIhpqLlg/XKzqapxPRhoNcAEwyttlweBUPlJaSay80Lf5CT6TQ52B7zLp0g
+         r83A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=n5glU0FlvTlvVa30Iq18L5A5JJTQ2PT2eof4gDYLDqU=;
-        fh=47m133iozJJR9xJVPFXzH38DrozukQ8R2ZquLybNDT8=;
-        b=LXcT3mlrkZONdH8dsBfRUToihVFbW37EDkYXG2clJY2Y5U/v/5WQdb5JcnmysU4u9n
-         QsYqWacmoUHiJCyKftND+7F6PpjkpJYK6k3jCP9SO75u7XALmCVvltnWttJiw+bjRagP
-         fOM2qaqdCkabBCgPWrgm/F4w8y1/EZM/+tYLy45ftlnueOgjihyY4GGSh3saS/qaTZ5S
-         8Aq8Y6aw7Fz0NXjn4gXZleeAND9DiNPDRJ8GPHNVtnYec/Xxm8l0A2bWnazFY2g0xHzn
-         vS9bwyoorLOyY5J+0HsHOe0dO+p5ofV8H+Jlm3G8IWqtMlYD1lK/wGrKCAootmrIKYxA
-         4Qnw==;
+        bh=673vfcXckcwVgxogLtZYHU/ZF/jsaUBLKWNXQ1xE/GA=;
+        fh=4Axy+T0JtvT4Tro1igfw8O1hAGSdM5Bk9RX6Mc23jTo=;
+        b=cpWcveiRXiUe+hPSPtUvbHvxufBEn5gLRBM1dxfPcIHk230RhczUEEjbld+ZHwt6Uu
+         C1zR/IaAsIX/MnvphmyL7VFFYtM+EStDZWgwurgdZw1jQ6jgic2z+FMYUZbgcia5WrS7
+         YxhdOWd1DpHlt6BtmYidLv6O6wNetv9efOnqqwogCNLfUApZm3JC4c2hpvIWUoG+kXpN
+         SFDkwiKDphKSKAb+O1Cv7QUT69eaTJJon6lY0JAM6TxdlrMcIqGkzUsyh3vAXDXYcrdB
+         +69ya2MyTuhCCdKLmuhhjZyrx97L3MtSCmQgYR91FzkBmjGWPlLRoE/m9cG9NRHDLgMr
+         CVbg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@collabora.com header.s=zohomail header.b=dv5MyZhE;
-       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
-       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
-Return-Path: <dmitry.osipenko@collabora.com>
-Received: from sender4-pp-f112.zoho.com (sender4-pp-f112.zoho.com. [136.143.188.112])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-74039af41fasi319821b3a.342.2025.04.29.14.26.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Apr 2025 14:26:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) client-ip=136.143.188.112;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u0ZN5Boj;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73e25382dd5sor7020249b3a.1.2025.04.29.15.02.35
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 29 Apr 2025 15:02:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@collabora.com header.s=zohomail header.b=dv5MyZhE;
-       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
-       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
-ARC-Seal: i=1; a=rsa-sha256; t=1745961996; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=eB4VYw7y972t0cvMk/NfEmef4dGf7lGFGv1dFwfR0goulyQFgC9TzhFXvzXS/4WIDVR2MXvGFdjy4j3Dupkxu/gcJEYTTeNkngusoDB9Lii+86VVIkpYX9L3i5Bse4NoAp9N3WBK3D2vuV6BepDdhBhwM93pKMQDZh/m6okHRs8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745961996; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=n5glU0FlvTlvVa30Iq18L5A5JJTQ2PT2eof4gDYLDqU=; 
-	b=AqZn+px0cWs/6H0aH6bHnVyr4xzqWfibHVYKsiWO4A9ZfKbCQ7XW8fxraJ5KQSQWIvrqkP3hUp9zy3PqDL+U+Zi5rHyz+BIMrsTG+lxJB0kx+bP7toOa3FsAJ4TulyCKzr/kdz45d9ap9clE/hF3uyFjyN2quSRskS/WTZyWVFA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745961996;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=n5glU0FlvTlvVa30Iq18L5A5JJTQ2PT2eof4gDYLDqU=;
-	b=dv5MyZhEbExyxpNjqCIvy0Q1WUDoleraMk99RcWtNBSWTI6bJGkJJiyTCpcb1+Q2
-	ost9kdmFhk58cw1tmBXm4X5J6DfBCZ73tbJIp2HnkSKdbf+hmJ/AAngwpwo4V5RmxPU
-	GyAD8ZFzyWBKGjXoWF4GHuNFmvkb/0QOKjqcO2uE=
-Received: by mx.zohomail.com with SMTPS id 1745961995758660.1143623261877;
-	Tue, 29 Apr 2025 14:26:35 -0700 (PDT)
-Message-ID: <33ae8cd5-cc5c-4bfd-9c0b-dd71b80dfc0b@collabora.com>
-Date: Wed, 30 Apr 2025 00:26:30 +0300
+       dkim=pass header.i=@linaro.org header.s=google header.b=u0ZN5Boj;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745964155; x=1746568955; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=673vfcXckcwVgxogLtZYHU/ZF/jsaUBLKWNXQ1xE/GA=;
+        b=u0ZN5BojN9eUt3+ivSvdo4z9oiuGcRoM+7tx16Gl17tHNgrynz+eUmO8bf7r7DU0WL
+         FzMmJPNns/rw1nWpxjguhIHb8ax66lq4Ypsl5YDBbNGWISMJ3fJFRtPUU+0xq51kNP7h
+         K78eM+K87PiYvqhSpT90gN4ByPWdWZF0XQO1BgPcDljpV6FTU/f/E0sbeRegdukJM4Jc
+         1/ApL6RGlOLbSenncaz2Adx6lkH7mnjSoPz4V0UOfoX1Tbs5cc2od9rhJWcNudUQPK+H
+         Wn8EbgxWWq33kbGApGuo6yfA6z588nMYrj/kmoWXObnWg3unxnbmJvvFTYwf1NZDafpx
+         21Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745964155; x=1746568955;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=673vfcXckcwVgxogLtZYHU/ZF/jsaUBLKWNXQ1xE/GA=;
+        b=FhNsuMYB51j9j7AUj+h0rnZqmeWcPA6RnO3mBCO/byqNVmLa1E2CnDDi7hVogXOhpd
+         c6g0tA00iE5ryqXSWJuUljGUobXn0R+HhjcLCuL9kAD9nwEhQurEOQDA0UsQYKSTNSFp
+         lxE/aLA/s6t9hlRHD43PnEcI1uUOU1p379cAeQb3NN+JEnWymK0PNXtkFpETSjEd3VCv
+         KXiD/vEagc6PGINcv1D2BqiWtfroxHg39KSXK9LIqI9sKQ80S5xoop5DcyM9b6bUqdhR
+         PCG9WNwrkEdx2CjbGtJBUkmX5W2v2hJ8TJ4kx+K6bIn44ULH/CKslarfmmXhTXg8MrY/
+         nJvQ==
+X-Gm-Message-State: AOJu0YwH9TI9mrHmjEY0KMxNp0qtZZtgxCEcWRNB2HNvO6US/wF4wzWl
+	PRTEDjzBTufHMgFJ4XcJmztRtwNRWnoY5XQ1ozY1N6aibhf4kYsNmMO687VK2pY1G6+ZryOchki
+	VCm4=
+X-Gm-Gg: ASbGncszIlGn2VjnJb7+Zd1fCmQ11K6Ie0ONIUTo6ZiSZQCmlIrbH/mzYK3hsKctx3g
+	G7RJfAXLau9CTh0DYwFfPri/Q1fhUAe8Xpi34XP8kkSfUHtN7smrWz4+DCs9TPSsAT3UdpwejNM
+	TAvKemrybP/opeV/wzS6RIZYzPAqbAZzzeR3TG1nR5RQprAm7ITj0qHpo0QxB5LDzbMoE7/AfiR
+	/xMuR0CT5+9tJwZzdYw6ooODiRFI2iLArRE9gt0Jg/HigeuhIdTj8B/j/zkFYQWoenrl2Sl7Ugb
+	4+SLwI/j1r7HEEIIjdEY66ord+XhPVheRqTR/cq/57Jybr0yL2BF0g==
+X-Google-Smtp-Source: AGHT+IHGsu3aaaZ8AgfQnKJoDLS8J+k1ti2SO5D4FRDqu2askuRacbj0XulqEPxKT1UI/1sN+VOcPg==
+X-Received: by 2002:a05:6a00:3981:b0:737:6d4b:f5f8 with SMTP id d2e1a72fcca58-74038a67154mr1037049b3a.17.1745964155371;
+        Tue, 29 Apr 2025 15:02:35 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.87] ([38.41.223.211])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74039a5c376sm197194b3a.129.2025.04.29.15.02.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 29 Apr 2025 15:02:34 -0700 (PDT)
+Message-ID: <b044596b-46a0-47ca-a1f0-61160c59efc9@linaro.org>
+Date: Tue, 29 Apr 2025 15:02:34 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] virtio-gpu: fix hang under TCG when unmapping blob
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>,
- Thomas Huth <thuth@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-stable@nongnu.org
-References: <20250428125918.449346-1-alex.bennee@linaro.org>
- <20250428125918.449346-9-alex.bennee@linaro.org>
- <8b123991-21f2-47b5-851d-6b53fbfaa691@collabora.com>
- <87o6we3bto.fsf@draig.linaro.org>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: Re: [PATCH 05/13] target/arm/kvm_arm: copy definitions from kvm
+ headers
 Content-Language: en-US
-In-Reply-To: <87o6we3bto.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, anjo@rev.ng, richard.henderson@linaro.org
+References: <20250429050010.971128-1-pierrick.bouvier@linaro.org>
+ <20250429050010.971128-6-pierrick.bouvier@linaro.org>
+ <87msbz45y6.fsf@draig.linaro.org>
+ <d455055c-a13b-4e00-b921-5ede2be08e89@linaro.org>
+In-Reply-To: <d455055c-a13b-4e00-b921-5ede2be08e89@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-X-TUID: rFjBLofOr/54
+X-TUID: z3qrqkmj2nFl
 
-On 4/30/25 00:19, Alex Bennée wrote:
->> This change makes QEMU to crash.
-> What is your command line to cause the crash?
+On 4/29/25 2:14 PM, Pierrick Bouvier wrote:
+> On 4/29/25 3:28 AM, Alex Bennée wrote:
+>> Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+>>
+>>> "linux/kvm.h" is not included for code compiled without
+>>> COMPILING_PER_TARGET, and headers are different depending architecture
+>>> (arm, arm64).
+>>> Thus we need to manually expose some definitions that will
+>>> be used by target/arm, ensuring they are the same for arm amd aarch64.
+>>>
+>>> As well, we must but prudent to not redefine things if code is already
+>>> including linux/kvm.h, thus the #ifndef COMPILING_PER_TARGET guard.
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> ---
+>>>    target/arm/kvm_arm.h | 15 +++++++++++++++
+>>>    1 file changed, 15 insertions(+)
+>>>
+>>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+>>> index c8ddf8beb2e..eedd081064c 100644
+>>> --- a/target/arm/kvm_arm.h
+>>> +++ b/target/arm/kvm_arm.h
+>>> @@ -16,6 +16,21 @@
+>>>    #define KVM_ARM_VGIC_V2   (1 << 0)
+>>>    #define KVM_ARM_VGIC_V3   (1 << 1)
+>>>    
+>>> +#ifndef COMPILING_PER_TARGET
+>>> +
+>>> +/* we copy those definitions from asm-arm and asm-aarch64, as they are the same
+>>> + * for both architectures */
+>>> +#define KVM_ARM_IRQ_CPU_IRQ 0
+>>> +#define KVM_ARM_IRQ_CPU_FIQ 1
+>>> +#define KVM_ARM_IRQ_TYPE_CPU 0
+>>> +typedef unsigned int __u32;
+>>> +struct kvm_vcpu_init {
+>>> +    __u32 target;
+>>> +    __u32 features[7];
+>>> +};
+>>> +
+>>> +#endif /* COMPILING_PER_TARGET */
+>>> +
+>>
+>> I'm not keen on the duplication. It seems to be the only reason we have
+>> struct kvm_vcpu_init is for kvm_arm_create_scratch_host_vcpu() where the
+>> only *external* user passes in a NULL.
+>>
+> 
+> I'm not keen about it either, so thanks for pointing it.
+> 
+>> If kvm_arm_create_scratch_host_vcpu() is made internal static to
+>> target/arm/kvm.c which will should always include the real linux headers
+>> you just need a QMP helper.
+>>
+> 
+> Yes, sounds like the good approach! Thanks.
+>
 
-I applied this patch on top of native context v11, ran AMD nctx and got a crash on SDDM startup.
+Alas this function is used in target/arm/arm-qmp-cmds.c, and if we move 
+the code using it, it pulls QAPI, which is target dependent at this time.
 
-(gdb) bt
-#0  0x00007ffff5411b54 in __pthread_kill_implementation () at /lib64/libc.so.6
-#1  0x00007ffff53b8f9e in raise () at /lib64/libc.so.6
-#2  0x00007ffff53a0942 in abort () at /lib64/libc.so.6
-#3  0x00007ffff6cbf18c in g_assertion_message[cold] () at /lib64/libglib-2.0.so.0
-#4  0x00007ffff6d2ea07 in g_assertion_message_expr () at /lib64/libglib-2.0.so.0
-#5  0x0000555555a42820 in object_finalize (data=0x555557c9d290) at ../qom/object.c:732
-#6  object_unref (objptr=0x555557c9d290) at ../qom/object.c:1231
-#7  0x00005555559f3df3 in memory_region_unref (mr=<optimized out>) at ../system/memory.c:1854
-#8  0x0000555555a003a7 in phys_section_destroy (mr=0x555559ef5b60) at ../system/physmem.c:1035
-#9  phys_sections_free (map=0x555559c2dd80) at ../system/physmem.c:1048
-#10 address_space_dispatch_free (d=0x555559c2dd70) at ../system/physmem.c:2692
-#11 0x00005555559f1d33 in flatview_destroy (view=0x55555a54a720) at ../system/memory.c:295
-#12 0x0000555555c278cf in call_rcu_thread (opaque=opaque@entry=0x0) at ../util/rcu.c:301
-#13 0x0000555555c1cc68 in qemu_thread_start (args=0x555557993d30) at ../util/qemu-thread-posix.c:541
-#14 0x00007ffff540fba8 in start_thread () at /lib64/libc.so.6
-#15 0x00007ffff5493b8c in __clone3 () at /lib64/libc.so.6
+Since struct kvm_vcpu_init is only used by pointer, I could workaround 
+this by doing a simple forward declaration in kvm_arm.h.
 
--- 
-Best regards,
-Dmitry
+>> For the IRQ types is this just a sign of target/arm/cpu.c needing
+>> splitting into TCG and KVM bits?
+>>
+> 
+> I'll move relevant functions to target/arm/kvm.c, so cpu.c can be
+> isolated from this.
+> 
+>>
+>>>    /**
+>>>     * kvm_arm_register_device:
+>>>     * @mr: memory region for this device
+>>
+> 

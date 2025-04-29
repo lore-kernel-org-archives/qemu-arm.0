@@ -1,118 +1,118 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp253876njm;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp253879njm;
         Tue, 29 Apr 2025 06:23:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWoxpqGwRe/n8FdzISa2qICMygFtuMR1eqOLoR6E93Wo2xmNFBmbA6cUcH0MTsgOopc/Q4cCsCNd1q+EQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IESLivcvOLECjZCXYY+udZrrMuUaaZbXTsByIOvobCyuFP5BEVtwZWUpjFqUw1t8O14sNuM
-X-Received: by 2002:a05:620a:17ac:b0:7c9:574d:a344 with SMTP id af79cd13be357-7cabe4f114cmr426742885a.25.1745932989147;
+X-Forwarded-Encrypted: i=2; AJvYcCVjv44c8GWmwOXAtUek8n9zj4ayMFs1B3kmFlZLUB1XO1kO4ZDzVXMFs6E/FzGtp5mqvSwkC+qQ7WUzkQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFfUeXmHa5tuS28bRDwLGNzWgXBf7dvLxC+QcsasfTp9jNxZKfagg1u4P79nY4Z3j3bmit5
+X-Received: by 2002:a05:620a:284d:b0:7c4:c38a:ca24 with SMTP id af79cd13be357-7cabe49585emr399877885a.1.1745932989479;
         Tue, 29 Apr 2025 06:23:09 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1745932989; cv=none;
         d=google.com; s=arc-20240605;
-        b=Bn/E5TbD32pnBTZ1bqyf1+HwYYhP2pZyqbyKpNdFBDjqNwSvEBznr6fYLuNH1RPw5R
-         WuTyw6qZ93rI2m60Il4lSZIPbP+VMVnaPv1pyHlPnA9cNfjG0u9oh8mnnzHQKAa2xp5Y
-         DEnwqdhCkLSXwKPvsbr3t4LTN6k0tByZjOOdiYuD58OPOY72hqy7yhFOtW2xSkK62WF2
-         35rvxm4DBkA3S0Z2XmOp8egBSj1ENgfBLzKjPJ0g3OUY+Q4hy7SSDgQ4bezm+CfFe7QK
-         KYL2Zlv771+7XnWDSM7IqA1NTU7enal4BSMFYDmfxjkbQTn0Og/UK2a6mVg0L4ZEotDs
-         DcTg==
+        b=DUXzX9n7ysQe4BaF3KiavGgwejKCBPXkB97bm+Uc7vl5Aim2lyol7AKuY/I0lisZOJ
+         hhNMYOKe+y4Zv3SXTEffNNdbr7xztewMLHiOaT8dePMqKUlg9wRWsF6sL0fYD83w10T7
+         ASOS9sKBuvD28I3qWkjwxTyQmYit5c7eNfSJYIHIY/XCpKcLb0aS+kpQIjwhtbcSTx6Q
+         7Ybgfh4tHI9mixnUgMxm8kwXyCOGUBT+nsds5OleD0wwQUyUnyclTxAadsRQbNOHNB81
+         mhQ+cXK9pxtAvZbQFo1W/1mKTL5uEPw1th3MnP2RJWD4PzDK7R3okvPSI4hrURBYYm2G
+         VdAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1K2H3VE4tCQOLcXEpqGHsbFF7wzsGTavlqzL6DY4PxQ=;
+        bh=mr1QFeW43XnVmNc1okA19chi54m5Uhrocgufe8XGZeE=;
         fh=IUJDqsqe7thKzGjg2tEzLm8ihsFAVxwlDscjrnqubNw=;
-        b=VhOZWMyN/thYIH/fYMxUloIVpBNJz98Z0Z5qcjGh12zRf9fLRteW93CmqXKFitgPYt
-         Yss23Ie8ebeW3fc72BZTScNKMuVLVdTX52EGsabRm58YmF/Ng+182+UKSVN7PSBJUYBu
-         BmvCbvjA1G7f+sEePO6Q8SammfVINCdmK0K23dboTziEqZTMotjcIMoyo13DMVjHRHcE
-         oM8IXeZN4leqAuPUPLZYvW/DPv8fTP7YXzrXrg9PPBUu7sEHH4q//bzu6W4f6sUC0mLa
-         06eNmdzPyx/qVbB5XKrWgfUbI8YYuUi2lJ+WBh6+r+PuRdUtk9Nu1TgEurzcdyyaxXrv
-         lvJQ==;
+        b=ljHZkHot4NmHRSgXq+5SGz3mjEXcdqWtPMq7P4TX4pQ5G0KTCyMDOomBH+9I+U8fxe
+         /CsZdqe50mcitBFxyeVurCixY2PFT/6HgiKGkJNkWVyPtaqD3/nLnNSh/W8xPfTpQ6pP
+         pgIOm4S6kPwjQD7b40VLWnXFei/pRwFGppHAWX4rEdqrqojWDKMEilzGRKIRqeirUd2u
+         6ppBcTIXr1nYF3/CpDh3xlqY9TnGwfn8qk8hokpJWGCLF/xOptegynYHLHMvC6rR4lz+
+         vRhJlbcb8h/Ywng3KyE3Bf9MahZB0A4nFcQF5WQgNP4kBOXbDH1D/hZ7uwCMgarmyfIu
+         A1TQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f5Qah+i3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fimfy1hZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958ea3745si1201581385a.429.2025.04.29.06.23.09
+        by mx.google.com with ESMTPS id af79cd13be357-7c958c9ee33si1269933985a.30.2025.04.29.06.23.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 29 Apr 2025 06:23:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f5Qah+i3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fimfy1hZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9kv8-0005BE-Sa; Tue, 29 Apr 2025 09:22:47 -0400
+	id 1u9kvG-0005C2-9A; Tue, 29 Apr 2025 09:22:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kuj-00056l-GL
+ id 1u9kuj-00056h-Fa
  for qemu-arm@nongnu.org; Tue, 29 Apr 2025 09:22:23 -0400
 Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kuc-0005cg-08
- for qemu-arm@nongnu.org; Tue, 29 Apr 2025 09:22:18 -0400
+ id 1u9kud-0005fH-DC
+ for qemu-arm@nongnu.org; Tue, 29 Apr 2025 09:22:19 -0400
 Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-39c1efbefc6so4114032f8f.1
- for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 06:22:05 -0700 (PDT)
+ ffacd0b85a97d-3912fdddf8fso4489801f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 06:22:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745932925; x=1746537725; darn=nongnu.org;
+ d=linaro.org; s=google; t=1745932928; x=1746537728; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1K2H3VE4tCQOLcXEpqGHsbFF7wzsGTavlqzL6DY4PxQ=;
- b=f5Qah+i3N+JvYx5hiUjmHxSd3UHW/OLMGzGN5WZBGHNeT9GfjrKhCCx81I7goZb+G6
- jXXXijnfDrhhqFnJOqQ31cp0U2MUrbhm3CIm71o6psPiVJ5GtRgMbPa73/ILREIBx6Yj
- ev3nhu6FYxO4T787YfuT43Fawv8AWGkg3Xkr5xANgpvnnnRzoIhZ/ZuwWGLvjaIHChM0
- WxfFOyoZ+OwDF52u986Xh7rZVCrWeHaW+ITXZnN+AWy1QuW3o/bpj96C+8p2+RLbnkc5
- II5qR1D+IOoQfUU7TjEFiBqwQB58HmVWiWHYtKnsKk94UlmQdSGRqt0o14cmaWTbh7r+
- 9HLg==
+ bh=mr1QFeW43XnVmNc1okA19chi54m5Uhrocgufe8XGZeE=;
+ b=Fimfy1hZCqj9dBy+pnD2LXz+giyQ9NXAKMy6tAyh4DsLYAKRfwirGFyoHDRv4b/wPB
+ IJ1xHveMe3WFvfDJb7JlgbuBDMy3QF7MZTNj9MIUux7tJ+dQO8cvF9oCBaYH9yrFGX7s
+ UFILSyfbT+c9Xoa8Edk/u17Ar304sACafKuZOUYSwYvTU8VmvGeH8ruMiy54Cfz33GIC
+ WA6EfusRYthay8E6JaTSHKys1P+9EJvN2fj0z26AxqcLp7DnWLgkZFQEee7XRDouo+it
+ qNVe9+54JWdL3zIt8snBvs+Rao5Lf8YoBSyw/U6kZd3d4nUyLUPgAhhmPd1O+xupaqCo
+ AafQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745932925; x=1746537725;
+ d=1e100.net; s=20230601; t=1745932928; x=1746537728;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1K2H3VE4tCQOLcXEpqGHsbFF7wzsGTavlqzL6DY4PxQ=;
- b=rGSJG6+YYMUM+eqG95ADTeXsY1zEkl0/Wl6rNfn6PcnVAWE/O5/7Pk3no1TtsNegJN
- IjXI+an7aSgjR7+moSJNyfm3rE+fIpUvsZ7yvuJH6uxCrCkMtC1S9rL9TQznfwn2gYPs
- TBm6pmP2eXLNquECkHoBgEevWmbQYoafRKkeysEeYxSfU2JOg7qiGcn7AeTe+ngMyHQ5
- u78U94/1M7pJnYAlBp7LxYyBTFh8eEydxd/nw3rg4Y2Vv1xxASXZ0bVstuFp2I1mG6xp
- 879v9gmbAtzn9mn6DaOKPLWBfedjNkopsVge1NNtUVbaRXfp4GB/aY+v7AW/TkJxt5ag
- CKag==
-X-Gm-Message-State: AOJu0YwiVTvDi3OiHJNcD9PAV5VYcRYpVt4+1l+rB8qqt1IFUJ5KT0UM
- ZJ8I/jSDF7P32YErJgCopiej2UWT7yHMHp3Q5bev478MZhQ4rppF07bpDVLBHi1jGdQCnb2jB5U
- 1
-X-Gm-Gg: ASbGncuVRgts4obvWewrhZTQEd5+y/p5FRLw8T1spnSPQosw9RmKw3aiVpgl7Pfw9I1
- CCZVQ6Pb7F+7nS0dv4p5oml0h1Gl8AONt35xVokyd14X7f2ywhuWmSZgc70JXWI+FpTlYxtHpWY
- vGsm3ppdxVAkZseVw3iOK8RR6QzhL4ZPPXWnRAhB6JG+iLdSaEBlXjeyLe2zjryVqV13z3tWYpE
- owR7b3/3Cs92he+2TT2mSYmO4jCtc/zrX//LGufrBXPq7mWWaNTsV2JnCeSgaZD/svqc/iX33CZ
- s448IzAeEufQTMfxL5++Kj/ob3T5POwJb1LlrA9mRlJDM2E=
-X-Received: by 2002:a05:6000:310d:b0:391:2f2f:818 with SMTP id
- ffacd0b85a97d-3a08ad282e0mr2327221f8f.9.1745932924757; 
- Tue, 29 Apr 2025 06:22:04 -0700 (PDT)
+ bh=mr1QFeW43XnVmNc1okA19chi54m5Uhrocgufe8XGZeE=;
+ b=D3IIhASBDIWzZLqZXZbwPEHL/UaILgDofZdxKi+bfBVBm3FRo3UeqVlfltTYU0UAm7
+ VY9Dpc/pUJc1Ik5dE7qrh/2IbLHSnY66n/IS9fW51OTha7/znEnWxN5nCtyV33T3Fqmj
+ SlevMRYe4l/+rPqDxKcgtAMnuDjT9VzsAqXLXXpvhWH8wDr4Wstxucnh1r7EXjrRrz5t
+ et9UsVkuSptjNiPHuFq7mhu7q2xechyinbNHTICdSXxDsnoACQUIfsLu5djgPdAGLO1g
+ eCoDTz70ICXLR7Dr+jybJHD3E7h2l3HacBWCRia4NycRkGnHkbG/eRrluHqZQaub+biH
+ Glrg==
+X-Gm-Message-State: AOJu0YzJhWsMYz8WM3DcyurN76JKABg3Gcizm/frWSY5ajuAj+wwQ3qP
+ U7G7o+/egCkvaTRoevJOzKgPZEAm+XSSbnzRlDABoSTikG2E3uFFaWgUN5QHpM6vt3trbhLoKUo
+ X
+X-Gm-Gg: ASbGncvi17g3OvXZHAop9d4EDCla6zU46kDIbmZU9JgujB9e++83xVrDmMve4Q/u7gb
+ P2pXZn6UeyhFcjK1ZgJi9E5O5GYeAbVUGElECTNuYPwDU91yFHFwA/ZU26arhJs2NTTB9dvyqw/
+ YE7NQe01F+2wsbvnuWJsubUQ1b6AXZdAp/gKn6z4Q1S4OcXESmMHF/52pFIPQ3rz/B4SG2ccVXB
+ TRxlleMINh276h6dZcRnimeLwZp62Jp+5g0Uum/M2J1+1ulydkaMo393kIZEwhym9LuV1jtNdDw
+ F6wZOLeT9YVqibmjIGyzsHhvha1H6TBC9InghHsjSn7YdHU=
+X-Received: by 2002:a05:6000:2a1:b0:38d:ba8e:7327 with SMTP id
+ ffacd0b85a97d-3a08a516363mr2851581f8f.8.1745932928518; 
+ Tue, 29 Apr 2025 06:22:08 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073ca5219sm13729371f8f.27.2025.04.29.06.22.03
+ ffacd0b85a97d-3a073ca5219sm13729371f8f.27.2025.04.29.06.22.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Apr 2025 06:22:03 -0700 (PDT)
+ Tue, 29 Apr 2025 06:22:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH v2 2/7] target/microblaze: Delay gdb_register_coprocessor() to
- realize
-Date: Tue, 29 Apr 2025 14:21:55 +0100
-Message-ID: <20250429132200.605611-3-peter.maydell@linaro.org>
+Subject: [PATCH v2 6/7] target/arm/kvm: don't check TYPE_AARCH64_CPU
+Date: Tue, 29 Apr 2025 14:21:59 +0100
+Message-ID: <20250429132200.605611-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250429132200.605611-1-peter.maydell@linaro.org>
 References: <20250429132200.605611-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::432;
  envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
@@ -137,52 +137,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bEXt2X3HKDwS
+X-TUID: ctmKv119OrGO
 
-Currently the microblaze code calls gdb_register_coprocessor() in its
-initfn.  This works, but we would like to delay setting up GDB
-registers until realize.  All other target architectures only call
-gdb_register_coprocessor() in realize, after the call to
-cpu_exec_realizefn().
+We want to merge TYPE_AARCH64_CPU with TYPE_ARM_CPU, so enforcing in
+kvm_arch_init_vcpu() that the CPU class is a subclass of
+TYPE_AARCH64_CPU will no longer be possible.
 
-Move the microblaze gdb_register_coprocessor() use, bringing it
-in line with other targets.
+It's safe to just remove this test, because any purely-AArch32 CPU
+will fail the "kvm_target isn't set" check, because we no longer
+support the old AArch32-host KVM setup and so CPUs like the Cortex-A7
+no longer set cpu->kvm_target. Only the 'host', 'max', and the
+odd special cases 'cortex-a53' and 'cortex-a57' set kvm_target.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/microblaze/cpu.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ target/arm/kvm.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index d92a43191bd..b8dae83ce0c 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -252,6 +252,11 @@ static void mb_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 97de8c7e939..6b2c788e0fa 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1882,8 +1882,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint64_t psciver;
+ 
+-    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+-        !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
++    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
+         error_report("KVM is not supported for this guest CPU type");
+         return -EINVAL;
      }
- 
-+    gdb_register_coprocessor(cs, mb_cpu_gdb_read_stack_protect,
-+                             mb_cpu_gdb_write_stack_protect,
-+                             gdb_find_static_feature("microblaze-stack-protect.xml"),
-+                             0);
-+
-     qemu_init_vcpu(cs);
- 
-     version = cpu->cfg.version ? cpu->cfg.version : DEFAULT_CPU_VERSION;
-@@ -324,13 +329,6 @@ static void mb_cpu_realizefn(DeviceState *dev, Error **errp)
- 
- static void mb_cpu_initfn(Object *obj)
- {
--    MicroBlazeCPU *cpu = MICROBLAZE_CPU(obj);
--
--    gdb_register_coprocessor(CPU(cpu), mb_cpu_gdb_read_stack_protect,
--                             mb_cpu_gdb_write_stack_protect,
--                             gdb_find_static_feature("microblaze-stack-protect.xml"),
--                             0);
--
- #ifndef CONFIG_USER_ONLY
-     /* Inbound IRQ and FIR lines */
-     qdev_init_gpio_in(DEVICE(obj), microblaze_cpu_set_irq, 2);
 -- 
 2.43.0
 

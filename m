@@ -1,128 +1,127 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp255080njm;
-        Tue, 29 Apr 2025 06:25:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXfiSP7+uAbRELyQjILTIAOrOZ3/4jiWAXHXl7d4q723c0Iwk6vidLgeYKWT357MtE8jTQRoJhlyq3BCQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAl4UNGctMl5Tr6DIatmI8lMcp1Ev0S1qWD5NlQfx0CHxoRlNs6Ktpkc+aP7IFQrrkNfzt
-X-Received: by 2002:a05:6214:240e:b0:6e4:4331:aae0 with SMTP id 6a1803df08f44-6f4f26d6f11mr38295216d6.1.1745933103833;
-        Tue, 29 Apr 2025 06:25:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745933103; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp349314njm;
+        Tue, 29 Apr 2025 08:39:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWCDnJzq1nrQAXXDTepoV1V7D3X9VWOi/xicZSeG6IJc7Dw506FyfHxr0t6JVq8sFwpt/u4jhS7CklOzA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHF8E35qAqREFuibn1ByStVO3QoNenT2YkPyTze2D6YVk+BB+TGXSYmgq1HOOBPLDA3kgEm
+X-Received: by 2002:a05:622a:a17:b0:477:5d31:9c3f with SMTP id d75a77b69052e-48815b4f196mr58156331cf.42.1745941173899;
+        Tue, 29 Apr 2025 08:39:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745941173; cv=none;
         d=google.com; s=arc-20240605;
-        b=HjcDnan5z+BOk6hi83FKV4ZJonyWYfQ6yUczBBefsJbi+uFTF0Ss6OJCXfFOFCNPRM
-         5zkgFTFoIfpzkzd0ItBWGb1hjjAYFjy3BO6yCS+0Agp3XUCFJqqjNe0wACtC/JG/AgkR
-         dx0OZeh8dex4KCFckTWWJRVcorY06MFDAuSus+It9iU219watjT0+NDSTVIJhd2MEf7+
-         ihUzx9l1WXyet7B8YuWO0scQdiKL5N2vgXt4PgFVLhOGjN/y9KAfViQBr1LRFsUEz8hS
-         U2Pjq97UNmgSVcBiymiFV/zk+XJ/L5zOy4nOZKKmKHE3bCOJCjJ7OV13qxwYXE09qwAs
-         d8lw==
+        b=g9GoHJ/P8XGB1IUUZVg9sYvXM49UzocCyNmJbiHW2ghU6MKiimuJCOryxaIJQowSP2
+         cekfMX96dHYpY/CzXxkKAbYwwFMYMQdQZDaHCWrdkDrrAkkGaxEi107proMLRmSeSMxk
+         w+7o3cPhcRdOUeSIN++Gr9I316PNon/2hz9f7ddb2uFBiLMbTTHXvVrf0VsuqNsW48kD
+         GRmPe5/z+m99QW1HVPQHIqwatMnKZfgVUE43edaTP4eoz7IR8v8fa7upoZ8SC3ISXbii
+         m3yHkj+siqVqLfC0VX3ZijljSdzgr9fQoyf7N9RXBRIRrDLJ02K5MW1GdUU1L0P4J3d9
+         Of0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jry+P8FNPxXBYqdgMf1f9uotm9bgcJ4IEZiGTKV/sRU=;
-        fh=IUJDqsqe7thKzGjg2tEzLm8ihsFAVxwlDscjrnqubNw=;
-        b=EGfbRvjc8iwcuVADFYZ39j3eE/0XO8NDYzwDSWrVj1ACHeK+00nPgNQg32TbbZbSd6
-         /OAMW+bmRNq+NCd6vyNKkdxz/aQq5fl8i8uObds/SDgOc/YFbcKeOZyLG6wwAduZmq77
-         3ULE+RYluhOZ0nwz+FtpGFWY0gq+FGJAJbf6pjxDHEHB7uxDKJMGjF4WqLXAsi0QUOie
-         QoE3euWA36swE27f1Pwa5YsGh8Y48VHS/fDxOK5oQ0JoZBF2kpAw6+c4HC7pXf1f25RS
-         cIu9zx55VJwLLPmdVC5Pr2DT549vt4RD/jtINA/dUyoJ5UmR8XIGCvBp9/Wezo6xDJnf
-         Id8A==;
+        bh=B/dF9ePSe8e/Wos3Lfb/d8anPOw/xvpQ5gn6BfEi2A0=;
+        fh=iarf4vSJHbIZ8TdXozm5ExYso7NSx7gagCLEIGxWsBE=;
+        b=lJlUKPwZHPKP2dZgVniZMwxEzS8jqrFvr1E5K7BfnoPNBrSl1e6o1jPfcRKDybapDq
+         3GLiio0RpTRLy2cAmEadmrCAwpREFPwO2DFFPjz6jhY4EBS5nsU4UM+lSdlCxelzNPWy
+         OuBGVt7esvsiM6yEC3JlgFp7s4gxpKXpN0DV81mVmduGwhk8yyVO9LYhqv/YbsHBDVGl
+         PjafCt1R5Q9cx7Otf7NH8OnyvMvdVwv3Q68D/oRDeAQeY0ew7olXz2odUdumBzZcwT4r
+         fH0a1pMUdSPQHleWlHT/VgMuuehjlHer9TIB80KgvQ5qkMxLAYdNSroQhyd3J4FSWwEE
+         BVdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLcnheuj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NqVkwhbP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958ea0a17si1189442385a.365.2025.04.29.06.25.03
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f4cf8fd8a3si90545226d6.414.2025.04.29.08.39.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Apr 2025 06:25:03 -0700 (PDT)
+        Tue, 29 Apr 2025 08:39:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLcnheuj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NqVkwhbP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9kvY-0005Hz-Id; Tue, 29 Apr 2025 09:23:12 -0400
+	id 1u9n3P-0006cc-06; Tue, 29 Apr 2025 11:39:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kuj-00056n-HD
- for qemu-arm@nongnu.org; Tue, 29 Apr 2025 09:22:24 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n3F-0006aA-Ti
+ for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:39:24 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1u9kud-0005cL-D5
- for qemu-arm@nongnu.org; Tue, 29 Apr 2025 09:22:20 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-39ee5ac4321so6465870f8f.1
- for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 06:22:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u9n3D-0007bQ-16
+ for qemu-arm@nongnu.org; Tue, 29 Apr 2025 11:39:16 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-39c1efc457bso4487278f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 29 Apr 2025 08:39:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745932923; x=1746537723; darn=nongnu.org;
+ d=linaro.org; s=google; t=1745941153; x=1746545953; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jry+P8FNPxXBYqdgMf1f9uotm9bgcJ4IEZiGTKV/sRU=;
- b=RLcnheujz04RgOhqFjcdyGlDuzeEwbpWPG4Xp34V3L7LsIbhdcaOD/l4jZrkFdcdV+
- 4NCkQ/MkTSYMVQc24C8yu9vAf6baHvYAO+L/gIXQjZkbz/Xg2G2As2UqIl4/mb71GeX1
- ya+boXEkfJBGxk7Fr/6hEEFTdirEbHwpyCu4jmDA5Du7cS7pOSpYVczglqg0pr4a2MM/
- +kMr7B9AYVN6OO7TCp5lGDKaH+K6GB47/3nWsvh+JHEVFcbYk1zU2i+UEJoe89WAO1ew
- Dv9KnjewRvvsHH9kIo/owAexCVrbetHHDT4C+UVdbfYffCYdiy9ZMQIlwbBf2eStMULQ
- +SyA==
+ bh=B/dF9ePSe8e/Wos3Lfb/d8anPOw/xvpQ5gn6BfEi2A0=;
+ b=NqVkwhbPE22isy/hBqQ10SsUqGu7BCoTaRiVFD1vrixdhUg+IHk30EV1NOMFGLAqzF
+ /+3i/RScZutfTvCodUNYsyTEXJrkyKvw9hP4pjnwjqiewAjGQnrTVJ9mNDoBVeEMdRf6
+ nQLvSZLX1RWbMlBIZRqkfZuh+l3AbMYzYA67vThkXK5BoHR6LLW6uy0UIjFX1p/je36q
+ Ub+6FNETUE2kqBTie0BiuF3TvgeVKOy1NDxmZANGfZilW4jGVwE+1Nh6bhLaCPmRzyMi
+ 6VEntG09IIiRoyENbpgmXHRRsWhXdo2OcBYFlC8FccUgpiswLyvM7OCj3TFc63MIr5gp
+ 2hSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745932923; x=1746537723;
+ d=1e100.net; s=20230601; t=1745941153; x=1746545953;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jry+P8FNPxXBYqdgMf1f9uotm9bgcJ4IEZiGTKV/sRU=;
- b=kmPhUnYI+JdobUBCQar0RrPXyl3JBZK4HhIh75cH+/mLHqkYPa5vT4XyYDFDWidPev
- 8FDBc1YQCL8NCtno0DrXQeADqrc0dwSVT7JuxyaNbE4MqxaMcAArCxS95Jzw30DCi2Zk
- kb22owDZknoes4X9LnQAoJwSKy8J4tTJgQpuad67mPPLGGJwGWWAfoWhNVZ3Iyp5McuP
- TV95z1jdmb9mN3A1tQ2dz7oXIBLv+Cnk5jfVmBgeW/H3ctMyXap1nZ1/Az/W2C3Rk0p6
- 0EdCLL9x9tAyy13/AkvP34U5ZuLtUV3oEG74VZsPgSspHFCm8LSR2yXpcMZi+W47zhBJ
- /SsA==
-X-Gm-Message-State: AOJu0YzC5yyvrcp/rGJvEHAWFY8YHdJhVJ/dhDcoREbYrDDYajsiHH1n
- OaaxZJYluSvQO20n/Fb0Kbyd9I+SkvkKuudf3QZ4kSX63ZZrs5iHdr1Mtdf1dA6KksyQp8d0Z/J
- k
-X-Gm-Gg: ASbGnctJtzijmsa9EezzV2fFB7E7eciURXV9C/K5DBDhWsvWUYDSmiaG+hfZDnj2Z8I
- JIHkapnmVFpAz8hUzLYOJBbFe2VJyOOXGZ52pOK689h6kP+yubsEAj/Rs5GqCG2DRQ0h/ij9XGm
- BVhzeJ53Mtbji89h0UaUKOZr8h7WIx0htyXsiiVc0gOfdR1Lk7zDLW/5UhMPJzI+CY/urJE3n0H
- JtLZgiQtLt3y7kZWiMHVIP+aK5115XAi/DZdFH7ukCv1wr34eh+174xCA0GrVwzzAFGfy1RuKvk
- yp/mIyzuSjN6tk7RdEnvDd47ShzT5EsnfxsYMuKVCZEPqyU=
-X-Received: by 2002:a5d:4ec2:0:b0:3a0:83b5:f4c1 with SMTP id
- ffacd0b85a97d-3a0891b2dc7mr2372329f8f.24.1745932923467; 
- Tue, 29 Apr 2025 06:22:03 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073ca5219sm13729371f8f.27.2025.04.29.06.22.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Apr 2025 06:22:02 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH v2 1/7] target/microblaze: Use 'obj' in DEVICE() casts in
- mb_cpu_initfn()
-Date: Tue, 29 Apr 2025 14:21:54 +0100
-Message-ID: <20250429132200.605611-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250429132200.605611-1-peter.maydell@linaro.org>
-References: <20250429132200.605611-1-peter.maydell@linaro.org>
+ bh=B/dF9ePSe8e/Wos3Lfb/d8anPOw/xvpQ5gn6BfEi2A0=;
+ b=XaLk1IB6TijT2uDRyDivoJN0AkbE6FrSMnYcdLLXOwcYe79JIYu5ZD6HACM3PAjO5b
+ pIVR6MJsXlDIcUwgyaW2TIyC9tYiieSZMGXuGLa1ZkXhNBaVmLhrEAMCOmWPExRNKdgr
+ OCRZYgi2c8UOvzMzgCuxRf9melO6JBoCbsagHIuJQ2BOod+5qeIcf7BF8uySKlw0Hk44
+ 9+vGTYN9eHIg9OzxwyF9233k1kDPcRFB1ZWXUVRBGH5XVVbg5TUrQqM9pwO05ppkR/SL
+ s4Z5I0Cv7lxXyuip9bP1sMcFKjnI5+iRMqoCUzEVpVdQYNx+0riJ+KHsDmkINpkG9tEP
+ 6DvA==
+X-Gm-Message-State: AOJu0YzInTDX3ZOM3HDT8xU3JLiZIgCQnJcJKTUc32oI3cpke34IXmw+
+ qEEuY2LF3VByUsFmw6GiP3Rud0Wy1kTPm2jjCDhQNfKiqEqeAJ7e0HSZxD8U7Ss=
+X-Gm-Gg: ASbGncvV4zu92HxhVsY4fuyupNSGBHt4h+7tHHIuYpNKN2JXu6hELxtdZ31pzoL7CU+
+ GSuS+6PhnOtZYuFTOXMkjIzAp7HN2zX3GO34Wdsrnk2RJUI35Qa/UaZmZLh43W+hDKYRhVF9qMQ
+ HD63StTYT/u9SmeJt3PgBK5cgKLqBLqUUr/q5BK+tMk7r3uHDVDdrXT8f8GKvcreKf2YDzxDEWl
+ JoRVxnskSWmiHE8I/nMnBnfSFjXyf5B9X7aJIV4KjjamKsSZRZlyl7xf8g8S6TlxBmnuuX7Au1v
+ 1HNdIX7QCPJdJR1fTkkl7CGL2tME1SXNWkFCEIHLqM2elyewQoi5YA+FZz3+Qm0dl6YCR+5T9uU
+ gUyWj6ftq7Sn9/yMS02Z/ATfm1zWBBlE=
+X-Received: by 2002:a5d:444e:0:b0:39a:ca04:3dff with SMTP id
+ ffacd0b85a97d-3a07ab9bce2mr8812412f8f.40.1745941153506; 
+ Tue, 29 Apr 2025 08:39:13 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a073c8d60asm14560685f8f.18.2025.04.29.08.39.12
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 29 Apr 2025 08:39:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Andrew Jones <ajones@ventanamicro.com>
+Subject: [PATCH 1/4] hw/arm/virt: Update comment about Multiprocessor Affinity
+ Register
+Date: Tue, 29 Apr 2025 17:39:04 +0200
+Message-ID: <20250429153907.31866-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250429153907.31866-1-philmd@linaro.org>
+References: <20250429153907.31866-1-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,40 +136,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GoVLLT8F35W3
+X-TUID: X30GU4Mmduqr
 
-We're about to make a change that removes the only other use
-of the 'cpu' local variable in mb_cpu_initfn(); since the
-DEVICE() casts work fine with the Object*, use that instead,
-so that we can remove the local variable when we make the
-following change.
+Support on ARMv7 has been dropped in commit 82bf7ae84ce
+("target/arm: Remove KVM support for 32-bit Arm hosts").
+Update the comment in virt_cpu_mp_affinity() to avoid
+mentioning it.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Suggested-by: Andrew Jones <ajones@ventanamicro.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/microblaze/cpu.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/arm/virt.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index 00a2730de4d..d92a43191bd 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -333,11 +333,11 @@ static void mb_cpu_initfn(Object *obj)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7e3933066f2..83bd1152804 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1767,12 +1767,7 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
  
- #ifndef CONFIG_USER_ONLY
-     /* Inbound IRQ and FIR lines */
--    qdev_init_gpio_in(DEVICE(cpu), microblaze_cpu_set_irq, 2);
--    qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_dp, "ns_axi_dp", 1);
--    qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_ip, "ns_axi_ip", 1);
--    qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_dc, "ns_axi_dc", 1);
--    qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_ic, "ns_axi_ic", 1);
-+    qdev_init_gpio_in(DEVICE(obj), microblaze_cpu_set_irq, 2);
-+    qdev_init_gpio_in_named(DEVICE(obj), mb_cpu_ns_axi_dp, "ns_axi_dp", 1);
-+    qdev_init_gpio_in_named(DEVICE(obj), mb_cpu_ns_axi_ip, "ns_axi_ip", 1);
-+    qdev_init_gpio_in_named(DEVICE(obj), mb_cpu_ns_axi_dc, "ns_axi_dc", 1);
-+    qdev_init_gpio_in_named(DEVICE(obj), mb_cpu_ns_axi_ic, "ns_axi_ic", 1);
- #endif
- 
-     /* Restricted 'endianness' property is equivalent of 'little-endian' */
+     /*
+-     * Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+-     * GIC's target-list limitations. 32-bit KVM hosts currently
+-     * always create clusters of 4 CPUs, but that is expected to
+-     * change when they gain support for gicv3. When KVM is enabled
+-     * it will override the changes we make here, therefore our
+-     * purposes are to make TCG consistent (with 64-bit KVM hosts)
++     * Adjust MPIDR to make TCG consistent (with 64-bit KVM hosts)
+      * and to improve SGI efficiency.
+      */
+     if (vms->gic_version == VIRT_GIC_VERSION_2) {
 -- 
-2.43.0
+2.47.1
 

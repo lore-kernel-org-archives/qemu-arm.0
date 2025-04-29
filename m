@@ -1,209 +1,180 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp365294njm;
-        Tue, 29 Apr 2025 09:03:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGHvIh2wkJAofBK3TdDgkgeJwuRRGGFQZIXWm4Qd5g4ebEXTcncnmEWLeHh9XyDOZuuQd4ZYrp/GnCDw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFIGajQV5RNfGxdACsmpNhwXGOBoF2pnvaU07NBu0seeqMV11NimS5vqA86WzJSbUAH4k+D
-X-Received: by 2002:a05:622a:1c07:b0:476:b7e2:385e with SMTP id d75a77b69052e-4886bccf0fdmr48611501cf.17.1745942638892;
-        Tue, 29 Apr 2025 09:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745942638; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp469509njm;
+        Tue, 29 Apr 2025 11:48:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFB8dbf1eZorzX5ctrm5IQRSguJj2d1/XDAk0IYFYF34KTXCdBpnF8eFDgyXUe5COjfhyYa
+X-Received: by 2002:a05:6a21:1645:b0:1fd:f4df:96ed with SMTP id adf61e73a8af0-20a89419c28mr79162637.26.1745952495475;
+        Tue, 29 Apr 2025 11:48:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1745952495; cv=pass;
         d=google.com; s=arc-20240605;
-        b=SBPWXQuZYU92XJztzeWncWsi3W0Taht/M7xIiXEj8XyyzYalM9OAmPlLyHCdRkouoU
-         8lzDMD/gCMlnFT+9OXaqfPuzBfA4a221cqVc0/aUYcp2bG5tHsNP75wi4FmcHAyK95Ec
-         usPBCrs+ASA1WyUSpNlrK9D38vIa8anLZUyXNA8pMPRghDp6KOMaI33Zz7jsX64S/SeS
-         RIQ1pNgmQuY5NBeTf9OpXvjP+89DCj77b/1ICSzU/Y8Hv/BEqBc2ibyX38ENv+ydujrK
-         +NHyhT5emDpIapTVPkxzKUC4CpSsXji1B0Dk4QmU5TAnvNrOpN0qEnL/pSmXiZ1PWI15
-         7rnA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=MRqdztSaugXWpGgKEE4JCSZlwe+ATiEFqYL+Pn7jKU8=;
-        fh=UW81tfNbf8L6JoSuBNoBb3QFT4h4okPMK2AtcMPjuM4=;
-        b=hJCs4r47UC5JvPp0c5/fSRfspvRgbQ0SZo9KPW+JsbZ1NFjtWBMr0pdnoL6/zkvpUU
-         nP9mzg0e9168719RfoIINM804HQzVl9Y5yDtmY0HXWexEEM2kUc0JfRCi4TZlAlMnb+J
-         u64j5qd0rnOiLxgeRAZfzg+cvur1BaUMXJq/0WATooiOY5ii6CttCX2GM2cIFa6EF5yj
-         8Nq9s3XRuKeycvd814lZK6PP+mZ5DI3Je8AL3TQIKWn46y5TYGHRgsqz/87vDQrFX9yi
-         xdZouHstnXwhvuwKdJ9D+lQLaONbpuFZHNrOt89aYv9hmdR3mjt6h5VF43UPqSaKJaNF
-         lpcA==;
+        b=W4gMG/6NuuWATcOOmX3m/Abhqljp5dYCPzsllE5ew74DY0MLxAyo6tGMT9sFFSqtcV
+         VCTUx+VVqKkBckb/T+qjlOYzjdd5taDiD7u/m5BjSyKLfFpE1sS0onx1D9KvtKgusryw
+         jWuQMBbbmdpUcUEv0Vyz3s2++onE2J7T6OxkK1PP7CvdaYczAbkRWfL7/uDuDZ2uzDdO
+         Twsv5sohZ83JKoA5BDH6t+bEBdBhBQV1VFYY6cMRspg2Cj2rviYcxxGfio87SM8Y9HdS
+         AeEZsyUd/iavO4sh3Q7ZzQKKwO1Fy6+h0hu2u0AQI8HuV/8L91peVmU7Ud+MrNp6pmsv
+         Ye4Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Yw6K7+P0IhnRvA1OE3yXKPhguHzVqRLq3CxC4f2co/4=;
+        fh=IUwE2Y9QQ70EUjRhe9JguzyAtQLMfVwyEwaf1V/Bfbw=;
+        b=LITIAHpVdW/EVmMD2fYSmOPu4+GOqD3H+2AswpNDQ+Z6ocXrx/I8zdb50BMPdK+fkA
+         axf+BaRzB7PgdLeYFts8GFifHsdDnJvZoNCW2QAKcJrkdg+q5IYpwFZUD8a9KR9VJgG4
+         3fkzPQjLL3yK1esZD47qWDWph4grXLsgacd385QVYzkfPAeIzgQm82CUygJVxn2OJv/O
+         /o4fGXsJUNC7yovaFWTsvRDSRBTOcE60VOpOdAhrgN4gKUilfMsBc5dKlDMpHCU3ouZk
+         5jzqKxaP+LxukScb31wCb22fyCfp775toFO7dDnBHeBB5QJRYLVxznzL66xBIB0Z+lkG
+         y3Sg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DrLjbEoG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-47ea26a33easi124507651cf.529.2025.04.29.09.03.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Apr 2025 09:03:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@collabora.com header.s=zohomail header.b=JgnKlLZP;
+       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
+       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
+Return-Path: <dmitry.osipenko@collabora.com>
+Received: from sender4-pp-f112.zoho.com (sender4-pp-f112.zoho.com. [136.143.188.112])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b15fb7b33fdsi15614861a12.636.2025.04.29.11.48.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Apr 2025 11:48:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) client-ip=136.143.188.112;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DrLjbEoG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1u9nR0-000093-PF; Tue, 29 Apr 2025 12:03:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u9nQv-00008U-IS; Tue, 29 Apr 2025 12:03:45 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1u9nQr-0004WO-V0; Tue, 29 Apr 2025 12:03:45 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-54d98aa5981so7961567e87.0; 
- Tue, 29 Apr 2025 09:03:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1745942620; x=1746547420; darn=nongnu.org;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MRqdztSaugXWpGgKEE4JCSZlwe+ATiEFqYL+Pn7jKU8=;
- b=DrLjbEoGQ11wvqdBMSEztg7cEhqHFkZcyyMwMWN5GA1HT6fbVUT349yVSaQQMrgznH
- hsoXzMu8zkgZf4hVGcTydADwBGewgf4bjEzDDozwl30bew7T6UCyicOgWLeKmXPv6f/N
- ORegm3yvcxDYT34iSoFrrKSGeqjFfUueOX3GUzCfu7VfO9SOMPqk0fdd5ze9RQTu1rpx
- oQgzwARaFAiAuLZvhF1DsfaU7G/P4+Pgf383tfk/fxHoheay2LSbzgA5sVjqPWPi1ygH
- whwhDPSY/RUzXZXVDDpT9kNe5c1IY97YklH5z0J1i1bS9Q1U86VY+mz90gAB5KWVyvR8
- ChVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745942620; x=1746547420;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MRqdztSaugXWpGgKEE4JCSZlwe+ATiEFqYL+Pn7jKU8=;
- b=wtlnAd5/jeLvqa5Hji3omDFOOgYqvjNgH2xsa0yHilhG7xAdmerEhQ9lFZCaPb7JNJ
- OZKXS2NIGpbTDVbnE214Y1Yx4UKAuC0Dm2B22cj8xUFtzoU4/qTi0lBgVFnvGfz4ua2y
- uYTQocAWb8uzyh6YDneTfL/EjZRw5O0UDbuCZWlH4bzL3SvM+3JdURwB5/IYXs/Qxgg7
- rSYgfokA2R78PIj5eAe1Ohh8b0gAXY0O3kN3IyBKh2VDLZfadtxCcFZF6t0EmlfwicQD
- 590tiQVUyJSz1zFd4cyqniwprrQc8rqmtoQEqR0SJBPT/nAJyO1LF9Ve+KtLINNq5wSu
- Skmw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUnQwyqoyXaDmWi+C/XyZNuwIOVVjeikaBR6Kp6KP7qmprK+KBqNPyNHOywXuAcHWHam1/RK1ZXF6v6@nongnu.org
-X-Gm-Message-State: AOJu0YwFrEynma2qw4klmrIUYin0RuermriCR+O8fNJlBPqqsvc9/iZd
- THS0UY/Sr4KDj/2QBVgTFmLuT3CU0gxHeOMFp8UKWNFyIBj0Ejrh
-X-Gm-Gg: ASbGncuapd4gESXFI9K3xUVBkvP/GuZ3N8OdBa0IIu4cmywKbIvDh9QgX97YA1GKe4n
- T4f9MaNemIudhnFBo5KrYuUCGJXodgYg8ua+DoJGqxO7JBBnsxgzJMbCRZ7wsE+wcz6f0Om1Wqo
- uy1akNyeOZZHFQnhxIpT8RiugCar3LJn1Uuw+uDYrIa72CbLglInILPx3/RVjNSqiSk5pmPBfhd
- bRe10fWbx9j9I2n/knO+GwwQ8G6g/QcMAi0uIniVtGqGANCEJSdM34n9Liu0AmVaizENG1uCQkx
- F3lygTm0dOiQdW3pWIkVfyJq7JwKJBPadQ3JZKVqBIY+ylQvFKnmUChMRpOz0l3fVvSxrYsim41
- 17vdndOJa+NsDG2SjKxvy4vk=
-X-Received: by 2002:a05:6512:3e0e:b0:54a:cc25:d55d with SMTP id
- 2adb3069b0e04-54e9db145c8mr1520394e87.43.1745942619134; 
- Tue, 29 Apr 2025 09:03:39 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-54e7ccb83b5sm1960579e87.245.2025.04.29.09.03.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Apr 2025 09:03:38 -0700 (PDT)
-Date: Tue, 29 Apr 2025 18:03:38 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [PATCH v2 3/7] hw/core/cpu-common: Don't init gdbstub until
- cpu_exec_realizefn()
-Message-ID: <aBD4WuIP0MJ0OVpu@zapote>
-References: <20250429132200.605611-1-peter.maydell@linaro.org>
- <20250429132200.605611-4-peter.maydell@linaro.org>
+       dkim=pass header.i=@collabora.com header.s=zohomail header.b=JgnKlLZP;
+       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
+       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.112 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
+ARC-Seal: i=1; a=rsa-sha256; t=1745952489; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=C4MzeXacDBoJxKw9jZwxTqhh/7CNtmZvQ6Gmjr9/B2vLU7+4BzdZO+YWfBSjxLyIFlv09cxRo1kPd+3fa5ON6Md8KzJv2ewsfrcPgad8B/RTeROYXL/LSz3KH2fcPFJvAGBvzmNX+tKE2EEP7ylHcSWxBPwH+DWMbivecK5sAko=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1745952489; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Yw6K7+P0IhnRvA1OE3yXKPhguHzVqRLq3CxC4f2co/4=; 
+	b=QLOCLHVerYQYk//gw4BnNh8ooKHEDeTX9qF4gX6YvX/wNIeXbYT1eHp3H7yXXU4byFLkiGq9k4VrI97g1QzphuLLrEnjQnT0+PygfQ/icq+mpyxIKU5h+uE7R/IU7tPI35DQjaS79xkGA14HW7LDqngvs+GYosTAF5VlXVdYscA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745952489;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Yw6K7+P0IhnRvA1OE3yXKPhguHzVqRLq3CxC4f2co/4=;
+	b=JgnKlLZPsU5E5clvfPaFzYtwSqOy9DprGkhMOl6+kOOnN1XRQo+jcaaDKojNtLKM
+	2LJ/eQ4anumPWKy4WXCDWt3Znr0BlX1JzBGy+rBmXQRrL6S/IFtnYMaooh6a2xkBd7/
+	LPQP2T66a36NbXVGRb+TKjFm1+D1RtKRlXPzKZXc=
+Received: by mx.zohomail.com with SMTPS id 1745952487984766.6216250032528;
+	Tue, 29 Apr 2025 11:48:07 -0700 (PDT)
+Message-ID: <8b123991-21f2-47b5-851d-6b53fbfaa691@collabora.com>
+Date: Tue, 29 Apr 2025 21:48:02 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250429132200.605611-4-peter.maydell@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iwoqEzJe11MC
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/9] virtio-gpu: fix hang under TCG when unmapping blob
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Thomas Huth <thuth@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Xu <peterx@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-stable@nongnu.org
+References: <20250428125918.449346-1-alex.bennee@linaro.org>
+ <20250428125918.449346-9-alex.bennee@linaro.org>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250428125918.449346-9-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-TUID: gIrei2/BaPyK
 
-On Tue, Apr 29, 2025 at 02:21:56PM +0100, Peter Maydell wrote:
-> Currently we call gdb_init_cpu() in cpu_common_initfn(), which is
-> very early in the CPU object's init->realize creation sequence.  In
-> particular this happens before the architecture-specific subclass's
-> init fn has even run.  This means that gdb_init_cpu() can only do
-> things that depend strictly on the class, not on the object, because
-> the CPUState* that it is passed is currently half-initialized.
+On 4/28/25 15:59, Alex BennÃ©e wrote:
+> From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > 
-> In commit a1f728ecc90cf6c6 we accidentally broke this rule, by adding
-> a call to the gdb_get_core_xml_file method which takes the CPUState.
-> At the moment we get away with this because the only implementation
-> doesn't actually look at the pointer it is passed.  However the whole
-> reason we created that method was so that we could make the "which
-> XML file?" decision based on a property of the CPU object, and we
-> currently can't change the Arm implementation of the method to do
-> what we want without causing wrong behaviour or a crash.
+> This commit fixes an indefinite hang when using VIRTIO GPU blob objects
+> under TCG in certain conditions.
 > 
-> The ordering restrictions here are:
->  * we must call gdb_init_cpu before:
->    - any call to gdb_register_coprocessor()
->    - any use of the gdb_num_regs field (this is only used
->      in code that's about to call gdb_register_coprocessor()
->      and wants to know the first register number of the
->      set of registers it's about to add)
->  * we must call gdb_init_cpu after CPU properties have been
->    set, which is to say somewhere in realize
+> The VIRTIO_GPU_CMD_RESOURCE_MAP_BLOB VIRTIO command creates a
+> MemoryRegion and attaches it to an offset on a PCI BAR of the
+> VirtIOGPUdevice. The VIRTIO_GPU_CMD_RESOURCE_UNMAP_BLOB command unmaps
+> it.
 > 
-> The function cpu_exec_realizefn() meets both of these requirements,
-> as it is called by the architecture-specific CPU realize function
-> early in realize, before any calls ot gdb_register_coprocessor().
-> Move the gdb_init_cpu() call to there.
-
-Sounds good to me:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-
-
-
+> Because virglrenderer commands are not thread-safe they are only
+> called on the main context and QEMU performs the cleanup in three steps
+> to prevent a use-after-free scenario where the guest can access the
+> region after it’s unmapped:
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> 1. From the main context, the region’s field finish_unmapping is false
+>    by default, so it sets a variable cmd_suspended, increases the
+>    renderer_blocked variable, deletes the blob subregion, and unparents
+>    the blob subregion causing its reference count to decrement.
+> 
+> 2. From an RCU context, the MemoryView gets freed, the FlatView gets
+>    recalculated, the free callback of the blob region
+>    virtio_gpu_virgl_hostmem_region_free is called which sets the
+>    region’s field finish_unmapping to true, allowing the main thread
+>    context to finish replying to the command
+> 
+> 3. From the main context, the command is processed again, but this time
+>    finish_unmapping is true, so virgl_renderer_resource_unmap can be
+>    called and a response is sent to the guest.
+> 
+> It happens so that under TCG, if the guest has no timers configured (and
+> thus no interrupt will cause the CPU to exit), the RCU thread does not
+> have enough time to grab the locks and recalculate the FlatView.
+> 
+> That’s not a big problem in practice since most guests will assume a
+> response will happen later in time and go on to do different things,
+> potentially triggering interrupts and allowing the RCU context to run.
+> If the guest waits for the unmap command to complete though, it blocks
+> indefinitely. Attaching to the QEMU monitor and force quitting the guest
+> allows the cleanup to continue.
+> 
+> There's no reason why the FlatView recalculation can't occur right away
+> when we delete the blob subregion, however. It does not, because when we
+> create the subregion we set the object as its own parent:
+> 
+>     memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+> 
+> The extra reference is what prevents freeing the memory region object in
+> the memory transaction of deleting the subregion.
+> 
+> This commit changes the owner object to the device, which removes the
+> extra owner reference in the memory region and causes the MR to be
+> freed right away in the main context.
+> 
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Tested-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20250410122643.1747913-3-manos.pitsidianakis@linaro.org>
+> Cc: qemu-stable@nongnu.org
 > ---
->  hw/core/cpu-common.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  hw/display/virtio-gpu-virgl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> index 92c40b6bf83..39e674aca21 100644
-> --- a/hw/core/cpu-common.c
-> +++ b/hw/core/cpu-common.c
-> @@ -234,6 +234,8 @@ bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
->          return false;
->      }
+> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+> index 71a7500de9..8fbe4e70cc 100644
+> --- a/hw/display/virtio-gpu-virgl.c
+> +++ b/hw/display/virtio-gpu-virgl.c
+> @@ -112,7 +112,7 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>      vmr->g = g;
+>      mr = g_new0(MemoryRegion, 1);
 >  
-> +    gdb_init_cpu(cpu);
-> +
->      /* Wait until cpu initialization complete before exposing cpu. */
->      cpu_list_add(cpu);
+> -    memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+> +    memory_region_init_ram_ptr(mr, OBJECT(g), "blob", size, data);
+>      memory_region_add_subregion(&b->hostmem, offset, mr);
+>      memory_region_set_enabled(mr, true);
 >  
-> @@ -304,7 +306,6 @@ static void cpu_common_initfn(Object *obj)
->      /* cache the cpu class for the hotpath */
->      cpu->cc = CPU_GET_CLASS(cpu);
->  
-> -    gdb_init_cpu(cpu);
->      cpu->cpu_index = UNASSIGNED_CPU_INDEX;
->      cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
->      cpu->as = NULL;
-> -- 
-> 2.43.0
-> 
+
+This change makes QEMU to crash.
+
+AFAICT, it effectively reverts code to old bugged version [1] that was
+rejected in the past.
+
++Akihiko Odaki
+
+[1]
+https://lore.kernel.org/qemu-devel/20230915111130.24064-10-ray.huang@amd.com/
+
+
+-- 
+Best regards,
+Dmitry

@@ -1,85 +1,86 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp23016njm;
-        Mon, 28 Apr 2025 22:00:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU83VIlwNUbdYLsa5b2w1sji5ZWe+9m7qIgYcFVxalaVDkgCTg/Ceg2voBu20FE+0skwieY6TVzsEBvqw==@linaro.org
-X-Received: by 2002:a17:902:ec89:b0:224:1ef:1e00 with SMTP id d9443c01a7336-22dc6a0495cmr182565115ad.19.1745902826718;
-        Mon, 28 Apr 2025 22:00:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1745902826; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp23044njm;
+        Mon, 28 Apr 2025 22:00:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWm7OfqXn+gVqVWyvVwSIoA/PX5kkCn3lLx+O8aMhKotk3mZXB7maM6MHEjzAK+BCu+OFE4ms+terPdEg==@linaro.org
+X-Received: by 2002:a17:902:ef0b:b0:220:cd9f:a180 with SMTP id d9443c01a7336-22de70a316fmr26132485ad.53.1745902828678;
+        Mon, 28 Apr 2025 22:00:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1745902828; cv=none;
         d=google.com; s=arc-20240605;
-        b=W9NK1hYW7QeTo1Rg7FoZl3OOYqhNnFWAOL8B1A0B8kCJsszy+14H2Gj34R09bmaBWD
-         C7qzitj6AvSMwZmskG5xVwVVgnMQxuwP7dDi6N3MIq3in8aSii4Khe/EllLaK5ShOkpu
-         WKoc1o1J4YPo4gFPP3vTyCW4Frf/Yv9V7Z5vd1M2zoVObrAw7bODQvlUfZV+nO9T/O5F
-         HROXno6HnZ22rytaoD4rAGBxgm8Ww5H0r1EWVo7zltzYNs56iRzEICGLr3kcBuX7ukGS
-         tI1HbaGRgaf+dVznsP+Lbpfz8eN1Hl8DJ5Mmyk0CkxGSgKPRhmdNnmMGCCEthGaVUAxM
-         BYig==
+        b=Ilhfb8C2OqK7HuJWyPmZBnzHD64O5olrSiUHi1jy0iinaqSgpty9Iflk3Jfw4GBf3Z
+         BDdGh99QlrSthCvxbQuQXxvFnKAePrF0IW9PkEYCLacfjQO1diaWtJ4yhm7VDj+PSnpc
+         jR8KHiS/yvKquZsS7561lm1TyvTjFOnCxyJkb6qUYs7+wxQsSLlbEhnaocAAMykWlaGd
+         dbuDgJwodYxT1cqQTJHIMSmq+u7nNdE6fW8aJapHynqiJlphlGrvJ2A9zsdfku+q21mx
+         He5BnvLc+rdMP50rz68lvlqn1Z8KSkReSJL/ZZdDb4K1fxOuyY0TStkecT6vxbQGF+GA
+         YE4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=T48CGR80HJJotOhNXvyZIfy4YYqwAzwBstE/RhDVQ28=;
-        fh=jnYultAy9ysXgWtNrVhfZnx66LC1DWY0zurZH8xcLwc=;
-        b=R9R4HF6HbUooEcGOSN3fXoFPXbTsUqpUNdon4e7CrBh+WEj6BxTu9VfOe6qKuK5p3X
-         JjTUe4OE5rxUI1CZ0t//aGPqUdqmYiHnSmZXe2lrz8MyJpoNCh60JTmyi//v/P9oBtPE
-         1G6NbmUNHlP6HkQr/Uwaj4ow1Ng7yxVpVc/zpI4vw9HM/7ocXBRE8lDA/emdG+wcSxfP
-         D6H/9HoRBVySqmu2hFosMu+jtbMo1K+d5l9ckYYmc0Zeqo93M8Vg2arW+Ng+39F6cGUF
-         wNYao1K8WI50otF+IB39snesyZ50j63ja6ShotQnC0bPTWzKfQKzQH0pAHXXngUDr8M0
-         1USA==;
+        bh=ihSbjG4MVG/rPWJxnirZVcYWQR5uI9SkbcEMwpHCSZo=;
+        fh=7Wcz4Xf/r8eDlV6Rnks3CxyNig1SbT8KW2Q3EPkXmGw=;
+        b=BK9PMky4TOFVOomXqXNFtujsGsnvxKFzNYq2CTRn8vlvTP0N1vIxZCuLPdgObOklc2
+         vTXgnXqd9Mmxu4v4BwdJV6B5i3P6ioHumFkTUDGqEcTSiH5I0tzFg+m5EPMd/2oLzSN3
+         XrAhUQPHGqOMxWxR17DQbj9AeepEDbigjMvQFZWLheL8VIT90tGb+9cnOLsK/I5RluN8
+         c39LOFiQ3ZfttSSDuknITUIb9oXNcp15NCTUmUy0+M0EyT88wueNHrl3ccmyicsDWR9y
+         jnSKJ60X+t8lpx5fwBIVzMKoHcARJPjKoked4jU2EgBkl1TdgBlaN/Ds08m8db7Hh1Hh
+         AWzA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="q5QF/rPX";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dshrWOS4;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22db50f05a8sor85150205ad.13.2025.04.28.22.00.26
+        by mx.google.com with SMTPS id d9443c01a7336-22db50f8dacsor78343845ad.11.2025.04.28.22.00.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 28 Apr 2025 22:00:26 -0700 (PDT)
+        Mon, 28 Apr 2025 22:00:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="q5QF/rPX";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dshrWOS4;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745902826; x=1746507626; darn=linaro.org;
+        d=linaro.org; s=google; t=1745902828; x=1746507628; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=T48CGR80HJJotOhNXvyZIfy4YYqwAzwBstE/RhDVQ28=;
-        b=q5QF/rPXT1igwRUizw9/wRBC55k2sT/4whOiiyvP/sPIg2J7/+hCNd+LVojcYN7R2s
-         CRv8pH+HxGg4ZHmF9e/9CrXrl6kWkYU+huGFUNZVrjACj3YZqYddSju42A/DZ2qFhAkr
-         KcA8W8cvBqjkFU+j/+1uIzJM/yqMELVqQ9kfN3MVMEggQ1RPcQcxheb4EVNxRdUiJpSE
-         mTD+nJNgKRLwpEv1eiKW+9r05gVeGeXL7M9bKnO+H8z9m9R0kzCwTZR3yCiFGHoTUwxs
-         HexxiQcwXyg8lQGzomxMvh6Lo6gUWwptL3nWS7rALLRaSLdzUwTeQ9j8W4BlyQa7COfe
-         Wr2w==
+        bh=ihSbjG4MVG/rPWJxnirZVcYWQR5uI9SkbcEMwpHCSZo=;
+        b=dshrWOS4z4jwIkyOBM4rysblvQOV3ipBSBEy8F/fmASoDlatTUmRo5O5VanSeZXQtr
+         VeQAHz/Us9YArZG3A0F4W6rTgMrXwrcYjzbAViHfRb3U7P6vDyD8qj0D2eSHhbA0bJHL
+         tlSBSHwE2QyC3ExqPwjxDknTz+sbd9r38FBmhkH9RsqtgRGtv7ZMHdscA5zM/M4fy4aj
+         90jcz4TTX8riAPMHhfDL6rHk4aRFGmZ4pFe+jKLzwOOjnDUZo0EThvOuW3KEgE0U6S7l
+         8p0tRTBN0cdYkyUKDuKfvLW962Ox57oAZjcfga4b0NA+8BwD+vPH3rVOOv8imfOFS0+7
+         UAFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745902826; x=1746507626;
+        d=1e100.net; s=20230601; t=1745902828; x=1746507628;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=T48CGR80HJJotOhNXvyZIfy4YYqwAzwBstE/RhDVQ28=;
-        b=ukzfqp/K1X0hNcrWqRUjlJrzJrA70XZh86wnj/juOLeF8l1AMWM+JeXSEF2vyxWsvm
-         TSThWIE0gGL9dgHN+ox+h2E2kXMX+wfz50+uQjknT+TeZ9FgX9HcsC7R5D3zRpYDGpXn
-         AD3ErXSL3EcTSc6y6I8E9AoSP8bZxlLC2eUMJkVDRpqjshkW/O24GFOf9r0LCWu8+PBM
-         RaZ5JwTod5+Qwu0r5uxrikCoPrFtzhBxGtN8OIx/bhoG8E1Pj/MDpuODgP5OYBgNSwPz
-         k39cKdOyamOVxO2G4THOir1cwDMqy8h7gk0pod5msRoBnH83TcEWk5TLIGBJZ4Y5NnVO
-         2P+g==
-X-Forwarded-Encrypted: i=1; AJvYcCUWPJu0o1EvwPKIkJJWZT1p4bhM17OEiruMwVfdkYnktMwo4RPOEHVNAbO8sxaaZ3NRTZewqd0A3y/dBw==@linaro.org
-X-Gm-Message-State: AOJu0YyXH3zprMa/2jOZXQ+UU226/2j2PDo9HAdiHOlNCpYjGC13MxB7
-	ZZLx/3arw6SVgyENf3xJt2njXZFpxDhxb0AlplXobe8p/nMEpWpdplKT5vc4jjCJ+Q==
-X-Gm-Gg: ASbGncut7rhzRCWXzSdYasNY+RHY4D4RkGiZPzPuhF28FY1AGB0EmjtcHKyxoWhm+tT
-	owco3svBsBf5IJmFjSeE8d9422YNVg/Mn6jRVgfy0dmhewUgKUOUcjaT/D7kjbHaVhCaU1uM7xm
-	udk+ZIESBzilSj/UUK/tE33zZRdv6EZZqXSxhME9sH4qB/DKFQHiGDAZq19x5L3o8s5MvUvA27P
-	S/kz/3s17qDHRu2oNxU+qhumyvKI/ZPUjBJQK9BTo3eT7orl+UTtPEHtf4avHP9n/OVo3glKx3z
-	UwuW5M7e1IO7f8kJxh1j3mx6ZtxK5EcxSKmCpAOg
-X-Google-Smtp-Source: AGHT+IG/bsI8Plp6wLuUi6N8xxtzsYztKsAI19kdOE80Gua3/ANpLwzdO+O+AKBzWj5n2J/cQnM0Ug==
-X-Received: by 2002:a17:902:ea01:b0:224:1ce1:a3f4 with SMTP id d9443c01a7336-22dc69f83eamr176304425ad.1.1745902826200;
-        Mon, 28 Apr 2025 22:00:26 -0700 (PDT)
+        bh=ihSbjG4MVG/rPWJxnirZVcYWQR5uI9SkbcEMwpHCSZo=;
+        b=gfDOvrGSzF/omRD+WBlG++1F5T6e1eEm5aw4N868arYFQ1UJZJavCrw0a39kaSZJAT
+         3UqP7re4EyCFYlsXLsu6e6VwBA3qTEhXH2VO7KICVxWRNWjfih8HjezhyYQLlxM92lzS
+         PgrW/swtj6rupr7TtQt7W0lqf+4fPT+CUt3PmT7oxuy6oHoI0xSmzLjbf8Ky8pc3R+Yv
+         jFQbGZF+swoRynrZ97MxyepZ1aM9acSH0sO2bIyxXWuge/p4/ZLNr7T46mOVGA0oWmUg
+         Dmg4GTfiUZ1koDOff+SDShckcaKBURqkaiQE5tHCdkk7zA/heRdZ0Ha270EEtp+G34lF
+         MmYA==
+X-Forwarded-Encrypted: i=1; AJvYcCU7wwKK975zJo4Ra8aSISipEvIsLBm1Hcv9Ql/MBsWUbrhfz6EkgiwS+nbMKGoOWun/XQLL/rgsI/LlXA==@linaro.org
+X-Gm-Message-State: AOJu0YyLvbPUYLOTpAWTQKJHOg44hykqd0DpM/wySr0IodtKSkiBzfr1
+	MnhU2EV+kkLqqW9+L1kqYtQS96CAXtyQFF09KpOCIuw1B96CpqZHIw8hV8aHXz6+NBq6hb6bMGv
+	kcQE=
+X-Gm-Gg: ASbGncuH1/Pi5nF2Zzqa7wSIjnPAbEu92VBX4dHyjZSgtBHgc6s1Oi0v/gHMRSbMUkg
+	Fsdh2AuW/XqA2055yYkz8AONkVJ9NxAGtXvB2fLtmwltR0yfJZ6rsRB9+dQJNpLQoxRci/lkAqx
+	AZg6IWUzutsSqghzxzxQNga99/dYXPNWKlsgJSqOIliwWYTbTOYdt4OCcE1pppGe1++EdDjbPcS
+	4ONdu6yQERKsOPspfYsBIS4L/VIvyAptvn17wXqdAEjMk9QCKOcHkD9AIHUF8v2InlAcOFNg1Kd
+	gMELuBQ2n348orkx4YIvMwDu70WP87Syey0r9VZj
+X-Google-Smtp-Source: AGHT+IEKl36/YxFSXyEEI7I6vw/C5AE7dte38/aDWx18O4SHf3AWwMBIzGuoDNMnlOWkHNEFDjArGA==
+X-Received: by 2002:a17:902:cec7:b0:210:fce4:11ec with SMTP id d9443c01a7336-22de700725emr25054985ad.1.1745902827904;
+        Mon, 28 Apr 2025 22:00:27 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbd6f7sm93004015ad.76.2025.04.28.22.00.25
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbd6f7sm93004015ad.76.2025.04.28.22.00.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 22:00:25 -0700 (PDT)
+        Mon, 28 Apr 2025 22:00:27 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -91,97 +92,57 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	anjo@rev.ng,
 	richard.henderson@linaro.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 11/13] target/arm/cpu: remove TARGET_AARCH64 in arm_cpu_finalize_features
-Date: Mon, 28 Apr 2025 22:00:08 -0700
-Message-ID: <20250429050010.971128-12-pierrick.bouvier@linaro.org>
+Subject: [PATCH 13/13] target/arm/cpu32-stubs.c: compile file twice (user, system)
+Date: Mon, 28 Apr 2025 22:00:10 -0700
+Message-ID: <20250429050010.971128-14-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250429050010.971128-1-pierrick.bouvier@linaro.org>
 References: <20250429050010.971128-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: LU0lYYniA5iM
+X-TUID: RwcmmuZxVMDj
 
-Need to stub cpu64 finalize functions.
+It could be squashed with commit introducing it, but I would prefer to
+introduce target/arm/cpu.c first.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu.c         |  2 --
- target/arm/cpu32-stubs.c | 24 ++++++++++++++++++++++++
- target/arm/meson.build   | 11 +++++++----
- 3 files changed, 31 insertions(+), 6 deletions(-)
- create mode 100644 target/arm/cpu32-stubs.c
+ target/arm/meson.build | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 48ebaf614ee..79a853609dd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1908,7 +1908,6 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
- {
-     Error *local_err = NULL;
- 
--#ifdef TARGET_AARCH64
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         arm_cpu_sve_finalize(cpu, &local_err);
-         if (local_err != NULL) {
-@@ -1944,7 +1943,6 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-             return;
-         }
-     }
--#endif
- 
-     if (kvm_enabled()) {
-         kvm_arm_steal_time_finalize(cpu, &local_err);
-diff --git a/target/arm/cpu32-stubs.c b/target/arm/cpu32-stubs.c
-new file mode 100644
-index 00000000000..fda7ccee4b5
---- /dev/null
-+++ b/target/arm/cpu32-stubs.c
-@@ -0,0 +1,24 @@
-+#include "qemu/osdep.h"
-+#include "target/arm/cpu.h"
-+#include "target/arm/internals.h"
-+#include <glib.h>
-+
-+void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
 diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 3065081d241..c39ddc4427b 100644
+index 89e305eb56a..de214fe5d56 100644
 --- a/target/arm/meson.build
 +++ b/target/arm/meson.build
-@@ -11,10 +11,13 @@ arm_ss.add(zlib)
+@@ -11,13 +11,9 @@ arm_ss.add(zlib)
  arm_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'), if_false: files('kvm-stub.c'))
  arm_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
  
--arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
--  'cpu64.c',
--  'gdbstub64.c',
--))
-+arm_ss.add(when: 'TARGET_AARCH64',
-+  if_true: files(
-+    'cpu64.c',
-+    'gdbstub64.c'),
-+  if_false: files(
-+    'cpu32-stubs.c'),
-+)
+-arm_ss.add(when: 'TARGET_AARCH64',
+-  if_true: files(
+-    'cpu64.c',
+-    'gdbstub64.c'),
+-  if_false: files(
+-    'cpu32-stubs.c'),
+-)
++arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
++  'cpu64.c',
++  'gdbstub64.c'))
  
  arm_system_ss = ss.source_set()
- arm_system_ss.add(files(
+ arm_common_system_ss = ss.source_set()
+@@ -32,8 +28,12 @@ arm_system_ss.add(files(
+ 
+ arm_user_ss = ss.source_set()
+ arm_user_ss.add(files('cpu.c'))
++arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files(
++  'cpu32-stubs.c'))
+ 
+ arm_common_system_ss.add(files('cpu.c'), capstone)
++arm_common_system_ss.add(when: 'TARGET_AARCH64', if_false: files(
++  'cpu32-stubs.c'))
+ 
+ subdir('hvf')
+ 
 -- 
 2.47.2

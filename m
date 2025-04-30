@@ -1,144 +1,148 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp957592njm;
-        Wed, 30 Apr 2025 06:48:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRs9Y5WCn8FazNYmnT2tddEIWfDYmSej6NfPQkgT3te049uPUDw2cIuvXSPCTzWX+WxxkCZVZNjgjjeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGY/6sQ5e1peiTJmyRPJCqlPguZTMdcni2+ga8uHk20WJLUYFv8cAQNqP7S+lEydvhtW0Tc
-X-Received: by 2002:a05:620a:2545:b0:7c5:53ab:a722 with SMTP id af79cd13be357-7cac7e013b1mr381144285a.5.1746020916821;
-        Wed, 30 Apr 2025 06:48:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746020916; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp1004510njm;
+        Wed, 30 Apr 2025 07:58:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU3jKxx9kUsOhRLHq0ddkc7+R5+azEL8Fq8D13ffDLms8aCwZY5/vzVqE82PG66TzHbGs4wpigMf6yh9w==@linaro.org
+X-Received: by 2002:a17:902:ccca:b0:21f:7078:4074 with SMTP id d9443c01a7336-22df47654f4mr49346385ad.7.1746025131223;
+        Wed, 30 Apr 2025 07:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746025131; cv=none;
         d=google.com; s=arc-20240605;
-        b=O7JVmvN6zDyM3ZmBdoMFYslJQUpI8Vbo9HwUjHlrNz9TX1UPciGMkXJ7hOjcNdb/mo
-         5tkWwujUX9Jj482KxSmCFbPQNLd1MIm4Hwt+aLN22hq9R0xEZQ+AuZ4xTzSfShTGPCSf
-         Khx7ZjxAFWdllNTRihF4p6tclhs8vMWEwXQKO6PcI74tI0ubWDpSvu0RUJckHDUaAo1W
-         onroVQD237Vh1RL+0xv0WhLDjzPEKoflqrSt8gQBffTdKYNKv1LMizi3gwzSxmxn2RUg
-         hhKdr2gbZuftXIuhSwWKvTKPSwxfQGVINennD1gdpX9cNjDBxPNj6soOaqHDmU1+oOfZ
-         2EuA==
+        b=eWX8hh78N8FgxOob7l7Esm8BFYlm5iRNjoJnCO0C1E3YIBsKSe2XyInx3E6wpUvDm7
+         aXFgkF4qhtKRJ/OFxlgCWNJqReEc7gnPClg4YoDPIkeKoU3CfxTkQDbwao5wu0UEmkWF
+         wmtddn/X6yVEOuJn6dYCFg/LppF8kM5uLywls+hx1/4ZjF3geLswwLb5YsSfbXNsmTiK
+         rPSI0Ss/PABUZBKvXKqXIUNRSW6ffbAOCRdHewfGFLRJ9cjn+fMw3tsNT2e6vRl/SDn1
+         X81qa6r+fY3pgcefJHXmqIDiz5OMzddZJ+30KWc6gic86YAZrr0JEtpU6CrS65wYJFKW
+         vqiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=oLVOo1RS7FiUiZjstQUcuIC9vXhBzHVmV4xEjiYp0vQ=;
-        fh=0U8LTlSH/uwceEZmrxihEpL94sypADyLZ9l1MmaQxsw=;
-        b=ll0fowg99x3jFIJkW06NZ5ms4EufoP/G6BCd0T0PpMKmsF+E+1mn9N5YX8LBUMEFtb
-         fYayJHYajOD3uop+cu64fetZNkdIcEv8n/UrLhReFBliAg3DCE8qWjeSdSLDV/BrqmNs
-         XH6lAo3EFUdTJFug/2AIjNkxtcE5VsII9NNRBoL9+KxGXaJZRMdTkuLJiRfILNhqDIuA
-         ZWI7quezSDUMcNXKU+TIL8gVPt6hDQ8cUqZxsh/bRsa+mFNZtNwXwf/phKQr9eWJp3dj
-         PMw9Ixff1ybwK1huJOwX2MtoZSYkkHhy/rrH0XixxElnBzumjv6NztVk7kjS/4lgUJft
-         7ckQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=B2+JbLMiiUYaemZWDCUtTt3O9Oj1MSI0kp/U5wwWhSE=;
+        fh=aaMPQ49TObSJDbko/maYe9csv4W0oYs5+9wubIbrXEE=;
+        b=cHFzCiAmAYzfupbk4BicVoVJ+F2EEVhBqjZ9lHlszfI/jBnwxMr6tUrsLZdf6DELFZ
+         2xIa4Tl1F27RlLsHAxld6gSPUupVdz+VmuGxPtFu1G9zDInoSdHcudwU23uuFgdiiDZs
+         MoQ0U9balY7bQjJgMrVw5j2XnqnIkDwKyNwWzp6MnAllK7iXtkF3/MbGk4IDNKlsKuaF
+         oo3YllyX2SQLnRgtonfYqQekxmYUpQGqrdP1jQvWDv45W+FspG6Ubn6a8H+G8D+gagZP
+         gJLCbeYiiN5d4hArkHC6PLXR9Y9geMudzL1PzeyfqyusQiyLQFQkocsXxYc1c3CKL6wv
+         rj8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wv5hgiuA;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7c958c9f0f0si1481236085a.26.2025.04.30.06.48.36
+       dkim=pass header.i=@linaro.org header.s=google header.b=tKnTle5P;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-22df5619f8csor10032725ad.1.2025.04.30.07.58.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Apr 2025 06:48:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Wed, 30 Apr 2025 07:58:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wv5hgiuA;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1746020916;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oLVOo1RS7FiUiZjstQUcuIC9vXhBzHVmV4xEjiYp0vQ=;
-	b=Wv5hgiuAutQveD73855oWmIn59oe/yFKj6m/xaJfn+gB9Wd4egFgwgBXaeD//C+UW3oay9
-	BSswPCkYg87thHylmFDjuPrtDR6CPw+53JXYMUxdoEzSUIspXcKezPf/uuBuzwn2KO04E9
-	EDS8mFlAEAO1HzkTPifBK9BX06hUIQA=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-9t1_IlpnMES5Gy2AHNDGcA-1; Wed,
- 30 Apr 2025 09:48:32 -0400
-X-MC-Unique: 9t1_IlpnMES5Gy2AHNDGcA-1
-X-Mimecast-MFC-AGG-ID: 9t1_IlpnMES5Gy2AHNDGcA_1746020910
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0574B1800446;
-	Wed, 30 Apr 2025 13:48:29 +0000 (UTC)
-Received: from localhost (unknown [10.67.24.156])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 100E919560A3;
-	Wed, 30 Apr 2025 13:48:25 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Sebastian Ott <sebott@redhat.com>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
- jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
- mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v3 05/10] arm/cpu: accessors for writable id registers
-In-Reply-To: <bebefcad-d9db-a2b7-ab69-8eed34b9e63d@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-6-cohuck@redhat.com>
- <bebefcad-d9db-a2b7-ab69-8eed34b9e63d@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Wed, 30 Apr 2025 15:48:19 +0200
-Message-ID: <877c31rc9o.fsf@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=tKnTle5P;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1746025131; x=1746629931; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=B2+JbLMiiUYaemZWDCUtTt3O9Oj1MSI0kp/U5wwWhSE=;
+        b=tKnTle5PSL8XrSCyGAthJkQ9/kJqLB1AwFe/T50+yReGHJIYXD/gkhgn61ZiCgyT66
+         jJG1TM6pfyca310YQBhj7XfVsV4zP0LKpRB7ZASUeSASM9yfgxy/FVTIm87uPGV6YqWu
+         8YIjfhnm+ZJb/TcyIqWfUtL4b46o7XsE+MxBXyGPyvsSDoa91uu/ErAsA1A600AfoNIA
+         BI9kp13ewvY8ZWmjKzraW4h5RangWY0fC/yDjum3f1LD/XRqJsCZ2tAhi/vsUNGbdUZx
+         nfXOi5CXSeUjgfaQIcZ/rVHcocYFJwJl+y29Fz3c570r2/SU6bohDtcJk88Cmmr8toGo
+         Wfyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746025131; x=1746629931;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B2+JbLMiiUYaemZWDCUtTt3O9Oj1MSI0kp/U5wwWhSE=;
+        b=SvFRPMhfLBQycFqOR5kKz4PVnt0nXpEqpQdJxzj+6cT4Ky4yOjTY11fqC5GK0fmvVk
+         X7IbkxS1nt0fkKlVrc8lCuPiRIhJlNZtAIeaeHYwETO+JrgDBpnTHVU76TlJe4e7Ggre
+         JkLq2rBXYpe+bNcyCueR/+n1PpRLQTmu9GfcE+1opBiRXMHhzGDSbp2kVX96qKDyBnJM
+         Ru0FSkMupnnJIDjkAnvVrayVXDfm5dt54+wCsJN1IzVtSAfEhye3H3M3Yi+JdifaFTCn
+         x6FG57rkdz+iNz2/FDho70/IKyrcHD469DSm9pJdLQ7H0ZFCque/gbFlA9qMD9fQRggs
+         z87A==
+X-Forwarded-Encrypted: i=1; AJvYcCWQ1xbKcGBazWdO87qfisUpcB+T5WyESbOUdWrIak91JHcnuW7Kim0bHOWA6pGQ7P0LZHiYUfhd9NIqMg==@linaro.org
+X-Gm-Message-State: AOJu0Ywf89RIzQS5kEHIVkv6EyL5MWgvx26XFRKYW+3/KoqoMPrZDo4W
+	uCk+LKUQYkExl1D75ZtM21rz23i86ZHbbK0bSWaXoZ4SMaJsI5lWsKToJpsntogUTQ==
+X-Gm-Gg: ASbGnctX9inG5i0fcg7X001/IhBIHD60Se3f6TS6fO1yt3pmkf0sVmSSLYPeAKjuL/z
+	C3609VRS6sYbYE5KqMr5VxF4P58qb3w99dmQhalHmP7gAH8Dscm9ttkor7mLWFycj6nfQAUfapK
+	AJByAwWCho66rteTOXEqFn4Fr5av8QJ/CDG0EZWCmLUxCz/rY4MRoZzcSjqICIXauIADYca8fcR
+	FTghXVvqod6FPOdUCaJPkIchugsD0OUmZnWWUTpwAlGtHmi8Yw/dEGiMYmTV9iU9x+taDAN8KIi
+	1ReWEkr8KGm8XJLZAHrpHW2tiPvJHeLZBNqaNkJf
+X-Google-Smtp-Source: AGHT+IGVJzpOY1sOKyELald78Uh/X55cVaOwtQ3xJcxUF7oIJGgGU4BQTL1AHVt8pNiGxX22IiuDXQ==
+X-Received: by 2002:a17:903:2ecb:b0:215:9eac:1857 with SMTP id d9443c01a7336-22df4747f3emr44018045ad.5.1746025130724;
+        Wed, 30 Apr 2025 07:58:50 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.41.223.211])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30a34a5bd78sm1705652a91.42.2025.04.30.07.58.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Apr 2025 07:58:50 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	alex.bennee@linaro.org,
+	richard.henderson@linaro.org,
+	anjo@rev.ng,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 00/12] single-binary: compile target/arm twice
+Date: Wed, 30 Apr 2025 07:58:25 -0700
+Message-ID: <20250430145838.1790471-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: 5vjuVUqyqUbg
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: 2uLMfkVN84IJ
 
-On Tue, Apr 29 2025, Sebastian Ott <sebott@redhat.com> wrote:
+More work toward single-binary.
+This series convert target/arm/cpu.c.
 
-> On Mon, 14 Apr 2025, Cornelia Huck wrote:
->> Also add conversion between the different indices.
->>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->> target/arm/cpu.h | 18 ++++++++++++++++++
->> 1 file changed, 18 insertions(+)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index bbee7ff2414a..775a8aebc5d3 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -876,6 +876,13 @@ typedef struct IdRegMap {
->>     uint64_t regs[NR_ID_REGS];
->> } IdRegMap;
->>
->> +#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
->> +        ({                                                              \
->> +                __u64 __op1 = (op1) & 3;                                \
->> +                __op1 -= (__op1 == 3);                                  \
->> +                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
->> +        })
->> +
->> /* REG is ID_XXX */
->> #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
->>     ({                                                                  \
->> @@ -923,6 +930,17 @@ typedef struct IdRegMap {
->>         i_->idregs[REG ## _EL1_IDX];                                    \
->>     })
->>
->> +#define GET_IDREG_WRITABLE(MAP, REG)                                  \
->> +    ({                                                                \
->> +    const IdRegMap *m_ = (MAP);                                       \
->> +    int index = ARM_FEATURE_ID_RANGE_IDX((sysreg >> 14) & 0x0000c000, \
->> +                                         (sysreg >> 11) & 0x00003800, \
->> +                                         (sysreg >> 7) & 0x00000780,  \
->> +                                         (sysreg >> 3) & 0x00000078,  \
->> +                                         sysreg & 0x00000007);        \
->> +    m_->regs[index];                                                  \
->> +    })
->> +
->
-> s/sysreg/REG/
->
-> Also GET_IDREG_WRITABLE doesn't seem to be used in this series.
+Built on {linux, windows, macos} x {x86_64, aarch64}
+Fully tested on linux-x86_64
 
-Hm, and it wouldn't have worked if we did use it... probably an artifact
-left over from earlier refactorings, I think we can get rid of it.
+v2
+--
+
+- Remove duplication of kvm struct and constant (Alex)
+- Use target_big_endian() (Anton)
+
+Philippe Mathieu-Daudé (1):
+  target/arm: Replace target_ulong -> uint64_t for HWBreakpoint
+
+Pierrick Bouvier (11):
+  include/system/hvf: missing vaddr include
+  meson: add common libs for target and target_system
+  target/arm: move kvm stubs and remove CONFIG_KVM from kvm_arm.h
+  target/arm/kvm-stub: add kvm_arm_reset_vcpu stub
+  target/arm/cpu: move arm_cpu_kvm_set_irq to kvm.c
+  accel/hvf: add hvf_enabled() for common code
+  target/arm/cpu: remove TARGET_BIG_ENDIAN dependency
+  target/arm/cpu: remove TARGET_AARCH64 around aarch64_cpu_dump_state
+    common
+  target/arm/cpu: remove TARGET_AARCH64 in arm_cpu_finalize_features
+  target/arm/cpu: compile file twice (user, system) only
+  target/arm/cpu32-stubs.c: compile file twice (user, system)
+
+ meson.build              | 78 +++++++++++++++++++++++++++--------
+ include/system/hvf.h     | 15 ++++---
+ target/arm/internals.h   |  6 +--
+ target/arm/kvm_arm.h     | 83 +-------------------------------------
+ accel/hvf/hvf-stub.c     |  3 ++
+ target/arm/cpu.c         | 47 +---------------------
+ target/arm/cpu32-stubs.c | 24 +++++++++++
+ target/arm/hyp_gdbstub.c |  6 +--
+ target/arm/kvm-stub.c    | 87 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/kvm.c         | 29 ++++++++++++++
+ accel/hvf/meson.build    |  1 +
+ target/arm/meson.build   | 15 +++++--
+ 12 files changed, 237 insertions(+), 157 deletions(-)
+ create mode 100644 accel/hvf/hvf-stub.c
+ create mode 100644 target/arm/cpu32-stubs.c
+
+-- 
+2.47.2

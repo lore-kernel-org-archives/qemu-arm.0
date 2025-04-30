@@ -1,218 +1,144 @@
-Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp882362njm;
-        Wed, 30 Apr 2025 04:51:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWnswUmzInGSmDoP8QtGujQBLCCuFkc3uXWyj5acwr1/GqC2IkZ3GhQb/yAcxLxp1VAhT9QEV3d6Hl9cg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF4h1IdoDoNADl0u2BVUuJgLqPpA3jV5e82dt/D61UmS+1Dd7Rf6PCbcGkEssBjH554b2+V
-X-Received: by 2002:a05:6214:2486:b0:6f4:c21b:cd9d with SMTP id 6a1803df08f44-6f4fcf91d32mr39722416d6.29.1746013872151;
-        Wed, 30 Apr 2025 04:51:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746013872; cv=none;
+Received: by 2002:a17:504:8616:b0:1be9:327d:8ee3 with SMTP id o22csp957592njm;
+        Wed, 30 Apr 2025 06:48:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRs9Y5WCn8FazNYmnT2tddEIWfDYmSej6NfPQkgT3te049uPUDw2cIuvXSPCTzWX+WxxkCZVZNjgjjeA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGY/6sQ5e1peiTJmyRPJCqlPguZTMdcni2+ga8uHk20WJLUYFv8cAQNqP7S+lEydvhtW0Tc
+X-Received: by 2002:a05:620a:2545:b0:7c5:53ab:a722 with SMTP id af79cd13be357-7cac7e013b1mr381144285a.5.1746020916821;
+        Wed, 30 Apr 2025 06:48:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746020916; cv=none;
         d=google.com; s=arc-20240605;
-        b=GH+KwFq/dLsnRBKb+p9PXr0yiVZEAZYTeFLCXZ5x0n8YfP9YEIO6tUAb6joxNV/YaS
-         pJQ83+HcoC7mrcGAYgfB/nlZob4hKxmN1Z3LZjj/7Bs+7IZ653Ujl+S/WkZmPVD2/e/9
-         r4L/qrY/zg76NEhZ1uSGCfXewOiteIRzwey5wYzRSSSUgRWCii+NRsgesMJsjclPL2i5
-         E2mBxSZaeZoy8myk21y0sqLUmej8QoX0YoXDmS+41Gwp3oSJmo5OH+6B/jTyqS4+8+8y
-         Vge1DdOewLbiPmy2VjRVNj0o8MIk3aUGW9YcVVfTkhwCf7QAwR9TcIjwBlZKhMFm6dG3
-         ThbA==
+        b=O7JVmvN6zDyM3ZmBdoMFYslJQUpI8Vbo9HwUjHlrNz9TX1UPciGMkXJ7hOjcNdb/mo
+         5tkWwujUX9Jj482KxSmCFbPQNLd1MIm4Hwt+aLN22hq9R0xEZQ+AuZ4xTzSfShTGPCSf
+         Khx7ZjxAFWdllNTRihF4p6tclhs8vMWEwXQKO6PcI74tI0ubWDpSvu0RUJckHDUaAo1W
+         onroVQD237Vh1RL+0xv0WhLDjzPEKoflqrSt8gQBffTdKYNKv1LMizi3gwzSxmxn2RUg
+         hhKdr2gbZuftXIuhSwWKvTKPSwxfQGVINennD1gdpX9cNjDBxPNj6soOaqHDmU1+oOfZ
+         2EuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=LaUZvK4sbkaRRQAeuJNgA0NDxNzqk3v/9qLcfpkctN4=;
-        fh=R0c0yB/lExKARN8+ZHY9nltsW9/furMBdAT2nVS52P0=;
-        b=ZYsDjxFBK1Oljn9uDJqMDLTm7BWSGFWkDoX0FGU66Go36qyLVKvmeRc4i/K+AfdtIT
-         BItfY2yy2tsOStkWMgUYsA+poccAYsCpN/2B9Fk82DgL1W6Q+B/g2VONL48OSS04a9fB
-         eJDe0efhK7dkJhjUVRBBBbpJMW7/oQnosZ3eaJ/Fva46kHuNikg5WYk2WbQkwWS7/92y
-         /cCkYBYpVw5n2a4UIDgB5smE5lOKaRJ9zBnDXswwUX7LEjVva1l+6JUQCG/Fmo+njet/
-         G6zOqiv4H6g1girSwkSfWJH9sb8UUXHKdCNP0qfUltZtoQSXObLkKPKUw3rxBNlLM9Nb
-         BNgw==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=oLVOo1RS7FiUiZjstQUcuIC9vXhBzHVmV4xEjiYp0vQ=;
+        fh=0U8LTlSH/uwceEZmrxihEpL94sypADyLZ9l1MmaQxsw=;
+        b=ll0fowg99x3jFIJkW06NZ5ms4EufoP/G6BCd0T0PpMKmsF+E+1mn9N5YX8LBUMEFtb
+         fYayJHYajOD3uop+cu64fetZNkdIcEv8n/UrLhReFBliAg3DCE8qWjeSdSLDV/BrqmNs
+         XH6lAo3EFUdTJFug/2AIjNkxtcE5VsII9NNRBoL9+KxGXaJZRMdTkuLJiRfILNhqDIuA
+         ZWI7quezSDUMcNXKU+TIL8gVPt6hDQ8cUqZxsh/bRsa+mFNZtNwXwf/phKQr9eWJp3dj
+         PMw9Ixff1ybwK1huJOwX2MtoZSYkkHhy/rrH0XixxElnBzumjv6NztVk7kjS/4lgUJft
+         7ckQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f4fe6ab195si14791506d6.36.2025.04.30.04.51.12
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wv5hgiuA;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7c958c9f0f0si1481236085a.26.2025.04.30.06.48.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Apr 2025 04:51:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Apr 2025 06:48:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uA5xl-0007vm-Q3; Wed, 30 Apr 2025 07:50:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=tzqG=XQ=kaod.org=clg@ozlabs.org>)
- id 1uA5xj-0007v7-GA; Wed, 30 Apr 2025 07:50:51 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=tzqG=XQ=kaod.org=clg@ozlabs.org>)
- id 1uA5xg-0004RY-CY; Wed, 30 Apr 2025 07:50:51 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Znb9F04Wpz4x8W;
- Wed, 30 Apr 2025 21:50:41 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Znb9943t2z4wcd;
- Wed, 30 Apr 2025 21:50:33 +1000 (AEST)
-Message-ID: <75f0e64c-fe23-4216-8139-78041d5e3e60@kaod.org>
-Date: Wed, 30 Apr 2025 13:50:30 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wv5hgiuA;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1746020916;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oLVOo1RS7FiUiZjstQUcuIC9vXhBzHVmV4xEjiYp0vQ=;
+	b=Wv5hgiuAutQveD73855oWmIn59oe/yFKj6m/xaJfn+gB9Wd4egFgwgBXaeD//C+UW3oay9
+	BSswPCkYg87thHylmFDjuPrtDR6CPw+53JXYMUxdoEzSUIspXcKezPf/uuBuzwn2KO04E9
+	EDS8mFlAEAO1HzkTPifBK9BX06hUIQA=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-9t1_IlpnMES5Gy2AHNDGcA-1; Wed,
+ 30 Apr 2025 09:48:32 -0400
+X-MC-Unique: 9t1_IlpnMES5Gy2AHNDGcA-1
+X-Mimecast-MFC-AGG-ID: 9t1_IlpnMES5Gy2AHNDGcA_1746020910
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0574B1800446;
+	Wed, 30 Apr 2025 13:48:29 +0000 (UTC)
+Received: from localhost (unknown [10.67.24.156])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 100E919560A3;
+	Wed, 30 Apr 2025 13:48:25 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Sebastian Ott <sebott@redhat.com>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 05/10] arm/cpu: accessors for writable id registers
+In-Reply-To: <bebefcad-d9db-a2b7-ab69-8eed34b9e63d@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <20250414163849.321857-6-cohuck@redhat.com>
+ <bebefcad-d9db-a2b7-ab69-8eed34b9e63d@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Wed, 30 Apr 2025 15:48:19 +0200
+Message-ID: <877c31rc9o.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into AST10x0
- and AST2600 SoCs
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250423025651.189702-1-kane_chen@aspeedtech.com>
- <20250423025651.189702-4-kane_chen@aspeedtech.com>
- <e3d35357-de8c-44da-b54e-7ec2761f513b@kaod.org>
- <SI6PR06MB76317C8FAC3EBF18AAF632ECF7812@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <2a85d0c5-0606-411d-b8c5-4b8806182384@kaod.org>
- <SI6PR06MB76310DFCE06AC5FB55CD3AE6F7802@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <683e0219-ad4f-40cc-b541-c533487ce8dd@kaod.org>
- <SI6PR06MB7631CA6AA68535099796E989F7832@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI6PR06MB7631CA6AA68535099796E989F7832@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=tzqG=XQ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xsxeb1cmF4Y5
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: 5vjuVUqyqUbg
 
-On 4/30/25 12:30, Kane Chen wrote:
-> Hi Cédric,
-> 
-> Currently, the OTP memory is not supported, but the guest firmware
-> still attempts to access it, even though no functionality is
-> available.
-> 
-> To handle this case, I will silently discard those operations when no
-> backend is present, so that the machine can still boot and run without
-> error.
-> 
-> If you would prefer to have a message logged, please let me know.
+On Tue, Apr 29 2025, Sebastian Ott <sebott@redhat.com> wrote:
 
-Please add trace events for this case. There are always useful.
-
-
-Thanks,
-
-C.
-
-
-
-
-> 
-> Best Regards,
-> Kane
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Tuesday, April 29, 2025 5:06 PM
->> To: Kane Chen <kane_chen@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
->> Lee <leetroy@gmail.com>; Jamin Lin <jamin_lin@aspeedtech.com>; Andrew
->> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>
->> Subject: Re: [PATCH v3 3/3] hw/arm: Integrate Aspeed OTP memory into
->> AST10x0 and AST2600 SoCs
+> On Mon, 14 Apr 2025, Cornelia Huck wrote:
+>> Also add conversion between the different indices.
 >>
->> Hello Kane,
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>> target/arm/cpu.h | 18 ++++++++++++++++++
+>> 1 file changed, 18 insertions(+)
 >>
->> [ ... ]
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index bbee7ff2414a..775a8aebc5d3 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -876,6 +876,13 @@ typedef struct IdRegMap {
+>>     uint64_t regs[NR_ID_REGS];
+>> } IdRegMap;
 >>
->>> The Secure Boot Controller (SBC) includes some components like OTP
->>> memory, crypto engine, boot controller, and so on. All components
->>> within the SBC are fixed and cannot be changed. If we allow an otpmem
->>> machine option, it may imply that different types or sizes of OTP
->>> memory models are supported, such as:
->>>
->>> * Different size: -M ast2600-evb,otpmem=otpmem-64k-drive
->>> * Different model: -M ast2600-evb,otpmem=flash-drive
+>> +#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
+>> +        ({                                                              \
+>> +                __u64 __op1 = (op1) & 3;                                \
+>> +                __op1 -= (__op1 == 3);                                  \
+>> +                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
+>> +        })
+>> +
+>> /* REG is ID_XXX */
+>> #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
+>>     ({                                                                  \
+>> @@ -923,6 +930,17 @@ typedef struct IdRegMap {
+>>         i_->idregs[REG ## _EL1_IDX];                                    \
+>>     })
 >>
->> The optmem model should check the size and fail to realize in that case. This
->> would stop the machine before reset. This is a common pattern in QEMU. See
->> m25p80_realize().
->>
->> Also, I think we would like the machine to start even if there is no block
->> backend. Please check how m25p80 models that behavior.
->>
->> Thanks,
->>
->> C.
-> 
+>> +#define GET_IDREG_WRITABLE(MAP, REG)                                  \
+>> +    ({                                                                \
+>> +    const IdRegMap *m_ = (MAP);                                       \
+>> +    int index = ARM_FEATURE_ID_RANGE_IDX((sysreg >> 14) & 0x0000c000, \
+>> +                                         (sysreg >> 11) & 0x00003800, \
+>> +                                         (sysreg >> 7) & 0x00000780,  \
+>> +                                         (sysreg >> 3) & 0x00000078,  \
+>> +                                         sysreg & 0x00000007);        \
+>> +    m_->regs[index];                                                  \
+>> +    })
+>> +
+>
+> s/sysreg/REG/
+>
+> Also GET_IDREG_WRITABLE doesn't seem to be used in this series.
 
+Hm, and it wouldn't have worked if we did use it... probably an artifact
+left over from earlier refactorings, I think we can get rid of it.

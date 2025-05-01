@@ -1,334 +1,116 @@
-Received: by 2002:a17:504:17c4:b0:1be9:327d:8ee3 with SMTP id o4csp6003626njd;
-        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXbO7OVSQ4CJlntZ69MzVmm/toV239rendUl7aBYhK0cClpe8Pd2/WjB8zKeLJzdU1rb92x7Ov+hL47Yw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH84pTf/cNpS3bafRNC7uL0HCbfx1kGXDSx51O1ofosxoRRjdVfBTCRjahi4p396HUAfIlO
-X-Received: by 2002:a17:90b:2e52:b0:2ff:7b28:a519 with SMTP id 98e67ed59e1d1-309f7e8f6c5mr17877048a91.30.1745850095528;
-        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1745850095; cv=pass;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp262948njj;
+        Thu, 1 May 2025 08:03:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVIecv9rjQzzmt5nUr7AVPX+MdgEcUYPKK0ZedqhSUzNUHhRVR/65VyBKXo7mEXzPrK5s66rM8wc25j2Q==@linaro.org
+X-Received: by 2002:a05:6a21:b8a:b0:1f3:41d5:65f6 with SMTP id adf61e73a8af0-20ba8789707mr6506787637.32.1746111780430;
+        Thu, 01 May 2025 08:03:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746111780; cv=none;
         d=google.com; s=arc-20240605;
-        b=aGcaGzdIlVpIwVRGVq19i5nl31SW0MdC10ez11fStvWxA/253ZfMuQn/vH3z2u/ylK
-         bjVgeYMHC6ImJAwwSXDUEiZcJLMgCRfCBCn3LRuouZKy6tYsLI4x2KttYPlCfEbpjf7u
-         sioKFISqUxmeTaWLbse56DJ0Ouhw8vSV8PJBLBzM3mMhcj9frlCK3K6c9fOhwTzogYnT
-         i1T++rKorW+SEyRDkR3Krw6IZdH1C4kD6bspIbWuid9O5zQOnw3hnFI3r23AY/Y82CMy
-         53vAO/kLXiiQ7uYa9URueXyqiMyC0FClk8K+yX+jv+e0sfRhYdTNfOlMa3jmTp664svX
-         4kUA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=y97Ix996AwPYhVkL41QI3FzTyNm4keggzI/0RuanVIE=;
-        fh=G3Y2+hewu9CZp4IiK64S6SRatEfgz8riP1xw3aVJTqM=;
-        b=PRHLQdYck9J3x+d12dhwtZvZwfV7HgA6zcjH0UDaMSyZLH7Meztdy17X9VmeWUmXj6
-         fu30nZ0IHtY7A2eZcszB8MBvyQKpFssXHVWOE3nft0sswsEtDFFW2knBD1AtRReLAy2M
-         mLWWGJgUJnDmPGtB2pSbzibcoEEzhdUv2q0JFPu+gftw1Bz6PcfvVbxBmEqYjrx2NOla
-         4VVQKEAuzP8Px4JN6xPE9Qqbk5NnXizjv2eRGJcjUURYbdi+89PCsxCI6DgkDmoQnKcK
-         zec2K7XAlPvO6Bq8L6UJfDTgEXYcQURyF6YHgKIqMJZs1bTJ3EVSTs0AeQJmPUZZjLif
-         BwIg==;
+        b=SodShX48uMJKl2jHDq4ugyt54fug1JUn9QaqZqBSt93lJ8uYEuhGK/DXvUx4bfNE0M
+         L80jgycifAPhtM4WhnMjKuIS3Bh0uXtztHrVwuyxDdjB6xivXOsFJ/FwWTbzzBE49UDq
+         kTSXup6m0gVUdytWQKIn9JLBfE8/kwXLHZDN2FHDF60lBhZsJfQi8zDWiOWn/XeHPXL0
+         mHkfgoHKqjXYJ80MLlB//hNrD4vOxz2LCeanjCPr5NcMotuwFAjpQsWV04psyuClwDG4
+         QsjK17sM8xLvYjVM7+zxS2tnawbAyT5O5rZtrcmXurfQ6efDWWbJW5lODlAJ+15rkPDU
+         t89g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=wkq/VdLFYJfyJvgcdgfMRsRb6Gxm8UUMs/yuzG02xU4=;
+        fh=y70W4KxqAoLIJSAjEg55mOZyDsmNdqkgZra6bUofRNs=;
+        b=i0KcskOu5/vimtAPYMrBXc6xPnDOee5eHuJXzLfXpa5b8WclVEMh1aDCQFxXV6zFtO
+         2zlLTe7rNeXAsN7OXO546yKjZpFLVfE/7Gxt+vtfIrWndvjks3ixro8LOtI0rzc0cmbl
+         f9J9wuT1wk+/Nzft4ouEsKeDh1dTi5j3cNOneEhLrBVgvVtWHuv3Ab5GqbyUO84s2OmZ
+         B9Heugof+/R42N+8c0CF4N1IjpJKUeO11b4E1G2r3Po+MZ0SjOJIK49YCuPdaHDho1Dm
+         ynJFbT+LnALE4z/wB3VOrXd4D+RuFFLCNhK1AE8lATlCkSvoVoDqihkY3oMCLlm/fM4F
+         M6JA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LAayAwQ1;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-309ef131ef2si12669929a91.150.2025.04.28.07.21.35
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FrMgdVT5;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7404ef17ccdsor599546b3a.4.2025.05.01.08.03.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 07:21:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (Google Transport Security);
+        Thu, 01 May 2025 08:03:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LAayAwQ1;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-44577-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 60A723AD99F
-	for <alex.bennee@linaro.org>; Mon, 28 Apr 2025 14:21:18 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 47E3126982C;
-	Mon, 28 Apr 2025 14:21:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="LAayAwQ1"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02CD61B86EF
-	for <kvm@vger.kernel.org>; Mon, 28 Apr 2025 14:21:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1745850090; cv=none; b=WLjvV+clXt9t1qOaT9gUXp4l3xRrw/M+2AVSsI/yGjRBT6vd/qeqfJ0vvYbkGuLbwd4YX6GZIcTSR+iNS/2JRYH9rQUBbqIeS+XCIyXgXNL2Z+FFj3zvTW8P9chKwEJiM/O9OOqZfyzcMWjtISHu2ETzFU0ZWzt9kjZeyGoOpik=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1745850090; c=relaxed/simple;
-	bh=M/8gKPrj9UzBo44bqxU2ZtRdrkTJFsFYsgFLwZFM444=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=kzC8uUxHCmm9wcz3uc5pp1FPFW2Bt1nBB6jM/PZhsDHnMxz1WMG0faq/IUbz4HV80ysuAXrPpTyCcO0cBAlzLfD31z74vzRwCtc4LJUaODHYUTd0XMQUpOHsnPVrwJMsYwYhdMX+NeYyTqiM4RZ4OMA5xojSYrXkTAZ2Ys9/xmQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=LAayAwQ1; arc=none smtp.client-ip=198.175.65.9
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1745850088; x=1777386088;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=M/8gKPrj9UzBo44bqxU2ZtRdrkTJFsFYsgFLwZFM444=;
-  b=LAayAwQ1vywZtu8wrmcHAhYJLvNO+6ACL6VXAPixa5nJmCO3lIg65mON
-   7eDabxWS/AqEqGXCXjVbkvsDtUqmfTmVwVFNfu3XjYiVtImqGoOTzMgj7
-   7BVkw6bikycWhZC6gss6N+CLYP3/odJ/wi1Io0nOeEuVK/DEkKWfN1Fn9
-   wDKiA80nIuc4h1Slwf++kJ65ZxhbHph94IQ0SI5caY0wkV4qItL5Pp7Hk
-   6/5L/lOPcB2EJ1/9LvPtUJoGZwyIVMR4uZr9kivwGDdgrO31JaD5fBzwb
-   LUC82f1OV/9qdpKgeYQtb0oZYf6eh4uU1QGNoRUPxGRJncGKKVS9cfR7D
-   w==;
-X-CSE-ConnectionGUID: k2+LM5PtToCqi8SyaF46tw==
-X-CSE-MsgGUID: uVmOF2YVTT+6Pkt3/1aafg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11416"; a="69942576"
-X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
-   d="scan'208";a="69942576"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2025 07:21:27 -0700
-X-CSE-ConnectionGUID: aui4+n6AQBygx0YSOr8INg==
-X-CSE-MsgGUID: zDo3OoVIT7+i4mGbisKf6g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
-   d="scan'208";a="137584568"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by fmviesa003.fm.intel.com with ESMTP; 28 Apr 2025 07:21:22 -0700
-Date: Mon, 28 Apr 2025 22:42:19 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
-	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
-	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	pierrick.bouvier@linaro.org
-Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
- in KVM PMU filter
-Message-ID: <aA+Ty2IqnE4zQhJv@intel.com>
-References: <20250409082649.14733-1-zhao1.liu@intel.com>
- <20250409082649.14733-4-zhao1.liu@intel.com>
- <87frhwfuv1.fsf@pond.sub.org>
- <aA3TeaYG9mNMdEiW@intel.com>
- <87h6283g9g.fsf@pond.sub.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=FrMgdVT5;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1746111780; x=1746716580; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wkq/VdLFYJfyJvgcdgfMRsRb6Gxm8UUMs/yuzG02xU4=;
+        b=FrMgdVT5hemZffXkpmvnpDXc+xxvlwCvTCgQR1drj1PyCH0SSPIdS75btFWWKLMjQC
+         tguBUsNsrvgjVcedPqdjLy/vqYlrixJQLHyAcKhiJO1/w1/PAnvcvjrJqZJ9lOkqyFKp
+         xjIexNVvTprqEXgUbqxAGSDOBbTPAw8D96XdIxQFoUi8Cjl0bFNwc3NAsCo+MIBS/R+d
+         AptJYmJjR673cr6gyWkMB315xoKEYVsBz8A+/skpwo+SQklY1SbmJpPM0HyCRr0s6Ntq
+         6RmbceZ92rrDgYgcf/Tlj3UY9t3FO+lYaW3Shyj/RgzhHAClV2zk6CGjljEW7cnfPYry
+         U5eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746111780; x=1746716580;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wkq/VdLFYJfyJvgcdgfMRsRb6Gxm8UUMs/yuzG02xU4=;
+        b=rwcS6Pb4Lzguf+4dKYW4eSL36wLWZ/dgqUJgGAJnnjBoNwD8PStJvITYvMTO/Jypec
+         dlASQYsSZQ6cSd/hl1+/sfnVjWaF+LTVa6GkBu0sTVzv24xUBt/ldFEyJawby7f/Z38X
+         A8hRv83CQ/FQSSoPNO1qsPK5HDQGQuOEoAJYvPPV03TpR/H5J3gxhNkeF/31rW0j+r3n
+         VS5FdNv6gHF7CX9WHmFxYMotvHy4evEeT9WcOM9doADdWKYDkpEgPIimxGpdOhd2jhVi
+         DOnVbyHWJEQevQQZTlawwO3zXrolS6SFRpeIDchP5+A5oL4mZDp/lFX00/dP7nBjKSva
+         vDlA==
+X-Forwarded-Encrypted: i=1; AJvYcCUkXmE9D1WBeuFGLDDyTbXY6LApznQ5r6dtmZKej7hjbxfyrPKnvp6lFEt8v5wiK9R+X86Ne6Ky0gnS7A==@linaro.org
+X-Gm-Message-State: AOJu0Yy6x2jhEFvzSeLxFWKawoDwl/Av+wHgfPT6lQDSAT7Fk1LlIhJw
+	+ENCLb+F4PhbN9ddg8c6/mQNPqTS9dQ3auWPK1n8Yl849o7WbNNND/6s9sN17JhOCA==
+X-Gm-Gg: ASbGncs+IDD09SXPUS5RoAoV8oMleOv0TZX4Sv3Ejj4pQlR/c3ye8BFCTVtqp4nTIpC
+	AX7iq76+weD5GsKpRsBcxObbrMsk/EqLrR+Gv47MdHjx0xo1kRONMCFU5SoIEV7fEtrtfXaeEjY
+	wWZN0939dPJuv1um294/RqupxV+yHdY37HyWpIBAMnsWt/ijuBbOhTKKnJv4Lj+yDM3+8gGpzOI
+	MiIf8BZyVXc1R3XbX+70w5KpMOQojEXB5B9UevIC3YW4JT/rLDqPHMByO1D0GUiwBP2GDi4boVL
+	B+/skWy4S3xFthsgTwwDY6IiIiKWABQ3H6okC1wMrBh8xEg8R/JO7Piqn2XQyfg9W+mCmY+YXXa
+	hgMi0Wgc=
+X-Google-Smtp-Source: AGHT+IFpQDWzZkr7SDEpQqkD/ISUrJM6vDV/PLa2LIk+1brnq5oSIluMSLUP33z0eD1oTrBqKei8Ew==
+X-Received: by 2002:a05:6a00:1311:b0:740:3830:4119 with SMTP id d2e1a72fcca58-7404790521fmr4868652b3a.18.1746111779927;
+        Thu, 01 May 2025 08:02:59 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (71-212-47-143.tukw.qwest.net. [71.212.47.143])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7404eeb1935sm938020b3a.18.2025.05.01.08.02.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 May 2025 08:02:59 -0700 (PDT)
+Message-ID: <8fdaed14-d2a1-4939-9b9b-5cf388e20ea8@linaro.org>
+Date: Thu, 1 May 2025 08:02:57 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87h6283g9g.fsf@pond.sub.org>
-X-TUID: Zrh8sMZzBnJ9
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 13/33] target/arm/helper: use i64 for
+ exception_pc_alignment
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ alex.bennee@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, anjo@rev.ng,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ kvm@vger.kernel.org
+References: <20250501062344.2526061-1-pierrick.bouvier@linaro.org>
+ <20250501062344.2526061-14-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250501062344.2526061-14-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: QJVOwJDSj89v
 
-On Mon, Apr 28, 2025 at 09:19:07AM +0200, Markus Armbruster wrote:
-> Date: Mon, 28 Apr 2025 09:19:07 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 3/5] i386/kvm: Support event with select & umask format
->  in KVM PMU filter
-> 
-> Zhao Liu <zhao1.liu@intel.com> writes:
-> 
-> > Hi Markus,
-> >
-> >> > +        case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
-> >> > +            if (event->u.x86_select_umask.select > UINT12_MAX) {
-> >> > +                error_setg(errp,
-> >> > +                           "Parameter 'select' out of range (%d).",
-> >> > +                           UINT12_MAX);
-> >> > +                goto fail;
-> >> > +            }
-> >> > +
-> >> > +            /* No need to check the range of umask since it's uint8_t. */
-> >> > +            break;
-> >> > +        }
-> >> 
-> >> As we'll see below, the new x86-specific format is defined in the QAPI
-> >> schema regardless of target.
-> >> 
-> >> It is accepted here also regardless of target.  Doesn't matter much
-> >> right now, as the object is effectively useless for targets other than
-> >> x86, but I understand that will change.
-> >> 
-> >> Should we reject it unless the target is x86?
-> >
-> > I previously supposed that different architectures should implement
-> > their own kvm_arch_check_pmu_filter(), which is the `check` hook of
-> > object_class_property_add_link():
-> >
-> >     object_class_property_add_link(oc, "pmu-filter",
-> >                                    TYPE_KVM_PMU_FILTER,
-> >                                    offsetof(KVMState, pmu_filter),
-> >                                    kvm_arch_check_pmu_filter,
-> >                                    OBJ_PROP_LINK_STRONG);
-> 
-> This way, the checking happens only when you actually connect the
-> kvm-pmu-filter object to the accelerator.
-> 
-> Have you considered checking in the kvm-pmu-filter object's complete()
-> method?  Simple example of how to do that: qauthz_simple_complete() in
-> authz/simple.c.
+On 4/30/25 23:23, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
+> ---
+>   target/arm/helper.h            | 2 +-
+>   target/arm/tcg/tlb_helper.c    | 2 +-
+>   target/arm/tcg/translate-a64.c | 2 +-
+>   target/arm/tcg/translate.c     | 2 +-
+>   4 files changed, 4 insertions(+), 4 deletions(-)
 
-Thank you, I hadn't noticed it before. Now I study it carefully, and yes,
-this is a better way than `check` hook. Though in the following we are
-talking about other ways to handle target-specific check, this helper
-may be still useful as I proposed to help check accel-specific cases in
-the reply to Philip [*].
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-[*]: https://lore.kernel.org/qemu-devel/aA3cHIcKmt3vdkVk@intel.com/
-
-> > For x86, I implemented kvm_arch_check_pmu_filter() in target/i386/kvm/
-> > kvm.c and checked the supported formats (I also supposed arch-specific
-> > PMU filter could reject the unsupported format in
-> > kvm_arch_check_pmu_filter().)
-> >
-> > But I think your idea is better, i.e., rejecting unsupported format
-> > early in pmu-filter parsing.
-> >
-> > Well, IIUC, there is no way to specify in QAPI that certain enumerations
-> > are generic and certain enumerations are arch-specific,
-> 
-> Here's how to make enum values conditional:
-> 
->     { 'enum': 'KvmPmuEventFormat',
->       'data': ['raw',
->                { 'name': 'x86-select-umask', 'if': 'TARGET_I386' }
->                { 'name': 'x86-masked-entry', 'if': 'TARGET_I386' } ] }
-
-What I'm a bit hesitant about is that, if different arches add similar
-"conditional" enumerations later, it could cause the enumeration values
-to change under different compilation conditions (correct? :-)). Although
-it might not break anything, since we don't rely on the specific numeric
-values.
-
-> However, TARGET_I386 is usable only in target-specific code.  This has
-> two consequences here:
-> 
-> 1. It won't compile, since QAPI schema module kvm.json is
->    target-independent.  We'd have to put it into a target-specific
->    module kvm-target.json.
-> 
-> 2. Target-specific QAPI schema mdoules are problematic for the single
->    binary / heterogeneous machine work.  We are discussing how to best
->    handle that.  Unclear whether adding more target-specific QAPI
->    definitions are a good idea.
-
-And per yours feedback, CONFIG_KVM can also only be used in target-specific
-code. Moreover, especially if we need to further consider multiple
-accelerators, such as the HVF need mentioned by Philip, it seems that
-we can't avoid target-specific issues here!
-
-> >                                                         so rejecting
-> > unsupported format can only happen in parsing code. For example, wrap
-> > the above code in "#if defined(TARGET_I386)":
-> >
-> >     for (node = head; node; node = node->next) {
-> >         KvmPmuFilterEvent *event = node->value;
-> >
-> >         switch (event->format) {
-> >         case KVM_PMU_EVENT_FORMAT_RAW:
-> >             break;
-> > #if defined(TARGET_I386)
-> >         case KVM_PMU_EVENT_FORMAT_X86_SELECT_UMASK: {
-> >             ...
-> >             break;
-> >         }
-> >         case KVM_PMU_EVENT_FORMAT_X86_MASKED_ENTRY: {
-> >             ...
-> > 	    break;
-> >         }
-> > #endif
-> >         default:
-> > 	    error_setg(errp,
-> >                        "Unsupported format.");
-> >             goto fail;
-> >         }
-> >
-> >         ...
-> >     }
-> >
-> > EMM, do you like this idea?
-> 
-> This is kvm_pmu_filter_set_event(), I presume.
->
-> The #if is necessary when you make the enum values conditional.  The
-> default: code is unreachable then, so it should stay
-> g_assert_not_reached().
->
-> The #if is fine even when you don't make the enum values conditional.
-> The default: code is reachable then, unless you reject the unwanted
-> enums earlier some other way.
-
-Thanks for your analysis, it's very accurate! I personally prefer the
-2nd way.
-
-> >> If not, I feel the behavior should be noted in the commit message.
-> >
-> > With the above change, I think it's possible to reject x86-specific
-> > format on non-x86 arch. And I can also note this behavior in commit
-> > message.
-> >
-> >> >          default:
-> >> >              g_assert_not_reached();
-> >> >          }
-> >> > @@ -67,6 +82,9 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
-> >> >      filter->events = head;
-> >> >      qapi_free_KvmPmuFilterEventList(old_head);
-> >> >      return;
-> >> > +
-> >> > +fail:
-> >> > +    qapi_free_KvmPmuFilterEventList(head);
-> >> >  }
-> >> >  
-> >> >  static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
-> >
-> > ...
-> >
-> >> >  ##
-> >> >  # @KvmPmuFilterEvent:
-> >> >  #
-> >> > @@ -66,7 +82,8 @@
-> >> >  { 'union': 'KvmPmuFilterEvent',
-> >> >    'base': { 'format': 'KvmPmuEventFormat' },
-> >> >    'discriminator': 'format',
-> >> > -  'data': { 'raw': 'KvmPmuRawEvent' } }
-> >> > +  'data': { 'raw': 'KvmPmuRawEvent',
-> >> > +            'x86-select-umask': 'KvmPmuX86SelectUmaskEvent' } }
-> >> >  
-> >> >  ##
-> >> >  # @KvmPmuFilterProperties:
-> >> 
-> >> Documentation could perhaps be more explicit about this making sense
-> >> only for x86.
-> >
-> > What about the following doc?
-> >
-> > ##
-> > # @KvmPmuFilterProperties:
-> > #
-> > # Properties of KVM PMU Filter (only for x86).
-> 
-> Hmm.  Branch 'raw' make sense regardless of target, doesn't it?  It's
-> actually usable only for i86 so far, because this series implements
-> accelerator property "pmu-filter" only for i386.
-
-The advantage of this single note is someone can easily mention other
-arch in doc :-)
-
-> Let's not worry about this until we decided whether to use QAPI
-> conditionals or not.
-
-OK, this is not a big deal (comparing with other issues).
-
-Thanks,
-Zhao
-
+r~

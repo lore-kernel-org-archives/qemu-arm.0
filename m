@@ -1,56 +1,56 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp748947njj;
-        Fri, 2 May 2025 03:36:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWR+cKitHYiB/NPFD1phvG+dsCzKHw9CCaaxU0ZzwSUFdzdNolaOgcZACv8JI3dnRcigFkGdKSLHzJ9mQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFK8UiC1Kd+4mHQjjkgdpl6nqtenGg7b4qwX+0juwpkPDHdLmj8FV5FhS+ms4RRfBkKWuBT
-X-Received: by 2002:a05:6000:2c8:b0:3a0:7f90:2e2e with SMTP id ffacd0b85a97d-3a099ad6379mr1638927f8f.24.1746182210387;
-        Fri, 02 May 2025 03:36:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746182210; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp748976njj;
+        Fri, 2 May 2025 03:36:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWTDmanYK3bwCoBs95fqEGPvEkizgPktAwy08GUPJWxcKCE3TJTDHCtqxVCrEvOR9MpTNWQo62Ay04fMA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGWeVWxbFdAi80TOHvNY2kycgJn7B9ILB0v079zk/Q9aVSvbpV31p3VHeqpunsEYQZljzgf
+X-Received: by 2002:a05:600c:1e87:b0:43d:fa:1f9a with SMTP id 5b1f17b1804b1-441bbf3dba7mr21690645e9.30.1746182212997;
+        Fri, 02 May 2025 03:36:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746182212; cv=none;
         d=google.com; s=arc-20240605;
-        b=Calo42dAcqdk3n27Xw/bfwERl2czsIPAjARklSvBMuYo00OmzuT1unTOrJxNGuFcJj
-         QkBn5vH3Jye2l8J9RvVyE1PyRZkmpNlDyOmnyR5C+VLCPvwfnGOCDLRVM913dRWhxvsF
-         TdWjDyyOMa7UDpKN0QIf6Pwgf4tNXTZ2Ja0lECHdBBRASWoIjXzM6FsZRBQsvz3rv3xj
-         qMH5Lf0AhbHB4qyk3TyZHaTJDJdcsBm+aS0/qTqRgjI0snbG/FZBubWfd16rvm+voYTB
-         x1zoQ+eMJzMj4Z7KFwFUmk/vhCkRvnj2qAeFBweImSfpxMveqzjYuFvfDep5wmo09SCL
-         X8pg==
+        b=MuHRoUb/5+J2fMSKteM4tNQVFrC0svz3Qv/Id5akUtrqLpqP0xOlDIFgMfi1igAT0l
+         TOWXgah32v20NJssV530nML+bK6oiS4OPZrTluO7viyuFkI8gqNFnsfd2eid9m95yLIC
+         9l6kr2zGdAPMGy8raVhBmJukQF/C026+KcNYG4ZrOEQBM3rtub/K3a2gwNzswCHobyOf
+         4X9xNyBGMYmRPn0MHshmohCqgSupjZA/lBfDgneEZtnVp/T5PJ2zqb2Kxfu9BgsTRqYy
+         9sFXkwbWuxnQ8No6YEutlSJbJaBs9LTaikav6/TYonSKHRaNSHi7P77KBFLtcL1gufwF
+         mTdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=62QUnEJZFr7Ms2opGkRDXhSQq44OpIwfU5EH2EBDCkc=;
+        bh=miZRkAUltxshU9EtTISkmq/EqYG8I0oWHpv1dZ4M5zo=;
         fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
-        b=at4zUpk79yWI05XkB45WiMrCdo0zBWruUP3oX+O05Vh+kMMM5OzhWZgr0uOxaLl/fU
-         KOBktxOP8b37KpRqJd8hGxPs54d6RBCsPUtyHyp7GsSuSHDzYe0le5Yry6WyJWMFtPR2
-         UbuQrEqqKUwn5Qq04jw5/Gj9BBOVl1uFcz3J062dhq/OKDvW/RbFibUsROGvY+zoD6hJ
-         sQJfWjytb0jiKCRfA4lkgi2Iug9w4EDKUfb1+JJrq3AF/wn5QTqwyDHH1Qm+kYyVCiY7
-         A7NG4uasE7aYyw0PTd2JB82aSG6sV6FxVFQYGBmBaHo/bUb/mVEY4ZF0VgUa/s/LMXUD
-         BVtw==;
+        b=LYu68jf1WVCc+SaKkFRmlPbdsXP+deZ3i5rlP8wAQCKfafZO6Q1W/9kJSzTno8Uuci
+         XNhfa4Cth7mmQGHaxgnT8pt0CV6HpT9OSDx2eGX2agabVtdtrHE8SVQX7UFrHuveJXQr
+         0WxRaLvW3bWpN0gITAm17J8trc+Z03wJW6AL76K0ASTI9z6NljWG3jaLtRCw+kbved4N
+         p8SeDwGKPX35sgKVoxVkw//WSP0SSw9H9A2w32AgBpR33xKJ6F+2sGyjII1HECA/Irbc
+         JDtENJ+1eKNd6Dd7WzLxkWo5kQoHAL4K1JCMyArUmUEu6VGbyYXZ0VEBnxMT6IaBOrwM
+         K5Wg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b16fe0si893238f8f.841.2025.05.02.03.36.50
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-441b2b2dfdasi43949425e9.154.2025.05.02.03.36.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 May 2025 03:36:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 May 2025 03:36:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uAnkw-00015V-K1; Fri, 02 May 2025 06:36:34 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uAnkl-0000SZ-DK; Fri, 02 May 2025 06:36:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uAnk6-0008N8-Ku; Fri, 02 May 2025 06:35:43 -0400
+ id 1uAnjw-0008Ac-MK; Fri, 02 May 2025 06:35:36 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uAnk4-0006n4-Qj; Fri, 02 May 2025 06:35:42 -0400
+ id 1uAnju-0005yi-Cy; Fri, 02 May 2025 06:35:32 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 2 May
@@ -65,9 +65,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
  <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v4 9/9] docs: Add support for ast2700fc machine
-Date: Fri, 2 May 2025 18:34:45 +0800
-Message-ID: <20250502103449.3091642-10-steven_lee@aspeedtech.com>
+Subject: [PATCH v4 7/9] hw/arm: Introduce ASPEED AST2700 A1 full core machine
+Date: Fri, 2 May 2025 18:34:43 +0800
+Message-ID: <20250502103449.3091642-8-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250502103449.3091642-1-steven_lee@aspeedtech.com>
 References: <20250502103449.3091642-1-steven_lee@aspeedtech.com>
@@ -83,132 +83,287 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
-From:  Steven Lee via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xZHSXvkLoP1Y
+From:  Steven Lee via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: taYH32XMG8kp
 
-- Updated Aspeed family boards list to include `ast2700fc`.
-- Added boot instructions for the `ast2700fc` machine.
-- Detailed the configuration and loading of firmware for the
-  Cortex-A35 and Cortex-M4 processors.
+- Added new machine type `ast2700fc` with full core support.
+- Defined `Ast2700FCState` structure for the new machine type.
+- Implemented initialization functions for CA35, SSP, and TSP components.
+- Updated `ast2700fc_types` to include the new machine type.
+- Set machine class properties for `ast2700fc`.
+
+Test Step:
+- Download ast2700-default-obmc.tar.gz from AspeedTech-BMC OpenBmc
+  release page.
+- Run the following QEMU command:
+
+  ```
+  IMGDIR=~/path/to/image
+  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+
+  ./qemu-system-aarch64 -machine ast2700fc \
+  -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
+  -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
+  -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+  -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
+  -device loader,cpu-num=0,addr=0x430000000 \
+  -device loader,cpu-num=1,addr=0x430000000 \
+  -device loader,cpu-num=2,addr=0x430000000 \
+  -device loader,cpu-num=3,addr=0x430000000 \
+  -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
+  -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
+  -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
+  -serial pty -serial pty -serial pty \
+  -snapshot \
+  -S -nographic
+  ```
+
+- After starting QEMU, serial devices will be redirected:
+
+  char device redirected to /dev/pts/51 (label serial0)
+  char device redirected to /dev/pts/52 (label serial1)
+  char device redirected to /dev/pts/53 (label serial2)
+
+- serial0 is the console for the four Cortex-A35 primary processors,
+  serial1 and serial2 are the consoles for the two Cortex-M4 coprocessors.
+
+- Connect to the consoles using a terminal emulator.
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: Id41312e9c7cf79bc55c6f24a87a7ad9993dc7261
+Change-Id: I32447b9372a78eb53a07135afef59c2a19202328
 ---
- docs/system/arm/aspeed.rst | 69 ++++++++++++++++++++++++++++++++++++--
- 1 file changed, 66 insertions(+), 3 deletions(-)
+ hw/arm/aspeed_ast27x0-fc.c | 192 +++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build         |   4 +-
+ 2 files changed, 195 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/aspeed_ast27x0-fc.c
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 014545f444..58a8020eec 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--==================================================================================================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700fc``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+=================================================================================================================================================================================================================================================================================================================================================================================================================================
- 
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -255,6 +255,7 @@ etc.
- AST2700 SoC based machines :
- 
- - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-+- ``ast2700fc``            Aspeed AST2700 Evaluation board (Cortex-A35 + Cortex-M4)
- 
- Supported devices
- -----------------
-@@ -285,7 +286,6 @@ Supported devices
- 
- Missing devices
- ---------------
-- * Coprocessor support
-  * PWM and Fan Controller
-  * Slave GPIO Controller
-  * Super I/O Controller
-@@ -353,6 +353,69 @@ specified path in the ${HOME} directory.
- 
-   -bios ${HOME}/ast27x0_bootrom.bin
- 
-+Booting the ast2700fc machine
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+new file mode 100644
+index 0000000000..125a3ade40
+--- /dev/null
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -0,0 +1,192 @@
++/*
++ * ASPEED SoC 2700 family
++ *
++ * Copyright (C) 2025 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
-+**ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
-+**ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
-+
-+Steps to boot the AST2700fc machine:
-+
-+1. Ensure you have the following AST2700A1 binaries available in a directory
-+
-+ * u-boot-nodtb.bin
-+ * u-boot.dtb
-+ * bl31.bin
-+ * optee/tee-raw.bin
-+ * image-bmc
-+ * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
-+ * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
-+
-+2. Execute the following command to start ``ast2700fc`` machine:
-+
-+.. code-block:: bash
-+
-+  IMGDIR=ast2700-default
-+  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-+
-+  $ qemu-system-aarch64 -M ast2700fc \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-+       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-+       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-+       -device loader,cpu-num=0,addr=0x430000000 \
-+       -device loader,cpu-num=1,addr=0x430000000 \
-+       -device loader,cpu-num=2,addr=0x430000000 \
-+       -device loader,cpu-num=3,addr=0x430000000 \
-+       -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-+       -device loader,file=${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=4 \
-+       -device loader,file=${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=5 \
-+       -serial pty -serial pty -serial pty \
-+       -snapshot \
-+       -S -nographic
-+
-+After launching QEMU, serial devices will be automatically redirected.
-+Example output:
-+
-+.. code-block:: bash
-+
-+   char device redirected to /dev/pts/55 (label serial0)
-+   char device redirected to /dev/pts/56 (label serial1)
-+   char device redirected to /dev/pts/57 (label serial2)
-+
-+- serial0: Console for the four Cortex-A35 primary processors.
-+- serial1 and serial2: Consoles for the two Cortex-M4 coprocessors.
-+
-+Use ``tio`` or another terminal emulator to connect to the consoles:
-+
-+.. code-block:: bash
-+
-+   $ tio /dev/pts/55
-+   $ tio /dev/pts/56
-+   $ tio /dev/pts/57
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "qapi/error.h"
++#include "system/block-backend.h"
++#include "system/system.h"
++#include "hw/arm/aspeed.h"
++#include "hw/boards.h"
++#include "hw/qdev-clock.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/loader.h"
++#include "hw/arm/boot.h"
++#include "hw/block/flash.h"
 +
 +
- Aspeed minibmc family boards (``ast1030-evb``)
- ==================================================================
- 
++#define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc")
++OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700A1FC);
++
++static struct arm_boot_info ast2700fc_board_info = {
++    .board_id = -1, /* device-tree-only board */
++};
++
++struct Ast2700FCState {
++    MachineState parent_obj;
++
++    MemoryRegion ca35_memory;
++    MemoryRegion ca35_dram;
++    MemoryRegion ssp_memory;
++    MemoryRegion tsp_memory;
++
++    Clock *ssp_sysclk;
++    Clock *tsp_sysclk;
++
++    Aspeed27x0SoCState ca35;
++    Aspeed27x0SSPSoCState ssp;
++    Aspeed27x0TSPSoCState tsp;
++
++    bool mmio_exec;
++};
++
++#define AST2700FC_BMC_RAM_SIZE (2 * GiB)
++#define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
++
++#define AST2700FC_HW_STRAP1 0x000000C0
++#define AST2700FC_HW_STRAP2 0x00000003
++#define AST2700FC_FMC_MODEL "w25q01jvq"
++#define AST2700FC_SPI_MODEL "w25q512jv"
++
++static void ast2700fc_ca35_init(MachineState *machine)
++{
++    Ast2700FCState *s = AST2700A1FC(machine);
++    AspeedSoCState *soc;
++    AspeedSoCClass *sc;
++
++    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
++    soc = ASPEED_SOC(&s->ca35);
++    sc = ASPEED_SOC_GET_CLASS(soc);
++
++    memory_region_init(&s->ca35_memory, OBJECT(&s->ca35), "ca35-memory",
++                       UINT64_MAX);
++
++    if (!memory_region_init_ram(&s->ca35_dram, OBJECT(&s->ca35), "ca35-dram",
++                                AST2700FC_BMC_RAM_SIZE, &error_abort)) {
++        return;
++    }
++    if (!object_property_set_link(OBJECT(&s->ca35), "memory",
++                                  OBJECT(&s->ca35_memory),
++                                  &error_abort)) {
++        return;
++    };
++    if (!object_property_set_link(OBJECT(&s->ca35), "dram",
++                                  OBJECT(&s->ca35_dram), &error_abort)) {
++        return;
++    }
++    if (!object_property_set_int(OBJECT(&s->ca35), "ram-size",
++                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
++        return;
++    }
++    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
++                                 AST2700FC_HW_STRAP1, &error_abort)) {
++        return;
++    }
++    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
++                                 AST2700FC_HW_STRAP2, &error_abort)) {
++        return;
++    }
++    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
++    if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
++        return;
++    }
++
++    /*
++     * AST2700 EVB has a LM75 temperature sensor on I2C bus 0 at address 0x4d.
++     */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "tmp105", 0x4d);
++
++    aspeed_board_init_flashes(&soc->fmc, AST2700FC_FMC_MODEL, 2, 0);
++    aspeed_board_init_flashes(&soc->spi[0], AST2700FC_SPI_MODEL, 1, 2);
++
++    ast2700fc_board_info.ram_size = machine->ram_size;
++    ast2700fc_board_info.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
++
++    arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
++}
++
++static void ast2700fc_ssp_init(MachineState *machine)
++{
++    AspeedSoCState *soc;
++    Ast2700FCState *s = AST2700A1FC(machine);
++    s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
++    clock_set_hz(s->ssp_sysclk, 200000000ULL);
++
++    object_initialize_child(OBJECT(s), "ssp", &s->ssp, TYPE_ASPEED27X0SSP_SOC);
++    memory_region_init(&s->ssp_memory, OBJECT(&s->ssp), "ssp-memory",
++                       UINT64_MAX);
++
++    qdev_connect_clock_in(DEVICE(&s->ssp), "sysclk", s->ssp_sysclk);
++    if (!object_property_set_link(OBJECT(&s->ssp), "memory",
++                                  OBJECT(&s->ssp_memory), &error_abort)) {
++        return;
++    }
++
++    soc = ASPEED_SOC(&s->ssp);
++    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART4, serial_hd(1));
++    if (!qdev_realize(DEVICE(&s->ssp), NULL, &error_abort)) {
++        return;
++    }
++}
++
++static void ast2700fc_tsp_init(MachineState *machine)
++{
++    AspeedSoCState *soc;
++    Ast2700FCState *s = AST2700A1FC(machine);
++    s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
++    clock_set_hz(s->tsp_sysclk, 200000000ULL);
++
++    object_initialize_child(OBJECT(s), "tsp", &s->tsp, TYPE_ASPEED27X0TSP_SOC);
++    memory_region_init(&s->tsp_memory, OBJECT(&s->tsp), "tsp-memory",
++                       UINT64_MAX);
++
++    qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
++    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
++                                  OBJECT(&s->tsp_memory), &error_abort)) {
++        return;
++    }
++
++    soc = ASPEED_SOC(&s->tsp);
++    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
++    if (!qdev_realize(DEVICE(&s->tsp), NULL, &error_abort)) {
++        return;
++    }
++}
++
++static void ast2700fc_init(MachineState *machine)
++{
++    ast2700fc_ca35_init(machine);
++    ast2700fc_ssp_init(machine);
++    ast2700fc_tsp_init(machine);
++}
++
++static void ast2700fc_class_init(ObjectClass *oc, const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    mc->alias = "ast2700fc";
++    mc->desc = "ast2700 full core support";
++    mc->init = ast2700fc_init;
++    mc->no_floppy = 1;
++    mc->no_cdrom = 1;
++    mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
++}
++
++static const TypeInfo ast2700fc_types[] = {
++    {
++        .name           = MACHINE_TYPE_NAME("ast2700fc"),
++        .parent         = TYPE_MACHINE,
++        .class_init     = ast2700fc_class_init,
++        .instance_size  = sizeof(Ast2700FCState),
++    },
++};
++
++DEFINE_TYPES(ast2700fc_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 98c5631506..5098795f61 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -49,7 +49,9 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast10x0.c',
+   'aspeed_eeprom.c',
+   'fby35.c'))
+-arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files('aspeed_ast27x0.c'))
++arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
++  'aspeed_ast27x0.c',
++  'aspeed_ast27x0-fc.c',))
+ arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
+ arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
+ arm_common_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
 -- 
 2.34.1
 

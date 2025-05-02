@@ -1,36 +1,36 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp677701njj;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp677702njj;
         Fri, 2 May 2025 00:44:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOLqSiBApazBBflyEGRs6gUW4LyrA+IiyLn8RH0IUwsIAVgxMa6a2jK4z4AyICTnO/B9jWrBodu8GUxA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGRiiNrDRhoQWVvFfZANa99Hngzk+UiRBDFzCKZZuRwn5dyvLxUy3+cf3oCzPO5VX8hQ1wn
-X-Received: by 2002:a05:620a:2588:b0:7c5:d71c:6a47 with SMTP id af79cd13be357-7cad5744da8mr331172885a.8.1746171862284;
+X-Forwarded-Encrypted: i=2; AJvYcCVpZ6sYM64MgiTFVbpvbeAEuGRUsUJDBgsF8OMtJMkL3dDFOQfhMMubAH9wqRq7jPGpf6eSJllhOnZPuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEfVBInywhqdRz5gGxLHyG1+Bx0mH5YtaddaXobBiuikOwuYtohxQsUifsKbDWzxo0UR/l1
+X-Received: by 2002:a05:620a:43a1:b0:7c5:3b52:517d with SMTP id af79cd13be357-7cad5bb7f04mr361852385a.54.1746171862366;
         Fri, 02 May 2025 00:44:22 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1746171862; cv=none;
         d=google.com; s=arc-20240605;
-        b=diNdtKk11t4DCvfoAhLsubfLbWQergmXDum0d9NeQu+0ZdRFT5b4u7K4w3Ejram4n/
-         Gdk7qFxcWwkoITwMGGMNEV9LNmbLTJAdYczzcm5FIGDkzk2fENZ0pMBiReAhbtjR13Ft
-         IOse7FLjPe41epKfrD2/f0FGXmq7+s1W3gYJI0yxQ0pQq+Wi8PXBJo8EKwNXCeAOmqxz
-         BySQ5Es4ein7AZcOpyzdgO2HX1GDy2e2ZB34TnT3f1v2zpqYIXLNzEJUz9OuWDqmPk+r
-         KwJOrUMPXV5AkHHX4NhntU+uGryNDKSFKpiJxseuO3PinDhbbDiFYuh5qlme65NZig7f
-         kfKw==
+        b=cFTJqgm+XOgx0XgbGqV2Vpt5fN8gjFsb6kU+Tu1dBUIMuO+uIRIGqd6Tm+FgwpwnMg
+         zATd0b7Kmcy9BsZA8UyauKDGGoVAbrDQwaZHc8Ap7stqy6mYbWkI6sYXBmWxBGtlUvhS
+         0wwen+o6xU4wKDcYC5cWKDt/BS5nQPOjoKA6jSJiJaL0xxJ8AyMW5xzucsmDfynhLAXv
+         2Eh5n4tvyEajJlEwbqSrfrS8kOMtD+4Ce/pzBQT/hg/+3VNr8e+j8jBszNm2LTlTHM3p
+         VeruVbdQPTlKNSjXWze6zJMQyyOR63VD7V7dJWXFN9/CCjkJ85Tzsr2RhAyq/AOo596w
+         kAQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=lhhhAGhRKlrVeK9ULYrpz6vWG9W7Nz4P50IxVb9tmS8=;
+        bh=ppSeZSR5ueV3OoQ3Mrr3BgyRqPDpYeMAQNGlffItm00=;
         fh=9fSTg57Z8/5qODGkbOspMwLLIoslmI8qf+5es3qFPPw=;
-        b=Zh0QJGOEzAyYXxCIY2pOTU4qLgPU/hOa347JaO+Q7kL9ppr3eYhkoaTaQFWGNnu1dk
-         myvFqkDU8uDqUiDN8bb1nOrYM/ZXwC4YgZACEj1mTyiQ8kdCaliGYfYWJnIy0s2I8I9f
-         +VOpg0OLQqBtwGp8aU27o73WsLNgtr+idomQ+m+tqQZhHLx7fj8mRl2m5oLzOEKbo5Tx
-         EV7NkNmULAigvg5M2kOcjLkyLhqojI+a9rwjW7KBEkrn3MF0nbbMASPBvjlPflqyvLdv
-         evCLdSIzn29rwT9p/GYfy7/BvTOCQg8GHHCVsqLIhMgtkoJa1ouXDNxw+4Y/C5XDDBeE
-         I9Tw==;
+        b=TWVvEV1ibyz+/6qkJxSsBGA1Kxz4z8wsJN6HeUDaAL75Z+y6TLcXGxiKr1lFnn3I6u
+         vLph2gB9hTj+6oZ8kBMHBeOxozmeB/vrDdUjRlsU5yS4hJzuaGCbT68wfLvwh9yXomR/
+         yWrBZdDMmV7Y12NQ45UwYJBK4uZ09fJXTD5i+LWArqidaDfSWm0dRUzcq+7I22SIIJGa
+         0Bs2yXMIFIOVRPzKzidMEM7skKMa+T/S22B4/y14rQ3bYCykZgUbWObMBJYQHJ7ZtmYM
+         N1hkd+9NC/v3ciDocKaUmwW+5oSwnkaMh6i1J2uUZ+RZnRwNa9sNxJIND17pmO2ElXal
+         axgQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cad24321b9si252352385a.385.2025.05.02.00.44.22
+        by mx.google.com with ESMTPS id af79cd13be357-7cad2434f2asi258652385a.376.2025.05.02.00.44.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 02 May 2025 00:44:22 -0700 (PDT)
@@ -40,30 +40,29 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uAl3a-0001NE-GU; Fri, 02 May 2025 03:43:38 -0400
+	id 1uAl3p-0001OQ-VO; Fri, 02 May 2025 03:43:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1uAl3Y-0001Ms-Ia; Fri, 02 May 2025 03:43:36 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uAl3n-0001OC-2u; Fri, 02 May 2025 03:43:51 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1uAl3V-0001jK-Rq; Fri, 02 May 2025 03:43:36 -0400
+ id 1uAl3k-0001lT-O8; Fri, 02 May 2025 03:43:50 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZpjZz07qDz4x5g;
- Fri,  2 May 2025 17:43:23 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZpjbN0Qqyz4x5g;
+ Fri,  2 May 2025 17:43:44 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZpjZv16Swz4x0s;
- Fri,  2 May 2025 17:43:18 +1000 (AEST)
-Message-ID: <2d39d2e7-3540-467c-ae9d-184042f9215f@kaod.org>
-Date: Fri, 2 May 2025 09:43:15 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZpjbJ3h4hz4x0s;
+ Fri,  2 May 2025 17:43:40 +1000 (AEST)
+Message-ID: <7069b98c-5099-4264-bb9c-da60bae04482@kaod.org>
+Date: Fri, 2 May 2025 09:43:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/9] hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1
- SSP SoC
+Subject: Re: [PATCH v3 0/9] Introduce AST27x0 multi-SoC machine
 To: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
@@ -74,9 +73,8 @@ Cc: Troy Lee <troy_lee@aspeedtech.com>,
  "longzl2@lenovo.com" <longzl2@lenovo.com>,
  Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20250429091855.1948374-1-steven_lee@aspeedtech.com>
- <20250429091855.1948374-6-steven_lee@aspeedtech.com>
- <11b5a654-00e9-447d-8827-83702ec30ab8@kaod.org>
- <KL1PR0601MB4180A5FEDCA81D3E2B25E7CF858D2@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+ <cdcf1ec9-9b67-42f5-970c-db82c91cf0bb@kaod.org>
+ <KL1PR0601MB418091FFA5FBCB0159A577C9858D2@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -121,16 +119,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <KL1PR0601MB4180A5FEDCA81D3E2B25E7CF858D2@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+In-Reply-To: <KL1PR0601MB418091FFA5FBCB0159A577C9858D2@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=zHgX=XS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -146,14 +145,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LEjfJdA3WLVO
+X-TUID: vWPF4vYJ7jnJ
 
-On 5/2/25 04:06, Steven Lee wrote:
+On 5/2/25 03:22, Steven Lee wrote:
 > Hi Cédric,
 > 
 >> -----Original Message-----
 >> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Wednesday, April 30, 2025 5:46 PM
+>> Sent: Wednesday, April 30, 2025 5:31 PM
 >> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
 >> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
 >> <jamin_lin@aspeedtech.com>; Andrew Jeffery
@@ -162,123 +161,49 @@ On 5/2/25 04:06, Steven Lee wrote:
 >> <qemu-devel@nongnu.org>
 >> Cc: Troy Lee <troy_lee@aspeedtech.com>; longzl2@lenovo.com; Yunlin Tang
 >> <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH v3 5/9] hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0
->> A1 SSP SoC
+>> Subject: Re: [PATCH v3 0/9] Introduce AST27x0 multi-SoC machine
+>>
+>> Hello Steven,
 >>
 >> On 4/29/25 11:18, Steven Lee wrote:
->>> The AST2700 SSP (Secondary Service Processor) is a Cortex-M4 coprocessor.
->>> This patch adds support for A1 SSP with the following updates:
+>>> This patch series introduces full core support for the AST27x0 SoC, along with
+>> necessary updates to the ASPEED AST27x0 SOC.
+>>> The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35
+>> cores and 2 Cortex-M4 cores.
 >>>
->>> - Introduce Aspeed27x0SSPSoCState structure in aspeed_soc.h
->>> - Define memory map and IRQ map for AST27x0 A1 SSP SoC
->>> - Implement initialization and realization functions
->>> - Add support for UART, INTC, and SCU devices
->>> - Map unimplemented devices for IPC and SCUIO
+>>> v1:
+>>>     - Map unimplemented devices in SoC memory
+>>>     - Intruduce AST2700 CM4 SoC
+>>>     - Introduce AST27x0FC Machine
 >>>
->>> The IRQ mapping is similar to AST2700 CA35 SoC, featuring a two-level
->>> interrupt controller.
+>>> v2:
+>>>     - Remove unused functions
+>>>     - Correct hex notation for device addresses in AST27x0 SoC
+>>>     - Add AST2700 SSP INTC and AST2700 TSP INTC
+>>>     - Split AST27x0 CM4 SoC to AST27x0 SSP SoC and AST27x0 TSP SoC
+>>>     - Add AST27x0 A0 SSP SoC and AST27x0 A1 SSP SoC
+>>>     - Add AST27x0 A0 TSP SoC and AST27x0 A1 TSP SoC
+>>>     - Add functional tests for AST2700FC A0 and AST2700FC A1
+>>>     - Add Documentation for AST2700FC
 >>>
->>> Difference from AST2700:
->>>
->>>       - AST2700
->>>         - Support GICINT128 to GICINT136 in INTC
->>>         - The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
->>>             Bit 0 -> GIC 192
->>>             Bit 1 -> GIC 193
->>>             Bit 2 -> GIC 194
->>>             Bit 3 -> GIC 195
->>>             Bit 4 -> GIC 196
->>>
->>>       - AST2700-ssp
->>>         - Support SSPINT128 to SSPINT136 in INTC
->>>         - The INTCIO SSPINT_160_169 has 10 output pins, mapped as
->> follows:
->>>             Bit 0 -> SSPINT 160
->>>             Bit 1 -> SSPINT 161
->>>             Bit 2 -> SSPINT 162
->>>             Bit 3 -> SSPINT 163
->>>             Bit 4 -> SSPINT 164
->>>
->>> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
->>> Change-Id: I924bf1a657f1e83f9e16d6673713f4a06ecdb496
->>> ---
->>>    include/hw/arm/aspeed_soc.h |  14 ++
->>>    hw/arm/aspeed_ast27x0-ssp.c | 309
->> ++++++++++++++++++++++++++++++++++++
->>>    hw/arm/meson.build          |   1 +
->>>    3 files changed, 324 insertions(+)
->>>    create mode 100644 hw/arm/aspeed_ast27x0-ssp.c
->>>
->>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
->>> index dd5fb731e2..7c65324801 100644
->>> --- a/include/hw/arm/aspeed_soc.h
->>> +++ b/include/hw/arm/aspeed_soc.h
->>> @@ -145,6 +145,18 @@ struct Aspeed10x0SoCState {
->>>        ARMv7MState armv7m;
->>>    };
->>>
->>> +struct Aspeed27x0SSPSoCState {
->>> +    AspeedSoCState parent;
->>> +    AspeedINTCState intc[2];
->>> +    UnimplementedDeviceState ipc[2];
->>> +    UnimplementedDeviceState scuio;
->>> +
->>> +    ARMv7MState armv7m;
->>> +};
->>> +
->>> +
->>> +static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass, void
->>> +*data) {
->>> +    static const char * const valid_cpu_types[] = {
->>> +        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO: cortex-m4f */
+>>> v3:
+>>>     - Remove A0 SoC support and related functional tests
 >>
->> So no FPU ?  I wonder what "cortex-m4" CPU model in QEMU implements.
->> Something to check.
+>> Please rebase on upstream QEMU before resending. There are new changes
+>> breaking this series (meson, class_init).
+>>
+>> Also, try compiling the documentation too. The last patch has formatting
+>> issues.
 >>
 > 
-> The SSP core on the AST2700 is based on a Cortex-M4 with FPU (M4F).
-> However, QEMU only provides cortex-m4 at the moment, so I'm using that for now.
+> Thanks for the review.
+> I'll rebase the series on the top of https://github.com/legoater/qemu/commits/aspeed-next/
+> and fix the documentation formatting issues in the v4 patch series.
+perfect.
 
-Yes. I checked and the cortex-m4 doesn't have FPU support.
+I should merge it on top then.
 
-> 
->>> +        NULL
->>> +    };
->>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
->>> +
->>> +    /* Reason: The Aspeed SoC can only be instantiated from a board */
->>> +    dc->user_creatable = false;
->>> +    dc->realize = aspeed_soc_ast27x0ssp_realize;
->>> +
->>> +    sc->valid_cpu_types = valid_cpu_types;
->>> +    sc->silicon_rev = AST2700_A1_SILICON_REV;
->>> +    sc->sram_size = AST2700_SSP_RAM_SIZE;
->>> +    sc->spis_num = 0;
->>> +    sc->ehcis_num = 0;
->>> +    sc->wdts_num = 0;
->>> +    sc->macs_num = 0;
->>> +    sc->uarts_num = 13;
->>> +    sc->uarts_base = ASPEED_DEV_UART0;
->>> +    sc->irqmap = aspeed_soc_ast27x0ssp_irqmap;
->>> +    sc->memmap = aspeed_soc_ast27x0ssp_memmap;
->>> +    sc->num_cpus = 1;
->>> +    sc->get_irq = aspeed_soc_ast27x0ssp_get_irq; }
->>> +
->>> +static const TypeInfo aspeed_soc_ast27x0ssp_types[] = {
->>> +    {
->>> +        .name           = TYPE_ASPEED27X0SSP_SOC,
->>> +        .parent         = TYPE_ASPEED_SOC,
->>> +        .instance_size  = sizeof(Aspeed27x0SSPSoCState),
->>> +        .abstract       = true,
->>
->> The abstract class doesn't seem useful. why keep it ?
->>
->>
-> 
-> Thanks for pointing that out, it was originally introduced to support both A0 and A1 SoCs.
-> After dropping A0 support, I forgot to remove the abstract class.
-> I'll clean it up in the v4 patch series.
+
 Thanks,
 
 C.

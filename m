@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp748976njj;
-        Fri, 2 May 2025 03:36:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWTDmanYK3bwCoBs95fqEGPvEkizgPktAwy08GUPJWxcKCE3TJTDHCtqxVCrEvOR9MpTNWQo62Ay04fMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWeVWxbFdAi80TOHvNY2kycgJn7B9ILB0v079zk/Q9aVSvbpV31p3VHeqpunsEYQZljzgf
-X-Received: by 2002:a05:600c:1e87:b0:43d:fa:1f9a with SMTP id 5b1f17b1804b1-441bbf3dba7mr21690645e9.30.1746182212997;
-        Fri, 02 May 2025 03:36:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746182212; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp749071njj;
+        Fri, 2 May 2025 03:37:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWnmFEffFiqHhgfVeQBQdqJIgEGen9oCjiSnz3kr3pQLyXbubctOQG+2kJB7evGHJXwFaDmByxu1NA6sg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGInj6B3HIcrZrSao6uV1+emGw1zPwzsnlTT6TYBF0GxzsES3YzyNwW22VTnIKals8zFs2v
+X-Received: by 2002:a05:6000:290b:b0:391:4999:778b with SMTP id ffacd0b85a97d-3a099adcf12mr1852980f8f.28.1746182225387;
+        Fri, 02 May 2025 03:37:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746182225; cv=none;
         d=google.com; s=arc-20240605;
-        b=MuHRoUb/5+J2fMSKteM4tNQVFrC0svz3Qv/Id5akUtrqLpqP0xOlDIFgMfi1igAT0l
-         TOWXgah32v20NJssV530nML+bK6oiS4OPZrTluO7viyuFkI8gqNFnsfd2eid9m95yLIC
-         9l6kr2zGdAPMGy8raVhBmJukQF/C026+KcNYG4ZrOEQBM3rtub/K3a2gwNzswCHobyOf
-         4X9xNyBGMYmRPn0MHshmohCqgSupjZA/lBfDgneEZtnVp/T5PJ2zqb2Kxfu9BgsTRqYy
-         9sFXkwbWuxnQ8No6YEutlSJbJaBs9LTaikav6/TYonSKHRaNSHi7P77KBFLtcL1gufwF
-         mTdQ==
+        b=BIAIXmj5J9PKkRImE0ir0IyA/rPW4CGCK6SCLIwRnQjOTiVezCCxHdyF6Xhra+jKWm
+         Q7K93gne7tfvVl4GO2/NVARaI3cKKcsVB4+vvEy3Tt0g08a2733LdbWOKV/48uOHnKPJ
+         5AhmjxegmaT+85t64fAGW+N5qY13rjlcjSOmE3WJaTMw98NLwJw+RRNxmNqq+IFFuEfJ
+         Tj2VDXUAb3CM/cBibX4Qy4MqeKV/X1BjHdF4lTrnC5pvxp+5vHDo526TwfHxbaLn8qS5
+         2P/HYQ6qLjpNsvOsKS/0Kn099uSSAKq3x/C9eIeytN3P5pA08vx5CppILevwObEW38Oh
+         6xBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=miZRkAUltxshU9EtTISkmq/EqYG8I0oWHpv1dZ4M5zo=;
-        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
-        b=LYu68jf1WVCc+SaKkFRmlPbdsXP+deZ3i5rlP8wAQCKfafZO6Q1W/9kJSzTno8Uuci
-         XNhfa4Cth7mmQGHaxgnT8pt0CV6HpT9OSDx2eGX2agabVtdtrHE8SVQX7UFrHuveJXQr
-         0WxRaLvW3bWpN0gITAm17J8trc+Z03wJW6AL76K0ASTI9z6NljWG3jaLtRCw+kbved4N
-         p8SeDwGKPX35sgKVoxVkw//WSP0SSw9H9A2w32AgBpR33xKJ6F+2sGyjII1HECA/Irbc
-         JDtENJ+1eKNd6Dd7WzLxkWo5kQoHAL4K1JCMyArUmUEu6VGbyYXZ0VEBnxMT6IaBOrwM
-         K5Wg==;
+        bh=6TzXBK9YKcCpJpQ3IOgRgKReU5BqnGMXvr/s1/dUkIk=;
+        fh=vQPqsNMqoAlDx9Lray1TJhxW/ME1Lx6izgi/4Tj22z8=;
+        b=JeO5WXq+UyxU/15HbL6F4XKYKFhWrTGc9+2Hy56yO1vdmFkmtx6kYdkKCHNb2ovK1b
+         HtgSoLuEg/E/0ycDZf8kUi3Du2hYQrwtZ++qli5eJyiCqOIoZms5VOJM1IEoM61mYv1B
+         KzaKk41G7gmLwDXAV2oiDaDY7G9Mi4GtjQURXhxw4UE7jiaP+ly6XqjqZAo0SS5xAHu6
+         2SjBScSFfW6Yc82nHfcYEMlkIN0YvKh4uhPsesuw5rXwBDzBLTI2xi7sVrQeY/a663mh
+         XfJoxbslWcm5QZRUbxQPPtllrOtRAhjdosONKkq0PhJh3BHRFXdlUKCiOKD8UiVjt9p8
+         dZKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-441b2b2dfdasi43949425e9.154.2025.05.02.03.36.52
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b16c84si929917f8f.819.2025.05.02.03.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 May 2025 03:36:52 -0700 (PDT)
+        Fri, 02 May 2025 03:37:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,38 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uAnkl-0000SZ-DK; Fri, 02 May 2025 06:36:24 -0400
+	id 1uAnk4-0008IU-VS; Fri, 02 May 2025 06:35:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uAnjw-0008Ac-MK; Fri, 02 May 2025 06:35:36 -0400
+ id 1uAnjg-00085N-PK; Fri, 02 May 2025 06:35:18 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uAnju-0005yi-Cy; Fri, 02 May 2025 06:35:32 -0400
+ id 1uAnjc-0005yi-R4; Fri, 02 May 2025 06:35:15 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 2 May
- 2025 18:34:52 +0800
+ 2025 18:34:51 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Fri, 2 May 2025 18:34:52 +0800
+ Transport; Fri, 2 May 2025 18:34:51 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
- <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v4 7/9] hw/arm: Introduce ASPEED AST2700 A1 full core machine
-Date: Fri, 2 May 2025 18:34:43 +0800
-Message-ID: <20250502103449.3091642-8-steven_lee@aspeedtech.com>
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 4/9] hw/intc/aspeed: Add support for AST2700 TSP INTC
+Date: Fri, 2 May 2025 18:34:40 +0800
+Message-ID: <20250502103449.3091642-5-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250502103449.3091642-1-steven_lee@aspeedtech.com>
 References: <20250502103449.3091642-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -98,272 +99,312 @@ Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
 From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: taYH32XMG8kp
+X-TUID: PmkYSOZJE0av
 
-- Added new machine type `ast2700fc` with full core support.
-- Defined `Ast2700FCState` structure for the new machine type.
-- Implemented initialization functions for CA35, SSP, and TSP components.
-- Updated `ast2700fc_types` to include the new machine type.
-- Set machine class properties for `ast2700fc`.
+- Define new types for ast2700tsp INTC and INTCIO
+- Add register definitions for TSP INTC and INTCIO
+- Implement write handlers for TSP INTC and INTCIO
+- Register new types in aspeed_intc_register_types
 
-Test Step:
-- Download ast2700-default-obmc.tar.gz from AspeedTech-BMC OpenBmc
-  release page.
-- Run the following QEMU command:
+The design of the TSP INTC and INTCIO controllers is similar to
+AST2700, with the following differences:
 
-  ```
-  IMGDIR=~/path/to/image
-  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+- AST2700
+  Support GICINT128 to GICINT136 in INTC
+  The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
+    Bit 0 -> GIC 192
+    Bit 1 -> GIC 193
+    Bit 2 -> GIC 194
+    Bit 3 -> GIC 195
+    Bit 4 -> GIC 196
 
-  ./qemu-system-aarch64 -machine ast2700fc \
-  -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-  -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-  -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-  -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
-  -device loader,cpu-num=0,addr=0x430000000 \
-  -device loader,cpu-num=1,addr=0x430000000 \
-  -device loader,cpu-num=2,addr=0x430000000 \
-  -device loader,cpu-num=3,addr=0x430000000 \
-  -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
-  -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
-  -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-  -serial pty -serial pty -serial pty \
-  -snapshot \
-  -S -nographic
-  ```
-
-- After starting QEMU, serial devices will be redirected:
-
-  char device redirected to /dev/pts/51 (label serial0)
-  char device redirected to /dev/pts/52 (label serial1)
-  char device redirected to /dev/pts/53 (label serial2)
-
-- serial0 is the console for the four Cortex-A35 primary processors,
-  serial1 and serial2 are the consoles for the two Cortex-M4 coprocessors.
-
-- Connect to the consoles using a terminal emulator.
+- AST2700-tsp
+  Support TSPINT128 to TSPINT136 in INTC
+  The INTCIO TSPINT_160_169 has 10 output pins, mapped as follows:
+    Bit 0 -> TSPINT 160
+    Bit 1 -> TSPINT 161
+    Bit 2 -> TSPINT 162
+    Bit 3 -> TSPINT 163
+    Bit 4 -> TSPINT 164
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: I32447b9372a78eb53a07135afef59c2a19202328
+Change-Id: I3f3aca4b90129640369cf4a92deb4b9a12df5b70
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0-fc.c | 192 +++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build         |   4 +-
- 2 files changed, 195 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/aspeed_ast27x0-fc.c
+ include/hw/intc/aspeed_intc.h |   2 +
+ hw/intc/aspeed_intc.c         | 209 +++++++++++++++++++++++++++++++++-
+ 2 files changed, 209 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-new file mode 100644
-index 0000000000..125a3ade40
---- /dev/null
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -0,0 +1,192 @@
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 746f159bf3..51288384a5 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -17,6 +17,8 @@
+ #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
+ #define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
+ #define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
++#define TYPE_ASPEED_2700TSP_INTC TYPE_ASPEED_INTC "-ast2700tsp"
++#define TYPE_ASPEED_2700TSP_INTCIO TYPE_ASPEED_INTC "io-ast2700tsp"
+ 
+ OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+ 
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index e889246951..33fcbe729c 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -106,6 +106,51 @@ REG32(SSPINT164_STATUS,     0x1C4)
+ REG32(SSPINT165_EN,         0x1D0)
+ REG32(SSPINT165_STATUS,     0x1D4)
+ 
 +/*
-+ * ASPEED SoC 2700 family
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * TSP INTC Registers
++ */
++REG32(TSPINT128_EN,             0x3000)
++REG32(TSPINT128_STATUS,         0x3004)
++REG32(TSPINT129_EN,             0x3100)
++REG32(TSPINT129_STATUS,         0x3104)
++REG32(TSPINT130_EN,             0x3200)
++REG32(TSPINT130_STATUS,         0x3204)
++REG32(TSPINT131_EN,             0x3300)
++REG32(TSPINT131_STATUS,         0x3304)
++REG32(TSPINT132_EN,             0x3400)
++REG32(TSPINT132_STATUS,         0x3404)
++REG32(TSPINT133_EN,             0x3500)
++REG32(TSPINT133_STATUS,         0x3504)
++REG32(TSPINT134_EN,             0x3600)
++REG32(TSPINT134_STATUS,         0x3604)
++REG32(TSPINT135_EN,             0x3700)
++REG32(TSPINT135_STATUS,         0x3704)
++REG32(TSPINT136_EN,             0x3800)
++REG32(TSPINT136_STATUS,         0x3804)
++REG32(TSPINT137_EN,             0x3900)
++REG32(TSPINT137_STATUS,         0x3904)
++REG32(TSPINT138_EN,             0x3A00)
++REG32(TSPINT138_STATUS,         0x3A04)
++REG32(TSPINT160_169_EN,         0x3B00)
++REG32(TSPINT160_169_STATUS,     0x3B04)
++
++/*
++ * TSP INTCIO Registers
 + */
 +
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
-+#include "system/block-backend.h"
-+#include "system/system.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/loader.h"
-+#include "hw/arm/boot.h"
-+#include "hw/block/flash.h"
++REG32(TSPINT160_EN,         0x200)
++REG32(TSPINT160_STATUS,     0x204)
++REG32(TSPINT161_EN,         0x210)
++REG32(TSPINT161_STATUS,     0x214)
++REG32(TSPINT162_EN,         0x220)
++REG32(TSPINT162_STATUS,     0x224)
++REG32(TSPINT163_EN,         0x230)
++REG32(TSPINT163_STATUS,     0x234)
++REG32(TSPINT164_EN,         0x240)
++REG32(TSPINT164_STATUS,     0x244)
++REG32(TSPINT165_EN,         0x250)
++REG32(TSPINT165_STATUS,     0x254)
 +
+ static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
+                                                 uint32_t reg)
+ {
+@@ -534,8 +579,48 @@ static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
+         s->regs[reg] = data;
+         break;
+     }
++}
 +
-+#define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc")
-+OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700A1FC);
++static void aspeed_tsp_intc_write(void *opaque, hwaddr offset, uint64_t data,
++                                        unsigned size)
++{
++    AspeedINTCState *s = ASPEED_INTC(opaque);
++    const char *name = object_get_typename(OBJECT(s));
++    uint32_t reg = offset >> 2;
 +
-+static struct arm_boot_info ast2700fc_board_info = {
-+    .board_id = -1, /* device-tree-only board */
++    trace_aspeed_intc_write(name, offset, size, data);
+ 
+-    return;
++    switch (reg) {
++    case R_TSPINT128_EN:
++    case R_TSPINT129_EN:
++    case R_TSPINT130_EN:
++    case R_TSPINT131_EN:
++    case R_TSPINT132_EN:
++    case R_TSPINT133_EN:
++    case R_TSPINT134_EN:
++    case R_TSPINT135_EN:
++    case R_TSPINT136_EN:
++    case R_TSPINT160_169_EN:
++        aspeed_intc_enable_handler(s, offset, data);
++        break;
++    case R_TSPINT128_STATUS:
++    case R_TSPINT129_STATUS:
++    case R_TSPINT130_STATUS:
++    case R_TSPINT131_STATUS:
++    case R_TSPINT132_STATUS:
++    case R_TSPINT133_STATUS:
++    case R_TSPINT134_STATUS:
++    case R_TSPINT135_STATUS:
++    case R_TSPINT136_STATUS:
++        aspeed_intc_status_handler(s, offset, data);
++        break;
++    case R_TSPINT160_169_STATUS:
++        aspeed_intc_status_handler_multi_outpins(s, offset, data);
++        break;
++    default:
++        s->regs[reg] = data;
++        break;
++    }
+ }
+ 
+ static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
+@@ -614,8 +699,38 @@ static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+         s->regs[reg] = data;
+         break;
+     }
++}
++
++static void aspeed_tsp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
++                                unsigned size)
++{
++    AspeedINTCState *s = ASPEED_INTC(opaque);
++    const char *name = object_get_typename(OBJECT(s));
++    uint32_t reg = offset >> 2;
++
++    trace_aspeed_intc_write(name, offset, size, data);
+ 
+-    return;
++    switch (reg) {
++    case R_TSPINT160_EN:
++    case R_TSPINT161_EN:
++    case R_TSPINT162_EN:
++    case R_TSPINT163_EN:
++    case R_TSPINT164_EN:
++    case R_TSPINT165_EN:
++        aspeed_intc_enable_handler(s, offset, data);
++        break;
++    case R_TSPINT160_STATUS:
++    case R_TSPINT161_STATUS:
++    case R_TSPINT162_STATUS:
++    case R_TSPINT163_STATUS:
++    case R_TSPINT164_STATUS:
++    case R_TSPINT165_STATUS:
++        aspeed_intc_status_handler(s, offset, data);
++        break;
++    default:
++        s->regs[reg] = data;
++        break;
++    }
+ }
+ 
+ static const MemoryRegionOps aspeed_intc_ops = {
+@@ -658,6 +773,26 @@ static const MemoryRegionOps aspeed_ssp_intcio_ops = {
+     }
+ };
+ 
++static const MemoryRegionOps aspeed_tsp_intc_ops = {
++    .read = aspeed_intc_read,
++    .write = aspeed_tsp_intc_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    }
 +};
 +
-+struct Ast2700FCState {
-+    MachineState parent_obj;
-+
-+    MemoryRegion ca35_memory;
-+    MemoryRegion ca35_dram;
-+    MemoryRegion ssp_memory;
-+    MemoryRegion tsp_memory;
-+
-+    Clock *ssp_sysclk;
-+    Clock *tsp_sysclk;
-+
-+    Aspeed27x0SoCState ca35;
-+    Aspeed27x0SSPSoCState ssp;
-+    Aspeed27x0TSPSoCState tsp;
-+
-+    bool mmio_exec;
++static const MemoryRegionOps aspeed_tsp_intcio_ops = {
++    .read = aspeed_intcio_read,
++    .write = aspeed_tsp_intcio_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    }
 +};
 +
-+#define AST2700FC_BMC_RAM_SIZE (2 * GiB)
-+#define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
-+
-+#define AST2700FC_HW_STRAP1 0x000000C0
-+#define AST2700FC_HW_STRAP2 0x00000003
-+#define AST2700FC_FMC_MODEL "w25q01jvq"
-+#define AST2700FC_SPI_MODEL "w25q512jv"
-+
-+static void ast2700fc_ca35_init(MachineState *machine)
-+{
-+    Ast2700FCState *s = AST2700A1FC(machine);
-+    AspeedSoCState *soc;
-+    AspeedSoCClass *sc;
-+
-+    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
-+    soc = ASPEED_SOC(&s->ca35);
-+    sc = ASPEED_SOC_GET_CLASS(soc);
-+
-+    memory_region_init(&s->ca35_memory, OBJECT(&s->ca35), "ca35-memory",
-+                       UINT64_MAX);
-+
-+    if (!memory_region_init_ram(&s->ca35_dram, OBJECT(&s->ca35), "ca35-dram",
-+                                AST2700FC_BMC_RAM_SIZE, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_link(OBJECT(&s->ca35), "memory",
-+                                  OBJECT(&s->ca35_memory),
-+                                  &error_abort)) {
-+        return;
-+    };
-+    if (!object_property_set_link(OBJECT(&s->ca35), "dram",
-+                                  OBJECT(&s->ca35_dram), &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "ram-size",
-+                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
-+                                 AST2700FC_HW_STRAP1, &error_abort)) {
-+        return;
-+    }
-+    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
-+                                 AST2700FC_HW_STRAP2, &error_abort)) {
-+        return;
-+    }
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
-+    if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
-+        return;
-+    }
-+
-+    /*
-+     * AST2700 EVB has a LM75 temperature sensor on I2C bus 0 at address 0x4d.
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "tmp105", 0x4d);
-+
-+    aspeed_board_init_flashes(&soc->fmc, AST2700FC_FMC_MODEL, 2, 0);
-+    aspeed_board_init_flashes(&soc->spi[0], AST2700FC_SPI_MODEL, 1, 2);
-+
-+    ast2700fc_board_info.ram_size = machine->ram_size;
-+    ast2700fc_board_info.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
-+
-+    arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
-+}
-+
-+static void ast2700fc_ssp_init(MachineState *machine)
-+{
-+    AspeedSoCState *soc;
-+    Ast2700FCState *s = AST2700A1FC(machine);
-+    s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
-+    clock_set_hz(s->ssp_sysclk, 200000000ULL);
-+
-+    object_initialize_child(OBJECT(s), "ssp", &s->ssp, TYPE_ASPEED27X0SSP_SOC);
-+    memory_region_init(&s->ssp_memory, OBJECT(&s->ssp), "ssp-memory",
-+                       UINT64_MAX);
-+
-+    qdev_connect_clock_in(DEVICE(&s->ssp), "sysclk", s->ssp_sysclk);
-+    if (!object_property_set_link(OBJECT(&s->ssp), "memory",
-+                                  OBJECT(&s->ssp_memory), &error_abort)) {
-+        return;
-+    }
-+
-+    soc = ASPEED_SOC(&s->ssp);
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART4, serial_hd(1));
-+    if (!qdev_realize(DEVICE(&s->ssp), NULL, &error_abort)) {
-+        return;
-+    }
-+}
-+
-+static void ast2700fc_tsp_init(MachineState *machine)
-+{
-+    AspeedSoCState *soc;
-+    Ast2700FCState *s = AST2700A1FC(machine);
-+    s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
-+    clock_set_hz(s->tsp_sysclk, 200000000ULL);
-+
-+    object_initialize_child(OBJECT(s), "tsp", &s->tsp, TYPE_ASPEED27X0TSP_SOC);
-+    memory_region_init(&s->tsp_memory, OBJECT(&s->tsp), "tsp-memory",
-+                       UINT64_MAX);
-+
-+    qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
-+    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
-+                                  OBJECT(&s->tsp_memory), &error_abort)) {
-+        return;
-+    }
-+
-+    soc = ASPEED_SOC(&s->tsp);
-+    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
-+    if (!qdev_realize(DEVICE(&s->tsp), NULL, &error_abort)) {
-+        return;
-+    }
-+}
-+
-+static void ast2700fc_init(MachineState *machine)
-+{
-+    ast2700fc_ca35_init(machine);
-+    ast2700fc_ssp_init(machine);
-+    ast2700fc_tsp_init(machine);
-+}
-+
-+static void ast2700fc_class_init(ObjectClass *oc, const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->alias = "ast2700fc";
-+    mc->desc = "ast2700 full core support";
-+    mc->init = ast2700fc_init;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
-+}
-+
-+static const TypeInfo ast2700fc_types[] = {
-+    {
-+        .name           = MACHINE_TYPE_NAME("ast2700fc"),
-+        .parent         = TYPE_MACHINE,
-+        .class_init     = ast2700fc_class_init,
-+        .instance_size  = sizeof(Ast2700FCState),
-+    },
+ static void aspeed_intc_instance_init(Object *obj)
+ {
+     AspeedINTCState *s = ASPEED_INTC(obj);
+@@ -883,6 +1018,74 @@ static const TypeInfo aspeed_2700ssp_intcio_info = {
+     .class_init = aspeed_2700ssp_intcio_class_init,
+ };
+ 
++static AspeedINTCIRQ aspeed_2700tsp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
++    {0, 0, 10, R_TSPINT160_169_EN, R_TSPINT160_169_STATUS},
++    {1, 10, 1, R_TSPINT128_EN, R_TSPINT128_STATUS},
++    {2, 11, 1, R_TSPINT129_EN, R_TSPINT129_STATUS},
++    {3, 12, 1, R_TSPINT130_EN, R_TSPINT130_STATUS},
++    {4, 13, 1, R_TSPINT131_EN, R_TSPINT131_STATUS},
++    {5, 14, 1, R_TSPINT132_EN, R_TSPINT132_STATUS},
++    {6, 15, 1, R_TSPINT133_EN, R_TSPINT133_STATUS},
++    {7, 16, 1, R_TSPINT134_EN, R_TSPINT134_STATUS},
++    {8, 17, 1, R_TSPINT135_EN, R_TSPINT135_STATUS},
++    {9, 18, 1, R_TSPINT136_EN, R_TSPINT136_STATUS},
 +};
 +
-+DEFINE_TYPES(ast2700fc_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 98c5631506..5098795f61 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -49,7 +49,9 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
-   'fby35.c'))
--arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files('aspeed_ast27x0.c'))
-+arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-+  'aspeed_ast27x0.c',
-+  'aspeed_ast27x0-fc.c',))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
- arm_common_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
++static void aspeed_2700tsp_intc_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 TSP INTC Controller";
++    aic->num_lines = 32;
++    aic->num_inpins = 10;
++    aic->num_outpins = 19;
++    aic->mem_size = 0x4000;
++    aic->nr_regs = 0x3B08 >> 2;
++    aic->reg_offset = 0;
++    aic->reg_ops = &aspeed_tsp_intc_ops;
++    aic->irq_table = aspeed_2700tsp_intc_irqs;
++    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intc_irqs);
++}
++
++static const TypeInfo aspeed_2700tsp_intc_info = {
++    .name = TYPE_ASPEED_2700TSP_INTC,
++    .parent = TYPE_ASPEED_INTC,
++    .class_init = aspeed_2700tsp_intc_class_init,
++};
++
++static AspeedINTCIRQ aspeed_2700tsp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
++    {0, 0, 1, R_TSPINT160_EN, R_TSPINT160_STATUS},
++    {1, 1, 1, R_TSPINT161_EN, R_TSPINT161_STATUS},
++    {2, 2, 1, R_TSPINT162_EN, R_TSPINT162_STATUS},
++    {3, 3, 1, R_TSPINT163_EN, R_TSPINT163_STATUS},
++    {4, 4, 1, R_TSPINT164_EN, R_TSPINT164_STATUS},
++    {5, 5, 1, R_TSPINT165_EN, R_TSPINT165_STATUS},
++};
++
++static void aspeed_2700tsp_intcio_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 TSP INTC IO Controller";
++    aic->num_lines = 32;
++    aic->num_inpins = 6;
++    aic->num_outpins = 6;
++    aic->mem_size = 0x400;
++    aic->nr_regs = 0x258 >> 2;
++    aic->reg_offset = 0x0;
++    aic->reg_ops = &aspeed_tsp_intcio_ops;
++    aic->irq_table = aspeed_2700tsp_intcio_irqs;
++    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intcio_irqs);
++}
++
++static const TypeInfo aspeed_2700tsp_intcio_info = {
++    .name = TYPE_ASPEED_2700TSP_INTCIO,
++    .parent = TYPE_ASPEED_INTC,
++    .class_init = aspeed_2700tsp_intcio_class_init,
++};
++
+ static void aspeed_intc_register_types(void)
+ {
+     type_register_static(&aspeed_intc_info);
+@@ -890,6 +1093,8 @@ static void aspeed_intc_register_types(void)
+     type_register_static(&aspeed_2700_intcio_info);
+     type_register_static(&aspeed_2700ssp_intc_info);
+     type_register_static(&aspeed_2700ssp_intcio_info);
++    type_register_static(&aspeed_2700tsp_intc_info);
++    type_register_static(&aspeed_2700tsp_intcio_info);
+ }
+ 
+ type_init(aspeed_intc_register_types);
 -- 
 2.34.1
 
